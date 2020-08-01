@@ -132,8 +132,9 @@
   \setboolean{upgreek}{true}}
  {\setboolean{upgreek}{false}}
 
-% Title in serif font
-\addtokomafont{title}{\rmfamily}
+% Use serif font
+\addtokomafont{disposition}{\rmfamily}
+\addtokomafont{descriptionlabel}{\rmfamily}
 \end_preamble
 \options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
@@ -876,13 +877,13 @@ T@\SpecialChar TeX
 \end_layout
 
 \begin_layout Standard
-Когда команды без аргументов, такие как команды для символов, вводятся в
- режиме \SpecialChar TeX
-, за командой 
+Когда в режиме \SpecialChar TeX
+ вводятся команды без аргументов, такие как команды для символов,
+ то после команды 
 \shape italic
 всегда
 \shape default
- должен располагаться пробел, для ее завершения.
+ должен вводиться пробел для ее завершения.
  Этот пробел не появляется в выводе.
  Если же в выводе должен появиться пробел, то за обычным пробелом в тексте
  должен следовать неразрывный пробел.
@@ -2075,7 +2076,7 @@ frac
 \end_layout
 
 \begin_layout Standard
-Для дробейс наклонной чертой вы можете использовать команду 
+Для дробей с наклонной чертой вы можете использовать команду 
 \series bold
 
 \backslash
@@ -3984,7 +3985,7 @@ height "1pt"
 \end_layout
 
 \begin_layout Subsection
-Многоточие
+Многоточия
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Ellipses"
@@ -4889,15 +4890,15 @@ bmatrix
 \begin_inset space \textvisiblespace{}
 \end_inset
 
+матрица
+\begin_inset space \thinspace{}
+\end_inset
+
 2
 \series bold
 ×
 \series default
 2
-\begin_inset space \thinspace{}
-\end_inset
-
-матрица
 \end_layout
 
 \end_inset
@@ -4929,15 +4930,15 @@ Bmatrix
 \begin_inset space \textvisiblespace{}
 \end_inset
 
+матрица
+\begin_inset space \thinspace{}
+\end_inset
+
 2
 \series bold
 ×
 \series default
 2
-\begin_inset space \thinspace{}
-\end_inset
-
-матрица
 \end_layout
 
 \end_inset
@@ -4969,15 +4970,15 @@ pmatrix
 \begin_inset space \textvisiblespace{}
 \end_inset
 
+матрица
+\begin_inset space \thinspace{}
+\end_inset
+
 2
 \series bold
 ×
 \series default
 2
-\begin_inset space \thinspace{}
-\end_inset
-
-матрица
 \end_layout
 
 \end_inset
@@ -5043,15 +5044,15 @@ vmatrix
 \begin_inset space \textvisiblespace{}
 \end_inset
 
+матрица
+\begin_inset space \thinspace{}
+\end_inset
+
 2
 \series bold
 ×
 \series default
 2
-\begin_inset space \thinspace{}
-\end_inset
-
-матрица
 \end_layout
 
 \end_inset
@@ -5083,15 +5084,15 @@ Vmatrix
 \begin_inset space \textvisiblespace{}
 \end_inset
 
+матрица
+\begin_inset space \thinspace{}
+\end_inset
+
 2
 \series bold
 ×
 \series default
 2
-\begin_inset space \thinspace{}
-\end_inset
-
-матрица
 \end_layout
 
 \end_inset
@@ -5123,15 +5124,15 @@ matrix
 \begin_inset space \textvisiblespace{}
 \end_inset
 
+матрица
+\begin_inset space \thinspace{}
+\end_inset
+
 2
 \series bold
 ×
 \series default
 2
-\begin_inset space \thinspace{}
-\end_inset
-
-матрица
 \end_layout
 
 \end_inset
@@ -20171,7 +20172,7 @@ reference "subsec:Upright-small-Greek"
 \end_layout
 
 \begin_layout Subsection
-Большие буквы
+Прописные буквы
 \begin_inset Index idx
 status collapsed
 
@@ -20538,10 +20539,10 @@ Omega
 \begin_inset VSpace medskip
 \end_inset
 
-То, что большие греческие буквы отображаются прямым начертанием, вызвано
+То, что прописные греческие буквы отображаются прямым начертанием, вызвано
  ошибкой проектирования при разработке \SpecialChar TeX
 .
- Чтобы получить правильные большие буквы в курсивном начертании, начинайте
+ Чтобы получить правильные прописные буквы в курсивном начертании, начинайте
  каждую команду с 
 \series bold
 var
@@ -20627,8 +20628,8 @@ usepackage{fixmath}
 \end_layout
 
 \begin_layout Standard
-Тогда все большие греческие буквы в документе будут автоматически набираться
- курсивом.
+Тогда все прописные греческие буквы в документе будут автоматически выводиться
+ в курсиве.
 \end_layout
 
 \begin_layout Subsection
@@ -33895,16 +33896,16 @@ status collapsed
 
 .
  При размещении отрицательного числа в обычном тексте знак минуса отображается
- правильно.
+ более коротким.
 \end_layout
 
 \begin_layout Standard
-Таким образом, проблема исчезает при преобразовании знака минуса в математически
-й текст.
+Таким образом, для получения короткого минуса нужно преобразовать знак минуса
+ в математический текст.
 \end_layout
 
 \begin_layout Standard
-Демонстрация этой проблемы на примере:
+Демонстрация на примере:
 \end_layout
 
 \begin_layout Standard
@@ -35488,16 +35489,8 @@ begin{multicols}{количество-колонок}
 \series bold
 Количество-колонок
 \series default
- — это число в диапазоне 2
-\begin_inset space \thinspace{}
-\end_inset
-
--
-\begin_inset space \thinspace{}
-\end_inset
-
-10.
- Перед формулой текст из нескольких столбцов заканчивается введением, также
+ — это число в диапазоне 2–10.
+ Перед формулой текст из нескольких столбцов заканчивается вводом, также
  в режиме \SpecialChar TeX
 , команды
 \end_layout
@@ -35514,7 +35507,7 @@ end{multicols}
 Благодаря этой команде перед формулой автоматически добавляется некоторый
  промежуток.
  Чтобы нивелировать его, перед формулой вставляется вертикальный промежуток
- размером -6
+ размером –6
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -35541,7 +35534,7 @@ reference "sec:Formula-Styles"
 
 \end_inset
 
-, то вставляется промежуток размером -9
+, то вставляется промежуток размером –9
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -36393,7 +36386,7 @@ unittwo
  При ее использовании в формуле, появляются два блока.
  В первое заносится значение, во второе — единица измерения, и получается,
  как и выше: 
-\begin_inset Formula $\unit[30]{km/h}$
+\begin_inset Formula $\unit[30]{\text{км/ч}}$
 \end_inset
 
 .

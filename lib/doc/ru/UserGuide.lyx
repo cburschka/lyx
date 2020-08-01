@@ -50,8 +50,9 @@
 % caption separator in floats
 \usepackage[labelsep=space]{caption}
 
-% Title in serif font
-\addtokomafont{title}{\rmfamily}
+% Use serif font
+\addtokomafont{disposition}{\rmfamily}
+\addtokomafont{descriptionlabel}{\rmfamily}
 \end_preamble
 \options refpage,intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
 \use_default_options false
@@ -259,7 +260,7 @@ pt, выравнивание по левому краю, интервал 5
 \end_layout
 
 \begin_layout Standard
-Эта философия объясняется более подробно в руководстве 
+Эта философия подробнее объясняется в руководстве 
 \shape italic
 Введение
 \shape default
@@ -348,11 +349,11 @@ reference "chap:The-User-Interface"
 \end_layout
 
 \begin_layout Standard
-Справочная система содержит руководства \SpecialChar LyX
+Справочная система представлена руководствами по \SpecialChar LyX
+, которые можно читать
+ в самом \SpecialChar LyX
 .
- Вы можете обращаться ко всем руководствам, находясь в среде \SpecialChar LyX
-.
- Просто выберите руководство, которое вы хотите прочитать из меню 
+ Просто выберите нужное руководство в меню 
 \family sans
 Помощь
 \family default
@@ -1202,16 +1203,6 @@ arg   "dialog-show findreplace"
  содержит дополнительные элементы для определенных форматов, в зависимости
  от содержимого буфера обмена.
  К ним относятся HTML, \SpecialChar LaTeX
-, Linkback PDF
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Только для OS X
-\end_layout
-
-\end_inset
-
 , PDF, PNG, JPEG и EMF.
  Эти пункты меню полезны, если в буфере обмена содержится одно и то же содержимо
 е в разных форматах, и вы хотите явно выбрать нужный формат (например, некоторые
@@ -1285,7 +1276,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Элемент 
+Пункт 
 \family sans
 Правка\SpecialChar menuseparator
 Поиск
@@ -1408,15 +1399,13 @@ reference "sec:Advanced-Find-and"
 \end_inset
 
 д.
- (так называемые «вставки») могут быть разложены.
- Это означает, что вставка удаляется, а ее содержимое становится обычным
- текстом.
- Разложение вставки выполняется путем установки курсора в начало вставки
- и нажатия клавиатурной клавиши 
+ (так называемые «вставки») могут быть разложены — вставка удаляется, а
+ ее содержимое становится обычным текстом.
+ Для этого установите курсор в начало вставки и нажмите клавишу 
 \family sans
 Backspace
 \family default
- или установки курсора в конец вставки и нажатия клавиши 
+ или установите курсор в конец вставки и нажмите клавишу 
 \family sans
 Delete
 \family default
@@ -1636,7 +1625,7 @@ name "sec:Navigating"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Навигация
@@ -1662,7 +1651,11 @@ status open
 \end_layout
 
 \begin_layout Itemize
-Панель «Структура», доступ к которой осуществляется либо через меню 
+Панель 
+\family sans
+Структура
+\family default
+, доступ к которой осуществляется либо через меню 
 \family sans
 Вид\SpecialChar menuseparator
 Панель
@@ -1739,7 +1732,7 @@ status collapsed
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Структура
@@ -1789,8 +1782,12 @@ reference "sec:Bibliography"
 \end_layout
 
 \begin_layout Standard
-Поле «Фильтр» в верхней части позволяет вам вводить ограничение на записи,
- которые появляются в структуре.
+Поле 
+\family sans
+Фильтр
+\family default
+ в верхней части позволяет вам вводить ограничение на записи, которые появляются
+ в структуре.
  Например, если вы отображаете список 
 \shape italic
 Метки и ссылки
@@ -2201,8 +2198,8 @@ Return
 \end_inset
 
 , то можете для этого ввести символы «=>» в формулу.
- Так что, это быстрая альтернатива вставке команд или использованию математическ
-ой панели инструментов.
+ Так что, это быстрая альтернатива набору команд или использованию математическо
+й панели инструментов.
  Список поддерживаемых комбинаций символов можно найти в файле автозамены,
  который находится в папке установки \SpecialChar LyX
 .
@@ -2225,7 +2222,7 @@ Return
 \begin_layout Section
 Основные привязки клавиш
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Привязки клавиш
@@ -2235,7 +2232,7 @@ status open
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Привязки|see
@@ -2964,7 +2961,7 @@ TeX
 \end_layout
 
 \begin_layout Description
-Slides Используется для изготовления транспарантов
+Slides Используется для изготовления слайдов
 \end_layout
 
 \begin_layout Description
@@ -3027,11 +3024,14 @@ status collapsed
 Ничего страшного.
  \SpecialChar LyX
  включает в себя гораздо больше классов документов, чем вам когда-либо
- понадобится, и некоторые из них, такие как IOP, являются высокоспециализированн
-ыми.
+ понадобится, и некоторые из них, такие как 
+\family sans
+IOP
+\family default
+, являются узкоспециализированными.
  \SpecialChar LyX
  старается поддерживать как можно больше различных типов документов, он
- содержит почти сотню различных файлов окружений, число которых растет.
+ содержит почти сотню различных файлов макетов, число которых растет.
  Никакой дистрибутив \SpecialChar LaTeX
  по умолчанию не устанавливает все файлы, которые могут
  понадобиться для некоторого класса документов.
@@ -3043,7 +3043,7 @@ status collapsed
 Если вы хотите использовать класс документа, помеченный как «недоступный»,
  вам просто нужно установить соответствующие файлы пакета.
  Самый простой способ узнать, какие файлы нужно установить, — использовать
- этот класс документов для нового файла.
+ этот класс документа для нового файла.
  \SpecialChar LyX
  отобразит диалоговое окно со списком отсутствующих файлов.
  Смотрите раздел 
@@ -3077,7 +3077,7 @@ status collapsed
  и многие пользователи делают это.
  Глава 
 \shape italic
-Установка новых классов документов, окружений и шаблонов
+Установка новых классов документов, макетов и шаблонов
 \shape default
  документа 
 \shape italic
@@ -3109,7 +3109,7 @@ status collapsed
 
 \begin_layout Standard
 Модули обеспечивают дополнительные возможности, которые по умолчанию недоступны
- в выбранном классе документов.
+ в выбранном классе документа.
  Например, вам может понадобиться использовать шрифт Брайля (тисненая печать)
  в документе.
  Но он недоступен в имеющихся классах документов, поэтому необходимо загрузить
@@ -3148,7 +3148,7 @@ status collapsed
  не
  сможет скомпилировать файл \SpecialChar LaTeX
  без отсутствующих средств.
- Если вы хотите иметь возможность выводить данные такого рода, то необходимо
+ Если вы хотите иметь возможность выводить такие документы, то необходимо
  установить отсутствующие программные средства, а затем перенастроить \SpecialChar LyX
 ,
  выбрав 
@@ -3221,18 +3221,17 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Модули, как и пакеты, предназначены для использования в различных документах
- \SpecialChar LyX
+Модули для \SpecialChar LyX
+ — как пакеты для \SpecialChar LaTeX
 .
- Если вам часто приходится сталкиваться с необходимостью использования одного
- и того же в разных документах, то следует подумать о написании модуля для
- этой цели.
- Иногда, однако, у определенного документа есть особые потребности, но вам
- нужен определенный стиль вставки или текста только один раз.
+ Они предназначены для использования во множестве различных документов.
+ Если вам часто приходится использовать одно и то же в разных документах,
+ то следует подумать о написании модуля для этой цели.
+ Но бывает, что у некоторого документа есть особые потребности, и определенная
+ вставка или стиль текста вам нужны только в этот раз.
  Вы желаете что-то похожее на собственную преамбулу \SpecialChar LaTeX
 -документа.
- То, чего вы хотите, это «Локальный макет» \SpecialChar LyX
-.
+ То, чего вы хотите, это «Локальный макет».
  Ознакомьтесь с разделом 
 \shape italic
 Локальный макет
@@ -3883,7 +3882,7 @@ status collapsed
 \family sans
 Класс документа
 \family default
-, вы можете ввести специальные опции для вашего класса документа в списке
+, вы можете ввести специальные опции для вашего класса документа списком
  через запятую.
  Это необходимо, только если \SpecialChar LyX
  не поддерживает специальные опции, которые
@@ -3964,6 +3963,10 @@ status collapsed
 
 \family sans
 красивый
+\begin_inset space ~
+\end_inset
+
+(fancy)
 \family default
  Позволяет определять полностью настраиваемые верхние и нижние колонтитулы,
  если установлен \SpecialChar LaTeX
@@ -4255,7 +4258,7 @@ name "sec:Par-indent-intro"
 \end_layout
 
 \begin_layout Standard
-Кажется, у каждого свое соглашение об отступах абзацев.
+Кажется, у каждого свое соглашение о разделении абзацев.
  Большинство американцев делают отступ в первой строке абзаца.
  Другие, вместо этого, оставляют дополнительный промежуток между абзацами.
  Если выбирается использование отступа для абзацев, то 
@@ -4431,8 +4434,7 @@ arg   "paragraph-params \\indent-toggle"
 \end_layout
 
 \begin_layout Standard
-Меняйте метод отступа для одного абзаца только при необходимости тонкой
- настройки.
+Меняйте вид отступа для одного абзаца только при необходимости тонкой настройки.
 \end_layout
 
 \begin_layout Subsection
@@ -8318,7 +8320,7 @@ arg   "depth-decrement"
 \end_layout
 
 \begin_layout Subsection
-Чего вы можете и чего не можете вкладывать
+Что вы можете и чего не можете вкладывать
 \end_layout
 
 \begin_layout Standard
@@ -10132,7 +10134,7 @@ Moosegroin, MT 00100
 \begin_inset space ~
 \end_inset
 
-Fizlewitz:
+Fizlewitz!
 \end_layout
 
 \begin_layout Quotation
@@ -10362,7 +10364,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Неразрывный пробел: он используется, чтобы сказать \SpecialChar LyX
+Неразрывный пробел используется, чтобы указать \SpecialChar LyX
  (и \SpecialChar LaTeX
 ) не разрывать строку
  в этой точке.
@@ -10541,7 +10543,7 @@ status collapsed
 \begin_layout Standard
 «Тонкий пробел» — это пробел, который равен половине размера обычного пробела
  (и он также «неразрывный»).
- Типографские соглашения на многих языках предлагают использовать тонкие
+ Типографские соглашения для многих языков предлагают использовать тонкие
  пробелы в случаях, когда обычные пробелы будут слишком широкими, например,
  внутри сокращений:
 \end_layout
@@ -16092,7 +16094,7 @@ en-тире
 status collapsed
 
 \begin_layout Plain Layout
-В Mac и Linux en-тире вводится с помощью 
+В macOS и Linux en-тире вводится с помощью 
 \family sans
 Opt+
 \begin_inset Quotes erd
@@ -16349,8 +16351,8 @@ name "subsec:Dashes-and-line-breaks"
 \end_layout
 
 \begin_layout Itemize
-В французском и испанском языках тире вокруг утверждений в скобках обрабатываютс
-я аналогично скобкам: разрывы строк не допускаются на внутренней стороне.
+Во французском и испанском языках тире вокруг утверждений в скобках обрабатывают
+ся аналогично скобкам: разрывы строк не допускаются на внутренней стороне.
 \end_layout
 
 \begin_layout Standard
@@ -27326,7 +27328,7 @@ name "subsec:Table-of-Contents"
 \family default
 , в которой вы увидите записи содержания в виде схемы, что позволит вам
  перемещать и переупорядочивать разделы в ваших документах.
- Так что, эта операция является альтернативой меню 
+ Так что, это действие является альтернативой меню 
 \family sans
 Вид\SpecialChar menuseparator
 Панель структуры
@@ -27862,7 +27864,7 @@ name "subsec:The-Bibliography-Environment"
 \family sans
 Библиография
 \family default
- каждый абзац начинается с серого поля библиографии, помеченного номером.
+ каждый абзац начинается с серого поля источника, помеченного номером.
  Если вы нажмете на него, то получите диалоговое окно, в котором можете
  установить 
 \family sans
@@ -27960,23 +27962,24 @@ arg   "dialog-show-new-inset citation"
 \family default
 .
  В блоке ссылки будет показаны метки выбранных источников.
- Если вы нажмете на этот блок, появится окно цитирования, и вы можете изменить
+ Если вы нажмете на этот блок, появится окно цитирования, и вы сможете изменить
  ссылку.
 \end_layout
 
 \begin_layout Standard
-Библиографические ссылки в выходе отображаются в виде номера или метки источника
+Библиографические ссылки в выводе отображаются в виде номера или метки источника
  в квадратных скобках.
  Вот два примера, первый — без метки, второй — с меткой «Credits»:
 \end_layout
 
 \begin_layout Standard
-Взгляните на 
-\family sans
-\SpecialChar LaTeX
- Companion Second Edition
-\family default
-: 
+Почитайте 
+\emph on
+Путеводитель по пакету \SpecialChar LaTeX
+ и его расширению \SpecialChar LaTeX2e
+
+\emph default
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "latexcompanion"
@@ -27984,12 +27987,12 @@ literal "true"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
-Члены \SpecialChar LyX
--команды перечислены в Credits: 
+Члены команды разработки \SpecialChar LyX
+ перечислены в 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "lyxcredit"
@@ -27997,7 +28000,7 @@ literal "true"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -28039,10 +28042,15 @@ status collapsed
 
  в разделе 
 \family sans
-Библиография->Формат стиля
+Библиография\SpecialChar menuseparator
+Формат стиля
 \family default
  (см.
- 
+ подраздел
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Citation-Format"
@@ -28075,7 +28083,7 @@ noprefix "false"
 \family default
 .
  Первое поле используется для списка авторов, как они должны отображаться
- в ссылке на цитирование, второе — год (без скобок).
+ в ссылке на источник, второе — год (без скобок).
  Эти поля являются обязательными.
  Если существует несколько авторов, и вы хотите, чтобы они указывались и
  полным списком (
@@ -28095,8 +28103,8 @@ noprefix "false"
 Имена всех авторов
 \family default
 .
- Если все оформлено таким образом, вы можете выбирать между разными автор-год
- или автор-число стилями в диалоговом окне 
+ Если все оформлено таким образом, вы можете выбирать между разными стилями
+ автор-год или автор-число в диалоговом окне 
 \family sans
 Вставка\SpecialChar menuseparator
 Библиографическая ссылка
@@ -28826,7 +28834,11 @@ Natbib
 \family default
 , который предоставляет вам форматы цитирований вида автора-год и автор-число
  (см.
- выше 
+ выше подраздел
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:The-Bibliography-Environment"
@@ -28838,7 +28850,11 @@ reference "subsec:The-Bibliography-Environment"
 
 \begin_layout Standard
 С библиографической базой данных (см.
- 
+ подраздел
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Bibliography-databases"
@@ -30866,15 +30882,7 @@ AtBeginDocument{
 \backslash
 addto
 \backslash
-captionsenglish
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Formula $\hphantom{\qquad\qquad\qquad\qquad}$
-\end_inset
-
-{
+captionsrussian{
 \backslash
 def
 \backslash
@@ -30882,7 +30890,7 @@ nomname{Список символов}}}
 \end_layout
 
 \begin_layout Standard
-Если вы используете язык документа, отличный от английского, замените
+Если вы используете язык документа, отличный от русского, замените
 \begin_inset Newline newline
 \end_inset
 
@@ -30890,7 +30898,7 @@ nomname{Список символов}}}
 \series bold
 
 \backslash
-captionsenglish
+captionsrussian
 \series default
  на 
 \series bold
@@ -30898,7 +30906,7 @@ captionsenglish
 \backslash
 extras***
 \series default
-, где *** — обозначение используемого языка.
+, где *** — название используемого языка.
 \end_layout
 
 \begin_layout Subsection
@@ -31544,7 +31552,11 @@ linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue
 hyperref
 \series default
 .
- Для их понимания мы отсылаем вас к руководству по гиперссылкам 
+ Для их понимания мы отсылаем вас к руководству по пакету 
+\series bold
+hyperref
+\series default
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hyperref"
@@ -34163,7 +34175,7 @@ xx
 \begin_inset space ~
 \end_inset
 
-правописания Выберите библиотеку, которую \SpecialChar LyX
+правописания Выберите программу, которую \SpecialChar LyX
  должен использовать для проверки
  правописания.
  В зависимости от используемой платформы доступны 
@@ -34198,7 +34210,7 @@ hunspell
 \family default
 .
  \SpecialChar LyX
- на Mac OS также может использовать собственную проверку орфографии Mac
+ на macOS также может использовать собственную проверку орфографии macOS
  и будет использовать ее по умолчанию.
 \end_layout
 
@@ -34340,37 +34352,41 @@ MyThes
 \emph default
 OpenOffice
 \family default
- состоят из двух файлов для каждого языка: файл с расширением 
+ состоят из двух файлов для каждого языка: файл данных с расширением 
 \emph on
 *.dat
 \emph default
-, содержащий данные, и индексный файл с расширением 
+ и индексный файл с расширением 
 \emph on
 *.idx
 \emph default
 .
- Стандартизированные имена файлов включают код для данного языка (например,
+ Стандартизированные имена файлов включают код языка (например,
 \begin_inset space ~
 \end_inset
 
 
 \family sans
-en_US
+ru_RU
 \family default
- для американского английского).
- Например, американские английские файлы называются:
+ для русского или 
+\family sans
+uk_UA
+\family default
+ для украинского языка).
+ Например, файлы русского тезауруса называются:
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-th_en_US_v2.idx
+th_ru_RU_v2.idx
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-th_en_US_v2.dat
+th_ru_RU_v2.dat
 \end_layout
 
 \begin_layout Standard
@@ -34420,14 +34436,17 @@ status collapsed
 \backslash
 Program Files
 \backslash
-LibreOffice-<Version>
+\SpecialChar allowbreak
+LibreOffice-\SpecialChar allowbreak
+<Version>
 \backslash
+\SpecialChar allowbreak
 share
 \backslash
 extensions 
 \family default
 или наподобие этого.
- В Mac расположение по умолчанию — 
+ В macOS расположение по умолчанию — 
 \family typewriter
 /Users\SpecialChar breakableslash
 <user name>\SpecialChar breakableslash
@@ -34435,9 +34454,9 @@ Library\SpecialChar breakableslash
 Application Support\SpecialChar breakableslash
 libreoffice\SpecialChar breakableslash
 <version>\SpecialChar breakableslash
-user
+user/
 \family default
-/.
+.
 \end_layout
 
 \end_inset
@@ -34595,7 +34614,7 @@ arg   "thesaurus-entry"
  числа — для существительных, инфинитив — для глаголов).
  Например, поиск слова в виде 
 \shape italic
-отчетный
+отчетов
 \shape default
  не дает результатов, тогда как результаты отображаются для слова в виде
  
@@ -34610,11 +34629,11 @@ arg   "thesaurus-entry"
 \shape default
  в 
 \shape italic
-отчетный
+отчетов
 \shape default
 ); тогда вы получите варианты без необходимости корректировать запрос в
  диалоговом окне, к тому же замена, вероятно, будет правильной (поскольку
- будет заменена только выделенная часть; поэтому, окончание останется).
+ заменяется только выделенная часть, а окончание остается).
 \end_layout
 
 \begin_layout Section
@@ -35333,7 +35352,7 @@ reference "subsec:Keyboard-Map"
 кольки
 х клавиш или в создании совершенно другой раскладки клавиатуры (например,
  для Vulcan).
- Например, вы можете, в основном, писать по-итальянски на клавиатуре в стиле
+ Например, вы можете, в основном, писать по-русски на клавиатуре в стиле
  США, но хотите добавить кавычки в стиле немецкого языка.
  В таком случае вы можете создать свою раскладку клавиатуры или изменить
  существующую для поддержки нужных вам символов.
@@ -35451,7 +35470,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Сохраняет фактически существующий документ.
+Сохраняет текущий документ.
 \end_layout
 
 \begin_layout Subsection
@@ -35459,7 +35478,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Сохраняет фактический документ под новым именем, создавая копию.
+Сохраняет текущий документ под новым именем, создавая копию.
 \end_layout
 
 \begin_layout Subsection
@@ -35484,7 +35503,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Перезагрузка фактического документа с диска.
+Перезагрузка текущего документа с диска.
 \end_layout
 
 \begin_layout Subsection
@@ -36249,7 +36268,7 @@ reference "subsec:Converters"
 \end_layout
 
 \begin_layout Subsection
-Новое окно и закрыть окно
+Новое окно и Закрыть окно
 \end_layout
 
 \begin_layout Standard
@@ -36280,7 +36299,7 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
-Отменить и повторить
+Отменить и Вернуть
 \end_layout
 
 \begin_layout Standard
@@ -36300,6 +36319,16 @@ reference "sec:Undo-and-Redo"
 
 \begin_layout Subsection
 Вырезать, Копировать, Вставить, Вставить недавнее, Вставить как
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Вырезать, Копировать, Вставить
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -36525,8 +36554,8 @@ reference "subsec:Custom-Character-Styles"
 \begin_layout Standard
 Этот пункт появляется только в том случае, если курсор находится внутри
  вставки.
- Выполняется разложение вставки, что означает — сама вставка удаляется,
- а ее содержимое становится обычным текстом.
+ Выполняется разложение вставки — сама вставка удаляется, а ее содержимое
+ становится обычным текстом.
 \end_layout
 
 \begin_layout Subsection
@@ -36540,7 +36569,7 @@ reference "subsec:Custom-Character-Styles"
 \end_layout
 
 \begin_layout Subsection
-Увеличение/уменьшение вложенности списка
+Увеличить/Уменьшить вложенность списка
 \end_layout
 
 \begin_layout Standard
@@ -36588,30 +36617,6 @@ status collapsed
 Вид
 \family default
  приводятся открытые документы.
-\end_layout
-
-\begin_layout Subsection
-Развернуть/Свернуть все вставки
-\end_layout
-
-\begin_layout Standard
-Разворачиваются/сворачиваются все вставки в документе.
-\end_layout
-
-\begin_layout Subsection
-Развернуть/Свернуть математический макрос
-\end_layout
-
-\begin_layout Standard
-Разворачивает/сворачивает текущий математический макрос.
-\end_layout
-
-\begin_layout Standard
-Математические макросы описаны в руководстве 
-\shape italic
-Математика
-\shape default
-.
 \end_layout
 
 \begin_layout Subsection
@@ -36742,9 +36747,8 @@ status collapsed
  режиме панель инструментов отображается только тогда, когда курсор находится
  в определенном окружении или когда активирована определенная функция.
  Это означает, например, что панель инструментов рецензирования будет отображать
-ся только в том случае, если включено отслеживание изменений, панели инструменто
-в математики и таблицы отображаются только в том случае, если курсор находится
- внутри формулы или таблицы соответственно.
+ся только при включенном отслеживании изменений, а панели инструментов формул
+ и таблиц — если курсор находится внутри формулы или таблицы соответственно.
 \end_layout
 
 \begin_layout Standard
@@ -36802,13 +36806,44 @@ reference "sec:Toolbars"
 \end_layout
 
 \begin_layout Standard
-Использование этого пункта меню или нажатие клавиши F11 убирает строку меню
- и все панели инструментов, так что вы будете видеть только текст.
- Далее главное окно \SpecialChar LyX
+Использование этого пункта меню или нажатие клавиши 
+\family sans
+F11
+\family default
+ убирает строку меню и все панели инструментов, так что вы будете видеть
+ только текст.
+ При этом главное окно \SpecialChar LyX
  разворачивается на весь экран.
- Чтобы вернуться из полноэкранного режима в обычный, нажмите клавишу F11
+ Чтобы вернуться из полноэкранного режима в обычный, нажмите клавишу 
+\family sans
+F11
+\family default
  или щелкните правой кнопкой мыши и отключите полноэкранный режим в контекстном
  меню.
+\end_layout
+
+\begin_layout Subsection
+Развернуть/Свернуть все вставки
+\end_layout
+
+\begin_layout Standard
+Разворачиваются/сворачиваются все вставки в документе.
+\end_layout
+
+\begin_layout Subsection
+Развернуть/Свернуть математический макрос
+\end_layout
+
+\begin_layout Standard
+Разворачивает/сворачивает текущий математический макрос.
+\end_layout
+
+\begin_layout Standard
+Математические макросы описаны в руководстве 
+\shape italic
+Математика
+\shape default
+.
 \end_layout
 
 \begin_layout Section
@@ -36909,7 +36944,7 @@ reference "subsec:Screen-Fonts"
 
 \end_inset
 
-) может отображать любой символ.
+) не может отображать любой возможный символ.
 \end_layout
 
 \end_inset
@@ -38319,7 +38354,7 @@ arg   "bookmark-goto 2"
 \end_layout
 
 \begin_layout Subsection
-Следующая заметка, Следующее изменение, Следующая перекрестная ссылка
+Следующая заметка/изменение/перекрестная ссылка
 \end_layout
 
 \begin_layout Standard
@@ -38975,7 +39010,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Показывает список классов документов и стили, установленные в вашей \SpecialChar LaTeX
+Показывает список классов документов и стилей, установленных в вашей \SpecialChar LaTeX
 -системе.
  Используйте настройку 
 \family sans
@@ -41370,7 +41405,7 @@ status collapsed
 \end_inset
 
  для перекрестных ссылок, см.
- раздел
+ раздел 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Cross-References"
@@ -44686,7 +44721,7 @@ XEmacs
 \end_layout
 
 \begin_layout Description
-mac.bind набор привязок для систем MacOS.
+mac.bind набор привязок для системы macOS.
 \end_layout
 
 \begin_layout Standard
@@ -45319,7 +45354,7 @@ PATH Это поле содержит список путей к внешним 
  Когда \SpecialChar LyX
  необходимо использовать внешнюю программу, она ищется в этом списке,
  с указанием, где найти ее в системе.
- Список путей автоматически устанавливается в системах Windows и Mac при
+ Список путей автоматически устанавливается в системах Windows и macOS при
  настройке \SpecialChar LyX
 ; так что обычно вам не нужно его изменять.
  В системах Unix/Linux список путей должен быть задан только в том случае,
@@ -45760,7 +45795,7 @@ polyglossia
 \end_inset
 
 налево Здесь вы можете определить, как происходит перемещение курсора (с
- помощью клавиш со стрелками) при написании на языках с направлением справа
+ помощью клавиш со стрелками) при использовании языков с направлением справа
  налево (например, арабский, иврит или фарси).
 \end_layout
 
@@ -45773,14 +45808,14 @@ polyglossia
  означает, что курсор следует логике направления текста, а направление стрелок
  относится к направленности основного языка абзаца.
  Например, во встроенном тексте справа налево в абзаце слева направо (скажем,
- на иврите на английском языке) курсор стартует справа (то есть, в начале
- встроенного отрывка, логика справа-налево) когда перемещение идет слева.
- Таким образом, назначения клавиш меняются местами для этой части; стрелка
- вправо в данном конкретном случае всегда означает: двигаться вперед в тексте
- (даже если это, в действительности, двигаться влево).
- Этот параметр может быть полезен в текстах, которые смешивают сценарии
- слева направо и справа налево, поскольку курсор затем следует согласованной
- «текстовой логике».
+ иврит в английском тексте) курсор стартует справа (то есть, в начале встроенног
+о отрывка, логика справа-налево) когда перемещение идет слева.
+ То есть значения клавиш меняются местами для этой части; стрелка вправо
+ в данном конкретном случае всегда означает: двигаться вперед по тексту
+ (даже если в действительности происходит движение влево).
+ Этот параметр может быть полезен в текстах, которые смешивают письменности
+ слева направо и справа налево, поскольку курсор следует согласованной «текстово
+й логике».
 \end_layout
 
 \begin_layout Standard
@@ -45793,8 +45828,8 @@ polyglossia
  В этом случае во встроенном тексте справа налево в абзаце слева направо
  курсор начинает перемещение слева (в текстовой логике: с конца) при следовании
  слева.
- Таким образом, визуальное значение клавиши сохраняется во всех случаях
- за счет текстовой логики.
+ То есть визуальное значение клавиш сохраняется во всех случаях за счет
+ нарушения текстовой логики.
 \end_layout
 
 \end_deeper
@@ -47354,8 +47389,8 @@ literal "true"
 
 \end_inset
 
-The \SpecialChar LyX
- Team: 
+Команда разработки \SpecialChar LyX
+: 
 \begin_inset CommandInset href
 LatexCommand href
 name "Credits"
@@ -47390,13 +47425,20 @@ literal "true"
 
 \end_inset
 
-Frank Mittelbach and Michel Goossens: 
+Гуссенс М., Миттельбах Ф., Самарин А.
+ 
 \emph on
-The \SpecialChar LaTeX
- Companion Second Edition.
+Путеводитель по пакету \SpecialChar LaTeX
+ и его расширению \SpecialChar LaTeX2e
 
 \emph default
- Addison-Wesley, 2004
+.
+ — М.: «Мир», 1999.
+ — 606
+\begin_inset space \thinspace{}
+\end_inset
+
+с.
 \end_layout
 
 \begin_layout Bibliography
@@ -47407,14 +47449,15 @@ literal "true"
 
 \end_inset
 
-Helmut Kopka and Patrick W.
- Daly: 
+Kopka H., Daly P.
+ 
 \emph on
 A Guide to \SpecialChar LaTeX
- Fourth Edition.
+.
 
 \emph default
- Addison-Wesley, 2003
+ — 4th ed.
+ — Addison-Wesley, 2003.
 \end_layout
 
 \begin_layout Bibliography
@@ -47425,13 +47468,19 @@ literal "true"
 
 \end_inset
 
-Leslie Lamport: 
+Lamport L.
+ 
 \emph on
 \SpecialChar LaTeX
-: A Document Preparation System.
-
+: A Document Preparation System
 \emph default
- Addison-Wesley, second edition, 1994
+.
+ — New York: Addison-Wesley, 1994.
+ — 273
+\begin_inset space \thinspace{}
+\end_inset
+
+с.
 \end_layout
 
 \begin_layout Bibliography
@@ -47442,15 +47491,19 @@ literal "true"
 
 \end_inset
 
-Donald E.
- Knuth.
+Кнут Д.
  
 \emph on
-The \SpecialChar TeX
-book.
+Все про \SpecialChar TeX
 
 \emph default
- Addison-Wesley, 1984
+.
+ — М.: «Вильямс», 2003.
+ — 560
+\begin_inset space \thinspace{}
+\end_inset
+
+с.
 \end_layout
 
 \begin_layout Bibliography

@@ -653,7 +653,7 @@ Enter
 \end_inset
 
 е.
- одиночный интервал, двойной интервал и т.
+ одинарный интервал, двойной интервал и т.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -687,7 +687,7 @@ Enter
  Различные типы абзацев имеют различные отступы.
  Разбиение на страницы также производится автоматически.
  В общем случае пространство между строками, между словами и между абзацами
- непостоянно, и определяется \SpecialChar LyX
+ непостоянно и определяется \SpecialChar LyX
 
 \begin_inset Foot
 status collapsed
@@ -806,7 +806,7 @@ Leslie Lamport
 status collapsed
 
 \begin_layout Plain Layout
-Источником этого раздела послужила книга 
+Источником информации для этого раздела послужила книга 
 \begin_inset Quotes cld
 \end_inset
 
@@ -1157,7 +1157,7 @@ status collapsed
 \begin_inset Quotes cld
 \end_inset
 
-сноска
+Сноска
 \begin_inset Quotes crd
 \end_inset
 
@@ -1369,7 +1369,7 @@ Esc
 \begin_inset Quotes crd
 \end_inset
 
- — клавиша выхода;
+ — клавиша отмены;
 \end_layout
 
 \begin_layout Itemize
@@ -1424,11 +1424,11 @@ Esc
 \end_layout
 
 \begin_layout Itemize
-
-\family sans
 \begin_inset Quotes cld
 \end_inset
 
+
+\family sans
 Insert
 \family default
 
@@ -1501,14 +1501,29 @@ PageDown
 \end_layout
 
 \begin_layout Itemize
+\begin_inset Quotes cld
+\end_inset
+
 
 \family sans
 Return
 \family default
+
+\begin_inset Quotes crd
+\end_inset
+
  и 
+\begin_inset Quotes cld
+\end_inset
+
+
 \family sans
 Enter
 \family default
+
+\begin_inset Quotes crd
+\end_inset
+
  обозначают одну и ту же клавишу.
  На некоторых клавиатурах клавиша 
 \family sans
