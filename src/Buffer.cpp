@@ -2230,7 +2230,7 @@ Buffer::ExportStatus Buffer::writeLyXHTMLSource(odocstream & os,
 		os << "<title>"
 		   << (doctitle.empty() ?
 		         from_ascii("LyX Document") :
-		         xml::xmlize(doctitle, XMLStream::ESCAPE_ALL))
+		         xml::escapeString(doctitle, XMLStream::ESCAPE_ALL))
 		   << "</title>\n";
 
 		docstring styles = features.getTClassHTMLPreamble();

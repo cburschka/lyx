@@ -139,9 +139,6 @@ docstring escapeChar(char c, XMLStream::EscapeSettings e);
 /// Escape a word instead of a single character
 docstring escapeString(docstring const & raw, XMLStream::EscapeSettings e=XMLStream::ESCAPE_ALL);
 
-/// Converts a string to a form safe for links, etc.
-docstring xmlize(docstring const &str, XMLStream::EscapeSettings e);
-
 /// cleans \param str for use as an attribute by replacing all non-altnum by "_"
 docstring cleanAttr(docstring const & str);
 

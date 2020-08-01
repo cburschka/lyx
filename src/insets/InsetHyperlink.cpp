@@ -224,7 +224,7 @@ void InsetHyperlink::docbook(XMLStream & xs, OutputParams const &) const
 docstring InsetHyperlink::xhtml(XMLStream & xs, OutputParams const &) const
 {
 	docstring const & target =
-		xml::xmlize(getParam("target"), XMLStream::ESCAPE_AND);
+		xml::escapeString(getParam("target"), XMLStream::ESCAPE_AND);
 	docstring const & name   = getParam("name");
 	xs << xml::StartTag("a", to_utf8("href=\"" + target + "\""));
 	xs << (name.empty() ? target : name);

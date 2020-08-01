@@ -91,13 +91,6 @@ docstring escapeString(docstring const & raw, XMLStream::EscapeSettings e)
 }
 
 
-// escape what needs escaping
-docstring xmlize(docstring const &str, XMLStream::EscapeSettings e)
-{
-	return xml::escapeString(str, e);
-}
-
-
 docstring cleanAttr(docstring const & str)
 {
 	docstring newname;
@@ -115,7 +108,7 @@ docstring StartTag::writeTag() const
 {
 	docstring output = '<' + tag_;
 	if (!attr_.empty()) {
-		docstring attributes = xml::xmlize(attr_, XMLStream::ESCAPE_NONE);
+		docstring attributes = xml::escapeString(attr_, XMLStream::ESCAPE_NONE);
 		attributes.erase(attributes.begin(), std::find_if(attributes.begin(), attributes.end(),
                                                           [](int c) {return !std::isspace(c);}));
 		if (!attributes.empty()) {
@@ -151,7 +144,7 @@ docstring CompTag::writeTag() const
 	if (!attr_.empty()) {
 		// Erase the beginning of the attributes if it contains space characters: this function deals with that
 		// automatically.
-		docstring attributes = xmlize(from_utf8(attr_), XMLStream::ESCAPE_NONE);
+		docstring attributes = escapeString(from_utf8(attr_), XMLStream::ESCAPE_NONE);
 		attributes.erase(attributes.begin(), std::find_if(attributes.begin(), attributes.end(),
                                                           [](int c) {return !std::isspace(c);}));
 		if (!attributes.empty()) {
@@ -298,7 +291,7 @@ void XMLStream::clearTagDeque()
 XMLStream &XMLStream::operator<<(docstring const &d)
 {
 	clearTagDeque();
-	os_ << xml::xmlize(d, escape_);
+	os_ << xml::escapeString(d, escape_);
 	escape_ = ESCAPE_ALL;
 	return *this;
 }
@@ -308,7 +301,7 @@ XMLStream &XMLStream::operator<<(const char *s)
 {
 	clearTagDeque();
 	docstring const d = from_ascii(s);
-	os_ << xml::xmlize(d, escape_);
+	os_ << xml::escapeString(d, escape_);
 	escape_ = ESCAPE_ALL;
 	return *this;
 }
@@ -483,7 +476,7 @@ XMLStream &XMLStream::operator<<(xml::EndTag const &etag)
 		string estr = "Closing tag `" + to_utf8(etag.tag_)
 					  + "' when other tags are pending. Discarded pending tags:\n";
 		for (dit = pending_tags_.begin(); dit != den; ++dit)
-			estr += to_utf8(xml::xmlize((*dit)->writeTag(), XMLStream::ESCAPE_ALL)) + "\n";
+			estr += to_utf8(xml::escapeString((*dit)->writeTag(), XMLStream::ESCAPE_ALL)) + "\n";
 		writeError(estr);
 		// clear the pending tags...
 		pending_tags_.clear();

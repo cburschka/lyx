@@ -324,7 +324,7 @@ inline docstring wrapCitation(docstring const & key,
 	// we have to do the escaping here, because we will ultimately
 	// write this as a raw string, so as not to escape the tags.
 	return "<a href='#LyXCite-" + xml::cleanAttr(key) + "'>" +
-			xml::xmlize(content, XMLStream::ESCAPE_ALL) + "</a>";
+			xml::escapeString(content, XMLStream::ESCAPE_ALL) + "</a>";
 }
 
 } // anonymous namespace
