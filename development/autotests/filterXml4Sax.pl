@@ -69,17 +69,19 @@ sub handlePara($)
   if ($para =~ /^\s*([a-z]+(:[a-z]+)?)\s*=\s*(.*)$/) {
     my $val;
     my ($p, $rest) = ($1, $3);
-    if ($rest =~ /^(\'[^\']*\')(.*)$/) {
+    if ($rest =~ /^(\'([^\']|\\\')*\')(.*)$/) {
       $val = $1;
-      $rest = $2;
+      $rest = $3;
     }
-    elsif ($rest =~ /^(\"[^\"]*\")(.*)$/) {
+    elsif ($rest =~ /^(\"([^\"]|\\\")*\")(.*)$/) {
       $val = $1;
-      $rest = $2;
+      $rest = $3;
     }
     elsif ($rest =~ /^([^\s]+)(.*)$/) {
-      $val = '"' . $1 . '"';
+      my $val1 = $1
       $rest = $2;
+      $val1 =~ s/([\"\'\\])/\\$1/g;
+      $val = '"' . $val1 . '"';
     }
     else {
       die("param error for rest = $rest");
