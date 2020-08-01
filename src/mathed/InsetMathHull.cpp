@@ -2424,6 +2424,7 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 	}
 
 	xs << xml::StartTag(name, attr);
+	xs << xml::CR();
 
 	// With DocBook 5, MathML must be within its own namespace; defined in Buffer.cpp::writeDocBookSource as "m".
 	// Output everything in a separate stream so that this does not interfere with the standard flow of DocBook tags.
@@ -2465,6 +2466,7 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 
 	// Output the complete formula to the DocBook stream.
 	xs << XMLStream::ESCAPE_NONE << osmath.str();
+	xs << xml::CR();
 	xs << xml::EndTag(name);
 }
 
