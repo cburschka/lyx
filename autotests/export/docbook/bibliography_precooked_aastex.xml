@@ -1,0 +1,1117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This DocBook file was created by LyX 2.4.0dev
+  See http://www.lyx.org/ for more information -->
+<article xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
+<info>
+</info>
+<section>
+<title>Introduction</title>
+<Standard>A focal problem today in the dynamics of globular clusters is core collapse. It has been predicted by theory for decades <biblioref endterm="hen61.lyn68.spi85-0" />, but observation has been less alert to the phenomenon. For many years the central brightness peak in M15 <biblioref endterm="kin75.new78-1" /> seemed a unique anomaly. Then <biblioref endterm="aur82" /> suggested a central peak in NGC 6397, and a limited photographic survey of ours <biblioref endterm="djo84" /> found three more cases, including NGC 6624, whose sharp center had often been remarked on <biblioref endterm="can78" />. </Standard>
+</section>
+<section>
+<title>Observations</title>
+<Standard>All our observations were short direct exposures with CCD's. At Lick Observatory we used a TI 500<inlineequation><alt role='tex'>\times</alt>
+ <m:math>
+ 
+ <m:mrow><m:mo>&#x00D7;</m:mo>
+ </m:mrow>
+ </m:math></inlineequation>500 chip and a GEC 575<inlineequation><alt role='tex'>\times</alt>
+ <m:math>
+ 
+ <m:mrow><m:mo>&#x00D7;</m:mo>
+ </m:mrow>
+ </m:math></inlineequation>385, on the 1-m Nickel reflector. The only filter available at Lick was red. At CTIO we used a GEC 575<inlineequation><alt role='tex'>\times</alt>
+ <m:math>
+ 
+ <m:mrow><m:mo>&#x00D7;</m:mo>
+ </m:mrow>
+ </m:math></inlineequation>385, with <inlineequation><alt role='tex'>B,V,</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:mrow><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>V</m:mi><m:mo>,</m:mo>
+  </m:mrow>
+ </m:mrow>
+ </m:math></inlineequation> and <inlineequation><alt role='tex'>R</alt>
+ <m:math>
+ 
+ <m:mrow><m:mi>R</m:mi>
+ </m:mrow>
+ </m:math></inlineequation> filters, and an RCA 512<inlineequation><alt role='tex'>\times</alt>
+ <m:math>
+ 
+ <m:mrow><m:mo>&#x00D7;</m:mo>
+ </m:mrow>
+ </m:math></inlineequation>320, with <inlineequation><alt role='tex'>U,B,V,R,</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:mrow><m:mi>U</m:mi><m:mo>,</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>V</m:mi><m:mo>,</m:mo><m:mi>R</m:mi><m:mo>,</m:mo>
+  </m:mrow>
+ </m:mrow>
+ </m:math></inlineequation> and <inlineequation><alt role='tex'>I</alt>
+ <m:math>
+ 
+ <m:mrow><m:mi>I</m:mi>
+ </m:mrow>
+ </m:math></inlineequation> filters, on the 1.5-m reflector. In the CTIO observations we tried to concentrate on the shortest practicable wavelengths; but faintness, reddening, and poor short-wavelength sensitivity often kept us from observing in <inlineequation><alt role='tex'>U</alt>
+ <m:math>
+ 
+ <m:mrow><m:mi>U</m:mi>
+ </m:mrow>
+ </m:math></inlineequation> or even in <inlineequation><alt role='tex'>B</alt>
+ <m:math>
+ 
+ <m:mrow><m:mi>B</m:mi>
+ </m:mrow>
+ </m:math></inlineequation>. All four cameras had scales of the order of 0.4 arcsec/pixel, and our field sizes were around 3 arcmin.</Standard>
+<Standard>The CCD images are unfortunately not always suitable, for very poor clusters or for clusters with large cores. Since the latter are easily studied by other means, we augmented our own CCD profiles by collecting from the literature a number of star-count profiles <biblioref endterm="kin68.pet76.har84.ort85-2" />, as well as photoelectric profiles <biblioref endterm="kin66.kin75-3" /> and electronographic profiles <biblioref endterm="kro84" />. In a few cases we judged normality by eye estimates on one of the Sky Surveys.</Standard>
+</section>
+<section>
+<title>Helicity Amplitudes</title>
+<Standard>It has been realized that helicity amplitudes provide a convenient means for Feynman diagram<footnote><para>Footnotes can be inserted like this.</para>
+</footnote> evaluations. These amplitude-level techniques are particularly convenient for calculations involving many Feynman diagrams, where the usual trace techniques for the amplitude squared becomes unwieldy. Our calculations use the helicity techniques developed by other authors <biblioref endterm="hag86" />; we briefly summarize below.</Standard>
+<section>
+<title>Formalism</title>
+<Standard><anchor xml:id="bozomath" /></Standard>
+<Standard>A tree-level amplitude in <inlineequation><alt role='tex'>e^{+}e^{-}</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:mrow>
+   <m:msup>
+    <m:mrow><m:mi>e</m:mi>
+    </m:mrow>
+    <m:mrow><m:mo>+</m:mo>
+    </m:mrow>
+   </m:msup>
+   <m:msup>
+    <m:mrow><m:mi>e</m:mi>
+    </m:mrow>
+    <m:mrow><m:mo>-</m:mo>
+    </m:mrow>
+   </m:msup>
+  </m:mrow>
+ </m:mrow>
+ </m:math></inlineequation> collisions can be expressed in terms of fermion strings of the form <informalequation><alt role='tex'>\bar{v}(p_{2},\sigma_{2})P_{-\tau}\hat{a}_{1}\hat{a}_{2}\cdots\hat{a}_{n}u(p_{1},\sigma_{1}),</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:mrow>
+   <m:mover>
+    <m:mrow><m:mi>v</m:mi>
+    </m:mrow><m:mo stretchy="true">&#x00AF;</m:mo>
+   </m:mover><m:mo form='prefix' fence='true' stretchy='true' symmetric='true'><m:mrow>(</m:mrow></m:mo>
+
+   <m:mrow>
+    <m:msub>
+     <m:mrow><m:mi>p</m:mi>
+     </m:mrow>
+     <m:mrow><m:mn>2</m:mn>
+     </m:mrow>
+    </m:msub><m:mo>,</m:mo>
+    <m:msub>
+     <m:mrow><m:mi>&#x3C3;</m:mi>
+     </m:mrow>
+     <m:mrow><m:mn>2</m:mn>
+     </m:mrow>
+    </m:msub>
+   </m:mrow>
+<m:mo form='postfix' fence='true' stretchy='true' symmetric='true'><m:mrow>)</m:mrow></m:mo>
+
+   <m:msub>
+    <m:mrow><m:mi>P</m:mi>
+    </m:mrow>
+    <m:mrow>
+     <m:mrow><m:mo>-</m:mo><m:mi>&#x3C4;</m:mi>
+     </m:mrow>
+    </m:mrow>
+   </m:msub>
+   <m:msub>
+    <m:mrow>
+     <m:mover>
+      <m:mrow><m:mi>a</m:mi>
+      </m:mrow><m:mo stretchy="true">&#x02C6;</m:mo>
+     </m:mover>
+    </m:mrow>
+    <m:mrow><m:mn>1</m:mn>
+    </m:mrow>
+   </m:msub>
+   <m:msub>
+    <m:mrow>
+     <m:mover>
+      <m:mrow><m:mi>a</m:mi>
+      </m:mrow><m:mo stretchy="true">&#x02C6;</m:mo>
+     </m:mover>
+    </m:mrow>
+    <m:mrow><m:mn>2</m:mn>
+    </m:mrow>
+   </m:msub>
+   <m:mi>&#x22EF;
+   </m:mi>
+   <m:msub>
+    <m:mrow>
+     <m:mover>
+      <m:mrow><m:mi>a</m:mi>
+      </m:mrow><m:mo stretchy="true">&#x02C6;</m:mo>
+     </m:mover>
+    </m:mrow>
+    <m:mrow><m:mi>n</m:mi>
+    </m:mrow>
+   </m:msub><m:mi>u</m:mi><m:mo form='prefix' fence='true' stretchy='true' symmetric='true'><m:mrow>(</m:mrow></m:mo>
+
+   <m:mrow>
+    <m:msub>
+     <m:mrow><m:mi>p</m:mi>
+     </m:mrow>
+     <m:mrow><m:mn>1</m:mn>
+     </m:mrow>
+    </m:msub><m:mo>,</m:mo>
+    <m:msub>
+     <m:mrow><m:mi>&#x3C3;</m:mi>
+     </m:mrow>
+     <m:mrow><m:mn>1</m:mn>
+     </m:mrow>
+    </m:msub>
+   </m:mrow>
+<m:mo form='postfix' fence='true' stretchy='true' symmetric='true'><m:mrow>)</m:mrow></m:mo>
+<m:mo>,</m:mo>
+  </m:mrow>
+ </m:mrow>
+ </m:math></informalequation> where <inlineequation><alt role='tex'>p</alt>
+ <m:math>
+ 
+ <m:mrow><m:mi>p</m:mi>
+ </m:mrow>
+ </m:math></inlineequation> and <inlineequation><alt role='tex'>\sigma</alt>
+ <m:math>
+ 
+ <m:mrow><m:mi>&#x3C3;</m:mi>
+ </m:mrow>
+ </m:math></inlineequation> label the initial <inlineequation><alt role='tex'>e^{\pm}</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:msup>
+   <m:mrow><m:mi>e</m:mi>
+   </m:mrow>
+   <m:mrow><m:mo>&#x00B1;</m:mo>
+   </m:mrow>
+  </m:msup>
+ </m:mrow>
+ </m:math></inlineequation> four-momenta and helicities <inlineequation><alt role='tex'>(\sigma=\pm1)</alt>
+ <m:math>
+ 
+ <m:mrow><m:mo form='prefix' fence='true' stretchy='true' symmetric='true'><m:mrow>(</m:mrow></m:mo>
+
+  <m:mrow><m:mi>&#x3C3;</m:mi><m:mo>=</m:mo><m:mo>&#x00B1;</m:mo><m:mn>1</m:mn>
+  </m:mrow>
+<m:mo form='postfix' fence='true' stretchy='true' symmetric='true'><m:mrow>)</m:mrow></m:mo>
+
+ </m:mrow>
+ </m:math></inlineequation>, <inlineequation><alt role='tex'>\hat{a}_{i}=a_{i}^{\mu}\gamma_{\nu}</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:mrow>
+   <m:msub>
+    <m:mrow>
+     <m:mover>
+      <m:mrow><m:mi>a</m:mi>
+      </m:mrow><m:mo stretchy="true">&#x02C6;</m:mo>
+     </m:mover>
+    </m:mrow>
+    <m:mrow><m:mi>i</m:mi>
+    </m:mrow>
+   </m:msub><m:mo>=</m:mo>
+   <m:msubsup>
+    <m:mrow><m:mi>a</m:mi>
+    </m:mrow>
+    <m:mrow><m:mi>i</m:mi>
+    </m:mrow>
+    <m:mrow><m:mi>&#x3BC;</m:mi>
+    </m:mrow>
+   </m:msubsup>
+   <m:msub>
+    <m:mrow><m:mi>&#x3B3;</m:mi>
+    </m:mrow>
+    <m:mrow><m:mi>&#x3BD;</m:mi>
+    </m:mrow>
+   </m:msub>
+  </m:mrow>
+ </m:mrow>
+ </m:math></inlineequation> and <inlineequation><alt role='tex'>P_{\tau}=\frac{1}{2}(1+\tau\gamma_{5})</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:mrow>
+   <m:msub>
+    <m:mrow><m:mi>P</m:mi>
+    </m:mrow>
+    <m:mrow><m:mi>&#x3C4;</m:mi>
+    </m:mrow>
+   </m:msub><m:mo>=</m:mo>
+   <m:mfrac>
+    <m:mrow><m:mn>1</m:mn>
+    </m:mrow>
+    <m:mrow><m:mn>2</m:mn>
+    </m:mrow>
+   </m:mfrac><m:mo form='prefix' fence='true' stretchy='true' symmetric='true'><m:mrow>(</m:mrow></m:mo>
+
+   <m:mrow><m:mn>1</m:mn><m:mo>+</m:mo><m:mi>&#x3C4;</m:mi>
+    <m:msub>
+     <m:mrow><m:mi>&#x3B3;</m:mi>
+     </m:mrow>
+     <m:mrow><m:mn>5</m:mn>
+     </m:mrow>
+    </m:msub>
+   </m:mrow>
+<m:mo form='postfix' fence='true' stretchy='true' symmetric='true'><m:mrow>)</m:mrow></m:mo>
+
+  </m:mrow>
+ </m:mrow>
+ </m:math></inlineequation> is a chirality projection operator <inlineequation><alt role='tex'>(\tau=\pm1)</alt>
+ <m:math>
+ 
+ <m:mrow><m:mo form='prefix' fence='true' stretchy='true' symmetric='true'><m:mrow>(</m:mrow></m:mo>
+
+  <m:mrow><m:mi>&#x3C4;</m:mi><m:mo>=</m:mo><m:mo>&#x00B1;</m:mo><m:mn>1</m:mn>
+  </m:mrow>
+<m:mo form='postfix' fence='true' stretchy='true' symmetric='true'><m:mrow>)</m:mrow></m:mo>
+
+ </m:mrow>
+ </m:math></inlineequation>. The <inlineequation><alt role='tex'>a_{i}^{\mu}</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:msubsup>
+   <m:mrow><m:mi>a</m:mi>
+   </m:mrow>
+   <m:mrow><m:mi>i</m:mi>
+   </m:mrow>
+   <m:mrow><m:mi>&#x3BC;</m:mi>
+   </m:mrow>
+  </m:msubsup>
+ </m:mrow>
+ </m:math></inlineequation> may be formed from particle four-momenta, gauge-boson polarization vectors or fermion strings with an uncontracted Lorentz index associated with final-state fermions.</Standard>
+<NoteToEditor>Figures 1 and 2 should appear side-by-side in print</NoteToEditor>
+<Standard>In the chiral representation the <inlineequation><alt role='tex'>\gamma</alt>
+ <m:math>
+ 
+ <m:mrow><m:mi>&#x3B3;</m:mi>
+ </m:mrow>
+ </m:math></inlineequation> matrices are expressed in terms of <inlineequation><alt role='tex'>2\times2</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:mrow><m:mn>2</m:mn><m:mo>&#x00D7;</m:mo><m:mn>2</m:mn>
+  </m:mrow>
+ </m:mrow>
+ </m:math></inlineequation> Pauli matrices <inlineequation><alt role='tex'>\sigma</alt>
+ <m:math>
+ 
+ <m:mrow><m:mi>&#x3C3;</m:mi>
+ </m:mrow>
+ </m:math></inlineequation> and the unit matrix 1 as <informalequation><alt role='tex'>\gamma^{\mu} &amp; = &amp; \left(\begin{array}{cc}
+0 &amp; \sigma_{+}^{\mu}\\
+\sigma_{-}^{\mu} &amp; 0
+\end{array}\right),\gamma^{5}=\left(\begin{array}{cc}
+-1 &amp; 0\\
+0 &amp; 1
+\end{array}\right),\\
+\sigma_{\pm}^{\mu} &amp; = &amp; ({\textbf{1}},\pm\sigma),
+</alt>
+ <m:math>
+ 
+ <m:mtable>
+  <m:mtr>
+   <m:mtd>
+    <m:msup>
+     <m:mrow><m:mi>&#x3B3;</m:mi>
+     </m:mrow>
+     <m:mrow><m:mi>&#x3BC;</m:mi>
+     </m:mrow>
+    </m:msup>
+   </m:mtd>
+   <m:mtd><m:mo>=</m:mo>
+   </m:mtd>
+   <m:mtd>
+    <m:mrow><m:mo form='prefix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>(</m:mo>
+     <m:mtable>
+      <m:mtr>
+       <m:mtd><m:mn>0</m:mn>
+       </m:mtd>
+       <m:mtd>
+        <m:msubsup>
+         <m:mrow><m:mi>&#x3C3;</m:mi>
+         </m:mrow>
+         <m:mrow><m:mo>+</m:mo>
+         </m:mrow>
+         <m:mrow><m:mi>&#x3BC;</m:mi>
+         </m:mrow>
+        </m:msubsup>
+       </m:mtd>
+      </m:mtr>
+      <m:mtr>
+       <m:mtd>
+        <m:msubsup>
+         <m:mrow><m:mi>&#x3C3;</m:mi>
+         </m:mrow>
+         <m:mrow><m:mo>-</m:mo>
+         </m:mrow>
+         <m:mrow><m:mi>&#x3BC;</m:mi>
+         </m:mrow>
+        </m:msubsup>
+       </m:mtd>
+       <m:mtd><m:mn>0</m:mn>
+       </m:mtd>
+      </m:mtr>
+     </m:mtable><m:mo form='postfix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>)</m:mo><m:mo>,</m:mo>
+     <m:msup>
+      <m:mrow><m:mi>&#x3B3;</m:mi>
+      </m:mrow>
+      <m:mrow><m:mn>5</m:mn>
+      </m:mrow>
+     </m:msup><m:mo>=</m:mo><m:mo form='prefix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>(</m:mo>
+     <m:mtable>
+      <m:mtr>
+       <m:mtd>
+        <m:mrow><m:mo>-</m:mo><m:mn>1</m:mn>
+        </m:mrow>
+       </m:mtd>
+       <m:mtd><m:mn>0</m:mn>
+       </m:mtd>
+      </m:mtr>
+      <m:mtr>
+       <m:mtd><m:mn>0</m:mn>
+       </m:mtd>
+       <m:mtd><m:mn>1</m:mn>
+       </m:mtd>
+      </m:mtr>
+     </m:mtable><m:mo form='postfix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>)</m:mo><m:mo>,</m:mo>
+    </m:mrow>
+   </m:mtd>
+  </m:mtr>
+  <m:mtr>
+   <m:mtd>
+    <m:msubsup>
+     <m:mrow><m:mi>&#x3C3;</m:mi>
+     </m:mrow>
+     <m:mrow><m:mo>&#x00B1;</m:mo>
+     </m:mrow>
+     <m:mrow><m:mi>&#x3BC;</m:mi>
+     </m:mrow>
+    </m:msubsup>
+   </m:mtd>
+   <m:mtd><m:mo>=</m:mo>
+   </m:mtd>
+   <m:mtd>
+    <m:mrow><m:mo form='prefix' fence='true' stretchy='true' symmetric='true'><m:mrow>(</m:mrow></m:mo>
+
+     <m:mrow>
+      <m:mrow>
+       <m:mstyle mathvariant='bold'><m:mn>1</m:mn>
+       </m:mstyle>
+      </m:mrow><m:mo>,</m:mo><m:mo>&#x00B1;</m:mo><m:mi>&#x3C3;</m:mi>
+     </m:mrow>
+<m:mo form='postfix' fence='true' stretchy='true' symmetric='true'><m:mrow>)</m:mrow></m:mo>
+<m:mo>,</m:mo>
+    </m:mrow>
+   </m:mtd>
+  </m:mtr>
+ </m:mtable>
+ </m:math></informalequation> giving <informalequation><alt role='tex'>\hat{a}=\left(\begin{array}{cc}
+0 &amp; (\hat{a})_{+}\\
+(\hat{a})_{-} &amp; 0
+\end{array}\right),(\hat{a})_{\pm}=a_{\mu}\sigma_{\pm}^{\mu},</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:mrow>
+   <m:mover>
+    <m:mrow><m:mi>a</m:mi>
+    </m:mrow><m:mo stretchy="true">&#x02C6;</m:mo>
+   </m:mover><m:mo>=</m:mo><m:mo form='prefix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>(</m:mo>
+   <m:mtable>
+    <m:mtr>
+     <m:mtd><m:mn>0</m:mn>
+     </m:mtd>
+     <m:mtd>
+      <m:mrow><m:mo>(</m:mo>
+       <m:mover>
+        <m:mrow><m:mi>a</m:mi>
+        </m:mrow><m:mo stretchy="true">&#x02C6;</m:mo>
+       </m:mover>
+       <m:msub>
+        <m:mrow><m:mo>)</m:mo>
+        </m:mrow>
+        <m:mrow><m:mo>+</m:mo>
+        </m:mrow>
+       </m:msub>
+      </m:mrow>
+     </m:mtd>
+    </m:mtr>
+    <m:mtr>
+     <m:mtd>
+      <m:mrow><m:mo>(</m:mo>
+       <m:mover>
+        <m:mrow><m:mi>a</m:mi>
+        </m:mrow><m:mo stretchy="true">&#x02C6;</m:mo>
+       </m:mover>
+       <m:msub>
+        <m:mrow><m:mo>)</m:mo>
+        </m:mrow>
+        <m:mrow><m:mo>-</m:mo>
+        </m:mrow>
+       </m:msub>
+      </m:mrow>
+     </m:mtd>
+     <m:mtd><m:mn>0</m:mn>
+     </m:mtd>
+    </m:mtr>
+   </m:mtable><m:mo form='postfix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>)</m:mo><m:mo>,</m:mo><m:mo>(</m:mo>
+   <m:mover>
+    <m:mrow><m:mi>a</m:mi>
+    </m:mrow><m:mo stretchy="true">&#x02C6;</m:mo>
+   </m:mover>
+   <m:msub>
+    <m:mrow><m:mo>)</m:mo>
+    </m:mrow>
+    <m:mrow><m:mo>&#x00B1;</m:mo>
+    </m:mrow>
+   </m:msub><m:mo>=</m:mo>
+   <m:msub>
+    <m:mrow><m:mi>a</m:mi>
+    </m:mrow>
+    <m:mrow><m:mi>&#x3BC;</m:mi>
+    </m:mrow>
+   </m:msub>
+   <m:msubsup>
+    <m:mrow><m:mi>&#x3C3;</m:mi>
+    </m:mrow>
+    <m:mrow><m:mo>&#x00B1;</m:mo>
+    </m:mrow>
+    <m:mrow><m:mi>&#x3BC;</m:mi>
+    </m:mrow>
+   </m:msubsup><m:mo>,</m:mo>
+  </m:mrow>
+ </m:mrow>
+ </m:math></informalequation> The spinors are expressed in terms of two-component Weyl spinors as <informalequation><alt role='tex'>u=\left(\begin{array}{c}
+(u)_{-}\\
+(u)_{+}
+\end{array}\right),v={\textbf{(}}\vdag_{+}{\textbf{,}}\vdag_{-}{\textbf{)}}.</alt>MathML export failed. Please report this as a bug.</informalequation></Standard>
+<Standard>The Weyl spinors are given in terms of helicity eigenstates <inlineequation><alt role='tex'>\chi_{\lambda}(p)</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:mrow>
+   <m:msub>
+    <m:mrow><m:mi>&#x3C7;</m:mi>
+    </m:mrow>
+    <m:mrow><m:mi>&#x3BB;</m:mi>
+    </m:mrow>
+   </m:msub><m:mo form='prefix' fence='true' stretchy='true' symmetric='true'><m:mrow>(</m:mrow></m:mo>
+<m:mi>p</m:mi>
+<m:mo form='postfix' fence='true' stretchy='true' symmetric='true'><m:mrow>)</m:mrow></m:mo>
+
+  </m:mrow>
+ </m:mrow>
+ </m:math></inlineequation> with <inlineequation><alt role='tex'>\lambda=\pm1</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:mrow><m:mi>&#x3BB;</m:mi><m:mo>=</m:mo><m:mo>&#x00B1;</m:mo><m:mn>1</m:mn>
+  </m:mrow>
+ </m:mrow>
+ </m:math></inlineequation> by </Standard>
+<MathLetters>
+<informalequation><alt role='tex'>u(p,\lambda)_{\pm} &amp; = &amp; (E\pm\lambda|{\textbf{p}}|)^{1/2}\chi_{\lambda}(p),\\
+v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi_{-\lambda}(p)
+</alt>
+ <m:math>
+ 
+ <m:mtable>
+  <m:mtr>
+   <m:mtd>
+    <m:mrow><m:mi>u</m:mi><m:mo>(</m:mo><m:mi>p</m:mi><m:mo>,</m:mo><m:mi>&#x3BB;</m:mi>
+     <m:msub>
+      <m:mrow><m:mo>)</m:mo>
+      </m:mrow>
+      <m:mrow><m:mo>&#x00B1;</m:mo>
+      </m:mrow>
+     </m:msub>
+    </m:mrow>
+   </m:mtd>
+   <m:mtd><m:mo>=</m:mo>
+   </m:mtd>
+   <m:mtd>
+    <m:mrow><m:mo>(</m:mo><m:mi>E</m:mi><m:mo>&#x00B1;</m:mo><m:mi>&#x3BB;</m:mi><m:mo>|</m:mo>
+     <m:mrow>
+      <m:mstyle mathvariant='bold'><m:mi>p</m:mi>
+      </m:mstyle>
+     </m:mrow><m:mo>|</m:mo>
+     <m:msup>
+      <m:mrow><m:mo>)</m:mo>
+      </m:mrow>
+      <m:mrow>
+       <m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mn>2</m:mn>
+       </m:mrow>
+      </m:mrow>
+     </m:msup>
+     <m:msub>
+      <m:mrow><m:mi>&#x3C7;</m:mi>
+      </m:mrow>
+      <m:mrow><m:mi>&#x3BB;</m:mi>
+      </m:mrow>
+     </m:msub><m:mo form='prefix' fence='true' stretchy='true' symmetric='true'><m:mrow>(</m:mrow></m:mo>
+<m:mi>p</m:mi>
+<m:mo form='postfix' fence='true' stretchy='true' symmetric='true'><m:mrow>)</m:mrow></m:mo>
+<m:mo>,</m:mo>
+    </m:mrow>
+   </m:mtd>
+  </m:mtr>
+  <m:mtr>
+   <m:mtd>
+    <m:mrow><m:mi>v</m:mi><m:mo>(</m:mo><m:mi>p</m:mi><m:mo>,</m:mo><m:mi>&#x3BB;</m:mi>
+     <m:msub>
+      <m:mrow><m:mo>)</m:mo>
+      </m:mrow>
+      <m:mrow><m:mo>&#x00B1;</m:mo>
+      </m:mrow>
+     </m:msub>
+    </m:mrow>
+   </m:mtd>
+   <m:mtd><m:mo>=</m:mo>
+   </m:mtd>
+   <m:mtd>
+    <m:mrow><m:mo>&#x00B1;</m:mo><m:mi>&#x3BB;</m:mi><m:mo>(</m:mo><m:mi>E</m:mi><m:mo>&#x2213;</m:mo><m:mi>&#x3BB;</m:mi><m:mo>|</m:mo>
+     <m:mrow>
+      <m:mstyle mathvariant='bold'><m:mi>p</m:mi>
+      </m:mstyle>
+     </m:mrow><m:mo>|</m:mo>
+     <m:msup>
+      <m:mrow><m:mo>)</m:mo>
+      </m:mrow>
+      <m:mrow>
+       <m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mn>2</m:mn>
+       </m:mrow>
+      </m:mrow>
+     </m:msup>
+     <m:msub>
+      <m:mrow><m:mi>&#x3C7;</m:mi>
+      </m:mrow>
+      <m:mrow>
+       <m:mrow><m:mo>-</m:mo><m:mi>&#x3BB;</m:mi>
+       </m:mrow>
+      </m:mrow>
+     </m:msub><m:mo form='prefix' fence='true' stretchy='true' symmetric='true'><m:mrow>(</m:mrow></m:mo>
+<m:mi>p</m:mi>
+<m:mo form='postfix' fence='true' stretchy='true' symmetric='true'><m:mrow>)</m:mrow></m:mo>
+
+    </m:mrow>
+   </m:mtd>
+  </m:mtr>
+ </m:mtable>
+ </m:math></informalequation>
+</MathLetters>
+</section>
+</section>
+<section>
+<title>Floating material and so forth</title>
+<Standard>Consider a task that computes profile parameters for a modified Lorentzian of the form <informalequation><alt role='tex'>I=\frac{1}{1+d_{1}^{P(1+d_{2})}}</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:mrow><m:mi>I</m:mi><m:mo>=</m:mo>
+   <m:mfrac>
+    <m:mrow><m:mn>1</m:mn>
+    </m:mrow>
+    <m:mrow>
+     <m:mrow><m:mn>1</m:mn><m:mo>+</m:mo>
+      <m:msubsup>
+       <m:mrow><m:mi>d</m:mi>
+       </m:mrow>
+       <m:mrow><m:mn>1</m:mn>
+       </m:mrow>
+       <m:mrow>
+        <m:mrow><m:mi>P</m:mi><m:mo form='prefix' fence='true' stretchy='true' symmetric='true'><m:mrow>(</m:mrow></m:mo>
+
+         <m:mrow><m:mn>1</m:mn><m:mo>+</m:mo>
+          <m:msub>
+           <m:mrow><m:mi>d</m:mi>
+           </m:mrow>
+           <m:mrow><m:mn>2</m:mn>
+           </m:mrow>
+          </m:msub>
+         </m:mrow>
+<m:mo form='postfix' fence='true' stretchy='true' symmetric='true'><m:mrow>)</m:mrow></m:mo>
+
+        </m:mrow>
+       </m:mrow>
+      </m:msubsup>
+     </m:mrow>
+    </m:mrow>
+   </m:mfrac>
+  </m:mrow>
+ </m:mrow>
+ </m:math></informalequation> where <informalequation><alt role='tex'>d_{1}=\sqrt{\left(\begin{array}{c}
+\frac{x_{1}}{R_{maj}}\end{array}\right)^{2}+\left(\begin{array}{c}
+\frac{y_{1}}{R_{min}}\end{array}\right)^{2}}</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:mrow>
+   <m:msub>
+    <m:mrow><m:mi>d</m:mi>
+    </m:mrow>
+    <m:mrow><m:mn>1</m:mn>
+    </m:mrow>
+   </m:msub><m:mo>=</m:mo>
+   <m:msqrt>
+    <m:mrow>
+     <m:msup>
+      <m:mrow><m:mo form='prefix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>(</m:mo>
+       <m:mtable>
+        <m:mtr>
+         <m:mtd>
+          <m:mfrac>
+           <m:mrow>
+            <m:msub>
+             <m:mrow><m:mi>x</m:mi>
+             </m:mrow>
+             <m:mrow><m:mn>1</m:mn>
+             </m:mrow>
+            </m:msub>
+           </m:mrow>
+           <m:mrow>
+            <m:msub>
+             <m:mrow><m:mi>R</m:mi>
+             </m:mrow>
+             <m:mrow>
+              <m:mrow><m:mi>m</m:mi><m:mi>a</m:mi><m:mi>j</m:mi>
+              </m:mrow>
+             </m:mrow>
+            </m:msub>
+           </m:mrow>
+          </m:mfrac>
+         </m:mtd>
+        </m:mtr>
+       </m:mtable><m:mo form='postfix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>)</m:mo>
+      </m:mrow>
+      <m:mrow><m:mn>2</m:mn>
+      </m:mrow>
+     </m:msup><m:mo>+</m:mo>
+     <m:msup>
+      <m:mrow><m:mo form='prefix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>(</m:mo>
+       <m:mtable>
+        <m:mtr>
+         <m:mtd>
+          <m:mfrac>
+           <m:mrow>
+            <m:msub>
+             <m:mrow><m:mi>y</m:mi>
+             </m:mrow>
+             <m:mrow><m:mn>1</m:mn>
+             </m:mrow>
+            </m:msub>
+           </m:mrow>
+           <m:mrow>
+            <m:msub>
+             <m:mrow><m:mi>R</m:mi>
+             </m:mrow>
+             <m:mrow>
+              <m:mrow><m:mi>m</m:mi><m:mi>i</m:mi><m:mi>n</m:mi>
+              </m:mrow>
+             </m:mrow>
+            </m:msub>
+           </m:mrow>
+          </m:mfrac>
+         </m:mtd>
+        </m:mtr>
+       </m:mtable><m:mo form='postfix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>)</m:mo>
+      </m:mrow>
+      <m:mrow><m:mn>2</m:mn>
+      </m:mrow>
+     </m:msup>
+    </m:mrow>
+   </m:msqrt>
+  </m:mrow>
+ </m:mrow>
+ </m:math></informalequation><informalequation><alt role='tex'>d_{2}=\sqrt{\left(\begin{array}{c}
+\frac{x_{1}}{PR_{maj}}\end{array}\right)^{2}+\left(\begin{array}{c}
+\case{y_{1}}{PR_{min}}\end{array}\right)^{2}}</alt>MathML export failed. Please report this as a bug.</informalequation><informalequation><alt role='tex'>x_{1}=(x-x_{0})\cos\Theta+(y-y_{0})\sin\Theta</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:mrow>
+   <m:msub>
+    <m:mrow><m:mi>x</m:mi>
+    </m:mrow>
+    <m:mrow><m:mn>1</m:mn>
+    </m:mrow>
+   </m:msub><m:mo>=</m:mo><m:mo form='prefix' fence='true' stretchy='true' symmetric='true'><m:mrow>(</m:mrow></m:mo>
+
+   <m:mrow><m:mi>x</m:mi><m:mo>-</m:mo>
+    <m:msub>
+     <m:mrow><m:mi>x</m:mi>
+     </m:mrow>
+     <m:mrow><m:mn>0</m:mn>
+     </m:mrow>
+    </m:msub>
+   </m:mrow>
+<m:mo form='postfix' fence='true' stretchy='true' symmetric='true'><m:mrow>)</m:mrow></m:mo>
+<m:mo>cos</m:mo><m:mo>&#x398;</m:mo><m:mo>+</m:mo><m:mo form='prefix' fence='true' stretchy='true' symmetric='true'><m:mrow>(</m:mrow></m:mo>
+
+   <m:mrow><m:mi>y</m:mi><m:mo>-</m:mo>
+    <m:msub>
+     <m:mrow><m:mi>y</m:mi>
+     </m:mrow>
+     <m:mrow><m:mn>0</m:mn>
+     </m:mrow>
+    </m:msub>
+   </m:mrow>
+<m:mo form='postfix' fence='true' stretchy='true' symmetric='true'><m:mrow>)</m:mrow></m:mo>
+<m:mo>sin</m:mo><m:mo>&#x398;</m:mo>
+  </m:mrow>
+ </m:mrow>
+ </m:math></informalequation><informalequation><alt role='tex'>y_{1}=-(x-x_{0})\sin\Theta+(y-y_{0})\cos\Theta</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:mrow>
+   <m:msub>
+    <m:mrow><m:mi>y</m:mi>
+    </m:mrow>
+    <m:mrow><m:mn>1</m:mn>
+    </m:mrow>
+   </m:msub><m:mo>=</m:mo><m:mo>-</m:mo><m:mo form='prefix' fence='true' stretchy='true' symmetric='true'><m:mrow>(</m:mrow></m:mo>
+
+   <m:mrow><m:mi>x</m:mi><m:mo>-</m:mo>
+    <m:msub>
+     <m:mrow><m:mi>x</m:mi>
+     </m:mrow>
+     <m:mrow><m:mn>0</m:mn>
+     </m:mrow>
+    </m:msub>
+   </m:mrow>
+<m:mo form='postfix' fence='true' stretchy='true' symmetric='true'><m:mrow>)</m:mrow></m:mo>
+<m:mo>sin</m:mo><m:mo>&#x398;</m:mo><m:mo>+</m:mo><m:mo form='prefix' fence='true' stretchy='true' symmetric='true'><m:mrow>(</m:mrow></m:mo>
+
+   <m:mrow><m:mi>y</m:mi><m:mo>-</m:mo>
+    <m:msub>
+     <m:mrow><m:mi>y</m:mi>
+     </m:mrow>
+     <m:mrow><m:mn>0</m:mn>
+     </m:mrow>
+    </m:msub>
+   </m:mrow>
+<m:mo form='postfix' fence='true' stretchy='true' symmetric='true'><m:mrow>)</m:mrow></m:mo>
+<m:mo>cos</m:mo><m:mo>&#x398;</m:mo>
+  </m:mrow>
+ </m:mrow>
+ </m:math></informalequation></Standard>
+<Standard>In these expressions <inlineequation><alt role='tex'>x_{0}</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:msub>
+   <m:mrow><m:mi>x</m:mi>
+   </m:mrow>
+   <m:mrow><m:mn>0</m:mn>
+   </m:mrow>
+  </m:msub>
+ </m:mrow>
+ </m:math></inlineequation>,<inlineequation><alt role='tex'>y_{0}</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:msub>
+   <m:mrow><m:mi>y</m:mi>
+   </m:mrow>
+   <m:mrow><m:mn>0</m:mn>
+   </m:mrow>
+  </m:msub>
+ </m:mrow>
+ </m:math></inlineequation> is the star center, and <inlineequation><alt role='tex'>\Theta</alt>
+ <m:math>
+ 
+ <m:mrow><m:mo>&#x398;</m:mo>
+ </m:mrow>
+ </m:math></inlineequation> is the angle with the <inlineequation><alt role='tex'>x</alt>
+ <m:math>
+ 
+ <m:mrow><m:mi>x</m:mi>
+ </m:mrow>
+ </m:math></inlineequation> axis. Results of this task are shown in table&#xA0;<xref linkend="tbl-2" />. It is not clear how these sorts of analyses may affect determination of <inlineequation><alt role='tex'>M_{\text{\sun}}</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:msub>
+   <m:mrow><m:mi>M</m:mi>
+   </m:mrow>
+   <m:mrow>
+    <m:mstyle mathvariant='normal'><m:mo>&#x263C;</m:mo>
+    </m:mstyle>
+   </m:mrow>
+  </m:msub>
+ </m:mrow>
+ </m:math></inlineequation>, but the assumption is that the alternate results should be less than 90° out of phase with previous values. We have no observations of <!-- \ion{Ca}{2} -->. Roughly <inlineequation><alt role='tex'>\nicefrac{4}{5}</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:mfrac bevelled='true'>
+   <m:mrow><m:mn>4</m:mn>
+   </m:mrow>
+   <m:mrow><m:mn>5</m:mn>
+   </m:mrow>
+  </m:mfrac>
+ </m:mrow>
+ </m:math></inlineequation> of the electronically submitted abstracts for AAS meetings are error-free. </Standard>
+<Acknowledgements>We are grateful to V. Barger, T. Han, and R. J. N. Phillips for doing the math in section&#xA0;<xref linkend="bozomath" />. More information on the AASTeX macros package are available at <link xlink:href="http://www.aas.org/publications/aastex">http://www.aas.org/publications/aastex</link> or the <link xlink:href="ftp://www.aas.org/pubs/AAS ftp site">AAS ftp site</link>.</Acknowledgements>
+<Software>IRAF, AIPS, Astropy, ...</Software>
+<Appendix></Appendix>
+<bibliography>
+<bibliomixed xml:id='aur82'>Aurière, M. 1982, <!-- \aap -->, 109, 301 </bibliomixed>
+<bibliomixed xml:id='can78'>Canizares, C. R., Grindlay, J. E., Hiltner, W. A., Liller, W., and McClintock, J. E. 1978, <!-- \apj -->, 224, 39 </bibliomixed>
+<bibliomixed xml:id='djo84'>Djorgovski, S., and King, I. R. 1984, <!-- \apjl -->, 277, L49 </bibliomixed>
+<bibliomixed xml:id='hag86'>Hagiwara, K., and Zeppenfeld, D. 1986, Nucl.Phys., 274, 1 </bibliomixed>
+<bibliomixed xml:id='har84'>Harris, W. E., and van den Bergh, S. 1984, <!-- \aj -->, 89, 1816 </bibliomixed>
+<bibliomixed xml:id='hen61'>Hénon, M. 1961, Ann.d'Ap., 24, 369 </bibliomixed>
+<bibliomixed xml:id='kin66'>King, I. R. 1966, <!-- \aj -->, 71, 276 </bibliomixed>
+<bibliomixed xml:id='kin75'>King, I. R. 1975, Dynamics of Stellar Systems, A. Hayli, Dordrecht: Reidel, 1975, 99 </bibliomixed>
+<bibliomixed xml:id='kin68'>King, I. R., Hedemann, E., Hodge, S. M., and White, R. E. 1968, <!-- \aj -->, 73, 456 </bibliomixed>
+<bibliomixed xml:id='kro84'>Kron, G. E., Hewitt, A. V., and Wasserman, L. H. 1984, <!-- \pasp -->, 96, 198 </bibliomixed>
+<bibliomixed xml:id='lyn68'>Lynden-Bell, D., and Wood, R. 1968, <!-- \mnras -->, 138, 495 </bibliomixed>
+<bibliomixed xml:id='new78'>Newell, E. B., and O'Neil, E. J. 1978, <!-- \apjs -->, 37, 27 </bibliomixed>
+<bibliomixed xml:id='ort85'>Ortolani, S., Rosino, L., and Sandage, A. 1985, <!-- \aj -->, 90, 473 </bibliomixed>
+<bibliomixed xml:id='pet76'>Peterson, C. J. 1976, <!-- \aj -->, 81, 617 </bibliomixed>
+<bibliomixed xml:id='spi85'>Spitzer, L. 1985, Dynamics of Star Clusters, J. Goodman and P. Hut, Dordrecht: Reidel, 109 </bibliomixed>
+<bibliomixed>
+</bibliomixed>
+<bibliomixed><table xml:id="tbl-2">
+<caption>Terribly relevant tabular information.</caption>
+
+<tbody>
+<tr>
+<td align='center' valign='top'>Star </td>
+<td align='right' valign='top'> Height </td>
+<td align='right' valign='top'> <inlineequation><alt role='tex'>d_{x}</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:msub>
+   <m:mrow><m:mi>d</m:mi>
+   </m:mrow>
+   <m:mrow><m:mi>x</m:mi>
+   </m:mrow>
+  </m:msub>
+ </m:mrow>
+ </m:math></inlineequation></td>
+<td align='right' valign='top'> <inlineequation><alt role='tex'>d_{y}</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:msub>
+   <m:mrow><m:mi>d</m:mi>
+   </m:mrow>
+   <m:mrow><m:mi>y</m:mi>
+   </m:mrow>
+  </m:msub>
+ </m:mrow>
+ </m:math></inlineequation></td>
+<td align='right' valign='top'> <inlineequation><alt role='tex'>n</alt>
+ <m:math>
+ 
+ <m:mrow><m:mi>n</m:mi>
+ </m:mrow>
+ </m:math></inlineequation></td>
+<td align='right' valign='top'> <inlineequation><alt role='tex'>\chi^{2}</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:msup>
+   <m:mrow><m:mi>&#x3C7;</m:mi>
+   </m:mrow>
+   <m:mrow><m:mn>2</m:mn>
+   </m:mrow>
+  </m:msup>
+ </m:mrow>
+ </m:math></inlineequation></td>
+<td align='right' valign='top'> <inlineequation><alt role='tex'>R_{maj}</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:msub>
+   <m:mrow><m:mi>R</m:mi>
+   </m:mrow>
+   <m:mrow>
+    <m:mrow><m:mi>m</m:mi><m:mi>a</m:mi><m:mi>j</m:mi>
+    </m:mrow>
+   </m:mrow>
+  </m:msub>
+ </m:mrow>
+ </m:math></inlineequation></td>
+<td align='right' valign='top'> <inlineequation><alt role='tex'>R_{min}</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:msub>
+   <m:mrow><m:mi>R</m:mi>
+   </m:mrow>
+   <m:mrow>
+    <m:mrow><m:mi>m</m:mi><m:mi>i</m:mi><m:mi>n</m:mi>
+    </m:mrow>
+   </m:mrow>
+  </m:msub>
+ </m:mrow>
+ </m:math></inlineequation></td>
+<td align='center' valign='top' colspan='1'><inlineequation><alt role='tex'>P</alt>
+ <m:math>
+ 
+ <m:mrow><m:mi>P</m:mi>
+ </m:mrow>
+ </m:math></inlineequation>a</td>
+<td align='right' valign='top'> <inlineequation><alt role='tex'>PR_{maj}</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:mrow><m:mi>P</m:mi>
+   <m:msub>
+    <m:mrow><m:mi>R</m:mi>
+    </m:mrow>
+    <m:mrow>
+     <m:mrow><m:mi>m</m:mi><m:mi>a</m:mi><m:mi>j</m:mi>
+     </m:mrow>
+    </m:mrow>
+   </m:msub>
+  </m:mrow>
+ </m:mrow>
+ </m:math></inlineequation></td>
+<td align='right' valign='top'> <inlineequation><alt role='tex'>PR_{min}</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:mrow><m:mi>P</m:mi>
+   <m:msub>
+    <m:mrow><m:mi>R</m:mi>
+    </m:mrow>
+    <m:mrow>
+     <m:mrow><m:mi>m</m:mi><m:mi>i</m:mi><m:mi>n</m:mi>
+     </m:mrow>
+    </m:mrow>
+   </m:msub>
+  </m:mrow>
+ </m:mrow>
+ </m:math></inlineequation></td>
+<td align='center' valign='top' colspan='1'><inlineequation><alt role='tex'>\Theta</alt>
+ <m:math>
+ 
+ <m:mrow><m:mo>&#x398;</m:mo>
+ </m:mrow>
+ </m:math></inlineequation>b</td>
+<td align='center' valign='top'>Ref.</td>
+</tr>
+<tr>
+<td align='center' valign='top'><!-- \tableline\tableline -->1 </td>
+<td align='right' valign='top'>33472.5 </td>
+<td align='right' valign='top'>-0.1 </td>
+<td align='right' valign='top'>0.4 </td>
+<td align='right' valign='top'>53 </td>
+<td align='right' valign='top'>27.4 </td>
+<td align='right' valign='top'>2.065 </td>
+<td align='right' valign='top'>1.940 </td>
+<td align='right' valign='top'>3.900 </td>
+<td align='right' valign='top'>68.3 </td>
+<td align='right' valign='top'>116.2 </td>
+<td align='right' valign='top'>-27.639</td>
+<td align='center' valign='top'>1,2</td>
+</tr>
+<tr>
+<td align='center' valign='top'> 2 </td>
+<td align='right' valign='top'>27802.4 </td>
+<td align='right' valign='top'>-0.3 </td>
+<td align='right' valign='top'>-0.2 </td>
+<td align='right' valign='top'>60 </td>
+<td align='right' valign='top'>3.7 </td>
+<td align='right' valign='top'>1.628 </td>
+<td align='right' valign='top'>1.510 </td>
+<td align='right' valign='top'>2.156 </td>
+<td align='right' valign='top'>6.8 </td>
+<td align='right' valign='top'>7.5 </td>
+<td align='right' valign='top'>-26.764</td>
+<td align='center' valign='top'>3</td>
+</tr>
+<tr>
+<td align='center' valign='top'> 3 </td>
+<td align='right' valign='top'>29210.6 </td>
+<td align='right' valign='top'>0.9 </td>
+<td align='right' valign='top'>0.3 </td>
+<td align='right' valign='top'>60 </td>
+<td align='right' valign='top'>3.4 </td>
+<td align='right' valign='top'>1.622 </td>
+<td align='right' valign='top'>1.551 </td>
+<td align='right' valign='top'>2.159 </td>
+<td align='right' valign='top'>6.7 </td>
+<td align='right' valign='top'>7.3 </td>
+<td align='right' valign='top'>-40.272</td>
+<td align='center' valign='top'>4</td>
+</tr>
+<tr>
+<td align='center' valign='top'> 4 </td>
+<td align='right' valign='top'>32733.8 </td>
+<td align='right' valign='top'>-1.2c</td>
+<td align='right' valign='top'>-0.5 </td>
+<td align='right' valign='top'>41 </td>
+<td align='right' valign='top'>54.8 </td>
+<td align='right' valign='top'>2.282 </td>
+<td align='right' valign='top'>2.156 </td>
+<td align='right' valign='top'>4.313 </td>
+<td align='right' valign='top'>117.4 </td>
+<td align='right' valign='top'>78.2 </td>
+<td align='right' valign='top'>-35.847</td>
+<td align='center' valign='top'>5,6</td>
+</tr>
+<tr>
+<td align='center' valign='top'> 5 </td>
+<td align='right' valign='top'> 9607.4 </td>
+<td align='right' valign='top'>-0.4 </td>
+<td align='right' valign='top'>-0.4 </td>
+<td align='right' valign='top'>60 </td>
+<td align='right' valign='top'>1.4 </td>
+<td align='right' valign='top'>1.669c</td>
+<td align='right' valign='top'>1.574 </td>
+<td align='right' valign='top'>2.343 </td>
+<td align='right' valign='top'>8.0 </td>
+<td align='right' valign='top'>8.9 </td>
+<td align='right' valign='top'>-33.417</td>
+<td align='center' valign='top'>7</td>
+</tr>
+<tr>
+<td align='center' valign='top'> 6 </td>
+<td align='right' valign='top'>31638.6 </td>
+<td align='right' valign='top'>1.6 </td>
+<td align='right' valign='top'>0.1 </td>
+<td align='right' valign='top'>39 </td>
+<td align='right' valign='top'>315.2 </td>
+<td align='right' valign='top'> 3.433 </td>
+<td align='right' valign='top'>3.075 </td>
+<td align='right' valign='top'>7.488 </td>
+<td align='right' valign='top'>92.1 </td>
+<td align='right' valign='top'>25.3 </td>
+<td align='right' valign='top'>-12.052 </td>
+<td align='center' valign='top'>8</td>
+</tr>
+</tbody>
+<Table note>a<!-- }{ -->Sample footnote for table&#xA0;<xref linkend="tbl-2" /> that was generated with the LaTeX table environment</Table note>
+<Table note>b<!-- }{ -->Yet another sample footnote for table&#xA0;<xref linkend="tbl-2" /></Table note>
+<Table note>c<!-- }{ -->Another sample footnote for table&#xA0;<xref linkend="tbl-2" /></Table note>
+<TableComments>We can also attach a long-ish paragraph of explanatory material to a table. Use \tablerefs to append a list of references. The following references were from a different table: I've patched them in here to show how they look, but don't take them too seriously—I certainly have not.</TableComments>
+<TableRefs>(1) Barbuy, Spite, &amp; Spite 1985; (2) Bond 1980; (3) Carbon et al. 1987; (4) Hobbs &amp; Duncan 1987; (5) Gilroy et al. 1988: (6) Gratton &amp; Ortolani 1986; (7) Gratton &amp; Sneden 1987; (8) Gratton &amp; Sneden (1988); (9) Gratton &amp; Sneden 1991; (10) Kraft et al. 1982; (11) LCL, or Laird, 1990; (12) Leep &amp; Wallerstein 1981; (13) Luck &amp; Bond 1981; (14) Luck &amp; Bond 1985; (15) Magain 1987; (16) Magain 1989; (17) Peterson 1981; (18) Peterson, Kurucz, &amp; Carney 1990; (19) RMB; (20) Schuster &amp; Nissen 1988; (21) Schuster &amp; Nissen 1989b; (22) Spite et al. 1984; (23) Spite &amp; Spite 1986; (24) Hobbs &amp; Thorburn 1991; (25) Hobbs et al. 1991; (26) Olsen 1983.</TableRefs>
+</table>
+</bibliomixed>
+
+
+</bibliography>
+</section>
+
+</article>

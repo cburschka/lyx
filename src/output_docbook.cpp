@@ -348,7 +348,7 @@ ParagraphList::const_iterator makeParagraphBibliography(
 			Inset const *ip = par->getInset(0);
 			if (ip != nullptr && ip->lyxCode() == BIBITEM_CODE) {
 				const auto * bibitem = dynamic_cast<const InsetBibitem*>(par->getInset(i));
-				attr = from_utf8("xml:id='") + bibitem->bibLabel() + from_utf8("'");
+				attr = from_utf8("xml:id='") + bibitem->getParam("key") + from_utf8("'");
 				break;
 			}
 		}
