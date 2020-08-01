@@ -266,9 +266,9 @@ private:
 	Ranges ranges_;
 	/// the area of the paragraph with pending spell check
 	FontSpan refresh_;
-	bool needs_refresh_;
 	/// spell state cache version number
 	SpellChecker::ChangeNumber current_change_number_;
+	bool needs_refresh_;
 
 
 	void correctRangesAfterPos(pos_type pos, int offset)
@@ -452,7 +452,7 @@ public:
 	{
 		int numskips = 0;
 		while (it != et && it->first < start) {
-			int skip = it->last - it->first + 1;
+			long skip = it->last - it->first + 1;
 			start += skip;
 			numskips += skip;
 			++it;
@@ -480,9 +480,6 @@ public:
 	FontList fontlist_;
 
 	///
-	int id_;
-
-	///
 	ParagraphParameters params_;
 
 	/// for recording and looking up changes
@@ -506,11 +503,13 @@ public:
 	Layout const * layout_;
 	///
 	SpellCheckerState speller_state_;
+	///
+	int id_;
 };
 
 
 Paragraph::Private::Private(Paragraph * owner, Layout const & layout)
-	: owner_(owner), inset_owner_(nullptr), id_(-1), begin_of_body_(0), layout_(&layout)
+	: owner_(owner), inset_owner_(nullptr), begin_of_body_(0), layout_(&layout), id_(-1)
 {
 	text_.reserve(100);
 }
@@ -523,17 +522,16 @@ int Paragraph::Private::make_id()
 	// LFUN_PARAGRAPH_GOTO to switch to a different buffer, for instance in the
 	// outliner.
 	// (thread-safe)
-	static atomic_uint next_id(0);
+	static int next_id(0);
 	return next_id++;
 }
 
 
 Paragraph::Private::Private(Private const & p, Paragraph * owner)
 	: owner_(owner), inset_owner_(p.inset_owner_), fontlist_(p.fontlist_),
-	  id_(make_id()),
 	  params_(p.params_), changes_(p.changes_), insetlist_(p.insetlist_),
 	  begin_of_body_(p.begin_of_body_), text_(p.text_), words_(p.words_),
-	  layout_(p.layout_)
+	  layout_(p.layout_), id_(make_id())
 {
 	requestSpellCheck(p.text_.size());
 }
@@ -541,11 +539,11 @@ Paragraph::Private::Private(Private const & p, Paragraph * owner)
 
 Paragraph::Private::Private(Private const & p, Paragraph * owner,
 	pos_type beg, pos_type end)
-	: owner_(owner), inset_owner_(p.inset_owner_), id_(make_id()),
+	: owner_(owner), inset_owner_(p.inset_owner_),
 	  params_(p.params_), changes_(p.changes_),
 	  insetlist_(p.insetlist_, beg, end),
 	  begin_of_body_(p.begin_of_body_), words_(p.words_),
-	  layout_(p.layout_)
+	  layout_(p.layout_), id_(make_id())
 {
 	if (beg >= pos_type(p.text_.size()))
 		return;
@@ -3019,11 +3017,11 @@ void doFontSwitchDocBook(vector<xml::FontTag> & tagsToOpen,
 
 class OptionalFontType {
 public:
-	bool has_value;
 	xml::FontTypes ft;
+	bool has_value;
 
-	OptionalFontType(): has_value(false), ft(xml::FT_EMPH) {} // A possible value at random for ft.
-	OptionalFontType(xml::FontTypes ft): has_value(true), ft(ft) {}
+	OptionalFontType(): ft(xml::FT_EMPH), has_value(false) {} // A possible value at random for ft.
+	OptionalFontType(xml::FontTypes ft): ft(ft), has_value(true) {}
 };
 
 OptionalFontType fontShapeToXml(FontShape fs)
@@ -3050,13 +3048,10 @@ OptionalFontType fontFamilyToXml(FontFamily fm)
 	switch (fm) {
 	case ROMAN_FAMILY:
 		return {xml::FT_ROMAN};
-		break;
 	case SANS_FAMILY:
 		return {xml::FT_SANS};
-		break;
 	case TYPEWRITER_FAMILY:
 		return {xml::FT_TYPE};
-		break;
 	case INHERIT_FAMILY:
 		return {};
 	default:
@@ -3103,6 +3098,10 @@ OptionalFontType fontSizeToXml(FontSize fs)
 
 struct DocBookFontState
 {
+	FontShape  curr_fs   = INHERIT_SHAPE;
+	FontFamily curr_fam  = INHERIT_FAMILY;
+	FontSize   curr_size = INHERIT_SIZE;
+
 	// track whether we have opened these tags
 	bool emph_flag = false;
 	bool bold_flag = false;
@@ -3118,10 +3117,6 @@ struct DocBookFontState
 	bool faml_flag = false;
 	// size tags
 	bool size_flag = false;
-
-	FontShape  curr_fs   = INHERIT_SHAPE;
-	FontFamily curr_fam  = INHERIT_FAMILY;
-	FontSize   curr_size = INHERIT_SIZE;
 };
 
 std::tuple<vector<xml::FontTag>, vector<xml::EndFontTag>> computeDocBookFontSwitch(FontInfo const & font_old,
