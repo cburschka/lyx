@@ -48,6 +48,15 @@ if(ENCODING STREQUAL "default")
 else()
   set(_enc "_${ENCODING}")
 endif()
+
+# move the the last directory part of LYX_ROOT to filename
+# to make the destination unique for otherwise identical
+# filenames
+get_filename_component(updir_ "${LYX_ROOT}" DIRECTORY)
+get_filename_component(updir2_ "${LYX_ROOT}" NAME)
+set(file "${updir2_}/${file}")
+set(LYX_ROOT "${updir_}")
+
 if(format MATCHES "dvi|pdf")
   message(STATUS "LYX_TESTS_USERDIR = ${LYX_TESTS_USERDIR}")
   message(STATUS "Converting with perl ${Perl_Script}")
