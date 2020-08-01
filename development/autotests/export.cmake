@@ -237,7 +237,7 @@ else()
 	  set(executable_ ${PERL_EXECUTABLE} "${TOP_SRC_DIR}/development/autotests/filterXml4Sax.pl")
 	endif()
         if (XMLLINT_EXECUTABLE)
-          message(STATUS "Calling: ${XMLLINT_EXECUTABLE} " ${xmllint_params})
+          message(STATUS "Calling: " ${executable_} ${xmllint_params} " ${result_file_name}")
           # check the created xhtml file
           execute_process(
             COMMAND ${executable_} ${xmllint_params}  "${result_file_name}"

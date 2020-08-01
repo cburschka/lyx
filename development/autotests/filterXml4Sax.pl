@@ -78,7 +78,7 @@ sub handlePara($)
       $rest = $3;
     }
     elsif ($rest =~ /^([^\s]+)(.*)$/) {
-      my $val1 = $1
+      my $val1 = $1;
       $rest = $2;
       $val1 =~ s/([\"\'\\])/\\$1/g;
       $val = '"' . $val1 . '"';
