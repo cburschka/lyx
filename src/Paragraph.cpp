@@ -84,14 +84,6 @@ using namespace lyx::support;
 
 namespace lyx {
 
-namespace {
-
-/// Inset identifier (above 0x10ffff, for ucs-4)
-char_type const META_INSET = 0x200001;
-
-} // namespace
-
-
 /////////////////////////////////////////////////////////////////////
 //
 // SpellResultRange

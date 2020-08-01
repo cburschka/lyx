@@ -53,6 +53,9 @@ class WordLangTuple;
 class XMLStream;
 class otexstream;
 
+/// Inset identifier (above 0x10ffff, for ucs-4)
+char_type const META_INSET = 0x200001;
+
 class FontSpan {
 public:
 	/// Invalid font span containing no character
