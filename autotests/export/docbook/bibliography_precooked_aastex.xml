@@ -10,61 +10,81 @@
 </section>
 <section>
 <title>Observations</title>
-<para>All our observations were short direct exposures with CCD's. At Lick Observatory we used a TI 500<inlineequation><alt role='tex'>\times</alt>
+<para>All our observations were short direct exposures with CCD's. At Lick Observatory we used a TI 500<inlineequation>
+<alt role='tex'>\times</alt>
  <m:math>
  
  <m:mrow><m:mo>&#x00D7;</m:mo>
  </m:mrow>
- </m:math></inlineequation>500 chip and a GEC 575<inlineequation><alt role='tex'>\times</alt>
+ </m:math>
+</inlineequation>500 chip and a GEC 575<inlineequation>
+<alt role='tex'>\times</alt>
  <m:math>
  
  <m:mrow><m:mo>&#x00D7;</m:mo>
  </m:mrow>
- </m:math></inlineequation>385, on the 1-m Nickel reflector. The only filter available at Lick was red. At CTIO we used a GEC 575<inlineequation><alt role='tex'>\times</alt>
+ </m:math>
+</inlineequation>385, on the 1-m Nickel reflector. The only filter available at Lick was red. At CTIO we used a GEC 575<inlineequation>
+<alt role='tex'>\times</alt>
  <m:math>
  
  <m:mrow><m:mo>&#x00D7;</m:mo>
  </m:mrow>
- </m:math></inlineequation>385, with <inlineequation><alt role='tex'>B,V,</alt>
+ </m:math>
+</inlineequation>385, with <inlineequation>
+<alt role='tex'>B,V,</alt>
  <m:math>
  
  <m:mrow>
   <m:mrow><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>V</m:mi><m:mo>,</m:mo>
   </m:mrow>
  </m:mrow>
- </m:math></inlineequation> and <inlineequation><alt role='tex'>R</alt>
+ </m:math>
+</inlineequation> and <inlineequation>
+<alt role='tex'>R</alt>
  <m:math>
  
  <m:mrow><m:mi>R</m:mi>
  </m:mrow>
- </m:math></inlineequation> filters, and an RCA 512<inlineequation><alt role='tex'>\times</alt>
+ </m:math>
+</inlineequation> filters, and an RCA 512<inlineequation>
+<alt role='tex'>\times</alt>
  <m:math>
  
  <m:mrow><m:mo>&#x00D7;</m:mo>
  </m:mrow>
- </m:math></inlineequation>320, with <inlineequation><alt role='tex'>U,B,V,R,</alt>
+ </m:math>
+</inlineequation>320, with <inlineequation>
+<alt role='tex'>U,B,V,R,</alt>
  <m:math>
  
  <m:mrow>
   <m:mrow><m:mi>U</m:mi><m:mo>,</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>V</m:mi><m:mo>,</m:mo><m:mi>R</m:mi><m:mo>,</m:mo>
   </m:mrow>
  </m:mrow>
- </m:math></inlineequation> and <inlineequation><alt role='tex'>I</alt>
+ </m:math>
+</inlineequation> and <inlineequation>
+<alt role='tex'>I</alt>
  <m:math>
  
  <m:mrow><m:mi>I</m:mi>
  </m:mrow>
- </m:math></inlineequation> filters, on the 1.5-m reflector. In the CTIO observations we tried to concentrate on the shortest practicable wavelengths; but faintness, reddening, and poor short-wavelength sensitivity often kept us from observing in <inlineequation><alt role='tex'>U</alt>
+ </m:math>
+</inlineequation> filters, on the 1.5-m reflector. In the CTIO observations we tried to concentrate on the shortest practicable wavelengths; but faintness, reddening, and poor short-wavelength sensitivity often kept us from observing in <inlineequation>
+<alt role='tex'>U</alt>
  <m:math>
  
  <m:mrow><m:mi>U</m:mi>
  </m:mrow>
- </m:math></inlineequation> or even in <inlineequation><alt role='tex'>B</alt>
+ </m:math>
+</inlineequation> or even in <inlineequation>
+<alt role='tex'>B</alt>
  <m:math>
  
  <m:mrow><m:mi>B</m:mi>
  </m:mrow>
- </m:math></inlineequation>. All four cameras had scales of the order of 0.4 arcsec/pixel, and our field sizes were around 3 arcmin.</para>
+ </m:math>
+</inlineequation>. All four cameras had scales of the order of 0.4 arcsec/pixel, and our field sizes were around 3 arcmin.</para>
 <para>The CCD images are unfortunately not always suitable, for very poor clusters or for clusters with large cores. Since the latter are easily studied by other means, we augmented our own CCD profiles by collecting from the literature a number of star-count profiles <biblioref endterm="kin68" />, <biblioref endterm="pet76" />, <biblioref endterm="har84" />, <biblioref endterm="ort85" />, as well as photoelectric profiles <biblioref endterm="kin66" />, <biblioref endterm="kin75" /> and electronographic profiles <biblioref endterm="kro84" />. In a few cases we judged normality by eye estimates on one of the Sky Surveys.</para>
 </section>
 <section>
@@ -74,7 +94,8 @@
 <section>
 <title>Formalism</title>
 <para><anchor xml:id="bozomath" /></para>
-<para>A tree-level amplitude in <inlineequation><alt role='tex'>e^{+}e^{-}</alt>
+<para>A tree-level amplitude in <inlineequation>
+<alt role='tex'>e^{+}e^{-}</alt>
  <m:math>
  
  <m:mrow>
@@ -93,7 +114,9 @@
    </m:msup>
   </m:mrow>
  </m:mrow>
- </m:math></inlineequation> collisions can be expressed in terms of fermion strings of the form <informalequation><alt role='tex'>\bar{v}(p_{2},\sigma_{2})P_{-\tau}\hat{a}_{1}\hat{a}_{2}\cdots\hat{a}_{n}u(p_{1},\sigma_{1}),</alt>
+ </m:math>
+</inlineequation> collisions can be expressed in terms of fermion strings of the form <informalequation>
+<alt role='tex'>\bar{v}(p_{2},\sigma_{2})P_{-\tau}\hat{a}_{1}\hat{a}_{2}\cdots\hat{a}_{n}u(p_{1},\sigma_{1}),</alt>
  <m:math>
  
  <m:mrow>
@@ -178,17 +201,23 @@
 <m:mo>,</m:mo>
   </m:mrow>
  </m:mrow>
- </m:math></informalequation> where <inlineequation><alt role='tex'>p</alt>
+ </m:math>
+</informalequation> where <inlineequation>
+<alt role='tex'>p</alt>
  <m:math>
  
  <m:mrow><m:mi>p</m:mi>
  </m:mrow>
- </m:math></inlineequation> and <inlineequation><alt role='tex'>\sigma</alt>
+ </m:math>
+</inlineequation> and <inlineequation>
+<alt role='tex'>\sigma</alt>
  <m:math>
  
  <m:mrow><m:mi>&#x3C3;</m:mi>
  </m:mrow>
- </m:math></inlineequation> label the initial <inlineequation><alt role='tex'>e^{\pm}</alt>
+ </m:math>
+</inlineequation> label the initial <inlineequation>
+<alt role='tex'>e^{\pm}</alt>
  <m:math>
  
  <m:mrow>
@@ -199,7 +228,9 @@
    </m:mrow>
   </m:msup>
  </m:mrow>
- </m:math></inlineequation> four-momenta and helicities <inlineequation><alt role='tex'>(\sigma=\pm1)</alt>
+ </m:math>
+</inlineequation> four-momenta and helicities <inlineequation>
+<alt role='tex'>(\sigma=\pm1)</alt>
  <m:math>
  
  <m:mrow><m:mo form='prefix' fence='true' stretchy='true' symmetric='true'><m:mrow>(</m:mrow></m:mo>
@@ -209,7 +240,9 @@
 <m:mo form='postfix' fence='true' stretchy='true' symmetric='true'><m:mrow>)</m:mrow></m:mo>
 
  </m:mrow>
- </m:math></inlineequation>, <inlineequation><alt role='tex'>\hat{a}_{i}=a_{i}^{\mu}\gamma_{\nu}</alt>
+ </m:math>
+</inlineequation>, <inlineequation>
+<alt role='tex'>\hat{a}_{i}=a_{i}^{\mu}\gamma_{\nu}</alt>
  <m:math>
  
  <m:mrow>
@@ -240,7 +273,9 @@
    </m:msub>
   </m:mrow>
  </m:mrow>
- </m:math></inlineequation> and <inlineequation><alt role='tex'>P_{\tau}=\frac{1}{2}(1+\tau\gamma_{5})</alt>
+ </m:math>
+</inlineequation> and <inlineequation>
+<alt role='tex'>P_{\tau}=\frac{1}{2}(1+\tau\gamma_{5})</alt>
  <m:math>
  
  <m:mrow>
@@ -270,7 +305,9 @@
 
   </m:mrow>
  </m:mrow>
- </m:math></inlineequation> is a chirality projection operator <inlineequation><alt role='tex'>(\tau=\pm1)</alt>
+ </m:math>
+</inlineequation> is a chirality projection operator <inlineequation>
+<alt role='tex'>(\tau=\pm1)</alt>
  <m:math>
  
  <m:mrow><m:mo form='prefix' fence='true' stretchy='true' symmetric='true'><m:mrow>(</m:mrow></m:mo>
@@ -280,7 +317,9 @@
 <m:mo form='postfix' fence='true' stretchy='true' symmetric='true'><m:mrow>)</m:mrow></m:mo>
 
  </m:mrow>
- </m:math></inlineequation>. The <inlineequation><alt role='tex'>a_{i}^{\mu}</alt>
+ </m:math>
+</inlineequation>. The <inlineequation>
+<alt role='tex'>a_{i}^{\mu}</alt>
  <m:math>
  
  <m:mrow>
@@ -293,26 +332,34 @@
    </m:mrow>
   </m:msubsup>
  </m:mrow>
- </m:math></inlineequation> may be formed from particle four-momenta, gauge-boson polarization vectors or fermion strings with an uncontracted Lorentz index associated with final-state fermions.</para>
+ </m:math>
+</inlineequation> may be formed from particle four-momenta, gauge-boson polarization vectors or fermion strings with an uncontracted Lorentz index associated with final-state fermions.</para>
 <NoteToEditor>Figures 1 and 2 should appear side-by-side in print</NoteToEditor>
-<para>In the chiral representation the <inlineequation><alt role='tex'>\gamma</alt>
+<para>In the chiral representation the <inlineequation>
+<alt role='tex'>\gamma</alt>
  <m:math>
  
  <m:mrow><m:mi>&#x3B3;</m:mi>
  </m:mrow>
- </m:math></inlineequation> matrices are expressed in terms of <inlineequation><alt role='tex'>2\times2</alt>
+ </m:math>
+</inlineequation> matrices are expressed in terms of <inlineequation>
+<alt role='tex'>2\times2</alt>
  <m:math>
  
  <m:mrow>
   <m:mrow><m:mn>2</m:mn><m:mo>&#x00D7;</m:mo><m:mn>2</m:mn>
   </m:mrow>
  </m:mrow>
- </m:math></inlineequation> Pauli matrices <inlineequation><alt role='tex'>\sigma</alt>
+ </m:math>
+</inlineequation> Pauli matrices <inlineequation>
+<alt role='tex'>\sigma</alt>
  <m:math>
  
  <m:mrow><m:mi>&#x3C3;</m:mi>
  </m:mrow>
- </m:math></inlineequation> and the unit matrix 1 as <informalequation><alt role='tex'>\gamma^{\mu} &amp; = &amp; \left(\begin{array}{cc}
+ </m:math>
+</inlineequation> and the unit matrix 1 as <informalequation>
+<alt role='tex'>\gamma^{\mu} &amp; = &amp; \left(\begin{array}{cc}
 0 &amp; \sigma_{+}^{\mu}\\
 \sigma_{-}^{\mu} &amp; 0
 \end{array}\right),\gamma^{5}=\left(\begin{array}{cc}
@@ -420,7 +467,9 @@
    </m:mtd>
   </m:mtr>
  </m:mtable>
- </m:math></informalequation> giving <informalequation><alt role='tex'>\hat{a}=\left(\begin{array}{cc}
+ </m:math>
+</informalequation> giving <informalequation>
+<alt role='tex'>\hat{a}=\left(\begin{array}{cc}
 0 &amp; (\hat{a})_{+}\\
 (\hat{a})_{-} &amp; 0
 \end{array}\right),(\hat{a})_{\pm}=a_{\mu}\sigma_{\pm}^{\mu},</alt>
@@ -496,11 +545,15 @@
    </m:msubsup><m:mo>,</m:mo>
   </m:mrow>
  </m:mrow>
- </m:math></informalequation> The spinors are expressed in terms of two-component Weyl spinors as <informalequation><alt role='tex'>u=\left(\begin{array}{c}
+ </m:math>
+</informalequation> The spinors are expressed in terms of two-component Weyl spinors as <informalequation>
+<alt role='tex'>u=\left(\begin{array}{c}
 (u)_{-}\\
 (u)_{+}
-\end{array}\right),v={\textbf{(}}\vdag_{+}{\textbf{,}}\vdag_{-}{\textbf{)}}.</alt>MathML export failed. Please report this as a bug.</informalequation></para>
-<para>The Weyl spinors are given in terms of helicity eigenstates <inlineequation><alt role='tex'>\chi_{\lambda}(p)</alt>
+\end{array}\right),v={\textbf{(}}\vdag_{+}{\textbf{,}}\vdag_{-}{\textbf{)}}.</alt>MathML export failed. Please report this as a bug.
+</informalequation></para>
+<para>The Weyl spinors are given in terms of helicity eigenstates <inlineequation>
+<alt role='tex'>\chi_{\lambda}(p)</alt>
  <m:math>
  
  <m:mrow>
@@ -516,16 +569,20 @@
 
   </m:mrow>
  </m:mrow>
- </m:math></inlineequation> with <inlineequation><alt role='tex'>\lambda=\pm1</alt>
+ </m:math>
+</inlineequation> with <inlineequation>
+<alt role='tex'>\lambda=\pm1</alt>
  <m:math>
  
  <m:mrow>
   <m:mrow><m:mi>&#x3BB;</m:mi><m:mo>=</m:mo><m:mo>&#x00B1;</m:mo><m:mn>1</m:mn>
   </m:mrow>
  </m:mrow>
- </m:math></inlineequation> by </para>
+ </m:math>
+</inlineequation> by </para>
 <MathLetters>
-<informalequation><alt role='tex'>u(p,\lambda)_{\pm} &amp; = &amp; (E\pm\lambda|{\textbf{p}}|)^{1/2}\chi_{\lambda}(p),\\
+<informalequation>
+<alt role='tex'>u(p,\lambda)_{\pm} &amp; = &amp; (E\pm\lambda|{\textbf{p}}|)^{1/2}\chi_{\lambda}(p),\\
 v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi_{-\lambda}(p)
 </alt>
  <m:math>
@@ -612,13 +669,15 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
    </m:mtd>
   </m:mtr>
  </m:mtable>
- </m:math></informalequation>
+ </m:math>
+</informalequation>
 </MathLetters>
 </section>
 </section>
 <section>
 <title>Floating material and so forth</title>
-<para>Consider a task that computes profile parameters for a modified Lorentzian of the form <informalequation><alt role='tex'>I=\frac{1}{1+d_{1}^{P(1+d_{2})}}</alt>
+<para>Consider a task that computes profile parameters for a modified Lorentzian of the form <informalequation>
+<alt role='tex'>I=\frac{1}{1+d_{1}^{P(1+d_{2})}}</alt>
  <m:math>
  
  <m:mrow>
@@ -654,7 +713,9 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
    </m:mfrac>
   </m:mrow>
  </m:mrow>
- </m:math></informalequation> where <informalequation><alt role='tex'>d_{1}=\sqrt{\left(\begin{array}{c}
+ </m:math>
+</informalequation> where <informalequation>
+<alt role='tex'>d_{1}=\sqrt{\left(\begin{array}{c}
 \frac{x_{1}}{R_{maj}}\end{array}\right)^{2}+\left(\begin{array}{c}
 \frac{y_{1}}{R_{min}}\end{array}\right)^{2}}</alt>
  <m:math>
@@ -737,9 +798,13 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
    </m:msqrt>
   </m:mrow>
  </m:mrow>
- </m:math></informalequation><informalequation><alt role='tex'>d_{2}=\sqrt{\left(\begin{array}{c}
+ </m:math>
+</informalequation><informalequation>
+<alt role='tex'>d_{2}=\sqrt{\left(\begin{array}{c}
 \frac{x_{1}}{PR_{maj}}\end{array}\right)^{2}+\left(\begin{array}{c}
-\case{y_{1}}{PR_{min}}\end{array}\right)^{2}}</alt>MathML export failed. Please report this as a bug.</informalequation><informalequation><alt role='tex'>x_{1}=(x-x_{0})\cos\Theta+(y-y_{0})\sin\Theta</alt>
+\case{y_{1}}{PR_{min}}\end{array}\right)^{2}}</alt>MathML export failed. Please report this as a bug.
+</informalequation><informalequation>
+<alt role='tex'>x_{1}=(x-x_{0})\cos\Theta+(y-y_{0})\sin\Theta</alt>
  <m:math>
  
  <m:mrow>
@@ -774,7 +839,9 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
 <m:mo>sin</m:mo><m:mo>&#x398;</m:mo>
   </m:mrow>
  </m:mrow>
- </m:math></informalequation><informalequation><alt role='tex'>y_{1}=-(x-x_{0})\sin\Theta+(y-y_{0})\cos\Theta</alt>
+ </m:math>
+</informalequation><informalequation>
+<alt role='tex'>y_{1}=-(x-x_{0})\sin\Theta+(y-y_{0})\cos\Theta</alt>
  <m:math>
  
  <m:mrow>
@@ -809,8 +876,10 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
 <m:mo>cos</m:mo><m:mo>&#x398;</m:mo>
   </m:mrow>
  </m:mrow>
- </m:math></informalequation></para>
-<para>In these expressions <inlineequation><alt role='tex'>x_{0}</alt>
+ </m:math>
+</informalequation></para>
+<para>In these expressions <inlineequation>
+<alt role='tex'>x_{0}</alt>
  <m:math>
  
  <m:mrow>
@@ -821,7 +890,9 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
    </m:mrow>
   </m:msub>
  </m:mrow>
- </m:math></inlineequation>,<inlineequation><alt role='tex'>y_{0}</alt>
+ </m:math>
+</inlineequation>,<inlineequation>
+<alt role='tex'>y_{0}</alt>
  <m:math>
  
  <m:mrow>
@@ -832,17 +903,23 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
    </m:mrow>
   </m:msub>
  </m:mrow>
- </m:math></inlineequation> is the star center, and <inlineequation><alt role='tex'>\Theta</alt>
+ </m:math>
+</inlineequation> is the star center, and <inlineequation>
+<alt role='tex'>\Theta</alt>
  <m:math>
  
  <m:mrow><m:mo>&#x398;</m:mo>
  </m:mrow>
- </m:math></inlineequation> is the angle with the <inlineequation><alt role='tex'>x</alt>
+ </m:math>
+</inlineequation> is the angle with the <inlineequation>
+<alt role='tex'>x</alt>
  <m:math>
  
  <m:mrow><m:mi>x</m:mi>
  </m:mrow>
- </m:math></inlineequation> axis. Results of this task are shown in table&#xA0;<xref linkend="tbl-2" />. It is not clear how these sorts of analyses may affect determination of <inlineequation><alt role='tex'>M_{\text{\sun}}</alt>
+ </m:math>
+</inlineequation> axis. Results of this task are shown in table&#xA0;<xref linkend="tbl-2" />. It is not clear how these sorts of analyses may affect determination of <inlineequation>
+<alt role='tex'>M_{\text{\sun}}</alt>
  <m:math>
  
  <m:mrow>
@@ -855,7 +932,9 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
    </m:mrow>
   </m:msub>
  </m:mrow>
- </m:math></inlineequation>, but the assumption is that the alternate results should be less than 90° out of phase with previous values. We have no observations of <!-- \ion{Ca}{2} -->. Roughly <inlineequation><alt role='tex'>\nicefrac{4}{5}</alt>
+ </m:math>
+</inlineequation>, but the assumption is that the alternate results should be less than 90° out of phase with previous values. We have no observations of <!-- \ion{Ca}{2} -->. Roughly <inlineequation>
+<alt role='tex'>\nicefrac{4}{5}</alt>
  <m:math>
  
  <m:mrow>
@@ -866,8 +945,9 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
    </m:mrow>
   </m:mfrac>
  </m:mrow>
- </m:math></inlineequation> of the electronically submitted abstracts for AAS meetings are error-free. </para>
-<Acknowledgements>We are grateful to V. Barger, T. Han, and R. J. N. Phillips for doing the math in section&#xA0;<xref linkend="bozomath" />. More information on the AASTeX macros package are available at <link xlink:href="http://www.aas.org/publications/aastex">http://www.aas.org/publications/aastex</link> or the <link xlink:href="ftp://www.aas.org/pubs/AAS ftp site">AAS ftp site</link>.</Acknowledgements>
+ </m:math>
+</inlineequation> of the electronically submitted abstracts for AAS meetings are error-free. </para>
+<acknowledgement><para>We are grateful to V. Barger, T. Han, and R. J. N. Phillips for doing the math in section&#xA0;<xref linkend="bozomath" />. More information on the AASTeX macros package are available at <link xlink:href="http://www.aas.org/publications/aastex">http://www.aas.org/publications/aastex</link> or the <link xlink:href="ftp://www.aas.org/pubs/AAS ftp site">AAS ftp site</link>.</para></acknowledgement>
 <Software>IRAF, AIPS, Astropy, ...</Software>
 <Appendix></Appendix>
 <bibliography>
@@ -895,7 +975,8 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
 <tr>
 <td align='center' valign='top'>Star </td>
 <td align='right' valign='top'> Height </td>
-<td align='right' valign='top'> <inlineequation><alt role='tex'>d_{x}</alt>
+<td align='right' valign='top'> <inlineequation>
+<alt role='tex'>d_{x}</alt>
  <m:math>
  
  <m:mrow>
@@ -906,8 +987,10 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
    </m:mrow>
   </m:msub>
  </m:mrow>
- </m:math></inlineequation></td>
-<td align='right' valign='top'> <inlineequation><alt role='tex'>d_{y}</alt>
+ </m:math>
+</inlineequation></td>
+<td align='right' valign='top'> <inlineequation>
+<alt role='tex'>d_{y}</alt>
  <m:math>
  
  <m:mrow>
@@ -918,14 +1001,18 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
    </m:mrow>
   </m:msub>
  </m:mrow>
- </m:math></inlineequation></td>
-<td align='right' valign='top'> <inlineequation><alt role='tex'>n</alt>
+ </m:math>
+</inlineequation></td>
+<td align='right' valign='top'> <inlineequation>
+<alt role='tex'>n</alt>
  <m:math>
  
  <m:mrow><m:mi>n</m:mi>
  </m:mrow>
- </m:math></inlineequation></td>
-<td align='right' valign='top'> <inlineequation><alt role='tex'>\chi^{2}</alt>
+ </m:math>
+</inlineequation></td>
+<td align='right' valign='top'> <inlineequation>
+<alt role='tex'>\chi^{2}</alt>
  <m:math>
  
  <m:mrow>
@@ -936,8 +1023,10 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
    </m:mrow>
   </m:msup>
  </m:mrow>
- </m:math></inlineequation></td>
-<td align='right' valign='top'> <inlineequation><alt role='tex'>R_{maj}</alt>
+ </m:math>
+</inlineequation></td>
+<td align='right' valign='top'> <inlineequation>
+<alt role='tex'>R_{maj}</alt>
  <m:math>
  
  <m:mrow>
@@ -950,8 +1039,10 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
    </m:mrow>
   </m:msub>
  </m:mrow>
- </m:math></inlineequation></td>
-<td align='right' valign='top'> <inlineequation><alt role='tex'>R_{min}</alt>
+ </m:math>
+</inlineequation></td>
+<td align='right' valign='top'> <inlineequation>
+<alt role='tex'>R_{min}</alt>
  <m:math>
  
  <m:mrow>
@@ -964,14 +1055,18 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
    </m:mrow>
   </m:msub>
  </m:mrow>
- </m:math></inlineequation></td>
-<td align='center' valign='top' colspan='1'><inlineequation><alt role='tex'>P</alt>
+ </m:math>
+</inlineequation></td>
+<td align='center' valign='top' colspan='1'><inlineequation>
+<alt role='tex'>P</alt>
  <m:math>
  
  <m:mrow><m:mi>P</m:mi>
  </m:mrow>
- </m:math></inlineequation>a</td>
-<td align='right' valign='top'> <inlineequation><alt role='tex'>PR_{maj}</alt>
+ </m:math>
+</inlineequation>a</td>
+<td align='right' valign='top'> <inlineequation>
+<alt role='tex'>PR_{maj}</alt>
  <m:math>
  
  <m:mrow>
@@ -986,8 +1081,10 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
    </m:msub>
   </m:mrow>
  </m:mrow>
- </m:math></inlineequation></td>
-<td align='right' valign='top'> <inlineequation><alt role='tex'>PR_{min}</alt>
+ </m:math>
+</inlineequation></td>
+<td align='right' valign='top'> <inlineequation>
+<alt role='tex'>PR_{min}</alt>
  <m:math>
  
  <m:mrow>
@@ -1002,13 +1099,16 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
    </m:msub>
   </m:mrow>
  </m:mrow>
- </m:math></inlineequation></td>
-<td align='center' valign='top' colspan='1'><inlineequation><alt role='tex'>\Theta</alt>
+ </m:math>
+</inlineequation></td>
+<td align='center' valign='top' colspan='1'><inlineequation>
+<alt role='tex'>\Theta</alt>
  <m:math>
  
  <m:mrow><m:mo>&#x398;</m:mo>
  </m:mrow>
- </m:math></inlineequation>b</td>
+ </m:math>
+</inlineequation>b</td>
 <td align='center' valign='top'>Ref.</td>
 </tr>
 <tr>
