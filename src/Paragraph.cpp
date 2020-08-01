@@ -3122,7 +3122,7 @@ struct DocBookFontState
 std::tuple<vector<xml::FontTag>, vector<xml::EndFontTag>> computeDocBookFontSwitch(FontInfo const & font_old,
 		                                                                           Font const & font,
 		                                                                           std::string const & default_family,
-		                                                                           DocBookFontState fs)
+		                                                                           DocBookFontState & fs)
 {
 	vector<xml::FontTag> tagsToOpen;
 	vector<xml::EndFontTag> tagsToClose;
@@ -3147,6 +3147,11 @@ std::tuple<vector<xml::FontTag>, vector<xml::EndFontTag>> computeDocBookFontSwit
 	if (font_old.strikeout() != curstate)
 		doFontSwitchDocBook(tagsToOpen, tagsToClose, fs.sout_flag, curstate, xml::FT_SOUT);
 
+	// xout
+	curstate = font.fontInfo().xout();
+	if (font_old.xout() != curstate)
+		doFontSwitchDocBook(tagsToOpen, tagsToClose, fs.xout_flag, curstate, xml::FT_XOUT);
+
 	// double underbar
 	curstate = font.fontInfo().uuline();
 	if (font_old.uuline() != curstate)
@@ -3169,16 +3174,14 @@ std::tuple<vector<xml::FontTag>, vector<xml::EndFontTag>> computeDocBookFontSwit
 	if (old_fs != fs.curr_fs) {
 		if (fs.shap_flag) {
 			OptionalFontType tag = fontShapeToXml(old_fs);
-			if (tag.has_value) {
+			if (tag.has_value)
 				tagsToClose.push_back(docbookEndFontTag(tag.ft));
-			}
 			fs.shap_flag = false;
 		}
 
 		OptionalFontType tag = fontShapeToXml(fs.curr_fs);
-		if (tag.has_value) {
+		if (tag.has_value)
 			tagsToOpen.push_back(docbookStartFontTag(tag.ft));
-		}
 	}
 
 	// Font family
@@ -3187,9 +3190,8 @@ std::tuple<vector<xml::FontTag>, vector<xml::EndFontTag>> computeDocBookFontSwit
 	if (old_fam != fs.curr_fam) {
 		if (fs.faml_flag) {
 			OptionalFontType tag = fontFamilyToXml(old_fam);
-			if (tag.has_value) {
+			if (tag.has_value)
 				tagsToClose.push_back(docbookEndFontTag(tag.ft));
-			}
 			fs.faml_flag = false;
 		}
 		switch (fs.curr_fam) {
@@ -3228,9 +3230,8 @@ std::tuple<vector<xml::FontTag>, vector<xml::EndFontTag>> computeDocBookFontSwit
 	if (old_size != fs.curr_size) {
 		if (fs.size_flag) {
 			OptionalFontType tag = fontSizeToXml(old_size);
-			if (tag.has_value) {
+			if (tag.has_value)
 				tagsToClose.push_back(docbookEndFontTag(tag.ft));
-			}
 			fs.size_flag = false;
 		}
 
@@ -3244,7 +3245,7 @@ std::tuple<vector<xml::FontTag>, vector<xml::EndFontTag>> computeDocBookFontSwit
 	return std::tuple<vector<xml::FontTag>, vector<xml::EndFontTag>>(tagsToOpen, tagsToClose);
 }
 
-}// anonymous namespace
+} // anonymous namespace
 
 
 void Paragraph::simpleDocBookOnePar(Buffer const & buf,
