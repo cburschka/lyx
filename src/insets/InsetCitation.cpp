@@ -552,14 +552,15 @@ void InsetCitation::docbook(XMLStream & xs, OutputParams const &) const
 		return;
 
 	// Split the different citations (on ","), so that one tag can be output for each of them.
-	string citations = to_utf8(xml::cleanID(getParam("key")));
+	// DocBook does not support having multiple citations in one tag, so that we have to deal with formatting here.
+	docstring citations = getParam("key");
 	if (citations.find(',') == string::npos) {
-		xs << xml::CompTag("biblioref", "endterm=\"" + citations + "\"");
+		xs << xml::CompTag("biblioref", "endterm=\"" + to_utf8(xml::cleanID(citations)) + "\"");
 	} else {
 		size_t pos = 0;
 		while (pos != string::npos) {
 			pos = citations.find(',');
-			xs << xml::CompTag("biblioref", "endterm=\"" + citations.substr(0, pos) + "\"");
+			xs << xml::CompTag("biblioref", "endterm=\"" + to_utf8(xml::cleanID(citations.substr(0, pos))) + "\"");
 			citations.erase(0, pos + 1);
 
 			if (pos != string::npos) {
@@ -627,7 +628,7 @@ void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 	// check if we have to do a qualified list
 	vector<docstring> keys = getVectorFromString(cleanupWhitespace(key));
 	bool const qualified = cs.hasQualifiedList
-		&& (!getParam("pretextlist").empty()
+		&& (!getParam("F").empty()
 		    || !getParam("posttextlist").empty());
 
 	if (runparams.inulemcmd > 0)
