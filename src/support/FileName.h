@@ -291,6 +291,14 @@ public:
 	std::string
 	mangledFileName(std::string const & dir = empty_string()) const;
 
+	/** Identical to mangledFileName, wit the following additions:
+	*
+	* @encrypt_path allows using hash (SHA-256) instead of full path.
+	* @use_counter allows disabling the counter in the filename.
+	*/
+	std::string
+	mangledFileName(std::string const & dir, bool use_counter, bool encrypt_path) const;
+
 	/// \return the absolute file name without its .gz, .z, .Z extension
 	std::string unzippedFileName() const;
 

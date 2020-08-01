@@ -575,7 +575,7 @@ copyToDirIfNeeded(DocFileName const & file, string const & dir)
 	if (rtrim(only_path, "/") == rtrim(dir, "/"))
 		return make_pair(IDENTICAL_PATHS, FileName(file_in));
 
-	string mangled = file.mangledFileName();
+	string mangled = file.mangledFileName(empty_string(), false, true);
 	if (theFormats().isZippedFile(file)) {
 		// We need to change _eps.gz to .eps.gz. The mangled name is
 		// still unique because of the counter in mangledFileName().

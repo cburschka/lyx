@@ -22,6 +22,7 @@
 #include "support/Package.h"
 #include "support/qstring_helpers.h"
 
+#include <QCryptographicHash>
 #include <QDateTime>
 #include <QDir>
 #include <QFile>
@@ -956,6 +957,11 @@ string DocFileName::outputFileName(string const & path) const
 
 string DocFileName::mangledFileName(string const & dir) const
 {
+	return mangledFileName(dir, true, false);
+};
+
+string DocFileName::mangledFileName(string const & dir, bool use_counter, bool encrypt_path) const
+{
 	// Concurrent access to these variables is possible.
 
 	// We need to make sure that every DocFileName instance for a given
@@ -972,6 +978,19 @@ string DocFileName::mangledFileName(string const & dir) const
 	string const name = absFileName();
 	// Now the real work. Remove the extension.
 	string mname = support::changeExtension(name, string());
+
+	if (encrypt_path) {
+		QString qname = toqstr(mname);
+#if QT_VERSION >= 0x050000
+		QByteArray hash  = QCryptographicHash::hash(qname.toLocal8Bit(),QCryptographicHash::Sha256);
+#else
+		QByteArray hash  = QCryptographicHash::hash(qname.toLocal8Bit(),QCryptographicHash::Sha1);
+#endif
+		hash = hash.toHex();
+		mname = fromqstr(QString(hash));
+		mname = mname + "_" + onlyFileName();
+		}
+
 	// The mangled name must be a valid LaTeX name.
 	// The list of characters to keep is probably over-restrictive,
 	// but it is not really a problem.
@@ -991,9 +1010,12 @@ string DocFileName::mangledFileName(string const & dir) const
 	// Prepend a counter to the filename. This is necessary to make
 	// the mangled name unique.
 	static int counter = 0;
-	ostringstream s;
-	s << counter++ << mname;
-	mname = s.str();
+
+	if (use_counter) {
+		ostringstream s;
+		s << counter++ << mname;
+		mname = s.str();
+	}
 
 	// MiKTeX's YAP (version 2.4.1803) crashes if the file name
 	// is longer than about 160 characters. MiKTeX's pdflatex
