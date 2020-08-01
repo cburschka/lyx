@@ -6,11 +6,11 @@
 </info>
 <section>
 <title>Introduction</title>
-<Standard>A focal problem today in the dynamics of globular clusters is core collapse. It has been predicted by theory for decades <biblioref endterm="hen61" />, <biblioref endterm="lyn68" />, <biblioref endterm="spi85" />, but observation has been less alert to the phenomenon. For many years the central brightness peak in M15 <biblioref endterm="kin75" />, <biblioref endterm="new78" /> seemed a unique anomaly. Then <biblioref endterm="aur82" /> suggested a central peak in NGC 6397, and a limited photographic survey of ours <biblioref endterm="djo84" /> found three more cases, including NGC 6624, whose sharp center had often been remarked on <biblioref endterm="can78" />. </Standard>
+<para>A focal problem today in the dynamics of globular clusters is core collapse. It has been predicted by theory for decades <biblioref endterm="hen61" />, <biblioref endterm="lyn68" />, <biblioref endterm="spi85" />, but observation has been less alert to the phenomenon. For many years the central brightness peak in M15 <biblioref endterm="kin75" />, <biblioref endterm="new78" /> seemed a unique anomaly. Then <biblioref endterm="aur82" /> suggested a central peak in NGC 6397, and a limited photographic survey of ours <biblioref endterm="djo84" /> found three more cases, including NGC 6624, whose sharp center had often been remarked on <biblioref endterm="can78" />. </para>
 </section>
 <section>
 <title>Observations</title>
-<Standard>All our observations were short direct exposures with CCD's. At Lick Observatory we used a TI 500<inlineequation><alt role='tex'>\times</alt>
+<para>All our observations were short direct exposures with CCD's. At Lick Observatory we used a TI 500<inlineequation><alt role='tex'>\times</alt>
  <m:math>
  
  <m:mrow><m:mo>&#x00D7;</m:mo>
@@ -64,17 +64,17 @@
  
  <m:mrow><m:mi>B</m:mi>
  </m:mrow>
- </m:math></inlineequation>. All four cameras had scales of the order of 0.4 arcsec/pixel, and our field sizes were around 3 arcmin.</Standard>
-<Standard>The CCD images are unfortunately not always suitable, for very poor clusters or for clusters with large cores. Since the latter are easily studied by other means, we augmented our own CCD profiles by collecting from the literature a number of star-count profiles <biblioref endterm="kin68" />, <biblioref endterm="pet76" />, <biblioref endterm="har84" />, <biblioref endterm="ort85" />, as well as photoelectric profiles <biblioref endterm="kin66" />, <biblioref endterm="kin75" /> and electronographic profiles <biblioref endterm="kro84" />. In a few cases we judged normality by eye estimates on one of the Sky Surveys.</Standard>
+ </m:math></inlineequation>. All four cameras had scales of the order of 0.4 arcsec/pixel, and our field sizes were around 3 arcmin.</para>
+<para>The CCD images are unfortunately not always suitable, for very poor clusters or for clusters with large cores. Since the latter are easily studied by other means, we augmented our own CCD profiles by collecting from the literature a number of star-count profiles <biblioref endterm="kin68" />, <biblioref endterm="pet76" />, <biblioref endterm="har84" />, <biblioref endterm="ort85" />, as well as photoelectric profiles <biblioref endterm="kin66" />, <biblioref endterm="kin75" /> and electronographic profiles <biblioref endterm="kro84" />. In a few cases we judged normality by eye estimates on one of the Sky Surveys.</para>
 </section>
 <section>
 <title>Helicity Amplitudes</title>
-<Standard>It has been realized that helicity amplitudes provide a convenient means for Feynman diagram<footnote><para>Footnotes can be inserted like this.</para>
-</footnote> evaluations. These amplitude-level techniques are particularly convenient for calculations involving many Feynman diagrams, where the usual trace techniques for the amplitude squared becomes unwieldy. Our calculations use the helicity techniques developed by other authors <biblioref endterm="hag86" />; we briefly summarize below.</Standard>
+<para>It has been realized that helicity amplitudes provide a convenient means for Feynman diagram<footnote><para>Footnotes can be inserted like this.</para>
+</footnote> evaluations. These amplitude-level techniques are particularly convenient for calculations involving many Feynman diagrams, where the usual trace techniques for the amplitude squared becomes unwieldy. Our calculations use the helicity techniques developed by other authors <biblioref endterm="hag86" />; we briefly summarize below.</para>
 <section>
 <title>Formalism</title>
-<Standard><anchor xml:id="bozomath" /></Standard>
-<Standard>A tree-level amplitude in <inlineequation><alt role='tex'>e^{+}e^{-}</alt>
+<para><anchor xml:id="bozomath" /></para>
+<para>A tree-level amplitude in <inlineequation><alt role='tex'>e^{+}e^{-}</alt>
  <m:math>
  
  <m:mrow>
@@ -293,9 +293,9 @@
    </m:mrow>
   </m:msubsup>
  </m:mrow>
- </m:math></inlineequation> may be formed from particle four-momenta, gauge-boson polarization vectors or fermion strings with an uncontracted Lorentz index associated with final-state fermions.</Standard>
+ </m:math></inlineequation> may be formed from particle four-momenta, gauge-boson polarization vectors or fermion strings with an uncontracted Lorentz index associated with final-state fermions.</para>
 <NoteToEditor>Figures 1 and 2 should appear side-by-side in print</NoteToEditor>
-<Standard>In the chiral representation the <inlineequation><alt role='tex'>\gamma</alt>
+<para>In the chiral representation the <inlineequation><alt role='tex'>\gamma</alt>
  <m:math>
  
  <m:mrow><m:mi>&#x3B3;</m:mi>
@@ -499,8 +499,8 @@
  </m:math></informalequation> The spinors are expressed in terms of two-component Weyl spinors as <informalequation><alt role='tex'>u=\left(\begin{array}{c}
 (u)_{-}\\
 (u)_{+}
-\end{array}\right),v={\textbf{(}}\vdag_{+}{\textbf{,}}\vdag_{-}{\textbf{)}}.</alt>MathML export failed. Please report this as a bug.</informalequation></Standard>
-<Standard>The Weyl spinors are given in terms of helicity eigenstates <inlineequation><alt role='tex'>\chi_{\lambda}(p)</alt>
+\end{array}\right),v={\textbf{(}}\vdag_{+}{\textbf{,}}\vdag_{-}{\textbf{)}}.</alt>MathML export failed. Please report this as a bug.</informalequation></para>
+<para>The Weyl spinors are given in terms of helicity eigenstates <inlineequation><alt role='tex'>\chi_{\lambda}(p)</alt>
  <m:math>
  
  <m:mrow>
@@ -523,7 +523,7 @@
   <m:mrow><m:mi>&#x3BB;</m:mi><m:mo>=</m:mo><m:mo>&#x00B1;</m:mo><m:mn>1</m:mn>
   </m:mrow>
  </m:mrow>
- </m:math></inlineequation> by </Standard>
+ </m:math></inlineequation> by </para>
 <MathLetters>
 <informalequation><alt role='tex'>u(p,\lambda)_{\pm} &amp; = &amp; (E\pm\lambda|{\textbf{p}}|)^{1/2}\chi_{\lambda}(p),\\
 v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi_{-\lambda}(p)
@@ -618,7 +618,7 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
 </section>
 <section>
 <title>Floating material and so forth</title>
-<Standard>Consider a task that computes profile parameters for a modified Lorentzian of the form <informalequation><alt role='tex'>I=\frac{1}{1+d_{1}^{P(1+d_{2})}}</alt>
+<para>Consider a task that computes profile parameters for a modified Lorentzian of the form <informalequation><alt role='tex'>I=\frac{1}{1+d_{1}^{P(1+d_{2})}}</alt>
  <m:math>
  
  <m:mrow>
@@ -809,8 +809,8 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
 <m:mo>cos</m:mo><m:mo>&#x398;</m:mo>
   </m:mrow>
  </m:mrow>
- </m:math></informalequation></Standard>
-<Standard>In these expressions <inlineequation><alt role='tex'>x_{0}</alt>
+ </m:math></informalequation></para>
+<para>In these expressions <inlineequation><alt role='tex'>x_{0}</alt>
  <m:math>
  
  <m:mrow>
@@ -866,7 +866,7 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
    </m:mrow>
   </m:mfrac>
  </m:mrow>
- </m:math></inlineequation> of the electronically submitted abstracts for AAS meetings are error-free. </Standard>
+ </m:math></inlineequation> of the electronically submitted abstracts for AAS meetings are error-free. </para>
 <Acknowledgements>We are grateful to V. Barger, T. Han, and R. J. N. Phillips for doing the math in section&#xA0;<xref linkend="bozomath" />. More information on the AASTeX macros package are available at <link xlink:href="http://www.aas.org/publications/aastex">http://www.aas.org/publications/aastex</link> or the <link xlink:href="ftp://www.aas.org/pubs/AAS ftp site">AAS ftp site</link>.</Acknowledgements>
 <Software>IRAF, AIPS, Astropy, ...</Software>
 <Appendix></Appendix>

@@ -60,7 +60,7 @@ End
 
 
 Style Standard
-	Category        MainText
+	Category    MainText
 	Margin		Static
 	LatexType	Paragraph
 	LatexName	dummy
@@ -69,6 +69,7 @@ Style Standard
 	Align		Block
 	AlignPossible	Block, Left, Right, Center
 	LabelType	No_Label
+	DocBookTag  para
 End
 
 
