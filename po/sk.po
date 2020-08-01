@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-07-30 16:39+0200\n"
-"PO-Revision-Date: 2020-07-30 14:59+0000\n"
+"POT-Creation-Date: 2020-08-01 08:07+0200\n"
+"PO-Revision-Date: 2020-08-01 16:57+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -35189,15 +35189,16 @@ msgstr ""
 "Problematický súbor:\n"
 "%1$s"
 
-#: src/insets/InsetInclude.cpp:1071
+#: src/insets/InsetInclude.cpp:1069
 #, c-format
 msgid ""
-"LyX does not know how to include non-LyX files when generating DocBook "
-"output. Offending file:\n"
+"LyX does not know how to process included non-LyX files when generating "
+"DocBook output. The content of the file will be output as a comment. "
+"Offending file:\n"
 "%1$s"
 msgstr ""
-"LyX nevie ako zahrnúť ne-LyX-ové súbory pri generácii výstupu DocBook. "
-"Problematický súbor:\n"
+"LyX nevie ako spracovať ne-LyX-ové súbory pri generácii výstupu DocBook. "
+"Obsah súboru bude písaný ako komentár. Problematický súbor:\n"
 "%1$s"
 
 #: src/insets/InsetIndex.cpp:156
