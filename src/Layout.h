@@ -203,6 +203,8 @@ public:
 	///
 	std::string const & docbookwrapperattr() const;
 	///
+	bool docbookwrappermergewithprevious() const { return docbookwrappermergewithprevious_; }
+	///
 	std::string const & docbooksectiontag() const;
 	///
 	std::string const & docbookitemwrappertag() const;
@@ -512,6 +514,8 @@ private:
 	mutable std::string docbookwrappertag_;
 	/// Roles to add to docbookwrappertag_, if any (default: none).
 	mutable std::string docbookwrapperattr_;
+	/// Whether this wrapper tag may be merged with the previously opened wrapper tag.
+	bool docbookwrappermergewithprevious_;
 	/// Outer tag for this section, only if this layout represent a sectionning item, including chapters (default: section).
 	mutable std::string docbooksectiontag_;
 	/// Whether this tag must/can/can't go into an <info> tag (default: never, as it only makes sense for metadata).
