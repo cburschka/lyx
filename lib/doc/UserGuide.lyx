@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 596
+\lyxformat 598
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -154,6 +154,7 @@ logicalmkup
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\docbook_table_output 0
 \author -1402925745 "Günter Milde"
 \author -712698321 "Jürgen Spitzmüller"
 \author -584632292 "Richard Kimberly Heck"
@@ -5214,7 +5215,13 @@ Subparagraph
 \SpecialChar LyX
  labels each heading with a series of numbers, separated by periods.
  The numbers describe where in the document you are.
- Unlike the other headings, parts are numbered with Latin letters.
+ Unlike the other headings, parts are numbered with 
+\change_inserted -131811572 1596358186
+Roman numerals
+\change_deleted -131811572 1596358192
+Latin letters
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Standard
@@ -15137,6 +15144,8 @@ status open
 
 \change_inserted -712698321 1525607513
 no 
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -45984,6 +45993,8 @@ status collapsed
 \change_inserted -712698321 1557645185
 \SpecialChar LaTeX
  packages ! inputenc
+\change_unchanged
+
 \end_layout
 
 \end_inset
