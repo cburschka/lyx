@@ -948,7 +948,7 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
  </m:math>
 </inlineequation> of the electronically submitted abstracts for AAS meetings are error-free. </para>
 <acknowledgement><para>We are grateful to V. Barger, T. Han, and R. J. N. Phillips for doing the math in section&#xA0;<xref linkend="bozomath" />. More information on the AASTeX macros package are available at <link xlink:href="http://www.aas.org/publications/aastex">http://www.aas.org/publications/aastex</link> or the <link xlink:href="ftp://www.aas.org/pubs/AAS ftp site">AAS ftp site</link>.</para></acknowledgement>
-<Software>IRAF, AIPS, Astropy, ...</Software>
+<para><application>IRAF, AIPS, Astropy, ...</application></para>
 <Appendix></Appendix>
 <bibliography>
 <bibliomixed xml:id='aur82'>Aurière, M. 1982, <!-- \aap -->, 109, 301 </bibliomixed>
@@ -966,9 +966,10 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
 <bibliomixed xml:id='ort85'>Ortolani, S., Rosino, L., and Sandage, A. 1985, <!-- \aj -->, 90, 473 </bibliomixed>
 <bibliomixed xml:id='pet76'>Peterson, C. J. 1976, <!-- \aj -->, 81, 617 </bibliomixed>
 <bibliomixed xml:id='spi85'>Spitzer, L. 1985, Dynamics of Star Clusters, J. Goodman and P. Hut, Dordrecht: Reidel, 109 </bibliomixed>
-<bibliomixed>
-</bibliomixed>
-<bibliomixed><table xml:id="tbl-2">
+</bibliography>
+<para>
+</para>
+<table xml:id="tbl-2">
 <caption>Terribly relevant tabular information.</caption>
 
 <tbody>
@@ -1208,10 +1209,8 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
 <TableComments>We can also attach a long-ish paragraph of explanatory material to a table. Use \tablerefs to append a list of references. The following references were from a different table: I've patched them in here to show how they look, but don't take them too seriously—I certainly have not.</TableComments>
 <TableRefs>(1) Barbuy, Spite, &amp; Spite 1985; (2) Bond 1980; (3) Carbon et al. 1987; (4) Hobbs &amp; Duncan 1987; (5) Gilroy et al. 1988: (6) Gratton &amp; Ortolani 1986; (7) Gratton &amp; Sneden 1987; (8) Gratton &amp; Sneden (1988); (9) Gratton &amp; Sneden 1991; (10) Kraft et al. 1982; (11) LCL, or Laird, 1990; (12) Leep &amp; Wallerstein 1981; (13) Luck &amp; Bond 1981; (14) Luck &amp; Bond 1985; (15) Magain 1987; (16) Magain 1989; (17) Peterson 1981; (18) Peterson, Kurucz, &amp; Carney 1990; (19) RMB; (20) Schuster &amp; Nissen 1988; (21) Schuster &amp; Nissen 1989b; (22) Spite et al. 1984; (23) Spite &amp; Spite 1986; (24) Hobbs &amp; Thorburn 1991; (25) Hobbs et al. 1991; (26) Olsen 1983.</TableRefs>
 </table>
-</bibliomixed>
 
 
-</bibliography>
 </section>
 
 </article>

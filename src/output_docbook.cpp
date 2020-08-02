@@ -274,6 +274,14 @@ ParagraphList::const_iterator findLastParagraph(
 	return p;
 }
 
+ParagraphList::const_iterator findLastBibliographyParagraph(
+		ParagraphList::const_iterator p,
+		ParagraphList::const_iterator const & pend) {
+	for (++p; p != pend && p->layout().latextype == LATEX_BIB_ENVIRONMENT; ++p);
+
+	return p;
+}
+
 
 ParagraphList::const_iterator findEndOfEnvironment(
 		ParagraphList::const_iterator const & pstart,
@@ -339,7 +347,7 @@ ParagraphList::const_iterator makeParagraphBibliography(
 		xs << xml::CR();
 	}
 
-	// Generate the required paragraphs.
+	// Generate the required paragraphs, but only if they are .
 	for (; par != pend; ++par) {
 		// Start the precooked bibliography entry. This is very much like opening a paragraph tag.
 		// Don't forget the citation ID!
@@ -628,7 +636,7 @@ ParagraphList::const_iterator makeEnvironment(
 			par = makeParagraphs(buf, xs, runparams, text, par, send);
 			break;
 		case LATEX_BIB_ENVIRONMENT:
-			send = findLastParagraph(par, pend);
+			send = findLastBibliographyParagraph(par, pend);
 			par = makeParagraphBibliography(buf, xs, runparams, text, par, send);
 			break;
 		case LATEX_COMMAND:
@@ -705,7 +713,7 @@ pair<ParagraphList::const_iterator, ParagraphList::const_iterator> makeAny(
 			break;
 		}
 		case LATEX_BIB_ENVIRONMENT: {
-			send = findLastParagraph(par, pend);
+			send = findLastBibliographyParagraph(par, pend);
 			par = makeParagraphBibliography(buf, xs, ourparams, text, par, send);
 			break;
 		}
