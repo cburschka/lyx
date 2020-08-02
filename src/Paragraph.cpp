@@ -2393,8 +2393,9 @@ void Paragraph::latex(BufferParams const & bparams,
 	pos_type body_pos = beginOfBody();
 	unsigned int column = 0;
 
-	// If we are inside an inset, the real outerfont is local_font
-	Font const real_outerfont = (runparams.local_font != nullptr)
+	// If we are inside an non inheritFont() inset, the real outerfont is local_font
+	Font const real_outerfont = (!inInset().inheritFont()
+				     && runparams.local_font != nullptr)
 			? Font(runparams.local_font->fontInfo()) : outerfont;
 
 	if (body_pos > 0) {
@@ -2558,7 +2559,7 @@ void Paragraph::latex(BufferParams const & bparams,
 		++column;
 
 		// Fully instantiated font
-		Font const current_font = getFont(bparams, i, real_outerfont);
+		Font const current_font = getFont(bparams, i, outerfont);
 
 		Font const last_font = running_font;
 		bool const in_ct_deletion = (bparams.output_changes

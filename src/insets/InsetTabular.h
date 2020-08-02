@@ -80,6 +80,8 @@ public:
 				  UpdateType utype, TocBackend & backend) const;
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
+	/// Needs to be same as InsetTabular
+	bool inheritFont() const { return false; }
 private:
 	/// unimplemented
 	InsetTableCell();
