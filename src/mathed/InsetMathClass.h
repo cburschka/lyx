@@ -38,6 +38,10 @@ public:
 	void infoize(odocstream & os) const;
 	///
 	InsetCode lyxCode() const { return MATH_CLASS_CODE; }
+	///
+	InsetMathClass * asClassInset() { return this; }
+	///
+	InsetMathClass const * asClassInset() const { return this; }
 
 private:
 	virtual Inset * clone() const;

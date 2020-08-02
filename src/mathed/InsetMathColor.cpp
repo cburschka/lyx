@@ -96,7 +96,46 @@ void InsetMathColor::validate(LaTeXFeatures & features) const
 
 void InsetMathColor::write(WriteStream & os) const
 {
-	if (normalcolor(color_))
+	// We have to ensure correct spacing when the front and/or back
+	// atoms are not ordinary ones (bug 11827).
+	docstring const frontclass =
+		cell(0).size() ? class_to_string(cell(0).front()->mathClass())
+		               : from_ascii("mathord");
+	docstring const backclass =
+		cell(0).size() ? class_to_string(cell(0).back()->mathClass())
+		               : from_ascii("mathord");
+	bool adjchk = os.latex() && !os.inMathClass() && (normalcolor(color_) || oldstyle_);
+	bool adjust_front = frontclass != "mathord" && adjchk;
+	bool adjust_back = backclass != "mathord" && adjchk;
+	docstring const colswitch =
+		oldstyle_ ? from_ascii("{\\color{") + color_ + from_ascii("}")
+			  : from_ascii("{\\normalcolor ");
+
+	if (adjust_front && adjust_back) {
+		os << '\\' << frontclass << colswitch << cell(0).front() << '}';
+		if (cell(0).size() > 2) {
+			os << colswitch;
+			for (size_t i = 1; i < cell(0).size() - 1; ++i)
+				os << cell(0)[i];
+			os << '}';
+		}
+		if (cell(0).size() > 1)
+			os << '\\' << backclass << colswitch << cell(0).back() << '}';
+	} else if (adjust_front) {
+		os << '\\' << frontclass << colswitch << cell(0).front() << '}';
+		if (cell(0).size() > 1) {
+			os << colswitch;
+			for (size_t i = 1; i < cell(0).size(); ++i)
+				os << cell(0)[i];
+			os << '}';
+		}
+	} else if (adjust_back) {
+		os << colswitch;
+		for (size_t i = 0; i < cell(0).size() - 1; ++i)
+			os << cell(0)[i];
+		os << '}' << '\\' << backclass << colswitch << cell(0).back()
+		   << '}';
+	} else if (normalcolor(color_))
 		// reset to default color inside another color inset
 		os << "{\\normalcolor " << cell(0) << '}';
 	else if (oldstyle_)

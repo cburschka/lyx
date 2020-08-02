@@ -101,6 +101,10 @@ public:
 	void asciiOnly(bool ascii);
 	/// tell whether to use only ascii chars when producing latex code
 	bool asciiOnly() const { return ascii_; }
+	/// tell whether we are in a MathClass inset
+	void inMathClass(bool mathclass) { mathclass_ = mathclass; };
+	/// tell whether we are in a MathClass inset
+	bool inMathClass() const { return mathclass_; }
 	/// LaTeX encoding
 	Encoding const * encoding() const { return encoding_; }
 
@@ -142,6 +146,8 @@ private:
 	Encoding const * encoding_;
 	/// Row entry we are in
 	TexRow::RowEntry row_entry_;
+	/// whether we are in a MathClass inset
+	bool mathclass_;
 };
 
 ///

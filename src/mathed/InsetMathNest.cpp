@@ -330,6 +330,7 @@ void InsetMathNest::write(WriteStream & os) const
 	ModeSpecifier specifier(os, currentMode(), lockedMode());
 	docstring const latex_name = name();
 	os << '\\' << latex_name;
+	os.inMathClass(asClassInset());
 	for (size_t i = 0; i < nargs(); ++i) {
 		Changer dummy = os.changeRowEntry(TexRow::mathEntry(id(),i));
 		os << '{' << cell(i) << '}';
@@ -340,6 +341,7 @@ void InsetMathNest::write(WriteStream & os) const
 		os << "\\lyxlock";
 		os.pendingSpace(true);
 	}
+	os.inMathClass(false);
 }
 
 
