@@ -50,7 +50,7 @@ namespace lyx {
 
 namespace {
 
-std::string const fontToDocBookTag(xml::FontTypes type)
+std::string fontToDocBookTag(xml::FontTypes type)
 {
 	switch (type) {
 	case xml::FontTypes::FT_EMPH:
@@ -90,6 +90,7 @@ std::string const fontToDocBookTag(xml::FontTypes type)
 	}
 }
 
+
 string fontToRole(xml::FontTypes type)
 {
 	// Specific fonts are achieved with roles. The only common ones are "" for basic emphasis,
@@ -103,14 +104,13 @@ string fontToRole(xml::FontTypes type)
 		return "";
 	case xml::FontTypes::FT_BOLD:
 		return "bold";
-	case xml::FontTypes::FT_NOUN:
-		return ""; // Outputs a <person>
-	case xml::FontTypes::FT_TYPE:
-		return ""; // Outputs a <code>
+	case xml::FontTypes::FT_NOUN: // Outputs a <person>
+	case xml::FontTypes::FT_TYPE: // Outputs a <code>
+		return "";
 	case xml::FontTypes::FT_UBAR:
 		return "underline";
 
-		// All other roles are non-standard for DocBook.
+	// All other roles are non-standard for DocBook.
 
 	case xml::FontTypes::FT_WAVE:
 		return "wave";
@@ -814,7 +814,21 @@ pair<ParagraphList::const_iterator, ParagraphList::const_iterator> makeAny(
 
 
 using DocBookDocumentSectioning = tuple<bool, pit_type>;
-using DocBookInfoTag = tuple<set<pit_type>, set<pit_type>, pit_type, pit_type>;
+
+
+struct DocBookInfoTag
+{
+	const set<pit_type> shouldBeInInfo;
+	const set<pit_type> mustBeInInfo;
+	const set<pit_type> abstract;
+	pit_type bpit;
+	pit_type epit;
+
+	DocBookInfoTag(const set<pit_type> & shouldBeInInfo, const set<pit_type> & mustBeInInfo,
+				   const set<pit_type> & abstract, pit_type bpit, pit_type epit) :
+				   shouldBeInInfo(shouldBeInInfo), mustBeInInfo(mustBeInInfo), abstract(abstract),
+				   bpit(bpit), epit(epit) {}
+};
 
 
 DocBookDocumentSectioning hasDocumentSectioning(ParagraphList const &paragraphs, pit_type bpit, pit_type const epit) {
@@ -847,6 +861,7 @@ bool hasOnlyNotes(Paragraph const & par)
 DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs, pit_type bpit, pit_type const epit) {
 	set<pit_type> shouldBeInInfo;
 	set<pit_type> mustBeInInfo;
+	set<pit_type> abstract;
 
 	// Find the first non empty paragraph by mutating bpit.
 	while (bpit < epit) {
@@ -859,13 +874,17 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs, pit_type b
 
 	// Find the last info-like paragraph.
 	pit_type cpit = bpit;
+	bool hasAbstractLayout = false;
 	while (cpit < epit) {
 		// Skip paragraphs only containing one note.
-		Paragraph const &par = paragraphs[cpit];
+		Paragraph const & par = paragraphs[cpit];
 		if (hasOnlyNotes(par)) {
 			cpit += 1;
 			continue;
 		}
+
+		if (par.layout().name() == from_ascii("Abstract"))
+			hasAbstractLayout = true;
 
 		// Based on layout information, store this paragraph in one set: should be in <info>, must be.
 		Layout const &style = par.layout();
@@ -876,42 +895,55 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs, pit_type b
 			shouldBeInInfo.emplace(cpit);
 		} else {
 			// Hypothesis: the <info> parts should be grouped together near the beginning bpit.
+			// There may be notes in between, but nothing else.
 			break;
 		}
 		cpit += 1;
 	}
 	// Now, cpit points to the last paragraph that has things that could go in <info>.
-	// bpit is still the beginning of the <info> part.
+	// bpit is the beginning of the <info> part.
 
-	return make_tuple(shouldBeInInfo, mustBeInInfo, bpit, cpit);
-}
+	// Go once again through the list of paragraphs to find the abstract. If there is an abstract
+	// layout, only consider it. Otherwise, an abstract is just a sequence of paragraphs with text.
+	if (hasAbstractLayout) {
+		pit_type pit = bpit;
+		while (pit < cpit) { // Don't overshoot the <info> part.
+			if (paragraphs[pit].layout().name() == from_ascii("Abstract"))
+				abstract.emplace(pit);
+			pit++;
+		}
+	} else {
+		pit_type lastAbstract = epit + 1; // A nonsensical value.
+		docstring lastAbstractLayout;
 
+		pit_type pit = bpit;
+		while (pit < cpit) { // Don't overshoot the <info> part.
+			const Paragraph & par = paragraphs.at(pit);
+			if (!par.insetList().empty()) {
+				for (const auto &i : par.insetList()) {
+					if (i.inset->getText(0) != nullptr) {
+						if (lastAbstract == epit + 1) {
+							// First paragraph that matches the heuristic definition of abstract.
+							lastAbstract = pit;
+							lastAbstractLayout = par.layout().name();
+						} else if (pit > lastAbstract + 1 || par.layout().name() != lastAbstractLayout) {
+							// This is either too far from the last abstract paragraph or doesn't
+							// have the right layout name, BUT there has already been an abstract
+							// in this document: done with detecting the abstract.
+							goto done; // Easier to get out of two nested loops.
+						}
 
-bool hasAbstractBetween(ParagraphList const &paragraphs, pit_type const bpitAbstract, pit_type const epitAbstract)
-{
-	// Hypothesis: the paragraphs between bpitAbstract and epitAbstract can be considered an abstract because they
-	// are just after a document or part title.
-	if (epitAbstract - bpitAbstract <= 0)
-		return false;
-
-	// If there is something between these paragraphs, check if it's compatible with an abstract (i.e. some text).
-	pit_type bpit = bpitAbstract;
-	while (bpit < epitAbstract) {
-		const Paragraph &p = paragraphs.at(bpit);
-
-		if (p.layout().name() == from_ascii("Abstract"))
-			return true;
-
-		if (!p.insetList().empty()) {
-			for (const auto &i : p.insetList()) {
-				if (i.inset->getText(0) != nullptr) {
-					return true;
+						abstract.emplace(pit);
+						break;
+					}
 				}
 			}
+			pit++;
 		}
-		bpit++;
 	}
-	return false;
+
+	done:
+	return DocBookInfoTag(shouldBeInInfo, mustBeInInfo, abstract, bpit, cpit);
 }
 
 
@@ -947,26 +979,18 @@ void outputDocBookInfo(
 		XMLStream & xs,
 		OutputParams const & runparams,
 		ParagraphList const & paragraphs,
-		DocBookInfoTag const & info,
-		pit_type bpitAbstract,
-		pit_type const epitAbstract)
+		DocBookInfoTag const & info)
 {
-	// Consider everything between bpitAbstract and epitAbstract (excluded) as paragraphs for the abstract.
-	// Use bpitAbstract >= epitAbstract to indicate there is no abstract.
-
-	set<pit_type> shouldBeInInfo;
-	set<pit_type> mustBeInInfo;
-	pit_type bpitInfo;
-	pit_type epitInfo;
-	tie(shouldBeInInfo, mustBeInInfo, bpitInfo, epitInfo) = info;
-
 	// Perform an additional check on the abstract. Sometimes, there are many paragraphs that should go
 	// into the abstract, but none generates actual content. Thus, first generate to a temporary stream,
 	// then only create the <abstract> tag if these paragraphs generate some content.
 	// This check must be performed *before* a decision on whether or not to output <info> is made.
-	bool hasAbstract = hasAbstractBetween(paragraphs, bpitAbstract, epitAbstract);
+	bool hasAbstract = !info.abstract.empty();
 	docstring abstract;
 	if (hasAbstract) {
+		pit_type bpitAbstract = *std::min_element(info.abstract.begin(), info.abstract.end());
+		pit_type epitAbstract = *std::max_element(info.abstract.begin(), info.abstract.end());
+
 		odocstringstream os2;
 		XMLStream xs2(os2);
 		generateDocBookParagraphWithoutSectioning(text, buf, xs2, runparams, paragraphs, bpitAbstract, epitAbstract);
@@ -983,7 +1007,7 @@ void outputDocBookInfo(
 	}
 
 	// The abstract must go in <info>.
-	bool needInfo = !mustBeInInfo.empty() || hasAbstract;
+	bool needInfo = !info.mustBeInInfo.empty() || hasAbstract;
 
 	// Start the <info> tag if required.
 	if (needInfo) {
@@ -993,10 +1017,10 @@ void outputDocBookInfo(
 	}
 
 	// Output the elements that should go in <info>.
-	generateDocBookParagraphWithoutSectioning(text, buf, xs, runparams, paragraphs, bpitInfo, epitInfo);
+	generateDocBookParagraphWithoutSectioning(text, buf, xs, runparams, paragraphs, info.bpit, info.epit);
 
 	if (hasAbstract && !abstract.empty()) { // The second test is probably superfluous.
-		string tag = paragraphs[bpitAbstract].layout().docbookforceabstracttag();
+		string tag = paragraphs[*info.abstract.begin()].layout().docbookforceabstracttag();
 		if (tag == "NONE")
 			tag = "abstract";
 
@@ -1029,7 +1053,7 @@ void docbookFirstParagraphs(
 	ParagraphList const &paragraphs = text.paragraphs();
 	pit_type bpit = runparams.par_begin;
 	DocBookInfoTag info = getParagraphsWithInfo(paragraphs, bpit, epit);
-	outputDocBookInfo(text, buf, xs, runparams, paragraphs, info, get<3>(info), epit);
+	outputDocBookInfo(text, buf, xs, runparams, paragraphs, info);
 }
 
 
@@ -1056,8 +1080,8 @@ void docbookSimpleAllParagraphs(
 	pit_type bpit = runparams.par_begin;
 	pit_type const epit = runparams.par_end;
 	DocBookInfoTag info = getParagraphsWithInfo(paragraphs, bpit, epit);
-	outputDocBookInfo(text, buf, xs, runparams, paragraphs, info, 0, 0);
-	bpit = get<3>(info); // Generate the content starting from the end of the <info> part.
+	outputDocBookInfo(text, buf, xs, runparams, paragraphs, info);
+	bpit = info.bpit;
 
 	// Then, the content.
 	ParagraphList::const_iterator const pend =
