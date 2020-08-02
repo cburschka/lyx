@@ -369,6 +369,9 @@ public:
 	/// Is the current context a listing?
 	bool docbook_in_listing;
 
+	/// Is the current context a table?
+	bool docbook_in_table;
+
 	/// Are we generating this material for inclusion in a TOC-like entity?
 	bool for_toc;
 

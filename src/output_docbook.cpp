@@ -463,14 +463,26 @@ ParagraphList::const_iterator makeParagraphs(
 				((open_par && (!runparams.docbook_in_par || nextpar != pend))
 				|| (!open_par && runparams.docbook_in_par && par == pbegin && nextpar != pend));
 
-		if (open_par)
-			openParTag(xs, lay);
+		// Determine if this paragraph has some real content. Things like new pages are not caught
+		// by Paragraph::empty(), even though they do not generate anything useful in DocBook.
+		odocstringstream os2;
+		XMLStream xs2(os2);
+		par->simpleDocBookOnePar(buf, xs2, runparams, text.outerFont(distance(begin, par)), open_par, close_par, 0);
 
-		par->simpleDocBookOnePar(buf, xs, runparams, text.outerFont(distance(begin, par)), open_par, close_par, 0);
+		docstring cleaned = os2.str();
+		static const lyx::regex reg("[ \\r\\n]*");
+		cleaned = from_utf8(lyx::regex_replace(to_utf8(cleaned), reg, string("")));
 
-		if (close_par) {
-			closeTag(xs, lay);
-			xs << xml::CR();
+		if (!cleaned.empty()) {
+			if (open_par)
+				openParTag(xs, lay);
+
+			xs << XMLStream::ESCAPE_NONE << os2.str();
+
+			if (close_par) {
+				closeTag(xs, lay);
+				xs << xml::CR();
+			}
 		}
 	}
 	return pend;

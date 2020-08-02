@@ -3658,8 +3658,8 @@ void Tabular::docbook(XMLStream & xs, OutputParams const & runparams) const
 	docstring ret;
 
 	// Some tables are inline. Likely limitation: cannot output a table within a table; is that really a limitation?
-	bool hasTableStarted = xs.isTagOpen(xml::StartTag("informaltable")) || xs.isTagOpen(xml::StartTag("table"));
-	if (!hasTableStarted) {
+	if (!runparams.docbook_in_table) { // Check on the *outer* set of parameters, so that the table can be closed
+		// properly at the end of this function.
 		xs << xml::StartTag("informaltable");
 		xs << xml::CR();
 	}
@@ -3742,7 +3742,7 @@ void Tabular::docbook(XMLStream & xs, OutputParams const & runparams) const
 	xs << xml::CR();
 
 	// If this method started the table tag, also make it close it.
-	if (!hasTableStarted) {
+	if (!runparams.docbook_in_table) {
 		xs << xml::EndTag("informaltable");
 		xs << xml::CR();
 	}

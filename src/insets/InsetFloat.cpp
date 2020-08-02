@@ -563,6 +563,109 @@ const InsetCaption* findCaptionInParagraph(const Paragraph &par)
 }
 
 
+void docbookSubfigures(XMLStream & xs, OutputParams const & runparams, const InsetCaption * caption,
+					   const InsetLabel * label, std::vector<const InsetBox *> & subfigures)
+{
+	// Ensure there is no label output, it is supposed to be handled as xml:id.
+	OutputParams rpNoLabel = runparams;
+	if (label)
+		rpNoLabel.docbook_anchors_to_ignore.emplace(label->screenLabel());
+
+	// First, open the formal group.
+	docstring attr = docstring();
+	if (label)
+		attr += "xml:id=\"" + xml::cleanID(label->screenLabel()) + "\"";
+
+	xs.startDivision(false);
+	xs << xml::StartTag("formalgroup", attr);
+	xs << xml::CR();
+
+	xs << xml::StartTag("title", attr);
+	if (caption) {
+		caption->getCaptionAsDocBook(xs, rpNoLabel);
+	} else {
+		xs << "No caption";
+		// No caption has been detected, but this tag is required for the document to be valid DocBook.
+	}
+	xs << xml::EndTag("title");
+	xs << xml::CR();
+
+	// Deal with each subfigure individually. This should also deal with their caption and their label.
+	// This should be a recursive call to InsetFloat.
+	for (const InsetBox *subfigure: subfigures) {
+		// If there is no InsetFloat in the paragraphs, output a warning.
+		bool foundInsetFloat = false;
+		for (const auto & it : subfigure->paragraphs()) {
+			for (pos_type posIn = 0; posIn < it.size(); ++posIn) {
+				const Inset *inset = it.getInset(posIn);
+				if (inset && dynamic_cast<const InsetFloat*>(inset)) {
+					foundInsetFloat = true;
+					break;
+				}
+			}
+
+			if (foundInsetFloat)
+				break;
+		}
+
+		if (!foundInsetFloat)
+			xs << XMLStream::ESCAPE_NONE << "Error: no float found in the box. "
+								"To use subfigures in DocBook, elements must be wrapped in a float "
+			                    "inset and have a title/caption.";
+		// TODO: could also output a table, that would ensure that the document is correct and *displays* correctly (but without the right semantics), instead of just an error.
+
+		// Finally, recurse.
+		subfigure->docbook(xs, runparams);
+	}
+
+	// Every subfigure is done: close the formal group.
+	xs << xml::EndTag("formalgroup");
+	xs << xml::CR();
+	xs.endDivision();
+}
+
+
+void docbookNoSubfigures(XMLStream & xs, OutputParams const & runparams, const InsetCaption * caption,
+                         const InsetLabel * label, Floating const & ftype, const InsetFloat * thisFloat)
+{
+	string const &titleTag = ftype.docbookCaption();
+
+	// Ensure there is no label output, it is supposed to be handled as xml:id.
+	OutputParams rpNoLabel = runparams;
+	if (label)
+		rpNoLabel.docbook_anchors_to_ignore.emplace(label->screenLabel());
+
+	// Ensure the float does not output its caption, as it is handled here (DocBook mandates a specific place for
+	// captions, they cannot appear at the end of the float, albeit LyX is happy with that).
+	OutputParams rpNoTitle = runparams;
+	rpNoTitle.docbook_in_float = true;
+	if (ftype.floattype() == "table")
+		rpNoTitle.docbook_in_table = true;
+
+	// Organisation: <float> <title if any/> <contents without title/> </float>.
+	docstring attr = docstring();
+	if (label)
+		attr += "xml:id=\"" + xml::cleanID(label->screenLabel()) + "\"";
+	if (!ftype.docbookAttr().empty()) {
+		if (!attr.empty())
+			attr += " ";
+		attr += from_utf8(ftype.docbookAttr());
+	}
+
+	xs << xml::StartTag(ftype.docbookTag(caption != nullptr), attr);
+	xs << xml::CR();
+	if (caption != nullptr) {
+		xs << xml::StartTag(titleTag);
+		caption->getCaptionAsDocBook(xs, rpNoLabel);
+		xs << xml::EndTag(titleTag);
+		xs << xml::CR();
+	}
+	thisFloat->InsetText::docbook(xs, rpNoTitle);
+	xs << xml::EndTag(ftype.docbookTag(caption != nullptr));
+	xs << xml::CR();
+}
+
+
 void InsetFloat::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
 	// Determine whether the float has a title or not. For this, iterate through the paragraphs and look
@@ -589,96 +692,12 @@ void InsetFloat::docbook(XMLStream & xs, OutputParams const & runparams) const
 	// Gather a few things from global environment that are shared between all following cases.
 	FloatList const &floats = buffer().params().documentClass().floats();
 	Floating const &ftype = floats.getType(params_.type);
-	string const &titleTag = ftype.docbookCaption();
 
-	// Ensure there is no label output, it is supposed to be handled as xml:id.
-	OutputParams rpNoLabel = runparams;
-	if (label)
-		rpNoLabel.docbook_anchors_to_ignore.emplace(label->screenLabel());
-
-	// Ensure the float does not output its caption, as it is handled here (DocBook mandates a specific place for
-	// captions, they cannot appear at the end of the float, albeit LyX is happy with that).
-	OutputParams rpNoTitle = runparams;
-	rpNoTitle.docbook_in_float = true;
-
-	// Deal with subfigures.
-	if (!subfigures.empty()) {
-		// First, open the formal group.
-		docstring attr = docstring();
-		if (label)
-			attr += "xml:id=\"" + xml::cleanID(label->screenLabel()) + "\"";
-
-		xs.startDivision(false);
-		xs << xml::StartTag("formalgroup", attr);
-		xs << xml::CR();
-
-		xs << xml::StartTag("title", attr);
-		if (caption) {
-			caption->getCaptionAsDocBook(xs, rpNoLabel);
-		} else {
-			xs << "No caption";
-			// No caption has been detected, but this tag is required for the document to be valid DocBook.
-		}
-		xs << xml::EndTag("title");
-		xs << xml::CR();
-
-		// Deal with each subfigure individually. This should also deal with their caption and their label.
-		// This should be a recursive call to InsetFloat.
-		for (const InsetBox *subfigure: subfigures) {
-			// If there is no InsetFloat in the paragraphs, output a warning.
-			bool foundInsetFloat = false;
-			for (auto it = subfigure->paragraphs().begin(); it != subfigure->paragraphs().end(); ++it) {
-				for (pos_type posIn = 0; posIn < it->size(); ++posIn) {
-					const Inset *inset = it->getInset(posIn);
-					if (inset && dynamic_cast<const InsetFloat*>(inset)) {
-						foundInsetFloat = true;
-						break;
-					}
-				}
-
-				if (foundInsetFloat)
-					break;
-			}
-
-			if (!foundInsetFloat)
-				xs << XMLStream::ESCAPE_NONE << "Error: no float found in the box. "
-									"To use subfigures in DocBook, elements must be wrapped in a float "
-				                    "inset and have a title/caption.";
-			// TODO: could also output a table, that would ensure that the document is correct and *displays* correctly (but without the right semantics), instead of just an error.
-
-			// Finally, recurse.
-			subfigure->docbook(xs, runparams);
-		}
-
-		// Every subfigure is done: close the formal group.
-		xs << xml::EndTag("formalgroup");
-		xs << xml::CR();
-		xs.endDivision();
-	}
-
-	// Here, ensured not to have subfigures.
-
-	// Organisation: <float> <title if any/> <contents without title/> </float>
-	docstring attr = docstring();
-	if (label)
-		attr += "xml:id=\"" + xml::cleanID(label->screenLabel()) + "\"";
-	if (!ftype.docbookAttr().empty()) {
-		if (!attr.empty())
-			attr += " ";
-		attr += from_utf8(ftype.docbookAttr());
-	}
-
-	xs << xml::StartTag(ftype.docbookTag(caption != nullptr), attr);
-	xs << xml::CR();
-	if (caption != nullptr) {
-		xs << xml::StartTag(titleTag);
-		caption->getCaptionAsDocBook(xs, rpNoLabel);
-		xs << xml::EndTag(titleTag);
-		xs << xml::CR();
-	}
-	InsetText::docbook(xs, rpNoTitle);
-	xs << xml::EndTag(ftype.docbookTag(caption != nullptr));
-	xs << xml::CR();
+	// Switch on subfigures.
+	if (!subfigures.empty())
+		docbookSubfigures(xs, runparams, caption, label, subfigures);
+	else
+		docbookNoSubfigures(xs, runparams, caption, label, ftype, this);
 }
 
 
