@@ -266,10 +266,11 @@ inline void closeItemTag(XMLStream & xs, Layout const & lay)
 
 // end of convenience functions
 
-ParagraphList::const_iterator findLastParagraph(
+ParagraphList::const_iterator findLast(
 		ParagraphList::const_iterator p,
-		ParagraphList::const_iterator const & pend) {
-	for (++p; p != pend && p->layout().latextype == LATEX_PARAGRAPH; ++p);
+		ParagraphList::const_iterator const & pend,
+		LatexType type) {
+	for (++p; p != pend && p->layout().latextype == type; ++p);
 
 	return p;
 }
@@ -644,11 +645,11 @@ ParagraphList::const_iterator makeEnvironment(
 			break;
 		}
 		case LATEX_PARAGRAPH:
-			send = findLastParagraph(par, pend);
+			send = findLast(par, pend, LATEX_PARAGRAPH);
 			par = makeParagraphs(buf, xs, runparams, text, par, send);
 			break;
 		case LATEX_BIB_ENVIRONMENT:
-			send = findLastBibliographyParagraph(par, pend);
+			send = findLast(par, pend, LATEX_BIB_ENVIRONMENT);
 			par = makeParagraphBibliography(buf, xs, runparams, text, par, send);
 			break;
 		case LATEX_COMMAND:
@@ -718,22 +719,19 @@ pair<ParagraphList::const_iterator, ParagraphList::const_iterator> makeAny(
 		}
 		case LATEX_ENVIRONMENT:
 		case LATEX_LIST_ENVIRONMENT:
-		case LATEX_ITEM_ENVIRONMENT: {
+		case LATEX_ITEM_ENVIRONMENT:
 			// FIXME Same fix here.
 			send = findEndOfEnvironment(par, pend);
 			par = makeEnvironment(buf, xs, ourparams, text, par, send);
 			break;
-		}
-		case LATEX_BIB_ENVIRONMENT: {
-			send = findLastBibliographyParagraph(par, pend);
-			par = makeParagraphBibliography(buf, xs, ourparams, text, par, send);
-			break;
-		}
-		case LATEX_PARAGRAPH: {
-			send = findLastParagraph(par, pend);
+		case LATEX_PARAGRAPH:
+			send = findLast(par, pend, LATEX_PARAGRAPH);
 			par = makeParagraphs(buf, xs, ourparams, text, par, send);
 			break;
-		}
+		case LATEX_BIB_ENVIRONMENT:
+			send = findLast(par, pend, LATEX_BIB_ENVIRONMENT);
+			par = makeParagraphBibliography(buf, xs, ourparams, text, par, send);
+			break;
 	}
 
 	return make_pair(par, send);
