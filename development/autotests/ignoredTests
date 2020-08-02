@@ -199,3 +199,7 @@ export/export/lyx2lyx/.*
 check_load/export/xhtml/.*
 lyx2lyx/export/xhtml/.*
 export/export/xhtml/.*(lyx..|dvi.*|pdf.*)
+
+# DOCBOOK
+# not expected to successful compile 
+export/export/docbook/.*(lyx..|dvi.*|pdf.*)
