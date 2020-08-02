@@ -189,7 +189,7 @@ namespace {
 
 // convenience functions
 
-void openParTag(XMLStream &xs, Layout const &lay)
+void openParTag(XMLStream & xs, Layout const & lay)
 {
 	if (lay.docbookwrappertag() != "NONE") {
 		xs << xml::StartTag(lay.docbookwrappertag(), lay.docbookwrapperattr());
@@ -203,7 +203,7 @@ void openParTag(XMLStream &xs, Layout const &lay)
 }
 
 
-void closeTag(XMLStream &xs, Layout const &lay)
+void closeTag(XMLStream & xs, Layout const & lay)
 {
 	string tag = lay.docbooktag();
 	if (tag == "Plain Layout")
@@ -228,14 +228,14 @@ void closeLabelTag(XMLStream & xs, Layout const & lay)
 }
 
 
-void openItemTag(XMLStream &xs, Layout const &lay)
+void openItemTag(XMLStream & xs, Layout const & lay)
 {
 	xs << xml::StartTag(lay.docbookitemtag(), lay.docbookitemattr());
 }
 
 
 // Return true when new elements are output in a paragraph, false otherwise.
-bool openInnerItemTag(XMLStream &xs, Layout const &lay)
+bool openInnerItemTag(XMLStream & xs, Layout const & lay)
 {
 	if (lay.docbookiteminnertag() != "NONE") {
 		xs << xml::CR();
@@ -249,7 +249,7 @@ bool openInnerItemTag(XMLStream &xs, Layout const &lay)
 }
 
 
-void closeInnerItemTag(XMLStream &xs, Layout const &lay)
+void closeInnerItemTag(XMLStream & xs, Layout const & lay)
 {
 	if (lay.docbookiteminnertag()!= "NONE") {
 		xs << xml::EndTag(lay.docbookiteminnertag());
@@ -258,7 +258,7 @@ void closeInnerItemTag(XMLStream &xs, Layout const &lay)
 }
 
 
-inline void closeItemTag(XMLStream &xs, Layout const &lay)
+inline void closeItemTag(XMLStream & xs, Layout const & lay)
 {
 	xs << xml::EndTag(lay.docbookitemtag());
 	xs << xml::CR();
