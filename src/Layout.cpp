@@ -109,6 +109,7 @@ enum LayoutTags {
 	LT_DOCBOOKININFO,
 	LT_DOCBOOKWRAPPERTAG,
 	LT_DOCBOOKWRAPPERATTR,
+	LT_DOCBOOKWRAPPERMERGEWITHPREVIOUS,
 	LT_DOCBOOKSECTIONTAG,
 	LT_DOCBOOKITEMWRAPPERTAG,
 	LT_DOCBOOKITEMWRAPPERATTR,
@@ -176,6 +177,7 @@ Layout::Layout()
 	htmllabelfirst_ = false;
 	htmlforcecss_ = false;
 	htmltitle_ = false;
+	docbookwrappermergewithprevious_ = false;
 	spellcheck = true;
 	forcelocal = 0;
 	itemcommand_ = "item";
@@ -234,6 +236,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 		{ "docbooktag",              LT_DOCBOOKTAG },
 		{ "docbookwrapperattr",      LT_DOCBOOKWRAPPERATTR },
 		{ "docbookwrappertag",       LT_DOCBOOKWRAPPERTAG },
+		{ "docbookwrappermergewithprevious", LT_DOCBOOKWRAPPERMERGEWITHPREVIOUS },
 		{ "end",            LT_END },
 		{ "endlabelstring", LT_ENDLABELSTRING },
 		{ "endlabeltype",   LT_ENDLABELTYPE },
@@ -741,6 +744,10 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 
 		case LT_DOCBOOKWRAPPERATTR:
 			lex >> docbookwrapperattr_;
+			break;
+
+		case LT_DOCBOOKWRAPPERMERGEWITHPREVIOUS:
+			lex >> docbookwrappermergewithprevious_;
 			break;
 
 		case LT_DOCBOOKSECTIONTAG:
@@ -1610,6 +1617,7 @@ void Layout::write(ostream & os) const
 		os << "\tDocBookItemWrapperTag " << docbookitemwrappertag_ << '\n';
 	if(!docbookitemwrapperattr_.empty())
 		os << "\tDocBookItemWrapperAttr " << docbookitemwrapperattr_ << '\n';
+	os << "\tDocBookItemWrapperMergeWithPrevious " << docbookwrappermergewithprevious_ << '\n';
 	if(!docbookitemlabeltag_.empty())
 		os << "\tDocBookItemLabelTag " << docbookitemlabeltag_ << '\n';
 	if(!docbookitemlabelattr_.empty())

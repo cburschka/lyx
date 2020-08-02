@@ -11,7 +11,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 82
+currentFormat = 83
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -280,6 +280,9 @@ currentFormat = 82
 #   DocBookLabelTag, DocBookLabelAttr
 # - Removed tag Header from ClassOptionsClassOptions
 # - Removed tag Element for flex insets
+
+# Incremented to format 83, 2 August 2020 by dourouc05
+# New tag DocBookWrapperMergeWithPrevious
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
