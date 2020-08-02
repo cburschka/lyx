@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-07-30 15:34+0200\n"
-"PO-Revision-Date: 2020-07-31 19:19+0300\n"
+"PO-Revision-Date: 2020-08-01 15:49+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -2836,35 +2836,35 @@ msgstr "Поля по умолчанию"
 
 #: src/frontends/qt/ui/MarginsUi.ui:89
 msgid "&Top:"
-msgstr "&Сверху:"
+msgstr "Сверху:"
 
 #: src/frontends/qt/ui/MarginsUi.ui:102
 msgid "&Bottom:"
-msgstr "&Снизу:"
+msgstr "Снизу:"
 
 #: src/frontends/qt/ui/MarginsUi.ui:115
 msgid "&Inner:"
-msgstr "&Внутри:"
+msgstr "Внутри:"
 
 #: src/frontends/qt/ui/MarginsUi.ui:128
 msgid "O&uter:"
-msgstr "&Снаружи:"
+msgstr "Снаружи:"
 
 #: src/frontends/qt/ui/MarginsUi.ui:141
 msgid "Head &sep:"
-msgstr "Промежуток &верхнего колонтитула:"
+msgstr "Промежуток до верхнего колонтитула:"
 
 #: src/frontends/qt/ui/MarginsUi.ui:154
 msgid "Head &height:"
-msgstr "Высота в&ерхнего колонтитула:"
+msgstr "Высота верхнего колонтитула:"
 
 #: src/frontends/qt/ui/MarginsUi.ui:167
 msgid "&Foot skip:"
-msgstr "Промежуток &нижнего колонтитула:"
+msgstr "Промежуток до нижнего колонтитула:"
 
 #: src/frontends/qt/ui/MarginsUi.ui:180
 msgid "&Column sep:"
-msgstr "&Разделитель столбцов:"
+msgstr "Промежуток между колонками:"
 
 #: src/frontends/qt/ui/MasterChildUi.ui:20
 msgid "Master Document Output"
@@ -6221,7 +6221,7 @@ msgstr "Краткое заглавие"
 #: lib/layouts/svcommon.inc:532 lib/layouts/svmult.layout:49
 #: lib/layouts/svmult.layout:99 lib/layouts/tufte-handout.layout:55
 msgid "FrontMatter"
-msgstr "Вступ. часть"
+msgstr "Нач. материал"
 
 #: lib/layouts/AEA.layout:58
 msgid "Publication Month"
@@ -7282,7 +7282,7 @@ msgstr "Приложения"
 #: lib/layouts/simplecv.layout:185 lib/layouts/stdstruct.inc:62
 #: lib/layouts/svcommon.inc:545 lib/layouts/svcommon.inc:579
 msgid "BackMatter"
-msgstr "Закл. часть"
+msgstr "Закл. материал"
 
 #: lib/layouts/IEEEtran.layout:324
 msgid "Peer Review Title"
@@ -16773,27 +16773,27 @@ msgstr ""
 
 #: lib/layouts/svcommon.inc:68
 msgid "Front Matter"
-msgstr "Вступ. часть"
+msgstr "Нач. материал"
 
 #: lib/layouts/svcommon.inc:84
 msgid "--- Front Matter ---"
-msgstr "--- Вступ. часть ---"
+msgstr "--- Нач. материал ---"
 
 #: lib/layouts/svcommon.inc:94
 msgid "Main Matter"
-msgstr "Осн. часть"
+msgstr "Осн. материал"
 
 #: lib/layouts/svcommon.inc:98
 msgid "--- Main Matter ---"
-msgstr "--- Осн. часть ---"
+msgstr "--- Осн. материал ---"
 
 #: lib/layouts/svcommon.inc:101
 msgid "Back Matter"
-msgstr "Закл. часть"
+msgstr "Закл. материал"
 
 #: lib/layouts/svcommon.inc:105
 msgid "--- Back Matter ---"
-msgstr "--- Закл. часть ---"
+msgstr "--- Закл. материал ---"
 
 #: lib/layouts/svcommon.inc:116 lib/layouts/svmult.layout:107
 msgid "PartBacktext"
@@ -19040,39 +19040,39 @@ msgstr "Times Roman (New TX)"
 
 #: lib/encodings:55
 msgid "Extended [ucs] (utf8x)"
-msgstr "Расширенный [ucs] (utf8x)"
+msgstr "Расширенная [ucs] (utf8x)"
 
 #: lib/encodings:59
 msgid "Armenian (ArmSCII8)"
-msgstr "Армянский (ArmSCII8)"
+msgstr "Армянская (ArmSCII8)"
 
 #: lib/encodings:62
 msgid "Western European (ISO 8859-1)"
-msgstr "Западно-Европейский (ISO 8859-1)"
+msgstr "Западноевропейская (ISO 8859-1)"
 
 #: lib/encodings:65
 msgid "Central European (ISO 8859-2)"
-msgstr "Центрально-Европейский (ISO 8859-2)"
+msgstr "Центральноевропейская (ISO 8859-2)"
 
 #: lib/encodings:68
 msgid "South European (ISO 8859-3)"
-msgstr "Южно-Европейский (ISO 8859-3)"
+msgstr "Южноевропейская (ISO 8859-3)"
 
 #: lib/encodings:71
 msgid "Baltic (ISO 8859-4)"
-msgstr "Балтийский (ISO 8859-4)"
+msgstr "Балтийская (ISO 8859-4)"
 
 #: lib/encodings:75
 msgid "Cyrillic (ISO 8859-5)"
-msgstr "Кириллический (ISO 8859-5)"
+msgstr "Кириллица (ISO 8859-5)"
 
 #: lib/encodings:79
 msgid "Arabic (ISO 8859-6)"
-msgstr "Арабский (ISO 8859-6)"
+msgstr "Арабская (ISO 8859-6)"
 
 #: lib/encodings:83
 msgid "Greek (ISO 8859-7)"
-msgstr "Греческий (ISO 8859-7)"
+msgstr "Греческая (ISO 8859-7)"
 
 #: lib/encodings:86
 msgid "Hebrew (ISO 8859-8)"
@@ -19080,23 +19080,23 @@ msgstr "Иврит (ISO 8859-8)"
 
 #: lib/encodings:89
 msgid "Turkish (ISO 8859-9)"
-msgstr "Турецкий (ISO 8859-9)"
+msgstr "Турецкая (ISO 8859-9)"
 
 #: lib/encodings:92
 msgid "Baltic (ISO 8859-13)"
-msgstr "Балтийский (ISO 8859-13)"
+msgstr "Балтийская (ISO 8859-13)"
 
 #: lib/encodings:95
 msgid "Western European (ISO 8859-15)"
-msgstr "Западно-Европейский (ISO 8859-15)"
+msgstr "Западноевропейская (ISO 8859-15)"
 
 #: lib/encodings:98
 msgid "South-Eastern European (ISO 8859-16)"
-msgstr "Юговосточно-Европейский (ISO 8859-16)"
+msgstr "Юговосточноевропейская (ISO 8859-16)"
 
 #: lib/encodings:101
 msgid "Western European (Macintosh Roman)"
-msgstr "Западно-Европейский (Macintosh Roman)"
+msgstr "Западноевропейская (Macintosh Roman)"
 
 #: lib/encodings:104
 msgid "DOS (CP 437)"
@@ -19108,19 +19108,19 @@ msgstr "DOS-de (CP 437-de)"
 
 #: lib/encodings:111
 msgid "Western European (CP 850)"
-msgstr "Западно-Европейский (CP 850)"
+msgstr "Западноевропейская (CP 850)"
 
 #: lib/encodings:114
 msgid "Central European (CP 852)"
-msgstr "Центрально-Европейский (CP 852)"
+msgstr "Центральноевропейская (CP 852)"
 
 #: lib/encodings:118
 msgid "Cyrillic (CP 855)"
-msgstr "Кириллический (CP 855)"
+msgstr "Кириллица (CP 855)"
 
 #: lib/encodings:123
 msgid "Western European (CP 858)"
-msgstr "Западно-Европейский (CP 858)"
+msgstr "Западноевропейская (CP 858)"
 
 #: lib/encodings:126
 msgid "Hebrew (CP 862)"
@@ -19128,23 +19128,23 @@ msgstr "Иврит (CP 862)"
 
 #: lib/encodings:129
 msgid "Nordic languages (CP 865)"
-msgstr "Скандинавские языки (CP 865)"
+msgstr "Скандинавская (CP 865)"
 
 #: lib/encodings:133
 msgid "Cyrillic (CP 866)"
-msgstr "Кириллический (CP 866)"
+msgstr "Кириллица (CP 866)"
 
 #: lib/encodings:136
 msgid "Central European (CP 1250)"
-msgstr "Центрально-Европейский (CP 1250)"
+msgstr "Центральноевропейская (CP 1250)"
 
 #: lib/encodings:140
 msgid "Cyrillic (CP 1251)"
-msgstr "Кириллический (CP 1251)"
+msgstr "Кириллица (CP 1251)"
 
 #: lib/encodings:144
 msgid "Western European (CP 1252)"
-msgstr "Западно-Европейский (CP 1252)"
+msgstr "Западноевропейская (CP 1252)"
 
 #: lib/encodings:147
 msgid "Hebrew (CP 1255)"
@@ -19152,83 +19152,83 @@ msgstr "Иврит (CP 1255)"
 
 #: lib/encodings:151
 msgid "Arabic (CP 1256)"
-msgstr "Арабский (CP 1256)"
+msgstr "Арабская (CP 1256)"
 
 #: lib/encodings:154
 msgid "Baltic (CP 1257)"
-msgstr "Балтийский (CP 1257)"
+msgstr "Балтийская (CP 1257)"
 
 #: lib/encodings:158
 msgid "Cyrillic (KOI8-R)"
-msgstr "Кириллический (KOI8-R)"
+msgstr "Кириллица (KOI8-R)"
 
 #: lib/encodings:162
 msgid "Cyrillic (KOI8-U)"
-msgstr "Кириллический (KOI8-U)"
+msgstr "Кириллица (KOI8-U)"
 
 #: lib/encodings:166
 msgid "Cyrillic (pt 154)"
-msgstr "Кириллический (pt 154)"
+msgstr "Кириллица (pt 154)"
 
 #: lib/encodings:170
 msgid "Thai (TIS 620-0)"
-msgstr "Тайский (TIS 620-0)"
+msgstr "Тайская (TIS 620-0)"
 
 #: lib/encodings:182
 msgid "Chinese (traditional) (Big5)"
-msgstr "Китайский (традиционный) (Big5)"
+msgstr "Китайская традиционная (Big5)"
 
 #: lib/encodings:192
 msgid "Japanese (CJK) (SJIS)"
-msgstr "Японский (ККЯ) (SJIS)"
+msgstr "Японская (ККЯ) (SJIS)"
 
 #: lib/encodings:199
 msgid "Chinese (simplified) (EUC-CN)"
-msgstr "Китайский (упрощённый) (EUC-CN)"
+msgstr "Китайская упрощённая (EUC-CN)"
 
 #: lib/encodings:203
 msgid "Chinese (simplified) (GBK)"
-msgstr "Китайский (упрощённый) (GBK)"
+msgstr "Китайская упрощённая (GBK)"
 
 #: lib/encodings:207
 msgid "Japanese (CJK) (JIS)"
-msgstr "Японский (ККЯ) (JIS)"
+msgstr "Японская (ККЯ) (JIS)"
 
 #: lib/encodings:211
 msgid "Korean (EUC-KR)"
-msgstr "Корейский (EUC-KR)"
+msgstr "Корейская (EUC-KR)"
 
 #: lib/encodings:215
 msgid "Extended [CJK] (Chinese/Japanese/Korean)"
-msgstr "Расширенный [ККЯ] (Китайский/Корейский/Японский)"
+msgstr "Расширенная [ККЯ] (Китайский/Корейский/Японский)"
 
 #: lib/encodings:219
 msgid "Chinese (traditional) (EUC-TW)"
-msgstr "Китайский (традиционный) (EUC-TW)"
+msgstr "Китайская традиционная (EUC-TW)"
 
 #: lib/encodings:223
 msgid "Japanese (CJK) (EUC-JP)"
-msgstr "Японский (ККЯ) (EUC-JP)"
+msgstr "Японская (ККЯ) (EUC-JP)"
 
 #: lib/encodings:230
 msgid "Japanese (pLaTeX) (EUC-JP)"
-msgstr "Японский (pLaTeX) (EUC-JP)"
+msgstr "Японская (pLaTeX) (EUC-JP)"
 
 #: lib/encodings:232
 msgid "Japanese (pLaTeX) (JIS)"
-msgstr "Японский (pLaTeX) (JIS)"
+msgstr "Японская (pLaTeX) (JIS)"
 
 #: lib/encodings:234
 msgid "Japanese (pLaTeX) (SJIS)"
-msgstr "Японский (pLaTeX) (SJIS)"
+msgstr "Японская (pLaTeX) (SJIS)"
 
 #: lib/encodings:236
 msgid "Extended [pLaTeX] (Japanese)"
-msgstr "Расширенный [pLaTeX] (Японский)"
+msgstr "Расширенная [pLaTeX] (Японский)"
 
 #: lib/encodings:242
 msgid "Direct"
-msgstr "Прямой"
+msgstr "Прямая"
 
 #: lib/encodings:246
 msgid "ASCII"
@@ -31924,11 +31924,11 @@ msgstr "По умолчанию..."
 
 #: src/frontends/qt/GuiDocument.cpp:2401
 msgid "Direct (No inputenc)"
-msgstr "Прямой (без inputenc)"
+msgstr "Прямая (без inputenc)"
 
 #: src/frontends/qt/GuiDocument.cpp:2403
 msgid "Direct (XeTeX/LuaTeX)"
-msgstr "Прямой (XeTeX/LuaTeX)"
+msgstr "Прямая (XeTeX/LuaTeX)"
 
 #: src/frontends/qt/GuiDocument.cpp:2589 src/frontends/qt/GuiDocument.cpp:4248
 #: src/frontends/qt/GuiDocument.cpp:4257 src/frontends/qt/GuiDocument.cpp:4266

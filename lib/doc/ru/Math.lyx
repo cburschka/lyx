@@ -12118,9 +12118,9 @@ hfill
 hfill
 \series default
  влияет только на выделенные формулы, когда используется стиль 
-\series bold
+\family sans
 Отступ для формул
-\series default
+\family default
  (стили формул объясняются в 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -14527,15 +14527,15 @@ tag*
 parbox{5cm}{
 \series default
  вставляется в режиме \SpecialChar TeX
-.
+
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Когда используется стиль формулы 
-\series bold
-Indented
-\series default
+Когда используется стиль 
+\family sans
+Отступ для формулы
+\family default
 , 
 \series bold
 
@@ -14563,6 +14563,7 @@ reference "sec:Formula-Styles"
 
 \end_inset
 
+.
  Затем следует описание как обычный текст и, наконец, 
 \series bold
 }}
@@ -27763,9 +27764,9 @@ status collapsed
 \begin_layout Standard
 Многострочные формулы образуют матрицу.
  Например, формула в окружении 
-\series bold
+\family sans
 eqnarray
-\series default
+\family default
  — это матрица с тремя столбцами.
  Изменяя промежуток между столбцами в этом окружении, можно, тем самым,
  изменить размер промежутка вокруг знака отношения.
@@ -29066,21 +29067,21 @@ status collapsed
 \begin_layout Standard
 Чтобы отобразить только части многострочной формулы, используется одно из
  следующих окружений: 
-\series bold
+\family sans
 aligned
-\series default
+\family default
 , 
-\series bold
+\family sans
 alignedat
-\series default
+\family default
 , 
-\series bold
+\family sans
 gathered
-\series default
+\family default
  или 
-\series bold
+\family sans
 split
-\series default
+\family default
 .
  Их можно вставить через меню 
 \family sans
@@ -29137,15 +29138,15 @@ aligned
 
 \begin_layout Standard
 Окружение 
-\series bold
+\family sans
 aligned
-\series default
+\family default
  также можно использовать для длинных формул, строки которых выровнены по
  горизонтали.
  Использование 
-\series bold
+\family sans
 aligned
-\series default
+\family default
  в выделенной формуле имеет то преимущество, что номер формулы вертикально
  центрируется за строками.
  В качестве примера, формула 
@@ -29156,9 +29157,9 @@ reference "eq:shortlong"
 \end_inset
 
  в окружении 
-\series bold
+\family sans
 aligned
-\series default
+\family default
 :
 \begin_inset Formula 
 \begin{equation}
@@ -29174,17 +29175,17 @@ aligned
 
 \begin_layout Standard
 Чтобы использовать окружения 
-\series bold
+\family sans
 alignedat
-\series default
+\family default
 , 
-\series bold
+\family sans
 gathered
-\series default
+\family default
  или 
-\series bold
+\family sans
 split
-\series default
+\family default
 , вставляется, соответственно, команда 
 \series bold
 
@@ -29241,13 +29242,13 @@ split
 
 .
  Окружение 
-\series bold
+\family sans
 split
-\series default
+\family default
  имеет те же свойства, что и окружение 
-\series bold
+\family sans
 aligned
-\series default
+\family default
 , но может иметь только два столбца.
 \end_layout
 
@@ -29284,17 +29285,17 @@ status collapsed
 
 \begin_layout Standard
 В окружениях 
-\series bold
+\family sans
 align
-\series default
+\family default
 , а также в окружениях 
-\series bold
+\family sans
 multline
-\series default
+\family default
  и 
-\series bold
+\family sans
 gather
-\series default
+\family default
 , можно вставить текст, который будет отображаться в отдельной строке, не
  влияя на выравнивание столбцов.
  Для этого используется команда 
@@ -35742,8 +35743,10 @@ reference "subsec:Font-Sizes"
 
 \begin_layout Standard
 Когда используется стиль 
-\series bold
+\family sans
 Отступ для формулы
+\family default
+
 \begin_inset Foot
 status collapsed
 
@@ -35761,8 +35764,6 @@ reference "sec:Formula-Styles"
 
 \end_inset
 
-
-\series default
 , команда 
 \series bold
 
@@ -36504,7 +36505,7 @@ reference "subsec:Predefined-Functions"
 \begin_layout Itemize
 Индексы, состоящие из нескольких букв, устанавливаются в прямом начертании:
  
-\begin_inset Formula $E_{\mathrm{kin}}$
+\begin_inset Formula $E_{\text{кин}}$
 \end_inset
 
 
