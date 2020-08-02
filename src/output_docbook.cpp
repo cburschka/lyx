@@ -202,14 +202,10 @@ void openParTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar
 	// first paragraph of an author, then merging with the previous tag does not make sense. Say the
 	// next paragraph is the affiliation, then it should be output in the same <author> tag (different
 	// layout, same wrapper tag).
-	bool openWrapper = false;
-	if (prevpar == nullptr) {
-		openWrapper = lay.docbookwrappertag() != "NONE";
-	} else {
+	bool openWrapper = lay.docbookwrappertag() != "NONE";
+	if (prevpar != nullptr) {
 		Layout const & prevlay = prevpar->layout();
-		if (prevlay.docbookwrappertag() == "NONE") {
-			openWrapper = lay.docbookwrappertag() != "NONE";
-		} else {
+		if (prevlay.docbookwrappertag() != "NONE") {
 			openWrapper = prevlay.docbookwrappertag() == lay.docbookwrappertag()
 					&& !lay.docbookwrappermergewithprevious();
 		}
@@ -238,14 +234,10 @@ void closeTag(XMLStream & xs, Paragraph const * par, Paragraph const * nextpar)
 		nextpar = nullptr;
 
 	// See comment in openParTag.
-	bool closeWrapper = false;
-	if (nextpar == nullptr) {
-		closeWrapper = lay.docbookwrappertag() != "NONE";
-	} else {
+	bool closeWrapper = lay.docbookwrappertag() != "NONE";
+	if (nextpar != nullptr) {
 		Layout const & nextlay = nextpar->layout();
-		if (nextlay.docbookwrappertag() == "NONE") {
-			closeWrapper = lay.docbookwrappertag() != "NONE";
-		} else {
+		if (nextlay.docbookwrappertag() != "NONE") {
 			closeWrapper = nextlay.docbookwrappertag() == lay.docbookwrappertag()
 					&& !nextlay.docbookwrappermergewithprevious();
 		}
