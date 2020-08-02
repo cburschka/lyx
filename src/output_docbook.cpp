@@ -189,11 +189,34 @@ namespace {
 
 // convenience functions
 
-void openParTag(XMLStream & xs, Paragraph const & par)
+void openParTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar)
 {
-	Layout const & lay = par.layout();
+	Layout const & lay = par->layout();
 
-	if (lay.docbookwrappertag() != "NONE")
+	if (par == prevpar)
+		prevpar = nullptr;
+
+	// When should the wrapper be opened here? Only if the previous paragraph has the SAME wrapper tag
+	// (usually, they won't have the same layout) and the CURRENT one allows merging.
+	// The main use case is author information in several paragraphs: if the name of the author is the
+	// first paragraph of an author, then merging with the previous tag does not make sense. Say the
+	// next paragraph is the affiliation, then it should be output in the same <author> tag (different
+	// layout, same wrapper tag).
+	bool openWrapper = false;
+	if (prevpar == nullptr) {
+		openWrapper = lay.docbookwrappertag() != "NONE";
+	} else {
+		Layout const & prevlay = prevpar->layout();
+		if (prevlay.docbookwrappertag() == "NONE") {
+			openWrapper = lay.docbookwrappertag() != "NONE";
+		} else {
+			openWrapper = prevlay.docbookwrappertag() == lay.docbookwrappertag()
+					&& !lay.docbookwrappermergewithprevious();
+		}
+	}
+
+	// Main logic.
+	if (openWrapper)
 		xs << xml::StartTag(lay.docbookwrappertag(), lay.docbookwrapperattr());
 
 	string tag = lay.docbooktag();
@@ -207,10 +230,28 @@ void openParTag(XMLStream & xs, Paragraph const & par)
 }
 
 
-void closeTag(XMLStream & xs, Paragraph const & par)
+void closeTag(XMLStream & xs, Paragraph const * par, Paragraph const * nextpar)
 {
-	Layout const & lay = par.layout();
+	Layout const & lay = par->layout();
 
+	if (par == nextpar)
+		nextpar = nullptr;
+
+	// See comment in openParTag.
+	bool closeWrapper = false;
+	if (nextpar == nullptr) {
+		closeWrapper = lay.docbookwrappertag() != "NONE";
+	} else {
+		Layout const & nextlay = nextpar->layout();
+		if (nextlay.docbookwrappertag() == "NONE") {
+			closeWrapper = lay.docbookwrappertag() != "NONE";
+		} else {
+			closeWrapper = nextlay.docbookwrappertag() == lay.docbookwrappertag()
+					&& !nextlay.docbookwrappermergewithprevious();
+		}
+	}
+
+	// Main logic.
 	if (lay.docbookitemtag() != "NONE")
 		xs << xml::EndTag(lay.docbookitemtag());
 
@@ -219,7 +260,7 @@ void closeTag(XMLStream & xs, Paragraph const & par)
 		tag = "para";
 
 	xs << xml::EndTag(tag);
-	if (lay.docbookwrappertag() != "NONE")
+	if (closeWrapper)
 		xs << xml::EndTag(lay.docbookwrappertag());
 }
 
@@ -399,9 +440,12 @@ ParagraphList::const_iterator makeParagraphs(
 		ParagraphList::const_iterator const & pbegin,
 		ParagraphList::const_iterator const & pend)
 {
-	ParagraphList::const_iterator const begin = text.paragraphs().begin();
+	auto const begin = text.paragraphs().begin();
+	auto const end = text.paragraphs().end();
 	ParagraphList::const_iterator par = pbegin;
-	for (; par != pend; ++par) {
+	ParagraphList::const_iterator prevpar = pbegin;
+
+	for (; par != pend; prevpar = par, ++par) {
 		// We want to open the paragraph tag if:
 		//   (i) the current layout permits multiple paragraphs
 		//  (ii) we are either not already inside a paragraph (HTMLIsBlock) OR
@@ -417,7 +461,7 @@ ParagraphList::const_iterator makeParagraphs(
 		// because of branches, e.g., a branch that contains an entire new section.
 		// We do not really want to wrap that whole thing in a <div>...</div>.
 		bool special_case = false;
-		Inset const *specinset = par->size() == 1 ? par->getInset(0) : 0;
+		Inset const *specinset = par->size() == 1 ? par->getInset(0) : nullptr;
 		if (specinset && !specinset->getLayout().htmlisblock()) { // TODO: Convert htmlisblock to a DocBook parameter?
 			Layout const &style = par->layout();
 			FontInfo const first_font = style.labeltype == LABEL_MANUAL ?
@@ -466,7 +510,7 @@ ParagraphList::const_iterator makeParagraphs(
 		//		or we're not in the last paragraph, anyway.
 		//   (ii) We didn't open it and docbook_in_par is true,
 		//		but we are in the first par, and there is a next par.
-		ParagraphList::const_iterator nextpar = par;
+		auto nextpar = par;
 		++nextpar;
 		bool const close_par =
 				((open_par && (!runparams.docbook_in_par || nextpar != pend))
@@ -484,12 +528,12 @@ ParagraphList::const_iterator makeParagraphs(
 
 		if (!cleaned.empty()) {
 			if (open_par)
-				openParTag(xs, *par);
+				openParTag(xs, &*par, &*prevpar);
 
 			xs << XMLStream::ESCAPE_NONE << os2.str();
 
 			if (close_par) {
-				closeTag(xs, *par);
+				closeTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr);
 				xs << xml::CR();
 			}
 		}
@@ -514,11 +558,24 @@ ParagraphList::const_iterator makeEnvironment(
 		ParagraphList::const_iterator const & pend)
 {
 	auto const begin = text.paragraphs().begin();
+	auto const end = text.paragraphs().end();
 	ParagraphList::const_iterator par = pbegin;
 	depth_type const origdepth = pbegin->params().depth();
 
+	// Find the previous paragraph.
+	auto prevpar = begin;
+	if (prevpar != par) {
+		auto prevpar_next = prevpar;
+		++prevpar_next;
+
+		while (prevpar_next != par) {
+			++prevpar_next;
+			++prevpar;
+		}
+	}
+
 	// open tag for this environment
-	openParTag(xs, *par);
+	openParTag(xs, &*par, &*prevpar);
 	xs << xml::CR();
 
 	// we will on occasion need to remember a layout from before.
@@ -672,7 +729,9 @@ ParagraphList::const_iterator makeEnvironment(
 			xs << xml::CR();
 		}
 	}
-	closeTag(xs, *par);
+	auto nextpar = par;
+	++nextpar;
+	closeTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr);
 	xs << xml::CR();
 	return pend;
 }
@@ -686,14 +745,30 @@ void makeCommand(
 		ParagraphList::const_iterator const & pbegin)
 {
 	// No need for labels, as they are handled by DocBook tags.
-
-	openParTag(xs, *pbegin);
-
 	auto const begin = text.paragraphs().begin();
+	auto const end = text.paragraphs().end();
+	auto nextpar = pbegin;
+	++nextpar;
+
+	// Find the previous paragraph.
+	auto prevpar = begin;
+	if (prevpar != pbegin) {
+		auto prevpar_next = prevpar;
+		++prevpar_next;
+
+		while (prevpar_next != pbegin) {
+			++prevpar_next;
+			++prevpar;
+		}
+	}
+
+	// Generate this command.
+	openParTag(xs, &*pbegin, &*prevpar);
+
 	pbegin->simpleDocBookOnePar(buf, xs, runparams,
 								text.outerFont(distance(begin, pbegin)));
 
-	closeTag(xs, *pbegin);
+	closeTag(xs, &*pbegin, (nextpar != end) ? &*nextpar : nullptr);
 	xs << xml::CR();
 }
 

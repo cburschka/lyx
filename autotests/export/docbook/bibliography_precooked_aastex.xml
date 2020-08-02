@@ -4,23 +4,27 @@
 <article xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
 <info>
 <title>Collapsed Cores in Globular Clusters,  Gauge-Boson Couplings, and AASTeX Examples</title>
-<author><personname>S. Djorgovski and Ivan R. King</personname></author>
-<author><affiliation><orgname>Astronomy Department, University of California, Berkeley, CA 94720</orgname></affiliation></author>
-<author><affiliation role="alternate"><orgname>Visiting Astronomer Cerro Tololo Inter-American Observatory.CTIO is operated by AURA Inc. under contract to the National Science Foundation.</orgname></affiliation></author>
-<author><affiliation role="alternate"><orgname>Society of Fellows, Harvard University.</orgname></affiliation></author>
-<author><affiliation role="alternate"><orgname>present address: Center for Astrophysics60 Garden Street, Cambridge, MA 02138</orgname></affiliation></author>
-<author><personname>C. D. Biemesderfer</personname></author>
-<author><affiliation><orgname>National Optical Astronomy Observatories, Tucson, AZ 85719</orgname></affiliation></author>
-<author><affiliation role="alternate"><orgname>Visiting Programmer, Space Telescope Science Institute</orgname></affiliation></author>
-<author><affiliation role="alternate"><orgname>Patron, Alonso's Bar and Grill</orgname></affiliation></author>
-<author><email>aastex-help@aas.org</email></author>
-<author><personname>R. J. Hanisch</personname></author>
-<author><affiliation><orgname>Space Telescope Science Institute, Baltimore, MD 21218</orgname></affiliation></author>
-<author><affiliation role="alternate"><orgname>Patron, Alonso's Bar and Grill</orgname></affiliation></author>
+<author><personname>S. Djorgovski and Ivan R. King</personname>
+<affiliation><orgname>Astronomy Department, University of California, Berkeley, CA 94720</orgname></affiliation>
+<affiliation role="alternate"><orgname>Visiting Astronomer Cerro Tololo Inter-American Observatory.CTIO is operated by AURA Inc. under contract to the National Science Foundation.</orgname></affiliation>
+<affiliation role="alternate"><orgname>Society of Fellows, Harvard University.</orgname></affiliation>
+<affiliation role="alternate"><orgname>present address: Center for Astrophysics60 Garden Street, Cambridge, MA 02138</orgname></affiliation></author>
+<author><personname>C. D. Biemesderfer</personname>
+<affiliation><orgname>National Optical Astronomy Observatories, Tucson, AZ 85719</orgname></affiliation>
+<affiliation role="alternate"><orgname>Visiting Programmer, Space Telescope Science Institute</orgname></affiliation>
+<affiliation role="alternate"><orgname>Patron, Alonso's Bar and Grill</orgname></affiliation>
+<email>aastex-help@aas.org</email></author>
+<author><personname>R. J. Hanisch</personname>
+<affiliation><orgname>Space Telescope Science Institute, Baltimore, MD 21218</orgname></affiliation>
+<affiliation role="alternate"><orgname>Patron, Alonso's Bar and Grill</orgname></affiliation></author>
 <abstract><para>
 <para>This is a preliminary report on surface photometry of the major fraction of known globular clusters, to see which of them show the signs of a collapsed core. We also explore some diversionary mathematics and recreational tables. </para>
-</para></abstract>
-</info>
+<!-- Output Error: Tried to close `Keywords' when tag was not open. Tag discarded. -->
+
+<!-- Output Error: Closing tag `info' when other tags are open, namely: -->
+<!-- Output Error: para -->
+</para><!-- Output Error: abstract -->
+</abstract></info>
 <section>
 <title>Introduction</title>
 <para>A focal problem today in the dynamics of globular clusters is core collapse. It has been predicted by theory for decades <biblioref endterm="hen61" />, <biblioref endterm="lyn68" />, <biblioref endterm="spi85" />, but observation has been less alert to the phenomenon. For many years the central brightness peak in M15 <biblioref endterm="kin75" />, <biblioref endterm="new78" /> seemed a unique anomaly. Then <biblioref endterm="aur82" /> suggested a central peak in NGC 6397, and a limited photographic survey of ours <biblioref endterm="djo84" /> found three more cases, including NGC 6624, whose sharp center had often been remarked on <biblioref endterm="can78" />. </para>
@@ -688,7 +692,8 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
  </m:mtable>
  </m:math>
 </informalequation>
-</MathLetters>
+<!-- Output Error: Tried to close `title' when tag was not open. Tag discarded. -->
+
 </section>
 </section>
 <section>
@@ -964,8 +969,9 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
  </m:mrow>
  </m:math>
 </inlineequation> of the electronically submitted abstracts for AAS meetings are error-free. </para>
-<acknowledgement><para>We are grateful to V. Barger, T. Han, and R. J. N. Phillips for doing the math in section&#xA0;<xref linkend="bozomath" />. More information on the AASTeX macros package are available at <link xlink:href="http://www.aas.org/publications/aastex">http://www.aas.org/publications/aastex</link> or the <link xlink:href="ftp://www.aas.org/pubs/AAS ftp site">AAS ftp site</link>.</para></acknowledgement>
-<para><application>IRAF, AIPS, Astropy, ...</application></para>
+<acknowledgement><para>We are grateful to V. Barger, T. Han, and R. J. N. Phillips for doing the math in section&#xA0;<xref linkend="bozomath" />. More information on the AASTeX macros package are available at <link xlink:href="http://www.aas.org/publications/aastex">http://www.aas.org/publications/aastex</link> or the <link xlink:href="ftp://www.aas.org/pubs/AAS ftp site">AAS ftp site</link>.</para>
+<application>IRAF, AIPS, Astropy, ...</application><!-- Output Error: Tried to close `para' when tag was not open. Tag discarded. -->
+
 <Appendix></Appendix>
 <bibliography>
 <bibliomixed xml:id='aur82'>Aurière, M. 1982, <!-- \aap -->, 109, 301 </bibliomixed>
