@@ -189,10 +189,8 @@ namespace {
 
 // convenience functions
 
-void openParTag(XMLStream & xs, Paragraph const & par)
+void openParTag(XMLStream & xs, Layout const & lay)
 {
-	Layout const & lay = par.layout();
-
 	if (lay.docbookwrappertag() != "NONE")
 		xs << xml::StartTag(lay.docbookwrappertag(), lay.docbookwrapperattr());
 
@@ -207,10 +205,8 @@ void openParTag(XMLStream & xs, Paragraph const & par)
 }
 
 
-void closeTag(XMLStream & xs, Paragraph const & par)
+void closeTag(XMLStream & xs, Layout const & lay)
 {
-	Layout const & lay = par.layout();
-
 	if (lay.docbookitemtag() != "NONE")
 		xs << xml::EndTag(lay.docbookitemtag());
 
@@ -298,8 +294,8 @@ ParagraphList::const_iterator findEndOfEnvironment(
 		ParagraphList::const_iterator const & pend)
 {
 	ParagraphList::const_iterator p = pstart;
+	Layout const &bstyle = p->layout();
 	size_t const depth = p->params().depth();
-
 	for (++p; p != pend; ++p) {
 		Layout const &style = p->layout();
 		// It shouldn't happen that e.g. a section command occurs inside
@@ -319,10 +315,9 @@ ParagraphList::const_iterator findEndOfEnvironment(
 		// FIXME I am not sure about the first check.
 		// Surely we *could* have different layouts that count as
 		// LATEX_PARAGRAPH, right?
-		if (style.latextype == LATEX_PARAGRAPH || style != p->layout())
+		if (style.latextype == LATEX_PARAGRAPH || style != bstyle)
 			return p;
 	}
-
 	return pend;
 }
 
@@ -402,6 +397,8 @@ ParagraphList::const_iterator makeParagraphs(
 	ParagraphList::const_iterator const begin = text.paragraphs().begin();
 	ParagraphList::const_iterator par = pbegin;
 	for (; par != pend; ++par) {
+		Layout const &lay = par->layout();
+
 		// We want to open the paragraph tag if:
 		//   (i) the current layout permits multiple paragraphs
 		//  (ii) we are either not already inside a paragraph (HTMLIsBlock) OR
@@ -431,7 +428,7 @@ ParagraphList::const_iterator makeParagraphs(
 		}
 
 		// Plain layouts must be ignored.
-		if (!special_case && buf.params().documentClass().isPlainLayout(par->layout()) && !runparams.docbook_force_pars)
+		if (!special_case && buf.params().documentClass().isPlainLayout(lay) && !runparams.docbook_force_pars)
 			special_case = true;
 		// TODO: Could get rid of this with a DocBook equivalent to htmlisblock?
 		if (!special_case && par->size() == 1 && par->getInset(0)) {
@@ -484,12 +481,12 @@ ParagraphList::const_iterator makeParagraphs(
 
 		if (!cleaned.empty()) {
 			if (open_par)
-				openParTag(xs, *par);
+				openParTag(xs, lay);
 
 			xs << XMLStream::ESCAPE_NONE << os2.str();
 
 			if (close_par) {
-				closeTag(xs, *par);
+				closeTag(xs, lay);
 				xs << xml::CR();
 			}
 		}
@@ -513,12 +510,13 @@ ParagraphList::const_iterator makeEnvironment(
 		ParagraphList::const_iterator const & pbegin,
 		ParagraphList::const_iterator const & pend)
 {
-	auto const begin = text.paragraphs().begin();
+	ParagraphList::const_iterator const begin = text.paragraphs().begin();
 	ParagraphList::const_iterator par = pbegin;
+	Layout const &bstyle = par->layout();
 	depth_type const origdepth = pbegin->params().depth();
 
 	// open tag for this environment
-	openParTag(xs, *par);
+	openParTag(xs, bstyle);
 	xs << xml::CR();
 
 	// we will on occasion need to remember a layout from before.
@@ -537,7 +535,7 @@ ParagraphList::const_iterator makeEnvironment(
 			// One is that we are still in the environment in which we
 			// started---which we will be if the depth is the same.
 			if (par->params().depth() == origdepth) {
-				LATTEST(par->layout() == style);
+				LATTEST(bstyle == style);
 				if (lastlay != nullptr) {
 					closeItemTag(xs, *lastlay);
 					if (lastlay->docbookitemwrappertag() != "NONE") {
@@ -672,7 +670,7 @@ ParagraphList::const_iterator makeEnvironment(
 			xs << xml::CR();
 		}
 	}
-	closeTag(xs, *par);
+	closeTag(xs, bstyle);
 	xs << xml::CR();
 	return pend;
 }
@@ -685,15 +683,16 @@ void makeCommand(
 		Text const & text,
 		ParagraphList::const_iterator const & pbegin)
 {
+	Layout const &style = pbegin->layout();
+
 	// No need for labels, as they are handled by DocBook tags.
 
-	openParTag(xs, *pbegin);
+	openParTag(xs, style);
 
-	auto const begin = text.paragraphs().begin();
+	ParagraphList::const_iterator const begin = text.paragraphs().begin();
 	pbegin->simpleDocBookOnePar(buf, xs, runparams,
 								text.outerFont(distance(begin, pbegin)));
-
-	closeTag(xs, *pbegin);
+	closeTag(xs, style);
 	xs << xml::CR();
 }
 
