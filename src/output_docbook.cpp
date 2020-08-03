@@ -191,25 +191,20 @@ namespace {
 
 void openParTag(XMLStream & xs, Layout const & lay)
 {
-	if (lay.docbookwrappertag() != "NONE")
+	if (lay.docbookwrappertag() != "NONE") {
 		xs << xml::StartTag(lay.docbookwrappertag(), lay.docbookwrapperattr());
+	}
 
 	string tag = lay.docbooktag();
 	if (tag == "Plain Layout")
 		tag = "para";
 
 	xs << xml::ParTag(tag, lay.docbookattr());
-
-	if (lay.docbookitemtag() != "NONE")
-		xs << xml::StartTag(lay.docbookitemtag(), lay.docbookitemattr());
 }
 
 
 void closeTag(XMLStream & xs, Layout const & lay)
 {
-	if (lay.docbookitemtag() != "NONE")
-		xs << xml::EndTag(lay.docbookitemtag());
-
 	string tag = lay.docbooktag();
 	if (tag == "Plain Layout")
 		tag = "para";

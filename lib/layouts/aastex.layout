@@ -155,9 +155,6 @@ Style Author
 	  Series	Medium
 	  Shape		SmallCaps
 	EndFont
-	DocBookTag            personname
-	DocBookWrapperTag     author
-	DocBookInInfo         always
 End
 
 
@@ -175,10 +172,6 @@ Style Affiliation
 	  Family	Roman
 	  Size		Normal
 	EndFont
-	DocBookTag            affiliation
-	DocBookWrapperTag     author
-	DocBookItemTag        orgname
-	DocBookInInfo         always
 End
 
 
@@ -201,11 +194,6 @@ Style Altaffilation
 	LabelFont
 	  Color		green
 	EndFont
-	DocBookTag            affiliation
-	DocBookAttr           role="alternate"
-	DocBookItemTag        orgname
-	DocBookWrapperTag     author
-	DocBookInInfo         always
 End
 
 
@@ -225,9 +213,6 @@ Style Email
 	  Size		Normal
 	  Shape		Italic
 	EndFont
-	DocBookTag            email
-	DocBookWrapperTag     author
-	DocBookInInfo         always
 End
 
 
