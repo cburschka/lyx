@@ -764,34 +764,15 @@ DocBookDocumentSectioning hasDocumentSectioning(ParagraphList const &paragraphs,
 }
 
 
-bool hasOnlyNotes(Paragraph const & par)
-{
-	for (int i = 0; i < par.size(); ++i)
-		if (!par.isInset(i) || !dynamic_cast<InsetNote *>(par.insetList().get(i)))
-			return false;
-	return true;
-}
-
-
-DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs, pit_type bpit, pit_type const epit) {
+DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs, pit_type const bpit, pit_type const epit) {
 	set<pit_type> shouldBeInInfo;
 	set<pit_type> mustBeInInfo;
 
-	// Find the first non empty paragraph by mutating bpit.
-	while (bpit < epit) {
-		Paragraph const &par = paragraphs[bpit];
-		if (par.empty() || hasOnlyNotes(par))
-			bpit += 1;
-		else
-			break;
-	}
-
-	// Find the last info-like paragraph.
 	pit_type cpit = bpit;
 	while (cpit < epit) {
 		// Skip paragraphs only containing one note.
 		Paragraph const &par = paragraphs[cpit];
-		if (hasOnlyNotes(par)) {
+		if (par.size() == 1 && dynamic_cast<InsetNote*>(paragraphs[cpit].insetList().get(0))) {
 			cpit += 1;
 			continue;
 		}
