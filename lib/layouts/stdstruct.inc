@@ -49,9 +49,10 @@ Style Abstract
 			font-weight: bold;
 		}
 	EndHTMLStyle
+	DocBookAbstract       true
+	DocBookInInfo         always
 	DocBookTag            abstract
 	DocBookItemTag        para
-	DocBookInInfo         always
 End
 
 

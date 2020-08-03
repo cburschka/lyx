@@ -3,8 +3,8 @@
   See http://www.lyx.org/ for more information -->
 <article xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
 <info>
-<title>Collapsed Cores in Globular Clusters,  Gauge-Boson Couplings, and AASTeX Examples</title>
-<author><personname>S. Djorgovski and Ivan R. King</personname>
+<!-- shouldBeInInfo --><title>Collapsed Cores in Globular Clusters,  Gauge-Boson Couplings, and AASTeX Examples</title>
+<!-- mustBeInInfo --><author><personname>S. Djorgovski and Ivan R. King</personname>
 <affiliation><orgname>Astronomy Department, University of California, Berkeley, CA 94720</orgname></affiliation>
 <affiliation role="alternate"><orgname>Visiting Astronomer Cerro Tololo Inter-American Observatory.CTIO is operated by AURA Inc. under contract to the National Science Foundation.</orgname></affiliation>
 <affiliation role="alternate"><orgname>Society of Fellows, Harvard University.</orgname></affiliation>
@@ -17,16 +17,11 @@
 <author><personname>R. J. Hanisch</personname>
 <affiliation><orgname>Space Telescope Science Institute, Baltimore, MD 21218</orgname></affiliation>
 <affiliation role="alternate"><orgname>Patron, Alonso's Bar and Grill</orgname></affiliation></author>
-<abstract><para>
-<para>This is a preliminary report on surface photometry of the major fraction of known globular clusters, to see which of them show the signs of a collapsed core. We also explore some diversionary mathematics and recreational tables. </para>
-<!-- Output Error: Tried to close `keyword' when tag was not open. Tag discarded. -->
-<!-- Output Error: Tried to close `keywordset' when tag was not open. Tag discarded. -->
-
 <keywordset><keyword>clusters: globular, peanut—bosons: bozos</keyword></keywordset>
-<!-- Output Error: Closing tag `info' when other tags are open, namely: -->
-<!-- Output Error: para -->
-</para><!-- Output Error: abstract -->
-</abstract></info>
+<!-- /info --><!-- abs --><abstract><para>
+<para>This is a preliminary report on surface photometry of the major fraction of known globular clusters, to see which of them show the signs of a collapsed core. We also explore some diversionary mathematics and recreational tables. </para>
+</para></abstract>
+<!-- 15 --><!-- /abs --></info>
 <section>
 <title>Introduction</title>
 <para>A focal problem today in the dynamics of globular clusters is core collapse. It has been predicted by theory for decades <biblioref endterm="hen61" />, <biblioref endterm="lyn68" />, <biblioref endterm="spi85" />, but observation has been less alert to the phenomenon. For many years the central brightness peak in M15 <biblioref endterm="kin75" />, <biblioref endterm="new78" /> seemed a unique anomaly. Then <biblioref endterm="aur82" /> suggested a central peak in NGC 6397, and a limited photographic survey of ours <biblioref endterm="djo84" /> found three more cases, including NGC 6624, whose sharp center had often been remarked on <biblioref endterm="can78" />. </para>
@@ -112,7 +107,7 @@
 </section>
 <section>
 <title>Helicity Amplitudes</title>
-<para>It has been realized that helicity amplitudes provide a convenient means for Feynman diagram<footnote><para>Footnotes can be inserted like this.</para>
+<para>It has been realized that helicity amplitudes provide a convenient means for Feynman diagram<footnote><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info --><para>Footnotes can be inserted like this.</para>
 </footnote> evaluations. These amplitude-level techniques are particularly convenient for calculations involving many Feynman diagrams, where the usual trace techniques for the amplitude squared becomes unwieldy. Our calculations use the helicity techniques developed by other authors <biblioref endterm="hag86" />; we briefly summarize below.</para>
 <section>
 <title>Formalism</title>
@@ -694,8 +689,7 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
  </m:mtable>
  </m:math>
 </informalequation>
-<!-- Output Error: Tried to close `title' when tag was not open. Tag discarded. -->
-
+</MathLetters>
 </section>
 </section>
 <section>
@@ -957,7 +951,7 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
   </m:msub>
  </m:mrow>
  </m:math>
-</inlineequation>, but the assumption is that the alternate results should be less than 90° out of phase with previous values. We have no observations of <!-- \ion{Ca}{2} -->. Roughly <inlineequation>
+</inlineequation>, but the assumption is that the alternate results should be less than 90° out of phase with previous values. We have no observations of <!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info --><!-- \ion{Ca}{2} -->. Roughly <inlineequation>
 <alt role='tex'>\nicefrac{4}{5}</alt>
  <m:math>
  
@@ -971,14 +965,13 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
  </m:mrow>
  </m:math>
 </inlineequation> of the electronically submitted abstracts for AAS meetings are error-free. </para>
-<acknowledgement><para>We are grateful to V. Barger, T. Han, and R. J. N. Phillips for doing the math in section&#xA0;<xref linkend="bozomath" />. More information on the AASTeX macros package are available at <link xlink:href="http://www.aas.org/publications/aastex">http://www.aas.org/publications/aastex</link> or the <link xlink:href="ftp://www.aas.org/pubs/AAS ftp site">AAS ftp site</link>.</para>
+<acknowledgement><para>We are grateful to V. Barger, T. Han, and R. J. N. Phillips for doing the math in section&#xA0;<xref linkend="bozomath" />. More information on the AASTeX macros package are available at <link xlink:href="http://www.aas.org/publications/aastex"><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->http://www.aas.org/publications/aastex</link> or the <link xlink:href="ftp://www.aas.org/pubs/AAS ftp site">AAS ftp site</link>.</para>
 <application>IRAF, AIPS, Astropy, ...</application><!-- Output Error: Tried to close `para' when tag was not open. Tag discarded. -->
 
-<Appendix></Appendix>
 <bibliography>
 <bibliomixed xml:id='aur82'>Aurière, M. 1982, <!-- \aap -->, 109, 301 </bibliomixed>
 <bibliomixed xml:id='can78'>Canizares, C. R., Grindlay, J. E., Hiltner, W. A., Liller, W., and McClintock, J. E. 1978, <!-- \apj -->, 224, 39 </bibliomixed>
-<bibliomixed xml:id='djo84'>Djorgovski, S., and King, I. R. 1984, <!-- \apjl -->, 277, L49 </bibliomixed>
+<bibliomixed xml:id='djo84'>Djorgovski, S., and King, I. R. 1984, <!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info --><!-- \apjl -->, 277, L49 </bibliomixed>
 <bibliomixed xml:id='hag86'>Hagiwara, K., and Zeppenfeld, D. 1986, Nucl.Phys., 274, 1 </bibliomixed>
 <bibliomixed xml:id='har84'>Harris, W. E., and van den Bergh, S. 1984, <!-- \aj -->, 89, 1816 </bibliomixed>
 <bibliomixed xml:id='hen61'>Hénon, M. 1961, Ann.d'Ap., 24, 369 </bibliomixed>
@@ -986,19 +979,19 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
 <bibliomixed xml:id='kin75'>King, I. R. 1975, Dynamics of Stellar Systems, A. Hayli, Dordrecht: Reidel, 1975, 99 </bibliomixed>
 <bibliomixed xml:id='kin68'>King, I. R., Hedemann, E., Hodge, S. M., and White, R. E. 1968, <!-- \aj -->, 73, 456 </bibliomixed>
 <bibliomixed xml:id='kro84'>Kron, G. E., Hewitt, A. V., and Wasserman, L. H. 1984, <!-- \pasp -->, 96, 198 </bibliomixed>
-<bibliomixed xml:id='lyn68'>Lynden-Bell, D., and Wood, R. 1968, <!-- \mnras -->, 138, 495 </bibliomixed>
+<bibliomixed xml:id='lyn68'>Lynden-Bell, D., and Wood, R. 1968, <!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info --><!-- \mnras -->, 138, 495 </bibliomixed>
 <bibliomixed xml:id='new78'>Newell, E. B., and O'Neil, E. J. 1978, <!-- \apjs -->, 37, 27 </bibliomixed>
 <bibliomixed xml:id='ort85'>Ortolani, S., Rosino, L., and Sandage, A. 1985, <!-- \aj -->, 90, 473 </bibliomixed>
 <bibliomixed xml:id='pet76'>Peterson, C. J. 1976, <!-- \aj -->, 81, 617 </bibliomixed>
 <bibliomixed xml:id='spi85'>Spitzer, L. 1985, Dynamics of Star Clusters, J. Goodman and P. Hut, Dordrecht: Reidel, 109 </bibliomixed>
 </bibliography>
 <table xml:id="tbl-2">
-<caption>Terribly relevant tabular information.</caption>
-<tbody>
+<caption><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->Terribly relevant tabular information.</caption>
+<!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info --><tbody>
 <tr>
-<td align='center' valign='top'>Star </td>
-<td align='right' valign='top'> Height </td>
-<td align='right' valign='top'> <inlineequation>
+<td align='center' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->Star </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info --> Height </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info --> <inlineequation>
 <alt role='tex'>d_{x}</alt>
  <m:math>
  
@@ -1012,7 +1005,7 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
  </m:mrow>
  </m:math>
 </inlineequation></td>
-<td align='right' valign='top'> <inlineequation>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info --> <inlineequation>
 <alt role='tex'>d_{y}</alt>
  <m:math>
  
@@ -1026,7 +1019,7 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
  </m:mrow>
  </m:math>
 </inlineequation></td>
-<td align='right' valign='top'> <inlineequation>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info --> <inlineequation>
 <alt role='tex'>n</alt>
  <m:math>
  
@@ -1034,7 +1027,7 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
  </m:mrow>
  </m:math>
 </inlineequation></td>
-<td align='right' valign='top'> <inlineequation>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info --> <inlineequation>
 <alt role='tex'>\chi^{2}</alt>
  <m:math>
  
@@ -1048,7 +1041,7 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
  </m:mrow>
  </m:math>
 </inlineequation></td>
-<td align='right' valign='top'> <inlineequation>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info --> <inlineequation>
 <alt role='tex'>R_{maj}</alt>
  <m:math>
  
@@ -1064,7 +1057,7 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
  </m:mrow>
  </m:math>
 </inlineequation></td>
-<td align='right' valign='top'> <inlineequation>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info --> <inlineequation>
 <alt role='tex'>R_{min}</alt>
  <m:math>
  
@@ -1080,15 +1073,15 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
  </m:mrow>
  </m:math>
 </inlineequation></td>
-<td align='center' valign='top' colspan='1'><inlineequation>
+<td align='center' valign='top' colspan='1'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info --><inlineequation>
 <alt role='tex'>P</alt>
  <m:math>
  
  <m:mrow><m:mi>P</m:mi>
  </m:mrow>
  </m:math>
-</inlineequation>a</td>
-<td align='right' valign='top'> <inlineequation>
+</inlineequation><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->a</td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info --> <inlineequation>
 <alt role='tex'>PR_{maj}</alt>
  <m:math>
  
@@ -1106,7 +1099,7 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
  </m:mrow>
  </m:math>
 </inlineequation></td>
-<td align='right' valign='top'> <inlineequation>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info --> <inlineequation>
 <alt role='tex'>PR_{min}</alt>
  <m:math>
  
@@ -1124,105 +1117,105 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
  </m:mrow>
  </m:math>
 </inlineequation></td>
-<td align='center' valign='top' colspan='1'><inlineequation>
+<td align='center' valign='top' colspan='1'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info --><inlineequation>
 <alt role='tex'>\Theta</alt>
  <m:math>
  
  <m:mrow><m:mo>&#x398;</m:mo>
  </m:mrow>
  </m:math>
-</inlineequation>b</td>
-<td align='center' valign='top'>Ref.</td>
+</inlineequation><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->b</td>
+<td align='center' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->Ref.</td>
 </tr>
 <tr>
-<td align='center' valign='top'><!-- \tableline\tableline -->1 </td>
-<td align='right' valign='top'>33472.5 </td>
-<td align='right' valign='top'>-0.1 </td>
-<td align='right' valign='top'>0.4 </td>
-<td align='right' valign='top'>53 </td>
-<td align='right' valign='top'>27.4 </td>
-<td align='right' valign='top'>2.065 </td>
-<td align='right' valign='top'>1.940 </td>
-<td align='right' valign='top'>3.900 </td>
-<td align='right' valign='top'>68.3 </td>
-<td align='right' valign='top'>116.2 </td>
-<td align='right' valign='top'>-27.639</td>
-<td align='center' valign='top'>1,2</td>
+<td align='center' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info --><!-- \tableline\tableline -->1 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->33472.5 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->-0.1 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->0.4 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->53 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->27.4 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->2.065 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->1.940 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->3.900 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->68.3 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->116.2 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->-27.639</td>
+<td align='center' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->1,2</td>
 </tr>
 <tr>
-<td align='center' valign='top'> 2 </td>
-<td align='right' valign='top'>27802.4 </td>
-<td align='right' valign='top'>-0.3 </td>
-<td align='right' valign='top'>-0.2 </td>
-<td align='right' valign='top'>60 </td>
-<td align='right' valign='top'>3.7 </td>
-<td align='right' valign='top'>1.628 </td>
-<td align='right' valign='top'>1.510 </td>
-<td align='right' valign='top'>2.156 </td>
-<td align='right' valign='top'>6.8 </td>
-<td align='right' valign='top'>7.5 </td>
-<td align='right' valign='top'>-26.764</td>
-<td align='center' valign='top'>3</td>
+<td align='center' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info --> 2 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->27802.4 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->-0.3 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->-0.2 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->60 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->3.7 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->1.628 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->1.510 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->2.156 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->6.8 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->7.5 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->-26.764</td>
+<td align='center' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->3</td>
 </tr>
 <tr>
-<td align='center' valign='top'> 3 </td>
-<td align='right' valign='top'>29210.6 </td>
-<td align='right' valign='top'>0.9 </td>
-<td align='right' valign='top'>0.3 </td>
-<td align='right' valign='top'>60 </td>
-<td align='right' valign='top'>3.4 </td>
-<td align='right' valign='top'>1.622 </td>
-<td align='right' valign='top'>1.551 </td>
-<td align='right' valign='top'>2.159 </td>
-<td align='right' valign='top'>6.7 </td>
-<td align='right' valign='top'>7.3 </td>
-<td align='right' valign='top'>-40.272</td>
-<td align='center' valign='top'>4</td>
+<td align='center' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info --> 3 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->29210.6 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->0.9 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->0.3 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->60 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->3.4 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->1.622 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->1.551 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->2.159 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->6.7 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->7.3 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->-40.272</td>
+<td align='center' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->4</td>
 </tr>
 <tr>
-<td align='center' valign='top'> 4 </td>
-<td align='right' valign='top'>32733.8 </td>
-<td align='right' valign='top'>-1.2c</td>
-<td align='right' valign='top'>-0.5 </td>
-<td align='right' valign='top'>41 </td>
-<td align='right' valign='top'>54.8 </td>
-<td align='right' valign='top'>2.282 </td>
-<td align='right' valign='top'>2.156 </td>
-<td align='right' valign='top'>4.313 </td>
-<td align='right' valign='top'>117.4 </td>
-<td align='right' valign='top'>78.2 </td>
-<td align='right' valign='top'>-35.847</td>
-<td align='center' valign='top'>5,6</td>
+<td align='center' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info --> 4 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->32733.8 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->-1.2<!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->c</td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->-0.5 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->41 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->54.8 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->2.282 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->2.156 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->4.313 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->117.4 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->78.2 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->-35.847</td>
+<td align='center' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->5,6</td>
 </tr>
 <tr>
-<td align='center' valign='top'> 5 </td>
-<td align='right' valign='top'> 9607.4 </td>
-<td align='right' valign='top'>-0.4 </td>
-<td align='right' valign='top'>-0.4 </td>
-<td align='right' valign='top'>60 </td>
-<td align='right' valign='top'>1.4 </td>
-<td align='right' valign='top'>1.669c</td>
-<td align='right' valign='top'>1.574 </td>
-<td align='right' valign='top'>2.343 </td>
-<td align='right' valign='top'>8.0 </td>
-<td align='right' valign='top'>8.9 </td>
-<td align='right' valign='top'>-33.417</td>
-<td align='center' valign='top'>7</td>
+<td align='center' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info --> 5 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info --> 9607.4 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->-0.4 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->-0.4 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->60 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->1.4 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->1.669<!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->c</td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->1.574 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->2.343 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->8.0 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->8.9 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->-33.417</td>
+<td align='center' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->7</td>
 </tr>
 <tr>
-<td align='center' valign='top'> 6 </td>
-<td align='right' valign='top'>31638.6 </td>
-<td align='right' valign='top'>1.6 </td>
-<td align='right' valign='top'>0.1 </td>
-<td align='right' valign='top'>39 </td>
-<td align='right' valign='top'>315.2 </td>
-<td align='right' valign='top'> 3.433 </td>
-<td align='right' valign='top'>3.075 </td>
-<td align='right' valign='top'>7.488 </td>
-<td align='right' valign='top'>92.1 </td>
-<td align='right' valign='top'>25.3 </td>
-<td align='right' valign='top'>-12.052 </td>
-<td align='center' valign='top'>8</td>
+<td align='center' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info --> 6 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->31638.6 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->1.6 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->0.1 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->39 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->315.2 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info --> 3.433 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->3.075 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->7.488 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->92.1 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->25.3 </td>
+<td align='right' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->-12.052 </td>
+<td align='center' valign='top'><!-- shouldBeInInfo --><!-- mustBeInInfo --><!-- /info -->8</td>
 </tr>
 </tbody>
 <Table note>a<!-- }{ -->Sample footnote for table&#xA0;<xref linkend="tbl-2" /> that was generated with the LaTeX table environment</Table note>
