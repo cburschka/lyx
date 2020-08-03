@@ -219,8 +219,7 @@ void openParTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar
 	if (tag == "Plain Layout")
 		tag = "para";
 
-	if (!xs.isTagOpen(xml::ParTag(tag, lay.docbookattr()), 1)) // Don't nest a paragraph directly in a paragraph.
-		xs << xml::ParTag(tag, lay.docbookattr());
+	xs << xml::ParTag(tag, lay.docbookattr());
 
 	if (lay.docbookitemtag() != "NONE")
 		xs << xml::StartTag(lay.docbookitemtag(), lay.docbookitemattr());
@@ -555,38 +554,30 @@ ParagraphList::const_iterator makeEnvironment(
 	ParagraphList::const_iterator par = pbegin;
 	depth_type const origdepth = pbegin->params().depth();
 
-	// Output the opening tag for this environment.
-	{
-		// Find the previous paragraph.
-		auto prevpar = begin;
-		if (prevpar != par) {
-			auto prevpar_next = prevpar;
+	// Find the previous paragraph.
+	auto prevpar = begin;
+	if (prevpar != par) {
+		auto prevpar_next = prevpar;
+		++prevpar_next;
+
+		while (prevpar_next != par) {
 			++prevpar_next;
-
-			while (prevpar_next != par) {
-				++prevpar_next;
-				++prevpar;
-			}
+			++prevpar;
 		}
-
-		// Open tag for this environment.
-		openParTag(xs, &*par, &*prevpar);
-		xs << xml::CR();
 	}
+
+	// open tag for this environment
+	openParTag(xs, &*par, &*prevpar);
+	xs << xml::CR();
 
 	// we will on occasion need to remember a layout from before.
 	Layout const *lastlay = nullptr;
-	auto prevpar = par;
 
 	while (par != pend) {
 		Layout const & style = par->layout();
 		ParagraphList::const_iterator send;
 
-		auto parnext = par;
-		++parnext;
-
 		// Actual content of this paragraph.
-		prevpar = par;
 		switch (style.latextype) {
 		case LATEX_ENVIRONMENT:
 		case LATEX_LIST_ENVIRONMENT:
@@ -710,15 +701,15 @@ ParagraphList::const_iterator makeEnvironment(
 			break;
 		}
 		case LATEX_PARAGRAPH:
-//			send = findLast(par, pend, LATEX_PARAGRAPH);
-			par = makeParagraphs(buf, xs, runparams, text, par, parnext);
+			send = findLast(par, pend, LATEX_PARAGRAPH);
+			par = makeParagraphs(buf, xs, runparams, text, par, send);
 			break;
 		case LATEX_BIB_ENVIRONMENT:
-//			send = findLast(par, pend, LATEX_BIB_ENVIRONMENT);
-			makeParagraphBibliography(buf, xs, runparams, text, par, parnext);
+			send = findLast(par, pend, LATEX_BIB_ENVIRONMENT);
+			par = makeParagraphBibliography(buf, xs, runparams, text, par, send);
 			break;
 		case LATEX_COMMAND:
-			par = parnext;
+			++par;
 			break;
 		}
 	}
@@ -730,10 +721,9 @@ ParagraphList::const_iterator makeEnvironment(
 			xs << xml::CR();
 		}
 	}
-//	auto nextpar = par;
-//	++nextpar;
-	closeTag(xs, &*prevpar, &*par);
-//	closeTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr);
+	auto nextpar = par;
+	++nextpar;
+	closeTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr);
 	xs << xml::CR();
 	return pend;
 }
@@ -783,78 +773,41 @@ pair<ParagraphList::const_iterator, ParagraphList::const_iterator> makeAny(
 		ParagraphList::const_iterator send,
 		ParagraphList::const_iterator pend)
 {
-	switch (par->layout().latextype) {
-	case LATEX_COMMAND: {
-		// The files with which we are working never have more than
-		// one paragraph in a command structure.
-		// FIXME
-		// if (ourparams.docbook_in_par)
-		//   fix it so we don't get sections inside standard, e.g.
-		// note that we may then need to make runparams not const, so we
-		// can communicate that back.
-		// FIXME Maybe this fix should be in the routines themselves, in case
-		// they are called from elsewhere.
-		makeCommand(buf, xs, ourparams, text, par);
-		++par;
-		break;
-	}
-	case LATEX_ENVIRONMENT:
-	case LATEX_LIST_ENVIRONMENT:
-	case LATEX_ITEM_ENVIRONMENT:
-		// FIXME Same fix here.
-		send = findEndOfEnvironment(par, pend);
-		par = makeEnvironment(buf, xs, ourparams, text, par, send);
-		break;
-	case LATEX_PARAGRAPH:
-		send = findLast(par, pend, LATEX_PARAGRAPH);
-		par = makeParagraphs(buf, xs, ourparams, text, par, send);
-		break;
-	case LATEX_BIB_ENVIRONMENT:
-		send = findLast(par, pend, LATEX_BIB_ENVIRONMENT);
-		par = makeParagraphBibliography(buf, xs, ourparams, text, par, send);
-		break;
+	Layout const & style = par->layout();
+
+	switch (style.latextype) {
+		case LATEX_COMMAND: {
+			// The files with which we are working never have more than
+			// one paragraph in a command structure.
+			// FIXME
+			// if (ourparams.docbook_in_par)
+			//   fix it so we don't get sections inside standard, e.g.
+			// note that we may then need to make runparams not const, so we
+			// can communicate that back.
+			// FIXME Maybe this fix should be in the routines themselves, in case
+			// they are called from elsewhere.
+			makeCommand(buf, xs, ourparams, text, par);
+			++par;
+			break;
+		}
+		case LATEX_ENVIRONMENT:
+		case LATEX_LIST_ENVIRONMENT:
+		case LATEX_ITEM_ENVIRONMENT:
+			// FIXME Same fix here.
+			send = findEndOfEnvironment(par, pend);
+			par = makeEnvironment(buf, xs, ourparams, text, par, send);
+			break;
+		case LATEX_PARAGRAPH:
+			send = findLast(par, pend, LATEX_PARAGRAPH);
+			par = makeParagraphs(buf, xs, ourparams, text, par, send);
+			break;
+		case LATEX_BIB_ENVIRONMENT:
+			send = findLast(par, pend, LATEX_BIB_ENVIRONMENT);
+			par = makeParagraphBibliography(buf, xs, ourparams, text, par, send);
+			break;
 	}
 
 	return make_pair(par, send);
-}
-
-ParagraphList::const_iterator makeAnySimple(
-		Text const &text,
-		Buffer const &buf,
-		XMLStream &xs,
-		OutputParams const &ourparams,
-		ParagraphList::const_iterator par)
-{
-	auto parnext = par;
-	++parnext;
-
-	switch (par->layout().latextype) {
-	case LATEX_COMMAND: {
-		// The files with which we are working never have more than
-		// one paragraph in a command structure.
-		// FIXME
-		// if (ourparams.docbook_in_par)
-		//   fix it so we don't get sections inside standard, e.g.
-		// note that we may then need to make runparams not const, so we
-		// can communicate that back.
-		// FIXME Maybe this fix should be in the routines themselves, in case
-		// they are called from elsewhere.
-		makeCommand(buf, xs, ourparams, text, par);
-		return parnext;
-	}
-	case LATEX_ENVIRONMENT:
-	case LATEX_LIST_ENVIRONMENT:
-	case LATEX_ITEM_ENVIRONMENT:
-		// FIXME Same fix here.
-		return makeEnvironment(buf, xs, ourparams, text, par, parnext);
-	case LATEX_PARAGRAPH:
-		return makeParagraphs(buf, xs, ourparams, text, par, parnext);
-	case LATEX_BIB_ENVIRONMENT:
-		return makeParagraphBibliography(buf, xs, ourparams, text, par, parnext);
-	}
-
-	// This should never happen. Return the next paragraph to avoid an infinite loop.
-	return parnext;
 }
 
 } // end anonymous namespace
@@ -930,7 +883,7 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs, pit_type b
 			continue;
 		}
 
-		if (par.layout().docbookabstract())
+		if (par.layout().name() == from_ascii("Abstract"))
 			hasAbstractLayout = true;
 
 		// Based on layout information, store this paragraph in one set: should be in <info>, must be.
@@ -955,7 +908,7 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs, pit_type b
 	if (hasAbstractLayout) {
 		pit_type pit = bpit;
 		while (pit < cpit) { // Don't overshoot the <info> part.
-			if (paragraphs[pit].layout().docbookabstract())
+			if (paragraphs[pit].layout().name() == from_ascii("Abstract"))
 				abstract.emplace(pit);
 			pit++;
 		}
@@ -1000,22 +953,17 @@ pit_type generateDocBookParagraphWithoutSectioning(
 		XMLStream & xs,
 		OutputParams const & runparams,
 		ParagraphList const & paragraphs,
-		DocBookInfoTag const & info)
+		pit_type bpit,
+		pit_type epit)
 {
-	auto bpit = info.bpit;
 	auto par = paragraphs.iterator_at(bpit);
 	auto lastStartedPar = par;
 	ParagraphList::const_iterator send;
 	auto const pend =
-			(info.epit == (int) paragraphs.size()) ?
-			paragraphs.end() : paragraphs.iterator_at(info.epit);
+			(epit == (int) paragraphs.size()) ?
+			paragraphs.end() : paragraphs.iterator_at(epit);
 
-	while (bpit < info.epit) {
-		if (info.abstract.find(bpit) != info.abstract.end()) {
-			bpit += 1;
-			continue;
-		}
-
+	while (bpit < epit) {
 		tie(par, send) = makeAny(text, buf, xs, runparams, par, send, pend);
 		bpit += distance(lastStartedPar, par);
 		lastStartedPar = par;
@@ -1040,25 +988,18 @@ void outputDocBookInfo(
 	bool hasAbstract = !info.abstract.empty();
 	docstring abstract;
 	if (hasAbstract) {
-		odocstringstream os2;
-		{
-			XMLStream xs2(os2);
-			auto bpit = *std::min_element(info.abstract.begin(), info.abstract.end());
-			auto epit = 1 + *std::max_element(info.abstract.begin(), info.abstract.end());
-			// info.abstract is inclusive, epit is exclusive, hence +1 for looping.
+		pit_type bpitAbstract = *std::min_element(info.abstract.begin(), info.abstract.end());
+		pit_type epitAbstract = *std::max_element(info.abstract.begin(), info.abstract.end());
 
-			while (bpit < epit) {
-				makeAnySimple(text, buf, xs2, runparams, paragraphs.iterator_at(bpit));
-				xs2 << XMLStream::ESCAPE_NONE << from_ascii("<!-- " + to_string(bpit) + " -->");
-				bpit += 1;
-			}
-		}
+		odocstringstream os2;
+		XMLStream xs2(os2);
+		generateDocBookParagraphWithoutSectioning(text, buf, xs2, runparams, paragraphs, bpitAbstract, epitAbstract);
 
 		// Actually output the abstract if there is something to do. Don't count line feeds or spaces in this,
 		// even though they must be properly output if there is some abstract.
-		abstract = os2.str();
+		docstring abstractContent = os2.str();
 		static const lyx::regex reg("[ \\r\\n]*");
-		docstring abstractContent = from_utf8(lyx::regex_replace(to_utf8(abstract), reg, string("")));
+		abstractContent = from_utf8(lyx::regex_replace(to_utf8(abstractContent), reg, string("")));
 
 		// Nothing? Then there is no abstract!
 		if (abstractContent.empty())
@@ -1075,29 +1016,19 @@ void outputDocBookInfo(
 		xs << xml::CR();
 	}
 
-	// Output the elements that should go in <info>, before and after the abstract.
-	xs << XMLStream::ESCAPE_NONE << "<!-- shouldBeInInfo -->";
-	for (auto pit : info.shouldBeInInfo) // Typically, the title: these elements are so important and ubiquitous
-		// that mandating a wrapper like <info> would repel users.
-		makeAnySimple(text, buf, xs, runparams, paragraphs.iterator_at(pit));
-	xs << XMLStream::ESCAPE_NONE << "<!-- mustBeInInfo -->";
-	for (auto pit : info.mustBeInInfo)
-		if (info.abstract.find(pit) == info.abstract.end()) // The abstract must be in info, but is dealt with after.
-			makeAnySimple(text, buf, xs, runparams, paragraphs.iterator_at(pit));
-	xs << XMLStream::ESCAPE_NONE << "<!-- /info -->";
+	// Output the elements that should go in <info>.
+	generateDocBookParagraphWithoutSectioning(text, buf, xs, runparams, paragraphs, info.bpit, info.epit);
 
-	if (hasAbstract) {
-//		string tag = paragraphs[*info.abstract.begin()].layout().docbookforceabstracttag();
-//		if (tag == "NONE")
-//			tag = "abstract";
-//
-//		xs << xml::StartTag(tag);
-//		xs << xml::CR();
-		xs << XMLStream::ESCAPE_NONE << "<!-- abs -->";
+	if (hasAbstract && !abstract.empty()) { // The second test is probably superfluous.
+		string tag = paragraphs[*info.abstract.begin()].layout().docbookforceabstracttag();
+		if (tag == "NONE")
+			tag = "abstract";
+
+		xs << xml::StartTag(tag);
+		xs << xml::CR();
 		xs << XMLStream::ESCAPE_NONE << abstract;
-		xs << XMLStream::ESCAPE_NONE << "<!-- /abs -->";
-//		xs << xml::EndTag(tag);
-//		xs << xml::CR();
+		xs << xml::EndTag(tag);
+		xs << xml::CR();
 	}
 
 	// End the <info> tag if it was started.
@@ -1126,14 +1057,23 @@ void docbookFirstParagraphs(
 }
 
 
+bool isParagraphEmpty(const Paragraph &par)
+{
+	InsetList const &insets = par.insetList();
+	size_t insetsLength = distance(insets.begin(), insets.end());
+	bool hasParagraphOnlyNote = insetsLength == 1 && insets.get(0) && insets.get(0)->asInsetCollapsible() &&
+								dynamic_cast<InsetNote *>(insets.get(0));
+	return hasParagraphOnlyNote;
+}
+
+
 void docbookSimpleAllParagraphs(
 		Text const & text,
 		Buffer const & buf,
 		XMLStream & xs,
 		OutputParams const & runparams)
 {
-	// Handle the given text, supposing it has no sections (i.e. a "simple" text). The input may vary in length
-	// between a single paragraph to a whole document.
+	// Handle the document, supposing it has no sections (i.e. a "simple" document).
 
 	// First, the <info> tag.
 	ParagraphList const &paragraphs = text.paragraphs();
@@ -1141,14 +1081,27 @@ void docbookSimpleAllParagraphs(
 	pit_type const epit = runparams.par_end;
 	DocBookInfoTag info = getParagraphsWithInfo(paragraphs, bpit, epit);
 	outputDocBookInfo(text, buf, xs, runparams, paragraphs, info);
+	bpit = info.bpit;
 
-	// Then, the content. It starts where the <info> ends.
-	bpit = info.epit;
+	// Then, the content.
+	ParagraphList::const_iterator const pend =
+			(epit == (int) paragraphs.size()) ?
+			paragraphs.end() : paragraphs.iterator_at(epit);
+
 	while (bpit < epit) {
 		auto par = paragraphs.iterator_at(bpit);
-		if (!hasOnlyNotes(*par))
-			makeAnySimple(text, buf, xs, runparams, par);
-		bpit += 1;
+		ParagraphList::const_iterator const lastStartedPar = par;
+		ParagraphList::const_iterator send;
+
+		if (isParagraphEmpty(*par)) {
+			++par;
+			bpit += distance(lastStartedPar, par);
+			continue;
+		}
+
+		// Generate this paragraph.
+		tie(par, send) = makeAny(text, buf, xs, runparams, par, send, pend);
+		bpit += distance(lastStartedPar, par);
 	}
 }
 
@@ -1202,7 +1155,7 @@ void docbookParagraphs(Text const &text,
 		ParagraphList::const_iterator const lastStartedPar = par;
 		ParagraphList::const_iterator send;
 
-		if (hasOnlyNotes(*par)) {
+		if (isParagraphEmpty(*par)) {
 			++par;
 			bpit += distance(lastStartedPar, par);
 			continue;

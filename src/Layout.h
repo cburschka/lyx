@@ -199,8 +199,6 @@ public:
 	///
 	std::string const & docbookininfo() const;
 	///
-	bool docbookabstract() const { return docbookabstract_; }
-	///
 	std::string const & docbookwrappertag() const;
 	///
 	std::string const & docbookwrapperattr() const;
@@ -518,14 +516,11 @@ private:
 	mutable std::string docbookwrapperattr_;
 	/// Whether this wrapper tag may be merged with the previously opened wrapper tag.
 	bool docbookwrappermergewithprevious_;
-	/// Outer tag for this section, only if this layout represent a sectionning item, including chapters
-	/// (default: section).
+	/// Outer tag for this section, only if this layout represent a sectionning item, including chapters (default: section).
 	mutable std::string docbooksectiontag_;
 	/// Whether this tag must/can/can't go into an <info> tag (default: never, as it only makes sense for metadata).
 	mutable std::string docbookininfo_;
-	/// Wehther this paragraph should be considered as abstract.
-	bool docbookabstract_;
-	/// Whether this element (root or not) does not accept text without a section (i.e. the first text that is met
+	/// whether this element (root or not) does not accept text without a section(i.e. the first text that is met
 	/// in LyX must be considered as the abstract if this is true); this text must be output with the specific tag
 	/// held by this attribute
 	mutable std::string docbookforceabstracttag_;
