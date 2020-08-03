@@ -175,11 +175,10 @@ Style Affiliation
 	  Family	Roman
 	  Size		Normal
 	EndFont
-	DocBookTag                        affiliation
-	DocBookWrapperTag                 author
-	DocBookWrapperMergeWithPrevious   true
-	DocBookItemTag                    orgname
-	DocBookInInfo                     always
+	DocBookTag            affiliation
+	DocBookWrapperTag     author
+	DocBookItemTag        orgname
+	DocBookInInfo         always
 End
 
 
@@ -202,12 +201,11 @@ Style Altaffilation
 	LabelFont
 	  Color		green
 	EndFont
-	DocBookTag                        affiliation
-	DocBookAttr                       role="alternate"
-	DocBookWrapperTag                 author
-	DocBookWrapperMergeWithPrevious   true
-	DocBookItemTag                    orgname
-	DocBookInInfo                     always
+	DocBookTag            affiliation
+	DocBookAttr           role="alternate"
+	DocBookItemTag        orgname
+	DocBookWrapperTag     author
+	DocBookInInfo         always
 End
 
 
@@ -227,10 +225,9 @@ Style Email
 	  Size		Normal
 	  Shape		Italic
 	EndFont
-	DocBookTag                        email
-	DocBookWrapperTag                 author
-	DocBookWrapperMergeWithPrevious   true
-	DocBookInInfo                     always
+	DocBookTag            email
+	DocBookWrapperTag     author
+	DocBookInInfo         always
 End
 
 
