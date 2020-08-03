@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# \file lilypond
+# wrapper start script for LilyPond.app on Mac
+#
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+#
+# \author Stephan Witt
+# Full author contact details are available in file CREDITS.
+
+unset DISPLAY
+
+LYXDIR=$(dirname "${0}")
+# try to find the lilypond installation...
+# at first try the well known location for LilyPond 2.x
+# in case this failes try PATH expansion to start the lilypond shell wrapper
+IFS=":" read -ra DIRLIST <<< "${PATH}"
+for BINDIR in "/Applications/LilyPond.app/Contents/Resources/bin" "${DIRLIST[@]}" ; do
+	BDIR=$(dirname "${BINDIR}/x")
+	if [ "${BDIR}" != "${LYXDIR}" -a -x "${BINDIR}"/lilypond ]; then
+		exec "${BINDIR}"/lilypond "$@"
+		exit 0
+	fi
+done
+# report error and exit with failure status
+echo Could not find lilypond binary.
+exit 1

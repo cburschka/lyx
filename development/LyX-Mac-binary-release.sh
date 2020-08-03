@@ -900,6 +900,8 @@ code_sign() {
 		"${condir}"/PlugIns/*/lib*.dylib \
 		"${condir}"/Library/Spotlight/* \
 		"${target}"/inkscape \
+		"${target}"/lilypond \
+		"${target}"/lilypond-book \
 		"${target}"/maxima \
 		"${target}"/tex2lyx \
 		"${target}"/lyxeditor \
