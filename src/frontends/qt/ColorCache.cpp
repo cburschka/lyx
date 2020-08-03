@@ -60,7 +60,7 @@ QPalette::ColorRole role(ColorCode col)
 void ColorCache::init()
 {
 	for (int col = 0; col <= Color_ignore; ++col) {
-		lcolors_[col] = QColor(lcolor.getX11Name(ColorCode(col)).c_str());
+		lcolors_[col] = QColor(lcolor.getX11HexName(ColorCode(col)).c_str());
 	}
 
 	initialized_ = true;
@@ -102,7 +102,7 @@ QColor ColorCache::get(Color const & color, bool syscolors) const
 			(base_color.blue() + merge_color.blue()) / 2);
 	}
 	// used by branches
-	return QColor(lcolor.getX11Name(color.baseColor).c_str());
+	return QColor(lcolor.getX11HexName(color.baseColor).c_str());
 }
 
 

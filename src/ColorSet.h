@@ -48,22 +48,22 @@ public:
 	///
 	ColorSet();
 
-	/** set the given LyX color to the color defined by the X11 name given
+	/** set the given LyX color to the color defined by the X11 hex name given
 	 *  \returns true if successful.
 	 */
-	bool setColor(ColorCode col, std::string const & x11name);
+	bool setColor(ColorCode col, std::string const & x11hexname);
 
 	/** set the given LyX color to the color defined by the X11
-	 *  name given \returns true if successful. A new color entry
+	 *  hex name given \returns true if successful. A new color entry
 	 *  is created if the color is unknown
 	 */
-	bool setColor(std::string const & lyxname, std::string const & x11name);
+	bool setColor(std::string const & lyxname, std::string const & x11hexname);
 
 	/// Get the GUI name of \c color.
 	docstring const getGUIName(ColorCode c) const;
 
-	/// Get the X11 name of \c color.
-	std::string const getX11Name(ColorCode c) const;
+	/// Get the X11 hexname of \c color.
+	std::string const getX11HexName(ColorCode c) const;
 
 	/// Get the LaTeX name of \c color.
 	std::string const getLaTeXName(ColorCode c) const;
@@ -87,7 +87,7 @@ private:
 		/// the name used in LaTeX
 		std::string latexname;
 		/// the name for X11
-		std::string x11name;
+		std::string x11hexname;
 		/// the name for LyX
 		std::string lyxname;
 	};

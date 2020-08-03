@@ -1937,9 +1937,9 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 	case RC_SET_COLOR:
 		for (int i = 0; i < Color_ignore; ++i) {
 			ColorCode lc = static_cast<ColorCode>(i);
-			string const col = lcolor.getX11Name(lc);
+			string const col = lcolor.getX11HexName(lc);
 			if (ignore_system_lyxrc
-			    || col != system_lcolor.getX11Name(lc)) {
+			    || col != system_lcolor.getX11HexName(lc)) {
 				os << "\\set_color \""
 				   << lcolor.getLyXName(lc) << "\" \""
 				   << col << "\"\n";

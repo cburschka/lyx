@@ -41,7 +41,7 @@ struct ColorSet::ColorEntry {
 	ColorCode lcolor;
 	char const * guiname;
 	char const * latexname;
-	char const * x11name;
+	char const * x11hexname;
 	char const * lyxname;
 };
 
@@ -196,91 +196,118 @@ ColorSet::ColorSet()
 	char const * grey40 = "#666666";
 	char const * grey60 = "#999999";
 	char const * grey80 = "#cccccc";
+	// latex colors (xcolor package)
+	char const * black = "#000000";
+	char const * white = "#ffffff";
+	char const * blue = "#0000ff";
+	char const * brown = "#bf8040";
+	char const * cyan = "#00ffff";
+	char const * darkgray = "#404040";
+	char const * gray = "#808080";
+	char const * green = "#00ff00";
+	char const * lightgray = "#bfbfbf";
+	char const * lime = "#bfff00";
+	char const * magenta = "#ff00ff";
+	char const * olive = "#808000";
+	char const * orange = "#ff8000";
+	char const * pink = "#ffbfbf";
+	char const * purple = "#bf0040";
+	char const * red = "#ff0000";
+	char const * teal = "#008080";
+	char const * violet = "#800080";
+	char const * yellow = "#ffff00";
+	// svg colors
+	char const * Brown = "#a52a2a";
+	char const * DarkRed = "#8b0000";
+	char const * Green = "#008000";
+	char const * IndianRed = "#cd5c5c";
+	char const * Linen = "#faf0e6";
+	char const * RoyalBlue = "#4169e1";
+
 	//char const * grey90 = "#e5e5e5";
-	//  ColorCode, gui, latex, x11, lyx
+	//  ColorCode, gui, latex, x11hexname, lyx
 	// Warning: several of these entries are overridden in GuiApplication constructor
 	static ColorEntry const items[] = {
-	{ Color_none, N_("none"), "none", "black", "none" },
-	{ Color_black, N_("black"), "black", "black", "black" },
-	{ Color_white, N_("white"), "white", "white", "white" },
-	{ Color_blue, N_("blue"), "blue", "blue", "blue" },
-	{ Color_brown, N_("brown"), "brown", "brown", "brown" },
-	{ Color_cyan, N_("cyan"), "cyan", "cyan", "cyan" },
-	{ Color_darkgray, N_("darkgray"), "darkgray", "darkgray", "darkgray" },
-	{ Color_gray, N_("gray"), "gray", "gray", "gray" },
-	{ Color_green, N_("green"), "green", "green", "green" },
-	{ Color_lightgray, N_("lightgray"), "lightgray", "lightgray", "lightgray" },
-	{ Color_lime, N_("lime"), "lime", "lime", "lime" },
-	{ Color_magenta, N_("magenta"), "magenta", "magenta", "magenta" },
-	{ Color_olive, N_("olive"), "olive", "olive", "olive" },
-	{ Color_orange, N_("orange"), "orange", "orange", "orange" },
-	{ Color_pink, N_("pink"), "pink", "pink", "pink" },
-	{ Color_purple, N_("purple"), "purple", "purple", "purple" },
-	{ Color_red, N_("red"), "red", "red", "red" },
-	{ Color_teal, N_("teal"), "teal", "teal", "teal" },
-	{ Color_violet, N_("violet"), "violet", "violet", "violet" },
-	{ Color_yellow, N_("yellow"), "yellow", "yellow", "yellow" },
-	{ Color_cursor, N_("cursor"), "cursor", "black", "cursor" },
-	{ Color_background, N_("background"), "background", "linen", "background" },
-	{ Color_foreground, N_("text"), "foreground", "black", "foreground" },
-	{ Color_selection, N_("selection"), "selection", "LightBlue", "selection" },
-	{ Color_selectiontext, N_("selected text"),
-		"selectiontext", "black", "selectiontext" },
-	{ Color_latex, N_("LaTeX text"), "latex", "DarkRed", "latex" },
+	{ Color_none, N_("none"), "none", black, "none" },
+	{ Color_black, N_("black"), "black", black, "black" },
+	{ Color_white, N_("white"), "white", white, "white" },
+	{ Color_blue, N_("blue"), "blue", blue, "blue" },
+	{ Color_brown, N_("brown"), "brown", brown, "brown" },
+	{ Color_cyan, N_("cyan"), "cyan", cyan, "cyan" },
+	{ Color_darkgray, N_("darkgray"), "darkgray", darkgray, "darkgray" },
+	{ Color_gray, N_("gray"), "gray", gray, "gray" },
+	{ Color_green, N_("green"), "green", green, "green" },
+	{ Color_lightgray, N_("lightgray"), "lightgray", lightgray, "lightgray" },
+	{ Color_lime, N_("lime"), "lime", lime, "lime" },
+	{ Color_magenta, N_("magenta"), "magenta", magenta, "magenta" },
+	{ Color_olive, N_("olive"), "olive", olive, "olive" },
+	{ Color_orange, N_("orange"), "orange", orange, "orange" },
+	{ Color_pink, N_("pink"), "pink", pink, "pink" },
+	{ Color_purple, N_("purple"), "purple", purple, "purple" },
+	{ Color_red, N_("red"), "red", red, "red" },
+	{ Color_teal, N_("teal"), "teal", teal, "teal" },
+	{ Color_violet, N_("violet"), "violet", violet, "violet" },
+	{ Color_yellow, N_("yellow"), "yellow", yellow, "yellow" },
+	{ Color_cursor, N_("cursor"), "cursor", black, "cursor" },
+	{ Color_background, N_("background"), "background", Linen, "background" },
+	{ Color_foreground, N_("text"), "foreground", black, "foreground" },
+	{ Color_selection, N_("selection"), "selection", "#add8e6", "selection" },
+	{ Color_selectiontext, N_("selected text"), "selectiontext", black, "selectiontext" },
+	{ Color_latex, N_("LaTeX text"), "latex", DarkRed, "latex" },
 	{ Color_inlinecompletion, N_("inline completion"),
 		"inlinecompletion", grey60, "inlinecompletion" },
 	{ Color_nonunique_inlinecompletion, N_("non-unique inline completion"),
 		"nonuniqueinlinecompletion", grey80, "nonuniqueinlinecompletion" },
-	{ Color_preview, N_("previewed snippet"), "preview", "black", "preview" },
-	{ Color_notelabel, N_("note label"), "note", "yellow", "note" },
-	{ Color_notebg, N_("note background"), "notebg", "yellow", "notebg" },
-	{ Color_commentlabel, N_("comment label"), "comment", "magenta", "comment" },
-	{ Color_commentbg, N_("comment background"), "commentbg", "linen", "commentbg" },
+	{ Color_preview, N_("previewed snippet"), "preview", black, "preview" },
+	{ Color_notelabel, N_("note label"), "note", yellow, "note" },
+	{ Color_notebg, N_("note background"), "notebg", yellow, "notebg" },
+	{ Color_commentlabel, N_("comment label"), "comment", magenta, "comment" },
+	{ Color_commentbg, N_("comment background"), "commentbg", Linen, "commentbg" },
 	{ Color_greyedoutlabel, N_("greyedout inset label"), "greyedout", "#ff0080", "greyedout" },
 	{ Color_greyedouttext, N_("greyedout inset text"), "greyedouttext", grey80, "greyedouttext" },
-	{ Color_greyedoutbg, N_("greyedout inset background"), "greyedoutbg", "linen", "greyedoutbg" },
+	{ Color_greyedoutbg, N_("greyedout inset background"), "greyedoutbg", Linen, "greyedoutbg" },
 	{ Color_phantomtext, N_("phantom inset text"), "phantomtext", "#7f7f7f", "phantomtext" },
 	{ Color_shadedbg, N_("shaded box"), "shaded", "#ff0000", "shaded" },
-	{ Color_listingsbg, N_("listings background"), "listingsbg", "white", "listingsbg" },
+	{ Color_listingsbg, N_("listings background"), "listingsbg", white, "listingsbg" },
 	{ Color_branchlabel, N_("branch label"), "branchlabel", "#c88000", "branchlabel" },
 	{ Color_footlabel, N_("footnote label"), "footlabel", "#00aaff", "footlabel" },
-	{ Color_indexlabel, N_("index label"), "indexlabel", "green", "indexlabel" },
+	{ Color_indexlabel, N_("index label"), "indexlabel", Green, "indexlabel" },
 	{ Color_marginlabel, N_("margin note label"), "marginlabel", "#aa55ff", "marginlabel" },
-	{ Color_urllabel, N_("URL label"), "urllabel", "blue", "urllabel" },
-	{ Color_urltext, N_("URL text"), "urltext", "blue", "urltext" },
-	{ Color_depthbar, N_("depth bar"), "depthbar", "IndianRed", "depthbar" },
-	{ Color_scroll, N_("scroll indicator"), "scroll", "IndianRed", "scroll" },
-	{ Color_language, N_("language"), "language", "Blue", "language" },
-	{ Color_command, N_("command inset"), "command", "black", "command" },
-	{ Color_commandbg, N_("command inset background"), "commandbg", "azure", "commandbg" },
-	{ Color_commandframe, N_("command inset frame"), "commandframe", "black", "commandframe" },
-	{ Color_command_broken, N_("command inset (broken reference)"), "command", "white", "command_broken" },
-	{ Color_buttonbg_broken, N_("button background (broken reference)"), "commandbg", "Red", "commandbg_broken" },
-	{ Color_buttonframe_broken, N_("button frame (broken reference)"), "commandframe", "Red", "commandframe_broken" },
+	{ Color_urllabel, N_("URL label"), "urllabel", blue, "urllabel" },
+	{ Color_urltext, N_("URL text"), "urltext", blue, "urltext" },
+	{ Color_depthbar, N_("depth bar"), "depthbar", IndianRed, "depthbar" },
+	{ Color_scroll, N_("scroll indicator"), "scroll", IndianRed, "scroll" },
+	{ Color_language, N_("language"), "language", blue, "language" },
+	{ Color_command, N_("command inset"), "command", black, "command" },
+	{ Color_commandbg, N_("command inset background"), "commandbg", "#f0ffff", "commandbg" },
+	{ Color_commandframe, N_("command inset frame"), "commandframe", black, "commandframe" },
+	{ Color_command_broken, N_("command inset (broken reference)"), "command", white, "command_broken" },
+	{ Color_buttonbg_broken, N_("button background (broken reference)"), "commandbg", red, "commandbg_broken" },
+	{ Color_buttonframe_broken, N_("button frame (broken reference)"), "commandframe", red, "commandframe_broken" },
 	{ Color_buttonhoverbg_broken, N_("button background (broken reference) under focus"), "buttonhoverbg", "#DB0B0B", "buttonhoverbg_broken" },
-	{ Color_special, N_("special character"), "special", "RoyalBlue", "special" },
-	{ Color_math, N_("math"), "math", "DarkBlue", "math" },
-	{ Color_mathbg, N_("math background"), "mathbg", "linen", "mathbg" },
-	{ Color_graphicsbg, N_("graphics background"), "graphicsbg", "linen", "graphicsbg" },
-	{ Color_mathmacrobg, N_("math macro background"), "mathmacrobg", "linen", "mathmacrobg" },
-	{ Color_mathframe, N_("math frame"), "mathframe", "Magenta", "mathframe" },
-	{ Color_mathcorners, N_("math corners"), "mathcorners", "linen", "mathcorners" },
-	{ Color_mathline, N_("math line"), "mathline", "Blue", "mathline" },
+	{ Color_special, N_("special character"), "special", RoyalBlue, "special" },
+	{ Color_math, N_("math"), "math", "#00008B", "math" },
+	{ Color_mathbg, N_("math background"), "mathbg", Linen, "mathbg" },
+	{ Color_graphicsbg, N_("graphics background"), "graphicsbg", Linen, "graphicsbg" },
+	{ Color_mathmacrobg, N_("math macro background"), "mathmacrobg", Linen, "mathmacrobg" },
+	{ Color_mathframe, N_("math frame"), "mathframe", magenta, "mathframe" },
+	{ Color_mathcorners, N_("math corners"), "mathcorners", Linen, "mathcorners" },
+	{ Color_mathline, N_("math line"), "mathline", blue, "mathline" },
 	{ Color_mathmacrobg, N_("math macro background"), "mathmacrobg", "#ede2d8", "mathmacrobg" },
 	{ Color_mathmacrohoverbg, N_("math macro hovered background"), "mathmacrohoverbg", "#cdc3b8", "mathmacrohoverbg" },
 	{ Color_mathmacrolabel, N_("math macro label"), "mathmacrolabel", "#a19992", "mathmacrolabel" },
 	{ Color_mathmacroframe, N_("math macro frame"), "mathmacroframe", "#ede2d8", "mathmacroframe" },
-	{ Color_mathmacroblend, N_("math macro blended out"), "mathmacroblend", "black", "mathmacroblend" },
+	{ Color_mathmacroblend, N_("math macro blended out"), "mathmacroblend", black, "mathmacroblend" },
 	{ Color_mathmacrooldarg, N_("math macro old parameter"), "mathmacrooldarg", grey80, "mathmacrooldarg" },
-	{ Color_mathmacronewarg, N_("math macro new parameter"), "mathmacronewarg", "black", "mathmacronewarg" },
-	{ Color_collapsible, N_("collapsible inset text"), "collapsible", "DarkRed", "collapsible" },
-	{ Color_collapsibleframe, N_("collapsible inset frame"), "collapsibleframe", "IndianRed", "collapsibleframe" },
+	{ Color_mathmacronewarg, N_("math macro new parameter"), "mathmacronewarg", black, "mathmacronewarg" },
+	{ Color_collapsible, N_("collapsible inset text"), "collapsible", DarkRed, "collapsible" },
+	{ Color_collapsibleframe, N_("collapsible inset frame"), "collapsibleframe", IndianRed, "collapsibleframe" },
 	{ Color_insetbg, N_("inset background"), "insetbg", grey80, "insetbg" },
-	{ Color_insetframe, N_("inset frame"), "insetframe", "IndianRed", "insetframe" },
-	{ Color_error, N_("LaTeX error"), "error", "Red", "error" },
-	{ Color_eolmarker, N_("end-of-line marker"), "eolmarker", "Brown", "eolmarker" },
-	{ Color_appendix, N_("appendix marker"), "appendix", "Brown", "appendix" },
-	{ Color_changebar, N_("change bar"), "changebar", "Blue", "changebar" },
+	{ Color_insetframe, N_("inset frame"), "insetframe", IndianRed, "insetframe" },
+	{ Color_error, N_("LaTeX error"), "error", red, "error" },
+	{ Color_eolmarker, N_("end-of-line marker"), "eolmarker", Brown, "eolmarker" },
+	{ Color_appendix, N_("appendix marker"), "appendix", Brown, "appendix" },
+	{ Color_changebar, N_("change bar"), "changebar", blue, "changebar" },
 	{ Color_deletedtext, N_("deleted text (output)"), "deletedtext", "#ff0000", "deletedtext" },
 	{ Color_addedtext, N_("added text (output)"), "addedtext", "#0000ff", "addedtext" },
 	{ Color_addedtextauthor1, N_("added text (workarea, 1st author)"), "changedtextauthor1", "#0000ff", "changedtextauthor1" },
@@ -288,21 +315,21 @@ ColorSet::ColorSet()
 	{ Color_addedtextauthor3, N_("added text (workarea, 3rd author)"), "changedtextauthor3", "#ff0000", "changedtextauthor3" },
 	{ Color_addedtextauthor4, N_("added text (workarea, 4th author)"), "changedtextauthor4", "#aa00ff", "changedtextauthor4" },
 	{ Color_addedtextauthor5, N_("added text (workarea, 5th author)"), "changedtextauthor5", "#55aa00", "changedtextauthor5" },
-	{ Color_deletedtextmodifier, N_("deleted text modifier (workarea)"), "deletedtextmodifier", "white", "deletedtextmodifier" },
-	{ Color_added_space, N_("added space markers"), "added_space", "Brown", "added_space" },
-	{ Color_tabularline, N_("table line"), "tabularline", "black", "tabularline" },
-	{ Color_tabularonoffline, N_("table on/off line"), "tabularonoffline", "LightSteelBlue", "tabularonoffline" },
+	{ Color_deletedtextmodifier, N_("deleted text modifier (workarea)"), "deletedtextmodifier", white, "deletedtextmodifier" },
+	{ Color_added_space, N_("added space markers"), "added_space", Brown, "added_space" },
+	{ Color_tabularline, N_("table line"), "tabularline", black, "tabularline" },
+	{ Color_tabularonoffline, N_("table on/off line"), "tabularonoffline", "#b0c4de", "tabularonoffline" },
 	{ Color_bottomarea, N_("bottom area"), "bottomarea", grey40, "bottomarea" },
-	{ Color_newpage, N_("new page"), "newpage", "Blue", "newpage" },
-	{ Color_pagebreak, N_("page break / line break"), "pagebreak", "RoyalBlue", "pagebreak" },
+	{ Color_newpage, N_("new page"), "newpage", blue, "newpage" },
+	{ Color_pagebreak, N_("page break / line break"), "pagebreak", RoyalBlue, "pagebreak" },
 	{ Color_buttonframe, N_("button frame"), "buttonframe", "#dcd2c8", "buttonframe" },
 	{ Color_buttonbg, N_("button background"), "buttonbg", "#dcd2c8", "buttonbg" },
 	{ Color_buttonhoverbg, N_("button background under focus"), "buttonhoverbg", "#C7C7CA", "buttonhoverbg" },
 	{ Color_paragraphmarker, N_("paragraph marker"), "paragraphmarker", grey80, "paragraphmarker"},
-	{ Color_previewframe, N_("preview frame"), "previewframe", "black", "previewframe"},
-	{ Color_inherit, N_("inherit"), "inherit", "black", "inherit" },
-	{ Color_regexpframe, N_("regexp frame"), "regexpframe", "green", "regexpframe" },
-	{ Color_ignore, N_("ignore"), "ignore", "black", "ignore" },
+	{ Color_previewframe, N_("preview frame"), "previewframe", black, "previewframe"},
+	{ Color_inherit, N_("inherit"), "inherit", black, "inherit" },
+	{ Color_regexpframe, N_("regexp frame"), "regexpframe", Green, "regexpframe" },
+	{ Color_ignore, N_("ignore"), "ignore", black, "ignore" },
 	{ Color_ignore, nullptr, nullptr, nullptr, nullptr }
 	};
 
@@ -317,7 +344,7 @@ void ColorSet::fill(ColorEntry const & entry)
 	Information in;
 	in.lyxname   = entry.lyxname;
 	in.latexname = entry.latexname;
-	in.x11name   = entry.x11name;
+	in.x11hexname   = entry.x11hexname;
 	in.guiname   = entry.guiname;
 	infotab[entry.lcolor] = in;
 	lyxcolors[entry.lyxname] = entry.lcolor;
@@ -334,11 +361,11 @@ docstring const ColorSet::getGUIName(ColorCode c) const
 }
 
 
-string const ColorSet::getX11Name(ColorCode c) const
+string const ColorSet::getX11HexName(ColorCode c) const
 {
 	InfoTab::const_iterator it = infotab.find(c);
 	if (it != infotab.end())
-		return it->second.x11name;
+		return it->second.x11hexname;
 
 	lyxerr << "LyX internal error: Missing color"
 		  " entry in Color.cpp for " << c << '\n'
@@ -365,7 +392,7 @@ string const ColorSet::getLyXName(ColorCode c) const
 }
 
 
-bool ColorSet::setColor(ColorCode col, string const & x11name)
+bool ColorSet::setColor(ColorCode col, string const & x11hexname)
 {
 	InfoTab::iterator it = infotab.find(col);
 	if (it == infotab.end()) {
@@ -380,12 +407,12 @@ bool ColorSet::setColor(ColorCode col, string const & x11name)
 		return false;
 	}
 
-	it->second.x11name = x11name;
+	it->second.x11hexname = x11hexname;
 	return true;
 }
 
 
-bool ColorSet::setColor(string const & lyxname, string const &x11name)
+bool ColorSet::setColor(string const & lyxname, string const & x11hexname)
 {
 	string const lcname = ascii_lowercase(lyxname);
 	if (lyxcolors.find(lcname) == lyxcolors.end()) {
@@ -394,7 +421,7 @@ bool ColorSet::setColor(string const & lyxname, string const &x11name)
 		addColor(static_cast<ColorCode>(infotab.size()), lcname);
 	}
 
-	return setColor(lyxcolors[lcname], x11name);
+	return setColor(lyxcolors[lcname], x11hexname);
 }
 
 

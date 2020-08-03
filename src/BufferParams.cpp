@@ -992,7 +992,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 					branch_ptr->setColor(color);
 				// Update also the Color table:
 				if (color == "none")
-					color = lcolor.getX11Name(Color_background);
+					color = lcolor.getX11HexName(Color_background);
 				// FIXME UNICODE
 				lcolor.setColor(to_utf8(branch), color);
 			}
@@ -1021,7 +1021,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 					index_ptr->setColor(color);
 				// Update also the Color table:
 				if (color == "none")
-					color = lcolor.getX11Name(Color_background);
+					color = lcolor.getX11HexName(Color_background);
 				// FIXME UNICODE
 				if (!shortcut.empty())
 					lcolor.setColor(to_utf8(shortcut), color);

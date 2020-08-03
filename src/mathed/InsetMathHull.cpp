@@ -604,7 +604,7 @@ void InsetMathHull::drawMarkers(PainterInfo & pi, int x, int y) const
 	ColorCode pen_color = mouseHovered(pi.base.bv) || editing(pi.base.bv)?
 		Color_mathframe : Color_mathcorners;
 	// If the corners have the same color as the background, do not paint them.
-	if (lcolor.getX11Name(Color_mathbg) == lcolor.getX11Name(pen_color))
+	if (lcolor.getX11HexName(Color_mathbg) == lcolor.getX11HexName(pen_color))
 		return;
 
 	Inset::drawMarkers(pi, x, y);

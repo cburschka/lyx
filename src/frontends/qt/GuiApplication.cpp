@@ -2836,7 +2836,7 @@ bool GuiApplication::getRgbColor(ColorCode col, RGBColor & rgbcol)
 
 bool Application::getRgbColorUncached(ColorCode col, RGBColor & rgbcol)
 {
-	QColor const qcol(lcolor.getX11Name(col).c_str());
+	QColor const qcol(lcolor.getX11HexName(col).c_str());
 	if (!qcol.isValid()) {
 		rgbcol.r = 0;
 		rgbcol.g = 0;

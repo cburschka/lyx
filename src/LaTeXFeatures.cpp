@@ -1735,11 +1735,11 @@ TexString LaTeXFeatures::getMacros() const
 	if (mustProvide("ct-xcolor-ulem")) {
 		streamsize const prec = macros.os().precision(2);
 
-		RGBColor cadd = rgbFromHexName(lcolor.getX11Name(Color_addedtext));
+		RGBColor cadd = rgbFromHexName(lcolor.getX11HexName(Color_addedtext));
 		macros << "\\providecolor{lyxadded}{rgb}{"
 		       << cadd.r / 255.0 << ',' << cadd.g / 255.0 << ',' << cadd.b / 255.0 << "}\n";
 
-		RGBColor cdel = rgbFromHexName(lcolor.getX11Name(Color_deletedtext));
+		RGBColor cdel = rgbFromHexName(lcolor.getX11HexName(Color_deletedtext));
 		macros << "\\providecolor{lyxdeleted}{rgb}{"
 		       << cdel.r / 255.0 << ',' << cdel.g / 255.0 << ',' << cdel.b / 255.0 << "}\n";
 
@@ -1764,11 +1764,11 @@ TexString LaTeXFeatures::getMacros() const
 		if (!mustProvide("ct-xcolor-ulem")) {
 			streamsize const prec = macros.os().precision(2);
 
-			RGBColor cadd = rgbFromHexName(lcolor.getX11Name(Color_addedtext));
+			RGBColor cadd = rgbFromHexName(lcolor.getX11HexName(Color_addedtext));
 			macros << "\\providecolor{lyxadded}{rgb}{"
 			       << cadd.r / 255.0 << ',' << cadd.g / 255.0 << ',' << cadd.b / 255.0 << "}\n";
 	
-			RGBColor cdel = rgbFromHexName(lcolor.getX11Name(Color_deletedtext));
+			RGBColor cdel = rgbFromHexName(lcolor.getX11HexName(Color_deletedtext));
 			macros << "\\providecolor{lyxdeleted}{rgb}{"
 			       << cdel.r / 255.0 << ',' << cdel.g / 255.0 << ',' << cdel.b / 255.0 << "}\n";
 	

@@ -1254,7 +1254,7 @@ bool PrefColors::isDefaultColor(int const row, QString const color)
 QColor PrefColors::getDefaultColorByRow(int const row)
 {
 	ColorSet const defaultcolor;
-	return defaultcolor.getX11Name(lcolors_[size_t(row)]).c_str();
+	return defaultcolor.getX11HexName(lcolors_[size_t(row)]).c_str();
 }
 
 

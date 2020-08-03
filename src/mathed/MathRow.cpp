@@ -123,7 +123,7 @@ void drawMarkers(PainterInfo const & pi, MathRow::Element const & e,
 	                       || e.inset->editing(pi.base.bv);
 	ColorCode const pen_color = highlight ? Color_mathframe : Color_mathcorners;
 	// If the corners have the same color as the background, do not paint them.
-	if (lcolor.getX11Name(Color_mathbg) == lcolor.getX11Name(pen_color))
+	if (lcolor.getX11HexName(Color_mathbg) == lcolor.getX11HexName(pen_color))
 		return;
 
 	// Lower corners in all cases
