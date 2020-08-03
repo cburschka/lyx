@@ -18,6 +18,8 @@
 #include <deque>
 #include <memory>
 
+#include <iostream>
+
 namespace lyx {
 
 class Buffer;

@@ -107,6 +107,7 @@ enum LayoutTags {
 	LT_DOCBOOKTAG,
 	LT_DOCBOOKATTR,
 	LT_DOCBOOKININFO,
+	LT_DOCBOOKABSTRACT,
 	LT_DOCBOOKWRAPPERTAG,
 	LT_DOCBOOKWRAPPERATTR,
 	LT_DOCBOOKWRAPPERMERGEWITHPREVIOUS,
@@ -177,6 +178,7 @@ Layout::Layout()
 	htmllabelfirst_ = false;
 	htmlforcecss_ = false;
 	htmltitle_ = false;
+	docbookabstract_ = false;
 	docbookwrappermergewithprevious_ = false;
 	spellcheck = true;
 	forcelocal = 0;
@@ -221,6 +223,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 		{ "commanddepth",   LT_COMMANDDEPTH },
 		{ "copystyle",      LT_COPYSTYLE },
 		{ "dependson",      LT_DEPENDSON },
+		{ "docbookabstract",         LT_DOCBOOKABSTRACT },
 		{ "docbookattr",             LT_DOCBOOKATTR },
 		{ "docbookforceabstracttag", LT_DOCBOOKFORCEABSTRACTTAG },
 		{ "docbookininfo",           LT_DOCBOOKININFO },
@@ -736,6 +739,10 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 
 		case LT_DOCBOOKININFO:
 			lex >> docbookininfo_;
+			break;
+
+		case LT_DOCBOOKABSTRACT:
+			lex >> docbookabstract_;
 			break;
 
 		case LT_DOCBOOKWRAPPERTAG:
@@ -1603,6 +1610,7 @@ void Layout::write(ostream & os) const
 		os << "\tDocBookAttr " << docbookattr_ << '\n';
 	if(!docbookininfo_.empty())
 		os << "\tDocBookInInfo " << docbookininfo_ << '\n';
+	os << "\tDocBookAbstract " << docbookabstract_ << '\n';
 	if(!docbookwrappertag_.empty())
 		os << "\tDocBookWrapperTag " << docbookwrappertag_ << '\n';
 	if(!docbookwrapperattr_.empty())
