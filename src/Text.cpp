@@ -1685,10 +1685,7 @@ bool Text::backspacePos0(Cursor & cur)
 	if (cur.pit() == 0)
 		return false;
 
-	bool needsUpdate = false;
-
 	BufferParams const & bufparams = cur.buffer()->params();
-	DocumentClass const & tclass = bufparams.documentClass();
 	ParagraphList & plist = cur.text()->paragraphs();
 	Paragraph const & par = cur.paragraph();
 	Cursor prevcur = cur;
@@ -1701,14 +1698,12 @@ bool Text::backspacePos0(Cursor & cur)
 	    || (cur.lastpos() == 1 && par.isSeparator(0))) {
 		cur.recordUndo(prevcur.pit());
 		plist.erase(plist.iterator_at(cur.pit()));
-		needsUpdate = true;
 	}
 	// is previous par empty?
 	else if (prevcur.lastpos() == 0
 		 || (prevcur.lastpos() == 1 && prevpar.isSeparator(0))) {
 		cur.recordUndo(prevcur.pit());
 		plist.erase(plist.iterator_at(prevcur.pit()));
-		needsUpdate = true;
 	}
 	// FIXME: Do we really not want to allow this???
 	// Pasting is not allowed, if the paragraphs have different
@@ -1716,20 +1711,15 @@ bool Text::backspacePos0(Cursor & cur)
 	// word processors to allow it. It confuses the user.
 	// Correction: Pasting is always allowed with standard-layout
 	// or the empty layout.
-	else if (par.layout() == prevpar.layout()
-		 || tclass.isDefaultLayout(par.layout())
-		 || tclass.isPlainLayout(par.layout())) {
+	else {
 		cur.recordUndo(prevcur.pit());
 		mergeParagraph(bufparams, plist, prevcur.pit());
-		needsUpdate = true;
 	}
 
-	if (needsUpdate) {
-		cur.forceBufferUpdate();
-		setCursorIntern(cur, prevcur.pit(), prevcur.pos());
-	}
+	cur.forceBufferUpdate();
+	setCursorIntern(cur, prevcur.pit(), prevcur.pos());
 
-	return needsUpdate;
+	return true;
 }
 
 
