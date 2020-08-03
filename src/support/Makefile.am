@@ -71,6 +71,9 @@ liblyxsupport_a_SOURCES = \
 	kill.cpp \
 	lassert.h \
 	lassert.cpp \
+	Length.cpp \
+	Length.h \
+	lengthcommon.cpp \
 	limited_stack.h \
 	lstrings.cpp \
 	lstrings.h \

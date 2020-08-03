@@ -15,11 +15,11 @@
 
 #include <config.h>
 
-#include "Length.h"
 #include "LyXRC.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
+#include "support/Length.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 

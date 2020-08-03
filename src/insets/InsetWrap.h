@@ -13,7 +13,8 @@
 #define INSETWRAP_H
 
 #include "InsetCaptionable.h"
-#include "Length.h"
+
+#include "support/Length.h"
 
 
 namespace lyx {

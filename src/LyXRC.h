@@ -18,9 +18,9 @@
 #ifndef LYXRC_H
 #define LYXRC_H
 
-#include "Length.h"
 #include "LyX.h"
 
+#include "support/Length.h"
 #include "support/strfwd.h"
 #include "support/userinfo.h"
 

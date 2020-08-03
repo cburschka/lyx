@@ -19,13 +19,13 @@
 #include "ColorCache.h"
 #include "ColorSet.h"
 #include "LengthCombo.h"
-#include "Length.h"
 #include "qt_helpers.h"
 #include "Validator.h"
 
 #include "insets/InsetBox.h"
 
 #include "support/gettext.h"
+#include "support/Length.h"
 #include "support/lstrings.h"
 
 #include <QComboBox>

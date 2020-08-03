@@ -7,14 +7,13 @@
 
 project(${_tex2lyx})
 
-# There is no header file lengthcommon.h
-set(LINKED_sources ${TOP_SRC_DIR}/src/lengthcommon.cpp)
+set(LINKED_sources)
 set(LINKED_headers)
 
 foreach(_src graphics/GraphicsParams insets/ExternalTemplate
 	insets/ExternalTransforms insets/InsetLayout Author CiteEnginesList Color Counters
 	Encoding FloatList Floating FontInfo LaTeXPackages Layout
-	LayoutFile LayoutModuleList Length Lexer ModuleList TextClass
+	LayoutFile LayoutModuleList Lexer ModuleList TextClass
 	Spacing version)
 	list(APPEND LINKED_sources ${TOP_SRC_DIR}/src/${_src}.cpp)
 	list(APPEND LINKED_headers ${TOP_SRC_DIR}/src/${_src}.h)

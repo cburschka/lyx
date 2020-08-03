@@ -22,7 +22,6 @@
 #include "Buffer.h"
 #include "FuncRequest.h"
 #include "LengthCombo.h"
-#include "Length.h"
 #include "LyXRC.h"
 
 #include "graphics/epstools.h"
@@ -36,6 +35,7 @@
 #include "support/debug.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
+#include "support/Length.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/Package.h"

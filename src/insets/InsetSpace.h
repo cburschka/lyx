@@ -16,7 +16,8 @@
 #define INSET_SPACE_H
 
 #include "Inset.h"
-#include "Length.h"
+
+#include "support/Length.h"
 
 
 namespace lyx {

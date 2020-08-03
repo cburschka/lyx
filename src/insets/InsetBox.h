@@ -15,7 +15,8 @@
 #define INSETBOX_H
 
 #include "InsetCollapsible.h"
-#include "Length.h"
+
+#include "support/Length.h"
 
 
 namespace lyx {

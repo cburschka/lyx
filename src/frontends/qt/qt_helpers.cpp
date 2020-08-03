@@ -22,12 +22,12 @@
 #include "BufferParams.h"
 #include "FloatList.h"
 #include "Language.h"
-#include "Length.h"
 #include "TextClass.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
+#include "support/Length.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
 #include "support/os.h"

@@ -17,7 +17,6 @@
 #include "Buffer.h"
 #include "FuncRequest.h"
 #include "support/gettext.h"
-#include "Length.h"
 #include "LyXRC.h"
 
 #include "insets/ExternalSupport.h"
@@ -31,6 +30,7 @@
 
 #include "support/convert.h"
 #include "support/filetools.h"
+#include "support/Length.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/os.h"

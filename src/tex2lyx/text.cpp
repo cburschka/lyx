@@ -21,7 +21,6 @@
 #include "FloatList.h"
 #include "LaTeXPackages.h"
 #include "Layout.h"
-#include "Length.h"
 #include "Preamble.h"
 
 #include "insets/ExternalTemplate.h"
@@ -30,6 +29,7 @@
 #include "support/convert.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
+#include "support/Length.h"
 #include "support/lstrings.h"
 #include "support/lyxtime.h"
 

@@ -12,10 +12,9 @@
 #ifndef EXTERNALTRANSFORMS_H
 #define EXTERNALTRANSFORMS_H
 
-#include "Length.h"
-
 #include "graphics/GraphicsParams.h"
 
+#include "support/Length.h"
 #include "support/unique_ptr.h"
 
 #include <boost/any.hpp>

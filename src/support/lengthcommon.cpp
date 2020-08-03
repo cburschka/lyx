@@ -12,11 +12,10 @@
 
 #include <config.h>
 
-#include "Length.h"
-
 #include "support/convert.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
+#include "support/Length.h"
 #include "support/lstrings.h"
 
 using namespace std;

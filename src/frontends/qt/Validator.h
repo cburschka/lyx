@@ -25,8 +25,9 @@
 #ifndef VALIDATOR_H
 #define VALIDATOR_H
 
-#include "Length.h"
 #include "Dialog.h" // KernelDocType
+
+#include "support/Length.h"
 
 #include <QValidator>
 

@@ -13,7 +13,8 @@
 #define MATH_GRID_H
 
 #include "InsetMathNest.h"
-#include "Length.h"
+
+#include "support/Length.h"
 
 #include <map>
 

@@ -15,12 +15,12 @@
 #define PARAGRAPHPARAMETERS_H
 
 #include "LayoutEnums.h"
-#include "Length.h"
 #include "Spacing.h"
 
 #include "support/debug.h"
 #include "support/types.h"
 #include "support/docstring.h"
+#include "support/Length.h"
 
 
 namespace lyx {

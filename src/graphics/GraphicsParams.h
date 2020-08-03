@@ -14,9 +14,8 @@
 #ifndef GRAPHICSPARAMS_H
 #define GRAPHICSPARAMS_H
 
-#include "Length.h"
-
 #include "support/FileName.h"
+#include "support/Length.h"
 
 #include <string>
 #include <iosfwd>

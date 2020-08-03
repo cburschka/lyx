@@ -12,7 +12,7 @@
 #ifndef VSPACE_H
 #define VSPACE_H
 
-#include "Length.h"
+#include "support/Length.h"
 
 
 namespace lyx {

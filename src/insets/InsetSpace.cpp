@@ -22,7 +22,6 @@
 #include "FuncStatus.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
-#include "Length.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
@@ -33,6 +32,7 @@
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
+#include "support/Length.h"
 #include "support/lstrings.h"
 
 #include "frontends/Application.h"

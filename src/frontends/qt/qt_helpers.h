@@ -14,7 +14,7 @@
 #define QTHELPERS_H
 
 #include "ColorSet.h"
-#include "Length.h"
+#include "support/Length.h"
 #include "support/qstring_helpers.h"
 #include "support/filetools.h"
 #include "qt_i18n.h"

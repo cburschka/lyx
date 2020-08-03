@@ -12,8 +12,9 @@
 #ifndef MATH_XYMATRIX_H
 #define MATH_XYMATRIX_H
 
-#include "Length.h"
 #include "InsetMathGrid.h"
+
+#include "support/Length.h"
 
 
 namespace lyx {

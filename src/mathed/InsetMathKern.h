@@ -13,7 +13,8 @@
 #define MATH_CHEATINSET_H
 
 #include "InsetMath.h"
-#include "Length.h"
+
+#include "support/Length.h"
 
 
 namespace lyx {

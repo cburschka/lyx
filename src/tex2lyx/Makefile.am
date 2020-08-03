@@ -102,8 +102,6 @@ LYX_OBJS = \
 	../Layout.o \
 	../LayoutFile.o \
 	../LayoutModuleList.o \
-	../Length.o \
-	../lengthcommon.o \
 	../Lexer.o \
 	../ModuleList.o \
 	../Spacing.o \

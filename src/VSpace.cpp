@@ -16,11 +16,11 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "support/gettext.h"
-#include "Length.h"
 #include "Text.h"
 #include "TextMetrics.h" // for defaultRowHeight()
 
 #include "support/convert.h"
+#include "support/Length.h"
 #include "support/lstrings.h"
 
 #include "support/lassert.h"

@@ -147,8 +147,6 @@ SOURCEFILESCORE = \
 	LaTeXPackages.cpp \
 	LayoutFile.cpp \
 	LayoutModuleList.cpp \
-	Length.cpp \
-	lengthcommon.cpp \
 	Lexer.cpp \
 	LyX.cpp \
 	LyXAction.cpp \
@@ -251,7 +249,6 @@ HEADERFILESCORE = \
 	LayoutEnums.h \
 	LayoutFile.h \
 	LayoutModuleList.h \
-	Length.h \
 	Lexer.h \
 	LyXAction.h \
 	lyxfind.h \
@@ -733,20 +730,15 @@ check_ExternalTransforms_SOURCES = \
 	tests/boost.cpp
 check_ExternalTransforms_LYX_OBJS = \
 	graphics/GraphicsParams.o \
-	insets/ExternalTransforms.o \
-	Length.o \
-	lengthcommon.o
+	insets/ExternalTransforms.o
 
 check_Length_CPPFLAGS = $(AM_CPPFLAGS)
-check_Length_LDADD = $(check_Length_LYX_OBJS) $(TESTS_LIBS)
+check_Length_LDADD = $(TESTS_LIBS)
 check_Length_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_Length_SOURCES = \
 	tests/check_Length.cpp \
 	tests/dummy_functions.cpp \
 	tests/boost.cpp
-check_Length_LYX_OBJS = \
-	Length.o \
-	lengthcommon.o
 
 check_ListingsCaption_CPPFLAGS = $(AM_CPPFLAGS)
 check_ListingsCaption_LDADD = $(check_ListingsCaption_LYX_OBJS) $(TESTS_LIBS)

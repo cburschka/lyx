@@ -25,7 +25,8 @@
 #define INSET_TABULAR_H
 
 #include "InsetText.h"
-#include "Length.h"
+
+#include "support/Length.h"
 
 #include <climits>
 #include <iosfwd>
