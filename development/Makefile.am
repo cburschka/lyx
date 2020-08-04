@@ -168,7 +168,7 @@ cmake/modules/FindHUNSPELL.cmake \
 cmake/modules/FindICONV.cmake \
 cmake/modules/FindLyXGettext.cmake \
 cmake/modules/FindMagic.cmake \
-cmake/modules/FindMyThesLIB.cmake \
+cmake/modules/FindMYTHESLIB.cmake \
 cmake/modules/FindOpenSSL.cmake \
 cmake/modules/FindQt4.cmake \
 cmake/modules/FindZLIB.cmake \

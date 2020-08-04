@@ -823,7 +823,7 @@ set(Include_used_spellchecker)   # String will be inserted into config.h
 
 if (LYX_EXTERNAL_MYTHES MATCHES "AUTO")
   # try system library first
-  find_package(MyThesLIB)
+  find_package(MYTHESLIB)
   if (MYTHESLIB_FOUND)
     set(LYX_EXTERNAL_MYTHES ON CACHE STRING "OFF:= Build 3rdparty mytheslib" FORCE)
   else()
