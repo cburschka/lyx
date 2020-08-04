@@ -408,12 +408,9 @@ void GuiWorkArea::close()
 void GuiWorkArea::setFullScreen(bool full_screen)
 {
 	d->buffer_view_->setFullScreen(full_screen);
-	setFrameStyle(QFrame::NoFrame);
-	if (full_screen) {
-		setFrameStyle(QFrame::NoFrame);
-		if (lyxrc.full_screen_scrollbar)
-			setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	} else
+	if (full_screen && lyxrc.full_screen_scrollbar)
+		setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	else
 		setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 }
 

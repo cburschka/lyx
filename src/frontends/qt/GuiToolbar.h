@@ -145,6 +145,10 @@ public:
 	///
 	bool isRestored() const;
 
+	///
+	bool isVisibiltyOn() const;
+	int visibility() const { return visibility_; }
+
 	/// Refresh the contents of the bar.
 	void update(int context = 0);
 

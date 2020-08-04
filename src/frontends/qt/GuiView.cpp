@@ -117,7 +117,7 @@
 #include <QTimer>
 #include <QToolBar>
 #include <QUrl>
-
+#include <QWindowStateChangeEvent>
 
 
 // sync with GuiAlert.cpp
@@ -1401,6 +1401,49 @@ bool GuiView::event(QEvent * e)
 	//case QEvent::Drop:
 	//	break;
 
+	case QEvent::WindowStateChange: {
+		QWindowStateChangeEvent * ev = (QWindowStateChangeEvent*)e;
+		bool ofstate = (ev->oldState() & Qt::WindowFullScreen);
+		bool result = QMainWindow::event(e);
+		bool nfstate = (windowState() & Qt::WindowFullScreen);
+		if (!ofstate && nfstate) {
+			LYXERR(Debug::DEBUG, "GuiView: WindowStateChange(): full-screen " << nfstate);
+			// switch to full-screen state
+			if (lyxrc.full_screen_statusbar)
+				statusBar()->hide();
+			if (lyxrc.full_screen_menubar)
+				menuBar()->hide();
+			if (lyxrc.full_screen_toolbars) {
+				ToolbarMap::iterator end = d.toolbars_.end();
+				for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
+					if (it->second->isVisibiltyOn() && it->second->isVisible())
+						it->second->hide();
+			}
+			for (int i = 0; i != d.splitter_->count(); ++i)
+				d.tabWorkArea(i)->setFullScreen(true);
+			setContentsMargins(-2, -2, -2, -2);
+			// bug 5274
+			hideDialogs("prefs", nullptr);
+		} else if (ofstate && !nfstate) {
+			LYXERR(Debug::DEBUG, "GuiView: WindowStateChange(): full-screen " << nfstate);
+			// switch back from full-screen state
+			if (lyxrc.full_screen_statusbar && !statusBar()->isVisible())
+				statusBar()->show();
+			if (lyxrc.full_screen_menubar && !menuBar()->isVisible())
+				menuBar()->show();
+			if (lyxrc.full_screen_toolbars) {
+				ToolbarMap::iterator end = d.toolbars_.end();
+				for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
+					if (it->second->isVisibiltyOn() && !it->second->isVisible())
+						it->second->show();
+				//updateToolbars();
+			}
+			for (int i = 0; i != d.splitter_->count(); ++i)
+				d.tabWorkArea(i)->setFullScreen(false);
+			setContentsMargins(0, 0, 0, 0);
+		}
+		return result;
+		}
 	case QEvent::WindowActivate: {
 		GuiView * old_view = guiApp->currentView();
 		if (this == old_view) {
@@ -4641,35 +4684,7 @@ bool GuiView::lfunUiToggle(string const & ui_component)
 
 void GuiView::toggleFullScreen()
 {
-	if (isFullScreen()) {
-		for (int i = 0; i != d.splitter_->count(); ++i)
-			d.tabWorkArea(i)->setFullScreen(false);
-		setContentsMargins(0, 0, 0, 0);
-		setWindowState(windowState() ^ Qt::WindowFullScreen);
-		restoreLayout();
-		menuBar()->show();
-		statusBar()->show();
-	} else {
-		// bug 5274
-		hideDialogs("prefs", nullptr);
-		for (int i = 0; i != d.splitter_->count(); ++i)
-			d.tabWorkArea(i)->setFullScreen(true);
-		setContentsMargins(-2, -2, -2, -2);
-		saveLayout();
-		setWindowState(windowState() ^ Qt::WindowFullScreen);
-		if (lyxrc.full_screen_statusbar)
-			statusBar()->hide();
-		if (lyxrc.full_screen_menubar)
-			menuBar()->hide();
-		if (lyxrc.full_screen_toolbars) {
-			ToolbarMap::iterator end = d.toolbars_.end();
-			for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
-				it->second->hide();
-		}
-	}
-
-	// give dialogs like the TOC a chance to adapt
-	updateDialogs();
+	setWindowState(windowState() ^ Qt::WindowFullScreen);
 }
 
 

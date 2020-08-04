@@ -84,6 +84,16 @@ void GuiToolbar::setVisible(bool visible)
 	// MainWindow::restoreState and which toolbars should be initialized
 	// by us (i.e., new toolbars)
 	restored_ = true;
+	// Record the actual visibility in toolbar state visibility_.
+	// This is useful to restore the visibility of toolbars when
+	// returning from full-screen. Therefore the recording is disabled
+	// while LyX is in full-screen state.
+	if (!owner_.isFullScreen()) {
+		if (visible)
+			visibility_ |= Toolbars::ON;
+		else
+			visibility_ &= ~Toolbars::ON;
+	}
 	QToolBar::setVisible(visible);
 }
 
@@ -592,6 +602,12 @@ void GuiToolbar::restoreSession()
 
 	int movability = settings.value(sessionKey() + "/movability", true).toBool();
 	setMovable(movability);
+}
+
+
+bool GuiToolbar::isVisibiltyOn() const
+{
+	return visibility_ & Toolbars::ON;
 }
 
 
