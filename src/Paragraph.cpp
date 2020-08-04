@@ -4065,7 +4065,7 @@ bool Paragraph::brokenBiblio() const
 int Paragraph::fixBiblio(Buffer const & buffer)
 {
 	// FIXME: when there was already an inset at 0, the return value is 1,
-	// which does not tell whether another inset has been remove; the
+	// which does not tell whether another inset has been removed; the
 	// cursor cannot be correctly updated.
 
 	bool const track_changes = buffer.params().track_changes;
@@ -4097,6 +4097,8 @@ int Paragraph::fixBiblio(Buffer const & buffer)
 		// than keep the first? (JMarc)
 		Inset * inset = releaseInset(bibitem_pos);
 		d->insetlist_.begin()->inset = inset;
+		// This needs to be done to update the counter (#8499)
+		buffer.updateBuffer();
 		return -bibitem_pos;
 	}
 

@@ -5242,11 +5242,6 @@ void Buffer::updateBuffer(ParIterator & parit, UpdateType utype, bool const dele
 	// to resolve macros in it.
 	parit.text()->setMacrocontextPosition(parit);
 
-	// Reset bibitem counter in master (#8499)
-	Buffer const * const master = masterBuffer();
-	if (master == this && !d->ignore_parent)
-		master->params().documentClass().counters().reset(from_ascii("bibitem"));
-
 	depth_type maxdepth = 0;
 	pit_type const lastpit = parit.lastpit();
 	bool changed = false;
