@@ -60,9 +60,10 @@ Compiling with Microsoft Visual C++ (MSVC)
 5	Download dependencies
 
 	Download the LyX for Windows build dependencies from
-	ftp.lyx.de/LyXWinInstaller/lyx-windows-deps-msvc2017.zip
+	http://ftp.lyx.org/pub/lyx/devel/win_deps/
+	there are 64 (lyx-windows-deps-msvc2019_64.zip) and 32 (lyx-windows-deps-msvc2019_32.zip) bit dependencies
 	and extract it e.g. to 
-	C:\LyX\lyx-windows-deps-msvc2017
+	C:\LyX
 	This is the later needed GNUWIN32 directory
 
 6	Configure
@@ -78,7 +79,7 @@ Compiling with Microsoft Visual C++ (MSVC)
 	
 	- You will now get an error about missing GNUWIN32 directory.
 
-	- Set GNUWIN32_DIR to the folder that contains the dependencies.
+	- Set GNUWIN32_DIR to the folder that contains the dependencies (keep the bit version in mind).
 	  (This alternative does currently not work:
 	   Enable LYX_DEPENDENCIES_DOWNLOAD and click Configure.
 	   Pre-compiled dependencies will automatically be downloaded.)
@@ -187,12 +188,16 @@ Creating a patch file containing a bugfix
 
 	- Make sure you are working on the newest versions, pull from git before you start bugfixing.
 
-	- After fixing a bug create a commit (it will be on your local repo and not on server), if there is a bugreport for it
-	  put the Ticket nr. as description.
+	- After fixing a bug create a commit (it will be on your local repo and not on server), choose an approproate description, 
+	  e.g. the ticket nr. if there is a bugreport for it
 
 	- Use this command in git bash:
 	git format-patch -1 HEAD
 	it will create a patch file in your repository folder, this is what you share.
+
+	Another usefull command is
+	git diff --cached > file.diff
+	which will create a .diff file of staged changes. There is no option for the description with it though.
 
 
 Creating the Installer
