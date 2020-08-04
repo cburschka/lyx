@@ -1183,8 +1183,8 @@ void InsetBibtex::docbook(XMLStream & xs, OutputParams const &) const
 		string html = to_utf8(bibinfo.getInfo(entry.key(), buffer(), ci));
 		regex tagRegex("<span class=\"bib-([^\"]*)\">([^<]*)</span>");
 		smatch match;
-		auto tagIt = std::sregex_iterator(html.cbegin(), html.cend(), tagRegex, regex_constants::match_default);
-		auto tagEnd = std::sregex_iterator();
+		auto tagIt = lyx::sregex_iterator(html.cbegin(), html.cend(), tagRegex, regex_constants::match_default);
+		auto tagEnd = lyx::sregex_iterator();
 		map<string, string> delayedTags;
 
 		// Read all tags from HTML and convert those that have a 1:1 matching.
