@@ -206,7 +206,7 @@ else()
   if ($ENV{LYX_DEBUG_LATEX})
     set(LyXExtraParams -dbg latex)
   else()
-    set(LyXExtraParams)
+    set(LyXExtraParams -dbg info)
   endif()
   if(IgnoreErrorMessage)
     foreach (_em ${IgnoreErrorMessage})
@@ -235,6 +235,19 @@ else()
 	else()
 	  set(xmllint_params)
 	  set(executable_ ${PERL_EXECUTABLE} "${TOP_SRC_DIR}/development/autotests/filterXml4Sax.pl")
+	  # Check with perl xml-parser
+	  # needs XML::Parser module
+	  message(STATUS "Calling ${PERL_EXECUTABLE} \"${TOP_SRC_DIR}/development/autotests/xmlParser.pl\" \"${result_file_name}\"")
+	  execute_process(
+	    COMMAND ${PERL_EXECUTABLE} "${TOP_SRC_DIR}/development/autotests/xmlParser.pl" "${result_file_name}"
+	    OUTPUT_VARIABLE parserout
+	    ERROR_VARIABLE parsererr
+	    RESULT_VARIABLE _err
+	  )
+	  if (_err)
+	    message(STATUS "${parsererr}")
+	  endif()
+	  Summary(_err "Checking \"${result_file_name}\" with xmlParser.pl")
 	endif()
         if (XMLLINT_EXECUTABLE)
           message(STATUS "Calling: " ${executable_} ${xmllint_params} " ${result_file_name}")
