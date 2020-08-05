@@ -165,8 +165,6 @@ preview
 \family default
 -style installed in the \SpecialChar LaTeX
 -System, the graph drawing package 
-\family typewriter
-
 \begin_inset ERT
 status collapsed
 
@@ -179,8 +177,6 @@ Xy
 
 \end_inset
 
-
-\family default
 -pic can be conveniently used inside \SpecialChar LyX
 .
  Diagrams can be edited and displayed inside the main \SpecialChar LyX
@@ -2022,11 +2018,19 @@ Raising the shaft
 \end_layout
 
 \begin_layout Standard
-For bending arrows we use the modifier @/
+For bending arrows we use the modifier 
+\family typewriter
+@/
+\family default
+
 \begin_inset Formula $\ldots$
 \end_inset
 
-/ .
+
+\family typewriter
+/
+\family default
+ .
  The ellipsis stands for a \SpecialChar TeX
 -measure which needs to be entered as a lower
  or upper index.
@@ -2144,15 +2148,21 @@ l
 ul
 \family default
 , standing for up, up-right, right, down-right, etc..
- A direction is specified as @(
+ A direction is specified as 
+\family typewriter
+@(
+\family default
 \emph on
 out
 \emph default
 ,
 \emph on
 in
+\family typewriter
 \emph default
-) where 
+)
+\family default
+ where 
 \emph on
 out
 \emph default
@@ -2450,7 +2460,7 @@ restore
 \noun off
 \color none
  produces the doubly framed rectangle, and the code for the extra wide horizonta
-l rectangle is 
+l rectangle is
 \family typewriter
 \series default
 \shape default
@@ -2459,6 +2469,10 @@ l rectangle is
 \bar default
 \noun default
 \color inherit
+
+\begin_inset Newline newline
+\end_inset
+
 
 \backslash
 save"1,1"."1,2"*++[F]
@@ -2474,8 +2488,11 @@ restore
 \bar no
 \noun off
 \color none
-.
- This code can be placed in arbitrary cells of the xymatrix.
+
+\begin_inset Newline newline
+\end_inset
+
+This code can be placed in arbitrary cells of the xymatrix.
  
 \end_layout
 
@@ -2759,13 +2776,21 @@ Finally, you can modify the appearance of the arrows by entering @-modifiers
 @<
 \family default
 \SpecialChar ldots
->, 
+
+\family typewriter
+>
+\family default
+, 
 \family typewriter
 @(
 \family default
 \SpecialChar ldots
 ,\SpecialChar ldots
-) or 
+
+\family typewriter
+)
+\family default
+ or 
 \family typewriter
 @/
 \family default
@@ -3132,7 +3157,7 @@ xymatrixrowsep@
 \family typewriter
 
 \backslash
-xymatrixrowsep@
+xymatrixcolsep@
 \family default
 .
  So one can add the following macro to the preamble (
@@ -3252,7 +3277,7 @@ Xy
 \backslash
 xyR
 \family default
- etc..
+ etc.
 \end_layout
 
 \end_inset
@@ -3559,7 +3584,6 @@ Here we have focused only on the
 xymatrix
 \family default
  command, which is just one of the features available in Kris Rose's amazing
-\family typewriter
  
 \begin_inset ERT
 status collapsed
@@ -3573,12 +3597,8 @@ Xy
 
 \end_inset
 
-
-\family default
 -package.
  The 
-\family typewriter
-
 \begin_inset ERT
 status collapsed
 
@@ -3591,8 +3611,6 @@ Xy
 
 \end_inset
 
-
-\family default
 -pic manual 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -3628,7 +3646,7 @@ Xy
 -pic to make braids, cobordism, string diagrams, and much more.
  You might want to look on 
 \family typewriter
-inset_preview.lyx
+Instant_Preview.lyx
 \family default
  example shipped with \SpecialChar LyX
 , which demonstrates how to use more advanced 
