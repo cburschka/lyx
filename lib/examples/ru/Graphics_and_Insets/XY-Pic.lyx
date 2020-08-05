@@ -158,13 +158,26 @@ Xy
 \begin_layout Author
 автор: H.
  Peter Gumm
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Перевод: Геннадий Чернышев, редактирование: Юрий Скалько.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Abstract
 В последних версиях \SpecialChar LyX
- стало удобно использовать установленный в системе \SpecialChar LaTeX
-
- стиль предварительного просмотра для пакета создания диаграмм 
+ при установленном пакете 
+\series bold
+preview
+\series default
+ в системе \SpecialChar LaTeX
+ стало удобно использовать пакет создания диаграмм 
 \begin_inset ERT
 status collapsed
 
@@ -178,7 +191,8 @@ Xy
 \end_inset
 
 -pic.
- Диаграммы стало возможно редактировать и отображать в главном окне \SpecialChar LyX
+ Появилась возможность редактировать и отображать диаграммы в главном окне
+ \SpecialChar LyX
 .
  Здесь мы покажем, как использовать команду 
 \family typewriter
@@ -190,7 +204,7 @@ xymatrix
 \series bold
 xypic
 \series default
- внутри \SpecialChar LyX
+ в \SpecialChar LyX
  для создания, редактирования и предварительного просмотра диаграмм,
  которые обычно используются в теории категорий, алгебре и смежных областях.
 \end_layout
@@ -213,7 +227,7 @@ LatexCommand tableofcontents
 \series bold
 xypic
 \series default
- долгое время служил в качестве удобного инструмента для построения графиков
+ долгое время служил в качестве удобного инструмента для построения графов
  и диаграмм в \SpecialChar LaTeX
 .
  К сожалению, его использование в \SpecialChar LyX
@@ -222,10 +236,13 @@ xypic
 , а это означает, что редактор \SpecialChar LyX
  мог отображать
  только исходный код \SpecialChar LaTeX
-, а не готовой диаграммы.
- Новый стиль предварительного просмотра \SpecialChar LaTeX
-, который является частью проекта
- AUC\SpecialChar TeX
+, а не готовую диаграмму.
+ Новый пакет 
+\series bold
+preview
+\series default
+ для \SpecialChar LaTeX
+, который является частью проекта AUC\SpecialChar TeX
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -254,6 +271,7 @@ xypic
 \align center
 \begin_inset Graphics
 	filename xyfigure.png
+	lyxscale 75
 	width 75col%
 
 \end_inset
@@ -269,7 +287,7 @@ xypic
 \end_layout
 
 \begin_layout Standard
-В этом руководстве мы расскажем, как 
+В этом руководстве мы расскажем, как можно использовать 
 \begin_inset ERT
 status collapsed
 
@@ -282,9 +300,8 @@ Xy
 
 \end_inset
 
--pic может быть использован в \SpecialChar LyX
-, как могут создаваться и редактироваться
- диаграммы.
+-pic в \SpecialChar LyX
+, как можно создавать и редактировать диаграммы.
 \end_layout
 
 \begin_layout Standard
@@ -306,11 +323,11 @@ Xy
 , выделить его и преобразовать далее в графическое представление,
  нажав 
 \family sans
-Ctrl+m
+Ctrl+M
 \family default
  или 
 \family sans
-Ctrl+M
+Ctrl+Shift+M
 \family default
 .
  Если же вы используете 
@@ -326,8 +343,8 @@ Xy
 
 \end_inset
 
--pic регулярно, или если желаете изменить исходное изображение, вам нужно
- будет изменить каждое изображение с помощью редактора формул \SpecialChar LyX
+-pic регулярно, или если желаете изменить исходную диаграмму, вам нужно
+ будет менять ее с помощью редактора формул \SpecialChar LyX
 .
 \end_layout
 
@@ -341,7 +358,7 @@ Xy
 \begin_layout Standard
 Далее, в первых двух разделах объясняется, как использовать \SpecialChar LyX
  в первом упомянутом
- режиме, вводятся все 
+ режиме, вводятся все функции 
 \begin_inset ERT
 status collapsed
 
@@ -354,8 +371,8 @@ Xy
 
 \end_inset
 
--pic функции, которые могут быть использованы для построения коммутативных
- диаграмм, графиков или автоматных схем.
+-pic, которые могут быть использованы для построения коммутативных диаграмм,
+ графов или конечных автоматов.
  В разделе 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -380,7 +397,7 @@ Xy
 \end_layout
 
 \begin_layout Standard
-В наши намерения не входит написание введения в 
+В наши намерения не входит написание еще одного введения в 
 \begin_inset ERT
 status collapsed
 
@@ -393,10 +410,10 @@ Xy
 
 \end_inset
 
--pic, но мотивация заключается в предоставлении информации по использованию
- наиболее важных команд при работе внутри \SpecialChar LyX
-, так как использование клавиш,
- описанное в руководстве по 
+-pic.
+ Мы хотим показать, как наиболее важные команды пакета работают в \SpecialChar LyX
+, так
+ как использование клавиш, описанное в руководстве по 
 \begin_inset ERT
 status collapsed
 
@@ -440,21 +457,21 @@ preview
  в 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "instant-preview"
-literal "true"
-
-\end_inset
-
-, соответственно в 
-\begin_inset CommandInset citation
-LatexCommand cite
 key "xypic"
 literal "true"
 
 \end_inset
 
+ и 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "instant-preview"
+literal "true"
+
+\end_inset
+
 .
- После их установки может понадобиться запустить 
+ После их установки может понадобиться выполнить 
 \family sans
 Инструменты\SpecialChar menuseparator
 Обновить конфигурацию
@@ -495,7 +512,7 @@ preview
 \family default
  значение 
 \shape italic
-Вкл
+Вкл.
 \end_layout
 
 \begin_layout Enumerate
@@ -565,8 +582,8 @@ Ctrl+M
 \end_layout
 
 \begin_layout Enumerate
-Переместите курсор вне области редактирования и подождите немного, чтобы
- увитеть появление стрелки: 
+Установите курсор вне области редактирования и подождите немного, чтобы
+ увидеть появление стрелки: 
 \begin_inset Formula $\xymatrix{A\ar[r] & B}
 $
 \end_inset
@@ -673,7 +690,7 @@ xymatrix{
 \family typewriter
 }
 \family default
- и превратите его в математический вид, как описано выше.
+ и превратите его в формулу, как описано выше.
  После покидания курсором математической области, вы должны увидеть диаграмму
  в ее полном графическом великолепии:
 \end_layout
@@ -700,9 +717,12 @@ $
 \backslash
 xymatrix
 \family default
- использует матрицу для определения структуры вершин диаграммы.
- Для примера, приведенного выше, необходима матрица элементов, 5 из которых
- используются для вершин 
+ использует матрицу, чтобы задать расположение вершин диаграммы.
+ Для примера, приведенного выше, необходима матрица 
+\begin_inset Formula $3\times3$
+\end_inset
+
+, в которой 5 элементов используются для вершин 
 \begin_inset Formula $U$
 \end_inset
 
@@ -913,8 +933,8 @@ $
 \end_layout
 
 \begin_layout Standard
-Метки прикрепляют к стрелкам, путем нанесения их в качестве верхнего или
- нижнего индексов 
+Метки прикрепляют к стрелкам, путем задания их в качестве верхнего или нижнего
+ индексов 
 \family typewriter
 
 \backslash
@@ -999,7 +1019,7 @@ $
 
  в середине стрелки, а не посередине между двумя объектами, которые она
  соединяет.
- Это достигается с помощью знака минус перед префиксом метки, то есть: 
+ Это достигается с помощью знака минус перед текстом метки, то есть: 
 \family typewriter
 
 \backslash
@@ -1078,8 +1098,8 @@ Xy
 
 \end_inset
 
--pic обычно позволяет смещать метки в сторону наконечника или к началу стрелки
- с помощью префикса метки с отношением, как, например, 
+-pic обычно позволяет смещать метки к концу или началу стрелки с помощью
+ префикса метки с отношением, как, например, 
 \family typewriter
 (.3)
 \family default
@@ -1139,8 +1159,8 @@ psi
 \end_layout
 
 \begin_layout Standard
-Модификация вида, формы или позиционирования стрелок производится с использовани
-ем символа 
+Изменение вида, формы или расположения стрелок производится с использованием
+ символа 
 \family typewriter
 @
 \family default
@@ -1167,29 +1187,57 @@ psi
 \end_layout
 
 \begin_layout Standard
-Различные шаблоны отрезка линии, такие как сплошной, пунктирный, штриховой
- или двойной, применимы для изображения стрелки.
- Их можно комбинировать с различными видами начала и наконечников стрелок.
- В целом, дизайн для стрелок описывается командой 
+Для линии стрелки применимы различные шаблоны, такие как 
+\emph on
+сплошной
+\emph default
+, 
+\emph on
+пунктирный
+\emph default
+, 
+\emph on
+штриховой
+\emph default
+ или 
+\emph on
+двойной
+\emph default
+.
+ Их можно комбинировать с различными видами начала и конца стрелок.
+ В целом, внешний вид стрелок описывается командой 
+\family typewriter
+
 \backslash
-ar, за которой следуют знак 
+ar
+\family default
+, за которой следуют знак 
 \family typewriter
 @
 \family default
- и фигурные скобки {\SpecialChar ldots
-}, содержащие символы, описывающие типы начала, оси
- и наконечника стрелки.
- Эти символы должны быть выбраны так, чтобы придать той или иной форме ASCII-пре
-доставления близость к реальному изображению.
+ и фигурные скобки 
+\family typewriter
+{
+\family default
+\SpecialChar ldots
+
+\family typewriter
+}
+\family default
+, содержащие символы, описывающие вид начала, линии и конца стрелки.
+ Эти символы были выбраны так, чтобы придать текстовому представлению сходство
+ с реальным изображением.
  Например, 
 \family typewriter
 
 \backslash
-ar@{>..>>}
+ar@{>..>\SpecialChar ligaturebreak
+>}
 \family default
- кодирует стрелку с разветвленным началом, осью из точек и двойным наконечником.
- Ряд других образцов для стрелок приведен в таблице ниже.
- Обратите внимание, что начало стрелок, указывающих вложения, например,
+ кодирует стрелку с разветвленным началом, пунктирной линией и двойным наконечни
+ком.
+ Ряд других вариантов для стрелок приведен в таблице ниже.
+ Обратите внимание, что начала стрелок, указывающих вложения, например,
  
 \begin_inset Formula $\xymatrix{A\ar@{^{(}->}[r] & B}
 $
@@ -1526,10 +1574,10 @@ ar@{|-|}
 \family typewriter
 @
 \family default
- один из символов: 2, 3, _ либо ^, можно создавать стрелки, соответственно,
- с удвоенной, утроенной осью, без верхней части начала стрелки или наконечника
- стрелки без нижней такой части; стрелки также не обязательно могут иметь
- наконечники.
+ один из символов: 2, 3, _ либо ^, можно создавать стрелки, соответственно
+ с двойной, тройной линией, без верхней\SpecialChar breakableslash
+нижней части начала или конца стрелки;
+ стрелки также не обязательно могут иметь наконечники.
  Вот некоторые примеры подобных ситуаций:
 \end_layout
 
@@ -1902,30 +1950,20 @@ $
 , как приведено выше, выделите его и выполните,
  либо 
 \family sans
-Ctrl+m —
+Ctrl+M —
 \family default
  для обычной формулы, либо 
 \family sans
-Ctrl+M —
+Ctrl+Shift+M —
 \family default
  для выделенной формулы.
  Диаграммы, созданные для размещения внутри строки, в дальнейшем могут быть
  расположены отдельно по центру, или, наоборот, центрированные диаграммы
  могут быть переведены во внутритекстовый формат, используя 
 \family sans
-Вставка\SpecialChar menuseparator
+Правка\SpecialChar menuseparator
 Математика\SpecialChar menuseparator
-Выделенная формула
-\family default
- или 
-\family sans
-Вставка\SpecialChar menuseparator
-Математика
-\family default
- 
-\family sans
-\SpecialChar menuseparator
-Формула
+Изменить вид формулы
 \family default
 .
 \end_layout
@@ -1948,11 +1986,19 @@ Ctrl+M —
 \end_layout
 
 \begin_layout Standard
-Для задания изгиба стрелок используется модификатор @/
+Для задания изгиба стрелок используется модификатор 
+\family typewriter
+@/
+\family default
+
 \begin_inset Formula $\ldots$
 \end_inset
 
-/.
+
+\family typewriter
+/
+\family default
+.
  Многоточие означает величину изгиба, которая должна быть введена в нижний
  или верхний индекс.
  В качестве примера ниже приведен код для получения двух противоположных
@@ -1999,11 +2045,44 @@ ar@/_{.5pc}/[l]}
 \end_layout
 
 \begin_layout Standard
-Альтернативой для указания изгиба стрелок является указание их "азимутальных
- углов", под которыми они покидают вершины-источники, и их направления к
- вершинам-целям.
- Но, вместо использования терминов "север", "северо-восток", "восток" и
- т.д., направления названы 
+Альтернативой для указания изгиба стрелок является указание их 
+\begin_inset Quotes rld
+\end_inset
+
+азимутальных углов
+\begin_inset Quotes rrd
+\end_inset
+
+, под которыми они покидают вершины-источники, и их направления к вершинам-целям.
+ Но, вместо использования терминов 
+\begin_inset Quotes rld
+\end_inset
+
+север
+\begin_inset Quotes rrd
+\end_inset
+
+, 
+\begin_inset Quotes rld
+\end_inset
+
+северо-восток
+\begin_inset Quotes rrd
+\end_inset
+
+, 
+\begin_inset Quotes rld
+\end_inset
+
+восток
+\begin_inset Quotes rrd
+\end_inset
+
+ и т.
+\begin_inset space \thinspace{}
+\end_inset
+
+д., направления названы 
 \family typewriter
 u
 \family default
@@ -2036,24 +2115,34 @@ l
 ul
 \family default
 , обозначающие, соответственно, вверх, вверх-вправо, вправо, вниз-вправо,
- и т.д.
- Направление задается как @(
+ и т.
+\begin_inset space \thinspace{}
+\end_inset
+
+д.
+ Направление задается как 
+\family typewriter
+@(
+\family default
 \emph on
 out
 \emph default
 ,
 \emph on
 in
+\family typewriter
 \emph default
-), где 
+)
+\family default
+, где 
 \emph on
 out
 \emph default
- задает направление от первого объекта слева, а 
+ задает направление выхода из первого объекта, а 
 \emph on
 in
 \emph default
- обозначает направление, откуда происходит вход в целевой объект.
+ обозначает направление входа в целевой объект.
  В качестве примера, показаны некоторые изгибы стрелок и отдельная замыкающаяся
  стрелка, которая получается, когда для стрелки не указывается цель, а только
  ее входящее и исходящее направления:
@@ -2103,7 +2192,7 @@ ar@(ul,ur)}
 \end_layout
 
 \begin_layout Standard
-Приведенный выше пример напоминает автоматную диаграмму, за исключением
+Приведенный выше пример напоминает диаграмму конечного автомата, за исключением
  того, что в такой диаграмме состояния будут заключаться в небольшие окружности,
  а двойными окружностями будут обозначаться конечные состояния.
 \end_layout
@@ -2238,8 +2327,8 @@ entrymodifiers={
 \family typewriter
 }
 \family default
- делает определенный стиль оформления элемента принимаемым по умолчанию,
- что, конечно, может быть отменено для отдельных элементов.
+ задает определенный стиль оформления элемента стилем по умолчанию, что,
+ конечно, может быть отменено для отдельных элементов.
  Таким образом, после 
 \family typewriter
 
@@ -2305,8 +2394,8 @@ restore
 \noun default
 \color inherit
  значений, обозначающих верхний левый и нижний правый углы прямоугольника.
- Каждая точка, в свою очередь, определяется двумя значениями в кавычках,
- разделенных запятой, "
+ Каждая точка, в свою очередь, определяется двумя значениями, разделенными
+ запятой и в кавычках "
 \family roman
 \series medium
 \shape up
@@ -2373,7 +2462,7 @@ restore
 \noun default
 \color inherit
 .
- За ними следуют команды обрамления для создания фигур, наподобие следующей:
+ За ними следуют команды обрамления для создания диаграмм, наподобие следующей:
 \family roman
 \series medium
 \shape up
@@ -2467,7 +2556,7 @@ xymatrix
 \end_layout
 
 \begin_layout Section
-Использование математического редактора \SpecialChar LyX
+Использование редактора формул \SpecialChar LyX
 
 \begin_inset CommandInset label
 LatexCommand label
@@ -2479,24 +2568,23 @@ name "sec:math-editor"
 \end_layout
 
 \begin_layout Standard
-В качестве альтернативы к написанию 
+В качестве альтернативы написанию 
 \series bold
 xypic
 \series default
--кода, а затем преобразования его в математической среде редактирования
- (выделяя его и применяя 
-\family sans
-Ctrl+m
-\family default
- или 
+-кода, а затем преобразования его в формулу (выделяя его и применяя 
 \family sans
 Ctrl+M
 \family default
-), можно создавать и модифицировать 
+ или 
+\family sans
+Ctrl+Shift+M
+\family default
+), можно создавать и изменять 
 \series bold
 xypic
 \series default
--схему целиком внутри редактора формул в \SpecialChar LyX
+-диаграмму целиком внутри редактора формул в \SpecialChar LyX
 .
  Далее описываются действия по редактированию диаграмм.
 \end_layout
@@ -2548,16 +2636,15 @@ Xy
 \family typewriter
 }
 \family default
-, где вместо многоточия вводятся описания формы начала, оси и наконечника
- стрелки.
- Внутри математической редактора требуется ввести только 
+, где вместо многоточия вводятся описания формы начала, линии и конца стрелки.
+ Внутри математического редактора требуется ввести только 
 \family typewriter
 @
 \backslash
 {
 \family default
  и \SpecialChar LyX
- обеспечит появление закрывающей скобки и окна, в которое необходимо
+ обеспечит появление закрывающей скобки и поля, в которое необходимо
  ввести описание стрелки.
 \end_layout
 
@@ -2594,13 +2681,13 @@ notin x}
 \begin_layout Standard
 Используя 
 \family sans
-Ctrl+m
+Ctrl+M
 \family default
  или 
 \family sans
-Ctrl+M
+Ctrl+Shift+M
 \family default
-, создайте контекст для ввода формулы и введите: 
+, создайте новую формулу и введите: 
 \family typewriter
 
 \backslash
@@ -2637,7 +2724,7 @@ Alt+M C I
 \end_layout
 
 \begin_layout Standard
-В любой момент дополнительные строки или столбцы могут быть введены или
+В любой момент дополнительные строки или столбцы могут быть добавлены или
  удалены с помощью команд, доступных в меню 
 \family sans
 Правка\SpecialChar menuseparator
@@ -2647,13 +2734,13 @@ Alt+M C I
 \family sans
 Alt+M C
 \family default
- для команд матричных столбцов и с 
+ для команд столбцов матрицы и с 
 \family sans
 Alt+M W
 \family default
- для команд матричных строк.
- Более прямой способ использует иконки в математической панели инструментов,
- которая активизируется через меню 
+ для команд строк матрицы.
+ Более прямой способ использует значки в математической панели инструментов,
+ которая включается через меню 
 \family sans
 Вид\SpecialChar menuseparator
 Панели инструментов
@@ -2710,20 +2797,44 @@ r
 
 \begin_layout Standard
 Далее, пометьте стрелки путем присоединения текста метки в качестве верхнего
- или нижнего индексов после конца описания пути стрелки (после "
+ или нижнего индексов после конца описания пути стрелки (после 
+\begin_inset Quotes rld
+\end_inset
+
+
 \family typewriter
 ]
 \family default
-").
- Как обычно, в математическом редакторе символ подчеркивания "
+
+\begin_inset Quotes rrd
+\end_inset
+
+).
+ Как обычно, в математическом редакторе символ подчеркивания 
+\begin_inset Quotes rld
+\end_inset
+
+
 \family typewriter
 _
 \family default
-" открывает окно для нижнего индекса, а "
+
+\begin_inset Quotes rrd
+\end_inset
+
+ открывает поле для нижнего индекса, а 
+\begin_inset Quotes rld
+\end_inset
+
+
 \family typewriter
 ^
 \family default
-" с последующим пробелом — окно для верхнего индекса.
+
+\begin_inset Quotes rrd
+\end_inset
+
+ — поле для верхнего индекса.
  В качестве метки можно ввести любой \SpecialChar LaTeX
 -код.
 \end_layout
@@ -2752,13 +2863,21 @@ _
 @<
 \family default
 \SpecialChar ldots
->, 
+
+\family typewriter
+>
+\family default
+, 
 \family typewriter
 @(
 \family default
 \SpecialChar ldots
 ,\SpecialChar ldots
-) или 
+
+\family typewriter
+)
+\family default
+ или 
 \family typewriter
 @/
 \family default
@@ -2775,7 +2894,7 @@ _
 \backslash
 {
 \family default
- с описанием стрелки, размещенном в появившемся пустом окне.
+ с описанием стрелки, размещенном в появившемся пустом поле.
  Если оно останется пустым, значит вы указали пустую (невидимую) стрелку.
  Это — полезная конструкция, о чем вы узнаете в следующем разделе.
 \end_layout
@@ -2839,7 +2958,7 @@ xypic
 \emph on
 размер
 \emph default
- — любой допустиммый размер в \SpecialChar TeX
+ — любой допустимый размер в \SpecialChar TeX
 , который должна быть введен как верхний или
  нижний индекс для первый косой черты 
 \family typewriter
@@ -2858,9 +2977,9 @@ xypic
  выводя курсор из области редактирования, чтобы увидеть, может ли мгновенный
  предварительный просмотр успешно преобразовать ее в графический вывод.
  Если этого не происходит, возможно, что мгновенный предварительный просмотр
- по какой-то причине не знает, что он должен ретранслировать графику.
- Перемещение курсора в область редактирования и обратно иногда вызывает
- мгновенный предварительный просмотр.
+ по какой-то причине не знает, что он должен пересоздать изображение.
+ Перемещение курсора в область редактирования и обратно иногда решает эту
+ проблему.
 \end_layout
 
 \begin_layout Standard
@@ -2886,8 +3005,8 @@ Ctrl+D
 DVI
 \family default
 .
- Тогда должно быть сгенерировано описание какой-то ошибки, которое, надеюсь,
- даст вам подсказку об источнике этой ошибки.
+ Тогда должно быть сгенерировано описание какой-то ошибки, которое может
+ дать вам подсказку об источнике этой ошибки.
 \end_layout
 
 \begin_layout Section
@@ -2983,9 +3102,12 @@ xymatrix
 
 \begin_layout Itemize
 наберите, например, 
+\family typewriter
+
 \backslash
-xymatrix@R=1pc как обычный текст документа, затем выделите его и нажмите
- 
+xymatrix@R=1pc
+\family default
+ как обычный текст документа, затем выделите его и нажмите 
 \family sans
 Ctr+M
 \family default
@@ -3094,7 +3216,7 @@ xymatrixrowsep@
 \family typewriter
 
 \backslash
-xymatrixrowsep@
+xymatrixcolsep@
 \family default
 .
  Так что, можно добавить следующий макрос в преамбулу (
@@ -3223,7 +3345,11 @@ Xy
 \backslash
 xyR
 \family default
- и т.д.
+ и т.
+\begin_inset space \thinspace{}
+\end_inset
+
+д.
 \end_layout
 
 \end_inset
@@ -3564,8 +3690,8 @@ literal "true"
 \end_inset
 
  демонстрирует многие из расширенных возможностей этого пакета.
- Учтите, что его стиль довольно лаконичен, и вам, вероятно, потребуется
- много экспериментировать и модифицировать многие проработанные примеры.
+ Учтите, что его стиль довольно лаконичен и вам, вероятно, потребуется много
+ экспериментировать и модифицировать многие приведенные примеры.
  В 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -3593,7 +3719,7 @@ Xy
 \begin_layout Standard
 Возможно, вы захотите взглянуть на пример 
 \family typewriter
-instant_preview.lyx
+Instant_Preview.lyx
 \family default
 , поставляемый с LyX, который демонстрирует, как использовать более продвинутые
  
@@ -3628,7 +3754,8 @@ literal "true"
 \end_inset
 
 Kristoffer H.
- Rose: 
+ Rose.
+ 
 \begin_inset ERT
 status collapsed
 
@@ -3651,7 +3778,7 @@ Xy
 
 
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -3672,7 +3799,8 @@ literal "true"
 \end_inset
 
 Kristoffer H.
- Rose and Ross Moore: 
+ Rose and Ross Moore.
+ 
 \begin_inset ERT
 status collapsed
 
@@ -3695,7 +3823,7 @@ Xy
 
 
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -3734,7 +3862,7 @@ Xy
 \emph default
 : 
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -3760,7 +3888,7 @@ Homepage of preview-latex:
 
 
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -3783,7 +3911,7 @@ literal "true"
 Homepage of AUC\SpecialChar TeX
 : 
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -3803,7 +3931,8 @@ literal "true"
 
 \end_inset
 
-Aaron Lauda: 
+Aaron Lauda.
+ 
 \begin_inset ERT
 status collapsed
 
@@ -3830,7 +3959,7 @@ tutorial with an archive of examples
 
 
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
 

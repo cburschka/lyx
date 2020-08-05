@@ -1,0 +1,147 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 598
+\begin_document
+\begin_header
+\save_transient_properties false
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children no
+\language russian
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype true
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment center
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification false
+\use_refstyle 1
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip halfline
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style russian
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\end_header
+
+\begin_body
+
+\begin_layout Subsection*
+Редактирование диаграмм 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-pic в \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Standard
+Ниже слева вы видите диаграмму 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-pic при редактировании, а справа — как она выглядит после того, как курсор
+ покинет область редактирования.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\xymatrix{A\ar[d]\ar[r] & B\ar[d]\ar@{-->}[dl]\\
+C\ar@{_{(}->}[r] & D\ar@/{}_{1pc}/[u]
+}
+$
+\end_inset
+
+ 
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Formula $\xymatrix{\, & \, & \mbox{}A\ar[r]\ar[d] & B\ar[d]\ar@{-->}[dl]\\
+\, &  & C\ar@{_{(}->}[r] & D\ar@/_{1pc}/[u]
+}
+$
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
