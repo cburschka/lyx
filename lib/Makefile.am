@@ -298,8 +298,14 @@ dist_roexamples_DATA = \
 ruexamplesdir = $(pkgdatadir)/examples/ru
 dist_ruexamples_DATA = \
 	examples/ru/Example_%28LyXified%29.lyx \
-	examples/ru/Example_%28raw%29.lyx
+	examples/ru/Example_%28raw%29.lyx \
 	examples/ru/Welcome.lyx
+
+ruinsetexamplesdir = $(pkgdatadir)/examples/ru/Graphics_and_Insets
+dist_ruinsetexamples_DATA = \
+	examples/ru/Graphics_and_Insets/XY-Figure.lyx \
+	examples/ru/Graphics_and_Insets/xyfigure.png \
+	examples/ru/Graphics_and_Insets/XY-Pic.lyx
 
 slexamplesdir = $(pkgdatadir)/examples/sl
 dist_slexamples_DATA = \
@@ -2754,6 +2760,7 @@ exampleandtemplate_files = \
 			   $(dist_ptexamples_DATA) \
 			   $(dist_roexamples_DATA) \
 			   $(dist_ruexamples_DATA) \
+			   $(dist_ruinsetexamples_DATA) \
 			   $(dist_scriptexamples_DATA) \
 			   $(dist_scriptstemplates_DATA) \
 			   $(dist_slexamples_DATA) \
