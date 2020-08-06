@@ -241,7 +241,7 @@ int GuiFontMetrics::width(docstring const & s) const
 	int w = 0;
 	// is the string a single character from a math font ?
 #if QT_VERSION >= 0x040800
-	bool const math_char = s.length() == 1 || font_.styleName() == "LyX";
+	bool const math_char = s.length() == 1 && font_.styleName() == "LyX";
 #else
 	bool const math_char = s.length() == 1;
 #endif
