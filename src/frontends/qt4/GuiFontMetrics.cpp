@@ -218,7 +218,7 @@ int GuiFontMetrics::width(docstring const & s) const
 	int w = 0;
 	if (s.length() == 1
 #if QT_VERSION >= 0x040800
-	    || font_.styleName() == "LyX"
+	    && font_.styleName() == "LyX"
 #endif
 	    ) {
 		// keep value 0 for math chars with null width
