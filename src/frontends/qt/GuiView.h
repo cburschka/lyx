@@ -236,6 +236,8 @@ private Q_SLOTS:
 	///
 	void resetWindowTitle();
 
+	void flatGroupBoxes(const QObject * object, bool flag);
+
 	///
 	void checkCancelBackground();
 	///

@@ -95,6 +95,7 @@
 #include <QDropEvent>
 #include <QFuture>
 #include <QFutureWatcher>
+#include <QGroupBox>
 #include <QLabel>
 #include <QList>
 #include <QMenu>
@@ -4786,6 +4787,19 @@ void GuiView::resetDialogs()
 }
 
 
+void GuiView::flatGroupBoxes(const QObject * widget, bool flag)
+{
+	for (const QObject * child: qAsConst(widget->children())) {
+		if (child->inherits("QGroupBox")) {
+			QGroupBox * box = (QGroupBox*) child;
+			box->setFlat(flag);
+		} else {
+			flatGroupBoxes(child, flag);
+		}
+	}
+}
+
+
 Dialog * GuiView::findOrBuild(string const & name, bool hide_it)
 {
 	if (!isValidName(name))
@@ -4801,6 +4815,9 @@ Dialog * GuiView::findOrBuild(string const & name, bool hide_it)
 
 	Dialog * dialog = build(name);
 	d.dialogs_[name].reset(dialog);
+	// Force a uniform style for group boxes
+	// On Mac non-flat works better, on Linux flat is standard
+	flatGroupBoxes(dialog->asQWidget(), guiApp->platformName() != "cocoa");
 	if (lyxrc.allow_geometry_session)
 		dialog->restoreSession();
 	if (hide_it)
