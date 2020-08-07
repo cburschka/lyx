@@ -221,14 +221,14 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	connect(autoapplyCB, SIGNAL(stateChanged(int)), this,
 		SLOT(slotAutoApply()));
 
-	connect(ulineCO, SIGNAL(currentIndexChanged(int)), this, SLOT(change_adaptor()));
-	connect(strikeCO, SIGNAL(currentIndexChanged(int)), this, SLOT(change_adaptor()));
-	connect(sizeCO, SIGNAL(currentIndexChanged(int)), this, SLOT(change_adaptor()));
-	connect(familyCO, SIGNAL(currentIndexChanged(int)), this, SLOT(change_adaptor()));
-	connect(seriesCO, SIGNAL(currentIndexChanged(int)), this, SLOT(change_adaptor()));
-	connect(shapeCO, SIGNAL(currentIndexChanged(int)), this, SLOT(change_adaptor()));
-	connect(colorCO, SIGNAL(currentIndexChanged(int)), this, SLOT(change_adaptor()));
-	connect(langCO, SIGNAL(currentIndexChanged(int)), this, SLOT(change_adaptor()));
+	connect(ulineCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(strikeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(sizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(familyCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(seriesCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(shapeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(colorCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(langCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 
 	family = familyData();
 	series = seriesData();
