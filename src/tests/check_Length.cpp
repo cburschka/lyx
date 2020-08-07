@@ -1,8 +1,8 @@
 #include <config.h>
 
-#include "../Length.h"
-#include "../LyXRC.h"
-#include "../support/debug.h"
+#include "LyXRC.h"
+#include "support/debug.h"
+#include "support/Length.h"
 
 #include <iostream>
 
