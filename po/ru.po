@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-07-30 15:34+0200\n"
-"PO-Revision-Date: 2020-08-01 15:49+0300\n"
+"PO-Revision-Date: 2020-08-07 20:23+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -142,7 +142,7 @@ msgstr "Стиль ссылок biblatex:"
 
 #: src/frontends/qt/ui/BiblioUi.ui:164
 msgid "The style that determines the layout of the citations"
-msgstr "Стиль, который определяет компоновку библиографических ссылок"
+msgstr "Стиль, задающий формат библиографических ссылок"
 
 #: src/frontends/qt/ui/BiblioUi.ui:180 src/frontends/qt/ui/BiblioUi.ui:241
 #: src/frontends/qt/ui/BiblioUi.ui:291
@@ -164,8 +164,7 @@ msgstr "Стиль биб&лиографии biblatex:"
 #: src/frontends/qt/ui/BiblioUi.ui:231
 msgid ""
 "The style that determines the layout of the biblatex-generated bibliography"
-msgstr ""
-"Стиль, который определяет компоновку библиографии, сгенерированной biblatex"
+msgstr "Стиль, задающий формат библиографии, сгенерированной biblatex"
 
 #: src/frontends/qt/ui/BiblioUi.ui:244 src/frontends/qt/ui/ColorUi.ui:73
 #: src/frontends/qt/ui/ColorUi.ui:134 src/frontends/qt/ui/ColorUi.ui:211
@@ -199,11 +198,11 @@ msgstr "С&бросить"
 
 #: src/frontends/qt/ui/BiblioUi.ui:305
 msgid "Select this if you want to split your bibliography into sections"
-msgstr "Выберите, если хотите разнести библиографию по разделам"
+msgstr "Выберите, если хотите разделить библиографию по разделам"
 
 #: src/frontends/qt/ui/BiblioUi.ui:308
 msgid "Subdivided bibli&ography"
-msgstr "Библиография по разделам"
+msgstr "Разделённая библиография"
 
 #: src/frontends/qt/ui/BiblioUi.ui:328
 msgid "Rescan style files"
@@ -215,11 +214,11 @@ msgstr "&Обновить"
 
 #: src/frontends/qt/ui/BiblioUi.ui:342
 msgid "&Multiple bibliographies:"
-msgstr "Несколько библиографий:"
+msgstr "Отдельные библиографии:"
 
 #: src/frontends/qt/ui/BiblioUi.ui:358
 msgid "Generate a bibliography per defined unit."
-msgstr "Генерировать отдельную библиографию для определённой рубрики"
+msgstr "Генерировать отдельную библиографию для заданного уровня"
 
 #: src/frontends/qt/ui/BiblioUi.ui:376
 msgid ""
@@ -928,7 +927,7 @@ msgstr "Размер шрифта"
 #: src/frontends/qt/ui/CharacterUi.ui:159
 #: src/frontends/qt/ui/CharacterUi.ui:178
 msgid "Font color"
-msgstr "Цвет шрифта"
+msgstr "Цвет текста"
 
 #: src/frontends/qt/ui/CharacterUi.ui:162
 msgid "&Color:"
@@ -1842,7 +1841,8 @@ msgstr "Масштаб (%):"
 
 #: src/frontends/qt/ui/FontUi.ui:247
 msgid "Scale the Sans Serif font to match the base font's dimensions"
-msgstr "Масштабировать шрифт без засечек до размеров основного шрифта"
+msgstr ""
+"Отмасштабируйте шрифт без засечек для соответствия размеру основного шрифта"
 
 #: src/frontends/qt/ui/FontUi.ui:267
 msgid "Use old st&yle figures"
@@ -1866,7 +1866,8 @@ msgstr "Масштаб (%):"
 
 #: src/frontends/qt/ui/FontUi.ui:355
 msgid "Scale the Typewriter font to match the base font's dimensions"
-msgstr "Масштабировать машинописный шрифт до размеров основного шрифта"
+msgstr ""
+"Отмасштабируйте машинописный шрифт для соответствия размеру основного шрифта"
 
 #: src/frontends/qt/ui/FontUi.ui:375
 msgid "Use old style &figures"
@@ -2734,7 +2735,7 @@ msgstr ""
 
 #: src/frontends/qt/ui/LocalLayoutUi.ui:20
 msgid "Document-specific layout information"
-msgstr "Информация о макете текущего документа"
+msgstr "Локальный макет текущего документа"
 
 #: src/frontends/qt/ui/LocalLayoutUi.ui:38
 msgid "&Validate"
@@ -7730,11 +7731,11 @@ msgstr "Дата"
 
 #: lib/layouts/aa.layout:239
 msgid "institutemark"
-msgstr "метка института"
+msgstr "пометка института"
 
 #: lib/layouts/aa.layout:243 lib/layouts/beamer.layout:1094
 msgid "Institute Mark"
-msgstr "Метка института"
+msgstr "Пометка института"
 
 #: lib/layouts/aa.layout:262
 msgid "Abstract (unstructured)"
@@ -7969,7 +7970,7 @@ msgstr "Заметка редактору:"
 #: lib/layouts/aastex.layout:474 lib/layouts/aastex6.layout:102
 #: lib/layouts/aastex62.layout:113
 msgid "TableRefs"
-msgstr "TableRefs"
+msgstr "Табличные ссылки"
 
 #: lib/layouts/aastex.layout:486
 msgid "References. ---"
@@ -7994,11 +7995,11 @@ msgstr "Табличная заметка:"
 
 #: lib/layouts/aastex.layout:529
 msgid "tablenotemark"
-msgstr "tablenotemark"
+msgstr "пометка табличной заметки"
 
 #: lib/layouts/aastex.layout:533
 msgid "tablenote mark"
-msgstr "пометка примечания к таблице"
+msgstr "пометка табличной заметки"
 
 #: lib/layouts/aastex.layout:551
 msgid "FigCaption"
@@ -8022,7 +8023,7 @@ msgstr "Учреждение:"
 
 #: lib/layouts/aastex.layout:599
 msgid "Objectname"
-msgstr "НазваниеОбъекта"
+msgstr "Имя объекта"
 
 #: lib/layouts/aastex.layout:611
 msgid "Obj:"
@@ -8034,7 +8035,7 @@ msgstr "Распознанное имя"
 
 #: lib/layouts/aastex.layout:614
 msgid "Separate the recognized name of an object from text"
-msgstr "Отделить название объекта от текста"
+msgstr "Отделить распознанное имя объекта от текста"
 
 #: lib/layouts/aastex.layout:629
 msgid "Dataset"
@@ -8119,15 +8120,15 @@ msgstr "Сотрудничество:"
 
 #: lib/layouts/aastex62.layout:193
 msgid "Nocollaboration"
-msgstr "Nocollaboration"
+msgstr "Без сотрудничества"
 
 #: lib/layouts/aastex62.layout:200
 msgid "No collaboration"
-msgstr "No collaboration"
+msgstr "Без сотрудничества"
 
 #: lib/layouts/aastex62.layout:231 lib/layouts/copernicus.layout:248
 msgid "Section Appendix"
-msgstr "Section Appendix"
+msgstr "Раздел приложения"
 
 #: lib/layouts/aastex62.layout:235
 msgid "\\Alph{appendix}."
@@ -8139,7 +8140,7 @@ msgstr "Подприложение"
 
 #: lib/layouts/aastex62.layout:247 lib/layouts/copernicus.layout:260
 msgid "Subsection Appendix"
-msgstr "Subsection Appendix"
+msgstr "Подраздел приложения"
 
 #: lib/layouts/aastex62.layout:251
 msgid "\\Alph{appendix}\\arabic{subappendix}."
@@ -8151,7 +8152,7 @@ msgstr "Подподприложение"
 
 #: lib/layouts/aastex62.layout:263 lib/layouts/copernicus.layout:272
 msgid "Subsubsection Appendix"
-msgstr "Subsubsection Appendix"
+msgstr "Подподраздел приложения"
 
 #: lib/layouts/aastex62.layout:267
 msgid "\\Alph{appendix}\\arabic{subappendix}.\\arabic{subsubappendix}."
@@ -9625,7 +9626,7 @@ msgstr "Мини-шаблон"
 
 #: lib/layouts/beamer.layout:144
 msgid "Mini template for this list (see beamer manual for details)"
-msgstr "Мини-шаблон для этого списка (подробности см. в руководстве beamer)"
+msgstr "Мини-шаблон для этого списка (подробности см. в руководстве по Beamer)"
 
 #: lib/layouts/beamer.layout:198
 msgid "Longest label|s"
@@ -9724,12 +9725,12 @@ msgstr "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
 
 #: lib/layouts/beamer.layout:477 lib/layouts/beamer.layout:483
 msgid "Frame"
-msgstr "Кадр"
+msgstr "Фрейм"
 
 #: lib/layouts/beamer.layout:478 lib/layouts/beamer.layout:563
 #: lib/layouts/beamer.layout:610 lib/layouts/beamer.layout:641
 msgid "Frames"
-msgstr "Кадры"
+msgstr "Фреймы"
 
 #: lib/layouts/beamer.layout:500 lib/layouts/beamer.layout:939
 #: lib/layouts/beamer.layout:1305 lib/layouts/beamer.layout:1459
@@ -9743,53 +9744,53 @@ msgstr "Действие"
 
 #: lib/layouts/beamer.layout:502 lib/layouts/beamer.layout:570
 msgid "Overlay specifications for this frame"
-msgstr "Спецификации наложения для этого кадра"
+msgstr "Определение оверлея для этого фрейма"
 
 #: lib/layouts/beamer.layout:508 lib/layouts/beamer.layout:576
 msgid "Default Overlay Specifications"
-msgstr "Спецификации наложения по умолчанию"
+msgstr "Определение оверлея по умолчанию"
 
 #: lib/layouts/beamer.layout:509 lib/layouts/beamer.layout:577
 msgid "Default overlay specifications within this frame"
-msgstr "Спецификации наложения по умолчанию внутри этого кадра"
+msgstr "Определение оверлея по умолчанию внутри этого фрейма"
 
 #: lib/layouts/beamer.layout:515 lib/layouts/beamer.layout:544
 #: lib/layouts/beamer.layout:555 lib/layouts/beamer.layout:583
 msgid "Frame Options"
-msgstr "Параметры кадра"
+msgstr "Параметры фрейма"
 
 #: lib/layouts/beamer.layout:517 lib/layouts/beamer.layout:546
 #: lib/layouts/beamer.layout:557 lib/layouts/beamer.layout:585
 msgid "Frame options (see beamer manual)"
-msgstr "Параметры кадра (см. руководство beamer)"
+msgstr "Параметры фрейма (см. руководство по Beamer)"
 
 #: lib/layouts/beamer.layout:520
 msgid "Frame Title"
-msgstr "Заголовок кадра"
+msgstr "Заголовок фрейма"
 
 #: lib/layouts/beamer.layout:521
 msgid "Enter the frame title here"
-msgstr "Введите здесь название кадра"
+msgstr "Введите здесь заголовок фрейма"
 
 #: lib/layouts/beamer.layout:540
 msgid "PlainFrame"
-msgstr "Простой кадр"
+msgstr "Простой фрейм"
 
 #: lib/layouts/beamer.layout:542
 msgid "Frame (plain)"
-msgstr "Кадр (простой)"
+msgstr "Фрейм (простой)"
 
 #: lib/layouts/beamer.layout:551
 msgid "FragileFrame"
-msgstr "Хрупкий кадр"
+msgstr "Хрупкий фрейм"
 
 #: lib/layouts/beamer.layout:553
 msgid "Frame (fragile)"
-msgstr "Кадр (хрупкий)"
+msgstr "Фрейм (хрупкий)"
 
 #: lib/layouts/beamer.layout:562
 msgid "AgainFrame"
-msgstr "Повторный кадр"
+msgstr "Повторный фрейм"
 
 #: lib/layouts/beamer.layout:568 lib/layouts/powerdot.layout:126
 #: lib/layouts/seminar.layout:111 lib/layouts/slides.layout:91
@@ -9799,11 +9800,11 @@ msgstr "Слайд"
 
 #: lib/layouts/beamer.layout:597
 msgid "Repeat frame with label"
-msgstr "Повтор кадра с меткой"
+msgstr "Повтор фрейма с меткой"
 
 #: lib/layouts/beamer.layout:609
 msgid "FrameTitle"
-msgstr "Заголовок кадра"
+msgstr "Заголовок фрейма"
 
 #: lib/layouts/beamer.layout:628 lib/layouts/beamer.layout:658
 #: lib/layouts/beamer.layout:878 lib/layouts/beamer.layout:907
@@ -9816,19 +9817,19 @@ msgstr "Заголовок кадра"
 #: lib/layouts/beamer.layout:1583 lib/layouts/beamer.layout:1604
 #: lib/layouts/beamer.layout:1625 lib/layouts/beamer.layout:1651
 msgid "Specify the overlay settings (see beamer manual)"
-msgstr "Укажите параметры наложения (см. руководство beamer)"
+msgstr "Укажите параметры оверлея (см. руководство по Beamer)"
 
 #: lib/layouts/beamer.layout:634
 msgid "Short Frame Title|S"
-msgstr "Краткое заглавие кадра"
+msgstr "Краткое заглавие фрейма"
 
 #: lib/layouts/beamer.layout:635
 msgid "A short form of the frame title used in some themes"
-msgstr "Короткая форма заголовка кадра, используемая в некоторых темах"
+msgstr "Короткая форма заголовка фрейма, используемая в некоторых темах"
 
 #: lib/layouts/beamer.layout:640
 msgid "FrameSubtitle"
-msgstr "Подзаголовок кадра"
+msgstr "Подзаголовок фрейма"
 
 #: lib/layouts/beamer.layout:670 lib/layouts/moderncv.layout:315
 #: lib/layouts/moderncv.layout:330
@@ -9843,23 +9844,23 @@ msgstr "Колонки"
 
 #: lib/layouts/beamer.layout:683
 msgid "Start column (increase depth!), width:"
-msgstr "Начало колонки (увеличьте глубину!), ширина:"
+msgstr "Начало колонки (увеличьте вложенность!), ширина:"
 
 #: lib/layouts/beamer.layout:686 lib/layouts/powerdot.layout:495
 msgid "Column Options"
-msgstr "Настройки колонки"
+msgstr "Параметры колонки"
 
 #: lib/layouts/beamer.layout:688
 msgid "Column options (see beamer manual)"
-msgstr "Параметры колонок (см. руководство beamer)"
+msgstr "Параметры колонки (см. руководство по Beamer)"
 
 #: lib/layouts/beamer.layout:711
 msgid "Column Placement Options"
-msgstr "Настройки размещения колонки"
+msgstr "Параметры размещения колонки"
 
 #: lib/layouts/beamer.layout:712
 msgid "Column placement options (t, T, c, b)"
-msgstr "Варианты размещения колонки (t ,T, c, b)"
+msgstr "Параметры размещения колонки (t ,T, c, b)"
 
 #: lib/layouts/beamer.layout:729
 msgid "ColumnsCenterAligned"
@@ -9885,7 +9886,7 @@ msgstr "Пауза"
 #: lib/layouts/beamer.layout:825 lib/layouts/beamer.layout:857
 #: lib/layouts/beamer.layout:886 lib/layouts/powerdot.layout:510
 msgid "Overlays"
-msgstr "Наложения"
+msgstr "Оверлеи"
 
 #: lib/layouts/beamer.layout:757 lib/layouts/powerdot.layout:516
 msgid "Pause number"
@@ -9901,7 +9902,7 @@ msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 
 #: lib/layouts/beamer.layout:778 lib/layouts/beamer.layout:817
 msgid "Overprint"
-msgstr "Наложение overprint"
+msgstr "Наложение"
 
 #: lib/layouts/beamer.layout:785
 msgid "Overprint Area Width"
@@ -9919,23 +9920,23 @@ msgstr "Ширина области наложения (по умолчанию:
 
 #: lib/layouts/beamer.layout:824
 msgid "OverlayArea"
-msgstr "Область наложения"
+msgstr "Область оверлея"
 
 #: lib/layouts/beamer.layout:834
 msgid "Overlayarea"
-msgstr "Областьналожения"
+msgstr "Область оверлея"
 
 #: lib/layouts/beamer.layout:844
 msgid "Overlay Area Width"
-msgstr "Ширина области наложения"
+msgstr "Ширина области оверлея"
 
 #: lib/layouts/beamer.layout:845
 msgid "The width of the overlay area"
-msgstr "Ширина области наложения"
+msgstr "Ширина области оверлея"
 
 #: lib/layouts/beamer.layout:849
 msgid "Overlay Area Height"
-msgstr "Высота области наложения"
+msgstr "Высота области оверлея"
 
 #: lib/layouts/beamer.layout:850 lib/layouts/graphicboxes.module:56
 #: lib/layouts/moderncv.layout:219 src/frontends/qt/GuiBox.cpp:74
@@ -9944,7 +9945,7 @@ msgstr "Высота"
 
 #: lib/layouts/beamer.layout:851
 msgid "The height of the overlay area"
-msgstr "Высота области наложения"
+msgstr "Высота области оверлея"
 
 #: lib/layouts/beamer.layout:856 lib/layouts/beamer.layout:1551
 #: lib/layouts/beamer.layout:1553 lib/layouts/powerdot.layout:651
@@ -9953,7 +9954,7 @@ msgstr "Раскрыть"
 
 #: lib/layouts/beamer.layout:866
 msgid "Uncovered on slides"
-msgstr "Раскрывается на слайдах"
+msgstr "Раскрыть на слайдах"
 
 #: lib/layouts/beamer.layout:885 lib/layouts/beamer.layout:1530
 #: lib/layouts/beamer.layout:1532 lib/layouts/powerdot.layout:657
@@ -9978,7 +9979,7 @@ msgstr "Блок:"
 
 #: lib/layouts/beamer.layout:940
 msgid "Action Specification|S"
-msgstr "Спецификация действия"
+msgstr "Определение действия"
 
 #: lib/layouts/beamer.layout:947
 msgid "Block Title"
@@ -10016,7 +10017,7 @@ msgstr "Краткое название, которое появляется в 
 
 #: lib/layouts/beamer.layout:1011
 msgid "Title (Plain Frame)"
-msgstr "Название (простой кадр)"
+msgstr "Заглавие (простой фрейм)"
 
 #: lib/layouts/beamer.layout:1033
 msgid "Short Subtitle|S"
@@ -10044,7 +10045,7 @@ msgstr "Пометка института"
 
 #: lib/layouts/beamer.layout:1124
 msgid "Short Date|S"
-msgstr "Короткая дата"
+msgstr "Краткая дата"
 
 #: lib/layouts/beamer.layout:1125
 msgid "Short date which appears in the sidebar/header"
@@ -10082,7 +10083,7 @@ msgstr "Следствие."
 #: lib/layouts/beamer.layout:1603 lib/layouts/beamer.layout:1624
 #: lib/layouts/beamer.layout:1650
 msgid "Action Specifications|S"
-msgstr "Спецификации действия"
+msgstr "Описание действия"
 
 #: lib/layouts/beamer.layout:1324 lib/layouts/foils.layout:350
 #: lib/layouts/theorems-starred.inc:162
@@ -10170,7 +10171,7 @@ msgstr "Выделение"
 
 #: lib/layouts/beamer.layout:1472
 msgid "Emph."
-msgstr "Выделительный"
+msgstr "Выделение"
 
 #: lib/layouts/beamer.layout:1490 lib/layouts/beamer.layout:1492
 msgid "Alert"
@@ -10213,7 +10214,7 @@ msgstr "Параметры заметки"
 
 #: lib/layouts/beamer.layout:1658
 msgid "Specifiy note options (see beamer manual)"
-msgstr "Укажите параметры заметки (см. руководство по beamer)"
+msgstr "Укажите параметры заметки (см. руководство по Beamer)"
 
 #: lib/layouts/beamer.layout:1663
 msgid "ArticleMode"
@@ -10239,7 +10240,7 @@ msgstr "Рисунок"
 
 #: lib/layouts/beamerposter.layout:3 lib/examples/Articles:0
 msgid "Beamerposter"
-msgstr "Плакат beamer"
+msgstr "Плакат Beamer"
 
 #: lib/layouts/bicaption.module:2
 msgid "Bilingual Captions"
@@ -16473,11 +16474,11 @@ msgstr "Новый слайд:"
 
 #: lib/layouts/slides.layout:129
 msgid "Overlay"
-msgstr "Наложение"
+msgstr "Оверлей"
 
 #: lib/layouts/slides.layout:144
 msgid "New Overlay:"
-msgstr "Новое наложение:"
+msgstr "Новый оверлей:"
 
 #: lib/layouts/slides.layout:184
 msgid "New Note:"
@@ -20618,7 +20619,7 @@ msgstr "Maple, Evalf|v"
 
 #: lib/ui/stdmenus.inc:339
 msgid "Outline Pane|O"
-msgstr "Панель структуры|с"
+msgstr "Панель навигации|н"
 
 #: lib/ui/stdmenus.inc:340
 msgid "Code Preview Pane|P"
@@ -21286,7 +21287,7 @@ msgstr "Пользовательские вставки"
 
 #: lib/ui/stdtoolbars.inc:102
 msgid "Toggle outline"
-msgstr "Переключить панель структуры"
+msgstr "Переключить панель навигации"
 
 #: lib/ui/stdtoolbars.inc:103
 msgid "Toggle math toolbar"
@@ -33667,7 +33668,7 @@ msgstr "Нет тезауруса для этого языка!"
 
 #: src/frontends/qt/GuiToc.cpp:36
 msgid "Outline"
-msgstr "Структура"
+msgstr "Навигация"
 
 #: src/frontends/qt/GuiToolbar.cpp:397
 msgid "&Reset to default"
@@ -34448,7 +34449,7 @@ msgstr "(Пустое содержание)"
 
 #: src/frontends/qt/Menus.cpp:1389
 msgid "Open Outliner..."
-msgstr "Показать на панели структуры..."
+msgstr "Показать на панели навигации..."
 
 #: src/frontends/qt/Menus.cpp:1426
 msgid "Other Toolbars"

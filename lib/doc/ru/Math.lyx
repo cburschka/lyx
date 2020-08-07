@@ -3186,7 +3186,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-Химические символы ! Изотопы
+Химические символы ! изотопы
 \end_layout
 
 \end_inset
@@ -15671,7 +15671,7 @@ name "subsec:Operator-Limits"
 status collapsed
 
 \begin_layout Plain Layout
-Операторы ! Пределы
+Операторы ! пределы
 \end_layout
 
 \end_inset
@@ -22520,7 +22520,7 @@ reference "subsec:Font-Sizes"
 status collapsed
 
 \begin_layout Plain Layout
-Символы ! Символ евро
+Символы ! символ евро
 \end_layout
 
 \end_inset
@@ -30927,8 +30927,8 @@ removefromreset
 
 \begin_layout Standard
 
-\family typewriter
-(номер_раздела.номер_формулы)
+\series bold
+(номер-раздела.номер-формулы)
 \end_layout
 
 \begin_layout Standard
@@ -31153,7 +31153,7 @@ name "subsec:Chemical-Symbols-and"
 status collapsed
 
 \begin_layout Plain Layout
-Химические символы ! Знаки
+Химические символы ! знаки
 \end_layout
 
 \end_inset
@@ -32878,7 +32878,7 @@ A=B
 status collapsed
 
 \begin_layout Plain Layout
-Пользовательские команды ! Математические макросы
+Пользовательские команды ! математические макросы
 \end_layout
 
 \end_inset
@@ -35238,13 +35238,13 @@ hyperref
 \series bold
 
 \backslash
-texorpdfstring{часть}{альтернатива}
+texorpdfstring{строка-tex}{строка-pdf}
+\series default
+
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\series bold
 Команды ! T ! 
 \backslash
 texorpdfstring
@@ -35258,15 +35258,15 @@ texorpdfstring
 \begin_layout Standard
 
 \series bold
-Часть
+Строка-tex
 \series default
  — это часть заголовка, которая не должна появляться в PDF-закладке.
  Это могут быть символы, формулы, сноски, а также перекрестные ссылки.
- 
+ Вместо этого для закладки используется 
 \series bold
-Альтернатива
+строка-pdf
 \series default
- используется вместо этой части для закладки.
+.
 \end_layout
 
 \begin_layout Standard
@@ -35405,7 +35405,7 @@ status collapsed
 
 \begin_layout Standard
 Формулы в многоколоночном тексте часто слишком широки, чтобы поместиться
- в столбец, и поэтому их необходимо задавать по всей ширине страницы.
+ в столбец, и поэтому их необходимо размещать на всю ширину страницы.
  Это делается с помощью \SpecialChar LaTeX
 -пакета 
 \series bold
@@ -35463,7 +35463,7 @@ status open
 Настройки\SpecialChar menuseparator
 Макет текста
 \family default
- не должен быть выбран.
+ устанавливать не нужно.
 \end_layout
 
 \end_inset
@@ -35472,7 +35472,8 @@ status open
 \end_layout
 
 \begin_layout Standard
-Перед многоколоночным текстом команда
+Перед многоколоночным текстом в режиме \SpecialChar TeX
+ записывается команда
 \end_layout
 
 \begin_layout Standard
@@ -35484,16 +35485,14 @@ begin{multicols}{количество-колонок}
 \end_layout
 
 \begin_layout Standard
-записывается в режиме \SpecialChar TeX
-.
- 
+
 \series bold
 Количество-колонок
 \series default
  — это число в диапазоне 2–10.
- Перед формулой текст из нескольких столбцов заканчивается вводом, также
+ Перед формулой текст из нескольких столбцов заканчивается путем задания
  в режиме \SpecialChar TeX
-, команды
+ команды
 \end_layout
 
 \begin_layout Standard
@@ -35514,9 +35513,9 @@ end{multicols}
 
 mm.
  Если при этом используется стиль 
-\series bold
+\family sans
 Отступ для формулы
-\series default
+\family default
 
 \begin_inset Foot
 status collapsed
@@ -35782,9 +35781,9 @@ status collapsed
 hfill
 \series default
  работает только в формулах со стилем 
-\series bold
+\family sans
 Отступ для формулы
-\series default
+\family default
 , см.
  
 \begin_inset CommandInset ref
@@ -35798,8 +35797,8 @@ reference "subsec:Variable-Space"
 
 \end_inset
 
- вставляется до и после матрицы, чтобы иметь одинаковый промежуток от матрицы,
- и до уравнения, и до бокового поля.
+ вставляется до и после матрицы, чтобы иметь одинаковый промежуток от матрицы
+ до уравнения и до бокового поля.
 \end_layout
 
 \begin_layout Standard
@@ -36109,7 +36108,7 @@ reference "subsec:Binary-Operators"
 
 \end_inset
 
-, потому что этот символ определен во всех кодировки как текстовый символ.
+, потому что этот символ определен во всех кодировках как текстовый символ.
  Но кодировка может быть изменена следующей строкой преамбулы \SpecialChar LaTeX
 :
 \end_layout
@@ -36119,7 +36118,7 @@ reference "subsec:Binary-Operators"
 \series bold
 
 \backslash
-Declare Inputtext{183}{
+DeclareInputtext{183}{
 \backslash
 ifmmode
 \backslash
@@ -36141,7 +36140,15 @@ i}
 Язык
 \family default
 ) указывает, какой символ появляется при нажатии клавиши клавиатуры.
- При нажатии клавиши для символа '·' внутри используется команда 
+ При нажатии клавиши для символа 
+\begin_inset Quotes rld
+\end_inset
+
+·
+\begin_inset Quotes rrd
+\end_inset
+
+ внутри используется команда 
 \series bold
 
 \backslash
@@ -36155,7 +36162,7 @@ textperiodcentered
 \end_layout
 
 \begin_layout Standard
-Кодировка некоторых символов сохраняется в файлах определений.
+Кодировки наборов символов хранятся в файлах определений.
  Например, кодировка 
 \series bold
 latin9
@@ -36164,7 +36171,7 @@ latin9
 \series bold
 latin9.def
 \series default
-, который находится в папке установки \SpecialChar LaTeX
+, который находится в каталоге установки \SpecialChar LaTeX
 .
  Кодировки следует изменять только через преамбулу \SpecialChar LaTeX
 , а не в файлах определений.
@@ -36292,7 +36299,7 @@ A=B%\text{Это --- комментарий}
 status collapsed
 
 \begin_layout Plain Layout
-Типографские комментарии
+Типографские рекомендации
 \end_layout
 
 \end_inset
@@ -36584,8 +36591,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Некоторые символы и знаки могут быть созданы с помощью определенных команд.
- Приведем список команд синонимов:
+Некоторые символы и знаки могут быть созданы с помощью нескольких команд.
+ Приведем список команд-синонимов:
 \end_layout
 
 \begin_layout Standard
@@ -36616,7 +36623,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-эквивалентна
+Синоним
 \end_layout
 
 \end_inset
@@ -36904,7 +36911,7 @@ vert
 \begin_inset Text
 
 \begin_layout Plain Layout
-эквивалентна
+Синоним
 \end_layout
 
 \end_inset

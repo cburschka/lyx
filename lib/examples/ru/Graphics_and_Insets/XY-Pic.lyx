@@ -1002,8 +1002,19 @@ $
 \end_inset
 
 .
- Использование символа '|' вместо '^' или '_' позволяет даже поместить метку
- прямо на стрелке (частично перекрывая ее).
+ Использование символа 
+\family typewriter
+|
+\family default
+ вместо 
+\family typewriter
+^
+\family default
+ или 
+\family typewriter
+_
+\family default
+ позволяет даже поместить метку прямо на стрелке (частично перекрывая ее).
 \end_layout
 
 \begin_layout Standard
@@ -1415,7 +1426,8 @@ $
 \family typewriter
 
 \backslash
-ar@{->>}
+ar@{->\SpecialChar ligaturebreak
+>}
 \end_layout
 
 \end_inset
@@ -1443,7 +1455,8 @@ $
 \family typewriter
 
 \backslash
-ar@{-->>}
+ar@{-->\SpecialChar ligaturebreak
+>}
 \end_layout
 
 \end_inset
@@ -1471,7 +1484,8 @@ $
 \family typewriter
 
 \backslash
-ar@{>->>}
+ar@{>->\SpecialChar ligaturebreak
+>}
 \end_layout
 
 \end_inset
@@ -1574,10 +1588,26 @@ ar@{|-|}
 \family typewriter
 @
 \family default
- один из символов: 2, 3, _ либо ^, можно создавать стрелки, соответственно
- с двойной, тройной линией, без верхней\SpecialChar breakableslash
-нижней части начала или конца стрелки;
- стрелки также не обязательно могут иметь наконечники.
+ один из символов: 
+\family typewriter
+2
+\family default
+, 
+\family typewriter
+3
+\family default
+, 
+\family typewriter
+_
+\family default
+ либо 
+\family typewriter
+^
+\family default
+, можно создавать стрелки, соответственно с двойной, тройной линией, без
+ верхней\SpecialChar breakableslash
+нижней части начала или конца стрелки; стрелки также не обязательно
+ могут иметь наконечники.
  Вот некоторые примеры подобных ситуаций:
 \end_layout
 
@@ -2730,7 +2760,7 @@ Alt+M C I
 Правка\SpecialChar menuseparator
 Строки и столбцы
 \family default
-, соотвующие им клавиатурные команды начинаются с 
+, соответствующие им клавиатурные команды начинаются с 
 \family sans
 Alt+M C
 \family default
@@ -2810,30 +2840,14 @@ r
 \end_inset
 
 ).
- Как обычно, в математическом редакторе символ подчеркивания 
-\begin_inset Quotes rld
-\end_inset
-
-
+ Как обычно, в математическом редакторе символ 
 \family typewriter
 _
 \family default
-
-\begin_inset Quotes rrd
-\end_inset
-
  открывает поле для нижнего индекса, а 
-\begin_inset Quotes rld
-\end_inset
-
-
 \family typewriter
 ^
 \family default
-
-\begin_inset Quotes rrd
-\end_inset
-
  — поле для верхнего индекса.
  В качестве метки можно ввести любой \SpecialChar LaTeX
 -код.
@@ -2960,7 +2974,7 @@ xypic
 \emph default
  — любой допустимый размер в \SpecialChar TeX
 , который должна быть введен как верхний или
- нижний индекс для первый косой черты 
+ нижний индекс для первой косой черты 
 \family typewriter
 /
 \family default
@@ -3144,11 +3158,19 @@ xymatrix@R=1pt
 xymatrix@R=1pt@C=1dd
 \family default
  — нет.
- Метод также не работает, если используется '
+ Метод также не работает, если используется 
+\begin_inset Quotes rld
+\end_inset
+
+
 \family typewriter
 !
 \family default
-' для получения фиксированной сетки с определенным размером, например, 
+
+\begin_inset Quotes rrd
+\end_inset
+
+ для получения фиксированной сетки с определенным размером, например, 
 \family typewriter
 
 \backslash
@@ -3475,15 +3497,15 @@ ar[ur]_(0.3)
 phi
 \family default
 , не приведут к желаемому результату.
- Вместо этого нужно заменить символы '
+ Вместо этого нужно заменить символы 
 \family typewriter
 ^
 \family default
-' и '
+ и 
 \family typewriter
 _
 \family default
-' макросами 
+ макросами 
 \family typewriter
 
 \backslash
@@ -3564,9 +3586,9 @@ phi_{4}}
 \begin_layout Standard
 Более общий трюк использует невидимые стрелки, чтобы разместить любой объект
  почти в любом месте диаграммы.
- Создайте невидимую стрелку (как описано в 4.4), укоротите (или продлите)
- ее до цели, добавив десятичный коэффициент сжатия (растяжения), например,
- 
+ Создайте невидимую стрелку (как описано в подразделе 4.4), укоротите (или
+ продлите) ее до цели, добавив десятичный коэффициент сжатия (растяжения),
+ например, 
 \family typewriter
 (0.6)
 \family default
@@ -3583,8 +3605,11 @@ phi_{4}}
 \begin_inset Formula $\varphi$
 \end_inset
 
- на (0.3) пути, могла бы быть получена путем добавления к обычной стрелке
- 
+ на 
+\family typewriter
+(0.3)
+\family default
+ пути, могла бы быть получена путем добавления к обычной стрелке 
 \family typewriter
 
 \backslash
