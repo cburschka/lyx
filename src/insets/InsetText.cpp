@@ -873,6 +873,14 @@ void InsetText::updateBuffer(ParIterator const & it, UpdateType utype, bool cons
 		// Record in this inset is embedded in a title layout
 		// This is needed to decide when \maketitle is output.
 		intitle_context_ = it.paragraph().layout().intitle;
+		// Also check embedding layouts
+		size_t const n = it.depth();
+		for (size_t i = 0; i < n; ++i) {
+			if (it[i].paragraph().layout().intitle) {
+				intitle_context_ = true;
+				break;
+			}
+		}
 	} else {
 		DocumentClass const & tclass = buffer().masterBuffer()->params().documentClass();
 		// Note that we do not need to call:
