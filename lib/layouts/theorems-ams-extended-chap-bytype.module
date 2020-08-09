@@ -44,20 +44,48 @@ End
 Counter axiom
 End
 Counter condition
+	GuiName Criterion
+	Within         chapter
+End
+Counter algorithm
+	GuiName Algorithm
+	Within         chapter
+End
+Counter axiom
+	GuiName Axiom
+	Within         chapter
+End
+Counter condition
+	GuiName Condition
+	Within         chapter
 End
 Counter note
+	GuiName Note
+	Within         chapter
 End
 Counter notation
+	GuiName Notation
+	Within         chapter
 End
 Counter summary
+	GuiName Summary
+	Within         chapter
 End
 Counter acknowledgement
+	GuiName Acknowledgement
+	Within         chapter
 End
 Counter conclusion
+	GuiName Conclusion
+	Within         chapter
 End
 Counter assumption
+	GuiName Assumption
+	Within         chapter
 End
 Counter question
+	GuiName Question
+	Within         chapter
 End
 
 
@@ -66,7 +94,7 @@ End
 Style Criterion
 	CopyStyle             Theorem
 	LatexName             criterion
-	LabelString           "Criterion \thechapter.\thecriterion."
+	LabelString           "Criterion \thecriterion."
 	Preamble
 	  \theoremstyle{plain}
     \ifx\thechapter\undefined
@@ -105,7 +133,7 @@ End
 Style Algorithm
 	CopyStyle             Theorem
 	LatexName             lyxalgorithm
-	LabelString           "Algorithm \thechapter.\thealgorithm."
+	LabelString           "Algorithm \thealgorithm."
 	Preamble
 	  \theoremstyle{plain}
     \ifx\thechapter\undefined
@@ -144,7 +172,7 @@ End
 Style Axiom
 	CopyStyle             Theorem
 	LatexName             ax
-	LabelString           "Axiom \thechapter.\theaxiom."
+	LabelString           "Axiom \theaxiom."
 	Preamble
 	  \theoremstyle{plain}
     \ifx\thechapter\undefined
@@ -183,7 +211,7 @@ End
 Style Condition
 	CopyStyle             Definition
 	LatexName             condition
-	LabelString           "Condition \thechapter.\thecondition."
+	LabelString           "Condition \thecondition."
 	Preamble
 	  \theoremstyle{definition}
     \ifx\thechapter\undefined
@@ -222,7 +250,7 @@ End
 Style Note
 	CopyStyle             Remark
 	LatexName             note
-	LabelString           "Note \thechapter.\thenote."
+	LabelString           "Note \thenote."
 	Preamble
 	  \theoremstyle{remark}
     \ifx\thechapter\undefined
@@ -261,7 +289,7 @@ End
 Style Notation
 	CopyStyle             Remark
 	LatexName             notation
-	LabelString           "Notation \thechapter.\thenotation."
+	LabelString           "Notation \thenotation."
 	Preamble
 	  \theoremstyle{remark}
     \ifx\thechapter\undefined
@@ -300,7 +328,7 @@ End
 Style Summary
 	CopyStyle             Remark
 	LatexName             summary
-	LabelString           "Summary \thechapter.\thesummary."
+	LabelString           "Summary \thesummary."
 	Preamble
 	  \theoremstyle{remark}
     \ifx\thechapter\undefined
@@ -340,7 +368,7 @@ End
 Style Acknowledgement
 	CopyStyle             Remark
 	LatexName             acknowledgement
-	LabelString           "Acknowledgement \thechapter.\theacknowledgement."
+	LabelString           "Acknowledgement \theacknowledgement."
 	Preamble
 	  \theoremstyle{remark}
     \ifx\thechapter\undefined
@@ -379,7 +407,7 @@ End
 Style Conclusion
 	CopyStyle             Remark
 	LatexName             conclusion
-	LabelString           "Conclusion \thechapter.\theconclusion."
+	LabelString           "Conclusion \theconclusion."
 	Preamble
 	  \theoremstyle{remark}
     \ifx\thechapter\undefined
@@ -418,7 +446,7 @@ End
 Style Assumption
 	CopyStyle             Theorem
 	LatexName             assumption
-	LabelString           "Assumption \thechapter.\theassumption."
+	LabelString           "Assumption \theassumption."
 	Preamble
 	  \theoremstyle{plain}
     \ifx\thechapter\undefined
@@ -457,7 +485,7 @@ Style Question
 	CopyStyle             Theorem
 	DependsOn             Theorem
 	LatexName             question
-	LabelString           "Question \thechapter.\thequestion."
+	LabelString           "Question \thequestion."
 	Preamble
 	  \theoremstyle{plain}
     \ifx\thechapter\undefined

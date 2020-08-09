@@ -25,31 +25,58 @@
 
 # We need separate counters for each theorem-like style.
 Format 66
+
 Counter theorem
+	GuiName Theorem
+	Within         chapter
 End
 Counter corollary
+	GuiName Corollary
+	Within         chapter
 End
 Counter lemma
+	GuiName Lemma
+	Within         chapter
 End
 Counter proposition
+	GuiName Proposition
+	Within         chapter
 End
 Counter conjecture
+	GuiName Conjecture
+	Within         chapter
 End
 Counter fact
+	GuiName Fact
+	Within         chapter
 End
 Counter definition
+	GuiName Definition
+	Within         chapter
 End
 Counter example
+	GuiName Example
+	Within         chapter
 End
 Counter problem
+	GuiName Problem
+	Within         chapter
 End
 Counter exercise
+	GuiName Exercise
+	Within         chapter
 End
 Counter solution
+	GuiName Solution
+	Within         chapter
 End
 Counter remark
+	GuiName Remark
+	Within         chapter
 End
 Counter claim
+	GuiName Claim
+	Within         chapter
 End
 
 OutlinerName thm "Definitions & Theorems"
@@ -79,7 +106,7 @@ Style Theorem
 	AlignPossible         Left
 	LabelType             Static
 	LabelCounter          theorem
-	LabelString           "Theorem \thechapter.\thetheorem."
+	LabelString           "Theorem \thetheorem."
 	Font
 	  Shape               Italic
 	  Size                Normal
@@ -109,7 +136,7 @@ End
 Style Corollary
 	CopyStyle             Theorem
 	LatexName             cor
-	LabelString           "Corollary \thechapter.\thecorollary."
+	LabelString           "Corollary \thecorollary."
 	Preamble
 	  \theoremstyle{plain}
     \ifx\thechapter\undefined
@@ -131,7 +158,7 @@ End
 Style Lemma
 	CopyStyle             Theorem
 	LatexName             lem
-	LabelString           "Lemma \thechapter.\thelemma."
+	LabelString           "Lemma \thelemma."
 	Preamble
 	  \theoremstyle{plain}
     \ifx\thechapter\undefined
@@ -153,7 +180,7 @@ End
 Style Proposition
 	CopyStyle             Theorem
 	LatexName             prop
-	LabelString           "Proposition \thechapter.\theproposition."
+	LabelString           "Proposition \theproposition."
 	Preamble
 	  \theoremstyle{plain}
     \ifx\thechapter\undefined
@@ -175,7 +202,7 @@ End
 Style Conjecture
 	CopyStyle             Theorem
 	LatexName             conjecture
-	LabelString           "Conjecture \thechapter.\theconjecture."
+	LabelString           "Conjecture \theconjecture."
 	Preamble
 	  \theoremstyle{plain}
     \ifx\thechapter\undefined
@@ -197,7 +224,7 @@ End
 Style Fact
 	CopyStyle             Theorem
 	LatexName             fact
-	LabelString           "Fact \thechapter.\thefact."
+	LabelString           "Fact \thefact."
 	Preamble
 	  \theoremstyle{plain}
     \ifx\thechapter\undefined
@@ -219,7 +246,7 @@ End
 Style Definition
 	CopyStyle             Theorem
 	LatexName             defn
-	LabelString           "Definition \thechapter.\thedefinition."
+	LabelString           "Definition \thedefinition."
 	Font
 	  Shape               Up
 	EndFont
@@ -248,7 +275,7 @@ End
 Style Example
 	CopyStyle             Definition
 	LatexName             example
-	LabelString           "Example \thechapter.\theexample."
+	LabelString           "Example \theexample."
 	Preamble
 	  \theoremstyle{definition}
     \ifx\thechapter\undefined
@@ -271,7 +298,7 @@ End
 Style Problem
 	CopyStyle             Definition
 	LatexName             problem
-	LabelString           "Problem \thechapter.\theproblem."
+	LabelString           "Problem \theproblem."
 	Preamble
 	  \theoremstyle{definition}
     \ifx\thechapter\undefined
@@ -294,7 +321,7 @@ End
 Style Exercise
 	CopyStyle             Definition
 	LatexName             xca
-	LabelString           "Exercise \thechapter.\theexercise."
+	LabelString           "Exercise \theexercise."
 	Preamble
 	  \theoremstyle{definition}
     \ifx\thechapter\undefined
@@ -317,7 +344,7 @@ End
 Style Solution
 	CopyStyle             Definition
 	LatexName             sol
-	LabelString           "Solution \thechapter.\thesolution."
+	LabelString           "Solution \thesolution."
 	Preamble
 	  \theoremstyle{definition}
     \ifx\thechapter\undefined
@@ -340,7 +367,7 @@ End
 Style Remark
 	CopyStyle             Theorem
 	LatexName             rem
-	LabelString           "Remark \thechapter.\theremark."
+	LabelString           "Remark \theremark."
 	Font
 	  Shape               Up
 	  Size                Normal
@@ -370,7 +397,7 @@ End
 Style Claim
 	CopyStyle             Remark
 	LatexName             claim
-	LabelString           "Claim \thechapter.\theclaim."
+	LabelString           "Claim \theclaim."
 	Preamble
 	  \theoremstyle{remark}
     \ifx\thechapter\undefined

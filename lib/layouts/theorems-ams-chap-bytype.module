@@ -22,50 +22,6 @@ Format 66
 
 Requires	amsmath,amsthm
 
-# The environments defined (regular and starred) are :
-# - theorem
-# - corollary
-# - lemma
-# - proposition
-# - conjecture
-# - fact
-# - definition
-# - example
-# - solution
-# - problem
-# - exercise
-# - remark
-# - claim
-
-# We need separate counters for each theorem-like style.
-Counter theorem
-End
-Counter corollary
-End
-Counter lemma
-End
-Counter proposition
-End
-Counter conjecture
-End
-Counter fact
-End
-Counter definition
-End
-Counter example
-End
-Counter solution
-End
-Counter problem
-End
-Counter exercise
-End
-Counter remark
-End
-Counter claim
-End
-
-
 Input theorems-order.inc
 Input theorems-ams-chap-bytype.inc
 Input theorems-starred.inc
