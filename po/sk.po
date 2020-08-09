@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-08-01 08:07+0200\n"
-"PO-Revision-Date: 2020-08-01 16:57+0000\n"
+"POT-Creation-Date: 2020-08-08 16:52+0200\n"
+"PO-Revision-Date: 2020-08-08 15:18+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -285,6 +285,10 @@ msgstr "Odstrániť vybranú databázu"
 msgid "&Delete"
 msgstr "Zm&azať"
 
+#: src/frontends/qt/ui/BibtexUi.ui:107
+msgid "Move the selected database up (Ctrl-Up)"
+msgstr "Presunúť označenú databázu nahor (Ctrl-Up)"
+
 #: src/frontends/qt/ui/BibtexUi.ui:107 src/frontends/qt/ui/CitationUi.ui:188
 msgid "Move the selected citation up (Ctrl-Up)"
 msgstr "Presunúť označenú citáciu nahor (Ctrl-Up)"
@@ -293,6 +297,10 @@ msgstr "Presunúť označenú citáciu nahor (Ctrl-Up)"
 #: src/frontends/qt/ui/ModulesUi.ui:140
 msgid "&Up"
 msgstr "Na&hor"
+
+#: src/frontends/qt/ui/BibtexUi.ui:130
+msgid "Move the selected database down (Ctrl-Down)"
+msgstr "Presunúť označenú databázu nadol (Ctrl-Down)"
 
 #: src/frontends/qt/ui/BibtexUi.ui:130 src/frontends/qt/ui/CitationUi.ui:211
 msgid "Move the selected citation down (Ctrl-Down)"
@@ -2493,6 +2501,10 @@ msgstr "Použiť d&ynamické úvodzovky"
 #: src/frontends/qt/ui/LanguageUi.ui:89
 msgid "&Encoding:"
 msgstr "Kó&dovanie:"
+
+#: src/frontends/qt/ui/LanguageUi.ui:102
+msgid "Select encoding of the generated LaTeX source (LaTeX input encoding)."
+msgstr "Vybrať kódovanie pre vytvorený LaTeX zdroj (LaTeX input encoding)."
 
 #: src/frontends/qt/ui/LanguageUi.ui:116
 msgid "Select Unicode encoding variant."
