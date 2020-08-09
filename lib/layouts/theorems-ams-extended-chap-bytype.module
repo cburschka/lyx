@@ -56,24 +56,31 @@ Counter condition
 End
 Counter note
 	GuiName Note
+	Within         chapter
 End
 Counter notation
 	GuiName Notation
+	Within         chapter
 End
 Counter summary
 	GuiName Summary
+	Within         chapter
 End
 Counter acknowledgement
 	GuiName Acknowledgement
+	Within         chapter
 End
 Counter conclusion
 	GuiName Conclusion
+	Within         chapter
 End
 Counter assumption
 	GuiName Assumption
+	Within         chapter
 End
 Counter question
 	GuiName Question
+	Within         chapter
 End
 
 
