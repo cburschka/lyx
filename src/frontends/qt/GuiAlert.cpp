@@ -75,14 +75,14 @@ docstring toPlainText(docstring const & msg)
 }
 
 
-int doPrompt(docstring const & title0, docstring const & question,
+int doPrompt(docstring const & title, docstring const & question,
 		  int default_button, int cancel_button,
 		  docstring const & b1, docstring const & b2,
 		  docstring const & b3, docstring const & b4)
 {
-	//lyxerr << "PROMPT" << title0 << "FOCUS: " << qApp->focusWidget() << endl;
+	//lyxerr << "PROMPT" << title << "FOCUS: " << qApp->focusWidget() << endl;
 	if (!use_gui || lyxerr.debugging()) {
-		lyxerr << toPlainText(title0) << '\n'
+		lyxerr << toPlainText(title) << '\n'
 		       << "----------------------------------------\n"
 		       << toPlainText(question) << endl;
 
@@ -96,8 +96,6 @@ int doPrompt(docstring const & title0, docstring const & question,
 		if (!use_gui)
 			return default_button;
 	}
-
-	docstring const title = bformat(_("LyX: %1$s"), title0);
 
 	/// Long operation in progress prevents user from Ok-ing the error dialog
 	bool long_op = theApp()->longOperationStarted();
@@ -137,7 +135,7 @@ int doPrompt(docstring const & title0, docstring const & question,
 	return res;
 }
 
-int prompt(docstring const & title0, docstring const & question,
+int prompt(docstring const & title, docstring const & question,
 		  int default_button, int cancel_button,
 		  docstring const & b0, docstring const & b1,
 		  docstring const & b2, docstring const & b3)
@@ -147,21 +145,19 @@ int prompt(docstring const & title0, docstring const & question,
 #else
 	return doPrompt(
 #endif
-				title0, question, default_button,
+				title, question, default_button,
 				cancel_button, b0, b1, b2, b3);
 }
 
-void doWarning(docstring const & title0, docstring const & message,
+void doWarning(docstring const & title, docstring const & message,
 	     bool const & askshowagain)
 {
-	lyxerr << "Warning: " << toPlainText(title0) << '\n'
+	lyxerr << "Warning: " << toPlainText(title) << '\n'
 	       << "----------------------------------------\n"
 	       << toPlainText(message) << endl;
 
 	if (!use_gui)
 		return;
-
-	docstring const title = bformat(_("LyX: %1$s"), title0);
 
 	if (theApp() == 0) {
 		noAppDialog(toqstr(title), toqstr(message), QMessageBox::Warning);
@@ -193,7 +189,7 @@ void doWarning(docstring const & title0, docstring const & message,
 		theApp()->startLongOperation();
 }
 
-void warning(docstring const & title0, docstring const & message,
+void warning(docstring const & title, docstring const & message,
 	     bool const & askshowagain)
 {
 #ifdef EXPORT_in_THREAD
@@ -201,12 +197,12 @@ void warning(docstring const & title0, docstring const & message,
 #else
 	doWarning(
 #endif
-				title0, message, askshowagain);
+				title, message, askshowagain);
 }
 
-void doError(docstring const & title0, docstring const & message, bool backtrace)
+void doError(docstring const & title, docstring const & message, bool backtrace)
 {
-	lyxerr << "Error: " << toPlainText(title0) << '\n'
+	lyxerr << "Error: " << toPlainText(title) << '\n'
 	       << "----------------------------------------\n"
 	       << toPlainText(message) << endl;
 
@@ -216,8 +212,6 @@ void doError(docstring const & title0, docstring const & message, bool backtrace
 
 	if (!use_gui)
 		return;
-
-	docstring const title = bformat(_("LyX: %1$s"), title0);
 
 	if (theApp() == 0) {
 		noAppDialog(toqstr(title), toqstr(message), QMessageBox::Critical);
@@ -243,27 +237,25 @@ void doError(docstring const & title0, docstring const & message, bool backtrace
 		theApp()->startLongOperation();
 }
 
-void error(docstring const & title0, docstring const & message, bool backtrace)
+void error(docstring const & title, docstring const & message, bool backtrace)
 {
 #ifdef EXPORT_in_THREAD
 	InGuiThread<void>().call(&doError,
 #else
 	doError(
 #endif
-				title0, message, backtrace);
+				title, message, backtrace);
 }
 
-void doInformation(docstring const & title0, docstring const & message)
+void doInformation(docstring const & title, docstring const & message)
 {
 	if (!use_gui || lyxerr.debugging())
-		lyxerr << toPlainText(title0) << '\n'
+		lyxerr << toPlainText(title) << '\n'
 		       << "----------------------------------------\n"
 		       << toPlainText(message) << endl;
 
 	if (!use_gui)
 		return;
-
-	docstring const title = bformat(_("LyX: %1$s"), title0);
 
 	if (theApp() == 0) {
 		noAppDialog(toqstr(title), toqstr(message), QMessageBox::Information);
@@ -288,14 +280,14 @@ void doInformation(docstring const & title0, docstring const & message)
 		theApp()->startLongOperation();
 }
 
-void information(docstring const & title0, docstring const & message)
+void information(docstring const & title, docstring const & message)
 {
 #ifdef EXPORT_in_THREAD
 	InGuiThread<void>().call(&doInformation,
 #else
 	doInformation(
 #endif
-				title0, message);
+				title, message);
 }
 
 bool doAskForText(docstring & response, docstring const & msg,
@@ -312,7 +304,7 @@ bool doAskForText(docstring & response, docstring const & msg,
 		}
 	}
 
-	docstring const title = bformat(_("LyX: %1$s"), msg);
+	docstring const title = bformat(_("%1$s"), msg);
 
 	/// Long operation in progress prevents user from Ok-ing the error dialog
 	bool long_op = theApp()->longOperationStarted();

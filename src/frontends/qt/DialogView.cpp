@@ -18,7 +18,7 @@ namespace lyx {
 namespace frontend {
 
 DialogView::DialogView(GuiView & lv, QString const & name, QString const & title)
-	: QDialog(&lv), Dialog(lv, name, "LyX: " + title)
+	: QDialog(&lv), Dialog(lv, name, title)
 {
 	connect(&lv, SIGNAL(bufferViewChanged()),
 	        this, SLOT(onBufferViewChanged()));
