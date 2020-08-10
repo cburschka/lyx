@@ -304,7 +304,7 @@ bool doAskForText(docstring & response, docstring const & msg,
 		}
 	}
 
-	docstring const title = bformat(_("%1$s"), msg);
+	docstring const title = bformat(from_utf8("%1$s"), msg);
 
 	/// Long operation in progress prevents user from Ok-ing the error dialog
 	bool long_op = theApp()->longOperationStarted();
