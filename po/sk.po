@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-08-08 16:52+0200\n"
-"PO-Revision-Date: 2020-08-08 15:18+0000\n"
+"POT-Creation-Date: 2020-08-10 10:20+0200\n"
+"PO-Revision-Date: 2020-08-10 08:24+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -5757,8 +5757,8 @@ msgid "Only non-output items"
 msgstr "Len prvky bez výstupu"
 
 #: src/frontends/qt/ui/ToggleWarningUi.ui:14
-msgid "LyX: Enter text"
-msgstr "LyX: Vložiť text"
+msgid "Enter text"
+msgstr "Vložiť text"
 
 #: src/frontends/qt/ui/ToggleWarningUi.ui:62
 #: src/frontends/qt/GuiProgress.cpp:194
@@ -17222,58 +17222,6 @@ msgstr ""
 "štruktúru dokumentu. To sa dá zmeniť voľbou jedného z 'Teorémy (Číslované "
 "podľa …)' modulu."
 
-#: lib/layouts/theorems-ams-chap-bytype.inc:95
-msgid "Theorem \\thechapter.\\thetheorem."
-msgstr "Teoréma \\thechapter.\\thetheorem."
-
-#: lib/layouts/theorems-ams-chap-bytype.inc:125
-msgid "Corollary \\thechapter.\\thecorollary."
-msgstr "Korolár \\thechapter.\\thecorollary."
-
-#: lib/layouts/theorems-ams-chap-bytype.inc:147
-msgid "Lemma \\thechapter.\\thelemma."
-msgstr "Lemma \\thechapter.\\thelemma."
-
-#: lib/layouts/theorems-ams-chap-bytype.inc:169
-msgid "Proposition \\thechapter.\\theproposition."
-msgstr "Tvrdenie \\thechapter.\\theproposition."
-
-#: lib/layouts/theorems-ams-chap-bytype.inc:191
-msgid "Conjecture \\thechapter.\\theconjecture."
-msgstr "Hypotéza \\thechapter.\\theconjecture."
-
-#: lib/layouts/theorems-ams-chap-bytype.inc:213
-msgid "Fact \\thechapter.\\thefact."
-msgstr "Fakt \\thechapter.\\thefact."
-
-#: lib/layouts/theorems-ams-chap-bytype.inc:235
-msgid "Definition \\thechapter.\\thedefinition."
-msgstr "Definícia \\thechapter.\\thedefinition."
-
-#: lib/layouts/theorems-ams-chap-bytype.inc:264
-msgid "Example \\thechapter.\\theexample."
-msgstr "Príklad \\thechapter.\\theexample."
-
-#: lib/layouts/theorems-ams-chap-bytype.inc:287
-msgid "Problem \\thechapter.\\theproblem."
-msgstr "Problém \\thechapter.\\theproblem."
-
-#: lib/layouts/theorems-ams-chap-bytype.inc:310
-msgid "Exercise \\thechapter.\\theexercise."
-msgstr "Úloha \\thechapter.\\theexercise."
-
-#: lib/layouts/theorems-ams-chap-bytype.inc:333
-msgid "Solution \\thechapter.\\thesolution."
-msgstr "Riešenie \\thechapter.\\thesolution."
-
-#: lib/layouts/theorems-ams-chap-bytype.inc:356
-msgid "Remark \\thechapter.\\theremark."
-msgstr "Pripomienka \\thechapter.\\theremark."
-
-#: lib/layouts/theorems-ams-chap-bytype.inc:388
-msgid "Claim \\thechapter.\\theclaim."
-msgstr "Nárok \\thechapter.\\theclaim."
-
 #: lib/layouts/theorems-ams-chap-bytype.module:2
 msgid "AMS Theorems (Numbered by Type within Chapters)"
 msgstr "AMS teorémy (Číslované podľa typu vnútri kapitol)"
@@ -17521,50 +17469,6 @@ msgstr ""
 "každej novej kapitole (čiže kritérium 1.1, kritérium 1.2, axióma 1.1, "
 "predpoklad 1.1, kritérium 2.1, axióma 2.1, …, oproti kritérium 1.1, "
 "kritérium 1.2, axióma 1.3, predpoklad 1.4, …)"
-
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:81
-msgid "Criterion \\thechapter.\\thecriterion."
-msgstr "Kritérium \\thechapter.\\thecriterion."
-
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:120
-msgid "Algorithm \\thechapter.\\thealgorithm."
-msgstr "Algoritmus \\thechapter.\\thealgorithm."
-
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:159
-msgid "Axiom \\thechapter.\\theaxiom."
-msgstr "Axióma \\thechapter.\\theaxiom."
-
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:198
-msgid "Condition \\thechapter.\\thecondition."
-msgstr "Podmienka \\thechapter.\\thecondition."
-
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:237
-msgid "Note \\thechapter.\\thenote."
-msgstr "Poznámka \\thechapter.\\thenote."
-
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:276
-msgid "Notation \\thechapter.\\thenotation."
-msgstr "Notácia \\thechapter.\\thenotation."
-
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:315
-msgid "Summary \\thechapter.\\thesummary."
-msgstr "Súhrn \\thechapter.\\thesummary."
-
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:355
-msgid "Acknowledgement \\thechapter.\\theacknowledgement."
-msgstr "Poďakovanie \\thechapter.\\theacknowledgement."
-
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:394
-msgid "Conclusion \\thechapter.\\theconclusion."
-msgstr "Záver \\thechapter.\\theconclusion."
-
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:433
-msgid "Assumption \\thechapter.\\theassumption."
-msgstr "Predpoklad \\thechapter.\\theassumption."
-
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:472
-msgid "Question \\thechapter.\\thequestion."
-msgstr "Otázka \\thechapter.\\thequestion."
 
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "AMS Theorems (Extended)"
@@ -30721,13 +30625,6 @@ msgstr "Qt verzia (čas prekladu): %1$s"
 #: src/frontends/qt/GuiAbout.cpp:257
 msgid "About LyX"
 msgstr "O programe LyX"
-
-#: src/frontends/qt/GuiAlert.cpp:100 src/frontends/qt/GuiAlert.cpp:164
-#: src/frontends/qt/GuiAlert.cpp:220 src/frontends/qt/GuiAlert.cpp:266
-#: src/frontends/qt/GuiAlert.cpp:315
-#, c-format
-msgid "LyX: %1$s"
-msgstr "LyX: %1$s"
 
 #: src/frontends/qt/GuiApplication.cpp:650
 msgid "About %1"
