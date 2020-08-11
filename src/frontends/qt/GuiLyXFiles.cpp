@@ -210,9 +210,9 @@ GuiLyXFiles::GuiLyXFiles(GuiView & lv)
 		this, SLOT(slotButtonBox(QAbstractButton *)));
 
 	connect(filesLW, SIGNAL(itemClicked(QTreeWidgetItem *, int)),
-		this, SLOT(changed_adaptor()));
+		this, SLOT(fileSelectionChanged()));
 	connect(filesLW, SIGNAL(itemSelectionChanged()),
-		this, SLOT(changed_adaptor()));
+		this, SLOT(fileSelectionChanged()));
 	connect(filter_, SIGNAL(textEdited(QString)),
 		this, SLOT(filterLabels()));
 	connect(filter_, SIGNAL(rightButtonClicked()),
@@ -252,8 +252,14 @@ bool GuiLyXFiles::translateName() const
 }
 
 
-void GuiLyXFiles::changed_adaptor()
+void GuiLyXFiles::fileSelectionChanged()
 {
+	if (!filesLW->currentItem()
+	    || !filesLW->currentItem()->data(0, Qt::UserRole).toString().endsWith(getSuffix())) {
+		// not a file (probably a header)
+		bc().setValid(false);
+		return;
+	}
 	changed();
 }
 
@@ -277,9 +283,11 @@ void GuiLyXFiles::on_languageCO_activated(int i)
 
 void GuiLyXFiles::on_filesLW_itemDoubleClicked(QTreeWidgetItem * item, int)
 {
-	if (!item->data(0, Qt::UserRole).toString().endsWith(getSuffix()))
+	if (!item || !item->data(0, Qt::UserRole).toString().endsWith(getSuffix())) {
 		// not a file (probably a header)
+		bc().setValid(false);
 		return;
+	}
 
 	applyView();
 	dispatchParams();
@@ -288,10 +296,17 @@ void GuiLyXFiles::on_filesLW_itemDoubleClicked(QTreeWidgetItem * item, int)
 
 void GuiLyXFiles::on_filesLW_itemClicked(QTreeWidgetItem * item, int)
 {
-	QString const data = item->data(0, Qt::UserRole).toString();
-	if (!data.endsWith(getSuffix()))
-		// not a file (probably a header)
+	if (!item) {
+		bc().setValid(false);
 		return;
+	}
+
+	QString const data = item->data(0, Qt::UserRole).toString();
+	if (!data.endsWith(getSuffix())) {
+		// not a file (probably a header)
+		bc().setValid(false);
+		return;
+	}
 
 	languageCO->clear();
 	QMap<QString, QString>::const_iterator i =available_languages_.constBegin();
@@ -512,7 +527,7 @@ void GuiLyXFiles::resetFilter()
 
 QString const GuiLyXFiles::getRealPath(QString relpath)
 {
-	if (relpath.isEmpty())
+	if (relpath.isEmpty() && filesLW->currentItem() != nullptr)
 		relpath = filesLW->currentItem()->data(0, Qt::UserRole).toString();
 	QString const language = languageCO->itemData(languageCO->currentIndex()).toString();
 	if (localizations_.contains(relpath)) {

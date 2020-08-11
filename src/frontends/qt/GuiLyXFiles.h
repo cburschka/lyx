@@ -40,7 +40,7 @@ Q_SIGNALS:
 	void fileSelected(QString const file);
 
 private Q_SLOTS:
-	void changed_adaptor();
+	void fileSelectionChanged();
 	void on_fileTypeCO_activated(int);
 	void on_languageCO_activated(int);
 	void on_filesLW_itemDoubleClicked(QTreeWidgetItem *, int);
