@@ -86,6 +86,9 @@ What's new
 
 - Fix counter in bibliography inset (bug 11920).
 
+- Do not allow editing of math package list in Document > Settings > Math Options,
+  thus preventing a crash (bug 11931).
+
 
 * INTERNALS
 
