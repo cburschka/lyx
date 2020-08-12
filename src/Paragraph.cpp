@@ -1039,7 +1039,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 	// ArabTeX, though, cannot handle this special behavior, it seems.
 	bool arabtex = basefont.language()->lang() == "arabic_arabtex"
 		|| running_font.language()->lang() == "arabic_arabtex";
-	if (open_font && !inset->inheritFont()) {
+	if (open_font && (!inset->inheritFont() || inset->allowMultiPar())) {
 		bool closeLanguage = arabtex
 			|| basefont.isRightToLeft() == running_font.isRightToLeft();
 		unsigned int count = running_font.latexWriteStartChanges(os, bparams,
@@ -2563,14 +2563,14 @@ void Paragraph::latex(BufferParams const & bparams,
 					     && runningChange == change
 					     && change.type == Change::DELETED
 					     && !os.afterParbreak());
-		bool const non_inherit_inset =
-				(c == META_INSET && getInset(i) && !getInset(i)->inheritFont());
+		bool const multipar_inset =
+			(c == META_INSET && getInset(i) && getInset(i)->allowMultiPar());
 
 		// Do we need to close the previous font?
 		if (open_font &&
 		    ((current_font != running_font
 		      || current_font.language() != running_font.language())
-		     || (non_inherit_inset
+		     || (multipar_inset
 			 && (current_font == prev_font
 			     || current_font.language() == prev_font.language()))))
 		{
@@ -2658,7 +2658,7 @@ void Paragraph::latex(BufferParams const & bparams,
 				column += 1;
 			}
 			otexstringstream ots;
-			if (!non_inherit_inset) {
+			if (!multipar_inset) {
 				column += current_font.latexWriteStartChanges(ots, bparams,
 									      runparams, basefont, last_font, false,
 									      needsCProtection(runparams.moving_arg));
@@ -2754,13 +2754,13 @@ void Paragraph::latex(BufferParams const & bparams,
 					}
 				}
 				// We need to restore these after insets with
-				// inheritFont() false
+				// allowMultiPar() true
 				Font const save_running_font = running_font;
 				Font const save_basefont = basefont;
 				d->latexInset(bparams, os, rp, running_font,
 						basefont, real_outerfont, open_font,
 						runningChange, style, i, column);
-				if (non_inherit_inset) {
+				if (multipar_inset) {
 					running_font = save_running_font;
 					basefont = save_basefont;
 				}

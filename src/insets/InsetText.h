@@ -161,7 +161,7 @@ public:
 	///
 	virtual bool isMacroScope() const { return false; }
 	///
-	virtual bool allowMultiPar() const { return getLayout().isMultiPar(); }
+	bool allowMultiPar() const { return getLayout().isMultiPar(); }
 	///
 	bool isInTitle() const { return intitle_context_; }
 	///

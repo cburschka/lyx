@@ -83,6 +83,8 @@ public:
 	void metrics(MetricsInfo &, Dimension &) const;
 	/// Needs to be same as InsetTabular
 	bool inheritFont() const { return false; }
+	/// Can the cell contain several paragraphs?
+	bool allowMultiPar() const { return !isMultiRow && (!isMultiColumn || isFixedWidth); }
 private:
 	/// unimplemented
 	InsetTableCell();
@@ -135,8 +137,6 @@ private:
 	virtual bool forceLocalFontSwitch() const;
 	/// Is the width forced to some value?
 	bool hasFixedWidth() const { return isFixedWidth; }
-	/// Can the cell contain several paragraphs?
-	bool allowMultiPar() const { return !isMultiRow && (!isMultiColumn || isFixedWidth); }
 };
 
 
@@ -978,6 +978,8 @@ public:
 	    be closed before generating this inset. This is needed for
 	    insets that may contain several paragraphs */
 	bool inheritFont() const { return false; }
+	///
+	bool allowMultiPar() const;
 	///
 	bool allowsCaptionVariation(std::string const &) const;
 	//

@@ -4366,6 +4366,18 @@ bool InsetTabular::insetAllowed(InsetCode code) const
 }
 
 
+bool InsetTabular::allowMultiPar() const
+{
+	for (Tabular::col_type c = 0; c < tabular.ncols(); ++c) {
+		for (Tabular::row_type r = 0; r < tabular.nrows(); ++r) {
+			if (tabular.cellInset(r,c)->allowMultiPar())
+				return true;
+		}
+	}
+	return false;
+}
+
+
 bool InsetTabular::allowsCaptionVariation(std::string const & newtype) const
 {
 	return tabular.is_long_tabular &&
