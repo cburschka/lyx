@@ -1044,7 +1044,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 			|| basefont.isRightToLeft() == running_font.isRightToLeft();
 		unsigned int count = running_font.latexWriteStartChanges(os, bparams,
 						      runparams, basefont,
-						      basefont, true);
+						      running_font, true);
 		column += count;
 		// if any font properties were closed, update the running_font,
 		// making sure, however, to leave the language as it was
