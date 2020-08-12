@@ -1027,11 +1027,6 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 		close = true;
 	}
 
-	// FIXME: Bug: we can have an empty font change here!
-	// if there has just been a font change, we are going to close it
-	// right now, which means stupid latex code like \textsf{}. AFAIK,
-	// this does not harm dvi output. A minor bug, thus (JMarc)
-
 	// Some insets cannot be inside a font change command.
 	// However, even such insets *can* be placed in \L or \R
 	// or their equivalents (for RTL language switches), so we don't
