@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-08-10 10:20+0200\n"
-"PO-Revision-Date: 2020-08-10 08:24+0000\n"
+"POT-Creation-Date: 2020-08-12 14:44+0200\n"
+"PO-Revision-Date: 2020-08-12 12:48+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3421,6 +3421,16 @@ msgstr "Na šírk&u"
 #: lib/layouts/multicol.module:3 src/frontends/qt/GuiDocument.cpp:1771
 msgid "Page Layout"
 msgstr "Formát stránky"
+
+#: lib/layouts/customHeadersFooters.module:8
+msgid ""
+"Adds environments to define header and footer lines. NOTE: To use this "
+"module you must set the 'Page style' in the menu Document Settings -> Page "
+"Layout to 'fancy'!"
+msgstr ""
+"Pridáva prostredia na definície riadkov hlavičiek a pätičiek. POZOR: Na "
+"použitie tohto modulu treba nastaviť 'Štýl stránky' v menu Dokument -> "
+"Nastavenia… -> Formát stránky na 'pestrý' (fancy)!"
 
 #: src/frontends/qt/ui/PageLayoutUi.ui:171
 msgid "Page &style:"
@@ -10857,16 +10867,6 @@ msgstr "Čínsky referát (CTeX)"
 #: lib/layouts/customHeadersFooters.module:2
 msgid "Custom Header/Footer Text"
 msgstr "Vlastný text pre hlavičku/pätu"
-
-#: lib/layouts/customHeadersFooters.module:8
-msgid ""
-"Adds environments to define header and footer lines. NOTE: To use this "
-"module you must set the 'Headings style' in the menu Document Settings -> "
-"Page Layout to 'fancy'!"
-msgstr ""
-"Pridáva prostredia na definície riadkov hlavičiek a pätičiek. POZOR: Na "
-"použitie tohto modulu treba nastaviť štýl hlavičky v menu Dokument -> "
-"Nastavenia… -> Formát stránky na 'pestrý' (fancy)!"
 
 #: lib/layouts/customHeadersFooters.module:13
 msgid "Header/Footer"
