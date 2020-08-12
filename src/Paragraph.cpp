@@ -1042,10 +1042,15 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 	if (open_font && (!inset->inheritFont() || inset->allowMultiPar())) {
 		bool closeLanguage = arabtex
 			|| basefont.isRightToLeft() == running_font.isRightToLeft();
+		InsetText const * textinset = inset->asInsetText();
+		bool const cprotect = textinset
+			? textinset->hasCProtectContent(runparams.moving_arg)
+			  && !textinset->text().isMainText()
+			: false;
 		unsigned int count = running_font.latexWriteStartChanges(os, bparams,
 						      runparams, basefont,
 						      running_font, true,
-						      owner_->needsCProtection(runparams.moving_arg));
+						      cprotect);
 		column += count;
 		// if any font properties were closed, update the running_font,
 		// making sure, however, to leave the language as it was
@@ -2659,9 +2664,14 @@ void Paragraph::latex(BufferParams const & bparams,
 			}
 			otexstringstream ots;
 			if (!multipar_inset) {
+				InsetText const * textinset = inInset().asInsetText();
+				bool const cprotect = textinset
+					? textinset->hasCProtectContent(runparams.moving_arg)
+					  && !textinset->text().isMainText()
+					: false;
 				column += current_font.latexWriteStartChanges(ots, bparams,
 									      runparams, basefont, last_font, false,
-									      needsCProtection(runparams.moving_arg));
+									      cprotect);
 			}
 			// Check again for display math in ulem commands as a
 			// font change may also occur just before a math inset.
