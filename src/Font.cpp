@@ -450,8 +450,7 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 				  Font const & base,
 				  Font const & next,
 				  bool & needPar,
-				  bool const & closeLanguage,
-				  bool const & non_inherit_inset) const
+				  bool const & closeLanguage) const
 {
 	int count = 0;
 
@@ -461,15 +460,15 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 	FontInfo f = bits_;
 	f.reduce(base.bits_);
 
-	if (f.family() != INHERIT_FAMILY && !non_inherit_inset) {
+	if (f.family() != INHERIT_FAMILY) {
 		os << '}';
 		++count;
 	}
-	if (f.series() != INHERIT_SERIES && !non_inherit_inset) {
+	if (f.series() != INHERIT_SERIES) {
 		os << '}';
 		++count;
 	}
-	if (f.shape() != INHERIT_SHAPE && !non_inherit_inset) {
+	if (f.shape() != INHERIT_SHAPE) {
 		os << '}';
 		++count;
 	}
@@ -489,15 +488,13 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 		// We do not close size group in front of
 		// insets with InheritFont() false (as opposed
 		// to all other font properties) (#8384)
-		if (!non_inherit_inset) {
-			if (needPar && !closeLanguage) {
-				os << "\\par";
-				count += 4;
-				needPar = false;
-			}
-			os << '}';
-			++count;
+		if (needPar && !closeLanguage) {
+			os << "\\par";
+			count += 4;
+			needPar = false;
 		}
+		os << '}';
+		++count;
 	}
 	if (f.underbar() == FONT_ON) {
 		os << '}';

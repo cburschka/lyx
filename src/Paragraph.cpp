@@ -1040,14 +1040,11 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 	bool arabtex = basefont.language()->lang() == "arabic_arabtex"
 		|| running_font.language()->lang() == "arabic_arabtex";
 	if (open_font && !inset->inheritFont()) {
-		bool needPar = false;
 		bool closeLanguage = arabtex
 			|| basefont.isRightToLeft() == running_font.isRightToLeft();
-		// We pass non_inherit_inset = true here since size switches
-		// ought not to be terminated here (#8384).
-		unsigned int count = running_font.latexWriteEndChanges(os,
-					bparams, runparams, basefont, basefont,
-					needPar, closeLanguage, true);
+		unsigned int count = running_font.latexWriteStartChanges(os, bparams,
+						      runparams, basefont,
+						      basefont, true);
 		column += count;
 		// if any font properties were closed, update the running_font,
 		// making sure, however, to leave the language as it was
@@ -1063,11 +1060,6 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 			basefont.fontInfo().setSize(copy_font.fontInfo().size());
 			basefont.fontInfo().setFamily(copy_font.fontInfo().family());
 			basefont.fontInfo().setSeries(copy_font.fontInfo().series());
-			// leave font open if language or any of the switches is still open
-			open_font = (running_font.language() == basefont.language()
-				     || running_font.fontInfo().size() == basefont.fontInfo().size()
-				     || running_font.fontInfo().family() == basefont.fontInfo().family()
-				     || running_font.fontInfo().series() == basefont.fontInfo().series());
 			if (closeLanguage)
 				runparams.local_font = &basefont;
 		}
@@ -2560,17 +2552,26 @@ void Paragraph::latex(BufferParams const & bparams,
 
 		// Fully instantiated font
 		Font const current_font = getFont(bparams, i, outerfont);
+		// Previous font
+		Font const prev_font = (i > 0) ?
+					getFont(bparams, i - 1, outerfont)
+				      : current_font;
 
 		Font const last_font = running_font;
 		bool const in_ct_deletion = (bparams.output_changes
 					     && runningChange == change
 					     && change.type == Change::DELETED
 					     && !os.afterParbreak());
+		bool const non_inherit_inset =
+				(c == META_INSET && getInset(i) && !getInset(i)->inheritFont());
 
 		// Do we need to close the previous font?
 		if (open_font &&
-		    (current_font != running_font ||
-		     current_font.language() != running_font.language()))
+		    ((current_font != running_font
+		      || current_font.language() != running_font.language())
+		     || (non_inherit_inset
+			 && (current_font == prev_font
+			     || current_font.language() == prev_font.language()))))
 		{
 			// ensure there is no open script-wrapper
 			if (!alien_script.empty()) {
@@ -2656,10 +2657,10 @@ void Paragraph::latex(BufferParams const & bparams,
 				column += 1;
 			}
 			otexstringstream ots;
-			bool const non_inherit_inset = (c == META_INSET && getInset(i) && !getInset(i)->inheritFont());
-			column += current_font.latexWriteStartChanges(ots, bparams,
-							      runparams, basefont,
-							      last_font, non_inherit_inset);
+			if (!non_inherit_inset) {
+				column += current_font.latexWriteStartChanges(ots, bparams,
+									      runparams, basefont, last_font);
+			}
 			// Check again for display math in ulem commands as a
 			// font change may also occur just before a math inset.
 			if (runparams.inDisplayMath && !deleted_display_math
@@ -2750,9 +2751,17 @@ void Paragraph::latex(BufferParams const & bparams,
 						incremented = true;
 					}
 				}
+				// We need to restore these after insets with
+				// inheritFont() false
+				Font const save_running_font = running_font;
+				Font const save_basefont = basefont;
 				d->latexInset(bparams, os, rp, running_font,
 						basefont, real_outerfont, open_font,
 						runningChange, style, i, column);
+				if (non_inherit_inset) {
+					running_font = save_running_font;
+					basefont = save_basefont;
+				}
 				if (incremented)
 					--parInline;
 
