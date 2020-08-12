@@ -45,6 +45,10 @@ private:
 	///
 	Inset * clone() const { return new InsetFoot(*this); }
 	///
+	bool inheritFont() const { return true; }
+	///
+	bool allowMultiPar() const { return true; }
+	///
 	docstring custom_label_;
 	///
 	bool intitle_;
