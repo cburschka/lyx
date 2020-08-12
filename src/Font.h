@@ -76,7 +76,8 @@ public:
 				   OutputParams const & runparams,
 				   Font const & base,
 				   Font const & prev,
-				   bool const & non_inherit_inset = false) const;
+				   bool const & non_inherit_inset = false,
+				   bool const & needs_cprotection = false) const;
 
 	/** Writes the tail of the LaTeX needed to change to this font.
 	    Returns number of chars written. Base is the font state we want

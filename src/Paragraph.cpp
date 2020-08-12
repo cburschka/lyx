@@ -1044,7 +1044,8 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 			|| basefont.isRightToLeft() == running_font.isRightToLeft();
 		unsigned int count = running_font.latexWriteStartChanges(os, bparams,
 						      runparams, basefont,
-						      running_font, true);
+						      running_font, true,
+						      owner_->needsCProtection(runparams.moving_arg));
 		column += count;
 		// if any font properties were closed, update the running_font,
 		// making sure, however, to leave the language as it was
@@ -2659,7 +2660,8 @@ void Paragraph::latex(BufferParams const & bparams,
 			otexstringstream ots;
 			if (!non_inherit_inset) {
 				column += current_font.latexWriteStartChanges(ots, bparams,
-									      runparams, basefont, last_font);
+									      runparams, basefont, last_font, false,
+									      needsCProtection(runparams.moving_arg));
 			}
 			// Check again for display math in ulem commands as a
 			// font change may also occur just before a math inset.

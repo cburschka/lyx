@@ -228,7 +228,8 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 				    OutputParams const & runparams,
 				    Font const & base,
 				    Font const & prev,
-				    bool const & non_inherit_inset) const
+				    bool const & non_inherit_inset,
+				    bool const & needs_cprotection) const
 {
 	int count = 0;
 
@@ -237,13 +238,28 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 	    && language()->lang() != base.language()->lang()
 	    && language() != prev.language()) {
 		if (!language()->polyglossia().empty()) {
-			string tmp = "\\text" + language()->polyglossia();
+			string tmp;
+			if (needs_cprotection) {
+				if (contains(runparams.active_chars, '^'))
+					// cprotect relies on ^ being on catcode 7
+					tmp += "\\begingroup\\catcode`\\^=7";
+				tmp += "\\cprotect";
+			}
+			tmp += "\\text" + language()->polyglossia();
 			if (!language()->polyglossiaOpts().empty()) {
 				tmp += "[" + language()->polyglossiaOpts() + "]";
-				if (runparams.use_hyperref && runparams.moving_arg)
+				if (runparams.use_hyperref && runparams.moving_arg) {
 					// We need to strip the command for
 					// the pdf string, see #11813
-					tmp = "\\texorpdfstring{" + tmp + "}{}";
+					string tmpp;
+					if (needs_cprotection) {
+						if (contains(runparams.active_chars, '^'))
+							// cprotect relies on ^ being on catcode 7
+							os << "\\begingroup\\catcode`\\^=7";
+						tmpp = "\\cprotect";
+					}
+					tmp = tmpp + "\\texorpdfstring{" + tmp + "}{}";
+				}
 			}
 			tmp += "{";
 			os << from_ascii(tmp);
@@ -256,21 +272,56 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 	} else if (language()->babel() != base.language()->babel() &&
 	    language() != prev.language()) {
 		if (language()->lang() == "farsi") {
+			if (needs_cprotection) {
+				if (contains(runparams.active_chars, '^'))
+					// cprotect relies on ^ being on catcode 7
+					os << "\\begingroup\\catcode`\\^=7";
+				os << "\\cprotect";
+				count += 9;
+			}
 			os << "\\textFR{";
 			count += 8;
 		} else if (!isRightToLeft() &&
 			    base.language()->lang() == "farsi") {
+			if (needs_cprotection) {
+				if (contains(runparams.active_chars, '^'))
+					// cprotect relies on ^ being on catcode 7
+					os << "\\begingroup\\catcode`\\^=7";
+				os << "\\cprotect";
+				count += 9;
+			}
 			os << "\\textLR{";
 			count += 8;
 		} else if (language()->lang() == "arabic_arabi") {
+			if (needs_cprotection) {
+				if (contains(runparams.active_chars, '^'))
+					// cprotect relies on ^ being on catcode 7
+					os << "\\begingroup\\catcode`\\^=7";
+				os << "\\cprotect";
+				count += 9;
+			}
 			os << "\\textAR{";
 			count += 8;
  		} else if (!isRightToLeft() &&
 				base.language()->lang() == "arabic_arabi") {
+			if (needs_cprotection) {
+				if (contains(runparams.active_chars, '^'))
+					// cprotect relies on ^ being on catcode 7
+					os << "\\begingroup\\catcode`\\^=7";
+				os << "\\cprotect";
+				count += 9;
+			}
 			os << "\\textLR{";
 			count += 8;
 		// currently the remaining RTL languages are arabic_arabtex and hebrew
 		} else if (isRightToLeft() != prev.isRightToLeft()) {
+			if (needs_cprotection) {
+				if (contains(runparams.active_chars, '^'))
+					// cprotect relies on ^ being on catcode 7
+					os << "\\begingroup\\catcode`\\^=7";
+				os << "\\cprotect";
+				count += 9;
+			}
 			if (isRightToLeft()) {
 				os << "\\R{";
 				count += 3;
@@ -282,6 +333,13 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 			string const tmp =
 				subst(lyxrc.language_command_local,
 				      "$$lang", language()->babel());
+			if (needs_cprotection && !prefixIs(tmp, "\\begin{")) {
+				if (contains(runparams.active_chars, '^'))
+					// cprotect relies on ^ being on catcode 7
+					os << "\\begingroup\\catcode`\\^=7";
+				os << "\\cprotect";
+				count += 9;
+			}
 			os << from_ascii(tmp);
 			count += tmp.length();
 			if (!lyxrc.language_command_end.empty())
@@ -321,6 +379,13 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 			os << '\\' << LaTeXFamilySwitchNames[f.family()] << termcmd;
 			count += strlen(LaTeXFamilySwitchNames[f.family()]) + 1;
 		} else {
+			if (needs_cprotection) {
+				if (contains(runparams.active_chars, '^'))
+					// cprotect relies on ^ being on catcode 7
+					os << "\\begingroup\\catcode`\\^=7";
+				os << "\\cprotect";
+				count += 9;
+			}
 			os << '\\'
 			   << LaTeXFamilyCommandNames[f.family()]
 			   << '{';
@@ -334,6 +399,13 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 			os << '\\' << LaTeXSeriesSwitchNames[f.series()] << termcmd;
 			count += strlen(LaTeXSeriesSwitchNames[f.series()]) + 1;
 		} else {
+			if (needs_cprotection) {
+				if (contains(runparams.active_chars, '^'))
+					// cprotect relies on ^ being on catcode 7
+					os << "\\begingroup\\catcode`\\^=7";
+				os << "\\cprotect";
+				count += 9;
+			}
 			os << '\\'
 			   << LaTeXSeriesCommandNames[f.series()]
 			   << '{';
@@ -347,6 +419,13 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 			os << '\\' << LaTeXShapeSwitchNames[f.shape()] << termcmd;
 			count += strlen(LaTeXShapeSwitchNames[f.shape()]) + 1;
 		} else {
+			if (needs_cprotection) {
+				if (contains(runparams.active_chars, '^'))
+					// cprotect relies on ^ being on catcode 7
+					os << "\\begingroup\\catcode`\\^=7";
+				os << "\\cprotect";
+				count += 9;
+			}
 			os << '\\'
 			   << LaTeXShapeCommandNames[f.shape()]
 			   << '{';
@@ -359,6 +438,13 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 			os << '}';
 			++count;
 		} else if (f.color() != Color_none) {
+			if (needs_cprotection) {
+				if (contains(runparams.active_chars, '^'))
+					// cprotect relies on ^ being on catcode 7
+					os << "\\begingroup\\catcode`\\^=7";
+				os << "\\cprotect";
+				count += 9;
+			}
 			os << "\\textcolor{"
 			   << from_ascii(lcolor.getLaTeXName(f.color()))
 			   << "}{";
@@ -396,11 +482,25 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 		}
 	}
 	if (f.emph() == FONT_ON) {
+		if (needs_cprotection) {
+			if (contains(runparams.active_chars, '^'))
+				// cprotect relies on ^ being on catcode 7
+				os << "\\begingroup\\catcode`\\^=7";
+			os << "\\cprotect";
+			count += 9;
+		}
 		os << "\\emph{";
 		count += 6;
 	}
 	// \noun{} is a LyX special macro
 	if (f.noun() == FONT_ON) {
+		if (needs_cprotection) {
+			if (contains(runparams.active_chars, '^'))
+				// cprotect relies on ^ being on catcode 7
+				os << "\\begingroup\\catcode`\\^=7";
+			os << "\\cprotect";
+			count += 9;
+		}
 		os << "\\noun{";
 		count += 6;
 	}
@@ -408,23 +508,51 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 	// because ulem puts every nested group or macro in a box,
 	// which prevents linebreaks (#8424, #8733)
 	if (f.underbar() == FONT_ON) {
+		if (needs_cprotection) {
+			if (contains(runparams.active_chars, '^'))
+				// cprotect relies on ^ being on catcode 7
+				os << "\\begingroup\\catcode`\\^=7";
+			os << "\\cprotect";
+			count += 9;
+		}
 		os << "\\uline{";
-		count += 10;
+		count += 7;
 		++runparams.inulemcmd;
 	}
 	if (f.uuline() == FONT_ON) {
+		if (needs_cprotection) {
+			if (contains(runparams.active_chars, '^'))
+				// cprotect relies on ^ being on catcode 7
+				os << "\\begingroup\\catcode`\\^=7";
+			os << "\\cprotect";
+			count += 9;
+		}
 		os << "\\uuline{";
-		count += 11;
+		count += 8;
 		++runparams.inulemcmd;
 	}
 	if (f.strikeout() == FONT_ON) {
+		if (needs_cprotection) {
+			if (contains(runparams.active_chars, '^'))
+				// cprotect relies on ^ being on catcode 7
+				os << "\\begingroup\\catcode`\\^=7";
+			os << "\\cprotect";
+			count += 9;
+		}
 		os << "\\sout{";
-		count += 9;
+		count += 6;
 		++runparams.inulemcmd;
 	}
 	if (f.xout() == FONT_ON) {
+		if (needs_cprotection) {
+			if (contains(runparams.active_chars, '^'))
+				// cprotect relies on ^ being on catcode 7
+				os << "\\begingroup\\catcode`\\^=7";
+			os << "\\cprotect";
+			count += 9;
+		}
 		os << "\\xout{";
-		count += 9;
+		count += 6;
 		++runparams.inulemcmd;
 	}
 	if (f.uwave() == FONT_ON) {
@@ -434,8 +562,15 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 			os << "\\ULdepth=1000pt";
 			count += 15;
 		}
+		if (needs_cprotection) {
+			if (contains(runparams.active_chars, '^'))
+				// cprotect relies on ^ being on catcode 7
+				os << "\\begingroup\\catcode`\\^=7";
+			os << "\\cprotect";
+			count += 9;
+		}
 		os << "\\uwave{";
-		count += 10;
+		count += 7;
 		++runparams.inulemcmd;
 	}
 	return count;
