@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "GuiAbout.h"
+#include "GuiApplication.h"
 
 #include "ui_AboutUi.h"
 
@@ -22,6 +23,7 @@
 #include "support/lstrings.h"
 #include "support/Package.h"
 
+#include <QClipboard>
 #include <QDate>
 #include <QFile>
 #include <QTextStream>
@@ -196,6 +198,33 @@ static QString disclaimer()
 }
 
 
+static QString buildinfo()
+{
+	QString res;
+	QTextStream out(&res);
+	out << "LyX " << lyx_version
+		<< " (" << lyx_release_date << ")" << endl;
+	if (std::string(lyx_git_commit_hash) != "none")
+		out << qt_("  Git commit hash ")
+		    << QString(lyx_git_commit_hash).left(8) << endl;
+
+	out << lyx_version_info << endl;
+	return res;
+}
+
+
+static QString dirLibrary()
+{
+	return toqstr(makeDisplayPath(package().system_support().absFileName()));
+}
+
+
+static QString dirUser()
+{
+	return toqstr(makeDisplayPath(package().user_support().absFileName()));
+}
+
+
 static QString version()
 {
 	QString loc_release_date;
@@ -216,33 +245,12 @@ static QString version()
 	if (std::string(lyx_git_commit_hash) != "none")
 		version_date += _("Built from git commit hash ")
 			+ from_utf8(lyx_git_commit_hash).substr(0,8);
-	version_date += "\n";
 
 	QString res;
 	QTextStream out(&res);
-	out << toqstr(version_date);
-	out << qt_("Library directory: ");
-	out << toqstr(makeDisplayPath(package().system_support().absFileName()));
-	out << "\n";
-	out << qt_("User directory: ");
-	out << toqstr(makeDisplayPath(package().user_support().absFileName()));
-	out << "\n";
+	out << toqstr(version_date) << "\n";
 	out << toqstr(bformat(_("Qt Version (run-time): %1$s"), from_ascii(qVersion()))) << "\n";
-	out << toqstr(bformat(_("Qt Version (compile-time): %1$s"), from_ascii(QT_VERSION_STR))) << "\n";
-	return res;
-}
-
-static QString buildinfo()
-{
-	QString res;
-	QTextStream out(&res);
-	out << "LyX " << lyx_version
-		<< " (" << lyx_release_date << ")" << endl;
-	if (std::string(lyx_git_commit_hash) != "none")
-		out << qt_("  Git commit hash ")
-		    << QString(lyx_git_commit_hash).left(8) << endl;
-
-	out << lyx_version_info << endl;
+	out << toqstr(bformat(_("Qt Version (compile-time): %1$s"), from_ascii(QT_VERSION_STR)));
 	return res;
 }
 
@@ -252,12 +260,33 @@ struct GuiAbout::Private
 	Ui::AboutUi ui;
 };
 
+void GuiAbout::on_showDirLibraryPB_clicked()
+{
+	showDirectory(package().system_support());
+}
+
+
+void GuiAbout::on_showDirUserPB_clicked()
+{
+	showDirectory(package().user_support());
+}
+
+
+void GuiAbout::on_versionCopyPB_clicked()
+{
+	QClipboard *clipboard = QGuiApplication::clipboard();
+	clipboard->setText(version());
+}
+
 
 GuiAbout::GuiAbout(GuiView & lv)
 	: DialogView(lv, "aboutlyx", qt_("About LyX")),
 	d(new GuiAbout::Private)
 {
 	d->ui.setupUi(this);
+
+	// fix height to minimum
+	setFixedHeight(sizeHint().height());
 
 	d->ui.copyrightTB->setPlainText(copyright());
 	d->ui.copyrightTB->append(QString());
@@ -266,6 +295,8 @@ GuiAbout::GuiAbout(GuiView & lv)
 	d->ui.copyrightTB->append(disclaimer());
 
 	d->ui.versionLA->setText(version());
+	d->ui.dirLibraryLA->setText(dirLibrary());
+	d->ui.dirUserLA->setText(dirUser());
 	d->ui.buildinfoTB->setText(buildinfo());
 	d->ui.releasenotesTB->setHtml(release_notes());
 	d->ui.releasenotesTB->setOpenExternalLinks(true);

@@ -99,6 +99,8 @@ void setSectionResizeMode(QHeaderView * view,
     int logicalIndex, QHeaderView::ResizeMode mode);
 void setSectionResizeMode(QHeaderView * view,
 	QHeaderView::ResizeMode mode);
+/// Shows a directory in OSs file browser
+void showDirectory(support::FileName const & directory);
 
 } // namespace frontend
 

@@ -38,6 +38,8 @@
 #include <QApplication>
 #include <QCheckBox>
 #include <QComboBox>
+#include <QDesktopServices>
+#include <QDir>
 #include <QLineEdit>
 #include <QLocale>
 #include <QPalette>
@@ -274,6 +276,21 @@ void setSectionResizeMode(QHeaderView * view, QHeaderView::ResizeMode mode) {
 #else
 	view->setResizeMode(mode);
 #endif
+}
+
+void showDirectory(FileName const & directory)
+{
+	if (!directory.exists())
+		return;
+	QUrl qurl(QUrl::fromLocalFile(QDir::toNativeSeparators(toqstr(directory.absFileName()))));
+	// Give hints in case of bugs
+	if (!qurl.isValid()) {
+		LYXERR0("QUrl is invalid!");
+		return;
+
+	}
+	if (!QDesktopServices::openUrl(qurl))
+		LYXERR0("Unable to open QUrl even though dir exists!");
 }
 } // namespace frontend
 

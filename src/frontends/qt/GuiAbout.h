@@ -27,6 +27,9 @@ public:
 
 private Q_SLOTS:
 	void on_buttonBox_rejected();
+	void on_showDirLibraryPB_clicked();
+	void on_showDirUserPB_clicked();
+	void on_versionCopyPB_clicked();
 
 private:
 	/// Controller stuff
