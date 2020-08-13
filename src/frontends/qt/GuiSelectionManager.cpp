@@ -418,6 +418,10 @@ bool GuiSelectionManager::eventFilter(QObject * obj, QEvent * event)
 				return true;
 			}
 			else if (keyPressed == Qt::Key_Right) {
+				QModelIndex const idx = availableLV->currentIndex();
+				if (availableLV->model()->hasChildren(idx)) { // skip for headers
+					return false;
+				}
 				focusAndHighlight(selectedLV);
 				event->accept();
 				return true;
