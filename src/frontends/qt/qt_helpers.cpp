@@ -47,6 +47,7 @@
 #include <QTextLayout>
 #include <QTextDocument>
 #include <QToolTip>
+#include <QUrl>
 
 #include <algorithm>
 #include <fstream>
