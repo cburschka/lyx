@@ -274,8 +274,7 @@ void GuiAbout::on_showDirUserPB_clicked()
 
 void GuiAbout::on_versionCopyPB_clicked()
 {
-	QClipboard *clipboard = QGuiApplication::clipboard();
-	clipboard->setText(version());
+	qApp->clipboard()->setText(version());
 }
 
 
