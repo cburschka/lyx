@@ -122,7 +122,6 @@ GuiLog::GuiLog(GuiView & lv)
 		this, SLOT(slotButtonBox(QAbstractButton *)));
 	connect(updatePB, SIGNAL(clicked()), this, SLOT(updateContents()));
 	connect(findPB, SIGNAL(clicked()), this, SLOT(find()));
-	// FIXME: find via returnPressed() does not work!
 	connect(findLE, SIGNAL(returnPressed()), this, SLOT(find()));
 	connect(logTypeCO, SIGNAL(activated(int)),
 		this, SLOT(typeChanged(int)));
@@ -134,6 +133,9 @@ GuiLog::GuiLog(GuiView & lv)
 
 	logTB->setReadOnly(true);
 	logTB->setFont(guiApp->typewriterSystemFont());
+
+	QPushButton * closePB = buttonBox->button(QDialogButtonBox::Close);
+	closePB->setAutoDefault(false);
 }
 
 
