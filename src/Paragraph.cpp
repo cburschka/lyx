@@ -1067,9 +1067,10 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 			? textinset->hasCProtectContent(runparams.moving_arg)
 			  && !textinset->text().isMainText()
 			: false;
+		bool const multipar_inset = inset->allowMultiPar();
 		unsigned int count2 = running_font.latexWriteStartChanges(os, bparams,
 						      runparams, basefont,
-						      running_font, true,
+						      running_font, multipar_inset,
 						      cprotect);
 		column += count2;
 		// Update the running_font, making sure, however,
@@ -2413,10 +2414,11 @@ void Paragraph::latex(BufferParams const & bparams,
 	pos_type body_pos = beginOfBody();
 	unsigned int column = 0;
 
-	// If we are inside an non inheritFont() inset, the real outerfont is local_font
-	Font const real_outerfont = (!inInset().inheritFont()
-				     && runparams.local_font != nullptr)
-			? Font(runparams.local_font->fontInfo()) : outerfont;
+	Font real_outerfont = outerfont;
+	// If we are inside an non inheritFont() inset, the real main
+	// properties of the outerfont are those of the local_font
+	if (!inInset().inheritFont() && runparams.local_font != nullptr)
+		real_outerfont.setProperties(runparams.local_font->fontInfo());
 
 	if (body_pos > 0) {
 		// the optional argument is kept in curly brackets in
@@ -2463,6 +2465,8 @@ void Paragraph::latex(BufferParams const & bparams,
 	// Yes if greater than 0. This has to be static.
 	THREAD_LOCAL_STATIC int parInline = 0;
 
+	bool multipar_inset = false;
+
 	for (pos_type i = 0; i < size(); ++i) {
 		// First char in paragraph or after label?
 		if (i == body_pos) {
@@ -2471,7 +2475,8 @@ void Paragraph::latex(BufferParams const & bparams,
 					bool needPar = false;
 					column += running_font.latexWriteEndChanges(
 						os, bparams, runparams,
-						basefont, basefont, needPar);
+						basefont, basefont, needPar,
+						multipar_inset);
 					open_font = false;
 				}
 				basefont = getLayoutFont(bparams, real_outerfont);
@@ -2538,7 +2543,7 @@ void Paragraph::latex(BufferParams const & bparams,
 					bool needPar = false;
 					column += running_font.latexWriteEndChanges(
 						os, bparams, rp, basefont,
-						basefont, needPar);
+						basefont, needPar, multipar_inset);
 					open_font = false;
 				}
 				basefont = (body_pos > i) ? getLabelFont(bparams, real_outerfont)
@@ -2559,7 +2564,8 @@ void Paragraph::latex(BufferParams const & bparams,
 				bool needPar = false;
 				column += running_font.latexWriteEndChanges(
 						os, bparams, runparams,
-						basefont, basefont, needPar);
+						basefont, basefont, needPar,
+						multipar_inset);
 				open_font = false;
 			}
 			basefont = (body_pos > i) ? getLabelFont(bparams, real_outerfont)
@@ -2590,7 +2596,7 @@ void Paragraph::latex(BufferParams const & bparams,
 					     && runningChange == change
 					     && change.type == Change::DELETED
 					     && !os.afterParbreak());
-		bool const multipar_inset =
+		multipar_inset =
 			(c == META_INSET && getInset(i) && getInset(i)->allowMultiPar());
 
 		// Do we need to close the previous font?
@@ -2617,7 +2623,7 @@ void Paragraph::latex(BufferParams const & bparams,
 			column += running_font.latexWriteEndChanges(
 				    os, bparams, runparams, basefont,
 				    (i == body_pos-1) ? basefont : current_font,
-				    needPar);
+				    needPar, multipar_inset);
 			if (in_ct_deletion) {
 				// We have to close and then reopen \lyxdeleted,
 				// as strikeout needs to be on lowest level.
@@ -2680,7 +2686,7 @@ void Paragraph::latex(BufferParams const & bparams,
 				OutputParams rp = runparams;
 				column += running_font.latexWriteEndChanges(
 					os, bparams, rp, basefont,
-					basefont, needPar);
+					basefont, needPar, multipar_inset);
 				os << '}';
 				column += 1;
 			}
@@ -2785,16 +2791,16 @@ void Paragraph::latex(BufferParams const & bparams,
 						incremented = true;
 					}
 				}
-				// We need to restore these after insets with
-				// allowMultiPar() true
-				Font const save_running_font = running_font;
-				Font const save_basefont = basefont;
+				// We need to restore the main properties of
+				// these fonts after allowMultiPar() insets
+				FontInfo const running_font_info = running_font.fontInfo();
+				FontInfo const basefont_info = basefont.fontInfo();
 				d->latexInset(bparams, os, rp, running_font,
 						basefont, real_outerfont, open_font,
 						runningChange, style, i, column);
 				if (multipar_inset) {
-					running_font = save_running_font;
-					basefont = save_basefont;
+					running_font.setProperties(running_font_info);
+					basefont.setProperties(basefont_info);
 				}
 				if (incremented)
 					--parInline;
@@ -2917,7 +2923,7 @@ void Paragraph::latex(BufferParams const & bparams,
 //FIXME: there as we start another \selectlanguage with the next paragraph if
 //FIXME: we are in need of this. This should be fixed sometime (Jug)
 		running_font.latexWriteEndChanges(os, bparams, runparams,
-				basefont, basefont, needPar);
+				basefont, basefont, needPar, multipar_inset);
 #endif
 		if (needPar) {
 			// The \par could not be inserted at the same nesting

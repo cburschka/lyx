@@ -112,6 +112,15 @@ void Font::setLanguage(Language const * l)
 }
 
 
+void Font::setProperties(FontInfo const & f)
+{
+	bits_.setFamily(f.family());
+	bits_.setSeries(f.series());
+	bits_.setShape(f.shape());
+	bits_.setSize(f.size());
+}
+
+
 /// Updates font settings according to request
 void Font::update(Font const & newfont,
 		     Language const * document_language,
@@ -228,7 +237,7 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 				    OutputParams const & runparams,
 				    Font const & base,
 				    Font const & prev,
-				    bool const & non_inherit_inset,
+				    bool const & multipar_inset,
 				    bool const & needs_cprotection) const
 {
 	int count = 0;
@@ -343,7 +352,7 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 		count += strlen(LaTeXSizeSwitchNames[f.size()]) + 1;
 	}
 	if (f.family() != INHERIT_FAMILY) {
-		if (non_inherit_inset) {
+		if (multipar_inset) {
 			os << '{';
 			++count;
 			os << '\\' << LaTeXFamilySwitchNames[f.family()] << termcmd;
@@ -360,7 +369,7 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 		}
 	}
 	if (f.series() != INHERIT_SERIES) {
-		if (non_inherit_inset) {
+		if (multipar_inset) {
 			os << '{';
 			++count;
 			os << '\\' << LaTeXSeriesSwitchNames[f.series()] << termcmd;
@@ -377,7 +386,7 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 		}
 	}
 	if (f.shape() != INHERIT_SHAPE) {
-		if (non_inherit_inset) {
+		if (multipar_inset) {
 			os << '{';
 			++count;
 			os << '\\' << LaTeXShapeSwitchNames[f.shape()] << termcmd;
@@ -393,7 +402,7 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 			count += strlen(LaTeXShapeCommandNames[f.shape()]) + 2;
 		}
 	}
-	if (f.color() != Color_inherit && f.color() != Color_ignore) {
+	if (f.color() != Color_inherit && f.color() != Color_ignore && !multipar_inset) {
 		if (f.color() == Color_none && p.color() != Color_none) {
 			// Color none: Close previous color, if any
 			os << '}';
@@ -439,7 +448,7 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 			count += 9;
 		}
 	}
-	if (f.emph() == FONT_ON) {
+	if (f.emph() == FONT_ON && !multipar_inset) {
 		if (needs_cprotection) {
 			os << "\\cprotect";
 			count += 9;
@@ -448,7 +457,7 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 		count += 6;
 	}
 	// \noun{} is a LyX special macro
-	if (f.noun() == FONT_ON) {
+	if (f.noun() == FONT_ON && !multipar_inset) {
 		if (needs_cprotection) {
 			os << "\\cprotect";
 			count += 9;
@@ -459,7 +468,7 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 	// The ulem commands need to be on the deepest nesting level
 	// because ulem puts every nested group or macro in a box,
 	// which prevents linebreaks (#8424, #8733)
-	if (f.underbar() == FONT_ON) {
+	if (f.underbar() == FONT_ON && !multipar_inset) {
 		if (needs_cprotection) {
 			os << "\\cprotect";
 			count += 9;
@@ -468,7 +477,7 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 		count += 7;
 		++runparams.inulemcmd;
 	}
-	if (f.uuline() == FONT_ON) {
+	if (f.uuline() == FONT_ON && !multipar_inset) {
 		if (needs_cprotection) {
 			os << "\\cprotect";
 			count += 9;
@@ -477,7 +486,7 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 		count += 8;
 		++runparams.inulemcmd;
 	}
-	if (f.strikeout() == FONT_ON) {
+	if (f.strikeout() == FONT_ON && !multipar_inset) {
 		if (needs_cprotection) {
 			os << "\\cprotect";
 			count += 9;
@@ -486,7 +495,7 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 		count += 6;
 		++runparams.inulemcmd;
 	}
-	if (f.xout() == FONT_ON) {
+	if (f.xout() == FONT_ON && !multipar_inset) {
 		if (needs_cprotection) {
 			os << "\\cprotect";
 			count += 9;
@@ -495,7 +504,7 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 		count += 6;
 		++runparams.inulemcmd;
 	}
-	if (f.uwave() == FONT_ON) {
+	if (f.uwave() == FONT_ON && !multipar_inset) {
 		if (runparams.inulemcmd) {
 			// needed with nested uwave in xout
 			// see https://tex.stackexchange.com/a/263042
@@ -522,7 +531,8 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 				  Font const & base,
 				  Font const & next,
 				  bool & needPar,
-				  bool const & closeLanguage) const
+				  bool const & closeLanguage,
+				  bool const & multipar_inset) const
 {
 	int count = 0;
 
@@ -532,15 +542,15 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 	FontInfo f = bits_;
 	f.reduce(base.bits_);
 
-	if (f.family() != INHERIT_FAMILY) {
+	if (f.family() != INHERIT_FAMILY && !multipar_inset) {
 		os << '}';
 		++count;
 	}
-	if (f.series() != INHERIT_SERIES) {
+	if (f.series() != INHERIT_SERIES && !multipar_inset) {
 		os << '}';
 		++count;
 	}
-	if (f.shape() != INHERIT_SHAPE) {
+	if (f.shape() != INHERIT_SHAPE && !multipar_inset) {
 		os << '}';
 		++count;
 	}
@@ -558,15 +568,17 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 	}
 	if (f.size() != INHERIT_SIZE) {
 		// We do not close size group in front of
-		// insets with InheritFont() false (as opposed
+		// insets with allowMultiPar() true (as opposed
 		// to all other font properties) (#8384)
-		if (needPar && !closeLanguage) {
-			os << "\\par";
-			count += 4;
-			needPar = false;
+		if (!multipar_inset) {
+			if (needPar && !closeLanguage) {
+				os << "\\par";
+				count += 4;
+				needPar = false;
+			}
+			os << '}';
+			++count;
 		}
-		os << '}';
-		++count;
 	}
 	if (f.underbar() == FONT_ON) {
 		os << '}';
