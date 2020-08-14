@@ -4503,7 +4503,18 @@ Language * Paragraph::Private::locateSpellRange(
 	while (last < to && samelang && sameinset) {
 		// hop to end of word
 		while (last < to && !owner_->isWordSeparator(last)) {
-			if (owner_->getInset(last)) {
+			Inset const * inset = owner_->getInset(last);
+			if (inset && inset->lyxCode() == SPECIALCHAR_CODE) {
+				// check for "invisible" letters such as ligature breaks
+				odocstringstream os;
+				inset->toString(os);
+				if (os.str().length() != 0) {
+					// avoid spell check of visible special char insets
+					// stop the loop in front of the special char inset
+					sameinset = false;
+					break;
+				}
+			} else if (inset) {
 				appendSkipPosition(skips, last);
 			} else if (owner_->isDeleted(last)) {
 				appendSkipPosition(skips, last);
