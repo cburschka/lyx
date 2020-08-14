@@ -126,6 +126,8 @@ private:
 	TagDeque pending_tags_;
 	///
 	TagDeque tag_stack_;
+public:
+	bool pending_tags_empty() { return pending_tags_.empty();};
 };
 
 namespace xml {

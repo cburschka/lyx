@@ -176,8 +176,16 @@ void InsetNewline::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
 	if (runparams.docbook_in_par) {
 		xs.closeFontTags();
-		xs << xml::EndTag("para");
-		xs << xml::StartTag("para");
+		if (!xs.pending_tags_empty()) {
+			xs << xml::EndTag("para");
+			xs << xml::StartTag("para");
+		}
+		else {
+			xs << xml::CR() << xml::CompTag("br") << xml::CR();
+		}
+	}
+	else {
+		xs << xml::CR() << xml::CompTag("br") << xml::CR();
 	}
 }
 
