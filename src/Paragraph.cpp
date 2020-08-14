@@ -1027,43 +1027,66 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 		close = true;
 	}
 
-	// Some insets cannot be inside a font change command.
-	// However, even such insets *can* be placed in \L or \R
-	// or their equivalents (for RTL language switches), so we don't
-	// close the language in those cases.
-	// ArabTeX, though, cannot handle this special behavior, it seems.
-	bool arabtex = basefont.language()->lang() == "arabic_arabtex"
-		|| running_font.language()->lang() == "arabic_arabtex";
 	if (open_font && (!inset->inheritFont() || inset->allowMultiPar())) {
+		// Some insets cannot be inside a font change command.
+		// However, even such insets *can* be placed in \L or \R
+		// or their equivalents (for RTL language switches), so we don't
+		// close the language in those cases.
+		// ArabTeX, though, cannot handle this special behavior, it seems.
+		bool arabtex = basefont.language()->lang() == "arabic_arabtex"
+			|| running_font.language()->lang() == "arabic_arabtex";
 		bool closeLanguage = arabtex
 			|| basefont.isRightToLeft() == running_font.isRightToLeft();
+		bool lang_closed = false;
+		bool lang_switched_at_inset = false;
+		// Close language if needed
+		if (closeLanguage) {
+			// We need prev_font here as language changes directly at inset
+			// will only be started inside the inset.
+			Font const prev_font = (i > 0) ?
+						owner_->getFont(bparams, i - 1, outerfont)
+					      : running_font;
+			Font tmpfont(basefont);
+			tmpfont.setLanguage(prev_font.language());
+			bool needPar = false;
+			unsigned int count = tmpfont.latexWriteEndChanges(os, bparams, runparams,
+									  basefont, basefont,
+									  needPar, closeLanguage);
+			column += count;
+			lang_closed = count > 0;
+			lang_switched_at_inset = prev_font.language() != running_font.language();
+		}
+		// Now re-do font changes in a way needed here
+		// (using switches with multi-par insets)
 		InsetText const * textinset = inset->asInsetText();
 		bool const cprotect = textinset
 			? textinset->hasCProtectContent(runparams.moving_arg)
 			  && !textinset->text().isMainText()
 			: false;
-		unsigned int count = running_font.latexWriteStartChanges(os, bparams,
+		unsigned int count2 = running_font.latexWriteStartChanges(os, bparams,
 						      runparams, basefont,
 						      running_font, true,
 						      cprotect);
-		column += count;
-		// if any font properties were closed, update the running_font,
-		// making sure, however, to leave the language as it was
-		if (count > 0) {
-			// FIXME: probably a better way to keep track of the old
-			// language, than copying the entire font?
-			Font const copy_font(running_font);
-			basefont = owner_->getLayoutFont(bparams, outerfont);
-			running_font = basefont;
-			if (!closeLanguage)
-				running_font.setLanguage(copy_font.language());
-			// For these, we use switches, so no need to close
-			basefont.fontInfo().setSize(copy_font.fontInfo().size());
-			basefont.fontInfo().setFamily(copy_font.fontInfo().family());
-			basefont.fontInfo().setSeries(copy_font.fontInfo().series());
-			if (closeLanguage)
-				runparams.local_font = &basefont;
-		}
+		column += count2;
+		// Update the running_font, making sure, however,
+		// to leave the language as it was.
+		// FIXME: probably a better way to keep track of the old
+		// language, than copying the entire font?
+		Font const copy_font(running_font);
+		basefont = owner_->getLayoutFont(bparams, outerfont);
+		running_font = basefont;
+		if (!closeLanguage)
+			running_font.setLanguage(copy_font.language());
+		// For these, we use switches, so they should be taken as
+		// base inside the inset.
+		basefont.fontInfo().setSize(copy_font.fontInfo().size());
+		basefont.fontInfo().setFamily(copy_font.fontInfo().family());
+		basefont.fontInfo().setSeries(copy_font.fontInfo().series());
+		if (count2 == 0 && (lang_closed || lang_switched_at_inset))
+			// All fonts closed
+			open_font = false;
+		if (closeLanguage)
+			runparams.local_font = &basefont;
 	}
 
 	size_t const previous_row_count = os.texrow().rows();
