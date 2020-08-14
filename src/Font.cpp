@@ -310,10 +310,6 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 			string const tmp =
 				subst(lyxrc.language_command_local,
 				      "$$lang", language()->babel());
-			if (needs_cprotection && !prefixIs(tmp, "\\begin{")) {
-				os << "\\cprotect";
-				count += 9;
-			}
 			os << from_ascii(tmp);
 			count += tmp.length();
 			if (!lyxrc.language_command_end.empty())
