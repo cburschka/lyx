@@ -47,8 +47,6 @@ public:
 	bool isVisibleRightToLeft() const;
 	///
 	void setLanguage(Language const * l);
-	///
-	void setProperties(FontInfo const & f);
 
 	/// Returns size of font in LaTeX text notation
 	std::string const latexSize() const;
@@ -90,8 +88,7 @@ public:
 				 Font const & base,
 				 Font const & next,
 				 bool & needPar,
-				 bool const & closeLanguage = true,
-				 bool const & multipar_inset = false) const;
+				 bool const & closeLanguage = true) const;
 
 
 	/// Build GUI description of font state
