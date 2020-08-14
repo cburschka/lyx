@@ -12,6 +12,9 @@
 #include <config.h>
 #include "InsetHyperlink.h"
 
+#include <QtGui/QDesktopServices>
+#include <QUrl>
+
 #include "Buffer.h"
 #include "DispatchResult.h"
 #include "Encoding.h"
@@ -30,6 +33,7 @@
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/qstring_helpers.h"
 
 #include "frontends/alert.h"
 
@@ -106,9 +110,13 @@ bool InsetHyperlink::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action()) {
-	case LFUN_INSET_EDIT:
-		flag.setEnabled(getParam("type").empty() || getParam("type") == "file:");
+	case LFUN_INSET_EDIT: {
+		QUrl url(toqstr(getParam("target")),QUrl::StrictMode);
+		bool url_valid = getParam("type").empty() && url.isValid();
+
+		flag.setEnabled(url_valid || getParam("type") == "file:");
 		return true;
+		}
 
 	default:
 		return InsetCommand::getStatus(cur, cmd, flag);
@@ -118,7 +126,12 @@ bool InsetHyperlink::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetHyperlink::viewTarget() const
 {
-	if (getParam("type") == "file:") {
+	if (getParam("type").empty()) { //==Web
+		QUrl url(toqstr(getParam("target")),QUrl::StrictMode);
+		if (!QDesktopServices::openUrl(url))
+			LYXERR0("Unable to open URL!");
+
+	} else if (getParam("type") == "file:") {
 		FileName url = makeAbsPath(to_utf8(getParam("target")), buffer().filePath());
 		string const format = theFormats().getFormatFromFile(url);
 		theFormats().view(buffer(), url, format);
