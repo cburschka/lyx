@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-08-10 10:00+0200\n"
-"PO-Revision-Date: 2020-08-10 10:02+0200\n"
+"POT-Creation-Date: 2020-08-15 13:11+0200\n"
+"PO-Revision-Date: 2020-08-15 13:14+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -109,26 +109,39 @@ msgstr ""
 msgid "Version"
 msgstr "Version"
 
-#: src/frontends/qt/ui/AboutUi.ui:69
-msgid "Version goes here"
-msgstr "Die Versionsnummer kommt hierher"
+#: src/frontends/qt/ui/AboutUi.ui:95
+msgid "Library directory"
+msgstr "Systemverzeichnis"
 
-#: src/frontends/qt/ui/AboutUi.ui:86
+#: src/frontends/qt/ui/AboutUi.ui:132 src/frontends/qt/ui/AboutUi.ui:173
+#: src/frontends/qt/GuiApplication.cpp:659
+msgid "Open"
+msgstr "Öffnen"
+
+#: src/frontends/qt/ui/AboutUi.ui:142
+msgid "User directory"
+msgstr "Benutzerverzeichnis"
+
+#: src/frontends/qt/ui/AboutUi.ui:187
 msgid "Credits"
 msgstr "Mitwirkende"
 
-#: src/frontends/qt/ui/AboutUi.ui:111 lib/layouts/apa.layout:205
+#: src/frontends/qt/ui/AboutUi.ui:212 lib/layouts/apa.layout:205
 #: lib/layouts/apax.inc:314
 msgid "Copyright"
 msgstr "Urheberrecht"
 
-#: src/frontends/qt/ui/AboutUi.ui:136
+#: src/frontends/qt/ui/AboutUi.ui:237
 msgid "Build Info"
 msgstr "Erstellung"
 
-#: src/frontends/qt/ui/AboutUi.ui:161
+#: src/frontends/qt/ui/AboutUi.ui:262
 msgid "Release Notes"
 msgstr "Versionshinweise"
+
+#: src/frontends/qt/ui/AboutUi.ui:307
+msgid "Copy Version Info"
+msgstr "Versionsinformationen kopieren"
 
 #: src/frontends/qt/ui/BibitemUi.ui:26 src/frontends/qt/ui/BibitemUi.ui:45
 msgid "The bibliography key"
@@ -1672,7 +1685,7 @@ msgstr "&Groß-/Kleinschreibung beachten"
 msgid "Find next occurrence [Enter]"
 msgstr "Nächster Treffer [Eingabe]"
 
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:150
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:150 src/frontends/qt/ui/LogUi.ui:118
 #: src/frontends/qt/ui/SearchUi.ui:105
 msgid "Find &Next"
 msgstr "&Nächstes suchen"
@@ -2902,35 +2915,32 @@ msgstr "Springe zur nächsten Fehlermeldung."
 msgid "Next &Error"
 msgstr "Nächster &Fehler"
 
-#: src/frontends/qt/ui/LogUi.ui:81
+#: src/frontends/qt/ui/LogUi.ui:84
 msgid "Jump to the next warning message."
 msgstr "Springe zur nächsten Warnmeldung."
 
-#: src/frontends/qt/ui/LogUi.ui:84
+#: src/frontends/qt/ui/LogUi.ui:87
 msgid "Next &Warning"
 msgstr "Nächste &Warnung"
 
-#: src/frontends/qt/ui/LogUi.ui:95
+#: src/frontends/qt/ui/LogUi.ui:101
 msgid "&Find:"
 msgstr "&Suchen:"
 
-#: src/frontends/qt/ui/LogUi.ui:105
-msgid "Hit Enter to search, or click Go!"
-msgstr "Drücken Sie die Enter-Taste oder klicken Sie \"Los!\" an"
+#: src/frontends/qt/ui/LogUi.ui:111
+msgid "Hit Enter or click 'Find Next' to search"
+msgstr ""
+"Um die Suche zu starten drücken Sie die Return-Taste oder ,Nächstes suchen` "
 
-#: src/frontends/qt/ui/LogUi.ui:112
-msgid "&Go!"
-msgstr "&Los!"
-
-#: src/frontends/qt/ui/LogUi.ui:121
+#: src/frontends/qt/ui/LogUi.ui:130
 msgid "&Open Containing Directory"
 msgstr "Beinhaltendes &Verzeichnis öffnen"
 
-#: src/frontends/qt/ui/LogUi.ui:144
+#: src/frontends/qt/ui/LogUi.ui:156
 msgid "Update the display"
 msgstr "Anzeige aktualisieren"
 
-#: src/frontends/qt/ui/LogUi.ui:147 src/frontends/qt/ui/ViewSourceUi.ui:150
+#: src/frontends/qt/ui/LogUi.ui:159 src/frontends/qt/ui/ViewSourceUi.ui:150
 #: src/frontends/qt/GuiRef.cpp:79
 msgid "&Update"
 msgstr "A&ktualisieren"
@@ -3143,39 +3153,39 @@ msgstr "&Spalten:"
 msgid "Resize this to the correct table dimensions"
 msgstr "Verändern Sie die Größe hinsichtlich der korrekten Tabellenmaße"
 
-#: src/frontends/qt/ui/MathsUi.ui:48
+#: src/frontends/qt/ui/MathsUi.ui:51
 msgid "All packages:"
 msgstr "Alle Pakete:"
 
-#: src/frontends/qt/ui/MathsUi.ui:55
+#: src/frontends/qt/ui/MathsUi.ui:58
 msgid "Load A&utomatically"
 msgstr "&Automatisch laden"
 
-#: src/frontends/qt/ui/MathsUi.ui:62
+#: src/frontends/qt/ui/MathsUi.ui:65
 msgid "Load Alwa&ys"
 msgstr "&Immer laden"
 
-#: src/frontends/qt/ui/MathsUi.ui:69
+#: src/frontends/qt/ui/MathsUi.ui:72
 msgid "Do &Not Load"
 msgstr "&Nicht laden"
 
-#: src/frontends/qt/ui/MathsUi.ui:76
+#: src/frontends/qt/ui/MathsUi.ui:79
 msgid "Indent displayed formulas instead of centering"
 msgstr "Abgesetzte Formeln einrücken (nicht zentrieren)"
 
-#: src/frontends/qt/ui/MathsUi.ui:79
+#: src/frontends/qt/ui/MathsUi.ui:82
 msgid "Indent &formulas"
 msgstr "&Formeln einrücken"
 
-#: src/frontends/qt/ui/MathsUi.ui:95 src/frontends/qt/ui/TextLayoutUi.ui:183
+#: src/frontends/qt/ui/MathsUi.ui:98 src/frontends/qt/ui/TextLayoutUi.ui:183
 msgid "Size of the indentation"
 msgstr "Länge der Einrückung"
 
-#: src/frontends/qt/ui/MathsUi.ui:173
+#: src/frontends/qt/ui/MathsUi.ui:176
 msgid "Formula numbering side:"
 msgstr "Seite der Formelnummerierung:"
 
-#: src/frontends/qt/ui/MathsUi.ui:189
+#: src/frontends/qt/ui/MathsUi.ui:192
 msgid "Side where formulas are numbered"
 msgstr "Seite, auf der Formeln nummeriert werden"
 
@@ -3345,7 +3355,7 @@ msgstr "Bilder"
 #: src/frontends/qt/ui/OutputUi.ui:222 lib/layouts/aapaper.layout:63
 #: lib/layouts/egs.layout:702 lib/languages:145
 #: src/frontends/qt/GuiDocument.cpp:1600 src/frontends/qt/GuiErrorList.cpp:51
-#: src/frontends/qt/GuiLog.cpp:246 src/frontends/qt/GuiPrefs.cpp:641
+#: src/frontends/qt/GuiLog.cpp:236 src/frontends/qt/GuiPrefs.cpp:641
 msgid "LaTeX"
 msgstr "LaTeX"
 
@@ -9721,7 +9731,7 @@ msgstr "Article (Standardklasse)"
 msgid "Part"
 msgstr "Teil"
 
-#: lib/layouts/article.layout:32 lib/layouts/mwart.layout:35
+#: lib/layouts/article.layout:29 lib/layouts/mwart.layout:35
 #: lib/layouts/scrartcl.layout:32 lib/layouts/stdstarsections.inc:13
 #: lib/layouts/svcommon.inc:246
 msgid "Part*"
@@ -11044,8 +11054,8 @@ msgstr "Benutzerdefinierter Kopf-/Fußzeilentext"
 #: lib/layouts/customHeadersFooters.module:8
 msgid ""
 "Adds environments to define header and footer lines. NOTE: To use this "
-"module you must set the 'Headings style' in the menu Document Settings -> "
-"Page Layout to 'fancy'!"
+"module you must set the 'Page style' in the menu Document Settings -> Page "
+"Layout to 'fancy'!"
 msgstr ""
 "Fügt Umgebungen zur Definition von Kopf- und Fußzeilen hinzu. WICHTIG: Um "
 "dieses Modul verwenden zu können, müssen Sie in Dokument > Einstellungen > "
@@ -19587,7 +19597,7 @@ msgstr "Große Anfangsbuchstaben|A"
 #: lib/ui/stdcontext.inc:577 lib/ui/stdcontext.inc:590
 #: lib/ui/stdcontext.inc:600 lib/ui/stdcontext.inc:621
 #: lib/ui/stdcontext.inc:629 lib/ui/stdcontext.inc:675
-#: lib/ui/stdcontext.inc:682 lib/ui/stdmenus.inc:575
+#: lib/ui/stdcontext.inc:684 lib/ui/stdmenus.inc:575
 msgid "Settings...|S"
 msgstr "Einstellungen...|E"
 
@@ -20177,27 +20187,31 @@ msgstr "Abschnitt auswählen|h"
 msgid "Wrap by Preview|y"
 msgstr "Sofortige Vorschau|V"
 
-#: lib/ui/stdcontext.inc:691 lib/ui/stdmenus.inc:361
+#: lib/ui/stdcontext.inc:677
+msgid "Open Target...|O"
+msgstr "Verweisziel öffnen...|ö"
+
+#: lib/ui/stdcontext.inc:693 lib/ui/stdmenus.inc:361
 msgid "Lock Toolbars|L"
 msgstr "Verankere die Werkzeugleisten|V"
 
-#: lib/ui/stdcontext.inc:693 lib/ui/stdmenus.inc:363
+#: lib/ui/stdcontext.inc:695 lib/ui/stdmenus.inc:363
 msgid "Small-sized Icons"
 msgstr "Kleine Symbole"
 
-#: lib/ui/stdcontext.inc:694 lib/ui/stdmenus.inc:364
+#: lib/ui/stdcontext.inc:696 lib/ui/stdmenus.inc:364
 msgid "Normal-sized Icons"
 msgstr "Normalgroße Symbole"
 
-#: lib/ui/stdcontext.inc:695 lib/ui/stdmenus.inc:365
+#: lib/ui/stdcontext.inc:697 lib/ui/stdmenus.inc:365
 msgid "Big-sized Icons"
 msgstr "Große Symbole"
 
-#: lib/ui/stdcontext.inc:696 lib/ui/stdmenus.inc:366
+#: lib/ui/stdcontext.inc:698 lib/ui/stdmenus.inc:366
 msgid "Huge-sized Icons"
 msgstr "Riesige Symbole"
 
-#: lib/ui/stdcontext.inc:697 lib/ui/stdmenus.inc:367
+#: lib/ui/stdcontext.inc:699 lib/ui/stdmenus.inc:367
 msgid "Giant-sized Icons"
 msgstr "Gigantische Symbole"
 
@@ -21885,7 +21899,7 @@ msgstr "Andere Formate ansehen"
 msgid "Update Other Formats"
 msgstr "Andere Formate aktualisieren"
 
-#: lib/ui/stdtoolbars.inc:294 src/frontends/qt/GuiLog.cpp:267
+#: lib/ui/stdtoolbars.inc:294 src/frontends/qt/GuiLog.cpp:257
 msgid "Version Control"
 msgstr "Versionskontrolle"
 
@@ -26445,7 +26459,7 @@ msgstr "LyX-HTML"
 msgid "LyXHTML|y"
 msgstr "LyXHTML|y"
 
-#: lib/configure.py:725 src/frontends/qt/GuiLog.cpp:253
+#: lib/configure.py:725 src/frontends/qt/GuiLog.cpp:243
 #: src/insets/InsetBibtex.cpp:149
 msgid "BibTeX"
 msgstr "BibTeX"
@@ -27037,7 +27051,7 @@ msgstr ""
 "Bitte installieren Sie beide Pakete oder definieren Sie \\lyxadded und "
 "\\lyxdeleted im LaTeX-Vorspann neu."
 
-#: src/Buffer.cpp:1089 src/BufferParams.cpp:469 src/frontends/qt/GuiLog.cpp:257
+#: src/Buffer.cpp:1089 src/BufferParams.cpp:469 src/frontends/qt/GuiLog.cpp:247
 #: src/insets/InsetIndex.cpp:642
 msgid "Index"
 msgstr "Stichwortverzeichnis"
@@ -27751,7 +27765,7 @@ msgid "Document class not available"
 msgstr "Die Dokumentklasse ist nicht verfügbar"
 
 #: src/BufferParams.cpp:1751 src/BufferParams.cpp:2194 src/Encoding.cpp:253
-#: src/Paragraph.cpp:2790 src/frontends/qt/LaTeXHighlighter.cpp:122
+#: src/Paragraph.cpp:2859 src/frontends/qt/LaTeXHighlighter.cpp:122
 #: src/insets/InsetCommandParams.cpp:510 src/insets/InsetCommandParams.cpp:518
 #: src/insets/InsetGraphics.cpp:885 src/insets/InsetGraphics.cpp:893
 #: src/insets/InsetListings.cpp:301 src/insets/InsetListings.cpp:309
@@ -27761,7 +27775,7 @@ msgid "LyX Warning: "
 msgstr "LyX-Warnung: "
 
 #: src/BufferParams.cpp:1752 src/BufferParams.cpp:2195 src/Encoding.cpp:254
-#: src/Paragraph.cpp:2791 src/insets/InsetCommandParams.cpp:511
+#: src/Paragraph.cpp:2860 src/insets/InsetCommandParams.cpp:511
 #: src/insets/InsetCommandParams.cpp:519 src/insets/InsetGraphics.cpp:886
 #: src/insets/InsetGraphics.cpp:894 src/insets/InsetListings.cpp:302
 #: src/insets/InsetListings.cpp:310 src/mathed/MathExtern.cpp:1441
@@ -29408,7 +29422,7 @@ msgstr ""
 "zusammen.\n"
 "Weitere Optionen sind in der LyX-Manpage aufgeführt."
 
-#: src/LyX.cpp:1250 src/frontends/qt/GuiAbout.cpp:242
+#: src/LyX.cpp:1250 src/frontends/qt/GuiAbout.cpp:208
 msgid "  Git commit hash "
 msgstr " Git-Revision (commit hash) "
 
@@ -30074,15 +30088,15 @@ msgstr "Zur gespeicherten Version des Dokuments zurückkehren?"
 msgid "&Revert"
 msgstr "&Wiederherstellen"
 
-#: src/Paragraph.cpp:2040
+#: src/Paragraph.cpp:2053
 msgid "Senseless with this layout!"
 msgstr "Für dieses Format nicht relevant!"
 
-#: src/Paragraph.cpp:2094
+#: src/Paragraph.cpp:2107
 msgid "Alignment not permitted"
 msgstr "Ausrichtung nicht erlaubt"
 
-#: src/Paragraph.cpp:2095
+#: src/Paragraph.cpp:2108
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -30183,7 +30197,7 @@ msgstr ", Zeichen: 0x"
 msgid ", Boundary: "
 msgstr ", Grenze: "
 
-#: src/Text2.cpp:414
+#: src/Text2.cpp:418
 msgid "No font change defined."
 msgstr "Keine Schriftänderung definiert."
 
@@ -30873,11 +30887,11 @@ msgstr "Dokumentvoreinstellung"
 msgid "Float Settings"
 msgstr "Gleitobjekt-Einstellungen"
 
-#: src/frontends/qt/GuiAbout.cpp:51
+#: src/frontends/qt/GuiAbout.cpp:53
 msgid "ERROR: LyX wasn't able to find the CREDITS file\n"
 msgstr "Fehler: LyX konnte die Datei CREDITS nicht finden\n"
 
-#: src/frontends/qt/GuiAbout.cpp:52 src/frontends/qt/GuiAbout.cpp:57
+#: src/frontends/qt/GuiAbout.cpp:54 src/frontends/qt/GuiAbout.cpp:59
 msgid ""
 "Please install correctly to estimate the great\n"
 "amount of work other people have done for the LyX project."
@@ -30885,15 +30899,15 @@ msgstr ""
 "Bitte installieren Sie diese Datei, um die große Menge\n"
 "an Arbeit abschätzen zu können, die andere in LyX gesteckt haben."
 
-#: src/frontends/qt/GuiAbout.cpp:56
+#: src/frontends/qt/GuiAbout.cpp:58
 msgid "ERROR: LyX wasn't able to read the CREDITS file\n"
 msgstr "Fehler: LyX konnte die Datei CREDITS nicht lesen\n"
 
-#: src/frontends/qt/GuiAbout.cpp:93
+#: src/frontends/qt/GuiAbout.cpp:95
 msgid "ERROR: LyX wasn't able to find the RELEASE-NOTES file\n"
 msgstr "Fehler: LyX konnte die Datei RELEASE-NOTES nicht finden\n"
 
-#: src/frontends/qt/GuiAbout.cpp:94 src/frontends/qt/GuiAbout.cpp:99
+#: src/frontends/qt/GuiAbout.cpp:96 src/frontends/qt/GuiAbout.cpp:101
 msgid ""
 "Please install correctly to see what has changed\n"
 "for this version of LyX."
@@ -30901,11 +30915,11 @@ msgstr ""
 "Bitte installieren Sie diese Datei, um zu sehen, was sich\n"
 "für diese LyX-Version grundlegend geändert hat."
 
-#: src/frontends/qt/GuiAbout.cpp:98
+#: src/frontends/qt/GuiAbout.cpp:100
 msgid "ERROR: LyX wasn't able to read the RELEASE-NOTES file\n"
 msgstr "Fehler: LyX konnte die Datei RELEASE-NOTES nicht lesen\n"
 
-#: src/frontends/qt/GuiAbout.cpp:181
+#: src/frontends/qt/GuiAbout.cpp:183
 #, c-format
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
@@ -30914,7 +30928,7 @@ msgstr ""
 "LyX -- Copyright (C) 1995 Matthias Ettrich,\n"
 "1995--%1$s LyX-Team"
 
-#: src/frontends/qt/GuiAbout.cpp:189
+#: src/frontends/qt/GuiAbout.cpp:191
 msgid ""
 "This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -30926,7 +30940,7 @@ msgstr ""
 "Software Foundation weitergeben und/oder verändern. Verwenden Sie Version 2 "
 "oder (nach Ihrer Entscheidung) eine spätere Version der Lizenz."
 
-#: src/frontends/qt/GuiAbout.cpp:195
+#: src/frontends/qt/GuiAbout.cpp:197
 msgid ""
 "LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
@@ -30945,11 +30959,11 @@ msgstr ""
 "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, "
 "USA."
 
-#: src/frontends/qt/GuiAbout.cpp:208
+#: src/frontends/qt/GuiAbout.cpp:237
 msgid "not released yet"
 msgstr "noch nicht veröffentlicht"
 
-#: src/frontends/qt/GuiAbout.cpp:213
+#: src/frontends/qt/GuiAbout.cpp:242
 #, c-format
 msgid ""
 "LyX Version %1$s\n"
@@ -30958,29 +30972,21 @@ msgstr ""
 "LyX Version %1$s\n"
 "(%2$s)"
 
-#: src/frontends/qt/GuiAbout.cpp:217
+#: src/frontends/qt/GuiAbout.cpp:246
 msgid "Built from git commit hash "
 msgstr "Erstellt aus Git-Revision "
 
-#: src/frontends/qt/GuiAbout.cpp:224
-msgid "Library directory: "
-msgstr "Systemverzeichnis: "
-
-#: src/frontends/qt/GuiAbout.cpp:227
-msgid "User directory: "
-msgstr "Benutzerverzeichnis: "
-
-#: src/frontends/qt/GuiAbout.cpp:230
+#: src/frontends/qt/GuiAbout.cpp:252
 #, c-format
 msgid "Qt Version (run-time): %1$s"
 msgstr "Qt-Version (Laufzeit): %1$s"
 
-#: src/frontends/qt/GuiAbout.cpp:231
+#: src/frontends/qt/GuiAbout.cpp:253
 #, c-format
 msgid "Qt Version (compile-time): %1$s"
 msgstr "Qt-Version (bei Erstellung): %1$s"
 
-#: src/frontends/qt/GuiAbout.cpp:257
+#: src/frontends/qt/GuiAbout.cpp:282
 msgid "About LyX"
 msgstr "Über LyX"
 
@@ -31015,10 +31021,6 @@ msgstr "Anwenden"
 #: src/frontends/qt/GuiApplication.cpp:658
 msgid "Reset"
 msgstr "Zurücksetzen"
-
-#: src/frontends/qt/GuiApplication.cpp:659
-msgid "Open"
-msgstr "Öffnen"
 
 #: src/frontends/qt/GuiApplication.cpp:1127
 msgid "Nothing to do"
@@ -31309,7 +31311,7 @@ msgstr "alle Literaturverzeichnisse"
 #: src/frontends/qt/GuiCompare.cpp:163 src/frontends/qt/GuiCompare.cpp:167
 #: src/frontends/qt/GuiDocument.cpp:2837 src/frontends/qt/GuiExternal.cpp:677
 #: src/frontends/qt/GuiGraphics.cpp:791 src/frontends/qt/GuiInclude.cpp:330
-#: src/frontends/qt/GuiLyXFiles.cpp:353 src/frontends/qt/GuiLyXFiles.cpp:359
+#: src/frontends/qt/GuiLyXFiles.cpp:368 src/frontends/qt/GuiLyXFiles.cpp:374
 #: src/frontends/qt/GuiView.cpp:2388 src/frontends/qt/GuiView.cpp:2447
 #: src/frontends/qt/GuiView.cpp:2585 src/frontends/qt/GuiView.cpp:2719
 #: src/frontends/qt/GuiView.cpp:2838 src/frontends/qt/GuiView.cpp:2960
@@ -31705,7 +31707,7 @@ msgstr "Vergleiche LyX-Dateien"
 msgid "Select document"
 msgstr "Dokument wählen"
 
-#: src/frontends/qt/GuiCompare.cpp:157 src/frontends/qt/GuiLyXFiles.cpp:352
+#: src/frontends/qt/GuiCompare.cpp:157 src/frontends/qt/GuiLyXFiles.cpp:367
 #: src/frontends/qt/GuiView.cpp:2392 src/frontends/qt/GuiView.cpp:2450
 #: src/frontends/qt/GuiView.cpp:2723 src/frontends/qt/GuiView.cpp:2849
 msgid "LyX Documents (*.lyx)"
@@ -32433,7 +32435,7 @@ msgstr "TeX-Code-Einstellungen"
 msgid "DocBook"
 msgstr "DocBook"
 
-#: src/frontends/qt/GuiErrorList.cpp:47 src/frontends/qt/GuiLog.cpp:261
+#: src/frontends/qt/GuiErrorList.cpp:47 src/frontends/qt/GuiLog.cpp:251
 msgid "Literate"
 msgstr "Literal"
 
@@ -33004,44 +33006,44 @@ msgstr "Programmlisting-Einstellungen"
 msgid "No dialect"
 msgstr "Kein Dialekt"
 
-#: src/frontends/qt/GuiLog.cpp:119 src/frontends/qt/GuiLog.cpp:289
+#: src/frontends/qt/GuiLog.cpp:117 src/frontends/qt/GuiLog.cpp:279
 msgid "LaTeX Log"
 msgstr "LaTeX-Protokoll"
 
-#: src/frontends/qt/GuiLog.cpp:251
+#: src/frontends/qt/GuiLog.cpp:241
 msgid "Biber"
 msgstr "Biber"
 
-#: src/frontends/qt/GuiLog.cpp:264
+#: src/frontends/qt/GuiLog.cpp:254
 msgid "LyX2LyX"
 msgstr "LyX2LyX"
 
-#: src/frontends/qt/GuiLog.cpp:291
+#: src/frontends/qt/GuiLog.cpp:281
 msgid "Literate Programming Build Log"
 msgstr "Erstellungsprotokoll für die literarische Programmierung"
 
-#: src/frontends/qt/GuiLog.cpp:293
+#: src/frontends/qt/GuiLog.cpp:283
 msgid "lyx2lyx Error Log"
 msgstr "lyx2lyx-Fehlerprotokoll"
 
-#: src/frontends/qt/GuiLog.cpp:295
+#: src/frontends/qt/GuiLog.cpp:285
 msgid "Version Control Log"
 msgstr "Protokoll der Versionskontrolle"
 
-#: src/frontends/qt/GuiLog.cpp:323
+#: src/frontends/qt/GuiLog.cpp:313
 msgid "Log file not found."
 msgstr "Protokolldatei nicht gefunden."
 
-#: src/frontends/qt/GuiLog.cpp:326
+#: src/frontends/qt/GuiLog.cpp:316
 msgid "No literate programming build log file found."
 msgstr ""
 "Keine Erstellungsprotokolldatei für die literarische Programmierung gefunden."
 
-#: src/frontends/qt/GuiLog.cpp:329
+#: src/frontends/qt/GuiLog.cpp:319
 msgid "No lyx2lyx error log file found."
 msgstr "Keine lyx2lyx-Fehlerprotokolldatei gefunden."
 
-#: src/frontends/qt/GuiLog.cpp:332
+#: src/frontends/qt/GuiLog.cpp:322
 msgid "No version control log file found."
 msgstr "Es wurde keine Protokolldatei der Versionskontrolle gefunden."
 
@@ -33049,7 +33051,7 @@ msgstr "Es wurde keine Protokolldatei der Versionskontrolle gefunden."
 msgid "Preferred &Language:"
 msgstr "Bevorzugte S&prache:"
 
-#: src/frontends/qt/GuiLyXFiles.cpp:161 src/frontends/qt/GuiLyXFiles.cpp:575
+#: src/frontends/qt/GuiLyXFiles.cpp:161 src/frontends/qt/GuiLyXFiles.cpp:590
 msgid "New File From Template"
 msgstr "Neu von Vorlage"
 
@@ -33073,11 +33075,11 @@ msgstr "Nur Benutzerdateien"
 msgid "System Files Only"
 msgstr "Nur Systemdateien"
 
-#: src/frontends/qt/GuiLyXFiles.cpp:304
+#: src/frontends/qt/GuiLyXFiles.cpp:319
 msgid "File &Language:"
 msgstr "S&prache des Dokuments:"
 
-#: src/frontends/qt/GuiLyXFiles.cpp:305
+#: src/frontends/qt/GuiLyXFiles.cpp:320
 msgid ""
 "All available languages of the selected file are displayed here.\n"
 "The selected language version will be opened."
@@ -33086,65 +33088,65 @@ msgstr ""
 "angezeigt.\n"
 "Die Datei wird in der ausgewählten Sprachversion geöffnet."
 
-#: src/frontends/qt/GuiLyXFiles.cpp:351
+#: src/frontends/qt/GuiLyXFiles.cpp:366
 msgid "Select example file"
 msgstr "Wählen Sie eine Beispieldatei"
 
-#: src/frontends/qt/GuiLyXFiles.cpp:354 src/frontends/qt/GuiView.cpp:2448
+#: src/frontends/qt/GuiLyXFiles.cpp:369 src/frontends/qt/GuiView.cpp:2448
 #: src/frontends/qt/GuiView.cpp:2586 src/frontends/qt/GuiView.cpp:2720
 msgid "&Examples"
 msgstr "&Beispiele"
 
-#: src/frontends/qt/GuiLyXFiles.cpp:358 src/frontends/qt/GuiView.cpp:2387
+#: src/frontends/qt/GuiLyXFiles.cpp:373 src/frontends/qt/GuiView.cpp:2387
 msgid "Select template file"
 msgstr "Wählen Sie eine Vorlagendatei"
 
-#: src/frontends/qt/GuiLyXFiles.cpp:360 src/frontends/qt/GuiView.cpp:2389
+#: src/frontends/qt/GuiLyXFiles.cpp:375 src/frontends/qt/GuiView.cpp:2389
 #: src/frontends/qt/GuiView.cpp:2839
 msgid "&Templates"
 msgstr "&Vorlagen"
 
-#: src/frontends/qt/GuiLyXFiles.cpp:365
+#: src/frontends/qt/GuiLyXFiles.cpp:380
 msgid "&User files"
 msgstr "&Benutzerdateien"
 
-#: src/frontends/qt/GuiLyXFiles.cpp:366
+#: src/frontends/qt/GuiLyXFiles.cpp:381
 msgid "&System files"
 msgstr "&Systemdateien"
 
-#: src/frontends/qt/GuiLyXFiles.cpp:369
+#: src/frontends/qt/GuiLyXFiles.cpp:384
 msgid "Chose UI file"
 msgstr "Wählen Sie eine 'UI'-Datei"
 
-#: src/frontends/qt/GuiLyXFiles.cpp:370
+#: src/frontends/qt/GuiLyXFiles.cpp:385
 msgid "LyX UI Files (*.ui)"
 msgstr "LyX-UI-Dateien (*.ui)"
 
-#: src/frontends/qt/GuiLyXFiles.cpp:373
+#: src/frontends/qt/GuiLyXFiles.cpp:388
 msgid "Chose bind file"
 msgstr "Wählen Sie eine Tastaturkürzel-Datei"
 
-#: src/frontends/qt/GuiLyXFiles.cpp:374
+#: src/frontends/qt/GuiLyXFiles.cpp:389
 msgid "LyX Bind Files (*.bind)"
 msgstr "LyX-Tastaturkürzel-Dateien (*.bind)"
 
-#: src/frontends/qt/GuiLyXFiles.cpp:377
+#: src/frontends/qt/GuiLyXFiles.cpp:392
 msgid "Chose keyboard map"
 msgstr "Wählen Sie eine Tastaturtabelle"
 
-#: src/frontends/qt/GuiLyXFiles.cpp:378
+#: src/frontends/qt/GuiLyXFiles.cpp:393
 msgid "LyX Keymap Files (*.kmap)"
 msgstr "LyX-Tastaturtabellen (*.kmap)"
 
-#: src/frontends/qt/GuiLyXFiles.cpp:436
+#: src/frontends/qt/GuiLyXFiles.cpp:451
 msgid "Default Template"
 msgstr "Standardvorlage"
 
-#: src/frontends/qt/GuiLyXFiles.cpp:573
+#: src/frontends/qt/GuiLyXFiles.cpp:588
 msgid "Open Example File"
 msgstr "Beispieldatei öffnen"
 
-#: src/frontends/qt/GuiLyXFiles.cpp:577
+#: src/frontends/qt/GuiLyXFiles.cpp:592
 msgid "Open File"
 msgstr "Datei öffnen"
 
@@ -34887,16 +34889,16 @@ msgstr ""
 "LyX bietet keine LaTeX-Unterstützung für Dateinamen, die eines der folgenden "
 "Zeichen enthalten:\n"
 
-#: src/frontends/qt/qt_helpers.cpp:311
+#: src/frontends/qt/qt_helpers.cpp:329
 msgid "Could not update TeX information"
 msgstr "Die TeX-Informationen konnten nicht aktualisiert werden"
 
-#: src/frontends/qt/qt_helpers.cpp:312
+#: src/frontends/qt/qt_helpers.cpp:330
 #, c-format
 msgid "The script `%1$s' failed."
 msgstr "Das Skript ,%1$s` ist fehlgeschlagen."
 
-#: src/frontends/qt/qt_helpers.cpp:560
+#: src/frontends/qt/qt_helpers.cpp:578
 msgid "All Files "
 msgstr "Alle Dateien "
 
@@ -35348,23 +35350,23 @@ msgstr ""
 msgid "Graphics file: %1$s"
 msgstr "Grafikdatei: %1$s"
 
-#: src/insets/InsetHyperlink.cpp:64
+#: src/insets/InsetHyperlink.cpp:68
 msgid "Hyperlink: "
 msgstr "Hyperlink: "
 
-#: src/insets/InsetHyperlink.cpp:259
+#: src/insets/InsetHyperlink.cpp:272
 msgid "www"
 msgstr "www"
 
-#: src/insets/InsetHyperlink.cpp:261
+#: src/insets/InsetHyperlink.cpp:274
 msgid "email"
 msgstr "E-Mail"
 
-#: src/insets/InsetHyperlink.cpp:263
+#: src/insets/InsetHyperlink.cpp:276
 msgid "file"
 msgstr "Datei"
 
-#: src/insets/InsetHyperlink.cpp:264
+#: src/insets/InsetHyperlink.cpp:277
 #, c-format
 msgid "Hyperlink (%1$s) to %2$s"
 msgstr "Hyperlink (%1$s) to %2$s"
@@ -36378,22 +36380,22 @@ msgstr ""
 "Die Informationen für die Änderungen von Tabellenzeilen- oder -spalten sind "
 "unvollständig. Sie werden ignoriert."
 
-#: src/insets/InsetTabular.cpp:5521
+#: src/insets/InsetTabular.cpp:5533
 msgid "Selections not supported."
 msgstr ""
 "Gleichzeitiges Verschieben mehrerer Zeilen/Spalten ist leider nicht möglich."
 
-#: src/insets/InsetTabular.cpp:5543
+#: src/insets/InsetTabular.cpp:5555
 msgid "Multi-column in current or destination column."
 msgstr ""
 "Diese oder die Zielspalte ist eine Mehrfachspalte. Verschieben nicht möglich."
 
-#: src/insets/InsetTabular.cpp:5555
+#: src/insets/InsetTabular.cpp:5567
 msgid "Multi-row in current or destination row."
 msgstr ""
 "Diese oder die Zielzeile ist eine Mehrfachzeile. Verschieben nicht möglich."
 
-#: src/insets/InsetTabular.cpp:6070
+#: src/insets/InsetTabular.cpp:6082
 msgid "Selection size should match clipboard content."
 msgstr ""
 "Die Anzahl der ausgewählten Zellen stimmt nicht mit dem Inhalt der "
@@ -37096,6 +37098,23 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#, fuzzy
+#~ msgid "Library directory goes here."
+#~ msgstr "Systemverzeichnis: "
+
+#, fuzzy
+#~ msgid "User directory goes here."
+#~ msgstr "Benutzerverzeichnis: "
+
+#~ msgid "Version goes here"
+#~ msgstr "Die Versionsnummer kommt hierher"
+
+#~ msgid "Hit Enter to search, or click Go!"
+#~ msgstr "Drücken Sie die Enter-Taste oder klicken Sie \"Los!\" an"
+
+#~ msgid "&Go!"
+#~ msgstr "&Los!"
 
 #, fuzzy, c-format
 #~ msgid "%1$s"
