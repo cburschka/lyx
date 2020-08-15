@@ -182,7 +182,10 @@ void Text::setLayout(pit_type start, pit_type end,
 
 	for (pit_type pit = start; pit != end; ++pit) {
 		Paragraph & par = pars_[pit];
-		par.applyLayout(lyxlayout);
+		// Is this a separating paragraph?
+		bool const is_separator = par.size() == 1
+				&& par.isEnvSeparator(0);
+		par.applyLayout(is_separator ? bp.documentClass().plainLayout() : lyxlayout);
 		if (lyxlayout.margintype == MARGIN_MANUAL)
 			par.setLabelWidthString(par.expandLabel(lyxlayout, bp));
 	}
