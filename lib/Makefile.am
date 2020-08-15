@@ -2538,6 +2538,7 @@ dist_articletemplates_DATA = \
 	templates/Articles/Copernicus_Publications_Manuscript_Preparation.lyx \
 	templates/Articles/Econometrica.lyx \
 	templates/Articles/Elsevier.lyx \
+	templates/Articles/Figure1.pdf \
 	templates/Articles/Hebrew_Article_%28KOMA-Script%29.lyx \
 	templates/Articles/IEEE_Transactions_Computer_Society.lyx \
 	templates/Articles/IEEE_Transactions_Conference.lyx \

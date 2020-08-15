@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 594
+\lyxformat 598
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -37,7 +37,7 @@
 %% 
 
 
-\usepackage{lipsum}
+
 
 \usepackage{csquotes}
 \end_preamble
@@ -121,23 +121,10 @@
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
 \end_header
 
 \begin_body
-
-\begin_layout Quotation
-\begin_inset Note Note
-status open
-
-\begin_layout Quotation
-Content taken from texlive2020/texmf-dist/doc/latex/apa7/samples/longsample.tex
- 
-\end_layout
-
-\end_inset
-
- 
-\end_layout
 
 \begin_layout Title
 Sample APA-Style Document Using the 
@@ -165,21 +152,25 @@ Weiss
 \end_layout
 
 \begin_layout Abstract
-
-\lang latin
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-lipsum[1]
-\end_layout
-
-\end_inset
-
-
+This is the abstract.
+ This is the abstract.
+ This is the abstract.
+ This is the abstract.
+ This is the abstract.
+ This is the abstract.
+ This is the abstract.
+ This is the abstract.
+ This is the abstract.
+ This is the abstract.
+ This is the abstract.
+ This is the abstract.
+ This is the abstract.
+ This is the abstract.
+ This is the abstract.
+ This is the abstract.
+ This is the abstract.
+ This is the abstract.
+ 
 \end_layout
 
 \begin_layout Keywords
@@ -240,49 +231,35 @@ Correspondence concerning this article should be addressed to Daniel A.
 \end_layout
 
 \begin_layout Standard
-
-\lang latin
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-lipsum
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-2
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
+Some text.
+ Some text.
+ Some text.
+ Some text.
+ Some text.
+ Some text.
+ Some text.
+ Some text.
+ Some text.
+ Some text.
+ Some text.
+ Some text.
+ Some text.
+ Some text.
+ Some text.
+ Some text.
+ Some text.
+ Some text.
+ Some text.
+ Some text.
+ Some text.
+ Some text.
+ 
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset citation
 LatexCommand Citet
-key "vonDavier2011"
+key "coleridge"
 literal "false"
 
 \end_inset
@@ -290,7 +267,7 @@ literal "false"
  said this, too 
 \begin_inset CommandInset citation
 LatexCommand citep
-key "vonDavier2011,Lassen2006"
+key "coleridge,doody"
 literal "false"
 
 \end_inset
@@ -299,50 +276,25 @@ literal "false"
  Further evidence comes from other sources 
 \begin_inset CommandInset citation
 LatexCommand citep
-key "Shotton1989,Lassen2006"
+key "glashow,itzhaki"
 literal "false"
 
 \end_inset
 
 .
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
  
-\lang latin
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-lipsum
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-3
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -354,43 +306,19 @@ Participants
 \end_layout
 
 \begin_layout Standard
-
-\lang latin
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-lipsum
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-4
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
+Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -398,43 +326,19 @@ Materials
 \end_layout
 
 \begin_layout Standard
-
-\lang latin
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-lipsum
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-5
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
+Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -442,43 +346,19 @@ Design
 \end_layout
 
 \begin_layout Standard
-
-\lang latin
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-lipsum
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-6
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
+Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -486,43 +366,19 @@ Procedure
 \end_layout
 
 \begin_layout Standard
-
-\lang latin
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-lipsum
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-7
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
+Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ 
 \end_layout
 
 \begin_layout Subsubsection
@@ -530,43 +386,19 @@ Instrument #1
 \end_layout
 
 \begin_layout Standard
-
-\lang latin
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-lipsum
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-8
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
+Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ 
 \end_layout
 
 \begin_layout Paragraph
@@ -574,43 +406,19 @@ Reliability
 \end_layout
 
 \begin_layout Standard
-
-\lang latin
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-lipsum
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-9
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
+Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ 
 \end_layout
 
 \begin_layout Subparagraph
@@ -618,43 +426,19 @@ Inter-rater reliability
 \end_layout
 
 \begin_layout Standard
-
-\lang latin
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-lipsum
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-10
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
+Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ 
 \end_layout
 
 \begin_layout Subparagraph
@@ -662,43 +446,19 @@ Test-retest reliability
 \end_layout
 
 \begin_layout Standard
-
-\lang latin
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-lipsum
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-11
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
+Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ 
 \end_layout
 
 \begin_layout Paragraph
@@ -706,43 +466,19 @@ Validity
 \end_layout
 
 \begin_layout Standard
-
-\lang latin
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-lipsum
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-12
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
+Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ 
 \end_layout
 
 \begin_layout Subparagraph
@@ -750,43 +486,19 @@ Face validity
 \end_layout
 
 \begin_layout Standard
-
-\lang latin
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-lipsum
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-13
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
+Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ 
 \end_layout
 
 \begin_layout Subparagraph
@@ -794,43 +506,19 @@ Construct validity
 \end_layout
 
 \begin_layout Standard
-
-\lang latin
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-lipsum
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-14
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
+Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ 
 \end_layout
 
 \begin_layout Section
@@ -853,44 +541,19 @@ noprefix "false"
 \end_inset
 
  summarizes the data.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
  
-\lang latin
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-lipsum
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-15
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1158,7 +821,7 @@ This is my first figure caption.
 
 
 \begin_inset Graphics
-	filename /usr9/local/texlive/2020/texmf-dist/doc/latex/apa7/samples/Figure1.pdf
+	filename Figure1.pdf
 	width 2.5in
 	BoundingBox 0in 0in 2.5in 2.5in
 	special height=2.5in
@@ -1231,42 +894,19 @@ noprefix "false"
 \end_inset
 
  shows this trend.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
  
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-lipsum
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-16
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -1274,145 +914,59 @@ Discussion
 \end_layout
 
 \begin_layout Standard
-
-\lang latin
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-lipsum
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-17
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
+Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ 
 \end_layout
 
 \begin_layout Standard
-
-\lang latin
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-lipsum
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-18
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
+Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ 
 \end_layout
 
 \begin_layout Standard
-
-\lang latin
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-lipsum
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-19
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
+Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ 
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "/usr9/local/texlive/2020/texmf-dist/doc/latex/apa7/samples/bibliography"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\start_of_appendix
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-%dummy comment inserted by tex2lyx to ensure that this paragraph is not
- empty
-\end_layout
+btprint "btPrintCited"
+bibfiles "biblatex-examples"
+encoding "default"
 
 \end_inset
 
@@ -1420,6 +974,7 @@ status collapsed
 \end_layout
 
 \begin_layout Section
+\start_of_appendix
 Instrument
 \end_layout
 
@@ -1449,44 +1004,19 @@ noprefix "false"
 \end_inset
 
 , these results are impressive.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
  
-\lang latin
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-lipsum
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-20
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1508,7 +1038,7 @@ This is my second figure caption.
 
 
 \begin_inset Graphics
-	filename /usr9/local/texlive/2020/texmf-dist/doc/latex/apa7/samples/Figure1.pdf
+	filename Figure1.pdf
 	width 2.5in
 	BoundingBox 0in 0in 2.5in 2.5in
 	special height=2.5in
@@ -1566,42 +1096,18 @@ name "fig:Figure2"
 \end_layout
 
 \begin_layout Standard
-
-\lang latin
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-lipsum
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-21
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
+Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
  
 \end_layout
 
@@ -1635,44 +1141,19 @@ noprefix "false"
 \end_inset
 
 .
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
  
-\lang latin
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-lipsum
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-22
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1685,7 +1166,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2087,6 +1568,9 @@ tabfnm
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -2121,79 +1605,35 @@ status collapsed
 
 \end_inset
 
- 
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 {
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
 \backslash
-small
+small 
 \end_layout
 
 \end_inset
 
- 
-\shape italic
 Note.
-
-\shape default
  All data are approximate.
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
-par 
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-tabfnt
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-a
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+tabfnt{a}
 \end_layout
 
 \end_inset
@@ -2201,97 +1641,50 @@ status collapsed
 Categorical may be onset.
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
-tabfnt
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-b
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+tabfnt{b}
 \end_layout
 
 \end_inset
 
 Categorical may also be coda.
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
-par 
+tabfnt{*}
 \end_layout
 
 \end_inset
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-tabfnt
-\end_layout
-
-\end_inset
-
-*
-\shape italic
-p
-\shape default
- < .05.
+p < .05.
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
-tabfnt
+tabfnt{**}
 \end_layout
 
 \end_inset
 
-
+p < .01.
 \begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-**
-\begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2301,22 +1694,9 @@ status collapsed
 \end_inset
 
 
-\shape italic
-p
-\shape default
- < .01.
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
-\end_inset
-
- 
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -2329,7 +1709,10 @@ end{tablenotes}
 
 \end_inset
 
- 
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -2342,7 +1725,7 @@ end{threeparttable}
 
 \end_inset
 
- 
+
 \end_layout
 
 \end_inset
@@ -2351,43 +1734,19 @@ end{threeparttable}
 \end_layout
 
 \begin_layout Standard
-
-\lang latin
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-lipsum
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-23
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
+Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ Some more text.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2397,7 +1756,9 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "/usr9/local/texlive/2020/texmf-dist/doc/latex/apa7/samples/bibliography"
+btprint "btPrintCited"
+bibfiles "biblatex-examples"
+encoding "default"
 
 \end_inset
 
