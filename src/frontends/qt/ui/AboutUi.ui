@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>424</width>
-    <height>370</height>
+    <height>376</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -63,7 +63,7 @@
           <cursorShape>IBeamCursor</cursorShape>
          </property>
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;LyX version info goes here.&lt;/p&gt;&lt;p&gt;Qt version (run-time) goes here.&lt;/p&gt;&lt;p&gt;Qt version (compile-time) goes here.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;LyX version info goes here.&lt;/p&gt;&lt;p&gt;Qt version (run-time) goes here.&lt;/p&gt;&lt;p&gt;Qt version (compile-time) goes here.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -107,7 +107,7 @@
              <cursorShape>IBeamCursor</cursorShape>
             </property>
             <property name="text">
-             <string>Library directory goes here.</string>
+             <string notr="true">Library directory goes here.</string>
             </property>
             <property name="textFormat">
              <enum>Qt::PlainText</enum>
@@ -148,7 +148,7 @@
              <cursorShape>IBeamCursor</cursorShape>
             </property>
             <property name="text">
-             <string>User directory goes here.</string>
+             <string notr="true">User directory goes here.</string>
             </property>
             <property name="textFormat">
              <enum>Qt::PlainText</enum>
