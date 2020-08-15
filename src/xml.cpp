@@ -200,7 +200,7 @@ bool XMLStream::closeFontTags()
 		tag_stack_.pop_back();
 		// this shouldn't happen, since then the font tags
 		// weren't in any other tag.
-//		LASSERT(!tag_stack_.empty(), return true);
+		LASSERT(!tag_stack_.empty(), return true);
 		if (tag_stack_.empty())
 			return true;
 		curtag = &tag_stack_.back();
@@ -583,62 +583,57 @@ docstring xml::uniqueID(docstring const & label)
 
 docstring xml::cleanID(docstring const & orig)
 {
-	// The standard xml:id only allows letters,
-	// digits, '-' and '.' in a name.
-	// This routine replaces illegal characters by '-' or '.'
-	// and adds a number for uniqueness if need be.
-	docstring const allowed = from_ascii(".-_");
+	// The standard xml:id only allows letters, digits, '-' and '.' in a name.
+	// This routine replaces illegal characters by '-' or '.' and adds a number for uniqueness if need be.
 
 	// Use a cache of already mangled names: the alterations may merge several IDs as one. This ensures that the IDs
 	// are not mixed up in the document.
+	// This code could be improved: it uses Qt outside the GUI part. Any TLS implementation could do the trick.
 	typedef map<docstring, docstring> MangledMap;
 	static QThreadStorage<MangledMap> tMangledNames;
 	static QThreadStorage<int> tMangleID;
 
-	MangledMap & mangledNames = tMangledNames.localData();
-
 	// If the name is already known, just return it.
-	MangledMap::const_iterator const known = mangledNames.find(orig);
+	MangledMap & mangledNames = tMangledNames.localData();
+	auto const known = mangledNames.find(orig);
 	if (known != mangledNames.end())
 		return known->second;
 
 	// Start creating the mangled name by iterating over the characters.
 	docstring content;
-	docstring::const_iterator it  = orig.begin();
-	docstring::const_iterator end = orig.end();
+	auto it = orig.cbegin();
+	auto end = orig.cend();
 
 	// Make sure it starts with a letter.
-	if (!isAlphaASCII(*it) && allowed.find(*it) >= allowed.size())
+	if (!isAlphaASCII(*it))
 		content += "x";
 
-	// Do the mangling.
+	// Parse the ID character by character and change what needs to.
 	bool mangle = false; // Indicates whether the ID had to be changed, i.e. if ID no more ensured to be unique.
 	for (; it != end; ++it) {
 		char_type c = *it;
-		if (isAlphaASCII(c) || isDigitASCII(c) || c == '-' || c == '.'
-		      || allowed.find(c) < allowed.size())
+		if (isAlphaASCII(c) || isDigitASCII(c) || c == '-' || c == '.' || c == '_') {
 			content += c;
-		else if (c == '_' || c == ' ') {
-			mangle = true;
-			content += "-";
-		}
-		else if (c == ':' || c == ',' || c == ';' || c == '!') {
+		} else if (c == ':' || c == ',' || c == ';' || c == '!') {
 			mangle = true;
 			content += ".";
-		}
-		else {
+		} else { // Other invalid characters, such as ' '.
 			mangle = true;
 			content += "-";
 		}
 	}
 
-	if (mangle) {
+	// If there had to be a change, check if ID unicity is still guaranteed.
+	// This avoids having a clash if satisfying XML requirements for ID makes two IDs identical, like "a:b" and "a!b",
+	// as both of them would be transformed as "a.b". With this procedure, one will become "a.b" and the other "a.b-1".
+	if (mangle && mangledNames.find(content) != mangledNames.end()) {
 		int & mangleID = tMangleID.localData();
-		content += "-" + convert<docstring>(mangleID++);
+		content += "-" + convert<docstring>(mangleID);
+		mangleID += 1;
 	}
 
+	// Save the new ID to avoid recomputing it afterwards and to ensure stability over the document.
 	mangledNames[orig] = content;
-
 	return content;
 }
 

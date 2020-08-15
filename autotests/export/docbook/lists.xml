@@ -2,12 +2,36 @@
 <!-- This DocBook file was created by LyX 2.4.0dev
   See http://www.lyx.org/ for more information -->
 <article xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
-<title>Test document</title>
-<para>A list:</para>
+<title>
+Test document
+</title>
+<para>
+A simple list: 
+</para>
 <itemizedlist>
 <listitem>
 <para>First item</para>
+</listitem>
+<listitem>
+<para>Second item on two lines<!-- Is para open? yes --><!-- Output Error: Closing tag `para' when other tags are open, namely: -->
+<!-- Output Error: &LyX_parsep_tag& -->
+</para>
+<para>I'm the second line<!-- Output Error: Tags still open in closeFontTags(). Probably not a problem,
+but you might want to check these tags: -->
+<!-- Output Error: para -->
+<!-- Output Error: listitem -->
+<!-- Output Error: itemizedlist -->
+<!-- Output Error: No division separation tag found in endDivision(). -->
+</para>
+</listitem>
+</itemizedlist>
+<para>
+A complex list:
+</para>
 <itemizedlist>
+<listitem>
+<para>First item</para>
+</listitem>
 <listitem>
 <para>First first item</para>
 </listitem>
@@ -15,20 +39,24 @@
 <para>First second item</para>
 </listitem>
 </itemizedlist>
-<para>Text after first item</para>
-</listitem>
+<para>
+Text after first item
+</para>
+<itemizedlist>
 <listitem>
 <para>Second item</para>
-<orderedlist>
-<listitem>
+</listitem>
+</itemizedlist>
+<orderedlist><listitem>
 <para>Second first item</para>
 </listitem>
-<listitem>
+</orderedlist>
+<orderedlist><listitem>
 <para>Second second item</para>
 </listitem>
 </orderedlist>
-<para>Text after second item</para>
-</listitem>
-</itemizedlist>
+<para>
+Text after second item
+</para>
 
 </article>

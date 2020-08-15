@@ -19,7 +19,7 @@ Style Part*
 	LabelCounter	""
 	ResetArgs       1
 	DocBookTag            bridgehead
-	DocBookAttr           renderas="part"
+	DocBookAttr           "renderas='other' otherrenderas='part'"
 	DocBookSectionTag     NONE
 	DocBookForceAbstractTag	NONE
 End
@@ -34,7 +34,7 @@ Style Chapter*
 	LabelCounter	""
 	ResetArgs       1
 	DocBookTag            bridgehead
-	DocBookAttr           renderas="chapter"
+	DocBookAttr           "renderas='other' otherrenderas='chapter'"
 	DocBookSectionTag     NONE
 	DocBookForceAbstractTag	NONE
 End

@@ -1157,10 +1157,11 @@ void InsetBibtex::docbook(XMLStream & xs, OutputParams const &) const
 
 	if (vit == ven) {
 		xs << XMLStream::ESCAPE_NONE << "<!-- No entry in the bibliography. -->";
+		xs << xml::CR();
 	}
 
 	for (; vit != ven; ++vit) {
-		BiblioInfo::const_iterator const biit = bibinfo.find(*vit);
+		auto const biit = bibinfo.find(*vit);
 		if (biit == bibinfo.end())
 			continue;
 

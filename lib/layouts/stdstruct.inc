@@ -51,8 +51,9 @@ Style Abstract
 	EndHTMLStyle
 	DocBookAbstract       true
 	DocBookInInfo         always
-	DocBookTag            abstract
-	DocBookItemTag        para
+	DocBookWrapperTag     abstract
+	DocBookWrapperMergeWithPrevious    true
+	DocBookTag            para
 End
 
 

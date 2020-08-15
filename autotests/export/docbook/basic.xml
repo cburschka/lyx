@@ -1,69 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- This DocBook file was created by LyX 2.4.0dev
   See http://www.lyx.org/ for more information -->
-<article xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.1">
-
-<info><title>I am a title</title>
-<author><personname>I am an author</personname></author>
+<article xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
+<info>
+<title>I am a title</title>
+<author>
+<personname>I am an author</personname>
+</author>
 <date>I am a date</date>
-
-<abstract><para>I am an abstract</para>
+<abstract>
+<para>I am an abstract</para>
 <para>I am also an abstract</para>
 </abstract>
 </info>
-<para>I am a standard paragraph. </para>
-<section xml:id="sec.Sec-1-0">
+<section xml:id="sec.Sec-1">
 <title>I am the first section </title>
 <para>I am the first paragraph of the first section. </para>
-
 <para>I am the second paragraph of the first section. </para>
-
-<blockquote><para>I am a quote
- <inlineequation>
-  <m:math>
-  <m:alt role='tex'>\,with\,a\,formula</m:alt>
+<blockquote>
+<para>I am a quote<inlineequation>
+<alt role='tex'>\,with\,a\,formula</alt>
+ <m:math>
+ 
  <m:mrow>
-  <m:mrow>
-  <m:mspace width="6px"/><m:mi>w</m:mi><m:mi>i</m:mi><m:mi>t</m:mi><m:mi>h</m:mi>
-  <m:mspace width="6px"/><m:mi>a</m:mi>
-  <m:mspace width="6px"/><m:mi>f</m:mi><m:mi>o</m:mi><m:mi>r</m:mi><m:mi>m</m:mi><m:mi>u</m:mi><m:mi>l</m:mi><m:mi>a</m:mi>
+  <m:mrow><m:mspace width="6px" /><m:mi>w</m:mi><m:mi>i</m:mi><m:mi>t</m:mi><m:mi>h</m:mi><m:mspace width="6px" /><m:mi>a</m:mi><m:mspace width="6px" /><m:mi>f</m:mi><m:mi>o</m:mi><m:mi>r</m:mi><m:mi>m</m:mi><m:mi>u</m:mi><m:mi>l</m:mi><m:mi>a</m:mi>
   </m:mrow>
  </m:mrow>
-  </m:math>
- </inlineequation>. </para>
+ </m:math>
+</inlineequation>. </para>
 </blockquote>
-<para>
- <informalequation>
-  <m:math>
-  <m:alt role='tex'>Formula!</m:alt>
+<para><informalequation>
+<alt role='tex'>Formula!</alt>
+ <m:math>
+ 
  <m:mrow>
   <m:mrow><m:mi>F</m:mi><m:mi>o</m:mi><m:mi>r</m:mi><m:mi>m</m:mi><m:mi>u</m:mi><m:mi>l</m:mi><m:mi>a</m:mi><m:mo>!</m:mo>
   </m:mrow>
  </m:mrow>
-  </m:math>
- </informalequation>
- <informalequation xml:id='eq.EQ.-1'>
-  <m:math>
-  <m:alt role='tex'>\text{I am a formula with a ref.}\label{eq:EQ.}</m:alt>
+ </m:math>
+</informalequation><informalequation xml:id="eq.EQ.">
+<alt role='tex'>\text{I am a formula with a ref.}\label{eq:EQ.}</alt>
+ <m:math>
+ 
  <m:mrow>
   <m:mstyle mathvariant='normal'>
    <m:mrow><m:mi>I</m:mi>&#0160;<m:mi>a</m:mi><m:mi>m</m:mi>&#0160;<m:mi>a</m:mi>&#0160;<m:mi>f</m:mi><m:mi>o</m:mi><m:mi>r</m:mi><m:mi>m</m:mi><m:mi>u</m:mi><m:mi>l</m:mi><m:mi>a</m:mi>&#0160;<m:mi>w</m:mi><m:mi>i</m:mi><m:mi>t</m:mi><m:mi>h</m:mi>&#0160;<m:mi>a</m:mi>&#0160;<m:mi>r</m:mi><m:mi>e</m:mi><m:mi>f</m:mi><m:mn>.</m:mn>
    </m:mrow>
   </m:mstyle>
  </m:mrow>
-  </m:math>
- </informalequation></para>
-
-<para>See <xref linkend="sec.Sec-2kqgsdiflhqsdlifgjuzer-povtuizmvnuer-t-vmsrmfli--uh--a--rtpfuo----rtpc.m-ca-rgifzapeu-tvgz-2" />.</para>
-
-<para>Also, a formula with an user-defined macro that outputs well in LaTeX but cannot in MathML (hence replaced by picture): 
- <inlineequation>
-  <m:math>
-  <m:alt role='tex'>\testmacro</m:alt>
-  </m:math>
- </inlineequation>. </para>
-
-<!-- \latexCommandThatShouldBeCommented --><section>
+ </m:math>
+</informalequation></para>
+<para>See <xref linkend="sec.Sec-2kqgsdiflhqsdlifgjuzer-povtuizmvnuer-t-vmsrmfli--uh--a--rtpfuo----rtpc.m-ca-rgifzapeu-tvgz" />.</para>
+<para>Also, a formula with an user-defined macro that outputs well in LaTeX but cannot in MathML (hence replaced by picture): <inlineequation>
+<alt role='tex'>\testmacro</alt>
+<mathphrase>MathML export failed. Please report this as a bug.</mathphrase>
+</inlineequation>. </para>
+<!-- \latexCommandThatShouldBeCommented -->
+<section>
 <title>I am the first subsection</title>
 <para>I am the only paragraph of the first subsection. </para>
 </section>
@@ -72,174 +65,150 @@
 <para>I am the only paragraph of the second subsection. </para>
 </section>
 </section>
-<section xml:id="sec.Sec-2kqgsdiflhqsdlifgjuzer-povtuizmvnuer-t-vmsrmfli--uh--a--rtpfuo----rtpc.m-ca-rgifzapeu-tvgz-2">
+<section xml:id="sec.Sec-2kqgsdiflhqsdlifgjuzer-povtuizmvnuer-t-vmsrmfli--uh--a--rtpfuo----rtpc.m-ca-rgifzapeu-tvgz">
 <title>I am the second section </title>
 <para>I am the only paragraph of the second section. <link xlink:href="http://example.org">Hyperlink.</link> &#8220;Text between quotes.&#8221;</para>
-
-<para>See <xref linkend="sec.Sec-1-0" />.</para>
+<para>See <xref linkend="sec.Sec-1" />.</para>
 </section>
 <section>
 <title>I am the third section and I have fun with lists</title>
+<orderedlist><listitem>First item. 
+<br />
+Second line of the first item, after a line break. </listitem></orderedlist>
+<orderedlist><listitem>Second item. </listitem></orderedlist>
+<itemizedlist><listitem>Item has no order (1). </listitem></itemizedlist>
+<itemizedlist><listitem>Item has no order (2). </listitem></itemizedlist>
+<variablelist><listitem><varlistentry>
 
+Word description<!-- Output Error: Closing tag `listitem' when other tags are open, namely: -->
+<!-- Output Error: varlistentry -->
+</varlistentry></listitem></variablelist>
+<variablelist><listitem><varlistentry>
 
-<orderedlist><listitem><para>First item. </para>
-<para>Second line of the first item, after a line break. </para>
-</listitem>
-
-<listitem><para>Second item. </para>
-</listitem>
-</orderedlist>
-
-
-<itemizedlist><listitem><para>Item has no order (1). </para>
-</listitem>
-
-<listitem><para>Item has no order (2). </para>
-</listitem>
-</itemizedlist>
-
-<variablelist><varlistentry><term>Word</term>
-
-
-<listitem><para> description</para>
-</listitem></varlistentry>
-<varlistentry><term>Sentence</term>
-
-
-<listitem><para> meaning</para>
-</listitem></varlistentry>
-</variablelist>
+Sentence meaning<!-- Output Error: Closing tag `listitem' when other tags are open, namely: -->
+<!-- Output Error: varlistentry -->
+</varlistentry></listitem></variablelist>
 </section>
 <section>
 <title>I am the fourth section and I deal with formatting. </title>
 <para>The following paragraph should be code. </para>
-
 <para><programlisting>I am some code. 
-I am a second line of code. </programlisting>I am no more code. </para>
-
+I am a second line of code. 
+</programlisting>I am no more code. </para>
 <para>This line has inline code. <code>This has typewriter font</code><footnote><para>I repeat that in a footnote.</para>
 </footnote>. </para>
-
 <para>On the other hand, <footnote><para>this footnote</para>
-
 <para>has multiple </para>
-
 <para>paragraphs.</para>
 </footnote>. </para>
 </section>
 <section>
 <title>I am the fifth section and I deal with floats</title>
 <para>Now, three tables: </para>
-
-
-<table><caption>I am a table caption below the table.</caption>
-
-
-<tbody><tr><td align='center' valign='top'>Table 1</td>
+<table>
+<caption>I am a table caption below the table.</caption>
+<tbody>
+<tr>
+<td align='center' valign='top'>Table 1</td>
 <td align='center' valign='top'>Table 2</td>
 <td align='center' valign='top'>Table 3</td>
 </tr>
-<tr><td align='center' valign='top'>Row 1</td>
+<tr>
+<td align='center' valign='top'>Row 1</td>
 <td align='center' valign='top'></td>
 <td align='center' valign='top'>Col 3, row 1</td>
 </tr>
-<tr><td align='center' valign='top'>Row 2</td>
+<tr>
+<td align='center' valign='top'>Row 2</td>
 <td align='center' valign='top'></td>
 <td align='center' valign='top'>Col 3, row 2</td>
-</tr></tbody>
-
+</tr>
+</tbody>
 </table>
-
-
-<table><caption>I am a table caption above the table.</caption>
-
-
-
-<tbody><tr><td align='center' valign='top'>Table 1</td>
+<table>
+<caption>I am a table caption above the table.</caption>
+<tbody>
+<tr>
+<td align='center' valign='top'>Table 1</td>
 <td align='center' valign='top'>Table 2</td>
 <td align='center' valign='top'>Table 3</td>
 </tr>
-<tr><td align='center' valign='top'>Row 1</td>
+<tr>
+<td align='center' valign='top'>Row 1</td>
 <td align='center' valign='top'></td>
 <td align='center' valign='top'>Col 3, row 1</td>
 </tr>
-<tr><td align='center' valign='top'>Row 2</td>
+<tr>
+<td align='center' valign='top'>Row 2</td>
 <td align='center' valign='top'></td>
 <td align='center' valign='top'>Col 3, row 2</td>
-</tr></tbody>
+</tr>
+</tbody>
 </table>
-
-
-
-
-<informaltable><tbody><tr><td align='center' valign='top'>Table that has no caption 1</td>
+<informaltable>
+<tbody>
+<tr>
+<td align='center' valign='top'>Table that has no caption 1</td>
 <td align='center' valign='top'>Table that has no caption 2</td>
 <td align='center' valign='top'>Table that has no caption 3</td>
 </tr>
-<tr><td align='center' valign='top'>Row 1</td>
+<tr>
+<td align='center' valign='top'>Row 1</td>
 <td align='center' valign='top'></td>
 <td align='center' valign='top'>Col 3, row 1</td>
 </tr>
-<tr><td align='center' valign='top'>Row 2</td>
+<tr>
+<td align='center' valign='top'>Row 2</td>
 <td align='center' valign='top'></td>
 <td align='center' valign='top'>Col 3, row 2</td>
-</tr></tbody>
+</tr>
+</tbody>
 </informaltable>
-
 <para>Then, one figure: </para>
-
-
-<figure><title>Caption.</title>
-
-
-<mediaobject><imageobject><imagedata fileref="0_mnt_d_Thibaut_LyX_autotests_export_docbook_lyx-logo.png"  />
+<figure>
+<title>Caption.</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="D:/LyX/lyx-unstable/autotests/export/docbook/lyx-logo.png"  />
 </imageobject>
 </mediaobject>
-
 </figure>
 </section>
 <section>
 <title>I am the sixth section and I really like bibliographies</title>
 <para>This text has references. First reference: <biblioref endterm="big" />. Second reference: <biblioref endterm="small" />. Both at the same time: <biblioref endterm="big" />, <biblioref endterm="small" />. A book: <biblioref endterm="Gro60" />. </para>
-
 <para>Many things, just testing for completeness: <biblioref endterm="article" />, <biblioref endterm="book" />, <biblioref endterm="booklet" />, <biblioref endterm="conference" />, <biblioref endterm="inbook" />, <biblioref endterm="incollection" />. </para>
 </section>
 <section>
 <title>I am the seventh section and I deal with indices</title>
 <para>First, a term to index: <indexterm type="idx"><primary>Term to index</primary></indexterm>. Then a term to add to the second index: <indexterm type="oth"><primary>Term to add to the second index</primary></indexterm>. </para>
-
 <para>Then several terms for the first index: <indexterm type="idx"><primary>Term</primary><secondary>to</secondary><tertiary>index</tertiary></indexterm>. </para>
-
 <para>With a see: <indexterm type="idx"><primary>Term</primary><see>index</see></indexterm>. With a see also: <indexterm type="idx"><primary>Term</primary><seealso>index</seealso></indexterm>. </para>
-
 <para>Several terms with a see: <indexterm type="idx"><primary>Term</primary><secondary>to</secondary><tertiary>index</tertiary><see>index</see></indexterm>. Several terms with a see also: <indexterm type="idx"><primary>Term</primary><secondary>to</secondary><tertiary>index</tertiary><seealso>index</seealso></indexterm>. </para>
-
-<para>A start of range: <indexterm type="idx" class="startofrange" xml:id="Term-to-index-3"><primary>Term to index</primary></indexterm>. The corresponding end of range: <indexterm type="idx" class="endofrange" startref="Term-to-index-3"><primary>Term to index</primary></indexterm>.</para>
-
-<para>Several terms with a start of range: <indexterm type="idx" class="startofrange" xml:id="Term.to.index-4"><primary>Term</primary><secondary>to</secondary><tertiary>index</tertiary></indexterm>. The corresponding end of range: <indexterm type="idx" class="endofrange" startref="Term.to.index-4"><primary>Term</primary><secondary>to</secondary><tertiary>index</tertiary></indexterm>.</para>
-
-<para>These terms already appeared before! Start of range: <indexterm type="idx" class="startofrange" xml:id="Term.to.index-0-5"><primary>Term</primary><secondary>to</secondary><tertiary>index</tertiary></indexterm>. The corresponding end of range: <indexterm type="idx" class="endofrange" startref="Term.to.index-0-5"><primary>Term</primary><secondary>to</secondary><tertiary>index</tertiary></indexterm>.</para>
+<para>A start of range: <indexterm type="idx" class="startofrange" xml:id="Term-to-index"><primary>Term to index</primary></indexterm>. The corresponding end of range: <indexterm type="idx" class="endofrange" startref="Term-to-index"><primary>Term to index</primary></indexterm>.</para>
+<para>Several terms with a start of range: <indexterm type="idx" class="startofrange" xml:id="Term.to.index"><primary>Term</primary><secondary>to</secondary><tertiary>index</tertiary></indexterm>. The corresponding end of range: <indexterm type="idx" class="endofrange" startref="Term.to.index"><primary>Term</primary><secondary>to</secondary><tertiary>index</tertiary></indexterm>.</para>
+<para>These terms already appeared before! Start of range: <indexterm type="idx" class="startofrange" xml:id="Term.to.index-0"><primary>Term</primary><secondary>to</secondary><tertiary>index</tertiary></indexterm>. The corresponding end of range: <indexterm type="idx" class="endofrange" startref="Term.to.index-0"><primary>Term</primary><secondary>to</secondary><tertiary>index</tertiary></indexterm>.</para>
 </section>
 <section>
 <title>I am the eight section and I deal with star sections</title>
-<bridgehead renderas="part">Star part</bridgehead>
+<bridgehead renderas='other' otherrenderas='part'>Star part</bridgehead>
 <bridgehead renderas="sect1">Star section (sect1)</bridgehead>
 <bridgehead renderas="sect2">Star subsection (sect2)</bridgehead>
 <bridgehead renderas="sect3">Star subsubsection (sect3)</bridgehead>
 <bridgehead renderas="sect4">Star paragraph (sect4)</bridgehead>
 <bridgehead renderas="sect5">Star subparagraph (sect5)</bridgehead>
 </section>
-
-<bibliography><title>References</title>
-
-<biblioentry xml:id="article"><title>The title of the work</title><volumenum>4</volumenum><artpagenums>201-213</artpagenums><bibliomisc role="type">article</bibliomisc>
+<bibliography>
+<title>References</title>
+<biblioentry xml:id="article">
+<title>The title of the work</title><volumenum>4</volumenum><artpagenums>201-213</artpagenums><bibliomisc role="type">article</bibliomisc>
 <pubdate>1993</pubdate>
-
-<biblioset relation="journal"><title>The name of the journal</title>
+<biblioset relation="journal">
+<title>The name of the journal</title>
 </biblioset>
-
-
-<authorgroup><author><personname><firstname>Peter</firstname>
+<authorgroup><author>
+<personname>
+<firstname>Peter</firstname>
 <surname>Adams</surname>
 </personname>
 </author>
@@ -247,119 +216,119 @@ I am a second line of code. </programlisting>I am no more code. </para>
 <biblioid class="pubsnumber">2</biblioid>
 <bibliomisc role="note">An optional note</bibliomisc>
 </biblioentry>
-
-<biblioentry xml:id="book"><title>The title of the work</title><volumenum>4</volumenum><edition>3</edition><bibliomisc role="type">book</bibliomisc>
-
-<publisher><publishername>The name of the publisher</publishername>
+<biblioentry xml:id="book">
+<title>The title of the work</title><volumenum>4</volumenum><edition>3</edition><bibliomisc role="type">book</bibliomisc>
+<publisher>
+<publishername>The name of the publisher</publishername>
 <address>The address</address></publisher>
 <pubdate>1993</pubdate>
-
-
-<authorgroup><author><personname><firstname>Peter</firstname>
+<authorgroup><author>
+<personname>
+<firstname>Peter</firstname>
 <surname>Babington</surname>
 </personname>
 </author>
 </authorgroup>
 <bibliomisc role="note">An optional note</bibliomisc>
 </biblioentry>
-
-<biblioentry xml:id="booklet"><title>The title of the work</title><bibliomisc role="type">booklet</bibliomisc>
+<biblioentry xml:id="booklet">
+<title>The title of the work</title><bibliomisc role="type">booklet</bibliomisc>
 <pubdate>1993</pubdate>
-
-
-<authorgroup><author><personname><firstname>Peter</firstname>
+<authorgroup><author>
+<personname>
+<firstname>Peter</firstname>
 <surname>Caxton</surname>
 </personname>
 </author>
 </authorgroup>
 </biblioentry>
-
-<biblioentry xml:id="conference"><title>The title of the work</title><artpagenums>213</artpagenums><bibliomisc role="type">conference</bibliomisc>
-
-<publisher><publishername>The publisher</publishername>
+<biblioentry xml:id="conference">
+<title>The title of the work</title><artpagenums>213</artpagenums><bibliomisc role="type">conference</bibliomisc>
+<publisher>
+<publishername>The publisher</publishername>
 </publisher>
 <pubdate>1993</pubdate>
-
-
-<authorgroup><author><personname><firstname>Peter</firstname>
+<authorgroup><author>
+<personname>
+<firstname>Peter</firstname>
 <surname>Draper</surname>
 </personname>
 </author>
 </authorgroup>
 </biblioentry>
-
-<biblioentry xml:id="inbook"><title>The title of the work</title><artpagenums>201-213</artpagenums><bibliomisc role="type">inbook</bibliomisc>
-
-<publisher><publishername>The name of the publisher</publishername>
+<biblioentry xml:id="inbook">
+<title>The title of the work</title><artpagenums>201-213</artpagenums><bibliomisc role="type">inbook</bibliomisc>
+<publisher>
+<publishername>The name of the publisher</publishername>
 </publisher>
 <pubdate>1993</pubdate>
-
-
-<authorgroup><author><personname><firstname>Peter</firstname>
+<authorgroup><author>
+<personname>
+<firstname>Peter</firstname>
 <surname>Eston</surname>
 </personname>
 </author>
 </authorgroup>
 </biblioentry>
-
-<biblioentry xml:id="incollection"><title>The title of the work</title><volumenum>4</volumenum><edition>3</edition><artpagenums>201-213</artpagenums><bibliomisc role="type">incollection</bibliomisc>
-
-<publisher><publishername>The name of the publisher</publishername>
+<biblioentry xml:id="incollection">
+<title>The title of the work</title><volumenum>4</volumenum><edition>3</edition><artpagenums>201-213</artpagenums><bibliomisc role="type">incollection</bibliomisc>
+<publisher>
+<publishername>The name of the publisher</publishername>
 <address>The address of the publisher</address></publisher>
 <pubdate>1993</pubdate>
-
-<biblioset relation="book"><title>The title of the book</title>
+<biblioset relation="book">
+<title>The title of the book</title>
 </biblioset>
-
-
-<authorgroup><author><personname><firstname>Peter</firstname>
+<authorgroup><author>
+<personname>
+<firstname>Peter</firstname>
 <surname>Farindon</surname>
 </personname>
 </author>
 </authorgroup>
 <bibliomisc role="note">An optional note</bibliomisc>
 </biblioentry>
-
-<biblioentry xml:id="small"><title>A small paper</title><volumenum>-1</volumenum><bibliomisc role="type">article</bibliomisc>
+<biblioentry xml:id="small">
+<title>A small paper</title><volumenum>-1</volumenum><bibliomisc role="type">article</bibliomisc>
 <pubdate>1997</pubdate>
-
-<biblioset relation="journal"><title>The journal of small papers</title>
+<biblioset relation="journal">
+<title>The journal of small papers</title>
 </biblioset>
-
-
-<authorgroup><author><personname><surname>Freely</surname>
+<authorgroup><author>
+<personname>
+<surname>Freely</surname>
 <othername role="suffix">I. P.</othername>
 </personname>
 </author>
-
-
-<author><personname><firstname>Ditto</firstname>
+<author>
+<personname>
+<firstname>Ditto</firstname>
 <surname>Johannes</surname>
 </personname>
 </author>
 </authorgroup>
 <bibliomisc role="note">to appear</bibliomisc>
 </biblioentry>
-
-<biblioentry xml:id="Gro60."><title>Éléments de géométrie algébrique</title><bibliomisc role="type">book</bibliomisc>
+<biblioentry xml:id="Gro60">
+<title>Éléments de géométrie algébrique</title><bibliomisc role="type">book</bibliomisc>
 <pubdate>1960</pubdate>
-
-
-<authorgroup><author><personname><firstname>Alexander</firstname>
+<authorgroup><author>
+<personname>
+<firstname>Alexander</firstname>
 <surname>Grothendieck</surname>
 </personname>
 </author>
 </authorgroup>
 </biblioentry>
-
-<biblioentry xml:id="big"><title>A big paper</title><volumenum>MCMXCVII</volumenum><bibliomisc role="type">article</bibliomisc>
+<biblioentry xml:id="big">
+<title>A big paper</title><volumenum>MCMXCVII</volumenum><bibliomisc role="type">article</bibliomisc>
 <pubdate>7991</pubdate>
-
-<biblioset relation="journal"><title>The journal of big papers</title>
+<biblioset relation="journal">
+<title>The journal of big papers</title>
 </biblioset>
-
-
-<authorgroup><author><personname><firstname>Hugh</firstname>
+<authorgroup><author>
+<personname>
+<firstname>Hugh</firstname>
 <surname>Jass</surname>
 </personname>
 </author>

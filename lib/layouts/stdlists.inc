@@ -43,7 +43,9 @@ Style Itemize
 			Color latex
 		EndFont
 	EndArgument
-	DocBookTag            itemizedlist
+	DocBookWrapperTag     itemizedlist
+	DocBookWrapperMergeWithPrevious    true
+	DocBookTag            NONE
 	DocBookItemTag        listitem
 	DocBookItemInnerTag   para
 End

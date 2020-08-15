@@ -2471,7 +2471,8 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 		osmath << ostmp.str(); // osmath is not a XMLStream, so no need for XMLStream::ESCAPE_NONE.
 		ms << ETag("math");
 	} catch (MathExportException const &) {
-		osmath << "MathML export failed. Please report this as a bug.";
+		ms.cr();
+		osmath << "<mathphrase>MathML export failed. Please report this as a bug.</mathphrase>";
 	}
 
 	// Output the complete formula to the DocBook stream.

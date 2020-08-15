@@ -43,6 +43,8 @@
 #include <algorithm>
 #include <sstream>
 
+// #define DOCBOOK_DEBUG_NEWLINES
+
 using namespace std;
 using namespace lyx::support;
 
@@ -191,6 +193,10 @@ namespace {
 
 void openParTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar)
 {
+#ifdef DOCBOOK_DEBUG_NEWLINES
+	xs << XMLStream::ESCAPE_NONE << "<!-- openParTag -->";
+#endif
+
 	Layout const & lay = par->layout();
 
 	if (par == prevpar)
@@ -212,29 +218,43 @@ void openParTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar
 	}
 
 	// Main logic.
-	if (openWrapper)
+	if (openWrapper) {
 		xs << xml::StartTag(lay.docbookwrappertag(), lay.docbookwrapperattr());
+		xs << xml::CR();
+	}
 
 	string tag = lay.docbooktag();
-	if (tag == "Plain Layout")
-		tag = "para";
+	if (tag != "NONE") {
+		auto xmltag = xml::ParTag(tag, lay.docbookattr());
+		if (!xs.isTagOpen(xmltag, 1)) // Don't nest a paragraph directly in a paragraph. TODO: required or not?
+			xs << xmltag;
+	}
 
-	if (!xs.isTagOpen(xml::ParTag(tag, lay.docbookattr()), 1)) // Don't nest a paragraph directly in a paragraph.
-		xs << xml::ParTag(tag, lay.docbookattr());
-
-	if (lay.docbookitemtag() != "NONE")
+	if (lay.docbookitemtag() != "NONE") {
 		xs << xml::StartTag(lay.docbookitemtag(), lay.docbookitemattr());
+		xs << xml::CR();
+	}
+
+	if (lay.docbookiteminnertag() != "NONE")
+		xs << xml::StartTag(lay.docbookiteminnertag(), lay.docbookiteminnerattr());
+
+#ifdef DOCBOOK_DEBUG_NEWLINES
+	xs << XMLStream::ESCAPE_NONE << "<!-- /openParTag -->";
+#endif
 }
 
 
-void closeTag(XMLStream & xs, Paragraph const * par, Paragraph const * nextpar)
+void closeParTag(XMLStream & xs, Paragraph const * par, Paragraph const * nextpar)
 {
-	Layout const & lay = par->layout();
+#ifdef DOCBOOK_DEBUG_NEWLINES
+	xs << XMLStream::ESCAPE_NONE << "<!-- closeParTag -->";
+#endif
 
 	if (par == nextpar)
 		nextpar = nullptr;
 
 	// See comment in openParTag.
+	Layout const & lay = par->layout();
 	bool closeWrapper = lay.docbookwrappertag() != "NONE";
 	if (nextpar != nullptr) {
 		Layout const & nextlay = nextpar->layout();
@@ -245,132 +265,133 @@ void closeTag(XMLStream & xs, Paragraph const * par, Paragraph const * nextpar)
 	}
 
 	// Main logic.
-	if (lay.docbookitemtag() != "NONE")
+	if (lay.docbookiteminnertag() != "NONE") {
+		xs << xml::EndTag(lay.docbookiteminnertag());
+		xs << xml::CR();
+	}
+
+	if (lay.docbookitemtag() != "NONE") {
 		xs << xml::EndTag(lay.docbookitemtag());
+		xs << xml::CR();
+	}
 
-	string tag = lay.docbooktag();
-	if (tag == "Plain Layout")
-		tag = "para";
+	if (lay.docbooktag() != "NONE") {
+		xs << xml::EndTag(lay.docbooktag());
+		xs << xml::CR();
+	}
 
-	xs << xml::EndTag(tag);
-	if (closeWrapper)
+	if (closeWrapper) {
 		xs << xml::EndTag(lay.docbookwrappertag());
+		xs << xml::CR();
+	}
+
+#ifdef DOCBOOK_DEBUG_NEWLINES
+	xs << XMLStream::ESCAPE_NONE << "<!-- /closeParTag -->";
+#endif
+}
+
+
+void openBlockTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar)
+{
+#ifdef DOCBOOK_DEBUG_NEWLINES
+	xs << XMLStream::ESCAPE_NONE << "<!-- openBlockTag -->";
+#endif
+
+	// Similar as openParTag, but with a line feed after.
+	openParTag(xs, par, prevpar);
+	xs << xml::CR();
+
+#ifdef DOCBOOK_DEBUG_NEWLINES
+	xs << XMLStream::ESCAPE_NONE << "<!-- /openBlockTag -->";
+#endif
+}
+
+
+void closeBlockTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar)
+{
+#ifdef DOCBOOK_DEBUG_NEWLINES
+	xs << XMLStream::ESCAPE_NONE << "<!-- closeBlockTag -->";
+#endif
+
+	// Similar as closeParTag, but with a line feed before.
+	xs << xml::CR();
+	closeParTag(xs, par, prevpar);
+
+#ifdef DOCBOOK_DEBUG_NEWLINES
+	xs << XMLStream::ESCAPE_NONE << "<!-- /closeBlockTag -->";
+#endif
 }
 
 
 void openLabelTag(XMLStream & xs, Layout const & lay) // Mostly for definition lists.
 {
+#ifdef DOCBOOK_DEBUG_NEWLINES
+	xs << XMLStream::ESCAPE_NONE << "<!-- openLabelTag -->";
+#endif
+
 	xs << xml::StartTag(lay.docbookitemlabeltag(), lay.docbookitemlabelattr());
+
+#ifdef DOCBOOK_DEBUG_NEWLINES
+	xs << XMLStream::ESCAPE_NONE << "<!-- /openLabelTag -->";
+#endif
 }
 
 
 void closeLabelTag(XMLStream & xs, Layout const & lay)
 {
+#ifdef DOCBOOK_DEBUG_NEWLINES
+	xs << XMLStream::ESCAPE_NONE << "<!-- closeLabelTag -->";
+#endif
+
 	xs << xml::EndTag(lay.docbookitemlabeltag());
 	xs << xml::CR();
+
+#ifdef DOCBOOK_DEBUG_NEWLINES
+	xs << XMLStream::ESCAPE_NONE << "<!-- closeLabelTag -->";
+#endif
 }
 
 
 void openItemTag(XMLStream & xs, Layout const & lay)
 {
+#ifdef DOCBOOK_DEBUG_NEWLINES
+	xs << XMLStream::ESCAPE_NONE << "<!-- openItemTag -->";
+#endif
+
 	xs << xml::StartTag(lay.docbookitemtag(), lay.docbookitemattr());
+
+#ifdef DOCBOOK_DEBUG_NEWLINES
+	xs << XMLStream::ESCAPE_NONE << "<!-- /openItemTag -->";
+#endif
 }
 
 
-// Return true when new elements are output in a paragraph, false otherwise.
-bool openInnerItemTag(XMLStream & xs, Layout const & lay)
+void closeItemTag(XMLStream & xs, Layout const & lay)
 {
-	if (lay.docbookiteminnertag() != "NONE") {
-		xs << xml::CR();
-		xs << xml::ParTag(lay.docbookiteminnertag(), lay.docbookiteminnerattr());
+#ifdef DOCBOOK_DEBUG_NEWLINES
+	xs << XMLStream::ESCAPE_NONE << "<!-- closeItemTag -->";
+#endif
 
-		if (lay.docbookiteminnertag() == "para") {
-			return true;
-		}
-	}
-	return false;
-}
-
-
-void closeInnerItemTag(XMLStream & xs, Layout const & lay)
-{
-	if (lay.docbookiteminnertag()!= "NONE") {
-		xs << xml::EndTag(lay.docbookiteminnertag());
-		xs << xml::CR();
-	}
-}
-
-
-inline void closeItemTag(XMLStream & xs, Layout const & lay)
-{
 	xs << xml::EndTag(lay.docbookitemtag());
 	xs << xml::CR();
-}
 
-// end of convenience functions
-
-ParagraphList::const_iterator findLast(
-		ParagraphList::const_iterator p,
-		ParagraphList::const_iterator const & pend,
-		LatexType type) {
-	for (++p; p != pend && p->layout().latextype == type; ++p);
-
-	return p;
-}
-
-ParagraphList::const_iterator findLastBibliographyParagraph(
-		ParagraphList::const_iterator p,
-		ParagraphList::const_iterator const & pend) {
-	for (++p; p != pend && p->layout().latextype == LATEX_BIB_ENVIRONMENT; ++p);
-
-	return p;
+#ifdef DOCBOOK_DEBUG_NEWLINES
+	xs << XMLStream::ESCAPE_NONE << "<!-- /closeItemTag -->";
+#endif
 }
 
 
-ParagraphList::const_iterator findEndOfEnvironment(
-		ParagraphList::const_iterator const & pstart,
-		ParagraphList::const_iterator const & pend)
-{
-	ParagraphList::const_iterator p = pstart;
-	size_t const depth = p->params().depth();
-
-	for (++p; p != pend; ++p) {
-		Layout const &style = p->layout();
-		// It shouldn't happen that e.g. a section command occurs inside
-		// a quotation environment, at a higher depth, but as of 6/2009,
-		// it can happen. We pretend that it's just at lowest depth.
-		if (style.latextype == LATEX_COMMAND)
-			return p;
-
-		// If depth is down, we're done
-		if (p->params().depth() < depth)
-			return p;
-
-		// If depth is up, we're not done
-		if (p->params().depth() > depth)
-			continue;
-
-		// FIXME I am not sure about the first check.
-		// Surely we *could* have different layouts that count as
-		// LATEX_PARAGRAPH, right?
-		if (style.latextype == LATEX_PARAGRAPH || style != p->layout())
-			return p;
-	}
-
-	return pend;
-}
-
-
-ParagraphList::const_iterator makeParagraphBibliography(
-		Buffer const &buf,
-		XMLStream &xs,
-		OutputParams const &runparams,
-		Text const &text,
-		ParagraphList::const_iterator const & pbegin,
-		ParagraphList::const_iterator const & pend)
+void makeParagraphBibliography(
+		Buffer const & buf,
+		XMLStream & xs,
+		OutputParams const & runparams,
+		Text const & text,
+		ParagraphList::const_iterator const & pbegin)
 {
 	auto const begin = text.paragraphs().begin();
 	auto const end = text.paragraphs().end();
+	auto pend = pbegin;
+	++pend;
 
 	// Find the paragraph *before* pbegin.
 	ParagraphList::const_iterator pbegin_before = begin;
@@ -420,322 +441,203 @@ ParagraphList::const_iterator makeParagraphBibliography(
 		xs << xml::EndTag("bibliography");
 		xs << xml::CR();
 	}
-
-	return pend;
 }
 
 
-ParagraphList::const_iterator makeParagraphs(
-		Buffer const &buf,
-		XMLStream &xs,
-		OutputParams const &runparams,
-		Text const &text,
-		ParagraphList::const_iterator const & pbegin,
-		ParagraphList::const_iterator const & pend)
+void makeParagraph(
+		Buffer const & buf,
+		XMLStream & xs,
+		OutputParams const & runparams,
+		Text const & text,
+		ParagraphList::const_iterator const & par)
 {
 	auto const begin = text.paragraphs().begin();
 	auto const end = text.paragraphs().end();
-	ParagraphList::const_iterator par = pbegin;
-	ParagraphList::const_iterator prevpar = pbegin;
+	auto prevpar = text.paragraphs().getParagraphBefore(par);
 
-	for (; par != pend; prevpar = par, ++par) {
-		// We want to open the paragraph tag if:
-		//   (i) the current layout permits multiple paragraphs
-		//  (ii) we are either not already inside a paragraph (HTMLIsBlock) OR
-		//	   we are, but this is not the first paragraph
-		//
-		// But there is also a special case, and we first see whether we are in it.
-		// We do not want to open the paragraph tag if this paragraph contains
-		// only one item, and that item is "inline", i.e., not HTMLIsBlock (such
-		// as a branch). On the other hand, if that single item has a font change
-		// applied to it, then we still do need to open the paragraph.
-		//
-		// Obviously, this is very fragile. The main reason we need to do this is
-		// because of branches, e.g., a branch that contains an entire new section.
-		// We do not really want to wrap that whole thing in a <div>...</div>.
-		bool special_case = false;
-		Inset const *specinset = par->size() == 1 ? par->getInset(0) : nullptr;
-		if (specinset && !specinset->getLayout().htmlisblock()) { // TODO: Convert htmlisblock to a DocBook parameter?
-			Layout const &style = par->layout();
-			FontInfo const first_font = style.labeltype == LABEL_MANUAL ?
-										style.labelfont : style.font;
-			FontInfo const our_font =
-					par->getFont(buf.masterBuffer()->params(), 0,
-								 text.outerFont(distance(begin, par))).fontInfo();
+	// We want to open the paragraph tag if:
+	//   (i) the current layout permits multiple paragraphs
+	//  (ii) we are either not already inside a paragraph (HTMLIsBlock) OR
+	//	   we are, but this is not the first paragraph
+	//
+	// But there is also a special case, and we first see whether we are in it.
+	// We do not want to open the paragraph tag if this paragraph contains
+	// only one item, and that item is "inline", i.e., not HTMLIsBlock (such
+	// as a branch). On the other hand, if that single item has a font change
+	// applied to it, then we still do need to open the paragraph.
+	//
+	// Obviously, this is very fragile. The main reason we need to do this is
+	// because of branches, e.g., a branch that contains an entire new section.
+	// We do not really want to wrap that whole thing in a <div>...</div>.
+	bool special_case = false;
+	Inset const *specinset = par->size() == 1 ? par->getInset(0) : nullptr;
+	if (specinset && !specinset->getLayout().htmlisblock()) { // TODO: Convert htmlisblock to a DocBook parameter?
+		Layout const &style = par->layout();
+		FontInfo const first_font = style.labeltype == LABEL_MANUAL ?
+									style.labelfont : style.font;
+		FontInfo const our_font =
+				par->getFont(buf.masterBuffer()->params(), 0,
+							 text.outerFont(std::distance(begin, par))).fontInfo();
 
-			if (first_font == our_font)
-				special_case = true;
-		}
-
-		// Plain layouts must be ignored.
-		if (!special_case && buf.params().documentClass().isPlainLayout(par->layout()) && !runparams.docbook_force_pars)
+		if (first_font == our_font)
 			special_case = true;
-		// TODO: Could get rid of this with a DocBook equivalent to htmlisblock?
-		if (!special_case && par->size() == 1 && par->getInset(0)) {
-			Inset const * firstInset = par->getInset(0);
-
-			// Floats cannot be in paragraphs.
-			special_case = to_utf8(firstInset->layoutName()).substr(0, 6) == "Float:";
-
-			// Bibliographies cannot be in paragraphs.
-			if (!special_case && firstInset->asInsetCommand())
-				special_case = firstInset->asInsetCommand()->params().getCmdName() == "bibtex";
-
-			// Equations do not deserve their own paragraph (DocBook allows them outside paragraphs).
-			if (!special_case && firstInset->asInsetMath())
-				special_case = true;
-
-			// ERTs are in comments, not paragraphs.
-			if (!special_case && firstInset->lyxCode() == lyx::ERT_CODE)
-				special_case = true;
-
-			// Listings should not get into their own paragraph.
-			if (!special_case && firstInset->lyxCode() == lyx::LISTINGS_CODE)
-				special_case = true;
-		}
-
-		bool const open_par = runparams.docbook_make_pars
-							  && (!runparams.docbook_in_par || par != pbegin)
-							  && !special_case;
-
-		// We want to issue the closing tag if either:
-		//   (i)  We opened it, and either docbook_in_par is false,
-		//		or we're not in the last paragraph, anyway.
-		//   (ii) We didn't open it and docbook_in_par is true,
-		//		but we are in the first par, and there is a next par.
-		auto nextpar = par;
-		++nextpar;
-		bool const close_par =
-				((open_par && (!runparams.docbook_in_par || nextpar != pend))
-				|| (!open_par && runparams.docbook_in_par && par == pbegin && nextpar != pend));
-
-		// Determine if this paragraph has some real content. Things like new pages are not caught
-		// by Paragraph::empty(), even though they do not generate anything useful in DocBook.
-		odocstringstream os2;
-		XMLStream xs2(os2);
-		par->simpleDocBookOnePar(buf, xs2, runparams, text.outerFont(distance(begin, par)), open_par, close_par, 0);
-
-		docstring cleaned = os2.str();
-		static const lyx::regex reg("[ \\r\\n]*");
-		cleaned = from_utf8(lyx::regex_replace(to_utf8(cleaned), reg, string("")));
-
-		if (!cleaned.empty()) {
-			if (open_par)
-				openParTag(xs, &*par, &*prevpar);
-
-			xs << XMLStream::ESCAPE_NONE << os2.str();
-
-			if (close_par) {
-				closeTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr);
-				xs << xml::CR();
-			}
-		}
 	}
-	return pend;
+
+	// Plain layouts must be ignored.
+	if (!special_case && buf.params().documentClass().isPlainLayout(par->layout()) && !runparams.docbook_force_pars)
+		special_case = true;
+	// TODO: Could get rid of this with a DocBook equivalent to htmlisblock?
+	if (!special_case && par->size() == 1 && par->getInset(0)) {
+		Inset const * firstInset = par->getInset(0);
+
+		// Floats cannot be in paragraphs.
+		special_case = to_utf8(firstInset->layoutName()).substr(0, 6) == "Float:";
+
+		// Bibliographies cannot be in paragraphs.
+		if (!special_case && firstInset->asInsetCommand())
+			special_case = firstInset->asInsetCommand()->params().getCmdName() == "bibtex";
+
+		// Equations do not deserve their own paragraph (DocBook allows them outside paragraphs).
+		if (!special_case && firstInset->asInsetMath())
+			special_case = true;
+
+		// ERTs are in comments, not paragraphs.
+		if (!special_case && firstInset->lyxCode() == lyx::ERT_CODE)
+			special_case = true;
+
+		// Listings should not get into their own paragraph.
+		if (!special_case && firstInset->lyxCode() == lyx::LISTINGS_CODE)
+			special_case = true;
+	}
+
+	bool const open_par = runparams.docbook_make_pars
+						  && !runparams.docbook_in_par
+						  && !special_case;
+
+	// We want to issue the closing tag if either:
+	//   (i)  We opened it, and either docbook_in_par is false,
+	//		or we're not in the last paragraph, anyway.
+	//   (ii) We didn't open it and docbook_in_par is true,
+	//		but we are in the first par, and there is a next par.
+	auto nextpar = par;
+	++nextpar;
+	bool const close_par = open_par && (!runparams.docbook_in_par);
+
+	// Determine if this paragraph has some real content. Things like new pages are not caught
+	// by Paragraph::empty(), even though they do not generate anything useful in DocBook.
+	odocstringstream os2;
+	XMLStream xs2(os2);
+	par->simpleDocBookOnePar(buf, xs2, runparams, text.outerFont(distance(begin, par)), open_par, close_par, 0);
+
+	docstring cleaned = os2.str();
+	static const lyx::regex reg("[ \\r\\n]*");
+	cleaned = from_utf8(lyx::regex_replace(to_utf8(cleaned), reg, string("")));
+
+	if (!cleaned.empty()) {
+		if (open_par)
+			openParTag(xs, &*par, prevpar);
+
+		xs << XMLStream::ESCAPE_NONE << os2.str();
+
+		if (close_par)
+			closeParTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr);
+	}
 }
 
 
-bool isNormalEnv(Layout const &lay)
-{
-	return lay.latextype == LATEX_ENVIRONMENT
-		   || lay.latextype == LATEX_BIB_ENVIRONMENT;
-}
+void makeAny(
+		Text const &text,
+		Buffer const &buf,
+		XMLStream &xs,
+		OutputParams const &ourparams,
+		ParagraphList::const_iterator par);
 
 
-ParagraphList::const_iterator makeEnvironment(
+void makeEnvironment(
 		Buffer const &buf,
 		XMLStream &xs,
 		OutputParams const &runparams,
 		Text const &text,
-		ParagraphList::const_iterator const & pbegin,
-		ParagraphList::const_iterator const & pend)
+		ParagraphList::const_iterator const & par)
 {
-	auto const begin = text.paragraphs().begin();
 	auto const end = text.paragraphs().end();
-	ParagraphList::const_iterator par = pbegin;
-	depth_type const origdepth = pbegin->params().depth();
 
-	// Output the opening tag for this environment.
-	{
-		// Find the previous paragraph.
-		auto prevpar = begin;
-		if (prevpar != par) {
-			auto prevpar_next = prevpar;
-			++prevpar_next;
+	// Output the opening tag for this environment, but only if it has not been previously opened (condition
+	// implemented in openParTag).
+	auto prevpar = text.paragraphs().getParagraphBefore(par);
+	openParTag(xs, &*par, prevpar); // TODO: switch in layout for par/block?
 
-			while (prevpar_next != par) {
-				++prevpar_next;
-				++prevpar;
-			}
-		}
-
-		// Open tag for this environment.
-		openParTag(xs, &*par, &*prevpar);
-		xs << xml::CR();
-	}
-
-	// we will on occasion need to remember a layout from before.
-	Layout const *lastlay = nullptr;
-	auto prevpar = par;
-
-	while (par != pend) {
-		Layout const & style = par->layout();
-		ParagraphList::const_iterator send;
-
-		auto parnext = par;
-		++parnext;
-
-		// Actual content of this paragraph.
-		prevpar = par;
-		switch (style.latextype) {
-		case LATEX_ENVIRONMENT:
-		case LATEX_LIST_ENVIRONMENT:
-		case LATEX_ITEM_ENVIRONMENT: {
-			// There are two possibilities in this case.
-			// One is that we are still in the environment in which we
-			// started---which we will be if the depth is the same.
-			if (par->params().depth() == origdepth) {
-				LATTEST(par->layout() == style);
-				if (lastlay != nullptr) {
-					closeItemTag(xs, *lastlay);
-					if (lastlay->docbookitemwrappertag() != "NONE") {
-						xs << xml::EndTag(lastlay->docbookitemwrappertag());
-						xs << xml::CR();
-					}
-					lastlay = nullptr;
-				}
-
-				// this will be positive if we want to skip the
-				// initial word (if it's been taken for the label).
-				pos_type sep = 0;
-
-				// Open a wrapper tag if needed.
-				if (style.docbookitemwrappertag() != "NONE") {
-					xs << xml::StartTag(style.docbookitemwrappertag(), style.docbookitemwrapperattr());
-					xs << xml::CR();
-				}
-
-				// label output
-				if (style.labeltype != LABEL_NO_LABEL &&
-						style.docbookitemlabeltag() != "NONE") {
-
-					if (isNormalEnv(style)) {
-						// in this case, we print the label only for the first
-						// paragraph (as in a theorem or an abstract).
-						if (par == pbegin) {
-							docstring const lbl = pbegin->params().labelString();
-							if (!lbl.empty()) {
-								openLabelTag(xs, style);
-								xs << lbl;
-								closeLabelTag(xs, style);
-							} else {
-								// No new line after closeLabelTag.
-								xs << xml::CR();
-							}
-						}
-					} else { // some kind of list
-						if (style.labeltype == LABEL_MANUAL) {
-							// Only variablelist gets here.
-
-							openLabelTag(xs, style);
-							sep = par->firstWordDocBook(xs, runparams);
-							closeLabelTag(xs, style);
-						} else {
-							openLabelTag(xs, style);
-							xs << par->params().labelString();
-							closeLabelTag(xs, style);
-						}
-					}
-				} // end label output
-
-				// Start generating the item.
-				bool wasInParagraph = runparams.docbook_in_par;
-				openItemTag(xs, style);
-				bool getsIntoParagraph = openInnerItemTag(xs, style);
-				OutputParams rp = runparams;
-				rp.docbook_in_par = wasInParagraph | getsIntoParagraph;
-
-				// Maybe the item is completely empty, i.e. if the first word ends at the end of the current paragraph
-				// AND if the next paragraph doesn't have the same depth (if there is such a paragraph).
-				// Common case: there is only the first word on the line, but there is a nested list instead
-				// of more text.
-				bool emptyItem = false;
-				if (sep == par->size()) {
-					auto next_par = par;
-					++next_par;
-					if (next_par == text.paragraphs().end()) // There is no next paragraph.
-						emptyItem = true;
-					else // There is a next paragraph: check depth.
-						emptyItem = par->params().depth() >= next_par->params().depth();
-				}
-
-				if (emptyItem) {
-					// Avoid having an empty item, this is not valid DocBook. A single character is enough to force
-					// generation of a full <para>.
-					xs << ' ';
-				} else {
-					// Generate the rest of the paragraph, if need be.
-					par->simpleDocBookOnePar(buf, xs, rp, text.outerFont(distance(begin, par)), true, true, sep);
-				}
-
-				++par;
-				if (getsIntoParagraph)
-					closeInnerItemTag(xs, style);
-
-				// We may not want to close the tag yet, in particular:
-				// If we're not at the end of the item...
-				if (par != pend
-					//  and are doing items...
-					&& !isNormalEnv(style)
-					// and if the depth has changed...
-					&& par->params().depth() != origdepth) {
-					// then we'll save this layout for later, and close it when
-					// we get another item.
-					lastlay = &style;
-				} else {
-					closeItemTag(xs, style);
-
-					// Eventually, close the item wrapper.
-					if (style.docbookitemwrappertag() != "NONE") {
-						xs << xml::EndTag(style.docbookitemwrappertag());
-						xs << xml::CR();
-					}
-				}
-			}
-			// The other possibility is that the depth has increased.
-			else {
-				send = findEndOfEnvironment(par, pend);
-				par = makeEnvironment(buf, xs, runparams, text, par, send);
-			}
-			break;
-		}
-		case LATEX_PARAGRAPH:
-//			send = findLast(par, pend, LATEX_PARAGRAPH);
-			par = makeParagraphs(buf, xs, runparams, text, par, parnext);
-			break;
-		case LATEX_BIB_ENVIRONMENT:
-//			send = findLast(par, pend, LATEX_BIB_ENVIRONMENT);
-			makeParagraphBibliography(buf, xs, runparams, text, par, parnext);
-			break;
-		case LATEX_COMMAND:
-			par = parnext;
-			break;
-		}
-	}
-
-	if (lastlay != nullptr) {
-		closeItemTag(xs, *lastlay);
-		if (lastlay->docbookitemwrappertag() != "NONE") {
-			xs << xml::EndTag(lastlay->docbookitemwrappertag());
+	// Generate the contents of this environment. There is a special case if this is like some environment.
+	Layout const & style = par->layout();
+	if (style.latextype == LATEX_COMMAND) {
+		// Nothing to do (otherwise, infinite loops).
+	} else if (style.latextype == LATEX_ENVIRONMENT ||
+			style.latextype == LATEX_LIST_ENVIRONMENT ||
+			style.latextype == LATEX_ITEM_ENVIRONMENT) {
+		// Open a wrapper tag if needed.
+		if (style.docbookitemwrappertag() != "NONE") {
+			xs << xml::StartTag(style.docbookitemwrappertag(), style.docbookitemwrapperattr());
 			xs << xml::CR();
 		}
+
+		// Generate the label, if need be. If it is taken from the text, sep != 0 and corresponds to the first
+		// character after the label.
+		pos_type sep = 0;
+		if (style.labeltype != LABEL_NO_LABEL && style.docbookitemlabeltag() != "NONE") {
+			// At least one condition must be met:
+			//  - this environment is not a list
+			//  - if this is a list, the label must not be manual (i.e. it must be taken from the layout)
+			if (style.latextype != LATEX_LIST_ENVIRONMENT || style.labeltype != LABEL_MANUAL) {
+				// Usual cases: maybe there is something specified at the layout level. Highly unlikely, though.
+				docstring const lbl = par->params().labelString();
+
+				if (lbl.empty()) {
+					xs << xml::CR();
+				} else {
+					openLabelTag(xs, style);
+					xs << lbl;
+					closeLabelTag(xs, style);
+				}
+			} else {
+				// Only variablelist gets here (or similar items defined as an extension in the layout).
+				openLabelTag(xs, style);
+				sep = par->firstWordDocBook(xs, runparams);
+				closeLabelTag(xs, style);
+			}
+		}
+
+		// Maybe the item is completely empty, i.e. if the first word ends at the end of the current paragraph
+		// AND if the next paragraph doesn't have the same depth (if there is such a paragraph).
+		// Common case: there is only the first word on the line, but there is a nested list instead
+		// of more text.
+		bool emptyItem = false;
+		if (sep == par->size()) { // If the separator is already at the end of this paragraph...
+			auto next_par = par;
+			++next_par;
+			if (next_par == text.paragraphs().end()) // There is no next paragraph.
+				emptyItem = true;
+			else // There is a next paragraph: check depth.
+				emptyItem = par->params().depth() >= next_par->params().depth();
+		}
+
+		if (emptyItem) {
+			// Avoid having an empty item, this is not valid DocBook. A single character is enough to force
+			// generation of a full <para>.
+			// TODO: this always worked only by magic...
+			xs << ' ';
+		} else {
+			// Generate the rest of the paragraph, if need be.
+			par->simpleDocBookOnePar(buf, xs, runparams, text.outerFont(std::distance(text.paragraphs().begin(), par)),
+							         true, true, sep);
+		}
+	} else {
+		makeAny(text, buf, xs, runparams, par);
 	}
-//	auto nextpar = par;
-//	++nextpar;
-	closeTag(xs, &*prevpar, &*par);
-//	closeTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr);
-	xs << xml::CR();
-	return pend;
+
+	// Close the environment.
+	auto nextpar = par;
+	++nextpar;
+	closeParTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr); // TODO: switch in layout for par/block?
 }
 
 
@@ -744,117 +646,48 @@ void makeCommand(
 		XMLStream & xs,
 		OutputParams const & runparams,
 		Text const & text,
-		ParagraphList::const_iterator const & pbegin)
+		ParagraphList::const_iterator const & par)
 {
-	// No need for labels, as they are handled by DocBook tags.
+	// Unlike XHTML, no need for labels, as they are handled by DocBook tags.
 	auto const begin = text.paragraphs().begin();
 	auto const end = text.paragraphs().end();
-	auto nextpar = pbegin;
+	auto nextpar = par;
 	++nextpar;
 
-	// Find the previous paragraph.
-	auto prevpar = begin;
-	if (prevpar != pbegin) {
-		auto prevpar_next = prevpar;
-		++prevpar_next;
-
-		while (prevpar_next != pbegin) {
-			++prevpar_next;
-			++prevpar;
-		}
-	}
-
 	// Generate this command.
-	openParTag(xs, &*pbegin, &*prevpar);
+	auto prevpar = text.paragraphs().getParagraphBefore(par);
+	openParTag(xs, &*par, prevpar);
 
-	pbegin->simpleDocBookOnePar(buf, xs, runparams,
-								text.outerFont(distance(begin, pbegin)));
+	par->simpleDocBookOnePar(buf, xs, runparams,
+	                         text.outerFont(distance(begin, par)));
 
-	closeTag(xs, &*pbegin, (nextpar != end) ? &*nextpar : nullptr);
-	xs << xml::CR();
+	closeParTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr);
 }
 
-pair<ParagraphList::const_iterator, ParagraphList::const_iterator> makeAny(
-		Text const &text,
-		Buffer const &buf,
-		XMLStream &xs,
-		OutputParams const &ourparams,
-		ParagraphList::const_iterator par,
-		ParagraphList::const_iterator send,
-		ParagraphList::const_iterator pend)
-{
-	switch (par->layout().latextype) {
-	case LATEX_COMMAND: {
-		// The files with which we are working never have more than
-		// one paragraph in a command structure.
-		// FIXME
-		// if (ourparams.docbook_in_par)
-		//   fix it so we don't get sections inside standard, e.g.
-		// note that we may then need to make runparams not const, so we
-		// can communicate that back.
-		// FIXME Maybe this fix should be in the routines themselves, in case
-		// they are called from elsewhere.
-		makeCommand(buf, xs, ourparams, text, par);
-		++par;
-		break;
-	}
-	case LATEX_ENVIRONMENT:
-	case LATEX_LIST_ENVIRONMENT:
-	case LATEX_ITEM_ENVIRONMENT:
-		// FIXME Same fix here.
-		send = findEndOfEnvironment(par, pend);
-		par = makeEnvironment(buf, xs, ourparams, text, par, send);
-		break;
-	case LATEX_PARAGRAPH:
-		send = findLast(par, pend, LATEX_PARAGRAPH);
-		par = makeParagraphs(buf, xs, ourparams, text, par, send);
-		break;
-	case LATEX_BIB_ENVIRONMENT:
-		send = findLast(par, pend, LATEX_BIB_ENVIRONMENT);
-		par = makeParagraphBibliography(buf, xs, ourparams, text, par, send);
-		break;
-	}
 
-	return make_pair(par, send);
-}
-
-ParagraphList::const_iterator makeAnySimple(
+void makeAny(
 		Text const &text,
 		Buffer const &buf,
 		XMLStream &xs,
 		OutputParams const &ourparams,
 		ParagraphList::const_iterator par)
 {
-	auto parnext = par;
-	++parnext;
-
 	switch (par->layout().latextype) {
-	case LATEX_COMMAND: {
-		// The files with which we are working never have more than
-		// one paragraph in a command structure.
-		// FIXME
-		// if (ourparams.docbook_in_par)
-		//   fix it so we don't get sections inside standard, e.g.
-		// note that we may then need to make runparams not const, so we
-		// can communicate that back.
-		// FIXME Maybe this fix should be in the routines themselves, in case
-		// they are called from elsewhere.
+	case LATEX_COMMAND:
 		makeCommand(buf, xs, ourparams, text, par);
-		return parnext;
-	}
+		break;
 	case LATEX_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
 	case LATEX_ITEM_ENVIRONMENT:
-		// FIXME Same fix here.
-		return makeEnvironment(buf, xs, ourparams, text, par, parnext);
+		makeEnvironment(buf, xs, ourparams, text, par);
+		break;
 	case LATEX_PARAGRAPH:
-		return makeParagraphs(buf, xs, ourparams, text, par, parnext);
+		makeParagraph(buf, xs, ourparams, text, par);
+		break;
 	case LATEX_BIB_ENVIRONMENT:
-		return makeParagraphBibliography(buf, xs, ourparams, text, par, parnext);
+		makeParagraphBibliography(buf, xs, ourparams, text, par);
+		break;
 	}
-
-	// This should never happen. Return the next paragraph to avoid an infinite loop.
-	return parnext;
 }
 
 } // end anonymous namespace
@@ -885,9 +718,8 @@ DocBookDocumentSectioning hasDocumentSectioning(ParagraphList const &paragraphs,
 		Layout const &style = paragraphs[bpit].layout();
 		documentHasSections |= style.category() == from_utf8("Sectioning");
 
-		if (documentHasSections) {
+		if (documentHasSections)
 			break;
-		}
 		bpit += 1;
 	}
 	// Paragraphs before the first section: [ runparams.par_begin ; eppit )
@@ -898,7 +730,10 @@ DocBookDocumentSectioning hasDocumentSectioning(ParagraphList const &paragraphs,
 
 bool hasOnlyNotes(Paragraph const & par)
 {
+	// Precondition: the paragraph is not empty. Otherwise, the function will always return true...
 	for (int i = 0; i < par.size(); ++i)
+		// If you find something that is not an inset (like actual text) or an inset that is not a note,
+		// return false.
 		if (!par.isInset(i) || !dynamic_cast<InsetNote *>(par.insetList().get(i)))
 			return false;
 	return true;
@@ -994,37 +829,6 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs, pit_type b
 }
 
 
-pit_type generateDocBookParagraphWithoutSectioning(
-		Text const & text,
-		Buffer const & buf,
-		XMLStream & xs,
-		OutputParams const & runparams,
-		ParagraphList const & paragraphs,
-		DocBookInfoTag const & info)
-{
-	auto bpit = info.bpit;
-	auto par = paragraphs.iterator_at(bpit);
-	auto lastStartedPar = par;
-	ParagraphList::const_iterator send;
-	auto const pend =
-			(info.epit == (int) paragraphs.size()) ?
-			paragraphs.end() : paragraphs.iterator_at(info.epit);
-
-	while (bpit < info.epit) {
-		if (info.abstract.find(bpit) != info.abstract.end()) {
-			bpit += 1;
-			continue;
-		}
-
-		tie(par, send) = makeAny(text, buf, xs, runparams, par, send, pend);
-		bpit += distance(lastStartedPar, par);
-		lastStartedPar = par;
-	}
-
-	return bpit;
-}
-
-
 void outputDocBookInfo(
 		Text const & text,
 		Buffer const & buf,
@@ -1040,6 +844,7 @@ void outputDocBookInfo(
 	bool hasAbstract = !info.abstract.empty();
 	docstring abstract;
 	if (hasAbstract) {
+		// Generate the abstract XML into a string before further checks.
 		odocstringstream os2;
 		{
 			XMLStream xs2(os2);
@@ -1048,8 +853,7 @@ void outputDocBookInfo(
 			// info.abstract is inclusive, epit is exclusive, hence +1 for looping.
 
 			while (bpit < epit) {
-				makeAnySimple(text, buf, xs2, runparams, paragraphs.iterator_at(bpit));
-				xs2 << XMLStream::ESCAPE_NONE << from_ascii("<!-- " + to_string(bpit) + " -->");
+				makeAny(text, buf, xs2, runparams, paragraphs.iterator_at(bpit));
 				bpit += 1;
 			}
 		}
@@ -1065,7 +869,7 @@ void outputDocBookInfo(
 			hasAbstract = false;
 	}
 
-	// The abstract must go in <info>.
+	// The abstract must go in <info>. Otherwise, decide whether to open <info> based on the layouts.
 	bool needInfo = !info.mustBeInInfo.empty() || hasAbstract;
 
 	// Start the <info> tag if required.
@@ -1076,16 +880,17 @@ void outputDocBookInfo(
 	}
 
 	// Output the elements that should go in <info>, before and after the abstract.
-	xs << XMLStream::ESCAPE_NONE << "<!-- shouldBeInInfo -->";
-	for (auto pit : info.shouldBeInInfo) // Typically, the title: these elements are so important and ubiquitous
-		// that mandating a wrapper like <info> would repel users.
-		makeAnySimple(text, buf, xs, runparams, paragraphs.iterator_at(pit));
-	xs << XMLStream::ESCAPE_NONE << "<!-- mustBeInInfo -->";
-	for (auto pit : info.mustBeInInfo)
+	for (auto pit : info.shouldBeInInfo) { // Typically, the title: these elements are so important and ubiquitous
+		// that mandating a wrapper like <info> would repel users. Thus, generate them first.
+		makeAny(text, buf, xs, runparams, paragraphs.iterator_at(pit));
+	}
+	for (auto pit : info.mustBeInInfo) {
 		if (info.abstract.find(pit) == info.abstract.end()) // The abstract must be in info, but is dealt with after.
-			makeAnySimple(text, buf, xs, runparams, paragraphs.iterator_at(pit));
-	xs << XMLStream::ESCAPE_NONE << "<!-- /info -->";
+			makeAny(text, buf, xs, runparams, paragraphs.iterator_at(pit));
+	}
 
+	// Always output the abstract as the last item of the <info>, as it requires special treatment (especially if
+	// it contains several paragraphs that are empty).
 	if (hasAbstract) {
 //		string tag = paragraphs[*info.abstract.begin()].layout().docbookforceabstracttag();
 //		if (tag == "NONE")
@@ -1093,9 +898,7 @@ void outputDocBookInfo(
 //
 //		xs << xml::StartTag(tag);
 //		xs << xml::CR();
-		xs << XMLStream::ESCAPE_NONE << "<!-- abs -->";
 		xs << XMLStream::ESCAPE_NONE << abstract;
-		xs << XMLStream::ESCAPE_NONE << "<!-- /abs -->";
 //		xs << xml::EndTag(tag);
 //		xs << xml::CR();
 	}
@@ -1147,7 +950,7 @@ void docbookSimpleAllParagraphs(
 	while (bpit < epit) {
 		auto par = paragraphs.iterator_at(bpit);
 		if (!hasOnlyNotes(*par))
-			makeAnySimple(text, buf, xs, runparams, par);
+			makeAny(text, buf, xs, runparams, par);
 		bpit += 1;
 	}
 }
@@ -1170,9 +973,6 @@ void docbookParagraphs(Text const &text,
 				return;
 			});
 
-	ParagraphList::const_iterator const pend =
-			(epit == (int) paragraphs.size()) ?
-			paragraphs.end() : paragraphs.iterator_at(epit);
 	std::stack<std::pair<int, string>> headerLevels; // Used to determine when to open/close sections: store the depth
 	// of the section and the tag that was used to open it.
 
@@ -1203,8 +1003,7 @@ void docbookParagraphs(Text const &text,
 		ParagraphList::const_iterator send;
 
 		if (hasOnlyNotes(*par)) {
-			++par;
-			bpit += distance(lastStartedPar, par);
+			bpit += 1;
 			continue;
 		}
 
@@ -1283,8 +1082,8 @@ void docbookParagraphs(Text const &text,
 		}
 
 		// Generate this paragraph.
-		tie(par, send) = makeAny(text, buf, xs, ourparams, par, send, pend);
-		bpit += distance(lastStartedPar, par);
+		makeAny(text, buf, xs, ourparams, par);
+		bpit += 1;
 	}
 
 	// If need be, close <section>s, but only at the end of the document (otherwise, dealt with at the beginning

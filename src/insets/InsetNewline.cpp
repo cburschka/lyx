@@ -176,17 +176,18 @@ void InsetNewline::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
 	if (runparams.docbook_in_par) {
 		xs.closeFontTags();
-		if (!xs.pending_tags_empty()) {
-			xs << xml::EndTag("para");
-			xs << xml::StartTag("para");
-		}
-		else {
-			xs << xml::CR() << xml::CompTag("br") << xml::CR();
-		}
+
+		// TODO: what if within a list item, and docbookiteminnertag is not para? This would require information
+		// about the paragraph's layout... Good for now, though, this should not happen in DocBook, only maybe
+		// extensions.
+		xs << XMLStream::ESCAPE_NONE << from_utf8("<!-- Is para open? " + string((xs.isTagOpen(xml::StartTag("para"))) ? "yes" : "no") +" -->");
+		xs << XMLStream::ESCAPE_NONE << from_utf8("</para>\n<para");
+		// TODO: that's a hack...
+//		xs << xml::EndTag("para");
+//		xs << xml::CR();
+//		xs << xml::StartTag("para");
 	}
-	else {
-		xs << xml::CR() << xml::CompTag("br") << xml::CR();
-	}
+	// Outside a paragraph, no need to handle new lines.
 }
 
 

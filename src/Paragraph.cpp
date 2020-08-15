@@ -3383,12 +3383,9 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 			if (!runparams.for_toc || inset->isInToc()) {
 				OutputParams np = runparams;
 				np.local_font = &font;
-				// If the paragraph has size 1, then we are in the "special
-				// case" where we do not output the containing paragraph info.
-				// This "special case" is defined in more details in output_docbook.cpp, makeParagraphs. The results
-				// of that brittle logic is passed to this function through open_par.
-				if (!inset->getLayout().htmlisblock() && size() != 1) // TODO: htmlisblock here too!
-					np.docbook_in_par = true;
+
+				// TODO: special case will bite here.
+				np.docbook_in_par = true;
 				inset->docbook(xs, np);
 			}
 		} else {

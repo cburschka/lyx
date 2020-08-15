@@ -101,7 +101,7 @@ void InsetERT::docbook(XMLStream & xs, OutputParams const & runparams) const
 	odocstringstream os2;
 	XMLStream xs2(os2);
 
-	// Recreate the logic of makeParagraphs in output_docbook.cpp, but much simplified: never open <para>
+	// Recreate the logic of makeParagraph in output_docbook.cpp, but much simplified: never open <para>
 	// in an ERT, use simple line breaks.
 	while (par != end) {
 		par->simpleDocBookOnePar(buffer(), xs2, runparams, text().outerFont(distance(begin, par)));
@@ -116,6 +116,7 @@ void InsetERT::docbook(XMLStream & xs, OutputParams const & runparams) const
 	xs << XMLStream::ESCAPE_NONE << "<!-- ";
 	xs << XMLStream::ESCAPE_COMMENTS << os2.str();
 	xs << XMLStream::ESCAPE_NONE << " -->";
+	xs << xml::CR();
 }
 
 

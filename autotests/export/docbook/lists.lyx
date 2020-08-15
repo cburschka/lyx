@@ -87,7 +87,23 @@ Test document
 \end_layout
 
 \begin_layout Standard
-A list:
+A simple list: 
+\end_layout
+
+\begin_layout Itemize
+First item
+\end_layout
+
+\begin_layout Itemize
+Second item on two lines
+\begin_inset Newline newline
+\end_inset
+
+I'm the second line
+\end_layout
+
+\begin_layout Standard
+A complex list:
 \end_layout
 
 \begin_layout Itemize
