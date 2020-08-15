@@ -88,7 +88,7 @@ What's new
 
 - Do not allow editing of math package list in Document > Settings > Math Options,
   thus preventing a crash (bug 11931).
-  
+
 - Maintain standard layout for separating paragraphs when switching layouts (bug 11936).
 
 
@@ -114,3 +114,7 @@ What's new
 
 - Wininstaller, fix bug where previous installations, with emergency version
   greater than 1, could not be seen in registry on overinstall
+
+- Do not break configuration if a module file is not decodable (file
+  not encoded in utf-8). Rather than that, issue a warning and skip
+  that file (a variant of bug 11736).
