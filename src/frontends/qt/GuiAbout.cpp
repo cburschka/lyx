@@ -258,14 +258,16 @@ static QString version()
 			from_ascii(lyx_version),
 			qstring_to_ucs4(loc_release_date))+"\n";
 	if (std::string(lyx_git_commit_hash) != "none")
-		version_date += _("Built from git commit hash ")
+		version_date += from_ascii("</p><p>") + _("Built from git commit hash ")
 			+ from_utf8(lyx_git_commit_hash).substr(0,8);
 
 	QString res;
 	QTextStream out(&res);
-	out << toqstr(version_date) << "\n";
-	out << toqstr(bformat(_("Qt Version (run-time): %1$s"), from_ascii(qVersion()))) << "\n";
+	out << toqstr("<html><head/><body><p><span style=\" font-weight:600;\">");
+	out << toqstr(version_date) << "</span></p><p>";
+	out << toqstr(bformat(_("Qt Version (run-time): %1$s"), from_ascii(qVersion()))) << "</p><p>";
 	out << toqstr(bformat(_("Qt Version (compile-time): %1$s"), from_ascii(QT_VERSION_STR)));
+	out << toqstr("</p></body></html>");
 	return res;
 }
 
@@ -299,9 +301,6 @@ GuiAbout::GuiAbout(GuiView & lv)
 {
 	d->ui.setupUi(this);
 
-	// fix height to minimum
-	setFixedHeight(sizeHint().height());
-
 	d->ui.copyrightTB->setPlainText(copyright());
 	d->ui.copyrightTB->append(QString());
 	d->ui.copyrightTB->append(license());
@@ -309,6 +308,11 @@ GuiAbout::GuiAbout(GuiView & lv)
 	d->ui.copyrightTB->append(disclaimer());
 
 	d->ui.versionLA->setText(version());
+	QPixmap icon = getPixmap("images/", "lyx", "svg,png");
+	int const iconsize = d->ui.versionLA->height() * 1.5;
+	d->ui.iconLA->setPixmap(icon.scaled(iconsize, iconsize,
+					    Qt::IgnoreAspectRatio,
+					    Qt::SmoothTransformation));
 	d->ui.dirLibraryLA->setText(dirLibrary());
 	d->ui.dirUserLA->setText(dirUser());
 	d->ui.buildinfoTB->setText(buildinfo());
@@ -317,6 +321,9 @@ GuiAbout::GuiAbout(GuiView & lv)
 	d->ui.creditsTB->setHtml(credits());
 
 	d->ui.tab->setUsesScrollButtons(false);
+
+	// fix height to minimum
+	setFixedHeight(sizeHint().height());
 }
 
 
