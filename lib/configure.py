@@ -1562,9 +1562,17 @@ def checkModulesConfig():
           continue
 
       seen.append(filename)
-      retval = processModuleFile(file, filename)
-      if retval:
-          tx.write(retval)
+      try:
+          retval = processModuleFile(file, filename)
+          if retval:
+              tx.write(retval)
+      except UnicodeDecodeError:
+          logger.warning("**************************************************\n"
+                         "Module file '%s'\n"
+                         "cannot be decoded in utf-8.\n"
+                         "Please check if the file has the correct encoding.\n"
+                         "Skipping this file!\n"
+                         "**************************************************" % filename)
   tx.close()
   logger.info('\tdone')
 
