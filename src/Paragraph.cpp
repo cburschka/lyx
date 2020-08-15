@@ -2597,7 +2597,7 @@ void Paragraph::latex(BufferParams const & bparams,
 				c == META_INSET
 				&& getInset(i)
 				&& getInset(i)->allowMultiPar()
-				&& !getInset(i)->isPassThru();
+				&& getInset(i)->lyxCode() != ERT_CODE;
 
 		// Do we need to close the previous font?
 		if (open_font &&
