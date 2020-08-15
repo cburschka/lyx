@@ -628,7 +628,7 @@ void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 	// check if we have to do a qualified list
 	vector<docstring> keys = getVectorFromString(cleanupWhitespace(key));
 	bool const qualified = cs.hasQualifiedList
-		&& (!getParam("F").empty()
+		&& (!getParam("pretextlist").empty()
 		    || !getParam("posttextlist").empty());
 
 	if (runparams.inulemcmd > 0)
