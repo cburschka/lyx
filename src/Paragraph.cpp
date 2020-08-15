@@ -1033,7 +1033,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 		close = true;
 	}
 
-	if (open_font && (!inset->inheritFont() || inset->allowMultiPar())) {
+	if (open_font && (!inset->inheritFont() || fontswitch_inset)) {
 		bool lang_closed = false;
 		// Close language if needed
 		if (closeLanguage) {
@@ -2581,14 +2581,18 @@ void Paragraph::latex(BufferParams const & bparams,
 					     && runningChange == change
 					     && change.type == Change::DELETED
 					     && !os.afterParbreak());
-		bool const multipar_inset =
-			(c == META_INSET && getInset(i) && getInset(i)->allowMultiPar());
+		// Insets where font switches are used (rather than font commands)
+		bool const fontswitch_inset =
+				c == META_INSET
+				&& getInset(i)
+				&& getInset(i)->allowMultiPar()
+				&& !getInset(i)->isPassThru();
 
 		// Do we need to close the previous font?
 		if (open_font &&
 		    ((current_font != running_font
 		      || current_font.language() != running_font.language())
-		     || (multipar_inset
+		     || (fontswitch_inset
 			 && (current_font == prev_font
 			     || current_font.language() == prev_font.language()))))
 		{
@@ -2676,7 +2680,7 @@ void Paragraph::latex(BufferParams const & bparams,
 				column += 1;
 			}
 			otexstringstream ots;
-			if (!multipar_inset) {
+			if (!fontswitch_inset) {
 				InsetText const * textinset = inInset().asInsetText();
 				bool const cprotect = textinset
 					? textinset->hasCProtectContent(runparams.moving_arg)
@@ -2789,22 +2793,18 @@ void Paragraph::latex(BufferParams const & bparams,
 					// so we don't close the language in those cases
 					// (= differing isRightToLeft()).
 					// ArabTeX, though, doesn't seem to handle this special behavior.
-					bool const inRLSwitch = 
-							basefont.isRightToLeft() != running_font.isRightToLeft()
+					closeLanguage = basefont.isRightToLeft() != running_font.isRightToLeft()
 							&& basefont.language()->lang() != "arabic_arabtex"
 							&& running_font.language()->lang() != "arabic_arabtex";
-					// Having said that, PassThru insets must be inside a font change command,
-					// as we do not re-open the font inside. So:
-					closeLanguage = !inset->isPassThru() && !inRLSwitch;;
 					// We need to check prev_font as language changes directly at inset
 					// will only be started inside the inset.
 					lang_switched_at_inset = prev_font.language() != running_font.language();
 				}
 				d->latexInset(bparams, os, rp, running_font,
 						basefont, real_outerfont, open_font,
-				if (multipar_inset) {
 						runningChange, style, i, column,
 						fontswitch_inset, closeLanguage, lang_switched_at_inset);
+				if (fontswitch_inset) {
 					if (open_font) {
 						bool needPar = false;
 						column += running_font.latexWriteEndChanges(
