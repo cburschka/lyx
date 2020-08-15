@@ -1060,18 +1060,6 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 			lang_closed = count > 0;
 			lang_switched_at_inset = prev_font.language() != running_font.language();
 		}
-		// Now re-do font changes in a way needed here
-		// (using switches with multi-par insets)
-		InsetText const * textinset = inset->asInsetText();
-		bool const cprotect = textinset
-			? textinset->hasCProtectContent(runparams.moving_arg)
-			  && !textinset->text().isMainText()
-			: false;
-		unsigned int count2 = running_font.latexWriteStartChanges(os, bparams,
-						      runparams, basefont,
-						      running_font, true,
-						      cprotect);
-		column += count2;
 		// Update the running_font, making sure, however,
 		// to leave the language as it was.
 		// FIXME: probably a better way to keep track of the old
@@ -1086,6 +1074,18 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 		basefont.fontInfo().setSize(copy_font.fontInfo().size());
 		basefont.fontInfo().setFamily(copy_font.fontInfo().family());
 		basefont.fontInfo().setSeries(copy_font.fontInfo().series());
+		// Now re-do font changes in a way needed here
+		// (using switches with multi-par insets)
+		InsetText const * textinset = inset->asInsetText();
+		bool const cprotect = textinset
+			? textinset->hasCProtectContent(runparams.moving_arg)
+			  && !textinset->text().isMainText()
+			: false;
+		unsigned int count2 = basefont.latexWriteStartChanges(os, bparams,
+						      runparams, running_font,
+						      basefont, true,
+						      cprotect);
+		column += count2;
 		if (count2 == 0 && (lang_closed || lang_switched_at_inset))
 			// All fonts closed
 			open_font = false;
@@ -2785,16 +2785,23 @@ void Paragraph::latex(BufferParams const & bparams,
 						incremented = true;
 					}
 				}
-				// We need to restore these after insets with
+				// We need to restore parts of this after insets with
 				// allowMultiPar() true
-				Font const save_running_font = running_font;
 				Font const save_basefont = basefont;
 				d->latexInset(bparams, os, rp, running_font,
 						basefont, real_outerfont, open_font,
 						runningChange, style, i, column);
 				if (multipar_inset) {
-					running_font = save_running_font;
-					basefont = save_basefont;
+					if (open_font) {
+						bool needPar = false;
+						column += running_font.latexWriteEndChanges(
+							os, bparams, runparams,
+							basefont, basefont, needPar);
+						open_font = false;
+					}
+					basefont.fontInfo().setSize(save_basefont.fontInfo().size());
+					basefont.fontInfo().setFamily(save_basefont.fontInfo().family());
+					basefont.fontInfo().setSeries(save_basefont.fontInfo().series());
 				}
 				if (incremented)
 					--parInline;
