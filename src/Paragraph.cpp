@@ -1071,6 +1071,8 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 		running_font = basefont;
 		if (!closeLanguage)
 			running_font.setLanguage(copy_font.language());
+		OutputParams rp = runparams;
+		rp.encoding = basefont.language()->encoding();
 		// For these, we use switches, so they should be taken as
 		// base inside the inset.
 		basefont.fontInfo().setSize(copy_font.fontInfo().size());
@@ -1084,7 +1086,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 			  && !textinset->text().isMainText()
 			: false;
 		unsigned int count2 = basefont.latexWriteStartChanges(os, bparams,
-						      runparams, running_font,
+						      rp, running_font,
 						      basefont, true,
 						      cprotect);
 		column += count2;
