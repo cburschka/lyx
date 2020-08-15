@@ -217,7 +217,7 @@ def checkTeXPaths():
             if sys.version_info[0] < 3:
                 inpname = shortPath(unicode(tmpfname, encoding)).replace('\\', '/')
             else:
-                inpname = shortPath(tmpfname).replace('\\', '/') 
+                inpname = shortPath(tmpfname).replace('\\', '/')
         else:
             inpname = cmdOutput('cygpath -m ' + tmpfname)
         logname = os.path.basename(re.sub("(?i).ltx", ".log", inpname))
@@ -1157,7 +1157,7 @@ def checkConverterEntries():
 \converter svgz       png        "%%"    ""'''],
             path = ['', inkscape_path])
     #
-    checkProg('Gnuplot', ['gnuplot'], 
+    checkProg('Gnuplot', ['gnuplot'],
         rc_entry = [ r'''\Format gnuplot     "gp, gnuplot"    "Gnuplot"     "" "" ""  "vector"	"text/plain"
 \converter gnuplot      pdf6      "python -tt $$s/scripts/gnuplot2pdf.py $$i $$o"    "needauth"''' ])
     #
