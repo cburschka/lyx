@@ -1058,13 +1058,15 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 		Font const copy_font(running_font);
 		basefont = owner_->getLayoutFont(bparams, outerfont);
 		running_font = basefont;
-		if (!closeLanguage)
+		if (!closeLanguage && !lang_switched_at_inset)
 			running_font.setLanguage(copy_font.language());
 		// For these, we use switches, so they should be taken as
 		// base inside the inset.
 		basefont.fontInfo().setSize(copy_font.fontInfo().size());
 		basefont.fontInfo().setFamily(copy_font.fontInfo().family());
 		basefont.fontInfo().setSeries(copy_font.fontInfo().series());
+		if (!closeLanguage && lang_switched_at_inset)
+			basefont.setLanguage(copy_font.language());
 		// Now re-do font changes in a way needed here
 		// (using switches with multi-par insets)
 		InsetText const * textinset = inset->asInsetText();
@@ -1074,7 +1076,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 			: false;
 		unsigned int count2 = basefont.latexWriteStartChanges(os, bparams,
 						      runparams, running_font,
-						      basefont, true,
+						      running_font, true,
 						      cprotect);
 		column += count2;
 		if (count2 == 0 && (lang_closed || lang_switched_at_inset))
@@ -2815,6 +2817,10 @@ void Paragraph::latex(BufferParams const & bparams,
 					basefont.fontInfo().setSize(save_basefont.fontInfo().size());
 					basefont.fontInfo().setFamily(save_basefont.fontInfo().family());
 					basefont.fontInfo().setSeries(save_basefont.fontInfo().series());
+					if (!closeLanguage && lang_switched_at_inset) {
+						basefont.setLanguage(save_basefont.language());
+						running_font.setLanguage(save_runningfont.language());
+					}
 				}
 				if (incremented)
 					--parInline;
