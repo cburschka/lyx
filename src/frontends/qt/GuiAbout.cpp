@@ -254,7 +254,7 @@ static QString version()
 			loc_release_date = toqstr(lyx_release_date);
 	}
 	docstring version_date =
-		bformat(_("LyX Version %1$s\n(%2$s)"),
+		bformat(_("Version %1$s\n(%2$s)"),
 			from_ascii(lyx_version),
 			qstring_to_ucs4(loc_release_date))+"\n";
 	if (std::string(lyx_git_commit_hash) != "none")
