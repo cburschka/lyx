@@ -69,6 +69,8 @@ public:
 
 	/// does this iterator have any content?
 	bool empty() const { return slices_.empty(); }
+	/// is this the begin position?
+	bool atBegin() const { return depth() == 1 && pit() == 0 && pos() == 0; }
 	/// is this the end position?
 	bool atEnd() const { return slices_.empty(); }
 
@@ -210,6 +212,8 @@ public:
 	void forwardInset();
 	/// move backward one logical position
 	void backwardPos();
+	/// move backward one logical position, skip collapsed insets
+	void backwardPosIgnoreCollapsed();
 	/// move backward one physical character or inset
 	void backwardChar();
 	/// move backward one paragraph

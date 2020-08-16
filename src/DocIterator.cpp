@@ -500,6 +500,18 @@ void DocIterator::backwardPos()
 }
 
 
+void DocIterator::backwardPosIgnoreCollapsed()
+{
+	backwardPos();
+	if (inTexted()) {
+		Inset const * ins = realInset();
+		if (ins && !ins->editable()) {
+			pop_back(); // move out of collapsed inset
+		}
+	}
+}
+
+
 #if 0
 // works, but currently not needed
 void DocIterator::backwardInset()
