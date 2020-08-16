@@ -672,7 +672,9 @@ bool InsetSpecialChar::isChar() const
 bool InsetSpecialChar::isLetter() const
 {
 	return kind_ == HYPHENATION || kind_ == LIGATURE_BREAK
-		|| kind_ == NOBREAKDASH;
+		|| kind_ == NOBREAKDASH
+		|| kind_ == PHRASE_LYX || kind_ == PHRASE_LATEX
+		|| kind_ == PHRASE_TEX || kind_ == PHRASE_LATEX2E;
 }
 
 
