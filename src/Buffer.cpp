@@ -5362,8 +5362,11 @@ void Buffer::Impl::updateStatistics(DocIterator & from, DocIterator & to, bool s
 					++word_count_;
 					inword = true;
 				}
-				if (ins && ins->isLetter())
-					++char_count_;
+				if (ins && ins->isLetter()) {
+					odocstringstream os;
+					ins->toString(os);
+					char_count_ += os.str().length();
+				}
 				else if (ins && ins->isSpace())
 					++blank_count_;
 				else {
