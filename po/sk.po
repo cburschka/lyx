@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-08-12 14:44+0200\n"
-"PO-Revision-Date: 2020-08-12 12:48+0000\n"
+"POT-Creation-Date: 2020-08-16 17:48+0200\n"
+"PO-Revision-Date: 2020-08-16 15:50+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -25,9 +25,9 @@ msgstr ""
 msgid "Version"
 msgstr "Verzia"
 
-#: src/frontends/qt/ui/AboutUi.ui:69
-msgid "Version goes here"
-msgstr "Sem ide verzia"
+#: src/frontends/qt/ui/AboutUi.ui:95
+msgid "Library directory"
+msgstr "Adresár systému"
 
 #: src/frontends/qt/ui/AboutUi.ui:86
 msgid "Credits"
@@ -45,6 +45,10 @@ msgstr "Produkčná informácia"
 #: src/frontends/qt/ui/AboutUi.ui:161
 msgid "Release Notes"
 msgstr "Poznámky k vydaniu"
+
+#: src/frontends/qt/ui/AboutUi.ui:307
+msgid "Copy Version Info"
+msgstr "Kópia info verzie"
 
 #: src/frontends/qt/ui/BibitemUi.ui:26 src/frontends/qt/ui/BibitemUi.ui:45
 msgid "The bibliography key"
@@ -2789,13 +2793,9 @@ msgstr "Ďalšie &varovanie"
 msgid "&Find:"
 msgstr "Ná&jsť:"
 
-#: src/frontends/qt/ui/LogUi.ui:105
-msgid "Hit Enter to search, or click Go!"
-msgstr "Stlačte Enter alebo kliknite na \"Hľadaj\"!"
-
-#: src/frontends/qt/ui/LogUi.ui:112
-msgid "&Go!"
-msgstr "&Hľadaj!"
+#: src/frontends/qt/ui/LogUi.ui:111
+msgid "Hit Enter or click 'Find Next' to search"
+msgstr "Stlačiť 'Enter' alebo kliknúť 'Hĺadať ďalšie' na nález"
 
 #: src/frontends/qt/ui/LogUi.ui:121
 msgid "&Open Containing Directory"
@@ -19943,6 +19943,10 @@ msgstr "Vybrať sekciu|V"
 msgid "Wrap by Preview|y"
 msgstr "Obtekať pri náhľade|ľ"
 
+#: lib/ui/stdcontext.inc:677
+msgid "Open Target...|O"
+msgstr "Otvoriť Cieľ…|O"
+
 #: lib/ui/stdcontext.inc:691 lib/ui/stdmenus.inc:361
 msgid "Lock Toolbars|L"
 msgstr "Blokuj lišty nástrojov|B"
@@ -30591,26 +30595,18 @@ msgstr ""
 msgid "not released yet"
 msgstr "ešte neuvoľnené"
 
-#: src/frontends/qt/GuiAbout.cpp:213
+#: src/frontends/qt/GuiAbout.cpp:257
 #, c-format
 msgid ""
-"LyX Version %1$s\n"
+"Version %1$s\n"
 "(%2$s)"
 msgstr ""
-"LyX verzia %1$s\n"
+"Verzia %1$s\n"
 "(%2$s)"
 
 #: src/frontends/qt/GuiAbout.cpp:217
 msgid "Built from git commit hash "
 msgstr "Zostavené zo zapísanej git transformácie "
-
-#: src/frontends/qt/GuiAbout.cpp:224
-msgid "Library directory: "
-msgstr "Adresár systému: "
-
-#: src/frontends/qt/GuiAbout.cpp:227
-msgid "User directory: "
-msgstr "Adresár užívateľa: "
 
 #: src/frontends/qt/GuiAbout.cpp:230
 #, c-format
@@ -30661,6 +30657,10 @@ msgstr "Obnoviť"
 #: src/frontends/qt/GuiApplication.cpp:659
 msgid "Open"
 msgstr "Otvoriť"
+
+#: src/frontends/qt/ui/AboutUi.ui:142
+msgid "User directory"
+msgstr "Adresár užívateľa"
 
 #: src/frontends/qt/GuiApplication.cpp:1127
 msgid "Nothing to do"
@@ -39333,9 +39333,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "value of the optional vertical offset"
 #~ msgstr "Veľkosť nepovinného vertikálneho vyrovnania"
-
-#~ msgid "Open Target...|O"
-#~ msgstr "Otvoriť Cieľ...|O"
 
 #~ msgid "misspelled marking"
 #~ msgstr "nepravopisné označenie"
