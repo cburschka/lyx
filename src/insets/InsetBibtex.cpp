@@ -1216,9 +1216,9 @@ void InsetBibtex::docbook(XMLStream & xs, OutputParams const &) const
 		if (! delayedTags.empty()) {
 			unsigned long remainingTags = delayedTags.size(); // Used as a workaround. With GCC 7, when erasing all
 			// elements one by one, some elements may still pop in later on (even though they were deleted previously).
-			auto hasTag = [&delayedTags](string key) { return delayedTags.find(key) != delayedTags.end(); };
-			auto getTag = [&delayedTags](string key) { return from_utf8(delayedTags[key]); };
-			auto eraseTag = [&delayedTags, &remainingTags](string key) {
+			auto hasTag = [&delayedTags](const string & key) { return delayedTags.find(key) != delayedTags.end(); };
+			auto getTag = [&delayedTags](const string & key) { return from_utf8(delayedTags[key]); };
+			auto eraseTag = [&delayedTags, &remainingTags](const string & key) {
 				remainingTags -= 1;
 				delayedTags.erase(key);
 			};
