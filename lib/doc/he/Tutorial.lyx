@@ -15,11 +15,10 @@
 % the documentation team
 % email: lyx-docs@lists.lyx.org
 
-\usepackage{ifpdf} % part of the hyperref bundle
-\ifpdf % if pdflatex is used
-
-% XeTeX with Hebrew does not like this bookmark code
-% so it is in the conditional.
+\usepackage{iftex}
+\ifpdftex % if pdflatex is used
+% XeTeX and LuaTeX with Hebrew do not like this
+% bookmark code, so it is in the conditional.
 % The pages of the TOC is numbered roman
 % and a pdf-bookmark for the TOC is added
 \let\myTOC\tableofcontents
