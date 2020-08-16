@@ -1033,7 +1033,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 		close = true;
 	}
 
-	if (open_font && (!inset->inheritFont() || fontswitch_inset)) {
+	if (open_font && fontswitch_inset) {
 		bool lang_closed = false;
 		// Close language if needed
 		if (closeLanguage) {
