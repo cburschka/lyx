@@ -1078,6 +1078,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 						      rp, running_font,
 						      basefont, true,
 						      cprotect);
+		open_font = true;
 		column += count2;
 		if (count2 == 0 && (lang_closed || lang_switched_at_inset))
 			// All fonts closed
@@ -2572,7 +2573,7 @@ void Paragraph::latex(BufferParams const & bparams,
 		++column;
 
 		// Fully instantiated font
-		Font const current_font = getFont(bparams, i, outerfont);
+		Font current_font = getFont(bparams, i, outerfont);
 		// Previous font
 		Font const prev_font = (i > 0) ?
 					getFont(bparams, i - 1, outerfont)
@@ -2612,8 +2613,7 @@ void Paragraph::latex(BufferParams const & bparams,
 		    ((current_font != running_font
 		      || current_font.language() != running_font.language())
 		     || (fontswitch_inset
-			 && (current_font == prev_font
-			     || current_font.language() == prev_font.language()))))
+			 && (current_font == prev_font))))
 		{
 			// ensure there is no open script-wrapper
 			if (!alien_script.empty()) {
@@ -2628,6 +2628,9 @@ void Paragraph::latex(BufferParams const & bparams,
 				os << '}';
 				column += 1;
 			}
+			if (closeLanguage)
+				// Force language closing
+				current_font.setLanguage(basefont.language());
 			column += running_font.latexWriteEndChanges(
 				    os, bparams, runparams, basefont,
 				    (i == body_pos-1) ? basefont : current_font,
@@ -2683,7 +2686,8 @@ void Paragraph::latex(BufferParams const & bparams,
 		}
 
 		// Do we need to change font?
-		if ((current_font != running_font ||
+		if (!fontswitch_inset &&
+		    (current_font != running_font ||
 		     current_font.language() != running_font.language())
 		    && i != body_pos - 1)
 		{
@@ -2699,16 +2703,14 @@ void Paragraph::latex(BufferParams const & bparams,
 				column += 1;
 			}
 			otexstringstream ots;
-			if (!fontswitch_inset) {
-				InsetText const * textinset = inInset().asInsetText();
-				bool const cprotect = textinset
-					? textinset->hasCProtectContent(runparams.moving_arg)
-					  && !textinset->text().isMainText()
-					: false;
-				column += current_font.latexWriteStartChanges(ots, bparams,
-									      runparams, basefont, last_font, false,
-									      cprotect);
-			}
+			InsetText const * textinset = inInset().asInsetText();
+			bool const cprotect = textinset
+				? textinset->hasCProtectContent(runparams.moving_arg)
+				  && !textinset->text().isMainText()
+				: false;
+			column += current_font.latexWriteStartChanges(ots, bparams,
+								      runparams, basefont, last_font, false,
+								      cprotect);
 			// Check again for display math in ulem commands as a
 			// font change may also occur just before a math inset.
 			if (runparams.inDisplayMath && !deleted_display_math
