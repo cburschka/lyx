@@ -43,8 +43,6 @@
 #include <algorithm>
 #include <sstream>
 
-// #define DOCBOOK_DEBUG_NEWLINES
-
 using namespace std;
 using namespace lyx::support;
 
@@ -189,14 +187,100 @@ xml::EndFontTag docbookEndFontTag(xml::FontTypes type)
 
 namespace {
 
-// convenience functions
+// Convenience functions to open and close tags. First, very low-level ones to ensure a consistent new-line behaviour.
+// Block style:
+//	  Content before
+//	  <blocktag>
+//	    Contents of the block.
+//	  </blocktag>
+//	  Content after
+// Paragraph style:
+//	  Content before
+//	    <paratag>Contents of the paragraph.</paratag>
+//	  Content after
+// Inline style:
+//    Content before<inlinetag>Contents of the paragraph.</inlinetag>Content after
+
+void openInlineTag(XMLStream & xs, const std::string & tag, const std::string & attr)
+{
+	xs << xml::StartTag(tag, attr);
+}
+
+
+void closeInlineTag(XMLStream & xs, const std::string & tag)
+{
+	xs << xml::EndTag(tag);
+}
+
+
+void openParTag(XMLStream & xs, const std::string & tag, const std::string & attr)
+{
+	if (!xs.isLastTagCR())
+		xs << xml::CR();
+	xs << xml::StartTag(tag, attr);
+}
+
+
+void closeParTag(XMLStream & xs, const std::string & tag)
+{
+	xs << xml::EndTag(tag);
+	xs << xml::CR();
+}
+
+
+void openBlockTag(XMLStream & xs, const std::string & tag, const std::string & attr)
+{
+	if (!xs.isLastTagCR())
+		xs << xml::CR();
+	xs << xml::StartTag(tag, attr);
+	xs << xml::CR();
+}
+
+
+void closeBlockTag(XMLStream & xs, const std::string & tag)
+{
+	xs << xml::CR();
+	xs << xml::EndTag(tag);
+	xs << xml::CR();
+}
+
+
+void openTag(XMLStream & xs, const std::string & tag, const std::string & attr, const std::string & tagtype)
+{
+	if (tag.empty() || tag == "NONE")
+		return;
+
+	if (tag == "para" || tagtype == "paragraph") // Special case for <para>: always considered as a paragraph.
+		openParTag(xs, tag, attr);
+	else if (tagtype == "block")
+		openBlockTag(xs, tag, attr);
+	else if (tagtype == "inline")
+		openInlineTag(xs, tag, attr);
+	else
+		xs.writeError("Unrecognised tag type '" + tagtype + "' for '" + tag + " " + attr + "'");
+}
+
+
+void closeTag(XMLStream & xs, const std::string & tag, const std::string & tagtype)
+{
+	if (tag.empty() || tag == "NONE")
+		return;
+
+	if (tag == "para" || tagtype == "paragraph") // Special case for <para>: always considered as a paragraph.
+		closeParTag(xs, tag);
+	else if (tagtype == "block")
+		closeBlockTag(xs, tag);
+	else if (tagtype == "inline")
+		closeInlineTag(xs, tag);
+	else
+		xs.writeError("Unrecognised tag type '" + tagtype + "' for '" + tag + "'");
+}
+
+
+// Higher-level convenience functions.
 
 void openParTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar)
 {
-#ifdef DOCBOOK_DEBUG_NEWLINES
-	xs << XMLStream::ESCAPE_NONE << "<!-- openParTag -->";
-#endif
-
 	Layout const & lay = par->layout();
 
 	if (par == prevpar)
@@ -218,38 +302,25 @@ void openParTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar
 	}
 
 	// Main logic.
-	if (openWrapper) {
-		xs << xml::StartTag(lay.docbookwrappertag(), lay.docbookwrapperattr());
-		xs << xml::CR();
-	}
+	if (openWrapper)
+		openTag(xs, lay.docbookwrappertag(), lay.docbookwrapperattr(), lay.docbookwrappertagtype());
 
-	string tag = lay.docbooktag();
+	const string & tag = lay.docbooktag();
 	if (tag != "NONE") {
 		auto xmltag = xml::ParTag(tag, lay.docbookattr());
-		if (!xs.isTagOpen(xmltag, 1)) // Don't nest a paragraph directly in a paragraph. TODO: required or not?
-			xs << xmltag;
+		if (!xs.isTagOpen(xmltag, 1)) // Don't nest a paragraph directly in a paragraph.
+			// TODO: required or not?
+			// TODO: avoid creating a ParTag object just for this query...
+			openTag(xs, lay.docbooktag(), lay.docbookattr(), lay.docbooktagtype());
 	}
 
-	if (lay.docbookitemtag() != "NONE") {
-		xs << xml::StartTag(lay.docbookitemtag(), lay.docbookitemattr());
-		xs << xml::CR();
-	}
-
-	if (lay.docbookiteminnertag() != "NONE")
-		xs << xml::StartTag(lay.docbookiteminnertag(), lay.docbookiteminnerattr());
-
-#ifdef DOCBOOK_DEBUG_NEWLINES
-	xs << XMLStream::ESCAPE_NONE << "<!-- /openParTag -->";
-#endif
+	openTag(xs, lay.docbookitemtag(), lay.docbookitemattr(), lay.docbookitemtagtype());
+	openTag(xs, lay.docbookiteminnertag(), lay.docbookiteminnerattr(), lay.docbookiteminnertagtype());
 }
 
 
 void closeParTag(XMLStream & xs, Paragraph const * par, Paragraph const * nextpar)
 {
-#ifdef DOCBOOK_DEBUG_NEWLINES
-	xs << XMLStream::ESCAPE_NONE << "<!-- closeParTag -->";
-#endif
-
 	if (par == nextpar)
 		nextpar = nullptr;
 
@@ -265,119 +336,35 @@ void closeParTag(XMLStream & xs, Paragraph const * par, Paragraph const * nextpa
 	}
 
 	// Main logic.
-	if (lay.docbookiteminnertag() != "NONE") {
-		xs << xml::EndTag(lay.docbookiteminnertag());
-		xs << xml::CR();
-	}
-
-	if (lay.docbookitemtag() != "NONE") {
-		xs << xml::EndTag(lay.docbookitemtag());
-		xs << xml::CR();
-	}
-
-	if (lay.docbooktag() != "NONE") {
-		xs << xml::EndTag(lay.docbooktag());
-		xs << xml::CR();
-	}
-
-	if (closeWrapper) {
-		xs << xml::EndTag(lay.docbookwrappertag());
-		xs << xml::CR();
-	}
-
-#ifdef DOCBOOK_DEBUG_NEWLINES
-	xs << XMLStream::ESCAPE_NONE << "<!-- /closeParTag -->";
-#endif
-}
-
-
-void openBlockTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar)
-{
-#ifdef DOCBOOK_DEBUG_NEWLINES
-	xs << XMLStream::ESCAPE_NONE << "<!-- openBlockTag -->";
-#endif
-
-	// Similar as openParTag, but with a line feed after.
-	openParTag(xs, par, prevpar);
-	xs << xml::CR();
-
-#ifdef DOCBOOK_DEBUG_NEWLINES
-	xs << XMLStream::ESCAPE_NONE << "<!-- /openBlockTag -->";
-#endif
-}
-
-
-void closeBlockTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar)
-{
-#ifdef DOCBOOK_DEBUG_NEWLINES
-	xs << XMLStream::ESCAPE_NONE << "<!-- closeBlockTag -->";
-#endif
-
-	// Similar as closeParTag, but with a line feed before.
-	xs << xml::CR();
-	closeParTag(xs, par, prevpar);
-
-#ifdef DOCBOOK_DEBUG_NEWLINES
-	xs << XMLStream::ESCAPE_NONE << "<!-- /closeBlockTag -->";
-#endif
+	closeTag(xs, lay.docbookiteminnertag(), lay.docbookiteminnertagtype());
+	closeTag(xs, lay.docbookitemtag(), lay.docbookitemtagtype());
+	closeTag(xs, lay.docbooktag(), lay.docbooktagtype());
+	if (closeWrapper)
+		closeTag(xs, lay.docbookwrappertag(), lay.docbookwrappertagtype());
 }
 
 
 void openLabelTag(XMLStream & xs, Layout const & lay) // Mostly for definition lists.
 {
-#ifdef DOCBOOK_DEBUG_NEWLINES
-	xs << XMLStream::ESCAPE_NONE << "<!-- openLabelTag -->";
-#endif
-
-	xs << xml::StartTag(lay.docbookitemlabeltag(), lay.docbookitemlabelattr());
-
-#ifdef DOCBOOK_DEBUG_NEWLINES
-	xs << XMLStream::ESCAPE_NONE << "<!-- /openLabelTag -->";
-#endif
+	openTag(xs, lay.docbookitemlabeltag(), lay.docbookitemlabelattr(), lay.docbookitemlabeltagtype());
 }
 
 
 void closeLabelTag(XMLStream & xs, Layout const & lay)
 {
-#ifdef DOCBOOK_DEBUG_NEWLINES
-	xs << XMLStream::ESCAPE_NONE << "<!-- closeLabelTag -->";
-#endif
-
-	xs << xml::EndTag(lay.docbookitemlabeltag());
-	xs << xml::CR();
-
-#ifdef DOCBOOK_DEBUG_NEWLINES
-	xs << XMLStream::ESCAPE_NONE << "<!-- closeLabelTag -->";
-#endif
+	closeTag(xs, lay.docbookitemlabeltag(), lay.docbookitemlabeltagtype());
 }
 
 
 void openItemTag(XMLStream & xs, Layout const & lay)
 {
-#ifdef DOCBOOK_DEBUG_NEWLINES
-	xs << XMLStream::ESCAPE_NONE << "<!-- openItemTag -->";
-#endif
-
-	xs << xml::StartTag(lay.docbookitemtag(), lay.docbookitemattr());
-
-#ifdef DOCBOOK_DEBUG_NEWLINES
-	xs << XMLStream::ESCAPE_NONE << "<!-- /openItemTag -->";
-#endif
+	openTag(xs, lay.docbookitemtag(), lay.docbookitemattr(), lay.docbookitemtagtype());
 }
 
 
 void closeItemTag(XMLStream & xs, Layout const & lay)
 {
-#ifdef DOCBOOK_DEBUG_NEWLINES
-	xs << XMLStream::ESCAPE_NONE << "<!-- closeItemTag -->";
-#endif
-
-	xs << xml::EndTag(lay.docbookitemtag());
-	xs << xml::CR();
-
-#ifdef DOCBOOK_DEBUG_NEWLINES
-	xs << XMLStream::ESCAPE_NONE << "<!-- /closeItemTag -->";
-#endif
+	closeTag(xs, lay.docbookitemtag(), lay.docbookitemtagtype());
 }
 
 

@@ -181,7 +181,7 @@ void InsetNewline::docbook(XMLStream & xs, OutputParams const & runparams) const
 		// about the paragraph's layout... Good for now, though, this should not happen in DocBook, only maybe
 		// extensions.
 		xs << XMLStream::ESCAPE_NONE << from_utf8("<!-- Is para open? " + string((xs.isTagOpen(xml::StartTag("para"))) ? "yes" : "no") +" -->");
-		xs << XMLStream::ESCAPE_NONE << from_utf8("</para>\n<para");
+		xs << XMLStream::ESCAPE_NONE << from_utf8("</para>\n<para>");
 		// TODO: that's a hack...
 //		xs << xml::EndTag("para");
 //		xs << xml::CR();

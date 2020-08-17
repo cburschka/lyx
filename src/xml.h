@@ -100,13 +100,13 @@ public:
 	bool isTagPending(xml::StartTag const &, int maxdepth = -1) const;
 	///
 	bool isLastTagCR() const { return is_last_tag_cr_; };
-private:
-	///
-	void clearTagDeque();
 	///
 	void writeError(std::string const &) const;
 	///
 	void writeError(docstring const &) const;
+private:
+	///
+	void clearTagDeque();
 	///
 	odocstream & os_;
 	///

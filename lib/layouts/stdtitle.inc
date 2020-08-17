@@ -8,7 +8,7 @@
 # a document, like title, author and such.
 
 
-Format 82
+Format 84
 
 Style Title
 	Margin                Static
@@ -29,6 +29,7 @@ Style Title
 	HTMLTag               h1
 	HTMLTitle             true
 	DocBookTag            title
+	DocBookTagType        paragraph
 	DocBookInInfo         maybe
 End
 
@@ -50,7 +51,9 @@ Style Author
 	  Size                Large
 	EndFont
 	DocBookTag            personname
+	DocBookTagType        paragraph
 	DocBookWrapperTag     author
+	DocBookWrapperTagType inline
 	DocBookInInfo         always
 End
 
@@ -72,5 +75,6 @@ Style Date
 	  Size                Large
 	EndFont
 	DocBookTag            date
+	DocBookTagType        paragraph
 	DocBookInInfo         always
 End
