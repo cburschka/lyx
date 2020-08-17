@@ -346,3 +346,11 @@ Sublabel: dvips
 export/examples/(|fr/)Presentations/Foils_pdf[45]_systemF
 export/examples/(|fr/)Presentations/Foils_pdf[25](_systemF|_texF)?
 
+# ================================================
+Sublabel: varioref
+# Comment by Jürgen Spitzmüller
+# The problem, at least with the UserGuide, is that
+# varioref is not working with XeTeX/LuaTeX for Russian, as it uses some
+# char macros which are not defined for these engines.
+export/doc/ru/UserGuide_(dvi3|pdf[45])_(system|tex)F
+
