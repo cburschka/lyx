@@ -1036,7 +1036,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 	if (open_font && fontswitch_inset) {
 		bool lang_closed = false;
 		// Close language if needed
-		if (closeLanguage) {
+		if (closeLanguage && !lang_switched_at_inset) {
 			// We need prev_font here as language changes directly at inset
 			// will only be started inside the inset.
 			Font const prev_font = (i > 0) ?
@@ -2686,59 +2686,63 @@ void Paragraph::latex(BufferParams const & bparams,
 		}
 
 		// Do we need to change font?
-		if (!fontswitch_inset &&
-		    (current_font != running_font ||
+		if ((current_font != running_font ||
 		     current_font.language() != running_font.language())
 		    && i != body_pos - 1)
 		{
-			if (in_ct_deletion) {
-				// We have to close and then reopen \lyxdeleted,
-				// as strikeout needs to be on lowest level.
-				bool needPar = false;
-				OutputParams rp = runparams;
-				column += running_font.latexWriteEndChanges(
-					os, bparams, rp, basefont,
-					basefont, needPar);
-				os << '}';
-				column += 1;
-			}
-			otexstringstream ots;
-			InsetText const * textinset = inInset().asInsetText();
-			bool const cprotect = textinset
-				? textinset->hasCProtectContent(runparams.moving_arg)
-				  && !textinset->text().isMainText()
-				: false;
-			column += current_font.latexWriteStartChanges(ots, bparams,
-								      runparams, basefont, last_font, false,
-								      cprotect);
-			// Check again for display math in ulem commands as a
-			// font change may also occur just before a math inset.
-			if (runparams.inDisplayMath && !deleted_display_math
-			    && runparams.inulemcmd) {
-				if (os.afterParbreak())
-					os << "\\noindent";
-				else
-					os << "\\\\\n";
-			}
-			running_font = current_font;
-			open_font = true;
-			docstring fontchange = ots.str();
-			os << fontchange;
-			// check whether the fontchange ends with a \\textcolor
-			// modifier and the text starts with a space. If so we
-			// need to add } in order to prevent \\textcolor from gobbling
-			// the space (bug 4473).
-			docstring const last_modifier = rsplit(fontchange, '\\');
-			if (prefixIs(last_modifier, from_ascii("textcolor")) && c == ' ')
-				os << from_ascii("{}");
-			else if (ots.terminateCommand())
-				os << termcmd;
-			if (in_ct_deletion) {
-				// We have to close and then reopen \lyxdeleted,
-				// as strikeout needs to be on lowest level.
-				OutputParams rp = runparams;
-				column += Changes::latexMarkChange(os, bparams,
-					Change(Change::UNCHANGED), change, rp);
+			if (!fontswitch_inset) {
+				if (in_ct_deletion) {
+					// We have to close and then reopen \lyxdeleted,
+					// as strikeout needs to be on lowest level.
+					bool needPar = false;
+					OutputParams rp = runparams;
+					column += running_font.latexWriteEndChanges(
+						os, bparams, rp, basefont,
+						basefont, needPar);
+					os << '}';
+					column += 1;
+				}
+				otexstringstream ots;
+				InsetText const * textinset = inInset().asInsetText();
+				bool const cprotect = textinset
+					? textinset->hasCProtectContent(runparams.moving_arg)
+					  && !textinset->text().isMainText()
+					: false;
+				column += current_font.latexWriteStartChanges(ots, bparams,
+									      runparams, basefont, last_font, false,
+									      cprotect);
+				// Check again for display math in ulem commands as a
+				// font change may also occur just before a math inset.
+				if (runparams.inDisplayMath && !deleted_display_math
+				    && runparams.inulemcmd) {
+					if (os.afterParbreak())
+						os << "\\noindent";
+					else
+						os << "\\\\\n";
+				}
+				running_font = current_font;
+				open_font = true;
+				docstring fontchange = ots.str();
+				os << fontchange;
+				// check whether the fontchange ends with a \\textcolor
+				// modifier and the text starts with a space. If so we
+				// need to add } in order to prevent \\textcolor from gobbling
+				// the space (bug 4473).
+				docstring const last_modifier = rsplit(fontchange, '\\');
+				if (prefixIs(last_modifier, from_ascii("textcolor")) && c == ' ')
+					os << from_ascii("{}");
+				else if (ots.terminateCommand())
+					os << termcmd;
+				if (in_ct_deletion) {
+					// We have to close and then reopen \lyxdeleted,
+					// as strikeout needs to be on lowest level.
+					OutputParams rp = runparams;
+					column += Changes::latexMarkChange(os, bparams,
+						Change(Change::UNCHANGED), change, rp);
+				}
+			} else {
+				running_font = current_font;
+				open_font = true;
 			}
 		}
 
