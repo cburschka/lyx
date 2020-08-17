@@ -1634,8 +1634,8 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			for (row_type r = 0; r < numrows; ++r) {
 				for (col_type c = 0; c < numcols; ++c) {
 					idx_type i = index(r + startrow, c + startcol);
-					pos_type ipos = uint(cur.pos()) > cell(i).size()
-							? cell(i).size()
+					pos_type ipos = cur.pos() > pos_type(cell(i).size())
+							? pos_type(cell(i).size())
 							: cur.pos();
 					cell(i).insert(ipos, grid.cell(grid.index(r, c)));
 				}
