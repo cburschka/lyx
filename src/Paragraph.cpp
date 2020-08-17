@@ -1087,6 +1087,12 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 			runparams.local_font = &basefont;
 	}
 
+	if (fontswitch_inset && !closeLanguage && fontswitch_inset) {
+		// The directionality has been switched at inset.
+		// Force markup inside.
+		runparams.local_font = &basefont;
+	}
+
 	size_t const previous_row_count = os.texrow().rows();
 
 	try {
@@ -2660,7 +2666,8 @@ void Paragraph::latex(BufferParams const & bparams,
 		}
 
 		// Switch file encoding if necessary (and allowed)
-		if (!runparams.pass_thru && !style.pass_thru &&
+		if ((!fontswitch_inset || closeLanguage)
+		    && !runparams.pass_thru && !style.pass_thru &&
 		    runparams.encoding->package() != Encoding::none &&
 		    current_font.language()->encoding()->package() != Encoding::none) {
 			pair<bool, int> const enc_switch =
