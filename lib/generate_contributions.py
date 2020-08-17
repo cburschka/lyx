@@ -650,7 +650,7 @@ contributors = [
                  "Re: Patches to improve compatibility with modern C++ standard",
                  "m=158862338815864",
                  "4 May 2020",
-                 u"Windows compatibility patches, Docbook backend"),
+                 u"Windows compatibility patches, DocBook backend"),
 
      contributor(u"Matthias Kalle Dalheimer",
                  "kalle () kdab ! net",
