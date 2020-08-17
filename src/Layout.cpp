@@ -106,20 +106,26 @@ enum LayoutTags {
 	LT_HTMLFORCECSS,
 	LT_DOCBOOKTAG,
 	LT_DOCBOOKATTR,
+	LT_DOCBOOKTAGTYPE,
 	LT_DOCBOOKININFO,
 	LT_DOCBOOKABSTRACT,
 	LT_DOCBOOKWRAPPERTAG,
 	LT_DOCBOOKWRAPPERATTR,
+	LT_DOCBOOKWRAPPERTAGTYPE,
 	LT_DOCBOOKWRAPPERMERGEWITHPREVIOUS,
 	LT_DOCBOOKSECTIONTAG,
 	LT_DOCBOOKITEMWRAPPERTAG,
 	LT_DOCBOOKITEMWRAPPERATTR,
+	LT_DOCBOOKITEMWRAPPERTAGTYPE,
 	LT_DOCBOOKITEMTAG,
 	LT_DOCBOOKITEMATTR,
+	LT_DOCBOOKITEMTAGTYPE,
 	LT_DOCBOOKITEMLABELTAG,
 	LT_DOCBOOKITEMLABELATTR,
+	LT_DOCBOOKITEMLABELTAGTYPE,
 	LT_DOCBOOKITEMINNERTAG,
 	LT_DOCBOOKITEMINNERATTR,
+	LT_DOCBOOKITEMINNERTAGTYPE,
 	LT_DOCBOOKFORCEABSTRACTTAG,
 	LT_INPREAMBLE,
 	LT_HTMLTITLE,
@@ -223,23 +229,29 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 		{ "commanddepth",   LT_COMMANDDEPTH },
 		{ "copystyle",      LT_COPYSTYLE },
 		{ "dependson",      LT_DEPENDSON },
-		{ "docbookabstract",         LT_DOCBOOKABSTRACT },
-		{ "docbookattr",             LT_DOCBOOKATTR },
-		{ "docbookforceabstracttag", LT_DOCBOOKFORCEABSTRACTTAG },
-		{ "docbookininfo",           LT_DOCBOOKININFO },
-		{ "docbookitemattr",         LT_DOCBOOKITEMATTR },
-		{ "docbookiteminnerattr",    LT_DOCBOOKITEMINNERATTR },
-		{ "docbookiteminnertag",     LT_DOCBOOKITEMINNERTAG },
-		{ "docbookitemlabelattr",    LT_DOCBOOKITEMLABELATTR },
-		{ "docbookitemlabeltag",     LT_DOCBOOKITEMLABELTAG },
-		{ "docbookitemtag",          LT_DOCBOOKITEMTAG },
-		{ "docbookitemwrapperattr",  LT_DOCBOOKITEMWRAPPERATTR },
-		{ "docbookitemwrappertag",   LT_DOCBOOKITEMWRAPPERTAG },
-		{ "docbooksectiontag",       LT_DOCBOOKSECTIONTAG },
-		{ "docbooktag",              LT_DOCBOOKTAG },
-		{ "docbookwrapperattr",      LT_DOCBOOKWRAPPERATTR },
+		{ "docbookabstract",           LT_DOCBOOKABSTRACT },
+		{ "docbookattr",               LT_DOCBOOKATTR },
+		{ "docbookforceabstracttag",   LT_DOCBOOKFORCEABSTRACTTAG },
+		{ "docbookininfo",             LT_DOCBOOKININFO },
+		{ "docbookitemattr",           LT_DOCBOOKITEMATTR },
+		{ "docbookiteminnerattr",      LT_DOCBOOKITEMINNERATTR },
+		{ "docbookiteminnertag",       LT_DOCBOOKITEMINNERTAG },
+		{ "docbookiteminnertagtype",   LT_DOCBOOKITEMINNERTAGTYPE },
+		{ "docbookitemlabelattr",      LT_DOCBOOKITEMLABELATTR },
+		{ "docbookitemlabeltag",       LT_DOCBOOKITEMLABELTAG },
+		{ "docbookitemlabeltagtype",   LT_DOCBOOKITEMLABELTAGTYPE },
+		{ "docbookitemtag",            LT_DOCBOOKITEMTAG },
+		{ "docbookitemtagtype",        LT_DOCBOOKITEMTAGTYPE },
+		{ "docbookitemwrapperattr",    LT_DOCBOOKITEMWRAPPERATTR },
+		{ "docbookitemwrappertag",     LT_DOCBOOKITEMWRAPPERTAG },
+		{ "docbookitemwrappertagtype", LT_DOCBOOKITEMWRAPPERTAGTYPE },
+		{ "docbooksectiontag",         LT_DOCBOOKSECTIONTAG },
+		{ "docbooktag",                LT_DOCBOOKTAG },
+		{ "docbooktagtype",            LT_DOCBOOKTAGTYPE },
+		{ "docbookwrapperattr",        LT_DOCBOOKWRAPPERATTR },
 		{ "docbookwrappermergewithprevious", LT_DOCBOOKWRAPPERMERGEWITHPREVIOUS },
-		{ "docbookwrappertag",       LT_DOCBOOKWRAPPERTAG },
+		{ "docbookwrappertag",         LT_DOCBOOKWRAPPERTAG },
+		{ "docbookwrappertagtype",     LT_DOCBOOKWRAPPERTAGTYPE },
 		{ "end",            LT_END },
 		{ "endlabelstring", LT_ENDLABELSTRING },
 		{ "endlabeltype",   LT_ENDLABELTYPE },
@@ -733,6 +745,10 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 			lex >> docbookattr_;
 			break;
 
+		case LT_DOCBOOKTAGTYPE:
+			lex >> docbooktagtype_;
+			break;
+
 		case LT_DOCBOOKFORCEABSTRACTTAG:
 			lex >> docbookforceabstracttag_;
 			break;
@@ -753,6 +769,10 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 			lex >> docbookwrapperattr_;
 			break;
 
+		case LT_DOCBOOKWRAPPERTAGTYPE:
+			lex >> docbookwrappertagtype_;
+			break;
+
 		case LT_DOCBOOKWRAPPERMERGEWITHPREVIOUS:
 			lex >> docbookwrappermergewithprevious_;
 			break;
@@ -769,12 +789,20 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 			lex >> docbookitemwrapperattr_;
 			break;
 
+		case LT_DOCBOOKITEMWRAPPERTAGTYPE:
+			lex >> docbookitemwrappertagtype_;
+			break;
+
 		case LT_DOCBOOKITEMTAG:
 			lex >> docbookitemtag_;
 			break;
 
 		case LT_DOCBOOKITEMATTR:
 			lex >> docbookitemattr_;
+			break;
+
+		case LT_DOCBOOKITEMTAGTYPE:
+			lex >> docbookitemtagtype_;
 			break;
 
 		case LT_DOCBOOKITEMLABELTAG:
@@ -785,12 +813,20 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 			lex >> docbookitemlabelattr_;
 			break;
 
+		case LT_DOCBOOKITEMLABELTAGTYPE:
+			lex >> docbookitemlabeltagtype_;
+			break;
+
 		case LT_DOCBOOKITEMINNERTAG:
 			lex >> docbookiteminnertag_;
 			break;
 
 		case LT_DOCBOOKITEMINNERATTR:
 			lex >> docbookiteminnerattr_;
+			break;
+
+		case LT_DOCBOOKITEMINNERTAGTYPE:
+			lex >> docbookiteminnertagtype_;
 			break;
 
 		case LT_SPELLCHECK:
@@ -1608,6 +1644,8 @@ void Layout::write(ostream & os) const
 		os << "\tDocBookTag " << docbooktag_ << '\n';
 	if(!docbookattr_.empty())
 		os << "\tDocBookAttr " << docbookattr_ << '\n';
+	if(!docbooktagtype_.empty())
+		os << "\tDocBookTagType " << docbooktagtype_ << '\n';
 	if(!docbookininfo_.empty())
 		os << "\tDocBookInInfo " << docbookininfo_ << '\n';
 	os << "\tDocBookAbstract " << docbookabstract_ << '\n';
@@ -1615,25 +1653,35 @@ void Layout::write(ostream & os) const
 		os << "\tDocBookWrapperTag " << docbookwrappertag_ << '\n';
 	if(!docbookwrapperattr_.empty())
 		os << "\tDocBookWrapperAttr " << docbookwrapperattr_ << '\n';
+	if(!docbookwrappertagtype_.empty())
+		os << "\tDocBookWrapperTagType " << docbookwrappertagtype_ << '\n';
 	if(!docbooksectiontag_.empty())
 		os << "\tDocBookSectionTag " << docbooksectiontag_ << '\n';
 	if(!docbookitemtag_.empty())
 		os << "\tDocBookItemTag " << docbookitemtag_ << '\n';
 	if(!docbookitemattr_.empty())
 		os << "\tDocBookItemAttr " << docbookitemattr_ << '\n';
+	if(!docbookitemtagtype_.empty())
+		os << "\tDocBookItemTagType " << docbookitemtagtype_ << '\n';
 	if(!docbookitemwrappertag_.empty())
 		os << "\tDocBookItemWrapperTag " << docbookitemwrappertag_ << '\n';
 	if(!docbookitemwrapperattr_.empty())
 		os << "\tDocBookItemWrapperAttr " << docbookitemwrapperattr_ << '\n';
+	if(!docbookitemwrappertagtype_.empty())
+		os << "\tDocBookItemWrapperTagType " << docbookitemwrappertagtype_ << '\n';
 	os << "\tDocBookItemWrapperMergeWithPrevious " << docbookwrappermergewithprevious_ << '\n';
 	if(!docbookitemlabeltag_.empty())
 		os << "\tDocBookItemLabelTag " << docbookitemlabeltag_ << '\n';
 	if(!docbookitemlabelattr_.empty())
 		os << "\tDocBookItemLabelAttr " << docbookitemlabelattr_ << '\n';
+	if(!docbookitemlabeltagtype_.empty())
+		os << "\tDocBookItemLabelTagType " << docbookitemlabeltagtype_ << '\n';
 	if(!docbookiteminnertag_.empty())
 		os << "\tDocBookItemInnerTag " << docbookiteminnertag_ << '\n';
 	if(!docbookiteminnerattr_.empty())
 		os << "\tDocBookItemInnerAttr " << docbookiteminnerattr_ << '\n';
+	if(!docbookiteminnertagtype_.empty())
+		os << "\tDocBookItemInnerTagType " << docbookiteminnertagtype_ << '\n';
 	if(!docbookforceabstracttag_.empty())
 		os << "\tDocBookForceAbstractTag " << docbookforceabstracttag_ << '\n';
 	os << "\tSpellcheck " << spellcheck << "\n"
@@ -1786,9 +1834,12 @@ string Layout::defaultCSSClass() const
 
 string const & Layout::docbooktag() const
 {
-	// No sensible default value, unhappily...
-	if (docbooktag_.empty())
-		docbooktag_ = to_utf8(name_);
+	if (docbooktag_.empty()) {
+		if (to_ascii(name_) == "Plain Layout")
+			docbooktag_ = "para";
+		else // No sensible default value, unhappily...
+			docbooktag_ = to_utf8(name_);
+	}
 	return docbooktag_;
 }
 
@@ -1797,6 +1848,20 @@ string const & Layout::docbookattr() const
 {
 	// Perfectly OK to return no attributes, so docbookattr_ does not need to be filled.
 	return docbookattr_;
+}
+
+
+bool isValidTagType(std::string type)
+{
+	return !(type.empty() || (type != "block" && type != "paragraph" && type != "inline"));
+}
+
+
+string const & Layout::docbooktagtype() const
+{
+	if (!isValidTagType(docbooktagtype_))
+		docbooktagtype_ = "block";
+	return docbooktagtype_;
 }
 
 
@@ -1823,6 +1888,14 @@ string const & Layout::docbookwrapperattr() const
 }
 
 
+string const & Layout::docbookwrappertagtype() const
+{
+	if (!isValidTagType(docbookwrappertagtype_))
+		docbookwrappertagtype_ = "block";
+	return docbookwrappertagtype_;
+}
+
+
 string const & Layout::docbooksectiontag() const
 {
 	if (docbooksectiontag_.empty())
@@ -1845,15 +1918,33 @@ string const & Layout::docbookitemwrapperattr() const
 }
 
 
+string const & Layout::docbookitemwrappertagtype() const
+{
+	if (!isValidTagType(docbookitemwrappertagtype_))
+		docbookitemwrappertagtype_ = "block";
+	return docbookitemwrappertagtype_;
+}
+
+
 string const & Layout::docbookitemtag() const
 {
-    return docbookitemtag_;
+	if (docbookitemtag_.empty())
+		docbookitemtag_ = "NONE";
+	return docbookitemtag_;
 }
 
 
 string const & Layout::docbookitemattr() const
 {
     return docbookitemattr_;
+}
+
+
+string const & Layout::docbookitemtagtype() const
+{
+	if (!isValidTagType(docbookitemtagtype_))
+		docbookitemtagtype_ = "block";
+	return docbookitemtagtype_;
 }
 
 
@@ -1871,6 +1962,14 @@ string const & Layout::docbookitemlabelattr() const
 }
 
 
+string const & Layout::docbookitemlabeltagtype() const
+{
+	if (!isValidTagType(docbookitemlabeltagtype_))
+		docbookitemlabeltagtype_ = "block";
+	return docbookitemlabeltagtype_;
+}
+
+
 string const & Layout::docbookiteminnertag() const
 {
 	if (docbookiteminnertag_.empty())
@@ -1882,6 +1981,14 @@ string const & Layout::docbookiteminnertag() const
 string const & Layout::docbookiteminnerattr() const
 {
 	return docbookiteminnerattr_;
+}
+
+
+string const & Layout::docbookiteminnertagtype() const
+{
+	if (!isValidTagType(docbookiteminnertagtype_))
+		docbookiteminnertagtype_ = "block";
+	return docbookiteminnertagtype_;
 }
 
 

@@ -31,8 +31,8 @@ Floating::Floating(string const & type, string const & placement,
 		   string const & refPrefix, std::string const & allowedplacement,
 		   string const & htmlTag, string const & htmlAttrib,
 		   docstring const & htmlStyle, string const & docbookTag,
-		   string const & docbookAttr, string const & required,
-		   bool usesfloat, bool ispredefined,
+		   string const & docbookAttr, string const & docbookTagType,
+           string const & required, bool usesfloat, bool ispredefined,
 		   bool allowswide, bool allowssideways)
 	: floattype_(type), placement_(placement), ext_(ext), within_(within),
 	  style_(style), name_(name), listname_(listName), listcommand_(listCmd),
@@ -40,7 +40,8 @@ Floating::Floating(string const & type, string const & placement,
 	  usesfloatpkg_(usesfloat), ispredefined_(ispredefined),
 	  allowswide_(allowswide), allowssideways_(allowssideways),
 	  html_tag_(htmlTag), html_attrib_(htmlAttrib), html_style_(htmlStyle),
-	  docbook_tag_(docbookTag), docbook_attr_(docbookAttr)
+	  docbook_tag_(docbookTag), docbook_attr_(docbookAttr),
+	  docbook_tag_type_(docbookTagType)
 {}
 
 
@@ -90,17 +91,27 @@ string const & Floating::docbookAttr() const
 
 string const & Floating::docbookTag(bool hasTitle) const
 {
-	docbook_tag_ = "";
-	if (floattype_ == "figure") {
-		docbook_tag_ = hasTitle ? "figure" : "informalfigure";
-	} else if (floattype_ == "table") {
-		docbook_tag_ = hasTitle ? "table" : "informaltable";
-	} else if (floattype_ == "algorithm") {
-		// TODO: no good translation for now! Figures are the closest match, as they can contain text.
-		// Solvable as soon as https://github.com/docbook/docbook/issues/157 has a definitive answer.
-		docbook_tag_ = "figure";
+	if (docbook_tag_.empty()) {
+		docbook_tag_ = "";
+		if (floattype_ == "figure") {
+			docbook_tag_ = hasTitle ? "figure" : "informalfigure";
+		} else if (floattype_ == "table") {
+			docbook_tag_ = hasTitle ? "table" : "informaltable";
+		} else if (floattype_ == "algorithm") {
+			// TODO: no good translation for now! Figures are the closest match, as they can contain text.
+			// Solvable as soon as https://github.com/docbook/docbook/issues/157 has a definitive answer.
+			docbook_tag_ = "figure";
+		}
 	}
 	return docbook_tag_;
+}
+
+
+string const & Floating::docbookTagType() const
+{
+	if (docbook_tag_type_ != "block" && docbook_tag_type_ != "paragraph" && docbook_tag_type_ != "inline")
+		docbook_tag_type_ = "block";
+	return docbook_tag_type_;
 }
 
 

@@ -38,8 +38,9 @@ public:
 		 std::string const & refPrefix, std::string const & allowedplacement,
 		 std::string const & htmlType, std::string const & htmlClass,
 		 docstring const & htmlStyle, std::string const & docbookTag,
-		 std::string const & docbookAttr, std::string const & required,
-		 bool usesfloat, bool isprefined, bool allowswide, bool allowssideways);
+		 std::string const & docbookAttr, std::string const & docbookTagType,
+		 std::string const & required, bool usesfloat, bool isprefined,
+		 bool allowswide, bool allowssideways);
 	///
 	std::string const & floattype() const { return floattype_; }
 	///
@@ -84,6 +85,8 @@ public:
 	///
 	std::string const & docbookAttr() const;
 	///
+	std::string const & docbookTagType() const;
+	///
 	std::string const & docbookCaption() const;
 private:
 	///
@@ -115,9 +118,9 @@ private:
 	///
 	bool ispredefined_;
 	///
-	bool  allowswide_;
+	bool allowswide_;
 	///
-	bool  allowssideways_;
+	bool allowssideways_;
 	///
 	mutable std::string html_tag_;
 	///
@@ -132,6 +135,8 @@ private:
 	mutable std::string docbook_caption_;
 	/// caption tag (mostly, either caption or title)
 	std::string docbook_attr_;
+	/// DocBook tag type (block, paragraph, inline)
+	mutable std::string docbook_tag_type_;
 };
 
 
