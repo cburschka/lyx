@@ -39,7 +39,7 @@ struct CR;
 class XMLStream {
 public:
 	///
-	explicit XMLStream(odocstream & os): os_(os), escape_(ESCAPE_ALL) {}
+	explicit XMLStream(odocstream & os): os_(os), escape_(ESCAPE_ALL), is_last_tag_cr_(false) {}
 	///
 	odocstream & os() { return os_; }
 	///
@@ -98,6 +98,8 @@ public:
 	bool isTagOpen(xml::EndTag const &, int maxdepth = -1) const;
 	///
 	bool isTagPending(xml::StartTag const &, int maxdepth = -1) const;
+	///
+	bool isLastTagCR() const { return is_last_tag_cr_; };
 private:
 	///
 	void clearTagDeque();
@@ -126,6 +128,8 @@ private:
 	TagDeque pending_tags_;
 	///
 	TagDeque tag_stack_;
+	///
+	bool is_last_tag_cr_;
 public:
 	bool pending_tags_empty() { return pending_tags_.empty();};
 };

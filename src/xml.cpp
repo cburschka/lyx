@@ -290,6 +290,7 @@ void XMLStream::clearTagDeque()
 
 XMLStream &XMLStream::operator<<(docstring const &d)
 {
+	is_last_tag_cr_ = false;
 	clearTagDeque();
 	os_ << xml::escapeString(d, escape_);
 	escape_ = ESCAPE_ALL;
@@ -299,6 +300,7 @@ XMLStream &XMLStream::operator<<(docstring const &d)
 
 XMLStream &XMLStream::operator<<(const char *s)
 {
+	is_last_tag_cr_ = false;
 	clearTagDeque();
 	docstring const d = from_ascii(s);
 	os_ << xml::escapeString(d, escape_);
@@ -309,6 +311,7 @@ XMLStream &XMLStream::operator<<(const char *s)
 
 XMLStream &XMLStream::operator<<(char_type c)
 {
+	is_last_tag_cr_ = false;
 	clearTagDeque();
 	os_ << xml::escapeChar(c, escape_);
 	escape_ = ESCAPE_ALL;
@@ -318,6 +321,7 @@ XMLStream &XMLStream::operator<<(char_type c)
 
 XMLStream &XMLStream::operator<<(char c)
 {
+	is_last_tag_cr_ = false;
 	clearTagDeque();
 	os_ << xml::escapeChar(c, escape_);
 	escape_ = ESCAPE_ALL;
@@ -327,6 +331,7 @@ XMLStream &XMLStream::operator<<(char c)
 
 XMLStream &XMLStream::operator<<(int i)
 {
+	is_last_tag_cr_ = false;
 	clearTagDeque();
 	os_ << i;
 	escape_ = ESCAPE_ALL;
@@ -336,6 +341,7 @@ XMLStream &XMLStream::operator<<(int i)
 
 XMLStream &XMLStream::operator<<(EscapeSettings e)
 {
+	// Don't update is_last_tag_cr_ here, as this does not output anything.
 	escape_ = e;
 	return *this;
 }
@@ -343,6 +349,7 @@ XMLStream &XMLStream::operator<<(EscapeSettings e)
 
 XMLStream &XMLStream::operator<<(xml::StartTag const &tag)
 {
+	is_last_tag_cr_ = false;
 	if (tag.tag_.empty())
 		return *this;
 	pending_tags_.push_back(makeTagPtr(tag));
@@ -354,6 +361,7 @@ XMLStream &XMLStream::operator<<(xml::StartTag const &tag)
 
 XMLStream &XMLStream::operator<<(xml::ParTag const &tag)
 {
+	is_last_tag_cr_ = false;
 	if (tag.tag_.empty())
 		return *this;
 	pending_tags_.push_back(makeTagPtr(tag));
@@ -363,6 +371,7 @@ XMLStream &XMLStream::operator<<(xml::ParTag const &tag)
 
 XMLStream &XMLStream::operator<<(xml::CompTag const &tag)
 {
+	is_last_tag_cr_ = false;
 	if (tag.tag_.empty())
 		return *this;
 	clearTagDeque();
@@ -373,6 +382,7 @@ XMLStream &XMLStream::operator<<(xml::CompTag const &tag)
 
 XMLStream &XMLStream::operator<<(xml::FontTag const &tag)
 {
+	is_last_tag_cr_ = false;
 	if (tag.tag_.empty())
 		return *this;
 	pending_tags_.push_back(makeTagPtr(tag));
@@ -382,6 +392,7 @@ XMLStream &XMLStream::operator<<(xml::FontTag const &tag)
 
 XMLStream &XMLStream::operator<<(xml::CR const &)
 {
+	is_last_tag_cr_ = true;
 	clearTagDeque();
 	os_ << from_ascii("\n");
 	return *this;
@@ -434,6 +445,8 @@ bool XMLStream::isTagPending(xml::StartTag const &stag, int maxdepth) const
 // best to make things work.
 XMLStream &XMLStream::operator<<(xml::EndTag const &etag)
 {
+	is_last_tag_cr_ = false;
+
 	if (etag.tag_.empty())
 		return *this;
 
