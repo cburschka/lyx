@@ -360,63 +360,59 @@ void closeItemTag(XMLStream & xs, Layout const & lay)
 }
 
 
+void makeAny(
+		Text const &,
+		Buffer const &,
+		XMLStream &,
+		OutputParams const &,
+		ParagraphList::const_iterator);
+
+
 void makeParagraphBibliography(
 		Buffer const & buf,
 		XMLStream & xs,
 		OutputParams const & runparams,
 		Text const & text,
-		ParagraphList::const_iterator const & pbegin)
+		ParagraphList::const_iterator const & par)
 {
-	auto const begin = text.paragraphs().begin();
-	auto const end = text.paragraphs().end();
-	auto pend = pbegin;
-	++pend;
-
-	// Find the paragraph *before* pbegin.
-	ParagraphList::const_iterator pbegin_before = begin;
-	if (pbegin != begin) {
-		ParagraphList::const_iterator pbegin_before_next = begin;
-		++pbegin_before_next;
-
-		while (pbegin_before_next != pbegin) {
-			++pbegin_before;
-			++pbegin_before_next;
-		}
-	}
-
-	ParagraphList::const_iterator par = pbegin;
-
 	// If this is the first paragraph in a bibliography, open the bibliography tag.
-	if (pbegin != begin && pbegin_before->layout().latextype != LATEX_BIB_ENVIRONMENT) {
+	auto pbegin_before = text.paragraphs().getParagraphBefore(par);
+	if (pbegin_before->layout().latextype != LATEX_BIB_ENVIRONMENT) {
 		xs << xml::StartTag("bibliography");
 		xs << xml::CR();
 	}
 
-	// Generate the required paragraphs, but only if they are .
-	for (; par != pend; ++par) {
-		// Start the precooked bibliography entry. This is very much like opening a paragraph tag.
-		// Don't forget the citation ID!
-		docstring attr;
-		for (auto i = 0; i < par->size(); ++i) {
-			Inset const *ip = par->getInset(0);
-			if (ip != nullptr && ip->lyxCode() == BIBITEM_CODE) {
-				const auto * bibitem = dynamic_cast<const InsetBibitem*>(par->getInset(i));
-				attr = from_utf8("xml:id='") + bibitem->getParam("key") + from_utf8("'");
-				break;
-			}
+	// Start the precooked bibliography entry. This is very much like opening a paragraph tag.
+	// Don't forget the citation ID!
+	docstring attr;
+	for (auto i = 0; i < par->size(); ++i) {
+		Inset const *ip = par->getInset(0);
+		if (ip != nullptr && ip->lyxCode() == BIBITEM_CODE) {
+			const auto * bibitem = dynamic_cast<const InsetBibitem*>(par->getInset(i));
+			attr = from_utf8("xml:id='") + bibitem->getParam("key") + from_utf8("'");
+			break;
 		}
-		xs << xml::StartTag(from_utf8("bibliomixed"), attr);
-
-		// Generate the entry.
-		par->simpleDocBookOnePar(buf, xs, runparams, text.outerFont(distance(begin, par)), true, true, 0);
-
-		// End the precooked bibliography entry.
-		xs << xml::EndTag("bibliomixed");
-		xs << xml::CR();
 	}
+	xs << xml::StartTag(from_utf8("bibliomixed"), attr);
+
+	// Generate the entry.
+	auto const begin = text.paragraphs().begin();
+	par->simpleDocBookOnePar(buf, xs, runparams, text.outerFont(std::distance(begin, par)), true, true, 0);
+
+	// End the precooked bibliography entry.
+	xs << xml::EndTag("bibliomixed");
+	xs << xml::CR();
 
 	// If this is the last paragraph in a bibliography, close the bibliography tag.
-	if (par == end || par->layout().latextype != LATEX_BIB_ENVIRONMENT) {
+	auto const end = text.paragraphs().end();
+	bool endBibliography = par == end;
+	if (!endBibliography) {
+		auto nextpar = par;
+		++nextpar;
+		endBibliography = par->layout().latextype != LATEX_BIB_ENVIRONMENT;
+	}
+
+	if (endBibliography) {
 		xs << xml::EndTag("bibliography");
 		xs << xml::CR();
 	}
@@ -522,14 +518,6 @@ void makeParagraph(
 			closeParTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr);
 	}
 }
-
-
-void makeAny(
-		Text const &text,
-		Buffer const &buf,
-		XMLStream &xs,
-		OutputParams const &ourparams,
-		ParagraphList::const_iterator par);
 
 
 void makeEnvironment(
