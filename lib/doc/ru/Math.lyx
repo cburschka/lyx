@@ -27384,9 +27384,9 @@ arg   "newline-insert newline"
 
  внутри формулы.
  Этим создается либо окружение 
-\series bold
+\family sans
 align
-\series default
+\family default
 , которое описано в 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -27400,9 +27400,9 @@ reference "subsec:Standard-align-Environment"
 amsmath
 \series default
  — окружение 
-\series bold
+\family sans
 eqnarray
-\series default
+\family default
 , описанное в 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -27412,9 +27412,9 @@ reference "subsec:Eqnarray-Environment"
 
 .
  Рекомендуется использовать окружение 
-\series bold
+\family sans
 align
-\series default
+\family default
 , поскольку оно обеспечивает типографски правильный вывод во всех случаях.
 \end_layout
 
@@ -35215,7 +35215,7 @@ status open
  короткого заголовка с помощью меню 
 \family sans
 Вставка\SpecialChar menuseparator
-Краткое заглавие
+Краткий заголовок
 \family default
 .
  Короткие заголовки используются в качестве альтернативы многострочным заголовка

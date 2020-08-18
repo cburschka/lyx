@@ -4738,7 +4738,7 @@ status collapsed
  предоставляет интерфейс для команд титульной страницы посредством окружений
  абзацев 
 \family sans
-Заглавие
+Заголовок
 \family default
 , 
 \family sans
@@ -4755,7 +4755,7 @@ status collapsed
 \begin_layout Itemize
 Поместите заголовок вашего документа в окружение 
 \family sans
-Заглавие
+Заголовок
 \family default
 .
 \end_layout
@@ -5172,18 +5172,18 @@ name "sec:Short-Titles"
  меню 
 \family sans
 Вставка\SpecialChar menuseparator
-Краткое
+Краткий
 \begin_inset space ~
 \end_inset
 
-заглавие
+заголовок
 \family default
 .
  Это вызовет вставку поля с пометкой 
 \begin_inset Quotes rld
 \end_inset
 
-Краткое заглавие
+Краткий заголовок
 \begin_inset Quotes rrd
 \end_inset
 
@@ -8341,7 +8341,7 @@ arg   "depth-decrement"
 \begin_layout Itemize
 
 \family sans
-Заглавие
+Заголовок
 \end_layout
 
 \begin_layout Itemize
@@ -15370,7 +15370,7 @@ status collapsed
 \family default
 ».
  PostScript был разработан компанией 
-\family typewriter
+\family sans
 Adobe
 \family default
  как язык для печатного устройства.
@@ -19902,8 +19902,8 @@ status collapsed
 
 \begin_layout Description
 Заголовок: Текущая строка и все вышерасположенные строки, для которых не
- заданы специальные параметры, определяются как строки заголовка всех страниц
- длинной таблицы.
+ заданы специальные параметры, определяются как строки заголовка на всех
+ страницах длинной таблицы.
  За исключением первой страницы, если определен 
 \family sans
 Первый
@@ -19930,15 +19930,16 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-Подвал: Текущая строка и все нижерасположенные строки, для которых не заданы
- специальные параметры, определяются как строки подвала всех страниц длинной
- таблицы, за исключением последней страницы, если определен 
+Концовка: Текущая строка и все нижерасположенные строки, для которых не
+ заданы специальные параметры, определяются как строки концовки на всех
+ страницах длинной таблицы, за исключением последней страницы, если определена
+ 
 \family sans
-Последний
+Последняя
 \begin_inset space ~
 \end_inset
 
-подвал
+концовка
 \family default
 .
 \end_layout
@@ -19946,15 +19947,15 @@ status collapsed
 \begin_layout Description
 
 \family sans
-Последний
+Последняя
 \begin_inset space ~
 \end_inset
 
 
 \family default
-подвал: Текущая строка и все нижерасположенные строки, для которых не заданы
- специальные параметры, определяются как строки подвала последней страницы
- длинной таблицы.
+концовка: Текущая строка и все нижерасположенные строки, для которых не
+ заданы специальные параметры, определяются как строки концовки на последней
+ странице длинной таблицы.
 \end_layout
 
 \begin_layout Description
@@ -19992,11 +19993,11 @@ status collapsed
 
  означает первичность в следующем порядке: 
 \family sans
-Подвал
+Концовка
 \family default
 , 
 \family sans
-Последний подвал
+Последняя концовка
 \family default
 , 
 \family sans
@@ -25424,7 +25425,11 @@ arg   "newline-insert newline"
 
  в формуле.
  В пустой формуле вы видите, что появляются три синих блока, по одному для
- каждого столбца.
+ каждого столбца (при отключенном пакете 
+\series bold
+amsmath
+\series default
+ в настройках документа).
  Когда вы нажимаете 
 \begin_inset Info
 type  "shortcut"
@@ -29636,8 +29641,11 @@ status open
 
 \series default
  Форматирование отдельных записей предметного указателя возможно только
- тогда, когда вы используете программу makeindex для создания указателя,
- см.
+ тогда, когда вы используете программу 
+\family sans
+makeindex
+\family default
+ для создания указателя, см.
  подраздел
 \begin_inset space ~
 \end_inset
@@ -30244,7 +30252,7 @@ textsf{sigma}
 \backslash
 textsf
 \series default
- устанавливает шрифты гарнитуры 
+ устанавливает шрифт гарнитуры 
 \family sans
 без
 \begin_inset space ~
@@ -30287,7 +30295,7 @@ emph
 \end_layout
 
 \begin_layout Standard
-Чтобы настроить внешний вид всех символов, добавьте, например, команду
+Чтобы настроить внешний вид всех символов, добавьте, например, такую команду
 \begin_inset Newline newline
 \end_inset
 
@@ -30332,7 +30340,9 @@ textbf{#1}}}
 \end_layout
 
 \begin_layout Standard
-Если символы |
+Если в записях списка обозначений, содержащих \SpecialChar TeX
+-код, должны появляться символы
+ |
 \begin_inset space \space{}
 \end_inset
 
@@ -30352,9 +30362,7 @@ textbf{#1}}}
 \begin_inset space \space{}
 \end_inset
 
-должны появляться в записях списка обозначений, содержащих \SpecialChar TeX
--код, их необходимо
- экранировать, добавляя перед ними символ кавычки.
+, то их необходимо экранировать, добавляя перед ними символ кавычки.
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "\"@, \"|, \"!, \"\""
@@ -35893,7 +35901,7 @@ Microsoft Word
 \family default
 .
  Для конвертации используется программа 
-\family typewriter
+\family sans
 Pandoc
 \family default
 , которая является сторонним продуктом и может работать не во всех случаях.
@@ -35923,7 +35931,7 @@ Office, OpenOffice, KOffice, Abiword
 
 п.
  Для конвертации используется программа 
-\family typewriter
+\family sans
 Pandoc
 \family default
 , которая является сторонним продуктом и может работать не во всех случаях.
@@ -36183,8 +36191,10 @@ LyX формат специальных версий \SpecialChar LyX
 \family default
  текстовый формат, документ сначала преобразуется в формат Postscript, а
  затем экспортируется как текст с помощью программы 
-\family sans
-ps2ascii.
+\family typewriter
+ps2ascii
+\family default
+.
 \end_layout
 
 \begin_layout Description
@@ -38228,7 +38238,7 @@ reference "subsec:Separate-Nestings"
 \end_layout
 
 \begin_layout Subsection
-Краткое заглавие
+Краткий заголовок
 \end_layout
 
 \begin_layout Standard
@@ -45262,17 +45272,17 @@ reference "subsec:Backup documents"
 Пример:
 \series default
  вы добавляете базу данных BibTeX, 
-\shape italic
+\family typewriter
 test.bib
-\shape default
+\family default
 , в ваш документ.
  Вы можете редактировать этот файл с помощью программы 
-\family typewriter
+\family sans
 JabRef
 \family default
 .
  В 
-\family typewriter
+\family sans
 JabRef
 \family default
  необходимо использовать тот же Unix-канал для \SpecialChar LyX
@@ -45284,7 +45294,7 @@ JabRef
 .
  Если вы хотите получить одну запись базы данных в качестве ссылки, выберите
  ее в 
-\family typewriter
+\family sans
 JabRef
 \family default
  и нажмите на символ \SpecialChar LyX
@@ -45293,7 +45303,7 @@ JabRef
  \SpecialChar LyX
 -файле.
  Конечно же, 
-\family typewriter
+\family sans
 JabRef
 \family default
  и \SpecialChar LyX
@@ -45525,7 +45535,7 @@ name "subsec:Prefs-Language"
 \begin_inset space ~
 \end_inset
 
-интерфейса Здесь вы можете выбрать язык меню \SpecialChar LyX
+интерфейса Здесь вы можете выбрать язык для меню и диалоговых окон \SpecialChar LyX
 .
  Актуальный статус перевода можно найти в: 
 \begin_inset CommandInset href
@@ -46136,7 +46146,7 @@ status collapsed
 \end_inset
 
 DVI Они действуют только тогда, когда программа 
-\family sans
+\family typewriter
 xdvi
 \family default
  используется в качестве DVI-просмотрщика, обратитесь к ее руководству,

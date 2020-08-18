@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-07-30 15:34+0200\n"
-"PO-Revision-Date: 2020-08-07 20:23+0300\n"
+"PO-Revision-Date: 2020-08-14 17:05+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -1516,15 +1516,15 @@ msgstr "Поиск"
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:29
 #: src/frontends/qt/ui/SearchUi.ui:33
 msgid "Fi&nd:"
-msgstr "Найти:"
+msgstr "Н&айти:"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:53
 msgid "Replace &with:"
-msgstr "Заменить &на:"
+msgstr "За&менить на:"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:107
 msgid "Shift+Enter search backwards directly"
-msgstr "Shift+Enter ищет в обратном направлении напрямую"
+msgstr "Shift+Enter ищет сразу в обратном направлении"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:110
 #: src/frontends/qt/ui/SearchUi.ui:141
@@ -1554,7 +1554,7 @@ msgstr "Найти следующее совпадение [Enter]"
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:150
 #: src/frontends/qt/ui/SearchUi.ui:105
 msgid "Find &Next"
-msgstr "Искать &следующее"
+msgstr "&Найти далее"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:163
 msgid "Replace and find next occurrence [Enter]"
@@ -1634,7 +1634,7 @@ msgstr ""
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:315
 msgid "I&gnore format"
-msgstr "&Игнорировать формат"
+msgstr "&Игнорировать форматирование"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:328
 msgid "&Expand macros"
@@ -2776,15 +2776,15 @@ msgstr "Следующее &предупреждение"
 
 #: src/frontends/qt/ui/LogUi.ui:95
 msgid "&Find:"
-msgstr "&Найти:"
+msgstr "Н&айти:"
 
 #: src/frontends/qt/ui/LogUi.ui:105
 msgid "Hit Enter to search, or click Go!"
-msgstr "Нажмите Enter для поиска, или щёлкните Пуск!"
+msgstr "Нажмите Enter для поиска, или щёлкните \"Найти далее\""
 
 #: src/frontends/qt/ui/LogUi.ui:112
 msgid "&Go!"
-msgstr "&Пуск!"
+msgstr "&Найти далее"
 
 #: src/frontends/qt/ui/LogUi.ui:121
 msgid "&Open Containing Directory"
@@ -5138,7 +5138,7 @@ msgstr "Выбранный язык. Переключение этого изм�
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:95
 msgid "&Find Next"
-msgstr "Искать &следующее"
+msgstr "&Найти далее"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:102
 msgid "Unknown word:"
@@ -5158,7 +5158,7 @@ msgstr "П&редложения:"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:155
 msgid "Ignore this word throughout this session"
-msgstr "Принимать слово в течение поиска"
+msgstr "Пропустить это слово для текущей сессии"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:158
 msgid "I&gnore All"
@@ -5451,9 +5451,7 @@ msgstr "Заголовок:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1365
 msgid "Repeat this row as header on every (except the first) page"
-msgstr ""
-"Повторить данную строку как заголовок на всех (за исключением первой) "
-"страницах"
+msgstr "Повторить данную строку как заголовок на всех (кроме первой) страницах"
 
 #: src/frontends/qt/ui/TabularUi.ui:1368 src/frontends/qt/ui/TabularUi.ui:1405
 #: src/frontends/qt/ui/TabularUi.ui:1446 src/frontends/qt/ui/TabularUi.ui:1477
@@ -5488,25 +5486,24 @@ msgstr "пусто"
 
 #: src/frontends/qt/ui/TabularUi.ui:1436
 msgid "Footer:"
-msgstr "Подвал:"
+msgstr "Концовка:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1443
 msgid "Repeat this row as footer on every (except the last) page"
 msgstr ""
-"Повторить данную строку как подвал на всех (за исключением последней) "
-"страницах"
+"Повторить данную строку как концовку на всех (кроме последней) страницах"
 
 #: src/frontends/qt/ui/TabularUi.ui:1467
 msgid "Last footer:"
-msgstr "Последний подвал:"
+msgstr "Последняя концовка:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1474
 msgid "This row is the footer of the last page"
-msgstr "Данная строка - подвал на последней странице"
+msgstr "Данная строка - концовка на последней странице"
 
 #: src/frontends/qt/ui/TabularUi.ui:1498
 msgid "Don't output the last footer"
-msgstr "Не выводить последний подвал"
+msgstr "Не выводить последнюю концовку"
 
 #: src/frontends/qt/ui/TabularUi.ui:1508 lib/layouts/AEA.layout:306
 msgid "Caption:"
@@ -5740,7 +5737,7 @@ msgid ""
 "Switch between available lists (table of contents, list of figures, list of "
 "tables, and others)"
 msgstr ""
-"Переключение между доступными списками (содержанием, списоком рисунков, "
+"Переключение между доступными списками (содержанием, списком рисунков, "
 "списком таблиц и другими)"
 
 #: src/frontends/qt/ui/TocUi.ui:273
@@ -6005,12 +6002,12 @@ msgstr "Авто"
 #: lib/citeengines/biblatex-natbib.citeengine:150
 #: lib/citeengines/biblatex.citeengine:142
 msgid "F&orce full title[[Possible substitute to All aut&hors]]"
-msgstr "Принудительно полное заглавие"
+msgstr "Принудительно полный заголовок"
 
 #: lib/citeengines/biblatex-natbib.citeengine:151
 #: lib/citeengines/biblatex.citeengine:143
 msgid "Use full title even if shorttitle exists"
-msgstr "Использовать полное заглавие, даже если существует короткое"
+msgstr "Использовать полный заголовок, даже если существует короткий"
 
 #: lib/citeengines/biblatex-natbib.citeengine:303
 #: lib/citeengines/biblatex.citeengine:289
@@ -6073,7 +6070,7 @@ msgstr "перед"
 
 #: lib/citeengines/jurabib.citeengine:128
 msgid "short title"
-msgstr "краткое заглавие"
+msgstr "краткий заголовок"
 
 #: lib/citeengines/natbib.citeengine:2
 msgid "Natbib (BibTeX)"
@@ -6130,7 +6127,7 @@ msgstr "Статьи"
 
 #: lib/layouts/AEA.layout:50 lib/layouts/apa.layout:96 lib/layouts/apax.inc:50
 msgid "ShortTitle"
-msgstr "Краткое заглавие"
+msgstr "Краткий заголовок"
 
 #: lib/layouts/AEA.layout:51 lib/layouts/AEA.layout:106
 #: lib/layouts/IEEEtran-CompSoc.layout:21
@@ -7128,7 +7125,7 @@ msgstr "Обычный текст"
 #: lib/layouts/svcommon.inc:324 lib/layouts/svmult.layout:47
 #: lib/layouts/svprobth.layout:76 lib/layouts/tufte-book.layout:50
 msgid "Title"
-msgstr "Заглавие"
+msgstr "Заголовок"
 
 #: lib/layouts/IEEEtran.layout:87 lib/layouts/IEEEtran.layout:92
 msgid "IEEE membership"
@@ -7209,7 +7206,7 @@ msgstr "Замечание об особой статье"
 
 #: lib/layouts/IEEEtran.layout:210
 msgid "After Title Text"
-msgstr "Текст после заглавия"
+msgstr "Текст после заголовка"
 
 #: lib/layouts/IEEEtran.layout:220
 msgid "Page headings"
@@ -7287,11 +7284,11 @@ msgstr "Закл. материал"
 
 #: lib/layouts/IEEEtran.layout:324
 msgid "Peer Review Title"
-msgstr "Заглавие рецензии"
+msgstr "Заголовок рецензии"
 
 #: lib/layouts/IEEEtran.layout:329
 msgid "PeerReviewTitle"
-msgstr "Заглавие рецензии"
+msgstr "Заголовок рецензии"
 
 #: lib/layouts/IEEEtran.layout:333 lib/layouts/IEEEtran.layout:336
 #: lib/layouts/aastex.layout:379 lib/layouts/aastex6.layout:95
@@ -7310,11 +7307,11 @@ msgstr "Приложение"
 #: lib/layouts/IEEEtran.layout:338 lib/layouts/iucr.layout:67
 #: lib/layouts/jss.layout:119
 msgid "Short Title"
-msgstr "Краткое заглавие"
+msgstr "Краткий заголовок"
 
 #: lib/layouts/IEEEtran.layout:339
 msgid "Short title for the appendix"
-msgstr "Краткое заглавие для приложения"
+msgstr "Краткий заголовок для приложения"
 
 #: lib/layouts/IEEEtran.layout:345 lib/layouts/aapaper.layout:108
 #: lib/layouts/aapaper.layout:222 lib/layouts/aastex.layout:411
@@ -7477,7 +7474,7 @@ msgstr "Доказательство."
 
 #: lib/layouts/InStar.module:2
 msgid "Title and Preamble Hacks"
-msgstr "Хаки заглавия и преамбулы"
+msgstr "Хаки заголовка и преамбулы"
 
 #: lib/layouts/InStar.module:3 lib/layouts/fix-cm.module:3
 #: lib/layouts/fixltx2e.module:3 lib/layouts/minimalistic.module:3
@@ -7496,10 +7493,10 @@ msgid ""
 msgstr ""
 "Предоставляет два новых стиля: 1. Стиль \"В преамбуле\", который помещает "
 "все, что вводится в него в преамбулу. Это можно использовать, если вы хотите "
-"включить код преамбулы в тело документа LyX. 2. Стиль \"В заглавии\", "
+"включить код преамбулы в тело документа LyX. 2. Стиль \"В заголовке\", "
 "который помещает своё содержание в тело документа LaTeX до выдачи "
 "\\maketitle. Это полезно для создания веток и заметок в материале, связанном "
-"с заглавием. (Если вы поместите их в окружение \"Обычный\", то это будет "
+"с заголовком. (Если вы поместите их в окружение \"Обычный\", то это будет "
 "сигналом для LyX к выводу \\maketitle, что может тогда произойти слишком "
 "рано.)"
 
@@ -7509,7 +7506,7 @@ msgstr "В преамбуле"
 
 #: lib/layouts/InStar.module:24
 msgid "In Title"
-msgstr "В заглавии"
+msgstr "В заголовке"
 
 #: lib/layouts/RJournal.layout:3 lib/examples/Articles:0
 msgid "R Journal"
@@ -8177,11 +8174,11 @@ msgstr "American Chemical Society (ACS)"
 #: lib/layouts/stdsections.inc:100 lib/layouts/tufte-book.layout:98
 #: lib/layouts/tufte-book.layout:129 lib/layouts/tufte-handout.layout:40
 msgid "Short Title|S"
-msgstr "Краткое заглавие"
+msgstr "Краткий заголовок"
 
 #: lib/layouts/achemso.layout:75
 msgid "Short title which will appear in the running header"
-msgstr "Краткое заглавие для колонтитула"
+msgstr "Краткий заголовок для колонтитула"
 
 #: lib/layouts/achemso.layout:109 lib/layouts/acmart.layout:125
 msgid "Short name"
@@ -8367,7 +8364,7 @@ msgstr "Конференция: "
 
 #: lib/layouts/acmart.layout:147
 msgid "Short title"
-msgstr "Краткое заглавие"
+msgstr "Краткий заголовок"
 
 #: lib/layouts/acmart.layout:178
 msgid "Email address: "
@@ -8427,11 +8424,11 @@ msgstr "Почтовый индекс"
 
 #: lib/layouts/acmart.layout:286
 msgid "TitleNote"
-msgstr "Заметка заглавия"
+msgstr "Заметка заголовка"
 
 #: lib/layouts/acmart.layout:296
 msgid "Title Note: "
-msgstr "Заметка заглавия: "
+msgstr "Заметка заголовка: "
 
 #: lib/layouts/acmart.layout:302
 msgid "SubtitleNote"
@@ -9256,7 +9253,7 @@ msgstr "Код LaTeX для вставки перед первым пункто�
 
 #: lib/layouts/amsdefs.inc:42
 msgid "Short title which appears in the running headers"
-msgstr "Краткое заглавие, которое отображается в колонтитулах"
+msgstr "Краткий заголовок, который отображается в колонтитулах"
 
 #: lib/layouts/amsdefs.inc:87 lib/layouts/dinbrief.layout:163
 #: lib/layouts/g-brief.layout:198 lib/layouts/g-brief2.layout:872
@@ -9347,7 +9344,7 @@ msgstr "Аннотация:"
 
 #: lib/layouts/apa.layout:105 lib/layouts/apax.inc:59
 msgid "Short title:"
-msgstr "Краткое заглавие:"
+msgstr "Краткий заголовок:"
 
 #: lib/layouts/apa.layout:135 lib/layouts/apax.inc:89
 msgid "TwoAuthors"
@@ -9591,18 +9588,18 @@ msgstr "Презентации"
 #: lib/layouts/beamer.layout:1243 lib/layouts/beamer.layout:1270
 #: lib/layouts/beamer.layout:1433
 msgid "Overlay Specifications|v"
-msgstr "Спецификации наложения"
+msgstr "Определение оверлея|о"
 
 #: lib/layouts/beamer.layout:88 lib/layouts/beamer.layout:137
 #: lib/layouts/beamer.layout:192
 msgid "Overlay specifications for this list"
-msgstr "Спецификации наложения для этого списка"
+msgstr "Определение оверлея для этого списка"
 
 #: lib/layouts/beamer.layout:98 lib/layouts/beamer.layout:151
 #: lib/layouts/beamer.layout:212 lib/layouts/beamer.layout:800
 #: lib/layouts/powerdot.layout:294 lib/layouts/powerdot.layout:359
 msgid "Item Overlay Specifications"
-msgstr "Спецификации наложения элемента"
+msgstr "Определение оверлея для пункта"
 
 #: lib/layouts/beamer.layout:99 lib/layouts/beamer.layout:152
 #: lib/layouts/beamer.layout:213 lib/layouts/beamer.layout:626
@@ -9618,7 +9615,7 @@ msgstr "На слайде"
 #: lib/layouts/beamer.layout:214 lib/layouts/beamer.layout:802
 #: lib/layouts/powerdot.layout:296 lib/layouts/powerdot.layout:361
 msgid "Overlay specifications for this item"
-msgstr "Спецификации наложения для этого элемента"
+msgstr "Определение оверлея для этого пункта"
 
 #: lib/layouts/beamer.layout:143
 msgid "Mini Template"
@@ -9748,7 +9745,7 @@ msgstr "Определение оверлея для этого фрейма"
 
 #: lib/layouts/beamer.layout:508 lib/layouts/beamer.layout:576
 msgid "Default Overlay Specifications"
-msgstr "Определение оверлея по умолчанию"
+msgstr "Оверлей по умолчанию"
 
 #: lib/layouts/beamer.layout:509 lib/layouts/beamer.layout:577
 msgid "Default overlay specifications within this frame"
@@ -9817,11 +9814,11 @@ msgstr "Заголовок фрейма"
 #: lib/layouts/beamer.layout:1583 lib/layouts/beamer.layout:1604
 #: lib/layouts/beamer.layout:1625 lib/layouts/beamer.layout:1651
 msgid "Specify the overlay settings (see beamer manual)"
-msgstr "Укажите параметры оверлея (см. руководство по Beamer)"
+msgstr "Задайте определение оверлея (см. руководство по Beamer)"
 
 #: lib/layouts/beamer.layout:634
 msgid "Short Frame Title|S"
-msgstr "Краткое заглавие фрейма"
+msgstr "Краткий заголовок фрейма"
 
 #: lib/layouts/beamer.layout:635
 msgid "A short form of the frame title used in some themes"
@@ -10013,11 +10010,11 @@ msgstr "Заголовки"
 
 #: lib/layouts/beamer.layout:1001
 msgid "Short title which appears in the sidebar/header"
-msgstr "Краткое название, которое появляется в боковой панели/заголовке"
+msgstr "Краткий заголовок, который появляется в боковой/верхней панели"
 
 #: lib/layouts/beamer.layout:1011
 msgid "Title (Plain Frame)"
-msgstr "Заглавие (простой фрейм)"
+msgstr "Заголовок (простой фрейм)"
 
 #: lib/layouts/beamer.layout:1033
 msgid "Short Subtitle|S"
@@ -10025,11 +10022,11 @@ msgstr "Краткий подзаголовок"
 
 #: lib/layouts/beamer.layout:1034
 msgid "Short subtitle which appears in the sidebar/header"
-msgstr "Краткий подзаголовок, который появляется в боковой панели/заголовке"
+msgstr "Краткий подзаголовок, который появляется в боковой/верхней панели"
 
 #: lib/layouts/beamer.layout:1058
 msgid "Short author which appears in the sidebar/header"
-msgstr "Краткий автор, который появляется в боковой панели/заголовке"
+msgstr "Краткий автор, который появляется в боковой/верхней панели"
 
 #: lib/layouts/beamer.layout:1080
 msgid "Short Institute|S"
@@ -10037,7 +10034,7 @@ msgstr "Краткий институт"
 
 #: lib/layouts/beamer.layout:1081
 msgid "Short institute which appears in the sidebar/header"
-msgstr "Краткий институт, который появляется в боковой панели/заголовке"
+msgstr "Краткий институт, который появляется в боковой/верхней панели"
 
 #: lib/layouts/beamer.layout:1090
 msgid "InstituteMark"
@@ -10083,7 +10080,7 @@ msgstr "Следствие."
 #: lib/layouts/beamer.layout:1603 lib/layouts/beamer.layout:1624
 #: lib/layouts/beamer.layout:1650
 msgid "Action Specifications|S"
-msgstr "Описание действия"
+msgstr "Определение действия"
 
 #: lib/layouts/beamer.layout:1324 lib/layouts/foils.layout:350
 #: lib/layouts/theorems-starred.inc:162
@@ -10277,11 +10274,11 @@ msgstr "двуязычный"
 
 #: lib/layouts/bicaption.module:45
 msgid "Main Language Short Title"
-msgstr "Краткое заглавие на основном языке"
+msgstr "Краткий заголовок на основном языке"
 
 #: lib/layouts/bicaption.module:46
 msgid "Short title for the main(document) language"
-msgstr "Краткое заглавие на основном языке"
+msgstr "Краткий заголовок на основном языке"
 
 #: lib/layouts/bicaption.module:50
 msgid "Main Language Text"
@@ -10293,11 +10290,11 @@ msgstr "Текст на основном языке"
 
 #: lib/layouts/bicaption.module:54
 msgid "Second Language Short Title"
-msgstr "Краткое заглавие на втором языке"
+msgstr "Краткий заголовок на втором языке"
 
 #: lib/layouts/bicaption.module:55
 msgid "Short title for the second language"
-msgstr "Краткое заглавие на втором языке"
+msgstr "Краткий заголовок на втором языке"
 
 #: lib/layouts/book.layout:3
 msgid "Book (Standard Class)"
@@ -10704,12 +10701,12 @@ msgstr ""
 
 #: lib/layouts/copernicus.layout:90 lib/layouts/svcommon.inc:401
 msgid "Running Title"
-msgstr "Заглавие в колонтитуле"
+msgstr "Заголовок в колонтитуле"
 
 #: lib/layouts/copernicus.layout:95 lib/layouts/kluwer.layout:228
 #: lib/layouts/svcommon.inc:405
 msgid "Running title:"
-msgstr "Заглавие в колонтитуле:"
+msgstr "Заголовок в колонтитуле:"
 
 #: lib/layouts/copernicus.layout:98
 msgid "FirstPage"
@@ -11481,7 +11478,7 @@ msgstr "00.00.0000"
 
 #: lib/layouts/egs.layout:340
 msgid "LaTeX Title"
-msgstr "Заглавие LaTeX"
+msgstr "Заголовок LaTeX"
 
 #: lib/layouts/egs.layout:419
 msgid "Journal:"
@@ -11620,15 +11617,15 @@ msgstr "Elsevier"
 
 #: lib/layouts/elsarticle.layout:78
 msgid "Titlenotemark"
-msgstr "Пометка заглавия"
+msgstr "Пометка заголовка"
 
 #: lib/layouts/elsarticle.layout:83
 msgid "Titlenote mark"
-msgstr "Пометка заглавия"
+msgstr "Пометка заголовка"
 
 #: lib/layouts/elsarticle.layout:101
 msgid "Title footnote"
-msgstr "Сноска заглавия"
+msgstr "Сноска заголовка"
 
 #: lib/layouts/elsarticle.layout:108
 msgid "Footnote Label"
@@ -11636,11 +11633,11 @@ msgstr "Метка сноски"
 
 #: lib/layouts/elsarticle.layout:109
 msgid "Label you refer to in the title"
-msgstr "Метка, к которой вы ссылаетесь в заглавии"
+msgstr "Метка, к которой вы ссылаетесь в заголовке"
 
 #: lib/layouts/elsarticle.layout:116 lib/layouts/revtex4-x.inc:193
 msgid "Title footnote:"
-msgstr "Сноска заглавия:"
+msgstr "Сноска заголовка:"
 
 #: lib/layouts/elsarticle.layout:130
 msgid "Author Label"
@@ -11880,11 +11877,11 @@ msgstr "Имя:"
 
 #: lib/layouts/europasscv.layout:94 lib/layouts/europecv.layout:47
 msgid "FooterName"
-msgstr "Имя в подвале"
+msgstr "Имя в нижнем колонтитуле"
 
 #: lib/layouts/europasscv.layout:97
 msgid "Name (footer):"
-msgstr "Имя (подвал):"
+msgstr "Имя (колонтитул):"
 
 #: lib/layouts/europasscv.layout:111 lib/layouts/moderncv.layout:166
 msgid "Mobile:"
@@ -12008,19 +12005,19 @@ msgstr "Подпункты"
 
 #: lib/layouts/europasscv.layout:270
 msgid "TitleItem"
-msgstr "Пункт заглавия"
+msgstr "Пункт заголовка"
 
 #: lib/layouts/europasscv.layout:274
 msgid "Title item:"
-msgstr "Пункт заглавия:"
+msgstr "Пункт заголовка:"
 
 #: lib/layouts/europasscv.layout:277
 msgid "TitleLevel"
-msgstr "Уровень заглавия"
+msgstr "Уровень заголовка"
 
 #: lib/layouts/europasscv.layout:281
 msgid "Title level:"
-msgstr "Уровень заглавия:"
+msgstr "Уровень заголовка:"
 
 #: lib/layouts/europasscv.layout:285 lib/layouts/europasscv.layout:286
 msgid "Text (right side)"
@@ -12120,11 +12117,11 @@ msgstr "Последний язык:"
 
 #: lib/layouts/europasscv.layout:425 lib/layouts/europecv.layout:284
 msgid "LangFooter"
-msgstr "Подвал языка"
+msgstr "Концовка языка"
 
 #: lib/layouts/europasscv.layout:428 lib/layouts/europecv.layout:287
 msgid "Language Footer:"
-msgstr "Подвал языка:"
+msgstr "Концовка языка:"
 
 #: lib/layouts/europasscv.layout:431 lib/layouts/europecv.layout:290
 msgid "End"
@@ -12145,7 +12142,7 @@ msgstr "Европейское резюме"
 
 #: lib/layouts/europecv.layout:50
 msgid "Footer name:"
-msgstr "Подвал:"
+msgstr "Нижний колонтитул:"
 
 #: lib/layouts/europecv.layout:82 lib/layouts/moderncv.layout:163
 msgid "Mobile"
@@ -12165,7 +12162,7 @@ msgstr "Страница"
 
 #: lib/layouts/europecv.layout:138
 msgid "The title as it appears in the header"
-msgstr "Заглавие, как оно будет показываться в колонтитуле"
+msgstr "Заголовок, как он будет показываться в колонтитуле"
 
 #: lib/layouts/europecv.layout:170
 msgid "Summary of the item, can also be the time"
@@ -12173,11 +12170,11 @@ msgstr "Сводная информация о предмете, также мо
 
 #: lib/layouts/europecv.layout:183
 msgid "BulletedItem"
-msgstr "Маркированный элемент"
+msgstr "Маркированный пункт"
 
 #: lib/layouts/europecv.layout:186
 msgid "Bulleted Item:"
-msgstr "Маркированный элемент:"
+msgstr "Маркированный пункт:"
 
 #: lib/layouts/europecv.layout:189
 msgid "Begin"
@@ -13423,7 +13420,7 @@ msgstr "Institute of Physics (IOP)"
 
 #: lib/layouts/iopart.layout:67 lib/layouts/jasatex.layout:75
 msgid "Short title that will appear in header line"
-msgstr "Короткое заглавие для верхнего колонтитула"
+msgstr "Краткий заголовок для верхнего колонтитула"
 
 #: lib/layouts/iopart.layout:84
 msgid "Review"
@@ -13667,15 +13664,15 @@ msgstr "Ключевые слова:"
 
 #: lib/layouts/jss.layout:113
 msgid "Plain Title"
-msgstr "Обычное заглавие"
+msgstr "Обычный заголовок"
 
 #: lib/layouts/jss.layout:116
 msgid "Plain Title:"
-msgstr "Обычное заглавие:"
+msgstr "Обычный заголовок:"
 
 #: lib/layouts/jss.layout:122
 msgid "Short Title:"
-msgstr "Краткое заглавие:"
+msgstr "Краткий заголовок:"
 
 #: lib/layouts/jss.layout:125
 msgid "Plain Author"
@@ -14302,7 +14299,7 @@ msgstr "Глава"
 
 #: lib/layouts/llncs.layout:152
 msgid "Running LaTeX Title"
-msgstr "Заглавие LaTeX в колонтитуле"
+msgstr "Заголовок LaTeX в колонтитуле"
 
 #: lib/layouts/llncs.layout:175 lib/layouts/svcommon.inc:377
 msgid "TOC Title"
@@ -14431,7 +14428,7 @@ msgstr "Mathematical Monthly article"
 
 #: lib/layouts/maa-monthly.layout:64
 msgid "Abbreviated Title"
-msgstr "Сокращённое заглавие"
+msgstr "Сокращённый заголовок"
 
 #: lib/layouts/maa-monthly.layout:74 lib/layouts/maa-monthly.layout:77
 msgid "Biographies"
@@ -14464,7 +14461,7 @@ msgstr "Мемуары"
 #: lib/layouts/memoir.layout:160 lib/layouts/memoir.layout:229
 #: lib/layouts/memoir.layout:250
 msgid "Short Title (TOC)|S"
-msgstr "Краткое заглавие (для содержания)|з"
+msgstr "Краткий заголовок (для содержания)|з"
 
 #: lib/layouts/memoir.layout:77 lib/layouts/memoir.layout:92
 msgid "The chapter as it appears in the table of contents"
@@ -14475,7 +14472,7 @@ msgstr "Глава, как она отображается в содержани
 #: lib/layouts/memoir.layout:150 lib/layouts/memoir.layout:165
 #: lib/layouts/memoir.layout:234
 msgid "Short Title (Header)"
-msgstr "Краткое заглавие (для колонтитула)"
+msgstr "Краткий заголовок (для колонтитула)"
 
 #: lib/layouts/memoir.layout:82
 msgid "The chapter as it appears in the running headers"
@@ -14845,19 +14842,19 @@ msgstr "Компьютер"
 
 #: lib/layouts/moderncv.layout:485
 msgid "MakeCVtitle"
-msgstr "Сделать заглавие CV"
+msgstr "Сделать заголовок CV"
 
 #: lib/layouts/moderncv.layout:488
 msgid "Make CV Title"
-msgstr "Сделать заглавие CV"
+msgstr "Сделать заголовок CV"
 
 #: lib/layouts/moderncv.layout:495
 msgid "MakeLetterTitle"
-msgstr "Сделать заглавие письма"
+msgstr "Сделать заголовок письма"
 
 #: lib/layouts/moderncv.layout:498
 msgid "Make Letter Title"
-msgstr "Сделать заглавие письма"
+msgstr "Сделать заголовок письма"
 
 #: lib/layouts/moderncv.layout:502
 msgid "MakeLetterClosing"
@@ -15502,7 +15499,7 @@ msgstr "Powerdot"
 #: lib/layouts/powerdot.layout:45 lib/layouts/powerdot.layout:69
 #: lib/layouts/powerdot.layout:91
 msgid "TitleSlide"
-msgstr "Заглавие слайда"
+msgstr "Заголовок слайда"
 
 #: lib/layouts/powerdot.layout:127 lib/layouts/powerdot.layout:153
 #: lib/layouts/powerdot.layout:207 lib/layouts/seminar.layout:90
@@ -15520,7 +15517,7 @@ msgstr "Необязательные аргументы к команде slide 
 
 #: lib/layouts/powerdot.layout:152
 msgid "EndSlide"
-msgstr "КонецСлайда"
+msgstr "Конец слайда"
 
 #: lib/layouts/powerdot.layout:167
 msgid "~=~"
@@ -15528,11 +15525,11 @@ msgstr "~=~"
 
 #: lib/layouts/powerdot.layout:180
 msgid "WideSlide"
-msgstr "ШирокийСлайд"
+msgstr "Широкий слайд"
 
 #: lib/layouts/powerdot.layout:191
 msgid "EmptySlide"
-msgstr "ПустойСлайд"
+msgstr "Пустой слайд"
 
 #: lib/layouts/powerdot.layout:195
 msgid "Empty slide:"
@@ -15617,11 +15614,11 @@ msgstr "На слайдах"
 
 #: lib/layouts/powerdot.layout:640
 msgid "Overlay Specification|S"
-msgstr "Спецификация наложения"
+msgstr "Определение оверлея|о"
 
 #: lib/layouts/powerdot.layout:641
 msgid "Specify the overlay settings (see powerdot manual)"
-msgstr "Укажите настройки наложения (см. руководство powerdot)"
+msgstr "Задайте настройки оверлея (см. руководство powerdot)"
 
 #: lib/layouts/powerdot.layout:648
 msgid "Onslide+"
@@ -15729,7 +15726,7 @@ msgstr "Препринт"
 
 #: lib/layouts/revtex4-x.inc:200
 msgid "Short title as it appears in the running headers"
-msgstr "Краткое заглавие, как оно будет показываться в колонтитулах"
+msgstr "Краткий заголовок, который будет показываться в колонтитулах"
 
 #: lib/layouts/revtex4-x.inc:218
 msgid "acknowledgments"
@@ -15973,19 +15970,19 @@ msgstr "Посвящение"
 
 #: lib/layouts/scrclass.inc:250
 msgid "Titlehead"
-msgstr "Шапка заглавия"
+msgstr "Колонтитул титульного листа"
 
 #: lib/layouts/scrclass.inc:260
 msgid "Uppertitleback"
-msgstr "Оборот титула сверху"
+msgstr "Оборот титульного листа сверху"
 
 #: lib/layouts/scrclass.inc:266
 msgid "Lowertitleback"
-msgstr "Оборот титула снизу"
+msgstr "Оборот титульного листа снизу"
 
 #: lib/layouts/scrclass.inc:272
 msgid "Extratitle"
-msgstr "Доп. заглавие"
+msgstr "Доп. заголовок"
 
 #: lib/layouts/scrclass.inc:293
 msgid "Above"
@@ -16045,7 +16042,7 @@ msgstr "Спецпочта:"
 
 #: lib/layouts/scrlettr.layout:196 lib/layouts/scrlttr2.layout:280
 msgid "Title:"
-msgstr "Заглавие:"
+msgstr "Заголовок:"
 
 #: lib/layouts/scrlettr.layout:208 lib/layouts/scrlttr2.layout:293
 msgid "Yourref"
@@ -16390,7 +16387,7 @@ msgstr "AMS"
 
 #: lib/layouts/siamltex.layout:206
 msgid "The title as it appears in the running headers"
-msgstr "Заглавие, как оно отображается в верхнем колонтитуле"
+msgstr "Заголовок, как он отображается в верхнем колонтитуле"
 
 #: lib/layouts/siamltex.layout:322
 msgid "AMS subject classifications:"
@@ -16426,11 +16423,11 @@ msgstr "Данные об авторских правах:"
 
 #: lib/layouts/sigplanconf.layout:112
 msgid "TitleBanner"
-msgstr "Заставка заглавия"
+msgstr "Заставка заголовка"
 
 #: lib/layouts/sigplanconf.layout:115
 msgid "Title banner:"
-msgstr "Заставка заглавия:"
+msgstr "Заставка заголовка:"
 
 #: lib/layouts/sigplanconf.layout:119
 msgid "PreprintFooter"
@@ -16802,11 +16799,11 @@ msgstr "Обратная сторона части"
 
 #: lib/layouts/svcommon.inc:141
 msgid "Part Title"
-msgstr "Заглавие части"
+msgstr "Заголовок части"
 
 #: lib/layouts/svcommon.inc:142
 msgid "Title of this part"
-msgstr "Заглавие этой части"
+msgstr "Заголовок этой части"
 
 #: lib/layouts/svcommon.inc:156 lib/layouts/svmult.layout:123
 msgid "ChapSubtitle"
@@ -16992,11 +16989,11 @@ msgstr "Springer Contributed Books (svmult)"
 
 #: lib/layouts/svmult.layout:34
 msgid "Title*"
-msgstr "Заглавие*"
+msgstr "Заголовок*"
 
 #: lib/layouts/svmult.layout:37
 msgid "Title*:"
-msgstr "Заглавие*:"
+msgstr "Заголовок*:"
 
 #: lib/layouts/svmult.layout:66 lib/layouts/svmult.layout:151
 msgid "Contributors"
@@ -17900,11 +17897,11 @@ msgstr ""
 
 #: lib/layouts/theorems-without-preamble.inc:45
 msgid "Name/Title"
-msgstr "Имя/Заглавие"
+msgstr "Имя/Заголовок"
 
 #: lib/layouts/theorems-without-preamble.inc:46
 msgid "Alternative optional name or title"
-msgstr "Альтернативное необязательное имя или название"
+msgstr "Альтернативное необязательное имя или заголовок"
 
 #: lib/layouts/theorems-without-preamble.inc:136
 msgid "Prop \\theprop."
@@ -26847,7 +26844,7 @@ msgstr "Нет года"
 
 #: src/BiblioInfo.cpp:1317
 msgid "Bibliography entry not found!"
-msgstr "Библиография не найдена!"
+msgstr "Источник не найден!"
 
 #: src/Buffer.cpp:450
 msgid "Disk Error: "
@@ -36804,14 +36801,8 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Неизвестный пользователь"
 
-#~ msgid "American Geophysical Union (AGU, SGML Article)"
-#~ msgstr "American Geophysical Union (AGU, статья SGML)"
-
 #~ msgid "Articles (DocBook)"
 #~ msgstr "Статьи (DocBook)"
-
-#~ msgid "Fname"
-#~ msgstr "Fname"
 
 #~ msgid "Abbrev"
 #~ msgstr "Сокращение"
@@ -36834,83 +36825,8 @@ msgstr "Неизвестный пользователь"
 #~ msgid "Issue-months"
 #~ msgstr "Месяцы-выпуска"
 
-#~ msgid "Section Level 1"
-#~ msgstr "Раздел, уровень 1"
-
-#~ msgid "Section Level 2"
-#~ msgstr "Раздел, уровень 2"
-
-#~ msgid "Section Level 3"
-#~ msgstr "Раздел, уровень 3"
-
-#~ msgid "Section Level 4"
-#~ msgstr "Раздел, уровень 4"
-
-#~ msgid "Section Level 5"
-#~ msgstr "Раздел, уровень 5"
-
-#~ msgid "Subsubparagraph"
-#~ msgstr "Подподабзац"
-
-#~ msgid "-- Header --"
-#~ msgstr "-- Заголовок --"
-
-#~ msgid "Special-section"
-#~ msgstr "Специальный-раздел"
-
-#~ msgid "Special-section:"
-#~ msgstr "Специальный-раздел:"
-
-#~ msgid "AGU-journal"
-#~ msgstr "AGU-журнал"
-
-#~ msgid "AGU-journal:"
-#~ msgstr "AGU-журнал:"
-
 #~ msgid "Citation-number:"
 #~ msgstr "Номер-ссылки:"
-
-#~ msgid "AGU-volume"
-#~ msgstr "AGU-том"
-
-#~ msgid "AGU-volume:"
-#~ msgstr "AGU-том:"
-
-#~ msgid "AGU-issue"
-#~ msgstr "AGU-выпуск"
-
-#~ msgid "AGU-issue:"
-#~ msgstr "AGU-выпуск:"
-
-#~ msgid "Index-terms"
-#~ msgstr "Записи в предметном указателе"
-
-#~ msgid "Index-terms..."
-#~ msgstr "Записи в предметном указателе..."
-
-#~ msgid "Index-term"
-#~ msgstr "Запись в предметном указателе"
-
-#~ msgid "Index-term:"
-#~ msgstr "Записи в предметном указателе:"
-
-#~ msgid "Cross-term"
-#~ msgstr "Cross-term"
-
-#~ msgid "Cross-term:"
-#~ msgstr "Cross-term:"
-
-#~ msgid "Supplementary"
-#~ msgstr "Сводка"
-
-#~ msgid "Supplementary..."
-#~ msgstr "Сводка..."
-
-#~ msgid "Supp-note"
-#~ msgstr "Заметка к сводке"
-
-#~ msgid "Sup-mat-note:"
-#~ msgstr "Sup-mat-note:"
 
 #~ msgid "Cite-other"
 #~ msgstr "Другие-ссылки"
@@ -36942,12 +36858,6 @@ msgstr "Неизвестный пользователь"
 #~ msgid "Posting-order:"
 #~ msgstr "Порядок отправки:"
 
-#~ msgid "AGU-pages"
-#~ msgstr "AGU-страницы"
-
-#~ msgid "AGU-pages:"
-#~ msgstr "AGU-страницы:"
-
 #~ msgid "Words"
 #~ msgstr "Слова"
 
@@ -36966,21 +36876,6 @@ msgstr "Неизвестный пользователь"
 #~ msgid "Datasets:"
 #~ msgstr "Наборы данных:"
 
-#~ msgid "ISSN"
-#~ msgstr "ISSN"
-
-#~ msgid "CODEN"
-#~ msgstr "CODEN"
-
-#~ msgid "SS-Code"
-#~ msgstr "SS-код"
-
-#~ msgid "SS-Title"
-#~ msgstr "SS-заглавие"
-
-#~ msgid "CCC-Code"
-#~ msgstr "CCC-код"
-
 #~ msgid "Dscr"
 #~ msgstr "Опис."
 
@@ -36992,9 +36887,6 @@ msgstr "Неизвестный пользователь"
 
 #~ msgid "Postcode"
 #~ msgstr "Почтовый индекс"
-
-#~ msgid "SGML"
-#~ msgstr "SGML"
 
 #~ msgid "Authorgroup"
 #~ msgstr "Группа авторов"
@@ -37011,20 +36903,11 @@ msgstr "Неизвестный пользователь"
 #~ msgid "RevisionRemark"
 #~ msgstr "Заметки по версии"
 
-#~ msgid "DocBook Article (SGML)"
-#~ msgstr "Статья DocBook (SGML)"
-
 #~ msgid "Time[[period]]"
 #~ msgstr "Интервал"
 
 #~ msgid "What?"
 #~ msgstr "Что?"
-
-#~ msgid "DocBook|B"
-#~ msgstr "DocBook|B"
-
-#~ msgid "DocBook (XML)"
-#~ msgstr "DocBook (XML)"
 
 #~ msgid "Select the roman (serif) typeface"
 #~ msgstr "Выбрать шрифт с засечками"
