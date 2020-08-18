@@ -170,8 +170,6 @@ string fontToAttribute(xml::FontTypes type) {
 	}
 }
 
-} // end anonymous namespace
-
 
 xml::FontTag docbookStartFontTag(xml::FontTypes type)
 {
@@ -184,8 +182,6 @@ xml::EndFontTag docbookEndFontTag(xml::FontTypes type)
 	return xml::EndFontTag(from_utf8(fontToDocBookTag(type)), type);
 }
 
-
-namespace {
 
 // Convenience functions to open and close tags. First, very low-level ones to ensure a consistent new-line behaviour.
 // Block style:
