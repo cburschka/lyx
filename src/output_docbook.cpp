@@ -16,8 +16,6 @@
 #include "BufferParams.h"
 #include "Font.h"
 #include "InsetList.h"
-#include "Layout.h"
-#include "OutputParams.h"
 #include "Paragraph.h"
 #include "ParagraphList.h"
 #include "ParagraphParameters.h"
@@ -30,11 +28,7 @@
 #include "insets/InsetLabel.h"
 #include "insets/InsetNote.h"
 
-#include "support/convert.h"
-#include "support/debug.h"
 #include "support/lassert.h"
-#include "support/lstrings.h"
-#include "support/textutils.h"
 
 #include "support/regex.h"
 
@@ -158,6 +152,7 @@ string fontToRole(xml::FontTypes type)
 		return "";
 	}
 }
+
 
 string fontToAttribute(xml::FontTypes type) {
 	// If there is a role (i.e. nonstandard use of a tag), output the attribute. Otherwise, the sheer tag is sufficient
