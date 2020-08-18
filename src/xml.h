@@ -39,7 +39,7 @@ struct CR;
 class XMLStream {
 public:
 	///
-	explicit XMLStream(odocstream & os): os_(os), escape_(ESCAPE_ALL), is_last_tag_cr_(false) {}
+	explicit XMLStream(odocstream & os): os_(os), escape_(ESCAPE_ALL), is_last_tag_cr_(true) {}
 	///
 	odocstream & os() { return os_; }
 	///
@@ -82,7 +82,7 @@ public:
 	enum EscapeSettings {
 		ESCAPE_NONE,
 		ESCAPE_AND, // meaning &
-		ESCAPE_ALL, // meaning <, >, &, at present
+		ESCAPE_ALL, // meaning <, >, &, at present, except things that are forbidden in comments
 		ESCAPE_COMMENTS // Anything that is forbidden within comments
 	};
 	/// Sets what we are going to escape on the NEXT write.
@@ -98,7 +98,9 @@ public:
 	bool isTagOpen(xml::EndTag const &, int maxdepth = -1) const;
 	///
 	bool isTagPending(xml::StartTag const &, int maxdepth = -1) const;
-	///
+	/// Is the last tag that was added to the stream a new line (CR)? This is mostly to known
+	/// whether a new line must be added. Therefore, consider that an empty stream just had a CR,
+	/// that simplifies the logic using this code.
 	bool isLastTagCR() const { return is_last_tag_cr_; };
 	///
 	void writeError(std::string const &) const;
