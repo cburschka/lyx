@@ -19544,9 +19544,104 @@ status collapsed
 
 \end_inset
 
-] Legt fest, ob die Einfügung die Schrift der übergeordneten Umgebung verwenden
- soll oder eine eigene.
- Voreinstellung ist 
+] Wenn dies 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+ gesetzt ist, werden Schriftänderungen in der betreffenden Einfügung (in
+ der Ausgabe) neu initiiert, auch dann, wenn die Einfügung in einem Kontext
+ ist, in dem die Schriftänderungen bereits initiiert sind (bspw.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textbf{Umgebender Text 
+\backslash
+meineEinfuegung{
+\backslash
+textbf{Inhalt}}\SpecialChar ldots
+}
+\end_layout
+
+\end_inset
+
+ statt 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textbf{Umgebender Text 
+\backslash
+meineEinfuegung{Inhalt}\SpecialChar ldots
+}
+\end_layout
+
+\end_inset
+
+.
+ Diese Einstellung ist für solche Makros sinnvoll, die intern Schrifteinstellung
+en zurücksetzen (bspw.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+footnote
+\end_layout
+
+\end_inset
+
+).
+ Beachten Sie, dass eine nicht angebrachte Aktivierung dieser Einstellung
+ zu unerwünschten Ergebnissen führen kann (so wird z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ mit 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+emph{Umgebender Text 
+\backslash
+myinset{
+\backslash
+emph{Inhalt}}\SpecialChar ldots
+}
+\end_layout
+
+\end_inset
+
+ Inhalt nicht kursiv ausgegeben, da 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+emph
+\end_layout
+
+\end_inset
+
+ zwischen Kursiv und Nicht-Kursiv hin- und herschaltet.
+ Die Voreinstellung ist 
 \begin_inset Flex Code
 status collapsed
 
@@ -19556,7 +19651,7 @@ status collapsed
 
 \end_inset
 
-: verwendet die Schrift der übergeordneten Umgebung.
+: Schriftänderungen werden innerhalb der Einfügung nicht neu initiiert.
 \end_layout
 
 \begin_layout Description

@@ -21936,9 +21936,141 @@ status collapsed
 
 \end_inset
 
-] Whether this inset should use the font of its surrounding environment
- or uses its own.
- Default is false: use the font of the surrounding environment.
+] 
+\change_inserted -712698321 1597733473
+If 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1597732178
+1
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, font changes are redone inside the respective inset (in the output) even
+ if the inset itself is in the context of this font changes (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1597733683
+
+\backslash
+textbf{Sourrounding text 
+\backslash
+myinset{
+\backslash
+textbf{content}}\SpecialChar ldots
+}
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ rather than 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1597733686
+
+\backslash
+textbf{Sourrounding text 
+\backslash
+myinset{content}\SpecialChar ldots
+}
+\end_layout
+
+\end_inset
+
+.
+ Setting this makes sense for commands that internally reset font settings
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., footnotes).
+ Note that wrongly setting this might lead to unwanted result (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1597733688
+
+\backslash
+emph{Sourrounding text 
+\backslash
+myinset{
+\backslash
+emph{content}}\SpecialChar ldots
+}
+\end_layout
+
+\end_inset
+
+, content is upright, as 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1597733278
+
+\backslash
+emph
+\end_layout
+
+\end_inset
+
+ toggles.
+ 
+\change_deleted -712698321 1597733283
+Whether this inset should use the font of its surrounding environment or
+ uses its own.
+ 
+\change_unchanged
+Default is 
+\change_deleted -712698321 1597733290
+false
+\change_inserted -712698321 1597733290
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1597733292
+0
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+: 
+\change_deleted -712698321 1597733327
+use the font of the surrounding environment
+\change_inserted -712698321 1597733343
+font changes are not redone inside the inset
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Description
