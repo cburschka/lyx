@@ -239,7 +239,8 @@ void openBlockTag(XMLStream & xs, const std::string & tag, const std::string & a
 
 void closeBlockTag(XMLStream & xs, const std::string & tag)
 {
-	xs << xml::CR();
+	if (!xs.isLastTagCR())
+		xs << xml::CR();
 	xs << xml::EndTag(tag);
 	xs << xml::CR();
 }

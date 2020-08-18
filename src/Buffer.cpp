@@ -2140,8 +2140,6 @@ Buffer::ExportStatus Buffer::writeDocBookSource(odocstream & os,
 	bool const output_body =
 	  output == FullSource || output == OnlyBody;
 
-	XMLStream xs(os);
-
 	if (output_preamble) {
 		// XML preamble, no doctype needed.
 		// Not using XMLStream for this, as the root tag would be in the tag stack and make troubles with the error
@@ -2164,16 +2162,17 @@ Buffer::ExportStatus Buffer::writeDocBookSource(odocstream & os,
 	}
 
 	if (output_body) {
-		params().documentClass().counters().reset();
-
 		// Start to output the document.
+		XMLStream xs(os);
 		docbookParagraphs(text(), *this, xs, runparams);
 	}
 
 	if (output_preamble) {
-		// Close the root element.
-		os << "\n</" << from_ascii(tclass.docbookroot()) << ">";
+		// Close the root element. No need for a line break, as free text is never allowed
+		// in a root element, it must always be wrapped in some container.
+		os << "</" << from_ascii(tclass.docbookroot()) << ">";
 	}
+
 	return ExportSuccess;
 }
 
