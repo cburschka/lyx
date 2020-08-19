@@ -30,6 +30,8 @@ my %allowedKeys = (
   "use_converter_needauth_forbidden" => ["true", "false"],
   "use_converter_needauth" => ["true", "false"],
   "allow_geometry_session" => ["false"],
+  "use_converter_cache" => ["true", "false"],
+  "converter_cache_maxage" => "integer",
     );
 
 my %Converter = ();
@@ -53,14 +55,20 @@ if ($handle_argv eq "test") {
   @ctestpars = &getSubstitutes(\%allowedKeys, \%Subst,
 			       "allow_geometry_session=false",
 			       "use_converter_needauth_forbidden=false",
-			       "use_converter_needauth=false", @ARGV);
+			       "use_converter_needauth=false",
+			       "use_converter_cache=false",
+			       "converter_cache_maxage=" . 180*24*60*60,
+			       @ARGV);
 }
 elsif ($handle_argv eq "default") {
   $shell_escapes = 0;
   @ctestpars = &getSubstitutes(\%allowedKeys, \%Subst,
 			       "allow_geometry_session=false",
 			       "use_converter_needauth_forbidden=true",
-			       "use_converter_needauth=true", @ARGV);
+			       "use_converter_needauth=true",
+			       "use_converter_cache=true",
+			       "converter_cache_maxage=" . 61*24*60*60,
+			       @ARGV);
 }
 else {
   @ctestpars = &getSubstitutes(\%allowedKeys, \%Subst,

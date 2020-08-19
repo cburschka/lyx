@@ -31,11 +31,21 @@ sub getSubstitutes($$@)
 	my $value = $2;
 	my $valid = 0;
 	if (defined($rAllowedKeys->{$key})) {
-	  for my $val (@{$rAllowedKeys->{$key}}) {
-	    if ($val eq $value) {
-	      $valid = 1;
-	      last;
+	  if (ref($rAllowedKeys->{$key}) eq "ARRAY") {
+	    for my $val (@{$rAllowedKeys->{$key}}) {
+	      if ($val eq $value) {
+		$valid = 1;
+		last;
+	      }
 	    }
+	  }
+	  elsif ($rAllowedKeys->{$key} eq "integer") {
+	    if ($value =~ /^\d+$/) {
+	      $valid = 1;
+	    }
+	  }
+	  elsif ($rAllowedKeys->{$key} eq "string") {
+	    $valid = 1;
 	  }
 	}
 	if ($valid) {
@@ -82,15 +92,15 @@ sub getConverter($$)
   return undef if ($to !~ /^((dvi3?|pdf[23456]?)(log)?)$/);
   ($l, $cmd) = getNext($l);
   if ($add) {
-    if ($cmd !~ /\-shell-escape/) {
+    if ($cmd !~ /\-shell-(escape|restricted)/) {
       if ($cmd =~ /^(\S+)\s*(.*)$/) {
-	$cmd = "$1 -shell-escape $2";
+	$cmd = "$1 -shell-restricted $2";
 	$cmd =~ s/\s+$//;
       }
     }
   }
   else {
-    $cmd =~ s/\s+\-shell\-escape//;
+    $cmd =~ s/\s+\-shell\-(escape|restricted)//;
   }
   ($l, $par) = getNext($l);
   return undef if ($par !~ /^latex/);
