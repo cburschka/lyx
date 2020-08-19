@@ -177,6 +177,7 @@ export/export/latex/lyxbugs/6197-polish-amssymb_pdf5_systemF
 export/export/latex/languages/nested-inputenc_auto-legacy_.*_systemF
 export/export/latex/languages/cyrillic-languages-conflict_.*_systemF
 export/export/latex/languages/th-en_utf8_.*_systemF
+
 # wrong output but does not fail:
 export/export/latex/lyxbugs/3059-language-in-tables_.*_systemF
 
@@ -189,6 +190,9 @@ export/export/latex/lyxbugs-resolved/9633-.*(dvi|pdf.?|texF)
 export/export/latex/lyxbugs/11522-systemfonts-Math-missingchars_pdf5_texF
 export/templates/Articles/American_Psychological_Association_%28APA%29,_v\._7_(dvi3|pdf5)_texF
 export/export/latex/languages/latinErt_(dvi3|pdf5)_texF
+
+# Tests which never ends
+export/export/latex/languages/supported-languages_babel_(dvi|pdf2?)
 
 # lyx2lyx
 # dedicated lyx2lyx tests
@@ -204,4 +208,6 @@ export/export/xhtml/.*(lyx..|dvi.*|pdf.*)
 
 # DOCBOOK
 # not expected to successful compile 
+check_load/export/docbook/.*
+lyx2lyx/export/docbook/.*
 export/export/docbook/.*(lyx..|dvi.*|pdf.*)
