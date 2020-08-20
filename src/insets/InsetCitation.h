@@ -94,6 +94,8 @@ public:
 	QualifiedList getQualifiedLists(docstring const & p) const;
 	///
 	static bool last_literal;
+	///
+	void openCitation();
 
 private:
 	/// tries to make a pretty label and makes a basic one if not

@@ -2371,6 +2371,10 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		flag.setOnOff(lyxrc.spellcheck_continuously);
 		break;
 
+	case LFUN_CITATION_OPEN:
+		enable = true;
+		break;
+
 	default:
 		return false;
 	}
@@ -4619,6 +4623,10 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			lyxrc.spellcheck_continuously = !lyxrc.spellcheck_continuously;
 			dr.screenUpdate(Update::Force);
 			break;
+
+		case LFUN_CITATION_OPEN: {
+			frontend::showTarget(argument);
+		}
 
 		default:
 			// The LFUN must be for one of BufferView, Buffer or Cursor;

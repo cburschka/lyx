@@ -70,6 +70,8 @@ public:
 				      bool const allnames = false, bool const beginning = true) const;
 	///
 	docstring const getYear() const;
+	/// 
+	void getLocators(docstring & doi, docstring & url, docstring & file) const;
 	/// \return formatted BibTeX data suitable for framing.
 	/// \param vector of pointers to crossref/xdata information
 	docstring const & getInfo(BibTeXInfoList const & xrefs,
@@ -213,6 +215,9 @@ public:
 	/// language.
 	docstring const getYear(docstring const & key, Buffer const & buf,
 			bool use_modifier = false) const;
+	/// get either local pdf or web location of the citation referenced by key.
+	/// DOI/file are prefixed so they form proper URL for generic qt handler
+	void getLocators(docstring const & key, docstring & doi, docstring & url, docstring & file) const;
 	///
 	docstring const getCiteNumber(docstring const & key) const;
 	/// \return formatted BibTeX data associated with a given key.

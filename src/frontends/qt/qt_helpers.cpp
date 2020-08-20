@@ -21,7 +21,10 @@
 
 #include "BufferParams.h"
 #include "FloatList.h"
+#include "FuncRequest.h"
 #include "Language.h"
+#include "LyX.h"
+#include "LyXAction.h"
 #include "TextClass.h"
 
 #include "support/convert.h"
@@ -292,6 +295,18 @@ void showDirectory(FileName const & directory)
 	}
 	if (!QDesktopServices::openUrl(qurl))
 		LYXERR0("Unable to open QUrl even though dir exists!");
+}
+
+void showTarget(string const & target){
+	LYXERR(Debug::INSETS, "Showtarget:" << target << "\n");
+	if (prefixIs(target,"EXTERNAL ")) {
+		string tmp,tar;
+		tar = split(target, tmp, ' ');
+		FuncRequest cmd = FuncRequest(LFUN_VC_COMMAND,"U . \"lyxpaperview " + tar + "\"");
+	  	lyx::dispatch(cmd);
+		return;
+	} 
+	QDesktopServices::openUrl(QUrl(toqstr(target), QUrl::TolerantMode));
 }
 } // namespace frontend
 

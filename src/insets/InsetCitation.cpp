@@ -23,6 +23,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
+#include "LyX.h"
 #include "output_xhtml.h"
 #include "output_docbook.h"
 #include "ParIterator.h"
@@ -133,6 +134,9 @@ CitationStyle InsetCitation::getCitationStyle(BufferParams const & bp, string co
 void InsetCitation::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action()) {
+	case LFUN_INSET_EDIT:
+		openCitation();
+		break;
 	case LFUN_INSET_MODIFY: {
 		buffer().removeBiblioTempFiles();
 		cache.recalculate = true;
@@ -161,6 +165,44 @@ void InsetCitation::doDispatch(Cursor & cur, FuncRequest & cmd)
 	// fall through
 	default:
 		InsetCommand::doDispatch(cur, cmd);
+	}
+}
+
+
+void InsetCitation::openCitation(){
+	Buffer const & buf = *buffer_;
+	// Only after the buffer is loaded from file...
+	if (!buf.isFullyLoaded())
+		return;
+
+	BiblioInfo const & bi = buf.masterBibInfo();
+	if (bi.empty())
+		return;
+
+	docstring const & key = getParam("key");
+	if (key.empty())
+		return;
+
+	vector<docstring> keys = getVectorFromString(key);
+	docstring year, author, doi, url, file;
+	for (docstring const & kvar : keys) {
+		year = bi.getYear(kvar, buffer(), false);
+		author = bi.getAuthorOrEditorList(kvar, buffer());
+		bi.getLocators(kvar, doi, url, file);
+		LYXERR(Debug::INSETS, "Locators: doi:" << doi << " url:"
+		        << url << " file:" << file << " author:" << author << " year:" << year);
+		docstring locator;
+		if (!file.empty()) {
+			locator = file;
+		} else if (!doi.empty()) {
+			locator = doi;
+		} else if (!url.empty()) {
+			locator = url;
+		} else {
+			locator = "EXTERNAL " +  year + " " + author;
+		}
+		FuncRequest cmd = FuncRequest(LFUN_CITATION_OPEN, locator);
+		lyx::dispatch(cmd);
 	}
 }
 
@@ -202,6 +244,8 @@ bool InsetCitation::getStatus(Cursor & cur, FuncRequest const & cmd,
 				status.setOnOff(isUpperCase(cmdname[0]));
 			}
 		}
+		return true;
+	case LFUN_INSET_EDIT:
 		return true;
 	default:
 		return InsetCommand::getStatus(cur, cmd, status);

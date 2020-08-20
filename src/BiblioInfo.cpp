@@ -651,6 +651,75 @@ docstring const BibTeXInfo::getYear() const
 }
 
 
+void BibTeXInfo::getLocators(docstring & doi, docstring & url, docstring & file) const
+{
+	if (is_bibtex_) {
+		// get "doi" entry from citation record
+		doi = operator[]("doi");
+		if (!doi.empty() && !prefixIs(doi,from_ascii("http")))
+			doi = "https://doi.org/" + doi;
+		// get "url" entry from citation record
+		url = operator[]("url");
+		// get "file" entry from citation record
+		file = operator[]("file");
+
+		// Jabref case, field has a format:
+		// Description:Location:Filetype;Description:Location:Filetype...
+		// We will grab only first pdf
+		if (!file.empty()) {
+			docstring ret, filedest, tmp;
+			ret = split(file, tmp, ':');
+			tmp = split(ret, filedest, ':');
+			//TODO howto deal with relative directories?
+			FileName f(to_utf8(filedest));
+			if (f.exists())
+				file = "file:///" + filedest;
+		}
+
+		// kbibtex case, format:
+		// file1.pdf;file2.pdf
+		// We will grab only first pdf
+		docstring kfile;
+		if (file.empty())
+			kfile = operator[]("localfile");
+		if (!kfile.empty()) {
+			docstring filedest, tmp;
+			tmp = split(kfile, filedest, ';');
+			//TODO howto deal with relative directories?
+			FileName f(to_utf8(filedest));
+			if (f.exists())
+				file = "file:///" + filedest;
+		}
+
+		if (!url.empty()) 
+			return;
+
+		// try biblatex specific fields, see its manual
+		// 3.13.7 "Electronic Publishing Informationl"
+		docstring eprinttype = operator[]("eprinttype");
+		docstring eprint = operator[]("eprint");
+		if (eprint.empty())
+			return;
+
+		if (eprinttype == "arxiv")
+			url = "https://arxiv.org/abs/" + eprint;
+		if (eprinttype == "jstor")
+			url = "https://www.jstor.org/stable/" + eprint;
+		if (eprinttype == "pubmed")
+			url = "http://www.ncbi.nlm.nih.gov/pubmed/" + eprint;
+		if (eprinttype == "hdl")
+			url = "https://hdl.handle.net/" + eprint;
+		if (eprinttype == "googlebooks")
+			url = "http://books.google.com/books?id=" + eprint;
+
+		return;
+	}
+
+	// Here can be handled the bibliography environment. All one could do
+	// here is let LyX scan the entry for URL or HRef insets.
+}
+
+
 namespace {
 
 docstring parseOptions(docstring const & format, string & optkey,
@@ -1267,6 +1336,15 @@ docstring const BiblioInfo::getCiteNumber(docstring const & key) const
 		return docstring();
 	BibTeXInfo const & data = it->second;
 	return data.citeNumber();
+}
+
+void BiblioInfo::getLocators(docstring const & key, docstring & doi, docstring & url, docstring & file) const
+{
+	BiblioInfo::const_iterator it = find(key);
+	 if (it == end())
+	 	return;
+	BibTeXInfo const & data = it->second;
+	data.getLocators(doi,url,file);
 }
 
 

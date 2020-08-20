@@ -1239,6 +1239,18 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_CITATION_INSERT, "citation-insert", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_CITATION_OPEN
+ * \li Action: Opens the corresponding pdf/url for a given citation inset.
+ * \li Syntax: citation-open [EXTERNAL] TARGET
+ * \li Params: <TARGET>: URL (https:,file:) of the document. \n
+               <EXTERNAL>: Use external executable script for finding target \n
+	       and launching viewer. In this case TARGET consists of author and year \n
+	       and will be passed as an input argument to the script.
+ * \li Origin: Sanda, 16 Aug 2020
+ * \endvar
+ */
+		{ LFUN_CITATION_OPEN, "citation-open", ReadOnly | NoUpdate | Argument, Edit },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_CLIPBOARD_PASTE
