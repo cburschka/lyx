@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-08-16 17:48+0200\n"
-"PO-Revision-Date: 2020-08-16 15:50+0000\n"
+"POT-Creation-Date: 2020-08-20 16:47+0200\n"
+"PO-Revision-Date: 2020-08-20 14:47+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -29,6 +29,14 @@ msgstr "Verzia"
 msgid "Library directory"
 msgstr "Adresár systému"
 
+#: src/frontends/qt/ui/AboutUi.ui:159
+msgid "Open library directory in file browser"
+msgstr "Otvorí adresár knižnice v prehliadači"
+
+#: src/frontends/qt/ui/AboutUi.ui:162
+msgid "&Open..."
+msgstr "&Otvoriť…"
+
 #: src/frontends/qt/ui/AboutUi.ui:86
 msgid "Credits"
 msgstr "Spolupracovali"
@@ -46,9 +54,13 @@ msgstr "Produkčná informácia"
 msgid "Release Notes"
 msgstr "Poznámky k vydaniu"
 
-#: src/frontends/qt/ui/AboutUi.ui:307
-msgid "Copy Version Info"
-msgstr "Kópia info verzie"
+#: src/frontends/qt/ui/AboutUi.ui:380
+msgid "Copy version information to clipboard"
+msgstr "Kopíruje informáciu verzie do schránky"
+
+#: src/frontends/qt/ui/AboutUi.ui:383
+msgid "Copy &Version Info"
+msgstr "&Kópírovať info verzie"
 
 #: src/frontends/qt/ui/BibitemUi.ui:26 src/frontends/qt/ui/BibitemUi.ui:45
 msgid "The bibliography key"
@@ -5855,6 +5867,10 @@ msgstr "Len telo"
 #: src/frontends/qt/GuiView.cpp:4158
 msgid "&Reload"
 msgstr "Opäť &načítať"
+
+#: src/frontends/qt/ui/WrapUi.ui:33
+msgid "Horizontal placement"
+msgstr "Horizontálne umiestnenie"
 
 #: src/frontends/qt/ui/WrapUi.ui:37
 msgid "Outer (default)"
@@ -19364,6 +19380,10 @@ msgstr "Choď späť|s"
 msgid "Copy as Reference|C"
 msgstr "Kopírovať ako referenciu|p"
 
+#: lib/ui/stdcontext.inc:131
+msgid "Open Citation Content...|O"
+msgstr "Otvoriť obsah citácie…|O"
+
 #: lib/ui/stdcontext.inc:140
 msgid "Edit Database(s) Externally...|x"
 msgstr "Externe upraviť databázu(y)…|x"
@@ -30662,6 +30682,14 @@ msgstr "Otvoriť"
 msgid "User directory"
 msgstr "Adresár užívateľa"
 
+#: src/frontends/qt/ui/AboutUi.ui:228
+msgid "Open user directory in file browser"
+msgstr "Otvoriť používateľský adresár v prehliadači"
+
+#: src/frontends/qt/ui/AboutUi.ui:231
+msgid "O&pen..."
+msgstr "O&tvoriť…"
+
 #: src/frontends/qt/GuiApplication.cpp:1127
 msgid "Nothing to do"
 msgstr "Nie je čo robiť"
@@ -35957,9 +35985,9 @@ msgstr "Viac-stĺpcové v aktuálnom alebo cieľovom stĺpci."
 msgid "Multi-row in current or destination row."
 msgstr "Viac-riadkové v aktuálnom alebo cieľovom riadku."
 
-#: src/insets/InsetTabular.cpp:6070
+#: src/insets/InsetTabular.cpp:6082
 msgid "Selection size should match clipboard content."
-msgstr "Veľkosť výberu by mala zodpovedať obsahu klipovej dosky."
+msgstr "Veľkosť výberu by mala zodpovedať obsahu schránky."
 
 #: src/insets/InsetText.cpp:1146
 msgid "[contains tracked changes]"
