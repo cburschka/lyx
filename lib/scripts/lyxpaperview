@@ -1,0 +1,26 @@
+#!/bin/bash
+
+#This is just an example of an external script for finding corresponding file to the citation of the form Author + Year.
+#You will need to accomodate it to your particular situation.
+#
+#Syntax: paperview AuthorName Year
+#Output: absolute path to the file(s)
+#
+#Dependencies: 
+#1) mlocate/updatedb or similar package installed and running.
+#2) stored papers must contain first author name and year of publication in filename.
+
+VIEWER=qpdfview
+MAX_RESULTS=2
+
+name="$2"
+year="$1"
+
+if [ -z "$name" ]; then exit; fi
+
+FILE=`locate -i "$name" | grep -Ei '\.pdf$|\.ps$' | grep "$year" | head -n $MAX_RESULTS`
+
+
+#Putting in background necessary so that LyX does not wait for viewer to end
+$VIEWER ${FILE} &
+
