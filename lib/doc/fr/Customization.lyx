@@ -232,7 +232,7 @@ Nouvel exemple pour le paragraphe 4.1.1.1 + quelques corrections mineures,
 \end_layout
 
 \begin_layout Plain Layout
-Mise à jour finale lyx-2.3, 17 août 2019 (JPC)
+Mise à jour finale lyx-2.3, 20 août 2019 (JPC)
 \end_layout
 
 \end_inset
@@ -8741,9 +8741,11 @@ End
 \end_inset
 
 .
+ Utilisé principalement dans les fichiers moteurCitation (voir
+\begin_inset space ~
+\end_inset
 
-\lang english
- Primarily used in cite engine files (see 
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Cite-Engine-Files"
@@ -8754,6 +8756,9 @@ noprefix "false"
 \end_inset
 
 ).
+
+\lang english
+ 
 \end_layout
 
 \begin_layout Description
@@ -9691,7 +9696,7 @@ PremierAuteur et al.
 \end_inset
 
 .
- Utilisé essentiellement dans les fichiers moteurCitation (voir
+ Utilisé principalement dans les fichiers moteurCitation (voir
 \begin_inset space ~
 \end_inset
 
@@ -11331,10 +11336,20 @@ string
 
 \end_inset
 
-=""] This paragraph will appear in the table of contents of the given type.
- An empty string disables.
- See also the OutlinerName and the IsTocCaption commands.
- Default: disabled.
+=""]
+\lang french
+ paragraphe apparaissant dans la table des matières du type donné.
+ Désactivé par une chaîne de caractères vide.
+ Voir aussi les directives 
+\family typewriter
+OutlinerName
+\family default
+ et 
+\family typewriter
+IsTocCaption
+\family default
+.
+ Implicitement : désactivé.
 \end_layout
 
 \begin_layout Description
@@ -12276,7 +12291,7 @@ string of characters
  
 \family default
 définit des caractères qui doivent être transmis tel quels à la sortie,
- c'est-à-dire sans traitements particulières que \SpecialChar LaTeX
+ c'est-à-dire sans traitements particuliers que \SpecialChar LaTeX
  pourrait requérir.
  Notez bien que, contrairement à 
 \family sans
@@ -12335,7 +12350,7 @@ status collapsed
 
 ]
 \lang french
- emettra le contenu de l'argument dans l'élément correspondant dans la table
+ émettra le contenu de l'argument dans l'élément correspondant dans la table
  des matières si positionné à 1.
  Voir 
 \family sans
@@ -19271,8 +19286,8 @@ string
 
 =""]
 \lang french
- insert apparaissant dans la table des matières du type donné.Désactivé par
- une chaîne de caractères vide.
+ insert apparaissant dans la table des matières du type donné.
+ Désactivé par une chaîne de caractères vide.
  Voir aussi les directives 
 \family typewriter
 OutlinerName
@@ -24449,12 +24464,12 @@ and
  \SpecialChar LyX
  propose donc quelques méthodes pour afficher correctement des listes de
  noms (qui seront également traduites).
- Les solutions suivantes sont diaponibles:
+ Les solutions suivantes sont disponibles:
 \end_layout
 
 \begin_layout Enumerate
 Pour les listes de noms avec prénom et nom, appropriées pour les auteurs/éditeur
-s d'une entrée bibliographoqie.
+s d'une entrée bibliographique.
  La partie 
 \begin_inset Flex Code
 status collapsed
