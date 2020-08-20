@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-07-30 15:34+0200\n"
-"PO-Revision-Date: 2020-08-14 17:05+0300\n"
+"PO-Revision-Date: 2020-08-23 23:53+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -1483,7 +1483,7 @@ msgstr "Обрезать по &рамке"
 
 #: src/frontends/qt/ui/ExternalUi.ui:587 src/frontends/qt/ui/GraphicsUi.ui:390
 msgid "Left botto&m:"
-msgstr "&Левый нижний:"
+msgstr "&Левый нижний угол:"
 
 #: src/frontends/qt/ui/ExternalUi.ui:600
 msgid "x"
@@ -1491,7 +1491,7 @@ msgstr "x"
 
 #: src/frontends/qt/ui/ExternalUi.ui:607 src/frontends/qt/ui/GraphicsUi.ui:428
 msgid "Right &top:"
-msgstr "&Правый верхний:"
+msgstr "&Правый верхний угол:"
 
 #: src/frontends/qt/ui/ExternalUi.ui:617
 msgid "Get bounding box from the (EPS) file"
@@ -1537,7 +1537,7 @@ msgstr "Искать только целые слова"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:123
 msgid "W&hole words"
-msgstr "Целые слова"
+msgstr "Только целые слова"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:130
 msgid "Perform a case-sensitive search"
@@ -2330,12 +2330,12 @@ msgstr "&Новый:"
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
-"Введите название желаемого указателя (например, «Указатель имён») и нажмите "
-"«Добавить»"
+"Введите название желаемого указателя (например, «Именной указатель») и "
+"нажмите «Добавить»"
 
 #: src/frontends/qt/ui/IndicesUi.ui:131
 msgid "Add a new index to the list"
-msgstr "Добавить новый указатель к списку"
+msgstr "Добавить в список новый указатель"
 
 #: src/frontends/qt/ui/IndicesUi.ui:143
 msgid "A&vailable Indexes:"
@@ -3633,7 +3633,7 @@ msgstr "И&ндикатор курсора"
 #: src/frontends/qt/GuiLyXFiles.cpp:92 src/frontends/qt/GuiLyXFiles.cpp:105
 #: src/frontends/qt/GuiPrefs.cpp:320
 msgid "General"
-msgstr "Общие"
+msgstr "Общее"
 
 #: src/frontends/qt/ui/PrefCompletionUi.ui:142
 msgid ""
@@ -4058,7 +4058,7 @@ msgstr "&MIME:"
 
 #: src/frontends/qt/ui/PrefFileformatsUi.ui:136
 msgid "Shortc&ut:"
-msgstr "Горячая клавиша:"
+msgstr "Сочетание клавиш:"
 
 #: src/frontends/qt/ui/PrefFileformatsUi.ui:149
 msgid "Ed&itor:"
@@ -4159,8 +4159,8 @@ msgid ""
 "Mac OS X specific setting for use with emacs bindings. Takes effect next "
 "time LyX is launched."
 msgstr ""
-"Настройка использования привязок emacs (только для Mac OS X). Вступает в "
-"силу при следующем запуске LyX."
+"Настройка использования привязок emacs (только для macOS). Вступает в силу "
+"при следующем запуске LyX."
 
 #: src/frontends/qt/ui/PrefInputUi.ui:104
 msgid "Do not swap Apple and Control keys"
@@ -4708,7 +4708,7 @@ msgstr "&Новый"
 
 #: src/frontends/qt/ui/PrefShortcutsUi.ui:90
 msgid "&Bind file:"
-msgstr "&Файл клавиатурных сокращений:"
+msgstr "&Файл привязок клавиш:"
 
 #: src/frontends/qt/ui/PrefShortcutsUi.ui:108
 msgid "Show ke&y-bindings containing:"
@@ -4841,7 +4841,7 @@ msgstr "Польз. ширина:"
 #: src/frontends/qt/ui/PrintNomenclUi.ui:52
 msgid "Custom value. \"List Indentation\" needs to be set to \"Custom\"."
 msgstr ""
-"Пользовательское значение. Требует тип промежутка \"Задано пользователем\"."
+"Пользовательское значение. Требует тип отступа \"Задано пользователем\"."
 
 #: src/frontends/qt/ui/PrintindexUi.ui:40
 msgid "Available i&ndexes:"
@@ -5052,7 +5052,7 @@ msgstr "Учитывать &регистр"
 
 #: src/frontends/qt/ui/SearchUi.ui:134
 msgid "Match w&hole words only"
-msgstr "Искать &только целые слова"
+msgstr "&Только целые слова"
 
 #: src/frontends/qt/ui/SendtoUi.ui:50
 msgid "Process the converted file with this command ($$FName = file name)"
@@ -5065,11 +5065,11 @@ msgstr "&Форматы экспорта:"
 
 #: src/frontends/qt/ui/SendtoUi.ui:105
 msgid "Send exported file to &command:"
-msgstr "Переслать экспортированный файл в команду:"
+msgstr "Отправить экспортированный файл в команду:"
 
 #: src/frontends/qt/ui/ShortcutUi.ui:14
 msgid "Edit shortcut"
-msgstr "Изменить горячую клавишу"
+msgstr "Назначить сочетание клавиш"
 
 #: src/frontends/qt/ui/ShortcutUi.ui:23
 msgid "Fu&nction:"
@@ -5081,19 +5081,19 @@ msgstr "Введите функцию LyX или последовательно�
 
 #: src/frontends/qt/ui/ShortcutUi.ui:43
 msgid "Short&cut:"
-msgstr "&Горячая клавиша:"
+msgstr "&Сочетание клавиш:"
 
 #: src/frontends/qt/ui/ShortcutUi.ui:56
 msgid ""
 "Type shortcut after clicking on this field. You can reset the content with "
 "the 'Clear' button"
 msgstr ""
-"Введите клавишную комбинацию быстрого вызова после нажатия на это поле. Вы "
-"можете сбросить содержимое поля с помощью кнопки \"Очистить\""
+"Введите сочетание клавиш после нажатия на это поле. Вы можете сбросить "
+"содержимое поля кнопкой \"Очистить\""
 
 #: src/frontends/qt/ui/ShortcutUi.ui:66
 msgid "Remove last key from the shortcut sequence"
-msgstr "Удалить последнюю клавишу из последовательности для быстрого вызова"
+msgstr "Удалить последнюю клавишу из сочетания"
 
 #: src/frontends/qt/ui/ShortcutUi.ui:69
 msgid "&Delete Key"
@@ -5101,11 +5101,11 @@ msgstr "&Удалить"
 
 #: src/frontends/qt/ui/ShortcutUi.ui:76
 msgid "Clear current shortcut"
-msgstr "Очистить текущую комбинацию"
+msgstr "Очистить текущее сочетание"
 
 #: src/frontends/qt/ui/ShortcutUi.ui:79 src/frontends/qt/ui/TabularUi.ui:1106
 msgid "C&lear"
-msgstr "Оч&истить"
+msgstr "&Очистить"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:20
 #: src/frontends/qt/GuiSpellchecker.cpp:251
@@ -10938,7 +10938,7 @@ msgstr "Буквально"
 
 #: lib/layouts/db_stdcharstyles.inc:86 lib/layouts/db_stdcharstyles.inc:87
 msgid "KeyCombo"
-msgstr "КомбинацияКлавиш"
+msgstr "Комбинация клавиш"
 
 #: lib/layouts/db_stdcharstyles.inc:100 lib/layouts/db_stdcharstyles.inc:101
 msgid "KeyCap"
@@ -10946,15 +10946,15 @@ msgstr "Клавиша"
 
 #: lib/layouts/db_stdcharstyles.inc:114 lib/layouts/db_stdcharstyles.inc:115
 msgid "GuiMenu"
-msgstr "МенюИнтерфейса"
+msgstr "Меню интерфейса"
 
 #: lib/layouts/db_stdcharstyles.inc:128 lib/layouts/db_stdcharstyles.inc:129
 msgid "GuiMenuItem"
-msgstr "ПунктМенюИнтерфейса"
+msgstr "Пункт меню интерфейса"
 
 #: lib/layouts/db_stdcharstyles.inc:142 lib/layouts/db_stdcharstyles.inc:143
 msgid "GuiButton"
-msgstr "КнопкаИнтерфейса"
+msgstr "Кнопка интерфейса"
 
 #: lib/layouts/db_stdcharstyles.inc:156 lib/layouts/db_stdcharstyles.inc:157
 msgid "MenuChoice"
@@ -16672,7 +16672,7 @@ msgstr "Ветки"
 
 #: lib/layouts/stdinsets.inc:15
 msgid "Index Entries"
-msgstr "Рубрики в предметном указателе"
+msgstr "Рубрики предметного указателя"
 
 #: lib/layouts/stdinsets.inc:16
 msgid "Listings"
@@ -20192,7 +20192,7 @@ msgstr "Зарегистрировать...|г"
 
 #: lib/ui/stdmenus.inc:76
 msgid "Check In Changes...|I"
-msgstr "Закрепить изменения...|З"
+msgstr "Зафиксировать изменения...|З"
 
 #: lib/ui/stdmenus.inc:77
 msgid "Check Out for Edit|O"
@@ -20328,7 +20328,7 @@ msgstr "Настройки рубрики указателя...|у"
 
 #: lib/ui/stdmenus.inc:151
 msgid "Index Settings...|S"
-msgstr "Настройки предметного указателя...|у"
+msgstr "Настройки указателя...|у"
 
 #: lib/ui/stdmenus.inc:152
 msgid "Info Settings...|n"
@@ -20952,7 +20952,7 @@ msgstr "Простой текст, объединить строки...|о"
 
 #: lib/ui/stdmenus.inc:520
 msgid "External Material...|M"
-msgstr "Внешний объект...|В"
+msgstr "Внешний материал...|В"
 
 #: lib/ui/stdmenus.inc:521
 msgid "Child Document...|d"
@@ -21140,7 +21140,7 @@ msgstr "Руководство по настройке|н"
 
 #: lib/ui/stdmenus.inc:646
 msgid "Shortcuts|S"
-msgstr "Горячие клавиши|Г"
+msgstr "Сочетания клавиш|к"
 
 #: lib/ui/stdmenus.inc:647
 msgid "LyX Functions|y"
@@ -21148,7 +21148,7 @@ msgstr "Функции LyX|Ф"
 
 #: lib/ui/stdmenus.inc:648
 msgid "LaTeX Configuration|L"
-msgstr "Конфигурация LaTeX|К"
+msgstr "Конфигурация LaTeX|L"
 
 #: lib/ui/stdmenus.inc:649
 msgid "Specific Manuals|p"
@@ -21772,7 +21772,7 @@ msgstr "Захватить для правки"
 
 #: lib/ui/stdtoolbars.inc:297
 msgid "Check-in changes"
-msgstr "Закрепить изменения"
+msgstr "Зафиксировать изменения"
 
 #: lib/ui/stdtoolbars.inc:298
 msgid "View revision log"
@@ -26328,19 +26328,19 @@ msgstr "EPS"
 
 #: lib/configure.py:734
 msgid "EPS (uncropped)"
-msgstr "EPS (необрезанный)"
+msgstr "EPS (с полями)"
 
 #: lib/configure.py:735 lib/examples/Articles:0
 msgid "EPS (cropped)"
-msgstr "EPS (обрезанный)"
+msgstr "EPS (без полей)"
 
 #: lib/configure.py:736
 msgid "Postscript"
-msgstr "Postscript"
+msgstr "PostScript"
 
 #: lib/configure.py:736
 msgid "Postscript|t"
-msgstr "Postscript|t"
+msgstr "PostScript|t"
 
 #: lib/configure.py:745
 msgid "PDF (ps2pdf)"
@@ -26348,7 +26348,7 @@ msgstr "PDF (ps2pdf)"
 
 #: lib/configure.py:745
 msgid "PDF (ps2pdf)|P"
-msgstr "PDF (ps2pdf)|P"
+msgstr "PDF (ps2pdf)|2"
 
 #: lib/configure.py:746
 msgid "PDF (pdflatex)"
@@ -26356,7 +26356,7 @@ msgstr "PDF (pdflatex)"
 
 #: lib/configure.py:746
 msgid "PDF (pdflatex)|F"
-msgstr "PDF (pdflatex)|F"
+msgstr "PDF (pdflatex)|P"
 
 #: lib/configure.py:747
 msgid "PDF (dvipdfm)"
@@ -26388,7 +26388,7 @@ msgstr "PDF (графика)"
 
 #: lib/configure.py:751 lib/examples/Articles:0
 msgid "PDF (cropped)"
-msgstr "PDF (обрезанный)"
+msgstr "PDF (без полей)"
 
 #: lib/configure.py:752
 msgid "PDF (lower resolution)"
@@ -26590,7 +26590,7 @@ msgstr "Gnuplot"
 #: lib/examples/Articles:0 src/TocBackend.cpp:296
 #: src/frontends/qt/GuiExternal.cpp:87
 msgid "External Material"
-msgstr "Внешний объект"
+msgstr "Внешний материал"
 
 #: lib/examples/Articles:0
 msgid "Minted File Listing"
@@ -28867,7 +28867,7 @@ msgstr "Невозможно редактировать файл"
 
 #: src/Format.cpp:735
 msgid "LinkBack files can only be edited on Apple Mac OSX."
-msgstr "Файлы LinkBack могут редактироваться только на Apple Mac OS X."
+msgstr "Файлы LinkBack могут редактироваться только на macOS."
 
 #: src/Format.cpp:748
 #, c-format
@@ -29345,10 +29345,8 @@ msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
 msgstr ""
-"Файл с раскладками клавиатуры. Можно указать полный путь, или же LyX будет "
-"искать файл в каталогах bind/ глобальных и локальных настроек. Используйте "
-"эту возможность, если X-сервер не поддерживает переключение нужных вам "
-"раскладок."
+"Файл с привязками клавиш. Можно указать полный путь, или же LyX будет искать "
+"файл в каталогах bind/ глобальных и локальных настроек."
 
 #: src/LyXRC.cpp:3014
 msgid "Select to check whether the lastfiles still exist."
@@ -29406,7 +29404,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3052
 msgid "Use the Mac OS X conventions for cursor movement"
-msgstr "Использовать обычный для Mac OS X способ перемещения курсора"
+msgstr "Использовать обычный для macOS способ перемещения курсора"
 
 #: src/LyXRC.cpp:3056
 msgid ""
@@ -30164,7 +30162,7 @@ msgstr "неизвестный тип!"
 #: src/TocBackend.cpp:270
 #, c-format
 msgid "Index Entries (%1$s)"
-msgstr "Рубрики в указателе (%1$s)"
+msgstr "Рубрики указателя (%1$s)"
 
 #: src/TocBackend.cpp:286 src/insets/InsetTOC.cpp:75
 msgid "Table of Contents"
@@ -30337,7 +30335,8 @@ msgid ""
 "You have to check in the first revision before you can revert."
 msgstr ""
 "Документ %1$s отсутствует в репозитории.\n"
-"Вы должны закрепить его первую версию, прежде чем сможете выполнять откат."
+"Вы должны зафиксировать его первую версию, прежде чем сможете выполнять "
+"откат."
 
 #: src/VCBackend.cpp:1056
 #, c-format
@@ -31894,7 +31893,7 @@ msgstr "Нумерация и содержание"
 
 #: src/frontends/qt/GuiDocument.cpp:1778
 msgid "Indexes"
-msgstr "Предметные указатели"
+msgstr "Указатели"
 
 #: src/frontends/qt/GuiDocument.cpp:1779
 msgid "PDF Properties"
@@ -32244,7 +32243,7 @@ msgstr "По базисной линии справа"
 
 #: src/frontends/qt/GuiExternal.cpp:220
 msgid "Scale%"
-msgstr "Масштаб%"
+msgstr "% исходного размера"
 
 #: src/frontends/qt/GuiExternal.cpp:673
 msgid "Select external file"
@@ -32456,8 +32455,7 @@ msgstr "Введите название нового указателя"
 #: src/frontends/qt/GuiIndices.cpp:244
 msgid "The index could not be renamed. Check if the new name already exists."
 msgstr ""
-"Невозможно переименовать указатель. Проверьте, существует ли указатель с "
-"таким же именем."
+"Невозможно переименовать указатель. Возможно такое имя уже используется."
 
 #: src/frontends/qt/GuiInfo.cpp:70
 msgid "Date (current)"
@@ -32856,11 +32854,11 @@ msgstr "&Шаблоны"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:365
 msgid "&User files"
-msgstr "Пользовательские файлы"
+msgstr "&Пользовательские файлы"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:366
 msgid "&System files"
-msgstr "Системные файлы"
+msgstr "&Системные файлы"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:369
 msgid "Chose UI file"
@@ -32872,7 +32870,7 @@ msgstr "Файлы интерфейса LyX (*.ui)"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:373
 msgid "Chose bind file"
-msgstr "Выберите файл клавиатурных сокращений"
+msgstr "Выберите файл привязок клавиш"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:374
 msgid "LyX Bind Files (*.bind)"
@@ -32993,7 +32991,7 @@ msgstr "Обработка файлов"
 
 #: src/frontends/qt/GuiPrefs.cpp:417
 msgid "Keyboard/Mouse"
-msgstr "Клавиатура/Мышь"
+msgstr "Клавиатура и мышь"
 
 #: src/frontends/qt/GuiPrefs.cpp:551
 msgid "Input Completion"
@@ -33140,11 +33138,11 @@ msgstr "Документ"
 
 #: src/frontends/qt/GuiPrefs.cpp:2739
 msgid "Control"
-msgstr "Общие"
+msgstr "Управление"
 
 #: src/frontends/qt/GuiPrefs.cpp:2836
 msgid "Shortcuts"
-msgstr "Горячие клавиши"
+msgstr "Сочетания клавиш"
 
 #: src/frontends/qt/GuiPrefs.cpp:2843
 msgid "Function"
@@ -33152,7 +33150,7 @@ msgstr "Функция"
 
 #: src/frontends/qt/GuiPrefs.cpp:2844
 msgid "Shortcut"
-msgstr "Горячая клавиша"
+msgstr "Сочетание клавиш"
 
 #: src/frontends/qt/GuiPrefs.cpp:2921
 msgid "Cursor, Mouse and Editing Functions"
@@ -33181,7 +33179,7 @@ msgstr "&Восстановить"
 #: src/frontends/qt/GuiPrefs.cpp:3303 src/frontends/qt/GuiPrefs.cpp:3312
 #: src/frontends/qt/GuiPrefs.cpp:3318 src/frontends/qt/GuiPrefs.cpp:3381
 msgid "Failed to create shortcut"
-msgstr "Ошибка при создании горячей клавиши"
+msgstr "Сочетание не назначено"
 
 #: src/frontends/qt/GuiPrefs.cpp:3304
 msgid "Unknown or invalid LyX function"
@@ -33189,11 +33187,11 @@ msgstr "Неизвестная или неправильная функция Ly
 
 #: src/frontends/qt/GuiPrefs.cpp:3313
 msgid "This LyX function is hidden and cannot be bound."
-msgstr "Эта функция LyX скрыта и не может быть привязана."
+msgstr "Эта функция LyX скрыта и не может быть использоваться"
 
 #: src/frontends/qt/GuiPrefs.cpp:3319
 msgid "Invalid or empty key sequence"
-msgstr "Неверная или пустая горячая клавиша"
+msgstr "Неверное или пустое сочетание клавиш"
 
 #: src/frontends/qt/GuiPrefs.cpp:3334
 #, c-format
@@ -33201,21 +33199,21 @@ msgid ""
 "Shortcut `%1$s' is already bound to %2$s.\n"
 "Are you sure you want to unbind the current shortcut and bind it to %3$s?"
 msgstr ""
-"Горячая клавиша `%1$s' уже привязана к:\n"
+"Сочетание клавиш `%1$s' уже привязано к:\n"
 "%2$s\n"
-"Вы уверены, что хотите привязать её к %3$s?"
+"Вы уверены, что хотите привязать его к %3$s?"
 
 #: src/frontends/qt/GuiPrefs.cpp:3340
 msgid "Redefine shortcut?"
-msgstr "Переопределить горячую клавишу?"
+msgstr "Переопределить сочетание клавиш?"
 
 #: src/frontends/qt/GuiPrefs.cpp:3341
 msgid "&Redefine"
-msgstr "Переопределить"
+msgstr "&Переопределить"
 
 #: src/frontends/qt/GuiPrefs.cpp:3382
 msgid "Can not insert shortcut to the list"
-msgstr "Невозможно добавить горячую клавишу в список"
+msgstr "Невозможно добавить сочетание клавиш в список"
 
 #: src/frontends/qt/GuiPrefs.cpp:3413
 msgid "Identity"
@@ -33231,7 +33229,7 @@ msgstr "Список обозначений"
 
 #: src/frontends/qt/GuiPrintindex.cpp:37
 msgid "Index Settings"
-msgstr "Предметный указатель"
+msgstr "Указатель"
 
 #: src/frontends/qt/GuiPrintindex.cpp:70
 msgid "<All indexes>"
@@ -33901,7 +33899,7 @@ msgstr "файл не импортирован!"
 
 #: src/frontends/qt/GuiView.cpp:2641
 msgid "newfile"
-msgstr "новый файл"
+msgstr "Новый документ "
 
 #: src/frontends/qt/GuiView.cpp:2674
 msgid "Select LyX document to insert"
