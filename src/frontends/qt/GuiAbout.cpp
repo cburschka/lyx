@@ -240,7 +240,7 @@ static QString dirUser()
 }
 
 
-static QString version()
+static QString version(bool const plain = false)
 {
 	QString loc_release_date;
 	QDate date = release_date();
@@ -257,17 +257,32 @@ static QString version()
 		bformat(_("Version %1$s\n(%2$s)"),
 			from_ascii(lyx_version),
 			qstring_to_ucs4(loc_release_date))+"\n";
-	if (std::string(lyx_git_commit_hash) != "none")
-		version_date += from_ascii("</p><p>") + _("Built from git commit hash ")
+	if (std::string(lyx_git_commit_hash) != "none") {
+		if (plain)
+			version_date += '\n';
+		else
+			version_date += from_ascii("</p><p>");
+		version_date += _("Built from git commit hash ")
 			+ from_utf8(lyx_git_commit_hash).substr(0,8);
+	}
 
 	QString res;
 	QTextStream out(&res);
-	out << toqstr("<html><head/><body><p><span style=\" font-weight:600;\">");
-	out << toqstr(version_date) << "</span></p><p>";
-	out << toqstr(bformat(_("Qt Version (run-time): %1$s"), from_ascii(qVersion()))) << "</p><p>";
+	if (!plain)
+		out << toqstr("<html><head/><body><p><span style=\" font-weight:600;\">");
+	out << toqstr(version_date);
+	if (plain)
+		out << '\n';
+	else
+		out << "</span></p><p>";
+	out << toqstr(bformat(_("Qt Version (run-time): %1$s"), from_ascii(qVersion())));
+	if (plain)
+		out << '\n';
+	else
+		out << "</p><p>";
 	out << toqstr(bformat(_("Qt Version (compile-time): %1$s"), from_ascii(QT_VERSION_STR)));
-	out << toqstr("</p></body></html>");
+	if (!plain)
+		out << toqstr("</p></body></html>");
 	return res;
 }
 
@@ -291,7 +306,7 @@ void GuiAbout::on_showDirUserPB_clicked()
 
 void GuiAbout::on_versionCopyPB_clicked()
 {
-	qApp->clipboard()->setText(version());
+	qApp->clipboard()->setText(version(true));
 }
 
 
