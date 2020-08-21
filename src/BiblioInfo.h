@@ -70,7 +70,7 @@ public:
 				      bool const allnames = false, bool const beginning = true) const;
 	///
 	docstring const getYear() const;
-	/// 
+	///
 	void getLocators(docstring & doi, docstring & url, docstring & file) const;
 	/// \return formatted BibTeX data suitable for framing.
 	/// \param vector of pointers to crossref/xdata information

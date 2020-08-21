@@ -303,9 +303,9 @@ void showTarget(string const & target){
 		string tmp,tar;
 		tar = split(target, tmp, ' ');
 		FuncRequest cmd = FuncRequest(LFUN_VC_COMMAND,"U . \"lyxpaperview " + tar + "\"");
-	  	lyx::dispatch(cmd);
+		lyx::dispatch(cmd);
 		return;
-	} 
+	}
 	QDesktopServices::openUrl(QUrl(toqstr(target), QUrl::TolerantMode));
 }
 } // namespace frontend

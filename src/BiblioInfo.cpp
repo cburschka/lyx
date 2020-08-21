@@ -691,7 +691,7 @@ void BibTeXInfo::getLocators(docstring & doi, docstring & url, docstring & file)
 				file = "file:///" + filedest;
 		}
 
-		if (!url.empty()) 
+		if (!url.empty())
 			return;
 
 		// try biblatex specific fields, see its manual
@@ -1342,7 +1342,7 @@ void BiblioInfo::getLocators(docstring const & key, docstring & doi, docstring &
 {
 	BiblioInfo::const_iterator it = find(key);
 	 if (it == end())
-	 	return;
+		return;
 	BibTeXInfo const & data = it->second;
 	data.getLocators(doi,url,file);
 }
