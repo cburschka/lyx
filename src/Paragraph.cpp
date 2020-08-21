@@ -2615,6 +2615,7 @@ void Paragraph::latex(BufferParams const & bparams,
 		}
 
 		// Do we need to close the previous font?
+		bool langClosed = false;
 		if (open_font &&
 		    ((current_font != running_font
 		      || current_font.language() != running_font.language())
@@ -2650,6 +2651,7 @@ void Paragraph::latex(BufferParams const & bparams,
 			}
 			running_font = basefont;
 			open_font = false;
+			langClosed = true;
 		}
 
 		// if necessary, close language environment before opening CJK
@@ -2749,7 +2751,7 @@ void Paragraph::latex(BufferParams const & bparams,
 				}
 			} else {
 				running_font = current_font;
-				open_font = true;
+				open_font = !langClosed;
 			}
 		}
 
