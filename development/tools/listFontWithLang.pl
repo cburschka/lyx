@@ -239,6 +239,26 @@ for my $charFld ("Contains", "NContains") {
   }
 }
 
+for my $fn ("FontName", "NFontName") {
+  if (defined($options{$fn})) {
+    # split each entry and make a compiled regex
+    # Allow space between all characters
+    for my $e (@{$options{$fn}}) {
+      my $u = decode('utf-8', $e);
+      my $fill = decode('utf-8', "\\s?");
+      my @u = split(//, $u);
+      my @ud = ();
+      for my $c (@u) {
+        push(@ud, $c, $fill);
+      }
+      my $ud = join('', @ud);
+      my $e1 = encode('utf-8', $ud);
+      $e1 =~ s/\\s\?$//;
+      $e = qr/$e1/i;
+    }
+  }
+}
+
 my $cmd = "fc-list";
 if (defined($langs[0])) {
   $cmd .= " :lang=" . join(',', @langs);
@@ -522,12 +542,12 @@ if (open(FI,  "$cmd |")) {
     ($fontname, $style) = &buildFontName($family, $style);
     if (defined($options{NFontName})) {
       for my $fn (@{$options{NFontName}}) {
-        next NXTLINE if ($fontname =~ /$fn/i);
+        next NXTLINE if ($fontname =~ $fn);
       }
     }
     if (defined($options{FontName})) {
       for my $fn (@{$options{FontName}}) {
-        next NXTLINE if ($fontname !~ /$fn/i);
+        next NXTLINE if ($fontname !~ $fn);
       }
     }
     my @charlist = ();
