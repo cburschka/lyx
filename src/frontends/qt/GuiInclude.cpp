@@ -15,18 +15,20 @@
 #include "GuiInclude.h"
 
 #include "Buffer.h"
+#include "BufferList.h"
 #include "BufferParams.h"
 #include "FuncRequest.h"
 #include "LyXRC.h"
 
 #include "qt_helpers.h"
-#include "LyXRC.h"
 
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
+
+#include "frontends/alert.h"
 
 #include "insets/InsetListingsParams.h"
 #include "insets/InsetInclude.h"
@@ -291,7 +293,28 @@ void GuiInclude::edit()
 		applyView();
 	} else
 		hideView();
-	dispatch(FuncRequest(LFUN_INSET_EDIT));
+	QString const fname = filenameED->text();
+	string const bpath = buffer().filePath();
+	string const absfname = support::makeAbsPath(fromqstr(fname), bpath).absFileName();
+	FileName const absFileName(absfname);
+	Buffer const * buffer = theBufferList().getBuffer(absFileName);
+	if (!buffer) {
+		// The Buffer is not already open, so try to open it.
+		if (!absFileName.exists()) {
+			Alert::warning(_("File does not exist"),
+				bformat(_("The requested file\n\t%1$s\ndoes not exist."),
+					from_utf8(absfname)));
+			return;
+		}
+		dispatch(FuncRequest(LFUN_BUFFER_NEW, absfname));
+		// Did we succeed?
+		if (!theBufferList().getBuffer(absFileName)) {
+			// We should already have had an error message.
+			return;
+		}
+	}
+	// Switch to the requested Buffer
+	dispatch(FuncRequest(LFUN_BUFFER_SWITCH, absfname));
 }
 
 
