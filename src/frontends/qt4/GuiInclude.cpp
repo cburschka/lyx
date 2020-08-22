@@ -15,18 +15,20 @@
 #include "GuiInclude.h"
 
 #include "Buffer.h"
+#include "BufferList.h"
 #include "BufferParams.h"
 #include "FuncRequest.h"
 #include "LyXRC.h"
 
 #include "qt_helpers.h"
-#include "LyXRC.h"
 
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
+
+#include "frontends/alert.h"
 
 #include "insets/InsetListingsParams.h"
 #include "insets/InsetInclude.h"
@@ -291,15 +293,20 @@ void GuiInclude::edit()
 		applyView();
 	} else
 		hideView();
-	dispatch(FuncRequest(LFUN_INSET_EDIT));
+	QString const fname = filenameED->text();
+	string const bpath = buffer().filePath();
+	string const absfname = support::makeAbsPath(fromqstr(fname), bpath).absFileName();
+	// The button is enabled only if the document is already open.
+	// If something goes wrong and it is not, we'll get an error
+	// message from the dispatch. So no need for one here.
+	dispatch(FuncRequest(LFUN_BUFFER_SWITCH, absfname));
 }
 
 
 bool GuiInclude::isValid()
 {
 	QString fname = filenameED->text();
-	bool fempty = fname.isEmpty();
-	if (fempty || !validate_listings_params().empty()) {
+	if (fname.isEmpty() || !validate_listings_params().empty()) {
 		editPB->setEnabled(false);
 		return false;
 	}
@@ -311,15 +318,17 @@ bool GuiInclude::isValid()
 		return true;
 	}
 	// Do we have a LyX filename?
-	if (!support::isLyXFileName(fromqstr(fname))) {
+	if (!isLyXFileName(fromqstr(fname))) {
 		okPB->setText("OK");
 		return false;
 	}
 	string const bpath = buffer().filePath();
-	QString absfname = makeAbsPath(fname, toqstr(bpath));
-	bool const fexists = QFile::exists(absfname);
-	okPB->setText(fexists ? "OK" : "Create");
-	editPB->setEnabled(fexists);
+	// Path might be relative to current Buffer, so make absolute
+	FileName const absfname = support::makeAbsPath(fromqstr(fname), bpath);
+	// Set OK button text according to whether file already exists
+	okPB->setText(absfname.exists() ? "OK" : "Create");
+	// enable edit button iff file is open in some Buffer
+	editPB->setEnabled(theBufferList().getBuffer(absfname));
 	return true;
 }
 
