@@ -242,11 +242,55 @@ What is \SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 5863208 1598113909
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1598113909
+Document Notes and Questions
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 5863208 1598113909
+The menu selection Navigate
+\family sans
+\SpecialChar menuseparator
+
+\family default
+Bookmarks does not appear to work as described
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 5863208 1598113909
+Would love to see some kind of diagram showing how classes, modules, layouts,
+ or whatever else all relate.
+ It is not clear how all of these things work together.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 5863208 1598113909
+Change tracking does not appear to work in equations
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 \SpecialChar LyX
  is a document preparation system.
  It is a tool for producing beautiful manu\SpecialChar softhyphen
 scripts, publishable books, business
- letters and proposals, and even poetry.
+ letters and proposals,
+\change_deleted 5863208 1598113909
+ and
+\change_unchanged
+ even poetry.
  It is unlike most other 
 \begin_inset Quotes eld
 \end_inset
@@ -305,14 +349,9 @@ Introduction
  manual describes several things in addition to \SpecialChar LyX
 's philosophy: most importantly,
  the format of all of the manuals.
- If you don't read it, you will have a bear of a time navigating this manual.
- You might also be better served looking in one of the other manuals instead
- of this one.
- The 
-\emph on
-Introduction
-\emph default
- manual describes that, too.
+ If you don't read it, you will have a difficult time navigating the manuals.
+ Additionally it provides a high level content description of the other
+ manuals giving the user an idea of where to look for specific information.
 \end_layout
 
 \begin_layout Section
@@ -325,21 +364,24 @@ Like most applications, \SpecialChar LyX
  has the familiar menu bar across the top of its
  window.
  Below it is a toolbar with a pulldown box and various buttons.
- There is, of course, a vertical scrollbar and a main work area for editing
- documents.
+ There is of course a work area for editing documents complete with a vertical
+ scrollbar.
 \end_layout
 
 \begin_layout Standard
 Note that there is no horizontal scrollbar.
- This is not a bug or an oversight, but intentional.
+ This is not a bug or an oversight, it is intentional.
  When you read a book, you expect the end of a line to wrap around to the
  next line.
  Text overflows onto new pages in a vertical fashion, hence the need for
  only a vertical scrollbar.
- There are three cases where you might want a horizontal scrollbar.
+\end_layout
+
+\begin_layout Standard
+There are three cases where you might want a horizontal scrollbar.
  The first case is large images.
- To avoid them being displayed larger than your screen, left click on the
- image and use the option 
+ To avoid images being displayed larger than your screen, left click on
+ the image and use the option 
 \family sans
 Scale on Screen
 \family default
@@ -353,8 +395,7 @@ Scale on Screen
  The second and third cases are tables and equations which are wider than
  the \SpecialChar LyX
  window.
- You can use the arrow keys to scroll horizontally through the table, but
- this doesn't work for equations yet.
+ You can use the arrow keys to scroll horizontally through both.
 \end_layout
 
 \begin_layout Standard
@@ -421,14 +462,14 @@ Preferences
 
  \SpecialChar LyX
  is able to inspect your system to see what programs, \SpecialChar LaTeX
- document classes
+ document classes,
  and \SpecialChar LaTeX
  packages are available.
  It uses this knowledge to give reasonable defaults for the preferences
  settings.
- Although this configuration has already been done when \SpecialChar LyX
- was installed on
- your system, you might have some items that you installed locally, e.
+ Although this configuration was performed when \SpecialChar LyX
+ was installed on your system,
+ you might have some items that you installed locally, e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -437,10 +478,10 @@ g.
 \end_inset
 
 new \SpecialChar LaTeX
- classes, and which are not seen by \SpecialChar LyX
+ classes, which are not seen by \SpecialChar LyX
 .
  To force \SpecialChar LyX
- to re-inspect your system, you should use 
+ to re-inspect your system use 
 \family sans
 Tools\SpecialChar menuseparator
 Reconfigure
@@ -456,7 +497,7 @@ Reconfiguration of \SpecialChar LyX
 
 \end_inset
 
- You should then restart \SpecialChar LyX
+ Then restart \SpecialChar LyX
  to ensure that the changes are taken into account.
 \end_layout
 
@@ -475,18 +516,47 @@ name "sec:LaTeX-Setup"
 \begin_layout Standard
 You can edit documents in \SpecialChar LyX
  without having \SpecialChar LaTeX
- installed, but you will not be
- able to create PDFs or print your documents unless you do have it installed.
- However, some \SpecialChar LyX
- documents use DocBook as the “backend” that can produce
- PDFs and the like, and every \SpecialChar LyX
- document can always be output as plain text
+ installed but you will not be
+ able to create PDFs
+\change_deleted 5863208 1598122369
+ or print your documents
+\change_unchanged
+.
+ 
+\change_deleted 5863208 1598122520
+Some \SpecialChar LyX
+ documents use DocBook instead of \SpecialChar LaTeX
+ as the 
+\begin_inset Quotes eld
+\end_inset
+
+backend
+\begin_inset Quotes erd
+\end_inset
+
+ which can produce PDFs and the like.
+ 
+\change_unchanged
+Even without \SpecialChar LaTeX
+ 
+\change_deleted 5863208 1598122546
+or Docbook 
+\change_unchanged
+every \SpecialChar LyX
+ document can still be output as plain text
+\change_inserted 5863208 1598122500
+, as Docbook
+\change_unchanged
  or as XHTML.
 \end_layout
 
 \begin_layout Standard
 Some document classes may depend upon specific \SpecialChar LaTeX
- or DocBook classes or packages.
+ 
+\change_deleted 5863208 1598122571
+or DocBook 
+\change_unchanged
+classes or packages.
  Such document classes can be used even if you do not have the required
  files installed, but you will not be able to produce certain kinds of output.
 \end_layout
@@ -494,8 +564,8 @@ Some document classes may depend upon specific \SpecialChar LaTeX
 \begin_layout Standard
 The \SpecialChar LaTeX
  packages that \SpecialChar LyX
- has found on your system are listed in a file you can
- view from the menu 
+ finds on your system are listed in a file you can view
+ from the menu 
 \family sans
 Help\SpecialChar menuseparator
 LaTeX
@@ -505,7 +575,7 @@ LaTeX
 Configuration
 \family default
 .
- If you are missing packages you need, then you must install them and then
+ If you are missing needed packages then you must install them and then
  reconfigure \SpecialChar LyX
  (menu 
 \family sans
@@ -528,7 +598,7 @@ Reconfiguration of \SpecialChar LyX
 Installing new \SpecialChar LaTeX
  files
 \emph default
- of the 
+ in the 
 \emph on
 Customization
 \emph default
