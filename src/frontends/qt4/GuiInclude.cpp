@@ -32,6 +32,7 @@
 #include "insets/InsetInclude.h"
 
 #include <QCheckBox>
+#include <QFile>
 #include <QLineEdit>
 #include <QPushButton>
 
@@ -265,6 +266,61 @@ void GuiInclude::applyView()
 		else
 			params_.setCmdName("verbatiminput");
 	}
+
+	// Do we need to create a LyX file?
+	if (item == 0 || item == 1) {
+		QString fname = filenameED->text();
+		string const mypath = buffer().absFileName();
+		string const bpath = buffer().filePath();
+		QString absfname = makeAbsPath(fname, toqstr(bpath));
+		if (!QFile::exists(absfname)) {
+			dispatch(FuncRequest(LFUN_BUFFER_NEW, fromqstr(absfname)));
+			dispatch(FuncRequest(LFUN_BUFFER_WRITE));
+			dispatch(FuncRequest(LFUN_BUFFER_SWITCH, mypath));
+		}
+	}
+}
+
+
+void GuiInclude::edit()
+{
+	if (!isValid())
+		return;
+	if (bc().policy().buttonStatus(ButtonPolicy::OKAY)) {
+		slotOK();
+		applyView();
+	} else
+		hideView();
+	dispatch(FuncRequest(LFUN_INSET_EDIT));
+}
+
+
+bool GuiInclude::isValid()
+{
+	QString fname = filenameED->text();
+	bool fempty = fname.isEmpty();
+	if (fempty || !validate_listings_params().empty()) {
+		editPB->setEnabled(false);
+		return false;
+	}
+
+	int const item = typeCO->currentIndex();
+	// Are we inputting or including a LyX file?
+	if (item != 0 && item != 1) {
+		okPB->setText("OK");
+		return true;
+	}
+	// Do we have a LyX filename?
+	if (!support::isLyXFileName(fromqstr(fname))) {
+		okPB->setText("OK");
+		return false;
+	}
+	string const bpath = buffer().filePath();
+	QString absfname = makeAbsPath(fname, toqstr(bpath));
+	bool const fexists = QFile::exists(absfname);
+	okPB->setText(fexists ? "OK" : "Create");
+	editPB->setEnabled(fexists);
+	return true;
 }
 
 
@@ -285,25 +341,6 @@ void GuiInclude::browse()
 	QString name = browse(filenameED->text(), type);
 	if (!name.isEmpty())
 		filenameED->setText(name);
-}
-
-
-void GuiInclude::edit()
-{
-	if (!isValid())
-		return;
-	if (bc().policy().buttonStatus(ButtonPolicy::OKAY)) {
-		slotOK();
-		applyView();
-	} else
-		hideView();
-	dispatch(FuncRequest(LFUN_INSET_EDIT));
-}
-
-
-bool GuiInclude::isValid()
-{
-	return !filenameED->text().isEmpty() && validate_listings_params().empty();
 }
 
 
