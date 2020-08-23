@@ -990,22 +990,19 @@ vector<string> LaTeXFeatures::getBabelExclusiveLanguages() const
 
 string LaTeXFeatures::getBabelLanguages() const
 {
-	ostringstream langs;
-
-	bool first = true;
-	LanguageList::const_iterator const begin = UsedLanguages_.begin();
-	for (LanguageList::const_iterator cit = begin;
-	     cit != UsedLanguages_.end();
-	     ++cit) {
-		if ((*cit)->babel().empty())
-			continue;
-		if (!first)
-			langs << ',';
-		else
-			first = false;
-		langs << (*cit)->babel();
+	vector<string> blangs;
+	for (auto const & lang : UsedLanguages_) {
+		if (!lang->babel().empty())
+			blangs.push_back(lang->babel());
 	}
-	return langs.str();
+
+	// Sort alphabetically to assure consistent order
+	// (the order itself does not matter apart from
+	// some exceptions, e.g. hebrew must come after
+	// arabic and farsi)
+	sort(blangs.begin(), blangs.end());
+
+	return getStringFromVector(blangs);
 }
 
 
