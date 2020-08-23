@@ -368,8 +368,7 @@ Skalierung auf Bildschirm
  Der zweite und dritte Fall sind Tabellen und Gleichungen, die breiter als
  \SpecialChar LyX
 ’ Hauptarbeitsbereich sind.
- Man kann die Pfeiltasten benutzen um horizontal durch Tabellen zu navigieren.
- Dies funktioniert leider noch nicht für Gleichungen.
+ Man kann die Pfeiltasten benutzen um horizontal durch diese zu navigieren.
 \end_layout
 
 \begin_layout Standard
@@ -537,30 +536,16 @@ status collapsed
 Sie können Dokumente in \SpecialChar LyX
  bearbeiten ohne \SpecialChar LaTeX
  installiert zu haben, aber sie
- können dann keine PDFs erzeugen oder drucken.
- Einige \SpecialChar LyX
--Dokumente benutzen jedoch z.
-\begin_inset space \thinspace{}
-\end_inset
-
-B.
- DocBook als 
-\begin_inset Quotes gld
-\end_inset
-
-Backend
-\begin_inset Quotes grd
-\end_inset
-
- das PDFs erzeugen kann.
+ können dann keine PDFs erzeugen.
  Des Weiteren können Sie \SpecialChar LyX
--Dokumente jederzeit als reine Textdatei oder XHTML
- ausgeben.
+-Dokumente jederzeit als reine Textdatei, als DocBook
+ oder XHTML ausgeben.
 \end_layout
 
 \begin_layout Standard
 Manche Dokumentklassen benötigen spezielle \SpecialChar LaTeX
-- oder DocBook-Pakete.
+-Klassen oder \SpecialChar nobreakdash
+Pakete.
  Wenn sie nicht installiert sind, können Sie diese Dokumentklassen trotzdem
  verwenden, nur keine Ausgabe erzeugen.
 \end_layout
