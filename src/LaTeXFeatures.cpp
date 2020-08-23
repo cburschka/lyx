@@ -1791,7 +1791,7 @@ docstring const LaTeXFeatures::getBabelPresettings() const
 {
 	odocstringstream tmp;
 
-	for (Language const * lang : UsedLanguages_)
+	for (auto const & lang : UsedLanguages_)
 		if (!lang->babel_presettings().empty())
 			tmp << lang->babel_presettings() << '\n';
 	if (!params_.language->babel_presettings().empty())
@@ -1808,7 +1808,7 @@ docstring const LaTeXFeatures::getBabelPostsettings() const
 {
 	odocstringstream tmp;
 
-	for (Language const * lang : UsedLanguages_)
+	for (auto const & lang : UsedLanguages_)
 		if (!lang->babel_postsettings().empty())
 			tmp << lang->babel_postsettings() << '\n';
 	if (!params_.language->babel_postsettings().empty())
