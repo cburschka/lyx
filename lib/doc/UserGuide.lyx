@@ -3712,8 +3712,34 @@ Reconfiguration of \SpecialChar LyX
 
 \end_inset
 
- See section Installing new \SpecialChar LaTeX
- files of the 
+ See sectio
+\change_deleted 5863208 1598126826
+n Installing 
+\change_unchanged
+n
+\change_deleted 5863208 1598126829
+ew
+\change_unchanged
+ 
+\change_inserted 5863208 1598126829
+
+\emph on
+Installing new 
+\change_unchanged
+
+\emph default
+\SpecialChar LaTeX
+
+\change_deleted 5863208 1598126829
+ files
+\change_inserted 5863208 1598126829
+
+\emph on
+ files
+\change_unchanged
+
+\emph default
+ of the 
 \emph on
 Customization
 \emph default
@@ -3771,7 +3797,7 @@ Modules are to \SpecialChar LyX
  need a specific inset or 
 \change_deleted -712698321 1525757388
 character
-\change_inserted -712698321 1525757388
+\change_inserted 5863208 1598182122
 text
 \change_unchanged
  style only that one time.
@@ -4412,7 +4438,7 @@ The drop box
 
 \family sans
 Headings
-\change_inserted -712698321 1597235164
+\change_inserted 5863208 1598182166
 Page
 \change_unchanged
 
@@ -4729,11 +4755,8 @@ Important Note
 
 \begin_layout Standard
 If you change a document class, \SpecialChar LyX
- has to convert 
-\emph on
-everything
-\emph default
- into the new class.
+ has to convert everything into the new
+ class.
  That includes the paragraph environments.
  Some paragraph environments are standard, in so far as all of the document
  classes have them; but some classes have special paragraph environments.
@@ -5147,7 +5170,6 @@ entire
  paragraph in which the cursor sits.
  You can also change the environment of an entire group of paragraphs if
  you select them before choosing the new environment.
- 
 \end_layout
 
 \begin_layout Standard
@@ -5314,7 +5336,6 @@ page
 \end_inset
 
  goes at the top of the first page of the document.
- 
 \end_layout
 
 \begin_layout Standard
@@ -5484,9 +5505,11 @@ Subparagraph
 \SpecialChar LyX
  labels each heading with a series of numbers, separated by periods.
  The numbers describe where in the document you are.
- Unlike the other headings, parts are numbered with 
-\change_inserted -131811572 1596358186
-Roman numerals
+ Unlike the other headings, parts are numbered with
+\change_inserted 5863208 1598182388
+ Roman numerals
+\change_deleted 5863208 1598182398
+ 
 \change_deleted -131811572 1596358192
 Latin letters
 \change_unchanged
@@ -6839,7 +6862,6 @@ margins As you can see, \SpecialChar LyX
  body of the item text.
  The body of the text has a larger left margin, which is equal to the default
  label width plus a little extra space.
- 
 \end_layout
 
 \begin_layout Labeling
@@ -7635,7 +7657,7 @@ A bullet list
 \end_layout
 
 \begin_layout Itemize
-with standard spacing 
+with standard spacing
 \end_layout
 
 \begin_layout Standard
@@ -8148,11 +8170,7 @@ Abstract
 \family sans
 Abstract
 \family default
- in anything else or 
-\emph on
-vice versa
-\emph default
-.
+ in anything else or vice versa.
  It will not work.
  The 
 \family sans
@@ -8646,7 +8664,6 @@ Hello world!
 \end_inset
 
  program.
- 
 \end_layout
 
 \begin_layout Standard
@@ -10071,7 +10088,6 @@ arg   "depth-decrement"
 \begin_layout Labeling
 \labelwidthstring MMM
 #2-b Back to level #2.
- 
 \end_layout
 
 \end_deeper
@@ -10726,7 +10742,6 @@ Table
 Verse
 \family default
  environment.
- 
 \end_layout
 
 \begin_layout Quotation
@@ -11043,7 +11058,7 @@ The protected space: It is used to tell \SpecialChar LyX
  (and \SpecialChar LaTeX
 ) not to break the line at
  that point.
- This may be necessary to avoid unlucky line breaks, like in: 
+ This may be necessary to avoid unlucky line breaks, like in:
 \end_layout
 
 \begin_layout Quote
@@ -11059,7 +11074,6 @@ reference "sec:Bibliography"
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Standard
@@ -12554,7 +12568,7 @@ arg   "layout-paragraph"
 \end_inset
 
 ).
- There are five possibilities: 
+ There are five possibilities:
 \end_layout
 
 \begin_layout Itemize
@@ -13191,7 +13205,7 @@ Many modern typesetting and markup languages have begun to move towards
  specifying 
 \change_deleted -712698321 1525757415
 character
-\change_inserted -712698321 1525757415
+\change_inserted 5863208 1598184810
 text
 \change_unchanged
  styles rather than specifying a particular font.
@@ -14778,6 +14792,8 @@ character
 text
 \change_unchanged
  styles.
+
+\change_deleted 5863208 1598186598
  
 \change_inserted -712698321 1525598419
 
@@ -15717,7 +15733,11 @@ Color ! Text
 
 \end_inset
 
+
+\change_deleted 5863208 1598186626
  
+\change_unchanged
+
 \end_layout
 
 \begin_layout Labeling
@@ -17856,7 +17876,7 @@ Previewing
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Preview 
+Document ! Preview
 \end_layout
 
 \end_inset
@@ -18138,7 +18158,7 @@ en dash
 \begin_layout Plain Layout
 system key combination
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 On Mac and Linux, the en dash is entered with 
@@ -18174,7 +18194,6 @@ Opt
 Alt 
 \family default
 key).
- 
 \end_layout
 
 \end_inset
@@ -18823,7 +18842,6 @@ lyx –help
  An unintended consequence of these changes was that all dashes were output
  as non-breakable dashes.
  This also resulted in changed line breaks in some older documents.
- 
 \end_layout
 
 \end_inset
