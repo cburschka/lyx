@@ -630,8 +630,8 @@ Under the
 \family sans
 File
 \family default
- menu and in the standard toolbar are basic operations for any word processor
- in addition to some more advanced operations:
+ menu and in the standard toolbar are basic operations common to any word
+ processor as well as some more advanced operations:
 \end_layout
 
 \begin_layout Itemize
@@ -841,8 +841,8 @@ arg   "lyx-quit"
 \end_layout
 
 \begin_layout Standard
-They all do pretty much the same thing as in other word processors, with
- a few minor differences.
+They all do pretty much the same thing as other word processors, with a
+ few minor differences.
  The 
 \family sans
 File\SpecialChar menuseparator
@@ -937,8 +937,19 @@ scratch.
 \end_inset
 
  Unless you tell \SpecialChar LyX
- to open a file or create a new one, that big, blank space
- is just that — a big, blank space.
+ to open a file or create a new one, that big
+\change_deleted 5863208 1598174669
+,
+\change_unchanged
+ blank space 
+\change_inserted 5863208 1598174681
+on the screen 
+\change_unchanged
+is just that — a big
+\change_deleted 5863208 1598174691
+,
+\change_unchanged
+ blank space.
 \end_layout
 
 \end_inset
@@ -967,15 +978,61 @@ Version
 
 Control
 \family default
- are useful if more people work on the same document at the same time.
+ are useful if 
+\change_deleted 5863208 1598174707
+more
+\change_inserted 5863208 1598174708
+multiple
+\change_unchanged
+ people work on the same document at the same time.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 If you plan to do this, you should check out the Version Control feature
  in \SpecialChar LyX
- also.
- Read Additional Features\SpecialChar endofsentence
+
+\change_deleted 5863208 1598174722
+ also
+\change_unchanged
+.
+ 
+\change_deleted 5863208 1598174782
+Read Additional Features\SpecialChar endofsentence
+
+\change_inserted 5863208 1598174763
+Refer to section 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1598174763
+Version Control in \SpecialChar LyX
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ in the 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1598174763
+Additional Features
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ help manual\SpecialChar endofsentence
+
+\change_unchanged
 
 \end_layout
 
@@ -995,7 +1052,11 @@ saved
 \family default
  will reload the document from disk.
  You can of course also use it if you regret that you changed a document
- and want to restore it to the last save.
+ and want to restore it to the last save
+\change_inserted 5863208 1598174796
+d version
+\change_unchanged
+.
  With
 \family sans
  Version
@@ -1045,7 +1106,7 @@ As you might expect, the
 \family sans
 Edit
 \family default
- menu and the standard toolbar has the cut and paste commands, along with
+ menu and the standard toolbar have the cut and paste commands, along with
  various other editing features.
  Some of these are special and covered in later sections.
  The basic ones are:
@@ -1244,7 +1305,7 @@ arg   "dialog-show findreplace"
 \begin_layout Standard
 The first three are self-explanatory.
  You can also copy text between \SpecialChar LyX
- and other programs by 
+ and other programs using 
 \family sans
 Cut
 \family default
@@ -1265,16 +1326,16 @@ Cut
 \family sans
 Copy
 \family default
- put text in two versions into the clipboard (formatted and unformatted),
+ put two versions of text into the clipboard (formatted and unformatted)
  so that other programs can choose the most suitable form.
  
 \family sans
 Paste
 \family default
- supports formatted and unformatted text as well, and additionally graphics.
+ supports formatted and unformatted text as well as graphics.
  It tries to interpret the clipboard contents in an intelligent way.
- For example if the clipboard contains text in the format of comma separated
- values (CSV) and the cursor is inside a table, the text will be pasted
+ For example if the clipboard contains text in a Comma Separated Values
+ (CSV) format and the cursor is inside a table, the text will be pasted
  into individual cells.
  The submenu of 
 \family sans
@@ -1284,7 +1345,7 @@ Paste
 
 Recent
 \family default
- shows you a list with the last strings you have pasted.
+ shows you a list of the last several strings you have pasted.
  You can insert one at the current cursor position by clicking on a list
  entry.
 \end_layout
@@ -1298,10 +1359,10 @@ Paste
 
 Special
 \family default
- contains optional items for specific formats, depending on the clipboard
+ may also contain optional items for specific formats depending on the clipboard
  contents.
- These include HTML, \SpecialChar LaTeX
-, Linkback
+ Possible formats include HTML, \SpecialChar LaTeX
+, PDF, Linkback
 \begin_inset space ~
 \end_inset
 
@@ -1315,9 +1376,9 @@ OS X only
 
 \end_inset
 
-, PDF, PNG, JPEG and EMF.
+, PNG, JPEG and EMF.
  These menu items are useful if the clipboard contains the same contents
- in different formats, and you want to select one format explicitly.
+ in different formats and you want to select one format explicitly.
  (E.
 \begin_inset space \thinspace{}
 \end_inset
@@ -1327,7 +1388,11 @@ g.
 \end_inset
 
 some programs put an image into the clipboard as graphics and as a short
- text which is often meaningless.) The menu item 
+ text which is often meaningless.)
+\end_layout
+
+\begin_layout Standard
+The menu item 
 \family sans
 Paste
 \begin_inset space ~
@@ -1352,22 +1417,21 @@ Lines
 \family sans
 Paste
 \family default
-, with the only difference that it acts on text only.
- It will insert the text in the clipboard so that the whole text is inserted
- as one paragraph.
- A new paragraph is only started when there is a blank line in the text.
+ with the only difference being that it acts on text only.
+ It will paste the text in the clipboard such that the whole text selection
+ is inserted as one paragraph.
+ A new paragraph is only started where there is a blank line in the text.
  Without 
 \family sans
 Join
 \begin_inset space ~
 \end_inset
 
-Lines
+Lines,
 \family default
- the text is inserted as paragraphs where the line breaks of the text will
- start a new paragraph.
- This is for example useful to copy contents of tables from webpages to
- a table in \SpecialChar LyX
+ line breaks in the text will start a new paragraph.
+ This is useful when copying contents of tables from webpages to a table
+ in \SpecialChar LyX
 .
  The items 
 \family sans
@@ -1449,7 +1513,15 @@ Find
 
 Next
 \family default
- button to skip the current word.
+ button to skip the curren
+\change_inserted 5863208 1598126824
+tly selec
+\change_unchanged
+t
+\change_inserted 5863208 1598126824
+ed
+\change_unchanged
+ word.
  Hit 
 \family sans
 Replace
@@ -1503,7 +1575,11 @@ Match whole words only
 \begin_inset space \thinspace{}
 \end_inset
 
-g., searching for 
+g.
+\change_deleted 5863208 1598126824
+,
+\change_unchanged
+ searching for 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1529,7 +1605,7 @@ starlet
 
 .
  \SpecialChar LyX
- offers also an advanced 
+ also offers an advanced 
 \family sans
 Find
 \begin_inset space ~
@@ -1604,8 +1680,8 @@ type  "shortcuts"
 arg   "inset-select-all"
 \end_inset
 
- consecutively will increase the selection to the whole inset and then to
- the whole document.
+ consecutively will increase the selection scope to the whole inset and
+ then to the whole document.
  The shortcut 
 \begin_inset Info
 type  "shortcuts"
@@ -1662,7 +1738,7 @@ type  "icon"
 arg   "undo"
 \end_inset
 
- to undo some mistake.
+ to undo a mistake.
  If you accidentally undo too much, use 
 \family sans
 Edit\SpecialChar menuseparator
@@ -1690,8 +1766,8 @@ steps to minimize memory overhead.
 \end_layout
 
 \begin_layout Standard
-Note that if you revert back all changes to arrive at the document as it
- was last saved, the 
+Note that if you undo all changes to arrive at the document as it was last
+ saved, the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1718,8 +1794,8 @@ Redo
 \family default
  work on almost everything in \SpecialChar LyX
 .
- But they will not undo or redo text character by character, but by blocks
- of text.
+ However they will not undo or redo text character by character, but by
+ blocks of text.
 \end_layout
 
 \begin_layout Section
@@ -1767,7 +1843,7 @@ left mouse button
 \emph default
  and drag the mouse.
  \SpecialChar LyX
- marks the text between the old and new mouse positions.
+ highlights the text between the old and new mouse positions.
  Use 
 \family sans
 Edit\SpecialChar menuseparator
@@ -1775,6 +1851,12 @@ Copy
 \family default
  to create a copy of the text in \SpecialChar LyX
 's buffer (and the clipboard).
+
+\change_inserted 5863208 1598175891
+ You can also use the context menu triggered by right clicking on the selected
+ text.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Itemize
@@ -1795,7 +1877,7 @@ Insets (Footnotes, Notes, Floats, etc.)
 \begin_deeper
 \begin_layout Standard
 Right-click on them to set their properties.
- Also check the appropriate section of this manual for more details.
+ Check the appropriate section of this manual for more details.
 \end_layout
 
 \end_deeper
@@ -1882,8 +1964,8 @@ Back
 \family default
 ) jumps to the position in the document where you recently changed something.
  This is useful when you have a large document and have navigated or scrolled
- to another document part to look for something, and want to go back to
- your last editing position.
+ to another document part to look for something and want to go back to your
+ last editing position.
 \end_layout
 
 \begin_layout Standard
@@ -1927,10 +2009,9 @@ Outline
 \end_layout
 
 \begin_layout Standard
-In the pull-down box at the top of the outline window, you can choose between
- several different lists, including other TOC-like objects, such as lists
- of tables and figures, but also lists of footnotes, or labels and cross-referen
-ces (see section
+In the pull-down box at the top of the outline window you can choose between
+ several different lists including other TOC-like objects such as lists
+ of tables and figures, footnotes, labels and cross-references (see section
 \begin_inset space ~
 \end_inset
 
@@ -1941,7 +2022,7 @@ reference "sec:Cross-References"
 
 \end_inset
 
-), or notes, or citations (see section
+), notes, or citations (see section
 \begin_inset space ~
 \end_inset
 
@@ -1958,9 +2039,9 @@ reference "sec:Bibliography"
 \end_layout
 
 \begin_layout Standard
-Right-clicking on elements in the Outline opens in many cases a context
+In many cases right clicking on elements in the Outline opens a context
  menu that will allow for direct modification of those elements.
- For example, with citations, the context menu allows you to open the citation
+ For example with citations, the context menu allows you to open the citation
  dialog and to modify the citation.
 \end_layout
 
@@ -1969,7 +2050,7 @@ The
 \family sans
 Filter
 \family default
- field at the top allows you to restrict which entries appear in the outline.
+ field at the top allows you to filter which entries appear in the outline.
  For example, if you are displaying the list of 
 \emph on
 Labels and References
@@ -1983,25 +2064,24 @@ sub
 \begin_inset Quotes erd
 \end_inset
 
- in the filter, and only entries containing that text will be displayed.
+ in the filter and only entries containing that text will be displayed.
 \end_layout
 
 \begin_layout Standard
-At the bottom of the outline are several buttons and the like that allow
- you further to control the display.
+At the bottom of the outline are several buttons that allow you to further
+ control the display.
  The 
 \family sans
 Sort
 \family default
  option sorts the current list alphabetically.
- Otherwise, the elements appear in the order in which they occur in the
- document.
+ Otherwise the elements appear in the order in which they occur in the document.
  The 
 \family sans
 Keep
 \family default
  option keeps it in the current view state.
- Keeping means that when you have, for example, the subsections of sections
+ Keeping means that when you have the subsections of sections
 \begin_inset space ~
 \end_inset
 
@@ -2043,7 +2123,93 @@ type  "icon"
 arg   "reload"
 \end_inset
 
- button refreshes the TOC (though this should not usually be necessary).
+ button refreshes the TOC (
+\change_deleted 5863208 1598126825
+tho
+\change_inserted 5863208 1598176913
+usef
+\change_unchanged
+u
+\change_deleted 5863208 1598126825
+g
+\change_inserted 5863208 1598126825
+l w
+\change_unchanged
+h
+\change_inserted 5863208 1598126825
+ile
+\change_unchanged
+ 
+\change_inserted 5863208 1598126825
+edi
+\change_unchanged
+t
+\change_deleted 5863208 1598126825
+h
+\change_unchanged
+i
+\change_deleted 5863208 1598126825
+s
+\change_inserted 5863208 1598126825
+ng
+\change_unchanged
+ 
+\change_deleted 5863208 1598126825
+sh
+\change_inserted 5863208 1598126825
+if y
+\change_unchanged
+ou
+\change_deleted 5863208 1598126825
+ld
+\change_inserted 5863208 1598126825
+ have
+\change_unchanged
+ 
+\change_inserted 5863208 1598126825
+cha
+\change_unchanged
+n
+\change_deleted 5863208 1598126825
+ot
+\change_inserted 5863208 1598126825
+ged
+\change_unchanged
+ 
+\change_deleted 5863208 1598126825
+u
+\change_unchanged
+s
+\change_deleted 5863208 1598126825
+ually b
+\change_unchanged
+e
+\change_inserted 5863208 1598126825
+ctions
+\change_unchanged
+ 
+\change_inserted 5863208 1598126825
+i
+\change_unchanged
+n
+\change_inserted 5863208 1598126825
+ th
+\change_unchanged
+e
+\change_inserted 5863208 1598126825
+ do
+\change_unchanged
+c
+\change_inserted 5863208 1598126825
+um
+\change_unchanged
+e
+\change_deleted 5863208 1598126825
+ssary
+\change_inserted 5863208 1598126825
+nt
+\change_unchanged
+).
  Next to it are buttons that allow you to change the position of sections
  in your document.
  The 
@@ -2059,7 +2225,7 @@ arg   "outline-up"
 \end_inset
 
  buttons move sections up and down in the document.
- So, for example, you can move section
+ For example, you can move section
 \begin_inset space ~
 \end_inset
 
@@ -2095,7 +2261,7 @@ Tab
 Shift-Tab
 \family default
 ) you can change the level of sections.
- So you can for example make section
+ You can make section
 \begin_inset space ~
 \end_inset
 
@@ -2131,21 +2297,13 @@ Navigating ! Horizontal Scrolling
 
 \begin_layout Standard
 \SpecialChar LyX
- does not have a horizontal scrollbar because the standard output page formats
- like e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-ISO
+ does not have a horizontal scrollbar because standard output page formats
+ such as ISO
 \begin_inset space ~
 \end_inset
 
-A4 are less wide than PC or laptop screens.
- Therefore you will get troubles in the output of your document if document
+A4 are not as wide as PC or laptop screens.
+ Therefore you will have trouble with the output of your document if document
  parts exceed the width of the \SpecialChar LyX
  main screen.
 \end_layout
@@ -2163,7 +2321,7 @@ There are of course exceptions where horizontal scrolling is necessary.
 \begin_layout Itemize
 Wide tables that are rotated 90° to fit a whole page
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 See section 
@@ -2194,8 +2352,8 @@ Math constructs with long command names
 For these cases \SpecialChar LyX
  has an mechanism that scrolls automatically when the cursor
  is moved.
- As example shrink the \SpecialChar LyX
- windows so that table
+ As an example shrink the \SpecialChar LyX
+ window so that table
 \begin_inset space ~
 \end_inset
 
@@ -2207,7 +2365,7 @@ reference "tab:Horizontal-scrollong-test"
 \end_inset
 
  is wider.
- You will now see a dotted red line at the right or the left side of the
+ You will now see a dotted red line on the right and/or left side of the
  table.
  Put the cursor into the table and move it with the Tab or the arrow keys
  to see the horizontal scrolling of the table.
@@ -2410,7 +2568,10 @@ Tab
 \family default
  key to accept a proposed completion.
  If several completions are possible, a popup is opened showing them.
- You can select a completion in the popup using the mouse or the arrow keys,
+ You can select a completion in the popup using the mouse or the arrow keys
+\change_deleted 5863208 1598126826
+,
+\change_unchanged
  and accept the chosen completion by pressing 
 \family sans
 Return
@@ -2434,11 +2595,25 @@ he special math option
 Autocorrection
 \family default
  enables characters to be composed.
- If, for example, you want to insert the character 
+ 
+\change_deleted 5863208 1598180192
+If, f
+\change_inserted 5863208 1598180192
+F
+\change_unchanged
+or example,
+\change_inserted 5863208 1598180208
+ if
+\change_unchanged
+ you want to insert the character 
 \begin_inset Formula $\Rightarrow$
 \end_inset
 
-, you can then input the characters 
+, you can 
+\change_deleted 5863208 1598180217
+then 
+\change_unchanged
+input the characters 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2450,14 +2625,44 @@ Autocorrection
 \begin_inset Quotes erd
 \end_inset
 
- to a formula to get it.
- So this is a quick alternative to the insertion of commands or the use
- of the math toolbar.
- A list with supported character combinations can be found in the file 
+ 
+\change_deleted 5863208 1598180228
+to
+\change_inserted 5863208 1598180229
+in
+\change_unchanged
+ a formula to 
+\change_deleted 5863208 1598180234
+get
+\change_inserted 5863208 1598180235
+create
+\change_unchanged
+ it.
+ 
+\change_deleted 5863208 1598180245
+So t
+\change_inserted 5863208 1598180246
+T
+\change_unchanged
+his is a quick alternative to the insertion of commands or the use of the
+ math toolbar.
+ A list 
+\change_deleted 5863208 1598180267
+with
+\change_inserted 5863208 1598180267
+of
+\change_unchanged
+ supported character combinations can be found in the file 
 \family typewriter
 autocorrect
 \family default
- that is in \SpecialChar LyX
+ 
+\change_deleted 5863208 1598180288
+that is
+\change_inserted 5863208 1598180288
+located
+\change_unchanged
+ in \SpecialChar LyX
 's installation folder.
  
 \change_deleted -563046850 1560340086
@@ -2759,19 +2964,7 @@ cancel key.
 \labelwidthstring 00.00.0000
 
 \family sans
-Home
-\family default
-
-\begin_inset space ~
-\end_inset
-
-and
-\begin_inset space ~
-\end_inset
-
-
-\family sans
-End
+Home/End
 \family default
  These move the cursor, respectively, to the beginning and end of a line,
  unless you are using the Emacs bindings where they jump to the beginning
@@ -2809,7 +3002,7 @@ literal "false"
 
 \end_inset
 
- in the documentation files) This has a couple of different uses, depending
+ in the documentation files) This has a couple of different uses depending
  on which keys it is used in combination with:
 \end_layout
 
@@ -3005,18 +3198,18 @@ Alt
 
 \end_deeper
 \begin_layout Standard
-You will learn more and more key bindings and short-cut keys as you use
+You will learn more key bindings and short-cut keys as you use \SpecialChar LyX
+ because
+ most actions will prompt a small message in the status bar at the bottom
+ of \SpecialChar LyX
+'s main window describing the name of the action you have just triggered
+ and any existing key bindings for that action.
  \SpecialChar LyX
-, because most actions will prompt a small message in the status bar at
- the bottom of \SpecialChar LyX
-'s main window which describes the name of the action you
- have just triggered, and any existing key bindings for that action.
- The \SpecialChar LyX
  menus also list the defined key bindings.
  The notation for the key bindings is very similar to the notation used
- in this documentation, so you should not have any problems understanding
+ in this documentation so you should not have any problems understanding
  it.
- However, notice that Shift-modifiers are explicitly mentioned, so 
+ However notice that Shift-modifiers are explicitly mentioned, so 
 \begin_inset Quotes eld
 \end_inset
 
