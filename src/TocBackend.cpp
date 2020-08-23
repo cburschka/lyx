@@ -291,7 +291,7 @@ void TocBackend::resetOutlinerNames()
 	addName("brokenrefs", _("Broken References and Citations"));
 	// Customizable, but the corresponding insets have no layout definition
 	addName("child", _("Child Documents"));
-	addName("graphics", _("Graphics"));
+	addName("graphics", _("Graphics[[listof]]"));
 	addName("equation", _("Equations"));
 	addName("external", _("External Material"));
 	addName("math-macro", _("Math Macros"));

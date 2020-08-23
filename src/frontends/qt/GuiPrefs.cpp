@@ -317,7 +317,7 @@ static void setComboxFont(QComboBox * cb, string const & family,
 /////////////////////////////////////////////////////////////////////
 
 PrefOutput::PrefOutput(GuiPreferences * form)
-	: PrefModule(catOutput, N_("General"), form)
+	: PrefModule(catOutput, N_("General[[settings]]"), form)
 {
 	setupUi(this);
 
