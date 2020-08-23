@@ -73,25 +73,25 @@ class IgnoreFormats {
 		  ignoreSectioning_(false), ignoreFrontMatter_(false),
 		  ignoreColor_(false), ignoreLanguage_(false) {}
 	///
-	bool getFamily() { return ignoreFamily_; };
+	bool getFamily() { return ignoreFamily_; }
 	///
-	bool getSeries() { return ignoreSeries_; };
+	bool getSeries() { return ignoreSeries_; }
 	///
-	bool getShape() { return ignoreShape_; };
+	bool getShape() { return ignoreShape_; }
 	///
-	bool getUnderline() { return ignoreUnderline_; };
+	bool getUnderline() { return ignoreUnderline_; }
 	///
-	bool getMarkUp() { return ignoreMarkUp_; };
+	bool getMarkUp() { return ignoreMarkUp_; }
 	///
-	bool getStrikeOut() { return ignoreStrikeOut_; };
+	bool getStrikeOut() { return ignoreStrikeOut_; }
 	///
-	bool getSectioning() { return ignoreSectioning_; };
+	bool getSectioning() { return ignoreSectioning_; }
 	///
-	bool getFrontMatter() { return ignoreFrontMatter_; };
+	bool getFrontMatter() { return ignoreFrontMatter_; }
 	///
-	bool getColor() { return ignoreColor_; };
+	bool getColor() { return ignoreColor_; }
 	///
-	bool getLanguage() { return ignoreLanguage_; };
+	bool getLanguage() { return ignoreLanguage_; }
 	///
 	void setIgnoreFormat(string const & type, bool value);
 
