@@ -244,17 +244,18 @@ for my $fn ("FontName", "NFontName") {
     # split each entry and make a compiled regex
     # Allow space between all characters
     for my $e (@{$options{$fn}}) {
-      my $u = decode('utf-8', $e);
-      my $fill = decode('utf-8', "\\s?");
-      my @u = split(//, $u);
-      my @ud = ();
-      for my $c (@u) {
-        push(@ud, $c, $fill);
+      if ($e =~ /(\^|\\|\||\[|\]|\(|\)|\*|\+|\?)/) {
+        # already regex, don't manipulate
+        $e = qr/$e/i;
       }
-      my $ud = join('', @ud);
-      my $e1 = encode('utf-8', $ud);
-      $e1 =~ s/\\s\?$//;
-      $e = qr/$e1/i;
+      else {
+        my $u = decode('utf-8', $e);
+        my $fill = decode('utf-8', "\\s?");
+        my @u = split(//, $u);
+        my $ud = join($fill, @u);
+        my $e1 = encode('utf-8', $ud);
+        $e = qr/$e1/i;
+      }
     }
   }
 }
