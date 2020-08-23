@@ -446,7 +446,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates lib/ta
             set(extraLabels )
           endif()
           set(missingLabels )
-          findexpr(mfound TestName ignoreLatexErrorsTests missingLabels)
+          findexpr(mfound TestName1 ignoreLatexErrorsTests missingLabels)
           if (mfound)
             set(mytestlabel ${testlabel} "ignoring" ${missingLabels} ${extraLabels})
           else()
