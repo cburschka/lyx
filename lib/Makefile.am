@@ -2510,6 +2510,7 @@ dist_scripts_DATA += \
 	scripts/legacy_lyxpreview2ppm.py \
 	scripts/listerrors \
 	scripts/lyxpak.py \
+	scripts/lyxpaperview \
 	scripts/lyxpreview2bitmap.py \
 	scripts/lyxpreview_tools.py \
 	scripts/lyx_batch.pl.in \
