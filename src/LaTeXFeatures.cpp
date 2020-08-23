@@ -924,11 +924,9 @@ bool LaTeXFeatures::hasOnlyPolyglossiaLanguages() const
 	if (params_.language->polyglossia().empty())
 		return false;
 	// now the secondary languages
-	LanguageList::const_iterator const begin = UsedLanguages_.begin();
-	for (LanguageList::const_iterator cit = begin;
-	     cit != UsedLanguages_.end();
-	     ++cit) {
-		if ((*cit)->polyglossia().empty())
+	for (auto const & lang : UsedLanguages_)
+	{
+		if (lang->polyglossia().empty())
 			return false;
 	}
 	return true;
@@ -941,11 +939,9 @@ bool LaTeXFeatures::hasPolyglossiaExclusiveLanguages() const
 	if (params_.language->isPolyglossiaExclusive())
 		return true;
 	// now the secondary languages
-	LanguageList::const_iterator const begin = UsedLanguages_.begin();
-	for (LanguageList::const_iterator cit = begin;
-	     cit != UsedLanguages_.end();
-	     ++cit) {
-		if ((*cit)->isPolyglossiaExclusive())
+	for (auto const & lang : UsedLanguages_)
+	{
+		if (lang->isPolyglossiaExclusive())
 			return true;
 	}
 	return false;
@@ -959,12 +955,10 @@ vector<string> LaTeXFeatures::getPolyglossiaExclusiveLanguages() const
 	if (params_.language->isPolyglossiaExclusive())
 		result.push_back(params_.language->display());
 	// now the secondary languages
-	LanguageList::const_iterator const begin = UsedLanguages_.begin();
-	for (LanguageList::const_iterator cit = begin;
-	     cit != UsedLanguages_.end();
-	     ++cit) {
-		if ((*cit)->isPolyglossiaExclusive())
-			result.push_back((*cit)->display());
+	for (auto const & lang : UsedLanguages_)
+	{
+		if (lang->isPolyglossiaExclusive())
+			result.push_back(lang->display());
 	}
 	return result;
 }
@@ -977,12 +971,10 @@ vector<string> LaTeXFeatures::getBabelExclusiveLanguages() const
 	if (params_.language->isBabelExclusive())
 		result.push_back(params_.language->display());
 	// now the secondary languages
-	LanguageList::const_iterator const begin = UsedLanguages_.begin();
-	for (LanguageList::const_iterator cit = begin;
-	     cit != UsedLanguages_.end();
-	     ++cit) {
-		if ((*cit)->isBabelExclusive())
-			result.push_back((*cit)->display());
+	for (auto const & lang : UsedLanguages_)
+	{
+		if (lang->isBabelExclusive())
+			result.push_back(lang->display());
 	}
 	return result;
 }
@@ -1010,13 +1002,9 @@ set<string> LaTeXFeatures::getPolyglossiaLanguages() const
 {
 	set<string> langs;
 
-	LanguageList::const_iterator const begin = UsedLanguages_.begin();
-	for (LanguageList::const_iterator cit = begin;
-	     cit != UsedLanguages_.end();
-	     ++cit) {
+	for (auto const & lang : UsedLanguages_)
 		// We do not need the variants here
-		langs.insert((*cit)->polyglossia());
-	}
+		langs.insert(lang->polyglossia());
 	return langs;
 }
 
@@ -1027,10 +1015,8 @@ string LaTeXFeatures::getActiveChars() const
 	// first the main language
 	res += params_.language->activeChars();
 	// now the secondary languages
-	LanguageList::const_iterator const begin = UsedLanguages_.begin();
-	for (LanguageList::const_iterator cit = begin;
-	     cit != UsedLanguages_.end(); ++cit)
-		res += ((*cit)->activeChars());
+	for (auto const & lang : UsedLanguages_)
+		res += (lang->activeChars());
 	return res;
 }
 
@@ -1062,7 +1048,8 @@ void LaTeXFeatures::getFontEncodings(vector<string> & encs, bool const onlylangs
 			encs.insert(encs.begin(), "T2A");
 	}
 
-	for (auto const & lang : UsedLanguages_) {
+	for (auto const & lang : UsedLanguages_)
+	{
 		vector<string> extraencs =
 			getVectorFromString(lang->fontenc(buffer().masterParams()));
 		for (auto const & extra : extraencs) {
