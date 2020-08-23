@@ -24,6 +24,7 @@
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "LyX.h"
+#include "LyXRC.h"
 #include "output_xhtml.h"
 #include "output_docbook.h"
 #include "ParIterator.h"
@@ -168,20 +169,41 @@ void InsetCitation::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 }
 
-
-void InsetCitation::openCitation(){
+bool InsetCitation::openCitationPossible() const
+{
 	Buffer const & buf = *buffer_;
-	// Only after the buffer is loaded from file...
+	// only after the buffer is loaded from file...
 	if (!buf.isFullyLoaded())
-		return;
+		return false;
 
 	BiblioInfo const & bi = buf.masterBibInfo();
 	if (bi.empty())
-		return;
+		return false;
 
 	docstring const & key = getParam("key");
 	if (key.empty())
-		return;
+		return false;
+
+	// does bibtex item contains some locator?
+	vector<docstring> keys = getVectorFromString(key);
+	docstring doi, url, file;
+	for (docstring const & kvar : keys) {
+		bi.getLocators(kvar, doi, url, file);
+		if (!file.empty() || !doi.empty() || !url.empty())
+			return true;
+	}
+
+	// last resort: is external script available?
+	if (!lyxrc.citation_search_view.empty())
+		return true;
+	return false;
+}
+
+void InsetCitation::openCitation()
+{
+	Buffer const & buf = *buffer_;
+	BiblioInfo const & bi = buf.masterBibInfo();
+	docstring const & key = getParam("key");
 
 	vector<docstring> keys = getVectorFromString(key);
 	docstring year, author, doi, url, file;
@@ -246,7 +268,7 @@ bool InsetCitation::getStatus(Cursor & cur, FuncRequest const & cmd,
 		}
 		return true;
 	case LFUN_INSET_EDIT:
-		return true;
+		return openCitationPossible();
 	default:
 		return InsetCommand::getStatus(cur, cmd, status);
 	}

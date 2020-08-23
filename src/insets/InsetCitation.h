@@ -94,7 +94,10 @@ public:
 	QualifiedList getQualifiedLists(docstring const & p) const;
 	///
 	static bool last_literal;
-	///
+	/// Check whether citation contains necessary url/file entries
+	/// or external search script is available
+	bool openCitationPossible() const;
+	/// search and open citation source
 	void openCitation();
 
 private:

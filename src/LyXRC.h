@@ -53,6 +53,7 @@ public:
 		RC_BINDFILE,
 		RC_CHECKLASTFILES,
 		RC_CHKTEX_COMMAND,
+		RC_CITATION_SEARCH_VIEW,
 		RC_COMPLETION_CURSOR_TEXT,
 		RC_COMPLETION_INLINE_DELAY,
 		RC_COMPLETION_INLINE_MATH,
@@ -243,6 +244,13 @@ public:
 	/// default paper size for local xdvi/dvips/ghostview/whatever
 	/// command to run chktex incl. options
 	std::string chktex_command = "chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38";
+	// Name of external script, which searches for file corresponding to a 
+	// given citation. At this moment only script "lyxpaperview" is supported
+	// (search for pdf based on author+year), but we can generalize if requested.
+	// Citation context menu item "Open Citation Content" will be always enabled
+	// if the name of this script in nonempty (last resort when citation entry
+	// does not contain neccessary info.
+	std::string citation_search_view;
 	/// all available commands to run bibtex incl. options
 	CommandSet bibtex_alternatives;
 	/// command to run bibtex incl. options

@@ -49,6 +49,9 @@
 * \ct_markup_copied true|false: determines whether change tracking markup should be
   preserved on copy/paste (default: false).
 
+* \citation_search_view lyxpaperview: determines whether external script "lyxpaperview"
+  should be used for looking up citation source.
+
 
 !!!The following pref variables were changed in 2.4:
 

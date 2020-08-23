@@ -61,7 +61,7 @@ namespace {
 
 // The format should also be updated in configure.py, and conversion code
 // should be added to prefs2prefs_prefs.py.
-static unsigned int const LYXRC_FILEFORMAT = 32; // spitz: add \ct_markup_copied
+static unsigned int const LYXRC_FILEFORMAT = 33; // sanda: add \citation_search_view
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
 	{ "\\accept_compound", LyXRC::RC_ACCEPT_COMPOUND },
@@ -78,6 +78,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\bind_file", LyXRC::RC_BINDFILE },
 	{ "\\check_lastfiles", LyXRC::RC_CHECKLASTFILES },
 	{ "\\chktex_command", LyXRC::RC_CHKTEX_COMMAND },
+	{ "\\citation_search_view", LyXRC::RC_CITATION_SEARCH_VIEW },
 	{ "\\close_buffer_with_last_view", LyXRC::RC_CLOSE_BUFFER_WITH_LAST_VIEW },
 	{ "\\completion_cursor_text", LyXRC::RC_COMPLETION_CURSOR_TEXT },
 	{ "\\completion_inline_delay", LyXRC::RC_COMPLETION_INLINE_DELAY },
@@ -677,6 +678,10 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 				lyxpipes = subst(os::internal_path(lexrc.getString()), "$$UserDir",
 					userdir);
 			}
+			break;
+
+		case RC_CITATION_SEARCH_VIEW:
+			lexrc >> citation_search_view;
 			break;
 
 		case RC_CT_ADDITIONS_UNDERLINED:
@@ -1598,6 +1603,15 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		    allow_geometry_session != system_lyxrc.allow_geometry_session) {
 			os << "\\allow_geometry_session " << convert<string>(allow_geometry_session)
 			   << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+		// fall through
+	case RC_CITATION_SEARCH_VIEW:
+		if (ignore_system_lyxrc ||
+		    citation_search_view != system_lyxrc.citation_search_view) {
+			os << "\\citaton_search_view "
+			   << citation_search_view << '\n';
 		}
 		if (tag != RC_LAST)
 			break;
@@ -2774,6 +2788,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_BIBTEX_ALTERNATIVES:
 	case LyXRC::RC_BIBTEX_COMMAND:
 	case LyXRC::RC_BINDFILE:
+	case LyXRC::RC_CITATION_SEARCH_VIEW:
 	case LyXRC::RC_CHECKLASTFILES:
 	case LyXRC::RC_COMPLETION_CURSOR_TEXT:
 	case LyXRC::RC_COMPLETION_INLINE_DELAY:
