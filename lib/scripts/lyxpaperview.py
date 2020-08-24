@@ -6,6 +6,7 @@
 # Licence details can be found in the file COPYING.
 
 # author Jürgen Spitzmüller
+# This draws on a bash script and conceptual idea by Pavel Sanda
 # Full author contact details are available in file CREDITS
 
 # This script searches the home directory for a PDF or PS
