@@ -8782,12 +8782,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8800,6 +8802,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8823,6 +8826,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -31683,6 +31687,186 @@ with Bib\SpecialChar TeX
 Additional Features
 \emph default
  manual.
+\change_inserted 5863208 1598273348
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 5863208 1598273424
+Bibliography entries allowing external view of the cited material
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1598273449
+\SpecialChar LyX
+ supports viewing the material the selected citation points to – though
+ you need to satisfy some conditions so the 
+\family sans
+Open
+\begin_inset space ~
+\end_inset
+
+Citation
+\begin_inset space ~
+\end_inset
+
+Content
+\family default
+ in the context menu of the citation inset is active and working.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1598270259
+There are several ways how to make this feature available:
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 5863208 1598273631
+Have citations entries including any of the following fields: 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1598273574
+url
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1598273595
+doi
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ for BibTeX, 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1598273611
+eprint
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ for BibLaTeX (covering arXiv, JSTOR, PubMed, HDL, Google Books 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1598273631
+eprinttype
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+).
+ This will launch web browser with the appropriate link.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 5863208 1598273665
+Having fields pointing to local files on your disk: 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1598273656
+file
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ (filled by JabRef), 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1598273665
+localfile
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ (filled by KBibTeX).
+ This will launch appropriate file viewer.
+ At the moment only absolute paths are accepted.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 5863208 1598273865
+Supplying your own script named either 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1598273683
+lyxpaperview
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1598273697
+lyxpaperview.py
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, which takes year and first author name as an input.
+ It will be responsibility of this script to search for the appropriate
+ file on your disk and launch the viewer.
+ This script needs to be found among other executables so 
+\family sans
+Tools\SpecialChar menuseparator
+Reconfigure
+\family default
+ can recognize it.
+ Example templates with identical names can be found within your installation.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
