@@ -24,6 +24,7 @@
 #include "FuncRequest.h"
 #include "Language.h"
 #include "LyX.h"
+#include "LyXRC.h"
 #include "LyXAction.h"
 #include "TextClass.h"
 
@@ -300,9 +301,12 @@ void showDirectory(FileName const & directory)
 void showTarget(string const & target){
 	LYXERR(Debug::INSETS, "Showtarget:" << target << "\n");
 	if (prefixIs(target,"EXTERNAL ")) {
+		if (lyxrc.citation_search_view.empty())
+			return;
 		string tmp,tar;
 		tar = split(target, tmp, ' ');
-		FuncRequest cmd = FuncRequest(LFUN_VC_COMMAND,"U . \"lyxpaperview " + tar + "\"");
+		FuncRequest cmd = FuncRequest(LFUN_VC_COMMAND,"U . \"" +
+		                  lyxrc.citation_search_view + " " + tar + "\"");
 		lyx::dispatch(cmd);
 		return;
 	}

@@ -245,7 +245,7 @@ public:
 	/// command to run chktex incl. options
 	std::string chktex_command = "chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38";
 	// Name of external script, which searches for file corresponding to a 
-	// given citation. At this moment only script "lyxpaperview" is supported
+	// given citation. At this moment only script lyxpaperview[.py] is supported
 	// (search for pdf based on author+year), but we can generalize if requested.
 	// Citation context menu item "Open Citation Content" will be always enabled
 	// if the name of this script in nonempty (last resort when citation entry
