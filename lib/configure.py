@@ -1311,7 +1311,7 @@ def checkOtherEntries():
     checkProg('a python-pygments driver command', ['pygmentize'],
         rc_entry = [ r'\pygmentize_command "%%"' ])
     checkProg('external script for searching and showing citation sources',
-        ['lyxpaperview'], rc_entry = [ r'\citation_search_view "%%"' ])
+        ['lyxpaperview', 'lyxpaperview.py'], rc_entry = [ r'\citation_search_view "%%"' ])
     ## FIXME: OCTAVE is not used anywhere
     # path, OCTAVE = checkProg('Octave', ['octave'])
     ## FIXME: MAPLE is not used anywhere
