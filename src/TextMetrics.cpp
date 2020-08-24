@@ -1439,7 +1439,7 @@ void TextMetrics::setCursorFromCoordinates(Cursor & cur, int const x, int const 
 
 	ParagraphMetrics const & pm = par_metrics_[pit];
 
-	int yy = pm.position() - pm.ascent();
+	int yy = pm.position() - pm.rows().front().ascent();
 	LYXERR(Debug::DEBUG, "x: " << x << " y: " << y <<
 		" pit: " << pit << " yy: " << yy);
 
