@@ -94,7 +94,7 @@ sub getConverter($$)
   if ($add) {
     if ($cmd !~ /\-shell-(escape|restricted)/) {
       if ($cmd =~ /^(\S+)\s*(.*)$/) {
-	$cmd = "$1 -shell-restricted $2";
+	$cmd = "$1 -shell-escape $2";
 	$cmd =~ s/\s+$//;
       }
     }
