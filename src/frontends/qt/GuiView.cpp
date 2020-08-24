@@ -4624,9 +4624,9 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			dr.screenUpdate(Update::Force);
 			break;
 
-		case LFUN_CITATION_OPEN: {
+		case LFUN_CITATION_OPEN:
 			frontend::showTarget(argument);
-		}
+			break;
 
 		default:
 			// The LFUN must be for one of BufferView, Buffer or Cursor;
