@@ -32,7 +32,7 @@ def error(message):
 
 def usage(prog_name):
     msg = "Usage: %s [-v pdfviewer] [-w psviewer] titletoken-1 [titletoken-2] ... [titletoken-n]\n" \
-          "    Each title token must occur in any position of the filename.\n" \
+          "    Each title token must occur in the filename (at an arbitrary position).\n" \
           "    You might use quotes to enter multi-word tokens"
     return  msg % prog_name
 
