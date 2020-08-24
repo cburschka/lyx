@@ -31,7 +31,9 @@ def error(message):
     exit(1)
 
 def usage(prog_name):
-    msg = "Usage: %s [-v pdfviewer] [-w psviewer] year author"
+    msg = "Usage: %s [-v pdfviewer] [-w psviewer] titletoken-1 [titletoken-2] ... [titletoken-n]\n" \
+          "    Each title token must occur in any position of the filename.\n" \
+          "    You might use quotes to enter multi-word tokens"
     return  msg % prog_name
 
 # Copied from lyxpreview_tools.py
@@ -70,14 +72,18 @@ def find_exe_or_terminate(candidates):
 
     return exe
 
-def find(year, author, path):
+def find(args, path):
     if os.name != 'nt':
         # use locate if possible (faster)
         if find_exe(['locate']):
-            p1 = subprocess.Popen(['locate', '-i', author], stdout=subprocess.PIPE)
-            p2 = subprocess.Popen(['grep', '-Ei', '\.pdf$|\.ps$'], stdin=p1.stdout, stdout=subprocess.PIPE)
-            p3 = subprocess.Popen(['grep', year], stdin=p2.stdout, stdout=subprocess.PIPE)
-            p4 = subprocess.Popen(['head', '-n 2'], stdin=p3.stdout, stdout=subprocess.PIPE)
+            p1 = subprocess.Popen(['locate', '-i', args[0].lower()], stdout=subprocess.PIPE)
+            px = subprocess.Popen(['grep', '-Ei', '\.pdf$|\.ps$'], stdin=p1.stdout, stdout=subprocess.PIPE)
+            for arg in args:
+               if arg == args[0]:
+                   # have this already
+                   continue
+               px = subprocess.Popen(['grep', '-i', arg], stdin=px.stdout, stdout=subprocess.PIPE)
+            p4 = subprocess.Popen(['head', '-n 2'], stdin=px.stdout, stdout=subprocess.PIPE)
             p1.stdout.close()
             output = p4.communicate()
             return output[0].decode("utf8")[:-1]# strip trailing '\n'
@@ -87,8 +93,14 @@ def find(year, author, path):
     for root, dirs, files in os.walk(path):
         for fname in files:
             lfname = fname.lower()
-            if lfname.endswith(('.pdf', '.ps')) and lfname.find(author) != -1 and lfname.find(year) != -1:
-                return os.path.join(root, fname)
+            if lfname.endswith(('.pdf', '.ps')):
+                caught = True
+                for arg in args:
+                    if lfname.find(arg.lower()) == -1:
+                        caught = False
+                        break
+                if caught:
+                    return os.path.join(root, fname)
     return ""
 
 def main(argv):
@@ -103,13 +115,10 @@ def main(argv):
       if o == "-w":
         psviewer = v
     
-    if len(args) != 2:
+    if len(args) < 1:
       error(usage(progname))
 
-    year = args[0]
-    author = args[1]
-
-    result = find(year, author.lower(), path = os.environ["HOME"])
+    result = find(args, path = os.environ["HOME"])
     if result == "":
         message("no document found!")
         return 0
