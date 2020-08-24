@@ -400,7 +400,7 @@ my %sansFonts = (
   "q" => qr/^(qt(ancient|helvet|avanti|doghaus|eratype|eurotype|floraline|frank|fritz|future|greece|howard|letter|optimum)|quercus)/i,
   "r" => qr/^(rachana|radio\b|raleway|ricty|roboto|rosario)/i,
   "s" => qr/^(salem|samanata|sawasdee|shado|sharja|simple|sophia|soul|source|switzera)/i,
-  "t" => qr/^(tarablus|teen|texgyre(adventor|heros)|tiresias|trebuchet|tscu|tuffy)/i,
+  "t" => qr/^(tarablus|teen|tex ?gyre ?(adventor|heros)|tiresias|trebuchet|tscu|tuffy)/i,
   "u" => qr/^u(buntu|kij (bom|chechek|cjk|diwani|ekran|elipbe|inchike|jelliy|kufi|mejnuntal|qara|qolyazma|teng|title|tor|tuz ?(neqish|tom))|mpush|n ?(dinaru|jamo|graphic|taza|vada|yetgul)|ni(kurd|space|versalis)|roob|rw ?classico)/i,
   "v" => qr/^(veranda|vn ?urwclassico)/i,
   "w" => qr/^(waree)/i,
@@ -670,7 +670,7 @@ if (open(FI,  "$cmd |")) {
 
 for my $fontname (sort keys %collectedfonts) {
   my @foundries = sort keys %{$collectedfonts{$fontname}};
-  my $printfoundries = 0;
+  my $printfoundries = 1;
   if (defined($foundries[1])) {
     $printfoundries = 1;
   }
@@ -1208,11 +1208,22 @@ sub buildFontName($$)
   $family =~ s/\bextbd\b/ExtraBold/i;
   $family =~ s/\bextlt\b/ExtraLight/i;
   $family =~ s/\bmed\b/Medium/i;
+  my $prefix = "";
+  # Split the family name at the border lowercase <-> uppercase characters
+  # except if family starts with "TeX" or "DejaVu", etc
+  if ($family =~ s/^((La|cw|PL)?TeX|DejaVu|MarVoSym|PL)//) {
+    $prefix = $1;
+    if ($family =~ /^[A-Z]/) {
+      $prefix .= " ";
+    }
+  }
+
   if ($family =~ /^([A-Z]*[a-z]+)([A-Z]\w+)\b(.*)$/) {
     $family = $1 . splitatlU($2) . $3;
   }
   $family =~ s/^Ant Polt\b/Antykwa Poltawskiego/;
   $family =~ s/\b(Semi|Extra) (Bold|Condensed|Expanded|Light)\b/$1$2/;
+  $family = $prefix . $family;
   my @style = &splitStyle($style);
   for my $st (@style) {
     $st = ucfirst($st);
