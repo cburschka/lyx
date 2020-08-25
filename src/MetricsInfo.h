@@ -95,12 +95,14 @@ public:
 	MetricsInfo();
 	///
 	MetricsInfo(BufferView * bv, FontInfo font, int textwidth,
-	            MacroContext const & mc);
+	            MacroContext const & mc, bool vm);
 
 	///
 	MetricsBase base;
 	/// The context to resolve macros
 	MacroContext const & macrocontext;
+	/// Are we at the start of a paragraph (vertical mode)?
+	bool vmode;
 };
 
 

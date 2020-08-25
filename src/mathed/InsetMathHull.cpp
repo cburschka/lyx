@@ -56,6 +56,7 @@
 #include "graphics/PreviewLoader.h"
 
 #include "frontends/alert.h"
+#include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
 #include "support/convert.h"
@@ -520,9 +521,18 @@ bool previewTooSmall(Dimension const & dim)
 
 void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	// true value in LaTeX is 12pt plus 3pt minus 9pt
-	// FIXME: even better would be to handle the short skip case.
-	int const display_margin = display() ? mi.base.inPixels(Length(12, Length::PT)) : 0;
+	/* Compute \(above|below)displayskip
+	   true value in LaTeX is 10pt plus 2pt minus 5pt (in normal size at 10pt)
+	   FIXME: make this dependent of current size? (minor improvement)
+	   FIXME: if would be nice if this was not part of the inset, but
+	          just increased the row ascent/descent.
+	   FIXME: even better would be to handle the short skip case.
+	*/
+	int const bottom_display_margin = mi.base.inPixels(Length(10, Length::PT));
+	int top_display_margin = bottom_display_margin;
+	// at start of paragraph, add an empty line
+	if (mi.vmode)
+		top_display_margin += theFontMetrics(mi.base.font).maxHeight() + 2;
 
 	if (previewState(mi.base.bv)) {
 		preview_->metrics(mi, dim);
@@ -535,8 +545,8 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 			// value was hardcoded to 1 pixel
 			dim.wid += mi.base.bv->zoomedPixels(1) ;
 			if (display()) {
-				dim.asc += display_margin;
-				dim.des += display_margin;
+				dim.asc += top_display_margin;
+				dim.des += bottom_display_margin;
 			}
 		}
 		return;
@@ -577,8 +587,8 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 
 
 	if (display()) {
-		dim.asc += display_margin;
-		dim.des += display_margin;
+		dim.asc += top_display_margin;
+		dim.des += bottom_display_margin;
 	}
 
 	// reserve some space for marker.

@@ -517,7 +517,7 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 		Font const & font = e.inset->inheritFont() ?
 			displayFont(pit, e.pos) : bufferfont;
 		MacroContext mc(&buffer, parPos);
-		MetricsInfo mi(bv_, font.fontInfo(), w, mc);
+		MetricsInfo mi(bv_, font.fontInfo(), w, mc, e.pos == 0);
 		e.inset->metrics(mi, dim);
 		if (!insetCache.has(e.inset) || insetCache.dim(e.inset) != dim) {
 			insetCache.add(e.inset, dim);
