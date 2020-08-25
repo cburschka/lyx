@@ -4544,7 +4544,7 @@ Language * Paragraph::Private::locateSpellRange(
 		// hop to end of word
 		while (last < to && !owner_->isWordSeparator(last)) {
 			Inset const * inset = owner_->getInset(last);
-			if (inset && inset->lyxCode() == SPECIALCHAR_CODE) {
+			if (inset && dynamic_cast<const InsetSpecialChar *>(inset)) {
 				// check for "invisible" letters such as ligature breaks
 				odocstringstream os;
 				inset->toString(os);
