@@ -123,6 +123,15 @@ public:
 	/// current text height.
 	int height() const { return dim_.height(); }
 
+	/**
+	 * Returns the left beginning of the text.
+	 * This information cannot be taken from the layout object, because
+	 * in LaTeX the beginning of the text fits in some cases
+	 * (for example sections) exactly the label-width.
+	 */
+	int leftMargin(pit_type pit, pos_type pos) const;
+	int leftMargin(pit_type pit) const;
+
 	///
 	int rightMargin(ParagraphMetrics const & pm) const;
 	int rightMargin(pit_type const pit) const;
@@ -135,15 +144,6 @@ public:
 private:
 	///
 	ParagraphMetrics & parMetrics(pit_type, bool redo_paragraph);
-
-	/**
-	 * Returns the left beginning of the text.
-	 * This information cannot be taken from the layout object, because
-	 * in LaTeX the beginning of the text fits in some cases
-	 * (for example sections) exactly the label-width.
-	 */
-	int leftMargin(pit_type pit, pos_type pos) const;
-	int leftMargin(pit_type pit) const;
 
 	/// the minimum space a manual label needs on the screen in pixels
 	int labelFill(Row const & row) const;
