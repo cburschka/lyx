@@ -386,9 +386,10 @@ void makeParagraphBibliography(
 	// Don't forget the citation ID!
 	docstring attr;
 	for (auto i = 0; i < par->size(); ++i) {
-		Inset const *ip = par->getInset(0);
-		if (ip != nullptr && ip->lyxCode() == BIBITEM_CODE) {
-			const auto * bibitem = dynamic_cast<const InsetBibitem*>(par->getInset(i));
+		Inset const *ip = par->getInset(i);
+		if (!ip)
+			continue;
+		if (const auto * bibitem = dynamic_cast<const InsetBibitem*>(ip)) {
 			attr = from_utf8("xml:id='") + bibitem->getParam("key") + from_utf8("'");
 			break;
 		}
