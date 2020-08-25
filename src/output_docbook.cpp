@@ -30,8 +30,6 @@
 
 #include "support/lassert.h"
 
-#include "support/regex.h"
-
 #include <stack>
 #include <iostream>
 #include <algorithm>
@@ -163,18 +161,6 @@ string fontToAttribute(xml::FontTypes type) {
 	} else {
 		return "";
 	}
-}
-
-
-xml::FontTag docbookStartFontTag(xml::FontTypes type)
-{
-	return xml::FontTag(from_utf8(fontToDocBookTag(type)), from_utf8(fontToAttribute(type)), type);
-}
-
-
-xml::EndFontTag docbookEndFontTag(xml::FontTypes type)
-{
-	return xml::EndFontTag(from_utf8(fontToDocBookTag(type)), type);
 }
 
 
@@ -501,13 +487,13 @@ void makeParagraph(
 
 	// Determine if this paragraph has some real content. Things like new pages are not caught
 	// by Paragraph::empty(), even though they do not generate anything useful in DocBook.
+	// Thus, remove all spaces (including new lines: \r, \n) before checking for emptiness.
 	odocstringstream os2;
 	XMLStream xs2(os2);
 	par->simpleDocBookOnePar(buf, xs2, runparams, text.outerFont(distance(begin, par)), open_par, close_par, 0);
 
 	docstring cleaned = os2.str();
-	static const lyx::regex reg("[ \\r\\n]*");
-	cleaned = from_utf8(lyx::regex_replace(to_utf8(cleaned), reg, string("")));
+	cleaned.erase(std::remove_if(cleaned.begin(), cleaned.end(), ::isspace), cleaned.end());
 
 	if (!cleaned.empty()) {
 		if (open_par)
@@ -658,8 +644,6 @@ void makeAny(
 	}
 }
 
-} // end anonymous namespace
-
 
 using DocBookDocumentSectioning = tuple<bool, pit_type>;
 
@@ -796,6 +780,20 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs, pit_type b
 	return DocBookInfoTag(shouldBeInInfo, mustBeInInfo, abstract, bpit, cpit);
 }
 
+} // end anonymous namespace
+
+
+xml::FontTag docbookStartFontTag(xml::FontTypes type)
+{
+	return xml::FontTag(from_utf8(fontToDocBookTag(type)), from_utf8(fontToAttribute(type)), type);
+}
+
+
+xml::EndFontTag docbookEndFontTag(xml::FontTypes type)
+{
+	return xml::EndFontTag(from_utf8(fontToDocBookTag(type)), type);
+}
+
 
 void outputDocBookInfo(
 		Text const & text,
@@ -829,11 +827,11 @@ void outputDocBookInfo(
 		// Actually output the abstract if there is something to do. Don't count line feeds or spaces in this,
 		// even though they must be properly output if there is some abstract.
 		abstract = os2.str();
-		static const lyx::regex reg("[ \\r\\n]*");
-		docstring abstractContent = from_utf8(lyx::regex_replace(to_utf8(abstract), reg, string("")));
+		docstring cleaned = abstract;
+		cleaned.erase(std::remove_if(cleaned.begin(), cleaned.end(), ::isspace), cleaned.end());
 
 		// Nothing? Then there is no abstract!
-		if (abstractContent.empty())
+		if (cleaned.empty())
 			hasAbstract = false;
 	}
 
