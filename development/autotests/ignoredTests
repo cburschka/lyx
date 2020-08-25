@@ -192,6 +192,8 @@ export/templates/Articles/American_Psychological_Association_%28APA%29,_v\._7_(d
 export/export/latex/languages/latinErt_(dvi3|pdf5)_texF
 export/export/latex/languages/mixed_ltr-art_arabi-standard-font_(dvi3|pdf5)_texF
 
+# TeXLive does not set up Hebrew 8-bit TeX fonts
+export/export/latex/unicodesymbols/152-modifiers-presentation_he_.*_pdf2
 # Tests which are not expected to succeed, because used
 # as a child
 export/export/latex/languages/supported-languages_(dvi|pdf).*
