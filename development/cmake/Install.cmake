@@ -158,6 +158,7 @@ elseif(CYGWIN)
 elseif(WIN32)
   set(lyxrcorig "${TOP_SRC_DIR}/development/Win32/lyxrc.dist.in")
 endif()
+install(FILES ${TOP_SRC_DIR}/lib/images/lyx.svg DESTINATION ${LYX_DATA_SUBDIR}/images/)
 
 if(NOT lyxrcorig STREQUAL "")
   configure_file("${lyxrcorig}" lyxrc.dist)
