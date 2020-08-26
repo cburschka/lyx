@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-08-24 07:24+0200\n"
-"PO-Revision-Date: 2020-08-23 23:53+0300\n"
+"PO-Revision-Date: 2020-08-26 11:36+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -26,32 +26,28 @@ msgid "Version"
 msgstr "Версия"
 
 #: src/frontends/qt/ui/AboutUi.ui:147
-#, fuzzy
 msgid "Library directory"
-msgstr "Каталог библиотек: "
+msgstr "Каталог библиотек"
 
 #: src/frontends/qt/ui/AboutUi.ui:159
 msgid "Open library directory in file browser"
-msgstr ""
+msgstr "Открыть каталог библиотек в файловом менеджере"
 
 #: src/frontends/qt/ui/AboutUi.ui:162
-#, fuzzy
 msgid "&Open..."
-msgstr "Открыть...|О"
+msgstr "&Открыть..."
 
 #: src/frontends/qt/ui/AboutUi.ui:197
-#, fuzzy
 msgid "User directory"
-msgstr "Каталог пользователя: "
+msgstr "Каталог пользователя"
 
 #: src/frontends/qt/ui/AboutUi.ui:228
 msgid "Open user directory in file browser"
-msgstr ""
+msgstr "Открыть каталог пользователя в файловом менеджере"
 
 #: src/frontends/qt/ui/AboutUi.ui:231
-#, fuzzy
 msgid "O&pen..."
-msgstr "Открыть...|О"
+msgstr "О&ткрыть..."
 
 #: src/frontends/qt/ui/AboutUi.ui:260
 msgid "Credits"
@@ -72,12 +68,11 @@ msgstr "Заметки о выпуске"
 
 #: src/frontends/qt/ui/AboutUi.ui:380
 msgid "Copy version information to clipboard"
-msgstr ""
+msgstr "Копировать информацию о версии в буфер обмена"
 
 #: src/frontends/qt/ui/AboutUi.ui:383
-#, fuzzy
 msgid "Copy &Version Info"
-msgstr "Вставить информацию о версии"
+msgstr "Копировать информацию о &версии"
 
 #: src/frontends/qt/ui/BibitemUi.ui:26 src/frontends/qt/ui/BibitemUi.ui:45
 msgid "The bibliography key"
@@ -320,9 +315,8 @@ msgid "&Delete"
 msgstr "&Удалить"
 
 #: src/frontends/qt/ui/BibtexUi.ui:107
-#, fuzzy
 msgid "Move the selected database up (Ctrl-Up)"
-msgstr "Переместить выбранный источник выше (Ctrl-Up)"
+msgstr "Переместить выбранную базу выше (Ctrl-Up)"
 
 #: src/frontends/qt/ui/BibtexUi.ui:110 src/frontends/qt/ui/CitationUi.ui:191
 #: src/frontends/qt/ui/ModulesUi.ui:140
@@ -330,9 +324,8 @@ msgid "&Up"
 msgstr "&Вверх"
 
 #: src/frontends/qt/ui/BibtexUi.ui:130
-#, fuzzy
 msgid "Move the selected database down (Ctrl-Down)"
-msgstr "Переместить выбранный источник ниже (Ctrl-Down)"
+msgstr "Переместить выбранную базу ниже (Ctrl-Down)"
 
 #: src/frontends/qt/ui/BibtexUi.ui:133 src/frontends/qt/ui/CitationUi.ui:214
 #: src/frontends/qt/ui/ModulesUi.ui:147
@@ -2494,15 +2487,15 @@ msgstr "Отметьте, если текущий документ включа�
 
 #: src/frontends/qt/ui/LaTeXUi.ui:142
 msgid "Select de&fault master document"
-msgstr "&Выбрать главный документ по умолчанию"
+msgstr "&Задать главный документ"
 
 #: src/frontends/qt/ui/LaTeXUi.ui:160
 msgid "&Master:"
-msgstr "&Главный:"
+msgstr "&Главный документ:"
 
 #: src/frontends/qt/ui/LaTeXUi.ui:177
 msgid "Enter the name of the default master document"
-msgstr "Введите имя главного документа по умолчанию"
+msgstr "Введите имя главного документа"
 
 #: src/frontends/qt/ui/LaTeXUi.ui:196
 msgid "&Suppress default date on front page"
@@ -2518,7 +2511,7 @@ msgstr "Вид кавычек:"
 
 #: src/frontends/qt/ui/LanguageUi.ui:49
 msgid "Select the default quotation marks style"
-msgstr "Выберите стиль кавычек по умолчанию"
+msgstr "Выберите вид кавычек по умолчанию"
 
 #: src/frontends/qt/ui/LanguageUi.ui:59
 msgid ""
@@ -2540,7 +2533,7 @@ msgstr "Кодировка:"
 
 #: src/frontends/qt/ui/LanguageUi.ui:102
 msgid "Select encoding of the generated LaTeX source (LaTeX input encoding)."
-msgstr ""
+msgstr "Выберите кодировку для кода LaTeX (входная кодировка LaTeX)"
 
 #: src/frontends/qt/ui/LanguageUi.ui:115
 msgid "Select Unicode encoding variant."
@@ -2827,7 +2820,7 @@ msgstr "Н&айти:"
 
 #: src/frontends/qt/ui/LogUi.ui:111
 msgid "Hit Enter or click 'Find Next' to search"
-msgstr ""
+msgstr "Нажмите Enter или 'Найти далее' для поиска"
 
 #: src/frontends/qt/ui/LogUi.ui:130
 msgid "&Open Containing Directory"
@@ -2848,7 +2841,7 @@ msgstr "Фильтр"
 
 #: src/frontends/qt/ui/LyXFilesUi.ui:32 src/frontends/qt/ui/MathMatrixUi.ui:109
 msgid "&Type:"
-msgstr "Тип:"
+msgstr "&Тип:"
 
 #: src/frontends/qt/ui/LyXFilesUi.ui:48
 msgid ""
@@ -3675,7 +3668,7 @@ msgstr "И&ндикатор курсора"
 #: src/frontends/qt/ui/PrefCompletionUi.ui:119
 #: src/frontends/qt/GuiPrefs.cpp:320
 msgid "General[[settings]]"
-msgstr ""
+msgstr "Общие"
 
 #: src/frontends/qt/ui/PrefCompletionUi.ui:142
 msgid ""
@@ -4745,7 +4738,7 @@ msgstr "&Крохотный:"
 
 #: src/frontends/qt/ui/PrefShortcutsUi.ui:68
 msgid "&New"
-msgstr "&Новый"
+msgstr "&Создать"
 
 #: src/frontends/qt/ui/PrefShortcutsUi.ui:90
 msgid "&Bind file:"
@@ -5110,7 +5103,7 @@ msgstr "Отправить экспортированный файл в кома
 
 #: src/frontends/qt/ui/ShortcutUi.ui:14
 msgid "Edit shortcut"
-msgstr "Назначить сочетание клавиш"
+msgstr "Привязка клавиш"
 
 #: src/frontends/qt/ui/ShortcutUi.ui:23
 msgid "Fu&nction:"
@@ -5795,7 +5788,7 @@ msgid ""
 "change tracking, etc.)"
 msgstr ""
 "Отфильтровать элементы, которые не выводятся (в заметках, неактивных ветках, "
-"удаленных в отслеживании изменений и т.д.)"
+"удаленных в отслеживании изменений и т. д.)"
 
 #: src/frontends/qt/ui/TocUi.ui:327
 msgid "All items"
@@ -5810,9 +5803,8 @@ msgid "Only non-output items"
 msgstr "Только элементы не для вывода"
 
 #: src/frontends/qt/ui/ToggleWarningUi.ui:14
-#, fuzzy
 msgid "Enter text"
-msgstr "LyX: Введите текст"
+msgstr "Введите текст"
 
 #: src/frontends/qt/ui/ToggleWarningUi.ui:62
 #: src/frontends/qt/GuiProgress.cpp:194
@@ -5864,15 +5856,15 @@ msgstr "Ф&ормат:"
 
 #: src/frontends/qt/ui/ViewSourceUi.ui:109
 msgid "Select the output format"
-msgstr "Выбрать выходной формат"
+msgstr "Выберите формат вывода"
 
 #: src/frontends/qt/ui/ViewSourceUi.ui:127
 msgid "Show the source as the master document gets it"
-msgstr "Показать код в виде, используемом в главном документе"
+msgstr "Показать код в виде, используемом для главного документа"
 
 #: src/frontends/qt/ui/ViewSourceUi.ui:130
 msgid "Master's perspective"
-msgstr "Как в главном документе"
+msgstr "Как для главного документа"
 
 #: src/frontends/qt/ui/ViewSourceUi.ui:137
 msgid "Automatic update"
@@ -5900,9 +5892,8 @@ msgid "&Reload"
 msgstr "&Перезагрузить"
 
 #: src/frontends/qt/ui/WrapUi.ui:33
-#, fuzzy
 msgid "Horizontal placement"
-msgstr "Горизонтальный промежуток"
+msgstr "Горизонтальное размещение"
 
 #: src/frontends/qt/ui/WrapUi.ui:37
 msgid "Outer (default)"
@@ -7588,12 +7579,12 @@ msgstr "Эл. почта"
 
 #: lib/layouts/a0poster.layout:3 lib/examples/Articles:0
 msgid "A0 Poster"
-msgstr "Постер A0"
+msgstr "Плакат A0"
 
 #: lib/layouts/a0poster.layout:4 lib/layouts/beamerposter.layout:4
 #: lib/layouts/sciposter.layout:4 lib/examples/Articles:0
 msgid "Posters"
-msgstr "Постеры"
+msgstr "Плакаты"
 
 #: lib/layouts/a0poster.layout:41 lib/layouts/a0poster.layout:44
 #: lib/layouts/a0poster.layout:71 lib/layouts/beamerposter.layout:53
@@ -8003,7 +7994,7 @@ msgstr "Комментарий к таблице"
 
 #: lib/layouts/aastex.layout:509
 msgid "Note. ---"
-msgstr "Заметка. ---"
+msgstr "Примечание. ---"
 
 #: lib/layouts/aastex.layout:517
 msgid "Table note"
@@ -8087,11 +8078,11 @@ msgstr "ПРИЛОЖЕНИЕ"
 
 #: lib/layouts/aastex6.layout:104 lib/layouts/aastex62.layout:115
 msgid "References-"
-msgstr "Список литературы-"
+msgstr "Список литературы –"
 
 #: lib/layouts/aastex6.layout:111 lib/layouts/aastex62.layout:122
 msgid "Note-"
-msgstr "Заметка-"
+msgstr "Примечание –"
 
 #: lib/layouts/aastex62.layout:3 lib/examples/Articles:0
 msgid "American Astronomical Society (AASTeX v. 6.2)"
@@ -10892,7 +10883,6 @@ msgid "Custom Header/Footer Text"
 msgstr "Настраиваемые колонтитулы"
 
 #: lib/layouts/customHeadersFooters.module:8
-#, fuzzy
 msgid ""
 "Adds environments to define header and footer lines. NOTE: To use this "
 "module you must set the 'Page style' in the menu Document Settings -> Page "
@@ -10901,7 +10891,7 @@ msgstr ""
 "Добавляет окружения для задания строк верхнего и нижнего колонтитулов. "
 "ПРИМЕЧАНИЕ: для использования этого модуля вы должны установить для "
 "параметра 'Стиль колонтитулов' (меню Документ -> Настройки -> Макет "
-"страницы) значение 'красивый'!"
+"страницы) значение 'красивый (fancy)'!"
 
 #: lib/layouts/customHeadersFooters.module:13
 msgid "Header/Footer"
@@ -14435,7 +14425,7 @@ msgstr "Имя"
 
 #: lib/layouts/logicalmkup.module:13
 msgid "noun"
-msgstr "noun"
+msgstr "имя"
 
 #: lib/layouts/logicalmkup.module:33
 msgid "Emph"
@@ -14443,7 +14433,7 @@ msgstr "Выделение"
 
 #: lib/layouts/logicalmkup.module:35
 msgid "emph"
-msgstr "emph"
+msgstr "выделение"
 
 #: lib/layouts/logicalmkup.module:48
 msgid "Strong"
@@ -14451,7 +14441,7 @@ msgstr "Сильное выделение"
 
 #: lib/layouts/logicalmkup.module:50
 msgid "strong"
-msgstr "strong"
+msgstr "сильное выделение"
 
 #: lib/layouts/ltugboat.layout:3
 msgid "TUGboat"
@@ -19440,9 +19430,8 @@ msgid "Copy as Reference|C"
 msgstr "Копировать как ссылку|К"
 
 #: lib/ui/stdcontext.inc:131
-#, fuzzy
 msgid "Open Citation Content...|O"
-msgstr "Библиографическая ссылка...|Б"
+msgstr "Открыть источник...|О"
 
 #: lib/ui/stdcontext.inc:141
 msgid "Edit Database(s) Externally...|x"
@@ -20023,9 +20012,8 @@ msgid "Wrap by Preview|y"
 msgstr "Предварительный просмотр"
 
 #: lib/ui/stdcontext.inc:678
-#, fuzzy
 msgid "Open Target...|O"
-msgstr "Открыть...|О"
+msgstr "Открыть ссылку...|О"
 
 #: lib/ui/stdcontext.inc:694 lib/ui/stdmenus.inc:361
 msgid "Lock Toolbars|L"
@@ -20957,11 +20945,11 @@ msgstr "Журнал сообщений LaTeX|L"
 
 #: lib/ui/stdmenus.inc:566
 msgid "Start Appendix Here|x"
-msgstr "Начать приложение здесь|п"
+msgstr "Начать приложение|п"
 
 #: lib/ui/stdmenus.inc:570
 msgid "View Master Document|M"
-msgstr "Просмотр главного документа"
+msgstr "Просмотреть главный документ|г"
 
 #: lib/ui/stdmenus.inc:571
 msgid "Update Master Document|a"
@@ -26587,11 +26575,11 @@ msgstr "Листинги Minted"
 
 #: lib/examples/Articles:0
 msgid "XY-Figure"
-msgstr "XY-Figure"
+msgstr "Диаграмма XY-Figure"
 
 #: lib/examples/Articles:0
 msgid "XY-Pic"
-msgstr "XY-Pic"
+msgstr "Диаграмма XY-Pic"
 
 #: lib/examples/Articles:0
 msgid "Graphics and Insets"
@@ -26639,7 +26627,7 @@ msgstr "Модули"
 
 #: lib/examples/Articles:0
 msgid "Beamer (Complex)"
-msgstr "Beamer (Complex)"
+msgstr "Beamer (сложная)"
 
 #: lib/examples/Articles:0
 msgid "Foils"
@@ -27263,24 +27251,24 @@ msgstr ""
 #: src/Buffer.cpp:4080
 #, c-format
 msgid "Preview source code for paragraph %1$d"
-msgstr "Предварительный просмотр исходного кода для абзаца %1$d"
+msgstr "Просмотр исходного кода для абзаца %1$d"
 
 #: src/Buffer.cpp:4084
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
-msgstr "Предварительный просмотр исходного кода абзацев %1$s-%2$s"
+msgstr "Просмотр исходного кода абзацев %1$s-%2$s"
 
 #: src/Buffer.cpp:4138
 msgid "Preview source code"
-msgstr "Предварительный просмотр исходного кода"
+msgstr "Просмотр исходного кода"
 
 #: src/Buffer.cpp:4140
 msgid "Preview preamble"
-msgstr "Предварительный просмотр преамбулы"
+msgstr "Просмотр преамбулы"
 
 #: src/Buffer.cpp:4142
 msgid "Preview body"
-msgstr "Предварительный просмотр тела документа"
+msgstr "Просмотр тела документа"
 
 #: src/Buffer.cpp:4157
 msgid "Plain text does not have a preamble."
@@ -27583,7 +27571,7 @@ msgstr ""
 
 #: src/BufferParams.cpp:756
 msgid "Document class not available"
-msgstr "Класс документа не доступен"
+msgstr "Класс документа недоступен"
 
 #: src/BufferParams.cpp:1751 src/BufferParams.cpp:2194 src/Encoding.cpp:253
 #: src/Paragraph.cpp:2870 src/frontends/qt/LaTeXHighlighter.cpp:122
@@ -30166,9 +30154,8 @@ msgid "Child Documents"
 msgstr "Дочерние документы"
 
 #: src/TocBackend.cpp:294
-#, fuzzy
 msgid "Graphics[[listof]]"
-msgstr "Изображение"
+msgstr "Изображения"
 
 #: src/TocBackend.cpp:295
 msgid "Equations"
@@ -30697,7 +30684,7 @@ msgid "not released yet"
 msgstr "ещё не выпущена"
 
 #: src/frontends/qt/GuiAbout.cpp:257
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Version %1$s\n"
 "(%2$s)"
@@ -31609,9 +31596,8 @@ msgid "12"
 msgstr "12"
 
 #: src/frontends/qt/GuiDocument.cpp:1141
-#, fuzzy
 msgid "Automatic[[encoding]]"
-msgstr "Автоматический"
+msgstr "Автоматическая"
 
 #: src/frontends/qt/GuiDocument.cpp:1151
 msgid ""
@@ -33155,7 +33141,7 @@ msgstr "Неизвестная или неправильная функция Ly
 
 #: src/frontends/qt/GuiPrefs.cpp:3313
 msgid "This LyX function is hidden and cannot be bound."
-msgstr "Эта функция LyX скрыта и не может быть использоваться"
+msgstr "Эта функция LyX скрыта и не может быть привязана"
 
 #: src/frontends/qt/GuiPrefs.cpp:3319
 msgid "Invalid or empty key sequence"
@@ -34272,7 +34258,7 @@ msgstr "Предварительный просмотр кода"
 
 #: src/frontends/qt/GuiViewSource.cpp:457
 msgid "%1[[preview format name]] Preview"
-msgstr "%1 Предпросмотр"
+msgstr "Просмотр %1"
 
 #: src/frontends/qt/GuiWorkArea.cpp:1614
 msgid "Close File"
@@ -34326,7 +34312,7 @@ msgstr "%1$s (неизвестен)"
 
 #: src/frontends/qt/Menus.cpp:725
 msgid "More...|M"
-msgstr "Больше...|В"
+msgstr "Больше...|Б"
 
 #: src/frontends/qt/Menus.cpp:807
 msgid "No Group"
@@ -34447,7 +34433,7 @@ msgstr "Нет ссылок в поле зрения!"
 #: src/frontends/qt/Menus.cpp:1590 src/insets/InsetCitation.cpp:317
 #: src/insets/InsetCitation.cpp:447
 msgid "No citations selected!"
-msgstr "Цитата не выбрана!"
+msgstr "Ссылка не выбрана!"
 
 #: src/frontends/qt/Menus.cpp:1639
 msgid "All authors|h"
@@ -34478,7 +34464,7 @@ msgstr "Нет цитат в поле зрения!"
 #: src/frontends/qt/Menus.cpp:1848 src/frontends/qt/Menus.cpp:1852
 #, c-format
 msgid "%1$s (dynamic)"
-msgstr "%1$s (динамический)"
+msgstr "%1$s (динамическая)"
 
 #: src/frontends/qt/Menus.cpp:1884
 #, c-format
@@ -34662,11 +34648,11 @@ msgstr "&Продолжить"
 
 #: src/insets/InsetBibtex.cpp:180
 msgid "Biblatex Generated Bibliography"
-msgstr "Сгенерированная библиография Biblatex"
+msgstr "Библиография Biblatex"
 
 #: src/insets/InsetBibtex.cpp:181
 msgid "BibTeX Generated Bibliography"
-msgstr "Сгенерированная библиография BibTeX"
+msgstr "Библиография BibTeX"
 
 #: src/insets/InsetBibtex.cpp:187
 msgid "Databases:"
@@ -35213,15 +35199,15 @@ msgstr ""
 "%1$s"
 
 #: src/insets/InsetInclude.cpp:1069
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "LyX does not know how to process included non-LyX files when generating "
 "DocBook output. The content of the file will be output as a comment. "
 "Offending file:\n"
 "%1$s"
 msgstr ""
-"LyX не знает, как включить не-LyX файлы при генерации DocBook-вывода. Файл-"
-"нарушитель:\n"
+"LyX не знает, как включить не-LyX файлы при генерации DocBook-вывода. "
+"Содержимое файла будет выведено в комментарии. Файл-нарушитель:\n"
 "%1$s"
 
 #: src/insets/InsetIndex.cpp:156
@@ -36492,7 +36478,7 @@ msgstr "&Остановить"
 
 #: src/support/Systemcall.cpp:419
 msgid "Let it &run"
-msgstr "Разрешить запуск"
+msgstr "&Продолжить выполнение"
 
 #: src/support/debug.cpp:41
 msgid "No debugging messages"
@@ -36524,7 +36510,7 @@ msgstr "Чтение файлов конфигурации"
 
 #: src/support/debug.cpp:48
 msgid "Custom keyboard definition"
-msgstr "Клавиатурные сокращения"
+msgstr "Клавиатурные определения"
 
 #: src/support/debug.cpp:49
 msgid "LaTeX generation/execution"
@@ -36540,7 +36526,7 @@ msgstr "Обработка шрифтов"
 
 #: src/support/debug.cpp:52
 msgid "Textclass files reading"
-msgstr "Загрузка класса документа"
+msgstr "Чтение классов документа"
 
 #: src/support/debug.cpp:53
 msgid "Version control"
