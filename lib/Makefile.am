@@ -2692,7 +2692,7 @@ desktop_DATA = lyx@program_suffix@.desktop
 CLEANFILES = lyx@program_suffix@.desktop lyx.desktop-temp \
              lyx@program_suffix@.svg lyx@program_suffix@.png
 endif
-dist_noinst_DATA += lyx.desktop.in images/lyx.svg images/lyx.png
+dist_noinst_DATA += lyx.desktop.in images/lyx.png
 
 exampleandtemplate_files = \
 			   $(dist_articleexamples_DATA) \
