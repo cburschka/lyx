@@ -185,6 +185,12 @@ void XMLStream::writeError(docstring const &s)
 }
 
 
+XMLStream::TagPtr XMLStream::getLastStackTag()
+{
+	return tag_stack_.back();
+}
+
+
 bool XMLStream::closeFontTags()
 {
 	if (isTagPending(xml::parsep_tag))

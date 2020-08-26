@@ -225,7 +225,7 @@ void closeBlockTag(XMLStream & xs, const std::string & tag)
 
 void openTag(XMLStream & xs, const std::string & tag, const std::string & attr, const std::string & tagtype)
 {
-	if (tag.empty() || tag == "NONE")
+	if (tag.empty() || tag == "NONE") // Common check to be performed elsewhere, if it was not here.
 		return;
 
 	if (tag == "para" || tagtype == "paragraph") // Special case for <para>: always considered as a paragraph.
@@ -275,7 +275,7 @@ void openParTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar
 		Layout const & prevlay = prevpar->layout();
 		if (prevlay.docbookwrappertag() != "NONE") {
 			openWrapper = prevlay.docbookwrappertag() == lay.docbookwrappertag()
-					&& !lay.docbookwrappermergewithprevious();
+			              && !lay.docbookwrappermergewithprevious();
 		}
 	}
 
@@ -308,32 +308,8 @@ void closeParTag(XMLStream & xs, Paragraph const * par, Paragraph const * nextpa
 	if (nextpar != nullptr) {
 		Layout const & nextlay = nextpar->layout();
 		if (nextlay.docbookwrappertag() != "NONE") {
-			if (nextpar->getDepth() == par->getDepth()) {
-				// Same depth: the basic condition applies.
-				closeWrapper = nextlay.docbookwrappertag() == lay.docbookwrappertag()
-				               && !nextlay.docbookwrappermergewithprevious();
-			} else if (nextpar->getDepth() > par->getDepth()) {
-				// The next paragraph is deeper: no need to close the wrapper, only to open it (cf. openParTag).
-				closeWrapper = 0;
-			} else {
-				// This paragraph is deeper than the next one: close the wrapper,
-				// disregarding docbookwrappermergewithprevious.
-				// Hypothesis: nextlay.docbookwrappertag() == lay.docbookwrappertag(). TODO: THIS IS WRONG! Loop back until a layout with the right depth is found?
-				closeWrapper = 1L + (long long) par->getDepth() - (long long) nextpar->getDepth(); // > 0, as nextpar->getDepth() < par->getDepth()
-			}
-		} else {
-			if (nextpar->getDepth() == par->getDepth()) {
-				// This is not wrapped: this must be the rest of the item, still within the wrapper.
-				closeWrapper = 1;
-			} else if (nextpar->getDepth() > par->getDepth()) {
-				// The next paragraph is deeper: no need to close the wrapper, only to open it (cf. openParTag).
-				closeWrapper = 0;
-			} else {
-				// This paragraph is deeper than the next one: close the wrapper,
-				// disregarding docbookwrappermergewithprevious.
-				// Hypothesis: nextlay.docbookwrappertag() == lay.docbookwrappertag(). TODO: THIS IS WRONG! Loop back until a layout with the right depth is found?
-				closeWrapper = 1L + (long long) par->getDepth() - (long long) nextpar->getDepth(); // > 0, as nextpar->getDepth() < par->getDepth()
-			}
+			closeWrapper = nextlay.docbookwrappertag() == lay.docbookwrappertag()
+			               && !nextlay.docbookwrappermergewithprevious();
 		}
 	}
 
@@ -564,9 +540,7 @@ void makeEnvironment(Text const &text,
 				// Usual cases: maybe there is something specified at the layout level. Highly unlikely, though.
 				docstring const lbl = par->params().labelString();
 
-				if (lbl.empty()) {
-					xs << xml::CR();
-				} else {
+				if (!lbl.empty()) {
 					openLabelTag(xs, style);
 					xs << lbl;
 					closeLabelTag(xs, style);
@@ -628,7 +602,6 @@ ParagraphList::const_iterator findEndOfEnvironment(
 		ParagraphList::const_iterator const & pend)
 {
 	// Copy-paste from XHTML. Should be factored out at some point...
-
 	ParagraphList::const_iterator p = pstart;
 	Layout const & bstyle = p->layout();
 	size_t const depth = p->params().depth();
@@ -662,95 +635,84 @@ ParagraphList::const_iterator makeListEnvironment(Text const &text,
 												  Buffer const &buf,
 		                                          XMLStream &xs,
 		                                          OutputParams const &runparams,
-		                                          ParagraphList::const_iterator const & par)
+		                                          ParagraphList::const_iterator const & begin)
 {
+	auto par = begin;
 	auto const end = text.paragraphs().end();
+	auto const envend = findEndOfEnvironment(par, end);
 
-	// Output the opening tag for this environment, but only if it has not been previously opened (condition
-	// implemented in openParTag).
-	auto prevpar = text.paragraphs().getParagraphBefore(par);
-	openParTag(xs, &*par, prevpar); // TODO: switch in layout for par/block?
+	// Output the opening tag for this environment.
+	Layout const & envstyle = par->layout();
+	openTag(xs, envstyle.docbookwrappertag(), envstyle.docbookwrapperattr(), envstyle.docbookwrappertagtype());
+	openTag(xs, envstyle.docbooktag(), envstyle.docbookattr(), envstyle.docbooktagtype());
 
-	// Generate the contents of this environment. There is a special case if this is like some environment.
-	Layout const & style = par->layout();
-	if (style.latextype == LATEX_COMMAND) {
-		// Nothing to do (otherwise, infinite loops).
-	} else if (style.latextype == LATEX_ENVIRONMENT ||
-			style.latextype == LATEX_LIST_ENVIRONMENT ||
-			style.latextype == LATEX_ITEM_ENVIRONMENT) {
-		// Open a wrapper tag if needed.
-		if (style.docbookitemwrappertag() != "NONE")
-			openTag(xs, style.docbookitemwrappertag(), style.docbookitemwrapperattr(), style.docbookitemwrappertagtype());
+	// Handle the content of the list environment, item by item.
+	while (par != envend) {
+		Layout const & style = par->layout();
+
+		// Open the item wrapper.
+		openTag(xs, style.docbookitemwrappertag(), style.docbookitemwrapperattr(), style.docbookitemwrappertagtype());
 
 		// Generate the label, if need be. If it is taken from the text, sep != 0 and corresponds to the first
 		// character after the label.
 		pos_type sep = 0;
 		if (style.labeltype != LABEL_NO_LABEL && style.docbookitemlabeltag() != "NONE") {
-			// At least one condition must be met:
-			//  - this environment is not a list
-			//  - if this is a list, the label must not be manual (i.e. it must be taken from the layout)
-			if (style.latextype != LATEX_LIST_ENVIRONMENT || style.labeltype != LABEL_MANUAL) {
+			if (style.labeltype == LABEL_MANUAL) {
+				// Only variablelist gets here (or similar items defined as an extension in the layout).
+				openLabelTag(xs, style);
+				sep = 1 + par->firstWordDocBook(xs, runparams);
+				closeLabelTag(xs, style);
+			} else {
 				// Usual cases: maybe there is something specified at the layout level. Highly unlikely, though.
 				docstring const lbl = par->params().labelString();
 
-				if (lbl.empty()) {
-					xs << xml::CR();
-				} else {
+				if (!lbl.empty()) {
 					openLabelTag(xs, style);
 					xs << lbl;
 					closeLabelTag(xs, style);
 				}
-			} else {
-				// Only variablelist gets here (or similar items defined as an extension in the layout).
-				openLabelTag(xs, style);
-				sep = par->firstWordDocBook(xs, runparams);
-				closeLabelTag(xs, style);
 			}
 		}
 
-		// Maybe the item is completely empty, i.e. if the first word ends at the end of the current paragraph
-		// AND if the next paragraph doesn't have the same depth (if there is such a paragraph).
-		// Common case: there is only the first word on the line, but there is a nested list instead
-		// of more text.
-		bool emptyItem = false;
-		if (sep == par->size()) { // If the separator is already at the end of this paragraph...
-			auto next_par = par;
-			++next_par;
-			if (next_par == text.paragraphs().end()) // There is no next paragraph.
-				emptyItem = true;
-			else // There is a next paragraph: check depth.
-				emptyItem = par->params().depth() >= next_par->params().depth();
-		}
+		// Open the item (after the wrapper and the label).
+		openTag(xs, style.docbookitemtag(), style.docbookitemattr(), style.docbookitemtagtype());
 
-		if (emptyItem) {
-			// Avoid having an empty item, this is not valid DocBook. A single character is enough to force
-			// generation of a full <para>.
-			// TODO: this always worked only by magic...
-			xs << ' ';
+		// Generate the content of the item.
+		if (sep < par->size()) {
+			auto pars = par->simpleDocBookOnePar(buf, runparams,
+			                                     text.outerFont(std::distance(text.paragraphs().begin(), par)), sep);
+			for (auto &p : pars) {
+				openTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnerattr(),
+				        par->layout().docbookiteminnertagtype());
+				xs << XMLStream::ESCAPE_NONE << p;
+				closeTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnertagtype());
+			}
 		} else {
-			// Generate the rest of the paragraph, if need be. Open as many inner tags as necessary.
-			auto pars = par->simpleDocBookOnePar(buf, runparams, text.outerFont(std::distance(text.paragraphs().begin(), par)), sep);
-			auto p = pars.begin();
-			while (true) {
-				xs << XMLStream::ESCAPE_NONE << *p;
-				++p;
-				if (p != pars.end()) {
-					closeTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnertagtype());
-					openTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnerattr(), par->layout().docbookiteminnertagtype());
-				} else
-					break;
-			}
+			// DocBook doesn't like emptiness.
+			openTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnerattr(),
+			        par->layout().docbookiteminnertagtype());
+			closeTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnertagtype());
 		}
-	} else {
-		makeAny(text, buf, xs, runparams, par);
+
+		// If the next item is deeper, it must go entirely within this item (do it recursively).
+		// By construction, with findEndOfEnvironment, depth can only stay constant or increase, never decrease.
+		depth_type currentDepth = par->getDepth();
+		++par;
+		while (par != envend && par->getDepth() != currentDepth)
+			par = makeAny(text, buf, xs, runparams, par);
+		// Usually, this loop only makes one iteration, except in complex scenarios, like an item with a paragraph,
+		// a list, and another paragraph; or an item with two types of list (itemise then enumerate, for instance).
+
+		// Close the item.
+		closeTag(xs, style.docbookitemtag(), style.docbookitemtagtype());
+		closeTag(xs, style.docbookitemwrappertag(), style.docbookitemwrappertagtype());
 	}
 
-	// Close the environment.
-	auto nextpar = par;
-	++nextpar;
-	closeParTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr); // TODO: switch in layout for par/block?
+	// Close this environment in exactly the same way as it was opened.
+	closeTag(xs, envstyle.docbooktag(), envstyle.docbooktagtype());
+	closeTag(xs, envstyle.docbookwrappertag(), envstyle.docbookwrappertagtype());
 
-	return nextpar;
+	return envend;
 }
 
 

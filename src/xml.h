@@ -125,7 +125,6 @@ private:
 	// own these pointers and how they will be deleted, so we use shared
 	// pointers.
 	///
-	typedef std::shared_ptr<xml::StartTag> TagPtr;
 	typedef std::deque<TagPtr> TagDeque;
 	///
 	template <typename T>
