@@ -168,7 +168,21 @@ Sublabel: ert
 # "Wontfix" if demonstrating correct use and OK in the default output format.
 
 
-# ================================================
+# ==============================================================
+Sublabel: ertroundtrip
+#
+# Export failures due to exporting ERT (or preamble code) in backwards
+# conversion and not parsing that ERT in forwards conversion. Often, it is not
+# worth the time and is complicated to support roundtrips of this nature.
+
+# this might be an ertroundtrip issue, although it is not confirmed. In any
+# case, it doesn't seem worth the time to try to fix, considering that
+# the APA7 layout is not shipped with 2.2.x and 2.2.x is now quite old.
+# For more information, see the following ML thread:
+#   https://www.mail-archive.com/search?l=mid&q=20200824050236.pjrlijcn2hxnrmrw%40tallinn
+export/templates/Articles/American_Psychological_Association_%28APA%29,_v\._7_lyx22
+
+
 Sublabel: texissues
 # Export fails due to LaTeX limitations,
 # ================================================
