@@ -103,6 +103,10 @@ I'm the second line
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 A complex list:
 \end_layout
 
@@ -119,7 +123,7 @@ First first item
 First second item
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Text after first item
 \end_layout
 
@@ -137,10 +141,15 @@ Second first item
 Second second item
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Text after second item
 \end_layout
 
 \end_deeper
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document

@@ -132,8 +132,6 @@ private:
 	TagDeque tag_stack_;
 	///
 	bool is_last_tag_cr_;
-public:
-	bool pending_tags_empty() { return pending_tags_.empty();};
 };
 
 namespace xml {

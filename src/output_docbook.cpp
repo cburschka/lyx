@@ -382,9 +382,11 @@ void makeParagraphBibliography(
 	}
 	xs << xml::StartTag(from_utf8("bibliomixed"), attr);
 
-	// Generate the entry.
+	// Generate the entry. Concatenate the different parts of the paragraph if any.
 	auto const begin = text.paragraphs().begin();
-	par->simpleDocBookOnePar(buf, xs, runparams, text.outerFont(std::distance(begin, par)), true, true, 0);
+	auto pars = par->simpleDocBookOnePar(buf, runparams, text.outerFont(std::distance(begin, par)), 0);
+	for (auto & parXML : pars)
+		xs << XMLStream::ESCAPE_NONE << parXML;
 
 	// End the precooked bibliography entry.
 	xs << xml::EndTag("bibliomixed");
@@ -488,21 +490,19 @@ void makeParagraph(
 	// Determine if this paragraph has some real content. Things like new pages are not caught
 	// by Paragraph::empty(), even though they do not generate anything useful in DocBook.
 	// Thus, remove all spaces (including new lines: \r, \n) before checking for emptiness.
-	odocstringstream os2;
-	XMLStream xs2(os2);
-	par->simpleDocBookOnePar(buf, xs2, runparams, text.outerFont(distance(begin, par)), open_par, close_par, 0);
+	// std::all_of allows doing this check without having to copy the string.
+	// Open and close tags around each contained paragraph.
+	auto pars = par->simpleDocBookOnePar(buf, runparams, text.outerFont(distance(begin, par)), 0);
+	for (auto & parXML : pars) {
+		if (!std::all_of(parXML.begin(), parXML.end(), ::isspace)) {
+			if (open_par)
+				openParTag(xs, &*par, prevpar);
 
-	docstring cleaned = os2.str();
-	cleaned.erase(std::remove_if(cleaned.begin(), cleaned.end(), ::isspace), cleaned.end());
+			xs << XMLStream::ESCAPE_NONE << parXML;
 
-	if (!cleaned.empty()) {
-		if (open_par)
-			openParTag(xs, &*par, prevpar);
-
-		xs << XMLStream::ESCAPE_NONE << os2.str();
-
-		if (close_par)
-			closeParTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr);
+			if (close_par)
+				closeParTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr);
+		}
 	}
 }
 
@@ -529,10 +529,8 @@ void makeEnvironment(
 			style.latextype == LATEX_LIST_ENVIRONMENT ||
 			style.latextype == LATEX_ITEM_ENVIRONMENT) {
 		// Open a wrapper tag if needed.
-		if (style.docbookitemwrappertag() != "NONE") {
-			xs << xml::StartTag(style.docbookitemwrappertag(), style.docbookitemwrapperattr());
-			xs << xml::CR();
-		}
+		if (style.docbookitemwrappertag() != "NONE")
+			openTag(xs, style.docbookitemwrappertag(), style.docbookitemwrapperattr(), style.docbookitemwrappertagtype());
 
 		// Generate the label, if need be. If it is taken from the text, sep != 0 and corresponds to the first
 		// character after the label.
@@ -580,9 +578,18 @@ void makeEnvironment(
 			// TODO: this always worked only by magic...
 			xs << ' ';
 		} else {
-			// Generate the rest of the paragraph, if need be.
-			par->simpleDocBookOnePar(buf, xs, runparams, text.outerFont(std::distance(text.paragraphs().begin(), par)),
-							         true, true, sep);
+			// Generate the rest of the paragraph, if need be. Open as many inner tags as necessary.
+			auto pars = par->simpleDocBookOnePar(buf, runparams, text.outerFont(std::distance(text.paragraphs().begin(), par)), sep);
+			auto p = pars.begin();
+			while (true) {
+				xs << XMLStream::ESCAPE_NONE << *p;
+				++p;
+				if (p != pars.end()) {
+					closeTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnertagtype());
+					openTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnerattr(), par->layout().docbookiteminnertagtype());
+				} else
+					break;
+			}
 		}
 	} else {
 		makeAny(text, buf, xs, runparams, par);
@@ -612,8 +619,10 @@ void makeCommand(
 	auto prevpar = text.paragraphs().getParagraphBefore(par);
 	openParTag(xs, &*par, prevpar);
 
-	par->simpleDocBookOnePar(buf, xs, runparams,
-	                         text.outerFont(distance(begin, par)));
+	auto pars = par->simpleDocBookOnePar(buf, runparams,text.outerFont(distance(begin, par)));
+	for (auto & parXML : pars)
+		// TODO: decide what to do with openParTag/closeParTag in new lines.
+		xs << XMLStream::ESCAPE_NONE << parXML;
 
 	closeParTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr);
 }

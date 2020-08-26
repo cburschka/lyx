@@ -27479,6 +27479,8 @@ status collapsed
 
 \change_inserted 1075283030 1597698872
 DocBookTagType
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -27542,6 +27544,8 @@ status collapsed
 
 \change_inserted 1075283030 1597698987
 DocBook*TagType
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -27563,6 +27567,8 @@ status collapsed
 
 \change_inserted 1075283030 1597699012
 block
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -27621,6 +27627,8 @@ status collapsed
 
 \change_inserted 1075283030 1597699113
 paragraph
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -27667,6 +27675,8 @@ status collapsed
 
 \change_inserted 1075283030 1597699307
 inline
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -27702,6 +27712,8 @@ status collapsed
 
 \change_inserted 1075283030 1597699585
 block
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -28415,8 +28427,34 @@ NONE
  This parameter only makes sense when itemising layouts are used, such as
  lists.
  
-\change_inserted 1075283030 1597699848
+\change_inserted 1075283030 1598469472
+The most likely value is 
+\begin_inset Quotes eld
+\end_inset
 
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1598469476
+para
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+When a list item is split using a new line, the item inner tag will be repeated
+ for each part of the paragraph, parts being separated by new lines.
+ 
 \end_layout
 
 \begin_layout Description
@@ -28429,6 +28467,8 @@ status collapsed
 
 \change_inserted 1075283030 1597699853
 DocBookItemInnerTagType
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -28441,6 +28481,8 @@ status collapsed
 
 \change_inserted 1075283030 1597699866
 block, paragraph, inline
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -28594,6 +28636,8 @@ status collapsed
 
 \change_inserted 1075283030 1597699880
 DocBookItemLabelTagType
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -28606,6 +28650,8 @@ status collapsed
 
 \change_inserted 1075283030 1597699874
 block, paragraph, inline
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -28715,6 +28761,8 @@ status collapsed
 
 \change_inserted 1075283030 1597699890
 DocBookItemTagType
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -28727,6 +28775,8 @@ status collapsed
 
 \change_inserted 1075283030 1597699890
 block, paragraph, inline
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -28898,6 +28948,8 @@ status collapsed
 
 \change_inserted 1075283030 1597699900
 DocBookItemWrapperTagType
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -28910,6 +28962,8 @@ status collapsed
 
 \change_inserted 1075283030 1597699897
 block, paragraph, inline
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -29075,6 +29129,8 @@ status collapsed
 
 \change_inserted 1075283030 1597699904
 DocBookInnerTagType
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -29087,6 +29143,8 @@ status collapsed
 
 \change_inserted 1075283030 1597699904
 block, paragraph, inline
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -29238,6 +29296,8 @@ status collapsed
 
 \change_inserted 1075283030 1597699924
 DocBookTagType
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -29250,6 +29310,8 @@ status collapsed
 
 \change_inserted 1075283030 1597699924
 block, paragraph, inline
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -29415,6 +29477,8 @@ status collapsed
 
 \change_inserted 1075283030 1597699932
 DocBookWrapperTagType
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -29427,6 +29491,8 @@ status collapsed
 
 \change_inserted 1075283030 1597699929
 block, paragraph, inline
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -29635,6 +29701,8 @@ status collapsed
 
 \change_inserted 1075283030 1597700120
 biblioentry
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -29660,6 +29728,8 @@ status collapsed
 
 \change_inserted 1075283030 1597700076
 bibliomixed
+\change_unchanged
+
 \end_layout
 
 \end_inset
