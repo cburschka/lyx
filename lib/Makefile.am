@@ -626,6 +626,7 @@ dist_images_DATA1X = \
 	images/layout-toggle_List.svgz \
 	images/layout-toggle_LyX-Code.svgz \
 	images/layout-toggle_Section.svgz \
+	images/lyx.svg \
 	images/lyxfiles-system.svgz \
 	images/lyxfiles-user.svgz \
 	images/lyx-quit.svgz \
