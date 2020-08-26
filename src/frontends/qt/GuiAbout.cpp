@@ -328,6 +328,7 @@ GuiAbout::GuiAbout(GuiView & lv)
 	d->ui.iconLA->setPixmap(icon.scaled(iconsize, iconsize,
 					    Qt::IgnoreAspectRatio,
 					    Qt::SmoothTransformation));
+	d->ui.iconLA->setFixedWidth(iconsize);
 	d->ui.dirLibraryLA->setText(dirLibrary());
 	d->ui.dirUserLA->setText(dirUser());
 	d->ui.buildinfoTB->setText(buildinfo());
