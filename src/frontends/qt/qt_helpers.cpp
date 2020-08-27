@@ -298,7 +298,8 @@ void showDirectory(FileName const & directory)
 		LYXERR0("Unable to open QUrl even though dir exists!");
 }
 
-void showTarget(string const & target, string const & pdfv, string const & psv){
+void showTarget(string const & target, string const & pdfv, string const & psv)
+{
 	LYXERR(Debug::INSETS, "Showtarget:" << target << "\n");
 	if (prefixIs(target, "EXTERNAL ")) {
 		if (!lyxrc.citation_search)
@@ -311,12 +312,23 @@ void showTarget(string const & target, string const & pdfv, string const & psv){
 			opts += " -w " + psv;
 		if (!opts.empty())
 			opts += " ";
-		FuncRequest cmd = FuncRequest(LFUN_VC_COMMAND,"U . \"" +
-		                  lyxrc.citation_search_view + " " + opts + tar + "\"");
-		lyx::dispatch(cmd);
+		Systemcall one;
+		string const command = lyxrc.citation_search_view + " " + opts + tar;
+		int const result = one.startscript(Systemcall::Wait, command);
+		if (result == 1)
+			// Script failed
+			frontend::Alert::error(_("Could not open file"),
+				_("The lyxpaperview script failed."));
+		else if (result == 2)
+			frontend::Alert::error(_("Could not open file"),
+				bformat(_("No file was found using the pattern `%1$s'."),
+					from_utf8(tar)));
 		return;
 	}
-	QDesktopServices::openUrl(QUrl(toqstr(target), QUrl::TolerantMode));
+	if (!QDesktopServices::openUrl(QUrl(toqstr(target), QUrl::TolerantMode)))
+		frontend::Alert::error(_("Could not open file"),
+			bformat(_("The target `%1$s' could not be resolved."),
+				from_utf8(target)));
 }
 } // namespace frontend
 

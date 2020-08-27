@@ -122,7 +122,7 @@ def main(argv):
     result = find(args, path = os.environ["HOME"])
     if result == "":
         message("no document found!")
-        return 0
+        exit(2)
     else:
         message("found document %s" % result)
 
@@ -140,7 +140,7 @@ def main(argv):
     
     subprocess.call([viewer, result])
     
-    return 0
+    exit(0)
 
 if __name__ == "__main__":
     main(sys.argv)
