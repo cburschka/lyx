@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-08-27 08:50+0200\n"
-"PO-Revision-Date: 2020-08-27 08:57+0200\n"
+"POT-Creation-Date: 2020-08-27 12:54+0200\n"
+"PO-Revision-Date: 2020-08-27 12:58+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -835,7 +835,7 @@ msgstr "A&lle hinzufügen"
 #: src/Buffer.cpp:4693 src/Buffer.cpp:4787 src/LyXVC.cpp:114 src/LyXVC.cpp:304
 #: src/buffer_funcs.cpp:78 src/frontends/qt/GuiBranches.cpp:219
 #: src/frontends/qt/GuiClipboard.cpp:247 src/frontends/qt/GuiDocument.cpp:2786
-#: src/frontends/qt/GuiParagraph.cpp:164 src/frontends/qt/GuiPrefs.cpp:3357
+#: src/frontends/qt/GuiParagraph.cpp:164 src/frontends/qt/GuiPrefs.cpp:3365
 #: src/frontends/qt/GuiView.cpp:2650 src/frontends/qt/GuiView.cpp:2881
 #: src/frontends/qt/GuiView.cpp:2905 src/frontends/qt/GuiView.cpp:2919
 #: src/frontends/qt/GuiView.cpp:3021 src/frontends/qt/GuiView.cpp:3066
@@ -3884,8 +3884,8 @@ msgid "&Modify"
 msgstr "&Ändern"
 
 #: src/frontends/qt/ui/PrefConvertersUi.ui:286
-#: src/frontends/qt/ui/PrefShortcutsUi.ui:61 src/frontends/qt/GuiPrefs.cpp:3092
-#: src/frontends/qt/GuiPrefs.cpp:3179
+#: src/frontends/qt/ui/PrefShortcutsUi.ui:61 src/frontends/qt/GuiPrefs.cpp:3100
+#: src/frontends/qt/GuiPrefs.cpp:3187
 msgid "Remo&ve"
 msgstr "&Entfernen"
 
@@ -27028,11 +27028,11 @@ msgstr "%1$s[[Name]] (%2$s[[Email]])"
 msgid "ERROR!"
 msgstr "FEHLER!"
 
-#: src/BiblioInfo.cpp:1386
+#: src/BiblioInfo.cpp:1396
 msgid "No year"
 msgstr "Kein Jahr"
 
-#: src/BiblioInfo.cpp:1396
+#: src/BiblioInfo.cpp:1406
 msgid "Bibliography entry not found!"
 msgstr "Literaturverzeichnis-Eintrag nicht gefunden!"
 
@@ -28077,7 +28077,9 @@ msgstr ""
 "%1$s\n"
 "ist nicht lesbar."
 
-#: src/BufferView.cpp:3366 src/output.cpp:39
+#: src/BufferView.cpp:3366 src/frontends/qt/qt_helpers.cpp:324
+#: src/frontends/qt/qt_helpers.cpp:327 src/frontends/qt/qt_helpers.cpp:333
+#: src/output.cpp:39
 msgid "Could not open file"
 msgstr "Die Datei konnte nicht geöffnet werden"
 
@@ -31042,7 +31044,7 @@ msgstr "Über LyX"
 msgid "About %1"
 msgstr "Über %1"
 
-#: src/frontends/qt/GuiApplication.cpp:651 src/frontends/qt/GuiPrefs.cpp:3470
+#: src/frontends/qt/GuiApplication.cpp:651 src/frontends/qt/GuiPrefs.cpp:3478
 msgid "Preferences"
 msgstr "Einstellungen"
 
@@ -33457,62 +33459,62 @@ msgstr "Dokument-Handhabung"
 msgid "Control"
 msgstr "Kontrolle"
 
-#: src/frontends/qt/GuiPrefs.cpp:2852
+#: src/frontends/qt/GuiPrefs.cpp:2860
 msgid "Shortcuts"
 msgstr "Tastenkürzel"
 
-#: src/frontends/qt/GuiPrefs.cpp:2859
+#: src/frontends/qt/GuiPrefs.cpp:2867
 msgid "Function"
 msgstr "Funktion"
 
-#: src/frontends/qt/GuiPrefs.cpp:2860
+#: src/frontends/qt/GuiPrefs.cpp:2868
 msgid "Shortcut"
 msgstr "Tastenkürzel"
 
-#: src/frontends/qt/GuiPrefs.cpp:2937
+#: src/frontends/qt/GuiPrefs.cpp:2945
 msgid "Cursor, Mouse and Editing Functions"
 msgstr "Cursor-, Maus- und Bearbeitungsfunktionen"
 
-#: src/frontends/qt/GuiPrefs.cpp:2941
+#: src/frontends/qt/GuiPrefs.cpp:2949
 msgid "Mathematical Symbols"
 msgstr "Mathematische Symbole"
 
-#: src/frontends/qt/GuiPrefs.cpp:2945
+#: src/frontends/qt/GuiPrefs.cpp:2953
 msgid "Document and Window"
 msgstr "Dokument und Arbeitsbereich"
 
-#: src/frontends/qt/GuiPrefs.cpp:2949
+#: src/frontends/qt/GuiPrefs.cpp:2957
 msgid "Font, Layouts and Textclasses"
 msgstr "Schriften, Absatzformate und Textklassen"
 
-#: src/frontends/qt/GuiPrefs.cpp:2953
+#: src/frontends/qt/GuiPrefs.cpp:2961
 msgid "System and Miscellaneous"
 msgstr "System und Verschiedenes"
 
-#: src/frontends/qt/GuiPrefs.cpp:3090 src/frontends/qt/GuiPrefs.cpp:3151
+#: src/frontends/qt/GuiPrefs.cpp:3098 src/frontends/qt/GuiPrefs.cpp:3159
 msgid "Res&tore"
 msgstr "Zurüc&ksetzen"
 
-#: src/frontends/qt/GuiPrefs.cpp:3319 src/frontends/qt/GuiPrefs.cpp:3328
-#: src/frontends/qt/GuiPrefs.cpp:3334 src/frontends/qt/GuiPrefs.cpp:3397
+#: src/frontends/qt/GuiPrefs.cpp:3327 src/frontends/qt/GuiPrefs.cpp:3336
+#: src/frontends/qt/GuiPrefs.cpp:3342 src/frontends/qt/GuiPrefs.cpp:3405
 msgid "Failed to create shortcut"
 msgstr "Erstellen des Tastenkürzels fehlgeschlagen"
 
-#: src/frontends/qt/GuiPrefs.cpp:3320
+#: src/frontends/qt/GuiPrefs.cpp:3328
 msgid "Unknown or invalid LyX function"
 msgstr "Unbekannte oder ungültige LyX-Funktion"
 
-#: src/frontends/qt/GuiPrefs.cpp:3329
+#: src/frontends/qt/GuiPrefs.cpp:3337
 msgid "This LyX function is hidden and cannot be bound."
 msgstr ""
 "Dies ist eine versteckte LyX-Funktion. Sie kann nicht mit einer "
 "Tastenkombination belegt werden."
 
-#: src/frontends/qt/GuiPrefs.cpp:3335
+#: src/frontends/qt/GuiPrefs.cpp:3343
 msgid "Invalid or empty key sequence"
 msgstr "Ungültige oder leere Tastensequenz"
 
-#: src/frontends/qt/GuiPrefs.cpp:3350
+#: src/frontends/qt/GuiPrefs.cpp:3358
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to %2$s.\n"
@@ -33522,19 +33524,19 @@ msgstr ""
 "Sind Sie sicher, dass Sie dies aufheben und das\n"
 "Tastenkürzel mit %3$s belegen wollen?"
 
-#: src/frontends/qt/GuiPrefs.cpp:3356
+#: src/frontends/qt/GuiPrefs.cpp:3364
 msgid "Redefine shortcut?"
 msgstr "Tastenkürzel neu definieren?"
 
-#: src/frontends/qt/GuiPrefs.cpp:3357
+#: src/frontends/qt/GuiPrefs.cpp:3365
 msgid "&Redefine"
 msgstr "&Neu Definieren"
 
-#: src/frontends/qt/GuiPrefs.cpp:3398
+#: src/frontends/qt/GuiPrefs.cpp:3406
 msgid "Can not insert shortcut to the list"
 msgstr "Kann Tastenkürzel nicht in Liste einfügen"
 
-#: src/frontends/qt/GuiPrefs.cpp:3429
+#: src/frontends/qt/GuiPrefs.cpp:3437
 msgid "Identity"
 msgstr "Identität"
 
@@ -34949,16 +34951,48 @@ msgstr ""
 "LyX bietet keine LaTeX-Unterstützung für Dateinamen, die eines der folgenden "
 "Zeichen enthalten:\n"
 
-#: src/frontends/qt/qt_helpers.cpp:354
+#: src/frontends/qt/qt_helpers.cpp:293
+msgid "Invalid URL"
+msgstr "Ungültige URL"
+
+#: src/frontends/qt/qt_helpers.cpp:294
+#, c-format
+msgid "The URL `%1$s' could not be resolved."
+msgstr "Die URL ,%1$s` konnte nicht aufgelöst werden."
+
+#: src/frontends/qt/qt_helpers.cpp:300
+msgid "URL could not be accessed"
+msgstr "URL nicht zugänglich."
+
+#: src/frontends/qt/qt_helpers.cpp:301
+#, c-format
+msgid "The URL `%1$s' could not be opened although it exists!"
+msgstr "Die URL ,%1$s` konnte nicht geöffnet werden, obwohl sie existiert!"
+
+#: src/frontends/qt/qt_helpers.cpp:325
+msgid "The lyxpaperview script failed."
+msgstr "Das Skript lyxpaperview ist fehlgeschlagen."
+
+#: src/frontends/qt/qt_helpers.cpp:328
+#, c-format
+msgid "No file was found using the pattern `%1$s'."
+msgstr "Mit dem Suchmuster ,%1$s` konnte keine Datei gefunden werden."
+
+#: src/frontends/qt/qt_helpers.cpp:334
+#, c-format
+msgid "The target `%1$s' could not be resolved."
+msgstr "Das Verweisziel ,%1$s` konnte nicht aufgelöst werden."
+
+#: src/frontends/qt/qt_helpers.cpp:370
 msgid "Could not update TeX information"
 msgstr "Die TeX-Informationen konnten nicht aktualisiert werden"
 
-#: src/frontends/qt/qt_helpers.cpp:355
+#: src/frontends/qt/qt_helpers.cpp:371
 #, c-format
 msgid "The script `%1$s' failed."
 msgstr "Das Skript ,%1$s` ist fehlgeschlagen."
 
-#: src/frontends/qt/qt_helpers.cpp:603
+#: src/frontends/qt/qt_helpers.cpp:619
 msgid "All Files "
 msgstr "Alle Dateien "
 
