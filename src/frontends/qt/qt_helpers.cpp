@@ -292,14 +292,14 @@ void showDirectory(FileName const & directory)
 	if (!qurl.isValid()) {
 		frontend::Alert::error(_("Invalid URL"),
 			bformat(_("The URL `%1$s' could not be resolved."),
-				qstring_to_ucs4(qurl.url())));
+				qstring_to_ucs4(qurl.toString())));
 		return;
 
 	}
 	if (!QDesktopServices::openUrl(qurl))
 		frontend::Alert::error(_("URL could not be accessed"),
 			bformat(_("The URL `%1$s' could not be opened although it exists!"),
-				qstring_to_ucs4(qurl.url())));
+				qstring_to_ucs4(qurl.toString())));
 }
 
 void showTarget(string const & target, string const & pdfv, string const & psv)
