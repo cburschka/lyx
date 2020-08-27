@@ -215,7 +215,9 @@ void InsetCitation::openCitation()
 		titledata = subst(titledata, from_ascii(" and "), from_ascii(" "));
 		bi.getLocators(kvar, doi, url, file);
 		LYXERR(Debug::INSETS, "Locators: doi:" << doi << " url:"
-		        << url << " file:" << file << " title data:" << titledata);
+		        << url << " file:" << file << " title data:" << titledata
+		        << " citation search: " << lyxrc.citation_search
+		        << " citation search pattern: " << lyxrc.citation_search_pattern);
 		docstring locator;
 		if (!file.empty()) {
 			locator = file;

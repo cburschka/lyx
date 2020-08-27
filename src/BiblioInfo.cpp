@@ -488,8 +488,8 @@ docstring processRichtext(docstring const & str, bool richtext)
 //////////////////////////////////////////////////////////////////////
 
 BibTeXInfo::BibTeXInfo(docstring const & key, docstring const & type)
-	: is_bibtex_(true), bib_key_(key), num_bib_key_(0), entry_type_(type), info_(),
-	  modifier_(0)
+	: is_bibtex_(true), bib_key_(key), num_bib_key_(0), entry_type_(type),
+	  info_(), format_(), modifier_(0)
 {}
 
 
@@ -1000,6 +1000,19 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfoList const & xrefs,
 {
 	bool const richtext = ci.richtext;
 
+	CiteEngineType const engine_type = buf.params().citeEngineType();
+	DocumentClass const & dc = buf.params().documentClass();
+	docstring const & format = format_in.empty()? 
+				from_utf8(dc.getCiteFormat(engine_type, to_utf8(entry_type_)))
+			      : format_in;
+
+	if (format != format_) {
+		// clear caches since format changed
+		info_.clear();
+		info_richtext_.clear();
+		format_ = format;
+	}
+
 	if (!richtext && !info_.empty()) {
 		info_ = convertLaTeXCommands(processRichtext(info_, false));
 		return info_;
@@ -1013,11 +1026,6 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfoList const & xrefs,
 		return info_;
 	}
 
-	CiteEngineType const engine_type = buf.params().citeEngineType();
-	DocumentClass const & dc = buf.params().documentClass();
-	docstring const & format = format_in.empty()? 
-				from_utf8(dc.getCiteFormat(engine_type, to_utf8(entry_type_)))
-			      : format_in;
 	int counter = 0;
 	info_ = expandFormat(format, xrefs, counter, buf,
 		ci, false, false);

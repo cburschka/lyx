@@ -168,6 +168,8 @@ private:
 	mutable docstring info_;
 	/// a cache for getInfo(richtext = true)
 	mutable docstring info_richtext_;
+	/// cache for last format pattern
+	mutable docstring format_;
 	///
 	docstring cite_number_;
 	///
