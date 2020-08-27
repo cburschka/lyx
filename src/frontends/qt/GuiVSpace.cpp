@@ -188,18 +188,19 @@ void GuiVSpace::paramsToDialog(Inset const * inset)
 
 bool GuiVSpace::checkWidgets(bool readonly) const
 {
-	valueLE->setReadOnly(readonly);
 	keepCB->setEnabled(!readonly);
+	keepL->setEnabled(!readonly);
+	spacingCO->setEnabled(!readonly);
+	spacingL->setEnabled(!readonly);
 
-	if (readonly) {
-		spacingCO->setEnabled(false);
-		unitCO->setEnabled(false);
-	} else {
-		bool const enable = (spacingCO->currentIndex() == 7);
-		valueLE->setEnabled(enable);
-		valueL->setEnabled(enable);
-		unitCO->setEnabled(enable);
-	}
+	valueLE->setReadOnly(readonly);
+
+	bool const enable_custom =
+		!readonly && (spacingCO->currentIndex() == 7);
+
+	valueL->setEnabled(enable_custom);
+	valueLE->setEnabled(enable_custom);
+	unitCO->setEnabled(enable_custom);
 
 	return InsetParamsWidget::checkWidgets();
 }

@@ -293,13 +293,17 @@ docstring GuiHSpace::dialogToParams() const
 bool GuiHSpace::checkWidgets(bool readonly) const
 {
 	valueLE->setReadOnly(readonly);
-
+	spacingCO->setEnabled(!readonly);
+	spacingL->setEnabled(!readonly);
+	
 	if (readonly) {
-		spacingCO->setEnabled(false);
-		unitCO->setEnabled(false);
 		fillPatternCO->setEnabled(false);
+		fillPatternL->setEnabled(false);
 		keepCB->setEnabled(false);
+		keepL->setEnabled(false);
 		valueLE->setEnabled(false);
+		valueL->setEnabled(false);
+		unitCO->setEnabled(false);
 	} else
 		enableWidgets();
 
