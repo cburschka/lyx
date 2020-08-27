@@ -1000,8 +1000,10 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfoList const & xrefs,
 {
 	bool const richtext = ci.richtext;
 
-	if (!richtext && !info_.empty())
+	if (!richtext && !info_.empty()) {
+		info_ = convertLaTeXCommands(processRichtext(info_, false));
 		return info_;
+	}
 	if (richtext && !info_richtext_.empty())
 		return info_richtext_;
 
