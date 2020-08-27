@@ -193,10 +193,8 @@ bool InsetCitation::openCitationPossible() const
 			return true;
 	}
 
-	// last resort: is external script available?
-	if (!lyxrc.citation_search_view.empty())
-		return true;
-	return false;
+	// last resort: is external script activated?
+	return lyxrc.citation_search;
 }
 
 void InsetCitation::openCitation()
