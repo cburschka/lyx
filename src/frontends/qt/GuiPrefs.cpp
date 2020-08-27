@@ -2756,8 +2756,6 @@ PrefEdit::PrefEdit(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(cursorWidthSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
-	connect(citationSearchCB, SIGNAL(toggled(bool)),
-		this, SIGNAL(changed()));
 	connect(citationSearchLE, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(fullscreenWidthSB, SIGNAL(valueChanged(int)),
@@ -2779,6 +2777,14 @@ void PrefEdit::on_fullscreenLimitCB_toggled(bool const state)
 {
 	fullscreenWidthSB->setEnabled(state);
 	fullscreenWidthLA->setEnabled(state);
+	changed();
+}
+
+
+void PrefEdit::on_citationSearchCB_toggled(bool const state)
+{
+	citationSearchLE->setEnabled(state);
+	citationSearchLA->setEnabled(state);
 	changed();
 }
 
@@ -2821,6 +2827,8 @@ void PrefEdit::updateRC(LyXRC const & rc)
 	cursorWidthSB->setValue(rc.cursor_width);
 	citationSearchCB->setChecked(rc.citation_search);
 	citationSearchLE->setText(toqstr(rc.citation_search_pattern));
+	citationSearchLE->setEnabled(rc.citation_search);
+	citationSearchLA->setEnabled(rc.citation_search);
 	toggleScrollbarCB->setChecked(rc.full_screen_scrollbar);
 	toggleStatusbarCB->setChecked(rc.full_screen_statusbar);
 	toggleToolbarsCB->setChecked(rc.full_screen_toolbars);

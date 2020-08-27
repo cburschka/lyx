@@ -455,6 +455,7 @@ public:
 
 public Q_SLOTS:
 	void on_fullscreenLimitCB_toggled(bool);
+	void on_citationSearchCB_toggled(bool);
 };
 
 
