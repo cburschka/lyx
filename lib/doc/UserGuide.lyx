@@ -8742,12 +8742,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8760,6 +8762,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8783,6 +8786,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -31648,184 +31652,6 @@ Additional Features
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted 5863208 1598273424
-Bibliography entries allowing external view of the cited material
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 5863208 1598273449
-\SpecialChar LyX
- supports viewing the material the selected citation points to – though
- you need to satisfy some conditions so the 
-\family sans
-Open
-\begin_inset space ~
-\end_inset
-
-Citation
-\begin_inset space ~
-\end_inset
-
-Content
-\family default
- in the context menu of the citation inset is active and working.
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 5863208 1598270259
-There are several ways how to make this feature available:
-\end_layout
-
-\begin_layout Itemize
-
-\change_inserted 5863208 1598273631
-Have citations entries including any of the following fields: 
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 5863208 1598273574
-url
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
- or 
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 5863208 1598273595
-doi
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
- for BibTeX, 
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 5863208 1598273611
-eprint
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
- for BibLaTeX (covering arXiv, JSTOR, PubMed, HDL, Google Books 
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 5863208 1598273631
-eprinttype
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-).
- This will launch web browser with the appropriate link.
-\end_layout
-
-\begin_layout Itemize
-
-\change_inserted 5863208 1598273665
-Having fields pointing to local files on your disk: 
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 5863208 1598273656
-file
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
- (filled by JabRef), 
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 5863208 1598273665
-localfile
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
- (filled by KBibTeX).
- This will launch appropriate file viewer.
- At the moment only absolute paths are accepted.
-\change_unchanged
-
-\end_layout
-
-\begin_layout Itemize
-
-\change_inserted 5863208 1598273865
-Supplying your own script named either 
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 5863208 1598273683
-lyxpaperview
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
- or 
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 5863208 1598273697
-lyxpaperview.py
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-, which takes year and first author name as an input.
- It will be responsibility of this script to search for the appropriate
- file on your disk and launch the viewer.
- This script needs to be found among other executables so 
-\family sans
-Tools\SpecialChar menuseparator
-Reconfigure
-\family default
- can recognize it.
- Example templates with identical names can be found within your installation.
-\change_unchanged
-
-\end_layout
-
-\begin_layout Subsection
 Citation Format
 \begin_inset Index idx
 status collapsed
@@ -32348,6 +32174,192 @@ General text before
 General text after
 \family default
  fields you can add pre- and postnotes that apply to the whole list.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1598509964
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Opening-cited-documents"
+
+\end_inset
+
+Opening cited documents from within \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1598509000
+\SpecialChar LyX
+ supports opening documents selected citations point to via the 
+\family sans
+Try
+\begin_inset space ~
+\end_inset
+
+to
+\begin_inset space ~
+\end_inset
+
+Open
+\begin_inset space ~
+\end_inset
+
+Citation
+\begin_inset space ~
+\end_inset
+
+Content\SpecialChar ldots
+
+\family default
+ context menu if specific conditions are met:
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1598509037
+If citation entries include any of the fields 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1598508820
+url
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1598508820
+doi
+\end_layout
+
+\end_inset
+
+ for BibTeX, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1598508820
+eprint
+\end_layout
+
+\end_inset
+
+ for BibLaTeX (covering arXiv, JSTOR, PubMed, HDL, Google Books 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1598508820
+eprinttype
+\end_layout
+
+\end_inset
+
+), the action will launch a web browser with the appropriate link.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1598509157
+If citation entries include any of the fields 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1598508820
+file
+\end_layout
+
+\end_inset
+
+ (filled by JabRef) or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1598508820
+localfile
+\end_layout
+
+\end_inset
+
+ (filled by KBibTeX) containing an URL that points to a file on your local
+ drive, the action will launch an appropriate file viewer.
+ At the moment only absolute paths are accepted.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1598509196
+Note that \SpecialChar LyX
+ does not check if the URLs are valid.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1598509866
+In addition to that, \SpecialChar LyX
+ also searches your disk for matching files if you
+ enable 
+\family sans
+Search drive for cited files
+\family default
+ in 
+\family sans
+Tools\SpecialChar menuseparator
+Preferences\SpecialChar ldots
+\SpecialChar menuseparator
+Edit\SpecialChar menuseparator
+Control
+\family default
+.
+ It uses the tokens supplied at 
+\family sans
+Pattern
+\family default
+ in the same preferences section (by default: year and authors).
+ Any of the tokens in the pattern must occur in the title (at arbitrary
+ position).
+ The pattern syntax uses specific keywords.
+ These are basically Bib\SpecialChar TeX
+ keys embraced in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1598509565
+%
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, but there are also special keys, which are documented in the Customization
+ manual, sec.
+ 
+\emph on
+Cite format description
+\emph default
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -49818,6 +49830,59 @@ Math Macros
 Math
 \emph default
  manual.
+\change_inserted -712698321 1598509726
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1598509987
+The option 
+\family sans
+Search drive for cited files
+\family default
+ allows \SpecialChar LyX
+ to query your disk for cited documents when using the 
+\family sans
+Try
+\begin_inset space ~
+\end_inset
+
+to
+\begin_inset space ~
+\end_inset
+
+Open
+\begin_inset space ~
+\end_inset
+
+Citation
+\begin_inset space ~
+\end_inset
+
+Content\SpecialChar ldots
+
+\family default
+ context menu on a citation.
+ The 
+\family sans
+Patterns
+\family default
+ field determines the search pattern.
+ See sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Opening-cited-documents"
+
+\end_inset
+
+ for details.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsubsection

@@ -128,7 +128,7 @@ Menuset
 		CiteStyles
 		Separator
 		Item "Settings...|S" "inset-settings"
-		Item "Open Citation Content...|O" "inset-edit"
+		Item "Try to Open Citation Content...|O" "inset-edit"
 	End
 
 

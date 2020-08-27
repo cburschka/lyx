@@ -2511,7 +2511,6 @@ dist_scripts_DATA += \
 	scripts/legacy_lyxpreview2ppm.py \
 	scripts/listerrors \
 	scripts/lyxpak.py \
-	scripts/lyxpaperview \
 	scripts/lyxpaperview.py \
 	scripts/lyxpreview2bitmap.py \
 	scripts/lyxpreview_tools.py \

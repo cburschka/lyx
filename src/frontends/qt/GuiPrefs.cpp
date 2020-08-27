@@ -2756,7 +2756,9 @@ PrefEdit::PrefEdit(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(cursorWidthSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
-	connect(fullscreenLimitGB, SIGNAL(clicked()),
+	connect(citationSearchCB, SIGNAL(toggled(bool)),
+		this, SIGNAL(changed()));
+	connect(citationSearchLE, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(fullscreenWidthSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
@@ -2770,6 +2772,14 @@ PrefEdit::PrefEdit(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(toggleToolbarsCB, SIGNAL(toggled(bool)),
 		this, SIGNAL(changed()));
+}
+
+
+void PrefEdit::on_fullscreenLimitCB_toggled(bool const state)
+{
+	fullscreenWidthSB->setEnabled(state);
+	fullscreenWidthLA->setEnabled(state);
+	changed();
 }
 
 
@@ -2787,13 +2797,15 @@ void PrefEdit::applyRC(LyXRC & rc) const
 		case 2:	rc.macro_edit_style = LyXRC::MACRO_EDIT_LIST;	break;
 	}
 	rc.cursor_width = cursorWidthSB->value();
+	rc.citation_search = citationSearchCB->isChecked();
+	rc.citation_search_pattern = fromqstr(citationSearchLE->text());
 	rc.full_screen_toolbars = toggleToolbarsCB->isChecked();
 	rc.full_screen_scrollbar = toggleScrollbarCB->isChecked();
 	rc.full_screen_statusbar = toggleStatusbarCB->isChecked();
 	rc.full_screen_tabbar = toggleTabbarCB->isChecked();
 	rc.full_screen_menubar = toggleMenubarCB->isChecked();
 	rc.full_screen_width = fullscreenWidthSB->value();
-	rc.full_screen_limit = fullscreenLimitGB->isChecked();
+	rc.full_screen_limit = fullscreenLimitCB->isChecked();
 }
 
 
@@ -2807,13 +2819,17 @@ void PrefEdit::updateRC(LyXRC const & rc)
 	groupEnvironmentsCB->setChecked(rc.group_layouts);
 	macroEditStyleCO->setCurrentIndex(rc.macro_edit_style);
 	cursorWidthSB->setValue(rc.cursor_width);
+	citationSearchCB->setChecked(rc.citation_search);
+	citationSearchLE->setText(toqstr(rc.citation_search_pattern));
 	toggleScrollbarCB->setChecked(rc.full_screen_scrollbar);
 	toggleStatusbarCB->setChecked(rc.full_screen_statusbar);
 	toggleToolbarsCB->setChecked(rc.full_screen_toolbars);
 	toggleTabbarCB->setChecked(rc.full_screen_tabbar);
 	toggleMenubarCB->setChecked(rc.full_screen_menubar);
 	fullscreenWidthSB->setValue(rc.full_screen_width);
-	fullscreenLimitGB->setChecked(rc.full_screen_limit);
+	fullscreenLimitCB->setChecked(rc.full_screen_limit);
+	fullscreenWidthSB->setEnabled(rc.full_screen_limit);
+	fullscreenWidthLA->setEnabled(rc.full_screen_limit);
 }
 
 

@@ -75,7 +75,8 @@ public:
 	/// \return formatted BibTeX data suitable for framing.
 	/// \param vector of pointers to crossref/xdata information
 	docstring const & getInfo(BibTeXInfoList const & xrefs,
-			Buffer const & buf, CiteItem const & ci) const;
+				  Buffer const & buf, CiteItem const & ci,
+				  docstring const & format = docstring()) const;
 	/// \return formatted BibTeX data for a citation label
 	docstring const getLabel(BibTeXInfoList const xrefs,
 		Buffer const & buf, docstring const & format,
@@ -227,7 +228,7 @@ public:
 	/// output any richtext tags marked in the citation format and escape < and >
 	/// elsewhere, and the general output context.
 	docstring const getInfo(docstring const & key, Buffer const & buf,
-			CiteItem const & ci) const;
+			CiteItem const & ci, docstring const & format = docstring()) const;
 	/// \return formatted BibTeX data for citation labels.
 	/// Citation labels can have more than one key.
 	docstring const getLabel(std::vector<docstring> keys, Buffer const & buf,

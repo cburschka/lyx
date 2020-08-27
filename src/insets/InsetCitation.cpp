@@ -206,13 +206,18 @@ void InsetCitation::openCitation()
 	docstring const & key = getParam("key");
 
 	vector<docstring> keys = getVectorFromString(key);
-	docstring year, author, doi, url, file;
+	docstring titledata, doi, url, file;
 	for (docstring const & kvar : keys) {
-		year = bi.getYear(kvar, buffer(), false);
-		author = bi.getAuthorOrEditorList(kvar, buffer());
+		CiteItem ci;
+		titledata = bi.getInfo(kvar, buffer(), ci,
+				       from_ascii(lyxrc.citation_search_pattern));
+		// some cleanup: commas and " and ", as used in name lists,
+		// are not expected in file names
+		titledata = subst(titledata, ',', char());
+		titledata = subst(titledata, from_ascii(" and "), from_ascii(" "));
 		bi.getLocators(kvar, doi, url, file);
 		LYXERR(Debug::INSETS, "Locators: doi:" << doi << " url:"
-		        << url << " file:" << file << " author:" << author << " year:" << year);
+		        << url << " file:" << file << " title data:" << titledata);
 		docstring locator;
 		if (!file.empty()) {
 			locator = file;
@@ -221,7 +226,7 @@ void InsetCitation::openCitation()
 		} else if (!url.empty()) {
 			locator = url;
 		} else {
-			locator = "EXTERNAL " +  year + " " + author;
+			locator = "EXTERNAL " + titledata;
 		}
 		FuncRequest cmd = FuncRequest(LFUN_CITATION_OPEN, locator);
 		lyx::dispatch(cmd);

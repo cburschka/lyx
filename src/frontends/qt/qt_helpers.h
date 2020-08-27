@@ -101,9 +101,12 @@ void setSectionResizeMode(QHeaderView * view,
 	QHeaderView::ResizeMode mode);
 /// Shows a directory in OSs file browser
 void showDirectory(support::FileName const & directory);
-/// handle request for showing citation content - shows pdf or
-/// web page in target; external script can be used for pdf view
-void showTarget(std::string const & target);
+/// handle request for showing citation content - shows pdf/ps or
+/// web page in target; external script can be used for pdf/ps view
+/// \p pdfv takes a pad viewer, \p psv a ps viewer
+void showTarget(std::string const & target,
+		std::string const & pdfv,
+		std::string const & psv);
 
 } // namespace frontend
 

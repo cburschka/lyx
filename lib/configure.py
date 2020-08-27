@@ -1310,13 +1310,12 @@ def checkOtherEntries():
         rc_entry = [ r'\nomencl_command "makeindex -s nomencl.ist"' ])
     checkProg('a python-pygments driver command', ['pygmentize'],
         rc_entry = [ r'\pygmentize_command "%%"' ])
-    checkProg('external script for searching and showing citation sources',
-        ['lyxpaperview', 'lyxpaperview.py'], rc_entry = [ r'\citation_search_view "%%"' ])
     ## FIXME: OCTAVE is not used anywhere
     # path, OCTAVE = checkProg('Octave', ['octave'])
     ## FIXME: MAPLE is not used anywhere
     # path, MAPLE = checkProg('Maple', ['maple'])
     # Add the rest of the entries (no checkProg is required)
+    addToRC(r'''\citation_search_view "python -tt $$s/scripts/lyxpaperview.py"''')
     addToRC(r'''\copier    fig        "python -tt $$s/scripts/fig_copy.py $$i $$o"
 \copier    pstex      "python -tt $$s/scripts/tex_copy.py $$i $$o $$l"
 \copier    pdftex     "python -tt $$s/scripts/tex_copy.py $$i $$o $$l"

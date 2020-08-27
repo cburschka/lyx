@@ -4624,9 +4624,15 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			dr.screenUpdate(Update::Force);
 			break;
 
-		case LFUN_CITATION_OPEN:
-			frontend::showTarget(argument);
+		case LFUN_CITATION_OPEN: {
+			string pdfv, psv;
+			if (theFormats().getFormat("pdf"))
+				pdfv = theFormats().getFormat("pdf")->viewer();
+			if (theFormats().getFormat("ps"))
+				psv = theFormats().getFormat("ps")->viewer();
+			frontend::showTarget(argument, pdfv, psv);
 			break;
+		}
 
 		default:
 			// The LFUN must be for one of BufferView, Buffer or Cursor;

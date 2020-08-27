@@ -996,7 +996,7 @@ docstring BibTeXInfo::expandFormat(docstring const & format,
 
 
 docstring const & BibTeXInfo::getInfo(BibTeXInfoList const & xrefs,
-	Buffer const & buf, CiteItem const & ci) const
+	Buffer const & buf, CiteItem const & ci, docstring const & format_in) const
 {
 	bool const richtext = ci.richtext;
 
@@ -1013,8 +1013,9 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfoList const & xrefs,
 
 	CiteEngineType const engine_type = buf.params().citeEngineType();
 	DocumentClass const & dc = buf.params().documentClass();
-	docstring const & format =
-		from_utf8(dc.getCiteFormat(engine_type, to_utf8(entry_type_)));
+	docstring const & format = format_in.empty()? 
+				from_utf8(dc.getCiteFormat(engine_type, to_utf8(entry_type_)))
+			      : format_in;
 	int counter = 0;
 	info_ = expandFormat(format, xrefs, counter, buf,
 		ci, false, false);
@@ -1388,7 +1389,7 @@ docstring const BiblioInfo::getYear(docstring const & key, Buffer const & buf, b
 
 
 docstring const BiblioInfo::getInfo(docstring const & key,
-	Buffer const & buf, CiteItem const & ci) const
+	Buffer const & buf, CiteItem const & ci, docstring const & format) const
 {
 	BiblioInfo::const_iterator it = find(key);
 	if (it == end())
@@ -1400,7 +1401,7 @@ docstring const BiblioInfo::getInfo(docstring const & key,
 		if (xrefit != end())
 			xrefptrs.push_back(&(xrefit->second));
 	}
-	return data.getInfo(xrefptrs, buf, ci);
+	return data.getInfo(xrefptrs, buf, ci, format);
 }
 
 

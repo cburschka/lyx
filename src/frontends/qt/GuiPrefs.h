@@ -452,6 +452,9 @@ public:
 
 	void applyRC(LyXRC & rc) const;
 	void updateRC(LyXRC const & rc);
+
+public Q_SLOTS:
+	void on_fullscreenLimitCB_toggled(bool);
 };
 
 

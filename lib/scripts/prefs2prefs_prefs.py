@@ -130,7 +130,8 @@
 #   No convergence necessary.
 
 # Incremented to format 33, by sanda
-#   Add \citation_search_view.
+#   Add \citation_search, \citation_search_pattern
+#   and \citation_search_view.
 #   No conversion necessary.
 
 

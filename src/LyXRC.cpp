@@ -78,6 +78,8 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\bind_file", LyXRC::RC_BINDFILE },
 	{ "\\check_lastfiles", LyXRC::RC_CHECKLASTFILES },
 	{ "\\chktex_command", LyXRC::RC_CHKTEX_COMMAND },
+	{ "\\citation_search", LyXRC::RC_CITATION_SEARCH },
+	{ "\\citation_search_pattern", LyXRC::RC_CITATION_SEARCH_PATTERN },
 	{ "\\citation_search_view", LyXRC::RC_CITATION_SEARCH_VIEW },
 	{ "\\close_buffer_with_last_view", LyXRC::RC_CLOSE_BUFFER_WITH_LAST_VIEW },
 	{ "\\completion_cursor_text", LyXRC::RC_COMPLETION_CURSOR_TEXT },
@@ -680,8 +682,18 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			}
 			break;
 
+		case RC_CITATION_SEARCH:
+			lexrc >> citation_search;
+			break;
+
+		case RC_CITATION_SEARCH_PATTERN:
+			if (lexrc.next())
+				citation_search_pattern = lexrc.getString();
+			break;
+
 		case RC_CITATION_SEARCH_VIEW:
-			lexrc >> citation_search_view;
+			if (lexrc.next())
+				citation_search_view = lexrc.getString();
 			break;
 
 		case RC_CT_ADDITIONS_UNDERLINED:
@@ -1607,11 +1619,32 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (tag != RC_LAST)
 			break;
 		// fall through
+	case RC_CITATION_SEARCH:
+		if (ignore_system_lyxrc ||
+		    citation_search != system_lyxrc.citation_search) {
+			os << "# Set to true to use script to search\n"
+			   << "# locl disk for citation targets.\n"
+			   << "\\citation_search "
+			   << convert<string>(citation_search)
+			   << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+		// fall through
 	case RC_CITATION_SEARCH_VIEW:
 		if (ignore_system_lyxrc ||
 		    citation_search_view != system_lyxrc.citation_search_view) {
-			os << "\\citaton_search_view "
-			   << citation_search_view << '\n';
+			os << "\\citation_search_view \""
+			   << citation_search_view << "\"\n";
+		}
+		if (tag != RC_LAST)
+			break;
+		// fall through
+	case RC_CITATION_SEARCH_PATTERN:
+		if (ignore_system_lyxrc ||
+		    citation_search_pattern != system_lyxrc.citation_search_pattern) {
+			os << "\\citation_search_pattern \""
+			   << citation_search_pattern << "\"\n";
 		}
 		if (tag != RC_LAST)
 			break;
@@ -2788,6 +2821,8 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_BIBTEX_ALTERNATIVES:
 	case LyXRC::RC_BIBTEX_COMMAND:
 	case LyXRC::RC_BINDFILE:
+	case LyXRC::RC_CITATION_SEARCH:
+	case LyXRC::RC_CITATION_SEARCH_PATTERN:
 	case LyXRC::RC_CITATION_SEARCH_VIEW:
 	case LyXRC::RC_CHECKLASTFILES:
 	case LyXRC::RC_COMPLETION_CURSOR_TEXT:

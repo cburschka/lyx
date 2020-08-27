@@ -298,15 +298,21 @@ void showDirectory(FileName const & directory)
 		LYXERR0("Unable to open QUrl even though dir exists!");
 }
 
-void showTarget(string const & target){
+void showTarget(string const & target, string const & pdfv, string const & psv){
 	LYXERR(Debug::INSETS, "Showtarget:" << target << "\n");
-	if (prefixIs(target,"EXTERNAL ")) {
-		if (lyxrc.citation_search_view.empty())
+	if (prefixIs(target, "EXTERNAL ")) {
+		if (!lyxrc.citation_search)
 			return;
-		string tmp,tar;
+		string tmp, tar, opts;
 		tar = split(target, tmp, ' ');
+		if (!pdfv.empty())
+			opts = " -v " + pdfv;
+		if (!psv.empty())
+			opts += " -w " + psv;
+		if (!opts.empty())
+			opts += " ";
 		FuncRequest cmd = FuncRequest(LFUN_VC_COMMAND,"U . \"" +
-		                  lyxrc.citation_search_view + " " + tar + "\"");
+		                  lyxrc.citation_search_view + " " + opts + tar + "\"");
 		lyx::dispatch(cmd);
 		return;
 	}
