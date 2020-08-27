@@ -84,7 +84,7 @@ def find(args, path):
                    # have this already
                    continue
                px = subprocess.Popen(['grep', '-i', arg], stdin=px.stdout, stdout=subprocess.PIPE)
-            p4 = subprocess.Popen(['head', '-n 2'], stdin=px.stdout, stdout=subprocess.PIPE)
+            p4 = subprocess.Popen(['head', '-n 1'], stdin=px.stdout, stdout=subprocess.PIPE)
             p1.stdout.close()
             output = p4.communicate()
             return output[0].decode("utf8")[:-1]# strip trailing '\n'
