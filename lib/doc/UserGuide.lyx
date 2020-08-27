@@ -32219,7 +32219,7 @@ Content\SpecialChar ldots
 
 \begin_layout Itemize
 
-\change_inserted -712698321 1598509037
+\change_inserted -712698321 1598526971
 If citation entries include any of the fields 
 \begin_inset Flex Code
 status collapsed
@@ -32228,6 +32228,8 @@ status collapsed
 
 \change_inserted -712698321 1598508820
 url
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -32240,11 +32242,13 @@ status collapsed
 
 \change_inserted -712698321 1598508820
 doi
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
- for BibTeX, 
+ for BibTeX and BibLaTeX, 
 \begin_inset Flex Code
 status collapsed
 
@@ -32252,6 +32256,8 @@ status collapsed
 
 \change_inserted -712698321 1598508820
 eprint
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -32264,6 +32270,8 @@ status collapsed
 
 \change_inserted -712698321 1598508820
 eprinttype
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -32282,6 +32290,8 @@ status collapsed
 
 \change_inserted -712698321 1598508820
 file
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -32294,6 +32304,8 @@ status collapsed
 
 \change_inserted -712698321 1598508820
 localfile
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -32305,14 +32317,7 @@ localfile
 
 \begin_layout Standard
 
-\change_inserted -712698321 1598509196
-Note that \SpecialChar LyX
- does not check if the URLs are valid.
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted -712698321 1598509866
+\change_inserted -712698321 1598526494
 In addition to that, \SpecialChar LyX
  also searches your disk for matching files if you
  enable 
@@ -32333,11 +32338,37 @@ Control
 Pattern
 \family default
  in the same preferences section (by default: year and authors).
- Any of the tokens in the pattern must occur in the title (at arbitrary
- position).
- The pattern syntax uses specific keywords.
+ Any of the tokens in the pattern must occur in the title of the file (at
+ arbitrary position).
+ \SpecialChar LyX
+ opens the first matching file it finds.
+ This might or might not be the file you are looking for; the more systematic
+ your file naming is, and the less ambiguous keywords you use, the greater
+ the chance this works for you.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1598527586
+The pattern syntax uses specific keywords.
  These are basically Bib\SpecialChar TeX
- keys embraced in 
+ fields (such as 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1598527586
+title
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+) embraced in 
 \begin_inset Flex Code
 status collapsed
 

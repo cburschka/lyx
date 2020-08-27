@@ -8649,10 +8649,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8665,6 +8667,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8688,6 +8691,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -30377,6 +30381,164 @@ Allgemeiner Text danach
  können Sie Text eingeben, der vor und nach der ganzen Liste steht.
 \end_layout
 
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Zitierte-Dokumente-oeffnen"
+
+\end_inset
+
+Zitierte Dokumente aus \SpecialChar LyX
+ heraus öffnen
+\end_layout
+
+\begin_layout Standard
+Unter bestimmten Bedingungen kann \SpecialChar LyX
+ über die Funktion 
+\family sans
+Versuche Literaturverweis-Inhalt zu öffnen \SpecialChar ldots
+
+\family default
+ im Kontextmenü von Literaturverweisen Dokumente öffnen, auf diese Literaturverw
+eise hinweisen.
+ Die Bedingungen sind die folgenden:
+\end_layout
+
+\begin_layout Itemize
+Wenn die entsprechenden Literatureinträge eines der folgenden Felder enthalten:
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+url
+\end_layout
+
+\end_inset
+
+ oder 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+doi
+\end_layout
+
+\end_inset
+
+ bei BibTeX und BibLaTeX, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+eprint
+\end_layout
+
+\end_inset
+
+ nur bei BibLaTeX (dort werden die 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+eprinttype
+\end_layout
+
+\end_inset
+
+-Typen arXiv, JSTOR, PubMed, HDL und Google Books unterstützt).
+ In dem Fall wird ein Browser mit dem entsprechenden Link geöffnet.
+\end_layout
+
+\begin_layout Itemize
+Wenn die entsprechenden Literatureinträge das Feld 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+file
+\end_layout
+
+\end_inset
+
+ (von JabRef verwendet) oder 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+localfile
+\end_layout
+
+\end_inset
+
+ (von KBibTeX verwendet) enthält, welches eine URL mit Verweis auf eine
+ Datei auf ihrer Festplatte zum Inhalt hat.
+ In dem Fall wird ein passender Dateibetrachter mit der Datei geöffnet.
+ Zurzeit funktioniert das nur mit absoluten Pfadangaben.
+\end_layout
+
+\begin_layout Standard
+Zusätzlich dazu sucht \SpecialChar LyX
+ auch auf Ihrer Festplatte nach passenden Dateien,
+ wenn Sie 
+\family sans
+Suche auf Festplatte nach zitierten Dateien
+\family default
+ in 
+\family sans
+Werkzeuge\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Bearbeiten\SpecialChar menuseparator
+Kontrolle
+\family default
+ aktiviert haben.
+ Dafür wird das Suchmuster verwendet, das im selben Abschnitt der Einstellungen
+ unter 
+\family sans
+Suchmuster
+\family default
+ angegeben ist (per Voreinstellungen sucht \SpecialChar LyX
+ nach Jahr und Autoren).
+ Jeder Suchbegriff muss im Titel der Datei vorkommen (an beliebiger Position).
+ \SpecialChar LyX
+ öffnet die erste Datei, auf die das Muster passt.
+ Das muss nicht unbedingt die Datei sein, nach der Sie suchen.
+ Grundsätzlich gilt: Je systematischer Sie ihre Dateien benennen und je
+ weniger mehrdeutig die Suchbegriffe sind, desto größer sind die Chancen
+ darauf, dass die richtige Datei gefunden wird.
+\end_layout
+
+\begin_layout Standard
+Das Suchmuster verwendet spezifische Schlüsselwörter.
+ Im Grunde sind das Bib\SpecialChar TeX
+-Felder (wie 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+title
+\end_layout
+
+\end_inset
+
+), die von 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+%
+\end_layout
+
+\end_inset
+
+ eingerahmt werden, aber es gibt auch spezielle Schlüsselwörter, die im
+ Handbuch Anpassung beschrieben sind (Abschnitt 
+\emph on
+Beschreibung des Literaturverweisformats
+\emph default
+).
+\end_layout
+
 \begin_layout Section
 Stichwortverzeichnisse
 \begin_inset CommandInset label
@@ -46337,6 +46499,41 @@ Mathe-Makros
 Mathe
 \emph default
  Handbuchs.
+\end_layout
+
+\begin_layout Standard
+Mit der Option 
+\family sans
+Suche auf Festplatte nach zitierten Dateien
+\family default
+ erlauben Sie \SpecialChar LyX
+ Ihre Festplatte zu durchsuchen, wenn Sie im Kontextmenü von
+ Literaturverweisen 
+\family sans
+Versuche Literaturverweis-Inhalt zu öffnen \SpecialChar ldots
+
+\family default
+ wählen.
+ Das Feld 
+\family sans
+Suchmuster
+\family default
+ bestimmt, wonach dabei genau gesucht wird.
+ Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Zitierte-Dokumente-oeffnen"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ erläutert die Details.
 \end_layout
 
 \begin_layout Subsubsection
