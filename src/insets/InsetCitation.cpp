@@ -211,7 +211,7 @@ void InsetCitation::openCitation()
 				       from_ascii(lyxrc.citation_search_pattern));
 		// some cleanup: commas and " and ", as used in name lists,
 		// are not expected in file names
-		titledata = subst(titledata, ',', char());
+		titledata = subst(titledata, from_ascii(","), docstring());
 		titledata = subst(titledata, from_ascii(" and "), from_ascii(" "));
 		bi.getLocators(kvar, doi, url, file);
 		LYXERR(Debug::INSETS, "Locators: doi:" << doi << " url:"
