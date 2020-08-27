@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-08-24 11:27+0200\n"
-"PO-Revision-Date: 2020-08-24 09:38+0000\n"
+"POT-Creation-Date: 2020-08-27 11:26+0200\n"
+"PO-Revision-Date: 2020-08-27 10:05+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3959,6 +3959,27 @@ msgstr "Triediť prostredia &abecedne"
 msgid "Cursor &follows scrollbar"
 msgstr "Kurzor &sleduje posuvník"
 
+#: src/frontends/qt/ui/PrefEditUi.ui:116
+msgid ""
+"If this is activated, LyX will search your disk for matching files when "
+"clicking on \"Try to Open Citation Content...\" in the citation context menu"
+msgstr ""
+"Keď aktivované, LyX bude hľadať vhodné súbory vo vašom disku pri kliknutí na "
+"\"Skús otvoriť obsah citácie…\" v menu kontextu citácie"
+
+#: src/frontends/qt/ui/PrefEditUi.ui:119
+msgid "Search &drive for cited files"
+msgstr "&Hľadať citované súbory na disku"
+
+#: src/frontends/qt/ui/PrefEditUi.ui:128
+msgid "Patte&rn:"
+msgstr "&Vzor:"
+
+#: src/frontends/qt/ui/PrefEditUi.ui:138
+msgid "Define search pattern (see UserGuide for syntax)"
+msgstr ""
+"Definuje vzorec vyhľadávania (syntax je opísaný v Užívateľskej príručke)"
+
 #: src/frontends/qt/ui/PrefEditUi.ui:74 src/LyXRC.cpp:3055
 msgid ""
 "Configure the width of the text cursor. Automatic zoom-controlled cursor "
@@ -4019,10 +4040,6 @@ msgstr "Skryť lišty &nástrojov"
 msgid "Hide scr&ollbar"
 msgstr "Skryť &posuvník"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:199
-msgid "Hide &tabbar"
-msgstr "Skryť lištu &dokumentov"
-
 #: src/frontends/qt/ui/PrefEditUi.ui:206
 msgid "Hide &menubar"
 msgstr "Skryť ponukovú &lištu"
@@ -4031,13 +4048,17 @@ msgstr "Skryť ponukovú &lištu"
 msgid "Hide sta&tusbar"
 msgstr "Skryť stavový p&ruh"
 
+#: src/frontends/qt/ui/PrefEditUi.ui:261
+msgid "H&ide tabbar"
+msgstr "Skr&yť lištu pod-okien"
+
 #: src/frontends/qt/ui/PrefEditUi.ui:220
 msgid "&Limit text width"
 msgstr "O&bmedz šírku textu"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:232
-msgid "Screen used (&pixels):"
-msgstr "Použitá šírka obrazovky (pix&el):"
+#: src/frontends/qt/ui/PrefEditUi.ui:277
+msgid "Screen used (pi&xels):"
+msgstr "Použitá šírka na obrazovke (pix&el):"
 
 #: src/frontends/qt/ui/PrefFileformatsUi.ui:46
 msgid "&New..."
@@ -19401,8 +19422,8 @@ msgid "Copy as Reference|C"
 msgstr "Kopírovať ako referenciu|p"
 
 #: lib/ui/stdcontext.inc:131
-msgid "Open Citation Content...|O"
-msgstr "Otvoriť obsah citácie…|O"
+msgid "Try to Open Citation Content...|O"
+msgstr "Skús otvoriť obsah citácie…|o"
 
 #: lib/ui/stdcontext.inc:141
 msgid "Edit Database(s) Externally...|x"
