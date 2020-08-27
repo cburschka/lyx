@@ -290,12 +290,16 @@ void showDirectory(FileName const & directory)
 	QUrl qurl(QUrl::fromLocalFile(QDir::toNativeSeparators(toqstr(directory.absFileName()))));
 	// Give hints in case of bugs
 	if (!qurl.isValid()) {
-		LYXERR0("QUrl is invalid!");
+		frontend::Alert::error(_("Invalid URL"),
+			bformat(_("The URL `%1$s' could not be resolved."),
+				qstring_to_ucs4(qurl.url())));
 		return;
 
 	}
 	if (!QDesktopServices::openUrl(qurl))
-		LYXERR0("Unable to open QUrl even though dir exists!");
+		frontend::Alert::error(_("URL could not be accessed"),
+			bformat(_("The URL `%1$s' could not be opened although it exists!"),
+				qstring_to_ucs4(qurl.url())));
 }
 
 void showTarget(string const & target, string const & pdfv, string const & psv)
