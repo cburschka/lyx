@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-08-27 11:26+0200\n"
-"PO-Revision-Date: 2020-08-27 10:05+0000\n"
+"POT-Creation-Date: 2020-08-27 12:15+0200\n"
+"PO-Revision-Date: 2020-08-27 10:26+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -34536,6 +34536,38 @@ msgid ""
 msgstr ""
 "LyX neposkytuje podporu pre LaTeX pri menách súborov obsahujúce niektoré z "
 "týchto znakov:\n"
+
+#: src/frontends/qt/qt_helpers.cpp:293
+msgid "Invalid URL"
+msgstr "Neplatný URL"
+
+#: src/frontends/qt/qt_helpers.cpp:294
+#, c-format
+msgid "The URL `%1$s' could not be resolved."
+msgstr "Adresa pre URL `%1$s' sa nedala vylúštiť."
+
+#: src/frontends/qt/qt_helpers.cpp:300
+msgid "URL could not be accessed"
+msgstr "URL je neprístupný"
+
+#: src/frontends/qt/qt_helpers.cpp:301
+#, c-format
+msgid "The URL `%1$s' could not be opened although it exists!"
+msgstr "URL `%1$s' sa nedal otvoriť aj keď existuje!"
+
+#: src/frontends/qt/qt_helpers.cpp:325
+msgid "The lyxpaperview script failed."
+msgstr "Skript 'lyxpaperview' zlyhal."
+
+#: src/frontends/qt/qt_helpers.cpp:328
+#, c-format
+msgid "No file was found using the pattern `%1$s'."
+msgstr "Nenašiel sa žiadny súbor zodpovedajúci vzoru `%1$s'."
+
+#: src/frontends/qt/qt_helpers.cpp:334
+#, c-format
+msgid "The target `%1$s' could not be resolved."
+msgstr "Cieľ `%1$s' sa nedal rozriešiť."
 
 #: src/frontends/qt/qt_helpers.cpp:344
 msgid "Could not update TeX information"
