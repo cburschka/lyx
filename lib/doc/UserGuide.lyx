@@ -8742,14 +8742,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8762,7 +8760,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8786,7 +8783,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -21771,7 +21767,6 @@ Each image can define a new group of image settings or join an existing
  the same way.
  So you can for example change the size for a bunch of images without the
  need to manually change each of them.
- 
 \end_layout
 
 \begin_layout Standard
@@ -21991,10 +21986,6 @@ B
 
 \begin_layout Plain Layout
 
-\size normal
-\noun off
-\color none
- 
 \end_layout
 
 \end_inset
@@ -22662,7 +22653,7 @@ TEL.
 \begin_inset Text
 
 \begin_layout Plain Layout
- 
+
 \series bold
 Example Phone List
 \end_layout
@@ -22726,7 +22717,7 @@ TEL.
 \begin_inset Text
 
 \begin_layout Plain Layout
- 
+
 \series bold
 continue ...
 \end_layout
@@ -23718,7 +23709,7 @@ Franz
 \begin_inset Text
 
 \begin_layout Plain Layout
- 
+
 \end_layout
 
 \end_inset
@@ -25025,12 +25016,11 @@ This is a multi-line entry in a table.
 Cutting and pasting between tables and table cells works reasonably well.
  You can even cut and paste more than one row.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Note that you cannot paste into a multicell selection because it would not
  be clear what to do when pasting a single word in a selected 2×3.
- 
 \end_layout
 
 \end_inset
@@ -25844,7 +25834,6 @@ Minipages
 \end_inset
 
 apply.
- 
 \end_layout
 
 \begin_layout Standard
@@ -34990,7 +34979,6 @@ status collapsed
  This means that the reader of your document will be able to click on a
  table of contents entry or on a reference to move to the cross-referenced
  part of the document.
- 
 \end_layout
 
 \begin_layout Standard
@@ -45942,7 +45930,6 @@ reference "sec:Document-Classes"
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Standard
@@ -50145,7 +50132,6 @@ Modifying an existing shortcut is done the same way.
  \SpecialChar LyX
  will then use the first function that is enabled in the current document
  part.
- 
 \end_layout
 
 \begin_layout Standard
