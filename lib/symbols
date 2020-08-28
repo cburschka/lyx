@@ -1073,12 +1073,12 @@ varoiintop         esint    033|034    0  mathop  &Conint;      &#x222F;        
 landupintop        esint    035|036    0  mathop  x             x               esint
 landdownintop      esint    037|038    0  mathop  x             x               esint
 
-\def\varointclockwise{\varointclockwiseop\limits}       mathop  &cwconint;    &#x2232;        esint
-\def\varointctrclockwise{\varointctrclockwiseop\limits} mathop  &awconint;    &#x2233;        esint
-\def\fint{\fintop\limits}                mathop  &#x2a0f;      &#x2a0f;        esint
-\def\varoiint{\varoiintop\limits}        mathop  &Conint;      &#x222F;        esint
-\def\landupint{\landupintop\limits}      mathop  x             x               esint
-\def\landdownint{\landdownintop\limits}  mathop  x             x               esint
+\def\varointclockwise{\varointclockwiseop\nolimits}       mathop  &cwconint;    &#x2232;        esint
+\def\varointctrclockwise{\varointctrclockwiseop\nolimits} mathop  &awconint;    &#x2233;        esint
+\def\fint{\fintop\nolimits}                mathop  &#x2a0f;      &#x2a0f;        esint
+\def\varoiint{\varoiintop\nolimits}        mathop  &Conint;      &#x222F;        esint
+\def\landupint{\landupintop\nolimits}      mathop  x             x               esint
+\def\landdownint{\landdownintop\nolimits}  mathop  x             x               esint
 
 
 # From the amsmath package:
