@@ -15,7 +15,7 @@
 Format 82
 
 InsetLayout Flex:Spaceletters
-	LyxType		charstyle
+	LyxType	charstyle
 	LabelString	spaced
 	Decoration	conglomerate
 	LatexType	command
@@ -25,6 +25,7 @@ InsetLayout Flex:Spaceletters
 	EndFont
 	NeedMBoxProtect	true
 	MultiPar	true
+	ForcePlain	true
 	Requires	soul
 End
 
@@ -42,7 +43,7 @@ InsetLayout Flex:Underline
 	LabelString	ul
 	LatexName	ul
 	Font
-	    Misc        underbar
+	    Misc       underbar
 	EndFont
 End
 
