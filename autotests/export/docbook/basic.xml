@@ -29,6 +29,7 @@
  </m:math>
 </inlineequation>. </para>
 </blockquote>
+<para>Now, we're outside quotes.</para>
 <para><informalequation>
 <alt role='tex'>Formula!</alt>
  <m:math>
@@ -72,22 +73,37 @@
 </section>
 <section>
 <title>I am the third section and I have fun with lists</title>
-<orderedlist><listitem>First item. 
-<br />
-Second line of the first item, after a line break. </listitem></orderedlist>
-<orderedlist><listitem>Second item. </listitem></orderedlist>
-<itemizedlist><listitem>Item has no order (1). </listitem></itemizedlist>
-<itemizedlist><listitem>Item has no order (2). </listitem></itemizedlist>
-<variablelist><listitem><varlistentry>
-
-Word description<!-- Output Error: Closing tag `listitem' when other tags are open, namely: -->
-<!-- Output Error: varlistentry -->
-</varlistentry></listitem></variablelist>
-<variablelist><listitem><varlistentry>
-
-Sentence meaning<!-- Output Error: Closing tag `listitem' when other tags are open, namely: -->
-<!-- Output Error: varlistentry -->
-</varlistentry></listitem></variablelist>
+<orderedlist>
+<listitem>
+<para>First item. </para>
+<para>Second line of the first item, after a line break. </para>
+</listitem>
+<listitem>
+<para>Second item. </para>
+</listitem>
+</orderedlist>
+<itemizedlist>
+<listitem>
+<para>Item has no order (1). </para>
+</listitem>
+<listitem>
+<para>Item has no order (2). </para>
+</listitem>
+</itemizedlist>
+<variablelist>
+<varlistentry>
+<term>Word</term>
+<listitem>
+<para>description</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Sentence</term>
+<listitem>
+<para>meaning</para>
+</listitem>
+</varlistentry>
+</variablelist>
 </section>
 <section>
 <title>I am the fourth section and I deal with formatting. </title>
@@ -95,9 +111,11 @@ Sentence meaning<!-- Output Error: Closing tag `listitem' when other tags are op
 <para><programlisting>I am some code. 
 I am a second line of code. 
 </programlisting>I am no more code. </para>
-<para>This line has inline code. <code>This has typewriter font</code><footnote><para>I repeat that in a footnote.</para>
+<para>This line has inline code. <code>This has typewriter font</code><footnote>
+<para>I repeat that in a footnote.</para>
 </footnote>. </para>
-<para>On the other hand, <footnote><para>this footnote</para>
+<para>On the other hand, <footnote>
+<para>this footnote</para>
 <para>has multiple </para>
 <para>paragraphs.</para>
 </footnote>. </para>
@@ -145,7 +163,7 @@ I am a second line of code.
 </tr>
 </tbody>
 </table>
-<informaltable>
+<table>
 <tbody>
 <tr>
 <td align='center' valign='top'>Table that has no caption 1</td>
@@ -163,7 +181,8 @@ I am a second line of code.
 <td align='center' valign='top'>Col 3, row 2</td>
 </tr>
 </tbody>
-</informaltable>
+</table>
+
 <para>Then, one figure: </para>
 <figure>
 <title>Caption.</title>
@@ -334,5 +353,4 @@ I am a second line of code.
 </author>
 </authorgroup>
 </biblioentry>
-</bibliography>
-</article>
+</bibliography></article>
