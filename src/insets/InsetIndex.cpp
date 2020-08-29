@@ -287,14 +287,17 @@ void InsetIndex::docbook(XMLStream & xs, OutputParams const & runparams) const
 		// Hence the thread-local storage, as the numbers must strictly be unique, and thus cannot be shared across
 		// a paragraph (making the solution used for HTML worthless). This solution is very similar to the one used in
 		// xml::cleanID.
-		docstring attrs = indexType;
-		if (hasStartRange || hasEndRange) {
+		// indexType can only be used for singular and startofrange types!
+		docstring attrs;
+		if (!hasStartRange && !hasEndRange) {
+			attrs = indexType;
+		} else {
 			// Append an ID if uniqueness is not guaranteed across the document.
 			static QThreadStorage<set<docstring>> tKnownTermLists;
 			static QThreadStorage<int> tID;
 
-			set<docstring> & knownTermLists = tKnownTermLists.localData();
-			int & ID = tID.localData();
+			set<docstring> &knownTermLists = tKnownTermLists.localData();
+			int &ID = tID.localData();
 
 			if (!tID.hasLocalData()) {
 				tID.localData() = 0;
@@ -319,47 +322,51 @@ void InsetIndex::docbook(XMLStream & xs, OutputParams const & runparams) const
 			// Generate the attributes.
 			docstring id = xml::cleanID(newIndexTerms);
 			if (hasStartRange) {
-				attrs += " class=\"startofrange\" xml:id=\"" + id + "\"";
+				attrs = indexType + " class=\"startofrange\" xml:id=\"" + id + "\"";
 			} else {
-				attrs += " class=\"endofrange\" startref=\"" + id + "\"";
+				attrs = " class=\"endofrange\" startref=\"" + id + "\"";
 			}
 		}
 
 		// Handle the index terms (including the specific index for this entry).
-		xs << xml::StartTag("indexterm", attrs);
-		if (terms.size() > 0) { // hasEndRange has no content.
-			xs << xml::StartTag("primary");
-			xs << terms[0];
-			xs << xml::EndTag("primary");
-		}
-		if (terms.size() > 1) {
-			xs << xml::StartTag("secondary");
-			xs << terms[1];
-			xs << xml::EndTag("secondary");
-		}
-		if (terms.size() > 2) {
-			xs << xml::StartTag("tertiary");
-			xs << terms[2];
-			xs << xml::EndTag("tertiary");
-		}
-
-		// Handle see and see also.
-		if (!see.empty()) {
-			xs << xml::StartTag("see");
-			xs << see;
-			xs << xml::EndTag("see");
-		}
-
-		if (!seeAlsoes.empty()) {
-			for (auto & entry : seeAlsoes) {
-				xs << xml::StartTag("seealso");
-				xs << entry;
-				xs << xml::EndTag("seealso");
+		if (hasEndRange) {
+			xs << xml::CompTag("indexterm", attrs);
+		} else {
+			xs << xml::StartTag("indexterm", attrs);
+			if (!terms.empty()) { // hasEndRange has no content.
+				xs << xml::StartTag("primary");
+				xs << terms[0];
+				xs << xml::EndTag("primary");
 			}
-		}
+			if (terms.size() > 1) {
+				xs << xml::StartTag("secondary");
+				xs << terms[1];
+				xs << xml::EndTag("secondary");
+			}
+			if (terms.size() > 2) {
+				xs << xml::StartTag("tertiary");
+				xs << terms[2];
+				xs << xml::EndTag("tertiary");
+			}
 
-		// Close the entry.
-		xs << xml::EndTag("indexterm");
+			// Handle see and see also.
+			if (!see.empty()) {
+				xs << xml::StartTag("see");
+				xs << see;
+				xs << xml::EndTag("see");
+			}
+
+			if (!seeAlsoes.empty()) {
+				for (auto &entry : seeAlsoes) {
+					xs << xml::StartTag("seealso");
+					xs << entry;
+					xs << xml::EndTag("seealso");
+				}
+			}
+
+			// Close the entry.
+			xs << xml::EndTag("indexterm");
+		}
 	}
 }
 

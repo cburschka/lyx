@@ -140,11 +140,11 @@ docstring EndTag::writeEndTag() const
 
 docstring CompTag::writeTag() const
 {
-	docstring output = '<' + from_utf8(tag_);
+	docstring output = '<' + tag_;
 	if (!attr_.empty()) {
 		// Erase the beginning of the attributes if it contains space characters: this function deals with that
 		// automatically.
-		docstring attributes = escapeString(from_utf8(attr_), XMLStream::ESCAPE_NONE);
+		docstring attributes = escapeString(attr_, XMLStream::ESCAPE_NONE);
 		attributes.erase(attributes.begin(), std::find_if(attributes.begin(), attributes.end(),
                                                           [](int c) {return !std::isspace(c);}));
 		if (!attributes.empty()) {

@@ -240,16 +240,19 @@ struct CompTag
 {
 	///
 	explicit CompTag(std::string const & tag)
-			: tag_(tag) {}
+			: tag_(from_utf8(tag)) {}
 	///
 	explicit CompTag(std::string const & tag, std::string const & attr)
-			: tag_(tag), attr_(attr) {}
+			: tag_(from_utf8(tag)), attr_(from_utf8(attr)) {}
+	///
+	explicit CompTag(std::string const & tag, docstring const & attr)
+			: tag_(from_utf8(tag)), attr_(attr) {}
 	/// <tag_ attr_ />
 	docstring writeTag() const;
 	///
-	std::string tag_;
+	docstring tag_;
 	///
-	std::string attr_;
+	docstring attr_;
 };
 
 
