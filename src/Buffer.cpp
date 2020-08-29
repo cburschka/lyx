@@ -4480,7 +4480,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 				// file (not for previewing).
 				Alert::error(_("Couldn't export file"), bformat(
 					_("No information for exporting the format %1$s."),
-					theFormats().prettyName(format)));
+					translateIfPossible(theFormats().prettyName(format))));
 			}
 			return ExportNoPathToFormat;
 		}
@@ -4664,13 +4664,13 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 		} else {
 			message(bformat(_("Document exported as %1$s "
 				"to file `%2$s'"),
-				theFormats().prettyName(format),
+				translateIfPossible(theFormats().prettyName(format)),
 				makeDisplayPath(result_file)));
 		}
 	} else {
 		// This must be a dummy converter like fax (bug 1888)
 		message(bformat(_("Document exported as %1$s"),
-			theFormats().prettyName(format)));
+			translateIfPossible(theFormats().prettyName(format))));
 	}
 
 	return success ? ExportSuccess : ExportConverterError;
