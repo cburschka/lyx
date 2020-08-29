@@ -103,9 +103,13 @@ public:
 	/// that simplifies the logic using this code.
 	bool isLastTagCR() const { return is_last_tag_cr_; };
 	///
-	void writeError(std::string const &) const;
+	void writeError(std::string const &);
 	///
-	void writeError(docstring const &) const;
+	void writeError(docstring const &);
+	///
+	typedef std::shared_ptr<xml::StartTag> TagPtr;
+	/// Returns the last element on the tag stack. XMLStream keeps ownership of the item.
+	TagPtr getLastStackTag();
 private:
 	///
 	void clearTagDeque();

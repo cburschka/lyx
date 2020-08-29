@@ -167,17 +167,21 @@ bool FontTag::operator==(StartTag const & tag) const
 } // namespace xml
 
 
-void XMLStream::writeError(std::string const &s) const
+void XMLStream::writeError(std::string const &s)
 {
 	LYXERR0(s);
-	os_ << from_utf8("<!-- Output Error: " + s + " -->\n");
+	*this << ESCAPE_NONE << from_utf8("<!-- Output Error: " + s + " -->");
+	*this << xml::CR();
 }
 
 
-void XMLStream::writeError(docstring const &s) const
+void XMLStream::writeError(docstring const &s)
 {
 	LYXERR0(s);
-	os_ << from_utf8("<!-- Output Error: ") << s << from_utf8(" -->\n");
+	*this << ESCAPE_NONE << from_utf8("<!-- Output Error: ");
+	*this << s;
+	*this << ESCAPE_NONE << from_utf8(" -->");
+	*this << xml::CR();
 }
 
 
