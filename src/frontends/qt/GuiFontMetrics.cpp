@@ -245,18 +245,18 @@ int GuiFontMetrics::width(docstring const & s) const
 #else
 	bool const math_char = s.length() == 1;
 #endif
-	// keep value 0 for math chars with width 0
-	if (!math_char || metrics_.width(toqstr(s)) != 0) {
+	if (math_char) {
+		// keep value 0 for math chars with width 0
+		if (metrics_.width(toqstr(s)) != 0)
+			w = metrics_.boundingRect(toqstr(s)).width();
+	} else {
 		QTextLayout tl;
 		tl.setText(toqstr(s));
 		tl.setFont(font_);
 		tl.beginLayout();
 		QTextLine line = tl.createLine();
 		tl.endLayout();
-		if (math_char)
-			w = iround(line.naturalTextWidth());
-		else
-			w = iround(line.horizontalAdvance());
+		w = iround(line.horizontalAdvance());
 	}
 	strwidth_cache_.insert(s, w, s.size() * sizeof(char_type));
 	return w;
