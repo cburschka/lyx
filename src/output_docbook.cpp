@@ -308,8 +308,32 @@ void closeParTag(XMLStream & xs, Paragraph const * par, Paragraph const * nextpa
 	if (nextpar != nullptr) {
 		Layout const & nextlay = nextpar->layout();
 		if (nextlay.docbookwrappertag() != "NONE") {
-			closeWrapper = nextlay.docbookwrappertag() == lay.docbookwrappertag()
-					&& !nextlay.docbookwrappermergewithprevious();
+			if (nextpar->getDepth() == par->getDepth()) {
+				// Same depth: the basic condition applies.
+				closeWrapper = nextlay.docbookwrappertag() == lay.docbookwrappertag()
+				               && !nextlay.docbookwrappermergewithprevious();
+			} else if (nextpar->getDepth() > par->getDepth()) {
+				// The next paragraph is deeper: no need to close the wrapper, only to open it (cf. openParTag).
+				closeWrapper = 0;
+			} else {
+				// This paragraph is deeper than the next one: close the wrapper,
+				// disregarding docbookwrappermergewithprevious.
+				// Hypothesis: nextlay.docbookwrappertag() == lay.docbookwrappertag(). TODO: THIS IS WRONG! Loop back until a layout with the right depth is found?
+				closeWrapper = 1L + (long long) par->getDepth() - (long long) nextpar->getDepth(); // > 0, as nextpar->getDepth() < par->getDepth()
+			}
+		} else {
+			if (nextpar->getDepth() == par->getDepth()) {
+				// This is not wrapped: this must be the rest of the item, still within the wrapper.
+				closeWrapper = 1;
+			} else if (nextpar->getDepth() > par->getDepth()) {
+				// The next paragraph is deeper: no need to close the wrapper, only to open it (cf. openParTag).
+				closeWrapper = 0;
+			} else {
+				// This paragraph is deeper than the next one: close the wrapper,
+				// disregarding docbookwrappermergewithprevious.
+				// Hypothesis: nextlay.docbookwrappertag() == lay.docbookwrappertag(). TODO: THIS IS WRONG! Loop back until a layout with the right depth is found?
+				closeWrapper = 1L + (long long) par->getDepth() - (long long) nextpar->getDepth(); // > 0, as nextpar->getDepth() < par->getDepth()
+			}
 		}
 	}
 
@@ -507,12 +531,140 @@ void makeParagraph(
 }
 
 
-void makeEnvironment(
-		Buffer const &buf,
-		XMLStream &xs,
-		OutputParams const &runparams,
-		Text const &text,
-		ParagraphList::const_iterator const & par)
+void makeEnvironment(Buffer const &buf,
+                     XMLStream &xs,
+                     OutputParams const &runparams,
+                     Text const &text,
+                     ParagraphList::const_iterator const & par)
+{
+	// TODO: simplify me!
+	auto const end = text.paragraphs().end();
+
+	// Output the opening tag for this environment, but only if it has not been previously opened (condition
+	// implemented in openParTag).
+	auto prevpar = text.paragraphs().getParagraphBefore(par);
+	openParTag(xs, &*par, prevpar); // TODO: switch in layout for par/block?
+
+	// Generate the contents of this environment. There is a special case if this is like some environment.
+	Layout const & style = par->layout();
+	if (style.latextype == LATEX_COMMAND) {
+		// Nothing to do (otherwise, infinite loops).
+	} else if (style.latextype == LATEX_ENVIRONMENT) {
+		// Open a wrapper tag if needed.
+		if (style.docbookitemwrappertag() != "NONE")
+			openTag(xs, style.docbookitemwrappertag(), style.docbookitemwrapperattr(), style.docbookitemwrappertagtype());
+
+		// Generate the label, if need be. If it is taken from the text, sep != 0 and corresponds to the first
+		// character after the label.
+		pos_type sep = 0;
+		if (style.labeltype != LABEL_NO_LABEL && style.docbookitemlabeltag() != "NONE") {
+			// At least one condition must be met:
+			//  - this environment is not a list
+			//  - if this is a list, the label must not be manual (i.e. it must be taken from the layout)
+			if (style.latextype != LATEX_LIST_ENVIRONMENT || style.labeltype != LABEL_MANUAL) {
+				// Usual cases: maybe there is something specified at the layout level. Highly unlikely, though.
+				docstring const lbl = par->params().labelString();
+
+				if (lbl.empty()) {
+					xs << xml::CR();
+				} else {
+					openLabelTag(xs, style);
+					xs << lbl;
+					closeLabelTag(xs, style);
+				}
+			} else {
+				// Only variablelist gets here (or similar items defined as an extension in the layout).
+				openLabelTag(xs, style);
+				sep = par->firstWordDocBook(xs, runparams);
+				closeLabelTag(xs, style);
+			}
+		}
+
+		// Maybe the item is completely empty, i.e. if the first word ends at the end of the current paragraph
+		// AND if the next paragraph doesn't have the same depth (if there is such a paragraph).
+		// Common case: there is only the first word on the line, but there is a nested list instead
+		// of more text.
+		bool emptyItem = false;
+		if (sep == par->size()) { // If the separator is already at the end of this paragraph...
+			auto next_par = par;
+			++next_par;
+			if (next_par == text.paragraphs().end()) // There is no next paragraph.
+				emptyItem = true;
+			else // There is a next paragraph: check depth.
+				emptyItem = par->params().depth() >= next_par->params().depth();
+		}
+
+		if (emptyItem) {
+			// Avoid having an empty item, this is not valid DocBook. A single character is enough to force
+			// generation of a full <para>.
+			// TODO: this always worked only by magic...
+			xs << ' ';
+		} else {
+			// Generate the rest of the paragraph, if need be. Open as many inner tags as necessary.
+			auto pars = par->simpleDocBookOnePar(buf, runparams, text.outerFont(std::distance(text.paragraphs().begin(), par)), sep);
+			auto p = pars.begin();
+			while (true) {
+				xs << XMLStream::ESCAPE_NONE << *p;
+				++p;
+				if (p != pars.end()) {
+					closeTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnertagtype());
+					openTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnerattr(), par->layout().docbookiteminnertagtype());
+				} else
+					break;
+			}
+		}
+	} else {
+		makeAny(text, buf, xs, runparams, par);
+	}
+
+	// Close the environment.
+	auto nextpar = par;
+	++nextpar;
+	closeParTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr); // TODO: switch in layout for par/block?
+}
+
+
+ParagraphList::const_iterator findEndOfEnvironment(
+		ParagraphList::const_iterator const & pstart,
+		ParagraphList::const_iterator const & pend)
+{
+	// Copy-paste from XHTML. Should be factored out at some point...
+
+	ParagraphList::const_iterator p = pstart;
+	Layout const & bstyle = p->layout();
+	size_t const depth = p->params().depth();
+	for (++p; p != pend; ++p) {
+		Layout const & style = p->layout();
+		// It shouldn't happen that e.g. a section command occurs inside
+		// a quotation environment, at a higher depth, but as of 6/2009,
+		// it can happen. We pretend that it's just at lowest depth.
+		if (style.latextype == LATEX_COMMAND)
+			return p;
+
+		// If depth is down, we're done
+		if (p->params().depth() < depth)
+			return p;
+
+		// If depth is up, we're not done
+		if (p->params().depth() > depth)
+			continue;
+
+		// FIXME I am not sure about the first check.
+		// Surely we *could* have different layouts that count as
+		// LATEX_PARAGRAPH, right?
+		if (style.latextype == LATEX_PARAGRAPH || style != bstyle)
+			return p;
+	}
+	return pend;
+}
+
+
+ParagraphList::const_iterator makeListEnvironment(Buffer const &buf,
+		                                          XMLStream &xs,
+		                                          OutputParams const &runparams,
+		                                          Text const &text,
+		                                          ParagraphList::const_iterator const & par)
+>>>>>>> be6480e59c... DocBook: same refactoring for docbookSimpleAllParagraphs.
 {
 	auto const end = text.paragraphs().end();
 
@@ -921,12 +1073,13 @@ void docbookSimpleAllParagraphs(
 	outputDocBookInfo(text, buf, xs, runparams, paragraphs, info);
 
 	// Then, the content. It starts where the <info> ends.
-	bpit = info.epit;
-	while (bpit < epit) {
-		auto par = paragraphs.iterator_at(bpit);
+	auto par = text.paragraphs().iterator_at(info.epit);
+	auto end = text.paragraphs().iterator_at(epit);
+	while (par != end) {
 		if (!hasOnlyNotes(*par))
-			makeAny(text, buf, xs, runparams, par);
-		bpit += 1;
+			par = makeAny(text, buf, xs, runparams, par);
+		else
+			++par;
 	}
 }
 
@@ -967,20 +1120,19 @@ void docbookParagraphs(Text const &text,
 
 	bool currentlyInAppendix = false;
 
-	while (bpit < epit) {
+	auto par = text.paragraphs().iterator_at(bpit);
+	auto end = text.paragraphs().iterator_at(epit);
+	while (par != end) {
 		OutputParams ourparams = runparams;
 
-		auto par = paragraphs.iterator_at(bpit);
 		if (par->params().startOfAppendix())
 			currentlyInAppendix = true;
-		Layout const &style = par->layout();
-		ParagraphList::const_iterator const lastStartedPar = par;
-		ParagraphList::const_iterator send;
-
 		if (hasOnlyNotes(*par)) {
-			bpit += 1;
+			++par;
 			continue;
 		}
+
+		Layout const &style = par->layout();
 
 		// Think about adding <section> and/or </section>s.
 		const bool isLayoutSectioning = style.category() == from_utf8("Sectioning");
@@ -1058,7 +1210,6 @@ void docbookParagraphs(Text const &text,
 
 		// Generate this paragraph.
 		makeAny(text, buf, xs, ourparams, par);
-		bpit += 1;
 	}
 
 	// If need be, close <section>s, but only at the end of the document (otherwise, dealt with at the beginning
