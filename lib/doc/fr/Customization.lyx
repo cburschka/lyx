@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 594
+\lyxformat 598
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -42,15 +42,15 @@ logicalmkup
 \end_modules
 \maintain_unincluded_children no
 \language french
-\language_package default
+\language_package auto
 \inputencoding auto-legacy
 \fontencoding auto
-\font_roman "lmodern" "default"
-\font_sans "lmss" "default"
-\font_typewriter "lmtt" "default"
+\font_roman "lmodern" "DejaVu Serif"
+\font_sans "lmss" "DejaVu Sans"
+\font_typewriter "lmtt" "DejaVu Sans Mono"
 \font_math "auto" "auto"
 \font_default_family default
-\use_non_tex_fonts false
+\use_non_tex_fonts true
 \font_sc false
 \font_roman_osf false
 \font_sans_osf false
@@ -60,10 +60,12 @@ logicalmkup
 \use_microtype false
 \use_dash_ligatures false
 \graphics default
-\default_output_format pdf2
+\default_output_format default
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -134,6 +136,7 @@ logicalmkup
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
 \end_header
 
 \begin_body
