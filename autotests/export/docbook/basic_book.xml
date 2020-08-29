@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- This DocBook file was created by LyX 2.4.0dev
   See http://www.lyx.org/ for more information -->
-<book xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.1">
-
-<info><title>Book title</title>
-<author><personname>Book author</personname></author>
-
-<abstract><para>Book abstract in info. </para>
+<book xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
+<info>
+<title>Book title</title>
+<author>
+<personname>Book author</personname>
+</author>
+<abstract>
+<para>Book abstract in info. </para>
 </abstract>
 </info>
 <chapter>
@@ -15,9 +17,7 @@
 </chapter>
 <part>
 <title>First part</title>
-
-<partintro><para>Part intro. </para>
-</partintro>
+<para>Part intro. </para>
 <chapter>
 <title>First chapter of first part</title>
 <para>Paragraph. </para>
@@ -29,9 +29,7 @@
 </part>
 <part>
 <title>Second part</title>
-
-<partintro><para>Part 2 intro. </para>
-</partintro>
+<para>Part 2 intro. </para>
 <chapter>
 <title>First chapter of second part</title>
 <para>Paragraph. </para>
@@ -41,5 +39,4 @@
 <para>Paragraph. </para>
 </chapter>
 </part>
-
 </book>
