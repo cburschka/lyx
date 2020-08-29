@@ -642,7 +642,7 @@ bool Formats::view(Buffer const & buffer, FileName const & filename,
 // by the caller (this should be "utility" code)
 		Alert::error(_("Cannot view file"),
 			bformat(_("No information for viewing %1$s"),
-				prettyName(format_name)));
+				translateIfPossible(prettyName(format_name))));
 		return false;
 	}
 	// viewer is 'auto'
@@ -746,7 +746,7 @@ bool Formats::edit(Buffer const & buffer, FileName const & filename,
 // be done by the caller (this should be "utility" code)
 		Alert::error(_("Cannot edit file"),
 			bformat(_("No information for editing %1$s"),
-				prettyName(format_name)));
+				translateIfPossible(prettyName(format_name))));
 		return false;
 	}
 

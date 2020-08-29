@@ -4414,7 +4414,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 				// Only show this alert if this is an export to a non-temporary
 				// file (not for previewing).
 				docstring s = bformat(_("No information for exporting the format %1$s."),
-						      theFormats().prettyName(format));
+						      translateIfPossible(theFormats().prettyName(format)));
 				if (format == "pdf4")
 					s += "\n"
 					  + bformat(_("Hint: use non-TeX fonts or set input encoding "
@@ -4612,13 +4612,13 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 		} else {
 			message(bformat(_("Document exported as %1$s "
 				"to file `%2$s'"),
-				theFormats().prettyName(format),
+				translateIfPossible(theFormats().prettyName(format)),
 				makeDisplayPath(result_file)));
 		}
 	} else {
 		// This must be a dummy converter like fax (bug 1888)
 		message(bformat(_("Document exported as %1$s"),
-			theFormats().prettyName(format)));
+			translateIfPossible(theFormats().prettyName(format))));
 	}
 
 	return success ? ExportSuccess : ExportConverterError;

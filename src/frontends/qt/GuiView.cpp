@@ -746,7 +746,7 @@ QVector<GuiWorkArea*> GuiView::GuiViewPrivate::guiWorkAreas()
 static void handleExportStatus(GuiView * view, Buffer::ExportStatus status,
 	string const & format)
 {
-	docstring const fmt = theFormats().prettyName(format);
+	docstring const fmt = translateIfPossible(theFormats().prettyName(format));
 	docstring msg;
 	switch (status) {
 	case Buffer::ExportSuccess:
@@ -2536,7 +2536,7 @@ static bool import(GuiView * lv, FileName const & filename,
 		if (loader_format.empty()) {
 			frontend::Alert::error(_("Couldn't import file"),
 					 bformat(_("No information for importing the format %1$s."),
-					 theFormats().prettyName(format)));
+					 translateIfPossible(theFormats().prettyName(format))));
 			return false;
 		}
 	} else
@@ -2583,13 +2583,13 @@ void GuiView::importDocument(string const & argument)
 		}
 
 		docstring const text = bformat(_("Select %1$s file to import"),
-			theFormats().prettyName(format));
+			translateIfPossible(theFormats().prettyName(format)));
 
 		FileDialog dlg(toqstr(text));
 		dlg.setButton1(qt_("D&ocuments"), toqstr(lyxrc.document_path));
 		dlg.setButton2(qt_("&Examples"), toqstr(lyxrc.example_path));
 
-		docstring filter = theFormats().prettyName(format);
+		docstring filter = translateIfPossible(theFormats().prettyName(format));
 		filter += " (*.{";
 		// FIXME UNICODE
 		filter += from_utf8(theFormats().extensions(format));
