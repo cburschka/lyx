@@ -2420,10 +2420,16 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 	docstring name;
 	if (getType() == hullSimple)
 		name = from_ascii("inlineequation");
-	else
+	else {
+		// This is a block equation, always have <informalequation> on its own line.
+		if (!xs.isLastTagCR())
+			xs << xml::CR();
+
 		name = from_ascii("informalequation");
+	}
 
 	// DocBook also has <equation>, but it comes with a title.
+	// TODO: recognise \tag from amsmath?
 
 	docstring attr;
 	for (row_type i = 0; i < nrows(); ++i) {

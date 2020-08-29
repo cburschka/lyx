@@ -446,10 +446,16 @@ void makeParagraph(
 			special_case = true;
 	}
 
+	size_t nInsets = std::distance(par->insetList().begin(), par->insetList().end());
+
 	// Plain layouts must be ignored.
-	if (!special_case && buf.params().documentClass().isPlainLayout(par->layout()) && !runparams.docbook_force_pars)
-		special_case = true;
-	// TODO: Could get rid of this with a DocBook equivalent to htmlisblock?
+	special_case |= buf.params().documentClass().isPlainLayout(par->layout()) && !runparams.docbook_force_pars;
+	// Equations do not deserve their own paragraph (DocBook allows them outside paragraphs).
+	special_case |= nInsets == par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
+		return inset.inset && inset.inset->asInsetMath();
+	});
+
+	// TODO: Could get rid of this with a DocBook equivalent to htmlisblock? Not for all cases, unfortunately... See above for those that have been determined not to be allowable for this potential refactoring.
 	if (!special_case && par->size() == 1 && par->getInset(0)) {
 		Inset const * firstInset = par->getInset(0);
 
@@ -459,10 +465,6 @@ void makeParagraph(
 		// Bibliographies cannot be in paragraphs.
 		if (!special_case && firstInset->asInsetCommand())
 			special_case = firstInset->asInsetCommand()->params().getCmdName() == "bibtex";
-
-		// Equations do not deserve their own paragraph (DocBook allows them outside paragraphs).
-		if (!special_case && firstInset->asInsetMath())
-			special_case = true;
 
 		// ERTs are in comments, not paragraphs.
 		if (!special_case && firstInset->lyxCode() == lyx::ERT_CODE)

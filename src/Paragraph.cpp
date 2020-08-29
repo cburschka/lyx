@@ -3349,7 +3349,8 @@ std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
 
 	std::vector<docstring> generatedParagraphs;
 	odocstringstream os;
-	auto * xs = new XMLStream(os);
+	auto * xs = new XMLStream(os); // XMLStream has no copy constructor: to create a new object, the only solution
+	// is to hold a pointer to the XMLStream (xs = XMLStream(os) is not allowed once the first object is built).
 
 	// Parsing main loop.
 	for (pos_type i = initial; i < size(); ++i) {
@@ -3361,7 +3362,6 @@ std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
 		if (getInset(i) != nullptr && getInset(i)->lyxCode() == NEWLINE_CODE) {
 			generatedParagraphs.push_back(os.str());
 			os = odocstringstream();
-			// XMLStream has no copy constructor.
 			delete xs;
 			xs = new XMLStream(os);
 		}

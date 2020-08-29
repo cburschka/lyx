@@ -30,7 +30,7 @@
 </inlineequation>. </para>
 </blockquote>
 <para>Now, we're outside quotes.</para>
-<para><informalequation>
+<informalequation>
 <alt role='tex'>Formula!</alt>
  <m:math>
  
@@ -39,7 +39,8 @@
   </m:mrow>
  </m:mrow>
  </m:math>
-</informalequation><informalequation xml:id="eq.EQ.">
+</informalequation>
+<informalequation xml:id="eq.EQ.">
 <alt role='tex'>\text{I am a formula with a ref.}\label{eq:EQ.}</alt>
  <m:math>
  
@@ -50,9 +51,9 @@
   </m:mstyle>
  </m:mrow>
  </m:math>
-</informalequation></para>
+</informalequation>
 <para>See <xref linkend="sec.Sec-2kqgsdiflhqsdlifgjuzer-povtuizmvnuer-t-vmsrmfli--uh--a--rtpfuo----rtpc.m-ca-rgifzapeu-tvgz" />.</para>
-<para>Also, a formula with an user-defined macro that outputs well in LaTeX but cannot in MathML (hence replaced by picture): <inlineequation>
+<para>Also, a formula with an user-defined macro that outputs well in LaTeX but cannot in MathML: <inlineequation>
 <alt role='tex'>\testmacro</alt>
 <mathphrase>MathML export failed. Please report this as a bug.</mathphrase>
 </inlineequation>. </para>
