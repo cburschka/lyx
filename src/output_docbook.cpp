@@ -1071,18 +1071,18 @@ void docbookParagraphs(Text const &text,
 		if (isLayoutSectioning(style)) {
 			int level = style.toclevel;
 
-			// Need to close a previous section if it has the same level or a higher one (close <section> if opening a <h2>
-			// after a <h2>, <h3>, <h4>, <h5> or <h6>). More examples:
+			// Need to close a previous section if it has the same level or a higher one (close <section> if opening a
+			// <h2> after a <h2>, <h3>, <h4>, <h5> or <h6>). More examples:
 			//   - current: h2; back: h1; do not close any <section>
 			//   - current: h1; back: h2; close two <section> (first the <h2>, then the <h1>, so a new <h1> can come)
 			while (!headerLevels.empty() && level <= headerLevels.top().first) {
-				int stackLevel = headerLevels.top().first;
-				docstring stackTag = from_utf8("</" + headerLevels.top().second + ">");
-				headerLevels.pop();
-
 				// Output the tag only if it corresponds to a legit section.
-				if (stackLevel != Layout::NOT_IN_TOC)
-					xs << XMLStream::ESCAPE_NONE << stackTag << xml::CR();
+				int stackLevel = headerLevels.top().first;
+				if (stackLevel != Layout::NOT_IN_TOC) {
+					xs << xml::EndTag(headerLevels.top().second);
+					xs << xml::CR();
+				}
+				headerLevels.pop();
 			}
 
 			// Open the new section: first push it onto the stack, then output it in DocBook.
@@ -1111,11 +1111,10 @@ void docbookParagraphs(Text const &text,
 				}
 
 				// Write the open tag for this section.
-				docstring tag = from_utf8("<" + sectionTag);
+				docstring attrs;
 				if (!id.empty())
-					tag += from_utf8(" ") + id;
-				tag += from_utf8(">");
-				xs << XMLStream::ESCAPE_NONE << tag;
+					attrs = id;
+				xs << xml::StartTag(sectionTag, attrs);
 				xs << xml::CR();
 			}
 		}
