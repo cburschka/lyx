@@ -312,6 +312,18 @@ export/export/latex/languages/he-.*(dvi3|pdf5)_texF
 export/export/latex/languages/supported-languages_(dvi3|pdf5)_texF
 export/export/latex/languages/supported-languages_babel_(dvi3|pdf5)_texF
 export/templates/Articles/Hebrew_Article_%28KOMA-Script%29_(dvi3|pdf5)_texF
+#
+# DavidCLM is not found. Comments from Jürgen:
+#   luaotfload does not find "DavidCLM". In fact, at least on my system,
+#   there is no such font, only "DavidCLM Medium" (and other shapes). This
+#   one is found. Apparently, luaotfload cannot infer from the one to the
+#   other.
+#   As opposed to LuaTEX, XeTeX also queries TEXMF so maybe it just finds
+#   its font there.
+# See ML thread:
+# https://www.mail-archive.com/search?l=mid&q=60ee3809d30056c191d4b2e8c57a7eda60b3e382.camel%40lyx.org
+export/templates/Articles/Hebrew_Article_%28KOMA-Script%29_(dvi3|pdf5)_systemF
+
 
 # Ukrainian
 # See comment in unreliableTests
