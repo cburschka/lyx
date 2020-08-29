@@ -1211,7 +1211,7 @@ sub buildFontName($$)
   my $prefix = "";
   # Split the family name at the border lowercase <-> uppercase characters
   # except if family starts with "TeX" or "DejaVu", etc
-  if ($family =~ s/^((La|cw|PL)?TeX|DejaVu|MarVoSym|PL)//) {
+  if ($family =~ s/^((La|cw|PL)?TeX|LyX|DejaVu|MarVoSym|PL)//) {
     $prefix = $1;
     if ($family =~ /^[A-Z]/) {
       $prefix .= " ";
@@ -1224,7 +1224,12 @@ sub buildFontName($$)
   $family =~ s/^Ant Polt\b/Antykwa Poltawskiego/;
   $family =~ s/\b(Semi|Extra) (Bold|Condensed|Expanded|Light)\b/$1$2/;
   $family = $prefix . $family;
-  my @style = &splitStyle($style);
+  my @style = ();
+  if ($style =~ s/^((La|cw|PL)?TeX|LyX|DejaVu|MarVoSym|PL)//) {
+    push(@style, $1);
+  }
+
+  push(@style, &splitStyle($style));
   for my $st (@style) {
     $st = ucfirst($st);
     if ($family !~ s/$st/$st/i) {
