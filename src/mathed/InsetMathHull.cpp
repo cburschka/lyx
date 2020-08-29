@@ -2429,7 +2429,7 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 	}
 
 	// DocBook also has <equation>, but it comes with a title.
-	// TODO: recognise \tag from amsmath?
+	// TODO: recognise \tag from amsmath? This would allow having <equation> with a proper title.
 
 	docstring attr;
 	for (row_type i = 0; i < nrows(); ++i) {

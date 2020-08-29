@@ -81,7 +81,7 @@ public:
 	/// tag type, defaults to "div"
 	std::string const & htmlTag() const;
 	///
-	std::string const & docbookTag(bool hasTitle = false) const;
+	std::string docbookTag(bool hasTitle = false) const;
 	///
 	std::string const & docbookAttr() const;
 	///
@@ -129,8 +129,8 @@ private:
 	mutable std::string defaultcssclass_;
 	///
 	docstring html_style_;
-	/// DocBook tag
-	mutable std::string docbook_tag_;
+	// There is no way to override the DocBook tag based on the layouts: half of it is determined by whether the float
+	// has a title or not, an information that is not available in the layouts.
 	/// attribute (mostly, role)
 	mutable std::string docbook_caption_;
 	/// caption tag (mostly, either caption or title)

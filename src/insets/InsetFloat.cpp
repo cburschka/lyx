@@ -654,7 +654,7 @@ void docbookNoSubfigures(XMLStream & xs, OutputParams const & runparams, const I
 
 	xs << xml::StartTag(ftype.docbookTag(caption != nullptr), attr);
 	xs << xml::CR();
-	if (caption != nullptr) {
+	if (caption) {
 		xs << xml::StartTag(titleTag);
 		caption->getCaptionAsDocBook(xs, rpNoLabel);
 		xs << xml::EndTag(titleTag);
