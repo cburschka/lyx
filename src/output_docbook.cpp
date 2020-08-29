@@ -370,12 +370,11 @@ void closeItemTag(XMLStream & xs, Layout const & lay)
 }
 
 
-void makeAny(
-		Text const &,
-		Buffer const &,
-		XMLStream &,
-		OutputParams const &,
-		ParagraphList::const_iterator);
+ParagraphList::const_iterator makeAny(Text const &,
+		                              Buffer const &,
+		                              XMLStream &,
+		                              OutputParams const &,
+		                              ParagraphList::const_iterator);
 
 
 void makeBibliography(
@@ -664,7 +663,6 @@ ParagraphList::const_iterator makeListEnvironment(Text const &text,
 		                                          XMLStream &xs,
 		                                          OutputParams const &runparams,
 		                                          ParagraphList::const_iterator const & par)
->>>>>>> be6480e59c... DocBook: same refactoring for docbookSimpleAllParagraphs.
 {
 	auto const end = text.paragraphs().end();
 
@@ -751,6 +749,8 @@ ParagraphList::const_iterator makeListEnvironment(Text const &text,
 	auto nextpar = par;
 	++nextpar;
 	closeParTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr); // TODO: switch in layout for par/block?
+
+	return nextpar;
 }
 
 
@@ -791,10 +791,12 @@ ParagraphList::const_iterator makeAny(Text const &text,
 		makeCommand(text, buf, xs, runparams, par);
 		break;
 	case LATEX_ENVIRONMENT:
+		makeEnvironment(text, buf, xs, runparams, par);
+		break;
 	case LATEX_LIST_ENVIRONMENT:
 	case LATEX_ITEM_ENVIRONMENT:
-		makeEnvironment(buf, xs, ourparams, text, par);
-		break;
+		// Only case when makeAny() might consume more than one paragraph.
+		return makeListEnvironment(text, buf, xs, runparams, par);
 	case LATEX_PARAGRAPH:
 		makeParagraph(text, buf, xs, runparams, par);
 		break;
@@ -802,6 +804,8 @@ ParagraphList::const_iterator makeAny(Text const &text,
 		makeBibliography(text, buf, xs, runparams, par);
 		break;
 	}
+	++par;
+	return par;
 }
 
 
@@ -1208,7 +1212,7 @@ void docbookParagraphs(Text const &text,
 		}
 
 		// Generate this paragraph.
-		makeAny(text, buf, xs, ourparams, par);
+		par = makeAny(text, buf, xs, ourparams, par);
 	}
 
 	// If need be, close <section>s, but only at the end of the document (otherwise, dealt with at the beginning
