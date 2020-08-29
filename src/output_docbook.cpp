@@ -821,7 +821,7 @@ bool hasOnlyNotes(Paragraph const & par)
 	for (int i = 0; i < par.size(); ++i)
 		// If you find something that is not an inset (like actual text) or an inset that is not a note,
 		// return false.
-		if (!par.isInset(i) || !dynamic_cast<InsetNote *>(par.insetList().get(i)))
+		if (!par.isInset(i) || par.getInset(i)->lyxCode() != NOTE_CODE)
 			return false;
 	return true;
 }
@@ -851,7 +851,7 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs,
 	for (; cpit < epit; ++cpit) {
 		// Skip paragraphs that don't generate anything in DocBook.
 		Paragraph const & par = paragraphs[cpit];
-		if (par.empty() || par.emptyTag() || hasOnlyNotes(par))
+		if (hasOnlyNotes(par))
 			continue;
 
 		// There should never be any section here. (Just a sanity check: if this fails, this function could end up
@@ -869,14 +869,14 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs,
 		}
 
 		// Based on layout information, store this paragraph in one set: should be in <info>, must be,
-		// or abstract ().
+		// or abstract (either because of layout or of position).
 		Layout const &style = par.layout();
 
 		if (style.docbookininfo() == "always")
 			mustBeInInfo.emplace(cpit);
 		else if (style.docbookininfo() == "maybe")
 			shouldBeInInfo.emplace(cpit);
-		else if (!hasAbstractLayout)
+		else if (documentHasSections && !hasAbstractLayout)
 			abstractNoLayout.emplace(cpit);
 		else // This should definitely not be in <info>.
 			break;
@@ -993,17 +993,17 @@ void docbookSimpleAllParagraphs(
 {
 	// Handle the given text, supposing it has no sections (i.e. a "simple" text). The input may vary in length
 	// between a single paragraph to a whole document.
+	pit_type const bpit = runparams.par_begin;
+	pit_type const epit = runparams.par_end;
+	ParagraphList const &paragraphs = text.paragraphs();
 
 	// First, the <info> tag.
-	ParagraphList const &paragraphs = text.paragraphs();
-	pit_type bpit = runparams.par_begin;
-	pit_type const epit = runparams.par_end;
 	DocBookInfoTag info = getParagraphsWithInfo(paragraphs, bpit, epit, false);
 	outputDocBookInfo(text, buf, xs, runparams, paragraphs, info);
 
 	// Then, the content. It starts where the <info> ends.
-	auto par = text.paragraphs().iterator_at(info.epit);
-	auto end = text.paragraphs().iterator_at(epit);
+	auto par = paragraphs.iterator_at(info.epit);
+	auto end = paragraphs.iterator_at(epit);
 	while (par != end) {
 		if (!hasOnlyNotes(*par))
 			par = makeAny(text, buf, xs, runparams, par);
@@ -1040,7 +1040,7 @@ void docbookParagraphs(Text const &text,
 	tie(documentHasSections, eppit) = hasDocumentSectioning(paragraphs, bpit, epit);
 
 	// Deal with "simple" documents, i.e. those without sections.
-	if (!documentHasSections){
+	if (!documentHasSections) {
 		docbookSimpleAllParagraphs(text, buf, xs, runparams);
 		return;
 	}
@@ -1048,7 +1048,7 @@ void docbookParagraphs(Text const &text,
 	// Output the first <info> tag (or just the title).
 	DocBookInfoTag info = getParagraphsWithInfo(paragraphs, bpit, eppit, true);
 	outputDocBookInfo(text, buf, xs, runparams, paragraphs, info);
-	bpit = eppit;
+	bpit = info.epit;
 
 	// Then, iterate through the paragraphs of this document.
 	bool currentlyInAppendix = false;
@@ -1141,6 +1141,29 @@ void docbookParagraphs(Text const &text,
 
 		// Generate this paragraph.
 		par = makeAny(text, buf, xs, ourparams, par);
+
+		// Some special sections may require abstracts (mostly parts, in books).
+		// TODO: docbookforceabstracttag is a bit contrived here, but it does the job. Having another field just for this would be cleaner, but that's just for <part> and <partintro>, so it's probably not worth the effort.
+		if (isLayoutSectioning(style) && style.docbookforceabstracttag() != "NONE") {
+			// This abstract may be found between the next paragraph and the next title.
+			pit_type cpit = std::distance(text.paragraphs().begin(), par);
+			pit_type ppit = std::get<1>(hasDocumentSectioning(paragraphs, cpit, epit));
+
+			// Generate this abstract (this code corresponds to parts of outputDocBookInfo).
+			DocBookInfoTag secInfo = getParagraphsWithInfo(paragraphs, cpit, ppit, true);
+
+			if (!secInfo.abstract.empty()) {
+				xs << xml::StartTag(style.docbookforceabstracttag());
+				xs << xml::CR();
+				for (auto const &p : secInfo.abstract)
+					makeAny(text, buf, xs, runparams, paragraphs.iterator_at(p));
+				xs << xml::EndTag(style.docbookforceabstracttag());
+				xs << xml::CR();
+			}
+
+			// Skip all the text that just has been generated.
+			par = paragraphs.iterator_at(ppit);
+		}
 	}
 
 	// If need be, close <section>s, but only at the end of the document (otherwise, dealt with at the beginning
