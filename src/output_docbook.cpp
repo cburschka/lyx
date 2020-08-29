@@ -378,11 +378,11 @@ void makeAny(
 		ParagraphList::const_iterator);
 
 
-void makeParagraphBibliography(
+void makeBibliography(
+		Text const & text,
 		Buffer const & buf,
 		XMLStream & xs,
 		OutputParams const & runparams,
-		Text const & text,
 		ParagraphList::const_iterator const & par)
 {
 	// If this is the first paragraph in a bibliography, open the bibliography tag.
@@ -433,10 +433,10 @@ void makeParagraphBibliography(
 
 
 void makeParagraph(
+		Text const & text,
 		Buffer const & buf,
 		XMLStream & xs,
 		OutputParams const & runparams,
-		Text const & text,
 		ParagraphList::const_iterator const & par)
 {
 	auto const begin = text.paragraphs().begin();
@@ -531,10 +531,10 @@ void makeParagraph(
 }
 
 
-void makeEnvironment(Buffer const &buf,
+void makeEnvironment(Text const &text,
+					 Buffer const &buf,
                      XMLStream &xs,
                      OutputParams const &runparams,
-                     Text const &text,
                      ParagraphList::const_iterator const & par)
 {
 	// TODO: simplify me!
@@ -659,10 +659,10 @@ ParagraphList::const_iterator findEndOfEnvironment(
 }
 
 
-ParagraphList::const_iterator makeListEnvironment(Buffer const &buf,
+ParagraphList::const_iterator makeListEnvironment(Text const &text,
+												  Buffer const &buf,
 		                                          XMLStream &xs,
 		                                          OutputParams const &runparams,
-		                                          Text const &text,
 		                                          ParagraphList::const_iterator const & par)
 >>>>>>> be6480e59c... DocBook: same refactoring for docbookSimpleAllParagraphs.
 {
@@ -755,10 +755,10 @@ ParagraphList::const_iterator makeListEnvironment(Buffer const &buf,
 
 
 void makeCommand(
+		Text const & text,
 		Buffer const & buf,
 		XMLStream & xs,
 		OutputParams const & runparams,
-		Text const & text,
 		ParagraphList::const_iterator const & par)
 {
 	// Unlike XHTML, no need for labels, as they are handled by DocBook tags.
@@ -780,16 +780,15 @@ void makeCommand(
 }
 
 
-void makeAny(
-		Text const &text,
-		Buffer const &buf,
-		XMLStream &xs,
-		OutputParams const &ourparams,
-		ParagraphList::const_iterator par)
+ParagraphList::const_iterator makeAny(Text const &text,
+		                              Buffer const &buf,
+		                              XMLStream &xs,
+		                              OutputParams const &runparams,
+		                              ParagraphList::const_iterator par)
 {
 	switch (par->layout().latextype) {
 	case LATEX_COMMAND:
-		makeCommand(buf, xs, ourparams, text, par);
+		makeCommand(text, buf, xs, runparams, par);
 		break;
 	case LATEX_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
@@ -797,10 +796,10 @@ void makeAny(
 		makeEnvironment(buf, xs, ourparams, text, par);
 		break;
 	case LATEX_PARAGRAPH:
-		makeParagraph(buf, xs, ourparams, text, par);
+		makeParagraph(text, buf, xs, runparams, par);
 		break;
 	case LATEX_BIB_ENVIRONMENT:
-		makeParagraphBibliography(buf, xs, ourparams, text, par);
+		makeBibliography(text, buf, xs, runparams, par);
 		break;
 	}
 }
