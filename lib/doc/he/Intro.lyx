@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 544
+\lyxformat 598
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -15,11 +15,10 @@
 % the documentation team
 % email: lyx-docs@lists.lyx.org
 
-\usepackage{ifpdf} % part of the hyperref bundle
-\ifpdf % if pdflatex is used
-
-% XeTeX with Hebrew does not like this bookmark code
-% so it is in the conditional.
+\usepackage{iftex}
+\ifpdftex % if pdflatex is used
+% XeTeX and LuaTeX with Hebrew do not like this
+% bookmark code, so it is in the conditional.
 % The pages of the TOC is numbered roman
 % and a pdf-bookmark for the TOC is added
 \pagenumbering{roman}
@@ -39,11 +38,11 @@
 \frenchspacing
 \end_preamble
 \use_default_options false
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language hebrew
 \language_package default
 \inputencoding utf8x
-\fontencoding global
+\fontencoding auto
 \font_roman "lmodern" "FreeSerif"
 \font_sans "default" "FreeSans"
 \font_typewriter "default" "FreeMono"
@@ -51,7 +50,9 @@
 \font_default_family default
 \use_non_tex_fonts true
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -61,6 +62,8 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize 12
 \spacing single
 \use_hyperref false
@@ -95,6 +98,7 @@
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \index אינדקס
 \shortcut idx
 \color #008000
@@ -110,11 +114,15 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
 \end_header
 
 \begin_body
@@ -236,11 +244,11 @@ LatexCommand tableofcontents
 \begin_inset space \hfill{}
 \end_inset
 
-)ג'ף מקנלי "
+(ג'ף מקנלי "
 \lang english
 Shoe
 \lang hebrew
-"(
+")
 \end_layout
 
 \begin_layout Standard
@@ -297,7 +305,7 @@ status collapsed
 \SpecialChar LyX
 
 \lang hebrew
- )ליקס( הוא מערכת להכנת מסמכים.
+ (ליקס) הוא מערכת להכנת מסמכים.
  הוא מצטיין בכתיבת מאמרים טכניים ומדעיים מורכבים המכילים נוסחאות מתמטיות,
  הפניות, ביבליוגרפיות, אינדקסים וכו'.
  
@@ -314,15 +322,15 @@ status collapsed
 \SpecialChar LyX
 
 \lang hebrew
- הוא בהחלט לא התוכנה ליצירת כרזות, עלונים ופרסומות )ההסבר לכך יבוא בהמשך(,
+ הוא בהחלט לא התוכנה ליצירת כרזות, עלונים ופרסומות (ההסבר לכך יבוא בהמשך),
  למרות שעם מאמץ מסויים ניתן להכין גם את כל אלה.
  דוגמאות אחדות למה שניתן לעשות עם ליקס הן: תזכירים, עבודות גמר, דיסרטציות,
  תקצירי הרצאות, מחברות סמינריוניות, פרוטוקולים מישיבות, תיעוד תוכנות, ספרים
- )על 
+ (על 
 \lang english
 PostgreSQL
 \lang hebrew
-, חישה מרחוק, הצפנה, רומני סיפורת, שירה ואפילו ספרי ילדים(, מאמרים בכתבי
+, חישה מרחוק, הצפנה, רומני סיפורת, שירה ואפילו ספרי ילדים), מאמרים בכתבי
  עת מדעיים מוערכים, תסריטים למחזות וסרטים, הצעות עסקיות\SpecialChar ldots
  הבנתם את הרעיון.
 \end_layout
@@ -391,7 +399,7 @@ status collapsed
 \lang english
 (hyphenation)
 \lang hebrew
- בסוף שורה )המשמש לשבירת מילה ארוכה( דרש עין חדה ויכולת להבחין מראש מתי
+ בסוף שורה (המשמש לשבירת מילה ארוכה) דרש עין חדה ויכולת להבחין מראש מתי
  ידרש.
 \end_layout
 
@@ -557,7 +565,7 @@ status collapsed
 \begin_layout Standard
 כן, זה הכל.
  אם תגזור ותדביק את החלק, הוא ימוספר אוטומטית – בכל מקום.
- אם תכניס במסמך הפניות לחלק זה בצורה נכונה )ע"י הכנסת תגיות הפנייה(, 
+ אם תכניס במסמך הפניות לחלק זה בצורה נכונה (ע"י הכנסת תגיות הפנייה), 
 \lang english
 \SpecialChar LyX
 
@@ -698,8 +706,8 @@ What You See Is What You Mean
 \SpecialChar LyX
 
 \lang hebrew
- אינו הכלי הנכון לעבודה – אינך משתמש במברג כדי לדפוק מסמרים )אלא אם כן המברג
- בא עם אחריות לכל החיים(.
+ אינו הכלי הנכון לעבודה – אינך משתמש במברג כדי לדפוק מסמרים (אלא אם כן המברג
+ בא עם אחריות לכל החיים).
 \end_layout
 
 \begin_layout Subsection
@@ -729,13 +737,13 @@ What You See Is What You Mean
 \end_layout
 
 \begin_layout Itemize
-מרווחים כפולים )כלומר לחיצה יותר מפעם אחת על מקש הרווח או ה- 
+מרווחים כפולים (כלומר לחיצה יותר מפעם אחת על מקש הרווח או ה- 
 \family sans
 \lang english
 Enter
 \family default
 \lang hebrew
-(
+)
 \end_layout
 
 \begin_layout Standard
@@ -767,7 +775,7 @@ Enter
 \end_layout
 
 \begin_layout Itemize
-שליטה בהזחה )אינדנטציה(.
+שליטה בהזחה (אינדנטציה).
 \end_layout
 
 \begin_layout Itemize
@@ -787,7 +795,7 @@ Enter
 \end_layout
 
 \begin_layout Itemize
-סגנון דפוס )אותיות דגושות, נטויות, עם קו תחתי וכו'(
+סגנון דפוס (אותיות דגושות, נטויות, עם קו תחתי וכו')
 \end_layout
 
 \begin_layout Standard
@@ -816,7 +824,7 @@ Enter
 status collapsed
 
 \begin_layout Plain Layout
-המשתמש יכול לשנות את כל אלה )חלק מהשינויים דורש ידע ב- 
+המשתמש יכול לשנות את כל אלה (חלק מהשינויים דורש ידע ב- 
 \lang english
 (\SpecialChar LaTeX
 
@@ -835,12 +843,12 @@ status collapsed
 \SpecialChar LyX
 
 \lang hebrew
- )ו- 
+ (ו- 
 \lang english
 \SpecialChar LaTeX
 
 \lang hebrew
-( מתעלה מעל למעבדי תמלילים רבים:
+) מתעלה מעל למעבדי תמלילים רבים:
 \end_layout
 
 \begin_layout Itemize
@@ -976,7 +984,7 @@ Patrick Daly
 \SpecialChar TeX
 
 \lang hebrew
- )טך( שנכתבה על ידי 
+ (טך) שנכתבה על ידי 
 \noun on
 \lang english
 Donald Knuth
@@ -1053,11 +1061,11 @@ PDF
 \SpecialChar TeX
 
 \lang hebrew
- מאפשר בנוסף לכל להגדיר מאקרו-ים )
+ מאפשר בנוסף לכל להגדיר מאקרו-ים (
 \lang english
 macro
 \lang hebrew
-(.
+).
  כאן כל הכיף מתחיל.
 \end_layout
 
@@ -1137,7 +1145,7 @@ Lamport
 \SpecialChar LaTeX
 
 \lang hebrew
- )וביניהם למפורט( החלו לעבוד בשלהי שנות השמונים על 
+ (וביניהם למפורט) החלו לעבוד בשלהי שנות השמונים על 
 \lang english
 \SpecialChar LaTeX2e
 
@@ -1180,12 +1188,12 @@ Lamport
 \SpecialChar LaTeX
 
 \lang hebrew
- )ושל 
+ (ושל 
 \lang english
 \SpecialChar TeX
 
 \lang hebrew
-(, המתארים סוג מסמך חדש, כמו ספר או מאמר.
+), המתארים סוג מסמך חדש, כמו ספר או מאמר.
  ישנן מחלקות עבור מצגות, כתבי עת פיסיקליים ומתמטיים\SpecialChar ldots
  לאוניברסיטאות רבות יש
  אפילו מחלקה מיוחדת לעבודות תזה! 
@@ -1356,18 +1364,18 @@ status collapsed
 \SpecialChar TeX
 
 \lang hebrew
- מבוטא כ"טך" )האות טי"ת מנוקדת בסגול(, ולכן 
+ מבוטא כ"טך" (האות טי"ת מנוקדת בסגול), ולכן 
 \lang english
 \SpecialChar LaTeX
 
 \lang hebrew
- מבוטאת כ"לאטך" )האות למ"ד בקמץ, טי"ת בסגול(.
+ מבוטאת כ"לאטך" (האות למ"ד בקמץ, טי"ת בסגול).
  אבל 
 \lang english
 \SpecialChar LyX
 
 \lang hebrew
- מבוטא כ"ליקס" )למ"ד בחיריק, קו"ף בשווא(.
+ מבוטא כ"ליקס" (למ"ד בחיריק, קו"ף בשווא).
 \end_layout
 
 \begin_layout Section
@@ -1476,7 +1484,7 @@ status collapsed
 \bar default
 יווט
 \family default
-, היכן שהתוכן מוצג אוטומטית )נסה זאת!(.
+, היכן שהתוכן מוצג אוטומטית (נסה זאת!).
 \end_layout
 
 \begin_layout Standard
@@ -1488,7 +1496,7 @@ reference "פרק:תרומה"
 
 \end_inset
 
- )בגרסא המודפסת מופיע במקום המלבן מספר(.
+ (בגרסא המודפסת מופיע במקום המלבן מספר).
  אם תלחץ על המלבן עם הלחצן השמאלי של העכבר, תופיע תיבת דיאלוג המכילה רשימה
  של כל ההפניות במסמך.
  במבוא זה ישנה הפניה אחת בלבד ששמה
@@ -1525,7 +1533,7 @@ reference "פרק:תרומה"
 C-<
 \family default
 \lang hebrew
- )מה הפירוש של "
+ (מה הפירוש של "
 \family sans
 \lang english
 C-<
@@ -1535,7 +1543,7 @@ C-<
 \begin_inset Quotes erd
 \end_inset
 
-? ראה בהמשך(.
+? ראה בהמשך).
 \end_layout
 
 \begin_layout Standard
@@ -1631,19 +1639,19 @@ Noun Style
 
 \begin_layout Standard
 עבור מקשי קיצור לתפריטים ומקשי קיצור אחרים, סביר להניח שתופנה לחלק "מקשי
- קיצור" )
+ קיצור" (
 \emph on
 \lang english
 Key Bindings
 \emph default
 \lang hebrew
-( של "מדריך התכונות הנוספות" )
+) של "מדריך התכונות הנוספות" (
 \emph on
 \lang english
 Additional Features Manual
 \emph default
 \lang hebrew
-( )שם הקובץ הוא
+) (שם הקובץ הוא
 \family roman
 \series medium
 \shape up
@@ -1665,7 +1673,7 @@ Additional Features Manual
 Additional.lyx
 \family default
 \lang hebrew
-(.
+).
  בכל מקרה, כאשר נצטרך לציין קיצורי דרך נשתמש בסימנים הבאים לייצוג המקשים:
 \end_layout
 
@@ -1980,7 +1988,7 @@ Enter
 \end_layout
 
 \begin_layout Standard
-מידי פעם תראה משהו בסגנון ")ראה 'נוספות'(".
+מידי פעם תראה משהו בסגנון "(ראה 'נוספות')".
  כל ברירות המחדל של מקשי הקיצור לאפשרות מסויימת נרשמו ב"מדריך התכונות הנוספות"
  – אז בדוק גם שם.
  שים לב שישנן שתי מערכות של מקשי קיצור בשימוש קהילת 
@@ -2080,6 +2088,7 @@ reference "tab:יחידות-מדידה"
 \begin_layout Standard
 \begin_inset Float table
 placement t
+alignment document
 wide false
 sideways false
 status open
@@ -2695,13 +2704,13 @@ status collapsed
 \begin_inset space ~
 \end_inset
 
-)
+(
 \emph on
 \lang english
 Introduction
 \emph default
 \lang hebrew
-( 
+) 
 \begin_inset space ~
 \end_inset
 
@@ -2721,13 +2730,13 @@ Introduction
 \begin_inset space ~
 \end_inset
 
-)
+(
 \emph on
 \lang english
 Tutorial
 \emph default
 \lang hebrew
-( 
+) 
 \begin_inset space ~
 \end_inset
 
@@ -2789,7 +2798,7 @@ Tutorial
 \SpecialChar LaTeX
 
 \lang hebrew
-" )לקרוא ברפרוף את שאר המסמך בוודאי לא יזיק(.
+" (לקרוא ברפרוף את שאר המסמך בוודאי לא יזיק).
 \begin_inset Newline newline
 \end_inset
 
@@ -2811,7 +2820,7 @@ Tutorial
 \begin_inset space ~
 \end_inset
 
-)
+(
 \emph on
 \lang english
 Guide
@@ -2827,7 +2836,7 @@ Guide
 User's
 \emph default
 \lang hebrew
-( 
+) 
 \begin_inset space ~
 \end_inset
 
@@ -2858,7 +2867,7 @@ User's
 \begin_inset space ~
 \end_inset
 
-)
+(
 \lang english
 Additional
 \begin_inset space ~
@@ -2866,7 +2875,7 @@ Additional
 
 Features
 \lang hebrew
-( 
+) 
 \begin_inset space ~
 \end_inset
 
@@ -2881,7 +2890,7 @@ Features
 
 \lang hebrew
  גולמיות, מחלקות נוספות, ואפשרויות עריכה מיוחדות.
- כמו כן, הוא מכיל חלק מה"טריקים" )קצת מוזרים, אבל מגניבים(, של אמני ה- 
+ כמו כן, הוא מכיל חלק מה"טריקים" (קצת מוזרים, אבל מגניבים), של אמני ה- 
 \lang english
 \SpecialChar LaTeX
 
@@ -2898,14 +2907,14 @@ Features
 \begin_inset space ~
 \end_inset
 
-)
+(
 \emph on
 \lang english
 Customization
 \series bold
 \emph default
 \lang hebrew
-(
+)
 \series default
  
 \series bold
@@ -2931,11 +2940,11 @@ Customization
 \lang hebrew
 .
  זאת אומרת שכאן יש דברים כמו מערכות של מקשי קיצור, הפיכת התוכנה לבין לאומית
- )
+ (
 \lang english
 Internationalization
 \lang hebrew
-(, וקבצי הגדרות.
+), וקבצי הגדרות.
  אל תעלה על דעתך להגיע הנה לפני שתקרא את "השיעור המודרך".
 \end_layout
 
@@ -2953,7 +2962,7 @@ Internationalization
 \begin_inset space ~
 \end_inset
 
-)
+(
 \series bold
 \lang english
 \SpecialChar LaTeX
@@ -2963,7 +2972,7 @@ Internationalization
 
 configuration
 \lang hebrew
-(
+)
 \series default
  
 \begin_inset space ~
@@ -3118,7 +3127,7 @@ C++
 \SpecialChar LyX
 
 \lang hebrew
- יש מערכת עקיבה אחר תקלות )באגים(, אותה תוכל למצוא בכתובת 
+ יש מערכת עקיבה אחר תקלות (באגים), אותה תוכל למצוא בכתובת 
 \begin_inset Flex URL
 status collapsed
 
@@ -3165,7 +3174,7 @@ http://www.lyx.org
 \end_layout
 
 \begin_layout Standard
-דיווח טוב )שימושי( על תקלה יכיל לכל הפחות את הגרסה של ליקס בה נתגלתה הבעיה.
+דיווח טוב (שימושי) על תקלה יכיל לכל הפחות את הגרסה של ליקס בה נתגלתה הבעיה.
  תיאורים מדוייקים ומפורטים עדיפים 
 \lang english
 –
@@ -3180,13 +3189,13 @@ http://www.lyx.org
 
 \lang hebrew
 .
- אם הבעיה היא בעיית הידור )קומפילציה( או בעיה בהגדרות, צרף את הקובץ 
+ אם הבעיה היא בעיית הידור (קומפילציה) או בעיה בהגדרות, צרף את הקובץ 
 \family typewriter
 \lang english
 config.log
 \family default
 \lang hebrew
-, וציין באיזה מהדר )קומפיילר( אתה משתמש.
+, וציין באיזה מהדר (קומפיילר) אתה משתמש.
 \end_layout
 
 \begin_layout Standard
@@ -3330,16 +3339,16 @@ backtrace
 \lang english
 diff
 \lang hebrew
- )
+ (
 \lang english
 unified
 \lang hebrew
-( אל רשימת הדיוור של המפתחים הרשומה למעלה, ביחד עם רשימת השינויים שביצעת
- ותיאור של מה שהטלאי )
+) אל רשימת הדיוור של המפתחים הרשומה למעלה, ביחד עם רשימת השינויים שביצעת
+ ותיאור של מה שהטלאי (
 \lang english
 patch
 \lang hebrew
-( שלך עושה.
+) שלך עושה.
 \end_layout
 
 \begin_layout Subsection
