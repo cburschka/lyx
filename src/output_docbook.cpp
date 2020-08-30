@@ -393,12 +393,9 @@ void makeBibliography(
 
 	// If this is the last paragraph in a bibliography, close the bibliography tag.
 	auto const end = text.paragraphs().end();
-	bool endBibliography = par == end;
-	if (!endBibliography) {
-		auto nextpar = par;
-		++nextpar;
-		endBibliography = par->layout().latextype != LATEX_BIB_ENVIRONMENT;
-	}
+	auto nextpar = par;
+	++nextpar;
+	bool endBibliography = nextpar == end || nextpar->layout().latextype != LATEX_BIB_ENVIRONMENT;
 
 	if (endBibliography) {
 		xs << xml::EndTag("bibliography");
@@ -1124,7 +1121,7 @@ void docbookParagraphs(Text const &text,
 		auto insetsLength = distance(par->insetList().begin(), par->insetList().end());
 		if (insetsLength > 0) {
 			Inset const *firstInset = par->getInset(0);
-			if (firstInset && dynamic_cast<InsetBibtex const *>(firstInset)) {
+			if (firstInset && (firstInset->lyxCode() == BIBITEM_CODE || firstInset->lyxCode() == BIBTEX_CODE)) {
 				while (!headerLevels.empty()) {
 					int level = headerLevels.top().first;
 					docstring tag = from_utf8("</" + headerLevels.top().second + ">");
