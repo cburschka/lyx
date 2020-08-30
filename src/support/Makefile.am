@@ -122,12 +122,6 @@ liblyxsupport_a_SOURCES = \
 	unicode.h \
 	weighted_btree.h
 
-#if INSTALL_MACOSX
-#liblyxsupport_a_SOURCES += \
-#	AppleSpellChecker.h \
-#	AppleSpellChecker.mm
-#endif
-
 if INSTALL_MACOSX
 liblyxsupport_a_SOURCES += \
 	AppleSpeller.h \
