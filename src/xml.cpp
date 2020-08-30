@@ -651,7 +651,8 @@ docstring xml::cleanID(docstring const & orig)
 	// as both of them would be transformed as "a.b". With this procedure, one will become "a.b" and the other "a.b-1".
 	if (mangle && mangledNames.find(content) != mangledNames.end()) {
 		int & mangleID = tMangleID.localData();
-		content += "-" + convert<docstring>(mangleID);
+		if (mangleID > 0)
+			content += "-" + convert<docstring>(mangleID);
 		mangleID += 1;
 	}
 

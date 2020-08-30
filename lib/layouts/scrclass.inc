@@ -69,6 +69,7 @@ Style Labeling
 	DocBookItemTag        listitem
 	DocBookItemInnerTag   para
 	DocBookItemLabelTag   term
+	DocBookItemLabelTagType   paragraph
 End
 
 Input stdsections.inc

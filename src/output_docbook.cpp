@@ -255,6 +255,25 @@ void closeTag(XMLStream & xs, const std::string & tag, const std::string & tagty
 }
 
 
+void compTag(XMLStream & xs, const std::string & tag, const std::string & attr, const std::string & tagtype)
+{
+	if (tag.empty() || tag == "NONE")
+		return;
+
+	// Special case for <para>: always considered as a paragraph.
+	if (tag == "para" || tagtype == "paragraph" || tagtype == "block") {
+		if (!xs.isLastTagCR())
+			xs << xml::CR();
+		xs << xml::CompTag(tag, attr);
+		xs << xml::CR();
+	} else if (tagtype == "inline") {
+		xs << xml::CompTag(tag, attr);
+	} else {
+		xs.writeError("Unrecognised tag type '" + tagtype + "' for '" + tag + "'");
+	}
+}
+
+
 // Higher-level convenience functions.
 
 void openParTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar)
@@ -692,9 +711,8 @@ ParagraphList::const_iterator makeListEnvironment(Text const &text,
 			}
 		} else {
 			// DocBook doesn't like emptiness.
-			openTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnerattr(),
+			compTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnerattr(),
 			        par->layout().docbookiteminnertagtype());
-			closeTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnertagtype());
 		}
 
 		// If the next item is deeper, it must go entirely within this item (do it recursively).
