@@ -46,6 +46,10 @@
 #include "support/TempFile.h"
 #include "support/userinfo.h"
 
+#ifdef USE_MACOSX_PACKAGING
+#include "support/AppleSupport.h"
+#endif
+
 #include <fstream>
 #include <iostream>
 #include <algorithm>
@@ -285,6 +289,10 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 
 	// format prior to 2.0 and introduction of format tag
 	unsigned int rc_format = 0;
+
+#ifdef USE_MACOSX_PACKAGING
+	open_buffers_in_tabs = appleUserTabbingPreferenceAlways();
+#endif
 
 	while (lexrc.isOK()) {
 		// By using two switches we take advantage of the compiler

@@ -17,6 +17,9 @@ extern "C" {
 #endif
 	void appleCleanupEditMenu();
 	void appleCleanupViewMenu();
+
+	// query the system preferences for users tabbing preference
+	bool appleUserTabbingPreferenceAlways();
 #ifdef __cplusplus
 }
 #endif

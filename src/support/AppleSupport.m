@@ -24,12 +24,21 @@ void appleCleanupEditMenu() {
 
 void appleCleanupViewMenu() {
 
-#ifdef AVAILABLE_MAC_OS_X_VERSION_10_12_AND_LATER
 	// Remove the "Show Tab Bar" menu item from the "View" menu, if supported
+	// See the Apple developer release notes:
+	// What should an application which already has support for tabbing do?
+	// - The application should explicitly opt-out of automatic window tabbing...
+	// It should respect the userTabbingPreference... see below
+	// https://developer.apple.com/library/archive/releasenotes/AppKit/RN-AppKitOlderNotes/index.html
 	if ([NSWindow respondsToSelector:@selector(allowsAutomaticWindowTabbing)])
-		NSWindow.allowsAutomaticWindowTabbing = NO;
-#endif
+		[NSWindow setAllowsAutomaticWindowTabbing:NO];
 
 	// Remove the "Enter Full Screen" menu item from the "View" menu
 	[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"NSFullScreenMenuItemEverywhere"];
+}
+
+
+bool appleUserTabbingPreferenceAlways() {
+	return [NSWindow respondsToSelector:@selector(userTabbingPreference)] &&
+		[NSWindow userTabbingPreference] == NSWindowUserTabbingPreferenceAlways;
 }
