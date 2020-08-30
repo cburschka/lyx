@@ -213,7 +213,8 @@ public:
 	std::vector<docstring> simpleDocBookOnePar(Buffer const & buf,
 							                   OutputParams const & runparams,
 							                   Font const & outerfont,
-							                   pos_type initial = 0) const;
+							                   pos_type initial = 0,
+							                   bool is_last_par = false) const;
 
 	/// \return any material that has had to be deferred until after the
 	/// paragraph has closed.

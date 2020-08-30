@@ -3332,7 +3332,8 @@ std::tuple<vector<xml::FontTag>, vector<xml::EndFontTag>> computeDocBookFontSwit
 std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
                                                       OutputParams const & runparams,
                                                       Font const & outerfont,
-                                                      pos_type initial) const
+                                                      pos_type initial,
+                                                      bool is_last_par) const
 {
 	// Track whether we have opened these tags
 	DocBookFontState fs;
@@ -3409,7 +3410,9 @@ std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
 	// I'm worried about what happens if a branch, say, is itself
 	// wrapped in some font stuff. I think that will not work.
 	xs->closeFontTags();
-	if (runparams.docbook_in_listing)
+
+	// In listings, new lines are very important. Avoid generating one for the last line.
+	if (runparams.docbook_in_listing && !is_last_par)
 		*xs << xml::CR();
 
 	// Finalise the last (and most likely only) paragraph.

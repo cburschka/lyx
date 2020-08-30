@@ -504,8 +504,6 @@ void makeParagraph(
 	//		or we're not in the last paragraph, anyway.
 	//   (ii) We didn't open it and docbook_in_par is true,
 	//		but we are in the first par, and there is a next par.
-	auto nextpar = par;
-	++nextpar;
 	bool const close_par = open_par && (!runparams.docbook_in_par);
 
 	// Determine if this paragraph has some real content. Things like new pages are not caught
@@ -513,7 +511,9 @@ void makeParagraph(
 	// Thus, remove all spaces (including new lines: \r, \n) before checking for emptiness.
 	// std::all_of allows doing this check without having to copy the string.
 	// Open and close tags around each contained paragraph.
-	auto pars = par->simpleDocBookOnePar(buf, runparams, text.outerFont(distance(begin, par)), 0);
+	auto nextpar = par;
+	++nextpar;
+	auto pars = par->simpleDocBookOnePar(buf, runparams, text.outerFont(distance(begin, par)), 0, nextpar == end);
 	for (auto & parXML : pars) {
 		if (!std::all_of(parXML.begin(), parXML.end(), ::isspace)) {
 			if (open_par)
