@@ -78,6 +78,7 @@
 
 #ifdef Q_OS_MAC
 #include "support/AppleScript.h"
+#include "support/AppleSupport.h"
 #include "support/linkback/LinkBackProxy.h"
 #endif
 
@@ -1032,6 +1033,7 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	setQuitOnLastWindowClosed(false);
 	///
 	setupApplescript();
+	appleCleanupEditMenu();
 #endif
 
 #if defined(Q_WS_X11) || defined(QPA_XCB)

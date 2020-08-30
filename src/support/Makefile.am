@@ -129,6 +129,8 @@ liblyxsupport_a_SOURCES += \
 	AppleScript.h \
 	AppleScript.m \
 	AppleScriptProxy.cpp \
+	AppleSupport.h \
+	AppleSupport.m \
 	linkback/LinkBack.h \
 	linkback/LinkBack.m \
 	linkback/LinkBackProxy.h \
