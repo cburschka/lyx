@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 547
+\lyxformat 598
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -9,7 +9,7 @@
 
 \end_preamble
 \use_default_options false
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package none
 \inputencoding utf8
@@ -21,7 +21,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -34,7 +36,7 @@
 \paperfontsize 12
 \spacing single
 \use_hyperref false
-\papersize a4paper
+\papersize a4
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 0
@@ -56,6 +58,7 @@
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -71,11 +74,15 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
 \end_header
 
 \begin_body
@@ -578,6 +585,41 @@ esint10:
 \begin_layout Standard
 wasy10: 
 \begin_inset Formula $\text{\pointer}\bell\,\quarternote\,\halfnote$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Another set of qt5 reported problems with integral limits.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\backslash
+fint broken everywhere likely breaks because of codepoint 32 (otherwise
+ glyph metrics is same as other ints, fixed by 80f94a93).
+ The others might be broken because we don't occupy glyphs at usual ascii
+ codepoints, see https://code.qt.io/cgit/qt/qtbase.git/commit/?id=54dbdc26bacd3ab77
+6c99ebef734404ef2e08ce5 .
+ Reported on opensuse with QT5-5.12.7, we did not get feedback what happens
+ with font containing glyph at asii position 'f').
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+esint10: 
+\begin_inset Formula 
+\[
+\int_{0}^{0}\oiint_{0}^{0}\fint_{0}^{0}
+\]
+
 \end_inset
 
 
