@@ -3333,7 +3333,8 @@ std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
                                                       OutputParams const & runparams,
                                                       Font const & outerfont,
                                                       pos_type initial,
-                                                      bool is_last_par) const
+                                                      bool is_last_par,
+                                                      bool ignore_fonts) const
 {
 	// Track whether we have opened these tags
 	DocBookFontState fs;
@@ -3362,33 +3363,37 @@ std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
 		// If this is an InsetNewline, generate a new paragraph. Also reset the fonts, so that tags are closed in
 		// this paragraph.
 		if (getInset(i) != nullptr && getInset(i)->lyxCode() == NEWLINE_CODE) {
-			xs->closeFontTags();
+			if (!ignore_fonts)
+				xs->closeFontTags();
 			generatedParagraphs.push_back(os.str());
 			os = odocstringstream();
 			delete xs;
 			xs = new XMLStream(os);
-			font_old = outerfont.fontInfo();
+			if (!ignore_fonts)
+				font_old = outerfont.fontInfo();
 		}
 
-		// Determine which tags should be opened or closed.
+		// Determine which tags should be opened or closed regarding fonts.
 		Font const font = getFont(buf.masterBuffer()->params(), i, outerfont);
-		tie(tagsToOpen, tagsToClose) = computeDocBookFontSwitch(font_old, font, default_family, fs);
+		if (!ignore_fonts) {
+			tie(tagsToOpen, tagsToClose) = computeDocBookFontSwitch(font_old, font, default_family, fs);
 
-		// FIXME XHTML
-		// Other such tags? What about the other text ranges?
+			// FIXME XHTML
+			// Other such tags? What about the other text ranges?
 
-		vector<xml::EndFontTag>::const_iterator cit = tagsToClose.begin();
-		vector<xml::EndFontTag>::const_iterator cen = tagsToClose.end();
-		for (; cit != cen; ++cit)
-			*xs << *cit;
+			vector<xml::EndFontTag>::const_iterator cit = tagsToClose.begin();
+			vector<xml::EndFontTag>::const_iterator cen = tagsToClose.end();
+			for (; cit != cen; ++cit)
+				*xs << *cit;
 
-		vector<xml::FontTag>::const_iterator sit = tagsToOpen.begin();
-		vector<xml::FontTag>::const_iterator sen = tagsToOpen.end();
-		for (; sit != sen; ++sit)
-			*xs << *sit;
+			vector<xml::FontTag>::const_iterator sit = tagsToOpen.begin();
+			vector<xml::FontTag>::const_iterator sen = tagsToOpen.end();
+			for (; sit != sen; ++sit)
+				*xs << *sit;
 
-		tagsToClose.clear();
-		tagsToOpen.clear();
+			tagsToClose.clear();
+			tagsToOpen.clear();
+		}
 
 		if (Inset const * inset = getInset(i)) {
 			if (!runparams.for_toc || inset->isInToc()) {
@@ -3409,7 +3414,8 @@ std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
 	// FIXME, this code is just imported from XHTML
 	// I'm worried about what happens if a branch, say, is itself
 	// wrapped in some font stuff. I think that will not work.
-	xs->closeFontTags();
+	if (!ignore_fonts)
+		xs->closeFontTags();
 
 	// In listings, new lines are very important. Avoid generating one for the last line.
 	if (runparams.docbook_in_listing && !is_last_par)

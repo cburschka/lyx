@@ -513,7 +513,7 @@ void makeParagraph(
 	// Open and close tags around each contained paragraph.
 	auto nextpar = par;
 	++nextpar;
-	auto pars = par->simpleDocBookOnePar(buf, runparams, text.outerFont(distance(begin, par)), 0, nextpar == end);
+	auto pars = par->simpleDocBookOnePar(buf, runparams, text.outerFont(distance(begin, par)), 0, nextpar == end, special_case);
 	for (auto & parXML : pars) {
 		if (!std::all_of(parXML.begin(), parXML.end(), ::isspace)) {
 			if (open_par)

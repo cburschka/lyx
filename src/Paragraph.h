@@ -214,7 +214,8 @@ public:
 							                   OutputParams const & runparams,
 							                   Font const & outerfont,
 							                   pos_type initial = 0,
-							                   bool is_last_par = false) const;
+							                   bool is_last_par = false,
+							                   bool ignore_fonts = false) const;
 
 	/// \return any material that has had to be deferred until after the
 	/// paragraph has closed.
