@@ -177,6 +177,11 @@ export/export/latex/es_auto-legacy_texF
 export/export/latex/languages/uk-babel-date-missing-chars-with-ascii_.*_texF
 export/doc/uk/Intro_.*_texF
 
+# Although DejaVu fonts are set and output is correct for pdf5,
+# for dvi3 the Russian characters are not shown (the problem currently
+# is obvious to see).
+export/examples/ru/Graphics_and_Insets/XY-(Pic|Figure)_dvi3_systemF
+
 
 # LyX issues
 # **********
