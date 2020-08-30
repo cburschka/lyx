@@ -179,6 +179,7 @@ Style Affiliation
 	DocBookWrapperTag                 author
 	DocBookWrapperMergeWithPrevious   true
 	DocBookItemTag                    orgname
+	DocBookItemTagType                paragraph
 	DocBookInInfo                     always
 End
 
@@ -207,6 +208,7 @@ Style Altaffilation
 	DocBookWrapperTag                 author
 	DocBookWrapperMergeWithPrevious   true
 	DocBookItemTag                    orgname
+	DocBookItemTagType                paragraph
 	DocBookInInfo                     always
 End
 
@@ -228,6 +230,7 @@ Style Email
 	  Shape		Italic
 	EndFont
 	DocBookTag                        email
+	DocBookTagType                    paragraph
 	DocBookWrapperTag                 author
 	DocBookWrapperMergeWithPrevious   true
 	DocBookInInfo                     always
