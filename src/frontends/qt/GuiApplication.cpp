@@ -1034,6 +1034,7 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	///
 	setupApplescript();
 	appleCleanupEditMenu();
+	appleCleanupViewMenu();
 #endif
 
 #if defined(Q_WS_X11) || defined(QPA_XCB)

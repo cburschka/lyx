@@ -19,5 +19,17 @@ void appleCleanupEditMenu() {
 
 	[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"NSDisabledDictationMenuItem"];
 	[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"NSDisabledCharacterPaletteMenuItem"];
+}
 
+
+void appleCleanupViewMenu() {
+
+#ifdef AVAILABLE_MAC_OS_X_VERSION_10_12_AND_LATER
+	// Remove the "Show Tab Bar" menu item from the "View" menu, if supported
+	if ([NSWindow respondsToSelector:@selector(allowsAutomaticWindowTabbing)])
+		NSWindow.allowsAutomaticWindowTabbing = NO;
+#endif
+
+	// Remove the "Enter Full Screen" menu item from the "View" menu
+	[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"NSFullScreenMenuItemEverywhere"];
 }

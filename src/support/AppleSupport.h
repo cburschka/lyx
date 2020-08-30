@@ -16,6 +16,7 @@
 extern "C" {
 #endif
 	void appleCleanupEditMenu();
+	void appleCleanupViewMenu();
 #ifdef __cplusplus
 }
 #endif
