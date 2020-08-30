@@ -54,6 +54,7 @@ Style Section
 		IsTocCaption   1
 	EndArgument
 	DocBookTag            title
+	DocBookTagType        paragraph
 	DocBookSectionTag     section
 End
 
@@ -176,6 +177,7 @@ Style Title
 	EndFont
 	HTMLTitle             true
 	DocBookTag            title
+	DocBookTagType        paragraph
 	DocBookInInfo         maybe
 End
 
