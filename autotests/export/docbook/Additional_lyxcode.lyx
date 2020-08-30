@@ -1,0 +1,371 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 598
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+ \cleardoublepage
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children no
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format pdf2
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "LyX's Additional Features manual"
+\pdf_author "LyX Team"
+\pdf_subject "LyX's additional features documentation"
+\pdf_keywords "LyX, Documentation, Additional"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\use_lineno 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle headings
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\docbook_table_output 0
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Additional \SpecialChar LyX
+ Features
+\end_layout
+
+\begin_layout Subtitle
+Version 2.3.x
+\end_layout
+
+\begin_layout Author
+by the \SpecialChar LyX
+ Team
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+Principal maintainer of this file is
+\noun on
+ Richard Heck
+\noun default
+.
+ If you have comments or error corrections, please send them to the \SpecialChar LyX
+ Documentati
+on mailing list, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<lyx-docs@lists.lyx.org>
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Inserting-TeX-Code"
+
+\end_inset
+
+Inserting \SpecialChar TeX
+ Code into \SpecialChar LyX
+ Documents
+\end_layout
+
+\begin_layout Standard
+Anything you can do in \SpecialChar LaTeX
+ you can do in \SpecialChar LyX
+, for a very simple reason: You can
+ always insert \SpecialChar TeX
+ code into any \SpecialChar LyX
+ document.
+ \SpecialChar LyX
+ cannot, and will never be able to, display every possible \SpecialChar LaTeX
+ construct.
+ If ever you need to insert \SpecialChar LaTeX
+ commands into your \SpecialChar LyX
+ document, you can use the
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar TeX
+ Code
+\end_layout
+
+\end_inset
+
+ box, which you can insert into your document with 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+Insert\SpecialChar menuseparator
+
+\family sans
+TeX
+\family default
+ Code
+\end_layout
+
+\end_inset
+
+ or the keyboard shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "ert-insert"
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Here's an example of inserting \SpecialChar LaTeX
+ commands in a \SpecialChar LyX
+ document.
+ The code looks like this:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+begin{tabular}{ll}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+begin{minipage}{5cm}
+\begin_inset Newline newline
+\end_inset
+
+This is an example of a minipage environment.
+ You 
+\begin_inset Newline newline
+\end_inset
+
+can put nearly everything in it, even (non-floating) 
+\begin_inset Newline newline
+\end_inset
+
+figures and tables.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+end{minipage}
+\begin_inset Newline newline
+\end_inset
+
+&
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+begin{minipage}{5cm}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+begin{verbatim}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+begin{minipage}{5cm}
+\begin_inset Newline newline
+\end_inset
+
+This ...
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+end{minipage}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+end{verbatim}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+end{minipage}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+end{tabular}
+\end_layout
+
+\begin_layout Section
+Cross-References Between Files
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+This section is somewhat out of date.
+ Need to describe default master documents and how children are opened when
+ the master is.
+ [[FIXME]]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

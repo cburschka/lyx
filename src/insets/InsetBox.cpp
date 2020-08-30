@@ -717,7 +717,25 @@ int InsetBox::plaintext(odocstringstream & os,
 
 void InsetBox::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
+	if (!getLayout().docbookwrappertag().empty()) {
+		if (!xs.isLastTagCR())
+			xs << xml::CR();
+
+		xs << xml::StartTag(getLayout().docbookwrappertag(), getLayout().docbookwrapperattr());
+		xs << xml::CR();
+	} else {
+		LYXERR0("Assertion failed: box layout " + getLayout().name() + " missing DocBookWrapperTag.");
+	}
+
 	InsetText::docbook(xs, runparams);
+
+	if (!getLayout().docbookwrappertag().empty()) {
+		if (!xs.isLastTagCR())
+			xs << xml::CR();
+
+		xs << xml::EndTag(getLayout().docbookwrappertag());
+		xs << xml::CR();
+	}
 }
 
 

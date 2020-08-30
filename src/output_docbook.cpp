@@ -493,6 +493,10 @@ void makeParagraph(
 		// Listings should not get into their own paragraph.
 		if (!special_case && firstInset->lyxCode() == lyx::LISTINGS_CODE)
 			special_case = true;
+
+		// Boxes cannot get into their own paragraph.
+		if (!special_case && firstInset->lyxCode() == lyx::BOX_CODE)
+			special_case = true;
 	}
 
 	bool const open_par = runparams.docbook_make_pars

@@ -27,6 +27,8 @@ InsetLayout Flex:Noun
 	EndHTMLStyle
 	ResetsFont            true
 	CustomPars            false
+	DocBookTag            personname
+	DocBookTagType        inline
 End
 
 
@@ -42,6 +44,8 @@ InsetLayout Flex:Emph
 	HTMLTag               em
 	ResetsFont            true
 	CustomPars            false
+	DocBookTag            emphasis
+	DocBookTagType        inline
 End
 
 
@@ -60,6 +64,9 @@ InsetLayout Flex:Strong
 	HTMLTag               strong
 	ResetsFont            true
 	CustomPars            false
+	DocBookTag            personname
+	DocBookAttr           role='bold'
+	DocBookTagType        inline
 End
 
 
@@ -79,4 +86,6 @@ InsetLayout Flex:Code
 	ResetsFont            true
 	CustomPars            false
 	Spellcheck            false
+	DocBookTag            code
+	DocBookTagType        inline
 End

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This DocBook file was created by LyX 2.4.0dev
+  See http://www.lyx.org/ for more information -->
+<book xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
+<info>
+<title>Additional LyX Features</title>
+<subtitle>Version 2.3.x</subtitle>
+<author>
+<personname>by the LyX Team<footnote>
+<para>Principal maintainer of this file is<personname> Richard Heck</personname>. If you have comments or error corrections, please send them to the LyX Documentation mailing list, <code>&lt;lyx-docs@lists.lyx.org&gt;</code>.</para>
+</footnote></personname>
+</author>
+</info>
+<chapter xml:id="sec.Inserting-TeX-Code">
+<title>Inserting TeX Code into LyX Documents</title>
+<para>Anything you can do in LaTeX you can do in LyX, for a very simple reason: You can always insert TeX code into any LyX document. LyX cannot, and will never be able to, display every possible LaTeX construct. If ever you need to insert LaTeX commands into your LyX document, you can use the <code>TeX Code</code> box, which you can insert into your document with <personname>Insert&#x21D2;TeX Code</personname> or the keyboard shortcut <keycap>Ctrl+L</keycap>.</para>
+<para>Here's an example of inserting LaTeX commands in a LyX document. The code looks like this:</para>
+<programlisting language='lyx'>\begin{tabular}{ll}
+\begin{minipage}{5cm}
+This is an example of a minipage environment. You 
+can put nearly everything in it, even (non-floating) 
+figures and tables. 
+\end{minipage}
+&amp;
+\begin{minipage}{5cm}
+\begin{verbatim}
+\begin{minipage}{5cm}
+This ... 
+\end{minipage}
+\end{verbatim}
+\end{minipage}
+\end{tabular}</programlisting>
+<section>
+<title>Cross-References Between Files</title>
+<sidebar role='shadowbox'>
+<para>This section is somewhat out of date. Need to describe default master documents and how children are opened when the master is. [[FIXME]]</para>
+</sidebar>
+</section>
+</chapter>
+</book>

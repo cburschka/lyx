@@ -434,6 +434,8 @@ InsetLayout Box
 	  Size                Small
 	EndFont
 	MultiPar              true
+	DocBookWrapperTag     sidebar
+	DocBookTag            para
 End
 
 InsetLayout Box:Frameless
@@ -441,6 +443,9 @@ InsetLayout Box:Frameless
 	HTMLStyle
 		div.Frameless { margin: 1em; }
 	EndHTMLStyle
+	DocBookWrapperTag     sidebar
+	DocBookTag            para
+	DocBookWrapperAttr    role='frameless'
 End
 
 InsetLayout Box:Shaded
@@ -452,6 +457,9 @@ InsetLayout Box:Shaded
 			padding: 0.5ex;
 		}
 	EndHTMLStyle
+	DocBookWrapperTag     sidebar
+	DocBookTag            para
+	DocBookWrapperAttr    role='shaded'
 End
 
 InsetLayout Box:Boxed
@@ -462,6 +470,9 @@ InsetLayout Box:Boxed
 			padding: 0.5ex;
 		}
 	EndHTMLStyle
+	DocBookWrapperTag     sidebar
+	DocBookTag            para
+	DocBookWrapperAttr    role='boxed'
 End
 
 InsetLayout Box:Framed
@@ -472,6 +483,9 @@ InsetLayout Box:Framed
 			padding: 0.5ex;
 		}
 	EndHTMLStyle
+	DocBookWrapperTag     sidebar
+	DocBookTag            para
+	DocBookWrapperAttr    role='framed'
 End
 
 InsetLayout Box:ovalbox
@@ -482,6 +496,9 @@ InsetLayout Box:ovalbox
 			padding: 0.5ex;
 		}
 	EndHTMLStyle
+	DocBookWrapperTag     sidebar
+	DocBookTag            para
+	DocBookWrapperAttr    role='ovalbox'
 End
 
 InsetLayout Box:Ovalbox
@@ -492,6 +509,9 @@ InsetLayout Box:Ovalbox
 			padding: 0.5ex;
 		}
 	EndHTMLStyle
+	DocBookWrapperTag     sidebar
+	DocBookTag            para
+	DocBookWrapperAttr    role='ovalbox-var'
 End
 
 InsetLayout Box:Shadowbox
@@ -499,6 +519,9 @@ InsetLayout Box:Shadowbox
 	HTMLStyle
 		div.Shadowbox { border: solid gray medium; border-bottom: solid black 1ex; border-right: solid black 1ex; padding: 0.5ex; }
 	EndHTMLStyle
+	DocBookWrapperTag     sidebar
+	DocBookTag            para
+	DocBookWrapperAttr    role='shadowbox'
 End
 
 InsetLayout Box:Doublebox
@@ -509,6 +532,9 @@ InsetLayout Box:Doublebox
 			padding: 0.5ex;
 		}
 	EndHTMLStyle
+	DocBookWrapperTag     sidebar
+	DocBookTag            para
+	DocBookWrapperAttr    role='doublebox'
 End
 
 InsetLayout Float
@@ -609,6 +635,8 @@ InsetLayout Info:menu
 	HTMLStyle
 		span.menu { font-family: sans-serif; }
 	EndHTMLStyle
+	DocBookTag            guimenu
+	DocBookTagType        inline
 End
 
 InsetLayout Info:shortcut
@@ -626,6 +654,10 @@ InsetLayout Info:shortcut
 	HTMLStyle
 		span.shortcut { font-family: sans-serif; }
 	EndHTMLStyle
+	DocBookWrapperTag     keycombo
+	DocBookWrapperTagType inline
+	DocBookTag            keycap
+	DocBookTagType        inline
 End
 
 InsetLayout Info:shortcuts
@@ -643,6 +675,10 @@ InsetLayout Info:shortcuts
 	HTMLStyle
 		span.shortcuts { font-family: sans-serif; }
 	EndHTMLStyle
+	DocBookWrapperTag     keycombo
+	DocBookWrapperTagType inline
+	DocBookTag            keycap
+	DocBookTagType        inline
 End
 
 InsetLayout Caption:Standard
