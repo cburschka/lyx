@@ -534,8 +534,19 @@ void makeEnvironment(Text const &text,
                      OutputParams const &runparams,
                      ParagraphList::const_iterator const & par)
 {
-	// TODO: simplify me!
 	auto const end = text.paragraphs().end();
+	auto nextpar = par;
+	++nextpar;
+
+	// Special cases for listing-like environments provided in layouts. This is quite ad-hoc, but provides a useful
+	// default. This should not be used by too many environments (only LyX-Code right now).
+	// This would be much simpler if LyX-Code was implemented as InsetListings...
+	bool mimicListing = false;
+	bool ignoreFonts = false;
+	if (par->layout().docbooktag() == "programlisting") {
+		mimicListing = true;
+		ignoreFonts = true;
+	}
 
 	// Output the opening tag for this environment, but only if it has not been previously opened (condition
 	// implemented in openParTag).
@@ -547,65 +558,25 @@ void makeEnvironment(Text const &text,
 	if (style.latextype == LATEX_COMMAND) {
 		// Nothing to do (otherwise, infinite loops).
 	} else if (style.latextype == LATEX_ENVIRONMENT) {
-		// Open a wrapper tag if needed.
-		if (style.docbookitemwrappertag() != "NONE")
-			openTag(xs, style.docbookitemwrappertag(), style.docbookitemwrapperattr(), style.docbookitemwrappertagtype());
+		// Generate the paragraph, if need be.
+		auto pars = par->simpleDocBookOnePar(buf, runparams, text.outerFont(std::distance(text.paragraphs().begin(), par)), 0, false, ignoreFonts);
 
-		// Generate the label, if need be. If it is taken from the text, sep != 0 and corresponds to the first
-		// character after the label.
-		pos_type sep = 0;
-		if (style.labeltype != LABEL_NO_LABEL && style.docbookitemlabeltag() != "NONE") {
-			// At least one condition must be met:
-			//  - this environment is not a list
-			//  - if this is a list, the label must not be manual (i.e. it must be taken from the layout)
-			if (style.latextype != LATEX_LIST_ENVIRONMENT || style.labeltype != LABEL_MANUAL) {
-				// Usual cases: maybe there is something specified at the layout level. Highly unlikely, though.
-				docstring const lbl = par->params().labelString();
-
-				if (!lbl.empty()) {
-					openLabelTag(xs, style);
-					xs << lbl;
-					closeLabelTag(xs, style);
-				}
-			} else {
-				// Only variablelist gets here (or similar items defined as an extension in the layout).
-				openLabelTag(xs, style);
-				sep = par->firstWordDocBook(xs, runparams);
-				closeLabelTag(xs, style);
-			}
-		}
-
-		// Maybe the item is completely empty, i.e. if the first word ends at the end of the current paragraph
-		// AND if the next paragraph doesn't have the same depth (if there is such a paragraph).
-		// Common case: there is only the first word on the line, but there is a nested list instead
-		// of more text.
-		bool emptyItem = false;
-		if (sep == par->size()) { // If the separator is already at the end of this paragraph...
-			auto next_par = par;
-			++next_par;
-			if (next_par == text.paragraphs().end()) // There is no next paragraph.
-				emptyItem = true;
-			else // There is a next paragraph: check depth.
-				emptyItem = par->params().depth() >= next_par->params().depth();
-		}
-
-		if (emptyItem) {
-			// Avoid having an empty item, this is not valid DocBook. A single character is enough to force
-			// generation of a full <para>.
-			// TODO: this always worked only by magic...
-			xs << ' ';
-		} else {
-			// Generate the rest of the paragraph, if need be. Open as many inner tags as necessary.
-			auto pars = par->simpleDocBookOnePar(buf, runparams, text.outerFont(std::distance(text.paragraphs().begin(), par)), sep);
+		if (mimicListing) {
 			auto p = pars.begin();
-			while (true) {
+			while (p != pars.end()) {
+				openTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnerattr(), par->layout().docbookiteminnertagtype());
 				xs << XMLStream::ESCAPE_NONE << *p;
+				closeTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnertagtype());
 				++p;
-				if (p != pars.end()) {
-					closeTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnertagtype());
-					openTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnerattr(), par->layout().docbookiteminnertagtype());
-				} else
-					break;
+
+				if (p != pars.end())
+					xs << xml::CR();
+			}
+		} else {
+			for (auto const & p : pars) {
+				openTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnerattr(), par->layout().docbookiteminnertagtype());
+				xs << XMLStream::ESCAPE_NONE << p;
+				closeTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnertagtype());
 			}
 		}
 	} else {
@@ -613,8 +584,6 @@ void makeEnvironment(Text const &text,
 	}
 
 	// Close the environment.
-	auto nextpar = par;
-	++nextpar;
 	closeParTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr); // TODO: switch in layout for par/block?
 }
 

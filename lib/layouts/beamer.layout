@@ -1408,6 +1408,9 @@ Style LyX-Code
   Font
     Family         Typewriter
   EndFont
+  DocBookTag            programlisting
+  DocBookTagType        paragraph
+  DocBookAttr			language='lyx'
 End
  
 Style NoteItem
