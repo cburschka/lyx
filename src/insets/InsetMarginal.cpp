@@ -49,6 +49,7 @@ void InsetMarginal::docbook(XMLStream & xs, OutputParams const & runparams) cons
 	xs << xml::StartTag("sidebar", "role=\"margin\"");
 	xs << xml::CR();
 	xs << XMLStream::ESCAPE_NONE << "<?dbfo float-type=\"margin.note\"?>";
+	xs << xml::CR();
 	InsetText::docbook(xs, runparams);
 	xs << xml::EndTag("sidebar");
 }

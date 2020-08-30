@@ -44,8 +44,7 @@ InsetLayout Marginal
 	EndHTMLStyle
 	AddToToc              marginalnote
 	IsTocCaption          true
-	DocBookTag            sidebar
-	DocBookAttr           role="margin"
+	DocBookTag            para
 End
 
 InsetLayout Foot
