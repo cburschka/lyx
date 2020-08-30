@@ -978,6 +978,9 @@ void outputDocBookInfo(
 
 	// End the <info> tag if it was started.
 	if (needInfo) {
+		if (!xs.isLastTagCR())
+			xs << xml::CR();
+
 		xs << xml::EndTag("info");
 		xs << xml::CR();
 		xs.endDivision();
