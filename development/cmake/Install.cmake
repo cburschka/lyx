@@ -143,7 +143,7 @@ if(APPLE)
     install(FILES "${TOP_SRC_DIR}/development/MacOSX/PkgInfo" DESTINATION "${MACOSX_BUNDLE_STARTUP_COMMAND}/Contents")
   endif()
 
-  foreach(_i lyxeditor maxima inkscape)
+  foreach(_i lyxeditor maxima inkscape lilypond lilypond-book)
     install(PROGRAMS "${TOP_SRC_DIR}/development/MacOSX/${_i}" DESTINATION "${LYX_UTILITIES_INSTALL_PATH}")
   endforeach()
   install(FILES "${TOP_SRC_DIR}/development/MacOSX/LyX.icns" DESTINATION "${LYX_DATA_SUBDIR}")
