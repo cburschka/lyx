@@ -3277,6 +3277,7 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 	                        : "\t\t *** END DRAWING ***"));
 
 	// The scrollbar needs an update.
+	// FIXME: does it always? see ticket #11947.
 	updateScrollbar();
 
 	// Normalize anchor for next time
