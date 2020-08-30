@@ -16,7 +16,7 @@ dist_pkgdata_DATA += configure.py
 
 dist_noinst_DATA = \
 	appdata.xml \
-	fonts/test/stmary10.lyx \
+	fonts/test/check_glyphs.lyx \
 	images/README \
 	images/font-smallcaps.svgz \
 	images/math/ams_arrows.png \
