@@ -1700,6 +1700,8 @@ docstring authorsToDocBookAuthorGroup(docstring const & authorsString, XMLStream
 
 	// Output the list of authors.
 	xs << xml::StartTag("authorgroup");
+	xs << xml::CR();
+
 	auto it = authors.cbegin();
 	auto en = authors.cend();
 	for (size_t i = 0; it != en; ++it, ++i) {

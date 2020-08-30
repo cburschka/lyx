@@ -1200,6 +1200,7 @@ void InsetBibtex::docbook(XMLStream & xs, OutputParams const &) const
 					xs << xml::StartTag(toDocBookTag[match[1]]);
 					xs << from_utf8(match[2].str());
 					xs << xml::EndTag(toDocBookTag[match[1]]);
+					xs << xml::CR();
 				}
 			} else {
 				LYXERR0("The BibTeX field " << match[1].str() << " is unknown.");
