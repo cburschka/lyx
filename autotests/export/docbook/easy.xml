@@ -12,8 +12,9 @@
 <para>I am an abstract</para>
 <para>I am also an abstract</para>
 </abstract>
+
 </info>
-<section xml:id="sec.Sec-1-0">
+<section xml:id="sec.Sec-1">
 <title>I am the first section </title>
 <para>I am the first paragraph of the first section. </para>
 <para>I am the second paragraph of the first section. </para>
@@ -50,7 +51,7 @@
 <section>
 <title>I am the second section </title>
 <para>I am the only paragraph of the second section. <link xlink:href="http://example.org">Hyperlink.</link> &#8220;Text between quotes.&#8221;</para>
-<para>See <xref linkend="sec.Sec-1-0" />.</para>
+<para>See <xref linkend="sec.Sec-1" />.</para>
 </section>
 <section>
 <title>I am the third section and I deal with star sections</title>

@@ -1411,6 +1411,7 @@ void InsetBibtex::docbook(XMLStream & xs, OutputParams const &) const
 
 	// Footer for bibliography.
 	xs << xml::EndTag("bibliography");
+	xs << xml::CR();
 }
 
 
