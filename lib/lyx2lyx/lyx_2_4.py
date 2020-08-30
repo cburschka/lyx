@@ -3475,6 +3475,15 @@ def revert_memoir_endnotes(document):
 def revert_totalheight(document):
     " Reverts graphics height parameter from totalheight to height "
 
+    relative_heights = {
+        "\\textwidth" : "text%",
+        "\\columnwidth" : "col%",
+        "\\paperwidth" : "page%",
+        "\\linewidth" : "line%",
+        "\\textheight" : "theight%",
+        "\\paperheight" : "pheight%",
+        "\\baselineskip " : "baselineskip%"
+    }
     i = 0
     while (True):
         i = find_token(document.body, "\\begin_inset Graphics", i)
@@ -3487,6 +3496,7 @@ def revert_totalheight(document):
             continue
 
         rx = re.compile(r'\s*special\s*(\S+)$')
+        rxx = re.compile(r'(\d*\.*\d+)(\S+)$')
         k = find_re(document.body, rx, i, j)
         special = ""
         oldheight = ""
@@ -3498,6 +3508,16 @@ def revert_totalheight(document):
             for spc in mspecial:
                 if spc[:7] == "height=":
                     oldheight = spc.split('=')[1]
+                    ms = rxx.search(oldheight)
+                    if ms:
+                        oldval = ms.group(1)
+                        oldunit = ms.group(2)
+                        if oldval[1] == ".":
+                            oldval = "0" + oldval
+                        if oldunit in list(relative_heights.keys()):
+                            oldval = str(float(oldval) * 100)
+                            oldunit = relative_heights[oldunit]
+                            oldheight = oldval + oldunit
                     mspecial.remove(spc)
                     break
             if len(mspecial) > 0:
@@ -3534,6 +3554,15 @@ def revert_totalheight(document):
 def convert_totalheight(document):
     " Converts graphics height parameter from totalheight to height "
 
+    relative_heights = {
+        "text%" : "\\textwidth",
+        "col%"  : "\\columnwidth",
+        "page%" : "\\paperwidth",
+        "line%" : "\\linewidth",
+        "theight%" : "\\textheight",
+        "pheight%" : "\\paperheight",
+        "baselineskip%" : "\\baselineskip"
+    }
     i = 0
     while (True):
         i = find_token(document.body, "\\begin_inset Graphics", i)
@@ -3564,19 +3593,23 @@ def convert_totalheight(document):
             else:
                 special = ""
 
-        rx = re.compile(r'(\s*height\s*)(\S+)$')
+        rx = re.compile(r'(\s*height\s*)(\d+)(\S+)$')
         kk = find_re(document.body, rx, i, j)
         if kk != -1:
             m = rx.match(document.body[kk])
             val = ""
             if m:
                 val = m.group(2)
+                unit = m.group(3)
+                if unit in list(relative_heights.keys()):
+                    val = str(float(val) / 100)
+                    unit = relative_heights[unit]
                 if k != -1:
                     if special != "":
                         val = val + "," + special
                     document.body[k] = "\tspecial " + "height=" + val
                 else:
-                    document.body.insert(kk + 1, "\tspecial height=" + val)
+                    document.body.insert(kk + 1, "\tspecial height=" + val + unit)
                 if newheight != "":
                     document.body[kk] = m.group(1) + newheight
                 else:
