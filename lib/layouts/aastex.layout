@@ -285,6 +285,11 @@ Style Abstract
 	  Series	Bold
 	  Size		Normal
 	EndFont
+	DocBookAbstract       true
+	DocBookInInfo         always
+	DocBookWrapperTag     abstract
+	DocBookWrapperMergeWithPrevious    true
+	DocBookTag            para
 End
 
 
@@ -335,6 +340,7 @@ Style Keywords
 	  Size		Normal
 	EndFont
 	DocBookTag          keyword
+	DocBookTagType      paragraph
 	DocBookWrapperTag   keywordset
 	DocBookInInfo       always
 End
@@ -359,7 +365,7 @@ Style Acknowledgements
 	  Shape		Italic
 	EndFont
 	DocBookTag            para
-	DocBookWrapperTag     acknowledgement
+	DocBookWrapperTag     acknowledgements
 End
 
 
@@ -432,6 +438,7 @@ Style MathLetters
 	Font
 	  Size		Normal
 	EndFont
+	DocBookTag  NONE
 End
 
 
@@ -495,6 +502,9 @@ Style NoteToEditor
 	  Size		Normal
 	  Shape		Italic
 	EndFont
+	DocBookTag      remark
+	DocBookTagType  paragraph
+	DocBookAttr     role='to-editor'
 End
 
 
@@ -515,6 +525,9 @@ Style TableRefs
 	  Family	Roman
 	  Size		Normal
 	EndFont
+	DocBookTag      remark
+	DocBookTagType  paragraph
+	DocBookAttr     role='tablerefs'
 End
 
 
@@ -535,6 +548,9 @@ Style TableComments
 	  Family	Roman
 	  Size		Normal
 	EndFont
+	DocBookTag      remark
+	DocBookTagType  paragraph
+	DocBookAttr     role='tablecomments'
 End
 
 
@@ -550,6 +566,9 @@ Style "Table note"
 	LabelFont
 	  Color		magenta
 	EndFont
+	DocBookTag      remark
+	DocBookTagType  paragraph
+	DocBookAttr     role='tablenote'
 End
 
 
@@ -572,6 +591,9 @@ InsetLayout "Flex:tablenotemark"
 	  Color		magenta
 	  Size		Small
 	EndFont
+	DocBookTag      remark
+	DocBookTagType  paragraph
+	DocBookAttr     role='tablenotemark'
 End
 
 

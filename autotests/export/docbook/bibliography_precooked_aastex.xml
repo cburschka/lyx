@@ -382,9 +382,7 @@ clusters: globular, peanut—bosons: bozos
  </m:mrow>
  </m:math>
 </inlineequation> may be formed from particle four-momenta, gauge-boson polarization vectors or fermion strings with an uncontracted Lorentz index associated with final-state fermions.</para>
-<NoteToEditor>
-Figures 1 and 2 should appear side-by-side in print
-</NoteToEditor>
+<remark role='to-editor'>Figures 1 and 2 should appear side-by-side in print</remark>
 <para>In the chiral representation the <inlineequation>
 <alt role='tex'>\gamma</alt>
  <m:math>
@@ -634,7 +632,6 @@ Figures 1 and 2 should appear side-by-side in print
  </m:mrow>
  </m:math>
 </inlineequation> by </para>
-<MathLetters>
 <informalequation>
 <alt role='tex'>u(p,\lambda)_{\pm} &amp; = &amp; (E\pm\lambda|{\textbf{p}}|)^{1/2}\chi_{\lambda}(p),\\
 v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi_{-\lambda}(p)
@@ -724,9 +721,7 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
   </m:mtr>
  </m:mtable>
  </m:math>
-</informalequation>
-</MathLetters>
-</section>
+</informalequation></section>
 </section>
 <section>
 <title>Floating material and so forth</title>
@@ -1008,7 +1003,7 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
  </m:mrow>
  </m:math>
 </inlineequation> of the electronically submitted abstracts for AAS meetings are error-free. </para>
-<acknowledgement>
+<acknowledgements>
 <para>We are grateful to V. Barger, T. Han, and R. J. N. Phillips for doing the math in section&#xA0;<xref linkend="bozomath" />. More information on the AASTeX macros package are available at <link xlink:href="http://www.aas.org/publications/aastex">http://www.aas.org/publications/aastex</link> or the <link xlink:href="ftp://www.aas.org/pubs/AAS ftp site">AAS ftp site</link>.</para>
 <application>
 IRAF, AIPS, Astropy, ...
@@ -1139,7 +1134,7 @@ IRAF, AIPS, Astropy, ...
  <m:mrow><m:mi>P</m:mi>
  </m:mrow>
  </m:math>
-</inlineequation>a</td>
+</inlineequation><remark role='tablenotemark'>a</remark></td>
 <td align='right' valign='top'> <inlineequation>
 <alt role='tex'>PR_{maj}</alt>
  <m:math>
@@ -1183,7 +1178,7 @@ IRAF, AIPS, Astropy, ...
  <m:mrow><m:mo>&#x398;</m:mo>
  </m:mrow>
  </m:math>
-</inlineequation>b</td>
+</inlineequation><remark role='tablenotemark'>b</remark></td>
 <td align='center' valign='top'>Ref.</td>
 </tr>
 <tr>
@@ -1235,7 +1230,7 @@ IRAF, AIPS, Astropy, ...
 <tr>
 <td align='center' valign='top'> 4 </td>
 <td align='right' valign='top'>32733.8 </td>
-<td align='right' valign='top'>-1.2c</td>
+<td align='right' valign='top'>-1.2<remark role='tablenotemark'>c</remark></td>
 <td align='right' valign='top'>-0.5 </td>
 <td align='right' valign='top'>41 </td>
 <td align='right' valign='top'>54.8 </td>
@@ -1254,7 +1249,7 @@ IRAF, AIPS, Astropy, ...
 <td align='right' valign='top'>-0.4 </td>
 <td align='right' valign='top'>60 </td>
 <td align='right' valign='top'>1.4 </td>
-<td align='right' valign='top'>1.669c</td>
+<td align='right' valign='top'>1.669<remark role='tablenotemark'>c</remark></td>
 <td align='right' valign='top'>1.574 </td>
 <td align='right' valign='top'>2.343 </td>
 <td align='right' valign='top'>8.0 </td>
@@ -1279,23 +1274,13 @@ IRAF, AIPS, Astropy, ...
 </tr>
 </tbody>
 
-<Table note>
-a<!-- }{ -->
-Sample footnote for table&#xA0;<xref linkend="tbl-2" /> that was generated with the LaTeX table environment
-</Table note>
-<Table note>
-b<!-- }{ -->
-Yet another sample footnote for table&#xA0;<xref linkend="tbl-2" />
-</Table note>
-<Table note>
-c<!-- }{ -->
-Another sample footnote for table&#xA0;<xref linkend="tbl-2" />
-</Table note>
-<TableComments>
-We can also attach a long-ish paragraph of explanatory material to a table. Use \tablerefs to append a list of references. The following references were from a different table: I've patched them in here to show how they look, but don't take them too seriously—I certainly have not.
-</TableComments>
-<TableRefs>
-(1) Barbuy, Spite, &amp; Spite 1985; (2) Bond 1980; (3) Carbon et al. 1987; (4) Hobbs &amp; Duncan 1987; (5) Gilroy et al. 1988: (6) Gratton &amp; Ortolani 1986; (7) Gratton &amp; Sneden 1987; (8) Gratton &amp; Sneden (1988); (9) Gratton &amp; Sneden 1991; (10) Kraft et al. 1982; (11) LCL, or Laird, 1990; (12) Leep &amp; Wallerstein 1981; (13) Luck &amp; Bond 1981; (14) Luck &amp; Bond 1985; (15) Magain 1987; (16) Magain 1989; (17) Peterson 1981; (18) Peterson, Kurucz, &amp; Carney 1990; (19) RMB; (20) Schuster &amp; Nissen 1988; (21) Schuster &amp; Nissen 1989b; (22) Spite et al. 1984; (23) Spite &amp; Spite 1986; (24) Hobbs &amp; Thorburn 1991; (25) Hobbs et al. 1991; (26) Olsen 1983.
-</TableRefs>
+<remark role='tablenote'>a<!-- }{ -->
+Sample footnote for table&#xA0;<xref linkend="tbl-2" /> that was generated with the LaTeX table environment</remark>
+<remark role='tablenote'>b<!-- }{ -->
+Yet another sample footnote for table&#xA0;<xref linkend="tbl-2" /></remark>
+<remark role='tablenote'>c<!-- }{ -->
+Another sample footnote for table&#xA0;<xref linkend="tbl-2" /></remark>
+<remark role='tablecomments'>We can also attach a long-ish paragraph of explanatory material to a table. Use \tablerefs to append a list of references. The following references were from a different table: I've patched them in here to show how they look, but don't take them too seriously—I certainly have not.</remark>
+<remark role='tablerefs'>(1) Barbuy, Spite, &amp; Spite 1985; (2) Bond 1980; (3) Carbon et al. 1987; (4) Hobbs &amp; Duncan 1987; (5) Gilroy et al. 1988: (6) Gratton &amp; Ortolani 1986; (7) Gratton &amp; Sneden 1987; (8) Gratton &amp; Sneden (1988); (9) Gratton &amp; Sneden 1991; (10) Kraft et al. 1982; (11) LCL, or Laird, 1990; (12) Leep &amp; Wallerstein 1981; (13) Luck &amp; Bond 1981; (14) Luck &amp; Bond 1985; (15) Magain 1987; (16) Magain 1989; (17) Peterson 1981; (18) Peterson, Kurucz, &amp; Carney 1990; (19) RMB; (20) Schuster &amp; Nissen 1988; (21) Schuster &amp; Nissen 1989b; (22) Spite et al. 1984; (23) Spite &amp; Spite 1986; (24) Hobbs &amp; Thorburn 1991; (25) Hobbs et al. 1991; (26) Olsen 1983.</remark>
 </table>
 </article>
