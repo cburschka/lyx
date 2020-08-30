@@ -2418,13 +2418,11 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 {
 	// Choose the tag around the MathML equation.
 	docstring name;
+	bool doCR = false;
 	if (getType() == hullSimple)
 		name = from_ascii("inlineequation");
 	else {
-		// This is a block equation, always have <informalequation> on its own line.
-		if (!xs.isLastTagCR())
-			xs << xml::CR();
-
+		doCR = true; // This is a block equation, always have <informalequation> on its own line.
 		name = from_ascii("informalequation");
 	}
 
@@ -2438,6 +2436,10 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 			break;
 		}
 	}
+
+	if (doCR)
+		if (!xs.isLastTagCR())
+			xs << xml::CR();
 
 	xs << xml::StartTag(name, attr);
 	xs << xml::CR();
@@ -2485,6 +2487,8 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 	xs << XMLStream::ESCAPE_NONE << osmath.str();
 	xs << xml::CR();
 	xs << xml::EndTag(name);
+	if (doCR)
+		xs << xml::CR();
 }
 
 

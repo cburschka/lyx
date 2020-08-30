@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- This DocBook file was created by LyX 2.4.0dev
   See http://www.lyx.org/ for more information -->
-<article xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.1">
+<article xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
 <title>Test document</title>
 <para>A formula: 
- <informalequation>
-  <m:math>
-  <m:alt role='tex'>\Vert,\vert</m:alt>
+<informalequation>
+<alt role='tex'>\Vert,\vert</alt>
+ <m:math>
+ 
  <m:mrow>
   <m:mrow><m:mi>&#x2225;</m:mi><m:mo>,</m:mo><m:mi>&#x007C;</m:mi>
   </m:mrow>
  </m:mrow>
-  </m:math>
- </informalequation>A second formula: 
- <informalequation>
-  <m:math>
-  <m:alt role='tex'>\left\Vert \mathbf{a^{T}\,x}\right\Vert _{2}\leq x_{0}</m:alt>
+ </m:math>
+</informalequation>
+A second formula: 
+<informalequation>
+<alt role='tex'>\left\Vert \mathbf{a^{T}\,x}\right\Vert _{2}\leq x_{0}</alt>
+ <m:math>
+ 
  <m:mrow>
   <m:mrow>
    <m:msub>
@@ -45,7 +48,7 @@
    </m:msub>
   </m:mrow>
  </m:mrow>
-  </m:math>
- </informalequation></para>
-
+ </m:math>
+</informalequation>
+</para>
 </article>
