@@ -3358,12 +3358,15 @@ std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
 		if (isDeleted(i))
 			continue;
 
-		// If this is an InsetNewline, generate a new paragraph.
+		// If this is an InsetNewline, generate a new paragraph. Also reset the fonts, so that tags are closed in
+		// this paragraph.
 		if (getInset(i) != nullptr && getInset(i)->lyxCode() == NEWLINE_CODE) {
+			xs->closeFontTags();
 			generatedParagraphs.push_back(os.str());
 			os = odocstringstream();
 			delete xs;
 			xs = new XMLStream(os);
+			font_old = outerfont.fontInfo();
 		}
 
 		// Determine which tags should be opened or closed.
