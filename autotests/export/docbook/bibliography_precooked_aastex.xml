@@ -40,16 +40,15 @@
 <affiliation role="alternate">
 <orgname>Patron, Alonso's Bar and Grill</orgname>
 </affiliation>
-<keyword>
-clusters: globular, peanut—bosons: bozos
-</keyword>
-<!-- Output Error: Tried to close `keywordset' when tag was not open. Tag discarded. -->
-
+</author>
+<keywordset>
+<keyword>clusters: globular, peanut—bosons: bozos</keyword>
+</keywordset>
+<abstract>
 <para>This is a preliminary report on surface photometry of the major fraction of known globular clusters, to see which of them show the signs of a collapsed core. We also explore some diversionary mathematics and recreational tables. </para>
+</abstract>
 
-<!-- Output Error: Closing tag `info' when other tags are open, namely: -->
-<!-- Output Error: author -->
-</author></info>
+</info>
 <section>
 <title>Introduction</title>
 <para>A focal problem today in the dynamics of globular clusters is core collapse. It has been predicted by theory for decades <biblioref endterm="hen61" />, <biblioref endterm="lyn68" />, <biblioref endterm="spi85" />, but observation has been less alert to the phenomenon. For many years the central brightness peak in M15 <biblioref endterm="kin75" />, <biblioref endterm="new78" /> seemed a unique anomaly. Then <biblioref endterm="aur82" /> suggested a central peak in NGC 6397, and a limited photographic survey of ours <biblioref endterm="djo84" /> found three more cases, including NGC 6624, whose sharp center had often been remarked on <biblioref endterm="can78" />. </para>
@@ -1005,11 +1004,8 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
 </inlineequation> of the electronically submitted abstracts for AAS meetings are error-free. </para>
 <acknowledgements>
 <para>We are grateful to V. Barger, T. Han, and R. J. N. Phillips for doing the math in section&#xA0;<xref linkend="bozomath" />. More information on the AASTeX macros package are available at <link xlink:href="http://www.aas.org/publications/aastex">http://www.aas.org/publications/aastex</link> or the <link xlink:href="ftp://www.aas.org/pubs/AAS ftp site">AAS ftp site</link>.</para>
-<application>
-IRAF, AIPS, Astropy, ...
-</application>
-<!-- Output Error: Tried to close `para' when tag was not open. Tag discarded. -->
-
+</acknowledgements>
+<remark role='software'>IRAF, AIPS, Astropy, ...</remark>
 </section>
 <bibliography>
 <bibliomixed xml:id='aur82'>Aurière, M. 1982, <!-- \aap -->

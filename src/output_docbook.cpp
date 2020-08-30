@@ -274,8 +274,10 @@ void openParTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar
 	if (prevpar != nullptr) {
 		Layout const & prevlay = prevpar->layout();
 		if (prevlay.docbookwrappertag() != "NONE") {
-			openWrapper = prevlay.docbookwrappertag() == lay.docbookwrappertag()
-			              && !lay.docbookwrappermergewithprevious();
+			if (prevlay.docbookwrappertag() == lay.docbookwrappertag())
+				openWrapper = !lay.docbookwrappermergewithprevious();
+			else
+				openWrapper = true;
 		}
 	}
 
@@ -308,8 +310,10 @@ void closeParTag(XMLStream & xs, Paragraph const * par, Paragraph const * nextpa
 	if (nextpar != nullptr) {
 		Layout const & nextlay = nextpar->layout();
 		if (nextlay.docbookwrappertag() != "NONE") {
-			closeWrapper = nextlay.docbookwrappertag() == lay.docbookwrappertag()
-			               && !nextlay.docbookwrappermergewithprevious();
+			if (nextlay.docbookwrappertag() == lay.docbookwrappertag())
+				closeWrapper = !nextlay.docbookwrappermergewithprevious();
+			else
+				closeWrapper = true;
 		}
 	}
 
@@ -948,8 +952,7 @@ void outputDocBookInfo(
 		// that mandating a wrapper like <info> would repel users. Thus, generate them first.
 		makeAny(text, buf, xs, runparams, paragraphs.iterator_at(pit));
 	for (auto pit : info.mustBeInInfo)
-		if (info.abstract.find(pit) == info.abstract.end()) // The abstract must be in info, but is dealt with after.
-			makeAny(text, buf, xs, runparams, paragraphs.iterator_at(pit));
+		makeAny(text, buf, xs, runparams, paragraphs.iterator_at(pit));
 
 	// Always output the abstract as the last item of the <info>, as it requires special treatment (especially if
 	// it contains several paragraphs that are empty).
