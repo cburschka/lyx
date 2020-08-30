@@ -49,7 +49,7 @@ std::string fontToDocBookTag(xml::FontTypes type)
 	case xml::FontTypes::FT_BOLD:
 		return "emphasis";
 	case xml::FontTypes::FT_NOUN:
-		return "person";
+		return "personname";
 	case xml::FontTypes::FT_UBAR:
 	case xml::FontTypes::FT_WAVE:
 	case xml::FontTypes::FT_DBAR:
