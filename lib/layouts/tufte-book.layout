@@ -243,6 +243,8 @@ Style Full_Width
 	Align			Block
 	AlignPossible	Block, Left, Right, Center
 	LabelType		No_Label
+	DocBookTag      para
+	DocBookAttr     role='fullwidth'
 End
 
 # this steps the counters
