@@ -35,41 +35,51 @@ Style "CD label"
 	ParSkip		0.4
 	Align		Block
 	LabelType	No_Label
+	DocBookWrapperTag  sidebar
+	DocBookWrapperAttr role="cd-label"
+	DocBookTag  para
 End
 
 Style "Circle"
 	CopyStyle	"CD label"
 	LatexName	circlepar
+	DocBookWrapperAttr role="circle"
 End
 
 Style "Diamond"
 	CopyStyle	"CD label"
 	LatexName	diamondpar
+	DocBookWrapperAttr role="diamond"
 End
 
 Style "Heart"
 	CopyStyle	"CD label"
 	LatexName	heartpar
+	DocBookWrapperAttr role="heart"
 End
 
 Style "Hexagon"
 	CopyStyle	"CD label"
 	LatexName	hexagonpar
+	DocBookWrapperAttr role="hexagon"
 End
 
 Style "Nut"
 	CopyStyle	"CD label"
 	LatexName	nutpar
+	DocBookWrapperAttr role="nut"
 End
 
 Style "Square"
 	CopyStyle	"CD label"
 	LatexName	squarepar
+	DocBookWrapperAttr role="square"
 End
 
 Style "Star"
 	CopyStyle	"CD label"
 	LatexName	starpar
+	DocBookWrapperAttr role="star"
 End
 
 # now the shapes defined in the .def files
@@ -77,41 +87,49 @@ End
 Style "Candle"
 	CopyStyle	"CD label"
 	LatexName	shapepar{\candle}
+	DocBookWrapperAttr role="candle"
 End
 
 Style "Drop down"
 	CopyStyle	"CD label"
 	LatexName	droppar
+	DocBookWrapperAttr role="drop-down"
 End
 
 Style "Drop up"
 	CopyStyle	"CD label"
 	LatexName	dropuppar
+	DocBookWrapperAttr role="drop-up"
 End
 
 Style "TeX"
 	CopyStyle	"CD label"
 	LatexName	shapepar{\TeXshape}
+	DocBookWrapperAttr role="tex"
 End
 
 Style "Triangle up"
 	CopyStyle	"CD label"
 	LatexName	triangleuppar
+	DocBookWrapperAttr role="triangle-up"
 End
 
 Style "Triangle down"
 	CopyStyle	"CD label"
 	LatexName	triangledownpar
+	DocBookWrapperAttr role="triangle-down"
 End
 
 Style "Triangle left"
 	CopyStyle	"CD label"
 	LatexName	triangleleftpar
+	DocBookWrapperAttr role="triangle-left"
 End
 
 Style "Triangle right"
 	CopyStyle	"CD label"
 	LatexName	trianglerightpar
+	DocBookWrapperAttr role="triangle-right"
 End
 
 # finally the low-level commands
