@@ -86,4 +86,6 @@ Style Case
     \addto\captions$$lang{\renewcommand{\casename}{_(Case)}}
   EndBabelPreamble
   RefPrefix OFF
+  DocBookTag            para
+  DocBookAttr           role='cases'
 End

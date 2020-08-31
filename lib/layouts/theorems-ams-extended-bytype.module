@@ -87,6 +87,9 @@ Style Criterion
 	  \addto\captions$$lang{\renewcommand{\criterionname}{_(Criterion)}}
 	EndBabelPreamble
 	LabelCounter          criterion
+	DocBookTag            para
+	DocBookAttr           role='criterion'
+	DocBookItemTag        ""
 End
 
 Style Criterion*
@@ -103,6 +106,9 @@ Style Criterion*
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\criterionname}{_(Criterion)}}
 	EndBabelPreamble
+	DocBookTag            para
+	DocBookAttr           role='criterion'
+	DocBookItemTag        ""
 End
 
 
@@ -121,6 +127,9 @@ Style Algorithm
 	  \addto\captions$$lang{\renewcommand{\algorithmname}{_(Algorithm)}}
 	EndBabelPreamble
 	LabelCounter          algorithm
+	DocBookTag            para
+	DocBookAttr           role='algorithm'
+	DocBookItemTag        ""
 End
 
 
@@ -138,6 +147,9 @@ Style Algorithm*
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\algorithmname}{_(Algorithm)}}
 	EndBabelPreamble
+	DocBookTag            para
+	DocBookAttr           role='algorithm'
+	DocBookItemTag        ""
 End
 
 
@@ -156,6 +168,9 @@ Style Axiom
 	  \addto\captions$$lang{\renewcommand{\axiomname}{_(Axiom)}}
 	EndBabelPreamble
 	LabelCounter          axiom
+	DocBookTag            para
+	DocBookAttr           role='axiom'
+	DocBookItemTag        ""
 End
 
 
@@ -173,6 +188,9 @@ Style Axiom*
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\axiomname}{_(Axiom)}}
 	EndBabelPreamble
+	DocBookTag            para
+	DocBookAttr           role='axiom'
+	DocBookItemTag        ""
 End
 
 
@@ -191,6 +209,9 @@ Style Condition
 	  \addto\captions$$lang{\renewcommand{\conditionname}{_(Condition)}}
 	EndBabelPreamble
 	LabelCounter          condition
+	DocBookTag            para
+	DocBookAttr           role='condition'
+	DocBookItemTag        ""
 End
 
 
@@ -208,6 +229,9 @@ Style Condition*
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\conditionname}{_(Condition)}}
 	EndBabelPreamble
+	DocBookTag            para
+	DocBookAttr           role='condition'
+	DocBookItemTag        ""
 End
 
 
@@ -226,6 +250,8 @@ Style Note
 	  \addto\captions$$lang{\renewcommand{\notename}{_(Note)}}
 	EndBabelPreamble
 	LabelCounter          note
+	DocBookTag            note
+	DocBookItemTag        para
 End
 
 
@@ -243,6 +269,8 @@ Style Note*
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\notename}{_(Note)}}
 	EndBabelPreamble
+	DocBookTag            note
+	DocBookItemTag        para
 End
 
 
@@ -261,6 +289,9 @@ Style Notation
 	  \addto\captions$$lang{\renewcommand{\notationname}{_(Notation)}}
 	EndBabelPreamble
 	LabelCounter          notation
+	DocBookTag            para
+	DocBookAttr           role='notation'
+	DocBookItemTag        ""
 End
 
 
@@ -278,6 +309,9 @@ Style Notation*
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\notationname}{_(Notation)}}
 	EndBabelPreamble
+	DocBookTag            para
+	DocBookAttr           role='notation'
+	DocBookItemTag        ""
 End
 
 
@@ -296,6 +330,9 @@ Style Summary
 	  \addto\captions$$lang{\renewcommand{\summaryname}{_(Summary)}}
 	EndBabelPreamble
 	LabelCounter          summary
+	DocBookTag            para
+	DocBookAttr           role='summary'
+	DocBookItemTag        ""
 End
 
 
@@ -313,6 +350,9 @@ Style Summary*
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\summaryname}{_(Summary)}}
 	EndBabelPreamble
+	DocBookTag            para
+	DocBookAttr           role='summary'
+	DocBookItemTag        ""
 End
 
 
@@ -331,6 +371,9 @@ Style Acknowledgement
 	  \addto\captions$$lang{\renewcommand{\acknowledgementname}{_(Acknowledgement)}}
 	EndBabelPreamble
 	LabelCounter          acknowledgement
+	DocBookTag            para
+	DocBookAttr           role='acknowledgement'
+	DocBookItemTag        ""
 End
 
 
@@ -348,6 +391,9 @@ Style Acknowledgement*
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\acknowledgementname}{_(Acknowledgement)}}
 	EndBabelPreamble
+	DocBookTag            para
+	DocBookAttr           role='acknowledgement'
+	DocBookItemTag        ""
 End
 
 
@@ -366,6 +412,9 @@ Style Conclusion
 	  \addto\captions$$lang{\renewcommand{\conclusionname}{_(Conclusion)}}
 	EndBabelPreamble
 	LabelCounter          conclusion
+	DocBookTag            para
+	DocBookAttr           role='conclusion'
+	DocBookItemTag        ""
 End
 
 
@@ -383,6 +432,9 @@ Style Conclusion*
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\conclusionname}{_(Conclusion)}}
 	EndBabelPreamble
+	DocBookTag            para
+	DocBookAttr           role='conclusion'
+	DocBookItemTag        ""
 End
 
 
@@ -401,6 +453,9 @@ Style Assumption
 	  \addto\captions$$lang{\renewcommand{\assumptionname}{_(Assumption)}}
 	EndBabelPreamble
 	LabelCounter          assumption
+	DocBookTag            para
+	DocBookAttr           role='assumption'
+	DocBookItemTag        ""
 End
 
 
@@ -418,6 +473,9 @@ Style Assumption*
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\assumptionname}{_(Assumption)}}
 	EndBabelPreamble
+	DocBookTag            para
+	DocBookAttr           role='assumption'
+	DocBookItemTag        ""
 End
 
 Style Question
@@ -436,6 +494,9 @@ Style Question
 	  \addto\captions$$lang{\renewcommand{\questionname}{_(Question)}}
 	EndBabelPreamble
 	LabelCounter          question
+	DocBookTag            para
+	DocBookAttr           role='question'
+	DocBookItemTag        ""
 End
 
 Style Question*
@@ -452,6 +513,9 @@ Style Question*
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\questionname}{_(Question)}}
 	EndBabelPreamble
+	DocBookTag            para
+	DocBookAttr           role='question'
+	DocBookItemTag        ""
 End
 
 Input theorems-refprefix.inc

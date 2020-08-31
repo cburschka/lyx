@@ -367,5 +367,169 @@ This section is somewhat out of date.
 
 \end_layout
 
+\begin_layout Section
+AMS \SpecialChar LaTeX
+
+\end_layout
+
+\begin_layout Standard
+These same environments are provided only in the starred versions by the
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Theorems (Starred)
+\end_layout
+
+\end_inset
+
+ module:
+\end_layout
+
+\begin_layout Theorem
+This is typically used for the statements of major results.
+ 
+\end_layout
+
+\begin_layout Corollary*
+This is used for statements which follow fairly directly from previous statement
+s.
+ Again, these can be major results.
+ 
+\end_layout
+
+\begin_layout Lemma
+These are smaller results needed to prove other statements.
+\end_layout
+
+\begin_layout Proposition
+These are less major results which (hopefully) add to the general theory
+ being discussed.
+\end_layout
+
+\begin_layout Conjecture
+These are statements provided without justification, which the author does
+ not know how to prove, but which seem to be true (to the author, at least).
+\end_layout
+
+\begin_layout Definition*
+Guess what this is for.
+ The font is different for this environment than for the previous ones.
+ 
+\end_layout
+
+\begin_layout Example*
+Used for examples illustrating proven results.
+\end_layout
+
+\begin_layout Problem
+It's not really known what this is for.
+ You should figure it out.
+\end_layout
+
+\begin_layout Exercise*
+Write a description for this one.
+\end_layout
+
+\begin_layout Remark
+This environment is also a type of theorem, usually a lesser sort of observation.
+\end_layout
+
+\begin_layout Claim*
+Often used in the course of giving a proof of a larger result.
+\end_layout
+
+\begin_layout Case
+Generally, these are used to break up long arguments, using specific instances
+ of some condition.
+ 
+\end_layout
+
+\begin_layout Case
+The numbering scheme for cases is on its own, not together with other numbered
+ statements.
+ 
+\end_layout
+
+\begin_layout Proof
+At the end of this environment, a QED symbol (usually a square, but it can
+ vary with different styles) is placed.
+ If you want to have other environments within this one—for example, Case
+ environments—and have the QED symbol appear only after them, then the other
+ environments need to be nested within the proof environment.
+ See the section 
+\emph on
+Nesting Environments
+\emph default
+ of the 
+\emph on
+User's Guide
+\emph default
+ for information on nesting.
+\end_layout
+
+\begin_layout Standard
+And these environments are provided by 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Theorems (AMS-Extended)
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Criterion*
+A required condition.
+\end_layout
+
+\begin_layout Algorithm*
+A general procedure to be used.
+\end_layout
+
+\begin_layout Axiom*
+This is a property or statement taken as true within the system being discussed.
+\end_layout
+
+\begin_layout Condition*
+Sometimes used to state a condition assumed within the present context of
+ discussion.
+\end_layout
+
+\begin_layout Note*
+Similar to a Remark.
+\end_layout
+
+\begin_layout Notation*
+Used for the explanation of, yes, notation.
+\end_layout
+
+\begin_layout Summary
+Do we really need to tell you? 
+\end_layout
+
+\begin_layout Acknowledgement*
+Acknowledgement.
+\end_layout
+
+\begin_layout Conclusion*
+Sometimes used at the end of a long train of argument.
+\end_layout
+
+\begin_layout Fact
+Used in a way similar to Proposition, though perhaps lower on the scale.
+\end_layout
+
+\begin_layout Standard
+In addition, the AMS classes automatically provide the AMS \SpecialChar LaTeX
+ and AMS fonts
+ packages.
+ They need to be available on your system in order to use these environments.
+\end_layout
+
 \end_body
 \end_document

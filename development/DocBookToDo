@@ -18,3 +18,24 @@ TableRefs, TableComments: no mapping in DocBook, not really a way to add these t
 Clearly, with this kind of template, we're reaching the limits of such a system! Having a really good converter for all these cases would require a lot of very specific code. 
 
 More general: what the heck with appendices? It's not handled in the LyX way (Document > Start Appendix Here), but in a custom way. Making this work would solve some correctness issues with this template. 
+
+
+
+Things specific to modules
+==========================
+
+AMS
+---
+
+Theorems and the like do not have counter parts in DocBook. Maybe a <formalpara> could do the trick, but I'd need to find a way to shoehorn a title through the styles (i.e. a first complete tag): 
+
+	LyX:
+		Theorem: Bla bla
+
+	DocBook:
+		<formalpara>
+			<title>Theorem</title>
+			<para>Bla bla</para>
+		</formalpara>
+
+This would also only be a solution for single-paragraph things, as formalpara only allows one paragraph. Or a sidebar, but it's semantically very remote. 

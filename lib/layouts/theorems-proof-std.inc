@@ -18,4 +18,6 @@ Style Proof
 		\fi
 	EndPreamble
 # No LangPreamble or BabelPreamble, since babel knows \proofname already.
+	DocBookTag            para
+	DocBookAttr           role='proof'
 End
