@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-07-08 12:05+0200\n"
-"PO-Revision-Date: 2020-07-08 10:06+0000\n"
+"POT-Creation-Date: 2020-08-31 18:20+0200\n"
+"PO-Revision-Date: 2020-08-31 16:22+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2175,9 +2175,13 @@ msgstr "Zobraziť LaTeX náhľad"
 msgid "&Show preview"
 msgstr "Zo&braziť náhľad"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:275
-msgid "File name to include"
-msgstr "Názov súboru pre zaradenie"
+#: src/frontends/qt4/ui/IncludeUi.ui:302
+msgid ""
+"File name to include. (You can create a new file by entering the name of one "
+"that does not yet exist.)"
+msgstr ""
+"Názov súboru pre zaradenie. (Môžte vytvoriť nový súbor vložením mena súboru "
+"ktorý ešte neexistuje.)"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:282
 msgid "&Include Type:"
@@ -6519,11 +6523,11 @@ msgstr "Štandard v titule"
 #: lib/layouts/IEEEtran-CompSoc.layout:31 lib/layouts/iucr.layout:103
 #: lib/layouts/iucr.layout:106
 msgid "Author Footnote"
-msgstr "Autor poznámky pod čiarou"
+msgstr "Autorova poznámka pod čiarou"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:37
 msgid "Author foot"
-msgstr "Autor poznámky pod čiarou"
+msgstr "Autorova poznámka pod čiarou"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:61
 #: lib/layouts/IEEEtran-TransMag.layout:39
@@ -10269,11 +10273,11 @@ msgstr "Vlastné riadky pre hlavičku/Pätu"
 #: lib/layouts/customHeadersFooters.module:7
 msgid ""
 "Adds environments to define header and footer lines. NOTE: To use this "
-"module you must set the 'Headings style' in the menu Document Settings -> "
-"Page Layout to 'fancy'!"
+"module you must set the 'Page style' in the menu Document Settings -> Page "
+"Layout to 'fancy'!"
 msgstr ""
 "Pridáva prostredia na definície riadkov hlavičiek a pätičiek. POZOR: Na "
-"použitie tohto modulu treba nastaviť štýl hlavičky v menu Dokument -> "
+"použitie tohto modulu treba nastaviť 'Štýl stránky' v menu Dokument -> "
 "Nastavenia… -> Formát stránky na 'pestrý' (fancy)!"
 
 #: lib/layouts/customHeadersFooters.module:12
@@ -14204,7 +14208,7 @@ msgstr "Tu sa vložia voľby pre PDF-komentár (viďte pdfcomment manuál)"
 
 #: lib/layouts/pdfcomment.module:93
 msgid "PDF-Annotation"
-msgstr "PDF-anotácie"
+msgstr "PDF-anotácia"
 
 #: lib/layouts/pdfcomment.module:97 src/frontends/qt4/GuiClipboard.cpp:175
 msgid "PDF"
@@ -16098,58 +16102,6 @@ msgstr ""
 "štruktúru dokumentu. To sa dá zmeniť voľbou jedného z 'Teorémy (Číslované "
 "podľa …)' modulu."
 
-#: lib/layouts/theorems-ams-chap-bytype.inc:82
-msgid "Theorem \\thechapter.\\thetheorem."
-msgstr "Teoréma \\thechapter.\\thetheorem."
-
-#: lib/layouts/theorems-ams-chap-bytype.inc:112
-msgid "Corollary \\thechapter.\\thecorollary."
-msgstr "Korolár \\thechapter.\\thecorollary."
-
-#: lib/layouts/theorems-ams-chap-bytype.inc:134
-msgid "Lemma \\thechapter.\\thelemma."
-msgstr "Lemma \\thechapter.\\thelemma."
-
-#: lib/layouts/theorems-ams-chap-bytype.inc:156
-msgid "Proposition \\thechapter.\\theproposition."
-msgstr "Tvrdenie \\thechapter.\\theproposition."
-
-#: lib/layouts/theorems-ams-chap-bytype.inc:178
-msgid "Conjecture \\thechapter.\\theconjecture."
-msgstr "Hypotéza \\thechapter.\\theconjecture."
-
-#: lib/layouts/theorems-ams-chap-bytype.inc:200
-msgid "Fact \\thechapter.\\thefact."
-msgstr "Fakt \\thechapter.\\thefact."
-
-#: lib/layouts/theorems-ams-chap-bytype.inc:222
-msgid "Definition \\thechapter.\\thedefinition."
-msgstr "Definícia \\thechapter.\\thedefinition."
-
-#: lib/layouts/theorems-ams-chap-bytype.inc:251
-msgid "Example \\thechapter.\\theexample."
-msgstr "Príklad \\thechapter.\\theexample."
-
-#: lib/layouts/theorems-ams-chap-bytype.inc:274
-msgid "Problem \\thechapter.\\theproblem."
-msgstr "Problém \\thechapter.\\theproblem."
-
-#: lib/layouts/theorems-ams-chap-bytype.inc:297
-msgid "Exercise \\thechapter.\\theexercise."
-msgstr "Úloha \\thechapter.\\theexercise."
-
-#: lib/layouts/theorems-ams-chap-bytype.inc:320
-msgid "Solution \\thechapter.\\thesolution."
-msgstr "Riešenie \\thechapter.\\thesolution."
-
-#: lib/layouts/theorems-ams-chap-bytype.inc:343
-msgid "Remark \\thechapter.\\theremark."
-msgstr "Pripomienka \\thechapter.\\theremark."
-
-#: lib/layouts/theorems-ams-chap-bytype.inc:373
-msgid "Claim \\thechapter.\\theclaim."
-msgstr "Nárok \\thechapter.\\theclaim."
-
 #: lib/layouts/theorems-ams-chap-bytype.module:2
 msgid "Theorems (AMS, Numbered by Type within Chapters)"
 msgstr "Teorémy (AMS, číslované podľa typu vnútri kapitol)"
@@ -16395,50 +16347,6 @@ msgstr ""
 "každej novej kapitole (čiže kritérium 1.1, kritérium 1.2, axióma 1.1, "
 "predpoklad 1.1, kritérium 2.1, axióma 2.1, …, oproti kritérium 1.1, "
 "kritérium 1.2, axióma 1.3, predpoklad 1.4, …)"
-
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:69
-msgid "Criterion \\thechapter.\\thecriterion."
-msgstr "Kritérium \\thechapter.\\thecriterion."
-
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:108
-msgid "Algorithm \\thechapter.\\thealgorithm."
-msgstr "Algoritmus \\thechapter.\\thealgorithm."
-
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:147
-msgid "Axiom \\thechapter.\\theaxiom."
-msgstr "Axióma \\thechapter.\\theaxiom."
-
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:186
-msgid "Condition \\thechapter.\\thecondition."
-msgstr "Podmienka \\thechapter.\\thecondition."
-
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:225
-msgid "Note \\thechapter.\\thenote."
-msgstr "Poznámka \\thechapter.\\thenote."
-
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:264
-msgid "Notation \\thechapter.\\thenotation."
-msgstr "Notácia \\thechapter.\\thenotation."
-
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:303
-msgid "Summary \\thechapter.\\thesummary."
-msgstr "Súhrn \\thechapter.\\thesummary."
-
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:343
-msgid "Acknowledgement \\thechapter.\\theacknowledgement."
-msgstr "Poďakovanie \\thechapter.\\theacknowledgement."
-
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:382
-msgid "Conclusion \\thechapter.\\theconclusion."
-msgstr "Záver \\thechapter.\\theconclusion."
-
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:421
-msgid "Assumption \\thechapter.\\theassumption."
-msgstr "Predpoklad \\thechapter.\\theassumption."
-
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:460
-msgid "Question \\thechapter.\\thequestion."
-msgstr "Otázka \\thechapter.\\thequestion."
 
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "Theorems (AMS-Extended)"
@@ -18161,7 +18069,7 @@ msgstr "Vertikálny fantóm|ó"
 
 #: lib/ui/stdcontext.inc:243 lib/ui/stdmenus.inc:432
 msgid "Interword Space|w"
-msgstr "Medzi-slovná medzera|M"
+msgstr "Medzi-slovná medzera|e"
 
 #: lib/ui/stdcontext.inc:244
 msgid "Protected Space|o"
@@ -33309,7 +33217,7 @@ msgstr "Viac-riadkové v aktuálnom alebo cieľovom riadku."
 
 #: src/insets/InsetTabular.cpp:5169
 msgid "Selection size should match clipboard content."
-msgstr "Veľkosť výberu by mala zodpovedať obsahu klipovej dosky."
+msgstr "Veľkosť výberu by mala zodpovedať obsahu schránky."
 
 #: src/insets/InsetWrap.cpp:68
 msgid "wrap: "
