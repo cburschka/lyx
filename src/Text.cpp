@@ -1991,7 +1991,7 @@ bool Text::read(Lexer & lex,
 }
 
 
-// Returns the current font and depth as a message.
+// Returns the current state (font, depth etc.) as a message for status bar.
 docstring Text::currentState(CursorData const & cur, bool devel_mode) const
 {
 	LBUFERR(this == cur.text());
@@ -2021,7 +2021,7 @@ docstring Text::currentState(CursorData const & cur, bool devel_mode) const
 	os << bformat(_("Font: %1$s"), font.stateText(&buf.params()));
 
 	// The paragraph depth
-	int depth = cur.paragraph().getDepth();
+	int depth = par.getDepth();
 	if (depth > 0)
 		os << bformat(_(", Depth: %1$d"), depth);
 
@@ -2048,6 +2048,11 @@ docstring Text::currentState(CursorData const & cur, bool devel_mode) const
 			break;
 		}
 	}
+
+	// Custom text style
+	InsetLayout const & layout = cur.inset().getLayout();
+	if (layout.lyxtype() == InsetLayout::CHARSTYLE)
+		os << _(", Style: ") << translateIfPossible(layout.labelstring());
 
 	if (devel_mode) {
 		os << _(", Inset: ") << &cur.inset();
