@@ -98,6 +98,10 @@ string Floating::docbookTag(bool hasTitle) const
 		// TODO: no good translation for now! Figures are the closest match, as they can contain text.
 		// Solvable as soon as https://github.com/docbook/docbook/issues/157 has a definitive answer.
 		return "figure";
+	} else {
+		// If nothing matches, return something that will not be valid.
+		LYXERR0("Unrecognised float type: " + floattype_);
+		return "float";
 	}
 }
 
