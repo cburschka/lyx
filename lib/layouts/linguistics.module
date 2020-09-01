@@ -82,6 +82,10 @@ Style Numbered_Example_(multiline)
 	EndFont
 	Requires	      covington
 	Category              Linguistics
+	DocBookWrapperTag     informalexample
+	DocBookWrapperAttr    role='numbered'
+	DocBookWrapperMergeWithPrevious  true
+	DocBookTag            para
 End
 
 
@@ -107,6 +111,10 @@ Style Numbered_Examples_(consecutive)
 		LabelString   "Custom Numbering|s"
 		Tooltip       "Customize the numeration"
 	EndArgument
+	DocBookWrapperTag     informalexample
+	DocBookWrapperAttr    role='consecutive'
+	DocBookWrapperMergeWithPrevious  true
+	DocBookTag            para
 End
 
 

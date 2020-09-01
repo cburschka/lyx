@@ -90,9 +90,10 @@ string const & Floating::docbookAttr() const
 
 string Floating::docbookTag(bool hasTitle) const
 {
+	// TODO: configure this in the layouts?
 	if (floattype_ == "figure") {
 		return hasTitle ? "figure" : "informalfigure";
-	} else if (floattype_ == "table") {
+	} else if (floattype_ == "table" || floattype_ == "tableau") {
 		return hasTitle ? "table" : "informaltable";
 	} else if (floattype_ == "algorithm") {
 		// TODO: no good translation for now! Figures are the closest match, as they can contain text.
@@ -119,7 +120,7 @@ string const & Floating::docbookCaption() const
 	docbook_caption_ = "";
 	if (floattype_ == "figure") {
 		docbook_caption_ = "title";
-	} else if (floattype_ == "table") {
+	} else if (floattype_ == "table" || floattype_ == "tableau") {
 		docbook_caption_ = "caption";
 	} else if (floattype_ == "algorithm") {
 		// TODO: no good translation for now! Figures are the closest match, as they can contain text.
