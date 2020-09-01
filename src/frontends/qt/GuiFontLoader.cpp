@@ -185,14 +185,14 @@ static bool isChosenFont(QFont & font, QString const & family,
 	// positions.
 	QFontInfo fi(font);
 
-	LYXERR(Debug::FONT, "got: " << fi.family());
+	LYXERR_NOPOS(Debug::FONT, "got: " << fi.family());
 
 	if (fi.family().contains(family)
 #if QT_VERSION >= 0x040800
 	    && (style.isEmpty() || fi.styleName().contains(style))
 #endif
 	    ) {
-		LYXERR(Debug::FONT, " got it ");
+		LYXERR_NOENDL(Debug::FONT, " got it ");
 		return true;
 	}
 
@@ -202,7 +202,7 @@ static bool isChosenFont(QFont & font, QString const & family,
 
 QFont symbolFont(QString const & family, bool * ok)
 {
-	LYXERR(Debug::FONT, "Looking for font family " << family << " ... ");
+	LYXERR_NOENDL(Debug::FONT, "Looking for font family " << family << " ... ");
 	QString upper = family;
 	upper[0] = family[0].toUpper();
 
@@ -212,26 +212,26 @@ QFont symbolFont(QString const & family, bool * ok)
 	font.setStyleName("LyX");
 
 	if (isChosenFont(font, family, "LyX")) {
-		LYXERR(Debug::FONT, "lyx!");
+		LYXERR_NOPOS(Debug::FONT, "lyx!");
 		*ok = true;
 		return font;
 	}
 
-	LYXERR(Debug::FONT, "Trying normal " << family << " ... ");
+	LYXERR_NOENDL(Debug::FONT, "Trying normal " << family << " ... ");
 	font.setStyleName(QString());
 #endif
 
 	if (isChosenFont(font, family, QString())) {
-		LYXERR(Debug::FONT, "normal!");
+		LYXERR_NOPOS(Debug::FONT, "normal!");
 		*ok = true;
 		return font;
 	}
 
-	LYXERR(Debug::FONT, "Trying " << upper << " ... ");
+	LYXERR_NOENDL(Debug::FONT, "Trying " << upper << " ... ");
 	font.setFamily(upper);
 
 	if (isChosenFont(font, upper, QString())) {
-		LYXERR(Debug::FONT, "upper!");
+		LYXERR_NOPOS(Debug::FONT, "upper!");
 		*ok = true;
 		return font;
 	}
@@ -240,17 +240,17 @@ QFont symbolFont(QString const & family, bool * ok)
 	// A simple setFamily() fails on Qt 2
 
 	QString const raw = rawName(family);
-	LYXERR(Debug::FONT, "Trying " << raw << " ... ");
+	LYXERR_NOENDL(Debug::FONT, "Trying " << raw << " ... ");
 	font.setRawName(raw);
 
 	if (isChosenFont(font, family, QString())) {
-		LYXERR(Debug::FONT, "raw version!");
+		LYXERR_NOPOS(Debug::FONT, "raw version!");
 		*ok = true;
 		return font;
 	}
 #endif
 
-	LYXERR(Debug::FONT, " FAILED :-(");
+	LYXERR_NOPOS(Debug::FONT, " FAILED :-(");
 	*ok = false;
 	return font;
 }
