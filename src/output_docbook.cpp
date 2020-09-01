@@ -471,7 +471,7 @@ void makeParagraph(
 	// Plain layouts must be ignored.
 	special_case |= buf.params().documentClass().isPlainLayout(par->layout()) && !runparams.docbook_force_pars;
 	// Equations do not deserve their own paragraph (DocBook allows them outside paragraphs).
-	special_case |= nInsets == par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
+	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
 		return inset.inset && inset.inset->asInsetMath();
 	});
 

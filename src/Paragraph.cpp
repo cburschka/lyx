@@ -3860,8 +3860,8 @@ bool Paragraph::isHardHyphenOrApostrophe(pos_type pos) const
 	char_type const c = d->text_[pos];
 	if (c != '-' && c != '\'')
 		return false;
-	int nextpos = pos + 1;
-	int prevpos = pos > 0 ? pos - 1 : 0;
+	pos_type nextpos = pos + 1;
+	pos_type prevpos = pos > 0 ? pos - 1 : 0;
 	if ((nextpos == psize || isSpace(nextpos))
 		&& (pos == 0 || isSpace(prevpos)))
 		return false;
