@@ -315,19 +315,19 @@ bool GuiInclude::isValid()
 	int const item = typeCO->currentIndex();
 	// Are we inputting or including a LyX file?
 	if (item != 0 && item != 1) {
-		okbutton->setText("OK");
+		okbutton->setText(qt_("OK"));
 		return true;
 	}
 	// Do we have a LyX filename?
 	if (!isLyXFileName(fromqstr(fname))) {
-		okbutton->setText("OK");
+		okbutton->setText(qt_("OK"));
 		return false;
 	}
 	string const bpath = buffer().filePath();
 	// Path might be relative to current Buffer, so make absolute
 	FileName const absfname = support::makeAbsPath(fromqstr(fname), bpath);
 	// Set OK button text according to whether file already exists
-	okbutton->setText(absfname.exists() ? "OK" : "Create");
+	okbutton->setText(absfname.exists() ? qt_("OK") : qt_("Create"));
 	// enable edit button iff file is open in some Buffer
 	editPB->setEnabled(theBufferList().getBuffer(absfname));
 	return true;
