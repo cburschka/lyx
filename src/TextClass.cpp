@@ -1574,7 +1574,7 @@ bool TextClass::readFloat(Lexer & lexrc)
 		}
 		Floating fl(type, placement, ext, within, style, name,
 			listname, listcommand, refprefix, allowed_placement,
-			htmltag, htmlattr, htmlstyle, docbooktag, docbookattr,
+			htmltag, htmlattr, htmlstyle, docbookattr,
 			docbooktagtype, required, usesfloat, ispredefined,
 	        allowswide, allowssideways);
 		floatlist_.newFloat(fl);

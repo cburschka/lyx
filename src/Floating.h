@@ -37,7 +37,7 @@ public:
 		 std::string const & listName, std::string const & listCmd,
 		 std::string const & refPrefix, std::string const & allowedplacement,
 		 std::string const & htmlType, std::string const & htmlClass,
-		 docstring const & htmlStyle, std::string const & docbookTag,
+		 docstring const & htmlStyle,
 		 std::string const & docbookAttr, std::string const & docbookTagType,
 		 std::string const & required, bool usesfloat, bool isprefined,
 		 bool allowswide, bool allowssideways);

@@ -30,7 +30,7 @@ Floating::Floating(string const & type, string const & placement,
 		   string const & listName, std::string const & listCmd,
 		   string const & refPrefix, std::string const & allowedplacement,
 		   string const & htmlTag, string const & htmlAttrib,
-		   docstring const & htmlStyle, string const & docbookTag,
+		   docstring const & htmlStyle,
 		   string const & docbookAttr, string const & docbookTagType,
            string const & required, bool usesfloat, bool ispredefined,
 		   bool allowswide, bool allowssideways)
