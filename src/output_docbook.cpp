@@ -429,16 +429,6 @@ void makeBibliography(
 }
 
 
-bool isNotOnlySpace(docstring const & str)
-{
-	for (auto const & c: str) {
-		if (c != ' ' && c != '\t' && c != '\n' && c != '\v' && c != '\f' && c != '\r')
-			return true;
-	}
-	return false;
-}
-
-
 void makeParagraph(
 		Text const & text,
 		Buffer const & buf,
@@ -531,7 +521,7 @@ void makeParagraph(
 	++nextpar;
 	auto pars = par->simpleDocBookOnePar(buf, runparams, text.outerFont(distance(begin, par)), 0, nextpar == end, special_case);
 	for (docstring const & parXML : pars) {
-		if (isNotOnlySpace(parXML)) {
+		if (xml::isNotOnlySpace(parXML)) {
 			if (open_par)
 				openParTag(xs, &*par, prevpar);
 

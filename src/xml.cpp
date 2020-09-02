@@ -108,12 +108,9 @@ docstring StartTag::writeTag() const
 {
 	docstring output = '<' + tag_;
 	if (!attr_.empty()) {
-		docstring attributes = xml::escapeString(attr_, XMLStream::ESCAPE_NONE);
-		attributes.erase(attributes.begin(), std::find_if(attributes.begin(), attributes.end(),
-                                                          [](int c) {return !std::isspace(c);}));
-		if (!attributes.empty()) {
+		docstring attributes = xml::trimLeft(xml::escapeString(attr_, XMLStream::ESCAPE_NONE));
+		if (!attributes.empty())
 			output += ' ' + attributes;
-		}
 	}
 	output += ">";
 	return output;
@@ -598,6 +595,28 @@ docstring xml::uniqueID(docstring const & label)
 	// thread-safe
 	static atomic_uint seed(1000);
 	return label + convert<docstring>(++seed);
+}
+
+
+bool xml::isNotOnlySpace(docstring const & str)
+{
+	for (auto const & c: str) {
+		if (c != ' ' && c != '\t' && c != '\n' && c != '\v' && c != '\f' && c != '\r')
+		return true;
+	}
+	return false;
+}
+
+
+docstring xml::trimLeft(docstring const & str)
+{
+	size_t i = 0;
+	for (auto const & c: str) {
+		if (c != ' ' && c != '\t' && c != '\n' && c != '\v' && c != '\f' && c != '\r')
+			return str.substr(i, docstring::npos);
+		i++;
+	}
+	return str;
 }
 
 

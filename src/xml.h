@@ -160,6 +160,12 @@ docstring cleanID(docstring const &orig);
 /// returns a unique numeric ID
 docstring uniqueID(docstring const & label);
 
+/// determines whether a string only contains space characters
+bool isNotOnlySpace(docstring const & str);
+
+/// trims the string to the left, i.e. remove any space-like character at the beginning of the string
+docstring trimLeft(docstring const & str);
+
 struct FontTag;
 struct EndFontTag;
 
