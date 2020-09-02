@@ -947,7 +947,7 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter)
 	TextMetrics & tm = d->text_metrics_[bot.text()];
 
 	pos_type const max_pit = pos_type(bot.text()->paragraphs().size() - 1);
-	int bot_pit = bot.pit();
+	pos_type bot_pit = bot.pit();
 	if (bot_pit > max_pit) {
 		// FIXME: Why does this happen?
 		LYXERR0("bottom pit is greater that max pit: "
