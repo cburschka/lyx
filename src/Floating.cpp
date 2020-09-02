@@ -44,6 +44,25 @@ Floating::Floating(string const & type, string const & placement,
 {}
 
 
+std::string Floating::docbookFloatType() const
+{
+	// TODO: configure this in the layouts?
+	if (floattype_ == "figure") {
+		return "figure";
+	} else if (floattype_ == "table" || floattype_ == "tableau") {
+		return "table";
+	} else if (floattype_ == "algorithm") {
+		// TODO: no good translation for now! Figures are the closest match, as they can contain text.
+		// Solvable as soon as https://github.com/docbook/docbook/issues/157 has a definitive answer.
+		return "algorithm";
+	} else {
+		// If nothing matches, return something that will not be valid.
+		LYXERR0("Unrecognised float type: " + floattype_);
+		return "unknown";
+	}
+}
+
+
 string const & Floating::htmlAttrib() const
 {
 	if (html_attrib_.empty())
@@ -91,17 +110,17 @@ string const & Floating::docbookAttr() const
 string Floating::docbookTag(bool hasTitle) const
 {
 	// TODO: configure this in the layouts?
-	if (floattype_ == "figure") {
+	if (docbookFloatType() == "figure") {
 		return hasTitle ? "figure" : "informalfigure";
-	} else if (floattype_ == "table" || floattype_ == "tableau") {
+	} else if (docbookFloatType() == "table") {
 		return hasTitle ? "table" : "informaltable";
-	} else if (floattype_ == "algorithm") {
+	} else if (docbookFloatType() == "algorithm") {
 		// TODO: no good translation for now! Figures are the closest match, as they can contain text.
 		// Solvable as soon as https://github.com/docbook/docbook/issues/157 has a definitive answer.
 		return "figure";
 	} else {
 		// If nothing matches, return something that will not be valid.
-		LYXERR0("Unrecognised float type: " + floattype_);
+		LYXERR0("Unrecognised float type: " + floattype());
 		return "float";
 	}
 }

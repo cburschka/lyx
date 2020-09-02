@@ -44,6 +44,8 @@ public:
 	///
 	std::string const & floattype() const { return floattype_; }
 	///
+	std::string docbookFloatType() const;
+	///
 	std::string const & placement() const { return placement_; }
 	///
 	std::string const & ext() const {return ext_; }

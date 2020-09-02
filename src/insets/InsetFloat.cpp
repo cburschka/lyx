@@ -639,7 +639,7 @@ void docbookNoSubfigures(XMLStream & xs, OutputParams const & runparams, const I
 	// captions, they cannot appear at the end of the float, albeit LyX is happy with that).
 	OutputParams rpNoTitle = runparams;
 	rpNoTitle.docbook_in_float = true;
-	if (ftype.floattype() == "table")
+	if (ftype.docbookFloatType() == "table")
 		rpNoTitle.docbook_in_table = true;
 
 	// Organisation: <float> <title if any/> <contents without title/> </float>.

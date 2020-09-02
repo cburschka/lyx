@@ -140,7 +140,6 @@ EndPreamble</programlisting>
 <para>Wenn Sie allerdings Ihre Tableaux durch das Dokument hindurch nummerieren und ein eigenes Tableaux-Verzeichnis einrichten möchten, reichen die Bordmittel von LyX nicht aus. Auch hier hilft das Linguistikmodul. Wenn es ausgewählt ist, finden Sie unter <emphasis role='sans'>Einfügen&#x21D2;Gleitobjekte</emphasis> zusätzlich ein Tableau-Gleitobjekt (siehe Tableau&#xA0;<xref linkend="tab.Beispiel-Tableau" /> für ein Beispiel).</para>
 <table xml:id="tab.Beispiel-Tableau">
 <caption>Beispiel-Tableau</caption>
-<informaltable>
 <tbody>
 <tr>
 <td align='right' valign='top'>/atikap/</td>
@@ -205,7 +204,6 @@ EndPreamble</programlisting>
 <td align='center' valign='top'></td>
 </tr>
 </tbody>
-</informaltable>
 </table>
 
 <para>Bitte beachten Sie, dass die Legende in der Standardeinstellung immer unter dem Tableau ausgegeben wird, egal, wohin Sie sie im LyX-Arbeitsfenster setzen. Um die Legende über das Tableau zu setzen, müssen Sie den folgenden Code in <emphasis role='sans'>Dokument&#x21D2;Einstellungen&#x21D2;Präambel </emphasis>eingeben:</para>
