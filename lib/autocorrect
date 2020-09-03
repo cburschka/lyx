@@ -24,6 +24,7 @@
 \vee              *    \curlyvee
 \curlyvee         *    \curlyveeuparrow
 \curlyveeuparrow  *    \curlyveedownarrow
+\curlyveedownarrow *   \vee
 
 <                 /    \nless
 >                 /    \ngtr
@@ -176,12 +177,12 @@
 #|   \|
 |                 *    \shortmid
 \shortmid         *    \varshortmid
-|                 |    \||
-\||               |    \interleave
-\||               *    \shortparallel
+|                 |    \|
+\|                |    \interleave
+\|                *    \shortparallel
 |                 -    \vdash
 \vdash            -    \longvdash
-\||               -    \Vdash
+\|                -    \Vdash
 \Vdash            -    \longVdash
 \interleave       -    \Vvdash
 \Vvdash           -    \longVvdash
@@ -211,13 +212,12 @@
 =                 @    \eqcirc
 -                 @    \multimap
 .                 =    \doteq
-.                 .    \ldots
+..                .    \ldots
 \ldots            *    \cdots
-\cdots            *    \hdots
-\hdots            *    \vdots
-\ddots            *    \ddots
-\iddots           *    \iddots
-\udots            *    \udots
+\cdots            *    \vdots
+\vdots            *    \ddots
+\ddots            *    \iddots
+\iddots           *    \ldots
 :                 =    \assign
 +                 =    \plusassign
 -                 =    \minusassign
@@ -226,17 +226,16 @@
 \ast              *    \times
 \times            *    \cdot
 
-<                 *    \subset
+\prec             *    \langle
+\langle           *    \subset
 \subset           *    \in
 \in               *    \sqsubset
 \subset           =    \subseteq
 \subseteq         /    \nsubseteq
 \subseteq         *    \subseteqq
-\sqsubset         *    \langle
-\langle           *    \leftslice
-\leftslice        *    \subset
+\sqsubset         *    \leftslice
+\leftslice        *    <
 
-\subseteq         /    \nsubseteq
 \subseteqq        /    \nsubseteqq
 \nsubseteqq       *    \subsetneq
 \subsetneq        *    \varsubsetneq
@@ -246,20 +245,23 @@
 \subsetplus       =    \subsetpluseq
 \subseteq         +    \subsetpluseq
 \in               /    \nin
->                 *    \supset
-\supset           /    \nsupset
+
+\succ             *    \rangle
+\rangle           *    \supset
+\supset           *    \ni
+\ni               *    \sqsupset
 \supset           =    \supseteq
 \supseteq         /    \nsupseteq
 \supseteq         *    \supseteqq
-\supseteq         /    \nsupseteq
-
+\sqsupset         *    \rightslice
+\rightslice       *    >
 
 \supseteqq        /    \nsupseteqq
 \supseteq         /    \supsetneq
+\supsetneq        *    \nsupseteq
 \supset           +    \supsetplus
 \supsetplus       =    \supsetpluseq
 \supseteq         +    \supsetpluseq
-\supset           *    \ni
 \ni               /    \nni
 
 #
@@ -267,20 +269,20 @@
 #
 
 #--|    \longdashv
-#|           =    \vDash
+|                 =    \vDash
 #\vDash      =    \longvDash
 #||=    \VDash
 #||==    \longVDash
-#|           /    \nmid
-#||/    \nparallel
-#|*/    \nshortmid
-#||*/    \nshortparallel
-#|-/    \nvdash
-#||-/    \nVdash
+#|                /    \nmid
+\|                /    \nparallel
+\shortmid         /    \nshortmid
+\shortparallel    /    \nshortparallel
+\vdash            /    \nvdash
+||-               /    \nVdash
 #-|/    \ndashv
 #-||/    \ndashV
-#|=/    \nvDash
-#||=/    \nVDash
+\vDash            /    \nvDash
+\nvDash           *    \nVDash
 #=|/    \nDashv
 #=||/    \nDashV
 #
@@ -316,20 +318,20 @@
 #>=*/*    \gneq
 #>=**/*    \gneqq
 #>=**/**    \gvertneqq
-#[[                *    \llbracket
-#]]                *    \rrbracket
-#EE                a    \amalg
-#EE                d    \partial
-#EE                p    \wp
-#EE                n    \cap
-#EE                u    \cup
-#EE                w    \wedge
-#\wedge            *    \curlywedge
-#\curlywedge       *    \curlywedgeuparrow
-#\curlywedgeuparrow   * \curlywedgedownarrow
-#\curlywedgedownarrow * \wedges
-#EE                v    \vee
-#EE                x    \times
+[[                *    \llbracket
+]]                *    \rrbracket
+EE                a    \amalg
+EE                d    \partial
+EE                p    \wp
+EE                n    \cap
+EE                u    \cup
+EE                w    \wedge
+\wedge            *    \curlywedge
+\curlywedge       *    \curlywedgeuparrow
+\curlywedgeuparrow   * \curlywedgedownarrow
+\curlywedgedownarrow * \wedge
+EE                v    \vee
+EE                x    \times
 
 # <***/    \nsqsubset
 # <***=    \sqsubseteq
@@ -342,8 +344,47 @@
 # >***=    \sqsupseteq
 # >***=/    \nsqsupseteq
 
-# >****    \rangle
-# \rangle  *     \rightslice
+(                 *    \bigl(
+\bigl(            *    \Bigl(
+\Bigl(            *    \biggl(
+\biggl(           *    \Biggl(
+\Biggl(           *    (
+
+)                 *    \bigl)
+\bigl)            *    \Bigl)
+\Bigl)            *    \biggl)
+\biggl)           *    \Biggl)
+\Biggl)           *    )
+
+[                 *    \bigl[
+\bigl[            *    \Bigl[
+\Bigl[            *    \biggl[
+\biggl[           *    \Biggl[
+\Biggl[           *    [
+
+]                 *    \bigl]
+\bigl]            *    \Bigl]
+\Bigl]            *    \biggl]
+\biggl]           *    \Biggl]
+\Biggl]           *    ]
+
+]                 *    \bigl]
+\bigl]            *    \Bigl]
+\Bigl]            *    \biggl]
+\biggl]           *    \Biggl]
+\Biggl]           *    ]
+
+\{                *    \bigl\{
+\bigl\{           *    \Bigl\{
+\Bigl\{           *    \biggl\{
+\biggl\{          *    \Biggl\{
+\Biggl\{          *    \{
+
+\}                *    \bigl\}
+\bigl\}           *    \Bigl\}
+\Bigl\}           *    \biggl\}
+\biggl\}          *    \Biggl\}
+\Biggl\}          *    \}
 
 # EE                l    \bigl
 # EE                m    \bigm
