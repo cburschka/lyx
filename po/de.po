@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-08-27 12:54+0200\n"
-"PO-Revision-Date: 2020-08-27 12:58+0200\n"
+"POT-Creation-Date: 2020-09-03 08:52+0200\n"
+"PO-Revision-Date: 2020-09-03 08:53+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -2381,8 +2381,12 @@ msgid "&Edit"
 msgstr "&Bearbeiten"
 
 #: src/frontends/qt/ui/IncludeUi.ui:79
-msgid "File name to include"
-msgstr "Name der einzubindenden Datei"
+msgid ""
+"File name to include. (You can create a new file by entering the name of one "
+"that does not yet exist.)"
+msgstr ""
+"Name der einzubettenden Datei (wenn eine Datei des Namens noch nicht "
+"existiert, wird sie neu angelegt)."
 
 #: src/frontends/qt/ui/IncludeUi.ui:124
 msgid "Underline spaces in generated output"
@@ -12352,7 +12356,7 @@ msgid "End of CV"
 msgstr "Ende des Lebenslaufs"
 
 #: lib/layouts/europasscv.layout:452 lib/layouts/europasscv.layout:457
-#: lib/layouts/soul.module:49
+#: lib/layouts/soul.module:50
 msgid "Highlight"
 msgstr "Hervorheben"
 
@@ -16765,55 +16769,55 @@ msgstr "Sperrung"
 msgid "spaced"
 msgstr "gesp."
 
-#: lib/layouts/soul.module:31
+#: lib/layouts/soul.module:32
 msgid "Strikethrough"
 msgstr "Durchstreichen"
 
-#: lib/layouts/soul.module:33
+#: lib/layouts/soul.module:34
 msgid "strike"
 msgstr "durchg."
 
-#: lib/layouts/soul.module:40
+#: lib/layouts/soul.module:41
 msgid "Underline"
 msgstr "Unterstreichen"
 
-#: lib/layouts/soul.module:42
+#: lib/layouts/soul.module:43
 msgid "ul"
 msgstr "unt."
 
-#: lib/layouts/soul.module:51
+#: lib/layouts/soul.module:52
 msgid "hl"
 msgstr "herv."
 
-#: lib/layouts/soul.module:57
+#: lib/layouts/soul.module:58
 msgid "Capitalize"
 msgstr "Großschreibung"
 
-#: lib/layouts/soul.module:59
+#: lib/layouts/soul.module:60
 msgid "caps"
 msgstr "gross"
 
-#: lib/layouts/soul.module:69
+#: lib/layouts/soul.module:70
 msgid "spaceletters"
 msgstr "gesperrt"
 
-#: lib/layouts/soul.module:73
+#: lib/layouts/soul.module:74
 msgid "strikethrough"
 msgstr "durchgestr."
 
-#: lib/layouts/soul.module:77 lib/ui/stdtoolbars.inc:470
+#: lib/layouts/soul.module:78 lib/ui/stdtoolbars.inc:470
 msgid "underline"
 msgstr "unterstr."
 
-#: lib/layouts/soul.module:81
+#: lib/layouts/soul.module:82
 msgid "highlight"
 msgstr "hervorg."
 
-#: lib/layouts/soul.module:85
+#: lib/layouts/soul.module:86
 msgid "capitalise"
 msgstr "groß"
 
-#: lib/layouts/soul.module:89
+#: lib/layouts/soul.module:90
 msgid "Capitalise"
 msgstr "Großschreibung"
 
@@ -28053,7 +28057,7 @@ msgstr "Dokument %1$s ist eingefügt."
 msgid "Could not insert document %1$s"
 msgstr "Das Dokument %1$s konnte nicht eingefügt werden"
 
-#: src/BufferView.cpp:3356
+#: src/BufferView.cpp:3357
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -28064,11 +28068,11 @@ msgstr ""
 "konnte aufgrund des folgenden Fehlers\n"
 "nicht gelesen werden: %2$s"
 
-#: src/BufferView.cpp:3358
+#: src/BufferView.cpp:3359
 msgid "Could not read file"
 msgstr "Die Datei konnte nicht gelesen werden"
 
-#: src/BufferView.cpp:3365
+#: src/BufferView.cpp:3366
 #, c-format
 msgid ""
 "%1$s\n"
@@ -28077,17 +28081,17 @@ msgstr ""
 "%1$s\n"
 "ist nicht lesbar."
 
-#: src/BufferView.cpp:3366 src/frontends/qt/qt_helpers.cpp:324
+#: src/BufferView.cpp:3367 src/frontends/qt/qt_helpers.cpp:324
 #: src/frontends/qt/qt_helpers.cpp:327 src/frontends/qt/qt_helpers.cpp:333
 #: src/output.cpp:39
 msgid "Could not open file"
 msgstr "Die Datei konnte nicht geöffnet werden"
 
-#: src/BufferView.cpp:3373
+#: src/BufferView.cpp:3374
 msgid "Reading not UTF-8 encoded file"
 msgstr "Lese nicht-UTF-8-kodierte Datei"
 
-#: src/BufferView.cpp:3374
+#: src/BufferView.cpp:3375
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -30279,7 +30283,7 @@ msgstr " unbekannt"
 msgid "Table Style "
 msgstr "Tabellenstil"
 
-#: src/Text3.cpp:2332 src/frontends/qt/GuiApplication.cpp:1715
+#: src/Text3.cpp:2332 src/frontends/qt/GuiApplication.cpp:1718
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
@@ -30834,7 +30838,7 @@ msgid "Dings 4"
 msgstr "Dings 4"
 
 #: src/frontends/qt/ButtonController.cpp:226
-#: src/frontends/qt/GuiApplication.cpp:1815 src/frontends/qt/GuiCompare.cpp:193
+#: src/frontends/qt/GuiApplication.cpp:1818 src/frontends/qt/GuiCompare.cpp:193
 #: src/frontends/qt/GuiSymbols.cpp:346
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -31040,83 +31044,84 @@ msgstr "Qt-Version (bei Erstellung): %1$s"
 msgid "About LyX"
 msgstr "Über LyX"
 
-#: src/frontends/qt/GuiApplication.cpp:650
+#: src/frontends/qt/GuiApplication.cpp:651
 msgid "About %1"
 msgstr "Über %1"
 
-#: src/frontends/qt/GuiApplication.cpp:651 src/frontends/qt/GuiPrefs.cpp:3478
+#: src/frontends/qt/GuiApplication.cpp:652 src/frontends/qt/GuiPrefs.cpp:3478
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: src/frontends/qt/GuiApplication.cpp:652
+#: src/frontends/qt/GuiApplication.cpp:653
 msgid "Reconfigure"
 msgstr "Neu konfigurieren"
 
-#: src/frontends/qt/GuiApplication.cpp:653
+#: src/frontends/qt/GuiApplication.cpp:654
 msgid "Restore Defaults"
 msgstr "Voreinstellungen"
 
-#: src/frontends/qt/GuiApplication.cpp:654
+#: src/frontends/qt/GuiApplication.cpp:655
 msgid "Quit %1"
 msgstr "%1 beenden"
 
-#: src/frontends/qt/GuiApplication.cpp:655
+#: src/frontends/qt/GuiApplication.cpp:656 src/frontends/qt/GuiInclude.cpp:318
+#: src/frontends/qt/GuiInclude.cpp:323 src/frontends/qt/GuiInclude.cpp:330
 msgid "&OK"
 msgstr "&OK"
 
-#: src/frontends/qt/GuiApplication.cpp:657
+#: src/frontends/qt/GuiApplication.cpp:658
 msgid "Apply"
 msgstr "Anwenden"
 
-#: src/frontends/qt/GuiApplication.cpp:658
+#: src/frontends/qt/GuiApplication.cpp:659
 msgid "Reset"
 msgstr "Zurücksetzen"
 
-#: src/frontends/qt/GuiApplication.cpp:659
+#: src/frontends/qt/GuiApplication.cpp:660
 msgid "Open"
 msgstr "Öffnen"
 
-#: src/frontends/qt/GuiApplication.cpp:1127
+#: src/frontends/qt/GuiApplication.cpp:1130
 msgid "Nothing to do"
 msgstr "Nichts zu tun"
 
-#: src/frontends/qt/GuiApplication.cpp:1133
+#: src/frontends/qt/GuiApplication.cpp:1136
 msgid "Unknown action"
 msgstr "Unbekannte Aktion"
 
-#: src/frontends/qt/GuiApplication.cpp:1177
+#: src/frontends/qt/GuiApplication.cpp:1180
 msgid "Command not handled"
 msgstr "Befehl wurde nicht ausgeführt"
 
-#: src/frontends/qt/GuiApplication.cpp:1183
+#: src/frontends/qt/GuiApplication.cpp:1186
 msgid "Command disabled"
 msgstr "Befehl ist deaktiviert"
 
-#: src/frontends/qt/GuiApplication.cpp:1312 src/frontends/qt/GuiView.cpp:2019
+#: src/frontends/qt/GuiApplication.cpp:1315 src/frontends/qt/GuiView.cpp:2019
 msgid "Command not allowed without a buffer open"
 msgstr "Dieser Befehl ist nur bei geöffnetem Dokument möglich"
 
-#: src/frontends/qt/GuiApplication.cpp:1319
+#: src/frontends/qt/GuiApplication.cpp:1322
 msgid "the <LFUN-COMMAND> argument of buffer-forall is not valid"
 msgstr "Das <LFUN-COMMAND>-Argument des Befehls 'buffer-forall' ist ungültig."
 
-#: src/frontends/qt/GuiApplication.cpp:1396
+#: src/frontends/qt/GuiApplication.cpp:1399
 msgid "Wrong focus!"
 msgstr "Fokusfehler!"
 
-#: src/frontends/qt/GuiApplication.cpp:1527
+#: src/frontends/qt/GuiApplication.cpp:1530
 msgid "Running configure..."
 msgstr "Neukonfiguration wird durchgeführt..."
 
-#: src/frontends/qt/GuiApplication.cpp:1535
+#: src/frontends/qt/GuiApplication.cpp:1538
 msgid "Reloading configuration..."
 msgstr "Konfiguration wird neu geladen..."
 
-#: src/frontends/qt/GuiApplication.cpp:1542
+#: src/frontends/qt/GuiApplication.cpp:1545
 msgid "System reconfiguration failed"
 msgstr "Neukonfiguration des Systems fehlgeschlagen"
 
-#: src/frontends/qt/GuiApplication.cpp:1543
+#: src/frontends/qt/GuiApplication.cpp:1546
 msgid ""
 "The system reconfiguration has failed.\n"
 "Default textclass is used but LyX may\n"
@@ -31128,11 +31133,11 @@ msgstr ""
 "der Lage, korrekt zu arbeiten.\n"
 "Bitte rekonfigurieren Sie nochmals, wenn nötig."
 
-#: src/frontends/qt/GuiApplication.cpp:1548
+#: src/frontends/qt/GuiApplication.cpp:1551
 msgid "System reconfigured"
 msgstr "Das System wurde neu konfiguriert"
 
-#: src/frontends/qt/GuiApplication.cpp:1549
+#: src/frontends/qt/GuiApplication.cpp:1552
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -31142,55 +31147,55 @@ msgstr ""
 "Sie müssen LyX neu starten, um die aktualisierten\n"
 "Spezifikationen für die Dokumentklassen zu nutzen."
 
-#: src/frontends/qt/GuiApplication.cpp:1629
+#: src/frontends/qt/GuiApplication.cpp:1632
 msgid "Exiting."
 msgstr "LyX wird beendet."
 
-#: src/frontends/qt/GuiApplication.cpp:1727
+#: src/frontends/qt/GuiApplication.cpp:1730
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Hilfe-Datei %1$s wird geöffnet..."
 
-#: src/frontends/qt/GuiApplication.cpp:1741
+#: src/frontends/qt/GuiApplication.cpp:1744
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntax: set-color <lyx_name> <x11_name>"
 
-#: src/frontends/qt/GuiApplication.cpp:1757
+#: src/frontends/qt/GuiApplication.cpp:1760
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\" ist fehlgeschlagen -- die Farbe ist nicht definiert oder "
 "darf nicht umdefiniert werden."
 
-#: src/frontends/qt/GuiApplication.cpp:1862
+#: src/frontends/qt/GuiApplication.cpp:1865
 #, c-format
 msgid "Cannot iterate more than %1$d times"
 msgstr "Mehr als %1$d Wiederholungen sind nicht möglich."
 
-#: src/frontends/qt/GuiApplication.cpp:1962
+#: src/frontends/qt/GuiApplication.cpp:1965
 #, c-format
 msgid "Applied \"%1$s\" to %2$d buffer(s)"
 msgstr "Der Befehl \"%1$s\" wurde auf %2$d Dateien (Pufferspeicher) angewandt"
 
-#: src/frontends/qt/GuiApplication.cpp:2049
+#: src/frontends/qt/GuiApplication.cpp:2052
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Dokument-Standardeinstellungen gespeichert in %1$s"
 
-#: src/frontends/qt/GuiApplication.cpp:2053
+#: src/frontends/qt/GuiApplication.cpp:2056
 msgid "Unable to save document defaults"
 msgstr "Die Dokument-Standardeinstellungen können nicht gespeichert werden"
 
-#: src/frontends/qt/GuiApplication.cpp:2277
-#: src/frontends/qt/GuiApplication.cpp:2292
+#: src/frontends/qt/GuiApplication.cpp:2280
+#: src/frontends/qt/GuiApplication.cpp:2295
 msgid "Unknown function."
 msgstr "Unbekannte Funktion."
 
-#: src/frontends/qt/GuiApplication.cpp:2793
+#: src/frontends/qt/GuiApplication.cpp:2796
 msgid "The current document was closed."
 msgstr "Das aktuelle Dokument wurde geschlossen."
 
-#: src/frontends/qt/GuiApplication.cpp:2803
+#: src/frontends/qt/GuiApplication.cpp:2806
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -31202,12 +31207,12 @@ msgstr ""
 "\n"
 "Exception: "
 
-#: src/frontends/qt/GuiApplication.cpp:2807
-#: src/frontends/qt/GuiApplication.cpp:2813
+#: src/frontends/qt/GuiApplication.cpp:2810
+#: src/frontends/qt/GuiApplication.cpp:2816
 msgid "Software exception Detected"
 msgstr "Softwareausnahme erkannt"
 
-#: src/frontends/qt/GuiApplication.cpp:2811
+#: src/frontends/qt/GuiApplication.cpp:2814
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -31215,12 +31220,12 @@ msgstr ""
 "LyX hat einen ziemlich seltsamen Fehler entdeckt. Das Programm wird jetzt "
 "versuchen, alle ungespeicherten Dateien zu speichern, und dann beendet."
 
-#: src/frontends/qt/GuiApplication.cpp:3112
-#: src/frontends/qt/GuiApplication.cpp:3124
+#: src/frontends/qt/GuiApplication.cpp:3115
+#: src/frontends/qt/GuiApplication.cpp:3127
 msgid "Could not find UI definition file"
 msgstr "Die Benutzeroberflächen-Definitionsdatei konnte nicht gefunden werden"
 
-#: src/frontends/qt/GuiApplication.cpp:3113
+#: src/frontends/qt/GuiApplication.cpp:3116
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -31231,13 +31236,13 @@ msgstr ""
 "%1$s.\n"
 "Bitte überprüfen Sie Ihre Installation."
 
-#: src/frontends/qt/GuiApplication.cpp:3119
+#: src/frontends/qt/GuiApplication.cpp:3122
 msgid "Could not find default UI file"
 msgstr ""
 "Die Standard-Benutzeroberflächen-Definitionsdatei konnte nicht gefunden "
 "werden"
 
-#: src/frontends/qt/GuiApplication.cpp:3120
+#: src/frontends/qt/GuiApplication.cpp:3123
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -31246,7 +31251,7 @@ msgstr ""
 "für die Benutzeroberfläche!\n"
 "Bitte überprüfen Sie Ihre Installation."
 
-#: src/frontends/qt/GuiApplication.cpp:3125
+#: src/frontends/qt/GuiApplication.cpp:3128
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -31364,7 +31369,7 @@ msgstr "alle Literaturverzeichnisse"
 #: src/frontends/qt/GuiBibtex.cpp:458 src/frontends/qt/GuiBibtex.cpp:468
 #: src/frontends/qt/GuiCompare.cpp:163 src/frontends/qt/GuiCompare.cpp:167
 #: src/frontends/qt/GuiDocument.cpp:2837 src/frontends/qt/GuiExternal.cpp:677
-#: src/frontends/qt/GuiGraphics.cpp:791 src/frontends/qt/GuiInclude.cpp:330
+#: src/frontends/qt/GuiGraphics.cpp:791 src/frontends/qt/GuiInclude.cpp:377
 #: src/frontends/qt/GuiLyXFiles.cpp:368 src/frontends/qt/GuiLyXFiles.cpp:374
 #: src/frontends/qt/GuiView.cpp:2392 src/frontends/qt/GuiView.cpp:2451
 #: src/frontends/qt/GuiView.cpp:2589 src/frontends/qt/GuiView.cpp:2723
@@ -31856,7 +31861,7 @@ msgstr "Konvertierung in aktuelles stabiles Format nicht möglich."
 msgid "Convert to current format"
 msgstr "Konvertiere in ein aktuelles Format"
 
-#: src/frontends/qt/GuiDocument.cpp:905 src/frontends/qt/GuiInclude.cpp:49
+#: src/frontends/qt/GuiDocument.cpp:905 src/frontends/qt/GuiInclude.cpp:52
 msgid "Child Document"
 msgstr "Unterdokument"
 
@@ -32722,7 +32727,7 @@ msgstr "Einstellungen für horizontalen Abstand"
 msgid "Hyperlink Settings"
 msgstr "Hyperlink-Einstellungen"
 
-#: src/frontends/qt/GuiInclude.cpp:115 src/frontends/qt/GuiInclude.cpp:173
+#: src/frontends/qt/GuiInclude.cpp:118 src/frontends/qt/GuiInclude.cpp:176
 #: src/frontends/qt/GuiListings.cpp:242 src/frontends/qt/GuiListings.cpp:398
 #: src/frontends/qt/GuiListings.cpp:476
 msgid ""
@@ -32731,11 +32736,15 @@ msgstr ""
 "Geben Sie rechts Listing-Parameter ein. Geben Sie '?' für eine Liste "
 "gültiger Parameter ein."
 
-#: src/frontends/qt/GuiInclude.cpp:312
+#: src/frontends/qt/GuiInclude.cpp:330
+msgid "&Create"
+msgstr "&Erstellen"
+
+#: src/frontends/qt/GuiInclude.cpp:359
 msgid "Select document to include"
 msgstr "Wählen Sie das einzubindende Dokument"
 
-#: src/frontends/qt/GuiInclude.cpp:319
+#: src/frontends/qt/GuiInclude.cpp:366
 msgid "LaTeX/LyX Documents (*.tex *.lyx)"
 msgstr "LaTeX/LyX-Dokumente (*.tex *.lyx)"
 
@@ -34906,12 +34915,12 @@ msgstr "Separierte äußere Umgebung (%1$s) unterhalb einfügen"
 msgid "Separated Outer %1$s Below"
 msgstr "Separierte äußere Umgebung (%1$s) unterhalb"
 
-#: src/frontends/qt/Menus.cpp:2308
+#: src/frontends/qt/Menus.cpp:2309
 #, c-format
 msgid "Export [%1$s]|E"
 msgstr "Exportiere in das Standardformat [%1$s]|E"
 
-#: src/frontends/qt/Menus.cpp:2658
+#: src/frontends/qt/Menus.cpp:2659
 msgid "No Action Defined!"
 msgstr "Keine Aktion definiert!"
 
@@ -37192,6 +37201,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "File name to include"
+#~ msgstr "Name der einzubindenden Datei"
 
 #~ msgid "Version goes here"
 #~ msgstr "Die Versionsnummer kommt hierher"
