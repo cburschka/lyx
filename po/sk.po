@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-08-27 12:15+0200\n"
-"PO-Revision-Date: 2020-08-27 10:26+0000\n"
+"POT-Creation-Date: 2020-09-03 11:53+0200\n"
+"PO-Revision-Date: 2020-09-03 10:00+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2271,8 +2271,12 @@ msgid "&Edit"
 msgstr "&Upraviť"
 
 #: src/frontends/qt/ui/IncludeUi.ui:79
-msgid "File name to include"
-msgstr "Názov súboru pre zaradenie"
+msgid ""
+"File name to include. (You can create a new file by entering the name of one "
+"that does not yet exist.)"
+msgstr ""
+"Názov súboru pre zaradenie. (Vložením ešte neexistujúceho mena bude "
+"vytvorený nový súbor.)"
 
 #: src/frontends/qt/ui/IncludeUi.ui:124
 msgid "Underline spaces in generated output"
@@ -4849,8 +4853,8 @@ msgid ""
 "If this is checked, pressing OK or Apply will save the changes only for the "
 "current LyX session, not permanently."
 msgstr ""
-"Keď zaškrtnuté, tlačením 'OK' alebo 'Použiť' sa zmeny ukladnú len pre "
-"súčasné LyX-sedenie a nie na trvalo."
+"Keď zaškrtnuté, tlačením 'OK' alebo 'Použiť' sa zmeny uložia len pre súčasné "
+"LyX-sedenie a nie na trvalo."
 
 #: src/frontends/qt/ui/PrefsUi.ui:48
 msgid "A&pply to current session only"
@@ -32345,6 +32349,10 @@ msgid ""
 msgstr ""
 "Parametre výpisu zadávajte napravo. Na prehľad parametrov vložte znak '?'."
 
+#: src/frontends/qt/GuiInclude.cpp:330
+msgid "&Create"
+msgstr "&Vytvoriť"
+
 #: src/frontends/qt/GuiInclude.cpp:312
 msgid "Select document to include"
 msgstr "Vyberte dokument na zahrnutie"
@@ -37192,9 +37200,6 @@ msgstr "Neznámy používateľ"
 #~ "Tu je akceptovaný bežný strftime formát; detaily sú v man strftime. Napr."
 #~ "\"%A, %e. %B %Y\"."
 
-#~ msgid "&Create"
-#~ msgstr "&Vytvoriť"
-
 #~ msgid "Time"
 #~ msgstr "Čas"
 
@@ -40744,9 +40749,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Table of Contents|T"
 #~ msgstr "Obsah|O"
-
-#~ msgid "OK"
-#~ msgstr "&OK"
 
 #~ msgid "Chinese"
 #~ msgstr "Kópie"
