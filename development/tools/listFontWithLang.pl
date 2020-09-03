@@ -30,6 +30,11 @@ BEGIN {
     unshift(@INC, $p);
 }
 
+my $lyxfontsdir = $INC[0];
+$lyxfontsdir =~ s/[\/\\]?[^\/\\]+$//;
+$lyxfontsdir =~ s/[\/\\]?[^\/\\]+$//;
+$lyxfontsdir .= "/lib/fonts";
+
 use strict;
 use warnings;
 use Encode;
@@ -260,32 +265,48 @@ for my $fn ("FontName", "NFontName") {
   }
 }
 
-my $cmd = "fc-list";
-if (defined($langs[0])) {
-  $cmd .= " :lang=" . join(',', @langs);
-}
+my @cmds = ();
+{
+  my $cmd = "fc-list";
+  my $langs = "";
+  if (defined($langs[0])) {
+    $langs = " :lang=" . join(',', @langs) . " ";
+  }
 
-my $format = "foundry=\"%{foundry}\"" .
-    " postscriptname=\"%{postscriptname}\"" .
-    " fn=\"%{fullname}\" fnl=\"%{fullnamelang}\"" .
-    " family=\"%{family}\" flang=\"%{familylang}\" " .
-    " style=\"%{style}\" stylelang=\"%{stylelang}\"";
+  my $format = "foundry=\"%{foundry}\"" .
+      " postscriptname=\"%{postscriptname}\"" .
+      " fn=\"%{fullname}\" fnl=\"%{fullnamelang}\"" .
+      " family=\"%{family}\" flang=\"%{familylang}\" " .
+      " style=\"%{style}\" stylelang=\"%{stylelang}\"";
 
-if ($iscript) {
-  $format .= " script=\"%{capability}\"";
+  if ($iscript) {
+    $format .= " script=\"%{capability}\"";
+  }
+  if (exists($options{PrintLangs}) || defined($langs[0])) {
+    $format .= " lang=\"%{lang}\"";
+  }
+  if ($iproperty) {
+    $format .= " weight=%{weight} slant=%{slant} width=%{width} spacing=%{spacing}";
+  }
+  if ($icontains) {
+    $format .= " charset=\"%{charset}\"";
+  }
+  $format .= " file=\"%{file}\" abcd\\n";
+  $cmd .= $langs . " -f '$format'";
+  push(@cmds, $cmd);
+
+  # Now Add also lyx fonts to be examinated
+  if (opendir(DI, "$lyxfontsdir")) {
+    while (my $l = readdir(DI)) {
+      chomp($l);
+      if ($l =~ /\.ttf$/) {
+	my $file = "$lyxfontsdir/$l";
+	push(@cmds, "fc-query$langs -f '$format' '$file'");
+      }
+    }
+    closedir(DI);
+  }
 }
-if (exists($options{PrintLangs}) || defined($langs[0])) {
-  $format .= " lang=\"%{lang}\"";
-}
-if ($iproperty) {
-  $format .= " weight=%{weight} slant=%{slant} width=%{width} spacing=%{spacing}";
-}
-if ($icontains) {
-  $format .= " charset=\"%{charset}\"";
-}
-$format .= " file=\"%{file}\" abcd\\n";
-$cmd .= " -f '$format'";
-#print "$cmd\n";
 
 
 my %ftypes = (
@@ -496,176 +517,178 @@ my %smallcapFonts = (
   "v" => qr/^vn ?cccsc\d/i,
 );
 
-if (open(FI,  "$cmd |")) {
- NXTLINE: while (my $l = <FI>) {
-    chomp($l);
-    while ($l !~ /abcd$/) {
-      $l .= <FI>;
+for my $cmd (@cmds) {
+  if (open(FI,  "$cmd |")) {
+   NXTLINE: while (my $l = <FI>) {
       chomp($l);
-    }
-    my $file = "";
-    my $fonttype;
-    if ($l =~ /file=\"([^\"]+)\"/) {
-      $file = $1;
-      #next if ($file !~ /\.(otf|ttf|pfa|pfb|pcf|ttc)$/i);
-      if ($file !~ /\.([a-z0-9]{2,5})$/i) {
-        print "Unhandled extension for file $file\n";
-        next;
+      while ($l !~ /abcd$/) {
+	$l .= <FI>;
+	chomp($l);
       }
-      $fonttype = lc($1);
-      if (! defined($fontpriority{$fonttype})) {
-        print "Added extension $fonttype for file $file\n";
-        $fontpriority{$fonttype} = $nexttype;
-        $nexttype++;
-      }
-    }
-    my %usedlangs = ();
-    if ($l =~ / lang=\"([^\"]+)\"/) {
-      my @ll = split(/\|/, $1);
-      for my $lx (@ll) {
-	$usedlangs{&convertlang($lx)} = 1;
-      }
-    }
-
-    for my $lang (@langs) {
-      next NXTLINE if (! defined($usedlangs{$lang}));
-    }
-    my ($fullname, $fuidx) = &getVal($l, "fn", "fnl", -1);
-    my ($style, $fsidx) = &getVal($l, "style", "stylelang", $fuidx);
-    $style =~ s/^\\040//;
-    my ($family, $faidx)  = &getVal($l, "family", "flang", $fsidx);
-
-    my $postscriptname = "";
-    if ($l =~ /postscriptname=\"([^\"]+)\"/) {
-      $postscriptname = $1;
-    }
-    my $fontname;
-    ($fontname, $style) = &buildFontName($family, $style);
-    if (defined($options{NFontName})) {
-      for my $fn (@{$options{NFontName}}) {
-        next NXTLINE if ($fontname =~ $fn);
-      }
-    }
-    if (defined($options{FontName})) {
-      for my $fn (@{$options{FontName}}) {
-        next NXTLINE if ($fontname !~ $fn);
-      }
-    }
-    my @charlist = ();
-    if ($icontains) {
-      if ($l =~ / charset=\"([^\"]+)\"/) {
-        my @list = split(/\s+/, $1);
-        for my $e (@list) {
-          my ($l, $h) = split('-', $e);
-          $h = $l if (! defined($h));
-          push(@charlist, [hex($l), hex($h)]);
-        }
-      }
-      if ($icontains & UCCONTAINS) {
-        for my $g (@{$options{Contains}}) {
-          next NXTLINE if (! contains($g, \@charlist));
-        }
-      }
-      if ($icontains & UCNCONTAINS) {
-        for my $g (@{$options{NContains}}) {
-          # Ignore if ANY char exist in @charlist
-          for (my $i = $g->[0]; $i <= $g->[1]; $i++) {
-            next NXTLINE if (contains([$i,$i], \@charlist));
-          }
-        }
-      }
-    }
-    my $props = "";
-    my $wprops = "";
-    my @errors = ();
-    if ($iproperty) {
-      my $properties = getproperties($l, $fontname, $style, \@errors);
-      if ($iproperty & UPPROPERTY) {
-        for my $pn (@{$options{Property}}) {
-          next NXTLINE if ($properties !~ /$pn/i);
-        }
-      }
-      if ($iproperty & UPNPROPERTY) {
-        for my $pn (@{$options{NProperty}}) {
-          next NXTLINE if ($properties =~ /$pn/i);
-        }
-      }
-      if ($iproperty & UPPPROPERTIES) {
-        $props .= " ($properties)";
-      }
-      if ($iproperty & UPWPROPERTIES) {
-        $wprops .= " ($properties)";
-      }
-    }
-    if (exists($options{PrintLangs})) {
-      $props .= '(' . join(',', sort keys %usedlangs) . ')';
-    }
-    if (exists($options{PrintCharset})) {
-      $props .= '(' . &sprintIntervalls(\@charlist) . ')';
-    }
-    if ($iscript) {
-      my @scripts = ();
-      my $scripts = "";
-      if ($l =~ / script=\"([^\"]+)\"/) {
-	@scripts = split(/\s+/, $1);
-	for my $ent (@scripts) {
-	  $ent =~ s/^\s*otlayout://;
-	  $ent = lc($ent);
+      my $file = "";
+      my $fonttype;
+      if ($l =~ /file=\"([^\"]+)\"/) {
+	$file = $1;
+	#next if ($file !~ /\.(otf|ttf|pfa|pfb|pcf|ttc)$/i);
+	if ($file !~ /\.([a-z0-9]{2,5})$/i) {
+	  print "Unhandled extension for file $file\n";
+	  next;
 	}
-        $scripts = join(',', @scripts);
+	$fonttype = lc($1);
+	if (! defined($fontpriority{$fonttype})) {
+	  print "Added extension $fonttype for file $file\n";
+	  $fontpriority{$fonttype} = $nexttype;
+	  $nexttype++;
+	}
       }
-      if ($iscript & USMSCRIPT) {
-        next NXTLINE if (! &ismathfont($fontname,\@scripts));
+      my %usedlangs = ();
+      if ($l =~ / lang=\"([^\"]+)\"/) {
+	my @ll = split(/\|/, $1);
+	for my $lx (@ll) {
+	  $usedlangs{&convertlang($lx)} = 1;
+	}
       }
-      if ($iscript & USPSCRIPT) {
-        $props .= "($scripts)";
+
+      for my $lang (@langs) {
+	next NXTLINE if (! defined($usedlangs{$lang}));
       }
-      if (!defined($scripts[0])) {
-        # No script defined in font, so check only $options{Scripts}
-        next NXTLINE if ($iscript & USSCRIPT);
+      my ($fullname, $fuidx) = &getVal($l, "fn", "fnl", -1);
+      my ($style, $fsidx) = &getVal($l, "style", "stylelang", $fuidx);
+      $style =~ s/^\\040//;
+      my ($family, $faidx)  = &getVal($l, "family", "flang", $fsidx);
+
+      my $postscriptname = "";
+      if ($l =~ /postscriptname=\"([^\"]+)\"/) {
+	$postscriptname = $1;
+      }
+      my $fontname;
+      ($fontname, $style) = &buildFontName($family, $style);
+      if (defined($options{NFontName})) {
+	for my $fn (@{$options{NFontName}}) {
+	  next NXTLINE if ($fontname =~ $fn);
+	}
+      }
+      if (defined($options{FontName})) {
+	for my $fn (@{$options{FontName}}) {
+	  next NXTLINE if ($fontname !~ $fn);
+	}
+      }
+      my @charlist = ();
+      if ($icontains) {
+	if ($l =~ / charset=\"([^\"]+)\"/) {
+	  my @list = split(/\s+/, $1);
+	  for my $e (@list) {
+	    my ($l, $h) = split('-', $e);
+	    $h = $l if (! defined($h));
+	    push(@charlist, [hex($l), hex($h)]);
+	  }
+	}
+	if ($icontains & UCCONTAINS) {
+	  for my $g (@{$options{Contains}}) {
+	    next NXTLINE if (! contains($g, \@charlist));
+	  }
+	}
+	if ($icontains & UCNCONTAINS) {
+	  for my $g (@{$options{NContains}}) {
+	    # Ignore if ANY char exist in @charlist
+	    for (my $i = $g->[0]; $i <= $g->[1]; $i++) {
+	      next NXTLINE if (contains([$i,$i], \@charlist));
+	    }
+	  }
+	}
+      }
+      my $props = "";
+      my $wprops = "";
+      my @errors = ();
+      if ($iproperty) {
+	my $properties = getproperties($l, $fontname, $style, \@errors);
+	if ($iproperty & UPPROPERTY) {
+	  for my $pn (@{$options{Property}}) {
+	    next NXTLINE if ($properties !~ /$pn/i);
+	  }
+	}
+	if ($iproperty & UPNPROPERTY) {
+	  for my $pn (@{$options{NProperty}}) {
+	    next NXTLINE if ($properties =~ /$pn/i);
+	  }
+	}
+	if ($iproperty & UPPPROPERTIES) {
+	  $props .= " ($properties)";
+	}
+	if ($iproperty & UPWPROPERTIES) {
+	  $wprops .= " ($properties)";
+	}
+      }
+      if (exists($options{PrintLangs})) {
+	$props .= '(' . join(',', sort keys %usedlangs) . ')';
+      }
+      if (exists($options{PrintCharset})) {
+	$props .= '(' . &sprintIntervalls(\@charlist) . ')';
+      }
+      if ($iscript) {
+	my @scripts = ();
+	my $scripts = "";
+	if ($l =~ / script=\"([^\"]+)\"/) {
+	  @scripts = split(/\s+/, $1);
+	  for my $ent (@scripts) {
+	    $ent =~ s/^\s*otlayout://;
+	    $ent = lc($ent);
+	  }
+	  $scripts = join(',', @scripts);
+	}
+	if ($iscript & USMSCRIPT) {
+	  next NXTLINE if (! &ismathfont($fontname,\@scripts));
+	}
+	if ($iscript & USPSCRIPT) {
+	  $props .= "($scripts)";
+	}
+	if (!defined($scripts[0])) {
+	  # No script defined in font, so check only $options{Scripts}
+	  next NXTLINE if ($iscript & USSCRIPT);
+	}
+	else {
+	  if ($iscript & USSCRIPT) {
+	    for my $s (@{$options{Scripts}}) {
+	      next NXTLINE if ($scripts !~ /$s/i);
+	    }
+	  }
+	  if ($iscript & USNSCRIPT) {
+	    for my $s (@{$options{NScripts}}) {
+	      next NXTLINE if ($scripts =~ /$s/i);
+	    }
+	  }
+	}
+      }
+      my $foundry = "";
+      if ($l =~ /foundry=\"([^\"]+)\"/) {
+	$foundry = $1;
+	$foundry =~ s/^\s+//;
+	$foundry =~ s/\s+$//;
+      }
+      if (defined($collectedfonts{$fontname}->{$foundry}->{errors})) {
+	# Apparently not the first one, so add some info
+	my $oldfonttype = $collectedfonts{$fontname}->{$foundry}->{fonttype};
+	if (defined($errors[0])) {
+	  push(@{$collectedfonts{$fontname}->{$foundry}->{errors}}, @errors);
+	}
+	if ($fontpriority{$oldfonttype} > $fontpriority{$fonttype}) {
+	  push(@{$collectedfonts{$fontname}->{$foundry}->{errors}}, "Warning: overwriting old info of file: " . $collectedfonts{$fontname}->{$foundry}->{file});
+	}
+	else {
+	  push(@{$collectedfonts{$fontname}->{$foundry}->{errors}}, "Warning: discarding new info from file: $file");
+	  next;
+	}
       }
       else {
-        if ($iscript & USSCRIPT) {
-          for my $s (@{$options{Scripts}}) {
-            next NXTLINE if ($scripts !~ /$s/i);
-          }
-        }
-        if ($iscript & USNSCRIPT) {
-          for my $s (@{$options{NScripts}}) {
-            next NXTLINE if ($scripts =~ /$s/i);
-          }
-        }
+	$collectedfonts{$fontname}->{$foundry}->{errors} = \@errors;
       }
+      $collectedfonts{$fontname}->{$foundry}->{props} = $props;
+      $collectedfonts{$fontname}->{$foundry}->{wprops} = $wprops;
+      $collectedfonts{$fontname}->{$foundry}->{file} = $file;
+      $collectedfonts{$fontname}->{$foundry}->{fonttype} = $fonttype;
     }
-    my $foundry = "";
-    if ($l =~ /foundry=\"([^\"]+)\"/) {
-      $foundry = $1;
-      $foundry =~ s/^\s+//;
-      $foundry =~ s/\s+$//;
-    }
-    if (defined($collectedfonts{$fontname}->{$foundry}->{errors})) {
-      # Apparently not the first one, so add some info
-      my $oldfonttype = $collectedfonts{$fontname}->{$foundry}->{fonttype};
-      if (defined($errors[0])) {
-        push(@{$collectedfonts{$fontname}->{$foundry}->{errors}}, @errors);
-      }
-      if ($fontpriority{$oldfonttype} > $fontpriority{$fonttype}) {
-        push(@{$collectedfonts{$fontname}->{$foundry}->{errors}}, "Warning: overwriting old info of file: " . $collectedfonts{$fontname}->{$foundry}->{file});
-      }
-      else {
-        push(@{$collectedfonts{$fontname}->{$foundry}->{errors}}, "Warning: discarding new info from file: $file");
-        next;
-      }
-    }
-    else {
-      $collectedfonts{$fontname}->{$foundry}->{errors} = \@errors;
-    }
-    $collectedfonts{$fontname}->{$foundry}->{props} = $props;
-    $collectedfonts{$fontname}->{$foundry}->{wprops} = $wprops;
-    $collectedfonts{$fontname}->{$foundry}->{file} = $file;
-    $collectedfonts{$fontname}->{$foundry}->{fonttype} = $fonttype;
+    close(FI);
   }
-  close(FI);
 }
 
 for my $fontname (sort keys %collectedfonts) {
