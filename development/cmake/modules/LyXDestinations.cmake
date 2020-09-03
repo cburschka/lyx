@@ -70,7 +70,7 @@ function(get_font_destination _result)
     # at least on ubuntu
     # ${LYX_DATA_SUBDIR}: Satisfy lyx because GuiFontLoader.cpp searches there
     # share/fonts: because math-editor uses system font
-    set(_dir "${LYX_DATA_SUBDIR}fonts/" "share/fonts/${_lyx}/")
+    set(_dir "${LYX_DATA_SUBDIR}fonts/")
   else()
     message(FATAL_ERROR "Unhandled platform")
   endif()
