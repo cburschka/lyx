@@ -230,6 +230,18 @@ extern LyXErr lyxerr;
 		else { lyx::lyxerr << CURRENT_POSITION << msg; lyx::lyxerr.endl(); } \
 	} while (0)
 
+#define LYXERR_NOENDL(type, msg) \
+	do { \
+		if (!lyx::lyxerr.debugging(type)) {} \
+		else { lyx::lyxerr << CURRENT_POSITION << msg; } \
+	} while (0)
+
+#define LYXERR_NOPOS(type, msg) \
+	do { \
+		if (!lyx::lyxerr.debugging(type)) {} \
+		else { lyx::lyxerr << msg; lyx::lyxerr.endl(); } \
+	} while (0)
+
 #define LYXERR0(msg) \
 	do { \
 		lyx::lyxerr << CURRENT_POSITION << msg; lyx::lyxerr.endl(); \
