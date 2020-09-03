@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-08-12 14:32+0200\n"
-"PO-Revision-Date: 2020-08-12 14:34+0200\n"
+"POT-Creation-Date: 2020-09-03 07:43+0200\n"
+"PO-Revision-Date: 2020-09-03 07:46+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -133,7 +133,7 @@ msgstr "Versionshinweise"
 #: src/frontends/qt4/ui/AboutUi.ui:159 src/frontends/qt4/ui/CompareUi.ui:163
 #: src/frontends/qt4/ui/DelimiterUi.ui:83
 #: src/frontends/qt4/ui/ErrorListUi.ui:60
-#: src/frontends/qt4/ui/ExternalUi.ui:620 src/frontends/qt4/ui/IncludeUi.ui:250
+#: src/frontends/qt4/ui/ExternalUi.ui:620 src/frontends/qt4/ui/IncludeUi.ui:277
 #: src/frontends/qt4/ui/InsetParamsUi.ui:138 src/frontends/qt4/ui/LogUi.ui:88
 #: src/frontends/qt4/ui/ParagraphUi.ui:261 src/frontends/qt4/ui/PrefsUi.ui:117
 #: src/frontends/qt4/ui/RefUi.ui:381 src/frontends/qt4/ui/SearchUi.ui:203
@@ -364,7 +364,7 @@ msgstr "Lokales Verzeichnis durchsuchen"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:112 src/frontends/qt4/ui/BibtexUi.ui:152
 #: src/frontends/qt4/ui/CompareUi.ui:50 src/frontends/qt4/ui/ExternalUi.ui:70
-#: src/frontends/qt4/ui/GraphicsUi.ui:75 src/frontends/qt4/ui/IncludeUi.ui:335
+#: src/frontends/qt4/ui/GraphicsUi.ui:75 src/frontends/qt4/ui/IncludeUi.ui:362
 #: src/frontends/qt4/ui/LaTeXUi.ui:161 src/frontends/qt4/ui/PrefInputUi.ui:111
 msgid "&Browse..."
 msgstr "&Durchsuchen..."
@@ -491,7 +491,7 @@ msgstr ""
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:183
 #: src/frontends/qt4/ui/CompareUi.ui:153 src/frontends/qt4/ui/DocumentUi.ui:67
 #: src/frontends/qt4/ui/ExternalUi.ui:600
-#: src/frontends/qt4/ui/GraphicsUi.ui:773 src/frontends/qt4/ui/IncludeUi.ui:237
+#: src/frontends/qt4/ui/GraphicsUi.ui:773 src/frontends/qt4/ui/IncludeUi.ui:264
 #: src/frontends/qt4/ui/IndexUi.ui:41 src/frontends/qt4/ui/InsetParamsUi.ui:118
 #: src/frontends/qt4/ui/ListingsUi.ui:539
 #: src/frontends/qt4/ui/MathMatrixUi.ui:258 src/frontends/qt4/ui/NoteUi.ui:38
@@ -501,7 +501,8 @@ msgstr ""
 #: src/frontends/qt4/ui/ShortcutUi.ui:52 src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:127
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
-#: src/frontends/qt4/ui/WrapUi.ui:150
+#: src/frontends/qt4/ui/WrapUi.ui:150 src/frontends/qt4/GuiInclude.cpp:317
+#: src/frontends/qt4/GuiInclude.cpp:322 src/frontends/qt4/GuiInclude.cpp:329
 msgid "&OK"
 msgstr "&OK"
 
@@ -1463,11 +1464,11 @@ msgid "Filename"
 msgstr "Dateiname"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:57 src/frontends/qt4/ui/GraphicsUi.ui:295
-#: src/frontends/qt4/ui/IncludeUi.ui:265
+#: src/frontends/qt4/ui/IncludeUi.ui:292
 msgid "&File:"
 msgstr "&Datei:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:67 src/frontends/qt4/ui/IncludeUi.ui:332
+#: src/frontends/qt4/ui/ExternalUi.ui:67 src/frontends/qt4/ui/IncludeUi.ui:359
 msgid "Select a file"
 msgstr "Wählen Sie eine Datei"
 
@@ -2226,11 +2227,11 @@ msgstr "Link zu einer Datei"
 msgid "Fi&le"
 msgstr "&Datei"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:36
+#: src/frontends/qt4/ui/IncludeUi.ui:44
 msgid "Listing Parameters"
 msgstr "Listing-Parameter"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:66
+#: src/frontends/qt4/ui/IncludeUi.ui:81
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:79
 #: src/frontends/qt4/ui/ListingsUi.ui:507
 msgid "Check it to enter parameters that are not recognizable by LyX"
@@ -2238,70 +2239,74 @@ msgstr ""
 "Wählen Sie dies, wenn Sie Parameter eingeben möchten, die nicht von LyX "
 "erkannt werden"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:69
+#: src/frontends/qt4/ui/IncludeUi.ui:84
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:82
 #: src/frontends/qt4/ui/ListingsUi.ui:510
 msgid "&Bypass validation"
 msgstr "Überprüfung &umgehen"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:86
+#: src/frontends/qt4/ui/IncludeUi.ui:101
 msgid "C&aption:"
 msgstr "Le&gende:"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:99
+#: src/frontends/qt4/ui/IncludeUi.ui:114
 msgid "La&bel:"
 msgstr "&Marke:"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:109
+#: src/frontends/qt4/ui/IncludeUi.ui:124
 msgid "Mo&re parameters"
 msgstr "&Weitere Parameter"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:183
+#: src/frontends/qt4/ui/IncludeUi.ui:203
 msgid "Underline spaces in generated output"
 msgstr "Leerzeichen in der erzeugten Ausgabe unterstreichen"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:186
+#: src/frontends/qt4/ui/IncludeUi.ui:206
 msgid "&Mark spaces in output"
 msgstr "&Leerzeichen bei der Ausgabe kennzeichnen"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:201
+#: src/frontends/qt4/ui/IncludeUi.ui:219
 msgid "Show LaTeX preview"
 msgstr "LaTeX-Vorschau anzeigen"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:204
+#: src/frontends/qt4/ui/IncludeUi.ui:222
 msgid "&Show preview"
 msgstr "&Vorschau anzeigen"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:275
-msgid "File name to include"
-msgstr "Name der einzubindenden Datei"
+#: src/frontends/qt4/ui/IncludeUi.ui:302
+msgid ""
+"File name to include. (You can create a new file by entering the name of one "
+"that does not yet exist.)"
+msgstr ""
+"Name der einzubettenden Datei (wenn eine Datei des Namens noch nicht "
+"existiert, wird sie neu angelegt)."
 
-#: src/frontends/qt4/ui/IncludeUi.ui:282
+#: src/frontends/qt4/ui/IncludeUi.ui:309
 msgid "&Include Type:"
 msgstr "&Art der Einbindung:"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:293 src/insets/InsetInclude.cpp:403
+#: src/frontends/qt4/ui/IncludeUi.ui:320 src/insets/InsetInclude.cpp:403
 msgid "Include"
 msgstr "Include"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:298 src/insets/InsetInclude.cpp:393
+#: src/frontends/qt4/ui/IncludeUi.ui:325 src/insets/InsetInclude.cpp:393
 msgid "Input"
 msgstr "Input"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:303 lib/layouts/stdlayouts.inc:76
+#: src/frontends/qt4/ui/IncludeUi.ui:330 lib/layouts/stdlayouts.inc:76
 msgid "Verbatim"
 msgstr "Unformatiert"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1337
+#: src/frontends/qt4/ui/IncludeUi.ui:335 src/insets/InsetInclude.cpp:1337
 #: src/insets/InsetInclude.cpp:1343
 msgid "Program Listing"
 msgstr "Programmlisting"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:342
+#: src/frontends/qt4/ui/IncludeUi.ui:369
 msgid "Edit the file"
 msgstr "Die Datei bearbeiten"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:345
+#: src/frontends/qt4/ui/IncludeUi.ui:372
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:74
 #: src/frontends/qt4/ui/PreambleUi.ui:45 src/frontends/qt4/GuiDocument.cpp:562
 #: src/frontends/qt4/GuiDocument.cpp:734
@@ -2939,39 +2944,39 @@ msgstr "&Art:"
 msgid "decoration type / matrix border"
 msgstr "Dekorationstyp / Matrixumrandung"
 
-#: src/frontends/qt4/ui/MathsUi.ui:48
+#: src/frontends/qt4/ui/MathsUi.ui:51
 msgid "All packages:"
 msgstr "Alle Pakete:"
 
-#: src/frontends/qt4/ui/MathsUi.ui:55
+#: src/frontends/qt4/ui/MathsUi.ui:58
 msgid "Load A&utomatically"
 msgstr "&Automatisch laden"
 
-#: src/frontends/qt4/ui/MathsUi.ui:62
+#: src/frontends/qt4/ui/MathsUi.ui:65
 msgid "Load Alwa&ys"
 msgstr "&Immer laden"
 
-#: src/frontends/qt4/ui/MathsUi.ui:69
+#: src/frontends/qt4/ui/MathsUi.ui:72
 msgid "Do &Not Load"
 msgstr "&Nicht laden"
 
-#: src/frontends/qt4/ui/MathsUi.ui:76
+#: src/frontends/qt4/ui/MathsUi.ui:79
 msgid "Indent displayed formulas instead of centering"
 msgstr "Abgesetzte Formeln einrücken (nicht zentrieren)"
 
-#: src/frontends/qt4/ui/MathsUi.ui:79
+#: src/frontends/qt4/ui/MathsUi.ui:82
 msgid "Indent &formulas"
 msgstr "&Formeln einrücken"
 
-#: src/frontends/qt4/ui/MathsUi.ui:95 src/frontends/qt4/ui/TextLayoutUi.ui:48
+#: src/frontends/qt4/ui/MathsUi.ui:98 src/frontends/qt4/ui/TextLayoutUi.ui:48
 msgid "Size of the indentation"
 msgstr "Länge der Einrückung"
 
-#: src/frontends/qt4/ui/MathsUi.ui:173
+#: src/frontends/qt4/ui/MathsUi.ui:176
 msgid "Formula numbering side:"
 msgstr "Seite der Formelnummerierung:"
 
-#: src/frontends/qt4/ui/MathsUi.ui:189
+#: src/frontends/qt4/ui/MathsUi.ui:192
 msgid "Side where formulas are numbered"
 msgstr "Seite, auf der Formeln nummeriert werden"
 
@@ -28388,15 +28393,15 @@ msgstr ", Zeichen: 0x"
 msgid ", Boundary: "
 msgstr ", Grenze: "
 
-#: src/Text2.cpp:409
+#: src/Text2.cpp:413
 msgid "No font change defined."
 msgstr "Keine Schriftänderung definiert."
 
-#: src/Text2.cpp:449
+#: src/Text2.cpp:453
 msgid "Nothing to index!"
 msgstr "Nichts zu indizieren!"
 
-#: src/Text2.cpp:451
+#: src/Text2.cpp:455
 msgid "Cannot index more than one paragraph!"
 msgstr "Es kann nicht mehr als ein Absatz indiziert werden!"
 
@@ -29392,7 +29397,7 @@ msgstr "alle Literaturverzeichnisse"
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
 #: src/frontends/qt4/GuiDocument.cpp:2517 src/frontends/qt4/GuiExternal.cpp:678
-#: src/frontends/qt4/GuiGraphics.cpp:793 src/frontends/qt4/GuiInclude.cpp:330
+#: src/frontends/qt4/GuiGraphics.cpp:793 src/frontends/qt4/GuiInclude.cpp:376
 #: src/frontends/qt4/GuiView.cpp:2242 src/frontends/qt4/GuiView.cpp:2301
 #: src/frontends/qt4/GuiView.cpp:2439 src/frontends/qt4/GuiView.cpp:2572
 #: src/frontends/qt4/GuiView.cpp:2612 src/frontends/qt4/GuiView.cpp:2730
@@ -29882,7 +29887,7 @@ msgstr "Konvertiere in ein aktuelles Format"
 msgid "Document Settings"
 msgstr "Dokument-Einstellungen"
 
-#: src/frontends/qt4/GuiDocument.cpp:875 src/frontends/qt4/GuiInclude.cpp:49
+#: src/frontends/qt4/GuiDocument.cpp:875 src/frontends/qt4/GuiInclude.cpp:52
 #: src/frontends/qt4/Menus.cpp:1471
 msgid "Child Document"
 msgstr "Unterdokument"
@@ -30667,7 +30672,7 @@ msgstr "Einstellungen für horizontalen Abstand"
 msgid "Hyperlink Settings"
 msgstr "Hyperlink-Einstellungen"
 
-#: src/frontends/qt4/GuiInclude.cpp:114 src/frontends/qt4/GuiInclude.cpp:176
+#: src/frontends/qt4/GuiInclude.cpp:117 src/frontends/qt4/GuiInclude.cpp:179
 #: src/frontends/qt4/GuiListings.cpp:241 src/frontends/qt4/GuiListings.cpp:394
 #: src/frontends/qt4/GuiListings.cpp:472
 msgid ""
@@ -30676,11 +30681,15 @@ msgstr ""
 "Geben Sie rechts Listing-Parameter ein. Geben Sie '?' für eine Liste "
 "gültiger Parameter ein."
 
-#: src/frontends/qt4/GuiInclude.cpp:312
+#: src/frontends/qt4/GuiInclude.cpp:329
+msgid "&Create"
+msgstr "&Erstellen"
+
+#: src/frontends/qt4/GuiInclude.cpp:358
 msgid "Select document to include"
 msgstr "Wählen Sie das einzubindende Dokument"
 
-#: src/frontends/qt4/GuiInclude.cpp:319
+#: src/frontends/qt4/GuiInclude.cpp:365
 msgid "LaTeX/LyX Documents (*.tex *.lyx)"
 msgstr "LaTeX/LyX-Dokumente (*.tex *.lyx)"
 
@@ -34339,6 +34348,9 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
 
+#~ msgid "File name to include"
+#~ msgstr "Name der einzubindenden Datei"
+
 #~ msgid "Theorem \\thechapter.\\thetheorem."
 #~ msgstr "Theorem \\thechapter.\\thetheorem."
 
@@ -34468,9 +34480,6 @@ msgstr "Unbekannter Benutzer"
 
 #~ msgid "Springer SV Jour/PTRF"
 #~ msgstr "Springer SV Jour/PTRF"
-
-#~ msgid "&Create"
-#~ msgstr "&Erstellen"
 
 #~ msgid "Underbar"
 #~ msgstr "Unterstrichen"
