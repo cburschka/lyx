@@ -1,4 +1,4 @@
-SplineFontDB: 3.0
+SplineFontDB: 3.2
 FontName: stmary10
 FullName: stmary10
 FamilyName: stmary10
@@ -6,23 +6,30 @@ Weight: Roman
 Copyright: Copyright (c) Taco Hoekwater, 1998. All rights reserved.
 Version: 001.001
 ItalicAngle: 0
-UnderlinePosition: -102.4
-UnderlineWidth: 51.2
+UnderlinePosition: -102
+UnderlineWidth: 51
 Ascent: 819
 Descent: 205
+InvalidEm: 0
 LayerCount: 2
-Layer: 0 0 "Back"  1
-Layer: 1 0 "Zeichenebene"  0
+Layer: 0 0 "Back" 1
+Layer: 1 0 "Zeichenebene" 0
+FSType: 0
 OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 0
 CreationTime: 1302307949
-ModificationTime: 1421634721
+ModificationTime: 1599145907
+PfmFamily: 17
+TTFWeight: 400
+TTFWidth: 5
+LineGap: 92
+VLineGap: 0
 OS2TypoAscent: 0
 OS2TypoAOffset: 1
 OS2TypoDescent: 0
 OS2TypoDOffset: 1
-OS2TypoLinegap: 0
+OS2TypoLinegap: 92
 OS2WinAscent: 0
 OS2WinAOffset: 1
 OS2WinDescent: 0
@@ -31,17 +38,17 @@ HheadAscent: 0
 HheadAOffset: 1
 HheadDescent: 0
 HheadDOffset: 1
-OS2Vendor: 'PfEd'
+OS2Vendor: 'LyEd'
 MarkAttachClasses: 1
 DEI: 91125
-LangName: 1033 "" "" "LyX" "FontForge 2.0 : stmary10 : 17-7-2010" 
+LangName: 1033 "" "" "LyX" "FontForge 2.0 : stmary10 : 17-7-2010"
 Encoding: UnicodeBmp
 UnicodeInterp: none
 NameList: Adobe Glyph List
 DisplaySize: -96
 AntiAlias: 1
 FitToEm: 1
-WinInfo: 0 8 2
+WinInfo: 64 8 2
 BeginPrivate: 0
 EndPrivate
 BeginChars: 65539 131
