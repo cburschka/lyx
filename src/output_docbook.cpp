@@ -347,30 +347,6 @@ void closeParTag(XMLStream & xs, Paragraph const * par, Paragraph const * nextpa
 }
 
 
-void openLabelTag(XMLStream & xs, Layout const & lay) // Mostly for definition lists.
-{
-	openTag(xs, lay.docbookitemlabeltag(), lay.docbookitemlabelattr(), lay.docbookitemlabeltagtype());
-}
-
-
-void closeLabelTag(XMLStream & xs, Layout const & lay)
-{
-	closeTag(xs, lay.docbookitemlabeltag(), lay.docbookitemlabeltagtype());
-}
-
-
-void openItemTag(XMLStream & xs, Layout const & lay)
-{
-	openTag(xs, lay.docbookitemtag(), lay.docbookitemattr(), lay.docbookitemtagtype());
-}
-
-
-void closeItemTag(XMLStream & xs, Layout const & lay)
-{
-	closeTag(xs, lay.docbookitemtag(), lay.docbookitemtagtype());
-}
-
-
 ParagraphList::const_iterator makeAny(Text const &,
 		                              Buffer const &,
 		                              XMLStream &,
@@ -656,17 +632,17 @@ ParagraphList::const_iterator makeListEnvironment(Text const &text,
 		if (style.labeltype != LABEL_NO_LABEL && style.docbookitemlabeltag() != "NONE") {
 			if (style.labeltype == LABEL_MANUAL) {
 				// Only variablelist gets here (or similar items defined as an extension in the layout).
-				openLabelTag(xs, style);
+				openTag(xs, style.docbookitemlabeltag(), style.docbookitemlabelattr(), style.docbookitemlabeltagtype());
 				sep = 1 + par->firstWordDocBook(xs, runparams);
-				closeLabelTag(xs, style);
+				closeTag(xs, style.docbookitemlabeltag(), style.docbookitemlabeltagtype());
 			} else {
 				// Usual cases: maybe there is something specified at the layout level. Highly unlikely, though.
 				docstring const lbl = par->params().labelString();
 
 				if (!lbl.empty()) {
-					openLabelTag(xs, style);
+					openTag(xs, style.docbookitemlabeltag(), style.docbookitemlabelattr(), style.docbookitemlabeltagtype());
 					xs << lbl;
-					closeLabelTag(xs, style);
+					closeTag(xs, style.docbookitemlabeltag(), style.docbookitemlabeltagtype());
 				}
 			}
 		}
