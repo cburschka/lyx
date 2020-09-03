@@ -591,30 +591,19 @@ wasy10:
 \end_layout
 
 \begin_layout Standard
-Another set of qt5 reported problems with integral limits.
- 
+Test for limits esint10
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
+(
 \backslash
-fint broken everywhere likely breaks because of codepoint 32 (otherwise
- glyph metrics is same as other ints, fixed by 80f94a93).
- The others might be broken because we don't occupy glyphs at usual ascii
- codepoints, see https://code.qt.io/cgit/qt/qtbase.git/commit/?id=54dbdc26bacd3ab77
-6c99ebef734404ef2e08ce5 .
- Reported on opensuse with QT5-5.12.7, we did not get feedback what happens
- with font containing glyph at asii position 'f').
+fint used to be broken because of codepoint 32, see 80f94a939)
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-esint10: 
+: 
 \begin_inset Formula 
 \[
 \int_{0}^{0}\oiint_{0}^{0}\fint_{0}^{0}
