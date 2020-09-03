@@ -1833,7 +1833,8 @@ bool Text::dissolveInset(Cursor & cur)
 		 */
 		DocumentClass const & tclass = cur.buffer()->params().documentClass();
 		if (inset_it.lastpos() == 1
-		    && plist[0].layout().name() != tclass.plainLayoutName())
+			&& !tclass.isPlainLayout(plist[0].layout())
+			&& !tclass.isDefaultLayout(plist[0].layout()))
 			cur.paragraph().makeSameLayout(plist[0]);
 
 		pasteParagraphList(cur, plist, b.params().documentClassPtr(),
