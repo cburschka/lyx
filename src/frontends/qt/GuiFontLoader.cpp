@@ -207,7 +207,14 @@ QFont symbolFont(QString const & family, bool * ok)
 	upper[0] = family[0].toUpper();
 
 	QFont font;
+#if defined Q_WS_X11 || defined(QPA_XCB)
+	// On *nix we have to also specify the foundry to be able to
+	// discriminate our fonts when the texlive fonts are managed by
+	// fontconfig. Unfortunately, doing the same on Windows breaks things.
+	font.setFamily(family + QLatin1String(" [LyEd]"));
+#else
 	font.setFamily(family);
+#endif
 #if QT_VERSION >= 0x040800
 	font.setStyleName("LyX");
 
