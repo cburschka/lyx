@@ -449,6 +449,8 @@ BufferParams::BufferParams()
 	listings_params = string();
 	pagestyle = "default";
 	tablestyle = "default";
+	float_alignment = "class";
+	float_placement = "class";
 	suppress_date = false;
 	justification = true;
 	// no color is the default (white)
