@@ -118,6 +118,13 @@ void InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 		Changer dummy = mi.base.font.changeShape(UP_SHAPE);
 		dim = theFontMetrics(mi.base.font).dimension(char_);
 		kerning_ = 0;
+	} else if (!isASCII(char_) && Encodings::unicodeCharInfo(char_).isUnicodeSymbol()) {
+		Changer dummy1 = mi.base.changeFontSet("mathnormal");
+		Changer dummy2 = Encodings::isMathAlpha(char_)
+				? Changer()
+				: mi.base.font.changeShape(UP_SHAPE);
+		dim = theFontMetrics(mi.base.font).dimension(char_);
+		kerning_ = -mathed_char_kerning(mi.base.font, char_);
 	} else {
 		frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
 		dim = fm.dimension(char_);
@@ -154,6 +161,13 @@ void InsetMathChar::draw(PainterInfo & pi, int x, int y) const
 			return;
 		} else if (!slanted(char_) && pi.base.fontname == "mathnormal") {
 			Changer dummy = pi.base.font.changeShape(UP_SHAPE);
+			pi.draw(x, y, char_);
+			return;
+		} else if (!isASCII(char_) && Encodings::unicodeCharInfo(char_).isUnicodeSymbol()) {
+			Changer dummy1 = pi.base.changeFontSet("mathnormal");
+			Changer dummy2 = Encodings::isMathAlpha(char_)
+					? Changer()
+					: pi.base.font.changeShape(UP_SHAPE);
 			pi.draw(x, y, char_);
 			return;
 		}

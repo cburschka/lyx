@@ -215,6 +215,7 @@ QFont symbolFont(QString const & family, bool * ok)
 #else
 	font.setFamily(family);
 #endif
+	font.setStyleStrategy(QFont::NoFontMerging);
 #if QT_VERSION >= 0x040800
 	font.setStyleName("LyX");
 

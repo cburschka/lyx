@@ -692,7 +692,13 @@ int mathedSymbolDim(MetricsBase & mb, Dimension & dim, latexkeys const * sym)
 		sym->extra == "mathalpha" &&
 		mb.fontname == "mathit";
 	std::string const font = italic_upcase_greek ? "cmm" : sym->inset;
-	Changer dummy = mb.changeFontSet(font);
+	bool const change_font = font != "cmr" ||
+				(mb.fontname != "mathbb" &&
+				 mb.fontname != "mathds" &&
+				 mb.fontname != "mathfrak" &&
+				 mb.fontname != "mathcal" &&
+				 mb.fontname != "mathscr");
+	Changer dummy = change_font ? mb.changeFontSet(font) : Changer();
 	mathed_string_dim(mb.font, mathedSymbol(mb, sym), dim);
 	return mathed_char_kerning(mb.font, mathedSymbol(mb, sym).back());
 }
@@ -710,8 +716,13 @@ void mathedSymbolDraw(PainterInfo & pi, int x, int y, latexkeys const * sym)
 		sym->extra == "mathalpha" &&
 		pi.base.fontname == "mathit";
 	std::string const font = italic_upcase_greek ? "cmm" : sym->inset;
-
-	Changer dummy = pi.base.changeFontSet(font);
+	bool const change_font = font != "cmr" ||
+				(pi.base.fontname != "mathbb" &&
+				 pi.base.fontname != "mathds" &&
+				 pi.base.fontname != "mathfrak" &&
+				 pi.base.fontname != "mathcal" &&
+				 pi.base.fontname != "mathscr");
+	Changer dummy = change_font ? pi.base.changeFontSet(font) : Changer();
 	pi.draw(x, y, mathedSymbol(pi.base, sym));
 }
 
