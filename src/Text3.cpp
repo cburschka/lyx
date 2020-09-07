@@ -293,6 +293,7 @@ static bool doInsertInset(Cursor & cur, Text * text,
 	}
 
 	bool gotsel = false;
+	bool move_layout = false;
 	if (cur.selection()) {
 		if (cmd.action() == LFUN_INDEX_INSERT)
 			copySelectionToTemp(cur);
@@ -303,8 +304,10 @@ static bool doInsertInset(Cursor & cur, Text * text,
 			 * FIXME: this does not work as expected when change tracking is on
 			 *   However, we do not really know what to do in this case.
 			 */
-			if (cur.paragraph().empty() && !inset->forcePlainLayout())
+			if (cur.paragraph().empty() && !inset->forcePlainLayout()) {
 				cur.paragraph().setPlainOrDefaultLayout(bparams.documentClass());
+				move_layout = true;
+			}
 		}
 		cur.clearSelection();
 		gotsel = true;
@@ -330,6 +333,11 @@ static bool doInsertInset(Cursor & cur, Text * text,
 		inset_text->fixParagraphsFont();
 		cur.pos() = 0;
 		cur.pit() = 0;
+		/* If the containing paragraph has kept its layout, reset the
+		 * layout of the first paragraph of the inset.
+		 */
+		if (!move_layout)
+			cur.paragraph().setPlainOrDefaultLayout(bparams.documentClass());
 		// FIXME: what does this do?
 		if (cmd.action() == LFUN_FLEX_INSERT)
 			return true;
