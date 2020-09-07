@@ -169,6 +169,8 @@ struct GuiWorkArea::Private
 	bool clean_;
 	///
 	bool externally_modified_;
+	///
+	bool needs_caret_geometry_update_;
 
 }; // GuiWorkArea
 

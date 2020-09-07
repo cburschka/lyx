@@ -243,7 +243,7 @@ GuiWorkArea::Private::Private(GuiWorkArea * parent)
   caret_visible_(false), need_resize_(false), preedit_lines_(1),
   last_pixel_ratio_(1.0), completer_(new GuiCompleter(p, p)),
   dialog_mode_(false), shell_escape_(false), read_only_(false),
-  clean_(true), externally_modified_(false)
+  clean_(true), externally_modified_(false), needs_caret_geometry_update_(true)
 {
 /* Qt on macOS and Wayland does not respect the
  * Qt::WA_OpaquePaintEvent attribute and resets the widget backing
@@ -487,7 +487,8 @@ void GuiWorkArea::scheduleRedraw(bool update_metrics)
 
 	// update caret position, because otherwise it has to wait until
 	// the blinking interval is over
-	d->updateCaretGeometry();
+	d->needs_caret_geometry_update_ = true;
+	d->caret_visible_ = true;
 
 	LYXERR(Debug::WORKAREA, "WorkArea::redraw screen");
 	viewport()->update();
@@ -587,7 +588,8 @@ void GuiWorkArea::Private::resizeBufferView()
 	buffer_view_->resize(p->viewport()->width(), p->viewport()->height());
 	if (caret_in_view)
 		buffer_view_->scrollToCursor();
-	updateCaretGeometry();
+	needs_caret_geometry_update_ = true;
+	caret_visible_ = true;
 
 	// Update scrollbars which might have changed due different
 	// BufferView dimension. This is especially important when the
@@ -637,10 +639,11 @@ void GuiWorkArea::Private::updateCaretGeometry()
 		&& completer_->completionAvailable()
 		&& !completer_->popupVisible()
 		&& !completer_->inlineVisible();
-	caret_visible_ = true;
 
 	caret_->update(point.x_, point.y_, h, l_shape, isrtl, completable);
+	needs_caret_geometry_update_ = false;
 }
+
 
 
 void GuiWorkArea::Private::showCaret()
@@ -648,7 +651,8 @@ void GuiWorkArea::Private::showCaret()
 	if (caret_visible_)
 		return;
 
-	updateCaretGeometry();
+	needs_caret_geometry_update_ = true;
+	caret_visible_ = true;
 	p->viewport()->update();
 }
 
@@ -1356,8 +1360,14 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 	d->paintPreeditText(pain);
 
 	// and the caret
-	if (d->caret_visible_)
+	// FIXME: the code would be a little bit simpler if caret geometry
+	// was updated unconditionally. Some profiling is required to see
+	// how expensive this is (especially when idle).
+	if (d->caret_visible_) {
+		if (d->needs_caret_geometry_update_)
+			d->updateCaretGeometry();
 		d->caret_->draw(pain, d->buffer_view_->horizScrollOffset());
+	}
 
 	d->updateScreen(ev->rect());
 
