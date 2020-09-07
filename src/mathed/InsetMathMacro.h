@@ -47,9 +47,9 @@ public:
 	/// The default limits value
 	Limits defaultLimits() const;
 	/// whether the inset has limit-like sub/superscript
-	Limits limits() const { return limits_; }
+	Limits limits() const;
 	/// sets types of sub/superscripts
-	void limits(Limits lim) { limits_ = lim; }
+	void limits(Limits lim);
 
 	///
 	void beforeMetrics() const;
@@ -193,9 +193,6 @@ private:
 	virtual Inset * clone() const;
 	///
 	bool editMode(BufferView const * bv) const;
-
-	///
-	Limits limits_ = AUTO_LIMITS;
 
 	///
 	class Private;

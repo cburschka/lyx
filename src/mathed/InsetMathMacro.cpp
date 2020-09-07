@@ -206,7 +206,7 @@ public:
 		  expanded_(buf), definition_(buf), attachedArgsNum_(0),
 		  optionals_(0), nextFoldMode_(true), macroBackup_(buf),
 		  macro_(0), needsUpdate_(false), isUpdating_(false),
-		  appetite_(9), nesting_(0)
+		  appetite_(9), nesting_(0), limits_(AUTO_LIMITS)
 	{
 	}
 	/// Update the pointers to our owner of all expanded macros.
@@ -248,6 +248,8 @@ public:
 	size_t appetite_;
 	/// Level of nesting in macros (including this one)
 	int nesting_;
+	///
+	Limits limits_;
 };
 
 
@@ -371,6 +373,7 @@ bool InsetMathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 	return has_contents;
 }
 
+
 /// Whether the inset allows \(no)limits
 bool InsetMathMacro::allowsLimitsChange() const
 {
@@ -400,6 +403,18 @@ Limits InsetMathMacro::defaultLimits() const
 		? in->defaultLimits() : in->limits();
 	LATTEST(lim != AUTO_LIMITS);
 	return lim;
+}
+
+
+Limits InsetMathMacro::limits() const
+{
+	return d->limits_;
+}
+
+
+void InsetMathMacro::limits(Limits lim)
+{
+	d->limits_ = lim;
 }
 
 
