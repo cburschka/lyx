@@ -31,6 +31,9 @@ foreach(_t ${targets})
   add_executable(${_t} ${_t}.c)
   add_man(${_t}.man)
 endforeach()
+if (WIN32)
+  set_target_properties(${targets} PROPERTIES LANGUAGE C COMPILE_FLAGS -D__STDC__)
+endif()
 
 # Install dtl tools in this directory to omit possible packaging conflicts
 # if installing multiple lyx versions, each with own dtl executables
