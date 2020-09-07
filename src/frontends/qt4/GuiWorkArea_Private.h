@@ -85,6 +85,8 @@ struct GuiWorkArea::Private
 
 	///
 	void dispatch(FuncRequest const & cmd0);
+	/// Make caret visible and signal that its geometry needs to be updated
+	void resetCaret();
 	/// recompute the shape and position of the caret
 	void updateCaretGeometry();
 	/// show the caret if it is not visible
@@ -169,6 +171,8 @@ struct GuiWorkArea::Private
 	bool clean_;
 	///
 	bool externally_modified_;
+	///
+	bool needs_caret_geometry_update_;
 
 }; // GuiWorkArea
 
