@@ -307,6 +307,10 @@ dist_ruinsetexamples_DATA = \
 	examples/ru/Graphics_and_Insets/xyfigure.png \
 	examples/ru/Graphics_and_Insets/XY-Pic.lyx
 
+rupresentationexamplesdir = $(pkgdatadir)/examples/ru/Presentations
+dist_rupresentationexamples_DATA = \
+	examples/ru/Presentations/Beamer.lyx
+
 slexamplesdir = $(pkgdatadir)/examples/sl
 dist_slexamples_DATA = \
 	examples/sl/Example_%28LyXified%29.lyx \
@@ -2764,6 +2768,7 @@ exampleandtemplate_files = \
 			   $(dist_roexamples_DATA) \
 			   $(dist_ruexamples_DATA) \
 			   $(dist_ruinsetexamples_DATA) \
+			   $(dist_rupresentationexamples_DATA) \
 			   $(dist_scriptexamples_DATA) \
 			   $(dist_scriptstemplates_DATA) \
 			   $(dist_slexamples_DATA) \

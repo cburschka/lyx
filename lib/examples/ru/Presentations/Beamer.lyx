@@ -1,0 +1,4365 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 598
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin /systemlyxdir/examples/ru/Presentations/
+\textclass beamer
+\begin_preamble
+% We use the "Berkeley" theme with a 3.45em-wide side bar on the left
+\usetheme[left,width=3.45em]{Berkeley}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children no
+\language russian
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype true
+\use_dash_ligatures false
+\graphics default
+\default_output_format pdf2
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style russian
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Презентации с Beamer и \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Subtitle
+Введение
+\end_layout
+
+\begin_layout Author
+Команда разработки \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Date
+Версия
+\begin_inset space ~
+\end_inset
+
+2.4
+\end_layout
+
+\begin_layout TitleGraphic
+\begin_inset Graphics
+	filename C:/Program Files (x86)/LyX 2.3/Resources/doc/clipart/3D-structure-distort.pdf
+	lyxscale 30
+	scale 10
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+presentation
+\end_layout
+
+\end_inset
+
+Содержание
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Цели
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
++-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Назначение класса Beamer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+С классом 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ вы можете создавать слайды презентации, которые
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+являются визуально настраиваемыми
+\end_layout
+
+\begin_layout Itemize
+могут быть очень хорошо структурированы
+\end_layout
+
+\begin_layout Itemize
+могут быть построены поэтапно (концепция «оверлея»)
+\end_layout
+
+\begin_layout Itemize
+могут содержать разные пути навигации (слайды могут содержать всевозможные
+ гиперссылки)
+\end_layout
+
+\begin_layout Itemize
+используют превосходное качество вывода \SpecialChar LaTeX
+
+\end_layout
+
+\begin_layout Itemize
+могут содержать аудио и видео материал
+\end_layout
+
+\begin_layout Itemize
+могут быть легко преобразованы в сопроводительный материал (например, раздаточны
+й материал в виде статьи)
+\end_layout
+
+\begin_layout Itemize
+и многое другое \SpecialChar ldots
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Цель данной презентации
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Эта презентация
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+описывает некоторые основные возможности 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+особенно, как их можно использовать с \SpecialChar LyX
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+Для получения более общей и исчерпывающей информации о самом 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ обратитесь к обширному руководству по этому классу 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "beamer-ug"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Сегменты презентации
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Общая структура
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Презентация обычно состоит из
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+титульной страницы
+\end_layout
+
+\begin_layout Itemize
+слайдов, которые можно сгруппировать в разделы/части
+\end_layout
+
+\begin_layout Itemize
+приложений с дополнительной информацией, например, библиографией
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+Далее мы опишем эти сегменты.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Титульная страница
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+В LyX титульная страница конструируется с использованием макетов 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Заглавие
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Подзаголовок
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Автор
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Институт
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Дата
+\end_layout
+
+\end_inset
+
+ и 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Подпись изображения
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Никакой из них не является обязательным, но необходимо указать хотя бы один
+\end_layout
+
+\begin_layout Itemize
+Порядок их включения значения не имеет (определяется темой 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+Для 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Заглавие
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Подзаголовок
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Автор
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Институт
+\end_layout
+
+\end_inset
+
+ и 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Дата
+\end_layout
+
+\end_inset
+
+ можно использовать 
+\begin_inset Quotes rld
+\end_inset
+
+краткие
+\begin_inset Quotes rrd
+\end_inset
+
+ формы, 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Вставка\SpecialChar menuseparator
+Краткое заглавие\SpecialChar breakableslash
+Короткая дата\SpecialChar breakableslash
+\SpecialChar ldots
+
+\end_layout
+
+\end_inset
+
+, используемые в боковой панели/заголовке
+\end_layout
+
+\begin_layout Itemize
+Если выбрать 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Название (простой фрейм)
+\end_layout
+
+\end_inset
+
+ вместо 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Заглавие
+\end_layout
+
+\end_inset
+
+, на титульной странице не будет боковой панели или заголовка
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Слайды/Фреймы (1)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Слайды в 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ называются «фреймами».
+ Все, что находится внутри фрейма, помещается на один слайд (который сам
+ может состоять из слайдов).
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Выберите стиль 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Фрейм
+\end_layout
+
+\end_inset
+
+ для его формирования
+\end_layout
+
+\begin_layout Itemize
+Заголовок фрейма вносится во вставку «Заголовок фрейма», автоматически появляющу
+юся на новых фреймах, или вручную через меню
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Вставка\SpecialChar menuseparator
+Заголовок фрейма
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+В качестве альтернативы вы также можете использовать макет 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Заголовок фрейма
+\end_layout
+
+\end_inset
+
+, который дополнительно предлагает (редко используемый) вариант короткого
+ заголовка фрейма и, что более важно, параметры оверлея
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Слайды/Фреймы (2)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Подзаголовок можно добавить через макет 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Подзаголовок фрейма
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Параметры фрейма (разнообразные параметры описаны в 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "beamer-ug"
+literal "true"
+
+\end_inset
+
+) вставляются через меню 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Вставка\SpecialChar menuseparator
+Параметры фрейма
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Newline newline
+\end_inset
+
+параметры оверлея — через меню
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Вставка\SpecialChar menuseparator
+Спецификации оверлея
+\end_layout
+
+\end_inset
+
+ и
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Вставка\SpecialChar menuseparator
+Параметры оверлея по умолчанию
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+(мы объясним далее, что это такое)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+1-2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+label=myframe
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Фреймы можно повторять
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Фреймы могут многократно повторяться полностью или в отношении выбранных
+ под-слайдов в любых последующих местах презентации (нужно дать такому фрейму
+ имя параметром «label»).
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+Позже можно повторить этот фрейм с помощью макета 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Повторный фрейм
+\end_layout
+
+\end_inset
+
+, указав имя метки и, если требуется, какие под-слайды необходимо повторить
+ с помощью меню 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Вставка\SpecialChar menuseparator
+Спецификация оверлея
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+(опять же, см.
+ ниже понятие «оверлеи»).
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+3
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Вот доказательство!
+\end_layout
+
+\end_inset
+
+ (Этот текст отображается только на под-слайде 3, который сам отобразится
+ только тогда, когда этот фрейм будет повторен позже)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Совместное расположение фреймов
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Используйте вложение!
+\end_layout
+
+\begin_layout Itemize
+Обратите внимание, что все содержимое фрейма, если используемый стиль —
+ не 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Фрейм
+\end_layout
+
+\end_inset
+
+, должно быть вложено в окружение фрейма
+\begin_inset Newline newline
+\end_inset
+
+(посредством меню
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Правка\SpecialChar menuseparator
+Увеличить вложенность списка
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+или совокупности клавиш 
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
+).
+\begin_inset Newline newline
+\end_inset
+
+Это делается автоматически, если вы вставляете новые абзацы фреймов.
+\end_layout
+
+\begin_layout Itemize
+Вложенное содержимое отмечается красной скобкой с левого края рабочей области
+ \SpecialChar LyX
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Невложенное содержимое (например, как это) также будет отображаться в презентаци
+и (на отдельном слайде), но не будет выровнено должным образом.
+\end_layout
+
+\begin_layout Itemize
+Пожалуйста, избегайте этого
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Разделение фреймов
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\noindent
+Последовательные фреймы должны быть отделены друг от друга.
+ Это делается с помощью вставки 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Разделитель
+\end_layout
+
+\end_inset
+
+, которая может быть создана нажатием клавиши Return в пустом абзаце Обычный
+ прямо под фреймом (см.
+ Руководство пользователя, раздел 3.4.6).
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Рекомендация
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+Существует простой и гораздо более удобный способ начать новый фрейм: если
+ курсор поместить в заголовок фрейма,
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Вставка\SpecialChar menuseparator
+Отдельный фрейм выше/ниже
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+вставляет новый, правильно отделенный, фрейм над/под текущим!
+\end_layout
+
+\end_deeper
+\begin_layout AgainFrame
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+3
+\end_layout
+
+\end_inset
+
+myframe
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout PlainFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Особые типы фреймов
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout PlainFrame
+\SpecialChar LyX
+ предоставляет два специальных типа фреймов:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Фрейм (простой)
+\end_layout
+
+\end_inset
+
+ — это фрейм без боковой панели/заголовка (например, этот), что целесообразно
+ для слайдов с большим содержимым/широкими таблицами.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Фрейм (хрупкий)
+\end_layout
+
+\end_inset
+
+ следует использовать
+\color none
+, если фрейм состоит из «непостоянного» содержимого, особенно дословного
+ материала, такого как списки программ.
+\color inherit
+Если вам нужен хрупкий простой фрейм, разместите параметр «plain» в хрупком
+ фрейме или параметр «fragile» в простом фрейме.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Секционирование презентации
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Для группировки фреймов можно использовать обычные макеты секционирования
+ (
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Раздел
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Подраздел
+\end_layout
+
+\end_inset
+
+ и т.д.)
+\end_layout
+
+\begin_layout Itemize
+Они показываются в оглавлении, на боковой панели/заголовке (в зависимости
+ от используемой темы) и в выводе статьи (о «статье» см.
+ далее, раздел «режимы»)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Части имеют особую значимость
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Вы также можете секционировать презентацию, используя 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Части
+\end_layout
+
+\end_inset
+
+.
+ Обратите внимание, однако, что части ведут себя в Beamer по-другому, чем
+ в других классах документов: часть считается «немного 
+\begin_inset Quotes rls
+\end_inset
+
+самой в себе
+\begin_inset Quotes rrs
+\end_inset
+
+ с собственным оглавлением, собственными панелями навигации и так далее»
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "sec.~10.3"
+key "beamer-ug"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Это означает, например, что если вы используете части, в оглавлении будут
+ перечислены только разделы и подразделы той части, которая содержит это
+ оглавление, а на боковой панели/заголовке также будут отображаться только
+ разделы текущей части.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Перестановка фреймов
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Совет
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+Знаете ли вы, что можете легко перемещать и переставлять целые фреймы с
+ помощью панели структуры (
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Вид\SpecialChar menuseparator
+Панель структуры
+\end_layout
+
+\end_inset
+
+)?
+\end_layout
+
+\begin_layout Block
+Кроме того, вы можете перейти к определенному фрейму через меню 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Навигация
+\end_layout
+
+\end_inset
+
+!
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Приложения (1)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Приложения могут быть полезны для дополнительного/резервного материала.
+ Приложение является частью презентации, но не отображается в оглавлении/боковой
+ панели/заголовке
+\end_layout
+
+\begin_layout Itemize
+Приложение вставляется в \SpecialChar LyX
+ обычным образом:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+используйте меню 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Документ\SpecialChar menuseparator
+Начать приложение здесь
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+в том месте, где должно начаться приложение
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Приложения (2)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Типичным содержанием приложения является библиография.
+\end_layout
+
+\begin_layout Itemize
+Она вставляется, как и во всех других классах \SpecialChar LyX
+, через стиль 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Библиография
+\end_layout
+
+\end_inset
+
+ ( в качестве примера, см.
+ библиографию в конце данной презентации)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Обратите внимание, что вы также можете использовать Bib\SpecialChar TeX
+, хотя не все стили
+ Bib\SpecialChar TeX
+ готовы к работе с 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Section
+Концепция оверлея
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Что такое оверлеи?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+По сути, концепция оверлея позволяет динамически изменять оформление и/или
+ содержимое слайда.
+ Вы можете раскрывать объекты/текст по частям, затемнять содержимое, выделять
+ информацию, заменять текст, изображения и т.д.
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
++-
+\end_layout
+
+\end_inset
+
+Оверлеи полезны для поэтапного создания слайдов во время демонстрации
+\end_layout
+
+\begin_layout Itemize
+Они помогают переключить внимание аудитории на конкретные детали изложения
+\end_layout
+
+\begin_layout Itemize
+И они помогают аудитории следить за вашими рассуждениями
+\end_layout
+
+\begin_layout Itemize
+Так что используйте оверлеи! 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+6
+\end_layout
+
+\end_inset
+
+Действительно, используйте их!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Типы оверлеев
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Beamer предоставляет множество различных типов оверлеев.
+ Наиболее важные из них:
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Скрытое
+\begin_inset space ~
+\end_inset
+
+содержимое: содержимое, которое в некоторой степени невидимо
+\end_layout
+
+\begin_layout Description
+Накрывающееся
+\begin_inset space ~
+\end_inset
+
+содержимое: тусклое содержимое (не полностью невидимое)
+\end_layout
+
+\begin_layout Description
+Выделенное
+\begin_inset space ~
+\end_inset
+
+содержимое: содержимое, которое в какой-то момент подчеркивается
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+Ниже приводятся примеры с этими типами, но сначала — некоторые общие замечания
+ о возможностях оверлеев.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Общие возможности оверлеев/действий (1)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Многие элементы 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ предоставляют настройки оверлеев.
+ По сути, вы можете определить, на каких под-слайдах отображается данное
+ содержимое («2», «2-4», «3-», «1,3» и т.д.), или в каком режиме вывода («презента
+ция»,«статья» и т.д.)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Общие возможности оверлеев/действий (2)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+В \SpecialChar LyX
+ эти настройки обычно доступны через 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Вставка\SpecialChar menuseparator
+Спецификация оверлея
+\end_layout
+
+\end_inset
+
+ или 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Вставка\SpecialChar menuseparator
+Спецификация действия
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Overprint
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+
+2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Definition
+«Действие» — более общее понятие, которое включает не только то, что названо
+ «оверлеями» («на каком под-слайде [-ах] это должно быть показано/скрыто/выделен
+о»), но и выполнение таких задач, как «показывать только в презентации,
+ а не на раздаточном материале» или «показывать только на втором экране»
+ (так называемые, «режимы»).
+\end_layout
+
+\end_deeper
+\begin_layout Overprint
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+
+3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout AlertBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Примечание для приверженцев \SpecialChar LaTeX
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout AlertBlock
+Настройки оверлея/действия соответствуют тем параметрам команды/окружения,
+ которые используются в
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset space \space{}
+\end_inset
+
+<\SpecialChar ldots
+>
+\end_layout
+
+\end_inset
+
+ и 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+[<\SpecialChar ldots
+>]
+\end_layout
+
+\end_inset
+
+ в выводе \SpecialChar LaTeX
+.
+\end_layout
+
+\begin_layout AlertBlock
+Обратите внимание, что \SpecialChar LyX
+ добавляет указанные скобки при экспорте, поэтому
+ вы не должны вводить их самостоятельно.
+ Другими словами, вводите 
+\begin_inset Quotes eld
+\end_inset
+
+1
+\begin_inset Quotes erd
+\end_inset
+
+ или 
+\begin_inset Quotes eld
+\end_inset
+
++-
+\begin_inset Quotes erd
+\end_inset
+
+ для вставок оверлея/действия, а не 
+\begin_inset Quotes eld
+\end_inset
+
+<1>
+\begin_inset Quotes erd
+\end_inset
+
+ или 
+\begin_inset Quotes eld
+\end_inset
+
+[<+->]
+\begin_inset Quotes erd
+\end_inset
+
+!
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Пример
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Возьмем, к примеру, цитату.
+ В окружении 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Цитата
+\end_layout
+
+\end_inset
+
+ вы можете указать настройки оверлея через
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Вставка\SpecialChar menuseparator
+Спецификация оверлея
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Если вы сделаете это и введете «2», цитата появится только на (под-)слайде
+ 2:
+\end_layout
+
+\begin_deeper
+\begin_layout Quote
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+2
+\end_layout
+
+\end_inset
+
+Fear no more the heat o’ the sun
+\end_layout
+
+\begin_layout Quote
+Nor the furious winter’s rages
+\end_layout
+
+\begin_layout Quote
+Thou thy worldly task hast done
+\end_layout
+
+\begin_layout Quote
+Home art gone, and ta’en thy wages
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+По сути, так действует эта концепция.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Накрытие против скрытия
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Разница между «накрытием» и «скрытием» заключается в том, что скрытое содержимое
+ подразумевает, что будто бы его нет, а накрывающееся содержимое просто
+ скрывается (а занимаемое им место резервируется).
+ Если бы мы скрыли цитату на последнем слайде и не накрыли ее, она бы занимала
+ место только при появлении:
+\end_layout
+
+\begin_deeper
+\begin_layout Quote
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+only@2
+\end_layout
+
+\end_inset
+
+Fear no more the heat o’ the sun
+\end_layout
+
+\begin_layout Quote
+Nor the furious winter’s rages
+\end_layout
+
+\begin_layout Quote
+Thou thy worldly task hast done
+\end_layout
+
+\begin_layout Quote
+Home art gone, and ta’en thy wages
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+Вы можете увидеть, как этот текст перемещается, когда цитата не скрыта.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Степени накрытия
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setbeamercovered{transparent}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ предлагает несколько степеней «накрытия», которые можно установить с помощью
+ команды 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+setbeamercovered
+\end_layout
+
+\end_inset
+
+ либо глобально (для всей презентации), либо локально (например, для одного
+ фрейма, как здесь).
+ По умолчанию содержимое полностью накрыто.
+ В режиме 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+transparent
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ (прозрачный) накрытый текст отображается серым цветом:
+\end_layout
+
+\begin_deeper
+\begin_layout Quote
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+2
+\end_layout
+
+\end_inset
+
+Fear no more the heat o’ the sun
+\end_layout
+
+\begin_layout Quote
+Nor the furious winter’s rages
+\end_layout
+
+\begin_layout Quote
+Thou thy worldly task hast done
+\end_layout
+
+\begin_layout Quote
+Home art gone, and ta’en thy wages
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+Дополнительные возможности см.
+ в руководстве по 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Спецификация оверлея/действия,
+\begin_inset Newline newline
+\end_inset
+
+по умолчанию и обычные (1)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Для некоторых окружений (таких как списки, а также фреймы), в дополнение
+ к обычным спецификациям оверлеев/действий, можно установить «Спецификации
+ по умолчанию» (или, в случае списков: «Спецификации оверлея» для всего
+ списка и «Спецификация оверлея элемента» для отдельных позиций)
+\end_layout
+
+\begin_layout Itemize
+Спецификации по умолчанию применяются ко всему содержимому данного окружения,
+ если не указано иное для отдельных компонент содержимого
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Спецификация оверлея/действия,
+\begin_inset Newline newline
+\end_inset
+
+по умолчанию и обычные (2)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\noindent
+Они используют синтаксис заполнителя.
+ Например, «+(1)-» откроет все элементы в списке поочередно (с начальным
+ смещением 1), если не задана спецификация отдельного элемента:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
++(1)-
+\end_layout
+
+\end_inset
+
+Один
+\end_layout
+
+\begin_layout Itemize
+Два
+\end_layout
+
+\begin_layout Itemize
+Три
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument item:2
+status open
+
+\begin_layout Plain Layout
+
+1-
+\end_layout
+
+\end_inset
+
+Всегда
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Frame
+\noindent
+Пожалуйста, обратитесь к 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+-руководству для получения подробной информации об этом синтаксисе.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
++-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Спецификация оверлея/действия,
+\begin_inset Newline newline
+\end_inset
+
+по умолчанию и обычные (3)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\noindent
+Этот фрейм использует определенную спецификацию оверлея по умолчанию
+\end_layout
+
+\begin_layout Frame
+что приводит к тому, что каждый абзац оказывается с поддержкой оверлея \SpecialChar ldots
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\SpecialChar ldots
+ или элемент списка \SpecialChar ldots
+
+\end_layout
+
+\begin_layout Itemize
+\SpecialChar ldots
+ появляется \SpecialChar ldots
+
+\end_layout
+
+\begin_layout Itemize
+\SpecialChar ldots
+ на следующем под-слайде \SpecialChar ldots
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Блок
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\SpecialChar ldots
+ один за другим
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
+alert@+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Спецификация оверлея/действия,
+\begin_inset Newline newline
+\end_inset
+
+по умолчанию и обычные (4)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\noindent
+И этот фрейм использует конкретную спецификацию оверлея по умолчанию \SpecialChar ldots
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\SpecialChar ldots
+ что приводит к тому, что каждый элемент списка с поддержкой оверлея \SpecialChar ldots
+
+\end_layout
+
+\begin_layout Itemize
+\SpecialChar ldots
+ будет выделенным \SpecialChar ldots
+
+\end_layout
+
+\begin_layout Itemize
+\SpecialChar ldots
+ на соответствующих под-слайдах
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Пауза
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Макет 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Пауза
+\end_layout
+
+\end_inset
+
+ позволяет отметить точку, в которой будет перекрываться все следующее содержимо
+е (по умолчанию для одного слайда, с учетом содержимого, предшествующего
+ паузе):
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+После первой паузы
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+После второй паузы
+\end_layout
+
+\begin_layout Pause
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+По умолчанию, последовательные паузы также заканчиваются последовательно.
+\end_layout
+
+\begin_layout Frame
+Однако, с помощью 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Вставка\SpecialChar menuseparator
+Номер паузы
+\end_layout
+
+\end_inset
+
+ можно указать конкретный под-слайд, на котором данная пауза заканчивается,
+ независимо от количества пауз, установленных перед этим.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Оверлеи на все абзацы
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ и \SpecialChar LyX
+ предоставляют макеты абзацев, цель которых — показать/скрыть целые абзацы
+ или последовательности абзацев на определенных слайдах.
+ В частности, это:
+\end_layout
+
+\begin_deeper
+\begin_layout Uncover
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+2-
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Uncover
+макет 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Uncovered
+\end_layout
+
+\end_inset
+
+, который раскрывает все содержимое указанных слайдов \SpecialChar ldots
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\SpecialChar ldots
+ включая вложенные абзацы другого макета.
+\end_layout
+
+\end_deeper
+\begin_layout Only
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+3-
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Only
+макет 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Only
+\end_layout
+
+\end_inset
+
+, который отображает содержимое (еще раз обратите внимание, как «перемещается»
+ окружающий текст, когда он становится видимым).
+\end_layout
+
+\begin_layout Overprint
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+
+4
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+И окружение 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Наложение
+\end_layout
+
+\end_inset
+
+, которое позволяет вам вводить \SpecialChar ldots
+
+\end_layout
+
+\end_deeper
+\begin_layout Overprint
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+
+5
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\SpecialChar ldots
+ альтернативный текст, занимающий определенное место на указанных слайдах.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Frame
+что здесь и продемонстрировано.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Встроенные оверлеи
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+To demonstrate uncover/visible difference:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setbeamercovered{transparent}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ также поддерживает встроенные оверлеи для частей текста (в отличие от целых
+ абзацев), которые доступны через 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Правка\SpecialChar menuseparator
+Стиль текста
+\end_layout
+
+\end_inset
+
+ в \SpecialChar LyX
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Вы можете 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Раскрыть
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Uncover
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+2-
+\end_layout
+
+\end_inset
+
+текст
+\end_layout
+
+\end_inset
+
+ на конкретных слайдах
+\end_layout
+
+\begin_layout Itemize
+Вы можете применить 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Видимый текст
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Visible
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+3-
+\end_layout
+
+\end_inset
+
+к тексту
+\end_layout
+
+\end_inset
+
+ (что позволяет «раскрыть» только настройку «прозрачного» покрытия, которая
+ используется локально на этом слайде.)
+\end_layout
+
+\begin_layout Itemize
+Вы можете применить 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Только
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Only
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+4-
+\end_layout
+
+\end_inset
+
+к тексту
+\end_layout
+
+\end_inset
+
+ на конкретных слайдах
+\end_layout
+
+\begin_layout Itemize
+Вы можете применить 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Невидимый текст
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Invisible
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+5-
+\end_layout
+
+\end_inset
+
+к тексту
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+И вы можете вставить 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Альтернатива
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Alternative
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+6-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+(с любым текстом)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ вместо исходного текста
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+Что касается макетов абзацев, настройки оверлеев доступны через меню 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Вставка
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Команды с учетом оверлеев
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Многие «встроенные» команды (меню 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Правка\SpecialChar menuseparator
+Стиль текста
+\end_layout
+
+\end_inset
+
+) могут использовать оверлеи.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Таким образом, вы можете пометить, например, текст на определенных слайдах
+ 
+\begin_inset Flex Emphasize
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+2
+\end_layout
+
+\end_inset
+
+курсивным начертанием
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Bold
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+3
+\end_layout
+
+\end_inset
+
+полужирной насыщенностью
+\end_layout
+
+\end_inset
+
+, цветом в 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+4
+\end_layout
+
+\end_inset
+
+предупреждении
+\end_layout
+
+\end_inset
+
+ или в 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+5
+\end_layout
+
+\end_inset
+
+структуре
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+6
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Рекомендация
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+Используйте вставки Курсивный и Полужирный (вместо обычных настроек шрифта)
+ и когда не нужны спецификации оверлеев.
+ Поскольку в 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ определены такие шрифты, обычные курсивный и полужирный шрифты могут привести
+ к ошибкам \SpecialChar LaTeX
+, например, при использовании в заголовках.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Особые окружения
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Особые окружения
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Окружения, особенно подходящие для презентаций:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Разнообразные «блоки»
+\end_layout
+
+\begin_layout Itemize
+Окружения в стиле теорем
+\end_layout
+
+\begin_layout Itemize
+Колонки
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+Мы кратко охарактеризуем их ниже.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Блоки
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Блоки могут содержать любую информацию.
+ Мы используем их здесь для размещения «рекомендаций» и «подсказок».
+ Данный класс предоставляет 3 предопределенных блока с различающимся внешним
+ видом:
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+2-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Блок
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+Блок общего назначения
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+3-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Блок примера
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout ExampleBlock
+Блок для 
+\begin_inset Quotes rld
+\end_inset
+
+примеров
+\begin_inset Quotes rrd
+\end_inset
+
+
+\end_layout
+
+\begin_layout AlertBlock
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+4-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Блок предупреждения
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout AlertBlock
+И «предупреждающий» блок для важных замечаний.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Обработка блоков
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+В \SpecialChar LyX
+ блоки имеют такой же интерфейс, что и фреймы, что означает,
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+содержимое в блоках должно быть вложено (если макет абзаца не 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Блок
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+последовательные блоки одного типа должны быть разделены абзацным стилем
+ 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Разделитель
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+only@2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Рекомендация
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+Используйте 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Правка\SpecialChar menuseparator
+Начать новое окружение
+\end_layout
+
+\end_inset
+
+, чтобы быстро создать новый блок изнутри предыдущего блока!
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+блоки совместимы с оверлеями
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Окружения в стиле теорем
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+(Теорема, Следствие, Определение, Определения, Пример, Примеры, Факт, Доказатель
+ство)
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+Эти окружения в выходе похожи на блоки, но имеют фиксированный заголовок
+ (в зависимости от типа).
+\end_layout
+
+\begin_deeper
+\begin_layout Theorem
+Это теорема!
+\end_layout
+
+\begin_layout Fact
+Это факт!
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+Через 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Вставка\SpecialChar menuseparator
+Дополнительный текст теоремы
+\end_layout
+
+\end_inset
+
+ можно добавить дополнительный текст к заголовку.
+\end_layout
+
+\begin_deeper
+\begin_layout Example
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+плохой!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Пример с дополнительным текстом (скобки добавляются автоматически)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Колонки (1)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Иногда может понадобиться разместить презентацию по колонкам
+\end_layout
+
+\begin_deeper
+\begin_layout ColumnsTopAligned
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.4
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Для этого сначала выберите 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Колонки
+\end_layout
+
+\end_inset
+
+ (обратите внимание на множественное число).
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.4
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Затем в следующем абзаце выберите 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Колонка
+\end_layout
+
+\end_inset
+
+ (единственное число), чтобы начать определенный столбец.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Колонки (2)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Примечание:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+В окружении 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Колонка
+\end_layout
+
+\end_inset
+
+ (единственное число) необходимо указать ширину, используя синтаксис \SpecialChar LaTeX
+ (но
+ также будет работать что-то вроде «3.5
+\begin_inset space \thinspace{}
+\end_inset
+
+cm»)
+\end_layout
+
+\begin_layout Itemize
+Любая 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Колонка
+\end_layout
+
+\end_inset
+
+ (единственное число) должна быть вложен в 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Колонки
+\end_layout
+
+\end_inset
+
+ (множественное число).
+ К тому же, содержимое колонки, вложенное в отдельную 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Колонка
+\end_layout
+
+\end_inset
+
+, может быть любого абзацного стиля.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Краткие замечания о режимах
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Режимы
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+В терминах 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ «режим» — это своеобразный маршрут для вывода.
+ Имеются несколько режимов для разных целей.
+ Здесь мы выделяем три:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Режим 
+\begin_inset Quotes eld
+\end_inset
+
+beamer
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Режим 
+\begin_inset Quotes eld
+\end_inset
+
+presentation
+\begin_inset Quotes erd
+\end_inset
+
+ (презентация)
+\end_layout
+
+\begin_layout Enumerate
+Режим 
+\begin_inset Quotes eld
+\end_inset
+
+article
+\begin_inset Quotes erd
+\end_inset
+
+ (статья)
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+Если явно не указано иное, ваш 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+-документ, по умолчанию, всегда находится в режиме «beamer».
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+presentation
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Переключение режимов
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Тем не менее, вы можете переключать части документа, фреймы, заголовки и
+ все окружения, поддерживающие «действия», в другой режим.
+ Например, мы перевели этот фрейм в режим «презентации».
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Что это значит?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Это означает, что данный фрейм будет виден только в презентации, а не в
+ сопутствующей «статье», если вы подготовите такую статью (подробнее об
+ этом поговорим ниже)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+article
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Переключение режимов (2)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Этот фрейм не будет виден в презентации, а только в статье, так как он находится
+ в режиме «статьи».
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ну и что из этого следует? (1)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Это действительно очень полезно! Вы можете создать единый документ и выпустить
+ как презентацию, так и, используя режим статьи, раздаточный материал.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+И мы имеем в виду 
+\begin_inset Flex Emphasize
+status collapsed
+
+\begin_layout Plain Layout
+действительно
+\end_layout
+
+\end_inset
+
+ полезный раздаточный материал, а не одну из тех масштабных распечаток слайдов,
+ которые так распространены в наши дни (но, если требуется, вы можете создать
+ и одну из них).
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ну и что из этого следует? (2)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Режимы позволяют добавлять дополнительный текст в раздаточный материал или
+ скрывать его части
+\end_layout
+
+\begin_layout Itemize
+Вы можете использовать, например, разную графику для презентации и раздаточного
+ материала.
+\end_layout
+
+\begin_layout Itemize
+и так далее \SpecialChar ldots
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Примеры (1)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Как уже говорилось, многие элементы поддерживают режимы.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\noindent
+Вы можете показать конкретный текст 
+\begin_inset Flex Only
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+presentation
+\end_layout
+
+\end_inset
+
+только в презентации
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Only
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+article
+\end_layout
+
+\end_inset
+
+только в статье
+\end_layout
+
+\end_inset
+
+ с помощью меню
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Правка\SpecialChar menuseparator
+Стиль текста\SpecialChar menuseparator
+Только
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Itemize
+Или располагать всевозможное сложное содержимое через 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Вставка\SpecialChar menuseparator
+Пользовательские вставки\SpecialChar menuseparator
+Режим статьи
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+во вставке, которая будет выводиться только в режиме статьи
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex PresentationMode
+status open
+
+\begin_layout Itemize
+Или помещать любое сложное содержимое через 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Вставка\SpecialChar menuseparator
+Пользовательские вставки\SpecialChar menuseparator
+Режим презентации
+\end_layout
+
+\end_inset
+
+ во вставке, которая будет выводиться только в режиме презентации
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Примеры (2)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Или вы можете определить, что 
+\begin_inset Flex Emphasize
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+presentation
+\end_layout
+
+\end_inset
+
+в курсивном начертании
+\end_layout
+
+\end_inset
+
+ должно применяться только к презентации, 
+\begin_inset Flex Bold
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+article
+\end_layout
+
+\end_inset
+
+полужирной насыщенности
+\end_layout
+
+\end_inset
+
+ — только к статье
+\end_layout
+
+\begin_layout Itemize
+Вы также можете отображать заголовки разделов или заголовки/подзаголовки
+ фреймов только в презентации/статье (как сделано для заголовков фреймов
+ «Содержание» и «Ссылки» в этой презентации)
+\end_layout
+
+\begin_layout Itemize
+И многое другое в этом роде ...
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Настройка статьи (1)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Настроить beamer-статью с LyX легко.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\noindent
+Просто создайте новый документ с классом 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer Article (Standard Class)
+\end_layout
+
+\end_inset
+
+ или 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer Article (KOMA-Script)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Затем добавьте презентацию в этот документ в качеств дочерней (с помощью
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Вставка\SpecialChar menuseparator
+Файл\SpecialChar menuseparator
+Дочерний документ\SpecialChar ldots
+
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Настройка статьи (2)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+И это все.
+ Теперь вы можете подготовить раздаточный материал и презентацию, скомпилировав
+ один из этих двух документов, в то время как вам нужно отредактировать
+ только один, а именно презентацию.
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+Ознакомьтесь с прилагаемым примером документа 
+\begin_inset Quotes qld
+\end_inset
+
+beamer-article,lyx
+\begin_inset Quotes qrd
+\end_inset
+
+ для этой презентации.
+ Вы можете найти его в той же папке, где располагается этот документ.
+\end_layout
+
+\begin_layout Section
+Изменение внешнего вида
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Темы (1)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Презентации 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ могут быть тематическими.
+ Темы определяют используемые цвета, макроструктуру (использование боковых
+ панелей, заголовков и т.д.), шрифты, внешний вид элементов списка, блоков
+ и вообще весь внешний вид презентации.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ предлагает на выбор несколько разных тем оформления (мы используем тему
+ «Berkeley» в данной презентации; см.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Документ\SpecialChar menuseparator
+Настройки\SpecialChar menuseparator
+Преамбула LaTeX
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+как мы активировали и немного подправили эту тему)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Темы (2)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+В дополнение к этому стандартному набору вы можете получить больше тем из
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "http://www.ctan.org"
+literal "false"
+
+\end_inset
+
+ и других мест в Интернете
+\end_layout
+
+\begin_layout Itemize
+Если вы все еще не удовлетворены или вам нужна тема, соответствующая корпоративн
+ому дизайну вашего университета или компании, в руководстве по Beamer [1]
+ объясняется, как вы можете подготовить свою собственную тему.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Темы могут быть изменены
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Но вам не нужно создавать тему с нуля, если вы хотите изменить внешний вид.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Существующие темы могут быть изменены как в деталях, так и в основных категориях
+ (например, окраске).
+\end_layout
+
+\begin_layout Itemize
+За подробностями обращайтесь к руководству 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ [1].
+\end_layout
+
+\end_deeper
+\begin_layout Section
+И еще \SpecialChar ldots
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+\SpecialChar ldots
+ намного больше!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Заметьте, что 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ может намного больше, чем было описано.
+ Руководство по 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "beamer-ug"
+literal "true"
+
+\end_inset
+
+ предоставляет исчерпывающую документацию.
+\end_layout
+
+\begin_layout Frame
+Также ознакомьтесь с примерами и шаблонами 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+, поставляемыми с \SpecialChar LyX
+!
+\end_layout
+
+\begin_layout Section
+\start_of_appendix
+Приложение
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ниже мы используем макет Фрейм (а не вставку Заголовок фрейма), чтобы исключить
+ повторяющийся заголовок из статьи.
+ Также обратите внимание на 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+newblock
+\end_layout
+
+\end_inset
+
+ в библиографии.
+ Это необходимо для правильной трактовки ее элемента (обратите внимание
+ на измененную расцветку имени автора в PDF-выводе).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+presentation
+\end_layout
+
+\end_inset
+
+Ссылки
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "beamer-ug"
+literal "true"
+
+\end_inset
+
+Tantau, Till et al.:
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+newblock
+\end_layout
+
+\end_inset
+
+ The beamer class.
+ 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://ctan.org/tex-archive/macros/latex/contrib/beamer/doc/beameruserguide.pdf
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_body
+\end_document
