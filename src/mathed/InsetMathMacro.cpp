@@ -967,7 +967,16 @@ void InsetMathMacro::validate(LaTeXFeatures & features) const
 
 	// validate the cells and the definition
 	if (displayMode() == DISPLAY_NORMAL) {
-		d->definition_.validate(features);
+		// Don't update requirements if the macro comes from
+		// the symbols file and has not been redefined.
+		MathWordList const & words = mathedWordList();
+		MathWordList::const_iterator it = words.find(name());
+		MacroNameSet macros;
+		buffer().listMacroNames(macros);
+		if (it == words.end() || it->second.inset != "macro"
+		    || macros.find(name()) != macros.end()) {
+			d->definition_.validate(features);
+		}
 		InsetMathNest::validate(features);
 	}
 }
