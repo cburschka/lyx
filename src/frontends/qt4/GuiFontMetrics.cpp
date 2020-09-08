@@ -212,8 +212,8 @@ int GuiFontMetrics::width(docstring const & s) const
 	/* For some reason QMetrics::width returns a wrong value with Qt5
 	 * with some arabic text. OTOH, QTextLayout is broken for single
 	 * characters with null width (like \not in mathed). Also, as a
-	 * safety measure, always use QMetrics::boundingRect().width()
-	 * with our math fonts.
+	 * safety measure, with our math fonts we always use the maximum
+	 * between QMetrics::boundingRect().width() and QMetrics::width().
 	*/
 	int w = 0;
 	if (s.length() == 1
@@ -221,9 +221,16 @@ int GuiFontMetrics::width(docstring const & s) const
 	    && font_.styleName() == "LyX"
 #endif
 	    ) {
+		QString const qs = toqstr(s);
+		int br_width = metrics_.boundingRect(qs).width();
+#if QT_VERSION >= 0x050b00
+		int s_width = metrics_.horizontalAdvance(qs);
+#else
+		int s_width = metrics_.width(qs);
+#endif
 		// keep value 0 for math chars with null width
-		if (metrics_.width(toqstr(s)) != 0)
-			w = metrics_.boundingRect(toqstr(s)).width();
+		if (s_width != 0)
+			w = max(br_width, s_width);
 	} else {
 		QTextLayout tl;
 		tl.setText(toqstr(s));
