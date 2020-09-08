@@ -246,9 +246,16 @@ int GuiFontMetrics::width(docstring const & s) const
 	bool const math_char = s.length() == 1;
 #endif
 	if (math_char) {
+		QString const qs = toqstr(s);
+		int br_width = metrics_.boundingRect(qs).width();
+#if QT_VERSION >= 0x050b00
+		int s_width = metrics_.horizontalAdvance(qs);
+#else
+		int s_width = metrics_.width(qs);
+#endif
 		// keep value 0 for math chars with width 0
-		if (metrics_.width(toqstr(s)) != 0)
-			w = metrics_.boundingRect(toqstr(s)).width();
+		if (s_width != 0)
+			w = max(br_width, s_width);
 	} else {
 		QTextLayout tl;
 		tl.setText(toqstr(s));
