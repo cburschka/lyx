@@ -27,55 +27,42 @@
 Format 66
 
 Counter theorem
-	GuiName Theorem
 	Within         chapter
 End
 Counter corollary
-	GuiName Corollary
 	Within         chapter
 End
 Counter lemma
-	GuiName Lemma
 	Within         chapter
 End
 Counter proposition
-	GuiName Proposition
 	Within         chapter
 End
 Counter conjecture
-	GuiName Conjecture
 	Within         chapter
 End
 Counter fact
-	GuiName Fact
 	Within         chapter
 End
 Counter definition
-	GuiName Definition
 	Within         chapter
 End
 Counter example
-	GuiName Example
 	Within         chapter
 End
 Counter problem
-	GuiName Problem
 	Within         chapter
 End
 Counter exercise
-	GuiName Exercise
 	Within         chapter
 End
 Counter solution
-	GuiName Solution
 	Within         chapter
 End
 Counter remark
-	GuiName Remark
 	Within         chapter
 End
 Counter claim
-	GuiName Claim
 	Within         chapter
 End
 
