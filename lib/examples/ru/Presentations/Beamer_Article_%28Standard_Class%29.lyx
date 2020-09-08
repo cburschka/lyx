@@ -1,0 +1,175 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 598
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin /systemlyxdir/examples/ru/Presentations/
+\textclass article-beamer
+\use_default_options true
+\maintain_unincluded_children no
+\language russian
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype true
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style russian
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Itemize
+Это сопроводительный документ к примеру 
+\begin_inset Quotes rld
+\end_inset
+
+Beamer
+\begin_inset Quotes rrd
+\end_inset
+
+ (см.
+ 
+\family sans
+Помощь\SpecialChar menuseparator
+\SpecialChar allowbreak
+Специальные руководства\SpecialChar menuseparator
+\SpecialChar allowbreak
+Презентации Beamer
+\family default
+).
+ Он демонстрирует, как легко можно сгенерировать раздаточный материал в
+ режиме 
+\begin_inset Quotes rld
+\end_inset
+
+article
+\begin_inset Quotes rrd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+За исключением класса документа, вам, скорее всего, подойдут тех же настройки,
+ что и у включенного документа.
+ Например, если вы используете стиль библиографии Natbib автор-год в дочернем
+ документе, он должен быть и здесь.
+ Если вы используете модуль в дочернем документе, то добавьте его и здесь.
+ Вам может оказаться ненужным копирование некоторых частей преамбулы, например
+ 
+\backslash
+setbeamertemplate{...}.
+\end_layout
+
+\begin_layout Itemize
+Если вы получите предупреждение о различных классах документа при просмотре
+ PDF, вы можете безопасно установить 
+\begin_inset Quotes rld
+\end_inset
+
+Не отображать больше это предупреждение!
+\begin_inset Quotes rrd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Beamer.lyx"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

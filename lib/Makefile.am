@@ -309,7 +309,8 @@ dist_ruinsetexamples_DATA = \
 
 rupresentationexamplesdir = $(pkgdatadir)/examples/ru/Presentations
 dist_rupresentationexamples_DATA = \
-	examples/ru/Presentations/Beamer.lyx
+	examples/ru/Presentations/Beamer.lyx \
+	examples/ru/Presentations/Beamer_Article_%28Standard_Class%29.lyx
 
 slexamplesdir = $(pkgdatadir)/examples/sl
 dist_slexamples_DATA = \

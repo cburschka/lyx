@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-08-24 07:24+0200\n"
-"PO-Revision-Date: 2020-09-04 19:03+0300\n"
+"PO-Revision-Date: 2020-09-07 19:18+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -7183,7 +7183,7 @@ msgstr "Автор"
 
 #: lib/layouts/IEEEtran.layout:125 lib/layouts/beamer.layout:1057
 msgid "Short Author|S"
-msgstr "Автор сокращ.|с"
+msgstr "Краткий автор"
 
 #: lib/layouts/IEEEtran.layout:126
 msgid "A short version of the author name"
@@ -9902,11 +9902,11 @@ msgstr "Оверлеи"
 
 #: lib/layouts/beamer.layout:757 lib/layouts/powerdot.layout:516
 msgid "Pause number"
-msgstr "Число пауз"
+msgstr "Номер паузы"
 
 #: lib/layouts/beamer.layout:758 lib/layouts/powerdot.layout:517
 msgid "Number of slide where the context below the pause gets visible"
-msgstr "Номер слайда, где контекст ниже паузы становится видимым"
+msgstr "Номер слайда, на котором содержимое ниже паузы становится видимым"
 
 #: lib/layouts/beamer.layout:769 lib/layouts/powerdot.layout:528
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
@@ -19362,15 +19362,15 @@ msgstr "Следующая перекрёстная ссылка|ё"
 
 #: lib/ui/stdcontext.inc:93
 msgid "Go to Label|G"
-msgstr "Перейти к метке|м"
+msgstr "Перейти к метке"
 
 #: lib/ui/stdcontext.inc:95
 msgid "<Reference>|R"
-msgstr "<Ссылка>|ы"
+msgstr "<Ссылка>|с"
 
 #: lib/ui/stdcontext.inc:96
 msgid "(<Reference>)|e"
-msgstr "(<Ссылка>)|л"
+msgstr "(<Ссылка>)|ы"
 
 #: lib/ui/stdcontext.inc:97
 msgid "<Page>|P"
@@ -19378,31 +19378,31 @@ msgstr "<Страница>|р"
 
 #: lib/ui/stdcontext.inc:98
 msgid "On Page <Page>|O"
-msgstr "На странице <стр.>|с"
+msgstr "На странице <стр.>|ц"
 
 #: lib/ui/stdcontext.inc:99
 msgid "<Reference> on Page <Page>|f"
-msgstr "<Ссылка> на странице <стр.>|н"
+msgstr "<Ссылка> на странице <стр.>|е"
 
 #: lib/ui/stdcontext.inc:100
 msgid "Formatted Reference|t"
-msgstr "Форматированная ссылка|т"
+msgstr "Форматированная ссылка|Ф"
 
 #: lib/ui/stdcontext.inc:101
 msgid "Textual Reference|x"
-msgstr "Текстовая ссылка"
+msgstr "Текстовая ссылка|Т"
 
 #: lib/ui/stdcontext.inc:102
 msgid "Label Only|L"
-msgstr "Только метка"
+msgstr "Только метка|м"
 
 #: lib/ui/stdcontext.inc:104
 msgid "Plural|a"
-msgstr "Множ. число"
+msgstr "Множ. число|ж"
 
 #: lib/ui/stdcontext.inc:105
 msgid "Capitalize|C"
-msgstr "Первые Прописные|е"
+msgstr "Первые Прописные|П"
 
 #: lib/ui/stdcontext.inc:108 lib/ui/stdcontext.inc:120
 #: lib/ui/stdcontext.inc:130 lib/ui/stdcontext.inc:139
@@ -19716,11 +19716,11 @@ msgstr "Прямой поиск|П"
 
 #: lib/ui/stdcontext.inc:362 lib/ui/stdmenus.inc:120
 msgid "Move Paragraph Up|o"
-msgstr "Переместить абзац вверх|х"
+msgstr "Переместить абзац вверх"
 
 #: lib/ui/stdcontext.inc:363 lib/ui/stdmenus.inc:121
 msgid "Move Paragraph Down|v"
-msgstr "Переместить абзац вниз|з"
+msgstr "Переместить абзац вниз"
 
 #: lib/ui/stdcontext.inc:367
 msgid "Promote Section|r"
@@ -19732,11 +19732,11 @@ msgstr "Задвинуть раздел|З"
 
 #: lib/ui/stdcontext.inc:369
 msgid "Move Section Down|D"
-msgstr "Переместить раздел вниз|в"
+msgstr "Переместить раздел вниз"
 
 #: lib/ui/stdcontext.inc:370 lib/ui/stdcontext.inc:658
 msgid "Move Section Up|U"
-msgstr "Переместить раздел вверх|е"
+msgstr "Переместить раздел вверх"
 
 #: lib/ui/stdcontext.inc:372
 msgid "Insert Regular Expression"
@@ -20233,7 +20233,7 @@ msgstr "Управление счётчиками...|ч"
 
 #: lib/ui/stdmenus.inc:130
 msgid "Table|T"
-msgstr "Таблица|Т"
+msgstr "Таблица|ц"
 
 #: lib/ui/stdmenus.inc:131 lib/ui/stdmenus.inc:644
 msgid "Math|M"
@@ -34378,7 +34378,7 @@ msgstr "Обновить [%1$s]|б"
 
 #: src/frontends/qt/Menus.cpp:1245
 msgid "No Custom Insets Defined!"
-msgstr "Пользовательские вставки не определены!"
+msgstr "(Пользовательские вставки не определены)"
 
 #: src/frontends/qt/Menus.cpp:1334
 msgid "(No Document Open)"
