@@ -244,6 +244,8 @@ void ConverterCache::init()
 	cache_dir = FileName(addName(package().user_support().absFileName(), "cache"));
 	if (!cache_dir.exists())
 		if (!cache_dir.createDirectory(0700)) {
+			// FIXME This should really be displayed as a message. But the GUI
+			// does not exist yet.
 			lyxerr << "Could not create cache directory `"
 			       << cache_dir << "'." << endl;
 			exit(EXIT_FAILURE);
