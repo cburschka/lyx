@@ -390,18 +390,18 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 	int const h = theFontMetrics(pi.base.font).xHeight();
 	int xp[4], yp[4];
 
-	xp[0] = x + 1;
+	xp[0] = x;
 	yp[0] = y - max(h / 4, 1);
 	if (params_.kind == InsetSpaceParams::NORMAL ||
 	    params_.kind == InsetSpaceParams::PROTECTED ||
 	    params_.kind == InsetSpaceParams::VISIBLE) {
-		xp[1] = x + 1;     yp[1] = y;
-		xp[2] = x + w - 2; yp[2] = y;
+		xp[1] = x;         yp[1] = y;
+		xp[2] = x + w - 1; yp[2] = y;
 	} else {
-		xp[1] = x + 1;     yp[1] = y + max(h / 4, 1);
-		xp[2] = x + w - 2; yp[2] = y + max(h / 4, 1);
+		xp[1] = x;         yp[1] = y + max(h / 4, 1);
+		xp[2] = x + w - 1; yp[2] = y + max(h / 4, 1);
 	}
-	xp[3] = x + w - 2;
+	xp[3] = x + w - 1;
 	yp[3] = y - max(h / 4, 1);
 
 	Color col = Color_special;
