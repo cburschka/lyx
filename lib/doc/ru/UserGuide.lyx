@@ -27172,12 +27172,18 @@ reference "sec:Formula-Numbering-and"
 \family sans
 Перейти к метке
 \family default
- устанавливает курсор перед меткой, на которую ведет ссылка.
- Этот пункт переименован в контекстном меню метки на 
+ перемещает курсор к метке, на которую указывает ссылка.
+ Также для перехода можно использовать щелчок левой кнопкой по ссылке при
+ нажатой клавише 
+\family sans
+Ctrl
+\family default
+.
+ В контекстном меню метки есть пункт 
 \family sans
 Вернуться назад
 \family default
- для возврата курсора обратно на перекрестную ссылку.
+ для возврата курсора обратно к перекрестной ссылке.
  Вы также можете вернуться с помощью кнопки 
 \begin_inset Info
 type  "icon"
@@ -28727,142 +28733,6 @@ literal "true"
 \end_layout
 
 \begin_layout Subsection
-Внешний просмотр цитируемых источников
-\end_layout
-
-\begin_layout Standard
-\SpecialChar LyX
- поддерживает просмотр материала, на который ссылается выбранная библиографическ
-ая ссылка, но для этого необходимо выполнить некоторые условия, чтобы активирова
-ть пункт 
-\family sans
-Открыть источник
-\family default
- в контекстном меню библиографической ссылки.
-\end_layout
-
-\begin_layout Standard
-Есть несколько способов сделать эту функцию доступной:
-\end_layout
-
-\begin_layout Itemize
-Запись в библиографической базе должна включать любое из таких полей: 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-url
-\end_layout
-
-\end_inset
-
- или 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-doi
-\end_layout
-
-\end_inset
-
- для Bib\SpecialChar TeX
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-eprint
-\end_layout
-
-\end_inset
-
- для Bib\SpecialChar LaTeX
- (включая такие 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-eprinttype
-\end_layout
-
-\end_inset
-
-: arXiv, JSTOR, PubMed, HDL, Google Books).
- При этом будет запущен веб-браузер с соответствующей ссылкой.
-\end_layout
-
-\begin_layout Itemize
-Запись в библиографической базе должна включать любое из таких полей, задающих
- локальные файлы на диске: 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-file
-\end_layout
-
-\end_inset
-
- (заполняется 
-\family sans
-JabRef
-\family default
-), 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-localfile
-\end_layout
-
-\end_inset
-
- (заполняется 
-\family sans
-KBibTeX
-\family default
-).
- При этом будет запущен соответствующий просмотрщик файлов.
- На данный момент допустимы только абсолютные пути.
-\end_layout
-
-\begin_layout Itemize
-Должен иметься скрипт с именем 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-lyxpaperview
-\end_layout
-
-\end_inset
-
- или 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-lyxpaperview.py
-\end_layout
-
-\end_inset
-
-, который принимает на входе год и имя первого автора.
- В обязанности этого скрипта входит поиск соответствующего файла на диске
- и запуск программы просмотра.
- Этот скрипт должен находиться среди других исполняемых файлов, так чтобы
- он мог быть может обнаружен при выполнении 
-\family sans
-Инструменты\SpecialChar menuseparator
-Обновить конфигурацию
-\family default
-.
- Образцы таких скриптов присутствуют в каталоге установки \SpecialChar LyX
-.
-\end_layout
-
-\begin_layout Subsection
 Форматы ссылок
 \begin_inset Index idx
 status collapsed
@@ -29110,8 +28980,8 @@ Biblatex
 \family sans
 Natbib
 \family default
- предоставляют выбор между стилями цитирования автор-год и автор-число.
- Вы должны выбрать один стиль в выпадающем списке 
+ предоставляют выбор между вариантами автор-год и автор-число.
+ Вы должны выбрать один из них в выпадающем списке 
 \family sans
 Вариант
 \family default
@@ -29123,19 +28993,18 @@ Biblatex
  это влияет только на внешний вид рабочей области \SpecialChar LyX
 .
  Использует ли вывод числовой, автор-год или другой формат, например буквенно-ци
-фровой, зависит только от выбранного стиля цитирования 
+фровой, зависит только от выбранного 
 \family sans
-Biblatex
+Стиля ссылок biblatex
 \family default
 .
- Однако при переключении между автор-год и автор-число предлагается подходящий
- стиль.
+ При переключении между вариантами автор-год и автор-число предлагается
+ подходящий стиль.
  С 
 \family sans
 Natbib
 \family default
-, с другой стороны, выбор в диалоговом окне, в конечном итоге, определит
- стиль.
+ несколько иначе — выбор в диалоговом окне полностью определяет стиль.
 \end_layout
 
 \begin_layout Standard
@@ -29144,17 +29013,16 @@ Natbib
 Библиографическая ссылка
 \family default
  доступны несколько вариантов стилей.
- Некоторые варианты выбора также предоставляют дополнительные параметры
- такие, как возможность ввода префикса имени в верхнем регистре, такого
- как «ван Бетховен» (именно, «Ван Бетховен»), или для увеличения или уменьшения
- количества отображаемых других авторов (то есть использовать или не использоват
-ь «и др.»).
+ Некоторые варианты выбора также предоставляют дополнительные возможности,
+ такие как изменение регистра приставки фамилии (например, «Ван Бетховен»
+ вместо «ван Бетховен») или изменение количества отображаемых других авторов
+ (то есть использовать или не использовать «и др.»).
 \end_layout
 
 \begin_layout Standard
 В этом диалоговом окне вы также можете настроить отображение текста после
  ссылки на источник, например, номеров страниц, которые затем будут отформатиров
-аны в соответствии с потребностями стиля (например, с или без «
+аны в соответствии со стилем (например, с или без «
 \family sans
 стр.
 \family default
@@ -29211,21 +29079,20 @@ literal "false"
 \begin_inset Quotes rld
 \end_inset
 
-сравн.
+см.
 \begin_inset Quotes rrd
 \end_inset
 
 ).
- Этот текст затем также включается в круглые скобки, если стиль требует
- этого.
+ Этот текст может браться в скобки, если этого требует стиль.
 \end_layout
 
 \begin_layout Standard
 Обратите внимание, что эти пред- и пост-примечания относятся ко всей библиографи
 ческой ссылке.
- Таким образом, если вы ссылаетесь на несколько ссылок одновременно, пред-примеч
-ание будет предшествовать первому источнику в списке, а пост-примечание
- будет следовать за последним.
+ То есть, если вы ссылаетесь на несколько источников одновременно, пред-примечан
+ие будет предшествовать первому источнику в списке, а пост-примечание будет
+ следовать за последним.
  Некоторые стили 
 \family sans
 Biblatex
@@ -29250,14 +29117,14 @@ Biblatex
 \family default
 , 
 \family sans
-Ключ ссылки
+Ключ источника
 \family default
  и 
 \family sans
 Текст после
 \family default
 .
- Если вы дважды щелкнете по элементу 
+ Дважды щелкнув по ячейкам 
 \family sans
 Текст до
 \family default
@@ -29265,7 +29132,7 @@ Biblatex
 \family sans
 Текст после
 \family default
-, то можете добавить такие отдельные пред- и пост-примечания.
+, можно добавить такие отдельные пред- и пост-примечания.
  В полях 
 \family sans
 Общий текст до
@@ -29276,6 +29143,171 @@ Biblatex
 \family default
  можно добавить пред- и пост-примечания, которые будут применены ко всему
  списку.
+\end_layout
+
+\begin_layout Subsection
+Открытие цитируемых источников из \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ поддерживает открытие материала, на который ссылается выбранная библиографическ
+ая ссылка, но для этого необходимо выполнить некоторые условия, чтобы активирова
+ть пункт 
+\family sans
+Открыть источник
+\family default
+ в контекстном меню библиографической ссылки:
+\end_layout
+
+\begin_layout Itemize
+Если запись в библиографической базе включает любое из таких полей: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+url
+\end_layout
+
+\end_inset
+
+ или 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+doi
+\end_layout
+
+\end_inset
+
+ для Bib\SpecialChar TeX
+ и Bib\SpecialChar LaTeX
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+eprint
+\end_layout
+
+\end_inset
+
+ для Bib\SpecialChar LaTeX
+ (включая такие 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+eprinttype
+\end_layout
+
+\end_inset
+
+: arXiv, JSTOR, PubMed, HDL, Google Books), то будет запущен веб-браузер
+ с соответствующей ссылкой.
+\end_layout
+
+\begin_layout Itemize
+Если запись в библиографической базе включает любое из таких полей: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+file
+\end_layout
+
+\end_inset
+
+ (заполняется 
+\family sans
+JabRef
+\family default
+), 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+localfile
+\end_layout
+
+\end_inset
+
+ (заполняется 
+\family sans
+KBibTeX
+\family default
+), задающее файл на локальном диске, то будет запущен соответствующий просмотрщи
+к файлов.
+ На данный момент допустимы только абсолютные пути.
+\end_layout
+
+\begin_layout Standard
+Кроме того, \SpecialChar LyX
+ также выполняет поиск подходящих файлов на диске, если включить
+ 
+\family sans
+Искать цитируемые файлы на диске
+\family default
+ в 
+\family sans
+Инструменты\SpecialChar menuseparator
+\SpecialChar allowbreak
+Настройки\SpecialChar menuseparator
+\SpecialChar allowbreak
+Редактирование\SpecialChar menuseparator
+\SpecialChar allowbreak
+Управление
+\family default
+.
+ При этом используются ключевые слова, задаваемые в 
+\family sans
+Шаблоне
+\family default
+ в том же разделе настроек (по умолчанию: год и авторы).
+ Любое из ключевых слов в шаблоне должно присутствовать в заголовке файла
+ (в любой позиции).
+ \SpecialChar LyX
+ открывает первый подходящий найденный файл.
+ Это может быть тот файл, который вам нужен, а может и нет.
+ Чем более систематизированы имена ваших файлов и чем меньше неоднозначных
+ ключевых слов вы используете, тем больше шансов, что этот способ заработает
+ у вас.
+\end_layout
+
+\begin_layout Standard
+Синтаксис шаблона использует особые ключевые слова.
+ В основном это Bib\SpecialChar TeX
+-поля (например, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+title
+\end_layout
+
+\end_inset
+
+) окруженные символами 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+%
+\end_layout
+
+\end_inset
+
+, но есть и специальные ключи, которые документированы в 
+\emph on
+Руководстве по настройке
+\emph default
+, раздел 
+\emph on
+Описание формата библиографической ссылки
+\emph default
+.
 \end_layout
 
 \begin_layout Section
@@ -44226,7 +44258,7 @@ literal "false"
 \family default
  будет открыто главное окно \SpecialChar LyX
  с размером и расположением, которые использовались
- в последнем сеансе \SpecialChar LyX
+ в последней сессии \SpecialChar LyX
 .
 \end_layout
 
@@ -44236,7 +44268,7 @@ literal "false"
 Восстанавливать позицию курсора
 \family default
  предписывает устанавливать курсор в позицию в файле, где он находился при
- окончании последнего сеанса.
+ окончании последней сессии.
 \end_layout
 
 \begin_layout Standard
@@ -44244,7 +44276,7 @@ literal "false"
 \family sans
 Загружать открытые файлы из прошлой сессии
 \family default
- открывает все файлы, которые были открыты в последнем сеансе \SpecialChar LyX
+ открывает все файлы, которые были открыты в последней сессии \SpecialChar LyX
 .
 \end_layout
 
@@ -44253,7 +44285,7 @@ literal "false"
 \family sans
 Очистить всю информацию о сессиях
 \family default
- удаляет всю информацию из предыдущих сеансов \SpecialChar LyX
+ удаляет всю информацию о предыдущих сессиях \SpecialChar LyX
  (позиции курсора, имена последних
  открытых документов и т.
 \begin_inset space \thinspace{}
