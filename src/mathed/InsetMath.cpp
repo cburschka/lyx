@@ -75,7 +75,7 @@ void InsetMath::writeLimits(WriteStream & os) const
 		os << "\\limits";
 		os.pendingSpace(true);
 	} else if (limits() == NO_LIMITS) {
-		os << "\\nolimits ";
+		os << "\\nolimits";
 		os.pendingSpace(true);
 	}
 }
