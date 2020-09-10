@@ -124,6 +124,14 @@ void InsetRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 			return;
 		}
 	}
+
+	// Ctrl + click: go to label
+	if (cmd.action() == LFUN_MOUSE_RELEASE && cmd.modifier() == ControlModifier) {
+			lyx::dispatch(FuncRequest(LFUN_BOOKMARK_SAVE, "0"));
+			lyx::dispatch(FuncRequest(LFUN_LABEL_GOTO, getParam("reference")));
+			return;
+		}
+
 	// otherwise not for us
 	if (pstring.empty())
 		return InsetCommand::doDispatch(cur, cmd);
@@ -220,8 +228,8 @@ docstring InsetRef::getFormattedCmd(docstring const & ref,
 	}
 
 	// make sure the prefix is legal for a latex command
-	int const len = prefix.size();
-	for (int i = 0; i < len; i++) {
+	size_t const len = prefix.size();
+	for (size_t i = 0; i < len; i++) {
 		char_type const c = prefix[i];
 		if (!isAlphaASCII(c)) {
 			LYXERR0("Prefix `" << prefix << "' is invalid for LaTeX.");
@@ -303,7 +311,7 @@ int InsetRef::plaintext(odocstringstream & os,
 {
 	docstring const str = getParam("reference");
 	os << '[' << str << ']';
-	return 2 + str.size();
+	return 2 + int(str.size());
 }
 
 
@@ -415,7 +423,7 @@ docstring InsetRef::xhtml(XMLStream & xs, OutputParams const & op) const
 void InsetRef::toString(odocstream & os) const
 {
 	odocstringstream ods;
-	plaintext(ods, OutputParams(0));
+	plaintext(ods, OutputParams(nullptr));
 	os << ods.str();
 }
 
