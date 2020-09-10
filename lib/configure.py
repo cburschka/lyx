@@ -1265,26 +1265,6 @@ def checkConverterEntries():
 ''')
 
 
-def checkDocBook():
-    ''' Check docbook '''
-    path, DOCBOOK = checkProg('SGML-tools 2.x (DocBook), db2x scripts or xsltproc', ['sgmltools', 'db2dvi', 'xsltproc'],
-        rc_entry = [
-            r'''\converter docbook    dvi        "sgmltools -b dvi $$i"	""
-\converter docbook    html       "sgmltools -b html $$i"	""
-\converter docbook    ps         "sgmltools -b ps $$i"	""''',
-            r'''\converter docbook    dvi        "db2dvi $$i"	""
-\converter docbook    html       "db2html $$i"	""''',
-            r'''\converter docbook    dvi        ""	""
-\converter docbook    html       "" ""''',
-            r'''\converter docbook    dvi        ""	""
-\converter docbook    html       ""	""'''])
-    #
-    if DOCBOOK:
-        return ('yes', 'true', '\\def\\hasdocbook{yes}')
-    else:
-        return ('no', 'false', '')
-
-
 def checkOtherEntries():
     ''' entries other than Format and Converter '''
     checkProg('ChkTeX', ['chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38'],
