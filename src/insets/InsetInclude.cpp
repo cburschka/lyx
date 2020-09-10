@@ -1346,8 +1346,10 @@ void InsetInclude::addToToc(DocIterator const & cpit, bool output_active,
 		Buffer const * const childbuffer = loadIfNeeded();
 
 		TocBuilder & b = backend.builder("child");
-		docstring str = childbuffer ? childbuffer->fileName().displayName()
-			: from_ascii("?");
+		string const fname = ltrim(to_utf8(params()["filename"]));
+		// mark non-existent childbuffer with FILE MISSING
+		docstring const str = (childbuffer ? from_ascii("") : _("FILE MISSING: "))
+			+ from_utf8(onlyFileName(fname)) + " (" + from_utf8(fname) + ")";
 		b.pushItem(cpit, str, output_active);
 		b.pop();
 
