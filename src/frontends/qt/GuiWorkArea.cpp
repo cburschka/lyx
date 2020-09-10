@@ -849,7 +849,8 @@ void GuiWorkArea::mouseReleaseEvent(QMouseEvent * e)
 
 	FuncRequest const cmd(LFUN_MOUSE_RELEASE, e->x(), e->y(),
 			q_button_state(e->button()), q_key_state(e->modifiers()));
-#if (QT_VERSION > QT_VERSION_CHECK(5,10,1))
+#if (QT_VERSION > QT_VERSION_CHECK(5,10,1) && \
+	QT_VERSION < QT_VERSION_CHECK(5,15,1))
 	d->synthetic_mouse_event_.cmd = cmd; // QtBug QAbstractScrollArea::mouseMoveEvent
 #endif
 	d->dispatch(cmd);
@@ -859,7 +860,8 @@ void GuiWorkArea::mouseReleaseEvent(QMouseEvent * e)
 
 void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 {
-#if (QT_VERSION > QT_VERSION_CHECK(5,10,1))
+#if (QT_VERSION > QT_VERSION_CHECK(5,10,1) && \
+	QT_VERSION < QT_VERSION_CHECK(5,15,1))
 	// cancel the event if the coordinates didn't change, this is due to QtBug
 	// QAbstractScrollArea::mouseMoveEvent, the event is triggered falsely when quickly
 	// double tapping a touchpad. To test: try to select a word by quickly double tapping
@@ -867,6 +869,7 @@ void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 	// This bug does not occur on Qt versions 5.10.1 and below. Only Windows seems to be affected.
 	// ML thread: https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg211699.html
 	// Qt bugtracker: https://bugreports.qt.io/browse/QTBUG-85431
+	// Bug was fixed in Qt 5.15.1
 	if (e->x() == d->synthetic_mouse_event_.cmd.x() && // QtBug QAbstractScrollArea::mouseMoveEvent
 			e->y() == d->synthetic_mouse_event_.cmd.y()) // QtBug QAbstractScrollArea::mouseMoveEvent
 		return; // QtBug QAbstractScrollArea::mouseMoveEvent
