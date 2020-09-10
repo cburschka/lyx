@@ -8742,12 +8742,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8760,6 +8762,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8783,6 +8786,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -29923,6 +29927,10 @@ to
 Label
 \family default
  sets the cursor before the referenced label.
+\change_inserted -584632292 1599757593
+(Ctrl-clicking on a cross-reference will also take you to its corresponding
+ label.)
+\change_unchanged
  This entry will be renamed in the context menu of the label to 
 \family sans
 Go
@@ -29938,13 +29946,25 @@ type  "icon"
 arg   "bookmark-goto 0"
 \end_inset
 
+
+\change_inserted -584632292 1599757706
+ or, using the menu: Navigate\SpecialChar menuseparator
+Bookmarks\SpecialChar menuseparator
+Navigate Back
+\change_unchanged
 .
 \end_layout
 
 \begin_layout Standard
 You can change labels at any time.
  References to the changed label will automatically be updated so that you
- do not need to think about this.
+ do not need to 
+\change_deleted -584632292 1599757720
+think about this
+\change_inserted -584632292 1599757724
+change them all manually
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Standard
@@ -29955,21 +29975,13 @@ If a cross-reference refers to a non-existent label, you will see in \SpecialCha
 \end_layout
 
 \begin_layout Standard
-References are described in detail in the section
-\begin_inset space ~
-\end_inset
-
-
+References are described in detail in the section 
 \emph on
 Referencing Floats
 \emph default
  of the 
 \emph on
-Embedded
-\begin_inset space ~
-\end_inset
-
-Objects
+Embedded Objects
 \emph default
  manual.
 \end_layout
