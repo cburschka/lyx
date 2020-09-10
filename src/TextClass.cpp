@@ -92,7 +92,7 @@ bool layout2layout(FileName const & filename, FileName const & tempfile,
 	LYXERR(Debug::TCLASS, "Running `" << command_str << '\'');
 
 	cmd_ret const ret = runCommand(command_str);
-	if (ret.first != 0) {
+	if (!ret.valid) {
 		if (format == LAYOUT_FORMAT)
 			LYXERR0("Conversion of layout with layout2layout.py has failed.");
 		return false;

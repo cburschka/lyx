@@ -1026,7 +1026,7 @@ namespace {
 		       << "\ninput: '" << data << "'" << endl;
 		cmd_ret const ret = runCommand(command);
 		cas_tmpfile.removeFile();
-		return ret.second;
+		return ret.result;
 	}
 
 	size_t get_matching_brace(string const & str, size_t i)

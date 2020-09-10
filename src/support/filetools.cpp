@@ -1095,38 +1095,40 @@ cmd_ret const runCommand(string const & cmd)
 	// (Claus Hentschel) Check if popen was successful ;-)
 	if (!inf) {
 		lyxerr << "RunCommand:: could not start child process" << endl;
-		return make_pair(-1, string());
+		return { false, string() };
 	}
 
-	string ret;
+	string result;
 	int c = fgetc(inf);
 	while (c != EOF) {
-		ret += static_cast<char>(c);
+		result += static_cast<char>(c);
 		c = fgetc(inf);
 	}
 
 #if defined (_WIN32)
 	WaitForSingleObject(process.hProcess, INFINITE);
 	DWORD pret;
-	if (!GetExitCodeProcess(process.hProcess, &pret))
-		pret = -1;
+	BOOL success = GetExitCodeProcess(process.hProcess, &pret);
+	bool valid = (pret == 0) && success;
 	if (!infile.empty())
 		CloseHandle(startup.hStdInput);
 	CloseHandle(process.hProcess);
 	if (fclose(inf) != 0)
-		pret = -1;
+		valid = false;
 #elif defined (HAVE_PCLOSE)
 	int const pret = pclose(inf);
+	bool const valid = (pret != -1);
 #elif defined (HAVE__PCLOSE)
 	int const pret = _pclose(inf);
+	bool const valid = (pret != -1);
 #else
 #error No pclose() function.
 #endif
 
-	if (pret == -1)
+	if (!valid)
 		perror("RunCommand:: could not terminate child process");
 
-	return make_pair(pret, ret);
+	return { valid, result };
 }
 
 
@@ -1174,10 +1176,10 @@ FileName const findtexfile(string const & fil, string const & /*format*/,
 
 	cmd_ret const c = runCommand(kpsecmd);
 
-	LYXERR(Debug::LATEX, "kpse status = " << c.first << '\n'
-		 << "kpse result = `" << rtrim(c.second, "\n\r") << '\'');
-	if (c.first != -1)
-		return FileName(rtrim(to_utf8(from_filesystem8bit(c.second)), "\n\r"));
+	LYXERR(Debug::LATEX, "kpse status = " << c.valid << '\n'
+		 << "kpse result = `" << rtrim(c.result, "\n\r") << '\'');
+	if (c.valid)
+		return FileName(rtrim(to_utf8(from_filesystem8bit(c.result)), "\n\r"));
 	else
 		return FileName();
 }
@@ -1223,7 +1225,7 @@ bool prefs2prefs(FileName const & filename, FileName const & tempfile, bool lfun
 	LYXERR(Debug::FILES, "Running `" << command_str << '\'');
 
 	cmd_ret const ret = runCommand(command_str);
-	if (ret.first != 0) {
+	if (!ret.valid) {
 		LYXERR0("Could not run file conversion script prefs2prefs.py.");
 		return false;
 	}

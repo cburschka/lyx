@@ -65,7 +65,7 @@ static string const python23_call(string const & binary, bool verbose = false)
 	smatch sm;
 	try {
 		static regex const python_reg("\\((\\d*), (\\d*)\\)");
-		if (out.first < 0 || !regex_match(out.second, sm, python_reg))
+		if (!out.valid || !regex_match(out.result, sm, python_reg))
 			return string();
 	} catch(regex_error const & /*e*/) {
 		LYXERR0("Regex error! This should not happen.");
@@ -78,7 +78,7 @@ static string const python23_call(string const & binary, bool verbose = false)
 		return string();
 
 	if (verbose)
-		lyxerr << "Found Python " << out.second << "\n";
+		lyxerr << "Found Python " << out.result << "\n";
 	// Add the -tt switch so that mixed tab/whitespace
 	// indentation is an error
 	return binary + " -tt";

@@ -229,8 +229,8 @@ void init(int argc, char ** argv[])
 			// to the outer split which sets cygdrive with its
 			// contents until the first blank, discarding the
 			// unneeded return value.
-			if (p.first != -1 && prefixIs(p.second, "Prefix"))
-				split(split(p.second, '\n'), cygdrive, ' ');
+			if (p.valid && prefixIs(p.result, "Prefix"))
+				split(split(p.result, '\n'), cygdrive, ' ');
 		}
 	}
 

@@ -1357,7 +1357,7 @@ Buffer::ReadStatus Buffer::convertLyXFormat(FileName const & fn,
 	LYXERR(Debug::INFO, "Running '" << command_str << '\'');
 
 	cmd_ret const ret = runCommand(command_str);
-	if (ret.first != 0) {
+	if (!ret.valid) {
 		if (from_format < LYX_FORMAT) {
 			Alert::error(_("Conversion script failed"),
 				bformat(_("%1$s is from an older version"
