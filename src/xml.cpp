@@ -477,7 +477,8 @@ XMLStream &XMLStream::operator<<(xml::EndTag const &etag)
 						   + "' when other tags were pending. Last pending tag is `"
 						   + to_utf8(pending_tags_.back()->writeTag())
 						   + "'. Tag discarded.");
-				pending_tags_.erase(dit);
+				if (!pending_tags_.empty())
+					pending_tags_.erase(dit);
 				return *this;
 			}
 		}
