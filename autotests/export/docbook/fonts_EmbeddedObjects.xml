@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This DocBook file was created by LyX 2.4.0dev
+  See http://www.lyx.org/ for more information -->
+<book xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
+<title>LyX's detailed Figure, Table, Floats, Notes, Boxes and External Material manual</title>
+<chapter>
+<title>Floats</title>
+<para>can be created using these commands in the document preamble:</para>
+<para><emphasis role='bold'>\usepackage[tableposition=top]{caption}</emphasis></para>
+<para><emphasis role='bold'>\captionsetup[figure]{labelfont={tt}, textfont=it, indention=1cm,%</emphasis></para>
+</chapter>
+</book>

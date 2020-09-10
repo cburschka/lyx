@@ -3350,6 +3350,7 @@ std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
 	vector<xml::EndFontTag> tagsToClose;
 
 	std::vector<docstring> generatedParagraphs;
+	DocBookFontState old_fs = fs;
 	odocstringstream os;
 	auto * xs = new XMLStream(os); // XMLStream has no copy constructor: to create a new object, the only solution
 	// is to hold a pointer to the XMLStream (xs = XMLStream(os) is not allowed once the first object is built).
@@ -3369,8 +3370,10 @@ std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
 			os = odocstringstream();
 			delete xs;
 			xs = new XMLStream(os);
-			if (!ignore_fonts)
+			if (!ignore_fonts) {
 				font_old = outerfont.fontInfo();
+				fs = old_fs;
+			}
 		}
 
 		// Determine which tags should be opened or closed regarding fonts.
