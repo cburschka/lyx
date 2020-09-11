@@ -26,6 +26,7 @@
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
+#include "output_docbook.h"
 #include "output_xhtml.h"
 #include "TexRow.h"
 #include "texstream.h"
@@ -727,7 +728,21 @@ void InsetBox::docbook(XMLStream & xs, OutputParams const & runparams) const
 		LYXERR0("Assertion failed: box layout " + getLayout().name() + " missing DocBookWrapperTag.");
 	}
 
-	InsetText::docbook(xs, runparams);
+	// If the box starts with a sectioning item, use as box title.
+	auto current_par = paragraphs().begin();
+	if (current_par->layout().category() == from_utf8("Sectioning")) {
+		// Only generate the first paragraph.
+		current_par = makeAny(text(), buffer(), xs, runparams, paragraphs().begin());
+	}
+
+	xs.startDivision(false);
+	// Don't call InsetText::docbook, as this would generate all paragraphs in the inset, not the ones we are
+	// interested in. The best solution would be to call docbookParagraphs with an updated OutputParams object to only
+	// generate paragraphs after the title, but it leads to strange crashes, as if text().paragraphs() then returns
+	// a smaller set of paragrphs.
+	while (current_par != paragraphs().end())
+		current_par = makeAny(text(), buffer(), xs, runparams, current_par);
+	xs.endDivision();
 
 	if (!getLayout().docbookwrappertag().empty()) {
 		if (!xs.isLastTagCR())

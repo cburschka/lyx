@@ -16,6 +16,7 @@
 #include "BufferParams.h"
 #include "Font.h"
 #include "InsetList.h"
+#include "output_docbook.h"
 #include "Paragraph.h"
 #include "ParagraphList.h"
 #include "ParagraphParameters.h"
@@ -345,13 +346,6 @@ void closeParTag(XMLStream & xs, Paragraph const * par, Paragraph const * nextpa
 	if (closeWrapper)
 		closeTag(xs, lay.docbookwrappertag(), lay.docbookwrappertagtype());
 }
-
-
-ParagraphList::const_iterator makeAny(Text const &,
-		                              Buffer const &,
-		                              XMLStream &,
-		                              OutputParams const &,
-		                              ParagraphList::const_iterator);
 
 
 void makeBibliography(
@@ -714,35 +708,6 @@ void makeCommand(
 }
 
 
-ParagraphList::const_iterator makeAny(Text const &text,
-		                              Buffer const &buf,
-		                              XMLStream &xs,
-		                              OutputParams const &runparams,
-		                              ParagraphList::const_iterator par)
-{
-	switch (par->layout().latextype) {
-	case LATEX_COMMAND:
-		makeCommand(text, buf, xs, runparams, par);
-		break;
-	case LATEX_ENVIRONMENT:
-		makeEnvironment(text, buf, xs, runparams, par);
-		break;
-	case LATEX_LIST_ENVIRONMENT:
-	case LATEX_ITEM_ENVIRONMENT:
-		// Only case when makeAny() might consume more than one paragraph.
-		return makeListEnvironment(text, buf, xs, runparams, par);
-	case LATEX_PARAGRAPH:
-		makeParagraph(text, buf, xs, runparams, par);
-		break;
-	case LATEX_BIB_ENVIRONMENT:
-		makeBibliography(text, buf, xs, runparams, par);
-		break;
-	}
-	++par;
-	return par;
-}
-
-
 bool isLayoutSectioning(Layout const & lay)
 {
 	return lay.category() == from_utf8("Sectioning");
@@ -860,6 +825,35 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs,
 }
 
 } // end anonymous namespace
+
+
+ParagraphList::const_iterator makeAny(Text const &text,
+                                      Buffer const &buf,
+                                      XMLStream &xs,
+                                      OutputParams const &runparams,
+                                      ParagraphList::const_iterator par)
+{
+	switch (par->layout().latextype) {
+	case LATEX_COMMAND:
+		makeCommand(text, buf, xs, runparams, par);
+		break;
+	case LATEX_ENVIRONMENT:
+		makeEnvironment(text, buf, xs, runparams, par);
+		break;
+	case LATEX_LIST_ENVIRONMENT:
+	case LATEX_ITEM_ENVIRONMENT:
+		// Only case when makeAny() might consume more than one paragraph.
+		return makeListEnvironment(text, buf, xs, runparams, par);
+	case LATEX_PARAGRAPH:
+		makeParagraph(text, buf, xs, runparams, par);
+		break;
+	case LATEX_BIB_ENVIRONMENT:
+		makeBibliography(text, buf, xs, runparams, par);
+		break;
+	}
+	++par;
+	return par;
+}
 
 
 xml::FontTag docbookStartFontTag(xml::FontTypes type)
