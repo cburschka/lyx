@@ -271,7 +271,7 @@ currentFormat = 84
 # Incremented to format 81, 12 August 2019 by rikiheck
 # New tag GuiName for counters
 
-# Incremented to format 82, 4 June 2017 by dourouc05
+# Incremented to format 82, 4 June 2017 by tcuvelier
 # - Add new tags for Layout:
 #   DocBookTag, DocBookAttr, DocBookInInfo,
 #   DocBookWrapperTag, DocBookWrapperAttr,
@@ -281,7 +281,7 @@ currentFormat = 84
 # - Removed tag Header from ClassOptionsClassOptions
 # - Removed tag Element for flex insets
 
-# Incremented to format 83, 2 August 2020 by dourouc05
+# Incremented to format 83, 2 August 2020 by tcuvelier
 # New tags DocBookWrapperMergeWithPrevious and DocBookAbstract
 
 # Incremented to format 84, 17 August 2020 by tcuvelier
