@@ -362,8 +362,8 @@ void makeBibliography(
 		ParagraphList::const_iterator const & par)
 {
 	// If this is the first paragraph in a bibliography, open the bibliography tag.
-	auto pbegin_before = text.paragraphs().getParagraphBefore(par);
-	if (pbegin_before->layout().latextype != LATEX_BIB_ENVIRONMENT) {
+	auto const * pbegin_before = text.paragraphs().getParagraphBefore(par);
+	if (pbegin_before == nullptr || (pbegin_before && pbegin_before->layout().latextype != LATEX_BIB_ENVIRONMENT)) {
 		xs << xml::StartTag("bibliography");
 		xs << xml::CR();
 	}
