@@ -583,7 +583,7 @@ void docbookSubfigures(XMLStream & xs, OutputParams const & runparams, const Ins
 	xs << xml::StartTag("formalgroup", attr);
 	xs << xml::CR();
 
-	xs << xml::StartTag("title", attr);
+	xs << xml::StartTag("title"); // Don't take attr here, the ID should only go in one place, not two.
 	if (caption) {
 		caption->getCaptionAsDocBook(xs, rpNoLabel);
 	} else {

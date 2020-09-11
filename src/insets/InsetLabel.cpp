@@ -356,8 +356,11 @@ int InsetLabel::plaintext(odocstringstream & os,
 void InsetLabel::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
 	// Output an anchor only if it has not been processed before.
-	if (runparams.docbook_anchors_to_ignore.find(getParam("name")) == runparams.docbook_anchors_to_ignore.end()) {
-		docstring attr = from_utf8("xml:id=\"") + xml::cleanID(getParam("name")) + from_utf8("\"");
+	docstring id = getParam("name");
+	docstring cleaned_id = xml::cleanID(id);
+	if (runparams.docbook_anchors_to_ignore.find(id) == runparams.docbook_anchors_to_ignore.end() &&
+	        runparams.docbook_anchors_to_ignore.find(cleaned_id) == runparams.docbook_anchors_to_ignore.end()) {
+		docstring attr = from_utf8("xml:id=\"") + cleaned_id + from_utf8("\"");
 		xs << xml::CompTag("anchor", to_utf8(attr));
 	}
 }
