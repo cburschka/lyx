@@ -492,19 +492,22 @@ int InsetFloat::plaintext(odocstringstream & os, OutputParams const & runparams,
 }
 
 
-std::vector<const InsetBox *> findSubfiguresInParagraph(const Paragraph &par)
+std::vector<const InsetCollapsible *> findSubfiguresInParagraph(const Paragraph &par)
 {
 
 	// Don't make the hypothesis that all subfigures are in the same paragraph.
 	// Similarly, there may be several subfigures in the same paragraph (most likely case, based on the documentation).
 	// Any box is considered as a subfigure, even though the most likely case is \minipage.
-	std::vector<const InsetBox *> subfigures;
+	// Boxes are not required to make subfigures. The common root between InsetBox and InsetFLoat is InsetCollapsible.
+	std::vector<const InsetCollapsible *> subfigures;
 	for (pos_type pos = 0; pos < par.size(); ++pos) {
 		const Inset *inset = par.getInset(pos);
 		if (!inset)
 			continue;
 		if (const auto box = dynamic_cast<const InsetBox *>(inset))
 			subfigures.push_back(box);
+		else if (const auto fl = dynamic_cast<const InsetFloat *>(inset))
+			subfigures.push_back(fl);
 	}
 	return subfigures;
 }
@@ -564,7 +567,7 @@ const InsetCaption* findCaptionInParagraph(const Paragraph &par)
 
 
 void docbookSubfigures(XMLStream & xs, OutputParams const & runparams, const InsetCaption * caption,
-					   const InsetLabel * label, std::vector<const InsetBox *> & subfigures)
+					   const InsetLabel * label, std::vector<const InsetCollapsible *> & subfigures)
 {
 	// Ensure there is no label output, it is supposed to be handled as xml:id.
 	OutputParams rpNoLabel = runparams;
@@ -592,20 +595,29 @@ void docbookSubfigures(XMLStream & xs, OutputParams const & runparams, const Ins
 
 	// Deal with each subfigure individually. This should also deal with their caption and their label.
 	// This should be a recursive call to InsetFloat.
-	for (const InsetBox *subfigure: subfigures) {
+	// An item in subfigure should either be an InsetBox containing an InsetFloat or directly an InsetFloat.
+	for (const InsetCollapsible *subfigure: subfigures) {
 		// If there is no InsetFloat in the paragraphs, output a warning.
 		bool foundInsetFloat = false;
-		for (const auto & it : subfigure->paragraphs()) {
-			for (pos_type posIn = 0; posIn < it.size(); ++posIn) {
-				const Inset *inset = it.getInset(posIn);
-				if (inset && dynamic_cast<const InsetFloat*>(inset)) {
-					foundInsetFloat = true;
-					break;
-				}
-			}
 
-			if (foundInsetFloat)
-				break;
+		// The collapsible may already be a float (InsetFloat).
+		if (subfigure && dynamic_cast<const InsetFloat *>(subfigure))
+			foundInsetFloat = true;
+
+		// Subfigures are in boxes.
+		if (!foundInsetFloat) {
+			for (const auto &it : subfigure->paragraphs()) {
+				for (pos_type posIn = 0; posIn < it.size(); ++posIn) {
+					const Inset *inset = it.getInset(posIn);
+					if (inset && dynamic_cast<const InsetFloat *>(inset)) {
+						foundInsetFloat = true;
+						break;
+					}
+				}
+
+				if (foundInsetFloat)
+					break;
+			}
 		}
 
 		if (!foundInsetFloat)
@@ -673,11 +685,11 @@ void InsetFloat::docbook(XMLStream & xs, OutputParams const & runparams) const
 	// The caption and the label for each subfigure is handled by recursive calls.
 	const InsetCaption* caption = nullptr;
 	const InsetLabel* label = nullptr;
-	std::vector<const InsetBox *> subfigures;
+	std::vector<const InsetCollapsible *> subfigures;
 
 	auto end = paragraphs().end();
 	for (auto it = paragraphs().begin(); it != end; ++it) {
-		std::vector<const InsetBox *> foundSubfigures = findSubfiguresInParagraph(*it);
+		std::vector<const InsetCollapsible *> foundSubfigures = findSubfiguresInParagraph(*it);
 		if (!foundSubfigures.empty()) {
 			subfigures.reserve(subfigures.size() + foundSubfigures.size());
 			subfigures.insert(subfigures.end(), foundSubfigures.begin(), foundSubfigures.end());
