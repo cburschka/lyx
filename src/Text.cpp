@@ -1146,30 +1146,53 @@ bool Text::cursorForwardOneWord(Cursor & cur)
 {
 	LBUFERR(this == cur.text());
 
-	pos_type const lastpos = cur.lastpos();
-	pit_type pit = cur.pit();
-	pos_type pos = cur.pos();
-	Paragraph const & par = cur.paragraph();
-
-	// Paragraph boundary is a word boundary
-	if (pos == lastpos || (pos + 1 == lastpos && par.isEnvSeparator(pos))) {
-		if (pit != cur.lastpit())
-			return setCursor(cur, pit + 1, 0);
-		else
-			return false;
-	}
-
 	if (lyxrc.mac_like_cursor_movement) {
-		// Skip through trailing punctuation and spaces.
-		while (pos != lastpos && (par.isChar(pos) || par.isSpace(pos)))
-			++pos;
+		DocIterator dit(cur);
+		DocIterator prv(cur);
+		bool inword = false;
+		bool intext = dit.inTexted();
+		while (!dit.atEnd()) {
+			if (dit.inTexted()) { // no paragraphs in mathed
+				Paragraph const & par = dit.paragraph();
+				pos_type const pos = dit.pos();
 
-		// Skip over either a non-char inset or a full word
-		if (pos != lastpos && par.isWordSeparator(pos))
-			++pos;
-		else while (pos != lastpos && !par.isWordSeparator(pos))
-			     ++pos;
+				if (!par.isDeleted(pos)) {
+					bool wordsep = par.isWordSeparator(pos);
+					if (inword && wordsep)
+						break; // stop at word end
+					else if (!inword && !wordsep)
+						inword = true;
+				}
+				intext = true;
+			} else if (intext) {
+				// move to end of math
+				while (!dit.inTexted() && !dit.atEnd()) dit.forwardPos();
+				break;
+			}
+			prv = dit;
+			dit.forwardPosIgnoreCollapsed();
+		}
+		if (dit.atEnd()) dit = prv;
+		if (dit == cur) return false; // we didn't move
+		Cursor orig(cur);
+		cur.setCursor(dit);
+		// see comment above
+		cur.bv().checkDepm(cur, orig);
+		return true;
 	} else {
+		pos_type const lastpos = cur.lastpos();
+		pit_type pit = cur.pit();
+		pos_type pos = cur.pos();
+		Paragraph const & par = cur.paragraph();
+
+		// Paragraph boundary is a word boundary
+		if (pos == lastpos || (pos + 1 == lastpos && par.isEnvSeparator(pos))) {
+			if (pit != cur.lastpit())
+				return setCursor(cur, pit + 1, 0);
+			else
+				return false;
+		}
+
 		LASSERT(pos < lastpos, return false); // see above
 		if (!par.isWordSeparator(pos))
 			while (pos != lastpos && !par.isWordSeparator(pos))
@@ -1183,13 +1206,13 @@ bool Text::cursorForwardOneWord(Cursor & cur)
 		// Skip over white space
 		while (pos != lastpos && par.isSpace(pos))
 			     ++pos;
+
+		// Don't skip a separator inset at the end of a paragraph
+		if (pos == lastpos && pos && par.isEnvSeparator(pos - 1))
+			--pos;
+
+		return setCursor(cur, pit, pos);
 	}
-
-	// Don't skip a separator inset at the end of a paragraph
-	if (pos == lastpos && pos && par.isEnvSeparator(pos - 1))
-		--pos;
-
-	return setCursor(cur, pit, pos);
 }
 
 
@@ -1197,34 +1220,55 @@ bool Text::cursorBackwardOneWord(Cursor & cur)
 {
 	LBUFERR(this == cur.text());
 
-	pit_type pit = cur.pit();
-	pos_type pos = cur.pos();
-	Paragraph & par = cur.paragraph();
-
-	// Paragraph boundary is a word boundary
-	if (pos == 0 && pit != 0) {
-		Paragraph & prevpar = getPar(pit - 1);
-		pos = prevpar.size();
-		// Don't stop after an environment separator
-		if (pos && prevpar.isEnvSeparator(pos - 1))
-			--pos;
-		return setCursor(cur, pit - 1, pos);
-	}
-
 	if (lyxrc.mac_like_cursor_movement) {
-		// Skip through punctuation and spaces.
-		while (pos != 0 && (par.isChar(pos - 1) || par.isSpace(pos - 1)))
-			--pos;
+		DocIterator dit(cur);
+		bool inword = false;
+		bool intext = dit.inTexted();
+		while (!dit.atBegin()) {
+			DocIterator prv(dit);
+			dit.backwardPosIgnoreCollapsed();
+			if (dit.inTexted()) { // no paragraphs in mathed
+				Paragraph const & par = dit.paragraph();
+				pos_type pos = dit.pos();
 
-		// Skip over either a non-char inset or a full word
-		if (pos != 0 && par.isWordSeparator(pos - 1) && !par.isChar(pos - 1))
-			--pos;
-		else while (pos != 0 && !par.isWordSeparator(pos - 1))
-			     --pos;
+				if (!par.isDeleted(pos)) {
+					bool wordsep = par.isWordSeparator(pos);
+					if (inword && wordsep) {
+						dit = prv;
+						break; // stop at word begin
+					} else if (!inword && !wordsep)
+						inword = true;
+				}
+				intext = true;
+			} else if (intext) {
+				// move to begin of math
+				while (!dit.inTexted() && !dit.atBegin()) dit.backwardPos();
+				break;
+			}
+		}
+		if (dit == cur) return false; // we didn't move
+		Cursor orig(cur);
+		cur.setCursor(dit);
+		// see comment above cursorForwardOneWord
+		cur.bv().checkDepm(cur, orig);
+		return true;
 	} else {
+		Paragraph const & par = cur.paragraph();
+		pit_type const pit = cur.pit();
+		pos_type pos = cur.pos();
+
+		// Paragraph boundary is a word boundary
+		if (pos == 0 && pit != 0) {
+			Paragraph & prevpar = getPar(pit - 1);
+			pos = prevpar.size();
+			// Don't stop after an environment separator
+			if (pos && prevpar.isEnvSeparator(pos - 1))
+				--pos;
+			return setCursor(cur, pit - 1, pos);
+		}
 		// Skip over white space
 		while (pos != 0 && par.isSpace(pos - 1))
-			     --pos;
+			--pos;
 
 		if (pos != 0 && !par.isWordSeparator(pos - 1))
 			while (pos != 0 && !par.isWordSeparator(pos - 1))
@@ -1234,9 +1278,9 @@ bool Text::cursorBackwardOneWord(Cursor & cur)
 				--pos;
 		else if (pos != 0 && !par.isSpace(pos - 1)) // non-char inset
 			--pos;
-	}
 
-	return setCursor(cur, pit, pos);
+		return setCursor(cur, pit, pos);
+	}
 }
 
 
