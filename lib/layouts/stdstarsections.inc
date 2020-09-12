@@ -49,7 +49,7 @@ Style Section*
 	LabelCounter	""
 	ResetArgs       1
 	DocBookTag            bridgehead
-	DocBookAttr           renderas="sect1"
+	DocBookAttr           renderas='sect1'
 	DocBookSectionTag     NONE
 	DocBookForceAbstractTag	NONE
 End
@@ -64,7 +64,7 @@ Style Subsection*
 	LabelCounter	""
 	ResetArgs       1
 	DocBookTag            bridgehead
-	DocBookAttr           renderas="sect2"
+	DocBookAttr           renderas='sect2'
 	DocBookSectionTag     NONE
 	DocBookForceAbstractTag	NONE
 End
@@ -79,7 +79,7 @@ Style Subsubsection*
 	LabelCounter	""
 	ResetArgs       1
 	DocBookTag            bridgehead
-	DocBookAttr           renderas="sect3"
+	DocBookAttr           renderas='sect3'
 	DocBookSectionTag     NONE
 	DocBookForceAbstractTag	NONE
 End
@@ -94,7 +94,7 @@ Style Paragraph*
 	LabelCounter	""
 	ResetArgs       1
 	DocBookTag            bridgehead
-	DocBookAttr           renderas="sect4"
+	DocBookAttr           renderas='sect4'
 	DocBookSectionTag     NONE
 	DocBookForceAbstractTag	NONE
 End
@@ -109,7 +109,7 @@ Style Subparagraph*
 	LabelCounter	""
 	ResetArgs       1
 	DocBookTag            bridgehead
-	DocBookAttr           renderas="sect5"
+	DocBookAttr           renderas='sect5'
 	DocBookSectionTag     NONE
 	DocBookForceAbstractTag	NONE
 End

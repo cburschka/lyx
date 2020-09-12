@@ -1643,7 +1643,7 @@ void Layout::write(ostream & os) const
 	if(!docbooktag_.empty())
 		os << "\tDocBookTag " << docbooktag_ << '\n';
 	if(!docbookattr_.empty())
-		os << "\tDocBookAttr " << docbookattr_ << '\n';
+		os << "\tDocBookAttr \"" << docbookattr_ << "\"\n";
 	if(!docbooktagtype_.empty())
 		os << "\tDocBookTagType " << docbooktagtype_ << '\n';
 	if(!docbookininfo_.empty())
@@ -1669,7 +1669,7 @@ void Layout::write(ostream & os) const
 		os << "\tDocBookItemWrapperAttr " << docbookitemwrapperattr_ << '\n';
 	if(!docbookitemwrappertagtype_.empty())
 		os << "\tDocBookItemWrapperTagType " << docbookitemwrappertagtype_ << '\n';
-	os << "\tDocBookItemWrapperMergeWithPrevious " << docbookwrappermergewithprevious_ << '\n';
+	os << "\tDocBookWrapperMergeWithPrevious " << docbookwrappermergewithprevious_ << '\n';
 	if(!docbookitemlabeltag_.empty())
 		os << "\tDocBookItemLabelTag " << docbookitemlabeltag_ << '\n';
 	if(!docbookitemlabelattr_.empty())
