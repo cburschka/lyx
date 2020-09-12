@@ -1087,8 +1087,7 @@ void docbookParagraphs(Text const &text,
 
 		// Close all sections before the bibliography.
 		// TODO: Only close all when the bibliography is at the end of the document? Or force to output the bibliography at the end of the document? Or don't care (as allowed by DocBook)?
-		auto insetsLength = distance(par->insetList().begin(), par->insetList().end());
-		if (insetsLength > 0) {
+		if (!par->insetList().empty()) {
 			Inset const *firstInset = par->getInset(0);
 			if (firstInset && (firstInset->lyxCode() == BIBITEM_CODE || firstInset->lyxCode() == BIBTEX_CODE)) {
 				while (!headerLevels.empty()) {
