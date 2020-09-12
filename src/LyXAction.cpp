@@ -2386,9 +2386,9 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_LAYOUT
  * \li Action: Sets the layout (that is, environment) for the current paragraph.
- * \li Syntax: layout <LAYOUT> [ignorenests]
+ * \li Syntax: layout <LAYOUT> [ignoreautonests]
  * \li Params: <LAYOUT>: the layout to use\n
-               ignorenests: If specified, nesting advices will be ignored.
+               ignoreautonests: If specified, nesting advices will be ignored.
  * \endvar
  */
 		{ LFUN_LAYOUT, "layout", Noop, Layout },
@@ -2399,9 +2399,9 @@ void LyXAction::init()
  * \li Notion: Contrary to `layout', this function resets the current
  *             (or selection) layout to the standard layout it already has the
  *             correct layout. Useful for toolbar icons.
- * \li Syntax: layout-toggle <LAYOUT> [ignorenests]
+ * \li Syntax: layout-toggle <LAYOUT> [ignoreautonests]
  * \li Params: <LAYOUT>: the layout to toggle\n
-               ignorenests: If specified, nesting advices will be ignored.
+               ignoreautonests: If specified, nesting advices will be ignored.
  * \li Origin: lasgouttes, 14 May 2018
  * \endvar
  */
