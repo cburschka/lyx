@@ -42,6 +42,7 @@ public:
 	virtual int lineWidth() const;
 	virtual int underlinePos() const;
 	virtual int strikeoutPos() const;
+	virtual bool italic() const;
 	virtual int width(char_type c) const;
 	virtual int ascent(char_type c) const;
 	virtual int descent(char_type c) const;

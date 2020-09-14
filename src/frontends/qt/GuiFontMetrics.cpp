@@ -161,6 +161,12 @@ int GuiFontMetrics::strikeoutPos() const
 }
 
 
+bool GuiFontMetrics::italic() const
+{
+	return font_.italic();
+}
+
+
 namespace {
 int const outOfLimitMetric = -10000;
 }
