@@ -34,6 +34,7 @@
 #include "LayoutBox.h"
 #include "LyX.h"
 #include "LyXRC.h"
+#include "Menus.h"
 #include "qt_helpers.h"
 #include "Session.h"
 #include "Text.h"
@@ -70,6 +71,9 @@ GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiView & owner)
 	setIconSize(owner.iconSize());
 	connect(&owner, SIGNAL(iconSizeChanged(QSize)), this,
 		SLOT(setIconSize(QSize)));
+	// install toolbar filter for context menu including disabled buttons
+	setContextMenuPolicy(Qt::PreventContextMenu);
+	QCoreApplication::instance()->installEventFilter(this);
 
 	// This is used by QMainWindow::restoreState for proper main window state
 	// restoration.
@@ -120,6 +124,24 @@ void GuiToolbar::showEvent(QShowEvent * ev)
 {
 	fill();
 	ev->accept();
+}
+
+
+bool GuiToolbar::eventFilter(QObject * obj, QEvent * ev)
+{
+	if (obj == this || obj->parent() == this) {
+		if (ev->type() == QEvent::ContextMenu) {
+			QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(ev);
+			QMenu * menu = guiApp->menus().menu(toqstr("context-toolbars"), owner_);
+			menu->exec(mouseEvent->globalPos());
+			return true;
+		} else {
+			return false;
+		}
+	} else {
+		// pass the event on to the parent class
+		return QToolBar::eventFilter(obj, ev);
+	}
 }
 
 

@@ -677,11 +677,6 @@ GuiView::GuiView(int id)
 	connect(this, SIGNAL(triggerShowDialog(QString const &, QString const &, Inset *)),
 		SLOT(doShowDialog(QString const &, QString const &, Inset *)));
 
-	// set custom application bars context menu, e.g. tool bar and menu bar
-	setContextMenuPolicy(Qt::CustomContextMenu);
-	connect(this, SIGNAL(customContextMenuRequested(const QPoint &)),
-		SLOT(toolBarPopup(const QPoint &)));
-
 	// Forbid too small unresizable window because it can happen
 	// with some window manager under X11.
 	setMinimumSize(300, 200);
@@ -3785,13 +3780,6 @@ bool GuiView::goToFileRow(string const & argument)
 		                         "You may need to update the viewed document."));
 	}
 	return success;
-}
-
-
-void GuiView::toolBarPopup(const QPoint & /*pos*/)
-{
-	QMenu * menu = guiApp->menus().menu(toqstr("context-toolbars"), * this);
-	menu->exec(QCursor::pos());
 }
 
 
