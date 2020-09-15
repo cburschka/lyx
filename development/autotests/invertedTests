@@ -94,7 +94,7 @@ export/export/latex/languages/nested-inputenc_auto-legacy_pdf2
 
 # ================================================
 Sublabel: lyxbugs
-# LyX bugs with a Trac number.
+# LyX bugs with a Trac number or 'wontfix' ML thread.
 # ================================================
 
 # Dedicated tests in export/latex/lyxbugs start with the ticket number
@@ -159,6 +159,12 @@ export/doc/ar/UserGuide_lyx(22|23)
 #11773 lyx2lyx: language reversion nesting problems with polyglossia
 export/export/lyx2lyx/11773-language-reversion-nesting-polyglossia_lyx2[23]
 export/examples/ko/Welcome_lyx2[23]
+
+# We decided not worth spending time to look into a fix
+# Warning: Malformed LyX document: Missing layout name on line 1876
+# https://www.mail-archive.com/search?l=mid&q=20200915233446.atwbyulny5gsbtyi%40tallinn
+export/examples/ru/Presentations/Beamer_lyx(16|20)
+
 
 # ==============================================================
 Sublabel: ert
