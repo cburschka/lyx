@@ -2217,7 +2217,7 @@ Buffer::ExportStatus Buffer::writeLyXHTMLSource(odocstream & os,
 
 	if (output_preamble) {
 		os << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-		   << "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN\" \"http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd\">\n"
+		   << "<!DOCTYPE html>\n"
 		   // FIXME Language should be set properly.
 		   << "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
 		   << "<head>\n"
