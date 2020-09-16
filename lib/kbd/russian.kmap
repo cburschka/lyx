@@ -1,6 +1,7 @@
-# keyboad mapping for Koi8-r
+# Russian keyboard mapping
 # by Nick Slussar, 1999 <nick@slu.spb.ru>
-# added by Vitaly Lipatov, 2001 (standart russian layout) <vitlav@mail.ru>
+# added by Vitaly Lipatov, 2001 <vitlav@mail.ru>
+# fixed by Yuriy Skalko, 2020 <yuriy.skalko@gmail.com>
 
 \kmap q й
 \kmap w ц
@@ -32,16 +33,8 @@
 \kmap b и
 \kmap n т
 \kmap m ь
-\kmap "," б
-\kmap "." ю
-\kmap "/" .
-\kmap "@" \"
-\kmap "^" :
-\kmap "&" ?
-\kmap "`" ё
-\kmap "~" Ё
-\kmap "$" ;
-
+\kmap \, б
+\kmap . ю
 
 \kmap Q Й
 \kmap W Ц
@@ -73,6 +66,16 @@
 \kmap B И
 \kmap N Т
 \kmap M Ь
-\kmap "<" Б
-\kmap ">" Ю
-\kmap "?" ","
+\kmap < Б
+\kmap > Ю
+
+\kmap / .
+\kmap ? \,
+\kmap ` ё
+\kmap ~ Ё
+\kmap @ \"
+\kmap \# №
+\kmap $ ;
+\kmap ^ :
+\kmap & ?
+\kmap | /
