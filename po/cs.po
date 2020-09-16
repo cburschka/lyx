@@ -2166,7 +2166,7 @@ msgstr "Zo&braz náhled"
 msgid ""
 "File name to include. (You can create a new file by entering the name of one "
 "that does not yet exist.)"
-msgstr ""
+msgstr "Jméno souboru. (K vytvoření nového souboru, stačí zadat neexistující jméno souboru.)"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:309
 msgid "&Include Type:"
@@ -9117,9 +9117,8 @@ msgid "American Psychological Association (APA), v. 6"
 msgstr "American Psychological Association (APA), v. 6"
 
 #: lib/layouts/apa7.layout:3
-#, fuzzy
 msgid "American Psychological Association (APA), v. 7"
-msgstr "American Psychological Association (APA), v. 6"
+msgstr "American Psychological Association (APA), v. 7"
 
 #: lib/layouts/apax.inc:112
 msgid "FiveAuthors"
@@ -9188,28 +9187,24 @@ msgid "*"
 msgstr "*"
 
 #: lib/layouts/apax.inc:527
-#, fuzzy
 msgid "Course"
-msgstr "Courier"
+msgstr "Course"
 
 #: lib/layouts/apax.inc:543
-#, fuzzy
 msgid "Course: "
-msgstr "Courier"
+msgstr "Course: "
 
 #: lib/layouts/apax.inc:551
 msgid "addORCIDlink"
-msgstr ""
+msgstr "addORCIDlink"
 
 #: lib/layouts/apax.inc:555
-#, fuzzy
 msgid "ORCID-link: "
-msgstr "ORCID: "
+msgstr "ORCID-link: "
 
 #: lib/layouts/apax.inc:563
-#, fuzzy
 msgid "Author-name"
-msgstr "Author name"
+msgstr "Author-name"
 
 #: lib/layouts/arab-article.layout:3
 msgid "Arabic Article"
@@ -10251,7 +10246,6 @@ msgid "Custom Header/Footerlines"
 msgstr "Vlastní hlavičky/patičky"
 
 #: lib/layouts/customHeadersFooters.module:7
-#, fuzzy
 msgid ""
 "Adds environments to define header and footer lines. NOTE: To use this "
 "module you must set the 'Page style' in the menu Document Settings -> Page "
@@ -13728,37 +13722,32 @@ msgid "Entry"
 msgstr "Heslo"
 
 #: lib/layouts/moderncv.layout:334 lib/layouts/moderncv.layout:335
-#, fuzzy
 msgid "Years"
-msgstr "Year"
+msgstr "Years"
 
 #: lib/layouts/moderncv.layout:340
 msgid "Degree or job title"
-msgstr ""
+msgstr "Degree or job title"
 
 #: lib/layouts/moderncv.layout:348
-#, fuzzy
 msgid "Institution or employer"
-msgstr "Institution"
+msgstr "Institution or employer"
 
 #: lib/layouts/moderncv.layout:355
-#, fuzzy
 msgid "Localization"
-msgstr "Location"
+msgstr "Localization"
 
 #: lib/layouts/moderncv.layout:356
-#, fuzzy
 msgid "City or country"
-msgstr "Country"
+msgstr "City or country"
 
 #: lib/layouts/moderncv.layout:360
-#, fuzzy
 msgid "Optional"
-msgstr "volitelné"
+msgstr "Optional"
 
 #: lib/layouts/moderncv.layout:361
 msgid "Grade or other info"
-msgstr ""
+msgstr "Grade or other info"
 
 #: lib/layouts/moderncv.layout:367
 msgid "Entry:"
@@ -20654,9 +20643,8 @@ msgid "Blackboard\t\\mathbb"
 msgstr "Tabule\t\\mathbb"
 
 #: lib/ui/stdtoolbars.inc:415
-#, fuzzy
 msgid "Double stroke\t\\mathds"
-msgstr "Double Item:"
+msgstr "Dvojný tah\t\\mathds"
 
 #: lib/ui/stdtoolbars.inc:416
 msgid "Fraktur\t\\mathfrak"
