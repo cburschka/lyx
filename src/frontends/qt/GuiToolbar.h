@@ -177,8 +177,6 @@ private:
 	void fill();
 	///
 	void showEvent(QShowEvent *);
-	///
-	bool eventFilter(QObject * obj, QEvent * ev);
 
 	///
 	QList<Action *> actions_;
