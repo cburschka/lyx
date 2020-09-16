@@ -53,6 +53,8 @@ else:
         gm = True
         # we need version to be a valid integer 3-tuple
         version = (1,0,0)
+    else:
+        version = (0,0,0)
 
 # IM >= 5.5.8 separates options for source and target files
 # See http://www.imagemagick.org/Usage/basics/#why
