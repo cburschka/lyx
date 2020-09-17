@@ -2216,11 +2216,12 @@ dist_kbd_DATA = \
 	kbd/american-2.kmap \
 	kbd/american.kmap \
 	kbd/arabic.kmap \
-	kbd/bg-bds-1251.kmap \
 	kbd/brazil.kmap \
 	kbd/brazil2.kmap \
+	kbd/bulgarian.kmap \
 	kbd/czech-prg.kmap \
 	kbd/czech.kmap \
+	kbd/espanol.kmap \
 	kbd/european.kmap \
 	kbd/farsi.kmap \
 	kbd/francais.kmap \
@@ -2230,8 +2231,6 @@ dist_kbd_DATA = \
 	kbd/german.kmap \
 	kbd/greek.kmap \
 	kbd/hebrew.kmap \
-	kbd/koi8-r.kmap \
-	kbd/koi8-u.kmap \
 	kbd/latvian.kmap \
 	kbd/magyar-2.kmap \
 	kbd/magyar-3.kmap \
@@ -2241,6 +2240,7 @@ dist_kbd_DATA = \
 	kbd/polski.kmap \
 	kbd/portuges.kmap \
 	kbd/romanian.kmap \
+	kbd/russian.kmap \
 	kbd/serbian.kmap \
 	kbd/serbocroatian.kmap \
 	kbd/sf.kmap \
@@ -2251,7 +2251,7 @@ dist_kbd_DATA = \
 	kbd/transilvanian.kmap \
 	kbd/turkish-f.kmap \
 	kbd/turkish.kmap \
-	kbd/espanol.kmap
+	kbd/ukrainian.kmap
 
 layoutsdir = $(pkgdatadir)/layouts
 dist_layouts_DATA =\
