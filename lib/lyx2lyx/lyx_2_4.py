@@ -3606,7 +3606,7 @@ def convert_totalheight(document):
                     unit = relative_heights[unit]
                 if k != -1:
                     if special != "":
-                        val = val + "," + special
+                        val = val + unit + "," + special
                     document.body[k] = "\tspecial " + "height=" + val
                 else:
                     document.body.insert(kk + 1, "\tspecial height=" + val + unit)
