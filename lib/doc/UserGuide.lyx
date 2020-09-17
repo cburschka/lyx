@@ -204,7 +204,13 @@ literal "false"
 \begin_inset Newline newline
 \end_inset
 
-Version 2.3.x
+Version 2.
+\change_deleted -131811572 1600339801
+3
+\change_inserted -131811572 1600339801
+4
+\change_unchanged
+.x
 \begin_inset Note Note
 status collapsed
 
@@ -1726,6 +1732,8 @@ steps to minimize memory overhead.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -131811572 1600338243
 Note that if you undo all changes to arrive at the document as it was last
  saved, the 
 \begin_inset Quotes eld
@@ -13174,7 +13182,7 @@ text
 \change_unchanged
  styles rather than specifying a particular font.
  For example, instead of changing to an italicized version of the current
- font to emphasize text, you use an 
+ font, to emphasize text you use an 
 \begin_inset Quotes eld
 \end_inset
 
@@ -13182,7 +13190,7 @@ emphasized style
 \begin_inset Quotes erd
 \end_inset
 
- instead.
+.
  This concept fits in perfectly with \SpecialChar LyX
 .
  In \SpecialChar LyX
@@ -17031,12 +17039,28 @@ name "subsec:Output-file-formats"
 \end_layout
 
 \begin_layout Subsubsection
-Simple text (ASCII)
+
+\change_deleted -131811572 1600337594
+Simple
+\change_inserted -131811572 1600337596
+Plain
+\change_unchanged
+ text
+\change_deleted -131811572 1600337574
+ (ASCII)
+\change_unchanged
+
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-File formats ! ASCII
+File formats ! 
+\change_deleted -131811572 1600337607
+ASCII
+\change_inserted -131811572 1600337612
+Plain text
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -17058,7 +17082,11 @@ This file type has the extension
 \end_inset
 
 .
- It contains your document as plain text following the rules of the 
+ It contains your document as plain text 
+\change_inserted -131811572 1600337643
+in UTF-8 encoding
+\change_deleted -131811572 1600337647
+following the rules of the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -17066,11 +17094,19 @@ American Standard Code for Information Interchange
 \begin_inset Quotes erd
 \end_inset
 
- (ASCII).
+ (ASCII)
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Standard
-You can export your document to ASCII with the menu 
+You can export your document to 
+\change_deleted -131811572 1600337684
+ASCII
+\change_inserted -131811572 1600337686
+plain text
+\change_unchanged
+ with the menu 
 \family sans
 File\SpecialChar menuseparator
 Export\SpecialChar menuseparator
@@ -17127,7 +17163,13 @@ text
 \family default
 .
  This will first internally export your document to PostScript (generating
- thereby the external material) and then do the conversion to ASCII.
+ thereby the external material) and then do the conversion to 
+\change_deleted -131811572 1600337720
+ASCII
+\change_inserted -131811572 1600337722
+plain text
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -20040,6 +20082,16 @@ g., in Japan)
 status collapsed
 
 \begin_layout Plain Layout
+
+\change_inserted -131811572 1600338376
+\begin_inset CommandInset label
+LatexCommand label
+name "fn:cjk-quotes"
+
+\end_inset
+
+
+\change_unchanged
 Note that these characters are just emulated with similar-looking math symbols
  in many encodings that do not cover these glyphs.
 \end_layout
@@ -20107,6 +20159,32 @@ these inner
 \end_inset
 
 g., in North Korea and China)
+\change_inserted -131811572 1600338410
+
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+
+\change_inserted -131811572 1600338410
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fn:cjk-quotes"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_deleted -131811572 1600338417
+
 \begin_inset Foot
 status collapsed
 
@@ -20117,6 +20195,8 @@ Note that these characters are just emulated with similar-looking math symbols
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -29154,7 +29234,25 @@ Enabling AMS-Support
 
 \begin_layout Standard
 You can make the facilities of the AMS-packages explicitly available in
- the document by selecting the checkbox 
+ the document by
+\change_inserted -131811572 1600338725
+ setting 
+\family sans
+Load always
+\family default
+ for 
+\series bold
+amsmath
+\series default
+ and 
+\series bold
+amssymb
+\series default
+ packages
+\change_unchanged
+ 
+\change_deleted -131811572 1600338685
+selecting the checkbox 
 \family sans
 Use
 \begin_inset space ~
@@ -29169,6 +29267,8 @@ math
 \end_inset
 
 package
+\change_unchanged
+
 \family default
  in the 
 \family sans
@@ -29697,7 +29797,8 @@ prettyref
 \series bold
 
 \backslash
-newrefformat
+newref\SpecialChar ligaturebreak
+format
 \series default
  (prettyref) or 
 \series bold
@@ -29765,7 +29866,8 @@ prettyref
 \series bold
 
 \backslash
-newrefformat{prop}{Proposition 
+newref\SpecialChar ligaturebreak
+format{prop}{Proposition 
 \backslash
 ref{#1}}
 \series default
@@ -45623,6 +45725,14 @@ arg   "master-buffer-view"
 
 \family sans
 Document\SpecialChar menuseparator
+
+\change_inserted -131811572 1600333746
+View
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
 Master
 \begin_inset space ~
 \end_inset
@@ -45696,7 +45806,13 @@ arg   "buffer-toggle-output-sync"
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
-Output\SpecialChar menuseparator
+
+\change_deleted -131811572 1600333766
+Output
+\change_inserted -131811572 1600333762
+Formats
+\change_unchanged
+\SpecialChar menuseparator
 Synchronize with Output
 \end_layout
 
@@ -50139,8 +50255,18 @@ Modify
 Modifying an existing shortcut is done the same way.
  You can also bind multiple functions to one shortcut by starting the \SpecialChar LyX
  Function
- definition with “command alternatives” and following it with the different
- function names as a semicolon separated list.
+ definition with “
+\family typewriter
+command
+\change_deleted -131811572 1600337868
+ 
+\change_inserted -131811572 1600337869
+-
+\change_unchanged
+alternatives
+\family default
+” and following it with the different function names as a semicolon separated
+ list.
  \SpecialChar LyX
  will then use the first function that is enabled in the current document
  part.
@@ -50264,7 +50390,7 @@ Settings ! Keyboard Map
 
 \begin_layout Standard
 Normally keyboard settings are made in a menu of your operating system.
- For the case thatWhere this is not possible, \SpecialChar LyX
+ For the case where this is not possible, \SpecialChar LyX
  provides keyboard maps.
  If, for example, you have a Czech keyboard but want to use it as if it
  is a Romanian one, you can enable 
