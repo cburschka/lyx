@@ -134,6 +134,8 @@
 #   and \citation_search_view.
 #   No conversion necessary.
 
+# Incremented to format 34, by yuriy
+#   Rename *.kmap files for Cyrillic languages
 
 # NOTE: The format should also be updated in LYXRC.cpp and
 # in configure.py.
@@ -439,6 +441,16 @@ def remove_use_pixmap_cache(line):
 		return no_match
 	return (True, "")
 
+def rename_cyrillic_kmap_files(line):
+	line = line.lower()
+	if not (line.startswith("\\kbmap_primary ")
+			or line.startswith("\\kbmap_secondary ")):
+		return no_match
+	line = line.replace('"bg-bds-1251"', '"bulgarian"')
+	line = line.replace('"koi8-r"', '"russian"')
+	line = line.replace('"koi8-u"', '"ukrainian"')
+	return (True, line)
+
 # End conversions for LyX 2.3 to 2.4
 ####################################
 
@@ -486,5 +498,6 @@ conversions = [
 	[ 30, []],
 	[ 31, []],
 	[ 32, []],
-	[ 33, []]
+	[ 33, []],
+	[ 34, [rename_cyrillic_kmap_files]]
 ]
