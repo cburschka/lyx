@@ -639,7 +639,7 @@ def parseExamplesTemplates(file, seen, output):
       for sfile in glob.glob( os.path.join(file, '*') ):
           parseExamplesTemplates(sfile, seen, output)
 
-  filename = file.split(os.sep)[-1]
+  filename = os.path.normpath(os.path.realpath(file)).split(os.sep)[-1]
   if os.path.isfile(file):
       if filename[-4:] != ".lyx":
           return
@@ -659,7 +659,7 @@ def tabletemplates_l10n(input_files, output, base):
   # only record each item once
   seen = []
   for file in input_files:
-      filename = file.split(os.sep)[-1]
+      filename = os.path.normpath(os.path.realpath(file)).split(os.sep)[-1]
       if os.path.isfile(file):
           if filename[-4:] != ".lyx":
               continue
