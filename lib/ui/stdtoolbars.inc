@@ -72,7 +72,7 @@ Format 5
 
 ToolbarSet
 
-	Toolbar "standard" "Standard"
+	Toolbar "standard" "Standard[[toolbar]]"
 		Layouts
 		Item "New document" "buffer-new"
 		Item "Open document" "file-open"
