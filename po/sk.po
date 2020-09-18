@@ -4489,8 +4489,8 @@ msgid ""
 "If this is checked, pressing OK or Apply will save the changes only for the "
 "current LyX session, not permanently."
 msgstr ""
-"Keď zaškrtnuté, tlačením 'OK' alebo 'Použiť' sa zmeny ukladnú len pre "
-"súčasné LyX-sedenie a nie na trvalo."
+"Keď zaškrtnuté, tlačením 'OK' alebo 'Použiť' sa zmeny uložia len pre súčasné "
+"LyX-sedenie a nie na trvalo."
 
 #: src/frontends/qt4/ui/PrefsUi.ui:90
 msgid "A&pply to current session only"
@@ -28046,9 +28046,8 @@ msgid "Other ("
 msgstr "Iné ("
 
 #: src/Text.cpp:1962
-#, fuzzy
 msgid ", Style: "
-msgstr "CV štýl:"
+msgstr ", štýl: "
 
 #: src/Text.cpp:1966
 msgid ", Paragraph: "
