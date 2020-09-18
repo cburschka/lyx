@@ -3777,7 +3777,7 @@ def revert_counter_inset(document):
             ert = put_cmd_in_ert("\\setcounter{%s}{\\value{%s}}" % (cnt, savecnt))
         else:
             document.warning("Unknown counter command `%s' in inset at line %d!" % (cnt, i))
-            
+
         if ert:
             document.body[i : j + 1] = ert
         i += 1
@@ -3804,7 +3804,7 @@ def revert_ams_spaces(document):
         subst = put_cmd_in_ert(inset)
         document.body[i : end + 1] = subst
         Found = True
-      
+
     if Found == True:
         # load amsmath in the preamble if not already loaded
         i = find_token(document.header, "\\use_package amsmath 2", 0)
@@ -3815,18 +3815,18 @@ def revert_ams_spaces(document):
 
 def convert_parskip(document):
     " Move old parskip settings to preamble "
-    
+
     i = find_token(document.header, "\\paragraph_separation skip", 0)
     if i == -1:
         return
-    
+
     j = find_token(document.header, "\\defskip", 0)
     if j == -1:
         document.warning("Malformed LyX document! Missing \\defskip.")
         return
-    
+
     val = get_value(document.header, "\\defskip", j)
-    
+
     skipval = "\\medskipamount"
     if val == "smallskip" or val == "medskip" or val == "bigskip":
         skipval = "\\" + val + "amount"
@@ -3834,25 +3834,25 @@ def convert_parskip(document):
         skipval = val
 
     add_to_preamble(document, ["\\setlength{\\parskip}{" + skipval + "}", "\\setlength{\\parindent}{0pt}"])
-    
+
     document.header[i] = "\\paragraph_separation indent"
     document.header[j] = "\\paragraph_indentation default"
 
 
 def revert_parskip(document):
     " Revert new parskip settings to preamble "
-    
+
     i = find_token(document.header, "\\paragraph_separation skip", 0)
     if i == -1:
         return
-    
+
     j = find_token(document.header, "\\defskip", 0)
     if j == -1:
         document.warning("Malformed LyX document! Missing \\defskip.")
         return
-    
+
     val = get_value(document.header, "\\defskip", j)
-    
+
     skipval = ""
     if val == "smallskip" or val == "medskip" or val == "bigskip":
         skipval = "[skip=\\" + val + "amount]"
@@ -3860,9 +3860,9 @@ def revert_parskip(document):
         skipval = "[skip=\\baselineskip]"
     elif val != "halfline":
         skipval = "[skip={" + val + "}]"
-    
+
     add_to_preamble(document, ["\\usepackage" + skipval + "{parskip}"])
-    
+
     document.header[i] = "\\paragraph_separation indent"
     document.header[j] = "\\paragraph_indentation default"
 
