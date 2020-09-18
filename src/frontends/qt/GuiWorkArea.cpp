@@ -130,7 +130,7 @@ namespace frontend {
 class CaretWidget {
 public:
 	CaretWidget() : rtl_(false), l_shape_(false), completable_(false),
-		x_(0), caret_width_(0)
+		x_(0), caret_width_(0), slant_(false), ascent_(0)
 	{}
 
 	/* Draw the caret. Parameter \c horiz_offset is not 0 when there
@@ -143,44 +143,57 @@ public:
 
 		int const x = x_ - horiz_offset;
 		int const y = rect_.top();
-		int const l = x_ - rect_.left();
-		int const r = rect_.right() - x_;
+		int const lx = rtl_ ? x_ - rect_.left() : rect_.right() - x_;
 		int const bot = rect_.bottom();
+		int const dir = rtl_ ? -1 : 1;
+		// this is almost equal to tan(14 * PI / 180)
+		qreal const slope = 0.25;
 
-		// draw vertical line
-		painter.fillRect(x, y, caret_width_, rect_.height(), color_);
+		// draw caret box
+		if (slant_ && !rtl_) {
+			// slanted (14 degree angle)
+			QPainterPath path;
+			path.moveTo(x + ascent_ * slope, y);
+			path.lineTo(x - (rect_.height() - ascent_) * slope, y + rect_.height());
+			path.lineTo(x + dir * caret_width_ - (rect_.height() - ascent_) * slope,
+			            y + rect_.height());
+			path.lineTo(x + dir * caret_width_ + ascent_ * slope, y);
+			painter.setRenderHint(QPainter::Antialiasing, true);
+			painter.fillPath(path, color_);
+			painter.setRenderHint(QPainter::Antialiasing, false);
+		} else
+			// regular
+			painter.fillRect(x, y, dir * caret_width_, rect_.height(), color_);
 
 		// draw RTL/LTR indication
 		painter.setPen(color_);
 		if (l_shape_) {
-			if (rtl_)
-				painter.drawLine(x, bot, x - l + 1, bot);
-			else
-				painter.drawLine(x, bot, x + caret_width_ + r - 1, bot);
+			painter.drawLine(x, bot, x + dir * (caret_width_ + lx - 1), bot);
 		}
 
 		// draw completion triangle
 		if (completable_) {
-			int m = y + rect_.height() / 2;
-			int d = TabIndicatorWidth - 1;
-			if (rtl_) {
-				painter.drawLine(x - 1, m - d, x - 1 - d, m);
-				painter.drawLine(x - 1, m + d, x - 1 - d, m);
-			} else {
-				painter.drawLine(x + caret_width_, m - d, x + caret_width_ + d, m);
-				painter.drawLine(x + caret_width_, m + d, x + caret_width_ + d, m);
-			}
+			int const m = y + rect_.height() / 2;
+			int const d = TabIndicatorWidth - 1;
+			// offset for slanted carret
+			int const sx = (slant_ && !rtl_) ? (ascent_ - (rect_.height() / 2 - d)) * slope : 0;
+			painter.drawLine(x + dir * (caret_width_ + 1) + sx, m - d,
+			                 x + dir * (caret_width_ + d + 1) + sx, m);
+			painter.drawLine(x + dir * (caret_width_ + 1) + sx, m + d,
+			                 x + dir * (caret_width_ + d + 1) + sx, m);
 		}
 	}
 
 	void update(int x, int y, int h, bool l_shape,
-		bool rtl, bool completable)
+		bool rtl, bool completable, bool slant, int ascent)
 	{
 		color_ = guiApp->colorCache().get(Color_cursor);
 		l_shape_ = l_shape;
 		rtl_ = rtl;
 		completable_ = completable;
 		x_ = x;
+		slant_ = slant;
+		ascent_ = ascent;
 
 		// extension to left and right
 		int l = 0;
@@ -228,6 +241,10 @@ private:
 	int x_;
 	/// the width of the vertical blinking bar
 	int caret_width_;
+	/// caret is in slanted text
+	bool slant_;
+	/// the fontmetrics ascent for drawing slanted caret
+	int ascent_;
 };
 
 
@@ -631,6 +648,7 @@ void GuiWorkArea::Private::updateCaretGeometry()
 	// RTL or not RTL
 	bool l_shape = false;
 	Font const & realfont = buffer_view_->cursor().real_current_font;
+	FontMetrics const & fm = theFontMetrics(realfont.fontInfo());
 	BufferParams const & bp = buffer_view_->buffer().params();
 	bool const samelang = realfont.language() == bp.language;
 	bool const isrtl = realfont.isVisibleRightToLeft();
@@ -649,7 +667,11 @@ void GuiWorkArea::Private::updateCaretGeometry()
 		&& !completer_->popupVisible()
 		&& !completer_->inlineVisible();
 
-	caret_->update(point.x_, point.y_, h, l_shape, isrtl, completable);
+	caret_->update(point.x_, point.y_, h, l_shape, isrtl, completable,
+		// use slanted caret for italics in text edit mode
+		fm.italic() && buffer_view_->cursor().inTexted()
+		// except for selections because the selection rect does not slant
+		&& !buffer_view_->cursor().selection(), fm.maxAscent());
 	needs_caret_geometry_update_ = false;
 }
 
