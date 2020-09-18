@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-09-16 11:59+0200\n"
+"POT-Creation-Date: 2020-09-18 11:05-0400\n"
 "PO-Revision-Date: 2019-11-21 01:09-0800\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -2166,7 +2166,9 @@ msgstr "Zo&braz náhled"
 msgid ""
 "File name to include. (You can create a new file by entering the name of one "
 "that does not yet exist.)"
-msgstr "Jméno souboru. (K vytvoření nového souboru, stačí zadat neexistující jméno souboru.)"
+msgstr ""
+"Jméno souboru. (K vytvoření nového souboru, stačí zadat neexistující jméno "
+"souboru.)"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:309
 msgid "&Include Type:"
@@ -26004,7 +26006,7 @@ msgstr "Dokument %1$s vložen."
 msgid "Could not insert document %1$s"
 msgstr "Nepodařilo se vložit dokument %1$s"
 
-#: src/BufferView.cpp:3337
+#: src/BufferView.cpp:3342
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -26015,11 +26017,11 @@ msgstr ""
 "%1$s\n"
 "způsobeno chybou: %2$s"
 
-#: src/BufferView.cpp:3339
+#: src/BufferView.cpp:3344
 msgid "Could not read file"
 msgstr "Soubor nelze přečíst"
 
-#: src/BufferView.cpp:3346
+#: src/BufferView.cpp:3351
 #, c-format
 msgid ""
 "%1$s\n"
@@ -26028,15 +26030,15 @@ msgstr ""
 "%1$s\n"
 " nelze přečíst."
 
-#: src/BufferView.cpp:3347 src/output.cpp:39
+#: src/BufferView.cpp:3352 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Nelze otevřít soubor"
 
-#: src/BufferView.cpp:3354
+#: src/BufferView.cpp:3359
 msgid "Reading not UTF-8 encoded file"
 msgstr "Načítání souboru v jiném kódování nežli je UTF-8"
 
-#: src/BufferView.cpp:3355
+#: src/BufferView.cpp:3360
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -26679,7 +26681,7 @@ msgstr "Výstup je prázdný"
 msgid "No output file was generated."
 msgstr "Nebyl vygenerován výstupní soubor."
 
-#: src/Cursor.cpp:1111 src/Text.cpp:1960
+#: src/Cursor.cpp:1111 src/Text.cpp:1965
 msgid ", Inset: "
 msgstr ", Vložka: "
 
@@ -26687,7 +26689,7 @@ msgstr ", Vložka: "
 msgid ", Cell: "
 msgstr ", Buňka: "
 
-#: src/Cursor.cpp:1113 src/Text.cpp:1963
+#: src/Cursor.cpp:1113 src/Text.cpp:1968
 msgid ", Position: "
 msgstr ", Pozice: "
 
@@ -28005,19 +28007,24 @@ msgstr "Jedna a půl"
 msgid "Other ("
 msgstr "Další ("
 
-#: src/Text.cpp:1961
+#: src/Text.cpp:1962
+#, fuzzy
+msgid ", Style: "
+msgstr "CV Style:"
+
+#: src/Text.cpp:1966
 msgid ", Paragraph: "
 msgstr ", Odstavec: "
 
-#: src/Text.cpp:1962
+#: src/Text.cpp:1967
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1969
+#: src/Text.cpp:1974
 msgid ", Char: 0x"
 msgstr ", Znak: 0x"
 
-#: src/Text.cpp:1971
+#: src/Text.cpp:1976
 msgid ", Boundary: "
 msgstr ", Okraj: "
 
@@ -31774,27 +31781,27 @@ msgstr "Náhled kódu"
 msgid "%1[[preview format name]] Preview"
 msgstr "%1 Ukázka"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1626
+#: src/frontends/qt4/GuiWorkArea.cpp:1635
 msgid "Close File"
 msgstr "Zavřít soubor"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2142
+#: src/frontends/qt4/GuiWorkArea.cpp:2151
 msgid "%1 (read only)"
 msgstr "%1 (jen ke čtení)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2146
+#: src/frontends/qt4/GuiWorkArea.cpp:2155
 msgid "%1 (modified externally)"
 msgstr "%1 (externě modifikováno)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2166
+#: src/frontends/qt4/GuiWorkArea.cpp:2175
 msgid "Hide tab"
 msgstr "Skrýt panel"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2168
+#: src/frontends/qt4/GuiWorkArea.cpp:2177
 msgid "Close tab"
 msgstr "Zavřít panel"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2207
+#: src/frontends/qt4/GuiWorkArea.cpp:2216
 msgid "<b>The file %1 changed on disk.</b>"
 msgstr "<b>Soubor %1 byl změněn na disku.</b>"
 

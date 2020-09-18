@@ -94,7 +94,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-09-03 07:43+0200\n"
+"POT-Creation-Date: 2020-09-18 11:05-0400\n"
 "PO-Revision-Date: 2020-09-03 07:46+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
@@ -6117,12 +6117,11 @@ msgstr "Abstract"
 #: lib/layouts/theorems-ams-extended-bytype.module:319
 #: lib/layouts/theorems-ams-extended-bytype.module:334
 #: lib/layouts/theorems-ams-extended-bytype.module:337
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:75
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:368
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:381
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:384
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:399
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:402
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:357
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:370
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:373
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:388
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:391
 #: lib/layouts/theorems-ams-extended.module:276
 #: lib/layouts/theorems-ams-extended.module:285
 #: lib/layouts/theorems-ams-extended.module:288
@@ -6133,7 +6132,7 @@ msgstr "Danksagung"
 
 #: lib/layouts/AEA.layout:107 lib/layouts/egs.layout:566
 #: lib/layouts/theorems-ams-extended-bytype.module:328
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:393
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:382
 #: lib/layouts/theorems-ams-extended.module:296
 msgid "Acknowledgement."
 msgstr "Danksagung."
@@ -6218,10 +6217,9 @@ msgstr "Text einer Tabellenanmerkung"
 #: lib/layouts/theorems-ams-bytype.inc:55
 #: lib/layouts/theorems-ams-bytype.inc:94
 #: lib/layouts/theorems-ams-bytype.inc:97
-#: lib/layouts/theorems-ams-chap-bytype.inc:30
-#: lib/layouts/theorems-ams-chap-bytype.inc:84
-#: lib/layouts/theorems-ams-chap-bytype.inc:127
-#: lib/layouts/theorems-ams-chap-bytype.inc:130 lib/layouts/theorems-ams.inc:27
+#: lib/layouts/theorems-ams-chap-bytype.inc:71
+#: lib/layouts/theorems-ams-chap-bytype.inc:114
+#: lib/layouts/theorems-ams-chap-bytype.inc:117 lib/layouts/theorems-ams.inc:27
 #: lib/layouts/theorems-ams.inc:66 lib/layouts/theorems-ams.inc:69
 #: lib/layouts/theorems-bytype.inc:27 lib/layouts/theorems-bytype.inc:63
 #: lib/layouts/theorems-bytype.inc:66
@@ -6248,12 +6246,11 @@ msgstr "Theorem"
 #: lib/layouts/theorems-ams-extended-bytype.module:109
 #: lib/layouts/theorems-ams-extended-bytype.module:124
 #: lib/layouts/theorems-ams-extended-bytype.module:127
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:51
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:133
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:146
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:149
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:164
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:167
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:122
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:135
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:138
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:153
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:156
 #: lib/layouts/theorems-ams-extended.module:70
 #: lib/layouts/theorems-ams-extended.module:80
 #: lib/layouts/theorems-ams-extended.module:83
@@ -6268,12 +6265,11 @@ msgstr "Algorithmus"
 #: lib/layouts/theorems-ams-extended-bytype.module:144
 #: lib/layouts/theorems-ams-extended-bytype.module:159
 #: lib/layouts/theorems-ams-extended-bytype.module:162
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:55
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:172
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:185
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:188
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:203
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:206
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:161
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:174
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:177
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:192
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:195
 #: lib/layouts/theorems-ams-extended.module:105
 #: lib/layouts/theorems-ams-extended.module:115
 #: lib/layouts/theorems-ams-extended.module:118
@@ -6302,10 +6298,9 @@ msgstr "Fall \\thecase."
 #: lib/layouts/svmono.layout:83 lib/layouts/theorems-ams-bytype.inc:320
 #: lib/layouts/theorems-ams-bytype.inc:330
 #: lib/layouts/theorems-ams-bytype.inc:333
-#: lib/layouts/theorems-ams-chap-bytype.inc:78
-#: lib/layouts/theorems-ams-chap-bytype.inc:397
-#: lib/layouts/theorems-ams-chap-bytype.inc:411
-#: lib/layouts/theorems-ams-chap-bytype.inc:414
+#: lib/layouts/theorems-ams-chap-bytype.inc:384
+#: lib/layouts/theorems-ams-chap-bytype.inc:398
+#: lib/layouts/theorems-ams-chap-bytype.inc:401
 #: lib/layouts/theorems-ams.inc:284 lib/layouts/theorems-ams.inc:293
 #: lib/layouts/theorems-ams.inc:296 lib/layouts/theorems-bytype.inc:289
 #: lib/layouts/theorems-bytype.inc:299 lib/layouts/theorems-bytype.inc:302
@@ -6327,12 +6322,11 @@ msgstr "Behauptung"
 #: lib/layouts/theorems-ams-extended-bytype.module:354
 #: lib/layouts/theorems-ams-extended-bytype.module:369
 #: lib/layouts/theorems-ams-extended-bytype.module:372
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:79
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:407
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:420
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:423
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:438
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:441
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:396
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:409
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:412
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:427
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:430
 #: lib/layouts/theorems-ams-extended.module:310
 #: lib/layouts/theorems-ams-extended.module:319
 #: lib/layouts/theorems-ams-extended.module:322
@@ -6347,12 +6341,11 @@ msgstr "Schlussfolgerung"
 #: lib/layouts/theorems-ams-extended-bytype.module:179
 #: lib/layouts/theorems-ams-extended-bytype.module:194
 #: lib/layouts/theorems-ams-extended-bytype.module:197
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:59
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:211
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:224
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:227
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:242
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:245
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:200
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:213
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:216
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:231
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:234
 #: lib/layouts/theorems-ams-extended.module:140
 #: lib/layouts/theorems-ams-extended.module:149
 #: lib/layouts/theorems-ams-extended.module:152
@@ -6367,10 +6360,9 @@ msgstr "Bedingung"
 #: lib/layouts/siamltex.layout:108 lib/layouts/theorems-ams-bytype.inc:157
 #: lib/layouts/theorems-ams-bytype.inc:166
 #: lib/layouts/theorems-ams-bytype.inc:169
-#: lib/layouts/theorems-ams-chap-bytype.inc:46
+#: lib/layouts/theorems-ams-chap-bytype.inc:189
 #: lib/layouts/theorems-ams-chap-bytype.inc:202
-#: lib/layouts/theorems-ams-chap-bytype.inc:215
-#: lib/layouts/theorems-ams-chap-bytype.inc:218
+#: lib/layouts/theorems-ams-chap-bytype.inc:205
 #: lib/layouts/theorems-ams.inc:129 lib/layouts/theorems-ams.inc:139
 #: lib/layouts/theorems-ams.inc:142 lib/layouts/theorems-bytype.inc:126
 #: lib/layouts/theorems-bytype.inc:135 lib/layouts/theorems-bytype.inc:138
@@ -6393,10 +6385,9 @@ msgstr "Vermutung"
 #: lib/layouts/theorems-ams-bytype.inc:103
 #: lib/layouts/theorems-ams-bytype.inc:113
 #: lib/layouts/theorems-ams-bytype.inc:116
-#: lib/layouts/theorems-ams-chap-bytype.inc:34
-#: lib/layouts/theorems-ams-chap-bytype.inc:136
-#: lib/layouts/theorems-ams-chap-bytype.inc:150
-#: lib/layouts/theorems-ams-chap-bytype.inc:153 lib/layouts/theorems-ams.inc:75
+#: lib/layouts/theorems-ams-chap-bytype.inc:123
+#: lib/layouts/theorems-ams-chap-bytype.inc:137
+#: lib/layouts/theorems-ams-chap-bytype.inc:140 lib/layouts/theorems-ams.inc:75
 #: lib/layouts/theorems-ams.inc:85 lib/layouts/theorems-ams.inc:88
 #: lib/layouts/theorems-bytype.inc:72 lib/layouts/theorems-bytype.inc:81
 #: lib/layouts/theorems-bytype.inc:84
@@ -6417,12 +6408,11 @@ msgstr "Korollar"
 #: lib/layouts/theorems-ams-extended-bytype.module:75
 #: lib/layouts/theorems-ams-extended-bytype.module:89
 #: lib/layouts/theorems-ams-extended-bytype.module:92
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:47
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:94
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:107
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:110
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:125
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:128
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:83
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:96
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:99
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:114
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:117
 #: lib/layouts/theorems-ams-extended.module:36
 #: lib/layouts/theorems-ams-extended.module:46
 #: lib/layouts/theorems-ams-extended.module:49
@@ -6438,10 +6428,9 @@ msgstr "Kriterium"
 #: lib/layouts/theorems-ams-bytype.inc:193
 #: lib/layouts/theorems-ams-bytype.inc:209
 #: lib/layouts/theorems-ams-bytype.inc:212
-#: lib/layouts/theorems-ams-chap-bytype.inc:54
-#: lib/layouts/theorems-ams-chap-bytype.inc:246
-#: lib/layouts/theorems-ams-chap-bytype.inc:266
-#: lib/layouts/theorems-ams-chap-bytype.inc:269
+#: lib/layouts/theorems-ams-chap-bytype.inc:233
+#: lib/layouts/theorems-ams-chap-bytype.inc:253
+#: lib/layouts/theorems-ams-chap-bytype.inc:256
 #: lib/layouts/theorems-ams.inc:165 lib/layouts/theorems-ams.inc:182
 #: lib/layouts/theorems-ams.inc:185 lib/layouts/theorems-bytype.inc:162
 #: lib/layouts/theorems-bytype.inc:178 lib/layouts/theorems-bytype.inc:181
@@ -6461,10 +6450,9 @@ msgstr "Definition"
 #: lib/layouts/llncs.layout:353 lib/layouts/theorems-ams-bytype.inc:218
 #: lib/layouts/theorems-ams-bytype.inc:228
 #: lib/layouts/theorems-ams-bytype.inc:231
-#: lib/layouts/theorems-ams-chap-bytype.inc:58
-#: lib/layouts/theorems-ams-chap-bytype.inc:275
-#: lib/layouts/theorems-ams-chap-bytype.inc:289
-#: lib/layouts/theorems-ams-chap-bytype.inc:292
+#: lib/layouts/theorems-ams-chap-bytype.inc:262
+#: lib/layouts/theorems-ams-chap-bytype.inc:276
+#: lib/layouts/theorems-ams-chap-bytype.inc:279
 #: lib/layouts/theorems-ams.inc:190 lib/layouts/theorems-ams.inc:199
 #: lib/layouts/theorems-ams.inc:202 lib/layouts/theorems-bytype.inc:187
 #: lib/layouts/theorems-bytype.inc:197 lib/layouts/theorems-bytype.inc:200
@@ -6484,10 +6472,9 @@ msgstr "Beispiel"
 #: lib/layouts/theorems-ams-bytype.inc:256
 #: lib/layouts/theorems-ams-bytype.inc:266
 #: lib/layouts/theorems-ams-bytype.inc:269
-#: lib/layouts/theorems-ams-chap-bytype.inc:66
-#: lib/layouts/theorems-ams-chap-bytype.inc:321
-#: lib/layouts/theorems-ams-chap-bytype.inc:335
-#: lib/layouts/theorems-ams-chap-bytype.inc:338
+#: lib/layouts/theorems-ams-chap-bytype.inc:308
+#: lib/layouts/theorems-ams-chap-bytype.inc:322
+#: lib/layouts/theorems-ams-chap-bytype.inc:325
 #: lib/layouts/theorems-ams.inc:224 lib/layouts/theorems-ams.inc:233
 #: lib/layouts/theorems-ams.inc:236 lib/layouts/theorems-bytype.inc:225
 #: lib/layouts/theorems-bytype.inc:235 lib/layouts/theorems-bytype.inc:238
@@ -6512,10 +6499,9 @@ msgstr "Aufgabe"
 #: lib/layouts/theorems-ams-bytype.inc:121
 #: lib/layouts/theorems-ams-bytype.inc:130
 #: lib/layouts/theorems-ams-bytype.inc:133
-#: lib/layouts/theorems-ams-chap-bytype.inc:38
+#: lib/layouts/theorems-ams-chap-bytype.inc:145
 #: lib/layouts/theorems-ams-chap-bytype.inc:158
-#: lib/layouts/theorems-ams-chap-bytype.inc:171
-#: lib/layouts/theorems-ams-chap-bytype.inc:174 lib/layouts/theorems-ams.inc:93
+#: lib/layouts/theorems-ams-chap-bytype.inc:161 lib/layouts/theorems-ams.inc:93
 #: lib/layouts/theorems-ams.inc:103 lib/layouts/theorems-ams.inc:106
 #: lib/layouts/theorems-bytype.inc:90 lib/layouts/theorems-bytype.inc:99
 #: lib/layouts/theorems-bytype.inc:102
@@ -6537,12 +6523,11 @@ msgstr "Lemma"
 #: lib/layouts/theorems-ams-extended-bytype.module:249
 #: lib/layouts/theorems-ams-extended-bytype.module:264
 #: lib/layouts/theorems-ams-extended-bytype.module:267
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:67
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:289
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:302
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:305
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:320
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:323
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:278
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:291
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:294
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:309
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:312
 #: lib/layouts/theorems-ams-extended.module:208
 #: lib/layouts/theorems-ams-extended.module:217
 #: lib/layouts/theorems-ams-extended.module:220
@@ -6555,10 +6540,9 @@ msgstr "Notation"
 #: lib/layouts/llncs.layout:380 lib/layouts/theorems-ams-bytype.inc:237
 #: lib/layouts/theorems-ams-bytype.inc:247
 #: lib/layouts/theorems-ams-bytype.inc:250
-#: lib/layouts/theorems-ams-chap-bytype.inc:62
-#: lib/layouts/theorems-ams-chap-bytype.inc:298
-#: lib/layouts/theorems-ams-chap-bytype.inc:312
-#: lib/layouts/theorems-ams-chap-bytype.inc:315
+#: lib/layouts/theorems-ams-chap-bytype.inc:285
+#: lib/layouts/theorems-ams-chap-bytype.inc:299
+#: lib/layouts/theorems-ams-chap-bytype.inc:302
 #: lib/layouts/theorems-ams.inc:207 lib/layouts/theorems-ams.inc:216
 #: lib/layouts/theorems-ams.inc:219 lib/layouts/theorems-bytype.inc:206
 #: lib/layouts/theorems-bytype.inc:216 lib/layouts/theorems-bytype.inc:219
@@ -6580,10 +6564,9 @@ msgstr "Problem"
 #: lib/layouts/theorems-ams-bytype.inc:139
 #: lib/layouts/theorems-ams-bytype.inc:148
 #: lib/layouts/theorems-ams-bytype.inc:151
-#: lib/layouts/theorems-ams-chap-bytype.inc:42
+#: lib/layouts/theorems-ams-chap-bytype.inc:167
 #: lib/layouts/theorems-ams-chap-bytype.inc:180
-#: lib/layouts/theorems-ams-chap-bytype.inc:193
-#: lib/layouts/theorems-ams-chap-bytype.inc:196
+#: lib/layouts/theorems-ams-chap-bytype.inc:183
 #: lib/layouts/theorems-ams.inc:111 lib/layouts/theorems-ams.inc:121
 #: lib/layouts/theorems-ams.inc:124 lib/layouts/theorems-bytype.inc:108
 #: lib/layouts/theorems-bytype.inc:117 lib/layouts/theorems-bytype.inc:120
@@ -6603,10 +6586,9 @@ msgstr "Satz"
 #: lib/layouts/llncs.layout:414 lib/layouts/theorems-ams-bytype.inc:294
 #: lib/layouts/theorems-ams-bytype.inc:311
 #: lib/layouts/theorems-ams-bytype.inc:314
-#: lib/layouts/theorems-ams-chap-bytype.inc:74
-#: lib/layouts/theorems-ams-chap-bytype.inc:367
-#: lib/layouts/theorems-ams-chap-bytype.inc:388
-#: lib/layouts/theorems-ams-chap-bytype.inc:391
+#: lib/layouts/theorems-ams-chap-bytype.inc:354
+#: lib/layouts/theorems-ams-chap-bytype.inc:375
+#: lib/layouts/theorems-ams-chap-bytype.inc:378
 #: lib/layouts/theorems-ams.inc:258 lib/layouts/theorems-ams.inc:276
 #: lib/layouts/theorems-ams.inc:279 lib/layouts/theorems-bytype.inc:263
 #: lib/layouts/theorems-bytype.inc:280 lib/layouts/theorems-bytype.inc:283
@@ -6623,7 +6605,7 @@ msgstr "Bemerkung"
 
 #: lib/layouts/AEA.layout:276 lib/layouts/ijmpc.layout:364
 #: lib/layouts/ijmpd.layout:373 lib/layouts/theorems-ams-bytype.inc:297
-#: lib/layouts/theorems-ams-chap-bytype.inc:370
+#: lib/layouts/theorems-ams-chap-bytype.inc:357
 #: lib/layouts/theorems-bytype.inc:266
 #: lib/layouts/theorems-without-preamble.inc:325
 msgid "Remark \\theremark."
@@ -6633,10 +6615,9 @@ msgstr "Bemerkung \\theremark."
 #: lib/layouts/svglobal3.layout:86 lib/layouts/theorems-ams-bytype.inc:275
 #: lib/layouts/theorems-ams-bytype.inc:285
 #: lib/layouts/theorems-ams-bytype.inc:288
-#: lib/layouts/theorems-ams-chap-bytype.inc:70
-#: lib/layouts/theorems-ams-chap-bytype.inc:344
-#: lib/layouts/theorems-ams-chap-bytype.inc:358
-#: lib/layouts/theorems-ams-chap-bytype.inc:361
+#: lib/layouts/theorems-ams-chap-bytype.inc:331
+#: lib/layouts/theorems-ams-chap-bytype.inc:345
+#: lib/layouts/theorems-ams-chap-bytype.inc:348
 #: lib/layouts/theorems-ams.inc:241 lib/layouts/theorems-ams.inc:250
 #: lib/layouts/theorems-ams.inc:253 lib/layouts/theorems-bytype.inc:244
 #: lib/layouts/theorems-bytype.inc:254 lib/layouts/theorems-bytype.inc:257
@@ -6651,7 +6632,7 @@ msgid "Solution"
 msgstr "Lösung"
 
 #: lib/layouts/AEA.layout:286 lib/layouts/theorems-ams-bytype.inc:278
-#: lib/layouts/theorems-ams-chap-bytype.inc:347
+#: lib/layouts/theorems-ams-chap-bytype.inc:334
 #: lib/layouts/theorems-bytype.inc:247
 #: lib/layouts/theorems-without-preamble.inc:277
 msgid "Solution \\thesolution."
@@ -6668,12 +6649,11 @@ msgstr "Lösung \\thesolution."
 #: lib/layouts/theorems-ams-extended-bytype.module:284
 #: lib/layouts/theorems-ams-extended-bytype.module:299
 #: lib/layouts/theorems-ams-extended-bytype.module:302
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:71
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:328
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:342
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:345
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:360
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:363
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:317
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:331
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:334
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:349
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:352
 #: lib/layouts/theorems-ams-extended.module:242
 #: lib/layouts/theorems-ams-extended.module:251
 #: lib/layouts/theorems-ams-extended.module:254
@@ -7071,7 +7051,7 @@ msgstr "Biographie ohne Foto"
 #: lib/layouts/ijmpc.layout:335 lib/layouts/ijmpd.layout:338
 #: lib/layouts/llncs.layout:297 lib/layouts/siamltex.layout:118
 #: lib/layouts/svcommon.inc:641 lib/layouts/theorems-ams-bytype.inc:56
-#: lib/layouts/theorems-ams-chap-bytype.inc:85 lib/layouts/theorems-ams.inc:28
+#: lib/layouts/theorems-ams-chap-bytype.inc:72 lib/layouts/theorems-ams.inc:28
 #: lib/layouts/theorems-bytype.inc:28 lib/layouts/theorems-case.inc:28
 #: lib/layouts/theorems-named.module:12 lib/layouts/theorems-named.module:57
 #: lib/layouts/theorems-proof.inc:14 lib/layouts/theorems-starred.inc:27
@@ -8265,7 +8245,7 @@ msgid "List of Tables"
 msgstr "Tabellenverzeichnis"
 
 #: lib/layouts/acmart.layout:539 lib/layouts/theorems-ams-bytype.inc:53
-#: lib/layouts/theorems-ams-chap-bytype.inc:82 lib/layouts/theorems-ams.inc:25
+#: lib/layouts/theorems-ams-chap-bytype.inc:69 lib/layouts/theorems-ams.inc:25
 #: lib/layouts/theorems-starred.inc:24
 #: lib/layouts/theorems-without-preamble.inc:31 lib/layouts/theorems.inc:25
 msgid "Definitions & Theorems"
@@ -8273,7 +8253,7 @@ msgstr "Definitionen & Theoreme"
 
 #: lib/layouts/acmart.layout:555 lib/layouts/beamer.layout:1252
 #: lib/layouts/theorems-ams-bytype.inc:65
-#: lib/layouts/theorems-ams-chap-bytype.inc:94 lib/layouts/theorems-ams.inc:37
+#: lib/layouts/theorems-ams-chap-bytype.inc:81 lib/layouts/theorems-ams.inc:37
 #: lib/layouts/theorems-bytype.inc:35 lib/layouts/theorems-named.module:21
 #: lib/layouts/theorems-starred.inc:38 lib/layouts/theorems.inc:37
 msgid "Additional Theorem Text"
@@ -8281,7 +8261,7 @@ msgstr "Zusätzlicher Theoremtext"
 
 #: lib/layouts/acmart.layout:556 lib/layouts/beamer.layout:1253
 #: lib/layouts/theorems-ams-bytype.inc:66
-#: lib/layouts/theorems-ams-chap-bytype.inc:95 lib/layouts/theorems-ams.inc:38
+#: lib/layouts/theorems-ams-chap-bytype.inc:82 lib/layouts/theorems-ams.inc:38
 #: lib/layouts/theorems-bytype.inc:36 lib/layouts/theorems-named.module:22
 #: lib/layouts/theorems-starred.inc:39 lib/layouts/theorems.inc:38
 msgid "Additional text appended to the theorem header"
@@ -8289,7 +8269,7 @@ msgstr "Zusatztext, der an den Theoremtitel angehängt wird"
 
 #: lib/layouts/acmart.layout:570 lib/layouts/ijmpc.layout:354
 #: lib/layouts/ijmpd.layout:360 lib/layouts/theorems-ams-bytype.inc:80
-#: lib/layouts/theorems-ams-chap-bytype.inc:109 lib/layouts/theorems-ams.inc:52
+#: lib/layouts/theorems-ams-chap-bytype.inc:96 lib/layouts/theorems-ams.inc:52
 #: lib/layouts/theorems-bytype.inc:49
 #: lib/layouts/theorems-without-preamble.inc:59 lib/layouts/theorems.inc:52
 msgid "Theorem \\thetheorem."
@@ -9366,12 +9346,11 @@ msgstr "Sechs Zugehörigkeiten"
 #: lib/layouts/theorems-ams-extended-bytype.module:214
 #: lib/layouts/theorems-ams-extended-bytype.module:229
 #: lib/layouts/theorems-ams-extended-bytype.module:232
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:63
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:250
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:263
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:266
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:281
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:284
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:239
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:252
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:255
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:270
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:273
 #: lib/layouts/theorems-ams-extended.module:174
 #: lib/layouts/theorems-ams-extended.module:183
 #: lib/layouts/theorems-ams-extended.module:186
@@ -9998,10 +9977,9 @@ msgstr "Beispiele."
 #: lib/layouts/beamer.layout:1288 lib/layouts/theorems-ams-bytype.inc:175
 #: lib/layouts/theorems-ams-bytype.inc:184
 #: lib/layouts/theorems-ams-bytype.inc:187
-#: lib/layouts/theorems-ams-chap-bytype.inc:50
+#: lib/layouts/theorems-ams-chap-bytype.inc:211
 #: lib/layouts/theorems-ams-chap-bytype.inc:224
-#: lib/layouts/theorems-ams-chap-bytype.inc:237
-#: lib/layouts/theorems-ams-chap-bytype.inc:240
+#: lib/layouts/theorems-ams-chap-bytype.inc:227
 #: lib/layouts/theorems-ams.inc:147 lib/layouts/theorems-ams.inc:157
 #: lib/layouts/theorems-ams.inc:160 lib/layouts/theorems-bytype.inc:144
 #: lib/layouts/theorems-bytype.inc:153 lib/layouts/theorems-bytype.inc:156
@@ -12811,7 +12789,7 @@ msgstr ""
 
 #: lib/layouts/ijmpc.layout:372 lib/layouts/ijmpd.layout:384
 #: lib/layouts/theorems-ams-bytype.inc:106
-#: lib/layouts/theorems-ams-chap-bytype.inc:139
+#: lib/layouts/theorems-ams-chap-bytype.inc:126
 #: lib/layouts/theorems-bytype.inc:75
 #: lib/layouts/theorems-without-preamble.inc:83
 msgid "Corollary \\thecorollary."
@@ -12819,7 +12797,7 @@ msgstr "Korollar \\thecorollary."
 
 #: lib/layouts/ijmpc.layout:376 lib/layouts/ijmpd.layout:391
 #: lib/layouts/theorems-ams-bytype.inc:124
-#: lib/layouts/theorems-ams-chap-bytype.inc:161
+#: lib/layouts/theorems-ams-chap-bytype.inc:148
 #: lib/layouts/theorems-bytype.inc:93
 #: lib/layouts/theorems-without-preamble.inc:99
 msgid "Lemma \\thelemma."
@@ -12827,7 +12805,7 @@ msgstr "Lemma \\thelemma."
 
 #: lib/layouts/ijmpc.layout:380 lib/layouts/ijmpd.layout:398
 #: lib/layouts/theorems-ams-bytype.inc:142
-#: lib/layouts/theorems-ams-chap-bytype.inc:183
+#: lib/layouts/theorems-ams-chap-bytype.inc:170
 #: lib/layouts/theorems-bytype.inc:111
 #: lib/layouts/theorems-without-preamble.inc:115
 msgid "Proposition \\theproposition."
@@ -12840,12 +12818,11 @@ msgstr "Satz \\theproposition."
 #: lib/layouts/theorems-ams-extended-bytype.module:424
 #: lib/layouts/theorems-ams-extended-bytype.module:438
 #: lib/layouts/theorems-ams-extended-bytype.module:441
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:87
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:484
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:498
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:501
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:515
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:518
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:473
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:487
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:490
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:504
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:507
 #: lib/layouts/theorems-ams-extended.module:378
 #: lib/layouts/theorems-ams-extended.module:388
 #: lib/layouts/theorems-ams-extended.module:391
@@ -12859,21 +12836,21 @@ msgstr "Frage"
 
 #: lib/layouts/ijmpc.layout:384 lib/layouts/ijmpd.layout:405
 #: lib/layouts/theorems-ams-extended-bytype.module:415
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:488
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:477
 #: lib/layouts/theorems-without-preamble.inc:389
 msgid "Question \\thequestion."
 msgstr "Frage \\thequestion."
 
 #: lib/layouts/ijmpc.layout:396 lib/layouts/ijmpd.layout:416
 #: lib/layouts/theorems-ams-bytype.inc:323
-#: lib/layouts/theorems-ams-chap-bytype.inc:400
+#: lib/layouts/theorems-ams-chap-bytype.inc:387
 #: lib/layouts/theorems-bytype.inc:292
 msgid "Claim \\theclaim."
 msgstr "Behauptung \\theclaim."
 
 #: lib/layouts/ijmpc.layout:407 lib/layouts/ijmpd.layout:426
 #: lib/layouts/theorems-ams-bytype.inc:160
-#: lib/layouts/theorems-ams-chap-bytype.inc:205
+#: lib/layouts/theorems-ams-chap-bytype.inc:192
 #: lib/layouts/theorems-bytype.inc:129
 #: lib/layouts/theorems-without-preamble.inc:147
 msgid "Conjecture \\theconjecture."
@@ -15549,7 +15526,7 @@ msgstr "Vermutung*"
 
 #: lib/layouts/siamltex.layout:123
 #: lib/layouts/theorems-ams-extended-bytype.module:115
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:155
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:144
 #: lib/layouts/theorems-ams-extended.module:88
 msgid "Algorithm*"
 msgstr "Algorithmus*"
@@ -16287,35 +16264,35 @@ msgid "Custom Color Box 5"
 msgstr "Benutzerdefinierte Farbbox 5"
 
 #: lib/layouts/theorems-ams-bytype.inc:178
-#: lib/layouts/theorems-ams-chap-bytype.inc:227
+#: lib/layouts/theorems-ams-chap-bytype.inc:214
 #: lib/layouts/theorems-bytype.inc:147
 #: lib/layouts/theorems-without-preamble.inc:170
 msgid "Fact \\thefact."
 msgstr "Fakt \\thefact."
 
 #: lib/layouts/theorems-ams-bytype.inc:196
-#: lib/layouts/theorems-ams-chap-bytype.inc:249
+#: lib/layouts/theorems-ams-chap-bytype.inc:236
 #: lib/layouts/theorems-bytype.inc:165
 #: lib/layouts/theorems-without-preamble.inc:186
 msgid "Definition \\thedefinition."
 msgstr "Definition \\thedefinition."
 
 #: lib/layouts/theorems-ams-bytype.inc:221
-#: lib/layouts/theorems-ams-chap-bytype.inc:278
+#: lib/layouts/theorems-ams-chap-bytype.inc:265
 #: lib/layouts/theorems-bytype.inc:190
 #: lib/layouts/theorems-without-preamble.inc:210
 msgid "Example \\theexample."
 msgstr "Beispiel \\theexample."
 
 #: lib/layouts/theorems-ams-bytype.inc:240
-#: lib/layouts/theorems-ams-chap-bytype.inc:301
+#: lib/layouts/theorems-ams-chap-bytype.inc:288
 #: lib/layouts/theorems-bytype.inc:209
 #: lib/layouts/theorems-without-preamble.inc:228
 msgid "Problem \\theproblem."
 msgstr "Problem \\theproblem."
 
 #: lib/layouts/theorems-ams-bytype.inc:259
-#: lib/layouts/theorems-ams-chap-bytype.inc:324
+#: lib/layouts/theorems-ams-chap-bytype.inc:311
 #: lib/layouts/theorems-bytype.inc:228
 #: lib/layouts/theorems-without-preamble.inc:308
 msgid "Exercise \\theexercise."
@@ -16390,143 +16367,143 @@ msgstr ""
 "Kriterium 1, Kriterium 2, Axiom 3, Annahme 4, ...)."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:66
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:97
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:86
 msgid "Criterion \\thecriterion."
 msgstr "Kriterium \\thecriterion."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:80
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:116
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:105
 #: lib/layouts/theorems-ams-extended.module:53
 msgid "Criterion*"
 msgstr "Kriterium*"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:83
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:119
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:108
 #: lib/layouts/theorems-ams-extended.module:56
 msgid "Criterion."
 msgstr "Kriterium."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:100
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:136
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:125
 msgid "Algorithm \\thealgorithm."
 msgstr "Algorithmus \\thealgorithm."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:118
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:158
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:147
 #: lib/layouts/theorems-ams-extended.module:91
 msgid "Algorithm."
 msgstr "Algorithmus."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:135
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:175
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:164
 msgid "Axiom \\theaxiom."
 msgstr "Axiom \\theaxiom."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:150
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:194
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:183
 #: lib/layouts/theorems-ams-extended.module:123
 msgid "Axiom*"
 msgstr "Axiom*"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:153
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:197
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:186
 #: lib/layouts/theorems-ams-extended.module:126
 msgid "Axiom."
 msgstr "Axiom."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:170
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:214
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:203
 msgid "Condition \\thecondition."
 msgstr "Bedingung \\thecondition."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:185
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:233
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:222
 #: lib/layouts/theorems-ams-extended.module:157
 msgid "Condition*"
 msgstr "Bedingung*"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:188
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:236
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:225
 #: lib/layouts/theorems-ams-extended.module:160
 msgid "Condition."
 msgstr "Bedingung."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:205
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:253
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:242
 #: lib/layouts/theorems-without-preamble.inc:406
 msgid "Note \\thenote."
 msgstr "Notiz \\thenote."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:220
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:272
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:261
 #: lib/layouts/theorems-ams-extended.module:191
 msgid "Note*"
 msgstr "Notiz*"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:223
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:275
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:264
 #: lib/layouts/theorems-ams-extended.module:194
 msgid "Note."
 msgstr "Notiz."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:240
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:292
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:281
 msgid "Notation \\thenotation."
 msgstr "Notation \\thenotation."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:255
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:311
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:300
 #: lib/layouts/theorems-ams-extended.module:225
 msgid "Notation*"
 msgstr "Notation*"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:258
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:314
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:303
 #: lib/layouts/theorems-ams-extended.module:228
 msgid "Notation."
 msgstr "Notation."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:275
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:331
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:320
 msgid "Summary \\thesummary."
 msgstr "Zusammenfassung \\thesummary."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:290
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:351
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:340
 #: lib/layouts/theorems-ams-extended.module:259
 msgid "Summary*"
 msgstr "Zusammenfassung*"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:293
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:354
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:343
 #: lib/layouts/theorems-ams-extended.module:262
 msgid "Summary."
 msgstr "Zusammenfassung."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:310
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:371
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:360
 msgid "Acknowledgement \\theacknowledgement."
 msgstr "Danksagung \\theacknowledgement."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:325
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:390
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:379
 #: lib/layouts/theorems-ams-extended.module:293
 msgid "Acknowledgement*"
 msgstr "Danksagung*"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:345
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:410
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:399
 msgid "Conclusion \\theconclusion."
 msgstr "Schlussfolgerung \\theconclusion."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:360
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:429
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:418
 #: lib/layouts/theorems-ams-extended.module:327
 msgid "Conclusion*"
 msgstr "Schlussfolgerung*"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:363
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:432
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:421
 #: lib/layouts/theorems-ams-extended.module:330
 msgid "Conclusion."
 msgstr "Schlussfolgerung."
@@ -16536,12 +16513,11 @@ msgstr "Schlussfolgerung."
 #: lib/layouts/theorems-ams-extended-bytype.module:389
 #: lib/layouts/theorems-ams-extended-bytype.module:404
 #: lib/layouts/theorems-ams-extended-bytype.module:407
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:83
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:446
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:459
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:462
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:477
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:480
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:435
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:448
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:451
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:466
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:469
 #: lib/layouts/theorems-ams-extended.module:344
 #: lib/layouts/theorems-ams-extended.module:354
 #: lib/layouts/theorems-ams-extended.module:357
@@ -16551,30 +16527,30 @@ msgid "Assumption"
 msgstr "Annahme"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:380
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:449
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:438
 msgid "Assumption \\theassumption."
 msgstr "Annahme \\theassumption."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:395
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:468
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:457
 #: lib/layouts/theorems-ams-extended.module:362
 msgid "Assumption*"
 msgstr "Annahme*"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:398
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:471
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:460
 #: lib/layouts/theorems-ams-extended.module:365
 msgid "Assumption."
 msgstr "Annahme."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:429
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:506
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:495
 #: lib/layouts/theorems-ams-extended.module:395
 msgid "Question*"
 msgstr "Frage*"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:432
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:509
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:498
 #: lib/layouts/theorems-ams-extended.module:398
 msgid "Question."
 msgstr "Frage."
@@ -26286,7 +26262,7 @@ msgstr "Dokument %1$s ist eingefügt."
 msgid "Could not insert document %1$s"
 msgstr "Das Dokument %1$s konnte nicht eingefügt werden"
 
-#: src/BufferView.cpp:3337
+#: src/BufferView.cpp:3342
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -26297,11 +26273,11 @@ msgstr ""
 "konnte aufgrund des folgenden Fehlers\n"
 "nicht gelesen werden: %2$s"
 
-#: src/BufferView.cpp:3339
+#: src/BufferView.cpp:3344
 msgid "Could not read file"
 msgstr "Die Datei konnte nicht gelesen werden"
 
-#: src/BufferView.cpp:3346
+#: src/BufferView.cpp:3351
 #, c-format
 msgid ""
 "%1$s\n"
@@ -26310,15 +26286,15 @@ msgstr ""
 "%1$s\n"
 "ist nicht lesbar."
 
-#: src/BufferView.cpp:3347 src/output.cpp:39
+#: src/BufferView.cpp:3352 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Die Datei konnte nicht geöffnet werden"
 
-#: src/BufferView.cpp:3354
+#: src/BufferView.cpp:3359
 msgid "Reading not UTF-8 encoded file"
 msgstr "Lese nicht-UTF-8-kodierte Datei"
 
-#: src/BufferView.cpp:3355
+#: src/BufferView.cpp:3360
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -26973,7 +26949,7 @@ msgstr "Die Ausgabe ist leer"
 msgid "No output file was generated."
 msgstr "Es wurde keine Ausgabedatei erzeugt."
 
-#: src/Cursor.cpp:1111 src/Text.cpp:1960
+#: src/Cursor.cpp:1111 src/Text.cpp:1965
 msgid ", Inset: "
 msgstr ", Einfügung: "
 
@@ -26981,7 +26957,7 @@ msgstr ", Einfügung: "
 msgid ", Cell: "
 msgstr ", Zelle: "
 
-#: src/Cursor.cpp:1113 src/Text.cpp:1963
+#: src/Cursor.cpp:1113 src/Text.cpp:1968
 msgid ", Position: "
 msgstr ", Position: "
 
@@ -28377,19 +28353,24 @@ msgstr "Eineinhalb"
 msgid "Other ("
 msgstr "Andere ("
 
-#: src/Text.cpp:1961
+#: src/Text.cpp:1962
+#, fuzzy
+msgid ", Style: "
+msgstr "Lebenslauf-Stil:"
+
+#: src/Text.cpp:1966
 msgid ", Paragraph: "
 msgstr ", Absatz: "
 
-#: src/Text.cpp:1962
+#: src/Text.cpp:1967
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1969
+#: src/Text.cpp:1974
 msgid ", Char: 0x"
 msgstr ", Zeichen: 0x"
 
-#: src/Text.cpp:1971
+#: src/Text.cpp:1976
 msgid ", Boundary: "
 msgstr ", Grenze: "
 
@@ -32202,27 +32183,27 @@ msgstr "Quelltext-Vorschau"
 msgid "%1[[preview format name]] Preview"
 msgstr "%1-Vorschau"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1607
+#: src/frontends/qt4/GuiWorkArea.cpp:1635
 msgid "Close File"
 msgstr "Datei schließen"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2123
+#: src/frontends/qt4/GuiWorkArea.cpp:2151
 msgid "%1 (read only)"
 msgstr "%1 (schreibgeschützt)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2127
+#: src/frontends/qt4/GuiWorkArea.cpp:2155
 msgid "%1 (modified externally)"
 msgstr "%1 (extern bearbeitet)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2147
+#: src/frontends/qt4/GuiWorkArea.cpp:2175
 msgid "Hide tab"
 msgstr "Unterfenster verstecken"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2149
+#: src/frontends/qt4/GuiWorkArea.cpp:2177
 msgid "Close tab"
 msgstr "Unterfenster schließen"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2188
+#: src/frontends/qt4/GuiWorkArea.cpp:2216
 msgid "<b>The file %1 changed on disk.</b>"
 msgstr "<b>Die Datei %1 wurde auf der Festplatte verändert.</b>"
 
@@ -32457,12 +32438,12 @@ msgstr "Separierte äußere Umgebung (%1$s) unterhalb einfügen"
 msgid "Separated Outer %1$s Below"
 msgstr "Separierte äußere Umgebung (%1$s) unterhalb"
 
-#: src/frontends/qt4/Menus.cpp:2251
+#: src/frontends/qt4/Menus.cpp:2252
 #, c-format
 msgid "Export [%1$s]|E"
 msgstr "Exportiere in das Standardformat [%1$s]|E"
 
-#: src/frontends/qt4/Menus.cpp:2600
+#: src/frontends/qt4/Menus.cpp:2601
 msgid "No Action Defined!"
 msgstr "Keine Aktion definiert!"
 
