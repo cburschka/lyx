@@ -3512,7 +3512,7 @@ def revert_totalheight(document):
                     if ms:
                         oldval = ms.group(1)
                         oldunit = ms.group(2)
-                        if oldval[1] == ".":
+                        if len(oldval) > 1 and oldval[1] == ".":
                             oldval = "0" + oldval
                         if oldunit in list(relative_heights.keys()):
                             oldval = str(float(oldval) * 100)
