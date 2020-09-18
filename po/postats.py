@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/python3
 # -*- coding: utf-8 -*-
 # Copyright (C) 2007 Michael Gerz <michael.gerz@teststep.org>
 # Copyright (C) 2007 José Matos <jamatos@lyx.org>
@@ -31,16 +31,19 @@ from __future__ import print_function
 # modify this when you change branch
 # Note that an empty lyx_branch variable (ie svn trunk)
 # will "do the right thing".
-lyx_branch="2.3.x"
+lyx_branch=""
 # these po-files will be skipped:
 ommitted = ('en.po')
 
 import os
 import sys
+import codecs
+import subprocess
+from subprocess import Popen, PIPE
 
 # Reset the locale
 import locale
-locale.setlocale(locale.LC_ALL, 'C') 
+locale.setlocale(locale.LC_ALL, 'C')
 os.environ['LC_ALL'] = 'C'
 
 def extract_number(line, issues, prop):
@@ -69,7 +72,7 @@ def read_pofile(pofile):
     """ Read the header of the pofile and return it as a dictionary"""
     header = {}
     read_header = False
-    for line in open(pofile):
+    for line in codecs.open(pofile, encoding='utf8'):
         line = line[:-1]
         if line[:5] == 'msgid':
             if read_header:
@@ -110,16 +113,14 @@ def run_msgfmt(pofile):
     prop["email"] = header['Last-Translator'].split('<')[1][:-1]
     prop["email"] = prop["email"].replace("@", " () ")
     prop["email"] = prop["email"].replace(".", " ! ")
-    translator = header['Last-Translator'].split('<')[0].strip()
-    try:
-        prop["translator"] = translator.decode(charset).encode('ascii','xmlcharrefreplace')
-    except LookupError:
-        prop["translator"] = translator
+    prop["translator"] = header['Last-Translator'].split('<')[0].strip()
 
-    p_in, p_out = os.popen4("msgfmt --statistics -o %s %s" % (gmofile, pofile))
-    extract_number(p_out.readline(),
-                   ('translated', 'fuzzy', 'untranslated'),
-                   prop)
+    msg = subprocess.check_output(["msgfmt", "--statistics",
+            "-o", gmofile, # FIXME: do we really want a gmofile as side-effect?
+            pofile], stderr=subprocess.STDOUT)
+    if sys.version_info[0] > 2:
+        msg = msg.decode('utf8')
+    extract_number(msg, ('translated', 'fuzzy', 'untranslated'), prop)
     return """
 array ( 'langcode' => '%(langcode)s', "date" => "%(date)s",
 "msg_tr" => %(translated)d, "msg_fu" => %(fuzzy)d, "msg_nt" => %(untranslated)d,
@@ -141,4 +142,6 @@ $branch_tag = "%s";
 
 // The data itself
 $podata = array (%s
-)?>""" % (sys.argv[1], branch_tag, ",".join([run_msgfmt(po) for po in sys.argv[2:] if po not in ommitted])))
+)?>""" % (sys.argv[1], branch_tag, 
+          ",".join([run_msgfmt(po) for po in sys.argv[2:] 
+                                   if po not in ommitted])))
