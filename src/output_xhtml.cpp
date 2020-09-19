@@ -679,9 +679,8 @@ void xhtmlParagraphs(Text const & text,
 	// If need be, close <section>s, but only at the end of the document (otherwise, dealt with at the beginning
 	// of the loop).
 	while (!headerLevels.empty() && headerLevels.top() != Layout::NOT_IN_TOC) {
-		docstring tag = from_utf8("</section>");
 		headerLevels.pop();
-		xs << XMLStream::ESCAPE_NONE << tag;
+		xs << xml::EndTag("section");
 		xs << xml::CR();
 	}
 }
