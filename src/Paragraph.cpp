@@ -3366,10 +3366,17 @@ std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
 		if (getInset(i) != nullptr && getInset(i)->lyxCode() == NEWLINE_CODE) {
 			if (!ignore_fonts)
 				xs->closeFontTags();
+
+			// Output one paragraph (i.e. one string entry in generatedParagraphs).
 			generatedParagraphs.push_back(os.str());
-			os = odocstringstream();
+
+			// Create a new XMLStream for the new paragraph, completely independent from the previous one. This implies
+			// that the string stream must be reset.
+			os.str(from_ascii(""));
 			delete xs;
 			xs = new XMLStream(os);
+
+			// Restore the fonts for the new paragraph, so that the right tags are opened for the new entry.
 			if (!ignore_fonts) {
 				font_old = outerfont.fontInfo();
 				fs = old_fs;
