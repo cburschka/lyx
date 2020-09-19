@@ -37,11 +37,14 @@ public:
 		 std::string const & listName, std::string const & listCmd,
 		 std::string const & refPrefix, std::string const & allowedplacement,
 		 std::string const & htmlType, std::string const & htmlClass,
-		 docstring const & htmlStyle, std::string const & docbookTag,
-		 std::string const & docbookAttr, std::string const & required,
-		 bool usesfloat, bool isprefined, bool allowswide, bool allowssideways);
+		 docstring const & htmlStyle,
+		 std::string const & docbookAttr, std::string const & docbookTagType,
+		 std::string const & required, bool usesfloat, bool isprefined,
+		 bool allowswide, bool allowssideways);
 	///
 	std::string const & floattype() const { return floattype_; }
+	///
+	std::string docbookFloatType() const;
 	///
 	std::string const & placement() const { return placement_; }
 	///
@@ -80,9 +83,11 @@ public:
 	/// tag type, defaults to "div"
 	std::string const & htmlTag() const;
 	///
-	std::string const & docbookTag(bool hasTitle = false) const;
+	std::string docbookTag(bool hasTitle = false) const;
 	///
 	std::string const & docbookAttr() const;
+	///
+	std::string const & docbookTagType() const;
 	///
 	std::string const & docbookCaption() const;
 private:
@@ -115,9 +120,9 @@ private:
 	///
 	bool ispredefined_;
 	///
-	bool  allowswide_;
+	bool allowswide_;
 	///
-	bool  allowssideways_;
+	bool allowssideways_;
 	///
 	mutable std::string html_tag_;
 	///
@@ -126,12 +131,14 @@ private:
 	mutable std::string defaultcssclass_;
 	///
 	docstring html_style_;
-	/// DocBook tag
-	mutable std::string docbook_tag_;
+	// There is no way to override the DocBook tag based on the layouts: half of it is determined by whether the float
+	// has a title or not, an information that is not available in the layouts.
 	/// attribute (mostly, role)
 	mutable std::string docbook_caption_;
 	/// caption tag (mostly, either caption or title)
 	std::string docbook_attr_;
+	/// DocBook tag type (block, paragraph, inline)
+	mutable std::string docbook_tag_type_;
 };
 
 

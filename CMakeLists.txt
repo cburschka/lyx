@@ -6,6 +6,11 @@
 
 cmake_minimum_required(VERSION 3.1.0)
 
+set(CMAKE_CXX_STANDARD 20)
+set(GNUWIN32_DIR D:/LyX/lyx-unstable/lyx-windows-deps-msvc2017)
+set(LYX_USE_QT "QT5")
+set(LYX_REQUIRE_SPELLCHECK true)
+
 set(LYX_PROJECT LyX)
 
 # Instruct cmake to not use gnu extensions,

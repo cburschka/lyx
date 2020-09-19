@@ -62,7 +62,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 82; // dourouc05: DocBook additions.
+int const LAYOUT_FORMAT = 84; // tcuvelier: DocBook*TagType.
 
 
 // Layout format for the current lyx file format. Controls which format is
@@ -1378,6 +1378,7 @@ bool TextClass::readFloat(Lexer & lexrc)
 		FT_HTMLTAG,
 		FT_DOCBOOKATTR,
 		FT_DOCBOOKTAG,
+		FT_DOCBOOKTAGTYPE,
 		FT_LISTCOMMAND,
 		FT_REFPREFIX,
 		FT_ALLOWED_PLACEMENT,
@@ -1393,6 +1394,7 @@ bool TextClass::readFloat(Lexer & lexrc)
 		{ "allowswide", FT_ALLOWS_WIDE },
 		{ "docbookattr", FT_DOCBOOKATTR },
 		{ "docbooktag", FT_DOCBOOKTAG },
+		{ "docbooktagtype", FT_DOCBOOKTAGTYPE },
 		{ "end", FT_END },
 		{ "extension", FT_EXT },
 		{ "guiname", FT_NAME },
@@ -1419,6 +1421,7 @@ bool TextClass::readFloat(Lexer & lexrc)
 	string htmltag;
 	string docbookattr;
 	string docbooktag;
+	string docbooktagtype;
 	string listname;
 	string listcommand;
 	string name;
@@ -1540,6 +1543,10 @@ bool TextClass::readFloat(Lexer & lexrc)
 			lexrc.next();
 			docbooktag = lexrc.getString();
 			break;
+		case FT_DOCBOOKTAGTYPE:
+			lexrc.next();
+			docbooktagtype = lexrc.getString();
+			break;
 		case FT_END:
 			getout = true;
 			break;
@@ -1567,9 +1574,9 @@ bool TextClass::readFloat(Lexer & lexrc)
 		}
 		Floating fl(type, placement, ext, within, style, name,
 			listname, listcommand, refprefix, allowed_placement,
-			htmltag, htmlattr, htmlstyle, docbooktag, docbookattr,
-			required, usesfloat, ispredefined, allowswide,
-			allowssideways);
+			htmltag, htmlattr, htmlstyle, docbookattr,
+			docbooktagtype, required, usesfloat, ispredefined,
+	        allowswide, allowssideways);
 		floatlist_.newFloat(fl);
 		// each float has its own counter
 		counters_.newCounter(from_ascii(type), from_ascii(within),

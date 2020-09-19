@@ -6,7 +6,7 @@
 # This include files contains various standard environments for lists.
 
 
-Format 82
+Format 84
 
 Input stdlyxlist.inc
 
@@ -132,6 +132,7 @@ Style Description
 	DocBookItemTag        listitem
 	DocBookItemInnerTag   para
 	DocBookItemLabelTag   term
+	DocBookItemLabelTagType   paragraph
 End
 
 

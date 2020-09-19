@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This DocBook file was created by LyX 2.4.0dev
+  See http://www.lyx.org/ for more information -->
+<book xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
+<info>
+<title>Additional LyX Features</title>
+<subtitle>Version 2.3.x</subtitle>
+<author>
+<personname>by the LyX Team<footnote>
+<para>Principal maintainer of this file is<personname> Richard Heck</personname>. If you have comments or error corrections, please send them to the LyX Documentation mailing list, <code>&lt;lyx-docs@lists.lyx.org&gt;</code>.</para>
+</footnote></personname>
+</author>
+</info>
+<chapter xml:id="sec.Inserting-TeX-Code">
+<title>Inserting TeX Code into LyX Documents</title>
+<para>Anything you can do in LaTeX you can do in LyX, for a very simple reason: You can always insert TeX code into any LyX document. LyX cannot, and will never be able to, display every possible LaTeX construct. If ever you need to insert LaTeX commands into your LyX document, you can use the <code>TeX Code</code> box, which you can insert into your document with <personname>Insert&#x21D2;TeX Code</personname> or the keyboard shortcut <keycap>Ctrl+L</keycap>.</para>
+<para>Here's an example of inserting LaTeX commands in a LyX document. The code looks like this:</para>
+<programlisting language='lyx'>\begin{tabular}{ll}
+\begin{minipage}{5cm}
+This is an example of a minipage environment. You 
+can put nearly everything in it, even (non-floating) 
+figures and tables. 
+\end{minipage}
+&amp;
+\begin{minipage}{5cm}
+\begin{verbatim}
+\begin{minipage}{5cm}
+This ... 
+\end{minipage}
+\end{verbatim}
+\end{minipage}
+\end{tabular}</programlisting>
+<section>
+<title>Cross-References Between Files</title>
+<sidebar role='shadowbox'>
+<para>This section is somewhat out of date. Need to describe default master documents and how children are opened when the master is. [[FIXME]]</para>
+</sidebar>
+</section>
+<section>
+<title>AMS LaTeX</title>
+<para>These same environments are provided only in the starred versions by the <code>Theorems (Starred)</code> module:</para>
+<para role='theorem'>This is typically used for the statements of major results. </para>
+<para role='corollary'>This is used for statements which follow fairly directly from previous statements. Again, these can be major results. </para>
+<para role='lemma'>These are smaller results needed to prove other statements.</para>
+<para role='proposition'>These are less major results which (hopefully) add to the general theory being discussed.</para>
+<para role='conjecture'>These are statements provided without justification, which the author does not know how to prove, but which seem to be true (to the author, at least).</para>
+<para role='definition'>Guess what this is for. The font is different for this environment than for the previous ones. </para>
+<informalexample>
+<para>Used for examples illustrating proven results.</para>
+</informalexample>
+<para role='problem'>It's not really known what this is for. You should figure it out.</para>
+<para role='exercise'>Write a description for this one.</para>
+<note role='theorem'>
+<para>This environment is also a type of theorem, usually a lesser sort of observation.</para>
+</note>
+<para role='claim'>Often used in the course of giving a proof of a larger result.</para>
+<para role='cases'>Generally, these are used to break up long arguments, using specific instances of some condition. The numbering scheme for cases is on its own, not together with other numbered statements. </para>
+<para role='proof'>At the end of this environment, a QED symbol (usually a square, but it can vary with different styles) is placed. If you want to have other environments within this one—for example, Case environments—and have the QED symbol appear only after them, then the other environments need to be nested within the proof environment. See the section <emphasis>Nesting Environments</emphasis> of the <emphasis>User's Guide</emphasis> for information on nesting.</para>
+<para>And these environments are provided by <code>Theorems (AMS-Extended)</code>:</para>
+<para role='criterion'>A required condition.</para>
+<para role='algorithm'>A general procedure to be used.</para>
+<para role='axiom'>This is a property or statement taken as true within the system being discussed.</para>
+<para role='condition'>Sometimes used to state a condition assumed within the present context of discussion.</para>
+<note role='theorem'>
+<para>Similar to a Remark.</para>
+</note>
+<para role='notation'>Used for the explanation of, yes, notation.</para>
+<para role='summary'>Do we really need to tell you? </para>
+<para role='acknowledgement'>Acknowledgement.</para>
+<para role='conclusion'>Sometimes used at the end of a long train of argument.</para>
+<para role='fact'>Used in a way similar to Proposition, though perhaps lower on the scale.</para>
+<para>In addition, the AMS classes automatically provide the AMS LaTeX and AMS fonts packages. They need to be available on your system in order to use these environments.</para>
+</section>
+</chapter>
+</book>

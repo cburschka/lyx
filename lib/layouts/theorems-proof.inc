@@ -40,5 +40,7 @@ Style Proof
 	LabelFont
 	  Shape               Italic
 	EndFont
+	DocBookTag            para
+	DocBookAttr           role='proof'
 End
 

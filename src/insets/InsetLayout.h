@@ -150,7 +150,15 @@ public:
 	///
 	std::string docbooktag() const { return docbooktag_; }
 	///
+	std::string docbooktagtype() const { return docbooktagtype_; }
+	///
 	std::string docbookattr() const { return docbookattr_; }
+	///
+	std::string docbookwrappertag() const { return docbookwrappertag_; }
+	///
+	std::string docbookwrappertagtype() const { return docbookwrappertagtype_; }
+	///
+	std::string docbookwrapperattr() const { return docbookwrapperattr_; }
 	///
 	std::set<std::string> required() const { return required_; }
 	///
@@ -281,7 +289,15 @@ private:
 	///
 	std::string docbooktag_;
 	///
+	std::string docbooktagtype_;
+	///
 	std::string docbookattr_;
+	///
+	std::string docbookwrappertag_;
+	///
+	std::string docbookwrappertagtype_;
+	///
+	std::string docbookwrapperattr_;
 	///
 	std::set<std::string> required_;
 	///

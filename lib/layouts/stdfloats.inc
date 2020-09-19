@@ -20,7 +20,6 @@ Float
 	UsesFloatPkg          false
 	ListCommand           listoftables
 	RefPrefix             tab
-	DocBookTag            table
 End
 
 
@@ -36,7 +35,6 @@ Float
 	UsesFloatPkg          false
 	ListCommand           listoffigures
 	RefPrefix             fig
-	DocBookTag            figure
 End
 
 
@@ -51,7 +49,6 @@ Float
 	IsPredefined          false
 	UsesFloatPkg          true
 	RefPrefix             alg
-	DocBookTag            figure # TODO: No DocBook tag really corresponds...
 End
 
 

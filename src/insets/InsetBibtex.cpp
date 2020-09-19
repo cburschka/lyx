@@ -1157,10 +1157,11 @@ void InsetBibtex::docbook(XMLStream & xs, OutputParams const &) const
 
 	if (vit == ven) {
 		xs << XMLStream::ESCAPE_NONE << "<!-- No entry in the bibliography. -->";
+		xs << xml::CR();
 	}
 
 	for (; vit != ven; ++vit) {
-		BiblioInfo::const_iterator const biit = bibinfo.find(*vit);
+		auto const biit = bibinfo.find(*vit);
 		if (biit == bibinfo.end())
 			continue;
 
@@ -1199,6 +1200,7 @@ void InsetBibtex::docbook(XMLStream & xs, OutputParams const &) const
 					xs << xml::StartTag(toDocBookTag[match[1]]);
 					xs << from_utf8(match[2].str());
 					xs << xml::EndTag(toDocBookTag[match[1]]);
+					xs << xml::CR();
 				}
 			} else {
 				LYXERR0("The BibTeX field " << match[1].str() << " is unknown.");
@@ -1216,9 +1218,9 @@ void InsetBibtex::docbook(XMLStream & xs, OutputParams const &) const
 		if (! delayedTags.empty()) {
 			unsigned long remainingTags = delayedTags.size(); // Used as a workaround. With GCC 7, when erasing all
 			// elements one by one, some elements may still pop in later on (even though they were deleted previously).
-			auto hasTag = [&delayedTags](string key) { return delayedTags.find(key) != delayedTags.end(); };
-			auto getTag = [&delayedTags](string key) { return from_utf8(delayedTags[key]); };
-			auto eraseTag = [&delayedTags, &remainingTags](string key) {
+			auto hasTag = [&delayedTags](const string & key) { return delayedTags.find(key) != delayedTags.end(); };
+			auto getTag = [&delayedTags](const string & key) { return from_utf8(delayedTags[key]); };
+			auto eraseTag = [&delayedTags, &remainingTags](const string & key) {
 				remainingTags -= 1;
 				delayedTags.erase(key);
 			};
@@ -1410,6 +1412,7 @@ void InsetBibtex::docbook(XMLStream & xs, OutputParams const &) const
 
 	// Footer for bibliography.
 	xs << xml::EndTag("bibliography");
+	xs << xml::CR();
 }
 
 

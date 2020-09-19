@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This DocBook file was created by LyX 2.4.0dev
+  See http://www.lyx.org/ for more information -->
+<book xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
+<title>LyX's detailed Figure, Table, Floats, Notes, Boxes and External Material manual</title>
+<chapter>
+<title>Floats</title>
+<section>
+<title>Floats Side by Side</title>
+<para>To place floats side by side, as in Figures&#xA0;<xref linkend="fig.Float-left" /> and <xref linkend="fig.Float-right" />, only <emphasis>one</emphasis> float is used. In it two minipage boxes are inserted. </para>
+<formalgroup>
+<title>No caption</title>
+<figure xml:id="fig.Float-left">
+<title>Float on the left side.</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="D:/LyX/lyx-unstable/lib/doc/clipart/2D-intensity-plot.pdf"  width="100%"  />
+</imageobject>
+</mediaobject>
+</figure>
+<figure xml:id="fig.Float-right">
+<title>Float on the right side.</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="D:/LyX/lyx-unstable/lib/doc/clipart/Star-structure.pdf"  width="100%"  />
+</imageobject>
+</mediaobject>
+</figure>
+</formalgroup>
+</section>
+</chapter>
+</book>

@@ -8,7 +8,7 @@
 # a document, like abstract, bibliography and such.
 
 
-Format 82
+Format 84
 
 Style Abstract
 	Margin                Static
@@ -49,9 +49,11 @@ Style Abstract
 			font-weight: bold;
 		}
 	EndHTMLStyle
-	DocBookTag            abstract
-	DocBookItemTag        para
+	DocBookAbstract       true
 	DocBookInInfo         always
+	DocBookWrapperTag     abstract
+	DocBookWrapperMergeWithPrevious    true
+	DocBookTag            para
 End
 
 

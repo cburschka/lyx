@@ -485,6 +485,9 @@ void InsetListings::docbook(XMLStream & xs, OutputParams const & rp) const
 {
 	InsetLayout const & il = getLayout();
 
+	if (!xs.isLastTagCR())
+		xs << xml::CR();
+
 	// Forge the attributes.
 	string attrs;
 	if (!il.docbookattr().empty())
@@ -517,6 +520,7 @@ void InsetListings::docbook(XMLStream & xs, OutputParams const & rp) const
 	// Done with the listing.
 	xs.endDivision();
 	xs << xml::EndTag(il.docbooktag());
+	xs << xml::CR();
 }
 
 

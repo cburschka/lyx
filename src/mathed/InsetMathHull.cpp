@@ -2418,12 +2418,16 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 {
 	// Choose the tag around the MathML equation.
 	docstring name;
+	bool doCR = false;
 	if (getType() == hullSimple)
 		name = from_ascii("inlineequation");
-	else
+	else {
+		doCR = true; // This is a block equation, always have <informalequation> on its own line.
 		name = from_ascii("informalequation");
+	}
 
 	// DocBook also has <equation>, but it comes with a title.
+	// TODO: recognise \tag from amsmath? This would allow having <equation> with a proper title.
 
 	docstring attr;
 	for (row_type i = 0; i < nrows(); ++i) {
@@ -2432,6 +2436,10 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 			break;
 		}
 	}
+
+	if (doCR)
+		if (!xs.isLastTagCR())
+			xs << xml::CR();
 
 	xs << xml::StartTag(name, attr);
 	xs << xml::CR();
@@ -2471,13 +2479,16 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 		osmath << ostmp.str(); // osmath is not a XMLStream, so no need for XMLStream::ESCAPE_NONE.
 		ms << ETag("math");
 	} catch (MathExportException const &) {
-		osmath << "MathML export failed. Please report this as a bug.";
+		ms.cr();
+		osmath << "<mathphrase>MathML export failed. Please report this as a bug.</mathphrase>";
 	}
 
 	// Output the complete formula to the DocBook stream.
 	xs << XMLStream::ESCAPE_NONE << osmath.str();
 	xs << xml::CR();
 	xs << xml::EndTag(name);
+	if (doCR)
+		xs << xml::CR();
 }
 
 

@@ -620,6 +620,7 @@ Style Description
 	DocBookItemTag        listitem
 	DocBookItemInnerTag   para
 	DocBookItemLabelTag   term
+	DocBookItemLabelTagType   paragraph
 End
 
 Style Petit

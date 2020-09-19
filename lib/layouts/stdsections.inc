@@ -7,7 +7,7 @@
 # commands that are useful for article-like document classes, but not
 # for letters.
 
-Format 82
+Format 84
 
 Style Part
 	Category              Sectioning
@@ -40,6 +40,7 @@ Style Part
 	EndFont
 	HTMLTag               h1
 	DocBookTag            title
+	DocBookTagType        paragraph
 	DocBookSectionTag     part
 	DocBookForceAbstractTag	partintro
 End
@@ -75,6 +76,7 @@ Style Chapter
 	EndFont
 	HTMLTag               h1
 	DocBookTag            title
+	DocBookTagType        paragraph
 	DocBookSectionTag     chapter
 End
 
@@ -108,6 +110,7 @@ Style Section
 	EndFont
 	HTMLTag               h2
 	DocBookTag            title
+	DocBookTagType        paragraph
 	DocBookSectionTag     section
 End
 

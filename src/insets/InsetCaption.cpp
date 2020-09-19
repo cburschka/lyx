@@ -367,8 +367,7 @@ void InsetCaption::getCaptionAsDocBook(XMLStream & xs,
 		return;
 
 	// Ignore full_label_, as the DocBook processor will deal with the numbering.
-	InsetText::XHTMLOptions const opts =
-			InsetText::WriteLabel | InsetText::WriteInnerTag;
+	InsetText::XHTMLOptions opts = InsetText::WriteInnerTag;
 	InsetText::docbook(xs, runparams, opts);
 }
 

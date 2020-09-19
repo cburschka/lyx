@@ -108,12 +108,9 @@ docstring StartTag::writeTag() const
 {
 	docstring output = '<' + tag_;
 	if (!attr_.empty()) {
-		docstring attributes = xml::escapeString(attr_, XMLStream::ESCAPE_NONE);
-		attributes.erase(attributes.begin(), std::find_if(attributes.begin(), attributes.end(),
-                                                          [](int c) {return !std::isspace(c);}));
-		if (!attributes.empty()) {
+		docstring attributes = xml::trimLeft(xml::escapeString(attr_, XMLStream::ESCAPE_NONE));
+		if (!attributes.empty())
 			output += ' ' + attributes;
-		}
 	}
 	output += ">";
 	return output;
@@ -140,11 +137,11 @@ docstring EndTag::writeEndTag() const
 
 docstring CompTag::writeTag() const
 {
-	docstring output = '<' + from_utf8(tag_);
+	docstring output = '<' + tag_;
 	if (!attr_.empty()) {
 		// Erase the beginning of the attributes if it contains space characters: this function deals with that
 		// automatically.
-		docstring attributes = escapeString(from_utf8(attr_), XMLStream::ESCAPE_NONE);
+		docstring attributes = escapeString(attr_, XMLStream::ESCAPE_NONE);
 		attributes.erase(attributes.begin(), std::find_if(attributes.begin(), attributes.end(),
                                                           [](int c) {return !std::isspace(c);}));
 		if (!attributes.empty()) {
@@ -167,17 +164,27 @@ bool FontTag::operator==(StartTag const & tag) const
 } // namespace xml
 
 
-void XMLStream::writeError(std::string const &s) const
+void XMLStream::writeError(std::string const &s)
 {
 	LYXERR0(s);
-	os_ << from_utf8("<!-- Output Error: " + s + " -->\n");
+	*this << ESCAPE_NONE << from_utf8("<!-- Output Error: " + s + " -->");
+	*this << xml::CR();
 }
 
 
-void XMLStream::writeError(docstring const &s) const
+void XMLStream::writeError(docstring const &s)
 {
 	LYXERR0(s);
-	os_ << from_utf8("<!-- Output Error: ") << s << from_utf8(" -->\n");
+	*this << ESCAPE_NONE << from_utf8("<!-- Output Error: ");
+	*this << s;
+	*this << ESCAPE_NONE << from_utf8(" -->");
+	*this << xml::CR();
+}
+
+
+XMLStream::TagPtr XMLStream::getLastStackTag()
+{
+	return tag_stack_.back();
 }
 
 
@@ -198,9 +205,6 @@ bool XMLStream::closeFontTags()
 		if (**curtag != xml::parsep_tag)
 			os_ << (*curtag)->writeEndTag();
 		tag_stack_.pop_back();
-		// this shouldn't happen, since then the font tags
-		// weren't in any other tag.
-//		LASSERT(!tag_stack_.empty(), return true);
 		if (tag_stack_.empty())
 			return true;
 		curtag = &tag_stack_.back();
@@ -290,6 +294,7 @@ void XMLStream::clearTagDeque()
 
 XMLStream &XMLStream::operator<<(docstring const &d)
 {
+	is_last_tag_cr_ = false;
 	clearTagDeque();
 	os_ << xml::escapeString(d, escape_);
 	escape_ = ESCAPE_ALL;
@@ -299,6 +304,7 @@ XMLStream &XMLStream::operator<<(docstring const &d)
 
 XMLStream &XMLStream::operator<<(const char *s)
 {
+	is_last_tag_cr_ = false;
 	clearTagDeque();
 	docstring const d = from_ascii(s);
 	os_ << xml::escapeString(d, escape_);
@@ -309,6 +315,7 @@ XMLStream &XMLStream::operator<<(const char *s)
 
 XMLStream &XMLStream::operator<<(char_type c)
 {
+	is_last_tag_cr_ = false;
 	clearTagDeque();
 	os_ << xml::escapeChar(c, escape_);
 	escape_ = ESCAPE_ALL;
@@ -318,6 +325,7 @@ XMLStream &XMLStream::operator<<(char_type c)
 
 XMLStream &XMLStream::operator<<(char c)
 {
+	is_last_tag_cr_ = false;
 	clearTagDeque();
 	os_ << xml::escapeChar(c, escape_);
 	escape_ = ESCAPE_ALL;
@@ -327,6 +335,7 @@ XMLStream &XMLStream::operator<<(char c)
 
 XMLStream &XMLStream::operator<<(int i)
 {
+	is_last_tag_cr_ = false;
 	clearTagDeque();
 	os_ << i;
 	escape_ = ESCAPE_ALL;
@@ -336,6 +345,7 @@ XMLStream &XMLStream::operator<<(int i)
 
 XMLStream &XMLStream::operator<<(EscapeSettings e)
 {
+	// Don't update is_last_tag_cr_ here, as this does not output anything.
 	escape_ = e;
 	return *this;
 }
@@ -343,6 +353,7 @@ XMLStream &XMLStream::operator<<(EscapeSettings e)
 
 XMLStream &XMLStream::operator<<(xml::StartTag const &tag)
 {
+	is_last_tag_cr_ = false;
 	if (tag.tag_.empty())
 		return *this;
 	pending_tags_.push_back(makeTagPtr(tag));
@@ -354,6 +365,7 @@ XMLStream &XMLStream::operator<<(xml::StartTag const &tag)
 
 XMLStream &XMLStream::operator<<(xml::ParTag const &tag)
 {
+	is_last_tag_cr_ = false;
 	if (tag.tag_.empty())
 		return *this;
 	pending_tags_.push_back(makeTagPtr(tag));
@@ -363,6 +375,7 @@ XMLStream &XMLStream::operator<<(xml::ParTag const &tag)
 
 XMLStream &XMLStream::operator<<(xml::CompTag const &tag)
 {
+	is_last_tag_cr_ = false;
 	if (tag.tag_.empty())
 		return *this;
 	clearTagDeque();
@@ -373,6 +386,7 @@ XMLStream &XMLStream::operator<<(xml::CompTag const &tag)
 
 XMLStream &XMLStream::operator<<(xml::FontTag const &tag)
 {
+	is_last_tag_cr_ = false;
 	if (tag.tag_.empty())
 		return *this;
 	pending_tags_.push_back(makeTagPtr(tag));
@@ -382,6 +396,7 @@ XMLStream &XMLStream::operator<<(xml::FontTag const &tag)
 
 XMLStream &XMLStream::operator<<(xml::CR const &)
 {
+	is_last_tag_cr_ = true;
 	clearTagDeque();
 	os_ << from_ascii("\n");
 	return *this;
@@ -434,6 +449,8 @@ bool XMLStream::isTagPending(xml::StartTag const &stag, int maxdepth) const
 // best to make things work.
 XMLStream &XMLStream::operator<<(xml::EndTag const &etag)
 {
+	is_last_tag_cr_ = false;
+
 	if (etag.tag_.empty())
 		return *this;
 
@@ -460,7 +477,8 @@ XMLStream &XMLStream::operator<<(xml::EndTag const &etag)
 						   + "' when other tags were pending. Last pending tag is `"
 						   + to_utf8(pending_tags_.back()->writeTag())
 						   + "'. Tag discarded.");
-				pending_tags_.erase(dit);
+				if (!pending_tags_.empty())
+					pending_tags_.erase(dit);
 				return *this;
 			}
 		}
@@ -581,64 +599,82 @@ docstring xml::uniqueID(docstring const & label)
 }
 
 
+bool xml::isNotOnlySpace(docstring const & str)
+{
+	for (auto const & c: str) {
+		if (c != ' ' && c != '\t' && c != '\n' && c != '\v' && c != '\f' && c != '\r')
+		return true;
+	}
+	return false;
+}
+
+
+docstring xml::trimLeft(docstring const & str)
+{
+	size_t i = 0;
+	for (auto const & c: str) {
+		if (c != ' ' && c != '\t' && c != '\n' && c != '\v' && c != '\f' && c != '\r')
+			return str.substr(i, docstring::npos);
+		i++;
+	}
+	return str;
+}
+
+
 docstring xml::cleanID(docstring const & orig)
 {
-	// The standard xml:id only allows letters,
-	// digits, '-' and '.' in a name.
-	// This routine replaces illegal characters by '-' or '.'
-	// and adds a number for uniqueness if need be.
-	docstring const allowed = from_ascii(".-_");
+	// The standard xml:id only allows letters, digits, '-' and '.' in a name.
+	// This routine replaces illegal characters by '-' or '.' and adds a number for uniqueness if need be.
 
 	// Use a cache of already mangled names: the alterations may merge several IDs as one. This ensures that the IDs
 	// are not mixed up in the document.
+	// This code could be improved: it uses Qt outside the GUI part. Any TLS implementation could do the trick.
 	typedef map<docstring, docstring> MangledMap;
 	static QThreadStorage<MangledMap> tMangledNames;
 	static QThreadStorage<int> tMangleID;
 
-	MangledMap & mangledNames = tMangledNames.localData();
-
 	// If the name is already known, just return it.
-	MangledMap::const_iterator const known = mangledNames.find(orig);
+	MangledMap & mangledNames = tMangledNames.localData();
+	auto const known = mangledNames.find(orig);
 	if (known != mangledNames.end())
 		return known->second;
 
 	// Start creating the mangled name by iterating over the characters.
 	docstring content;
-	docstring::const_iterator it  = orig.begin();
-	docstring::const_iterator end = orig.end();
+	auto it = orig.cbegin();
+	auto end = orig.cend();
 
 	// Make sure it starts with a letter.
-	if (!isAlphaASCII(*it) && allowed.find(*it) >= allowed.size())
+	if (!isAlphaASCII(*it))
 		content += "x";
 
-	// Do the mangling.
+	// Parse the ID character by character and change what needs to.
 	bool mangle = false; // Indicates whether the ID had to be changed, i.e. if ID no more ensured to be unique.
 	for (; it != end; ++it) {
 		char_type c = *it;
-		if (isAlphaASCII(c) || isDigitASCII(c) || c == '-' || c == '.'
-		      || allowed.find(c) < allowed.size())
+		if (isAlphaASCII(c) || isDigitASCII(c) || c == '-' || c == '.' || c == '_') {
 			content += c;
-		else if (c == '_' || c == ' ') {
-			mangle = true;
-			content += "-";
-		}
-		else if (c == ':' || c == ',' || c == ';' || c == '!') {
+		} else if (c == ':' || c == ',' || c == ';' || c == '!') {
 			mangle = true;
 			content += ".";
-		}
-		else {
+		} else { // Other invalid characters, such as ' '.
 			mangle = true;
 			content += "-";
 		}
 	}
 
-	if (mangle) {
+	// If there had to be a change, check if ID unicity is still guaranteed.
+	// This avoids having a clash if satisfying XML requirements for ID makes two IDs identical, like "a:b" and "a!b",
+	// as both of them would be transformed as "a.b". With this procedure, one will become "a.b" and the other "a.b-1".
+	if (mangle && mangledNames.find(content) != mangledNames.end()) {
 		int & mangleID = tMangleID.localData();
-		content += "-" + convert<docstring>(mangleID++);
+		if (mangleID > 0)
+			content += "-" + convert<docstring>(mangleID);
+		mangleID += 1;
 	}
 
+	// Save the new ID to avoid recomputing it afterwards and to ensure stability over the document.
 	mangledNames[orig] = content;
-
 	return content;
 }
 

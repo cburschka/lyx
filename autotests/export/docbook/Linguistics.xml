@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This DocBook file was created by LyX 2.4.0dev
+  See http://www.lyx.org/ for more information -->
+<article xml:lang="de_DE" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
+<info>
+<title>Linguistische Arbeiten mit LyX</title>
+<author>
+<personname>Jürgen Spitzmüller<emphasis role='size_large'><link xlink:href="spitz@lyx.org"></link></emphasis></personname>
+</author>
+<date>21.04.2015</date>
+<abstract>
+<para>In diesem Text werden einige Funktionen von LyX vorgestellt, die spezifisch auf die Bedürfnisse von Linguistinnen und Linguisten ausgerichtet sind. Es wird gezeigt, wie nummerierte Beispiele, Interlinear-Glossierung, OT-Tableaux, semantische Auszeichnung, Strukturbäume, Diskursrepräsentationsstrukturen und phonetische Notation (IPA) erzeugt werden können.</para>
+</abstract>
+
+</info>
+<section>
+<title>Voraussetzungen und Ziele</title>
+<para>Die meisten der hier beschriebenen Funktionen werden vom &#8222;Linguistik&#8220;-Modul bereitgestellt, das seit Version 1.6.0 mit LyX mitgeliefert wird. &#8222;Module&#8220; – das Konzept wurde ebenfalls mit LyX 1.6.0 eingeführt – sind Ergänzungsdateien, welche die von der Dokumentklasse bereitgestellten Möglichkeiten zumeist für sehr spezifische Aufgaben erweitern und die für jedes Dokument (egal welcher Klasse) einfach ausgewählt werden können. Um das Linguistik-Modul zu verwenden, gehen sie zu <emphasis role='sans'>Dokument&#x21D2;Einstellungen&#x21D2;Module</emphasis>, wählen Sie &#8222;Linguistik&#8220; aus der Liste der verfügbaren Module und drücken auf den Knopf <emphasis role='sans'>Hinzufügen</emphasis> (so wie es für dieses Dokument bereits getan wurde).</para>
+<para>Grundsätzlich sollte das Modul in jeder von LyX unterstützten Dokumentklasse funktionieren (falls nicht, informieren Sie bitte den Autor dieses Textes). Allerdings müssen Sie, um alle Features nutzen zu können, die folgenden LaTeX-Pakete installiert haben:</para>
+<orderedlist>
+<listitem>
+<para><emphasis>covington.sty</emphasis> <biblioref endterm="covington" />: Dieses Paket wird benötigt, um nummerierte Beispiele, Glossen und semantische Auszeichnungen zu erzeugen. Beachten Sie, dass mindestens Version 2.3 des Pakets erforderlich ist, um alle Funktionen zu nutzen.</para>
+<itemizedlist>
+<listitem>
+<para>Auf Ihrem System installiert: nein.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<para><emphasis>csquotes.sty</emphasis> <biblioref endterm="csquotes" />: Voraussetzung für den Textstil <emphasis>Bedeutung</emphasis> und für Glossen. Das Paket erlaubt es, kontextsensible Anführungszeichen zu generieren (bspw. je nach aktuell verwendeter Sprache).</para>
+<itemizedlist>
+<listitem>
+<para>Auf Ihrem System installiert: nein.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<para><emphasis>drs.sty</emphasis> <biblioref endterm="drs" />: Voraussetzung für Diskursrepräsentationsstrukturen. Beachten Sie, dass mindestens Version 2.3 des Pakets <emphasis>covington</emphasis> erforderlich ist, um dies mit anderen Funktionen gemeinsam zu nutzen.</para>
+<itemizedlist>
+<listitem>
+<para>Auf Ihrem System installiert: nein.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<para><emphasis>float.sty</emphasis> <biblioref endterm="float" />: Dieses Paket brauchen wir für die OT-Tableaux und das Tableaux-Verzeichnis. Es sollte Bestandteil jeder LaTeX-Distribution sein.</para>
+<itemizedlist>
+<listitem>
+<para>Auf Ihrem System installiert: nein.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<para><emphasis>forest.sty</emphasis> <biblioref endterm="forest" />: Dieses Paket wird zur Erzeugung von Strukturbäumen verwendet.</para>
+<itemizedlist>
+<listitem>
+<para>Auf Ihrem System installiert: nein.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<para><emphasis>pict2e.sty</emphasis> <biblioref endterm="pict2e" />: Voraussetzung für <emphasis>Duplex-Bedingungs-DRS</emphasis>.</para>
+<itemizedlist>
+<listitem>
+<para>Auf Ihrem System installiert: nein.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</orderedlist>
+</section>
+<section>
+<title>Nummerierte Beispiele</title>
+<para>Nummerierte Beispiele werden über die Absatzstil-Auswahlliste in der Werkzeugleiste eingefügt. Es gibt drei Varianten:</para>
+<informalexample role='numbered'>
+<para>Das ist ein mehrzeiliges Beispiel [Stil <emphasis>Nummeriertes Beispiel (mehrere Zeilen)</emphasis>]</para>
+<para>Wie der Name sagt, kann es mehrere Absätze enthalten</para>
+</informalexample>
+<informalexample role='consecutive'>
+<para>Das ist ein einzeiliges Beispiel<anchor xml:id="exa.Beispiel-einzeilig" /> [Stil <emphasis>Nummeriertes Beispiel (konsekutiv)</emphasis>]Jeder Absatz wird in diesem Stil neu nummeriert</para>
+</informalexample>
+<informalexample role='consecutive'>
+<para>Dies ist ein Unterbeispiel<anchor xml:id="subsec.Unterbeispiel" /> [Stil <emphasis>Unterbeispiel</emphasis>]Und hier noch eines</para>
+</informalexample>
+<para>Querverweise auf Beispiele erzeugen Sie wie gewohnt: Sie fügen im Beispiel eine Marke ein, und an der Stelle, an der der Querverweis erscheinen soll, einen Verweis mittels <emphasis role='sans'>Einfügen&#x21D2;Querverweis&#x2026;</emphasis> </para>
+<para>Als kleine Demonstration verweisen wir hier auf die Beispiele <xref linkend="exa.Beispiel-einzeilig" /> und <xref linkend="subsec.Unterbeispiel" />.</para>
+<para>Wenn Sie die Nummerierung für einzelne Beispiele ändern möchten, verwenden Sie <emphasis role='sans'>Einfügen&#x21D2;Benutzerdef. Nummerierung</emphasis>. Für globale Anpassungen bietet <emphasis>covington</emphasis> selbst Möglichkeiten. Bitte konsultieren Sie das Handbuch des Pakets <biblioref endterm="covington" /> für Einzelheiten.</para>
+<para>Ab Version 2.3 bietet <emphasis>covingtons</emphasis> subexamples-Umgebung ein optionales Argument (mit dem man Text zwischen der Hauptnummer und dem ersten Unterbeispiel einfügen kann). Dieses können Sie über <emphasis role='sans'>Einfügen&#x21D2;Optionen für Unterbeispiele</emphasis> eingeben. Bitte konsultieren Sie auch hier das Handbuch des Pakets <biblioref endterm="covington" /> für Einzelheiten.</para>
+</section>
+<section>
+<title>Interlinear-Glossierung</title>
+<para>Das Linguistikmodul stellt zwei Arten von Glossen zur Verfügung. Beide sind über <emphasis role='sans'>Einfügen&#x21D2;Spezifische Einfügung</emphasis> zugänglich. Die <emphasis>Interlinear-Glosse (2&#xA0;Zeilen)</emphasis> besteht aus zwei Zeilen für das Glossenpaar (bestehend aus der Darstellung in der zu beschreibenden Sprache und einer interlinearen Wort-zu-Wort-Übersetzung) sowie einer weiteren Zeile für die freie Übersetzung, die <emphasis>Interlinear-Glosse (3&#xA0;Zeilen)</emphasis> bietet eine zusätzliche Zeile für Interlinear-Glossierung (diese dritte Zeile wird zumeist für morphologische oder phonologische Angaben verwendet). Die freie Übersetzung kann länger sein als eine Zeile, sie wird dann einfach automatisch und korrekt umbrochen. Die Version in der zu beschreibenden Sprache (erste Zeile der Glosse) wird direkt in die Glosse-Einfügung geschrieben, alle anderen Teile der Glosse in spezifische Unter-Einfügungen (<emphasis role='sans'>Interlinear-Glosse</emphasis>, bzw. mit dreizeiligen Glossen: <emphasis role='sans'>Interlinear-Glosse (Zeile&#xA0;1)</emphasis> und <emphasis role='sans'>Interlinear-Glosse (Zeile&#xA0;2)</emphasis>, sowie <emphasis role='sans'>Glossen-Übersetzung</emphasis>). LyX fügt diese Unter-Einfügungen automatisch ein, wenn Sie eine neue Glosse einfügen. Sie können aber auch manuell eingefügt werden, und zwar über <emphasis role='sans'>Einfügen&#x21D2;Glossen-Übersetzung</emphasis> und <emphasis role='sans'>Einfügen&#x21D2;Interlinear-Glosse</emphasis>. Ungeachtet wo Sie diese Untereinfügungen innerhalb der Glosse einfügen, wird alles in der richtigen Reihenfolge ausgegeben. Schließlich können Sie über <emphasis role='sans'>Einfügen&#x21D2;Glossen-Optionen</emphasis> auch Glossen-Optionen eingeben. Diese Optionen erlauben es Ihnen, die Darstellung der einzelnen Zeilen zu verändern, eine Nummerierung oder vorangestellten Text hinzuzufügen. Bitte konsultieren Sie das Handbuch des Pakets <emphasis>covington </emphasis><biblioref endterm="covington" /> für Einzelheiten.<footnote>
+<para>Bitte beachten Sie, dass die Unterstützung für Glossen für LyX 2.4 komplett überarbeitet wurde. Nun werden die neuen und verbesserten Glossen-Makros verwendet, die <emphasis>covington</emphasis> seit der Version 2.0 anbietet. Wegen der erheblichen Veränderungen können alte Glossen leider nicht in die neuen konvertiert werden. Statt dessen werden sie in ihrer ursprünglichen Form importiert (und als <emphasis role='sans'>Lokales Format</emphasis> im Dokument gespeichert). Umgekehrt werden neue Glossen in TeX-Code exportier, wenn Sie in eine ältere LyX-Version exportieren.</para>
+</footnote></para>
+<para>Hier ist ein einfaches Beispiel für eine zweizeilige Glosse:</para>
+<para>C'est       un exemple simple</para>
+<para>Verwenden Sie <emphasis role='sans'>Bearbeiten&#x21D2;Textstil&#x21D2;Glossierte Wortgruppen</emphasis>, um Mehrwortelemente zusammenzuhalten (alternativ können Sie auch im TeX-Modus <!-- { -->
+diese Wörter geschweift einklammern<!-- } -->
+). Beachten Sie, dass Sie im LyX-Fenster mehrere Leerzeichen nacheinander einfügen können, um die Glossen dort schöner auszurichten. Die Ausgabe wird davon nicht berührt.</para>
+<para>Hier ist eine dreizeilige Glosse. Sie wird analog erzeugt:</para>
+<para>Hoc est aliud exemplum</para>
+<para>Beachten Sie, wie wir hier mit Hilfe der Glossen-Optionen die zweite Zeile in Kapitälchen ausgeben lassen.</para>
+<para>Wenn Sie nummerierte Glossen benötigen, fügen Sie die Glosse entweder einfach in einen Absatz mit dem Format <emphasis>Nummeriertes Beispiel</emphasis> ein, so wie hier:</para>
+<informalexample role='consecutive'>
+<para>Mein Luftkissenfahrzeug ist voller  Aale</para>
+</informalexample>
+<para>oder verwenden Sie die Glossen-Option <emphasis>ex</emphasis>:</para>
+<para>Mein Luftkissenfahrzeug ist voller  Aale</para>
+<bridgehead renderas="sect2">Tipps &amp; Tricks</bridgehead>
+<bridgehead renderas="sect3">Seitenumbrüche innerhalb von Glossen vermeiden</bridgehead>
+<para>In der Standardeinstellung können innerhalb von Glossen Seiten umbrochen werden, was natürlich nicht erwünscht ist. Um dies zu umgehen, können Sie in <emphasis role='sans'>Dokument&#x21D2;Einstellungen&#x2026;&#x21D2;Dokumentklasse&#x21D2;Klassenoptionen&#x21D2;Benutzerdefiniert</emphasis> die Option <emphasis>noglossbreaks</emphasis> eingeben; dies wird die meisten Umbrüche verhindern. Wenn trotzdem welche vorkommen, können Sie Glossen in Boxen packen (über <emphasis role='sans'>Einfügen&#x21D2;Box&#x21D2;Rahmenlos</emphasis>).</para>
+<bridgehead renderas="sect3">Fußnoten in Glossen</bridgehead>
+<para>Sie können zwar eine Fußnote in eine <emphasis>Glosse </emphasis>einfügen, dies führt aber zu einem LaTeX-Fehler. Wenn Sie Fußnoten benötigen, schreiben Sie an der Stelle, an der das Fußnotenzeichen erscheinen soll, im TeX-Modus <code>\footnotemark</code> in die Glosse. Direkt nach (und außerhalb) der Glosse schreiben Sie, ebenfalls im TeX-Modus,<code> \footnotetext{Die Fußnote ...}</code>. Sollten Sie mehrere Fußnoten brauchen, geben Sie einfach mehrere dieser Befehlspaare ein.</para>
+<bridgehead renderas="sect3">Glossen (und Beispiele) in Beamer-Präsentationen</bridgehead>
+<para>Wenn Sie das Linguistik-Modul in einer Beamer-Präsentation verwenden wollen, beachten Sie bitte folgendes:</para>
+<itemizedlist>
+<listitem>
+<para>Für Glossen müssen Sie in Beamer immer einen &#8222;fragilen&#8220; Rahmen verwenden. </para>
+</listitem>
+<listitem>
+<para>Ältere Versionen des Pakets <emphasis>covington</emphasis> und die <emphasis>Beamer</emphasis>-Klasse arbeiten von Haus aus nicht gut zusammen, da beide die Befehle <code>\example</code> und <code>\examples</code> zu definieren versuchen, was in diesen älteren Versionen eine LaTeX-Fehlermeldung erzeugt, sobald sie Glossen oder Beispiele einfügen. Sie können das Problem beheben, indem Sie in <emphasis role='sans'>Dokument&#x21D2;Einstellungen&#x21D2;Lokales Format</emphasis> folgenden Code kopieren:</para>
+<blockquote>
+<para><programlisting>Provides covington 1
+AddToPreamble
+		\let\example\relax
+		\let\endexample\relax
+		\let\examples\relax
+		\let\endexamples\relax
+		\usepackage{covington}
+EndPreamble</programlisting>
+</para>
+</blockquote>
+<para>Drücken Sie &#8222;Validieren&#8220; und dann &#8222;OK&#8220;. Dies hat den Effekt, dass die Beispiel-Umgebungen von Beamer deaktiviert werden (und also nicht mehr verwendet werden können), dafür können Sie dann aber die des Linguistik-Moduls verwenden.</para>
+<para>Ab <emphasis>covington</emphasis> 1.1 besteht dieses Problem nicht mehr.</para>
+</listitem>
+</itemizedlist>
+</section>
+<section>
+<title>Tableaux für Optimalitätstheorie</title>
+<para>Die OT-Tableaux selbst können natürlich einfach als normale Tabellen eingegeben werden (Spezifika wie gestrichelte Tabellenlinien und schattierte Tabellenzellen, die man hierfür manchmal braucht, sind in <emphasis role='sans'>Hilfe&#x21D2;Eingebettete Objekt</emphasis>e beschrieben). </para>
+<para>Wenn Sie allerdings Ihre Tableaux durch das Dokument hindurch nummerieren und ein eigenes Tableaux-Verzeichnis einrichten möchten, reichen die Bordmittel von LyX nicht aus. Auch hier hilft das Linguistikmodul. Wenn es ausgewählt ist, finden Sie unter <emphasis role='sans'>Einfügen&#x21D2;Gleitobjekte</emphasis> zusätzlich ein Tableau-Gleitobjekt (siehe Tableau&#xA0;<xref linkend="tab.Beispiel-Tableau" /> für ein Beispiel).</para>
+<table xml:id="tab.Beispiel-Tableau">
+<caption>Beispiel-Tableau</caption>
+<tbody>
+<tr>
+<td align='right' valign='top'>/atikap/</td>
+<td align='center' valign='top'>Onset</td>
+<td align='center' valign='top'>NoCoda</td>
+<td align='center' valign='top'>Dep</td>
+<td align='center' valign='top'>Max</td>
+</tr>
+<tr>
+<td align='right' valign='top'><inlineequation>
+<alt role='tex'>\mbox{☞}</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:mstyle class='mathbox'>☞
+  </m:mstyle>
+ </m:mrow>
+ </m:math>
+</inlineequation> <inlineequation>
+<alt role='tex'>\mbox{\textipa{P}}</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:mstyle class='mathbox'>P
+  </m:mstyle>
+ </m:mrow>
+ </m:math>
+</inlineequation>a.ti.ka</td>
+<td align='center' valign='top'></td>
+<td align='center' valign='top'></td>
+<td align='center' valign='top'>*</td>
+<td align='center' valign='top'>*</td>
+</tr>
+<tr>
+<td align='right' valign='top'>a.ti.ka</td>
+<td align='center' valign='top'>*!</td>
+<td align='center' valign='top'></td>
+<td align='center' valign='top'></td>
+<td align='center' valign='top'>*</td>
+</tr>
+<tr>
+<td align='right' valign='top'><inlineequation>
+<alt role='tex'>\mbox{\textipa{P}}</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:mstyle class='mathbox'>P
+  </m:mstyle>
+ </m:mrow>
+ </m:math>
+</inlineequation>a.ti.kap</td>
+<td align='center' valign='top'></td>
+<td align='center' valign='top'>*!</td>
+<td align='center' valign='top'>*</td>
+<td align='center' valign='top'></td>
+</tr>
+<tr>
+<td align='right' valign='top'>a.ti.kap</td>
+<td align='center' valign='top'>*!</td>
+<td align='center' valign='top'>*!</td>
+<td align='center' valign='top'></td>
+<td align='center' valign='top'></td>
+</tr>
+</tbody>
+</table>
+
+<para>Bitte beachten Sie, dass die Legende in der Standardeinstellung immer unter dem Tableau ausgegeben wird, egal, wohin Sie sie im LyX-Arbeitsfenster setzen. Um die Legende über das Tableau zu setzen, müssen Sie den folgenden Code in <emphasis role='sans'>Dokument&#x21D2;Einstellungen&#x21D2;Präambel </emphasis>eingeben:</para>
+<blockquote>
+<para><programlisting language="[LaTeX]TeX">\floatstyle{plaintop}
+\restylefloat{tableau}</programlisting>
+</para>
+</blockquote>
+<para>Wenn Sie eine KOMA-Klasse verwenden, nehmen Sie statt dessen das Folgende (welches im Kontext der KOMA-Klassen bessere Abstände erzeugt):</para>
+<blockquote>
+<para><programlisting language="[LaTeX]TeX">\floatstyle{komaabove}
+\restylefloat{tableau}</programlisting>
+</para>
+</blockquote>
+<para>Ein Verzeichnis der Tableaux geben Sie, wie bei normalen Tabellen auch, über <emphasis role='sans'>Einfügen&#x21D2;Liste&#x2044;Inhaltsverzeichnis</emphasis> ein. Dies sieht dann so aus:</para>
+</section>
+<section>
+<title>Semantische Auszeichnung (Textstile)</title>
+<para>Das Linguistikmodul stellt einige Textstile zur Verfügung, die in linguistischen Arbeiten allgemein gebräuchlich sind:</para>
+<orderedlist>
+<listitem>
+<para>Konzept (in Kapitälchen): Konzept </para>
+</listitem>
+<listitem>
+<para>Ausdruck (hervorgehoben): Ausdruck</para>
+</listitem>
+<listitem>
+<para>Bedeutung (in einfachen Anführungszeichen): Bedeutung</para>
+</listitem>
+</orderedlist>
+<para>Diese Textstile finden Sie unter <emphasis role='sans'>Bearbeiten&#x21D2;Textstil</emphasis>. Der Vorteil solcher Stile gegenüber direkter Hervorhebung und Auszeichnung ist vor allem der, dass sie alle (und nur die) damit markierten Textteile leicht global verändern können. Wenn Sie (oder Ihr Verlag) also etwa Ausdrücke doch fett gesetzt haben wollen, geben Sie einfach den folgenden Code in <emphasis role='sans'>Dokument&#x21D2;Einstellungen&#x21D2;Präambel</emphasis> ein:</para>
+<blockquote>
+<para><programlisting language="[LaTeX]TeX">\renewcommand\lexp[1]{\textbf{#1}}</programlisting>
+</para>
+</blockquote>
+<para>Auf ähnliche Weise kann auch das Aussehen von <emphasis>Konzept</emphasis> (<code>\lcon</code>) und <emphasis>Bedeutung</emphasis> (<code>\lmean</code>) verändert werden. Bitte konsultieren Sie das Handbuch des Pakets <emphasis>covington</emphasis> <biblioref endterm="covington" /> für Einzelheiten.</para>
+</section>
+<section>
+<title>Linguistische Strukturbäume</title>
+<para>Mittlerweile gibt es mehrere LaTeX-Pakete, die bei der Erstellung von Strukturbäumen helfen. LyX unterstützt das Paket <emphasis role='sans'>forest</emphasis>, welches hohe Flexibilität und Mächtigkeit mit einer intuitiven Syntax vereint. Das Linguistik-Modul enthält eine Strukturbaum-Einfügung, die unter <emphasis role='sans'>Einfügen&#x21D2;Spezifische Einfügung</emphasis> zu finden ist. Innerhalb dieser Einfügung können Sie die Klammernotation verwenden, die das Paket <emphasis role='sans'>forest</emphasis> (wie auch andere Pakete, z.&#x2009;B. <emphasis role='sans'>qtree</emphasis>) anbietet.</para>
+<para>Hier ist ein einfaches Beispiel:</para>
+<para>[VP [DP[Hans]] [V' [V[schickt]] [DP[Maria]] [DP[D[einen]][NP[Brief]]] ] ]</para>
+<para>Wenn Sie die PDF-Ausgabe ansehen, sehen Sie, dass die Notation</para>
+<blockquote>
+<para><code><emphasis role='size_footnote'>[VP [DP[Hans]] [V' [V[schickt]] [DP[Maria]] [DP[D[einen]][NP[Brief]]]]]</emphasis></code></para>
+</blockquote>
+<para>als Strukturbaum ausgegeben wird. Um das Ergebnis bereits im LyX<!-- "= -->
+Eingabefenster zu sehen, können Sie die Strukturbaum-Einfügung einfach in eine Vorschau-Einfügung (<emphasis role='sans'>Einfügen&#x21D2;Vorschau</emphasis>) einbetten. Wenn &#8222;Sofortige Vorschau&#8220; richtig eingerichtet und aktiviert ist, sollten Sie den Baum sofort sehen (zur Bearbeitung klicken Sie einfach auf das Bild):</para>
+<para>[VP [DP[Maria]] [V' [V[schickt]] [DP[Hans]] [DP[D[eine]][NP[Antwort]]] ] ]</para>
+<para>Dächer (&#8222;roofs&#8220;) können mittels der Option &#8222;roof&#8220;<footnote>
+<para>Bitte beachten Sie, dass die Option &#8222;roof&#8220; erst ab Version 2.0 des Pakets <emphasis role='sans'>forest</emphasis> verfügbar ist. Für frühere Versionen haben wir in den Vorspann dieses Dokuments Code eingefügt, die die Verwendung dennoch gestattet. Wenn Ihre Version des Pakets <emphasis role='sans'>forest</emphasis> kleiner ist als 2.0 und Sie &#8222;roof&#8220; verwenden wollen, müssen Sie diesen Code in den Vorspann Ihres Dokuments kopieren. Statt dessen können Sie auch die alte Option &#8222;triangle&#8220; (statt &#8222;roof&#8220;) verwenden.</para>
+</footnote> erzeugt werden (beachten Sie, dass Kommata eine spezielle Bedeutung haben; sie markieren Optionen):</para>
+<para>[VP [DP[Hans]] [V' [V[schickt]] [DP[Maria]] [DP[einen weiteren Brief, roof]] ] ]</para>
+<para>Um die Knoten des Baums besser auszurichten, verwenden Sie die Option &#8222;tier&#8220;. Alle Knoten, denen dieselbe &#8222;tier&#8220; (Ebene) zugewiesen wurde, werden in einer vertikalen Linie ausgerichtet. Hier ist ein Beispiel:</para>
+<para>[VP [DP[Hans, tier=word]] [V' [V[schickt, tier=word]] [DP[Maria, tier=word]] [DP[D[einen, tier=word]][NP[Brief, tier=word]]] ] ]</para>
+<para>Das Paket bietet viel mehr Möglichkeiten, wie bspw. Bewegungspfeile und Dekorationen. Sie können hier nicht eingehend besprochen werden. Bitte konsultieren Sie die ausführliche Dokumentation des Pakets <biblioref endterm="forest" />.</para>
+</section>
+<section>
+<title>Diskursrepräsentationsstrukturen</title>
+<para>Das Linguistik-Modul stellt auch Einfügungen zur Erzeugung von Diskursrepräsentationsstrukturen (DRSen) in der Box-Notation von <personname>Hans Kamps</personname> <emphasis>Diskursrepräsentationstheorie</emphasis> zur Verfügung. Diese Einfügungen finden Sie unter <emphasis role='sans'>Einfügen&#x21D2;Spezifische Einfügung</emphasis>.</para>
+<para>Eine einfache DRS erzeugen Sie mit der Einfügung <emphasis role='sans'>Diskursrepräsentationsstruktur</emphasis>. Eine DRS besteht aus (Diskurs-)<emphasis>Bedingungen</emphasis>, die direkt in die Einfügung geschrieben werden, uns den (u.&#x2009;U. leeren) (Diskurs-)<emphasis>Referenten</emphasis> (bzw., im DRT-Jargon, dem <emphasis>Universum</emphasis>), welche in die (automatisch eingefügte) Untereinfügung <emphasis>Referenten</emphasis> geschrieben werden.<footnote>
+<para>Sollte diese nicht eingefügt werden, finden Sie sie unter <emphasis role='sans'>Einfügen&#x21D2;DRS-Referenten</emphasis>. </para>
+</footnote> Zeilenwechsel müssen mittels <keycap>Ctrl+Return</keycap> eingefügt werden. Hier ist ein einfaches Beispiel:</para>
+<para>
+Esel(x)grün(x)</para>
+<para>DRSen sind durch spezifische Layout-Anpassungen so gestaltet, dass Sie gut auf der Seite platziert werden. Die Variante <emphasis role='sans'>Diskursrepräsentationsstruktur (einfach)</emphasis> unterdrückt diese Anpassungen. </para>
+<para>Zusätzlich zu diesen einfachen DRSen werden die folgenden konditionalen DRSen unterstützt (sie werden in der Regel in einfache eingebettet):</para>
+<orderedlist>
+<listitem>
+<para>Die <emphasis role='sans'>Implikative DRS</emphasis> repräsentiert eine konditionale (implikative) Satzkonstruktion der Form <emphasis>wenn S<subscript>1</subscript>, dann S</emphasis><subscript>2</subscript>:</para>
+<para>Joseph(x)Esel(y)besitzen(x,y)</para>
+</listitem>
+<listitem>
+<para>Die <emphasis role='sans'>Konditionale DRS</emphasis> ist eine allgemeinere Variante, bei der Sie selbst eine beliebige Bedingung (statt der implikativen) spezifizieren können. In die Untereinfügung <emphasis role='sans'>Bedingung</emphasis> können Sie ein beliebiges Symbol eingeben:</para>
+<para>Joseph(x)Esel(y)besitzen(x,y)</para>
+</listitem>
+<listitem>
+<para>Die <emphasis role='sans'>Duplex-Bedingungs-DRS</emphasis> können Sie für sog. <emphasis>Duplex-Bedingungen</emphasis> verwenden:</para>
+<para>x <inlineequation>
+<alt role='tex'>\in</alt>
+ <m:math>
+ 
+ <m:mrow><m:mo>&#x2208;</m:mo>
+ </m:mrow>
+ </m:math>
+</inlineequation> X</para>
+</listitem>
+<listitem>
+<para>Die <emphasis role='sans'>Negierte DRS</emphasis> fügt eine DRS ein, der ein Negationszeichen vorangestellt ist:</para>
+<para>Esel(x)grün(x)</para>
+</listitem>
+</orderedlist>
+<para><emphasis role='sans'>DRS mit Satz oberhalb</emphasis> schließlich tut, was es verspricht: Es setzt einen Satz über die Box-Repräsentation:</para>
+<para>
+Esel(x)grün(x)
+</para>
+<para>Das Paket <emphasis>drs</emphasis> bietet einige Möglichkeiten, um das Erscheinungsbild der DRS-Modelle anzupassen. Bitte konsultieren Sie das Handbuch des Pakets <biblioref endterm="drs" /> für Einzelheiten.</para>
+</section>
+<section>
+<title>Phonetische Notation (IPA)</title>
+<para>Um phonetische Zeichen einzugeben, brauchen Sie das Linguistikmodul nicht. IPA-Unterstützung ist mittlerweile eine Grundfunktion von LyX. Da IPA aber von Linguistinnen und Linguisten sehr häufig gebraucht wird, wird die Verwendung der IPA-Funktion hier trotzdem (kurz) beschrieben.</para>
+<para>Um LyX' IPA-Funktion mit klassischem LaTeX oder PDFLaTeX zu benutzen, müssen Sie das Paket <emphasis>tipa</emphasis> <biblioref endterm="tipa" /> installiert haben. Es wird von LyX automatisch geladen, wenn Sie dem unten beschriebenen Vorgehen folgen. Wenn Sie XeTeX oder LuaTeX verwenden (und &#8222;Nicht-TeX-Schriften verwenden&#8220; in <emphasis role='sans'>Dokument&#x21D2;Einstellungen&#x21D2;Schriften</emphasis> aktiviert haben), wird statt dessen das Paket <emphasis>xunicode</emphasis> geladen, da <emphasis>tipa</emphasis> in diesem Fall nicht funktioniert. Das Paket <emphasis>xunicode</emphasis> emuliert die Ausgabe von <emphasis>tipa</emphasis>, ist aber nicht perfekt, so dass die Ausgabe möglicherweise nicht wie erwartet ist. Außerdem müssen Sie in diesem Fall darauf achten, dass die Nicht-TeX-Schrift die IPA-Symbole auch enthält (empfehlenswert sind Schriften wie <emphasis>CMU Serif</emphasis> oder <emphasis>SIL Doulos</emphasis>). Sie können auch eine Schrift nur für IPA definieren, indem sie das Folgende in <emphasis role='sans'>Dokument&#x21D2;Einstellungen&#x21D2;LaTeX-Vorspann</emphasis> eingeben:</para>
+<para><programlisting language="[LaTeX]TeX">\AtBeginDocument{%
+\newfontfamily{\ipafont}{CMU Serif}% oder eine ander Schriftart
+\def\useTIPAfont{\ipafont}
+}</programlisting>
+Für eine direkte Vorschau der IPA-Symbole im Arbeitsfenster sollten Sie weiterhin (egal, welche der oben beschriebenen Ausgabeformate Sie verwenden) das <emphasis>preview-latex</emphasis>-Paket <biblioref endterm="preview" /> installiert haben.</para>
+<para>Phonetische Zeichen werden in eine spezielle Umgebung eingegeben, die Sie über <emphasis role='sans'>Einfügen&#x21D2;Sonderzeichen&#x21D2;Phonetische Symbole </emphasis>aktivieren. Es wird ein kleiner umrahmter Eingabebereich eingefügt, in den Sie einzelne Zeichen, Wörter und Wortfolgen sowie auch mehrere Absätze mit phonetischer Notation eingeben können. Wenn Sie in dem Eingabebereich sind, wird eine Symbolleiste aktiviert, die die wichtigsten IPA-Symbole (nach den IPA-Kategorien sortiert) bereitstellt.<footnote>
+<para>Es fehlt ein Symbol: der (2005 in das IPA aufgenommene) labiodentale Flap. Dieses Zeichen unterstützt das <emphasis>Tipa-</emphasis>Paket noch nicht; daher kann es auch nicht von LyX unterstützt werden.</para>
+</footnote> Jeder Symbolbereich dieser Symbolleiste kann durch Klicken auf die gestrichelte Linie abgetrennt werden. Dadurch kann phonetische Notation recht komfortabel eingegeben werden: [ˈɛtva zo:].<footnote>
+<para>Wenn Sie ein diakritisches Zeichen einfügen möchten, müssen Sie das Diakritikum <emphasis>nach</emphasis> dem Basiszeichen einfügen. Das heißt, für [d̥] geben Sie zuerst <code>&lt;d&gt;</code> ein und dann direkt danach das Diakritikum <code>&lt;Stimmlos&gt;</code> von der Symbolleiste. Wenn Sie nur ein Diakritikum eingeben möchten, können Sie das direkt nach einem Leerzeichen tun, so wie hier:  ̼ (<code>=&#xA0;&lt;Leerzeichen&gt;+&lt;Lingolabial&gt;</code>).</para>
+</footnote> Wenn<emphasis> preview-latex</emphasis> installiert ist und Sie außerdem in<emphasis role='sans'> Werkzeuge&#x21D2;Einstellungen&#x2026;&#x21D2;Grafik</emphasis> &#8222;Sofortige Vorschau&#8220; aktiviert haben, zeigt LyX eine WYSIWYG-Vorschau der Notation an, sobald der Cursor den IPA-Bereich verlässt. Alternativ zur Symbolleiste können Sie die Zeichen auch direkt mithilfe der Kurznotation eingeben können, die im <emphasis>tipa</emphasis>-Handbuch erläutert wird: hier eine [kOst"pro:b@] (<emphasis>tipa</emphasis>-Kurznotation: <code>[kOst"pro:b@</code>]). Alternativ können Sie die meisten IPA-Zeichen auch über <emphasis role='sans'>Einfügen&#x21D2;Sonderzeichen&#x21D2;Symbole&#x2026;</emphasis> in das Eingabefeld eingeben oder sie aus einem anderen Dokument kopieren und dort einfügen. Die Ausgabe sollte immer identisch sein, egal welche Eingabemethode Sie wählen.</para>
+<para>Bitte beachten Sie, dass Sie die meisten IPA-Zeichen über die zuletzt genannten Methoden auch außerhalb des IPA-Eingabebereichs einfügen können: [zoː viː hiːɐ̯]. In der Ausgabe werden diese Zeichen dann ebenfalls direkt in die korrekten <emphasis>tipa</emphasis>-Makros umgewandelt (lassen Sie es uns wissen, falls das nicht der Fall ist). Dieses Verfahren hat aber gravierende Nachteile gegenüber der IPA-Umgebung, denn die direkte Eingabe resultiert in der Regel in unerwünschter Schriftmischung (die lateinischen Buchstaben werden aus der Grundschrift, die speziellen IPA-Zeichen aber aus der IPA-Schrift genommen, und diese beiden Schriften passen nicht notwendigerweise zusammen). Innerhalb der IPA-Eingabeumgebung wird dagegen für alle Zeichen dieselbe Schrift verwendet. Deshalb sollten Sie, wenn Sie nicht nur Einzelzeichen eingeben, unbedingt den IPA-Eingabebereich verwenden.</para>
+</section>
+<section>
+<title>Weitere Informationen</title>
+<para>Mehr und ausführlichere Informationen über die Möglichkeiten des Einsatzes von LyX für linguistische Zwecke finden Sie auf der (englischsprachigen) <emphasis>LinguistLyX</emphasis>-Seite auf dem LyX-Wiki <biblioref endterm="linguistlyx" />. Sie sind übrigens herzlich eingeladen, dort aktiv mitzuschreiben!</para>
+</section>
+<bibliography>
+<bibliomixed xml:id='covington'>Das covington-Paket: <link xlink:href="http://www.ctan.org/tex-archive/macros/latex/contrib/covington/">http://www.ctan.org/tex-archive/macros/latex/contrib/covington/</link>.</bibliomixed>
+<bibliomixed xml:id='csquotes'>Das csquotes-Paket: <link xlink:href="http://www.ctan.org/tex-archive/macros/latex/contrib/csquotes/">http://www.ctan.org/tex-archive/macros/latex/contrib/csquotes/</link>.</bibliomixed>
+<bibliomixed xml:id='drs'> Das drs-Paket: <link xlink:href="https://ctan.org/tex-archive/macros/latex/contrib/drs">https://ctan.org/tex-archive/macros/latex/contrib/drs</link>.</bibliomixed>
+<bibliomixed xml:id='enumitem'>Das enumitem-Paket: <link xlink:href="http://www.ctan.org/tex-archive/macros/latex/contrib/enumitem/">http://www.ctan.org/tex-archive/macros/latex/contrib/enumitem/</link>.</bibliomixed>
+<bibliomixed xml:id='float'>Das float-Paket: <link xlink:href="http://www.ctan.org/tex-archive/macros/latex/contrib/float/">http://www.ctan.org/tex-archive/macros/latex/contrib/float/</link>.</bibliomixed>
+<bibliomixed xml:id='forest'>Das forest-Paket: <link xlink:href="http://www.ctan.org/tex-archive/graphics/pgf/contrib/forest">http://www.ctan.org/tex-archive/graphics/pgf/contrib/forest</link>.</bibliomixed>
+<bibliomixed xml:id='linguistlyx'>Maria Gouskova, Stacia Hartleben und Jürgen Spitzmüller: Using LyX for Linguistic Papers. <link xlink:href="https://wiki.lyx.org/LyX/LinguistLyX">https://wiki.lyx.org/LyX/LinguistLyX</link>.</bibliomixed>
+<bibliomixed xml:id='pict2e'>Das pict2e-Paket: <link xlink:href="https://ctan.org/tex-archive/macros/latex/contrib/pict2e">https://ctan.org/tex-archive/macros/latex/contrib/pict2e</link></bibliomixed>
+<bibliomixed xml:id='preview'>Das preview-latex-Paket: <link xlink:href="http://www.ctan.org/tex-archive/macros/latex/contrib/preview/">http://www.ctan.org/tex-archive/macros/latex/contrib/preview/</link>.</bibliomixed>
+<bibliomixed xml:id='tipa'>Das tipa-Paket und die zugehörigen Schriften: <link xlink:href="http://www.ctan.org/tex-archive/fonts/tipa/">http://www.ctan.org/tex-archive/fonts/tipa/</link>.</bibliomixed>
+</bibliography>
+</article>

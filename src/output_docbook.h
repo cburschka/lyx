@@ -16,6 +16,7 @@
 #define OUTPUT_DOCBOOK_H
 
 #include "LayoutEnums.h"
+#include "ParagraphList.h"
 
 #include "support/docstream.h"
 #include "support/strfwd.h"
@@ -27,18 +28,23 @@ class Buffer;
 class OutputParams;
 class Text;
 
-///
-std::string const fontToDocBookTag(xml::FontTypes type);
-///
+/// generates an xml::StartTag for the given style
 xml::FontTag docbookStartFontTag(xml::FontTypes type);
-///
+/// generates an xml::EndTag for the given style
 xml::EndFontTag docbookEndFontTag(xml::FontTypes type);
 
-///
-void docbookParagraphs(Text const & text,
-		               Buffer const & buf,
-                       XMLStream & os,
-		               OutputParams const & runparams);
+/// output a series of paragraphs into the XMLStream
+void docbookParagraphs(Text const &,
+		               Buffer const &,
+                       XMLStream &,
+		               OutputParams const &);
+
+/// output a single paragraph into the XMLStream
+ParagraphList::const_iterator makeAny(Text const &,
+                                      Buffer const &,
+                                      XMLStream &,
+                                      OutputParams const &,
+                                      ParagraphList::const_iterator);
 
 } // namespace lyx
 

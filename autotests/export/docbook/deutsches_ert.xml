@@ -5,12 +5,19 @@
 <info>
 <title>Erweiterte LyX Features</title>
 <subtitle>Version 2.3.x</subtitle>
-<author><personname>vom LyX-Team<footnote>Übersetzung und Bearbeitung: Hartmut<person> Haase (<person>HHa, bis März 2010),Jürgen Spitzmüller (Version 2.3.x, 2017)</person></person></footnote></personname></author>
+<author>
+<personname>vom LyX-Team<footnote>
+<para>Übersetzung und Bearbeitung: Hartmut<person> </person>Haase (<person>HHa</person>, bis März 2010),</para>
+<para>Jürgen Spitzmüller (Version 2.3.x, 2017)</para>
+</footnote></personname>
+</author>
 </info>
 <chapter>
-<chapter>Einleitung</chapter>
-<para>Wählen Sie hierfür <emphasis role='sans'>Dokument&#x21D2;Einstellungen&#x21D2;LaTeX-Vorspann. Dies öffnet ein Editierfenster, in das Sie Ihre bevorzugten Befehle schreiben können.<footnote><para>Das Editierverhalten in diesem Fenster ist spezifisch, also erwarten Sie nicht, dass die LyX<!-- &#8222;= -->Tastenkombinationen darin funktionieren.</para>
-</footnote> LyX fügt alles im <emphasis role='sans'>LaTeX-Vorspann-Fenster zu seinem eingebauten Vorspann hinzu. Bevor Sie Ihre eigenen Deklarationen zum Vorspann hinzufügen, sollten Sie prüfen, ob LyX das nicht bereits unterstützt (Erinnern Sie sich, was wir über das Rad noch einmal erfinden sagten?). Außerdem: <emphasis>stellen Sie sicher, dass Ihre Vorspannzeilen richtig sind. LyX prüft das nicht. Wenn der Vorspann fehlerhaft ist, bekommen Sie sehr wahrscheinlich die Fehlermeldung Missing \begin{document}. Sollten Sie diese jemals bekommen, prüfen Sie Ihren Vorspann!. <!-- -&#45; --></emphasis></emphasis></emphasis></para>
+<title>Einleitung</title>
+<para>Wählen Sie hierfür <emphasis role='sans'>Dokument&#x21D2;Einstellungen&#x21D2;LaTeX-Vorspann.</emphasis> Dies öffnet ein Editierfenster, in das Sie Ihre bevorzugten Befehle schreiben können.<footnote>
+<para>Das Editierverhalten in diesem Fenster ist spezifisch, also erwarten Sie nicht, dass die LyX<!-- &#8222;= -->
+Tastenkombinationen darin funktionieren.</para>
+</footnote> LyX fügt alles im <emphasis role='sans'>LaTeX-Vorspann</emphasis>-Fenster zu seinem eingebauten Vorspann hinzu. Bevor Sie Ihre eigenen Deklarationen zum Vorspann hinzufügen, sollten Sie prüfen, ob LyX das nicht bereits unterstützt (Erinnern Sie sich, was wir über das Rad noch einmal erfinden sagten?). Außerdem: <emphasis>stellen Sie sicher, dass Ihre Vorspannzeilen richtig sind</emphasis>. LyX prüft das nicht. Wenn der Vorspann fehlerhaft ist, bekommen Sie sehr wahrscheinlich die Fehlermeldung Missing \begin{document}. Sollten Sie diese jemals bekommen, prüfen Sie Ihren Vorspann!. <!-- -&#45; -->
+</para>
 </chapter>
-
 </book>

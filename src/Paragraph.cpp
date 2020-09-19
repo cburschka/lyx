@@ -3329,18 +3329,15 @@ std::tuple<vector<xml::FontTag>, vector<xml::EndFontTag>> computeDocBookFontSwit
 } // anonymous namespace
 
 
-void Paragraph::simpleDocBookOnePar(Buffer const & buf,
-                                    XMLStream & xs,
-                                    OutputParams const & runparams,
-                                    Font const & outerfont,
-                                    bool start_paragraph, bool close_paragraph,
-                                    pos_type initial) const
+std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
+                                                      OutputParams const & runparams,
+                                                      Font const & outerfont,
+                                                      pos_type initial,
+                                                      bool is_last_par,
+                                                      bool ignore_fonts) const
 {
-	// track whether we have opened these tags
+	// Track whether we have opened these tags
 	DocBookFontState fs;
-
-	if (start_paragraph)
-		xs.startDivision(allowEmpty());
 
 	Layout const & style = *d->layout_;
 	FontInfo font_old =
@@ -3352,48 +3349,67 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 	vector<xml::FontTag> tagsToOpen;
 	vector<xml::EndFontTag> tagsToClose;
 
-	// parsing main loop
+	std::vector<docstring> generatedParagraphs;
+	DocBookFontState old_fs = fs;
+	odocstringstream os;
+	auto * xs = new XMLStream(os); // XMLStream has no copy constructor: to create a new object, the only solution
+	// is to hold a pointer to the XMLStream (xs = XMLStream(os) is not allowed once the first object is built).
+
+	// Parsing main loop.
 	for (pos_type i = initial; i < size(); ++i) {
-		// let's not show deleted material in the output
+		// Don't show deleted material in the output.
 		if (isDeleted(i))
 			continue;
 
+		// If this is an InsetNewline, generate a new paragraph. Also reset the fonts, so that tags are closed in
+		// this paragraph.
+		if (getInset(i) != nullptr && getInset(i)->lyxCode() == NEWLINE_CODE) {
+			if (!ignore_fonts)
+				xs->closeFontTags();
+			generatedParagraphs.push_back(os.str());
+			os = odocstringstream();
+			delete xs;
+			xs = new XMLStream(os);
+			if (!ignore_fonts) {
+				font_old = outerfont.fontInfo();
+				fs = old_fs;
+			}
+		}
+
+		// Determine which tags should be opened or closed regarding fonts.
 		Font const font = getFont(buf.masterBuffer()->params(), i, outerfont);
+		if (!ignore_fonts) {
+			tie(tagsToOpen, tagsToClose) = computeDocBookFontSwitch(font_old, font, default_family, fs);
 
-		// Determine which tags should be opened or closed.
-		tie(tagsToOpen, tagsToClose) = computeDocBookFontSwitch(font_old, font, default_family, fs);
+			// FIXME XHTML
+			// Other such tags? What about the other text ranges?
 
-		// FIXME XHTML
-		// Other such tags? What about the other text ranges?
+			vector<xml::EndFontTag>::const_iterator cit = tagsToClose.begin();
+			vector<xml::EndFontTag>::const_iterator cen = tagsToClose.end();
+			for (; cit != cen; ++cit)
+				*xs << *cit;
 
-		vector<xml::EndFontTag>::const_iterator cit = tagsToClose.begin();
-		vector<xml::EndFontTag>::const_iterator cen = tagsToClose.end();
-		for (; cit != cen; ++cit)
-			xs << *cit;
+			vector<xml::FontTag>::const_iterator sit = tagsToOpen.begin();
+			vector<xml::FontTag>::const_iterator sen = tagsToOpen.end();
+			for (; sit != sen; ++sit)
+				*xs << *sit;
 
-		vector<xml::FontTag>::const_iterator sit = tagsToOpen.begin();
-		vector<xml::FontTag>::const_iterator sen = tagsToOpen.end();
-		for (; sit != sen; ++sit)
-			xs << *sit;
-
-		tagsToClose.clear();
-		tagsToOpen.clear();
+			tagsToClose.clear();
+			tagsToOpen.clear();
+		}
 
 		if (Inset const * inset = getInset(i)) {
 			if (!runparams.for_toc || inset->isInToc()) {
 				OutputParams np = runparams;
 				np.local_font = &font;
-				// If the paragraph has size 1, then we are in the "special
-				// case" where we do not output the containing paragraph info.
-				// This "special case" is defined in more details in output_docbook.cpp, makeParagraphs. The results
-				// of that brittle logic is passed to this function through open_par.
-				if (!inset->getLayout().htmlisblock() && size() != 1) // TODO: htmlisblock here too!
-					np.docbook_in_par = true;
-				inset->docbook(xs, np);
+
+				// TODO: special case will bite here.
+				np.docbook_in_par = true;
+				inset->docbook(*xs, np);
 			}
 		} else {
 			char_type c = getUChar(buf.masterBuffer()->params(), runparams, i);
-			xs << c;
+			*xs << c;
 		}
 		font_old = font.fontInfo();
 	}
@@ -3401,11 +3417,18 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 	// FIXME, this code is just imported from XHTML
 	// I'm worried about what happens if a branch, say, is itself
 	// wrapped in some font stuff. I think that will not work.
-	xs.closeFontTags();
-	if (runparams.docbook_in_listing)
-		xs << xml::CR();
-	if (close_paragraph)
-		xs.endDivision();
+	if (!ignore_fonts)
+		xs->closeFontTags();
+
+	// In listings, new lines are very important. Avoid generating one for the last line.
+	if (runparams.docbook_in_listing && !is_last_par)
+		*xs << xml::CR();
+
+	// Finalise the last (and most likely only) paragraph.
+	generatedParagraphs.push_back(os.str());
+	delete xs;
+
+	return generatedParagraphs;
 }
 
 
@@ -3840,8 +3863,8 @@ bool Paragraph::isHardHyphenOrApostrophe(pos_type pos) const
 	char_type const c = d->text_[pos];
 	if (c != '-' && c != '\'')
 		return false;
-	int nextpos = pos + 1;
-	int prevpos = pos > 0 ? pos - 1 : 0;
+	pos_type nextpos = pos + 1;
+	pos_type prevpos = pos > 0 ? pos - 1 : 0;
 	if ((nextpos == psize || isSpace(nextpos))
 		&& (pos == 0 || isSpace(prevpos)))
 		return false;

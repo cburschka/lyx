@@ -27208,13 +27208,24 @@ Labels are rarely output, as they are redundant in DocBook: this information
 
 \begin_layout Subsection
 
-\change_inserted -970929547 1496610966
+\change_inserted 1075283030 1597699417
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Paragraph-Style-DocBook"
+
+\end_inset
+
+
+\change_deleted 1075283030 1597699417
+
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Paragraph-Style-XHTML-1"
 
 \end_inset
 
+
+\change_inserted -970929547 1496610966
 Paragraph styles
 \end_layout
 
@@ -27454,6 +27465,264 @@ tag
  in the example above.
  The default is the name of the float and always needs to be changed, as
  DocBook provides no generic tag.
+\change_inserted 1075283030 1597698868
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1075283030 1597699399
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1597698872
+DocBookTagType
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1597700585
+block, paragraph, inline
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+] The new-line policy for this tag, see Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-New-line-policy"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for the details.
+ 
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 1075283030 1597699385
+New-line policy
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:DocBook-New-line-policy"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1075283030 1597698993
+For all tags, there are three possible policies for outputting new lines
+ (given in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1597698987
+DocBook*TagType
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ attribute): 
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 1075283030 1597699279
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1597699012
+block
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+: the opening and closing tags are on their own lines (i.e.
+ a line feed after and before the opening and the closing tags).
+ Typical elements are floats.
+ For instance: 
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 1075283030 1597699194
+Content before
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 1075283030 1597699194
+<blocktag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 1075283030 1597699098
+  Contents of the block.
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 1075283030 1597699196
+</blocktag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 1075283030 1597699198
+Content after
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 1075283030 1597699289
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1597699113
+paragraph
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+: the opening and closing tags are on the same, new line; a line feed is
+ output before the opening tag and after the closing tag.
+ Typical elements are paragraphs and list items.
+ For instance: 
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 1075283030 1597699186
+Content before
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 1075283030 1597699357
+<paratag>Contents of the paragraph.</paratag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 1075283030 1597699231
+Content after
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 1075283030 1597699343
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1597699307
+inline
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+: the opening and closing tags are on the same line as the rest of the content.
+ No line feeds are output.
+ Typical elements are fonts.
+ For instance: 
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 1075283030 1597699585
+Content before<inlinetag>Contents of the paragraph.</inlinetag>Content after
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1075283030 1597699585
+The default value is always 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1597699585
+block
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
 \change_unchanged
 
 \end_layout
@@ -28158,6 +28427,82 @@ NONE
  This parameter only makes sense when itemising layouts are used, such as
  lists.
  
+\change_inserted 1075283030 1598469472
+The most likely value is 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1598469476
+para
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+When a list item is split using a new line, the item inner tag will be repeated
+ for each part of the paragraph, parts being separated by new lines.
+ 
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1075283030 1597699866
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1597699853
+DocBookItemInnerTagType
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1597699866
+block, paragraph, inline
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+] The new-line policy for this tag, see Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-New-line-policy"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for the details.
+ 
 \change_unchanged
 
 \end_layout
@@ -28277,6 +28622,56 @@ itemlabeltag
  This parameter only makes sense when itemising layouts are used with a
  notion of labels, such as definition lists.
  
+\change_inserted 1075283030 1597699874
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1075283030 1597699874
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1597699880
+DocBookItemLabelTagType
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1597699874
+block, paragraph, inline
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+] The new-line policy for this tag, see Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-New-line-policy"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for the details.
+ 
 \change_unchanged
 
 \end_layout
@@ -28352,6 +28747,58 @@ NONE
  This parameter only makes sense when itemising layouts are used, such as
  lists.
  
+\change_inserted 1075283030 1597699890
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1075283030 1597699890
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1597699890
+DocBookItemTagType
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1597699890
+block, paragraph, inline
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+] The new-line policy for this tag, see Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-New-line-policy"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for the details.
+ 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -28487,6 +28934,56 @@ NONE
  This parameter only makes sense when itemising layouts are used, such as
  lists.
  
+\change_inserted 1075283030 1597699897
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1075283030 1597699897
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1597699900
+DocBookItemWrapperTagType
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1597699897
+block, paragraph, inline
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+] The new-line policy for this tag, see Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-New-line-policy"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for the details.
+ 
 \change_unchanged
 
 \end_layout
@@ -28618,6 +29115,58 @@ NONE
 
 , indicating that there is no inner tag: content is directly output without
  it.
+\change_inserted 1075283030 1597699904
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1075283030 1597699904
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1597699904
+DocBookInnerTagType
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1597699904
+block, paragraph, inline
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+] The new-line policy for this tag, see Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-New-line-policy"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for the details.
+ 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -28668,7 +29217,11 @@ section
 \end_inset
 
 , and is only overridden when DocBook uses something else for sectioning
- (parts and chapters of a book).
+ (
+\change_inserted 1075283030 1597699921
+typically, 
+\change_inserted -970929547 1515110753
+parts and chapters of a book).
  
 \change_unchanged
 
@@ -28729,6 +29282,58 @@ tag
  in the example above.
  The default is the name of the float and always needs to be changed, as
  DocBook provides no generic inset tag.
+\change_inserted 1075283030 1597699924
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1075283030 1597699924
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1597699924
+DocBookTagType
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1597699924
+block, paragraph, inline
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+] The new-line policy for this tag, see Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-New-line-policy"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for the details.
+ 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -28858,7 +29463,57 @@ NONE
 
 , indicating that there is no wrapper tag: tag and content are directly
  output without it.
-\change_deleted -970929547 1515111523
+\change_inserted 1075283030 1597699929
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1075283030 1597699929
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1597699932
+DocBookWrapperTagType
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1597699929
+block, paragraph, inline
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+] The new-line policy for this tag, see Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-New-line-policy"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for the details.
+ 
+\change_unchanged
 
 \end_layout
 
@@ -29024,9 +29679,63 @@ Bibliography formatting
 
 \begin_layout Standard
 
+\change_deleted 1075283030 1597699984
+The 
+\change_inserted 1075283030 1597699985
+Included 
 \change_inserted -970929547 1515110187
-The bibliography cannot be formatted: all fields are always output in the
- database-like DocBook format (equivalent to a BibTeX file).
+bibliograph
+\change_deleted 1075283030 1597699987
+y
+\change_inserted 1075283030 1597699987
+ies
+\change_inserted -970929547 1515110187
+ cannot be formatted: all fields are always output in the database-like
+ DocBook format (equivalent to a BibTeX file)
+\change_inserted 1075283030 1597700117
+, using the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1597700120
+biblioentry
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ tag
+\change_inserted -970929547 1515110187
+.
+\change_inserted 1075283030 1597700092
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1075283030 1597700112
+When the bibliographic entries are manually inserted into the LyX document
+ as Bibliography Items, the user deals with formatting themself: there is
+ no attempt of parsing what the user wrote, the string is directly used
+ (with the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1597700076
+bibliomixed
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ tag).
+ 
 \change_unchanged
 
 \end_layout

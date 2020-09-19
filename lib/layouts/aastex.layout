@@ -155,6 +155,9 @@ Style Author
 	  Series	Medium
 	  Shape		SmallCaps
 	EndFont
+	DocBookTag            personname
+	DocBookWrapperTag     author
+	DocBookInInfo         always
 End
 
 
@@ -172,6 +175,12 @@ Style Affiliation
 	  Family	Roman
 	  Size		Normal
 	EndFont
+	DocBookTag                        affiliation
+	DocBookWrapperTag                 author
+	DocBookWrapperMergeWithPrevious   true
+	DocBookItemTag                    orgname
+	DocBookItemTagType                paragraph
+	DocBookInInfo                     always
 End
 
 
@@ -194,6 +203,13 @@ Style Altaffilation
 	LabelFont
 	  Color		green
 	EndFont
+	DocBookTag                        affiliation
+	DocBookAttr                       role='alternate'
+	DocBookWrapperTag                 author
+	DocBookWrapperMergeWithPrevious   true
+	DocBookItemTag                    orgname
+	DocBookItemTagType                paragraph
+	DocBookInInfo                     always
 End
 
 
@@ -213,6 +229,11 @@ Style Email
 	  Size		Normal
 	  Shape		Italic
 	EndFont
+	DocBookTag                        email
+	DocBookTagType                    paragraph
+	DocBookWrapperTag                 author
+	DocBookWrapperMergeWithPrevious   true
+	DocBookInInfo                     always
 End
 
 
@@ -264,6 +285,11 @@ Style Abstract
 	  Series	Bold
 	  Size		Normal
 	EndFont
+	DocBookAbstract       true
+	DocBookInInfo         always
+	DocBookWrapperTag     abstract
+	DocBookWrapperMergeWithPrevious    true
+	DocBookTag            para
 End
 
 
@@ -313,6 +339,10 @@ Style Keywords
 	  Shape		Italic
 	  Size		Normal
 	EndFont
+	DocBookTag          keyword
+	DocBookTagType      paragraph
+	DocBookWrapperTag   keywordset
+	DocBookInInfo       always
 End
 
 
@@ -335,7 +365,7 @@ Style Acknowledgements
 	  Shape		Italic
 	EndFont
 	DocBookTag            para
-	DocBookWrapperTag     acknowledgement
+	DocBookWrapperTag     acknowledgements
 End
 
 
@@ -408,6 +438,7 @@ Style MathLetters
 	Font
 	  Size		Normal
 	EndFont
+	DocBookTag  NONE
 End
 
 
@@ -471,6 +502,9 @@ Style NoteToEditor
 	  Size		Normal
 	  Shape		Italic
 	EndFont
+	DocBookTag      remark
+	DocBookTagType  paragraph
+	DocBookAttr     role='to-editor'
 End
 
 
@@ -491,6 +525,9 @@ Style TableRefs
 	  Family	Roman
 	  Size		Normal
 	EndFont
+	DocBookTag      remark
+	DocBookTagType  paragraph
+	DocBookAttr     role='tablerefs'
 End
 
 
@@ -511,6 +548,9 @@ Style TableComments
 	  Family	Roman
 	  Size		Normal
 	EndFont
+	DocBookTag      remark
+	DocBookTagType  paragraph
+	DocBookAttr     role='tablecomments'
 End
 
 
@@ -526,6 +566,9 @@ Style "Table note"
 	LabelFont
 	  Color		magenta
 	EndFont
+	DocBookTag      remark
+	DocBookTagType  paragraph
+	DocBookAttr     role='tablenote'
 End
 
 
@@ -548,6 +591,9 @@ InsetLayout "Flex:tablenotemark"
 	  Color		magenta
 	  Size		Small
 	EndFont
+	DocBookTag      remark
+	DocBookTagType  paragraph
+	DocBookAttr     role='tablenotemark'
 End
 
 

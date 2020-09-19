@@ -172,21 +172,9 @@ int InsetNewline::plaintext(odocstringstream & os,
 }
 
 
-void InsetNewline::docbook(XMLStream & xs, OutputParams const & runparams) const
+void InsetNewline::docbook(XMLStream &, OutputParams const &) const
 {
-	if (runparams.docbook_in_par) {
-		xs.closeFontTags();
-		if (!xs.pending_tags_empty()) {
-			xs << xml::EndTag("para");
-			xs << xml::StartTag("para");
-		}
-		else {
-			xs << xml::CR() << xml::CompTag("br") << xml::CR();
-		}
-	}
-	else {
-		xs << xml::CR() << xml::CompTag("br") << xml::CR();
-	}
+	// New lines are handled by Paragraph::simpleDocBookOnePar.
 }
 
 

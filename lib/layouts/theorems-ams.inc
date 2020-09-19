@@ -69,6 +69,8 @@ Style Theorem
 	  \addto\captions$$lang{\renewcommand{\theoremname}{_(Theorem)}}
 	EndBabelPreamble
 	Requires              amsthm
+	DocBookTag            para
+	DocBookAttr           role='theorem'
 End
 
 
@@ -87,6 +89,8 @@ Style Corollary
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\corollaryname}{_(Corollary)}}
 	EndBabelPreamble
+	DocBookTag            para
+	DocBookAttr           role='corollary'
 End
 
 
@@ -105,6 +109,8 @@ Style Lemma
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\lemmaname}{_(Lemma)}}
 	EndBabelPreamble
+	DocBookTag            para
+	DocBookAttr           role='lemma'
 End
 
 
@@ -123,6 +129,8 @@ Style Proposition
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\propositionname}{_(Proposition)}}
 	EndBabelPreamble
+	DocBookTag            para
+	DocBookAttr           role='proposition'
 End
 
 
@@ -141,6 +149,8 @@ Style Conjecture
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\conjecturename}{_(Conjecture)}}
 	EndBabelPreamble
+	DocBookTag            para
+	DocBookAttr           role='conjecture'
 End
 
 
@@ -159,6 +169,8 @@ Style Fact
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\factname}{_(Fact)}}
 	EndBabelPreamble
+	DocBookTag            para
+	DocBookAttr           role='fact'
 End
 
 
@@ -184,6 +196,8 @@ Style Definition
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\definitionname}{_(Definition)}}
 	EndBabelPreamble
+	DocBookTag            para
+	DocBookAttr           role='definition'
 End
 
 
@@ -201,6 +215,9 @@ Style Example
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\examplename}{_(Example)}}
 	EndBabelPreamble
+	DocBookWrapperTag     informalexample
+	DocBookTag            para
+	DocBookAttr           ""
 End
 
 
@@ -218,6 +235,8 @@ Style Problem
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\problemname}{_(Problem)}}
 	EndBabelPreamble
+	DocBookTag            para
+	DocBookAttr           role='problem'
 End
 
 
@@ -235,6 +254,8 @@ Style Exercise
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\exercisename}{_(Exercise)}}
 	EndBabelPreamble
+	DocBookTag            para
+	DocBookAttr           role='exercise'
 End
 
 
@@ -252,6 +273,8 @@ Style Solution
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\solutionname}{_(Solution)}}
 	EndBabelPreamble
+	DocBookTag            para
+	DocBookAttr           role='solution'
 End
 
 
@@ -297,6 +320,9 @@ Style Claim
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\claimname}{_(Claim)}}
 	EndBabelPreamble
+	DocBookTag            para
+	DocBookAttr           role='claim'
+	DocBookItemTag        ""
 End
 
 Input theorems-case.inc

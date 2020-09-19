@@ -87,7 +87,127 @@ Test document
 \end_layout
 
 \begin_layout Standard
-A list:
+A simple list: 
+\end_layout
+
+\begin_layout Itemize
+First item
+\end_layout
+
+\begin_layout Itemize
+Second item on two lines
+\begin_inset Newline newline
+\end_inset
+
+I'm the second line
+\end_layout
+
+\begin_layout Itemize
+Third item
+\end_layout
+
+\begin_layout Standard
+A simple enumerated list: 
+\end_layout
+
+\begin_layout Enumerate
+First item
+\end_layout
+
+\begin_layout Enumerate
+Second item on two lines
+\begin_inset Newline newline
+\end_inset
+
+I'm the second line
+\end_layout
+
+\begin_layout Standard
+A simple description list: 
+\end_layout
+
+\begin_layout Description
+Word description
+\end_layout
+
+\begin_layout Description
+Sentence meaning
+\end_layout
+
+\begin_layout Standard
+Nested lists:
+\end_layout
+
+\begin_layout Itemize
+First item
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+First first item
+\end_layout
+
+\begin_layout Itemize
+First second item
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Second item
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Second first item
+\end_layout
+
+\begin_layout Itemize
+Second second item
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+A complex list:
+\end_layout
+
+\begin_layout Itemize
+First item
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+First first item
+\end_layout
+
+\begin_layout Itemize
+First second item
+\end_layout
+
+\begin_layout Standard
+Text after first item
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Second item
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Second first item
+\end_layout
+
+\begin_layout Itemize
+Second second item
+\end_layout
+
+\begin_layout Standard
+Text after second item
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+A very complex list:
 \end_layout
 
 \begin_layout Itemize
@@ -123,6 +243,28 @@ Second second item
 
 \begin_layout Standard
 Text after second item
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Nested description lists: 
+\end_layout
+
+\begin_layout Description
+LyX:
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+lyx16 LyX 1.6 file format (lyx2lyx)
+\end_layout
+
+\begin_layout Description
+lyx21 LyX 2.1 file format (lyx2lyx)
+\end_layout
+
+\begin_layout Description
+xhtml LyXHTML (native LyX HTML export)
 \end_layout
 
 \end_deeper

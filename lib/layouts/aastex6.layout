@@ -67,8 +67,11 @@ Style Software
 	LabelFont
 	  Shape		Italic
 	EndFont
-	DocBookWrapperTag   para
-	DocBookTag          application
+	DocBookTag      remark
+	DocBookAttr     role='software'
+	# Override what's taken from Keywords, but not really wanted.
+	DocBookWrapperTag   NONE
+	DocBookInInfo       never
 End
 
 # other new commands are mainly for the user preamble

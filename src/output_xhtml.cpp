@@ -35,6 +35,7 @@
 #include "support/textutils.h"
 
 #include <stack>
+#include <iostream>
 
 // Uncomment to activate debugging code.
 // #define XHTML_DEBUG
@@ -610,21 +611,29 @@ void xhtmlParagraphs(Text const & text,
 		ParagraphList::const_iterator send;
 
 		// Think about adding <section> and/or </section>s.
+		// Document title is not in Sectioning, but rather in FrontMatter, so that it does not need to be taken
+		// into account.
 		if (style.category() == from_utf8("Sectioning")) {
+			int level = style.toclevel;
+
 			// Need to close a previous section if it has the same level or a higher one (close <section> if opening a
-			// <h2> after a <h2>, <h3>, <h4>, <h5>, or <h6>). More examples:
+			// <h2> after a <h2>, <h3>, <h4>, <h5> or <h6>). More examples:
 			//   - current: h2; back: h1; do not close any <section>
 			//   - current: h1; back: h2; close two <section> (first the <h2>, then the <h1>, so a new <h1> can come)
-			// The level (h1, h2, etc.) corresponds to style.toclevel.
-			while (! headerLevels.empty() && style.toclevel <= headerLevels.top()) {
+			while (!headerLevels.empty() && level <= headerLevels.top()) {
+				// Output the tag only if it corresponds to a legit section.
+				int stackLevel = headerLevels.top();
+				if (stackLevel != Layout::NOT_IN_TOC) {
+					xs << xml::EndTag("section");
+					xs << xml::CR();
+				}
 				headerLevels.pop();
-				xs << xml::EndTag("section");
-				xs << xml::CR();
 			}
 
-			// Open the new one.
-			headerLevels.push(style.toclevel);
-			if (style.toclevel > 1) { // <h1> is the document title.
+			// Open the new section: first push it onto the stack, then output it in XHTML.
+			headerLevels.push(level);
+			// Some sectioning-like elements should not be output (such as FrontMatter).
+			if (level != Layout::NOT_IN_TOC ) {
 				xs << xml::StartTag("section");
 				xs << xml::CR();
 			}
@@ -669,9 +678,10 @@ void xhtmlParagraphs(Text const & text,
 
 	// If need be, close <section>s, but only at the end of the document (otherwise, dealt with at the beginning
 	// of the loop).
-	while (! headerLevels.empty() && headerLevels.top() > 1) {
+	while (!headerLevels.empty() && headerLevels.top() != Layout::NOT_IN_TOC) {
 		headerLevels.pop();
-		xs << xml::EndTag("section") << xml::CR();
+		xs << xml::EndTag("section");
+		xs << xml::CR();
 	}
 }
 

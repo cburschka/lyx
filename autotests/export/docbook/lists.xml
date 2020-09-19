@@ -3,7 +3,97 @@
   See http://www.lyx.org/ for more information -->
 <article xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
 <title>Test document</title>
-<para>A list:</para>
+<para>A simple list: </para>
+<itemizedlist>
+<listitem>
+<para>First item</para>
+</listitem>
+<listitem>
+<para>Second item on two lines</para>
+<para>I'm the second line</para>
+</listitem>
+<listitem>
+<para>Third item</para>
+</listitem>
+</itemizedlist>
+<para>A simple enumerated list: </para>
+<orderedlist>
+<listitem>
+<para>First item</para>
+</listitem>
+<listitem>
+<para>Second item on two lines</para>
+<para>I'm the second line</para>
+</listitem>
+</orderedlist>
+<para>A simple description list: </para>
+<variablelist>
+<varlistentry>
+<term>Word</term>
+<listitem>
+<para>description</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Sentence</term>
+<listitem>
+<para>meaning</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>Nested lists:</para>
+<itemizedlist>
+<listitem>
+<para>First item</para>
+<itemizedlist>
+<listitem>
+<para>First first item</para>
+</listitem>
+<listitem>
+<para>First second item</para>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<para>Second item</para>
+<itemizedlist>
+<listitem>
+<para>Second first item</para>
+</listitem>
+<listitem>
+<para>Second second item</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+<para>A complex list:</para>
+<itemizedlist>
+<listitem>
+<para>First item</para>
+<itemizedlist>
+<listitem>
+<para>First first item</para>
+</listitem>
+<listitem>
+<para>First second item</para>
+</listitem>
+</itemizedlist>
+<para>Text after first item</para>
+</listitem>
+<listitem>
+<para>Second item</para>
+<itemizedlist>
+<listitem>
+<para>Second first item</para>
+</listitem>
+<listitem>
+<para>Second second item</para>
+</listitem>
+</itemizedlist>
+<para>Text after second item</para>
+</listitem>
+</itemizedlist>
+<para>A very complex list:</para>
 <itemizedlist>
 <listitem>
 <para>First item</para>
@@ -30,5 +120,33 @@
 <para>Text after second item</para>
 </listitem>
 </itemizedlist>
-
+<para>Nested description lists: </para>
+<variablelist>
+<varlistentry>
+<term>LyX:</term>
+<listitem>
+<para />
+<variablelist>
+<varlistentry>
+<term>lyx16</term>
+<listitem>
+<para>LyX 1.6 file format (lyx2lyx)</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>lyx21</term>
+<listitem>
+<para>LyX 2.1 file format (lyx2lyx)</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>xhtml</term>
+<listitem>
+<para>LyXHTML (native LyX HTML export)</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</listitem>
+</varlistentry>
+</variablelist>
 </article>

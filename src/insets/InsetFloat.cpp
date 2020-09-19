@@ -492,19 +492,22 @@ int InsetFloat::plaintext(odocstringstream & os, OutputParams const & runparams,
 }
 
 
-std::vector<const InsetBox *> findSubfiguresInParagraph(const Paragraph &par)
+std::vector<const InsetCollapsible *> findSubfiguresInParagraph(const Paragraph &par)
 {
 
 	// Don't make the hypothesis that all subfigures are in the same paragraph.
 	// Similarly, there may be several subfigures in the same paragraph (most likely case, based on the documentation).
 	// Any box is considered as a subfigure, even though the most likely case is \minipage.
-	std::vector<const InsetBox *> subfigures;
+	// Boxes are not required to make subfigures. The common root between InsetBox and InsetFLoat is InsetCollapsible.
+	std::vector<const InsetCollapsible *> subfigures;
 	for (pos_type pos = 0; pos < par.size(); ++pos) {
 		const Inset *inset = par.getInset(pos);
 		if (!inset)
 			continue;
 		if (const auto box = dynamic_cast<const InsetBox *>(inset))
 			subfigures.push_back(box);
+		else if (const auto fl = dynamic_cast<const InsetFloat *>(inset))
+			subfigures.push_back(fl);
 	}
 	return subfigures;
 }
@@ -563,8 +566,68 @@ const InsetCaption* findCaptionInParagraph(const Paragraph &par)
 }
 
 
+/// Takes an unstructured subfigure container (typically, an InsetBox) and find the elements within:
+/// actual content (image or table), maybe a caption, maybe a label.
+std::tuple<InsetCode, const Inset *, const InsetCaption *, const InsetLabel *> docbookParseHopelessSubfigure(const InsetText * subfigure)
+{
+	InsetCode type = NO_CODE;
+	const Inset * content = nullptr;
+	const InsetCaption * caption = nullptr;
+	const InsetLabel * label = nullptr;
+
+	for (const auto & it : subfigure->paragraphs()) {
+		for (pos_type posIn = 0; posIn < it.size(); ++posIn) {
+			const Inset * inset = it.getInset(posIn);
+			if (inset) {
+				switch (inset->lyxCode()) {
+					case GRAPHICS_CODE:
+					case TABULAR_CODE:
+						if (!content) {
+							content = inset;
+							type = inset->lyxCode();
+						}
+						break;
+					case CAPTION_CODE:
+						if (!caption) {
+							caption = dynamic_cast<const InsetCaption *>(inset);
+
+							// A label often hides in a caption. Make a simplified version of the main loop.
+							if (!label) {
+								for (const auto &cit : caption->paragraphs()) {
+									for (pos_type cposIn = 0; cposIn < cit.size(); ++cposIn) {
+										const Inset *cinset = cit.getInset(posIn);
+										if (cinset && cinset->lyxCode() == LABEL_CODE) {
+											label = dynamic_cast<const InsetLabel *>(cinset);
+											break;
+										}
+									}
+
+									if (label)
+										break;
+								}
+							}
+						}
+						break;
+					case LABEL_CODE:
+						if (!label)
+							label = dynamic_cast<const InsetLabel *>(inset);
+						break;
+					default:
+						break;
+				}
+			}
+		}
+
+		if (content && caption && label)
+			break;
+	}
+
+	return std::make_tuple(type, content, caption, label);
+}
+
+
 void docbookSubfigures(XMLStream & xs, OutputParams const & runparams, const InsetCaption * caption,
-					   const InsetLabel * label, std::vector<const InsetBox *> & subfigures)
+					   const InsetLabel * label, std::vector<const InsetCollapsible *> & subfigures)
 {
 	// Ensure there is no label output, it is supposed to be handled as xml:id.
 	OutputParams rpNoLabel = runparams;
@@ -580,7 +643,7 @@ void docbookSubfigures(XMLStream & xs, OutputParams const & runparams, const Ins
 	xs << xml::StartTag("formalgroup", attr);
 	xs << xml::CR();
 
-	xs << xml::StartTag("title", attr);
+	xs << xml::StartTag("title"); // Don't take attr here, the ID should only go in one place, not two.
 	if (caption) {
 		caption->getCaptionAsDocBook(xs, rpNoLabel);
 	} else {
@@ -592,29 +655,107 @@ void docbookSubfigures(XMLStream & xs, OutputParams const & runparams, const Ins
 
 	// Deal with each subfigure individually. This should also deal with their caption and their label.
 	// This should be a recursive call to InsetFloat.
-	for (const InsetBox *subfigure: subfigures) {
-		// If there is no InsetFloat in the paragraphs, output a warning.
-		bool foundInsetFloat = false;
-		for (const auto & it : subfigure->paragraphs()) {
-			for (pos_type posIn = 0; posIn < it.size(); ++posIn) {
-				const Inset *inset = it.getInset(posIn);
-				if (inset && dynamic_cast<const InsetFloat*>(inset)) {
-					foundInsetFloat = true;
-					break;
-				}
-			}
+	// An item in subfigure should either be an InsetBox containing an InsetFloat, or an InsetBox directly containing
+	// an image or a table, or directly an InsetFloat.
+	for (const InsetCollapsible * subfigure: subfigures) {
+		if (subfigure == nullptr)
+			continue;
 
-			if (foundInsetFloat)
-				break;
+		// The collapsible may already be a float (InsetFloat).
+		if (dynamic_cast<const InsetFloat *>(subfigure)) {
+			subfigure->docbook(xs, runparams);
+			continue;
 		}
 
-		if (!foundInsetFloat)
-			xs << XMLStream::ESCAPE_NONE << "Error: no float found in the box. "
-								"To use subfigures in DocBook, elements must be wrapped in a float "
-			                    "inset and have a title/caption.";
+		// Subfigures are in boxes, then in InsetFloat.
+		{
+			bool foundInsetFloat = false;
+			for (const auto &it : subfigure->paragraphs()) {
+				for (pos_type posIn = 0; posIn < it.size(); ++posIn) {
+					const Inset *inset = it.getInset(posIn);
+					if (inset && inset->lyxCode() == FLOAT_CODE) {
+						foundInsetFloat = true;
+						inset->docbook(xs, runparams);
+						break;
+					}
+				}
+
+				if (foundInsetFloat)
+					break;
+			}
+			if (foundInsetFloat)
+				continue;
+		}
+
+		// Subfigures are in boxes, then directly an image or a table. In that case, generate the whole content of the
+		// InsetBox, but not the box container.
+		// Impose some model on the subfigure: at most a caption, at most a label, exactly one figure or one table.
+		{
+			InsetCode stype = NO_CODE;
+			const Inset * scontent = nullptr;
+			const InsetCaption * scaption = nullptr;
+			const InsetLabel * slabel = nullptr;
+
+			std::tie(stype, scontent, scaption, slabel) = docbookParseHopelessSubfigure(subfigure);
+
+			// If there is something, generate it. This is very much like docbookNoSubfigures, but many things
+			// must be coded differently because there is no float.
+			// TODO: some code is identical to Floating, like Floating::docbookTag or Floating::docbookCaption. How to reuse that code?
+			if (scontent) {
+				// Floating::docbookCaption()
+				string docbook_caption = "caption"; // This is already correct for tables.
+				if (stype == GRAPHICS_CODE)
+					docbook_caption = "title";
+
+				// Floating::docbookTag() with hasTitle = true, as we are in formalgroup.
+				string stag = "float";
+				if (stype == GRAPHICS_CODE)
+					stag = "figure";
+				else if (stype == TABULAR_CODE)
+					stag = "table";
+
+				// Ensure there is no label output, it is supposed to be handled as xml:id.
+				if (slabel)
+					rpNoLabel.docbook_anchors_to_ignore.emplace(slabel->screenLabel());
+
+				// Ensure the float does not output its caption, as it is handled here (DocBook mandates a specific place for
+				// captions, they cannot appear at the end of the float, albeit LyX is happy with that).
+				OutputParams rpNoTitle = runparams;
+				rpNoTitle.docbook_in_float = true;
+				if (stype == TABULAR_CODE)
+					rpNoTitle.docbook_in_table = true;
+
+				// Organisation: <float> <title if any/> <contents without title/> </float>.
+				docstring sattr = docstring();
+				if (slabel)
+					sattr += "xml:id=\"" + xml::cleanID(slabel->screenLabel()) + "\"";
+				// No layout way of adding attributes, unlike the normal code path.
+
+				xs << xml::StartTag(stag, sattr);
+				xs << xml::CR();
+				xs << xml::StartTag(docbook_caption);
+				if (scaption)
+					scaption->getCaptionAsDocBook(xs, rpNoLabel);
+				else // Mandatory in formalgroup.
+					xs << "No caption detected";
+				xs << xml::EndTag(docbook_caption);
+				xs << xml::CR();
+				scontent->docbook(xs, rpNoTitle);
+				xs << xml::EndTag(stag);
+				xs << xml::CR();
+
+				// This subfigure could be generated.
+				continue;
+			}
+		}
+
+		// If there is no InsetFloat in the inset, output a warning.
+		xs << XMLStream::ESCAPE_NONE << "Error: no float found in the box. "
+							"To use subfigures in DocBook, elements must be wrapped in a float "
+		                    "inset and have a title/caption.";
 		// TODO: could also output a table, that would ensure that the document is correct and *displays* correctly (but without the right semantics), instead of just an error.
 
-		// Finally, recurse.
+		// Recurse to generate as much content as possible (avoid any loss).
 		subfigure->docbook(xs, runparams);
 	}
 
@@ -639,7 +780,7 @@ void docbookNoSubfigures(XMLStream & xs, OutputParams const & runparams, const I
 	// captions, they cannot appear at the end of the float, albeit LyX is happy with that).
 	OutputParams rpNoTitle = runparams;
 	rpNoTitle.docbook_in_float = true;
-	if (ftype.floattype() == "table")
+	if (ftype.docbookFloatType() == "table")
 		rpNoTitle.docbook_in_table = true;
 
 	// Organisation: <float> <title if any/> <contents without title/> </float>.
@@ -654,7 +795,7 @@ void docbookNoSubfigures(XMLStream & xs, OutputParams const & runparams, const I
 
 	xs << xml::StartTag(ftype.docbookTag(caption != nullptr), attr);
 	xs << xml::CR();
-	if (caption != nullptr) {
+	if (caption) {
 		xs << xml::StartTag(titleTag);
 		caption->getCaptionAsDocBook(xs, rpNoLabel);
 		xs << xml::EndTag(titleTag);
@@ -673,11 +814,11 @@ void InsetFloat::docbook(XMLStream & xs, OutputParams const & runparams) const
 	// The caption and the label for each subfigure is handled by recursive calls.
 	const InsetCaption* caption = nullptr;
 	const InsetLabel* label = nullptr;
-	std::vector<const InsetBox *> subfigures;
+	std::vector<const InsetCollapsible *> subfigures;
 
 	auto end = paragraphs().end();
 	for (auto it = paragraphs().begin(); it != end; ++it) {
-		std::vector<const InsetBox *> foundSubfigures = findSubfiguresInParagraph(*it);
+		std::vector<const InsetCollapsible *> foundSubfigures = findSubfiguresInParagraph(*it);
 		if (!foundSubfigures.empty()) {
 			subfigures.reserve(subfigures.size() + foundSubfigures.size());
 			subfigures.insert(subfigures.end(), foundSubfigures.begin(), foundSubfigures.end());

@@ -1265,26 +1265,6 @@ def checkConverterEntries():
 ''')
 
 
-def checkDocBook():
-    ''' Check docbook '''
-    path, DOCBOOK = checkProg('SGML-tools 2.x (DocBook), db2x scripts or xsltproc', ['sgmltools', 'db2dvi', 'xsltproc'],
-        rc_entry = [
-            r'''\converter docbook    dvi        "sgmltools -b dvi $$i"	""
-\converter docbook    html       "sgmltools -b html $$i"	""
-\converter docbook    ps         "sgmltools -b ps $$i"	""''',
-            r'''\converter docbook    dvi        "db2dvi $$i"	""
-\converter docbook    html       "db2html $$i"	""''',
-            r'''\converter docbook    dvi        ""	""
-\converter docbook    html       "" ""''',
-            r'''\converter docbook    dvi        ""	""
-\converter docbook    html       ""	""'''])
-    #
-    if DOCBOOK:
-        return ('yes', 'true', '\\def\\hasdocbook{yes}')
-    else:
-        return ('no', 'false', '')
-
-
 def checkOtherEntries():
     ''' entries other than Format and Converter '''
     checkProg('ChkTeX', ['chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38'],
@@ -1331,7 +1311,7 @@ def _checkForClassExtension(x):
         return x.strip()
 
 def processLayoutFile(file):
-    ''' process layout file and get a line of result
+    """ process layout file and get a line of result
 
         Declare lines look like this:
 
@@ -1356,38 +1336,36 @@ def processLayoutFile(file):
         "article" "article" "article" "false" "article.cls" "Articles"
         "scrbook" "scrbook" "book (koma-script)" "false" "scrbook.cls" "Books"
         "svjog" "svjour" "article (Springer - svjour/jog)" "false" "svjour.cls,svjog.clo" ""
-    '''
+    """
     classname = file.split(os.sep)[-1].split('.')[0]
-    # return ('LaTeX', '[a,b]', 'a', ',b,c', 'article') for \DeclareLaTeXClass[a,b,c]{article}
-    p = re.compile('\s*#\s*\\\\Declare(LaTeX|DocBook)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}\s*$')
+    # return ('[a,b]', 'a', ',b,c', 'article') for \DeclareLaTeXClass[a,b,c]{article}
+    p = re.compile('\s*#\s*\\\\DeclareLaTeXClass\s*(\[([^,]*)(,.*)*])*\s*{(.*)}\s*$')
     q = re.compile('\s*#\s*\\\\DeclareCategory{(.*)}\s*$')
     classdeclaration = ""
     categorydeclaration = '""'
     for line in open(file, 'r', encoding='utf8').readlines():
         res = p.match(line)
         qres = q.match(line)
-        if res != None:
-            (classtype, optAll, opt, opt1, desc) = res.groups()
-            avai = {'LaTeX': 'false', 'DocBook': 'true'}[classtype]
-            if opt == None:
+        if res is not None:
+            (optAll, opt, opt1, desc) = res.groups()
+            if opt is None:
                 opt = classname
-                prereq_latex = _checkForClassExtension(classname)
+                prereq = _checkForClassExtension(classname)
             else:
                 prereq_list = optAll[1:-1].split(',')
                 prereq_list = list(map(_checkForClassExtension, prereq_list))
-                prereq_latex = ','.join(prereq_list)
-            prereq = {'LaTeX': prereq_latex, 'DocBook': ''}[classtype]
+                prereq = ','.join(prereq_list)
             classdeclaration = ('"%s" "%s" "%s" "%s" "%s"'
-                               % (classname, opt, desc, avai, prereq))
+                               % (classname, opt, desc, 'false', prereq))
             if categorydeclaration != '""':
                 return classdeclaration + " " + categorydeclaration
-        if qres != None:
-             categorydeclaration = '"%s"' % (qres.groups()[0])
-             if classdeclaration:
-                 return classdeclaration + " " + categorydeclaration
+        if qres is not None:
+            categorydeclaration = '"%s"' % (qres.groups()[0])
+            if classdeclaration:
+                return classdeclaration + " " + categorydeclaration
     if classdeclaration:
         return classdeclaration + " " + categorydeclaration
-    logger.warning("Layout file " + file + " has no \DeclareXXClass line. ")
+    logger.warning("Layout file " + file + " has no \\DeclareLaTeXClass line. ")
     return ""
 
 
@@ -1454,7 +1432,7 @@ def checkLatexConfig(check_config):
     # Construct the list of classes to test for.
     # build the list of available layout files and convert it to commands
     # for chkconfig.ltx
-    declare = re.compile('\\s*#\\s*\\\\Declare(LaTeX|DocBook)Class\\s*(\[([^,]*)(,.*)*\])*\\s*{(.*)}\\s*$')
+    declare = re.compile('\\s*#\\s*\\\\DeclareLaTeXClass\\s*(\[([^,]*)(,.*)*\])*\\s*{(.*)}\\s*$')
     category = re.compile('\\s*#\\s*\\\\DeclareCategory{(.*)}\\s*$')
     empty = re.compile('\\s*$')
     testclasses = list()
@@ -1475,10 +1453,10 @@ def checkLatexConfig(check_config):
                         nodeclaration = True
                     # A class, but no category declaration. Just break.
                     break
-                if declare.match(line) != None:
+                if declare.match(line) is not None:
                     decline = "\\TestDocClass{%s}{%s}" % (classname, line[1:].strip())
                     testclasses.append(decline)
-                elif category.match(line) != None:
+                elif category.match(line) is not None:
                     catline = ("\\DeclareCategory{%s}{%s}"
                                % (classname, category.match(line).groups()[0]))
                     testclasses.append(catline)

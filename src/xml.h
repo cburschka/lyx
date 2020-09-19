@@ -39,7 +39,7 @@ struct CR;
 class XMLStream {
 public:
 	///
-	explicit XMLStream(odocstream & os): os_(os), escape_(ESCAPE_ALL) {}
+	explicit XMLStream(odocstream & os): os_(os), escape_(ESCAPE_ALL), is_last_tag_cr_(true) {}
 	///
 	odocstream & os() { return os_; }
 	///
@@ -82,7 +82,7 @@ public:
 	enum EscapeSettings {
 		ESCAPE_NONE,
 		ESCAPE_AND, // meaning &
-		ESCAPE_ALL, // meaning <, >, &, at present
+		ESCAPE_ALL, // meaning <, >, &, at present, except things that are forbidden in comments
 		ESCAPE_COMMENTS // Anything that is forbidden within comments
 	};
 	/// Sets what we are going to escape on the NEXT write.
@@ -98,13 +98,21 @@ public:
 	bool isTagOpen(xml::EndTag const &, int maxdepth = -1) const;
 	///
 	bool isTagPending(xml::StartTag const &, int maxdepth = -1) const;
+	/// Is the last tag that was added to the stream a new line (CR)? This is mostly to known
+	/// whether a new line must be added. Therefore, consider that an empty stream just had a CR,
+	/// that simplifies the logic using this code.
+	bool isLastTagCR() const { return is_last_tag_cr_; };
+	///
+	void writeError(std::string const &);
+	///
+	void writeError(docstring const &);
+	///
+	typedef std::shared_ptr<xml::StartTag> TagPtr;
+	/// Returns the last element on the tag stack. XMLStream keeps ownership of the item.
+	TagPtr getLastStackTag();
 private:
 	///
 	void clearTagDeque();
-	///
-	void writeError(std::string const &) const;
-	///
-	void writeError(docstring const &) const;
 	///
 	odocstream & os_;
 	///
@@ -117,7 +125,6 @@ private:
 	// own these pointers and how they will be deleted, so we use shared
 	// pointers.
 	///
-	typedef std::shared_ptr<xml::StartTag> TagPtr;
 	typedef std::deque<TagPtr> TagDeque;
 	///
 	template <typename T>
@@ -126,8 +133,8 @@ private:
 	TagDeque pending_tags_;
 	///
 	TagDeque tag_stack_;
-public:
-	bool pending_tags_empty() { return pending_tags_.empty();};
+	///
+	bool is_last_tag_cr_;
 };
 
 namespace xml {
@@ -153,6 +160,12 @@ docstring cleanID(docstring const &orig);
 /// returns a unique numeric ID
 docstring uniqueID(docstring const & label);
 
+/// determines whether a string only contains space characters
+bool isNotOnlySpace(docstring const & str);
+
+/// trims the string to the left, i.e. remove any space-like character at the beginning of the string
+docstring trimLeft(docstring const & str);
+
 struct FontTag;
 struct EndFontTag;
 
@@ -171,7 +184,7 @@ struct StartTag
 	///
 	explicit StartTag(std::string const & tag, std::string const & attr,
 					  bool keepempty = false)
-			: tag_(from_ascii(tag)), attr_(from_ascii(attr)), keepempty_(keepempty) {}
+			: tag_(from_ascii(tag)), attr_(from_utf8(attr)), keepempty_(keepempty) {}
 	///
 	explicit StartTag(std::string const & tag, docstring const & attr,
 					  bool keepempty = false)
@@ -233,16 +246,19 @@ struct CompTag
 {
 	///
 	explicit CompTag(std::string const & tag)
-			: tag_(tag) {}
+			: tag_(from_utf8(tag)) {}
 	///
 	explicit CompTag(std::string const & tag, std::string const & attr)
-			: tag_(tag), attr_(attr) {}
+			: tag_(from_utf8(tag)), attr_(from_utf8(attr)) {}
+	///
+	explicit CompTag(std::string const & tag, docstring const & attr)
+			: tag_(from_utf8(tag)), attr_(attr) {}
 	/// <tag_ attr_ />
 	docstring writeTag() const;
 	///
-	std::string tag_;
+	docstring tag_;
 	///
-	std::string attr_;
+	docstring attr_;
 };
 
 

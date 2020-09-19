@@ -110,7 +110,11 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		IL_HTMLSTYLE,
 		IL_HTMLPREAMBLE,
 		IL_DOCBOOKTAG,
+		IL_DOCBOOKTAGTYPE,
 		IL_DOCBOOKATTR,
+		IL_DOCBOOKWRAPPERTAG,
+		IL_DOCBOOKWRAPPERTAGTYPE,
+		IL_DOCBOOKWRAPPERATTR,
 		IL_INTOC,
 		IL_ISTOCCAPTION,
 		IL_LABELFONT,
@@ -157,6 +161,10 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		{ "display", IL_DISPLAY },
 		{ "docbookattr", IL_DOCBOOKATTR },
 		{ "docbooktag", IL_DOCBOOKTAG },
+		{ "docbooktagtype", IL_DOCBOOKTAGTYPE },
+		{ "docbookwrapperattr", IL_DOCBOOKWRAPPERATTR },
+		{ "docbookwrappertag", IL_DOCBOOKWRAPPERTAG },
+		{ "docbookwrappertagtype", IL_DOCBOOKWRAPPERTAGTYPE },
 		{ "editexternal", IL_EDITEXTERNAL },
 		{ "end", IL_END },
 		{ "fixedwidthpreambleencoding", IL_FIXEDWIDTH_PREAMBLE_ENCODING },
@@ -500,8 +508,20 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		case IL_DOCBOOKTAG:
 			lex >> docbooktag_;
 			break;
+		case IL_DOCBOOKTAGTYPE:
+			lex >> docbooktagtype_;
+			break;
 		case IL_DOCBOOKATTR:
 			lex >> docbookattr_;
+			break;
+		case IL_DOCBOOKWRAPPERTAG:
+			lex >> docbookwrappertag_;
+			break;
+		case IL_DOCBOOKWRAPPERTAGTYPE:
+			lex >> docbookwrappertagtype_;
+			break;
+		case IL_DOCBOOKWRAPPERATTR:
+			lex >> docbookwrapperattr_;
 			break;
 		case IL_REQUIRES: {
 			lex.eatLine();

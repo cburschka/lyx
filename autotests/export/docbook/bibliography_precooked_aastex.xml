@@ -3,6 +3,51 @@
   See http://www.lyx.org/ for more information -->
 <article xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
 <info>
+<title>Collapsed Cores in Globular Clusters,  Gauge-Boson Couplings, and AASTeX Examples</title>
+<author>
+<personname>S. Djorgovski and Ivan R. King</personname>
+<affiliation>
+<orgname>Astronomy Department, University of California, Berkeley, CA 94720</orgname>
+</affiliation>
+<affiliation role="alternate">
+<orgname>Visiting Astronomer Cerro Tololo Inter-American Observatory.CTIO is operated by AURA Inc. under contract to the National Science Foundation.</orgname>
+</affiliation>
+<affiliation role="alternate">
+<orgname>Society of Fellows, Harvard University.</orgname>
+</affiliation>
+<affiliation role="alternate">
+<orgname>present address: Center for Astrophysics60 Garden Street, Cambridge, MA 02138</orgname>
+</affiliation>
+</author>
+<author>
+<personname>C. D. Biemesderfer</personname>
+<affiliation>
+<orgname>National Optical Astronomy Observatories, Tucson, AZ 85719</orgname>
+</affiliation>
+<affiliation role="alternate">
+<orgname>Visiting Programmer, Space Telescope Science Institute</orgname>
+</affiliation>
+<affiliation role="alternate">
+<orgname>Patron, Alonso's Bar and Grill</orgname>
+</affiliation>
+<email>aastex-help@aas.org</email>
+</author>
+<author>
+<personname>R. J. Hanisch</personname>
+<affiliation>
+<orgname>Space Telescope Science Institute, Baltimore, MD 21218</orgname>
+</affiliation>
+<affiliation role="alternate">
+<orgname>Patron, Alonso's Bar and Grill</orgname>
+</affiliation>
+</author>
+<keywordset>
+<keyword>clusters: globular, peanut—bosons: bozos</keyword>
+</keywordset>
+<abstract>
+<para>This is a preliminary report on surface photometry of the major fraction of known globular clusters, to see which of them show the signs of a collapsed core. We also explore some diversionary mathematics and recreational tables. </para>
+</abstract>
+
 </info>
 <section>
 <title>Introduction</title>
@@ -89,7 +134,8 @@
 </section>
 <section>
 <title>Helicity Amplitudes</title>
-<para>It has been realized that helicity amplitudes provide a convenient means for Feynman diagram<footnote><para>Footnotes can be inserted like this.</para>
+<para>It has been realized that helicity amplitudes provide a convenient means for Feynman diagram<footnote>
+<para>Footnotes can be inserted like this.</para>
 </footnote> evaluations. These amplitude-level techniques are particularly convenient for calculations involving many Feynman diagrams, where the usual trace techniques for the amplitude squared becomes unwieldy. Our calculations use the helicity techniques developed by other authors <biblioref endterm="hag86" />; we briefly summarize below.</para>
 <section>
 <title>Formalism</title>
@@ -115,7 +161,8 @@
   </m:mrow>
  </m:mrow>
  </m:math>
-</inlineequation> collisions can be expressed in terms of fermion strings of the form <informalequation>
+</inlineequation> collisions can be expressed in terms of fermion strings of the form 
+<informalequation>
 <alt role='tex'>\bar{v}(p_{2},\sigma_{2})P_{-\tau}\hat{a}_{1}\hat{a}_{2}\cdots\hat{a}_{n}u(p_{1},\sigma_{1}),</alt>
  <m:math>
  
@@ -334,7 +381,7 @@
  </m:mrow>
  </m:math>
 </inlineequation> may be formed from particle four-momenta, gauge-boson polarization vectors or fermion strings with an uncontracted Lorentz index associated with final-state fermions.</para>
-<NoteToEditor>Figures 1 and 2 should appear side-by-side in print</NoteToEditor>
+<remark role='to-editor'>Figures 1 and 2 should appear side-by-side in print</remark>
 <para>In the chiral representation the <inlineequation>
 <alt role='tex'>\gamma</alt>
  <m:math>
@@ -358,7 +405,8 @@
  <m:mrow><m:mi>&#x3C3;</m:mi>
  </m:mrow>
  </m:math>
-</inlineequation> and the unit matrix 1 as <informalequation>
+</inlineequation> and the unit matrix 1 as 
+<informalequation>
 <alt role='tex'>\gamma^{\mu} &amp; = &amp; \left(\begin{array}{cc}
 0 &amp; \sigma_{+}^{\mu}\\
 \sigma_{-}^{\mu} &amp; 0
@@ -468,7 +516,8 @@
   </m:mtr>
  </m:mtable>
  </m:math>
-</informalequation> giving <informalequation>
+</informalequation> giving 
+<informalequation>
 <alt role='tex'>\hat{a}=\left(\begin{array}{cc}
 0 &amp; (\hat{a})_{+}\\
 (\hat{a})_{-} &amp; 0
@@ -546,11 +595,13 @@
   </m:mrow>
  </m:mrow>
  </m:math>
-</informalequation> The spinors are expressed in terms of two-component Weyl spinors as <informalequation>
+</informalequation> The spinors are expressed in terms of two-component Weyl spinors as 
+<informalequation>
 <alt role='tex'>u=\left(\begin{array}{c}
 (u)_{-}\\
 (u)_{+}
-\end{array}\right),v={\textbf{(}}\vdag_{+}{\textbf{,}}\vdag_{-}{\textbf{)}}.</alt>MathML export failed. Please report this as a bug.
+\end{array}\right),v={\textbf{(}}\vdag_{+}{\textbf{,}}\vdag_{-}{\textbf{)}}.</alt>
+<mathphrase>MathML export failed. Please report this as a bug.</mathphrase>
 </informalequation></para>
 <para>The Weyl spinors are given in terms of helicity eigenstates <inlineequation>
 <alt role='tex'>\chi_{\lambda}(p)</alt>
@@ -580,7 +631,6 @@
  </m:mrow>
  </m:math>
 </inlineequation> by </para>
-<MathLetters>
 <informalequation>
 <alt role='tex'>u(p,\lambda)_{\pm} &amp; = &amp; (E\pm\lambda|{\textbf{p}}|)^{1/2}\chi_{\lambda}(p),\\
 v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi_{-\lambda}(p)
@@ -670,13 +720,12 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
   </m:mtr>
  </m:mtable>
  </m:math>
-</informalequation>
-</MathLetters>
-</section>
+</informalequation></section>
 </section>
 <section>
 <title>Floating material and so forth</title>
-<para>Consider a task that computes profile parameters for a modified Lorentzian of the form <informalequation>
+<para>Consider a task that computes profile parameters for a modified Lorentzian of the form 
+<informalequation>
 <alt role='tex'>I=\frac{1}{1+d_{1}^{P(1+d_{2})}}</alt>
  <m:math>
  
@@ -714,7 +763,8 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
   </m:mrow>
  </m:mrow>
  </m:math>
-</informalequation> where <informalequation>
+</informalequation> where 
+<informalequation>
 <alt role='tex'>d_{1}=\sqrt{\left(\begin{array}{c}
 \frac{x_{1}}{R_{maj}}\end{array}\right)^{2}+\left(\begin{array}{c}
 \frac{y_{1}}{R_{min}}\end{array}\right)^{2}}</alt>
@@ -799,11 +849,14 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
   </m:mrow>
  </m:mrow>
  </m:math>
-</informalequation><informalequation>
+</informalequation>
+<informalequation>
 <alt role='tex'>d_{2}=\sqrt{\left(\begin{array}{c}
 \frac{x_{1}}{PR_{maj}}\end{array}\right)^{2}+\left(\begin{array}{c}
-\case{y_{1}}{PR_{min}}\end{array}\right)^{2}}</alt>MathML export failed. Please report this as a bug.
-</informalequation><informalequation>
+\case{y_{1}}{PR_{min}}\end{array}\right)^{2}}</alt>
+<mathphrase>MathML export failed. Please report this as a bug.</mathphrase>
+</informalequation>
+<informalequation>
 <alt role='tex'>x_{1}=(x-x_{0})\cos\Theta+(y-y_{0})\sin\Theta</alt>
  <m:math>
  
@@ -840,7 +893,8 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
   </m:mrow>
  </m:mrow>
  </m:math>
-</informalequation><informalequation>
+</informalequation>
+<informalequation>
 <alt role='tex'>y_{1}=-(x-x_{0})\sin\Theta+(y-y_{0})\cos\Theta</alt>
  <m:math>
  
@@ -933,7 +987,8 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
   </m:msub>
  </m:mrow>
  </m:math>
-</inlineequation>, but the assumption is that the alternate results should be less than 90° out of phase with previous values. We have no observations of <!-- \ion{Ca}{2} -->. Roughly <inlineequation>
+</inlineequation>, but the assumption is that the alternate results should be less than 90° out of phase with previous values. We have no observations of <!-- \ion{Ca}{2} -->
+. Roughly <inlineequation>
 <alt role='tex'>\nicefrac{4}{5}</alt>
  <m:math>
  
@@ -947,24 +1002,37 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
  </m:mrow>
  </m:math>
 </inlineequation> of the electronically submitted abstracts for AAS meetings are error-free. </para>
-<acknowledgement><para>We are grateful to V. Barger, T. Han, and R. J. N. Phillips for doing the math in section&#xA0;<xref linkend="bozomath" />. More information on the AASTeX macros package are available at <link xlink:href="http://www.aas.org/publications/aastex">http://www.aas.org/publications/aastex</link> or the <link xlink:href="ftp://www.aas.org/pubs/AAS ftp site">AAS ftp site</link>.</para></acknowledgement>
-<para><application>IRAF, AIPS, Astropy, ...</application></para>
-<Appendix></Appendix>
+<acknowledgements>
+<para>We are grateful to V. Barger, T. Han, and R. J. N. Phillips for doing the math in section&#xA0;<xref linkend="bozomath" />. More information on the AASTeX macros package are available at <link xlink:href="http://www.aas.org/publications/aastex">http://www.aas.org/publications/aastex</link> or the <link xlink:href="ftp://www.aas.org/pubs/AAS ftp site">AAS ftp site</link>.</para>
+</acknowledgements>
+<remark role='software'>IRAF, AIPS, Astropy, ...</remark>
+</section>
 <bibliography>
-<bibliomixed xml:id='aur82'>Aurière, M. 1982, <!-- \aap -->, 109, 301 </bibliomixed>
-<bibliomixed xml:id='can78'>Canizares, C. R., Grindlay, J. E., Hiltner, W. A., Liller, W., and McClintock, J. E. 1978, <!-- \apj -->, 224, 39 </bibliomixed>
-<bibliomixed xml:id='djo84'>Djorgovski, S., and King, I. R. 1984, <!-- \apjl -->, 277, L49 </bibliomixed>
+<bibliomixed xml:id='aur82'>Aurière, M. 1982, <!-- \aap -->
+, 109, 301 </bibliomixed>
+<bibliomixed xml:id='can78'>Canizares, C. R., Grindlay, J. E., Hiltner, W. A., Liller, W., and McClintock, J. E. 1978, <!-- \apj -->
+, 224, 39 </bibliomixed>
+<bibliomixed xml:id='djo84'>Djorgovski, S., and King, I. R. 1984, <!-- \apjl -->
+, 277, L49 </bibliomixed>
 <bibliomixed xml:id='hag86'>Hagiwara, K., and Zeppenfeld, D. 1986, Nucl.Phys., 274, 1 </bibliomixed>
-<bibliomixed xml:id='har84'>Harris, W. E., and van den Bergh, S. 1984, <!-- \aj -->, 89, 1816 </bibliomixed>
+<bibliomixed xml:id='har84'>Harris, W. E., and van den Bergh, S. 1984, <!-- \aj -->
+, 89, 1816 </bibliomixed>
 <bibliomixed xml:id='hen61'>Hénon, M. 1961, Ann.d'Ap., 24, 369 </bibliomixed>
-<bibliomixed xml:id='kin66'>King, I. R. 1966, <!-- \aj -->, 71, 276 </bibliomixed>
+<bibliomixed xml:id='kin66'>King, I. R. 1966, <!-- \aj -->
+, 71, 276 </bibliomixed>
 <bibliomixed xml:id='kin75'>King, I. R. 1975, Dynamics of Stellar Systems, A. Hayli, Dordrecht: Reidel, 1975, 99 </bibliomixed>
-<bibliomixed xml:id='kin68'>King, I. R., Hedemann, E., Hodge, S. M., and White, R. E. 1968, <!-- \aj -->, 73, 456 </bibliomixed>
-<bibliomixed xml:id='kro84'>Kron, G. E., Hewitt, A. V., and Wasserman, L. H. 1984, <!-- \pasp -->, 96, 198 </bibliomixed>
-<bibliomixed xml:id='lyn68'>Lynden-Bell, D., and Wood, R. 1968, <!-- \mnras -->, 138, 495 </bibliomixed>
-<bibliomixed xml:id='new78'>Newell, E. B., and O'Neil, E. J. 1978, <!-- \apjs -->, 37, 27 </bibliomixed>
-<bibliomixed xml:id='ort85'>Ortolani, S., Rosino, L., and Sandage, A. 1985, <!-- \aj -->, 90, 473 </bibliomixed>
-<bibliomixed xml:id='pet76'>Peterson, C. J. 1976, <!-- \aj -->, 81, 617 </bibliomixed>
+<bibliomixed xml:id='kin68'>King, I. R., Hedemann, E., Hodge, S. M., and White, R. E. 1968, <!-- \aj -->
+, 73, 456 </bibliomixed>
+<bibliomixed xml:id='kro84'>Kron, G. E., Hewitt, A. V., and Wasserman, L. H. 1984, <!-- \pasp -->
+, 96, 198 </bibliomixed>
+<bibliomixed xml:id='lyn68'>Lynden-Bell, D., and Wood, R. 1968, <!-- \mnras -->
+, 138, 495 </bibliomixed>
+<bibliomixed xml:id='new78'>Newell, E. B., and O'Neil, E. J. 1978, <!-- \apjs -->
+, 37, 27 </bibliomixed>
+<bibliomixed xml:id='ort85'>Ortolani, S., Rosino, L., and Sandage, A. 1985, <!-- \aj -->
+, 90, 473 </bibliomixed>
+<bibliomixed xml:id='pet76'>Peterson, C. J. 1976, <!-- \aj -->
+, 81, 617 </bibliomixed>
 <bibliomixed xml:id='spi85'>Spitzer, L. 1985, Dynamics of Star Clusters, J. Goodman and P. Hut, Dordrecht: Reidel, 109 </bibliomixed>
 </bibliography>
 <table xml:id="tbl-2">
@@ -1062,7 +1130,7 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
  <m:mrow><m:mi>P</m:mi>
  </m:mrow>
  </m:math>
-</inlineequation>a</td>
+</inlineequation><remark role='tablenotemark'>a</remark></td>
 <td align='right' valign='top'> <inlineequation>
 <alt role='tex'>PR_{maj}</alt>
  <m:math>
@@ -1106,11 +1174,12 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
  <m:mrow><m:mo>&#x398;</m:mo>
  </m:mrow>
  </m:math>
-</inlineequation>b</td>
+</inlineequation><remark role='tablenotemark'>b</remark></td>
 <td align='center' valign='top'>Ref.</td>
 </tr>
 <tr>
-<td align='center' valign='top'><!-- \tableline\tableline -->1 </td>
+<td align='center' valign='top'><!-- \tableline\tableline -->
+1 </td>
 <td align='right' valign='top'>33472.5 </td>
 <td align='right' valign='top'>-0.1 </td>
 <td align='right' valign='top'>0.4 </td>
@@ -1157,7 +1226,7 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
 <tr>
 <td align='center' valign='top'> 4 </td>
 <td align='right' valign='top'>32733.8 </td>
-<td align='right' valign='top'>-1.2c</td>
+<td align='right' valign='top'>-1.2<remark role='tablenotemark'>c</remark></td>
 <td align='right' valign='top'>-0.5 </td>
 <td align='right' valign='top'>41 </td>
 <td align='right' valign='top'>54.8 </td>
@@ -1176,7 +1245,7 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
 <td align='right' valign='top'>-0.4 </td>
 <td align='right' valign='top'>60 </td>
 <td align='right' valign='top'>1.4 </td>
-<td align='right' valign='top'>1.669c</td>
+<td align='right' valign='top'>1.669<remark role='tablenotemark'>c</remark></td>
 <td align='right' valign='top'>1.574 </td>
 <td align='right' valign='top'>2.343 </td>
 <td align='right' valign='top'>8.0 </td>
@@ -1200,12 +1269,14 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
 <td align='center' valign='top'>8</td>
 </tr>
 </tbody>
-<Table note>a<!-- }{ -->Sample footnote for table&#xA0;<xref linkend="tbl-2" /> that was generated with the LaTeX table environment</Table note>
-<Table note>b<!-- }{ -->Yet another sample footnote for table&#xA0;<xref linkend="tbl-2" /></Table note>
-<Table note>c<!-- }{ -->Another sample footnote for table&#xA0;<xref linkend="tbl-2" /></Table note>
-<TableComments>We can also attach a long-ish paragraph of explanatory material to a table. Use \tablerefs to append a list of references. The following references were from a different table: I've patched them in here to show how they look, but don't take them too seriously—I certainly have not.</TableComments>
-<TableRefs>(1) Barbuy, Spite, &amp; Spite 1985; (2) Bond 1980; (3) Carbon et al. 1987; (4) Hobbs &amp; Duncan 1987; (5) Gilroy et al. 1988: (6) Gratton &amp; Ortolani 1986; (7) Gratton &amp; Sneden 1987; (8) Gratton &amp; Sneden (1988); (9) Gratton &amp; Sneden 1991; (10) Kraft et al. 1982; (11) LCL, or Laird, 1990; (12) Leep &amp; Wallerstein 1981; (13) Luck &amp; Bond 1981; (14) Luck &amp; Bond 1985; (15) Magain 1987; (16) Magain 1989; (17) Peterson 1981; (18) Peterson, Kurucz, &amp; Carney 1990; (19) RMB; (20) Schuster &amp; Nissen 1988; (21) Schuster &amp; Nissen 1989b; (22) Spite et al. 1984; (23) Spite &amp; Spite 1986; (24) Hobbs &amp; Thorburn 1991; (25) Hobbs et al. 1991; (26) Olsen 1983.</TableRefs>
-</table>
-</section>
 
+<remark role='tablenote'>a<!-- }{ -->
+Sample footnote for table&#xA0;<xref linkend="tbl-2" /> that was generated with the LaTeX table environment</remark>
+<remark role='tablenote'>b<!-- }{ -->
+Yet another sample footnote for table&#xA0;<xref linkend="tbl-2" /></remark>
+<remark role='tablenote'>c<!-- }{ -->
+Another sample footnote for table&#xA0;<xref linkend="tbl-2" /></remark>
+<remark role='tablecomments'>We can also attach a long-ish paragraph of explanatory material to a table. Use \tablerefs to append a list of references. The following references were from a different table: I've patched them in here to show how they look, but don't take them too seriously—I certainly have not.</remark>
+<remark role='tablerefs'>(1) Barbuy, Spite, &amp; Spite 1985; (2) Bond 1980; (3) Carbon et al. 1987; (4) Hobbs &amp; Duncan 1987; (5) Gilroy et al. 1988: (6) Gratton &amp; Ortolani 1986; (7) Gratton &amp; Sneden 1987; (8) Gratton &amp; Sneden (1988); (9) Gratton &amp; Sneden 1991; (10) Kraft et al. 1982; (11) LCL, or Laird, 1990; (12) Leep &amp; Wallerstein 1981; (13) Luck &amp; Bond 1981; (14) Luck &amp; Bond 1985; (15) Magain 1987; (16) Magain 1989; (17) Peterson 1981; (18) Peterson, Kurucz, &amp; Carney 1990; (19) RMB; (20) Schuster &amp; Nissen 1988; (21) Schuster &amp; Nissen 1989b; (22) Spite et al. 1984; (23) Spite &amp; Spite 1986; (24) Hobbs &amp; Thorburn 1991; (25) Hobbs et al. 1991; (26) Olsen 1983.</remark>
+</table>
 </article>

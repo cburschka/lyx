@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This DocBook file was created by LyX 2.4.0dev
+  See http://www.lyx.org/ for more information -->
+<book xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
+<title>LyX's detailed Figure, Table, Floats, Notes, Boxes and External Material manual</title>
+<chapter>
+<title>Figures</title>
+<section>
+<title>Figure Floats</title>
+<para>Normally only one image is inserted to a figure float, but sometimes you might want to use two images with separate subcaptions. This can be done by inserting image floats into existing image floats. Note that only the main caption of the float is added to the List of Figures. Figure&#xA0;<xref linkend="fig.Two-distorted-images" /> is an example of a figure float with two images set side by side. You can also set the images one below the other. Figure&#xA0;<xref linkend="fig.Pink-object" /> and <xref linkend="fig.A-star" /> are the subfigures.</para>
+<formalgroup xml:id="fig.Two-distorted-images">
+<title>Two distorted images. Both images are in the image settings group named &#8220;distorted&#8221;.</title>
+<figure xml:id="fig.Pink-object">
+<title>Pink object.</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="D:/LyX/lyx-unstable/lib/doc/clipart/3D-structure-distort.pdf"  width="45%"  />
+</imageobject>
+</mediaobject>
+</figure>
+<figure xml:id="fig.A-star">
+<title>A star.</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="D:/LyX/lyx-unstable/lib/doc/clipart/Star-structure.pdf"  width="45%"  />
+</imageobject>
+</mediaobject>
+</figure>
+</formalgroup>
+</section>
+</chapter>
+</book>

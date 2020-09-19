@@ -110,6 +110,8 @@ Style Theorem
 		\addto\captions$$lang{\renewcommand{\theoremname}{_(Theorem)}}
 	EndBabelPreamble
 	Requires              amsthm
+	DocBookTag            para
+	DocBookAttr           role='theorem'
 End
 
 
@@ -128,6 +130,8 @@ Style Corollary
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\corollaryname}{_(Corollary)}}
 	EndBabelPreamble
+	DocBookTag            para
+	DocBookAttr           role='corollary'
 End
 
 
@@ -146,6 +150,8 @@ Style Lemma
 	  \addto\captions$$lang{\renewcommand{\lemmaname}{_(Lemma)}}
 	EndBabelPreamble
 	LabelCounter          lemma
+	DocBookTag            para
+	DocBookAttr           role='lemma'
 End
 
 
@@ -164,6 +170,8 @@ Style Proposition
 	  \addto\captions$$lang{\renewcommand{\propositionname}{_(Proposition)}}
 	EndBabelPreamble
 	LabelCounter          proposition
+	DocBookTag            para
+	DocBookAttr           role='proposition'
 End
 
 
@@ -182,6 +190,8 @@ Style Conjecture
 	  \addto\captions$$lang{\renewcommand{\conjecturename}{_(Conjecture)}}
 	EndBabelPreamble
 	LabelCounter          conjecture
+	DocBookTag            para
+	DocBookAttr           role='conjecture'
 End
 
 
@@ -200,6 +210,8 @@ Style Fact
 	  \addto\captions$$lang{\renewcommand{\factname}{_(Fact)}}
 	EndBabelPreamble
 	LabelCounter          fact
+	DocBookTag            para
+	DocBookAttr           role='fact'
 End
 
 
@@ -225,6 +237,8 @@ Style Definition
 	  \addto\captions$$lang{\renewcommand{\definitionname}{_(Definition)}}
 	EndBabelPreamble
 	LabelCounter          definition
+	DocBookTag            para
+	DocBookAttr           role='definition'
 End
 
 
@@ -244,6 +258,9 @@ Style Example
 	  \addto\captions$$lang{\renewcommand{\examplename}{_(Example)}}
 	EndBabelPreamble
 	LabelCounter          example
+	DocBookWrapperTag     informalexample
+	DocBookTag            para
+	DocBookAttr        ""
 End
 
 
@@ -263,6 +280,8 @@ Style Problem
 	  \addto\captions$$lang{\renewcommand{\problemname}{_(Problem)}}
 	EndBabelPreamble
 	LabelCounter          problem
+	DocBookTag            para
+	DocBookAttr           role='problem'
 End
 
 
@@ -282,6 +301,8 @@ Style Exercise
 	  \addto\captions$$lang{\renewcommand{\exercisename}{_(Exercise)}}
 	EndBabelPreamble
 	LabelCounter          exercise
+	DocBookTag            para
+	DocBookAttr           role='exercise'
 End
 
 
@@ -301,6 +322,8 @@ Style Solution
 		\addto\captions$$lang{\renewcommand{\solutionname}{_(Solution)}}
 	EndBabelPreamble
 	LabelCounter          solution
+	DocBookTag            para
+	DocBookAttr           role='solution'
 End
 
 
@@ -348,6 +371,9 @@ Style Claim
 	  \addto\captions$$lang{\renewcommand{\claimname}{_(Claim)}}
 	EndBabelPreamble
 	LabelCounter          claim
+	DocBookTag            para
+	DocBookAttr           role='claim'
+	DocBookItemTag        ""
 End
 
 Input theorems-case.inc

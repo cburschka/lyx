@@ -29,6 +29,17 @@ public:
 	ParagraphList(InputIterator first, InputIterator last)
 		: RandomAccessList<Paragraph>(first, last)
 	{}
+
+	const Paragraph * getParagraphBefore(const_iterator const & par) const
+	{
+		// No previous paragraph.
+		if (par == begin())
+			return nullptr;
+
+		auto prevpar = par;
+		--prevpar;
+		return &*prevpar;
+	}
 };
 
 } // namespace lyx

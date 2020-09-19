@@ -197,11 +197,19 @@ public:
 	///
 	std::string const & docbookattr() const;
 	///
+	std::string const & docbooktagtype() const;
+	///
 	std::string const & docbookininfo() const;
+	///
+	bool docbookabstract() const { return docbookabstract_; }
 	///
 	std::string const & docbookwrappertag() const;
 	///
 	std::string const & docbookwrapperattr() const;
+	///
+	std::string const & docbookwrappertagtype() const;
+	///
+	bool docbookwrappermergewithprevious() const { return docbookwrappermergewithprevious_; }
 	///
 	std::string const & docbooksectiontag() const;
 	///
@@ -209,17 +217,25 @@ public:
 	///
 	std::string const & docbookitemwrapperattr() const;
 	///
+	std::string const & docbookitemwrappertagtype() const;
+	///
 	std::string const & docbookitemlabeltag() const;
 	///
 	std::string const & docbookitemlabelattr() const;
+	///
+	std::string const & docbookitemlabeltagtype() const;
 	///
 	std::string const & docbookiteminnertag() const;
 	///
 	std::string const & docbookiteminnerattr() const;
 	///
+	std::string const & docbookiteminnertagtype() const;
+	///
 	std::string const & docbookitemtag() const;
 	///
 	std::string const & docbookitemattr() const;
+	///
+	std::string const & docbookitemtagtype() const;
 	///
 	std::string const & docbookforceabstracttag() const;
 	///
@@ -491,32 +507,49 @@ private:
 	mutable std::string docbooktag_;
 	/// Roles to add to docbooktag_, if any (default: none).
 	mutable std::string docbookattr_;
+	/// DocBook tag type corresponding to this layout (block, paragraph, or inline; default: block).
+	mutable std::string docbooktagtype_;
 	/// DocBook tag corresponding to this item (mainly for lists).
 	mutable std::string docbookitemtag_;
 	/// Roles to add to docbookitemtag_, if any (default: none).
 	mutable std::string docbookitemattr_;
+	/// DocBook tag type corresponding to this item (block, paragraph, or inline; default: block).
+	mutable std::string docbookitemtagtype_;
 	/// DocBook tag corresponding to the wrapper around an item (mainly for lists).
 	mutable std::string docbookitemwrappertag_;
 	/// Roles to add to docbookitemwrappertag_, if any (default: none).
 	mutable std::string docbookitemwrapperattr_;
-	/// DocBook tag corresponding to this label (only for description lists;
+	/// DocBook tag type corresponding to the wrapper around an item (block, paragraph, or inline; default: block).
+	mutable std::string docbookitemwrappertagtype_;
+	/// DocBook tag corresponding to this label (mostly for description lists;
 	/// labels in the common sense do not exist with DocBook).
 	mutable std::string docbookitemlabeltag_;
 	/// Roles to add to docbooklabeltag_, if any (default: none).
 	mutable std::string docbookitemlabelattr_;
+	/// DocBook tag corresponding to this label (block, paragraph, or inline; default: block).
+	mutable std::string docbookitemlabeltagtype_;
 	/// DocBook tag to add within the item, around its direct content (mainly for lists).
 	mutable std::string docbookiteminnertag_;
 	/// Roles to add to docbookiteminnertag_, if any (default: none).
 	mutable std::string docbookiteminnerattr_;
+	/// DocBook tag to add within the item, around its direct content (block, paragraph, or inline; default: block).
+	mutable std::string docbookiteminnertagtype_;
 	/// DocBook tag corresponding to this wrapper around the main tag.
 	mutable std::string docbookwrappertag_;
 	/// Roles to add to docbookwrappertag_, if any (default: none).
 	mutable std::string docbookwrapperattr_;
-	/// Outer tag for this section, only if this layout represent a sectionning item, including chapters (default: section).
+	/// DocBook tag corresponding to this wrapper around the main tag (block, paragraph, or inline; default: block).
+	mutable std::string docbookwrappertagtype_;
+	/// Whether this wrapper tag may be merged with the previously opened wrapper tag.
+	bool docbookwrappermergewithprevious_;
+	/// Outer tag for this section, only if this layout represent a sectionning item, including chapters
+	/// (default: section).
 	mutable std::string docbooksectiontag_;
 	/// Whether this tag must/can/can't go into an <info> tag (default: never, as it only makes sense for metadata).
 	mutable std::string docbookininfo_;
-	/// whether this element (root or not) does not accept text without a section(i.e. the first text that is met
+	/// Wehther this paragraph should be considered as abstract.
+	bool docbookabstract_;
+	/// Whether this element (root or not) does not accept text without a section (i.e. the first text that is met
 	/// in LyX must be considered as the abstract if this is true); this text must be output with the specific tag
 	/// held by this attribute
 	mutable std::string docbookforceabstracttag_;

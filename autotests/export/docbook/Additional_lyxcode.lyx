@@ -1,0 +1,535 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 598
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+ \cleardoublepage
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children no
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format pdf2
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "LyX's Additional Features manual"
+\pdf_author "LyX Team"
+\pdf_subject "LyX's additional features documentation"
+\pdf_keywords "LyX, Documentation, Additional"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\use_lineno 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle headings
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\docbook_table_output 0
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Additional \SpecialChar LyX
+ Features
+\end_layout
+
+\begin_layout Subtitle
+Version 2.3.x
+\end_layout
+
+\begin_layout Author
+by the \SpecialChar LyX
+ Team
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+Principal maintainer of this file is
+\noun on
+ Richard Heck
+\noun default
+.
+ If you have comments or error corrections, please send them to the \SpecialChar LyX
+ Documentati
+on mailing list, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<lyx-docs@lists.lyx.org>
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Inserting-TeX-Code"
+
+\end_inset
+
+Inserting \SpecialChar TeX
+ Code into \SpecialChar LyX
+ Documents
+\end_layout
+
+\begin_layout Standard
+Anything you can do in \SpecialChar LaTeX
+ you can do in \SpecialChar LyX
+, for a very simple reason: You can
+ always insert \SpecialChar TeX
+ code into any \SpecialChar LyX
+ document.
+ \SpecialChar LyX
+ cannot, and will never be able to, display every possible \SpecialChar LaTeX
+ construct.
+ If ever you need to insert \SpecialChar LaTeX
+ commands into your \SpecialChar LyX
+ document, you can use the
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar TeX
+ Code
+\end_layout
+
+\end_inset
+
+ box, which you can insert into your document with 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+Insert\SpecialChar menuseparator
+
+\family sans
+TeX
+\family default
+ Code
+\end_layout
+
+\end_inset
+
+ or the keyboard shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "ert-insert"
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Here's an example of inserting \SpecialChar LaTeX
+ commands in a \SpecialChar LyX
+ document.
+ The code looks like this:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+begin{tabular}{ll}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+begin{minipage}{5cm}
+\begin_inset Newline newline
+\end_inset
+
+This is an example of a minipage environment.
+ You 
+\begin_inset Newline newline
+\end_inset
+
+can put nearly everything in it, even (non-floating) 
+\begin_inset Newline newline
+\end_inset
+
+figures and tables.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+end{minipage}
+\begin_inset Newline newline
+\end_inset
+
+&
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+begin{minipage}{5cm}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+begin{verbatim}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+begin{minipage}{5cm}
+\begin_inset Newline newline
+\end_inset
+
+This ...
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+end{minipage}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+end{verbatim}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+end{minipage}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+end{tabular}
+\end_layout
+
+\begin_layout Section
+Cross-References Between Files
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+This section is somewhat out of date.
+ Need to describe default master documents and how children are opened when
+ the master is.
+ [[FIXME]]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+AMS \SpecialChar LaTeX
+
+\end_layout
+
+\begin_layout Standard
+These same environments are provided only in the starred versions by the
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Theorems (Starred)
+\end_layout
+
+\end_inset
+
+ module:
+\end_layout
+
+\begin_layout Theorem
+This is typically used for the statements of major results.
+ 
+\end_layout
+
+\begin_layout Corollary*
+This is used for statements which follow fairly directly from previous statement
+s.
+ Again, these can be major results.
+ 
+\end_layout
+
+\begin_layout Lemma
+These are smaller results needed to prove other statements.
+\end_layout
+
+\begin_layout Proposition
+These are less major results which (hopefully) add to the general theory
+ being discussed.
+\end_layout
+
+\begin_layout Conjecture
+These are statements provided without justification, which the author does
+ not know how to prove, but which seem to be true (to the author, at least).
+\end_layout
+
+\begin_layout Definition*
+Guess what this is for.
+ The font is different for this environment than for the previous ones.
+ 
+\end_layout
+
+\begin_layout Example*
+Used for examples illustrating proven results.
+\end_layout
+
+\begin_layout Problem
+It's not really known what this is for.
+ You should figure it out.
+\end_layout
+
+\begin_layout Exercise*
+Write a description for this one.
+\end_layout
+
+\begin_layout Remark
+This environment is also a type of theorem, usually a lesser sort of observation.
+\end_layout
+
+\begin_layout Claim*
+Often used in the course of giving a proof of a larger result.
+\end_layout
+
+\begin_layout Case
+Generally, these are used to break up long arguments, using specific instances
+ of some condition.
+ 
+\end_layout
+
+\begin_layout Case
+The numbering scheme for cases is on its own, not together with other numbered
+ statements.
+ 
+\end_layout
+
+\begin_layout Proof
+At the end of this environment, a QED symbol (usually a square, but it can
+ vary with different styles) is placed.
+ If you want to have other environments within this one—for example, Case
+ environments—and have the QED symbol appear only after them, then the other
+ environments need to be nested within the proof environment.
+ See the section 
+\emph on
+Nesting Environments
+\emph default
+ of the 
+\emph on
+User's Guide
+\emph default
+ for information on nesting.
+\end_layout
+
+\begin_layout Standard
+And these environments are provided by 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Theorems (AMS-Extended)
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Criterion*
+A required condition.
+\end_layout
+
+\begin_layout Algorithm*
+A general procedure to be used.
+\end_layout
+
+\begin_layout Axiom*
+This is a property or statement taken as true within the system being discussed.
+\end_layout
+
+\begin_layout Condition*
+Sometimes used to state a condition assumed within the present context of
+ discussion.
+\end_layout
+
+\begin_layout Note*
+Similar to a Remark.
+\end_layout
+
+\begin_layout Notation*
+Used for the explanation of, yes, notation.
+\end_layout
+
+\begin_layout Summary
+Do we really need to tell you? 
+\end_layout
+
+\begin_layout Acknowledgement*
+Acknowledgement.
+\end_layout
+
+\begin_layout Conclusion*
+Sometimes used at the end of a long train of argument.
+\end_layout
+
+\begin_layout Fact
+Used in a way similar to Proposition, though perhaps lower on the scale.
+\end_layout
+
+\begin_layout Standard
+In addition, the AMS classes automatically provide the AMS \SpecialChar LaTeX
+ and AMS fonts
+ packages.
+ They need to be available on your system in order to use these environments.
+\end_layout
+
+\end_body
+\end_document
