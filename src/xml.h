@@ -184,7 +184,7 @@ struct StartTag
 	///
 	explicit StartTag(std::string const & tag, std::string const & attr,
 					  bool keepempty = false)
-			: tag_(from_ascii(tag)), attr_(from_ascii(attr)), keepempty_(keepempty) {}
+			: tag_(from_ascii(tag)), attr_(from_utf8(attr)), keepempty_(keepempty) {}
 	///
 	explicit StartTag(std::string const & tag, docstring const & attr,
 					  bool keepempty = false)
