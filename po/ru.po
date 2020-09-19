@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-09-18 11:05-0400\n"
-"PO-Revision-Date: 2020-05-21 20:48+0300\n"
+"PO-Revision-Date: 2020-09-18 19:09+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -2179,6 +2179,8 @@ msgid ""
 "File name to include. (You can create a new file by entering the name of one "
 "that does not yet exist.)"
 msgstr ""
+"Выберите документ для включения (или введите имя несуществующего документа "
+"для его создания)"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:309
 msgid "&Include Type:"
@@ -9191,9 +9193,8 @@ msgid "American Psychological Association (APA), v. 6"
 msgstr "American Psychological Association (APA), v. 6"
 
 #: lib/layouts/apa7.layout:3
-#, fuzzy
 msgid "American Psychological Association (APA), v. 7"
-msgstr "American Psychological Association (APA), v. 6"
+msgstr "American Psychological Association (APA), v. 7"
 
 #: lib/layouts/apax.inc:112
 msgid "FiveAuthors"
@@ -9262,28 +9263,24 @@ msgid "*"
 msgstr "*"
 
 #: lib/layouts/apax.inc:527
-#, fuzzy
 msgid "Course"
-msgstr "Courier"
+msgstr "Курс"
 
 #: lib/layouts/apax.inc:543
-#, fuzzy
 msgid "Course: "
-msgstr "Courier"
+msgstr "Курс: "
 
 #: lib/layouts/apax.inc:551
 msgid "addORCIDlink"
-msgstr ""
+msgstr "addORCIDlink"
 
 #: lib/layouts/apax.inc:555
-#, fuzzy
 msgid "ORCID-link: "
-msgstr "ORCID: "
+msgstr "Ссылка ORCID: "
 
 #: lib/layouts/apax.inc:563
-#, fuzzy
 msgid "Author-name"
-msgstr "Имя автора"
+msgstr "Имя-автора"
 
 #: lib/layouts/arab-article.layout:3
 msgid "Arabic Article"
@@ -10324,16 +10321,15 @@ msgid "Custom Header/Footerlines"
 msgstr "Настраиваемые колонтитулы"
 
 #: lib/layouts/customHeadersFooters.module:7
-#, fuzzy
 msgid ""
 "Adds environments to define header and footer lines. NOTE: To use this "
 "module you must set the 'Page style' in the menu Document Settings -> Page "
 "Layout to 'fancy'!"
 msgstr ""
 "Добавляет окружения для задания строк верхнего и нижнего колонтитулов. "
-"ЗАМЕЧАНИЕ: для использования этого модуля вы должны установить для параметра "
-"'Стиль колонтитулов' (меню Документ -> Настройки -> Макет страницы) значение "
-"'красивый'!"
+"ПРИМЕЧАНИЕ: для использования этого модуля вы должны установить для "
+"параметра 'Стиль колонтитулов' (меню Документ -> Настройки -> Макет "
+"страницы) значение 'красивый'!"
 
 #: lib/layouts/customHeadersFooters.module:12
 msgid "Header/Footer"
@@ -13815,37 +13811,32 @@ msgid "Entry"
 msgstr "Вхождение"
 
 #: lib/layouts/moderncv.layout:334 lib/layouts/moderncv.layout:335
-#, fuzzy
 msgid "Years"
-msgstr "Год"
+msgstr "Годы"
 
 #: lib/layouts/moderncv.layout:340
 msgid "Degree or job title"
-msgstr ""
+msgstr "Степень или должность"
 
 #: lib/layouts/moderncv.layout:348
-#, fuzzy
 msgid "Institution or employer"
-msgstr "Заведение"
+msgstr "Организация или работодатель"
 
 #: lib/layouts/moderncv.layout:355
-#, fuzzy
 msgid "Localization"
-msgstr "Размещение"
+msgstr "Местонахождение"
 
 #: lib/layouts/moderncv.layout:356
-#, fuzzy
 msgid "City or country"
-msgstr "Страна"
+msgstr "Город или страна"
 
 #: lib/layouts/moderncv.layout:360
-#, fuzzy
 msgid "Optional"
-msgstr "необязательное"
+msgstr "Необязательное"
 
 #: lib/layouts/moderncv.layout:361
 msgid "Grade or other info"
-msgstr ""
+msgstr "Уровень или другая информация"
 
 #: lib/layouts/moderncv.layout:367
 msgid "Entry:"
@@ -20768,9 +20759,8 @@ msgid "Blackboard\t\\mathbb"
 msgstr "Контурный\t\\mathbb"
 
 #: lib/ui/stdtoolbars.inc:415
-#, fuzzy
 msgid "Double stroke\t\\mathds"
-msgstr "Двойной:"
+msgstr "С двойным штрихом\t\\mathds"
 
 #: lib/ui/stdtoolbars.inc:416
 msgid "Fraktur\t\\mathfrak"
@@ -28172,9 +28162,8 @@ msgid "Other ("
 msgstr "Другой ("
 
 #: src/Text.cpp:1962
-#, fuzzy
 msgid ", Style: "
-msgstr "Стиль CV:"
+msgstr ", Стиль: "
 
 #: src/Text.cpp:1966
 msgid ", Paragraph: "
