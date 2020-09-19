@@ -1,0 +1,974 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 598
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+% Chinese localization
+\@ifpackageloaded{fontspec}%
+{\usepackage{ctex}}% ctex with non-TeX fonts
+{%\usepackage[UTF8]{ctex}% error with font setup (missing font?)
+}
+\end_preamble
+\options cjk
+\use_default_options true
+\maintain_unincluded_children no
+\language chinese-simplified
+\language_package default
+\inputencoding utf8-cjk
+\fontencoding auto
+\font_roman "lmodern" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\font_cjk gbsn
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement th
+\float_alignment class
+\paperfontsize 12
+\spacing onehalf
+\use_hyperref true
+\pdf_title "The LyX Tutorial"
+\pdf_author "LyX Team"
+\pdf_subject "LyX-documentation Tutorial"
+\pdf_keywords "LyX, documentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref section
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false"
+\papersize a4
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\use_lineno 0
+\index 索引
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\end_header
+
+\begin_body
+
+\begin_layout Title
+The \SpecialChar LyX
+ Tutorial
+\end_layout
+
+\begin_layout Chapter
+介绍
+\end_layout
+
+\begin_layout Section
+欢迎来到 \SpecialChar LyX
+!
+\end_layout
+
+\begin_layout Standard
+这个文档是为那些不知道 \SpecialChar LaTeX
+ 或知之甚少的人准备的。不必担心，使用 \SpecialChar LyX
+ 不必学习 \SpecialChar LaTeX
+。\SpecialChar LyX
+ 的目标就是提供一个所见即所得的 \SpecialChar LaTeX
+ 应用。为了高效的使用 \SpecialChar LyX
+，还是需要学习一些东西的
+。
+\end_layout
+
+\begin_layout Standard
+你会发现在其它字处理软件中常用的排版方式在 \SpecialChar LyX
+ 中都不能使用了，比如：在“.”后边输入两个空格，在段间输入三个空行。你以前使用的软件允许手动调整间距、字体等东西，所
+以你不得不即录入又排版。\SpecialChar LyX
+会做好排版的事情的，而你只需要转注于重要的东西：你正在写的内容。
+\end_layout
+
+\begin_layout Standard
+继续读下去，了解更多 \SpecialChar LyX
+。读完这篇教程，你会觉得物有所值的。
+\end_layout
+
+\begin_layout Section
+本教程简介
+\end_layout
+
+\begin_layout Standard
+在开始之前建议您先读一下 Introduction，那里解释了本文使用的注释方式。当你了解了各种字体的意义之后，我们先来说说本篇教程是干什么的。
+\end_layout
+
+\begin_layout Subsection
+学习方式
+\end_layout
+
+\begin_layout Standard
+本教程包含了例子和练习。学习中您应该试着输入我们让你输入的东西，完成所有练习，看看您是不是得到了正确的东西。为了方便，将本文档打印出来会是一个好选择。
+\end_layout
+
+\begin_layout Standard
+如果对 \SpecialChar LaTeX
+ 比较熟悉的话，你将能够较快的阅读本教程，因为 \SpecialChar LyX
+ 的思想就是 \SpecialChar LaTeX
+ 思想的一种包装。\SpecialChar LyX
+ 自身也有很多特性是你想了解的。就算不想继续读下去，你也应该看看
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:LaTeX-用户必读"
+
+\end_inset
+
+，它是专门写给熟练的 \SpecialChar LaTeX
+ 用户的。
+\end_layout
+
+\begin_layout Subsection
+本教程没有的
+\end_layout
+
+\begin_layout Itemize
+\SpecialChar LyX
+ 全部特性的详细解释。
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+需要的话，请阅读 the 
+\emph on
+User's Guide。
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\SpecialChar LaTeX
+ 的详细解释。
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+没必要这样做。要想知道用 \SpecialChar LaTeX
+ 在 \SpecialChar LyX
+ 中能做些什么，可以看看 the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual。
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+现在是开始你的第一个文档的时候了。
+\end_layout
+
+\begin_layout Chapter
+初识 \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Section
+第一个 \SpecialChar LyX
+ 文档
+\end_layout
+
+\begin_layout Standard
+开始之前说几件事情，这会使本教程发挥更大的作用。
+\end_layout
+
+\begin_layout Standard
+由于本教程不会提供所有信息，所以你需要找到其它的帮助文件。这很简单：启动 \SpecialChar LyX
+，在帮助菜单中就有 the 
+\emph on
+User's Guide。
+\shape italic
+在写自己的文件时就可以读到它们了（它们本身就是很好的例子）。注意，当打开多个文件时，可以通过 View 菜单或文档标签进行切换。
+\end_layout
+
+\begin_layout Standard
+我们假设你已经有了全功能的 \SpecialChar LyX
+ 和 \SpecialChar LaTeX
+，包括 DVI、PDF 文件浏览器。一般来说，在各种操作系统上，在安装 \SpecialChar LyX
+ 的时候就已经做好了。
+\end_layout
+
+\begin_layout Standard
+最后，我们提供了一个文件 
+\family typewriter
+example_raw.lyx，
+\family default
+给你练习使用。假想这个文件是由一个完全不知道 \SpecialChar LyX
+ 特性的人写的，在学习的过程中，我们会建议你修改这个文件的。example_raw.lyx 中也包含了修改的提示信息
+。为了对比，我们还提供了一份 \SpecialChar LyX
+ 高手写的同样内容的文档：example_lyxified.lyx。
+\end_layout
+
+\begin_layout Standard
+示例文档存在于 \SpecialChar LyX
+ 安装路径的 examples 目录下。打开示例文档，另存到自己的目录下，修改后输出到 DVI 文件看效果。
+\end_layout
+
+\begin_layout Standard
+另外，examples 目录中还有很多其它的示例文件，它们将向您展示 \SpecialChar LyX
+ 的强大功能。当你忘记了某个功能怎么使用的时候，也可以回来看看这些文档。
+\end_layout
+
+\begin_layout Subsection
+录入、查看、输出
+\end_layout
+
+\begin_layout Itemize
+使用菜单 
+\family sans
+File\SpecialChar menuseparator
+New 打开新文件。
+\end_layout
+
+\begin_layout Itemize
+输入一个句子: 
+\family typewriter
+This is my first \SpecialChar LyX
+ document!
+\end_layout
+
+\begin_layout Itemize
+使用菜单 
+\family sans
+File\SpecialChar menuseparator
+Save
+\begin_inset space ~
+\end_inset
+
+As 保存文件。
+\end_layout
+
+\begin_layout Itemize
+运行 \SpecialChar LaTeX
+ 生成 DVI 文件，使用菜单 
+\family sans
+Document\SpecialChar menuseparator
+View
+\family default
+ 或 工具栏按钮 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
+\end_inset
+
+。 \SpecialChar LyX
+ 将打开 DVI-viewer 程序显示文档打印时的样子。 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+保持 DVI-viewer在后台运行会节省时间。以后可以点击 
+\family sans
+Document\SpecialChar menuseparator
+Update\SpecialChar menuseparator
+DVI
+\family default
+ 或工具栏按钮 
+\begin_inset Info
+type  "icon"
+arg   "buffer-update"
+\end_inset
+
+，等 \SpecialChar LyX
+ 运算完成后切换到 DVI-viewer即可。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+使用菜单 
+\family sans
+File\SpecialChar menuseparator
+Export
+\family default
+ 将文档输出成希望的格式。
+\end_layout
+
+\begin_layout Standard
+恭喜！你已经写出了第一个 \SpecialChar LyX
+ 文档。其余的细节，你会在其它手册中读到。
+\end_layout
+
+\begin_layout Subsection
+简单操作
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ 能够做到其它软件能做的绝大部分事情，如：自动换行、段落缩进……以下是几个简单操作的使用方法。
+\end_layout
+
+\begin_layout Description
+撤消 \SpecialChar LyX
+ 有多级撤消功能，你可以使用 
+\family sans
+Edit\SpecialChar menuseparator
+Undo
+\family default
+ （或工具拦按钮 
+\begin_inset Info
+type  "icon"
+arg   "undo"
+\end_inset
+
+）来撤消本次编辑会话开始以来的所有操作。如果撤消过头了，可以选择 
+\family sans
+Edit\SpecialChar menuseparator
+Redo
+\family default
+ （或工具栏按钮 
+\begin_inset Info
+type  "icon"
+arg   "redo"
+\end_inset
+
+）恢复。 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+目前撤消操作支持100步，而且撤消也不是能够支持所有更改的，比如对文档布局的更改就不能被撤消，这的确是一个 bug。
+\end_layout
+
+\end_deeper
+\begin_layout Description
+剪切/粘贴/复制 使用 
+\family sans
+Edit\SpecialChar menuseparator
+Cut
+\family default
+ （工具栏按钮 
+\begin_inset Info
+type  "icon"
+arg   "cut"
+\end_inset
+
+）， 
+\family sans
+Edit\SpecialChar menuseparator
+Copy
+\family default
+ （工具栏按钮 
+\begin_inset Info
+type  "icon"
+arg   "copy"
+\end_inset
+
+），和 
+\family sans
+Edit\SpecialChar menuseparator
+Paste
+\family default
+ （工具栏按钮 
+\begin_inset Info
+type  "icon"
+arg   "paste"
+\end_inset
+
+） 来实现剪切、复制和粘贴操作。或者也可通过鼠标中键来粘贴选中的文本（包括其它程序中选定的文本）。
+\end_layout
+
+\begin_layout Description
+查找/替换 点击 
+\family sans
+Edit\SpecialChar menuseparator
+Find
+\begin_inset space ~
+\end_inset
+
+&
+\begin_inset space ~
+\end_inset
+
+Replace
+\family default
+ （工具栏按钮 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show findreplace"
+\end_inset
+
+） ，在出现的对话框中点击按钮“
+\family sans
+Find
+\begin_inset space ~
+\end_inset
+
+Next”
+\family default
+ 进行搜索，点击按钮“ 
+\family sans
+Replace”替换搜到的字词。
+\family default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+完成后关闭窗口，如果觉得方便的话也可一直开着它。\SpecialChar LyX
+ 中的大部分窗口都可以这样。使用时注意焦点的切换即可。
+\end_layout
+
+\end_inset
+
+ 你还可以指定区分大小写或全字匹配，当然也可以反向搜索文档。
+\end_layout
+
+\begin_layout Description
+字符格式 用 
+\family sans
+Edit\SpecialChar menuseparator
+Text
+\begin_inset space ~
+\end_inset
+
+Style
+\family default
+ 对话框中的 toggle buttons ，可以
+\shape italic
+强调
+\shape default
+（默认斜体）、加粗或设置为
+\noun on
+无格式（
+\noun default
+字体一般较小，用于人名）。
+\end_layout
+
+\begin_layout Description
+工具栏 菜单支边的工具栏提供了一些常用功能的按钮，例如：粘贴、打印。
+\end_layout
+
+\begin_layout Standard
+当然，目前还没有输入足够多的内容以使所有这些功能可用。
+\end_layout
+
+\begin_layout Subsection
+所见即所想：\SpecialChar LyX
+ 中的空白
+\end_layout
+
+\begin_layout Standard
+对新用户来说，最难理解的是 \SpecialChar LyX
+ 处理空白的方式。敲多次回车只能得到一个空行；敲多次空格只能得到一个空格。在空白行上，连一个空格都无法得到。按下 Tab
+ 键也不会移动一个 Tab 位；实际上就没有 Tab 位！在页面上方也没有标尺可供设置 Tab 位和边距。
+\end_layout
+
+\begin_layout Standard
+很多字处理软件建立在 WYSIWYG 理念之上，也就是：看到的就是得到的（所见即所得）。\SpecialChar LyX
+ 不同，它建立在 WYSIWYM （所想即所得）的理念之上。你想什么就输
+入什么，\SpecialChar LyX
+ 会处理排版的问题，这样保证了输出文件的美观。回车分段，空格断词，没理由在一行中输入好几次空格。Tab 根本就没有语法意义，所以 \SpecialChar LyX
+ 不支持它。使用
+ \SpecialChar LyX
+，你将花费更多的时间去考虑文档的
+\series bold
+内容
+\series default
+，而不是它的
+\series bold
+格式
+\series default
+。更多关于 WYSIWYM 的解释参见 
+\emph on
+Introduction。
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ 的确也有不少精细调整文档格式的方法。毕竟 \SpecialChar LyX
+ 可能不会 100% 精确的按照你想的去排版。
+\emph on
+User's Guide
+\emph default
+ 包含了调整文档格式的详细方法，包括水平填充（HFills）和垂直距离（它们比空格、回车更加强大灵活）；设置字体大小 、样式的方法；调整段落对齐方式的手段。你只
+需要专心写你的文档，在最后细调一下文档格式就好了。使用普通的字处理软件，你会在写文档的整个过程中都被格式排版所困扰。
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+译注：连 AbiWord 这样轻量级的字处理软件都有样式了，就不要说 MS Word、OOo 了。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+环境
+\end_layout
+
+\begin_layout Standard
+文档的不同部分有不同的作用，我们称这些部分为“环境”（
+\emph on
+environments
+\emph default
+）。标题告诉读者新的话题（子话题）将会开始。某些文档含有特殊的环境，比如：期刊会有摘要和题目；书信就没有摘要和题目，但它有地址。
+\end_layout
+
+\begin_layout Standard
+环境是 \SpecialChar LyX
+ 所见即所得哲学的重要部分。一个环境需要具体的定义：字体大小、样式、缩进、行间距等等。这个问题非常重要，因为一个给定环境的具体定义会随着文档类型的变化而
+变化。比如：某期刊要求标题是黑体、18pt、居中，而另一个可能要求斜体、15pt、左对齐；不同的语言也有不同的缩进标准；参考文献的格式就变化更大了。\SpecialChar LyX
+
+ 会把你从这些格式中间拯救出来。
+\end_layout
+
+\begin_layout Standard
+你可以使用工具栏上的环境下拉菜单
+\begin_inset Graphics
+	filename ../../../lib/doc/clipart/ToolbarEnvBox.png
+	scale 50
+	groupId In line
+
+\end_inset
+
+来选择环境，它也能告诉你当前的环境是什么，其中“Standard”是文本的默认环境。现在我们将在你的新文档中添加几个环境，来看看它们是怎么工作的吧。
+\end_layout
+
+\begin_layout Subsection
+节（
+\family sans
+Section
+\family default
+）与子节（Subsection）
+\end_layout
+
+\begin_layout Standard
+在 \SpecialChar LyX
+ 文档的第一行输入“
+\family typewriter
+Introduction
+\family default
+”，在环境下拉菜单中设为“节”（
+\family sans
+Section
+\family default
+）
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+设定环境不需要选择整行（段），光标停留其中即可。若想一次改变多行的环境，则需要选定之。
+\end_layout
+
+\end_inset
+
+， 确定你选择了“节”（
+\family sans
+Section
+\family default
+）而不是“节
+\family sans
+*
+\family default
+”（
+\family sans
+Section*
+\family default
+）。\SpecialChar LyX
+ 将在前边加上“1”并把字体调大。现在敲回车，环境将从“节”（
+\family sans
+Section
+\family default
+）变回“标准”（Standard）。和多数环境类似，敲回车后环境将终止。输入文本：
+\end_layout
+
+\begin_layout LyX-Code
+This is an introduction to my first \SpecialChar LyX
+ document.
+\end_layout
+
+\begin_layout Standard
+再次回车，选择“节”（
+\family sans
+Section
+\family default
+）环境，\SpecialChar LyX
+ 将写上“2”并等待输入。现在输入“
+\family typewriter
+More Stuff
+\family default
+”，\SpecialChar LyX
+ 会把它设置成节（
+\family sans
+Section
+\family default
+）标题的样式。
+\end_layout
+
+\begin_layout Standard
+将光标定位到节 1 （Section
+\begin_inset space ~
+\end_inset
+
+1）末尾，敲回车，再次设置为“节”（
+\family sans
+Section
+\family default
+），\SpecialChar LyX
+ 会写上“2”并等待输入。输入“
+\family typewriter
+About This Document
+\family default
+”。刚才的节 2 （Section
+\begin_inset space ~
+\end_inset
+
+2），“More Stuff”，现在已经被改成了节 3 （Section
+\begin_inset space ~
+\end_inset
+
+3）。你只需要确定哪些文字是节（
+\family sans
+Section
+\family default
+）标题，\SpecialChar LyX
+ 会处理编号和排版格式的，这就是所见即所想（WYSIWYM）的风格。
+\end_layout
+
+\begin_layout Standard
+敲回车，回到“标准”（Standard）环境，输入下边 5 行文字：
+\end_layout
+
+\begin_layout LyX-Code
+Sections and subsections are described below.
+\end_layout
+
+\begin_layout LyX-Code
+Section Description
+\end_layout
+
+\begin_layout LyX-Code
+Sections are bigger than subsections.
+\end_layout
+
+\begin_layout LyX-Code
+Subsection description
+\end_layout
+
+\begin_layout LyX-Code
+Subsections are smaller than sections.
+\end_layout
+
+\begin_layout Standard
+点击第二行，在环境下拉菜单中设为“子节”（Subsection）。\SpecialChar LyX
+ 将会在前边加上“2.1”，并把字体调整的比正文大，比节（Section）标题小。接着把第
+ 4 行也设置成为“子节”（Subsection），\SpecialChar LyX
+ 将在它前边加上“2.2”。如果在节 2 （Section 2）前边加上了别的节，节 2 将会自动变为节
+ 3（Section 3），后边的子节也会跟着变成“3.1”和“3.2”。
+\end_layout
+
+\begin_layout Standard
+文档的层级结构还有次子节 ( Subsubsection )、段 ( Paragraph ) 和子段 ( Subparagraph )，这些就由读者自行把玩吧。
+段和子段的标题默认是不编号的，而且子段还有缩进，参阅 
+\emph on
+User's Guide
+\emph default
+ 得到更多解释以及如何改变它们。章（Chapter）是文档层级结构中最高的一级，只能在某些特定的 \SpecialChar LyX
+ 文档类型中才能使用它（见 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:文档类"
+
+\end_inset
+
+）。
+\end_layout
+
+\begin_layout Standard
+你可能还希望一些节和子节是不编号的，\SpecialChar LyX
+ 有专门的环境实现这个功能。当把节的标题环境改为“节*
+\begin_inset Quotes erd
+\end_inset
+
+（Section*）后，\SpecialChar LyX
+ 还将对它使用相同的字体，只是不再对它进行编号。相应的也有带“星”的子节和次子节环境。试着把一些节或子节的标题环境改为带星的，同时看看其
+它的编号怎么随之改变。
+\end_layout
+
+\begin_layout Standard
+练习：修改 example_raw.lyx 中的节和子节标题。
+\end_layout
+
+\begin_layout Subsection
+列表（Lists）和子列表（sublists）
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ 有好几种列表环境，在写提纲或者重新排序一个已有的列表时，这些列表环境会帮上大忙。不同的文档类型需要不同的列表环境：
+\end_layout
+
+\begin_layout Itemize
+幻灯片使用带圆点的条目环境（
+\family sans
+Itemize
+\family default
+）。
+\end_layout
+
+\begin_layout Itemize
+大纲使用带编号的枚举环境（
+\family sans
+Enumerate
+\family default
+）。
+\end_layout
+
+\begin_layout Itemize
+名词解释常用描述环境（
+\family sans
+Description
+\family default
+）。
+\end_layout
+
+\begin_layout Itemize
+列表环境（
+\family sans
+List
+\family default
+）和描述环境（
+\family sans
+Description
+\family default
+）差不多，只是对齐方式稍有不同。
+\end_layout
+
+\begin_layout Standard
+现在我们写一个 \SpecialChar LyX
+ 有关优点的列表。在文档中输入：
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\SpecialChar LyX
+ is better than other word processors because: 
+\end_layout
+
+\begin_layout Standard
+然后敲回车，并在环境下拉列表中选择条目环境（
+\family sans
+Itemize
+\family default
+）。\SpecialChar LyX
+ 会在行首加上圆点。继续输入：
+\end_layout
+
+\begin_layout LyX-Code
+Typesetting is done for you.
+\end_layout
+
+\begin_layout LyX-Code
+Math is WYSIWYG
+\end_layout
+
+\begin_layout LyX-Code
+Lists are very easy to create!
+\end_layout
+
+\begin_layout Standard
+和标题不同，列表环境在敲回车时不会终止，\SpecialChar LyX
+ 会认为你将继续写下一个条目。所以上边的输入将会产生三个列表项。重新选择标准环境（
+\family sans
+Standard
+\family default
+）或使用快捷键 
+\family sans
+Alt+P
+\begin_inset space ~
+\end_inset
+
+S
+\family default
+ 才能退出列表环境。要在一个列表项中使用多个段落，可使用保护性中断（
+\family sans
+Protected
+\begin_inset space ~
+\end_inset
+
+Break
+\family default
+），按下 Ctrl + 回车即可。
+\end_layout
+
+\begin_layout Standard
+你已经得到了一个漂亮的条目列表，你是不是已经迫不及待的想运行 \SpecialChar LaTeX
+ 看看它们打印出来的样子了？可如果您想给它们加上编号呢？你只需要选定整个列表
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+如果不连前边一段也一起选上的话，你是无法选上第一个条目前边的圆点的；类似的，你也无法选定章节编号。这是有意如此的，因为随着文档类型和文字位置的不同，这些圆点和编
+号也会发生变化。
+\end_layout
+
+\end_inset
+
+，然后选择枚举环境（
+\family sans
+Enumerate
+\family default
+）即可。如果你增删条目的话，\SpecialChar LyX
+ 会自动修改枚举编号的。
+\end_layout
+
+\begin_layout Standard
+现在列表项还是处于被选定状态的，你可以再试试描述（
+\family sans
+Description
+\family default
+）和列表（
+\family sans
+List
+\family default
+）两种环境。这两种环境都是名词加定义的形式，描述环境前边的名词用黑体，列表环境的名词和后边的定义由“Tab”
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+这里的Tab是排版Tab（它会自适应到最长的名词长度），而不是定长的打字机Tab。
+\end_layout
+
+\end_inset
+
+分隔。前边的名词如果多于一个词的话，需要使用保护性空格（
+\family sans
+Protected
+\begin_inset space ~
+\end_inset
+
+Blank
+\family default
+s）将它们分开。
+\end_layout
+
+\begin_layout Standard
+练习：排版 
+\family typewriter
+example_raw.lyx
+\family default
+ 中的列表。
+\end_layout
+
+\begin_layout Standard
+这些列表环境还可以嵌套使用，提纲就是最常见的例子。带编号或圆点的列表在子列表中会有不同的表现形式。更多详情参见 
+\emph on
+User's Guide
+\emph default
+ 。
+\end_layout
+
+\begin_layout Subsection
+其它环境：诗、引用和更多
+\end_layout
+
+\begin_layout Standard
+有两种引用环境：短一点的引用使用引用环境（
+\family sans
+Quote
+\family default
+）；长一点的引用使用引文环境（
+\family sans
+Quotation
+\family default
+）。计算机代码使用代码环境（
+\family sans
+\SpecialChar LyX
+-Code
+\family default
+），该环境使用
+\family typewriter
+typewriter
+\family default
+ 字体，而且这里是 \SpecialChar LyX
+ 中唯一允许使用多个空格的地方。你还可以使用诗环境（
+\family sans
+Verse
+\family default
+）来写诗：回车分节，Ctrl + 回车断行。对所有环境的完整描述参见
+\emph on
+ User's Guide
+\emph default
+。
+\end_layout
+
+\begin_layout Standard
+练习：修改 
+\family typewriter
+example_raw.lyx
+\family default
+ 中的引用、代码、诗环境。
+\end_layout
+
+\end_body
+\end_document

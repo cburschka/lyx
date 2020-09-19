@@ -35,6 +35,7 @@
 #include "support/textutils.h"
 
 #include <stack>
+#include <iostream>
 
 // Uncomment to activate debugging code.
 // #define XHTML_DEBUG
@@ -610,6 +611,8 @@ void xhtmlParagraphs(Text const & text,
 		ParagraphList::const_iterator send;
 
 		// Think about adding <section> and/or </section>s.
+		// Document title is not in Sectioning, but rather in FrontMatter, so that it does not need to be taken
+		// into account.
 		if (style.category() == from_utf8("Sectioning")) {
 			int level = style.toclevel;
 
@@ -620,7 +623,7 @@ void xhtmlParagraphs(Text const & text,
 			while (!headerLevels.empty() && level <= headerLevels.top()) {
 				// Output the tag only if it corresponds to a legit section.
 				int stackLevel = headerLevels.top();
-				if (stackLevel != Layout::NOT_IN_TOC && level > 1) { // <h1> is the document title.
+				if (stackLevel != Layout::NOT_IN_TOC) {
 					xs << xml::EndTag("section");
 					xs << xml::CR();
 				}
@@ -630,7 +633,7 @@ void xhtmlParagraphs(Text const & text,
 			// Open the new section: first push it onto the stack, then output it in XHTML.
 			headerLevels.push(level);
 			// Some sectioning-like elements should not be output (such as FrontMatter).
-			if (level != Layout::NOT_IN_TOC && level > 1) { // <h1> is the document title.
+			if (level != Layout::NOT_IN_TOC ) {
 				xs << xml::StartTag("section");
 				xs << xml::CR();
 			}
@@ -675,7 +678,7 @@ void xhtmlParagraphs(Text const & text,
 
 	// If need be, close <section>s, but only at the end of the document (otherwise, dealt with at the beginning
 	// of the loop).
-	while (!headerLevels.empty() && headerLevels.top() != Layout::NOT_IN_TOC && headerLevels.top() > 1) {
+	while (!headerLevels.empty() && headerLevels.top() != Layout::NOT_IN_TOC) {
 		docstring tag = from_utf8("</section>");
 		headerLevels.pop();
 		xs << XMLStream::ESCAPE_NONE << tag;
