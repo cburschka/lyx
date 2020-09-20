@@ -9,6 +9,9 @@
 #   Use "unfit" or "unapplicable" as better label and name of pattern file?
 
 
+# These are not unreliable (not dependent on any external driver)
+!.*(/ja|)/.*(docbook5|xhtml|lyx[12][0123456])
+
 Sublabel: nonstandard
 #####################
 # Documents with additional requirements,
