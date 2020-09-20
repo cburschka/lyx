@@ -229,28 +229,29 @@ else()
     else()
       message(STATUS "Expected result file \"${result_file_name}\" exists")
       if (extension MATCHES "^x(ht)?ml$")
-	if (format MATCHES "xhtml")
-	  set(xmllint_params --sax --html --valid)
-	  set(executable_ ${XMLLINT_EXECUTABLE})
-	else()
-	  set(xmllint_params)
-	  set(executable_ ${PERL_EXECUTABLE} "${TOP_SRC_DIR}/development/autotests/filterXml4Sax.pl")
-	  # Check with perl xml-parser
-	  # needs XML::Parser module
-	  message(STATUS "Calling ${PERL_EXECUTABLE} \"${TOP_SRC_DIR}/development/autotests/xmlParser.pl\" \"${result_file_name}\"")
-	  execute_process(
-	    COMMAND ${PERL_EXECUTABLE} "${TOP_SRC_DIR}/development/autotests/xmlParser.pl" "${result_file_name}"
-	    OUTPUT_VARIABLE parserout
-	    ERROR_VARIABLE parsererr
-	    RESULT_VARIABLE _err
-	  )
-	  if (_err)
-	    message(STATUS "${parsererr}")
-	  endif()
-	  Summary(_err "Checking \"${result_file_name}\" with xmlParser.pl")
-	endif()
+        if (format MATCHES "xhtml")
+          set(xmllint_params --loaddtd --noout)
+          set(executable_ ${XMLLINT_EXECUTABLE})
+        else()
+          set(xmllint_params)
+          set(executable_ ${PERL_EXECUTABLE} "${TOP_SRC_DIR}/development/autotests/filterXml4Sax.pl")
+          # Check with perl xml-parser
+          # needs XML::Parser module
+          message(STATUS "Calling ${PERL_EXECUTABLE} \"${TOP_SRC_DIR}/development/autotests/xmlParser.pl\" \"${result_file_name}\"")
+          execute_process(
+            COMMAND ${PERL_EXECUTABLE} "${TOP_SRC_DIR}/development/autotests/xmlParser.pl" "${result_file_name}"
+            OUTPUT_VARIABLE parserout
+            ERROR_VARIABLE parsererr
+            RESULT_VARIABLE _err
+          )
+          if (_err)
+            message(STATUS "${parsererr}")
+          endif()
+          Summary(_err "Checking \"${result_file_name}\" with xmlParser.pl")
+        endif()
         if (XMLLINT_EXECUTABLE)
-          message(STATUS "Calling: " ${executable_} ${xmllint_params} " ${result_file_name}")
+          string(REPLACE ";" " " xmllint_params2 " ${xmllint_params}")
+          message(STATUS "Calling: " ${executable_} ${xmllint_params2} " ${WORKDIR}/${result_file_name}")
           # check the created xhtml file
           execute_process(
             COMMAND ${executable_} ${xmllint_params}  "${result_file_name}"
@@ -260,13 +261,15 @@ else()
           file(WRITE "${result_file_name}.sax_out" ${xmlout})
           Summary(_err "Checking \"${result_file_name}\" with ${XMLLINT_EXECUTABLE}")
           if (NOT _err)
-            # check if sax-parser output contains error messages
+            # check if parser output contains error messages
             message(STATUS "Check the output: ${PERL_EXECUTABLE} ${TOP_SRC_DIR}/development/autotests/examineXmllintOutput.pl")
             execute_process(
               COMMAND ${PERL_EXECUTABLE} "${TOP_SRC_DIR}/development/autotests/examineXmllintOutput.pl" "${result_file_name}.sax_out"
               OUTPUT_VARIABLE xmlout
               RESULT_VARIABLE _err)
             Summary(_err "Parse messages of ${XMLLINT_EXECUTABLE} for errors")
+          else()
+            message(STATUS "Errors from xmllint: ${xmlerr}")
           endif()
           if (NOT _err)
             if (NOT "${xmlout}" STREQUAL "")

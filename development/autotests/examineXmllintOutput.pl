@@ -12,6 +12,7 @@ my %errors = ();
 
 if (open(FI, $file)) {
   my $line = 0;
+  my %entities = ();
   my $saxchartoprint = 0;
   while(my $l = <FI>) {
     $line++;
@@ -66,6 +67,21 @@ if (open(FI, $file)) {
 	$saxchartoprint = 3;
       }
     }
+    elsif ($l =~ /: parser error :\s+(.*)$/) {
+      my $err = $1;
+      $errors{$err} = $errmsg;
+      if ($errmsg =~ /Entity\s+'([a-zA-Z0-9]+)'\s+not defined/) {
+	my $entity = $1;
+	if (! defined($entities{$entity})) {
+	  $entities{$entity} = 1;
+	  print "$errmsg\n";
+	}
+      }
+      else {
+	print "$l\n";
+	die("Unknown error $l");
+      }
+    }
     elsif ($saxchartoprint > 0) {
       $saxchartoprint--;
       if ($l =~ /^SAX.characters\(([^\)]+)\)/) {
@@ -73,5 +89,8 @@ if (open(FI, $file)) {
       }
     }
   }
+}
+if (keys %errors) {
+  exit(1);
 }
 exit(0);

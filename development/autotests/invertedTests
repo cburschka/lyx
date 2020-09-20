@@ -116,12 +116,6 @@ export/export/latex/lyxbugs/[0-9].*
 # (For some reason, the false positive error is not thrown with PDF (luatex).)
 #export/examples/sr/Modules/Braille_(dvi3|pdf4)_systemF
 
-#10355 xmllint detects failures
-export/doc/attic/eu_UserGuide_xhtml
-export/doc/(es|ja)/UserGuide_xhtml
-export/examples/External_Material/Spreadsheet_xhtml
-export/export/WrongDfnTagHandling_xhtml
-
 #11455 "Unable to process argument!" with multiple 1.6.x roundtrips
 export/templates/Articles/IEEE_Transactions_Journal_lyx16
 
