@@ -3912,9 +3912,6 @@ bool Paragraph::needsCProtection(bool const fragile) const
 		Inset const * ins = getInset(i);
 		if (ins->needsCProtection(maintext, fragile))
 			return true;
-		if (ins->getLayout().latextype() == InsetLayout::ENVIRONMENT)
-			// Environments need cprotection regardless the content
-			return true;
 		// Now check math environments
 		InsetMath const * im = getInset(i)->asInsetMath();
 		if (!im || im->cell(0).empty())
