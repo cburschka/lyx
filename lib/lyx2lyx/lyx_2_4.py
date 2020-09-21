@@ -3506,16 +3506,13 @@ def revert_totalheight(document):
                 special = m.group(1)
             mspecial = special.split(',')
             for spc in mspecial:
-                if spc[:7] == "height=":
+                if spc.startswith("height="):
                     oldheight = spc.split('=')[1]
                     ms = rxx.search(oldheight)
                     if ms:
-                        oldval = ms.group(1)
                         oldunit = ms.group(2)
-                        if len(oldval) > 1 and oldval[1] == ".":
-                            oldval = "0" + oldval
                         if oldunit in list(relative_heights.keys()):
-                            oldval = str(float(oldval) * 100)
+                            oldval = str(float(ms.group(1)) * 100)
                             oldunit = relative_heights[oldunit]
                             oldheight = oldval + oldunit
                     mspecial.remove(spc)
