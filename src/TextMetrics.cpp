@@ -1994,26 +1994,22 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 void TextMetrics::completionPosAndDim(Cursor const & cur, int & x, int & y,
 	Dimension & dim) const
 {
-	Cursor const & bvcur = cur.bv().cursor();
+	DocIterator from = cur.bv().cursor();
+	DocIterator to = from;
+	text_->getWord(from.top(), to.top(), PREVIOUS_WORD);
 
-	// get word in front of cursor
-	docstring word = text_->previousWord(bvcur.top());
-	DocIterator wordStart = bvcur;
-	wordStart.pos() -= word.length();
-
-	// calculate dimensions of the word
-	Row row;
-	row.pit(bvcur.pit());
-	row.pos(wordStart.pos());
-	row.endpos(bvcur.pos());
-	setRowHeight(row);
-	dim = row.dim();
+	// The vertical dimension of the word
+	Font const font = displayFont(cur.pit(), from.pos());
+	FontMetrics const & fm = theFontMetrics(font);
+	// the +1's below are related to the extra pixels added in setRowHeight
+	dim.asc = fm.maxAscent() + 1;
+	dim.des = fm.maxDescent() + 1;
 
 	// get position on screen of the word start and end
 	//FIXME: Is it necessary to explicitly set this to false?
-	wordStart.boundary(false);
-	Point lxy = cur.bv().getPos(wordStart);
-	Point rxy = cur.bv().getPos(bvcur);
+	from.boundary(false);
+	Point lxy = cur.bv().getPos(from);
+	Point rxy = cur.bv().getPos(to);
 	dim.wid = abs(rxy.x_ - lxy.x_);
 
 	// calculate position of word
