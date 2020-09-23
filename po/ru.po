@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-09-15 20:31+0300\n"
-"PO-Revision-Date: 2020-09-15 22:05+0300\n"
+"POT-Creation-Date: 2020-09-17 19:59+0300\n"
+"PO-Revision-Date: 2020-09-23 10:00+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -5269,7 +5269,7 @@ msgid ""
 "Load ``inputenc'' with option 'utf8x' for extended Unicode support by the "
 "``ucs'' package."
 msgstr ""
-"Загружать ``inputenc'' с опцией 'utf8x' для расширенной поддержки Unicode "
+"Загружать ``inputenc'' с опцией 'utf8x' для расширенной поддержки Юникода "
 "пакетом ``ucs''."
 
 #: src/frontends/qt/GuiDocument.cpp:1016
@@ -6270,7 +6270,7 @@ msgstr "&Создать"
 
 #: src/frontends/qt/GuiInclude.cpp:359
 msgid "Select document to include"
-msgstr "Выберите документ для вставки"
+msgstr "Выберите документ для включения"
 
 #: src/frontends/qt/GuiInclude.cpp:366
 msgid "LaTeX/LyX Documents (*.tex *.lyx)"
@@ -7220,11 +7220,11 @@ msgstr "Сообщения прогресса/отладки"
 
 #: src/frontends/qt/GuiProgressView.cpp:101
 msgid "Debug Level"
-msgstr "Уровень отладки"
+msgstr "Отладочные сообщения"
 
 #: src/frontends/qt/GuiProgressView.cpp:102
 msgid "Set"
-msgstr "Установить"
+msgstr "Показывать"
 
 #: src/frontends/qt/GuiRef.cpp:49
 msgid "Cross-reference"
@@ -10291,7 +10291,6 @@ msgstr "текст%1$s"
 #: lib/layouts/slides.layout:61 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdinsets.inc:649 lib/layouts/stdletter.inc:12
 #: lib/layouts/svcommon.inc:26 lib/layouts/tufte-book.layout:35
-#: lib/ui/stdtoolbars.inc:75
 msgid "Standard"
 msgstr "Обычный текст"
 
@@ -10335,7 +10334,7 @@ msgstr "Ссылка+Текст: "
 
 #: src/insets/InsetRef.cpp:591 src/mathed/InsetMathRef.cpp:251
 msgid "Reference to Name"
-msgstr "Ссылка на имя"
+msgstr "Ссылка на название"
 
 #: src/insets/InsetRef.cpp:591 src/mathed/InsetMathRef.cpp:251
 msgid "NameRef: "
@@ -10343,7 +10342,7 @@ msgstr "Название: "
 
 #: src/insets/InsetRef.cpp:592
 msgid "Formatted"
-msgstr "Отформатированный"
+msgstr "Форматированная"
 
 #: src/insets/InsetRef.cpp:592
 msgid "Format: "
@@ -11235,7 +11234,7 @@ msgstr "Арабский (ArabTeX)"
 
 #: lib/languages:243
 msgid "Arabic (Arabi)"
-msgstr "Арабский (Аравия)"
+msgstr "Арабский (Arabi)"
 
 #: lib/languages:286
 msgid "Asturian"
@@ -11983,14 +11982,14 @@ msgstr "Ключевые слова:"
 #: lib/layouts/theorems-ams-extended.module:302
 #: lib/layouts/theorems-ams-extended.module:305
 msgid "Acknowledgement"
-msgstr "Благодарность"
+msgstr "Подтверждение"
 
 #: lib/layouts/AEA.layout:107 lib/layouts/egs.layout:617
 #: lib/layouts/theorems-ams-extended-bytype.module:340
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:388
 #: lib/layouts/theorems-ams-extended.module:296
 msgid "Acknowledgement."
-msgstr "Благодарность."
+msgstr "Подтверждение."
 
 #: lib/layouts/AEA.layout:112
 msgid "Figure Notes"
@@ -12156,11 +12155,11 @@ msgstr "Аксиома"
 #: lib/layouts/theorems-without-preamble.inc:373
 #: lib/layouts/theorems-without-preamble.inc:376
 msgid "Case"
-msgstr "Вариант"
+msgstr "Случай"
 
 #: lib/layouts/AEA.layout:172 lib/layouts/theorems-without-preamble.inc:370
 msgid "Case \\thecase."
-msgstr "Вариант \\thecase."
+msgstr "Случай \\thecase."
 
 #: lib/layouts/AEA.layout:178 lib/layouts/elsart.layout:417
 #: lib/layouts/heb-article.layout:76 lib/layouts/ijmpc.layout:412
@@ -16798,7 +16797,7 @@ msgstr "Текст благодарности"
 
 #: lib/layouts/ectaart.layout:140
 msgid "Thanks \\theThanks:"
-msgstr "Благодарность \\theThanks:"
+msgstr "Благодарности \\theThanks:"
 
 #: lib/layouts/ectaart.layout:159
 msgid "Thanks Reference"
@@ -16981,7 +16980,7 @@ msgstr "Резюме \\arabic{summ}"
 
 #: lib/layouts/elsart.layout:436
 msgid "Case \\arabic{case}"
-msgstr "Вариант \\arabic{case}"
+msgstr "Случай \\arabic{case}"
 
 #: lib/layouts/elsarticle.layout:3 lib/examples/Articles:0
 msgid "Elsevier"
@@ -18465,7 +18464,7 @@ msgstr "Утверждение #."
 
 #: lib/layouts/heb-article.layout:96
 msgid "Remarks"
-msgstr "Пометки"
+msgstr "Замечания"
 
 #: lib/layouts/heb-article.layout:99
 msgid "Remarks #."
@@ -19673,7 +19672,7 @@ msgstr "Автор содержания:"
 
 #: lib/layouts/llncs.layout:321
 msgid "Case #."
-msgstr "Вариант #."
+msgstr "Случай #."
 
 #: lib/layouts/llncs.layout:331 lib/layouts/svmono.layout:98
 #: lib/layouts/theorems-starred.inc:279
@@ -22857,7 +22856,7 @@ msgstr "Условие \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:177
 msgid "Note \\thetheorem."
-msgstr "Примечание \\thetheorem."
+msgstr "Заметка \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:211
 msgid "Notation \\thetheorem."
@@ -22947,35 +22946,35 @@ msgstr ""
 
 #: lib/layouts/theorems-case.inc:12
 msgid "Case (Level 1)"
-msgstr "Вариант (уровень 1)"
+msgstr "Случай (уровень 1)"
 
 #: lib/layouts/theorems-case.inc:13
 msgid "Case \\arabic{casei}."
-msgstr "Вариант \\arabic{casei}."
+msgstr "Случай \\arabic{casei}."
 
 #: lib/layouts/theorems-case.inc:16
 msgid "Case (Level 2)"
-msgstr "Вариант (уровень 2)"
+msgstr "Случай (уровень 2)"
 
 #: lib/layouts/theorems-case.inc:18
 msgid "Case \\roman{caseii}."
-msgstr "Вариант \\roman{caseii}."
+msgstr "Случай \\roman{caseii}."
 
 #: lib/layouts/theorems-case.inc:21
 msgid "Case (Level 3)"
-msgstr "Вариант (уровень 3)"
+msgstr "Случай (уровень 3)"
 
 #: lib/layouts/theorems-case.inc:23
 msgid "Case \\alph{caseiii}."
-msgstr "Вариант \\alph{caseiii}."
+msgstr "Случай \\alph{caseiii}."
 
 #: lib/layouts/theorems-case.inc:26
 msgid "Case (Level 4)"
-msgstr "Вариант (уровень 4)"
+msgstr "Случай (уровень 4)"
 
 #: lib/layouts/theorems-case.inc:28
 msgid "Case \\arabic{caseiv}."
-msgstr "Вариант \\arabic{caseiv}."
+msgstr "Случай \\arabic{caseiv}."
 
 #: lib/layouts/theorems-chap-bytype.module:2
 msgid "Standard Theorems (Numbered by Type within Chapters)"
@@ -26015,6 +26014,10 @@ msgstr "Sweave|S"
 msgid "XY-pic|X"
 msgstr "XY-pic|X"
 
+#: lib/ui/stdtoolbars.inc:75
+msgid "Standard[[toolbar]]"
+msgstr "Стандартная"
+
 #: lib/ui/stdtoolbars.inc:77
 msgid "New document"
 msgstr "Создать документ"
@@ -26125,7 +26128,7 @@ msgstr "Обновить другие форматы"
 
 #: lib/ui/stdtoolbars.inc:120
 msgid "Extra"
-msgstr "Дополнительно"
+msgstr "Дополнительная"
 
 #: lib/ui/stdtoolbars.inc:122
 msgid "Numbered list"
@@ -26869,7 +26872,7 @@ msgstr "Стиль индекса\t\\scriptstyle"
 
 #: lib/ui/stdtoolbars.inc:394
 msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
-msgstr "Стиль индекса к индексу\t\\scriptscriptstyle"
+msgstr "Стиль подиндекса\t\\scriptscriptstyle"
 
 #: lib/ui/stdtoolbars.inc:395
 msgid "Relation class\t\\mathrel"
@@ -34985,11 +34988,11 @@ msgstr "В&ыбрать..."
 
 #: src/frontends/qt/ui/PrefInputUi.ui:78
 msgid "S&econdary:"
-msgstr "&Вторичная:"
+msgstr "Дополнительная:"
 
 #: src/frontends/qt/ui/PrefInputUi.ui:91
 msgid "&Primary:"
-msgstr "Первичная:"
+msgstr "Основная:"
 
 #: src/frontends/qt/ui/PrefInputUi.ui:101
 msgid ""
@@ -35692,15 +35695,15 @@ msgstr "Нет"
 
 #: src/frontends/qt/ui/ProgressViewUi.ui:242
 msgid "Display the debug messages selected to the right"
-msgstr "Показать отладочные сообщения, выбранные справа"
+msgstr "Показывать отладочные сообщения, выбранные справа"
 
 #: src/frontends/qt/ui/ProgressViewUi.ui:245
 msgid "S&elected"
-msgstr "&Выделенное"
+msgstr "&Выбранные"
 
 #: src/frontends/qt/ui/ProgressViewUi.ui:252
 msgid "Display all debug messages"
-msgstr "Показать все отладочные сообщения"
+msgstr "Показывать все отладочные сообщения"
 
 #: src/frontends/qt/ui/ProgressViewUi.ui:255
 msgid "&All"
@@ -36822,6 +36825,3 @@ msgstr "Диссертация"
 #: lib/examples/Articles:0
 msgid "Theses"
 msgstr "Диссертации"
-
-#~ msgid "File name to include"
-#~ msgstr "Выберите документ для включения"

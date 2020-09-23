@@ -7761,12 +7761,7 @@ reference "sec:Bibliography"
 status collapsed
 
 \begin_layout Plain Layout
-
-\family sans
-Код 
-\family default
-\SpecialChar LyX
-
+Код LyX
 \end_layout
 
 \end_inset
@@ -13165,7 +13160,7 @@ status collapsed
 \family sans
 Запретить разрывы строк после тире
 \family default
- выводит en- и em-тире в виде отдельных символов
+ выводит короткие и длинные тире в виде отдельных символов
 \begin_inset Foot
 status collapsed
 
@@ -15047,7 +15042,7 @@ arg   "textstyle-apply"
 \end_layout
 
 \begin_layout Section
-Печать и предварительный просмотр
+Печать и просмотр
 \end_layout
 
 \begin_layout Subsection
@@ -15077,9 +15072,9 @@ arg   "textstyle-apply"
 , но во избежание путаницы
  мы будем ссылаться только на \SpecialChar LaTeX
 .
- \SpecialChar LyX
- — это то, что вы используете для написания и оформления текстов.
- \SpecialChar LyX
+ Вы используете \SpecialChar LyX
+ для написания и оформления текстов.
+ Затем \SpecialChar LyX
  обращается к \SpecialChar LaTeX
 , чтобы превратить ваш текст в печатный вывод.
  Это происходит в два этапа:
@@ -15351,7 +15346,7 @@ DVI
  Последний вариант использует программу Lua\SpecialChar TeX
 .
  Lua\SpecialChar TeX
- — это движок, который обеспечивает прямую поддержку Unicode и прямой
+ — это движок, который обеспечивает прямую поддержку Юникода и прямой
  доступ к шрифтам (см.
  подраздел
 \begin_inset space ~
@@ -15580,7 +15575,7 @@ Lua\SpecialChar TeX
 \family typewriter
 pdflatex
 \family default
-, который также обеспечивает прямую поддержку Unicode и прямой доступ к
+, который также обеспечивает прямую поддержку Юникода и прямой доступ к
  шрифтам (см.
  подраздел
 \begin_inset space ~
@@ -15624,7 +15619,7 @@ Xe\SpecialChar TeX
 Xe\SpecialChar TeX
 
 \family default
- — это новый движок, который обеспечивает прямую поддержку Unicode и прямой
+ — это новый движок, который обеспечивает прямую поддержку Юникода и прямой
  доступ к шрифтам (см.
  подраздел
 \begin_inset space ~
@@ -15824,12 +15819,12 @@ LyXHTML
 \end_layout
 
 \begin_layout Subsection
-Предварительный просмотр
+Просмотр
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Документ ! предварительный просмотр
+Документ ! просмотр
 \end_layout
 
 \end_inset
@@ -15889,8 +15884,8 @@ arg   "buffer-view"
 \end_layout
 
 \begin_layout Standard
-При предварительном просмотре документа файл вывода создается только во
- временном каталоге \SpecialChar LyX
+При просмотре документа файл вывода создается только во временном каталоге
+ \SpecialChar LyX
 .
  Чтобы получить реальный результат вывода, экспортируйте ваш документ.
 \end_layout
@@ -15953,13 +15948,13 @@ status collapsed
 \emph default
 , 
 \emph on
-en-тире
+короткое тире
 \emph default
-, 
+ (en-dash), 
 \emph on
-em-тире 
+длинное тире 
 \emph default
-и 
+(em-dash) и 
 \emph on
 знак минуса
 \emph default
@@ -16070,7 +16065,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-en-тире
+короткое тире
 \end_layout
 
 \end_inset
@@ -16093,7 +16088,7 @@ en-тире
 status collapsed
 
 \begin_layout Plain Layout
-В macOS и Linux en-тире вводится с помощью 
+В macOS и Linux короткое тире вводится с помощью 
 \family sans
 Opt+
 \begin_inset Quotes erd
@@ -16105,7 +16100,7 @@ Opt+
 
 
 \family default
-, а em-тире — с помощью 
+, а длинное тире — с помощью 
 \family sans
 Shift-Opt+
 \begin_inset Quotes erd
@@ -16149,7 +16144,7 @@ Opt
 \begin_inset Text
 
 \begin_layout Plain Layout
-em-тире
+длинное тире
 \end_layout
 
 \end_inset
@@ -16260,8 +16255,8 @@ em-тире
 \family typewriter
 unicode-insert
 \family default
- с кодом Юникода в качестве аргумента (2013 для обозначения em-тире и 2014
- для обозначения en-тире).
+ с кодом Юникода в качестве аргумента (2013 для обозначения длинного тире
+ и 2014 для обозначения короткого тире).
 \end_layout
 
 \begin_layout Standard
@@ -16271,7 +16266,7 @@ unicode-insert
 \end_layout
 
 \begin_layout Enumerate
-en- и em-тире
+Длинное тире (em-dash)
 \begin_inset space \hfill{}
 \end_inset
 
@@ -16287,23 +16282,15 @@ A–Z; страницы
 \begin_inset space \hfill{}
 \end_inset
 
-(
-\emph on
-en
-\emph default
--тире)
+(короткое тире)
 \end_layout
 
 \begin_layout Enumerate
-em-тире используется с пробелами: это — тире.
+Длинное тире используется с пробелами: это — тире.
 \begin_inset space \hfill{}
 \end_inset
 
-(
-\emph on
-em
-\emph default
--тире)
+(длинное тире)
 \end_layout
 
 \begin_layout Enumerate
@@ -16359,12 +16346,12 @@ name "subsec:Dashes-and-line-breaks"
  в \SpecialChar LaTeX
  как «лигатурные тире» (-- и ---).
  \SpecialChar LaTeX
- допускает разрывы строк после дефисов и таких en- и em-тире.
+ допускает разрывы строк после дефисов и таких тире.
 \end_layout
 
 \begin_layout Enumerate
-Разрывы строк перед отделенными пробелами en-тире, которые обычно встречаются
- в британском английском и рекомендуются книгой 
+Разрывы строк перед отделенными пробелами короткими тире, которые обычно
+ встречаются в британском английском и рекомендуются книгой 
 \begin_inset Quotes rld
 \end_inset
 
@@ -16584,7 +16571,7 @@ même si tout le monde ne les aime pas
 
 \begin_deeper
 \begin_layout Itemize
-em-тире без пробелов—\SpecialChar allowbreak
+длинные тире без пробелов—\SpecialChar allowbreak
 часто встречающиеся в американском английском—\SpecialChar allowbreak
 должны
  использовать эту возможность.
@@ -16612,8 +16599,8 @@ noprefix "false"
 \end_deeper
 \begin_layout Enumerate
 С этим параметром \SpecialChar LaTeX
- также переносит слова, если сразу за ними следуют em-
- или en-тире (см.
+ также переносит слова, если сразу за ними следует длинное
+ или короткое тире (см.
  подраздел
 \begin_inset space ~
 \end_inset
@@ -16643,7 +16630,7 @@ noprefix "false"
 
 2.1 последовательные символы дефиса (-- и ---) в исходном коде \SpecialChar LyX
  объединялись
- в en- или em-тире с помощью \SpecialChar LaTeX
+ в короткие или длинные тире с помощью \SpecialChar LaTeX
 .
  Такие «лигатурные тире» сохраняют свойства разрыва строк (как и дефисы),
  тогда как символьные тире \SpecialChar LaTeX
@@ -22533,7 +22520,7 @@ name "subsec:Figure-Floats"
 status collapsed
 
 \begin_layout Plain Layout
-Плавающие объекты ! плавающие рисунки
+Плавающие объекты ! рисунки
 \end_layout
 
 \end_inset
@@ -22860,7 +22847,7 @@ name "fig:Two-images"
 status collapsed
 
 \begin_layout Plain Layout
-Плавающие объекты ! плавающие таблицы
+Плавающие объекты ! таблицы
 \end_layout
 
 \end_inset
@@ -23752,12 +23739,22 @@ textrm
 \end_layout
 
 \begin_layout Subsection
-Показатели степени и нижние индексы
+Верхние и нижние индексы
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
 Математика ! показатели степени
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Математика ! верхние индексы
 \end_layout
 
 \end_inset
@@ -23789,7 +23786,7 @@ type  "icon"
 arg   "math-subscript"
 \end_inset
 
-), но часто гораздо проще использовать соответствующую команду.
+), но часто гораздо удобнее использовать соответствующую команду.
  Чтобы получить 
 \begin_inset Formula $x^{2}$
 \end_inset
@@ -23807,7 +23804,7 @@ x^2
 \family sans
 Пробел
 \family default
- помещает курсор на базовую строку выражения.
+ помещает курсор на базовую линию выражения.
  Если вы введете 
 \series bold
 x^2y
@@ -24377,7 +24374,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-В формулу можно вставлять акцентированные символы так же, как и в текстовом
+В формулу можно вставлять акценты (надстрочные знаки) так же, как и в текстовом
  режиме.
  Это может зависеть от вашей клавиатуры или используемого файла привязок.
  Вы также можете использовать команды \SpecialChar LaTeX
@@ -24385,7 +24382,8 @@ status collapsed
 \begin_inset Formula $\hat{a}$
 \end_inset
 
-, даже если используемая клавиатура не поддерживает ввод надбуквенных знаков.
+, даже если используемая клавиатура не поддерживает ввод таких надстрочных
+ знаков.
  Приведенный пример — это результат ввода 
 \series bold
 
@@ -26326,7 +26324,7 @@ status collapsed
 \family default
  и 
 \family sans
-Стиль индекса к индексу
+Стиль подиндекса
 \family default
 .
  Для большинства символов 
@@ -26337,9 +26335,8 @@ status collapsed
 \family sans
 Стиль выделенной формулы
 \family default
- на самом деле имеют одинаковый размер, но дробные, верхние индексы и нижние
- индексы, а также некоторые другие структуры, иногда задаются более крупными
- в 
+ на самом деле имеют одинаковый размер, но дроби, верхние и нижние индексы,
+ а также некоторые другие структуры, будут более крупными в 
 \family sans
 Стиле выделенной формулы
 \family default
@@ -26361,11 +26358,11 @@ arg   "math-insert \\style"
 .
  При этом будет создан блок соответствующего размера, в который вы можете
  вставить математическую структуру.
- Например, вы можете установить дробь 
+ Например, вы можете оформить дробь 
 \begin_inset Formula $\frac{1}{2}$
 \end_inset
 
-, которая обычно оформляется в 
+, которая обычно использует 
 \family sans
 Стиле обычной формулы
 \family default
@@ -26394,7 +26391,7 @@ arg   "math-insert \\style"
 \end_inset
 
 , 
-\begin_inset Formula ${\scriptscriptstyle \text{стиль индекса к индексу}}$
+\begin_inset Formula ${\scriptscriptstyle \text{стиль подиндекса}}$
 \end_inset
 
 .
@@ -28576,7 +28573,7 @@ biblatex
 \family sans
 biber
 \family default
- обеспечивает полную поддержку Unicode, неограниченную память и многие специфиче
+ обеспечивает полную поддержку Юникода, неограниченную память и многие специфиче
 ские функции, которые использует 
 \series bold
 biblatex
@@ -28605,7 +28602,7 @@ biblatex
 
 \begin_layout Description
 bibtex8 допускает использование всех символов, которые возможно представить
- в 8-битной кодировке (но без поддержки Unicode), обладает большей памятью,
+ в 8-битной кодировке (но без поддержки Юникода), обладает большей памятью,
  чем 
 \family sans
 bibtex
@@ -34925,14 +34922,13 @@ arg   "changes-merge"
 \end_layout
 
 \begin_layout Standard
-Когда отслеживание изменений активировано, вы увидите панель рецензирования
- в \SpecialChar LyX
-:
+После активации отслеживания изменений в окне \SpecialChar LyX
+ появится панель рецензирования:
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Панель инструментов ! обзор
+Панель инструментов ! рецензирование
 \end_layout
 
 \end_inset
@@ -34965,7 +34961,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Как видно, панель рецензирования содержит следующие кнопки:
+Панель рецензирования содержит следующие кнопки:
 \end_layout
 
 \begin_layout Standard
@@ -35323,13 +35319,13 @@ arg   "note-next"
 
 \begin_layout Standard
 Панель рецензирования помогает вам принять, отклонить или объединить изменения
- — выделите изменения и нажмите одну из требуемых кнопок панели инструментов.
+ — выделите изменение и нажмите одну из требуемых кнопок на панели.
  Когда объединяются изменения, появляется окно с информацией о следующем
  изменении после текущей позиции курсора.
- Так что, вам не нужно выделять определенные изменения.
- В окне слияния вы можете принять или отклонить изменения и перейти к следующему
- изменению.
- Таким образом, вы можете просмотреть все изменения в документе.
+ Так что вам не нужно вручную выделять конкретное изменение.
+ В окне объединения вы можете принять или отклонить изменение и перейти
+ к следующему.
+ Так вы можете пройтись по всем изменениям в документе.
 \end_layout
 
 \begin_layout Standard
@@ -35516,8 +35512,8 @@ name "subsec:Keyboard-mapping"
 \end_layout
 
 \begin_layout Standard
-Если у вас есть, например, клавиатура в стиле США и вы хотите писать на
- языке, отличном от английского, вы можете использовать альтернативную раскладку
+Если у вас есть, например, клавиатура для английского языка, а вы хотите
+ набирать текст на другом языке, то можете использовать альтернативную раскладку
  клавиатуры.
  Например, если вы хотите писать по-русски, то можете настроить \SpecialChar LyX
  на использовани
@@ -35529,7 +35525,7 @@ name "subsec:Keyboard-mapping"
 Редактирование\SpecialChar menuseparator
 Клавиатура и Мышь
 \family default
- позволяет выбрать до двух раскладок клавиатуры, см.
+ позволяет использовать до двух раскладок клавиатуры, см.
  подраздел
 \begin_inset space ~
 \end_inset
@@ -35542,17 +35538,16 @@ reference "subsec:Keyboard-Map"
 \end_inset
 
 .
- Вы можете выбрать первичный и вторичный языки клавиатуры, а затем выбрать,
+ Вы можете задать основной и дополнительный языки клавиатуры, а затем выбирать,
  какой из них хотите использовать.
 \end_layout
 
 \begin_layout Standard
-Наконец, у вас может появиться необходимость в изменении сопоставлений нес\SpecialChar softhyphen
+Наконец, у вас может возникнуть потребность изменить сопоставление для нес\SpecialChar softhyphen
 кольки
-х клавиш или в создании совершенно другой раскладки клавиатуры (например,
- для Vulcan).
- Например, вы можете, в основном, писать по-русски на клавиатуре в стиле
- США, но хотите добавить кавычки в стиле немецкого языка.
+х клавиш или создать совершенно другую раскладку (например, для Vulcan).
+ Пусть вы набираете русский текст на англоязычной клавиатуре, но хотите
+ иногда включать цитаты на немецком языке.
  В таком случае вы можете создать свою раскладку клавиатуры или изменить
  существующую для поддержки нужных вам символов.
  Эта и многие другие настройки описаны в 
@@ -35797,7 +35792,7 @@ TeX
 \family typewriter
 LuaTeX
 \family default
-; поддерживает Unicode и использование системных шрифтов.
+; поддерживает Юникод и использование системных шрифтов.
  
 \series bold
 
@@ -41358,7 +41353,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-Панель инструментов ! макрос
+Панель инструментов ! математические макросы
 \end_layout
 
 \end_inset
@@ -41815,11 +41810,11 @@ status collapsed
 \begin_layout Standard
 По умолчанию \SpecialChar LyX
  выводит файлы \SpecialChar LaTeX
- в Unicode или, фактически, в utf8 (которая
+ в Юникоде или, фактически, в utf8 (которая
  в настоящее время также является кодировкой \SpecialChar LaTeX
  по умолчанию).
  Обычно это должно соответствовать вашим потребностям, поскольку поддержка
- Unicode в \SpecialChar LaTeX
+ Юникода в \SpecialChar LaTeX
  охватывает символы большинства языков.
  Тем не менее, эта поддержка не является всесторонней, поэтому могут быть
  ситуации, когда необходимо использовать одну из традиционных или «устаревших»
@@ -41869,7 +41864,7 @@ ASCII
  документа.
  Обратите внимание, что эта кодировка затем используется для любого языка.
  Пользовательский список (который приведен ниже) состоит из традиционных
- кодировок и некоторых особых случаев Unicode для определенных целей (см.
+ кодировок и некоторых особых случаев Юникода для определенных целей (см.
  разъяснение ниже).
 \end_layout
 
@@ -41906,7 +41901,7 @@ status collapsed
  Обратите внимание, что эта опция доступна только для стандартной кодировки
  
 \family sans
-Unicode
+Юникод
 \family default
  и кодировки 
 \family sans
@@ -42468,7 +42463,7 @@ Xe\SpecialChar TeX
 Lua\SpecialChar TeX
 
 \family default
-, которые используют Unicode напрямую, без помощи \SpecialChar LaTeX
+, которые используют Юникод напрямую, без помощи \SpecialChar LaTeX
 -пакета 
 \series bold
 inputenc
@@ -42515,10 +42510,10 @@ status collapsed
 
 \end_inset
 
- (включая латинские, греческие, кириллические и CJK-скрипты).
+ (включая латинские, греческие, кириллические и CJK-символы).
  Раньше он был более полным, чем 
 \family sans
-Unicode (utf8)
+Юникод (utf8)
 \family default
 , но, между тем, довольно устарел.
 \end_layout
@@ -43980,7 +43975,7 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-Настройка ! панели инструментов
+Настройки ! панели инструментов
 \end_layout
 
 \end_inset
@@ -43990,7 +43985,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-Настройка ! меню
+Настройки ! меню
 \end_layout
 
 \end_inset
@@ -45170,7 +45165,7 @@ status collapsed
 
 \begin_layout Standard
 Обычно, настройки клавиатуры выполняются в меню вашей операционной системы.
- Когда это не так, \SpecialChar LyX
+ Если же это невозможно, \SpecialChar LyX
  предоставляет раскладки клавиатур.
  Если, например, у вас чешская клавиатура, но вы хотите использовать ее,
  как если бы она была румынской, вы можете включить опцию 
@@ -45185,19 +45180,19 @@ romanian.kmap
 \end_layout
 
 \begin_layout Standard
-Вы можете указать раскладки клавиатуры, 
+Вы можете указать раскладки клавиатуры (
 \family sans
-Первичная
+Основная
 \family default
  и 
 \family sans
-Вторичная
+Дополнительная
 \family default
- и, если вы используете привязки 
+) и, если вы используете привязки 
 \family typewriter
 cua
 \family default
-, то можете выбрать первую или вторую раскладку с помощью 
+, то можете выбирать основную или дополнительную раскладку с помощью 
 \begin_inset Info
 type  "shortcut"
 arg   "keymap-primary"
@@ -45209,7 +45204,7 @@ type  "shortcut"
 arg   "keymap-secondary"
 \end_inset
 
-, соответственно, или переключаться между ними с помощью 
+ соответственно, или переключаться между ними с помощью 
 \begin_inset Info
 type  "shortcut"
 arg   "keymap-toggle"
@@ -47679,7 +47674,7 @@ The \SpecialChar LaTeX
 .
  — 2nd ed.
  — Addison-Wesley, 2004.
- (Перевод 1-го
+ (Имеется перевод 1-го
 \begin_inset space ~
 \end_inset
 
@@ -47769,7 +47764,7 @@ book
 \emph default
 .
  — Addison-Wesley, 1984.
- (Перевод: Кнут
+ (Имеется перевод: Кнут
 \begin_inset space ~
 \end_inset
 

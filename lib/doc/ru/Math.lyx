@@ -1357,9 +1357,9 @@ em)
 \end_layout
 
 \begin_layout Subsection
-Верхние
+Верхние и нижние индексы
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Показатели степени
@@ -1367,9 +1367,9 @@ status open
 
 \end_inset
 
- и нижние индексы
+
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Индексы
@@ -1379,7 +1379,7 @@ status open
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Верхние индексы|see
@@ -1411,7 +1411,7 @@ status collapsed
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Нижние индексы|see
@@ -9517,7 +9517,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Акценты могут быть вставлены с помощью кнопки 
+Акценты (надстрочные знаки) могут быть вставлены с помощью кнопки 
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\hat"
@@ -10239,8 +10239,8 @@ ddot
 \end_layout
 
 \begin_layout Standard
-В математический текст можно вставлять умлауты и другие акцентированные
- символы непосредственно.
+В математический текст можно непосредственно вставлять умлауты и другие
+ акцентированные символы.
 \end_layout
 
 \begin_layout Standard
@@ -10905,7 +10905,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Иногда необходимо вставить горизонтальный промежуток в формулу.
+Иногда в формулу необходимо вставить горизонтальный промежуток.
  Это делается путем вставки неразрывного пробела (
 \family sans
 Вставка\SpecialChar menuseparator
@@ -15361,7 +15361,7 @@ reference "subsec:Operator-Limits"
 d
 \emph default
  в подинтегральном выражении является оператором, который поэтому должен
- быть установлен шрифтом прямого начертания.
+ быть оформлен шрифтом прямого начертания.
  Это делается путем выделения 
 \emph on
 d
@@ -15795,7 +15795,7 @@ Alt+M Shift+L N
 Вот как это выглядит после изменения типа пределов:
 \begin_inset Formula 
 \[
-\sum\nolimits _{x=0}^{\infty}\frac{1}{x^{2}}
+\sum\nolimits_{x=0}^{\infty}\frac{1}{x^{2}}
 \]
 
 \end_inset
@@ -15837,7 +15837,7 @@ ointop
 \begin_inset VSpace medskip
 \end_inset
 
-Для уточнения особенностей отображения пределов, используются команды 
+Для указания условий в пределах, используются команды 
 \series bold
 
 \backslash
@@ -15994,7 +15994,7 @@ reference "eq:substack"
 \end_inset
 
 , рядом с оператором может оказаться слишком много места, потому что символы,
- следующие за оператором, устанавливаются за пределами этого оператора.
+ следующие за оператором, показываются за пределами этого оператора.
  Чтобы избежать этого, можно использовать команду 
 \series bold
 
@@ -16297,7 +16297,7 @@ sideset
 
 \end_inset
 
- символы могут быть размещены непосредственно перед или после большого оператора.
+ символы могут быть размещены непосредственно до или после большого оператора.
 \end_layout
 
 \begin_layout Standard
@@ -16327,7 +16327,7 @@ sideset
 \backslash
 sidesetn
 \series default
- используется для установки символов перед и/или за оператором (этот вариант
+ используется для установки символов до и/или после оператора (этот вариант
  представляет оригинальную \SpecialChar LaTeX
 -команду 
 \series bold
@@ -28656,7 +28656,7 @@ name "subsec:Flalign-Environment"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Формула ! многострочная ! окружение flalign
@@ -30047,7 +30047,7 @@ renewcommand
 \series default
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Команды ! R ! 
