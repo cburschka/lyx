@@ -121,7 +121,7 @@ void InsetLabel::updateLabelAndRefs(docstring const & new_label,
 void InsetLabel::updateReferences(docstring const & old_label,
 		docstring const & new_label)
 {
-	UndoGroupHelper ugh;
+	UndoGroupHelper ugh(nullptr);
 	if (buffer().masterParams().track_changes) {
 		// With change tracking, we insert a new ref and
 		// delete the old one

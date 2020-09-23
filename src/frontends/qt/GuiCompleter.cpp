@@ -687,7 +687,7 @@ void GuiCompleter::tab()
 	}
 
 	// Make undo possible
-	UndoGroupHelper ugh;
+	UndoGroupHelper ugh(cur.buffer());
 	cur.recordUndo();
 
 	// If completion is active, at least complete by one character

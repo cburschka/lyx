@@ -139,7 +139,7 @@ private:
  */
 class UndoGroupHelper {
 public:
-	UndoGroupHelper(Buffer * buf = 0);
+	UndoGroupHelper(Buffer * buf);
 
 	~UndoGroupHelper();
 
