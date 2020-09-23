@@ -77,6 +77,8 @@ public:
 	virtual int strikeoutPos() const = 0;
 	/// return true if font is not upright (italic or oblique)
 	virtual bool italic() const = 0;
+	/// return slope for italic font
+	virtual double italicSlope() const = 0;
 
 	/// return the width of the char in the font
 	virtual int width(char_type c) const = 0;

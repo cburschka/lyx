@@ -130,7 +130,7 @@ namespace frontend {
 class CaretWidget {
 public:
 	CaretWidget() : rtl_(false), l_shape_(false), completable_(false),
-		x_(0), caret_width_(0), slant_(false), ascent_(0)
+		x_(0), caret_width_(0), slant_(false), ascent_(0), slope_(0)
 	{}
 
 	/* Draw the caret. Parameter \c horiz_offset is not 0 when there
@@ -146,18 +146,18 @@ public:
 		int const lx = rtl_ ? x_ - rect_.left() : rect_.right() - x_;
 		int const bot = rect_.bottom();
 		int const dir = rtl_ ? -1 : 1;
-		// this is almost equal to tan(14 * PI / 180)
-		qreal const slope = 0.25;
 
 		// draw caret box
 		if (slant_ && !rtl_) {
-			// slanted (14 degree angle)
+			// slanted
+
 			QPainterPath path;
-			path.moveTo(x + ascent_ * slope, y);
-			path.lineTo(x - (rect_.height() - ascent_) * slope, y + rect_.height());
-			path.lineTo(x + dir * caret_width_ - (rect_.height() - ascent_) * slope,
+			path.moveTo(x + ascent_ * slope_, y);
+			path.lineTo(x - (rect_.height() - ascent_) * slope_,
+						y + rect_.height());
+			path.lineTo(x + dir * caret_width_ - (rect_.height() - ascent_) * slope_,
 			            y + rect_.height());
-			path.lineTo(x + dir * caret_width_ + ascent_ * slope, y);
+			path.lineTo(x + dir * caret_width_ + ascent_ * slope_, y);
 			painter.setRenderHint(QPainter::Antialiasing, true);
 			painter.fillPath(path, color_);
 			painter.setRenderHint(QPainter::Antialiasing, false);
@@ -176,7 +176,7 @@ public:
 			int const m = y + rect_.height() / 2;
 			int const d = TabIndicatorWidth - 1;
 			// offset for slanted carret
-			int const sx = (slant_ && !rtl_) ? (ascent_ - (rect_.height() / 2 - d)) * slope : 0;
+			int const sx = (slant_ && !rtl_) ? (ascent_ - (rect_.height() / 2 - d)) * slope_ : 0;
 			painter.drawLine(x + dir * (caret_width_ + 1) + sx, m - d,
 			                 x + dir * (caret_width_ + d + 1) + sx, m);
 			painter.drawLine(x + dir * (caret_width_ + 1) + sx, m + d,
@@ -185,7 +185,7 @@ public:
 	}
 
 	void update(int x, int y, int h, bool l_shape,
-		bool rtl, bool completable, bool slant, int ascent)
+		bool rtl, bool completable, bool slant, int ascent, double slope)
 	{
 		color_ = guiApp->colorCache().get(Color_cursor);
 		l_shape_ = l_shape;
@@ -194,6 +194,7 @@ public:
 		x_ = x;
 		slant_ = slant;
 		ascent_ = ascent;
+		slope_ = slope;
 
 		// extension to left and right
 		int l = 0;
@@ -245,6 +246,8 @@ private:
 	bool slant_;
 	/// the fontmetrics ascent for drawing slanted caret
 	int ascent_;
+	/// the slope for drawing slanted caret
+	double slope_;
 };
 
 
@@ -644,10 +647,11 @@ void GuiWorkArea::Private::updateCaretGeometry()
 	Point point;
 	int h = 0;
 	buffer_view_->caretPosAndHeight(point, h);
+	Cursor & cur = buffer_view_->cursor();
 
 	// RTL or not RTL
 	bool l_shape = false;
-	Font const & realfont = buffer_view_->cursor().real_current_font;
+	Font const & realfont = cur.real_current_font;
 	FontMetrics const & fm = theFontMetrics(realfont.fontInfo());
 	BufferParams const & bp = buffer_view_->buffer().params();
 	bool const samelang = realfont.language() == bp.language;
@@ -661,20 +665,21 @@ void GuiWorkArea::Private::updateCaretGeometry()
 		l_shape = false;
 
 	// show caret on screen
-	Cursor & cur = buffer_view_->cursor();
 	bool completable = cur.inset().showCompletionCursor()
 		&& completer_->completionAvailable()
 		&& !completer_->popupVisible()
 		&& !completer_->inlineVisible();
 
-	caret_->update(point.x_, point.y_, h, l_shape, isrtl, completable,
-		// use slanted caret for italics in text edit mode
-		fm.italic() && buffer_view_->cursor().inTexted()
-		// except for selections because the selection rect does not slant
-		&& !buffer_view_->cursor().selection(), fm.maxAscent());
+	// use slanted caret for italics in text edit mode
+	// except for selections because the selection rect does not slant
+	int slant = fm.italic() && buffer_view_->cursor().inTexted()
+		&& !buffer_view_->cursor().selection();
+	double slope = fm.italicSlope();
+
+	caret_->update(point.x_, point.y_, h, l_shape, isrtl, completable, slant,
+		fm.maxAscent(), slope);
 	needs_caret_geometry_update_ = false;
 }
-
 
 
 void GuiWorkArea::Private::showCaret()
