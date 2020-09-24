@@ -55,7 +55,7 @@ Template GnumericSpreadsheet
 		Product "[Spreadsheet: $$FName]"
 	FormatEnd
 	Format XHTML
-		Product "$$Contents(\"$$AbsPath$$Basename.html\")</p>"
+		Product "$$Contents(\"$$AbsPath$$Basename.html\")"
 		UpdateFormat html_table
 		UpdateResult "$$AbsPath$$Basename.html"
 	FormatEnd
