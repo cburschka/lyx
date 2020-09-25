@@ -93,6 +93,7 @@ TODO
 #include "support/Systemcall.h"
 
 #include <QProcess>
+#include <QtGui/QImage>
 
 #include <algorithm>
 #include <sstream>
@@ -320,13 +321,13 @@ void InsetGraphics::outBoundingBox(graphics::BoundingBox & bbox) const
 
 	FileName const file(params().filename.absFileName());
 
-	// No correction is necessary for a postscript image
+	// No correction is necessary for a vector image
 	bool const zipped = theFormats().isZippedFile(file);
 	FileName const unzipped_file = zipped ? unzipFile(file) : file;
 	string const format = theFormats().getFormatFromFile(unzipped_file);
 	if (zipped)
 		unzipped_file.removeFile();
-	if (Formats::isPostScriptFileFormat(format))
+	if (theFormats().getFormat(format)->vectorFormat())
 		return;
 
 	// Get the actual image dimensions in pixels
@@ -339,6 +340,12 @@ void InsetGraphics::outBoundingBox(graphics::BoundingBox & bbox) const
 			width  = image->width();
 			height = image->height();
 		}
+	}
+	// Even if cached, the image is not loaded without GUI
+	if  (width == 0 && height == 0) {
+		QImage image(toqstr(file.absFileName()));
+		width  = image.width();
+		height = image.height();
 	}
 	if (width == 0 || height == 0)
 		return;
