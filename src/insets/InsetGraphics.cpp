@@ -93,6 +93,7 @@ TODO
 #include "support/Systemcall.h"
 
 #include <QProcess>
+#include <QtGui/QImage>
 
 #include <algorithm>
 #include <sstream>
@@ -339,6 +340,12 @@ void InsetGraphics::outBoundingBox(graphics::BoundingBox & bbox) const
 			width  = image->width();
 			height = image->height();
 		}
+	}
+	// Even if cached, the image is not loaded without GUI
+	if  (width == 0 && height == 0) {
+		QImage image(toqstr(file.absFileName()));
+		width  = image.width();
+		height = image.height();
 	}
 	if (width == 0 || height == 0)
 		return;
