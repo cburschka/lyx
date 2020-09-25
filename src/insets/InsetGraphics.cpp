@@ -326,7 +326,7 @@ void InsetGraphics::outBoundingBox(graphics::BoundingBox & bbox) const
 	string const format = theFormats().getFormatFromFile(unzipped_file);
 	if (zipped)
 		unzipped_file.removeFile();
-	if (Formats::isPostScriptFileFormat(format))
+	if (theFormats().getFormat(format)->vectorFormat())
 		return;
 
 	// Get the actual image dimensions in pixels
