@@ -320,7 +320,7 @@ void InsetGraphics::outBoundingBox(graphics::BoundingBox & bbox) const
 
 	FileName const file(params().filename.absFileName());
 
-	// No correction is necessary for a postscript image
+	// No correction is necessary for a vector image
 	bool const zipped = theFormats().isZippedFile(file);
 	FileName const unzipped_file = zipped ? unzipFile(file) : file;
 	string const format = theFormats().getFormatFromFile(unzipped_file);
