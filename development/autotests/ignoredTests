@@ -82,7 +82,7 @@ export/examples/Modules/Chessboard_(lyx(16|20|21|22|23)|(pdf5|dvi3)_texF)
 export/export/latex/.*platex.*(pdf2|texF)
 export/export/latex/languages/ja[-_].*_(pdf2|texF)
 #
-# Most Japanese documents use language "japanese" wich is tied to "platex"
+# Most Japanese documents use language "japanese" which is tied to "platex"
 # (automatically invoked instead of "latex" to create a DVI file).
 # For a discussion of alternatives for Japanese with LaTeX , see also
 # https://tex.stackexchange.com/questions/320021/xelatex-using-japanese-ldf-for-babel-causes-invalid-characters-errors
