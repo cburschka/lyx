@@ -2638,10 +2638,10 @@ void Paragraph::latex(BufferParams const & bparams,
 			if (closeLanguage)
 				// Force language closing
 				current_font.setLanguage(basefont.language());
+			Font const nextfont = (i == body_pos-1) ? basefont : current_font;
 			column += running_font.latexWriteEndChanges(
 				    os, bparams, runparams, basefont,
-				    (i == body_pos-1) ? basefont : current_font,
-				    needPar);
+				    nextfont, needPar);
 			if (in_ct_deletion) {
 				// We have to close and then reopen \lyxdeleted,
 				// as strikeout needs to be on lowest level.
@@ -2649,9 +2649,12 @@ void Paragraph::latex(BufferParams const & bparams,
 				column += Changes::latexMarkChange(os, bparams,
 					Change(Change::UNCHANGED), Change(Change::DELETED), rp);
 			}
-			running_font = basefont;
 			open_font = false;
-			langClosed = true;
+			// Has the language been closed in the latexWriteEndChanges() call above?
+			langClosed = running_font.language() != basefont.language()
+					&& running_font.language() != nextfont.language()
+					&& (running_font.language()->encoding()->package() != Encoding::CJK);
+			running_font = basefont;
 		}
 
 		// if necessary, close language environment before opening CJK
