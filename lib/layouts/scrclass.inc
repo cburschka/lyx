@@ -8,7 +8,7 @@
 # Labeling is now used also in non-KOMA classes
 
 
-Format 84
+Format 82
 SecNumDepth             2
 TocDepth                2
 DefaultStyle            Standard
@@ -90,7 +90,6 @@ Style Chapter
 	  Family              Sans
 	  Size                Largest
 	EndFont
-		TocLevel 0
 End
 
 
@@ -99,7 +98,6 @@ Style Section
 	Font
 	  Family              Sans
 	EndFont
-	TocLevel 1
 End
 
 
@@ -108,7 +106,6 @@ Style Subsection
 	Font
 	  Family              Sans
 	EndFont
-	TocLevel 2
 End
 
 
@@ -117,7 +114,6 @@ Style Subsubsection
 	Font
 	  Family              Sans
 	EndFont
-	TocLevel 3
 End
 
 
@@ -126,7 +122,6 @@ Style Paragraph
 	Font
 	  Family              Sans
 	EndFont
-	TocLevel 4
 End
 
 
@@ -136,7 +131,6 @@ Style Subparagraph
 	Font
 	  Family              Sans
 	EndFont
-	TocLevel 5
 End
 
 Input stdstarsections.inc

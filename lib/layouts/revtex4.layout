@@ -11,7 +11,7 @@
 #          Amir Karger (RevTeX 4 beta) 9/1999, 7/2000
 # Heavily modifed and enhanced by serveral developers.
 
-Format 84
+Format 82
 
 Columns                   1
 Sides                     1
@@ -71,7 +71,6 @@ Style Section
 	Font
 	  Shape               Smallcaps
 	EndFont
-	TocLevel 1
 End
 
 
@@ -80,7 +79,6 @@ Style Subsubsection
 	  Series              Medium
 	  Shape               Italic
 	EndFont
-	TocLevel 3
 End
 
 
@@ -89,7 +87,6 @@ Style Paragraph
 	  Series              Medium
 	  Shape               Italic
 	EndFont
-	TocLevel 4
 End
 
 # then define the unumbered sections, based on the numbered ones.

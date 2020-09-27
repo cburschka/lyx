@@ -19,7 +19,7 @@
 # see http://www.springer.com/authors for class files and further instructions
 
 
-Format 84
+Format 82
 PageStyle		Plain
 
 
@@ -151,7 +151,6 @@ End
 
 Style Chapter
 	Align		Left
-	TocLevel 0
 End
 
 Style ChapSubtitle

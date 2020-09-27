@@ -4,7 +4,7 @@
 #
 # Detailed format description is available in the customization manual
 
-Format 84
+Format 82
 
 Provides stdinsets 1
 

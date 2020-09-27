@@ -5,7 +5,7 @@
 # Author: Uwe Stöhr (uwestoehr@web.de)
 # IUCr LaTeX files can be downloaded from ftp://ftp.iucr.org/templates/latex/
 
-Format 84
+Format 82
 
 Columns				1
 Sides				1
@@ -47,7 +47,6 @@ Style Section
 	LabelString		\thesection.
 	LabelStringAppendix	\thesection
 	Align			Center
-	TocLevel 1
 End
 
 Style Subsection
@@ -56,7 +55,6 @@ Style Subsection
 	  Shape			Italic
 	  Size			Normal
 	EndFont
-	TocLevel 2
 End
 
 Style Subsubsection
@@ -64,7 +62,6 @@ Style Subsubsection
 	Font
 	  Shape			Italic
 	EndFont
-	TocLevel 3
 End
 
 Style "Short Title"

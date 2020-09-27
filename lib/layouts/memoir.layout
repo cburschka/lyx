@@ -7,7 +7,7 @@
 # feel free to contribute missing features!
 
 
-Format 84
+Format 82
 Columns            1
 Sides              2
 SecNumDepth        1
@@ -83,7 +83,6 @@ Style Chapter
 		InsertCotext  1
 		Requires      1
 	EndArgument
-	TocLevel 0
 End
 
 
@@ -108,7 +107,6 @@ Style Section
 		InsertCotext  1
 		Requires      1
 	EndArgument
-	TocLevel 1
 End
 
 
@@ -124,7 +122,6 @@ Style Subsection
 		InsertCotext  1
 		Requires      1
 	EndArgument
-	TocLevel 2
 End
 
 
@@ -140,7 +137,6 @@ Style Subsubsection
 		InsertCotext  1
 		Requires      1
 	EndArgument
-	TocLevel 3
 End
 
 
@@ -156,7 +152,6 @@ Style Paragraph
 		InsertCotext  1
 		Requires      1
 	EndArgument
-	TocLevel 4
 End
 
 
@@ -172,7 +167,6 @@ Style Subparagraph
 		InsertCotext  1
 		Requires      1
 	EndArgument
-	TocLevel 5
 End
 
 
