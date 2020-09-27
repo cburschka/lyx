@@ -12,7 +12,7 @@
 # Moved "number within sections" to modules Aug '09 (Paul Rubin <rubin@msu.edu>)
 
 
-Format 82
+Format 84
 
 Columns                 1
 Sides                   2
@@ -152,7 +152,7 @@ Style Chapter_Exercises
 	ParSep                0.3
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Static
+	LabelType             Itemize
 	LabelFont
 	  Shape               Up
 	  Series              Bold

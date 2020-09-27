@@ -8,7 +8,7 @@
 #  Class and style files and templates are found at:
 #       http://wiki.lyx.org/Examples/Springer
 #
-Format 82
+Format 84
 
 Input svcommon.inc
 
@@ -110,6 +110,7 @@ End
 
 Style Chapter
 	Category	"For editors"
+	TocLevel 0
 End
 
 Style Running_Chapter

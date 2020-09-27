@@ -24,7 +24,7 @@
 
 
 # We need separate counters for each theorem-like style.
-Format 82
+Format 84
 Counter theorem
 	GuiName Theorem
 	Within         chapter

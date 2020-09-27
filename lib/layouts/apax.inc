@@ -2,7 +2,7 @@
 # Author: Jacob Bishop <bishop.jacob@gmail.com> based on the apa 
 # layout written by Randy Gobbel.
 
-Format 82
+Format 84
 Columns                 1
 Sides                   1
 PageStyle               Headers
@@ -543,7 +543,7 @@ Style Seriate
 	ParSep                0.0
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Static
+	LabelType             Itemize
 	LabelCounter          enumii
 	LabelString           "(\alph{enumii})"
 	LabelStringAppendix   "(\alph{enumii})"

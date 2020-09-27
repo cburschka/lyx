@@ -3,7 +3,7 @@
 #  \DeclareCategory{Articles}
 # Author: Randy Gobbel <gobbel@andrew.cmu.edu>
 
-Format 82
+Format 84
 Columns                 1
 Sides                   1
 PageStyle               Headers
@@ -443,7 +443,7 @@ Style Seriate
 	ParSep                0.0
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Static
+	LabelType             Itemize
 	LabelCounter          enumii
 	LabelString           "(\alph{enumii})"
 	LabelStringAppendix   "(\alph{enumii})"

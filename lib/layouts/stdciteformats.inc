@@ -11,7 +11,7 @@
 # Author: Richard Heck <rgheck@comcast.net>
 #         Jürgen Spitzmüller <spitz@lyx.org>
 
-Format 82
+Format 84
 
 CiteFormat default
 	#

@@ -8,7 +8,7 @@
 # License: GNU GPL version 2 or later
 # JSS LaTeX files can be downloaded from http://www.jstatsoft.org/downloads/JSSstyle.zip
 
-Format 82
+Format 84
 
 # Read the definitions from article.layout
 Input article.layout
@@ -24,10 +24,12 @@ NoStyle "Right Address"
 
 Style Section
 	LabelString			\thesection.
+	TocLevel 1
 End
 
 Style Subsection
 	LabelString			\thesubsection.
+	TocLevel 2
 End
 
 Style Subsubsection
@@ -35,6 +37,7 @@ Style Subsubsection
 	Font
 	  Shape				Italic
 	EndFont
+		TocLevel 3
 End
 
 Style Title

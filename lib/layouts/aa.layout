@@ -18,7 +18,7 @@
 # 2013-05-26  Updated for aa.cls version 8.2
 
 
-Format 82
+Format 84
 Columns		2
 Sides		2
 SecNumDepth	3
@@ -180,6 +180,7 @@ Style Section
 	  Family	Sans
 	  Size		Large
 	EndFont
+	TocLevel 1
 End
 
 
@@ -190,6 +191,7 @@ Style Subsection
 	  Size		Normal
 	  Shape		Slanted
 	EndFont
+	TocLevel 2
 End
 
 
@@ -198,6 +200,7 @@ Style Subsubsection
 	  Series	Medium
 	  Size		Normal
 	EndFont
+	TocLevel 3
 End
 
 

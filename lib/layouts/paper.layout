@@ -5,7 +5,7 @@
 # Created by Jean-Marc Lasgouttes (Jean-Marc.Lasgouttes@inria.fr)
 
 
-Format 82
+Format 84
 Columns                 1
 Sides                   1
 SecNumDepth             3
@@ -57,6 +57,7 @@ Style Section
 	  Series              Bold
 	  Size                Large
 	EndFont
+	TocLevel 1
 End
 
 
@@ -66,6 +67,7 @@ Style Subsection
 	  Series              Bold
 	  Size                Large
 	EndFont
+	TocLevel 2
 End
 
 
@@ -75,6 +77,7 @@ Style Subsubsection
 	  Series              Bold
 	  Size                Normal
 	EndFont
+	TocLevel 3
 End
 
 
@@ -84,6 +87,7 @@ Style Paragraph
 	  Series              Bold
 	  Size                Normal
 	EndFont
+	TocLevel 4
 End
 
 
@@ -92,6 +96,7 @@ Style Subparagraph
 	  Family              Sans
 	  Size                Normal
 	EndFont
+	TocLevel 5
 End
 
 Style Description
