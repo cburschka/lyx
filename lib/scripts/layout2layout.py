@@ -538,6 +538,11 @@ def convert(lines, end_format):
                 i += 1
             continue
 
+        if 82 <= format <= 84:
+            # nothing to do.
+            i += 1
+            continue
+
         if format == 81:
             match = re.compile(b'^(\\s*Header\\s+)("?\\w+"?)', re.IGNORECASE).match(lines[i])
             if match:
