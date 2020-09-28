@@ -115,6 +115,7 @@ inline QChar const ucs4_to_qchar(char_type const ucs4)
 }
 } // namespace
 
+
 GuiFontMetrics::GuiFontMetrics(QFont const & font)
 	: font_(font), metrics_(font, 0),
 	  strwidth_cache_(cache_metrics_width_size),
