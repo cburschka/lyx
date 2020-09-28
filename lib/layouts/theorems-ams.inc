@@ -20,7 +20,7 @@
 # - Proof
 # - Case (by inclusion)
 
-Format 82
+Format 84
 
 OutlinerName thm "Definitions & Theorems"
 
