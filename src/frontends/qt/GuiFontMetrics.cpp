@@ -28,7 +28,12 @@
 #include <QByteArray>
 #include <QRawFont>
 #include <QtEndian>
+
+#if QT_VERSION >= 0x050100
 #include <QtMath>
+#else
+#define qDegreesToRadians(degree) (degree * (M_PI / 180))
+#endif
 
 using namespace std;
 using namespace lyx::support;
@@ -109,7 +114,6 @@ inline QChar const ucs4_to_qchar(char_type const ucs4)
 	return QChar(static_cast<unsigned short>(ucs4));
 }
 } // namespace
-
 
 GuiFontMetrics::GuiFontMetrics(QFont const & font)
 	: font_(font), metrics_(font, 0),
