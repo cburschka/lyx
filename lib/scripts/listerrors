@@ -12,6 +12,7 @@
 
 Expects to read from stdin and output to stdout.
 """
+from __future__ import print_function
 
 __author__ = "Kayvan A. Sylvan <kayvan@sylvan.com>"
 __date__ = "$Date: 2003/10/13 09:50:10 $"
@@ -22,7 +23,6 @@ Bernard Michael Hurley <berhardh@westherts.ac.uk>
     modifications to original listerrors."""
 __copyright__ = "Copyright 2002 - Kayvan A. Sylvan."
 
-from __future__ import print_function
 import sys, string
 
 def write_error(msg, tool = "noweb", line_number = 1):
@@ -75,8 +75,8 @@ def noweb_try(line):
 
   Returns 1 on success, 0 otherwise. Outputs on stdout."""
   retval = 0
-  if string.find(line, ": unescaped << in documentation chunk") != -1:
-    line_parts = string.split(line, ':')
+  if line.find(": unescaped << in documentation chunk") != -1:
+    line_parts = line.split(':')
     num_str = line_parts[1]
     num_len = len(num_str)
     i = 0
@@ -85,9 +85,9 @@ def noweb_try(line):
       write_error(":" + line_parts[2], "noweb", int(num_str))
       retval = 1
   if (not retval):
-    left = string.find(line, "<<")
+    left = line.find("<<")
     if (left != -1) and ((left + 2) < len(line)) and \
-       (string.find(line[left+2:], ">>") != -1):
+       (line[left+2:].find(">>") != -1):
       write_error(line, "noweb");
       retval = 1;
   if (not retval):
@@ -104,7 +104,7 @@ def noweb_try(line):
       "This can't happen:",
       "non-numeric line number in")
     for msg in msgs_to_try:
-      if string.find(line, msg) != -1:
+      if line.find(msg) != -1:
         write_error(line, "noweb")
         retval = 1
         break
@@ -115,7 +115,7 @@ def gcc_try(line):
 
   Returns 1 on success, 0 otherwise. Outputs on stdout."""
   retval = 0
-  first_space = string.find(line, ' ')
+  first_space = line.find(' ')
   if first_space > 1: # The smallest would be "X: "
     if line[first_space - 1] == ':':
       header_to_see = line[:first_space - 1]
@@ -147,8 +147,8 @@ def xlc_try(line):
   Returns 1 on success, 0 otherwise. Outputs on stdout."""
   retval = 0
   if line[0] == '"': # This is the first character of all xlc errors
-    next_quote = string.find(line, '"', 1)
-    first_space = string.find(line, ' ')
+    next_quote = line.find('"', 1)
+    first_space = line.find(' ')
     if (next_quote != -1) and (first_space > next_quote): # no space inisde quotes
       if line[first_space - 1:first_space + 6] == ", line ":
         num_start = num_end = first_space + 6
