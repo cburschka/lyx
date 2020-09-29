@@ -7,7 +7,7 @@
 Format 66
 Counter part
 	LabelString          "\Roman{part}"
-	PrettyFormat         "Part \Roman{part}"
+	PrettyFormat         "Part ##"
 End
 
 Counter chapter
