@@ -1151,19 +1151,8 @@ void Layout::readSpacing(Lexer & lex)
 void Layout::readArgument(Lexer & lex)
 {
 	latexarg arg;
-	// writeArgument() makes use of these default values
-	arg.mandatory = false;
-	arg.nodelims = false;
-	arg.autoinsert = false;
-	arg.insertcotext = false;
-	arg.insertonnewline = false;
 	bool error = false;
 	bool finished = false;
-	arg.font = inherit_font;
-	arg.labelfont = inherit_font;
-	arg.is_toc_caption = false;
-	arg.passthru = PT_INHERITED;
-	arg.free_spacing = false;
 	string id;
 	lex >> id;
 	bool const itemarg = prefixIs(id, "item:");

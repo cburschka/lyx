@@ -93,8 +93,8 @@ public:
 	struct latexarg {
 		docstring labelstring;
 		docstring menustring;
-		bool mandatory;
-		bool nodelims;
+		bool mandatory = false;
+		bool nodelims = false;
 		docstring ldelim;
 		docstring rdelim;
 		docstring defaultarg;
@@ -102,15 +102,15 @@ public:
 		docstring tooltip;
 		std::string required;
 		std::string decoration;
-		FontInfo font;
-		FontInfo labelfont;
-		bool autoinsert;
-		bool insertcotext;
-		bool insertonnewline;
-		ArgPassThru passthru;
+		FontInfo font = inherit_font;
+		FontInfo labelfont = inherit_font;
+		bool autoinsert = false;
+		bool insertcotext = false;
+		bool insertonnewline = false;
+		ArgPassThru passthru = PT_INHERITED;
 		docstring pass_thru_chars;
-		bool is_toc_caption;
-		bool free_spacing;
+		bool is_toc_caption = false;
+		bool free_spacing = false;
 		std::string newlinecmd;
 	};
 	///
