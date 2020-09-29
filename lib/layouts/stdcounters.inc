@@ -8,7 +8,7 @@ Format 84
 Counter part
 	GuiName Part
 	LabelString          "\Roman{part}"
-	PrettyFormat         "Part \Roman{part}"
+	PrettyFormat         "Part ##"
 End
 
 Counter chapter
