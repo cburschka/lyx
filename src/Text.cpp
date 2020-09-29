@@ -2278,19 +2278,6 @@ void Text::setMacrocontextPosition(DocIterator const & pos)
 }
 
 
-docstring Text::previousWord(CursorSlice const & sl) const
-{
-	CursorSlice from = sl;
-	CursorSlice to = sl;
-	getWord(from, to, PREVIOUS_WORD);
-	if (sl == from || to == from)
-		return docstring();
-
-	Paragraph const & par = sl.paragraph();
-	return par.asString(from.pos(), to.pos());
-}
-
-
 bool Text::completionSupported(Cursor const & cur) const
 {
 	Paragraph const & par = cur.paragraph();
@@ -2321,7 +2308,11 @@ bool Text::insertCompletion(Cursor & cur, docstring const & s, bool /*finished*/
 
 docstring Text::completionPrefix(Cursor const & cur) const
 {
-	return previousWord(cur.top());
+	CursorSlice from = cur.top();
+	CursorSlice to = from;
+	getWord(from, to, PREVIOUS_WORD);
+
+	return cur.paragraph().asString(from.pos(), to.pos());
 }
 
 } // namespace lyx

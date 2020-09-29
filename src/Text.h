@@ -173,8 +173,6 @@ public:
 	void selectWord(Cursor & cur, word_location loc);
 	/// select all text
 	void selectAll(Cursor & cur);
-	/// convenience function get the previous word or an empty string
-	docstring previousWord(CursorSlice const & sl) const;
 
 	/// what type of change operation to make
 	enum ChangeOp {
