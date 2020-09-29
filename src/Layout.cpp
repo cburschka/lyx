@@ -1148,17 +1148,22 @@ void Layout::readSpacing(Lexer & lex)
 }
 
 
-void Layout::readArgument(Lexer & lex)
+void Layout::readArgument(Lexer & lex, bool validating)
 {
-	latexarg arg;
-	bool error = false;
-	bool finished = false;
 	string id;
 	lex >> id;
 	bool const itemarg = prefixIs(id, "item:");
 	bool const postcmd = prefixIs(id, "post:");
 	bool const listpreamble = prefixIs(id, "listpreamble:");
 
+	LaTeXArgMap & lam = itemarg ? itemargs_ :
+			(postcmd ? postcommandargs_ :
+			(listpreamble ? listpreamble_ :
+			latexargs_));
+	latexarg & arg = lam[id];
+
+	bool error = false;
+	bool finished = false;
 	while (!finished && lex.isOK() && !error) {
 		lex.next();
 		string const tok = ascii_lowercase(lex.getString());
@@ -1239,16 +1244,9 @@ void Layout::readArgument(Lexer & lex)
 	}
 	if (arg.labelstring.empty())
 		LYXERR0("Incomplete Argument definition!");
-	else if (itemarg)
-		itemargs_[id] = arg;
-	else if (postcmd)
-		postcommandargs_[id] = arg;
-	else if (listpreamble) {
-		// list preamble has no delimiters by default
-		arg.nodelims = true;
-		listpreamble_[id] = arg;
-	} else
-		latexargs_[id] = arg;
+		// remove invalid definition
+		lam.erase(id);
+	}
 }
 
 
