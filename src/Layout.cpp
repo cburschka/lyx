@@ -1151,8 +1151,10 @@ void Layout::readSpacing(Lexer & lex)
 
 void Layout::readArgument(Lexer & lex, bool validating)
 {
-	string id;
-	lex >> id;
+	if (!lex.next())
+		return;
+	string const id = lex.getString();
+
 	bool const itemarg = prefixIs(id, "item:");
 	bool const postcmd = prefixIs(id, "post:");
 	bool const listpreamble = prefixIs(id, "listpreamble:");
