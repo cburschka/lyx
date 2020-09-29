@@ -1151,8 +1151,10 @@ void Layout::readSpacing(Lexer & lex)
 
 void Layout::readArgument(Lexer & lex, bool validating)
 {
-	if (!lex.next())
+	if (!lex.next()) {
+		LYXERR0("Unable to read argument ID!");
 		return;
+	}
 	string const id = lex.getString();
 
 	bool const itemarg = prefixIs(id, "item:");
