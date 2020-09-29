@@ -194,15 +194,15 @@ Layout::Layout()
 }
 
 
-bool Layout::read(Lexer & lex, TextClass const & tclass)
+bool Layout::read(Lexer & lex, TextClass const & tclass, bool validating)
 {
 	// If this is an empty layout, or if no force local version is set,
 	// we know that we will not discard the stuff to read
 	if (forcelocal == 0)
-		return readIgnoreForcelocal(lex, tclass);
+		return readIgnoreForcelocal(lex, tclass, validating);
 	Layout tmp(*this);
 	tmp.forcelocal = 0;
-	bool const ret = tmp.readIgnoreForcelocal(lex, tclass);
+	bool const ret = tmp.readIgnoreForcelocal(lex, tclass, validating);
 	// Keep the stuff if
 	// - the read version is higher
 	// - both versions are infinity (arbitrary decision)
@@ -214,7 +214,8 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 }
 
 
-bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
+bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
+								  bool validating)
 {
 	// This table is sorted alphabetically [asierra 30March96]
 	LexerKeyword layoutTags[] = {
@@ -441,7 +442,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 			break;
 
 		case LT_ARGUMENT:
-			readArgument(lex);
+			readArgument(lex, validating);
 			break;
 
 		case LT_NEED_PROTECT:
@@ -1242,7 +1243,7 @@ void Layout::readArgument(Lexer & lex, bool validating)
 			error = true;
 		}
 	}
-	if (arg.labelstring.empty())
+	if (!validating && arg.labelstring.empty()) {
 		LYXERR0("Incomplete Argument definition!");
 		// remove invalid definition
 		lam.erase(id);

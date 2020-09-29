@@ -58,7 +58,7 @@ public:
 	void setUnknown(bool unknown) { unknown_ = unknown; }
 	/// Reads a layout definition from file
 	/// \return true on success.
-	bool read(Lexer &, TextClass const &);
+	bool read(Lexer &, TextClass const &, bool validating = false);
 	///
 	void readAlign(Lexer &);
 	///
@@ -74,7 +74,7 @@ public:
 	///
 	void readSpacing(Lexer &);
 	///
-	void readArgument(Lexer &);
+	void readArgument(Lexer &, bool);
 	/// Write a layout definition in utf8 encoding
 	void write(std::ostream &) const;
 	///
@@ -411,7 +411,7 @@ public:
 private:
 	/// Reads a layout definition from file
 	/// \return true on success.
-	bool readIgnoreForcelocal(Lexer &, TextClass const &);
+	bool readIgnoreForcelocal(Lexer &, TextClass const &, bool validating);
 	/// generates the default CSS for this layout
 	void makeDefaultCSS() const;
 	///

@@ -148,10 +148,10 @@ TextClass::TextClass()
 }
 
 
-bool TextClass::readStyle(Lexer & lexrc, Layout & lay) const
+bool TextClass::readStyle(Lexer & lexrc, Layout & lay, ReadType rt) const
 {
 	LYXERR(Debug::TCLASS, "Reading style " << to_utf8(lay.name()));
-	if (!lay.read(lexrc, *this)) {
+	if (!lay.read(lexrc, *this, rt == VALIDATION)) {
 		LYXERR0("Error parsing style `" << to_utf8(lay.name()) << '\'');
 		return false;
 	}
@@ -515,7 +515,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 				Layout lay;
 				// Since we couldn't read the name, we just scan the rest
 				// of the style and discard it.
-				error = !readStyle(lexrc, lay);
+				error = !readStyle(lexrc, lay, rt);
 				break;
 			}
 
@@ -526,14 +526,14 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			// block.
 			if (have_layout && !providestyle) {
 				Layout & lay = operator[](name);
-				error = !readStyle(lexrc, lay);
+				error = !readStyle(lexrc, lay, rt);
 			}
 			// If the layout does not exist, then we want to create a new
 			// one, but not if we are in a ModifyStyle block.
 			else if (!have_layout && !modifystyle) {
 				Layout layout;
 				layout.setName(name);
-				error = !readStyle(lexrc, layout);
+				error = !readStyle(lexrc, layout, rt);
 				if (!error)
 					layoutlist_.push_back(layout);
 
@@ -551,7 +551,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			else {
 				Layout lay;
 				// signal to coverity that we do not care about the result
-				(void)readStyle(lexrc, lay);
+				(void)readStyle(lexrc, lay, rt);
 			}
 			break;
 		}
@@ -1862,7 +1862,7 @@ Layout TextClass::createBasicLayout(docstring const & name, bool unknown) const
 	defaultLayout = new Layout;
 	defaultLayout->setUnknown(unknown);
 	defaultLayout->setName(name);
-	if (!readStyle(lex, *defaultLayout)) {
+	if (!readStyle(lex, *defaultLayout, BASECLASS)) {
 		// The only way this happens is because the hardcoded layout above
 		// is wrong.
 		LATTEST(false);

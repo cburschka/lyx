@@ -389,7 +389,7 @@ private:
 	/// Reads the layout file without running layout2layout.
 	ReturnValues readWithoutConv(support::FileName const & filename, ReadType rt);
 	/// \return true for success.
-	bool readStyle(Lexer &, Layout &) const;
+	bool readStyle(Lexer &, Layout &, ReadType) const;
 	///
 	void readOutputType(Lexer &);
 	///
