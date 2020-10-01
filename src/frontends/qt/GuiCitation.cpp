@@ -654,7 +654,7 @@ void GuiCitation::clearSelection()
 }
 
 
-void GuiCitation::setSelectedKeys(QStringList const sl)
+void GuiCitation::setSelectedKeys(QStringList const & sl)
 {
 	selected_model_.clear();
 	selected_model_.setColumnCount(3);

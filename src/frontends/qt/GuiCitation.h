@@ -117,7 +117,7 @@ private:
 	void clearSelection();
 
 	/// Set selected keys
-	void setSelectedKeys(QStringList const);
+	void setSelectedKeys(QStringList const &);
 	/// Get selected keys
 	QStringList selectedKeys();
 	/// Set pre texts of qualified lists

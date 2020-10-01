@@ -222,7 +222,7 @@ static bool changeDepthAllowed(Text::DEPTH_CHANGE type,
 }
 
 
-bool Text::changeDepthAllowed(Cursor & cur, DEPTH_CHANGE type) const
+bool Text::changeDepthAllowed(Cursor const & cur, DEPTH_CHANGE type) const
 {
 	LBUFERR(this == cur.text());
 	// this happens when selecting several cells in tabular (bug 2630)
@@ -242,7 +242,7 @@ bool Text::changeDepthAllowed(Cursor & cur, DEPTH_CHANGE type) const
 }
 
 
-void Text::changeDepth(Cursor & cur, DEPTH_CHANGE type)
+void Text::changeDepth(Cursor const & cur, DEPTH_CHANGE type)
 {
 	LBUFERR(this == cur.text());
 	pit_type const beg = cur.selBegin().pit();

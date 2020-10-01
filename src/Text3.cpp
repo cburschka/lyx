@@ -3683,9 +3683,9 @@ void Text::pasteString(Cursor & cur, docstring const & clip,
 
 
 // FIXME: an item inset would make things much easier.
-bool Text::inDescriptionItem(Cursor & cur) const
+bool Text::inDescriptionItem(Cursor const & cur) const
 {
-	Paragraph & par = cur.paragraph();
+	Paragraph const & par = cur.paragraph();
 	pos_type const pos = cur.pos();
 	pos_type const body_pos = par.beginOfBody();
 

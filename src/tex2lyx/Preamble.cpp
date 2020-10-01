@@ -2764,7 +2764,6 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			// paper sizes
 			// some size options are known by the document class, other sizes
 			// are handled by the \geometry command of the geometry package
-			string paper;
 			vector<string> class_psizes = getVectorFromString(tc.opt_pagesize(), "|");
 			string const psize_format = tc.pagesizeformat();
 			for (auto const & psize : class_psizes) {

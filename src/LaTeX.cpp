@@ -1648,7 +1648,6 @@ int LaTeX::scanIlgFile(TeXErrors & terr)
 	string prevtoken;
 	while (getline(ifs, token)) {
 		token = rtrim(token, "\r");
-		smatch sub;
 		if (prefixIs(token, "!! "))
 			prevtoken = token;
 		else if (!prevtoken.empty()) {

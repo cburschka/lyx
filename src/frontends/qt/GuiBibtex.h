@@ -75,7 +75,7 @@ private:
 	/// Clear selected keys
 	void clearSelection();
 	/// Set selected keys
-	void setSelectedBibs(QStringList const);
+	void setSelectedBibs(QStringList const &);
 	/// prepares a call to GuiCitation::searchKeys when we
 	/// are ready to search the Bib entries
 	void findText(QString const & text);

@@ -232,7 +232,7 @@ public:
 	///
 	Impl(Compare const & compare)
 		: abort_(false), n_(0), m_(0), offset_reverse_diagonal_(0),
-		  odd_offset_(0), compare_(compare),
+		  odd_offset_(false), compare_(compare),
 		  old_buf_(nullptr), new_buf_(nullptr), dest_buf_(nullptr),
 		  dest_pars_(nullptr), recursion_level_(0), nested_inset_level_(0), D_(0)
 	{}
@@ -413,7 +413,6 @@ void Compare::run()
 			static_cast<InsetText &>(dest_buffer->inset()), el);
 
 	finished(pimpl_->abort_);
-	return;
 }
 
 

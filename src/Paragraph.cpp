@@ -1087,7 +1087,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 			runparams.local_font = &basefont;
 	}
 
-	if (fontswitch_inset && !closeLanguage && fontswitch_inset) {
+	if (fontswitch_inset && !closeLanguage) {
 		// The directionality has been switched at inset.
 		// Force markup inside.
 		runparams.local_font = &basefont;

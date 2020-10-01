@@ -344,8 +344,7 @@ protected:
 			const int c = wctob(i);
 			if (c == EOF)
 				break;
-			else
-				M_narrow[i] = static_cast<char>(c);
+			M_narrow[i] = static_cast<char>(c);
 		}
 		if (i == 128)
 			M_narrow_ok = true;

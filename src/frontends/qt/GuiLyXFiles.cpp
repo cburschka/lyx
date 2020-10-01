@@ -569,7 +569,7 @@ void GuiLyXFiles::passParams(string const & data)
 }
 
 
-void GuiLyXFiles::selectItem(QString const item)
+void GuiLyXFiles::selectItem(QString const & item)
 {
 	/* Using an intermediary variable flags is needed up to at least
 	 * Qt 5.5 because of a subtle namespace issue. See:

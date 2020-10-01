@@ -286,8 +286,8 @@ void GuiBox::on_pagebreakCB_stateChanged()
 {
 	bool pbreak = (pagebreakCB->checkState() == Qt::Checked);
 	if (pbreak)
-		widthCB->setChecked(!pbreak);
-	if (!pbreak) {
+		widthCB->setChecked(false);
+	else {
 		on_typeCO_activated(typeCO->currentIndex());
 		return;
 	}

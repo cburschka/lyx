@@ -357,11 +357,10 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 			   bool whole, bool forward, bool findnext)
 {
 	Cursor & cur = bv->cursor();
-	bool found = false;
 	if (!cur.selection()) {
 		// no selection, non-empty search string: find it
 		if (!searchstr.empty()) {
-			found = findOne(bv, searchstr, case_sens, whole, forward, true, findnext);
+			bool found = findOne(bv, searchstr, case_sens, whole, forward, true, findnext);
 			return make_pair(found, 0);
 		}
 		// empty search string
@@ -390,7 +389,7 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 	// no selection or current selection is not search word:
 	// just find the search word
 	if (!have_selection || !match) {
-		found = findOne(bv, searchstr, case_sens, whole, forward, true, findnext);
+		bool found = findOne(bv, searchstr, case_sens, whole, forward, true, findnext);
 		return make_pair(found, 0);
 	}
 

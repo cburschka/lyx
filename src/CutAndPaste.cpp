@@ -737,7 +737,7 @@ void region(CursorSlice const & i1, CursorSlice const & i2,
 	    Inset::row_type & r1, Inset::row_type & r2,
 	    Inset::col_type & c1, Inset::col_type & c2)
 {
-	Inset & p = i1.inset();
+	Inset const & p = i1.inset();
 	c1 = p.col(i1.idx());
 	c2 = p.col(i2.idx());
 	if (c1 > c2)
@@ -1079,7 +1079,7 @@ void copySelectionToStack()
 }
 
 
-void copySelectionToTemp(Cursor & cur)
+void copySelectionToTemp(Cursor const & cur)
 {
 	copySelectionToStack(cur, tempCut);
 }

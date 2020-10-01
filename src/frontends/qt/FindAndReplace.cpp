@@ -108,7 +108,7 @@ bool FindAndReplaceWidget::eventFilter(QObject * obj, QEvent * event)
 		// with shift we (temporarily) change search/replace direction
 		bool const searchback = searchbackCB->isChecked();
 		if (e->modifiers() == Qt::ShiftModifier && !searchback)
-			searchbackCB->setChecked(!searchback);
+			searchbackCB->setChecked(true);
 
 		if (obj == find_work_area_)
 			on_findNextPB_clicked();

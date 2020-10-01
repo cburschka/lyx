@@ -53,8 +53,7 @@ docstring Author::nameAndEmail() const
 {
 	if (email().empty())
 		return name();
-	else
-		return bformat(_("%1$s[[name]] (%2$s[[email]])"), name(), email());
+	return bformat(_("%1$s[[name]] (%2$s[[email]])"), name(), email());
 }
 
 

@@ -1549,9 +1549,8 @@ bool Buffer::save() const
 		// time stamp is invalidated by copying/moving
 		saveCheckSum();
 		markClean();
-		if (d->file_format != LYX_FORMAT)
-			// the file associated with this buffer is now in the current format
-			d->file_format = LYX_FORMAT;
+		// the file associated with this buffer is now in the current format
+		d->file_format = LYX_FORMAT;
 		return true;
 	}
 	// else we saved the file, but failed to move it to the right location.

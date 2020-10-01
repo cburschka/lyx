@@ -35,7 +35,7 @@ public:
 	/// A way to pass params to the dialog directly
 	void passParams(std::string const & data);
 	/// A way to pass params to the dialog directly
-	void selectItem(QString const item);
+	void selectItem(QString const & item);
 Q_SIGNALS:
 	void fileSelected(QString const file);
 

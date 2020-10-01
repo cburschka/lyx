@@ -269,7 +269,7 @@ void GuiBibtex::clearSelection()
 }
 
 
-void GuiBibtex::setSelectedBibs(QStringList const sl)
+void GuiBibtex::setSelectedBibs(QStringList const & sl)
 {
 	selected_model_.clear();
 	QStringList headers;

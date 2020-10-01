@@ -129,7 +129,7 @@ WriteStream::WriteStream(otexrowstream & os, bool fragile, bool latex,
 						 OutputType output, Encoding const * encoding)
 	: os_(os), fragile_(fragile), firstitem_(false), latex_(latex),
 	  output_(output), pendingspace_(false), pendingbrace_(false),
-	  textmode_(false), locked_(0), ascii_(0), canbreakline_(true),
+	  textmode_(false), locked_(false), ascii_(false), canbreakline_(true),
 	  mathsout_(false), ulemcmd_(NONE), line_(0), encoding_(encoding),
 	  row_entry_(TexRow::row_none), mathclass_(false)
 {}

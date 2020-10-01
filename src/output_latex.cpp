@@ -1668,7 +1668,7 @@ void latexParagraphs(Buffer const & buf,
 			     || par->params().leftIndent() == nextpar->params().leftIndent())
 			    && !runparams.for_search && cpar.size() > 0
 			    && cpar.isDeleted(0, cpar.size()) && !bparams.output_changes) {
-				if (!bparams.output_changes && !cpar.parEndChange().deleted())
+				if (!cpar.parEndChange().deleted())
 					os << '\n' << '\n';
 				continue;
 			}

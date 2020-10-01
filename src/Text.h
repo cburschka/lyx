@@ -94,11 +94,11 @@ public:
 	};
 	/// Increase or decrease the nesting depth of the selected paragraph(s)
 	/// FIXME: replace Cursor with DocIterator.
-	void changeDepth(Cursor & cur, DEPTH_CHANGE type);
+	void changeDepth(Cursor const & cur, DEPTH_CHANGE type);
 
 	/// Returns whether something would be changed by changeDepth
 	/// FIXME: replace Cursor with DocIterator.
-	bool changeDepthAllowed(Cursor & cur, DEPTH_CHANGE type) const;
+	bool changeDepthAllowed(Cursor const & cur, DEPTH_CHANGE type) const;
 
 	/// Set font over selection paragraphs and rebreak.
 	/// FIXME: replace Cursor with DocIterator.
@@ -356,7 +356,7 @@ private:
 	/// handle the case where bibitems were deleted
 	bool handleBibitems(Cursor & cur);
 	/// are we in a list item (description etc.)?
-	bool inDescriptionItem(Cursor & cur) const;
+	bool inDescriptionItem(Cursor const & cur) const;
 	///
 	void charInserted(Cursor & cur);
 	/// set 'number' font property

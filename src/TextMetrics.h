@@ -71,7 +71,7 @@ public:
 	void newParMetricsUp();
 
 	/// compute text metrics.
-	bool metrics(MetricsInfo & mi, Dimension & dim, int min_width = 0,
+	bool metrics(MetricsInfo const & mi, Dimension & dim, int min_width = 0,
 		     bool const expand_on_multipars = true);
 
 	/// The "nodraw" drawing stage for one single paragraph: set the

@@ -252,8 +252,8 @@ IconvProcessor & getProc(map<string, IconvProcessor> & processors,
 	if (it == processors.end()) {
 		IconvProcessor p(fromcode, tocode);
 		return processors.insert(make_pair(encoding, move(p))).first->second;
-	} else
-		return it->second;
+	}
+	return it->second;
 }
 
 } // namespace

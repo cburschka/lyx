@@ -66,7 +66,7 @@ void cutSelectionToTemp(Cursor & cur, bool realcut = true);
 /// Push the current selection to the cut buffer and the system clipboard.
 void copySelection(Cursor const & cur);
 /// Like copySelection, but only put to temporary cut buffer
-void copySelectionToTemp(Cursor & cur);
+void copySelectionToTemp(Cursor const & cur);
 ///
 void copyInset(Cursor const & cur, Inset * inset, docstring const & plaintext);
 /**

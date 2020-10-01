@@ -221,7 +221,7 @@ void TextMetrics::newParMetricsUp()
 }
 
 
-bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim, int min_width,
+bool TextMetrics::metrics(MetricsInfo const & mi, Dimension & dim, int min_width,
 			  bool const expand_on_multipars)
 {
 	LBUFERR(mi.base.textwidth > 0);
@@ -676,7 +676,7 @@ void TextMetrics::setRowAlignment(Row & row, int width) const
 	}
 
 	// are there any hfills in the row?
-	ParagraphMetrics & pm = par_metrics_[row.pit()];
+	ParagraphMetrics const & pm = par_metrics_[row.pit()];
 	int nh = numberOfHfills(row, pm, par.beginOfBody());
 	int hfill = 0;
 	int hfill_rem = 0;

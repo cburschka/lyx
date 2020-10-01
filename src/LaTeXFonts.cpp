@@ -522,10 +522,10 @@ bool LaTeXFont::readFont(Lexer & lex)
 
 bool LaTeXFont::read(Lexer & lex)
 {
-	switchdefault_ = 0;
-	osfdefault_ = 0;
-	moreopts_ = 0;
-	osffontonly_ = 0;
+	switchdefault_ = false;
+	osfdefault_ = false;
+	moreopts_ = false;
+	osffontonly_ = false;
 
 	if (!lex.next()) {
 		lex.printError("No name given for LaTeX font: `$$Token'.");

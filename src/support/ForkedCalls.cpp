@@ -448,7 +448,7 @@ ForkedCall::sigPtr add(string const & process);
 static queue<Process> callQueue_;
 
 /// flag whether queue is running
-static bool running_ = 0;
+static bool running_ = false;
 
 ///
 void startCaller();

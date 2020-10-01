@@ -134,7 +134,7 @@ Debug::Type Debug::value(string const & val)
 				break;
 			}
 		if (st == string::npos)
-		break;
+    		break;
 		v.erase(0, st + 1);
 	}
 	return l;

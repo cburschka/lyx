@@ -180,7 +180,7 @@ bool TocBackend::updateItem(DocIterator const & dit_in)
 	//
 	// FIXME: This is supposed to accomplish the same as the body of
 	// InsetText::iterateForToc(), probably
-	Paragraph & par = toc_item->dit().paragraph();
+	Paragraph const & par = toc_item->dit().paragraph();
 	for (auto const & table : par.insetList())
 		if (InsetArgument const * arg = table.inset->asInsetArgument()) {
 			tocstring = par.labelString();

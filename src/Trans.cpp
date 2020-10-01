@@ -200,9 +200,7 @@ void Trans::addDeadkey(tex_accent accent, docstring const & keys)
 
 int Trans::load(Lexer & lex)
 {
-	bool error = false;
-
-	while (lex.isOK() && !error) {
+	while (lex.isOK()) {
 		switch (lex.lex()) {
 		case KMOD:
 		{

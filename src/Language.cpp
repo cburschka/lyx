@@ -278,9 +278,9 @@ bool Language::readLanguage(Lexer & lex)
 
 bool Language::read(Lexer & lex)
 {
-	encoding_ = 0;
-	internal_enc_ = 0;
-	rightToLeft_ = 0;
+	encoding_ = nullptr;
+	internal_enc_ = false;
+	rightToLeft_ = false;
 
 	if (!lex.next()) {
 		lex.printError("No name given for language: `$$Token'.");

@@ -497,8 +497,7 @@ void removeTempFile(FileName const & fn)
 		return;
 
 	string const abs = fn.absFileName();
-	if (tmp_names_.find(abs) != tmp_names_.end())
-		tmp_names_.erase(abs);
+	tmp_names_.erase(abs);
 	fn.removeFile();
 }
 
