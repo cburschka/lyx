@@ -388,13 +388,13 @@ bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos,
 	    || !contains(pit))
 		return false;
 
-	ParagraphMetrics & pm = par_metrics_[pit];
+	ParagraphMetrics const & pm = par_metrics_[pit];
 	// no RTL boundary in empty paragraph
 	if (pm.rows().empty())
 		return false;
 
-	pos_type endpos = pm.getRow(pos - 1, false).endpos();
-	pos_type startpos = pm.getRow(pos, false).pos();
+	pos_type const endpos = pm.getRow(pos - 1, false).endpos();
+	pos_type const startpos = pm.getRow(pos, false).pos();
 	// no RTL boundary at line start:
 	// abc\n   -> toggle to RTL ->    abc\n     (and not:    abc\n|
 	// |                              |                               )
@@ -412,7 +412,7 @@ bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos,
 			|| par.isSeparator(pos - 1)))
 		return false;
 
-	bool left = font.isVisibleRightToLeft();
+	bool const left = font.isVisibleRightToLeft();
 	bool right;
 	if (pos == par.size())
 		right = par.isRTL(bv_->buffer().params());

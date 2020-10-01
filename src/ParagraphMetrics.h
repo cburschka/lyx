@@ -55,8 +55,6 @@ public:
 	void reset(Paragraph const & par);
 
 	///
-	Row & getRow(pos_type pos, bool boundary);
-	///
 	Row const & getRow(pos_type pos, bool boundary) const;
 	///
 	size_t pos2row(pos_type pos) const;

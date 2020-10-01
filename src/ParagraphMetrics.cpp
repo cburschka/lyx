@@ -88,25 +88,6 @@ void ParagraphMetrics::setPosition(int position)
 }
 
 
-Row & ParagraphMetrics::getRow(pos_type pos, bool boundary)
-{
-	LBUFERR(!rows().empty());
-
-	// If boundary is set we should return the row on which
-	// the character before is inside.
-	if (pos > 0 && boundary)
-		--pos;
-
-	RowList::iterator rit = rows_.end();
-	RowList::iterator const begin = rows_.begin();
-
-	for (--rit; rit != begin && rit->pos() > pos; --rit)
-		;
-
-	return *rit;
-}
-
-
 Row const & ParagraphMetrics::getRow(pos_type pos, bool boundary) const
 {
 	LBUFERR(!rows().empty());
