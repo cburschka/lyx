@@ -131,6 +131,7 @@ static void moveCursor(Cursor & cur, bool selecting)
 {
 	if (selecting || cur.mark())
 		cur.setSelection();
+	cur.setCurrentFont();
 }
 
 
@@ -1262,6 +1263,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				// and the selection is not really cut,
 				// move cursor before selection (#11630)
 				cur.setCursor(dit);
+			cur.setCurrentFont();
 			singleParUpdate = false;
 		}
 		break;
