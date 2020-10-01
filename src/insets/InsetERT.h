@@ -39,38 +39,38 @@ public:
 	///
 	static std::string params2string(CollapseStatus);
 
-	std::string contextMenuName() const
+	std::string contextMenuName() const override
 		{ return "context-ert"; }
 private:
 	///
-	InsetCode lyxCode() const { return ERT_CODE; }
+	InsetCode lyxCode() const override { return ERT_CODE; }
 	///
-	docstring layoutName() const { return from_ascii("ERT"); }
+	docstring layoutName() const override { return from_ascii("ERT"); }
 	///
-	void write(std::ostream & os) const;
+	void write(std::ostream & os) const override;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	///
-	docstring xhtml(XMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	void validate(LaTeXFeatures &) const {}
+	void validate(LaTeXFeatures &) const override {}
 	/// should paragraph indentation be omitted in any case?
-	bool neverIndent() const { return true; }
+	bool neverIndent() const override { return true; }
 	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	///
-	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const override;
  	///
-	Inset * clone() const { return new InsetERT(*this); }
+	Inset * clone() const override { return new InsetERT(*this); }
 	///
-	docstring const buttonLabel(BufferView const & bv) const;
+	docstring const buttonLabel(BufferView const & bv) const override;
 	///
-	bool allowSpellCheck() const { return false; }
+	bool allowSpellCheck() const override { return false; }
 	///
-	bool insetAllowed(InsetCode code) const { return code == QUOTE_CODE; }
+	bool insetAllowed(InsetCode code) const override { return code == QUOTE_CODE; }
 };
 
 

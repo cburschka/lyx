@@ -236,7 +236,7 @@ public:
 		setFocusPolicy(Qt::StrongFocus);
 	}
 
-	void paintEvent(QPaintEvent *)
+	void paintEvent(QPaintEvent *) override
 	{
 		int const w = width_;
 		int const h = height_;
@@ -250,7 +250,7 @@ public:
 		pain.drawPixmap(x, y, w, h, splash_);
 	}
 
-	void keyPressEvent(QKeyEvent * ev)
+	void keyPressEvent(QKeyEvent * ev) override
 	{
 		KeySymbol sym;
 		setKeySymbol(&sym, ev);

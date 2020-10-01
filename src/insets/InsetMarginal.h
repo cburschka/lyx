@@ -27,19 +27,19 @@ public:
 	///
 	explicit InsetMarginal(Buffer *);
 	///
-	InsetCode lyxCode() const { return MARGIN_CODE; }
+	InsetCode lyxCode() const override { return MARGIN_CODE; }
 	///
-	docstring layoutName() const { return from_ascii("Marginal"); }
+	docstring layoutName() const override { return from_ascii("Marginal"); }
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
-	void docbook(XMLStream &, OutputParams const & runparams) const;
+	void docbook(XMLStream &, OutputParams const & runparams) const override;
 	/// Is the content of this inset part of the immediate (visible) text sequence?
-	bool isPartOfTextSequence() const { return false; }
+	bool isPartOfTextSequence() const override { return false; }
 private:
 	///
-	Inset * clone() const { return new InsetMarginal(*this); }
+	Inset * clone() const override { return new InsetMarginal(*this); }
 };
 
 

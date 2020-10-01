@@ -70,12 +70,12 @@ public:
 
 private:
 	///{
-	void updateView();
-	bool initialiseParams(std::string const & sdata)
+	void updateView() override;
+	bool initialiseParams(std::string const & sdata) override
 		{ return widget_->initialiseParams(sdata); }
-	void clearParams() {}
-	void dispatchParams() {}
-	bool isBufferDependent() const { return false; }
+	void clearParams() override {}
+	void dispatchParams() override {}
+	bool isBufferDependent() const override { return false; }
 	///}
 	/// The encapsulated widget.
 	SpellcheckerWidget * widget_;

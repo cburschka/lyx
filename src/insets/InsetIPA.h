@@ -42,50 +42,50 @@ public:
 
 	/// \name Methods inherited from Inset class
 	//@{
-	Inset * clone() const { return new InsetIPA(*this); }
+	Inset * clone() const override { return new InsetIPA(*this); }
 
-	bool neverIndent() const { return true; }
+	bool neverIndent() const override { return true; }
 
-	bool forceLocalFontSwitch() const { return true; }
+	bool forceLocalFontSwitch() const override { return true; }
 
-	InsetCode lyxCode() const { return IPA_CODE; }
+	InsetCode lyxCode() const override { return IPA_CODE; }
 
-	docstring layoutName() const { return from_ascii("IPA"); }
+	docstring layoutName() const override { return from_ascii("IPA"); }
 
-	bool descendable(BufferView const & /*bv*/) const { return true; }
+	bool descendable(BufferView const & /*bv*/) const override { return true; }
 
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 
-	Inset * editXY(Cursor & cur, int x, int y);
+	Inset * editXY(Cursor & cur, int x, int y) override;
 
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 
 	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	///
-	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const override;
 
 	void addPreview(DocIterator const & inset_pos,
-		graphics::PreviewLoader & ploader) const;
+		graphics::PreviewLoader & ploader) const override;
 
-	bool notifyCursorLeaves(Cursor const & old, Cursor & cur);
+	bool notifyCursorLeaves(Cursor const & old, Cursor & cur) override;
 
-	void write(std::ostream & os) const;
+	void write(std::ostream & os) const override;
 
-	void edit(Cursor & cur, bool front, EntryDirection entry_from);
+	void edit(Cursor & cur, bool front, EntryDirection entry_from) override;
 
 	///
-	void latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	///
-	docstring xhtml(XMLStream & xs, OutputParams const &) const;
+	docstring xhtml(XMLStream & xs, OutputParams const &) const override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	bool allowSpellCheck() const { return false; }
+	bool allowSpellCheck() const override { return false; }
 	///
-	bool insetAllowed(InsetCode code) const;
+	bool insetAllowed(InsetCode code) const override;
 	//@}
 
 protected:

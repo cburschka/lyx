@@ -30,15 +30,15 @@ public:
 
 private:
 	/// update
-	void updateContents();
+	void updateContents() override;
 	///
-	bool initialiseParams(std::string const & data);
+	bool initialiseParams(std::string const & data) override;
 	///
-	void clearParams();
+	void clearParams() override;
 	///
-	void dispatchParams() {}
+	void dispatchParams() override {}
 	///
-	bool isBufferDependent() const { return false; }
+	bool isBufferDependent() const override { return false; }
 
 	///
 	support::FileName filename_;

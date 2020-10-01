@@ -39,28 +39,28 @@ public:
 	///
 	void symbol(docstring const &);
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
 	void draw(PainterInfo &, int x, int y) const;
 
 	///
-	void normalize(NormalStream &) const;
+	void normalize(NormalStream &) const override;
 	///
-	void maxima(MaximaStream &) const;
+	void maxima(MaximaStream &) const override;
 	///
-	void maple(MapleStream &) const;
+	void maple(MapleStream &) const override;
 	///
-	void mathematica(MathematicaStream &) const;
+	void mathematica(MathematicaStream &) const override;
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	InsetCode lyxCode() const { return MATH_EXINT_CODE; }
+	InsetCode lyxCode() const override { return MATH_EXINT_CODE; }
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 	///
 	bool hasScripts() const;
 

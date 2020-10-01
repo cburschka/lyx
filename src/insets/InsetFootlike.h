@@ -25,20 +25,20 @@ public:
 	///
 	explicit InsetFootlike(Buffer *);
 	///
-	bool hasSettings() const { return false; }
+	bool hasSettings() const override { return false; }
 private:
 	///
-	void metrics(MetricsInfo &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void write(std::ostream & os) const;
+	void write(std::ostream & os) const override;
 	///
-	bool insetAllowed(InsetCode) const;
+	bool insetAllowed(InsetCode) const override;
 	/** returns false if, when outputting LaTeX, font changes should
 	    be closed before generating this inset. This is needed for
 	    insets that may contain several paragraphs */
-	bool inheritFont() const { return false; }
+	bool inheritFont() const override { return false; }
 };
 
 

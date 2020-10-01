@@ -41,7 +41,7 @@ public:
 
 protected Q_SLOTS:
 	void onWidget_changed();
-	void applyView();
+	void applyView() override;
 	void resetDialog();
 	void on_buttonBox_clicked(QAbstractButton *);
 	void on_immediateApplyCB_stateChanged(int state);
@@ -50,11 +50,11 @@ protected Q_SLOTS:
 private:
 	/// \name DialogView inherited methods
 	//@{
-	void updateView();
-	void dispatchParams() {}
-	bool isBufferDependent() const { return true; }
-	bool canApply() const { return true; }
-	bool initialiseParams(std::string const &);
+	void updateView() override;
+	void dispatchParams() override {}
+	bool isBufferDependent() const override { return true; }
+	bool canApply() const override { return true; }
+	bool initialiseParams(std::string const &) override;
 	//@}
 	///
 	void newInset();

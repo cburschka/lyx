@@ -110,60 +110,60 @@ public:
 	/// Update not loaded previews
 	void updatePreview() const;
 	/// \returns the number of rows (\n's) of generated code.
-	void latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const override;
 	///
-	std::string contextMenuName() const;
+	std::string contextMenuName() const override;
 	///
-	bool setMouseHover(BufferView const * bv, bool mouse_hover) const;
+	bool setMouseHover(BufferView const * bv, bool mouse_hover) const override;
 	///
-	bool clickable(BufferView const &, int, int) const { return true; }
+	bool clickable(BufferView const &, int, int) const override { return true; }
 	///
 	void addToToc(DocIterator const & di, bool output_active,
-				  UpdateType utype, TocBackend & backend) const;
+				  UpdateType utype, TocBackend & backend) const override;
 	///
-	InsetCode lyxCode() const { return EXTERNAL_CODE; }
+	InsetCode lyxCode() const override { return EXTERNAL_CODE; }
 	///
-	bool hasSettings() const { return true; }
+	bool hasSettings() const override { return true; }
 
 	///
-	int topOffset(BufferView const *) const { return 0; }
+	int topOffset(BufferView const *) const override { return 0; }
 	///
-	int bottomOffset(BufferView const *) const { return 0; }
+	int bottomOffset(BufferView const *) const override { return 0; }
 	///
-	int leftOffset(BufferView const *) const { return 0; }
+	int leftOffset(BufferView const *) const override { return 0; }
 	///
-	int rightOffset(BufferView const *) const { return 0; }
+	int rightOffset(BufferView const *) const override { return 0; }
 
 	///
-	void metrics(MetricsInfo &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void write(std::ostream &) const;
+	void write(std::ostream &) const override;
 	///
-	void read(Lexer & lex);
+	void read(Lexer & lex) override;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
 	void generateXML(XMLStream &, OutputParams const &, std::string const &) const;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	/// For now, this does nothing. Someone who knows about this
 	/// should see what needs doing for XHTML output.
-	docstring xhtml(XMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	/// Update needed features for this inset.
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	void addPreview(DocIterator const &, graphics::PreviewLoader &) const;
+	void addPreview(DocIterator const &, graphics::PreviewLoader &) const override;
 	///
-	bool showInsetDialog(BufferView * bv) const;
+	bool showInsetDialog(BufferView * bv) const override;
 	///
-	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const override;
 	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	///
-	Inset * clone() const { return new InsetExternal(*this); }
+	Inset * clone() const override { return new InsetExternal(*this); }
 	/** Slot receiving a signal that the external file has changed
 	 *  and the preview should be regenerated.
 	 */

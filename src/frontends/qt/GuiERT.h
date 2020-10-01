@@ -28,12 +28,12 @@ public:
 private:
 	/// \name InsetParamsWidget inherited methods
 	//@{
-	InsetCode insetCode() const { return ERT_CODE; }
-	FuncCode creationCode() const { return LFUN_INSET_INSERT; }
-	QString dialogTitle() const { return qt_("TeX Mode Inset Settings"); }
-	void paramsToDialog(Inset const *);
-	docstring dialogToParams() const;
-	bool checkWidgets(bool readonly) const;
+	InsetCode insetCode() const override { return ERT_CODE; }
+	FuncCode creationCode() const override { return LFUN_INSET_INSERT; }
+	QString dialogTitle() const override { return qt_("TeX Mode Inset Settings"); }
+	void paramsToDialog(Inset const *) override;
+	docstring dialogToParams() const override;
+	bool checkWidgets(bool readonly) const override;
 	//@}
 };
 

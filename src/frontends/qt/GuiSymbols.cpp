@@ -210,22 +210,22 @@ public:
 		: QAbstractListModel(parent), encoding_(0)
 	{}
 
-	QModelIndex index(int row, int column, QModelIndex const &) const
+	QModelIndex index(int row, int column, QModelIndex const &) const override
 	{
 		return createIndex(row, column);
 	}
 
-	QModelIndex parent(QModelIndex const &) const
+	QModelIndex parent(QModelIndex const &) const override
 	{
 		return QModelIndex();
 	}
 
-	int rowCount(QModelIndex const &) const
+	int rowCount(QModelIndex const &) const override
 	{
 		return symbols_.count();
 	}
 
-	QVariant data(QModelIndex const & index, int role) const
+	QVariant data(QModelIndex const & index, int role) const override
 	{
 		if (!index.isValid())
 			return QVariant();

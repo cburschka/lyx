@@ -26,35 +26,35 @@ public:
 	///
 	explicit InsetMathDecoration(Buffer * buf, latexkeys const * key);
 	///
-	mode_type currentMode() const;
+	mode_type currentMode() const override;
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void normalize(NormalStream & os) const;
+	void normalize(NormalStream & os) const override;
 	///
-	void infoize(odocstream & os) const;
+	void infoize(odocstream & os) const override;
 	///
-	MathClass mathClass() const;
+	MathClass mathClass() const override;
 	/// The default limits value
-	Limits defaultLimits() const { return allowsLimitsChange() ? LIMITS : NO_LIMITS; }
+	Limits defaultLimits() const override { return allowsLimitsChange() ? LIMITS : NO_LIMITS; }
 	/// whether the inset has limit-like sub/superscript
-	Limits limits() const { return limits_; }
+	Limits limits() const override { return limits_; }
 	/// sets types of sub/superscripts
-	void limits(Limits lim) { limits_ = lim; }
+	void limits(Limits lim) override { limits_ = lim; }
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	InsetCode lyxCode() const { return MATH_DECORATION_CODE; }
+	InsetCode lyxCode() const override { return MATH_DECORATION_CODE; }
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 	///
 	bool upper() const;
 	///

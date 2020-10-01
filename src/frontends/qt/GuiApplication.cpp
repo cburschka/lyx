@@ -638,12 +638,12 @@ public:
 		: QTranslator(parent)
 	{}
 
-	virtual QString translate(const char * /* context */,
+	QString translate(const char * /* context */,
 		const char *sourceText,
 #if QT_VERSION >= 0x050000
-		const char * /* disambiguation */ = 0, int /* n */ = -1) const
+		const char * /* disambiguation */ = 0, int /* n */ = -1) const override
 #else
-		const char * /*comment*/ = 0) const
+		const char * /*comment*/ = 0) const override
 #endif
 	{
 		// Here we declare the strings that need to be translated from Qt own GUI
@@ -761,13 +761,13 @@ public:
 	QWindowsMimeMetafile() {}
 
 	bool canConvertFromMime(FORMATETC const & /*formatetc*/,
-		QMimeData const * /*mimedata*/) const
+		QMimeData const * /*mimedata*/) const override
 	{
 		return false;
 	}
 
 	bool canConvertToMime(QString const & mimetype,
-		IDataObject * pDataObj) const
+		IDataObject * pDataObj) const override
 	{
 		if (mimetype != emfMimeType() && mimetype != wmfMimeType())
 			return false;
@@ -776,13 +776,13 @@ public:
 	}
 
 	bool convertFromMime(FORMATETC const & /*formatetc*/,
-		const QMimeData * /*mimedata*/, STGMEDIUM * /*pmedium*/) const
+		const QMimeData * /*mimedata*/, STGMEDIUM * /*pmedium*/) const override
 	{
 		return false;
 	}
 
 	QVariant convertToMime(QString const & mimetype, IDataObject * pDataObj,
-		QVariant::Type /*preferredType*/) const
+		QVariant::Type /*preferredType*/) const override
 	{
 		QByteArray data;
 		if (!canConvertToMime(mimetype, pDataObj))
@@ -813,7 +813,7 @@ public:
 
 
 	QVector<FORMATETC> formatsForMime(QString const & mimetype,
-		QMimeData const * /*mimedata*/) const
+		QMimeData const * /*mimedata*/) const override
 	{
 		QVector<FORMATETC> formats;
 		if (mimetype == emfMimeType() || mimetype == wmfMimeType())
@@ -821,7 +821,7 @@ public:
 		return formats;
 	}
 
-	QString mimeForFormat(FORMATETC const & formatetc) const
+	QString mimeForFormat(FORMATETC const & formatetc) const override
 	{
 		switch (formatetc.cfFormat) {
 		case CF_ENHMETAFILE:
@@ -861,7 +861,7 @@ public:
 	bool started() const {
 		return started_;
 	}
-	bool eventFilter(QObject *obj, QEvent *event) {
+	bool eventFilter(QObject *obj, QEvent *event) override {
 		LYXERR(Debug::ACTION, "Event Type: " << event->type());
 		switch (event->type()) {
 		case QEvent::Show:

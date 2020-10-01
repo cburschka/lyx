@@ -29,57 +29,57 @@ public:
 	///
 	explicit InsetMathSymbol(docstring const & name);
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
-	int kerning(BufferView const *) const { return kerning_; }
+	int kerning(BufferView const *) const override { return kerning_; }
 
 	///
-	mode_type currentMode() const;
+	mode_type currentMode() const override;
 	///
-	MathClass mathClass() const;
+	MathClass mathClass() const override;
 	///
 	bool isOrdAlpha() const;
 	/// The default limits value
-	Limits defaultLimits() const;
+	Limits defaultLimits() const override;
 	/// whether the inset has limit-like sub/superscript
-	Limits limits() const { return limits_; }
+	Limits limits() const override { return limits_; }
 	/// sets types of sub/superscripts
-	void limits(Limits lim) { limits_ = lim; }
+	void limits(Limits lim) override { limits_ = lim; }
 	/// identifies SymbolInset as such
-	InsetMathSymbol const * asSymbolInset() const { return this; }
+	InsetMathSymbol const * asSymbolInset() const override { return this; }
 	/// the LaTeX name of the symbol (without the backslash)
-	docstring name() const;
+	docstring name() const override;
 	/// request "external features"
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 
 	///
-	void normalize(NormalStream &) const;
+	void normalize(NormalStream &) const override;
 	///
-	void maple(MapleStream &) const;
+	void maple(MapleStream &) const override;
 	///
-	void maxima(MaximaStream &) const;
+	void maxima(MaximaStream &) const override;
 	///
-	void mathematica(MathematicaStream &) const;
+	void mathematica(MathematicaStream &) const override;
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 	/// \param spacing controls whether we print spaces around
 	/// "operator"-type symbols or just print them raw
 	void htmlize(HtmlStream &, bool spacing) const;
 	///
-	void octave(OctaveStream &) const;
+	void octave(OctaveStream &) const override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
 	void infoize2(odocstream & os) const;
 	///
-	InsetCode lyxCode() const { return MATH_SYMBOL_CODE; }
+	InsetCode lyxCode() const override { return MATH_SYMBOL_CODE; }
 
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 	///
 	latexkeys const * sym_;
 	///

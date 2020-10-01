@@ -34,19 +34,19 @@ private Q_SLOTS:
 
 private:
 	///  Apply changes
-	void applyView();
+	void applyView() override;
 	/// Update dialog before showing it
-	void updateContents();
+	void updateContents() override;
 	///
 	void paramsToDialog(InsetCommandParams const & icp);
 	///
-	bool initialiseParams(std::string const & data);
+	bool initialiseParams(std::string const & data) override;
 	/// clean-up on hide.
-	void clearParams() { params_.clear(); }
+	void clearParams() override { params_.clear(); }
 	///
-	void dispatchParams();
+	void dispatchParams() override;
 	///
-	bool isBufferDependent() const { return true; }
+	bool isBufferDependent() const override { return true; }
 
 	///
 	InsetCommandParams params_;

@@ -55,12 +55,12 @@ public:
 	///
 	explicit InsetTableCell(Buffer * buf);
 	///
-	InsetCode lyxCode() const { return CELL_CODE; }
+	InsetCode lyxCode() const override { return CELL_CODE; }
 	///
-	Inset * clone() const { return new InsetTableCell(*this); }
+	Inset * clone() const override { return new InsetTableCell(*this); }
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd,
-		FuncStatus & status) const;
+		FuncStatus & status) const override;
 	///
 	void toggleFixedWidth(bool fw) { isFixedWidth = fw; }
 	///
@@ -73,18 +73,18 @@ public:
 	/// descending into insets
 	docstring asString(bool intoInsets = true);
 	///
-	docstring xhtml(XMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	///
 	void addToToc(DocIterator const & di, bool output_active,
-				  UpdateType utype, TocBackend & backend) const;
+				  UpdateType utype, TocBackend & backend) const override;
 	///
-	void metrics(MetricsInfo &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const override;
 	/// Needs to be same as InsetTabular
-	bool inheritFont() const { return false; }
+	bool inheritFont() const override { return false; }
 	/// Can the cell contain several paragraphs?
-	bool allowMultiPar() const { return !isMultiRow && (!isMultiColumn || isFixedWidth); }
+	bool allowMultiPar() const override { return !isMultiRow && (!isMultiColumn || isFixedWidth); }
 private:
 	/// unimplemented
 	InsetTableCell();
@@ -124,19 +124,19 @@ private:
 	///
 	LyXAlignment contentAlign;
 	/// should paragraph indentation be omitted in any case?
-	bool neverIndent() const { return true; }
+	bool neverIndent() const override { return true; }
 	///
-	LyXAlignment contentAlignment() const { return contentAlign; }
+	LyXAlignment contentAlignment() const override { return contentAlign; }
 	///
-	virtual bool usePlainLayout() const { return true; }
+	bool usePlainLayout() const override { return true; }
 	///
-	virtual bool forcePlainLayout(idx_type = 0) const;
+	bool forcePlainLayout(idx_type = 0) const override;
 	///
-	virtual bool allowParagraphCustomization(idx_type = 0) const;
+	bool allowParagraphCustomization(idx_type = 0) const override;
 	///
-	virtual bool forceLocalFontSwitch() const;
+	bool forceLocalFontSwitch() const override;
 	/// Is the width forced to some value?
-	bool hasFixedWidth() const { return isFixedWidth; }
+	bool hasFixedWidth() const override { return isFixedWidth; }
 };
 
 
@@ -944,90 +944,90 @@ public:
 	///
 	~InsetTabular();
 	///
-	void setBuffer(Buffer & buffer);
+	void setBuffer(Buffer & buffer) override;
 
 	///
 	static void string2params(std::string const &, InsetTabular &);
 	///
 	static std::string params2string(InsetTabular const &);
 	///
-	void read(Lexer &);
+	void read(Lexer &) override;
 	///
-	void write(std::ostream &) const;
+	void write(std::ostream &) const override;
 	///
-	void metrics(MetricsInfo &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void drawSelection(PainterInfo & pi, int x, int y) const;
+	void drawSelection(PainterInfo & pi, int x, int y) const override;
 	///
-	void drawBackground(PainterInfo & pi, int x, int y) const;
+	void drawBackground(PainterInfo & pi, int x, int y) const override;
 	///
-	bool editable() const { return true; }
+	bool editable() const override { return true; }
 	///
-	bool hasSettings() const { return true; }
+	bool hasSettings() const override { return true; }
 	///
-	bool insetAllowed(InsetCode code) const;
+	bool insetAllowed(InsetCode code) const override;
 	///
-	bool allowSpellCheck() const { return true; }
+	bool allowSpellCheck() const override { return true; }
 	///
-	bool canTrackChanges() const { return true; }
+	bool canTrackChanges() const override { return true; }
 	///
-	bool canPaintChange(BufferView const &) const { return true; }
+	bool canPaintChange(BufferView const &) const override { return true; }
 	/** returns false if, when outputting LaTeX, font changes should
 	    be closed before generating this inset. This is needed for
 	    insets that may contain several paragraphs */
-	bool inheritFont() const { return false; }
+	bool inheritFont() const override { return false; }
 	///
-	bool allowMultiPar() const;
+	bool allowMultiPar() const override;
 	///
-	bool allowsCaptionVariation(std::string const &) const;
+	bool allowsCaptionVariation(std::string const &) const override;
 	//
-	bool isTable() const { return true; }
+	bool isTable() const override { return true; }
 	///
-	RowFlags rowFlags() const;
+	RowFlags rowFlags() const override;
 	///
-	void latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const override;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	///
-	docstring xhtml(XMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	InsetCode lyxCode() const { return TABULAR_CODE; }
+	InsetCode lyxCode() const override { return TABULAR_CODE; }
 	///
-	std::string contextMenu(BufferView const &, int, int) const;
+	std::string contextMenu(BufferView const &, int, int) const override;
 	///
-	std::string contextMenuName() const;
+	std::string contextMenuName() const override;
 	/// get offset of this cursor slice relative to our upper left corner
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
-		bool boundary, int & x, int & y) const;
+		bool boundary, int & x, int & y) const override;
 	/// Executes a space-separated sequence of tabular-features requests
 	void tabularFeatures(Cursor & cur, std::string const & what);
 	/// Change a single tabular feature; does not handle undo.
 	void tabularFeatures(Cursor & cur, Tabular::Feature feature,
 			     std::string const & val = std::string());
 	/// number of cells
-	size_t nargs() const { return tabular.numberofcells; }
+	size_t nargs() const override { return tabular.numberofcells; }
 	///
 	std::shared_ptr<InsetTableCell const> cell(idx_type) const;
 	///
 	std::shared_ptr<InsetTableCell> cell(idx_type);
 	///
-	Text * getText(int) const;
+	Text * getText(int) const override;
 
 	/// does the inset contain changes ?
-	bool isChanged() const;
+	bool isChanged() const override;
 	/// set the change for the entire inset
-	void setChange(Change const & change);
+	void setChange(Change const & change) override;
 	/// accept the changes within the inset
-	void acceptChanges();
+	void acceptChanges() override;
 	/// reject the changes within the inset
-	void rejectChanges();
+	void rejectChanges() override;
 
 	// this should return true if we have a "normal" cell, otherwise false.
 	// "normal" means without width set!
@@ -1037,52 +1037,52 @@ public:
 	virtual bool forcePlainLayout(idx_type cell = 0) const;
 	///
 	void addPreview(DocIterator const & inset_pos,
-		graphics::PreviewLoader &) const;
+		graphics::PreviewLoader &) const override;
 
 	/// lock cell with given index
-	void edit(Cursor & cur, bool front, EntryDirection entry_from);
+	void edit(Cursor & cur, bool front, EntryDirection entry_from) override;
 	/// get table row from x coordinate
 	int rowFromY(Cursor & cur, int y) const;
 	/// get table column from y coordinate
 	int columnFromX(Cursor & cur, int x) const;
 	///
-	Inset * editXY(Cursor & cur, int x, int y);
+	Inset * editXY(Cursor & cur, int x, int y) override;
 	/// can we go further down on mouse click?
-	bool descendable(BufferView const &) const { return true; }
+	bool descendable(BufferView const &) const override { return true; }
 	/// Update the counters of this inset and of its contents
-	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false);
+	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false) override;
 	///
 	void addToToc(DocIterator const & di, bool output_active,
-				  UpdateType utype, TocBackend & backend) const;
+				  UpdateType utype, TocBackend & backend) const override;
 
 	///
-	bool completionSupported(Cursor const &) const;
+	bool completionSupported(Cursor const &) const override;
 	///
-	bool inlineCompletionSupported(Cursor const & cur) const;
+	bool inlineCompletionSupported(Cursor const & cur) const override;
 	///
-	bool automaticInlineCompletion() const;
+	bool automaticInlineCompletion() const override;
 	///
-	bool automaticPopupCompletion() const;
+	bool automaticPopupCompletion() const override;
 	///
-	bool showCompletionCursor() const;
+	bool showCompletionCursor() const override;
 	///
-	CompletionList const * createCompletionList(Cursor const & cur) const;
+	CompletionList const * createCompletionList(Cursor const & cur) const override;
 	///
-	docstring completionPrefix(Cursor const & cur) const;
+	docstring completionPrefix(Cursor const & cur) const override;
 	///
-	bool insertCompletion(Cursor & cur, docstring const & s, bool finished);
+	bool insertCompletion(Cursor & cur, docstring const & s, bool finished) override;
 	///
-	void completionPosAndDim(Cursor const &, int & x, int & y, Dimension & dim) const;
+	void completionPosAndDim(Cursor const &, int & x, int & y, Dimension & dim) const override;
 	///
-	virtual bool usePlainLayout() const { return true; }
+	bool usePlainLayout() const override { return true; }
 	///
-	docstring layoutName() const { return from_ascii("Tabular"); }
+	docstring layoutName() const override { return from_ascii("Tabular"); }
 
 
 	///
-	InsetTabular * asInsetTabular() { return this; }
+	InsetTabular * asInsetTabular() override { return this; }
 	///
-	InsetTabular const * asInsetTabular() const { return this; }
+	InsetTabular const * asInsetTabular() const override { return this; }
 	///
 	bool isRightToLeft(Cursor & cur) const;
 	/// writes the cells between stidx and enidx as a string, optionally
@@ -1104,21 +1104,21 @@ private:
 	///
 	InsetTabular(InsetTabular const &);
 	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	///
 	bool getFeatureStatus(Cursor & cur, std::string const & s,
 	                 std::string const & argument, FuncStatus & status) const;
 	///
-	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const override;
 	///
-	Inset * clone() const { return new InsetTabular(*this); }
+	Inset * clone() const override { return new InsetTabular(*this); }
 
 	///
 	bool hitSelectRow(BufferView const & bv, int x) const;
 	///
 	bool hitSelectColumn(BufferView const & bv, int y) const;
 	/// Returns true if coordinates are on row/column selection zones
-	bool clickable(BufferView const &, int x, int y) const;
+	bool clickable(BufferView const &, int x, int y) const override;
 
 	///
 	void drawCellLines(PainterInfo &, int x, int y, row_type row,

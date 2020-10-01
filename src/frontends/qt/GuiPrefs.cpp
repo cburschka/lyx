@@ -1879,8 +1879,8 @@ class FormatValidator : public QValidator
 {
 public:
 	FormatValidator(QWidget *, Formats const & f);
-	void fixup(QString & input) const;
-	QValidator::State validate(QString & input, int & pos) const;
+	void fixup(QString & input) const override;
+	QValidator::State validate(QString & input, int & pos) const override;
 private:
 	virtual QString toString(Format const & format) const = 0;
 	int nr() const;
@@ -1946,7 +1946,7 @@ public:
 		: FormatValidator(parent, f)
 	{}
 private:
-	QString toString(Format const & format) const
+	QString toString(Format const & format) const override
 	{
 		return toqstr(format.name());
 	}
@@ -1966,7 +1966,7 @@ public:
 		: FormatValidator(parent, f)
 	{}
 private:
-	QString toString(Format const & format) const
+	QString toString(Format const & format) const override
 	{
 		return toqstr(translateIfPossible(format.prettyname()));
 	}

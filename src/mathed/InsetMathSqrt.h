@@ -27,33 +27,33 @@ public:
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void drawT(TextPainter &, int x, int y) const;
+	void drawT(TextPainter &, int x, int y) const override;
 	///
-	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
+	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const override;
 
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	void normalize(NormalStream &) const;
+	void normalize(NormalStream &) const override;
 	///
-	void maple(MapleStream &) const;
+	void maple(MapleStream &) const override;
 	///
-	void mathematica(MathematicaStream &) const;
+	void mathematica(MathematicaStream &) const override;
 	///
-	void octave(OctaveStream &) const;
+	void octave(OctaveStream &) const override;
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 	///
-	InsetCode lyxCode() const { return MATH_SQRT_CODE; }
+	InsetCode lyxCode() const override { return MATH_SQRT_CODE; }
 	///
-	void validate(LaTeXFeatures &) const;
+	void validate(LaTeXFeatures &) const override;
 
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 };
 
 

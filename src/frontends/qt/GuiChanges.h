@@ -42,18 +42,18 @@ protected Q_SLOTS:
 
 private:
 	///
-	void updateContents();
+	void updateContents() override;
 
 	/// Nothing to initialise in this case.
-	bool initialiseParams(std::string const &) { return true; }
+	bool initialiseParams(std::string const &) override { return true; }
 	///
-	void clearParams() {}
+	void clearParams() override {}
 	///
-	void dispatchParams() {}
+	void dispatchParams() override {}
 	///
-	bool isBufferDependent() const { return true; }
+	bool isBufferDependent() const override { return true; }
 	/// always true since dispatchParams() is empty
-	bool canApply() const { return true; }
+	bool canApply() const override { return true; }
 };
 
 } // namespace frontend

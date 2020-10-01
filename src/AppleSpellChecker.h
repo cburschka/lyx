@@ -24,19 +24,19 @@ public:
 
 	/// \name SpellChecker inherited methods
 	//@{
-	enum Result check(WordLangTuple const &);
-	void suggest(WordLangTuple const &, docstring_list &);
-	void stem(WordLangTuple const &, docstring_list &) {}
-	void insert(WordLangTuple const &);
-	void remove(WordLangTuple const &);
-	void accept(WordLangTuple const &);
-	bool hasDictionary(Language const * lang) const;
-	int numDictionaries() const;
-	bool canCheckParagraph() const { return true; }
-	int numMisspelledWords() const;
-	void misspelledWord(int index, int & start, int & length) const;
-	docstring const error();
-	void advanceChangeNumber();
+	enum Result check(WordLangTuple const &) override;
+	void suggest(WordLangTuple const &, docstring_list &) override;
+	void stem(WordLangTuple const &, docstring_list &) override {}
+	void insert(WordLangTuple const &) override;
+	void remove(WordLangTuple const &) override;
+	void accept(WordLangTuple const &) override;
+	bool hasDictionary(Language const * lang) const override;
+	int numDictionaries() const override;
+	bool canCheckParagraph() const override { return true; }
+	int numMisspelledWords() const override;
+	void misspelledWord(int index, int & start, int & length) const override;
+	docstring const error() override;
+	void advanceChangeNumber() override;
 	//@}
 
 private:

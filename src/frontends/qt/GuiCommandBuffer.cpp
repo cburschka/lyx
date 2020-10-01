@@ -56,7 +56,7 @@ public:
 		setAttribute(Qt::WA_DeleteOnClose);
 	}
 protected:
-	bool event(QEvent * ev) {
+	bool event(QEvent * ev) override {
 		if (ev->type() == QEvent::MouseButtonPress) {
 			QMouseEvent * me = static_cast<QMouseEvent *>(ev);
 			if (me->x() < 0 || me->y() < 0
@@ -67,7 +67,7 @@ protected:
 		return QListWidget::event(ev);
 	}
 
-	void keyPressEvent(QKeyEvent * ev) {
+	void keyPressEvent(QKeyEvent * ev) override {
 		if (ev->key() == Qt::Key_Escape) {
 			hide();
 			return;

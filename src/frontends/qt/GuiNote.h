@@ -28,17 +28,17 @@ private Q_SLOTS:
 	void change_adaptor();
 private:
 	/// Apply changes
-	void applyView();
+	void applyView() override;
 	/// Update dialog before showing it
-	void updateContents();
+	void updateContents() override;
 	///
-	bool initialiseParams(std::string const & data);
+	bool initialiseParams(std::string const & data) override;
 	///
-	void clearParams();
+	void clearParams() override;
 	///
-	void dispatchParams();
+	void dispatchParams() override;
 	///
-	bool isBufferDependent() const { return true; }
+	bool isBufferDependent() const override { return true; }
 private:
 	///
 	InsetNoteParams params_;

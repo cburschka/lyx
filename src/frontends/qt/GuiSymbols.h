@@ -31,11 +31,11 @@ public:
 
 	/// Dialog inherited methods
 	//@{
-	void updateView();
-	void dispatchParams();
-	void enableView(bool enable);
-	bool isBufferDependent() const { return true; }
-	FuncCode getLfun() const { return LFUN_SELF_INSERT; }
+	void updateView() override;
+	void dispatchParams() override;
+	void enableView(bool enable) override;
+	bool isBufferDependent() const override { return true; }
+	FuncCode getLfun() const override { return LFUN_SELF_INSERT; }
 	//@}
 
 public Q_SLOTS:

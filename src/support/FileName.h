@@ -260,7 +260,7 @@ public:
 	 */
 	void set(std::string const & filename, std::string const & buffer_path);
 	///
-	void erase();
+	void erase() override;
 	///
 	bool saveAbsPath() const { return save_abs_path_; }
 	/// \param buffer_path if empty, uses `pwd`

@@ -105,10 +105,10 @@ protected:
 				fflush(stderr);
 			}
 	}
-	virtual result do_out(state_type &, intern_type const * from,
+	result do_out(state_type &, intern_type const * from,
 			intern_type const * from_end, intern_type const *& from_next,
 			extern_type * to, extern_type * to_end,
-			extern_type *& to_next) const
+			extern_type *& to_next) const override
 	{
 #define WORKAROUND_ICONV_BUG 1
 #if WORKAROUND_ICONV_BUG
@@ -184,18 +184,18 @@ protected:
 		}
 		return retval;
 	}
-	virtual result do_unshift(state_type &, extern_type * to,
-			extern_type *, extern_type *& to_next) const
+	result do_unshift(state_type &, extern_type * to,
+			extern_type *, extern_type *& to_next) const override
 	{
 		// utf8 does not use shifting
 		to_next = to;
 		return base::noconv;
 	}
-	virtual result do_in(state_type &,
+	result do_in(state_type &,
 			extern_type const * from, extern_type const * from_end,
 			extern_type const *& from_next,
 			intern_type * to, intern_type * to_end,
-			intern_type *& to_next) const
+			intern_type *& to_next) const override
 	{
 		size_t inbytesleft = (from_end - from) * sizeof(extern_type);
 		size_t outbytesleft = (to_end - to) * sizeof(intern_type);
@@ -236,16 +236,16 @@ protected:
 		}
 		return retval;
 	}
-	virtual int do_encoding() const throw()
+	int do_encoding() const throw() override
 	{
 		return 0;
 	}
-	virtual bool do_always_noconv() const throw()
+	bool do_always_noconv() const throw() override
 	{
 		return false;
 	}
-	virtual int do_length(state_type & /*state*/, extern_type const * from,
-			extern_type const * end, size_t max) const
+	int do_length(state_type & /*state*/, extern_type const * from,
+			extern_type const * end, size_t max) const override
 	{
 		// The docs are a bit unclear about this method.
 		// It seems that we should calculate the actual length of the
@@ -266,7 +266,7 @@ protected:
 		return min(length, max);
 #endif
 	}
-	virtual int do_max_length() const throw()
+	int do_max_length() const throw() override
 	{
 		return lyx::max_encoded_bytes(encoding_);
 	}

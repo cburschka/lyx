@@ -28,33 +28,33 @@ public:
 	///
 	explicit InsetMathString(docstring const & s);
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
 	docstring str() const { return str_; }
 	///
-	InsetMathString * asStringInset() { return this; }
+	InsetMathString * asStringInset() override { return this; }
 	///
-	InsetMathString const * asStringInset() const { return this; }
+	InsetMathString const * asStringInset() const override { return this; }
 
 	///
-	void normalize(NormalStream &) const;
+	void normalize(NormalStream &) const override;
 	///
-	void octave(OctaveStream &) const;
+	void octave(OctaveStream &) const override;
 	///
-	void maple(MapleStream &) const;
+	void maple(MapleStream &) const override;
 	///
-	void mathematica(MathematicaStream &) const;
+	void mathematica(MathematicaStream &) const override;
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	InsetCode lyxCode() const { return MATH_STRING_CODE; }
+	InsetCode lyxCode() const override { return MATH_STRING_CODE; }
 
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 	/// the string
 	docstring str_;
 };

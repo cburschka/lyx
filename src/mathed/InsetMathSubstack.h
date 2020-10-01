@@ -25,34 +25,34 @@ public:
 	///
 	explicit InsetMathSubstack(Buffer * buf);
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	InsetMathSubstack const * asSubstackInset() const { return this; }
+	InsetMathSubstack const * asSubstackInset() const override { return this; }
 
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd,
-		FuncStatus & flag) const;
+		FuncStatus & flag) const override;
 	///
-	void infoize(odocstream & os) const;
+	void infoize(odocstream & os) const override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 	///
-	void normalize(NormalStream &) const;
+	void normalize(NormalStream &) const override;
 	///
-	void maple(MapleStream &) const;
+	void maple(MapleStream &) const override;
 	///
-	void validate(LaTeXFeatures &) const;
+	void validate(LaTeXFeatures &) const override;
 	///
-	InsetCode lyxCode() const { return MATH_SUBSTACK_CODE; }
+	InsetCode lyxCode() const override { return MATH_SUBSTACK_CODE; }
 
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 };
 
 

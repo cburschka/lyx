@@ -47,26 +47,26 @@ public:
 	///
 	virtual ~InsetMathHull();
 	///
-	void setBuffer(Buffer &);
+	void setBuffer(Buffer &) override;
 	///
-	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false);
+	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false) override;
 	///
 	void addToToc(DocIterator const & di, bool output_active,
-				  UpdateType utype, TocBackend & backend) const;
+				  UpdateType utype, TocBackend & backend) const override;
 	///
 	InsetMathHull & operator=(InsetMathHull const &);
 	///
-	mode_type currentMode() const;
+	mode_type currentMode() const override;
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void drawBackground(PainterInfo & pi, int x, int y) const;
+	void drawBackground(PainterInfo & pi, int x, int y) const override;
 	///
-	void draw(PainterInfo &, int x, int y) const;
+	void draw(PainterInfo &, int x, int y) const override;
 	///
-	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
+	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const override;
 	///
-	void drawT(TextPainter &, int x, int y) const;
+	void drawT(TextPainter &, int x, int y) const override;
 	///
 	docstring label(row_type row) const;
 	///
@@ -74,7 +74,7 @@ public:
 	///
 	std::vector<InsetLabel *> const & getLabels() { return label_; }
 	///
-	ColorCode backgroundColor(PainterInfo const &) const;
+	ColorCode backgroundColor(PainterInfo const &) const override;
 	///
 	void numbered(row_type row, bool num) { numbered(row, num ? NUMBER : NONUMBER); }
 	///
@@ -82,131 +82,131 @@ public:
 	///
 	bool numbered(row_type row) const;
 	///
-	bool numberedType() const;
+	bool numberedType() const override;
 	///
 	bool ams() const;
 	///
 	bool outerDisplay() const;
 	///
-	OutputParams::CtObject CtObject(OutputParams const &) const;
+	OutputParams::CtObject CtObject(OutputParams const &) const override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	/// identifies HullInset
-	InsetMathHull const * asHullInset() const { return this; }
+	InsetMathHull const * asHullInset() const override { return this; }
 	/// identifies HullInset
-	InsetMathHull * asHullInset() { return this; }
+	InsetMathHull * asHullInset() override { return this; }
 
 	/// add a row
-	void addRow(row_type row);
+	void addRow(row_type row) override;
 	/// delete a row
-	void delRow(row_type row);
+	void delRow(row_type row) override;
 	/// swap two rows
-	void swapRow(row_type row);
+	void swapRow(row_type row) override;
 	/// add a column
-	void addCol(col_type col);
+	void addCol(col_type col) override;
 	/// delete a column
-	void delCol(col_type col);
+	void delCol(col_type col) override;
 
 	/// get type
-	HullType getType() const;
+	HullType getType() const override;
 	/// is mutation implemented for this type?
 	static bool isMutable(HullType type);
 	/// change type
-	void mutate(HullType newtype);
+	void mutate(HullType newtype) override;
 
 	///
-	int defaultColSpace(col_type col);
+	int defaultColSpace(col_type col) override;
 	///
-	int displayColSpace(col_type col) const;
+	int displayColSpace(col_type col) const override;
 	///
-	char defaultColAlign(col_type col);
+	char defaultColAlign(col_type col) override;
 	///
-	char displayColAlign(idx_type idx) const;
+	char displayColAlign(idx_type idx) const override;
 
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	void normalize(NormalStream &) const;
+	void normalize(NormalStream &) const override;
 	///
-	void infoize(odocstream & os) const;
+	void infoize(odocstream & os) const override;
 
 	///
-	void write(std::ostream & os) const;
+	void write(std::ostream & os) const override;
 	///
 	void header_write(WriteStream &) const;
 	///
 	void footer_write(WriteStream &) const;
 	///
-	void read(Lexer & lex);
+	void read(Lexer & lex) override;
 	///
 	bool readQuiet(Lexer & lex);
 	///
 	int plaintext(odocstringstream &, OutputParams const &,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	///
-	docstring xhtml(XMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 	///
 	void mathAsLatex(WriteStream &) const;
 	///
-	void toString(odocstream &) const;
+	void toString(odocstream &) const override;
 	///
-	void forOutliner(docstring &, size_t const, bool const) const;
+	void forOutliner(docstring &, size_t const, bool const) const override;
 
 	/// get notification when the cursor leaves this inset
-	bool notifyCursorLeaves(Cursor const & old, Cursor & cur);
+	bool notifyCursorLeaves(Cursor const & old, Cursor & cur) override;
 	///
-	//bool insetAllowed(InsetCode code) const;
+	//bool insetAllowed(InsetCode code) const override;
 	///
 	void addPreview(DocIterator const & inset_pos,
-		graphics::PreviewLoader &) const;
+		graphics::PreviewLoader &) const override;
 	/// Recreates the preview if preview is enabled.
 	void reloadPreview(DocIterator const & pos) const;
 	///
 	void usedMacros(MathData const & md, DocIterator const & pos,
 	                MacroNameSet & macros, MacroNameSet & defs) const;
 	///
-	void initUnicodeMath() const;
+	void initUnicodeMath() const override;
 
 	/// Force inset into LTR environment if surroundings are RTL
-	virtual bool forceLTR(OutputParams const &) const { return true; }
+	bool forceLTR(OutputParams const &) const override { return true; }
 	///
 	void recordLocation(DocIterator const & di);
 
 	///
-	std::string contextMenuName() const;
+	std::string contextMenuName() const override;
 	///
-	InsetCode lyxCode() const { return MATH_HULL_CODE; }
+	InsetCode lyxCode() const override { return MATH_HULL_CODE; }
 	///
-	bool canPaintChange(BufferView const &) const;
+	bool canPaintChange(BufferView const &) const override;
 	///
-	bool confirmDeletion() const { return nargs() != 1 || !cell(0).empty(); }
+	bool confirmDeletion() const override { return nargs() != 1 || !cell(0).empty(); }
 
 protected:
 	InsetMathHull(InsetMathHull const &);
 
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 
 	/// do we want to handle this event?
 	bool getStatus(Cursor & cur, FuncRequest const & cmd,
-		FuncStatus & status) const;
+		FuncStatus & status) const override;
 	/// override to set to 0 for inline equation
-	int leftMargin() const;
+	int leftMargin() const override;
 	/// override to set to 0 for inline equation
-	int rightMargin() const;
+	int rightMargin() const override;
 	/// override to set to 0 for inline equation
-	int border() const;
+	int border() const override;
 	///
 	docstring eolString(row_type row, bool fragile, bool latex,
-			bool last_eoln) const;
+			bool last_eoln) const override;
 
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 	/// Prepare the preview if preview is enabled.
 	/// \param forexport: whether this is intended for export
 	/// If so, we ignore LyXRC and wait for the image to be generated.
@@ -256,7 +256,7 @@ private:
 	/// are any of the equations numbered?
 	bool haveNumbers() const;
 	/// draw four angular markers
-	virtual void drawMarkers(PainterInfo & pi, int x, int y) const;
+	void drawMarkers(PainterInfo & pi, int x, int y) const override;
 
 	/// "none", "simple", "display", "eqnarray",...
 	HullType type_;
@@ -281,19 +281,19 @@ public:
 	///
 	virtual void mutateToText();
 	///
-	bool editable() const { return true; }
+	bool editable() const override { return true; }
 	///
 	void edit(Cursor & cur, bool front,
-		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);
+		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE) override;
 	///
-	Inset * editXY(Cursor & cur, int x, int y);
+	Inset * editXY(Cursor & cur, int x, int y) override;
 	///
-	RowFlags rowFlags() const;
+	RowFlags rowFlags() const override;
 	/// helper function
 	bool display() const { return rowFlags() & Display; }
 
 	///
-	int indent(BufferView const &) const;
+	int indent(BufferView const &) const override;
 
 protected:
 	///

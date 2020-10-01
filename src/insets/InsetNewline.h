@@ -47,44 +47,44 @@ public:
 	explicit InsetNewline(InsetNewlineParams par) : Inset(0)
 	{ params_.kind = par.kind; }
 	///
-	RowFlags rowFlags() const { return BreakAfter | RowAfter; }
+	RowFlags rowFlags() const override { return BreakAfter | RowAfter; }
 	///
 	static void string2params(std::string const &, InsetNewlineParams &);
 	///
 	static std::string params2string(InsetNewlineParams const &);
 private:
 	///
-	InsetCode lyxCode() const { return NEWLINE_CODE; }
+	InsetCode lyxCode() const override { return NEWLINE_CODE; }
 	///
-	void metrics(MetricsInfo &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const override;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	///
-	docstring xhtml(XMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	void read(Lexer & lex);
+	void read(Lexer & lex) override;
 	///
-	void write(std::ostream & os) const;
+	void write(std::ostream & os) const override;
 	/// is this equivalent to a space (which is BTW different from
 	/// a line separator)?
-	bool isSpace() const { return true; }
+	bool isSpace() const override { return true; }
 	///
 	ColorCode ColorName() const;
 	///
-	std::string contextMenuName() const;
+	std::string contextMenuName() const override;
 	///
-	Inset * clone() const { return new InsetNewline(*this); }
+	Inset * clone() const override { return new InsetNewline(*this); }
 	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	///
-	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const override;
 
 	///
 	InsetNewlineParams params_;

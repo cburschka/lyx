@@ -28,15 +28,15 @@ public:
 	explicit InsetMathCommand(Buffer * buf, docstring const & name,
 		bool needs_math_mode = true);
 	///
-	marker_type marker(BufferView const *) const { return NO_MARKER; }
+	marker_type marker(BufferView const *) const override { return NO_MARKER; }
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	Inset * editXY(Cursor &, int, int);
+	Inset * editXY(Cursor &, int, int) override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	//
 	// void infoize(odocstream & os) const;
 	///
@@ -44,10 +44,10 @@ public:
 	///
 	docstring const & commandname() const { return name_; }
 	///
-	bool isActive() const { return false; }
+	bool isActive() const override { return false; }
 
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 
 	///
 	docstring name_;

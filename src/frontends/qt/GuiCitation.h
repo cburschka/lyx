@@ -72,18 +72,18 @@ private Q_SLOTS:
 private:
 	/// Dialog inherited methods
 	//@{
-	void applyView();
-	void updateView() {}
-	bool initialiseParams(std::string const & data);
-	void clearParams();
-	void dispatchParams();
-	bool isBufferDependent() const { return true; }
-	void saveSession(QSettings & settings) const;
-	void restoreSession();
+	void applyView() override;
+	void updateView() override {}
+	bool initialiseParams(std::string const & data) override;
+	void clearParams() override;
+	void dispatchParams() override;
+	bool isBufferDependent() const override { return true; }
+	void saveSession(QSettings & settings) const override;
+	void restoreSession() override;
 	/** Disconnect from the inset when the Apply button is pressed.
 	 *  Allows easy insertion of multiple citations.
 	 */
-	bool disconnectOnApply() const { return true; }
+	bool disconnectOnApply() const override { return true; }
 	//@}
 
 	///

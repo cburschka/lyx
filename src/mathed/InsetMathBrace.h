@@ -26,33 +26,33 @@ public:
 	///
 	explicit InsetMathBrace(MathData const & ar);
 	/// identifies brace insets
-	InsetMathBrace * asBraceInset() { return this; }
+	InsetMathBrace * asBraceInset() override { return this; }
 	/// identifies brace insets
-	InsetMathBrace const * asBraceInset() const { return this; }
+	InsetMathBrace const * asBraceInset() const override { return this; }
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo &, int x, int y) const;
+	void draw(PainterInfo &, int x, int y) const override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	/// write normalized content
-	void normalize(NormalStream & ns) const;
+	void normalize(NormalStream & ns) const override;
 	///
-	void maple(MapleStream &) const;
+	void maple(MapleStream &) const override;
 	///
-	void mathematica(MathematicaStream &) const;
+	void mathematica(MathematicaStream &) const override;
 	///
-	void octave(OctaveStream &) const;
+	void octave(OctaveStream &) const override;
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 	///
-	void infoize(odocstream & os) const;
+	void infoize(odocstream & os) const override;
 	///
-	InsetCode lyxCode() const { return MATH_BRACE_CODE; }
+	InsetCode lyxCode() const override { return MATH_BRACE_CODE; }
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 };
 
 

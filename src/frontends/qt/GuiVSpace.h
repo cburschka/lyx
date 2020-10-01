@@ -35,12 +35,12 @@ private Q_SLOTS:
 private:
 	/// \name InsetParamsWidget inherited methods
 	//@{
-	InsetCode insetCode() const { return VSPACE_CODE; }
-	FuncCode creationCode() const { return LFUN_INSET_INSERT; }
-	QString dialogTitle() const { return qt_("Vertical Space Settings"); }
-	void paramsToDialog(Inset const *);
-	docstring dialogToParams() const;
-	bool checkWidgets(bool readonly) const;
+	InsetCode insetCode() const override { return VSPACE_CODE; }
+	FuncCode creationCode() const override { return LFUN_INSET_INSERT; }
+	QString dialogTitle() const override { return qt_("Vertical Space Settings"); }
+	void paramsToDialog(Inset const *) override;
+	docstring dialogToParams() const override;
+	bool checkWidgets(bool readonly) const override;
 	//@}
 };
 

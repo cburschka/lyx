@@ -28,31 +28,31 @@ public:
 	///
 	InsetMathBoldSymbol(Buffer * buf, Kind kind = AMS_BOLD);
 	///
-	docstring name() const;
+	docstring name() const override;
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
+	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const override;
 	///
-	void drawT(TextPainter & pi, int x, int y) const;
+	void drawT(TextPainter & pi, int x, int y) const override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 	///
-	void infoize(odocstream & os) const;
+	void infoize(odocstream & os) const override;
 	///
-	InsetCode lyxCode() const { return MATH_BOLDSYMBOL_CODE; }
+	InsetCode lyxCode() const override { return MATH_BOLDSYMBOL_CODE; }
 	///
 	Kind kind_;
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 };
 
 

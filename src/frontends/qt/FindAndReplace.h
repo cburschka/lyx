@@ -82,19 +82,19 @@ public:
 
 	~FindAndReplace();
 
-	bool initialiseParams(std::string const &);
-	void clearParams() {}
-	void dispatchParams() {}
-	bool isBufferDependent() const { return false; }
-	bool canApplyToReadOnly() const { return true; }
+	bool initialiseParams(std::string const &) override;
+	void clearParams() override {}
+	void dispatchParams() override {}
+	bool isBufferDependent() const override { return false; }
+	bool canApplyToReadOnly() const override { return true; }
 	void selectAll();
 
 	/// update
-	void updateView();
+	void updateView() override;
 	//virtual void update_contents() {}
 
 protected:
-	virtual bool wantInitialFocus() const { return true; }
+	bool wantInitialFocus() const override { return true; }
 
 private:
 	/// The encapsulated widget.

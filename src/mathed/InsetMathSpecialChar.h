@@ -25,42 +25,42 @@ public:
 	///
 	explicit InsetMathSpecialChar(docstring const & name);
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
+	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const override;
 	///
-	void drawT(TextPainter &, int x, int y) const;
+	void drawT(TextPainter &, int x, int y) const override;
 	///
-	int kerning(BufferView const *) const { return kerning_; }
+	int kerning(BufferView const *) const override { return kerning_; }
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	void normalize(NormalStream & ns) const;
+	void normalize(NormalStream & ns) const override;
 	///
-	void octave(OctaveStream & os) const;
+	void octave(OctaveStream & os) const override;
 	///
-	void maple(MapleStream &) const;
+	void maple(MapleStream &) const override;
 	///
-	void mathematica(MathematicaStream &) const;
+	void mathematica(MathematicaStream &) const override;
 	///
-	void mathmlize(MathStream & ms) const;
+	void mathmlize(MathStream & ms) const override;
 	///
-	void htmlize(HtmlStream & ms) const;
+	void htmlize(HtmlStream & ms) const override;
 	/// identifies SpecialChar insets
-	InsetMathSpecialChar const * asSpecialCharInset() const { return this; }
+	InsetMathSpecialChar const * asSpecialCharInset() const override { return this; }
 	///
-	docstring name() const { return name_; }
+	docstring name() const override { return name_; }
 	///
-	char_type getChar() const { return char_; }
+	char_type getChar() const override { return char_; }
 	///
-	InsetCode lyxCode() const { return MATH_SPECIALCHAR_CODE; }
+	InsetCode lyxCode() const override { return MATH_SPECIALCHAR_CODE; }
 
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 	/// the latex name
 	docstring name_;
 	/// the displayed character

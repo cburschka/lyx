@@ -40,29 +40,29 @@ public:
 	/// \name Public functions inherited from Inset class
 	//@{
 	/// verify label and update references.
-	void initView();
+	void initView() override;
 	///
-	bool isLabeled() const { return true; }
+	bool isLabeled() const override { return true; }
 	///
-	bool hasSettings() const { return true; }
+	bool hasSettings() const override { return true; }
 	///
-	InsetCode lyxCode() const { return LABEL_CODE; }
+	InsetCode lyxCode() const override { return LABEL_CODE; }
 	///
-	void latex(otexstream & os, OutputParams const & runparams_in) const;
+	void latex(otexstream & os, OutputParams const & runparams_in) const override;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	///
-	docstring xhtml(XMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	void updateBuffer(ParIterator const & it, UpdateType, bool const deleted = false);
+	void updateBuffer(ParIterator const & it, UpdateType, bool const deleted = false) override;
 	///
 	void addToToc(DocIterator const & di, bool output_active,
-				  UpdateType utype, TocBackend & backend) const;
+				  UpdateType utype, TocBackend & backend) const override;
 	/// Is the content of this inset part of the immediate (visible) text sequence?
-	bool isPartOfTextSequence() const { return false; }
+	bool isPartOfTextSequence() const override { return false; }
 	//@}
 
 	/// \name Static public methods obligated for InsetCommand derived classes
@@ -80,18 +80,18 @@ public:
 	/// \name Private functions inherited from InsetCommand class
 	//@{
 	///
-	docstring screenLabel() const;
+	docstring screenLabel() const override;
 	//@}
 
 private:
 	/// \name Private functions inherited from Inset class
 	//@{
 	///
-	Inset * clone() const { return new InsetLabel(*this); }
+	Inset * clone() const override { return new InsetLabel(*this); }
 	///
-	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus & status) const;
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus & status) const override;
 	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	//@}
 
 	///

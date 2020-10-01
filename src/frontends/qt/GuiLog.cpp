@@ -62,7 +62,7 @@ public:
 	LogHighlighter(QTextDocument * parent);
 
 private:
-	void highlightBlock(QString const & text);
+	void highlightBlock(QString const & text) override;
 
 private:
 	QTextCharFormat infoFormat;

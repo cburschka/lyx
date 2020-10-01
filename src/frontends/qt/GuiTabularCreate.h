@@ -35,17 +35,17 @@ private Q_SLOTS:
 
 private:
 	/// Apply changes
-	void applyView();
+	void applyView() override;
 	///
-	bool initialiseParams(std::string const & data);
+	bool initialiseParams(std::string const & data) override;
 	/// clean-up on hide.
-	void clearParams();
+	void clearParams() override;
 	///
-	void dispatchParams();
+	void dispatchParams() override;
 	///
-	bool isBufferDependent() const { return true; }
+	bool isBufferDependent() const override { return true; }
 	///
-	FuncCode getLfun() const;
+	FuncCode getLfun() const override;
 
 	///
 	typedef std::pair<size_t, size_t> rowsCols;

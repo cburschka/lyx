@@ -234,7 +234,7 @@ public:
 		  argc_(argc), argv_(argv)
 	{
 	}
-	void doExec()
+	void doExec() override
 	{
 		int const exit_status = lyx_->execWithoutGui(argc_, argv_);
 		exit(exit_status);

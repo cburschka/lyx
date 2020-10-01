@@ -289,13 +289,13 @@ public:
 			{ excluded_modules_ = em.list(); }
 private:
 	///
-	virtual void updateAddPB();
+	void updateAddPB() override;
 	///
-	virtual void updateUpPB();
+	void updateUpPB() override;
 	///
-	virtual void updateDownPB();
+	void updateDownPB() override;
 	///
-	virtual void updateDelPB();
+	void updateDelPB() override;
 	/// returns availableModel as a GuiIdListModel
 	QStandardItemModel * getAvailableModel()
 	{

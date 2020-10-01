@@ -33,56 +33,56 @@ public:
 	///
 	~InsetMathMacro();
 	///
-	virtual InsetMathMacro * asMacro() { return this; }
+	InsetMathMacro * asMacro() override { return this; }
 	///
-	virtual InsetMathMacro const * asMacro() const { return this; }
+	InsetMathMacro const * asMacro() const override { return this; }
 	///
-	marker_type marker(BufferView const *) const;
+	marker_type marker(BufferView const *) const override;
 	/// If the macro is in normal edit mode, dissolve its contents in
 	/// the row. Otherwise, just insert the inset.
-	bool addToMathRow(MathRow &, MetricsInfo & mi) const;
+	bool addToMathRow(MathRow &, MetricsInfo & mi) const override;
 
 	/// Whether the inset allows \(no)limits
 	bool allowsLimitsChange() const;
 	/// The default limits value
-	Limits defaultLimits() const;
+	Limits defaultLimits() const override;
 	/// whether the inset has limit-like sub/superscript
-	Limits limits() const;
+	Limits limits() const override;
 	/// sets types of sub/superscripts
-	void limits(Limits lim);
+	void limits(Limits lim) override;
 
 	///
-	void beforeMetrics() const;
+	void beforeMetrics() const override;
 	///
-	void afterMetrics() const;
+	void afterMetrics() const override;
 	///
-	void beforeDraw(PainterInfo const &) const;
+	void beforeDraw(PainterInfo const &) const override;
 	///
-	void afterDraw(PainterInfo const &) const;
+	void afterDraw(PainterInfo const &) const override;
 
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	/// was the macro in edit mode when computing metrics?
 	bool editMetrics(BufferView const * bv) const;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	int kerning(BufferView const * bv) const;
+	int kerning(BufferView const * bv) const override;
 	/// get cursor position
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
-		bool boundary, int & x, int & y) const;
+		bool boundary, int & x, int & y) const override;
 	///
-	void edit(Cursor & cur, bool front, EntryDirection entry_from);
+	void edit(Cursor & cur, bool front, EntryDirection entry_from) override;
 	///
-	Inset * editXY(Cursor & cur, int x, int y);
+	Inset * editXY(Cursor & cur, int x, int y) override;
 
 	/// target pos when we enter the inset while moving forward
-	bool idxFirst(Cursor &) const;
+	bool idxFirst(Cursor &) const override;
 	/// target pos when we enter the inset while moving backwards
-	bool idxLast(Cursor &) const;
+	bool idxLast(Cursor &) const override;
 
 	///
-	virtual bool notifyCursorLeaves(Cursor const & old, Cursor & cur);
+	bool notifyCursorLeaves(Cursor const & old, Cursor & cur) override;
 
 	/// Remove cell (starting from 0)
 	void removeArgument(pos_type pos);
@@ -90,30 +90,30 @@ public:
 	void insertArgument(pos_type pos);
 
 	///
-	void validate(LaTeXFeatures &) const;
+	void validate(LaTeXFeatures &) const override;
 	///
-	mode_type currentMode() const;
+	mode_type currentMode() const override;
 
 	/// Assumes that macros are up-to-date
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	void normalize(NormalStream & os) const;
+	void normalize(NormalStream & os) const override;
 	///
-	void maple(MapleStream &) const;
+	void maple(MapleStream &) const override;
 	///
-	void maxima(MaximaStream &) const;
+	void maxima(MaximaStream &) const override;
 	///
-	void mathematica(MathematicaStream &) const;
+	void mathematica(MathematicaStream &) const override;
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 	///
-	void octave(OctaveStream &) const;
+	void octave(OctaveStream &) const override;
 	///
-	void infoize(odocstream &) const;
+	void infoize(odocstream &) const override;
 	///
-	void infoize2(odocstream &) const;
+	void infoize2(odocstream &) const override;
 
 	/// fold the macro in the next metrics call
 	void fold(Cursor & cur);
@@ -133,10 +133,10 @@ public:
 	DisplayMode displayMode() const;
 
 	///
-	bool extraBraces() const;
+	bool extraBraces() const override;
 
 	///
-	docstring name() const;
+	docstring name() const override;
 	/// FIXME: Often dangling.
 	MacroData const * macro() const;
 	///
@@ -155,12 +155,12 @@ public:
 	/// Return the maximal number of arguments the macro is greedy for.
 	size_t appetite() const;
 	///
-	InsetCode lyxCode() const { return MATH_MACRO_CODE; }
+	InsetCode lyxCode() const override { return MATH_MACRO_CODE; }
 	/// This is not used for display; however whether it is mathrel determines
 	/// how to split equations intelligently.
-	MathClass mathClass() const; //override
+	MathClass mathClass() const override;
 	/// Override so as to set Buffer for defnition_ member, too.
-	void setBuffer(Buffer &);
+	void setBuffer(Buffer &) override;
 
 protected:
 	friend class MathData;
@@ -190,7 +190,7 @@ private:
 	/// creation, in which case we fall back to the global macro with this name.
 	MacroData const * macroBackup() const;
 	///
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 	///
 	bool editMode(BufferView const * bv) const;
 
@@ -204,21 +204,21 @@ private:
 
 public:
 	///
-	bool completionSupported(Cursor const &) const;
+	bool completionSupported(Cursor const &) const override;
 	///
-	bool inlineCompletionSupported(Cursor const & cur) const;
+	bool inlineCompletionSupported(Cursor const & cur) const override;
 	///
-	bool automaticInlineCompletion() const;
+	bool automaticInlineCompletion() const override;
 	///
-	bool automaticPopupCompletion() const;
+	bool automaticPopupCompletion() const override;
 	///
-	CompletionList const * createCompletionList(Cursor const & cur) const;
+	CompletionList const * createCompletionList(Cursor const & cur) const override;
 	///
-	docstring completionPrefix(Cursor const & cur) const;
+	docstring completionPrefix(Cursor const & cur) const override;
 	///
-	bool insertCompletion(Cursor & cur, docstring const & s, bool finished);
+	bool insertCompletion(Cursor & cur, docstring const & s, bool finished) override;
 	///
-	void completionPosAndDim(Cursor const &, int & x, int & y, Dimension & dim) const;
+	void completionPosAndDim(Cursor const &, int & x, int & y, Dimension & dim) const override;
 };
 
 } // namespace lyx

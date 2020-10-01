@@ -24,28 +24,28 @@ public:
 	///
 	explicit InsetMathUnderset(Buffer * buf) : InsetMathFracBase(buf) {}
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	bool idxFirst(Cursor &) const;
+	bool idxFirst(Cursor &) const override;
 	///
-	bool idxLast(Cursor &) const;
+	bool idxLast(Cursor &) const override;
 	///
-	void write(WriteStream & ws) const;
+	void write(WriteStream & ws) const override;
 	///
-	void normalize(NormalStream & ns) const;
+	void normalize(NormalStream & ns) const override;
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	InsetCode lyxCode() const { return MATH_UNDERSET_CODE; }
+	InsetCode lyxCode() const override { return MATH_UNDERSET_CODE; }
 
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 };
 
 

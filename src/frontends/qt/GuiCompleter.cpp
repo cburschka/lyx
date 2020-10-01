@@ -59,7 +59,7 @@ public:
 
 protected:
 	void paint(QPainter *painter, const QStyleOptionViewItem &option,
-		   const QModelIndex &index) const
+		   const QModelIndex &index) const override
 	{
 		if (index.column() == 0) {
 			QItemDelegate::paint(painter, option, index);
@@ -107,12 +107,12 @@ public:
 		return false;
 	}
 	///
-	int columnCount(const QModelIndex & /*parent*/ = QModelIndex()) const
+	int columnCount(const QModelIndex & /*parent*/ = QModelIndex()) const override
 	{
 		return 2;
 	}
 	///
-	int rowCount(const QModelIndex & /*parent*/ = QModelIndex()) const
+	int rowCount(const QModelIndex & /*parent*/ = QModelIndex()) const override
 	{
 		if (list_ == 0)
 			return 0;
@@ -120,7 +120,7 @@ public:
 	}
 
 	///
-	QVariant data(const QModelIndex & index, int role) const
+	QVariant data(const QModelIndex & index, int role) const override
 	{
 		if (list_ == 0)
 			return QVariant();

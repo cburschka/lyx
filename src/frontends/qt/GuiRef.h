@@ -33,7 +33,7 @@ public:
 	GuiRef(GuiView & lv);
 	/// Dialog inherited methods
 	//@{
-	void enableView(bool enable);
+	void enableView(bool enable) override;
 	//@}
 
 private Q_SLOTS:
@@ -54,10 +54,10 @@ private Q_SLOTS:
 
 private:
 	///
-	bool isBufferDependent() const { return true; }
+	bool isBufferDependent() const override { return true; }
 	/** disconnect from the inset when the Apply button is pressed.
 	 Allows easy insertion of multiple references. */
-	bool disconnectOnApply() const { return true; }
+	bool disconnectOnApply() const override { return true; }
 	///
 	void gotoRef(std::string const &);
 	///
@@ -65,11 +65,11 @@ private:
 	///
 	void closeEvent(QCloseEvent * e);
 	///
-	bool isValid();
+	bool isValid() override;
 	/// apply changes
-	void applyView();
+	void applyView() override;
 	/// update dialog
-	void updateContents();
+	void updateContents() override;
 	///
 	void enableBoxes();
 
@@ -84,11 +84,11 @@ private:
 	/// update references
 	void updateRefs();
 	///
-	bool initialiseParams(std::string const & data);
+	bool initialiseParams(std::string const & data) override;
 	/// clean-up on hide.
-	void clearParams() { params_.clear(); }
+	void clearParams() override { params_.clear(); }
 	/// clean-up on hide.
-	void dispatchParams();
+	void dispatchParams() override;
 
 private:
 	///

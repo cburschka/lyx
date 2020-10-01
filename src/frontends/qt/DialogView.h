@@ -32,16 +32,16 @@ public:
 	/// \param title is the window title used for decoration.
 	DialogView(GuiView & lv, QString const & name, QString const & title);
 
-	virtual QWidget * asQWidget() { return this; }
-	virtual QWidget const * asQWidget() const { return this; }
+	QWidget * asQWidget() override { return this; }
+	QWidget const * asQWidget() const override { return this; }
 
 protected:
 	/// \name Dialog inherited methods
 	//@{
-	void applyView() {}
-	bool initialiseParams(std::string const & /*data*/) { return true; }
-	void clearParams() {}
-	bool needBufferOpen() const { return isBufferDependent(); }
+	void applyView() override {}
+	bool initialiseParams(std::string const & /*data*/) override { return true; }
+	void clearParams() override {}
+	bool needBufferOpen() const override { return isBufferDependent(); }
 	//@}
 	/// Any dialog that overrides this method should make sure to call it.
 	void closeEvent(QCloseEvent * ev);
@@ -49,7 +49,7 @@ protected:
 	void hideEvent(QHideEvent * ev);
 
 protected Q_SLOTS:
-	void onBufferViewChanged() {};
+	void onBufferViewChanged() override {};
 };
 
 } // namespace frontend

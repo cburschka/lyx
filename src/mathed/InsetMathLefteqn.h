@@ -25,18 +25,18 @@ public:
 	///
 	explicit InsetMathLefteqn(Buffer * buf);
 	///
-	docstring name() const;
+	docstring name() const override;
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void infoize(odocstream & os) const;
+	void infoize(odocstream & os) const override;
 	///
-	InsetCode lyxCode() const { return MATH_LEFTEQN_CODE; }
+	InsetCode lyxCode() const override { return MATH_LEFTEQN_CODE; }
 
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 };
 
 

@@ -45,11 +45,11 @@ protected:
 	virtual bool hasSubCaptions(ParIterator const &) const { return false; }
 	///
 	void addToToc(DocIterator const & di, bool output_active,
-				  UpdateType utype, TocBackend & backend) const;
+				  UpdateType utype, TocBackend & backend) const override;
 	/// Update the counters of this inset and of its contents
-	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false);
+	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false) override;
 	///
-	bool insetAllowed(InsetCode) const;
+	bool insetAllowed(InsetCode) const override;
 private:
 	///
 	std::string caption_type_;

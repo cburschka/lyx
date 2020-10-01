@@ -44,27 +44,27 @@ public:
 	/// \name Public functions inherited from Inset class
 	//@{
 	///
-	InsetCode lyxCode() const { return BIBITEM_CODE; }
+	InsetCode lyxCode() const override { return BIBITEM_CODE; }
 	///
-	bool hasSettings() const { return true; }
+	bool hasSettings() const override { return true; }
 	/// \copydoc Inset::initView()
 	/// verify label and update references.
-	void initView();
+	void initView() override;
 	///
-	bool isLabeled() const { return true; }
+	bool isLabeled() const override { return true; }
 	///
-	void read(Lexer & lex);
+	void read(Lexer & lex) override;
 	///
 	int plaintext(odocstringstream &, OutputParams const &,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
-	docstring xhtml(XMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	///
-	void collectBibKeys(InsetIterator const &, support::FileNameList &) const;
+	void collectBibKeys(InsetIterator const &, support::FileNameList &) const override;
 	/// update the counter of this inset
-	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false);
+	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false) override;
 	///@}
 
 	/// \name Static public methods obligated for InsetCommand derived classes
@@ -84,17 +84,17 @@ private:
 	/// \name Private functions inherited from Inset class
 	//@{
 	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	///
-	Inset * clone() const { return new InsetBibitem(*this); }
+	Inset * clone() const override { return new InsetBibitem(*this); }
 	/// Is the content of this inset part of the immediate (visible) text sequence?
-	bool isPartOfTextSequence() const { return false; }
+	bool isPartOfTextSequence() const override { return false; }
 	///@}
 
 	/// \name Private functions inherited from InsetCommand class
 	//@{
 	///
-	docstring screenLabel() const;
+	docstring screenLabel() const override;
 	//@}
 
 	friend docstring bibitemWidest(Buffer const & buffer, OutputParams const &);

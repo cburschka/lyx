@@ -172,7 +172,7 @@ public:
 			setIcon(getIcon(*tbinfo->items.begin()->func, true));
 	}
 
-	void mousePressEvent(QMouseEvent * e)
+	void mousePressEvent(QMouseEvent * e) override
 	{
 		if (initialized_) {
 			QToolButton::mousePressEvent(e);

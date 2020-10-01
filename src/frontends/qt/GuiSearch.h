@@ -35,10 +35,10 @@ private Q_SLOTS:
 private:
 	void showEvent(QShowEvent * e);
 	///
-	bool initialiseParams(std::string const &) { return true; }
-	void clearParams() {}
-	void dispatchParams() {}
-	bool isBufferDependent() const { return true; }
+	bool initialiseParams(std::string const &) override { return true; }
+	void clearParams() override {}
+	void dispatchParams() override {}
+	bool isBufferDependent() const override { return true; }
 
 	/// Searches occurrence of string
 	void find(docstring const & search,

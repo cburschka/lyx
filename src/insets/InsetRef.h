@@ -39,44 +39,44 @@ public:
 	/// \name Public functions inherited from Inset class
 	//@{
 	///
-	docstring layoutName() const;
+	docstring layoutName() const override;
 	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	///
-	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus & status) const;
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus & status) const override;
 	///
-	bool isLabeled() const { return true; }
+	bool isLabeled() const override { return true; }
 	///
-	docstring toolTip(BufferView const &, int, int) const
+	docstring toolTip(BufferView const &, int, int) const override
 		{ return tooltip_; }
 	///
 	docstring getTOCString() const;
 	///
-	bool hasSettings() const { return true; }
+	bool hasSettings() const override { return true; }
 	///
-	InsetCode lyxCode() const { return REF_CODE; }
+	InsetCode lyxCode() const override { return REF_CODE; }
 	///
-	void latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const override;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	///
-	docstring xhtml(XMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	void toString(odocstream &) const;
+	void toString(odocstream &) const override;
 	///
-	void forOutliner(docstring &, size_t const, bool const) const;
+	void forOutliner(docstring &, size_t const, bool const) const override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	void updateBuffer(ParIterator const & it, UpdateType, bool const deleted = false);
+	void updateBuffer(ParIterator const & it, UpdateType, bool const deleted = false) override;
 	///
 	void addToToc(DocIterator const & di, bool output_active,
-				  UpdateType utype, TocBackend & backend) const;
+				  UpdateType utype, TocBackend & backend) const override;
 	///
-	bool forceLTR(OutputParams const &) const;
+	bool forceLTR(OutputParams const &) const override;
 	//@}
 
 	/// \name Static public methods obligated for InsetCommand derived classes
@@ -99,13 +99,13 @@ private:
 	/// \name Private functions inherited from Inset class
 	//@{
 	///
-	Inset * clone() const { return new InsetRef(*this); }
+	Inset * clone() const override { return new InsetRef(*this); }
 	//@}
 
 	/// \name Private functions inherited from InsetCommand class
 	//@{
 	///
-	docstring screenLabel() const;
+	docstring screenLabel() const override;
 	//@}
 
 	/// \return the label with things that need to be escaped escaped

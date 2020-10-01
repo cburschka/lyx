@@ -40,49 +40,49 @@ public:
 	static std::string params2string(InsetListingsParams const &);
 private:
 	///
-	bool isLabeled() const { return true; }
+	bool isLabeled() const override { return true; }
 	/// false is needed since listings do their own font handling.
-	bool inheritFont() const { return false; }
+	bool inheritFont() const override { return false; }
 	///
-	InsetCode lyxCode() const { return LISTINGS_CODE; }
+	InsetCode lyxCode() const override { return LISTINGS_CODE; }
 	/// lstinline is inlined, normal listing is displayed
-	RowFlags rowFlags() const;
+	RowFlags rowFlags() const override;
 	///
-	docstring layoutName() const;
+	docstring layoutName() const override;
 	///
-	void write(std::ostream & os) const;
+	void write(std::ostream & os) const override;
 	///
-	void read(Lexer & lex);
+	void read(Lexer & lex) override;
 	///
-	void latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const override;
 	///
-	docstring xhtml(XMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	///
-	void validate(LaTeXFeatures &) const;
+	void validate(LaTeXFeatures &) const override;
 	///
-	bool showInsetDialog(BufferView *) const;
+	bool showInsetDialog(BufferView *) const override;
 	///
 	InsetListingsParams const & params() const { return params_; }
 	///
 	InsetListingsParams & params() { return params_; }
 	///
-	std::string contextMenuName() const;
+	std::string contextMenuName() const override;
 	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	///
-	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const override;
 	///
-	Inset * clone() const { return new InsetListings(*this); }
+	Inset * clone() const override { return new InsetListings(*this); }
 	///
-	docstring const buttonLabel(BufferView const & bv) const;
+	docstring const buttonLabel(BufferView const & bv) const override;
 	///
 	TexString getCaption(OutputParams const &) const;
 	///
-	bool insetAllowed(InsetCode c) const { return c == CAPTION_CODE || c == QUOTE_CODE; }
+	bool insetAllowed(InsetCode c) const override { return c == CAPTION_CODE || c == QUOTE_CODE; }
 	///
-	Encoding const * forcedEncoding(Encoding const *, Encoding const *) const;
+	Encoding const * forcedEncoding(Encoding const *, Encoding const *) const override;
 
 	///
 	InsetListingsParams params_;

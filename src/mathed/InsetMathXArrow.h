@@ -24,26 +24,26 @@ public:
 	///
 	explicit InsetMathXArrow(Buffer * buf, docstring const & name);
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void normalize(NormalStream & os) const;
+	void normalize(NormalStream & os) const override;
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	InsetCode lyxCode() const { return MATH_XARROW_CODE; }
+	InsetCode lyxCode() const override { return MATH_XARROW_CODE; }
 	///
-	MathClass mathClass() const { return MC_REL; }
+	MathClass mathClass() const override { return MC_REL; }
 
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 	///
 	bool upper() const;
 	///

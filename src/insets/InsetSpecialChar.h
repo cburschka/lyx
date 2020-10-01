@@ -61,49 +61,49 @@ public:
 	///
 	Kind kind() const;
 	///
-	docstring toolTip(BufferView const & bv, int x, int y) const;
+	docstring toolTip(BufferView const & bv, int x, int y) const override;
 	/// some special chars allow line breaking after them
-	RowFlags rowFlags() const;
+	RowFlags rowFlags() const override;
 	///
-	void metrics(MetricsInfo &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void write(std::ostream &) const;
+	void write(std::ostream &) const override;
 	/// Will not be used when lyxf3
-	void read(Lexer & lex);
+	void read(Lexer & lex) override;
 	///
-	void latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const override;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	///
-	docstring xhtml(XMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	void toString(odocstream &) const;
+	void toString(odocstream &) const override;
 	///
-	bool isInToc() const { return true; }
+	bool isInToc() const override { return true; }
 	///
-	void forOutliner(docstring &, size_t const, bool const) const;
+	void forOutliner(docstring &, size_t const, bool const) const override;
 	///
-	InsetCode lyxCode() const { return SPECIALCHAR_CODE; }
+	InsetCode lyxCode() const override { return SPECIALCHAR_CODE; }
 	/// We don't need \begin_inset and \end_inset
-	bool directWrite() const { return true; }
+	bool directWrite() const override { return true; }
 	///
-	void validate(LaTeXFeatures &) const;
+	void validate(LaTeXFeatures &) const override;
 
 	/// should this inset be handled like a normal character?
-	bool isChar() const;
+	bool isChar() const override;
 	/// is this equivalent to a letter?
-	bool isLetter() const;
+	bool isLetter() const override;
 	/// should we break lines after this inset?
-	bool isLineSeparator() const;
+	bool isLineSeparator() const override;
 	/// Is the content of this inset part of the immediate (visible) text sequence?
-	bool isPartOfTextSequence() const { return isChar(); }
+	bool isPartOfTextSequence() const override { return isChar(); }
 private:
-	Inset * clone() const { return new InsetSpecialChar(*this); }
+	Inset * clone() const override { return new InsetSpecialChar(*this); }
 
 	/// And which kind is this?
 	Kind kind_;

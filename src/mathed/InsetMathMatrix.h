@@ -27,31 +27,31 @@ public:
 	explicit InsetMathMatrix(InsetMathGrid const &,
 			docstring const & left, docstring const & right);
 	/// identifies MatrixInsets
-	InsetMathMatrix const * asMatrixInset() const { return this; }
+	InsetMathMatrix const * asMatrixInset() const override { return this; }
 
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	void normalize(NormalStream &) const;
+	void normalize(NormalStream &) const override;
 	///
-	void maple(MapleStream &) const;
+	void maple(MapleStream &) const override;
 	///
-	void maxima(MaximaStream &) const;
+	void maxima(MaximaStream &) const override;
 	///
-	void mathematica(MathematicaStream &) const;
+	void mathematica(MathematicaStream &) const override;
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 	///
-	void octave(OctaveStream &) const;
+	void octave(OctaveStream &) const override;
 	///
-	InsetCode lyxCode() const { return MATH_MATRIX_CODE; }
+	InsetCode lyxCode() const override { return MATH_MATRIX_CODE; }
 	///
-	bool handlesMulticolumn() const { return true; } //override
+	bool handlesMulticolumn() const override { return true; }
 
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 	///
 	docstring left_;
 	///

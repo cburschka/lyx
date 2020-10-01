@@ -104,22 +104,22 @@ public:
 
 	/// Controller inherited method.
 	///@{
-	bool initialiseParams(std::string const & source);
-	void clearParams() {}
-	void dispatchParams() {}
-	bool isBufferDependent() const { return true; }
-	bool canApply() const { return true; }
-	bool canApplyToReadOnly() const { return true; }
-	void updateView();
-	void enableView(bool enable);
-	void saveSession(QSettings & settings) const;
-	void restoreSession();
-	bool wantInitialFocus() const { return false; }
+	bool initialiseParams(std::string const & source) override;
+	void clearParams() override {}
+	void dispatchParams() override {}
+	bool isBufferDependent() const override { return true; }
+	bool canApply() const override { return true; }
+	bool canApplyToReadOnly() const override { return true; }
+	void updateView() override;
+	void enableView(bool enable) override;
+	void saveSession(QSettings & settings) const override;
+	void restoreSession() override;
+	bool wantInitialFocus() const override { return false; }
 	///@}
 
 public Q_SLOTS:
 	///
-	void onBufferViewChanged();//override
+	void onBufferViewChanged() override;
 
 private Q_SLOTS:
 	/// The title displayed by the dialog reflects source type.

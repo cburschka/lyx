@@ -28,29 +28,29 @@ public:
 	///
 	InsetMathExFunc(Buffer * buf, docstring const & name, MathData const & ar);
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	docstring name() const;
+	docstring name() const override;
 
 	///
-	void maple(MapleStream &) const;
+	void maple(MapleStream &) const override;
 	///
-	void maxima(MaximaStream &) const;
+	void maxima(MaximaStream &) const override;
 	///
-	void mathematica(MathematicaStream &) const;
+	void mathematica(MathematicaStream &) const override;
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 	///
-	void octave(OctaveStream &) const;
+	void octave(OctaveStream &) const override;
 	///
-	InsetCode lyxCode() const { return MATH_EXFUNC_CODE; }
+	InsetCode lyxCode() const override { return MATH_EXFUNC_CODE; }
 
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 	///
 	docstring const name_;
 };

@@ -37,28 +37,28 @@ public:
 	/// parses from string, returns false if failed
 	bool fromString (const docstring & str);
 	///
-	bool editable() const { return true; }
+	bool editable() const override { return true; }
 	///
-	void edit(Cursor & cur, bool front, EntryDirection entry_from);
+	void edit(Cursor & cur, bool front, EntryDirection entry_from) override;
 	///
-	bool notifyCursorLeaves(Cursor const & old, Cursor & cur);
+	bool notifyCursorLeaves(Cursor const & old, Cursor & cur) override;
 	///
-	void read(Lexer & lex);
+	void read(Lexer & lex) override;
 	///
-	void write(std::ostream & os) const;
+	void write(std::ostream & os) const override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	/// Output LaTeX code, but assume that the macro is not defined yet
 	/// if overwriteRedefinition is true
 	int write(WriteStream & os, bool overwriteRedefinition) const;
 	/// Nothing happens. This is simply to suppress the default output.
-	docstring xhtml(XMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	int plaintext(odocstringstream &, OutputParams const &, size_t) const;
+	int plaintext(odocstringstream &, OutputParams const &, size_t) const override;
 	///
-	bool inheritFont() const { return false; }
+	bool inheritFont() const override { return false; }
 	///
-	docstring name() const;
+	docstring name() const override;
 	///
 	void getDefaults(std::vector<docstring> & defaults) const;
 	///
@@ -83,41 +83,41 @@ public:
 	bool fixNameAndCheckIfValid();
 
 	/// request "external features"
-	virtual void validate(LaTeXFeatures &) const;
+	void validate(LaTeXFeatures &) const override;
 
 	/// decide whether its a redefinition
 	void updateToContext(MacroContext const & mc);
 
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	/// identifies macro templates
-	InsetMathMacroTemplate * asMacroTemplate() { return this; }
+	InsetMathMacroTemplate * asMacroTemplate() override { return this; }
 	/// identifies macro templates
-	InsetMathMacroTemplate const * asMacroTemplate() const { return this; }
+	InsetMathMacroTemplate const * asMacroTemplate() const override { return this; }
 	///
-	InsetCode lyxCode() const { return MATHMACRO_CODE; }
+	InsetCode lyxCode() const override { return MATHMACRO_CODE; }
 	///
-	void infoize(odocstream & os) const;
+	void infoize(odocstream & os) const override;
 	///
-	std::string contextMenuName() const;
+	std::string contextMenuName() const override;
 	///
 	void addToToc(DocIterator const & di, bool output_active,
-				  UpdateType utype, TocBackend & backend) const;
+				  UpdateType utype, TocBackend & backend) const override;
 protected:
 	///
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	/// do we want to handle this event?
 	bool getStatus(Cursor & cur, FuncRequest const & cmd,
-		FuncStatus & status) const;
+		FuncStatus & status) const override;
 
 private:
 	friend class InsetLabelBox;
 	friend class InsetDisplayLabelBox;
 
 	///
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 
 	/// remove #n with from<=n<=to
 	void removeArguments(Cursor & cur, DocIterator const & inset_pos,

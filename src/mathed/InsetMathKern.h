@@ -32,24 +32,24 @@ public:
 	///
 	explicit InsetMathKern(docstring const & wid);
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	void normalize(NormalStream & ns) const;
+	void normalize(NormalStream & ns) const override;
 	///
-	void mathmlize(MathStream &) const { }
+	void mathmlize(MathStream &) const override { }
 	///
-	void htmlize(HtmlStream &) const { }
+	void htmlize(HtmlStream &) const override { }
 	///
 	void infoize2(odocstream & os) const;
 	///
-	InsetCode lyxCode() const { return MATH_KERN_CODE; }
+	InsetCode lyxCode() const override { return MATH_KERN_CODE; }
 
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 	/// width in em
 	Length wid_;
 };

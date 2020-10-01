@@ -24,36 +24,36 @@ public:
 	explicit InsetMathSplit(Buffer * buf, docstring const & name,
 		char valign = 'c', bool numbered = false);
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd,
-		FuncStatus & flag) const;
+		FuncStatus & flag) const override;
 
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	void infoize(odocstream & os) const;
+	void infoize(odocstream & os) const override;
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	int defaultColSpace(col_type) { return 0; }
+	int defaultColSpace(col_type) override { return 0; }
 	///
-	int displayColSpace(col_type col) const;
+	int displayColSpace(col_type col) const override;
 	///
-	char defaultColAlign(col_type);
+	char defaultColAlign(col_type) override;
 	///
-	char displayColAlign(idx_type idx) const;
+	char displayColAlign(idx_type idx) const override;
 	///
-	InsetCode lyxCode() const { return MATH_SPLIT_CODE; }
+	InsetCode lyxCode() const override { return MATH_SPLIT_CODE; }
 
 private:
 	///
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 	///
 	docstring name_;
 	///

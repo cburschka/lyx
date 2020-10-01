@@ -73,57 +73,57 @@ public:
 	///
 	InsetFloatParams const & params() const { return params_; }
 	///
-	bool allowsCaptionVariation(std::string const &) const;
+	bool allowsCaptionVariation(std::string const &) const override;
 	///
-	LyXAlignment contentAlignment() const;
+	LyXAlignment contentAlignment() const override;
 	///
-	bool forceParDirectionSwitch() const { return true; }
+	bool forceParDirectionSwitch() const override { return true; }
 private:
 	///
-	void setCaptionType(std::string const & type);
+	void setCaptionType(std::string const & type) override;
 	///
-	docstring layoutName() const;
+	docstring layoutName() const override;
 	///
-	docstring toolTip(BufferView const & bv, int x, int y) const;
+	docstring toolTip(BufferView const & bv, int x, int y) const override;
 	///
-	void write(std::ostream & os) const;
+	void write(std::ostream & os) const override;
 	///
-	void read(Lexer & lex);
+	void read(Lexer & lex) override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	InsetCode lyxCode() const { return FLOAT_CODE; }
+	InsetCode lyxCode() const override { return FLOAT_CODE; }
 	///
-	void latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const override;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	///
-	docstring xhtml(XMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	bool insetAllowed(InsetCode) const;
+	bool insetAllowed(InsetCode) const override;
 	/** returns false if, when outputting LaTeX, font changes should
 	    be closed before generating this inset. This is needed for
 	    insets that may contain several paragraphs */
-	bool inheritFont() const { return false; }
+	bool inheritFont() const override { return false; }
 	///
-	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const override;
 	///
-	bool hasSubCaptions(ParIterator const & it) const;
+	bool hasSubCaptions(ParIterator const & it) const override;
 	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	///
-	Inset * clone() const { return new InsetFloat(*this); }
+	Inset * clone() const override { return new InsetFloat(*this); }
 	/// Is the content of this inset part of the immediate (visible) text sequence?
-	bool isPartOfTextSequence() const { return false; }
+	bool isPartOfTextSequence() const override { return false; }
 	///
 	TexString getCaption(OutputParams const &) const;
 	///
 	std::string getAlignment() const;
 	///
-	OutputParams::CtObject CtObject(OutputParams const &) const { return OutputParams::CT_OMITOBJECT; }
+	OutputParams::CtObject CtObject(OutputParams const &) const override { return OutputParams::CT_OMITOBJECT; }
 
 	InsetFloatParams params_;
 };

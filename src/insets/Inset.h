@@ -593,7 +593,7 @@ public:
 	/// returns whether this inset is allowed in other insets of given mode
 	virtual bool allowedIn(mode_type) const { return true; }
 	/// returns whether paragraph breaks can occur inside this inset
-	virtual bool allowMultiPar() const  { return false; }
+	virtual bool allowMultiPar() const { return false; }
 	/**
 	 * The font is inherited from the parent for LaTeX export if this
 	 * method returns true. No open font changes are closed in front of

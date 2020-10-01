@@ -28,10 +28,10 @@ class GuiMathMatrix : public GuiDialog, public Ui::MathMatrixUi
 public:
 	GuiMathMatrix(GuiView & lv);
 
-	bool initialiseParams(std::string const &) { return true; }
-	void clearParams() {}
-	void dispatchParams() {}
-	bool isBufferDependent() const { return true; }
+	bool initialiseParams(std::string const &) override { return true; }
+	void clearParams() override {}
+	void dispatchParams() override {}
+	bool isBufferDependent() const override { return true; }
 
 public Q_SLOTS:
 	void on_buttonBox_clicked(QAbstractButton *);

@@ -33,14 +33,14 @@ public:
 
 	/// Dialog inherited methods
 	//@{
-	void applyView();
-	void updateView();
-	void dispatchParams();
-	void enableView(bool enable);
-	bool isBufferDependent() const { return true; }
-	virtual FuncCode getLfun() const { return LFUN_PARAGRAPH_PARAMS_APPLY; }
-	void saveSession(QSettings & settings) const;
-	void restoreSession();
+	void applyView() override;
+	void updateView() override;
+	void dispatchParams() override;
+	void enableView(bool enable) override;
+	bool isBufferDependent() const override { return true; }
+	FuncCode getLfun() const override { return LFUN_PARAGRAPH_PARAMS_APPLY; }
+	void saveSession(QSettings & settings) const override;
+	void restoreSession() override;
 	//@}
 
 private:

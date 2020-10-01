@@ -34,9 +34,9 @@ private Q_SLOTS:
 private:
 	/// Controller stuff
 	///@{
-	void updateView() {}
-	void dispatchParams() {}
-	bool isBufferDependent() const { return false; }
+	void updateView() override {}
+	void dispatchParams() override {}
+	bool isBufferDependent() const override { return false; }
 	///@}
 
 	struct Private;

@@ -29,35 +29,35 @@ public:
 	/// convenience constructor from whitespace/newline separated data
 	InsetMathArray(Buffer * buf, docstring const &, docstring const & str);
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	InsetMathArray * asArrayInset() { return this; }
+	InsetMathArray * asArrayInset() override { return this; }
 	///
-	InsetMathArray const * asArrayInset() const { return this; }
+	InsetMathArray const * asArrayInset() const override { return this; }
 
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	void infoize(odocstream & os) const;
+	void infoize(odocstream & os) const override;
 	///
-	void normalize(NormalStream & os) const;
+	void normalize(NormalStream & os) const override;
 	///
-	void maple(MapleStream & os) const;
+	void maple(MapleStream & os) const override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	InsetCode lyxCode() const { return MATH_ARRAY_CODE; }
+	InsetCode lyxCode() const override { return MATH_ARRAY_CODE; }
 	///
-	int leftMargin() const { return 4; } //override
+	int leftMargin() const override { return 4; }
 	///
-	int rightMargin() const { return 2; } //override
+	int rightMargin() const override { return 2; }
 	///
-	bool handlesMulticolumn() const { return true; } //override
+	bool handlesMulticolumn() const override { return true; }
 
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 	///
 	docstring name_;
 };

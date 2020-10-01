@@ -30,28 +30,28 @@ public:
 	/// \name Public functions inherited from Inset class
 	//@{
 	///
-	InsetCode lyxCode() const { return FLOAT_LIST_CODE; }
+	InsetCode lyxCode() const override { return FLOAT_LIST_CODE; }
 	///
-	RowFlags rowFlags() const { return Display; }
+	RowFlags rowFlags() const override { return Display; }
 	///
-	void write(std::ostream &) const;
+	void write(std::ostream &) const override;
 	///
-	void read(Lexer &);
+	void read(Lexer &) override;
 	///
-	void latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const { return; }
+	void docbook(XMLStream &, OutputParams const &) const override { return; }
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
-	docstring xhtml(XMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	///
-	bool clickable(BufferView const &, int, int) const { return true; }
+	bool clickable(BufferView const &, int, int) const override { return true; }
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	//@}
 
 	/// \name Static public methods obligated for InsetCommand derived classes
@@ -68,15 +68,15 @@ private:
 	/// \name Private functions inherited from Inset class
 	//@{
 	///
-	Inset * clone() const { return new InsetFloatList(*this); }
+	Inset * clone() const override { return new InsetFloatList(*this); }
 	///
-	docstring layoutName() const;
+	docstring layoutName() const override;
 	//@}
 
 	/// \name Private functions inherited from InsetCommand class
 	//@{
 	///
-	docstring screenLabel() const;
+	docstring screenLabel() const override;
 	//@}
 };
 

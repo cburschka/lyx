@@ -25,46 +25,46 @@ public:
 		docstring const & selection = empty_docstring(),
 		bool final = true, bool black = false);
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
 	void setName(docstring const & name);
 	///
-	docstring name() const;
+	docstring name() const override;
 
 	///
 	docstring const & selection() const { return selection_; }
 
 	/// identifies UnknownInsets
-	InsetMathUnknown const * asUnknownInset() const { return this; }
+	InsetMathUnknown const * asUnknownInset() const override { return this; }
 	/// identifies UnknownInsets
-	InsetMathUnknown * asUnknownInset() { return this; }
+	InsetMathUnknown * asUnknownInset() override { return this; }
 
 	///
-	void normalize(NormalStream &) const;
+	void normalize(NormalStream &) const override;
 	///
-	void maple(MapleStream &) const;
+	void maple(MapleStream &) const override;
 	///
-	void mathematica(MathematicaStream &) const;
+	void mathematica(MathematicaStream &) const override;
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 	///
-	void octave(OctaveStream &) const;
+	void octave(OctaveStream &) const override;
 	///
 	void finalize();
 	///
 	bool final() const;
 	///
-	int kerning(BufferView const *) const { return kerning_; }
+	int kerning(BufferView const *) const override { return kerning_; }
 	///
-	InsetCode lyxCode() const { return MATH_UNKNOWN_CODE; }
+	InsetCode lyxCode() const override { return MATH_UNKNOWN_CODE; }
 
 private:
 	///
-	Inset * clone() const { return new InsetMathUnknown(*this); }
+	Inset * clone() const override { return new InsetMathUnknown(*this); }
 
 	///
 	docstring name_;

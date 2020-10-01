@@ -31,36 +31,36 @@ public:
 	///
 	bool idxBackward(Cursor & cur) const;
 	///
-	bool idxFirst(Cursor &) const;
+	bool idxFirst(Cursor &) const override;
 	///
-	bool idxLast(Cursor &) const;
+	bool idxLast(Cursor &) const override;
 
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	void normalize(NormalStream &) const;
+	void normalize(NormalStream &) const override;
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 	///
-	void maple(MapleStream &) const;
+	void maple(MapleStream &) const override;
 	///
-	void mathematica(MathematicaStream &) const;
+	void mathematica(MathematicaStream &) const override;
 	///
-	void octave(OctaveStream &) const;
+	void octave(OctaveStream &) const override;
 	///
-	InsetCode lyxCode() const { return MATH_ROOT_CODE; }
+	InsetCode lyxCode() const override { return MATH_ROOT_CODE; }
 	///
-	void validate(LaTeXFeatures &) const;
+	void validate(LaTeXFeatures &) const override;
 
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 };
 
 void mathed_root_metrics(MetricsInfo & mi, MathData const & nucleus,

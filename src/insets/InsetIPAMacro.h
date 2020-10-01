@@ -60,42 +60,42 @@ public:
 	InsetIPADecoParams const & params() const { return params_; }
 private:
 	///
-	InsetCode lyxCode() const { return IPADECO_CODE; }
+	InsetCode lyxCode() const override { return IPADECO_CODE; }
 	///
-	docstring layoutName() const;
+	docstring layoutName() const override;
 	///
-	void metrics(MetricsInfo &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void write(std::ostream &) const;
+	void write(std::ostream &) const override;
 	///
-	void read(Lexer & lex);
+	void read(Lexer & lex) override;
 	///
-	bool neverIndent() const { return true; }
+	bool neverIndent() const override { return true; }
 	///
-	void latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const override;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	///
-	docstring xhtml(XMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const override;
 	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	bool allowSpellCheck() const { return false; }
+	bool allowSpellCheck() const override { return false; }
 	///
-	bool insetAllowed(InsetCode code) const;
+	bool insetAllowed(InsetCode code) const override;
 	///
-	docstring toolTip(BufferView const & bv, int x, int y) const;
+	docstring toolTip(BufferView const & bv, int x, int y) const override;
 	///
-	Inset * clone() const { return new InsetIPADeco(*this); }
+	Inset * clone() const override { return new InsetIPADeco(*this); }
 	/// used by the constructors
 	void init();
 	///
@@ -137,39 +137,39 @@ public:
 	///
 	Kind kind() const;
 	///
-	void metrics(MetricsInfo &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void write(std::ostream &) const;
+	void write(std::ostream &) const override;
 	/// Will not be used when lyxf3
-	void read(Lexer & lex);
+	void read(Lexer & lex) override;
 	///
-	void latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const override;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	///
-	docstring xhtml(XMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	void toString(odocstream &) const;
+	void toString(odocstream &) const override;
 	///
-	void forOutliner(docstring &, size_t const, bool const) const;
+	void forOutliner(docstring &, size_t const, bool const) const override;
 	///
-	InsetCode lyxCode() const { return IPACHAR_CODE; }
+	InsetCode lyxCode() const override { return IPACHAR_CODE; }
 	/// We don't need \begin_inset and \end_inset
-	bool directWrite() const { return true; }
+	bool directWrite() const override { return true; }
 	///
-	void validate(LaTeXFeatures &) const;
+	void validate(LaTeXFeatures &) const override;
 
 	/// should this inset be handled like a normal character?
-	bool isChar() const { return true; }
+	bool isChar() const override { return true; }
 	/// is this equivalent to a letter?
-	bool isLetter() const { return true; }
+	bool isLetter() const override { return true; }
 private:
-	Inset * clone() const { return new InsetIPAChar(*this); }
+	Inset * clone() const override { return new InsetIPAChar(*this); }
 
 	/// And which kind is this?
 	Kind kind_;

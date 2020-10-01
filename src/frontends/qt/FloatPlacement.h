@@ -33,12 +33,12 @@ public:
 
 	/// \name DialogView inherited methods
 	//@{
-	InsetCode insetCode() const { return FLOAT_CODE; }
-	FuncCode creationCode() const { return LFUN_FLOAT_INSERT; }
-	QString dialogTitle() const { return qt_("Float Settings"); }
-	void paramsToDialog(Inset const *);
-	docstring dialogToParams() const;
-	bool checkWidgets(bool readonly) const;
+	InsetCode insetCode() const override { return FLOAT_CODE; }
+	FuncCode creationCode() const override { return LFUN_FLOAT_INSERT; }
+	QString dialogTitle() const override { return qt_("Float Settings"); }
+	void paramsToDialog(Inset const *) override;
+	docstring dialogToParams() const override;
+	bool checkWidgets(bool readonly) const override;
 	//@}
 	///
 	void useWide();

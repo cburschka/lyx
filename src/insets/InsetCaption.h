@@ -25,7 +25,7 @@ public:
 	///
 	std::string const & floattype() const { return floattype_; }
 	///
-	docstring layoutName() const;
+	docstring layoutName() const override;
 	/// return the mandatory argument (LaTeX format) only
 	void getArgument(otexstream & os, OutputParams const &) const;
 	/// return the caption text
@@ -35,61 +35,61 @@ public:
 	/// return the caption text as HTML
 	docstring getCaptionAsHTML(XMLStream & os, OutputParams const &) const;
 	///
-	std::string contextMenuName() const;
+	std::string contextMenuName() const override;
 private:
 	///
-	void write(std::ostream & os) const;
+	void write(std::ostream & os) const override;
 	///
-	RowFlags rowFlags() const { return Display; }
+	RowFlags rowFlags() const override { return Display; }
 	///
-	bool neverIndent() const { return true; }
+	bool neverIndent() const override { return true; }
 	///
-	bool forceLocalFontSwitch() const { return true; }
+	bool forceLocalFontSwitch() const override { return true; }
 	///
-	InsetCode lyxCode() const { return CAPTION_CODE; }
+	InsetCode lyxCode() const override { return CAPTION_CODE; }
 	///
 	void cursorPos(BufferView const & bv,
-		CursorSlice const & sl, bool boundary, int & x, int & y) const;
+		CursorSlice const & sl, bool boundary, int & x, int & y) const override;
 	///
-	bool descendable(BufferView const &) const { return true; }
+	bool descendable(BufferView const &) const override { return true; }
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void drawBackground(PainterInfo & pi, int x, int y) const;
+	void drawBackground(PainterInfo & pi, int x, int y) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	/// Strike out the inset when deleted.
-	bool canPaintChange(BufferView const &) const { return true; }
+	bool canPaintChange(BufferView const &) const override { return true; }
 	///
-	void edit(Cursor & cur, bool front, EntryDirection entry_from);
+	void edit(Cursor & cur, bool front, EntryDirection entry_from) override;
 	///
-	Inset * editXY(Cursor & cur, int x, int y);
+	Inset * editXY(Cursor & cur, int x, int y) override;
 	///
-	bool insetAllowed(InsetCode code) const;
+	bool insetAllowed(InsetCode code) const override;
 	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	///
-	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const override;
 	// Update the counters of this inset and of its contents
-	void updateBuffer(ParIterator const &, UpdateType, bool const deleted);
+	void updateBuffer(ParIterator const &, UpdateType, bool const deleted) override;
 	///
-	void latex(otexstream & os, OutputParams const &) const;
+	void latex(otexstream & os, OutputParams const &) const override;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	///
-	docstring xhtml(XMLStream & os, OutputParams const & runparams) const;
+	docstring xhtml(XMLStream & os, OutputParams const & runparams) const override;
 	///
 	void addToToc(DocIterator const & di, bool output_active, UpdateType utype,
-	              TocBackend & backend) const;
+	              TocBackend & backend) const override;
 	///
-	virtual bool forcePlainLayout(idx_type = 0) const { return true; }
+	bool forcePlainLayout(idx_type = 0) const override { return true; }
 	/// Captions don't accept alignment, spacing, etc.
-	virtual bool allowParagraphCustomization(idx_type = 0) const { return false; }
+	bool allowParagraphCustomization(idx_type = 0) const override { return false; }
 	///
-	Inset * clone() const { return new InsetCaption(*this); }
+	Inset * clone() const override { return new InsetCaption(*this); }
 
 	///
 	mutable docstring full_label_;

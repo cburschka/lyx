@@ -27,11 +27,11 @@ public:
 	InsetMathDelim(Buffer * buf, docstring const & left, docstring const & right,
 		MathData const &);
 	///
-	InsetMathDelim * asDelimInset() { return this; }
+	InsetMathDelim * asDelimInset() override { return this; }
 	///
-	InsetMathDelim const * asDelimInset() const { return this; }
+	InsetMathDelim const * asDelimInset() const override { return this; }
 	///
-	MathClass mathClass() const { return MC_INNER; }
+	MathClass mathClass() const override { return MC_INNER; }
 	/// is it (...)?
 	bool isParenthesis() const;
 	/// is it [...]?
@@ -39,38 +39,38 @@ public:
 	/// is it |...|?
 	bool isAbs() const;
 	///
-	mode_type currentMode() const { return MATH_MODE; }
+	mode_type currentMode() const override { return MATH_MODE; }
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
 	void draw(PainterInfo &, int x, int y) const;
 
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	/// write normalized content
-	void normalize(NormalStream &) const;
+	void normalize(NormalStream &) const override;
 	///
-	void maple(MapleStream &) const;
+	void maple(MapleStream &) const override;
 	///
-	void maxima(MaximaStream &) const;
+	void maxima(MaximaStream &) const override;
 	///
-	void mathematica(MathematicaStream &) const;
+	void mathematica(MathematicaStream &) const override;
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 	///
-	void octave(OctaveStream &) const;
+	void octave(OctaveStream &) const override;
 	///
-	InsetCode lyxCode() const { return MATH_DELIM_CODE; }
+	InsetCode lyxCode() const override { return MATH_DELIM_CODE; }
 	///
 	docstring left_;
 	///
 	docstring right_;
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 	///
 	mutable int dw_;
 };

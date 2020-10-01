@@ -29,7 +29,7 @@ public:
 
 	/// InsetCommand inherited methods.
 	//@{
-	docstring screenLabel() const;
+	docstring screenLabel() const override;
 	static ParamInfo const & findInfo(std::string const &);
 	static std::string defaultCommand() { return "rule"; }
 	static bool isCompatibleCommand(std::string const & s)
@@ -40,18 +40,18 @@ private:
 
 	/// Inset inherited methods.
 	//@{
-	InsetCode lyxCode() const { return LINE_CODE; }
-	void docbook(XMLStream &, OutputParams const &) const;
-	docstring xhtml(XMLStream &, OutputParams const &) const;
-	bool hasSettings() const { return true; }
-	void metrics(MetricsInfo &, Dimension &) const;
-	void draw(PainterInfo & pi, int x, int y) const;
-	void latex(otexstream &, OutputParams const &) const;
+	InsetCode lyxCode() const override { return LINE_CODE; }
+	void docbook(XMLStream &, OutputParams const &) const override;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
+	bool hasSettings() const override { return true; }
+	void metrics(MetricsInfo &, Dimension &) const override;
+	void draw(PainterInfo & pi, int x, int y) const override;
+	void latex(otexstream &, OutputParams const &) const override;
 	int plaintext(odocstringstream & ods, OutputParams const & op,
-	              size_t max_length = INT_MAX) const;
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
-	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
-	Inset * clone() const { return new InsetLine(*this); }
+	              size_t max_length = INT_MAX) const override;
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const override;
+	Inset * clone() const override { return new InsetLine(*this); }
 	//@}
 
 	/// cached line height and offset.

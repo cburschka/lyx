@@ -34,29 +34,29 @@ public:
 	///
 	explicit InsetMathPhantom(Buffer * buf, Kind);
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	/// write normalized content
-	void normalize(NormalStream & ns) const;
+	void normalize(NormalStream & ns) const override;
 	///
-	void infoize(odocstream & os) const;
+	void infoize(odocstream & os) const override;
 	///
-	InsetCode lyxCode() const { return MATH_PHANTOM_CODE; }
+	InsetCode lyxCode() const override { return MATH_PHANTOM_CODE; }
 	/// Nothing for now
-	void mathmlize(MathStream &) const {}
+	void mathmlize(MathStream &) const override {}
 	/// Nothing for HTML
-	void htmlize(HtmlStream &) const {}
+	void htmlize(HtmlStream &) const override {}
 	/// request "external features"
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	/// Does the contents appear in LaTeX output?
 	bool visibleContents() const;
 
 private:
 	///
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 	///
 	Kind kind_;
 };

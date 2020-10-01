@@ -24,29 +24,29 @@ class InsetMathEnsureMath : public InsetMathNest {
 public:
 	explicit InsetMathEnsureMath(Buffer * buf);
 	///
-	mode_type currentMode() const { return MATH_MODE; }
+	mode_type currentMode() const override { return MATH_MODE; }
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
+	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const override;
 	///
-	void drawT(TextPainter & pi, int x, int y) const;
+	void drawT(TextPainter & pi, int x, int y) const override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 	///
-	void infoize(odocstream & os) const;
+	void infoize(odocstream & os) const override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	InsetCode lyxCode() const { return MATH_ENSUREMATH_CODE; }
+	InsetCode lyxCode() const override { return MATH_ENSUREMATH_CODE; }
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 };
 
 

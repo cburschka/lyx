@@ -45,19 +45,19 @@ private Q_SLOTS:
 	void on_languageCO_currentIndexChanged(int);
 private:
 	/// return false if validate_listings_params returns error
-	bool isValid();
+	bool isValid() override;
 	/// Apply changes
-	void applyView();
+	void applyView() override;
 	/// update
-	void updateContents();
+	void updateContents() override;
 	///
-	bool initialiseParams(std::string const & data);
+	bool initialiseParams(std::string const & data) override;
 	/// clean-up on hide.
-	void clearParams();
+	void clearParams() override;
 	/// clean-up on hide.
-	void dispatchParams();
+	void dispatchParams() override;
 	///
-	bool isBufferDependent() const { return true; }
+	bool isBufferDependent() const override { return true; }
 	///
 	void setParams(InsetListingsParams const &);
 

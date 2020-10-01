@@ -168,55 +168,55 @@ public:
 	///
 	InsetInfo(Buffer * buf, std::string const & info = std::string());
 	///
-	InsetCode lyxCode() const { return INFO_CODE; }
+	InsetCode lyxCode() const override { return INFO_CODE; }
 	///
-	docstring layoutName() const;
+	docstring layoutName() const override;
 	///
-	Inset * editXY(Cursor & cur, int x, int y);
+	Inset * editXY(Cursor & cur, int x, int y) override;
 	/** FIXME: we would like to do that, but then InsetText::updateBuffer breaks
 	 * on info insets. Do we need to run this method on InsetInfo contents?
 	 * Having a InsetInfo that hides an InsetText is really annoying, actually.
 	 */
-	///bool isActive() const { return false; }
+	///bool isActive() const override { return false; }
 	///
-	bool editable() const { return false; }
+	bool editable() const override { return false; }
 	///
-	bool hasSettings() const { return true; }
+	bool hasSettings() const override { return true; }
 	///
-	void read(Lexer & lex);
+	void read(Lexer & lex) override;
 	///
-	void write(std::ostream & os) const;
+	void write(std::ostream & os) const override;
 	///
-	bool validateModifyArgument(docstring const & argument) const {
+	bool validateModifyArgument(docstring const & argument) const override {
 		return params_.validateArgument(&buffer(), argument); }
 	///
-	bool showInsetDialog(BufferView * bv) const;
+	bool showInsetDialog(BufferView * bv) const override;
 	///
-	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const override;
 	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	/// Force inset into LTR environment if surroundings are RTL
-	bool forceLTR(OutputParams const &) const;
+	bool forceLTR(OutputParams const &) const override;
 	///
-	bool forceLocalFontSwitch() const;
+	bool forceLocalFontSwitch() const override;
 	///
 	void setInfo(std::string const & info);
 	///
-	void updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted = false);
+	void updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted = false) override;
 	///
-	docstring toolTip(BufferView const & bv, int x, int y) const;
+	docstring toolTip(BufferView const & bv, int x, int y) const override;
 	///
-	std::string contextMenu(BufferView const &, int, int) const;
+	std::string contextMenu(BufferView const &, int, int) const override;
 	///
-	std::string contextMenuName() const;
+	std::string contextMenuName() const override;
 	/// should paragraph indentation be omitted in any case?
-	bool neverIndent() const { return true; }
+	bool neverIndent() const override { return true; }
 	///
 	InsetInfoParams params() const { return params_; }
 
 private:
 	///
-	virtual Inset * clone() const { return new InsetInfo(*this); }
+	Inset * clone() const override { return new InsetInfo(*this); }
 	///
 	void error(docstring const & err, Language const *);
 	///

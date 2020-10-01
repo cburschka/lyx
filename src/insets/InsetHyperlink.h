@@ -28,32 +28,32 @@ public:
 	/// \name Public functions inherited from Inset class
 	//@{
 	///
-	InsetCode lyxCode() const { return HYPERLINK_CODE; }
+	InsetCode lyxCode() const override { return HYPERLINK_CODE; }
 	///
-	bool hasSettings() const { return true; }
+	bool hasSettings() const override { return true; }
 	///
-	bool forceLTR(OutputParams const &) const { return true; }
+	bool forceLTR(OutputParams const &) const override { return true; }
 	///
-	bool isInToc() const { return true; }
+	bool isInToc() const override { return true; }
 	///
-	void toString(odocstream &) const;
+	void toString(odocstream &) const override;
 	///
-	void forOutliner(docstring &, size_t const, bool const) const;
+	void forOutliner(docstring &, size_t const, bool const) const override;
 	///
-	docstring toolTip(BufferView const & bv, int x, int y) const;
+	docstring toolTip(BufferView const & bv, int x, int y) const override;
 	///
-	std::string contextMenuName() const;
+	std::string contextMenuName() const override;
 	///
-	void validate(LaTeXFeatures &) const;
+	void validate(LaTeXFeatures &) const override;
 	///
-	void latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const override;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	///
-	docstring xhtml(XMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	//@}
 
 	/// \name Static public methods obligated for InsetCommand derived classes
@@ -71,18 +71,18 @@ private:
 	/// \name Private functions inherited from Inset class
 	//@{
 	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd,
-		FuncStatus & flag) const;
+		FuncStatus & flag) const override;
 	///
-	Inset * clone() const { return new InsetHyperlink(*this); }
+	Inset * clone() const override { return new InsetHyperlink(*this); }
 	//@}
 
 	/// \name Private functions inherited from InsetCommand class
 	//@{
 	///
-	docstring screenLabel() const;
+	docstring screenLabel() const override;
 	//@}
 
 	///

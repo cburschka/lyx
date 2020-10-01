@@ -31,36 +31,36 @@ public:
 	///
 	virtual ~InsetMathNest();
 	///
-	void setBuffer(Buffer &);
+	void setBuffer(Buffer &) override;
 
 	/// Update the cells metrics
 	void cellsMetrics(MetricsInfo const & mi) const;
 	/// draw background if locked
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false);
+	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false) override;
 	/// identifies NestInsets
-	InsetMathNest * asNestInset() { return this; }
+	InsetMathNest * asNestInset() override { return this; }
 	/// identifies NestInsets
-	InsetMathNest const * asNestInset() const { return this; }
+	InsetMathNest const * asNestInset() const override { return this; }
 	/// get cursor position
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
-		bool boundary, int & x, int & y) const;
+		bool boundary, int & x, int & y) const override;
 	///
 	void edit(Cursor & cur, bool front,
-		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);
+		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE) override;
 	///
-	Inset * editXY(Cursor & cur, int x, int y);
+	Inset * editXY(Cursor & cur, int x, int y) override;
 
 	/// order of movement through the cells when moving backwards
-	bool idxBackward(Cursor &) const;
+	bool idxBackward(Cursor &) const override;
 	/// order of movement through the cells when moving forward
-	bool idxForward(Cursor &) const;
+	bool idxForward(Cursor &) const override;
 
 	/// move to next cell
-	bool idxNext(Cursor &) const;
+	bool idxNext(Cursor &) const override;
 	/// move to previous cell
-	bool idxPrev(Cursor &) const;
+	bool idxPrev(Cursor &) const override;
 
 	// The index of the cell entered while moving forward
 	virtual idx_type firstIdx() const { return 0; }
@@ -68,74 +68,74 @@ public:
 	virtual idx_type lastIdx() const { return nargs() - 1; }
 
 	/// target pos when we enter the inset while moving forward
-	bool idxFirst(Cursor &) const;
+	bool idxFirst(Cursor &) const override;
 	/// target pos when we enter the inset while moving backwards
-	bool idxLast(Cursor &) const;
+	bool idxLast(Cursor &) const override;
 
 	/// number of cells currently governed by us
-	idx_type nargs() const;
+	idx_type nargs() const override;
 	/// access to the lock
-	bool lock() const;
+	bool lock() const override;
 	/// access to the lock
-	void lock(bool);
+	void lock(bool) override;
 	/// get notification when the cursor leaves this inset
-	bool notifyCursorLeaves(Cursor const & old, Cursor & cur);
+	bool notifyCursorLeaves(Cursor const & old, Cursor & cur) override;
 
 	//@{
 	/// direct access to the cell.
 	/// Inlined because of performance reasons.
-	MathData & cell(idx_type i) { return cells_[i]; }
-	MathData const & cell(idx_type i) const { return cells_[i]; }
+	MathData & cell(idx_type i) override { return cells_[i]; }
+	MathData const & cell(idx_type i) const override { return cells_[i]; }
 	//@}
 
 	/// can we move into this cell (see macroarg.h)
-	bool isActive() const;
+	bool isActive() const override;
 	/// request "external features"
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 
 	/// replace in all cells
-	void replace(ReplaceData &);
+	void replace(ReplaceData &) override;
 	/// do we contain a given pattern?
-	bool contains(MathData const &) const;
+	bool contains(MathData const &) const override;
 	/// glue everything to a single cell
 	MathData glue() const;
 
 	/// debug helper
-	void dump() const;
+	void dump() const override;
 
 	/// writes \\, name(), and args in braces and '\\lyxlock' if necessary
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	/// writes [, name(), and args in []
-	void normalize(NormalStream & os) const;
+	void normalize(NormalStream & os) const override;
 	///
-	void latex(otexstream & os, OutputParams const & runparams) const;
+	void latex(otexstream & os, OutputParams const & runparams) const override;
 	///
-	bool setMouseHover(BufferView const * bv, bool mouse_hover) const;
+	bool setMouseHover(BufferView const * bv, bool mouse_hover) const override;
 	///
-	bool mouseHovered(BufferView const * bv) const
+	bool mouseHovered(BufferView const * bv) const override
 		{ return mouse_hover_[bv]; }
 
 	///
-	bool completionSupported(Cursor const &) const;
+	bool completionSupported(Cursor const &) const override;
 	///
-	bool inlineCompletionSupported(Cursor const & cur) const;
+	bool inlineCompletionSupported(Cursor const & cur) const override;
 	///
-	bool automaticInlineCompletion() const;
+	bool automaticInlineCompletion() const override;
 	///
-	bool automaticPopupCompletion() const;
+	bool automaticPopupCompletion() const override;
 	///
-	CompletionList const * createCompletionList(Cursor const & cur) const;
+	CompletionList const * createCompletionList(Cursor const & cur) const override;
 	///
-	docstring completionPrefix(Cursor const & cur) const;
+	docstring completionPrefix(Cursor const & cur) const override;
 	///
-	bool insertCompletion(Cursor & cur, docstring const & s, bool finished);
+	bool insertCompletion(Cursor & cur, docstring const & s, bool finished) override;
 	///
-	void completionPosAndDim(Cursor const &, int & x, int & y, Dimension & dim) const;
+	void completionPosAndDim(Cursor const &, int & x, int & y, Dimension & dim) const override;
 	///
-	InsetCode lyxCode() const { return MATH_NEST_CODE; }
+	InsetCode lyxCode() const override { return MATH_NEST_CODE; }
 
 	///
-	bool confirmDeletion() const { return nargs() > 0; }
+	bool confirmDeletion() const override { return nargs() > 0; }
 
 protected:
 	///
@@ -144,10 +144,10 @@ protected:
 	InsetMathNest & operator=(InsetMathNest const &);
 
 	///
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	/// do we want to handle this event?
 	bool getStatus(Cursor & cur, FuncRequest const & cmd,
-		FuncStatus & status) const;
+		FuncStatus & status) const override;
 	///
 	void handleFont(Cursor & cur,
 		docstring const & arg, docstring const & font);

@@ -41,15 +41,15 @@ private Q_SLOTS:
 	void selectBetweenrev();
 private:
 	///
-	void updateContents();
+	void updateContents() override;
 	///
-	bool initialiseParams(std::string const &);
+	bool initialiseParams(std::string const &) override;
 	///
-	bool isBufferDependent() const { return true; }
+	bool isBufferDependent() const override { return true; }
 	///
-	void clearParams() {}
+	void clearParams() override {}
 	///
-	void dispatchParams() {}
+	void dispatchParams() override {}
 	///
 	void enableControls();
 

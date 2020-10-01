@@ -31,48 +31,48 @@ public:
 	///
 	explicit InsetMathSpace(Length const & length, bool const prot = false);
 	///
-	InsetMathSpace const * asSpaceInset() const { return this; }
+	InsetMathSpace const * asSpaceInset() const override { return this; }
 	///
-	InsetMathSpace * asSpaceInset() { return this; }
+	InsetMathSpace * asSpaceInset() override { return this; }
 	///
 	void incSpace();
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 
 	///
-	void normalize(NormalStream &) const;
+	void normalize(NormalStream &) const override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	void maple(MapleStream &) const;
+	void maple(MapleStream &) const override;
 	///
-	void mathematica(MathematicaStream &) const;
+	void mathematica(MathematicaStream &) const override;
 	///
-	void octave(OctaveStream &) const;
+	void octave(OctaveStream &) const override;
 	///
-	void mathmlize(MathStream & ms) const;
+	void mathmlize(MathStream & ms) const override;
 	///
-	void htmlize(HtmlStream & ms) const;
+	void htmlize(HtmlStream & ms) const override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	/// generate something that will be understood by the Dialogs.
 	InsetSpaceParams params() const;
 	///
-	bool hasSettings() const { return true; }
+	bool hasSettings() const override { return true; }
 	///
-	std::string contextMenuName() const;
+	std::string contextMenuName() const override;
 	///
-	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const override;
 	///
-	InsetCode lyxCode() const { return MATH_SPACE_CODE; }
+	InsetCode lyxCode() const override { return MATH_SPACE_CODE; }
 
 protected:
 	///
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 	///
 	bool isNegative() const;
 	///

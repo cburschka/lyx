@@ -28,7 +28,7 @@ class GuiThesaurus : public GuiDialog, public Ui::ThesaurusUi
 public:
 	GuiThesaurus(GuiView & lv);
 
-	void checkStatus();
+	void checkStatus() override;
 
 private Q_SLOTS:
 	void change_adaptor();
@@ -40,17 +40,17 @@ private Q_SLOTS:
 
 private:
 	/// update
-	void updateContents();
+	void updateContents() override;
 	///
 	void updateLists();
 	///
-	bool initialiseParams(std::string const & data);
+	bool initialiseParams(std::string const & data) override;
 	///
-	void clearParams();
+	void clearParams() override;
 	///
-	void dispatchParams() {}
+	void dispatchParams() override {}
 	///
-	bool isBufferDependent() const { return true; }
+	bool isBufferDependent() const override { return true; }
 
 	/// replace the particular string
 	void replace(docstring const & newstr);
@@ -72,7 +72,7 @@ private:
 	docstring lang_;
 
 	/// not needed.
-	void apply() {}
+	void apply() override {}
 };
 
 } // namespace frontend

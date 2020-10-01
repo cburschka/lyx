@@ -27,33 +27,33 @@ public:
 	InsetMathTabular(Buffer * buf, docstring const &, int m, int n,
 		char valign, docstring const & halign);
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
 	InsetMathTabular * asTabularInset() { return this; }
 	///
 	InsetMathTabular const * asTabularInset() const { return this; }
 
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	void infoize(odocstream & os) const;
+	void infoize(odocstream & os) const override;
 	///
-	void normalize(NormalStream &) const;
+	void normalize(NormalStream &) const override;
 	///
-	void maple(MapleStream &) const;
+	void maple(MapleStream &) const override;
 	///
-	InsetCode lyxCode() const { return MATH_TABULAR_CODE; }
+	InsetCode lyxCode() const override { return MATH_TABULAR_CODE; }
 	///
-	int leftMargin() const { return 4; } //override
+	int leftMargin() const override { return 4; }
 	///
-	int rightMargin() const { return 2; } //override
+	int rightMargin() const override { return 2; }
 	///
-	bool handlesMulticolumn() const { return true; } //override
+	bool handlesMulticolumn() const override { return true; }
 
 private:
-	Inset * clone() const;
+	Inset * clone() const override;
 	///
 	docstring name_;
 };

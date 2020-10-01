@@ -51,7 +51,7 @@ public:
 	/// To be used in combination with inset-forall
 	/// Here's a command that removes every latexpar separator:
 	///   inset-forall Separator:latexpar char-delete-forward
-	docstring layoutName() const
+	docstring layoutName() const override
 	{
 		switch (params_.kind) {
 		case InsetSeparatorParams::PLAIN:
@@ -65,40 +65,40 @@ public:
 		return docstring();
 	}
 	///
-	RowFlags rowFlags() const { return BreakAfter; }
+	RowFlags rowFlags() const override { return BreakAfter; }
 private:
 	///
-	InsetCode lyxCode() const { return SEPARATOR_CODE; }
+	InsetCode lyxCode() const override { return SEPARATOR_CODE; }
 	///
-	void metrics(MetricsInfo &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const override;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	///
-	docstring xhtml(XMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	void read(Lexer & lex);
+	void read(Lexer & lex) override;
 	///
-	void write(std::ostream & os) const;
+	void write(std::ostream & os) const override;
 	/// is this equivalent to a space (which is BTW different from
 	/// a line separator)?
-	bool isSpace() const { return true; }
+	bool isSpace() const override { return true; }
 	///
 	ColorCode ColorName() const;
 	///
-	std::string contextMenuName() const;
+	std::string contextMenuName() const override;
 	///
-	Inset * clone() const { return new InsetSeparator(*this); }
+	Inset * clone() const override { return new InsetSeparator(*this); }
 	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	///
-	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const override;
 
 	///
 	InsetSeparatorParams params_;

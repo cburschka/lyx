@@ -137,13 +137,11 @@ public:
 	std::string const & command() const { return command_; }
 
 private:
-	virtual bool
-	do_copy(support::FileName const & from, support::FileName const & to,
-		std::string const & latex) const;
+	bool do_copy(support::FileName const & from, support::FileName const & to,
+		std::string const & latex) const override;
 
-	virtual bool
-	do_rename(support::FileName const & from, support::FileName const & to,
-		  std::string const & latex) const;
+	bool do_rename(support::FileName const & from, support::FileName const & to,
+		  std::string const & latex) const override;
 
 	std::string command_;
 };

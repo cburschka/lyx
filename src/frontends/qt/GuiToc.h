@@ -35,20 +35,20 @@ public:
 			Qt::WindowFlags flags = {});
 
 	///
-	bool initialiseParams(std::string const & data);
-	void updateView();
-	void enableView(bool enable);
-	bool wantInitialFocus() const { return false; }
+	bool initialiseParams(std::string const & data) override;
+	void updateView() override;
+	void enableView(bool enable) override;
+	bool wantInitialFocus() const override { return false; }
 	void closeEvent(QCloseEvent * event);
-	bool isClosing() const { return is_closing_; }
+	bool isClosing() const override { return is_closing_; }
 
 public:
 	/// clean-up on hide.
-	void clearParams() {}
+	void clearParams() override {}
 	///
-	void dispatchParams();
+	void dispatchParams() override;
 	///
-	bool isBufferDependent() const { return true; }
+	bool isBufferDependent() const override { return true; }
 	///
 	void doDispatch(Cursor & cur, FuncRequest const & fr, DispatchResult & dr);
 	///

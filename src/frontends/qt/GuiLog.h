@@ -32,7 +32,7 @@ public:
 	GuiLog(GuiView & lv);
 
 private Q_SLOTS:
-	void updateContents();
+	void updateContents() override;
 	/// find content
 	void find();
 	/// jump to next error message
@@ -46,7 +46,7 @@ private Q_SLOTS:
 
 private:
 	/// Apply changes
-	void applyView() {}
+	void applyView() override {}
 
 	/// log syntax highlighter
 	LogHighlighter * highlighter;
@@ -54,13 +54,13 @@ private:
 	/** \param data should contain "<logtype> <logfile>"
 	 *  where <logtype> is one of "latex", "literate", "lyx2lyx", "vc".
 	 */
-	bool initialiseParams(std::string const & data);
+	bool initialiseParams(std::string const & data) override;
 	///
-	void clearParams();
+	void clearParams() override;
 	///
-	void dispatchParams() {}
+	void dispatchParams() override {}
 	///
-	bool isBufferDependent() const { return true; }
+	bool isBufferDependent() const override { return true; }
 
 	/// The title displayed by the dialog reflects the \c LogType
 	docstring title() const;

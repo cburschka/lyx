@@ -201,7 +201,7 @@ public:
 	///
 	bool isDisplay() const { return display_; }
 	///
-	bool forcelocalfontswitch() const { return forcelocalfontswitch_; }
+	bool forceLocalFontSwitch() const { return forcelocalfontswitch_; }
 	///
 	docstring const & obsoleted_by() const { return obsoleted_by_; }
 	///

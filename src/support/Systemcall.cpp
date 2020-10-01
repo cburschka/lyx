@@ -59,22 +59,22 @@ class ProgressDummy : public ProgressInterface
 public:
 	ProgressDummy() {}
 
-	void processStarted(QString const &) {}
-	void processFinished(QString const &) {}
-	void appendMessage(QString const &) {}
-	void appendError(QString const &) {}
-	void clearMessages() {}
-	void lyxerrFlush() {}
+	void processStarted(QString const &) override {}
+	void processFinished(QString const &) override {}
+	void appendMessage(QString const &) override {}
+	void appendError(QString const &) override {}
+	void clearMessages() override {}
+	void lyxerrFlush() override {}
 
-	void lyxerrConnect() {}
-	void lyxerrDisconnect() {}
+	void lyxerrConnect() override {}
+	void lyxerrDisconnect() override {}
 
-	void warning(QString const &, QString const &) {}
-	void toggleWarning(QString const &, QString const &, QString const &) {}
-	void error(QString const &, QString const &, QString const &) {}
-	void information(QString const &, QString const &) {}
+	void warning(QString const &, QString const &) override {}
+	void toggleWarning(QString const &, QString const &, QString const &) override {}
+	void error(QString const &, QString const &, QString const &) override {}
+	void information(QString const &, QString const &) override {}
 	int prompt(docstring const &, docstring const &, int default_but, int,
-		   docstring const &, docstring const &) { return default_but; }
+		   docstring const &, docstring const &) override { return default_but; }
 };
 
 

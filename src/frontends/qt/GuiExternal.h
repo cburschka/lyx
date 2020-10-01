@@ -49,22 +49,22 @@ private:
 	///
 	bool activateAspectratio() const;
 	/// Apply changes
-	void applyView();
+	void applyView() override;
 	/// update
-	void updateContents();
+	void updateContents() override;
 	/// Helper function called when the template is changed.
 	void updateTemplate();
 	///
 	bool usingScale() const;
 
 	///
-	bool initialiseParams(std::string const & data);
+	bool initialiseParams(std::string const & data) override;
 	/// clean-up on hide.
-	void clearParams();
+	void clearParams() override;
 	/// clean-up on hide.
-	void dispatchParams();
+	void dispatchParams() override;
 	///
-	bool isBufferDependent() const { return true; }
+	bool isBufferDependent() const override { return true; }
 
 	///
 	QString browse(QString const & input_file,

@@ -52,16 +52,16 @@ public:
 	~GuiProgressView();
 	/// Controller inherited method.
 	///@{
-	bool initialiseParams(std::string const &) { return true; }
-	void clearParams() {}
-	void dispatchParams() {}
-	bool isBufferDependent() const { return false; }
-	bool canApply() const { return true; }
-	bool canApplyToReadOnly() const { return true; }
-	void updateView() {}
-	bool wantInitialFocus() const { return false; }
-	void restoreSession();
-	void saveSession(QSettings & settings) const;
+	bool initialiseParams(std::string const &) override { return true; }
+	void clearParams() override {}
+	void dispatchParams() override {}
+	bool isBufferDependent() const override { return false; }
+	bool canApply() const override { return true; }
+	bool canApplyToReadOnly() const override { return true; }
+	void updateView() override {}
+	bool wantInitialFocus() const override { return false; }
+	void restoreSession() override;
+	void saveSession(QSettings & settings) const override;
 	///@}
 
 private Q_SLOTS:

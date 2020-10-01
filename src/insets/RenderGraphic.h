@@ -26,12 +26,12 @@ class RenderGraphic : public RenderBase
 public:
 	explicit RenderGraphic(Inset const *);
 	RenderGraphic(RenderGraphic const &, Inset const *);
-	RenderBase * clone(Inset const *) const;
+	RenderBase * clone(Inset const *) const override;
 
 	/// compute the size of the object returned in dim
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	/// draw inset
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 
 	/// Refresh the info about which file to display and how to display it.
 	void update(graphics::Params const & params);
@@ -39,7 +39,7 @@ public:
 	void reload() const;
 
 	/// equivalent to dynamic_cast
-	virtual RenderGraphic * asGraphic() { return this; }
+	RenderGraphic * asGraphic() override { return this; }
 
 private:
 	/// Not implemented.

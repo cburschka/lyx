@@ -76,18 +76,18 @@ Q_SIGNALS:
 
 public:
 	/// Apply changes
-	void applyView();
+	void applyView() override;
 
 	std::vector<PrefModule *> modules_;
 
 	///
-	bool initialiseParams(std::string const &);
+	bool initialiseParams(std::string const &) override;
 	///
-	void clearParams() {}
+	void clearParams() override {}
 	///
-	void dispatchParams();
+	void dispatchParams() override;
 	///
-	bool isBufferDependent() const { return false; }
+	bool isBufferDependent() const override { return false; }
 
 	/// various file pickers
 	QString browsebind(QString const & file);

@@ -67,15 +67,15 @@ public:
 	InsetLabelBox(Buffer * buf, docstring label, InsetMathMacroTemplate const & parent,
 		      bool frame = false);
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo &, int x, int y) const;
+	void draw(PainterInfo &, int x, int y) const override;
 
 protected:
 	///
 	InsetMathMacroTemplate const & parent_;
 	///
-	Inset * clone() const;
+	Inset * clone() const override;
 	///
 	docstring const label_;
 	///
@@ -190,15 +190,15 @@ public:
 			InsetMathMacroTemplate const & parent);
 
 	///
-	marker_type marker(BufferView const *) const;
+	marker_type marker(BufferView const *) const override;
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo &, int x, int y) const;
+	void draw(PainterInfo &, int x, int y) const override;
 
 protected:
 	///
-	Inset * clone() const;
+	Inset * clone() const override;
 };
 
 
@@ -252,13 +252,13 @@ public:
 	///
 	explicit InsetMathWrapper(MathData const * value) : value_(value) {}
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo &, int x, int y) const;
+	void draw(PainterInfo &, int x, int y) const override;
 
 private:
 	///
-	Inset * clone() const;
+	Inset * clone() const override;
 	///
 	MathData const * value_;
 };
@@ -290,13 +290,13 @@ public:
 	///
 	InsetColoredCell(Buffer * buf, ColorCode blend, MathAtom const & atom);
 	///
-	void draw(PainterInfo &, int x, int y) const;
+	void draw(PainterInfo &, int x, int y) const override;
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 
 protected:
 	///
-	Inset * clone() const;
+	Inset * clone() const override;
 	///
 	ColorCode blend_;
 };
@@ -342,15 +342,15 @@ public:
 	///
 	InsetNameWrapper(MathData const * value, InsetMathMacroTemplate const & parent);
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo &, int x, int y) const;
+	void draw(PainterInfo &, int x, int y) const override;
 
 private:
 	///
 	InsetMathMacroTemplate const & parent_;
 	///
-	Inset * clone() const;
+	Inset * clone() const override;
 };
 
 

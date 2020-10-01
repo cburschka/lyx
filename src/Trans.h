@@ -238,11 +238,11 @@ public:
 	///
 	TransInitState();
 	///
-	virtual docstring const normalkey(char_type);
+	docstring const normalkey(char_type) override;
 	///
-	virtual bool backspace() { return true; }
+	bool backspace() override { return true; }
 	///
-	virtual docstring const deadkey(char_type, KmodInfo);
+	docstring const deadkey(char_type, KmodInfo) override;
 };
 
 
@@ -252,14 +252,14 @@ public:
 	///
 	TransDeadkeyState();
 	///
-	virtual docstring const normalkey(char_type);
+	docstring const normalkey(char_type) override;
 	///
-	virtual bool backspace() {
+	bool backspace() override {
 		currentState = init_state_;
 		return false;
 	}
 	///
-	virtual docstring const deadkey(char_type, KmodInfo);
+	docstring const deadkey(char_type, KmodInfo) override;
 };
 
 
@@ -269,9 +269,9 @@ public:
 	///
 	TransCombinedState();
 	///
-	virtual docstring const normalkey(char_type);
+	docstring const normalkey(char_type) override;
 	///
-	virtual bool backspace() {
+	bool backspace() override {
 		// cancel the second deadkey
 		deadkey2_ = 0;
 		deadkey2_info_.accent = TEX_NOACCENT;
@@ -280,7 +280,7 @@ public:
 		return false;
 	}
 	///
-	virtual docstring const deadkey(char_type, KmodInfo);
+	docstring const deadkey(char_type, KmodInfo) override;
 };
 
 

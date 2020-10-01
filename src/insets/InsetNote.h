@@ -58,49 +58,49 @@ public:
 	InsetNoteParams const & params() const { return params_; }
 private:
 	///
-	InsetCode lyxCode() const { return NOTE_CODE; }
+	InsetCode lyxCode() const override { return NOTE_CODE; }
 	///
-	docstring layoutName() const;
+	docstring layoutName() const override;
 	/** returns false if, when outputting LaTeX, font changes should
 	    be closed before generating this inset. This is needed for
 	    insets that may contain several paragraphs */
-	bool inheritFont() const { return params_.type == InsetNoteParams::Note; }
+	bool inheritFont() const override { return params_.type == InsetNoteParams::Note; }
 	/// Is the content of this inset part of the output document?
-	bool producesOutput() const
+	bool producesOutput() const override
 		{ return params_.type == InsetNoteParams::Greyedout; }
 	///
-	bool allowSpellCheck() const;
+	bool allowSpellCheck() const override;
 	///
-	FontInfo getFont() const;
+	FontInfo getFont() const override;
 	///
-	void write(std::ostream &) const;
+	void write(std::ostream &) const override;
 	///
-	void read(Lexer & lex);
+	void read(Lexer & lex) override;
 	/// show the note dialog
-	bool showInsetDialog(BufferView * bv) const;
+	bool showInsetDialog(BufferView * bv) const override;
 	///
-	bool isMacroScope() const;
+	bool isMacroScope() const override;
 	///
-	void latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const override;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	///
-	docstring xhtml(XMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	void validate(LaTeXFeatures &) const;
+	void validate(LaTeXFeatures &) const override;
 	///
-	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const override;
 	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	///
-	Inset * clone() const { return new InsetNote(*this); }
+	Inset * clone() const override { return new InsetNote(*this); }
 	/// used by the constructors
 	void init();
 	///
-	std::string contextMenuName() const;
+	std::string contextMenuName() const override;
 	///
 	friend class InsetNoteParams;
 

@@ -25,17 +25,17 @@ public:
 	///
 	InsetMathFracBase(Buffer * buf, idx_type ncells = 2);
 	///
-	marker_type marker(BufferView const *) const { return MARKER2; }
+	marker_type marker(BufferView const *) const override { return MARKER2; }
 	///
-	bool idxUpDown(Cursor &, bool up) const;
+	bool idxUpDown(Cursor &, bool up) const override;
 	///
-	bool idxBackward(Cursor &) const { return false; }
+	bool idxBackward(Cursor &) const override { return false; }
 	///
-	bool idxForward(Cursor &) const { return false; }
+	bool idxForward(Cursor &) const override { return false; }
 	///
-	InsetMathFracBase * asFracBaseInset() { return this; }
+	InsetMathFracBase * asFracBaseInset() override { return this; }
 	///
-	InsetMathFracBase const * asFracBaseInset() const { return this; }
+	InsetMathFracBase const * asFracBaseInset() const override { return this; }
 };
 
 
@@ -60,46 +60,46 @@ public:
 	///
 	explicit InsetMathFrac(Buffer * buf, Kind kind = FRAC, idx_type ncells = 2);
 	///
-	bool idxForward(Cursor &) const;
+	bool idxForward(Cursor &) const override;
 	///
-	bool idxBackward(Cursor &) const;
+	bool idxBackward(Cursor &) const override;
 	///
-	MathClass mathClass() const;
+	MathClass mathClass() const override;
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo &, int x, int y) const;
+	void draw(PainterInfo &, int x, int y) const override;
 	///
-	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
+	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const override;
 	///
-	void drawT(TextPainter &, int x, int y) const;
+	void drawT(TextPainter &, int x, int y) const override;
 	/// identifies FracInsets
-	InsetMathFrac * asFracInset();
+	InsetMathFrac * asFracInset() override;
 	/// identifies FracInsets
-	InsetMathFrac const * asFracInset() const;
+	InsetMathFrac const * asFracInset() const override;
 	///
-	docstring name() const;
+	docstring name() const override;
 	///
-	bool extraBraces() const;
+	bool extraBraces() const override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	void maple(MapleStream &) const;
+	void maple(MapleStream &) const override;
 	///
-	void mathematica(MathematicaStream &) const;
+	void mathematica(MathematicaStream &) const override;
 	///
-	void octave(OctaveStream &) const;
+	void octave(OctaveStream &) const override;
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 private:
 	/// vertical displacement
 	int dy(FontInfo & fi) const;
 	///
-	Inset * clone() const;
+	Inset * clone() const override;
 	///
 	Kind kind_;
 };
@@ -121,27 +121,27 @@ public:
 	///
 	explicit InsetMathBinom(Buffer * buf, Kind kind = BINOM);
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	void normalize(NormalStream &) const;
+	void normalize(NormalStream &) const override;
 	/// Generalized fractions are of inner class (see The TeXbook, p.292)
-	MathClass mathClass() const { return MC_INNER; }
+	MathClass mathClass() const override { return MC_INNER; }
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo &, int x, int y) const;
+	void draw(PainterInfo &, int x, int y) const override;
 	///
-	bool extraBraces() const;
+	bool extraBraces() const override;
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	InsetCode lyxCode() const { return MATH_FRAC_CODE; }
+	InsetCode lyxCode() const override { return MATH_FRAC_CODE; }
 private:
-	Inset * clone() const;
+	Inset * clone() const override;
 	///
 	int dw(int height) const;
 	///

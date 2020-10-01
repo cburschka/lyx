@@ -31,52 +31,52 @@ public:
 
 	/// draw a line from point to point
 	void line(int, int, int, int, Color,
-		line_style = line_solid, int = thin_line) {}
+		line_style = line_solid, int = thin_line) override {}
 
 	///
 	void lines(int const *, int const *, int, Color,
 		fill_style = fill_none, line_style = line_solid,
-		int = thin_line) {}
+		int = thin_line) override {}
 
 	///
 	void path(int const *, int const *, int const *, int const *,
 		int const *, int const *, int, Color,
-		fill_style = fill_none, line_style = line_solid, int = thin_line) {}
+		fill_style = fill_none, line_style = line_solid, int = thin_line) override {}
 
 	/// draw a rectangle
 	void rectangle(int, int, int, int, Color,
-		line_style = line_solid, int = thin_line) {}
+		line_style = line_solid, int = thin_line) override {}
 
 	/// draw a filled rectangle
-	void fillRectangle(int, int, int, int, Color) {}
+	void fillRectangle(int, int, int, int, Color) override {}
 
 	/// draw an arc
-	void arc(int, int, unsigned int, unsigned int, int, int, Color) {}
+	void arc(int, int, unsigned int, unsigned int, int, int, Color) override {}
 
 	/// draw a pixel
-	void point(int, int, Color) {}
+	void point(int, int, Color) override {}
 
 	/// draw an image from the image cache
-	void image(int, int, int, int, graphics::Image const &) {}
+	void image(int, int, int, int, graphics::Image const &) override {}
 
 	/// draw a string
-	void text(int, int, docstring const &, FontInfo const &) {}
+	void text(int, int, docstring const &, FontInfo const &) override {}
 
 	/// draw a char
-	void text(int, int, char_type, FontInfo const &) {}
+	void text(int, int, char_type, FontInfo const &) override {}
 
 	/// draw a string
-	void text(int, int, docstring const &, Font const &, double, double) {}
+	void text(int, int, docstring const &, Font const &, double, double) override {}
 
 	///
 	void text(int, int, docstring const &, Font const &,
-	          Color, size_type, size_type, double, double) {}
+	          Color, size_type, size_type, double, double) override {}
 
 	/// This painter does not paint
-	bool isNull() const { return true; }
+	bool isNull() const override { return true; }
 
  	/// draw the underbar, strikeout, xout, uuline and uwave font attributes
-	void textDecoration(FontInfo const &, int, int, int) {}
+	void textDecoration(FontInfo const &, int, int, int) override {}
 
 	/**
 	 * Draw a string and enclose it inside a rectangle. If
@@ -85,22 +85,22 @@ public:
 	 * around the text with the given color.
 	 */
 	void rectText(int, int, docstring const &,
-	              FontInfo const &, Color, Color) {}
+	              FontInfo const &, Color, Color) override {}
 
 	/// draw a string and enclose it inside a button frame
 	void buttonText(int, int, docstring const &,
-	                FontInfo const &, Color, Color, int) {}
+	                FontInfo const &, Color, Color, int) override {}
 
 	/// draw a character of a preedit string for cjk support.
 	int preeditText(int, int, char_type, FontInfo const &,
-	                preedit_style) { return 0; }
+	                preedit_style) override { return 0; }
 
 	/// start monochrome painting mode, i.e. map every color a shade of \c blend.
-	void enterMonochromeMode(Color const &) {}
+	void enterMonochromeMode(Color const &) override {}
 	/// leave monochrome painting mode
-	void leaveMonochromeMode() {}
+	void leaveMonochromeMode() override {}
 	/// draws a wavy line that can be used for underlining.
-	void wavyHorizontalLine(int, int, int, ColorCode) {}
+	void wavyHorizontalLine(int, int, int, ColorCode) override {}
 };
 
 } // namespace frontend

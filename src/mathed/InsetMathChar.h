@@ -24,39 +24,39 @@ public:
 	///
 	explicit InsetMathChar(char_type c);
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
+	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const override;
 	///
-	void drawT(TextPainter &, int x, int y) const;
+	void drawT(TextPainter &, int x, int y) const override;
 	///
-	int kerning(BufferView const *) const { return kerning_; }
+	int kerning(BufferView const *) const override { return kerning_; }
 
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	void normalize(NormalStream & ns) const;
+	void normalize(NormalStream & ns) const override;
 	///
-	void octave(OctaveStream & os) const;
+	void octave(OctaveStream & os) const override;
 	///
-	void mathmlize(MathStream & ms) const;
+	void mathmlize(MathStream & ms) const override;
 	///
-	void htmlize(HtmlStream & ms) const;
+	void htmlize(HtmlStream & ms) const override;
 	/// identifies Charinsets
-	InsetMathChar const * asCharInset() const { return this; }
+	InsetMathChar const * asCharInset() const override { return this; }
 	///
-	char_type getChar() const { return char_; }
+	char_type getChar() const override { return char_; }
 	///
-	MathClass mathClass() const;
+	MathClass mathClass() const override;
 	///
-	InsetCode lyxCode() const { return MATH_CHAR_CODE; }
+	InsetCode lyxCode() const override { return MATH_CHAR_CODE; }
 
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 	/// the character
 	char_type const char_;
 	/// cached kerning for superscript

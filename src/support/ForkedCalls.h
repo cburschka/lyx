@@ -157,7 +157,7 @@ public:
 	ForkedCall(std::string const & path = empty_string(),
 	           std::string const & lpath = empty_string());
 	///
-	virtual std::shared_ptr<ForkedProcess> clone() const {
+	std::shared_ptr<ForkedProcess> clone() const override {
 		return std::make_shared<ForkedCall>(*this);
 	}
 
@@ -181,7 +181,7 @@ public:
 
 private:
 	///
-	virtual int generateChild();
+	int generateChild() override;
 	///
 	std::string cmd_prefix_;
 };

@@ -104,17 +104,17 @@ public:
 	InsetMathGrid(Buffer * buf, col_type m, row_type n, char valign,
 		docstring const & halign);
 	///
-	marker_type marker(BufferView const *) const { return MARKER2; };
+	marker_type marker(BufferView const *) const override { return MARKER2; };
 	///
-	void metrics(MetricsInfo & mi, Dimension &) const;
+	void metrics(MetricsInfo & mi, Dimension &) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
+	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const override;
 	///
-	void drawT(TextPainter & pi, int x, int y) const;
+	void drawT(TextPainter & pi, int x, int y) const override;
 	///
-	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false);
+	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false) override;
 	/// extract number of columns from alignment string
 	static col_type guessColumns(docstring const & halign);
 	/// accepts some LaTeX column codes: p,m,!,@,M,<,>
@@ -144,36 +144,36 @@ public:
 	///
 	CellInfo & cellinfo(idx_type idx) { return cellinfo_[idx]; }
 	/// identifies GridInset
-	InsetMathGrid * asGridInset() { return this; }
+	InsetMathGrid * asGridInset() override { return this; }
 	/// identifies GridInset
-	InsetMathGrid const * asGridInset() const { return this; }
+	InsetMathGrid const * asGridInset() const override { return this; }
 	//
-	bool isTable() const { return true; }
+	bool isTable() const override { return true; }
 	///
-	col_type ncols() const;
+	col_type ncols() const override;
 	///
-	row_type nrows() const;
+	row_type nrows() const override;
 	///
-	col_type col(idx_type idx) const;
+	col_type col(idx_type idx) const override;
 	///
-	row_type row(idx_type idx) const;
+	row_type row(idx_type idx) const override;
 	/// number of columns of cell \p idx
 	col_type ncellcols(idx_type idx) const;
 
 	///
-	bool idxUpDown(Cursor &, bool up) const;
+	bool idxUpDown(Cursor &, bool up) const override;
 	///
-	bool idxBackward(Cursor &) const;
+	bool idxBackward(Cursor &) const override;
 	///
-	bool idxForward(Cursor &) const;
+	bool idxForward(Cursor &) const override;
 	//
-	idx_type firstIdx() const;
+	idx_type firstIdx() const override;
 	//
-	idx_type lastIdx() const;
+	idx_type lastIdx() const override;
 	///
-	bool idxDelete(idx_type & idx);
+	bool idxDelete(idx_type & idx) override;
 	/// pulls cell after pressing erase
-	void idxGlue(idx_type idx);
+	void idxGlue(idx_type idx) override;
 
 	/// add a row, one row down
 	virtual void addRow(row_type r);
@@ -192,9 +192,9 @@ public:
 	/// swap two columns
 	virtual void swapCol(col_type c);
 	///
-	idx_type index(row_type r, col_type c) const;
+	idx_type index(row_type r, col_type c) const override;
 	///
-	bool idxBetween(idx_type idx, idx_type from, idx_type to) const;
+	bool idxBetween(idx_type idx, idx_type from, idx_type to) const override;
 	///
 	virtual int defaultColSpace(col_type) { return 0; }
 	///
@@ -202,7 +202,7 @@ public:
 	///
 	void setDefaults();
 	///
-	virtual bool interpretString(Cursor & cur, docstring const & str);
+	bool interpretString(Cursor & cur, docstring const & str) override;
 
 	///
 	virtual int colsep() const;
@@ -218,32 +218,32 @@ public:
 	virtual bool handlesMulticolumn() const { return false; }
 
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
 	void write(WriteStream & os,
 		   row_type beg_row, col_type beg_col,
 		   row_type end_row, col_type end_col) const;
 	///
-	void normalize(NormalStream &) const;
+	void normalize(NormalStream &) const override;
 	///
-	//void maple(MapleStream &) const;
+	//void maple(MapleStream &) const override;
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 	///
 	void htmlize(HtmlStream &, std::string attrib) const;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	//void octave(OctaveStream &) const;
+	//void octave(OctaveStream &) const override;
 
 protected:
 	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd,
-		FuncStatus & flag) const;
+		FuncStatus & flag) const override;
 	/// returns x offset of cell compared to inset
 	int cellXOffset(BufferView const &, idx_type idx) const;
 	/// returns y offset of cell compared to inset
@@ -282,7 +282,7 @@ protected:
 	int hLineVOffset(BufferView const &, row_type row, unsigned int line) const;
 
 	///
-	InsetCode lyxCode() const { return MATH_GRID_CODE; }
+	InsetCode lyxCode() const override { return MATH_GRID_CODE; }
 
 private:
 	/// row info.
@@ -296,7 +296,7 @@ private:
 	///
 	char v_align_; // FIXME: add approp. type
 	///
-	Inset * clone() const;
+	Inset * clone() const override;
 };
 
 

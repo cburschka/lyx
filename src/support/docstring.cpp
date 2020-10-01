@@ -115,7 +115,7 @@ class to_local8bit_failure : public bad_cast {
 public:
 	to_local8bit_failure() throw() : bad_cast() {}
 	virtual ~to_local8bit_failure() throw() {}
-	virtual const char* what() const throw()
+	const char* what() const throw() override
 	{
 		return "A string could not be converted from unicode to the local 8 bit encoding.";
 	}
@@ -282,7 +282,7 @@ class ctype_failure : public bad_cast {
 public:
 	ctype_failure() throw() : bad_cast() {}
 	virtual ~ctype_failure() throw() {}
-	virtual const char* what() const throw()
+	const char* what() const throw() override
 	{
 		return "The ctype<lyx::char_type> locale facet does only support ASCII characters on this platform.";
 	}
@@ -293,7 +293,7 @@ class num_put_failure : public bad_cast {
 public:
 	num_put_failure() throw() : bad_cast() {}
 	virtual ~num_put_failure() throw() {}
-	virtual const char* what() const throw()
+	const char* what() const throw() override
 	{
 		return "The num_put locale facet does only support ASCII characters on this platform.";
 	}
@@ -360,13 +360,13 @@ protected:
 		}
 	}
 	virtual ~ascii_ctype_facet() {}
-	char_type do_toupper(char_type c) const
+	char_type do_toupper(char_type c) const override
 	{
 		if (c >= 0x80)
 			throw ctype_failure();
 		return toupper(static_cast<int>(c));
 	}
-	char_type const * do_toupper(char_type * lo, char_type const * hi) const
+	char_type const * do_toupper(char_type * lo, char_type const * hi) const override
 	{
 		while (lo < hi) {
 			if (*lo >= 0x80)
@@ -376,13 +376,13 @@ protected:
 		}
 		return hi;
 	}
-	char_type do_tolower(char_type c) const
+	char_type do_tolower(char_type c) const override
 	{
 		if (c >= 0x80)
 			throw ctype_failure();
 		return tolower(c);
 	}
-	char_type const * do_tolower(char_type * lo, char_type const * hi) const
+	char_type const * do_tolower(char_type * lo, char_type const * hi) const override
 	{
 		while (lo < hi) {
 			if (*lo >= 0x80)
@@ -392,7 +392,7 @@ protected:
 		}
 		return hi;
 	}
-	bool do_is(mask m, char_type c) const
+	bool do_is(mask m, char_type c) const override
 	{
 		if (c >= 0x80)
 			throw ctype_failure();
@@ -411,7 +411,7 @@ protected:
 			}
 		return ret;
 	}
-	char_type const * do_is(char_type const * lo, char_type const * hi, mask * vec) const
+	char_type const * do_is(char_type const * lo, char_type const * hi, mask * vec) const override
 	{
 		for (;lo < hi; ++vec, ++lo) {
 			if (*lo >= 0x80)
@@ -430,25 +430,25 @@ protected:
 		}
 		return hi;
 	}
-	char_type const * do_scan_is(mask m, char_type const * lo, char_type const * hi) const
+	char_type const * do_scan_is(mask m, char_type const * lo, char_type const * hi) const override
 	{
 		while (lo < hi && !this->do_is(m, *lo))
 			++lo;
 		return lo;
 	}
-	char_type const * do_scan_not(mask m, char_type const * lo, char_type const * hi) const
+	char_type const * do_scan_not(mask m, char_type const * lo, char_type const * hi) const override
 	{
 		while (lo < hi && this->do_is(m, *lo) != 0)
 			++lo;
 		return lo;
 	}
-	char_type do_widen(char c) const
+	char_type do_widen(char c) const override
 	{
 		if (static_cast<unsigned char>(c) < 0x80)
 			return c;
 		throw ctype_failure();
 	}
-	const char* do_widen(const char* lo, const char* hi, char_type* dest) const
+	const char* do_widen(const char* lo, const char* hi, char_type* dest) const override
 	{
 		while (lo < hi) {
 			if (static_cast<unsigned char>(*lo) >= 0x80)
@@ -459,13 +459,13 @@ protected:
 		}
 		return hi;
 	}
-	char do_narrow(char_type wc, char) const
+	char do_narrow(char_type wc, char) const override
 	{
 		if (wc < 0x80)
 			return static_cast<char>(wc);
 		throw ctype_failure();
 	}
-	const char_type * do_narrow(const char_type * lo, const char_type * hi, char, char * dest) const
+	const char_type * do_narrow(const char_type * lo, const char_type * hi, char, char * dest) const override
 	{
 		while (lo < hi) {
 			if (*lo < 0x80)
@@ -497,51 +497,51 @@ public:
 
 protected:
 	iter_type
-	do_put(iter_type oit, ios_base & b, char_type fill, bool v) const
+	do_put(iter_type oit, ios_base & b, char_type fill, bool v) const override
 	{
 		return do_put_helper(oit, b, fill, v);
 	}
 
 	iter_type
-	do_put(iter_type oit, ios_base & b, char_type fill, long v) const
+	do_put(iter_type oit, ios_base & b, char_type fill, long v) const override
 	{
 		return do_put_helper(oit, b, fill, v);
 	}
 
 	iter_type
-	do_put(iter_type oit, ios_base & b, char_type fill, unsigned long v) const
+	do_put(iter_type oit, ios_base & b, char_type fill, unsigned long v) const override
 	{
 		return do_put_helper(oit, b, fill, v);
 	}
 
 #ifdef HAVE_LONG_LONG_INT
 	iter_type
-	do_put(iter_type oit, ios_base & b, char_type fill, long long v) const
+	do_put(iter_type oit, ios_base & b, char_type fill, long long v) const override
 	{
 		return do_put_helper(oit, b, fill, v);
 	}
 
 	iter_type
-	do_put(iter_type oit, ios_base & b, char_type fill, unsigned long long v) const
+	do_put(iter_type oit, ios_base & b, char_type fill, unsigned long long v) const override
 	{
 		return do_put_helper(oit, b, fill, v);
 	}
 #endif
 
 	iter_type
-	do_put(iter_type oit, ios_base & b, char_type fill, double v) const
+	do_put(iter_type oit, ios_base & b, char_type fill, double v) const override
 	{
 		return do_put_helper(oit, b, fill, v);
 	}
 
 	iter_type
-	do_put(iter_type oit, ios_base & b, char_type fill, long double v) const
+	do_put(iter_type oit, ios_base & b, char_type fill, long double v) const override
 	{
 		return do_put_helper(oit, b, fill, v);
 	}
 
 	iter_type
-	do_put(iter_type oit, ios_base & b, char_type fill, void const * v) const
+	do_put(iter_type oit, ios_base & b, char_type fill, void const * v) const override
 	{
 		return do_put_helper(oit, b, fill, v);
 	}
@@ -596,7 +596,7 @@ public:
 protected:
 	iter_type
 	do_get(iter_type iit, iter_type eit, ios_base & b,
-		ios_base::iostate & err, bool & v) const
+		ios_base::iostate & err, bool & v) const override
 	{
 		if (b.flags() & ios_base::boolalpha) {
 			numpunct_facet p;
@@ -649,28 +649,28 @@ protected:
 
 	iter_type
 	do_get(iter_type iit, iter_type eit, ios_base & b,
-		ios_base::iostate & err, long & v) const
+		ios_base::iostate & err, long & v) const override
 	{
 		return do_get_integer(iit, eit, b, err, v);
 	}
 
 	iter_type
 	do_get(iter_type iit, iter_type eit, ios_base & b,
-		ios_base::iostate & err, unsigned short & v) const
+		ios_base::iostate & err, unsigned short & v) const override
 	{
 		return do_get_integer(iit, eit, b, err, v);
 	}
 
 	iter_type
 	do_get(iter_type iit, iter_type eit, ios_base & b,
-		ios_base::iostate & err, unsigned int & v) const
+		ios_base::iostate & err, unsigned int & v) const override
 	{
 		return do_get_integer(iit, eit, b, err, v);
 	}
 
 	iter_type
 	do_get(iter_type iit, iter_type eit, ios_base & b,
-		ios_base::iostate & err, unsigned long & v) const
+		ios_base::iostate & err, unsigned long & v) const override
 	{
 		return do_get_integer(iit, eit, b, err, v);
 	}
@@ -678,14 +678,14 @@ protected:
 #ifdef HAVE_LONG_LONG_INT
 	iter_type
 	do_get(iter_type iit, iter_type eit, ios_base & b,
-		ios_base::iostate & err, long long & v) const
+		ios_base::iostate & err, long long & v) const override
 	{
 		return do_get_integer(iit, eit, b, err, v);
 	}
 
 	iter_type
 	do_get(iter_type iit, iter_type eit, ios_base & b,
-		ios_base::iostate & err, unsigned long long & v) const
+		ios_base::iostate & err, unsigned long long & v) const override
 	{
 		return do_get_integer(iit, eit, b, err, v);
 	}
@@ -693,28 +693,28 @@ protected:
 
 	iter_type
 	do_get(iter_type iit, iter_type eit, ios_base & b,
-		ios_base::iostate & err, float & v) const
+		ios_base::iostate & err, float & v) const override
 	{
 		return do_get_float(iit, eit, b, err, v);
 	}
 
 	iter_type
 	do_get(iter_type iit, iter_type eit, ios_base & b,
-		ios_base::iostate & err, double & v) const
+		ios_base::iostate & err, double & v) const override
 	{
 		return do_get_float(iit, eit, b, err, v);
 	}
 
 	iter_type
 	do_get(iter_type iit, iter_type eit, ios_base & b,
-		ios_base::iostate & err, long double & v) const
+		ios_base::iostate & err, long double & v) const override
 	{
 		return do_get_float(iit, eit, b, err, v);
 	}
 
 	iter_type
 	do_get(iter_type iit, iter_type eit, ios_base & b,
-		ios_base::iostate & err, void * & v) const
+		ios_base::iostate & err, void * & v) const override
 	{
 		unsigned long val;
 		iter_type end = do_get_integer(iit, eit, b, err, val);

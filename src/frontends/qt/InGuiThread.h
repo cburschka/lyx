@@ -100,7 +100,7 @@ public:
 
 private:
 
-	void synchronousFunctionCall()
+	void synchronousFunctionCall() override
 	{
 		return_value_ = func_();
 	}
@@ -163,7 +163,7 @@ public:
 
 private:
 
-	void synchronousFunctionCall()
+	void synchronousFunctionCall() override
 	{
 		func_();
 	}

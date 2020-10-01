@@ -47,15 +47,15 @@ private Q_SLOTS:
 
 private:
 	///
-	bool initialiseParams(std::string const & sdata);
+	bool initialiseParams(std::string const & sdata) override;
 	///
 	void paramsToDialog(InsetCommandParams const & icp);
 	/// clean-up on hide.
-	void clearParams() { params_.clear(); }
+	void clearParams() override { params_.clear(); }
 	/// clean-up on hide.
-	void dispatchParams();
+	void dispatchParams() override;
 	///
-	bool isBufferDependent() const { return true; }
+	bool isBufferDependent() const override { return true; }
 
 	///
 	enum Type {
@@ -73,11 +73,11 @@ private:
 	/// validate listings parameters and return an error message, if any
 	docstring validate_listings_params();
 	///
-	bool isValid();
+	bool isValid() override;
 	/// Apply changes
-	void applyView();
+	void applyView() override;
 	/// update
-	void updateContents() {}
+	void updateContents() override {}
 	/// Browse for a file
 	QString browse(QString const &, Type) const;
 

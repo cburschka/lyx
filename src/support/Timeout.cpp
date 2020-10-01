@@ -46,7 +46,7 @@ public:
 
 protected:
 	///
-	void timerEvent(QTimerEvent *) { owner_.emit(); }
+	void timerEvent(QTimerEvent *) override { owner_.emit(); }
 
 private:
 	///

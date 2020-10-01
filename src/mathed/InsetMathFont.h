@@ -26,42 +26,42 @@ public:
 	///
 	explicit InsetMathFont(Buffer * buf, latexkeys const * key);
 	///
-	InsetMathFont * asFontInset() { return this; }
+	InsetMathFont * asFontInset() override { return this; }
 	///
-	InsetMathFont const * asFontInset() const { return this; }
+	InsetMathFont const * asFontInset() const override { return this; }
 	/// are we in math mode, text mode, or unsure?
-	mode_type currentMode() const;
+	mode_type currentMode() const override;
 	/// do we allow changing mode during latex export?
-	bool lockedMode() const;
+	bool lockedMode() const override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	docstring name() const;
+	docstring name() const override;
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
+	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const override;
 	///
-	void drawT(TextPainter & pi, int x, int y) const;
+	void drawT(TextPainter & pi, int x, int y) const override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 	///
-	void infoize(odocstream & os) const;
+	void infoize(odocstream & os) const override;
 	///
-	int kerning(BufferView const * bv) const { return cell(0).kerning(bv); }
+	int kerning(BufferView const * bv) const override { return cell(0).kerning(bv); }
 	///
-	InsetCode lyxCode() const { return MATH_FONT_CODE; }
+	InsetCode lyxCode() const override { return MATH_FONT_CODE; }
 
 private:
 	std::string font() const;
 	///
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 	/// the font to be used on screen
 	latexkeys const * key_;
 };

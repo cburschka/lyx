@@ -24,32 +24,32 @@ public:
 	///
 	explicit InsetMathDiagram(Buffer * buf);
 	///
-	void metrics(MetricsInfo &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
 	InsetMathDiagram const * asDiagramInset() const { return this; }
 	///
-	virtual int colsep() const;
+	int colsep() const override;
 	///
-	virtual int rowsep() const;
+	int rowsep() const override;
 
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	void infoize(odocstream & os) const;
+	void infoize(odocstream & os) const override;
 	///
-	void normalize(NormalStream &) const;
+	void normalize(NormalStream &) const override;
 	///
-	void maple(MapleStream &) const;
+	void maple(MapleStream &) const override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	InsetCode lyxCode() const { return MATH_DIAGRAM_CODE; }
+	InsetCode lyxCode() const override { return MATH_DIAGRAM_CODE; }
 
 private:
 	///
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 
 };
 

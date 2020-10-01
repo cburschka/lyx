@@ -61,19 +61,19 @@ private Q_SLOTS:
 
 private:
 	///
-	void updateContents();
+	void updateContents() override;
 	///
-	bool isValid();
+	bool isValid() override;
 	///
-	bool initialiseParams(std::string const &);
+	bool initialiseParams(std::string const &) override;
 	///
-	bool isBufferDependent() const { return false; }
+	bool isBufferDependent() const override { return false; }
 	///
-	void clearParams() {}
+	void clearParams() override {}
 	///
-	void dispatchParams() {}
+	void dispatchParams() override {}
 	///
-	void apply() {}
+	void apply() override {}
 
 
 	/// enable or disable all controls and rename the Close/Cancel button

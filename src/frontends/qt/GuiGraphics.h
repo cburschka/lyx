@@ -52,15 +52,15 @@ private Q_SLOTS:
 
 private:
 	///
-	bool isValid();
+	bool isValid() override;
 	/// Dialog inherited methods
 	//@{
-	void applyView();
-	void updateContents() {}
-	bool initialiseParams(std::string const & data);
-	void clearParams();
-	void dispatchParams();
-	bool isBufferDependent() const { return true; }
+	void applyView() override;
+	void updateContents() override {}
+	bool initialiseParams(std::string const & data) override;
+	void clearParams() override;
+	void dispatchParams() override;
+	bool isBufferDependent() const override { return true; }
 	//@}
 
 	///

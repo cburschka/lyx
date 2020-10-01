@@ -58,42 +58,42 @@ public:
 	InsetPhantomParams const & params() const { return params_; }
 private:
 	///
-	InsetCode lyxCode() const { return PHANTOM_CODE; }
+	InsetCode lyxCode() const override { return PHANTOM_CODE; }
 	///
-	docstring layoutName() const;
+	docstring layoutName() const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void write(std::ostream &) const;
+	void write(std::ostream &) const override;
 	///
-	void read(Lexer & lex);
+	void read(Lexer & lex) override;
 	///
-	void setButtonLabel();
+	void setButtonLabel() override;
 	/// show the phantom dialog
-	bool showInsetDialog(BufferView * bv) const;
+	bool showInsetDialog(BufferView * bv) const override;
 	///
-	bool neverIndent() const { return true; }
+	bool neverIndent() const override { return true; }
 	///
-	void latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const override;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	/// Makes no sense for XHTML.
-	docstring xhtml(XMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const override;
 	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	///
-	docstring toolTip(BufferView const & bv, int x, int y) const;
+	docstring toolTip(BufferView const & bv, int x, int y) const override;
 	///
-	Inset * clone() const { return new InsetPhantom(*this); }
+	Inset * clone() const override { return new InsetPhantom(*this); }
 	/// used by the constructors
 	void init();
 	///
-	std::string contextMenuName() const;
+	std::string contextMenuName() const override;
 	///
 	friend class InsetPhantomParams;
 

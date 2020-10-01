@@ -27,28 +27,28 @@ public:
 	///
 	explicit InsetMathRef(Buffer * buf, docstring const & data);
 	///
-	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false);
+	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false) override;
 	///
-	//void write(WriteStream & os) const;
+	//void write(WriteStream & os) const override;
 	///
-	void infoize(odocstream & os) const;
+	void infoize(odocstream & os) const override;
 	///
-	mode_type currentMode() const { return TEXT_MODE; }
+	mode_type currentMode() const override { return TEXT_MODE; }
 	///
-	bool lockedMode() const { return true; }
+	bool lockedMode() const override { return true; }
 	///
-	bool asciiOnly() const { return true; }
+	bool asciiOnly() const override { return true; }
 	///
-	docstring const screenLabel() const;
+	docstring const screenLabel() const override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
 	void changeTarget(docstring const & target);
 	///
-	virtual InsetMathRef * asRefInset() { return this; }
+	InsetMathRef * asRefInset() override { return this; }
 
 	/// docbook output
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	/// generate something that will be understood by the Dialogs.
 	std::string const createDialogStr() const;
 
@@ -68,16 +68,16 @@ public:
 	///
 	docstring const getTarget() const;
 	///
-	InsetCode lyxCode() const { return MATH_REF_CODE; }
+	InsetCode lyxCode() const override { return MATH_REF_CODE; }
 
 protected:
 	///
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	///
-	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const override;
 private:
 	///
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 };
 
 

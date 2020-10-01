@@ -129,50 +129,50 @@ public:
 		    std::string const & side = std::string(),
 		    std::string const & style = std::string());
 	///
-	docstring layoutName() const;
+	docstring layoutName() const override;
 	///
-	void metrics(MetricsInfo &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void write(std::ostream &) const;
+	void write(std::ostream &) const override;
 	///
-	void read(Lexer & lex);
+	void read(Lexer & lex) override;
 	///
-	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const override;
 	///
-	void latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const override;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	///
-	docstring xhtml(XMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
 
 	///
-	void toString(odocstream &) const;
+	void toString(odocstream &) const override;
 	///
-	void forOutliner(docstring &, size_t const maxlen, bool const) const;
+	void forOutliner(docstring &, size_t const maxlen, bool const) const override;
 
 	/// Update the contextual information of this inset
-	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false);
+	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false) override;
 
 	///
-	void validate(LaTeXFeatures &) const;
+	void validate(LaTeXFeatures &) const override;
 	///
-	std::string contextMenuName() const;
+	std::string contextMenuName() const override;
 	///
-	InsetCode lyxCode() const { return QUOTE_CODE; }
+	InsetCode lyxCode() const override { return QUOTE_CODE; }
 	/// should this inset be handled like a normal character
-	bool isChar() const { return true; }
+	bool isChar() const override { return true; }
 
 	/// Returns the current quote type
 	std::string getType() const;
 
 private:
 	///
-	Inset * clone() const { return new InsetQuotes(*this); }
+	Inset * clone() const override { return new InsetQuotes(*this); }
 
 	/// Decide whether we need left or right quotation marks
 	void setSide(char_type c);
@@ -213,7 +213,7 @@ protected:
 	/// \name Protected functions inherited from Inset class
 	//@{
 	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	//@}
 };
 

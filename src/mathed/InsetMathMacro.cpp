@@ -64,7 +64,7 @@ public:
 			asArray(def, def_);
 	}
 	///
-	void setBuffer(Buffer & buffer)
+	void setBuffer(Buffer & buffer) override
 	{
 		Inset::setBuffer(buffer);
 		def_.setBuffer(buffer);
@@ -74,9 +74,9 @@ public:
 	///
 	InsetMathMacro const * owner() { return mathMacro_; }
 	///
-	marker_type marker(BufferView const *) const { return NO_MARKER; }
+	marker_type marker(BufferView const *) const override { return NO_MARKER; }
 	///
-	InsetCode lyxCode() const { return ARGUMENT_PROXY_CODE; }
+	InsetCode lyxCode() const override { return ARGUMENT_PROXY_CODE; }
 	/// The math data to use for display
 	MathData const & displayCell(BufferView const * bv) const
 	{
@@ -86,7 +86,7 @@ public:
 		return use_def_arg ? def_ : mathMacro_->cell(idx_);
 	}
 	///
-	bool addToMathRow(MathRow & mrow, MetricsInfo & mi) const
+	bool addToMathRow(MathRow & mrow, MetricsInfo & mi) const override
 	{
 		// macro arguments are in macros
 		LATTEST(mathMacro_->nesting() > 0);
@@ -121,17 +121,17 @@ public:
 		return has_contents;
 	}
 	///
-	void beforeMetrics() const
+	void beforeMetrics() const override
 	{
 		mathMacro_->macro()->unlock();
 	}
 	///
-	void afterMetrics() const
+	void afterMetrics() const override
 	{
 		mathMacro_->macro()->lock();
 	}
 	///
-	void beforeDraw(PainterInfo const & pi) const
+	void beforeDraw(PainterInfo const & pi) const override
 	{
 		// if the macro is being edited, then the painter is in
 		// monochrome mode.
@@ -139,42 +139,42 @@ public:
 			pi.pain.leaveMonochromeMode();
 	}
 	///
-	void afterDraw(PainterInfo const & pi) const
+	void afterDraw(PainterInfo const & pi) const override
 	{
 		if (mathMacro_->editMetrics(pi.base.bv))
 			pi.pain.enterMonochromeMode(Color_mathmacroblend);
 	}
 	///
-	void metrics(MetricsInfo &, Dimension &) const {
+	void metrics(MetricsInfo &, Dimension &) const override {
 		// This should never be invoked, since InsetArgumentProxy insets are linearized
 		LATTEST(false);
 	}
 	///
-	void draw(PainterInfo &, int, int) const {
+	void draw(PainterInfo &, int, int) const override {
 		// This should never be invoked, since InsetArgumentProxy insets are linearized
 		LATTEST(false);
 	}
 	///
-	int kerning(BufferView const * bv) const
+	int kerning(BufferView const * bv) const override
 	{
 		return displayCell(bv).kerning(bv);
 	}
 	// write(), normalize(), infoize() and infoize2() are not needed since
 	// InsetMathMacro uses the definition and not the expanded cells.
 	///
-	void maple(MapleStream & ms) const { ms << mathMacro_->cell(idx_); }
+	void maple(MapleStream & ms) const override { ms << mathMacro_->cell(idx_); }
 	///
-	void maxima(MaximaStream & ms) const { ms << mathMacro_->cell(idx_); }
+	void maxima(MaximaStream & ms) const override { ms << mathMacro_->cell(idx_); }
 	///
-	void mathematica(MathematicaStream & ms) const { ms << mathMacro_->cell(idx_); }
+	void mathematica(MathematicaStream & ms) const override { ms << mathMacro_->cell(idx_); }
 	///
-	void mathmlize(MathStream & ms) const { ms << mathMacro_->cell(idx_); }
+	void mathmlize(MathStream & ms) const override { ms << mathMacro_->cell(idx_); }
 	///
-	void htmlize(HtmlStream & ms) const { ms << mathMacro_->cell(idx_); }
+	void htmlize(HtmlStream & ms) const override { ms << mathMacro_->cell(idx_); }
 	///
-	void octave(OctaveStream & os) const { os << mathMacro_->cell(idx_); }
+	void octave(OctaveStream & os) const override { os << mathMacro_->cell(idx_); }
 	///
-	MathClass mathClass() const
+	MathClass mathClass() const override
 	{
 		return MC_UNKNOWN;
 		// This can be refined once the pointer issues are fixed. I did not
@@ -185,7 +185,7 @@ public:
 
 private:
 	///
-	Inset * clone() const
+	Inset * clone() const override
 	{
 		return new InsetArgumentProxy(*this);
 	}

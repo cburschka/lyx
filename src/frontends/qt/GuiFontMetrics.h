@@ -34,39 +34,39 @@ public:
 
 	virtual ~GuiFontMetrics() {}
 
-	virtual int maxAscent() const;
-	virtual int maxDescent() const;
-	virtual Dimension const defaultDimension() const;
-	virtual int em() const;
-	virtual int xHeight() const;
-	virtual int lineWidth() const;
-	virtual int underlinePos() const;
-	virtual int strikeoutPos() const;
-	virtual bool italic() const;
-	virtual double italicSlope() const;
-	virtual int width(char_type c) const;
-	virtual int ascent(char_type c) const;
-	virtual int descent(char_type c) const;
-	virtual int lbearing(char_type c) const;
-	virtual int rbearing(char_type c) const;
-	virtual int width(docstring const & s) const;
-	virtual int signedWidth(docstring const & s) const;
-	virtual int pos2x(docstring const & s, int pos, bool rtl, double ws) const;
-	virtual int x2pos(docstring const & s, int & x, bool rtl, double ws) const;
-	virtual bool breakAt(docstring & s, int & x, bool rtl, bool force) const;
-	virtual Dimension const dimension(char_type c) const;
+	int maxAscent() const override;
+	int maxDescent() const override;
+	Dimension const defaultDimension() const override;
+	int em() const override;
+	int xHeight() const override;
+	int lineWidth() const override;
+	int underlinePos() const override;
+	int strikeoutPos() const override;
+	bool italic() const override;
+	double italicSlope() const override;
+	int width(char_type c) const override;
+	int ascent(char_type c) const override;
+	int descent(char_type c) const override;
+	int lbearing(char_type c) const override;
+	int rbearing(char_type c) const override;
+	int width(docstring const & s) const override;
+	int signedWidth(docstring const & s) const override;
+	int pos2x(docstring const & s, int pos, bool rtl, double ws) const override;
+	int x2pos(docstring const & s, int & x, bool rtl, double ws) const override;
+	bool breakAt(docstring & s, int & x, bool rtl, bool force) const override;
+	Dimension const dimension(char_type c) const override;
 
-	virtual void rectText(docstring const & str,
+	void rectText(docstring const & str,
 		int & width,
 		int & ascent,
-		int & descent) const;
-	virtual void buttonText(docstring const & str,
+		int & descent) const override;
+	void buttonText(docstring const & str,
 		const int offset,
 		int & width,
 		int & ascent,
-		int & descent) const;
+		int & descent) const override;
 
-	int countExpanders(docstring const & str) const;
+	int countExpanders(docstring const & str) const override;
 	///
 	int width(QString const & str) const;
 

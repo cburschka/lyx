@@ -24,30 +24,30 @@ public:
 	///
 	bool idxUpDown(Cursor &, bool up) const;
 	///
-	bool idxFirst(Cursor &) const;
+	bool idxFirst(Cursor &) const override;
 	///
-	bool idxLast(Cursor &) const;
+	bool idxLast(Cursor &) const override;
 	///
-	MathClass mathClass() const;
+	MathClass mathClass() const override;
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	void normalize(NormalStream &) const;
+	void normalize(NormalStream &) const override;
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 	///
-	void validate(LaTeXFeatures &) const;
+	void validate(LaTeXFeatures &) const override;
 	///
-	InsetCode lyxCode() const { return MATH_STACKREL_CODE; }
+	InsetCode lyxCode() const override { return MATH_STACKREL_CODE; }
 
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 };
 
 } // namespace lyx

@@ -26,29 +26,29 @@ public:
 	/// Create a color inset from LaTeX color name
 	InsetMathColor(Buffer * buf, bool oldstyle, docstring const & color);
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	/// we write extra braces in any case...
 	/// FIXME Why? Are they necessary if oldstyle_ == false?
-	bool extraBraces() const { return true; }
+	bool extraBraces() const override { return true; }
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	/// we need package color
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	/// FIXME XHTML For now, we do nothing with color.
-	void mathmlize(MathStream &) const {}
+	void mathmlize(MathStream &) const override {}
 	/// FIXME XHTML For now, we do nothing with color.
-	void htmlize(HtmlStream &) const {}
+	void htmlize(HtmlStream &) const override {}
 	///
 	/// write normalized content
-	void normalize(NormalStream & ns) const;
+	void normalize(NormalStream & ns) const override;
 	///
-	void infoize(odocstream & os) const;
+	void infoize(odocstream & os) const override;
 	///
-	InsetCode lyxCode() const { return MATH_COLOR_CODE; }
+	InsetCode lyxCode() const override { return MATH_COLOR_CODE; }
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 	///
 	bool oldstyle_;
 	/// Our color. Only valid LaTeX colors are allowed.

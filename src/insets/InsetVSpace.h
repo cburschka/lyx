@@ -28,47 +28,47 @@ public:
 	/// How much?
 	VSpace const & space() const { return space_; }
 	///
-	InsetCode lyxCode() const { return VSPACE_CODE; }
+	InsetCode lyxCode() const override { return VSPACE_CODE; }
 	///
-	bool hasSettings() const { return true; }
+	bool hasSettings() const override { return true; }
 	///
-	bool clickable(BufferView const &, int, int) const { return true; }
+	bool clickable(BufferView const &, int, int) const override { return true; }
 	///
-	std::string contextMenuName() const;
+	std::string contextMenuName() const override;
 	///
 	static void string2params(std::string const &, VSpace &);
 	///
 	static std::string params2string(VSpace const &);
 private:
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const override;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	/// Note that this returns the inset rather than writing it,
 	/// so it will actually be written after the present paragraph.
 	/// The normal case is that this inset will be on a line by
 	/// itself, and in that case the present paragraph will not,
 	/// in fact, appear at all.
-	docstring xhtml(XMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	void read(Lexer & lex);
+	void read(Lexer & lex) override;
 	///
-	void write(std::ostream & os) const;
+	void write(std::ostream & os) const override;
 	///
-	RowFlags rowFlags() const { return Display; }
+	RowFlags rowFlags() const override { return Display; }
 	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	///
-	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const override;
 	///
-	Inset * clone() const { return new InsetVSpace(*this); }
+	Inset * clone() const override { return new InsetVSpace(*this); }
 	///
 	docstring const label() const;
 

@@ -25,26 +25,26 @@ public:
 	///
 	explicit InsetMathDots(latexkeys const * l);
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	docstring name() const;
+	docstring name() const override;
 	/// request "external features"
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	InsetCode lyxCode() const { return MATH_DOTS_CODE; }
+	InsetCode lyxCode() const override { return MATH_DOTS_CODE; }
 	///
-	void mathmlize(MathStream & ms) const;
+	void mathmlize(MathStream & ms) const override;
 	///
-	void htmlize(HtmlStream & os) const;
+	void htmlize(HtmlStream & os) const override;
 protected:
 	/// cache for the thing's height
 	mutable int dh_;
 	///
 	latexkeys const * key_;
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 };
 
 } // namespace lyx

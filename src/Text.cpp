@@ -641,14 +641,14 @@ public:
 	virtual ~TextCompletionList() {}
 
 	///
-	virtual bool sorted() const { return true; }
+	bool sorted() const override { return true; }
 	///
-	virtual size_t size() const
+	size_t size() const override
 	{
 		return list_.size();
 	}
 	///
-	virtual docstring const & data(size_t idx) const
+	docstring const & data(size_t idx) const override
 	{
 		return list_.word(idx);
 	}

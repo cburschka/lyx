@@ -42,15 +42,15 @@ private:
 	///
 	void paramsToDialog();
 	///
-	bool isBufferDependent() const { return true; }
+	bool isBufferDependent() const override { return true; }
 	///
-	bool initialiseParams(std::string const & data);
+	bool initialiseParams(std::string const & data) override;
 	///
-	void clearParams() {}
+	void clearParams() override {}
 	///
-	void dispatchParams() {}
+	void dispatchParams() override {}
 	///
-	bool canApply() const { return true; }
+	bool canApply() const override { return true; }
 
 	/// goto this error in the parent bv. Returns success.
 	bool goTo(int item);

@@ -289,7 +289,7 @@ private Q_SLOTS:
 	void ignore() const;
 
 protected:
-	void mouseDoubleClickEvent(QMouseEvent * event); //override
+	void mouseDoubleClickEvent(QMouseEvent * event) override;
 
 public:
 	/// wa != 0

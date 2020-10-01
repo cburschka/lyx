@@ -64,10 +64,10 @@ public:
 	explicit LastFilesSection(unsigned int num = 4);
 
 	///
-	void read(std::istream & is);
+	void read(std::istream & is) override;
 
 	///
-	void write(std::ostream & os) const;
+	void write(std::ostream & os) const override;
 
 	/// Return lastfiles container (vector)
 	LastFiles const lastFiles() const { return lastfiles; }
@@ -119,10 +119,10 @@ public:
 
 public:
 	///
-	void read(std::istream & is);
+	void read(std::istream & is) override;
 
 	///
-	void write(std::ostream & os) const;
+	void write(std::ostream & os) const override;
 
 	/// Return lastopened container (vector)
 	LastOpened const getfiles() const { return lastopened; }
@@ -161,10 +161,10 @@ public:
 	LastFilePosSection() : num_lastfilepos(100) {}
 
 	///
-	void read(std::istream & is);
+	void read(std::istream & is) override;
 
 	///
-	void write(std::ostream & os) const;
+	void write(std::ostream & os) const override;
 
 	/** add cursor position to the fname entry in the filepos list
 	    @param pos file name and position of the cursor when the BufferView is closed.
@@ -253,10 +253,10 @@ public:
 	void clear();
 
 	///
-	void read(std::istream & is);
+	void read(std::istream & is) override;
 
 	///
-	void write(std::ostream & os) const;
+	void write(std::ostream & os) const override;
 
 	/** return bookmark list. Non-const container is used since
 		bookmarks will be cleaned after use.
@@ -283,10 +283,10 @@ public:
 	///
 	LastCommandsSection(unsigned int num);
 	///
-	void read(std::istream & is);
+	void read(std::istream & is) override;
 
 	///
-	void write(std::ostream & os) const;
+	void write(std::ostream & os) const override;
 
 	/// Return lastcommands container (vector)
 	LastCommands const getcommands() const { return lastcommands; }
@@ -327,10 +327,10 @@ public:
 	explicit AuthFilesSection();
 
 	///
-	void read(std::istream & is);
+	void read(std::istream & is) override;
 
 	///
-	void write(std::ostream & os) const;
+	void write(std::ostream & os) const override;
 
 	///
 	bool find(std::string const & name) const;
@@ -351,10 +351,10 @@ public:
 	explicit ShellEscapeSection() {};
 
 	///
-	void read(std::istream & is);
+	void read(std::istream & is) override;
 
 	///
-	void write(std::ostream & os) const;
+	void write(std::ostream & os) const override;
 
 	///
 	bool find(std::string const & name) const;

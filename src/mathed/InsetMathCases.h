@@ -25,42 +25,42 @@ public:
 	///
 	explicit InsetMathCases(Buffer * buf, row_type rows = 1u);
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd,
-		FuncStatus & flag) const;
+		FuncStatus & flag) const override;
 
 	///
-	void infoize(odocstream & os) const;
+	void infoize(odocstream & os) const override;
 	///
-	void normalize(NormalStream &) const;
+	void normalize(NormalStream &) const override;
 	///
-	void maple(MapleStream &) const;
+	void maple(MapleStream &) const override;
 	///
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	///
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	InsetCode lyxCode() const { return MATH_CASES_CODE; }
+	InsetCode lyxCode() const override { return MATH_CASES_CODE; }
 	///
-	int displayColSpace(col_type) const;
+	int displayColSpace(col_type) const override;
 	///
-	int leftMargin() const { return 8; } //override
+	int leftMargin() const override { return 8; }
 	///
-	int rightMargin() const { return 0; } //override
+	int rightMargin() const override { return 0; }
 	/// see e.g. https://tex.stackexchange.com/a/133283/87201
-	bool handlesMulticolumn() const { return true; } //override
+	bool handlesMulticolumn() const override { return true; }
 
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 };
 
 

@@ -42,23 +42,23 @@ public:
 
 	virtual ~DockView() {}
 
-	virtual QWidget * asQWidget() { return this; }
-	virtual QWidget const * asQWidget() const { return this; }
+	QWidget * asQWidget() override { return this; }
+	QWidget const * asQWidget() const override { return this; }
 
 	/// We don't want to restore geometry session for dock widgets.
-	void restoreSession() {}
+	void restoreSession() override {}
 
 	void keyPressEvent(QKeyEvent * ev);
 
 	/// Dialog inherited methods
 	//@{
-	void applyView() {}
-	bool isClosing() const { return false; }
-	bool needBufferOpen() const { return false; }
+	void applyView() override {}
+	bool isClosing() const override { return false; }
+	bool needBufferOpen() const override { return false; }
 	//@}
 
 protected Q_SLOTS:
-	void onBufferViewChanged() {} //override
+	void onBufferViewChanged() override {}
 };
 
 } // namespace frontend

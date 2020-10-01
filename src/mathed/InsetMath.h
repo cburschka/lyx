@@ -116,16 +116,16 @@ public:
 	///
 	explicit InsetMath(Buffer * buf = 0) : Inset(buf) {}
 	/// identification as math inset
-	InsetMath * asInsetMath() { return this; }
+	InsetMath * asInsetMath() override { return this; }
 	/// identification as math inset
-	InsetMath const * asInsetMath() const { return this; }
+	InsetMath const * asInsetMath() const override { return this; }
 	/// this is overridden in math text insets (i.e. mbox)
-	bool inMathed() const { return true; }
+	bool inMathed() const override { return true; }
 	///
 	virtual docstring name() const;
 
 	/// this is overridden by specific insets
-	virtual mode_type currentMode() const { return MATH_MODE; }
+	mode_type currentMode() const override { return MATH_MODE; }
 
 	// The possible marker types for math insets
 	enum marker_type { NO_MARKER, MARKER2, MARKER, BOX_MARKER };
@@ -248,10 +248,10 @@ public:
 	virtual void octave(OctaveStream &) const;
 
 	/// plain text output in ucs4 encoding
-	int plaintext(odocstringstream &, OutputParams const &, size_t) const;
+	int plaintext(odocstringstream &, OutputParams const &, size_t) const override;
 
 	/// dump content to stderr for debugging
-	virtual void dump() const;
+	void dump() const override;
 
 	/// LyXInset stuff
 	virtual bool numberedType() const { return false; }
@@ -261,14 +261,14 @@ public:
 	virtual void mutate(HullType /*newtype*/) {}
 
 	/// math stuff usually isn't allowed in text mode
-	virtual bool allowedIn(mode_type mode) const { return mode == MATH_MODE; }
+	bool allowedIn(mode_type mode) const override { return mode == MATH_MODE; }
 
 	/// Italic correction as described in InsetMathScript.h
 	virtual int kerning(BufferView const *) const { return 0; }
 	///
-	bool isInToc() const { return true; }
+	bool isInToc() const override { return true; }
 	///
-	InsetCode lyxCode() const { return MATH_CODE; }
+	InsetCode lyxCode() const override { return MATH_CODE; }
 	///
 	uid_type id() const { return this; }
 };

@@ -75,15 +75,15 @@ protected Q_SLOTS:
 private:
 	/// \name Dialog inherited methods
 	//@{
-	void applyView();
-	void updateContents();
-	bool initialiseParams(std::string const & data);
-	void clearParams() {}
-	void dispatchParams();
-	bool isBufferDependent() const { return true; }
-	FuncCode getLfun() const { return LFUN_TEXTSTYLE_UPDATE; }
-	void saveSession(QSettings & settings) const;
-	void restoreSession();
+	void applyView() override;
+	void updateContents() override;
+	bool initialiseParams(std::string const & data) override;
+	void clearParams() override {}
+	void dispatchParams() override;
+	bool isBufferDependent() const override { return true; }
+	FuncCode getLfun() const override { return LFUN_TEXTSTYLE_UPDATE; }
+	void saveSession(QSettings & settings) const override;
+	void restoreSession() override;
 	//@}
 
 	///

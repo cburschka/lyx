@@ -63,71 +63,71 @@ public:
 	/// \name Public functions inherited from Inset class
 	//@{
 	///
-	InsetCode lyxCode() const { return SCRIPT_CODE; }
+	InsetCode lyxCode() const override { return SCRIPT_CODE; }
 	///
-	docstring layoutName() const;
+	docstring layoutName() const override;
 
 	///
-	int topOffset(BufferView const *) const { return 0; }
+	int topOffset(BufferView const *) const override { return 0; }
 	///
-	int bottomOffset(BufferView const *) const { return 0; }
+	int bottomOffset(BufferView const *) const override { return 0; }
 	///
-	int leftOffset(BufferView const *) const { return 0; }
+	int leftOffset(BufferView const *) const override { return 0; }
 	///
-	int rightOffset(BufferView const *) const { return 0; }
+	int rightOffset(BufferView const *) const override { return 0; }
 
 	///
-	void metrics(MetricsInfo &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
 	void cursorPos(BufferView const & bv,
-		CursorSlice const & sl, bool boundary, int & x, int & y) const;
+		CursorSlice const & sl, bool boundary, int & x, int & y) const override;
 	///
-	void write(std::ostream &) const;
+	void write(std::ostream &) const override;
 	///
-	void read(Lexer & lex);
+	void read(Lexer & lex) override;
 	///
-	bool forcePlainLayout(idx_type = 0) const { return true; }
+	bool forcePlainLayout(idx_type = 0) const override { return true; }
 	///
-	bool allowParagraphCustomization(idx_type = 0) const { return false; }
+	bool allowParagraphCustomization(idx_type = 0) const override { return false; }
 	///
-	bool neverIndent() const { return true; }
+	bool neverIndent() const override { return true; }
 	///
-	bool inheritFont() const { return true; }
+	bool inheritFont() const override { return true; }
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	///
 	void edit(Cursor & cur, bool front,
-	          EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);
+	          EntryDirection entry_from = ENTRY_DIRECTION_IGNORE) override;
 	///
-	Inset * editXY(Cursor & cur, int x, int y);
+	Inset * editXY(Cursor & cur, int x, int y) override;
 	///
-	bool insetAllowed(InsetCode code) const;
+	bool insetAllowed(InsetCode code) const override;
 	///
-	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const override;
 	///
-	docstring toolTip(BufferView const & bv, int x, int y) const;
+	docstring toolTip(BufferView const & bv, int x, int y) const override;
 	///
-	Inset * clone() const { return new InsetScript(*this); }
+	Inset * clone() const override { return new InsetScript(*this); }
 	///
-	std::string contextMenuName() const;
+	std::string contextMenuName() const override;
 	//@}
 
 	/// \name Public functions inherited from InsetText class
 	//@{
 	///
-	bool allowMultiPar() const { return false; }
+	bool allowMultiPar() const override { return false; }
 	//@}
 
 protected:
 	/// \name Protected functions inherited from Inset class
 	//@{
 	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	//@}
 
 private:

@@ -56,42 +56,42 @@ public:
 	static std::string params2string(InsetWrapParams const &);
 private:
 	///
-	void setCaptionType(std::string const & type);
+	void setCaptionType(std::string const & type) override;
 	///
-	void write(std::ostream & os) const;
+	void write(std::ostream & os) const override;
 	///
-	void read(Lexer & lex);
+	void read(Lexer & lex) override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	InsetCode lyxCode() const { return WRAP_CODE; }
+	InsetCode lyxCode() const override { return WRAP_CODE; }
 	///
-	docstring toolTip(BufferView const & bv, int x, int y) const;
+	docstring toolTip(BufferView const & bv, int x, int y) const override;
 	///
-	void latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const override;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	///
-	docstring xhtml(XMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	bool insetAllowed(InsetCode) const;
+	bool insetAllowed(InsetCode) const override;
 	///
-	bool showInsetDialog(BufferView *) const;
+	bool showInsetDialog(BufferView *) const override;
 	///
-	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const override;
 	/// Update the label
-	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false);
+	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false) override;
 	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	///
-	docstring layoutName() const;
+	docstring layoutName() const override;
 	///
-	Inset * clone() const { return new InsetWrap(*this); }
+	Inset * clone() const override { return new InsetWrap(*this); }
 	/// Is the content of this inset part of the immediate (visible) text sequence?
-	bool isPartOfTextSequence() const { return false; }
+	bool isPartOfTextSequence() const override { return false; }
 
 	///
 	InsetWrapParams params_;

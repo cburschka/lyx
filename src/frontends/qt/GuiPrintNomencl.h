@@ -35,13 +35,13 @@ private Q_SLOTS:
 private:
 	/// \name InsetParamsWidget inherited methods
 	//@{
-	InsetCode insetCode() const { return NOMENCL_PRINT_CODE; }
-	FuncCode creationCode() const { return LFUN_NOMENCL_PRINT; }
-	QString dialogTitle() const { return qt_("Nomenclature List Settings"); }
-	void paramsToDialog(Inset const *);
+	InsetCode insetCode() const override { return NOMENCL_PRINT_CODE; }
+	FuncCode creationCode() const override { return LFUN_NOMENCL_PRINT; }
+	QString dialogTitle() const override { return qt_("Nomenclature List Settings"); }
+	void paramsToDialog(Inset const *) override;
 	void paramsToDialog(InsetCommandParams const &);
-	docstring dialogToParams() const;
-	bool checkWidgets(bool readonly) const;
+	docstring dialogToParams() const override;
+	bool checkWidgets(bool readonly) const override;
 	//@}
 };
 

@@ -92,7 +92,7 @@ public:
 	BufferParams const & params() const { return bp_; }
 
 public Q_SLOTS:
-	void onBufferViewChanged();//override
+	void onBufferViewChanged() override;
 	// OK button clicked
 	void slotOK();
 	// Apply button clicked
@@ -204,9 +204,9 @@ private:
 	GuiIdListModel * selectedModel() { return &modules_sel_model_; }
 
 	/// Apply changes
-	void applyView();
+	void applyView() override;
 	/// update
-	void updateContents();
+	void updateContents() override;
 	///
 	void updateAvailableModules();
 	///
@@ -238,24 +238,24 @@ private:
 	FancyLineEdit * filter_;
 
 	/// return false if validate_listings_params returns error
-	bool isValid();
+	bool isValid() override;
 
 	/// font family names for BufferParams::fonts_default_family
 	static char const * const fontfamilies[5];
 	/// GUI names corresponding fontfamilies
 	static char const * fontfamilies_gui[5];
 	///
-	bool initialiseParams(std::string const & data);
+	bool initialiseParams(std::string const & data) override;
 	///
-	void clearParams();
+	void clearParams() override;
 	///
-	void dispatchParams();
+	void dispatchParams() override;
 	///
 	void modulesToParams(BufferParams &);
 	///
-	bool isBufferDependent() const { return true; }
+	bool isBufferDependent() const override { return true; }
 	/// always true since we don't manipulate document contents
-	bool canApply() const { return true; }
+	bool canApply() const override { return true; }
 	///
 	DocumentClass const & documentClass() const;
 	///

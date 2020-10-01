@@ -151,9 +151,9 @@ protected:
 	explicit ResizeCommand(ResizeData const & data_) : data(data_) {}
 
 private:
-	virtual std::string const front_placeholder_impl() const
+	std::string const front_placeholder_impl() const override
 		{ return "$$ResizeFront"; }
-	virtual std::string const back_placeholder_impl() const
+	std::string const back_placeholder_impl() const override
 		{ return "$$ResizeBack"; }
 };
 
@@ -166,8 +166,8 @@ public:
 private:
 	explicit ResizeLatexCommand(ResizeData const & data_)
 		: ResizeCommand(data_) {}
-	virtual std::string const front_impl() const;
-	virtual std::string const back_impl() const;
+	std::string const front_impl() const override;
+	std::string const back_impl() const override;
 };
 
 
@@ -177,9 +177,9 @@ protected:
 	explicit RotationCommand(RotationData const & data_) : data(data_) {}
 
 private:
-	virtual std::string const front_placeholder_impl() const
+	std::string const front_placeholder_impl() const override
 		{ return "$$RotateFront"; }
-	virtual std::string const back_placeholder_impl() const
+	std::string const back_placeholder_impl() const override
 		{ return "$$RotateBack"; }
 };
 
@@ -192,8 +192,8 @@ public:
 private:
 	explicit RotationLatexCommand(RotationData const & data_)
 		: RotationCommand(data_) {}
-	virtual std::string const front_impl() const;
-	virtual std::string const back_impl() const;
+	std::string const front_impl() const override;
+	std::string const back_impl() const override;
 };
 
 
@@ -223,7 +223,7 @@ protected:
 	explicit ClipOption(ClipData const & data_) : data(data_) {}
 
 private:
-	virtual std::string const placeholder_impl() const
+	std::string const placeholder_impl() const override
 		{ return "$$Clip"; }
 };
 
@@ -236,7 +236,7 @@ public:
 private:
 	explicit ClipLatexOption(ClipData const & data_)
 		: ClipOption(data_) {}
-	virtual std::string const option_impl() const;
+	std::string const option_impl() const override;
 };
 
 
@@ -248,9 +248,9 @@ public:
 private:
 	explicit ExtraOption(std::string const & data_) : data(data_) {}
 
-	virtual std::string const placeholder_impl() const
+	std::string const placeholder_impl() const override
 		{ return "$$Extra"; }
-	virtual std::string const option_impl() const
+	std::string const option_impl() const override
 		{ return data; }
 	std::string data;
 };
@@ -262,7 +262,7 @@ protected:
 	explicit ResizeOption(ResizeData const & data_) : data(data_) {}
 
 private:
-	virtual std::string const placeholder_impl() const
+	std::string const placeholder_impl() const override
 		{ return "$$Resize"; }
 };
 
@@ -275,7 +275,7 @@ public:
 private:
 	explicit ResizeLatexOption(ResizeData const & data_)
 		: ResizeOption(data_) {}
-	virtual std::string const option_impl() const;
+	std::string const option_impl() const override;
 };
 
 
@@ -285,7 +285,7 @@ protected:
 	explicit RotationOption(RotationData const & data_) : data(data_) {}
 
 private:
-	virtual std::string const placeholder_impl() const
+	std::string const placeholder_impl() const override
 		{ return "$$Rotate"; }
 };
 
@@ -298,7 +298,7 @@ public:
 private:
 	explicit RotationLatexOption(RotationData const & data_)
 		: RotationOption(data_) {}
-	virtual std::string const option_impl() const;
+	std::string const option_impl() const override;
 };
 
 

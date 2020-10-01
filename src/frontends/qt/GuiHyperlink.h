@@ -30,13 +30,13 @@ public:
 private:
 	/// \name InsetParamsWidget inherited methods
 	//@{
-	InsetCode insetCode() const { return HYPERLINK_CODE; }
-	FuncCode creationCode() const { return LFUN_INSET_INSERT; }
-	QString dialogTitle() const { return qt_("Hyperlink Settings"); }
-	void paramsToDialog(Inset const *);
-	docstring dialogToParams() const;
-	bool checkWidgets(bool readonly) const;
-	bool initialiseParams(std::string const & data);
+	InsetCode insetCode() const override { return HYPERLINK_CODE; }
+	FuncCode creationCode() const override { return LFUN_INSET_INSERT; }
+	QString dialogTitle() const override { return qt_("Hyperlink Settings"); }
+	void paramsToDialog(Inset const *) override;
+	docstring dialogToParams() const override;
+	bool checkWidgets(bool readonly) const override;
+	bool initialiseParams(std::string const & data) override;
 	//@}
 };
 

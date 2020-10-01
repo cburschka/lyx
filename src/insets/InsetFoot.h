@@ -28,26 +28,26 @@ public:
 	explicit InsetFoot(Buffer *);
 private:
 	///
-	InsetCode lyxCode() const { return FOOT_CODE; }
+	InsetCode lyxCode() const override { return FOOT_CODE; }
 	///
-	docstring layoutName() const;
+	docstring layoutName() const override;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	/// Update the counters of this inset and of its contents
-	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false);
+	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false) override;
 	///
-	docstring toolTip(BufferView const & bv, int x, int y) const;
+	docstring toolTip(BufferView const & bv, int x, int y) const override;
 	///
-	Inset * clone() const { return new InsetFoot(*this); }
+	Inset * clone() const override { return new InsetFoot(*this); }
 	///
-	bool inheritFont() const { return true; }
+	bool inheritFont() const override { return true; }
 	///
-	bool allowMultiPar() const { return true; }
+	bool allowMultiPar() const override { return true; }
 	///
 	docstring custom_label_;
 	///

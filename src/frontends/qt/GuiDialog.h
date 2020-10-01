@@ -39,8 +39,8 @@ public:
 	/// \param title is the window title used for decoration.
 	GuiDialog(GuiView & lv, QString const & name, QString const & title);
 
-	virtual QWidget * asQWidget() { return this; }
-	virtual QWidget const * asQWidget() const { return this; }
+	QWidget * asQWidget() override { return this; }
+	QWidget const * asQWidget() const override { return this; }
 
 public Q_SLOTS:
 	/** \name Buttons
@@ -65,7 +65,7 @@ public Q_SLOTS:
 	void closeEvent(QCloseEvent * e);
 
 protected Q_SLOTS:
-	void onBufferViewChanged() {};//override
+	void onBufferViewChanged() override {}
 
 public:
 	/** Check whether we may apply our data.
@@ -85,10 +85,10 @@ public:
 	/// the dialog has changed contents
 	virtual void changed();
 
-	virtual void enableView(bool enable);
+	void enableView(bool enable) override;
 
 	/// default: do nothing
-	virtual void applyView() {}
+	void applyView() override {}
 	/// default: do nothing
 	virtual void updateContents() {}
 
@@ -101,13 +101,13 @@ public:
 	/** When applying, it's useful to know whether the dialog is about
 	 *  to close or not (no point refreshing the display for example).
 	 */
-	bool isClosing() const { return is_closing_; }
+	bool isClosing() const override { return is_closing_; }
 
 	///
-	bool needBufferOpen() const { return isBufferDependent(); }
+	bool needBufferOpen() const override { return isBufferDependent(); }
 
 	/// Update the display of the dialog whilst it is still visible.
-	virtual void updateView();
+	void updateView() override;
 
 private:
 	ButtonController bc_;

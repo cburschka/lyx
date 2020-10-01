@@ -25,21 +25,21 @@ public:
 	///
 	InsetMathPar(Buffer * buf, MathData const & ar);
 	///
-	mode_type currentMode() const { return TEXT_MODE; }
+	mode_type currentMode() const override { return TEXT_MODE; }
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo &, int x, int y) const;
+	void draw(PainterInfo &, int x, int y) const override;
 	///
-	void infoize(odocstream & os) const;
+	void infoize(odocstream & os) const override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	InsetCode lyxCode() const { return MATH_PAR_CODE; }
+	InsetCode lyxCode() const override { return MATH_PAR_CODE; }
 
 private:
 	///
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 };
 
 

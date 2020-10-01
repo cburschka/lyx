@@ -31,12 +31,12 @@ public:
 private:
 	/// \name DialogView inherited methods
 	//@{
-	InsetCode insetCode() const { return BIBITEM_CODE; }
-	FuncCode creationCode() const { return LFUN_INSET_INSERT; }
-	QString dialogTitle() const { return qt_("Bibliography Item Settings"); }
-	void paramsToDialog(Inset const *);
-	docstring dialogToParams() const;
-	bool checkWidgets(bool readonly) const;
+	InsetCode insetCode() const override { return BIBITEM_CODE; }
+	FuncCode creationCode() const override { return LFUN_INSET_INSERT; }
+	QString dialogTitle() const override { return qt_("Bibliography Item Settings"); }
+	void paramsToDialog(Inset const *) override;
+	docstring dialogToParams() const override;
+	bool checkWidgets(bool readonly) const override;
 	//@}
 };
 

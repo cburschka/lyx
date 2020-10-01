@@ -620,7 +620,7 @@ public:
 		  argc_(argc), argv_(argv)
 	{
 	}
-	void doExec()
+	void doExec() override
 	{
 		try {
 			int const exit_status = run();

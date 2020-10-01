@@ -24,20 +24,20 @@ public:
 	///
 	InsetMathEnv(Buffer * buf, docstring const & name_);
 	///
-	void draw(PainterInfo &, int x, int y) const;
+	void draw(PainterInfo &, int x, int y) const override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	/// write normalized content
-	void normalize(NormalStream & ns) const;
+	void normalize(NormalStream & ns) const override;
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void infoize(odocstream & os) const;
+	void infoize(odocstream & os) const override;
 	///
-	InsetCode lyxCode() const { return MATH_ENV_CODE; }
+	InsetCode lyxCode() const override { return MATH_ENV_CODE; }
 
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 	/// name of that environment
 	docstring name_;
 };

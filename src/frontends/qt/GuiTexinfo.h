@@ -40,7 +40,7 @@ public:
 
 public Q_SLOTS:
 	///
-	void updateView();
+	void updateView() override;
 
 private Q_SLOTS:
 	///
@@ -54,15 +54,15 @@ private Q_SLOTS:
 
 private:
 	/// Nothing to initialise in this case.
-	bool initialiseParams(std::string const &) { return true; }
+	bool initialiseParams(std::string const &) override { return true; }
 	///
-	void clearParams() {}
+	void clearParams() override {}
 	///
-	void dispatchParams() {}
+	void dispatchParams() override {}
 	///
-	bool isBufferDependent() const { return false; }
+	bool isBufferDependent() const override { return false; }
 	///
-	void apply() {}
+	void apply() override {}
 
 	///
 	void updateStyles(TexFileType);

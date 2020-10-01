@@ -2079,7 +2079,7 @@ void Menu::Impl::populate(QMenu * qMenu, MenuDefinition const & menu)
 class AlwaysMnemonicStyle : public QProxyStyle {
 public:
 	int styleHint(StyleHint hint, const QStyleOption *opt = 0, const QWidget *widget = 0,
-		QStyleHintReturn *returnData = 0) const
+		QStyleHintReturn *returnData = 0) const override
 	{
 		if (hint == QStyle::SH_UnderlineShortcut)
 			return 1;

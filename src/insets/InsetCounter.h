@@ -25,31 +25,31 @@ public:
 	/// \name Public functions inherited from Inset class
 	//@{
 	///
-	bool isLabeled() const { return true; }
+	bool isLabeled() const override { return true; }
 	///
-	docstring toolTip(BufferView const &, int, int) const
+	docstring toolTip(BufferView const &, int, int) const override
 		{ return tooltip_; }
 	///
-	bool hasSettings() const { return true; }
+	bool hasSettings() const override { return true; }
 	///
-	InsetCode lyxCode() const { return COUNTER_CODE; }
+	InsetCode lyxCode() const override { return COUNTER_CODE; }
 	///
-	void latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const override;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
-	              size_t max_length = INT_MAX) const;
+	              size_t max_length = INT_MAX) const override;
 	///
-	void docbook(XMLStream &, OutputParams const &) const;
+	void docbook(XMLStream &, OutputParams const &) const override;
 	///
-	docstring xhtml(XMLStream &, OutputParams const &) const;
+	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	void toString(odocstream &) const;
+	void toString(odocstream &) const override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	void updateBuffer(ParIterator const & it, UpdateType, bool const);
+	void updateBuffer(ParIterator const & it, UpdateType, bool const) override;
 	///
-	std::string contextMenuName() const;
+	std::string contextMenuName() const override;
 	//@}
 
 	/// \name Static public methods obligated for InsetCommand derived classes
@@ -73,13 +73,13 @@ private:
 	/// \name Private functions inherited from Inset class
 	//@{
 	///
-	Inset * clone() const { return new InsetCounter(*this); }
+	Inset * clone() const override { return new InsetCounter(*this); }
 	//@}
 
 	/// \name Private functions inherited from InsetCommand class
 	//@{
 	///
-	docstring screenLabel() const { return screen_label_; }
+	docstring screenLabel() const override { return screen_label_; }
 	//@}
 	///
 	docstring lyxSaveCounter() const;

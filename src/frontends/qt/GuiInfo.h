@@ -35,13 +35,13 @@ public:
 private:
 	/// \name InsetParamsWidget inherited methods
 	//@{
-	InsetCode insetCode() const { return INFO_CODE; }
-	FuncCode creationCode() const { return LFUN_INFO_INSERT; }
-	QString dialogTitle() const { return qt_("Field Settings"); }
-	void paramsToDialog(Inset const *);
-	docstring dialogToParams() const;
-	bool initialiseParams(std::string const &);
-	bool checkWidgets(bool readonly) const;
+	InsetCode insetCode() const override { return INFO_CODE; }
+	FuncCode creationCode() const override { return LFUN_INFO_INSERT; }
+	QString dialogTitle() const override { return qt_("Field Settings"); }
+	void paramsToDialog(Inset const *) override;
+	docstring dialogToParams() const override;
+	bool initialiseParams(std::string const &) override;
+	bool checkWidgets(bool readonly) const override;
 	//@}
 	InsetInfoParams params_;
 };

@@ -25,12 +25,12 @@ class RenderButton : public RenderBase
 public:
 	RenderButton();
 
-	RenderBase * clone(Inset const *) const;
+	RenderBase * clone(Inset const *) const override;
 
 	/// compute the size of the object returned in dim
-	virtual void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	/// draw inset and update (xo, yo)-cache
-	virtual void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 
 	/// Provide the text for the button
 	void update(docstring const &, bool editable,
@@ -42,7 +42,7 @@ public:
 	void setBox(Box b) { button_box_ = b; }
 
 	/// equivalent to dynamic_cast
-	virtual RenderButton * asButton() { return this; }
+	RenderButton * asButton() override { return this; }
 
 private:
 	/// The stored data.

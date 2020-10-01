@@ -52,24 +52,24 @@ private Q_SLOTS:
 
 private:
 	///
-	bool isValid();
+	bool isValid() override;
 	/// Apply from dialog
-	void applyView();
+	void applyView() override;
 	/// Update the dialog
-	void updateContents();
+	void updateContents() override;
 
 	///
-	bool initialiseParams(std::string const & data);
+	bool initialiseParams(std::string const & data) override;
 	///
 	void paramsToDialog();
 	///
-	void clearParams() {}
+	void clearParams() override {}
 	///
-	void dispatchParams();
+	void dispatchParams() override;
 	///
-	bool isBufferDependent() const { return false; }
+	bool isBufferDependent() const override { return false; }
 	///
-	FuncCode getLfun() const;
+	FuncCode getLfun() const override;
 	///
 	QString const getSuffix();
 	///

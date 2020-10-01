@@ -49,13 +49,13 @@ public:
 	{}
 	///
 	void paint(QPainter * painter, QStyleOptionViewItem const & option,
-		QModelIndex const & index) const;
+		QModelIndex const & index) const override;
 	///
 	void drawDisplay(QPainter * painter, QStyleOptionViewItem const & opt,
-		const QRect & /*rect*/, const QString & text ) const;
+		const QRect & /*rect*/, const QString & text ) const override;
 	///
 	QSize sizeHint(QStyleOptionViewItem const & opt,
-		QModelIndex const & index) const;
+		QModelIndex const & index) const override;
 
 private:
 	///

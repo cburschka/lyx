@@ -31,46 +31,46 @@ public:
 	/// create inset with single script and given nucleus
 	InsetMathScript(Buffer * buf, MathAtom const & at, bool up);
 	///
-	mode_type currentMode() const { return MATH_MODE; }
+	mode_type currentMode() const override { return MATH_MODE; }
 	///
-	MathClass mathClass() const;
+	MathClass mathClass() const override;
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
+	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const override;
 	///
-	void drawT(TextPainter & pi, int x, int y) const;
+	void drawT(TextPainter & pi, int x, int y) const override;
 
 	/// move cursor backwards
-	bool idxBackward(Cursor & cur) const;
+	bool idxBackward(Cursor & cur) const override;
 	/// move cursor forward
-	bool idxForward(Cursor & cur) const;
+	bool idxForward(Cursor & cur) const override;
 	/// move cursor up or down
-	bool idxUpDown(Cursor & cur, bool up) const;
+	bool idxUpDown(Cursor & cur, bool up) const override;
 	/// The index of the cell entered while moving backward
 	size_type lastIdx() const { return 0; }
 
 	/// write LaTeX and Lyx code
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	/// write normalized content
-	void normalize(NormalStream &) const;
+	void normalize(NormalStream &) const override;
 	/// write content as something readable by Maple
-	void maple(MapleStream &) const;
+	void maple(MapleStream &) const override;
 	/// write content as something readable by Mathematica
-	void mathematica(MathematicaStream &) const;
+	void mathematica(MathematicaStream &) const override;
 	/// write content as MathML
-	void mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const override;
 	/// write content as HTML
-	void htmlize(HtmlStream &) const;
+	void htmlize(HtmlStream &) const override;
 	/// write content as something readable by Octave
-	void octave(OctaveStream &) const;
+	void octave(OctaveStream &) const override;
 
 	/// identifies scriptinsets
-	InsetMathScript const * asScriptInset() const;
+	InsetMathScript const * asScriptInset() const override;
 	///
-	InsetMathScript * asScriptInset();
+	InsetMathScript * asScriptInset() override;
 
 	/// returns subscript. Always run 'hasDown' or 'has(false)' before!
 	MathData const & down() const;
@@ -97,15 +97,15 @@ public:
 	/// make sure a script is accessible
 	void ensure(bool up);
 	/// say that we have scripts
-	void infoize(odocstream & os) const;
+	void infoize(odocstream & os) const override;
 	/// say whether we have displayed limits
-	void infoize2(odocstream & os) const;
+	void infoize2(odocstream & os) const override;
 	///
-	InsetCode lyxCode() const { return MATH_SCRIPT_CODE; }
+	InsetCode lyxCode() const override { return MATH_SCRIPT_CODE; }
 	///
-	void validate(LaTeXFeatures &features) const;
+	void validate(LaTeXFeatures &features) const override;
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const override;
 	/// returns x offset for main part
 	int dxx(BufferView const & bv) const;
 	/// returns width of nucleus if any
@@ -132,7 +132,7 @@ private:
 	/// do we we have to draw the scripts above/below nucleus?
 	bool hasLimits(FontInfo const &) const;
 	/// clean up empty cells and return true if a cell has been deleted.
-	bool notifyCursorLeaves(Cursor const & old, Cursor & cur);
+	bool notifyCursorLeaves(Cursor const & old, Cursor & cur) override;
 
 	/// possible subscript (index 0) and superscript (index 1)
 	bool cell_1_is_up_;

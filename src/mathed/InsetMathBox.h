@@ -23,28 +23,28 @@ public:
 	///
 	explicit InsetMathBox(Buffer * buf, docstring const & name);
 	///
-	mode_type currentMode() const { return TEXT_MODE; }
+	mode_type currentMode() const override { return TEXT_MODE; }
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	void normalize(NormalStream & ns) const;
+	void normalize(NormalStream & ns) const override;
 	///
-	void mathmlize(MathStream & ms) const;
+	void mathmlize(MathStream & ms) const override;
 	///
-	void htmlize(HtmlStream & ms) const;
+	void htmlize(HtmlStream & ms) const override;
 	///
-	void infoize(odocstream & os) const;
+	void infoize(odocstream & os) const override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	InsetCode lyxCode() const { return MATH_BOX_CODE; }
+	InsetCode lyxCode() const override { return MATH_BOX_CODE; }
 
 private:
-	Inset * clone() const { return new InsetMathBox(*this); }
+	Inset * clone() const override { return new InsetMathBox(*this); }
 	///
 	docstring name_;
 };
@@ -56,28 +56,28 @@ public:
 	///
 	explicit InsetMathFBox(Buffer * buf);
 	///
-	mode_type currentMode() const { return TEXT_MODE; }
+	mode_type currentMode() const override { return TEXT_MODE; }
 	///
-	marker_type marker(BufferView const *) const { return NO_MARKER; }
+	marker_type marker(BufferView const *) const override { return NO_MARKER; }
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	/// write normalized content
-	void normalize(NormalStream & ns) const;
+	void normalize(NormalStream & ns) const override;
 	///
-	void mathmlize(MathStream & ms) const;
+	void mathmlize(MathStream & ms) const override;
 	///
-	void htmlize(HtmlStream & ms) const;
+	void htmlize(HtmlStream & ms) const override;
 	///
-	void infoize(odocstream & os) const;
+	void infoize(odocstream & os) const override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 private:
 	///
-	Inset * clone() const { return new InsetMathFBox(*this); }
+	Inset * clone() const override { return new InsetMathFBox(*this); }
 };
 
 
@@ -87,25 +87,25 @@ public:
 	///
 	InsetMathMakebox(Buffer * buf, bool framebox);
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	/// write normalized content
-	void normalize(NormalStream & ns) const;
+	void normalize(NormalStream & ns) const override;
 	///
-	void mathmlize(MathStream & ms) const;
+	void mathmlize(MathStream & ms) const override;
 	///
-	void htmlize(HtmlStream & ms) const;
+	void htmlize(HtmlStream & ms) const override;
 	///
-	mode_type currentMode() const { return TEXT_MODE; }
+	mode_type currentMode() const override { return TEXT_MODE; }
 	///
-	void infoize(odocstream & os) const;
+	void infoize(odocstream & os) const override;
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 private:
-	Inset * clone() const { return new InsetMathMakebox(*this); }
+	Inset * clone() const override { return new InsetMathMakebox(*this); }
 	///
 	bool framebox_;
 };
@@ -118,25 +118,25 @@ public:
 	///
 	explicit InsetMathBoxed(Buffer * buf);
 	///
-	marker_type marker(BufferView const *) const { return NO_MARKER; }
+	marker_type marker(BufferView const *) const override { return NO_MARKER; }
 	///
-	void validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const override;
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & os) const override;
 	///
-	void mathmlize(MathStream & ms) const;
+	void mathmlize(MathStream & ms) const override;
 	///
-	void htmlize(HtmlStream & ms) const;
+	void htmlize(HtmlStream & ms) const override;
 	/// write normalized content
-	void normalize(NormalStream & ns) const;
+	void normalize(NormalStream & ns) const override;
 	///
-	void infoize(odocstream & os) const;
+	void infoize(odocstream & os) const override;
 private:
-	Inset * clone() const { return new InsetMathBoxed(*this); }
+	Inset * clone() const override { return new InsetMathBoxed(*this); }
 };
 
 
