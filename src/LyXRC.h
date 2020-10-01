@@ -560,7 +560,7 @@ public:
 	ScrollWheelZoom scroll_wheel_zoom = SCROLL_WHEEL_ZOOM_CTRL;
 	// FIXME: should be caret_width
 	///
-	int cursor_width = 1;
+	int cursor_width = 0;
 	/// One of: yes, no, ask
 	std::string close_buffer_with_last_view = "yes";
 };

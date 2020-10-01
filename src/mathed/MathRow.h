@@ -16,6 +16,7 @@
 #include "MathClass.h"
 
 #include "ColorCode.h"
+#include "Dimension.h"
 
 #include "support/docstring.h"
 
@@ -86,7 +87,9 @@ public:
 	};
 
 	///
-	MathRow(int asc = 0, int des = 0) : caret_ascent(asc), caret_descent(des) {};
+	MathRow() {}
+	///
+	MathRow(Dimension const & dim) : caret_dim(dim) {}
 	///
 	typedef std::vector<Element> Elements;
 	///
@@ -119,7 +122,7 @@ public:
 	int kerning(BufferView const *) const;
 
 	/// useful when the caret visits this cell
-	int caret_ascent, caret_descent;
+	Dimension caret_dim;
 
 
 private:

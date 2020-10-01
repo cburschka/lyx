@@ -295,10 +295,12 @@ void MathData::metrics(MetricsInfo & mi, Dimension & dim, bool tight) const
 
 	// This is one of the the few points where the drawing font is known,
 	// so that we can set the caret vertical dimensions.
-	mrow.caret_ascent = min(dim.asc, fm.maxAscent());
-	mrow.caret_descent = min(dim.des, fm.maxDescent());
+	mrow.caret_dim.asc = min(dim.asc, fm.maxAscent());
+	mrow.caret_dim.des = min(dim.des, fm.maxDescent());
+	mrow.caret_dim.wid = fm.lineWidth();
+
 	/// do the same for math cells linearized in the row
-	MathRow caret_row = MathRow(mrow.caret_ascent, mrow.caret_descent);
+	MathRow caret_row = MathRow(mrow.caret_dim);
 	for (auto const & e : mrow)
 		if (e.type == MathRow::BEGIN && e.ar)
 			bv->setMathRow(e.ar, caret_row);

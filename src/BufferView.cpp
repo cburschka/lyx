@@ -3067,18 +3067,16 @@ void BufferView::caretPosAndDim(Point & p, Dimension & dim) const
 	Cursor const & cur = cursor();
 	if (cur.inMathed()) {
 		MathRow const & mrow = mathRow(&cur.cell());
-		dim.asc = mrow.caret_ascent;
-		dim.des = mrow.caret_descent;
+		dim = mrow.caret_dim;
 	} else {
 		Font const font = cur.real_current_font;
 		frontend::FontMetrics const & fm = theFontMetrics(font);
+		dim.wid = fm.lineWidth();
 		dim.asc = fm.maxAscent();
 		dim.des = fm.maxDescent();
 	}
 	if (lyxrc.cursor_width > 0)
 		dim.wid = lyxrc.cursor_width;
-	else
-		dim.wid = 1 + int((lyxrc.currentZoom + 50) / 200.0);
 
 	p = getPos(cur);
 	p.y_ -= dim.asc;
