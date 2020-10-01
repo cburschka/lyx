@@ -3062,23 +3062,26 @@ bool BufferView::paragraphVisible(DocIterator const & dit) const
 }
 
 
-void BufferView::caretPosAndHeight(Point & p, int & h) const
+void BufferView::caretPosAndDim(Point & p, Dimension & dim) const
 {
-	int asc, des;
 	Cursor const & cur = cursor();
 	if (cur.inMathed()) {
 		MathRow const & mrow = mathRow(&cur.cell());
-		asc = mrow.caret_ascent;
-		des = mrow.caret_descent;
+		dim.asc = mrow.caret_ascent;
+		dim.des = mrow.caret_descent;
 	} else {
 		Font const font = cur.real_current_font;
 		frontend::FontMetrics const & fm = theFontMetrics(font);
-		asc = fm.maxAscent();
-		des = fm.maxDescent();
+		dim.asc = fm.maxAscent();
+		dim.des = fm.maxDescent();
 	}
-	h = asc + des;
+	if (lyxrc.cursor_width > 0)
+		dim.wid = lyxrc.cursor_width;
+	else
+		dim.wid = 1 + int((lyxrc.currentZoom + 50) / 200.0);
+
 	p = getPos(cur);
-	p.y_ -= asc;
+	p.y_ -= dim.asc;
 }
 
 
@@ -3087,11 +3090,11 @@ bool BufferView::caretInView() const
 	if (!paragraphVisible(cursor()))
 		return false;
 	Point p;
-	int h;
-	caretPosAndHeight(p, h);
+	Dimension dim;
+	caretPosAndDim(p, dim);
 
 	// does the cursor touch the screen ?
-	if (p.y_ + h < 0 || p.y_ >= workHeight())
+	if (p.y_ + dim.height() < 0 || p.y_ >= workHeight())
 		return false;
 	return true;
 }

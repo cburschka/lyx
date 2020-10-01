@@ -34,6 +34,7 @@ class Change;
 class CoordCache;
 class Cursor;
 class CursorSlice;
+class Dimension;
 class DispatchResult;
 class DocIterator;
 class DocumentClass;
@@ -313,7 +314,7 @@ public:
 	/// is the caret currently visible in the view
 	bool caretInView() const;
 	/// get the position and height of the caret
-	void caretPosAndHeight(Point & p, int & h) const;
+	void caretPosAndDim(Point & p, Dimension & dim) const;
 
 	///
 	void draw(frontend::Painter & pain, bool paint_caret);

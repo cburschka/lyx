@@ -129,8 +129,8 @@ namespace frontend {
 
 class CaretWidget {
 public:
-	CaretWidget() : rtl_(false), l_shape_(false), completable_(false),
-		x_(0), caret_width_(0), slant_(false), ascent_(0), slope_(0)
+	CaretWidget() : dir(1), l_shape(false), completable(false),
+					x(0), y(0), slope(0)
 	{}
 
 	/* Draw the caret. Parameter \c horiz_offset is not 0 when there
@@ -138,116 +138,86 @@ public:
 	 */
 	void draw(QPainter & painter, int horiz_offset)
 	{
-		if (!rect_.isValid())
+		if (dim.empty())
 			return;
-
-		int const x = x_ - horiz_offset;
-		int const y = rect_.top();
-		int const lx = rtl_ ? x_ - rect_.left() : rect_.right() - x_;
-		int const bot = rect_.bottom();
-		int const dir = rtl_ ? -1 : 1;
+		// correction is (1) for horizontal scrolling and (2) for
+		// better positionning of large cursors.
+		int const xx = x - horiz_offset - dim.wid / 2;
+		int const lx = dim.height() / 3;
 
 		// draw caret box
-		if (slant_ && !rtl_) {
-			// slanted
-
-			QPainterPath path;
-			path.moveTo(x + ascent_ * slope_, y);
-			path.lineTo(x - (rect_.height() - ascent_) * slope_,
-						y + rect_.height());
-			path.lineTo(x + dir * caret_width_ - (rect_.height() - ascent_) * slope_,
-			            y + rect_.height());
-			path.lineTo(x + dir * caret_width_ + ascent_ * slope_, y);
-			painter.setRenderHint(QPainter::Antialiasing, true);
-			painter.fillPath(path, color_);
-			painter.setRenderHint(QPainter::Antialiasing, false);
-		} else
-			// regular
-			painter.fillRect(x, y, dir * caret_width_, rect_.height(), color_);
+		painter.setPen(color);
+		QPainterPath path;
+		path.moveTo(xx + dim.asc * slope, y);
+		path.lineTo(xx - dim.des * slope, y + dim.height());
+		path.lineTo(xx + dir * dim.wid - dim.des * slope, y + dim.height());
+		path.lineTo(xx + dir * dim.wid + dim.asc * slope, y);
+		painter.setRenderHint(QPainter::Antialiasing, true);
+		painter.fillPath(path, color);
+		painter.setRenderHint(QPainter::Antialiasing, false);
 
 		// draw RTL/LTR indication
-		painter.setPen(color_);
-		if (l_shape_) {
-			painter.drawLine(x, bot, x + dir * (caret_width_ + lx - 1), bot);
-		}
+		if (l_shape)
+			painter.fillRect(xx - dim.des * slope,
+			                 y + dim.height() - dim.wid + 1,
+			                 dir * (dim.wid + lx - 1), dim.wid, color);
 
 		// draw completion triangle
-		if (completable_) {
-			int const m = y + rect_.height() / 2;
-			int const d = TabIndicatorWidth - 1;
+		if (completable) {
+			int const m = y + dim.height() / 2;
+			int const d = TabIndicatorWidth * dim.wid - 1;
 			// offset for slanted carret
-			int const sx = (slant_ && !rtl_) ? (ascent_ - (rect_.height() / 2 - d)) * slope_ : 0;
-			painter.drawLine(x + dir * (caret_width_ + 1) + sx, m - d,
-			                 x + dir * (caret_width_ + d + 1) + sx, m);
-			painter.drawLine(x + dir * (caret_width_ + 1) + sx, m + d,
-			                 x + dir * (caret_width_ + d + 1) + sx, m);
+			int const sx = (dim.asc - (dim.height() / 2 - d)) * slope;
+			painter.drawLine(xx + dir * (dim.wid + 1) + sx, m - d,
+			                 xx + dir * (dim.wid + d + 1) + sx, m);
+			painter.drawLine(xx + dir * (dim.wid + 1) + sx, m + d,
+			                 xx + dir * (dim.wid + d + 1) + sx, m);
 		}
 	}
 
-	void update(int x, int y, int h, bool l_shape,
-		bool rtl, bool completable, bool slant, int ascent, double slope)
-	{
-		color_ = guiApp->colorCache().get(Color_cursor);
-		l_shape_ = l_shape;
-		rtl_ = rtl;
-		completable_ = completable;
-		x_ = x;
-		slant_ = slant;
-		ascent_ = ascent;
-		slope_ = slope;
+	void update(BufferView const * bv, bool complet) {
+		// Cursor size and position
+		Point point;
+		bv->caretPosAndDim(point, dim);
+		x = point.x_;
+		y = point.y_;
+		completable = complet;
 
-		// extension to left and right
-		int l = 0;
-		int r = 0;
+		Cursor const & cur = bv->cursor();
+		Font const & realfont = cur.real_current_font;
+		FontMetrics const & fm = theFontMetrics(realfont.fontInfo());
+		BufferParams const & bp = bv->buffer().params();
+		bool const samelang = realfont.language() == bp.language;
+		bool const isrtl = realfont.isVisibleRightToLeft();
+		dir = isrtl ? -1 : 1;
+		// special shape
+		l_shape = (!samelang || isrtl != bp.language->rightToLeft())
+			&& realfont.language() != latex_language;
 
-		// RTL/LTR indication
-		if (l_shape_) {
-			if (rtl)
-				l += h / 3;
-			else
-				r += h / 3;
-		}
+		// use slanted caret for italics in text edit mode
+		// except for selections because the selection rect does not slant
+		bool const slant = fm.italic() && cur.inTexted() && !cur.selection();
+		slope = slant ? fm.italicSlope() : 0;
 
-		// completion triangle
-		if (completable_) {
-			if (rtl)
-				l = max(l, TabIndicatorWidth);
-			else
-				r = max(r, TabIndicatorWidth);
-		}
-
-		//FIXME: LyXRC::cursor_width should be caret_width
-		caret_width_ = lyxrc.cursor_width
-			? lyxrc.cursor_width
-			: 1 + int((lyxrc.currentZoom + 50) / 200.0);
-
-		// compute overall rectangle
-		rect_ = QRect(x - l, y, caret_width_ + r + l, h);
+		color = guiApp->colorCache().get(Color_cursor);
 	}
 
-	QRect const & rect() { return rect_; }
-
-private:
-	/// caret is in RTL or LTR text
-	bool rtl_;
-	/// indication for RTL or LTR
-	bool l_shape_;
+	/// text direction (1 for LtR, -1 for RtL)
+	int dir;
+	/// indication for language change
+	bool l_shape;
 	/// triangle to show that a completion is available
-	bool completable_;
+	bool completable;
 	///
-	QColor color_;
-	/// rectangle, possibly with l_shape and completion triangle
-	QRect rect_;
+	QColor color;
+	/// dimension uf base caret
+	Dimension dim;
 	/// x position (were the vertical line is drawn)
-	int x_;
-	/// the width of the vertical blinking bar
-	int caret_width_;
-	/// caret is in slanted text
-	bool slant_;
-	/// the fontmetrics ascent for drawing slanted caret
-	int ascent_;
+	int x;
+	/// y position (the top of the caret)
+	int y;
 	/// the slope for drawing slanted caret
-	double slope_;
+	double slope;
 };
 
 
@@ -631,6 +601,15 @@ void GuiWorkArea::Private::resetCaret()
 	if (!buffer_view_->caretInView())
 		return;
 
+	// completion indicator
+	Cursor const & cur = buffer_view_->cursor();
+	bool const completable = cur.inset().showCompletionCursor()
+		&& completer_->completionAvailable()
+		&& !completer_->popupVisible()
+		&& !completer_->inlineVisible();
+
+	caret_->update(buffer_view_, completable);
+
 	needs_caret_geometry_update_ = true;
 	caret_visible_ = true;
 }
@@ -644,40 +623,7 @@ void GuiWorkArea::Private::updateCaretGeometry()
 	    || !buffer_view_->caretInView())
 		return;
 
-	Point point;
-	int h = 0;
-	buffer_view_->caretPosAndHeight(point, h);
-	Cursor & cur = buffer_view_->cursor();
 
-	// RTL or not RTL
-	bool l_shape = false;
-	Font const & realfont = cur.real_current_font;
-	FontMetrics const & fm = theFontMetrics(realfont.fontInfo());
-	BufferParams const & bp = buffer_view_->buffer().params();
-	bool const samelang = realfont.language() == bp.language;
-	bool const isrtl = realfont.isVisibleRightToLeft();
-
-	if (!samelang || isrtl != bp.language->rightToLeft())
-		l_shape = true;
-
-	// The ERT language hack needs fixing up
-	if (realfont.language() == latex_language)
-		l_shape = false;
-
-	// show caret on screen
-	bool completable = cur.inset().showCompletionCursor()
-		&& completer_->completionAvailable()
-		&& !completer_->popupVisible()
-		&& !completer_->inlineVisible();
-
-	// use slanted caret for italics in text edit mode
-	// except for selections because the selection rect does not slant
-	int slant = fm.italic() && buffer_view_->cursor().inTexted()
-		&& !buffer_view_->cursor().selection();
-	double slope = fm.italicSlope();
-
-	caret_->update(point.x_, point.y_, h, l_shape, isrtl, completable, slant,
-		fm.maxAscent(), slope);
 	needs_caret_geometry_update_ = false;
 }
 
@@ -1252,8 +1198,8 @@ void GuiWorkArea::Private::paintPreeditText(GuiPainter & pain)
 	FontInfo const font = buffer_view_->cursor().getFont().fontInfo();
 	FontMetrics const & fm = theFontMetrics(font);
 	int const height = fm.maxHeight();
-	int cur_x = caret_->rect().left();
-	int cur_y = caret_->rect().bottom();
+	int cur_x = caret_->x;
+	int cur_y = caret_->y + height;
 
 	// get attributes of input method cursor.
 	// cursor_pos : cursor position in preedit string.
@@ -1447,9 +1393,9 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 
 
 	// redraw area of preedit string.
-	int height = d->caret_->rect().height();
-	int cur_y = d->caret_->rect().bottom();
-	viewport()->update(0, cur_y - height, viewport()->width(),
+	int height = d->caret_->dim.height();
+	int cur_y = d->caret_->y;
+	viewport()->update(0, cur_y, viewport()->width(),
 		(height + 1) * d->preedit_lines_);
 
 	if (d->preedit_string_.empty()) {
@@ -1470,13 +1416,9 @@ QVariant GuiWorkArea::inputMethodQuery(Qt::InputMethodQuery query) const
 		// this is the CJK-specific composition window position and
 		// the context menu position when the menu key is pressed.
 		case Qt::ImMicroFocus:
-			cur_r = d->caret_->rect();
-			if (d->preedit_lines_ != 1)
-				cur_r.moveLeft(10);
-			cur_r.moveBottom(cur_r.bottom()
-				+ cur_r.height() * (d->preedit_lines_ - 1));
-			// return lower right of caret in LyX.
-			return cur_r;
+			return QRect(d->caret_->x - 10 * (d->preedit_lines_ != 1),
+						 d->caret_->y + d->caret_->dim.height() * d->preedit_lines_,
+						 d->caret_->dim.width(), d->caret_->dim.height());
 		default:
 			return QWidget::inputMethodQuery(query);
 	}
