@@ -131,7 +131,6 @@ static void moveCursor(Cursor & cur, bool selecting)
 {
 	if (selecting || cur.mark())
 		cur.setSelection();
-	cur.setCurrentFont();
 }
 
 
@@ -1227,6 +1226,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			cur.resetAnchor();
 		} else {
 			cutSelection(cur, false);
+			cur.setCurrentFont();
 			singleParUpdate = false;
 		}
 		moveCursor(cur, false);
