@@ -214,7 +214,7 @@ public:
 	void dump() const;
 
 	/// Does an optional argument follow after the current token?
-	bool hasOpt(std::string const l = "[");
+	bool hasOpt(std::string const & l = "[");
 	///
 	typedef std::pair<bool, std::string> Arg;
 	/*!
@@ -260,7 +260,7 @@ public:
 	 */
 	std::string getFullParentheseArg();
 	/// Check if we have a list preamble
-	bool hasListPreamble(std::string const itemcmd);
+	bool hasListPreamble(std::string const & itemcmd);
 	/*!
 	 * \returns the contents of the environment \p name.
 	 * <tt>\begin{name}</tt> must be parsed already, <tt>\end{name}</tt>

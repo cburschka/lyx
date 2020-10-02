@@ -295,7 +295,7 @@ vector<string> split_options(string const & input)
  * \p options and return the value.
  * The found option is also removed from \p options.
  */
-string process_keyval_opt(vector<string> & options, string name)
+string process_keyval_opt(vector<string> & options, string const & name)
 {
 	for (size_t i = 0; i < options.size(); ++i) {
 		vector<string> option;
@@ -469,7 +469,7 @@ void Preamble::add_package(string const & name, vector<string> & options)
 	}
 }
 
-void Preamble::setTextClass(string const tclass, TeX2LyXDocClass & tc)
+void Preamble::setTextClass(string const & tclass, TeX2LyXDocClass & tc)
 {
 	h_textclass = tclass;
 	tc.setName(h_textclass);

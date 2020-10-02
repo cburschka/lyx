@@ -219,9 +219,9 @@ struct StartTag
 struct EndTag
 {
 	///
-	explicit EndTag(std::string tag) : tag_(from_ascii(tag)) {}
+	explicit EndTag(std::string const & tag) : tag_(from_ascii(tag)) {}
 	///
-	explicit EndTag(docstring tag) : tag_(tag) {}
+	explicit EndTag(docstring const & tag) : tag_(tag) {}
 	///
 	virtual ~EndTag() {}
 	/// </tag_>

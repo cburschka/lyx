@@ -453,7 +453,7 @@ bool Parser::good()
 }
 
 
-bool Parser::hasOpt(string const l)
+bool Parser::hasOpt(string const & l)
 {
 	// An optional argument can occur in any of the following forms:
 	// - \foo[bar]
@@ -577,7 +577,7 @@ string Parser::getFullParentheseArg()
 }
 
 
-bool Parser::hasListPreamble(string const itemcmd)
+bool Parser::hasListPreamble(string const & itemcmd)
 {
 	// remember current position
 	unsigned int oldpos = pos_;

@@ -96,7 +96,7 @@ public:
 	/// Get author named \p name (must be registered first)
 	Author const & getAuthor(std::string const & name) const;
 	/// Set text class
-	void setTextClass(std::string const tclass, TeX2LyXDocClass & tc);
+	void setTextClass(std::string const & tclass, TeX2LyXDocClass & tc);
 	/// Get number of arguments of special table column type \c or -1
 	/// if no column type \p c exists
 	int getSpecialTableColumnArguments(char c) const;

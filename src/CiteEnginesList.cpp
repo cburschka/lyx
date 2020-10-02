@@ -110,7 +110,7 @@ bool LyXCiteEngine::isDefaultBiblio(string const & bf) const
 }
 
 
-bool LyXCiteEngine::required(const string p) const
+bool LyXCiteEngine::required(string const & p) const
 {
 	return find(package_list_.begin(), package_list_.end(), p) != package_list_.end();
 }

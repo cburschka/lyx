@@ -78,7 +78,7 @@ public:
 				  Buffer const & buf, CiteItem const & ci,
 				  docstring const & format = docstring()) const;
 	/// \return formatted BibTeX data for a citation label
-	docstring const getLabel(BibTeXInfoList const xrefs,
+	docstring const getLabel(BibTeXInfoList const & xrefs,
 		Buffer const & buf, docstring const & format,
 		CiteItem const & ci, bool next = false, bool second = false) const;
 	///

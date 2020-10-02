@@ -327,7 +327,7 @@ public:
 class CTag {
 public:
 	///
-	CTag(char const * const tag, std::string attr = "")
+	CTag(char const * const tag, std::string const & attr = "")
             : tag_(tag), attr_(attr) {}
 	///
 	char const * const tag_;
@@ -346,7 +346,7 @@ class MathExportException : public std::exception {};
 class MathStream {
 public:
 	/// Builds a stream proxy for os; the MathML namespace is given by xmlns (supposed to be already defined elsewhere in the document).
-	explicit MathStream(odocstream & os, std::string xmlns="", bool xmlMode=false);
+	explicit MathStream(odocstream & os, std::string const & xmlns="", bool xmlMode=false);
 	///
 	void cr();
 	///
@@ -370,7 +370,9 @@ public:
 	///
 	bool xmlMode() const { return xml_mode_; }
 	/// Returns the tag name prefixed by the name space if needed.
-	std::string namespacedTag(std::string tag) const { return ((xmlns().empty()) ? "" : xmlns() + ":") + tag; }
+	std::string namespacedTag(std::string const & tag) const {
+		return (xmlns().empty() ? "" : xmlns() + ":") + tag;
+	}
 private:
 	///
 	void setTextMode(bool t) { in_text_ = t; }

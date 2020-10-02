@@ -47,7 +47,7 @@ typedef map<std::string, PersonalWordList *> LangPersonalWordList;
 
 typedef vector<WordLangTuple> IgnoreList;
 
-docstring remap_result(docstring const s)
+docstring remap_result(docstring const & s)
 {
 	// substitute RIGHT SINGLE QUOTATION MARK
 	// by APOSTROPHE

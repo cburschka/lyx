@@ -1045,7 +1045,7 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfoList const & xrefs,
 }
 
 
-docstring const BibTeXInfo::getLabel(BibTeXInfoList const xrefs,
+docstring const BibTeXInfo::getLabel(BibTeXInfoList const & xrefs,
 	Buffer const & buf, docstring const & format,
 	CiteItem const & ci, bool next, bool second) const
 {

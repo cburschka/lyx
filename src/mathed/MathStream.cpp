@@ -269,7 +269,7 @@ WriteStream & operator<<(WriteStream & ws, unsigned int i)
 //////////////////////////////////////////////////////////////////////
 
 
-MathStream::MathStream(odocstream & os, std::string xmlns, bool xmlMode)
+MathStream::MathStream(odocstream & os, std::string const & xmlns, bool xmlMode)
 	: os_(os), tab_(0), line_(0), in_text_(false), xmlns_(xmlns), xml_mode_(xmlMode)
 {}
 

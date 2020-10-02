@@ -55,7 +55,7 @@ void output_arguments(ostream &, Parser &, bool, bool, string, Context &,
 
 void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,
 		Context const & context, InsetLayout const * layout,
-		string const rdelim)
+		string const & rdelim)
 {
 	bool const forcePlainLayout =
 		layout ? layout->forcePlainLayout() : false;
@@ -86,7 +86,7 @@ namespace {
 
 void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,
 		Context const & context, string const & name,
-		string const rdelim = string())
+		string const & rdelim = string())
 {
 	InsetLayout const * layout = 0;
 	DocumentClass::InsetLayouts::const_iterator it =
@@ -2867,7 +2867,7 @@ void fix_child_filename(string & name)
 
 
 void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
-		Context & context, string const rdelim)
+		Context & context, string const & rdelim)
 {
 	Layout const * newlayout = 0;
 	InsetLayout const * newinsetlayout = 0;
