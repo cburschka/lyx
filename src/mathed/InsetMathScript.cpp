@@ -271,6 +271,10 @@ MathClass InsetMathScript::mathClass() const
 
 void InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	// we store this, because it is much easier
+	has_limits_ = hasLimits(mi.base.font);
+
+	// Compute metrics of the available cells
 	Dimension dim0;
 	Dimension dim1;
 	Dimension dim2;
@@ -284,8 +288,6 @@ void InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 		if (nargs() > 2)
 			cell(2).metrics(mi, dim2, !has_limits_);
 	}
-	// we store this, because it is much easier
-	has_limits_ = hasLimits(mi.base.font);
 
 	dim.wid = 0;
 	BufferView & bv = *mi.base.bv;
