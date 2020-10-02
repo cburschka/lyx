@@ -346,7 +346,7 @@ class MathExportException : public std::exception {};
 class MathStream {
 public:
 	/// Builds a stream proxy for os; the MathML namespace is given by xmlns (supposed to be already defined elsewhere in the document).
-	explicit MathStream(odocstream & os, std::string const & xmlns="", bool xmlMode=false);
+	explicit MathStream(odocstream & os, std::string const & xmlns = "", bool xmlMode = false);
 	///
 	void cr();
 	///
