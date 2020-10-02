@@ -469,6 +469,16 @@ void Preamble::add_package(string const & name, vector<string> & options)
 	}
 }
 
+void Preamble::setTextClass(string const tclass, TeX2LyXDocClass & tc)
+{
+	h_textclass = tclass;
+	tc.setName(h_textclass);
+	if (!LayoutFileList::get().haveClass(h_textclass) || !tc.load()) {
+		cerr << "Error: Could not read layout file for textclass \"" << h_textclass << "\"." << endl;
+		exit(EXIT_FAILURE);
+	}
+}
+
 
 namespace {
 
@@ -2164,12 +2174,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 
 		// Force textclass if the user wanted it
 		if (!forceclass.empty()) {
-			h_textclass = forceclass;
-			tc.setName(h_textclass);
-			if (!LayoutFileList::get().haveClass(h_textclass) || !tc.load()) {
-				cerr << "Error: Could not read layout file for textclass \"" << h_textclass << "\"." << endl;
-				exit(EXIT_FAILURE);
-			}
+			setTextClass(forceclass, tc);
 			class_set = true;
 		}
 
@@ -2677,14 +2682,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			// Only set text class if a class hasn't been forced
 			// (this was set above)
 			if (!class_set) {
-				h_textclass = tclass;
-				// textclass needs to be set at this place as we need to know
-				// it for other parameters (such as class-dependent paper size)
-				tc.setName(h_textclass);
-				if (!LayoutFileList::get().haveClass(h_textclass) || !tc.load()) {
-					cerr << "Error: Could not read layout file for textclass \"" << h_textclass << "\"." << endl;
-					exit(EXIT_FAILURE);
-				}
+				// textclass needs to be set at this place (if not already done)
+				// as we need to know it for other parameters
+				// (such as class-dependent paper size)
+				setTextClass(tclass, tc);
 				class_set = true;
 			}
 
@@ -3109,14 +3110,9 @@ void Preamble::parse(Parser & p, string const & forceclass,
 	}
 
 	// set textclass if not yet done (snippets without \documentclass and forced class)
-	if (!class_set) {
-		tc.setName(h_textclass);
-		if (!LayoutFileList::get().haveClass(h_textclass) || !tc.load()) {
-			cerr << "Error: Could not read layout file for textclass \"" << h_textclass << "\"." << endl;
-			exit(EXIT_FAILURE);
-		}
-	}
-	
+	if (!class_set)
+		setTextClass(h_textclass, tc);
+
 	// remove the whitespace
 	p.skip_spaces();
 
