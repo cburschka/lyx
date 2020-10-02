@@ -2141,6 +2141,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 	bool is_full_document = false;
 	bool is_lyx_file = false;
 	bool in_lyx_preamble = false;
+	bool class_set = false;
 
 	// determine whether this is a full document or a fragment for inclusion
 	while (p.good()) {
@@ -2160,6 +2161,17 @@ void Preamble::parse(Parser & p, string const & forceclass,
 		if (detectEncoding && h_inputencoding != "auto-legacy" &&
 		    h_inputencoding != "auto-legacy-plain")
 			return;
+
+		// Force textclass if the user wanted it
+		if (!forceclass.empty()) {
+			h_textclass = forceclass;
+			tc.setName(h_textclass);
+			if (!LayoutFileList::get().haveClass(h_textclass) || !tc.load()) {
+				cerr << "Error: Could not read layout file for textclass \"" << h_textclass << "\"." << endl;
+				exit(EXIT_FAILURE);
+			}
+			class_set = true;
+		}
 
 		Token const & t = p.get_token();
 
@@ -2660,15 +2672,20 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			vector<string> opts = split_options(p.getArg('[', ']'));
 			// FIXME This does not work for classes that have a
 			//       different name in LyX than in LaTeX
-			h_textclass = p.getArg('{', '}');
+			string const tclass = p.getArg('{', '}');
 			p.skip_spaces();
-			// Force textclass if the user wanted it
-			if (!forceclass.empty())
-				h_textclass = forceclass;
-			tc.setName(h_textclass);
-			if (!LayoutFileList::get().haveClass(h_textclass) || !tc.load()) {
-				cerr << "Error: Could not read layout file for textclass \"" << h_textclass << "\"." << endl;
-				exit(EXIT_FAILURE);
+			// Only set text class if a class hasn't been forced
+			// (this was set above)
+			if (!class_set) {
+				h_textclass = tclass;
+				// textclass needs to be set at this place as we need to know
+				// it for other parameters (such as class-dependent paper size)
+				tc.setName(h_textclass);
+				if (!LayoutFileList::get().haveClass(h_textclass) || !tc.load()) {
+					cerr << "Error: Could not read layout file for textclass \"" << h_textclass << "\"." << endl;
+					exit(EXIT_FAILURE);
+				}
+				class_set = true;
 			}
 
 			// Font sizes.
@@ -3091,6 +3108,15 @@ void Preamble::parse(Parser & p, string const & forceclass,
 		}
 	}
 
+	// set textclass if not yet done (snippets without \documentclass and forced class)
+	if (!class_set) {
+		tc.setName(h_textclass);
+		if (!LayoutFileList::get().haveClass(h_textclass) || !tc.load()) {
+			cerr << "Error: Could not read layout file for textclass \"" << h_textclass << "\"." << endl;
+			exit(EXIT_FAILURE);
+		}
+	}
+	
 	// remove the whitespace
 	p.skip_spaces();
 
