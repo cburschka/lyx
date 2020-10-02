@@ -972,7 +972,7 @@ MathClass MathData::lastMathClass() const
 	for (MathAtom const & at : *this) {
 		MathClass mc = at->mathClass();
 		if (mc != MC_UNKNOWN)
-			return res = mc;
+			res = mc;
 	}
 	return res;
 }
