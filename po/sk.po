@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-09-03 11:53+0200\n"
-"PO-Revision-Date: 2020-09-03 10:00+0000\n"
+"POT-Creation-Date: 2020-10-03 13:32+0200\n"
+"PO-Revision-Date: 2020-10-03 11:53+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -16619,8 +16619,8 @@ msgid "\\Roman{part}"
 msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:11
-msgid "Part \\Roman{part}"
-msgstr "Časť \\Roman{part}"
+msgid "Part ##"
+msgstr "Časť ##"
 
 #: lib/layouts/stdcounters.inc:16
 msgid "Chapter ##"
@@ -21175,6 +21175,10 @@ msgstr "Sweave|S"
 #: lib/ui/stdmenus.inc:668
 msgid "XY-pic|X"
 msgstr "XY-pic|X"
+
+#: lib/ui/stdtoolbars.inc:75
+msgid "Standard[[toolbar]]"
+msgstr "Štandard"
 
 #: lib/ui/stdtoolbars.inc:77
 msgid "New document"
@@ -26268,6 +26272,10 @@ msgid "HTML Table (for spreadsheets)"
 msgstr "HTML tabuľka (pre tabuľkové procesory)"
 
 #: lib/configure.py:716
+msgid "XHTML Table (for spreadsheets)"
+msgstr "XHTML tabuľka (pre tabuľkové procesory)"
+
+#: lib/configure.py:716
 msgid "OpenDocument spreadsheet"
 msgstr "OpenDocument tabuľkový procesor"
 
@@ -26355,6 +26363,10 @@ msgstr "PDF (orezaný)"
 #: lib/configure.py:752
 msgid "PDF (lower resolution)"
 msgstr "PDF (nízke rozlišovanie)"
+
+#: lib/configure.py:754
+msgid "PDF (docbook)"
+msgstr "PDF (docbook)"
 
 #: lib/configure.py:757
 msgid "DVI"
@@ -29898,6 +29910,10 @@ msgstr "Polovičný"
 msgid "Other ("
 msgstr "Iné ("
 
+#: src/Text.cpp:2055
+msgid ", Style: "
+msgstr ", Štýl: "
+
 #: src/Text.cpp:2011
 msgid ", Paragraph: "
 msgstr ", Odstavec: "
@@ -30131,7 +30147,7 @@ msgstr "Rozbité referencie a citácie"
 
 #: src/TocBackend.cpp:293 src/frontends/qt/GuiDocument.cpp:1766
 msgid "Child Documents"
-msgstr "Dokumenty potomkov"
+msgstr "Poddokumenty"
 
 #: src/TocBackend.cpp:294
 msgid "Graphics[[listof]]"
@@ -35214,6 +35230,10 @@ msgstr ""
 "LyX nevie ako spracovať ne-LyX-ové súbory pri generácii výstupu DocBook. "
 "Obsah súboru bude písaný ako komentár. Problematický súbor:\n"
 "%1$s"
+
+#: src/insets/InsetInclude.cpp:1351
+msgid "FILE MISSING: "
+msgstr "CHÝBAJÚCI SÚBOR: "
 
 #: src/insets/InsetIndex.cpp:156
 msgid "Index sorting failed"
