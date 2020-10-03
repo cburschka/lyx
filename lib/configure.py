@@ -712,6 +712,7 @@ def checkFormatEntries(dtl_tools):
       rc_entry = [r'''\Format gnumeric gnumeric "Gnumeric spreadsheet" "" ""    "%%"   "document"	"application/x-gnumeric"
 \Format excel      xls    "Excel spreadsheet"      "" "" "%%"    "document"	"application/vnd.ms-excel"
 \Format excel2     xlsx   "MS Excel Office Open XML" "" "" "%%" "document"	"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+\Format xhtml_table xhtml "XHTML Table (for spreadsheets)"     "" "" "%%"    "document"	""
 \Format html_table html   "HTML Table (for spreadsheets)"      "" "" "%%"    "document"	""
 \Format oocalc     ods    "OpenDocument spreadsheet" "" "" "%%"    "document"	"application/vnd.oasis.opendocument.spreadsheet"'''])
  #
@@ -749,7 +750,8 @@ def checkFormatEntries(dtl_tools):
 \Format pdf5       pdf    "PDF (LuaTeX)"          u  "%%"	""	"document,vector,menu=export"	""
 \Format pdf6       pdf    "PDF (graphics)"        "" "%%"	""	"vector"	"application/pdf"
 \Format pdf7       pdf    "PDF (cropped)"         "" "%%"	""	"document,vector"	""
-\Format pdf8       pdf    "PDF (lower resolution)"         "" "%%"	""	"document,vector"	""'''])
+\Format pdf8       pdf    "PDF (lower resolution)"         "" "%%"	""	"document,vector"	""
+\Format pdf9       pdf    "PDF (docbook)"         "" "%%"       ""      "document,vector,menu=export"   ""'''])
     #
     checkViewer('a DVI previewer', ['xdvi', 'kdvi', 'okular',
                                     'evince', 'xreader',
@@ -929,6 +931,9 @@ def checkConverterEntries():
     #
     checkProg('an Open Document (Pandoc) -> LaTeX converter', ['pandoc -s -f odt -o $$o -t latex $$i'],
         rc_entry = [ r'\converter odt3        latex      "%%"	""' ])
+    #
+    checkProg('DocBook converter -> PDF (docbook)', ['pandoc -f docbook -t latex --latex-engine=lualatex --toc -o $$o $$i'],
+        rc_entry = [ r'\converter docbook5      pdf9      "%%" ""' ])
     #
     checkProg('a MS Word Office Open XML converter -> LaTeX', ['pandoc -s -f docx -o $$o -t latex $$i'],
         rc_entry = [ r'\converter word2      latex      "%%"	""' ])
