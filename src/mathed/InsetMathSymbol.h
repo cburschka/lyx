@@ -31,7 +31,7 @@ public:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo &, int x, int y) const;
+	void draw(PainterInfo &, int x, int y) const override;
 	///
 	int kerning(BufferView const *) const override { return kerning_; }
 
@@ -74,7 +74,7 @@ public:
 	///
 	void write(WriteStream & os) const override;
 	///
-	void infoize2(odocstream & os) const;
+	void infoize2(odocstream & os) const override;
 	///
 	InsetCode lyxCode() const override { return MATH_SYMBOL_CODE; }
 

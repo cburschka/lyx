@@ -44,7 +44,7 @@ public:
 	///
 	void htmlize(HtmlStream &) const override { }
 	///
-	void infoize2(odocstream & os) const;
+	void infoize2(odocstream & os) const override;
 	///
 	InsetCode lyxCode() const override { return MATH_KERN_CODE; }
 

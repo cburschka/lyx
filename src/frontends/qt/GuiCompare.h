@@ -32,7 +32,7 @@ public:
 	GuiCompare(GuiView & lv);
 	~GuiCompare();
 
-	void closeEvent(QCloseEvent *);
+	void closeEvent(QCloseEvent *) override;
 
 private Q_SLOTS:
 	///

@@ -39,7 +39,7 @@ public:
 	void updateView() override;
 	void enableView(bool enable) override;
 	bool wantInitialFocus() const override { return false; }
-	void closeEvent(QCloseEvent * event);
+	void closeEvent(QCloseEvent * event) override;
 	bool isClosing() const override { return is_closing_; }
 
 public:

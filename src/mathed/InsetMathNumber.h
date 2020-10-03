@@ -28,7 +28,7 @@ public:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo &, int x, int y) const;
+	void draw(PainterInfo &, int x, int y) const override;
 	///
 	docstring str() const { return str_; }
 	///

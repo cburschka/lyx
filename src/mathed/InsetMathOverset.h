@@ -28,7 +28,7 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	bool idxUpDown(Cursor & cur, bool up) const;
+	bool idxUpDown(Cursor & cur, bool up) const override;
 	///
 	bool idxFirst(Cursor &) const override;
 	///

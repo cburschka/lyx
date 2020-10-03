@@ -63,7 +63,7 @@ private:
 	///
 	void gotoBookmark();
 	///
-	void closeEvent(QCloseEvent * e);
+	void closeEvent(QCloseEvent * e) override;
 	///
 	bool isValid() override;
 	/// apply changes

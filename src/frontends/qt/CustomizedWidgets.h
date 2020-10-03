@@ -36,7 +36,7 @@ public:
 	void removeFromSequence();
 protected Q_SLOTS:
 	bool event(QEvent* e);
-	void keyPressEvent(QKeyEvent * e);
+	void keyPressEvent(QKeyEvent * e) override;
 private:
 	void appendToSequence(QKeyEvent * e);
 	KeySequence keysequence_;

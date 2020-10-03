@@ -77,8 +77,8 @@ private:
 	bool eol_last_;
 
 	void levelChanged();
-	void showEvent(QShowEvent*);
-	void hideEvent(QHideEvent*);
+	void showEvent(QShowEvent*) override;
+	void hideEvent(QHideEvent*) override;
 };
 
 

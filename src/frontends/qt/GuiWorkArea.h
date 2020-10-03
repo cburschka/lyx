@@ -145,7 +145,7 @@ private:
 	void wheelEvent(QWheelEvent * ev);
 	/// key press event. It also knows how to handle ShortcutOverride events to
 	/// avoid code duplication.
-	void keyPressEvent(QKeyEvent * ev);
+	void keyPressEvent(QKeyEvent * ev) override;
 	/// IM events
 	void inputMethodEvent(QInputMethodEvent * ev);
 	/// IM query
@@ -195,9 +195,9 @@ public:
 
 protected:
 	///
-	void closeEvent(QCloseEvent * ev);
+	void closeEvent(QCloseEvent * ev) override;
 	///
-	void hideEvent(QHideEvent *ev);
+	void hideEvent(QHideEvent *ev) override;
 
 private:
 	/// Embedded Buffer.

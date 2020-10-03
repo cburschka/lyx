@@ -44,9 +44,9 @@ protected:
 	bool needBufferOpen() const override { return isBufferDependent(); }
 	//@}
 	/// Any dialog that overrides this method should make sure to call it.
-	void closeEvent(QCloseEvent * ev);
+	void closeEvent(QCloseEvent * ev) override;
 	/// Any dialog that overrides this method should make sure to call it.
-	void hideEvent(QHideEvent * ev);
+	void hideEvent(QHideEvent * ev) override;
 
 protected Q_SLOTS:
 	void onBufferViewChanged() override {};

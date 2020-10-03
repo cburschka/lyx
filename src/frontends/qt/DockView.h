@@ -48,7 +48,7 @@ public:
 	/// We don't want to restore geometry session for dock widgets.
 	void restoreSession() override {}
 
-	void keyPressEvent(QKeyEvent * ev);
+	void keyPressEvent(QKeyEvent * ev) override;
 
 	/// Dialog inherited methods
 	//@{

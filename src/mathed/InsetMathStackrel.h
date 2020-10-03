@@ -22,7 +22,7 @@ public:
 	///
 	InsetMathStackrel(Buffer * buf, bool sub);
 	///
-	bool idxUpDown(Cursor &, bool up) const;
+	bool idxUpDown(Cursor &, bool up) const override;
 	///
 	bool idxFirst(Cursor &) const override;
 	///

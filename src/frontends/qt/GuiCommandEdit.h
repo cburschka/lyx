@@ -40,7 +40,7 @@ protected:
 	///
 	virtual bool event(QEvent * e);
 	///
-	virtual void keyPressEvent(QKeyEvent * e);
+	virtual void keyPressEvent(QKeyEvent * e) override;
 };
 
 } // namespace frontend

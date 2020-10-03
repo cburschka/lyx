@@ -25,7 +25,7 @@ public:
 	///
 	explicit InsetMathSqrt(Buffer * buf);
 	///
-	void draw(PainterInfo &, int x, int y) const;
+	void draw(PainterInfo &, int x, int y) const override;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///

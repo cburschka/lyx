@@ -38,7 +38,7 @@ public Q_SLOTS:
 
 private:
 	///
-	void showEvent(QShowEvent *);
+	void showEvent(QShowEvent *) override;
 	///
 	void paramsToDialog();
 	///

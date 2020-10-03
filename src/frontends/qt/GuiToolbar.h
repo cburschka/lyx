@@ -176,7 +176,7 @@ private:
 	///
 	void fill();
 	///
-	void showEvent(QShowEvent *);
+	void showEvent(QShowEvent *) override;
 
 	///
 	QList<Action *> actions_;

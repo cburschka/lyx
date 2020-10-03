@@ -53,8 +53,8 @@ Q_SIGNALS:
 	void visible(bool);
 
 protected:
-	void showEvent(QShowEvent * event);
-	void hideEvent(QHideEvent * event);
+	void showEvent(QShowEvent * event) override;
+	void hideEvent(QHideEvent * event) override;
 	void paintEvent(QPaintEvent * event);
 
 private Q_SLOTS:

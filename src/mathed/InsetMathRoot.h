@@ -25,11 +25,11 @@ public:
 	///
 	explicit InsetMathRoot(Buffer * buf);
 	///
-	bool idxUpDown(Cursor & cur, bool up) const;
+	bool idxUpDown(Cursor & cur, bool up) const override;
 	///
 	bool idxForward(Cursor & cur) const;
 	///
-	bool idxBackward(Cursor & cur) const;
+	bool idxBackward(Cursor & cur) const override;
 	///
 	bool idxFirst(Cursor &) const override;
 	///

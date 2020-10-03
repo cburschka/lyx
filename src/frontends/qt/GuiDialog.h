@@ -62,7 +62,7 @@ public Q_SLOTS:
 	// A collectiong slot for QDialogButtonBox
 	void slotButtonBox(QAbstractButton *);
 	///
-	void closeEvent(QCloseEvent * e);
+	void closeEvent(QCloseEvent * e) override;
 
 protected Q_SLOTS:
 	void onBufferViewChanged() override {}

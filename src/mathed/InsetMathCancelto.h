@@ -22,7 +22,7 @@ public:
 	///
 	explicit InsetMathCancelto(Buffer * buf);
 	///
-	bool idxUpDown(Cursor & cur, bool up) const;
+	bool idxUpDown(Cursor & cur, bool up) const override;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///

@@ -66,7 +66,7 @@ public Q_SLOTS:
 
 protected:
 	/// widget hidden
-	void hideEvent(QHideEvent * event);
+	void hideEvent(QHideEvent * event) override;
 
 private:
 	///

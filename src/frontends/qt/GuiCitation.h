@@ -87,9 +87,9 @@ private:
 	//@}
 
 	///
-	void showEvent(QShowEvent * e);
+	void showEvent(QShowEvent * e) override;
 	///
-	void closeEvent(QCloseEvent * e);
+	void closeEvent(QCloseEvent * e) override;
 	/// prepares a call to GuiCitation::searchKeys when we
 	/// are ready to search the BibTeX entries
 	void findText(QString const & text, bool reset = false);

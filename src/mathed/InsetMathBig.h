@@ -39,7 +39,7 @@ public:
 	///
 	void htmlize(HtmlStream &) const override;
 	///
-	void infoize2(odocstream & os) const;
+	void infoize2(odocstream & os) const override;
 	///
 	static bool isBigInsetDelim(docstring const &);
 	///

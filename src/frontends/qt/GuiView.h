@@ -286,9 +286,9 @@ private:
 	///
 	void dropEvent(QDropEvent * ev);
 	/// make sure we quit cleanly
-	void closeEvent(QCloseEvent * e);
+	void closeEvent(QCloseEvent * e) override;
 	///
-	void showEvent(QShowEvent *);
+	void showEvent(QShowEvent *) override;
 
 	/// in order to catch Tab key press.
 	bool event(QEvent * e);

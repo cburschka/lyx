@@ -97,7 +97,7 @@ private Q_SLOTS:
 
 protected:
 	virtual void resizeEvent(QResizeEvent *e);
-	virtual void keyPressEvent(QKeyEvent *e);
+	virtual void keyPressEvent(QKeyEvent *e) override;
 
 private:
 	void updateMargins();

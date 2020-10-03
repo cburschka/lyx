@@ -364,7 +364,7 @@ Q_SIGNALS:
 	void changed();
 
 private:
-	void closeEvent(QCloseEvent *);
+	void closeEvent(QCloseEvent *) override;
 	void on_preambleTE_textChanged() { changed(); }
 
 	typedef std::map<BufferId, std::pair<int,int> > Coords;
