@@ -123,6 +123,10 @@ endforeach()
 foreach(_sd "lyx2lyx" "scripts" ".")
   lyx_install("data" ${TOP_SRC_DIR}/lib ${_sd}     *.py .  )
 endforeach()
+foreach(_script listerrors)
+  lyx_install("data" ${TOP_SRC_DIR}/lib scripts ${_script} . )
+endforeach()
+
 
 foreach(_imgext "png" "svgz" "gif" "xpm")
   lyx_install("data" ${TOP_SRC_DIR}/lib images       "*.${_imgext}"      . ipa classic oxygen)
