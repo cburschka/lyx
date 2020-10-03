@@ -4469,7 +4469,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 	// DocBook backend
 	else if (backend_format == "docbook5") {
 		runparams.flavor = OutputParams::DOCBOOK5;
-		runparams.nice = !put_in_tempdir;
+		runparams.nice = false;
 		if (makeDocBookFile(FileName(filename), runparams) == ExportKilled)
 			return ExportKilled;
 	}
