@@ -52,7 +52,9 @@ Template GnumericSpreadsheet
 		Product "[Spreadsheet: $$FName]"
 	FormatEnd
 	Format DocBook
-		Product "[Spreadsheet: $$FName]"
+		Product "$$Contents(\"$$AbsPath$$Basename.xhtml\")"
+		UpdateFormat xhtml_table
+		UpdateResult "$$AbsPath$$Basename.xhtml"
 	FormatEnd
 	Format XHTML
 		Product "$$Contents(\"$$AbsPath$$Basename.html\")"

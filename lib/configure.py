@@ -751,7 +751,7 @@ def checkFormatEntries(dtl_tools):
 \Format pdf6       pdf    "PDF (graphics)"        "" "%%"	""	"vector"	"application/pdf"
 \Format pdf7       pdf    "PDF (cropped)"         "" "%%"	""	"document,vector"	""
 \Format pdf8       pdf    "PDF (lower resolution)"         "" "%%"	""	"document,vector"	""
-\Format pdf9       pdf    "PDF (docbook)"         "" "%%"       ""      "document,vector,menu=export"   ""'''])
+\Format pdf9       pdf    "PDF (docbook)"         "" "%%"	""	"document,vector,menu=export"	""'''])
     #
     checkViewer('a DVI previewer', ['xdvi', 'kdvi', 'okular',
                                     'evince', 'xreader',
@@ -932,8 +932,8 @@ def checkConverterEntries():
     checkProg('an Open Document (Pandoc) -> LaTeX converter', ['pandoc -s -f odt -o $$o -t latex $$i'],
         rc_entry = [ r'\converter odt3        latex      "%%"	""' ])
     #
-    checkProg('DocBook converter -> PDF (docbook)', ['pandoc -f docbook -t latex --latex-engine=lualatex --toc -o $$o $$i'],
-        rc_entry = [ r'\converter docbook5      pdf9      "%%" ""' ])
+    checkProg('DocBook converter -> PDF (docbook)', ['pandoc -f docbook -t latex --latex-engine=lualatex --toc --template=$$s/xtemplates/lyx.latex -o $$o $$i'],
+        rc_entry = [ r'\converter docbook5      pdf9      "%%"	""' ])
     #
     checkProg('a MS Word Office Open XML converter -> LaTeX', ['pandoc -s -f docx -o $$o -t latex $$i'],
         rc_entry = [ r'\converter word2      latex      "%%"	""' ])
@@ -1176,6 +1176,10 @@ def checkConverterEntries():
 \converter oocalc html_table "ssconvert --export-type=Gnumeric_html:html40frag $$i $$o" ""
 \converter excel  html_table "ssconvert --export-type=Gnumeric_html:html40frag $$i $$o" ""
 \converter excel2 html_table "ssconvert --export-type=Gnumeric_html:html40frag $$i $$o" ""
+\converter gnumeric xhtml_table "python $$s/scripts/spreadsheet_to_docbook.py $$i $$o" ""
+\converter oocalc xhtml_table "python $$s/scripts/spreadsheet_to_docbook.py $$i $$o" ""
+\converter excel  xhtml_table "python $$s/scripts/spreadsheet_to_docbook.py $$i $$o" ""
+\converter excel2 xhtml_table "python $$s/scripts/spreadsheet_to_docbook.py $$i $$o" ""
 '''])
 
     path, lilypond = checkProg('a LilyPond -> EPS/PDF/PNG converter', ['lilypond'])

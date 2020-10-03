@@ -2495,6 +2495,7 @@ dist_scripts_DATA = \
 	scripts/lyxknitr.R \
 	scripts/lyxstangle.R \
 	scripts/lyxsweave.R
+
 # We use DATA now instead of PYTHON because automake 1.11.2 complains.
 # Note that we "chmod 755" manually these files in install-data-hook.
 dist_scripts_DATA += \
@@ -2524,6 +2525,7 @@ dist_scripts_DATA += \
 	scripts/prefs2prefs_lfuns.py \
 	scripts/prefs2prefs_prefs.py \
 	scripts/prefTest.pl.in \
+	scripts/spreadsheet_to_docbook.py \
 	scripts/tex_copy.py \
 	scripts/TeXFiles.py
 
