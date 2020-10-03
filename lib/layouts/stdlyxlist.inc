@@ -57,4 +57,11 @@ Style Labeling
 			margin-right: 1em;
 		}
 	EndHTMLStyle
+	
+	DocBookTag            variablelist
+	DocBookItemWrapperTag varlistentry
+	DocBookItemTag        listitem
+	DocBookItemInnerTag   para
+	DocBookItemLabelTag   term
+	DocBookItemLabelTagType   paragraph
 End
