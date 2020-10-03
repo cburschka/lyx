@@ -514,7 +514,7 @@ void InsetRef::addToToc(DocIterator const & cpit, bool output_active,
 	active_ = output_active;
 	docstring const & label = getParam("reference");
 	if (buffer().insetLabel(label)) {
-		broken_ = !buffer().activeLabel(label);
+		broken_ = !buffer().activeLabel(label) && active_;
 		setBroken(broken_);
 		if (broken_ && output_active) {
 			shared_ptr<Toc> toc2 = backend.toc("brokenrefs");
