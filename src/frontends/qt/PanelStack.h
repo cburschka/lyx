@@ -50,7 +50,7 @@ public:
 	///
 	bool isCurrentPanel(QString const & name) const;
 	///
-	QSize sizeHint() const;
+	QSize sizeHint() const override;
 
 public Q_SLOTS:
 	/// the option filter changed

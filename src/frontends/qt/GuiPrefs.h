@@ -161,8 +161,8 @@ class PrefOutput : public PrefModule, public Ui::PrefOutputUi
 public:
 	PrefOutput(GuiPreferences * form);
 
-	virtual void applyRC(LyXRC & rc) const;
-	virtual void updateRC(LyXRC const & rc);
+	void applyRC(LyXRC & rc) const override;
+	void updateRC(LyXRC const & rc) override;
 };
 
 
@@ -172,8 +172,8 @@ class PrefInput : public PrefModule, public Ui::PrefInputUi
 public:
 	PrefInput(GuiPreferences * form);
 
-	virtual void applyRC(LyXRC & rc) const;
-	virtual void updateRC(LyXRC const & rc);
+	void applyRC(LyXRC & rc) const override;
+	void updateRC(LyXRC const & rc) override;
 
 private Q_SLOTS:
 	void on_firstKeymapPB_clicked(bool);
@@ -192,8 +192,8 @@ class PrefCompletion : public PrefModule, public Ui::PrefCompletionUi
 public:
 	PrefCompletion(GuiPreferences * form);
 
-	virtual void applyRC(LyXRC & rc) const;
-	virtual void updateRC(LyXRC const & rc);
+	void applyRC(LyXRC & rc) const override;
+	void updateRC(LyXRC const & rc) override;
 	virtual void enableCB();
 private Q_SLOTS:
 	void on_popupTextCB_clicked();
@@ -207,8 +207,8 @@ class PrefLatex : public PrefModule, public Ui::PrefLatexUi
 public:
 	PrefLatex(GuiPreferences * form);
 
-	virtual void applyRC(LyXRC & rc) const;
-	virtual void updateRC(LyXRC const & rc);
+	void applyRC(LyXRC & rc) const override;
+	void updateRC(LyXRC const & rc) override;
 
 private Q_SLOTS:
 	void on_latexBibtexCO_activated(int n);
@@ -231,8 +231,8 @@ class PrefScreenFonts : public PrefModule, public Ui::PrefScreenFontsUi
 public:
 	PrefScreenFonts(GuiPreferences * form);
 
-	virtual void applyRC(LyXRC & rc) const;
-	virtual void updateRC(LyXRC const & rc);
+	void applyRC(LyXRC & rc) const override;
+	void updateRC(LyXRC const & rc) override;
 
 private Q_SLOTS:
 	void selectRoman(const QString&);
@@ -250,8 +250,8 @@ class PrefColors : public PrefModule, public Ui::PrefColorsUi
 public:
 	PrefColors(GuiPreferences * form);
 
-	void applyRC(LyXRC & rc) const;
-	void updateRC(LyXRC const & rc);
+	void applyRC(LyXRC & rc) const override;
+	void updateRC(LyXRC const & rc) override;
 
 private Q_SLOTS:
 	void changeColor();
@@ -282,8 +282,8 @@ class PrefDisplay : public PrefModule, public Ui::PrefDisplayUi
 public:
 	PrefDisplay(GuiPreferences * form);
 
-	void applyRC(LyXRC & rc) const;
-	void updateRC(LyXRC const & rc);
+	void applyRC(LyXRC & rc) const override;
+	void updateRC(LyXRC const & rc) override;
 
 private Q_SLOTS:
 	void on_instantPreviewCO_currentIndexChanged(int);
@@ -296,8 +296,8 @@ class PrefPaths : public PrefModule, public Ui::PrefPathsUi
 public:
 	PrefPaths(GuiPreferences * form);
 
-	void applyRC(LyXRC & rc) const;
-	void updateRC(LyXRC const & rc);
+	void applyRC(LyXRC & rc) const override;
+	void updateRC(LyXRC const & rc) override;
 
 private Q_SLOTS:
 	void selectExampledir();
@@ -318,8 +318,8 @@ class PrefSpellchecker : public PrefModule, public Ui::PrefSpellcheckerUi
 public:
 	PrefSpellchecker(GuiPreferences * form);
 
-	void applyRC(LyXRC & rc) const;
-	void updateRC(LyXRC const & rc);
+	void applyRC(LyXRC & rc) const override;
+	void updateRC(LyXRC const & rc) override;
 
 private Q_SLOTS:
 	void on_spellcheckerCB_currentIndexChanged(int);
@@ -332,8 +332,8 @@ class PrefConverters : public PrefModule, public Ui::PrefConvertersUi
 public:
 	PrefConverters(GuiPreferences * form);
 
-	void applyRC(LyXRC & rc) const;
-	void updateRC(LyXRC const & rc);
+	void applyRC(LyXRC & rc) const override;
+	void updateRC(LyXRC const & rc) override;
 
 public Q_SLOTS:
 	void updateGui();
@@ -358,8 +358,8 @@ class PrefFileformats : public PrefModule, public Ui::PrefFileformatsUi
 public:
 	PrefFileformats(GuiPreferences * form);
 
-	void applyRC(LyXRC & rc) const;
-	void updateRC(LyXRC const & rc);
+	void applyRC(LyXRC & rc) const override;
+	void updateRC(LyXRC const & rc) override;
 	void updateView();
 
 Q_SIGNALS:
@@ -402,8 +402,8 @@ class PrefLanguage : public PrefModule, public Ui::PrefLanguageUi
 public:
 	PrefLanguage(GuiPreferences * form);
 
-	void applyRC(LyXRC & rc) const;
-	void updateRC(LyXRC const & rc);
+	void applyRC(LyXRC & rc) const override;
+	void updateRC(LyXRC const & rc) override;
 
 private Q_SLOTS:
 	void on_uiLanguageCO_currentIndexChanged(int);
@@ -421,8 +421,8 @@ class PrefUserInterface : public PrefModule, public Ui::PrefUi
 public:
 	PrefUserInterface(GuiPreferences * form);
 
-	void applyRC(LyXRC & rc) const;
-	void updateRC(LyXRC const & rc);
+	void applyRC(LyXRC & rc) const override;
+	void updateRC(LyXRC const & rc) override;
 
 public Q_SLOTS:
 	void selectUi();
@@ -435,8 +435,8 @@ class PrefDocHandling : public PrefModule, public Ui::PrefDocHandlingUi
 public:
 	PrefDocHandling(GuiPreferences * form);
 
-	void applyRC(LyXRC & rc) const;
-	void updateRC(LyXRC const & rc);
+	void applyRC(LyXRC & rc) const override;
+	void updateRC(LyXRC const & rc) override;
 
 public Q_SLOTS:
 	void on_clearSessionPB_clicked();
@@ -450,8 +450,8 @@ class PrefEdit : public PrefModule, public Ui::PrefEditUi
 public:
 	PrefEdit(GuiPreferences * form);
 
-	void applyRC(LyXRC & rc) const;
-	void updateRC(LyXRC const & rc);
+	void applyRC(LyXRC & rc) const override;
+	void updateRC(LyXRC const & rc) override;
 
 public Q_SLOTS:
 	void on_fullscreenLimitCB_toggled(bool);
@@ -473,8 +473,8 @@ class PrefShortcuts : public PrefModule, public Ui::PrefShortcuts
 public:
 	PrefShortcuts(GuiPreferences * form);
 
-	void applyRC(LyXRC & rc) const;
-	void updateRC(LyXRC const & rc);
+	void applyRC(LyXRC & rc) const override;
+	void updateRC(LyXRC const & rc) override;
 	void updateShortcutsTW();
 
 public Q_SLOTS:
@@ -551,8 +551,8 @@ class PrefIdentity : public PrefModule, public Ui::PrefIdentityUi
 public:
 	PrefIdentity(GuiPreferences * form);
 
-	void applyRC(LyXRC & rc) const;
-	void updateRC(LyXRC const & rc);
+	void applyRC(LyXRC & rc) const override;
+	void updateRC(LyXRC const & rc) override;
 };
 
 

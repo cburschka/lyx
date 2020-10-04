@@ -34,24 +34,24 @@ public:
 	GuiProgress();
 	~GuiProgress();
 
-	void lyxerrConnect();
-	void lyxerrDisconnect();
-	void lyxerrFlush();
+	void lyxerrConnect() override;
+	void lyxerrDisconnect() override;
+	void lyxerrFlush() override;
 
 	int prompt(docstring const & title, docstring const & question,
 		   int default_button, int cancel_button,
-		   docstring const & b1, docstring const & b2);
+		   docstring const & b1, docstring const & b2) override;
 
 	static QString currentTime();
 
 Q_SIGNALS:
 
 	// ProgressInterface
-	void processStarted(QString const &);
-	void processFinished(QString const &);
-	void appendMessage(QString const &);
-	void appendError(QString const &);
-	void clearMessages();
+	void processStarted(QString const &) override;
+	void processFinished(QString const &) override;
+	void appendMessage(QString const &) override;
+	void appendError(QString const &) override;
+	void clearMessages() override;
 	void appendLyXErrMessage(QString const & text);
 
 
@@ -60,10 +60,10 @@ Q_SIGNALS:
 	void triggerFlush();
 
 	// Alert interface
-	void warning(QString const & title, QString const & message);
-	void toggleWarning(QString const & title, QString const & msg, QString const & formatted);
-	void error(QString const & title, QString const & message, QString const & details = QString());
-	void information(QString const & title, QString const & message);
+	void warning(QString const & title, QString const & message) override;
+	void toggleWarning(QString const & title, QString const & msg, QString const & formatted) override;
+	void error(QString const & title, QString const & message, QString const & details = QString()) override;
+	void information(QString const & title, QString const & message) override;
 
 private Q_SLOTS:
 	void doProcessStarted(QString const &);

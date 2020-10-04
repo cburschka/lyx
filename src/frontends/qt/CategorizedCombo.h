@@ -57,10 +57,10 @@ public:
 						    QString const & unavail = QString());
 
 	///
-	void showPopup();
+	void showPopup() override;
 
 	///
-	bool eventFilter(QObject * o, QEvent * e);
+	bool eventFilter(QObject * o, QEvent * e) override;
 	///
 	QString const & filter() const;
 

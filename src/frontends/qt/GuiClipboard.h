@@ -45,7 +45,7 @@ public:
 	/// reads the clipboard and updates the cached_formats_
 	void update();
 	/// returns the cached list of formats supported by the object
-	virtual QStringList formats() const { return cached_formats_; }
+	QStringList formats() const override { return cached_formats_; }
 	/// reads the clipboard and returns the data
 	QByteArray data(QString const & mimeType) const;
 
@@ -67,16 +67,16 @@ public:
 	/** Clipboard overloaded methods
 	 */
 	//@{
-	std::string const getAsLyX() const;
-	support::FileName getAsGraphics(Cursor const & cur, GraphicsType type) const;
-	docstring const getAsText(TextType type) const;
-	void put(std::string const & text) const;
-	void put(std::string const & lyx, docstring const & html, docstring const & text);
-	bool hasGraphicsContents(GraphicsType type = AnyGraphicsType) const;
-	bool hasTextContents(TextType typetype = AnyTextType) const;
-	bool isInternal() const;
-	bool hasInternal() const;
-	bool empty() const;
+	std::string const getAsLyX() const override;
+	support::FileName getAsGraphics(Cursor const & cur, GraphicsType type) const override;
+	docstring const getAsText(TextType type) const override;
+	void put(std::string const & text) const override;
+	void put(std::string const & lyx, docstring const & html, docstring const & text) override;
+	bool hasGraphicsContents(GraphicsType type = AnyGraphicsType) const override;
+	bool hasTextContents(TextType typetype = AnyTextType) const override;
+	bool isInternal() const override;
+	bool hasInternal() const override;
+	bool empty() const override;
 	//@}
 
 	support::FileName getPastedGraphicsFileName(Cursor const & cur,

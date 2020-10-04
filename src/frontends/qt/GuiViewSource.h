@@ -79,7 +79,7 @@ private:
 	void getContent(BufferView const & view, Buffer::OutputWhat output,
 			   docstring & str, std::string const & format, bool master);
 	/// Grab double clicks on the viewport
-	bool eventFilter(QObject * obj, QEvent * event);
+	bool eventFilter(QObject * obj, QEvent * event) override;
 	///
 	QTextDocument * document_;
 	/// LaTeX syntax highlighter

@@ -113,9 +113,9 @@ docstring const from_local8bit(string const & s)
 /// Exception thrown by to_local8bit if the string could not be converted
 class to_local8bit_failure : public bad_cast {
 public:
-	to_local8bit_failure() throw() : bad_cast() {}
-	virtual ~to_local8bit_failure() throw() {}
-	const char* what() const throw() override
+	to_local8bit_failure() noexcept : bad_cast() {}
+	virtual ~to_local8bit_failure() noexcept {}
+	const char* what() const noexcept override
 	{
 		return "A string could not be converted from unicode to the local 8 bit encoding.";
 	}
@@ -280,9 +280,9 @@ namespace lyx {
 
 class ctype_failure : public bad_cast {
 public:
-	ctype_failure() throw() : bad_cast() {}
-	virtual ~ctype_failure() throw() {}
-	const char* what() const throw() override
+	ctype_failure() noexcept : bad_cast() {}
+	virtual ~ctype_failure() noexcept {}
+	const char* what() const noexcept override
 	{
 		return "The ctype<lyx::char_type> locale facet does only support ASCII characters on this platform.";
 	}
@@ -291,9 +291,9 @@ public:
 
 class num_put_failure : public bad_cast {
 public:
-	num_put_failure() throw() : bad_cast() {}
-	virtual ~num_put_failure() throw() {}
-	const char* what() const throw() override
+	num_put_failure() noexcept : bad_cast() {}
+	virtual ~num_put_failure() noexcept {}
+	const char* what() const noexcept override
 	{
 		return "The num_put locale facet does only support ASCII characters on this platform.";
 	}

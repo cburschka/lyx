@@ -33,8 +33,8 @@ class Formats;
 class ConversionException : public std::exception {
 public:
 	ConversionException() {}
-	virtual ~ConversionException() throw() {}
-	virtual const char * what() const throw() 
+	virtual ~ConversionException() noexcept {}
+	const char * what() const noexcept override
 		{ return "Exception caught in conversion routine!"; }
 };
 

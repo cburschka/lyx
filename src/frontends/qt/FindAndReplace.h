@@ -57,10 +57,10 @@ private:
 		bool expandmacros, bool ignoreformat, bool replace,
 		bool keep_case, bool replace_all = false);
 
-	bool eventFilter(QObject *obj, QEvent *event);
+	bool eventFilter(QObject *obj, QEvent *event) override;
 
-	void virtual showEvent(QShowEvent *ev);
-	void virtual hideEvent(QHideEvent *ev);
+	void virtual showEvent(QShowEvent *ev) override;
+	void virtual hideEvent(QHideEvent *ev) override;
 
 	void hideDialog();
 

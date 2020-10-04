@@ -110,7 +110,7 @@ public:
 
 	/// display a message in the view
 	/// could be called from any thread
-	void message(docstring const &);
+	void message(docstring const &) override;
 
 	bool getStatus(FuncRequest const & cmd, FuncStatus & flag);
 	/// dispatch command.
@@ -130,7 +130,7 @@ public:
 	bool hasFocus() const;
 
 	///
-	void focusInEvent(QFocusEvent * e);
+	void focusInEvent(QFocusEvent * e) override;
 	/// Add a Buffer to the View
 	/// \param b Buffer to set.
 	/// \param switch_to Whether to set it to the current workarea.
@@ -166,12 +166,12 @@ public:
 
 	/// \name GuiBufferDelegate.
 	//@{
-	void resetAutosaveTimers();
+	void resetAutosaveTimers() override;
 	// shows an error list
 	// if from_master is true, show master's error list
-	void errors(std::string const &, bool from_master = false);
-	void structureChanged();
-	void updateTocItem(std::string const &, DocIterator const &);
+	void errors(std::string const &, bool from_master = false) override;
+	void structureChanged() override;
+	void updateTocItem(std::string const &, DocIterator const &) override;
 	//@}
 
 	///
@@ -282,17 +282,17 @@ private:
 	/// disconnect from signals in the given buffer
 	void disconnectBuffer();
 	///
-	void dragEnterEvent(QDragEnterEvent * ev);
+	void dragEnterEvent(QDragEnterEvent * ev) override;
 	///
-	void dropEvent(QDropEvent * ev);
+	void dropEvent(QDropEvent * ev) override;
 	/// make sure we quit cleanly
 	void closeEvent(QCloseEvent * e) override;
 	///
 	void showEvent(QShowEvent *) override;
 
 	/// in order to catch Tab key press.
-	bool event(QEvent * e);
-	bool focusNextPrevChild(bool);
+	bool event(QEvent * e) override;
+	bool focusNextPrevChild(bool) override;
 
 	///
 	bool goToFileRow(std::string const & argument);
@@ -338,13 +338,13 @@ public:
 	    the current cursor position or modify an existing, 'open' inset?
 	*/
 	void showDialog(std::string const & name,
-		std::string const & data, Inset * inset = 0);
+		std::string const & data, Inset * inset = 0) override;
 
 	/** \param name == "citation", "bibtex" etc; an identifier used
 	    to reset the contents of a particular dialog with \param data.
 	    See the comments to 'show', above.
 	*/
-	void updateDialog(std::string const & name, std::string const & data);
+	void updateDialog(std::string const & name, std::string const & data) override;
 
 	/** All Dialogs of the given \param name will be closed if they are
 	    connected to the given \param inset.

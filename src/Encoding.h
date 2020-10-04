@@ -29,7 +29,7 @@ class EncodingException : public std::exception {
 public:
 	EncodingException(char_type c);
 	virtual ~EncodingException() noexcept {}
-	virtual const char * what() const noexcept;
+	virtual const char * what() const noexcept override;
 
 	char_type failed_char;
 	int par_id;

@@ -34,10 +34,10 @@ public:
 	/** Selection overloaded methods
 	 */
 	//@{
-	void haveSelection(bool own);
-	docstring const get() const;
-	void put(docstring const & str);
-	bool empty() const;
+	void haveSelection(bool own) override;
+	docstring const get() const override;
+	void put(docstring const & str) override;
+	bool empty() const override;
 	//@}
 
 private Q_SLOTS:

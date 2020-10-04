@@ -64,7 +64,7 @@ public:
 	///
 	BufferView const & bufferView() const;
 	///
-	void scheduleRedraw(bool update_metrics);
+	void scheduleRedraw(bool update_metrics) override;
 
 	/// return true if the key is part of a shortcut
 	bool queryKeySym(KeySymbol const & key, KeyModifier mod) const;
@@ -114,42 +114,42 @@ private Q_SLOTS:
 	void toggleCaret();
 	/// close this work area.
 	/// Slot for Buffer::closing signal.
-	void close();
+	void close() override;
 	/// Slot to restore proper scrollbar behaviour.
 	void fixVerticalScrollBar();
 
 private:
 	/// Update window titles of all users.
-	void updateWindowTitle();
+	void updateWindowTitle() override;
 	///
-	bool event(QEvent *);
+	bool event(QEvent *) override;
 	///
-	void contextMenuEvent(QContextMenuEvent *);
+	void contextMenuEvent(QContextMenuEvent *) override;
 	///
-	void focusInEvent(QFocusEvent *);
+	void focusInEvent(QFocusEvent *) override;
 	///
-	void focusOutEvent(QFocusEvent *);
+	void focusOutEvent(QFocusEvent *) override;
 	/// repaint part of the widget
-	void paintEvent(QPaintEvent * ev);
+	void paintEvent(QPaintEvent * ev) override;
 	/// widget has been resized
-	void resizeEvent(QResizeEvent * ev);
+	void resizeEvent(QResizeEvent * ev) override;
 	/// mouse button press
-	void mousePressEvent(QMouseEvent * ev);
+	void mousePressEvent(QMouseEvent * ev) override;
 	/// mouse button release
-	void mouseReleaseEvent(QMouseEvent * ev);
+	void mouseReleaseEvent(QMouseEvent * ev) override;
 	/// mouse double click of button
-	void mouseDoubleClickEvent(QMouseEvent * ev);
+	void mouseDoubleClickEvent(QMouseEvent * ev) override;
 	/// mouse motion
-	void mouseMoveEvent(QMouseEvent * ev);
+	void mouseMoveEvent(QMouseEvent * ev) override;
 	/// wheel event
-	void wheelEvent(QWheelEvent * ev);
+	void wheelEvent(QWheelEvent * ev) override;
 	/// key press event. It also knows how to handle ShortcutOverride events to
 	/// avoid code duplication.
 	void keyPressEvent(QKeyEvent * ev) override;
 	/// IM events
-	void inputMethodEvent(QInputMethodEvent * ev);
+	void inputMethodEvent(QInputMethodEvent * ev) override;
 	/// IM query
-	QVariant inputMethodQuery(Qt::InputMethodQuery query) const;
+	QVariant inputMethodQuery(Qt::InputMethodQuery query) const override;
 
 	/// The slot connected to SyntheticMouseEvent::timeout.
 	void generateSyntheticMouseEvent();
@@ -189,7 +189,7 @@ public:
 	void setWidgetResizable(bool) {}
 	void setWidget(QWidget *) {}
 
-	QSize sizeHint () const;
+	QSize sizeHint () const override;
 	///
 	void disable();
 
@@ -228,7 +228,7 @@ public:
 	GuiWorkArea * currentWorkArea() const;
 	GuiWorkArea * workArea(Buffer & buffer) const;
 	GuiWorkArea * workArea(int index) const;
-	void paintEvent(QPaintEvent *);
+	void paintEvent(QPaintEvent *) override;
 
 Q_SIGNALS:
 	///
@@ -254,10 +254,10 @@ private Q_SLOTS:
 	///
 	void showContextMenu(const QPoint & pos);
 	/// enable closing tab on middle-click
-	void mousePressEvent(QMouseEvent * me);
-	void mouseReleaseEvent(QMouseEvent * me);
+	void mousePressEvent(QMouseEvent * me) override;
+	void mouseReleaseEvent(QMouseEvent * me) override;
 	///
-	void mouseDoubleClickEvent(QMouseEvent * event);
+	void mouseDoubleClickEvent(QMouseEvent * event) override;
 	///
 	int indexOfWorkArea(GuiWorkArea * w) const;
 

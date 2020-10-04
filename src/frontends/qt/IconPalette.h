@@ -27,13 +27,13 @@ class TearOff : public QWidget {
 	Q_OBJECT
 public:
 	TearOff(QWidget * parent);
-	void enterEvent(QEvent *);
-	void leaveEvent(QEvent *);
-	void mouseReleaseEvent (QMouseEvent *);
+	void enterEvent(QEvent *) override;
+	void leaveEvent(QEvent *) override;
+	void mouseReleaseEvent (QMouseEvent *) override;
 Q_SIGNALS:
 	void tearOff();
 protected:
-	void paintEvent(QPaintEvent *);
+	void paintEvent(QPaintEvent *) override;
 private:
 	bool highlighted_;
 };
@@ -55,7 +55,7 @@ Q_SIGNALS:
 protected:
 	void showEvent(QShowEvent * event) override;
 	void hideEvent(QHideEvent * event) override;
-	void paintEvent(QPaintEvent * event);
+	void paintEvent(QPaintEvent * event) override;
 
 private Q_SLOTS:
 	void tearOff();

@@ -27,7 +27,7 @@ public:
 	///
 	bool idxUpDown(Cursor & cur, bool up) const override;
 	///
-	bool idxForward(Cursor & cur) const;
+	bool idxForward(Cursor & cur) const override;
 	///
 	bool idxBackward(Cursor & cur) const override;
 	///

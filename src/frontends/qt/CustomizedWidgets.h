@@ -35,7 +35,7 @@ public:
 	void setKeySequence(lyx::KeySequence const & s);
 	void removeFromSequence();
 protected Q_SLOTS:
-	bool event(QEvent* e);
+	bool event(QEvent* e) override;
 	void keyPressEvent(QKeyEvent * e) override;
 private:
 	void appendToSequence(QKeyEvent * e);

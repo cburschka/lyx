@@ -73,11 +73,11 @@ public:
 
 protected:
 	///
-	void initialize();
+	void initialize() override;
 
 protected Q_SLOTS:
 	///
-	void updateTriggered();
+	void updateTriggered() override;
 };
 
 
@@ -103,7 +103,7 @@ public:
 	static bool isMenuType(std::string const & s);
 protected:
 	///
-	void initialize();
+	void initialize() override;
 	///
 	void loadFlexInsets();
 	/// pimpl so we don't have to include big files
@@ -111,7 +111,7 @@ protected:
 	Private * d;
 protected Q_SLOTS:
 	///
-	void updateTriggered();
+	void updateTriggered() override;
 };
 
 
@@ -124,7 +124,7 @@ public:
 
 	/// Reimplemented from QToolbar to detect whether the
 	/// toolbar is restored with MainWindow::restoreState().
-	void setVisible(bool visible);
+	void setVisible(bool visible) override;
 
 	///
 	void setVisibility(int visibility);

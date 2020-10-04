@@ -236,11 +236,11 @@ protected:
 		}
 		return retval;
 	}
-	int do_encoding() const throw() override
+	int do_encoding() const noexcept override
 	{
 		return 0;
 	}
-	bool do_always_noconv() const throw() override
+	bool do_always_noconv() const noexcept override
 	{
 		return false;
 	}
@@ -266,7 +266,7 @@ protected:
 		return min(length, max);
 #endif
 	}
-	int do_max_length() const throw() override
+	int do_max_length() const noexcept override
 	{
 		return lyx::max_encoded_bytes(encoding_);
 	}
@@ -322,7 +322,7 @@ void setEncoding(Ios & ios, string const & encoding, ios_base::openmode mode)
 }
 
 
-const char * iconv_codecvt_facet_exception::what() const throw()
+const char * iconv_codecvt_facet_exception::what() const noexcept
 {
 	return "iconv problem in iconv_codecvt_facet initialization";
 }
@@ -483,14 +483,14 @@ codecvt<lyx::char_type, char, mbstate_t>::do_in(
 
 
 template<>
-int codecvt<lyx::char_type, char, mbstate_t>::do_encoding() const throw()
+int codecvt<lyx::char_type, char, mbstate_t>::do_encoding() const noexcept
 {
 	return 0;
 }
 
 
 template<>
-bool codecvt<lyx::char_type, char, mbstate_t>::do_always_noconv() const throw()
+bool codecvt<lyx::char_type, char, mbstate_t>::do_always_noconv() const noexcept
 {
 	return true;
 }
@@ -503,7 +503,7 @@ int codecvt<lyx::char_type, char, mbstate_t>::do_length(
 }
 
 template<>
-int codecvt<lyx::char_type, char, mbstate_t>::do_max_length() const throw()
+int codecvt<lyx::char_type, char, mbstate_t>::do_max_length() const noexcept
 {
 	return 4;
 }

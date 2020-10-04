@@ -27,7 +27,7 @@ class ToolTipFormatter : public QObject {
 public:
 	ToolTipFormatter(QObject * parent);
 protected:
-	bool eventFilter(QObject * o, QEvent * e);
+	bool eventFilter(QObject * o, QEvent * e) override;
 };
 
 

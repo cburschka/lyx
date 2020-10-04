@@ -38,7 +38,7 @@ Q_SIGNALS:
 
 protected:
 	///
-	virtual bool event(QEvent * e);
+	virtual bool event(QEvent * e) override;
 	///
 	virtual void keyPressEvent(QKeyEvent * e) override;
 };

@@ -29,13 +29,13 @@ public:
 	virtual ~MathCompletionList();
 
 	///
-	virtual bool sorted() const { return false; }
+	bool sorted() const override { return false; }
 	///
-	virtual size_t size() const;
+	size_t size() const override;
 	///
-	virtual docstring const & data(size_t idx) const;
+	docstring const & data(size_t idx) const override;
 	///
-	virtual std::string icon(size_t idx) const;
+	std::string icon(size_t idx) const override;
 
 	///
 	static void addToFavorites(docstring const & completion);

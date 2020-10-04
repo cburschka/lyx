@@ -110,7 +110,7 @@ private:
 	///
 	void updateModel(Cursor const & cur, bool popupUpdate, bool inlineUpdate);
 	///
-	bool eventFilter(QObject * watched, QEvent * event);
+	bool eventFilter(QObject * watched, QEvent * event) override;
 
 	///
 	GuiWorkArea * gui_;

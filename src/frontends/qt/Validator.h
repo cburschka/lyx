@@ -54,7 +54,7 @@ public:
 	/** @returns QValidator::Acceptable if @c data is a GlueLength.
 	 *  If not, returns QValidator::Intermediate.
 	 */
-	QValidator::State validate(QString & data, int &) const;
+	QValidator::State validate(QString & data, int &) const override;
 
 	/** @name Bottom
 	 *  Set and retrieve the minimum allowed Length value.
@@ -98,7 +98,7 @@ public:
 	/** @returns QValidator::Acceptable if @c data is a GlueLength
 		* or is "auto". If not, returns QValidator::Intermediate.
 	 */
-	QValidator::State validate(QString & data, int &) const;
+	QValidator::State validate(QString & data, int &) const override;
 
 private:
 	QString autotext_;
@@ -120,7 +120,7 @@ public:
 	DoubleAutoValidator(QWidget * parent, QString const & autotext);
 	DoubleAutoValidator(double bottom, double top, int decimals,
 		QObject * parent);
-	QValidator::State validate(QString & input, int & pos) const;
+	QValidator::State validate(QString & input, int & pos) const override;
 
 private:
 	QString autotext_;
@@ -135,7 +135,7 @@ public:
 	// Define a validator.
 	NoNewLineValidator(QWidget *);
 	// Remove newline characters from input.
-	QValidator::State validate(QString &, int &) const;
+	QValidator::State validate(QString &, int &) const override;
 };
 
 
@@ -157,7 +157,7 @@ public:
 	/** @returns QValidator::Acceptable if @c data is a valid path.
 	 *  If not, returns QValidator::Intermediate.
 	 */
-	QValidator::State validate(QString &, int &) const;
+	QValidator::State validate(QString &, int &) const override;
 
 	/** Define what checks that @c validate() will perform.
 	 *  @param doc_type checks are activated only for @c LATEX docs.

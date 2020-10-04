@@ -35,9 +35,9 @@ public:
 	//
 	~RevertibleRef() { revert(); }
 	//
-	void revert() {	if (enabled) { enabled = false; ref = old; } }
+	void revert() override { if (enabled) { enabled = false; ref = old; } }
 	//
-	void keep() { enabled = false; }
+	void keep() override { enabled = false; }
 	//
 	X & ref;
 	X const old;

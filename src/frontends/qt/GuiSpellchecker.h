@@ -51,7 +51,7 @@ private Q_SLOTS:
 
 private:
 	///
-	bool eventFilter(QObject *obj, QEvent *event);
+	bool eventFilter(QObject *obj, QEvent *event) override;
 	struct Private;
 	Private * const d;
 };

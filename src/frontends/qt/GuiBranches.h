@@ -49,7 +49,7 @@ public:
 	void apply(BufferParams & params) const;
 	void setUnknownBranches(QStringList const & b) { unknown_branches_ = b; }
 
-	bool eventFilter(QObject * obj, QEvent * event);
+	bool eventFilter(QObject * obj, QEvent * event) override;
 
 Q_SIGNALS:
 	void changed();

@@ -97,8 +97,8 @@ public Q_SLOTS:
 	void setAll(BorderState);
 
 protected:
-	void mousePressEvent(QMouseEvent * e);
-	void paintEvent(QPaintEvent * e);
+	void mousePressEvent(QMouseEvent * e) override;
+	void paintEvent(QPaintEvent * e) override;
 
 private:
 	void init();

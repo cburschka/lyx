@@ -37,10 +37,10 @@ public Q_SLOTS:
 	void updateParent();
 
 protected Q_SLOTS:
-	void mouseMoveEvent(QMouseEvent *);
-	void mouseReleaseEvent(QMouseEvent *);
-	void mousePressEvent(QMouseEvent *);
-	void paintEvent(QPaintEvent *);
+	void mouseMoveEvent(QMouseEvent *) override;
+	void mouseReleaseEvent(QMouseEvent *) override;
+	void mousePressEvent(QMouseEvent *) override;
+	void paintEvent(QPaintEvent *) override;
 
 private:
 	//! update the geometry

@@ -49,7 +49,7 @@ public:
 	void showPopup();
 
 	///
-	bool eventFilter(QObject * o, QEvent * e);
+	bool eventFilter(QObject * o, QEvent * e) override;
 	///
 	QString const & filter() const;
 

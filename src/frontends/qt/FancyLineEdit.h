@@ -30,7 +30,7 @@ class IconButton: public QAbstractButton
 	Q_PROPERTY(QPixmap pixmap READ pixmap WRITE setPixmap)
 public:
 	explicit IconButton(QWidget *parent = 0);
-	void paintEvent(QPaintEvent *event);
+	void paintEvent(QPaintEvent *event) override;
 	void setPixmap(const QPixmap &pixmap) { m_pixmap = pixmap; update(); }
 	QPixmap pixmap() const { return m_pixmap; }
 	float iconOpacity() { return m_iconOpacity; }
@@ -96,8 +96,8 @@ private Q_SLOTS:
 	void iconClicked();
 
 protected:
-	virtual void resizeEvent(QResizeEvent *e);
-	virtual void keyPressEvent(QKeyEvent *e) override;
+	void resizeEvent(QResizeEvent *e) override;
+	void keyPressEvent(QKeyEvent *e) override;
 
 private:
 	void updateMargins();

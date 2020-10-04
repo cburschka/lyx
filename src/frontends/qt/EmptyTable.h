@@ -29,7 +29,7 @@ class EmptyTable : public QTableWidget {
 public:
 	EmptyTable(QWidget * parent = 0, int rows = 5, int columns = 5);
 
-	virtual QSize sizeHint() const;
+	QSize sizeHint() const override;
 public Q_SLOTS:
 	/// set the number of columns in the table and emit colsChanged() signal
 	void setNumberColumns(int nr_cols);
@@ -43,7 +43,7 @@ Q_SIGNALS:
 protected:
 	/// fill in a cell
 	virtual void paintCell(class QPainter *, int, int);
-	virtual void mouseMoveEvent(QMouseEvent *);
+	void mouseMoveEvent(QMouseEvent *) override;
 
 	/// Reset all the cell size to default
 	virtual void resetCellSize();
