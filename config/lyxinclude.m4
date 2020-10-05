@@ -410,7 +410,7 @@ if test x$GXX = xyes; then
   if test x$enable_warnings = xyes ; then
       AM_CPPFLAGS="$AM_CPPFLAGS -Wall -Wextra"
       case $gxx_version in
-	  9.*|10.*|clang-10*)
+	  9.*|10.*|clang-10*|clang-11*)
 	      AM_CXXFLAGS="$AM_CXXFLAGS -Wno-deprecated-copy";;
 	  *);;
       esac
