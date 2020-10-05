@@ -55,7 +55,7 @@ public:
 
 protected:
 	///
-	void resizeEvent (QResizeEvent * event);
+	void resizeEvent (QResizeEvent * event) override;
 
 public Q_SLOTS:
 	///

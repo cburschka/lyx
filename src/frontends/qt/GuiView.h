@@ -223,7 +223,7 @@ Q_SIGNALS:
 
 public Q_SLOTS:
 	///
-	void setBusy(bool);
+	void setBusy(bool) override;
 	/// idle timeout.
 	/// clear any temporary message and replace with current status.
 	void clearMessage();

@@ -46,7 +46,7 @@ public:
 		bool sorted, bool sortedByCat, bool unknown);
 
 	///
-	void showPopup();
+	void showPopup() override;
 
 	///
 	bool eventFilter(QObject * o, QEvent * e) override;
