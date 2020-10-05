@@ -1187,7 +1187,7 @@ void GuiView::dropEvent(QDropEvent * event)
 				found_formats.push_back(*it);
 
 		FuncRequest cmd;
-		if (found_formats.size() >= 1) {
+		if (!found_formats.empty()) {
 			if (found_formats.size() > 1) {
 				//FIXME: show a dialog to choose the correct importable format
 				LYXERR(Debug::FILES,

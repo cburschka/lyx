@@ -2027,7 +2027,7 @@ CompletionList const *
 InsetMathNest::createCompletionList(Cursor const & cur) const
 {
 	if (!cur.inMacroMode())
-		return 0;
+		return nullptr;
 
 	return new MathCompletionList(cur);
 }

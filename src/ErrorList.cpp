@@ -32,7 +32,7 @@ ErrorItem::ErrorItem(docstring const & error_, docstring const & description_,
 
 
 ErrorItem::ErrorItem()
-	: start(TexRow::text_none), end(TexRow::text_none), buffer(0)
+	: start(TexRow::text_none), end(TexRow::text_none), buffer(nullptr)
 {}
 
 

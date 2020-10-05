@@ -187,7 +187,6 @@ void GuiRef::selectionChanged()
 		return;
 	QTreeWidgetItem * sel = selections.first();
 	refHighlighted(sel);
-	return;
 }
 
 

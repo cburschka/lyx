@@ -444,9 +444,9 @@ latexkeys const * in_word_set(docstring const & str)
 {
 	MathWordList::iterator it = theMathWordList.find(str);
 	if (it == theMathWordList.end())
-		return 0;
+		return nullptr;
 	if (it->second.inset == "macro")
-		return 0;
+		return nullptr;
 	return &(it->second);
 }
 

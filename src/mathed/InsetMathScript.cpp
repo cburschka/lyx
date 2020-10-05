@@ -388,7 +388,7 @@ void InsetMathScript::removeScript(bool up)
 		if (up == cell_1_is_up_)
 			cells_.pop_back();
 	} else if (nargs() == 3) {
-		if (up == true) {
+		if (up) {
 			swap(cells_[1], cells_[2]);
 			cell_1_is_up_ = false;
 		} else {

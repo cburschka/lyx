@@ -54,7 +54,7 @@ void PersonalWordList::load()
 	LYXERR(Debug::FILES, "load personal dictionary from: " << fn);
 	ifstream ifs(fn.toFilesystemEncoding().c_str());
 
-	dirty(words_.size() > 0);
+	dirty(!words_.empty());
 	words_.clear();
 	string line;
 	getline(ifs, line);

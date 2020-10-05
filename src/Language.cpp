@@ -37,10 +37,10 @@ using namespace lyx::support;
 namespace lyx {
 
 Languages languages;
-Language const * ignore_language = 0;
-Language const * default_language = 0;
-Language const * latex_language = 0;
-Language const * reset_language = 0;
+Language const * ignore_language = nullptr;
+Language const * default_language = nullptr;
+Language const * latex_language = nullptr;
+Language const * reset_language = nullptr;
 
 
 bool Language::isPolyglossiaExclusive() const
@@ -344,12 +344,12 @@ void Languages::read(FileName const & filename)
 			break;
 		if (l.lang() == "latex") {
 			// Check if latex language was not already defined.
-			LASSERT(latex_language == 0, continue);
+			LASSERT(latex_language == nullptr, continue);
 			static const Language latex_lang = l;
 			latex_language = &latex_lang;
 		} else if (l.lang() == "ignore") {
 			// Check if ignore language was not already defined.
-			LASSERT(ignore_language == 0, continue);
+			LASSERT(ignore_language == nullptr, continue);
 			static const Language ignore_lang = l;
 			ignore_language = &ignore_lang;
 		} else
@@ -436,7 +436,7 @@ Language const * Languages::getFromCode(string const & code) const
 		if (match(code, l.second) == ApproximateMatch)
 			return &l.second;
 	}
-	return 0;
+	return nullptr;
 }
 
 
@@ -460,7 +460,7 @@ Language const * Languages::getFromCode(string const & code,
 	return getFromCode(code);
 
 	LYXERR0("Unknown language `" << code << "'");
-	return 0;
+	return nullptr;
 }
 
 

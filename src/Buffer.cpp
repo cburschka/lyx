@@ -664,7 +664,6 @@ void Buffer::cloneWithChildren(BufferMap & bufmap, CloneList_ptr clones) const
 		buffer_clone->setChild(dit, child_clone);
 	}
 	buffer_clone->d->macro_lock = false;
-	return;
 }
 
 
@@ -4010,10 +4009,7 @@ InsetLabel const * Buffer::insetLabel(docstring const & label,
 
 bool Buffer::activeLabel(docstring const & label) const
 {
-	if (!insetLabel(label, true))
-		return false;
-
-	return true;
+	return insetLabel(label, true) != nullptr;
 }
 
 

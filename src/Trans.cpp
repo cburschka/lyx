@@ -510,7 +510,7 @@ docstring const TransDeadkeyState::deadkey(char_type c, KmodInfo d)
 	KmodException::const_iterator cit = deadkey_info_.exception_list.begin();
 	KmodException::const_iterator end = deadkey_info_.exception_list.end();
 	for (; cit != end; ++cit) {
-		if (cit->combined == true && cit->accent == d.accent) {
+		if (cit->combined && cit->accent == d.accent) {
 			deadkey2_ = c;
 			deadkey2_info_ = d;
 			comb_info_ = (*cit);
@@ -656,7 +656,7 @@ void TransManager::deadkey(char_type c, tex_accent accent, Text * t, Cursor & cu
 		// A deadkey was pressed that cannot be printed
 		// or a accent command was typed in the minibuffer
 		KmodInfo i;
-		if (active_->isAccentDefined(accent, i) == true) {
+		if (active_->isAccentDefined(accent, i)) {
 			docstring const res = trans_fsm_
 				.currentState->deadkey(c, i);
 			insert(res, t, cur);

@@ -71,7 +71,7 @@ private:
 class CCFilterModel : public QSortFilterProxyModel {
 public:
 	///
-	CCFilterModel(QObject * parent = 0)
+	CCFilterModel(QObject * parent = nullptr)
 		: QSortFilterProxyModel(parent)
 	{}
 };

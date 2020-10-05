@@ -37,12 +37,12 @@ using namespace std;
 
 namespace lyx {
 
-	InsetNewpage::InsetNewpage() : Inset(0)
+	InsetNewpage::InsetNewpage() : Inset(nullptr)
 {}
 
 
 InsetNewpage::InsetNewpage(InsetNewpageParams const & params)
-	: Inset(0), params_(params)
+	: Inset(nullptr), params_(params)
 {}
 
 

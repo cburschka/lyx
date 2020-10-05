@@ -173,7 +173,7 @@ bool GuiImage::clip(Params const & params)
 
 bool GuiImage::rotate(Params const & params)
 {
-	if (!params.angle)
+	if (params.angle == 0)
 		return false;
 
 	QImage const & image = is_transformed_ ? transformed_ : original_;

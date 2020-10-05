@@ -57,7 +57,7 @@ bool test_Layout(string const & input, string const & output)
 		return false;
 	}
 	LayoutFile const & f = l[i];
-	ostream * os = NULL;
+	ostream * os = nullptr;
 	if (output == "-")
 		os = &cout;
 	else if (!output.empty())

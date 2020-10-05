@@ -35,7 +35,7 @@ namespace frontend {
 
 FloatPlacement::FloatPlacement(bool show_options, QWidget * parent)
 	: InsetParamsWidget(parent), standardfloat_(true),
-	  allows_wide_(true), allows_sideways_(true), float_list_(0)
+	  allows_wide_(true), allows_sideways_(true), float_list_(nullptr)
 {
 	setupUi(this);
 

@@ -205,7 +205,7 @@ public:
 		: name_(name), displayMode_(DISPLAY_INIT),
 		  expanded_(buf), definition_(buf), attachedArgsNum_(0),
 		  optionals_(0), nextFoldMode_(true), macroBackup_(buf),
-		  macro_(0), needsUpdate_(false), isUpdating_(false),
+		  macro_(nullptr), needsUpdate_(false), isUpdating_(false),
 		  appetite_(9), nesting_(0), limits_(AUTO_LIMITS)
 	{
 	}
@@ -649,7 +649,7 @@ void InsetMathMacro::updateMacro(MacroContext const & mc)
 			d->needsUpdate_ = true;
 		}
 	} else {
-		d->macro_ = 0;
+		d->macro_ = nullptr;
 	}
 }
 
@@ -684,7 +684,7 @@ void InsetMathMacro::updateRepresentation(Cursor * cur, MacroContext const & mc,
 	UpdateLocker locker(*this);
 
 	// known macro?
-	if (d->macro_ == 0)
+	if (d->macro_ == nullptr)
 		return;
 
 	// remember nesting level of this macro
@@ -837,7 +837,7 @@ void InsetMathMacro::setDisplayMode(InsetMathMacro::DisplayMode mode, int appeti
 
 InsetMathMacro::DisplayMode InsetMathMacro::computeDisplayMode() const
 {
-	if (d->nextFoldMode_ == true && d->macro_ && !d->macro_->locked())
+	if (d->nextFoldMode_ && d->macro_ && !d->macro_->locked())
 		return DISPLAY_NORMAL;
 	else
 		return DISPLAY_UNFOLDED;
@@ -1172,10 +1172,10 @@ void InsetMathMacro::write(WriteStream & os) const
 		// contains macros with optionals.
 		bool braced = false;
 		size_type last = cell(i).size() - 1;
-		if (cell(i).size() && cell(i)[last]->asUnknownInset()) {
+		if (!cell(i).empty() && cell(i)[last]->asUnknownInset()) {
 			latexkeys const * l = in_word_set(cell(i)[last]->name());
 			braced = (l && l->inset == "big");
-		} else if (cell(i).size() && cell(i)[0]->asScriptInset()) {
+		} else if (!cell(i).empty() && cell(i)[0]->asScriptInset()) {
 			braced = cell(i)[0]->asScriptInset()->nuc().empty();
 		} else {
 			for (size_type j = 0; j < cell(i).size(); ++j) {

@@ -58,9 +58,7 @@ InsetMath::mode_type InsetMathFont::currentMode() const
 
 bool InsetMathFont::lockedMode() const
 {
-	if (key_->extra == "forcetext")
-		return true;
-	return false;
+	return key_->extra == "forcetext";
 }
 
 

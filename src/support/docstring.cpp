@@ -625,7 +625,7 @@ protected:
 			}
 			if (ok) {
 				err = ios_base::goodbit;
-				v = truename == s ? true : false;
+				v = (truename == s);
 			} else
 				err = ios_base::failbit;
 			if (iit == eit)

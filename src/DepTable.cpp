@@ -228,7 +228,7 @@ bool DepTable::read(FileName const & f)
 
 		deplist[FileName(nome)] = di;
 	}
-	return deplist.size();
+	return !deplist.empty();
 }
 
 

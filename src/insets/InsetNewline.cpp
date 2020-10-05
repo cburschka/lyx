@@ -36,7 +36,7 @@ using namespace std;
 
 namespace lyx {
 
-InsetNewline::InsetNewline() : Inset(0)
+InsetNewline::InsetNewline() : Inset(nullptr)
 {}
 
 

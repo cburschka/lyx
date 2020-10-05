@@ -1156,7 +1156,7 @@ SVN::SVN(FileName const & m, Buffer * b) : VCS(b)
 	// Here we know that the buffer file is either already in SVN or
 	// about to be registered
 	master_ = m;
-	locked_mode_ = 0;
+	locked_mode_ = false;
 	scanMaster();
 }
 

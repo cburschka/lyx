@@ -418,7 +418,7 @@ ToolbarInfo const * Toolbars::info(std::string const & name) const
 	for (Infos::const_iterator it = toolbar_info_.begin(); it != end; ++it)
 		if (it->name == name)
 			return &(*it);
-	return 0;
+	return nullptr;
 }
 
 

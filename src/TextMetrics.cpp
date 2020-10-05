@@ -1486,7 +1486,7 @@ InsetList::Element * TextMetrics::checkInsetHit(pit_type pit, int x, int y)
 	}
 
 	LYXERR(Debug::DEBUG, "No inset hit. ");
-	return 0;
+	return nullptr;
 }
 
 

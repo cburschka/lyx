@@ -45,7 +45,7 @@ namespace lyx {
 
 
 InsetSpace::InsetSpace(InsetSpaceParams const & params)
-	: Inset(0), params_(params)
+	: Inset(nullptr), params_(params)
 {}
 
 

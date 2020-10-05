@@ -64,7 +64,7 @@ namespace frontend {
 
 GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiView & owner)
 	: QToolBar(toqstr(tbinfo.gui_name), &owner), visibility_(0),
-	  owner_(owner), command_buffer_(0), tbinfo_(tbinfo), filled_(false),
+	  owner_(owner), command_buffer_(nullptr), tbinfo_(tbinfo), filled_(false),
 	  restored_(false)
 {
 	setIconSize(owner.iconSize());
@@ -297,7 +297,7 @@ class DynamicMenuButton::Private
 	Private(Private const &);
 	void operator=(Private const &);
 public:
-	Private() : inset_(0) {}
+	Private() : inset_(nullptr) {}
 	///
 	DocumentClassConstPtr text_class_;
 	///

@@ -1778,7 +1778,7 @@ bool Text::backspace(Cursor & cur)
 		Cursor prev_cur = cur;
 		--prev_cur.pit();
 
-		if (cur.paragraph().size() > 0
+		if (!cur.paragraph().empty()
 		    && !prev_cur.paragraph().isMergedOnEndOfParDeletion(cur.buffer()->params().track_changes)) {
 			cur.recordUndo(prev_cur.pit(), prev_cur.pit());
 			prev_cur.paragraph().setChange(prev_cur.lastpos(), Change(Change::DELETED));

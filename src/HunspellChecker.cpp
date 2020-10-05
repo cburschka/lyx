@@ -234,11 +234,11 @@ Hunspell * HunspellChecker::Private::lookup(Language const * lang)
 }
 
 
-Hunspell * HunspellChecker::Private::addSpeller(Language const * lang,string & path)
+Hunspell * HunspellChecker::Private::addSpeller(Language const * lang, string & path)
 {
 	if (!haveDictionary(lang, path)) {
-		spellers_[lang->lang()] = 0;
-		return 0;
+		spellers_[lang->lang()] = nullptr;
+		return nullptr;
 	}
 
 	FileName const affix(path + ".aff");

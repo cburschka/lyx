@@ -599,7 +599,7 @@ FindAndReplace::FindAndReplace(GuiView & parent,
 
 FindAndReplace::~FindAndReplace()
 {
-	setFocusProxy(0);
+	setFocusProxy(nullptr);
 	delete widget_;
 }
 
@@ -620,7 +620,7 @@ void FindAndReplaceWidget::updateGUI()
 				old_buffer_ = &bv->buffer();
 		}
 	} else
-		old_buffer_ = 0;
+		old_buffer_ = nullptr;
 
 	bool const replace_enabled = bv && !bv->buffer().isReadonly();
 	replace_work_area_->setEnabled(replace_enabled);

@@ -89,7 +89,7 @@ struct FileName::Private
 		: fi(toqstr(handleTildeName(abs_filename)))
 	{
 		name = fromqstr(fi.absoluteFilePath());
-		fi.setCaching(fi.exists() ? true : false);
+		fi.setCaching(fi.exists());
 	}
 	///
 	inline void refresh()

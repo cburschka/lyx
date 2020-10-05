@@ -109,7 +109,7 @@ bool atSameLastLangSwitchDepth(OutputState const * state)
 	// commands. Instead, return always true when using babel with
 	// only a begin command.
 
-	return state->lang_switch_depth_.size() == 0
+	return state->lang_switch_depth_.empty()
 			? true
 			: abs(state->lang_switch_depth_.top()) == state->nest_level_;
 }
@@ -119,7 +119,7 @@ bool isLocalSwitch(OutputState const * state)
 {
 	// Return true if the language was opened by a local command switch.
 
-	return state->lang_switch_depth_.size()
+	return !state->lang_switch_depth_.empty()
 		&& state->lang_switch_depth_.top() < 0;
 }
 
@@ -128,7 +128,7 @@ bool langOpenedAtThisLevel(OutputState const * state)
 {
 	// Return true if the language was opened at the current nesting level.
 
-	return state->lang_switch_depth_.size()
+	return !state->lang_switch_depth_.empty()
 		&& abs(state->lang_switch_depth_.top()) == state->nest_level_;
 }
 
@@ -241,7 +241,7 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 		// polyglossia or begin/end commands, then the current
 		// language is the document language.
 		string const & cur_lang = using_begin_end
-					  && state->lang_switch_depth_.size()
+					  && !state->lang_switch_depth_.empty()
 						  ? openLanguageName(state)
 						  : doc_lang;
 
@@ -442,7 +442,7 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 			if ((par->layout() != nextpar->layout()
 			     || par->params().depth() == nextpar->params().depth()
 			     || par->params().leftIndent() == nextpar->params().leftIndent())
-			    && !runparams.for_search && cpar.size() > 0
+			    && !runparams.for_search && !cpar.empty()
 			    && cpar.isDeleted(0, cpar.size()) && !buf.params().output_changes) {
 				if (!buf.params().output_changes && !cpar.parEndChange().deleted())
 					os << '\n' << '\n';
@@ -761,7 +761,7 @@ void TeXOnePar(Buffer const & buf,
 	// Do not output empty commands if the whole paragraph has
 	// been deleted with ct and changes are not output.
 	if (!runparams_in.for_search && style.latextype != LATEX_ENVIRONMENT
-	    && par.size() > 0 && par.isDeleted(0, par.size()) && !bparams.output_changes)
+	    && !par.empty() && par.isDeleted(0, par.size()) && !bparams.output_changes)
 		return;
 
 	LYXERR(Debug::LATEX, "TeXOnePar for paragraph " << pit << " ptr " << &par << " '"
@@ -1312,7 +1312,7 @@ void TeXOnePar(Buffer const & buf,
 						&& nextpar
 						&& style != nextpar->layout())))
 				    || (atSameLastLangSwitchDepth(state)
-					&& state->lang_switch_depth_.size()
+					&& !state->lang_switch_depth_.empty()
 					&& cur_lang != par_lang)
 				    || in_polyglossia_rtl_env)
 				{
@@ -1355,7 +1355,7 @@ void TeXOnePar(Buffer const & buf,
 	}
 
 	bool const last_was_separator =
-		par.size() > 0 && par.isEnvSeparator(par.size() - 1);
+		!par.empty() && par.isEnvSeparator(par.size() - 1);
 
 	// Signify added/deleted par break in output if show changes in output
 	if (nextpar && !os.afterParbreak() && !last_was_separator
@@ -1666,7 +1666,7 @@ void latexParagraphs(Buffer const & buf,
 			if ((par->layout() != nextpar->layout()
 			     || par->params().depth() == nextpar->params().depth()
 			     || par->params().leftIndent() == nextpar->params().leftIndent())
-			    && !runparams.for_search && cpar.size() > 0
+			    && !runparams.for_search && !cpar.empty()
 			    && cpar.isDeleted(0, cpar.size()) && !bparams.output_changes) {
 				if (!cpar.parEndChange().deleted())
 					os << '\n' << '\n';

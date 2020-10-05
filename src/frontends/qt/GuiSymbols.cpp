@@ -207,7 +207,7 @@ class GuiSymbols::Model : public QAbstractListModel
 {
 public:
 	Model(GuiSymbols * parent)
-		: QAbstractListModel(parent), encoding_(0)
+		: QAbstractListModel(parent), encoding_(nullptr)
 	{}
 
 	QModelIndex index(int row, int column, QModelIndex const &) const override

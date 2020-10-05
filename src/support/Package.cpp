@@ -366,10 +366,7 @@ bool inBuildDir(FileName const & abs_binary,
 bool doesFileExist(FileName & result, string const & search_dir, string const & name)
 {
     result = fileSearch(search_dir, name);
-    if (!result.empty()) {
-        return true;
-    }
-    return false;
+    return !result.empty();
 }
 
 
@@ -382,7 +379,7 @@ bool lyxBinaryPath(FileName & lyx_binary, string const & search_dir, string cons
     } else if (doesFileExist(lyx_binary, search_dir, "lyx" + string(PROGRAM_SUFFIX) + ext)) {
     } else if (doesFileExist(lyx_binary, search_dir, "LyX" + string(PROGRAM_SUFFIX) + ext)){
     }
-    return !lyx_binary.empty() ? true : false;
+    return !lyx_binary.empty();
 }
 
 

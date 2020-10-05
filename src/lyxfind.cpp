@@ -360,7 +360,7 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 	if (!cur.selection()) {
 		// no selection, non-empty search string: find it
 		if (!searchstr.empty()) {
-			bool found = findOne(bv, searchstr, case_sens, whole, forward, true, findnext);
+			bool const found = findOne(bv, searchstr, case_sens, whole, forward, true, findnext);
 			return make_pair(found, 0);
 		}
 		// empty search string
@@ -389,7 +389,7 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 	// no selection or current selection is not search word:
 	// just find the search word
 	if (!have_selection || !match) {
-		bool found = findOne(bv, searchstr, case_sens, whole, forward, true, findnext);
+		bool const found = findOne(bv, searchstr, case_sens, whole, forward, true, findnext);
 		return make_pair(found, 0);
 	}
 
@@ -3592,7 +3592,7 @@ static bool firstUppercase(Cursor const & cur)
 static void changeFirstCase(Buffer & buffer, TextCase first_case, TextCase others_case)
 {
 	ParagraphList::iterator pit = buffer.paragraphs().begin();
-	LASSERT(pit->size() >= 1, /**/);
+	LASSERT(!pit->empty(), /**/);
 	pos_type right = pos_type(1);
 	pit->changeCase(buffer.params(), pos_type(0), right, first_case);
 	right = pit->size();
@@ -3605,7 +3605,7 @@ static void changeFirstCase(Buffer & buffer, TextCase first_case, TextCase other
 static int findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, MatchStringAdv & matchAdv)
 {
 	Cursor & cur = bv->cursor();
-	if (opt.repl_buf_name == docstring()
+	if (opt.repl_buf_name.empty()
 	    || theBufferList().getBuffer(FileName(to_utf8(opt.repl_buf_name)), true) == 0
 	    || theBufferList().getBuffer(FileName(to_utf8(opt.find_buf_name)), true) == 0)
 		return 0;

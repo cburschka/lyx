@@ -393,7 +393,7 @@ bool InsetIPADeco::insetAllowed(InsetCode code) const
 
 
 InsetIPAChar::InsetIPAChar(Kind k)
-	: Inset(0), kind_(k)
+	: Inset(nullptr), kind_(k)
 {}
 
 

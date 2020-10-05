@@ -494,10 +494,7 @@ void AuthFilesSection::write(ostream & os) const
 
 bool AuthFilesSection::find(string const & name) const
 {
-	if (auth_files_.find(name) != auth_files_.end())
-		return true;
-
-	return false;
+	return auth_files_.find(name) != auth_files_.end();
 }
 
 
@@ -547,10 +544,7 @@ bool ShellEscapeSection::find(string const & name) const
 
 bool ShellEscapeSection::findAuth(string const & name) const
 {
-	if (shellescape_files_.find(name + ",1") != shellescape_files_.end())
-		return true;
-
-	return false;
+	return shellescape_files_.find(name + ",1") != shellescape_files_.end();
 }
 
 

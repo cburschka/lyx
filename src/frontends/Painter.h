@@ -154,7 +154,7 @@ public:
 
 	double pixelRatio() const { return pixel_ratio_; }
 
-	double develMode() const { return devel_mode_; }
+	bool develMode() const { return devel_mode_; }
 
 	/// draw the underbar, strikeout, xout, uuline and uwave font attributes
 	virtual void textDecoration(FontInfo const & f, int x, int y, int width) = 0;

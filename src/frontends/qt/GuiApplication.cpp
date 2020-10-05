@@ -895,8 +895,8 @@ public:
 
 struct GuiApplication::Private
 {
-	Private(): language_model_(0), meta_fake_bit(NoModifier),
-		global_menubar_(0)
+	Private(): language_model_(nullptr), meta_fake_bit(NoModifier),
+		global_menubar_(nullptr)
 	{
 	#if (QT_VERSION < 0x050000) || (QT_VERSION >= 0x050400)
 	#if defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
@@ -993,7 +993,7 @@ GuiApplication::~GuiApplication()
 
 
 GuiApplication::GuiApplication(int & argc, char ** argv)
-	: QApplication(argc, argv), current_view_(0),
+	: QApplication(argc, argv), current_view_(nullptr),
 	  d(new GuiApplication::Private)
 {
 	QString app_name = "LyX";
@@ -1123,8 +1123,8 @@ FuncStatus GuiApplication::getStatus(FuncRequest const & cmd) const
 {
 	FuncStatus status;
 
-	BufferView * bv = 0;
-	BufferView * doc_bv = 0;
+	BufferView * bv = nullptr;
+	BufferView * doc_bv = nullptr;
 
 	if (cmd.action() == LFUN_NOACTION) {
 		status.message(from_utf8(N_("Nothing to do")));
@@ -1289,7 +1289,7 @@ bool GuiApplication::getStatus(FuncRequest const & cmd, FuncStatus & flag) const
 		break;
 
 	case LFUN_WINDOW_CLOSE:
-		enable = d->views_.size() > 0;
+		enable = !d->views_.empty();
 		break;
 
 	case LFUN_BUFFER_NEW:

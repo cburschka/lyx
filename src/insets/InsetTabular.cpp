@@ -2189,9 +2189,7 @@ bool Tabular::needRotating() const
 
 bool Tabular::isLastCell(idx_type cell) const
 {
-	if (cell + 1 < numberofcells)
-		return false;
-	return true;
+	return cell + 1 >= numberofcells;
 }
 
 

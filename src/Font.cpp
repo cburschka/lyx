@@ -864,7 +864,7 @@ ostream & operator<<(ostream & os, FontInfo const & f)
 ostream & operator<<(ostream & os, Font const & font)
 {
 	return os << font.bits_
-		<< " lang: " << (font.lang_ ? font.lang_->lang() : nullptr);
+		<< " lang: " << (font.lang_ ? font.lang_->lang() : "");
 }
 
 

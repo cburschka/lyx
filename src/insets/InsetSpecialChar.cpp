@@ -38,7 +38,7 @@ namespace lyx {
 
 
 InsetSpecialChar::InsetSpecialChar(Kind k)
-	: Inset(0), kind_(k)
+	: Inset(nullptr), kind_(k)
 {}
 
 

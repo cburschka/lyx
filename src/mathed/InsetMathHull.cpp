@@ -1579,7 +1579,7 @@ void InsetMathHull::mutate(HullType newtype)
 			numbered(0, false);
 		} else {
 			setType(hullEquation);
-			numbered(0, label_[0] ? true : false);
+			numbered(0, label_[0] != nullptr);
 			mutate(newtype);
 		}
 		break;

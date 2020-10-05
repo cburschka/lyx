@@ -348,9 +348,7 @@ string LyXVC::toggleReadOnly()
 
 bool LyXVC::inUse() const
 {
-	if (vcs)
-		return true;
-	return false;
+	return vcs != nullptr;
 }
 
 

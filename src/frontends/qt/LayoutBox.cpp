@@ -85,7 +85,7 @@ private:
 class GuiLayoutFilterModel : public QSortFilterProxyModel {
 public:
 	///
-	GuiLayoutFilterModel(QObject * parent = 0)
+	GuiLayoutFilterModel(QObject * parent = nullptr)
 		: QSortFilterProxyModel(parent)
 	{}
 
@@ -111,7 +111,7 @@ class LayoutBox::Private
 	void operator=(Private const &);
 public:
 	Private(LayoutBox * parent, GuiView & gv) : p(parent), owner_(gv),
-		inset_(0),
+		inset_(nullptr),
 		// set the layout model with two columns
 		// 1st: translated layout names
 		// 2nd: raw layout names
@@ -567,7 +567,7 @@ void LayoutBox::updateContents(bool reset)
 		setEnabled(false);
 		setMinimumWidth(sizeHint().width());
 		d->text_class_.reset();
-		d->inset_ = 0;
+		d->inset_ = nullptr;
 		return;
 	}
 	// we'll only update the layout list if the text class has changed

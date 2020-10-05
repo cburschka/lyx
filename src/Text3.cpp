@@ -1276,7 +1276,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		Paragraph const & nextpar = lastpar ? par : pars_[pit + 1];
 		pit_type prev = pit > 0 ? depthHook(pit, par.getDepth()) : pit;
 		if (prev < pit && cur.pos() == par.beginOfBody()
-		    && !par.size() && !par.isEnvSeparator(cur.pos())
+		    && par.empty() && !par.isEnvSeparator(cur.pos())
 		    && !par.layout().keepempty
 		    && !par.layout().isCommand()
 		    && pars_[prev].layout() != par.layout()

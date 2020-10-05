@@ -171,7 +171,7 @@ docstring InsetPrintNomencl::screenLabel() const
 
 
 struct NomenclEntry {
-	NomenclEntry() : par(0) {}
+	NomenclEntry() : par(nullptr) {}
 	NomenclEntry(docstring s, docstring d, Paragraph const * p)
 	  : symbol(s), desc(d), par(p)
 	{}
@@ -381,7 +381,7 @@ docstring nomenclWidest(Buffer const & buffer, OutputParams const & runparams)
 
 	int w = 0;
 	docstring symb;
-	InsetNomencl const * nomencl = 0;
+	InsetNomencl const * nomencl = nullptr;
 	ParagraphList::const_iterator it = buffer.paragraphs().begin();
 	ParagraphList::const_iterator end = buffer.paragraphs().end();
 

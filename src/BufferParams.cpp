@@ -1373,9 +1373,9 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	if (!lineno_opts.empty())
 		os << "\\lineno_options " << lineno_opts << '\n';
 
-	if (isbackgroundcolor == true)
+	if (isbackgroundcolor)
 		os << "\\backgroundcolor " << lyx::X11hexname(backgroundcolor) << '\n';
-	if (isfontcolor == true)
+	if (isfontcolor)
 		os << "\\fontcolor " << lyx::X11hexname(fontcolor) << '\n';
 	if (notefontcolor != lyx::rgbFromHexName("#cccccc"))
 		os << "\\notefontcolor " << lyx::X11hexname(notefontcolor) << '\n';
@@ -1979,7 +1979,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	}
 
 	// only output when the background color is not default
-	if (isbackgroundcolor == true) {
+	if (isbackgroundcolor) {
 		// only require color here, the background color will be defined
 		// in LaTeXFeatures.cpp to avoid interferences with the LaTeX
 		// package pdfpages
@@ -1988,7 +1988,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	}
 
 	// only output when the font color is not default
-	if (isfontcolor == true) {
+	if (isfontcolor) {
 		// only require color here, the font color will be defined
 		// in LaTeXFeatures.cpp to avoid interferences with the LaTeX
 		// package pdfpages

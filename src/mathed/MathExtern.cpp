@@ -75,7 +75,7 @@ static char const * function_names[] = {
 	"det", "dim", "exp", "gcd", "hom", "inf", "ker",
 	"lg", "lim", "liminf", "limsup", "ln", "log",
 	"max", "min", "sec", "sin", "sinh", "sup",
-	"tan", "tanh", "Pr", 0
+	"tan", "tanh", "Pr", nullptr
 };
 
 static size_t const npos = lyx::docstring::npos;

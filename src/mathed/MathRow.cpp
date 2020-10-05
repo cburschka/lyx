@@ -39,7 +39,7 @@ namespace lyx {
 
 MathRow::Element::Element(MetricsInfo const & mi, Type t, MathClass mc)
 	: type(t), mclass(mc), before(0), after(0), macro_nesting(mi.base.macro_nesting),
-	  marker(InsetMath::NO_MARKER), inset(0), compl_unique_to(0), ar(0),
+	  marker(InsetMath::NO_MARKER), inset(nullptr), compl_unique_to(0), ar(nullptr),
 	  color(Color_red)
 {}
 

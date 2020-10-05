@@ -4810,7 +4810,7 @@ void Paragraph::spellCheck() const
 			// start the spell checker on the unit of meaning
 			docstring word = asString(first, last, AS_STR_INSETS + AS_STR_SKIPDELETE);
 			WordLangTuple wl = WordLangTuple(word, lang);
-			SpellChecker::Result result = word.size() ?
+			SpellChecker::Result result = !word.empty() ?
 				speller->check(wl) : SpellChecker::WORD_OK;
 			d->markMisspelledWords(first, last, result, word, skips);
 			first = ++last;

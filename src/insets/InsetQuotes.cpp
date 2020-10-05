@@ -1057,10 +1057,10 @@ void InsetQuotes::validate(LaTeXFeatures & features) const
 	switch (type) {
 	case 0x0027: {
 		if (features.runparams().isFullUnicode() && fontspec_)
-				features.require("textquotesinglep");
-			else
-				features.require("textcomp");
-			break;
+			features.require("textquotesinglep");
+		else
+			features.require("textcomp");
+		break;
 	}
 	case 0x0022: {
 		if (features.runparams().isFullUnicode() && fontspec_)

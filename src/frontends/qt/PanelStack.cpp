@@ -97,7 +97,7 @@ PanelStack::PanelStack(QWidget * parent)
 
 void PanelStack::addCategory(QString const & name, QString const & parent)
 {
-	QTreeWidgetItem * item = 0;
+	QTreeWidgetItem * item = nullptr;
 
 	LYXERR(Debug::GUI, "addCategory n= " << name << "   parent= ");
 

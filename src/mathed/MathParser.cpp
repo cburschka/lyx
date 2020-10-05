@@ -1497,7 +1497,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				if (ar[i].size() == 1)
 					script[i] = ar[i][0].nucleus()->asScriptInset();
 			}
-			bool const hasscript[2] = {script[0] ? true : false, script[1] ? true : false};
+			bool const hasscript[2] = {script[0] != nullptr, script[1] != nullptr};
 			cell->push_back(MathAtom(new InsetMathSideset(buf, hasscript[0], hasscript[1])));
 			if (hasscript[0]) {
 				if (script[0]->hasDown())

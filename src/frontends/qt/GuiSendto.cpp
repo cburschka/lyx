@@ -38,7 +38,7 @@ namespace frontend {
 
 
 GuiSendTo::GuiSendTo(GuiView & lv)
-	: GuiDialog(lv, "sendto", qt_("Export or Send Document")), format_(0)
+	: GuiDialog(lv, "sendto", qt_("Export or Send Document")), format_(nullptr)
 {
 	setupUi(this);
 
@@ -77,7 +77,7 @@ void GuiSendTo::updateContents()
 	Format const * current_format = nullptr;
 	int const line = formatLW->currentRow();
 	if (line >= 0 && static_cast<unsigned int>(line) < all_formats.size()
-	    && formatLW->selectedItems().size() > 0)
+	    && !formatLW->selectedItems().empty())
 		current_format = all_formats[line];
 	// Reset the list widget
 	formatLW->clear();
@@ -115,14 +115,14 @@ bool GuiSendTo::isValid()
 	if (line < 0 || (line > int(formatLW->count())))
 		return false;
 
-	return (formatLW->selectedItems().size() > 0
+	return (!formatLW->selectedItems().empty()
 		&& formatLW->count() != 0);
 }
 
 
 bool GuiSendTo::initialiseParams(string const &)
 {
-	format_ = 0;
+	format_ = nullptr;
 	paramsToDialog(format_, command_);
 	return true;
 }

@@ -154,7 +154,7 @@ iparserdocstream & iparserdocstream::get(char_type &c)
 
 
 Parser::Parser(idocstream & is, std::string const & fixedenc)
-	: lineno_(0), pos_(0), iss_(0), is_(is),
+	: lineno_(0), pos_(0), iss_(nullptr), is_(is),
 	  encoding_iconv_(fixedenc.empty() ? "UTF-8" : fixedenc),
 	  theCatcodesType_(NORMAL_CATCODES), curr_cat_(UNDECIDED_CATCODES),
 	  fixed_enc_(!fixedenc.empty())

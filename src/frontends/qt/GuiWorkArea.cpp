@@ -1061,7 +1061,6 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 	cur.boundary(bound);
 
 	d->buffer_view_->buffer().changed(false);
-	return;
 }
 
 

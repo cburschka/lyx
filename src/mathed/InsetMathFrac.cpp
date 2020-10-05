@@ -80,13 +80,13 @@ Inset * InsetMathFrac::clone() const
 
 InsetMathFrac * InsetMathFrac::asFracInset()
 {
-	return kind_ == ATOP ? 0 : this;
+	return kind_ == ATOP ? nullptr : this;
 }
 
 
 InsetMathFrac const * InsetMathFrac::asFracInset() const
 {
-	return kind_ == ATOP ? 0 : this;
+	return kind_ == ATOP ? nullptr : this;
 }
 
 
