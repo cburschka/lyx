@@ -54,6 +54,10 @@ class InsetTableCell : public InsetText
 public:
 	///
 	explicit InsetTableCell(Buffer * buf);
+	/// We need this since generation of the default is deprecated
+	/// (since we declare the assignment constucture below).
+	/// Please make sure to adjust it if you add members!
+	InsetTableCell(InsetTableCell const &);
 	///
 	InsetCode lyxCode() const override { return CELL_CODE; }
 	///
@@ -113,7 +117,10 @@ private:
 	// iterating, since this information is needed quite often, and so may
 	// be quite slow.
 	// So, well, if someone can do better, please do!
-	// --rgh
+	// --rkh
+	//
+	// NOTE: Make sure to adapt the construcors (especially the copy
+	// constructor) if you add members!
 	///
 	bool isFixedWidth;
 	///
