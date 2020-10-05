@@ -3358,6 +3358,10 @@ std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
 	auto * xs = new XMLStream(os); // XMLStream has no copy constructor: to create a new object, the only solution
 	// is to hold a pointer to the XMLStream (xs = XMLStream(os) is not allowed once the first object is built).
 
+	// When a font tag ends with a space, output it after the closing font tag. This requires to store delayed
+	// characters at some point.
+	std::vector<char_type> delayedChars;
+
 	// Parsing main loop.
 	for (pos_type i = initial; i < size(); ++i) {
 		// Don't show deleted material in the output.
@@ -3399,6 +3403,13 @@ std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
 			for (; cit != cen; ++cit)
 				*xs << *cit;
 
+			// Deal with the delayed characters *after* closing font tags.
+			if (!delayedChars.empty()) {
+				for (char_type c: delayedChars)
+					*xs << c;
+				delayedChars.clear();
+			}
+
 			vector<xml::FontTag>::const_iterator sit = tagsToOpen.begin();
 			vector<xml::FontTag>::const_iterator sen = tagsToOpen.end();
 			for (; sit != sen; ++sit)
@@ -3419,7 +3430,10 @@ std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
 			}
 		} else {
 			char_type c = getUChar(buf.masterBuffer()->params(), runparams, i);
-			*xs << c;
+			if (std::isspace(c) && !ignore_fonts)
+				delayedChars.push_back(c);
+			else
+				*xs << c;
 		}
 		font_old = font.fontInfo();
 	}
@@ -3430,7 +3444,13 @@ std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
 	if (!ignore_fonts)
 		xs->closeFontTags();
 
-	// In listings, new lines are very important. Avoid generating one for the last line.
+	// Deal with the delayed characters *after* closing font tags.
+	if (!delayedChars.empty())
+		for (char_type c: delayedChars)
+			*xs << c;
+
+	// In listings, new lines (i.e. \n characters in the output) are very important. Avoid generating one for the
+	// last line to get a clean output.
 	if (runparams.docbook_in_listing && !is_last_par)
 		*xs << xml::CR();
 
