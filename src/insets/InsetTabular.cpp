@@ -619,7 +619,7 @@ InsetTableCell splitCell(InsetTableCell & head, docstring const & align_d, bool 
 {
 	InsetTableCell tail = InsetTableCell(head);
 	DocIterator const dit = separatorPos(&head, align_d);
-	hassep = (bool)dit;
+	hassep = static_cast<bool>(dit);
 	if (hassep) {
 		pos_type const psize = head.paragraphs().front().size();
 		head.paragraphs().front().eraseChars(dit.pos(), psize, false);
@@ -1176,7 +1176,7 @@ bool Tabular::updateColumnWidths(MetricsInfo & mi)
 	if (!tab_width.zero()) {
 		restwidth = mi.base.inPixels(tab_width);
 		// Subtract the fixed widths from the table width
-		for (auto const w : max_pwidth)
+		for (auto const & w : max_pwidth)
 			restwidth -= w.second;
 	}
 
@@ -1190,7 +1190,7 @@ bool Tabular::updateColumnWidths(MetricsInfo & mi)
 	// Now consider that some variable width columns exceed the vcolwidth
 	if (vcolwidth > 0) {
 		bool changed = false;
-		for (auto const w : max_width) {
+		for (auto const & w : max_width) {
 			if (tabularx || w.second > vcolwidth) {
 				--restcols;
 				restwidth -= w.second;
@@ -5760,8 +5760,8 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 		case Tabular::SET_LONGTABULAR:
 		case Tabular::TOGGLE_LONGTABULAR:
 			// setting as longtable is not allowed when table is inside a float
-			if (cur.innerInsetOfType(FLOAT_CODE) != 0
-				|| cur.innerInsetOfType(WRAP_CODE) != 0)
+			if (cur.innerInsetOfType(FLOAT_CODE) != nullptr
+				|| cur.innerInsetOfType(WRAP_CODE) != nullptr)
 				status.setEnabled(false);
 			else
 				status.setEnabled(true);
@@ -7196,7 +7196,7 @@ bool InsetTabular::copySelection(Cursor & cur)
 	paste_tabular->setBuffer(tabular.buffer());
 
 	odocstringstream os;
-	OutputParams const runparams(0);
+	OutputParams const runparams(nullptr);
 	paste_tabular->plaintext(os, runparams, 0, true, '\t', INT_MAX);
 	// Needed for the "Edit->Paste recent" menu and the system clipboard.
 	cap::copySelection(cur, os.str());
@@ -7363,7 +7363,7 @@ void InsetTabular::getSelection(Cursor & cur,
 
 Text * InsetTabular::getText(int idx) const
 {
-	return size_t(idx) < nargs() ? cell(idx)->getText(0) : 0;
+	return size_t(idx) < nargs() ? cell(idx)->getText(0) : nullptr;
 }
 
 
@@ -7599,7 +7599,7 @@ bool InsetTabular::showCompletionCursor() const
 
 CompletionList const * InsetTabular::createCompletionList(Cursor const & cur) const
 {
-	return completionSupported(cur) ? cur.text()->createCompletionList(cur) : 0;
+	return completionSupported(cur) ? cur.text()->createCompletionList(cur) : nullptr;
 }
 
 
