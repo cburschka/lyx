@@ -4205,14 +4205,6 @@ InsetTableCell::InsetTableCell(Buffer * buf)
 	  isMultiColumn(false), isMultiRow(false), contentAlign(LYX_ALIGN_CENTER)
 {}
 
-InsetTableCell::InsetTableCell(InsetTableCell const & in) : InsetText(in)
-{
-	isFixedWidth = in.isFixedWidth;
-	isMultiColumn = in.isMultiColumn;
-	isMultiRow = in.isMultiRow;
-	contentAlign = in.contentAlign;
-}
-
 bool InsetTableCell::forcePlainLayout(idx_type) const
 {
 	return isMultiRow || (isMultiColumn && !isFixedWidth);
