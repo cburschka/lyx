@@ -54,6 +54,7 @@
  </m:mrow>
  </m:math>
 </informalequation>
+
 <para>See <xref linkend="sec.Sec-2kqgsdiflhqsdlifgjuzer-povtuizmvnuer-t-vmsrmfli--uh--a--rtpfuo----rtpc.m-ca-rgifzapeu-tvgz" />.</para>
 <para>Also, a formula with an user-defined macro that outputs well in LaTeX but cannot in MathML: <inlineequation>
 <alt role='tex'>\testmacro</alt>
@@ -78,8 +79,8 @@
 <title>I am the third section and I have fun with lists</title>
 <orderedlist>
 <listitem>
-<para>First item. </para>
-<para>Second line of the first item, after a line break. </para>
+<para>First item.</para>
+<para> Second line of the first item, after a line break. </para>
 </listitem>
 <listitem>
 <para>Second item. </para>
@@ -112,8 +113,8 @@
 <title>I am the fourth section and I deal with formatting. </title>
 <para>The following paragraph should be code. </para>
 <para><programlisting>I am some code. 
-I am a second line of code. 
-</programlisting>I am no more code. </para>
+I am a second line of code. </programlisting>
+I am no more code. </para>
 <para>This line has inline code. <code>This has typewriter font</code><footnote>
 <para>I repeat that in a footnote.</para>
 </footnote>. </para>
@@ -214,21 +215,25 @@ I am a second line of code.
 <section>
 <title>I am the eight section and I deal with star sections</title>
 <bridgehead renderas='other' otherrenderas='part'>Star part</bridgehead>
-<bridgehead renderas="sect1">Star section (sect1)</bridgehead>
-<bridgehead renderas="sect2">Star subsection (sect2)</bridgehead>
-<bridgehead renderas="sect3">Star subsubsection (sect3)</bridgehead>
-<bridgehead renderas="sect4">Star paragraph (sect4)</bridgehead>
-<bridgehead renderas="sect5">Star subparagraph (sect5)</bridgehead>
+<bridgehead renderas='sect1'>Star section (sect1)</bridgehead>
+<bridgehead renderas='sect2'>Star subsection (sect2)</bridgehead>
+<bridgehead renderas='sect3'>Star subsubsection (sect3)</bridgehead>
+<bridgehead renderas='sect4'>Star paragraph (sect4)</bridgehead>
+<bridgehead renderas='sect5'>Star subparagraph (sect5)</bridgehead>
 </section>
 <bibliography>
 <title>References</title>
 <biblioentry xml:id="article">
-<title>The title of the work</title><volumenum>4</volumenum><artpagenums>201-213</artpagenums><bibliomisc role="type">article</bibliomisc>
+<title>The title of the work</title>
+<volumenum>4</volumenum>
+<artpagenums>201-213</artpagenums>
+<bibliomisc role="type">article</bibliomisc>
 <pubdate>1993</pubdate>
 <biblioset relation="journal">
 <title>The name of the journal</title>
 </biblioset>
-<authorgroup><author>
+<authorgroup>
+<author>
 <personname>
 <firstname>Peter</firstname>
 <surname>Adams</surname>
@@ -239,12 +244,16 @@ I am a second line of code.
 <bibliomisc role="note">An optional note</bibliomisc>
 </biblioentry>
 <biblioentry xml:id="book">
-<title>The title of the work</title><volumenum>4</volumenum><edition>3</edition><bibliomisc role="type">book</bibliomisc>
+<title>The title of the work</title>
+<volumenum>4</volumenum>
+<edition>3</edition>
+<bibliomisc role="type">book</bibliomisc>
 <publisher>
 <publishername>The name of the publisher</publishername>
 <address>The address</address></publisher>
 <pubdate>1993</pubdate>
-<authorgroup><author>
+<authorgroup>
+<author>
 <personname>
 <firstname>Peter</firstname>
 <surname>Babington</surname>
@@ -254,9 +263,11 @@ I am a second line of code.
 <bibliomisc role="note">An optional note</bibliomisc>
 </biblioentry>
 <biblioentry xml:id="booklet">
-<title>The title of the work</title><bibliomisc role="type">booklet</bibliomisc>
+<title>The title of the work</title>
+<bibliomisc role="type">booklet</bibliomisc>
 <pubdate>1993</pubdate>
-<authorgroup><author>
+<authorgroup>
+<author>
 <personname>
 <firstname>Peter</firstname>
 <surname>Caxton</surname>
@@ -265,12 +276,15 @@ I am a second line of code.
 </authorgroup>
 </biblioentry>
 <biblioentry xml:id="conference">
-<title>The title of the work</title><artpagenums>213</artpagenums><bibliomisc role="type">conference</bibliomisc>
+<title>The title of the work</title>
+<artpagenums>213</artpagenums>
+<bibliomisc role="type">conference</bibliomisc>
 <publisher>
 <publishername>The publisher</publishername>
 </publisher>
 <pubdate>1993</pubdate>
-<authorgroup><author>
+<authorgroup>
+<author>
 <personname>
 <firstname>Peter</firstname>
 <surname>Draper</surname>
@@ -279,12 +293,15 @@ I am a second line of code.
 </authorgroup>
 </biblioentry>
 <biblioentry xml:id="inbook">
-<title>The title of the work</title><artpagenums>201-213</artpagenums><bibliomisc role="type">inbook</bibliomisc>
+<title>The title of the work</title>
+<artpagenums>201-213</artpagenums>
+<bibliomisc role="type">inbook</bibliomisc>
 <publisher>
 <publishername>The name of the publisher</publishername>
 </publisher>
 <pubdate>1993</pubdate>
-<authorgroup><author>
+<authorgroup>
+<author>
 <personname>
 <firstname>Peter</firstname>
 <surname>Eston</surname>
@@ -293,7 +310,11 @@ I am a second line of code.
 </authorgroup>
 </biblioentry>
 <biblioentry xml:id="incollection">
-<title>The title of the work</title><volumenum>4</volumenum><edition>3</edition><artpagenums>201-213</artpagenums><bibliomisc role="type">incollection</bibliomisc>
+<title>The title of the work</title>
+<volumenum>4</volumenum>
+<edition>3</edition>
+<artpagenums>201-213</artpagenums>
+<bibliomisc role="type">incollection</bibliomisc>
 <publisher>
 <publishername>The name of the publisher</publishername>
 <address>The address of the publisher</address></publisher>
@@ -301,7 +322,8 @@ I am a second line of code.
 <biblioset relation="book">
 <title>The title of the book</title>
 </biblioset>
-<authorgroup><author>
+<authorgroup>
+<author>
 <personname>
 <firstname>Peter</firstname>
 <surname>Farindon</surname>
@@ -311,12 +333,15 @@ I am a second line of code.
 <bibliomisc role="note">An optional note</bibliomisc>
 </biblioentry>
 <biblioentry xml:id="small">
-<title>A small paper</title><volumenum>-1</volumenum><bibliomisc role="type">article</bibliomisc>
+<title>A small paper</title>
+<volumenum>-1</volumenum>
+<bibliomisc role="type">article</bibliomisc>
 <pubdate>1997</pubdate>
 <biblioset relation="journal">
 <title>The journal of small papers</title>
 </biblioset>
-<authorgroup><author>
+<authorgroup>
+<author>
 <personname>
 <surname>Freely</surname>
 <othername role="suffix">I. P.</othername>
@@ -332,9 +357,11 @@ I am a second line of code.
 <bibliomisc role="note">to appear</bibliomisc>
 </biblioentry>
 <biblioentry xml:id="Gro60">
-<title>Éléments de géométrie algébrique</title><bibliomisc role="type">book</bibliomisc>
+<title>Éléments de géométrie algébrique</title>
+<bibliomisc role="type">book</bibliomisc>
 <pubdate>1960</pubdate>
-<authorgroup><author>
+<authorgroup>
+<author>
 <personname>
 <firstname>Alexander</firstname>
 <surname>Grothendieck</surname>
@@ -343,12 +370,15 @@ I am a second line of code.
 </authorgroup>
 </biblioentry>
 <biblioentry xml:id="big">
-<title>A big paper</title><volumenum>MCMXCVII</volumenum><bibliomisc role="type">article</bibliomisc>
+<title>A big paper</title>
+<volumenum>MCMXCVII</volumenum>
+<bibliomisc role="type">article</bibliomisc>
 <pubdate>7991</pubdate>
 <biblioset relation="journal">
 <title>The journal of big papers</title>
 </biblioset>
-<authorgroup><author>
+<authorgroup>
+<author>
 <personname>
 <firstname>Hugh</firstname>
 <surname>Jass</surname>
@@ -356,4 +386,5 @@ I am a second line of code.
 </author>
 </authorgroup>
 </biblioentry>
-</bibliography></article>
+</bibliography>
+</article>

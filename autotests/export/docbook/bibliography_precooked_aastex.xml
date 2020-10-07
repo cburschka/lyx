@@ -9,13 +9,13 @@
 <affiliation>
 <orgname>Astronomy Department, University of California, Berkeley, CA 94720</orgname>
 </affiliation>
-<affiliation role="alternate">
+<affiliation role='alternate'>
 <orgname>Visiting Astronomer Cerro Tololo Inter-American Observatory.CTIO is operated by AURA Inc. under contract to the National Science Foundation.</orgname>
 </affiliation>
-<affiliation role="alternate">
+<affiliation role='alternate'>
 <orgname>Society of Fellows, Harvard University.</orgname>
 </affiliation>
-<affiliation role="alternate">
+<affiliation role='alternate'>
 <orgname>present address: Center for Astrophysics60 Garden Street, Cambridge, MA 02138</orgname>
 </affiliation>
 </author>
@@ -24,10 +24,10 @@
 <affiliation>
 <orgname>National Optical Astronomy Observatories, Tucson, AZ 85719</orgname>
 </affiliation>
-<affiliation role="alternate">
+<affiliation role='alternate'>
 <orgname>Visiting Programmer, Space Telescope Science Institute</orgname>
 </affiliation>
-<affiliation role="alternate">
+<affiliation role='alternate'>
 <orgname>Patron, Alonso's Bar and Grill</orgname>
 </affiliation>
 <email>aastex-help@aas.org</email>
@@ -37,7 +37,7 @@
 <affiliation>
 <orgname>Space Telescope Science Institute, Baltimore, MD 21218</orgname>
 </affiliation>
-<affiliation role="alternate">
+<affiliation role='alternate'>
 <orgname>Patron, Alonso's Bar and Grill</orgname>
 </affiliation>
 </author>
@@ -249,7 +249,8 @@
   </m:mrow>
  </m:mrow>
  </m:math>
-</informalequation> where <inlineequation>
+</informalequation>
+ where <inlineequation>
 <alt role='tex'>p</alt>
  <m:math>
  
@@ -516,7 +517,8 @@
   </m:mtr>
  </m:mtable>
  </m:math>
-</informalequation> giving 
+</informalequation>
+ giving 
 <informalequation>
 <alt role='tex'>\hat{a}=\left(\begin{array}{cc}
 0 &amp; (\hat{a})_{+}\\
@@ -595,14 +597,16 @@
   </m:mrow>
  </m:mrow>
  </m:math>
-</informalequation> The spinors are expressed in terms of two-component Weyl spinors as 
+</informalequation>
+ The spinors are expressed in terms of two-component Weyl spinors as 
 <informalequation>
 <alt role='tex'>u=\left(\begin{array}{c}
 (u)_{-}\\
 (u)_{+}
 \end{array}\right),v={\textbf{(}}\vdag_{+}{\textbf{,}}\vdag_{-}{\textbf{)}}.</alt>
 <mathphrase>MathML export failed. Please report this as a bug.</mathphrase>
-</informalequation></para>
+</informalequation>
+</para>
 <para>The Weyl spinors are given in terms of helicity eigenstates <inlineequation>
 <alt role='tex'>\chi_{\lambda}(p)</alt>
  <m:math>
@@ -720,7 +724,8 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
   </m:mtr>
  </m:mtable>
  </m:math>
-</informalequation></section>
+</informalequation>
+</section>
 </section>
 <section>
 <title>Floating material and so forth</title>
@@ -763,7 +768,8 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
   </m:mrow>
  </m:mrow>
  </m:math>
-</informalequation> where 
+</informalequation>
+ where 
 <informalequation>
 <alt role='tex'>d_{1}=\sqrt{\left(\begin{array}{c}
 \frac{x_{1}}{R_{maj}}\end{array}\right)^{2}+\left(\begin{array}{c}
@@ -931,7 +937,8 @@ v(p,\lambda)_{\pm} &amp; = &amp; \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi
   </m:mrow>
  </m:mrow>
  </m:math>
-</informalequation></para>
+</informalequation>
+</para>
 <para>In these expressions <inlineequation>
 <alt role='tex'>x_{0}</alt>
  <m:math>
