@@ -3430,7 +3430,7 @@ std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
 			}
 		} else {
 			char_type c = getUChar(buf.masterBuffer()->params(), runparams, i);
-			if (std::isspace(c) && !ignore_fonts)
+			if (lyx::isSpace(c) && !ignore_fonts)
 				delayedChars.push_back(c);
 			else
 				*xs << c;
