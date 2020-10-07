@@ -1,25 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- This DocBook file was created by LyX 2.4.0dev
   See http://www.lyx.org/ for more information -->
-<article xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.1">
-
-<info><title>Article title</title>
-
-<author><personname>Article author
-</personname></author>
-
-<author><personname>Article author group
-</personname></author>
+<article xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
+<info>
+<title>Article title</title>
+<author>
+<personname>Article author</personname>
+</author>
+<authorgroup>
+<author>Article author group</author>
+</authorgroup>
 <date>Article date</date>
-
-<abstract><para>Article abstract. </para>
+<abstract>
+<para>Article abstract. </para>
 </abstract>
+
 </info>
-<RevisionHistory>Article revision history. </RevisionHistory>
-<Revision>Article revision. </Revision>
-<RevisionRemark>Article revision remark. </RevisionRemark>
-
-<literallayout><para>Literal. </para>
-</literallayout>
-
+<para>Content.</para>
 </article>
