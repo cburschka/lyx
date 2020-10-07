@@ -89,10 +89,10 @@ public:
 	/// Can the cell contain several paragraphs?
 	bool allowMultiPar() const override { return !isMultiRow && (!isMultiColumn || isFixedWidth); }
 private:
-	/// unimplemented
-	InsetTableCell();
-	/// unimplemented
-	void operator=(InsetTableCell const &);
+	///
+	InsetTableCell() = delete;
+	///
+	void operator=(InsetTableCell const &) = delete;
 	// FIXME
 	// These booleans are supposed to track whether the cell has had its
 	// width explicitly set and whether it is part of a multicolumn, respectively.
