@@ -2303,6 +2303,10 @@ dist_layouts_DATA =\
 	layouts/ctex-report.layout \
 	layouts/customHeadersFooters.module \
 	layouts/db_stdcharstyles.inc \
+	layouts/db_stdclass.inc \
+	layouts/db_stdstarsections.inc \
+	layouts/db_stdstruct.inc \
+	layouts/db_stdtitle.inc \
 	layouts/dinbrief.layout \
 	layouts/docbook-book.layout \
 	layouts/docbook-chapter.layout \
