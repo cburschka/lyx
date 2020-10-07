@@ -309,10 +309,12 @@ void openParTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar
 	const string & tag = lay.docbooktag();
 	if (tag != "NONE") {
 		auto xmltag = xml::ParTag(tag, lay.docbookattr());
-		if (!xs.isTagOpen(xmltag, 1)) // Don't nest a paragraph directly in a paragraph.
+		if (!xs.isTagOpen(xmltag, 1)) { // Don't nest a paragraph directly in a paragraph.
 			// TODO: required or not?
 			// TODO: avoid creating a ParTag object just for this query...
 			openTag(xs, lay.docbooktag(), lay.docbookattr(), lay.docbooktagtype());
+			openTag(xs, lay.docbookinnertag(), lay.docbookinnerattr(), lay.docbookinnertagtype());
+		}
 	}
 
 	openTag(xs, lay.docbookitemtag(), lay.docbookitemattr(), lay.docbookitemtagtype());
@@ -342,6 +344,7 @@ void closeParTag(XMLStream & xs, Paragraph const * par, Paragraph const * nextpa
 	// Main logic.
 	closeTag(xs, lay.docbookiteminnertag(), lay.docbookiteminnertagtype());
 	closeTag(xs, lay.docbookitemtag(), lay.docbookitemtagtype());
+	closeTag(xs, lay.docbookinnertag(), lay.docbookinnertagtype());
 	closeTag(xs, lay.docbooktag(), lay.docbooktagtype());
 	if (closeWrapper)
 		closeTag(xs, lay.docbookwrappertag(), lay.docbookwrappertagtype());

@@ -199,6 +199,12 @@ public:
 	///
 	std::string const & docbooktagtype() const;
 	///
+	std::string const & docbookinnertag() const;
+	///
+	std::string const & docbookinnerattr() const;
+	///
+	std::string const & docbookinnertagtype() const;
+	///
 	std::string const & docbookininfo() const;
 	///
 	bool docbookabstract() const { return docbookabstract_; }
@@ -509,6 +515,12 @@ private:
 	mutable std::string docbookattr_;
 	/// DocBook tag type corresponding to this layout (block, paragraph, or inline; default: block).
 	mutable std::string docbooktagtype_;
+	/// DocBook inner tag corresponding to this layout.
+	mutable std::string docbookinnertag_;
+	/// Roles to add to docbookinnertag_, if any (default: none).
+	mutable std::string docbookinnerattr_;
+	/// DocBook inner-tag type corresponding to this layout (block, paragraph, or inline; default: block).
+	mutable std::string docbookinnertagtype_;
 	/// DocBook tag corresponding to this item (mainly for lists).
 	mutable std::string docbookitemtag_;
 	/// Roles to add to docbookitemtag_, if any (default: none).

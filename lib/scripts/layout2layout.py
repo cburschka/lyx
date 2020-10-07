@@ -11,7 +11,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 84
+currentFormat = 85
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -289,6 +289,9 @@ currentFormat = 84
 # DocBookItemWrapperTagTagType, DocBookItemTagTagType,
 # DocBookLabelTag
 
+# Incremented to format 85, 7 October 2020 by tcuvelier
+# New tags DocBookInnerTag, DocBookInnerAttr,
+# DocBookInnerTagType
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -538,7 +541,7 @@ def convert(lines, end_format):
                 i += 1
             continue
 
-        if 82 <= format <= 84:
+        if 82 <= format <= 85:
             # nothing to do.
             i += 1
             continue

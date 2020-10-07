@@ -17,6 +17,8 @@ Style Authorgroup
 	# TODO: missing a DocBookInnerTag to be valid (authorgroup > author > personname). 
 	DocBookTag            author
 	DocBookTagType        paragraph
+	DocBookInnerTag       personname
+	DocBookInnerTagType   inline
 	DocBookWrapperTag     authorgroup
 	DocBookWrapperTagType paragraph
 End

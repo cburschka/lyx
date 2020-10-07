@@ -107,6 +107,9 @@ enum LayoutTags {
 	LT_DOCBOOKTAG,
 	LT_DOCBOOKATTR,
 	LT_DOCBOOKTAGTYPE,
+	LT_DOCBOOKINNERATTR,
+	LT_DOCBOOKINNERTAG,
+	LT_DOCBOOKINNERTAGTYPE,
 	LT_DOCBOOKININFO,
 	LT_DOCBOOKABSTRACT,
 	LT_DOCBOOKWRAPPERTAG,
@@ -234,6 +237,9 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 		{ "docbookattr",               LT_DOCBOOKATTR },
 		{ "docbookforceabstracttag",   LT_DOCBOOKFORCEABSTRACTTAG },
 		{ "docbookininfo",             LT_DOCBOOKININFO },
+		{ "docbookinnerattr",          LT_DOCBOOKINNERATTR },
+		{ "docbookinnertag",           LT_DOCBOOKINNERTAG },
+		{ "docbookinnertagtype",       LT_DOCBOOKINNERTAGTYPE },
 		{ "docbookitemattr",           LT_DOCBOOKITEMATTR },
 		{ "docbookiteminnerattr",      LT_DOCBOOKITEMINNERATTR },
 		{ "docbookiteminnertag",       LT_DOCBOOKITEMINNERTAG },
@@ -748,6 +754,18 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 
 		case LT_DOCBOOKTAGTYPE:
 			lex >> docbooktagtype_;
+			break;
+
+		case LT_DOCBOOKINNERTAG:
+			lex >> docbookinnertag_;
+			break;
+
+		case LT_DOCBOOKINNERATTR:
+			lex >> docbookinnerattr_;
+			break;
+
+		case LT_DOCBOOKINNERTAGTYPE:
+			lex >> docbookinnertagtype_;
 			break;
 
 		case LT_DOCBOOKFORCEABSTRACTTAG:
@@ -1638,6 +1656,12 @@ void Layout::write(ostream & os) const
 		os << "\tDocBookAttr \"" << docbookattr_ << "\"\n";
 	if(!docbooktagtype_.empty())
 		os << "\tDocBookTagType " << docbooktagtype_ << '\n';
+	if(!docbookinnertag_.empty())
+		os << "\tDocBookInnerTag " << docbookinnertag_ << '\n';
+	if(!docbookinnerattr_.empty())
+		os << "\tDocBookInnerAttr \"" << docbookinnerattr_ << "\"\n";
+	if(!docbookinnertagtype_.empty())
+		os << "\tDocBookInnerTagType " << docbookinnertagtype_ << '\n';
 	if(!docbookininfo_.empty())
 		os << "\tDocBookInInfo " << docbookininfo_ << '\n';
 	os << "\tDocBookAbstract " << docbookabstract_ << '\n';
@@ -1854,6 +1878,28 @@ string const & Layout::docbooktagtype() const
 	if (!isValidTagType(docbooktagtype_))
 		docbooktagtype_ = "block";
 	return docbooktagtype_;
+}
+
+
+string const & Layout::docbookinnertag() const
+{
+	if (docbookinnertag_.empty())
+		docbookinnertag_ = "NONE";
+	return docbookinnertag_;
+}
+
+
+string const & Layout::docbookinnerattr() const
+{
+	return docbookinnerattr_;
+}
+
+
+string const & Layout::docbookinnertagtype() const
+{
+	if (!isValidTagType(docbookinnertagtype_))
+		docbookinnertagtype_ = "block";
+	return docbookinnertagtype_;
 }
 
 
