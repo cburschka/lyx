@@ -258,9 +258,9 @@ public:
 	 settings are given to the new one.
 	 This function will handle a multi-paragraph selection.
 	 */
-	void setParagraphs(Cursor & cur, docstring const & arg, bool modify = false);
+	void setParagraphs(Cursor const & cur, docstring const & arg, bool modify = false);
 	/// Sets parameters for current or selected paragraphs
-	void setParagraphs(Cursor & cur, ParagraphParameters const & p);
+	void setParagraphs(Cursor const & cur, ParagraphParameters const & p);
 
 	/* these things are for search and replace */
 

@@ -369,7 +369,7 @@ enum OutlineOp {
 };
 
 
-static void insertSeparator(Cursor & cur, depth_type const depth)
+static void insertSeparator(Cursor const & cur, depth_type const depth)
 {
 	Buffer & buf = *cur.buffer();
 	lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK));

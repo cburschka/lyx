@@ -1929,12 +1929,11 @@ void MenuDefinition::expandEnvironmentSeparators(BufferView const * bv,
 	docstring prevlayout;
 	depth_type current_depth = par.params().depth();
 	// check if we have an environment in our scope
-	Paragraph cpar = par;
 	while (true) {
 		if (pit == 0)
 			break;
 		--pit;
-		cpar = text->getPar(pit);
+		Paragraph cpar = text->getPar(pit);
 		if (cpar.layout().isEnvironment() && prevlayout.empty()
 		    && cpar.params().depth() <= current_depth)
 				prevlayout = cpar.layout().name();

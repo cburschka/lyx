@@ -1134,7 +1134,7 @@ public:
   void addIntervall(int upper);
   void addIntervall(int low, int upper); /* if explicit */
   void removeAccents();
-  void setForDefaultLang(KeyInfo &defLang);
+  void setForDefaultLang(KeyInfo const & defLang);
   int findclosing(int start, int end, char up, char down, int repeat);
   void handleParentheses(int lastpos, bool closingAllowed);
   bool hasTitle;
@@ -1162,7 +1162,7 @@ int Intervall::isOpeningPar(int pos)
   return 1;
 }
 
-void Intervall::setForDefaultLang(KeyInfo &defLang)
+void Intervall::setForDefaultLang(KeyInfo const & defLang)
 {
   // Enable the use of first token again
   if (ignoreidx >= 0) {
@@ -1475,7 +1475,7 @@ class LatexInfo {
   void buildEntries(bool);
   void makeKey(const string &, KeyInfo, bool isPatternString);
   void processRegion(int start, int region_end); /*  remove {} parts */
-  void removeHead(KeyInfo&, int count=0);
+  void removeHead(KeyInfo const &, int count=0);
 
  public:
  LatexInfo(string const & par, bool isPatternString)
@@ -1535,8 +1535,8 @@ class LatexInfo {
     }
     return -1;
   };
-  int process(ostringstream &os, KeyInfo &actual);
-  int dispatch(ostringstream &os, int previousStart, KeyInfo &actual);
+  int process(ostringstream & os, KeyInfo const & actual);
+  int dispatch(ostringstream & os, int previousStart, KeyInfo & actual);
   // string show(int lastpos) { return interval.show(lastpos);};
   int nextNotIgnored(int start) { return interval_.nextNotIgnored(start);};
   KeyInfo &getKeyInfo(int keyinfo) {
@@ -2220,7 +2220,7 @@ void LatexInfo::processRegion(int start, int region_end)
   }
 }
 
-void LatexInfo::removeHead(KeyInfo &actual, int count)
+void LatexInfo::removeHead(KeyInfo const & actual, int count)
 {
   if (actual.parenthesiscount == 0) {
     // "{\tiny{} ...}" ==> "{{} ...}"
@@ -2504,7 +2504,7 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
   return nextKeyIdx;
 }
 
-int LatexInfo::process(ostringstream &os, KeyInfo &actual )
+int LatexInfo::process(ostringstream & os, KeyInfo const & actual )
 {
   int end = interval_.nextNotIgnored(actual._dataEnd);
   int oldStart = actual._dataStart;
@@ -3349,7 +3349,7 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 
 
 /// Finds forward
-int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
+int findForwardAdv(DocIterator & cur, MatchStringAdv const & match)
 {
 	if (!cur)
 		return 0;
@@ -3627,7 +3627,7 @@ static int findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, Ma
 		return 0;
 
 	// Build a copy of the replace buffer, adapted to the KeepCase option
-	Buffer & repl_buffer_orig = *theBufferList().getBuffer(FileName(to_utf8(opt.repl_buf_name)), true);
+	Buffer const & repl_buffer_orig = *theBufferList().getBuffer(FileName(to_utf8(opt.repl_buf_name)), true);
 	ostringstream oss;
 	repl_buffer_orig.write(oss);
 	string lyx = oss.str();

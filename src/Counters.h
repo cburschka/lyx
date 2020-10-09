@@ -162,7 +162,7 @@ public:
 	bool remove(docstring const & cnt);
 	/// Copy counters whose name matches match from the &from to
 	/// the &to array of counters. Empty string matches all.
-	void copy(Counters & from, Counters & to,
+	void copy(Counters const & from, Counters & to,
 		  docstring const & match = docstring());
 	/** returns the expanded string representation of counter \c
 	 *  c. The \c lang code is used to translate the string.

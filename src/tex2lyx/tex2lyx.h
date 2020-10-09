@@ -82,7 +82,7 @@ void parse_math(Parser & p, std::ostream & os, unsigned flags, mode_type mode);
 /// in table.cpp
 void handle_tabular(Parser & p, std::ostream & os, std::string const & name,
 		    std::string const & width, std::string const & halign,
-		    Context & context);
+		    Context const & context);
 
 
 /// in tex2lyx.cpp

@@ -194,7 +194,7 @@ void InsetMathSideset::metrics(MetricsInfo & mi, Dimension & dim) const
 		tr().metrics(mi, dimtr);
 	}
 
-	BufferView & bv = *mi.base.bv;
+	BufferView const & bv = *mi.base.bv;
 	// FIXME: data copying... not very efficient.
 
 	dim.wid = nwid(bv) + nker(mi.base.bv) + 2 * dx;
@@ -212,7 +212,7 @@ void InsetMathSideset::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetMathSideset::draw(PainterInfo & pi, int x, int y) const
 {
 	Changer dummy2 = pi.base.changeEnsureMath();
-	BufferView & bv = *pi.base.bv;
+	BufferView const & bv = *pi.base.bv;
 	nuc().draw(pi, x + dxn(bv), y);
 	if (!scriptl_)
 		bl().draw(pi, x          , y);

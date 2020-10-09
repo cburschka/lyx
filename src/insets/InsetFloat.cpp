@@ -627,7 +627,7 @@ std::tuple<InsetCode, const Inset *, const InsetCaption *, const InsetLabel *> d
 
 
 void docbookSubfigures(XMLStream & xs, OutputParams const & runparams, const InsetCaption * caption,
-					   const InsetLabel * label, std::vector<const InsetCollapsible *> & subfigures)
+					   const InsetLabel * label, std::vector<const InsetCollapsible *> const & subfigures)
 {
 	// Ensure there is no label output, it is supposed to be handled as xml:id.
 	OutputParams rpNoLabel = runparams;

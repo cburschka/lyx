@@ -412,7 +412,7 @@ bool Counters::remove(docstring const & cnt)
 }
 
 
-void Counters::copy(Counters & from, Counters & to, docstring const & match)
+void Counters::copy(Counters const & from, Counters & to, docstring const & match)
 {
 	for (auto const & ctr : counterList_) {
 		if (ctr.first.find(match) != string::npos || match == "") {

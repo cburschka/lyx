@@ -487,7 +487,7 @@ void Text::setLabelWidthStringToSequence(Cursor const & cur,
 }
 
 
-void Text::setParagraphs(Cursor & cur, docstring const & arg, bool merge)
+void Text::setParagraphs(Cursor const & cur, docstring const & arg, bool merge)
 {
 	LBUFERR(cur.text());
 
@@ -515,7 +515,7 @@ void Text::setParagraphs(Cursor & cur, docstring const & arg, bool merge)
 }
 
 
-void Text::setParagraphs(Cursor & cur, ParagraphParameters const & p)
+void Text::setParagraphs(Cursor const & cur, ParagraphParameters const & p)
 {
 	LBUFERR(cur.text());
 

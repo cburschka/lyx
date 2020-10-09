@@ -939,7 +939,7 @@ void handle_hline_below(RowInfo & ri, vector<CellInfo> & ci)
 
 void handle_tabular(Parser & p, ostream & os, string const & name,
 		    string const & tabularwidth, string const & halign,
-		    Context & context)
+		    Context const & context)
 {
 	bool const is_long_tabular(name == "longtable" || name == "xltabular");
 	bool booktabs = false;
