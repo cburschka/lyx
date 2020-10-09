@@ -61,7 +61,7 @@ Format 4
 \bind "M-~S-i e p" 		"file-insert-plaintext-para"
 
 \bind "M-~S-f n"		"buffer-new"
-\bind "M-~S-f t"		"buffer-new-template"
+\bind "M-~S-f t"		"dialog-show lyxfiles templates"
 \bind "M-~S-f o"		"file-open"
 \bind "M-~S-f c"		"buffer-close"
 \bind "M-~S-f s"		"buffer-write"

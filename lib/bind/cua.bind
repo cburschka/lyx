@@ -37,7 +37,7 @@
 Format 5
 
 \bind "C-n"			"buffer-new"
-\bind "C-S-N"			"buffer-new-template"
+\bind "C-S-N"			"dialog-show lyxfiles templates"
 \bind "C-o"			"file-open"
 \bind "C-w"			"view-close"
 \bind "C-s"			"buffer-write"

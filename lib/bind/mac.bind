@@ -164,7 +164,7 @@ Format 4
 \bind "C-M-n"                        "command-sequence math-display; math-number-toggle;"
 #  +: "Command-N"                    # Create a new document in the frontmost application
 \bind "C-n"                          "buffer-new"
-\bind "C-S-N"                        "buffer-new-template"
+\bind "C-S-N"                        "dialog-show lyxfiles templates"
 #  +: "Command-O"                    # Display a dialog for choosing a document to open in the frontmost application
 \bind "C-o"                          "file-open"
 #  -: "Shift-Command-P"              # Display a dialog for specifying printing parameters (Page Setup)
@@ -212,10 +212,10 @@ Format 4
 \bind "C-Left"                       "line-begin"
 #  +: "Command-Down Arrow"           # Move the text insertion point to the end of the document
 \bind "C-Down"                       "buffer-end"
-\bind "M-A-Down"                     "inset-end" 
+\bind "M-A-Down"                     "inset-end"
 #  +: "Command-Up Arrow"             # Move the text insertion point to the beginning of the document
 \bind "C-Up"                         "buffer-begin"
-\bind "M-A-Up"                       "inset-begin" 
+\bind "M-A-Up"                       "inset-begin"
 #  +: "Shift-Command-Right Arrow"    # Select text between the insertion point and the end of the current line (*)
 \bind "S-C-Right"                    "line-end-select"
 #  +: "Shift-Command-Left Arrow"     # Select text between the insertion point and the beginning of the current line (*)
@@ -241,11 +241,11 @@ Format 4
 #  +: "Shift-Option-Down Arrow"      # Extend text selection to the end of the current paragraph, then to the end of the following paragraph if pressed again (*)
 \bind "A-Down"                       "paragraph-down"
 \bind "S-A-Down"                     "paragraph-down-select"
-\bind "S-M-A-Down"                   "inset-end-select" 
+\bind "S-M-A-Down"                   "inset-end-select"
 #  +: "Shift-Option-Up Arrow"        # Extend text selection to the beginning of the current paragraph, then to the beginning of the following paragraph if pressed again (*)
 \bind "A-Up"                         "paragraph-up"
 \bind "S-A-Up"                       "paragraph-up-select"
-\bind "S-M-A-Up"                     "inset-begin-select" 
+\bind "S-M-A-Up"                     "inset-begin-select"
 #  -: "Control-Space"                # Toggle between the current and previous input sources
 #  -: "Option-Control-Space"         # Toggle through all enabled input sources
 #  +: "Option-Command-esc"           # Force Quit
