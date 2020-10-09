@@ -152,61 +152,61 @@ public:
 	/// get file from repo, the caller must ensure that it does not exist locally
 	static bool retrieve(support::FileName const & file);
 
-	virtual std::string vcname() const { return "RCS"; };
+	std::string vcname() const override { return "RCS"; };
 
-	virtual void registrer(std::string const & msg);
+	void registrer(std::string const & msg) override;
 
-	virtual bool renameEnabled();
+	bool renameEnabled() override;
 
-	virtual std::string rename(support::FileName const &, std::string const &);
+	std::string rename(support::FileName const &, std::string const &) override;
 
-	virtual bool copyEnabled();
+	bool copyEnabled() override;
 
-	virtual std::string copy(support::FileName const &, std::string const &);
+	std::string copy(support::FileName const &, std::string const &) override;
 
-	virtual LyXVC::CommandResult
-	checkIn(std::string const & msg, std::string & log);
+	LyXVC::CommandResult
+	checkIn(std::string const & msg, std::string & log) override;
 
-	virtual bool checkInEnabled();
+	bool checkInEnabled() override;
 
-	virtual bool isCheckInWithConfirmation();
+	bool isCheckInWithConfirmation() override;
 
-	virtual std::string checkOut();
+	std::string checkOut() override;
 
-	virtual bool checkOutEnabled();
+	bool checkOutEnabled() override;
 
-	virtual std::string repoUpdate();
+	std::string repoUpdate() override;
 
-	virtual bool repoUpdateEnabled();
+	bool repoUpdateEnabled() override;
 
-	virtual std::string lockingToggle();
+	std::string lockingToggle() override;
 
-	virtual bool lockingToggleEnabled();
+	bool lockingToggleEnabled() override;
 
-	virtual bool revert();
+	bool revert() override;
 
-	virtual bool isRevertWithConfirmation();
+	bool isRevertWithConfirmation() override;
 
-	virtual void undoLast();
+	void undoLast() override;
 
-	virtual bool undoLastEnabled();
+	bool undoLastEnabled() override;
 
-	virtual void getLog(support::FileName const &);
+	void getLog(support::FileName const &) override;
 
-	virtual std::string const versionString() const {
+	std::string const versionString() const override {
 		return "RCS: " + version_;
 	}
 
-	virtual bool toggleReadOnlyEnabled();
+	bool toggleReadOnlyEnabled() override;
 
-	virtual std::string revisionInfo(LyXVC::RevisionInfo const info);
+	std::string revisionInfo(LyXVC::RevisionInfo const info) override;
 
-	virtual bool prepareFileRevision(std::string const & rev, std::string & f);
+	bool prepareFileRevision(std::string const & rev, std::string & f) override;
 
-	virtual bool prepareFileRevisionEnabled();
+	bool prepareFileRevisionEnabled() override;
 
 protected:
-	virtual void scanMaster();
+	void scanMaster() override;
 private:
 	bool getRevisionInfo();
 	/**
@@ -238,65 +238,65 @@ public:
 	/// get file from repo, the caller must ensure that it does not exist locally
 	static bool retrieve(support::FileName const & file);
 
-	virtual std::string vcname() const { return "CVS"; };
+	std::string vcname() const override { return "CVS"; };
 
-	virtual void registrer(std::string const & msg);
+	void registrer(std::string const & msg) override;
 
-	virtual bool renameEnabled();
+	bool renameEnabled() override;
 
-	virtual std::string rename(support::FileName const &, std::string const &);
+	std::string rename(support::FileName const &, std::string const &) override;
 
-	virtual bool copyEnabled();
+	bool copyEnabled() override;
 
-	virtual std::string copy(support::FileName const &, std::string const &);
+	std::string copy(support::FileName const &, std::string const &) override;
 
-	virtual LyXVC::CommandResult
-	checkIn(std::string const & msg, std::string & log);
+	LyXVC::CommandResult
+	checkIn(std::string const & msg, std::string & log) override;
 
-	virtual bool checkInEnabled();
+	bool checkInEnabled() override;
 
-	virtual bool isCheckInWithConfirmation();
+	bool isCheckInWithConfirmation() override;
 
-	virtual std::string checkOut();
+	std::string checkOut() override;
 
-	virtual bool checkOutEnabled();
+	bool checkOutEnabled() override;
 
-	virtual std::string repoUpdate();
+	std::string repoUpdate() override;
 
-	virtual bool repoUpdateEnabled();
+	bool repoUpdateEnabled() override;
 
-	virtual std::string lockingToggle();
+	std::string lockingToggle() override;
 
-	virtual bool lockingToggleEnabled();
+	bool lockingToggleEnabled() override;
 
-	virtual bool isRevertWithConfirmation();
+	bool isRevertWithConfirmation() override;
 
-	virtual bool revert();
+	bool revert() override;
 
-	virtual void undoLast();
+	void undoLast() override;
 
-	virtual bool undoLastEnabled();
+	bool undoLastEnabled() override;
 
-	virtual void getLog(support::FileName const &);
+	void getLog(support::FileName const &) override;
 
 	/// Check for messages in cvs output.
 	/// Returns conflict line.
 	std::string scanLogFile(support::FileName const & f, std::string & status);
 
-	virtual std::string const versionString() const {
+	std::string const versionString() const override {
 		return "CVS: " + version_;
 	}
 
-	virtual bool toggleReadOnlyEnabled();
+	bool toggleReadOnlyEnabled() override;
 
-	virtual std::string revisionInfo(LyXVC::RevisionInfo const info);
+	std::string revisionInfo(LyXVC::RevisionInfo const info) override;
 
-	virtual bool prepareFileRevision(std::string const & rev, std::string & f);
+	bool prepareFileRevision(std::string const & rev, std::string & f) override;
 
-	virtual bool prepareFileRevisionEnabled();
+	bool prepareFileRevisionEnabled() override;
 
 protected:
-	virtual void scanMaster();
+	void scanMaster() override;
 	/// the mode of operation for some VC commands
 	enum OperationMode {
 		Directory = 0,
@@ -336,24 +336,24 @@ private:
 			support::FileName const & output);
 
 	/// return the quoted pathname if Directory or filename if File
-	virtual std::string const getTarget(OperationMode opmode) const;
+	std::string const getTarget(OperationMode opmode) const;
 	/// collect the diff of file or directory against repository
 	/// result is placed in temporary file
 	void getDiff(OperationMode opmode, support::FileName const & tmpf);
 	/// make the file ready for editing:
 	/// save a copy in CVS/Base and change file permissions to rw if needed
-	virtual int edit();
+	int edit();
 	/// revert the edit operation
-	virtual int unedit();
+	int unedit();
 	/// retrieve repository changes into working copy
-	virtual int update(OperationMode opmode, support::FileName const & tmpf);
+	int update(OperationMode opmode, support::FileName const & tmpf);
 	/// check readonly state for file
 	/// assume true when file is writable
-	virtual bool isLocked() const;
+	bool isLocked() const;
 	/// query and parse the cvs status of file
-	virtual CvsStatus getStatus();
+	CvsStatus getStatus();
 	/// convert enum to string
-	virtual docstring toString(CvsStatus status) const;
+	docstring toString(CvsStatus status) const;
 
 	/// cache the info values of current file revision
 	/// author, date and time of commit
@@ -379,61 +379,61 @@ public:
 	/// get file from repo, the caller must ensure that it does not exist locally
 	static bool retrieve(support::FileName const & file);
 
-	virtual std::string vcname() const { return "SVN"; };
+	std::string vcname() const override { return "SVN"; };
 
-	virtual void registrer(std::string const & msg);
+	void registrer(std::string const & msg) override;
 
-	virtual bool renameEnabled();
+	bool renameEnabled() override;
 
-	virtual std::string rename(support::FileName const &, std::string const &);
+	std::string rename(support::FileName const &, std::string const &) override;
 
-	virtual bool copyEnabled();
+	bool copyEnabled() override;
 
-	virtual std::string copy(support::FileName const &, std::string const &);
+	std::string copy(support::FileName const &, std::string const &) override;
 
-	virtual LyXVC::CommandResult
-	checkIn(std::string const & msg, std::string & log);
+	LyXVC::CommandResult
+	checkIn(std::string const & msg, std::string & log) override;
 
-	virtual bool checkInEnabled();
+	bool checkInEnabled() override;
 
-	virtual bool isCheckInWithConfirmation();
+	bool isCheckInWithConfirmation() override;
 
-	virtual std::string checkOut();
+	std::string checkOut() override;
 
-	virtual bool checkOutEnabled();
+	bool checkOutEnabled() override;
 
-	virtual std::string repoUpdate();
+	std::string repoUpdate() override;
 
-	virtual bool repoUpdateEnabled();
+	bool repoUpdateEnabled() override;
 
-	virtual std::string lockingToggle();
+	std::string lockingToggle() override;
 
-	virtual bool lockingToggleEnabled();
+	bool lockingToggleEnabled() override;
 
-	virtual bool revert();
+	bool revert() override;
 
-	virtual bool isRevertWithConfirmation();
+	bool isRevertWithConfirmation() override;
 
-	virtual void undoLast();
+	void undoLast() override;
 
-	virtual bool undoLastEnabled();
+	bool undoLastEnabled() override;
 
-	virtual void getLog(support::FileName const &);
+	void getLog(support::FileName const &) override;
 
-	virtual std::string const versionString() const {
+	std::string const versionString() const override {
 		return "SVN: " + rev_file_cache_;
 	}
 
-	virtual bool toggleReadOnlyEnabled();
+	bool toggleReadOnlyEnabled() override;
 
-	virtual std::string revisionInfo(LyXVC::RevisionInfo const info);
+	std::string revisionInfo(LyXVC::RevisionInfo const info) override;
 
-	virtual bool prepareFileRevision(std::string const & rev, std::string & f);
+	bool prepareFileRevision(std::string const & rev, std::string & f) override;
 
-	virtual bool prepareFileRevisionEnabled();
+	bool prepareFileRevisionEnabled() override;
 
 protected:
-	virtual void scanMaster();
+	void scanMaster() override;
 	/// Check for messages in svn output. Returns error.
 	std::string scanLogFile(support::FileName const & f, std::string & status);
 	/// checks locking policy and setup locked_mode_
@@ -489,61 +489,61 @@ public:
 	/// get file from repo, the caller must ensure that it does not exist locally
 	static bool retrieve(support::FileName const & file);
 
-	virtual std::string vcname() const { return "GIT"; };
+	std::string vcname() const override { return "GIT"; };
 
-	virtual void registrer(std::string const & msg);
+	void registrer(std::string const & msg) override;
 
-	virtual bool renameEnabled();
+	bool renameEnabled() override;
 
-	virtual std::string rename(support::FileName const &, std::string const &);
+	std::string rename(support::FileName const &, std::string const &) override;
 
-	virtual bool copyEnabled();
+	bool copyEnabled() override;
 
-	virtual std::string copy(support::FileName const &, std::string const &);
+	std::string copy(support::FileName const &, std::string const &) override;
 
-	virtual LyXVC::CommandResult
-	checkIn(std::string const & msg, std::string & log);
+	LyXVC::CommandResult
+	checkIn(std::string const & msg, std::string & log) override;
 
-	virtual bool checkInEnabled();
+	bool checkInEnabled() override;
 
-	virtual bool isCheckInWithConfirmation();
+	bool isCheckInWithConfirmation() override;
 
-	virtual std::string checkOut();
+	std::string checkOut() override;
 
-	virtual bool checkOutEnabled();
+	bool checkOutEnabled() override;
 
-	virtual std::string repoUpdate();
+	std::string repoUpdate() override;
 
-	virtual bool repoUpdateEnabled();
+	bool repoUpdateEnabled() override;
 
-	virtual std::string lockingToggle();
+	std::string lockingToggle() override;
 
-	virtual bool lockingToggleEnabled();
+	bool lockingToggleEnabled() override;
 
-	virtual bool revert();
+	bool revert() override;
 
-	virtual bool isRevertWithConfirmation();
+	bool isRevertWithConfirmation() override;
 
-	virtual void undoLast();
+	void undoLast() override;
 
-	virtual bool undoLastEnabled();
+	bool undoLastEnabled() override;
 
-	virtual void getLog(support::FileName const &);
+	void getLog(support::FileName const &) override;
 
-	virtual std::string const versionString() const {
+	std::string const versionString() const override {
 		return "GIT: ?";
 	}
 
-	virtual bool toggleReadOnlyEnabled();
+	bool toggleReadOnlyEnabled() override;
 
-	virtual std::string revisionInfo(LyXVC::RevisionInfo const info);
+	std::string revisionInfo(LyXVC::RevisionInfo const info) override;
 
-	virtual bool prepareFileRevision(std::string const & rev, std::string & f);
+	bool prepareFileRevision(std::string const & rev, std::string & f) override;
 
-	virtual bool prepareFileRevisionEnabled();
+	bool prepareFileRevisionEnabled() override;
 
 protected:
-	virtual void scanMaster();
+	void scanMaster() override;
 	/// Check for messages in svn output. Returns error.
 	std::string scanLogFile(support::FileName const & f, std::string & status);
 	/// Check in files \p f with log \p msg
