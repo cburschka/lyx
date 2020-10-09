@@ -2645,8 +2645,8 @@ void GuiApplication::restoreGuiSession()
 	// do not add to the lastfile list since these files are restored from
 	// last session, and should be already there (regular files), or should
 	// not be added at all (help files).
-	for (size_t i = 0; i < lastopened.size(); ++i) {
-		FileName const & file_name = lastopened[i].file_name;
+	for (auto const & last : lastopened) {
+		FileName const & file_name = last.file_name;
 		if (!current_view_ || (!lyxrc.open_buffers_in_tabs
 			  && current_view_->documentBufferView() != 0)) {
 			boost::crc_32_type crc;
@@ -2656,7 +2656,7 @@ void GuiApplication::restoreGuiSession()
 		}
 		current_view_->loadDocument(file_name, false);
 
-		if (lastopened[i].active)
+		if (last.active)
 			active_file = file_name;
 	}
 

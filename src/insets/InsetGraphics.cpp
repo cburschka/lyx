@@ -883,8 +883,7 @@ void InsetGraphics::latex(otexstream & os,
 	// encoding!
 	docstring uncodable;
 	docstring encodable_file_path;
-	for (size_type i = 0 ; i < file_path.size() ; ++i) {
-		char_type c = file_path[i];
+	for (char_type c : file_path) {
 		try {
 			if (runparams.encoding->encodable(c))
 				encodable_file_path += c;

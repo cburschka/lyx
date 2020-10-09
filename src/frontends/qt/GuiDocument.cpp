@@ -2623,10 +2623,10 @@ void GuiDocument::updateFontlist()
 
 		QFontDatabase fontdb;
 		QStringList families(fontdb.families());
-		for (QStringList::Iterator it = families.begin(); it != families.end(); ++it) {
-			fontModule->fontsRomanCO->addItem(*it, *it);
-			fontModule->fontsSansCO->addItem(*it, *it);
-			fontModule->fontsTypewriterCO->addItem(*it, *it);
+		for (auto const & family : families) {
+			fontModule->fontsRomanCO->addItem(family, family);
+			fontModule->fontsSansCO->addItem(family, family);
+			fontModule->fontsTypewriterCO->addItem(family, family);
 		}
 		return;
 	}
@@ -2754,9 +2754,9 @@ void GuiDocument::updatePagestyle(string const & items, string const & sel)
 
 	int nn = 0;
 
-	for (size_t i = 0; i < pagestyles.size(); ++i)
-		if (pagestyles[i].first == sel)
-			nn = pageLayoutModule->pagestyleCO->findText(pagestyles[i].second);
+	for (auto const & pagestyle : pagestyles)
+		if (pagestyle.first == sel)
+			nn = pageLayoutModule->pagestyleCO->findText(pagestyle.second);
 
 	if (nn > 0)
 		pageLayoutModule->pagestyleCO->setCurrentIndex(nn);

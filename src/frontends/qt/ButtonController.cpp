@@ -81,11 +81,7 @@ class ButtonController::Private
 public:
 	typedef QList<CheckedLineEdit> CheckedWidgetList;
 
-	Private()
-		: okay_(nullptr), apply_(nullptr), cancel_(nullptr),
-			restore_(nullptr), auto_apply_(nullptr), default_(nullptr),
-			policy_(ButtonPolicy::IgnorantPolicy)
-	{}
+	Private() {}
 
 	/// \return true if all CheckedWidgets are in a valid state.
 	bool checkWidgets() const
@@ -99,17 +95,17 @@ public:
 public:
 	CheckedWidgetList checked_widgets_;
 
-	QPushButton * okay_;
-	QPushButton * apply_;
-	QPushButton * cancel_;
-	QPushButton * restore_;
-	QCheckBox * auto_apply_;
-	QPushButton * default_;
+	QPushButton * okay_ = nullptr;
+	QPushButton * apply_ = nullptr;
+	QPushButton * cancel_ = nullptr;
+	QPushButton * restore_ = nullptr;
+	QCheckBox * auto_apply_ = nullptr;
+	QPushButton * default_ = nullptr;
 
 	typedef QList<QWidget *> Widgets;
 	Widgets read_only_;
 
-	ButtonPolicy policy_;
+	ButtonPolicy policy_ {ButtonPolicy::IgnorantPolicy};
 };
 
 

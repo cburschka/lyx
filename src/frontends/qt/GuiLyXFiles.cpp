@@ -463,10 +463,10 @@ void GuiLyXFiles::updateContents()
 			QTreeWidgetItem * subcatItem = nullptr;
 			if (cats.contains(catsave)) {
 				QList<QTreeWidgetItem *> pcats = filesLW->findItems(cat, Qt::MatchExactly);
-				for (int iit = 0; iit < pcats.size(); ++iit) {
-					for (int cit = 0; cit < pcats.at(iit)->childCount(); ++cit) {
-						if (pcats.at(iit)->child(cit)->text(0) == subcat) {
-							subcatItem = pcats.at(iit)->child(cit);
+				for (auto const & pcat : pcats) {
+					for (int cit = 0; cit < pcat->childCount(); ++cit) {
+						if (pcat->child(cit)->text(0) == subcat) {
+							subcatItem = pcat->child(cit);
 							break;
 						}
 					}

@@ -372,9 +372,9 @@ void MathData::drawT(TextPainter & pain, int x, int y) const
 	// FIXME: Abdel 16/10/2006
 	// This drawT() method is never used, this is dead code.
 
-	for (const_iterator it = begin(), et = end(); it != et; ++it) {
-		(*it)->drawT(pain, x, y);
-		//x += (*it)->width_;
+	for (auto const & it : *this) {
+		it->drawT(pain, x, y);
+		//x += it->width_;
 		x += 2;
 	}
 }

@@ -1903,9 +1903,9 @@ Buffer::ExportStatus Buffer::writeLaTeXSource(otexstream & os,
 			docstring uncodable_glyphs;
 			Encoding const * const enc = runparams.encoding;
 			if (enc) {
-				for (size_t n = 0; n < inputpath.size(); ++n) {
-					if (!enc->encodable(inputpath[n])) {
-						docstring const glyph(1, inputpath[n]);
+				for (char_type n : inputpath) {
+					if (!enc->encodable(n)) {
+						docstring const glyph(1, n);
 						LYXERR0("Uncodable character '"
 							<< glyph
 							<< "' in input path!");

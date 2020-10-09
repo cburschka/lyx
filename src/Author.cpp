@@ -31,8 +31,8 @@ static int computeHash(docstring const & name,
 	string const full_author_string = to_utf8(name + email);
 	// Bernstein's hash function
 	unsigned int hash = 5381;
-	for (unsigned int i = 0; i < full_author_string.length(); ++i)
-		hash = ((hash << 5) + hash) + (unsigned int)(full_author_string[i]);
+	for (char c : full_author_string)
+		hash = ((hash << 5) + hash) + (unsigned int)c;
 	return int(hash);
 }
 

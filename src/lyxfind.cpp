@@ -1283,8 +1283,8 @@ static void buildaccent(string n, string param, string values)
   const char delim = '|';
   while (getline(s, name, delim)) {
     size_t start = 0;
-    for (size_t i = 0; i < param.size(); i++) {
-      string key = name + "{" + param[i] + "}";
+    for (char c : param) {
+      string key = name + "{" + c + "}";
       // get the corresponding utf8-value
       if ((values[start] & 0xc0) != 0xc0) {
         // should not happen, utf8 encoding starts at least with 11xxxxxx

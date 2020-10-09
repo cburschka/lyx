@@ -819,8 +819,7 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype, bool cons
 		string const lcode = params_.lang->code();
 		docstring trans;
 		bool is_translated = sequence != seq_untranslated;
-		for (size_t n = 0; n < sequence.size(); ++n) {
-			char_type const c = sequence[n];
+		for (char_type const c : sequence) {
 			switch(c) {
 			case 0x21b5://Return
 				gui = _("Return[[Key]]");

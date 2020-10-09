@@ -57,8 +57,8 @@ bool LaTeXFont::available(bool ot1, bool nomath)
 		&& LaTeXFeatures::isAvailable(to_ascii(package_)))
 		return true;
 	else if (!altfonts_.empty()) {
-		for (size_t i = 0; i < altfonts_.size(); ++i) {
-			if (altFont(altfonts_[i]).available(ot1, nomath))
+		for (auto const & name : altfonts_) {
+			if (altFont(name).available(ot1, nomath))
 				return true;
 		}
 	}
@@ -163,8 +163,8 @@ bool LaTeXFont::provides(std::string const & name, bool ot1, bool complete, bool
 	else if (provides_.empty())
 		return false;
 
-	for (size_t i = 0; i < provides_.size(); ++i) {
-		if (provides_[i] == name)
+	for (auto const & provide : provides_) {
+		if (provide == name)
 			return true;
 	}
 	return false;
@@ -200,8 +200,8 @@ docstring const LaTeXFont::getUsedFont(bool ot1, bool complete, bool nomath, boo
 			return name_;
 	}
 	else if (!altfonts_.empty()) {
-		for (size_t i = 0; i < altfonts_.size(); ++i) {
-			LaTeXFont altf = altFont(altfonts_[i]);
+		for (auto const & name : altfonts_) {
+			LaTeXFont altf = altFont(name);
 			if (altf.available(ot1, nomath))
 				return altf.getUsedFont(ot1, complete, nomath, osf);
 		}

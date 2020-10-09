@@ -144,8 +144,8 @@ void LastOpenedSection::read(istream & is)
 void LastOpenedSection::write(ostream & os) const
 {
 	os << '\n' << sec_lastopened << '\n';
-	for (size_t i = 0; i < lastopened.size(); ++i)
-		os << lastopened[i].active << ", " << lastopened[i].file_name << '\n';
+	for (auto const & last : lastopened)
+		os << last.active << ", " << last.file_name << '\n';
 }
 
 
@@ -158,8 +158,8 @@ void LastOpenedSection::add(FileName const & file, bool active)
 	// currently, we even crash in some cases (see #9483).
 	// FIXME: Add session support for multiple views of
 	//        the same buffer (split-view etc.).
-	for (size_t i = 0; i < lastopened.size(); ++i) {
-		if (lastopened[i].file_name == file)
+	for (auto const & last : lastopened) {
+		if (last.file_name == file)
 			return;
 	}
 	lastopened.push_back(lof);

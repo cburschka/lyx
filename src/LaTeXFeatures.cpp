@@ -1163,10 +1163,6 @@ char const * bibliofeatures[] = {
 	"named"
 };
 
-int const nb_bibliofeatures = sizeof(bibliofeatures) / sizeof(char const *);
-
-int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
-
 } // namespace
 
 
@@ -1258,9 +1254,9 @@ string const LaTeXFeatures::getPackages() const
 
 	//  These are all the 'simple' includes.  i.e
 	//  packages which we just \usepackage{package}
-	for (int i = 0; i < nb_simplefeatures; ++i) {
-		if (mustProvide(simplefeatures[i]))
-			packages << "\\usepackage{" << simplefeatures[i] << "}\n";
+	for (char const * feature : simplefeatures) {
+		if (mustProvide(feature))
+			packages << "\\usepackage{" << feature << "}\n";
 	}
 
 	// The rest of these packages are somewhat more complicated
@@ -1420,10 +1416,9 @@ string const LaTeXFeatures::getPackages() const
 		packages << "\\usepackage{esint}\n";
 
 	// Known bibliography packages (simple \usepackage{package})
-	for (int i = 0; i < nb_bibliofeatures; ++i) {
-		if (mustProvide(bibliofeatures[i]))
-			packages << "\\usepackage{"
-				 << bibliofeatures[i] << "}\n";
+	for (char const * feature : bibliofeatures) {
+		if (mustProvide(feature))
+			packages << "\\usepackage{" << feature << "}\n";
 	}
 
 	// Compatibility between achicago and natbib
@@ -1944,8 +1939,8 @@ docstring const getFloatI18nPreamble(docstring const & type,
 {
 	// Check whether name can be encoded in the buffer encoding
 	bool encodable = true;
-	for (size_t i = 0; i < name.size(); ++i) {
-		if (!enc.encodable(name[i])) {
+	for (char_type c : name) {
+		if (!enc.encodable(c)) {
 			encodable = false;
 			break;
 		}

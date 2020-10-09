@@ -49,10 +49,6 @@ Dialog::Dialog(GuiView & lv, QString const & name, QString const & title)
 {}
 
 
-Dialog::~Dialog()
-{}
-
-
 bool Dialog::canApply() const
 {
 	FuncRequest const fr(getLfun(), fromqstr(name_));

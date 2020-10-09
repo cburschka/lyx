@@ -501,8 +501,7 @@ docstring InsetCommandParams::prepareCommand(OutputParams const & runparams,
 		// we can only output characters covered by the current
 		// encoding!
 		docstring uncodable;
-		for (size_type i = 0 ; i < command.size() ; ++i) {
-			char_type c = command[i];
+		for (char_type c : command) {
 			try {
 				if (runparams.encoding->encodable(c))
 					result += c;

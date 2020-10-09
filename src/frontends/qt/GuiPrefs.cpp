@@ -923,10 +923,10 @@ PrefScreenFonts::PrefScreenFonts(GuiPreferences * form)
 
 	QFontDatabase fontdb;
 	QStringList families(fontdb.families());
-	for (QStringList::Iterator it = families.begin(); it != families.end(); ++it) {
-		screenRomanCO->addItem(*it);
-		screenSansCO->addItem(*it);
-		screenTypewriterCO->addItem(*it);
+	for (auto const & family : families) {
+		screenRomanCO->addItem(family);
+		screenSansCO->addItem(family);
+		screenTypewriterCO->addItem(family);
 	}
 	connect(screenRomanCO, SIGNAL(activated(QString)),
 		this, SIGNAL(changed()));
@@ -3039,9 +3039,9 @@ QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
 	if (tag == KeyMap::UserUnbind) {
 		QList<QTreeWidgetItem*> const items = shortcutsTW->findItems(lfun_name,
 			Qt::MatchFlags(Qt::MatchExactly | Qt::MatchRecursive), 0);
-		for (int i = 0; i < items.size(); ++i) {
-			if (items[i]->text(1) == shortcut) {
-				newItem = items[i];
+		for (auto const & item : items) {
+			if (item->text(1) == shortcut) {
+				newItem = item;
 				break;
 			}
 		}
@@ -3128,8 +3128,7 @@ void PrefShortcuts::unhideEmpty(QString const & lfun, bool select)
 	// list of items that match lfun
 	QList<QTreeWidgetItem*> items = shortcutsTW->findItems(lfun,
 	     Qt::MatchFlags(Qt::MatchExactly | Qt::MatchRecursive), 0);
-	for (int i = 0; i < items.size(); ++i) {
-		QTreeWidgetItem * item = items[i];
+	for (auto const & item : items) {
 		if (isAlwaysHidden(*item)) {
 			setItemType(item, KeyMap::System);
 			if (select)
@@ -3145,24 +3144,24 @@ void PrefShortcuts::removeShortcut()
 	// it seems that only one item can be selected, but I am
 	// removing all selected items anyway.
 	QList<QTreeWidgetItem*> items = shortcutsTW->selectedItems();
-	for (int i = 0; i < items.size(); ++i) {
-		string shortcut = fromqstr(items[i]->data(1, Qt::UserRole).toString());
-		string lfun = fromqstr(items[i]->text(0));
+	for (auto & item : items) {
+		string shortcut = fromqstr(item->data(1, Qt::UserRole).toString());
+		string lfun = fromqstr(item->text(0));
 		FuncRequest func = lyxaction.lookupFunc(lfun);
 
-		switch (itemType(*items[i])) {
+		switch (itemType(*item)) {
 		case KeyMap::System: {
 			// for system bind, we do not touch the item
 			// but add an user unbind item
 			user_unbind_.bind(shortcut, func);
-			setItemType(items[i], KeyMap::UserUnbind);
+			setItemType(item, KeyMap::UserUnbind);
 			removePB->setText(qt_("Res&tore"));
 			break;
 		}
 		case KeyMap::UserBind: {
 			// for user_bind, we remove this bind
-			QTreeWidgetItem * parent = items[i]->parent();
-			int itemIdx = parent->indexOfChild(items[i]);
+			QTreeWidgetItem * parent = item->parent();
+			int itemIdx = parent->indexOfChild(item);
 			parent->takeChild(itemIdx);
 			if (itemIdx > 0)
 				shortcutsTW->scrollToItem(parent->child(itemIdx - 1));
@@ -3171,7 +3170,7 @@ void PrefShortcuts::removeShortcut()
 			user_bind_.unbind(shortcut, func);
 			// If this user binding hid an empty system binding, unhide the
 			// latter and select it.
-			unhideEmpty(items[i]->text(0), true);
+			unhideEmpty(item->text(0), true);
 			break;
 		}
 		case KeyMap::UserUnbind: {
@@ -3183,15 +3182,15 @@ void PrefShortcuts::removeShortcut()
 			if (!validateNewShortcut(func, seq, QString()))
 				break;
 			user_unbind_.unbind(shortcut, func);
-			setItemType(items[i], KeyMap::System);
+			setItemType(item, KeyMap::System);
 			removePB->setText(qt_("Remo&ve"));
 			break;
 		}
 		case KeyMap::UserExtraUnbind: {
 			// for user unbind that is not in system bind file,
 			// remove this unbind file
-			QTreeWidgetItem * parent = items[i]->parent();
-			parent->takeChild(parent->indexOfChild(items[i]));
+			QTreeWidgetItem * parent = item->parent();
+			parent->takeChild(parent->indexOfChild(item));
 			user_unbind_.unbind(shortcut, func);
 		}
 		}
@@ -3201,26 +3200,26 @@ void PrefShortcuts::removeShortcut()
 
 void PrefShortcuts::deactivateShortcuts(QList<QTreeWidgetItem*> const & items)
 {
-	for (int i = 0; i < items.size(); ++i) {
-		string shortcut = fromqstr(items[i]->data(1, Qt::UserRole).toString());
-		string lfun = fromqstr(items[i]->text(0));
+	for (auto item : items) {
+		string shortcut = fromqstr(item->data(1, Qt::UserRole).toString());
+		string lfun = fromqstr(item->text(0));
 		FuncRequest func = lyxaction.lookupFunc(lfun);
 
-		switch (itemType(*items[i])) {
+		switch (itemType(*item)) {
 		case KeyMap::System:
 			// for system bind, we do not touch the item
 			// but add an user unbind item
 			user_unbind_.bind(shortcut, func);
-			setItemType(items[i], KeyMap::UserUnbind);
+			setItemType(item, KeyMap::UserUnbind);
 			break;
 
 		case KeyMap::UserBind: {
 			// for user_bind, we remove this bind
-			QTreeWidgetItem * parent = items[i]->parent();
-			int itemIdx = parent->indexOfChild(items[i]);
+			QTreeWidgetItem * parent = item->parent();
+			int itemIdx = parent->indexOfChild(item);
 			parent->takeChild(itemIdx);
 			user_bind_.unbind(shortcut, func);
-			unhideEmpty(items[i]->text(0), false);
+			unhideEmpty(item->text(0), false);
 			break;
 		}
 		default:
@@ -3287,11 +3286,11 @@ void PrefShortcuts::on_searchLE_textEdited()
 	while (*it)
 		(*it++)->setHidden(true);
 	// show matched items
-	for (int i = 0; i < matched.size(); ++i)
-		if (!isAlwaysHidden(*matched[i])) {
-			matched[i]->setHidden(false);
-			if (matched[i]->parent())
-				matched[i]->parent()->setExpanded(true);
+	for (auto & item : matched)
+		if (!isAlwaysHidden(*item)) {
+			item->setHidden(false);
+			if (item->parent())
+				item->parent()->setExpanded(true);
 		}
 }
 

@@ -72,8 +72,7 @@ std::string fromqstr(QString const & str)
 QString charFilterRegExp(QString const & filter)
 {
 	QString re = ".*";
-	for (int i = 0; i < filter.length(); ++i) {
-		QChar c = filter[i];
+	for (QChar const & c : filter) {
 		if (c.isLower())
 			re +=  "["+ QRegExp::escape(c) + QRegExp::escape(c.toUpper()) + "]";
 		else
@@ -85,8 +84,7 @@ QString charFilterRegExp(QString const & filter)
 QString charFilterRegExpC(QString const & filter)
 {
 	QString re = "(";
-	for (int i = 0; i < filter.length(); ++i) {
-		QChar c = filter[i];
+	for (QChar const & c : filter) {
 		if (c.isLower())
 			re +=  "["+ QRegExp::escape(c) + QRegExp::escape(c.toUpper()) + "]";
 		else

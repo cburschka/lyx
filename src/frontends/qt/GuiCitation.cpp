@@ -706,8 +706,7 @@ void GuiCitation::setPreTexts(vector<docstring> const & m)
 			selected_model_.match(selected_model_.index(0, 1),
 					     Qt::DisplayRole, toqstr(key), -1,
 					     Qt::MatchFlags(Qt::MatchExactly | Qt::MatchWrap));
-		for (int i = 0; i < qmil.size(); ++i){
-			QModelIndex idx = qmil[i];
+		for (auto const & idx : qmil) {
 			if (!handled.contains(idx)) {
 				selected_model_.setItem(idx.row(), 0, si);
 				handled.append(idx);
@@ -745,8 +744,7 @@ void GuiCitation::setPostTexts(vector<docstring> const & m)
 			selected_model_.match(selected_model_.index(0, 1),
 					     Qt::DisplayRole, toqstr(key), -1,
 					     Qt::MatchFlags(Qt::MatchExactly | Qt::MatchWrap));
-		for (int i = 0; i < qmil.size(); ++i){
-			QModelIndex idx = qmil[i];
+		for (auto const & idx : qmil) {
 			if (!handled.contains(idx)) {
 				selected_model_.setItem(idx.row(), 2, si);
 				handled.append(idx);

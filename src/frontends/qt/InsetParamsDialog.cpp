@@ -204,9 +204,9 @@ docstring InsetParamsDialog::checkWidgets(bool immediate)
 	immediateApplyCB->setEnabled(ins && !read_only);
 	// This seems to be the only way to access custom buttons
 	QList<QAbstractButton*> buttons = buttonBox->buttons();
-	for (int i = 0; i < buttons.size(); ++i) {
-		if (buttonBox->buttonRole(buttons.at(i)) == QDialogButtonBox::ActionRole)
-			buttons.at(i)->setEnabled(widget_ok && !read_only
+	for (auto & button : buttons) {
+		if (buttonBox->buttonRole(button) == QDialogButtonBox::ActionRole)
+			button->setEnabled(widget_ok && !read_only
 						  && valid_argument
 						  && newInsetAllowed());
 	}

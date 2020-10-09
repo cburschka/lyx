@@ -228,8 +228,8 @@ InsetMathHull::InsetMathHull(InsetMathHull const & other) : InsetMathGrid(other)
 
 InsetMathHull::~InsetMathHull()
 {
-	for (size_t i = 0; i < label_.size(); ++i)
-		delete label_[i];
+	for (auto & i : label_)
+		delete i;
 }
 
 
@@ -248,8 +248,8 @@ InsetMathHull & InsetMathHull::operator=(InsetMathHull const & other)
 	numbered_ = other.numbered_;
 	numbers_ = other.numbers_;
 	buffer_ = other.buffer_;
-	for (size_t i = 0; i < label_.size(); ++i)
-		delete label_[i];
+	for (auto & i : label_)
+		delete i;
 	label_ = other.label_;
 	for (size_t i = 0; i != label_.size(); ++i) {
 		if (label_[i])
@@ -995,8 +995,8 @@ bool InsetMathHull::ams() const
 	case hullEqnArray:
 		break;
 	}
-	for (size_t row = 0; row < numbered_.size(); ++row)
-		if (numbered_[row] == NOTAG)
+	for (auto const & row : numbered_)
+		if (row == NOTAG)
 			return true;
 	return false;
 }

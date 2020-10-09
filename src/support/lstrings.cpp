@@ -1197,8 +1197,7 @@ docstring const escape(docstring const & lab)
 	char_type hexdigit[16] = { '0', '1', '2', '3', '4', '5', '6', '7',
 				   '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 	docstring enc;
-	for (size_t i = 0; i < lab.length(); ++i) {
-		char_type c = lab[i];
+	for (char_type const c : lab) {
 		if (c >= 128 || c == '=' || c == '%' || c == '#' || c == '$'
 		    || c == '}' || c == '{' || c == ']' || c == '[' || c == '&'
 		    || c == '\\') {

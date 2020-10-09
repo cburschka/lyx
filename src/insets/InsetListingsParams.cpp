@@ -232,8 +232,8 @@ docstring ListingsParam::validate(string const & par) const
 				return bformat(_("Please specify one or more of '%1$s'."),
 							   from_utf8(info_));
 		}
-		for (size_t i = 0; i < par2.size(); ++i)
-			if (info_.find(par2[i], 0) == string::npos)
+		for (char c : par2)
+			if (info_.find(c, 0) == string::npos)
 				return bformat(_("Should be composed of one or more of %1$s."),
 						from_utf8(info_));
 		if (unclosed)
@@ -1073,8 +1073,8 @@ void InsetListingsParams::addParam(string const & key,
 	// non-ascii/number characters, just to be safe
 	else {
 		bool has_special_char = false;
-		for (size_t i = 0; i < value.size(); ++i)
-			if (!isAlnumASCII(value[i])) {
+		for (char c : value)
+			if (!isAlnumASCII(c)) {
 				has_special_char = true;
 				break;
 			}

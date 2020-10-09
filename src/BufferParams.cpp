@@ -1741,8 +1741,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		docstring options_encodable;
 		Encoding const * const enc = features.runparams().encoding;
 		if (enc) {
-			for (size_t n = 0; n < strOptions.size(); ++n) {
-				char_type c = strOptions[n];
+			for (char_type c : strOptions) {
 				if (!enc->encodable(c)) {
 					docstring const glyph(1, c);
 					LYXERR0("Uncodable character '"
@@ -2184,8 +2183,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		docstring uncodable_glyphs;
 		Encoding const * const enc = features.runparams().encoding;
 		if (enc) {
-			for (size_t n = 0; n < preamble.size(); ++n) {
-				char_type c = preamble[n];
+			for (char_type c : preamble) {
 				if (!enc->encodable(c)) {
 					docstring const glyph(1, c);
 					LYXERR0("Uncodable character '"

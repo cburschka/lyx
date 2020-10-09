@@ -281,9 +281,9 @@ void InsetMathGrid::setHorizontalAlignments(docstring const & hh)
 InsetMathGrid::col_type InsetMathGrid::guessColumns(docstring const & hh)
 {
 	col_type col = 0;
-	for (docstring::const_iterator it = hh.begin(); it != hh.end(); ++it)
-		if (*it == 'c' || *it == 'l' || *it == 'r'||
-		    *it == 'p' || *it == 'm' || *it == 'b')
+	for (char_type const c : hh)
+		if (c == 'c' || c == 'l' || c == 'r'||
+		    c == 'p' || c == 'm' || c == 'b')
 			++col;
 	// let's have at least one column, even if we did not recognize its
 	// alignment

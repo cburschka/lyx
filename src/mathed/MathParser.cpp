@@ -1962,8 +1962,8 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				cmd = Encodings::fromLaTeXCommand(cmd,
 					Encodings::MATH_CMD | Encodings::TEXT_CMD,
 					termination, rem);
-				for (size_t i = 0; i < cmd.size(); ++i)
-					cell->push_back(MathAtom(new InsetMathChar(cmd[i])));
+				for (char_type c : cmd)
+					cell->push_back(MathAtom(new InsetMathChar(c)));
 				if (!rem.empty()) {
 					char_type c = rem[0];
 					cell->push_back(MathAtom(new InsetMathChar(c)));

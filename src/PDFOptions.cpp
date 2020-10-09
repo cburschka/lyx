@@ -159,8 +159,8 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 	docstring const hs = from_utf8(hyperset);
 	bool need_unicode = false;
 	if (enc) {
-		for (size_t n = 0; n < hs.size(); ++n) {
-			if (!enc->encodable(hs[n]))
+		for (char_type h : hs) {
+			if (!enc->encodable(h))
 				need_unicode = true;
 		}
 	}

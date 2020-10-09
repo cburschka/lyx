@@ -1293,10 +1293,10 @@ bool InsetMathMacroTemplate::validName() const
 
 	// valid characters?
 	if (n.size() > 1) {
-		for (size_t i = 0; i < n.size(); ++i) {
-			if (!(n[i] >= 'a' && n[i] <= 'z')
-			    && !(n[i] >= 'A' && n[i] <= 'Z')
-			    && n[i] != '*')
+		for (char_type c : n) {
+			if (!(c >= 'a' && c <= 'z')
+			    && !(c >= 'A' && c <= 'Z')
+			    && c != '*')
 				return false;
 		}
 	}

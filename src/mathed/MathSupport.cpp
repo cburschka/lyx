@@ -577,11 +577,9 @@ void mathed_string_dim(FontInfo const & font,
 	frontend::FontMetrics const & fm = theFontMetrics(font);
 	dim.asc = 0;
 	dim.des = 0;
-	for (docstring::const_iterator it = s.begin();
-	     it != s.end();
-	     ++it) {
-		dim.asc = max(dim.asc, fm.ascent(*it));
-		dim.des = max(dim.des, fm.descent(*it));
+	for (char_type const c : s) {
+		dim.asc = max(dim.asc, fm.ascent(c));
+		dim.des = max(dim.des, fm.descent(c));
 	}
 	dim.wid = fm.width(s);
 }

@@ -695,14 +695,14 @@ string convert_literate_command_inset_arg(string s)
 void output_ert(ostream & os, string const & s, Context & context)
 {
 	context.check_layout(os);
-	for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
-		if (*it == '\\')
+	for (char const c : s) {
+		if (c == '\\')
 			os << "\n\\backslash\n";
-		else if (*it == '\n') {
+		else if (c == '\n') {
 			context.new_paragraph(os);
 			context.check_layout(os);
 		} else
-			os << *it;
+			os << c;
 	}
 	context.check_end_layout(os);
 }

@@ -69,7 +69,7 @@ Q_SIGNALS:
 
 public:
 	explicit FancyLineEdit(QWidget *parent = 0);
-	~FancyLineEdit();
+	~FancyLineEdit() {}
 
 	QPixmap buttonPixmap(Side side) const;
 	void setButtonPixmap(Side side, const QPixmap &pixmap);

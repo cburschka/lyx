@@ -56,7 +56,7 @@ public:
 	/// \param title is the window title used for decoration.
 	Dialog(GuiView & lv, QString const & name, QString const & title);
 
-	virtual ~Dialog();
+	virtual ~Dialog() {}
 
 	virtual QWidget * asQWidget() = 0;
 	virtual QWidget const * asQWidget() const = 0;

@@ -123,10 +123,6 @@ void FancyLineEdit::checkButtons(const QString &text)
     }
 }
 
-FancyLineEdit::~FancyLineEdit()
-{
-}
-
 void FancyLineEdit::setButtonVisible(Side side, bool visible)
 {
     m_d->m_iconbutton[side]->setVisible(visible);

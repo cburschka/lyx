@@ -4368,10 +4368,8 @@ void Paragraph::changeCase(BufferParams const & bparams, pos_type pos,
 		}
 
 		int erasePos = pos - changes.size();
-		for (size_t i = 0; i < changes.size(); i++) {
-			insertChar(pos, changes[i].first,
-				   changes[i].second,
-				   trackChanges);
+		for (auto const & change : changes) {
+			insertChar(pos, change.first, change.second, trackChanges);
 			if (!eraseChar(erasePos, trackChanges)) {
 				++erasePos;
 				++pos; // advance

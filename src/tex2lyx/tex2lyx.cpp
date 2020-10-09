@@ -927,10 +927,10 @@ bool tex2lyx(idocstream & is, ostream & os, string const & encoding,
 	// class may not be known before. It neds to be done before parsing
 	// body, since otherwise the commands/environments provided by the
 	// modules would be parsed as ERT.
-	for (size_t i = 0; i < preloaded_modules.size(); ++i) {
-		if (!addModule(preloaded_modules[i])) {
+	for (auto const & module : preloaded_modules) {
+		if (!addModule(module)) {
 			cerr << "Error: Could not load module \""
-			     << preloaded_modules[i] << "\"." << endl;
+			     << module << "\"." << endl;
 			return false;
 		}
 	}

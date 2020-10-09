@@ -589,8 +589,8 @@ void fix_colalign(vector<ColInfo> & colinfo)
 	}
 	// Move the lines and alignment settings to the special field if
 	// necessary
-	for (size_t col = 0; col < colinfo.size(); ++col)
-		fix_colalign(colinfo[col]);
+	for (auto & col : colinfo)
+		fix_colalign(col);
 }
 
 
@@ -921,16 +921,16 @@ void parse_table(Parser & p, ostream & os, bool is_long_tabular,
 void handle_hline_above(RowInfo & ri, vector<CellInfo> & ci)
 {
 	ri.topline = true;
-	for (size_t col = 0; col < ci.size(); ++col)
-		ci[col].topline = true;
+	for (auto & col : ci)
+		col.topline = true;
 }
 
 
 void handle_hline_below(RowInfo & ri, vector<CellInfo> & ci)
 {
 	ri.bottomline = true;
-	for (size_t col = 0; col < ci.size(); ++col)
-		ci[col].bottomline = true;
+	for (auto & col : ci)
+		col.bottomline = true;
 }
 
 
@@ -1516,8 +1516,8 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 	//cerr << "// output what we have\n";
 	// output what we have
 	size_type cols = colinfo.size();
-	for (size_t col = 0; col < colinfo.size(); ++col) {
-		if (colinfo[col].decimal_point != '\0' && colinfo[col].align != 'd')
+	for (auto const & col : colinfo) {
+		if (col.decimal_point != '\0' && col.align != 'd')
 			--cols;
 	}
 	os << "\n<lyxtabular version=\"3\" rows=\"" << rowinfo.size()
@@ -1545,18 +1545,18 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 	os << write_attribute("tabularwidth", tabularwidth) << ">\n";
 
 	//cerr << "// after header\n";
-	for (size_t col = 0; col < colinfo.size(); ++col) {
-		if (colinfo[col].decimal_point != '\0' && colinfo[col].align != 'd')
+	for (auto const & col : colinfo) {
+		if (col.decimal_point != '\0' && col.align != 'd')
 			continue;
 		os << "<column alignment=\""
-			   << verbose_align(colinfo[col].align) << "\"";
-		if (colinfo[col].decimal_point != '\0')
-			os << " decimal_point=\"" << colinfo[col].decimal_point << "\"";
+			   << verbose_align(col.align) << "\"";
+		if (col.decimal_point != '\0')
+			os << " decimal_point=\"" << col.decimal_point << "\"";
 		os << " valignment=\""
-		   << verbose_valign(colinfo[col].valign) << "\""
-		   << write_attribute("width", translate_len(colinfo[col].width))
-		   << write_attribute("special", colinfo[col].special)
-		   << write_attribute("varwidth", colinfo[col].varwidth)
+		   << verbose_valign(col.valign) << "\""
+		   << write_attribute("width", translate_len(col.width))
+		   << write_attribute("special", col.special)
+		   << write_attribute("varwidth", col.varwidth)
 		   << ">\n";
 	}
 	//cerr << "// after cols\n";

@@ -712,8 +712,8 @@ void MenuDefinition::read(Lexer & lex)
 
 bool MenuDefinition::hasFunc(FuncRequest const & func) const
 {
-	for (const_iterator it = begin(), et = end(); it != et; ++it)
-		if (*it->func() == func)
+	for (auto const & it : *this)
+		if (*it.func() == func)
 			return true;
 	return false;
 }

@@ -228,8 +228,7 @@ pair<docstring, docstring> Encoding::latexString(docstring const & input, bool d
 	docstring result;
 	docstring uncodable;
 	bool terminate = false;
-	for (size_t n = 0; n < input.size(); ++n) {
-		char_type const c = input[n];
+	for (char_type const c : input) {
 		try {
 			pair<docstring, bool> latex_char = latexChar(c);
 			docstring const latex = latex_char.first;
@@ -252,10 +251,10 @@ pair<docstring, docstring> Encoding::latexString(docstring const & input, bool d
 			if (dryrun) {
 				result += "<" + _("LyX Warning: ")
 					   + _("uncodable character") + " '";
-				result += docstring(1, input[n]);
+				result += docstring(1, c);
 				result += "'>";
 			} else
-				uncodable += input[n];
+				uncodable += c;
 		}
 	}
 	return make_pair(result, uncodable);
@@ -733,14 +732,14 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 			} else if (prefixIs(flag, "force=")) {
 				vector<string> encs =
 					getVectorFromString(flag.substr(6), ";");
-				for (size_t i = 0; i < encs.size(); ++i)
-					forcedselected[encs[i]].insert(symbol);
+				for (auto const & enc : encs)
+					forcedselected[enc].insert(symbol);
 				flags |= CharInfoForceSelected;
 			} else if (prefixIs(flag, "force!=")) {
 				vector<string> encs =
 					getVectorFromString(flag.substr(7), ";");
-				for (size_t i = 0; i < encs.size(); ++i)
-					forcednotselected[encs[i]].insert(symbol);
+				for (auto const & enc : encs)
+					forcednotselected[enc].insert(symbol);
 				flags |= CharInfoForceSelected;
 			} else if (flag == "mathalpha") {
 				mathalpha.insert(symbol);

@@ -276,8 +276,8 @@ void StaticMenuButton::updateTriggered()
 
 	bool enabled = false;
 	QList<QAction *> acts = menu()->actions();
-	for (int i = 0; i < acts.size(); ++i)
-		if (acts[i]->isEnabled()) {
+	for (auto const & act : acts)
+		if (act->isEnabled()) {
 			enabled = true;
 			break;
 		}
@@ -561,8 +561,8 @@ void GuiToolbar::update(int context)
 
 	// This is a speed bottleneck because this is called on every keypress
 	// and update calls getStatus, which copies the cursor at least two times
-	for (int i = 0; i < actions_.size(); ++i)
-		actions_[i]->update();
+	for (auto const & action : actions_)
+		action->update();
 
 	LayoutBox * layout = owner_.getLayoutDialog();
 	if (layout)
