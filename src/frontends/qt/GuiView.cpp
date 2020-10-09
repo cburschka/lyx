@@ -2412,7 +2412,7 @@ Buffer * GuiView::loadDocument(FileName const & filename, bool tolastfiles)
 		newBuffer = checkAndLoadLyXFile(filename);
 	} catch (ExceptionMessage const & e) {
 		setBusy(false);
-		throw(e);
+		throw;
 	}
 	setBusy(false);
 
@@ -4878,7 +4878,7 @@ void GuiView::doShowDialog(QString const & qname, QString const & qdata,
 	}
 	catch (ExceptionMessage const & ex) {
 		d.in_show_ = false;
-		throw ex;
+		throw;
 	}
 	d.in_show_ = false;
 }

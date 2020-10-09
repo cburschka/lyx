@@ -1103,7 +1103,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 		// add location information and throw again.
 		e.par_id = id_;
 		e.pos = i;
-		throw(e);
+		throw;
 	}
 
 	if (close)
@@ -2878,7 +2878,7 @@ void Paragraph::latex(BufferParams const & bparams,
 					// add location information and throw again.
 					e.par_id = id();
 					e.pos = i;
-					throw(e);
+					throw;
 				}
 			}
 		}

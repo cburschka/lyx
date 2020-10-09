@@ -557,7 +557,7 @@ void SpellcheckerWidget::Private::check()
 			Alert::warning(message.title_, message.details_);
 			return;
 		}
-		throw message;
+		throw;
 	}
 
 	// end of document or selection?

@@ -1454,7 +1454,7 @@ void writeString(docstring const & s, WriteStream & os)
 				case WriteStream::wsDefault:
 				default:
 					// throw again
-					throw(e);
+					throw;
 				}
 			}
 		}
@@ -1528,7 +1528,7 @@ void writeString(docstring const & s, WriteStream & os)
 			case WriteStream::wsDefault:
 			default:
 				// throw again
-				throw(e);
+				throw;
 			}
 		}
 	}
