@@ -45,6 +45,10 @@ debinddir = $(pkgdatadir)/bind/de
 dist_debind_DATA = \
 	bind/de/menus.bind
 
+rubinddir = $(pkgdatadir)/bind/ru
+dist_rubind_DATA = \
+	bind/ru/menus.bind
+
 binddir = $(pkgdatadir)/bind
 dist_bind_DATA = \
 	bind/broadway.bind \

@@ -1,0 +1,271 @@
+# -*- text -*-
+
+# file ru/menus.bind
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+
+# author Lars Gullik Bjønnes
+# author Jean-Marc Lasgouttes
+# author Michael Gerz
+# author Jürgen Vigna
+# author Yuriy Skalko
+
+# Full author contact details are available in file CREDITS.
+
+
+#
+# Font size menu
+#
+
+Format 5
+
+\bind "M-s t"			"font-size tiny"
+\bind "M-s S-S"			"font-size footnotesize"
+\bind "M-s s"			"font-size small"
+\bind "M-s n"			"font-size normal"
+\bind "M-s l"			"font-size large"
+\bind "M-s S-L"			"font-size larger"
+\bind "M-s h"			"font-size huge"
+\bind "M-s S-H"			"font-size giant"
+
+\bind "M-ы е"			"font-size tiny"
+\bind "M-ы S-Ы"			"font-size footnotesize"
+\bind "M-ы ы"			"font-size small"
+\bind "M-ы т"			"font-size normal"
+\bind "M-ы д"			"font-size large"
+\bind "M-ы S-Д"			"font-size larger"
+\bind "M-ы р"			"font-size huge"
+\bind "M-ы S-Р"			"font-size giant"
+
+\bind "M-s ~S-1"		"font-size tiny"
+\bind "M-s ~S-2"		"font-size scriptsize"
+\bind "M-s ~S-3"		"font-size footnotesize"
+\bind "M-s ~S-4"		"font-size small"
+\bind "M-s ~S-5"		"font-size normal"
+\bind "M-s ~S-6"		"font-size large"
+\bind "M-s ~S-7"		"font-size larger"
+\bind "M-s ~S-8"		"font-size largest"
+\bind "M-s ~S-9"		"font-size huge"
+\bind "M-s ~S-0"		"font-size giant"
+
+\bind "M-ы ~S-1"		"font-size tiny"
+\bind "M-ы ~S-2"		"font-size scriptsize"
+\bind "M-ы ~S-3"		"font-size footnotesize"
+\bind "M-ы ~S-4"		"font-size small"
+\bind "M-ы ~S-5"		"font-size normal"
+\bind "M-ы ~S-6"		"font-size large"
+\bind "M-ы ~S-7"		"font-size larger"
+\bind "M-ы ~S-8"		"font-size largest"
+\bind "M-ы ~S-9"		"font-size huge"
+\bind "M-ы ~S-0"		"font-size giant"
+
+\bind "M-s ~S-plus"		"font-size increase"
+\bind "M-s ~S-minus"		"font-size decrease"
+
+\bind "M-ы ~S-plus"		"font-size increase"
+\bind "M-ы ~S-minus"		"font-size decrease"
+
+
+#
+# Paragraph menu
+#
+
+\bind "M-a l"			"paragraph-params \align left"
+\bind "M-a r"			"paragraph-params \align right"
+\bind "M-a c"			"paragraph-params \align center"
+\bind "M-a j"			"paragraph-params \align block"
+\bind "M-a e"			"paragraph-params \align default"
+\bind "M-a i"			"paragraph-params \indent-toggle"
+\bind "M-a s"			"paragraph-params \paragraph_spacing single"
+\bind "M-a o"			"paragraph-params \paragraph_spacing onehalf"
+\bind "M-a d"			"paragraph-params \paragraph_spacing double"
+\bind "M-a f"			"paragraph-params \paragraph_spacing default"
+
+\bind "M-а д"			"paragraph-params \align left"
+\bind "M-а к"			"paragraph-params \align right"
+\bind "M-а с"			"paragraph-params \align center"
+\bind "M-а о"			"paragraph-params \align block"
+\bind "M-а у"			"paragraph-params \align default"
+\bind "M-а ш"			"paragraph-params \indent-toggle"
+\bind "M-а ы"			"paragraph-params \paragraph_spacing single"
+\bind "M-а щ"			"paragraph-params \paragraph_spacing onehalf"
+\bind "M-а в"			"paragraph-params \paragraph_spacing double"
+\bind "M-а а"			"paragraph-params \paragraph_spacing default"
+
+
+#
+# Arguments
+#
+
+\bind "M-a 1"			"argument-insert 1"
+\bind "M-a 2"			"argument-insert 2"
+\bind "M-a 3"			"argument-insert 3"
+\bind "M-a 4"			"argument-insert 4"
+\bind "M-a 5"			"argument-insert 5"
+\bind "M-a 6"			"argument-insert 6"
+\bind "M-a 7"			"argument-insert 7"
+\bind "M-a 8"			"argument-insert 8"
+\bind "M-a 9"			"argument-insert 9"
+\bind "M-a 0"			"argument-insert post:1"
+
+\bind "M-а 1"			"argument-insert 1"
+\bind "M-а 2"			"argument-insert 2"
+\bind "M-а 3"			"argument-insert 3"
+\bind "M-а 4"			"argument-insert 4"
+\bind "M-а 5"			"argument-insert 5"
+\bind "M-а 6"			"argument-insert 6"
+\bind "M-а 7"			"argument-insert 7"
+\bind "M-а 8"			"argument-insert 8"
+\bind "M-а 9"			"argument-insert 9"
+\bind "M-а 0"			"argument-insert post:1"
+
+
+#
+# Paragraph style menu
+#
+
+\bind "M-p ~S-0"		"layout Part"
+\bind "M-p ~S-1"		"layout Chapter"
+\bind "M-p ~S-2"		"layout Section"
+\bind "M-p ~S-3"		"layout Subsection"
+\bind "M-p ~S-4"		"layout Subsubsection"
+\bind "M-p ~S-5"		"layout Paragraph"
+\bind "M-p ~S-6"		"layout Subparagraph"
+\bind "M-p ~S-asterisk ~S-0"	"layout Part*"
+\bind "M-p ~S-asterisk ~S-1"	"layout Chapter*"
+\bind "M-p ~S-asterisk ~S-2"	"layout Section*"
+\bind "M-p ~S-asterisk ~S-3"	"layout Subsection*"
+\bind "M-p ~S-asterisk ~S-4"	"layout Subsubsection*"
+\bind "M-p ~S-asterisk ~S-5"	"layout Paragraph*"
+\bind "M-p ~S-asterisk ~S-6"	"layout Subparagraph*"
+\bind "M-p a"			"layout Abstract"
+\bind "M-p S-A"			"layout Author"
+\bind "M-p M-a"			"layout Address"
+\bind "M-p C-a"			"layout Right_Address"
+\bind "M-p b"			"layout Itemize"	# bulleted list
+\bind "M-p S-B"			"layout Bibliography"
+\bind "M-p c"			"layout LyX-Code"
+\bind "M-p S-C"			"layout Comment"
+\bind "M-p d"			"layout Description"
+\bind "M-p S-D"			"layout Date"
+\bind "M-p e"			"layout Enumerate"	# numbered list
+\bind "M-p i"			"layout Itemize"	# bulleted list
+\bind "M-p l"			"layout Labeling"
+\bind "M-p S-L"			"layout LaTeX"
+\bind "M-p n"			"layout Enumerate"	# numbered list
+\bind "M-p q"			"layout Quote"
+\bind "M-p S-Q"			"layout Quotation"
+\bind "M-p s"			"layout Standard"
+\bind "M-p t"			"layout Title"
+\bind "M-p space"		"drop-layouts-choice"
+\bind "M-p v"			"layout Verse"
+
+\bind "M-з ~S-0"		"layout Part"
+\bind "M-з ~S-1"		"layout Chapter"
+\bind "M-з ~S-2"		"layout Section"
+\bind "M-з ~S-3"		"layout Subsection"
+\bind "M-з ~S-4"		"layout Subsubsection"
+\bind "M-з ~S-5"		"layout Paragraph"
+\bind "M-з ~S-6"		"layout Subparagraph"
+\bind "M-з ~S-asterisk ~S-0"	"layout Part*"
+\bind "M-з ~S-asterisk ~S-1"	"layout Chapter*"
+\bind "M-з ~S-asterisk ~S-2"	"layout Section*"
+\bind "M-з ~S-asterisk ~S-3"	"layout Subsection*"
+\bind "M-з ~S-asterisk ~S-4"	"layout Subsubsection*"
+\bind "M-з ~S-asterisk ~S-5"	"layout Paragraph*"
+\bind "M-з ~S-asterisk ~S-6"	"layout Subparagraph*"
+\bind "M-з ф"			"layout Abstract"
+\bind "M-з S-Ф"			"layout Author"
+\bind "M-з M-ф"			"layout Address"
+\bind "M-з C-a"			"layout Right_Address"
+\bind "M-з и"			"layout Itemize"	# bulleted list
+\bind "M-з S-И"			"layout Bibliography"
+\bind "M-з с"			"layout LyX-Code"
+\bind "M-з S-С"			"layout Comment"
+\bind "M-з в"			"layout Description"
+\bind "M-з S-В"			"layout Date"
+\bind "M-з у"			"layout Enumerate"	# numbered list
+\bind "M-з ш"			"layout Itemize"	# bulleted list
+\bind "M-з д"			"layout Labeling"
+\bind "M-з S-Д"			"layout LaTeX"
+\bind "M-з т"			"layout Enumerate"	# numbered list
+\bind "M-з й"			"layout Quote"
+\bind "M-з S-Й"			"layout Quotation"
+\bind "M-з ы"			"layout Standard"
+\bind "M-з е"			"layout Title"
+\bind "M-з space"		"drop-layouts-choice"
+\bind "M-з м"			"layout Verse"
+
+\bind "M-p Left"		"outline-out"
+\bind "M-p Right"		"outline-in"
+\bind "M-p Up"			"outline-up"
+\bind "M-p Down"		"outline-down"
+
+\bind "M-з Left"		"outline-out"
+\bind "M-з Right"		"outline-in"
+\bind "M-з Up"			"outline-up"
+\bind "M-з Down"		"outline-down"
+
+\bind "M-p M-Return"		"environment-split before"
+\bind "M-p Return"		"command-alternatives environment-split ; environment-split previous"
+\bind "M-p S-Return"		"environment-split outer"
+
+\bind "M-з M-Return"		"environment-split before"
+\bind "M-з Return"		"command-alternatives environment-split ; environment-split previous"
+\bind "M-з S-Return"		"environment-split outer"
+
+
+#
+# Character style menu
+#
+
+\bind "M-c b"			"font-boldsymbol"
+\bind "M-c c"			"font-noun"
+\bind "M-c d"			"font-underunderline"
+\bind "M-c e"			"font-emph"
+\bind "M-c m"			"math-mode"
+\bind "M-c o"			"font-strikeout"
+\bind "M-c r"			"font-roman"
+\bind "M-c s"			"font-sans"
+\bind "M-c u"			"font-underline"
+\bind "M-c w"			"font-underwave"
+
+\bind "M-с и"			"font-boldsymbol"
+\bind "M-с с"			"font-noun"
+\bind "M-с в"			"font-underunderline"
+\bind "M-с у"			"font-emph"
+\bind "M-с ь"			"math-mode"
+\bind "M-с щ"			"font-strikeout"
+\bind "M-с к"			"font-roman"
+\bind "M-с ы"			"font-sans"
+\bind "M-с г"			"font-underline"
+\bind "M-с ц"			"font-underwave"
+
+\bind "M-c Down"		"word-lowcase"
+\bind "M-c Up"			"word-upcase"
+\bind "M-c Right"		"word-capitalize"
+
+\bind "M-с Down"		"word-lowcase"
+\bind "M-с Up"			"word-upcase"
+\bind "M-с Right"		"word-capitalize"
+
+\bind "M-c space"		"font-default"
+
+\bind "M-с space"		"font-default"
+
+
+#
+# Keyboard menu
+#
+
+\bind "M-k 1"			"keymap-primary"
+\bind "M-k 2"			"keymap-secondary"
+\bind "M-k o"			"keymap-off"
+\bind "M-k t"			"keymap-toggle"
+\bind "M-k x"			"keymap-off"
+
+\bind "M-л 1"			"keymap-primary"
+\bind "M-л 2"			"keymap-secondary"
+\bind "M-л щ"			"keymap-off"
+\bind "M-л е"			"keymap-toggle"
+\bind "M-л ч"			"keymap-off"
