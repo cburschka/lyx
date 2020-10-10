@@ -28,6 +28,13 @@
 
 find_package(Perl)
 find_program(XMLLINT_EXECUTABLE xmllint)
+find_program(JAVA_EXECUTABLE java)
+set(jingjava)
+if (JAVA_EXECUTABLE)
+  if (EXISTS "${TOP_SRC_DIR}/development/tools/jing.jar")
+    set(jingjava ${JAVA_EXECUTABLE})
+  endif()
+endif()
 
 if(PERL_FOUND)
   set(DVI_FORMATS "dvi" "dvi3")
@@ -475,6 +482,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates lib/ta
               "-DIgnoreErrorMessage=${missingLabels}"
               -DPERL_EXECUTABLE=${PERL_EXECUTABLE}
               -DXMLLINT_EXECUTABLE=${XMLLINT_EXECUTABLE}
+              -DJAVA_EXECUTABLE=${jingjava}
               -DENCODING=${_enc2}
               -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
             setmarkedtestlabel(${TestName} ${mytestlabel}) # check for suspended pdf/dvi exports
