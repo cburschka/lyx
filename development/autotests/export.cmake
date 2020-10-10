@@ -280,16 +280,16 @@ else()
             endif()
           endif()
         endif()
-	if (NOT _err AND JAVA_EXECUTABLE)
-	  # check with jing
-	  message(STATUS "Calling: ${JAVA_EXECUTABLE} -jar \"${TOP_SRC_DIR}/development/tools/jing.jar\" https://docbook.org/xml/5.0.1/rng/docbook.rng \"${WORKDIR}/${result_file_name}\"")
-	  execute_process(
-	    COMMAND ${JAVA_EXECUTABLE} -jar "${TOP_SRC_DIR}/development/tools/jing.jar" "https://docbook.org/xml/5.2b09/rng/docbook.rng" "${WORKDIR}/${result_file_name}"
-	    OUTPUT_VARIABLE jingout
-	    RESULT_VARIABLE _err)
-	  message(STATUS "_err = ${_err}, jingout = ${jingout}")
-	  Summary(_err "CHecking for empty output of ${JAVA_EXECUTABLE} -jar \"${TOP_SRC_DIR}/development/tools/jing.jar\"")
-	endif()
+        if (NOT _err AND JAVA_EXECUTABLE)
+          # check with jing
+          message(STATUS "Calling: ${JAVA_EXECUTABLE} -jar \"${TOP_SRC_DIR}/development/tools/jing.jar\" https://docbook.org/xml/5.2b09/rng/docbook.rng \"${WORKDIR}/${result_file_name}\"")
+          execute_process(
+            COMMAND ${JAVA_EXECUTABLE} -jar "${TOP_SRC_DIR}/development/tools/jing.jar" "https://docbook.org/xml/5.2b09/rng/docbook.rng" "${WORKDIR}/${result_file_name}"
+            OUTPUT_VARIABLE jingout
+            RESULT_VARIABLE _err)
+          message(STATUS "_err = ${_err}, jingout = ${jingout}")
+          Summary(_err "Checking for empty output of ${JAVA_EXECUTABLE} -jar \"${TOP_SRC_DIR}/development/tools/jing.jar\"")
+        endif()
       endif()
     endif()
   endif()
