@@ -299,7 +299,7 @@ KeyMap::ReturnValues KeyMap::readWithoutConv(FileName const & bind_file, KeyMap 
 	LYXERR(Debug::KBMAP, "Reading bind file:" << bind_file.absFileName());
 
 	// format of pre-2.0 bind files, before this tag was introduced.
-	unsigned int format = 0;
+	int format = 0;
 	bool error = false;
 	while (lexrc.isOK()) {
 		switch (lexrc.lex()) {
