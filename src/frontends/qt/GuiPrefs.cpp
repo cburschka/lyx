@@ -3147,7 +3147,7 @@ void PrefShortcuts::removeShortcut()
 	for (auto & item : items) {
 		string shortcut = fromqstr(item->data(1, Qt::UserRole).toString());
 		string lfun = fromqstr(item->text(0));
-		FuncRequest func = lyxaction.lookupFunc(lfun);
+		FuncRequest const func = lyxaction.lookupFunc(lfun);
 
 		switch (itemType(*item)) {
 		case KeyMap::System: {
@@ -3203,7 +3203,7 @@ void PrefShortcuts::deactivateShortcuts(QList<QTreeWidgetItem*> const & items)
 	for (auto item : items) {
 		string shortcut = fromqstr(item->data(1, Qt::UserRole).toString());
 		string lfun = fromqstr(item->text(0));
-		FuncRequest func = lyxaction.lookupFunc(lfun);
+		FuncRequest const func = lyxaction.lookupFunc(lfun);
 
 		switch (itemType(*item)) {
 		case KeyMap::System:
@@ -3376,7 +3376,7 @@ bool PrefShortcuts::validateNewShortcut(FuncRequest const & func,
 void PrefShortcuts::shortcutOkPressed()
 {
 	QString const new_lfun = shortcut_->lfunLE->text();
-	FuncRequest func = lyxaction.lookupFunc(fromqstr(new_lfun));
+	FuncRequest const func = lyxaction.lookupFunc(fromqstr(new_lfun));
 	KeySequence k = shortcut_->shortcutWG->getKeySequence();
 
 	// save_lfun_ contains the text of the lfun to modify, if the user clicked
