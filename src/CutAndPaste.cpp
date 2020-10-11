@@ -218,10 +218,10 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 
 	// set the paragraphs to plain layout if necessary
 	DocumentClassConstPtr newDocClass = buffer.params().documentClassPtr();
+	Layout const & plainLayout = newDocClass->plainLayout();
+	Layout const & defaultLayout = newDocClass->defaultLayout();
 	if (cur.inset().usePlainLayout()) {
 		bool forcePlainLayout = target_inset->forcePlainLayout();
-		Layout const & plainLayout = newDocClass->plainLayout();
-		Layout const & defaultLayout = newDocClass->defaultLayout();
 		for (auto & par : insertion) {
 			Layout const & parLayout = par.layout();
 			if (forcePlainLayout || parLayout == defaultLayout)
@@ -229,8 +229,6 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 		}
 	} else {
 		// check if we need to reset from plain layout
-		Layout const & defaultLayout = newDocClass->defaultLayout();
-		Layout const & plainLayout = newDocClass->plainLayout();
 		for (auto & par : insertion) {
 			Layout const & parLayout = par.layout();
 			if (parLayout == plainLayout)
@@ -1088,7 +1086,7 @@ void copySelectionToTemp(Cursor const & cur)
 void copySelection(Cursor const & cur, docstring const & plaintext)
 {
 	// In tablemode, because copy and paste actually use a special table stack,
-	// we need to go through the cells and collect the paragraphs. 
+	// we need to go through the cells and collect the paragraphs.
 	// In math matrices, we generate a plain text version.
 	if (cur.selBegin().idx() != cur.selEnd().idx()) {
 		ParagraphList pars;
