@@ -31,8 +31,6 @@
 #include "LyX.h"
 #include "LyXRC.h"
 
-#include "insets/InsetTabular.h"
-
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/lstrings.h"

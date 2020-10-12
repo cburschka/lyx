@@ -77,7 +77,6 @@ following hack as starting point to write some macros:
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
-#include "support/unique_ptr.h"
 
 #include <sstream>
 

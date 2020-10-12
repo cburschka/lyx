@@ -22,7 +22,6 @@
 
 #include "Buffer.h"
 #include "BufferView.h"
-#include "BiblioInfo.h"
 #include "BufferParams.h"
 #include "TextClass.h"
 #include "FuncRequest.h"
@@ -41,9 +40,6 @@
 #include <QShowEvent>
 #include <QStandardItemModel>
 #include <QVariant>
-
-#include <vector>
-#include <string>
 
 #undef KeyPress
 

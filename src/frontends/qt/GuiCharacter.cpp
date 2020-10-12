@@ -18,7 +18,6 @@
 #include "GuiApplication.h"
 #include "qt_helpers.h"
 
-#include "Font.h"
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"

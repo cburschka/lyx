@@ -23,18 +23,11 @@
 #include "FuncStatus.h"
 #include "LyX.h"
 
-#include "insets/Inset.h"
-
 #include "support/debug.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
 
-#include <QLabel>
-#include <QLineEdit>
-#include <QList>
 #include <QSettings>
-#include <QString>
-#include <QValidator>
 
 #include <string>
 

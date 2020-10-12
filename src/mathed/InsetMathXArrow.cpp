@@ -16,7 +16,6 @@
 
 #include "MathData.h"
 #include "MathStream.h"
-#include "MathStream.h"
 #include "MathSupport.h"
 
 #include "LaTeXFeatures.h"

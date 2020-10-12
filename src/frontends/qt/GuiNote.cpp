@@ -15,8 +15,6 @@
 #include "FuncRequest.h"
 #include "support/gettext.h"
 
-#include "insets/InsetNote.h"
-
 using namespace std;
 
 namespace lyx {

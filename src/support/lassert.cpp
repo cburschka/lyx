@@ -10,7 +10,8 @@
  */
 
 #include <config.h>
-#include <lassert.h>
+
+#include "support/lassert.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -21,13 +22,13 @@
 
 #include <boost/assert.hpp>
 
-#include <QString>
 
 #ifdef LYX_CALLSTACK_PRINTING
 #include <cstdio>
 #include <cstdlib>
 #include <execinfo.h>
 #include <cxxabi.h>
+#include <QString>
 #endif
 
 

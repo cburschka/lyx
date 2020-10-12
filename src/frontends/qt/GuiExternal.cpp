@@ -21,7 +21,6 @@
 
 #include "insets/ExternalSupport.h"
 #include "insets/ExternalTemplate.h"
-#include "insets/InsetExternal.h"
 
 #include "graphics/epstools.h"
 #include "graphics/GraphicsCache.h"

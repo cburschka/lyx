@@ -29,7 +29,6 @@
 #include "Buffer.h"
 #include "BufferList.h"
 #include "BufferParams.h"
-#include "BufferView.h"
 #include "Converter.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"

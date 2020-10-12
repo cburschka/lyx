@@ -14,7 +14,6 @@
 
 #include "GuiToc.h"
 #include "GuiView.h"
-#include "DockView.h"
 #include "TocWidget.h"
 #include "qt_helpers.h"
 

@@ -16,9 +16,7 @@
 
 #include "ToolTipFormatter.h"
 #include "ColorCache.h"
-#include "ColorSet.h"
 #include "GuiClipboard.h"
-#include "GuiKeySymbol.h"
 #include "GuiSelection.h"
 #include "GuiView.h"
 #include "Menus.h"

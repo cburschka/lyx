@@ -21,7 +21,6 @@
 #include "frontends/Clipboard.h"
 
 #include "support/docstring.h"
-#include "support/FileName.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 

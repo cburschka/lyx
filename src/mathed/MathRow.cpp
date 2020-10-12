@@ -12,8 +12,6 @@
 
 #include "MathRow.h"
 
-#include "InsetMath.h"
-#include "MathClass.h"
 #include "MathData.h"
 #include "MathSupport.h"
 

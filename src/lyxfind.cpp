@@ -38,13 +38,11 @@
 #include "frontends/alert.h"
 
 #include "mathed/InsetMath.h"
-#include "mathed/InsetMathGrid.h"
 #include "mathed/InsetMathHull.h"
 #include "mathed/MathData.h"
 #include "mathed/MathStream.h"
 #include "mathed/MathSupport.h"
 
-#include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/FileName.h"

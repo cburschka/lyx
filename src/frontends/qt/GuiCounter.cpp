@@ -25,8 +25,6 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
-#include "qt_helpers.h"
-
 #include <map>
 //#include <vector>
 

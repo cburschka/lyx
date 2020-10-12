@@ -30,7 +30,6 @@
 #include "InsetMathUnknown.h"
 #include "MathAutoCorrect.h"
 #include "MathCompletionList.h"
-#include "MathData.h"
 #include "MathFactory.h"
 #include "InsetMathMacro.h"
 #include "InsetMathMacroArgument.h"

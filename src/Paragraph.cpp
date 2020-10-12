@@ -39,9 +39,7 @@
 #include "output_docbook.h"
 #include "ParagraphParameters.h"
 #include "SpellChecker.h"
-#include "xml.h"
 #include "texstream.h"
-#include "TextClass.h"
 #include "TexRow.h"
 #include "Text.h"
 #include "WordLangTuple.h"
@@ -58,13 +56,10 @@
 
 #include "support/debug.h"
 #include "support/docstring_list.h"
-#include "support/ExceptionMessage.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
-#include "support/Length.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
-#include "output_docbook.h"
 
 #include <algorithm>
 #include <atomic>

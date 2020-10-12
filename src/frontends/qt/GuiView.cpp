@@ -20,7 +20,6 @@
 #include "FontLoader.h"
 #include "GuiApplication.h"
 #include "GuiClickableLabel.h"
-#include "GuiCommandBuffer.h"
 #include "GuiCompleter.h"
 #include "GuiKeySymbol.h"
 #include "GuiToc.h"
@@ -51,9 +50,7 @@
 #include "Format.h"
 #include "FuncStatus.h"
 #include "FuncRequest.h"
-#include "Intl.h"
 #include "Language.h"
-#include "Layout.h"
 #include "LayoutFile.h"
 #include "Lexer.h"
 #include "LyXAction.h"
@@ -64,7 +61,6 @@
 #include "SpellChecker.h"
 #include "Session.h"
 #include "TexRow.h"
-#include "TextClass.h"
 #include "Text.h"
 #include "Toolbars.h"
 #include "version.h"
@@ -73,9 +69,7 @@
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
 #include "support/FileName.h"
-#include "support/filetools.h"
 #include "support/gettext.h"
-#include "support/filetools.h"
 #include "support/ForkedCalls.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
@@ -89,8 +83,6 @@
 #include <QAction>
 #include <QApplication>
 #include <QCloseEvent>
-#include <QDebug>
-#include <QDesktopWidget>
 #include <QDragEnterEvent>
 #include <QDropEvent>
 #include <QFuture>
@@ -105,8 +97,6 @@
 #include <QPainter>
 #include <QPixmap>
 #include <QPoint>
-#include <QPushButton>
-#include <QScrollBar>
 #include <QSettings>
 #include <QShowEvent>
 #include <QSplitter>
@@ -114,9 +104,7 @@
 #include <QStatusBar>
 #include <QSvgRenderer>
 #include <QtConcurrentRun>
-#include <QTime>
 #include <QTimer>
-#include <QToolBar>
 #include <QUrl>
 #include <QWindowStateChangeEvent>
 

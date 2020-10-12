@@ -15,7 +15,6 @@
 #include "InsetLayout.h"
 
 #include "ColorSet.h"
-#include "Layout.h"
 #include "Lexer.h"
 #include "TextClass.h"
 

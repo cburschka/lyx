@@ -12,7 +12,6 @@
 
 #include "InsetMathNumber.h"
 #include "MathStream.h"
-#include "MathStream.h"
 #include "MathSupport.h"
 
 #include "MetricsInfo.h"

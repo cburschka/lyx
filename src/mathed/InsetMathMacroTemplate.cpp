@@ -22,7 +22,6 @@
 #include "MathStream.h"
 #include "MathParser.h"
 #include "MathSupport.h"
-#include "InsetMathMacroArgument.h"
 
 #include "Buffer.h"
 #include "BufferView.h"

@@ -15,7 +15,6 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "BufferParams.h"
 #include "Cursor.h"
 #include "Dimension.h"
 #include "DispatchResult.h"

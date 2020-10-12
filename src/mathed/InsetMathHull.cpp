@@ -39,7 +39,6 @@
 #include "InsetMathMacro.h"
 #include "InsetMathMacroTemplate.h"
 #include "MetricsInfo.h"
-#include "xml.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
 #include "xml.h"
