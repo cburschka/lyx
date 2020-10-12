@@ -1093,7 +1093,7 @@ cmd_ret const runCommand(string const & cmd)
 
 	// (Claus Hentschel) Check if popen was successful ;-)
 	if (!inf) {
-		lyxerr << "RunCommand:: could not start child process" << endl;
+		lyxerr << "RunCommand: could not start child process" << endl;
 		return { false, string() };
 	}
 
@@ -1125,7 +1125,7 @@ cmd_ret const runCommand(string const & cmd)
 #endif
 
 	if (!valid)
-		perror("RunCommand:: could not terminate child process");
+		perror("RunCommand: could not terminate child process");
 
 	return { valid, result };
 }
