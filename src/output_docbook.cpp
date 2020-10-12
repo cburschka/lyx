@@ -920,6 +920,15 @@ void outputDocBookInfo(
 	for (auto pit : info.mustBeInInfo)
 		makeAny(text, buf, xs, runparams, paragraphs.iterator_at(pit));
 
+	// If there is no title, generate one (required for the document to be valid).
+	// This code is called for the main document, for table cells, etc., so be precise in this condition.
+	if (text.isMainText() && info.mustBeInInfo.empty()) {
+		xs << xml::StartTag("title");
+		xs << "Untitled Document";
+		xs << xml::EndTag("title");
+		xs << xml::CR();
+	}
+
 	// Always output the abstract as the last item of the <info>, as it requires special treatment (especially if
 	// it contains several paragraphs that are empty).
 	if (hasAbstract) {
