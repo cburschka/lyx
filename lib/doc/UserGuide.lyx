@@ -8750,14 +8750,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8770,7 +8768,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8794,7 +8791,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -30492,19 +30488,34 @@ name "sec:Counters"
 
 \begin_layout Standard
 
-\change_inserted -584632292 1588374084
+\change_inserted -584632292 1602541139
 One powerful feature of \SpecialChar LaTeX
  is its ability to manage counters.
  Mostly, this is handled automatically, but there are times one wants to
  modify counters directly.
  This can be done in LyX using the counter inset, which is accessible from
- the Insert menu.
- This allows one to set a counter's value; to reset it (to zero); to add
- to the value (or subtract from it, since the value added can be negative);
- to save it; to restore the saved value; and to print the value.
+ the Edit menu.
+ This allows one to set a counter's value; to reset it (to zero);
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1602541231
+Note that the section counter, e.g., starts with its value at zero and then
+ is incremented to one when the first section is created.
+ So, if you want the next section to be section five, say, then you need
+ to set the section counter to four.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ to add to the value (or subtract from it, since the value added can be
+ negative); to save it; to restore the saved value; and to print the value.
  These effects can also be limited to LyX itself.
  And they will appear in HTML and DocBook output, as well as in LaTeX.
- 
 \end_layout
 
 \begin_layout Standard
