@@ -426,11 +426,11 @@ Menuset
 	Menu "insert_fields"
 		Item "Date (Current)|D" "info-insert date"
 		Item "Date (Last Modification)|L" "info-insert moddate"
-		Item "Date (Fix)|F" "info-insert fixdate"
+		Item "Date (Fixed)|F" "info-insert fixdate"
 		Separator
 		Item "Time (Current)|T" "info-insert time"
 		Item "Time (Last Modification)|M" "info-insert modtime"
-		Item "Time (Fix)|x" "info-insert fixtime"
+		Item "Time (Fixed)|x" "info-insert fixtime"
 		Separator
 		Item "File Name (Excl. Extension)|N" "info-insert buffer name-noext"
 		OptItem "Version Control Revision|V" "info-insert vcs revision"
