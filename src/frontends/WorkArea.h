@@ -18,9 +18,6 @@
 
 namespace lyx {
 
-class BufferView;
-class KeySymbol;
-
 namespace frontend {
 
 /**

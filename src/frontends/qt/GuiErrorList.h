@@ -16,8 +16,6 @@
 #include "ErrorList.h"
 #include "ui_ErrorListUi.h"
 
-class QListWidgetItem;
-
 namespace lyx {
 namespace frontend {
 

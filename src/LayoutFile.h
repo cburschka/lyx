@@ -24,8 +24,6 @@
 
 namespace lyx {
 
-class Layout;
-
 /// Index into LayoutFileList. Basically a 'strong typedef'.
 class LayoutFileIndex {
 public:

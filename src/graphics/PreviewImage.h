@@ -22,7 +22,6 @@ class Dimension;
 
 namespace graphics {
 
-class Cache;
 class PreviewLoader;
 class Image;
 

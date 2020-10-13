@@ -21,8 +21,6 @@
 #include <QPainterPath>
 #include <stack>
 
-class QString;
-
 namespace lyx {
 
 class FontInfo;

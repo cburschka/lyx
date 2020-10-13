@@ -18,11 +18,7 @@
 
 #include <vector>
 
-class QListWidgetItem;
-
 namespace lyx {
-
-class Format;
 
 namespace frontend {
 

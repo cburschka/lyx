@@ -22,8 +22,6 @@ class QListWidgetItem;
 
 namespace lyx {
 
-class docstring_list;
-
 namespace frontend {
 
 class SpellcheckerWidget : public QTabWidget

@@ -25,16 +25,12 @@
 
 class QComboBox;
 class QLineEdit;
-class QCheckBox;
 class QString;
 class QWidget;
-template <class T> class QList;
 
 namespace lyx {
 
 namespace support { class FileName; }
-
-class BufferParams;
 
 namespace frontend {
 

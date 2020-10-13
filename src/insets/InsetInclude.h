@@ -22,7 +22,6 @@
 
 namespace lyx {
 
-class BiblioInfo;
 class Buffer;
 class Dimension;
 class InsetCommandParams;

@@ -32,14 +32,8 @@ namespace lyx {
  */
 typedef std::vector<Row> RowList;
 
-class Buffer;
 class BufferView;
-class BufferParams;
-class Font;
-class Inset;
 class Paragraph;
-class MetricsInfo;
-class PainterInfo;
 
 /// Helper class for paragraph metrics.
 class ParagraphMetrics {

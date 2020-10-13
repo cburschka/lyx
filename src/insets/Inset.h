@@ -31,7 +31,6 @@
 
 namespace lyx {
 
-class BiblioInfo;
 class Buffer;
 class BufferView;
 class Change;
@@ -59,11 +58,9 @@ class MathAtom;
 class MetricsInfo;
 class OutputParams;
 class PainterInfo;
-class ParConstIterator;
 class ParIterator;
 class Text;
 class TocBackend;
-class TocList;
 class XMLStream;
 class otexstream;
 

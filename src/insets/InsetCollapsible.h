@@ -27,8 +27,6 @@ class InsetLayout;
 
 namespace support { class TempFile; }
 
-namespace frontend { class Painter; }
-
 /** A collapsible text inset
 
 */

@@ -16,7 +16,6 @@
 
 namespace lyx {
 
-class Buffer;
 class DocIterator;
 class Inset;
 

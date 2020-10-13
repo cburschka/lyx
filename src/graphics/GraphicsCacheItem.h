@@ -40,7 +40,6 @@ namespace support { class FileName; }
 namespace graphics {
 
 class Image;
-class Converter;
 
 /// A graphics::Cache item holder.
 class CacheItem {

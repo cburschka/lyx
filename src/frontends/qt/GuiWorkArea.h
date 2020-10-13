@@ -22,14 +22,13 @@
 #include <QTabBar>
 #include <QTabWidget>
 
-class QDragEnterEvent;
-class QDropEvent;
 class QToolButton;
 class QWidget;
 
 namespace lyx {
 
 class Buffer;
+class BufferView;
 class FuncRequest;
 
 namespace frontend {

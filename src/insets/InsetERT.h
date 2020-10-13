@@ -26,8 +26,6 @@ namespace lyx {
   versions of this inset.
 */
 
-class Language;
-
 class InsetERT : public InsetCollapsible {
 public:
 	///

@@ -22,9 +22,6 @@
 
 namespace lyx {
 
-class DocumentClass;
-class Inset;
-
 namespace frontend {
 
 class GuiView;

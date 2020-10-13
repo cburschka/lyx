@@ -64,7 +64,6 @@ inclusion in the "real LyX insets" FormulaInset and FormulaMacroInset.
 
 */
 
-class Cursor;
 class OutputParams;
 class MetricsInfo;
 

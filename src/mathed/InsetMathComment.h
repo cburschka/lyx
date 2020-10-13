@@ -17,8 +17,6 @@
 
 namespace lyx {
 
-class latexkeys;
-
 /// Inset for end-of-line comments
 class InsetMathComment : public InsetMathNest {
 public:

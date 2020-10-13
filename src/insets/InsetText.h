@@ -23,9 +23,6 @@ class CompletionList;
 class CursorSlice;
 class Dimension;
 class ParagraphList;
-class InsetCaption;
-class InsetTabular;
-class TocBuilder;
 
 /**
  A text inset is like a TeX box to write full text

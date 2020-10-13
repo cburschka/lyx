@@ -25,7 +25,6 @@
 
 namespace lyx {
 
-class DocumentClass;
 class ErrorList;
 class InsetText;
 class Cursor;

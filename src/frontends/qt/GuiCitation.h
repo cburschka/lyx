@@ -31,8 +31,6 @@
 
 namespace lyx {
 
-class BiblioInfo;
-
 namespace frontend {
 
 class GuiSelectionManager;

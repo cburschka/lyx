@@ -19,8 +19,6 @@ namespace lyx {
 namespace support { class FileName; }
 
 class Buffer;
-class DocIterator;
-class ParIterator;
 
 /**
  *  Checks and loads a LyX file \param filename.

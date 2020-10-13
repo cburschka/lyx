@@ -44,7 +44,6 @@ class CursorSlice;
 class FuncStatus;
 class Lexer;
 class OutputParams;
-class Paragraph;
 class XMLStream;
 
 

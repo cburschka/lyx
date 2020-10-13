@@ -25,21 +25,14 @@
 
 namespace lyx {
 
-class BufferView;
 class Buffer;
 class DispatchResult;
 class docstring_list;
 class FuncRequest;
 class FuncStatus;
 class Inset;
-class Lexer;
-struct RGBColor;
 
 namespace frontend {
-
-class Clipboard;
-class FontLoader;
-class Selection;
 
 /// The main application class
 /**

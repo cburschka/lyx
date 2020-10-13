@@ -20,8 +20,6 @@
 
 namespace lyx {
 
-class LaTeXFeatures;
-
 class InsetLine : public InsetCommand
 {
 public:

@@ -18,8 +18,6 @@
 
 namespace lyx {
 
-class Buffer;
-
 
 enum CiteEngineType {
 	ENGINE_TYPE_AUTHORYEAR = 1,

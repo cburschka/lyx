@@ -20,7 +20,6 @@
 
 namespace lyx {
 
-class BufferParams;
 class BufferView;
 
 /** Gridded math inset base class.

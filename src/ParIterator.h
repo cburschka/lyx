@@ -21,7 +21,6 @@ namespace lyx {
 
 class Buffer;
 class Inset;
-class Text;
 class ParagraphList;
 
 

@@ -18,10 +18,7 @@
 #include <QHash>
 #include <QWidget>
 
-class QAbstractButton;
 class QHideEvent;
-class QLineEdit;
-class QPushButton;
 class QStackedWidget;
 class QTimer;
 class QTreeWidget;

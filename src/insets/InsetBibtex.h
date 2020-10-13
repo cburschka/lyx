@@ -16,7 +16,6 @@
 
 namespace lyx {
 
-class BiblioInfo;
 class docstring_list;
 
 namespace support {

@@ -20,7 +20,6 @@
 namespace lyx {
 namespace frontend {
 
-class TocModel;
 class TocWidget;
 
 class GuiToc : public DockView

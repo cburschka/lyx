@@ -21,9 +21,7 @@
 namespace lyx {
 
 class Inset;
-class Text;
 class MathData;
-class Paragraph;
 
 void lyxbreaker(void const * data, const char * hint, int size);
 

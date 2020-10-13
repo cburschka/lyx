@@ -50,10 +50,6 @@
 
 namespace lyx {
 
-class Converters;
-class Formats;
-class Movers;
-
 namespace frontend {
 
 class PrefModule;

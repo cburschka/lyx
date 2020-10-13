@@ -26,17 +26,12 @@ class QSettings;
 
 namespace lyx {
 
-class DocumentClass;
-class Inset;
-
 namespace frontend {
 
 class Action;
 class GuiCommandBuffer;
-class GuiLayoutFilterModel;
 class GuiToolbar;
 class GuiView;
-class LayoutBox;
 class ToolbarInfo;
 class ToolbarItem;
 

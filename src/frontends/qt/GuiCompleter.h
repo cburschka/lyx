@@ -20,8 +20,6 @@
 
 namespace lyx {
 
-class Buffer;
-
 namespace frontend {
 
 class GuiWorkArea;

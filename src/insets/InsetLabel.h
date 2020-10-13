@@ -17,8 +17,6 @@
 
 namespace lyx {
 
-class Counter;
-
 class InsetLabel : public InsetCommand
 {
 public:

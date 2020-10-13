@@ -29,7 +29,6 @@ class QFont;
 
 namespace lyx {
 
-class BufferView;
 class ColorCache;
 class KeySymbol;
 
@@ -39,10 +38,11 @@ class FileName;
 
 namespace frontend {
 
+class Clipboard;
+class FontLoader;
 class GuiView;
-class GuiWorkArea;
 class Menus;
-class SocketNotifier;
+class Selection;
 class Toolbars;
 
 /// The Qt main application class

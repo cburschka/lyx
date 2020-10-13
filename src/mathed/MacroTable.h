@@ -26,7 +26,6 @@ namespace lyx {
 class Buffer;
 class MathData;
 class InsetMathMacroTemplate;
-class Paragraph;
 class latexkeys;
 
 enum MacroType {

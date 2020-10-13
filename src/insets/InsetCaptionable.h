@@ -20,6 +20,8 @@
 
 namespace lyx {
 
+class InsetCaption;
+
 class InsetCaptionable : public InsetCollapsible
 {
 public:

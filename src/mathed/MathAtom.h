@@ -44,7 +44,6 @@ Andre'
 
 namespace lyx {
 
-class Inset;
 class InsetMath;
 
 class MathAtom {

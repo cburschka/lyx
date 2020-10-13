@@ -16,8 +16,6 @@
 
 #include <QFileDialog>
 
-class QToolButton;
-
 namespace lyx {
 
 class LyXFileDialog : public QFileDialog

@@ -19,7 +19,6 @@
 
 namespace lyx {
 
-class Buffer;
 class BufferView;
 class DocIterator;
 class FuncRequest;

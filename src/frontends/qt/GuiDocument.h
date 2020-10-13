@@ -42,10 +42,8 @@
 
 namespace lyx {
 
-class BufferParams;
 class LayoutModuleList;
 class LyXModule;
-class TextClass;
 
 namespace support {
 	class TempFile;

@@ -15,9 +15,7 @@
 #include <QObject>
 
 class QAbstractItemModel;
-class QAbstractListModel;
 class QModelIndex;
-class QListView;
 class QPushButton;
 class QVariant;
 class QAbstractItemView;
