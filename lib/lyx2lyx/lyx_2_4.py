@@ -3958,6 +3958,19 @@ def revert_docbook_table_output(document):
         del document.header[i]
 
 
+def revert_nopagebreak(document):
+    while True:
+        i = find_token(document.body, "\\begin_inset Newpage nopagebreak")
+        if i == -1:
+            return
+        end = find_end_of_inset(document.body, i)
+        if end == 1:
+            document.warning("Malformed LyX document: Could not find end of Newpage inset.")
+            continue
+        subst = put_cmd_in_ert("\\nopagebreak{}")
+        document.body[i : end + 1] = subst
+
+
 ##
 # Conversion hub
 #
@@ -4017,10 +4030,12 @@ convert = [
            [595, []],
            [596, [convert_parskip]],
            [597, [convert_libertinus_rm_fonts]],
-           [598, []]
+           [598, []],
+           [599, []]
           ]
 
-revert =  [[597, [revert_docbook_table_output]],
+revert =  [[598, [revert_nopagebreak]],
+           [597, [revert_docbook_table_output]],
            [596, [revert_libertinus_rm_fonts,revert_libertinus_sftt_fonts]],
            [595, [revert_parskip,revert_line_vspaces]],
            [594, [revert_ams_spaces]],

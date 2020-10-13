@@ -29,7 +29,9 @@ public:
 		///
 		CLEARPAGE,
 		///
-		CLEARDOUBLEPAGE
+		CLEARDOUBLEPAGE,
+		///
+		NOPAGEBREAK
 	};
 	///
 	InsetNewpageParams() : kind(NEWPAGE) {}
@@ -74,7 +76,7 @@ private:
 	///
 	void write(std::ostream & os) const override;
 	///
-	RowFlags rowFlags() const override { return Display; }
+	RowFlags rowFlags() const override { return (params_.kind == InsetNewpageParams::NOPAGEBREAK) ? Inline : Display; }
 	///
 	docstring insetLabel() const;
 	///

@@ -322,6 +322,7 @@ Menuset
 	Menu "context-newpage"
 		Item "New Page|N" "inset-modify newpage newpage"
 		Item "Page Break|a" "inset-modify newpage pagebreak"
+		Item "No Page Break|g" "inset-modify newpage nopagebreak"
 		Item "Clear Page|C" "inset-modify newpage clearpage"
 		Item "Clear Double Page|D" "inset-modify newpage cleardoublepage"
 	End

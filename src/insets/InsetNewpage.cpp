@@ -61,6 +61,9 @@ void InsetNewpageParams::write(ostream & os) const
 	case InsetNewpageParams::CLEARDOUBLEPAGE:
 		os <<  "cleardoublepage";
 		break;
+	case InsetNewpageParams::NOPAGEBREAK:
+		os <<  "nopagebreak";
+		break;
 	}
 }
 
@@ -79,6 +82,8 @@ void InsetNewpageParams::read(Lexer & lex)
 		kind = InsetNewpageParams::CLEARPAGE;
 	else if (token == "cleardoublepage")
 		kind = InsetNewpageParams::CLEARDOUBLEPAGE;
+	else if (token == "nopagebreak")
+		kind = InsetNewpageParams::NOPAGEBREAK;
 	else
 		lex.printError("Unknown kind");
 }
@@ -100,6 +105,14 @@ void InsetNewpage::read(Lexer & lex)
 
 void InsetNewpage::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	if (params_.kind == InsetNewpageParams::NOPAGEBREAK) {
+		frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
+		dim.asc = fm.maxAscent();
+	        dim.des = fm.maxDescent();
+	        dim.wid = 3 * fm.width('n');
+		return;
+	}
+
 	dim.asc = defaultRowHeight();
 	dim.des = defaultRowHeight();
 	dim.wid = mi.base.textwidth;
@@ -108,6 +121,54 @@ void InsetNewpage::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetNewpage::draw(PainterInfo & pi, int x, int y) const
 {
+	if (params_.kind == InsetNewpageParams::NOPAGEBREAK) {
+
+	        FontInfo font;
+	        font.setColor(ColorName());
+
+	        frontend::FontMetrics const & fm = theFontMetrics(pi.base.font);
+	        int const wid = 3 * fm.width('n');
+	        int const asc = fm.maxAscent();
+
+		int xp[3];
+	        int yp[3];
+
+		//left side arrow
+		yp[0] = int(y - 0.875 * asc * 0.75);
+		yp[1] = int(y - 0.500 * asc * 0.75);
+		yp[2] = int(y - 0.125 * asc * 0.75);
+		xp[0] = int(x + wid * 0.25);
+		xp[1] = int(x + wid * 0.4); 
+		xp[2] = int(x + wid * 0.25);
+		pi.pain.lines(xp, yp, 3, ColorName());
+
+		yp[0] = yp[1] = int(y - 0.500 * asc * 0.75);
+		xp[0] = int(x + wid * 0.03);
+		xp[1] = int(x + wid * 0.4); 
+		pi.pain.lines(xp, yp, 2, ColorName());
+
+		//right side arrow
+		yp[0] = int(y - 0.875 * asc * 0.75);
+		yp[1] = int(y - 0.500 * asc * 0.75);
+		yp[2] = int(y - 0.125 * asc * 0.75);
+		xp[0] = int(x + wid * 0.75);
+		xp[1] = int(x + wid * 0.6); 
+		xp[2] = int(x + wid * 0.75);
+		pi.pain.lines(xp, yp, 3, ColorName());
+
+		yp[0] = yp[1] = int(y - 0.500 * asc * 0.75);
+		xp[0] = int(x + wid * 0.97);
+		xp[1] = int(x + wid * 0.6); 
+		pi.pain.lines(xp, yp, 2, ColorName());
+
+		//mid-rule
+		xp[0] = xp[1] = int(x + wid * 0.5);;
+		yp[0] = int(y - 0.875 * asc * 0.75);
+		yp[1] = int(y - 0.125 * asc * 0.75);
+		pi.pain.lines(xp, yp, 2, ColorName());
+		return;
+	}
+
 	using frontend::Painter;
 
 	FontInfo font;
@@ -187,6 +248,9 @@ docstring InsetNewpage::insetLabel() const
 		case InsetNewpageParams::CLEARDOUBLEPAGE:
 			return _("Clear Double Page");
 			break;
+		case InsetNewpageParams::NOPAGEBREAK:
+			return _("No Page Break");
+			break;
 		default:
 			return _("New Page");
 			break;
@@ -198,6 +262,7 @@ ColorCode InsetNewpage::ColorName() const
 {
 	switch (params_.kind) {
 		case InsetNewpageParams::PAGEBREAK:
+		case InsetNewpageParams::NOPAGEBREAK:
 			return Color_pagebreak;
 			break;
 		case InsetNewpageParams::NEWPAGE:
@@ -232,6 +297,9 @@ void InsetNewpage::latex(otexstream & os, OutputParams const & runparams) const
 		case InsetNewpageParams::CLEARDOUBLEPAGE:
 			os << "\\cleardoublepage" << termcmd;
 			break;
+		case InsetNewpageParams::NOPAGEBREAK:
+			os << "\\nopagebreak" << termcmd;
+			break;
 		default:
 			os << "\\newpage" << termcmd;
 			break;
@@ -243,6 +311,8 @@ void InsetNewpage::latex(otexstream & os, OutputParams const & runparams) const
 int InsetNewpage::plaintext(odocstringstream & os,
         OutputParams const &, size_t) const
 {
+	if (params_.kind ==  InsetNewpageParams::NOPAGEBREAK)
+		return 0;
 	os << '\n';
 	return PLAINTEXT_NEWLINE;
 }
@@ -250,13 +320,15 @@ int InsetNewpage::plaintext(odocstringstream & os,
 
 void InsetNewpage::docbook(XMLStream & os, OutputParams const &) const
 {
-	os << xml::CR();
+	if (params_.kind !=  InsetNewpageParams::NOPAGEBREAK)
+		os << xml::CR();
 }
 
 
 docstring InsetNewpage::xhtml(XMLStream & xs, OutputParams const &) const
 {
-	xs << xml::CompTag("br");
+	if (params_.kind !=  InsetNewpageParams::NOPAGEBREAK)
+		xs << xml::CompTag("br");
 	return docstring();
 }
 

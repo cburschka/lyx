@@ -5593,7 +5593,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		if (t.cs() == "newpage" ||
 		    (t.cs() == "pagebreak" && !p.hasOpt()) ||
 		    t.cs() == "clearpage" ||
-		    t.cs() == "cleardoublepage") {
+		    t.cs() == "cleardoublepage" ||
+		    t.cs() == "nopagebreak") {
 			context.check_layout(os);
 			begin_inset(os, "Newpage ");
 			os << t.cs();

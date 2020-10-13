@@ -467,6 +467,7 @@ Menuset
 		Separator
 		Item "New Page|N" "newpage-insert newpage"
 		Item "Page Break|a" "newpage-insert pagebreak"
+		Item "No Page Break|g" "newpage-insert nopagebreak"
 		Item "Clear Page|C" "newpage-insert clearpage"
 		Item "Clear Double Page|D" "newpage-insert cleardoublepage"
 	End
