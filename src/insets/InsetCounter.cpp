@@ -109,19 +109,19 @@ void InsetCounter::latex(otexstream & os, OutputParams const &) const
 		os << "\\setcounter{" << cntr << "}{0}";
 	} else if (cmd == "save") {
 		cnts.saveValue(cntr);
-		os << "\\setcounter{" << lyxSaveCounter() 
+		os << "\\setcounter{" << lyxSaveCounter()
 		   << "}{\\value{" << cntr << "}}";
 	} else if (cmd == "restore") {
 		cnts.restoreValue(cntr);
 		os << "\\setcounter{" << cntr
-		   << "{\\value{" << lyxSaveCounter() << "}}";
+		   << "}{\\value{" << lyxSaveCounter() << "}}";
 	}
 }
 
 
 void InsetCounter::toString(odocstream & os) const
 {
-	os << "[Counter " << from_utf8(getCmdName()) << ": " 
+	os << "[Counter " << from_utf8(getCmdName()) << ": "
 	   <<  getParam("counter") << "]";
 }
 
@@ -228,7 +228,7 @@ void InsetCounter::updateBuffer(ParIterator const &, UpdateType, bool const)
 		screen_label_ = bformat(_("Counter: Add to %1$s"), guiname);
 		tooltip_ = bformat(_("Add %1$s to value of counter %2$s"), val, cntr);
 	} else if (cmd == "reset") {
-		cnts.reset(cntr);		
+		cnts.reset(cntr);
 		screen_label_ = bformat(_("Counter: Reset %1$s"), guiname);
 		tooltip_ = bformat(_("Reset value of counter %1$s"), cntr);
 	} else if (cmd == "save") {
@@ -262,8 +262,8 @@ void InsetCounter::validate(LaTeXFeatures & features) const
 }
 
 
-string InsetCounter::contextMenuName() const 
-{ 
-	return "context-counter"; 
+string InsetCounter::contextMenuName() const
+{
+    return "context-counter";
 }
 } // namespace lyx
