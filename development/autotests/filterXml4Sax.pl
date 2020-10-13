@@ -10,7 +10,7 @@ die("No xml file specified") if (! defined($ARGV[0]));
 my $f = $ARGV[0];
 die("Bad extension of $f") if ($f !~ /\.xml$/);
 die("Could not read $f") if (!open(FI, $f));
-my ($fh, $filename) = tempfile("tempXXXX", SUFFIX => '.xml', DIR => '/tmp', UNLINK => 0);
+my ($fh, $filename) = tempfile("tempXXXX", SUFFIX => '.xml', UNLINK => 0);
 while (my $l = <FI>) {
   chomp($l);
   $l = convert($l);
