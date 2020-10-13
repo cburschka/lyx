@@ -79,8 +79,6 @@
 #include <cmath>
 #include <iostream>
 
-int const TabIndicatorWidth = 3;
-
 #undef KeyPress
 #undef NoModifier
 
@@ -165,13 +163,14 @@ public:
 		// draw completion triangle
 		if (completable) {
 			int const m = y + dim.height() / 2;
-			int const d = TabIndicatorWidth * dim.wid - 1;
+			int const d = dim.height() / 8;
 			// offset for slanted carret
 			int const sx = (dim.asc - (dim.height() / 2 - d)) * slope;
-			painter.drawLine(xx + dir * (dim.wid + 1) + sx, m - d,
-			                 xx + dir * (dim.wid + d + 1) + sx, m);
-			painter.drawLine(xx + dir * (dim.wid + 1) + sx, m + d,
-			                 xx + dir * (dim.wid + d + 1) + sx, m);
+			painter.setPen(QPen(color, dim.width()));
+			painter.drawLine(xx + dir * dim.wid + sx, m - d,
+			                 xx + dir * (dim.wid + d) + sx, m);
+			painter.drawLine(xx + dir * dim.wid + sx, m + d,
+			                 xx + dir * (dim.wid + d) + sx, m);
 		}
 	}
 
