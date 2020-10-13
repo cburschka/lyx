@@ -99,9 +99,9 @@ public:
 	/// Those are iterators for different containers.
 	Layout::LaTeXArgMap args() const;
 	///
-	unsigned int optArgs() const;
+	int optArgs() const;
 	///
-	unsigned int requiredArgs() const;
+	int requiredArgs() const;
 	///
 	docstring preamble() const { return preamble_; }
 	/// Get language dependent macro definitions needed for this inset

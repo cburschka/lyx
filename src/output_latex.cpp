@@ -63,16 +63,16 @@ enum OpenEncoding {
 
 struct OutputState
 {
-	OutputState() : open_encoding_(none), cjk_inherited_(0),
-		prev_env_language_(nullptr), nest_level_(0)
+	OutputState() : prev_env_language_(nullptr), open_encoding_(none),
+		cjk_inherited_(0), nest_level_(0)
 	{
 	}
-	OpenEncoding open_encoding_;
-	int cjk_inherited_;
 	Language const * prev_env_language_;
-	int nest_level_;
 	stack<int> lang_switch_depth_;          // Both are always empty when
 	stack<string> open_polyglossia_lang_;   // not using polyglossia
+	OpenEncoding open_encoding_;
+	int cjk_inherited_;
+	int nest_level_;
 };
 
 
@@ -164,10 +164,10 @@ string const getPolyglossiaBegin(string const & lang_begin_command,
 
 struct TeXEnvironmentData
 {
-	bool cjk_nested;
 	Layout const * style;
 	Language const * par_language;
 	Encoding const * prev_encoding;
+	bool cjk_nested;
 	bool leftindent_open;
 };
 
@@ -464,9 +464,9 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 
 
 void getArgInsets(otexstream & os, OutputParams const & runparams, Layout::LaTeXArgMap const & latexargs,
-		  map<int, lyx::InsetArgument const *> ilist, vector<string> required, string const & prefix)
+		  map<size_t, lyx::InsetArgument const *> ilist, vector<string> required, string const & prefix)
 {
-	unsigned int const argnr = latexargs.size();
+	size_t const argnr = latexargs.size();
 	if (argnr == 0)
 		return;
 
@@ -480,16 +480,16 @@ void getArgInsets(otexstream & os, OutputParams const & runparams, Layout::LaTeX
 			}
 	}
 
-	for (unsigned int i = 1; i <= argnr; ++i) {
-		map<int, InsetArgument const *>::const_iterator lit = ilist.find(i);
+	for (size_t i = 1; i <= argnr; ++i) {
+		map<size_t, InsetArgument const *>::const_iterator lit = ilist.find(i);
 		bool inserted = false;
 		if (lit != ilist.end()) {
-			InsetArgument const * ins = (*lit).second;
+			InsetArgument const * ins = lit->second;
 			if (ins) {
 				Layout::LaTeXArgMap::const_iterator const lait =
 						latexargs.find(ins->name());
 				if (lait != latexargs.end()) {
-					Layout::latexarg arg = (*lait).second;
+					Layout::latexarg arg = lait->second;
 					docstring ldelim;
 					docstring rdelim;
 					if (!arg.nodelims) {
@@ -588,7 +588,7 @@ namespace {
 
 void addArgInsets(Paragraph const & par, string const & prefix,
                  Layout::LaTeXArgMap const & latexargs,
-                 map<int, InsetArgument const *> & ilist,
+				 map<size_t, InsetArgument const *> & ilist,
                  vector<string> & required)
 {
 	for (auto const & table : par.insetList()) {
@@ -601,8 +601,7 @@ void addArgInsets(Paragraph const & par, string const & prefix,
 		}
 		string const name = prefix.empty() ?
 			arg->name() : split(arg->name(), ':');
-		// why converting into an integer?
-		unsigned int const nr = convert<unsigned int>(name);
+		size_t const nr = convert<size_t>(name);
 		if (ilist.find(nr) == ilist.end())
 			ilist[nr] = arg;
 		Layout::LaTeXArgMap::const_iterator const lit =
@@ -623,7 +622,7 @@ void latexArgInsets(Paragraph const & par, otexstream & os,
                     Layout::LaTeXArgMap const & latexargs,
                     string const & prefix)
 {
-	map<int, InsetArgument const *> ilist;
+	map<size_t, InsetArgument const *> ilist;
 	vector<string> required;
 	addArgInsets(par, prefix, latexargs, ilist, required);
 	getArgInsets(os, runparams, latexargs, ilist, required, prefix);
@@ -636,7 +635,7 @@ void latexArgInsets(ParagraphList const & pars,
                     Layout::LaTeXArgMap const & latexargs,
                     string const & prefix)
 {
-	map<int, InsetArgument const *> ilist;
+	map<size_t, InsetArgument const *> ilist;
 	vector<string> required;
 
 	depth_type const current_depth = pit->params().depth();
@@ -656,7 +655,6 @@ void latexArgInsets(ParagraphList const & pars,
 	}
 
 	ParagraphList::const_iterator spit = prev(pit, offset);
-
 	for (; spit != pars.end(); ++spit) {
 		if (spit->layout() != current_layout ||
 		    spit->params().depth() < current_depth)
@@ -674,7 +672,7 @@ void latexArgInsetsForParent(ParagraphList const & pars, otexstream & os,
                              Layout::LaTeXArgMap const & latexargs,
                              string const & prefix)
 {
-	map<int, InsetArgument const *> ilist;
+	map<size_t, InsetArgument const *> ilist;
 	vector<string> required;
 
 	for (Paragraph const & par : pars) {
@@ -1589,7 +1587,7 @@ void latexParagraphs(Buffer const & buf,
 		// The full doc will be exported but it is easier to just rely on
 		// runparams range parameters that will be passed TeXEnvironment.
 		runparams.par_begin = 0;
-		runparams.par_end = paragraphs.size();
+		runparams.par_end = static_cast<int>(paragraphs.size());
 	}
 
 	pit_type pit = runparams.par_begin;
@@ -1815,7 +1813,7 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 			// shouldn't ever reach here (see above) but avoids warning.
 			return make_pair(true, 0);
 		case Encoding::inputenc: {
-			int count = inputenc_arg.length();
+			size_t count = inputenc_arg.length();
 			if (oldEnc.package() == Encoding::CJK &&
 			    state->open_encoding_ == CJK) {
 				os << "\\end{CJK}";
@@ -1843,7 +1841,7 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 			return make_pair(true, count + 16);
 		}
 		case Encoding::CJK: {
-			int count = inputenc_arg.length();
+			size_t count = inputenc_arg.length();
 			if (oldEnc.package() == Encoding::CJK &&
 			    state->open_encoding_ == CJK) {
 				os << "\\end{CJK}";
