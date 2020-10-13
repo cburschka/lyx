@@ -280,7 +280,7 @@ else()
             endif()
           endif()
         endif()
-        if (NOT _err AND JAVA_EXECUTABLE)
+        if (NOT _err AND format MATCHES "docbook5" AND JAVA_EXECUTABLE)
           # check with jing
           message(STATUS "Calling: ${JAVA_EXECUTABLE} -jar \"${TOP_SRC_DIR}/development/tools/jing.jar\" https://docbook.org/xml/5.2b09/rng/docbook.rng \"${WORKDIR}/${result_file_name}\"")
           execute_process(
