@@ -588,7 +588,7 @@ namespace {
 
 void addArgInsets(Paragraph const & par, string const & prefix,
                  Layout::LaTeXArgMap const & latexargs,
-				 map<size_t, InsetArgument const *> & ilist,
+                 map<size_t, InsetArgument const *> & ilist,
                  vector<string> & required)
 {
 	for (auto const & table : par.insetList()) {
