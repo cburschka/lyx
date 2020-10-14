@@ -14,12 +14,12 @@
 
 #include <config.h>
 
+#include "Cursor.h"
+
 #include "Buffer.h"
 #include "BufferView.h"
 #include "CoordCache.h"
-#include "Cursor.h"
 #include "CutAndPaste.h"
-#include "DispatchResult.h"
 #include "FuncCode.h"
 #include "FuncRequest.h"
 #include "Language.h"

@@ -20,8 +20,6 @@
 
 #include "support/debug.h"
 
-#include "insets/Inset.h"
-
 #include "mathed/InsetMath.h"
 #include "mathed/InsetMathMacro.h"
 

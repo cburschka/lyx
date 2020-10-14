@@ -24,7 +24,7 @@
 
 namespace lyx {
 
-class Inset;
+class InsetMath;
 class MathData;
 class Text;
 class Paragraph;
