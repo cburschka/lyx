@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 598
+\lyxformat 599
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -8750,12 +8750,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8768,6 +8770,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8791,6 +8794,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -12784,6 +12788,65 @@ Page
 \family default
  to insert a clear page break that assures that the next page is a right-hand
  page (odd-numbered), if necessary by adding a page.
+\change_inserted 5863208 1602706231
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 5863208 1602706295
+Suppressing Page Breaks
+\change_unchanged
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1602706382
+Page Breaks !
+\change_unchanged
+ 
+\change_inserted 5863208 1602706335
+No Page Break
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_inserted 5863208 1602706444
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1602706504
+To discourage page break at certain point you can use 
+\family sans
+Insert
+\change_unchanged
+\SpecialChar menuseparator
+
+\change_inserted 5863208 1602706512
+Formatting
+\change_unchanged
+\SpecialChar menuseparator
+
+\change_inserted 5863208 1602706556
+No Page Break
+\change_unchanged
+
+\family default
+.
+
+\change_inserted 5863208 1602707015
+ This is typically useful for paragraphs which should stay together or when
+ you want to keep close the description for tables and pictures in case
+ using floats or boxes is not appropriate.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
