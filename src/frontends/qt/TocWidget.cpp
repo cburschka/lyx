@@ -35,6 +35,7 @@
 
 #include <QHeaderView>
 #include <QMenu>
+#include <QTimer>
 
 #include <vector>
 

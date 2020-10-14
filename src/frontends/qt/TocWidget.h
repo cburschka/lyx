@@ -18,7 +18,6 @@
 #include "Cursor.h"
 #include "FuncCode.h"
 
-#include <QTimer>
 #include <QWidget>
 
 class QModelIndex;
