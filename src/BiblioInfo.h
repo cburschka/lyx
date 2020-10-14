@@ -17,7 +17,6 @@
 
 #include "support/docstring.h"
 
-#include "BufferParams.h"
 #include "Citation.h"
 
 #include <map>
@@ -28,6 +27,8 @@
 namespace lyx {
 
 class Buffer;
+class BufferParams;
+class XMLStream;
 
 /// \param latex_str a LaTeX command, "cite", "Citep*", etc
 CitationStyle citationStyleFromString(std::string const & latex_str,
