@@ -20,7 +20,6 @@
 #include "Dimension.h"
 #include "Row.h"
 
-#include <map>
 #include <vector>
 
 namespace lyx {

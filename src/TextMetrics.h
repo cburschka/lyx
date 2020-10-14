@@ -21,6 +21,8 @@
 
 #include "support/types.h"
 
+#include <map>
+
 namespace lyx {
 
 class BufferView;
