@@ -13,7 +13,6 @@
 #define DIALOGVIEW_H
 
 #include "Dialog.h"
-#include "GuiView.h"
 
 #include <QCloseEvent>
 #include <QDialog>
