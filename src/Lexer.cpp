@@ -27,6 +27,7 @@
 #include "support/types.h"
 
 #include <functional>
+#include <fstream>
 #include <istream>
 #include <stack>
 #include <vector>

@@ -31,7 +31,6 @@
 
 // standard C++ with new header file names and std:: namespace
 #include <iostream>
-#include <fstream>
 #include <zlib.h>
 
 // For LyX
