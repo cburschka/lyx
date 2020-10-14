@@ -28,6 +28,7 @@
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
+#include <algorithm>
 #include <atomic>
 #include <map>
 #include <functional>

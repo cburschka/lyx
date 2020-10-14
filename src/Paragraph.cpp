@@ -66,6 +66,7 @@
 #include "support/textutils.h"
 #include "output_docbook.h"
 
+#include <algorithm>
 #include <atomic>
 #include <sstream>
 #include <vector>

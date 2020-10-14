@@ -44,6 +44,8 @@
 #include <QLineEdit>
 #include <QMenu>
 
+#include <algorithm>
+
 using namespace std;
 using namespace lyx::support;
 
