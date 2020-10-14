@@ -14,7 +14,6 @@
 
 #include "Dialog.h"
 
-#include <QCloseEvent>
 #include <QDialog>
 
 namespace lyx {

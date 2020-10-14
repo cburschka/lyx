@@ -14,6 +14,8 @@
 #include "DialogView.h"
 #include "GuiView.h"
 
+#include <QCloseEvent>
+
 
 namespace lyx {
 namespace frontend {
