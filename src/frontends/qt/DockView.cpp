@@ -14,6 +14,8 @@
 #include "DockView.h"
 #include "GuiView.h"
 
+#include <QKeyEvent>
+
 
 namespace lyx {
 namespace frontend {

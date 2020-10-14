@@ -15,7 +15,6 @@
 #include "Dialog.h"
 
 #include <QDockWidget>
-#include <QKeyEvent>
 
 namespace lyx {
 namespace frontend {
