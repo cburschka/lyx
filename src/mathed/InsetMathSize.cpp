@@ -16,6 +16,7 @@
 #include "MathData.h"
 #include "MathParser.h"
 #include "MathStream.h"
+#include "MetricsInfo.h"
 #include "output_xhtml.h"
 
 #include "support/convert.h"

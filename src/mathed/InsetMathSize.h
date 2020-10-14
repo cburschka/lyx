@@ -13,13 +13,13 @@
 #define MATHSIZEINSET_H
 
 #include "InsetMathNest.h"
-#include "MetricsInfo.h"
 
 
 namespace lyx {
 
 
 class latexkeys;
+class MetricsInfo;
 
 /// An inset for \scriptsize etc.
 class InsetMathSize : public InsetMathNest {
