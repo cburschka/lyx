@@ -27,6 +27,7 @@
 #include "Text.h"
 #include "CutAndPaste.h"
 #include "FuncRequest.h"
+#include "GuiView.h"
 #include "Language.h"
 #include "LyX.h"
 #include "LyXRC.h"

@@ -13,7 +13,6 @@
 #define DOCK_VIEW_H
 
 #include "Dialog.h"
-#include "GuiView.h"
 
 #include <QDockWidget>
 #include <QKeyEvent>

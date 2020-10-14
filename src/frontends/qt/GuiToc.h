@@ -18,6 +18,11 @@
 #include "DockView.h"
 
 namespace lyx {
+
+class Cursor;
+class DispatchResult;
+class FuncStatus;
+
 namespace frontend {
 
 class TocWidget;

@@ -21,6 +21,7 @@
 #include "BufferView.h"
 #include "Cursor.h"
 #include "Format.h"
+#include "GuiView.h"
 #include "FuncRequest.h"
 #include "LyX.h"
 #include "Paragraph.h"

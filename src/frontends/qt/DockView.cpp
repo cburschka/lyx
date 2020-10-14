@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include "DockView.h"
+#include "GuiView.h"
 
 
 namespace lyx {
