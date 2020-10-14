@@ -20,14 +20,11 @@
 #include "TextMetrics.h"
 
 #include "Buffer.h"
-#include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "CoordCache.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
-#include "InsetList.h"
-#include "Language.h"
 #include "Layout.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
@@ -42,7 +39,6 @@
 #include "mathed/InsetMathMacroTemplate.h"
 
 #include "frontends/FontMetrics.h"
-#include "frontends/Painter.h"
 #include "frontends/NullPainter.h"
 
 #include "support/convert.h"
