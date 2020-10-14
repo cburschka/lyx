@@ -15,6 +15,7 @@
 
 #include "Language.h"
 
+#include "BufferParams.h"
 #include "Encoding.h"
 #include "LaTeXFonts.h"
 #include "Lexer.h"

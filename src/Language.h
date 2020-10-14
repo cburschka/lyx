@@ -15,8 +15,6 @@
 #ifndef LANGUAGE_H
 #define LANGUAGE_H
 
-#include "BufferParams.h"
-
 #include "support/docstring.h"
 #include "support/trivstring.h"
 
@@ -29,6 +27,7 @@ namespace lyx {
 
 namespace support { class FileName; }
 
+class BufferParams;
 class Encoding;
 class Lexer;
 
