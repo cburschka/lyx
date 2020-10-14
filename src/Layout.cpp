@@ -20,6 +20,7 @@
 #include "TextClass.h"
 
 #include "support/debug.h"
+#include "support/docstream.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/Messages.h"

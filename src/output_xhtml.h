@@ -14,7 +14,6 @@
 
 #include "LayoutEnums.h"
 
-#include "support/docstream.h"
 #include "support/strfwd.h"
 #include "xml.h"
 
