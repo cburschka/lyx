@@ -24,7 +24,6 @@ namespace lyx {
 class Buffer;
 class BufferParams;
 class Encoding;
-class Layout;
 class Paragraph;
 class OutputParams;
 class Text;

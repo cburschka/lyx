@@ -19,8 +19,6 @@
 #include "Font.h"
 #include "InsetList.h"
 #include "Language.h"
-#include "LaTeXFeatures.h"
-#include "Layout.h"
 #include "LyXRC.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
