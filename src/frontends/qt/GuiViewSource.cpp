@@ -41,6 +41,7 @@
 #include <QSettings>
 #include <QTextCursor>
 #include <QTextDocument>
+#include <QTimer>
 #include <QVariant>
 
 using namespace std;

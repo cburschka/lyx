@@ -21,7 +21,6 @@
 
 #include <QDockWidget>
 #include <QString>
-#include <QTimer>
 
 
 class QTextDocument;
