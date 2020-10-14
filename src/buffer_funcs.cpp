@@ -15,31 +15,9 @@
 #include "buffer_funcs.h"
 #include "Buffer.h"
 #include "BufferList.h"
-#include "BufferParams.h"
-#include "DocIterator.h"
-#include "Counters.h"
-#include "ErrorList.h"
-#include "Floating.h"
-#include "FloatList.h"
-#include "InsetList.h"
-#include "Language.h"
-#include "LaTeX.h"
-#include "Layout.h"
-#include "LyX.h"
 #include "LyXVC.h"
-#include "TextClass.h"
-#include "Paragraph.h"
-#include "ParagraphList.h"
-#include "ParagraphParameters.h"
-#include "ParIterator.h"
-#include "TexRow.h"
-#include "Text.h"
-#include "TocBackend.h"
 
 #include "frontends/alert.h"
-
-#include "insets/InsetBibitem.h"
-#include "insets/InsetInclude.h"
 
 #include "support/lassert.h"
 #include "support/convert.h"
@@ -48,7 +26,6 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/mutex.h"
-#include "support/textutils.h"
 
 using namespace std;
 using namespace lyx::support;
