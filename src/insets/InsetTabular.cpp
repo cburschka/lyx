@@ -22,6 +22,7 @@
 
 #include "InsetTabular.h"
 
+#include "Author.h"
 #include "buffer_funcs.h"
 #include "Buffer.h"
 #include "BufferParams.h"

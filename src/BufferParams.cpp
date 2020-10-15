@@ -28,6 +28,7 @@
 #include "ColorSet.h"
 #include "Converter.h"
 #include "Encoding.h"
+#include "Format.h"
 #include "IndicesList.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"

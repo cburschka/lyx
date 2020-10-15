@@ -15,6 +15,7 @@
 
 #include "CutAndPaste.h"
 
+#include "Author.h"
 #include "BranchList.h"
 #include "Buffer.h"
 #include "buffer_funcs.h"

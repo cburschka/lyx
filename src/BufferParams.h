@@ -15,10 +15,8 @@
 #ifndef BUFFERPARAMS_H
 #define BUFFERPARAMS_H
 
-#include "Author.h"
 #include "Citation.h"
 #include "DocumentClassPtr.h"
-#include "Format.h"
 #include "LayoutModuleList.h"
 #include "OutputParams.h"
 #include "paper.h"
@@ -34,11 +32,14 @@ namespace lyx {
 
 namespace support { class FileName; }
 
+class Author;
+class AuthorList;
 class BranchList;
 class Bullet;
 class DocumentClass;
 class Encoding;
 class Font;
+class Format;
 class IndicesList;
 class Language;
 class LayoutFile;
