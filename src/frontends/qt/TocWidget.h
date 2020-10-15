@@ -15,15 +15,22 @@
 
 #include "ui_TocUi.h"
 
-#include "Cursor.h"
-#include "FuncCode.h"
+#include "FuncRequest.h"
 
+#include <QString>
 #include <QWidget>
 
 class QModelIndex;
-class QString;
+class QPoint;
+class QTimer;
 
 namespace lyx {
+
+class Cursor;
+class DispatchResult;
+class FuncStatus;
+class Inset;
+
 namespace frontend {
 
 class GuiView;
