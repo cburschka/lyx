@@ -18,6 +18,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "Cursor.h"
 #include "CutAndPaste.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"

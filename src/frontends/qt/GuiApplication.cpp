@@ -37,6 +37,7 @@
 #include "CmdDef.h"
 #include "Color.h"
 #include "Converter.h"
+#include "Cursor.h"
 #include "CutAndPaste.h"
 #include "ErrorList.h"
 #include "Font.h"

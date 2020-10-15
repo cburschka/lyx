@@ -27,6 +27,7 @@
 #include "ConverterCache.h"
 #include "Converter.h"
 #include "CutAndPaste.h"
+#include "DispatchResult.h"
 #include "EnchantChecker.h"
 #include "Encoding.h"
 #include "ErrorList.h"

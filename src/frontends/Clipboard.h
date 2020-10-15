@@ -14,11 +14,12 @@
 #ifndef BASE_CLIPBOARD_H
 #define BASE_CLIPBOARD_H
 
-#include "Cursor.h"
-
 #include "support/strfwd.h"
 
 namespace lyx {
+
+class Cursor;
+
 namespace frontend {
 
 /**

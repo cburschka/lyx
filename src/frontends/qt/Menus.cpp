@@ -31,6 +31,7 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Converter.h"
+#include "Cursor.h"
 #include "CutAndPaste.h"
 #include "Floating.h"
 #include "FloatList.h"

@@ -18,6 +18,8 @@
 
 #include "support/docstring.h"
 
+#include "insets/Inset.h"
+
 #include "frontends/Clipboard.h"
 
 #include <vector>
@@ -28,6 +30,8 @@ namespace lyx {
 class ErrorList;
 class InsetText;
 class Cursor;
+class CursorData;
+class CursorSlice;
 class ParagraphList;
 
 namespace cap {

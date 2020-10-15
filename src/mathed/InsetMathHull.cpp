@@ -26,6 +26,7 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "ColorSet.h"
+#include "Cursor.h"
 #include "CutAndPaste.h"
 #include "Encoding.h"
 #include "Exporter.h"
