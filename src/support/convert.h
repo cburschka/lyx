@@ -36,13 +36,14 @@ template<> docstring convert<docstring>(unsigned long ul);
 #ifdef HAVE_LONG_LONG_INT
 template<> std::string convert<std::string>(unsigned long long ull);
 template<> docstring convert<docstring>(unsigned long long ull);
+template<> std::string convert<std::string>(long long ll);
+template<> docstring convert<docstring>(long long ll);
+template<> unsigned long long convert<unsigned long long>(std::string const & s);
+// not presently needed
+// template<> long long convert<long long>(std::string const & s);
 #endif
 template<> std::string convert<std::string>(long l);
 template<> docstring convert<docstring>(long l);
-#ifdef HAVE_LONG_LONG_INT
-template<> std::string convert<std::string>(long long ll);
-template<> docstring convert<docstring>(long long ll);
-#endif
 template<> std::string convert<std::string>(float f);
 template<> std::string convert<std::string>(double d);
 template<> int convert<int>(std::string const & s);

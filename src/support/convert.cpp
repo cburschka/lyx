@@ -118,6 +118,36 @@ docstring convert<docstring>(unsigned long long ull)
 {
 	return from_ascii(lexical_cast<string>(ull));
 }
+
+
+template<>
+string convert<string>(long long ll)
+{
+	return lexical_cast<string>(ll);
+}
+
+
+template<>
+docstring convert<docstring>(long long ll)
+{
+	return from_ascii(lexical_cast<string>(ll));
+}
+
+
+template<>
+unsigned long long convert<unsigned long long>(string const s)
+{
+	return strtoull(s.c_str(), nullptr, 10);
+}
+
+
+/* not presently needed
+template<>
+long long convert<long long>(string const s)
+{
+	return strtoll(s.c_str(), nullptr, 10);
+}
+*/
 #endif
 
 
@@ -133,22 +163,6 @@ docstring convert<docstring>(long l)
 {
 	return from_ascii(lexical_cast<string>(l));
 }
-
-
-#ifdef HAVE_LONG_LONG_INT
-template<>
-string convert<string>(long long ll)
-{
-	return lexical_cast<string>(ll);
-}
-
-
-template<>
-docstring convert<docstring>(long long ll)
-{
-	return from_ascii(lexical_cast<string>(ll));
-}
-#endif
 
 
 template<>
