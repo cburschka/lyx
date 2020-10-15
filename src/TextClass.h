@@ -553,9 +553,9 @@ public:
 	/// The maximum number of citations before "et al."
 	size_t max_citenames() const { return maxcitenames_; }
 	///
-	bool const & fullAuthorList() const { return cite_full_author_list_; }
+	bool fullAuthorList() const { return cite_full_author_list_; }
 	///
-	bool const & bibInToc() const { return bibintoc_; }
+	bool bibInToc() const { return bibintoc_; }
 protected:
 	/// Constructs a DocumentClass based upon a LayoutFile.
 	DocumentClass(LayoutFile const & tc);

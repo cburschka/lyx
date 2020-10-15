@@ -567,7 +567,7 @@ AuthorList const & BufferParams::authors() const
 }
 
 
-void BufferParams::addAuthor(Author a)
+void BufferParams::addAuthor(Author const & a)
 {
 	author_map_[a.bufferId()] = pimpl_->authorlist.record(a);
 }
@@ -3509,7 +3509,7 @@ string const & BufferParams::defaultBiblioStyle() const
 }
 
 
-bool const & BufferParams::fullAuthorList() const
+bool BufferParams::fullAuthorList() const
 {
 	return documentClass().fullAuthorList();
 }

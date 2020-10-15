@@ -446,7 +446,7 @@ public:
 	/// the author list for the document
 	AuthorList & authors();
 	AuthorList const & authors() const;
-	void addAuthor(Author a);
+	void addAuthor(Author const & a);
 
 	/// map of the file's author IDs to AuthorList indexes
 	typedef std::map<int, int> AuthorMap;
@@ -513,7 +513,7 @@ public:
 	/// Get the default BibTeX style file from the TextClass
 	std::string const & defaultBiblioStyle() const;
 	/// whether the BibTeX style supports full author lists
-	bool const & fullAuthorList() const;
+	bool fullAuthorList() const;
 	/// Check if a citation style is an alias to another style
 	std::string getCiteAlias(std::string const & s) const;
 
