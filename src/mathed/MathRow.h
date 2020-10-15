@@ -26,11 +26,10 @@ namespace lyx {
 
 class BufferView;
 class Dimension;
+class MathData;
 class MetricsInfo;
 class PainterInfo;
 
-class InsetMath;
-class MathData;
 
 /*
  * While for editing purpose it is important that macros are counted

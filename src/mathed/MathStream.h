@@ -25,7 +25,6 @@
 namespace lyx {
 
 class Encoding;
-class InsetMath;
 class MathAtom;
 class MathData;
 
