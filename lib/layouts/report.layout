@@ -6,9 +6,14 @@
 # Transposed by Pascal André <andre@via.ecp.fr>
 # Heavily modifed and enhanced by serveral developers.
 
-Format 84
+Format 85
 Input stdclass.inc
 Input numreport.inc
+
+# Reports are allowed to have chapters, which implies that this must be 
+# a DocBook book.
+DocBookRoot		      book
+DocBookForceAbstract  true
 
 Style Bibliography
 	TopSep                4
