@@ -922,7 +922,7 @@ void outputDocBookInfo(
 
 	// If there is no title, generate one (required for the document to be valid).
 	// This code is called for the main document, for table cells, etc., so be precise in this condition.
-	if (text.isMainText() && info.mustBeInInfo.empty()) {
+	if (text.isMainText() && info.shouldBeInInfo.empty()) {
 		xs << xml::StartTag("title");
 		xs << "Untitled Document";
 		xs << xml::EndTag("title");
