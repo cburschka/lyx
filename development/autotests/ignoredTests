@@ -215,8 +215,18 @@ check_load/export/xhtml/.*
 lyx2lyx/export/xhtml/.*
 export/export/xhtml/.*(lyx..|dvi.*|pdf.*)
 
-# DOCBOOK
+# DocBook
 # not expected to successful compile 
 check_load/export/docbook/.*
 lyx2lyx/export/docbook/.*
 export/export/docbook/.*(lyx..|dvi.*|pdf.*)
+# Posters cannot be properly exported, the LyX documents are too far from
+# DocBook expectations (but should have XML-valid output).
+export/export/docbook/A0_Poster_Simple_docbook5
+export/export/docbook/SciPoster_docbook5
+export/examples/Posters/Beamerposter_docbook5
+export/templates/Posters/.*_docbook5
+# Beamer is not yet implemented.
+export/examples/Presentations/.*_docbook5
+# Specific things that are not expected to work.
+export/export/MissingEndLayoutBetweenTables_docbook5 # Uses a book class, but has no chapters (forbidden in DocBook).
