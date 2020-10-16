@@ -230,3 +230,5 @@ export/templates/Posters/.*_docbook5
 export/examples/Presentations/.*_docbook5
 # Specific things that are not expected to work.
 export/export/MissingEndLayoutBetweenTables_docbook5 # Uses a book class, but has no chapters (forbidden in DocBook).
+export/export/docbook/bibliography_precooked_aastex_docbook5 # The AASTeX template is too complex for automatic
+# conversion to work reliably.
