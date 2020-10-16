@@ -2,7 +2,7 @@
 # Author: Jacob Bishop <bishop.jacob@gmail.com> based on the apa 
 # layout written by Randy Gobbel.
 
-Format 84
+Format 85
 Columns                 1
 Sides                   1
 PageStyle               Headers
@@ -31,6 +31,7 @@ Style Standard
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
+	DocBookTag            para
 End
 
 
@@ -44,6 +45,9 @@ Style Title
 	EndFont
 	Align                 Center
 	HTMLTitle             true
+	DocBookTag            title
+	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 End
 
 
@@ -67,6 +71,9 @@ Style ShortTitle
 	  Size                Small
 	  Shape               Up
 	EndFont
+	DocBookTag            titleabbrev
+	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 End
 
 
@@ -83,6 +90,11 @@ Style Author
 	  Shape               Italic
 	  Size                Small
 	EndFont
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType inline
+	DocBookInInfo         always
 End
 
 
@@ -164,6 +176,12 @@ Style Affiliation
 	  Series              Bold
 	  Size                Small
 	EndFont
+	DocBookTag                        affiliation
+	DocBookWrapperTag                 author
+	DocBookWrapperMergeWithPrevious   true
+	DocBookItemTag                    orgname
+	DocBookItemTagType                paragraph
+	DocBookInInfo                     always
 End
 
 Style TwoAffiliations
@@ -244,6 +262,11 @@ Style Abstract
 	  Series              Bold
 	  Size                Small
 	EndFont
+	DocBookAbstract       true
+	DocBookInInfo         always
+	DocBookWrapperTag     abstract
+	DocBookWrapperMergeWithPrevious    true
+	DocBookTag            para
 End
 
 Style Keywords
@@ -268,6 +291,10 @@ Style Keywords
 	  Size                Small
 	  Shape               Italic
 	EndFont
+	DocBookTag          keyword
+	DocBookTagType      paragraph
+	DocBookWrapperTag   keywordset
+	DocBookInInfo       always
 End
 
 Style AuthorNote
@@ -295,6 +322,8 @@ Style AuthorNote
 	  Series              Bold
 	  Size                Small
 	EndFont
+	DocBookTag            para
+	DocBookWrapperTag     acknowledgements
 End
 
 
