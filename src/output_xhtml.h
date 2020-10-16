@@ -17,9 +17,6 @@
 #include "support/strfwd.h"
 #include "xml.h"
 
-#include <deque>
-#include <memory>
-
 
 namespace lyx {
 
