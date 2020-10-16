@@ -989,7 +989,7 @@ if(WIN32)
 		# -DPSAPI_VERSION=1 is not needed for mingw, since the mingw psapi.h
 		# does not use it and always declares the vista compatible API.
 		# If this ever changes then -DPSAPI_VERSION might be needed here as well.
-		add_definitions(-DWINVER=0x0600)
+		add_definitions(-DWINVER=0x0500)
 	endif()
 endif()
 
