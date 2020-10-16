@@ -228,8 +228,8 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 				    OutputParams const & runparams,
 				    Font const & base,
 				    Font const & prev,
-				    bool const & non_inherit_inset,
-				    bool const & needs_cprotection) const
+				    bool non_inherit_inset,
+				    bool needs_cprotection) const
 {
 	int count = 0;
 
@@ -522,7 +522,7 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 				  Font const & base,
 				  Font const & next,
 				  bool & needPar,
-				  bool const & closeLanguage) const
+				  bool closeLanguage) const
 {
 	int count = 0;
 

@@ -3410,7 +3410,7 @@ docstring const & BufferView::inlineCompletion() const
 }
 
 
-size_t const & BufferView::inlineCompletionUniqueChars() const
+size_t BufferView::inlineCompletionUniqueChars() const
 {
 	return d->inlineCompletionUniqueChars_;
 }

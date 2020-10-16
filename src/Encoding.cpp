@@ -643,7 +643,7 @@ Encodings::fromLyXName(string const & name, bool allowUnsafe) const
 
 
 Encoding const *
-Encodings::fromLaTeXName(string const & n, int const & p, bool allowUnsafe) const
+Encodings::fromLaTeXName(string const & n, int p, bool allowUnsafe) const
 {
 	string name = n;
 	// FIXME: if we have to test for too many of these synonyms,
@@ -666,7 +666,7 @@ Encodings::fromLaTeXName(string const & n, int const & p, bool allowUnsafe) cons
 
 
 Encoding const *
-Encodings::fromIconvName(string const & n, int const & p, bool allowUnsafe) const
+Encodings::fromIconvName(string const & n, int p, bool allowUnsafe) const
 {
 	EncodingList::const_iterator const end = encodinglist.end();
 	for (EncodingList::const_iterator it = encodinglist.begin(); it != end; ++it)

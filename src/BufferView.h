@@ -219,7 +219,7 @@ public:
 	/// return the inline completion postfix.
 	docstring const & inlineCompletion() const;
 	/// return the number of unique characters in the inline completion.
-	size_t const & inlineCompletionUniqueChars() const;
+	size_t inlineCompletionUniqueChars() const;
 	/// return the position in the buffer of the inline completion postfix.
 	DocIterator const & inlineCompletionPos() const;
 	/// make sure inline completion position is OK

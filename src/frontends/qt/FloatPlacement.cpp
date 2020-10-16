@@ -89,7 +89,7 @@ void FloatPlacement::useSideways()
 }
 
 
-bool FloatPlacement::possiblePlacement(char const & p) const
+bool FloatPlacement::possiblePlacement(char p) const
 {
 	return !spanCB->isVisible() || contains(allowed_placement_, p);
 }

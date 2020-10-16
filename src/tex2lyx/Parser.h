@@ -187,7 +187,7 @@ public:
 
 	/// change the encoding of the input stream according to \p encoding
 	/// (latex name) and package \p package
-	bool setEncoding(std::string const & encoding, int const & package);
+	bool setEncoding(std::string const & encoding, int package);
 	/// change the encoding of the input stream to \p encoding (iconv name)
 	bool setEncoding(std::string const & encoding);
 	/// get the current iconv encoding of the input stream

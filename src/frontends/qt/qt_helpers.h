@@ -61,7 +61,7 @@ double widgetToDouble(QLineEdit const * input);
 /// method to get a double value from a localized widget (QLineEdit)
 std::string widgetToDoubleStr(QLineEdit const * input);
 /// method to set a (localized) double value in a widget (QLineEdit)
-void doubleToWidget(QLineEdit * input, double const & value,
+void doubleToWidget(QLineEdit * input, double value,
 	char f = 'g', int prec = 6);
 /// method to set a (localized) double value in a widget (QLineEdit)
 void doubleToWidget(QLineEdit * input, std::string const & value,

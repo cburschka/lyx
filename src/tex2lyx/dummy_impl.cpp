@@ -38,8 +38,7 @@ namespace lyx {
 
 namespace frontend {
 namespace Alert {
-	void warning(docstring const & title, docstring const & message,
-				 bool const &)
+	void warning(docstring const & title, docstring const & message, bool)
 	{
 		cerr << to_utf8(title) << "\n" << to_utf8(message) << endl;
 	}

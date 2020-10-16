@@ -255,10 +255,10 @@ public:
 	fromLyXName(std::string const & name, bool allowUnsafe = false) const;
 	/// Get encoding from LaTeX name \p name and package \p package
 	Encoding const * fromLaTeXName(std::string const & name,
-		int const & package = Encoding::any, bool allowUnsafe = false) const;
+		int package = Encoding::any, bool allowUnsafe = false) const;
 	/// Get encoding from iconv name \p name and package \p package
 	Encoding const * fromIconvName(std::string const & name,
-		int const & package = Encoding::any, bool allowUnsafe = false) const;
+		int package = Encoding::any, bool allowUnsafe = false) const;
 
 	///
 	const_iterator begin() const { return encodinglist.begin(); }

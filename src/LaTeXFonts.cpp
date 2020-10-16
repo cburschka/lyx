@@ -292,8 +292,7 @@ string const LaTeXFont::getPackageOptions(bool ot1, bool complete, bool sc, bool
 
 
 string const LaTeXFont::getLaTeXCode(bool dryrun, bool ot1, bool complete, bool sc,
-				     bool osf, bool nomath, string const & extraopts,
-				     int const & scale)
+				     bool osf, bool nomath, string const & extraopts, int scale)
 {
 	ostringstream os;
 

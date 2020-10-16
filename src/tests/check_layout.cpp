@@ -20,7 +20,7 @@ using namespace std;
 namespace lyx {
 namespace frontend {
 namespace Alert {
-void warning(docstring const & title, docstring const & message, bool const &)
+void warning(docstring const & title, docstring const & message, bool)
 {
 	LYXERR0(title);
 	LYXERR0(message);

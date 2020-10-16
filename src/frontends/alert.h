@@ -45,7 +45,7 @@ int prompt(docstring const & title, docstring const & question,
  * The console output takes care of converting any Qt html to plain text.
  */
 void warning(docstring const & title, docstring const & message,
-	     bool const & askshowagain = false);
+	     bool askshowagain = false);
 
 /**
  * Display a warning to the user. Title should be a short (general) summary.

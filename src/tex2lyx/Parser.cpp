@@ -196,7 +196,7 @@ void Parser::deparse()
 }
 
 
-bool Parser::setEncoding(std::string const & e, int const & p)
+bool Parser::setEncoding(std::string const & e, int p)
 {
 	// We may (and need to) use unsafe encodings here: Since the text is
 	// converted to unicode while reading from is_, we never see text in

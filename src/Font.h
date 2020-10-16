@@ -76,8 +76,8 @@ public:
 				   OutputParams const & runparams,
 				   Font const & base,
 				   Font const & prev,
-				   bool const & non_inherit_inset = false,
-				   bool const & needs_cprotection = false) const;
+				   bool non_inherit_inset = false,
+				   bool needs_cprotection = false) const;
 
 	/** Writes the tail of the LaTeX needed to change to this font.
 	    Returns number of chars written. Base is the font state we want
@@ -88,7 +88,7 @@ public:
 				 Font const & base,
 				 Font const & next,
 				 bool & needPar,
-				 bool const & closeLanguage = true) const;
+				 bool closeLanguage = true) const;
 
 
 	/// Build GUI description of font state

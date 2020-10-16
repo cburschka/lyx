@@ -150,7 +150,7 @@ int prompt(docstring const & title, docstring const & question,
 }
 
 void doWarning(docstring const & title, docstring const & message,
-	     bool const & askshowagain)
+	     bool askshowagain)
 {
 	lyxerr << "Warning: " << toPlainText(title) << '\n'
 	       << "----------------------------------------\n"
@@ -190,7 +190,7 @@ void doWarning(docstring const & title, docstring const & message,
 }
 
 void warning(docstring const & title, docstring const & message,
-	     bool const & askshowagain)
+	     bool askshowagain)
 {
 #ifdef EXPORT_in_THREAD
 	InGuiThread<void>().call(&doWarning,

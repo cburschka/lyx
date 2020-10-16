@@ -90,7 +90,7 @@ public:
 	std::string const getLaTeXCode(bool dryrun, bool ot1, bool complete,
 				       bool sc, bool osf, bool nomath,
 				       std::string const & extraopts = std::string(),
-				       int const & scale = 100);
+				       int scale = 100);
 	/// Return the actually used font
 	docstring const getUsedFont(bool ot1, bool complete, bool nomath, bool osf);
 	/// Return the actually used package

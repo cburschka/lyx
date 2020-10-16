@@ -490,7 +490,7 @@ public:
 	///
 	docstring const & htmlstyles() const { return htmlstyles_; }
 	///
-	bool const & docbookforceabstract() const { return docbookforceabstract_; }
+	bool docbookforceabstract() const { return docbookforceabstract_; }
 	///
 	std::string const & docbookroot() const { return docbookroot_; }
 	/// Looks for the layout of "highest level", other than Part (or other

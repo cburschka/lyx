@@ -65,7 +65,7 @@ private:
 	///
 	void initFloatPlacementCO(bool const);
 	///
-	bool possiblePlacement(char const & p) const;
+	bool possiblePlacement(char p) const;
 
 	/// one of figure or table?
 	bool standardfloat_;
