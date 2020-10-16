@@ -30,6 +30,7 @@
 #include "insets/InsetNote.h"
 
 #include "support/lassert.h"
+#include "support/textutils.h"
 
 #include <stack>
 #include <iostream>
@@ -896,7 +897,7 @@ void outputDocBookInfo(
 		// even though they must be properly output if there is some abstract.
 		abstract = os2.str();
 		docstring cleaned = abstract;
-		cleaned.erase(std::remove_if(cleaned.begin(), cleaned.end(), ::isspace), cleaned.end());
+		cleaned.erase(std::remove_if(cleaned.begin(), cleaned.end(), lyx::isSpace), cleaned.end());
 
 		// Nothing? Then there is no abstract!
 		if (cleaned.empty())
