@@ -1959,8 +1959,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// "auto_region_delete", which defaults to
 		// true (on).
 
-		if (lyxrc.auto_region_delete && cur.selection())
+		if (lyxrc.auto_region_delete && cur.selection()) {
 			cutSelection(cur, false);
+			cur.setCurrentFont();
+		}
 		cur.clearSelection();
 
 		for (char_type c : cmd.argument())
