@@ -169,11 +169,7 @@ macro(maketestname testname inverted listinverted listignored listunreliable lis
     string(REGEX MATCH "(^check_load|_(systemF|texF|pdf3|pdf2|pdf|dvi|lyx[0-9][0-9]|xhtml)$)" _v ${${testname}})
     # check if test _may_ be in listinverted
     set(sublabel2 "")
-    if (_v)
-      findexpr(mfound ${testname} ${listinvertedx} sublabel2)
-    else()
-      set(mfound OFF)
-    endif()
+    findexpr(mfound ${testname} ${listinvertedx} sublabel2)
     if (mfound)
       set(sublabel3 "")
       findexpr(foundsuspended ${testname} ${listsuspendedx} sublabel3)

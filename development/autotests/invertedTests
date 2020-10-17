@@ -385,11 +385,7 @@ export/doc/ru/Math_(dvi3|pdf[45])_systemF
 # ================================================
 # DocBook
 
-# not expected to successful compile
-check_load/export/docbook/.*
-lyx2lyx/export/docbook/.*
-export/export/docbook/.*(lyx..|dvi.*|pdf.*)
-
+Sublabel: docbook
 # Posters cannot be properly exported, the LyX documents are too far from
 # DocBook expectations (but should have XML-valid output).
 export/export/docbook/A0_Poster_Simple_docbook5
@@ -397,11 +393,13 @@ export/export/docbook/SciPoster_docbook5
 export/examples/Posters/Beamerposter_docbook5
 export/templates/Posters/.*_docbook5
 
+Sublabel: docbook implementation
 # Beamer is not yet implemented.
 export/examples/Presentations/.*_docbook5
 export/templates/.*/Presentations/Beamer_docbook5
 export/templates/Presentations/.*_docbook5
 
+Sublabel: docbook chapter
 # Specific things that are not expected to work.
 # - Uses a book class, but has no chapters (forbidden in DocBook).
 export/export/MissingEndLayoutBetweenTables_docbook5
