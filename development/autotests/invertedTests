@@ -403,5 +403,10 @@ Sublabel: docbook chapter
 # Specific things that are not expected to work.
 # - Uses a book class, but has no chapters (forbidden in DocBook).
 export/export/MissingEndLayoutBetweenTables_docbook5
+export/doc/DummyDocument.*_docbook5
+export/doc/de/DummyDocument.*_docbook5
+export/doc/es/DocumentoPostizo.*_docbook5
+export/doc/fr/DocumentBidon.*_docbook5
+export/doc/ja/DummyDocument.*_docbook5
 # - The AASTeX template is too complex for automatic conversion to work reliably.
 export/export/docbook/bibliography_precooked_aastex_docbook5
