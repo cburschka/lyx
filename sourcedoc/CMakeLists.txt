@@ -9,7 +9,7 @@ project(doxydoc)
 
 find_program(DOXYGEN_EXECUTABLE doxygen)
 if(DOXYGEN_EXECUTABLE MATCHES "-NOTFOUND")
-  message(STATUS "doxygen not found, ==> no doxygen creation")
+  message(STATUS "doxygen not found ==> no doxygen creation")
 else()
   set(VERSION ${PACKAGE_VERSION})
   set(top_srcdir "${TOP_SRC_DIR}")
