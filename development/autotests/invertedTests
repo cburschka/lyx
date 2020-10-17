@@ -83,7 +83,7 @@ export/examples/ja/Graphics_and_Insets/XY-Pic.*_systemF
 export/.*/fa/Welcome_(dvi3|pdf5)_systemF
 export/.*/fa/Welcome_(dvi3|pdf5)_systemF
 
-# Bug (in LyX or LaTeX?): 
+# Bug (in LyX or LaTeX?):
 # If a language change happens in an environment, LyX does not write an
 # explicit \inputencoding{<new-default>} when switching back to the "outer"
 # language. However, without explicit \inputencoding, the input encoding
@@ -381,3 +381,29 @@ Sublabel: varioref
 export/doc/ru/UserGuide_(dvi3|pdf[45])_(system|tex)F
 export/doc/ru/Math_(dvi3|pdf[45])_systemF
 
+
+# ================================================
+# DocBook
+
+# not expected to successful compile
+check_load/export/docbook/.*
+lyx2lyx/export/docbook/.*
+export/export/docbook/.*(lyx..|dvi.*|pdf.*)
+
+# Posters cannot be properly exported, the LyX documents are too far from
+# DocBook expectations (but should have XML-valid output).
+export/export/docbook/A0_Poster_Simple_docbook5
+export/export/docbook/SciPoster_docbook5
+export/examples/Posters/Beamerposter_docbook5
+export/templates/Posters/.*_docbook5
+
+# Beamer is not yet implemented.
+export/examples/Presentations/.*_docbook5
+export/templates/.*/Presentations/Beamer_docbook5
+export/templates/Presentations/.*_docbook5
+
+# Specific things that are not expected to work.
+# - Uses a book class, but has no chapters (forbidden in DocBook).
+export/export/MissingEndLayoutBetweenTables_docbook5
+# - The AASTeX template is too complex for automatic conversion to work reliably.
+export/export/docbook/bibliography_precooked_aastex_docbook5
