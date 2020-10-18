@@ -92,6 +92,9 @@ export/.*/fa/Welcome_(dvi3|pdf5)_systemF
 export/export/latex/languages/nested-inputenc_auto-legacy_pdf2
 
 
+# - This test is usually inverted, but it works with the DocBook backend.
+!export/export/latex/lyxbugs/3059-language-in-tables_docbook5
+
 # ================================================
 Sublabel: lyxbugs
 # LyX bugs with a Trac number or 'wontfix' ML thread.
@@ -395,8 +398,6 @@ export/doc/fr/DocumentBidon.*_docbook5
 export/doc/ja/DummyDocument.*_docbook5
 # - The AASTeX template is too complex for automatic conversion to work reliably.
 export/export/docbook/bibliography_precooked_aastex_docbook5
-# - This test is usually inverted, but it works with the DocBook backend.
-!export/export/latex/lyxbugs/3059-language-in-tables_docbook5
 
 Sublabel: docbook poster
 # Posters cannot be properly exported, the LyX documents are too far from
