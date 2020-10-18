@@ -473,6 +473,10 @@ void makeParagraph(
 	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
 		return inset.inset->lyxCode() == BOX_CODE;
 	});
+	// Includes should not have a paragraph.
+	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
+		return inset.inset->lyxCode() == INCLUDE_CODE;
+	});
 
 	bool const open_par = runparams.docbook_make_pars
 						  && !runparams.docbook_in_par
@@ -922,7 +926,7 @@ void outputDocBookInfo(
 
 	// If there is no title, generate one (required for the document to be valid).
 	// This code is called for the main document, for table cells, etc., so be precise in this condition.
-	if (text.isMainText() && info.shouldBeInInfo.empty()) {
+	if (text.isMainText() && info.shouldBeInInfo.empty() && !runparams.inInclude) {
 		xs << xml::StartTag("title");
 		xs << "Untitled Document";
 		xs << xml::EndTag("title");

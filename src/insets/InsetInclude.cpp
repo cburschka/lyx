@@ -1102,6 +1102,7 @@ void InsetInclude::docbook(XMLStream & xs, OutputParams const & rp) const
 	if (all_pars) {
 		op.par_begin = 0;
 		op.par_end = 0;
+		op.inInclude = true;
 		ibuf->writeDocBookSource(xs.os(), op, Buffer::IncludedFile);
 	} else {
 		xs << XMLStream::ESCAPE_NONE << "<!-- Included file: ";

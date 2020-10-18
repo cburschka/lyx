@@ -260,6 +260,10 @@ public:
 	 */
 	bool inComment;
 
+	/** Whether we are inside an include inset. 
+	 */
+	bool inInclude;
+
 	/** Whether a btUnit (for multiple biblographies) is open.
 	 */
 	mutable bool openbtUnit;
