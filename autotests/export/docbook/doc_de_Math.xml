@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This DocBook file was created by LyX 2.4.0dev
+  See http://www.lyx.org/ for more information -->
+<article xml:lang="de_DE" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
+<title>LyX' detailliertes Mathe Handbuch</title>
+<section>
+<title>Grundlegende Funktionen</title>
+<section>
+<title>Fortsetzungspunkte</title>
+<para>Z.&#x2009;B. ergibt der Befehl <emphasis role='bold'>A\dotfill&#x2423;B</emphasis></para>
+<para><inlineequation>
+<alt role='tex'>A\dotfill B</alt>
+<mathphrase>MathML export failed. Please report this as a bug.</mathphrase>
+</inlineequation></para>
+<para>Analog dazu gibt es für eine Linie den Befehl <emphasis role='bold'>\hrulefill</emphasis><indexterm><primary>Befehle</primary><secondary>H</secondary><tertiary>\textbackslash hrulefill</tertiary></indexterm>:</para>
+<para><inlineequation>
+<alt role='tex'>A\hrulefill B</alt>
+<mathphrase>MathML export failed. Please report this as a bug.</mathphrase>
+</inlineequation></para>
+<para>Um die Befehle für Text zu verwenden, müssen sie im TeX-Modus eingegeben werden.</para>
+</section>
+</section>
+</article>

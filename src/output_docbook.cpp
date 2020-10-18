@@ -27,6 +27,7 @@
 #include "insets/InsetBibtex.h"
 #include "insets/InsetBibitem.h"
 #include "insets/InsetLabel.h"
+#include "mathed/InsetMath.h"
 #include "insets/InsetNote.h"
 
 #include "support/lassert.h"
@@ -447,8 +448,9 @@ void makeParagraph(
 	// Plain layouts must be ignored.
 	special_case |= buf.params().documentClass().isPlainLayout(par->layout()) && !runparams.docbook_force_pars;
 	// Equations do not deserve their own paragraph (DocBook allows them outside paragraphs).
+	// Exception: any case that generates an <inlineequation> must still get a paragraph to be valid.
 	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
-		return inset.inset && inset.inset->asInsetMath();
+		return inset.inset && inset.inset->asInsetMath() && inset.inset->asInsetMath()->getType() != hullSimple;
 	});
 
 	// TODO: Could get rid of this with a DocBook equivalent to htmlisblock? Not for all cases, unfortunately... See above for those that have been determined not to be allowable for this potential refactoring.
