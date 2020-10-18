@@ -204,6 +204,7 @@ Style Title
 	  Family              Sans
 	  Series              Bold
 	EndFont
+	DocBookTag            title
 End
 
 Style Subtitle
@@ -220,6 +221,11 @@ Style Author
 	Font
 	  Size                Larger
 	EndFont
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType inline
+	DocBookInInfo         always
 End
 
 
@@ -227,6 +233,9 @@ Style Date
 	Font
 	  Size                Larger
 	EndFont
+	DocBookTag            date
+	DocBookTagType        paragraph
+	DocBookInInfo         always
 End
 
 

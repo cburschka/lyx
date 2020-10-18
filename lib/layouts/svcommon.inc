@@ -5,7 +5,7 @@
 #     Taken from initial LyX source code
 #     Author : Matthias Ettrich <ettrich@informatik.uni-tuebingen.de>
 #     Transposed by Pascal André <andre@via.ecp.fr>
-#     Heavily modified and enhanced by serveral developers.
+#     Heavily modified and enhanced by several developers.
 #     --------
 #     ejour2 made originally by Martin Vermeer based on article.layout.
 #     Modified for LyX 1.2 by Jean-Marc Lasgouttes and MV.
@@ -19,7 +19,7 @@
 # see http://www.springer.com/authors for class files and further instructions
 
 
-Format 84
+Format 85
 PageStyle		Plain
 
 
@@ -33,6 +33,7 @@ Style Standard
 	Align		Block
 	AlignPossible	Block, Left, Right, Center
 	LabelType	No_Label
+	DocBookTag             para
 End
 
 Input stdcounters.inc
@@ -61,6 +62,9 @@ Style Title
 	  Family	Sans
 	  Series	Bold
 	EndFont
+	DocBookTag            title
+	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 End
 
 
@@ -108,6 +112,10 @@ End
 Style Part
 	Margin		Static
 	Align		Right
+	DocBookTag            title
+	DocBookTagType        paragraph
+	DocBookSectionTag     part
+	DocBookForceAbstractTag	partintro
 End
 
 ## The following is a variant of style Part.  It allows to place some
@@ -151,6 +159,9 @@ End
 
 Style Chapter
 	Align		Left
+	DocBookTag            title
+	DocBookTagType        paragraph
+	DocBookSectionTag     chapter
 End
 
 Style ChapSubtitle
@@ -163,6 +174,7 @@ Style ChapSubtitle
 	  Shape		Up
 	  Size		large
 	EndFont
+	DocBookTag            subtitle
 
 End
 
@@ -176,6 +188,11 @@ Style ChapAuthor
 	  Shape		Up
 	  Size		normal
 	EndFont
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType inline
+	DocBookInInfo         always
 End
 
 Style ChapMotto
@@ -339,6 +356,7 @@ Style Subtitle
 	Font
 	  Size		Large
 	EndFont
+	DocBookTag            subtitle
 End
 
 Style Author
@@ -348,6 +366,11 @@ Style Author
 	  Series	Bold
 	  Shape		Italic
 	EndFont
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType inline
+	DocBookInInfo         always
 End
 
 Style Institute
@@ -444,6 +467,11 @@ Style Abstract
 	ParSep		0
 	Align		Block
 	AlignPossible	Block, Left
+	DocBookAbstract       true
+	DocBookInInfo         always
+	DocBookWrapperTag     abstract
+	DocBookWrapperMergeWithPrevious    true
+	DocBookTag            para
 End
 
 Style Abstract*
@@ -457,6 +485,12 @@ Style Abstract*
 	TextFont	
 	  Color		Blue
 	EndFont
+	DocBookAbstract       true
+	DocBookInInfo         always
+	DocBookWrapperTag     abstract
+	DocBookWrapperAttr    role='not-printed'
+	DocBookWrapperMergeWithPrevious    true
+	DocBookTag            para
 End
 
 Style Keywords
@@ -478,6 +512,10 @@ Style Keywords
 	LabelFont
 	  Series	Bold
 	EndFont
+	DocBookTag          keyword
+	DocBookTagType      paragraph
+	DocBookWrapperTag   keywordset
+	DocBookInInfo       always
 End
 
 Style Dedication
