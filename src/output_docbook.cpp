@@ -452,30 +452,27 @@ void makeParagraph(
 	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
 		return inset.inset && inset.inset->asInsetMath() && inset.inset->asInsetMath()->getType() != hullSimple;
 	});
-
-	// TODO: Could get rid of this with a DocBook equivalent to htmlisblock? Not for all cases, unfortunately... See above for those that have been determined not to be allowable for this potential refactoring.
-	if (!special_case && par->size() == 1 && par->getInset(0)) {
-		Inset const * firstInset = par->getInset(0);
-
-		// Floats cannot be in paragraphs.
-		special_case = to_utf8(firstInset->layoutName()).substr(0, 6) == "Float:";
-
-		// Bibliographies cannot be in paragraphs.
-		if (!special_case && firstInset->asInsetCommand())
-			special_case = firstInset->asInsetCommand()->params().getCmdName() == "bibtex";
-
-		// ERTs are in comments, not paragraphs.
-		if (!special_case && firstInset->lyxCode() == lyx::ERT_CODE)
-			special_case = true;
-
-		// Listings should not get into their own paragraph.
-		if (!special_case && firstInset->lyxCode() == lyx::LISTINGS_CODE)
-			special_case = true;
-
-		// Boxes cannot get into their own paragraph.
-		if (!special_case && firstInset->lyxCode() == lyx::BOX_CODE)
-			special_case = true;
-	}
+	// Floats cannot be in paragraphs.
+	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
+		return inset.inset->lyxCode() == FLOAT_CODE;
+	});
+	// Bibliographies cannot be in paragraphs. Bibitems should still be handled as paragraphs, though
+	// (see makeParagraphBibliography).
+	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
+		return inset.inset->lyxCode() == BIBTEX_CODE;
+	});
+	// ERTs are in comments, not paragraphs.
+	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
+		return inset.inset->lyxCode() == ERT_CODE;
+	});
+	// Listings should not get into their own paragraph.
+	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
+		return inset.inset->lyxCode() == LISTINGS_CODE;
+	});
+	// Boxes cannot get into their own paragraph.
+	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
+		return inset.inset->lyxCode() == BOX_CODE;
+	});
 
 	bool const open_par = runparams.docbook_make_pars
 						  && !runparams.docbook_in_par
