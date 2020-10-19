@@ -13,13 +13,14 @@
 #ifndef DEP_TABLE_H
 #define DEP_TABLE_H
 
-#include "support/FileName.h"
-
+#include <ctime>
 #include <map>
 #include <string>
 
 
 namespace lyx {
+
+namespace support { class FileName; }
 
 ///
 class DepTable {

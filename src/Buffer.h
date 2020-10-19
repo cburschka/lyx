@@ -17,7 +17,6 @@
 #include "support/unique_ptr.h"
 #include "support/strfwd.h"
 #include "support/types.h"
-#include "support/FileNameList.h"
 
 #include <map>
 #include <list>
@@ -66,6 +65,7 @@ class WorkAreaManager;
 namespace support {
 class DocFileName;
 class FileName;
+class FileNameList;
 } // namespace support
 
 namespace graphics {

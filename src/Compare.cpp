@@ -13,6 +13,7 @@
 #include "Compare.h"
 
 #include "Author.h"
+#include "Buffer.h"
 #include "BufferParams.h"
 #include "Changes.h"
 #include "CutAndPaste.h"

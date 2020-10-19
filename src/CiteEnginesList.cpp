@@ -14,7 +14,6 @@
 
 #include "CiteEnginesList.h"
 
-#include "Citation.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 

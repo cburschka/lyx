@@ -12,8 +12,6 @@
 #ifndef COMPARE_H
 #define COMPARE_H
 
-#include "Buffer.h"
-
 #include <QObject>
 #include <QThread>
 #include <QTimer>
@@ -21,6 +19,8 @@
 
 
 namespace lyx {
+
+class Buffer;
 
 /**
  * The options that are used by the Comparison algorithm

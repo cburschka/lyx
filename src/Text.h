@@ -33,6 +33,7 @@ class FontInfo;
 class FuncRequest;
 class FuncStatus;
 class Inset;
+class InsetText;
 class Lexer;
 class PainterInfo;
 class Spacing;

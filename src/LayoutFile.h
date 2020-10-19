@@ -13,7 +13,6 @@
 #ifndef BASECLASSLIST_H
 #define BASECLASSLIST_H
 
-#include "LayoutModuleList.h"
 #include "TextClass.h"
 
 #include "support/strfwd.h"
@@ -23,6 +22,8 @@
 
 
 namespace lyx {
+
+class LayoutModuleList;
 
 /// Index into LayoutFileList. Basically a 'strong typedef'.
 class LayoutFileIndex {

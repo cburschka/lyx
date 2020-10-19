@@ -12,6 +12,7 @@
 
 #include "CmdDef.h"
 
+#include "FuncRequest.h"
 #include "LyXAction.h"
 #include "Lexer.h"
 

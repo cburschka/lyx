@@ -12,14 +12,14 @@
 #ifndef CMDDEF_H
 #define CMDDEF_H
 
-#include "FuncRequest.h"
-
 #include "support/strfwd.h"
 
 #include <map>
 #include <set>
 
 namespace lyx {
+
+class FuncRequest;
 
 /// Creates command definitions
 class CmdDef {

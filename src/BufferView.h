@@ -46,7 +46,6 @@ class MathData;
 class MathRow;
 class ParagraphMetrics;
 class Point;
-class TexRow;
 class Text;
 class TextMetrics;
 

@@ -15,7 +15,6 @@
 #include "DocumentClassPtr.h"
 #include "FloatList.h"
 #include "FontInfo.h"
-#include "Layout.h"
 #include "LayoutEnums.h"
 #include "LayoutModuleList.h"
 
@@ -38,7 +37,6 @@ namespace lyx {
 
 namespace support { class FileName; }
 
-class Counters;
 class FloatList;
 class Layout;
 class LayoutFile;
