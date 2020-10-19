@@ -14,8 +14,6 @@
 #include "ColorCode.h"
 #include "FuncCode.h"
 
-#include "KeyModifier.h"
-
 #include "support/strfwd.h"
 
 #include <functional>

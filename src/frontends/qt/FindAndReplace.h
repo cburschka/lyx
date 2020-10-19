@@ -17,11 +17,12 @@
 #include "qt_helpers.h"
 #include "ui_FindAndReplaceUi.h"
 
-#include "lyxfind.h"
-
 #include <string>
 
 namespace lyx {
+
+class FindAndReplaceOptions;
+
 namespace frontend {
 
 class FindAndReplaceWidget : public QTabWidget, public Ui::FindAndReplaceUi

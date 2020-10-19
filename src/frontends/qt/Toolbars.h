@@ -13,7 +13,7 @@
 #ifndef TOOLBAR_BACKEND_H
 #define TOOLBAR_BACKEND_H
 
-#include "FuncRequest.h"
+#include "support/docstring.h"
 
 #include <vector>
 #include <map>
@@ -22,6 +22,7 @@
 
 namespace lyx {
 
+class FuncRequest;
 class Lexer;
 
 namespace frontend {

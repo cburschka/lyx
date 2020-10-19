@@ -17,12 +17,10 @@
 
 #include "DialogView.h"
 #include "ui_CitationUi.h"
-#include "FancyLineEdit.h"
 
 #include "insets/InsetCommandParams.h"
 
 #include "BiblioInfo.h"
-#include "Citation.h"
 
 #include <QAbstractListModel>
 #include <QStandardItemModel>
@@ -31,8 +29,11 @@
 
 namespace lyx {
 
+class CitationStyle;
+
 namespace frontend {
 
+class FancyLineEdit;
 class GuiSelectionManager;
 
 

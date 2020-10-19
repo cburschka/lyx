@@ -16,7 +16,6 @@
 #include "GuiDialog.h"
 #include "GuiSelectionManager.h"
 #include "ButtonController.h"
-#include "FancyLineEdit.h"
 #include "ui_BibtexUi.h"
 
 #include "insets/InsetCommandParams.h"
@@ -26,6 +25,8 @@
 
 namespace lyx {
 namespace frontend {
+
+class FancyLineEdit;
 
 class GuiBibtex : public GuiDialog, public Ui::BibtexUi
 {

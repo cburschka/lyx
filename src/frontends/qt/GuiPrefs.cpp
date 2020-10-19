@@ -19,6 +19,7 @@
 #include "GuiFontExample.h"
 #include "GuiFontLoader.h"
 #include "GuiKeySymbol.h"
+#include "GuiLyXFiles.h"
 #include "GuiView.h"
 #include "qt_helpers.h"
 #include "Validator.h"

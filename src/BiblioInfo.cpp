@@ -30,6 +30,7 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
+#include "support/FileName.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"

@@ -16,6 +16,7 @@
 
 #include "GuiCitation.h"
 
+#include "FancyLineEdit.h"
 #include "GuiApplication.h"
 #include "GuiSelectionManager.h"
 #include "qt_helpers.h"
@@ -23,6 +24,7 @@
 #include "Buffer.h"
 #include "BufferView.h"
 #include "BufferParams.h"
+#include "Citation.h"
 #include "TextClass.h"
 #include "FuncRequest.h"
 

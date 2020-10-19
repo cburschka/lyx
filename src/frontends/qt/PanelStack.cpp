@@ -15,6 +15,8 @@
 #include "GuiApplication.h"
 #include "qt_helpers.h"
 
+#include "FancyLineEdit.h"
+
 #include "support/debug.h"
 #include "support/lassert.h"
 

@@ -14,7 +14,6 @@
 
 #include "GuiDialog.h"
 #include "ui_RefUi.h"
-#include "FancyLineEdit.h"
 
 #include "insets/InsetCommandParams.h"
 
@@ -24,6 +23,8 @@ class QTreeWidgetItem;
 
 namespace lyx {
 namespace frontend {
+
+class FancyLineEdit;
 
 class GuiRef : public GuiDialog, public Ui::RefUi
 {

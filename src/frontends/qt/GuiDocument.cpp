@@ -13,7 +13,9 @@
 
 #include "GuiDocument.h"
 
+#include "BulletsModule.h"
 #include "CategorizedCombo.h"
+#include "FancyLineEdit.h"
 #include "GuiApplication.h"
 #include "GuiBranches.h"
 #include "GuiIndices.h"

@@ -16,7 +16,6 @@
 #include "ui_WorkAreaUi.h"
 
 #include "frontends/WorkArea.h"
-#include "frontends/KeySymbol.h"
 
 #include <QAbstractScrollArea>
 #include <QTabBar>
@@ -30,6 +29,7 @@ namespace lyx {
 class Buffer;
 class BufferView;
 class FuncRequest;
+class KeySymbol;
 
 namespace frontend {
 

@@ -27,6 +27,7 @@
 #include "Validator.h"
 
 #include "ButtonPolicy.h"
+#include "FancyLineEdit.h"
 
 #include "frontends/alert.h"
 

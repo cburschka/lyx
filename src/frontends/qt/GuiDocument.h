@@ -14,7 +14,6 @@
 #define GUIDOCUMENT_H
 
 #include "BufferParams.h"
-#include "BulletsModule.h"
 #include "GuiDialog.h"
 #include "GuiIdListModel.h"
 
@@ -51,6 +50,8 @@ namespace support {
 
 namespace frontend {
 
+class BulletsModule;
+class FancyLineEdit;
 class FloatPlacement;
 class GuiBranches;
 class GuiIndices;

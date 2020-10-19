@@ -20,6 +20,7 @@
 #include "BufferList.h"
 #include "BufferView.h"
 #include "Cursor.h"
+#include "FancyLineEdit.h"
 #include "FuncRequest.h"
 
 #include "qt_helpers.h"

@@ -13,6 +13,8 @@
 #ifndef GUIAPPLICATION_H
 #define GUIAPPLICATION_H
 
+#include "KeyModifier.h"
+
 #include "frontends/Application.h"
 #include "support/filetools.h"
 

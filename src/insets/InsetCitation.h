@@ -14,9 +14,10 @@
 #define INSET_CITATION_H
 
 #include "InsetCommand.h"
-#include "Citation.h"
 
 namespace lyx {
+
+class CitationStyle;
 
 /////////////////////////////////////////////////////////////////////////
 //

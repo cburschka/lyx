@@ -10,9 +10,11 @@
 
 #include <config.h>
 
+#include "ColorCache.h"
+
 #include "LyXRC.h"
 
-#include "ColorCache.h"
+#include "Color.h"
 #include "ColorSet.h"
 
 namespace lyx {

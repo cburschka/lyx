@@ -13,8 +13,6 @@
 #ifndef PANELSTACK_H
 #define PANELSTACK_H
 
-#include "FancyLineEdit.h"
-
 #include <QHash>
 #include <QWidget>
 
@@ -27,6 +25,7 @@ class QTreeWidgetItem;
 namespace lyx {
 namespace frontend {
 
+class FancyLineEdit;
 
 class PanelStack : public QWidget
 {

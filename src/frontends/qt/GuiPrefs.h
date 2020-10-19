@@ -15,7 +15,6 @@
 #define GUIPREFS_H
 
 #include "GuiDialog.h"
-#include "GuiLyXFiles.h"
 
 #include "Converter.h"
 #include "Format.h"
@@ -52,6 +51,7 @@ namespace lyx {
 
 namespace frontend {
 
+class GuiLyXFiles;
 class PrefModule;
 
 class GuiPreferences : public GuiDialog, public Ui::PrefsUi

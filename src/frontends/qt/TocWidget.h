@@ -15,7 +15,7 @@
 
 #include "ui_TocUi.h"
 
-#include "FuncRequest.h"
+#include "FuncCode.h"
 
 #include <QString>
 #include <QWidget>
@@ -28,6 +28,7 @@ namespace lyx {
 
 class Cursor;
 class DispatchResult;
+class FuncRequest;
 class FuncStatus;
 class Inset;
 

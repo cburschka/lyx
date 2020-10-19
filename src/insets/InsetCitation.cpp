@@ -18,6 +18,7 @@
 #include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "Citation.h"
 #include "DispatchResult.h"
 #include "FuncCode.h"
 #include "FuncRequest.h"

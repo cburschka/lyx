@@ -50,6 +50,7 @@
 #include "Format.h"
 #include "FuncStatus.h"
 #include "FuncRequest.h"
+#include "KeySymbol.h"
 #include "Language.h"
 #include "LayoutFile.h"
 #include "Lexer.h"

@@ -14,13 +14,13 @@
 #define MENUS_H
 
 #include <QMenu>
-#include "BufferView.h"
 
 class QString;
 class QMenuBar;
 
 namespace lyx {
 
+class BufferView;
 class docstring_list;
 class Lexer;
 class FuncRequest;

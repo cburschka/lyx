@@ -12,14 +12,14 @@
 #ifndef COLORCACHE_H
 #define COLORCACHE_H
 
-#include "Color.h"
+#include "ColorCode.h"
 
 #include <QColor>
 #include <QPalette>
 
 namespace lyx {
 
-struct RGBColor;
+class Color;
 
 /**
  * Cache from Color to QColor.

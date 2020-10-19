@@ -15,14 +15,11 @@
 #include "qt_helpers.h"
 
 #include "FileDialog.h"
-#include "Buffer.h"
-#include "BufferParams.h"
 #include "FuncRequest.h"
 #include "Language.h"
 #include "LyXRC.h"
 
 #include "support/environment.h"
-#include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/Messages.h"

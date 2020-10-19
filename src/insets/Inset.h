@@ -24,7 +24,6 @@
 
 #include "support/strfwd.h"
 #include "support/types.h"
-#include "support/FileNameList.h"
 
 #include <climits>
 
@@ -66,6 +65,7 @@ class otexstream;
 
 namespace graphics { class PreviewLoader; }
 
+namespace support {class FileNameList; }
 
 /// returns the InsetCode corresponding to the \c name.
 /// Eg, insetCode("branch") == BRANCH_CODE

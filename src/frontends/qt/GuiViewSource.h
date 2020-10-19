@@ -28,6 +28,7 @@ class QTextDocument;
 
 namespace lyx {
 
+class BufferView;
 class TexRow;
 
 
