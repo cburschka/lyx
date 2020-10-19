@@ -536,6 +536,11 @@ Style Dedication
 	  Shape		Italic
 	  Size		large
 	EndFont
+	DocBookTag             para
+	DocBookTagType         paragraph
+	DocBookWrapperTag      dedication
+	DocBookWrapperTagType  block
+	DocBookWrapperMergeWithPrevious    true
 End
 
 Style Foreword
@@ -563,6 +568,11 @@ Style Foreword
 	  Size		Huge
 	EndFont
 	HTMLTag		h1
+	DocBookTag             para
+	DocBookTagType         paragraph
+	DocBookWrapperTag      preface
+	DocBookWrapperTagType  block
+	DocBookWrapperMergeWithPrevious    true
 End
 
 Style Preface
