@@ -151,7 +151,9 @@ set(CPACK_PACKAGE_CONTACT "${PACKAGE_BUGREPORT}")
 set(CPACK_SOURCE_PACKAGE_FILE_NAME "${LYX_PROJECT}-${LYX_INSTALL_SUFFIX}")
 
 # We depend on python scripting
-set(CPACK_DEBIAN_PACKAGE_DEPENDS "python (>= 2.7)")
+# Currently no need to specify versions for pythonx since they are only
+# available in newest distributions.
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "python (>= 2.7) | python3 | python2")
 
 # use dpkg-shlibdeps to generate additional info for package dependency list.
 set(CPACK_DEBIAN_PACKAGE_RELEASE ${LYX_PACKAGE_RELEASE})
