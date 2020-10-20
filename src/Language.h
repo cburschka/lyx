@@ -16,6 +16,7 @@
 #define LANGUAGE_H
 
 #include "support/strfwd.h"
+#include "support/trivstring.h"
 
 #include <map>
 #include <set>

@@ -14,6 +14,7 @@
 #define ENCODING_H
 
 #include "support/strfwd.h"
+#include "support/trivstring.h"
 #include "support/types.h"
 
 #include <map>

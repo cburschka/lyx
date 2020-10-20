@@ -28,7 +28,7 @@
 #ifndef TEXROW_H
 #define TEXROW_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 #include "support/types.h"
 
 #include <vector>

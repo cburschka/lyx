@@ -12,7 +12,7 @@
 #ifndef FUNC_STATUS_H
 #define FUNC_STATUS_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 
 namespace lyx {

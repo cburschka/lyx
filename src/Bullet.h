@@ -13,7 +13,7 @@
 #ifndef BULLET_H
 #define BULLET_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 
 namespace lyx {
