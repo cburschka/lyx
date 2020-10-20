@@ -17,15 +17,12 @@
 #include "support/filetools.h"
 #include "support/Package.h"
 #include "support/FileName.h"
-#include "support/lstrings.h"
-#include "support/os.h"
 
 #include <string>
 #include <fstream>
 
 using namespace std;
 using namespace lyx::support;
-using namespace lyx::support::os;
 
 namespace lyx {
 

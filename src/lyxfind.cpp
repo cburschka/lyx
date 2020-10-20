@@ -17,7 +17,6 @@
 #include "lyxfind.h"
 
 #include "Buffer.h"
-#include "buffer_funcs.h"
 #include "BufferList.h"
 #include "BufferParams.h"
 #include "BufferView.h"
@@ -29,8 +28,6 @@
 #include "output_latex.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
-#include "ParIterator.h"
-#include "TexRow.h"
 #include "Text.h"
 #include "Encoding.h"
 

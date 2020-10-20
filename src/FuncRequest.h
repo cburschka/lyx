@@ -14,7 +14,7 @@
 
 #include "FuncCode.h"
 
-#include "support/docstring.h"
+#include "support/strfwd.h"
 
 #include "frontends/KeyModifier.h"
 #include "frontends/mouse_state.h"

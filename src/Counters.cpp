@@ -20,6 +20,7 @@
 #include "support/convert.h"
 #include "support/counter_reps.h"
 #include "support/debug.h"
+#include "support/docstring.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"

@@ -36,15 +36,13 @@
 
 #include "insets/InsetText.h"
 
-#include "mathed/InsetMathMacroTemplate.h"
+#include "mathed/MacroTable.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/NullPainter.h"
 
-#include "support/convert.h"
 #include "support/debug.h"
 #include "support/lassert.h"
-#include "support/lyxlib.h"
 #include "support/RefChanger.h"
 
 #include <stdlib.h>

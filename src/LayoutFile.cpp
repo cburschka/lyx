@@ -12,20 +12,13 @@
 #include <config.h>
 
 #include "LayoutFile.h"
-#include "Counters.h"
-#include "Floating.h"
-#include "FloatList.h"
 #include "Lexer.h"
 #include "TextClass.h"
-
-#include "frontends/alert.h"
 
 #include "support/debug.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
-#include "support/gettext.h"
 #include "support/lassert.h"
-#include "support/lstrings.h"
 
 #include "support/regex.h"
 #include "support/TempFile.h"

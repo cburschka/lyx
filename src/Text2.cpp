@@ -23,34 +23,22 @@
 #include "Text.h"
 
 #include "Buffer.h"
-#include "buffer_funcs.h"
-#include "BufferList.h"
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Changes.h"
 #include "Cursor.h"
-#include "CutAndPaste.h"
-#include "DispatchResult.h"
-#include "ErrorList.h"
 #include "Language.h"
 #include "Layout.h"
-#include "Lexer.h"
-#include "LyX.h"
 #include "LyXRC.h"
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
 #include "TextClass.h"
 #include "TextMetrics.h"
 
-#include "insets/InsetCollapsible.h"
-
-#include "mathed/InsetMathHull.h"
+#include "insets/InsetText.h"
 
 #include "support/lassert.h"
-#include "support/debug.h"
 #include "support/gettext.h"
-#include "support/lyxalgo.h"
-#include "support/textutils.h"
 
 #include <sstream>
 

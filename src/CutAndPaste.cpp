@@ -18,7 +18,6 @@
 #include "Author.h"
 #include "BranchList.h"
 #include "Buffer.h"
-#include "buffer_funcs.h"
 #include "BufferList.h"
 #include "BufferParams.h"
 #include "BufferView.h"
@@ -29,7 +28,6 @@
 #include "FuncCode.h"
 #include "FuncRequest.h"
 #include "InsetIterator.h"
-#include "InsetList.h"
 #include "Language.h"
 #include "LyX.h"
 #include "LyXRC.h"
@@ -43,7 +41,6 @@
 #include "insets/InsetBranch.h"
 #include "insets/InsetCitation.h"
 #include "insets/InsetCommand.h"
-#include "insets/InsetFlex.h"
 #include "insets/InsetGraphics.h"
 #include "insets/InsetGraphicsParams.h"
 #include "insets/InsetInclude.h"
@@ -62,13 +59,11 @@
 #include "support/lassert.h"
 #include "support/limited_stack.h"
 #include "support/lstrings.h"
-#include "support/lyxalgo.h"
 #include "support/TempFile.h"
 #include "support/unique_ptr.h"
 
 #include "frontends/alert.h"
 #include "frontends/Clipboard.h"
-#include "frontends/Selection.h"
 
 #include <string>
 #include <tuple>

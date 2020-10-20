@@ -51,6 +51,7 @@
 #include "Text.h"
 #include "TextMetrics.h"
 #include "TocBackend.h"
+#include "TocBuilder.h"
 
 #include "frontends/alert.h"
 #include "frontends/Painter.h"
@@ -63,6 +64,7 @@
 #include "support/RefChanger.h"
 
 #include <algorithm>
+#include <stack>
 
 
 using namespace std;

@@ -14,6 +14,7 @@
 #include "LyXAction.h"
 
 #include "support/debug.h"
+#include "support/docstring.h"
 #include "support/lstrings.h"
 
 #include <climits>

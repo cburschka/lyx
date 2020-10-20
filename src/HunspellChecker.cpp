@@ -16,17 +16,13 @@
 #include "LyXRC.h"
 #include "WordLangTuple.h"
 
-#include "frontends/alert.h"
-
 #include "support/debug.h"
 #include "support/docstring_list.h"
 #include "support/filetools.h"
 #include "support/Package.h"
 #include "support/FileName.h"
-#include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
-#include "support/os.h"
 
 #include <hunspell/hunspell.hxx>
 

@@ -22,11 +22,8 @@
 namespace lyx {
 
 class Buffer;
-class BufferParams;
 class CursorData;
 class Inset;
-class MathData;
-class ParagraphList;
 
 /// This is used to combine consecutive undo recordings of the same kind.
 enum UndoKind {

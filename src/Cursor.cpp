@@ -27,7 +27,6 @@
 #include "LyXAction.h"
 #include "LyXRC.h"
 #include "Paragraph.h"
-#include "ParIterator.h"
 #include "Row.h"
 #include "texstream.h"
 #include "Text.h"
@@ -36,12 +35,10 @@
 
 #include "support/debug.h"
 #include "support/docstream.h"
-#include "support/ExceptionMessage.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
 
 #include "insets/InsetTabular.h"
-#include "insets/InsetText.h"
 
 #include "mathed/InsetMath.h"
 #include "mathed/InsetMathBrace.h"
@@ -1435,10 +1432,7 @@ bool Cursor::atFirstOrLastRow(bool up)
 ///////////////////////////////////////////////////////////////////
 
 #include "mathed/InsetMathChar.h"
-#include "mathed/InsetMathGrid.h"
-#include "mathed/InsetMathScript.h"
 #include "mathed/InsetMathUnknown.h"
-#include "mathed/MathFactory.h"
 #include "mathed/MathStream.h"
 #include "mathed/MathSupport.h"
 

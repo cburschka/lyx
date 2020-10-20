@@ -11,12 +11,8 @@
 
 #include "CoordCache.h"
 
-#include "Text.h"
 
 #include "support/debug.h"
-#include "support/docstring.h"
-
-#include "insets/Inset.h"
 
 #include "support/lassert.h"
 

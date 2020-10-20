@@ -15,7 +15,6 @@
 #include "output_xhtml.h"
 
 #include "Buffer.h"
-#include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "Counters.h"
 #include "Font.h"
@@ -28,11 +27,7 @@
 #include "Text.h"
 #include "TextClass.h"
 
-#include "support/convert.h"
-#include "support/debug.h"
 #include "support/lassert.h"
-#include "support/lstrings.h"
-#include "support/textutils.h"
 
 #include <stack>
 #include <iostream>

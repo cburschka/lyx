@@ -22,6 +22,7 @@
 #include "LyXRC.h"
 
 #include "support/debug.h"
+#include "support/docstring.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/lassert.h"

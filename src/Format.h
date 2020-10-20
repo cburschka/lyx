@@ -12,10 +12,9 @@
 #ifndef FORMAT_H
 #define FORMAT_H
 
-#include "support/docstring.h"
-#include "support/trivstring.h"
-
 #include "OutputParams.h"
+
+#include "support/strfwd.h"
 
 #include <vector>
 

@@ -12,7 +12,7 @@
 #ifndef BUFFER_LIST_H
 #define BUFFER_LIST_H
 
-#include "support/docstring.h"
+#include "support/strfwd.h"
 
 #include <vector>
 

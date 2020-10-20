@@ -16,13 +16,12 @@
 
 #include "ParagraphParameters.h"
 
-#include "Buffer.h"
-#include "support/gettext.h"
 #include "Layout.h"
 #include "Lexer.h"
-#include "Text.h"
 #include "Paragraph.h"
 
+#include "support/debug.h"
+#include "support/docstring.h"
 #include "support/lstrings.h"
 
 #include <sstream>

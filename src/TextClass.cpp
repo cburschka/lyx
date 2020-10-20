@@ -16,22 +16,19 @@
 
 #include "TextClass.h"
 
-#include "LayoutFile.h"
 #include "CiteEnginesList.h"
-#include "Color.h"
 #include "Counters.h"
 #include "Floating.h"
 #include "FloatList.h"
 #include "Layout.h"
+#include "LayoutFile.h"
 #include "Lexer.h"
-#include "Font.h"
 #include "ModuleList.h"
 
 #include "frontends/alert.h"
 
 #include "support/lassert.h"
 #include "support/debug.h"
-#include "support/ExceptionMessage.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/gettext.h"

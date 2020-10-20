@@ -15,8 +15,7 @@
 #ifndef LANGUAGE_H
 #define LANGUAGE_H
 
-#include "support/docstring.h"
-#include "support/trivstring.h"
+#include "support/strfwd.h"
 
 #include <map>
 #include <set>

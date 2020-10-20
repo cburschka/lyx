@@ -16,7 +16,7 @@
 
 #include "DocumentClassPtr.h"
 
-#include "support/docstring.h"
+#include "support/strfwd.h"
 
 #include "insets/Inset.h"
 

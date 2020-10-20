@@ -16,7 +16,7 @@
 
 #include "OutputParams.h"
 
-#include "support/docstring.h"
+#include "support/strfwd.h"
 #include "support/FileName.h"
 #include "support/signals.h"
 

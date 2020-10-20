@@ -26,8 +26,8 @@
 #include "support/debug.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
-#include "support/lyxalgo.h"
 
+#include <algorithm>
 #include <ostream>
 
 using namespace std;

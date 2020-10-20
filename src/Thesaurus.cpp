@@ -21,16 +21,14 @@
 #include "support/FileNameList.h"
 #include "support/Package.h"
 #include "support/debug.h"
+#include "support/docstring.h"
 #include "support/docstring_list.h"
 #include "support/filetools.h"
-#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 
 #include <cstdio>
 #include MYTHES_H_LOCATION
-
-#include "frontends/alert.h"
 
 #include <algorithm>
 #include <cstring>

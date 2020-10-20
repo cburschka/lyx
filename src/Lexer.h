@@ -24,8 +24,6 @@ namespace lyx {
 
 namespace support { class FileName; }
 
-class PushPopHelper;
-
 /** A helper structure to describe a keyword for the Lexer.
 	Usually used bundled in C style arrays and passed to the
 	Lexer using a LexerKeywordTable object.

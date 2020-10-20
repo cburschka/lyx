@@ -18,7 +18,6 @@
 
 #include "DispatchResult.h"
 #include "FuncRequest.h"
-#include "LyX.h"
 #include "LyXAction.h"
 
 #include "frontends/Application.h"

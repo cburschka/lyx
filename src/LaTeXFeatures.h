@@ -14,7 +14,7 @@
 #define LATEXFEATURES_H
 
 #include "OutputParams.h"
-#include "support/docstring.h"
+#include "support/strfwd.h"
 
 #include <set>
 #include <list>

@@ -14,7 +14,6 @@
 #include "Buffer.h"
 
 #include "Author.h"
-#include "LayoutFile.h"
 #include "BiblioInfo.h"
 #include "BranchList.h"
 #include "buffer_funcs.h"
@@ -67,9 +66,7 @@
 #include "VCBackend.h"
 #include "version.h"
 #include "WordLangTuple.h"
-#include "WordList.h"
 
-#include "insets/InsetBibtex.h"
 #include "insets/InsetBranch.h"
 #include "insets/InsetInclude.h"
 #include "insets/InsetTabular.h"
@@ -80,7 +77,6 @@
 #include "mathed/InsetMathMacroTemplate.h"
 #include "mathed/MathSupport.h"
 
-#include "graphics/GraphicsCache.h"
 #include "graphics/PreviewLoader.h"
 
 #include "frontends/Application.h"
@@ -97,11 +93,9 @@
 #include "support/FileName.h"
 #include "support/FileNameList.h"
 #include "support/filetools.h"
-#include "support/ForkedCalls.h"
 #include "support/gettext.h"
 #include "support/gzstream.h"
 #include "support/lstrings.h"
-#include "support/lyxalgo.h"
 #include "support/mutex.h"
 #include "support/os.h"
 #include "support/Package.h"

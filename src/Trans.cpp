@@ -13,11 +13,7 @@
 
 #include "Trans.h"
 
-#include "Buffer.h"
-#include "BufferView.h"
-#include "Cursor.h"
 #include "Lexer.h"
-#include "LyXRC.h"
 #include "Text.h"
 
 #include "support/debug.h"

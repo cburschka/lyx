@@ -12,6 +12,7 @@
 
 #include "TocBuilder.h"
 
+#include "DocIterator.h"
 #include "TocBackend.h"
 
 #include "support/lassert.h"

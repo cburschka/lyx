@@ -17,7 +17,7 @@
 
 #include "OutputEnums.h"
 
-#include "support/docstring.h"
+#include "support/strfwd.h"
 
 #include <map>
 #include <vector>

@@ -28,23 +28,18 @@
 #include "Lexer.h"
 #include "LyX.h"
 #include "Mover.h"
-#include "Session.h"
 #include "SpellChecker.h"
 #include "version.h"
-
-#include "graphics/GraphicsTypes.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/environment.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
-#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/Package.h"
 #include "support/TempFile.h"
-#include "support/userinfo.h"
 
 #ifdef USE_MACOSX_PACKAGING
 #include "support/AppleSupport.h"

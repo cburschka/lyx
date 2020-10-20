@@ -16,7 +16,6 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "support/gettext.h"
-#include "Text.h"
 #include "TextMetrics.h" // for defaultRowHeight()
 
 #include "support/convert.h"

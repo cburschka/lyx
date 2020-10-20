@@ -14,8 +14,7 @@
 
 #include "TexRow.h"
 
-#include "support/docstring.h"
-#include "support/types.h"
+#include "support/strfwd.h"
 
 #include <vector>
 

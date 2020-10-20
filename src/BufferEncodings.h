@@ -15,8 +15,8 @@
 #define BUFFER_ENCODINGS_H
 
 #include "Encoding.h"
-#include "support/docstring.h"
-#include "support/types.h"
+
+#include "support/strfwd.h"
 
 namespace lyx {
 

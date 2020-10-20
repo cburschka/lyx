@@ -17,13 +17,10 @@
 #include "BiblioInfo.h"
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "buffer_funcs.h"
 #include "Citation.h"
 #include "Encoding.h"
-#include "InsetIterator.h"
 #include "Language.h"
 #include "xml.h"
-#include "Paragraph.h"
 #include "TextClass.h"
 #include "TocBackend.h"
 

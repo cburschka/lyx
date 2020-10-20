@@ -17,8 +17,6 @@
 #include "support/debug.h"
 #include "support/lassert.h"
 
-#include <algorithm>
-
 using namespace std;
 
 namespace lyx {

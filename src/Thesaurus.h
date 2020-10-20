@@ -13,13 +13,14 @@
 #ifndef THESAURUS_H
 #define THESAURUS_H
 
-#include "support/docstring.h"
-#include "WordLangTuple.h"
+#include "support/strfwd.h"
 
 #include <map>
 #include <vector>
 
 namespace lyx {
+
+class WordLangTuple;
 
 /**
  * This class provides an interface to whatever thesauri we might support.

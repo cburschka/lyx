@@ -17,6 +17,7 @@
 #include "Lexer.h"
 
 #include "support/debug.h"
+#include "support/docstring.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/mutex.h"

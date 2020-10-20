@@ -12,15 +12,13 @@
 #ifndef PDFOPTIONS_H
 #define PDFOPTIONS_H
 
-#include "OutputParams.h"
-
-#include "support/strfwd.h"
-
 #include <string>
 
 namespace lyx {
 
 class Lexer;
+class OutputParams;
+class otexstream;
 
 // FIXME UNICODE
 // Write functions need to use odostream instead of ostream before

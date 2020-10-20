@@ -23,8 +23,6 @@ class Paragraph;
 class Text;
 class TextMetrics;
 
-namespace frontend { class Painter; }
-
 /**
  * A class used for painting an individual row of text.
  * FIXME: get rid of that class.

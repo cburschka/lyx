@@ -17,14 +17,14 @@
 
 #include "Text.h"
 #include "Paragraph.h"
+#include "ParagraphList.h"
 
 #include "support/debug.h"
 
 #include "mathed/InsetMath.h"
 #include "mathed/InsetMathMacro.h"
+#include "mathed/MathData.h"
 
-#include "support/ExceptionMessage.h"
-#include "support/gettext.h"
 #include "support/lassert.h"
 
 #include <ostream>

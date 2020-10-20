@@ -21,7 +21,6 @@
 #include "LayoutFile.h"
 #include "BranchList.h"
 #include "Buffer.h"
-#include "buffer_funcs.h"
 #include "Bullet.h"
 #include "CiteEnginesList.h"
 #include "Color.h"
@@ -33,7 +32,6 @@
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "LaTeXFonts.h"
-#include "ModuleList.h"
 #include "Font.h"
 #include "Lexer.h"
 #include "LyXRC.h"
@@ -50,7 +48,6 @@
 
 #include "support/convert.h"
 #include "support/debug.h"
-#include "support/docstream.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/gettext.h"

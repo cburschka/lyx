@@ -16,7 +16,6 @@
 #ifndef PARAGRAPH_H
 #define PARAGRAPH_H
 
-#include "FontEnums.h"
 #include "LayoutEnums.h"
 #include "SpellChecker.h"
 

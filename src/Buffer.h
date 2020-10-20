@@ -48,9 +48,9 @@ class MacroNameSet;
 class MacroSet;
 class OutputParams;
 class otexstream;
-class ParConstIterator;
-class ParIterator;
 class ParagraphList;
+class ParIterator;
+class ParConstIterator;
 class TeXErrors;
 class TexRow;
 class TocBackend;
@@ -92,8 +92,6 @@ typedef std::shared_ptr<CloneList> CloneList_ptr;
  * minimal, probably not.
  * \author Lars Gullik Bjønnes
  */
-
-class MarkAsExporting;
 
 class Buffer {
 public:

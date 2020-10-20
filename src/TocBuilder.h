@@ -12,7 +12,6 @@
 #ifndef TOC_BUILDER_H
 #define TOC_BUILDER_H
 
-#include "DocIterator.h"
 #include "Toc.h"
 
 #include "support/strfwd.h"
@@ -22,6 +21,7 @@
 
 namespace lyx {
 
+class DocIterator;
 
 /// Caption-enabled TOC builders
 class TocBuilder

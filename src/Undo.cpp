@@ -20,7 +20,6 @@
 #include "Buffer.h"
 #include "BufferList.h"
 #include "BufferParams.h"
-#include "buffer_funcs.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
 #include "ErrorList.h"
@@ -28,14 +27,12 @@
 #include "ParagraphList.h"
 #include "Text.h"
 
-#include "mathed/MathSupport.h"
 #include "mathed/MathData.h"
 
 #include "insets/Inset.h"
 #include "insets/InsetText.h"
 
 #include "support/debug.h"
-#include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lyxtime.h"
 

@@ -22,34 +22,18 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "Counters.h"
-#include "Encoding.h"
-#include "Language.h"
-#include "LaTeXFeatures.h"
-#include "Layout.h"
 #include "Font.h"
-#include "LyXRC.h"
+#include "Layout.h"
+#include "LayoutEnums.h"
+#include "Paragraph.h"
 #include "Row.h"
-#include "OutputParams.h"
-#include "xml.h"
 #include "TextClass.h"
-#include "TexRow.h"
 
 #include "frontends/FontMetrics.h"
 
-#include "insets/InsetBibitem.h"
-#include "insets/InsetArgument.h"
-
 #include "support/lassert.h"
 #include "support/debug.h"
-#include "support/ExceptionMessage.h"
-#include "support/gettext.h"
-#include "support/lstrings.h"
-#include "support/textutils.h"
 
-#include <algorithm>
-#include <list>
-#include <stack>
 #include <sstream>
 
 using namespace std;

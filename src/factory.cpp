@@ -12,13 +12,9 @@
 
 #include "factory.h"
 
-#include "Buffer.h"
-#include "BufferParams.h"
-#include "FloatList.h"
 #include "FuncRequest.h"
 #include "Lexer.h"
 #include "LyX.h"
-#include "TextClass.h"
 
 #include "insets/InsetBibitem.h"
 #include "insets/InsetBibtex.h"
@@ -51,6 +47,7 @@
 #include "insets/InsetArgument.h"
 #include "insets/InsetPhantom.h"
 #include "insets/InsetPreview.h"
+#include "insets/InsetQuotes.h"
 #include "insets/InsetRef.h"
 #include "insets/InsetScript.h"
 #include "insets/InsetSeparator.h"
@@ -67,7 +64,6 @@
 
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
-#include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/unique_ptr.h"
 

@@ -13,7 +13,6 @@
 
 #include "VCBackend.h"
 #include "Buffer.h"
-#include "DispatchResult.h"
 #include "LyX.h"
 #include "FuncRequest.h"
 

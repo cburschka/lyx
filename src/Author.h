@@ -12,7 +12,7 @@
 #ifndef AUTHOR_H
 #define AUTHOR_H
 
-#include "support/docstring.h"
+#include "support/strfwd.h"
 
 #include <vector>
 

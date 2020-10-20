@@ -20,8 +20,6 @@
 
 #include "FontList.h"
 
-#include "support/lyxalgo.h"
-
 using namespace std;
 
 namespace lyx {

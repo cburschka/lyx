@@ -27,7 +27,6 @@
 #include "LaTeXFonts.h"
 #include "LaTeXPackages.h"
 #include "Layout.h"
-#include "Lexer.h"
 #include "LyXRC.h"
 #include "TextClass.h"
 #include "TexRow.h"
@@ -37,9 +36,8 @@
 
 #include "support/debug.h"
 #include "support/docstream.h"
-#include "support/FileName.h"
+#include "support/docstring.h"
 #include "support/filetools.h"
-#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/regex.h"
 

@@ -15,10 +15,6 @@
 #include "Author.h"
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "Session.h"
-#include "LyX.h"
-#include "output_latex.h"
-#include "ParagraphList.h"
 
 #include "frontends/alert.h"
 
@@ -27,9 +23,7 @@
 #include "support/FileName.h"
 #include "support/FileNameList.h"
 #include "support/filetools.h"
-#include "support/gettext.h"
 #include "support/lstrings.h"
-#include "support/Package.h"
 
 #include "support/lassert.h"
 

@@ -15,7 +15,7 @@
 #ifndef BIBLIOINFO_H
 #define BIBLIOINFO_H
 
-#include "support/docstring.h"
+#include "support/strfwd.h"
 
 #include <map>
 #include <set>

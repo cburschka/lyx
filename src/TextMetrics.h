@@ -28,7 +28,6 @@ namespace lyx {
 class BufferView;
 class Cursor;
 class CursorSlice;
-class DocIterator;
 class MetricsInfo;
 class Text;
 

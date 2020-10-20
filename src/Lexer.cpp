@@ -24,7 +24,6 @@
 #include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
-#include "support/types.h"
 
 #include <functional>
 #include <fstream>

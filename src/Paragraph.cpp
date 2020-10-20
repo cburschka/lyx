@@ -20,12 +20,11 @@
 
 #include "Paragraph.h"
 
-#include "LayoutFile.h"
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "BufferEncodings.h"
 #include "Changes.h"
 #include "Counters.h"
-#include "BufferEncodings.h"
 #include "InsetList.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
@@ -42,6 +41,7 @@
 #include "texstream.h"
 #include "TexRow.h"
 #include "Text.h"
+#include "TextClass.h"
 #include "WordLangTuple.h"
 #include "WordList.h"
 

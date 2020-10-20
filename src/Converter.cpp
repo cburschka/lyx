@@ -13,7 +13,6 @@
 #include "Converter.h"
 
 #include "Buffer.h"
-#include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "ConverterCache.h"
 #include "Encoding.h"

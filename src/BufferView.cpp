@@ -18,7 +18,6 @@
 
 #include "BranchList.h"
 #include "Buffer.h"
-#include "buffer_funcs.h"
 #include "BufferList.h"
 #include "BufferParams.h"
 #include "CoordCache.h"
@@ -26,48 +25,34 @@
 #include "CutAndPaste.h"
 #include "DispatchResult.h"
 #include "ErrorList.h"
-#include "factory.h"
-#include "FloatList.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "Intl.h"
-#include "InsetIterator.h"
 #include "Language.h"
-#include "LaTeXFeatures.h"
 #include "LayoutFile.h"
 #include "Lexer.h"
 #include "LyX.h"
 #include "LyXAction.h"
 #include "lyxfind.h"
-#include "Layout.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "Paragraph.h"
-#include "ParagraphParameters.h"
-#include "ParIterator.h"
-#include "RowPainter.h"
 #include "Session.h"
 #include "Text.h"
-#include "TextClass.h"
 #include "TextMetrics.h"
 #include "TexRow.h"
 #include "TocBackend.h"
-#include "WordLangTuple.h"
 
 #include "insets/InsetBibtex.h"
 #include "insets/InsetCitation.h"
 #include "insets/InsetCommand.h" // ChangeRefs
-#include "insets/InsetExternal.h"
 #include "insets/InsetGraphics.h"
-#include "insets/InsetNote.h"
 #include "insets/InsetRef.h"
 #include "insets/InsetText.h"
 
 #include "mathed/MathData.h"
-#include "mathed/InsetMathNest.h"
 
 #include "frontends/alert.h"
-#include "frontends/Application.h"
 #include "frontends/Delegates.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/NullPainter.h"
@@ -76,17 +61,18 @@
 
 #include "support/convert.h"
 #include "support/debug.h"
-#include "support/ExceptionMessage.h"
+#include "support/docstring.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/Length.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
-#include "support/Package.h"
 #include "support/types.h"
 
+#include <algorithm>
 #include <cerrno>
+#include <cstring>
 #include <fstream>
 #include <functional>
 #include <iterator>

@@ -23,14 +23,10 @@
 
 namespace lyx {
 
-
-
-class Buffer;
 class Cursor;
 class BufferView;
 class DocIterator;
 class FuncRequest;
-class Text;
 
 /** Encode the parameters needed to find \c search as a string
  *  that can be dispatched to the LyX core in a FuncRequest wrapper.

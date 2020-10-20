@@ -38,7 +38,6 @@
 #include "Language.h"
 #include "LaTeXFonts.h"
 #include "LayoutFile.h"
-#include "Lexer.h"
 #include "LyX.h"
 #include "LyXAction.h"
 #include "LyXRC.h"
@@ -47,7 +46,6 @@
 #include "Server.h"
 #include "ServerSocket.h"
 #include "Session.h"
-#include "WordList.h"
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"
@@ -66,7 +64,6 @@
 #include "support/Package.h"
 #include "support/unique_ptr.h"
 
-#include <algorithm>
 #include <csignal>
 #include <iostream>
 #include <functional>

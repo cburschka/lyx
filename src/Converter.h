@@ -14,7 +14,7 @@
 
 #include "Graph.h"
 #include "OutputParams.h"
-#include "support/trivstring.h"
+#include "support/strfwd.h"
 
 #include <vector>
 #include <set>

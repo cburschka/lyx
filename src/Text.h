@@ -19,14 +19,13 @@
 
 namespace lyx {
 
-class Buffer;
 class BufferParams;
 class BufferView;
+class Change;
 class CompletionList;
 class Cursor;
 class CursorData;
 class CursorSlice;
-class DocIterator;
 class ErrorList;
 class Font;
 class FontInfo;
@@ -35,8 +34,8 @@ class FuncStatus;
 class Inset;
 class InsetText;
 class Lexer;
-class PainterInfo;
-class Spacing;
+class Paragraph;
+class ParagraphParameters;
 
 /// This class encapsulates the main text data and operations in LyX.
 /// This is more or less the private implementation of InsetText.

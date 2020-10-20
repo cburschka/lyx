@@ -17,20 +17,16 @@
 #include "LayoutEnums.h"
 #include "Spacing.h"
 
-#include "support/debug.h"
 #include "support/types.h"
-#include "support/docstring.h"
+#include "support/strfwd.h"
 #include "support/Length.h"
 
 
 namespace lyx {
 
-class BufferView;
 class Layout;
-class Length;
 class Lexer;
 class Paragraph;
-class Spacing;
 
 
 ///

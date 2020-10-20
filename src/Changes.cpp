@@ -18,7 +18,6 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "Encoding.h"
-#include "LaTeXFeatures.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"

@@ -10,8 +10,6 @@
 
 #include <config.h>
 
-#include "BufferView.h"
-#include "ColorSet.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 
@@ -22,8 +20,6 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
-#include "support/docstring.h"
-#include "support/lassert.h"
 #include "support/RefChanger.h"
 
 using namespace std;
