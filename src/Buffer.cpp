@@ -1610,7 +1610,7 @@ bool Buffer::writeFile(FileName const & fname) const
 }
 
 
-docstring Buffer::emergencyWrite()
+docstring Buffer::emergencyWrite() const
 {
 	// No need to save if the buffer has not changed.
 	if (isClean())

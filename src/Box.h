@@ -42,7 +42,7 @@ public:
 	 * the box. Check is exclusive (point on a border
 	 * returns false).
 	 */
-	bool contains(int x, int y);
+	bool contains(int x, int y) const;
 };
 
 

@@ -259,7 +259,7 @@ void Converters::updateLast(Formats const & formats)
 
 
 OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path,
-					   Buffer const * buffer)
+					   Buffer const * buffer) const
 {
 	for (auto const & edge : path) {
 		Converter const & conv = converterlist_[edge];
@@ -283,7 +283,7 @@ OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path,
 }
 
 
-string Converters::getHyperrefDriver(Graph::EdgePath const & path)
+string Converters::getHyperrefDriver(Graph::EdgePath const & path) const
 {
 	for (auto const & edge : path) {
 		Converter const & conv = converterlist_[edge];
@@ -818,7 +818,7 @@ bool Converters::move(string const & fmt,
 }
 
 
-bool Converters::formatIsUsed(string const & format)
+bool Converters::formatIsUsed(string const & format) const
 {
 	for (auto const & cvt : converterlist_) {
 		if (cvt.from() == format || cvt.to() == format)

@@ -259,7 +259,7 @@ public:
 	bool autoSave() const;
 	/// save emergency file
 	/// \return a status message towards the user.
-	docstring emergencyWrite();
+	docstring emergencyWrite() const;
 
 //FIXME:The following function should be private
 //private:

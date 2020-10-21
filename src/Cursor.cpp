@@ -502,7 +502,7 @@ void CursorData::clearSelection()
 }
 
 
-int CursorData::countInsetsInSelection(InsetCode const & inset_code)
+int CursorData::countInsetsInSelection(InsetCode const & inset_code) const
 {
 	if (!selection_)
 		return 0;
@@ -528,7 +528,7 @@ int CursorData::countInsetsInSelection(InsetCode const & inset_code)
 }
 
 
-bool CursorData::insetInSelection(InsetCode const & inset_code)
+bool CursorData::insetInSelection(InsetCode const & inset_code) const
 {
 	if (!selection_)
 		return false;
@@ -669,7 +669,7 @@ void CursorData::recordUndoSelection() const
 }
 
 
-int CursorData::currentMode()
+int CursorData::currentMode() const
 {
 	LASSERT(!empty(), return Inset::UNDECIDED_MODE);
 	for (int i = depth() - 1; i >= 0; --i) {

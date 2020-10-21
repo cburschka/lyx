@@ -47,7 +47,7 @@ void WorkAreaManager::closeAll()
 }
 
 
-bool WorkAreaManager::unhide(Buffer * buf)
+bool WorkAreaManager::unhide(Buffer * buf) const
 {
 	if (!work_areas_.empty())
 		return true;

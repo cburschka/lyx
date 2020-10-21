@@ -86,7 +86,7 @@ public:
 	///
 	mouse_button::state button() const { return button_; }
 	///
-	KeyModifier modifier() { return modifier_; }
+	KeyModifier modifier() const { return modifier_; }
 
 	/// argument parsing, extract argument i as std::string
 	std::string getArg(unsigned int i) const;

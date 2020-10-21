@@ -359,19 +359,19 @@ public:
 		char_type const c,
 		otexstream & os,
 		pos_type i,
-		unsigned int & column);
+		unsigned int & column) const;
 	///
 	bool latexSpecialTU(
 		char_type const c,
 		otexstream & os,
 		pos_type i,
-		unsigned int & column);
+		unsigned int & column) const;
 	///
 	bool latexSpecialT3(
 		char_type const c,
 		otexstream & os,
 		pos_type i,
-		unsigned int & column);
+		unsigned int & column) const;
 
 	///
 	void validate(LaTeXFeatures & features) const;
@@ -1316,7 +1316,7 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 
 
 bool Paragraph::Private::latexSpecialT1(char_type const c, otexstream & os,
-	pos_type i, unsigned int & column)
+	pos_type i, unsigned int & column) const
 {
 	switch (c) {
 	case '>':
@@ -1344,7 +1344,7 @@ bool Paragraph::Private::latexSpecialT1(char_type const c, otexstream & os,
 
 
 bool Paragraph::Private::latexSpecialTU(char_type const c, otexstream & os,
-	pos_type i, unsigned int & column)
+	pos_type i, unsigned int & column) const
 {
 	// TU encoding is currently on par with T1.
 	return latexSpecialT1(c, os, i, column);
@@ -1352,7 +1352,7 @@ bool Paragraph::Private::latexSpecialTU(char_type const c, otexstream & os,
 
 
 bool Paragraph::Private::latexSpecialT3(char_type const c, otexstream & os,
-	pos_type /*i*/, unsigned int & column)
+	pos_type /*i*/, unsigned int & column) const
 {
 	switch (c) {
 	case '*':

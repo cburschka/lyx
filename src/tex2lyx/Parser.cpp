@@ -443,7 +443,7 @@ void Parser::dropPosition()
 }
 
 
-bool Parser::good()
+bool Parser::good() const
 {
 	if (pos_ < tokens_.size())
 		return true;

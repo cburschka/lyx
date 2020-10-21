@@ -118,7 +118,7 @@ public:
 	///
 	void setWordSelection(bool set) { word_selection_ = set; }
 	///
-	bool wordSelection() { return word_selection_; }
+	bool wordSelection() const { return word_selection_; }
 	/// did we place the anchor?
 	bool mark() const { return mark_; }
 	/// did we place the anchor?
@@ -131,10 +131,10 @@ public:
 	void clearSelection();
 	/// check whether selection contains specific type of inset
 	/// returns 0 if no selection was made
-	bool insetInSelection(InsetCode const & inset);
+	bool insetInSelection(InsetCode const & inset) const;
 	/// count occurences of specific inset type in the selection
 	/// returns 0 if no selection was made
-	int countInsetsInSelection(InsetCode const & inset);
+	int countInsetsInSelection(InsetCode const & inset) const;
 
 	/// access to normalized selection anchor
 	CursorSlice normalAnchor() const;
@@ -207,7 +207,7 @@ public:
 	DocIterator newWord() const { return new_word_; }
 
 	/// are we in math mode (2), text mode (1) or unsure (0)?
-	int currentMode();
+	int currentMode() const;
 
 	/// Return true if the next or previous inset has confirmDeletion depending
 	/// on the boolean before. If there is a selection, return true if at least

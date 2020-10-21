@@ -176,9 +176,9 @@ public:
 	Graph::EdgePath getPath(std::string const & from, std::string const & to);
 	///
 	OutputParams::FLAVOR getFlavor(Graph::EdgePath const & path,
-					   Buffer const * buffer = nullptr);
+					   Buffer const * buffer = nullptr) const;
 	///
-	std::string getHyperrefDriver(Graph::EdgePath const & path);
+	std::string getHyperrefDriver(Graph::EdgePath const & path) const;
 	/// Flags for converting files
 	enum ConversionFlags {
 		/// No special flags
@@ -199,7 +199,7 @@ public:
 	///
 	void updateLast(Formats const & formats);
 	///
-	bool formatIsUsed(std::string const & format);
+	bool formatIsUsed(std::string const & format) const;
 	///
 	const_iterator begin() const { return converterlist_.begin(); }
 	///

@@ -116,7 +116,7 @@ public:
 	///
 	void reset();
 	/// \return true if the item was updated.
-	bool updateItem(DocIterator const & pit);
+	bool updateItem(DocIterator const & pit) const;
 	///
 	TocList const & tocs() const { return tocs_; }
 	/// never null

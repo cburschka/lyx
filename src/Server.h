@@ -104,7 +104,7 @@ public:
 #endif
 
 	/// Tell whether we asked another instance of LyX to open the files
-	bool deferredLoading() { return deferred_loading_; }
+	bool deferredLoading() const { return deferred_loading_; }
 
 private:
 	/// the filename of the in pipe

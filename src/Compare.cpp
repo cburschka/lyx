@@ -107,7 +107,7 @@ public:
 		: o(o_), n(n_)
 	{}
 
-	bool operator!=(DocPair const & rhs)
+	bool operator!=(DocPair const & rhs) const
 	{
 		// this might not be intuitive but correct for our purpose
 		return o != rhs.o && n != rhs.n;

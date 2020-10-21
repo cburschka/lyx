@@ -185,7 +185,7 @@ public:
 	int run(TeXErrors &);
 
 	///
-	int getNumErrors() { return num_errors;}
+	int getNumErrors() const { return num_errors;}
 
 	///
 	int scanLogFile(TeXErrors &);

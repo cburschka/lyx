@@ -153,7 +153,7 @@ TocBuilder & TocBackend::builder(string const & type)
 // TocItem creation and update should be made in a dedicated function and
 // updateItem should be rewritten to uniformly update the matching items from
 // all TOCs.
-bool TocBackend::updateItem(DocIterator const & dit_in)
+bool TocBackend::updateItem(DocIterator const & dit_in) const
 {
 	// we need a text
 	DocIterator dit = dit_in.getInnerText();

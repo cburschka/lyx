@@ -46,7 +46,7 @@ public:
 	void updateTitles();
 	/// If there is no work area, create a new one in the current view using the
 	/// buffer buf. Returns false if not possible.
-	bool unhide(Buffer * buf);
+	bool unhide(Buffer * buf) const;
 
 private:
 	typedef std::list<WorkArea *>::iterator iterator;

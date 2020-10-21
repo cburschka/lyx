@@ -334,7 +334,7 @@ public:
 	/// Is any further input pending()? This is not like
 	/// std::istream::good(), which returns true if all available input
 	/// was read, and the next attempt to read would return EOF.
-	bool good();
+	bool good() const;
 	/// resets the parser to initial state
 	void reset();
 

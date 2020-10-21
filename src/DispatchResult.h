@@ -48,7 +48,7 @@ public:
 	///
 	void setError(bool e) { error_ = e; }
 	///
-	docstring message() { return message_; }
+	docstring message() const { return message_; }
 	///
 	void setMessage(docstring const & m) { message_ = m; }
 	///
