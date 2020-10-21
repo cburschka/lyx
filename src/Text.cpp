@@ -1127,7 +1127,7 @@ void Text::charInserted(Cursor & cur)
 	    && par.isWordSeparator(cur.pos() - 1)) {
 		// get the word in front of cursor
 		LBUFERR(this == cur.text());
-		cur.paragraph().updateWords();
+		par.updateWords();
 	}
 }
 

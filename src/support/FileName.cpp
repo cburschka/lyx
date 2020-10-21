@@ -958,7 +958,7 @@ string DocFileName::outputFileName(string const & path) const
 string DocFileName::mangledFileName(string const & dir) const
 {
 	return mangledFileName(dir, true, false);
-};
+}
 
 string DocFileName::mangledFileName(string const & dir, bool use_counter, bool encrypt_path) const
 {

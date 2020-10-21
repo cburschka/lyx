@@ -540,7 +540,8 @@ void PreviewLoader::Impl::add(string const & latex_snippet)
 
 namespace {
 
-std::function<void (InProgressProcess &)> EraseSnippet(string const & s) {
+std::function<void (InProgressProcess &)> EraseSnippet(string const & s)
+{
 	return [&s](InProgressProcess & process) {
 		BitmapFile & snippets = process.second.snippets;
 		BitmapFile::iterator it  = snippets.begin();
@@ -550,7 +551,7 @@ std::function<void (InProgressProcess &)> EraseSnippet(string const & s) {
 		if (it != end)
 			snippets.erase(it, it+1);
 	};
-};
+}
 
 } // namespace
 
