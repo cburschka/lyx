@@ -2400,7 +2400,7 @@ bool notifyCursorLeavesOrEnters(Cursor const & old, Cursor & cur)
 void Cursor::setLanguageFromInput()
 {
 	if (!lyxrc.respect_os_kbd_language
-	    || (inTextEd() && paragraph().isPassthru())
+	    || (inTexted() && paragraph().isPassThru()))
 		return;
 	string const & code = theApp()->inputLanguageCode();
 	Language const * lang = languages.getFromCode(code, buffer()->getLanguages());
