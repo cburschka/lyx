@@ -19,7 +19,7 @@
 # see http://www.springer.com/authors for class files and further instructions
 
 
-Format 85
+Format 86
 PageStyle		Plain
 
 
@@ -147,14 +147,19 @@ Style PartBacktext
 	Argument 1
 	  Mandatory	1
 	  LabelString	"Part Title"
-	  Tooltip	"Title of this part"
+	  Tooltip	    "Title of this part"
 	  IsTocCaption  1
+	  DocBookTag    title
 	EndArgument
 	Preamble
 	  \newenvironment{svmultpartbacktext}[1]{\begin{partbacktext}
 	  \part{#1}}{\end{partbacktext}}
 	EndPreamble
 	HTMLTag		h1
+	DocBookTag            NONE
+	DocBookSection        true
+	DocBookSectionTag     part
+	# A second paragraph of PartBacktext can only wreak havok: it should start a section, and nothing else (otherwise, it's a real nightmare to implement). This ought to be enough for now, even though the document cannot be valid.
 End
 
 Style Chapter
@@ -426,12 +431,15 @@ Style Running_Title
 	LatexName	titlerunning
 	InTitle		1
 	LabelString	"Running title:"
+	DocBookTag            titleabbrev
+	DocBookTagType        paragraph
 End
 
 Style Running_Author
 	CopyStyle	Running_Title
 	LatexName	authorrunning
 	LabelString	"Running author:"
+	DocBookTag  NONE # Still TODO
 End
 
 Style Running_Chapter
@@ -440,12 +448,17 @@ Style Running_Chapter
 	InTitle		0
 	LatexName	chaptermark
 	LabelString	"Running chapter:"
+	DocBookTag            titleabbrev
+	DocBookTagType        paragraph
+	DocBookSection        false
 End
 
 Style Running_Section
 	CopyStyle	Running_Chapter
 	LatexName	sectionmark
 	LabelString	"Running section:"
+	DocBookTag            titleabbrev
+	DocBookTagType        paragraph
 End
 
 Style Abstract
@@ -567,12 +580,10 @@ Style Foreword
 	  Series	Bold
 	  Size		Huge
 	EndFont
-	HTMLTag		h1
-	DocBookTag             para
+	DocBookTag             title
 	DocBookTagType         paragraph
-	DocBookWrapperTag      preface
-	DocBookWrapperTagType  block
-	DocBookWrapperMergeWithPrevious    true
+	DocBookSection         true
+	DocBookSectionTag      preface
 End
 
 Style Preface
@@ -587,6 +598,10 @@ Style Preface
 	LabelString	"Preface"
 	LabelSep	xx
 	Align		Left
+	DocBookTag             title
+	DocBookTagType         paragraph
+	DocBookSection         true
+	DocBookSectionTag      preface
 End
 
 Style Acknowledgement

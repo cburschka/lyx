@@ -54,7 +54,7 @@ public:
 	///
 	int plaintext(odocstringstream &, OutputParams const &, size_t) const override { return 0; }
 	///
-	void docbook(XMLStream &, OutputParams const &) const override { return; }
+	void docbook(XMLStream & xs, OutputParams const &) const override;
 	///
 	docstring xhtml(XMLStream &, OutputParams const &) const override
 		{ return docstring(); }
@@ -125,6 +125,12 @@ private:
 	std::string caption_of_toc_;
 	/// Specific line break macro
 	std::string newline_cmd_;
+	/// DocBook tag for this argument, if any (otherwise, NONE).
+	docstring docbooktag_;
+	/// Type of DocBook tag (controls how new lines are inserted around this argument).
+	docstring docbooktagtype_;
+	/// DocBook attributes.
+	docstring docbookattr_;
 
 protected:
 	/// \name Protected functions inherited from Inset class

@@ -112,6 +112,9 @@ public:
 		bool is_toc_caption = false;
 		bool free_spacing = false;
 		std::string newlinecmd;
+		docstring docbooktag;
+		docstring docbooktagtype;
+		docstring docbookattr;
 	};
 	///
 	typedef std::map<std::string, latexarg> LaTeXArgMap;
@@ -218,6 +221,8 @@ public:
 	bool docbookwrappermergewithprevious() const { return docbookwrappermergewithprevious_; }
 	///
 	std::string const & docbooksectiontag() const;
+	///
+	bool docbooksection() const { return docbooksection_; }
 	///
 	std::string const & docbookitemwrappertag() const;
 	///
@@ -557,6 +562,8 @@ private:
 	/// Outer tag for this section, only if this layout represent a sectionning item, including chapters
 	/// (default: section).
 	mutable std::string docbooksectiontag_;
+	/// Whether this element should be considered as a section-level element in DocBook.
+	bool docbooksection_;
 	/// Whether this tag must/can/can't go into an <info> tag (default: never, as it only makes sense for metadata).
 	mutable std::string docbookininfo_;
 	/// Wehther this paragraph should be considered as abstract.

@@ -44,7 +44,8 @@ InsetLayout::InsetLayout() :
 	forceownlines_(false), needprotect_(false), needcprotect_(false),
 	needmboxprotect_(false), intoc_(false), spellcheck_(true),
 	resetsfont_(false), display_(true), forcelocalfontswitch_(false),
-	add_to_toc_(false), is_toc_caption_(false), edit_external_(false)
+	add_to_toc_(false), is_toc_caption_(false), edit_external_(false),
+	docbooksection_(false)
 {
 	labelfont_.setColor(Color_error);
 }
@@ -111,6 +112,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		IL_DOCBOOKTAG,
 		IL_DOCBOOKTAGTYPE,
 		IL_DOCBOOKATTR,
+		IL_DOCBOOKSECTION,
 		IL_DOCBOOKWRAPPERTAG,
 		IL_DOCBOOKWRAPPERTAGTYPE,
 		IL_DOCBOOKWRAPPERATTR,
@@ -159,6 +161,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		{ "decoration", IL_DECORATION },
 		{ "display", IL_DISPLAY },
 		{ "docbookattr", IL_DOCBOOKATTR },
+		{ "docbooksection", IL_DOCBOOKSECTION },
 		{ "docbooktag", IL_DOCBOOKTAG },
 		{ "docbooktagtype", IL_DOCBOOKTAGTYPE },
 		{ "docbookwrapperattr", IL_DOCBOOKWRAPPERATTR },
@@ -512,6 +515,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 			break;
 		case IL_DOCBOOKATTR:
 			lex >> docbookattr_;
+			break;
+		case IL_DOCBOOKSECTION:
+			lex >> docbooksection_;
 			break;
 		case IL_DOCBOOKWRAPPERTAG:
 			lex >> docbookwrappertag_;

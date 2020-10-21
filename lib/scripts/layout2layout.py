@@ -11,7 +11,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 85
+currentFormat = 86
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -292,6 +292,10 @@ currentFormat = 85
 # Incremented to format 85, 7 October 2020 by tcuvelier
 # New tags DocBookInnerTag, DocBookInnerAttr,
 # DocBookInnerTagType
+
+# Incremented to format 86, 20 October 2020 by tcuvelier
+# New tag DocBookSection.
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 

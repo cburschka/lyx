@@ -718,7 +718,7 @@ void makeCommand(
 
 bool isLayoutSectioning(Layout const & lay)
 {
-	return lay.category() == from_utf8("Sectioning");
+	return lay.docbooksection() || lay.category() == from_utf8("Sectioning");
 }
 
 
@@ -766,6 +766,12 @@ bool hasOnlyNotes(Paragraph const & par)
 		// return false.
 		if (!par.isInset(i) || par.getInset(i)->lyxCode() != NOTE_CODE)
 			return false;
+
+	// An empty paragraph may still require some output.
+	if (par.layout().docbooksection())
+		return false;
+
+	// There should be really no content here.
 	return true;
 }
 

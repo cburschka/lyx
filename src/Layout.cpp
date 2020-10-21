@@ -117,6 +117,7 @@ enum LayoutTags {
 	LT_DOCBOOKWRAPPERATTR,
 	LT_DOCBOOKWRAPPERTAGTYPE,
 	LT_DOCBOOKWRAPPERMERGEWITHPREVIOUS,
+	LT_DOCBOOKSECTION,
 	LT_DOCBOOKSECTIONTAG,
 	LT_DOCBOOKITEMWRAPPERTAG,
 	LT_DOCBOOKITEMWRAPPERATTR,
@@ -190,6 +191,7 @@ Layout::Layout()
 	htmltitle_ = false;
 	docbookabstract_ = false;
 	docbookwrappermergewithprevious_ = false;
+	docbooksection_ = false;
 	spellcheck = true;
 	forcelocal = 0;
 	itemcommand_ = "item";
@@ -253,6 +255,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 		{ "docbookitemwrapperattr",    LT_DOCBOOKITEMWRAPPERATTR },
 		{ "docbookitemwrappertag",     LT_DOCBOOKITEMWRAPPERTAG },
 		{ "docbookitemwrappertagtype", LT_DOCBOOKITEMWRAPPERTAGTYPE },
+		{ "docbooksection",            LT_DOCBOOKSECTION },
 		{ "docbooksectiontag",         LT_DOCBOOKSECTIONTAG },
 		{ "docbooktag",                LT_DOCBOOKTAG },
 		{ "docbooktagtype",            LT_DOCBOOKTAGTYPE },
@@ -797,6 +800,10 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 			lex >> docbookwrappermergewithprevious_;
 			break;
 
+		case LT_DOCBOOKSECTION:
+			lex >> docbooksection_;
+			break;
+
 		case LT_DOCBOOKSECTIONTAG:
 			lex >> docbooksectiontag_;
 			break;
@@ -1261,6 +1268,15 @@ void Layout::readArgument(Lexer & lex, bool validating)
 		} else if (tok == "freespacing") {
 			lex.next();
 			arg.free_spacing = lex.getBool();
+		} else if (tok == "docbooktag") {
+			lex.next();
+			arg.docbooktag = lex.getDocString();
+		} else if (tok == "docbookattr") {
+			lex.next();
+			arg.docbookattr = lex.getDocString();
+		} else if (tok == "docbooktagtype") {
+			lex.next();
+			arg.docbooktagtype = lex.getDocString();
 		} else {
 			lex.printError("Unknown tag");
 			error = true;
@@ -1672,6 +1688,7 @@ void Layout::write(ostream & os) const
 		os << "\tDocBookWrapperAttr " << docbookwrapperattr_ << '\n';
 	if(!docbookwrappertagtype_.empty())
 		os << "\tDocBookWrapperTagType " << docbookwrappertagtype_ << '\n';
+	os << "\tDocBookSection " << docbooksection_ << '\n';
 	if(!docbooksectiontag_.empty())
 		os << "\tDocBookSectionTag " << docbooksectiontag_ << '\n';
 	if(!docbookitemtag_.empty())

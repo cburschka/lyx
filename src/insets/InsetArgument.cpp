@@ -27,6 +27,7 @@
 #include "TexRow.h"
 #include "texstream.h"
 #include "TocBackend.h"
+#include "xml.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -122,6 +123,9 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype, bool 
 		pass_thru_chars_ = (*lait).second.pass_thru_chars;
 		newline_cmd_ = (*lait).second.newlinecmd;
 		free_spacing_ = (*lait).second.free_spacing;
+		docbooktag_ = (*lait).second.docbooktag;
+		docbooktagtype_ = (*lait).second.docbooktagtype;
+		docbookattr_ = (*lait).second.docbookattr;
 		pass_thru_local_ = false;
 		if (lait->second.is_toc_caption) {
 			is_toc_caption_ = true;
@@ -304,6 +308,17 @@ InsetLayout::InsetDecoration InsetArgument::decoration() const
 	if (!decoration_.empty())
 		dec = translateDecoration(decoration_);
 	return dec == InsetLayout::DEFAULT ? InsetLayout::CLASSIC : dec;
+}
+
+
+void InsetArgument::docbook(XMLStream & xs, OutputParams const & rp) const {
+	if (docbooktag_ != from_ascii("NONE")) {
+		// TODO: implement docbooktagtype_.
+		xs << xml::StartTag(docbooktag_, docbookattr_);
+		InsetText::docbook(xs, rp);
+		xs << xml::EndTag(docbooktag_);
+		xs << xml::CR();
+	}
 }
 
 
