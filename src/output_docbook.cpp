@@ -718,7 +718,11 @@ void makeCommand(
 
 bool isLayoutSectioning(Layout const & lay)
 {
-	return lay.docbooksection() || lay.category() == from_utf8("Sectioning");
+	if (lay.docbooksection()) // Special case: some DocBook styles must be handled as sections.
+		return true;
+	else if (lay.category() == from_utf8("Sectioning")) // Generic case.
+		return lay.toclevel != Layout::NOT_IN_TOC;
+	return false;
 }
 
 
