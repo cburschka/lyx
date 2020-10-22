@@ -2,32 +2,24 @@
 <!-- This DocBook file was created by LyX 2.4.0dev
   See http://www.lyx.org/ for more information -->
 <book xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
-<info>
-<title>Book title</title>
-<author>
-<personname>Author name(s)</personname>
-</author>
-</info>
-<part>
-<!-- par --><title>Part Title</title>
- Part title page and, if desired, a short introductory text (maximum one page) on its verso page.</part>
+<title>Untitled Document</title>
 <chapter xml:id="chap.intro">
 <title>Chapter Heading</title>
-</chapter>
+<info>
 <titleabbrev>chapter heading in the running head</titleabbrev>
 <abstract role='not-printed'>
-<para>Each chapter should be preceded by an abstract (10–15 lines long) that summarizes the content. The abstract will appear <emphasis>online at <link xlink:href="www.SpringerLink.com">www.SpringerLink.com</link> and be available with unrestricted access. This allows unregistered users to read the abstract as a teaser for the complete chapter. As a general rule the abstracts will not appear in the printed version of your book unless it is the style of your particular book or that of the series to which your book belongs.</emphasis><!-- \indent -->
+<para>Each chapter should be preceded by an abstract (10–15 lines long) that summarizes the content. The abstract will appear <emphasis>online at  and be available with unrestricted access. This allows unregistered users to read the abstract as a teaser for the complete chapter. As a general rule the abstracts will not appear in the printed version of your book unless it is the style of your particular book or that of the series to which your book belongs.</emphasis><!-- \indent -->
  Please use the 'starred' version of the <code>abstract</code> environment for typesetting the text of the online abstracts. Use the plain <code>abstract</code> if the abstract is also to appear in the printed version of the book.</para>
 </abstract>
 <abstract>
-<para>Each chapter should be preceded by an abstract (10–15 lines long) that summarizes the content. The abstract will appear <emphasis>online at <link xlink:href="www.SpringerLink.com">www.SpringerLink.com</link> and be available with unrestricted access. This allows unregistered users to read the abstract as a teaser for the complete chapter. As a general rule the abstracts will not appear in the printed version of your book unless it is the style of your particular book or that of the series to which your book belongs.</emphasis><!-- \indent -->
+<para>Each chapter should be preceded by an abstract (10–15 lines long) that summarizes the content. The abstract will appear <emphasis>online at  and be available with unrestricted access. This allows unregistered users to read the abstract as a teaser for the complete chapter. As a general rule the abstracts will not appear in the printed version of your book unless it is the style of your particular book or that of the series to which your book belongs.</emphasis><!-- \indent -->
  Please use the 'starred' version of the <code>abstract</code> environment for typesetting the text of the online abstracts. Use the plain <code>abstract</code> if the abstract is also to appear in the printed version of the book.</para>
 </abstract>
+</info>
 <section xml:id="sec.Section-Heading">
 <title>Section Heading</title>
-</section>
 <titleabbrev>section heading in the running head</titleabbrev>
-<para>bla</para>
+</section>
 <section xml:id="sec.Section-Heading-2">
 <title>Section Heading 2</title>
 <para>Instead of simply listing headings of different levels we recommend to let every heading be followed by at least a short passage of text.</para>
@@ -42,9 +34,7 @@
  </m:mrow>
  </m:math>
 </informalequation>
- however, for multiline equations we recommend to use the <emphasis role='sans'>eqnarray</emphasis> environment<footnote>
-<para>In physics texts please activate the class option <code>vecphys</code> to depict your vectors in <emphasis role='bold'><emphasis>boldface-italic</emphasis> type - as is customary for a wide range of physical subjects.</emphasis></para>
-</footnote>. 
+ however, for multiline equations we recommend to use the <emphasis role='sans'>eqnarray</emphasis> environment. 
 <informalequation xml:id="eq.01">
 <alt role='tex'>a\times b &amp; = &amp; c\nonumber \\
 \vec{a}\cdot\vec{b} &amp; = &amp; c\label{eq:01}
@@ -85,4 +75,5 @@
 </informalequation>
 </para>
 </section>
+</chapter>
 </book>

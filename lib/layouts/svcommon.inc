@@ -433,6 +433,7 @@ Style Running_Title
 	LabelString	"Running title:"
 	DocBookTag            titleabbrev
 	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 End
 
 Style Running_Author
@@ -450,6 +451,7 @@ Style Running_Chapter
 	LabelString	"Running chapter:"
 	DocBookTag            titleabbrev
 	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 	DocBookSection        false
 End
 
@@ -459,6 +461,7 @@ Style Running_Section
 	LabelString	"Running section:"
 	DocBookTag            titleabbrev
 	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 End
 
 Style Abstract

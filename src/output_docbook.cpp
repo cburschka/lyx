@@ -782,8 +782,14 @@ bool hasOnlyNotes(Paragraph const & par)
 
 DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs,
 									 pit_type bpit, pit_type const epit,
-									 // Typically, bpit is the beginning of the document and epit the end *or* the first section.
-									 bool documentHasSections) {
+									 // Typically, bpit is the beginning of the document and epit the end of the
+									 // document *or* the first section.
+									 bool documentHasSections,
+									 bool detectUnlayoutedAbstract
+									 // Whether paragraphs with no specific layout should be detected as abstracts.
+									 // For inner sections, an abstract should only be detected if it has a specific
+									 // layout. For others, anything that might look like an abstract should be sought.
+									 ) {
 	set<pit_type> shouldBeInInfo;
 	set<pit_type> mustBeInInfo;
 	set<pit_type> abstractWithLayout;
@@ -804,7 +810,8 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs,
 	for (; cpit < epit; ++cpit) {
 		// Skip paragraphs that don't generate anything in DocBook.
 		Paragraph const & par = paragraphs[cpit];
-		if (hasOnlyNotes(par))
+		Layout const &style = par.layout();
+		if (hasOnlyNotes(par) || style.docbookininfo() == "never")
 			continue;
 
 		// There should never be any section here. (Just a sanity check: if this fails, this function could end up
@@ -815,7 +822,7 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs,
 		}
 
 		// If this is marked as an abstract by the layout, put it in the right set.
-		if (par.layout().docbookabstract()) {
+		if (style.docbookabstract()) {
 			hasAbstractLayout = true;
 			abstractWithLayout.emplace(cpit);
 			continue;
@@ -823,13 +830,11 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs,
 
 		// Based on layout information, store this paragraph in one set: should be in <info>, must be,
 		// or abstract (either because of layout or of position).
-		Layout const &style = par.layout();
-
 		if (style.docbookininfo() == "always")
 			mustBeInInfo.emplace(cpit);
 		else if (style.docbookininfo() == "maybe")
 			shouldBeInInfo.emplace(cpit);
-		else if (documentHasSections && !hasAbstractLayout)
+		else if (documentHasSections && !hasAbstractLayout && detectUnlayoutedAbstract)
 			abstractNoLayout.emplace(cpit);
 		else // This should definitely not be in <info>.
 			break;
@@ -991,7 +996,7 @@ void docbookSimpleAllParagraphs(
 	ParagraphList const &paragraphs = text.paragraphs();
 
 	// First, the <info> tag.
-	DocBookInfoTag info = getParagraphsWithInfo(paragraphs, bpit, epit, false);
+	DocBookInfoTag info = getParagraphsWithInfo(paragraphs, bpit, epit, false, true);
 	outputDocBookInfo(text, buf, xs, runparams, paragraphs, info);
 
 	// Then, the content. It starts where the <info> ends.
@@ -1039,7 +1044,7 @@ void docbookParagraphs(Text const &text,
 	}
 
 	// Output the first <info> tag (or just the title).
-	DocBookInfoTag info = getParagraphsWithInfo(paragraphs, bpit, eppit, true);
+	DocBookInfoTag info = getParagraphsWithInfo(paragraphs, bpit, eppit, true, true);
 	outputDocBookInfo(text, buf, xs, runparams, paragraphs, info);
 	bpit = info.epit;
 
@@ -1134,27 +1139,77 @@ void docbookParagraphs(Text const &text,
 		// Generate this paragraph.
 		par = makeAny(text, buf, xs, ourparams, par);
 
-		// Some special sections may require abstracts (mostly parts, in books).
+		// Some sections may require abstracts (mostly parts, in books: DocBookForceAbstractTag will not be NONE),
+		// others can still have an abstract (it must be detected so that it can be output at the right place).
 		// TODO: docbookforceabstracttag is a bit contrived here, but it does the job. Having another field just for this would be cleaner, but that's just for <part> and <partintro>, so it's probably not worth the effort.
-		if (isLayoutSectioning(style) && style.docbookforceabstracttag() != "NONE") {
+		if (isLayoutSectioning(style)) {
 			// This abstract may be found between the next paragraph and the next title.
 			pit_type cpit = std::distance(text.paragraphs().begin(), par);
 			pit_type ppit = std::get<1>(hasDocumentSectioning(paragraphs, cpit, epit));
 
 			// Generate this abstract (this code corresponds to parts of outputDocBookInfo).
-			DocBookInfoTag secInfo = getParagraphsWithInfo(paragraphs, cpit, ppit, true);
+			DocBookInfoTag secInfo = getParagraphsWithInfo(paragraphs, cpit, ppit, true,
+												  style.docbookforceabstracttag() != "NONE");
 
-			if (!secInfo.abstract.empty()) {
-				xs << xml::StartTag(style.docbookforceabstracttag());
-				xs << xml::CR();
-				for (auto const &p : secInfo.abstract)
-					makeAny(text, buf, xs, runparams, paragraphs.iterator_at(p));
-				xs << xml::EndTag(style.docbookforceabstracttag());
-				xs << xml::CR();
+			if (!secInfo.mustBeInInfo.empty() || !secInfo.shouldBeInInfo.empty() || !secInfo.abstract.empty()) {
+				// Generate the <info>, if required. If DocBookForceAbstractTag != NONE, this abstract will not be in
+				// <info>, unlike other ("standard") abstracts.
+				bool hasStandardAbstract = !secInfo.abstract.empty() && style.docbookforceabstracttag() == "NONE";
+				bool needInfo = !secInfo.mustBeInInfo.empty() || hasStandardAbstract;
+
+				if (needInfo) {
+					xs.startDivision(false);
+					xs << xml::StartTag("info");
+					xs << xml::CR();
+				}
+
+				// Output the elements that should go in <info>, before and after the abstract.
+				for (auto pit : secInfo.shouldBeInInfo) // Typically, the title: these elements are so important and ubiquitous
+					// that mandating a wrapper like <info> would repel users. Thus, generate them first.
+					makeAny(text, buf, xs, runparams, paragraphs.iterator_at(pit));
+				for (auto pit : secInfo.mustBeInInfo)
+					makeAny(text, buf, xs, runparams, paragraphs.iterator_at(pit));
+
+				// Deal with the abstract in <info> if it is standard (i.e. its tag is <abstract>).
+				if (!secInfo.abstract.empty() && hasStandardAbstract) {
+					if (!secInfo.abstractLayout) {
+						xs << xml::StartTag("abstract");
+						xs << xml::CR();
+					}
+
+					for (auto const &p : secInfo.abstract)
+						makeAny(text, buf, xs, runparams, paragraphs.iterator_at(p));
+
+					if (!secInfo.abstractLayout) {
+						xs << xml::EndTag("abstract");
+						xs << xml::CR();
+					}
+				}
+
+				// End the <info> tag if it was started.
+				if (needInfo) {
+					if (!xs.isLastTagCR())
+						xs << xml::CR();
+
+					xs << xml::EndTag("info");
+					xs << xml::CR();
+					xs.endDivision();
+				}
+
+				// Deal with the abstract outside <info> if it is not standard (i.e. its tag is layout-defined).
+				if (!secInfo.abstract.empty() && !hasStandardAbstract) {
+					// Assert: style.docbookforceabstracttag() != NONE.
+					xs << xml::StartTag(style.docbookforceabstracttag());
+					xs << xml::CR();
+					for (auto const &p : secInfo.abstract)
+						makeAny(text, buf, xs, runparams, paragraphs.iterator_at(p));
+					xs << xml::EndTag(style.docbookforceabstracttag());
+					xs << xml::CR();
+				}
+
+				// Skip all the text that just has been generated.
+				par = paragraphs.iterator_at(ppit);
 			}
-
-			// Skip all the text that just has been generated.
-			par = paragraphs.iterator_at(ppit);
 		}
 	}
 
