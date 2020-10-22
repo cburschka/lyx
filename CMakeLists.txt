@@ -6,13 +6,11 @@
 
 cmake_minimum_required(VERSION 3.1.0)
 
-set(CMAKE_CXX_STANDARD 20)
 set(GNUWIN32_DIR D:/LyX/lyx-unstable/lyx-windows-deps-msvc2017)
 set(LYX_USE_QT "QT5")
 set(LYX_REQUIRE_SPELLCHECK true)
 
 set(LYX_PROJECT LyX)
-
 # Instruct cmake to not use gnu extensions,
 # this prevents the mix of '-std=c++*' and '-std=gnu++*' flags
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -697,7 +695,17 @@ else()
 	  # for the pointer to https://cmake.org/cmake/help/v3.6/variable/CMAKE_CXX_STANDARD.html
 	  # This allows us to use QT5.7 with recent g++ (version >= 4.9) compilers
 	  # and still use our own c++ extension tests
-	  set(CMAKE_CXX_STANDARD ${CMAKE_MATCH_1})
+	  set(std_num ${CMAKE_MATCH_1})
+	  # Try to find a std-cxx-feature supported by this cmake version
+	  while (std_num GREATER 0)
+	    list(FIND CMAKE_CXX_COMPILE_FEATURES "cxx_std_${std_num}" stdfeature)
+	    if (stdfeature GREATER_EQUAL 0)
+	      set(CMAKE_CXX_STANDARD ${std_num})
+	      break()
+	    endif()
+	    math(EXPR std_num "${std_num}-1")
+	  endwhile()
+
 	  message(STATUS "CMAKE_CXX_STANDARD set to ${CMAKE_CXX_STANDARD}")
 	  set(LYX_CXX_FLAGS "-Wall -Wunused-parameter ${LYX_CXX_FLAGS}")
 	else()
