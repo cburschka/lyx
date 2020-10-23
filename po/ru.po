@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-10-22 11:39+0300\n"
-"PO-Revision-Date: 2020-10-22 11:54+0300\n"
+"POT-Creation-Date: 2020-10-23 10:28+0300\n"
+"PO-Revision-Date: 2020-10-23 10:31+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -2393,9 +2393,10 @@ msgid ""
 "Bye."
 msgstr ""
 "Обнаружен сигнал SIGSEGV!\n"
-"Извините, вы нашли ошибку в LyX, надеемся, вы не потеряли никаких данных.\n"
+"Извините, вы обнаружили ошибку в LyX. Надеемся, вы не потеряли никаких "
+"данных.\n"
 "Пожалуйста, ознакомьтесь с инструкциями по сообщению об ошибках в меню "
-"'Помощь->Введение' и при необходимости отправьте нам сообщение об ошибке. "
+"'Помощь->Введение' и по возможности отправьте нам сообщение об этой ошибке. "
 "Спасибо!\n"
 "Пока."
 
@@ -8456,12 +8457,12 @@ msgid "Hidden|H"
 msgstr "Скрытые"
 
 #: src/frontends/qt/Menus.cpp:992
-msgid "<No Documents Open>"
-msgstr "<Нет открытых документов>"
+msgid "(No Documents Open)"
+msgstr "(Нет открытых документов)"
 
 #: src/frontends/qt/Menus.cpp:1058
-msgid "<No Bookmarks Saved Yet>"
-msgstr "<Закладки пока не сохранены>"
+msgid "(No Bookmarks Saved Yet)"
+msgstr "(Нет закладок)"
 
 #: src/frontends/qt/Menus.cpp:1098
 msgid "View (Other Formats)|F"
@@ -8482,8 +8483,8 @@ msgid "Update [%1$s]|U"
 msgstr "Обновить [%1$s]|б"
 
 #: src/frontends/qt/Menus.cpp:1246
-msgid "No Custom Insets Defined!"
-msgstr "(Пользовательские вставки не определены)"
+msgid "(No Custom Insets Defined)"
+msgstr "(Нет пользовательских вставок)"
 
 #: src/frontends/qt/Menus.cpp:1335
 msgid "(No Document Open)"
@@ -8533,12 +8534,12 @@ msgstr "Рубрика указателя (%1$s)"
 
 #: src/frontends/qt/Menus.cpp:1577
 msgid "No Citation in Scope!"
-msgstr "Нет ссылок в поле зрения!"
+msgstr "Нет библиографических ссылок в поле зрения!"
 
 #: src/frontends/qt/Menus.cpp:1591 src/insets/InsetCitation.cpp:323
 #: src/insets/InsetCitation.cpp:453
 msgid "No citations selected!"
-msgstr "Ссылка не выбрана!"
+msgstr "Библиографическая ссылка не выбрана!"
 
 #: src/frontends/qt/Menus.cpp:1640
 msgid "All authors|h"
@@ -8568,7 +8569,7 @@ msgstr "Подпись (%1$s)"
 
 #: src/frontends/qt/Menus.cpp:1805
 msgid "No Quote in Scope!"
-msgstr "Нет цитат в поле зрения!"
+msgstr "Нет кавычки в поле зрения!"
 
 #: src/frontends/qt/Menus.cpp:1841 src/frontends/qt/Menus.cpp:1845
 #: src/frontends/qt/Menus.cpp:1849 src/frontends/qt/Menus.cpp:1853
@@ -9681,7 +9682,7 @@ msgstr "Пропущен \\end_inset в этой точке."
 
 #: src/insets/InsetInfo.cpp:788
 msgid "Unknown Info!"
-msgstr "Неизвестная инфо!"
+msgstr "Неизвестный тип поля!"
 
 #: src/insets/InsetInfo.cpp:797 src/insets/InsetInfo.cpp:984
 #, c-format
@@ -10481,7 +10482,7 @@ msgstr "%1$d строк было заменено."
 
 #: src/lyxfind.cpp:3712
 msgid "Invalid regular expression!"
-msgstr "Неправильное регулярное выражение!"
+msgstr "Некорректное регулярное выражение!"
 
 #: src/lyxfind.cpp:3721
 msgid "One match has been replaced."
@@ -36043,6 +36044,3 @@ msgstr "Диссертация"
 #: lib/examples/Articles:0
 msgid "Theses"
 msgstr "Диссертации"
-
-#~ msgid "Part \\Roman{part}"
-#~ msgstr "Часть \\Roman{part}"
