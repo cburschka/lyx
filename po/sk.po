@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-10-03 13:32+0200\n"
-"PO-Revision-Date: 2020-10-03 11:53+0000\n"
+"POT-Creation-Date: 2020-10-23 11:47+0200\n"
+"PO-Revision-Date: 2020-10-23 10:04+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3159,11 +3159,11 @@ msgstr "&Možnosti:"
 
 #: src/frontends/qt/ui/NumberingUi.ui:73
 msgid ""
-"Line numbering (lineno package) options. Please refer to the lineno package "
-"manual for details."
+"Line numbering (lineno package) options (e.g. right, modulo, switch(*), "
+"pagewise). Please refer to the lineno package manual for details."
 msgstr ""
-"Voľby pre číslovanie riadkov (balík lineno). Pre detaily viďte manuál balíka "
-"lineno."
+"Voľby pre číslovanie riadkov (balík lineno) (napr. riht, modulo, switch(*), "
+"pagewise). Pre detaily viďte manuál balíka lineno."
 
 #: src/frontends/qt/ui/NumberingUi.ui:82
 msgid "&List in Table of Contents"
@@ -10974,6 +10974,26 @@ msgstr "Tlačidlo(Gui)"
 msgid "MenuChoice"
 msgstr "Menu výber"
 
+#: lib/layouts/db_stdtitle.inc:13
+msgid "Authorgroup"
+msgstr "Skupina autora"
+
+#: lib/layouts/db_stdtitle.inc:27
+msgid "RevisionHistory"
+msgstr "Revízna história"
+
+#: lib/layouts/db_stdtitle.inc:42
+msgid "Revision History"
+msgstr "Revízna história"
+
+#: lib/layouts/db_stdtitle.inc:49
+msgid "Revision"
+msgstr "Revízia"
+
+#: lib/layouts/db_stdtitle.inc:66
+msgid "RevisionRemark"
+msgstr "Revízna pripomienka"
+
 #: lib/layouts/dinbrief.layout:3 lib/examples/Articles:0
 msgid "DIN-Brief"
 msgstr "Din-Brief"
@@ -11362,6 +11382,10 @@ msgstr "DocBook kapitola (XML)"
 #: lib/layouts/docbook-section.layout:3
 msgid "DocBook Section (XML)"
 msgstr "DocBook sekcia (XML)"
+
+#: lib/layouts/docbook.layout:3
+msgid "DocBook Article (XML)"
+msgstr "DocBook článok (XML)"
 
 #: lib/layouts/doublecol-new.layout:3
 msgid "Inderscience A4 Journals"
@@ -19672,6 +19696,10 @@ msgid "Page Break|a"
 msgstr "Zalomenie strany|a"
 
 #: lib/ui/stdcontext.inc:325 lib/ui/stdmenus.inc:470
+msgid "No Page Break|g"
+msgstr "Bez zalomenia strany| "
+
+#: lib/ui/stdcontext.inc:325 lib/ui/stdmenus.inc:470
 msgid "Clear Page|C"
 msgstr "Stránku vyprázdniť|S"
 
@@ -20773,7 +20801,7 @@ msgid "Date (Last Modification)|L"
 msgstr "Dátum (Poslednej modifikácie)|m"
 
 #: lib/ui/stdmenus.inc:429
-msgid "Date (Fix)|F"
+msgid "Date (Fixed)|F"
 msgstr "Dátum (Pevný)|P"
 
 #: lib/ui/stdmenus.inc:431
@@ -20785,7 +20813,7 @@ msgid "Time (Last Modification)|M"
 msgstr "Čas (Poslednej modifikácie)|o"
 
 #: lib/ui/stdmenus.inc:433
-msgid "Time (Fix)|x"
+msgid "Time (Fixed)|x"
 msgstr "Čas (Pevný)|v"
 
 #: lib/ui/stdmenus.inc:435
@@ -34336,13 +34364,13 @@ msgstr "Viac jazykov …|z"
 msgid "Hidden|H"
 msgstr "Skryté|y"
 
-#: src/frontends/qt/Menus.cpp:991
-msgid "<No Documents Open>"
-msgstr "<Niet otvorených dokumentov>"
+#: src/frontends/qt/Menus.cpp:992
+msgid "(No Documents Open)"
+msgstr "(Niet otvorených dokumentov)"
 
-#: src/frontends/qt/Menus.cpp:1057
-msgid "<No Bookmarks Saved Yet>"
-msgstr "<Ešte nie sú uložené záložky>"
+#: src/frontends/qt/Menus.cpp:1058
+msgid "(No Bookmarks Saved Yet)"
+msgstr "(Ešte nie sú uložené záložky)"
 
 #: src/frontends/qt/Menus.cpp:1097
 msgid "View (Other Formats)|F"
@@ -34362,9 +34390,9 @@ msgstr "Zobraziť [%1$s]|b"
 msgid "Update [%1$s]|U"
 msgstr "Aktualizovať [%1$s]|k"
 
-#: src/frontends/qt/Menus.cpp:1245
-msgid "No Custom Insets Defined!"
-msgstr "Niet vlastných definovaných vložiek!"
+#: src/frontends/qt/Menus.cpp:1246
+msgid "(No Custom Insets Defined)"
+msgstr "(Niet vlastných definovaných vložiek)"
 
 #: src/frontends/qt/Menus.cpp:1334
 msgid "(No Document Open)"
@@ -35868,6 +35896,10 @@ msgstr "Stránku vyprázdniť"
 msgid "Clear Double Page"
 msgstr "Vyprázdniť dvojitú stránku (\\cleardoublepage)"
 
+#: src/insets/InsetNewpage.cpp:252
+msgid "No Page Break"
+msgstr "Bez zalomenia strany"
+
 #: src/insets/InsetNomencl.cpp:81
 msgid "Nom: "
 msgstr "Nom: "
@@ -36777,6 +36809,9 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "<No Documents Open>"
+#~ msgstr "<Niet otvorených dokumentov>"
+
 #~ msgid "American Geophysical Union (AGU, SGML Article)"
 #~ msgstr "Americká Únia pre Geofyziku (AGU, SGML článok)"
 
@@ -36956,21 +36991,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Postcode"
 #~ msgstr "Poštové smerovacie číslo"
-
-#~ msgid "Authorgroup"
-#~ msgstr "Skupina autora"
-
-#~ msgid "RevisionHistory"
-#~ msgstr "Revízna história"
-
-#~ msgid "Revision History"
-#~ msgstr "Revízna história"
-
-#~ msgid "Revision"
-#~ msgstr "Revízia"
-
-#~ msgid "RevisionRemark"
-#~ msgstr "Revízna pripomienka"
 
 #~ msgid "DocBook Article (SGML)"
 #~ msgstr "DocBook článok (SGML)"
