@@ -239,7 +239,7 @@ void setValid(QWidget * widget, bool valid)
 		widget->setPalette(QPalette());
 	} else {
 		QPalette pal = widget->palette();
-		pal.setColor(QPalette::Active, QPalette::Foreground, QColor(255, 0, 0));
+		pal.setColor(QPalette::Active, QPalette::WindowText, QColor(255, 0, 0));
 		widget->setPalette(pal);
 	}
 }

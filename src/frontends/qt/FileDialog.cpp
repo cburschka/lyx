@@ -188,7 +188,8 @@ FileDialog::Result FileDialog::opendir(QString const & path,
 		LyXFileDialog dlg(title_, path, QStringList(qt_("Directories")),
 						  private_->b1, private_->b2);
 
-		dlg.setFileMode(QFileDialog::DirectoryOnly);
+		dlg.setFileMode(QFileDialog::Directory);
+		dlg.setOption(QFileDialog::ShowDirsOnly, true);
 
 		if (!suggested.isEmpty())
 			dlg.selectFile(suggested);
