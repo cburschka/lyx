@@ -54,6 +54,7 @@ else()
       endif()
     else()
       set(CXX11_FLAG_CANDIDATES
+        "--std=c++20"
         "--std=c++17"
         "--std=c++14"
         "--std=c++11"
