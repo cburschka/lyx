@@ -989,7 +989,7 @@ void MenuDefinition::expandDocuments()
 
 	Buffer * first = theBufferList().first();
 	if (!first) {
-		add(MenuItem(MenuItem::Info, qt_("<No Documents Open>")));
+		add(MenuItem(MenuItem::Info, qt_("(No Documents Open)")));
 		return;
 	}
 
@@ -1055,7 +1055,7 @@ void MenuDefinition::expandBookmarks()
 		}
 	}
 	if (empty)
-		add(MenuItem(MenuItem::Info, qt_("<No Bookmarks Saved Yet>")));
+		add(MenuItem(MenuItem::Info, qt_("(No Bookmarks Saved Yet)")));
 }
 
 
@@ -1243,7 +1243,7 @@ void MenuDefinition::expandFlexInsert(
 	}
 	// FIXME This is a little clunky.
 	if (items_.empty() && type == InsetLayout::CUSTOM && !buf->hasReadonlyFlag())
-		add(MenuItem(MenuItem::Help, qt_("No Custom Insets Defined!")));
+		add(MenuItem(MenuItem::Help, qt_("(No Custom Insets Defined)")));
 }
 
 
