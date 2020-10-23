@@ -54,7 +54,9 @@ else()
       endif()
     else()
       set(CXX11_FLAG_CANDIDATES
-        "--std=c++20"
+# Detection of c++20 works well, but our code is not ready for it yet.
+# We currently get errors with internal boost and also from our code.
+#        "--std=c++20"
         "--std=c++17"
         "--std=c++14"
         "--std=c++11"
