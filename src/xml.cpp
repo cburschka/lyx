@@ -143,7 +143,7 @@ docstring CompTag::writeTag() const
 		// automatically.
 		docstring attributes = escapeString(attr_, XMLStream::ESCAPE_NONE);
 		attributes.erase(attributes.begin(), std::find_if(attributes.begin(), attributes.end(),
-                                                          [](int c) {return !std::isspace(c);}));
+                                                          [](char_type c) {return !isSpace(c);}));
 		if (!attributes.empty()) {
 			output += ' ' + attributes;
 		}

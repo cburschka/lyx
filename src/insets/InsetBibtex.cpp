@@ -1276,7 +1276,7 @@ void InsetBibtex::docbook(XMLStream & xs, OutputParams const &) const
 				xs << xml::StartTag("keywordset") << xml::CR();
 				for (auto & kw: keywords) {
 					kw.erase(kw.begin(), std::find_if(kw.begin(), kw.end(),
-					                                  [](int c) {return !std::isspace(c);}));
+					                                  [](char_type c) {return !lyx::isSpace(c);}));
 					xs << xml::StartTag("keyword");
 					xs << kw;
 					xs << xml::EndTag("keyword");
