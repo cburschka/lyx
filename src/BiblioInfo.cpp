@@ -15,14 +15,15 @@
 #include <config.h>
 
 #include "BiblioInfo.h"
+
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "Citation.h"
 #include "Encoding.h"
 #include "Language.h"
-#include "xml.h"
 #include "TextClass.h"
 #include "TocBackend.h"
+#include "xml.h"
 
 #include "support/convert.h"
 #include "support/debug.h"

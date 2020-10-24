@@ -12,19 +12,18 @@
 
 #include <config.h>
 
-#include "FileDialog.h"
-
-#include "support/FileName.h"
 #include "GuiClipboard.h"
-#include "qt_helpers.h"
 
 #include "Buffer.h"
 #include "BufferView.h"
 #include "Cursor.h"
+#include "FileDialog.h"
+#include "qt_helpers.h"
 
 #include "support/lassert.h"
 #include "support/convert.h"
 #include "support/debug.h"
+#include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"

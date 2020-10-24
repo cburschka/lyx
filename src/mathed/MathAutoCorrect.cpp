@@ -10,8 +10,9 @@
 
 #include <config.h>
 
-#include "Cursor.h"
 #include "MathAutoCorrect.h"
+
+#include "Cursor.h"
 #include "MathData.h"
 #include "InsetMath.h"
 #include "MathSupport.h"

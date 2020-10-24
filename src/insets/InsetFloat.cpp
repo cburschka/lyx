@@ -12,9 +12,10 @@
 
 #include <config.h>
 
+#include "InsetFloat.h"
+
 #include "InsetBox.h"
 #include "InsetCaption.h"
-#include "InsetFloat.h"
 #include "InsetGraphics.h"
 #include "InsetLabel.h"
 

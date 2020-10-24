@@ -10,8 +10,9 @@
 
 #include <config.h>
 
-#include "InsetMathSqrt.h"
 #include "MacroTable.h"
+
+#include "InsetMathSqrt.h"
 #include "InsetMathMacroTemplate.h"
 #include "InsetMathMacroArgument.h"
 #include "MathParser.h"

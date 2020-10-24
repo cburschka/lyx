@@ -12,8 +12,9 @@
 
 #include <config.h>
 
-#include "support/convert.h"
 #include "support/debug.h"
+
+#include "support/convert.h"
 #include "support/FileName.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"

@@ -10,8 +10,9 @@
 
 #include <config.h>
 
-#include "support/lassert.h"
 #include "support/Timeout.h"
+
+#include "support/lassert.h"
 #include "support/debug.h"
 
 #include <QObject>

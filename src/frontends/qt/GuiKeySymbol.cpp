@@ -10,6 +10,8 @@
 
 #include <config.h>
 
+#include "GuiKeySymbol.h"
+
 #include "KeySymbol.h"
 #include "GuiApplication.h"
 

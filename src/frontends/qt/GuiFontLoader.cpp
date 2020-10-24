@@ -11,8 +11,9 @@
 
 #include <config.h>
 
-#include "FontLoader.h"
+#include "GuiFontLoader.h"
 
+#include "FontLoader.h"
 #include "FontInfo.h"
 #include "GuiFontMetrics.h"
 #include "qt_helpers.h"
@@ -22,6 +23,7 @@
 #include "support/debug.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/Systemcall.h"
 #include "support/Package.h"
@@ -29,8 +31,6 @@
 
 #include <QFontInfo>
 #include <QFontDatabase>
-
-#include "support/lassert.h"
 
 using namespace std;
 using namespace lyx::support;

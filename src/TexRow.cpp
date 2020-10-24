@@ -13,11 +13,12 @@
 
 #include <config.h>
 
+#include "TexRow.h"
+
 #include "Buffer.h"
 #include "Cursor.h"
 #include "FuncRequest.h"
 #include "Paragraph.h"
-#include "TexRow.h"
 
 #include "mathed/InsetMath.h"
 

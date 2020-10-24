@@ -11,12 +11,13 @@
 
 #include <config.h>
 
+#include "output_docbook.h"
+
 #include "Buffer.h"
 #include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "Font.h"
 #include "InsetList.h"
-#include "output_docbook.h"
 #include "Paragraph.h"
 #include "ParagraphList.h"
 #include "ParagraphParameters.h"

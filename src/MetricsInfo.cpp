@@ -10,8 +10,9 @@
 
 #include <config.h>
 
-#include "LyXRC.h"
 #include "MetricsInfo.h"
+
+#include "LyXRC.h"
 
 #include "insets/Inset.h"
 

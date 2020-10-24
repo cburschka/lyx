@@ -12,13 +12,14 @@
 
 #include <config.h>
 
+#include "GuiSearch.h"
+
 #include "lyxfind.h"
 #include "qt_helpers.h"
 #include "FuncRequest.h"
 #include "BufferView.h"
 #include "Buffer.h"
 #include "Cursor.h"
-#include "GuiSearch.h"
 #include "GuiView.h"
 
 #include "support/gettext.h"

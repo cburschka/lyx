@@ -21,10 +21,10 @@
 
 #include <config.h>
 
+#include "support/filetools.h"
+
 #include "LyX.h"
 #include "LyXRC.h"
-
-#include "support/filetools.h"
 
 #include "support/convert.h"
 #include "support/debug.h"

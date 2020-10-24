@@ -15,10 +15,11 @@
 
 #include <config.h>
 
+#include "LaTeX.h"
+
 #include "Buffer.h"
 #include "BufferList.h"
 #include "BufferParams.h"
-#include "LaTeX.h"
 #include "LyXRC.h"
 #include "LyX.h"
 #include "DepTable.h"

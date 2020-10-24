@@ -15,10 +15,11 @@
 
 #include <config.h>
 
+#include "support/os_win32.h"
+
 #include "LyXRC.h"
 
 #include "support/os.h"
-#include "support/os_win32.h"
 
 #include "support/debug.h"
 #include "support/environment.h"

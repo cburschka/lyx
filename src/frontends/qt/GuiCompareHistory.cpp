@@ -9,8 +9,6 @@
  */
 
 #include <config.h>
-#include <support/debug.h>
-#include <limits>
 
 #include "GuiCompareHistory.h"
 
@@ -21,10 +19,13 @@
 #include "LyXVC.h"
 
 #include "support/convert.h"
+#include "support/debug.h"
 #include "support/lstrings.h"
 
 #include <QDialogButtonBox>
 #include <QPushButton>
+
+#include <limits>
 
 using namespace std;
 using namespace lyx::support;

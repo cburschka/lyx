@@ -14,8 +14,9 @@
 
 #include <config.h>
 
-#include "ColorSet.h"
 #include "FontInfo.h"
+
+#include "ColorSet.h"
 #include "Lexer.h"
 #include "LyXRC.h"
 

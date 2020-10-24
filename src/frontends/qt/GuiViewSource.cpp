@@ -12,8 +12,9 @@
 
 #include <config.h>
 
-#include "GuiApplication.h"
 #include "GuiViewSource.h"
+
+#include "GuiApplication.h"
 #include "LaTeXHighlighter.h"
 #include "qt_helpers.h"
 

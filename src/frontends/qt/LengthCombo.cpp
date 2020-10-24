@@ -12,9 +12,9 @@
 
 #include <config.h>
 
-#include "support/qstring_helpers.h"
-
 #include "LengthCombo.h"
+
+#include "support/qstring_helpers.h"
 
 #include "qt_helpers.h"
 

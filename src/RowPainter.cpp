@@ -11,8 +11,6 @@
 
 #include <config.h>
 
-#include <algorithm>
-
 #include "RowPainter.h"
 
 #include "Buffer.h"
@@ -39,6 +37,7 @@
 #include "support/gettext.h"
 #include "support/lassert.h"
 
+#include <algorithm>
 
 using namespace std;
 

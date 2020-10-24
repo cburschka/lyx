@@ -12,9 +12,6 @@
 #include <config.h>
 #include "InsetHyperlink.h"
 
-#include <QtGui/QDesktopServices>
-#include <QUrl>
-
 #include "Buffer.h"
 #include "DispatchResult.h"
 #include "Encoding.h"
@@ -36,6 +33,9 @@
 #include "support/qstring_helpers.h"
 
 #include "frontends/alert.h"
+
+#include <QtGui/QDesktopServices>
+#include <QUrl>
 
 using namespace std;
 using namespace lyx::support;

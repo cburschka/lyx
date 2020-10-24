@@ -11,9 +11,6 @@
  */
 
 #include <config.h>
-#include <algorithm>
-#include <functional>
-
 
 #include "InsetCommandParams.h"
 
@@ -45,6 +42,9 @@
 #include "support/lstrings.h"
 
 #include "support/lassert.h"
+
+#include <algorithm>
+#include <functional>
 
 using namespace std;
 using namespace lyx::support;
