@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-09-18 11:05-0400\n"
-"PO-Revision-Date: 2020-09-18 23:46+0200\n"
+"POT-Creation-Date: 2020-10-24 18:55+0200\n"
+"PO-Revision-Date: 2020-10-24 19:13+0200\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
 "Language: it\n"
@@ -2174,7 +2174,7 @@ msgstr "Listato di programma"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:369
 msgid "Edit the file"
-msgstr "Edita il file"
+msgstr "Modifica il file"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:372
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:74
@@ -3713,15 +3713,15 @@ msgstr "Ra&ggruppa gli ambienti secondo le loro categorie"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:122
 msgid "Edit Math Macros inline with a box around"
-msgstr "Edita macro in linea con cornice"
+msgstr "Modifica macro in linea con cornice"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:127
 msgid "Edit Math Macros inline with the name in the status bar"
-msgstr "Edita macro in linea con nome nella barra di stato"
+msgstr "Modifica macro in linea con nome nella barra di stato"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:132
 msgid "Edit Math Macros with a parameter list (like in LyX < 1.6)"
-msgstr "Edita macro con lista di parametri (come in LyX < 1.6)"
+msgstr "Modifica macro con lista di parametri (come in LyX < 1.6)"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:156
 msgid "Fullscreen"
@@ -4744,7 +4744,7 @@ msgstr "&Invia il file esportato al comando:"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:13
 msgid "Edit shortcut"
-msgstr "Edita scorciatoia"
+msgstr "Modifica scorciatoia"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:77
 msgid "Enter LyX function or command sequence"
@@ -15468,8 +15468,8 @@ msgid "\\Roman{part}"
 msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:10
-msgid "Part \\Roman{part}"
-msgstr "Parte \\Roman{part}"
+msgid "Part ##"
+msgstr "Parte ##"
 
 #: lib/layouts/stdcounters.inc:14
 msgid "Chapter ##"
@@ -25438,12 +25438,12 @@ msgstr "Errore nella visualizzazione del file di output."
 
 #: src/Buffer.cpp:3370 src/frontends/qt4/GuiView.cpp:2329
 #: src/frontends/qt4/Validator.cpp:222 src/insets/ExternalSupport.cpp:386
-#: src/insets/InsetGraphics.cpp:692 src/insets/InsetInclude.cpp:565
+#: src/insets/InsetGraphics.cpp:699 src/insets/InsetInclude.cpp:565
 msgid "Invalid filename"
 msgstr "Nome file non valido"
 
 #: src/Buffer.cpp:3371 src/insets/ExternalSupport.cpp:387
-#: src/insets/InsetGraphics.cpp:693 src/insets/InsetInclude.cpp:566
+#: src/insets/InsetGraphics.cpp:700 src/insets/InsetInclude.cpp:566
 msgid ""
 "The following filename will cause troubles when running the exported file "
 "through LaTeX: "
@@ -25452,12 +25452,12 @@ msgstr ""
 "esportato: "
 
 #: src/Buffer.cpp:3376 src/insets/ExternalSupport.cpp:392
-#: src/insets/InsetGraphics.cpp:700 src/insets/InsetInclude.cpp:570
+#: src/insets/InsetGraphics.cpp:707 src/insets/InsetInclude.cpp:570
 msgid "Problematic filename for DVI"
 msgstr "Nome file problematico per DVI"
 
 #: src/Buffer.cpp:3377 src/insets/ExternalSupport.cpp:393
-#: src/insets/InsetGraphics.cpp:701 src/insets/InsetInclude.cpp:571
+#: src/insets/InsetGraphics.cpp:708 src/insets/InsetInclude.cpp:571
 msgid ""
 "The following filename can cause troubles when running the exported file "
 "through LaTeX and opening the resulting DVI: "
@@ -25797,7 +25797,7 @@ msgstr "Classe del documento non disponibile"
 #: src/BufferParams.cpp:1742 src/BufferParams.cpp:2208 src/Encoding.cpp:246
 #: src/Paragraph.cpp:2766 src/frontends/qt4/LaTeXHighlighter.cpp:122
 #: src/insets/InsetCommandParams.cpp:503 src/insets/InsetCommandParams.cpp:511
-#: src/insets/InsetGraphics.cpp:887 src/insets/InsetGraphics.cpp:895
+#: src/insets/InsetGraphics.cpp:894 src/insets/InsetGraphics.cpp:902
 #: src/insets/InsetListings.cpp:259 src/insets/InsetListings.cpp:267
 #: src/insets/InsetListings.cpp:290 src/mathed/MathExtern.cpp:1440
 #: src/mathed/MathExtern.cpp:1518
@@ -25806,8 +25806,8 @@ msgstr "Avviso di LyX: "
 
 #: src/BufferParams.cpp:1743 src/BufferParams.cpp:2209 src/Encoding.cpp:247
 #: src/Paragraph.cpp:2767 src/insets/InsetCommandParams.cpp:504
-#: src/insets/InsetCommandParams.cpp:512 src/insets/InsetGraphics.cpp:888
-#: src/insets/InsetGraphics.cpp:896 src/insets/InsetListings.cpp:260
+#: src/insets/InsetCommandParams.cpp:512 src/insets/InsetGraphics.cpp:895
+#: src/insets/InsetGraphics.cpp:903 src/insets/InsetListings.cpp:260
 #: src/insets/InsetListings.cpp:268 src/mathed/MathExtern.cpp:1441
 #: src/mathed/MathExtern.cpp:1519
 msgid "uncodable character"
@@ -32473,7 +32473,7 @@ msgstr "LyX non può generare una lista di %1$s"
 msgid "footnote"
 msgstr "Nota a piè pagina"
 
-#: src/insets/InsetGraphics.cpp:565 src/insets/InsetInclude.cpp:872
+#: src/insets/InsetGraphics.cpp:572 src/insets/InsetInclude.cpp:872
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -32484,16 +32484,16 @@ msgstr ""
 "%1$s\n"
 "nella cartella temporanea."
 
-#: src/insets/InsetGraphics.cpp:778 src/insets/InsetGraphics.cpp:1054
+#: src/insets/InsetGraphics.cpp:785 src/insets/InsetGraphics.cpp:1061
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Non è necessaria alcuna conversione del file %1$s tutto sommato"
 
-#: src/insets/InsetGraphics.cpp:906
+#: src/insets/InsetGraphics.cpp:913
 msgid "Uncodable characters in path"
 msgstr "Caratteri intraducibili nel percorso del file"
 
-#: src/insets/InsetGraphics.cpp:907
+#: src/insets/InsetGraphics.cpp:914
 #, c-format
 msgid ""
 "The following characters in one of the graphic paths are\n"
@@ -32504,7 +32504,7 @@ msgstr ""
 "rappresentabili nella codifica corrente e sono stati omessi: %1$s.\n"
 "Occorre modificare la codifica o il percorso."
 
-#: src/insets/InsetGraphics.cpp:932
+#: src/insets/InsetGraphics.cpp:939
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "File grafici: %1$s"
@@ -33965,6 +33965,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Utente sconosciuto"
+
+#~ msgid "Part \\Roman{part}"
+#~ msgstr "Parte \\Roman{part}"
 
 #~ msgid "File name to include"
 #~ msgstr "Nome del file da includere"
