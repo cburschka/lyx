@@ -422,14 +422,14 @@ if test x$GXX = xyes; then
   if test x$enable_stdlib_debug = xyes ; then
     dnl FIXME: for clang/libc++, one should define _LIBCPP_DEBUG2=0
     dnl See http://clang-developers.42468.n3.nabble.com/libc-debug-mode-td3336742.html
-    case $gxx_version in
-      *)
+    if test x$lyx_cv_lib_stdcxx = xyes ; then
         lyx_flags="$lyx_flags stdlib-debug"
 	AC_DEFINE(_GLIBCXX_DEBUG, 1, [libstdc++ debug mode])
 	AC_DEFINE(_GLIBCXX_DEBUG_PEDANTIC, 1, [libstdc++ pedantic debug mode])
 	AC_SUBST(STDLIB_DEBUG, "-D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC")
-        ;;
-    esac
+    else
+	enable_stdlib_debug=no
+    fi
   fi
 fi
 
