@@ -21,6 +21,7 @@
 #include "GuiApplication.h"
 #include "GuiClickableLabel.h"
 #include "GuiCompleter.h"
+#include "GuiFontMetrics.h"
 #include "GuiKeySymbol.h"
 #include "GuiToc.h"
 #include "GuiToolbar.h"
@@ -199,12 +200,12 @@ public:
 		// Check how long the logo gets with the current font
 		// and adapt if the font is running wider than what
 		// we assume
-		QFontMetrics fm(font);
+		GuiFontMetrics fm(font);
 		// Split the title into lines to measure the longest line
 		// in the current l7n.
 		QStringList titlesegs = htext.split('\n');
 		int wline = 0;
-		int hline = fm.height();
+		int hline = fm.maxHeight();
 		QStringList::const_iterator sit;
 		for (sit = titlesegs.constBegin(); sit != titlesegs.constEnd(); ++sit) {
 			if (fm.width(*sit) > wline)

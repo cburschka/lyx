@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "GuiFontExample.h"
+#include "GuiFontMetrics.h"
 
 #include <QPainter>
 #include <QPaintEvent>
@@ -28,20 +29,20 @@ void GuiFontExample::set(QFont const & font, QString const & text)
 
 QSize GuiFontExample::sizeHint() const
 {
-	QFontMetrics m(font_);
-	return QSize(m.width(text_) + 10, m.ascent() + m.descent() + 6);
+	lyx::frontend::GuiFontMetrics m(font_);
+	return QSize(m.width(text_) + 10, m.maxHeight() + 6);
 }
 
 
 void GuiFontExample::paintEvent(QPaintEvent *)
 {
 	QPainter p;
-	QFontMetrics m(font_);
+	lyx::frontend::GuiFontMetrics m(font_);
 
 	p.begin(this);
 	p.setFont(font_);
 	p.drawRect(0, 0, width() - 1, height() - 1);
-	p.drawText(5, 3 + m.ascent(), text_);
+	p.drawText(5, 3 + m.maxAscent(), text_);
 	p.end();
 }
 

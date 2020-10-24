@@ -627,10 +627,17 @@ int GuiFontMetrics::width(char_type c) const
 	if (value != outOfLimitMetric)
 		return value;
 
+#if QT_VERSION >= 0x050b00
+	if (is_utf16(c))
+		value = metrics_.horizontalAdvance(ucs4_to_qchar(c));
+	else
+		value = metrics_.horizontalAdvance(toqstr(docstring(1, c)));
+#else
 	if (is_utf16(c))
 		value = metrics_.width(ucs4_to_qchar(c));
 	else
 		value = metrics_.width(toqstr(docstring(1, c)));
+#endif
 
 	width_cache_.insert(c, value);
 

@@ -13,6 +13,7 @@
 #include "PanelStack.h"
 
 #include "GuiApplication.h"
+#include "GuiFontMetrics.h"
 #include "qt_helpers.h"
 
 #include "FancyLineEdit.h"
@@ -23,7 +24,6 @@
 #include <QAbstractButton>
 #include <QApplication>
 #include <QComboBox>
-#include <QFontMetrics>
 #include <QGroupBox>
 #include <QHideEvent>
 #include <QHash>
@@ -120,7 +120,7 @@ void PanelStack::addCategory(QString const & name, QString const & parent)
 
 	panel_map_[name] = item;
 
-	QFontMetrics fm(list_->font());
+	GuiFontMetrics fm(list_->font());
 
 	// calculate the real size the current item needs in the listview
 	int itemsize = fm.width(qt_(name)) + 10 + list_->indentation() * depth;
