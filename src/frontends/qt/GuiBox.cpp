@@ -32,8 +32,6 @@
 #include <QLineEdit>
 #include <QPushButton>
 
-#include <algorithm>
-
 #ifdef IN
 #undef IN
 #endif

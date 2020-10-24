@@ -40,8 +40,6 @@
 #include <QCloseEvent>
 #include <QHeaderView>
 
-#include <algorithm>
-
 using namespace std;
 using namespace lyx::support;
 

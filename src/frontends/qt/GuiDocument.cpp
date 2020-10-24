@@ -82,7 +82,6 @@
 #include <QTextBoundaryFinder>
 #include <QTextCursor>
 
-#include <algorithm>
 #include <sstream>
 #include <vector>
 

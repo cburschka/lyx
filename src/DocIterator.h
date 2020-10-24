@@ -15,6 +15,7 @@
 #include "CursorSlice.h"
 
 #include <vector>
+#include <algorithm> // std::min in MSVC 2017
 
 namespace lyx {
 

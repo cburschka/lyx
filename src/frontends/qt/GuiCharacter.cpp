@@ -40,8 +40,6 @@
 #include <QSettings>
 #include <QVariant>
 
-#include <algorithm>
-
 using namespace std;
 
 namespace lyx {
