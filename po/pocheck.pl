@@ -168,8 +168,11 @@ foreach my $pofilename ( @ARGV ) {
     }
 
     if ($check_spaces) {
-      # Check space at the end of a message
-      if ( ( $msgid =~ m/  *?(\|.*)?$/ ) != ( $msgstr =~ m/  *?(\|.*)?$/ ) ) {
+      # Check space at the end of a message (if not a shortcut)
+      my ($msgid1, $msgstr1);
+      ($msgid1 = $msgid) =~ s/\|.$//;
+      ($msgstr1 = $msgstr) =~ s/\|.$//;	# TODO: Shortcut may be utf-8 char
+      if (($msgid1 =~ / $/) != ($msgstr1 =~ / $/)) {
         print "Line $linenum: Missing or unexpected space:\n  '$msgid' => '$msgstr'\n"
           unless $only_total;
         ++$bad{"Bad spaces"};
@@ -188,8 +191,16 @@ foreach my $pofilename ( @ARGV ) {
     }
 
     if ($check_menu) {
-      # Check for "|..." shortcuts
-      if ( ( $msgid =~ m/\|[^ ]/ ) != ( $msgstr =~ m/\|[^ ]/ ) ) {
+      # Check for "|..." shortcuts (space shortcut allowed)
+      # Shortcut is either 1 char (ascii in msgid) or utf8 char (in msgstr)
+      my ($s1, $s2) = (0,0);
+      $s1 = 1 if ($msgid =~ /\|([^\|])$/);
+      if ($msgstr =~ /\|([^\|]+)$/) {
+	my $chars = $1;
+	my $u = decode('utf-8', $chars);
+	$s2 = 1 if (length($u) == 1);
+      }
+      if($s1 != $s2) {
         print "Line $linenum: Missing or unexpected menu shortcut:\n  '$msgid' => '$msgstr'\n"
           unless $only_total;
         ++$bad{"Bad menu shortcuts"};
