@@ -169,9 +169,16 @@ foreach my $pofilename ( @ARGV ) {
 
     if ($check_spaces) {
       # Check space at the end of a message (if not a shortcut)
-      my ($msgid1, $msgstr1);
-      ($msgid1 = $msgid) =~ s/\|.$//;
-      ($msgstr1 = $msgstr) =~ s/\|.$//;	# TODO: Shortcut may be utf-8 char
+      my ($msgid1, $msgstr1) = ($msgid, $msgstr);
+      $msgid1 =~ s/\|.$//;
+      if ($msgstr =~ /^(.*)\|(.+)$/) {
+	my ($msg, $shortcut) = ($1, $2);
+	# Check for unicode char
+	my $u = decode('utf-8', $shortcut);
+	if (length($u) == 1) {
+	  $msgstr1 = $msg;
+	}
+      }
       if (($msgid1 =~ / $/) != ($msgstr1 =~ / $/)) {
         print "Line $linenum: Missing or unexpected space:\n  '$msgid' => '$msgstr'\n"
           unless $only_total;
@@ -194,8 +201,8 @@ foreach my $pofilename ( @ARGV ) {
       # Check for "|..." shortcuts (space shortcut allowed)
       # Shortcut is either 1 char (ascii in msgid) or utf8 char (in msgstr)
       my ($s1, $s2) = (0,0);
-      $s1 = 1 if ($msgid =~ /\|([^\|])$/);
-      if ($msgstr =~ /\|([^\|]+)$/) {
+      $s1 = 1 if ($msgid =~ /\|(.)$/);
+      if ($msgstr =~ /.*\|(.+)$/) {
 	my $chars = $1;
 	my $u = decode('utf-8', $chars);
 	$s2 = 1 if (length($u) == 1);
