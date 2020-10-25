@@ -23,6 +23,7 @@ liblyxhunspell_a_SOURCES = \
 	1.7.0/src/hunspell/affixmgr.hxx \
 	1.7.0/src/hunspell/atypes.hxx \
 	1.7.0/src/hunspell/baseaffix.hxx \
+	1.7.0/src/hunspell/src/win_api/config.h \
 	1.7.0/src/hunspell/csutil.cxx \
 	1.7.0/src/hunspell/csutil.hxx \
 	1.7.0/src/hunspell/filemgr.cxx \
