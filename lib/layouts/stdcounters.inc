@@ -4,7 +4,7 @@
 # in most LyX layouts.
 
 
-Format 84
+Format 85
 Counter part
 	GuiName Part
 	LabelString          "\Roman{part}"

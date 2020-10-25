@@ -22,7 +22,7 @@
 # - Case (by inclusion)
 
 # We need separate counters for each theorem-like style.
-Format 84
+Format 85
 Counter theorem
 	GuiName Theorem
 End
