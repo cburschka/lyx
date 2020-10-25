@@ -14,7 +14,14 @@
 # Where we will do our work
 BASE="/cvs/lyx/lyx-release";
 # Where our git repository lives
-SRCDIR="/cvs/lyx/lyx-stable";
+SRCDIR="/cvs/lyx/lyx-stable";    # stable
+DEVDIR="/cvs/lyx/lyx-devel";     # devel
+
+BRANCH=$(git status | head -n1 | sed -e 's/On branch //');
+if [ $BRANCH == "master" ]; then
+	SRCDIR="$DEVDIR";
+fi
+
 # editor 
 if [ -z "$EDITOR" ]; then EDITOR=vi; fi
 
@@ -100,8 +107,8 @@ $DEBUG ln lyx-$PKG_VERSION.tar.{gz,xz} $BASE/ || exit 1;
 echo -n "Ready to build signatures...";
 read
 
-$DEBUG gpg -b lyx-$VERSION.tar.gz
-$DEBUG gpg -b lyx-$VERSION.tar.xz
+$DEBUG gpg -b lyx-$PKG_VERSION.tar.gz
+$DEBUG gpg -b lyx-$PKG_VERSION.tar.xz
 
 echo "Signatures created:"
 $DEBUG ln lyx-$VERSION.tar.*.sig $BASE;
