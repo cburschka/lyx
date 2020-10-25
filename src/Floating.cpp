@@ -52,8 +52,6 @@ std::string Floating::docbookFloatType() const
 	} else if (floattype_ == "table" || floattype_ == "tableau") {
 		return "table";
 	} else if (floattype_ == "algorithm") {
-		// TODO: no good translation for now! Figures are the closest match, as they can contain text.
-		// Solvable as soon as https://github.com/docbook/docbook/issues/157 has a definitive answer.
 		return "algorithm";
 	} else {
 		// If nothing matches, return something that will not be valid.
@@ -101,23 +99,23 @@ string Floating::defaultCSSClass() const
 }
 
 
-string const & Floating::docbookAttr() const
+string Floating::docbookAttr() const
 {
-	return docbook_attr_;
+	// For algorithms, a type attribute must be mentioned, if not already present in docbook_attr_.
+	if (docbookFloatType() == "algorithm" && docbook_attr_.find("type=") != std::string::npos)
+		return docbook_attr_ + " type='algorithm'";
+	else
+		return docbook_attr_;
 }
 
 
 string Floating::docbookTag(bool hasTitle) const
 {
 	// TODO: configure this in the layouts?
-	if (docbookFloatType() == "figure") {
+	if (docbookFloatType() == "figure" || docbookFloatType() == "algorithm") {
 		return hasTitle ? "figure" : "informalfigure";
 	} else if (docbookFloatType() == "table") {
 		return hasTitle ? "table" : "informaltable";
-	} else if (docbookFloatType() == "algorithm") {
-		// TODO: no good translation for now! Figures are the closest match, as they can contain text.
-		// Solvable as soon as https://github.com/docbook/docbook/issues/157 has a definitive answer.
-		return "figure";
 	} else {
 		// If nothing matches, return something that will not be valid.
 		LYXERR0("Unrecognised float type: " + floattype());
@@ -137,15 +135,10 @@ string const & Floating::docbookTagType() const
 string const & Floating::docbookCaption() const
 {
 	docbook_caption_ = "";
-	if (floattype_ == "figure") {
+	if (floattype_ == "figure" || floattype_ == "algorithm")
 		docbook_caption_ = "title";
-	} else if (floattype_ == "table" || floattype_ == "tableau") {
+	else if (floattype_ == "table" || floattype_ == "tableau")
 		docbook_caption_ = "caption";
-	} else if (floattype_ == "algorithm") {
-		// TODO: no good translation for now! Figures are the closest match, as they can contain text.
-		// Solvable as soon as https://github.com/docbook/docbook/issues/157 has a definitive answer.
-		docbook_caption_ = "title";
-	}
 	return docbook_caption_;
 }
 

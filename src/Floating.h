@@ -85,7 +85,7 @@ public:
 	///
 	std::string docbookTag(bool hasTitle = false) const;
 	///
-	std::string const & docbookAttr() const;
+	std::string docbookAttr() const;
 	///
 	std::string const & docbookTagType() const;
 	///
