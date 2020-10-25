@@ -32,10 +32,6 @@
 #include <QLineEdit>
 #include <QPushButton>
 
-#ifdef IN
-#undef IN
-#endif
-
 using namespace std;
 
 

@@ -49,6 +49,9 @@
 #include <tchar.h>
 #include <psapi.h>
 
+#ifdef IN
+#undef IN // used in Length::UNIT enum
+#endif
 
 namespace lyx {
 namespace support {

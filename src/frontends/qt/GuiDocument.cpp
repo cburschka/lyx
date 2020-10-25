@@ -85,10 +85,6 @@
 #include <sstream>
 #include <vector>
 
-#ifdef IN
-#undef IN
-#endif
-
 
 // a style sheet for buttons
 // this is for example used for the background color setting button
