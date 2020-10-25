@@ -49,7 +49,8 @@ shift $(($OPTIND - 1));
 
 # Determine LyX version
 cd $SRCDIR/
-VERSION=$(head configure.ac | grep AC_INIT | perl -e 'while (<>) {m/AC_INIT\(LyX,([^,]+)/; print $1;}');
+VERSION=$(head configure.ac | grep AC_INIT | \
+	perl -e 'while (<>) {m/AC_INIT\(\[LyX\],\[([^,]+)\]/; print $1;}');
 
 # Development release?
 DEVEL_RELEASE="";
@@ -61,7 +62,7 @@ if [ "$VERSION" != "$PKG_VERSION" ]; then
 	CURHASH=$(git rev-parse HEAD);
 	# Eight chars should be enough
 	CURHASH=${CURHASH:0:8};
-	# New version is e.g. 2.3.4-12649348
+	# New version is e.g. 2.3.4dev-12649348
 	PKG_VERSION="$VERSION-$CURHASH";
 	PATCH="";
 fi
@@ -81,7 +82,7 @@ $DEBUG cd "$BASE/lyx-build/";
 
 echo "Building distribution...";
 $DEBUG "$BASE/lyx-export/configure" --enable-build-type=rel --enable-qt5
-if ! $DEBUG make lyxdist; then
+if ! $DEBUG make dist; then
   echo "Couldn't make distribution!";
   exit 1;
 fi
