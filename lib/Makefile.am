@@ -2503,6 +2503,7 @@ dist_scripts_DATA = \
 # We use DATA now instead of PYTHON because automake 1.11.2 complains.
 # Note that we "chmod 755" manually these files in install-data-hook.
 dist_scripts_DATA += \
+	scripts/checkKeys.pl.in \
 	scripts/clean_dvi.py \
 	scripts/convert_pdf.py \
 	scripts/convertDefault.py \

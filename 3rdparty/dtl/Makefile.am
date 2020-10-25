@@ -8,6 +8,7 @@ EXTRA_DIST = \
 	ChangeLog-LyX \
 	CMakeLists.txt \
 	dtl.doc \
+	dv2dt.man \
 	dvi.doc \
 	edited.txt \
 	example.tex \
