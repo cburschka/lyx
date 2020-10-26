@@ -115,6 +115,7 @@ Style Part
 	DocBookTag            title
 	DocBookTagType        paragraph
 	DocBookSectionTag     part
+	DocBookInInfo         maybe
 	DocBookForceAbstractTag	partintro
 End
 
@@ -166,6 +167,7 @@ Style Chapter
 	Align		Left
 	DocBookTag            title
 	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 	DocBookSectionTag     chapter
 End
 

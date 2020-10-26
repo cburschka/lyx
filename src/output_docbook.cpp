@@ -553,6 +553,8 @@ void makeEnvironment(Text const &text,
 				closeTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnertagtype());
 				++p;
 
+				// Insert a new line after each "paragraph" (i.e. line in the listing), except for the last one.
+				// Otherwise, there would one more new line in the output than in the LyX document.
 				if (p != pars.end())
 					xs << xml::CR();
 			}
@@ -811,12 +813,12 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs,
 		// Skip paragraphs that don't generate anything in DocBook.
 		Paragraph const & par = paragraphs[cpit];
 		Layout const &style = par.layout();
-		if (hasOnlyNotes(par) || style.docbookininfo() == "never")
+		if (hasOnlyNotes(par))
 			continue;
 
-		// There should never be any section here. (Just a sanity check: if this fails, this function could end up
-		// processing the whole document.)
-		if (isLayoutSectioning(par.layout())) {
+		// There should never be any section here, except for the first paragraph (a title can be part of <info>).
+		// (Just a sanity check: if this fails, this function could end up processing the whole document.)
+		if (cpit != bpit && isLayoutSectioning(par.layout())) {
 			LYXERR0("Assertion failed: section found in potential <info> paragraphs.");
 			break;
 		}
@@ -1102,7 +1104,8 @@ void docbookParagraphs(Text const &text,
 							// Don't output the ID as a DocBook <anchor>.
 							ourparams.docbook_anchors_to_ignore.emplace(label->screenLabel());
 
-							// Cannot have multiple IDs per tag.
+							// Cannot have multiple IDs per tag. If there is another ID inset in the document, it will
+							// be output as a DocBook anchor.
 							break;
 						}
 					}
@@ -1136,16 +1139,14 @@ void docbookParagraphs(Text const &text,
 			}
 		}
 
-		// Generate this paragraph.
-		par = makeAny(text, buf, xs, ourparams, par);
-
+		// Generate the <info> tag if a section was just opened.
 		// Some sections may require abstracts (mostly parts, in books: DocBookForceAbstractTag will not be NONE),
 		// others can still have an abstract (it must be detected so that it can be output at the right place).
 		// TODO: docbookforceabstracttag is a bit contrived here, but it does the job. Having another field just for this would be cleaner, but that's just for <part> and <partintro>, so it's probably not worth the effort.
 		if (isLayoutSectioning(style)) {
 			// This abstract may be found between the next paragraph and the next title.
 			pit_type cpit = std::distance(text.paragraphs().begin(), par);
-			pit_type ppit = std::get<1>(hasDocumentSectioning(paragraphs, cpit, epit));
+			pit_type ppit = std::get<1>(hasDocumentSectioning(paragraphs, cpit + 1L, epit));
 
 			// Generate this abstract (this code corresponds to parts of outputDocBookInfo).
 			DocBookInfoTag secInfo = getParagraphsWithInfo(paragraphs, cpit, ppit, true,
@@ -1166,9 +1167,9 @@ void docbookParagraphs(Text const &text,
 				// Output the elements that should go in <info>, before and after the abstract.
 				for (auto pit : secInfo.shouldBeInInfo) // Typically, the title: these elements are so important and ubiquitous
 					// that mandating a wrapper like <info> would repel users. Thus, generate them first.
-					makeAny(text, buf, xs, runparams, paragraphs.iterator_at(pit));
+					makeAny(text, buf, xs, ourparams, paragraphs.iterator_at(pit));
 				for (auto pit : secInfo.mustBeInInfo)
-					makeAny(text, buf, xs, runparams, paragraphs.iterator_at(pit));
+					makeAny(text, buf, xs, ourparams, paragraphs.iterator_at(pit));
 
 				// Deal with the abstract in <info> if it is standard (i.e. its tag is <abstract>).
 				if (!secInfo.abstract.empty() && hasStandardAbstract) {
@@ -1178,7 +1179,7 @@ void docbookParagraphs(Text const &text,
 					}
 
 					for (auto const &p : secInfo.abstract)
-						makeAny(text, buf, xs, runparams, paragraphs.iterator_at(p));
+						makeAny(text, buf, xs, ourparams, paragraphs.iterator_at(p));
 
 					if (!secInfo.abstractLayout) {
 						xs << xml::EndTag("abstract");
@@ -1202,14 +1203,20 @@ void docbookParagraphs(Text const &text,
 					xs << xml::StartTag(style.docbookforceabstracttag());
 					xs << xml::CR();
 					for (auto const &p : secInfo.abstract)
-						makeAny(text, buf, xs, runparams, paragraphs.iterator_at(p));
+						makeAny(text, buf, xs, ourparams, paragraphs.iterator_at(p));
 					xs << xml::EndTag(style.docbookforceabstracttag());
 					xs << xml::CR();
 				}
 
-				// Skip all the text that just has been generated.
-				par = paragraphs.iterator_at(ppit);
+				// Skip all the text that has just been generated.
+				par = paragraphs.iterator_at(secInfo.epit);
+			} else {
+				// No <info> tag to generate, proceed as for normal paragraphs.
+				par = makeAny(text, buf, xs, ourparams, par);
 			}
+		} else {
+			// Generate this paragraph, as it has nothing special.
+			par = makeAny(text, buf, xs, ourparams, par);
 		}
 	}
 

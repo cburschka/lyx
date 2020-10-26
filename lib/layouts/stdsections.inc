@@ -41,6 +41,7 @@ Style Part
 	HTMLTag               h1
 	DocBookTag            title
 	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 	DocBookSectionTag     part
 	DocBookForceAbstractTag	partintro
 End
@@ -77,6 +78,7 @@ Style Chapter
 	HTMLTag               h1
 	DocBookTag            title
 	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 	DocBookSectionTag     chapter
 End
 
@@ -111,6 +113,7 @@ Style Section
 	HTMLTag               h2
 	DocBookTag            title
 	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 	DocBookSectionTag     section
 End
 
