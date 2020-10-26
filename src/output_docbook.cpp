@@ -909,10 +909,27 @@ void outputDocBookInfo(
 	docstring abstract;
 	if (hasAbstract) {
 		// Generate the abstract XML into a string before further checks.
+		// Usually, makeAny only generates one paragraph at a time. However, for the specific case of lists, it might
+		// generate more than one paragraph, as indicated in the return value.
 		odocstringstream os2;
 		XMLStream xs2(os2);
-		for (auto const & p : info.abstract)
-			makeAny(text, buf, xs2, runparams, paragraphs.iterator_at(p));
+
+		set<pit_type> doneParas;
+		for (auto const & p : info.abstract) {
+			if (doneParas.find(p) == doneParas.end()) {
+				auto oldPar = paragraphs.iterator_at(p);
+				auto newPar = makeAny(text, buf, xs2, runparams, oldPar);
+
+				// Insert the indices of all the paragraphs that were just generated (typically, one).
+				// **Make the hypothesis that, when an abstract has a list, all its items are consecutive.**
+				pit_type id = p;
+				while (oldPar != newPar) {
+					doneParas.emplace(id);
+					++oldPar;
+					++id;
+				}
+			}
+		}
 
 		// Actually output the abstract if there is something to do. Don't count line feeds or spaces in this,
 		// even though they must be properly output if there is some abstract.

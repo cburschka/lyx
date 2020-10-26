@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This DocBook file was created by LyX 2.4.0dev
+  See http://www.lyx.org/ for more information -->
+<article xml:lang="de_DE" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
+<info>
+<title>LyX-Anpassung:<emphasis role='size_largest'>Möglichkeiten für fortgeschrittene Benutzer</emphasis></title>
+<abstract>
+<orderedlist>
+<listitem>
+<para>Das Layout für eine flexible Einfügung wird definiert. In diesem Fall muss <code>&lt;Typ&gt;</code> in der Form &#8222;<code>Flex:&lt;Name&gt;</code>&#8220; sein, wobei <code>Name</code> ein beliebiger gültiger Bezeichner sein kann, der in keiner anderen existierenden Einfügung benutzt wird. Der Bezeichner darf Leerzeichen enthalten, dann muss aber der komplette Typ in Anführungszeichen gesetzt werden. Beachten Sie, dass die Definition einer flexiblen Einfügung <emphasis>auch</emphasis> einen <code>LyXType</code>-Eintrag enthalten muss, der festlegt welcher Einfügungstyp definiert wird.</para>
+</listitem>
+<listitem>
+<para>The layout for user specific branch is being defined. In this case, <code>&lt;Typ&gt;</code> must be of the form &#8222;<code>Branch:&lt;Name&gt;</code>&#8220;, where <code>name</code> may be be any valid identifier of branch defined in user's document. The identifier may include spaces, but in that case the whole thing must be wrapped in quotes. The main purpose of this feature is to allow LaTeX wrapping around specific branches as user needs.</para>
+</listitem>
+<listitem>
+<para>The layout of a user (or class) specific caption is being defined. In this case, <code>&lt;Typ&gt;</code> must be of the form &#8222;<code>Caption:&lt;Name&gt;</code>&#8220;, where <code>name</code> specifies the name of the caption as it appears in the menu. Have a look at the standard caption (<code>Caption:Standard</code>), the specific captions of the KOMA-Script classes (<code>Caption:Above</code>, <code>Caption:Below</code>) oder das Modul <emphasis role='sans'>Multilingual&#xA0;Captions</emphasis> (<code>Caption:Bicaption</code>) for applications.</para>
+</listitem>
+</orderedlist>
+<para>Die <code>InsetLayout</code>-Definition kann folgende Einträge enthalten:</para>
+</abstract>
+</info>
+<section>
+<title>Paragraph styles</title>
+<para>The sort of XHTML LyX outputs for a paragraph depends upon whether we are dealing with a normal paragraph, a command, or an environment, where this is itself determined by the contents of the corresponding <code>LaTeXType</code> tag. </para>
+</section>
+</article>
