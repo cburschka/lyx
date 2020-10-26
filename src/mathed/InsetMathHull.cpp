@@ -147,50 +147,8 @@ namespace {
 			os << "}\\\\\n";
 	}
 
-
 } // namespace
 
-
-HullType hullType(docstring const & s)
-{
-	if (s == "none")      return hullNone;
-	if (s == "simple")    return hullSimple;
-	if (s == "equation")  return hullEquation;
-	if (s == "eqnarray")  return hullEqnArray;
-	if (s == "align")     return hullAlign;
-	if (s == "alignat")   return hullAlignAt;
-	if (s == "xalignat")  return hullXAlignAt;
-	if (s == "xxalignat") return hullXXAlignAt;
-	if (s == "multline")  return hullMultline;
-	if (s == "gather")    return hullGather;
-	if (s == "flalign")   return hullFlAlign;
-	if (s == "regexp")    return hullRegexp;
-	lyxerr << "unknown hull type '" << to_utf8(s) << "'" << endl;
-	return hullUnknown;
-}
-
-
-docstring hullName(HullType type)
-{
-	switch (type) {
-	case hullNone:       return from_ascii("none");
-	case hullSimple:     return from_ascii("simple");
-	case hullEquation:   return from_ascii("equation");
-	case hullEqnArray:   return from_ascii("eqnarray");
-	case hullAlign:      return from_ascii("align");
-	case hullAlignAt:    return from_ascii("alignat");
-	case hullXAlignAt:   return from_ascii("xalignat");
-	case hullXXAlignAt:  return from_ascii("xxalignat");
-	case hullMultline:   return from_ascii("multline");
-	case hullGather:     return from_ascii("gather");
-	case hullFlAlign:    return from_ascii("flalign");
-	case hullRegexp:     return from_ascii("regexp");
-	case hullUnknown:
-		lyxerr << "unknown hull type" << endl;
-		break;
-	}
-	return from_ascii("none");
-}
 
 static InsetLabel * dummy_pointer = 0;
 
