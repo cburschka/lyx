@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 598
+\lyxformat 599
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -1064,8 +1064,10 @@ Star subparagraph (sect5)
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
+btprint "btPrintCited"
 bibfiles "basic"
 options "plain"
+encoding "default"
 
 \end_inset
 

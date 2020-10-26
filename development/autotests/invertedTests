@@ -395,26 +395,55 @@ export/doc/ru/(Math|Additional)_(dvi3|pdf[45])_systemF
 # DocBook
 Sublabel: docbook
 # Specific things that are not expected to work.
+# - No real content apart from metadata (forbidden in DocBook).
+export/export/mixing_inTitle_layouts_docbook5
 # - Uses a book class, but has no chapters (forbidden in DocBook).
-export/export/MissingEndLayoutBetweenTables_docbook5
 export/doc/DummyDocument.*_docbook5
 export/doc/de/DummyDocument.*_docbook5
 export/doc/es/DocumentoPostizo.*_docbook5
 export/doc/fr/DocumentBidon.*_docbook5
 export/doc/ja/DummyDocument.*_docbook5
-# - The AASTeX template is too complex for automatic conversion to work reliably.
+export/export/MissingEndLayoutBetweenTables_docbook5
+export/export/latex/languages/ja-listings-uncodable-error_docbook5
+export/export/latex/lyxbugs-resolved/9633-languagenesting_enumerate_and_lyxcode_docbook5
+export/export/latex/lyxbugs-resolved/9633-languagenesting_index_inset_docbook5
+export/export/latex/lyxbugs-resolved/9633-languagenesting1_docbook5
+export/export/latex/lyxbugs-resolved/9633-languagenesting2_docbook5
+export/export/xhtml/MissingEndTagDiv_docbook5
+export/export/xhtml/zh_CN_Tutorial_docbook5
+# - No proper document title (should be fixable).
+export/export/latex/inputenc-.*_docbook5
+export/export/latex/textcyr-textgreek-test_docbook5
+export/examples/.*/Graphics_and_Insets/XY-Figure_docbook5
+# - Formula in <code> tags.
+export/examples/.*/Graphics_and_Insets/XY-Pic_docbook5
+# - Math macros not implemented.
+export/mathmacros/testcases_speed_docbook5
+export/mathmacros/testcases_environments_docbook5
+export/mathmacros/masterOfSpace_docbook5
+# - Many templates are too complex for automatic conversion to work reliably.
+#   The resulting documents should still be easy to fully convert into DocBook.
+#   - AASTeX.
 export/export/docbook/bibliography_precooked_aastex_docbook5
+#   - Springer. (The svmono_light should still pass.)
+export/templates/Books/Springer_Monographs_%28svmono%29/.*_docbook5
+export/export/docbook/svmono_docbook5
+#   - scrbook with too many customisations.
+export/templates/Theses/PhD_Thesis/.*_docbook5
+# - Branches may cause problems (especially when mixing with parts that must go in <info>).
+export/export/latex/languages/supported-languages_docbook5
 
 Sublabel: docbook poster
 # Posters cannot be properly exported, the LyX documents are too far from
 # DocBook expectations (but should have XML-valid output).
+export/examples/Posters/Beamerposter_docbook5
 export/export/docbook/A0_Poster_Simple_docbook5
 export/export/docbook/SciPoster_docbook5
-export/examples/Posters/Beamerposter_docbook5
+export/export/xhtml/A0_Poster_Simple_docbook5
 export/templates/Posters/.*_docbook5
 
 Sublabel: docbook beamer
 # Beamer is not yet implemented.
 export/examples/Presentations/.*_docbook5
-export/templates/.*/Presentations/Beamer_docbook5
 export/templates/Presentations/.*_docbook5
+export/templates/.*/Presentations/Beamer_docbook5
