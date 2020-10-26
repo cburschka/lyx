@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This DocBook file was created by LyX 2.4.0dev
+  See http://www.lyx.org/ for more information -->
+<book xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
+<title>Additional LyX Features</title>
+<chapter>
+<title>Introduction</title>
+<section>
+<title>Cross-References Between Files</title>
+<sidebar role='shadowbox'>
+<para>This section is somewhat out of date. Need to describe default master documents and how children are opened when the master is. [[FIXME]]</para>
+</sidebar>
+
+<para>It is possible to set up cross-references between the different files. First, open all the files in question: let's call them A and B in a two file example, where B is included in A. Let's say you insert a label in A, then want to reference it in B. Open the cross-reference dialog whilst in document B, and you can select the &#8220;buffer&#8221; to use.</para>
+</section>
+</chapter>
+</book>

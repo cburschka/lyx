@@ -718,14 +718,24 @@ int InsetBox::plaintext(odocstringstream & os,
 
 void InsetBox::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
-	if (!getLayout().docbookwrappertag().empty()) {
+	// There really should be a wrapper tag for this layout.
+	bool hasBoxTag = !getLayout().docbookwrappertag().empty();
+	if (!hasBoxTag)
+		LYXERR0("Assertion failed: box layout " + getLayout().name() + " missing DocBookWrapperTag.");
+
+	// Avoid nesting boxes in DocBook, it's not allowed. Only make the check for <sidebar> to avoid destroying
+	// tags if this is not the wrapper tag for this layout (unlikely).
+	bool isAlreadyInBox = hasBoxTag && xs.isTagOpen(xml::StartTag(getLayout().docbookwrappertag()));
+
+	bool outputBoxTag = hasBoxTag && !isAlreadyInBox;
+
+	// Generate the box tag (typically, <sidebar>).
+	if (outputBoxTag) {
 		if (!xs.isLastTagCR())
 			xs << xml::CR();
 
 		xs << xml::StartTag(getLayout().docbookwrappertag(), getLayout().docbookwrapperattr());
 		xs << xml::CR();
-	} else {
-		LYXERR0("Assertion failed: box layout " + getLayout().name() + " missing DocBookWrapperTag.");
 	}
 
 	// If the box starts with a sectioning item, use as box title.
@@ -735,16 +745,22 @@ void InsetBox::docbook(XMLStream & xs, OutputParams const & runparams) const
 		current_par = makeAny(text(), buffer(), xs, runparams, paragraphs().begin());
 	}
 
-	xs.startDivision(false);
 	// Don't call InsetText::docbook, as this would generate all paragraphs in the inset, not the ones we are
 	// interested in. The best solution would be to call docbookParagraphs with an updated OutputParams object to only
 	// generate paragraphs after the title, but it leads to strange crashes, as if text().paragraphs() then returns
 	// a smaller set of paragrphs.
+	// Elements in the box must keep their paragraphs.
+	auto rp = runparams;
+	rp.docbook_in_par = false;
+	rp.docbook_force_pars = true;
+
+	xs.startDivision(false);
 	while (current_par != paragraphs().end())
-		current_par = makeAny(text(), buffer(), xs, runparams, current_par);
+		current_par = makeAny(text(), buffer(), xs, rp, current_par);
 	xs.endDivision();
 
-	if (!getLayout().docbookwrappertag().empty()) {
+	// Close the box.
+	if (outputBoxTag) {
 		if (!xs.isLastTagCR())
 			xs << xml::CR();
 
