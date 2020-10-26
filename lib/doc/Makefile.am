@@ -278,6 +278,7 @@ dist_rodoc_DATA = \
 
 rudocdir = $(docdir)/ru
 dist_rudoc_DATA = \
+	ru/Additional.lyx \
 	ru/Intro.lyx \
 	ru/Math.lyx \
 	ru/Tutorial.lyx \
