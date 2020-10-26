@@ -376,7 +376,8 @@ void makeBibliography(
 		if (!ip)
 			continue;
 		if (const auto * bibitem = dynamic_cast<const InsetBibitem*>(ip)) {
-			attr = from_utf8("xml:id='") + bibitem->getParam("key") + from_utf8("'");
+			auto id = xml::cleanID(bibitem->getParam("key"));
+			attr = from_utf8("xml:id='") + id + from_utf8("'");
 			break;
 		}
 	}
