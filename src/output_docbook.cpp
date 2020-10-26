@@ -625,9 +625,14 @@ ParagraphList::const_iterator makeListEnvironment(Text const &text,
 
 	// Handle the content of the list environment, item by item.
 	while (par != envend) {
-		Layout const & style = par->layout();
+		// Skip this paragraph if it is both empty and the last one (otherwise, there may be deeper paragraphs after).
+		auto nextpar = par;
+		++nextpar;
+		if (par->empty() && nextpar == envend)
+			break;
 
 		// Open the item wrapper.
+		Layout const & style = par->layout();
 		openTag(xs, style.docbookitemwrappertag(), style.docbookitemwrapperattr(), style.docbookitemwrappertagtype());
 
 		// Generate the label, if need be. If it is taken from the text, sep != 0 and corresponds to the first
