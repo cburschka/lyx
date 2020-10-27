@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 590
+\lyxformat 599
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -37,7 +37,7 @@ theorems-ams-extended
 multicol
 shapepar
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package default
 \inputencoding utf8
@@ -122,11 +122,14 @@ shapepar
 \tracking_changes true
 \output_changes false
 \change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\docbook_table_output 0
 \author -712698321 "Jürgen Spitzmüller"
 \author 5863208 "ab"
+\author 244031559 "Yuriy"
 \author 1119979965 "Joel A. Kulesza"
 \end_header
 
@@ -219,8 +222,17 @@ User's Guide
 \end_layout
 
 \begin_layout Standard
-This manual also documents some special features, like fax support, version
- control, and SGML support, which require additional software to work properly.
+This manual also documents some special features, like fax support
+\change_deleted 244031559 1603802929
+,
+\change_inserted 244031559 1603802931
+ and
+\change_unchanged
+ version control
+\change_deleted 244031559 1603802954
+, and SGML support
+\change_unchanged
+, which require additional software to work properly.
  There is also a chapter on \SpecialChar LyX
 's support for HTML.
  And lastly, there's a chapter of \SpecialChar LaTeX
@@ -537,7 +549,7 @@ PostScript
  performs further steps:
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 Run 
 \begin_inset Flex Code
 status collapsed
@@ -551,7 +563,7 @@ dvips
  to convert the DVI file to PostScript.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 Run a PostScript viewer, such as 
 \begin_inset Flex Code
 status collapsed
@@ -1036,6 +1048,19 @@ On that last point, \SpecialChar LyX
  packages out there to do all sorts of things,
  from labels to envelopes to fancy multipage tables.
  Check out 
+\change_inserted 244031559 1603815732
+
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "https://www.ctan.org/"
+literal "false"
+
+\end_inset
+
+
+\change_deleted 244031559 1603815732
+
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
@@ -1044,6 +1069,8 @@ literal "false"
 
 \end_inset
 
+
+\change_unchanged
  for details.
 \end_layout
 
@@ -4287,7 +4314,7 @@ thepage
 
  access \SpecialChar LaTeX
 's section and page counters, and so print out the current section
- and page numbers.
+ and page number.
  
 \begin_inset Flex Code
 status collapsed
@@ -4500,12 +4527,16 @@ The dialog provides you with a table of bullet shapes.
  different panels of bullet shapes.
  The row of buttons across the top is used to select which bullet depth
  you are changing.
+
+\change_deleted 244031559 1603875981
  A text entry under the table shows the currently selected bullet shape's
  \SpecialChar LaTeX
  equivalent and this can be edited if desired.
  If you do modify the text you will also need to specify any needed packages
  in the \SpecialChar LaTeX
  preamble.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -5415,10 +5446,16 @@ f and bold when viewed in a web browser, too.
  And this is true not just for pre-defined styles, like Section, but for
  any style, including user-defined styles.
  Indeed, the XHTML output routines make no distinction between user-defined
- paragraph and character styles and \SpecialChar LyX
-'s own pre-defined styles: in each case,
- everything \SpecialChar LyX
- knows about the styles is contained in the layout files.
+ paragraph and 
+\change_deleted 244031559 1603876931
+character
+\change_inserted 244031559 1603876940
+text
+\change_unchanged
+ styles and \SpecialChar LyX
+'s own pre-defined styles: in each case, everything \SpecialChar LyX
+ knows about
+ the styles is contained in the layout files.
  And much the same is true as regards pre-defined textual insets, such as
  footnotes, and various custom insets.
  
@@ -20600,14 +20637,7 @@ Copy
 status collapsed
 
 \begin_layout Plain Layout
-
-\family typewriter
-\lang ngerman
-"
-\lang english
-<file-name>
-\lang ngerman
-"
+"<file-name>"
 \end_layout
 
 \end_inset
@@ -20617,14 +20647,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\family typewriter
-\lang ngerman
-"
-\lang english
-<new-file-name>
-\lang ngerman
-"
+"<new-file-name>"
 \end_layout
 
 \end_inset
@@ -20638,14 +20661,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-cvs -q add 
-\family typewriter
-\lang ngerman
-"
-\lang english
-<new-file-name>
-\lang ngerman
-"
+cvs -q add "<new-file-name>"
 \end_layout
 
 \end_inset
@@ -20697,14 +20713,7 @@ Rename
 status collapsed
 
 \begin_layout Plain Layout
-
-\family typewriter
-\lang ngerman
-"
-\lang english
-<file-name>
-\lang ngerman
-"
+"<file-name>"
 \end_layout
 
 \end_inset
@@ -20714,14 +20723,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\family typewriter
-\lang ngerman
-"
-\lang english
-<new-file-name>
-\lang ngerman
-"
+"<new-file-name>"
 \end_layout
 
 \end_inset
@@ -20735,14 +20737,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-cvs -q add 
-\family typewriter
-\lang ngerman
-"
-\lang english
-<new-file-name>
-\lang ngerman
-"
+cvs -q add "<new-file-name>"
 \end_layout
 
 \end_inset
@@ -20756,14 +20751,7 @@ cvs -q add
 status collapsed
 
 \begin_layout Plain Layout
-cvs -q remove 
-\family typewriter
-\lang ngerman
-"
-\lang english
-<file-name>
-\lang ngerman
-"
+cvs -q remove "<file-name>"
 \end_layout
 
 \end_inset
