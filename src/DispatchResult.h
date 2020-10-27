@@ -24,21 +24,10 @@ class DispatchResult
 {
 public:
 	///
-	DispatchResult() :
-			dispatched_(false),
-			error_(false),
-			update_(Update::None),
-			need_buf_update_(false),
-			need_msg_update_(true)
-	{}
+	DispatchResult() = default;
 	///
 	DispatchResult(bool dispatched, Update::flags f) :
-			dispatched_(dispatched),
-			error_(false),
-			update_(f),
-			need_buf_update_(false),
-			need_msg_update_(true)
-	{}
+			dispatched_(dispatched), update_(f) {}
 	///
 	bool dispatched() const { return dispatched_; }
 	///
@@ -72,17 +61,17 @@ public:
 
 private:
 	/// was the event fully dispatched?
-	bool dispatched_;
+	bool dispatched_ = false;
 	/// was there an error?
-	bool error_;
+	bool error_ = false;
 	/// do we need to redraw the screen afterwards?
-	Update::flags update_;
+	Update::flags update_ = Update::None;
 	///
 	docstring message_;
 	///
-	bool need_buf_update_;
+	bool need_buf_update_ = false;
 	///
-	bool need_msg_update_;
+	bool need_msg_update_ = true;
 };
 
 
