@@ -135,33 +135,33 @@ public:
 	virtual bool isLabeled() const { return false; }
 
 	/// identification as math inset
-	virtual InsetMath * asInsetMath() { return 0; }
+	virtual InsetMath * asInsetMath() { return nullptr; }
 	/// identification as math inset
-	virtual InsetMath const * asInsetMath() const { return 0; }
+	virtual InsetMath const * asInsetMath() const { return nullptr; }
 	/// true for 'math' math inset, but not for e.g. mbox
 	virtual bool inMathed() const { return false; }
 	/// is this inset based on the InsetText class?
-	virtual InsetText * asInsetText() { return 0; }
+	virtual InsetText * asInsetText() { return nullptr; }
 	/// is this inset based on the InsetText class?
-	virtual InsetText const * asInsetText() const { return 0; }
+	virtual InsetText const * asInsetText() const { return nullptr; }
 	/// is this inset based on the InsetCollapsible class?
-	virtual InsetCollapsible * asInsetCollapsible() { return 0; }
+	virtual InsetCollapsible * asInsetCollapsible() { return nullptr; }
 	/// is this inset based on the InsetCollapsible class?
-	virtual InsetCollapsible const * asInsetCollapsible() const { return 0; }
+	virtual InsetCollapsible const * asInsetCollapsible() const { return nullptr; }
 	/// is this inset based on the InsetTabular class?
-	virtual InsetTabular * asInsetTabular() { return 0; }
+	virtual InsetTabular * asInsetTabular() { return nullptr; }
 	/// is this inset based on the InsetTabular class?
-	virtual InsetTabular const * asInsetTabular() const { return 0; }
+	virtual InsetTabular const * asInsetTabular() const { return nullptr; }
 	/// is this inset based on the InsetCommand class?
-	virtual InsetCommand * asInsetCommand() { return 0; }
+	virtual InsetCommand * asInsetCommand() { return nullptr; }
 	/// is this inset based on the InsetCommand class?
-	virtual InsetCommand const * asInsetCommand() const { return 0; }
+	virtual InsetCommand const * asInsetCommand() const { return nullptr; }
 	/// is this inset based on the InsetArgument class?
 	virtual InsetArgument const * asInsetArgument() const { return nullptr; }
 	/// is this inset based on the InsetGraphics class?
-	virtual InsetGraphics * asInsetGraphics() { return 0; }
+	virtual InsetGraphics * asInsetGraphics() { return nullptr; }
 	/// is this inset based on the InsetGraphics class?
-	virtual InsetGraphics const * asInsetGraphics() const { return 0; }
+	virtual InsetGraphics const * asInsetGraphics() const { return nullptr; }
 
 	/// the real dispatcher
 	void dispatch(Cursor & cur, FuncRequest & cmd);
