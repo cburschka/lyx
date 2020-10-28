@@ -34,11 +34,21 @@
 INCLUDE(CheckCXXSourceCompiles)
 INCLUDE(FindPackageHandleStandardArgs)
 
+# get cmake-known std numbers
+# Detection of c++20 works well, but our code is not ready for it yet.
+# We currently get errors with internal boost and also from our code.
+set(_max_std_num 17)
+lyxgetknowncmakestd(${_max_std_num} tmpnums)
+
 if (CMAKE_CXX_COMPILER_ID MATCHES "^([cC]lang|AppleClang)$")
-  set(CXX11_FLAG_CANDIDATES "--std=c++11 -Wno-deprecated-register")
+  foreach(_num ${tmpnums})
+    list(APPEND CXX11_FLAG_CANDIDATES "--std=c++${_num} -Wno-deprecated-register")
+  endforeach()
 else()
   if (CYGWIN)
-    set(CXX11_FLAG_CANDIDATES "--std=gnu++11")
+    foreach(_num ${tmpnums})
+      list(APPEND CXX11_FLAG_CANDIDATES "--std=gnu++${_num}")
+    endforeach()
   else()
     if (MSVC)
       # MSVC does not have a general C++11 flag, one can only switch off
@@ -47,22 +57,16 @@ else()
       if (MSVC_VERSION LESS 1926)
 	set(CXX11_FLAG_CANDIDATES "noflagneeded")
       else()
-	set(CXX11_FLAG_CANDIDATES
-	  "/std:c++17"
-	  "/std:c++14"
-	  "noflagneeded")
+	foreach(_num ${tmpnums})
+	  list(APPEND CXX11_FLAG_CANDIDATES "/std:c++${_num}")
+	endforeach()
+	list(APPEND CXX11_FLAG_CANDIDATES "noflagneeded")
       endif()
     else()
-      set(CXX11_FLAG_CANDIDATES
-# Detection of c++20 works well, but our code is not ready for it yet.
-# We currently get errors with internal boost and also from our code.
-#        "--std=c++20"
-        "--std=c++17"
-        "--std=c++14"
-        "--std=c++11"
-        "--std=gnu++11"
-        "--std=gnu++0x"
-      )
+      set(CXX11_FLAG_CANDIDATES)
+      foreach(_num ${tmpnums})
+	list(APPEND CXX11_FLAG_CANDIDATES "--std=c++${_num}")
+      endforeach()
     endif()
   endif()
 endif()

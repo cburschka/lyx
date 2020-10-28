@@ -2,13 +2,11 @@
 # Licence details can be found in the file COPYING.
 #
 # Copyright (c) 2006-2011 Peter Kümmel, <syntheticpp@gmx.net>
-# Copyright (c) 2008-2011 Kornel Benko, <Kornel.Benko@berlin.de>
+# Copyright (c) 2008-2020 Kornel Benko, <Kornel.Benko@berlin.de>
 
 cmake_minimum_required(VERSION 3.1.0)
 
 set(GNUWIN32_DIR D:/LyX/lyx-unstable/lyx-windows-deps-msvc2017)
-set(LYX_USE_QT "QT5")
-set(LYX_REQUIRE_SPELLCHECK true)
 
 set(LYX_PROJECT LyX)
 # Instruct cmake to not use gnu extensions,
@@ -53,6 +51,9 @@ if(COMMAND cmake_policy)
 	cmake_policy(SET CMP0020 NEW)
 	if(POLICY CMP0075)
 		cmake_policy(SET CMP0075 NEW)
+	endif()
+	if(POLICY CMP0077)
+		cmake_policy(SET CMP0077 NEW)
 	endif()
 endif()
 
@@ -258,6 +259,8 @@ if(help OR HELP)
 	message(STATUS)
 	LYX_OPTION_LIST_ALL(help)
 	message(STATUS)
+	unset(help CACHE)
+	unset(HELP CACHE)
 	RETURN()
 endif()
 
@@ -696,28 +699,16 @@ else()
 	  # This allows us to use QT5.7 with recent g++ (version >= 4.9) compilers
 	  # and still use our own c++ extension tests
 	  set(std_num ${CMAKE_MATCH_1})
-	  # Try to find a std-cxx-feature supported by this cmake version
-	  while (std_num GREATER 0)
-	    list(FIND CMAKE_CXX_COMPILE_FEATURES "cxx_std_${std_num}" stdfeature)
-	    if (stdfeature GREATER -1)
-	      set(CMAKE_CXX_STANDARD ${std_num})
-	      break()
-	    endif()
-	    math(EXPR std_num "${std_num}-1")
-	  endwhile()
-	  message(STATUS "std_num = ${std_num}")
-	  if (std_num EQUAL 0)
-	    # not found appropriate feature
-	    # so we use LYX_GCC11_MODE
-	    set(LYX_CXX_FLAGS "-Wall -Wunused-parameter ${LYX_GCC11_MODE}${LYX_CXX_FLAGS}")
-	  else()
-	    message(STATUS "CMAKE_CXX_STANDARD set to ${CMAKE_CXX_STANDARD}")
-	    set(LYX_CXX_FLAGS "-Wall -Wunused-parameter ${LYX_CXX_FLAGS}")
-	  endif()
-	  message(STATUS "Setting LYX_CXX_FLAGS to ${LYX_CXX_FLAGS}")
+	  set(CMAKE_CXX_STANDARD ${std_num})
 	else()
-	  set(LYX_CXX_FLAGS "-Wall -Wunused-parameter ${LYX_GCC11_MODE}${LYX_CXX_FLAGS}")
+	  message(STATUS "Setting CMAKE_CXX_STANDARD 11 as fallback")
+	  set(CMAKE_CXX_STANDARD 11)
+	  set(LYX_GCC11_MODE "--std=c++11")
 	endif()
+	# The following setting with LYX_GCC11_MODE is needed because cmake does not honor
+	# CMAKE_CXX_STANDARD while performing tests like
+	# check_cxx_source_compiles("..." HAVE_DEF_MAKE_UNIQUE)
+	set(LYX_CXX_FLAGS "-Wall -Wunused-parameter ${LYX_GCC11_MODE}${LYX_CXX_FLAGS}")
 	if(LYX_STDLIB_DEBUG)
 	  set(LYX_CXX_FLAGS "${LYX_CXX_FLAGS} -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC")
         else()
@@ -940,6 +931,8 @@ if(LYX_NLS)
 endif()
 
 if(LYX_EXTERNAL_ICONV)
+  # Possible remnants of previous run without external iconv
+  file(REMOVE_RECURSE "${CMAKE_BINARY_DIR}/libiconv" "${CMAKE_BINARY_DIR}/3rdparty/libiconv")
   find_package(ICONV REQUIRED)
 else()
   add_subdirectory(3rdparty/libiconv)
