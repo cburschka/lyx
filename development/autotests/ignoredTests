@@ -106,7 +106,8 @@ export/examples/ja/Modules/Sweave.*
 # to be used with dvilua(la)tex:
 #   https://www.mail-archive.com/search?l=mid&q=20200917155146.ec1bd9f9b5d5f5936513e5dd%40yahoo.co.jp
 # These started to fail due to a "luatex" package update in the TL20 cycle.
-export/.*/ja/.*_dvi3_systemF
+export/.*/(ja|zh_CN)/.*_dvi3_systemF
+export/export/latex/CJK/zh_CN-toc.*_dvi3_systemF
 
 # CJK fails (sometimes) with Xe/LuaTeX and 8-bit fonts:
 #####

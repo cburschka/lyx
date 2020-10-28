@@ -220,10 +220,7 @@ export/examples/ja/Multilingual_Typesetting_.*_lyx.*
 # (ctex font issue with texlive-lang-chinese (from Debian) under pdflatex)
 # and only partial localization with non-tex-fonts:
 export/export/latex/CJK/zh_CN-toc.*
-export/doc/zh_CN/(Intro|Tutorial)_(dvi|pdf).?
-
-# Missing Chinese characters in the DVI (LuaTex)
-export/doc/zh_CN/(Intro|Tutorial)_dvi3_systemF
+export/doc/zh_CN/(Intro|Tutorial)_(dvi|pdf.?)
 
 # CJK languages don't change/reset the "language" (which is problematic for
 # documents in a language that uses a non-standard font encoding)
