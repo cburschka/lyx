@@ -331,6 +331,12 @@ export/templates/Articles/Hebrew_Article_%28KOMA-Script%29_(dvi3|pdf5)_systemF
 # See comment in unreliableTests
 export/export/latex/languages/uk-babel-date-missing-chars-with-ascii_pdf5_texF
 
+# fail because of characters requiring menukeys package which conflicts with
+# recent TL "latex" package update.
+# Reported here and there is hope for a fix soon.
+# https://github.com/tweh/menukeys/issues/59
+export/export/latex/unicodesymbols/07[48]-.*
+
 
 # ================================================
 Sublabel: externalissues
