@@ -35,9 +35,10 @@
 \hbadness 1414
 \emergencystretch 1.5em
 \hfuzz 0.3pt
-% Added by lyx2lyx
-\setlength{\parskip}{\medskipamount}
-\setlength{\parindent}{0pt}
+
+% Use serif font
+\addtokomafont{disposition}{\rmfamily}
+\addtokomafont{descriptionlabel}{\rmfamily}
 \end_preamble
 \options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
@@ -68,16 +69,18 @@ shapepar
 \use_microtype true
 \use_dash_ligatures true
 \graphics default
-\default_output_format default
+\default_output_format pdf2
 \output_sync 0
 \bibtex_command default
 \index_command makeindex
+\float_placement class
+\float_alignment class
 \paperfontsize 12
 \spacing single
 \use_hyperref true
 \pdf_title "Дополнительные возможности LyX"
 \pdf_author "Команда разработки LyX"
-\pdf_subject "Дополнительные возможности LyX"
+\pdf_subject "Документация LyX - Дополнительные возможности"
 \pdf_keywords "LyX"
 \pdf_bookmarks true
 \pdf_bookmarksnumbered true
@@ -119,10 +122,9 @@ shapepar
 \end_index
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation indent
-\paragraph_indentation default
-\is_math_indent 1
-\math_indentation default
+\paragraph_separation skip
+\defskip halfline
+\is_math_indent 0
 \math_numbering_side default
 \quotes_style russian
 \dynamic_quotes 0
@@ -143,11 +145,8 @@ shapepar
 \begin_body
 
 \begin_layout Title
-Дополнительные возможности LyX
-\end_layout
+Дополнительные возможности \SpecialChar LyX
 
-\begin_layout Subtitle
-Version 2.4.x
 \end_layout
 
 \begin_layout Author
@@ -188,6 +187,14 @@ literal "false"
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Версия 2.4.x
 \end_layout
 
 \begin_layout Standard
@@ -215,21 +222,18 @@ LatexCommand tableofcontents
 \shape default
  само по себе уже довольно объемное и содержит информацию обо всех основных
  функциях, которые необходимо знать для подготовки большинства документов.
- Однако команда \SpecialChar LyX
- работала над расширением системы с помощью различных конфигурац
-ионных файлов и внешних пакетов.
- Это означает, что если вы хотите поддерживать \SpecialChar LaTeX
--пакет 
-\series bold
-Fizzwizzle
-\series default
-, то можете создать для него файл макета (или модуль), не изменяя сам \SpecialChar LyX
+ Однако команда поработала над тем, чтобы сделать \SpecialChar LyX
+ расширяемым с помощью
+ различных конфигурационных файлов и внешних пакетов.
+ Это означает, что если вы хотите поддерживать некий \SpecialChar LaTeX
+-пакет, то можете создать
+ для него файл макета (или модуль), не изменяя сам \SpecialChar LyX
 .
- Мы уже добавили несколько новых функций таким способом и некоторые из них
- здесь задокументированы.
+ Мы уже получили несколько новых возможностей, реализованных таким способом,
+ и некоторые из них описаны в этом документе.
  Имеются также некоторые более «продвинутые» функции, такие как управление
- представлением библиографий и работа с документами, состоящими из нескольких
- частей, которые не рассматриваются в 
+ представлением библиографий и работа с составными документами, которые
+ не рассмотрены в 
 \shape italic
 Руководстве пользователя
 \shape default
@@ -238,18 +242,18 @@ Fizzwizzle
 
 \begin_layout Standard
 В этом руководстве также описаны некоторые специальные функции, такие как
- поддержка факсов, контроль версий и поддержка SGML, для правильной работы
- которых требуется дополнительное программное обеспечение.
- Также присутствует глава о поддержке \SpecialChar LyX
- для HTML.
+ поддержка факсов и управление версиями, для правильной работы которых требуется
+ дополнительное программное обеспечение.
+ Также присутствует глава о поддержке HTML в \SpecialChar LyX
+.
  И, наконец, имеется глава, посвященная инструментам и советам по \SpecialChar LaTeX
 , которые
  можно использовать для улучшения внешнего вида ваших документов, напрямую
  используя мощные возможности \SpecialChar LaTeX
 .
- Несмотря на это, \SpecialChar LyX
- — это только WYSIWYM и будет взаимодействовать только
- с некоторыми, а не со всеми функциями \SpecialChar LaTeX
+ Все же \SpecialChar LyX
+ — это только WYSIWYM-система, и он может обеспечивать интерфейс
+ только для некоторых, а не для всех возможностей \SpecialChar LaTeX
 .
 \end_layout
 
@@ -263,8 +267,8 @@ Fizzwizzle
 \shape italic
 Введение
 \shape default
- — это первое место, куда нужно пойти, поскольку оно описывает обозначения
- и формат всех руководств.
+ — это то руководство, с которого стоит начать, поскольку оно описывает
+ обозначения и формат всех остальных руководств.
  Вы также должны быть хорошо знакомы с 
 \shape italic
 Руководством пользователя
@@ -276,13 +280,13 @@ Fizzwizzle
 \begin_layout Standard
 Поскольку многие темы в этом руководстве тесно связаны со взаимодействием
  \SpecialChar LyX
- с \SpecialChar LaTeX
+ и \SpecialChar LaTeX
 , в следующей главе рассказывается о внутренней работе \SpecialChar LyX
  и о том, как
  заставить \SpecialChar LyX
- генерировать именно тот код \SpecialChar LaTeX
-, который требуется.
- Очевидно, эта информация предназначена для более опытных пользователей
+ генерировать именно нужный вам код \SpecialChar LaTeX
+.
+ Разумеется, эта информация предназначена для более опытных пользователей
  \SpecialChar LyX
 .
 \end_layout
@@ -294,7 +298,9 @@ Fizzwizzle
 \end_layout
 
 \begin_layout Section
-Как LyX использует LaTeX
+Как \SpecialChar LyX
+ использует \SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout Standard
@@ -312,11 +318,10 @@ Fizzwizzle
 
 \begin_layout Standard
 Одно время \SpecialChar LyX
- назывался «WYSIWYM-интерфейс для \SpecialChar LaTeX
-», но теперь это не совсем
- неверно.
+ назывался «WYSIWYM-интерфейсом для \SpecialChar LaTeX
+», но теперь это уже не так.
  Имеются также другие внешние интерфейсы к \SpecialChar LaTeX
-.
+
 \begin_inset Foot
 status collapsed
 
@@ -327,13 +332,13 @@ TeXmaker
 \family default
  и 
 \family typewriter
-kile
+Kile
 \family default
  в Linux и 
 \family typewriter
 TeXshop
 \family default
- в OSX.
+ в macOS.
  Конечно, существуют также режимы \SpecialChar LaTeX
  для редакторов 
 \family typewriter
@@ -348,18 +353,19 @@ emacs
 
 \end_inset
 
+.
  В основном это текстовые редакторы с возможностью запускать \SpecialChar LaTeX
  и отмечать
- любые ошибки в файле, который вы редактируете.
+ возникшие ошибки в редактируемом вами файле.
  Хотя \SpecialChar LyX
- является редактором и запускает \SpecialChar LaTeX
-, а также указывает на ошибки в файле,
+ также является редактором, запускает \SpecialChar LaTeX
+ и указывает на ошибки в файле,
  он также делает гораздо больше.
- Во-первых, вам не нужно знать \SpecialChar LaTeX
+ Главное, что вам не нужно знать \SpecialChar LaTeX
 , чтобы эффективно использовать \SpecialChar LyX
 .
- А \SpecialChar LyX
- добавил к \SpecialChar LaTeX
+ Еще \SpecialChar LyX
+ добавляет к \SpecialChar LaTeX
  собственные расширения.
  Попробуйте сделать следующее: выберите 
 \family sans
@@ -393,7 +399,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Имеются возможности автоматического вызова \SpecialChar LaTeX
+Имеется несколько команд автоматического вызова \SpecialChar LaTeX
 .
  К ним относятся использование меню:
 \end_layout
@@ -452,7 +458,7 @@ status collapsed
 
 \begin_layout Enumerate
 Запускает \SpecialChar LaTeX
- с файлом 
+ для этого файла 
 \begin_inset Flex Code
 status collapsed
 
@@ -462,8 +468,7 @@ status collapsed
 
 \end_inset
 
- (возможно, несколько раз) и выполняет необходимые другие команды (например,
- 
+ (возможно, несколько раз) и выполняет другие команды (например, 
 \family typewriter
 bibtex
 \family default
@@ -500,15 +505,15 @@ PostScript
  выполнит следующие шаги:
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 Запустит 
 \family typewriter
 dvips
 \family default
- для преобразования файл DVI в формат PostScript.
+ для преобразования файла DVI в формат PostScript.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 Запустит программу просмотра PostScript, например 
 \family typewriter
 ghostview
@@ -522,7 +527,9 @@ ghostview
 \end_layout
 
 \begin_layout Section
-Перевод файлов LaTeX в LyX-формат
+Перевод файлов \SpecialChar LaTeX
+ в \SpecialChar LyX
+-формат
 \end_layout
 
 \begin_layout Standard
@@ -535,7 +542,6 @@ ghostview
 вать из\SpecialChar menuseparator
 LaTeX (plain)
 \family default
- в \SpecialChar LyX
 .
  Это действие вызовет программу с именем 
 \family typewriter
@@ -550,8 +556,8 @@ foo.lyx
 foo.tex
 \family default
 .
- \SpecialChar LyX
- откроет этот файл.
+ Далее \SpecialChar LyX
+ откроет этот файл
 \begin_inset Foot
 status collapsed
 
@@ -560,12 +566,12 @@ status collapsed
 \family typewriter
 tex2lyx
 \family default
-, конечно, также можно запустить из командной строки.
+, конечно, также можно запустить и из командной строки.
 \end_layout
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -582,8 +588,8 @@ tex2lyx
 tex2lyx
 \family default
  вы можете поискать код \SpecialChar TeX
- и вручную редактировать его для получения правильного
- содержимого.
+ и вручную отредактировать его для получения правильного
+ результата.
 \end_layout
 
 \begin_layout Standard
@@ -592,13 +598,15 @@ tex2lyx
 \end_layout
 
 \begin_layout Section
+Вставка TeX-кода в документы \SpecialChar LyX
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Inserting-TeX-Code"
 
 \end_inset
 
-Вставка TeX-кода в документы LyX
+
 \end_layout
 
 \begin_layout Standard
@@ -732,12 +740,14 @@ end{tabular}
 Код TeX
 \family default
 , содержащий этот текст, находится сразу после этого абзаца.
- Читающий это руководство в \SpecialChar LyX
- увидит весь вставленный \SpecialChar TeX
--код.
- Этот же фрагмент в выводе (в печатной версии) будет отражать только текстовое
- содержимое, без команд \SpecialChar TeX
+ Если вы читаете это руководство в \SpecialChar LyX
+, то увидите только вставку 
+\family sans
+Код TeX
+\family default
 .
+ Этот же фрагмент в выводе (в печатной версии) будет отражать фактический
+ результат:
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -855,9 +865,9 @@ end{tabular}
 Файл\SpecialChar menuseparator
 Дочерний документ
 \family default
- для включения вашего файла (вы должны выбрать тип 
+ для включения вашего файла (вы должны выбрать тип включения 
 \family sans
-Включить
+Ввести
 \family default
 ).
  Мы рекомендуем делать это только в том случае, если у вас имеется файл
@@ -886,7 +896,7 @@ status collapsed
 \shape italic
 не
 \shape default
- проверяет правильность \SpecialChar LaTeX
+ проверяет правильность вашего \SpecialChar LaTeX
 -кода.
 \end_layout
 
@@ -900,16 +910,16 @@ status collapsed
  и их количество постоянно растет.
  Обязательно ознакомьтесь с руководствами, чтобы убедиться, что в \SpecialChar LyX
  отсутствует
- такая-то функция, прежде чем вы решите, что вам придется создать ее самостоятел
-ьно.
+ некоторая функция, прежде чем вы решите, что вам придется создать ее самостояте
+льно.
  Более того, существует множество \SpecialChar LaTeX
 -пакетов для самых разных задач, от создания
- ярлыков до оболочек и причудливых многостраничных таблиц.
+ этикеток на конверты до причудливых многостраничных таблиц.
  Посетите 
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
-target "http://www.ctan.org/"
+target "https://www.ctan.org/"
 literal "false"
 
 \end_inset
@@ -929,19 +939,23 @@ literal "false"
 \end_layout
 
 \begin_layout Section
-LyX и преамбула LaTeX
+\SpecialChar LyX
+ и преамбула \SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout Subsection
-О преамбуле LaTeX
+О преамбуле \SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout Standard
 Если вы уже знакомы с \SpecialChar LaTeX
-, не нужно здесь объяснять, для чего нужна преамбула.
- Если же это не так, нижеследующее подскажет вам некоторые идеи, а мы снова
- рекомендуем обратиться к книге по \SpecialChar LaTeX
- для получения дополнительной информации.
+, то нет нужды объяснять, для чего нужна преамбула.
+ Если же это не так, дальнейший текст подскажет вам некоторые идеи, а мы
+ снова рекомендуем обратиться к книге по \SpecialChar LaTeX
+ для получения дополнительной информаци
+и.
  В любом случае вам следует вникнуть в содержимое следующих пунктов, потому
  что они объясняют, что можно, а чего не нужно делать в \SpecialChar LaTeX
 -преамбуле документа
@@ -961,12 +975,12 @@ status collapsed
 
 \end_inset
 
--документа, перед текстом.
+-документа, до самого текста.
  Она служит для:
 \end_layout
 
 \begin_layout Itemize
-объявления класс документа.
+Объявления класс документа.
 \begin_inset Newline newline
 \end_inset
 
@@ -983,7 +997,7 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-декларации использования пакетов.
+Объявления использования пакетов.
  
 \begin_inset Newline newline
 \end_inset
@@ -991,18 +1005,22 @@ status collapsed
 Пакеты \SpecialChar LaTeX
  предоставляют специальные команды, которые доступны в документе,
  только если пакет был объявлен в преамбуле.
- Помимо предоставления специальных команд, включение пакета может изменить
+ Помимо предоставления специальных команд, включение пакета может изменять
  документ.
  Например, пакет 
 \series bold
 indentfirst
 \series default
  заставляет все абзацы иметь отступ.
- Существуют и другие пакеты для ярлыков, оболочек, полей и т.д.
+ Существуют и другие пакеты для ярлыков, полей и т.
+\begin_inset space \thinspace{}
+\end_inset
+
+д.
 \end_layout
 
 \begin_layout Itemize
-установки счетчиков, переменных, параметров размеров.
+Установки счетчиков, переменных, параметров размеров.
  
 \begin_inset Newline newline
 \end_inset
@@ -1022,7 +1040,7 @@ indentfirst
 \end_layout
 
 \begin_layout Itemize
-объявления команд пользователя (с 
+Объявления команд пользователя (используя 
 \family typewriter
 
 \backslash
@@ -1042,11 +1060,10 @@ renewcommand
 -команд и/или их последовательностей, которые
  часто встречаются внутри документа.
  Хотя преамбула — хорошее место для объявления таких команд, они могут быть
- объявлены где угодно (конечно, до того, как будут использованы в первый
- раз).
- Их использование может быть полезно, если в документе много необработанного
- кода \SpecialChar LaTeX
-, чего обычно не должно быть.
+ объявлены где угодно (конечно, до их первого использования).
+ Их использование может быть полезно, если в документе много кода \SpecialChar LaTeX
+, чего
+ обычно не должно быть.
 \end_layout
 
 \begin_layout Standard
@@ -1076,33 +1093,33 @@ status collapsed
 Команды, которые \SpecialChar LyX
  добавляет в преамбулу файла \SpecialChar LaTeX
 , зафиксированы; вы не можете
- изменить их, не установив исправление для самого \SpecialChar LyX
+ изменить их, не меняя сам \SpecialChar LyX
 .
- Однако вы можете добавить собственные данные в преамбулу, выбрав 
+ Однако вы можете добавить собственный текст в преамбулу, выбрав 
 \family sans
 Преамбула LaTeX
 \family default
- в меню 
+ в диалоговом окне 
 \family sans
 Документ\SpecialChar menuseparator
 Настройки
 \family default
 .
  \SpecialChar LyX
- может добавить что-угодно из диалогового окна преамбулы к своей собственной
- встроенной преамбуле.
+ добавляет текст из диалогового окна преамбулы к своей собственной встроенной
+ преамбуле.
  Перед добавлением собственных объявлений в преамбулу вы должны убедиться,
  что \SpecialChar LyX
  не поддерживает то, что вы хотите сделать (мы уже говорили об изобретении
  велосипеда).
  Также, 
 \shape italic
-убедитесь, что код преамбулы корректный
+убедитесь, что код преамбулы корректен
 \shape default
 .
  \SpecialChar LyX
  не проверяет это за вас.
- Если есть ошибка, вы, скорее всего, получите сообщение «
+ Если там есть ошибки, вы, скорее всего, получите сообщение «
 \begin_inset Flex Code
 status collapsed
 
@@ -1115,7 +1132,7 @@ begin{document}
 \end_inset
 
 ».
- Если вы увидите это сообщение, проверьте преамбулу.
+ Если вы увидите это сообщение — проверьте преамбулу.
 \end_layout
 
 \begin_layout Subsection
@@ -1261,7 +1278,7 @@ voffset
 \backslash
 setlength{
 \backslash
-hoffset}{-0.5 in}
+hoffset}{-0.5in}
 \end_layout
 
 \begin_layout LyX-Code
@@ -1269,7 +1286,7 @@ hoffset}{-0.5 in}
 \backslash
 setlength{
 \backslash
-voffset}{-0.5 in}
+voffset}{-0.5in}
 \end_layout
 
 \begin_layout Standard
@@ -1278,14 +1295,14 @@ voffset}{-0.5 in}
 
 \begin_layout Subsubsection
 Пример №2.
- Ярлыки
+ Этикетки
 \end_layout
 
 \begin_layout Standard
-Говоря о ярлыках, предположим, что необходимо распечатать несколько адресных
- ярлыков.
- В архиве CTAN содержится довольно приятный пакет для печати бланков ярлыков:
- 
+Говоря об этикетках, предположим, что необходимо распечатать несколько адресных
+ этикеток.
+ В архиве CTAN содержится довольно приятный пакет для печати листов с этикетками
+: 
 \begin_inset Flex Code
 status collapsed
 
@@ -1308,7 +1325,7 @@ labels.sty
 \begin_inset Quotes rld
 \end_inset
 
-Статья
+Article (стандартный класс)
 \begin_inset Quotes rrd
 \end_inset
 
@@ -1359,7 +1376,7 @@ BottomBorder=2mm
 \end_layout
 
 \begin_layout Standard
-Это настройка бланков ярлыков Avery, акции №
+Это настройка для листа этикеток Avery, №
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1421,7 +1438,11 @@ labels.sty
  к оформлению электронных и печатных документов.
  В частности, эти требования могут базироваться на правилах оформления абзацев.
  Например, абзац может иметь (или нет) отступ в первой строке, при этом
- особые требования могут предъявляться к первому абзацу раздела и т.п.
+ особые требования могут предъявляться к первому абзацу раздела и т.
+\begin_inset space \thinspace{}
+\end_inset
+
+п.
 \end_layout
 
 \begin_layout Standard
@@ -1434,9 +1455,9 @@ labels.sty
 \end_layout
 
 \begin_layout Standard
-Однако любой пользователь системы \SpecialChar LyX
- вправе оформлять абзацы с использованием
- отступов по своему вкусу.
+Однако любой пользователь \SpecialChar LyX
+ вправе оформлять абзацы с использованием отступов
+ по своему вкусу.
  Если отступ необходим абсолютно во всех абзацах, добавьте следующую строку
  в преамбулу \SpecialChar LaTeX
 :
@@ -1477,7 +1498,9 @@ parindent}{20pt}
 \end_layout
 
 \begin_layout Section
-LyX и ошибки LaTeX
+\SpecialChar LyX
+ и ошибки \SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout Standard
@@ -1490,14 +1513,14 @@ LyX и ошибки LaTeX
  для разбора результатов.
  После анализа файла журнала \SpecialChar LyX
  отображает диалоговое окно со списком ошибок.
- Щелкнув по любому из них, вы можете исследовать то место в вашем \SpecialChar LyX
+ Щелкнув по любой из них, вы можете исследовать то место в вашем \SpecialChar LyX
 -файле,
- где произошла ошибка.
+ где произошла ошибка
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Вообщем, все как обычно принято.
+Это так, в большинстве случаев.
  Анализ файла журнала — сложная работа, и \SpecialChar LyX
  не всегда идет верным курсом.
  Также возникают случаи, когда \SpecialChar LaTeX
@@ -1509,7 +1532,7 @@ status collapsed
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -1595,8 +1618,8 @@ hbox
  для любого создаваемого документа.
  Это предупреждения о слишком длинных строках, выходящих за правое поле,
  что происходит, если \SpecialChar LaTeX
- не находит разумного способа разбить строки (как
- известно, часто с машинописным шрифтом, поскольку при этом не получается
+ не находит разумного способа разбить строки (особенно
+ часто это происходит с машинописным шрифтом, поскольку при этом не получается
  установить автоматически места переноса).
  Во многих случаях это незаметно в выводе ("нарушение" может составлять
  всего один или пару пунктов).
@@ -1608,7 +1631,7 @@ hbox
 Существует несколько общих способов минимизировать такие переполненные строки.
  Щелчок по 
 \family sans
-Включить расширения микротипографики
+Использовать микротипографику
 \family default
  в 
 \family sans
@@ -1617,14 +1640,14 @@ hbox
 Шрифты
 \family default
  уже может значительно улучшить ситуацию.
- Кроме того, код \SpecialChar LaTeX
-, такой как следующий, в 
+ Кроме того, следующий код \SpecialChar LaTeX
+ в 
 \family sans
 Документ\SpecialChar menuseparator
 Настройки\SpecialChar menuseparator
 Преамбула LaTeX
 \family default
-, обычно значительно сокращает переполнение строк (мы используем его в преамбуле
+ обычно значительно сокращает переполнение строк (мы используем его в преамбуле
  данного документа):
 \end_layout
 
@@ -1655,7 +1678,7 @@ hfuzz 0.3pt
 
 \begin_layout Standard
 Однако в некоторых случаях вам в конечном итоге придется переписать текст,
- чтобы строка разбивалась правильно.
+ чтобы строка разбивалась правильно
 \begin_inset Foot
 status collapsed
 
@@ -1677,13 +1700,13 @@ http://www.tex.ac.uk/FAQ-overfull.html
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
 В любом случае вы должны проверить соответствующие строки, по крайней мере,
  для окончательной версии вашего документа.
- Ваши глаза обнаружат, есть ли проблема с чем-то слишком широким.
+ Ваши глаза обнаружат, есть ли проблема с чем-то слишком широким
 \begin_inset Foot
 status collapsed
 
@@ -1699,7 +1722,7 @@ status collapsed
 
 \end_inset
 
-
+.
 \end_layout
 
 \end_deeper
@@ -1805,9 +1828,9 @@ usepackage
 \family default
 , чтобы получить список пакетов, которые известны \SpecialChar LyX
 .
- Эта информация обновляется всякий раз, когда вы перенастраиваете \SpecialChar LyX
- (с помощью
- 
+ Эта информация обновляется всякий раз, когда вы обновляете конфигурацию
+ \SpecialChar LyX
+ (с помощью 
 \family sans
 Инструменты\SpecialChar menuseparator
 Обновить конфигурацию
@@ -1908,7 +1931,7 @@ begin{document}
 
 \end_inset
 
-», — это означает, что в преамбуле имеются ошибки.
+», — это означает, что ошибки находятся в преамбуле.
  Начните отладку с преамбулы.
 \end_layout
 
@@ -1975,7 +1998,7 @@ status open
 
 \end_inset
 
-изменить масштаб фигуры так, чтобы она соответствовала размеру страницы,
+изменить масштаб рисунка так, чтобы он соответствовал размеру страницы,
 \end_layout
 
 \begin_layout Itemize
@@ -1988,13 +2011,13 @@ status open
 
 \end_inset
 
-обрезать таблицу по размеру страницы.
+урезать таблицу по размеру страницы.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
 Если вывод выглядит все еще неудовлетворительно, а вы следовали всем вышеприведе
-нным рекомендациям, мы уверены, что это не так.
+нным рекомендациям, то мы не можем сказать, что не так.
 \end_layout
 
 \begin_layout Standard
@@ -2003,7 +2026,7 @@ status open
 возможно
 \shape default
 , вы нашли ошибку в \SpecialChar LyX
- … .
+ …
 \end_layout
 
 \begin_layout Chapter
@@ -2011,11 +2034,12 @@ status open
 \end_layout
 
 \begin_layout Section
-Настройка библиографий с помощью BibTeX или Biblatex
+Настройка библиографий с помощью Bib\SpecialChar TeX
+ или Biblatex
 \end_layout
 
 \begin_layout Standard
-Основополагающая информация о том, как использовать Bib\SpecialChar TeX
+Основная информация о том, как использовать Bib\SpecialChar TeX
  или 
 \family sans
 Biblatex
@@ -2027,7 +2051,7 @@ Biblatex
 \shape default
 , в разделе 
 \shape italic
-Библиографическая база данных
+Библиографические базы данных
 \shape default
 .
  В следующих подразделах описываются специальные библиографические функции,
@@ -2045,7 +2069,8 @@ Biblatex
  работы.
  Однако во многих научных дисциплинах используются другие стили цитирования.
  Наиболее распространен авторский стиль (например, «Knuth 1984a»).
- LyX поддерживает три пакета, которые предоставляют этот стиль: 
+ \SpecialChar LyX
+ поддерживает три пакета, которые предоставляют этот стиль: 
 \series bold
 biblatex
 \series default
@@ -2076,14 +2101,22 @@ natbib
 jurabib
 \series default
 .
- Если вы хотите иметь полный контроль над форматированием или искать дополнитель
-ные функции, такие как там же, цитаты в сносках, полные цитаты из заголовков,
+ Если вы хотите иметь полный контроль над форматированием или найти дополнительн
+ые функции, такие как там же, цитаты в сносках, полные цитаты из заголовков,
  расширенные форматы даты (например, 
 \begin_inset Quotes rld
 \end_inset
 
-400 г.
- до н.э.
+400
+\begin_inset space \thinspace{}
+\end_inset
+
+г.
+ до н.
+\begin_inset space \thinspace{}
+\end_inset
+
+э.
 \begin_inset Quotes rrd
 \end_inset
 
@@ -2174,7 +2207,7 @@ natbib
 \end_layout
 
 \begin_layout Subsection
-Секционированные библиографии
+Разделенные библиографии
 \end_layout
 
 \begin_layout Standard
@@ -2190,13 +2223,14 @@ natbib
 \end_layout
 
 \begin_layout Standard
-LyX обеспечивает встроенную поддержку одного из таких пакетов, 
+\SpecialChar LyX
+ обеспечивает встроенную поддержку одного из таких пакетов, 
 \series bold
 bibtopic
 \series default
-.
+
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Доступно по ссылке 
@@ -2215,6 +2249,7 @@ ftp://ctan.tug.org/tex-archive/macros/latex/contrib/bibtopic/
 
 \end_inset
 
+.
  Преимущество этого пакета (по сравнению с другими пакетами, такими как
  
 \series bold
@@ -2248,7 +2283,7 @@ scientific.bib
 \family default
  отметьте параметр 
 \family sans
-Библиография по разделам
+Разделенная библиография
 \family default
 .
  Теперь вы можете вставлять несколько библиографий Bib\SpecialChar TeX
@@ -2288,7 +2323,7 @@ Biblatex
 \family default
 , вышеупомянутая опция 
 \family sans
-Библиография по разделам
+Разделенная библиография
 \family default
  должна быть отключена, если используется 
 \family sans
@@ -2367,7 +2402,7 @@ Biblatex
 \end_layout
 
 \begin_layout Subsection
-Множественные библиографии
+Отдельные библиографии
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Multiple-Bibliographies"
@@ -2378,9 +2413,9 @@ name "subsec:Multiple-Bibliographies"
 \end_layout
 
 \begin_layout Standard
-Множественные библиографии, например, библиография для каждой части, главы,
- раздела, подраздела или дочернего (вложенного документа) документа также
- поддерживается \SpecialChar LyX
+Отдельные библиографии, например, библиография для каждой части, главы,
+ раздела, подраздела или дочернего (вложенного) документа также поддерживается
+ \SpecialChar LyX
 .
  Чтобы включить эту возможность, перейдите в 
 \family sans
@@ -2388,17 +2423,17 @@ name "subsec:Multiple-Bibliographies"
 Настройки\SpecialChar menuseparator
 Библиография
 \family default
- и выберите соответствующий элемент (например, «на раздел») в поле со списком
- 
+ и выберите соответствующий элемент (например, «на раздел») в выпадающем
+ списке 
 \family sans
-Несколько библиографий
+Отдельные библиографии
 \family default
 .
  Затем добавьте библиографию Bib(la)\SpecialChar TeX
  к каждой составляющей (например, к
  каждому разделу) вашего документа.
- В результате создается отдельная библиография, содержащая только ссылки,
- созданные в этой составляющей.
+ В результате создается отдельная библиография, содержащая только источники
+ со ссылками, созданными в этой секции документа.
 \end_layout
 
 \begin_layout Standard
@@ -2413,12 +2448,12 @@ bibtopic
 \series default
 .
  Первый пакет используется, если вы выбираете «на дочерний документ» и не
- проверяете разделенную библиографию.
+ выбираете разделенную библиографию.
  Во всех остальных случаях используется 
 \series bold
 bibtopic
 \series default
-.
+
 \begin_inset Foot
 status collapsed
 
@@ -2445,6 +2480,7 @@ bibunits
 
 \end_inset
 
+.
  При использовании 
 \series bold
 bibtopic
@@ -2542,8 +2578,9 @@ Biblatex
 \family default
  также предоставляет простой способ вывести все библиографии впоследствии
  в одном месте (например, в конце документа).
- Для этого выберите «все ссылочные единицы» из комбинированного блока «Содержимо
-е» в диалоговом окне вставки Bib(la)TeX.
+ Для этого выберите «все источники» из выпадающего списка «Содержание» в
+ диалоговом окне Bib(la)\SpecialChar TeX
+.
  Пожалуйста, обратитесь к руководству 
 \family sans
 Biblatex
@@ -2560,29 +2597,35 @@ Biblatex
 \end_layout
 
 \begin_layout Standard
-Когда вы работаете с большим документом, включающим много разделов, может
- оказаться целесообразным разбить его на несколько файлов, или, возможно,
- у вас имеется некоторое описание, содержащее большую таблицу, которая может
- время от времени меняться, а предшествующий текст — нет.
- В этих случаях вам следует серьезно подумать об использовании составных
- документов.
- Например, научные статьи часто состоят из пяти основных частей: введения,
+Когда вы работаете над большим документом, включающим много разделов, может
+ оказаться целесообразным разбить его на несколько файлов.
+ А может у вас имеется некоторое описание, содержащее большую таблицу, которая
+ может время от времени меняться, а предшествующий текст — нет.
+ В этих случаях вам следует задуматься об использовании составных документов.
+ Например, научные статьи часто состоят из пяти основных разделов: введения,
  описания наблюдений или опытов, описания полученных результатов, обсуждения
  и заключения.
  Каждый из них может быть отдельным файлом \SpecialChar LyX
  с одним «главным» файлом, который
- содержит название, авторов, аннотацию, ссылки и т.п., а также пять включенных
- файлов.
+ содержит название, авторов, аннотацию, ссылки и т.
+\begin_inset space \thinspace{}
+\end_inset
+
+п., а также пять включенных файлов.
  Важно отметить, что каждый из этих файлов представляет собой полный файл
  \SpecialChar LyX
-, который можно отформатировать и распечатать самостоятельно, а также включить
+, который можно отформатировать и распечатать самостоятельно, а также включать
  в главный файл.
- Однако каждый из этих файлов должен иметь один и тот же класс документа
- — не пытайтесь смешивать классы книг с классами статей.
+ Но каждый из этих файлов должен иметь один и тот же класс документа — не
+ пытайтесь смешивать классы книг с классами статей.
  Вы также можете включать файлы \SpecialChar LaTeX
 ; однако у этих файлов не должно быть собственно
-й преамбулы (т.е.
- все, вплоть до строки 
+й преамбулы (т.
+\begin_inset space \thinspace{}
+\end_inset
+
+е.
+ все до и включая строку 
 \begin_inset Flex Code
 status collapsed
 
@@ -2619,8 +2662,11 @@ end{document}
 Дочерний документ
 \family default
 .
- Когда вы осуществляете это действие, появляется диалоговая панель дочернего
- документа, в которой можно выбрать файл и сопутствующие параметры его включения.
+ Когда вы осуществляете это действие, появляется диалоговое окно 
+\family sans
+Дочерний документ
+\family default
+, в котором можно выбрать файл и сопутствующие параметры его включения.
 \end_layout
 
 \begin_layout Standard
@@ -2629,21 +2675,21 @@ end{document}
 Файл
 \family default
  очевидно.
- Раскрывающийся список 
+ Выпадающий список 
 \family sans
 Тип включения
 \family default
  содержит пункты: 
 \family sans
-Включить
+Включить (include)
 \family default
 , 
 \family sans
-Ввести
+Ввести (input)
 \family default
 , 
 \family sans
-Дословно
+Буквально
 \family default
  и 
 \family sans
@@ -2662,8 +2708,8 @@ end{document}
 \end_layout
 
 \begin_layout Enumerate
-«Включаемые» файлы набираются, начиная с новой страницы, а файлы, которые
- «вводятся», набираются с текущей страницы.
+«Включаемые» файлы верстаются, начиная с новой страницы, а файлы, которые
+ «вводятся», верстаются с текущей страницы.
 \end_layout
 
 \begin_layout Enumerate
@@ -2673,8 +2719,11 @@ end{document}
 
 \begin_layout Enumerate
 «Включение» позволяет выводить только выбранные «включаемые» файлы, сохраняя
- при этом фактические счетчики (разбиение на страницы и т.д.) и ссылки (подробност
-и см.
+ при этом фактические счетчики (разбиение на страницы и т.
+\begin_inset space \thinspace{}
+\end_inset
+
+д.) и ссылки (подробности см.
  в разделе 
 \shape italic
 Дочерние документы
@@ -2687,15 +2736,15 @@ end{document}
 \end_layout
 
 \begin_layout Standard
-Следовательно, «включение» является предпочтительным методом для глав, переданны
-х для их оформления дочерним документам, в то время как «ввод» больше подходит
- для наследования произвольных файлов.
+Следовательно, «включение» является предпочтительным методом для глав, выделенны
+х в дочерние документы, в то время как «ввод» больше подходит для использования
+ произвольных файлов.
 \end_layout
 
 \begin_layout Standard
-Файл, включаемый «дословно», позволяет вам включать набранный материал в
- том виде, в котором он представлен в файле, т.е.
- в дословном режиме, с набором символов шрифтом машинописного начертания.
+Файл, включаемый «буквально», позволяет вам включать материал в том виде,
+ в котором он представлен в файле, т.е.
+ в дословном режиме, с набором символов машинописным шрифтом.
  Обычно, пробелы в этом файле невидимы, хотя несколько последовательных
  пробелов сохраняются, в отличие от принятой обработки пробелов в \SpecialChar LyX
 .
@@ -2703,11 +2752,11 @@ end{document}
 \family sans
 Отмечать пробелы в выводе
 \family default
- вводит отметку, однозначно определяющую наличие пробела.
+ выводит пометки, однозначно показывающие наличие пробела.
 \end_layout
 
 \begin_layout Standard
-Тип вклюения 
+Тип включения 
 \family sans
 Листинг программы
 \family default
@@ -2728,8 +2777,7 @@ end{document}
 Как правило, главный файл перед набором преобразуется в полный файл \SpecialChar LaTeX
 , а
  включенные файлы преобразуются в файлы \SpecialChar LaTeX
-, которые не содержат всей информации
- о преамбуле.
+ без преамбул.
 \end_layout
 
 \begin_layout Subsection
@@ -2738,15 +2786,14 @@ end{document}
 
 \begin_layout Standard
 При работе дочерними документами вы можете захотеть иметь только одну основную
- библиографию в конце, но при этом иметь возможность иметь выбранную библиографи
-ю для дочернего документа, если вы выводите его отдельно.
+ библиографию в конце, но при этом иметь возможность иметь свою библиографию
+ для дочернего документа, если вы выводите его отдельно.
  Вот как этого можно добиться.
 \end_layout
 
 \begin_layout Standard
 Для главного документа вы просто вставляете библиографию в то место, где
- должна появиться основная библиография (в главном файле или в дочернем
- файле).
+ должна появиться основная библиография (в главном или в дочернем файле).
  Если вставка библиографии находится в главном файле, ссылки будут унаследованы
  всеми дочерними элементами, поэтому они будут доступны в диалоговом окне
  цитирования в каждом дочернем файле.
@@ -2755,14 +2802,27 @@ end{document}
 \begin_layout Standard
 Библиографии, предназначенные только для дочерних документов, вставьте там,
  где они должны появиться, когда дочерний документ транслируется отдельно.
- Однако хитрость заключается в том, чтобы вставить их в ветку (меню Вставка->Вет
-ка->Добавить новую ветку), например, названную «Только для детей».
- В дочерних элементах активируйте эту ветку (с помощью меню Документ->Настройки-
->Ветки).
- В главном документе деактивируйте эту ветку (из меню Документ-> Настройки->Ветк
-и).
- Теперь детская библиография будет проигнорирована в главном документе,
- но будет задействована в дочернем.
+ Хитрость заключается в том, чтобы вставить их в ветку (меню 
+\family sans
+Вставка\SpecialChar menuseparator
+\SpecialChar allowbreak
+Ветка\SpecialChar menuseparator
+\SpecialChar allowbreak
+Добавить новую ветку
+\family default
+), например, названную «Только для поддокументов».
+ В дочерних документах активируйте эту ветку (используя 
+\family sans
+Документ\SpecialChar menuseparator
+\SpecialChar allowbreak
+Настройки\SpecialChar menuseparator
+\SpecialChar allowbreak
+Ветки
+\family default
+).
+ А в главном документе деактивируйте эту ветку.
+ Теперь такие библиографии будут игнорироваться в главном документе, но
+ будет задействованы в дочерних.
 \end_layout
 
 \begin_layout Standard
@@ -2782,7 +2842,8 @@ reference "subsec:Multiple-Bibliographies"
 \end_layout
 
 \begin_layout Section
-Архивы LyX
+Архивы \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
@@ -2859,9 +2920,16 @@ zip
 
 \begin_layout Standard
 Конфигурационный процесс \SpecialChar LyX
- настроит скрипт на экспорт `\SpecialChar LyX
- Archive', и этот
- формат будет доступен в меню 
+ настроит скрипт для экспорта в формат 
+\begin_inset Quotes rld
+\end_inset
+
+Архив \SpecialChar LyX
+
+\begin_inset Quotes rrd
+\end_inset
+
+, и этот формат будет доступен в меню 
 \family sans
 File\SpecialChar menuseparator
 Экспортировать в
@@ -2911,20 +2979,35 @@ zip
 
 \end_inset
 
-) в конвертер 
+) для конвертера 
 \family sans
 LyX\SpecialChar menuseparator
 Архив LyX
 \family default
  в меню 
 \family sans
-Инструменты\SpecialChar menuseparator
-Настройки\SpecialChar menuseparator
-Обработка файлов\SpecialChar menuseparator
+Инструменты
+\family default
+\SpecialChar menuseparator
+\SpecialChar allowbreak
+
+\family sans
+Настройки
+\family default
+\SpecialChar menuseparator
+\SpecialChar allowbreak
+
+\family sans
+Обработка файлов
+\family default
+\SpecialChar menuseparator
+\SpecialChar allowbreak
+
+\family sans
 Конвертеры
 \family default
  (убедитесь, что вы добавили переключатель после имени скрипта, а не перед
- ним.)
+ ним).
 \end_layout
 
 \begin_layout Section
@@ -2932,19 +3015,27 @@ LyX\SpecialChar menuseparator
 \end_layout
 
 \begin_layout Standard
-Макет страницы по умолчанию довольно прост; для класса документов 
+Макет страницы по умолчанию довольно прост; для стандартного класса документов
+ 
 \begin_inset Quotes rld
 \end_inset
 
-Статья
+Article
 \begin_inset Quotes rrd
 \end_inset
 
  все, что вы получаете, — это номер страницы по центру внизу страницы.
- В данном документе используется книжный класс KOMA-скрипта, поэтому он
- выглядит немного интереснее.
- Но чтобы по-настоящему устроить зрелище, вам нужно установить стиль страницы
- документа на «красивый», как указано в 
+ В данном документе используется класс 
+\begin_inset Quotes rld
+\end_inset
+
+KOMA-Script Book
+\begin_inset Quotes rrd
+\end_inset
+
+, поэтому он выглядит немного интереснее.
+ Но чтобы по-настоящему устроить зрелище, вам нужно установить стиль колонтитуло
+в документа на «красивый (fancy)», как указано в 
 \shape italic
 Руководстве пользователя
 \shape default
@@ -2976,10 +3067,10 @@ https://www.ctan.org/tex-archive/help/Catalogue/entries/fancyhdr.html
 \end_layout
 
 \begin_layout Standard
-Заголовок страницы делится на три поля, неудивительно, что они отмечаются
- как «левое», «центральное» и «правое».
+Верхний колонтитул делится на три поля, неудивительно, что они названы как
+ «левое», «центральное» и «правое».
  Нижний колонтитул также делится на эти три части.
- Команды LaTeX для простейшей установки этих полей: 
+ Команды LaTeX для установки этих полей: 
 \begin_inset Flex Code
 status collapsed
 
@@ -3027,7 +3118,11 @@ lfoot
 
 \end_inset
 
- и т.д.
+ и т.
+\begin_inset space \thinspace{}
+\end_inset
+
+д.
  Предположим, вы хотите поместить свое имя в верхнем левом углу каждой страницы.
  Просто вставьте в преамбулу следующую команду:
 \end_layout
@@ -3037,8 +3132,7 @@ lfoot
 \family typewriter
 
 \backslash
-lhead{John Q.
- DocWriter}
+lhead{Имя Автора}
 \end_layout
 
 \begin_layout Standard
@@ -3068,7 +3162,7 @@ cfoot{}
 \family typewriter
 
 \backslash
-lhead{Section 
+lhead{Раздел 
 \backslash
 thesection}
 \end_layout
@@ -3086,7 +3180,7 @@ chead{}
 \family typewriter
 
 \backslash
-rhead{Page 
+rhead{Страница 
 \backslash
 thepage}
 \end_layout
@@ -3096,8 +3190,7 @@ thepage}
 \family typewriter
 
 \backslash
-lfoot{John Q.
- DocWriter}
+lfoot{Имя Автора}
 \end_layout
 
 \begin_layout LyX-Code
@@ -3143,9 +3236,9 @@ thepage
 
 \end_inset
 
- оперируют счетчиками разделов и страниц \SpecialChar LaTeX
- и таким образом формируют для
- печати текущий раздел и номера страниц.
+ дают доступ к счетчикам \SpecialChar LaTeX
+ для разделов и страниц, и таким образом выводят
+ текущий раздел и номер страницы.
  Команда 
 \begin_inset Flex Code
 status collapsed
@@ -3162,13 +3255,9 @@ today
 \end_layout
 
 \begin_layout Standard
-Также можно изменить толщину горизонтальных линий, расположенных под заголовком
+Также можно изменить толщину горизонтальных линий, расположенных под верхним
  и над нижним колонтитулом.
- Если вам не нужна одна из этих линий, установите ее толщину в 
-\begin_inset Formula $0$
-\end_inset
-
-.
+ Если вам не нужна одна из этих линий, установите ее толщину в 0.
  Линия верхнего колонтитула имеет толщину по умолчанию 0.4
 \begin_inset space \thinspace{}
 \end_inset
@@ -3293,7 +3382,7 @@ usepackage{graphics}
 \end_layout
 
 \begin_layout Section
-Выбор маркеров списков
+Настройка маркеров списков
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:bullet"
@@ -3308,12 +3397,13 @@ name "sec:bullet"
 \end_layout
 
 \begin_layout Standard
-LyX предоставляет 216 форм маркеров, к которым можно получить доступ из
- простого диалогового окна.
- Используя этот диалог, вы можете легко указать, какую форму маркера использоват
-ь на каждом уровне детализированного списка.
+\SpecialChar LyX
+ предоставляет 216 форм маркеров, к которым можно получить доступ из простого
+ диалогового окна.
+ Используя это окно, вы можете легко указать, какую форму маркера использовать
+ на каждом уровне ненумерованного списка.
  Эти настройки распространяются на весь документ, поэтому вы не сможете
- этим способом указать разные наборы маркеров для разных абзацев.
+ этим способом указать разные наборы маркеров для разных абзацев
 \begin_inset Foot
 status collapsed
 
@@ -3323,7 +3413,7 @@ status collapsed
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Subsection
@@ -3336,7 +3426,7 @@ status collapsed
 Документ\SpecialChar menuseparator
 Настройки
 \family default
-, а затем выберите вкладку 
+, а затем выберите раздел 
 \family sans
 Маркеры
 \family default
@@ -3344,21 +3434,16 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Диалог предоставляет вам таблицу форм маркеров.
+Окно предоставляет вам таблицу форм маркеров.
  Столбец кнопок в левой части таблицы обеспечивает доступ к шести различным
  панелям формы маркеров.
  Ряд кнопок вверху используется для выбора изменяемой глубины маркера.
- Текстовая запись под таблицей показывает \SpecialChar LaTeX
--эквивалент текущей выбранной
- формы маркера, и при желании его можно отредактировать.
- Если вы все же измените этот текст, вам также нужно будет указать все необходим
-ые пакеты в преамбуле \SpecialChar LaTeX
-.
 \end_layout
 
 \begin_layout Standard
 Шесть панелей разделены по требуемым пакетам.
- В следующей таблице показано сопоставление имени кнопки с пакетом LaTeX.
+ В следующей таблице показано сопоставление имени кнопки с пакетом \SpecialChar LaTeX
+.
 \end_layout
 
 \begin_layout Standard
@@ -3400,7 +3485,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-Необходимые пакеты
+Необходимый пакет
 \end_layout
 
 \end_inset
@@ -3458,7 +3543,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-Математический
+Математика
 \end_layout
 
 \end_inset
@@ -3647,7 +3732,7 @@ pifont.sty
  Если вы получаете ошибки от \SpecialChar LaTeX
  при попытке просмотреть или распечатать файл,
  содержащий такие маркеры, вероятно, в вашем документе не указано использование
- соответствующего пакета.
+ соответствующего пакета
 \begin_inset Foot
 status open
 
@@ -3659,7 +3744,7 @@ status open
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Subsection
@@ -3675,7 +3760,7 @@ status open
 
 \begin_layout Standard
 Можно сбросить форму маркера до значения по умолчанию, просто щелкнув правой
- кнопкой мыши на соответствующей кнопке глубины маркера.
+ кнопкой мыши на соответствующей кнопке глубины маркера
 \begin_inset Foot
 status open
 
@@ -3890,11 +3975,12 @@ savelabelitemi}
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Chapter
-LyX и Всемирная паутина
+\SpecialChar LyX
+ и Всемирная паутина
 \end_layout
 
 \begin_layout Standard
@@ -3902,12 +3988,12 @@ LyX и Всемирная паутина
  уже давно поддерживает экспорт документов в различные веб-форматы, такие
  как HTML.
  Однако до версии 2.0 экспорт HTML всегда выполнялся с использованием внешних
- конверторов.
+ конвертеров
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Подробнее об использовании внешних конверторов с \SpecialChar LyX
+Подробнее об использовании внешних конвертеров с \SpecialChar LyX
  см.
  в 
 \shape italic
@@ -3922,6 +4008,7 @@ status collapsed
 
 \end_inset
 
+.
  Они делятся на две большие группы: имеются конвертеры, которые используют
  \SpecialChar LaTeX
  в качестве промежуточного формата, такие как 
@@ -3954,8 +4041,10 @@ plastex
 
 \end_inset
 
-, полагаясь на LyX для создания LaTeX-кода; и есть конвертер, который работает
- непосредственно с файлами \SpecialChar LyX
+, полагаясь на \SpecialChar LyX
+ для создания \SpecialChar LaTeX
+-кода; и есть конвертер, который работает непосредс
+твенно с файлами \SpecialChar LyX
 , 
 \begin_inset Flex Code
 status collapsed
@@ -3972,12 +4061,12 @@ er
 \end_layout
 
 \begin_layout Standard
-Конверторы, основанные на \SpecialChar LaTeX
+Конвертеры, основанные на \SpecialChar LaTeX
 , имеют то преимущество, что в принципе в них
  заложено все, что используется в \SpecialChar LaTeX
  при экспорте документа.
- Для работы таких конверторов не важно, как был создан код документа.
- Эти конверторы могут использовать файлы 
+ Для работы таких конвертеров не важно, как был создан код документа.
+ Эти конвертеры могут использовать файлы 
 \begin_inset Flex Code
 status collapsed
 
@@ -4000,13 +4089,13 @@ bbl
 , созданные Bib\SpecialChar TeX
 .
  С другой стороны, \SpecialChar LaTeX
- — очень сложный для синтаксического анализа язык — иногда
- говорят, что только \SpecialChar TeX
+ — очень сложный для синтаксического анализа язык.
+ Иногда говорят, что только сам \SpecialChar TeX
  понимает \SpecialChar TeX
-, и конверторы на основе \SpecialChar LaTeX
- часто не могут
- преобразовать, кажущиеся довольно простыми, конструкции; сложные же фрагменты
- могут вообще не появиться в выводе.
+, и конвертеры на основе \SpecialChar LaTeX
+ часто
+ не могут преобразовать, кажущиеся довольно простыми, конструкции; сложные
+ же фрагменты могут вообще не появиться в выводе.
  Например, на момент написания данного документа, руководство 
 \shape italic
 Встроенные объекты
@@ -4064,7 +4153,7 @@ literal "false"
  В частности, формулы, которые он создает, идеально масштабируются, поскольку
  математика отображается с использованием комбинации HTML и CSS, а не конвертиру
 ется в изображения.
- Но, даже умеренно сложные формулы обрабатываются хуже, чем конвертором
+ Но, даже умеренно сложные формулы обрабатываются хуже, чем конвертером
  
 \begin_inset Flex Code
 status collapsed
@@ -4075,7 +4164,7 @@ htlatex
 
 \end_inset
 
-; это отражает ограничения HTML.
+; это отражает ограничения HTML
 \begin_inset Foot
 status collapsed
 
@@ -4092,12 +4181,12 @@ er
 \end_inset
 
  также может использовать jsMath и MathJax для уравнений, но эти возможности
- доступны только глобально и требуют доступа к серверу, на котором работает
- серверная часть.
+ доступны только глобально и требуют доступа к серверу.
 \end_layout
 
 \end_inset
 
+.
  Что более важно (по крайней мере, с версии 1.1.1), 
 \begin_inset Flex Code
 status collapsed
@@ -4128,12 +4217,12 @@ er
  пойти другим путем и сделали сам \SpecialChar LyX
  способным формировать XHTML, так же как
  он может создавать \SpecialChar LaTeX
--код, DocBook и открытый текст.
+-код, DocBook и простой текст.
 \end_layout
 
 \begin_layout Standard
 На момент написания этой статьи вывод XHTML находится в стадии разработки
- и, вероятно, должен рассматриваться как «экспериментальный».
+ и, вероятно, должен рассматриваться как «экспериментальный»
 \begin_inset Foot
 status collapsed
 
@@ -4174,12 +4263,13 @@ literal "false"
 
 \end_inset
 
+.
  Тем не менее, разработчики выбрали этот подход, потому что он имеет несколько
  потенциальных преимуществ перед двумя другими.
 \end_layout
 
 \begin_layout Standard
-Эти преимущества в первую очередь связаны с тем, что в программы вывода
+Эти преимущества в первую очередь связаны с тем, что в процедуры вывода
  XHTML, поскольку они являются частью \SpecialChar LyX
 , заложено все, что \SpecialChar LyX
  
@@ -4190,7 +4280,7 @@ literal "false"
 \begin_inset Quotes rrd
 \end_inset
 
- об экспортируемом документе.
+ об экспортируемом документе
 \begin_inset Foot
 status collapsed
 
@@ -4204,10 +4294,11 @@ status collapsed
 
 \end_inset
 
- Таким образом, в них заложена информация о содержании (как отражается в
- схеме), о счетчиках, связанных с различными стилями абзацев, и о стилях,
- определенных пользователем.
- Подпрограммам вывода XHTML также доступны сведения из \SpecialChar LyX
+.
+ Таким образом, в них заложена информация о содержании (как в панели навигации),
+ о счетчиках, связанных с различными стилями абзацев, и о стилях, определенных
+ пользователем.
+ Процедурам вывода XHTML также доступны сведения из \SpecialChar LyX
  об интернационализации,
  поэтому они выводят, например, «Глава 1» или «Kapitel 1», в зависимости
  от используемого языка.
@@ -4239,7 +4330,7 @@ status collapsed
 
 , но и для любого стиля, включая стили, определенные пользователем.
  Действительно, процедуры вывода XHTML не делают различий между определяемыми
- пользователем стилями абзацев и символов и собственными предопределенными
+ пользователем стилями абзацев и текста и собственными предопределенными
  стилями \SpecialChar LyX
 : в каждом случае все, что \SpecialChar LyX
  знает о стилях, содержится в файлах
@@ -4250,7 +4341,8 @@ status collapsed
 
 \begin_layout Standard
 В результате вывод XHTML может быть настроен и расширен точно так же, как
- как это делается для вывода LaTeX: через файлы и модули макета.
+ как это делается для вывода \SpecialChar LaTeX
+: через файлы и модули макета.
  См.
  подробности в пятой главе 
 \shape italic
@@ -4271,7 +4363,7 @@ status collapsed
 \begin_layout Standard
 Для представления математических выражений \SpecialChar LyX
  предлагает четыре варианта,
- у каждого из которых имеются, и преимущества, и недостатки:
+ у каждого из которых имеются и преимущества, и недостатки:
 \end_layout
 
 \begin_layout Itemize
@@ -4311,7 +4403,7 @@ elyxer
 
 \end_inset
 
- выводит математические данные в виде HTML, стилизованного с помощью CSS.
+ выводит математические данные в виде HTML, стилизованного с помощью CSS
 \begin_inset Foot
 status collapsed
 
@@ -4332,6 +4424,7 @@ elyxer
 
 \end_inset
 
+.
  Для простых формул это может работать достаточно хорошо, но с более сложными
  формулами могут возникнуть проблемы.
  Тем не менее, этот метод имеет то преимущество, что он очень широко поддерживае
@@ -4363,7 +4456,7 @@ htlatex
 
 , \SpecialChar LyX
  будет выводить формулы в виде изображений, фактически тех же изображений,
- которые используются для мгновенного предварительного просмотра.
+ которые используются для мгновенного предпросмотра
 \begin_inset Foot
 status collapsed
 
@@ -4377,12 +4470,17 @@ status collapsed
 
 \end_inset
 
+.
  Преимущество этого метода заключается в том, что изображения просто генерируютс
 я \SpecialChar LaTeX
 , поэтому они весьма точные.
  Недостатком же, как упоминалось ранее, является то, что это растровые изображен
 ия, поэтому они не очень хорошо масштабируются, их невозможно скопировать
- и т.д.
+ и т.
+\begin_inset space \thinspace{}
+\end_inset
+
+д.
 \begin_inset Newline newline
 \end_inset
 
@@ -4396,7 +4494,7 @@ status collapsed
 Настройки\SpecialChar menuseparator
 Форматы
 \family default
-.
+
 \begin_inset Foot
 status collapsed
 
@@ -4411,7 +4509,7 @@ dpi.
 
 \end_inset
 
-
+.
 \begin_inset Newline newline
 \end_inset
 
@@ -4446,8 +4544,17 @@ literal "false"
 , встроенного в HTML-документы.
  \SpecialChar LyX
  оборачивает \SpecialChar LaTeX
--код либо в специальную оболочку (для встроенных формул),
- либо в 
+-код либо в 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+span
+\end_layout
+
+\end_inset
+
+ (для обычных формул), либо в 
 \begin_inset Flex Code
 status collapsed
 
@@ -4457,7 +4564,7 @@ div
 
 \end_inset
 
- (для отображаемых формул) с 
+ (для выделенных формул) с 
 \begin_inset Flex Code
 status collapsed
 
@@ -4467,7 +4574,7 @@ class='math'
 
 \end_inset
 
-, как требуется для jsMath.
+, как это требуется для jsMath.
 \end_layout
 
 \begin_layout Standard
@@ -4484,10 +4591,10 @@ class='math'
 \end_layout
 
 \begin_layout Standard
-В конце концов, \SpecialChar LyX
- предложит пользователю возможность выбрать альтернативный
+Со временем \SpecialChar LyX
+ предложит пользователю возможность выбирать альтернативный
  метод вывода для конкретной вставки, скажем, такой, которая не очень хорошо
- отображается в MathML.
+ отображается в MathML
 \begin_inset Foot
 status collapsed
 
@@ -4504,7 +4611,7 @@ status collapsed
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Section
@@ -4512,34 +4619,44 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Вывод XHTML полностью поддерживает библиографии и цитирования.
+Вывод XHTML полностью поддерживает библиографии и баблиографические ссылки.
 \end_layout
 
 \begin_layout Standard
-Метки цитирования генерируются тем же механизмом, что и для экранных меток
- \SpecialChar LyX
-, поэтому в выводе они будут выглядеть почти так же, как в \SpecialChar LyX
-, даже несколько
- лучше.
- Если вы используете числовую форму цитирования, \SpecialChar LyX
+Библиографические ссылки генерируются тем же механизмом, что и для экранного
+ представления \SpecialChar LyX
+, поэтому в выводе они будут выглядеть почти так же, как
+ в \SpecialChar LyX
+, даже несколько лучше.
+ Если вы используете числовой стиль цитирования, \SpecialChar LyX
  будет выводить числовые
- метки, такие как [1] или [17], вместо того, чтобы отображать ключ цитирования
+ метки, такие как [1] или [17], вместо того, чтобы отображать ключ источника
  в квадратных скобках, как это происходит на экране.
- Если вы используете цитирование в форме втор-год, то \SpecialChar LyX
- будет добавлять к
- годам строчные буквы, как это делает Bib\SpecialChar TeX
-, если он находит более одного
- цитирования для данной комбинации автор-год.
- Метки будут отображаться с библиографическими записями.
+ Если вы используете стиль 
+\begin_inset Quotes rld
+\end_inset
+
+автор-год
+\begin_inset Quotes rrd
+\end_inset
+
+, то \SpecialChar LyX
+ будет добавлять к годам строчные буквы, как это делает Bib\SpecialChar TeX
+, если он
+ находит более одного источника для данной комбинации автор-год.
+ Метки будут отображаться с библиографическими источниками.
  Обратите внимание, что в настоящее время нет возможности настроить внешний
  вид меток, например, выбирая между квадратными и круглыми скобками.
 \end_layout
 
 \begin_layout Standard
 Вывод библиографии обрабатывается тем же механизмом, который обрабатывает
- представление ссылочной информации в диалоговом окне цитирования, поэтому
- вы увидите в выводе XHTML в значительной степени то же самое, что вы бы
- увидели, если взглянули на данную запись в диалоговом окне цитирования.
+ представление ссылочной информации в диалоговом окне 
+\family sans
+Библиографическая ссылка
+\family default
+, поэтому вы увидите в выводе XHTML в значительной степени то же самое,
+ что вы бы увидели, если взглянули на данную ссылку в этом диалоговом окне.
  Форматирование можно настроить в файле макета или, что более желательно,
  в модуле.
  См.
@@ -4595,10 +4712,10 @@ Language in Context: Selected Essays
 \end_layout
 
 \begin_layout Standard
-В настоящее время нет поддержки секционированных библиографий.
- Если у вас заготовлено несколько библиографий, \SpecialChar LyX
- будет печатать одну и ту
- же библиографию снова и снова.
+В настоящее время нет поддержки разделенных библиографий.
+ Если у вас используются отдельные библиографии, \SpecialChar LyX
+ будет печатать одну и
+ ту же библиографию снова и снова.
 \end_layout
 
 \begin_layout Section
@@ -4613,12 +4730,12 @@ Language in Context: Selected Essays
 
 \begin_layout Standard
 Экспорт предметного указателя будет наиболее надежным, если вы не будете
- пытаться использовать причудливые конструкции, описанные в разделе об индексах
- в 
+ пытаться использовать причудливые конструкции, описанные в разделе об указателя
+х в 
 \shape italic
 Руководстве пользователя
 \shape default
-.
+
 \begin_inset Foot
 status collapsed
 
@@ -4631,14 +4748,15 @@ status collapsed
 
 \end_inset
 
+.
  Мы опишем, как с этим обращаться, используя заголовки подразделов данного
  раздела.
 \end_layout
 
 \begin_layout Itemize
-Группировка записей индекса (также известные как подзаписи): \SpecialChar LyX
+Группировка рубрик указателя (также известные как подрубрики): \SpecialChar LyX
  прилагает
- усилия для их поддержки, но записи должны быть разделены знаком 
+ усилия для их поддержки, но рубрики должны быть разделены знаком 
 \begin_inset Quotes rld
 \end_inset
 
@@ -4658,55 +4776,58 @@ status collapsed
 \begin_inset Quotes rrd
 \end_inset
 
- в математике и т.д.
+ в математике и т.
+\begin_inset space \thinspace{}
+\end_inset
+
+д.
 \end_layout
 
 \begin_layout Itemize
 Диапазоны страниц: вообще не поддерживаются, поскольку они не имеют смысла
  в XHMTL.
- Вместо этого вы получите только две записи индекса, по одной с каждого
+ Вместо этого вы получите только две рубрики указателя, по одной с каждого
  конца.
 \end_layout
 
 \begin_layout Itemize
 Перекрестные ссылки: не поддерживаются.
  Если \SpecialChar LyX
- находит запись, содержащую конструкцию «|см.
- …», она просто отбрасывается, а остальная часть обрабатывается как обычная
- запись индекса.
+ находит рубрику, содержащую конструкцию «|see …», она просто отбрасываетс
+я, а остальная часть обрабатывается как обычная рубрика указателя.
 \end_layout
 
 \begin_layout Itemize
-Порядок ввода индекса: \SpecialChar LyX
+Порядок рубрик указателя: \SpecialChar LyX
  поддерживает попытки фиксирования порядка сортировки.
  Он возьмет то, что находится перед первым найденным символом '@', и использует
  это для сортировки, принимая то, что следует за этим символом '@', как
- фактическую запись.
+ фактическую рубрику.
  В настоящее время \SpecialChar LyX
  не проверяет экранированный символ '@', поэтому не пытайтесь
- индексировать адреса электронной почты.
+ добавлять в указатель адреса электронной почты.
 \end_layout
 
 \begin_layout Itemize
-Макет записи индекса: вы можете форматировать записи с помощью диалогового
- окна стиля текста или с помощью любого другого метода, доступного в самом
- \SpecialChar LyX
+Форматирование рубрик указателя: вы можете форматировать рубрики с помощью
+ диалогового окна стиля текста или с помощью любого другого метода, доступного
+ в самом \SpecialChar LyX
 .
  Не поддерживаются конструкции типа: «
 \family typewriter
-entry|textbf
+рубрика|textbf
 \family default
 ».
- Действительно, если \SpecialChar LyX
- находит вертикальную черту, '|', в записи, он удаляет
- ее и все, что следует за ней.
+ Если \SpecialChar LyX
+ находит вертикальную черту, '|', в записи, он удаляет ее и все, что
+ следует за ней.
 \end_layout
 
 \begin_layout Itemize
-Множественные индексы: поддержка отсутствует.
- Вместо этого все записи указателя будут собраны в один составной указатель.
- Чтобы не отображать несколько версий индекса, отображается только основной
- индекс, поэтому убедитесь, что он у вас есть.
+Множественные указатели: поддержка отсутствует.
+ Вместо этого все рубрики указателей будут собраны в один общий указатель.
+ Чтобы не отображать несколько версий указателя, отображается только основной,
+ поэтому убедитесь, что он у вас есть.
 \end_layout
 
 \begin_layout Section
@@ -4720,7 +4841,8 @@ entry|textbf
 \end_layout
 
 \begin_layout Chapter
-LyX-сервер
+\SpecialChar LyX
+-сервер
 \end_layout
 
 \begin_layout Section
@@ -4735,14 +4857,16 @@ LyX-сервер
  и получать информацию о внутреннем состоянии \SpecialChar LyX
 .
  Сведения, описанные здесь, предназначены только для опытных пользователей,
- но и они сочтут их полезными.
+ но они должны найти их полезными.
  Например, путем записи на \SpecialChar LyX
 -сервер менеджеры библиографий, такие как JabRef,
- могут «проталкивать» библиографические ссылки в LyX.
+ могут «проталкивать» библиографические ссылки в \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Section
-Запуск LyX-сервера
+Запуск \SpecialChar LyX
+-сервера
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Starting-the-Server"
@@ -4966,8 +5090,8 @@ lyx -dbg lyxserver
 \end_layout
 
 \begin_layout Standard
-Вы можете найти полный пример клиента, написанного на C ++, в исходном дистрибут
-иве в 
+Вы можете найти полный пример клиента, написанного на C++, в исходном дистрибути
+ве в 
 \begin_inset Flex Code
 status collapsed
 
@@ -4996,7 +5120,7 @@ src/client/lyxclient
 \end_layout
 
 \begin_layout Section
-Нормальная связь
+Нормальное взаимодействие
 \end_layout
 
 \begin_layout Standard
@@ -5030,7 +5154,7 @@ clientname
 \shape default
  это имя, которое клиент может выбрать произвольно.
  Его единственное использование состоит в том, что \SpecialChar LyX
- будет употреблять его,
+ будет использовать его,
  если он отправляет ответ, поэтому клиент может это делать для разных запрашиваю
 щих.
 \end_layout
@@ -5258,7 +5382,7 @@ key-sequence
 \end_layout
 
 \begin_layout Standard
-Этот механизм можно использовать для пополнения множества команд \SpecialChar LyX
+Этот механизм можно использовать для расширения множества команд \SpecialChar LyX
  и реализации
  макросов.
  Свяжите последовательность клавиш с NOTIFY.
@@ -5318,7 +5442,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Следующие программы просмотра предлагают возможность обратного поиска PDF:
- Okular в KDE/Linux, Qpdfview в Unix, Skim в Mac OSX и SumatraPDF в Windows.
+ Okular в KDE/Linux, Qpdfview в Unix, Skim в macOS и SumatraPDF в Windows.
 \end_layout
 
 \end_inset
@@ -5532,7 +5656,7 @@ latex/pdflatex
 \end_layout
 
 \begin_layout Subsubsection*
-Встроенный DVI-поискчерез src-specials (только DVI)
+Встроенный DVI-поиск через src-specials (только DVI)
 \end_layout
 
 \begin_layout Standard
@@ -5544,18 +5668,20 @@ latex/pdflatex
  включать его) и работает надежно.
  Чтобы включить его, измените конвертер 
 \family sans
-LaTeX (plain) -> DVI
+LaTeX (plain)\SpecialChar menuseparator
+DVI
 \family default
  или 
 \family sans
-LaTeX (plain) -> Рабочий DVI
+LaTeX (plain)\SpecialChar menuseparator
+Черновой DVI
 \family default
  в 
 \family sans
 Инструменты\SpecialChar menuseparator
 Настройки\SpecialChar menuseparator
 Обработка файлов\SpecialChar menuseparator
-Конверторы
+Конвертеры
 \family default
  на 
 \begin_inset Flex Code
@@ -5704,7 +5830,7 @@ scr-specials
  Вам понадобится как минимум \SpecialChar TeX
 Live 2008 или последний дистрибутив Mik\SpecialChar TeX
 , чтобы
- использовать его.
+ использовать его
 \begin_inset Foot
 status collapsed
 
@@ -5754,8 +5880,9 @@ pdflatex -synctex = 1 $$i
 
 \end_inset
 
+.
  Также обратите внимание, что только несколько программ просмотра PDF (например,
- Okular и Qpdfview в Unix, Skim на Mac, SumatraPDF в Windows; подробности
+ Okular и Qpdfview в Unix, Skim на macOS, SumatraPDF в Windows; подробности
  см.
  в следующем разделе) уже предоставляют поддержку Sync\SpecialChar TeX
 .
@@ -5765,11 +5892,13 @@ pdflatex -synctex = 1 $$i
 Чтобы включить Sync\SpecialChar TeX
  для вывода DVI, измените конвертер 
 \family sans
-LaTeX (plain) -> DVI
+LaTeX (plain)\SpecialChar menuseparator
+DVI
 \family default
  или 
 \family sans
-LaTeX (plain) -> Рабочий DVI
+LaTeX (plain)\SpecialChar menuseparator
+Черновой DVI
 \family default
  в 
 \family sans
@@ -5784,7 +5913,8 @@ LaTeX (plain) -> Рабочий DVI
 \family default
 , а для вывода PDF измените конвертер 
 \family sans
-LaTeX (pdflatex) -> PDF (pdflatex)
+LaTeX (pdflatex)\SpecialChar menuseparator
+PDF (pdflatex)
 \family default
  на
 \family typewriter
@@ -5794,7 +5924,7 @@ LaTeX (pdflatex) -> PDF (pdflatex)
  Если используемая вами программа просмотра не рассматривается в следующем
  описании, или в случае неудачной попытки, проверьте документацию по вашей
  программе просмотра, нужно ли настроить ее для использования с Sync\SpecialChar TeX
-.
+
 \begin_inset Foot
 status collapsed
 
@@ -5814,7 +5944,7 @@ status collapsed
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Subsection
@@ -5858,7 +5988,7 @@ lyxclient
 
 .
  Просто настройте свой документ, как описано выше (обратный поиск запускается
- нажатием Ctrl или Alt в Mac OSX, соответственно).
+ нажатием Ctrl или Alt в macOS, соответственно).
 \end_layout
 
 \begin_layout Standard
@@ -5877,7 +6007,7 @@ lyxclient
 status collapsed
 
 \begin_layout Plain Layout
-В Mac OSX вы должны использовать 
+В macOS вы должны использовать 
 \begin_inset Flex Code
 status collapsed
 
@@ -5954,12 +6084,12 @@ Server, указанный в
 Настройки\SpecialChar menuseparator
 Пути
 \family default
-.
+
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-В папке 
+В каталоге 
 \begin_inset Flex Code
 status collapsed
 
@@ -5988,11 +6118,11 @@ lyxpipe
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Subsubsection*
-MacDviX (Mac OSX)
+MacDviX (macOS)
 \end_layout
 
 \begin_layout Standard
@@ -6032,7 +6162,7 @@ Applications
 \end_layout
 
 \begin_layout Subsubsection*
-Skim (Mac OSX)
+Skim (macOS)
 \end_layout
 
 \begin_layout Standard
@@ -6084,8 +6214,8 @@ Evince (GNOME)
 \family typewriter
 evince
 \family default
- "из коробки" не работает ", но его можно выполнить с помощью некоторых
- сторонних вспомогательных скриптов.
+ напрямую не работает, но его можно выполнить с помощью некоторых сторонних
+ вспомогательных скриптов.
  За подробностями обратитесь к 
 \begin_inset CommandInset href
 LatexCommand href
@@ -6375,7 +6505,7 @@ New…
  и в открывшемся окне введите «LyX Editor» (или любое другое имя, которое
  вам нравится) в поле 
 \family sans
-Name:
+Name
 \family default
 .
  Теперь нажмите кнопку с пометкой «
@@ -6494,7 +6624,7 @@ Server в настройках \SpecialChar LyX
 \end_layout
 
 \begin_layout Section
-Поиск в прямом направлении
+Прямой поиск DVI/PDF
 \end_layout
 
 \begin_layout Standard
@@ -6735,10 +6865,14 @@ synctex
 \end_layout
 
 \begin_layout Standard
-Прямой поиск работает с выходом, как в формате DVI, так и в формате PDF.
+Прямой поиск работает с выводом как в формате DVI, так и в формате PDF.
  \SpecialChar LyX
  просто проверяет, какой формат предварительного просмотра вы использовали
- ранее (т.е.
+ ранее (т.
+\begin_inset space \thinspace{}
+\end_inset
+
+е.
  какой формат уже есть во временном каталоге), и выбирает конфигурацию для
  соответствующего формата.
 \end_layout
@@ -7199,7 +7333,8 @@ referee
 \emph on
 Astronomy and Astrophysics
 \emph default
-, написанной с помощью LyX.
+, написанной с помощью \SpecialChar LyX
+.
  Загрузить нужный пример можно с помощью меню 
 \family sans
 Файл\SpecialChar menuseparator
@@ -7875,7 +8010,8 @@ figcaption
 \end_layout
 
 \begin_layout Subsubsection
-То, что не реализовано (используйте код TeX)
+То, что не реализовано (используйте код \SpecialChar TeX
+)
 \end_layout
 
 \begin_layout Standard
@@ -8043,7 +8179,8 @@ aas_sample.lyx
 \end_layout
 
 \begin_layout Subsubsection
-Как заставить LyX и AAS\SpecialChar TeX
+Как заставить \SpecialChar LyX
+ и AAS\SpecialChar TeX
  сотрудничать
 \end_layout
 
@@ -8085,7 +8222,8 @@ aastex.layout
 \family typewriter
 layouts
 \family default
- LyX.
+ \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Enumerate
@@ -8120,7 +8258,8 @@ layouts
 \end_layout
 
 \begin_layout Subsubsection
-Ошибка LaTeX при обработке таблицы
+Ошибка \SpecialChar LaTeX
+ при обработке таблицы
 \end_layout
 
 \begin_layout Standard
@@ -8228,12 +8367,9 @@ plotone
 usepackage{graphicx}
 \family default
  в преамбулу \SpecialChar LaTeX
- и обработает рисунки стандартным способом \SpecialChar LaTeX
-2
-\begin_inset Formula $\varepsilon$
-\end_inset
-
-, перемежая рисунки и текст.
+ и обработает рисунки стандартным способом \SpecialChar LaTeX2e
+, перемежая рисунки
+ и текст.
  Считается, что 
 \shape italic
 Astrophysical Journal
@@ -8708,11 +8844,11 @@ status collapsed
 \end_layout
 
 \begin_layout Summary
-Итоги, выводы
+Итоги, выводы.
 \end_layout
 
 \begin_layout Acknowledgement*
-Благодарности
+Подтверждения.
 \end_layout
 
 \begin_layout Conclusion*
@@ -8720,7 +8856,7 @@ status collapsed
 \end_layout
 
 \begin_layout Fact
-Аналогично предложению, хотя, возможно, ниже по шкале.
+Аналогично предложению, хотя, возможно, ниже по значимости.
 \end_layout
 
 \begin_layout Standard
@@ -9092,7 +9228,7 @@ Foils.lyx
 \end_layout
 
 \begin_layout Section
-Hollywood (Hollywood-сценарии)
+Hollywood (голливудские сценарии)
 \end_layout
 
 \begin_layout Subsection
@@ -9445,7 +9581,8 @@ http://www.worldscinet.com/ijmpd/mkt/guidelines.
 .
  Оба пакета являются модифицированными версиями стандартного пакета «article»
  и почти (но не совсем) идентичны.
- Большинство их функций поддерживаются LyX.
+ Большинство их функций поддерживаются \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Section
@@ -9721,8 +9858,9 @@ end{article}
 Информация, приведенная в начале статьи (т.е.
  заголовок, подзаголовок, автор, учреждение, заголовок, автор, аннотация
  и ключевые слова), должна быть включена в окружение, называемое «opening».
- Это не поддерживается в LyX, поэтому надо разместить заголовочную часть
- между двумя строками кода \SpecialChar TeX
+ Это не поддерживается в \SpecialChar LyX
+, поэтому надо разместить заголовочную часть между
+ двумя строками кода \SpecialChar TeX
  — 
 \family typewriter
 
@@ -9849,7 +9987,7 @@ book.cls
 \family typewriter
 letter.cls
 \family default
-, соответственно, и лучше соответствуют европейским соглашениям о типографике
+, соответственно, и лучше соответствуют европейским типографическим соглашениям
  по ряду пунктов.
 \end_layout
 
@@ -9886,11 +10024,11 @@ Koma-Script Letter
 \family sans
 Описание
 \family default
- и ряд элементов класса документа 
+, а также ряд элементов класса документа 
 \family sans
 Koma-Script Letter
 \family default
- выделяются полужирным шрифтом без засечек.
+, выделяются полужирным шрифтом без засечек
 \begin_inset Foot
 status collapsed
 
@@ -9912,6 +10050,7 @@ cmsd.sty
 
 \end_inset
 
+.
  Нумерация заголовков глав производится так же, как и нумерация заголовков
  разделов, то есть без дополнительной строки «
 \series bold
@@ -9920,18 +10059,23 @@ cmsd.sty
  ...».
  Кроме того, внешний вид заголовков может быть изменен с помощью ряда параметров
  (в \SpecialChar LyX
- необходимо ввести их в поле Пользовательские диалогового окна 
+ они задаются в поле 
+\family sans
+Пользовательские
+\family default
+ диалогового окна 
 \family sans
 Документ\SpecialChar menuseparator
 Настройки\SpecialChar menuseparator
-Класс документа
+Класс документа\SpecialChar menuseparator
+Параметры класса
 \family default
 ).
 \end_layout
 
 \begin_layout Itemize
-Основными средствами в классах документов Koma-Script для разработки области
- шрифта являются параметры 
+Основным средством в классах документов Koma-Script для задания области
+ печати на странице являются параметры 
 \family sans
 BCOR
 \family default
@@ -9946,7 +10090,7 @@ DIV
 Классы документов \SpecialChar LaTeX
  семейства Koma-Script определяют ряд дополнительных команд.
  Та его часть, которая имеет смысл в \SpecialChar LyX
-, реализована в соответствующих типах
+, реализована в соответствующих окружениях
  абзацев.
 \end_layout
 
@@ -9957,11 +10101,11 @@ DIV
 \shape italic
 scrguide
 \shape default
- (немецкий язык) и 
+ (на немецком языке) и 
 \shape italic
 scrguien
 \shape default
- (английский язык).
+ (на английском языке).
 \end_layout
 
 \begin_layout Subsection
@@ -9971,11 +10115,11 @@ Koma-Script Article
 \family default
 , 
 \family sans
-Koma-Script Report
+Report
 \family default
  и 
 \family sans
-Koma-Script Book
+Book
 \end_layout
 
 \begin_layout Standard
@@ -10058,7 +10202,7 @@ Koma-Script Letter
 \family sans
 Раздел*
 \family default
-, соответственно, добавляющие вставку ненумерованных элементов в оглавление.
+, соответственно, но отображающиеся в содержании документа.
  
 \family sans
 Доп.
@@ -10069,11 +10213,11 @@ Koma-Script Letter
 Доп.
  глава
 \family default
- в 
+ отсутствуют в 
 \family sans
 Koma-Script Article
 \family default
- не содержатся.
+.
 \end_layout
 
 \begin_layout Itemize
@@ -10103,11 +10247,11 @@ Koma-Script Article
 Доп.
  глава*
 \family default
- в 
+ отсутствует в 
 \family sans
 Koma-Script Article
 \family default
- не содержится.
+
 \begin_inset Foot
 status collapsed
 
@@ -10136,7 +10280,7 @@ Part*
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Itemize
@@ -10144,7 +10288,7 @@ Part*
 \family sans
 Минираздел
 \family default
-: создает заголовок прямо над следующим абзацем стандартным символьным размером,
+: создает заголовок прямо над следующим абзацем стандартным размером шрифта,
  не влияя при этом на структуру документа.
 \end_layout
 
@@ -10184,33 +10328,33 @@ tablecaptionsabove
 \begin_layout Itemize
 
 \family sans
-Изречение
+Эпиграф
 \family default
-: можно использовать для установки характеризующего изречения, например,
- в начале главы.
+: можно использовать для установки подходящего эпиграфа, например, в начале
+ главы.
  Если вы используете необязательный аргумент (
 \family sans
 Вставка\SpecialChar menuseparator
-Автор изречения
+Автор эпиграфа
 \family default
-), то можете вставить туда автора изречения.
+), то можете вставить туда имя автора.
  
 \family sans
-Изречение
+Эпиграф
 \family default
  и его автор разделяются линией.
  Для использования этого вам потребуется версия Koma-Script не ниже 2.8q.
  
 \family sans
-Изречение
+Эпиграф
 \family default
- в статье не поддерживается.
+ в статьях не поддерживается.
 \end_layout
 
 \begin_layout Standard
 Следующие типы вместе со стандартными типами 
 \family sans
-Заглавие
+Заголовок
 \family default
 , 
 \family sans
@@ -10221,7 +10365,7 @@ tablecaptionsabove
 Дата
 \family default
  образуют область заголовка документа.
- Их необходимо вводить перед первым «обычным» абзацем.
+ Их необходимо вводить перед первым «обычным» абзацем
 \begin_inset Foot
 status collapsed
 
@@ -10238,12 +10382,13 @@ maketitle
 
 \end_inset
 
+.
  Когда такой тип используется более одного раза, последнее использование
  перезаписывает первое, что означает, что для каждого типа допустимо только
  последнее использование.
  Однако порядок различных типов, таких как 
 \family sans
-Заглавие
+Заголовок
 \family default
 , 
 \family sans
@@ -10336,7 +10481,7 @@ Koma-Script Article
 \begin_layout Itemize
 
 \family sans
-Шапка заглавия
+Колонтитул титульного листа
 \family default
 : создает абзац с выравниванием по левому краю над обычным заголовком (
 \family sans
@@ -10360,7 +10505,7 @@ Koma-Script Article
 \begin_layout Itemize
 
 \family sans
-Оборот титула сверху
+Оборот титульного листа сверху
 \family default
 : при двусторонней печати в 
 \family sans
@@ -10381,7 +10526,7 @@ Koma-Script Article
 \begin_layout Itemize
 
 \family sans
-Оборот титула снизу
+Оборот титульного листа снизу
 \family default
 : при двусторонней печати в 
 \family sans
@@ -10402,7 +10547,8 @@ Koma-Script Article
 \begin_layout Itemize
 
 \family sans
-Дополнительный заголовок
+Доп.
+ заголовок
 \family default
 : создает специальную «черновую» страницу перед фактическим документом,
  содержащую абзац без специального форматирования.
@@ -10474,18 +10620,22 @@ Koma-Script Letter
 \family default
  в старом формате), 
 \family sans
-Открытие
+Вступление
 \family default
  и 
 \family sans
-Закрытие
+Завершение
 \family default
 .
  
 \family sans
 Следующий адрес
 \family default
- начинает новое письмо (т.е.
+ начинает новое письмо (т.
+\begin_inset space \thinspace{}
+\end_inset
+
+е.
  вы можете разместить несколько писем в одном документе).
  Новые элементы — это 
 \family sans
@@ -10523,7 +10673,7 @@ URL
 \family typewriter
 .lco
 \family default
-), который будет считан как параметр класса.
+), который будет считан как параметр класса
 \begin_inset Foot
 status collapsed
 
@@ -10555,6 +10705,7 @@ KOMAold
 
 \end_inset
 
+.
  Взгляните на шаблон 
 \family typewriter
 koma-letter2
@@ -10570,80 +10721,6 @@ scrguide
 scrguien
 \shape default
 ).
-\end_layout
-
-\begin_layout Subsection
-Проблемы
-\end_layout
-
-\begin_layout Standard
-Визуализация классов документов Koma-Script в \SpecialChar LyX
- и внутреннее устройство \SpecialChar LyX
-
- вызывают некоторые проблемы.
-\end_layout
-
-\begin_layout Itemize
-Номер главы типа 
-\family sans
-Глава
-\family default
- отображается в отдельной строке над заголовком главы, а не в той же строке
- перед ним.
- Причиной этого является внутреннее поведение \SpecialChar LyX
- для типа метки 
-\family sans
-Counter_Chapter
-\family default
- в файле макета.
-\end_layout
-
-\begin_layout Itemize
-Заголовки типов 
-\family sans
-Addchap
-\family default
- и 
-\family sans
-Addsec
-\family default
- помещаются только в «истинное» оглавление \SpecialChar LaTeX
-, но не в оглавление \SpecialChar LyX
- (
-\family sans
-Вставка\SpecialChar menuseparator
-Списки/содержание\SpecialChar menuseparator
-Содержание
-\family default
-).
-\end_layout
-
-\begin_layout Itemize
-Абзацы в классе документа 
-\shape italic
-письма
-\shape default
- отображаются в режиме разделения с промежутком без отступа.
- Это стандартное поведение, никаких специальных команд \SpecialChar LaTeX
- для этого не требуется.
- Но в диалоговом окне 
-\family sans
-Документ\SpecialChar menuseparator
-Настройки\SpecialChar menuseparator
-Макет текста
-\family default
- соответствующий переключатель называется 
-\family sans
-Отступ
-\family default
-.
- Значение 
-\family sans
-Задано пользователем
-\family default
- всегда приводит к тому, что в документ вставляются дополнительные команды
- \SpecialChar LaTeX
- для создания пробела, что в данном случае не требуется.
 \end_layout
 
 \begin_layout Section
@@ -10666,11 +10743,13 @@ Memoir — весьма мощный и постоянно развивающи�
 
 \begin_layout Standard
 Peter Wilson, разработчик Memoir, известен как автор множества полезных
- пакетов в мире LaTeX.
+ пакетов в мире \SpecialChar LaTeX
+.
  Большинство из них используется в Memoir.
  Поэтому стало намного проще разметить оглавление, приложения, дизайн глав
  и т.д.
- LyX, однако, изначально не поддерживает все эти возможности.
+ \SpecialChar LyX
+, однако, изначально не поддерживает все эти возможности.
  Некоторые из них могут быть добавлены в предстоящие выпуски
 \begin_inset Foot
 status collapsed
@@ -10693,9 +10772,11 @@ lyx-devel@lists.lyx.org
 \end_inset
 
 , многие из них, вероятно, никогда не будут поддерживаться из-за ограничений
- среды LyX.
+ среды \SpecialChar LyX
+.
  Конечно, вы все еще можете использовать все функции с помощью некоторых
- команд LaTeX (Код TeX
+ команд \SpecialChar LaTeX
+ (Код TeX
 \begin_inset Foot
 status collapsed
 
@@ -10719,7 +10800,8 @@ reference "sec:Inserting-TeX-Code"
 
 ).
  В этом разделе мы перечислим только те функции, которые изначально поддерживают
-ся LyX.
+ся \SpecialChar LyX
+.
  Для подробного ознакомления (и по остальным функциям) рекомендуется взглянуть
  на руководство по классу Memoir
 \begin_inset Foot
@@ -11289,7 +11371,8 @@ ejour2
 \end_layout
 
 \begin_layout Chapter
-Функции LyX, требующие дополнительного программного обеспечения
+Функции \SpecialChar LyX
+, требующие дополнительного программного обеспечения
 \end_layout
 
 \begin_layout Section
@@ -11306,27 +11389,11 @@ ejour2
 \family typewriter
 chktex
 \family default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-chktex
-\family default
- не доступна, если вы используете \SpecialChar LaTeX
--дистрибутив MiK\SpecialChar TeX
-.
-\end_layout
-
-\end_inset
-
 , вы найдете в меню 
 \family sans
 Инструменты
 \family default
- запись: 
+ пункт: 
 \family sans
 Проверить TeX
 \family default
@@ -11358,12 +11425,12 @@ Chk\SpecialChar TeX
 \family default
  — это программа, созданная Jens T. Berger Thielemann, стимулом написания
  которой послужило то, что некоторые конструкции в \SpecialChar LaTeX
- иногда интуитивно непонятны,
+ иногда интуитивно непонятны
  и часто забываются.
- Программа запускает ваш файл \SpecialChar LaTeX
-, проверяет его целостность и отмечает некоторые
- распространенные ошибки.
- Другими словами, это программа 
+ Программа просматривает ваш файл \SpecialChar LaTeX
+, проверяет его целостность и отмечает
+ некоторые распространенные ошибки.
+ Другими словами, это аналог программы 
 \family typewriter
 lint
 \family default
@@ -11373,7 +11440,8 @@ lint
 
 \begin_layout Standard
 Что же делает в \SpecialChar LyX
- средство проверки синтаксиса, которое в любом случае должно
+ средство проверки синтаксиса, если \SpecialChar LyX
+ в любом случае должен
  формировать правильный \SpecialChar LaTeX
 ? Ответ прост: так же, как 
 \family typewriter
@@ -11387,7 +11455,7 @@ lint
 \shape italic
 семантики
 \shape default
- на предмет ошибок типа, ChkTeX выявляет некоторые общие 
+ на предмет ошибок типа, ChkTeX выявляет некоторые распространенные 
 \shape italic
 типографические
 \shape default
@@ -11397,7 +11465,7 @@ lint
 Chk\SpecialChar TeX
 
 \family default
- способен обнаруживать несколько распространенных ошибок, таких как
+ способен обнаруживать такие распространенные ошибки:
 \end_layout
 
 \begin_layout Itemize
@@ -11410,11 +11478,11 @@ Chk\SpecialChar TeX
 \end_layout
 
 \begin_layout Itemize
-Нет промежутка перед скобками и/или после после них:
+Нет пробела перед скобками и/или после после них:
 \begin_inset Newline newline
 \end_inset
 
-( неправильный интервал )
+( неправильные пробелы )
 \end_layout
 
 \begin_layout Itemize
@@ -11422,7 +11490,11 @@ Chk\SpecialChar TeX
 \begin_inset Newline newline
 \end_inset
 
-т.е.
+т.
+\begin_inset space \thinspace{}
+\end_inset
+
+е.
 \begin_inset space \space{}
 \end_inset
 
@@ -11440,12 +11512,11 @@ Chk\SpecialChar TeX
 \end_layout
 
 \begin_layout Itemize
-Пробел перед ярлыками и аналогичными объектами:
+Пробел перед метками и аналогичными объектами:
 \begin_inset Newline newline
 \end_inset
 
-Ярлык должен прилегать вплотную к тексту, чтобы не расположиться неправильно
- на странице.
+Метка должна прилегать вплотную к тексту, чтобы не оказаться на другой странице.
  
 \begin_inset CommandInset label
 LatexCommand label
@@ -11471,16 +11542,15 @@ status collapsed
 
 \end_inset
 
- Ярлык отделен от текста.
+ Метка отделена от текста.
 \end_layout
 
 \begin_layout Itemize
-Пространство перед ссылками вместо жестких (неразрывных) промежутков:
+Обычные пробелы перед ссылками вместо неразрывных пробелов:
 \begin_inset Newline newline
 \end_inset
 
-Может получиться, что текст будет разрываться между указанным текстом и
- номером ссылки.
+Может получиться, что текст будет разрываться между текстом и номером ссылки.
  См.
  раздел 
 \begin_inset CommandInset ref
@@ -11501,7 +11571,7 @@ reference "sec:chktex"
 \begin_inset Newline newline
 \end_inset
 
-2x2 выглядит топорно, по сравнению с 
+2x2 выглядит непрофессионально, по сравнению с 
 \begin_inset Formula $2\times2$
 \end_inset
 
@@ -11509,10 +11579,9 @@ reference "sec:chktex"
 \end_layout
 
 \begin_layout Standard
-и многое другое … Это неоценимый инструмент, когда вы «дорабатываете» документ
- перед печатью, и его следует запустить сразу после обязательной проверки
- орфографии и перед тем, как приступить к тонкой настройке набранного содержимог
-о.
+и многое другое … Это неоценимый инструмент, когда вы дорабатываете документ
+ перед печатью, и его следует запускать сразу после обязательной проверки
+ орфографии и перед тем, как приступить к тонкой настройке верстки.
 \end_layout
 
 \begin_layout Subsection
@@ -11520,8 +11589,8 @@ reference "sec:chktex"
 \end_layout
 
 \begin_layout Standard
-Если у вас установлена эта программа, использовать ее так же просто, как
- выбрать 
+Если у вас установлена эта программа, использовать ее просто — выберите
+ 
 \family sans
 Инструменты\SpecialChar menuseparator
 Проверить TeX
@@ -11574,8 +11643,9 @@ emacs
 .
  Прочтите предупреждение и исправьте ошибку, если это ошибка.
  Если вам сложно понять, о чем идет речь, вы можете это проигнорировать.
- Помните, что есть скрытый слой между документом на экране и техническими
- деталями вызова 
+ Помните, что есть скрытый слой (сгенерированный код \SpecialChar LaTeX
+) между документом
+ на экране и техническими деталями вызова 
 \family sans
 ChkTeX
 \family default
@@ -11594,27 +11664,11 @@ ChkTeX
 \begin_inset Quotes rrd
 \end_inset
 
-, следует ожидать, что большинство предупреждений будут ложными.
+, следует быть готовым, что большинство предупреждений будут ложными.
 \end_layout
 
 \begin_layout Subsection
 Как это настроить
-\end_layout
-
-\begin_layout Standard
-Sometimes, you'll find that 
-\family sans
-Chk\SpecialChar TeX
-
-\family default
- makes more noise than suits your mood.
- Then you can choose not to use it, wait until your mood changes, or try
- to customize 
-\family sans
-Chk\SpecialChar TeX
-
-\family default
- to get better along with you.
 \end_layout
 
 \begin_layout Standard
@@ -11696,7 +11750,7 @@ chktexrc
 \end_layout
 
 \begin_layout Itemize
-Экспортируйте свой документ как необработанный файл \SpecialChar LaTeX
+Экспортируйте свой документ как файл \SpecialChar LaTeX
  с помощью 
 \family sans
 Файл\SpecialChar menuseparator
@@ -11801,7 +11855,7 @@ chktex
 \begin_layout Enumerate
 
 \size small
-Исправление курсивом (
+Корректирующий пробел (
 \begin_inset Quotes eld
 \end_inset
 
@@ -11821,7 +11875,7 @@ chktex
 \begin_layout Enumerate
 
 \size small
-Коррекция курсивом (
+Корректирующий пробел (
 \begin_inset Quotes eld
 \end_inset
 
@@ -11842,7 +11896,7 @@ chktex
 
 \size small
 \emph on
-Курсив (
+Отсутствует корректирующий пробел (
 \begin_inset Quotes eld
 \end_inset
 
@@ -11856,7 +11910,7 @@ chktex
 \begin_inset Quotes erd
 \end_inset
 
-) не исправлен.
+).
 \end_layout
 
 \begin_layout Enumerate
@@ -11965,7 +12019,7 @@ cmd
 \begin_layout Enumerate
 
 \size small
-Возможно, следует использовать межсловный интервал (
+Возможно, следует использовать пробел между словами (
 \begin_inset Quotes eld
 \end_inset
 
@@ -11985,7 +12039,7 @@ cmd
 \begin_layout Enumerate
 
 \size small
-Возможно, следует использовать промежуток между предложениями (
+Возможно, следует использовать пробел между предложениями (
 \begin_inset Quotes eld
 \end_inset
 
@@ -12074,7 +12128,7 @@ char
 
 
 \family default
- or 
+ или 
 \family typewriter
 
 \begin_inset Quotes erd
@@ -12151,7 +12205,7 @@ char
 \begin_layout Enumerate
 
 \size small
-Удалите этот промежуток, чтобы поддерживать правильные ссылки на страницы.
+Удалите этот пробел, чтобы поддерживать правильные ссылки на страницы.
 \end_layout
 
 \begin_layout Enumerate
@@ -12176,7 +12230,7 @@ char
 \begin_layout Enumerate
 
 \size small
-Перед препинанием следует убрать пробелы.
+Перед знаком препинания следует убрать пробелы.
 \end_layout
 
 \begin_layout Enumerate
@@ -12219,7 +12273,7 @@ times$
 \begin_layout Enumerate
 
 \size small
-Этот текст можно игнорировать.
+Этот текст может быть проигнорирован.
 \end_layout
 
 \begin_layout Enumerate
@@ -12304,13 +12358,14 @@ cmd
 \begin_layout Enumerate
 
 \size small
-Обнаружен двойной промежуток.
+Обнаружен двойной пробел.
 \end_layout
 
 \begin_layout Enumerate
 
 \size small
-Вы должны поместить знаки препинания вне/в математического режима дисплея.
+Вы должны поместить знаки препинания вне/внутри выделенного математического
+ режима.
 \end_layout
 
 \begin_layout Enumerate
@@ -12370,19 +12425,19 @@ cmd
 \end_layout
 
 \begin_layout Standard
-В более поздних версиях \SpecialChar LyX
- мы надеемся предоставить более полный интерфейс
- для этого инструмента (и его более ограниченного варианта 
+В дальнейших версиях \SpecialChar LyX
+ мы надеемся предоставить более полный интерфейс для
+ этого инструмента (и его более ограниченного варианта 
 \family typewriter
 lacheck
 \family default
 ), чтобы использовать всю его мощь.
- Но и сейчас, то что реализовано, не совсем бесполезно: попробуйте это на
- одном из ваших имеющихся документов.
+ Но и сейчас то, что уже реализовано, вполне полезно: попробуйте это на
+ одном из ваших имеющихся (не слишком коротких) документов.
 \end_layout
 
 \begin_layout Section
-Контроль версий в \SpecialChar LyX
+Управление версиями в \SpecialChar LyX
 
 \end_layout
 
@@ -12392,14 +12447,22 @@ lacheck
 
 \begin_layout Standard
 \SpecialChar LyX
- поддерживает некоторые из самых основных команд RCS/CVS/SVN/GIT.
+ поддерживает некоторые из основных команд RCS/CVS/SVN/GIT.
  Если вам нужно что-то более сложное, то придется сделать это вручную.
 \end_layout
 
 \begin_layout Standard
 Также обратите внимание, что поддержка CVS не так хороша, как поддержка
  SVN, поэтому мы рекомендуем использовать SVN.
- Хорошим местом для начала изучения SVN является книга 
+ Хорошим местом для начала изучения является 
+\begin_inset Quotes rld
+\end_inset
+
+SVN Book
+\begin_inset Quotes rrd
+\end_inset
+
+
 \begin_inset Foot
 status collapsed
 
@@ -12420,7 +12483,8 @@ http://svnbook.red-bean.com/
 \end_inset
 
 .
- В случае RCS вы должны прочитать «rcsintro» (man-файл, читайте его с помощью
+ В случае RCS вы должны прочитать «rcsintro» (man-страница, читайте ее с
+ помощью
 \family typewriter
  man rcsintro
 \family default
@@ -12435,21 +12499,24 @@ http://svnbook.red-bean.com/
 \end_layout
 
 \begin_layout Standard
-Прежде чем начать использовать функции контроля версий в \SpecialChar LyX
-, вы должны ознакомитьс
-я с RCS/CVS/SVN/GIT.
- Реализация в \SpecialChar LyX
- подразумевает недавнюю версию пакета GNU RCS или CVS/SVN
- — никаких гарантий для более старых версий не предоставляется.
+Прежде чем начать использовать возможности управления версиями в \SpecialChar LyX
+, вы должны
+ ознакомиться с вашей системой управления версиями.
+ Реализация \SpecialChar LyX
+ подразумевает использование свежей версии пакета GNU RCS или
+ CVS/SVN — никаких гарантий для более старых версий не предоставляется.
  Большинство сообщений журнала в настоящее время не отображаются после операций
  — вы можете проверить их на панели сообщений, если есть сомнения в успешности
  выполнения операций.
- Обычные пользователи контроля версий по достоинству оценят панель инструментов
- VC, которую можно включить с помощью 
+ Обычные пользователи оценят панель инструментов 
+\family sans
+Управление версиями
+\family default
+, которую можно включить с помощью 
 \family sans
 Вид\SpecialChar menuseparator
 Панели инструментов\SpecialChar menuseparator
-Контроль версий
+Управление версиями
 \family default
 .
 \end_layout
@@ -12469,18 +12536,18 @@ http://svnbook.red-bean.com/
 
 \begin_layout Standard
 Настоятельно рекомендуется хранить документы в несжатом формате при использовани
-и контроля версий (снимите флажок 
+и управления версиями (снимите флажок 
 \family sans
 Документ\SpecialChar menuseparator
 Сжимать документ
 \family default
 , если он установлен): несжатые документы \SpecialChar LyX
  являются текстовыми файлами и,
- следовательно, доступны для объединения двух разных версий системами контроля
- версий.
+ следовательно, доступны для объединения двух разных версий системами управления
+ версиями.
  Сжатые документы \SpecialChar LyX
  представляют собой двоичные файлы, которые не могут быть
- объединены системами контроля версий.
+ объединены такими системами.
 \end_layout
 
 \begin_layout Subsection
@@ -12508,12 +12575,12 @@ http://svnbook.red-bean.com/
 \end_layout
 
 \begin_layout Standard
-Если ваш документ не находится под контролем версий, то единственный пункт,
- показываемый в этом меню — 
+Если ваш документ еще не находится под управлением версиями, то единственный
+ пункт, показываемый в этом меню — 
 \family sans
 Зарегистрировать
 \family default
-, иначе он не отображается.
+, иначе этот пункт он не отображается.
 \end_layout
 
 \begin_layout Standard
@@ -12534,7 +12601,7 @@ http://svnbook.red-bean.com/
 Извлечение для правки
 \family default
 , прежде чем вносить в него какие-либо изменения.
- Документ, находящийся под контролем версий, имеет пометку «[RCS: <версия>
+ Документ, находящийся под управлением версиями, имеет пометку «[RCS: <версия>
  <блокировщик>]», привязанную к имени файла в минибуфере.
 \end_layout
 
@@ -12564,8 +12631,8 @@ ci -q -u -i -t-"<начальное-описание>" <имя-файла>
 
 \begin_layout Standard
 Когда вы заканчиваете редактировать файл, то фиксируете изменения.
- Когда вы это сделаете, будет предложено описать изменения.
- Это сохраняется в журнале истории.
+ Когда вы это делаете, будет предложено описать изменения.
+ Это описание сохраняется в журнале истории.
  Номер версии увеличивается, изменения применяются к главному файлу RCS,
  документ разблокируется (для вас) и устанавливается в режим "только для
  чтения" (для других).
@@ -12664,7 +12731,7 @@ RCS-команды:
 \begin_inset Newline newline
 \end_inset
 
-скопируйте 
+Скопируйте 
 \begin_inset Flex Code
 status collapsed
 
@@ -12732,7 +12799,7 @@ ci -q -u
 \begin_layout Subsubsection
 
 \family sans
-Отмена последней проверки
+Отмена последней фиксации
 \end_layout
 
 \begin_layout Standard
@@ -12751,7 +12818,7 @@ rcs -o<версия> <имя-файла>
 \begin_layout Subsubsection
 
 \family sans
-Предъявление истории версий
+Просмотр истории
 \end_layout
 
 \begin_layout Standard
@@ -12770,12 +12837,12 @@ man rlog
 \end_layout
 
 \begin_layout Subsubsection
-Информация о редакции
+Информация о версии
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
- поддерживает нумерацию версий RCS, имя автора, дату и время последней фиксации.
+ поддерживает номер версии RCS, имя автора, дату и время последней фиксации.
  Все это появляется в выводе команды 
 \family typewriter
 rlog -r <имя-файла>
@@ -12806,9 +12873,9 @@ File\SpecialChar menuseparator
 Управление версиями
 \family default
 .
- Система контроля версий SVN (см.
- ниже) обладает более развитыми возможностями, поэтому, при выборе между
- ней и CVS, используйте именно ее.
+ Система управления версиями SVN (см.
+ ниже) обладает более развитыми возможностями, поэтому по возможности используйт
+е именно ее вместо CVS.
 \end_layout
 
 \begin_layout Subsubsection
@@ -12819,14 +12886,21 @@ File\SpecialChar menuseparator
 
 \begin_layout Standard
 Если вы начинаете работать с CVS с нуля, то необходимо создать свой репозиторий
- и загрузить работающую копию с помощью внешних инструментов.
- При использовании конфигурации "клиент-сервер", вам может потребоваться
- войти в систему с предъявлением пароля перед выполнением первой загрузки
- репозитория.
+ и получить рабочую копию с помощью внешних инструментов.
+ При использовании конфигурации 
+\begin_inset Quotes rld
+\end_inset
+
+клиент-сервер
+\begin_inset Quotes rrd
+\end_inset
+
+, вам может потребоваться войти в систему с предъявлением пароля перед выполнени
+ем первой загрузки репозитория.
 \end_layout
 
 \begin_layout Standard
-Если ваши документы находятся под контролем версий и другие пользователи
+Если ваши документы находятся под управлением версиями и другие пользователи
  используют тот же репозиторий, могут возникнуть проблемы, когда производятся
  изменения одного и того же фрагмента документа.
  Стандартные репозитории CVS не работают с механизмом блокировки файлов.
@@ -12926,11 +13000,11 @@ http://ximbiot.com/cvs
 \end_layout
 
 \begin_layout Standard
-Ознакомьтесь с выводом функции
+Ознакомьтесь с выводом команды
 \family typewriter
  man cvs
 \family default
-, чтобы понять подкоманды и переключатели, упомянутые далее.
+, чтобы понять подкоманды и переключатели, приведенные далее.
 \end_layout
 
 \begin_layout Subsubsection
@@ -12940,18 +13014,21 @@ http://ximbiot.com/cvs
 \end_layout
 
 \begin_layout Standard
-Если ваш документ не находится под контролем версий, то единственный пункт,
- показываемый в этом меню — 
+Если ваш документ не находится под управлением версиями, то единственный
+ пункт, показываемый в этом меню — 
 \family sans
 Зарегистрировать
 \family default
-, иначе он не отображается.
+, иначе этот пункт не отображается.
 \end_layout
 
 \begin_layout Standard
-Указанное действие зарегистрирует ваш документ в CVS только в том случае,
- если у вас уже имеется каталог документов под управлением CVS (в частности,
- существует 
+Указанное действие зарегистрирует ваш документ в CVS 
+\emph on
+только
+\emph default
+ в том случае, если у вас уже имеется каталог документов под управлением
+ CVS (в частности, существует 
 \family typewriter
 CVS/Entries
 \family default
@@ -12996,7 +13073,8 @@ cvs -q add -m"<введенное-сообщение>" "<имя-файла>"
 
 \begin_layout Standard
 Когда вы закончите редактировать файл, то зафиксируйте изменения.
- Если вы это сделали и изменили документ, необходимо будет описать изменения.
+ Когда вы делаете это при измененном документе, будет запрос создать описание
+ изменения.
  После этого изменения попадут в репозиторий.
  В случае, если вы не изменили документ, но обнаружено зарезервированное
  извлечение, резервирование, сделанное при 
@@ -13054,8 +13132,8 @@ cvs -q unedit
 \end_layout
 
 \begin_layout Standard
-Когда вы делите репозиторий с другими, вам, возможно, придется включить
- их изменения в вашу рабочую копию.
+Когда вы используете репозиторий совместно с другими, вам, возможно, придется
+ включить их изменения в вашу рабочую копию.
 \end_layout
 
 \begin_layout Standard
@@ -13095,7 +13173,7 @@ cvs -q update "<имя-файла>"
 \end_layout
 
 \begin_layout Standard
-Если обнаружена зарезервированная извлечение, а в рабочей копии нет изменений,
+Если обнаружено зарезервированное извлечение, а в рабочей копии нет изменений,
  отменяется только резервирование.
 \end_layout
 
@@ -13138,7 +13216,7 @@ cvs -q unedit "<имя-файла>"
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-CVS-команда: 
+CVS-команды: 
 \begin_inset space ~
 \end_inset
 
@@ -13146,19 +13224,12 @@ CVS-команда:
 \begin_inset Newline newline
 \end_inset
 
-скопируйте 
+Скопируйте 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\family typewriter
-\lang ngerman
-"
-\lang russian
-<имя-файла>
-\lang ngerman
-"
+"<имя-файла>"
 \end_layout
 
 \end_inset
@@ -13168,14 +13239,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\family typewriter
-\lang ngerman
-"
-\lang russian
-<новое-имя-файла>
-\lang ngerman
-"
+"<новое-имя-файла>"
 \end_layout
 
 \end_inset
@@ -13189,14 +13253,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-cvs -q add 
-\family typewriter
-\lang ngerman
-"
-\lang russian
-<новое-имя-файла>
-\lang ngerman
-"
+cvs -q add "<новое-имя-файла>"
 \end_layout
 
 \end_inset
@@ -13244,14 +13301,7 @@ CVS-команды:
 status collapsed
 
 \begin_layout Plain Layout
-
-\family typewriter
-\lang ngerman
-"
-\lang russian
-<имя-файла>
-\lang ngerman
-"
+"<имя-файла>"
 \end_layout
 
 \end_inset
@@ -13261,14 +13311,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\family typewriter
-\lang ngerman
-"
-\lang russian
-<новое-имя-файла>
-\lang ngerman
-"
+"<новое-имя-файла>"
 \end_layout
 
 \end_inset
@@ -13282,14 +13325,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-cvs -q add 
-\family typewriter
-\lang ngerman
-"
-\lang russian
-<новое-имя-файла>
-\lang ngerman
-"
+cvs -q add "<новое-имя-файла>"
 \end_layout
 
 \end_inset
@@ -13303,14 +13339,7 @@ cvs -q add
 status collapsed
 
 \begin_layout Plain Layout
-cvs -q remove 
-\family typewriter
-\lang ngerman
-"
-\lang russian
-<имя-файла>
-\lang ngerman
-"
+cvs -q remove "<имя-файла>"
 \end_layout
 
 \end_inset
@@ -13328,12 +13357,16 @@ cvs -q remove
 \family typewriter
 .tex
 \family default
- файлы и т.п., использование контроля версий становится все более сложным.
+ файлы и т.
+\begin_inset space \thinspace{}
+\end_inset
+
+п., использование управления версиями становится все более сложным.
  \SpecialChar LyX
  поддерживает обновление всего дерева, в котором находится документ.
  Это становится особенно полезным, когда вы сотрудничаете с людьми, которые
- не имеют подробных знаний об использовании CVS и не имеют амбиций по размещению
- дополнительных материалов в репозитории.
+ не имеют подробных знаний об использовании CVS и не имеют намерений по
+ размещению дополнительных материалов в репозитории.
  Вы должны организовать структуру файлов так, чтобы все внешние файлы находились
  в одном каталоге или подкаталогах документа.
  В любом случае рекомендуется хранить составные документы в дополнительном
@@ -13424,7 +13457,7 @@ $path
 \begin_layout Subsubsection
 
 \family sans
-Предъявление истории версий
+Просмотр истории
 \end_layout
 
 \begin_layout Standard
@@ -13437,12 +13470,12 @@ cvs log "<имя-файла>"
 \end_layout
 
 \begin_layout Subsubsection
-Информация о редакции
+Информация о версии
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
- поддерживает нумерацию версий CVS, имя автора, дату и время последней фиксации.
+ поддерживает номер версии CVS, имя автора, дату и время последней фиксации.
  Все это можно посмотреть в выводе команды 
 \family typewriter
 cvs log -r <имя-файла>
@@ -13460,7 +13493,8 @@ reference "subsec:VCS-Revision-Information"
 \end_layout
 
 \begin_layout Subsection
-SVN-команды в LyX
+SVN-команды в \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
@@ -13475,7 +13509,7 @@ SVN-команды в LyX
  Обратите внимание, что если вы используете защищенный паролем доступ к
  репозиторию через ssh, у вас его запросят в окне терминала.
  \SpecialChar LyX
- был протестирован на SVN версий 1.5, 1.6, 1.7 и 1.8.
+ был протестирован на SVN версий 1.5–1.8
 \begin_inset Foot
 status collapsed
 
@@ -13495,7 +13529,7 @@ reference "subsec:SVN-Repo-Update"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -13505,8 +13539,8 @@ reference "subsec:SVN-Repo-Update"
 \end_layout
 
 \begin_layout Standard
-Если ваш документ не находится под контролем версий, то единственный пункт,
- показываемый в меню 
+Если ваш документ не находится под управлением версиями, то единственный
+ пункт, показываемый в меню 
 \family sans
 Файл\SpecialChar menuseparator
 Управление версиями
@@ -13515,7 +13549,7 @@ reference "subsec:SVN-Repo-Update"
 \family sans
 Зарегистрировать
 \family default
-, иначе он не отображается.
+, иначе этот пункт не отображается.
 \end_layout
 
 \begin_layout Standard
@@ -13565,7 +13599,7 @@ svn add -q
 
 \begin_layout Standard
 Когда вы закончите редактировать файл, то зафиксируйте изменения.
- После этого вам понадобится описать изменения и они зафиксируются.
+ При этом вам понадобится описать изменения и они зафиксируются.
 \end_layout
 
 \begin_layout Standard
@@ -13810,12 +13844,6 @@ svn commit
 \end_layout
 
 \begin_layout Subsubsection
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:SVN-Repo-Update"
-
-\end_inset
-
 Обновление локального каталога, извлеченного из репозитория
 \begin_inset Foot
 status collapsed
@@ -13831,14 +13859,35 @@ status collapsed
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:SVN-Repo-Update"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 У всех вышеперечисленных команд имеется один недостаток — они работают только
  с текущим документом.
- Если документ содержит изображения, внешние .tex файлы и т.п., администрирование
- становится более сложным.
- LyX теперь поддерживает обновление всего дерева, в котором находится документ
+ Если документ содержит изображения, внешние 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+.tex
+\end_layout
+
+\end_inset
+
+ файлы и т.
+\begin_inset space \thinspace{}
+\end_inset
+
+п., администрирование становится более сложным.
+ \SpecialChar LyX
+ теперь поддерживает обновление всего дерева, в котором находится документ
 \begin_inset Foot
 status collapsed
 
@@ -13851,7 +13900,7 @@ status collapsed
 
 .
  Это становится особенно полезным, когда вы сотрудничаете с людьми, которые
- не знают ни об управлении под-версиями, ни о нюансах размещения дополнительных
+ не знают ни об управлении версиями, ни о нюансах размещения дополнительных
  материалов в репозитории.
 \end_layout
 
@@ -13917,7 +13966,7 @@ $path
 \begin_layout Subsubsection
 
 \family sans
-Предъявление истории версий
+Просмотр истории
 \end_layout
 
 \begin_layout Standard
@@ -13949,13 +13998,20 @@ name "subsec:SVN-File-Locking"
 \end_layout
 
 \begin_layout Standard
-Обмен файлами через различные системы контроля версий создает проблему конфликто
-в слияния в случае, если два разных пользователя пытаются редактировать
- один и тот же документ (или его части).
- Когда возникает такой конфликт, он требует "ручного" вмешательства, и разумная
- альтернатива в подобной ситуации — предоставить какой-то механизм блокировки,
- который гарантирует, что только одному пользователю разрешено редактировать
- файл в данный момент.
+Обмен файлами через различные системы управления версиями создает проблему
+ конфликтов слияния в случае, если два разных пользователя пытаются редактироват
+ь один и тот же документ (или его части).
+ Когда возникает такой конфликт, он требует 
+\begin_inset Quotes rld
+\end_inset
+
+ручного
+\begin_inset Quotes rrd
+\end_inset
+
+ вмешательства, и разумная альтернатива в подобной ситуации — предоставить
+ какой-то механизм блокировки, который гарантирует, что только одному пользовате
+лю разрешено редактировать файл в данный момент.
 \end_layout
 
 \begin_layout Standard
@@ -14003,8 +14059,9 @@ http://svnbook.red-bean.com/en/1.2/svn.advanced.locking.html
  начинает использовать
  блокировки SVN для редактирования документа автоматически, и весь механизм
  фиксации/извлечения переключается на тот же режим, что и для RCS.
- Это, в частности, означает, что LyX поддерживает два разных режима использовани
-я файлов:
+ Это, в частности, означает, что \SpecialChar LyX
+ поддерживает два разных режима использования
+ файлов:
 \end_layout
 
 \begin_layout Itemize
@@ -14069,8 +14126,7 @@ svn lock "<имя-файла>"
 \end_layout
 
 \begin_layout Subsubsection
-
-\family typewriter
+Свойство автоматической блокировки
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Automatical-Locking-Property"
@@ -14078,8 +14134,6 @@ name "subsec:Automatical-Locking-Property"
 \end_inset
 
 
-\family default
-Свойство автоматической блокировки
 \end_layout
 
 \begin_layout Standard
@@ -14090,7 +14144,7 @@ name "subsec:Automatical-Locking-Property"
  может быть установлена через 
 \family sans
 Файл\SpecialChar menuseparator
-Контроль версий\SpecialChar menuseparator
+Управление версиями\SpecialChar menuseparator
 Использовать свойство блокировки
 \family default
 .
@@ -14119,22 +14173,23 @@ svn propdel svn:needs-lock "<имя-файла>"
 \end_layout
 
 \begin_layout Subsubsection
+Информация о версии в документах
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:VCS-Revision-Information"
 
 \end_inset
 
-Информация о редакции в документах
+
 \end_layout
 
 \begin_layout Standard
-Имеются дополнительные возможности активирования информации о ревизии в
- документе.
+Имеются дополнительные возможности активации информации о версии в документе.
 \end_layout
 
 \begin_layout Itemize
-LyX поддерживает напрямую:
+\SpecialChar LyX
+ поддерживает напрямую:
 \end_layout
 
 \begin_deeper
@@ -14388,9 +14443,9 @@ vcs-time
 
 \end_deeper
 \begin_layout Standard
-Вы можете получить эту информацию через InsertInfo (
+Вы можете получить эту информацию используя поле (
 \family sans
-Вставить\SpecialChar menuseparator
+Вставка\SpecialChar menuseparator
 Поле\SpecialChar menuseparator
 Версия
 \family default
@@ -14411,7 +14466,7 @@ status collapsed
 
 \end_deeper
 \begin_layout Itemize
-Другая, хакерская, возможность — использовать ключевые слова SVN.
+Другая, хакерская, возможность — использовать ключевые слова SVN
 \begin_inset Foot
 status collapsed
 
@@ -14558,19 +14613,19 @@ literal "false"
 
 \begin_layout Standard
 Прежде чем документ \SpecialChar LyX
- может быть переведен под контроль версий в Subversion,
- его родительский каталог должен быть под контролем версий.
+ может быть переведен под управление версиями в Subversion,
+ его родительский каталог должен быть под управлением версиями.
  Если документ добавляется к проекту, уже находящемуся в репозитории, это
  достигается путем извлечения проекта в каталог, в который будет помещен
  новый документ.
- Если сам проект еще не находится под контролем версий (например, если этот
- документ запускает новый проект), каталог необходимо импортировать в репозитори
-й.
+ Если сам проект еще не находится под управлением версиями (например, если
+ этот документ запускает новый проект), каталог необходимо импортировать
+ в репозиторий.
  Это делается вне \SpecialChar LyX
 .
  И импорт, и извлечение легко выполняются из контекстного меню проводника
  с помощью TortoiseSVN или, альтернативно, могут выполняться с помощью клиента
- командной строки в приглашении операционной системы.
+ командной строки.
  Процедура импорта проекта с использованием TortoiseSVN описана ниже, предполага
 я, что существующий репозиторий и новый проект запускаются из 
 \family typewriter
@@ -14584,7 +14639,7 @@ new project
 \family typewriter
 svn --help
 \family default
- в оболочке операционной системы.
+ в командной строке.
 \end_layout
 
 \begin_layout Enumerate
@@ -14666,7 +14721,7 @@ new project
 \family default
 .
  Добавьте сообщение в журнал и нажмите OK, чтобы передать документ в систему
- контроля версий.
+ управления версиями.
 \end_layout
 
 \begin_layout Standard
@@ -14677,7 +14732,11 @@ new project
 \family default
 .
  У вас также имеется возможность фиксировать и извлекать документ, просматривать
- его историю и т.д.
+ его историю и т.
+\begin_inset space \thinspace{}
+\end_inset
+
+д.
  с помощью контекстного меню TortoiseSVN в проводнике Windows или из командной
  строки клиентской программы Subversion.
 \end_layout
@@ -14712,7 +14771,7 @@ svn --version
 
 \begin_layout Enumerate
 Выберите ssh-клиент для Windows.
- Есть несколько возможностей, мы воспользуемся одним из инструментов Putty
+ Есть несколько вариантов, мы воспользуемся одним из инструментов Putty
 \begin_inset Foot
 status collapsed
 
@@ -14736,7 +14795,11 @@ http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
  Вам нужно будет настроить соединение так, чтобы клиент не запрашивал у
  вас пароль.
  Для простоты будем использовать только ключи без дополнительной защиты
- паролем и т.п.
+ паролем и т.
+\begin_inset space \thinspace{}
+\end_inset
+
+п.
 \end_layout
 
 \begin_deeper
@@ -14856,7 +14919,7 @@ ssh=c:/path/plink.exe -i c:/path/private_key.ppk
 
 \end_inset
 
-.
+
 \begin_inset Foot
 status collapsed
 
@@ -14871,7 +14934,7 @@ status collapsed
 
 \end_inset
 
-
+.
 \end_layout
 
 \end_deeper
@@ -14894,7 +14957,7 @@ svn co svn+ssh://user@server/repository_path
 \end_layout
 
 \begin_layout Subsubsection
-Заключительные преобразования
+Преобразования символов конца строки
 \end_layout
 
 \begin_layout Standard
@@ -14942,7 +15005,7 @@ native
 
 \end_inset
 
-) режим.
+) режим
 \begin_inset Foot
 status collapsed
 
@@ -14962,7 +15025,7 @@ svn propset svn:eol-style native FILE_NAME
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Subsection
@@ -14981,7 +15044,7 @@ GIT-команды в \SpecialChar LyX
  Обратите внимание, что если вы используете защищенный паролем доступ к
  репозиторию через ssh, у вас его запросят в окне терминала.
  \SpecialChar LyX
- был протестирован на GIT версии 1.7.
+ был протестирован на GIT версии 1.7
 \begin_inset Foot
 status collapsed
 
@@ -15000,14 +15063,14 @@ status collapsed
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
-Одним из больших отличий GIT от других поддерживаемых систем контроля версий
- является распределенная природа GIT.
- В традиционных системах контроля версий существует один центральный сервер,
- на котором размещается репозиторий.
+Одним из больших отличий GIT от других поддерживаемых систем управления
+ версиями является распределенная природа GIT.
+ В традиционных системах управления версиями существует один центральный
+ сервер, на котором размещается репозиторий.
  Пользователи фиксируют свои изменения на сервере и получают с него обновления,
  сделанные другими пользователями.
  С GIT пользователи фиксируются в локальном репозитории.
@@ -15058,7 +15121,7 @@ push
 
 \end_inset
 
- с вашим клиентом GIT.
+ в вашем клиенте GIT.
 \end_layout
 
 \begin_layout Subsubsection
@@ -15068,8 +15131,8 @@ push
 \end_layout
 
 \begin_layout Standard
-Если ваш документ не находится под контролем версий, то единственный пункт,
- показываемый в меню 
+Если ваш документ не находится под управлением версиями, то единственный
+ пункт, показываемый в меню 
 \family sans
 Файл\SpecialChar menuseparator
 Управление версиями
@@ -15078,7 +15141,7 @@ push
 \family sans
 Зарегистрировать
 \family default
-, иначе он не отображается.
+, иначе этот пункт не отображается.
 \end_layout
 
 \begin_layout Standard
@@ -15114,7 +15177,7 @@ git add
 
 \begin_layout Standard
 Подробности см.
- в выоде команды 
+ в выводе команды 
 \family typewriter
 man git
 \family default
@@ -15245,11 +15308,11 @@ git commit
 \begin_layout Subsubsection
 
 \family sans
-Предъявление истории версий
+Просмотр истории
 \end_layout
 
 \begin_layout Standard
-Будет показана полная история GIT-документа.
+Будет показана полная история документа.
  Вывод команды 
 \family typewriter
 git log 
@@ -15271,14 +15334,14 @@ git log
 
 \begin_layout Standard
 \SpecialChar LyX
- поддерживает номер GIT-хэша последней фиксации файла, ее сокращенную форму,
+ поддерживает номер хэша GIT последней фиксации файла, ее сокращенную форму,
  имя автора, дату и время.
  Все это извлекается из 
 \family typewriter
 git log -n 1 --pretty=format:%H%n%h%n%an%n%ai
 \family default
 .
- Информация об иерархической версии получается с помощью команды 
+ Информация о версии дерева получается с помощью команды 
 \family typewriter
 git describe --abbrev --dirty --long
 \family default
@@ -15310,8 +15373,8 @@ vc-command
 \end_inset
 
  опытные пользователи \SpecialChar LyX
- могут создавать свои собственные команды для контроля
- версий.
+ могут создавать свои собственные команды для управления
+ версиями.
 \end_layout
 
 \begin_layout Standard
@@ -15348,18 +15411,17 @@ vc-command DR "." "TortoiseProc /command:revert /path:$$p"
 \end_layout
 
 \begin_layout Subsection
-Контроль версий и сравнение документов
+Управление версиями и сравнение документов
 \end_layout
 
 \begin_layout Standard
-Одним из типичных способов использования контроля версий является проверка
- изменений между версиями документа, обычно путем создания дампов различий.
- Хотя это удовлетворительно для обычных текстовых файлов, в случае файлов
- \SpecialChar LyX
-, которые имеют более сложную структуру, полезность такого способа весьма
- сомнительна.
+Одним из типичных способов использования управления версиями является проверка
+ изменений между версиями документа, обычно путем создания файлов различий.
+ Хотя это работает для обычных текстовых файлов, в случае файлов \SpecialChar LyX
+, которые
+ имеют более сложную структуру, полезность такого способа весьма сомнительна.
  В \SpecialChar LyX
- обеспечена привязку к функции сравнения документов 
+ обеспечена привязка к функции сравнения документов 
 \family typewriter
 vc-compare
 \family default
@@ -15432,9 +15494,9 @@ HEAD~X
 Основная цель этой документации — показать, как использовать \SpecialChar LyX
  для грамотного
  программирования, где предполагается, что вы знакомы с этой техникой программир
-ования и знаете, что означают «запутывание» и «переплетение».
+ования и знаете, что означают «запутывание (tangling)» и «сплетение (weaving)».
  Если это не так, перейдите по ссылкам в следующих разделах.
- Существует много хорошей документации, охватывающей старую историю разработки
+ Там имеется много хорошей документации, охватывающей старую историю разработки
  и советы по последним инструментам.
 \end_layout
 
@@ -15466,8 +15528,12 @@ HEAD~X
  Затем, с помощью инструментария грамотного программирования, можно проводить
  грамматический разбор такого файла для создания, либо удобочитаемой документаци
 и, либо исходного кода, готового к компиляции.
- WEB-стиль грамотного программирования был создан Д.Е.
- Кнутом в ходе разработки программного обеспечения для набора текста \SpecialChar TeX
+ WEB-стиль грамотного программирования был создан Д.
+\begin_inset space \thinspace{}
+\end_inset
+
+Э.
+ Кнутом в ходе разработки программы \SpecialChar TeX
 .
 \end_layout
 
@@ -15492,11 +15558,11 @@ HEAD~X
 \end_layout
 
 \begin_layout Itemize
-автоматическая поддержка просмотра;
+автоматическая поддержка навигации;
 \end_layout
 
 \begin_layout Itemize
-набранная документация, особенно схемы и математические выражения.
+отформатированная документация, особенно схемы и математические формулы.
 \end_layout
 
 \end_deeper
@@ -15538,11 +15604,15 @@ Noweb
 
 \begin_layout Itemize
 Он может генерировать документацию в \SpecialChar LaTeX
- или HTML.
+ и HTML.
 \end_layout
 
 \begin_layout Itemize
-Имеет открытую архитектуру, т.е.
+Имеет открытую архитектуру, т.
+\begin_inset space \thinspace{}
+\end_inset
+
+е.
  можно легко подключить новые фильтры
 \begin_inset Foot
 status collapsed
@@ -15601,7 +15671,11 @@ https://www.cs.tufts.edu/~nr/noweb/
 Поддержка \SpecialChar LyX
  для грамотного программирования обеспечивается с помощью универсально
 го механизма конвертеров.
- Эта поддержка предоставляется средством «Независимый Noweb», т.е.
+ Эта поддержка предоставляется способом, не зависящим от Noweb, т.
+\begin_inset space \thinspace{}
+\end_inset
+
+е.
  вы сможете использовать эту новую возможность \SpecialChar LyX
  с другими инструментами
  грамотного программирования по вашему выбору, просто проводя изменения
@@ -15610,7 +15684,7 @@ https://www.cs.tufts.edu/~nr/noweb/
 \end_layout
 
 \begin_layout Subsubsection
-Генерация документов и кода (связывание и запутывание)
+Генерация документов и кода (сплетение и запутывание)
 \end_layout
 
 \begin_layout Paragraph
@@ -15618,7 +15692,8 @@ https://www.cs.tufts.edu/~nr/noweb/
 \end_layout
 
 \begin_layout Standard
-Если Noweb установлен в LyX, то каждый раз, когда вы открываете новый документ,
+Если Noweb установлен в \SpecialChar LyX
+, то каждый раз, когда вы открываете новый документ,
  после того, как выбрали его класс, используйте меню 
 \family sans
 Документ\SpecialChar menuseparator
@@ -15736,7 +15811,11 @@ def some_function(args):
 Просмотреть\SpecialChar menuseparator
 DVI
 \family default
- и т.п., как и для обычного документа.
+ и т.
+\begin_inset space \thinspace{}
+\end_inset
+
+п., как и для обычного документа.
  Никакой специальной процедуры не требуется.
 \end_layout
 
@@ -16268,8 +16347,9 @@ parselog=$$s/scripts/listerrors
 \end_layout
 
 \begin_layout Standard
-На сервере LyX также реализована новая функция — «server-goto-file-row»,
- которая будет использоваться с ddd/gdb или другим отладчиком.
+На сервере \SpecialChar LyX
+ также реализована новая функция — «server-goto-file-row», которая
+ будет использоваться с ddd/gdb или другим отладчиком.
 \end_layout
 
 \begin_layout Standard
@@ -16321,7 +16401,8 @@ Shift+Ctrl+V
 \end_layout
 
 \begin_layout Standard
-Однако обратите внимание, что вы должны включить сервер LyX, чтобы эта функция
+Однако обратите внимание, что вы должны включить сервер \SpecialChar LyX
+, чтобы эта функция
  заработала (по умолчанию она отключена).
  В разделе
 \begin_inset space ~
@@ -16508,7 +16589,7 @@ Sweave
  В этой главе приведены некоторые возможности, которые вы, возможно, захотите
  использовать.
  Для других специальных действий, которые вы можете применять к рисункам,
- таблицам, плавающим объектам, блокам и примечаниям, обратитесь к руководству
+ таблицам, плавающим объектам, блокам и заметкам, обратитесь к руководству
  
 \shape italic
 Встроенные объекты
@@ -16579,8 +16660,8 @@ multicol
  колонок через меню 
 \family sans
 Вставка\SpecialChar menuseparator
-Пользовательские вставки\SpecialChar menuseparator
-Несколько колонок
+Пользовательская вставка\SpecialChar menuseparator
+Многоколоночность
 \family default
  туда, где должны начинаться колонки.
  Занесите весь текст в две колонки на этой вставке.
@@ -16645,7 +16726,7 @@ ty which utterly submerged my mind.
  колонками и используйте меню 
 \family sans
 Вставка\SpecialChar menuseparator
-Количество столбцов
+Количество колонок
 \family default
 .
  Нужное количество колонок будет записано во вставке.
@@ -16835,22 +16916,22 @@ multicol
 \end_layout
 
 \begin_layout Subsubsection
-Предисловие
+Введение
 \end_layout
 
 \begin_layout Standard
-Чтобы добавить текст предисловия для нескольких колонок, установите курсор
- во вставку с мульти-колонками и используйте меню 
+Чтобы добавить текст введения для нескольких колонок, установите курсор
+ во вставку с многоколоночностью и используйте меню 
 \family sans
 Вставка\SpecialChar menuseparator
-Предисловие
+Введение
 \family default
 .
- Введите текст предисловия во вставке.
+ Введите текст введения во вставке.
 \begin_inset Newline newline
 \end_inset
 
-Пример с некоторым текстом предисловия:
+Пример с некоторым текстом введения:
 \end_layout
 
 \begin_layout Standard
@@ -16899,7 +16980,7 @@ On the evening of the crime, he returned from the club exactly at ten.
 \end_layout
 
 \begin_layout Standard
-Вы также можете использовать заголовок раздела в качестве предисловия, если
+Вы также можете использовать заголовок раздела в качестве введения, если
  используете команду раздела как 
 \family sans
 Код TeX
@@ -16911,12 +16992,12 @@ On the evening of the crime, he returned from the club exactly at ten.
 \begin_layout LyX-Code
 
 \backslash
-subsection{subsection title}
+subsection{Заголовок}
 \end_layout
 
 \begin_layout Standard
 создает подраздел.
- В этом примере, предисловие — это заголовок подраздела:
+ В этом примере, введение — это заголовок подраздела:
 \end_layout
 
 \begin_layout Standard
@@ -16940,7 +17021,7 @@ subsubsection{
 
 \end_inset
 
-This is a subsubsection heading as a preface
+Этот заголовок подраздела — введение
 \begin_inset ERT
 status collapsed
 
@@ -16989,20 +17070,16 @@ A minute examination of the circumstances served only to make the case more
 Если вертикальное пространство меньше, чем 6 строк текста, оставшихся на
  странице в начале мульти-колонок, разрыв страницы будет вставлен перед
  этими колонками.
- В зависимости от количества строк текста предисловия вы можете изменить
- размер этого пространства.
+ В зависимости от количества строк текста введения вы можете изменить размер
+ этого пространства.
  Это делается путем установки курсора во вставку из нескольких колонок за
- предисловием (если таковое имеется) и используя меню 
+ введением (если таковое имеется) и используя меню 
 \family sans
 Вставка\SpecialChar menuseparator
 Пробел перед разрывом страницы
 \family default
 .
- Вставьте во вставку требуемую величину промежутка, например, «5
-\begin_inset space \thinspace{}
-\end_inset
-
-см».
+ Вставьте во вставку требуемую величину промежутка, например, «5cm».
 \begin_inset Newline newline
 \end_inset
 
@@ -17254,7 +17331,7 @@ status collapsed
 
 \end_inset
 
-Column Breaks
+
 \end_layout
 
 \begin_layout Standard
@@ -18563,8 +18640,12 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
 \end_layout
 
 \begin_layout Standard
-Исключение составляет форма CDlabel.
- Ее нельзя масштабировать, потому что она должен соответствовать размеру
+Исключение составляет форма 
+\family sans
+Этикетка CD
+\family default
+.
+ Ее нельзя масштабировать, потому что она должна соответствовать размеру
  CD/DVD.
  Поэтому объем текста, который вписывается в форму, ограничен.
  Формы капли и круга являются 
@@ -18756,7 +18837,7 @@ Shapepar
 \family default
 , чтобы экспортировать форму в координаты.
  В появившемся диалоговом окне используйте либо контур вашей формы для координат
-, либо сам путь.
+, либо сам путь
 \begin_inset Foot
 status collapsed
 
@@ -18779,7 +18860,7 @@ literal "false"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -18916,7 +18997,7 @@ Jpgfdraw
 \family sans
 Пользовательские формы абзаца
 \family default
- также предоставляет две команды 
+ также предоставляет два окружения 
 \family typewriter
 shapepar
 \family default
@@ -18925,9 +19006,9 @@ shapepar
 Shapepar
 \family default
 , которые можно использовать для определения координат пользовательских
- форм по-координатно.
+ форм
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Эти команды используются для всех описанных здесь форм.
@@ -18935,12 +19016,13 @@ status open
 
 \end_inset
 
- Для получения информации об использовании этих стилей и о дополнительных
- возможностях настройки, см.
+.
+ Для получения информации об их использовании и о дополнительных возможностях
+ настройки, см.
  
 \begin_inset CommandInset href
 LatexCommand href
-name "documentation"
+name "документацию"
 target "https://www.ctan.org/tex-archive/macros/latex/contrib/shapepar/shapepar.pdf"
 literal "false"
 
