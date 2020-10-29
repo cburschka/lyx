@@ -1370,7 +1370,7 @@ void MenuDefinition::expandToc(Buffer const * buf)
 	}
 	// Handle normal TOC
 	add(MenuItem(MenuItem::Separator));
-	TocList::const_iterator cit = toc_list.find("tableofcontents");
+	TocList::const_iterator const cit = toc_list.find("tableofcontents");
 	if (cit == toc_list.end())
 		LYXERR(Debug::GUI, "No table of contents.");
 	else {
