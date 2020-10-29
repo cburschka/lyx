@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-09-18 11:05-0400\n"
+"POT-Creation-Date: 2020-10-29 17:56-0400\n"
 "PO-Revision-Date: 2020-05-27 21:52+0200\n"
 "Last-Translator: Niko Strijbol <strijbol.niko@gmail.com>\n"
 "Language-Team: Dutch <lyx-docs@lists.lyx.org>\n"
@@ -15536,8 +15536,9 @@ msgid "\\Roman{part}"
 msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:10
-msgid "Part \\Roman{part}"
-msgstr "Deel \\Roman{part}"
+#, fuzzy
+msgid "Part ##"
+msgstr "Deel"
 
 #: lib/layouts/stdcounters.inc:14
 msgid "Chapter ##"
@@ -25523,12 +25524,12 @@ msgstr "Fout bij het weergeven van het uitvoerbestand."
 
 #: src/Buffer.cpp:3370 src/frontends/qt4/GuiView.cpp:2329
 #: src/frontends/qt4/Validator.cpp:222 src/insets/ExternalSupport.cpp:386
-#: src/insets/InsetGraphics.cpp:692 src/insets/InsetInclude.cpp:565
+#: src/insets/InsetGraphics.cpp:699 src/insets/InsetInclude.cpp:565
 msgid "Invalid filename"
 msgstr "Ongeldige bestandsnaam"
 
 #: src/Buffer.cpp:3371 src/insets/ExternalSupport.cpp:387
-#: src/insets/InsetGraphics.cpp:693 src/insets/InsetInclude.cpp:566
+#: src/insets/InsetGraphics.cpp:700 src/insets/InsetInclude.cpp:566
 msgid ""
 "The following filename will cause troubles when running the exported file "
 "through LaTeX: "
@@ -25537,12 +25538,12 @@ msgstr ""
 "het geëxporteerde bestand door LaTeX wordt verwerkt: "
 
 #: src/Buffer.cpp:3376 src/insets/ExternalSupport.cpp:392
-#: src/insets/InsetGraphics.cpp:700 src/insets/InsetInclude.cpp:570
+#: src/insets/InsetGraphics.cpp:707 src/insets/InsetInclude.cpp:570
 msgid "Problematic filename for DVI"
 msgstr "Problematische bestandsnaam voor DVI"
 
 #: src/Buffer.cpp:3377 src/insets/ExternalSupport.cpp:393
-#: src/insets/InsetGraphics.cpp:701 src/insets/InsetInclude.cpp:571
+#: src/insets/InsetGraphics.cpp:708 src/insets/InsetInclude.cpp:571
 msgid ""
 "The following filename can cause troubles when running the exported file "
 "through LaTeX and opening the resulting DVI: "
@@ -25884,7 +25885,7 @@ msgstr "Documentklasse niet beschikbaar"
 #: src/BufferParams.cpp:1742 src/BufferParams.cpp:2208 src/Encoding.cpp:246
 #: src/Paragraph.cpp:2766 src/frontends/qt4/LaTeXHighlighter.cpp:122
 #: src/insets/InsetCommandParams.cpp:503 src/insets/InsetCommandParams.cpp:511
-#: src/insets/InsetGraphics.cpp:887 src/insets/InsetGraphics.cpp:895
+#: src/insets/InsetGraphics.cpp:894 src/insets/InsetGraphics.cpp:902
 #: src/insets/InsetListings.cpp:259 src/insets/InsetListings.cpp:267
 #: src/insets/InsetListings.cpp:290 src/mathed/MathExtern.cpp:1440
 #: src/mathed/MathExtern.cpp:1518
@@ -25893,8 +25894,8 @@ msgstr "LyX-waarschuwing: "
 
 #: src/BufferParams.cpp:1743 src/BufferParams.cpp:2209 src/Encoding.cpp:247
 #: src/Paragraph.cpp:2767 src/insets/InsetCommandParams.cpp:504
-#: src/insets/InsetCommandParams.cpp:512 src/insets/InsetGraphics.cpp:888
-#: src/insets/InsetGraphics.cpp:896 src/insets/InsetListings.cpp:260
+#: src/insets/InsetCommandParams.cpp:512 src/insets/InsetGraphics.cpp:895
+#: src/insets/InsetGraphics.cpp:903 src/insets/InsetListings.cpp:260
 #: src/insets/InsetListings.cpp:268 src/mathed/MathExtern.cpp:1441
 #: src/mathed/MathExtern.cpp:1519
 msgid "uncodable character"
@@ -32600,7 +32601,7 @@ msgstr "LyX kan geen lijst van %1$s genereren"
 msgid "footnote"
 msgstr "voetnoot"
 
-#: src/insets/InsetGraphics.cpp:565 src/insets/InsetInclude.cpp:872
+#: src/insets/InsetGraphics.cpp:572 src/insets/InsetInclude.cpp:872
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -32611,16 +32612,16 @@ msgstr ""
 "%1$s\n"
 "niet kopiëren naar de tijdelijk map."
 
-#: src/insets/InsetGraphics.cpp:778 src/insets/InsetGraphics.cpp:1054
+#: src/insets/InsetGraphics.cpp:785 src/insets/InsetGraphics.cpp:1061
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Er is toch geen omzetting van %1$s nodig"
 
-#: src/insets/InsetGraphics.cpp:906
+#: src/insets/InsetGraphics.cpp:913
 msgid "Uncodable characters in path"
 msgstr "Niet-codeerbare tekens in pad naar bestand"
 
-#: src/insets/InsetGraphics.cpp:907
+#: src/insets/InsetGraphics.cpp:914
 #, c-format
 msgid ""
 "The following characters in one of the graphic paths are\n"
@@ -32631,7 +32632,7 @@ msgstr ""
 "niet voorgesteld worden in de huidige codering en zijn weggelaten: %1$s.\n"
 "U moet of de codering of het pad aanpassen."
 
-#: src/insets/InsetGraphics.cpp:932
+#: src/insets/InsetGraphics.cpp:939
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Afbeeldingsbestand: %1$s"
@@ -34105,6 +34106,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Onbekende gebruiker"
+
+#~ msgid "Part \\Roman{part}"
+#~ msgstr "Deel \\Roman{part}"
 
 #~ msgid "File name to include"
 #~ msgstr "Naam in te sluiten bestand"

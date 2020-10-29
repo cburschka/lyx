@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-09-18 11:05-0400\n"
+"POT-Creation-Date: 2020-10-29 17:56-0400\n"
 "PO-Revision-Date: 2009-05-25 16:49+0100\n"
 "Last-Translator: H. İbrahim Güngör <h.ibrahim.gungor@gmail.com>\n"
 "Language-Team: Turkish <kde-i18n-doc@kde.org>\n"
@@ -16328,8 +16328,8 @@ msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:10
 #, fuzzy
-msgid "Part \\Roman{part}"
-msgstr "\\Roman{part}"
+msgid "Part ##"
+msgstr "Kısım"
 
 #: lib/layouts/stdcounters.inc:14
 #, fuzzy
@@ -26790,12 +26790,12 @@ msgstr "Yüklenebilen biçime çevirirken hata"
 
 #: src/Buffer.cpp:3370 src/frontends/qt4/GuiView.cpp:2329
 #: src/frontends/qt4/Validator.cpp:222 src/insets/ExternalSupport.cpp:386
-#: src/insets/InsetGraphics.cpp:692 src/insets/InsetInclude.cpp:565
+#: src/insets/InsetGraphics.cpp:699 src/insets/InsetInclude.cpp:565
 msgid "Invalid filename"
 msgstr "Geçersiz dosya adı"
 
 #: src/Buffer.cpp:3371 src/insets/ExternalSupport.cpp:387
-#: src/insets/InsetGraphics.cpp:693 src/insets/InsetInclude.cpp:566
+#: src/insets/InsetGraphics.cpp:700 src/insets/InsetInclude.cpp:566
 #, fuzzy
 msgid ""
 "The following filename will cause troubles when running the exported file "
@@ -26803,12 +26803,12 @@ msgid ""
 msgstr "LaTeXle dışa aktarılan dosya, bu dosya adıyla sorun çıkarabilir: "
 
 #: src/Buffer.cpp:3376 src/insets/ExternalSupport.cpp:392
-#: src/insets/InsetGraphics.cpp:700 src/insets/InsetInclude.cpp:570
+#: src/insets/InsetGraphics.cpp:707 src/insets/InsetInclude.cpp:570
 msgid "Problematic filename for DVI"
 msgstr ""
 
 #: src/Buffer.cpp:3377 src/insets/ExternalSupport.cpp:393
-#: src/insets/InsetGraphics.cpp:701 src/insets/InsetInclude.cpp:571
+#: src/insets/InsetGraphics.cpp:708 src/insets/InsetInclude.cpp:571
 #, fuzzy
 msgid ""
 "The following filename can cause troubles when running the exported file "
@@ -27109,7 +27109,7 @@ msgstr "Belge sınıfı mevcut değil!"
 #: src/BufferParams.cpp:1742 src/BufferParams.cpp:2208 src/Encoding.cpp:246
 #: src/Paragraph.cpp:2766 src/frontends/qt4/LaTeXHighlighter.cpp:122
 #: src/insets/InsetCommandParams.cpp:503 src/insets/InsetCommandParams.cpp:511
-#: src/insets/InsetGraphics.cpp:887 src/insets/InsetGraphics.cpp:895
+#: src/insets/InsetGraphics.cpp:894 src/insets/InsetGraphics.cpp:902
 #: src/insets/InsetListings.cpp:259 src/insets/InsetListings.cpp:267
 #: src/insets/InsetListings.cpp:290 src/mathed/MathExtern.cpp:1440
 #: src/mathed/MathExtern.cpp:1518
@@ -27118,8 +27118,8 @@ msgstr "LyX Uyarısı: "
 
 #: src/BufferParams.cpp:1743 src/BufferParams.cpp:2209 src/Encoding.cpp:247
 #: src/Paragraph.cpp:2767 src/insets/InsetCommandParams.cpp:504
-#: src/insets/InsetCommandParams.cpp:512 src/insets/InsetGraphics.cpp:888
-#: src/insets/InsetGraphics.cpp:896 src/insets/InsetListings.cpp:260
+#: src/insets/InsetCommandParams.cpp:512 src/insets/InsetGraphics.cpp:895
+#: src/insets/InsetGraphics.cpp:903 src/insets/InsetListings.cpp:260
 #: src/insets/InsetListings.cpp:268 src/mathed/MathExtern.cpp:1441
 #: src/mathed/MathExtern.cpp:1519
 msgid "uncodable character"
@@ -33721,7 +33721,7 @@ msgstr ""
 msgid "footnote"
 msgstr "dipnot"
 
-#: src/insets/InsetGraphics.cpp:565 src/insets/InsetInclude.cpp:872
+#: src/insets/InsetGraphics.cpp:572 src/insets/InsetInclude.cpp:872
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -33732,17 +33732,17 @@ msgstr ""
 "geçici dizine\n"
 "kopyalanamadı."
 
-#: src/insets/InsetGraphics.cpp:778 src/insets/InsetGraphics.cpp:1054
+#: src/insets/InsetGraphics.cpp:785 src/insets/InsetGraphics.cpp:1061
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "%1$s için çevrime gerek yok"
 
-#: src/insets/InsetGraphics.cpp:906
+#: src/insets/InsetGraphics.cpp:913
 #, fuzzy
 msgid "Uncodable characters in path"
 msgstr "Listeleme eklemesinde kodlanamayan karakterler"
 
-#: src/insets/InsetGraphics.cpp:907
+#: src/insets/InsetGraphics.cpp:914
 #, c-format
 msgid ""
 "The following characters in one of the graphic paths are\n"
@@ -33750,7 +33750,7 @@ msgid ""
 "You need to adapt either the encoding or the path."
 msgstr ""
 
-#: src/insets/InsetGraphics.cpp:932
+#: src/insets/InsetGraphics.cpp:939
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafik dosyası: %1$s"
@@ -35213,6 +35213,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Bilinmeyen kullanıcı"
+
+#, fuzzy
+#~ msgid "Part \\Roman{part}"
+#~ msgstr "\\Roman{part}"
 
 #~ msgid "File name to include"
 #~ msgstr "İçerilecek dosya adı"
