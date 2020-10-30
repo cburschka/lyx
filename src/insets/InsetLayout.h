@@ -31,7 +31,7 @@ class TextClass;
 class InsetLayout {
 public:
 	///
-	InsetLayout();
+    InsetLayout() { labelfont_.setColor(Color_error); }
 	///
 	enum InsetDecoration {
 		CLASSIC,
@@ -222,23 +222,23 @@ private:
 	///
 	void readArgument(Lexer &);
 	///
-	docstring name_;
+	docstring name_ = from_ascii("undefined");
 	/**
 		* This is only used (at present) to decide where to put them on the menus.
 		* Values are 'charstyle', 'custom' (things that by default look like a
 		* footnote), 'standard'.
 		*/
-	InsetLyXType lyxtype_;
+	InsetLyXType lyxtype_ = STANDARD;
 	///
-	docstring labelstring_;
+	docstring labelstring_ = from_ascii("UNDEFINED");
 	///
 	docstring menustring_;
 	///
-	bool contentaslabel_;
+	bool contentaslabel_ = false;
 	///
-	InsetDecoration decoration_;
+	InsetDecoration decoration_ = DEFAULT;
 	///
-	InsetLaTeXType latextype_;
+	InsetLaTeXType latextype_ = NOLATEXTYPE;
 	///
 	std::string latexname_;
 	///
@@ -248,11 +248,11 @@ private:
 	///
 	docstring rightdelim_;
 	///
-	FontInfo font_;
+	FontInfo font_ = inherit_font;
 	///
-	FontInfo labelfont_;
+	FontInfo labelfont_ = sane_font;
 	///
-	ColorCode bgcolor_;
+	ColorCode bgcolor_ = Color_error;
 	///
 	docstring counter_;
 	///
@@ -262,7 +262,7 @@ private:
 	/// Language and babel dependent macro definitions needed for this inset
 	docstring babelpreamble_;
 	///
-	bool fixedwidthpreambleencoding_;
+	bool fixedwidthpreambleencoding_ = false;
 	///
 	docstring refprefix_;
 	///
@@ -283,11 +283,11 @@ private:
 	mutable std::string defaultcssclass_;
 	/// Whether to force generation of default CSS even if some is given.
 	/// False by default.
-	bool htmlforcecss_;
+	bool htmlforcecss_ = false;
 	///
 	docstring htmlpreamble_;
 	///
-	bool htmlisblock_;
+	bool htmlisblock_ = true;
 	///
 	std::string docbooktag_;
 	///
@@ -295,7 +295,7 @@ private:
 	///
 	std::string docbookattr_;
 	///
-	bool docbooksection_;
+	bool docbooksection_ = false;
 	///
 	std::string docbookwrappertag_;
 	///
@@ -305,45 +305,45 @@ private:
 	///
 	std::set<std::string> required_;
 	///
-	bool multipar_;
+	bool multipar_ = true;
 	///
-	bool custompars_;
+	bool custompars_ = true;
 	///
-	bool forceplain_;
+	bool forceplain_ = false;
 	///
-	bool passthru_;
+	bool passthru_ = false;
 	///
 	docstring passthru_chars_;
 	///
 	std::string newline_cmd_;
 	///
-	bool parbreakisnewline_;
+	bool parbreakisnewline_ = false;
 	///
-	bool parbreakignored_;
+	bool parbreakignored_ = false;
 	///
-	bool freespacing_;
+	bool freespacing_ = false;
 	///
-	bool keepempty_;
+	bool keepempty_ = false;
 	///
-	bool forceltr_;
+	bool forceltr_ = false;
 	///
-	bool forceownlines_;
+	bool forceownlines_ = false;
 	///
-	bool needprotect_;
+	bool needprotect_ = false;
 	///
-	bool needcprotect_;
+	bool needcprotect_ = false;
 	///
-	bool needmboxprotect_;
+	bool needmboxprotect_ = false;
 	/// should the contents be written to TOC strings?
-	bool intoc_;
+	bool intoc_ = false;
 	/// check spelling of this inset?
-	bool spellcheck_;
+	bool spellcheck_ = true;
 	///
-	bool resetsfont_;
+	bool resetsfont_ = false;
 	///
-	bool display_;
+	bool display_ = true;
 	///
-	bool forcelocalfontswitch_;
+	bool forcelocalfontswitch_ = false;
 	/** Name of an insetlayout that has replaced this insetlayout.
 	    This is used to rename an insetlayout, while keeping backward
 	    compatibility
@@ -354,13 +354,13 @@ private:
 	///
 	Layout::LaTeXArgMap postcommandargs_;
 	///
-	bool add_to_toc_;
+	bool add_to_toc_ = false;
 	///
 	std::string toc_type_;
 	///
-	bool is_toc_caption_;
+	bool is_toc_caption_ = false;
 	///
-	bool edit_external_;
+	bool edit_external_ = false;
 };
 
 ///

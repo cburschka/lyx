@@ -32,25 +32,6 @@ using namespace lyx::support;
 
 namespace lyx {
 
-InsetLayout::InsetLayout() :
-	name_(from_ascii("undefined")), lyxtype_(STANDARD),
-	labelstring_(from_ascii("UNDEFINED")), contentaslabel_(false),
-	decoration_(DEFAULT), latextype_(NOLATEXTYPE), font_(inherit_font),
-	labelfont_(sane_font), bgcolor_(Color_error),
-	fixedwidthpreambleencoding_(false), htmlforcecss_ (false),
-	htmlisblock_(true), docbooksection_(false), multipar_(true),
-	custompars_(true), forceplain_(false), passthru_(false),
-	parbreakisnewline_(false), parbreakignored_(false), freespacing_(false),
-	keepempty_(false), forceltr_(false), forceownlines_(false),
-	needprotect_(false), needcprotect_(false), needmboxprotect_(false),
-	intoc_(false), spellcheck_(true), resetsfont_(false), display_(true),
-	forcelocalfontswitch_(false), add_to_toc_(false), is_toc_caption_(false),
-	edit_external_(false)
-{
-	labelfont_.setColor(Color_error);
-}
-
-
 InsetLayout::InsetDecoration translateDecoration(std::string const & str)
 {
 	if (compare_ascii_no_case(str, "classic") == 0)
