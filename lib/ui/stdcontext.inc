@@ -13,8 +13,8 @@
 
 # Casing Rules:
 # Capitalize all words in the element, with the following exceptions: 
-# * Articles: a, an, the. 
-# * Conjunctions: and, but, for, not, so, yet ...  
+# * Articles: a, an, the.
+# * Conjunctions: and, but, for, not, so, yet ...
 # * Prepositions of three or fewer letters: at, for, by, in, to ...
 #   (except when the preposition is part of a verb phrase, such as "Check In")
 # (http://library.gnome.org/devel/hig-book/stable/design-text-labels.html.en)
@@ -647,7 +647,7 @@ Menuset
 	Menu "context-toc-change"
 		Item "Accept Change|c" "change-accept"
 		Item "Reject Change|R" "change-reject"
-	End	
+	End
 	
 #
 # Toc Table of Context context menu
@@ -660,7 +660,7 @@ Menuset
 		Item "Move Section Down|w" "outline-down"
 		Separator
 		Item "Select Section|S" "section-select"
-	End	
+	End
 
 #
 # InsetERT context menu
