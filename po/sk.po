@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-10-29 17:56-0400\n"
-"PO-Revision-Date: 2020-08-31 16:22+0000\n"
+"POT-Creation-Date: 2020-10-30 11:43+0100\n"
+"PO-Revision-Date: 2020-10-30 10:44+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2181,8 +2181,8 @@ msgid ""
 "File name to include. (You can create a new file by entering the name of one "
 "that does not yet exist.)"
 msgstr ""
-"Názov súboru pre zaradenie. (Môžte vytvoriť nový súbor vložením mena súboru "
-"ktorý ešte neexistuje.)"
+"Názov súboru pre zaradenie. (Vložením ešte neexistujúceho mena bude "
+"vytvorený nový súbor.)"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:309
 msgid "&Include Type:"
@@ -15475,9 +15475,8 @@ msgid "\\Roman{part}"
 msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:10
-#, fuzzy
 msgid "Part ##"
-msgstr "Časť"
+msgstr "Časť ##"
 
 #: lib/layouts/stdcounters.inc:14
 msgid "Chapter ##"
@@ -28048,7 +28047,7 @@ msgstr "Iné ("
 
 #: src/Text.cpp:1962
 msgid ", Style: "
-msgstr ", štýl: "
+msgstr ", Štýl: "
 
 #: src/Text.cpp:1966
 msgid ", Paragraph: "
@@ -28264,7 +28263,7 @@ msgstr "Značky a referencie"
 
 #: src/TocBackend.cpp:285 src/frontends/qt4/GuiDocument.cpp:1624
 msgid "Child Documents"
-msgstr "Dokumenty potomkov"
+msgstr "Poddokumenty"
 
 #: src/TocBackend.cpp:286 src/frontends/qt4/GuiGraphics.cpp:113
 msgid "Graphics"
@@ -37570,6 +37569,9 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Conjecture "
 #~ msgstr "Dohad"
+
+#~ msgid "Part "
+#~ msgstr "Časť"
 
 #~ msgid "overprint "
 #~ msgstr "Predtlač"
