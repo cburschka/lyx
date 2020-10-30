@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>438</width>
+    <width>487</width>
     <height>303</height>
    </rect>
   </property>
@@ -196,9 +196,9 @@
     </widget>
    </item>
    <item row="2" column="0">
-    <widget class="QCheckBox" name="indentCB">
+    <widget class="QCheckBox" name="noindentCB">
      <property name="text">
-      <string>&amp;Indent Paragraph</string>
+      <string>&amp;Do Not Indent Paragraph</string>
      </property>
     </widget>
    </item>
@@ -251,7 +251,7 @@
   <tabstop>linespacing</tabstop>
   <tabstop>linespacingValue</tabstop>
   <tabstop>labelWidth</tabstop>
-  <tabstop>indentCB</tabstop>
+  <tabstop>noindentCB</tabstop>
   <tabstop>alignDefaultRB</tabstop>
   <tabstop>alignJustRB</tabstop>
   <tabstop>alignLeftRB</tabstop>

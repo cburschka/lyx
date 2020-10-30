@@ -61,7 +61,7 @@ GuiParagraph::GuiParagraph(GuiView & lv)
 	connect(linespacing, SIGNAL(activated(int)), this, SLOT(changed()));
 	connect(linespacingValue, SIGNAL(textChanged(QString)),
 		this, SLOT(changed()));
-	connect(indentCB, SIGNAL(clicked()), this, SLOT(changed()));
+	connect(noindentCB, SIGNAL(clicked()), this, SLOT(changed()));
 	connect(labelWidth, SIGNAL(textChanged(QString)),
 		this, SLOT(changed()));
 
@@ -237,7 +237,7 @@ void GuiParagraph::applyView()
 	// label width
 	params_.labelWidthString(qstring_to_ucs4(labelWidth->text()));
 	// indentation
-	params_.noindent(!indentCB->isChecked());
+	params_.noindent(noindentCB->isChecked());
 
 	dispatchParams();
 }
@@ -265,8 +265,8 @@ void GuiParagraph::updateView()
 
 	//indentation
 	bool const canindent = canIndent();
-	indentCB->setEnabled(canindent);
-	indentCB->setChecked(canindent && !pp.noindent());
+	noindentCB->setEnabled(canindent);
+	noindentCB->setChecked(canindent && pp.noindent());
 
 	// linespacing
 	int ls;
@@ -314,7 +314,7 @@ void GuiParagraph::updateView()
 
 void GuiParagraph::enableView(bool enable)
 {
-	indentCB->setEnabled(enable);
+	noindentCB->setEnabled(canIndent() && enable);
 	linespacing->setEnabled(enable);
 	labelWidth->setEnabled(enable);
 	synchronizedViewCB->setEnabled(enable);
