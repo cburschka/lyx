@@ -707,7 +707,7 @@ Section -LyxrcDist
   FileSeek $R0 0 END
   # set some general things
   FileWrite $R0 '\screen_zoom 120$\r$\n'
-  FileWrite $R0 '\path_prefix "$LatexPath;$$LyXDir\bin;$$LyXDir\Python;$$LyXDir\Python\Lib;$$LyXDir\imagemagick;$$LyXDir\ghostscript'
+  FileWrite $R0 '\path_prefix "$LatexPath;$$LyXDir\bin;$$LyXDir\Python;$$LyXDir\Python\Lib;$$LyXDir\imagemagick;$$LyXDir\ghostscript\bin'
 
   # Do not overwrite $R0 in this Section!!!
   # =======================================
