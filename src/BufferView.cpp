@@ -1122,7 +1122,7 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 	case LFUN_FILE_INSERT_PLAINTEXT_PARA:
 	case LFUN_FILE_INSERT_PLAINTEXT: {
-		docstring const fname = cmd.argument();
+		docstring const & fname = cmd.argument();
 		if (!FileName::isAbsolute(to_utf8(fname))) {
 			flag.message(_("Absolute filename expected."));
 			return false;

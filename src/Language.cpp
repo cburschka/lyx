@@ -89,7 +89,7 @@ string Language::fontenc(BufferParams const & params) const
 	// We check whether the used rm font supports an encoding our language supports
 	LaTeXFont const & lf =
 		theLaTeXFonts().getLaTeXFont(from_ascii(params.fontsRoman()));
-	vector<string> const lfe = lf.fontencs();
+	vector<string> const & lfe = lf.fontencs();
 	for (auto & fe : fontenc_) {
 		// ASCII means: support all T* encodings plus OT1
 		if (fe == "ASCII") {

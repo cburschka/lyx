@@ -215,7 +215,7 @@ public:
 	/// of that sort. (Note: unnecessary internal copies have been removed
 	/// since the previous note. The efficiency would have to be assessed
 	/// again by profiling.)
-	docstring toolTipText(docstring prefix = empty_docstring(),
+	docstring toolTipText(docstring const & prefix = empty_docstring(),
 	                      size_t len = 400) const;
 
 	///

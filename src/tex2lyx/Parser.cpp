@@ -129,7 +129,7 @@ void iparserdocstream::putback(char_type c)
 }
 
 
-void iparserdocstream::putback(docstring s)
+void iparserdocstream::putback(docstring const & s)
 {
 	s_ = s + s_;
 }

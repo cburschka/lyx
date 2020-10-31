@@ -190,7 +190,7 @@ void InsetCommand::validate(LaTeXFeatures & features) const
 
 void InsetCommand::changeCmdName(string const & new_name)
 {
-	string const old_name = getCmdName();
+	string const & old_name = getCmdName();
 	if (old_name == new_name)
 		return;
 

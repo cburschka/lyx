@@ -280,7 +280,7 @@ class GuiWorkAreaContainer : public QWidget, public Ui::WorkAreaUi
 	Q_OBJECT
 	// non-null
 	GuiWorkArea * const wa_;
-	void dispatch(FuncRequest f) const;
+	void dispatch(FuncRequest const & f) const;
 
 private Q_SLOTS:
 	void updateDisplay();

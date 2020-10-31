@@ -1206,8 +1206,8 @@ void PrefColors::resetAllColor()
 }
 
 
-bool PrefColors::setColor(int const row, QColor const new_color,
-			  QString const old_color)
+bool PrefColors::setColor(int const row, QColor const & new_color,
+			  QString const & old_color)
 {
 	if (new_color.isValid() && new_color.name() != old_color) {
 		newcolors_[size_t(row)] = new_color.name();
@@ -1244,7 +1244,7 @@ void PrefColors::setDisabledResets()
 }
 
 
-bool PrefColors::isDefaultColor(int const row, QString const color)
+bool PrefColors::isDefaultColor(int const row, QString const & color)
 {
 	return color == getDefaultColorByRow(row).name();
 }

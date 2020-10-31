@@ -3002,7 +3002,7 @@ static QStringList uifiles;
 static QStringList toolbar_uifiles;
 
 
-GuiApplication::ReturnValues GuiApplication::readUIFile(FileName ui_path)
+GuiApplication::ReturnValues GuiApplication::readUIFile(FileName const & ui_path)
 {
 	enum {
 		ui_menuset = 1,

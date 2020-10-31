@@ -1881,7 +1881,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			bool const prot =  nextToken().character() == '*';
 			if (prot)
 				getToken();
-			docstring const name = t.cs();
+			docstring const & name = t.cs();
 			docstring const arg = parse_verbatim_item();
 			Length length;
 			if (prot && arg == "\\fill")

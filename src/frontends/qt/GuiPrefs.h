@@ -255,9 +255,9 @@ private Q_SLOTS:
 	void resetAllColor();
 	void changeSysColor();
 	void changeLyxObjectsSelection();
-	bool setColor(int const row, QColor const new_color,
-		      QString const old_color);
-	bool isDefaultColor(int const row, QString const color);
+	bool setColor(int const row, QColor const & new_color,
+		      QString const & old_color);
+	bool isDefaultColor(int const row, QString const & color);
 	void setDisabledResets();
 
 private:

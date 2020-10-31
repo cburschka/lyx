@@ -244,7 +244,7 @@ void GuiCompare::progressMax(int max) const
 }
 
 
-void GuiCompare::setStatusMessage(QString msg)
+void GuiCompare::setStatusMessage(QString const & msg)
 {
 	statusBar->showMessage(msg);
 }

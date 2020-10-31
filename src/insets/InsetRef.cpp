@@ -536,7 +536,7 @@ void InsetRef::addToToc(DocIterator const & cpit, bool output_active,
 
 void InsetRef::validate(LaTeXFeatures & features) const
 {
-	string const cmd = getCmdName();
+	string const & cmd = getCmdName();
 	if (cmd == "vref" || cmd == "vpageref")
 		features.require("varioref");
 	else if (cmd == "formatted") {

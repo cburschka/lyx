@@ -365,7 +365,7 @@ void TocWidget::sendDispatch(FuncRequest fr)
 {
 
 	fr.setViewOrigin(&gui_view_);
-	DispatchResult dr=dispatch(fr);
+	DispatchResult const & dr = dispatch(fr);
 	if (dr.error())
 		gui_view_.message(dr.message());
 }

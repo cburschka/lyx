@@ -231,7 +231,7 @@ public:
 	///
 	void htmlize(HtmlStream &) const override;
 	///
-	void htmlize(HtmlStream &, std::string attrib) const;
+	void htmlize(HtmlStream &, std::string const & attrib) const;
 	///
 	void validate(LaTeXFeatures & features) const override;
 	///

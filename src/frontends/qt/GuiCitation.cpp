@@ -957,7 +957,7 @@ void GuiCitation::clearParams()
 
 
 void GuiCitation::filterByEntryType(BiblioInfo const & bi,
-	vector<docstring> & keyVector, docstring entry_type)
+	vector<docstring> & keyVector, docstring const & entry_type)
 {
 	if (entry_type.empty())
 		return;
@@ -1009,7 +1009,7 @@ static docstring escape_special_chars(docstring const & expr)
 
 vector<docstring> GuiCitation::searchKeys(BiblioInfo const & bi,
 	vector<docstring> const & keys_to_search, bool only_keys,
- 	docstring const & search_expression, docstring field,
+ 	docstring const & search_expression, docstring const & field,
 	bool case_sensitive, bool regex)
 {
 	vector<docstring> foundKeys;

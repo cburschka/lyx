@@ -1108,7 +1108,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_NEWLINE_INSERT: {
 		InsetNewlineParams inp;
-		docstring arg = cmd.argument();
+		docstring const & arg = cmd.argument();
 		if (arg == "linebreak")
 			inp.kind = InsetNewlineParams::LINEBREAK;
 		else

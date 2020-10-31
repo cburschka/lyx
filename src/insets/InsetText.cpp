@@ -1011,7 +1011,7 @@ pit_type InsetText::openAddToTocForParagraph(pit_type pit,
 {
 	Paragraph const & par = paragraphs()[pit];
 	TocBuilder & b = backend.builder(par.layout().tocType());
-	docstring const label = par.labelString();
+	docstring const & label = par.labelString();
 	b.pushItem(dit, label + (label.empty() ? "" : " "), output_active);
 	return text().lastInSequence(pit);
 }
@@ -1130,7 +1130,7 @@ string InsetText::contextMenuName() const
 }
 
 
-docstring InsetText::toolTipText(docstring prefix, size_t const len) const
+docstring InsetText::toolTipText(docstring const & prefix, size_t const len) const
 {
 	OutputParams rp(&buffer().params().encoding());
 	rp.for_tooltip = true;

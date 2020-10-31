@@ -150,7 +150,7 @@ private:
 
 	///
 	void filterByEntryType(BiblioInfo const & bi,
-		std::vector<docstring> & keyVector, docstring entryType);
+		std::vector<docstring> & keyVector, docstring const & entryType);
 
 	/// Search a given string within the passed keys.
 	/// \return the vector of matched keys.
@@ -159,7 +159,7 @@ private:
 		std::vector<docstring> const & keys_to_search, //< Keys to search.
 		bool only_keys, //< whether to search only the keys
 		docstring const & search_expression, //< Search expression (regex possible)
-		docstring field, //< field to search, empty for all fields
+		docstring const & field, //< field to search, empty for all fields
 		bool case_sensitive = false, //< set to true is the search should be case sensitive
 		bool regex = false //< \set to true if \c search_expression is a regex
 		); //

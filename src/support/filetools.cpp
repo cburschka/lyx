@@ -442,7 +442,7 @@ string const commandPrep(string const & command_in)
 }
 
 
-FileName const tempFileName(FileName tempdir, string const & mask, bool const dir)
+FileName const tempFileName(FileName const & tempdir, string const & mask, bool const dir)
 {
 	return tempFileName(TempFile(tempdir, mask).name(), dir);
 }

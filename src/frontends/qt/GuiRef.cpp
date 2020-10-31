@@ -483,11 +483,11 @@ void GuiRef::redoRefs()
 	if (groupCB->isChecked()) {
 		QList<QTreeWidgetItem *> refsCats;
 		for (int i = 0; i < refsCategories.size(); ++i) {
-			QString const cat = refsCategories.at(i);
+			QString const & cat = refsCategories.at(i);
 			QTreeWidgetItem * item = new QTreeWidgetItem(refsTW);
 			item->setText(0, cat);
 			for (int j = 0; j < refsStrings.size(); ++j) {
-				QString const ref = refsStrings.at(j);
+				QString const & ref = refsStrings.at(j);
 				if ((ref.startsWith(cat + QString(":")))
 				    || (cat == qt_("<No prefix>")
 				       && (!ref.mid(1).contains(":") || ref.left(1).contains(":")))) {

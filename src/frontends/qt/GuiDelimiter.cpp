@@ -139,7 +139,7 @@ void initMathSymbols()
 }
 
 /// \return the math unicode symbol associated to a TeX name.
-MathSymbol const & mathSymbol(string tex_name)
+MathSymbol const & mathSymbol(string const & tex_name)
 {
 	map<string, MathSymbol>::const_iterator it =
 		math_symbols_.find(tex_name);
@@ -216,7 +216,7 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 			QChar(ms.fontcode) : toqstr(docstring(1, ms.unicode)));
 		QListWidgetItem * lwi = new QListWidgetItem(symbol);
 		lyxfont.setFamily(ms.fontfamily);
-		QFont font = frontend::getFont(lyxfont);
+		QFont const & font = frontend::getFont(lyxfont);
 		lwi->setFont(font);
 		setDelimiterName(lwi, delim);
 		lwi->setToolTip(toqstr(delim));

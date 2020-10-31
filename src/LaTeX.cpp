@@ -1627,10 +1627,9 @@ int LaTeX::scanBlgFile(DepTable & dep, TeXErrors & terr)
 		} else if (regex_match(token, sub, biberError)) {
 			retval |= BIBTEX_ERROR;
 			string errstr = N_("Biber error: ") + sub.str(2);
-			string msg = token;
 			terr.insertError(0,
 					 from_local8bit(errstr),
-					 from_local8bit(msg));
+					 from_local8bit(token));
 		}
 		prevtoken = token;
 	}
@@ -1664,10 +1663,9 @@ int LaTeX::scanIlgFile(TeXErrors & terr)
 		} else if (prefixIs(token, "ERROR: ")) {
 			retval |= BIBTEX_ERROR;
 			string errstr = N_("Xindy error: ") + token.substr(6);
-			string msg = token;
 			terr.insertError(0,
 					 from_local8bit(errstr),
-					 from_local8bit(msg));
+					 from_local8bit(token));
 		}
 	}
 	return retval;

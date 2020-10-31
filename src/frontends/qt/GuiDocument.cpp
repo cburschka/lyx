@@ -3309,7 +3309,7 @@ void GuiDocument::getTableStyles()
 	     << toqstr(system);
 
 	for (int i = 0; i < dirs.size(); ++i) {
-		QString const dir = dirs.at(i);
+		QString const & dir = dirs.at(i);
 		QDirIterator it(dir, QDir::Files, QDirIterator::Subdirectories);
 		while (it.hasNext()) {
 			QString fn = QFileInfo(it.next()).fileName();

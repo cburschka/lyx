@@ -1183,9 +1183,8 @@ bool Buffer::readString(string const & s)
 
 Buffer::ReadStatus Buffer::readFile(FileName const & fn)
 {
-	FileName fname(fn);
 	Lexer lex;
-	if (!lex.setFile(fname)) {
+	if (!lex.setFile(fn)) {
 		Alert::error(_("File Not Found"),
 			bformat(_("Unable to open file `%1$s'."),
 			        from_utf8(fn.absFileName())));
@@ -2702,7 +2701,7 @@ bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_BUFFER_EXPORT: {
-		docstring const arg = cmd.argument();
+		docstring const & arg = cmd.argument();
 		if (arg == "custom") {
 			enable = true;
 			break;
@@ -2731,7 +2730,7 @@ bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 				     || cmd.action() == LFUN_BRANCH_MASTER_DEACTIVATE);
 		BranchList const & branchList = master ? masterBuffer()->params().branchlist()
 			: params().branchlist();
-		docstring const branchName = cmd.argument();
+		docstring const & branchName = cmd.argument();
 		flag.setEnabled(!branchName.empty() && branchList.find(branchName));
 		break;
 	}
@@ -2893,7 +2892,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		Buffer * buf = master ? const_cast<Buffer *>(masterBuffer())
 				      : this;
 
-		docstring const branch_name = func.argument();
+		docstring const & branch_name = func.argument();
 		// the case without a branch name is handled elsewhere
 		if (branch_name.empty()) {
 			dispatched = false;
@@ -2921,7 +2920,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 	}
 
 	case LFUN_BRANCH_ADD: {
-		docstring branchnames = func.argument();
+		docstring const & branchnames = func.argument();
 		if (branchnames.empty()) {
 			dispatched = false;
 			break;

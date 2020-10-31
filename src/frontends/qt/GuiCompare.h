@@ -57,7 +57,7 @@ private Q_SLOTS:
 	///
 	void progressMax(int) const;
 	///
-	void setStatusMessage(QString);
+	void setStatusMessage(QString const &);
 
 private:
 	///

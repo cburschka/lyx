@@ -310,7 +310,8 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 		vector<pair<docstring, string>> const dbs =
 			buffer().prepareBibFilePaths(runparams, getBibFiles(), false);
 		vector<docstring> db_out;
-		for (pair<docstring, string> const & db : dbs)
+		db_out.reserve(dbs.size());
+        for (pair<docstring, string> const & db : dbs)
 			db_out.push_back(db.first);
 		// Style options
 		if (style == "default")

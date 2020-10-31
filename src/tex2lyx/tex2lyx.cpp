@@ -371,7 +371,7 @@ bool checkModule(string const & name, bool command)
 		if (layout) {
 			found_style = true;
 			dpre = layout->preamble();
-			std::set<std::string> lreqs = layout->required();
+			std::set<std::string> const & lreqs = layout->required();
 			if (!lreqs.empty())
 				cmd_reqs.insert(lreqs.begin(), lreqs.end());
 		} else if (insetlayout) {

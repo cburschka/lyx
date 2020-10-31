@@ -242,7 +242,7 @@ private:
 		FormatMismatch
 	};
 	///
-	ReturnValues readUIFile(support::FileName);
+	ReturnValues readUIFile(support::FileName const & ui_path);
 	///
 	void setGuiLanguage();
 	///

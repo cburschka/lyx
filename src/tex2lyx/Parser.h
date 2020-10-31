@@ -139,7 +139,7 @@ public:
 
 	// add to the list of characters to read before actually reading
 	// the stream
-	void putback(docstring s);
+	void putback(const docstring &s);
 
 	/// Like std::istream::get()
 	iparserdocstream & get(char_type &c);

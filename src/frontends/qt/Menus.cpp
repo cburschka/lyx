@@ -358,7 +358,7 @@ public:
 	void expandFloatInsert(Buffer const * buf);
 	void expandFlexInsert(Buffer const * buf, InsetLayout::InsetLyXType type);
 	void expandTocSubmenu(std::string const & type, Toc const & toc_list);
-	void expandToc2(Toc const & toc_list, size_t from, size_t to, int depth, string toc_type);
+	void expandToc2(Toc const & toc_list, size_t from, size_t to, int depth, const string &toc_type);
 	void expandToc(Buffer const * buf);
 	void expandPasteRecent(Buffer const * buf);
 	void expandToolbars();
@@ -1258,7 +1258,7 @@ size_t const menu_size_limit = 80;
 
 void MenuDefinition::expandToc2(Toc const & toc_list,
                                 size_t from, size_t to, int depth,
-                                string toc_type)
+                                string const & toc_type)
 {
 	int shortcut_count = 0;
 

@@ -1215,7 +1215,7 @@ void InsetMathGrid::mathmlize(MathStream & ms) const
 
 // FIXME XHTML
 // We need to do something about alignment here.
-void InsetMathGrid::htmlize(HtmlStream & os, string attrib) const
+void InsetMathGrid::htmlize(HtmlStream & os, string const & attrib) const
 {
 	bool const havetable = nrows() > 1 || ncols() > 1;
 	if (!havetable) {

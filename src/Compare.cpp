@@ -103,7 +103,7 @@ public:
 	DocPair()
 	{}
 
-	DocPair(DocIterator o_, DocIterator n_)
+	DocPair(DocIterator const & o_, DocIterator const & n_)
 		: o(o_), n(n_)
 	{}
 

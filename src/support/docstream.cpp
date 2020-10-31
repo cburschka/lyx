@@ -383,7 +383,7 @@ SetEnc setEncoding(string const & encoding)
 }
 
 
-odocstream & operator<<(odocstream & os, SetEnc e)
+odocstream & operator<<(odocstream & os, SetEnc const & e)
 {
 	if (has_facet<iconv_codecvt_facet>(os.rdbuf()->getloc())) {
 		// This stream must be a file stream, since we never imbue
@@ -413,7 +413,7 @@ odocstream & operator<<(odocstream & os, SetEnc e)
 }
 
 
-idocstream & operator<<(idocstream & is, SetEnc e)
+idocstream & operator<<(idocstream & is, SetEnc const & e)
 {
 	if (has_facet<iconv_codecvt_facet>(is.rdbuf()->getloc())) {
 		// This stream must be a file stream, since we never imbue

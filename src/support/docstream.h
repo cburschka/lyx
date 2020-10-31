@@ -111,8 +111,8 @@ SetEnc setEncoding(std::string const & encoding);
     os << setEncoding("ISO-8859-1");
     \endcode
  */
-odocstream & operator<<(odocstream & os, SetEnc e);
-idocstream & operator<<(idocstream & os, SetEnc e);
+odocstream & operator<<(odocstream & os, SetEnc const & e);
+idocstream & operator<<(idocstream & os, SetEnc const & e);
 
 } // namespace lyx
 

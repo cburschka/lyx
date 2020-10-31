@@ -345,7 +345,7 @@ namespace {
  * Since we are going to write a HTML file for external converters we need
  * to ensure that it is a well formed HTML file, including all the mentioned tags.
  */
-QString tidyHtml(QString input)
+QString tidyHtml(QString const & input)
 {
 	// Misuse QTextDocument to cleanup the HTML.
 	// As a side effect, all visual markup like <tt> is converted to CSS,

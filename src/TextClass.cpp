@@ -2045,6 +2045,7 @@ vector<string> const DocumentClass::citeCommands(
 {
 	vector<CitationStyle> const styles = citeStyles(type);
 	vector<string> cmds;
+	cmds.reserve(styles.size());
 	for (auto const & cs : styles)
 		cmds.push_back(cs.name);
 

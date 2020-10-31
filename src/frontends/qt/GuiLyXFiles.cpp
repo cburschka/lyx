@@ -37,7 +37,7 @@ namespace frontend {
 
 namespace {
 
-QString const guiString(QString in)
+QString const guiString(QString const & in)
 {
 	// recode specially encoded chars in file names (URL encoding and underbar)
 	return QString::fromUtf8(QByteArray::fromPercentEncoding(in.toUtf8())).replace('_', ' ');
@@ -76,7 +76,7 @@ QMap<QString, QString> GuiLyXFiles::getFiles()
 		     << toqstr(system);
 
 	for (int i = 0; i < dirs.size(); ++i) {
-		QString const dir = dirs.at(i);
+		QString const & dir = dirs.at(i);
 		QDirIterator it(dir, QDir::Files, QDirIterator::Subdirectories);
 		while (it.hasNext()) {
 			QString fn(QFile(it.next()).fileName());

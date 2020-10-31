@@ -7331,7 +7331,7 @@ ParagraphList InsetTabular::asParList(idx_type stidx, idx_type enidx)
 	row_type const row2 = tabular.cellRow(enidx);
 	for (col_type col = col1; col <= col2; col++)
 		for (row_type row = row1; row <= row2; row++)
-			for (auto par : tabular.cellInset(row, col)->paragraphs())
+			for (auto const & par : tabular.cellInset(row, col)->paragraphs())
 				retval.push_back(par);
 	return retval;
 }

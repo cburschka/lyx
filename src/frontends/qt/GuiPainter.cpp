@@ -240,7 +240,7 @@ void GuiPainter::image(int x, int y, int w, int h, graphics::Image const & i)
 
 	fillRectangle(x, y, w, h, Color_graphicsbg);
 
-	QImage const image = qlimage.image();
+	QImage const & image = qlimage.image();
 	QRectF const drect = QRectF(x, y, w, h);
 	QRectF const srect = QRectF(0, 0, image.width(), image.height());
 	// Bilinear filtering is needed on a rare occasion for instant previews when

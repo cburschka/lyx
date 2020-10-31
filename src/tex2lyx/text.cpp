@@ -47,7 +47,7 @@ namespace lyx {
 
 namespace {
 
-void output_arguments(ostream &, Parser &, bool, bool, string, Context &,
+void output_arguments(ostream &, Parser &, bool, bool, const string &, Context &,
                       Layout::LaTeXArgMap const &);
 
 }
@@ -459,7 +459,7 @@ bool translate_len(string const & length, string & valstring, string & unit)
 
 /// If we have ambiguous quotation marks, make a smart guess
 /// based on main quote style
-string guessQuoteStyle(string in, bool const opening)
+string guessQuoteStyle(string const & in, bool const opening)
 {
 	string res = in;
 	if (prefixIs(in, "qr")) {// straight quote
@@ -528,7 +528,7 @@ string guessQuoteStyle(string in, bool const opening)
 }
 
 
-string const fromPolyglossiaEnvironment(string const s)
+string const fromPolyglossiaEnvironment(string const & s)
 {
 	// Since \arabic is taken by the LaTeX kernel,
 	// the Arabic polyglossia environment is upcased
@@ -539,7 +539,7 @@ string const fromPolyglossiaEnvironment(string const s)
 }
 
 
-string uncapitalize(string const s)
+string uncapitalize(string const & s)
 {
 	docstring in = from_ascii(s);
 	char_type t = lowercase(s[0]);
@@ -548,7 +548,7 @@ string uncapitalize(string const s)
 }
 
 
-bool isCapitalized(string const s)
+bool isCapitalized(string const & s)
 {
 	docstring in = from_ascii(s);
 	char_type t = uppercase(s[0]);
@@ -686,7 +686,7 @@ pair<bool, string> convert_latexed_command_inset_arg(string s)
 
 /// try to convert \p s to a valid InsetCommand argument
 /// without trying to recode macros.
-string convert_literate_command_inset_arg(string s)
+string convert_literate_command_inset_arg(string const & s)
 {
 	// LyX cannot handle newlines in a latex command
 	return subst(s, "\n", " ");
@@ -789,7 +789,7 @@ void skip_spaces_braces(Parser & p, bool keepws = false)
 }
 
 
-void output_arguments(ostream & os, Parser & p, bool outer, bool need_layout, string const prefix,
+void output_arguments(ostream & os, Parser & p, bool outer, bool need_layout, string const & prefix,
                       Context & context, Layout::LaTeXArgMap const & latexargs)
 {
 	if (context.layout->latextype != LATEX_ITEM_ENVIRONMENT || !prefix.empty()) {
@@ -2536,7 +2536,7 @@ void get_cite_arguments(Parser & p, bool natbibOrder,
 }
 
 
-void copy_file(FileName const & src, string dstname)
+void copy_file(FileName const & src, string const & dstname)
 {
 	if (!copyFiles())
 		return;

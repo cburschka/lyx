@@ -42,7 +42,7 @@ static std::set<std::string> tmp_names_;
 */
 FileName const tempFileName(FileName, bool const dir = false);
 /// Get temporary file name with custom path
-FileName const tempFileName(FileName, std::string const &, bool const dir = false);
+FileName const tempFileName(FileName const &, std::string const &, bool const dir = false);
 /// Get temporary file name with default path
 FileName const tempFileName(std::string const &, bool const dir = false);
 

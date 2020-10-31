@@ -1885,7 +1885,7 @@ string const & Layout::docbookattr() const
 }
 
 
-bool isValidTagType(std::string type)
+bool isValidTagType(std::string const & type)
 {
 	return !(type.empty() || (type != "block" && type != "paragraph" && type != "inline"));
 }

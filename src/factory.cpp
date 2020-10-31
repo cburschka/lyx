@@ -215,7 +215,7 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 		}
 
 		case LFUN_INDEX_INSERT: {
-			docstring arg = cmd.argument();
+			docstring const & arg = cmd.argument();
 			return new InsetIndex(buf, InsetIndexParams(arg));
 		}
 
@@ -341,7 +341,7 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			}
 
 			case INDEX_CODE: {
-				docstring arg = cmd.argument();
+				docstring const & arg = cmd.argument();
 				return new InsetIndex(buf, InsetIndexParams(arg));
 			}
 

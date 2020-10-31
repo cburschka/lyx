@@ -76,7 +76,7 @@ public:
 	void leftIndent(Length const &);
 
 	/// read the parameters from a string
-	void read (std::string str, bool merge = true);
+	void read (std::string const & str, bool merge = true);
 
 	/// read the parameters from a lex
 	void read(Lexer & lex, bool merge = true);

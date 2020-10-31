@@ -2193,7 +2193,7 @@ void GuiWorkAreaContainer::updateDisplay()
 }
 
 
-void GuiWorkAreaContainer::dispatch(FuncRequest f) const
+void GuiWorkAreaContainer::dispatch(FuncRequest const & f) const
 {
 	lyx::dispatch(FuncRequest(LFUN_BUFFER_SWITCH,
 	                          wa_->bufferView().buffer().absFileName()));

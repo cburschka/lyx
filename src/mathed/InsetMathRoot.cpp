@@ -100,13 +100,13 @@ void mathed_draw_root(PainterInfo & pi, int x, int y, MathData const & nucleus,
 	int const a = dim.ascent();
 	int const d = dim.descent();
 	int const t = pi.base.solidLineThickness();
-	Dimension const dimn = nucleus.dimension(*pi.base.bv);
+	Dimension const & dimn = nucleus.dimension(*pi.base.bv);
 	// the width of the left part of the root
 	int const wl = dim.width() - dimn.width();
 	// the "exponent"
 	if (root) {
 		Changer script = pi.base.font.changeStyle(SCRIPTSCRIPT_STYLE);
-		Dimension const dimr = root->dimension(*pi.base.bv);
+		Dimension const & dimr = root->dimension(*pi.base.bv);
 		int const root_offset = wl - 3 * w / 8 - dimr.width();
 		root->draw(pi, x + root_offset, y + (d - a)/2);
 	}

@@ -168,7 +168,7 @@ public:
 	void setSecondStream(std::ostream * os)
 		{ second_enabled_ = (second_stream_ = os); }
 	/// Is the second stream is enabled?
-	bool secondEnabled() { return second_enabled_; }
+	bool secondEnabled() const { return second_enabled_; }
 
 	/// Sets the debug level
 	void setLevel(Debug::Type t) { dt_ = t; }

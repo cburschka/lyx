@@ -168,7 +168,7 @@ void ParagraphParameters::leftIndent(Length const & li)
 }
 
 
-void ParagraphParameters::read(string str, bool merge)
+void ParagraphParameters::read(string const & str, bool merge)
 {
 	istringstream is(str);
 	Lexer lex;
