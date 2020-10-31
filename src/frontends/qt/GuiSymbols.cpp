@@ -473,11 +473,8 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 		++numItem;
 		if (show_all || (c >= range_start && c <= range_end))
 			s.append(c);
-		if (update_combo) {
-			QString block = getBlock(c);
-			if (used_blocks.find(block) == used_blocks.end())
-				used_blocks[block] = numItem;
-		}
+		if (update_combo)
+			used_blocks.insert({getBlock(c), numItem});
 	}
 	model_->setSymbols(s, enc);
 

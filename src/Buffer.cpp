@@ -3773,9 +3773,7 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 
 				// register its position, but only when it is
 				// included first in the buffer
-				if (children_positions.find(child) ==
-					children_positions.end())
-						children_positions[child] = it;
+				children_positions.insert({child, it});
 
 				// register child with its scope
 				position_to_children[it] = Impl::ScopeBuffer(scope, child);

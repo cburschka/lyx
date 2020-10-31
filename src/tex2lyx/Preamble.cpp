@@ -445,8 +445,7 @@ int Preamble::getSpecialTableColumnArguments(char c) const
 void Preamble::add_package(string const & name, vector<string> & options)
 {
 	// every package inherits the global options
-	if (used_packages.find(name) == used_packages.end())
-		used_packages[name] = split_options(h_options);
+    used_packages.insert({name, split_options(h_options)});
 
 	// Insert options passed via PassOptionsToPackage
 	for (auto const & p : extra_package_options_) {
