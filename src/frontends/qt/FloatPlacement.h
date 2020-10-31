@@ -47,7 +47,7 @@ public:
 	///
 	void setPlacement(std::string const & placement);
 	///
-	void setAlignment(std::string const & placement);
+	void setAlignment(std::string const & alignment);
 	///
 	std::string const getPlacement() const;
 	///

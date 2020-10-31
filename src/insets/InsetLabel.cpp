@@ -161,19 +161,19 @@ docstring InsetLabel::screenLabel() const
 }
 
 
-void InsetLabel::updateBuffer(ParIterator const & par, UpdateType utype, bool const /*deleted*/)
+void InsetLabel::updateBuffer(ParIterator const & it, UpdateType utype, bool const /*deleted*/)
 {
 	docstring const & label = getParam("name");
 
 	// Check if this one is active (i.e., neither deleted with change-tracking
 	// nor in an inset that does not produce output, such as notes or inactive branches)
-	Paragraph const & para = par.paragraph();
-	bool active = !para.isDeleted(par.pos()) && para.inInset().producesOutput();
+	Paragraph const & para = it.paragraph();
+	bool active = !para.isDeleted(it.pos()) && para.inInset().producesOutput();
 	// If not, check whether we are in a deleted/non-outputting inset
 	if (active) {
-		for (size_type sl = 0 ; sl < par.depth() ; ++sl) {
-			Paragraph const & outer_par = par[sl].paragraph();
-			if (outer_par.isDeleted(par[sl].pos())
+		for (size_type sl = 0 ; sl < it.depth() ; ++sl) {
+			Paragraph const & outer_par = it[sl].paragraph();
+			if (outer_par.isDeleted(it[sl].pos())
 			    || !outer_par.inInset().producesOutput()) {
 				active = false;
 				break;
@@ -194,7 +194,7 @@ void InsetLabel::updateBuffer(ParIterator const & par, UpdateType utype, bool co
 		Counters const & cnts =
 			buffer().masterBuffer()->params().documentClass().counters();
 		active_counter_ = cnts.currentCounter();
-		Language const * lang = par->getParLanguage(buffer().params());
+		Language const * lang = it->getParLanguage(buffer().params());
 		if (lang && !active_counter_.empty()) {
 			counter_value_ = cnts.theCounter(active_counter_, lang->code());
 			pretty_counter_ = cnts.prettyCounter(active_counter_, lang->code());

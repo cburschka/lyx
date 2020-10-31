@@ -492,7 +492,7 @@ void GuiGraphics::on_angle_textChanged(const QString & file_name)
 }
 
 
-void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
+void GuiGraphics::paramsToDialog(InsetGraphicsParams const & params)
 {
 	static char const * const bb_units[] = { "bp", "cm", "mm", "in" };
 	static char const * const bb_units_gui[] = { N_("bp"), N_("cm"), N_("mm"), N_("in[[unit of measure]]") };
@@ -519,12 +519,12 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 
 	//lyxerr << bufferFilePath();
 	string const name =
-		igp.filename.outputFileName(fromqstr(bufferFilePath()));
+		params.filename.outputFileName(fromqstr(bufferFilePath()));
 	filename->setText(toqstr(name));
 
 	// set the bounding box values
-	if (igp.bbox.empty()) {
-		string const bb = readBoundingBox(igp.filename.absFileName());
+	if (params.bbox.empty()) {
+		string const bb = readBoundingBox(params.filename.absFileName());
 		// the values from the file always have the bigpoint-unit bp
 		doubleToWidget(lbX, token(bb, ' ', 0));
 		doubleToWidget(lbY, token(bb, ' ', 1));
@@ -537,32 +537,32 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 		bbChanged = false;
 	} else {
 		// get the values from the inset
-		doubleToWidget(lbX, igp.bbox.xl.value());
-		string unit = unit_name[igp.bbox.xl.unit()];
+		doubleToWidget(lbX, params.bbox.xl.value());
+		string unit = unit_name[params.bbox.xl.unit()];
 		lbXunit->setCurrentIndex(lbXunit->findData(toqstr(unit)));
-		doubleToWidget(lbY, igp.bbox.yb.value());
-		unit = unit_name[igp.bbox.yb.unit()];
+		doubleToWidget(lbY, params.bbox.yb.value());
+		unit = unit_name[params.bbox.yb.unit()];
 		lbYunit->setCurrentIndex(lbYunit->findData(toqstr(unit)));
-		doubleToWidget(rtX, igp.bbox.xr.value());
-		unit = unit_name[igp.bbox.xr.unit()];
+		doubleToWidget(rtX, params.bbox.xr.value());
+		unit = unit_name[params.bbox.xr.unit()];
 		rtXunit->setCurrentIndex(rtXunit->findData(toqstr(unit)));
-		doubleToWidget(rtY, igp.bbox.yt.value());
-		unit = unit_name[igp.bbox.yt.unit()];
+		doubleToWidget(rtY, params.bbox.yt.value());
+		unit = unit_name[params.bbox.yt.unit()];
 		rtYunit->setCurrentIndex(rtYunit->findData(toqstr(unit)));
 		bbChanged = true;
 	}
 
 	// Update the draft and clip mode
-	draftCB->setChecked(igp.draft);
-	clip->setChecked(igp.clip);
-	displayGB->setChecked(igp.display);
-	displayscale->setText(toqstr(convert<string>(igp.lyxscale)));
+	draftCB->setChecked(params.draft);
+	clip->setChecked(params.clip);
+	displayGB->setChecked(params.display);
+	displayscale->setText(toqstr(convert<string>(params.lyxscale)));
 
 	// the output section (width/height)
 
-	doubleToWidget(Scale, igp.scale);
+	doubleToWidget(Scale, params.scale);
 	//igp.scale defaults to 100, so we treat it as empty
-	bool const scaleChecked = !igp.scale.empty() && igp.scale != "100";
+	bool const scaleChecked = !params.scale.empty() && params.scale != "100";
 	scaleCB->blockSignals(true);
 	scaleCB->setChecked(scaleChecked);
 	scaleCB->blockSignals(false);
@@ -578,17 +578,17 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 	for (; it != end; ++it)
 		groupCO->addItem(toqstr(*it), toqstr(*it));
 	groupCO->insertItem(0, qt_("None"), QString());
-	if (igp.groupId.empty())
+	if (params.groupId.empty())
 		groupCO->setCurrentIndex(0);
 	else
 		groupCO->setCurrentIndex(
-			groupCO->findData(toqstr(igp.groupId), Qt::MatchExactly));
+			groupCO->findData(toqstr(params.groupId), Qt::MatchExactly));
 	groupCO->blockSignals(false);
 
-	if (igp.width.value() == 0)
+	if (params.width.value() == 0)
 		lengthToWidgets(Width, widthUnit, _(autostr), defaultUnit);
 	else
-		lengthToWidgets(Width, widthUnit, igp.width, defaultUnit);
+		lengthToWidgets(Width, widthUnit, params.width, defaultUnit);
 
 	bool const widthChecked = !Width->text().isEmpty() &&
 		Width->text() != qt_(autostr);
@@ -598,10 +598,10 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 	Width->setEnabled(widthChecked);
 	widthUnit->setEnabled(widthChecked);
 
-	if (igp.height.value() == 0)
+	if (params.height.value() == 0)
 		lengthToWidgets(Height, heightUnit, _(autostr), defaultUnit);
 	else
-		lengthToWidgets(Height, heightUnit, igp.height, defaultUnit);
+		lengthToWidgets(Height, heightUnit, params.height, defaultUnit);
 
 	bool const heightChecked = !Height->text().isEmpty()
 		&& Height->text() != qt_(autostr);
@@ -618,11 +618,11 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 	setAutoText();
 	updateAspectRatioStatus();
 
-	doubleToWidget(angle, igp.rotateAngle);
-	rotateOrderCB->setChecked(igp.scaleBeforeRotation);
+	doubleToWidget(angle, params.rotateAngle);
+	rotateOrderCB->setChecked(params.scaleBeforeRotation);
 
 	rotateOrderCB->setEnabled( (widthChecked || heightChecked || scaleChecked)
-		&& igp.rotateAngle != "0");
+		&& params.rotateAngle != "0");
 
 	origin->clear();
 
@@ -631,13 +631,13 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 			toqstr(rorigin_lyx_strs[i]));
 	}
 
-	if (!igp.rotateOrigin.empty())
-		origin->setCurrentIndex(origin->findData(toqstr(igp.rotateOrigin)));
+	if (!params.rotateOrigin.empty())
+		origin->setCurrentIndex(origin->findData(toqstr(params.rotateOrigin)));
 	else
 		origin->setCurrentIndex(0);
 
 	// latex section
-	latexoptions->setText(toqstr(igp.special));
+	latexoptions->setText(toqstr(params.special));
 	// cf bug #3852
 	filename->setFocus();
 }

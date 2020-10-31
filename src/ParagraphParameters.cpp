@@ -244,14 +244,14 @@ void ParagraphParameters::read(Lexer & lex, bool merge)
 
 
 void ParagraphParameters::apply(
-		ParagraphParameters const & p, Layout const & layout)
+		ParagraphParameters const & params, Layout const & layout)
 {
-	spacing(p.spacing());
+	spacing(params.spacing());
 	// does the layout allow the new alignment?
-	if (p.align() & layout.alignpossible)
-		align(p.align());
-	labelWidthString(p.labelWidthString());
-	noindent(p.noindent());
+	if (params.align() & layout.alignpossible)
+		align(params.align());
+	labelWidthString(params.labelWidthString());
+	noindent(params.noindent());
 }
 
 

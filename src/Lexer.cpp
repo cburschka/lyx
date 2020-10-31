@@ -944,9 +944,9 @@ bool Lexer::checkFor(char const * required)
 }
 
 
-void Lexer::setContext(std::string const & str)
+void Lexer::setContext(std::string const & functionName)
 {
-	pimpl_->context = str;
+	pimpl_->context = functionName;
 }
 
 

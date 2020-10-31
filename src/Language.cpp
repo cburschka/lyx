@@ -57,22 +57,22 @@ bool Language::isBabelExclusive() const
 }
 
 
-docstring const Language::translateLayout(string const & m) const
+docstring const Language::translateLayout(string const & msg) const
 {
-	if (m.empty())
+	if (msg.empty())
 		return docstring();
 
-	if (!isAscii(m)) {
-		lyxerr << "Warning: not translating `" << m
+	if (!isAscii(msg)) {
+		lyxerr << "Warning: not translating `" << msg
 		       << "' because it is not pure ASCII.\n";
-		return from_utf8(m);
+		return from_utf8(msg);
 	}
 
-	TranslationMap::const_iterator it = layoutTranslations_.find(m);
+	TranslationMap::const_iterator it = layoutTranslations_.find(msg);
 	if (it != layoutTranslations_.end())
 		return it->second;
 
-	docstring t = from_ascii(m);
+	docstring t = from_ascii(msg);
 	cleanTranslation(t);
 	return t;
 }

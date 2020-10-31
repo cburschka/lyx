@@ -127,8 +127,8 @@ void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
  *  for a list of paragraphs beginning with the specified par.
  *  It changes layouts and character styles.
  */
-void switchBetweenClasses(DocumentClassConstPtr c1,
-			DocumentClassConstPtr c2, InsetText & in, ErrorList &);
+void switchBetweenClasses(DocumentClassConstPtr oldone,
+			DocumentClassConstPtr newone, InsetText & in, ErrorList &);
 
 /// Get the current selection as a string. Does not change the selection.
 /// Does only work if the whole selection is in mathed.

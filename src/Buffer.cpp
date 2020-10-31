@@ -3525,19 +3525,19 @@ bool Buffer::hasChildren() const
 }
 
 
-void Buffer::collectChildren(ListOfBuffers & clist, bool grand_children) const
+void Buffer::collectChildren(ListOfBuffers & children, bool grand_children) const
 {
 	// loop over children
 	for (auto const & p : d->children_positions) {
 		Buffer * child = const_cast<Buffer *>(p.first);
 		// No duplicates
-		ListOfBuffers::const_iterator bit = find(clist.begin(), clist.end(), child);
-		if (bit != clist.end())
+		ListOfBuffers::const_iterator bit = find(children.begin(), children.end(), child);
+		if (bit != children.end())
 			continue;
-		clist.push_back(child);
+		children.push_back(child);
 		if (grand_children)
 			// there might be grandchildren
-			child->collectChildren(clist, true);
+			child->collectChildren(children, true);
 	}
 }
 

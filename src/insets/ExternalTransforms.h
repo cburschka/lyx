@@ -46,7 +46,7 @@ public:
 class ExtraData {
 public:
 	std::string const get(std::string const & id) const;
-	void set(std::string const & id, std::string const & contents);
+	void set(std::string const & id, std::string const & data);
 
 	typedef std::map<std::string, std::string>::const_iterator const_iterator;
 	const_iterator begin() const { return data_.begin(); }

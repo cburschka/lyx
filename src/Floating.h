@@ -36,10 +36,10 @@ public:
 		 std::string const & style, std::string const & name,
 		 std::string const & listName, std::string const & listCmd,
 		 std::string const & refPrefix, std::string const & allowedplacement,
-		 std::string const & htmlType, std::string const & htmlClass,
+		 std::string const & htmlTag, std::string const & htmlAttrib,
 		 docstring const & htmlStyle,
 		 std::string const & docbookAttr, std::string const & docbookTagType,
-		 std::string const & required, bool usesfloat, bool isprefined,
+		 std::string const & required, bool usesfloat, bool ispredefined,
 		 bool allowswide, bool allowssideways);
 	///
 	std::string const & floattype() const { return floattype_; }

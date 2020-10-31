@@ -654,24 +654,24 @@ string BufferView::contextMenu(int x, int y) const
 
 
 
-void BufferView::scrollDocView(int const value, bool update)
+void BufferView::scrollDocView(int const pixels, bool update)
 {
 	// The scrollbar values are relative to the top of the screen, therefore the
 	// offset is equal to the target value.
 
 	// No scrolling at all? No need to redraw anything
-	if (value == 0)
+	if (pixels == 0)
 		return;
 
 	// If the offset is less than 2 screen height, prefer to scroll instead.
-	if (abs(value) <= 2 * height_) {
-		d->anchor_ypos_ -= value;
+	if (abs(pixels) <= 2 * height_) {
+		d->anchor_ypos_ -= pixels;
 		processUpdateFlags(Update::Force);
 		return;
 	}
 
 	// cut off at the top
-	if (value <= d->scrollbarParameters_.min) {
+	if (pixels <= d->scrollbarParameters_.min) {
 		DocIterator dit = doc_iterator_begin(&buffer_);
 		showCursor(dit, false, update);
 		LYXERR(Debug::SCROLLING, "scroll to top");
@@ -679,7 +679,7 @@ void BufferView::scrollDocView(int const value, bool update)
 	}
 
 	// cut off at the bottom
-	if (value >= d->scrollbarParameters_.max) {
+	if (pixels >= d->scrollbarParameters_.max) {
 		DocIterator dit = doc_iterator_end(&buffer_);
 		dit.backwardPos();
 		showCursor(dit, false, update);
@@ -692,11 +692,11 @@ void BufferView::scrollDocView(int const value, bool update)
 	pit_type i = 0;
 	for (; i != int(d->par_height_.size()); ++i) {
 		par_pos += d->par_height_[i];
-		if (par_pos >= value)
+		if (par_pos >= pixels)
 			break;
 	}
 
-	if (par_pos < value) {
+	if (par_pos < pixels) {
 		// It seems we didn't find the correct pit so stay on the safe side and
 		// scroll to bottom.
 		LYXERR0("scrolling position not found!");
@@ -706,7 +706,7 @@ void BufferView::scrollDocView(int const value, bool update)
 
 	DocIterator dit = doc_iterator_begin(&buffer_);
 	dit.pit() = i;
-	LYXERR(Debug::SCROLLING, "value = " << value << " -> scroll to pit " << i);
+	LYXERR(Debug::SCROLLING, "pixels = " << pixels << " -> scroll to pit " << i);
 	showCursor(dit, false, update);
 }
 
@@ -2425,21 +2425,21 @@ int BufferView::minVisiblePart()
 }
 
 
-int BufferView::scroll(int y)
+int BufferView::scroll(int pixels)
 {
-	if (y > 0)
-		return scrollDown(y);
-	if (y < 0)
-		return scrollUp(-y);
+	if (pixels > 0)
+		return scrollDown(pixels);
+	if (pixels < 0)
+		return scrollUp(-pixels);
 	return 0;
 }
 
 
-int BufferView::scrollDown(int offset)
+int BufferView::scrollDown(int pixels)
 {
 	Text * text = &buffer_.text();
 	TextMetrics & tm = d->text_metrics_[text];
-	int const ymax = height_ + offset;
+	int const ymax = height_ + pixels;
 	while (true) {
 		pair<pit_type, ParagraphMetrics const *> last = tm.last();
 		int bottom_pos = last.second->position() + last.second->descent();
@@ -2448,38 +2448,38 @@ int BufferView::scrollDown(int offset)
 		if (last.first + 1 == int(text->paragraphs().size())) {
 			if (bottom_pos <= height_)
 				return 0;
-			offset = min(offset, bottom_pos - height_);
+			pixels = min(pixels, bottom_pos - height_);
 			break;
 		}
 		if (bottom_pos > ymax)
 			break;
 		tm.newParMetricsDown();
 	}
-	d->anchor_ypos_ -= offset;
-	return -offset;
+	d->anchor_ypos_ -= pixels;
+	return -pixels;
 }
 
 
-int BufferView::scrollUp(int offset)
+int BufferView::scrollUp(int pixels)
 {
 	Text * text = &buffer_.text();
 	TextMetrics & tm = d->text_metrics_[text];
-	int ymin = - offset;
+	int ymin = - pixels;
 	while (true) {
 		pair<pit_type, ParagraphMetrics const *> first = tm.first();
 		int top_pos = first.second->position() - first.second->ascent();
 		if (first.first == 0) {
 			if (top_pos >= 0)
 				return 0;
-			offset = min(offset, - top_pos);
+			pixels = min(pixels, - top_pos);
 			break;
 		}
 		if (top_pos < ymin)
 			break;
 		tm.newParMetricsUp();
 	}
-	d->anchor_ypos_ += offset;
-	return offset;
+	d->anchor_ypos_ += pixels;
+	return pixels;
 }
 
 

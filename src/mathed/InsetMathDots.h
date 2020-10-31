@@ -23,7 +23,7 @@ class latexkeys;
 class InsetMathDots : public InsetMath {
 public:
 	///
-	explicit InsetMathDots(latexkeys const * l);
+	explicit InsetMathDots(latexkeys const * key);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///

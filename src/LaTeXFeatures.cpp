@@ -832,15 +832,15 @@ TexString getSnippets(std::list<TexString> const & list)
 } // namespace
 
 
-void LaTeXFeatures::addPreambleSnippet(TexString ts, bool allow_dupes)
+void LaTeXFeatures::addPreambleSnippet(TexString snippet, bool allow_dupes)
 {
-	addSnippet(preamble_snippets_, move(ts), allow_dupes);
+	addSnippet(preamble_snippets_, move(snippet), allow_dupes);
 }
 
 
-void LaTeXFeatures::addPreambleSnippet(docstring const & str, bool allow_dupes)
+void LaTeXFeatures::addPreambleSnippet(docstring const & snippet, bool allow_dupes)
 {
-	addSnippet(preamble_snippets_, TexString(str), allow_dupes);
+	addSnippet(preamble_snippets_, TexString(snippet), allow_dupes);
 }
 
 

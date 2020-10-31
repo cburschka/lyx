@@ -107,7 +107,7 @@ public:
 	/// Read textclass list. Returns false if this fails.
 	bool read();
 	/// Clears the textclass so as to force it to be reloaded
-	void reset(LayoutFileIndex const & tc);
+	void reset(LayoutFileIndex const & classname);
 
 	/// Add a default textclass with all standard layouts.
 	/// Note that this will over-write any information we may have

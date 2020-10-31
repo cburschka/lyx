@@ -206,7 +206,7 @@ public:
 	// lyxserver is using a buffer that is being edited with a bufferview.
 	// With a common buffer list this is not a problem, maybe. (Alejandro)
 	///
-	Server(std::string const & pip);
+	Server(std::string const & pipes);
 	///
 	~Server();
 	///

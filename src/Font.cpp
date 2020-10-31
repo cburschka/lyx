@@ -114,18 +114,18 @@ void Font::setLanguage(Language const * l)
 
 /// Updates font settings according to request
 void Font::update(Font const & newfont,
-		     Language const * document_language,
+		     Language const * default_lang,
 		     bool toggleall)
 {
 	bits_.update(newfont.fontInfo(), toggleall);
 
 	if (newfont.language() == language() && toggleall)
-		if (language() == document_language)
+		if (language() == default_lang)
 			setLanguage(default_language);
 		else
-			setLanguage(document_language);
+			setLanguage(default_lang);
 	else if (newfont.language() == reset_language)
-		setLanguage(document_language);
+		setLanguage(default_lang);
 	else if (newfont.language() != ignore_language)
 		setLanguage(newfont.language());
 }

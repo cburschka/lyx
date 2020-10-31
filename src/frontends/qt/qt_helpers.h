@@ -244,9 +244,9 @@ private:
 #endif
 
 
-// Check if qstr is understood as rich text (Qt HTML) and if so, produce a
+// Check if text is understood as rich text (Qt HTML) and if so, produce a
 // rendering in plain text.
-QString qtHtmlToPlainText(QString const & qstr);
+QString qtHtmlToPlainText(QString const & text);
 
 
 } // namespace lyx

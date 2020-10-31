@@ -34,7 +34,7 @@ public:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pain, int x, int y) const override;
+	void draw(PainterInfo & pi, int x, int y) const override;
 	///
 	InsetMathAMSArray * asAMSArrayInset() override { return this; }
 	///

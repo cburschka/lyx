@@ -73,7 +73,7 @@ public:
 	void put(std::string const & text) const override;
 	void put(std::string const & lyx, docstring const & html, docstring const & text) override;
 	bool hasGraphicsContents(GraphicsType type = AnyGraphicsType) const override;
-	bool hasTextContents(TextType typetype = AnyTextType) const override;
+	bool hasTextContents(TextType type = AnyTextType) const override;
 	bool isInternal() const override;
 	bool hasInternal() const override;
 	bool empty() const override;

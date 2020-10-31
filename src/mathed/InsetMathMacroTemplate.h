@@ -29,8 +29,8 @@ public:
 	///
 	explicit InsetMathMacroTemplate(Buffer * buf);
 	///
-	InsetMathMacroTemplate(Buffer * buf, docstring const & name, int nargs,
-		int optional, MacroType type,
+	InsetMathMacroTemplate(Buffer * buf, docstring const & name, int numargs,
+		int optionals, MacroType type,
 		std::vector<MathData> const & optionalValues = std::vector<MathData>(),
 		MathData const & def = MathData(),
 		MathData const & display = MathData());

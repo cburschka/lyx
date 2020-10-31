@@ -43,7 +43,7 @@ public:
 	///
 	InsetSeparator();
 	///
-	explicit InsetSeparator(InsetSeparatorParams const & par);
+	explicit InsetSeparator(InsetSeparatorParams const & params);
 	///
 	static void string2params(std::string const &, InsetSeparatorParams &);
 	///

@@ -94,9 +94,9 @@ string const Format::extensions() const
 }
 
 
-bool Format::hasExtension(string const & e) const
+bool Format::hasExtension(string const & ext) const
 {
-	return (find(extension_list_.begin(), extension_list_.end(), e)
+	return (find(extension_list_.begin(), extension_list_.end(), ext)
 		!= extension_list_.end());
 }
 

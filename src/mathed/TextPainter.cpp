@@ -42,16 +42,16 @@ void TextPainter::draw(int x, int y, char_type const * str)
 }
 
 
-void TextPainter::horizontalLine(int x, int y, int n, char_type c)
+void TextPainter::horizontalLine(int x, int y, int len, char_type c)
 {
-	for (int i = 0; i < n && i + x < xmax_; ++i)
+	for (int i = 0; i < len && i + x < xmax_; ++i)
 		at(x + i, y) = c;
 }
 
 
-void TextPainter::verticalLine(int x, int y, int n, char_type c)
+void TextPainter::verticalLine(int x, int y, int len, char_type c)
 {
-	for (int i = 0; i < n && i + y < ymax_; ++i)
+	for (int i = 0; i < len && i + y < ymax_; ++i)
 		at(x, y + i) = c;
 }
 

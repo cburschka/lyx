@@ -55,9 +55,9 @@ FuncRequest::FuncRequest(FuncCode act, string const & arg, Origin o)
 
 
 FuncRequest::FuncRequest(FuncCode act, int ax, int ay,
-			 mouse_button::state but, KeyModifier modifier, Origin o)
+			 mouse_button::state button, KeyModifier modifier, Origin o)
 	: action_(act), origin_(o), view_origin_(nullptr), x_(ax), y_(ay),
-	  button_(but), modifier_(modifier), allow_async_(true)
+	  button_(button), modifier_(modifier), allow_async_(true)
 {}
 
 

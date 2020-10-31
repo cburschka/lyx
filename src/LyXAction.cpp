@@ -4490,9 +4490,9 @@ LyXAction::LyXAction()
 }
 
 
-FuncRequest LyXAction::lookupFunc(string const & func) const
+FuncRequest LyXAction::lookupFunc(string const & func_name) const
 {
-	string const func2 = trim(func);
+	string const func2 = trim(func_name);
 
 	if (func2.empty())
 		return FuncRequest(LFUN_NOACTION);

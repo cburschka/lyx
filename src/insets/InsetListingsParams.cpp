@@ -948,12 +948,12 @@ docstring ParValidator::validate(string const & name,
 }
 
 
-bool ParValidator::onoff(string const & name) const
+bool ParValidator::onoff(string const & key) const
 {
 	int p = InsetListingsParams::package();
 
 	// locate name in parameter table
-	ListingsParams::const_iterator it = all_params_[p].find(name);
+	ListingsParams::const_iterator it = all_params_[p].find(key);
 	if (it != all_params_[p].end())
 		return it->second.onoff_;
 	else

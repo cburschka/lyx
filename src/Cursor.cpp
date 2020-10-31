@@ -637,9 +637,9 @@ void CursorData::recordUndo(UndoKind kind) const
 }
 
 
-void CursorData::recordUndoInset(Inset const * in) const
+void CursorData::recordUndoInset(Inset const * inset) const
 {
-	buffer()->undo().recordUndoInset(*this, in);
+	buffer()->undo().recordUndoInset(*this, inset);
 }
 
 
@@ -897,19 +897,19 @@ void Cursor::pop()
 }
 
 
-void Cursor::push(Inset & p)
+void Cursor::push(Inset & inset)
 {
-	push_back(CursorSlice(p));
-	p.setBuffer(*buffer());
+	push_back(CursorSlice(inset));
+	inset.setBuffer(*buffer());
 }
 
 
-void Cursor::pushBackward(Inset & p)
+void Cursor::pushBackward(Inset & inset)
 {
 	LASSERT(!empty(), return);
 	//lyxerr << "Entering inset " << t << " front" << endl;
-	push(p);
-	p.idxFirst(*this);
+	push(inset);
+	inset.idxFirst(*this);
 }
 
 
@@ -1379,19 +1379,19 @@ void Cursor::updateTextTargetOffset()
 }
 
 
-bool Cursor::selHandle(bool sel)
+bool Cursor::selHandle(bool selecting)
 {
 	//lyxerr << "Cursor::selHandle" << endl;
 	if (mark())
-		sel = true;
-	if (sel == selection())
+		selecting = true;
+	if (selecting == selection())
 		return false;
 
-	if (!sel)
+	if (!selecting)
 		cap::saveSelection(*this);
 
 	resetAnchor();
-	selection(sel);
+	selection(selecting);
 	return true;
 }
 

@@ -99,7 +99,7 @@ public:
 	///
 	InsetSpace() : Inset(0) {}
 	///
-	explicit InsetSpace(InsetSpaceParams const & par);
+	explicit InsetSpace(InsetSpaceParams const & params);
 	///
 	InsetSpaceParams const & params() const { return params_; }
 	///

@@ -55,7 +55,7 @@ public:
 	int macro_nesting;
 
 	/// Temporarily change a full font.
-	Changer changeFontSet(std::string const & font);
+	Changer changeFontSet(std::string const & name);
 	/// Temporarily change the font to math if needed.
 	Changer changeEnsureMath(Inset::mode_type mode = Inset::MATH_MODE);
 	// Temporarily change to the style suitable for use in fractions

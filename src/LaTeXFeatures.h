@@ -142,7 +142,7 @@ public:
 	void getFontEncodings(std::vector<std::string> & encodings,
 			      bool const onlylangs = false) const;
 	///
-	void useLayout(docstring const & lyt);
+	void useLayout(docstring const & layoutname);
 	///
 	void useInsetLayout(InsetLayout const & lay);
 	///

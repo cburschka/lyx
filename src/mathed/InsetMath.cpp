@@ -30,21 +30,21 @@ using namespace std;
 
 namespace lyx {
 
-HullType hullType(docstring const & s)
+HullType hullType(docstring const & name)
 {
-	if (s == "none")      return hullNone;
-	if (s == "simple")    return hullSimple;
-	if (s == "equation")  return hullEquation;
-	if (s == "eqnarray")  return hullEqnArray;
-	if (s == "align")     return hullAlign;
-	if (s == "alignat")   return hullAlignAt;
-	if (s == "xalignat")  return hullXAlignAt;
-	if (s == "xxalignat") return hullXXAlignAt;
-	if (s == "multline")  return hullMultline;
-	if (s == "gather")    return hullGather;
-	if (s == "flalign")   return hullFlAlign;
-	if (s == "regexp")    return hullRegexp;
-	lyxerr << "unknown hull type '" << to_utf8(s) << "'" << endl;
+	if (name == "none")      return hullNone;
+	if (name == "simple")    return hullSimple;
+	if (name == "equation")  return hullEquation;
+	if (name == "eqnarray")  return hullEqnArray;
+	if (name == "align")     return hullAlign;
+	if (name == "alignat")   return hullAlignAt;
+	if (name == "xalignat")  return hullXAlignAt;
+	if (name == "xxalignat") return hullXXAlignAt;
+	if (name == "multline")  return hullMultline;
+	if (name == "gather")    return hullGather;
+	if (name == "flalign")   return hullFlAlign;
+	if (name == "regexp")    return hullRegexp;
+	lyxerr << "unknown hull type '" << to_utf8(name) << "'" << endl;
 	return hullUnknown;
 }
 

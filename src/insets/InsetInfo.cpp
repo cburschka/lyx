@@ -456,12 +456,12 @@ string InsetInfoParams::infoType() const
 
 
 
-InsetInfo::InsetInfo(Buffer * buf, string const & name)
+InsetInfo::InsetInfo(Buffer * buf, string const & info)
 	: InsetCollapsible(buf), initialized_(false)
 {
 	params_.type = InsetInfoParams::UNKNOWN_INFO;
 	params_.force_ltr = false;
-	setInfo(name);
+	setInfo(info);
 	status_ = Collapsed;
 }
 
@@ -682,9 +682,9 @@ void InsetInfo::doDispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
-void InsetInfo::setInfo(string const & name)
+void InsetInfo::setInfo(string const & info)
 {
-	if (name.empty())
+	if (info.empty())
 		return;
 
 	string saved_date_specifier;
@@ -693,7 +693,7 @@ void InsetInfo::setInfo(string const & name)
 		saved_date_specifier = split(params_.name, '@');
 	// info_type name
 	string type;
-	params_.name = trim(split(name, type, ' '));
+	params_.name = trim(split(info, type, ' '));
 	params_.type = nameTranslator().find(type);
 	if (params_.name.empty())
 		params_.name = defaultValueTranslator().find(params_.type);

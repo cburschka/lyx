@@ -381,7 +381,7 @@ void Inset::doDispatch(Cursor & cur, FuncRequest &cmd)
 
 
 bool Inset::getStatus(Cursor &, FuncRequest const & cmd,
-	FuncStatus & flag) const
+	FuncStatus & status) const
 {
 	// LFUN_INSET_APPLY is sent from the dialogs when the data should
 	// be applied. This is either changed to LFUN_INSET_MODIFY (if the
@@ -396,20 +396,20 @@ bool Inset::getStatus(Cursor &, FuncRequest const & cmd,
 		// Allow modification of our data.
 		// This needs to be handled in the doDispatch method of our
 		// instantiatable children.
-		flag.setEnabled(true);
+		status.setEnabled(true);
 		return true;
 
 	case LFUN_INSET_INSERT:
 		// Don't allow insertion of new insets.
 		// Every inset that wants to allow new insets from open
 		// dialogs needs to override this.
-		flag.setEnabled(false);
+		status.setEnabled(false);
 		return true;
 
 	case LFUN_INSET_SETTINGS:
 		if (cmd.argument().empty() || cmd.getArg(0) == insetName(lyxCode())) {
 			bool const enable = hasSettings();
-			flag.setEnabled(enable);
+			status.setEnabled(enable);
 			return true;
 		} else {
 			return false;
@@ -417,12 +417,12 @@ bool Inset::getStatus(Cursor &, FuncRequest const & cmd,
 
 	case LFUN_IN_MATHMACROTEMPLATE:
 		// By default we're not in a InsetMathMacroTemplate inset
-		flag.setEnabled(false);
+		status.setEnabled(false);
 		return true;
 
 	case LFUN_IN_IPA:
 		// By default we're not in an IPA inset
-		flag.setEnabled(false);
+		status.setEnabled(false);
 		return true;
 
 	default:

@@ -40,7 +40,7 @@ private:
 	bool checkWidgets(bool readonly) const override;
 	bool initialiseParams(std::string const & data) override;
 	//@}
-	void processParams(InsetCommandParams const & icp);
+	void processParams(InsetCommandParams const & params);
 	///
 	void fillCombos();
 	///

@@ -2890,7 +2890,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 
 bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
-			FuncStatus & flag) const
+			FuncStatus & status) const
 {
 	LBUFERR(this == cur.text());
 
@@ -2913,7 +2913,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		// FIXME We really should not allow this to be put, e.g.,
 		// in a footnote, or in ERT. But it would make sense in a
 		// branch, so I'm not sure what to do.
-		flag.setOnOff(cur.paragraph().params().startOfAppendix());
+		status.setOnOff(cur.paragraph().params().startOfAppendix());
 		break;
 
 	case LFUN_DIALOG_SHOW_NEW_INSET:
@@ -3043,7 +3043,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			if (cit == floats.end() ||
 					// and that we know how to generate a list of them
 			    (!cit->second.usesFloatPkg() && cit->second.listCommand().empty())) {
-				flag.setUnknown(true);
+				status.setUnknown(true);
 				// probably not necessary, but...
 				enable = false;
 			}
@@ -3227,38 +3227,38 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_FONT_EMPH:
-		flag.setOnOff(fontinfo.emph() == FONT_ON);
+		status.setOnOff(fontinfo.emph() == FONT_ON);
 		enable = !cur.paragraph().isPassThru();
 		break;
 
 	case LFUN_FONT_ITAL:
-		flag.setOnOff(fontinfo.shape() == ITALIC_SHAPE);
+		status.setOnOff(fontinfo.shape() == ITALIC_SHAPE);
 		enable = !cur.paragraph().isPassThru();
 		break;
 
 	case LFUN_FONT_NOUN:
-		flag.setOnOff(fontinfo.noun() == FONT_ON);
+		status.setOnOff(fontinfo.noun() == FONT_ON);
 		enable = !cur.paragraph().isPassThru();
 		break;
 
 	case LFUN_FONT_BOLD:
 	case LFUN_FONT_BOLDSYMBOL:
-		flag.setOnOff(fontinfo.series() == BOLD_SERIES);
+		status.setOnOff(fontinfo.series() == BOLD_SERIES);
 		enable = !cur.paragraph().isPassThru();
 		break;
 
 	case LFUN_FONT_SANS:
-		flag.setOnOff(fontinfo.family() == SANS_FAMILY);
+		status.setOnOff(fontinfo.family() == SANS_FAMILY);
 		enable = !cur.paragraph().isPassThru();
 		break;
 
 	case LFUN_FONT_ROMAN:
-		flag.setOnOff(fontinfo.family() == ROMAN_FAMILY);
+		status.setOnOff(fontinfo.family() == ROMAN_FAMILY);
 		enable = !cur.paragraph().isPassThru();
 		break;
 
 	case LFUN_FONT_TYPEWRITER:
-		flag.setOnOff(fontinfo.family() == TYPEWRITER_FAMILY);
+		status.setOnOff(fontinfo.family() == TYPEWRITER_FAMILY);
 		enable = !cur.paragraph().isPassThru();
 		break;
 
@@ -3414,7 +3414,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		if (!ins)
 			enable = false;
 		else
-			flag.setOnOff(to_utf8(cmd.argument()) == ins->getParams().groupId);
+			status.setOnOff(to_utf8(cmd.argument()) == ins->getParams().groupId);
 		break;
 	}
 
@@ -3426,7 +3426,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_LANGUAGE:
 		enable = !cur.paragraph().isPassThru();
-		flag.setOnOff(cmd.getArg(0) == cur.real_current_font.language()->lang());
+		status.setOnOff(cmd.getArg(0) == cur.real_current_font.language()->lang());
 		break;
 
 	case LFUN_PARAGRAPH_BREAK:
@@ -3451,7 +3451,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		docstring const layout = resolveLayout(req_layout, cur);
 
 		enable = !owner_->forcePlainLayout() && !layout.empty();
-		flag.setOnOff(isAlreadyLayout(layout, cur));
+		status.setOnOff(isAlreadyLayout(layout, cur));
 		break;
 	}
 
@@ -3660,7 +3660,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		|| (cur.paragraph().layout().pass_thru && !allow_in_passthru)))
 		enable = false;
 
-	flag.setEnabled(enable);
+	status.setEnabled(enable);
 	return true;
 }
 

@@ -63,7 +63,7 @@ MacroData::MacroData(Buffer * buf, InsetMathMacroTemplate const & macro)
 }
 
 
-bool MacroData::expand(vector<MathData> const & args, MathData & to) const
+bool MacroData::expand(vector<MathData> const & from, MathData & to) const
 {
 	updateData();
 
@@ -82,9 +82,9 @@ bool MacroData::expand(vector<MathData> const & args, MathData & to) const
 		//it.cell().erase(it.pos());
 		//it.cell().insert(it.pos(), it.nextInset()->asInsetMath()
 		size_t n = static_cast<InsetMathMacroArgument*>(it.nextInset())->number();
-		if (n <= args.size()) {
+		if (n <= from.size()) {
 			it.cell().erase(it.pos());
-			it.cell().insert(it.pos(), args[n - 1]);
+			it.cell().insert(it.pos(), from[n - 1]);
 		}
 	}
 	//LYXERR0("MathData::expand: res: " << inset.cell(0));
@@ -249,11 +249,11 @@ MacroTable::insert(docstring const & name, MacroData const & data)
 
 
 MacroTable::iterator
-MacroTable::insert(Buffer * buf, docstring const & def)
+MacroTable::insert(Buffer * buf, docstring const & definition)
 {
 	//lyxerr << "MacroTable::insert, def: " << to_utf8(def) << endl;
 	InsetMathMacroTemplate mac(buf);
-	mac.fromString(def);
+	mac.fromString(definition);
 	MacroData data(buf, mac);
 	return insert(mac.name(), data);
 }

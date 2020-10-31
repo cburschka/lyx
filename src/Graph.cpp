@@ -45,11 +45,11 @@ bool Graph::bfs_init(int s, bool clear_visited, queue<int> & Q)
 
 
 Graph::EdgePath const
-	Graph::getReachableTo(int target, bool clear_visited)
+	Graph::getReachableTo(int to, bool clear_visited)
 {
 	EdgePath result;
 	queue<int> Q;
-	if (!bfs_init(target, clear_visited, Q))
+	if (!bfs_init(to, clear_visited, Q))
 		return result;
 
 	// Here's the logic, which is shared by the other routines.
@@ -61,7 +61,7 @@ Graph::EdgePath const
 	while (!Q.empty()) {
 		int const current = Q.front();
 		Q.pop();
-		if (current != target || theFormats().get(target).name() != "lyx")
+		if (current != to || theFormats().get(to).name() != "lyx")
 			result.push_back(current);
 
 		vector<Arrow *>::iterator it = vertices_[current].in_arrows.begin();

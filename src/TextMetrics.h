@@ -221,9 +221,9 @@ public:
 	void setCursorFromCoordinates(Cursor & cur, int x, int y);
 
 	///
-	int cursorX(CursorSlice const & cursor, bool boundary) const;
+	int cursorX(CursorSlice const & sl, bool boundary) const;
 	///
-	int cursorY(CursorSlice const & cursor, bool boundary) const;
+	int cursorY(CursorSlice const & sl, bool boundary) const;
 
 	///
 	bool cursorHome(Cursor & cur);

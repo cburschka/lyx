@@ -1560,19 +1560,19 @@ void flushString(ostream & os, docstring & s)
 
 
 void Paragraph::write(ostream & os, BufferParams const & bparams,
-	depth_type & dth) const
+	depth_type & depth) const
 {
 	// The beginning or end of a deeper (i.e. nested) area?
-	if (dth != d->params_.depth()) {
-		if (d->params_.depth() > dth) {
-			while (d->params_.depth() > dth) {
+	if (depth != d->params_.depth()) {
+		if (d->params_.depth() > depth) {
+			while (d->params_.depth() > depth) {
 				os << "\n\\begin_deeper";
-				++dth;
+				++depth;
 			}
 		} else {
-			while (d->params_.depth() < dth) {
+			while (d->params_.depth() < depth) {
 				os << "\n\\end_deeper";
-				--dth;
+				--depth;
 			}
 		}
 	}
@@ -1685,11 +1685,11 @@ void Paragraph::validate(LaTeXFeatures & features) const
 }
 
 
-void Paragraph::insert(pos_type start, docstring const & str,
+void Paragraph::insert(pos_type pos, docstring const & str,
 		       Font const & font, Change const & change)
 {
 	for (size_t i = 0, n = str.size(); i != n ; ++i)
-		insertChar(start + i, str[i], font, change);
+		insertChar(pos + i, str[i], font, change);
 }
 
 
@@ -4129,12 +4129,12 @@ void Paragraph::setPlainLayout(DocumentClass const & tc)
 }
 
 
-void Paragraph::setPlainOrDefaultLayout(DocumentClass const & tclass)
+void Paragraph::setPlainOrDefaultLayout(DocumentClass const & tc)
 {
 	if (usePlainLayout())
-		setPlainLayout(tclass);
+		setPlainLayout(tc);
 	else
-		setDefaultLayout(tclass);
+		setDefaultLayout(tc);
 }
 
 

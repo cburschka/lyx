@@ -36,7 +36,7 @@ void writePlaintextFile(Buffer const & buf, odocstream &, OutputParams const &);
 
 ///
 void writePlaintextParagraph(Buffer const & buf,
-		    Paragraph const & paragraphs,
+		    Paragraph const & par,
 		    odocstream & ofs,
 		    OutputParams const &,
 		    bool & ref_printed,

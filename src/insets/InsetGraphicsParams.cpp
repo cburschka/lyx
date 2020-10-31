@@ -82,25 +82,25 @@ void InsetGraphicsParams::init()
 }
 
 
-void InsetGraphicsParams::copy(InsetGraphicsParams const & igp)
+void InsetGraphicsParams::copy(InsetGraphicsParams const & params)
 {
-	filename = igp.filename;
-	lyxscale = igp.lyxscale;
-	display = igp.display;
-	scale = igp.scale;
-	width = igp.width;
-	height = igp.height;
-	keepAspectRatio = igp.keepAspectRatio;
-	draft = igp.draft;
-	scaleBeforeRotation = igp.scaleBeforeRotation;
+	filename = params.filename;
+	lyxscale = params.lyxscale;
+	display = params.display;
+	scale = params.scale;
+	width = params.width;
+	height = params.height;
+	keepAspectRatio = params.keepAspectRatio;
+	draft = params.draft;
+	scaleBeforeRotation = params.scaleBeforeRotation;
 
-	bbox = igp.bbox;
-	clip = igp.clip;
+	bbox = params.bbox;
+	clip = params.clip;
 
-	rotateAngle = igp.rotateAngle;
-	rotateOrigin = igp.rotateOrigin;
-	special = igp.special;
-	groupId = igp.groupId;
+	rotateAngle = params.rotateAngle;
+	rotateOrigin = params.rotateOrigin;
+	special = params.special;
+	groupId = params.groupId;
 }
 
 

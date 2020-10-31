@@ -1087,7 +1087,7 @@ void InsetMathMacroTemplate::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 
 bool InsetMathMacroTemplate::getStatus(Cursor & cur, FuncRequest const & cmd,
-	FuncStatus & flag) const
+	FuncStatus & status) const
 {
 	bool ret = true;
 	string const arg = to_utf8(cmd.argument());
@@ -1098,12 +1098,12 @@ bool InsetMathMacroTemplate::getStatus(Cursor & cur, FuncRequest const & cmd,
 				num = convert<int>(arg);
 			bool on = (num >= optionals_
 				   && numargs_ < 9 && num <= numargs_ + 1);
-			flag.setEnabled(on);
+			status.setEnabled(on);
 			break;
 		}
 
 		case LFUN_MATH_MACRO_APPEND_GREEDY_PARAM:
-			flag.setEnabled(numargs_ < 9);
+			status.setEnabled(numargs_ < 9);
 			break;
 
 		case LFUN_MATH_MACRO_REMOVE_GREEDY_PARAM:
@@ -1111,40 +1111,40 @@ bool InsetMathMacroTemplate::getStatus(Cursor & cur, FuncRequest const & cmd,
 			int num = numargs_;
 			if (!arg.empty())
 				num = convert<int>(arg);
-			flag.setEnabled(num >= 1 && num <= numargs_);
+			status.setEnabled(num >= 1 && num <= numargs_);
 			break;
 		}
 
 		case LFUN_MATH_MACRO_MAKE_OPTIONAL:
-			flag.setEnabled(numargs_ > 0
+			status.setEnabled(numargs_ > 0
 				     && optionals_ < numargs_
 				     && type_ != MacroTypeDef);
 			break;
 
 		case LFUN_MATH_MACRO_MAKE_NONOPTIONAL:
-			flag.setEnabled(optionals_ > 0
+			status.setEnabled(optionals_ > 0
 				     && type_ != MacroTypeDef);
 			break;
 
 		case LFUN_MATH_MACRO_ADD_OPTIONAL_PARAM:
-			flag.setEnabled(numargs_ < 9);
+			status.setEnabled(numargs_ < 9);
 			break;
 
 		case LFUN_MATH_MACRO_REMOVE_OPTIONAL_PARAM:
-			flag.setEnabled(optionals_ > 0);
+			status.setEnabled(optionals_ > 0);
 			break;
 
 		case LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM:
-			flag.setEnabled(numargs_ == 0
+			status.setEnabled(numargs_ == 0
 				     && type_ != MacroTypeDef);
 			break;
 
 		case LFUN_IN_MATHMACROTEMPLATE:
-			flag.setEnabled(true);
+			status.setEnabled(true);
 			break;
 
 		default:
-			ret = InsetMathNest::getStatus(cur, cmd, flag);
+			ret = InsetMathNest::getStatus(cur, cmd, status);
 			break;
 	}
 	return ret;

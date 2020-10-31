@@ -312,21 +312,21 @@ Buffer * BufferList::getBuffer(support::FileName const & fname, bool internal) c
 }
 
 
-Buffer * BufferList::getBufferFromTmp(string const & s, bool realpath)
+Buffer * BufferList::getBufferFromTmp(string const & path, bool realpath)
 {
 	for (Buffer * buf : bstore) {
 		string const temppath = realpath ? FileName(buf->temppath()).realPath() : buf->temppath();
-		if (prefixIs(s, temppath)) {
+		if (prefixIs(path, temppath)) {
 			// check whether the filename matches the master
 			string const master_name = buf->latexName();
-			if (suffixIs(s, master_name))
+			if (suffixIs(path, master_name))
 				return buf;
 			// if not, try with the children
 			for (Buffer * child : buf->getDescendants()) {
 				string const mangled_child_name = DocFileName(
 					changeExtension(child->absFileName(),
 						".tex")).mangledFileName();
-				if (suffixIs(s, mangled_child_name))
+				if (suffixIs(path, mangled_child_name))
 					return child;
 			}
 		}

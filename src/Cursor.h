@@ -270,7 +270,7 @@ public:
 	void setCursorData(CursorData const & data);
 
 	/// returns true if we made a decision
-	bool getStatus(FuncRequest const & cmd, FuncStatus & flag) const;
+	bool getStatus(FuncRequest const & cmd, FuncStatus & status) const;
 	/// dispatch from innermost inset upwards
 	void dispatch(FuncRequest const & cmd);
 	/// display a message

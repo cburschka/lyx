@@ -343,9 +343,9 @@ Changer FontInfo::changeStyle(MathStyle const new_style)
 }
 
 
-Changer FontInfo::change(FontInfo font, bool realiz)
+Changer FontInfo::change(FontInfo font, bool realize)
 {
-	if (realiz)
+	if (realize)
 		font.realize(*this);
 	return make_change(*this, font);
 }

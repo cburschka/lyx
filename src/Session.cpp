@@ -383,9 +383,9 @@ void LastCommandsSection::setNumberOfLastCommands(unsigned int no)
 }
 
 
-void LastCommandsSection::add(std::string const & string)
+void LastCommandsSection::add(std::string const & command)
 {
-	lastcommands.push_back(string);
+	lastcommands.push_back(command);
 }
 
 

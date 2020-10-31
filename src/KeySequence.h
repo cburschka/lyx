@@ -40,12 +40,12 @@ public:
 	/**
 	 * Add a key to the key sequence and look it up in the curmap
 	 * if the latter is defined.
-	 * @param keysym the key to add
+	 * @param key the key to add
 	 * @param mod modifier mask
 	 * @param nmod which modifiers to mask out for equality test
 	 * @return the action matching this key sequence or LFUN_UNKNOWN_ACTION
 	 */
-	FuncRequest const & addkey(KeySymbol const & keysym, KeyModifier mod,
+	FuncRequest const & addkey(KeySymbol const & key, KeyModifier mod,
 	       KeyModifier nmod = NoModifier);
 
 	/**

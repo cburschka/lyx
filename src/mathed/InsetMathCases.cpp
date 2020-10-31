@@ -32,8 +32,8 @@ using namespace lyx::support;
 namespace lyx {
 
 
-InsetMathCases::InsetMathCases(Buffer * buf, row_type n)
-	: InsetMathGrid(buf, 2, n, 'c', from_ascii("ll"))
+InsetMathCases::InsetMathCases(Buffer * buf, row_type rows)
+	: InsetMathGrid(buf, 2, rows, 'c', from_ascii("ll"))
 {}
 
 
