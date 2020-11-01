@@ -81,7 +81,7 @@ int main(int argc, char **argv)
 		(char*)"-platform", (char*)"minimal",
 		NULL };
 	int  qtargsc = sizeof(qtargs) / sizeof(qtargs[0]) - 1;
-	bool debug = (1 == 0);
+	bool debug = false;
 
 	while (arg < argc) {
 		if ('-' == argv[arg][0] && !strcmp(argv[arg], "-platform")) {
@@ -91,7 +91,7 @@ int main(int argc, char **argv)
 		} else if ('-' == argv[arg][0] && 't' == argv[arg][1]) {
 			oformat = argv[++arg]; arg++ ;
 		} else if ('-' == argv[arg][0] && 'd' == argv[arg][1]) {
-			debug = (1 == 1); arg++;
+			debug = true; arg++;
 		} else if ('-' == argv[arg][0] && 'V' == argv[arg][1]) {
 			version(myname);
 		} else if ('-' == argv[arg][0]) {
