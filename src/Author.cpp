@@ -119,9 +119,9 @@ int AuthorList::record(Author const & a)
 		if (valid && *it == a)
 			return it - beg;
 		if (it->bufferId() == a.bufferId()) {
-			int id = it - beg;
+			int const id = it - beg;
 			if (!it->valid())
-				// we need to handle the case of a valid author being registred
+				// we need to handle the case of a valid author being registered
 				// after an invalid one. For instance, because "buffer-reload"
 				// does not clear the buffer's author list.
 				record(id, a);

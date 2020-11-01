@@ -502,7 +502,7 @@ void Changes::lyxMarkChange(ostream & os, BufferParams const & bparams, int & co
 }
 
 
-void Changes::checkAuthors(AuthorList const & authorList)
+void Changes::checkAuthors(AuthorList const & authorList) const
 {
 	for (ChangeRange const & cr : table_)
 		if (cr.change.type != Change::UNCHANGED)

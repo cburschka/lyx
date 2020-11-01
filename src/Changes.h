@@ -132,7 +132,7 @@ public:
 		int & column, Change const & old, Change const & change);
 
 	///
-	void checkAuthors(AuthorList const & authorList);
+	void checkAuthors(AuthorList const & authorList) const;
 
 	///
 	void addToToc(DocIterator const & cdit, Buffer const & buffer,
