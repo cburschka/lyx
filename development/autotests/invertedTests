@@ -440,6 +440,9 @@ export/templates/Books/Springer_Monographs_%28svmono%29/.*_docbook5
 export/export/docbook/svmono_docbook5
 #   - scrbook with too many customisations.
 export/templates/Theses/PhD_Thesis/.*_docbook5
+#   - Hollywood, too much formatting in elements DocBook does not allow to be formatted (like address).
+export/templates/Scripts/Hollywood_docbook5
+export/export/docbook/Hollywood_docbook5
 # - Branches may cause problems (especially when mixing with parts that must go in <info>).
 export/export/latex/languages/supported-languages_docbook5
 

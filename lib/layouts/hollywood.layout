@@ -222,6 +222,8 @@ Style Narrative
 	RightMargin           MMMMM
 	Align                 Left
 	LabelType             No_Label
+	DocBookTag            para
+	DocBookAttr           role='narrative'
 End
 
 
@@ -294,6 +296,8 @@ Style General
 	Align                 Left
 	AlignPossible         Block, Left, Right, Center
 	Labeltype             No_Label
+	DocBookTag            para
+	DocBookAttr           role='general'
 End
 
 
@@ -307,6 +311,15 @@ Style Scene
 	TopSep                0.25
 	Align                 Left
 	LabelType             No_Label
+	# This style is a NOT_IN_TOC-level section, hence it cannot be output as a real section in DocBook.
+	DocBookTag            bridgehead
+	DocBookAttr           renderas='sect1'
+	DocBookTagType        paragraph
+	# DocBookTag            title
+	# DocBookTagType        paragraph
+	# DocBookSection        true
+	# DocBookSectionTag     section
+	# DocBookInInfo         maybe
 End
 
 
@@ -320,6 +333,8 @@ Style Right_Address
 	ParSep                1.5
 	Align                 Left
 	AlignPossible         Left, Right
+	DocBookTag            address
+	DocBookInInfo         always
 End
 
 
