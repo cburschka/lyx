@@ -8,7 +8,16 @@
 \begin_preamble
 \pdsetup{%
   lf=pied gauche,
-  rf=pied droit
+  rf=pied droit,
+  % showing total slides is default, but the reference is
+  % broken on current TL20. For now, we just show the current=
+  % slide (and not the total slide count) on each slide.
+  % Alternatively, compilation succeeds with the default
+  % if we remove the "method=file" slide (or set it to
+  % "method=direct").
+  % default:
+  % theslide=\arabic{slide}~/~\autopageref{lastslide}
+  theslide=\arabic{slide}
 }
 
 % This is needed to make the example compile

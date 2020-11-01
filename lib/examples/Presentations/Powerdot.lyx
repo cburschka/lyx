@@ -8,7 +8,16 @@
 \begin_preamble
 \pdsetup{%
   lf=left footer,
-  rf=right footer
+  rf=right footer,
+  % showing total slides is default, but the reference is
+  % broken on current TL20. For now, we just show the current=
+  % slide (and not the total slide count) on each slide.
+  % Alternatively, compilation succeeds with the default
+  % if we remove the "method=file" slide (or set it to
+  % "method=direct").
+  % default:
+  % theslide=\arabic{slide}~/~\autopageref{lastslide}
+  theslide=\arabic{slide}
 }
 \end_preamble
 \options style=fyma,display=slidesnotes
