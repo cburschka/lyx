@@ -12,10 +12,12 @@ Input letter.layout
 # change placement within LyX
 Style My_Address
 	Margin			Static
+	DocBookInInfo   always
 End
 
 Style Send_To_Address
 	Margin			Right_Address_Box
+	DocBookInInfo   always
 End
 
 
@@ -30,6 +32,9 @@ Style Date
 	ParSep			1
 	Align			Left
 	LabelType		No_Label
+	DocBookTag      date
+	DocBookTagType  paragraph
+	DocBookInInfo   always
 End
 
 

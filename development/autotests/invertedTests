@@ -445,6 +445,12 @@ export/templates/Scripts/Hollywood_docbook5
 export/export/docbook/Hollywood_docbook5
 #   - Lettre, formatting in elements DocBook does not allow to be formatted (like email).
 export/templates/Letters/French_Letter_%28lettre%29_docbook5
+#   - Letter, elements at the end of the document that should be in <info>.
+export/templates/Letters/Letter_%28Standard_Class%29_docbook5
+#   - G-Brief: too far from the other classes.
+export/templates/Letters/G-Brief_%28V._2%29_docbook5
+#   - KOMA-Script Letter: too hard to output phone and fax numbers at the right place (need two levels of wrapping).
+export/templates/Letters/KOMA-Script_Letter_%28V._2%29_docbook5
 # - Branches may cause problems (especially when mixing with parts that must go in <info>).
 export/export/latex/languages/supported-languages_docbook5
 

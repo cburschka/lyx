@@ -73,8 +73,8 @@ Style Opening
 	  Shape               Italic
 	  Color               red
 	EndFont
-	DocBookTag   para
-	DocBookAttr  role='opening'
+	DocBookTag            para
+	DocBookAttr           role='opening'
 End
 
 
@@ -97,8 +97,8 @@ Style Signature
 	  Shape               Italic
 	  Color               red
 	EndFont
-	DocBookTag   para
-	DocBookAttr  role='signature'
+	DocBookTag            para
+	DocBookAttr           role='signature'
 End
 
 
@@ -106,8 +106,8 @@ Style Closing
 	CopyStyle             Signature
 	LatexName             closing
 	LabelString           "Closing:"
-	DocBookTag   para
-	DocBookAttr  role='opening'
+	DocBookTag            para
+	DocBookAttr           role='opening'
 End
 
 
@@ -120,8 +120,8 @@ Style cc
 	  Shape               Italic
 	  Color               green
 	EndFont
-	DocBookTag   para
-	DocBookAttr  role='carbon-copy'
+	DocBookTag            para
+	DocBookAttr           role='carbon-copy'
 End
 
 
@@ -130,8 +130,8 @@ Style encl
 	LatexName             encl
 	LabelString           "encl:"
 	Spacing               Other 1.5
-	DocBookTag   para
-	DocBookAttr  role='enclosed'
+	DocBookTag            para
+	DocBookAttr           role='enclosed'
 End
 
 
@@ -139,12 +139,9 @@ Style Location
 	CopyStyle             cc
 	LatexName             thispagestyle{firstpage}\location
 	LabelString           "Location:"
-	DocBookTag         otheraddr
-	DocBookTag         otheraddr
-	DocBookAttr        role='place'
-	DocBookAttr        role='place'
-	DocBookTagType     paragraph
-	DocBookTagType     paragraph
+	DocBookTag            otheraddr
+	DocBookAttr           role='place'
+	DocBookTagType        paragraph
 End
 
 
@@ -152,6 +149,7 @@ Style Telephone
 	CopyStyle             cc
 	LatexName             thispagestyle{firstpage}\telephone
 	LabelString           "Telephone:"
-	DocBookTag         phone
-	DocBookTagType     paragraph
+	DocBookTag            phone
+	DocBookAttr           ""
+	DocBookTagType        paragraph
 End

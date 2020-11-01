@@ -5,6 +5,14 @@
 # Juergen Spitzmueller <spitz@lyx.org>, 2003/2/17.
 # Uwe Stöhr <uwestoehr@web.de>, 2008/2/03.
 
+# TODO: DocBook doesn't support several letters in the same file.
+# DocBook design note: there are several ways to implement sender data, this class does it in 
+# another way that the other letters. Usually, there is a large <address> tag with author 
+# information in <info>, but there is no possibility to include a URL in this case. 
+# Therefore, here, we use a <author> in <info>, having an <address>. <author> allows a URL
+# (<uri>) and an address. However, phone and fax numbers should be put in <address>, they 
+# are not allowed directly in <author>... The generated DocBook will not be valid due to this!
+
 Format 85
 Provides subscript 1
 
@@ -14,6 +22,7 @@ Style Standard
 	ParSep                0.4
 	AlignPossible         Block, Left, Right, Center
 	ParIndent             MM
+	DocBookTag            para
 End
 
 Input stdlists.inc
@@ -69,10 +78,15 @@ Style Address
 	  Size                Small
 	  Color               Blue
 	EndFont
+    DocBookTag         NONE
+    DocBookWrapperTag  address
+    DocBookWrapperMergeWithPrevious  true
+    DocBookInInfo      always
 End
 
 
 # Start new letter
+# Not supported by DocBook.
 Style NextAddress
 	LatexType             Command
 	LatexName             end{letter}\begin{letter}
@@ -112,6 +126,8 @@ Style Opening
 	  Shape               Italic
 	  Color               Magenta
 	EndFont
+	DocBookTag            para
+	DocBookAttr           role='opening'
 End
 
 
@@ -120,6 +136,8 @@ Style Closing
 	LatexType             Command
 	LatexName             closing
 	LabelString           "Closing:"
+	DocBookTag            para
+	DocBookAttr           role='closing'
 End
 
 
@@ -128,6 +146,8 @@ Style PS
 	LatexType             Command
 	LatexName             ps
 	LabelString           "Post Scriptum:"
+	DocBookTag            para
+	DocBookAttr           role='post-scriptum'
 End
 
 
@@ -136,6 +156,8 @@ Style CC
 	LatexType             Command
 	LatexName             cc
 	LabelString           "cc:"
+	DocBookTag            para
+	DocBookAttr           role='carbon-copy'
 End
 
 
@@ -143,6 +165,8 @@ Style Encl
 	CopyStyle             Opening
 	LatexName             encl
 	LabelString           "encl:"
+	DocBookTag            para
+	DocBookAttr           role='enclosed'
 End
 
 
@@ -166,6 +190,12 @@ Style Name
 	  Shape               Italic
 	  Color               Blue
 	EndFont
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType paragraph
+	DocBookWrapperMergeWithPrevious true
+	DocBookInInfo         always     
 End
 
 
@@ -174,6 +204,9 @@ Style Signature
 	LatexName             setkomavar
 	LatexParam            {signature}
 	LabelString           "Signature:"
+	DocBookTag            para
+	DocBookWrapperTag     abstract
+	DocBookWrapperAttr    role='signature'
 End
 
 
@@ -182,6 +215,12 @@ Style SenderAddress
 	LatexName             setkomavar
 	LatexParam            {fromaddress}
 	LabelString           "Sender Address:"
+	DocBookTag            address
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType paragraph
+	DocBookWrapperMergeWithPrevious true
+	DocBookInInfo         always    
 End
 
 
@@ -190,6 +229,13 @@ Style Telephone
 	LatexName             setkomavar
 	LatexParam            {fromphone}
 	LabelString           "Sender Phone:"
+	# TODO: to be valid DocBook, this should be in the address.
+	DocBookTag            phone
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType paragraph
+	DocBookWrapperMergeWithPrevious true
+	DocBookInInfo         always    
 End
 
 
@@ -198,6 +244,13 @@ Style Fax
 	LatexName             setkomavar
 	LatexParam            {fromfax}
 	LabelString           "Sender Fax:"
+	# TODO: to be valid DocBook, this should be in the address.
+	DocBookTag            fax
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType paragraph
+	DocBookWrapperMergeWithPrevious true
+	DocBookInInfo         always    
 End
 
 
@@ -206,6 +259,12 @@ Style E-Mail
 	LatexName             setkomavar
 	LatexParam            {fromemail}
 	LabelString           "Sender E-Mail:"
+	DocBookTag            email
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType paragraph
+	DocBookWrapperMergeWithPrevious true
+	DocBookInInfo         always
 End
 
 
@@ -214,6 +273,12 @@ Style URL
 	LatexName             setkomavar
 	LatexParam            {fromurl}
 	LabelString           "Sender URL:"
+	DocBookTag            uri
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType paragraph
+	DocBookWrapperMergeWithPrevious true
+	DocBookInInfo         always
 End
 
 
@@ -222,6 +287,13 @@ Style Bank
 	LatexName             setkomavar
 	LatexParam            {frombank}
 	LabelString           "Bank:"
+	DocBookTag            personblurb
+	DocBookAttr           role='bank'
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType paragraph
+	DocBookWrapperMergeWithPrevious true
+	DocBookInInfo         always
 End
 
 
@@ -238,6 +310,12 @@ Style Place
 	LatexName             setkomavar
 	LatexParam            {place}
 	LabelString           "Place:"
+	DocBookTag            country
+	DocBookTagType        paragraph
+	DocBookWrapperTag     address
+	DocBookWrapperTagType paragraph
+	DocBookWrapperMergeWithPrevious true
+	DocBookInInfo         always
 End
 
 
@@ -246,6 +324,10 @@ Style Date
 	LatexName             setkomavar
 	LatexParam            {date}
 	LabelString           "Date:"
+	DocBookTag            date
+	DocBookTagType        paragraph
+	DocBookWrapperTag     NONE
+	DocBookInInfo         always
 End
 
 
@@ -254,6 +336,11 @@ Style Backaddress
 	LatexName             setkomavar
 	LatexParam            {backaddress}
 	LabelString           "Backaddress:"
+	DocBookTag            NONE
+	DocBookWrapperTag     address
+	DocBookWrapperTagType paragraph
+	DocBookWrapperMergeWithPrevious true
+	DocBookInInfo         always
 End
 
 
@@ -262,6 +349,7 @@ Style Specialmail
 	LatexName             setkomavar
 	LatexParam            {specialmail}
 	LabelString           "Specialmail:"
+	# TODO: not implemented for DocBook, what is the meaning of this?
 End
 
 
@@ -270,6 +358,7 @@ Style Location
 	LatexName             setkomavar
 	LatexParam            {location}
 	LabelString           "Location:"
+	# TODO: not implemented for DocBook, what is the meaning of this?
 End
 
 
@@ -279,6 +368,11 @@ Style Title
 	LatexParam            {title}
 	LabelString           "Title:"
 	HTMLTitle             true
+	DocBookTag            title
+	DocBookAttr           role='title' # As opposed to subject.
+	DocBookTagType        paragraph
+	DocBookWrapperTag     NONE
+	DocBookInInfo         maybe
 End
 
 
@@ -287,6 +381,11 @@ Style Subject
 	LatexName             setkomavar
 	LatexParam            {subject}
 	LabelString           "Subject:"
+	DocBookTag            title
+	DocBookAttr           role='title'
+	DocBookTagType        paragraph
+	DocBookWrapperTag     NONE
+	DocBookInInfo         maybe
 End
 
 
