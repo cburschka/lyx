@@ -61,56 +61,51 @@ namespace lyx {
 class IgnoreFormats {
  public:
 	///
-	IgnoreFormats()
-		: ignoreFamily_(false), ignoreSeries_(false),
-		  ignoreShape_(false), ignoreUnderline_(false),
-		  ignoreMarkUp_(false), ignoreStrikeOut_(false),
-		  ignoreSectioning_(false), ignoreFrontMatter_(false),
-		  ignoreColor_(false), ignoreLanguage_(false) {}
+	IgnoreFormats() = default;
 	///
-	bool getFamily() { return ignoreFamily_; }
+	bool getFamily() const { return ignoreFamily_; }
 	///
-	bool getSeries() { return ignoreSeries_; }
+	bool getSeries() const { return ignoreSeries_; }
 	///
-	bool getShape() { return ignoreShape_; }
+	bool getShape() const { return ignoreShape_; }
 	///
-	bool getUnderline() { return ignoreUnderline_; }
+	bool getUnderline() const { return ignoreUnderline_; }
 	///
-	bool getMarkUp() { return ignoreMarkUp_; }
+	bool getMarkUp() const { return ignoreMarkUp_; }
 	///
-	bool getStrikeOut() { return ignoreStrikeOut_; }
+	bool getStrikeOut() const { return ignoreStrikeOut_; }
 	///
-	bool getSectioning() { return ignoreSectioning_; }
+	bool getSectioning() const { return ignoreSectioning_; }
 	///
-	bool getFrontMatter() { return ignoreFrontMatter_; }
+	bool getFrontMatter() const { return ignoreFrontMatter_; }
 	///
-	bool getColor() { return ignoreColor_; }
+	bool getColor() const { return ignoreColor_; }
 	///
-	bool getLanguage() { return ignoreLanguage_; }
+	bool getLanguage() const { return ignoreLanguage_; }
 	///
 	void setIgnoreFormat(string const & type, bool value);
 
 private:
 	///
-	bool ignoreFamily_;
+	bool ignoreFamily_ = false;
 	///
-	bool ignoreSeries_;
+	bool ignoreSeries_ = false;
 	///
-	bool ignoreShape_;
+	bool ignoreShape_ = false;
 	///
-	bool ignoreUnderline_;
+	bool ignoreUnderline_ = false;
 	///
-	bool ignoreMarkUp_;
+	bool ignoreMarkUp_ = false;
 	///
-	bool ignoreStrikeOut_;
+	bool ignoreStrikeOut_ = false;
 	///
-	bool ignoreSectioning_;
+	bool ignoreSectioning_ = false;
 	///
-	bool ignoreFrontMatter_;
+	bool ignoreFrontMatter_ = false;
 	///
-	bool ignoreColor_;
+	bool ignoreColor_ = false;
 	///
-	bool ignoreLanguage_;
+	bool ignoreLanguage_ = false;
 };
 
 
@@ -1065,35 +1060,20 @@ class KeyInfo {
      * so that they can be ignored */
     endArguments
   };
- KeyInfo()
-   : keytype(invalid),
-    head(""),
-    _tokensize(-1),
-    _tokenstart(-1),
-    _dataStart(-1),
-    _dataEnd(-1),
-    parenthesiscount(1),
-    disabled(false),
-    used(false)
-  {};
+ KeyInfo() = default;
  KeyInfo(KeyType type, int parcount, bool disable)
    : keytype(type),
-    _tokensize(-1),
-    _tokenstart(-1),
-    _dataStart(-1),
-    _dataEnd(-1),
     parenthesiscount(parcount),
-    disabled(disable),
-    used(false) {};
-  KeyType keytype;
+    disabled(disable) {}
+  KeyType keytype = invalid;
   string head;
-  int _tokensize;
-  int _tokenstart;
-  int _dataStart;
-  int _dataEnd;
-  int parenthesiscount;
-  bool disabled;
-  bool used;                            /* by pattern */
+  int _tokensize = -1;
+  int _tokenstart = -1;
+  int _dataStart = -1;
+  int _dataEnd = -1;
+  int parenthesiscount = 1;
+  bool disabled = false;
+  bool used = false;                    /* by pattern */
 };
 
 class Border {
