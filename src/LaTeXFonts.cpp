@@ -35,13 +35,13 @@ namespace lyx {
 LaTeXFonts latexfonts;
 
 
-LaTeXFont LaTeXFont::altFont(docstring const & name)
+LaTeXFont LaTeXFont::altFont(docstring const & name) const
 {
 	return theLaTeXFonts().getAltFont(name);
 }
 
 
-bool LaTeXFont::available(bool ot1, bool nomath)
+bool LaTeXFont::available(bool ot1, bool nomath) const
 {
 	if (nomath && !nomathfont_.empty())
 		return altFont(nomathfont_).available(ot1, nomath);
@@ -66,7 +66,7 @@ bool LaTeXFont::available(bool ot1, bool nomath)
 }
 
 
-bool LaTeXFont::providesNoMath(bool ot1, bool complete)
+bool LaTeXFont::providesNoMath(bool ot1, bool complete) const
 {
 	docstring const usedfont = getUsedFont(ot1, complete, false, false);
 
@@ -79,7 +79,7 @@ bool LaTeXFont::providesNoMath(bool ot1, bool complete)
 }
 
 
-bool LaTeXFont::providesOSF(bool ot1, bool complete, bool nomath)
+bool LaTeXFont::providesOSF(bool ot1, bool complete, bool nomath) const
 {
 	docstring const usedfont = getUsedFont(ot1, complete, nomath, false);
 
@@ -96,7 +96,7 @@ bool LaTeXFont::providesOSF(bool ot1, bool complete, bool nomath)
 }
 
 
-bool LaTeXFont::providesSC(bool ot1, bool complete, bool nomath)
+bool LaTeXFont::providesSC(bool ot1, bool complete, bool nomath) const
 {
 	docstring const usedfont = getUsedFont(ot1, complete, nomath, false);
 
@@ -111,7 +111,7 @@ bool LaTeXFont::providesSC(bool ot1, bool complete, bool nomath)
 }
 
 
-bool LaTeXFont::hasMonolithicExpertSet(bool ot1, bool complete, bool nomath)
+bool LaTeXFont::hasMonolithicExpertSet(bool ot1, bool complete, bool nomath) const
 {
 	docstring const usedfont = getUsedFont(ot1, complete, nomath, false);
 
@@ -124,7 +124,7 @@ bool LaTeXFont::hasMonolithicExpertSet(bool ot1, bool complete, bool nomath)
 }
 
 
-bool LaTeXFont::providesScale(bool ot1, bool complete, bool nomath)
+bool LaTeXFont::providesScale(bool ot1, bool complete, bool nomath) const
 {
 	docstring const usedfont = getUsedFont(ot1, complete, nomath, false);
 
@@ -138,7 +138,7 @@ bool LaTeXFont::providesScale(bool ot1, bool complete, bool nomath)
 }
 
 
-bool LaTeXFont::providesMoreOptions(bool ot1, bool complete, bool nomath)
+bool LaTeXFont::providesMoreOptions(bool ot1, bool complete, bool nomath) const
 {
 	docstring const usedfont = getUsedFont(ot1, complete, nomath, false);
 
@@ -152,7 +152,7 @@ bool LaTeXFont::providesMoreOptions(bool ot1, bool complete, bool nomath)
 	return (moreopts_);
 }
 
-bool LaTeXFont::provides(std::string const & name, bool ot1, bool complete, bool nomath)
+bool LaTeXFont::provides(std::string const & name, bool ot1, bool complete, bool nomath) const
 {
 	docstring const usedfont = getUsedFont(ot1, complete, nomath, false);
 
@@ -171,7 +171,7 @@ bool LaTeXFont::provides(std::string const & name, bool ot1, bool complete, bool
 }
 
 
-docstring const LaTeXFont::getUsedFont(bool ot1, bool complete, bool nomath, bool osf)
+docstring const LaTeXFont::getUsedFont(bool ot1, bool complete, bool nomath, bool osf) const
 {
 	if (osf && osfFontOnly())
 		return osffont_;
@@ -211,7 +211,7 @@ docstring const LaTeXFont::getUsedFont(bool ot1, bool complete, bool nomath, boo
 }
 
 
-docstring const LaTeXFont::getUsedPackage(bool ot1, bool complete, bool nomath)
+docstring const LaTeXFont::getUsedPackage(bool ot1, bool complete, bool nomath) const
 {
 	docstring const usedfont = getUsedFont(ot1, complete, nomath, false);
 	if (usedfont.empty())
@@ -220,7 +220,7 @@ docstring const LaTeXFont::getUsedPackage(bool ot1, bool complete, bool nomath)
 }
 
 
-string const LaTeXFont::getAvailablePackage(bool dryrun)
+string const LaTeXFont::getAvailablePackage(bool dryrun) const
 {
 	if (package_.empty())
 		return string();
@@ -245,7 +245,7 @@ string const LaTeXFont::getAvailablePackage(bool dryrun)
 
 
 string const LaTeXFont::getPackageOptions(bool ot1, bool complete, bool sc, bool osf,
-					  int scale, string const & extraopts, bool nomath)
+					  int scale, string const & extraopts, bool nomath) const
 {
 	ostringstream os;
 	bool const needosfopt = (osf != osfdefault_);
@@ -292,7 +292,7 @@ string const LaTeXFont::getPackageOptions(bool ot1, bool complete, bool sc, bool
 
 
 string const LaTeXFont::getLaTeXCode(bool dryrun, bool ot1, bool complete, bool sc,
-				     bool osf, bool nomath, string const & extraopts, int scale)
+				     bool osf, bool nomath, string const & extraopts, int scale) const
 {
 	ostringstream os;
 
