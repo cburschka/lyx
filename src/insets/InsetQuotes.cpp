@@ -100,7 +100,7 @@ char InsetQuotesParams::getStyleChar(QuoteStyle const & style) const
 
 
 InsetQuotesParams::QuoteStyle InsetQuotesParams::getQuoteStyle(string const & s,
-			    bool const allow_wildcards, QuoteStyle fb)
+			    bool const allow_wildcards, QuoteStyle fb) const
 {
 	QuoteStyle res = fb;
 
@@ -132,7 +132,7 @@ InsetQuotesParams::QuoteStyle InsetQuotesParams::getQuoteStyle(string const & s,
 
 
 InsetQuotesParams::QuoteSide InsetQuotesParams::getQuoteSide(string const & s,
-			bool const allow_wildcards, QuoteSide fb)
+			bool const allow_wildcards, QuoteSide fb) const
 {
 	QuoteSide res = fb;
 
@@ -164,7 +164,7 @@ InsetQuotesParams::QuoteSide InsetQuotesParams::getQuoteSide(string const & s,
 
 
 InsetQuotesParams::QuoteLevel InsetQuotesParams::getQuoteLevel(string const & s,
-			bool const allow_wildcards, QuoteLevel fb)
+			bool const allow_wildcards, QuoteLevel fb) const
 {
 	QuoteLevel res = fb;
 
@@ -574,7 +574,7 @@ map<string, docstring> InsetQuotesParams::getTypes() const
 }
 
 
-docstring const InsetQuotesParams::getGuiLabel(QuoteStyle const & qs, bool langdef)
+docstring const InsetQuotesParams::getGuiLabel(QuoteStyle const & qs, bool langdef) const
 {
 	docstring const styledesc =
 		bformat(_("%1$souter%2$s and %3$sinner%4$s[[quotation marks]]"),
@@ -592,7 +592,7 @@ docstring const InsetQuotesParams::getGuiLabel(QuoteStyle const & qs, bool langd
 }
 
 
-docstring const InsetQuotesParams::getShortGuiLabel(docstring const & str)
+docstring const InsetQuotesParams::getShortGuiLabel(docstring const & str) const
 {
 	string const s = to_ascii(str);
 	QuoteStyle const style = getQuoteStyle(s);

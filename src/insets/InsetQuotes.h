@@ -86,9 +86,9 @@ public:
 	docstring getXMLQuote(char_type c) const;
 	/// Returns a descriptive label of a style suitable for dialog and menu
 	docstring const getGuiLabel(QuoteStyle const & qs,
-				    bool langdef = false);
+				    bool langdef = false) const;
 	/// Returns a descriptive label of a given char
-	docstring const getShortGuiLabel(docstring const & str);
+	docstring const getShortGuiLabel(docstring const & str) const;
 	///
 	int stylescount() const;
 	/// Returns the matching style shortcut char
@@ -96,15 +96,15 @@ public:
 	/// Returns the quote style from the shortcut string
 	QuoteStyle getQuoteStyle(std::string const & s,
 		bool const allow_wildcards = false,
-		QuoteStyle fallback = EnglishQuotes);
+		QuoteStyle fallback = EnglishQuotes) const;
 	/// Returns the quote sind from the shortcut string
 	QuoteSide getQuoteSide(std::string const & s,
 		bool const allow_wildcards = false,
-		QuoteSide fallback = OpeningQuote);
+		QuoteSide fallback = OpeningQuote) const;
 	/// Returns the quote level from the shortcut string
 	QuoteLevel getQuoteLevel(std::string const & s,
 		bool const allow_wildcards = false,
-		QuoteLevel fallback = PrimaryQuotes);
+		QuoteLevel fallback = PrimaryQuotes) const;
 };
 
 ///
