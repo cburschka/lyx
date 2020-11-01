@@ -28,6 +28,8 @@
 # update and review for inclusion in lyx-2.2.3
 #  - remove the workaround for page format (not needed after v2.351)
 
+# TODO: DocBook doesn't support several letters in the same file.
+
 
 Format 85
 
@@ -157,6 +159,11 @@ Style My_Address
 	\providecommand{\lyaddress}{\address{#1}}
 	}
   EndPreamble
+  # Don't break the sequential bunch of elements going into the wrapper.
+  DocBookTag         NONE
+  DocBookWrapperTag  address
+  DocBookWrapperMergeWithPrevious  true
+  DocBookInInfo      always
 End
 
 # City name style
@@ -187,6 +194,11 @@ Style Place
         \renewcommand{\lylieu}{\lieu{#1}}
         }
   EndPreamble
+  DocBookTag         city
+  DocBookTagType     paragraph
+  DocBookWrapperTag  address
+  DocBookWrapperMergeWithPrevious  true
+  DocBookInInfo      always
 End
 
 #suppress City indication
@@ -213,6 +225,11 @@ Style NoPlace
         \renewcommand{\lylieu}{\nolieu{}}
         }
   EndPreamble
+  # Don't break the sequential bunch of elements going into the wrapper.
+  DocBookTag         NONE
+  DocBookWrapperTag  address
+  DocBookWrapperMergeWithPrevious  true
+  DocBookInInfo      always
 End
 
 # date Style
@@ -236,6 +253,9 @@ Style Date
     Shape		Italic
     Color		red
   EndFont
+  DocBookTag      date
+  DocBookTagType  paragraph
+  DocBookInInfo   always
 End
 
 #suppress date indication
@@ -256,6 +276,8 @@ Style NoDate
   EndFont
   Preamble
   EndPreamble
+  DocBookTag     NONE
+  DocBookInInfo  always
 End
 
 # location (i.e. office, department ...)
@@ -286,6 +308,9 @@ Style Location
         \renewcommand{\lylocation}{\location{#1}}
         }
   EndPreamble
+  DocBookWrapperTag  address
+  DocBookWrapperMergeWithPrevious  true
+  DocBookInInfo      always
 End
 
 # telephone Style
@@ -316,6 +341,9 @@ Style Telephone
         \renewcommand{\lytelephone}{\telephone{#1}}
        }
   EndPreamble
+  DocBookWrapperTag  address
+  DocBookWrapperMergeWithPrevious  true
+  DocBookInInfo      always
 End
 
 #suppress telephone indication
@@ -341,7 +369,11 @@ Style NoTelephone
         \renewcommand{\lytelephone}{\notelephone{}}
         }
   EndPreamble
-
+  # Don't break the sequential bunch of elements going into the wrapper.
+  DocBookTag         NONE
+  DocBookWrapperTag  address
+  DocBookWrapperMergeWithPrevious  true
+  DocBookInInfo      always
 End
 
 # telefax Style
@@ -372,6 +404,11 @@ Style Fax
         \renewcommand{\lyfax}{\fax{#1}}
         }
   EndPreamble
+  DocBookTag         fax
+  DocBookTagType     paragraph
+  DocBookWrapperTag  address
+  DocBookWrapperMergeWithPrevious  true
+  DocBookInInfo      always
 End
 
 #suppress fax indication
@@ -397,6 +434,11 @@ Style NoFax
         \renewcommand{\lyfax}{\nofax{}}
         }
   EndPreamble
+  # Don't break the sequential bunch of elements going into the wrapper.
+  DocBookTag         NONE
+  DocBookWrapperTag  address
+  DocBookWrapperMergeWithPrevious  true
+  DocBookInInfo      always
 End
 
 
@@ -428,6 +470,11 @@ Style Email
         \renewcommand{\lyemail}{\email{#1}}
         }
   EndPreamble
+  DocBookTag         email
+  DocBookTagType     paragraph
+  DocBookWrapperTag  address
+  DocBookWrapperMergeWithPrevious  true
+  DocBookInInfo      always
 End
 
 # Subject Style
@@ -450,6 +497,9 @@ Style Subject
     Shape		Italic
     Color		red
   EndFont
+  DocBookTag     title
+  DocBookTagType paragraph
+  DocBookInInfo  maybe
 End
 
 # YourRef Style
@@ -466,6 +516,10 @@ Style YourRef
     Shape		Italic
     Color		red
   EndFont
+  DocBookTag      productnumber
+  DocBookAttr     role='your-ref'
+  DocBookTagType  paragraph
+  DocBookInInfo   always
 End
 
 # MyRef Style
@@ -482,6 +536,10 @@ Style MyRef
     Shape		Italic
     Color		red
   EndFont
+  DocBookTag      productnumber
+  DocBookAttr     role='my-ref'
+  DocBookTagType  paragraph
+  DocBookInInfo   always
 End
 
 Style Send_To_Address
@@ -514,6 +572,11 @@ Style Send_To_Address
 	  \needsendlettertrue
 	}
   EndPreamble
+  DocBookTag         NONE
+  DocBookWrapperTag  address
+  DocBookWrapperAttr role='send-to-address'
+  DocBookWrapperMergeWithPrevious  true
+  DocBookInInfo      always
 End
 
 #As a temporary(?) trick the last(only?) letter of the file must be processed
@@ -536,11 +599,13 @@ Style EndOfMessage
     Shape		Italic
     Color		red
   EndFont
+  DocBookTag  NONE
 End
 
 Style EndOfFile
   CopyStyle		EndOfMessage
   LabelString		EndOfFile.
+  DocBookTag  NONE
 End
 
 # Opening style definition (Accroche)
@@ -674,7 +739,6 @@ Style Post_Scriptum
 	 \psneededtrue
 	}
   EndPreamble
+  DocBookTag   para
+  DocBookAttr  role='post-scriptum'
 End
-
-
-

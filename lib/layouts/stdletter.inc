@@ -19,6 +19,7 @@ Style Standard
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
+	DocBookTag            para
 End
 
 
@@ -31,6 +32,7 @@ Style My_Address
 	BottomSep             1.5
 	ParSep                1.5
 	Align                 Left
+	DocBookTag            address
 End
 
 
@@ -46,6 +48,8 @@ Style Send_To_Address
 	Align                 Left
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
+	DocBookTag            address
+	DocBookAttr           role='send-to-address'
 End
 
 
@@ -69,6 +73,8 @@ Style Opening
 	  Shape               Italic
 	  Color               red
 	EndFont
+	DocBookTag   para
+	DocBookAttr  role='opening'
 End
 
 
@@ -91,6 +97,8 @@ Style Signature
 	  Shape               Italic
 	  Color               red
 	EndFont
+	DocBookTag   para
+	DocBookAttr  role='signature'
 End
 
 
@@ -98,6 +106,8 @@ Style Closing
 	CopyStyle             Signature
 	LatexName             closing
 	LabelString           "Closing:"
+	DocBookTag   para
+	DocBookAttr  role='opening'
 End
 
 
@@ -110,6 +120,8 @@ Style cc
 	  Shape               Italic
 	  Color               green
 	EndFont
+	DocBookTag   para
+	DocBookAttr  role='carbon-copy'
 End
 
 
@@ -118,6 +130,8 @@ Style encl
 	LatexName             encl
 	LabelString           "encl:"
 	Spacing               Other 1.5
+	DocBookTag   para
+	DocBookAttr  role='enclosed'
 End
 
 
@@ -125,6 +139,12 @@ Style Location
 	CopyStyle             cc
 	LatexName             thispagestyle{firstpage}\location
 	LabelString           "Location:"
+	DocBookTag         otheraddr
+	DocBookTag         otheraddr
+	DocBookAttr        role='place'
+	DocBookAttr        role='place'
+	DocBookTagType     paragraph
+	DocBookTagType     paragraph
 End
 
 
@@ -132,4 +152,6 @@ Style Telephone
 	CopyStyle             cc
 	LatexName             thispagestyle{firstpage}\telephone
 	LabelString           "Telephone:"
+	DocBookTag         phone
+	DocBookTagType     paragraph
 End

@@ -443,6 +443,8 @@ export/templates/Theses/PhD_Thesis/.*_docbook5
 #   - Hollywood, too much formatting in elements DocBook does not allow to be formatted (like address).
 export/templates/Scripts/Hollywood_docbook5
 export/export/docbook/Hollywood_docbook5
+#   - Lettre, formatting in elements DocBook does not allow to be formatted (like email).
+export/templates/Letters/French_Letter_%28lettre%29_docbook5
 # - Branches may cause problems (especially when mixing with parts that must go in <info>).
 export/export/latex/languages/supported-languages_docbook5
 
