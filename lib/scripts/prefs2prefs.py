@@ -4,7 +4,7 @@
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 
-# author Richard Heck
+# author Richard Kimberly Heck
 
 # Full author contact details are available in file CREDITS
 
@@ -13,23 +13,10 @@
 #     prefs2prefs_lfuns.py
 #     prefs2prefs_prefs.py
 # The former is used to convert bind and ui files; the latter, to convert
-# the preferences file.
-#
-# I've organized it this way because, in many ways, converting bind and ui
-# files  lfuns) and converting the preferences file are the same task. It's
-# very line-by-line, unlike lyx2lyx and layout2layout, where changes can be
-# more "global". So we read the file, line by line, and give a bunch of
-# converter functions a chance to see if they want to modify that line.
-
-# The converter functions are all in the subsidiary files. They take a line
-# as  argument and return a list: (Bool, NewLine), where the Bool says if
-# we've modified anything and the NewLine is the new line, if so, which will
-# be used to replace the old line.
-
-# The format of the existing files is format 0, as of 2.0.alpha6. We'll
-# introduce new format numbers as we proceed, just as with layout2layout.
-# These will be different for the bind and ui files and for the preferences
-# file.
+# the preferences file. The converter functions are all in the subsidiary 
+# files. 
+# 
+# The format of the existing files was format 0, as of 2.0.alpha6.
 
 from __future__ import print_function
 import os, re, string, sys
