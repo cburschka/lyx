@@ -300,7 +300,16 @@ if(inverted)
 else()
   string(COMPARE NOTEQUAL  ${_err} 0 _erg)
 endif()
-execute_process(COMMAND ${CMAKE_COMMAND} -E remove_directory "${TempDir}")
+
+if ($ENV{LYX_DEBUG_LATEX})
+  # Do not remove temporary files if one wants to examine them
+  # for example if setting the env-var LYX_DEBUG_LATEX
+  # This needs a remove all temp-dirs from time to time
+  # $ cd build-dir
+  # $ find autotests/out-home -name AbC_\* | xargs rm -rf
+else()
+  execute_process(COMMAND ${CMAKE_COMMAND} -E remove_directory "${TempDir}")
+endif()
 if(_TestResultMessage)
   message(STATUS "Msg Summary:")
   foreach(_l ${_TestResultMessage})
