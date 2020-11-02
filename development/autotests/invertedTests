@@ -422,6 +422,8 @@ export/export/xhtml/zh_CN_Tutorial_docbook5
 # - No proper document title (should be fixable).
 export/export/latex/inputenc-.*_docbook5
 export/export/latex/textcyr-textgreek-test_docbook5
+export/export/latex/languages/en-th_utf8_docbook5
+export/export/latex/languages/th-en_utf8_docbook5
 # - Formula in <code> tags.
 export/examples/(de|es|fr|ja|ru)/Graphics_and_Insets/XY-Pic_docbook5
 export/examples/(de|es|fr|ja|ru)/Graphics_and_Insets/XY-Figure_docbook5
@@ -455,6 +457,9 @@ export/templates/Letters/KOMA-Script_Letter_%28V._2%29_docbook5
 export/templates/Letters/DIN-Brief_docbook5
 # - Branches may cause problems (especially when mixing with parts that must go in <info>).
 export/export/latex/languages/supported-languages_docbook5
+export/export/latex/languages/supported-languages_babel_docbook5
+export/export/latex/languages/supported-languages_babel_auto-legacy_docbook5
+export/export/latex/languages/supported-languages_polyglossia_docbook5
 
 Sublabel: docbook poster
 # Posters cannot be properly exported, the LyX documents are too far from
