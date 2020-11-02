@@ -75,7 +75,7 @@ public:
 	/** The file that we export depends occasionally on what is to
 	    compile the file.
 	*/
-	FLAVOR flavor;
+	FLAVOR flavor = LATEX;
 	/// is it some flavor of LaTeX?
 	bool isLaTeX() const;
 	/// does this flavour support full unicode?
@@ -84,7 +84,7 @@ public:
 	bool useBidiPackage() const;
 
 	/// Same, but for math output, which only matter is XHTML output.
-	MathFlavor math_flavor;
+	MathFlavor math_flavor = NotApplicable;
 
 	/** Are we to write a 'nice' LaTeX file or not.
 	    This essentially seems to mean whether InsetInclude, InsetGraphics
@@ -93,39 +93,39 @@ public:
 	    Non-nice LaTeX also includes additional safe line breaks in order to
 	    increase the precision of forward/reverse search and error reporting.
 	*/
-	bool nice;
+	bool nice = false;
 
 	/** Is this a real child (i.e., compiled as a child)?
 	    This depends on wherefrom we export the buffer. Even children
 	    that have a master can be compiled standalone.
 	*/
-	mutable bool is_child;
+	mutable bool is_child = false;
 
 	/** moving_arg == true means that the environment in which the inset
 	    is typeset is a moving argument. The inset should take care about
 	    fragile commands by preceding the latex with \\protect.
 	*/
-	bool moving_arg;
+	bool moving_arg = false;
 
 	/** intitle == true means that the environment in which the
 	    inset is typeset is part of a title (before a \\maketitle).
 	    Footnotes in such environments have moving arguments.
 	*/
-	bool intitle;
+	bool intitle = false;
 
 	/** need_maketitle == true means that the last layout was a title layout
 	 * this is to track when \maketitle needs to be output.
 	*/
-	mutable bool need_maketitle;
+	mutable bool need_maketitle = false;
 
 	/** have_maketitle == true means that \maketitle already hase been output.
 	*/
-	mutable bool have_maketitle;
+	mutable bool have_maketitle = false;
 
 	/** inbranch == true means that the environment being typeset
 	    is inside an active branch inset.
 	*/
-	bool inbranch;
+	bool inbranch = false;
 
 	/** inulemcmd > 0 means that the environment in which the
 	    inset is typeset is part of a ulem or soul command (e.g., \uline,
@@ -133,11 +133,11 @@ public:
 	    relying on local assignments (such as \cite) should enclose such
 	    commands in \mbox{} in order to avoid breakage.
 	*/
-	mutable int inulemcmd;
+	mutable int inulemcmd = 0;
 
 	/** the font at the point where the inset is
 	 */
-	Font const * local_font;
+	Font const * local_font = nullptr;
 
 	/** Document language lyx name
 	 */
@@ -150,7 +150,7 @@ public:
 	    Note that this is not the language of the top level master, but
 	    of the direct parent for nested includes.
 	 */
-	mutable Language const * master_language;
+	mutable Language const * master_language = nullptr;
 
 	/// Active characters
 	std::string active_chars;
@@ -177,30 +177,30 @@ public:
 	/** free_spacing == true means that the inset is in a free-spacing
 	    paragraph.
 	*/
-	bool free_spacing;
+	bool free_spacing = false;
 
 	/** This var is set by the return value from BufferParams::writeLaTeX
 	*/
-	bool use_babel;
+	bool use_babel = false;
 
 	/** Do we use polyglossia (instead of babel)?
 	*/
-	bool use_polyglossia;
+	bool use_polyglossia = false;
 
 	/** Do we use hyperref?
 	*/
-	bool use_hyperref;
+	bool use_hyperref = false;
 
 	/// Do we use the CJK package?
-	bool use_CJK;
+	bool use_CJK = false;
 
 	/** Are we generating multiple indices?
 	*/
-	bool use_indices;
+	bool use_indices = false;
 
 	/** Are we using japanese (pLaTeX)?
 	*/
-	bool use_japanese;
+	bool use_japanese = false;
 
 	/** Customized bibtex_command
 	*/
@@ -216,12 +216,12 @@ public:
 
 	/** Line length to use with plaintext or LaTeX export.
 	*/
-	size_type linelen;
+	size_type linelen = 0;
 
 	/** The depth of the current paragraph, set for plaintext
 	 *  export and used by InsetTabular
 	 */
-	int depth;
+	int depth = 0;
 
 	/** Export data filled in by the latex(), docbook(), etc. methods.
 	    This is a hack: Make it possible to add stuff to constant
@@ -234,7 +234,7 @@ public:
 	 *  labels and index entries (and potentially other fragile commands)
 	 *  outside of moving arguments (bug 2154)
 	 */
-	bool postpone_fragile_stuff;
+	bool postpone_fragile_stuff = false;
 
 	/** Stuff to be postponed and output after the current macro
 	 *  (if \ref postpone_fragile_stuff is true). Used for labels and index
@@ -245,12 +245,12 @@ public:
 	/** Whether we are entering a display math inset.
 	 *  Needed to correctly strike out deleted math in change tracking.
 	 */
-	mutable bool inDisplayMath;
+	mutable bool inDisplayMath = false;
 
 	/** Whether we are leaving a display math inset.
 	 *  Needed to correctly track nested ulem commands in change tracking.
 	 */
-	mutable bool wasDisplayMath;
+	mutable bool wasDisplayMath = false;
 
 	/** Whether we are inside a comment inset. Insets that are including
 	 *  external files like InsetGraphics, InsetInclude and InsetExternal
@@ -258,87 +258,87 @@ public:
 	 *  something with the included files (e.g. copying, converting)
 	 *  if this flag is true, since they may not exist.
 	 */
-	bool inComment;
+	bool inComment = false;
 
 	/** Whether we are inside an include inset. 
 	 */
-	bool inInclude;
+	bool inInclude = false;
 
 	/** Whether a btUnit (for multiple biblographies) is open.
 	 */
-	mutable bool openbtUnit;
+	mutable bool openbtUnit = false;
 
 	/** Process only the children's aux files with BibTeX.
 	 *  This is necessary with chapterbib.
 	 */
-	bool only_childbibs;
+	bool only_childbibs = false;
 
 	/** Whether we are in a table cell.
 	 *  For newline, it matters whether its content is aligned or not.
          */
-	TableCell inTableCell;
+	TableCell inTableCell = NO;
 
 	/** Whether we are inside a float or subfloat.
 	 *  Needed for subfloat detection on the command line.
 	 */
-	Float inFloat;
+	Float inFloat = NONFLOAT;
 
 	/** Whether we are inside an index inset.
 	 *  ERT needs to know this, due to the active chars.
 	 */
-	bool inIndexEntry;
+	bool inIndexEntry = false;
 
 	/** Whether we are inside an IPA inset.
 	 *  Needed for proper IPA output.
 	 */
-	bool inIPA;
+	bool inIPA = false;
 
 	/** Whether we are inside an inset that is logically deleted.
 	 *  A value > 0 indicates a deleted inset.
 	*/
-	int inDeletedInset;
+	int inDeletedInset = 0;
 
 	/** The change information of the outermost logically deleted inset.
 	 *  changeOfDeletedInset shall only be evaluated if inDeletedInset > 0.
 	*/
-	Change changeOfDeletedInset;
+	Change changeOfDeletedInset {Change::UNCHANGED};
 
 	/** What kind of change tracking object is this?
 	 * Relevant for strikeout method in output
 	 */
-	mutable CtObject ctObject;
+	mutable CtObject ctObject = CT_NORMAL;
 
 	/** allow output of only part of the top-level paragraphs
 	 *  par_begin: beginning paragraph
 	 */
-	mutable pit_type par_begin;
+	mutable pit_type par_begin = 0;
 
 	/** allow output of only part of the top-level paragraphs
 	 *  par_end: par_end-1 is the ending paragraph
 	 *  if par_begin=par_end, output all paragraphs
 	 */
-	mutable pit_type par_end;
+	mutable pit_type par_end = 0;
 
 	/// Id of the last paragraph before an inset
-	mutable int lastid;
+	mutable int lastid = -1;
 
 	/// Last position in the last paragraph before an inset
-	mutable pos_type lastpos;
+	mutable pos_type lastpos = 0;
 
 	/// is this the last paragraph in the current buffer/inset?
-	bool isLastPar;
+	bool isLastPar = false;
 
 
 	/** whether or not to do actual file copying and image conversion
 	 *  This mode will be used to preview the source code
 	 */
-	bool dryrun;
+	bool dryrun = false;
 
 	/// whether to display output errors or not
-	bool silent;
+	bool silent = false;
 
 	/// Should we output verbatim or escape LaTeX's special chars?
-	bool pass_thru;
+	bool pass_thru = false;
 
 	/// Should we output verbatim specific chars?
 	docstring pass_thru_chars;
@@ -347,49 +347,49 @@ public:
 	std::string newlinecmd;
 
 	/// Should we output captions?
-	bool html_disable_captions;
+	bool html_disable_captions = false;
 
 	/// Are we already in a paragraph?
-	bool html_in_par;
+	bool html_in_par = false;
 
 	/// Does the present context even permit paragraphs?
-	bool html_make_pars;
+	bool html_make_pars = true;
 
 	/// Are we already in a paragraph?
-	bool docbook_in_par;
+	bool docbook_in_par = false;
 
 	/// Does the present context even permit paragraphs?
-	bool docbook_make_pars;
+	bool docbook_make_pars = true;
 
 	/// Are paragraphs mandatory in this context?
-	bool docbook_force_pars;
+	bool docbook_force_pars = false;
 
 	/// Anchors that should not be output (LyX-side identifier, not DocBook-side).
 	std::set<docstring> docbook_anchors_to_ignore;
 
 	/// Is the current context a float (such as a table or a figure)?
-	bool docbook_in_float;
+	bool docbook_in_float = false;
 
 	/// Is the current context a listing?
-	bool docbook_in_listing;
+	bool docbook_in_listing = false;
 
 	/// Is the current context a table?
-	bool docbook_in_table;
+	bool docbook_in_table = false;
 
 	/// Are we generating this material for inclusion in a TOC-like entity?
-	bool for_toc;
+	bool for_toc = false;
 
 	/// Are we generating this material for inclusion in a tooltip?
-	bool for_tooltip;
+	bool for_tooltip = false;
 
 	/// Are we generating this material for use by advanced search?
-	bool for_search;
+	bool for_search = false;
 
 	/// Are we generating this material for instant preview?
-	bool for_preview;
+	bool for_preview = false;
 
 	/// Include all children notwithstanding the use of \includeonly
-	bool includeall;
+	bool includeall = false;
 
 	/// Explicit output folder, if any is desired
 	std::string export_folder;

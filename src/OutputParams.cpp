@@ -19,24 +19,7 @@ namespace lyx {
 
 
 OutputParams::OutputParams(Encoding const * enc)
-	: flavor(LATEX), math_flavor(NotApplicable), nice(false), is_child(false),
-	  moving_arg(false), intitle(false), need_maketitle(false), have_maketitle(false),
-	  inbranch(false), inulemcmd(0), local_font(nullptr),master_language(nullptr),
-	  encoding(enc), free_spacing(false), use_babel(false), use_polyglossia(false),
-	  use_hyperref(false), use_CJK(false),
-	  use_indices(false), use_japanese(false), linelen(0), depth(0),
-	  exportdata(new ExportData), postpone_fragile_stuff(false), inDisplayMath(false),
-	  wasDisplayMath(false), inComment(false), inInclude(false), openbtUnit(false),
-	  only_childbibs(false), inTableCell(NO), inFloat(NONFLOAT),
-	  inIndexEntry(false), inIPA(false), inDeletedInset(0),
-	  changeOfDeletedInset(Change::UNCHANGED), ctObject(CT_NORMAL),
-	  par_begin(0), par_end(0), lastid(-1), lastpos(0), isLastPar(false),
-	  dryrun(false), silent(false), pass_thru(false),
-	  html_disable_captions(false), html_in_par(false),
-	  html_make_pars(true), docbook_in_par(false), docbook_make_pars(true),
-	  docbook_force_pars(false), docbook_anchors_to_ignore(std::set<docstring>()), docbook_in_float(false),
-	  docbook_in_listing(false), docbook_in_table(false), for_toc(false), for_tooltip(false),
-	  for_search(false), for_preview(false), includeall(false)
+	: encoding(enc), exportdata(new ExportData)
 {
 	// Note: in PreviewLoader::Impl::dumpPreamble
 	// OutputParams runparams(0);
