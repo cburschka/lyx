@@ -416,12 +416,10 @@ export/export/xhtml/zh_CN_Tutorial_docbook5
 # - No proper document title (should be fixable).
 export/export/latex/inputenc-.*_docbook5
 export/export/latex/textcyr-textgreek-test_docbook5
-export/examples/.*/Graphics_and_Insets/XY-Figure_docbook5
 # - Formula in <code> tags.
-export/examples/.*/Graphics_and_Insets/XY-Pic_docbook5
-export/examples/.*/Graphics_and_Insets/XY-Figure_docbook5
-# - Formula in <code> tags.
-export/examples/.*/Graphics_and_Insets/XY-Pic_docbook5
+export/examples/(de|es|fr|ja|ru)/Graphics_and_Insets/XY-Pic_docbook5
+export/examples/(de|es|fr|ja|ru)/Graphics_and_Insets/XY-Figure_docbook5
+export/examples/Graphics_and_Insets/XY-Figure_docbook5
 # - Math macros not implemented.
 export/mathmacros/testcases_speed_docbook5
 export/mathmacros/testcases_environments_docbook5
@@ -460,6 +458,7 @@ export/templates/Posters/.*_docbook5
 
 Sublabel: docbook beamer
 # Beamer is not yet implemented.
+export/examples/(de|es|fr|ja|ru)/Presentations/.*_docbook5
 export/examples/Presentations/.*_docbook5
-export/templates/.*/Presentations/.*_docbook5
+export/templates/(de|es|fr|ja|ru)/Presentations/.*_docbook5
 export/templates/Presentations/.*_docbook5
