@@ -5153,8 +5153,8 @@ void Buffer::Impl::setLabel(ParIterator & it, UpdateType utype) const
 		}
 
 		if (needEnumCounterReset(it)) {
-			// Increase the master counter?
-			if (layout.stepmastercounter)
+			// Increase the parent counter?
+			if (layout.stepparentcounter)
 				counters.stepParent(enumcounter, utype);
 			// Maybe we have to reset the enumeration counter.
 			if (!layout.resumecounter)

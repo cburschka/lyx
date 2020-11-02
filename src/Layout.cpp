@@ -138,7 +138,7 @@ enum LayoutTags {
 	LT_REFPREFIX,
 	LT_RESETARGS,
 	LT_RESUMECOUNTER,
-	LT_STEPMASTERCOUNTER,
+	LT_STEPPARENTCOUNTER,
 	LT_RIGHTDELIM,
 	LT_FORCELOCAL,
 	LT_TOGGLE_INDENT,
@@ -156,7 +156,7 @@ Layout::Layout()
 	margintype = MARGIN_STATIC;
 	latextype = LATEX_PARAGRAPH;
 	resumecounter = false;
-	stepmastercounter = false;
+	stepparentcounter = false;
 	intitle = false;
 	inpreamble = false;
 	needprotect = false;
@@ -327,7 +327,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 		{ "rightmargin",    LT_RIGHTMARGIN },
 		{ "spacing",        LT_SPACING },
 		{ "spellcheck",     LT_SPELLCHECK },
-		{ "stepmastercounter",  LT_STEPMASTERCOUNTER },
+		{ "stepparentcounter",  LT_STEPPARENTCOUNTER },
 		{ "textfont",       LT_TEXTFONT },
 		{ "toclevel",       LT_TOCLEVEL },
 		{ "toggleindent",   LT_TOGGLE_INDENT },
@@ -447,8 +447,8 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 			lex >> resumecounter;
 			break;
 
-		case LT_STEPMASTERCOUNTER:
-			lex >> stepmastercounter;
+		case LT_STEPPARENTCOUNTER:
+			lex >> stepparentcounter;
 			break;
 
 		case LT_ARGUMENT:
@@ -1400,7 +1400,7 @@ void Layout::write(ostream & os) const
 	      "\tInPreamble " << inpreamble << "\n"
 	      "\tTocLevel " << toclevel << "\n"
 	      "\tResumeCounter " << resumecounter << "\n"
-	     "\tStepMasterCounter " << stepmastercounter << '\n';
+	      "\tStepParentCounter " << stepparentcounter << '\n';
 	// ResetArgs does not make sense here
 	for (LaTeXArgMap::const_iterator it = latexargs_.begin();
 	     it != latexargs_.end(); ++it)

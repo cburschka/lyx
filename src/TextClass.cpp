@@ -59,7 +59,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 86; // tcuvelier: DocBookSection.
+int const LAYOUT_FORMAT = 87; // rkh: master --> parent for counters
 
 
 // Layout format for the current lyx file format. Controls which format is

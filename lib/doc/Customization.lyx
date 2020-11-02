@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 598
+\lyxformat 599
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -17239,7 +17239,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-StepMasterCounter
+Step
+\change_deleted 731793113 1604355211
+Master
+\change_inserted 731793113 1604355212
+Parent
+\change_unchanged
+Counter
 \end_layout
 
 \end_inset
@@ -17266,8 +17272,13 @@ status collapsed
 
 \end_inset
 
-] Steps the master counter of a given counter at the beginning of a new
- sequence of layouts.
+] Steps the 
+\change_deleted 731793113 1604355214
+master
+\change_inserted 731793113 1604355216
+parent
+\change_unchanged
+ counter of a given counter at the beginning of a new sequence of layouts.
  This is currently only useful when 
 \begin_inset Flex Code
 status collapsed
@@ -21991,6 +22002,8 @@ textbf{Sourrounding text
 \backslash
 myinset{content}\SpecialChar ldots
 }
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -22021,6 +22034,8 @@ myinset{
 \backslash
 emph{content}}\SpecialChar ldots
 }
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -22035,6 +22050,8 @@ status collapsed
 
 \backslash
 emph
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -22058,6 +22075,8 @@ status collapsed
 
 \change_inserted -712698321 1597733292
 0
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -22505,12 +22524,24 @@ hebrew
 \end_deeper
 \begin_layout Standard
 If LabelString is not defined, a default value is constructed as follows:
- if the counter has a master counter 
+ if the counter has a 
+\change_deleted 731793113 1604355218
+master
+\change_inserted 731793113 1604355221
+parent
+\change_unchanged
+ counter 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+
+\change_deleted 731793113 1604355223
 master
+\change_inserted 731793113 1604355226
+parent
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -22536,7 +22567,13 @@ status collapsed
 \begin_layout Plain Layout
 
 \backslash
-themaster.
+the
+\change_inserted 731793113 1604355228
+parent
+\change_deleted 731793113 1604355230
+master
+\change_unchanged
+.
 \backslash
 arabic{counter}
 \end_layout
@@ -28440,6 +28477,8 @@ status collapsed
 
 \change_inserted 1075283030 1598469476
 para
+\change_unchanged
+
 \end_layout
 
 \end_inset

@@ -392,8 +392,8 @@ public:
 	docstring counter;
 	/// Resume counter?
 	bool resumecounter;
-	/// Step master counter?
-	bool stepmastercounter;
+	/// Step parent counter?
+	bool stepparentcounter;
 	/// Prefix to use when creating labels
 	docstring refprefix;
 	/// Depth of XML command

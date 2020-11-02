@@ -11,7 +11,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 86
+currentFormat = 87
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -296,6 +296,8 @@ currentFormat = 86
 # Incremented to format 86, 20 October 2020 by tcuvelier
 # New tag DocBookSection.
 
+# Incremeted to format 87, 2 November 2020 by rkh
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -543,6 +545,13 @@ def convert(lines, end_format):
             i += 1
             while i < len(lines) and not re_EndBabelPreamble.match(lines[i]):
                 i += 1
+            continue
+
+        if format == 86:
+            if lines[i].lstrip().lower().startswith(b"stepmastercounter"):
+                pattern = re.compile(b"stepmastercounter", re.IGNORECASE)
+                lines[i] = pattern.sub(b"StepParentCounter", lines[i])
+            i += 1
             continue
 
         if 82 <= format <= 85:
