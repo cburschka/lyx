@@ -165,11 +165,15 @@ fi
 
 
 dnl Usage: LYX_CXX_CXX11_FLAGS: add to AM_CXXFLAGS the best flag that
-selects C++11 mode; gives an error when C++11 mode is not found.
+dnl selects C++11 mode; gives an error when C++11 mode is not found.
+dnl Parameter is a list of years to try (e.g. 11 or {14,11})
 AC_DEFUN([LYX_CXX_CXX11_FLAGS],
-[AC_CACHE_CHECK([for at least C++11 mode], [lyx_cv_cxx11_flags],
+[AC_CACHE_CHECK([for a good C++ mode], [lyx_cv_cxx11_flags],
  [lyx_cv_cxx11_flags=none
-  for flag in -std=c++14 -std=c++11 "" -std=gnu++14 -std=gnu++11 ; do
+  for flag in `eval echo -std=c++$1 default -std=gnu++$1` ; do
+    if test $flag = default ; then
+      flag=
+    fi
     save_CPPFLAGS=$CPPFLAGS
     CPPFLAGS="$AM_CPPFLAGS $CPPFLAGS"
     save_CXXFLAGS=$CXXFLAGS
@@ -202,8 +206,8 @@ AC_DEFUN([LYX_CXX_CXX11_FLAGS],
    CXXFLAGS=$save_CXXFLAGS
    CPPFLAGS=$save_CPPFLAGS
   done])
-  if test $lyx_cv_cxx11_flags = none ; then
-    AC_MSG_ERROR([Cannot find suitable C++11 mode for compiler $CXX])
+  if test x$lyx_cv_cxx11_flags = xnone ; then
+    AC_MSG_ERROR([Cannot find suitable mode for compiler $CXX])
   fi
   AM_CXXFLAGS="$lyx_cv_cxx11_flags $AM_CXXFLAGS"
 ])
@@ -304,9 +308,15 @@ AC_DEFUN([LYX_PROG_CXX],
 [AC_REQUIRE([AC_PROG_CXX])
 AC_REQUIRE([AC_PROG_CXXCPP])
 
+### We might want to disable debug
+AC_ARG_ENABLE(cxx-mode,
+  AS_HELP_STRING([--enable-cxx-mode],[choose C++ standard (default: 14, then 11)]),,
+  [enable_cxx_mode=14,11]
+)
+
 AC_LANG_PUSH(C++)
 LYX_PROG_CLANG
-LYX_CXX_CXX11_FLAGS
+LYX_CXX_CXX11_FLAGS($enable_cxx_mode)
 LYX_LIB_STDCXX
 LYX_LIB_STDCXX_CXX11_ABI
 LYX_CXX_USE_REGEX

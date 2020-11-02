@@ -208,6 +208,10 @@ The following options allow you to tweak the generated code more
 precisely (see the description of --enable-build-type for the default
 values):
 
+  o --enable-cxx-mode=VALUE can be used to select a C++ standard, for
+    example --enable-cxx-mode=11. The default is to try C++14, and then
+    C++11.
+
   o --enable-optimization=VALUE enables you to set optimization to a
     higher level than the default, for example --enable-optimization=-O3.
 
