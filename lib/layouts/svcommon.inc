@@ -198,7 +198,6 @@ Style ChapAuthor
 	DocBookTag            personname
 	DocBookTagType        paragraph
 	DocBookWrapperTag     author
-	DocBookWrapperTagType inline
 	DocBookInInfo         always
 End
 
@@ -395,6 +394,11 @@ Style Institute
 	EndFont
 	Requires	url
 	Align 		Left
+	# TODO: should rather be merged with the list of authors, but this would require a lot of specific code...
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookInInfo         always
 End
 
 Style Date
@@ -559,6 +563,7 @@ Style Dedication
 	DocBookWrapperTag      dedication
 	DocBookWrapperTagType  block
 	DocBookWrapperMergeWithPrevious    true
+	DocBookInInfo          never
 End
 
 Style Foreword
@@ -633,6 +638,8 @@ Style Acknowledgement
 	  Shape		Up
 	  Size		Small
 	EndFont
+	DocBookTag  para
+	DocBookWrapperTag  acknowledgements
 End
 
 Style Acknowledgements

@@ -439,6 +439,8 @@ export/export/docbook/bibliography_precooked_aastex_docbook5
 #   - Springer. (The svmono_light should still pass.)
 export/templates/Books/Springer_Monographs_%28svmono%29/.*_docbook5
 export/export/docbook/svmono_docbook5
+export/templates/Books/Springer_Contributed_Books_%28svmult%29/.*_docbook5
+export/export/docbook/svmult_docbook5
 #   - scrbook with too many customisations.
 export/templates/Theses/PhD_Thesis/.*_docbook5
 #   - Hollywood, too much formatting in elements DocBook does not allow to be formatted (like address).

@@ -282,8 +282,6 @@ void compTag(XMLStream & xs, const std::string & tag, const std::string & attr, 
 
 void openParTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar)
 {
-	Layout const & lay = par->layout();
-
 	if (par == prevpar)
 		prevpar = nullptr;
 
@@ -293,6 +291,7 @@ void openParTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar
 	// first paragraph of an author, then merging with the previous tag does not make sense. Say the
 	// next paragraph is the affiliation, then it should be output in the same <author> tag (different
 	// layout, same wrapper tag).
+	Layout const & lay = par->layout();
 	bool openWrapper = lay.docbookwrappertag() != "NONE";
 	if (prevpar != nullptr) {
 		Layout const & prevlay = prevpar->layout();
@@ -842,7 +841,11 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs,
 			mustBeInInfo.emplace(cpit);
 		else if (style.docbookininfo() == "maybe")
 			shouldBeInInfo.emplace(cpit);
-		else if (documentHasSections && !hasAbstractLayout && detectUnlayoutedAbstract)
+		else if (documentHasSections && !hasAbstractLayout && detectUnlayoutedAbstract &&
+				(style.docbooktag() == "NONE" || style.docbooktag() == "para") &&
+				style.docbookwrappertag() == "NONE")
+			// In this case, it is very likely that style.docbookininfo() == "never"! Be extra careful
+			// about anything that gets caught here.
 			abstractNoLayout.emplace(cpit);
 		else // This should definitely not be in <info>.
 			break;
