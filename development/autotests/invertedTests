@@ -396,6 +396,12 @@ export/doc/ru/(Math|Additional)_(dvi3|pdf[45])_systemF
 # ================================================
 # DocBook
 Sublabel: docbook
+# Don't work too hard on obsolete things.
+export/templates/Obsolete/ACM_SIGGGRAPH_0.92_%28obsolete%29_docbook5
+export/templates/Obsolete/ACM_SIGPLAN_%28Obsolete%29_docbook5
+export/templates/Obsolete/ACM_SIG_Proceedings_%28SP,_Obsolete%29_docbook5
+export/templates/Obsolete/American_Geophysical_Union_%28AGUTeX%29_docbook5
+export/templates/Obsolete/American_Psychological_Association_%28APA%29,_v._6_docbook5
 # Specific things that are not expected to work.
 # - No real content apart from metadata (forbidden in DocBook).
 export/export/mixing_inTitle_layouts_docbook5
@@ -442,6 +448,7 @@ export/templates/Letters/French_Letter_%28lettre%29_docbook5
 export/templates/Letters/Letter_%28Standard_Class%29_docbook5
 #   - G-Brief: too far from the other classes.
 export/templates/Letters/G-Brief_%28V._2%29_docbook5
+export/templates/Obsolete/G-Brief_%28V._1,_Obsolete%29/.*_docbook5
 #   - KOMA-Script Letter: too hard to output phone and fax numbers at the right place (need two levels of wrapping).
 export/templates/Letters/KOMA-Script_Letter_%28V._2%29_docbook5
 # - Branches may cause problems (especially when mixing with parts that must go in <info>).
