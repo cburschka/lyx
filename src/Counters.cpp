@@ -43,7 +43,7 @@ Counter::Counter()
 
 Counter::Counter(docstring const & mc, docstring const & ls,
 		docstring const & lsa, docstring const & guiname)
-	: initial_value_(0), saved_value_(0), master_(mc), labelstring_(ls),
+	: initial_value_(0), saved_value_(0), parent_(mc), labelstring_(ls),
 	  labelstringappendix_(lsa), guiname_(guiname)
 {
 	reset();
@@ -87,9 +87,9 @@ bool Counter::read(Lexer & lex)
 		switch (le) {
 			case CT_WITHIN:
 				lex.next();
-				master_ = lex.getDocString();
-				if (master_ == "none")
-					master_.erase();
+				parent_ = lex.getDocString();
+				if (parent_ == "none")
+					parent_.erase();
 				break;
 			case CT_INITIALVALUE:
 				lex.next();
@@ -176,17 +176,17 @@ void Counter::reset()
 }
 
 
-docstring const & Counter::master() const
+docstring const & Counter::parent() const
 {
-	return master_;
+	return parent_;
 }
 
 
-bool Counter::checkAndRemoveMaster(docstring const & cnt)
+bool Counter::checkAndRemoveParent(docstring const & cnt)
 {
-	if (master_ != cnt)
+	if (parent_ != cnt)
 		return false;
-	master_ = docstring();
+	parent_ = docstring();
 	return true;
 }
 
@@ -211,18 +211,18 @@ Counters::Counters() : appendix_(false), subfloat_(false), longtable_(false)
 
 
 void Counters::newCounter(docstring const & newc,
-			  docstring const & masterc,
+			  docstring const & parentc,
 			  docstring const & ls,
 			  docstring const & lsa,
 			  docstring const & guiname)
 {
-	if (!masterc.empty() && !hasCounter(masterc)) {
-		lyxerr << "Master counter does not exist: "
-		       << to_utf8(masterc)
+	if (!parentc.empty() && !hasCounter(parentc)) {
+		lyxerr << "Parent counter does not exist: "
+			   << to_utf8(parentc)
 		       << endl;
 		return;
 	}
-	counterList_[newc] = Counter(masterc, ls, lsa, guiname);
+	counterList_[newc] = Counter(parentc, ls, lsa, guiname);
 }
 
 
@@ -315,18 +315,18 @@ void Counters::restoreValue(docstring const & ctr) const
 }
 
 
-void Counters::resetSlaves(docstring const & count)
+void Counters::resetChildren(docstring const & count)
 {
 	for (auto & ctr : counterList_) {
-		if (ctr.second.master() == count) {
+		if (ctr.second.parent() == count) {
 			ctr.second.reset();
-			resetSlaves(ctr.first);
+			resetChildren(ctr.first);
 		}
 	}
 }
 
 
-void Counters::stepMaster(docstring const & ctr, UpdateType utype)
+void Counters::stepParent(docstring const & ctr, UpdateType utype)
 {
 	CounterList::iterator it = counterList_.find(ctr);
 	if (it == counterList_.end()) {
@@ -334,7 +334,7 @@ void Counters::stepMaster(docstring const & ctr, UpdateType utype)
 		       << to_utf8(ctr) << endl;
 		return;
 	}
-	step(it->second.master(), utype);
+	step(it->second.parent(), utype);
 }
 
 
@@ -354,7 +354,7 @@ void Counters::step(docstring const & ctr, UpdateType utype)
 		counter_stack_.push_back(ctr);
 	}
 
-	resetSlaves(ctr);
+	resetChildren(ctr);
 }
 
 
@@ -405,8 +405,8 @@ bool Counters::remove(docstring const & cnt)
 	if (!retval)
 		return false;
 	for (auto & ctr : counterList_) {
-		if (ctr.second.checkAndRemoveMaster(cnt))
-			LYXERR(Debug::TCLASS, "Removed master counter `" +
+		if (ctr.second.checkAndRemoveParent(cnt))
+			LYXERR(Debug::TCLASS, "Removed parent counter `" +
 					to_utf8(cnt) + "' from counter: " + to_utf8(ctr.first));
 	}
 	return retval;
@@ -500,8 +500,8 @@ docstring Counters::flattenLabelString(docstring const & counter,
 
 	callers.push_back(counter);
 	if (ls.empty()) {
-		if (!c.master().empty())
-			ls = flattenLabelString(c.master(), in_appendix, lang, callers)
+		if (!c.parent().empty())
+			ls = flattenLabelString(c.parent(), in_appendix, lang, callers)
 				+ from_ascii(".");
 		callers.pop_back();
 		return ls + from_ascii("\\arabic{") + counter + "}";

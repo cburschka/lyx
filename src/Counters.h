@@ -52,12 +52,12 @@ public:
 	void step();
 	///
 	void reset();
-	/// Returns the master counter of this counter.
-	docstring const & master() const;
-	/// Checks if the master counter is cnt, and if so removes
+	/// Returns the parent counter of this counter.
+	docstring const & parent() const;
+	/// Checks if the parent counter is cnt, and if so removes
 	/// it. This is used when a counter is deleted.
-	/// \return whether we removed the master.
-	bool checkAndRemoveMaster(docstring const & cnt);
+	/// \return whether we removed the parent.
+	bool checkAndRemoveParent(docstring const & cnt);
 	/// Returns a LaTeX-like string to format the counter.
 	/** This is similar to what one gets in LaTeX when using
 	 *  "\the<counter>". The \c in_appendix bool tells whether we
@@ -87,12 +87,12 @@ private:
 	int initial_value_;
 	///
 	int saved_value_;
-	/// contains master counter name.
-	/** The master counter is the counter that, if stepped
+	/// contains parent counter name.
+	/** The parent counter is the counter that, if stepped
 	 *  (incremented) zeroes this counter. E.g. "subsection"'s
-	 *  master is "section".
+	 *  parent is "section".
 	 */
-	docstring master_;
+	docstring parent_;
 	/// Contains a LaTeX-like string to format the counter.
 	docstring labelstring_;
 	/// The same as labelstring_, but in appendices.
@@ -119,10 +119,10 @@ public:
 	/// from the document class (e.g., which ones are defined).
 	/// Instead, call Counters::reset().
 	Counters();
-	/// Add new counter newc having masterc as its master,
+	/// Add new counter newc having parentc its parent,
 	/// ls as its label, and lsa as its appendix label.
 	void newCounter(docstring const & newc,
-			docstring const & masterc,
+			docstring const & parentc,
 			docstring const & ls,
 			docstring const & lsa,
 			docstring const & guiname);
@@ -143,14 +143,14 @@ public:
 	void saveValue(docstring const & ctr) const;
 	///
 	void restoreValue(docstring const & ctr) const;
-	/// Reset recursively all the counters that are slaves of the one named by \c ctr.
-	void resetSlaves(docstring const & ctr);
-	/// Increment by one master of counter named by \c ctr.
+	/// Reset recursively all the counters that are children of the one named by \c ctr.
+	void resetChildren(docstring const & ctr);
+	/// Increment by one the parent of counter named by \c ctr.
 	/// This also resets the counter named by \c ctr.
 	/// \param utype determines whether we track the counters.
-	void stepMaster(docstring const & ctr, UpdateType utype);
-	/// Increment by one counter named by \c ctr, and zeroes slave
-	/// counter(s) for which it is the master.
+	void stepParent(docstring const & ctr, UpdateType utype);
+	/// Increment by one counter named by \c ctr, and zeroes child
+	/// counter(s) for which it is the parent.
 	/// \param utype determines whether we track the counters.
 	void step(docstring const & ctr, UpdateType utype);
 	/// Reset all counters, and all the internal data structures
