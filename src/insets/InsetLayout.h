@@ -31,7 +31,7 @@ class TextClass;
 class InsetLayout {
 public:
 	///
-    InsetLayout() { labelfont_.setColor(Color_error); }
+	InsetLayout() { labelfont_.setColor(Color_error); }
 	///
 	enum InsetDecoration {
 		CLASSIC,
