@@ -83,7 +83,7 @@ public:
 
 	Type type;
 
-	int author;
+	size_t author;
 
 	time_t changetime;
 };
