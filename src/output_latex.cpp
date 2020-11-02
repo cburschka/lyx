@@ -600,7 +600,7 @@ void addArgInsets(Paragraph const & par, string const & prefix,
 		string const name = prefix.empty() ?
 			arg->name() : split(arg->name(), ':');
 		size_t const nr = convert<size_t>(name);
-        ilist.insert({nr, arg});
+		ilist.insert({nr, arg});
 		Layout::LaTeXArgMap::const_iterator const lit =
 			latexargs.find(arg->name());
 		if (lit != latexargs.end()) {
