@@ -451,6 +451,8 @@ export/templates/Letters/G-Brief_%28V._2%29_docbook5
 export/templates/Obsolete/G-Brief_%28V._1,_Obsolete%29/.*_docbook5
 #   - KOMA-Script Letter: too hard to output phone and fax numbers at the right place (need two levels of wrapping).
 export/templates/Letters/KOMA-Script_Letter_%28V._2%29_docbook5
+#   - DIN-Brief: order of paragraphs cannot match valid DocBook.
+export/templates/Letters/DIN-Brief_docbook5
 # - Branches may cause problems (especially when mixing with parts that must go in <info>).
 export/export/latex/languages/supported-languages_docbook5
 

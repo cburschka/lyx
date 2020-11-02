@@ -14,6 +14,8 @@
 # Modified by: Juergen Spitzmueller <spitz@lyx.org>
 #    use English strings, localization is done by gettext!
 
+# TODO: DocBook doesn't support several letters in the same file.
+
 Format 85
 
 Input letter.layout
@@ -28,7 +30,7 @@ EndPreamble
 # the LeftMargin is set to the probably longest string
 # (no typo! the umlaut is delibarately omitted)
 Style DinBrief
-	Category        Letter
+	Category    Letter
 	LatexType	Command
 	Margin		Static
 	LeftMargin	"Rucksende-Adresse:"
@@ -46,7 +48,7 @@ End
 
 Style Addresses
 	CopyStyle	DinBrief
-	Category        "Postal Data"
+	Category    "Postal Data"
 End
 
 # Open a new letter
@@ -58,6 +60,11 @@ Style Send_To_Address
 	KeepEmpty	1
 	BottomSep	0.1
 	LatexName	letter
+    DocBookTag         NONE
+    DocBookWrapperTag  address
+	DocBookWrapperAttr role='send-to-address'
+    DocBookWrapperMergeWithPrevious  true
+    DocBookInInfo      always
 End
 
 # Data Fields, placed according to DIN norm
@@ -73,6 +80,8 @@ Style My_Address
 	KeepEmpty	1
 	BottomSep	0.5
 	AlignPossible	Block, Left, Right, Center
+    DocBookTag      address
+    DocBookInInfo   always
 End
 
 # backaddress in address window
@@ -83,6 +92,10 @@ Style "Return address"
 	TextFont
 	    Size	Small
 	EndFont
+    DocBookTag         NONE
+    DocBookWrapperTag  address
+	DocBookWrapperAttr role='return-address'
+    DocBookInInfo      always
 End
 
 # Printed above the address (e.g., Air Mail, Registered Mail)
@@ -90,6 +103,13 @@ Style "Postal comment"
 	CopyStyle	Addresses
 	LabelString	"Postal Remark:"
 	LatexName	postremark
+    DocBookTag         otheraddr
+	DocBookAttr        role='postal-comment'
+	DocBookTagType     paragraph
+    DocBookWrapperTag  address
+	DocBookWrapperAttr role='send-to-address'
+    DocBookWrapperMergeWithPrevious  true
+    DocBookInInfo      always
 End
 
 # Printed right next to Receiver (e.g., Urgent, Confidential)
@@ -97,24 +117,44 @@ Style Handling
 	CopyStyle	Addresses
 	LabelString	"Handling:"
 	LatexName	handling
+    DocBookTag         otheraddr
+	DocBookAttr        role='handling'
+	DocBookTagType     paragraph
+    DocBookWrapperTag  address
+	DocBookWrapperAttr role='send-to-address'
+    DocBookWrapperMergeWithPrevious  true
+    DocBookInInfo      always
 End
 
 Style YourRef
 	CopyStyle	DinBrief
 	LabelString	"Your ref.:"
 	LatexName	yourmail
+	DocBookTag      productnumber
+	DocBookAttr     role='your-ref'
+	DocBookTagType  paragraph
+	DocBookInInfo   always
 End
 
 Style MyRef
 	CopyStyle	DinBrief
 	LabelString	"Our ref.:"
 	LatexName	sign
+	DocBookTag      productnumber
+	DocBookAttr     role='my-ref'
+	DocBookTagType  paragraph
+	DocBookInInfo   always
 End
 
 Style Writer
 	CopyStyle	DinBrief
 	LabelString	"Writer:"
 	LatexName	writer
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     othercredit
+	DocBookWrapperAttr    class='typesetter'
+	DocBookInInfo         always 
 End
 
 Style Signature
@@ -122,6 +162,8 @@ Style Signature
 	Category        Closings
 	LabelString	"Signature:"
 	LatexName	signature
+	DocBookTag            para
+	DocBookAttr           role='opening'
 End
 
 # contact info at the bottom of the first page
@@ -130,6 +172,9 @@ Style Bottomtext
 	LabelString	"Bottom text:"
 	LatexName	bottomtext
 	AlignPossible	Block, Left, Right, Center
+	# TODO: DocBook, this is typically within the <info> elements in LyX, but that makes no sense for DocBook.
+	DocBookTag  para
+	DocBookAttr role='bottom-text'
 End
 
 # dinbrief's \phone has 2 args, area and number,
@@ -139,6 +184,11 @@ Style "Area code"
 	CopyStyle	DinBrief
 	LabelString	"Area Code:"
 	LatexName	"renewcommand{\areacode}"
+	# TODO: should be in <address>, but too far away from these paragraphs.
+	DocBookTag     phone
+	DocBookAttr    role='area-code'
+	DocBookTagType paragraph
+	DocBookInInfo  always
 End
 
 Style Telephone
@@ -146,6 +196,10 @@ Style Telephone
 	LabelString	"Telephone:"
 	LatexName	phone
 	LatexParam	{\areacode}
+	# TODO: should be in <address>, but too far away from these paragraphs.
+	DocBookTag     phone
+	DocBookTagType paragraph
+	DocBookInInfo  always
 End
 
 Style Location
@@ -156,12 +210,19 @@ Style Location
 	TopSep		0.1
 	BottomSep	0.1
 	ParSep		0.1
+	DocBookTag     address
+	DocBookAttr    role='location'
+	DocBookInInfo  always
 End
 
 Style Date
 	CopyStyle	Location
 	LabelString	"Date:"
 	LatexName	date
+	DocBookTag     date
+	DocBookAttr    ""
+	DocBookTagType paragraph
+	DocBookInInfo  always
 End
 
 # dinbrief does not emphasize the subject line
@@ -174,6 +235,9 @@ Style Subject
 	ParSep		0.4
 	Align		Block
 	AlignPossible	Block, Left, Right, Center
+	DocBookTag     title
+	DocBookTagType paragraph
+	DocBookInInfo  always
 End
 
 # Opening (Anrede)
@@ -190,6 +254,8 @@ Style Opening
 	KeepEmpty	1
 	TopSep		1.5
 	BottomSep	1
+	DocBookTag  para
+	DocBookAttr role='opening'
 End
 
 # Backmatter (styles to be used at the end of the letter)
@@ -207,6 +273,8 @@ Style Closing
 		Tooltip       "Here you can insert a signature scan"
 	EndArgument
 	KeepEmpty	1
+	DocBookTag  para
+	DocBookAttr role='closing'
 End
 
 Style encl
@@ -223,12 +291,16 @@ Style encl
 	  Size		Normal
 	  Color		black
 	EndFont
+	DocBookTag  para
+	DocBookAttr role='enclosed'
 End
 
 Style cc
 	CopyStyle	encl
 	LabelString	"cc:"
 	LatexName	cc
+	DocBookTag  para
+	DocBookAttr role='carbon-copy'
 End
 
 Style PS
@@ -238,6 +310,8 @@ Style PS
 	Align		Block
 	AlignPossible	Block, Left
 	ParSep		0.4
+	DocBookTag  para
+	DocBookAttr role='post-scriptum'
 End
 
 # Obsoleted (or differently named) styles
