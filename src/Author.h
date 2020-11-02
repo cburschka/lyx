@@ -37,9 +37,9 @@ public:
 	///
 	docstring nameAndEmail() const;
 	///
-	size_t bufferId() const { return buffer_id_; }
+	int bufferId() const { return buffer_id_; }
 	///
-	void setBufferId(size_t buffer_id) const { buffer_id_ = buffer_id; }
+	void setBufferId(int buffer_id) const { buffer_id_ = buffer_id; }
 	///
 	void setUsed(bool u) const { used_ = u; }
 	///
@@ -70,13 +70,13 @@ public:
 	///
 	AuthorList();
 	///
-	size_t record(Author const & a);
+	int record(Author const & a);
 	///
-	void record(size_t id, Author const & a);
+	void record(int id, Author const & a);
 	///
 	void recordCurrentAuthor(Author const & a);
 	///
-	Author const & get(size_t id) const;
+	Author const & get(int id) const;
 	///
 	void sort();
 	///

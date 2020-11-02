@@ -482,7 +482,7 @@ void Changes::lyxMarkChange(ostream & os, BufferParams const & bparams, int & co
 
 	column = 0;
 
-	size_t const buffer_id = bparams.authors().get(change.author).bufferId();
+	int const buffer_id = bparams.authors().get(change.author).bufferId();
 
 	switch (change.type) {
 		case Change::UNCHANGED:

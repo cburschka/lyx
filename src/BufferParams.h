@@ -450,7 +450,7 @@ public:
 	void addAuthor(Author const & a);
 
 	/// map of the file's author IDs to AuthorList indexes
-	typedef std::map<size_t, size_t> AuthorMap;
+	typedef std::map<int, int> AuthorMap;
 	AuthorMap author_map_;
 
 	/// the buffer's active font encoding

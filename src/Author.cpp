@@ -32,7 +32,7 @@ static int computeHash(docstring const & name,
 	// Bernstein's hash function
 	unsigned int hash = 5381;
 	for (char c : full_author_string)
-		hash = ((hash << 5) + hash) + unsigned(c);
+		hash = ((hash << 5) + hash) + (unsigned int)c;
 	return int(hash);
 }
 
@@ -103,7 +103,7 @@ AuthorList::AuthorList()
 {}
 
 
-size_t AuthorList::record(Author const & a)
+int AuthorList::record(Author const & a)
 {
 	bool const valid = a.valid();
 	// If we record an author which equals the current
@@ -117,9 +117,9 @@ size_t AuthorList::record(Author const & a)
 	Authors::const_iterator const end = authors_.end();
 	for (; it != end; ++it) {
 		if (valid && *it == a)
-			return size_t(it - beg);
+			return it - beg;
 		if (it->bufferId() == a.bufferId()) {
-			size_t const id = size_t(it - beg);
+			int const id = it - beg;
 			if (!it->valid()) {
 				// we need to handle the case of a valid author being registered
 				// after an invalid one. For instance, because "buffer-reload"
@@ -134,9 +134,9 @@ size_t AuthorList::record(Author const & a)
 }
 
 
-void AuthorList::record(size_t id, Author const & a)
+void AuthorList::record(int id, Author const & a)
 {
-	LBUFERR(id < authors_.size());
+	LBUFERR(unsigned(id) < authors_.size());
 	authors_[id] = a;
 }
 
@@ -148,9 +148,9 @@ void AuthorList::recordCurrentAuthor(Author const & a)
 }
 
 
-Author const & AuthorList::get(size_t id) const
+Author const & AuthorList::get(int id) const
 {
-	LASSERT(id < authors_.size() , return authors_[0]);
+	LASSERT(id < (int)authors_.size() , return authors_[0]);
 	return authors_[id];
 }
 
