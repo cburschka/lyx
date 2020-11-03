@@ -311,7 +311,7 @@ AC_REQUIRE([AC_PROG_CXXCPP])
 ### We might want to force the C++ standard.
 AC_ARG_ENABLE(cxx-mode,
   AS_HELP_STRING([--enable-cxx-mode],[choose C++ standard (default: 14, then 11)]),,
-  [enable_cxx_mode="14,11"]
+  [enable_cxx_mode={14,11}]
 )
 
 AC_LANG_PUSH(C++)
