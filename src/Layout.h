@@ -267,13 +267,13 @@ public:
 	bool labelIsInline() const {
 		return labeltype == LABEL_STATIC
 			|| labeltype == LABEL_SENSITIVE
-		  || labeltype == LABEL_ENUMERATE
+			|| labeltype == LABEL_ENUMERATE
 			|| labeltype == LABEL_ITEMIZE;
 	}
 	bool labelIsAbove() const {
 		return labeltype == LABEL_ABOVE
 			|| labeltype == LABEL_CENTERED
-		  || labeltype == LABEL_BIBLIO;
+			|| labeltype == LABEL_BIBLIO;
 	}
 	///
 	bool addToToc() const { return add_to_toc_; }
