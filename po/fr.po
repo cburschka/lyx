@@ -360,7 +360,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-10-29 17:56-0400\n"
-"PO-Revision-Date: 2020-07-06 18:06+0200\n"
+"PO-Revision-Date: 2020-11-03 16:11+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -616,7 +616,7 @@ msgid ""
 "Here you can enter a local BibTeX database name or browse your directory."
 msgstr ""
 "Vous pouvez saisir ici le nom d'une base de données BibTeX locale ou "
-"parcourir vos répertoires"
+"parcourir vos répertoires."
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:84
 msgid "&Local databases:"
@@ -752,7 +752,7 @@ msgid ""
 "details."
 msgstr ""
 "Options de la commande bibliographique biblatex. Voir le manuel biblatex "
-"pour les détails"
+"pour les détails."
 
 #: src/frontends/qt4/ui/BibtexUi.ui:283 src/frontends/qt4/ui/CharacterUi.ui:393
 #: src/frontends/qt4/ui/CitationUi.ui:460
@@ -2545,6 +2545,8 @@ msgid ""
 "File name to include. (You can create a new file by entering the name of one "
 "that does not yet exist.)"
 msgstr ""
+"Nom du fichier à inclure (vous pouvez créer un nouveau fichier en saisissant "
+"le nom d'un fichier inexistant)."
 
 #: src/frontends/qt4/ui/IncludeUi.ui:309
 msgid "&Include Type:"
@@ -3906,7 +3908,7 @@ msgid ""
 "When enabled, use of converters with the 'needauth' option is forbidden."
 msgstr ""
 "Si la case est cochée, l'utilisation des convertisseurs avec l'option "
-"\"needauth\" est interdite"
+"\"needauth\" est interdite."
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:322
 msgid "Use need&auth option"
@@ -4346,7 +4348,7 @@ msgstr "Ctrl"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:265 src/insets/InsetInfo.cpp:367
 msgid "Shift"
-msgstr "Maj-"
+msgstr "Maj"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:270
 msgid "Alt"
@@ -5111,7 +5113,7 @@ msgstr "<référence> page <page>"
 #: src/frontends/qt4/ui/RefUi.ui:286 src/frontends/qt4/GuiRef.cpp:314
 #: src/frontends/qt4/GuiRef.cpp:317
 msgid "Formatted reference"
-msgstr "référence mise en forme"
+msgstr "Référence mise en forme"
 
 #: src/frontends/qt4/ui/RefUi.ui:291 src/frontends/qt4/GuiRef.cpp:312
 msgid "Textual reference"
@@ -7841,7 +7843,7 @@ msgstr "RéfsTableau"
 
 #: lib/layouts/aastex.layout:471
 msgid "References. ---"
-msgstr " Références. ---"
+msgstr "Références. ---"
 
 #: lib/layouts/aastex.layout:479 lib/layouts/aastex6.layout:109
 #: lib/layouts/aastex62.layout:120
@@ -9653,7 +9655,7 @@ msgstr "Cours"
 
 #: lib/layouts/apax.inc:543
 msgid "Course: "
-msgstr "Cours :"
+msgstr "Cours : "
 
 #: lib/layouts/apax.inc:551
 msgid "addORCIDlink"
@@ -10722,7 +10724,6 @@ msgid "Custom Header/Footerlines"
 msgstr "Personnalisation en-têtes/pieds de page"
 
 #: lib/layouts/customHeadersFooters.module:7
-#, fuzzy
 msgid ""
 "Adds environments to define header and footer lines. NOTE: To use this "
 "module you must set the 'Page style' in the menu Document Settings -> Page "
@@ -11610,7 +11611,7 @@ msgstr ""
 
 #: lib/layouts/endnotes.module:10
 msgid "Endnote ##"
-msgstr "N° notes en fin de document"
+msgstr "N° notes en fin de document ##"
 
 #: lib/layouts/endnotes.module:23
 msgid "endnote"
@@ -12048,7 +12049,7 @@ msgstr ""
 
 #: lib/layouts/fix-cm.module:2
 msgid "Fix cm"
-msgstr "fix-cm"
+msgstr "Fix-cm"
 
 #: lib/layouts/fix-cm.module:8
 msgid ""
@@ -12056,7 +12057,7 @@ msgid ""
 "available with arbitrary sizes. For details see the documentation of the fix-"
 "cm.sty package: http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
 msgstr ""
-"fix-c améliore l'apparence des polices Computer Modern et les rend "
+"Fix-cm améliore l'apparence des polices Computer Modern et les rend "
 "disponibles dans toutes les tailles. Pour les détails voir la documentation "
 "du paquetage fix-cm : http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
 
@@ -13789,7 +13790,7 @@ msgstr "Liste des tableaux"
 
 #: lib/layouts/litinsets.inc:12
 msgid "Chunk ##"
-msgstr "N° bloc"
+msgstr "N° bloc ##"
 
 #: lib/layouts/litinsets.inc:15
 msgid "Literate programming"
@@ -14225,37 +14226,32 @@ msgid "Entry"
 msgstr "Entrée"
 
 #: lib/layouts/moderncv.layout:334 lib/layouts/moderncv.layout:335
-#, fuzzy
 msgid "Years"
-msgstr "Année"
+msgstr "Années"
 
 #: lib/layouts/moderncv.layout:340
 msgid "Degree or job title"
-msgstr ""
+msgstr "Niveau ou intitulé de l'amploi"
 
 #: lib/layouts/moderncv.layout:348
-#, fuzzy
 msgid "Institution or employer"
-msgstr "Institution"
+msgstr "Institution ou employeur"
 
 #: lib/layouts/moderncv.layout:355
-#, fuzzy
 msgid "Localization"
 msgstr "Adresse"
 
 #: lib/layouts/moderncv.layout:356
-#, fuzzy
 msgid "City or country"
-msgstr "Pays"
+msgstr "Ville ou pays"
 
 #: lib/layouts/moderncv.layout:360
-#, fuzzy
 msgid "Optional"
-msgstr "optionnel"
+msgstr "Facultatif"
 
 #: lib/layouts/moderncv.layout:361
 msgid "Grade or other info"
-msgstr ""
+msgstr "Diplôme ou autre"
 
 #: lib/layouts/moderncv.layout:367
 msgid "Entry:"
@@ -15252,7 +15248,7 @@ msgstr "Citation en ligne"
 
 #: lib/layouts/revtex4-x.inc:321
 msgid "online cite"
-msgstr "Citation en ligne"
+msgstr "citation en ligne"
 
 #: lib/layouts/revtex4-x.inc:323
 msgid "Text behind"
@@ -15970,9 +15966,8 @@ msgid "\\Roman{part}"
 msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:10
-#, fuzzy
 msgid "Part ##"
-msgstr "Partie"
+msgstr "Partie ##"
 
 #: lib/layouts/stdcounters.inc:14
 msgid "Chapter ##"
@@ -16350,7 +16345,7 @@ msgstr "Journal of Geodesy (Springer)"
 
 #: lib/layouts/svmono.layout:3
 msgid "Springer Monographs (svmono)"
-msgstr " Monographies Springer (svmono)"
+msgstr "Monographies Springer (svmono)"
 
 #: lib/layouts/svmult.layout:3
 msgid "Springer Contributed Books (svmult)"
@@ -17342,7 +17337,7 @@ msgstr "Tout en capitales"
 
 #: lib/layouts/tufte-book.layout:188
 msgid "allcaps"
-msgstr "Tout en capitales"
+msgstr "tout en capitales"
 
 #: lib/layouts/tufte-book.layout:198
 msgid "SmallCaps"
@@ -18398,7 +18393,7 @@ msgstr "Fractionner cellule|u"
 
 #: lib/ui/stdcontext.inc:69
 msgid "Rows & Columns| "
-msgstr "Lignes & colonnes|c"
+msgstr "Lignes & colonnes| "
 
 #: lib/ui/stdcontext.inc:70
 msgid "Add Line Above|o"
@@ -25861,7 +25856,7 @@ msgstr "Échec conversion iconv"
 
 #: src/Buffer.cpp:1768
 msgid "conversion failed"
-msgstr "Échec conversion"
+msgstr "échec conversion"
 
 #: src/Buffer.cpp:1886
 msgid "Uncodable character in file path"
@@ -26549,7 +26544,7 @@ msgstr ""
 #: src/BufferView.cpp:2005
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
-msgstr " \"%1$s\" appliqué à %2$d inserts"
+msgstr "\"%1$s\" appliqué à %2$d inserts"
 
 #: src/BufferView.cpp:2013
 msgid "Branch name"
@@ -26754,7 +26749,7 @@ msgstr "texte sélectionné"
 
 #: src/Color.cpp:229
 msgid "LaTeX text"
-msgstr "texte LaTeX"
+msgstr "Texte LaTeX"
 
 #: src/Color.cpp:230
 msgid "inline completion"
@@ -26826,11 +26821,11 @@ msgstr "étiquette de note en marge"
 
 #: src/Color.cpp:249
 msgid "URL label"
-msgstr "étiquette d'URL"
+msgstr "Ètiquette d'URL"
 
 #: src/Color.cpp:250
 msgid "URL text"
-msgstr "texte d'URL"
+msgstr "Texte d'URL"
 
 #: src/Color.cpp:251
 msgid "depth bar"
@@ -26930,7 +26925,7 @@ msgstr "cadre d'insert"
 
 #: src/Color.cpp:276
 msgid "LaTeX error"
-msgstr "erreur LaTeX"
+msgstr "Erreur LaTeX"
 
 #: src/Color.cpp:277
 msgid "end-of-line marker"
@@ -27126,7 +27121,7 @@ msgstr "&Ne pas autoriser"
 
 #: src/Converter.cpp:369
 msgid "Do &not run"
-msgstr "&Ne pas exécuter-"
+msgstr "&Ne pas exécuter"
 
 #: src/Converter.cpp:370
 msgid "A&llow"
@@ -27204,7 +27199,7 @@ msgid ""
 "%1$s"
 msgstr ""
 "Une erreur s'est produite lors de l'exécution :\n"
-"%1$s."
+"%1$s"
 
 #: src/Converter.cpp:720
 #, c-format
@@ -27880,7 +27875,7 @@ msgstr ""
 
 #: src/LyX.cpp:1232 src/frontends/qt4/GuiAbout.cpp:244
 msgid "  Git commit hash "
-msgstr "Empreinte de validation Git "
+msgstr " Empreinte de validation Git "
 
 #: src/LyX.cpp:1243 src/support/Package.cpp:647
 msgid "No system directory"
@@ -28641,9 +28636,8 @@ msgid "Other ("
 msgstr "Autre ("
 
 #: src/Text.cpp:1962
-#, fuzzy
 msgid ", Style: "
-msgstr "Style CV :"
+msgstr ", style : "
 
 #: src/Text.cpp:1966
 msgid ", Paragraph: "
@@ -29027,7 +29021,7 @@ msgstr ""
 #: src/VCBackend.cpp:1339 src/VCBackend.cpp:1475 src/VCBackend.cpp:1512
 #: src/VCBackend.cpp:1566 src/VCBackend.cpp:1956
 msgid "Error: Could not generate logfile."
-msgstr " Erreur : échec de la génération du fichier journal."
+msgstr "Erreur : échec de la génération du fichier journal."
 
 #: src/VCBackend.cpp:1355 src/VCBackend.cpp:1972
 msgid ""
@@ -29526,7 +29520,7 @@ msgstr "Impossible d'itérer plus de %1$d fois"
 #: src/frontends/qt4/GuiApplication.cpp:1960
 #, c-format
 msgid "Applied \"%1$s\" to %2$d buffer(s)"
-msgstr " \"%1$s\" appliqué à %2$d tampon(s)"
+msgstr "\"%1$s\" appliqué à %2$d tampon(s)"
 
 #: src/frontends/qt4/GuiApplication.cpp:2035
 #, c-format
@@ -30601,7 +30595,7 @@ msgstr "Modules exclus : %1$s."
 #: src/frontends/qt4/GuiDocument.cpp:2919
 #, c-format
 msgid "Filename: %1$s.module."
-msgstr "Nom de fichier : %1$s.module"
+msgstr "Nom de fichier : %1$s.module."
 
 #: src/frontends/qt4/GuiDocument.cpp:2924
 msgid "WARNING: Some required packages are unavailable!"
@@ -31107,11 +31101,11 @@ msgstr "||x||"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:43
 msgid "bmatrix"
-msgstr "Insérer une matrice"
+msgstr "bmatrix"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:44
 msgid "pmatrix"
-msgstr "Insérer une matrice"
+msgstr "pmatrix"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:45
 msgid "Bmatrix"
@@ -31119,7 +31113,7 @@ msgstr "Insérer une matrice"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:46
 msgid "vmatrix"
-msgstr "Insérer une matrice"
+msgstr "vmatrix"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:47
 msgid "Vmatrix"
@@ -31246,7 +31240,7 @@ msgstr "Correcteur Orthographique"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1657
 msgid "Native"
-msgstr "natif"
+msgstr "Natif"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1663
 msgid "Aspell"
@@ -31279,7 +31273,7 @@ msgstr ""
 "convertisseurs dangereux sans demande d'autorisation préalable de votre "
 "part. Ceci n'est PAS SÛR et n'est PAS recommandé, a moins que vous sachiez "
 "ce que vous faisiez. Êtes-vous sûr de vouloir continuer ? La réponse sûre et "
-"recommandée est NON."
+"recommandée est NON !"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2095
 msgid "File Formats"
@@ -32062,7 +32056,7 @@ msgid ""
 "Aborting import."
 msgstr ""
 "Le nom de fichier « %1$s » n'est pas valide !\n"
-"Importation interrompue.\""
+"Importation interrompue."
 
 #: src/frontends/qt4/GuiView.cpp:2497 src/frontends/qt4/GuiView.cpp:2680
 #: src/frontends/qt4/GuiView.cpp:2782
@@ -32446,7 +32440,7 @@ msgstr "Fermer le fichier"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:2151
 msgid "%1 (read only)"
-msgstr " %1 (en lecture seule)"
+msgstr "%1 (en lecture seule)"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:2155
 msgid "%1 (modified externally)"
@@ -32568,7 +32562,7 @@ msgstr "Autres listes"
 
 #: src/frontends/qt4/Menus.cpp:1370
 msgid "(Empty Table of Contents)"
-msgstr "Table des matières vide"
+msgstr "(Table des matières vide)"
 
 #: src/frontends/qt4/Menus.cpp:1379
 msgid "Open Outliner..."
@@ -32658,7 +32652,7 @@ msgstr "Revenir à la langue implicite (%1$s, %2$s)|l"
 #: src/frontends/qt4/Menus.cpp:1844
 #, c-format
 msgid "Reset to language default (%1$s)|l"
-msgstr "revenir à la langue implicite (%1$s)|l"
+msgstr "Revenir à la langue implicite (%1$s)|l"
 
 #: src/frontends/qt4/Menus.cpp:1852
 msgid "Change Style|y"
@@ -33094,7 +33088,7 @@ msgid ""
 msgstr ""
 "Les caractères suivants dans un chemin d'accès à un des graphiques ne sont\n"
 "pas représentables dans l'encodage courant et ont été omis : %1$s\n"
-"Il vous faut modifier ou bien l'encodage, ou bien le chemin. "
+"Il vous faut modifier ou bien l'encodage, ou bien le chemin."
 
 #: src/insets/InsetGraphics.cpp:939
 #, c-format
@@ -34241,7 +34235,7 @@ msgid ""
 "%1$s."
 msgstr ""
 "Impossible d'ouvrir le document\n"
-"%1$s"
+"%1$s."
 
 #: src/output_latex.cpp:1484
 msgid "Error in latexParagraphs"
@@ -34549,7 +34543,7 @@ msgstr "Exception fatale !"
 
 #: src/support/os_win32.cpp:510
 msgid "System file not found"
-msgstr "Fichier système introuvable !"
+msgstr "Fichier système introuvable"
 
 #: src/support/os_win32.cpp:511
 msgid ""
@@ -34561,7 +34555,7 @@ msgstr ""
 
 #: src/support/os_win32.cpp:516
 msgid "System function not found"
-msgstr "Fonction système introuvable !"
+msgstr "Fonction système introuvable"
 
 #: src/support/os_win32.cpp:517
 msgid ""
