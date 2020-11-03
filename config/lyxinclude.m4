@@ -164,9 +164,9 @@ fi
 ])
 
 
-dnl Usage: LYX_CXX_CXX11_FLAGS: add to AM_CXXFLAGS the best flag that
+dnl Usage: LYX_CXX_CXX11_FLAGS(VERSION): add to AM_CXXFLAGS the best flag that
 dnl selects C++11 mode; gives an error when C++11 mode is not found.
-dnl Parameter is a list of years to try (e.g. 11 or {14,11})
+dnl VERSION is a list of years to try (e.g. 11 or {14,11}).
 AC_DEFUN([LYX_CXX_CXX11_FLAGS],
 [AC_CACHE_CHECK([for a good C++ mode], [lyx_cv_cxx11_flags],
  [lyx_cv_cxx11_flags=none
@@ -308,10 +308,10 @@ AC_DEFUN([LYX_PROG_CXX],
 [AC_REQUIRE([AC_PROG_CXX])
 AC_REQUIRE([AC_PROG_CXXCPP])
 
-### We might want to disable debug
+### We might want to force the C++ standard.
 AC_ARG_ENABLE(cxx-mode,
   AS_HELP_STRING([--enable-cxx-mode],[choose C++ standard (default: 14, then 11)]),,
-  [enable_cxx_mode=14,11]
+  [enable_cxx_mode="14,11"]
 )
 
 AC_LANG_PUSH(C++)
