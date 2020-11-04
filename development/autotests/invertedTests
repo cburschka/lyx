@@ -409,6 +409,8 @@ export/export/latex/languages/ja-listings-uncodable-error_docbook5
 export/export/latex/lyxbugs-resolved/9633-languagenesting_enumerate_and_lyxcode_docbook5
 export/export/xhtml/MissingEndTagDiv_docbook5
 export/export/xhtml/zh_CN_Tutorial_docbook5
+# - Formal groups do not work when there is (sample) text instead of real content.
+export/examples/Books/Tufte_Book_docbook5
 # - No proper document title (should be fixable).
 export/export/latex/inputenc-.*_docbook5
 export/export/latex/textcyr-textgreek-test_docbook5
@@ -426,10 +428,9 @@ export/mathmacros/masterOfSpace_docbook5
 #   - AASTeX.
 export/export/docbook/bibliography_precooked_aastex_docbook5
 #   - Springer. (The svmono_light should still pass.)
-export/templates/Books/Springer_Monographs_%28svmono%29/.*_docbook5
-export/export/docbook/svmono_docbook5
-export/templates/Books/Springer_Contributed_Books_%28svmult%29/.*_docbook5
-export/export/docbook/svmult_docbook5
+export/templates/Books/Springer.*/.*_docbook5
+!export/export/docbook/svmono_light_docbook5
+export/export/docbook/sv.*_docbook5
 #   - scrbook with too many customisations.
 export/templates/Theses/PhD_Thesis/.*_docbook5
 #   - Hollywood, too much formatting in elements DocBook does not allow to be formatted (like address).
@@ -447,6 +448,9 @@ export/templates/Letters/KOMA-Script_Letter_%28V._2%29_docbook5
 export/examples/Letters/Serial_Letter_.*_docbook5
 #   - DIN-Brief: order of paragraphs cannot match valid DocBook.
 export/templates/Letters/DIN-Brief_docbook5
+#   - AMS Book: order of elements is not compatible with DocBook (some parts must be in <info>, others cannot, while
+#     still being in the book's header).
+export/examples/Books/American_Mathematical_Society_%28AMS%29_docbook5
 # - Branches may cause problems (especially when mixing with parts that must go in <info>).
 export/export/latex/languages/supported-languages_(|babel|babel_auto-legacy|polyglossia)_?docbook5
 
