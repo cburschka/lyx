@@ -38,11 +38,11 @@ enum MacroType {
 class MacroData {
 public:
 	/// Constructor to make STL containers happy
-	explicit MacroData(Buffer * buf = 0);
+	explicit MacroData(Buffer const * buf = 0);
 	/// Create lazy MacroData which only queries the macro template when needed
-	MacroData(Buffer * buf, DocIterator const & pos);
+	MacroData(Buffer const * buf, DocIterator const & pos);
 	/// Create non-lazy MacroData which directly queries the macro template
-	MacroData(Buffer * buf, InsetMathMacroTemplate const & macro);
+	MacroData(Buffer const * buf, InsetMathMacroTemplate const & macro);
 
 	///
 	docstring const & definition() const { updateData(); return definition_; }
@@ -122,25 +122,25 @@ private:
 	/// macros.
 	mutable DocIterator pos_;
 	///
-	mutable bool queried_;
+	mutable bool queried_ = false;
 	///
 	mutable docstring definition_;
 	///
-	mutable size_t numargs_;
+	mutable size_t numargs_ = 0;
 	///
 	mutable docstring display_;
 	///
-	latexkeys const * sym_;
+	latexkeys const * sym_ = nullptr;
 	///
-	mutable size_t optionals_;
+	mutable size_t optionals_ = 0;
 	///
 	mutable std::vector<docstring> defaults_;
 	///
-	mutable int lockCount_;
+	mutable int lockCount_ = 0;
 	///
-	mutable bool redefinition_;
+	mutable bool redefinition_ = false;
 	///
-	mutable MacroType type_;
+	mutable MacroType type_ = MacroTypeNewcommand;
 };
 
 

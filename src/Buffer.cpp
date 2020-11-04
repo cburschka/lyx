@@ -3802,7 +3802,7 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 				// FIXME (Abdel), I don't understand why we pass 'it' here
 				// instead of 'macroTemplate' defined above... is this correct?
 				macros[macroTemplate.name()][it] =
-					Impl::ScopeMacro(scope, MacroData(const_cast<Buffer *>(owner_), it));
+					Impl::ScopeMacro(scope, MacroData(owner_, it));
 				break;
 			}
 			default:

@@ -41,23 +41,18 @@ namespace lyx {
 //
 /////////////////////////////////////////////////////////////////////
 
-MacroData::MacroData(Buffer * buf)
-	: buffer_(buf), queried_(true), numargs_(0), sym_(0), optionals_(0),
-	  lockCount_(0), redefinition_(false), type_(MacroTypeNewcommand)
+MacroData::MacroData(const Buffer * buf)
+	: buffer_(buf), queried_(true)
 {}
 
 
-MacroData::MacroData(Buffer * buf, DocIterator const & pos)
-	: buffer_(buf), pos_(pos), queried_(false), numargs_(0), sym_(0),
-	  optionals_(0), lockCount_(0), redefinition_(false),
-	  type_(MacroTypeNewcommand)
-{
-}
+MacroData::MacroData(Buffer const * buf, DocIterator const & pos)
+	: buffer_(buf), pos_(pos)
+{}
 
 
-MacroData::MacroData(Buffer * buf, InsetMathMacroTemplate const & macro)
-	: buffer_(buf), queried_(false), numargs_(0), sym_(0), optionals_(0),
-	  lockCount_(0), redefinition_(false), type_(MacroTypeNewcommand)
+MacroData::MacroData(Buffer const * buf, InsetMathMacroTemplate const & macro)
+	: buffer_(buf)
 {
 	queryData(macro);
 }
