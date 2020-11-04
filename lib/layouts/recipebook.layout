@@ -94,6 +94,9 @@ Style Recipe
     Shape		Italic
     Color		red
   EndFont
+  DocBookTag    bridgehead
+  DocBookAttr   renderas='sect2'
+  DocBookTagType paragraph
 End
 
 # Subsubsection style definition
@@ -137,4 +140,6 @@ Style Ingredients
    \setlength\parindent{0pt}
    \setlength\parskip{2ex plus 0.5ex}
   EndPreamble
+  DocBookTag    para
+  DocBookAttr   role='ingredients'
 End
