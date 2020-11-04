@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This DocBook file was created by LyX 2.4.0dev
+  See http://www.lyx.org/ for more information -->
+<book xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
+<title>Untitled Document</title>
+<dedication>
+<para>A quotation or a dedication<indexterm><primary>dedication</primary></indexterm> at the very beginning of your book.</para>
+</dedication>
+<preface>
+<title></title>
+<para>The foreword covers introductory remarks preceding the text of a book that are written by a <emphasis>person other than the author or editor of the book. If applicable, the foreword precedes the preface which is written by the author or editor of the book.</emphasis></para>
+<!-- \vspace{\baselineskip} -->
+
+<para>Place, month year
+<emphasis>Firstname Surname</emphasis></para>
+</preface>
+<preface>
+<title></title>
+<para>A preface<indexterm><primary>preface</primary></indexterm> is a book's preliminary statement, usually written by the <emphasis>author or editor of a work, which states its origin, scope, purpose, plan, and intended audience, and which sometimes includes afterthoughts and acknowledgments of assistance.</emphasis> </para>
+<para>When written by a person other than the author, it is called a foreword. The preface or foreword is distinct from the introduction, which deals with the subject of the work.</para>
+<para>Customarily <emphasis>acknowledgments are included as last part of the preface.</emphasis></para>
+<!-- \vspace{\baselineskip} -->
+
+<para>Place(s),
+<emphasis>Firstname Surname</emphasis></para>
+<para>month year
+<emphasis>Firstname Surname</emphasis></para>
+<bridgehead renderas='other' otherrenderas='chapter'>Acknowledgements</bridgehead>
+<para>Optional section; if you prefer to set your acknowledgement section as a separate chapter instead of including it as last part of your preface.</para>
+</preface>
+<preface>
+<title></title>
+<para>Firstname Surname <!-- \at -->
+ ABC Institute, 123 Prime Street, Daisy Town, NA 01234, USA, smith@smith.edu<!-- \and -->
+ Firstname Surname <!-- \at -->
+ XYZ Institute, Technical University, Albert-Schweitzer-Str. 34, 1000 Berlin, Germany, meier@tu.edu</para>
+<bridgehead renderas='other' otherrenderas='chapter'>Acronyms</bridgehead>
+<para>List(s) of abbreviations or symbols</para>
+<para>Lists of abbreviations<indexterm><primary>acronyms, list of</primary></indexterm>, symbols<indexterm><primary>symbols, list of</primary></indexterm> and the like are easily formatted with the help of the Springer-enhanced <emphasis role='sans'>description</emphasis> environment.</para>
+<variablelist>
+<varlistentry>
+<term>CABR
+ABC</term>
+<listitem>
+<para>Spelled-out abbreviation and definition</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>BABI</term>
+<listitem>
+<para>Spelled-out abbreviation and definition</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>CABR</term>
+<listitem>
+<para>Spelled-out abbreviation and definition</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</preface>
+<part>
+<title>Part Title</title>
+ Part title page and, if desired, a short introductory text (maximum one page) on its verso page
+<title>Contribution Title</title>
+<titleabbrev>Short form of title</titleabbrev>
+<author>
+<personname>Name of First Author and Name of Second Author</personname>
+</author>Short form of author list
+<author>
+<personname>Name of First Author <!-- \at  -->
+Name, Address of Institute, name@email.address <!-- \and  -->
+Name of Second Author <!-- \at  -->
+Name, Address of Institute name@email.address</personname>
+</author>
+<abstract role='not-printed'>
+<para>Each chapter should be preceded by an abstract (10–15 lines long) that summarizes the content. The abstract will appear <emphasis>online at <link xlink:href="www.SpringerLink.com">www.SpringerLink.com</link> and be available with unrestricted access. This allows unregistered users to read the abstract as a teaser for the complete chapter. As a general rule the abstracts will not appear in the printed version of your book unless it is the style of your particular book or that of the series to which your book belongs.</emphasis><!-- \indent -->
+ Please use the 'starred' version of the <code>abstract</code> environment for typesetting the text of the online abstracts. Use the plain <code>abstract</code> if the abstract is also to appear in the printed version of the book.</para>
+</abstract>
+<abstract>
+<para>Each chapter should be preceded by an abstract (10–15 lines long) that summarizes the content. The abstract will appear <emphasis>online at <link xlink:href="www.SpringerLink.com">www.SpringerLink.com</link> and be available with unrestricted access. This allows unregistered users to read the abstract as a teaser for the complete chapter. As a general rule the abstracts will not appear in the printed version of your book unless it is the style of your particular book or that of the series to which your book belongs.</emphasis><!-- \indent -->
+ Please use the 'starred' version of the <code>abstract</code> environment for typesetting the text of the online abstracts. Use the plain <code>abstract</code> if the abstract is also to appear in the printed version of the book.</para>
+</abstract>
+<section xml:id="sec.1">
+<title>Section Heading</title>
+<para>Instead of simply listing headings of different levels we recommend to let every heading be followed by at least a short passage of text.</para>
+</section>
+<section xml:id="sec.Section-Heading2">
+<title>Section Heading</title>
+<titleabbrev>Short form of section title</titleabbrev>
+<para>Use the standard <emphasis role='sans'>equation</emphasis> environment to typeset your equations, e.&#x2009;g. 
+<informalequation>
+<alt role='tex'>a\times b=c\;,</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:mrow><m:mi>a</m:mi><m:mo>&#x00D7;</m:mo><m:mi>b</m:mi><m:mo>=</m:mo><m:mi>c</m:mi><m:mspace width="10px" /><m:mo>,</m:mo>
+  </m:mrow>
+ </m:mrow>
+ </m:math>
+</informalequation>
+ however, for multiline equations we recommend to use the <emphasis role='sans'>eqnarray</emphasis> environment<footnote>
+<para>In physics texts please activate the class option <code>vecphys</code> to depict your vectors in <emphasis role='bold'><emphasis>boldface-italic</emphasis> type - as is customary for a wide range of physical subjects</emphasis></para>
+</footnote>. 
+<informalequation xml:id="eq.01">
+<alt role='tex'>a\times b &amp; = &amp; c\nonumber \\
+\vec{a}\cdot\vec{b} &amp; = &amp; c\label{eq:01}
+</alt>
+ <m:math>
+ 
+ <m:mtable>
+  <m:mtr>
+   <m:mtd>
+    <m:mrow><m:mi>a</m:mi><m:mo>&#x00D7;</m:mo><m:mi>b</m:mi>
+    </m:mrow>
+   </m:mtd>
+   <m:mtd><m:mo>=</m:mo>
+   </m:mtd>
+   <m:mtd><m:mi>c</m:mi>
+   </m:mtd>
+  </m:mtr>
+  <m:mtr>
+   <m:mtd>
+    <m:mrow>
+     <m:mover>
+      <m:mrow><m:mi>a</m:mi>
+      </m:mrow><m:mo stretchy="true">&#x2192;</m:mo>
+     </m:mover><m:mo>&#x22C5;</m:mo>
+     <m:mover>
+      <m:mrow><m:mi>b</m:mi>
+      </m:mrow><m:mo stretchy="true">&#x2192;</m:mo>
+     </m:mover>
+    </m:mrow>
+   </m:mtd>
+   <m:mtd><m:mo>=</m:mo>
+   </m:mtd>
+   <m:mtd><m:mi>c</m:mi>
+   </m:mtd>
+  </m:mtr>
+ </m:mtable>
+ </m:math>
+</informalequation>
+</para>
+<section xml:id="subsec.Subsection-Heading">
+<title>Subsection Heading</title>
+<para>Instead of simply listing headings of different levels we recommend to let every heading be followed by at least a short passage of text. Further on please use the LyX automatism for all your cross-references<indexterm><primary>cross-references</primary></indexterm> and citations<indexterm><primary>citations</primary></indexterm> as has already been described in Sect.&#xA0;<xref linkend="sec.Section-Heading2" />.</para>
+<blockquote>
+<para>Please do not use quotation marks when quoting texts! Simply use the <emphasis role='sans'>quotation</emphasis> environment – it will automatically render Springer's preferred layout. </para>
+</blockquote>
+<section>
+<title>Subsubsection Heading</title>
+<para>Instead of simply listing headings of different levels we recommend to let every heading be followed by at least a short passage of text. Further on please use the LyX automatism for all your cross-references and citations as has already been described in Sect.&#xA0;<xref linkend="subsec.Subsection-Heading" />, see also Fig.&#xA0;<xref linkend="fig.If-the-width" /><footnote>
+<para>If you copy text passages, figures, or tables from other works, you must obtain <emphasis>permission from the copyright holder (usually the original publisher). Please enclose the signed permission with the manuscript. The sources<indexterm><primary>permission to print</primary></indexterm> must be acknowledged either in the captions, as footnotes or in a separate section of the book.</emphasis></para>
+</footnote></para>
+<para>Please note that the first line of text that follows a heading is not indented, whereas the first lines of all subsequent paragraphs are.</para>
+<formalgroup xml:id="fig.If-the-width">
+<title>If the width of the figure is less than 7.8&#x2009;cm use the sidecapion command to flush the caption on the left side of the page. If the figure is positioned at the top of the page, align the sidecaption with the top of the figure – to achieve this you simply need to use the optional argument [t] with the sidecaption command</title>
+Error: no float found in the box. To use subfigures in DocBook, elements must be wrapped in a float inset and have a title/caption.
+<sidebar role='boxed'>
+<para>replace this box by an image</para>
+</sidebar>
+</formalgroup>
+<section>
+<title>Paragraph Heading</title>
+<para>Instead of simply listing headings of different levels we recommend to let every heading be followed by at least a short passage of text.</para>
+<para>For typesetting numbered lists we recommend to use the <emphasis role='sans'>enumerate</emphasis> environment – it will automatically render Springer's preferred layout.</para>
+<orderedlist>
+<listitem>
+<para>Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomic development.</para>
+<orderedlist>
+<listitem>
+<para>Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomic development.</para>
+</listitem>
+<listitem>
+<para>Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomic development.</para>
+</listitem>
+</orderedlist>
+</listitem>
+<listitem>
+<para>Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomic development.</para>
+</listitem>
+</orderedlist>
+</section>
+<section>
+<title>Subparagraph Heading</title>
+<para>In order to avoid simply listing headings of different levels we recommend to let every heading be followed by at least a short passage of text. Use the LyX automatism for all your cross-references and citations as has already been described in Sect.&#xA0;<xref linkend="sec.Section-Heading2" />, see also Fig.&#xA0;<xref linkend="fig.2" />.</para>
+<para>For unnumbered list we recommend to use the <emphasis role='sans'>itemize</emphasis> environment – it will automatically render Springer's preferred layout.</para>
+<itemizedlist>
+<listitem>
+<para>Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomic development, cf. Table&#xA0;<xref linkend="tab.1" />.</para>
+<itemizedlist>
+<listitem>
+<para>Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomic development.</para>
+</listitem>
+<listitem>
+<para>Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomic development.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<para>Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomic development.</para>
+</listitem>
+</itemizedlist>
+<formalgroup xml:id="fig.2">
+<title> Please write your figure caption here</title>
+Error: no float found in the box. To use subfigures in DocBook, elements must be wrapped in a float inset and have a title/caption.
+<sidebar role='boxed'>
+<para>replace this box by an image</para>
+</sidebar>
+</formalgroup>
+
+<Run-in headings>
+Run-in Heading Boldface Version
+</Run-in headings>
+<para>Use the LyX automatism for all your cross-references and citations as has already been described in Sect.&#xA0;<xref linkend="sec.Section-Heading2" />.</para>
+<Sub-run-in headings>
+Run-in Heading Italic Version
+</Sub-run-in headings>
+<para>Use the LyX automatism for all your cross-refer&#xAD;ences and citations as has already been described in Sect.&#xA0;<xref linkend="sec.Section-Heading2" /><indexterm><primary>paragraph</primary></indexterm>. <table xml:id="tab.1">
+<caption>Please write your table caption here</caption>
+<tbody>
+<tr>
+<td style ="width: 2cm;" align='center' valign='top'>Classes </td>
+<td style ="width: 2.4cm;" align='center' valign='top'>Subclass </td>
+<td style ="width: 2cm;" align='center' valign='top'>Length </td>
+<td style ="width: 4.9cm;" align='center' valign='top'>Action Mechanism </td>
+</tr>
+<tr>
+<td style ="width: 2cm;" align='center' valign='top'><!-- \svhline -->
+ Translation </td>
+<td style ="width: 2.4cm;" align='center' valign='top'>mRNA<inlineequation>
+<alt role='tex'>^{a}</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:msup><m:mrow />
+   <m:mrow><m:mi>a</m:mi>
+   </m:mrow>
+  </m:msup>
+ </m:mrow>
+ </m:math>
+</inlineequation> </td>
+<td style ="width: 2cm;" align='center' valign='top'>22 (19–25) </td>
+<td style ="width: 4.9cm;" align='center' valign='top'>Translation repression, mRNA cleavage</td>
+</tr>
+<tr>
+<td style ="width: 2cm;" align='center' valign='top'>Translation </td>
+<td style ="width: 2.4cm;" align='center' valign='top'>mRNA cleavage </td>
+<td style ="width: 2cm;" align='center' valign='top'>21 </td>
+<td style ="width: 4.9cm;" align='center' valign='top'>mRNA cleavage</td>
+</tr>
+<tr>
+<td style ="width: 2cm;" align='center' valign='top'>Translation </td>
+<td style ="width: 2.4cm;" align='center' valign='top'>mRNA </td>
+<td style ="width: 2cm;" align='center' valign='top'>21–22 </td>
+<td style ="width: 4.9cm;" align='center' valign='top'>mRNA cleavage</td>
+</tr>
+<tr>
+<td style ="width: 2cm;" align='center' valign='top'>Translation </td>
+<td style ="width: 2.4cm;" align='center' valign='top'>mRNA </td>
+<td style ="width: 2cm;" align='center' valign='top'>24–26 </td>
+<td style ="width: 4.9cm;" align='center' valign='top'>Histone and DNA Modification</td>
+</tr>
+<tr>
+<td style ="width: 2cm;" align='center' valign='top'></td>
+<td style ="width: 2.4cm;" align='center' valign='top'></td>
+<td style ="width: 2cm;" align='center' valign='top'></td>
+<td style ="width: 4.9cm;" align='center' valign='top'></td>
+</tr>
+</tbody>
+<inlineequation>
+<alt role='tex'>^{a}</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:msup><m:mrow />
+   <m:mrow><m:mi>a</m:mi>
+   </m:mrow>
+  </m:msup>
+ </m:mrow>
+ </m:math>
+</inlineequation> Table foot note (with superscript) </table>
+</para>
+</section>
+</section>
+</section>
+</section>
+<section xml:id="sec.3">
+<title>Section Heading</title>
+<para>Instead of simply listing headings of different levels we recommend to let every heading be followed by at least a short passage of text.</para>
+<para>Please note that the first line of text that follows a heading is not indented, whereas the first lines of all subsequent paragraphs are.</para>
+<para>If you want to list definitions or the like we recommend to use the Springer-enhanced <emphasis role='sans'>description</emphasis> environment – it will automatically render Springer's preferred layout.</para>
+<variablelist>
+<varlistentry>
+<term>Type 1
+Type&#xA0;1</term>
+<listitem>
+<para>That addresses central themes pertainng to migration, health, and disease. In Sect.&#xA0;<xref linkend="sec.1" />, Wilson discusses the role of human migration in infectious disease distributions and patterns.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Type&#xA0;2</term>
+<listitem>
+<para>That addresses central themes pertainng to migration, health, and disease. In Sect.&#xA0;<xref linkend="subsec.Subsection-Heading" />, Wilson discusses the role of human migration in infectious disease distributions and patterns.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<section>
+<title>Subsection Heading</title>
+<para>In order to avoid simply listing headings of different levels we recommend to let every heading be followed by at least a short passage of text.</para>
+<para>Please note that the first line of text that follows a heading is not indented, whereas the first lines of all subsequent paragraphs are.</para>
+<Svgraybox>
+If you want to emphasize complete paragraphs of texts we recommend to use the newly defined Springer class option <emphasis>graybox</emphasis> and the newly defined environment <emphasis>svgraybox</emphasis>. This will produce a 15&#x2009;percent screened box 'behind' your text.
+</Svgraybox>
+<Svgraybox>
+If you want to emphasize complete paragraphs of texts we recommend to use the newly defined Springer class option <emphasis>graybox</emphasis> and the newly defined environment <emphasis>svgraybox</emphasis>. This will produce a 15&#x2009;percent screened box 'behind' your text.
+</Svgraybox>
+<section>
+<title>Subsubsection Heading</title>
+<para>Instead of simply listing headings of different levels we recommend to let every heading be followed by at least a short passage of text.</para>
+<para>Please note that the first line of text that follows a heading is not indented, whereas the first lines of all subsequent paragraphs are.</para>
+<para role='theorem'>Name/Title (optional)
+Theorem text goes here.</para>
+<para role='definition'>Definition text goes here.</para>
+<Proof>
+Proof text goes here.
+</Proof>
+<Proof(QED)>
+&#8220;qed layout&#8221; Proof text goes here.
+</Proof(QED)>
+<section>
+<title>Paragraph Heading</title>
+<para>Instead of simply listing headings of different levels we recommend to let every heading be followed by at least a short passage of text.</para>
+<para>Note that the first line of text that follows a heading is not indented, whereas the first lines of all subsequent paragraphs are.</para>
+<para role='theorem'>Theorem text goes here.</para>
+<para role='definition'>Definition text goes here.</para>
+<Proof(smartQED)>
+&#8220;smartqed layout&#8221; Proof text goes here.
+</Proof(smartQED)>
+<acknowledgements>
+<para>If you want to include acknowledgments of assistance and the like at the end of an individual chapter please use the <emphasis role='sans'>acknowledgement</emphasis> environment – it will automatically render Springer's preferred layout.</para>
+</acknowledgements>
+<bridgehead renderas='sect1'>Appendix</bridgehead>
+<para><!-- \addcontentsline{toc}{section}{ -->
+Appendix<!-- } -->
+ When placed at the end of a chapter or contribution (as opposed to at the end of the book), the numbering of tables, figures, and equations in the appendix section continues on from that in the main text. Hence please <emphasis>do not use the <emphasis role='sans'>appendix</emphasis> command when writing an appendix at the end of your chapter or contribution. If there is only one the appendix is designated &#8220;Appendix&#8221;, or &#8220;Appendix 1&#8221;, or &#8220;Appendix 2&#8221;, etc. if there is more than one.</emphasis></para>
+<informalequation>
+<alt role='tex'>a\times b=c</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:mrow><m:mi>a</m:mi><m:mo>&#x00D7;</m:mo><m:mi>b</m:mi><m:mo>=</m:mo><m:mi>c</m:mi>
+  </m:mrow>
+ </m:mrow>
+ </m:math>
+</informalequation>
+
+<para><!-- \biblstarthook{ -->
+In view of the parallel print and (chapter-wise) online publication of your book at <link xlink:href="www.springerlink.com">www.springerlink.com</link> it has been decided that – as a general rule – references should be sorted chapter-wise and placed at the end of the individual chapters. However, upon agreement with your contact at Springer you may list your references in a single separate chapter at the end of your book. Deactivate the class option <code>sectrefs</code> and the <code>thebibliography</code> environment will be put out as a chapter of its own.</para>
+<para><!-- \indent -->
+ References may be <emphasis>cited in the text either by number (preferred) or by author/year.<footnote>
+<para>Make sure that all references from the list are cited in the text. Those not cited should be moved to a separate <emphasis>Further Reading section or chapter.</emphasis></para>
+</footnote> The reference list should ideally be <emphasis>sorted in alphabetical order – even if reference numbers are used for the their citation in the text. If there are several works by the same author, the following order should be used:</emphasis></emphasis> </para>
+<orderedlist>
+<listitem>
+<para>all works by the author alone, ordered chronologically by year of publication </para>
+</listitem>
+<listitem>
+<para>all works by the author with a coauthor, ordered alphabetically by coauthor </para>
+</listitem>
+<listitem>
+<para>all works by the author with several coauthors, ordered chronologically by year of publication. </para>
+</listitem>
+</orderedlist>
+<para>The <emphasis>styling of references<footnote>
+<para>Always use the standard abbreviation of a journal's name according to the ISSN <emphasis>List of Title Word Abbreviations, see <link xlink:href="http://www.issn.org/en/node/344">http://www.issn.org/en/node/344</link></emphasis></para>
+</footnote> depends on the subject of your book:</emphasis> </para>
+<itemizedlist>
+<listitem>
+<para>The <emphasis>two recommended styles for references in books on <emphasis>mathematical, physical, statistical and computer sciences are depicted in &#xA0;<biblioref endterm="science-contrib" />, <biblioref endterm="x-science-online" />, <biblioref endterm="x-science-mono" />, <biblioref endterm="x-science-journal" />, <biblioref endterm="x-science-DOI" /> and &#xA0;<biblioref endterm="phys-online" />, <biblioref endterm="x-phys-mono" />, <biblioref endterm="x-phys-journal" />, <biblioref endterm="x-phys-DOI" />, <biblioref endterm="x-phys-contrib" />.</emphasis></emphasis> </para>
+</listitem>
+<listitem>
+<para>Examples of the most commonly used reference style in books on <emphasis>Psychology, Social Sciences are&#xA0;<biblioref endterm="psysoc-mono" />, <biblioref endterm="x-psysoc-online" />, <biblioref endterm="psysoc-journal" />, <biblioref endterm="x-psysoc-contrib" />, <biblioref endterm="x-psysoc-DOI" />.</emphasis> </para>
+</listitem>
+<listitem>
+<para>Examples for references in books on <emphasis>Humanities, Linguistics, Philosophy are&#xA0;<biblioref endterm="humlinphil-journal" />, <biblioref endterm="x-humlinphil-contrib" />, <biblioref endterm="x-humlinphil-mono" />, <biblioref endterm="x-humlinphil-online" />, <biblioref endterm="x-humlinphil-DOI" />.</emphasis> </para>
+</listitem>
+<listitem>
+<para>Examples of the basic Springer style used in publications on a wide range of subjects such as <emphasis>Computer Science, Economics, Engineering, Geosciences, Life Sciences, Medicine, Biomedicine are &#xA0;<biblioref endterm="basic-contrib" />, <biblioref endterm="x-basic-online" />, <biblioref endterm="x-basic-journal" />, <biblioref endterm="x-basic-DOI" />, <biblioref endterm="x-basic-mono" />.</emphasis> </para>
+</listitem>
+</itemizedlist>
+<para><!-- } -->
+</para>
+</section>
+</section>
+</section>
+</section>
+</part>
+<bibliography>
+<bibliomixed xml:id='science-contrib'> Broy, M.: Software engineering — from auxiliary to key technologies. In: Broy, M., Dener, E. (eds.) Software Pioneers, pp. 10-13. Springer, Heidelberg (2002)</bibliomixed>
+<bibliomixed xml:id='science-online'> Dod, J.: Effective substances. In: The Dictionary of Substances and Their Effects. Royal Society of Chemistry (1999) Available via DIALOG.  <link xlink:href="http://www.rsc.org/dose/title of subordinate document. Cited 15 Jan 1999">http://www.rsc.org/dose/title of subordinate document. Cited 15 Jan 1999</link> </bibliomixed>
+<bibliomixed xml:id='science-mono'> Geddes, K.O., Czapor, S.R., Labahn, G.: Algorithms for Computer Algebra. Kluwer, Boston (1992)</bibliomixed>
+<bibliomixed xml:id='science-journal'> Hamburger, C.: Quasimonotonicity, regularity and duality for nonlinear systems of partial differential equations. Ann. Mat. Pura. Appl. <emphasis role='bold'>169</emphasis>, 321–354 (1995)</bibliomixed>
+<bibliomixed xml:id='science-DOI'> Slifka, M.K., Whitton, J.L.: Clinical implications of dysregulated cytokine production. J. Mol. Med. (2000) doi: 10.1007/s001090000086 
+</bibliomixed>
+</bibliography>
+<bibliography>
+<bibliomixed xml:id='phys-online'> J. Dod, in <emphasis>The Dictionary of Substances and Their Effects, Royal Society of Chemistry. (Available via DIALOG, 1999), <link xlink:href="http://www.rsc.org/dose/title of subordinate document. Cited 15 Jan 1999">http://www.rsc.org/dose/title of subordinate document. Cited 15 Jan 1999</link></emphasis></bibliomixed>
+<bibliomixed xml:id='phys-mono'> H. Ibach, H. Lüth, <emphasis>Solid-State Physics, 2nd edn. (Springer, New York, 1996), pp. 45-56</emphasis></bibliomixed>
+<bibliomixed xml:id='phys-journal'> S. Preuss, A. Demchuk Jr., M. Stuke, Appl. Phys. A <emphasis role='bold'>61</emphasis></bibliomixed>
+<bibliomixed xml:id='phys-DOI'> M.K. Slifka, J.L. Whitton, J. Mol. Med., doi: 10.1007/s001090000086</bibliomixed>
+<bibliomixed xml:id='phys-contrib'> S.E. Smith, in <emphasis>Neuromuscular Junction, ed. by E. Zaimis. Handbook of Experimental Pharmacology, vol 42 (Springer, Heidelberg, 1976), p. 593 
+</emphasis></bibliomixed>
+<bibliomixed xml:id='psysoc-mono'> Calfee, R.&#xA0;C., &amp; Valencia, R.&#xA0;R. (1991). <emphasis>APA guide to preparing manuscripts for journal publication. Washington, DC: American Psychological Association.</emphasis></bibliomixed>
+<bibliomixed xml:id='psysoc-online'> Dod, J. (1999). Effective substances. In: The dictionary of substances and their effects. Royal Society of Chemistry. Available via DIALOG.  <link xlink:href="http://www.rsc.org/dose/Effective substances.">http://www.rsc.org/dose/Effective substances.</link> Cited 15 Jan 1999.</bibliomixed>
+<bibliomixed xml:id='psysoc-journal'> Harris, M., Karper, E., Stacks, G., Hoffman, D., DeNiro, R., Cruz, P., et al. (2001). Writing labs and the Hollywood connection. <emphasis>J Film Writing, 44(3), 213–245.</emphasis></bibliomixed>
+<bibliomixed xml:id='psysoc-contrib'> O'Neil, J.&#xA0;M., &amp; Egan, J. (1992). Men's and women's gender role journeys: Metaphor for healing, transition, and transformation. In B.&#xA0;R. Wainrig (Ed.), <emphasis>Gender issues across the life cycle (pp. 107–123). New York: Springer.</emphasis></bibliomixed>
+<bibliomixed xml:id='psysoc-DOI'>Kreger, M., Brindis, C.D., Manuel, D.M., Sassoubre, L. (2007). Lessons learned in systems change initiatives: benchmarks and indicators. <emphasis>American Journal of Community Psychology, doi: 10.1007/s10464-007-9108-14. 
+</emphasis></bibliomixed>
+<bibliomixed xml:id='humlinphil-journal'> Alber John, Daniel C. O'Connell, and Sabine Kowal. 2002. Personal perspective in TV interviews. <emphasis>Pragmatics 12:257–271</emphasis></bibliomixed>
+<bibliomixed xml:id='humlinphil-contrib'> Cameron, Deborah. 1997. Theoretical debates in feminist linguistics: Questions of sex and gender. In <emphasis>Gender and discourse, ed. Ruth Wodak, 99–119. London: Sage Publications.</emphasis></bibliomixed>
+<bibliomixed xml:id='humlinphil-mono'> Cameron, Deborah. 1985. <emphasis>Feminism and linguistic theory. New York: St. Martin's Press.</emphasis></bibliomixed>
+<bibliomixed xml:id='humlinphil-online'> Dod, Jake. 1999. Effective substances. In: The dictionary of substances and their effects. Royal Society of Chemistry. Available via DIALOG.  http://www.rsc.org/dose/title of subordinate document. Cited 15 Jan 1999</bibliomixed>
+<bibliomixed xml:id='humlinphil-DOI'> Suleiman, Camelia, Daniel C. O'Connell, and Sabine Kowal. 2002. `If you and I, if we, in this later day, lose that sacred fire...´': Perspective in political interviews. <emphasis>Journal of Psycholinguistic Research. doi: 10.1023/A:1015592129296. 
+</emphasis></bibliomixed>
+<bibliomixed xml:id='basic-contrib'> Brown B, Aaron M (2001) The politics of nature. In: Smith J (ed) The rise of modern genomics, 3rd edn. Wiley, New York</bibliomixed>
+<bibliomixed xml:id='basic-online'> Dod J (1999) Effective Substances. In: The dictionary of substances and their effects. Royal Society of Chemistry. Available via DIALOG.  <link xlink:href="http://www.rsc.org/dose/title of subordinate document. Cited 15 Jan 1999">http://www.rsc.org/dose/title of subordinate document. Cited 15 Jan 1999</link></bibliomixed>
+<bibliomixed xml:id='basic-DOI'> Slifka MK, Whitton JL (2000) Clinical implications of dysregulated cytokine production. J Mol Med, doi: 10.1007/s001090000086</bibliomixed>
+<bibliomixed xml:id='basic-journal'> Smith J, Jones M Jr, Houghton L et al (1999) Future of health insurance. N Engl J Med 965:325–329</bibliomixed>
+<bibliomixed xml:id='basic-mono'> South J, Blass B (2001) The future of modern genomics. Blackwell, London </bibliomixed>
+</bibliography>
+<ChapMotto>
+All's well that ends well
+</ChapMotto>
+<title>Chapter Heading<anchor xml:id="chap.introA" /></title>
+<titleabbrev>chapter heading in the running head</titleabbrev>
+<section xml:id="sec.Section-HeadingA">
+<title>Section Heading</title>
+<titleabbrev>section heading in the running head</titleabbrev>
+<para>bla</para>
+<section xml:id="subsec.Section-HeadingA-2">
+<title>Section Heading 2</title>
+<para>For multiline equations we recommend to use the <emphasis role='sans'>eqnarray</emphasis> environment. 
+<informalequation xml:id="eq.A01">
+<alt role='tex'>a\times b &amp; = &amp; c\nonumber \\
+\vec{a}\cdot\vec{b} &amp; = &amp; c\label{eq:A01}
+</alt>
+ <m:math>
+ 
+ <m:mtable>
+  <m:mtr>
+   <m:mtd>
+    <m:mrow><m:mi>a</m:mi><m:mo>&#x00D7;</m:mo><m:mi>b</m:mi>
+    </m:mrow>
+   </m:mtd>
+   <m:mtd><m:mo>=</m:mo>
+   </m:mtd>
+   <m:mtd><m:mi>c</m:mi>
+   </m:mtd>
+  </m:mtr>
+  <m:mtr>
+   <m:mtd>
+    <m:mrow>
+     <m:mover>
+      <m:mrow><m:mi>a</m:mi>
+      </m:mrow><m:mo stretchy="true">&#x2192;</m:mo>
+     </m:mover><m:mo>&#x22C5;</m:mo>
+     <m:mover>
+      <m:mrow><m:mi>b</m:mi>
+      </m:mrow><m:mo stretchy="true">&#x2192;</m:mo>
+     </m:mover>
+    </m:mrow>
+   </m:mtd>
+   <m:mtd><m:mo>=</m:mo>
+   </m:mtd>
+   <m:mtd><m:mi>c</m:mi>
+   </m:mtd>
+  </m:mtr>
+ </m:mtable>
+ </m:math>
+</informalequation>
+</para>
+<section>
+<title>Subsubsection Heading</title>
+<formalgroup xml:id="fig.A1">
+<title> Please write your figure caption here</title>
+Error: no float found in the box. To use subfigures in DocBook, elements must be wrapped in a float inset and have a title/caption.
+<sidebar role='boxed'>
+<para>replace this box by an image</para>
+</sidebar>
+</formalgroup>
+<table xml:id="tab.A1">
+<caption>Please write your table caption here</caption>
+<tbody>
+<tr>
+<td style ="width: 2cm;" align='center' valign='top'>Classes </td>
+<td style ="width: 2.4cm;" align='center' valign='top'>Subclass </td>
+<td style ="width: 2cm;" align='center' valign='top'>Length </td>
+<td style ="width: 4.9cm;" align='center' valign='top'>Action Mechanism </td>
+</tr>
+<tr>
+<td style ="width: 2cm;" align='center' valign='top'><!-- \svhline -->
+ Translation </td>
+<td style ="width: 2.4cm;" align='center' valign='top'>mRNA<inlineequation>
+<alt role='tex'>^{a}</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:msup><m:mrow />
+   <m:mrow><m:mi>a</m:mi>
+   </m:mrow>
+  </m:msup>
+ </m:mrow>
+ </m:math>
+</inlineequation> </td>
+<td style ="width: 2cm;" align='center' valign='top'>22 (19–25) </td>
+<td style ="width: 4.9cm;" align='center' valign='top'>Translation repression, mRNA cleavage</td>
+</tr>
+<tr>
+<td style ="width: 2cm;" align='center' valign='top'>Translation </td>
+<td style ="width: 2.4cm;" align='center' valign='top'>mRNA cleavage </td>
+<td style ="width: 2cm;" align='center' valign='top'>21 </td>
+<td style ="width: 4.9cm;" align='center' valign='top'>mRNA cleavage</td>
+</tr>
+<tr>
+<td style ="width: 2cm;" align='center' valign='top'>Translation </td>
+<td style ="width: 2.4cm;" align='center' valign='top'>mRNA </td>
+<td style ="width: 2cm;" align='center' valign='top'>21–22 </td>
+<td style ="width: 4.9cm;" align='center' valign='top'>mRNA cleavage</td>
+</tr>
+<tr>
+<td style ="width: 2cm;" align='center' valign='top'>Translation </td>
+<td style ="width: 2.4cm;" align='center' valign='top'>mRNA </td>
+<td style ="width: 2cm;" align='center' valign='top'>24–26 </td>
+<td style ="width: 4.9cm;" align='center' valign='top'>Histone and DNA Modification</td>
+</tr>
+<tr>
+<td style ="width: 2cm;" align='center' valign='top'></td>
+<td style ="width: 2.4cm;" align='center' valign='top'></td>
+<td style ="width: 2cm;" align='center' valign='top'></td>
+<td style ="width: 4.9cm;" align='center' valign='top'></td>
+</tr>
+</tbody>
+<inlineequation>
+<alt role='tex'>^{a}</alt>
+ <m:math>
+ 
+ <m:mrow>
+  <m:msup><m:mrow />
+   <m:mrow><m:mi>a</m:mi>
+   </m:mrow>
+  </m:msup>
+ </m:mrow>
+ </m:math>
+</inlineequation> Table foot note (with superscript) </table>
+
+<bridgehead renderas='other' otherrenderas='chapter'>Glossary</bridgehead>
+<para>Here comes the glossary<indexterm><primary>glossary</primary></indexterm></para>
+<Run-in headings>
+glossary term
+</Run-in headings>
+<para>Write here the description of the glossary term. Write here the description of the glossary term. Write here the description of the glossary term.</para>
+<Run-in headings>
+glossary term
+</Run-in headings>
+<para>Write here the description of the glossary term. Write here the description of the glossary term. Write here the description of the glossary term.</para>
+<Run-in headings>
+glossary term
+</Run-in headings>
+<para>Write here the description of the glossary term. Write here the description of the glossary term. Write here the description of the glossary term.</para>
+<Run-in headings>
+glossary term
+</Run-in headings>
+<para>Write here the description of the glossary term. Write here the description of the glossary term. Write here the description of the glossary term.</para>
+<Run-in headings>
+glossary term
+</Run-in headings>
+<para>Write here the description of the glossary term. Write here the description of the glossary term. Write here the description of the glossary term.</para>
+</section>
+</section>
+</section>
+</book>

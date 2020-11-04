@@ -727,9 +727,15 @@ bool isLayoutSectioning(Layout const & lay)
 {
 	if (lay.docbooksection()) // Special case: some DocBook styles must be handled as sections.
 		return true;
-	else if (lay.category() == from_utf8("Sectioning")) // Generic case.
+	else if (lay.category() == from_utf8("Sectioning") || lay.docbooktag() == "section") // Generic case.
 		return lay.toclevel != Layout::NOT_IN_TOC;
 	return false;
+}
+
+
+bool isLayoutSectioningOrSimilar(Layout const & lay)
+{
+	return isLayoutSectioning(lay) || lay.docbooktag() == "bridgehead";
 }
 
 
@@ -757,7 +763,7 @@ DocBookDocumentSectioning hasDocumentSectioning(ParagraphList const &paragraphs,
 
 	while (bpit < epit) {
 		Layout const &style = paragraphs[bpit].layout();
-		documentHasSections |= isLayoutSectioning(style);
+		documentHasSections |= isLayoutSectioningOrSimilar(style);
 
 		if (documentHasSections)
 			break;
@@ -823,7 +829,7 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs,
 
 		// There should never be any section here, except for the first paragraph (a title can be part of <info>).
 		// (Just a sanity check: if this fails, this function could end up processing the whole document.)
-		if (cpit != bpit && isLayoutSectioning(par.layout())) {
+		if (cpit != bpit && isLayoutSectioningOrSimilar(par.layout())) {
 			LYXERR0("Assertion failed: section found in potential <info> paragraphs.");
 			break;
 		}
