@@ -128,6 +128,10 @@ Style Abstract
 	LabelFont
 	  Shape               Smallcaps
 	EndFont
+	DocBookTag            para
+	DocBookWrapperTag     abstract
+	DocBookWrapperMergeWithPrevious true
+	DocBookInInfo         always
 End
 
 # Clear Address definition from lyxmacros

@@ -447,9 +447,9 @@ export/templates/Letters/KOMA-Script_Letter_%28V._2%29_docbook5
 export/examples(|/de)/Letters/Serial_Letter_.*_docbook5
 #   - DIN-Brief: order of paragraphs cannot match valid DocBook.
 export/templates/Letters/DIN-Brief_docbook5
-#   - AMS Book: order of elements is not compatible with DocBook (some parts must be in <info>, others cannot, while
+#   - AMS: order of elements is not compatible with DocBook (some parts must be in <info>, others cannot, while
 #     still being in the book's header).
-export/examples/Books/American_Mathematical_Society_%28AMS%29_docbook5
+export/examples/.*/American_Mathematical_Society_%28AMS%29_docbook5
 # - Branches may cause problems (especially when mixing with parts that must go in <info>).
 export/export/latex/languages/supported-languages_(|babel|babel_auto-legacy|polyglossia)_?docbook5
 
