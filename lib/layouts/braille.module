@@ -39,6 +39,8 @@ Style Braille_(default)
 	  Shape		Italic
 	  Color		Blue
 	EndFont
+	DocBookTag  para
+	DocBookAttr role='braille'
 End
 
 
@@ -62,6 +64,8 @@ Style Braille_(textsize)
 	  Shape		Italic
 	  Color		Blue
 	EndFont
+	DocBookTag  para
+	DocBookAttr role='braille-text'
 End
 
 
@@ -86,6 +90,8 @@ Style Braille_(dots_on)
 	  Shape		Italic
 	  Color		Green
 	EndFont
+	DocBookTag  para
+	DocBookAttr role='braille-dots-on'
 End
 
 
@@ -110,6 +116,8 @@ Style Braille_(dots_off)
 	  Shape		Italic
 	  Color		Green
 	EndFont
+	DocBookTag  para
+	DocBookAttr role='braille-dots-off'
 End
 
 
@@ -134,6 +142,8 @@ Style Braille_(mirror_on)
 	  Shape		Italic
 	  Color		Green
 	EndFont
+	DocBookTag  para
+	DocBookAttr role='braille-mirror-on'
 End
 
 
@@ -158,6 +168,8 @@ Style Braille_(mirror_off)
 	  Shape		Italic
 	  Color		Green
 	EndFont
+	DocBookTag  para
+	DocBookAttr role='braille-mirror-off'
 End
 
 
