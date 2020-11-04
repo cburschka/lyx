@@ -403,7 +403,7 @@ export/templates/Obsolete/.*_docbook5
 # - No real content apart from metadata (forbidden in DocBook).
 export/export/mixing_inTitle_layouts_docbook5
 # - Uses a book class, but has no chapters (forbidden in DocBook).
-export/doc/(|de|es|fr|ja).*(Dummy|Postizo|Bidon).*_docbook5
+export/doc(|/de|/es|/fr|/ja).*(Dummy|Postizo|Bidon).*_docbook5
 export/export/MissingEndLayoutBetweenTables_docbook5
 export/export/latex/languages/ja-listings-uncodable-error_docbook5
 export/export/latex/lyxbugs-resolved/9633-languagenesting_enumerate_and_lyxcode_docbook5
@@ -417,8 +417,7 @@ export/export/latex/textcyr-textgreek-test_docbook5
 export/export/latex/languages/en-th_utf8_docbook5
 export/export/latex/languages/th-en_utf8_docbook5
 # - Formula in <code> tags.
-export/examples/(de|es|fr|ja|ru)/Graphics_and_Insets/XY-(Pic|Figure)_docbook5
-export/examples/Graphics_and_Insets/XY-Figure_docbook5
+export/examples(|/de|/es|/fr|/ja|/ru)/Graphics_and_Insets/XY-(Pic|Figure)_docbook5
 # - Math macros not implemented.
 export/mathmacros/testcases_speed_docbook5
 export/mathmacros/testcases_environments_docbook5
@@ -434,7 +433,7 @@ export/export/docbook/sv.*_docbook5
 #   - scrbook with too many customisations.
 export/templates/Theses/PhD_Thesis/.*_docbook5
 #   - Hollywood, too much formatting in elements DocBook does not allow to be formatted (like address).
-export/templates/Scripts/Hollywood_docbook5
+export/(templates|examples)/Scripts/Hollywood_docbook5
 export/export/docbook/Hollywood_docbook5
 #   - Lettre, formatting in elements DocBook does not allow to be formatted (like email).
 export/templates/Letters/French_Letter_%28lettre%29_docbook5
@@ -445,7 +444,7 @@ export/templates/Letters/G-Brief_%28V._2%29_docbook5
 export/templates/Obsolete/G-Brief_%28V._1,_Obsolete%29/.*_docbook5
 #   - KOMA-Script Letter: too hard to output phone and fax numbers at the right place (need two levels of wrapping).
 export/templates/Letters/KOMA-Script_Letter_%28V._2%29_docbook5
-export/examples/Letters/Serial_Letter_.*_docbook5
+export/examples(|/de)/Letters/Serial_Letter_.*_docbook5
 #   - DIN-Brief: order of paragraphs cannot match valid DocBook.
 export/templates/Letters/DIN-Brief_docbook5
 #   - AMS Book: order of elements is not compatible with DocBook (some parts must be in <info>, others cannot, while
