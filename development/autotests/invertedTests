@@ -422,6 +422,8 @@ export/examples(|/de|/es|/fr|/ja|/ru)/Graphics_and_Insets/XY-(Pic|Figure)_docboo
 export/mathmacros/testcases_speed_docbook5
 export/mathmacros/testcases_environments_docbook5
 export/mathmacros/masterOfSpace_docbook5
+# - Sidebars can be nested in LyX (mostly with shapepar), but not in DocBook.
+export/doc(|/de|/es|/fr|/ja|/ru)/Additional_docbook5
 # - Many templates are too complex for automatic conversion to work reliably.
 #   The resulting documents should still be easy to fully convert into DocBook.
 #   - AASTeX.
