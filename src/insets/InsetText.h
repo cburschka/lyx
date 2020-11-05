@@ -114,8 +114,8 @@ public:
 	///
 	void setFrameColor(ColorCode);
 	///
-	Text * getText(int i) const override {
-		return (i == 0) ? const_cast<Text*>(&text_) : 0;
+	Text * getText(int idx) const override {
+		return (idx == 0) ? const_cast<Text*>(&text_) : nullptr;
 	}
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const override;

@@ -504,9 +504,9 @@ void BufferView::processUpdateFlags(Update::flags flags)
 	// We handle this before FitCursor because the later will require
 	// correct metrics at cursor position.
 	if (!(flags & Update::ForceDraw)
-	    && (flags & Update::SinglePar)
-		&& !singleParUpdate())
-			updateMetrics(flags);
+			&& (flags & Update::SinglePar)
+			&& !singleParUpdate())
+		updateMetrics(flags);
 
 	// Then make sure that the screen contains the cursor if needed
 	if (flags & Update::FitCursor) {

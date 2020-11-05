@@ -529,8 +529,8 @@ public:
 	///
 	virtual bool allowSpellCheck() const { return false; }
 
-	/// if this insets owns text cells (e.g. InsetText) return cell num
-	virtual Text * getText(int /*num*/) const { return 0; }
+	/// if this insets owns text cells (e.g. InsetText) return cell idx
+	virtual Text * getText(int /*idx*/) const { return 0; }
 
 	/** Adds a LaTeX snippet to the Preview Loader for transformation
 	 *  into a bitmap image. Does not start the loading process.
