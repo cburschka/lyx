@@ -453,6 +453,10 @@ void makeParagraph(
 	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
 		return inset.inset && inset.inset->asInsetMath() && inset.inset->asInsetMath()->getType() != hullSimple;
 	});
+	// Tables doe not deserve their own paragraphs (DocBook allows them outside paragraphs).
+	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
+		return inset.inset->lyxCode() == TABULAR_CODE;
+	});
 	// Floats cannot be in paragraphs.
 	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
 		return inset.inset->lyxCode() == FLOAT_CODE;
