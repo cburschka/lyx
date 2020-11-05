@@ -88,40 +88,78 @@ void InsetMathXArrow::mathmlize(MathStream & ms) const
 {
 	char const * arrow;
 
-	if (name_ == "xleftarrow")
-		arrow = "&larr;";
-	else if (name_ == "xrightarrow")
-		arrow = "&rarr;";
-	else if (name_ == "xhookleftarrow")
-		arrow = "&larrhk;";
-	else if (name_ == "xhookrightarrow")
-		arrow = "&rarrhk;";
-	else if (name_ == "xLeftarrow")
-		arrow = "&lArr;";
-	else if (name_ == "xRightarrow")
-		arrow = "&rArr;";
-	else if (name_ == "xleftrightarrow")
-		arrow = "&leftrightarrow;";
-	else if (name_ == "xLeftrightarrow")
-		arrow = "&Leftrightarrow;";
-	else if (name_ == "xleftharpoondown")
-		arrow = "&leftharpoondown;";
-	else if (name_ == "xleftharpoonup")
-		arrow = "&leftharpoonup;";
-	else if (name_ == "xleftrightharpoons")
-		arrow = "&leftrightharpoons;";
-	else if (name_ == "xrightharpoondown")
-		arrow = "&rightharpoondown;";
-	else if (name_ == "xrightharpoonup")
-		arrow = "&rightharpoonup;";
-	else if (name_ == "xrightleftharpoons")
-		arrow = "&rightleftharpoons;";
-	else if (name_ == "xmapsto")
-		arrow = "&mapsto;";
-	else {
-		lyxerr << "mathmlize conversion for '" << name_ << "' not implemented" << endl;
-		LASSERT(false, arrow = "&rarr;");
+	if (!ms.xmlMode()) { // Use HTML entities.
+		if (name_ == "xleftarrow")
+			arrow = "&larr;";
+		else if (name_ == "xrightarrow")
+			arrow = "&rarr;";
+		else if (name_ == "xhookleftarrow")
+			arrow = "&larrhk;";
+		else if (name_ == "xhookrightarrow")
+			arrow = "&rarrhk;";
+		else if (name_ == "xLeftarrow")
+			arrow = "&lArr;";
+		else if (name_ == "xRightarrow")
+			arrow = "&rArr;";
+		else if (name_ == "xleftrightarrow")
+			arrow = "&leftrightarrow;";
+		else if (name_ == "xLeftrightarrow")
+			arrow = "&Leftrightarrow;";
+		else if (name_ == "xleftharpoondown")
+			arrow = "&leftharpoondown;";
+		else if (name_ == "xleftharpoonup")
+			arrow = "&leftharpoonup;";
+		else if (name_ == "xleftrightharpoons")
+			arrow = "&leftrightharpoons;";
+		else if (name_ == "xrightharpoondown")
+			arrow = "&rightharpoondown;";
+		else if (name_ == "xrightharpoonup")
+			arrow = "&rightharpoonup;";
+		else if (name_ == "xrightleftharpoons")
+			arrow = "&rightleftharpoons;";
+		else if (name_ == "xmapsto")
+			arrow = "&mapsto;";
+		else {
+			lyxerr << "mathmlize conversion for '" << name_ << "' not implemented" << endl;
+			LASSERT(false, arrow = "&rarr;");
+		}
+	} else { // Use XML entities.
+		if (name_ == "xleftarrow")
+			arrow = "&#x2190;";
+		else if (name_ == "xrightarrow")
+			arrow = "&#x2192;";
+		else if (name_ == "xhookleftarrow")
+			arrow = "&#x21a9;";
+		else if (name_ == "xhookrightarrow")
+			arrow = "&#x21aa;";
+		else if (name_ == "xLeftarrow")
+			arrow = "&#x21d0;";
+		else if (name_ == "xRightarrow")
+			arrow = "&#x21d2;";
+		else if (name_ == "xleftrightarrow")
+			arrow = "&#x2194;";
+		else if (name_ == "xLeftrightarrow")
+			arrow = "&#x21d4;";
+		else if (name_ == "xleftharpoondown")
+			arrow = "&#x21bd;";
+		else if (name_ == "xleftharpoonup")
+			arrow = "&#x21bc;";
+		else if (name_ == "xleftrightharpoons")
+			arrow = "&#x21cb;";
+		else if (name_ == "xrightharpoondown")
+			arrow = "&#x21c1;";
+		else if (name_ == "xrightharpoonup")
+			arrow = "&#x21c0;";
+		else if (name_ == "xrightleftharpoons")
+			arrow = "&#x21cc;";
+		else if (name_ == "xmapsto")
+			arrow = "&#x21a6;";
+		else {
+			lyxerr << "mathmlize XML conversion for '" << name_ << "' not implemented" << endl;
+			LASSERT(false, arrow = "&#x2192;");
+		}
 	}
+
 	ms << "<" << from_ascii(ms.namespacedTag("munderover")) << " accent='false' accentunder='false'>"
 	   << arrow << cell(1) << cell(0)
 	   << "</" << from_ascii(ms.namespacedTag("munderover"))<< ">";
