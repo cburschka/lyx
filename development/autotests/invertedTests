@@ -412,18 +412,18 @@ export/export/xhtml/zh_CN_Tutorial_docbook5
 # - Formal groups do not work when there is (sample) text instead of real content.
 export/examples/Books/Tufte_Book_docbook5
 # - No proper document title (should be fixable).
+!export/export/latex/inputenc-utf8-platex_docbook5
 export/export/latex/inputenc-.*_docbook5
 export/export/latex/textcyr-textgreek-test_docbook5
-export/export/latex/languages/en-th_utf8_docbook5
-export/export/latex/languages/th-en_utf8_docbook5
 # - Formula in <code> tags.
-export/examples(|/de|/es|/fr|/ja|/ru)/Graphics_and_Insets/XY-(Pic|Figure)_docbook5
+!export/examples/(fr|ru)/Graphics_and_Insets/XY-Figure_docbook5
+export/examples/(de|es|fr|ja|ru)/Graphics_and_Insets/XY-(Pic|Figure)_docbook5
 # - Math macros not implemented.
 export/mathmacros/testcases_speed_docbook5
 export/mathmacros/testcases_environments_docbook5
 export/mathmacros/masterOfSpace_docbook5
 # - Sidebars can be nested in LyX (mostly with shapepar), but not in DocBook.
-export/doc(|/de|/es|/fr|/ja|/ru)/Additional_docbook5
+export/doc(|/de|/es|/fr|/ja)/Additional_docbook5
 # - Many templates are too complex for automatic conversion to work reliably.
 #   The resulting documents should still be easy to fully convert into DocBook.
 #   - AASTeX.
