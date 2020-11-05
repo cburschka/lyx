@@ -461,6 +461,10 @@ export/doc(|/de|/es|/fr|/ja)/EmbeddedObjects_docbook5
 export/doc(|/de|/es|/fr|/ja|/ru)/Math_docbook5
 # - UserGuide: formula in inline tag, use of fancyhdr
 export/doc(|/de|/es|/fr|/ja|/ru)/UserGuide_docbook5
+# - Customization: double inlines (code within code, typically).
+export/doc/(es|fr|ja)/Customization_docbook5
+# - Tutorial: double inlines (personname within personname).
+export/doc/gl/Tutorial_docbook5
 
 Sublabel: docbook poster
 # Posters cannot be properly exported, the LyX documents are too far from
