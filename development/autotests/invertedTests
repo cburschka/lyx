@@ -453,7 +453,7 @@ export/templates/Letters/DIN-Brief_docbook5
 #     still being in the book's header).
 export/examples/.*/American_Mathematical_Society_%28AMS%29_docbook5
 # - Branches may cause problems (especially when mixing with parts that must go in <info>).
-export/export/latex/languages/supported-languages_(|babel|babel_auto-legacy|polyglossia)_?docbook5
+export/export/latex/languages/supported-languages_(|babel|babel_auto-legacy)_?docbook5
 # - EmbeddedObjects: this document is too complex, with captions within tables, many LaTeX parameters when including
 #   a file, uncaptioned tables in the same float, etc.
 export/doc(|/de|/es|/fr|/ja)/EmbeddedObjects_docbook5
