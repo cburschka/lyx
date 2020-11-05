@@ -450,56 +450,56 @@ docstring InsetGraphics::toDocbookLength(Length const & len) const
 {
 	odocstringstream result;
 	switch (len.unit()) {
-		case Length::SP: // Scaled point (65536sp = 1pt) TeX's smallest unit.
-			result << len.value() * 65536.0 * 72 / 72.27 << "pt";
-			break;
-		case Length::PT: // Point = 1/72.27in = 0.351mm
-			result << len.value() * 72 / 72.27 << "pt";
-			break;
-		case Length::BP: // Big point (72bp = 1in), also PostScript point
-			result << len.value() << "pt";
-			break;
-		case Length::DD: // Didot point = 1/72 of a French inch, = 0.376mm
-			result << len.value() * 0.376 << "mm";
-			break;
-		case Length::MM: // Millimeter = 2.845pt
-			result << len.value() << "mm";
-			break;
-		case Length::PC: // Pica = 12pt = 4.218mm
-			result << len.value() << "pc";
-			break;
-		case Length::CC: // Cicero = 12dd = 4.531mm
-			result << len.value() * 4.531 << "mm";
-			break;
-		case Length::CM: // Centimeter = 10mm = 2.371pc
-			result << len.value() << "cm";
-			break;
-		case Length::IN: // Inch = 25.4mm = 72.27pt = 6.022pc
-			result << len.value() << "in";
-			break;
-		case Length::EX: // Height of a small "x" for the current font.
-			// Obviously we have to compromise here. Any better ratio than 1.5 ?
-			result << len.value() / 1.5 << "em";
-			break;
-		case Length::EM: // Width of capital "M" in current font.
-			result << len.value() << "em";
-			break;
-		case Length::MU: // Math unit (18mu = 1em) for positioning in math mode
-			result << len.value() * 18 << "em";
-			break;
-		case Length::PTW: // Percent of TextWidth
-		case Length::PCW: // Percent of ColumnWidth
-		case Length::PPW: // Percent of PageWidth
-		case Length::PLW: // Percent of LineWidth
-		case Length::PTH: // Percent of TextHeight
-		case Length::PPH: // Percent of PaperHeight
-		case Length::BLS: // Percent of BaselineSkip
-			// Sigh, this will go wrong.
-			result << len.value() << "%";
-			break;
-		default:
-			result << len.asDocstring();
-			break;
+	case Length::SP: // Scaled point (65536sp = 1pt) TeX's smallest unit.
+		result << len.value() * 65536.0 * 72 / 72.27 << "pt";
+		break;
+	case Length::PT: // Point = 1/72.27in = 0.351mm
+		result << len.value() * 72 / 72.27 << "pt";
+		break;
+	case Length::BP: // Big point (72bp = 1in), also PostScript point
+		result << len.value() << "pt";
+		break;
+	case Length::DD: // Didot point = 1/72 of a French inch, = 0.376mm
+		result << len.value() * 0.376 << "mm";
+		break;
+	case Length::MM: // Millimeter = 2.845pt
+		result << len.value() << "mm";
+		break;
+	case Length::PC: // Pica = 12pt = 4.218mm
+		result << len.value() << "pc";
+		break;
+	case Length::CC: // Cicero = 12dd = 4.531mm
+		result << len.value() * 4.531 << "mm";
+		break;
+	case Length::CM: // Centimeter = 10mm = 2.371pc
+		result << len.value() << "cm";
+		break;
+	case Length::IN: // Inch = 25.4mm = 72.27pt = 6.022pc
+		result << len.value() << "in";
+		break;
+	case Length::EX: // Height of a small "x" for the current font.
+		// Obviously we have to compromise here. Any better ratio than 1.5 ?
+		result << len.value() / 1.5 << "em";
+		break;
+	case Length::EM: // Width of capital "M" in current font.
+		result << len.value() << "em";
+		break;
+	case Length::MU: // Math unit (18mu = 1em) for positioning in math mode
+		result << len.value() * 18 << "em";
+		break;
+	case Length::PTW: // Percent of TextWidth
+	case Length::PCW: // Percent of ColumnWidth
+	case Length::PPW: // Percent of PageWidth
+	case Length::PLW: // Percent of LineWidth
+	case Length::PTH: // Percent of TextHeight
+	case Length::PPH: // Percent of PaperHeight
+	case Length::BLS: // Percent of BaselineSkip
+		// Sigh, this will go wrong.
+		result << len.value() << "%";
+		break;
+	default:
+		result << len.asDocstring();
+		break;
 	}
 	return result.str();
 }
@@ -511,27 +511,23 @@ docstring InsetGraphics::createDocBookAttributes() const
 	// stream since we copied the code from createLatexParams() ;-)
 
 	odocstringstream options;
-	double const scl = convert<double>(params().scale);
+	auto const scl = convert<double>(params().scale);
 	if (!params().scale.empty() && !float_equal(scl, 0.0, 0.05)) {
 		if (!float_equal(scl, 100.0, 0.05))
 			options << " scale=\""
-				<< support::iround(scl)
-				<< "\" ";
+				    << support::iround(scl)
+				    << "\" ";
 	} else {
-		if (!params().width.zero()) {
+		if (!params().width.zero())
 			options << " width=\"" << toDocbookLength(params().width)  << "\" ";
-		}
-		if (!params().height.zero()) {
+		if (!params().height.zero())
 			options << " depth=\"" << toDocbookLength(params().height)  << "\" ";
-		}
-		if (params().keepAspectRatio) {
+		if (params().keepAspectRatio)
 			// This will be irrelevant unless both width and height are set
 			options << "scalefit=\"1\" ";
-		}
 	}
 
-	if (!params().special.empty())
-		options << from_ascii(params().special) << " ";
+	// TODO: parse params().special?
 
 	// trailing blanks are ok ...
 	return options.str();
