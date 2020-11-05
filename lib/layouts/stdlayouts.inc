@@ -77,7 +77,7 @@ Style Verse
 	HTMLTag               blockquote
 	HTMLItem              p
 	DocBookTag            literallayout
-	DocBookItemTag        para
+	DocBookTagType        paragraph
 End
 
 

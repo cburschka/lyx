@@ -459,6 +459,8 @@ export/export/latex/languages/supported-languages_(|babel|babel_auto-legacy|poly
 export/doc(|/de|/es|/fr|/ja)/EmbeddedObjects_docbook5
 # - Math: formula in inline tag, formula with two references (only one xml:id allowed per <equation> tag).
 export/doc(|/de|/es|/fr|/ja|/ru)/Math_docbook5
+# - UserGuide: formula in inline tag, use of fancyhdr
+export/doc(|/de|/es|/fr|/ja|/ru)/UserGuide_docbook5
 
 Sublabel: docbook poster
 # Posters cannot be properly exported, the LyX documents are too far from

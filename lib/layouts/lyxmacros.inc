@@ -62,6 +62,8 @@ Style Address
 			\noindent\par}
 		}
 	EndPreamble
+	DocBookTag            address
+	DocBookTagType        paragraph
 End
 
 
@@ -83,4 +85,7 @@ Style Right_Address
 			\par}
 		}
 	EndPreamble
+	DocBookTag            address
+	DocBookTagType        paragraph
+	DocBookAttr           role='right-address'
 End
