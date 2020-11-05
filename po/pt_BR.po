@@ -12,16 +12,16 @@ msgstr ""
 "Project-Id-Version: pt_BR 2.3.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-10-29 17:56-0400\n"
-"PO-Revision-Date: 2020-05-20 17:59-0300\n"
-"Last-Translator: Georger Araujo <georger underline br pound yahoo dot com "
-"dot br>\n"
+"PO-Revision-Date: 2020-11-04 14:53-0300\n"
+"Last-Translator: Georger Araujo <georger underline br at yahoo dot com dot "
+"br>\n"
 "Language-Team: Brazilian Portuguese <georger underscore br at yahoo dot com "
 "dot br>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.4.1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-Bookmarks: -1,-1,-1,-1,-1,-1,-1,417,-1,-1\n"
 
@@ -2196,6 +2196,8 @@ msgid ""
 "File name to include. (You can create a new file by entering the name of one "
 "that does not yet exist.)"
 msgstr ""
+"Nome de arquivo para incluir. (Se ainda não existir um arquivo com o nome "
+"que você digitar, ele será criado.)"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:309
 msgid "&Include Type:"
@@ -9193,9 +9195,8 @@ msgid "American Psychological Association (APA), v. 6"
 msgstr "American Psychological Association (APA), v. 6"
 
 #: lib/layouts/apa7.layout:3
-#, fuzzy
 msgid "American Psychological Association (APA), v. 7"
-msgstr "American Psychological Association (APA), v. 6"
+msgstr "American Psychological Association (APA), v. 7"
 
 #: lib/layouts/apax.inc:112
 msgid "FiveAuthors"
@@ -9264,28 +9265,24 @@ msgid "*"
 msgstr "*"
 
 #: lib/layouts/apax.inc:527
-#, fuzzy
 msgid "Course"
-msgstr "Courier"
+msgstr "Curso"
 
 #: lib/layouts/apax.inc:543
-#, fuzzy
 msgid "Course: "
-msgstr "Courier"
+msgstr "Curso: "
 
 #: lib/layouts/apax.inc:551
 msgid "addORCIDlink"
-msgstr ""
+msgstr "addORCIDlink"
 
 #: lib/layouts/apax.inc:555
-#, fuzzy
 msgid "ORCID-link: "
-msgstr "ORCID: "
+msgstr "ORCID-link: "
 
 #: lib/layouts/apax.inc:563
-#, fuzzy
 msgid "Author-name"
-msgstr "Nome do autor"
+msgstr "Nome-autor"
 
 #: lib/layouts/arab-article.layout:3
 msgid "Arabic Article"
@@ -10330,15 +10327,14 @@ msgid "Custom Header/Footerlines"
 msgstr "Linhas de Cabeçalho/Rodapé Personalizadas"
 
 #: lib/layouts/customHeadersFooters.module:7
-#, fuzzy
 msgid ""
 "Adds environments to define header and footer lines. NOTE: To use this "
 "module you must set the 'Page style' in the menu Document Settings -> Page "
 "Layout to 'fancy'!"
 msgstr ""
 "Adiciona environments para definir linhas de cabeçalho e de rodapé. NOTA: "
-"para usar este módulo você deve configurar 'Estilo de Cabeçalhos' no menu "
-"'Configurações do Documento -> Layout de Página' como 'sofisticado'!"
+"para usar este módulo você deve configurar 'Estilo de página' no menu "
+"'Configurações do Documento -> Layout de Página' como 'fancy'!"
 
 #: lib/layouts/customHeadersFooters.module:12
 msgid "Header/Footer"
@@ -13819,37 +13815,32 @@ msgid "Entry"
 msgstr "Entrada"
 
 #: lib/layouts/moderncv.layout:334 lib/layouts/moderncv.layout:335
-#, fuzzy
 msgid "Years"
-msgstr "Ano"
+msgstr "Anos"
 
 #: lib/layouts/moderncv.layout:340
 msgid "Degree or job title"
-msgstr ""
+msgstr "Titulação ou cargo"
 
 #: lib/layouts/moderncv.layout:348
-#, fuzzy
 msgid "Institution or employer"
-msgstr "Instituição"
+msgstr "Instituição ou empregador"
 
 #: lib/layouts/moderncv.layout:355
-#, fuzzy
 msgid "Localization"
-msgstr "Local"
+msgstr "Localização"
 
 #: lib/layouts/moderncv.layout:356
-#, fuzzy
 msgid "City or country"
-msgstr "País"
+msgstr "Cidade ou país"
 
 #: lib/layouts/moderncv.layout:360
-#, fuzzy
 msgid "Optional"
-msgstr "opcional"
+msgstr "Opcional"
 
 #: lib/layouts/moderncv.layout:361
 msgid "Grade or other info"
-msgstr ""
+msgstr "Grau ou outras informações"
 
 #: lib/layouts/moderncv.layout:367
 msgid "Entry:"
@@ -15562,9 +15553,8 @@ msgid "\\Roman{part}"
 msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:10
-#, fuzzy
 msgid "Part ##"
-msgstr "Parte"
+msgstr "Parte ##"
 
 #: lib/layouts/stdcounters.inc:14
 msgid "Chapter ##"
@@ -17056,7 +17046,7 @@ msgstr "Alemão (Áustria, ortografia antiga)"
 
 #: lib/languages:242
 msgid "German (Austria)"
-msgstr "Alemao (Áustria)"
+msgstr "Alemão (Áustria)"
 
 #: lib/languages:252
 msgid "Indonesian"
@@ -17985,7 +17975,7 @@ msgstr "Dividir Célula|D"
 
 #: lib/ui/stdcontext.inc:69
 msgid "Rows & Columns| "
-msgstr "Linhas e Colunas|i"
+msgstr "Linhas e Colunas| "
 
 #: lib/ui/stdcontext.inc:70
 msgid "Add Line Above|o"
@@ -20764,9 +20754,8 @@ msgid "Blackboard\t\\mathbb"
 msgstr "Blackboard\t\\mathbb"
 
 #: lib/ui/stdtoolbars.inc:415
-#, fuzzy
 msgid "Double stroke\t\\mathds"
-msgstr "Item Duplo:"
+msgstr "Traço duplo\t\\mathds"
 
 #: lib/ui/stdtoolbars.inc:416
 msgid "Fraktur\t\\mathfrak"
@@ -28191,9 +28180,8 @@ msgid "Other ("
 msgstr "Outro ("
 
 #: src/Text.cpp:1962
-#, fuzzy
 msgid ", Style: "
-msgstr "Estilo CV:"
+msgstr ", Estilo: "
 
 #: src/Text.cpp:1966
 msgid ", Paragraph: "
