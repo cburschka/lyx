@@ -115,7 +115,7 @@ public:
 	ParagraphList const & plist() const;
 };
 
-//bool operator==(ParConstIterator const & it1, ParConstIterator const & it2);
+bool operator==(ParConstIterator const & it1, ParConstIterator const & it2);
 
 //bool operator!=(ParConstIterator const & it1, ParConstIterator const & it2);
 

@@ -134,14 +134,14 @@ ParagraphList const & ParConstIterator::plist() const
 	return text()->paragraphs();
 }
 
-#if 0
 bool operator==(ParConstIterator const & iter1, ParConstIterator const & iter2)
 {
-	// FIXME: this makes two full copies!
-	return DocIterator(iter1) == DocIterator(iter2);
+	DocIterator const * dit1 = &iter1;
+	DocIterator const * dit2 = &iter2;
+	return *dit1 == *dit2;
 }
 
-
+#if 0
 bool operator!=(ParConstIterator const & iter1, ParConstIterator const & iter2)
 {
 	return !(iter1 == iter2);

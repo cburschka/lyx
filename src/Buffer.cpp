@@ -3726,7 +3726,6 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 	while (it.pit() <= lastpit) {
 		Paragraph & par = it.paragraph();
 
-		// FIXME Can this be done with the new-style iterators?
 		// iterate over the insets of the current paragraph
 		for (auto const & insit : par.insetList()) {
 			it.pos() = insit.pos;
