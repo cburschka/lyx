@@ -26,15 +26,6 @@ namespace lyx {
 //
 //////////////////////////////////////////////////////////////////////////
 
-ParIterator::ParIterator(DocIterator const & dit)
-	: DocIterator(dit)
-{}
-
-
-ParIterator::ParIterator(ParIterator const & pi)
-	: DocIterator(DocIterator(pi))
-{}
-
 
 ParIterator par_iterator_begin(Inset & inset)
 {
@@ -111,21 +102,6 @@ ParagraphList & ParIterator::plist() const
 // ParConstIterator
 //
 //////////////////////////////////////////////////////////////////////////
-
-
-ParConstIterator::ParConstIterator(Buffer const * buf)
-	: DocIterator(const_cast<Buffer *>(buf))
-{}
-
-
-ParConstIterator::ParConstIterator(DocIterator const & dit)
-	: DocIterator(dit)
-{}
-
-
-ParConstIterator::ParConstIterator(ParConstIterator const & pi)
-	: DocIterator(DocIterator(pi))
-{}
 
 
 void ParConstIterator::push_back(Inset const & inset)

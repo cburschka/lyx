@@ -39,13 +39,12 @@ public:
 	///
 	///
 	ParIterator(Buffer * buf) : DocIterator(buf) {}
-
 	///
-	ParIterator(Buffer * buf, Inset &, pit_type pit);
+	ParIterator(ParIterator const & pi) :
+		DocIterator(DocIterator(pi)) {}
 	///
-	ParIterator(ParIterator const &);
-	///
-	explicit ParIterator(DocIterator const &);
+	explicit ParIterator(DocIterator const & dit) :
+		DocIterator(dit) {}
 
 	/// This really should be implemented...
 	//ParIterator & operator=(ParIterator const &);
@@ -94,11 +93,14 @@ class ParConstIterator : public std::iterator<std::forward_iterator_tag,
 {
 public:
 	///
-	ParConstIterator(Buffer const * buf);
+	ParConstIterator(Buffer const * buf) 
+		: DocIterator(const_cast<Buffer *>(buf)) {}
 	///
-	ParConstIterator(ParConstIterator const &);
+	ParConstIterator(ParConstIterator const & pi)
+		: DocIterator(DocIterator(pi)) {}
 	///
-	explicit ParConstIterator(DocIterator const &);
+	explicit ParConstIterator(DocIterator const & dit)
+		: DocIterator(dit) {}
 	///
 	void push_back(Inset const &);
 
