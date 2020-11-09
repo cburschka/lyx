@@ -140,6 +140,7 @@ logicalmkup
 \author -712698321 "Jürgen Spitzmüller"
 \author -495245474 "Jean-Marc Lasgouttes"
 \author 5863208 "ab"
+\author 232239728 "Owner"
 \author 731793113 "Richard Kimberly Heck" rikiheck@lyx.org
 \author 1075283030 "Thibaut"
 \end_header
@@ -193,7 +194,7 @@ literal "false"
 \begin_inset Newline newline
 \end_inset
 
-Version 2.3.x 
+Version 2.4.x
 \end_layout
 
 \begin_layout Standard
@@ -336,8 +337,11 @@ LyXDir
 
 \end_inset
 
- and its sub-directories contain a number of files and that can be used
- to customize \SpecialChar LyX
+ and its sub-directories contain a number of files 
+\change_deleted 232239728 1604787780
+and
+\change_unchanged
+ that can be used to customize \SpecialChar LyX
 's behavior.
  You can change many of these files from within \SpecialChar LyX
  itself through the 
@@ -377,7 +381,7 @@ Automatically generated files
 \end_layout
 
 \begin_layout Standard
-The files, which are to be found in 
+The files found in 
 \begin_inset Flex Noun
 status collapsed
 
@@ -387,9 +391,14 @@ UserDir
 
 \end_inset
 
-, are generated when you configure \SpecialChar LyX
+ are generated when you configure \SpecialChar LyX
 .
- They contain various default values that are guessed by inspection.
+ They contain various default values that are 
+\change_inserted 5863208 1604919565
+automatically detected during reconfiguration.
+\change_deleted 232239728 1604788241
+guessed by inspection
+\change_unchanged
  In general, it is not a good idea to modify them, since they might be overwritt
 en at any time.
 \end_layout
@@ -405,7 +414,32 @@ lyxrc.defaults
 
 \end_inset
 
- contains defaults for various commands.
+ 
+\change_deleted 5863208 1604919950
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 232239728 1604853928
+I capitalized the first word in all of these lists.
+ To me it looks better but it really is a stylistic thing, your call.
+ However if you are not going to capitalize them, the english in some needs
+ to be modified to make it read correctly as a sentence.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_deleted 232239728 1604853510
+c
+\change_inserted 232239728 1604853510
+C
+\change_unchanged
+ontains defaults for various commands.
 \end_layout
 
 \begin_layout Labeling
@@ -419,7 +453,13 @@ packages.lst
 
 \end_inset
 
- contains the list of packages that have been recognized by \SpecialChar LyX
+ 
+\change_deleted 232239728 1604853512
+c
+\change_inserted 232239728 1604853512
+C
+\change_unchanged
+ontains the list of packages that have been recognized by \SpecialChar LyX
 .
  It is currently unused by the \SpecialChar LyX
  program itself, but the information extracted,
@@ -453,7 +493,13 @@ textclass.lst
 
 \end_inset
 
- the list of text classes that have been found in your 
+ 
+\change_deleted 232239728 1604853515
+t
+\change_inserted 232239728 1604853515
+T
+\change_unchanged
+he list of text classes that have been found in your 
 \begin_inset Flex Code
 status collapsed
 
@@ -478,7 +524,13 @@ lyxmodules.lst
 
 \end_inset
 
- the list of layout modules found in your 
+ 
+\change_deleted 232239728 1604853518
+t
+\change_inserted 232239728 1604853518
+T
+\change_unchanged
+he list of layout modules found in your 
 \begin_inset Flex Code
 status collapsed
 
@@ -494,7 +546,7 @@ layout/
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex Code
-status collapsed
+status open
 
 \begin_layout Plain Layout
 *files.lst
@@ -502,14 +554,20 @@ status collapsed
 
 \end_inset
 
- lists of various sorts of \SpecialChar LaTeX
+ 
+\change_deleted 232239728 1604853523
+l
+\change_inserted 232239728 1604853523
+L
+\change_unchanged
+ists of various sorts of \SpecialChar LaTeX
 -related files found on your system
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex Code
-status collapsed
+status open
 
 \begin_layout Plain Layout
 doc/\SpecialChar LaTeX
@@ -539,7 +597,19 @@ Directories
 \end_layout
 
 \begin_layout Standard
-These directories are duplicated between 
+The
+\change_deleted 5863208 1604928729
+se
+\change_unchanged
+ 
+\change_inserted 5863208 1604928636
+following 
+\change_unchanged
+directories 
+\change_inserted 5863208 1604928661
+in 
+\change_unchanged
+
 \begin_inset Flex Code
 status collapsed
 
@@ -549,7 +619,29 @@ LyXDir
 
 \end_inset
 
- and 
+
+\change_inserted 5863208 1604928662
+ can be
+\change_deleted 5863208 1604928642
+are
+\change_unchanged
+ duplicated 
+\change_deleted 5863208 1604928669
+between 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LyXDir
+\end_layout
+
+\end_inset
+
+ and
+\change_inserted 5863208 1604928680
+in
+\change_unchanged
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -560,7 +652,11 @@ UserDir
 \end_inset
 
 .
- If a particular files exists in both places, the one in 
+ If a particular file
+\change_deleted 232239728 1604794430
+s
+\change_unchanged
+ exists in both places, the one in 
 \begin_inset Flex Code
 status collapsed
 
@@ -584,7 +680,13 @@ bind/
 
 \end_inset
 
- this directory contains files with the extension 
+ 
+\change_deleted 232239728 1604794460
+t
+\change_inserted 232239728 1604794460
+T
+\change_unchanged
+his directory contains files with the extension 
 \begin_inset Flex Code
 status collapsed
 
@@ -620,7 +722,13 @@ citeengines/
 
 \end_inset
 
- contains files with the extension 
+ 
+\change_deleted 232239728 1604794478
+c
+\change_inserted 232239728 1604794478
+C
+\change_unchanged
+ontains files with the extension 
 \begin_inset Flex Code
 status collapsed
 
@@ -655,7 +763,13 @@ clipart/
 
 \end_inset
 
- contains graphics files that can be included in documents.
+ 
+\change_deleted 232239728 1604794483
+c
+\change_inserted 232239728 1604794486
+C
+\change_unchanged
+ontains graphics files that can be included in documents.
  
 \end_layout
 
@@ -670,14 +784,26 @@ doc/
 
 \end_inset
 
- contains \SpecialChar LyX
+ 
+\change_deleted 232239728 1604794492
+c
+\change_inserted 232239728 1604794492
+C
+\change_unchanged
+ontains \SpecialChar LyX
  documentation files (including the one you are currently reading).
  The file 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+
+\change_deleted 232239728 1604794660
 \SpecialChar LaTeX
+
+\change_inserted 232239728 1604794661
+LaTex
+\change_unchanged
 Config.lyx
 \end_layout
 
@@ -724,7 +850,13 @@ examples/
 
 \end_inset
 
- contains example files that explain how to use some features.
+ 
+\change_deleted 232239728 1604794497
+c
+\change_inserted 232239728 1604794497
+C
+\change_unchanged
+ontains example files that explain how to use some features.
  In the file browser, press the 
 \begin_inset Flex Noun
 status collapsed
@@ -749,7 +881,13 @@ images/
 
 \end_inset
 
- contains image files that are used by the 
+ 
+\change_deleted 232239728 1604794500
+c
+\change_inserted 232239728 1604794500
+C
+\change_unchanged
+ontains image files that are used by the 
 \begin_inset Flex Noun
 status collapsed
 
@@ -776,7 +914,13 @@ kbd/
 
 \end_inset
 
- contains keyboard keymapping files.
+ 
+\change_deleted 232239728 1604794505
+c
+\change_inserted 232239728 1604794505
+C
+\change_unchanged
+ontains keyboard keymapping files.
  See 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -798,7 +942,13 @@ layouts/
 
 \end_inset
 
- contains the text class and module files described in 
+ 
+\change_deleted 232239728 1604794508
+c
+\change_inserted 232239728 1604794508
+C
+\change_unchanged
+ontains the text class and module files described in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cha:Installing-New-Document"
@@ -819,7 +969,13 @@ lyx2lyx
 
 \end_inset
 
- contains the 
+ 
+\change_deleted 232239728 1604794513
+c
+\change_inserted 232239728 1604794513
+C
+\change_unchanged
+ontains the 
 \begin_inset Flex Code
 status collapsed
 
@@ -831,8 +987,11 @@ lyx2lyx
 
  Python scripts used to convert between \SpecialChar LyX
  versions.
- These can be run from the command line if, say, you want to batch-convert
- files.
+ These can be run from the command line if
+\change_deleted 232239728 1604794749
+, say,
+\change_unchanged
+ you want to batch-convert files.
 \end_layout
 
 \begin_layout Labeling
@@ -846,7 +1005,13 @@ scripts/
 
 \end_inset
 
- contains some files that demonstrate the capabilities of the 
+ 
+\change_deleted 232239728 1604794516
+c
+\change_inserted 232239728 1604794516
+C
+\change_unchanged
+ontains some files that demonstrate the capabilities of the 
 \begin_inset Flex Noun
 status collapsed
 
@@ -876,7 +1041,13 @@ templates/
 
 \end_inset
 
- contains the standard \SpecialChar LyX
+ 
+\change_deleted 232239728 1604794520
+c
+\change_inserted 232239728 1604794520
+C
+\change_unchanged
+ontains the standard \SpecialChar LyX
  template files described in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -898,7 +1069,13 @@ ui/
 
 \end_inset
 
- contains files with the extension 
+ 
+\change_deleted 232239728 1604794524
+c
+\change_inserted 232239728 1604794524
+C
+\change_unchanged
+ontains files with the extension 
 \begin_inset Flex Code
 status collapsed
 
@@ -925,7 +1102,13 @@ xtemplates/
 
 \end_inset
 
- contains files with the extension 
+ 
+\change_deleted 232239728 1604794528
+c
+\change_inserted 232239728 1604794528
+C
+\change_unchanged
+ontains files with the extension 
 \begin_inset Flex Code
 status collapsed
 
@@ -968,7 +1151,13 @@ CREDITS
 
 \end_inset
 
- this file contains the list of \SpecialChar LyX
+ 
+\change_deleted 232239728 1604797616
+t
+\change_inserted 232239728 1604797616
+T
+\change_unchanged
+his file contains the list of \SpecialChar LyX
  developers.
  The contents are displayed with the menu entry 
 \begin_inset Flex Noun
@@ -999,7 +1188,13 @@ chkconfig.ltx
 
 \end_inset
 
- this is a \SpecialChar LaTeX
+ 
+\change_deleted 232239728 1604797620
+t
+\change_inserted 232239728 1604797620
+T
+\change_unchanged
+his is a \SpecialChar LaTeX
  script used during the configuration process.
  Do not run directly.
 \end_layout
@@ -1015,7 +1210,13 @@ configure.py
 
 \end_inset
 
- this is a Python script that is used to re-configure \SpecialChar LyX
+ 
+\change_deleted 232239728 1604797624
+t
+\change_inserted 232239728 1604797624
+T
+\change_unchanged
+his is a Python script that is used to re-configure \SpecialChar LyX
 .
  It creates configuration files in the directory it was run from.
 \end_layout
@@ -1035,7 +1236,13 @@ encodings
 
 \end_inset
 
- this contains tables describing how different character encodings can be
+ 
+\change_deleted 232239728 1604797580
+t
+\change_inserted 232239728 1604797580
+T
+\change_unchanged
+his contains tables describing how different character encodings can be
  mapped to Unicode
 \end_layout
 
@@ -1050,7 +1257,13 @@ languages
 
 \end_inset
 
- this file contains a list of all the languages currently supported by \SpecialChar LyX
+ 
+\change_deleted 232239728 1604797584
+t
+\change_inserted 232239728 1604797584
+T
+\change_unchanged
+his file contains a list of all the languages currently supported by \SpecialChar LyX
 .
 \end_layout
 
@@ -1065,7 +1278,13 @@ latexfonts
 
 \end_inset
 
- contains information about the supported fonts.
+ 
+\change_deleted 232239728 1604797587
+c
+\change_inserted 232239728 1604797587
+C
+\change_unchanged
+ontains information about the supported fonts.
 \end_layout
 
 \begin_layout Labeling
@@ -1079,8 +1298,14 @@ layouttranslations
 
 \end_inset
 
- this file contains translations for internationalized paragraph styles
- (see 
+ 
+\change_deleted 232239728 1604797591
+t
+\change_inserted 232239728 1604797591
+T
+\change_unchanged
+his file contains translations for internationalized paragraph styles (see
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:I18n"
@@ -1101,8 +1326,14 @@ unicodesymbols
 
 \end_inset
 
- this file contains information about Unicode-encoded glyphs and the way
- they are supported by \SpecialChar LyX
+ 
+\change_deleted 232239728 1604797594
+t
+\change_inserted 232239728 1604797594
+T
+\change_unchanged
+his file contains information about Unicode-encoded glyphs and the way they
+ are supported by \SpecialChar LyX
  via \SpecialChar LaTeX
 .
 \end_layout
@@ -1277,10 +1508,19 @@ Settings
 \end_layout
 
 \begin_layout Itemize
-If you get some updated documentation from \SpecialChar LyX
- ftp site and cannot install
- it because you do not have sysadmin rights on your system, you can just
- copy the files in 
+If you get some updated documentation from
+\change_inserted 232239728 1604798171
+ a
+\change_unchanged
+ \SpecialChar LyX
+ ftp site and cannot install it because you do not have sysadmin rights
+ on your system, you can just copy the files 
+\change_deleted 232239728 1604798193
+in
+\change_inserted 232239728 1604798193
+to
+\change_unchanged
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -1311,8 +1551,11 @@ Running \SpecialChar LyX
 \begin_layout Standard
 The configuration freedom of the local configuration directory may not suffice
  if you want to have more than one configuration at your disposal.
- For example, you may want to be use different key bindings or printer settings
- at different times.
+ For example, you may want to 
+\change_deleted 232239728 1604798238
+be 
+\change_unchanged
+use different key bindings or printer settings at different times.
  You can achieve this by having several such directories.
  You then specify which directory to use at run-time.
 \end_layout
@@ -1348,8 +1591,11 @@ status collapsed
 
  switch.) If the specified directory does not exist, \SpecialChar LyX
  offers to create it
- for you, just like it does for the default directory on the first time
- you run the program.
+ for you, just like it does for the default directory 
+\change_deleted 232239728 1604798318
+on
+\change_unchanged
+ the first time you run the program.
  You can modify the configuration options in this additional user directory
  exactly as you would for the default directory.
  These directories are completely independent (but read on).
@@ -1358,7 +1604,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-LYX_USERDIR_VER
+LYX_USERDIR_24x
 \end_layout
 
 \end_inset
@@ -1408,7 +1654,13 @@ Reconfigure
 
 \end_inset
 
-) which is configuration-specific.
+) which is configuration
+\change_deleted 232239728 1604798083
+-
+\change_inserted 232239728 1604798100
+ 
+\change_unchanged
+specific.
 \end_layout
 
 \begin_layout Chapter
