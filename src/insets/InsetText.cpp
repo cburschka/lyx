@@ -280,6 +280,7 @@ void InsetText::edit(Cursor & cur, bool front, EntryDirection entry_from)
 	}
 
 	cur.top().setPitPos(pit, pos);
+	cur.setCurrentFont();
 	cur.finishUndo();
 }
 
@@ -294,6 +295,7 @@ void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	LYXERR(Debug::ACTION, "InsetText::doDispatch(): cmd: " << cmd);
 
+#if 0
 	// See bug #9042, for instance.
 	if (isPassThru()) {
 		// Force any new text to latex_language FIXME: This
@@ -305,6 +307,7 @@ void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.current_font.setLanguage(latex_language);
 		cur.real_current_font.setLanguage(latex_language);
 	}
+#endif
 
 	switch (cmd.action()) {
 	case LFUN_PASTE:
