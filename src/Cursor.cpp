@@ -2457,6 +2457,12 @@ void Cursor::setCurrentFont()
 		real_current_font.setLanguage(lang);
 		real_current_font.fontInfo().setNumber(FONT_OFF);
 	}
+
+	// No language in pass thru situations
+	if (cs.paragraph().isPassThru()) {
+		current_font.setLanguage(latex_language);
+		real_current_font.setLanguage(latex_language);
+	}
 }
 
 
