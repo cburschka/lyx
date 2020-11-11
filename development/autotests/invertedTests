@@ -105,6 +105,9 @@ Sublabel: lyxbugs
 # catchall:
 export/export/latex/lyxbugs/[0-9].*
 
+# #10355 xmllint errors with LyX HTML export
+export/doc/ja/UserGuide_xhtml
+export/export/WrongDfnTagHandling_xhtml
 
 #8035 work around a Polyglossia bug:
 # An error is reported if the document font does not announce support for a
