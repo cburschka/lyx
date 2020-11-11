@@ -121,20 +121,18 @@ by the \SpecialChar LyX
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
-If you have comments or error corrections, please send them to the \SpecialChar LyX
- Documentatio
-n mailing list, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-<lyx-docs@lists.lyx.org>
-\end_layout
+If you have comments on or error corrections to this documentation, please
+ send them to the \SpecialChar LyX
+ Documentation mailing list: 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+literal "false"
 
 \end_inset
 
-.
+
 \end_layout
 
 \end_inset
@@ -5338,13 +5336,13 @@ These guidelines should save us a lot of work while cleaning up the code
 \end_layout
 
 \begin_layout Itemize
-the most important rule first: KISS (Keep It Simple Stupid), always use
+The most important rule first: KISS (Keep It Simple Stupid), always use
  a simple implementation in favor of a more complicated one.
  This eases maintenance a lot.
 \end_layout
 
 \begin_layout Itemize
-write good C++ code: Readable, well commented and taking advantage of the
+Write good C++ code: readable, well commented, and taking advantage of the
  OO model.
  Follow the formatting guidelines.
  See sec.
@@ -5365,20 +5363,20 @@ noprefix "false"
 \end_layout
 
 \begin_layout Itemize
-adapt the code to the structures already existing in \SpecialChar LyX
+Adapt the code to the structures already existing in \SpecialChar LyX
 , or in the case that
  you have better ideas, discuss them on the developer's list before writing
  the code.
 \end_layout
 
 \begin_layout Itemize
-take advantage of the C++ standard library.
+Take advantage of the C++ standard library.
  Especially don't use custom containers when a standard container is usable;
  learn to use the algorithms and functors in the standard library.
 \end_layout
 
 \begin_layout Itemize
-be aware of exceptions and write exception safe code.
+Be aware of exceptions and write exception safe code.
  See sec.
 \begin_inset space ~
 \end_inset
@@ -5397,7 +5395,7 @@ noprefix "false"
 \end_layout
 
 \begin_layout Itemize
-document all variables, methods, functions, classes etc.
+Document all variables, methods, functions, classes etc.
  We are using the source documentation program doxygen, a program that handles
  javadoc syntax, to document sources.
  You can download doxygen from: 
@@ -5415,7 +5413,7 @@ http://www.stack.nl/~dimitri/doxygen/
 \end_layout
 
 \begin_layout Itemize
-we have certain code constructs that we try to follow.
+We have certain code constructs that we try to follow.
  See sec.
 \begin_inset space ~
 \end_inset
@@ -5447,11 +5445,19 @@ It is implicitly understood that all patches contributed to The \SpecialChar LyX
 .
  Always discuss your ideas with the developers on the developer's mailing
  list.
- When you create the patch, please use "
+ When you create the patch, please use 
+\begin_inset Quotes eld
+\end_inset
+
+
 \family typewriter
 diff -up
 \family default
-" since we find that a lot easier to read than the other diff formats.
+
+\begin_inset Quotes erd
+\end_inset
+
+ since we find that a lot easier to read than the other diff formats.
  Also please do not send patches that implements or fixes several different
  things; several patches is a much better option.
  We also require you to provide a commit message entry with every patch,
@@ -5475,20 +5481,47 @@ We have several guidelines on code constructs, some of these exist to make
  the code faster, others to make the code clearer.
  Yet others exist to allow us to take advantage of the strong type checking
  in C++.
- 
 \end_layout
 
 \begin_layout Itemize
 Declaration of variables should wait as long as possible.
- The rule is: "Don't declare it until you need it." In C++ there are a lot
- of user defined types, and these can very often be expensive to initialize.
+ The rule is: 
+\begin_inset Quotes eld
+\end_inset
+
+Don't declare it until you need it.
+\begin_inset Quotes erd
+\end_inset
+
+ In C++ there are a lot of user defined types, and these can very often
+ be expensive to initialize.
  This rule connects to the next rule too.
  
 \end_layout
 
 \begin_layout Itemize
-Declare the variable as const if you don't need to change it.
- This applies to POD types like int as well as classes.
+Declare the variable as 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+const
+\end_layout
+
+\end_inset
+
+ if you don't need to change it.
+ This applies to POD types like 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+int
+\end_layout
+
+\end_inset
+
+ as well as classes.
  
 \end_layout
 
@@ -5498,7 +5531,17 @@ Make the scope of a variable as small as possible.
 
 \begin_layout Itemize
 Make good use of namespaces.
- Prefer anonymous namespaces to declaring "static" for file scope.
+ Prefer anonymous namespaces to declaring 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+static
+\end_layout
+
+\end_inset
+
+ for file scope.
 \end_layout
 
 \begin_layout Itemize
@@ -5522,7 +5565,7 @@ Use:
 \begin_deeper
 \begin_layout Standard
 \begin_inset listings
-lstparams "basicstyle={\footnotesize},language={C++}"
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -5547,6 +5590,7 @@ Do not use:
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -5583,6 +5627,7 @@ Use:
 \begin_deeper
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -5612,11 +5657,42 @@ for (Container::iterator it = large.begin(); it != end; ++it) {
 \end_layout
 
 \begin_layout Standard
+Or better (C++11):
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+for (auto const & it : large) {
+\end_layout
+
+\begin_layout Plain Layout
+
+	...;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Do not use:
 \end_layout
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -5652,7 +5728,27 @@ Plain Ol' Data type
 
 \end_inset
 
- T, return T const instead.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+
+, return 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+T const
+\end_layout
+
+\end_inset
+
+ instead.
  This gives better type checking, and will give a compiler warning when
  temporaries are used wrongly.
 \begin_inset Separator latexpar
@@ -5668,12 +5764,13 @@ Use:
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
 \begin_layout Plain Layout
 
-T const add(..);
+T const add(...);
 \end_layout
 
 \end_inset
@@ -5687,12 +5784,13 @@ Do not use:
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
 \begin_layout Plain Layout
 
-T add(..);
+T add(...);
 \end_layout
 
 \end_inset
@@ -5709,6 +5807,7 @@ Avoid using the default cases in switch statements unless you have too.
 
 \begin_layout Itemize
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -5911,6 +6010,7 @@ Use:
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -5935,6 +6035,7 @@ Do not use:
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -5958,6 +6059,7 @@ Use:
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -5982,6 +6084,7 @@ Do not use:
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -5996,16 +6099,42 @@ string a = "Lars", b = "Gullik"; // not used in LyX
 \end_layout
 
 \begin_layout Standard
-[Note that 'string a = "Lars"' is formally calling a copy constructor on
- a temporary constructed from a string literal and therefore has the potential
- of being more expensive then direct construction by 'string a("Lars")'.
+[Note that 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string a = "Lars"
+\end_layout
+
+\end_inset
+
+ is formally calling a copy constructor on a temporary constructed from
+ a string literal and therefore has the potential of being more expensive
+ then direct construction by 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string a("Lars")
+\end_layout
+
+\end_inset
+
+.
  However the compiler is allowed to elide the copy (even if it had side
  effects), and modern compilers typically do so.
  Given these equal costs, \SpecialChar LyX
  code favours the '=' idiom as it is in line with
- the traditional C-style initialization, _and_ cannot be mistaken as function
- declaration, _and_ reduces the level of nested parantheses in more initializati
-ons.]
+ the traditional C-style initialization, 
+\emph on
+and
+\emph default
+ cannot be mistaken as function declaration, 
+\emph on
+and
+\emph default
+ reduces the level of nested parentheses in more initializations.]
 \end_layout
 
 \end_deeper
@@ -6024,6 +6153,7 @@ Use:
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -6048,6 +6178,7 @@ Do not use:
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -6074,6 +6205,7 @@ Some time ago we had a huge discussion on this subject and after convincing
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -6093,6 +6225,7 @@ and not
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -6118,6 +6251,7 @@ Operator names and parentheses
 \begin_deeper
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -6137,6 +6271,7 @@ and not
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -6167,6 +6302,7 @@ Function names and parentheses
 \begin_deeper
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -6186,6 +6322,7 @@ and not
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -6211,6 +6348,7 @@ Enumerators
 \begin_deeper
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -6250,6 +6388,7 @@ and not
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -6269,6 +6408,7 @@ and not
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -6313,18 +6453,18 @@ Null pointers
 
 \begin_deeper
 \begin_layout Standard
-Using a plain 0 is always correct and least effort to type.
- So: 
+Use nullptr (C++11):
 \end_layout
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
 \begin_layout Plain Layout
 
-void * p = 0;
+void * p = nullptr;
 \end_layout
 
 \end_inset
@@ -6338,6 +6478,7 @@ and not
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -6357,6 +6498,7 @@ and not
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -6378,6 +6520,7 @@ and not
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -6393,7 +6536,25 @@ void * p = 42 - 7 * 6; // not used in LyX
 
 \begin_layout Standard
 Note: As an exception, imported third party code as well as code interfacing
- the "native" APIs (src/support/os_*) can use NULL.
+ the 
+\begin_inset Quotes eld
+\end_inset
+
+native
+\begin_inset Quotes erd
+\end_inset
+
+ APIs (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+src/support/os_*
+\end_layout
+
+\end_inset
+
+) can use NULL.
 \end_layout
 
 \end_deeper
@@ -6420,27 +6581,43 @@ Enums are named like Classes, values are usually in lower-case.
 \end_layout
 
 \begin_layout Itemize
-Public API is camel-case ('
-\family typewriter
+Public API functions are camel-case (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 void setAFlagToAValue(bool)
-\family default
-')
+\end_layout
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Itemize
-Members variables are underscored ('
-\family typewriter
+Member variables are underscored (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 enable_this_feature_flag_
-\family default
-') with a final '
-\family typewriter
+\end_layout
+
+\end_inset
+
+) with a final 
+\begin_inset Quotes eld
+\end_inset
+
 _
-\family default
-'
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
-Private/protected functions are also camel-case
+Private/protected functions are also camel-case.
 \end_layout
 
 \begin_layout Itemize
@@ -6483,20 +6660,66 @@ name "Use-string-wherever"
 
 \end_inset
 
-Use string wherever possible.
- \SpecialChar LyX
- will someday move to Unicode, and that will be easy if everybody uses
- string now.
- Unicode strings should prefer using docstring instead of UTF-8 encoded
- std::string.
+Use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+ wherever possible.
+ Unicode strings should prefer using 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+docstring
+\end_layout
+
+\end_inset
+
+ instead of UTF-8 encoded 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+std::string
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
-Check out the filename and path tools in filetools.h
+Check out the filename and path tools in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+filetools.h
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
-Check out the string tools in lstring.h.
+Check out the string tools in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lstring.h
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
@@ -6553,6 +6776,7 @@ If you create a new file, the top of the file should look something like
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -6597,7 +6821,12 @@ author Kaiser Sose
 
 \begin_layout Plain Layout
 
-* Full author contact details are available in file CREDITS
+* Full author contact details are available
+\end_layout
+
+\begin_layout Plain Layout
+
+* in file CREDITS.
 \end_layout
 
 \begin_layout Plain Layout
@@ -6643,13 +6872,34 @@ in the .cpp files you document the implementation.
 
 \end_deeper
 \begin_layout Itemize
-Single line description (///), multiple lines description (/** ...
- */) see the doxygen webpage referenced above
+Single line description (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+///
+\end_layout
+
+\end_inset
+
+), multiple lines description (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+/** ...
+ */
+\end_layout
+
+\end_inset
+
+), see the doxygen webpage referenced above.
 \end_layout
 
 \end_deeper
 \begin_layout Section
-Naming rules for Lyx User Functions (LFUNs)
+Naming rules for \SpecialChar LyX
+ User Functions (LFUNs)
 \end_layout
 
 \begin_layout Standard
@@ -6658,7 +6908,7 @@ Here is the set of rules to apply when a new command name is introduced:
 
 \begin_layout Enumerate
 Use the object.event order.
- That is, use `word-forward' instead of`forward-word'.
+ That is, use `word-forward' instead of `forward-word'.
 \end_layout
 
 \begin_layout Enumerate
@@ -6716,6 +6966,7 @@ We need to add a function f to the class C's API.
 \begin_deeper
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -6832,9 +7083,67 @@ inline
 
 \begin_layout Itemize
 use the same form in corresponding calls to new and delete, i.e.
- write delete[] obj; if new obj[n]; was used to create the object and write
- delete obj; if you wrote new obj; Notice strings should be std::string's
- instead of char *'s.
+ write 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+delete[] obj;
+\end_layout
+
+\end_inset
+
+ if 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+new obj[n];
+\end_layout
+
+\end_inset
+
+ was used to create the object and write 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+delete obj;
+\end_layout
+
+\end_inset
+
+ if you wrote 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+new obj;
+\end_layout
+
+\end_inset
+
+ Notice strings should be 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+std::string
+\end_layout
+
+\end_inset
+
+'s instead of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+char *
+\end_layout
+
+\end_inset
+
+'s.
  (this contradicts to 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6917,7 +7226,27 @@ ensure that global objects are initialized before they are used
 \end_layout
 
 \begin_layout Itemize
-avoid conditions to 'if' and 'while' that span more than a line
+avoid conditions to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+if
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+while
+\end_layout
+
+\end_inset
+
+ that span more than a line
 \end_layout
 
 \begin_layout Chapter
@@ -6986,6 +7315,7 @@ In C++11 there's a "built-in":
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -7005,12 +7335,18 @@ until then on namespace scope:
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
 \begin_layout Plain Layout
 
-#include <boost/static_assert.hpp> BOOST_STATIC_ASSERT(sizeof(int) == 4)
+#include <boost/static_assert.hpp>
+\end_layout
+
+\begin_layout Plain Layout
+
+BOOST_STATIC_ASSERT(sizeof(int) == 4)
 \end_layout
 
 \end_inset
@@ -7024,22 +7360,43 @@ or without boost:
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
 \begin_layout Plain Layout
 
-template<bool Condition> struct static_assert_helper;
+template<bool Condition>
 \end_layout
 
 \begin_layout Plain Layout
 
-template <> struct static_assert_helper<true> {}; 
+struct static_assert_helper;
 \end_layout
 
 \begin_layout Plain Layout
 
-enum { dummy = sizeof(static_assert_helper<sizeof(int) == 4>)};
+template <>
+\end_layout
+
+\begin_layout Plain Layout
+
+struct static_assert_helper<true> {}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+enum {
+\end_layout
+
+\begin_layout Plain Layout
+
+	dummy = sizeof(static_assert_helper<sizeof(int) == 4>)
+\end_layout
+
+\begin_layout Plain Layout
+
+};
 \end_layout
 
 \end_inset
@@ -7053,6 +7410,7 @@ or somewhat brutish without templates, in any function:
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
 inline false
 status open
 
@@ -7063,7 +7421,7 @@ const int d = sizeof(int) - 4;
 
 \begin_layout Plain Layout
 
-switch(0) { 
+switch (0) { 
 \end_layout
 
 \begin_layout Plain Layout
@@ -7078,7 +7436,7 @@ case !(d*d):
 
 \begin_layout Plain Layout
 
-break; 
+	break; 
 \end_layout
 
 \begin_layout Plain Layout
@@ -7092,7 +7450,16 @@ break;
 \end_layout
 
 \begin_layout Standard
-Any of them in a .cpp file will break compilation as soon as sizeof(int)
+Any of them in a .cpp file will break compilation as soon as 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+sizeof(int)
+\end_layout
+
+\end_inset
+
  is not equal 4.
  Personally I prefer something like the third version (or the first, if
  using C++11 is allowed).
@@ -7233,10 +7600,9 @@ literal "true"
 
 \end_inset
 
-S.
- Meyers.
- Effective C++, 50 Specific Ways to Improve Your Programs and Design.
- Addison-Wesley, 1992
+Meyers, Scott.
+ Effective C++: 50 Specific Ways to Improve Your Programs and Design.
+ Addison-Wesley, 1992.
 \end_layout
 
 \begin_layout Bibliography
@@ -7249,7 +7615,7 @@ literal "true"
 
 Sutter, Herb.
  Exceptional C++: 47 engineering puzzles, programming problems, and solutions.
- ISBN 0-201-61562-2
+ ISBN 0-201-61562-2.
 \end_layout
 
 \begin_layout Bibliography
@@ -7260,7 +7626,8 @@ literal "true"
 
 \end_inset
 
-Scott Meyers, C/C++ User's Journal (Vol.18,No.2)
+Meyers, Scott.
+ C/C++ User's Journal (Vol.18, No.2).
 \end_layout
 
 \end_body
