@@ -3730,11 +3730,10 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 		for (auto const & insit : par.insetList()) {
 			it.pos() = insit.pos;
 
-			switch (insit.inset->lyxCode()) {
 			// is it a nested text inset?
-			case TEXT_CODE: {
-				InsetText const * itext = insit.inset->asInsetText();
+			if (insit.inset->asInsetText()) {
 				// Inset needs its own scope?
+				InsetText const * itext = insit.inset->asInsetText();
 				bool newScope = itext->isMacroScope();
 
 				// scope which ends just behind the inset
@@ -3745,9 +3744,10 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 				it.push_back(CursorSlice(*insit.inset));
 				updateMacros(it, newScope ? insetScope : scope);
 				it.pop_back();
-				break;
+				continue;
 			}
-			case TABULAR_CODE: {
+
+			if (insit.inset->asInsetTabular()) {
 				CursorSlice slice(*insit.inset);
 				size_t const numcells = slice.nargs();
 				for (; slice.idx() < numcells; slice.forwardIdx()) {
@@ -3755,10 +3755,11 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 					updateMacros(it, scope);
 					it.pop_back();
 				}
-				break;
+				continue;
 			}
+
 			// is it an external file?
-			case INCLUDE_CODE: {
+			if (insit.inset->lyxCode() == INCLUDE_CODE) {
 				// get buffer of external file
 				InsetInclude const & incinset =
 					static_cast<InsetInclude const &>(*insit.inset);
@@ -3766,7 +3767,7 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 				Buffer * child = incinset.loadIfNeeded();
 				macro_lock = false;
 				if (!child)
-					break;
+					continue;
 
 				// register its position, but only when it is
 				// included first in the buffer
@@ -3774,40 +3775,38 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 
 				// register child with its scope
 				position_to_children[it] = Impl::ScopeBuffer(scope, child);
-				break;
+				continue;
 			}
-			case MATH_HULL_CODE: {
-				if (!doing_export)
-					break;
-				InsetMathHull * hull = insit.inset->asInsetMath()->asHullInset();
-				hull->recordLocation(it);
-				break;
+
+			InsetMath * im = insit.inset->asInsetMath();
+			if (doing_export && im)  {
+				InsetMathHull * hull = im->asHullInset();
+				if (hull)
+					hull->recordLocation(it);
 			}
-			case MATHMACRO_CODE: {
-				// get macro data
-				InsetMathMacroTemplate & macroTemplate =
-					*insit.inset->asInsetMath()->asMacroTemplate();
-				MacroContext mc(owner_, it);
-				macroTemplate.updateToContext(mc);
-	
-				// valid?
-				bool valid = macroTemplate.validMacro();
-				// FIXME: Should be fixNameAndCheckIfValid() in fact,
-				// then the BufferView's cursor will be invalid in
-				// some cases which leads to crashes.
-				if (!valid)
-					break;
-	
-				// register macro
-				// FIXME (Abdel), I don't understand why we pass 'it' here
-				// instead of 'macroTemplate' defined above... is this correct?
-				macros[macroTemplate.name()][it] =
-					Impl::ScopeMacro(scope, MacroData(owner_, it));
-				break;
-			}
-			default:
-				break;
-			}
+
+			if (insit.inset->lyxCode() != MATHMACRO_CODE)
+				continue;
+
+			// get macro data
+			InsetMathMacroTemplate & macroTemplate =
+				*insit.inset->asInsetMath()->asMacroTemplate();
+			MacroContext mc(owner_, it);
+			macroTemplate.updateToContext(mc);
+
+			// valid?
+			bool valid = macroTemplate.validMacro();
+			// FIXME: Should be fixNameAndCheckIfValid() in fact,
+			// then the BufferView's cursor will be invalid in
+			// some cases which leads to crashes.
+			if (!valid)
+				continue;
+
+			// register macro
+			// FIXME (Abdel), I don't understand why we pass 'it' here
+			// instead of 'macroTemplate' defined above... is this correct?
+			macros[macroTemplate.name()][it] =
+				Impl::ScopeMacro(scope, MacroData(const_cast<Buffer *>(owner_), it));
 		}
 
 		// next paragraph
