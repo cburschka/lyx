@@ -53,7 +53,7 @@ Style Author
 	DocBookTag            personname
 	DocBookTagType        paragraph
 	DocBookWrapperTag     author
-	DocBookWrapperTagType inline
+	DocBookWrapperTagType block
 	DocBookInInfo         always
 End
 

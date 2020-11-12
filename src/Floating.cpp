@@ -11,6 +11,7 @@
  */
 
 #include <config.h>
+#include <set>
 
 #include "Floating.h"
 
@@ -47,7 +48,8 @@ Floating::Floating(string const & type, string const & placement,
 std::string Floating::docbookFloatType() const
 {
 	// TODO: configure this in the layouts?
-	if (floattype_ == "figure") {
+	if (floattype_ == "figure" || floattype_ == "graph" ||
+			floattype_ == "chart" || floattype_ == "scheme")  {
 		return "figure";
 	} else if (floattype_ == "table" || floattype_ == "tableau") {
 		return "table";
@@ -101,9 +103,13 @@ string Floating::defaultCSSClass() const
 
 string Floating::docbookAttr() const
 {
+	std::set<std::string> achemso = { "chart", "graph", "scheme" };
 	// For algorithms, a type attribute must be mentioned, if not already present in docbook_attr_.
 	if (docbookFloatType() == "algorithm" && docbook_attr_.find("type=") != std::string::npos)
 		return docbook_attr_ + " type='algorithm'";
+	// Specific floats for achemso.
+	else if (docbookFloatType() == "figure" && achemso.find(floattype_) != achemso.end())
+		return docbook_attr_ + " type='" + floattype_ + "'";
 	else
 		return docbook_attr_;
 }
