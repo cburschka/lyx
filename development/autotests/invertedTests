@@ -415,19 +415,22 @@ export/examples/Books/Tufte_Book_docbook5
 !export/export/latex/inputenc-utf8-platex_docbook5
 export/export/latex/inputenc-.*_docbook5
 export/export/latex/textcyr-textgreek-test_docbook5
+export/doc/ja/Formula-numbering_docbook5
 # - Formula in <code> tags.
 !export/examples/(fr|ru)/Graphics_and_Insets/XY-Figure_docbook5
 export/examples/(de|es|fr|ja|ru)/Graphics_and_Insets/XY-(Pic|Figure)_docbook5
-# - Math macros not implemented.
+# - Math macros not implemented and other insets illegally nested.
 export/mathmacros/testcases_speed_docbook5
 export/mathmacros/testcases_environments_docbook5
 export/mathmacros/masterOfSpace_docbook5
+export/doc/sl/Tutorial_docbook5
 # - Sidebars can be nested in LyX (mostly with shapepar), but not in DocBook.
 export/doc(|/de|/es|/fr|/ja)/Additional_docbook5
 # - Many templates are too complex for automatic conversion to work reliably.
 #   The resulting documents should still be easy to fully convert into DocBook.
 #   - AASTeX.
 export/export/docbook/bibliography_precooked_aastex_docbook5
+export/examples/Articles/American_Astronomical_Society_%28AASTeX_v._6.2%29_docbook5
 #   - Springer. (The svmono_light should still pass.)
 export/templates/Books/Springer.*/.*_docbook5
 !export/export/docbook/svmono_light_docbook5
