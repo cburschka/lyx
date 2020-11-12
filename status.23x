@@ -79,6 +79,8 @@ What's new
 - Fix crash when pasting math grid with more rows in source than target
   (bug 11897).
 
+- Fix problem with display of menus on Gnome Wayland (bug 11746).
+
 - Fix problem with drawing of auto-opened insets (bug 11870).
 
 - Fix crash when rejecting changes and the cursor is in an inset that will be
