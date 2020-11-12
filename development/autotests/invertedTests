@@ -472,10 +472,10 @@ export/doc(|/de|/es|/fr|/ja)/EmbeddedObjects_docbook5
 export/doc(|/de|/es|/fr|/ja|/ru)/Math_docbook5
 # - UserGuide: formula in inline tag, use of fancyhdr
 export/doc(|/de|/es|/fr|/ja|/ru)/UserGuide_docbook5
-# - Customization: double inlines (code within code, typically).
+# - Double inlines (code within code, personname within personname, emphasis within date, etc.).
 export/doc/(es|fr|ja)/Customization_docbook5
-# - Tutorial: double inlines (personname within personname).
 export/doc/gl/Tutorial_docbook5
+export/examples/Articles/Chess/Game_2_docbook5
 # - Bicaption module would require some C++ implementation.
 export/examples(|/de|/fr|/ja)/Modules/Multilingual_Captions_docbook5
 

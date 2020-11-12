@@ -38,6 +38,8 @@ Style NewChessGame
 		EndFont
 	EndArgument
 	Requires		xskak
+	DocBookTag      para
+	DocBookAttr     role='new-chess-game'
 End
 
 
@@ -74,12 +76,16 @@ InsetLayout Flex:Mainline
 		EndFont
 	EndArgument
 	Requires		xskak
+	DocBookTag      para
+	DocBookAttr     role='mainline'
 End
 
 InsetLayout Flex:Variation
 	CopyStyle		Flex:Mainline
 	LatexName		variation
 	LabelString		Variation
+	DocBookTag      para
+	DocBookAttr     role='variation'
 End
 
 
@@ -101,6 +107,8 @@ InsetLayout Flex:SetChessBoard
 		Color		blue
 	EndFont
 	Requires		chessboard
+	DocBookTag      para
+	DocBookAttr     role='set-chess-board'
 End
 
 
@@ -115,6 +123,8 @@ InsetLayout Flex:SetBoardStoreStyle
 		AutoInsert	true
 		Decoration	conglomerate
 	EndArgument
+	DocBookTag      para
+	DocBookAttr     role='set-board-store-style'
 End
 
 
@@ -136,5 +146,7 @@ InsetLayout Flex:ChessBoard
 		EndFont
 	EndArgument
 	Requires		chessboard
+	DocBookTag      para
+	DocBookAttr     role='chess-board'
 End
 
