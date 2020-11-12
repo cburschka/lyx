@@ -160,6 +160,11 @@ public:
 	///
 	GuiView & view(int id) const;
 
+#if (QT_VERSION < 0x050000)
+	/// Emulate platformName() for Qt4
+	QString platformName() const;
+#endif
+
 	/// Current ratio between physical pixels and device-independent pixels
 	double pixelRatio() const;
 
