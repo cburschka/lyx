@@ -1111,6 +1111,29 @@ GuiApplication * theGuiApp()
 }
 
 
+#if QT_VERSION < 0x050000
+// Emulate platformName() for Qt4
+
+// FIXME: when ditching this method, remove all tests
+//     platformName() == "qt4x11"
+// in the code
+QString GuiApplication::platformName() const
+{
+# if defined(Q_WS_X11)
+	// Note that this one does not really exist
+	return "qt4x11";
+# elif defined(Q_OS_MAC)
+	return "cocoa";
+# elif defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
+	return "windows";
+# else
+	LYXERR0("Unknown platform!");
+	return "unknown";
+# endif
+}
+#endif
+
+
 double GuiApplication::pixelRatio() const
 {
 #if QT_VERSION >= 0x050000

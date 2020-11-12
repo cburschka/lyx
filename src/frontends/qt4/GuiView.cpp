@@ -750,12 +750,11 @@ void GuiView::saveLayout() const
 	settings.setValue("devel_mode", devel_mode_);
 	settings.beginGroup("views");
 	settings.beginGroup(QString::number(id_));
-#if defined(Q_WS_X11) || defined(QPA_XCB)
-	settings.setValue("pos", pos());
-	settings.setValue("size", size());
-#else
-	settings.setValue("geometry", saveGeometry());
-#endif
+	if (guiApp->platformName() == "qt4x11" || guiApp->platformName() == "xcb") {
+		settings.setValue("pos", pos());
+		settings.setValue("size", size());
+	} else
+		settings.setValue("geometry", saveGeometry());
 	settings.setValue("layout", saveState(0));
 	settings.setValue("icon_size", toqstr(d.iconSize(iconSize())));
 }
@@ -795,19 +794,20 @@ bool GuiView::restoreLayout()
 	//code below is skipped when when ~/.config/LyX is (re)created
 	setIconSize(d.iconSize(settings.value(icon_key).toString()));
 
-#if defined(Q_WS_X11) || defined(QPA_XCB)
-	QPoint pos = settings.value("pos", QPoint(50, 50)).toPoint();
-	QSize size = settings.value("size", QSize(690, 510)).toSize();
-	resize(size);
-	move(pos);
-#else
-	// Work-around for bug #6034: the window ends up in an undetermined
-	// state when trying to restore a maximized window when it is
-	// already maximized.
-	if (!(windowState() & Qt::WindowMaximized))
-		if (!restoreGeometry(settings.value("geometry").toByteArray()))
-			setGeometry(50, 50, 690, 510);
-#endif
+	if (guiApp->platformName() == "qt4x11" || guiApp->platformName() == "xcb") {
+		QPoint pos = settings.value("pos", QPoint(50, 50)).toPoint();
+		QSize size = settings.value("size", QSize(690, 510)).toSize();
+		resize(size);
+		move(pos);
+	} else {
+		// Work-around for bug #6034: the window ends up in an undetermined
+		// state when trying to restore a maximized window when it is
+		// already maximized.
+		if (!(windowState() & Qt::WindowMaximized))
+			if (!restoreGeometry(settings.value("geometry").toByteArray()))
+				setGeometry(50, 50, 690, 510);
+	}
+
 	// Make sure layout is correctly oriented.
 	setLayoutDirection(qApp->layoutDirection());
 
