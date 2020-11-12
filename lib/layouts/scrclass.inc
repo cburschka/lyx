@@ -205,6 +205,7 @@ Style Title
 	  Series              Bold
 	EndFont
 	DocBookTag            title
+	DocBookInInfo         maybe
 End
 
 Style Subtitle
@@ -214,6 +215,7 @@ Style Subtitle
 	  Size                Large
 	EndFont
 	DocBookTag            subtitle
+	DocBookInInfo         maybe
 End
 
 

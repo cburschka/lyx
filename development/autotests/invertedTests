@@ -458,6 +458,8 @@ export/examples/.*/American_Mathematical_Society_%28AMS%29_docbook5
 #   - ACS: comments in the middle of the author info can wreak havoc (fixable).
       Some bibliography entries do not exist within the document. Floats are empty.
 export/examples/Articles/American_Chemical_Society_%28ACS%29_docbook5
+#   - A&A: formula with two references (only one xml:id allowed per <equation> tag).
+export/examples/Articles/Astronomy_%26_Astrophysics_docbook5
 # - Branches may cause problems (especially when mixing with parts that must go in <info>).
 export/export/latex/languages/supported-languages_(|babel|babel_auto-legacy)_?docbook5
 # - EmbeddedObjects: this document is too complex, with captions within tables, many LaTeX parameters when including

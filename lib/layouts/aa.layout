@@ -43,6 +43,7 @@ Style Standard
 	Align		Block
 	AlignPossible	Block, Left, Right, Center
 	LabelType	No_Label
+	DocBookTag  para
 End
 
 Input stdinsets.inc
@@ -84,6 +85,8 @@ Style Subtitle
 	  Size		Larger
 	  Series	Bold
 	EndFont
+	DocBookTag            subtitle
+	DocBookInInfo         maybe
 End
 
 
@@ -102,6 +105,8 @@ Style Address
 	  Family	Roman
 	  Size		Small
 	EndFont
+	DocBookTag      address
+	DocBookInInfo   always
 End
 
 
@@ -125,6 +130,12 @@ Style Offprint
 	  Size		Small
 	  Shape		Slanted
 	EndFont
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperAttr    role='offprint'
+	DocBookWrapperTagType inline
+	DocBookInInfo         always
 End
 
 
@@ -148,6 +159,10 @@ Style Mail
 	  Size		Small
 	  Shape		Slanted
 	EndFont
+	DocBookTag      author
+	DocBookAttr     role='mail'
+	DocBookTagType  paragraph
+	DocBookInInfo   always
 End
 
 
@@ -233,6 +248,9 @@ Style Date
 	Font
 	  Size		Small
 	EndFont
+	DocBookTag      date
+	DocBookTagType  paragraph
+	DocBookInInfo   always
 End
 
 
@@ -285,6 +303,11 @@ Style Abstract_(unstructured)
 	  Series	Bold
 	  Size		Small
 	EndFont
+	DocBookTag         para
+	DocBookWrapperTag  abstract
+	DocBookWrapperAttr role='unstructured'
+	DocBookWrapperMergeWithPrevious  true
+	DocBookInInfo     always
 End
 
 
@@ -315,6 +338,11 @@ Style Abstract_(structured)
 	  LabelString	"Results"
 	  Tooltip	"Results of your work"
 	EndArgument
+	DocBookTag         para
+	DocBookWrapperTag  abstract
+	DocBookWrapperAttr role='structured'
+	DocBookWrapperMergeWithPrevious  true
+	DocBookInInfo     always
 End
 
 
@@ -345,6 +373,9 @@ Style Keywords
 	  Series	Bold
 	  Size		Small
 	EndFont
+	DocBookTag         keyword
+	DocBookTagType     paragraph
+	DocBookWrapperTag  keywordset
 End
 
 
