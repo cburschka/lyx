@@ -21,8 +21,6 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
-#include "support/RefChanger.h"
-
 using namespace std;
 
 
@@ -83,16 +81,16 @@ Changer MetricsBase::changeEnsureMath(Inset::mode_type mode)
 {
 	switch (mode) {
 	case Inset::UNDECIDED_MODE:
-		return Changer();
+		return noChange();
 	case Inset::TEXT_MODE:
-		return isMathFont(fontname) ? changeFontSet("textnormal") : Changer();
+		return isMathFont(fontname) ? changeFontSet("textnormal") : noChange();
 	case Inset::MATH_MODE:
 		// FIXME:
 		//   \textit{\ensuremath{\text{a}}}
 		// should appear in italics
-		return isTextFont(fontname) ? changeFontSet("mathnormal"): Changer();
+		return isTextFont(fontname) ? changeFontSet("mathnormal"): noChange();
 	}
-	return Changer();
+	return noChange();
 }
 
 
@@ -196,10 +194,10 @@ Changer MetricsBase::changeScript()
 		return font.changeStyle(SCRIPTSCRIPT_STYLE);
 	case INHERIT_STYLE:
 	case IGNORE_STYLE:
-		return Changer();
+		return noChange();
 	}
 	//remove Warning
-	return Changer();
+	return noChange();
 }
 
 
@@ -215,10 +213,10 @@ Changer MetricsBase::changeFrac()
 		return font.changeStyle(SCRIPTSCRIPT_STYLE);
 	case INHERIT_STYLE:
 	case IGNORE_STYLE:
-		return Changer();
+		return noChange();
 	}
 	//remove Warning
-	return Changer();
+	return noChange();
 }
 
 
@@ -227,7 +225,7 @@ Changer MetricsBase::changeArray(bool small)
 	if (small)
 		return font.changeStyle(SCRIPT_STYLE);
 	return (font.style() == DISPLAY_STYLE) ? font.changeStyle(TEXT_STYLE)
-		: Changer();
+		: noChange();
 }
 
 

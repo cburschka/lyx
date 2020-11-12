@@ -25,7 +25,6 @@
 #include "support/docstring.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
-#include "support/RefChanger.h"
 
 #include <algorithm>
 #include <ostream>
@@ -327,19 +326,19 @@ FontInfo & FontInfo::realize(FontInfo const & tmplt)
 
 Changer FontInfo::changeColor(ColorCode const color)
 {
-	return make_change(color_, color);
+	return changeVar(color_, color);
 }
 
 
 Changer FontInfo::changeShape(FontShape const shape)
 {
-	return make_change(shape_, shape);
+	return changeVar(shape_, shape);
 }
 
 
 Changer FontInfo::changeStyle(MathStyle const new_style)
 {
-	return make_change(style_, new_style);
+	return changeVar(style_, new_style);
 }
 
 
@@ -347,7 +346,7 @@ Changer FontInfo::change(FontInfo font, bool realize)
 {
 	if (realize)
 		font.realize(*this);
-	return make_change(*this, font);
+	return changeVar(*this, font);
 }
 
 

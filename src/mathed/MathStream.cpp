@@ -19,7 +19,6 @@
 #include "TexRow.h"
 
 #include "support/docstring.h"
-#include "support/RefChanger.h"
 #include "support/textutils.h"
 
 #include <algorithm>
@@ -182,7 +181,7 @@ void WriteStream::asciiOnly(bool ascii)
 
 Changer WriteStream::changeRowEntry(TexRow::RowEntry entry)
 {
-	return make_change(row_entry_, entry);
+	return changeVar(row_entry_, entry);
 }
 
 

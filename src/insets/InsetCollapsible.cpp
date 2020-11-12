@@ -39,7 +39,7 @@
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
-#include "support/RefChanger.h"
+#include "support/Changer.h"
 #include "support/TempFile.h"
 
 using namespace std;
@@ -314,8 +314,8 @@ void InsetCollapsible::draw(PainterInfo & pi, int x, int y) const
 		// Do not draw the cue for INSERTED -- it is already in the button and
 		// that's enough.
 		Changer cdummy = (pi.change.type == Change::INSERTED)
-			? make_change(pi.change, Change())
-			: Changer();
+			? changeVar(pi.change, Change())
+			: noChange();
 		InsetText::draw(pi, textx, texty);
 		break;
 	}
@@ -333,7 +333,7 @@ void InsetCollapsible::draw(PainterInfo & pi, int x, int y) const
 		// We will take care of the frame and the change tracking cue
 		// ourselves, below.
 		{
-			Changer cdummy = make_change(pi.change, Change());
+			Changer cdummy = changeVar(pi.change, Change());
 			const_cast<InsetCollapsible *>(this)->setDrawFrame(false);
 			InsetText::draw(pi, textx, texty);
 			const_cast<InsetCollapsible *>(this)->setDrawFrame(true);

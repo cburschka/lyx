@@ -98,7 +98,6 @@ liblyxsupport_a_SOURCES = \
 	qstring_helpers.cpp \
 	qstring_helpers.h \
 	regex.h \
-	RefChanger.h \
 	signals.h \
 	socktools.cpp \
 	socktools.h \

@@ -39,7 +39,7 @@
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
-#include "support/RefChanger.h"
+#include "support/Changer.h"
 #include "support/textutils.h"
 
 #include <ostream>
@@ -91,7 +91,7 @@ public:
 		// macro arguments are in macros
 		LATTEST(mathMacro_->nesting() > 0);
 		/// The macro nesting can change display of insets. Change it locally.
-		Changer chg = make_change(mi.base.macro_nesting,
+		Changer chg = changeVar(mi.base.macro_nesting,
 		                          mathMacro_->nesting() == 1 ? 0 : mathMacro_->nesting());
 
 		MathRow::Element e_beg(mi, MathRow::BEGIN);
@@ -344,7 +344,7 @@ bool InsetMathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 		return InsetMath::addToMathRow(mrow, mi);
 
 	/// The macro nesting can change display of insets. Change it locally.
-	Changer chg = make_change(mi.base.macro_nesting, d->nesting_);
+	Changer chg = changeVar(mi.base.macro_nesting, d->nesting_);
 
 	MathRow::Element e_beg(mi, MathRow::BEGIN);
 	e_beg.inset = this;
@@ -569,7 +569,7 @@ InsetMath::marker_type InsetMathMacro::marker(BufferView const * bv) const
 void InsetMathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	/// The macro nesting can change display of insets. Change it locally.
-	Changer chg = make_change(mi.base.macro_nesting, d->nesting_);
+	Changer chg = changeVar(mi.base.macro_nesting, d->nesting_);
 
 	// set edit mode for which we will have calculated metrics. But only
 	d->editing_[mi.base.bv] = editMode(mi.base.bv);

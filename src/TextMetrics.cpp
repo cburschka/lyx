@@ -43,7 +43,7 @@
 
 #include "support/debug.h"
 #include "support/lassert.h"
-#include "support/RefChanger.h"
+#include "support/Changer.h"
 
 #include <stdlib.h>
 #include <cmath>
@@ -1812,8 +1812,8 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		return;
 	size_t const nrows = pm.rows().size();
 	// Remember left and right margin for drawing math numbers
-	Changer changeleft = make_change(pi.leftx, x + leftMargin(pit));
-	Changer changeright = make_change(pi.rightx, x + width() - rightMargin(pit));
+	Changer changeleft = changeVar(pi.leftx, x + leftMargin(pit));
+	Changer changeright = changeVar(pi.rightx, x + width() - rightMargin(pit));
 
 	// Use fast lane in nodraw stage.
 	if (pi.pain.isNull()) {

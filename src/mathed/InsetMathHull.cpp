@@ -65,7 +65,7 @@
 #include "support/filetools.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
-#include "support/RefChanger.h"
+#include "support/Changer.h"
 
 #include <sstream>
 
@@ -616,8 +616,8 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 	if (previewState(bv)) {
 		// Do not draw change tracking cue if taken care of by RowPainter
 		// already.
-		Changer dummy = !canPaintChange(*bv) ? make_change(pi.change, Change())
-			: Changer();
+		Changer dummy = !canPaintChange(*bv) ? changeVar(pi.change, Change())
+			: noChange();
 		if (previewTooSmall(dim)) {
 			// we have an extra frame
 			preview_->draw(pi, x + ERROR_FRAME_WIDTH, y);
@@ -635,7 +635,7 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 				? Color_selectiontext : standardColor();
 	bool const really_change_color = pi.base.font.color() == Color_none;
 	Changer dummy0 = really_change_color ? pi.base.font.changeColor(color)
-		: Changer();
+		: noChange();
 	if (numberedType()) {
 		BufferParams::MathNumber const math_number = buffer().params().getMathNumber();
 		for (row_type row = 0; row < nrows(); ++row) {

@@ -60,7 +60,7 @@ void InsetMathFontOld::metrics(MetricsInfo & mi, Dimension & dim) const
 	bool really_change_font = fontname != "textcal";
 
 	Changer dummy = really_change_font ? mi.base.changeFontSet(fontname)
-		: Changer();
+		: noChange();
 	cell(0).metrics(mi, dim);
 }
 
@@ -77,7 +77,7 @@ void InsetMathFontOld::draw(PainterInfo & pi, int x, int y) const
 	bool really_change_font = fontname != "textcal";
 
 	Changer dummy = really_change_font ? pi.base.changeFontSet(fontname)
-		: Changer();
+		: noChange();
 	cell(0).draw(pi, x, y);
 }
 

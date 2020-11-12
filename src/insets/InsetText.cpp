@@ -61,7 +61,7 @@
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
-#include "support/RefChanger.h"
+#include "support/Changer.h"
 
 #include <algorithm>
 #include <stack>
@@ -229,10 +229,10 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 				pi.backgroundColor(this));
 
 	{
-		Changer dummy = make_change(pi.background_color,
+		Changer dummy = changeVar(pi.background_color,
 		                            pi.backgroundColor(this, false));
 		// The change tracking cue must not be inherited
-		Changer dummy2 = make_change(pi.change, Change());
+		Changer dummy2 = changeVar(pi.change, Change());
 		tm.draw(pi, x + leftOffset(pi.base.bv), y);
 	}
 

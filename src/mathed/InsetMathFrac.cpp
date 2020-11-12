@@ -215,7 +215,7 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.des = dim2.des;
 		}
 		Changer dummy = (kind_ == UNITFRAC) ? mi.base.font.changeShape(UP_SHAPE)
-			: Changer();
+			: noChange();
 		Changer dummy2 = mi.base.changeScript();
 		if (latexkeys const * slash = slash_symbol()) {
 			Dimension dimslash;
@@ -297,7 +297,7 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 			xx += cell(2).dimension(*pi.base.bv).wid + 4;
 		}
 		Changer dummy = (kind_ == UNITFRAC) ? pi.base.font.changeShape(UP_SHAPE)
-			: Changer();
+			: noChange();
 		// nice fraction
 		Changer dummy2 = pi.base.changeScript();
 		cell(0).draw(pi, xx + 1, y - dy);

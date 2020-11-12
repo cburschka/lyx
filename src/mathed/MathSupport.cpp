@@ -27,6 +27,7 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
+#include "support/Changer.h"
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/lassert.h"
@@ -696,7 +697,7 @@ int mathedSymbolDim(MetricsBase & mb, Dimension & dim, latexkeys const * sym)
 				 mb.fontname != "mathfrak" &&
 				 mb.fontname != "mathcal" &&
 				 mb.fontname != "mathscr");
-	Changer dummy = change_font ? mb.changeFontSet(font) : Changer();
+	Changer dummy = change_font ? mb.changeFontSet(font) : noChange();
 	mathed_string_dim(mb.font, mathedSymbol(mb, sym), dim);
 	return mathed_char_kerning(mb.font, mathedSymbol(mb, sym).back());
 }
@@ -720,7 +721,7 @@ void mathedSymbolDraw(PainterInfo & pi, int x, int y, latexkeys const * sym)
 				 pi.base.fontname != "mathfrak" &&
 				 pi.base.fontname != "mathcal" &&
 				 pi.base.fontname != "mathscr");
-	Changer dummy = change_font ? pi.base.changeFontSet(font) : Changer();
+	Changer dummy = change_font ? pi.base.changeFontSet(font) : noChange();
 	pi.draw(x, y, mathedSymbol(pi.base, sym));
 }
 

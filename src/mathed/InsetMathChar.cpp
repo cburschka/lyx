@@ -121,7 +121,7 @@ void InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 	} else if (!isASCII(char_) && Encodings::unicodeCharInfo(char_).isUnicodeSymbol()) {
 		Changer dummy1 = mi.base.changeFontSet("mathnormal");
 		Changer dummy2 = Encodings::isMathAlpha(char_)
-				? Changer()
+				? noChange()
 				: mi.base.font.changeShape(UP_SHAPE);
 		dim = theFontMetrics(mi.base.font).dimension(char_);
 		kerning_ = -mathed_char_kerning(mi.base.font, char_);
@@ -166,7 +166,7 @@ void InsetMathChar::draw(PainterInfo & pi, int x, int y) const
 		} else if (!isASCII(char_) && Encodings::unicodeCharInfo(char_).isUnicodeSymbol()) {
 			Changer dummy1 = pi.base.changeFontSet("mathnormal");
 			Changer dummy2 = Encodings::isMathAlpha(char_)
-					? Changer()
+					? noChange()
 					: pi.base.font.changeShape(UP_SHAPE);
 			pi.draw(x, y, char_);
 			return;
