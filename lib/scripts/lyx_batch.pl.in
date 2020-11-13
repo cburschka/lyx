@@ -7,7 +7,7 @@ use strict;
 use warnings;
 use File::Copy;
 use File::Compare;
-use File::Slurp qw(read_dir);
+use File::Slurp qw(read_dir read_file);
 
 sub checkPrecondition();
 sub system1(@);
@@ -126,6 +126,12 @@ exit(0);
 
 sub run_tests {
   my $test_dir = shift;
+
+  if (-e "$test_dir/skip.test") {
+    my $skip_msg = read_file("$test_dir/skip.test");
+    print "TEST SKIPPED.\n$skip_msg\n";
+    return;
+  }
 
   my @expected = &addFiles($test_dir, $Tests{$test}->{check},1);
 
