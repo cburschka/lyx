@@ -85,7 +85,8 @@ private:
 	Buffer const * bufferFromFileName(std::string const & file) const;
 
 	/// create the compare object and run the comparison
-	int run();
+	///  if blocking_mode is true, run should execute so that the caller can block to wait for the results
+	int run(bool blocking_mode = false);
 
 private:
 	/// the object that will do the comparison

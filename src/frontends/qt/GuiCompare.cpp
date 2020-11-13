@@ -303,7 +303,7 @@ Buffer const * GuiCompare::bufferFromFileName(string const & file) const
 }
 
 
-int GuiCompare::run()
+int GuiCompare::run(bool blocking_mode)
 {
 	progressBar->setValue(0);
 
@@ -325,14 +325,21 @@ int GuiCompare::run()
 	options.settings_from_new = newSettingsRB->isChecked();
 
 	// init the compare object and start it
+
 	compare_ = new Compare(new_buffer_, old_buffer_, dest_buffer_, options);
+
 	connect(compare_, SIGNAL(error()), this, SLOT(error()));
-	connect(compare_, SIGNAL(finished(bool)), this, SLOT(finished(bool)));
+	// Only connect the finished() method to the signal if we're *not* in blocking_mode
+	//  (i.e. we want to make it possible for caller to block for the results)
+	if (! blocking_mode) {
+		connect(compare_, SIGNAL(finished(bool)), this, SLOT(finished(bool)));
+	}
 	connect(compare_, SIGNAL(progress(int)), this, SLOT(progress(int)));
 	connect(compare_, SIGNAL(progressMax(int)), this, SLOT(progressMax(int)));
 	connect(compare_, SIGNAL(statusMessage(QString)),
 		this, SLOT(setStatusMessage(QString)));
 	compare_->start(QThread::LowPriority);
+
 	return 1;
 }
 
@@ -340,10 +347,28 @@ bool GuiCompare::initialiseParams(std::string const &par)
 {
 	//just for the sake of parsing arguments
 	FuncRequest cmd(LFUN_UNKNOWN_ACTION, par);
-	if (cmd.getArg(0) == "run") {
+	if (cmd.getArg(0) == "run" || cmd.getArg(0) == "run-blocking") {
 		oldFileCB->setEditText(toqstr(cmd.getArg(1)));
 		newFileCB->setEditText(toqstr(cmd.getArg(2)));
-		slotOK();
+
+		if (cmd.getArg(0) == "run" ) {
+			// Run asynchronously
+			slotOK();
+		}
+		else {
+			// Run synchronously
+			enableControls(false);
+
+			if (! run(true)) {
+				error();
+				return false;
+			}
+
+			// Wait for the Compare function to process in a thread (2 minute timeout)
+			compare_->wait(120000);
+
+			finished(false);
+		}
 	}
 
 	progressBar->setValue(0);
