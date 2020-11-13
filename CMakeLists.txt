@@ -1211,6 +1211,10 @@ include(../Install)
 
 # By running the URL tests first, time can be saved when running the ctests in
 # parallel since the URL tests take a long time to run (e.g. 10 minutes).
+
+# Needed, because of perl scripts in checkurls autotests and batchtests
+find_package(Perl REQUIRED)
+
 if(LYX_ENABLE_URLTESTS)
 	add_subdirectory(development/checkurls "${TOP_BINARY_DIR}/checkurls")
 endif()

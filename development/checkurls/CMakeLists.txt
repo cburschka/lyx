@@ -4,10 +4,7 @@
 # Copyright (c) 2013 Kornel Benko <kornel@lyx.org>
 #           (c) 2013 Scott Kostyshak <skotysh@lyx.org>
 #
-# Needed, because of perl scripts here
-find_package(Perl REQUIRED)
 
-# create file the lyx-files-list
 set(TOP_SEARCH_PATH "${TOP_SRC_DIR}")
 set(LYXFILES_FILE "${CMAKE_CURRENT_BINARY_DIR}/filesToScan")
 file(WRITE "${LYXFILES_FILE}")
