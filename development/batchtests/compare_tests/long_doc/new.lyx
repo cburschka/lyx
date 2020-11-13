@@ -1,0 +1,2292 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 599
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \cleardoublepage
+  \pagenumbering{arabic} }
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children no
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "palatino" "default"
+\font_sans "helvet" "default"
+\font_typewriter "courier" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc true
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format pdf2
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Introduction to LyX"
+\pdf_author "LyX Team"
+\pdf_subject "LyX-documentation Intro"
+\pdf_keywords "LyX, documentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 2
+\pdf_breaklinks true
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Introduction to \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Author
+by the \SpecialChar LyX
+ Team
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+If you have comments on or corrections to this documentation, please send
+ them to the \SpecialChar LyX
+ Documentation mailing list: 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The Philosophy of \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Subsection
+What is \SpecialChar LyX
+?
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ is a document preparation system.
+ It excels at letting you create complex technical and scientific articles
+ with mathematics, cross-references, bibliographies, indexes, etc.
+ It is very good for working with documents of any length in which the usual
+ processing abilities are required: automatic sectioning and pagination,
+ spell checking and so forth.
+ It can also be used to write a letter to your mom, though granted, there
+ are probably simpler programs available for that.
+ It is definitely not the best tool for creating banners, flyers, or advertiseme
+nts (we'll explain why later), though with some effort all these can be
+ done, too.
+ Here are some examples of what it is used for: memos, letters, dissertations
+ and theses, lecture notes, seminar notebooks, conference proceedings, software
+ documentation, books, articles in refereed scientific journals, scripts
+ for plays and movies, business proposals, presentations \SpecialChar ldots
+
+\end_layout
+
+\begin_layout Standard
+Part of the initial challenge of using \SpecialChar LyX
+ comes from the change in thinking
+ that you, the user, must make.
+ At one time, all we had for creating documents were typewriters, so we
+ all learned certain tricks to get around their limitations.
+ Underlining, which is little more than overstriking with the 
+\begin_inset Quotes eld
+\end_inset
+
+_
+\begin_inset Quotes erd
+\end_inset
+
+ character, became a way to emphasize text.
+ You were forced to figure out column sizes and tab stops, and set them,
+ before creating a table.
+ The same applied for letters and other right justified text.
+ Hyphenation at the end of a line required a careful eye and a lot of foresight.
+\end_layout
+
+\begin_layout Standard
+In other words, we've all been trained to worry about the little details
+ of which character goes where.
+ Consequently, almost all word processors have this mentality.
+ They still use tab stops for adding whitespace.
+ You still need to worry about exactly where on the page something will
+ appear.
+ Emphasizing text means changing a font, similar to changing the typewriter
+ wheel.
+ This is the underlying philosophy of a WYSIWYG word processor: 
+\begin_inset Quotes eld
+\end_inset
+
+What You See Is What You Get
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Unfortunately, that paradigm often results in 
+\begin_inset Quotes eld
+\end_inset
+
+What You See Is All You Get
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+This is where \SpecialChar LyX
+ differs from an ordinary word processor.
+ You don't concern yourself with what character goes where.
+ You tell \SpecialChar LyX
+ 
+\emph on
+what you're doing
+\emph default
+ and \SpecialChar LyX
+ takes care of the rest, following a set of rules called a 
+\emph on
+style
+\emph default
+.
+ Let's look at a little example:
+\end_layout
+
+\begin_layout Standard
+Suppose you are writing a report.
+ To begin your report, you want a section called 
+\begin_inset Quotes eld
+\end_inset
+
+Introduction\SpecialChar endofsentence
+
+\begin_inset Quotes erd
+\end_inset
+
+ So, you go into whatever menu it is in your word processor that changes
+ font sizes and decide on a new font size.
+ Then you turn on bold face.
+ Then you type, 
+\begin_inset Quotes eld
+\end_inset
+
+1.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+Introduction
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Of course, if you later decide that this section belongs someplace else
+ in the document or if you insert a new section before it, you need to change
+ the numbering for this and all following sections, as well as any entry
+ in the table of contents.
+\end_layout
+
+\begin_layout Standard
+In \SpecialChar LyX
+, you go to the pull-down on the far left of the button bar and select
+ 
+\family sans
+Section
+\family default
+, and type 
+\begin_inset Quotes eld
+\end_inset
+
+Introduction
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Yes, that's all.
+ If you cut and paste the section, it will automatically be renumbered —
+ everywhere.
+ And if you enter references to that section correctly (by inserting cross-refer
+ence tags), \SpecialChar LyX
+ will automatically update them all throughout the file so that
+ you never, ever type a section number.
+\end_layout
+
+\begin_layout Standard
+Now let's look at the problem of consistency.
+ Five days later, you reopen your report and start Section
+\begin_inset space ~
+\end_inset
+
+4.
+ However, you forget that you were using 18
+\begin_inset space \thinspace{}
+\end_inset
+
+pt bold instead of 16
+\begin_inset space \thinspace{}
+\end_inset
+
+pt, so you type in the heading for Section
+\begin_inset space ~
+\end_inset
+
+4 in a different font from the one you used for Section
+\begin_inset space ~
+\end_inset
+
+1.
+ That problem doesn't even exist in \SpecialChar LyX
+.
+ The computer takes care of all that silly bookkeeping about which thing
+ has what size font, not you.
+ After all, that's what a computer is good at.
+\end_layout
+
+\begin_layout Standard
+Here's another example.
+ Suppose you're making a list.
+ In other word processors, a list is just a bunch of tab stops and newlines.
+ You need to figure out where to put the label for each list item, what
+ that label should be, how many blank lines to put between each item, and
+ so on.
+ Under \SpecialChar LyX
+, you have only two concerns: what kind of list is this, and what
+ do I want to put in it? That is it.
+\end_layout
+
+\begin_layout Standard
+So, the basic idea behind \SpecialChar LyX
+ is: specify 
+\emph on
+what
+\emph default
+ you're doing, not 
+\emph on
+how
+\emph default
+ to do it.
+ Instead of 
+\begin_inset Quotes eld
+\end_inset
+
+What You See Is What You Get,
+\begin_inset Quotes erd
+\end_inset
+
+ the \SpecialChar LyX
+ model is 
+\begin_inset Quotes eld
+\end_inset
+
+What You See Is What You 
+\emph on
+Mean
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+WYSIWYM.
+\begin_inset Quotes erd
+\end_inset
+
+ It's a powerful idea that greatly simplifies the mechanics of writing documents.
+ This is also why \SpecialChar LyX
+ isn't so good for creating posters and flyers.
+ In this case, you 
+\emph on
+do
+\emph default
+ want to specify exactly where everything goes, because there are no functional
+ units like paragraphs, sections, etc.
+ This doesn't mean \SpecialChar LyX
+ is missing some cool function.
+ It simply means that it isn't the right tool for the job — you don't use
+ a screwdriver to drive in nails.
+\end_layout
+
+\begin_layout Standard
+Yes, that's all.
+ If you cut and paste the section, it will automatically be renumbered —
+ everywhere.
+ And if you enter references to that section correctly (by inserting cross-refer
+ence tags), \SpecialChar LyX
+ will automatically update them all throughout the file so that
+ you never, ever type a section number.
+\end_layout
+
+\begin_layout Subsection
+Differences between \SpecialChar LyX
+ and Other (Crappy) Word Processors
+\end_layout
+
+\begin_layout Standard
+Here's a list of things you won't find in \SpecialChar LyX
+:
+\end_layout
+
+\begin_layout Itemize
+The document ruler
+\end_layout
+
+\begin_layout Itemize
+Tab stops
+\end_layout
+
+\begin_layout Itemize
+Extra whitespace (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+hitting 
+\family sans
+Enter
+\family default
+ or 
+\family sans
+Space
+\family default
+ two or more times)
+\end_layout
+
+\begin_layout Standard
+Tab stops, along with a ruler showing you the position of things on the
+ page, are useless in \SpecialChar LyX
+.
+ The program worries about where things go on the page, not you.
+ Extra whitespace is similar; \SpecialChar LyX
+ adds it where necessary, depending on context.
+ Not being able to type two blank lines in a row will be annoying at first,
+ but it makes more sense once you're thinking in WYSIWYM terms.
+\end_layout
+
+\begin_layout Standard
+Here are some things that exist in \SpecialChar LyX
+, but aren't used as you might think:
+\end_layout
+
+\begin_layout Itemize
+Indenting controls
+\end_layout
+
+\begin_layout Itemize
+Page breaks
+\end_layout
+
+\begin_layout Itemize
+Line spacing (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+single spaced, double spaced, etc.)
+\end_layout
+
+\begin_layout Itemize
+Whitespace, horizontal and vertical
+\end_layout
+
+\begin_layout Itemize
+Fonts and font sizes
+\end_layout
+
+\begin_layout Itemize
+Typefaces (bold, italic, underline, etc.)
+\end_layout
+
+\begin_layout Standard
+Although they exist in \SpecialChar LyX
+, you generally don't need them.
+ \SpecialChar LyX
+ will take care of these things for you, depending on what you're doing.
+ Different parts of the document are automatically set in a different typeface
+ and font size.
+ Paragraph indenting is context dependent; different types of paragraphs
+ get indented differently.
+ Page breaks get handled automatically, as well.
+ In general, the space between lines, between words, and between paragraphs
+ is variable, set by \SpecialChar LyX
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+There are ways to adjust all of these (only some of which require knowledge
+ of \SpecialChar LaTeX
+), either for a whole document or for a specific location in a document.
+ See the 
+\emph on
+User's Guide
+\emph default
+ and/or the 
+\emph on
+Additional Features
+\emph default
+ manual for details.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lastly, there are a few areas where we believe \SpecialChar LyX
+ (and \SpecialChar LaTeX
+) surpasses many word
+ processors:
+\end_layout
+
+\begin_layout Itemize
+Hyphenation
+\end_layout
+
+\begin_layout Itemize
+Lists of any type
+\end_layout
+
+\begin_layout Itemize
+Mathematics
+\end_layout
+
+\begin_layout Itemize
+Tables
+\end_layout
+
+\begin_layout Itemize
+Cross-referencing
+\end_layout
+
+\begin_layout Standard
+Granted, many modern word processors can handle mathematical symbols, tables,
+ and hyphenation, and many have moved towards style definitions and the
+ WYSIWYM concept.
+ However, they've only recently been able to do so, whereas \SpecialChar LyX
+ is built upon
+ the \SpecialChar LaTeX
+ document preparation system.
+ \SpecialChar LaTeX
+ has been around since 1985, and 
+\emph on
+works
+\emph default
+.
+\end_layout
+
+\begin_layout Subsection
+What is \SpecialChar LaTeX
+?
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LaTeX
+ is a document preparation system designed by Leslie Lamport in 1985.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The source for the info in this section is 
+\emph on
+A Guide to \SpecialChar LaTeX2e
+
+\emph default
+, by Helmut Kopka and Patrick Daly, which has an entry in the bibliography
+ of the 
+\emph on
+User's Guide
+\emph default
+\SpecialChar endofsentence
+
+\end_layout
+
+\end_inset
+
+ It was built up from a typesetting language called \SpecialChar TeX
+, created by Donald
+ Knuth in 1984.
+ \SpecialChar TeX
+ takes a sequence of typesetting commands, written in a script in an ASCII
+ file, and executes them.
+ Many of the 
+\begin_inset Quotes eld
+\end_inset
+
+tricks
+\begin_inset Quotes erd
+\end_inset
+
+ of the printing trade were modeled by Knuth as computer algorithms and
+ incorporated into \SpecialChar TeX
+, hence its excellent printed appearance.
+ What comes directly out of \SpecialChar TeX
+ is the portable document format 
+\emph on
+pdf
+\emph default
+ or the so-called 
+\begin_inset Quotes eld
+\end_inset
+
+device independent
+\begin_inset Quotes erd
+\end_inset
+
+ format file 
+\emph on
+dvi
+\emph default
+.
+ The dvi format is often used for previews and can later be converted to
+ other formats like PostScript.
+ 
+\end_layout
+
+\begin_layout Standard
+\SpecialChar TeX
+ isn't only a typesetting engine; it also allows you to define macros.
+ Most people who use \SpecialChar TeX
+ are actually using a macro package which Knuth created
+ to hide a lot of the typesetting details.
+ This is where Leslie Lamport enters our story.
+ He wanted a macro package that was more user- and less typesetter-oriented,
+ with a set of commands that consistently typeset things like sections,
+ tables or math formulas in a uniform, consistent fashion.
+ This is how \SpecialChar LaTeX
+ was born.
+\end_layout
+
+\begin_layout Standard
+Now, in parallel with the development and growth of \SpecialChar LaTeX
+, other folks were creating
+ their own custom macro packages for \SpecialChar TeX
+, ones to make slides or articles for
+ math journals and so on.
+ Some used the raw \SpecialChar TeX
+ facilities to do this, others began modifying \SpecialChar LaTeX
+.
+ To try and unify this mess, a team of \SpecialChar LaTeX
+-nicians began to work on \SpecialChar LaTeX2e
+, the current
+ version of \SpecialChar LaTeX
+, during the late 1980's.
+ This new version of \SpecialChar LaTeX
+ has commands which provide an easier-to-use interface
+ to \SpecialChar TeX
+'s macro-creating commands, aid in the use of new fonts, and so on.
+ In fact, \SpecialChar LaTeX
+ is quite an extensive language in its own right! Users around
+ the world have been creating their own add-ons for \SpecialChar LaTeX
+ beyond the standard
+ ones.
+\end_layout
+
+\begin_layout Standard
+There are two ways to extend \SpecialChar LaTeX
+: classes and styles.
+ A 
+\emph on
+class
+\emph default
+ is a set of \SpecialChar LaTeX
+ macros describing a new type of document, like a book, or
+ an article.
+ There are classes for slides, for physics and math journals\SpecialChar ldots
+ many universities
+ even have a class for their thesis format.
+ A 
+\emph on
+style
+\emph default
+ differs from a class in that it doesn't define a new type of document,
+ but a different type of 
+\emph on
+behavior
+\emph default
+ that any document can use.
+ For example, \SpecialChar LyX
+ controls page margins and line spacing using two different
+ \SpecialChar LaTeX
+ style-files designed for these purposes.
+ There are style-files for a whole slew of things: printing labels or envelopes,
+ changing indentation behavior, adding new fonts, manipulating graphics,
+ designing fancy page headings, customizing bibliographies, altering the
+ location and appearance of footnotes, tables, and figures, customizing
+ lists, etc.
+\end_layout
+
+\begin_layout Standard
+Here is a summary:
+\end_layout
+
+\begin_layout Description
+\SpecialChar TeX
+: Typesetting language with macro capability.
+\end_layout
+
+\begin_layout Description
+\SpecialChar LaTeX
+: Macro package built upon \SpecialChar TeX
+\SpecialChar endofsentence
+
+\end_layout
+
+\begin_layout Description
+classes: Descriptions of types of document used with \SpecialChar LaTeX
+\SpecialChar endofsentence
+
+\end_layout
+
+\begin_layout Description
+styles: Descriptions of the default behavior of particular elements of \SpecialChar LaTeX
+.
+\end_layout
+
+\begin_layout Description
+\SpecialChar LyX
+: Visual, WYSIWYM document processor that uses \SpecialChar LaTeX
+ to do its typesetting.
+\end_layout
+
+\begin_layout Standard
+This section attempts to explain the difference between \SpecialChar LyX
+ and a word processor.
+ Simply put, \SpecialChar LaTeX
+ is the difference.
+ By using \SpecialChar LaTeX
+ as its backend, \SpecialChar LyX
+ helps you to think more about
+\emph on
+ what
+\emph default
+ (as in the 
+\emph on
+words
+\emph default
+) you write.
+ The computer then handles 
+\emph on
+how
+\emph default
+ they should look.
+\end_layout
+
+\begin_layout Section
+Navigating the Documentation
+\end_layout
+
+\begin_layout Standard
+To make it easier to answer your questions and describe all of the features
+ of \SpecialChar LyX
+, the documentation has been split up into several different files.
+ Each one has its own purpose, as described below.
+ Before you go ploughing into any of those files, however, you should read
+ this chapter thoroughly, since it contains a lot of useful information
+ and commentary that can save you some time.
+\end_layout
+
+\begin_layout Standard
+Hopefully, the development of \SpecialChar LyX
+ will never stop; so some of the documentation
+ may be incomplete or a bit out of date, though we try to keep up-to-date.
+ Like the rest of \SpecialChar LyX
+, the manuals are the work of a group of volunteers who
+ have 
+\begin_inset Quotes eld
+\end_inset
+
+Real Jobs
+\begin_inset Quotes erd
+\end_inset
+
+, families, dishes to clean, 
+\emph on
+et cetera
+\emph default
+.
+ If you want to help out, be sure to read Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Contrib"
+
+\end_inset
+
+ in addition to the rest of this document.
+\end_layout
+
+\begin_layout Standard
+Also, please do us a favor – if anything in these manuals confuses you,
+ is unclear, or wrong, don't hesitate to let us know! You can reach the
+ current document maintainers by emailing 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+literal "false"
+
+\end_inset
+
+.
+ If you have questions that are not obviously answered in the documentation,
+ and need help fast, there is an active users' mailing list which you can
+ reach at 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-users@lists.lyx.org"
+type "mailto:"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+The Format of the Manuals
+\end_layout
+
+\begin_layout Standard
+Some of you may have printed out the manuals.
+ Others may be reading them within \SpecialChar LyX
+.
+ There are some differences between the \SpecialChar LyX
+-file and the printed version.
+ In \SpecialChar LyX
+, the title is simply at the top of the document, not formatted on a
+ separate page as in some of the printed versions.
+ Nor are any of the footnotes or the Table of Contents fully visible.
+ To open a footnote, which looks like this: 
+\begin_inset Graphics
+	filename ../../../../lib/doc/clipart/footnote.png
+	scale 95
+
+\end_inset
+
+, click on it with the left mouse button.
+ For the Table of Contents, either click on the grey box or click on the
+ 
+\family sans
+Navigate
+\family default
+ menu, where the contents are displayed automatically\SpecialChar endofsentence
+
+\end_layout
+
+\begin_layout Standard
+In the printed manuals, all cross-references appear as the actual numbers
+ for a chapter, section, subsection, and so on.
+ In the \SpecialChar LyX
+-file, however, all cross-references appear as light-grey boxes
+ like the following: 
+\begin_inset Graphics
+	filename ../../../../lib/doc/clipart/reference.png
+	scale 95
+
+\end_inset
+
+.
+ If you click on such a box with the left mouse button, a dialog box will
+ appear containing a list of all the cross-references in the document.
+ You can go to the referenced section by right-clicking on the box or by
+ clicking the button 
+\family sans
+Go
+\begin_inset space ~
+\end_inset
+
+to
+\begin_inset space ~
+\end_inset
+
+Label
+\family default
+ in the opened dialog.
+ Going back to where you came from is just as easy.
+ Click on 
+\family sans
+Go
+\begin_inset space ~
+\end_inset
+
+Back
+\family default
+ to go back to your earlier location.
+\end_layout
+
+\begin_layout Standard
+Now that we've cleared up some of the differences between the printed and
+ \SpecialChar LyX
+-file versions of this file, we can start looking at the format of this
+ document.
+ You'll occasionally notice things in different fonts:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Emphasized Style
+\emph default
+ is used for general emphasis, generic arguments, book titles, names of
+ sections of other manuals, and notes from the authors.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+Typewriter
+\family default
+ is used for program and file names, \SpecialChar LyX
+ code and functions.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Sans Serif
+\family default
+ is used for menu, button, or dialog box names, and the names of keyboard
+ keys.
+\end_layout
+
+\begin_layout Itemize
+
+\noun on
+Noun Style
+\noun default
+ is used for people's names.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Bold
+\series default
+ is used for \SpecialChar LaTeX
+ code
+\end_layout
+
+\begin_layout Standard
+When we do need to reference keys, we'll use the following prefixing convention:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Ctrl+
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ indicates the 
+\family sans
+Control
+\family default
+ key.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Shift+
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ indicates the 
+\family sans
+Shift
+\family default
+ key.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Alt+
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ indicates the 
+\family sans
+Alt
+\family default
+ (
+\family sans
+Meta
+\family default
+) key.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+F1
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ \SpecialChar ldots
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+F12
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ are the function keys.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Esc
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ is the escape key.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Left
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Right
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Up
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Down
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+: self-explanatory.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\begin_inset Quotes eld
+\end_inset
+
+Insert
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Delete
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Home
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+End
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+PageUp
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+PageDown
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+: these are the 6
+\begin_inset space ~
+\end_inset
+
+keys that appear above the cursor keys on many PC keyboards.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+PageUp
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+PageDown
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ are called 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Prior
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Next
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ on some keyboards.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Return
+\family default
+ and 
+\family sans
+Enter
+\family default
+ both refer to the same key.
+ Some keyboards label the 
+\family sans
+Return
+\family default
+ key as 
+\begin_inset Quotes eld
+\end_inset
+
+Return,
+\begin_inset Quotes erd
+\end_inset
+
+ others as 
+\begin_inset Quotes eld
+\end_inset
+
+Enter,
+\begin_inset Quotes erd
+\end_inset
+
+ still others have two keys.
+ \SpecialChar LyX
+ treats all of them as the same key, so we'll use 
+\family sans
+Return
+\family default
+ and 
+\family sans
+Enter
+\family default
+ interchangeably.
+\end_layout
+
+\begin_layout Standard
+The list with the currently set shortcuts can be found in the 
+\family sans
+Help
+\family default
+ menu under 
+\family sans
+Shortcuts
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+Units used in the Manuals
+\end_layout
+
+\begin_layout Standard
+To understand the units described in this documentation, Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Units"
+
+\end_inset
+
+ explains all units available in \SpecialChar LyX
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Units"
+
+\end_inset
+
+Units
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="20" columns="2">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+unit
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+name/description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+millimeter
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+centimeter
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+in
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+inch (1
+\begin_inset space \thinspace{}
+\end_inset
+
+in = 2.54
+\begin_inset space \thinspace{}
+\end_inset
+
+cm)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pt
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+point (72.27
+\begin_inset space \thinspace{}
+\end_inset
+
+pt = 1
+\begin_inset space \thinspace{}
+\end_inset
+
+in)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pica (1
+\begin_inset space \thinspace{}
+\end_inset
+
+pc = 12
+\begin_inset space \thinspace{}
+\end_inset
+
+pt)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+scaled point (65536
+\begin_inset space \thinspace{}
+\end_inset
+
+sp = 1
+\begin_inset space \thinspace{}
+\end_inset
+
+pt)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+big point (72
+\begin_inset space \thinspace{}
+\end_inset
+
+bp = 1
+\begin_inset space \thinspace{}
+\end_inset
+
+in)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+dd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+didot (72
+\begin_inset space \thinspace{}
+\end_inset
+
+dd 
+\begin_inset Formula $\approx$
+\end_inset
+
+ 37.6
+\begin_inset space \thinspace{}
+\end_inset
+
+mm)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cicero (1
+\begin_inset space \thinspace{}
+\end_inset
+
+cc = 12
+\begin_inset space \thinspace{}
+\end_inset
+
+dd)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Scale%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% of original image width
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% of text width
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+col%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% of column width
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+page%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% of paper width
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+line%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% of line width
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+theight%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% of text height
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pheight%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% of paper height
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ex
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+height of letter 
+\emph on
+x
+\emph default
+ in current font
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+em
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+width of letter 
+\emph on
+M
+\emph default
+ in current font
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mu
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+math unit (1
+\begin_inset space \thinspace{}
+\end_inset
+
+mu = 1/18
+\begin_inset space \thinspace{}
+\end_inset
+
+em)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+The Manuals
+\end_layout
+
+\begin_layout Standard
+The following list describes the contents of the basic documentation files
+ that you find in the 
+\family sans
+Help
+\family default
+ menu:
+\end_layout
+
+\begin_layout Description
+Introduction This file.
+\end_layout
+
+\begin_layout Description
+Tutorial If you are new to \SpecialChar LyX
+, and have never used \SpecialChar LaTeX
+ before, you should start
+ here.
+ If you have used \SpecialChar LaTeX
+ before, you should still read the 
+\emph on
+Tutorial
+\emph default
+, starting with the section on 
+\begin_inset Quotes eld
+\end_inset
+
+\SpecialChar LyX
+ for \SpecialChar LaTeX
+ users.
+\begin_inset Quotes erd
+\end_inset
+
+ (Skimming through the rest of the document wouldn't hurt, either.)
+\end_layout
+
+\begin_layout Description
+User's
+\begin_inset space ~
+\end_inset
+
+Guide The primary documentation.
+ We'll cover 
+\emph on
+most
+\emph default
+ of the basic operation and available features of \SpecialChar LyX
+ here.
+ The main manual assumes that you have read the 
+\emph on
+Tutorial
+\emph default
+.
+\end_layout
+
+\begin_layout Description
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects Extension of the 
+\emph on
+User's Guide
+\emph default
+.
+ Documents in detail how to use tables, graphics, floats, notes, program
+ listings and boxes.
+ It also includes many tricks of the \SpecialChar LaTeX
+ masters.
+\end_layout
+
+\begin_layout Description
+Math Extension of the 
+\emph on
+User's Guide
+\emph default
+.
+ Documents in detail how to typeset any kind of formula.
+\end_layout
+
+\begin_layout Description
+Additional
+\begin_inset space ~
+\end_inset
+
+Features Extension of the 
+\emph on
+User's Guide
+\emph default
+.
+ Documents how to use raw \SpecialChar LaTeX
+ commands, additional layouts and special-purpose
+ editing features.
+\end_layout
+
+\begin_layout Description
+Customization A description of advanced \SpecialChar LyX
+ features, including how to customize
+ the overall behavior of \SpecialChar LyX
+\SpecialChar endofsentence
+ This includes such things as keybindings, internationa
+lization and configuration files.
+ It also includes information about layout files, which are needed to get
+ \SpecialChar LyX
+ to support \SpecialChar LaTeX
+ classes or packages.
+\end_layout
+
+\begin_layout Description
+Shortcuts Tables of the currently defined \SpecialChar LyX
+ shortcuts.
+\end_layout
+
+\begin_layout Description
+\SpecialChar LaTeX
+
+\begin_inset space ~
+\end_inset
+
+Configuration A report produced by \SpecialChar LyX
+ about your system.
+ This file contains information on what \SpecialChar LyX
+ learned about your installation.
+ Check it to see if you're missing something you might like to have.
+\end_layout
+
+\begin_layout Standard
+These files will reference one another as necessary.
+ For example, the 
+\emph on
+User's Guide
+\emph default
+ contains 
+\emph on
+some
+\emph default
+ information on installation and customization, but refers the reader to
+ the 
+\emph on
+Customization Manual
+\emph default
+ for more information.
+\end_layout
+
+\begin_layout Standard
+We'll state again an important point:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+If you are new to \SpecialChar LyX
+, read the 
+\emph on
+Tutorial
+\emph default
+.
+ Now\SpecialChar endofsentence
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Otherwise, you could needlessly frustrate yourself.
+\end_layout
+
+\begin_layout Section
+Contributing to the \SpecialChar LyX
+ Project
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Contrib"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Contributing to \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ is mostly written in C++ (the \SpecialChar LaTeX
+ importer is written in Python).
+ It is a large project, and as a result it is not free from bugs, or the
+ need for improvements in the source code.
+\end_layout
+
+\begin_layout Subsubsection
+Reporting a bug
+\end_layout
+
+\begin_layout Standard
+While using \SpecialChar LyX
+, you may find behavior which you consider a bug.
+ Crashes, though rare, can happen.
+ User interface problems are considered major bugs by the \SpecialChar LyX
+ team: especially
+ helpful are indications of parts of the \SpecialChar LyX
+ interface you find confusing,
+ or unclear.
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ has a bug tracking system, which you can find at
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+target "https://www.lyx.org/trac/wiki/BugTrackerHome"
+
+\end_inset
+
+.
+ You should check the bug tracker before reporting any bugs, in case it
+ has already been reported.
+ If you have a comment on an existing bug, or wish to report a new bug,
+ you may either use the bug tracker, or send an e-mail to the development
+ mailing list, 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-devel@lists.lyx.org"
+type "mailto:"
+literal "false"
+
+\end_inset
+
+.
+ Archives of this list are linked from the main \SpecialChar LyX
+ website, 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.lyx.org"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A useful bug report will at a minimum include the version of \SpecialChar LyX
+ you are having
+ the problem with.
+ Accurate, detailed descriptions are preferred — the more time developers
+ have to spend to pinpoint the source of a bug, the less time they have
+ for other improvements.
+ Mention the system and system version on which you are running \SpecialChar LyX
+.
+ Give the versions of the libraries you have installed on your system, and,
+ if relevant, the versions of external programs that \SpecialChar LyX
+ uses.
+ If it's a compilation or configuration problem, include the file 
+\family typewriter
+config.log
+\family default
+, and mention which compiler you are using.
+\end_layout
+
+\begin_layout Subsubsection
+Contributing fixes and new features
+\end_layout
+
+\begin_layout Standard
+If you have made changes to \SpecialChar LyX
+'s source that you think should become part
+ of \SpecialChar LyX
+, send your changes as a diff file (in unified format) to the development
+ list referenced above, along with a change log, and a description of what
+ your patch does.
+\end_layout
+
+\begin_layout Subsection
+Contributing to the Documentation
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+'s documentation is extensive; however \SpecialChar LyX
+ is under constant development, and
+ each new release adds new features.
+ You may find some documentation needs improvement.
+ This section describes what to do if you find an error, or have some suggestion
+s for improving the documentation.
+\end_layout
+
+\begin_layout Subsubsection
+Reporting Errors in the Manuals
+\end_layout
+
+\begin_layout Standard
+If you find a problem with the documentation, send a message to the mailing
+ list 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+literal "false"
+
+\end_inset
+
+.
+ The documentation team will make any necessary fixes.
+\end_layout
+
+\begin_layout Subsubsection
+Joining the Documentation Team.
+\end_layout
+
+\begin_layout Standard
+The \SpecialChar LyX
+ Documentation Project, like anything else in the \SpecialChar LyX
+ project, can always
+ use assistance! If you're interested in contributing to the Documentation
+ Project, you need to do the following:
+\end_layout
+
+\begin_layout Enumerate
+Get the latest \SpecialChar LyX
+ source code from 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+target "https://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master "
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Next, read the 
+\emph on
+User's Guide
+\emph default
+ and the 
+\emph on
+Tutorial
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+The point of this exercise is to give you ideas.
+ The 
+\emph on
+Tutorial
+\emph default
+ and 
+\emph on
+User's Guide
+\emph default
+ are likely to be the most up-to-date of all of the documentation.
+ You should be able to glean some insights into how we want the manuals
+ to read and to look.
+\end_layout
+
+\begin_layout Enumerate
+Contact the team at:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+literal "false"
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+to discuss your intended changes and to get some feedback on them.
+\end_layout
+
+\begin_layout Standard
+The changes you wish to make may range from improving clarity of the text,
+ to doing major re-structuring of the documentation.
+ Any and all improvements are gladly received.
+\end_layout
+
+\end_body
+\end_document
