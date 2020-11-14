@@ -125,12 +125,6 @@ export/export/WrongDfnTagHandling_xhtml
 #11455 "Unable to process argument!" with multiple 1.6.x roundtrips
 export/templates/Articles/IEEE_Transactions_Journal_lyx16
 
-#11520 "listerrors" fails with pdflatex, lualatex, and xelatex
-# Example for lib/scripts/listerrors
-# Requires noweb. Seems to be restricted to plain "latex".
-# Find out why and whether the script could be improved.
-export/examples/Modules/Noweb_Listerrors_(pdf[245]).*
-
 #11522 Support specification of complementing non-TeX fonts
 #
 # More than one non-TeX font required for the character set in many documents
