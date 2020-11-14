@@ -149,10 +149,8 @@ Style BeforePicture
 	CopyStyle	Name
 	LatexName	ecvbeforepicture
 	LabelString	"Space before picture:"
-	DocBookTag            date
-	DocBookAttr           role='before-picture'
-	DocBookInInfo         always
-	DocBookWrapperTag     NONE
+	DocBookTag          IGNORE
+	DocBookWrapperTag   NONE
 End
 
 Style Picture
@@ -175,10 +173,8 @@ Style AfterPicture
 	CopyStyle	Name
 	LatexName	ecvafterpicture
 	LabelString	"Space after picture:"
-	DocBookTag            date
-	DocBookAttr           role='after-picture'
-	DocBookInInfo         always
-	DocBookWrapperTag     NONE
+	DocBookTag          IGNORE
+	DocBookWrapperTag   NONE
 End
 
 Style Page
