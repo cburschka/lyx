@@ -6,9 +6,37 @@
 
 cmake_minimum_required(VERSION 3.1.0)
 
+## set PATH=C:/Strawberry/perl/bin/;%PATH%
+## set PATH=C:\Users\Thibaut\Anaconda3;%PATH%
+## set PATH=C:\Program Files\CMake\bin;%PATH%
+## D:
+## cd LyX\lyx-unstable\cmake-build-debug
+## ctest -j4 -R .*docbook5
+
+set(CMAKE_CXX_STANDARD 17)
 set(GNUWIN32_DIR D:/LyX/lyx-unstable/lyx-windows-deps-msvc2017)
+set(LYX_USE_QT "QT5")
+set(LYX_REQUIRE_SPELLCHECK true)
+set(LYX_ENABLE_EXPORT_TESTS 1)
+
+set(QT_DIR D:/Qt/5.15.0/msvc2019_64)
+set(QT5_DIR D:/Qt/5.15.0/msvc2019_64)
+set(QT_MKSPECS_DIR D:/Qt/5.15.0/msvc2019_64/mkspecs)
+set(Qt5Concurrent_DIR D:/Qt/5.15.0/msvc2019_64/lib/cmake/Qt5Concurrent)
+set(Qt5Core_DIR D:/Qt/5.15.0/msvc2019_64/lib/cmake/Qt5Core)
+set(Qt5Gui_DIR D:/Qt/5.15.0/msvc2019_64/lib/cmake/Qt5Gui)
+set(Qt5Svg_DIR D:/Qt/5.15.0/msvc2019_64/lib/cmake/Qt5Svg)
+set(Qt5Widgets_DIR D:/Qt/5.15.0/msvc2019_64/lib/cmake/Qt5Widgets)
+set(Qt5WinExtras_DIR D:/Qt/5.15.0/msvc2019_64/lib/cmake/Qt5WinExtras)
+
+LIST(PREPEND CMAKE_PROGRAM_PATH  "C:/Strawberry/perl/bin")
+LIST(PREPEND CMAKE_PROGRAM_PATH  "C:/Strawberry/c/bin")
+LIST(PREPEND CMAKE_PROGRAM_PATH  "C:/Users/Thibaut/Anaconda3")
+set(PERL_EXECUTABLE "C:/Strawberry/perl/bin/perl.exe")
+set(JAVA_EXECUTABLE "C:/Program Files/Java/jdk-15/bin/java.exe")
 
 set(LYX_PROJECT LyX)
+
 # Instruct cmake to not use gnu extensions,
 # this prevents the mix of '-std=c++*' and '-std=gnu++*' flags
 set(CMAKE_CXX_EXTENSIONS OFF)

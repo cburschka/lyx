@@ -23,6 +23,7 @@ Style Standard
 	ParSkip		0.4
 	Align		Block
 	LabelType	No_Label
+	DocBookTag  para
 End
 
 Input stdcounters.inc
@@ -42,36 +43,66 @@ Style Name
 	  Series	Bold
 	  Color		Blue
 	EndFont
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType block
+	DocBookInInfo         always
 End
 
 Style FooterName
 	CopyStyle	Name
 	LatexName	ecvfootername
 	LabelString	"Footer name:"
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperAttr    role='footer'
+	DocBookWrapperTagType block
+	DocBookInInfo         always
 End
 
 Style Nationality
 	CopyStyle	Name
 	LatexName	ecvnationality
 	LabelString	"Nationality:"
+	DocBookTag            date
+	DocBookAttr           role='nationality'
+	DocBookInInfo         always
+	DocBookWrapperTag     NONE
 End
 
 Style Birthday
 	CopyStyle	Name
 	LatexName	ecvdateofbirth
 	LabelString	"Date of birth:"
+	DocBookTag            date
+	DocBookAttr           role='birthday'
+	DocBookInInfo         always
+	DocBookWrapperTag     NONE
 End
 
 Style Address
 	CopyStyle	Name
 	LatexName	ecvaddress
 	LabelString	"Address:"
+	DocBookTag            NONE
+	DocBookWrapperTag     address
+	DocBookWrapperTagType block
+	DocBookWrapperMergeWithPrevious true
+	DocBookInInfo         always
 End
 
 Style Email
 	CopyStyle	Name
 	LatexName	ecvemail
 	LabelString	"E-mail:"
+	DocBookTag            email
+	DocBookTagType        paragraph
+	DocBookWrapperTag     address
+	DocBookWrapperTagType block
+	DocBookWrapperMergeWithPrevious true
+	DocBookInInfo         always
 End
 
 Style Telephone
@@ -81,25 +112,47 @@ Style Telephone
 	Argument 1
 	  LabelString	"Mobile"
 	  Tooltip	"Mobile phone number"
+	  DocBookTag    phrase
+	  DocBookAttr   role='mobile'
 	EndArgument
+	DocBookTag            phone
+	DocBookTagType        paragraph
+	DocBookWrapperTag     address
+	DocBookWrapperTagType block
+	DocBookWrapperMergeWithPrevious true
+	DocBookInInfo         always
 End
 
 Style Gender
 	CopyStyle	Name
 	LatexName	ecvgender
 	LabelString	"Gender:"
+	DocBookTag            date
+	DocBookAttr           role='gender'
+	DocBookInInfo         always
+	DocBookWrapperTag     NONE
 End
 
 Style Fax
 	CopyStyle	Name
 	LatexName	ecvfax
 	LabelString	"Fax:"
+	DocBookTag            fax
+	DocBookTagType        paragraph
+	DocBookWrapperTag     address
+	DocBookWrapperTagType block
+	DocBookWrapperMergeWithPrevious true
+	DocBookInInfo         always
 End
 
 Style BeforePicture
 	CopyStyle	Name
 	LatexName	ecvbeforepicture
 	LabelString	"Space before picture:"
+	DocBookTag            date
+	DocBookAttr           role='before-picture'
+	DocBookInInfo         always
+	DocBookWrapperTag     NONE
 End
 
 Style Picture
@@ -112,18 +165,28 @@ Style Picture
 	  Tooltip	"Size the photo is resized to"
 	  PassThru	1
 	EndArgument
+	DocBookTag            date
+	DocBookAttr           role='picture'
+	DocBookInInfo         always
+	DocBookWrapperTag     NONE
 End
 
 Style AfterPicture
 	CopyStyle	Name
 	LatexName	ecvafterpicture
 	LabelString	"Space after picture:"
+	DocBookTag            date
+	DocBookAttr           role='after-picture'
+	DocBookInInfo         always
+	DocBookWrapperTag     NONE
 End
 
 Style Page
 	CopyStyle	Name
 	LatexName	ecvpage
 	LabelString	"Page:"
+	DocBookTag  NONE
+	DocBookWrapperTag NONE
 End
 
 Style Section
@@ -151,6 +214,8 @@ Style Section
 	  Series	Bold
 	EndFont
 	TocLevel	1
+	DocBookTag  title
+	DocBookTagType paragraph
 End
 
 Style Item
@@ -168,6 +233,8 @@ Style Item
 	  AutoInsert	1
 	  LabelString	"Summary"
 	  Tooltip	"Summary of the item, can also be the time"
+	  DocBookTag    emphasis
+	  # TODO: For DocBook, this should rather be title, but it would be output in the paragraph, and not before the paragraph.
 	EndArgument
 	ParSkip		0.4
 	Align		Block
@@ -178,12 +245,16 @@ Style Item
 	  Series	Bold
 	  Color		Blue
 	EndFont
+	DocBookTag      sidebar
+	DocBookTagType  block
+	DocBookItemTag  para
 End
 
 Style BulletedItem
 	CopyStyle	Item
 	LatexName	ecvitem*
 	LabelString	"Bulleted Item:"
+	DocBookAttr role='bulleted'
 End
 
 Style Begin
@@ -235,6 +306,8 @@ Style MotherTongue
 	  Series	Bold
 	  Color		Blue
 	EndFont
+	DocBookTag  para
+	DocBookAttr role='mother-tongue'
 End
 
 Style LangHeader
@@ -252,27 +325,39 @@ Style Language
 	  Mandatory	1
 	  LabelString	"Language"
 	  Tooltip	"Name of the language"
+	  DocBookTag    phrase
+	  DocBookAttr   role='language-name'
 	EndArgument
 	Argument 3
 	  Mandatory	1
 	  LabelString	"Listening"
 	  Tooltip	"Level how good you think you can listen"
+	  DocBookTag    phrase
+	  DocBookAttr   role='listening'
 	EndArgument
 	Argument 4
 	  Mandatory	1
 	  LabelString	"Reading"
 	  Tooltip	"Level how good you think you can read"
+	  DocBookTag    phrase
+	  DocBookAttr   role='reading'
 	EndArgument
 	Argument 5
 	  Mandatory	1
 	  LabelString	"Interaction"
 	  Tooltip	"Level how good you think you can conversate"
+	  DocBookTag    phrase
+	  DocBookAttr   role='speaking'
 	EndArgument
 	Argument 6
 	  Mandatory	1
 	  LabelString	"Production"
 	  Tooltip	"Level how good you think you can freely talk"
+	  DocBookTag    phrase
+	  DocBookAttr   role='writing'
 	EndArgument
+	DocBookTag  para
+	DocBookAttr role='language'
 End
 
 Style LastLanguage

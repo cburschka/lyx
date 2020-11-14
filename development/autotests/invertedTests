@@ -480,6 +480,8 @@ export/doc/gl/Tutorial_docbook5
 export/examples/Articles/Chess/Game_2_docbook5
 # - Bicaption module would require some C++ implementation.
 export/examples(|/de|/fr|/ja)/Modules/Multilingual_Captions_docbook5
+# - European CV: hard to mix items and bibliographies.
+export/examples(|/de)/Curricula_Vitae/Europe_CV_docbook5
 
 Sublabel: docbook poster
 # Posters cannot be properly exported, the LyX documents are too far from
