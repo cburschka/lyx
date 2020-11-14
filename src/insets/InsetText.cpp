@@ -616,7 +616,7 @@ void InsetText::docbook(XMLStream & xs, OutputParams const & rp, XHTMLOptions op
 	}
 
 	InsetLayout const & il = getLayout();
-	if (opts & WriteOuterTag && !il.docbooktag().empty() && il.docbooktag() != "NONE") {
+	if (opts & WriteOuterTag && !il.docbooktag().empty() && il.docbooktag() != "NONE" && il.docbooktag() != "IGNORE") {
 		docstring attrs = docstring();
 		if (!il.docbookattr().empty())
 			attrs += from_ascii(il.docbookattr());
@@ -637,7 +637,7 @@ void InsetText::docbook(XMLStream & xs, OutputParams const & rp, XHTMLOptions op
 	docbookParagraphs(text_, buffer(), xs, runparams);
 	xs.endDivision();
 
-	if (opts & WriteOuterTag)
+	if (opts & WriteOuterTag && !il.docbooktag().empty() && il.docbooktag() != "NONE" && il.docbooktag() != "IGNORE")
 		xs << xml::EndTag(il.docbooktag());
 }
 

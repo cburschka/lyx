@@ -412,6 +412,11 @@ void makeParagraph(
 		OutputParams const & runparams,
 		ParagraphList::const_iterator const & par)
 {
+	// If this kind of layout should be ignored, already leave.
+	if (par->layout().docbooktag() == "IGNORE")
+		return;
+
+	// Useful variables.
 	auto const begin = text.paragraphs().begin();
 	auto const end = text.paragraphs().end();
 	auto prevpar = text.paragraphs().getParagraphBefore(par);
@@ -503,15 +508,16 @@ void makeParagraph(
 	++nextpar;
 	auto pars = par->simpleDocBookOnePar(buf, runparams, text.outerFont(distance(begin, par)), 0, nextpar == end, special_case);
 	for (docstring const & parXML : pars) {
-		if (xml::isNotOnlySpace(parXML)) {
-			if (open_par)
-				openParTag(xs, &*par, prevpar);
+		if (!xml::isNotOnlySpace(parXML))
+			continue;
 
-			xs << XMLStream::ESCAPE_NONE << parXML;
+		if (open_par)
+			openParTag(xs, &*par, prevpar);
 
-			if (close_par)
-				closeParTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr);
-		}
+		xs << XMLStream::ESCAPE_NONE << parXML;
+
+		if (close_par)
+			closeParTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr);
 	}
 }
 
@@ -522,6 +528,11 @@ void makeEnvironment(Text const &text,
                      OutputParams const &runparams,
                      ParagraphList::const_iterator const & par)
 {
+	// If this kind of layout should be ignored, already leave.
+	if (par->layout().docbooktag() == "IGNORE")
+		return;
+
+	// Useful variables.
 	auto const end = text.paragraphs().end();
 	auto nextpar = par;
 	++nextpar;
@@ -618,9 +629,17 @@ ParagraphList::const_iterator makeListEnvironment(Text const &text,
 		                                          OutputParams const &runparams,
 		                                          ParagraphList::const_iterator const & begin)
 {
+	// Useful variables.
 	auto par = begin;
 	auto const end = text.paragraphs().end();
 	auto const envend = findEndOfEnvironment(par, end);
+
+	// If this kind of layout should be ignored, already leave.
+	if (begin->layout().docbooktag() == "IGNORE") {
+		auto nextpar = par;
+		++nextpar;
+		return nextpar;
+	}
 
 	// Output the opening tag for this environment.
 	Layout const & envstyle = par->layout();
@@ -708,6 +727,11 @@ void makeCommand(
 		OutputParams const & runparams,
 		ParagraphList::const_iterator const & par)
 {
+	// If this kind of layout should be ignored, already leave.
+	if (par->layout().docbooktag() == "IGNORE")
+		return;
+
+	// Useful variables.
 	// Unlike XHTML, no need for labels, as they are handled by DocBook tags.
 	auto const begin = text.paragraphs().begin();
 	auto const end = text.paragraphs().end();

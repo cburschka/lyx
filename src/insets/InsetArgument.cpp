@@ -312,7 +312,7 @@ InsetLayout::InsetDecoration InsetArgument::decoration() const
 
 
 void InsetArgument::docbook(XMLStream & xs, OutputParams const & rp) const {
-	if (docbooktag_ != from_ascii("NONE")) {
+	if (docbooktag_ != from_ascii("NONE") && docbooktag_ != from_ascii("IGNORE")) {
 		// TODO: implement docbooktagtype_.
 		xs << xml::StartTag(docbooktag_, docbookattr_);
 		InsetText::docbook(xs, rp);
