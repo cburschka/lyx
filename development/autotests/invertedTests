@@ -322,6 +322,14 @@ export/templates/Articles/Hebrew_Article_%28KOMA-Script%29_(dvi3|pdf5)_texF
 # See ML thread:
 # https://www.mail-archive.com/search?l=mid&q=60ee3809d30056c191d4b2e8c57a7eda60b3e382.camel%40lyx.org
 export/templates/Articles/Hebrew_Article_%28KOMA-Script%29_(dvi3|pdf5)_systemF
+#
+# This error could probably be fixed with a small modification to the document,
+# but note that XeTeX exports without error (with the current document).
+# This assertion was reported on the LuaTeX ML here:
+#  https://www.mail-archive.com/search?l=mid&q=20201030030430.4y4i6bdpwx633qs7%40vbox-VirtualBox
+# The assertion will be converted into the following error as of LuaTeX svn commit r7385:
+#  ! the word doesn't start with a character
+export/doc/he/Tutorial_(dvi3|pdf5)_systemF
 
 
 # Ukrainian
