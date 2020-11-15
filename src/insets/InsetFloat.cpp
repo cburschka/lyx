@@ -514,6 +514,8 @@ std::vector<const InsetCollapsible *> findSubfiguresInParagraph(const Paragraph 
 }
 
 
+namespace {
+
 const InsetLabel* findLabelInParagraph(const Paragraph &par)
 {
 	for (pos_type pos = 0; pos < par.size(); ++pos) {
@@ -548,6 +550,8 @@ const InsetLabel* findLabelInParagraph(const Paragraph &par)
 
 	return nullptr;
 }
+
+} // anonymous namespace
 
 
 const InsetCaption* findCaptionInParagraph(const Paragraph &par)

@@ -23,6 +23,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "InsetCaption.h"
+#include "InsetLabel.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
@@ -481,31 +482,99 @@ docstring InsetListings::xhtml(XMLStream & os, OutputParams const & rp) const
 }
 
 
+namespace {
+
+const InsetLabel* findLabelInParagraph(const Paragraph &par)
+{
+	for (pos_type pos = 0; pos < par.size(); ++pos) {
+		const Inset *inset = par.getInset(pos);
+
+		// Maybe an inset is directly a label, in which case no more work is needed.
+		if (inset && dynamic_cast<const InsetLabel *>(inset))
+			return dynamic_cast<const InsetLabel *>(inset);
+
+		// More likely, the label is hidden in an inset of a paragraph (only if a subtype of InsetText).
+		if (!dynamic_cast<const InsetText *>(inset))
+			continue;
+
+		auto insetAsText = dynamic_cast<const InsetText *>(inset);
+		auto itIn = insetAsText->paragraphs().begin();
+		auto endIn = insetAsText->paragraphs().end();
+		for (; itIn != endIn; ++itIn) {
+			for (pos_type posIn = 0; posIn < itIn->size(); ++posIn) {
+				const Inset *insetIn = itIn->getInset(posIn);
+				if (insetIn && dynamic_cast<const InsetLabel *>(insetIn)) {
+					return dynamic_cast<const InsetLabel *>(insetIn);
+				}
+			}
+		}
+
+		// Obviously, this solution does not scale with more levels of paragraphs-insets, but this should be enough.
+	}
+
+	return nullptr;
+}
+
+} // anonymous namespace
+
+
 void InsetListings::docbook(XMLStream & xs, OutputParams const & rp) const
 {
 	InsetLayout const & il = getLayout();
+	bool isInline = params().isInline();
 
-	if (!xs.isLastTagCR())
+	if (!isInline && !xs.isLastTagCR())
 		xs << xml::CR();
 
+	// In case of caption, the code must be wrapped, for instance in a figure. Also detect if there is a label.
+	// http://www.sagehill.net/docbookxsl/ProgramListings.html
+	// TODO: parts of this code could be merged with InsetFloat and findLabelInParagraph.
+	InsetCaption const * caption = getCaptionInset();
+	if (caption) {
+		// Find the label in the caption, if any.
+		InsetLabel const * label;
+		auto const end = caption->paragraphs().end();
+		for (auto it = caption->paragraphs().begin(); it != end; ++it) {
+			label = findLabelInParagraph(*it);
+			if (label)
+				break;
+		}
+
+		// Ensure that the label will not be output a second time as an anchor.
+		OutputParams rpNoLabel = rp;
+		if (label)
+			rpNoLabel.docbook_anchors_to_ignore.emplace(label->screenLabel());
+
+		// Prepare the right set of attributes, including the label.
+		docstring attr = from_ascii("type='listing'");
+		if (label)
+			attr += " xml:id=\"" + xml::cleanID(label->screenLabel()) + "\"";
+
+		// Finally, generate the wrapper (including the label).
+		xs << xml::StartTag("figure", attr);
+		xs << xml::CR();
+		xs << xml::StartTag("title");
+		xs << XMLStream::ESCAPE_NONE << getCaptionDocBook(rpNoLabel);
+		xs << xml::EndTag("title");
+		xs << xml::CR();
+	}
+
 	// Forge the attributes.
-	string attrs;
+	std::string attrs;
 	if (!il.docbookattr().empty())
 		attrs += " role=\"" + il.docbookattr() + "\"";
-	string const lang = params().getParamValue("language");
+	std::string const lang = params().getParamValue("language");
 	if (!lang.empty())
 		attrs += " language=\"" + lang + "\"";
-	xs << xml::StartTag(il.docbooktag(), attrs);
-	xs.startDivision(false);
 
-	// Deal with the caption.
-	docstring caption = getCaptionDocBook(rp);
-	if (!caption.empty()) {
-		xs << xml::StartTag("bridgehead");
-		xs << XMLStream::ESCAPE_NONE;
-		xs << caption;
-		xs << xml::EndTag("bridgehead");
-	}
+	// Determine the tag to use. Use the layout-defined value if outside a paragraph.
+	std::string tag = il.docbooktag();
+	if (isInline)
+		tag = "code";
+
+	// Start the listing.
+	xs << xml::StartTag(tag, attrs);
+	xs.startDivision(false);
 
 	// Deal with the content of the listing.
 	OutputParams newrp = rp;
@@ -519,8 +588,14 @@ void InsetListings::docbook(XMLStream & xs, OutputParams const & rp) const
 
 	// Done with the listing.
 	xs.endDivision();
-	xs << xml::EndTag(il.docbooktag());
-	xs << xml::CR();
+	xs << xml::EndTag(tag);
+	if (!isInline)
+		xs << xml::CR();
+
+	if (caption) {
+		xs << xml::EndTag("figure");
+		xs << xml::CR();
+	}
 }
 
 
