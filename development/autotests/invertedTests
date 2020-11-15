@@ -492,7 +492,7 @@ export/examples/Articles/Chess/Game_2_docbook5
 # - Bicaption module would require some C++ implementation.
 export/examples(|/de|/fr|/ja)/Modules/Multilingual_Captions_docbook5
 # - European CV: hard to mix items and bibliographies.
-export/examples(|/de)/Curricula_Vitae/Europe_CV_docbook5
+export/examples(|/de|/es)/Curricula_Vitae/Europe_CV_docbook5
 # - Modern CV: columns cause problems.
 export/examples(|/es)/Curricula_Vitae/Modern_CV_docbook5
 # - Chess: multicol not supported.
@@ -506,6 +506,8 @@ export/export/docbook/Localization_Test_docbook5
 export/examples/Graphics_and_Insets/Minted_Listings_docbook5
 # - Sweave and other literate-programming tools cannot be implemented properly without the LaTeX tooling.
 export/examples/Modules/Sweave_docbook5
+# - Figures without image, only an equation.
+export/examples/Modules/Variable-width_Minipages_docbook5
 
 Sublabel: docbook poster
 # Posters cannot be properly exported, the LyX documents are too far from

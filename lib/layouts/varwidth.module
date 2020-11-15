@@ -33,12 +33,14 @@ InsetLayout Flex:Minipage_(Var._Width)
   Argument 1
     LabelString 	"Vert. Adjustment"
     Tooltip 		"Vertical adjustment: c (center), t (top) or b (bottom)"
+    DocBookTag      IGNORE
   EndArgument
   Argument 2
     LabelString 	"Max. Width"
     Tooltip 		"Maximum width (default: \linewidth)"
     DefaultArg 		"\linewidth"
     Mandatory 		1
+    DocBookTag      IGNORE
   EndArgument
   Requires		varwidth
 End
