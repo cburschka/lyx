@@ -20,8 +20,11 @@ InsetLayout Flex:Color_Box
     LabelString         "Color Box Options"
     Tooltip             "Insert the color box options here (see tcolorbox manual)"
     PassThruChars       "\[]{}"
+	DocBookTag          IGNORE
   EndArgument
   ResetsFont            true
+  DocBookTag            phrase
+  DocBookAttr           role='color-box'
 End
 
 InsetLayout Flex:Dynamic_Color_Box
@@ -29,18 +32,24 @@ InsetLayout Flex:Dynamic_Color_Box
   LatexType             command
   LabelString           "Color Box (Dynamic)"
   LatexName             tcbox
+  DocBookTag            phrase
+  DocBookAttr           role='dynamic-color-box'
 End
 
 InsetLayout Flex:Fit_Color_Box
   CopyStyle             Flex:Dynamic_Color_Box
   LabelString           "Color Box (Fit Contents)"
   LatexName             tcboxfit
+  DocBookTag            phrase
+  DocBookAttr           role='fit-color-box'
 End
 
 InsetLayout Flex:Raster_Color_Box
   CopyStyle             Flex:Color_Box
   LabelString           "Raster Color Box"
   LatexName             tcbraster
+  DocBookTag            phrase
+  DocBookAttr           role='raster-color-box'
 End
 
 InsetLayout Flex:Subtitle
@@ -148,6 +157,7 @@ Style New_Color_Box_Type
     Tooltip        "Default value for argument (keep empty!)"
     Requires       3
   EndArgument
+  DocBookTag       IGNORE
 End
 
 # define 5 different box environments that can be customized by the user
@@ -161,28 +171,38 @@ InsetLayout Flex:Custom_Color_Box_1
     Tooltip        "Insert more color box options here"
     Mandatory      1
   EndArgument
+  DocBookTag       phrase
+  DocBookAttr      role='color-box-1'
 End
 
 InsetLayout Flex:Custom_Color_Box_2
   CopyStyle        Flex:Custom_Color_Box_1
   LabelString      "Custom Color Box 2"
   LatexName        cBoxB
+  DocBookTag       phrase
+  DocBookAttr      role='color-box-2'
 End
 
 InsetLayout Flex:Custom_Color_Box_3
   CopyStyle        Flex:Custom_Color_Box_1
   LabelString      "Custom Color Box 3"
   LatexName        cBoxC
+  DocBookTag       phrase
+  DocBookAttr      role='color-box-3'
 End
 
 InsetLayout Flex:Custom_Color_Box_4
   CopyStyle        Flex:Custom_Color_Box_1
   LabelString      "Custom Color Box 4"
   LatexName        cBoxD
+  DocBookTag       phrase
+  DocBookAttr      role='color-box-4'
 End
 
 InsetLayout Flex:Custom_Color_Box_5
   CopyStyle        Flex:Custom_Color_Box_1
   LabelString      "Custom Color Box 5"
   LatexName        cBoxE
+  DocBookTag       phrase
+  DocBookAttr      role='color-box-5'
 End
