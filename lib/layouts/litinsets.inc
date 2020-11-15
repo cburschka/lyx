@@ -54,4 +54,6 @@ InsetLayout "Flex:Chunk"
     ForceOwnlines         true
     NeedCProtect          true
     EditExternal          true
+	DocBookTag            programlisting
+	DocBookAttr           role='literate-programming'
 End
