@@ -73,7 +73,7 @@ inline Changer noChange()
 /// To apply the change conditionally, one can write:
 ///     Changer dummy = (cond) ? changeVar(ref, val) : noChange();
 template <typename X>
-inline Changer changeVar(X & ref, X const val)
+inline RefChanger<X> changeVar(X & ref, X const val)
 {
 	auto rc = make_save(ref);
 	ref = val;
