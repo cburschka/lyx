@@ -74,7 +74,9 @@ if(format MATCHES "dvi|pdf")
   if(NOT _erg)
     message(FATAL_ERROR "Export failed while converting")
   endif()
-  set(result_file_name ${file}_${_ft}.${extension})
+  # We only need "_${ENCODING}" for unicode tests (because multiple encodings
+  # are tested with the same format), but doesn't hurt to include for all.
+  set(result_file_name ${file}_${_ft}_${ENCODING}.${extension})
 else()
   message(STATUS "Converting with perl ${Perl_Script}")
   set(LYX_SOURCE "${TempDir}/${file}.lyx")
