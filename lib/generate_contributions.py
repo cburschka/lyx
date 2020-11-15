@@ -1420,6 +1420,14 @@ contributors = [
                  "22 February 2005",
                  u"Math panel dialogs"),
 
+     contributor(u"Phillip Netro",
+                 "hobbes () centurylink ! net",
+                 "GPL",
+                 "RE: GPL Statement",
+                 "m=160532510203924",
+                 "14 November 2020",
+                 u"Review of Manuals"),
+
      contributor(u"Dirk Niggemann",
                  "dabn100 () cam ! ac ! uk",
                  "",
