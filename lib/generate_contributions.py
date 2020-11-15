@@ -636,6 +636,14 @@ contributors = [
                  "17 January 2006",
                  u"Italian translation"),
 
+     contributor(u"Sam Crawley",
+                 "sam () crawley ! nz",
+                 "GPL",
+                 "Re: [Patch] Test suite for compare function",
+                 "m=160506560831489",
+                 "11 November 2020",
+                 u"Compare-feature fixes"),
+
      contributor(u"Tommaso Cucinotta",
                  "cucinotta () sssup ! it",
                  "GPL",
