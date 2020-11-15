@@ -73,9 +73,6 @@ private:
 	///
 	docstring screenLabel() const override;
 	//@}
-
-	/// unique id for this nomenclature entry for docbook export
-	docstring nomenclature_entry_id;
 };
 
 

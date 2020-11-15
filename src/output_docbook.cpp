@@ -458,7 +458,7 @@ void makeParagraph(
 	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
 		return inset.inset && inset.inset->asInsetMath() && inset.inset->asInsetMath()->getType() != hullSimple;
 	});
-	// Tables doe not deserve their own paragraphs (DocBook allows them outside paragraphs).
+	// Tables do not deserve their own paragraphs (DocBook allows them outside paragraphs).
 	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
 		return inset.inset->lyxCode() == TABULAR_CODE;
 	});
@@ -486,6 +486,10 @@ void makeParagraph(
 	// Includes should not have a paragraph.
 	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
 		return inset.inset->lyxCode() == INCLUDE_CODE;
+	});
+	// Glossaries should not have a paragraph.
+	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
+		return inset.inset->lyxCode() == NOMENCL_PRINT_CODE;
 	});
 
 	bool const open_par = runparams.docbook_make_pars

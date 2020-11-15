@@ -497,6 +497,8 @@ export/examples(|/de)/Curricula_Vitae/Europe_CV_docbook5
 export/examples(|/es)/Curricula_Vitae/Modern_CV_docbook5
 # - Chess: multicol not supported.
 export/examples/Modules/Chessboard_docbook5
+# - Empty figure and table (just a caption, while DocBook requires some content).
+export/examples/Localization_Test_docbook5
 
 Sublabel: docbook poster
 # Posters cannot be properly exported, the LyX documents are too far from

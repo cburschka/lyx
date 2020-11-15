@@ -53,8 +53,7 @@ namespace lyx {
 /////////////////////////////////////////////////////////////////////
 
 InsetNomencl::InsetNomencl(Buffer * buf, InsetCommandParams const & p)
-	: InsetCommand(buf, p),
-	  nomenclature_entry_id(xml::uniqueID(from_ascii("nomen")))
+	: InsetCommand(buf, p)
 {}
 
 
@@ -106,7 +105,7 @@ int InsetNomencl::plaintext(odocstringstream & os,
 
 void InsetNomencl::docbook(XMLStream & xs, OutputParams const &) const
 {
-	docstring attr = "linkend=\"" + nomenclature_entry_id + "\"";
+	docstring attr = "linkend=\"" + xml::cleanID(from_ascii("nomen") + getParam("symbol")) + "\"";
 	xs << xml::StartTag("glossterm", attr);
 	xs << xml::escapeString(getParam("symbol"));
 	xs << xml::EndTag("glossterm");
@@ -348,9 +347,8 @@ void InsetPrintNomencl::docbook(XMLStream & xs, OutputParams const & runparams) 
 	EntryMap::const_iterator const een = entries.end();
 	for (; eit != een; ++eit) {
 		NomenclEntry const & ne = eit->second;
-		string const parid = ne.par->magicLabel();
 
-		xs << xml::StartTag("glossentry", "xml:id=\"" + parid + "\"");
+		xs << xml::StartTag("glossentry", "xml:id=\"" + xml::cleanID(from_ascii("nomen") + ne.symbol) + "\"");
 		xs << xml::CR();
 		xs << xml::StartTag("glossterm");
 		xs << ne.symbol;
