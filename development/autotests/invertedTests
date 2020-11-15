@@ -344,6 +344,17 @@ export/examples/(fr/|)Presentations/Seminar.*(dvi|pdf|lyx22|lyx23).*
 # These fail for a similar reason and the same workaround works.
 export/templates/Articles/Journal_of_the_Acoustical_Society_of_America_%28JASA%29.*(dvi|pdf|lyx22|lyx23).*
 
+# The new jss.cls (version 3.1) seems to not work with an updated TL20 (for
+# either the template they provide or our LyX template).
+# I expect this to be fixed with an update of the .cls or TL update.
+# On an updated TL20, I (Scott) currently get the following error:
+#
+# ! Undefined control sequence.
+# \hyper@linkurl ...tionraw >>}\relax \Hy@colorlink
+#                                                   \@urlcolor #1\Hy@xspace@en...
+#
+export/templates/Articles/Journal_of_Statistical_Software_%28JSS%29_version_2_(lyx22|lyx23|pdf2)
+
 
 # ================================================
 Sublabel: externalissues
