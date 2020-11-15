@@ -482,42 +482,6 @@ docstring InsetListings::xhtml(XMLStream & os, OutputParams const & rp) const
 }
 
 
-namespace {
-
-const InsetLabel* findLabelInParagraph(const Paragraph &par)
-{
-	for (pos_type pos = 0; pos < par.size(); ++pos) {
-		const Inset *inset = par.getInset(pos);
-
-		// Maybe an inset is directly a label, in which case no more work is needed.
-		if (inset && dynamic_cast<const InsetLabel *>(inset))
-			return dynamic_cast<const InsetLabel *>(inset);
-
-		// More likely, the label is hidden in an inset of a paragraph (only if a subtype of InsetText).
-		if (!dynamic_cast<const InsetText *>(inset))
-			continue;
-
-		auto insetAsText = dynamic_cast<const InsetText *>(inset);
-		auto itIn = insetAsText->paragraphs().begin();
-		auto endIn = insetAsText->paragraphs().end();
-		for (; itIn != endIn; ++itIn) {
-			for (pos_type posIn = 0; posIn < itIn->size(); ++posIn) {
-				const Inset *insetIn = itIn->getInset(posIn);
-				if (insetIn && dynamic_cast<const InsetLabel *>(insetIn)) {
-					return dynamic_cast<const InsetLabel *>(insetIn);
-				}
-			}
-		}
-
-		// Obviously, this solution does not scale with more levels of paragraphs-insets, but this should be enough.
-	}
-
-	return nullptr;
-}
-
-} // anonymous namespace
-
-
 void InsetListings::docbook(XMLStream & xs, OutputParams const & rp) const
 {
 	InsetLayout const & il = getLayout();
@@ -531,14 +495,7 @@ void InsetListings::docbook(XMLStream & xs, OutputParams const & rp) const
 	// TODO: parts of this code could be merged with InsetFloat and findLabelInParagraph.
 	InsetCaption const * caption = getCaptionInset();
 	if (caption) {
-		// Find the label in the caption, if any.
-		InsetLabel const * label;
-		auto const end = caption->paragraphs().end();
-		for (auto it = caption->paragraphs().begin(); it != end; ++it) {
-			label = findLabelInParagraph(*it);
-			if (label)
-				break;
-		}
+		InsetLabel const * label = getLabelInset();
 
 		// Ensure that the label will not be output a second time as an anchor.
 		OutputParams rpNoLabel = rp;

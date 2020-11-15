@@ -21,6 +21,7 @@
 namespace lyx {
 
 class InsetCaption;
+class InsetLabel;
 
 class InsetCaptionable : public InsetCollapsible
 {
@@ -35,6 +36,8 @@ public:
 protected:
 	///
 	InsetCaption const * getCaptionInset() const;
+	///
+	InsetLabel const * getLabelInset() const;
 	///
 	docstring getCaptionText(OutputParams const &) const;
 	///

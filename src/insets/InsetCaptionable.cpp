@@ -13,9 +13,10 @@
 
 #include <config.h>
 
+#include "InsetBox.h"
 #include "InsetCaptionable.h"
-
 #include "InsetCaption.h"
+#include "InsetLabel.h"
 
 #include "Buffer.h"
 #include "BufferParams.h"
@@ -64,14 +65,59 @@ InsetCaption const * InsetCaptionable::getCaptionInset() const
 			}
 		}
 	}
-	return 0;
+	return nullptr;
+}
+
+
+InsetLabel const * InsetCaptionable::getLabelInset() const
+{
+	// A wrong hypothesis would be to limit the search to the caption: it is most likely there, but not necessarily!
+
+	// Iterate through the contents of the inset.
+	auto const end = paragraphs().end();
+	for (auto par = paragraphs().begin(); par != end; ++par) {
+		for (pos_type pos = 0; pos < par->size(); ++pos) {
+			const Inset * inset = par->getInset(pos);
+
+			// If this inset is a subfigure, skip it. Otherwise, you would return the label for the subfigure.
+			if (dynamic_cast<const InsetBox *>(inset)) {
+				continue;
+			}
+
+			// Maybe an inset is directly a label, in which case no more work is needed.
+			if (inset && dynamic_cast<const InsetLabel *>(inset))
+				return dynamic_cast<const InsetLabel *>(inset);
+
+			// More likely, the label is hidden in an inset of a paragraph (only if a subtype of InsetText). Thus,
+			// dig into that text.
+			if (!dynamic_cast<const InsetText *>(inset))
+				continue;
+
+			auto insetAsText = dynamic_cast<const InsetText *>(inset);
+			auto itIn = insetAsText->paragraphs().begin();
+			auto endIn = insetAsText->paragraphs().end();
+			for (; itIn != endIn; ++itIn) {
+				for (pos_type posIn = 0; posIn < itIn->size(); ++posIn) {
+					const Inset *insetIn = itIn->getInset(posIn);
+					if (insetIn && dynamic_cast<const InsetLabel *>(insetIn)) {
+						return dynamic_cast<const InsetLabel *>(insetIn);
+					}
+				}
+			}
+
+			// Obviously, this solution does not scale with more levels of paragraphs and insets, but this should
+			// be enough: it is only used in captions.
+		}
+	}
+
+	return nullptr;
 }
 
 
 docstring InsetCaptionable::getCaptionText(OutputParams const & runparams) const
 {
 	InsetCaption const * ins = getCaptionInset();
-	if (ins == 0)
+	if (!ins)
 		return docstring();
 
 	odocstringstream ods;

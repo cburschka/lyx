@@ -514,63 +514,6 @@ std::vector<const InsetCollapsible *> findSubfiguresInParagraph(const Paragraph 
 }
 
 
-namespace {
-
-const InsetLabel* findLabelInParagraph(const Paragraph &par)
-{
-	for (pos_type pos = 0; pos < par.size(); ++pos) {
-		// If this inset is a subfigure, skip it.
-		const Inset *inset = par.getInset(pos);
-		if (dynamic_cast<const InsetBox *>(inset)) {
-			continue;
-		}
-
-		// Maybe an inset is directly a label, in which case no more work is needed.
-		if (inset && dynamic_cast<const InsetLabel *>(inset))
-			return dynamic_cast<const InsetLabel *>(inset);
-
-		// More likely, the label is hidden in an inset of a paragraph (only if a subtype of InsetText).
-		if (!dynamic_cast<const InsetText *>(inset))
-			continue;
-
-		auto insetAsText = dynamic_cast<const InsetText *>(inset);
-		auto itIn = insetAsText->paragraphs().begin();
-		auto endIn = insetAsText->paragraphs().end();
-		for (; itIn != endIn; ++itIn) {
-			for (pos_type posIn = 0; posIn < itIn->size(); ++posIn) {
-				const Inset *insetIn = itIn->getInset(posIn);
-				if (insetIn && dynamic_cast<const InsetLabel *>(insetIn)) {
-					return dynamic_cast<const InsetLabel *>(insetIn);
-				}
-			}
-		}
-
-		// Obviously, this solution does not scale with more levels of paragraphs-insets, but this should be enough.
-	}
-
-	return nullptr;
-}
-
-} // anonymous namespace
-
-
-const InsetCaption* findCaptionInParagraph(const Paragraph &par)
-{
-	// Don't dive too deep, otherwise, this could be a subfigure caption.
-	for (pos_type pos = 0; pos < par.size(); ++pos) {
-		// If this inset is a subfigure, skip it.
-		const Inset *inset = par.getInset(pos);
-		if (dynamic_cast<const InsetBox *>(inset))
-			continue;
-
-		if (inset && dynamic_cast<const InsetCaption *>(inset))
-			return dynamic_cast<const InsetCaption *>(inset);
-	}
-
-	return nullptr;
-}
-
-
 /// Takes an unstructured subfigure container (typically, an InsetBox) and find the elements within:
 /// actual content (image or table), maybe a caption, maybe a label.
 std::tuple<InsetCode, const Inset *, const InsetCaption *, const InsetLabel *> docbookParseHopelessSubfigure(const InsetText * subfigure)
@@ -814,13 +757,11 @@ void docbookNoSubfigures(XMLStream & xs, OutputParams const & runparams, const I
 
 void InsetFloat::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
-	// Determine whether the float has a title or not. For this, iterate through the paragraphs and look
-	// for an InsetCaption. Do the same for labels and subfigures.
-	// The caption and the label for each subfigure is handled by recursive calls.
-	const InsetCaption* caption = nullptr;
-	const InsetLabel* label = nullptr;
-	std::vector<const InsetCollapsible *> subfigures;
+	const InsetCaption* caption = getCaptionInset();
+	const InsetLabel* label = getLabelInset();
 
+	// Determine whether the float has subfigures.
+	std::vector<const InsetCollapsible *> subfigures;
 	auto end = paragraphs().end();
 	for (auto it = paragraphs().begin(); it != end; ++it) {
 		std::vector<const InsetCollapsible *> foundSubfigures = findSubfiguresInParagraph(*it);
@@ -828,11 +769,6 @@ void InsetFloat::docbook(XMLStream & xs, OutputParams const & runparams) const
 			subfigures.reserve(subfigures.size() + foundSubfigures.size());
 			subfigures.insert(subfigures.end(), foundSubfigures.begin(), foundSubfigures.end());
 		}
-
-		if (!caption)
-			caption = findCaptionInParagraph(*it);
-		if (!label)
-			label = findLabelInParagraph(*it);
 	}
 
 	// Gather a few things from global environment that are shared between all following cases.
