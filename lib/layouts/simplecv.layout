@@ -25,6 +25,7 @@ Style Standard
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
+	DocBookTag            para
 End
 
 
@@ -95,6 +96,12 @@ Style Topic
 	  Family              Sans
 	  Shape               Slanted
 	EndFont
+	DocBookTag            variablelist
+	DocBookItemWrapperTag varlistentry
+	DocBookItemTag        listitem
+	DocBookItemInnerTag   para
+	DocBookItemLabelTag   term
+	DocBookItemLabelTagType   paragraph
 End
 
 
@@ -147,6 +154,8 @@ Style Left_Header
 	Font
 	  Family              Sans
 	EndFont
+	DocBookTag            para
+	DocBookAttr           role='left-header'
 End
 
 
@@ -154,6 +163,8 @@ Style Right_Header
 	CopyStyle             Left_Header
 	LatexName             rightheader
 	Margin                Right_Address_Box
+	DocBookTag            para
+	DocBookAttr           role='right-header'
 End
 
 
