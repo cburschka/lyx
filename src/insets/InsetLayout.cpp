@@ -732,6 +732,15 @@ void InsetLayout::readArgument(Lexer & lex)
 		} else if (tok == "freespacing") {
 			lex.next();
 			arg.free_spacing = lex.getBool();
+		} else if (tok == "docbooktag") {
+			lex.next();
+			arg.docbooktag = lex.getDocString();
+		} else if (tok == "docbookattr") {
+			lex.next();
+			arg.docbookattr = lex.getDocString();
+		} else if (tok == "docbooktagtype") {
+			lex.next();
+			arg.docbooktagtype = lex.getDocString();
 		} else {
 			lex.printError("Unknown tag");
 			error = true;
