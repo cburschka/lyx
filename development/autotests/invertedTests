@@ -57,8 +57,8 @@ export/export/lyx2lyx/lyx_2_3_test2_lyx(16|20)
 # New problem with TL18: endless loop?
 #    ! TeX capacity exceeded, sorry [input stack +size=5000].
 # rsp.:
->   ! Undefined control sequence.
->   l.1 à
+# >   ! Undefined control sequence.
+# >   l.1 à
 export/export/latex/inputenc-luatex-utf8_pdf5_texF
 
 # nonstandard tests failing for unknown reason:
