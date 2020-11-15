@@ -28,6 +28,7 @@ Style Standard
 	Align		Block
 	AlignPossible	Block, Left, Right, Center
 	LabelType	No_Label
+	DocBookTag  para
 End
 
 Input stdcounters.inc
@@ -52,30 +53,45 @@ Style CVStyle
 	  LabelString	"Style Options"
 	  Tooltip		"Options for the CV style"
 	EndArgument
+	# For DocBook, in <info>, so that the next tags can be there. 
+	DocBookTag     IGNORE
+	DocBookInInfo  maybe
 End
 
 Style CVColor
 	CopyStyle	CVStyle
 	LatexName	moderncvcolor
 	LabelString	"CV Color Scheme:"
+	# For DocBook, in <info>, so that the next tags can be there. 
+	DocBookTag     IGNORE
+	DocBookInInfo  maybe
 End
 
 Style CVIcons
 	CopyStyle	CVStyle
 	LatexName	moderncvicons
 	LabelString	"CV Icon Set:"
+	# For DocBook, in <info>, so that the next tags can be there. 
+	DocBookTag     IGNORE
+	DocBookInInfo  maybe
 End
 
 Style CVColumnWidth
 	CopyStyle	CVStyle
 	LatexName	setlength{\hintscolumnwidth}
 	LabelString	"Column Width:"
+	# For DocBook, in <info>, so that the next tags can be there. 
+	DocBookTag     IGNORE
+	DocBookInInfo  maybe
 End
 
 Style PDF_Page_Mode
 	CopyStyle	CVStyle
 	LatexName	renewcommand{\pdfpagemode}
 	LabelString	"PDF Page Mode:"
+	# For DocBook, in <info>, so that the next tags can be there. 
+	DocBookTag     IGNORE
+	DocBookInInfo  maybe
 End
 
 Style Name
@@ -93,7 +109,13 @@ Style Name
 	  LabelString	"First Name"
 	  Tooltip	"First name"
 	  Mandatory	1
+	  # TODO: If this produces a DocBook tag <firstname>, the rest must be in <givename>, but that's not possible yet.
 	EndArgument
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType block
+	DocBookInInfo         always
 End
 
 Style FirstName
@@ -130,6 +152,9 @@ Style Title
 	  EndFont
 	HTMLTag		h1
 	HTMLTitle	true
+	DocBookTag     title
+	DocBookTagType paragraph
+	DocBookInInfo  maybe
 End
 
 Style Address
@@ -148,6 +173,11 @@ Style Address
 	  Tooltip	"Optional address line"
 	  Mandatory	1
 	EndArgument
+	DocBookTag            NONE
+	DocBookWrapperTag     address
+	DocBookWrapperTagType block
+	DocBookWrapperMergeWithPrevious true
+	DocBookInInfo         always
 End
 
 Style Phone
@@ -157,7 +187,16 @@ Style Phone
 	Argument 1
 	  LabelString	"Phone Type"
 	  Tooltip	"can be fixed, mobile or fax"
+	  # TODO: for DocBook, this should be translated into a role.
+	  DocBookTag      emphasis
+	  DocBookTagType  inline
 	EndArgument
+	DocBookTag            phone
+	DocBookTagType        paragraph
+	DocBookWrapperTag     address
+	DocBookWrapperTagType block
+	DocBookWrapperMergeWithPrevious true
+	DocBookInInfo         always
 End
 
 Style Mobile
@@ -178,12 +217,25 @@ Style Email
 	CopyStyle	CVStyle
 	LatexName	email
 	LabelString	"Email:"
+	DocBookTag            email
+	DocBookTagType        paragraph
+	DocBookWrapperTag     address
+	DocBookWrapperTagType block
+	DocBookWrapperMergeWithPrevious true
+	DocBookInInfo         always
 End
 
 Style Homepage
 	CopyStyle	CVStyle
 	LatexName	homepage
 	LabelString	"Homepage:"
+	DocBookTag            uri
+	DocBookAttr           type='homepage'
+	DocBookTagType        paragraph
+	DocBookWrapperTag     address
+	DocBookWrapperTagType block
+	DocBookWrapperMergeWithPrevious true
+	DocBookInInfo         always
 End
 
 Style Social
@@ -193,13 +245,29 @@ Style Social
 	Argument 1
 	  LabelString	"Name"
 	  Tooltip	"Name of the social network"
+	  # TODO: for DocBook, this should be translated into a role.
+	  DocBookTag      emphasis
+	  DocBookTagType  inline
 	EndArgument
+	DocBookTag            uri
+	DocBookAttr           type='social-network'
+	DocBookTagType        paragraph
+	DocBookWrapperTag     address
+	DocBookWrapperTagType block
+	DocBookWrapperMergeWithPrevious true
+	DocBookInInfo         always
 End
 
 Style ExtraInfo
 	CopyStyle	CVStyle
 	LatexName	extrainfo
 	LabelString	"Extra Info:"
+	DocBookTag            otheraddr
+	DocBookTagType        paragraph
+	DocBookWrapperTag     address
+	DocBookWrapperTagType block
+	DocBookWrapperMergeWithPrevious true
+	DocBookInInfo         always
 End
 
 # Path to a digital image:
@@ -226,6 +294,10 @@ Style Photo
 	  PassThru	1
 	EndArgument
 	PassThru	1
+	DocBookTag            date
+	DocBookAttr           role='picture'
+	DocBookInInfo         always
+	DocBookWrapperTag     NONE
 End
 
 Style Quote
@@ -239,6 +311,9 @@ Style Quote
 	  Shape		Italic
 	  Size		Large
 	EndFont
+	DocBookTag     para
+	DocBookWrapperTag  blockquote
+	DocBookInInfo  false
 End
 
 Style Section
@@ -260,6 +335,8 @@ Style Section
 	  Series	Bold
 	EndFont
 	TocLevel	1
+	DocBookTag      title
+	DocBookTagType  paragraph
 End
 
 Style EmptySection
@@ -310,6 +387,7 @@ Style Columns
 	  Color		Blue
 	EndFont
 	TocLevel	1
+	DocBookTag  NONE
 End
 
 InsetLayout Flex:Column
@@ -320,12 +398,14 @@ InsetLayout Flex:Column
 	  LabelString	"Width"
 	  Tooltip	"Optional width"
 	  PassThru	1
+	  DocBookTag  IGNORE
 	EndArgument
 	Argument 2
 	  Mandatory	1
 	  AutoInsert	1
 	  LabelString	"Header"
 	  Tooltip	"Header content"
+	  DocBookTag  title
 	EndArgument
 	LabelString	"Column"
 	LabelFont
@@ -333,6 +413,8 @@ InsetLayout Flex:Column
 	  Color		Blue
 	EndFont
 	ResetsFont true
+	DocBookTag  sidebar
+	# TODO: issue with paragraphs inside, they do not get properly wrapped in <para> if required. Using a wrapper tag makes everything under <para>, including the title.
 End
 
 Style Entry
@@ -343,6 +425,8 @@ Style Entry
 	  Mandatory	1
 	  LabelString	"Years"
 	  Tooltip	"Years"
+	  DocBookTag    phrase
+	  DocBookAttr   role='years'
 	EndArgument
 	Argument 2
 	  Mandatory	1
@@ -351,6 +435,8 @@ Style Entry
 	  Font
 	    Series	Bold
 	  EndFont
+	  DocBookTag    phrase
+	  DocBookAttr   role='title'
 	EndArgument
 	Argument 3
 	  Mandatory	1
@@ -359,16 +445,22 @@ Style Entry
 	  Font
 	    Shape	Italic
 	  EndFont
+	  DocBookTag    phrase
+	  DocBookAttr   role='affiliation'
 	EndArgument
 	Argument 4
 	  Mandatory	1
 	  LabelString	"Localization"
 	  Tooltip	"City or country"
+	  DocBookTag    phrase
+	  DocBookAttr   role='localization'
 	EndArgument
 	Argument 5
 	  Mandatory	1
 	  LabelString	"Optional"
 	  Tooltip	"Grade or other info"
+	  DocBookTag    phrase
+	  DocBookAttr   role='optional'
 	EndArgument
 	ParSkip		0.4
 	Align		Block
@@ -379,6 +471,7 @@ Style Entry
 	  Series	Bold
 	  Color		Blue
 	EndFont
+	DocBookTag  para
 End
 
 Style Item
@@ -390,6 +483,8 @@ Style Item
 	  AutoInsert	1
 	  LabelString	"Summary"
 	  Tooltip	"Summary"
+	  DocBookTag    phrase
+	  DocBookAttr   role='summary'
 	EndArgument
 	ParSkip		0.4
 	Align		Block
@@ -400,6 +495,7 @@ Style Item
 	  Series	Bold
 	  Color		Blue
 	EndFont
+	DocBookTag  para
 End
 
 Style ItemWithComment
@@ -412,6 +508,8 @@ Style ItemWithComment
 	  Mandatory	1
 	  LabelString	"Summary"
 	  Tooltip	"Summary"
+	  DocBookTag    phrase
+	  DocBookAttr   role='summary'
 	EndArgument
 	Argument 2
 	  Mandatory	1
@@ -421,6 +519,8 @@ Style ItemWithComment
 	    Series	Bold
 	    Shape	Up
 	  EndFont
+	  DocBookTag    phrase
+	  DocBookAttr   role='text'
 	EndArgument
 	Font
 	  Shape		Italic
@@ -430,6 +530,7 @@ Style ItemWithComment
 	  Color		Blue
 	  Shape		Up
 	EndFont
+	DocBookTag  para
 End
 
 Style ListItem
