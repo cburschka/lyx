@@ -450,46 +450,55 @@ void makeParagraph(
 	}
 
 	size_t nInsets = std::distance(par->insetList().begin(), par->insetList().end());
+	auto parSize = (size_t) par->size();
+
+	auto isLyxCodeToIgnore = [](InsetCode x) { return x == TOC_CODE; }; // If this LyX code does not produce any output,
+	// it can be safely ignored in the following checks: if this thing is present in the paragraph, it has no impact
+	// on the definition of the special case (i.e. whether or not a <para> tag should be output).
+
+	// TODO: if a paragraph *only* contains floats, listings, bibliographies, etc., should this be considered as a
+	//  special case? If so, the code could be largely simplifies (all the calls to all_of, basically) and optimised
+	//  at the compilation stage.
 
 	// Plain layouts must be ignored.
 	special_case |= buf.params().documentClass().isPlainLayout(par->layout()) && !runparams.docbook_force_pars;
 	// Equations do not deserve their own paragraph (DocBook allows them outside paragraphs).
 	// Exception: any case that generates an <inlineequation> must still get a paragraph to be valid.
-	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
+	special_case |= nInsets == parSize && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
 		return inset.inset && inset.inset->asInsetMath() && inset.inset->asInsetMath()->getType() != hullSimple;
 	});
 	// Tables do not deserve their own paragraphs (DocBook allows them outside paragraphs).
-	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
-		return inset.inset->lyxCode() == TABULAR_CODE;
+	special_case |= nInsets == parSize && std::all_of(par->insetList().begin(), par->insetList().end(), [isLyxCodeToIgnore](InsetList::Element inset) {
+		return inset.inset->lyxCode() == TABULAR_CODE || isLyxCodeToIgnore(inset.inset->lyxCode());
 	});
 	// Floats cannot be in paragraphs.
-	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
-		return inset.inset->lyxCode() == FLOAT_CODE;
+	special_case |= nInsets == parSize && std::all_of(par->insetList().begin(), par->insetList().end(), [isLyxCodeToIgnore](InsetList::Element inset) {
+		return inset.inset->lyxCode() == FLOAT_CODE || isLyxCodeToIgnore(inset.inset->lyxCode());
 	});
 	// Bibliographies cannot be in paragraphs. Bibitems should still be handled as paragraphs, though
 	// (see makeParagraphBibliography).
-	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
-		return inset.inset->lyxCode() == BIBTEX_CODE;
+	special_case |= nInsets == parSize && std::all_of(par->insetList().begin(), par->insetList().end(), [isLyxCodeToIgnore](InsetList::Element inset) {
+		return inset.inset->lyxCode() == BIBTEX_CODE || isLyxCodeToIgnore(inset.inset->lyxCode());
 	});
 	// ERTs are in comments, not paragraphs.
-	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
-		return inset.inset->lyxCode() == ERT_CODE;
+	special_case |= nInsets == parSize && std::all_of(par->insetList().begin(), par->insetList().end(), [isLyxCodeToIgnore](InsetList::Element inset) {
+		return inset.inset->lyxCode() == ERT_CODE || isLyxCodeToIgnore(inset.inset->lyxCode());
 	});
 	// Listings should not get into their own paragraph.
-	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
-		return inset.inset->lyxCode() == LISTINGS_CODE;
+	special_case |= nInsets == parSize && std::all_of(par->insetList().begin(), par->insetList().end(), [isLyxCodeToIgnore](InsetList::Element inset) {
+		return inset.inset->lyxCode() == LISTINGS_CODE || isLyxCodeToIgnore(inset.inset->lyxCode());
 	});
 	// Boxes cannot get into their own paragraph.
-	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
-		return inset.inset->lyxCode() == BOX_CODE;
+	special_case |= nInsets == parSize && std::all_of(par->insetList().begin(), par->insetList().end(), [isLyxCodeToIgnore](InsetList::Element inset) {
+		return inset.inset->lyxCode() == BOX_CODE || isLyxCodeToIgnore(inset.inset->lyxCode());
 	});
 	// Includes should not have a paragraph.
-	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
-		return inset.inset->lyxCode() == INCLUDE_CODE;
+	special_case |= nInsets == parSize && std::all_of(par->insetList().begin(), par->insetList().end(), [isLyxCodeToIgnore](InsetList::Element inset) {
+		return inset.inset->lyxCode() == INCLUDE_CODE || isLyxCodeToIgnore(inset.inset->lyxCode());
 	});
 	// Glossaries should not have a paragraph.
-	special_case |= nInsets == (size_t) par->size() && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
-		return inset.inset->lyxCode() == NOMENCL_PRINT_CODE;
+	special_case |= nInsets == parSize && std::all_of(par->insetList().begin(), par->insetList().end(), [isLyxCodeToIgnore](InsetList::Element inset) {
+		return inset.inset->lyxCode() == NOMENCL_PRINT_CODE || isLyxCodeToIgnore(inset.inset->lyxCode());
 	});
 
 	bool const open_par = runparams.docbook_make_pars

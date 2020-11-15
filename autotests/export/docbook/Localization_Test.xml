@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This DocBook file was created by LyX 2.4.0dev
+  See http://www.lyx.org/ for more information -->
+<article xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
+<title>LyX localization test</title>
+<section>
+<title>Test of insets and listings</title>
+<figure>
+<title>hhh</title>
+</figure>
+<table>
+<caption>fggf</caption>
+</table>
+<figure type='listing'>
+<title>ccc</title>
+<programlisting language="C++">while(true);</programlisting>
+</figure>
+
+<para><glossterm linkend="nomenx">x</glossterm></para>
+<glossary>
+<title>Nomenclature</title>
+<glossentry xml:id="nomenx">
+<glossterm>x</glossterm>
+<glossdef>
+<para>dfadsf13</para>
+</glossdef>
+</glossentry>
+</glossary>
+</section>
+</article>
