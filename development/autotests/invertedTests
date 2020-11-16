@@ -54,13 +54,6 @@ export/export/lyx2lyx/lyx_2_3_test_lyx(16|20|21|22)
 # before an ERT nested in a Description list:
 export/export/lyx2lyx/lyx_2_3_test2_lyx(16|20)
 
-# New problem with TL18: endless loop?
-#    ! TeX capacity exceeded, sorry [input stack +size=5000].
-# rsp.:
-# >   ! Undefined control sequence.
-# >   l.1 à
-export/export/latex/inputenc-luatex-utf8_pdf5_texF
-
 # nonstandard tests failing for unknown reason:
 export/templates/Obsolete/ACM_SIGGGRAPH.*_pdf5_(texF|systemF)
 export/templates/Articles/R_Journal_(dvi3|pdf[45])_systemF
