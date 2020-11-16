@@ -217,7 +217,7 @@ else()
     endforeach()
   endif()
   string(REGEX REPLACE ";" " " _LyXExtraParams "${LyXExtraParams}")
-  message(STATUS "Executing in working dir ${Tempdir}")
+  message(STATUS "Executing in working dir ${TempDir}")
   message(STATUS "Executing ${lyx} ${_LyXExtraParams} -userdir \"${LYX_TESTS_USERDIR}\" -E ${format} ${result_file_name} \"${LYX_SOURCE}\"")
   file(REMOVE "${TempDir}/${result_file_name}")
   execute_process(
