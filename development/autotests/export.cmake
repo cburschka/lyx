@@ -217,20 +217,22 @@ else()
     endforeach()
   endif()
   string(REGEX REPLACE ";" " " _LyXExtraParams "${LyXExtraParams}")
+  message(STATUS "Executing in working dir ${Tempdir}")
   message(STATUS "Executing ${lyx} ${_LyXExtraParams} -userdir \"${LYX_TESTS_USERDIR}\" -E ${format} ${result_file_name} \"${LYX_SOURCE}\"")
-  file(REMOVE ${result_file_name})
+  file(REMOVE "${TempDir}/${result_file_name}")
   execute_process(
     COMMAND ${lyx} ${LyXExtraParams} -userdir "${LYX_TESTS_USERDIR}" -E ${format} ${result_file_name} "${LYX_SOURCE}"
+    WORKING_DIRECTORY "${TempDir}"
     RESULT_VARIABLE _err)
   Summary(_err "Exporting \"${LYX_SOURCE}\" to format ${format}")
   if (NOT _err)
     #check if result file created
-    if (NOT EXISTS "${result_file_name}")
-      message(STATUS "Expected result file \"${result_file_name}\" does not exist")
+    if (NOT EXISTS "${TempDir}/${result_file_name}")
+      message(STATUS "Expected result file \"${TempDir}/${result_file_name}\" does not exist")
       set(_err -1)
-      Summary(_err "Expected result file \"${result_file_name}\" does not exists")
+      Summary(_err "Expected result file \"${TempDir}/${result_file_name}\" does not exists")
     else()
-      message(STATUS "Expected result file \"${result_file_name}\" exists")
+      message(STATUS "Expected result file \"${TempDir}/${result_file_name}\" exists")
       if (extension MATCHES "^x(ht)?ml$")
         if (format MATCHES "xhtml")
           set(xmllint_params --loaddtd --noout)
@@ -243,6 +245,7 @@ else()
           message(STATUS "Calling ${PERL_EXECUTABLE} \"${TOP_SRC_DIR}/development/autotests/xmlParser.pl\" \"${result_file_name}\"")
           execute_process(
             COMMAND ${PERL_EXECUTABLE} "${TOP_SRC_DIR}/development/autotests/xmlParser.pl" "${result_file_name}"
+	    WORKING_DIRECTORY "${TempDir}"
             OUTPUT_VARIABLE parserout
             ERROR_VARIABLE parsererr
             RESULT_VARIABLE _err
@@ -250,7 +253,7 @@ else()
           if (_err)
             message(STATUS "${parsererr}")
           endif()
-          Summary(_err "Checking \"${result_file_name}\" with xmlParser.pl")
+          Summary(_err "Checking \"${TempDir}/${result_file_name}\" with xmlParser.pl")
         endif()
         if (XMLLINT_EXECUTABLE)
           string(REPLACE ";" " " xmllint_params2 " ${xmllint_params}")
@@ -258,16 +261,18 @@ else()
           # check the created xhtml file
           execute_process(
             COMMAND ${executable_} ${xmllint_params}  "${result_file_name}"
+	    WORKING_DIRECTORY "${TempDir}"
             OUTPUT_VARIABLE xmlout
             ERROR_VARIABLE xmlerr
             RESULT_VARIABLE _err)
-          file(WRITE "${result_file_name}.sax_out" ${xmlout})
-          Summary(_err "Checking \"${result_file_name}\" with ${XMLLINT_EXECUTABLE}")
+          file(WRITE "${TempDir}/${result_file_name}.sax_out" ${xmlout})
+          Summary(_err "Checking \"${TempDir}/${result_file_name}\" with ${XMLLINT_EXECUTABLE}")
           if (NOT _err)
             # check if parser output contains error messages
             message(STATUS "Check the output: ${PERL_EXECUTABLE} ${TOP_SRC_DIR}/development/autotests/examineXmllintOutput.pl")
             execute_process(
               COMMAND ${PERL_EXECUTABLE} "${TOP_SRC_DIR}/development/autotests/examineXmllintOutput.pl" "${result_file_name}.sax_out"
+	      WORKING_DIRECTORY "${TempDir}"
               OUTPUT_VARIABLE xmlout
               RESULT_VARIABLE _err)
             Summary(_err "Parse messages of ${XMLLINT_EXECUTABLE} for errors")
@@ -286,7 +291,8 @@ else()
           # check with jing
           message(STATUS "Calling: ${JAVA_EXECUTABLE} -jar \"${TOP_SRC_DIR}/development/tools/jing.jar\" https://docbook.org/xml/5.2b09/rng/docbook.rng \"${WORKDIR}/${result_file_name}\"")
           execute_process(
-            COMMAND ${JAVA_EXECUTABLE} -jar "${TOP_SRC_DIR}/development/tools/jing.jar" "https://docbook.org/xml/5.2b09/rng/docbook.rng" "${WORKDIR}/${result_file_name}"
+            COMMAND ${JAVA_EXECUTABLE} -jar "${TOP_SRC_DIR}/development/tools/jing.jar" "https://docbook.org/xml/5.2b09/rng/docbook.rng" "${result_file_name}"
+	    WORKING_DIRECTORY "${TempDir}"
             OUTPUT_VARIABLE jingout
             RESULT_VARIABLE _err)
           message(STATUS "_err = ${_err}, jingout = ${jingout}")
