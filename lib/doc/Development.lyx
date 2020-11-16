@@ -5363,6 +5363,16 @@ noprefix "false"
 \end_layout
 
 \begin_layout Itemize
+As of LyX 2.4.0, you can use features of C++11.
+ Accordingly you have to use C++11 standard conforming compiler, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ not too dated version of GCC or Clang.
+\end_layout
+
+\begin_layout Itemize
 Adapt the code to the structures already existing in \SpecialChar LyX
 , or in the case that
  you have better ideas, discuss them on the developer's list before writing
