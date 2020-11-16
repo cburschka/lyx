@@ -1,5 +1,5 @@
 # Regular expressions for tests that are most likely "wontfix" 
-# or "sep" (someone elses problem)
+# or "sep" (someone else's problem)
 #
 # Tests matching here AND in "invertedTests" get the label "suspended"
 # and the test-feature 'inverted', i.e. they are reported as failing if 
@@ -23,3 +23,11 @@ export/examples/(|fr/)Presentations/Foils_pdf[45]_systemF
 # Files in the attic are kept for reference and conversion tests.
 # Failures are usually due to new package versions and "wontfix".
 .*/attic/(eu|id|it|pl|sk)_.*
+
+# DocBook export is still work-in-progress for many layouts: the output
+# is already viable, but not yet valid.
+export/(templates|examples)/Scripts/Hollywood_docbook5
+export/export/docbook/Hollywood_docbook5
+export/templates/Letters/French_Letter_%28lettre%29_docbook5
+export/templates/Letters/Letter_%28Standard_Class%29_docbook5
+export/templates/Articles/Springers_Global_Journal_Template_%28V._3%29_docbook5

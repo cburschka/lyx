@@ -446,7 +446,12 @@ Style Running_Author
 	CopyStyle	Running_Title
 	LatexName	authorrunning
 	LabelString	"Running author:"
-	DocBookTag  NONE # Still TODO
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperAttr    role='abbrev'
+	DocBookWrapperTagType block
+	DocBookInInfo         always
 End
 
 Style Running_Chapter

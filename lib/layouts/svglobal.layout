@@ -116,6 +116,10 @@ InsetLayout Flex:Keywords
 	  Color		green
 	  Size		Small
 	EndFont
+	DocBookTag         keyword
+	DocBookTagType     paragraph
+	DocBookWrapperTag  keywordset
+	DocBookInInfo      always
 End
 
 
@@ -141,6 +145,12 @@ Style Offprints
 	LatexName	offprints
 	LeftMargin	"Offprints:xx."
 	LabelString	"Offprints:"
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperAttr    role='offprint'
+	DocBookWrapperTagType inline
+	DocBookInInfo         always
 End
 
 
@@ -163,4 +173,9 @@ Style Abstract
 	LabelFont
 	  Series	Bold
 	EndFont
+	DocBookAbstract       true
+	DocBookInInfo         always
+	DocBookWrapperTag     abstract
+	DocBookWrapperMergeWithPrevious    true
+	DocBookTag            para
 End

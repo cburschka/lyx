@@ -460,7 +460,7 @@ export/export/docbook/Hollywood_docbook5
 export/templates/Letters/French_Letter_%28lettre%29_docbook5
 #   - Letter, elements at the end of the document that should be in <info>.
 export/templates/Letters/Letter_%28Standard_Class%29_docbook5
-#   - G-Brief: too far from the other classes.
+#   - G-Brief: too far from the other classes, not implemented.
 export/templates/Letters/G-Brief_%28V._2%29_docbook5
 export/templates/Obsolete/G-Brief_%28V._1,_Obsolete%29/.*_docbook5
 #   - KOMA-Script Letter: too hard to output phone and fax numbers at the right place (need two levels of wrapping).
@@ -514,6 +514,8 @@ export/examples/Modules/Variable-width_Minipages_docbook5
 export/examples/(es|fr)/Modules/Linguistics_docbook5
 # - Inlines in inlines (<code> within <personname>), double sidebar.
 export/examples/ko/cjk-ko-doc_docbook5
+# - Metadata in abstract paragraph.
+export/templates/Articles/Springers_Global_Journal_Template_%28V._3%29_docbook5
 
 Sublabel: docbook poster
 # Posters cannot be properly exported, the LyX documents are too far from

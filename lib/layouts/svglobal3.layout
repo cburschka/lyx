@@ -62,12 +62,21 @@ InsetLayout Flex:Keywords
 	  Color		green
 	  Size		Small
 	EndFont
+	DocBookTag         keyword
+	DocBookTagType     paragraph
+	DocBookWrapperTag  keywordset
+	DocBookInInfo      always
 End
 
 InsetLayout Flex:PACS
 	CopyStyle	Flex:Keywords
 	LatexName	PACS
 	LabelString	"PACS"
+	DocBookTag          subject
+	DocBookTagType      paragraph
+	DocBookWrapperTag   subjectset
+	DocBookWrapperAttr  role='pacs'
+	DocBookInInfo       always
 End
 
 InsetLayout Flex:Subclass
@@ -80,6 +89,11 @@ InsetLayout Flex:CRSC
 	CopyStyle	Flex:PACS
 	LatexName	CRclass
 	LabelString	"CR Subject Classification"
+	DocBookTag          subject
+	DocBookTagType      paragraph
+	DocBookWrapperTag   subjectset
+	DocBookWrapperAttr  role='crsc'
+	DocBookInInfo       always
 End
 
 # this label has no dot at the end

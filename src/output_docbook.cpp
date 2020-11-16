@@ -452,9 +452,10 @@ void makeParagraph(
 	size_t nInsets = std::distance(par->insetList().begin(), par->insetList().end());
 	auto parSize = (size_t) par->size();
 
-	auto isLyxCodeToIgnore = [](InsetCode x) { return x == TOC_CODE; }; // If this LyX code does not produce any output,
-	// it can be safely ignored in the following checks: if this thing is present in the paragraph, it has no impact
-	// on the definition of the special case (i.e. whether or not a <para> tag should be output).
+	// If this LyX code does not produce any output, it can be safely ignored in the following checks: if this thing
+	// is present in the paragraph, it has no impact on the definition of the special case (i.e. whether or not
+	// a <para> tag should be output).
+	auto isLyxCodeToIgnore = [](InsetCode x) { return x == TOC_CODE || x == NOTE_CODE; };
 
 	// TODO: if a paragraph *only* contains floats, listings, bibliographies, etc., should this be considered as a
 	//  special case? If so, the code could be largely simplifies (all the calls to all_of, basically) and optimised
