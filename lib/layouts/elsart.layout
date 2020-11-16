@@ -60,6 +60,7 @@ Style Standard
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
+	DocBookTag            para
 End
 
 
@@ -79,6 +80,10 @@ Style Keywords
 	Font
 	  Color               blue
 	EndFont
+	DocBookTag         keyword
+	DocBookTagType     paragraph
+	DocBookWrapperTag  keywordset
+	DocBookInInfo      always
 End
 
 
@@ -111,6 +116,9 @@ Style Title
 	  Size                Largest
 	EndFont
 	HTMLTitle             true
+	DocBookTag            title
+	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 End
 
 
@@ -134,6 +142,11 @@ Style Author
 	Font
 	  Series              Bold
 	EndFont
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType block
+	DocBookInInfo         always
 End
 
 
@@ -153,6 +166,11 @@ Style Author_Address
 	LabelFont
 	  Shape               Italic
 	EndFont
+	DocBookTag            address
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType block
+	DocBookInInfo         always
 End
 
 
@@ -174,6 +192,11 @@ Style Author_Email
 	  Shape               Italic
 	  Family              Roman
 	EndFont
+	DocBookTag            email
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType block
+	DocBookInInfo         always
 End
 
 
@@ -196,6 +219,11 @@ Style Author_URL
 	  Shape               Italic
 	  Family              Roman
 	EndFont
+	DocBookTag            uri
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType block
+	DocBookInInfo         always
 End
 
 
@@ -214,6 +242,8 @@ Style Thanks
 	  Family              Typewriter
 	  Shape               Italic
 	EndFont
+	DocBookTag            footnote
+	DocBookItemTag        para
 End
 
 
@@ -241,6 +271,11 @@ Style Abstract
 	  Series              Bold
 	  Size                Large
 	EndFont
+	DocBookAbstract       true
+	DocBookInInfo         always
+	DocBookWrapperTag     abstract
+	DocBookWrapperMergeWithPrevious    true
+	DocBookTag            para
 End
 
 
@@ -298,6 +333,8 @@ Style Theorem
 	  Shape               Up
 	  Series              Bold
 	EndFont
+	DocBookTag            para
+	DocBookAttr           role='theorem'
 End
 
 
@@ -327,6 +364,8 @@ Style Proof
 	LabelFont
 	  Series              Bold
 	EndFont
+	DocBookTag            para
+	DocBookAttr           role='proof'
 End
 
 
@@ -334,6 +373,8 @@ Style Lemma
 	CopyStyle             Theorem
 	LatexName             lem
 	LabelString           "Lemma \arabic{theorem}"
+	DocBookTag            para
+	DocBookAttr           role='lemma'
 End
 
 
@@ -341,6 +382,8 @@ Style Corollary
 	CopyStyle             Theorem
 	LatexName             cor
 	LabelString           "Corollary \arabic{theorem}"
+	DocBookTag            para
+	DocBookAttr           role='corollary'
 End
 
 
@@ -348,6 +391,8 @@ Style Proposition
 	CopyStyle             Theorem
 	LatexName             prop
 	LabelString           "Proposition \arabic{theorem}"
+	DocBookTag            para
+	DocBookAttr           role='proposition'
 End
 
 
@@ -355,6 +400,8 @@ Style Criterion
 	CopyStyle             Theorem
 	LatexName             crit
 	LabelString           "Criterion \arabic{theorem}"
+	DocBookTag            para
+	DocBookAttr           role='criterion'
 End
 
 
@@ -362,6 +409,8 @@ Style Algorithm
 	CopyStyle             Theorem
 	LatexName             alg
 	LabelString           "Algorithm \arabic{theorem}"
+	DocBookTag            para
+	DocBookAttr           role='algorithm'
 End
 
 
@@ -376,6 +425,8 @@ Style Definition
 	  Shape               Up
 	  Series              Bold
 	EndFont
+	DocBookTag            para
+	DocBookAttr           role='definition'
 End
 
 
@@ -383,6 +434,8 @@ Style Conjecture
 	CopyStyle             Theorem
 	LatexName             conj
 	LabelString           "Conjecture \arabic{theorem}"
+	DocBookTag            para
+	DocBookAttr           role='conjecture'
 End
 
 
@@ -390,6 +443,9 @@ Style Example
 	CopyStyle             Theorem
 	LatexName             exmp
 	LabelString           "Example \arabic{theorem}"
+	DocBookWrapperTag     informalexample
+	DocBookTag            para
+	DocBookAttr           ""
 End
 
 
@@ -397,6 +453,8 @@ Style Problem
 	CopyStyle             Theorem
 	LatexName             prob
 	LabelString           "Problem \arabic{theorem}"
+	DocBookTag            para
+	DocBookAttr           role='problem'
 End
 
 
@@ -404,6 +462,8 @@ Style Remark
 	CopyStyle             Theorem
 	LatexName             rem
 	LabelString           "Remark \arabic{theorem}"
+	DocBookTag            note
+	DocBookItemTag        para
 End
 
 
@@ -411,6 +471,8 @@ Style Note
 	CopyStyle             Theorem
 	LatexName             note
 	LabelString           "Note \arabic{theorem}"
+	DocBookTag            para
+	DocBookAttr           role='note'
 End
 
 
@@ -418,6 +480,8 @@ Style Claim
 	CopyStyle             Theorem
 	LatexName             claim
 	LabelString           "Claim \arabic{theorem}"
+	DocBookTag            para
+	DocBookAttr           role='claim'
 End
 
 
@@ -426,6 +490,8 @@ Style Summary
 	LatexName             summ
 	LabelCounter          summ
 	LabelString           "Summary \arabic{summ}"
+	DocBookTag            para
+	DocBookAttr           role='summary'
 End
 
 
@@ -434,6 +500,8 @@ Style Case
 	LatexName             case
 	LabelCounter          case
 	LabelString           "Case \arabic{case}"
+	DocBookTag            para
+	DocBookAttr           role='case'
 End
 
 
@@ -451,6 +519,8 @@ Style Acknowledgement
 	  Size                large
 	  Series              Bold
 	EndFont
+	DocBookTag            para
+	DocBookWrapperTag     acknowledgements
 End
 
 Input theorems-refprefix.inc

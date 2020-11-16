@@ -42,6 +42,7 @@ Style Standard
 	Align			Block
 	AlignPossible	Block, Left, Right, Center
 	LabelType		No_Label
+	DocBookTag      para
 End
 
 Input stdcounters.inc
@@ -73,6 +74,9 @@ Style Title
 	  Size			Largest
 	EndFont
 	HTMLTitle		true
+	DocBookTag            title
+	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 End
 
 InsetLayout "Flex:Titlenotemark"
@@ -95,6 +99,8 @@ InsetLayout "Flex:Titlenotemark"
 	  Color			green
 	  Size			Small
 	EndFont
+	DocBookTag      footnoteref
+	# TODO: the content will be output within the tag, while it should be the linkend attribute, i.e. the output should be <footnoteref linked="[content]"/>. If the content has several footnotes, it should be split on the comma: "t1,t2" should generate <footnoteref linked="t1"/><footnoteref linked="t2"/>.
 End
 
 
@@ -105,8 +111,10 @@ Style "Title footnote"
 	Category		FrontMatter
 	InTitle			1
 	Argument 1
-	  LabelString		"Footnote Label"
-	  Tooltip		"Label you refer to in the title"
+	  LabelString   "Footnote Label"
+	  Tooltip       "Label you refer to in the title"
+	  DocBookTag    anchor
+	  DocBookTagType  inline
 	EndArgument
 	ParSkip			0.4
 	BottomSep		0.5
@@ -118,6 +126,13 @@ Style "Title footnote"
 	  Color			Green
 	  Series		Bold
 	EndFont
+	DocBookTag      footnote
+	DocBookItemTag  para
+	DocBookWrapperTag      title
+	DocBookWrapperTagType  paragraph
+	DocBookWrapperMergeWithPrevious  true
+	DocBookInInfo   maybe
+	# TODO: the argument will be output within the tag, while it should be the xml:id attribute, i.e. the output should be <footnote xml:id="[Argument 1]"/>. And it should also be within the title, and not as a second title.
 End
 
 
@@ -129,6 +144,8 @@ Style Author
 	Argument 1
 	  LabelString	"Author Label"
 	  Tooltip		"Label you will reference in the address"
+	  DocBookTag    phrase
+	  DocBookAttr   role='address-label'
 	EndArgument
 	LatexName		author
 	LabelSep		xxx
@@ -141,6 +158,11 @@ Style Author
 	Font
 	  Size			Large
 	EndFont
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType block
+	DocBookInInfo         always
 End
 
 
@@ -206,6 +228,8 @@ Style Address
 	Argument 1
 	  LabelString	"Address Label"
 	  Tooltip		"Label of the author you refer to"
+	  DocBookTag    phrase
+	  DocBookAttr   role='label'
 	EndArgument
 	ParSkip			0.4
 	Align			Center
@@ -214,6 +238,12 @@ Style Address
 	Font
 	  Shape			Italic
 	EndFont
+	DocBookTag            address
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType block
+	DocBookWrapperMergeWithPrevious  true
+	DocBookInInfo         always
 End
 
 
@@ -229,6 +259,12 @@ Style Email
 	Font
 	  Shape			Up
 	EndFont
+	DocBookTag            email
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType block
+	DocBookWrapperMergeWithPrevious  true
+	DocBookInInfo         always
 End
 
 
@@ -258,6 +294,11 @@ Style Abstract
 	  Series		Bold
 	  Size			Large
 	EndFont
+	DocBookAbstract       true
+	DocBookInInfo         always
+	DocBookWrapperTag     abstract
+	DocBookWrapperMergeWithPrevious    true
+	DocBookTag            para
 End
 
 
@@ -277,7 +318,11 @@ Style Keywords
 	LabelFont
 	  Color			Green
 	  Series		Bold
-	EndFont		
+	EndFont
+	DocBookTag         keyword
+	DocBookTagType     paragraph
+	DocBookWrapperTag  keywordset
+	DocBookInInfo      always
 End
 
 
@@ -315,5 +360,6 @@ Style Bibliography
 	    Color		latex
 	  EndFont
 	EndArgument
+	DocBookTag      bibliography
 End
 

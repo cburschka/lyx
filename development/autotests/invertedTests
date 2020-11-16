@@ -476,6 +476,8 @@ export/examples/.*/American_Mathematical_Society_%28AMS%29_docbook5
 export/examples/Articles/American_Chemical_Society_%28ACS%29_docbook5
 #   - A&A: formula with two references (only one xml:id allowed per <equation> tag).
 export/examples/Articles/Astronomy_%26_Astrophysics_docbook5
+#   - Elsevier: footnotes in the metadata (author footnotes are definitely not supported, though).
+export/templates/Articles/Elsevier_docbook5
 # - Branches may cause problems (especially when mixing with parts that must go in <info>).
 export/export/latex/languages/supported-languages_(|babel|babel_auto-legacy)_?docbook5
 # - EmbeddedObjects: this document is too complex, with captions within tables, many LaTeX parameters when including
@@ -508,6 +510,10 @@ export/examples/Graphics_and_Insets/Minted_Listings_docbook5
 export/examples/Modules/Sweave_docbook5
 # - Figures without image, only an equation.
 export/examples/Modules/Variable-width_Minipages_docbook5
+# - Listing in LyX-Code, i.e. double <programlisting>.
+export/examples/(es|fr)/Modules/Linguistics_docbook5
+# - Inlines in inlines (<code> within <personname>), double sidebar.
+export/examples/ko/cjk-ko-doc_docbook5
 
 Sublabel: docbook poster
 # Posters cannot be properly exported, the LyX documents are too far from

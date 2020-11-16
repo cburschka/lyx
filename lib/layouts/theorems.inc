@@ -217,7 +217,7 @@ Style Example
 	EndBabelPreamble
 	DocBookWrapperTag     informalexample
 	DocBookTag            para
-	DocBookAttr        ""
+	DocBookAttr           ""
 End
 
 
