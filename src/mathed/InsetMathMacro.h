@@ -159,7 +159,7 @@ public:
 	/// This is not used for display; however whether it is mathrel determines
 	/// how to split equations intelligently.
 	MathClass mathClass() const override;
-	/// Override so as to set Buffer for defnition_ member, too.
+	/// Override so as to set Buffer for definition_ member, too.
 	void setBuffer(Buffer &) override;
 
 protected:
