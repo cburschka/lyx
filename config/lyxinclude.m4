@@ -539,7 +539,7 @@ dnl Some bits from libiconv configure.ac to avoid a nested configure call:
     AC_EILSEQ
     AC_TYPE_MBSTATE_T
     AC_CHECK_FUNCS([getc_unlocked mbrtowc wcrtomb mbsinit setlocale])
-dnl Ymbstate_t is used if HAVE_WCRTOMB || HAVE_MBRTOWC, see 3rdparty/libiconv/1.14/lib/loop_wchar.h.
+dnl Ymbstate_t is used if HAVE_WCRTOMB || HAVE_MBRTOWC, see 3rdparty/libiconv/1.15/lib/loop_wchar.h.
     if test $ac_cv_func_wcrtomb = yes || test $ac_cv_func_mbrtowc = yes; then
       USE_MBSTATE_T=1
     else
@@ -569,9 +569,9 @@ dnl we want const correctness
 dnl we build a static lib
     DLL_VARIABLE=
     AC_SUBST([DLL_VARIABLE])
-    ICONV_INCLUDES='-I$(top_srcdir)/3rdparty/libiconv/1.14 -I$(top_builddir)/3rdparty/libiconv'
+    ICONV_INCLUDES='-I$(top_srcdir)/3rdparty/libiconv/1.15 -I$(top_builddir)/3rdparty/libiconv'
     ICONV_LIBS='\$(top_builddir)/3rdparty/libiconv/liblyxiconv.a'
-    ICONV_ICONV_H_IN=3rdparty/libiconv/iconv.h:3rdparty/libiconv/1.14/include/iconv.h.in
+    ICONV_ICONV_H_IN=3rdparty/libiconv/iconv.h:3rdparty/libiconv/1.15/include/iconv.h.in
   else
     ICONV_INCLUDES=
     AM_ICONV
