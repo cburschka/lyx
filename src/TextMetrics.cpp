@@ -550,7 +550,7 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 		first = row.endpos();
 		++row_index;
 
-		pm.dim().wid = max(pm.dim().wid, row.width());
+		pm.dim().wid = max(pm.dim().wid, row.width() + row.right_margin);
 		pm.dim().des += row.height();
 	} while (first < par.size() || need_new_row);
 
