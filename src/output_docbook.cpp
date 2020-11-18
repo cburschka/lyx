@@ -167,116 +167,6 @@ string fontToAttribute(xml::FontTypes type) {
 }
 
 
-// Convenience functions to open and close tags. First, very low-level ones to ensure a consistent new-line behaviour.
-// Block style:
-//	  Content before
-//	  <blocktag>
-//	    Contents of the block.
-//	  </blocktag>
-//	  Content after
-// Paragraph style:
-//	  Content before
-//	    <paratag>Contents of the paragraph.</paratag>
-//	  Content after
-// Inline style:
-//    Content before<inlinetag>Contents of the paragraph.</inlinetag>Content after
-
-void openInlineTag(XMLStream & xs, const std::string & tag, const std::string & attr)
-{
-	xs << xml::StartTag(tag, attr);
-}
-
-
-void closeInlineTag(XMLStream & xs, const std::string & tag)
-{
-	xs << xml::EndTag(tag);
-}
-
-
-void openParTag(XMLStream & xs, const std::string & tag, const std::string & attr)
-{
-	if (!xs.isLastTagCR())
-		xs << xml::CR();
-	xs << xml::StartTag(tag, attr);
-}
-
-
-void closeParTag(XMLStream & xs, const std::string & tag)
-{
-	xs << xml::EndTag(tag);
-	xs << xml::CR();
-}
-
-
-void openBlockTag(XMLStream & xs, const std::string & tag, const std::string & attr)
-{
-	if (!xs.isLastTagCR())
-		xs << xml::CR();
-	xs << xml::StartTag(tag, attr);
-	xs << xml::CR();
-}
-
-
-void closeBlockTag(XMLStream & xs, const std::string & tag)
-{
-	if (!xs.isLastTagCR())
-		xs << xml::CR();
-	xs << xml::EndTag(tag);
-	xs << xml::CR();
-}
-
-
-void openTag(XMLStream & xs, const std::string & tag, const std::string & attr, const std::string & tagtype)
-{
-	if (tag.empty() || tag == "NONE") // Common check to be performed elsewhere, if it was not here.
-		return;
-
-	if (tag == "para" || tagtype == "paragraph") // Special case for <para>: always considered as a paragraph.
-		openParTag(xs, tag, attr);
-	else if (tagtype == "block")
-		openBlockTag(xs, tag, attr);
-	else if (tagtype == "inline")
-		openInlineTag(xs, tag, attr);
-	else
-		xs.writeError("Unrecognised tag type '" + tagtype + "' for '" + tag + " " + attr + "'");
-}
-
-
-void closeTag(XMLStream & xs, const std::string & tag, const std::string & tagtype)
-{
-	if (tag.empty() || tag == "NONE")
-		return;
-
-	if (tag == "para" || tagtype == "paragraph") // Special case for <para>: always considered as a paragraph.
-		closeParTag(xs, tag);
-	else if (tagtype == "block")
-		closeBlockTag(xs, tag);
-	else if (tagtype == "inline")
-		closeInlineTag(xs, tag);
-	else
-		xs.writeError("Unrecognised tag type '" + tagtype + "' for '" + tag + "'");
-}
-
-
-void compTag(XMLStream & xs, const std::string & tag, const std::string & attr, const std::string & tagtype)
-{
-	if (tag.empty() || tag == "NONE")
-		return;
-
-	// Special case for <para>: always considered as a paragraph.
-	if (tag == "para" || tagtype == "paragraph" || tagtype == "block") {
-		if (!xs.isLastTagCR())
-			xs << xml::CR();
-		xs << xml::CompTag(tag, attr);
-		xs << xml::CR();
-	} else if (tagtype == "inline") {
-		xs << xml::CompTag(tag, attr);
-	} else {
-		xs.writeError("Unrecognised tag type '" + tagtype + "' for '" + tag + "'");
-	}
-}
-
-
 // Higher-level convenience functions.
 
 void openParTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar)
@@ -305,7 +195,7 @@ void openParTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar
 
 	// Main logic.
 	if (openWrapper)
-		openTag(xs, lay.docbookwrappertag(), lay.docbookwrapperattr(), lay.docbookwrappertagtype());
+		xml::openTag(xs, lay.docbookwrappertag(), lay.docbookwrapperattr(), lay.docbookwrappertagtype());
 
 	const string & tag = lay.docbooktag();
 	if (tag != "NONE") {
@@ -313,13 +203,13 @@ void openParTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar
 		if (!xs.isTagOpen(xmltag, 1)) { // Don't nest a paragraph directly in a paragraph.
 			// TODO: required or not?
 			// TODO: avoid creating a ParTag object just for this query...
-			openTag(xs, lay.docbooktag(), lay.docbookattr(), lay.docbooktagtype());
-			openTag(xs, lay.docbookinnertag(), lay.docbookinnerattr(), lay.docbookinnertagtype());
+			xml::openTag(xs, lay.docbooktag(), lay.docbookattr(), lay.docbooktagtype());
+			xml::openTag(xs, lay.docbookinnertag(), lay.docbookinnerattr(), lay.docbookinnertagtype());
 		}
 	}
 
-	openTag(xs, lay.docbookitemtag(), lay.docbookitemattr(), lay.docbookitemtagtype());
-	openTag(xs, lay.docbookiteminnertag(), lay.docbookiteminnerattr(), lay.docbookiteminnertagtype());
+	xml::openTag(xs, lay.docbookitemtag(), lay.docbookitemattr(), lay.docbookitemtagtype());
+	xml::openTag(xs, lay.docbookiteminnertag(), lay.docbookiteminnerattr(), lay.docbookiteminnertagtype());
 }
 
 
@@ -343,12 +233,12 @@ void closeParTag(XMLStream & xs, Paragraph const * par, Paragraph const * nextpa
 	}
 
 	// Main logic.
-	closeTag(xs, lay.docbookiteminnertag(), lay.docbookiteminnertagtype());
-	closeTag(xs, lay.docbookitemtag(), lay.docbookitemtagtype());
-	closeTag(xs, lay.docbookinnertag(), lay.docbookinnertagtype());
-	closeTag(xs, lay.docbooktag(), lay.docbooktagtype());
+	xml::closeTag(xs, lay.docbookiteminnertag(), lay.docbookiteminnertagtype());
+	xml::closeTag(xs, lay.docbookitemtag(), lay.docbookitemtagtype());
+	xml::closeTag(xs, lay.docbookinnertag(), lay.docbookinnertagtype());
+	xml::closeTag(xs, lay.docbooktag(), lay.docbooktagtype());
 	if (closeWrapper)
-		closeTag(xs, lay.docbookwrappertag(), lay.docbookwrappertagtype());
+		xml::closeTag(xs, lay.docbookwrappertag(), lay.docbookwrappertagtype());
 }
 
 
@@ -568,9 +458,10 @@ void makeEnvironment(Text const &text,
 		if (mimicListing) {
 			auto p = pars.begin();
 			while (p != pars.end()) {
-				openTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnerattr(), par->layout().docbookiteminnertagtype());
+				xml::openTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnerattr(),
+				             par->layout().docbookiteminnertagtype());
 				xs << XMLStream::ESCAPE_NONE << *p;
-				closeTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnertagtype());
+				xml::closeTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnertagtype());
 				++p;
 
 				// Insert a new line after each "paragraph" (i.e. line in the listing), except for the last one.
@@ -580,9 +471,10 @@ void makeEnvironment(Text const &text,
 			}
 		} else {
 			for (auto const & p : pars) {
-				openTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnerattr(), par->layout().docbookiteminnertagtype());
+				xml::openTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnerattr(),
+				             par->layout().docbookiteminnertagtype());
 				xs << XMLStream::ESCAPE_NONE << p;
-				closeTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnertagtype());
+				xml::closeTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnertagtype());
 			}
 		}
 	} else {
@@ -641,8 +533,8 @@ ParagraphList::const_iterator makeListEnvironment(Text const &text,
 
 	// Output the opening tag for this environment.
 	Layout const & envstyle = par->layout();
-	openTag(xs, envstyle.docbookwrappertag(), envstyle.docbookwrapperattr(), envstyle.docbookwrappertagtype());
-	openTag(xs, envstyle.docbooktag(), envstyle.docbookattr(), envstyle.docbooktagtype());
+	xml::openTag(xs, envstyle.docbookwrappertag(), envstyle.docbookwrapperattr(), envstyle.docbookwrappertagtype());
+	xml::openTag(xs, envstyle.docbooktag(), envstyle.docbookattr(), envstyle.docbooktagtype());
 
 	// Handle the content of the list environment, item by item.
 	while (par != envend) {
@@ -654,7 +546,8 @@ ParagraphList::const_iterator makeListEnvironment(Text const &text,
 
 		// Open the item wrapper.
 		Layout const & style = par->layout();
-		openTag(xs, style.docbookitemwrappertag(), style.docbookitemwrapperattr(), style.docbookitemwrappertagtype());
+		xml::openTag(xs, style.docbookitemwrappertag(), style.docbookitemwrapperattr(),
+		             style.docbookitemwrappertagtype());
 
 		// Generate the label, if need be. If it is taken from the text, sep != 0 and corresponds to the first
 		// character after the label.
@@ -662,38 +555,40 @@ ParagraphList::const_iterator makeListEnvironment(Text const &text,
 		if (style.labeltype != LABEL_NO_LABEL && style.docbookitemlabeltag() != "NONE") {
 			if (style.labeltype == LABEL_MANUAL) {
 				// Only variablelist gets here (or similar items defined as an extension in the layout).
-				openTag(xs, style.docbookitemlabeltag(), style.docbookitemlabelattr(), style.docbookitemlabeltagtype());
+				xml::openTag(xs, style.docbookitemlabeltag(), style.docbookitemlabelattr(),
+				             style.docbookitemlabeltagtype());
 				sep = 1 + par->firstWordDocBook(xs, runparams);
-				closeTag(xs, style.docbookitemlabeltag(), style.docbookitemlabeltagtype());
+				xml::closeTag(xs, style.docbookitemlabeltag(), style.docbookitemlabeltagtype());
 			} else {
 				// Usual cases: maybe there is something specified at the layout level. Highly unlikely, though.
 				docstring const lbl = par->params().labelString();
 
 				if (!lbl.empty()) {
-					openTag(xs, style.docbookitemlabeltag(), style.docbookitemlabelattr(), style.docbookitemlabeltagtype());
+					xml::openTag(xs, style.docbookitemlabeltag(), style.docbookitemlabelattr(),
+					             style.docbookitemlabeltagtype());
 					xs << lbl;
-					closeTag(xs, style.docbookitemlabeltag(), style.docbookitemlabeltagtype());
+					xml::closeTag(xs, style.docbookitemlabeltag(), style.docbookitemlabeltagtype());
 				}
 			}
 		}
 
 		// Open the item (after the wrapper and the label).
-		openTag(xs, style.docbookitemtag(), style.docbookitemattr(), style.docbookitemtagtype());
+		xml::openTag(xs, style.docbookitemtag(), style.docbookitemattr(), style.docbookitemtagtype());
 
 		// Generate the content of the item.
 		if (sep < par->size()) {
 			auto pars = par->simpleDocBookOnePar(buf, runparams,
 			                                     text.outerFont(std::distance(text.paragraphs().begin(), par)), sep);
 			for (auto &p : pars) {
-				openTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnerattr(),
-				        par->layout().docbookiteminnertagtype());
+				xml::openTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnerattr(),
+				             par->layout().docbookiteminnertagtype());
 				xs << XMLStream::ESCAPE_NONE << p;
-				closeTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnertagtype());
+				xml::closeTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnertagtype());
 			}
 		} else {
 			// DocBook doesn't like emptiness.
-			compTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnerattr(),
-			        par->layout().docbookiteminnertagtype());
+			xml::compTag(xs, par->layout().docbookiteminnertag(), par->layout().docbookiteminnerattr(),
+			             par->layout().docbookiteminnertagtype());
 		}
 
 		// If the next item is deeper, it must go entirely within this item (do it recursively).
@@ -706,13 +601,13 @@ ParagraphList::const_iterator makeListEnvironment(Text const &text,
 		// a list, and another paragraph; or an item with two types of list (itemise then enumerate, for instance).
 
 		// Close the item.
-		closeTag(xs, style.docbookitemtag(), style.docbookitemtagtype());
-		closeTag(xs, style.docbookitemwrappertag(), style.docbookitemwrappertagtype());
+		xml::closeTag(xs, style.docbookitemtag(), style.docbookitemtagtype());
+		xml::closeTag(xs, style.docbookitemwrappertag(), style.docbookitemwrappertagtype());
 	}
 
 	// Close this environment in exactly the same way as it was opened.
-	closeTag(xs, envstyle.docbooktag(), envstyle.docbooktagtype());
-	closeTag(xs, envstyle.docbookwrappertag(), envstyle.docbookwrappertagtype());
+	xml::closeTag(xs, envstyle.docbooktag(), envstyle.docbooktagtype());
+	xml::closeTag(xs, envstyle.docbookwrappertag(), envstyle.docbookwrappertagtype());
 
 	return envend;
 }
@@ -725,7 +620,6 @@ void makeCommand(
 		OutputParams const & runparams,
 		ParagraphList::const_iterator const & par)
 {
-
 	// Useful variables.
 	// Unlike XHTML, no need for labels, as they are handled by DocBook tags.
 	auto const begin = text.paragraphs().begin();

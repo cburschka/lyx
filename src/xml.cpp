@@ -753,4 +753,146 @@ void xml::closeTag(odocstream & os, Paragraph const & par)
 }
 
 
+void openInlineTag(XMLStream & xs, const docstring & tag, const docstring & attr)
+{
+	xs << xml::StartTag(tag, attr);
+}
+
+
+void closeInlineTag(XMLStream & xs, const docstring & tag)
+{
+	xs << xml::EndTag(tag);
+}
+
+
+void openParTag(XMLStream & xs, const docstring & tag, const docstring & attr)
+{
+	if (!xs.isLastTagCR())
+		xs << xml::CR();
+	xs << xml::StartTag(tag, attr);
+}
+
+
+void closeParTag(XMLStream & xs, const docstring & tag)
+{
+	xs << xml::EndTag(tag);
+	xs << xml::CR();
+}
+
+
+void openBlockTag(XMLStream & xs, const docstring & tag, const docstring & attr)
+{
+	if (!xs.isLastTagCR())
+		xs << xml::CR();
+	xs << xml::StartTag(tag, attr);
+	xs << xml::CR();
+}
+
+
+void closeBlockTag(XMLStream & xs, const docstring & tag)
+{
+	if (!xs.isLastTagCR())
+		xs << xml::CR();
+	xs << xml::EndTag(tag);
+	xs << xml::CR();
+}
+
+
+void xml::openTag(XMLStream & xs, const docstring & tag, const docstring & attr, const std::string & tagtype)
+{
+	if (tag.empty() || tag == "NONE") // Common check to be performed elsewhere, if it was not here.
+		return;
+
+	if (tag == "para" || tagtype == "paragraph") // Special case for <para>: always considered as a paragraph.
+		openParTag(xs, tag, attr);
+	else if (tagtype == "block")
+		openBlockTag(xs, tag, attr);
+	else if (tagtype == "inline")
+		openInlineTag(xs, tag, attr);
+	else if (tagtype == "none")
+		xs << xml::StartTag(tag, attr);
+	else
+		xs.writeError("Unrecognised tag type '" + tagtype + "' for '" + to_utf8(tag) + " " + to_utf8(attr) + "'");
+}
+
+
+void xml::openTag(XMLStream & xs, const std::string & tag, const std::string & attr, const std::string & tagtype)
+{
+	xml::openTag(xs, from_utf8(tag), from_utf8(attr), tagtype);
+}
+
+
+void xml::openTag(XMLStream & xs, const docstring & tag, const std::string & attr, const std::string & tagtype)
+{
+	xml::openTag(xs, tag, from_utf8(attr), tagtype);
+}
+
+
+void xml::openTag(XMLStream & xs, const std::string & tag, const docstring & attr, const std::string & tagtype)
+{
+	xml::openTag(xs, from_utf8(tag), attr, tagtype);
+}
+
+
+void xml::closeTag(XMLStream & xs, const docstring & tag, const std::string & tagtype)
+{
+	if (tag.empty() || tag == "NONE")
+		return;
+
+	if (tag == "para" || tagtype == "paragraph") // Special case for <para>: always considered as a paragraph.
+		closeParTag(xs, tag);
+	else if (tagtype == "block")
+		closeBlockTag(xs, tag);
+	else if (tagtype == "inline")
+		closeInlineTag(xs, tag);
+	else if (tagtype == "none")
+		xs << xml::EndTag(tag);
+	else
+		xs.writeError("Unrecognised tag type '" + tagtype + "' for '" + to_utf8(tag) + "'");
+}
+
+
+void xml::closeTag(XMLStream & xs, const std::string & tag, const std::string & tagtype)
+{
+	xml::closeTag(xs, from_utf8(tag), tagtype);
+}
+
+
+void xml::compTag(XMLStream & xs, const docstring & tag, const docstring & attr, const std::string & tagtype)
+{
+	if (tag.empty() || tag == from_ascii("NONE"))
+		return;
+
+	// Special case for <para>: always considered as a paragraph.
+	if (tag == from_ascii("para") || tagtype == "paragraph" || tagtype == "block") {
+		if (!xs.isLastTagCR())
+			xs << xml::CR();
+		xs << xml::CompTag(tag, attr);
+		xs << xml::CR();
+	} else if (tagtype == "inline") {
+		xs << xml::CompTag(tag, attr);
+	} else {
+		xs.writeError("Unrecognised tag type '" + tagtype + "' for '" + to_utf8(tag) + "'");
+	}
+}
+
+
+void xml::compTag(XMLStream & xs, const std::string & tag, const std::string & attr, const std::string & tagtype)
+{
+	xml::compTag(xs, from_utf8(tag), from_utf8(attr), tagtype);
+}
+
+
+void xml::compTag(XMLStream & xs, const docstring & tag, const std::string & attr, const std::string & tagtype)
+{
+	xml::compTag(xs, tag, from_utf8(attr), tagtype);
+}
+
+
+void xml::compTag(XMLStream & xs, const std::string & tag, const docstring & attr, const std::string & tagtype)
+{
+	xml::compTag(xs, from_utf8(tag), attr, tagtype);
+}
+
+
 } // namespace lyx

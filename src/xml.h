@@ -255,11 +255,20 @@ struct CompTag
 	explicit CompTag(std::string const & tag)
 			: tag_(from_utf8(tag)), tagtype_("none") {}
 	///
+	explicit CompTag(docstring const & tag)
+			: tag_(tag), tagtype_("none") {}
+	///
 	explicit CompTag(std::string const & tag, std::string const & attr, std::string const & tagtype = "none")
 			: tag_(from_utf8(tag)), attr_(from_utf8(attr)), tagtype_(tagtype) {}
 	///
 	explicit CompTag(std::string const & tag, docstring const & attr, std::string const & tagtype = "none")
 			: tag_(from_utf8(tag)), attr_(attr), tagtype_(tagtype) {}
+	///
+	explicit CompTag(docstring const & tag, std::string const & attr, std::string const & tagtype = "none")
+			: tag_(tag), attr_(from_utf8(attr)), tagtype_(tagtype) {}
+	///
+	explicit CompTag(docstring const & tag, docstring const & attr, std::string const & tagtype = "none")
+			: tag_(tag), attr_(attr), tagtype_(tagtype) {}
 	/// <tag_ attr_ />
 	docstring writeTag() const;
 	///
@@ -374,6 +383,41 @@ void closeTag(odocstream & os, std::string const & name);
 
 /// Close tag
 void closeTag(odocstream & os, Paragraph const & par);
+
+// Convenience functions to open and close tags. First, very low-level ones to ensure a consistent new-line behaviour.
+// Block style:
+//	  Content before
+//	  <blocktag>
+//	    Contents of the block.
+//	  </blocktag>
+//	  Content after
+// Paragraph style:
+//	  Content before
+//	    <paratag>Contents of the paragraph.</paratag>
+//	  Content after
+// Inline style:
+//    Content before<inlinetag>Contents of the paragraph.</inlinetag>Content after
+
+///
+void openTag(XMLStream & xs, const docstring & tag, const docstring & attr, const std::string & tagtype);
+///
+void openTag(XMLStream & xs, const std::string & tag, const std::string & attr, const std::string & tagtype);
+///
+void openTag(XMLStream & xs, const docstring & tag, const std::string & attr, const std::string & tagtype);
+///
+void openTag(XMLStream & xs, const std::string & tag, const docstring & attr, const std::string & tagtype);
+///
+void closeTag(XMLStream & xs, const docstring & tag, const std::string & tagtype);
+///
+void closeTag(XMLStream & xs, const std::string & tag, const std::string & tagtype);
+///
+void compTag(XMLStream & xs, const docstring & tag, const docstring & attr, const std::string & tagtype);
+///
+void compTag(XMLStream & xs, const std::string & tag, const std::string & attr, const std::string & tagtype);
+///
+void compTag(XMLStream & xs, const docstring & tag, const std::string & attr, const std::string & tagtype);
+///
+void compTag(XMLStream & xs, const std::string & tag, const docstring & attr, const std::string & tagtype);
 
 } // namespace xml
 
