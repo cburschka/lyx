@@ -174,23 +174,23 @@ struct EndFontTag;
 struct StartTag
 {
 	///
-	explicit StartTag(std::string const & tag) : tag_(from_ascii(tag)), keepempty_(false) {}
+	explicit StartTag(std::string const & tag) : tag_(from_ascii(tag)), keepempty_(false), tagtype_("none") {}
 	///
-	explicit StartTag(docstring const & tag) : tag_(tag), keepempty_(false) {}
+	explicit StartTag(docstring const & tag) : tag_(tag), keepempty_(false), tagtype_("none") {}
 	///
 	explicit StartTag(docstring const & tag, docstring const & attr,
-					  bool keepempty = false)
-			: tag_(tag), attr_(attr), keepempty_(keepempty) {}
+					  bool keepempty = false, std::string const & tagtype = "none")
+			: tag_(tag), attr_(attr), keepempty_(keepempty), tagtype_(tagtype) {}
 	///
 	explicit StartTag(std::string const & tag, std::string const & attr,
-					  bool keepempty = false)
-			: tag_(from_ascii(tag)), attr_(from_utf8(attr)), keepempty_(keepempty) {}
+					  bool keepempty = false, std::string const & tagtype = "none")
+			: tag_(from_ascii(tag)), attr_(from_utf8(attr)), keepempty_(keepempty), tagtype_(tagtype) {}
 	///
 	explicit StartTag(std::string const & tag, docstring const & attr,
-					  bool keepempty = false)
-			: tag_(from_ascii(tag)), attr_(attr), keepempty_(keepempty) {}
+					  bool keepempty = false, std::string const & tagtype = "none")
+			: tag_(from_ascii(tag)), attr_(attr), keepempty_(keepempty), tagtype_(tagtype) {}
 	///
-	virtual ~StartTag() {}
+	virtual ~StartTag() = default;
 	/// <tag_ attr_>
 	virtual docstring writeTag() const;
 	/// </tag_>
@@ -212,6 +212,8 @@ struct StartTag
 	/// whether to keep things like "<tag></tag>" or discard them
 	/// you would want this for td, e.g, but maybe not for a div
 	bool keepempty_;
+	/// Type of tag for new-line behaviour. Either "paragraph", "inline", "block", or "none" (default).
+	std::string tagtype_;
 };
 
 
@@ -219,11 +221,13 @@ struct StartTag
 struct EndTag
 {
 	///
-	explicit EndTag(std::string const & tag) : tag_(from_ascii(tag)) {}
+	explicit EndTag(std::string const & tag, std::string const & tagtype = "none")
+	        : tag_(from_ascii(tag)), tagtype_(tagtype) {}
 	///
-	explicit EndTag(docstring const & tag) : tag_(tag) {}
+	explicit EndTag(docstring const & tag, std::string const & tagtype = "none")
+	        : tag_(tag), tagtype_(tagtype) {}
 	///
-	virtual ~EndTag() {}
+	virtual ~EndTag() = default;
 	/// </tag_>
 	virtual docstring writeEndTag() const;
 	///
@@ -233,9 +237,12 @@ struct EndTag
 	bool operator!=(StartTag const & rhs) const
 	{ return !(*this == rhs); }
 	///
-	virtual EndFontTag const * asFontTag() const { return 0; }
+	virtual EndFontTag const * asFontTag() const { return nullptr; }
 	///
 	docstring tag_;
+	/// Type of tag for new-line behaviour. Either "paragraph", "inline", "block", or "none" (default).
+	/// The value should match that of the corresponding xml::StartTag.
+	std::string tagtype_;
 };
 
 
@@ -246,30 +253,31 @@ struct CompTag
 {
 	///
 	explicit CompTag(std::string const & tag)
-			: tag_(from_utf8(tag)) {}
+			: tag_(from_utf8(tag)), tagtype_("none") {}
 	///
-	explicit CompTag(std::string const & tag, std::string const & attr)
-			: tag_(from_utf8(tag)), attr_(from_utf8(attr)) {}
+	explicit CompTag(std::string const & tag, std::string const & attr, std::string const & tagtype = "none")
+			: tag_(from_utf8(tag)), attr_(from_utf8(attr)), tagtype_(tagtype) {}
 	///
-	explicit CompTag(std::string const & tag, docstring const & attr)
-			: tag_(from_utf8(tag)), attr_(attr) {}
+	explicit CompTag(std::string const & tag, docstring const & attr, std::string const & tagtype = "none")
+			: tag_(from_utf8(tag)), attr_(attr), tagtype_(tagtype) {}
 	/// <tag_ attr_ />
 	docstring writeTag() const;
 	///
 	docstring tag_;
 	///
 	docstring attr_;
+	/// Type of tag for new-line behaviour. Either "paragraph", "inline", "block", or "none" (default).
+	std::string tagtype_;
 };
 
 
 /// A special case of StartTag, used exclusively for tags that wrap paragraphs.
-/// parid is only used for HTML output; XML is supposed to use attr for this.
 struct ParTag : public StartTag
 {
 	///
 	explicit ParTag(std::string const & tag, const std::string & attr): StartTag(tag, from_utf8(attr)) {}
 	///
-	~ParTag() {}
+	~ParTag() override = default;
 };
 
 

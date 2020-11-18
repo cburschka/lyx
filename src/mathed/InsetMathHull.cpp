@@ -2663,9 +2663,9 @@ docstring InsetMathHull::xhtml(XMLStream & xs, OutputParams const & op) const
 			string const tag = (getType() == hullSimple) ? "span" : "div";
 			xs << xml::CR()
 			   << xml::StartTag(tag, "style = \"text-align: center;\"")
-				 << xml::CompTag("img", "src=\"" + filename + "\" alt=\"Mathematical Equation\"")
-				 << xml::EndTag(tag)
-				 << xml::CR();
+			   << xml::CompTag("img", "src=\"" + filename + "\" alt=\"Mathematical Equation\"")
+			   << xml::EndTag(tag)
+			   << xml::CR();
 			success = true;
 		}
 	}
