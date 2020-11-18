@@ -92,21 +92,20 @@ AC_DEFUN([CHECK_WITH_HUNSPELL],
 			 [lyx_use_hunspell=false])
 			 AC_CHECK_LIB(hunspell, main, LIBS="-lhunspell $LIBS", lyx_use_hunspell=false)
 		])
+	fi
 	AC_MSG_CHECKING([whether to use hunspell])
 	if $lyx_use_hunspell ; then
 		AC_MSG_RESULT(yes)
 		AC_DEFINE(USE_HUNSPELL, 1, [Define as 1 to use the hunspell library])
 		lyx_flags="$lyx_flags use-hunspell"
+		LYX_HAVE_HUNSPELL_CXXABI
+		if test $enable_stdlib_debug = "yes" -a -n "$have_hunspell_cxx_abi" ; then
+		    LYX_WARNING([Compiling LyX with stdlib-debug and system hunspell libraries may lead to
+   crashes. Consider using --disable-stdlib-debug or --with-included-hunspell.])
+		fi
 	else
 		AC_MSG_RESULT(no)
 	fi
-    fi
-	LYX_HAVE_HUNSPELL_CXXABI
-	if test $enable_stdlib_debug = "yes" -a -n "$have_hunspell_cxx_abi" ; then
-		LYX_WARNING([Compiling LyX with stdlib-debug and system hunspell libraries may lead to
-   crashes. Consider using --disable-stdlib-debug or --with-included-hunspell.])
-	      fi
-
     ])
 
 dnl Usage: LYX_USE_INCLUDED_HUNSPELL : select if the included hunspell should
