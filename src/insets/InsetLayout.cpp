@@ -98,6 +98,12 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		IL_DOCBOOKWRAPPERTAG,
 		IL_DOCBOOKWRAPPERTAGTYPE,
 		IL_DOCBOOKWRAPPERATTR,
+		IL_DOCBOOKITEMTAG,
+		IL_DOCBOOKITEMTAGTYPE,
+		IL_DOCBOOKITEMATTR,
+		IL_DOCBOOKITEMWRAPPERTAG,
+		IL_DOCBOOKITEMWRAPPERTAGTYPE,
+		IL_DOCBOOKITEMWRAPPERATTR,
 		IL_INTOC,
 		IL_ISTOCCAPTION,
 		IL_LABELFONT,
@@ -144,6 +150,12 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		{ "display", IL_DISPLAY },
 		{ "docbookattr", IL_DOCBOOKATTR },
 		{ "docbookininfo", IL_DOCBOOKININFO },
+		{ "docbookitemattr", IL_DOCBOOKITEMATTR },
+		{ "docbookitemtag", IL_DOCBOOKITEMTAG },
+		{ "docbookitemtagtype", IL_DOCBOOKITEMTAGTYPE },
+		{ "docbookitemwrapperattr", IL_DOCBOOKITEMWRAPPERATTR },
+		{ "docbookitemwrappertag", IL_DOCBOOKITEMWRAPPERTAG },
+		{ "docbookitemwrappertagtype", IL_DOCBOOKITEMWRAPPERTAGTYPE },
 		{ "docbooksection", IL_DOCBOOKSECTION },
 		{ "docbooktag", IL_DOCBOOKTAG },
 		{ "docbooktagtype", IL_DOCBOOKTAGTYPE },
@@ -505,6 +517,24 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		case IL_DOCBOOKSECTION:
 			lex >> docbooksection_;
 			break;
+		case IL_DOCBOOKITEMTAG:
+			lex >> docbookitemtag_;
+			break;
+		case IL_DOCBOOKITEMTAGTYPE:
+			lex >> docbookitemtagtype_;
+			break;
+		case IL_DOCBOOKITEMATTR:
+			lex >> docbookitemattr_;
+			break;
+		case IL_DOCBOOKITEMWRAPPERTAG:
+			lex >> docbookitemwrappertag_;
+			break;
+		case IL_DOCBOOKITEMWRAPPERTAGTYPE:
+			lex >> docbookitemwrappertagtype_;
+			break;
+		case IL_DOCBOOKITEMWRAPPERATTR:
+			lex >> docbookitemwrapperattr_;
+			break;
 		case IL_DOCBOOKWRAPPERTAG:
 			lex >> docbookwrappertag_;
 			break;
@@ -651,6 +681,38 @@ std::string const & InsetLayout::docbookininfo() const
 	if (docbookininfo_.empty() || (docbookininfo_ != "never" && docbookininfo_ != "always" && docbookininfo_ != "maybe"))
 		docbookininfo_ = "never";
 	return docbookininfo_;
+}
+
+
+std::string InsetLayout::docbooktagtype() const
+{
+	if (docbooktagtype_ != "block" && docbooktagtype_ != "paragraph" && docbooktagtype_ != "inline")
+		docbooktagtype_ = "block";
+	return docbooktagtype_;
+}
+
+
+std::string InsetLayout::docbookwrappertagtype() const
+{
+	if (docbookwrappertagtype_ != "block" && docbookwrappertagtype_ != "paragraph" && docbookwrappertagtype_ != "inline")
+		docbookwrappertagtype_ = "block";
+	return docbookwrappertagtype_;
+}
+
+
+std::string InsetLayout::docbookitemtagtype() const
+{
+	if (docbookitemtagtype_ != "block" && docbookitemtagtype_ != "paragraph" && docbookitemtagtype_ != "inline")
+		docbookitemtagtype_ = "block";
+	return docbookitemtagtype_;
+}
+
+
+std::string InsetLayout::docbookitemwrappertagtype() const
+{
+	if (docbookitemwrappertagtype_ != "block" && docbookitemwrappertagtype_ != "paragraph" && docbookitemwrappertagtype_ != "inline")
+		docbookitemwrappertagtype_ = "block";
+	return docbookitemwrappertagtype_;
 }
 
 

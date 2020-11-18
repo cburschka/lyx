@@ -635,6 +635,12 @@ void InsetText::docbook(XMLStream & xs, OutputParams const & rp, XHTMLOptions op
 				attrs += from_ascii(" xlink:href=\"") + text_.asString() + from_ascii("\"");
 			xs << xml::StartTag(il.docbooktag(), attrs);
 		}
+
+		if (!il.docbookitemwrappertag().empty() && il.docbookitemwrappertag() != "NONE" && il.docbookitemwrappertag() != "IGNORE")
+			xs << xml::StartTag(il.docbookitemwrappertag(), il.docbookitemwrapperattr());
+
+		if (!il.docbookitemtag().empty() && il.docbookitemtag() != "NONE" && il.docbookitemtag() != "IGNORE")
+			xs << xml::StartTag(il.docbookitemtag(), il.docbookitemattr());
 	}
 
 	// No need for labels that are generated from counters. They should be handled by the external DocBook processor.
@@ -650,6 +656,12 @@ void InsetText::docbook(XMLStream & xs, OutputParams const & rp, XHTMLOptions op
 	xs.endDivision();
 
 	if (opts & WriteOuterTag) {
+		if (!il.docbookitemtag().empty() && il.docbookitemtag() != "NONE" && il.docbookitemtag() != "IGNORE")
+			xs << xml::EndTag(il.docbookitemtag());
+
+		if (!il.docbookitemwrappertag().empty() && il.docbookitemwrappertag() != "NONE" && il.docbookitemwrappertag() != "IGNORE")
+			xs << xml::EndTag(il.docbookitemwrappertag());
+
 		if (!il.docbooktag().empty() && il.docbooktag() != "NONE" && il.docbooktag() != "IGNORE")
 			xs << xml::EndTag(il.docbooktag());
 

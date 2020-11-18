@@ -150,7 +150,7 @@ public:
 	///
 	std::string docbooktag() const { return docbooktag_; }
 	///
-	std::string docbooktagtype() const { return docbooktagtype_; }
+	std::string docbooktagtype() const;
 	///
 	std::string docbookattr() const { return docbookattr_; }
 	///
@@ -160,9 +160,21 @@ public:
 	///
 	std::string docbookwrappertag() const { return docbookwrappertag_; }
 	///
-	std::string docbookwrappertagtype() const { return docbookwrappertagtype_; }
+	std::string docbookwrappertagtype() const;
 	///
 	std::string docbookwrapperattr() const { return docbookwrapperattr_; }
+	///
+	std::string docbookitemwrappertag() const { return docbookitemwrappertag_; }
+	///
+	std::string docbookitemwrappertagtype() const;
+	///
+	std::string docbookitemwrapperattr() const { return docbookitemwrapperattr_; }
+	///
+	std::string docbookitemtag() const { return docbookitemtag_; }
+	///
+	std::string docbookitemtagtype() const;
+	///
+	std::string docbookitemattr() const { return docbookitemattr_; }
 	///
 	std::set<std::string> required() const { return required_; }
 	///
@@ -293,7 +305,7 @@ private:
 	///
 	std::string docbooktag_;
 	///
-	std::string docbooktagtype_;
+	mutable std::string docbooktagtype_;
 	///
 	std::string docbookattr_;
 	///
@@ -303,9 +315,21 @@ private:
 	///
 	std::string docbookwrappertag_;
 	///
-	std::string docbookwrappertagtype_;
+	mutable std::string docbookwrappertagtype_;
 	///
 	std::string docbookwrapperattr_;
+	///
+	std::string docbookitemtag_;
+	///
+	mutable std::string docbookitemtagtype_;
+	///
+	std::string docbookitemattr_;
+	///
+	std::string docbookitemwrappertag_;
+	///
+	mutable std::string docbookitemwrappertagtype_;
+	///
+	std::string docbookitemwrapperattr_;
 	///
 	std::set<std::string> required_;
 	///

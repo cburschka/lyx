@@ -72,10 +72,14 @@ InsetLayout Flex:PACS
 	CopyStyle	Flex:Keywords
 	LatexName	PACS
 	LabelString	"PACS"
-	DocBookTag          subject
-	DocBookTagType      paragraph
-	DocBookWrapperTag   subjectset
-	DocBookWrapperAttr  role='pacs'
+	DocBookTag          subjectset
+	DocBookAttr         role='pacs'
+	DocBookItemWrapperTag      subject
+	DocBookItemWrapperTagType  paragraph
+	DocBookItemTag      subjectterm
+	DocBookItemTagType  inline
+	DocBookWrapperTag   NONE
+	DocBookWrapperAttr  ""
 	DocBookInInfo       always
 End
 
@@ -83,10 +87,14 @@ InsetLayout Flex:Subclass
 	CopyStyle	Flex:Keywords
 	LatexName	subclass
 	LabelString	"Mathematics Subject Classification"
-	DocBookTag          subject
-	DocBookTagType      paragraph
-	DocBookWrapperTag   subjectset
-	DocBookWrapperAttr  role='mcs'
+	DocBookTag          subjectset
+	DocBookAttr         role='mcs'
+	DocBookItemWrapperTag      subject
+	DocBookItemWrapperTagType  paragraph
+	DocBookItemTag      subjectterm
+	DocBookItemTagType  inline
+	DocBookWrapperTag   NONE
+	DocBookWrapperAttr  ""
 	DocBookInInfo       always
 End
 
@@ -94,10 +102,14 @@ InsetLayout Flex:CRSC
 	CopyStyle	Flex:PACS
 	LatexName	CRclass
 	LabelString	"CR Subject Classification"
-	DocBookTag          subject
-	DocBookTagType      paragraph
-	DocBookWrapperTag   subjectset
-	DocBookWrapperAttr  role='crsc'
+	DocBookTag          subjectset
+	DocBookAttr         role='crsc'
+	DocBookItemWrapperTag      subject
+	DocBookItemWrapperTagType  paragraph
+	DocBookItemTag      subjectterm
+	DocBookItemTagType  inline
+	DocBookWrapperTag   NONE
+	DocBookWrapperAttr  ""
 	DocBookInInfo       always
 End
 

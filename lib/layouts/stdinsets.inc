@@ -89,6 +89,7 @@ InsetLayout Foot
 	AddToToc              footnote
 	IsTocCaption          true
 	DocBookTag            footnote
+	DocBookTagType        inline
 End
 
 InsetLayout Foot:InTitle

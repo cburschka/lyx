@@ -122,6 +122,11 @@ void InsetERT::docbook(XMLStream & xs, OutputParams const & runparams) const
 			break;
 	}
 
+//	// Implement the special case of \and: split the current item.
+//	if (os.str() == "\\and" || os.str() == "\\and ") {
+//		auto lay = getLayout();
+//	}
+
 	// Output the ERT as a comment with the appropriate escaping.
 	xs << XMLStream::ESCAPE_NONE << "<!-- ";
 	xs << XMLStream::ESCAPE_COMMENTS << os.str();
