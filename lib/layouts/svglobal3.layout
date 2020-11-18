@@ -74,6 +74,7 @@ InsetLayout Flex:PACS
 	LabelString	"PACS"
 	DocBookTag          subjectset
 	DocBookAttr         role='pacs'
+	DocBookTagType      block
 	DocBookItemWrapperTag      subject
 	DocBookItemWrapperTagType  paragraph
 	DocBookItemTag      subjectterm
@@ -89,6 +90,7 @@ InsetLayout Flex:Subclass
 	LabelString	"Mathematics Subject Classification"
 	DocBookTag          subjectset
 	DocBookAttr         role='mcs'
+	DocBookTagType      block
 	DocBookItemWrapperTag      subject
 	DocBookItemWrapperTagType  paragraph
 	DocBookItemTag      subjectterm
@@ -104,6 +106,7 @@ InsetLayout Flex:CRSC
 	LabelString	"CR Subject Classification"
 	DocBookTag          subjectset
 	DocBookAttr         role='crsc'
+	DocBookTagType      block
 	DocBookItemWrapperTag      subject
 	DocBookItemWrapperTagType  paragraph
 	DocBookItemTag      subjectterm

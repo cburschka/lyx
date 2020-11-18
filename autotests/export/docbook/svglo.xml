@@ -4,13 +4,22 @@
 <article xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
 <info>
 <title>Title</title>
-<subjectset role='pacs'><subject><subjectterm>PACS code1 <!-- \and  -->
+<subjectset role='pacs'>
+<subject><subjectterm>PACS code1 <!-- \and  -->
 PACS code2 <!-- \and  -->
-more</subjectterm></subject></subjectset><subjectset role='mcs'><subject><subjectterm>MSC code1 <!-- \and  -->
-MSC code2 <!-- \and  -->
-more</subjectterm></subject></subjectset><keywordset><keyword>First keyword <!-- \and  -->
+more</subjectterm></subject>
+</subjectset>
+<keywordset>
+<keyword>First keyword <!-- \and  -->
 Second keyword <!-- \and  -->
-More</keyword></keywordset><abstract>
+More</keyword>
+</keywordset>
+<subjectset role='mcs'>
+<subject><subjectterm>MSC code1 <!-- \and  -->
+MSC code2 <!-- \and  -->
+more</subjectterm></subject>
+</subjectset>
+<abstract>
 <para>Abstract text.   </para>
 </abstract>
 

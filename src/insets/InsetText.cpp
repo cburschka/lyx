@@ -625,7 +625,7 @@ void InsetText::docbook(XMLStream & xs, OutputParams const & rp, XHTMLOptions op
 	// Start outputting this inset.
 	if (opts & WriteOuterTag) {
 		if (!il.docbookwrappertag().empty() && il.docbookwrappertag() != "NONE" && il.docbookwrappertag() != "IGNORE")
-			xs << xml::StartTag(il.docbookwrappertag(), il.docbookwrapperattr());
+			xml::openTag(xs, il.docbookwrappertag(), il.docbookwrapperattr(), il.docbookwrappertagtype());
 
 		if (!il.docbooktag().empty() && il.docbooktag() != "NONE" && il.docbooktag() != "IGNORE") {
 			docstring attrs = docstring();
@@ -633,14 +633,14 @@ void InsetText::docbook(XMLStream & xs, OutputParams const & rp, XHTMLOptions op
 				attrs += from_ascii(il.docbookattr());
 			if (il.docbooktag() == "link")
 				attrs += from_ascii(" xlink:href=\"") + text_.asString() + from_ascii("\"");
-			xs << xml::StartTag(il.docbooktag(), attrs);
+			xml::openTag(xs, il.docbooktag(), attrs, il.docbooktagtype());
 		}
 
 		if (!il.docbookitemwrappertag().empty() && il.docbookitemwrappertag() != "NONE" && il.docbookitemwrappertag() != "IGNORE")
-			xs << xml::StartTag(il.docbookitemwrappertag(), il.docbookitemwrapperattr());
+			xml::openTag(xs, il.docbookitemwrappertag(), il.docbookitemwrapperattr(), il.docbookitemwrappertagtype());
 
 		if (!il.docbookitemtag().empty() && il.docbookitemtag() != "NONE" && il.docbookitemtag() != "IGNORE")
-			xs << xml::StartTag(il.docbookitemtag(), il.docbookitemattr());
+			xml::openTag(xs, il.docbookitemtag(), il.docbookitemattr(), il.docbookitemtagtype());
 	}
 
 	// No need for labels that are generated from counters. They should be handled by the external DocBook processor.
@@ -657,16 +657,16 @@ void InsetText::docbook(XMLStream & xs, OutputParams const & rp, XHTMLOptions op
 
 	if (opts & WriteOuterTag) {
 		if (!il.docbookitemtag().empty() && il.docbookitemtag() != "NONE" && il.docbookitemtag() != "IGNORE")
-			xs << xml::EndTag(il.docbookitemtag());
+			xml::closeTag(xs, il.docbookitemtag(), il.docbookitemtagtype());
 
 		if (!il.docbookitemwrappertag().empty() && il.docbookitemwrappertag() != "NONE" && il.docbookitemwrappertag() != "IGNORE")
-			xs << xml::EndTag(il.docbookitemwrappertag());
+			xml::closeTag(xs, il.docbookitemwrappertag(), il.docbookitemwrappertagtype());
 
 		if (!il.docbooktag().empty() && il.docbooktag() != "NONE" && il.docbooktag() != "IGNORE")
-			xs << xml::EndTag(il.docbooktag());
+			xml::closeTag(xs, il.docbooktag(), il.docbooktagtype());
 
 		if (!il.docbookwrappertag().empty() && il.docbookwrappertag() != "NONE" && il.docbookwrappertag() != "IGNORE")
-			xs << xml::EndTag(il.docbookwrappertag());
+			xml::closeTag(xs, il.docbookwrappertag(), il.docbookwrappertagtype());
 	}
 }
 
