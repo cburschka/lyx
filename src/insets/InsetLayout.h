@@ -154,6 +154,8 @@ public:
 	///
 	std::string docbookattr() const { return docbookattr_; }
 	///
+	std::string const & docbookininfo() const;
+	///
 	bool docbooksection() const { return docbooksection_; }
 	///
 	std::string docbookwrappertag() const { return docbookwrappertag_; }
@@ -294,6 +296,8 @@ private:
 	std::string docbooktagtype_;
 	///
 	std::string docbookattr_;
+	///
+	mutable std::string docbookininfo_;
 	///
 	bool docbooksection_ = false;
 	///

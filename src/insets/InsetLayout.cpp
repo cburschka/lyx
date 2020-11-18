@@ -91,9 +91,10 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		IL_HTMLSTYLE,
 		IL_HTMLPREAMBLE,
 		IL_DOCBOOKTAG,
-		IL_DOCBOOKTAGTYPE,
 		IL_DOCBOOKATTR,
+		IL_DOCBOOKTAGTYPE,
 		IL_DOCBOOKSECTION,
+		IL_DOCBOOKININFO,
 		IL_DOCBOOKWRAPPERTAG,
 		IL_DOCBOOKWRAPPERTAGTYPE,
 		IL_DOCBOOKWRAPPERATTR,
@@ -142,6 +143,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		{ "decoration", IL_DECORATION },
 		{ "display", IL_DISPLAY },
 		{ "docbookattr", IL_DOCBOOKATTR },
+		{ "docbookininfo", IL_DOCBOOKININFO },
 		{ "docbooksection", IL_DOCBOOKSECTION },
 		{ "docbooktag", IL_DOCBOOKTAG },
 		{ "docbooktagtype", IL_DOCBOOKTAGTYPE },
@@ -491,11 +493,14 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		case IL_DOCBOOKTAG:
 			lex >> docbooktag_;
 			break;
+		case IL_DOCBOOKATTR:
+			lex >> docbookattr_;
+			break;
 		case IL_DOCBOOKTAGTYPE:
 			lex >> docbooktagtype_;
 			break;
-		case IL_DOCBOOKATTR:
-			lex >> docbookattr_;
+		case IL_DOCBOOKININFO:
+			lex >> docbookininfo_;
 			break;
 		case IL_DOCBOOKSECTION:
 			lex >> docbooksection_;
@@ -637,6 +642,17 @@ docstring InsetLayout::htmlstyle() const
 		retval += '\n' + htmlstyle_ + '\n';
 	return retval;
 }
+
+
+std::string const & InsetLayout::docbookininfo() const
+{
+	// Same as Layout::docbookininfo.
+	// Indeed, a trilean. Only titles should be "maybe": otherwise, metadata is "always", content is "never".
+	if (docbookininfo_.empty() || (docbookininfo_ != "never" && docbookininfo_ != "always" && docbookininfo_ != "maybe"))
+		docbookininfo_ = "never";
+	return docbookininfo_;
+}
+
 
 void InsetLayout::readArgument(Lexer & lex)
 {

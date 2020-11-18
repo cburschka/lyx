@@ -160,11 +160,10 @@ string fontToAttribute(xml::FontTypes type) {
 	// If there is a role (i.e. nonstandard use of a tag), output the attribute. Otherwise, the sheer tag is sufficient
 	// for the font.
 	string role = fontToRole(type);
-	if (!role.empty()) {
+	if (!role.empty())
 		return "role='" + role + "'";
-	} else {
+	else
 		return "";
-	}
 }
 
 
@@ -412,10 +411,6 @@ void makeParagraph(
 		OutputParams const & runparams,
 		ParagraphList::const_iterator const & par)
 {
-	// If this kind of layout should be ignored, already leave.
-	if (par->layout().docbooktag() == "IGNORE")
-		return;
-
 	// Useful variables.
 	auto const begin = text.paragraphs().begin();
 	auto const end = text.paragraphs().end();
@@ -511,7 +506,7 @@ void makeParagraph(
 	//		or we're not in the last paragraph, anyway.
 	//   (ii) We didn't open it and docbook_in_par is true,
 	//		but we are in the first par, and there is a next par.
-	bool const close_par = open_par && (!runparams.docbook_in_par);
+	bool const close_par = open_par && !runparams.docbook_in_par;
 
 	// Determine if this paragraph has some real content. Things like new pages are not caught
 	// by Paragraph::empty(), even though they do not generate anything useful in DocBook.
@@ -542,10 +537,6 @@ void makeEnvironment(Text const &text,
                      OutputParams const &runparams,
                      ParagraphList::const_iterator const & par)
 {
-	// If this kind of layout should be ignored, already leave.
-	if (par->layout().docbooktag() == "IGNORE")
-		return;
-
 	// Useful variables.
 	auto const end = text.paragraphs().end();
 	auto nextpar = par;
@@ -648,13 +639,6 @@ ParagraphList::const_iterator makeListEnvironment(Text const &text,
 	auto const end = text.paragraphs().end();
 	auto const envend = findEndOfEnvironment(par, end);
 
-	// If this kind of layout should be ignored, already leave.
-	if (begin->layout().docbooktag() == "IGNORE") {
-		auto nextpar = par;
-		++nextpar;
-		return nextpar;
-	}
-
 	// Output the opening tag for this environment.
 	Layout const & envstyle = par->layout();
 	openTag(xs, envstyle.docbookwrappertag(), envstyle.docbookwrapperattr(), envstyle.docbookwrappertagtype());
@@ -741,9 +725,6 @@ void makeCommand(
 		OutputParams const & runparams,
 		ParagraphList::const_iterator const & par)
 {
-	// If this kind of layout should be ignored, already leave.
-	if (par->layout().docbooktag() == "IGNORE")
-		return;
 
 	// Useful variables.
 	// Unlike XHTML, no need for labels, as they are handled by DocBook tags.
@@ -909,30 +890,77 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs,
 } // end anonymous namespace
 
 
+std::set<const Inset *> gatherInfo(ParagraphList::const_iterator par)
+{
+	// This function has a structure highly similar to makeAny and its friends. It's only made to be called on what
+	// should become the document's <abstract>.
+	std::set<const Inset *> values;
+
+	// If this kind of layout should be ignored, already leave.
+	if (par->layout().docbooktag() == "IGNORE")
+		return values;
+
+	// If this should go in info, mark it as such. Dive deep into the abstract, as it may hide many things that
+	// DocBook doesn't want to be inside the abstract.
+	for (pos_type i = 0; i < par->size(); ++i) {
+		if (par->getInset(i) && par->getInset(i)->asInsetText()) {
+			InsetText const *inset = par->getInset(i)->asInsetText();
+
+			if (inset->getLayout().docbookininfo() != "never") {
+				values.insert(inset);
+			} else {
+				auto subpar = inset->paragraphs().begin();
+				while (subpar != inset->paragraphs().end()) {
+					values.merge(gatherInfo(subpar));
+					++subpar;
+				}
+			}
+		}
+	}
+
+	return values;
+}
+
+
 ParagraphList::const_iterator makeAny(Text const &text,
                                       Buffer const &buf,
                                       XMLStream &xs,
                                       OutputParams const &runparams,
                                       ParagraphList::const_iterator par)
 {
-	switch (par->layout().latextype) {
-	case LATEX_COMMAND:
-		makeCommand(text, buf, xs, runparams, par);
-		break;
-	case LATEX_ENVIRONMENT:
-		makeEnvironment(text, buf, xs, runparams, par);
-		break;
-	case LATEX_LIST_ENVIRONMENT:
-	case LATEX_ITEM_ENVIRONMENT:
-		// Only case when makeAny() might consume more than one paragraph.
-		return makeListEnvironment(text, buf, xs, runparams, par);
-	case LATEX_PARAGRAPH:
-		makeParagraph(text, buf, xs, runparams, par);
-		break;
-	case LATEX_BIB_ENVIRONMENT:
-		makeBibliography(text, buf, xs, runparams, par);
-		break;
+	bool ignoreParagraph = false;
+
+	// If this kind of layout should be ignored, already leave.
+	ignoreParagraph |= par->layout().docbooktag() == "IGNORE";
+
+	// For things that should go into <info>, check the variable rp.docbook_generate_info. This does not apply to the
+	// abstract itself.
+	bool isAbstract = par->layout().docbookabstract() || par->layout().docbooktag() == "abstract";
+	ignoreParagraph |= !isAbstract && par->layout().docbookininfo() != "never" && !runparams.docbook_generate_info;
+
+	// Switch on the type of paragraph to call the right handler.
+	if (!ignoreParagraph) {
+		switch (par->layout().latextype) {
+		case LATEX_COMMAND:
+			makeCommand(text, buf, xs, runparams, par);
+			break;
+		case LATEX_ENVIRONMENT:
+			makeEnvironment(text, buf, xs, runparams, par);
+			break;
+		case LATEX_LIST_ENVIRONMENT:
+		case LATEX_ITEM_ENVIRONMENT:
+			// Only case when makeAny() might consume more than one paragraph.
+			return makeListEnvironment(text, buf, xs, runparams, par);
+		case LATEX_PARAGRAPH:
+			makeParagraph(text, buf, xs, runparams, par);
+			break;
+		case LATEX_BIB_ENVIRONMENT:
+			makeBibliography(text, buf, xs, runparams, par);
+			break;
+		}
 	}
+
+	// For cases that are not lists, the next paragraph to handle is the next one.
 	++par;
 	return par;
 }
@@ -964,6 +992,9 @@ void outputDocBookInfo(
 	// This check must be performed *before* a decision on whether or not to output <info> is made.
 	bool hasAbstract = !info.abstract.empty();
 	docstring abstract;
+	set<const Inset *> infoInsets; // Paragraphs that should go into <info>, but are hidden in an <abstract>
+	// paragraph. (This happens for quite a few layouts, unfortunately.)
+
 	if (hasAbstract) {
 		// Generate the abstract XML into a string before further checks.
 		// Usually, makeAny only generates one paragraph at a time. However, for the specific case of lists, it might
@@ -971,14 +1002,20 @@ void outputDocBookInfo(
 		odocstringstream os2;
 		XMLStream xs2(os2);
 
-		set<pit_type> doneParas;
+		auto rp = runparams;
+		rp.docbook_generate_info = false;
+
+		set<pit_type> doneParas; // Paragraphs that have already been converted (mostly to deal with lists).
 		for (auto const & p : info.abstract) {
 			if (doneParas.find(p) == doneParas.end()) {
 				auto oldPar = paragraphs.iterator_at(p);
-				auto newPar = makeAny(text, buf, xs2, runparams, oldPar);
+				auto newPar = makeAny(text, buf, xs2, rp, oldPar);
+
+				infoInsets.merge(gatherInfo(oldPar));
 
 				// Insert the indices of all the paragraphs that were just generated (typically, one).
 				// **Make the hypothesis that, when an abstract has a list, all its items are consecutive.**
+				// Otherwise, makeAny and makeListEnvironment would have to be adapted too.
 				pit_type id = p;
 				while (oldPar != newPar) {
 					doneParas.emplace(id);
@@ -1009,13 +1046,11 @@ void outputDocBookInfo(
 		xs << xml::CR();
 	}
 
-	// Output the elements that should go in <info>, before and after the abstract.
+	// Output the elements that should go in <info>.
+	// - First, the title.
 	for (auto pit : info.shouldBeInInfo) // Typically, the title: these elements are so important and ubiquitous
 		// that mandating a wrapper like <info> would repel users. Thus, generate them first.
 		makeAny(text, buf, xs, runparams, paragraphs.iterator_at(pit));
-	for (auto pit : info.mustBeInInfo)
-		makeAny(text, buf, xs, runparams, paragraphs.iterator_at(pit));
-
 	// If there is no title, generate one (required for the document to be valid).
 	// This code is called for the main document, for table cells, etc., so be precise in this condition.
 	if (text.isMainText() && info.shouldBeInInfo.empty() && !runparams.inInclude) {
@@ -1025,8 +1060,14 @@ void outputDocBookInfo(
 		xs << xml::CR();
 	}
 
-	// Always output the abstract as the last item of the <info>, as it requires special treatment (especially if
-	// it contains several paragraphs that are empty).
+	// - Then, other metadata.
+	for (auto pit : info.mustBeInInfo)
+		makeAny(text, buf, xs, runparams, paragraphs.iterator_at(pit));
+	for (auto const * inset : infoInsets)
+		inset->docbook(xs, runparams);
+
+	// - Finally, always output the abstract as the last item of the <info>, as it requires special treatment
+	// (especially if it contains several paragraphs that are empty).
 	if (hasAbstract) {
 		if (info.abstractLayout) {
 			xs << XMLStream::ESCAPE_NONE << abstract;

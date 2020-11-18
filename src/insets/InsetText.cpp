@@ -616,16 +616,28 @@ void InsetText::docbook(XMLStream & xs, OutputParams const & rp, XHTMLOptions op
 	}
 
 	InsetLayout const & il = getLayout();
-	if (opts & WriteOuterTag && !il.docbooktag().empty() && il.docbooktag() != "NONE" && il.docbooktag() != "IGNORE") {
-		docstring attrs = docstring();
-		if (!il.docbookattr().empty())
-			attrs += from_ascii(il.docbookattr());
-		if (il.docbooktag() == "link")
-			attrs += from_ascii(" xlink:href=\"") + text_.asString() + from_ascii("\"");
-		xs << xml::StartTag(il.docbooktag(), attrs);
+
+	// Maybe this is an <info> paragraph that should not be generated at all (i.e. right now, its place is somewhere
+	// else, typically outside the current paragraph).
+	if (!rp.docbook_generate_info && il.docbookininfo() != "never")
+		return;
+
+	// Start outputting this inset.
+	if (opts & WriteOuterTag) {
+		if (!il.docbookwrappertag().empty() && il.docbookwrappertag() != "NONE" && il.docbookwrappertag() != "IGNORE")
+			xs << xml::StartTag(il.docbookwrappertag(), il.docbookwrapperattr());
+
+		if (!il.docbooktag().empty() && il.docbooktag() != "NONE" && il.docbooktag() != "IGNORE") {
+			docstring attrs = docstring();
+			if (!il.docbookattr().empty())
+				attrs += from_ascii(il.docbookattr());
+			if (il.docbooktag() == "link")
+				attrs += from_ascii(" xlink:href=\"") + text_.asString() + from_ascii("\"");
+			xs << xml::StartTag(il.docbooktag(), attrs);
+		}
 	}
 
-	// No need for labels that are generated from counters.
+	// No need for labels that are generated from counters. They should be handled by the external DocBook processor.
 
 	// With respect to XHTML, paragraphs are still allowed here.
 	if (!allowMultiPar())
@@ -637,8 +649,13 @@ void InsetText::docbook(XMLStream & xs, OutputParams const & rp, XHTMLOptions op
 	docbookParagraphs(text_, buffer(), xs, runparams);
 	xs.endDivision();
 
-	if (opts & WriteOuterTag && !il.docbooktag().empty() && il.docbooktag() != "NONE" && il.docbooktag() != "IGNORE")
-		xs << xml::EndTag(il.docbooktag());
+	if (opts & WriteOuterTag) {
+		if (!il.docbooktag().empty() && il.docbooktag() != "NONE" && il.docbooktag() != "IGNORE")
+			xs << xml::EndTag(il.docbooktag());
+
+		if (!il.docbookwrappertag().empty() && il.docbookwrappertag() != "NONE" && il.docbookwrappertag() != "IGNORE")
+			xs << xml::EndTag(il.docbookwrappertag());
+	}
 }
 
 

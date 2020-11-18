@@ -83,6 +83,11 @@ InsetLayout Flex:Subclass
 	CopyStyle	Flex:Keywords
 	LatexName	subclass
 	LabelString	"Mathematics Subject Classification"
+	DocBookTag          subject
+	DocBookTagType      paragraph
+	DocBookWrapperTag   subjectset
+	DocBookWrapperAttr  role='mcs'
+	DocBookInInfo       always
 End
 
 InsetLayout Flex:CRSC
