@@ -6,8 +6,6 @@
 
 cmake_minimum_required(VERSION 3.1.0)
 
-set(GNUWIN32_DIR D:/LyX/lyx-unstable/lyx-windows-deps-msvc2017)
-
 set(LYX_PROJECT LyX)
 # Instruct cmake to not use gnu extensions,
 # this prevents the mix of '-std=c++*' and '-std=gnu++*' flags
@@ -105,9 +103,6 @@ endif()
 
 include(LyXMacros)
 include(LyXDestinations)
-
-# Try to get some informations from configure.ac
-include(LyXPaths)
 
 # Value of USE_POSIX_PACKAGING is needed in determineversionandbuildtype()
 if(WIN32)
@@ -251,6 +246,9 @@ LYX_OPTION(DEPENDENCIES_DOWNLOAD "Download dependencies for MSVC 10" OFF MSVC)
 # APPLE specific
 LYX_OPTION(DMG                   "Build as Mac bundle, needed for .dmg  (experimental) " OFF MAC)
 LYX_OPTION(COCOA                 "Use Cocoa on Mac" OFF MAC)
+
+# Try to get some informations from configure.ac
+include(LyXPaths)
 
 
 if(help OR HELP)
@@ -884,6 +882,7 @@ endforeach()
 
 if(GNUWIN32_DIR)
 	list(APPEND CMAKE_PROGRAM_PATH "${GNUWIN32_DIR}/Python" )
+	list(APPEND CMAKE_PROGRAM_PATH "${GNUWIN32_DIR}/Perl/bin" )
 endif()
 
 # Search for python default version first

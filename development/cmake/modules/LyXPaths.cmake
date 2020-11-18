@@ -1,5 +1,5 @@
 #
-#  Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
+#  Copyright (c) 2006, Peter KÃ¼mmel, <syntheticpp@gmx.net>
 #
 #  Redistribution and use in source and binary forms, with or without
 #  modification, are permitted provided that the following conditions
@@ -54,11 +54,10 @@ if(WINDEPS)
 	set(QT_RCC_EXECUTABLE "${WINDEPSDIR}/qt-4/bin/rcc.exe" CACHE STRING "Qt4 rcc executable" FORCE)
 endif()
 
+find_package(GNUWIN32 REQUIRED)
 if(LYX_3RDPARTY_BUILD)
-    find_package(GNUWIN32)
     file(TO_CMAKE_PATH "$ENV{PROGRAMFILES}" _prog_path)
 else()
-    find_package(GNUWIN32 REQUIRED)
 
     file(TO_CMAKE_PATH "$ENV{PROGRAMFILES}" _prog_path)
 
