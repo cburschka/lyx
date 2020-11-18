@@ -21,8 +21,17 @@ NoStyle Chapter*
 Style Part
 	Align                 Left
 	AlignPossible         Left
+	LabelType             Above
 	TopSep                2
 	BottomSep             1.5
+	Font
+	  Series              Bold
+	  Size                Huge
+	EndFont
+	LabelFont
+	  Series              Bold
+	  Size                Larger
+	EndFont
 End
 
 
@@ -31,4 +40,8 @@ Style Part*
 	AlignPossible         Left
 	TopSep                2
 	BottomSep             1.5
+	Font
+	  Series              Bold
+	  Size                Huge
+	EndFont
 End

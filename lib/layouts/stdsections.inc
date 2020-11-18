@@ -11,9 +11,9 @@ Format 85
 
 Style Part
 	Category              Sectioning
-	Margin                Dynamic
+	Margin                Static
 	LabelString           "Part \thepart"
-	LabelType             Static
+	LabelType             Centered
 	TocLevel              -1
 	LabelCounter          part
 	LatexType             Command
@@ -21,7 +21,7 @@ Style Part
 	NeedProtect           1
 	NextNoIndent          1
 	ToggleIndent          Never
-	Labelsep              xxx
+	LabelBottomSep        1
 	ParSkip               0.4
 	TopSep                4
 	BottomSep             4
@@ -35,6 +35,10 @@ Style Part
 		IsTocCaption  1
 	EndArgument
 	Font
+	  Series              Bold
+	  Size                Giant
+	EndFont
+	LabelFont
 	  Series              Bold
 	  Size                Huge
 	EndFont
@@ -60,6 +64,7 @@ Style Chapter
 	NeedProtect           1
 	NextNoIndent          1
 	ToggleIndent          Never
+	LabelBottomSep        1
 	ParSkip               0.4
 	TopSep                2
 	BottomSep             0.8
@@ -72,6 +77,10 @@ Style Chapter
 		IsTocCaption  1
 	EndArgument
 	Font
+	  Series              Bold
+	  Size                Giant
+	EndFont
+	LabelFont
 	  Series              Bold
 	  Size                Huge
 	EndFont
