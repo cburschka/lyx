@@ -33,7 +33,6 @@
 #include "support/gettext.h"
 #include "support/Length.h"
 #include "support/lstrings.h"
-#include "support/lyxalgo.h"
 #include "support/os.h"
 #include "support/Package.h"
 #include "support/PathChanger.h"

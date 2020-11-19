@@ -26,7 +26,6 @@
 #include "FuncRequest.h"
 #include "Session.h"
 
-#include "support/lyxalgo.h"
 #include "support/lstrings.h"
 
 #include <QHBoxLayout>
@@ -85,8 +84,9 @@ protected:
 GuiCommandBuffer::GuiCommandBuffer(GuiView * view)
 	: view_(view)
 {
-	transform(lyxaction.func_begin(), lyxaction.func_end(),
-		back_inserter(commands_), firster());
+	for (auto const & name_code : lyxaction) {
+		commands_.push_back(name_code.first);
+	}
 
 	QPixmap qpup = getPixmap("images/", "up", "svgz,png");
 	QPixmap qpdown = getPixmap("images/", "down", "svgz,png");
@@ -263,18 +263,6 @@ void GuiCommandBuffer::hideParent()
 }
 
 
-namespace {
-
-class prefix_p {
-public:
-	string p;
-	prefix_p(string const & s) : p(s) {}
-	bool operator()(string const & s) const { return prefixIs(s, p); }
-};
-
-} // namespace
-
-
 string const GuiCommandBuffer::historyUp()
 {
 	if (history_pos_ == history_.begin())
@@ -299,9 +287,10 @@ vector<string> const
 GuiCommandBuffer::completions(string const & prefix, string & new_prefix)
 {
 	vector<string> comp;
-
-	lyx::copy_if(commands_.begin(), commands_.end(),
-		back_inserter(comp), prefix_p(prefix));
+	for (auto const & cmd : commands_) {
+		if (prefixIs(cmd, prefix))
+			comp.push_back(cmd);
+	}
 
 	if (comp.empty()) {
 		new_prefix = prefix;
@@ -320,8 +309,10 @@ GuiCommandBuffer::completions(string const & prefix, string & new_prefix)
 		test += tmp[test.length()];
 	while (test.length() < tmp.length()) {
 		vector<string> vtmp;
-		lyx::copy_if(comp.begin(), comp.end(),
-			back_inserter(vtmp), prefix_p(test));
+		for (auto const & cmd : comp) {
+			if (prefixIs(cmd, test))
+				vtmp.push_back(cmd);
+		}
 		if (vtmp.size() != comp.size()) {
 			test.erase(test.length() - 1);
 			break;

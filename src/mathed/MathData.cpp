@@ -37,7 +37,6 @@
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
-#include "support/lyxalgo.h"
 
 #include <cstdlib>
 

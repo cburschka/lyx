@@ -4536,13 +4536,13 @@ bool LyXAction::funcHasFlag(FuncCode action,
 }
 
 
-LyXAction::const_iterator LyXAction::func_begin() const
+LyXAction::const_iterator LyXAction::begin() const
 {
 	return lyx_func_map.begin();
 }
 
 
-LyXAction::const_iterator LyXAction::func_end() const
+LyXAction::const_iterator LyXAction::end() const
 {
 	return lyx_func_map.end();
 }

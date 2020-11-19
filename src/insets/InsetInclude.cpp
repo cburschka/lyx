@@ -61,7 +61,6 @@
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h" // contains
-#include "support/lyxalgo.h"
 #include "support/mutex.h"
 #include "support/ExceptionMessage.h"
 

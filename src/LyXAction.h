@@ -94,10 +94,10 @@ public:
 	typedef FuncMap::const_iterator const_iterator;
 
 	/// return an iterator to the start of the list of LFUNs
-	const_iterator func_begin() const;
+	const_iterator begin() const;
 
 	/// return an iterator to one past the end of the list of LFUNs
-	const_iterator func_end() const;
+	const_iterator end() const;
 
 private:
 	/// noncopyable

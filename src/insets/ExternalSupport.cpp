@@ -30,7 +30,6 @@
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
-#include "support/lyxalgo.h"
 #include "support/os.h"
 #include "support/Package.h"
 

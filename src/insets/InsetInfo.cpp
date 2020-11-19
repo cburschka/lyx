@@ -233,10 +233,8 @@ vector<pair<string,docstring>> InsetInfoParams::getArguments(Buffer const * buf,
 	case MENU_INFO:
 	case ICON_INFO: {
 		result.push_back(make_pair("custom", _("Custom")));
-		LyXAction::const_iterator fit = lyxaction.func_begin();
-		LyXAction::const_iterator const fen = lyxaction.func_end();
-		for (; fit != fen; ++fit) {
-			string const lfun = fit->first;
+		for (auto const & name_code : lyxaction) {
+			string const lfun = name_code.first;
 			if (!lfun.empty())
 				result.push_back(make_pair(lfun, from_ascii(lfun)));
 		}

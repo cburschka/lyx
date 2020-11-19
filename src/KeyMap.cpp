@@ -531,10 +531,8 @@ KeyMap::BindingList KeyMap::listBindings(bool unbound, KeyMap::ItemType tag) con
 	BindingList list;
 	listBindings(list, KeySequence(nullptr, nullptr), tag);
 	if (unbound) {
-		LyXAction::const_iterator fit = lyxaction.func_begin();
-		LyXAction::const_iterator const fen = lyxaction.func_end();
-		for (; fit != fen; ++fit) {
-			FuncCode action = fit->second;
+		for (auto const & name_code : lyxaction) {
+			FuncCode action = name_code.second;
 			bool has_action = false;
 			BindingList::const_iterator bit = list.begin();
 			BindingList::const_iterator const ben = list.end();

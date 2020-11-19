@@ -35,7 +35,6 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/lstrings.h"
-#include "support/lyxalgo.h"
 #include "support/textutils.h"
 #include "support/gettext.h"
 
