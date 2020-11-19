@@ -61,25 +61,25 @@ public:
 	};
 
 	///
-	Length();
+	Length() = default;
 	///
-	Length(double v, Length::UNIT u);
+	Length(double v, Length::UNIT u) : val_(v), unit_(u) {}
 
 	/// "data" must be a decimal number, followed by a unit
 	explicit Length(std::string const & data);
 
 	///
-	double value() const;
+	double value() const { return val_; };
 	///
-	Length::UNIT unit() const;
+	Length::UNIT unit() const { return unit_; };
 	///
-	void value(double);
+	void value(double val) { val_ = val; }
 	///
-	void unit(Length::UNIT unit);
+	void unit(Length::UNIT unit) { unit_ = unit; }
 	///
-	bool zero() const;
+	bool zero() const { return val_ == 0.0; }
 	///
-	bool empty() const;
+	bool empty() const { return unit_ == Length::UNIT_NONE; }
 	/// return string representation
 	std::string const asString() const;
 	/// return string representation
@@ -109,15 +109,18 @@ private:
 	/// Convert value to inch for text width and em width given in inch
 	double inInch(double text_width, double em_width) const;
 	///
-	double val_;
+	double val_ = 0;
 	///
-	Length::UNIT unit_;
+	Length::UNIT unit_ = UNIT_NONE;
 };
 
 ///
-bool operator==(Length const & l1, Length const & l2);
+inline bool operator==(Length const & l1, Length const & l2)
+	{ return l1.value() == l2.value() && l1.unit() == l2.unit(); }
 ///
-bool operator!=(Length const & l1, Length const & l2);
+inline bool operator!=(Length const & l1, Length const & l2)
+	{ return !(l1 == l2); }
+
 /** Test whether \p data represents a valid length.
  *
  * \returns whether \p data is a valid length
@@ -142,13 +145,12 @@ char const * stringFromUnit(int unit);
 class GlueLength {
 public:
 	///
-	GlueLength() {}
+	GlueLength() = default;
 	///
-	explicit GlueLength(Length const & len);
+	explicit GlueLength(Length const & len) : len_(len) {}
 	///
-	GlueLength(Length const & len,
-		      Length const & plus,
-		      Length const & minus);
+	GlueLength(Length const & len, Length const & plus, Length const & minus)
+		 : len_(len), plus_(plus), minus_(minus) {}
 
 	/** "data" must be a decimal number, followed by a unit, and
 	  optional "glue" indicated by "+" and "-".  You may abbreviate
@@ -159,11 +161,11 @@ public:
 	explicit GlueLength(std::string const & data);
 
 	///
-	Length const & len() const;
+	Length const & len() const { return len_; }
 	///
-	Length const & plus() const;
+	Length const & plus() const { return plus_; }
 	///
-	Length const & minus() const;
+	Length const & minus() const { return minus_; }
 
 
 	/// conversion
@@ -186,7 +188,9 @@ private:
 ///
 bool operator==(GlueLength const & l1, GlueLength const & l2);
 ///
-bool operator!=(GlueLength const & l1, GlueLength const & l2);
+inline bool operator!=(GlueLength const & l1, GlueLength const & l2)
+	{ return !(l1 == l2); }
+
 /** If "data" is valid, the length represented by it is
     stored into "result", if that is not 0. */
 bool isValidGlueLength(std::string const & data, GlueLength * result = 0);

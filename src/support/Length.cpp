@@ -39,18 +39,7 @@ namespace lyx {
 //
 /////////////////////////////////////////////////////////////////////
 
-Length::Length()
-	: val_(0), unit_(Length::UNIT_NONE)
-{}
-
-
-Length::Length(double v, Length::UNIT u)
-	: val_(v), unit_(u)
-{}
-
-
 Length::Length(string const & data)
-	: val_(0), unit_(Length::UNIT_NONE)
 {
 	Length tmp;
 
@@ -158,42 +147,6 @@ string const Length::asHTMLString() const
 		break;
 	}
 	return os.str();
-}
-
-
-double Length::value() const
-{
-	return val_;
-}
-
-
-Length::UNIT Length::unit() const
-{
-	return unit_;
-}
-
-
-void Length::value(double v)
-{
-	val_ = v;
-}
-
-
-void Length::unit(Length::UNIT u)
-{
-	unit_ = u;
-}
-
-
-bool Length::zero() const
-{
-	return val_ == 0.0;
-}
-
-
-bool Length::empty() const
-{
-	return unit_ == Length::UNIT_NONE;
 }
 
 
@@ -325,36 +278,11 @@ Length::UNIT Length::defaultUnit()
 }
 
 
-
-bool operator==(Length const & l1, Length const & l2)
-{
-	return l1.value() == l2.value() && l1.unit() == l2.unit();
-}
-
-
-bool operator!=(Length const & l1, Length const & l2)
-{
-	return !(l1 == l2);
-}
-
-
 /////////////////////////////////////////////////////////////////////
 //
 // GlueLength
 //
 /////////////////////////////////////////////////////////////////////
-
-
-GlueLength::GlueLength(Length const & len)
-	: len_(len)
-{}
-
-
-GlueLength::GlueLength(Length const & len, Length const & plus,
-		Length const & minus)
-	: len_(len), plus_(plus), minus_(minus)
-{}
-
 
 GlueLength::GlueLength(string const & data)
 {
@@ -429,36 +357,11 @@ string const GlueLength::asLatexString() const
 }
 
 
-Length const & GlueLength::len() const
-{
-	return len_;
-}
-
-
-Length const & GlueLength::plus() const
-{
-	return plus_;
-}
-
-
-Length const & GlueLength::minus() const
-{
-	return minus_;
-}
-
-
 bool operator==(GlueLength const & l1, GlueLength const & l2)
 {
 	return l1.len() == l2.len()
 		 && l1.plus() == l2.plus()
 		 && l1.minus() == l2.minus();
 }
-
-
-bool operator!=(GlueLength const & l1, GlueLength const & l2)
-{
-	return !(l1 == l2);
-}
-
 
 } // namespace lyx
