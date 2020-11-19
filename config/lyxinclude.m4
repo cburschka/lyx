@@ -535,6 +535,9 @@ AC_DEFUN([LYX_USE_INCLUDED_ICONV],[
   if test x$lyx_cv_with_included_iconv = xyes ; then
   lyx_included_libs="$lyx_included_libs iconv"
 
+dnl This is hardcoded to make it compile
+    AC_DEFINE([HAVE_WORKING_O_NOFOLLOW], 0, [Define to 1 if O_NOFOLLOW works.])
+
 dnl Some bits from libiconv configure.ac to avoid a nested configure call:
     AC_EILSEQ
     AC_TYPE_MBSTATE_T

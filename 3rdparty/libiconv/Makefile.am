@@ -33,7 +33,7 @@ EXTRA_DIST = \
 	1.15/libcharset/lib/ref-add.sin \
 	1.15/libcharset/lib/ref-del.sin
 
-AM_CPPFLAGS += -I$(srcdir)/1.15/srclib -DLIBDIR=""
+AM_CPPFLAGS += -I$(srcdir)/1.15/srclib -DLIBDIR=\"\"
 
 # The two relocatable.c files confuse automake < 1.14, where we do not use
 # subdir-objects. Therefore we cannot put both in liblyxiconv_a_SOURCES
