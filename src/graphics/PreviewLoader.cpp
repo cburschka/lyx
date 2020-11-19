@@ -631,7 +631,7 @@ void PreviewLoader::Impl::startLoading(bool wait)
 
 	// Set \jobname of previews to the document name (see bug 9627)
 	of << "\\def\\jobname{"
-	   << from_utf8(changeExtension(buffer_.latexName(true), ""))
+	   << from_utf8(changeExtension(buffer_.latexName(), ""))
 	   << "}\n";
 
 	LYXERR(Debug::LATEX, "Format = " << buffer_.params().getDefaultOutputFormat());

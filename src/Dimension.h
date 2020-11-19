@@ -18,16 +18,12 @@ namespace lyx {
 class Dimension {
 public:
 	/// constructor
-	Dimension() : wid(0), asc(0), des(0) {}
+	Dimension() = default;
 	/// initialize data
 	Dimension(int w, int a, int d) : wid(w), asc(a), des(d) {}
+	///
+	Dimension & operator=(Dimension const & dim) = default;
 
-	Dimension & operator=(Dimension const & dim) {
-		wid = dim.wid;
-		asc = dim.asc;
-		des = dim.des;
-		return *this;
-	}
 	/// glue horizontally
 	void operator+=(Dimension const & dim);
 	/// set to empty box
@@ -59,35 +55,33 @@ public:
 	///
 	/// makes the code neither faster nor clearer
 	/// width
-	int wid;
+	int wid = 0;
 	/// ascent
-	int asc;
+	int asc = 0;
 	/// descent
-	int des;
+	int des = 0;
 };
 
 inline
 bool operator==(Dimension const & a, Dimension const & b)
 {
-	return a.wid == b.wid && a.asc == b.asc && a.des == b.des ;
+	return a.wid == b.wid && a.asc == b.asc && a.des == b.des;
 }
 
 
 inline
 bool operator!=(Dimension const & a, Dimension const & b)
 {
-	return a.wid != b.wid || a.asc != b.asc || a.des != b.des ;
+	return !(a == b);
 }
 
 class Point {
 public:
-	Point()
-		: x_(0), y_(0)
-	{}
-
+	Point() = default;
 	Point(int x, int y);
 
-	int x_, y_;
+	int x_ = 0;
+	int y_ = 0;
 };
 
 } // namespace lyx

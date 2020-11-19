@@ -49,7 +49,7 @@ public:
 	///
 	explicit WriteStream(otexrowstream & os, bool fragile = false,
 	                     bool latex = false, OutputType output = wsDefault,
-	                     Encoding const * encoding = 0);
+	                     Encoding const * encoding = nullptr);
 	///
 	~WriteStream();
 	///
@@ -116,37 +116,37 @@ private:
 	///
 	otexrowstream & os_;
 	/// do we have to write \\protect sometimes
-	bool fragile_;
+	bool fragile_ = false;
 	/// are we at the beginning of an MathData?
-	bool firstitem_;
+	bool firstitem_ = false;
 	/// are we writing to .tex?
-	int latex_;
+	int latex_ = false;
 	/// output type (default, source preview, instant preview)?
-	OutputType output_;
+	OutputType output_ = wsDefault;
 	/// do we have a space pending?
-	bool pendingspace_;
+	bool pendingspace_ = false;
 	/// do we have a brace pending?
-	bool pendingbrace_;
+	bool pendingbrace_ = false;
 	/// are we in text mode when producing latex code?
-	bool textmode_;
+	bool textmode_ = false;
 	/// are we allowed to switch mode when producing latex code?
-	bool locked_;
+	bool locked_ = false;
 	/// should we use only ascii chars when producing latex code?
-	bool ascii_;
+	bool ascii_ = false;
 	/// are we allowed to output an immediately following newline?
-	bool canbreakline_;
+	bool canbreakline_ = true;
 	/// should we take care for striking out display math?
-	bool mathsout_;
+	bool mathsout_ = false;
 	/// what ulem command are we inside (none, underline, strikeout)?
-	UlemCmdType ulemcmd_;
+	UlemCmdType ulemcmd_ = NONE;
 	///
-	int line_;
+	int line_ = 0;
 	///
-	Encoding const * encoding_;
+	Encoding const * encoding_ = nullptr;
 	/// Row entry we are in
-	TexRow::RowEntry row_entry_;
+	TexRow::RowEntry row_entry_ = TexRow::row_none;
 	/// whether we are in a MathClass inset
-	bool mathclass_;
+	bool mathclass_ = false;
 };
 
 ///

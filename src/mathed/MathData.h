@@ -68,8 +68,9 @@ public:
 
 public:
 	///
-	explicit MathData(Buffer * buf = 0) : minasc_(0), mindes_(0), slevel_(0),
-				     sshift_(0), buffer_(buf) {}
+	MathData() = default;
+	///
+	explicit MathData(Buffer * buf) : buffer_(buf) {}
 	///
 	MathData(Buffer * buf, const_iterator from, const_iterator to);
 	///
@@ -186,11 +187,11 @@ public:
 
 protected:
 	/// cached values for super/subscript placement
-	mutable int minasc_;
-	mutable int mindes_;
-	mutable int slevel_;
-	mutable int sshift_;
-	Buffer * buffer_;
+	mutable int minasc_ = 0;
+	mutable int mindes_ = 0;
+	mutable int slevel_ = 0;
+	mutable int sshift_ = 0;
+	Buffer * buffer_ = nullptr;
 
 private:
 	/// is this an exact match at this position?
