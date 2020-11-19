@@ -155,6 +155,25 @@ export/examples/ar/Presentations/Beamer_.*_systemF
 export/.*/he/.*(dvi3|pdf5)_systemF
 export/export/latex/languages/supported-languages_(dvi3|pdf5)_systemF
 
+Fails with TL19 but solved in TL20
+
+# Babel with non-TeX fonts fails for some supported languages
+# Lithuanian: L7x font encoding also set with LuaTeX and non-TeX fonts
+# (error but output OK)
+export/export/latex/languages/supported-languages_babel_non-tex_(dvi3|pdf5)_systemF
+
+# Babel + XeTeX and system fonts fails due to a babel bug:
+# https://www.mail-archive.com/search?l=mid&q=20190831012945.zl76dbstyijfqgdh%40boogie
+# The error is the following, although remoing the referenced language just leads
+# to a different error:
+#
+#  ! File ended while scanning use of \bbl@inireader.
+#  <inserted text>
+#                  \par
+#  l.3 \input{babel-german-switzerland}
+#  I suspect you have forgotten a `}', causing me
+export/export/latex/languages/supported-languages_babel_non-tex_pdf4_systemF
+
 
 Sublabel: wrong_output
 ######################
