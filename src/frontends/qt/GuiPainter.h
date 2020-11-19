@@ -36,15 +36,15 @@ public:
 	virtual ~GuiPainter();
 
 	/// This painter paints
-	virtual bool isNull() const { return false; }
+	bool isNull() const override { return false; }
 
 	/// draw a line from point to point
-	virtual void line(
+	void line(
 		int x1, int y1,
 		int x2, int y2,
 		Color,
 		line_style ls = line_solid,
-		int lw = thin_line);
+		int lw = thin_line) override;
 
 	/**
 	 * lines -  draw a set of lines
@@ -52,14 +52,14 @@ public:
 	 * @param yp array of points' y co-ords
 	 * @param np size of the points array
 	 */
-	virtual void lines(
+	void lines(
 		int const * xp,
 		int const * yp,
 		int np,
 		Color,
 		fill_style fs = fill_none,
 		line_style ls = line_solid,
-		int lw = thin_line);
+		int lw = thin_line) override;
 
 	/**
 	 * path -  draw a path with bezier curves
@@ -71,72 +71,72 @@ public:
 	 * @param c2y array of second control points' y co-ords
 	 * @param np size of the points array
 	 */
-	virtual void path(int const * xp, int const * yp,
+	void path(int const * xp, int const * yp,
 		int const * c1x, int const * c1y,
 		int const * c2x, int const * c2y,
 		int np, Color,
 		fill_style = fill_none, line_style = line_solid,
-		int line_width = thin_line);
+		int line_width = thin_line) override;
 
 	/// draw a rectangle
-	virtual void rectangle(
+	void rectangle(
 		int x, int y,
 		int w, int h,
 		Color,
 		line_style = line_solid,
-		int lw = thin_line);
+		int lw = thin_line) override;
 
 	/// draw a filled rectangle
-	virtual void fillRectangle(
+	void fillRectangle(
 		int x, int y,
 		int w, int h,
-		Color);
+		Color) override;
 
 	/// draw an arc
-	virtual void arc(
+	void arc(
 		int x, int y,
 		unsigned int w, unsigned int h,
 		int a1, int a2,
-		Color);
+		Color) override;
 
 	/// draw a pixel
-	virtual void point(int x, int y, Color);
+	void point(int x, int y, Color) override;
 
 	/// draw an image from the image cache
-	virtual void image(int x, int y, int w, int h,
-		lyx::graphics::Image const & image);
+	void image(int x, int y, int w, int h,
+		lyx::graphics::Image const & image) override;
 
 	/// draw a string at position x, y (y is the baseline).
-	virtual void text(int x, int y, docstring const & str, FontInfo const & f);
+	void text(int x, int y, docstring const & str, FontInfo const & f) override;
 
 	/// draw a char at position x, y (y is the baseline)
-	virtual void text(int x, int y, char_type c, FontInfo const & f);
+	void text(int x, int y, char_type c, FontInfo const & f) override;
 
 	/** draw a string at position x, y (y is the baseline). The
 	 * text direction is enforced by the \c Font.
 	 */
-	virtual void text(int x, int y, docstring const & str, Font const & f,
-                      double wordspacing, double textwidth);
+	void text(int x, int y, docstring const & str, Font const & f,
+                      double wordspacing, double textwidth) override;
 
 	/** draw a string at position x, y (y is the baseline), but
 	 * make sure that the part between \c from and \c to is in
 	 * \c other color. The text direction is enforced by the \c Font.
 	 */
-	virtual void text(int x, int y, docstring const & str, Font const & f,
+	void text(int x, int y, docstring const & str, Font const & f,
 	                  Color other, size_type from, size_type to,
-                      double wordspacing, double textwidth);
+                      double wordspacing, double textwidth) override;
 
 	///
-	virtual void textDecoration(FontInfo const & f, int x, int y, int width);
+	void textDecoration(FontInfo const & f, int x, int y, int width) override;
 
 	/// draw a string and enclose it inside a button frame
-	virtual void buttonText(int x, int baseline, docstring const & s,
-		FontInfo const & font, Color back, Color frame, int offset);
+	void buttonText(int x, int baseline, docstring const & s,
+		FontInfo const & font, Color back, Color frame, int offset) override;
 
 	/// start monochrome painting mode, i.e. map every color a shade of \c blend.
-	virtual void enterMonochromeMode(Color const & blend);
+	void enterMonochromeMode(Color const & blend) override;
 	/// leave monochrome painting mode
-	virtual void leaveMonochromeMode();
+	void leaveMonochromeMode() override;
 
 	/**
 	 * Draw a string and enclose it inside a rectangle. If
@@ -144,14 +144,14 @@ public:
 	 * the given color. If frame is specified, a thin frame is drawn
 	 * around the text with the given color.
 	 */
-	virtual void rectText(int x, int baseline, docstring const & str,
-		FontInfo const & font, Color back, Color frame);
+	void rectText(int x, int baseline, docstring const & str,
+		FontInfo const & font, Color back, Color frame) override;
 
 	/// draw a character of a preedit string for cjk support.
-	virtual int preeditText(int x, int y,
-		char_type c, FontInfo const & f, preedit_style style);
+	int preeditText(int x, int y,
+		char_type c, FontInfo const & f, preedit_style style) override;
 
-	void wavyHorizontalLine(int x, int y, int width, ColorCode col);
+	void wavyHorizontalLine(int x, int y, int width, ColorCode col) override;
 
 private:
 	/// check the font, and if set, draw an underline

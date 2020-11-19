@@ -44,23 +44,22 @@ public:
 	// Methods overridden from QAbstractListModel
 	//////////////////////////////////////////////////////////////////////
 	///
-	int rowCount(QModelIndex const & = QModelIndex()) const
+	int rowCount(QModelIndex const & = QModelIndex()) const override
 		{ return int(userData_.size()); }
 
 	///
-	virtual QVariant data(QModelIndex const & index,
-	                      int role = Qt::DisplayRole) const;
+	QVariant data(QModelIndex const & index, int role = Qt::DisplayRole) const override;
 	///
-	bool insertRows(int row, int count, QModelIndex const & parent = QModelIndex());
+	bool insertRows(int row, int count, QModelIndex const & parent = QModelIndex()) override;
 	///
-	bool removeRows(int row, int count, QModelIndex const & parent = QModelIndex());
+	bool removeRows(int row, int count, QModelIndex const & parent = QModelIndex()) override;
 	///
 	void clear() { removeRows(0, rowCount()); }
 	///
-	virtual bool setData (QModelIndex const & index,
-			const QVariant & value, int role = Qt::EditRole );
+	bool setData (QModelIndex const & index,
+			const QVariant & value, int role = Qt::EditRole) override;
 	///
-	virtual QMap<int, QVariant> itemData(QModelIndex const & index ) const;
+	QMap<int, QVariant> itemData(QModelIndex const & index ) const override;
 	//////////////////////////////////////////////////////////////////////
 	// New methods
 	//////////////////////////////////////////////////////////////////////

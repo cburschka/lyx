@@ -27,10 +27,10 @@ public:
 
 	void set(QFont const & font, QString const & text);
 
-	virtual QSize sizeHint() const;
+	QSize sizeHint() const override;
 
 protected:
-	virtual void paintEvent(QPaintEvent * p);
+	void paintEvent(QPaintEvent * p) override;
 
 private:
 	QFont font_;

@@ -90,7 +90,7 @@ public:
 		: QSortFilterProxyModel(w)
 	{}
 
-	bool lessThan (const QModelIndex & left, const QModelIndex & right) const
+	bool lessThan(const QModelIndex & left, const QModelIndex & right) const override
 	{
 		if (left.model()->data(left, Qt::UserRole).toString()
 			  == QString("tableofcontents"))

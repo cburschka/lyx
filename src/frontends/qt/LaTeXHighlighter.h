@@ -28,7 +28,7 @@ public:
 	explicit LaTeXHighlighter(QTextDocument * parent, bool at_letter = false);
 
 protected:
-	void highlightBlock(QString const & text);
+	void highlightBlock(QString const & text) override;
 
 private:
 	QTextCharFormat commentFormat;

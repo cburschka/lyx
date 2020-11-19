@@ -34,24 +34,24 @@ public:
 
 private:
 	/// Create a copy
-	Image * clone() const;
+	Image * clone() const override;
 	/// Get the image width
-	unsigned int width() const;
+	unsigned int width() const override;
 	/// Get the image height
-	unsigned int height() const;
+	unsigned int height() const override;
 	// FIXME Is the image drawable ?
-	bool isDrawable() const { return true; }
+	bool isDrawable() const override { return true; }
 	/**
 	 * Load the image file into memory.
 	 */
-	bool load(support::FileName const & filename);
+	bool load(support::FileName const & filename) override;
 	bool load();
 	/**
 	 * Finishes the process of modifying transformed_, using
 	 * \c params to decide on color, grayscale etc.
 	 * \returns true if successful.
 	 */
-	bool setPixmap(Params const & params);
+	bool setPixmap(Params const & params) override;
 
 	/// Clip the image using params.
 	bool clip(Params const & params);
