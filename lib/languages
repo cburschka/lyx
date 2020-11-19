@@ -122,7 +122,7 @@
 #   but are available globally if this language is used (not only for this
 #   language. Examples are \textgreek (Greek) and \textcyrillic (Russian).
 # * ActiveChars provides a string of the characters that are made active
-#   by the language. We record particularly those characters that have to 
+#   by the language. We record particularly those characters that have to
 #   be de-activated in some contexts (such as - or =).
 # * XindyName holds the value to the (te)xindy -L option. We only give it
 #   if a corresponding language module exists.
@@ -1064,24 +1064,35 @@ Language latvian
 	LangCode         lv_LV
 End
 
-# lithuanian must be loaded locally with babel options,
-# not globally via class options
-# FontEncoding: L7x set by Babel
+# FontEncoding: L7x required for hyphenation but no longer set by Babel
+# (since 2017-12-06)
 Language lithuanian
 	GuiName          "Lithuanian"
 	BabelName        lithuanian
 	PolyglossiaName  lithuanian
-	XindyName        lithunian
+	XindyName        lithuanian
 	QuoteStyle       german
 	Encoding         iso8859-13
 	FontEncoding     L7x
 	# L7x defines \copyright as TextSymbol which leads to an endless loop
-        # when it is used in other font encodings.
+	# when it is used in other font encodings.
 	PostBabelPreamble
-	  % restore \coyright definition corrupted by l7xenc.def
-          \DeclareRobustCommand{\copyright}{%
-            \ifmmode{\nfss@text{\textcopyright}}\else\textcopyright\fi}
-	    \addto\noextraslithuanian{\latintext}
+	  \@ifl@aded{def}{l7xenc}{
+	    % restore corrupted \coyright definition
+	    \DeclareRobustCommand{\copyright}{%
+	      \ifmmode{\nfss@text{\textcopyright}}\else\textcopyright\fi
+	    }
+	    % Switch to L7x and back
+	    \addto\extraslithuanian{
+	      \let\bbl@lithuanian@cfencoding\cf@encoding
+	      \fontencoding{L7x}\selectfont
+	      \def\encodingdefault{L7x}
+	    }
+	    \addto\noextraslithuanian{
+	      \def\encodingdefault{\bbl@lithuanian@cfencoding}
+	      \fontencoding{\encodingdefault}\selectfont
+	    }  
+	  }{}
 	EndPostBabelPreamble
 	DateFormats      "yyyy 'm.' MMMM d 'd.'|yyyy 'm.' MMMM d 'd.'|yyyy-MM-dd"
 	LangCode         lt_LT

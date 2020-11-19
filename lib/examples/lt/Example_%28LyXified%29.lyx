@@ -1,0 +1,339 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 599
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin /systemlyxdir/examples/lt/
+\textclass article
+\use_default_options false
+\maintain_unincluded_children no
+\language lithuanian
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype true
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\pdf_quoted_options "pdftex,unicode"
+\papersize a4
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style german
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Ištrauka iš Wikipedijos
+\end_layout
+
+\begin_layout Date
+2006
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Istorija
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Lietuvių kalba
+\emph default
+ – iš baltų prokalbės kilusi lietuvių tautos kalba, kuri Lietuvoje yra valstybin
+ė, o Europos Sąjungoje – viena iš oficialiųjų kalbų.
+ Lietuviškai kalba apie tris milijonus žmonių (dauguma jų gyvena Lietuvoje).
+ Drauge su latvių, mirusiomis prūsų, jotvingių ir kitomis baltų kalbomis,
+ priklauso indoeuropiečių kalbų šeimos baltų kalbų grupei.
+\end_layout
+
+\begin_layout Standard
+Pirmieji lietuvių kalbos rašytiniai paminklai atsirado vėlokai, apie XVI
+ a., tačiau net dabartinė lietuvių kalba pasižymi dideliu archajiškumu (ypač
+ vardažodžių linksniavimo srityje).
+ Fonetiškai ir morfologiškai konservatyvi lietuvių kalba žymiai artimesnė
+ baltų prokalbei negu naujoviškesnė latvių kalba.
+ Lietuvių kalba – archajiškiausia iš gyvųjų indoeuropiečių kalbų, išsaugojusi
+ daugybę indoeuropiečių prokalbės ypatybių.
+\end_layout
+
+\begin_layout Standard
+Lietuvių kalba skirstoma į dvi pagrindines tarmes: aukštaičių ir žemaičių.
+ Dabartinė bendrinė lietuvių kalba grindžiama vakarų aukštaičių kauniškių
+ patarme.
+\end_layout
+
+\begin_layout Standard
+Lietuvių kalboje yra 45 priebalsinės ir 13 balsinių fonemų (įskaitant ir
+ vartojamas tik skoliniuose).
+ Būdingos minkštųjų ir kietųjų priebalsių poros, skiriamas balsių ilgumas.
+ Kirtis – laisvas, tariamos priegaidės, tačiau rašte kirtis ir priegaidės
+ paprastai nežymimi.
+\end_layout
+
+\begin_layout Standard
+Morfologiškai lietuvių kalba yra fleksinė.
+ Sintaksė pasižymi palyginti laisva žodžių tvarka, pagrindinė žodžių tvarka
+ sakinyje – SVO (veiksnys – tarinys – papildinys).
+ Žodyno daugumą sudaro veldiniai, tarp skolinių vyrauja slavizmai ir germanizmai.
+\end_layout
+
+\begin_layout Standard
+Kalba užrašoma papildyta lotynų abėcėle, vartojamos 32 raidės.
+ 
+\end_layout
+
+\begin_layout Section*
+Things to consider when writing Lithuanian text.
+\end_layout
+
+\begin_layout Enumerate
+Only a handfull of the traditional 8-bit TeX fonts support the special 
+\begin_inset Quotes gld
+\end_inset
+
+L7x
+\begin_inset Quotes grd
+\end_inset
+
+ font encoding that is required to let LaTeX correctly auto-hyphenate words
+ containing special letters like 
+\begin_inset Quotes gld
+\end_inset
+
+ų
+\begin_inset Quotes grd
+\end_inset
+
+ or 
+\begin_inset Quotes gld
+\end_inset
+
+ū
+\begin_inset Quotes grd
+\end_inset
+
+.
+ These include 
+\family sans
+Latin Modern
+\family default
+ and the 
+\family sans
+TeX Gyre
+\family default
+ fonts.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+For a wider choice of fonts, use the 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Fonts\SpecialChar menuseparator
+Use non-TeX fonts 
+\family default
+setting.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Note for Linux users:
+\series default
+ Please check that the language packages for the \SpecialChar LaTeX
+ distribution 
+\family sans
+\SpecialChar TeX
+
+\begin_inset space ~
+\end_inset
+
+Live
+\family default
+ are installed.
+ Otherwise you will get \SpecialChar LaTeX
+ errors.
+\begin_inset Newline newline
+\end_inset
+
+The Linux distributions 
+\family sans
+(K,X)Ubuntu
+\family default
+ and 
+\family sans
+Debian
+\family default
+ ship Lithuanian LaTeX support in the 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+texlive-lang-european
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ package.
+\begin_inset Newline newline
+\end_inset
+
+After the installation of the language packages you must use the \SpecialChar LyX
+ menu 
+\family sans
+Tools
+\family default
+\SpecialChar menuseparator
+
+\family sans
+Reconfigure
+\family default
+.
+\end_layout
+
+\begin_layout Section
+Abėcėlė
+\end_layout
+
+\begin_layout Standard
+Lietuvių kalbos abėcėlę sudaro 32 raidės:
+\end_layout
+
+\begin_layout Standard
+Aa Ąą Bb Cc Čč Dd Ee Ęę Ėė Ff Gg Hh Ii Įį Yy Jj Kk Ll Mm Nn Oo Pp Rr Ss
+ Šš Tt Uu Ųų Ūū Vv Zz Žž
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+Aa Ąą Bb Cc Čč Dd Ee Ęę Ėė Ff Gg Hh Ii Įį Yy Jj Kk Ll Mm Nn Oo Pp Rr Ss
+ Šš Tt Uu Ųų Ūū Vv Zz Žž
+\end_layout
+
+\begin_layout Standard
+
+\shape smallcaps
+Aa Ąą Bb Cc Čč Dd Ee Ęę Ėė Ff Gg Hh Ii Įį Yy Jj Kk Ll Mm Nn Oo Pp Rr Ss
+ Šš Tt Uu Ųų Ūū Vv Zz Žž
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Aa Ąą Bb Cc Čč Dd Ee Ęę Ėė Ff Gg Hh Ii Įį Yy Jj Kk Ll Mm Nn Oo Pp Rr Ss
+ Šš Tt Uu Ųų Ūū Vv Zz Žž
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\shape italic
+Aa Ąą Bb Cc Čč Dd Ee Ęę Ėė Ff Gg Hh Ii Įį Yy Jj Kk Ll Mm Nn Oo Pp Rr Ss
+ Šš Tt Uu Ųų Ūū Vv Zz Žž
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Aa Ąą Bb Cc Čč Dd Ee Ęę Ėė Ff Gg Hh Ii Įį Yy Jj Kk Ll Mm Nn Oo Pp Rr Ss
+ Šš Tt Uu Ųų Ūū Vv Zz Žž
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Aa Ąą Bb Cc Čč Dd Ee Ęę Ėė Ff Gg Hh Ii Įį Yy Jj Kk Ll Mm Nn Oo Pp Rr Ss
+ Šš Tt Uu Ųų Ūū Vv Zz Žž
+\end_layout
+
+\end_body
+\end_document
