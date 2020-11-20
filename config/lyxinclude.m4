@@ -418,7 +418,7 @@ if test x$GXX = xyes; then
   fi
   dnl Warnings are for preprocessor too
   if test x$enable_warnings = xyes ; then
-      AM_CPPFLAGS="$AM_CPPFLAGS -Wall -Wextra"
+      AM_CXXFLAGS="$AM_CPPFLAGS -Wall -Wextra"
       dnl Shut off warning -Wdeprecated-copy, which triggers too much
       dnl note that g++ always accepts -Wno-xxx, even when -Wxxx is an error.
       AC_LANG_PUSH(C++)
