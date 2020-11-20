@@ -4900,7 +4900,7 @@ void GuiView::hideAll() const
 
 void GuiView::updateDialogs()
 {
-	for(auto const & dlg_p : d.dialogs_)
+	for(auto const & dlg_p : d.dialogs_) {
 		Dialog * dialog = dlg_p.second.get();
 		if (dialog) {
 			if (dialog->needBufferOpen() && !documentBufferView())
