@@ -102,7 +102,7 @@ void InsetMathCancelto::normalize(NormalStream & os) const
 
 bool InsetMathCancelto::idxUpDown(Cursor & cur, bool up) const
 {
-	Cursor::idx_type const target = up ? 1 : 0;
+	idx_type const target = up ? 1 : 0;
 	if (cur.idx() == target)
 		return false;
 	cur.idx() = target;

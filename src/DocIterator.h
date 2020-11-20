@@ -35,14 +35,6 @@ DocIterator doc_iterator_end(Buffer const * buf, Inset const * inset = 0);
 class DocIterator
 {
 public:
-	/// type for cell number in inset
-	typedef CursorSlice::idx_type idx_type;
-	/// type for row indices
-	typedef CursorSlice::row_type row_type;
-	/// type for col indices
-	typedef CursorSlice::col_type col_type;
-
-public:
 	///
 	DocIterator();
 	///

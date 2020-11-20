@@ -147,7 +147,7 @@ void InsetMathRoot::normalize(NormalStream & os) const
 
 bool InsetMathRoot::idxUpDown(Cursor & cur, bool up) const
 {
-	Cursor::idx_type const target = up; //up ? 1 : 0;
+	idx_type const target = up; //up ? 1 : 0;
 	if (cur.idx() == target)
 		return false;
 	cur.idx() = target;

@@ -145,7 +145,7 @@ void Text::setInsetFont(BufferView const & bv, pit_type pit,
 	Inset * const inset = pars_[pit].getInset(pos);
 	LASSERT(inset && inset->resetFontEdit(), return);
 
-	CursorSlice::idx_type endidx = inset->nargs();
+	idx_type endidx = inset->nargs();
 	for (CursorSlice cs(*inset); cs.idx() != endidx; ++cs.idx()) {
 		Text * text = cs.text();
 		if (text) {

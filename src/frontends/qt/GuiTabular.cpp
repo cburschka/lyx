@@ -825,8 +825,8 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	BufferView const * bv = guiApp->currentView()->currentBufferView();
 	size_t const cell = bv->cursor().idx();
 
-	Tabular::row_type const row = tabular.cellRow(cell);
-	Tabular::col_type const col = tabular.cellColumn(cell);
+	row_type const row = tabular.cellRow(cell);
+	col_type const col = tabular.cellColumn(cell);
 
 	tabularRowED->setText(QString::number(row + 1));
 	tabularColumnED->setText(QString::number(col + 1));
@@ -870,16 +870,16 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	CursorSlice const & beg = bv->cursor().selBegin();
 	CursorSlice const & end = bv->cursor().selEnd();
 	if (beg != end) {
-		Tabular::col_type cs = tabular.cellColumn(beg.idx());
-		Tabular::col_type ce = tabular.cellColumn(end.idx());
+		col_type cs = tabular.cellColumn(beg.idx());
+		col_type ce = tabular.cellColumn(end.idx());
 		if (cs > ce)
 			swap(cs, ce);
-		Tabular::row_type rs = tabular.cellRow(beg.idx());
-		Tabular::row_type re = tabular.cellRow(end.idx());
+		row_type rs = tabular.cellRow(beg.idx());
+		row_type re = tabular.cellRow(end.idx());
 		if (rs > re)
 			swap(rs, re);
-		for (Tabular::row_type r = rs; r <= re; ++r)
-			for (Tabular::col_type c = cs; c <= ce; ++c) {
+		for (row_type r = rs; r <= re; ++r)
+			for (col_type c = cs; c <= ce; ++c) {
 				idx_type const cc = tabular.cellIndex(r, c);
 				ltop = borderState(ltop, tabular.topLine(cc));
 				lbottom = borderState(lbottom, tabular.bottomLine(cc));

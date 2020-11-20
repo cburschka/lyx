@@ -102,11 +102,11 @@ public:
 
 	/// erase the entry at pos and adjust all range bounds past it
 	/// (assumes that a character was deleted at pos)
-	void erase(lyx::pos_type pos);
+	void erase(pos_type pos);
 
 	/// insert a new entry at pos and adjust all range bounds past it
 	/// (assumes that a character was inserted at pos)
-	void insert(Change const & change, lyx::pos_type pos);
+	void insert(Change const & change, pos_type pos);
 
 	///
 

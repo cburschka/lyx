@@ -3882,9 +3882,9 @@ void Buffer::updateMacroInstances(UpdateType utype) const
 			continue;
 
 		// update macro in all cells of the InsetMathNest
-		DocIterator::idx_type n = minset->nargs();
+		idx_type n = minset->nargs();
 		MacroContext mc = MacroContext(this, it);
-		for (DocIterator::idx_type i = 0; i < n; ++i) {
+		for (idx_type i = 0; i < n; ++i) {
 			MathData & data = minset->cell(i);
 			data.updateMacros(nullptr, mc, utype, 0);
 		}

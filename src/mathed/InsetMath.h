@@ -106,9 +106,6 @@ class TextPainter;
 class TextMetricsInfo;
 class ReplaceData;
 
-/// Type of unique identifiers for math insets (used in TexRow)
-typedef void const * uid_type;
-
 
 class InsetMath : public Inset {
 public:

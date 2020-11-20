@@ -160,7 +160,7 @@ docstring escapeSpecialChars(docstring const & str, bool textmode)
  * \returns whether the row could be added. Adding a row can fail for
  * environments like "equation" that have a fixed number of rows.
  */
-bool addRow(InsetMathGrid & grid, InsetMathGrid::row_type & cellrow,
+bool addRow(InsetMathGrid & grid, row_type & cellrow,
 	    docstring const & vskip, bool allow_newpage = true)
 {
 	++cellrow;
@@ -195,7 +195,7 @@ bool addRow(InsetMathGrid & grid, InsetMathGrid::row_type & cellrow,
  * \returns whether the column could be added. Adding a column can fail for
  * environments like "eqnarray" that have a fixed number of columns.
  */
-bool addCol(InsetMathGrid & grid, InsetMathGrid::col_type & cellcol)
+bool addCol(InsetMathGrid & grid, col_type & cellcol)
 {
 	++cellcol;
 	if (cellcol == grid.ncols()) {
@@ -236,9 +236,9 @@ bool addCol(InsetMathGrid & grid, InsetMathGrid::col_type & cellcol)
  */
 void delEmptyLastRow(InsetMathGrid & grid)
 {
-	InsetMathGrid::row_type const row = grid.nrows() - 1;
-	for (InsetMathGrid::col_type col = 0; col < grid.ncols(); ++col) {
-		InsetMathGrid::idx_type const idx = grid.index(row, col);
+	row_type const row = grid.nrows() - 1;
+	for (col_type col = 0; col < grid.ncols(); ++col) {
+		idx_type const idx = grid.index(row, col);
 		if (!grid.cell(idx).empty() ||
 		    grid.cellinfo(idx).multi != InsetMathGrid::CELL_NORMAL)
 			return;
@@ -796,8 +796,8 @@ void Parser::parse2(MathAtom & at, const unsigned flags, const mode_type mode,
 bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 	const mode_type mode, const bool numbered)
 {
-	InsetMathGrid::row_type cellrow = 0;
-	InsetMathGrid::col_type cellcol = 0;
+	row_type cellrow = 0;
+	col_type cellcol = 0;
 	MathData * cell = &grid.cell(grid.index(cellrow, cellcol));
 	Buffer * buf = buffer_;
 
@@ -2035,7 +2035,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 				else {
 					MathAtom at = createInsetMath(t.cs(), buf);
-					for (InsetMath::idx_type i = 0; i < at->nargs(); ++i)
+					for (idx_type i = 0; i < at->nargs(); ++i)
 						parse(at.nucleus()->cell(i),
 							FLAG_ITEM, asMode(mode, l->extra));
 					cell->push_back(at);
@@ -2107,7 +2107,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 					if (at->currentMode() != InsetMath::UNDECIDED_MODE)
 						m = at->currentMode();
 					//lyxerr << "default creation: m2: " << m << endl;
-					InsetMath::idx_type start = 0;
+					idx_type start = 0;
 					// this fails on \bigg[...\bigg]
 					//MathData opt;
 					//parse(opt, FLAG_OPTION, InsetMath::VERBATIM_MODE);
@@ -2115,7 +2115,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 					//	start = 1;
 					//	at.nucleus()->cell(0) = opt;
 					//}
-					for (InsetMath::idx_type i = start; i < at->nargs(); ++i) {
+					for (idx_type i = start; i < at->nargs(); ++i) {
 						parse(at.nucleus()->cell(i), FLAG_ITEM, m);
 						if (mode == InsetMath::MATH_MODE)
 							skipSpaces();

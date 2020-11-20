@@ -126,7 +126,7 @@ void InsetMathNest::setBuffer(Buffer & buffer)
 }
 
 
-InsetMath::idx_type InsetMathNest::nargs() const
+idx_type InsetMathNest::nargs() const
 {
 	return cells_.size();
 }

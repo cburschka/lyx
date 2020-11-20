@@ -76,14 +76,14 @@ pit_type CursorSlice::lastpit() const
 }
 
 
-CursorSlice::row_type CursorSlice::row() const
+row_type CursorSlice::row() const
 {
 	LASSERT(inset_, return 0);
 	return inset_->row(idx_);
 }
 
 
-CursorSlice::col_type CursorSlice::col() const
+col_type CursorSlice::col() const
 {
 	LASSERT(inset_, return 0);
 	return inset_->col(idx_);

@@ -50,7 +50,7 @@ bool InsetMathFracBase::idxUpDown(Cursor & cur, bool up) const
 {
 	// If we only have one cell, target = 0, otherwise
 	// target = up ? 0 : 1, since upper cell has idx 0
-	InsetMath::idx_type target = nargs() > 1 ? !up : 0;
+	idx_type target = nargs() > 1 ? !up : 0;
 	if (cur.idx() == target)
 		return false;
 	cur.idx() = target;
@@ -67,7 +67,7 @@ bool InsetMathFracBase::idxUpDown(Cursor & cur, bool up) const
 /////////////////////////////////////////////////////////////////////
 
 
-InsetMathFrac::InsetMathFrac(Buffer * buf, Kind kind, InsetMath::idx_type ncells)
+InsetMathFrac::InsetMathFrac(Buffer * buf, Kind kind, idx_type ncells)
 	: InsetMathFracBase(buf, ncells), kind_(kind)
 {}
 
@@ -92,7 +92,7 @@ InsetMathFrac const * InsetMathFrac::asFracInset() const
 
 bool InsetMathFrac::idxForward(Cursor & cur) const
 {
-	InsetMath::idx_type target = 0;
+	idx_type target = 0;
 	if (kind_ == UNIT || (kind_ == UNITFRAC && nargs() == 3)) {
 		if (nargs() == 3)
 			target = 0;
@@ -110,7 +110,7 @@ bool InsetMathFrac::idxForward(Cursor & cur) const
 
 bool InsetMathFrac::idxBackward(Cursor & cur) const
 {
-	InsetMath::idx_type target = 0;
+	idx_type target = 0;
 	if (kind_ == UNIT || (kind_ == UNITFRAC && nargs() == 3)) {
 		if (nargs() == 3)
 			target = 2;

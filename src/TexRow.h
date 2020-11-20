@@ -42,10 +42,6 @@ class DocIterator;
 class docstring_list;
 class FuncRequest;
 
-/// types for cells and math insets
-typedef void const * uid_type;
-typedef size_t idx_type;
-
 
 /// Represents the correspondence between paragraphs and the generated
 /// LaTeX file

@@ -1004,7 +1004,7 @@ Inset * InsetMathMacro::editXY(Cursor & cur, int x, int y)
 }
 
 
-void InsetMathMacro::removeArgument(Inset::pos_type pos) {
+void InsetMathMacro::removeArgument(pos_type pos) {
 	if (d->displayMode_ == DISPLAY_NORMAL) {
 		LASSERT(size_t(pos) < cells_.size(), return);
 		cells_.erase(cells_.begin() + pos);
@@ -1019,7 +1019,7 @@ void InsetMathMacro::removeArgument(Inset::pos_type pos) {
 }
 
 
-void InsetMathMacro::insertArgument(Inset::pos_type pos) {
+void InsetMathMacro::insertArgument(pos_type pos) {
 	if (d->displayMode_ == DISPLAY_NORMAL) {
 		LASSERT(size_t(pos) <= cells_.size(), return);
 		cells_.insert(cells_.begin() + pos, MathData());

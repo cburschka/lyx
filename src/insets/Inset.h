@@ -93,18 +93,6 @@ public:
 		ENTRY_DIRECTION_RIGHT,
 		ENTRY_DIRECTION_LEFT
 	};
-	///
-	typedef ptrdiff_t  difference_type;
-	/// short of anything else reasonable
-	typedef size_t     size_type;
-	/// type for cell indices
-	typedef size_t     idx_type;
-	/// type for cursor positions
-	typedef ptrdiff_t  pos_type;
-	/// type for row numbers
-	typedef size_t     row_type;
-	/// type for column numbers
-	typedef size_t     col_type;
 
 	/// virtual base class destructor
 	virtual ~Inset() {}

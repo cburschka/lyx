@@ -17,8 +17,7 @@
 #include "DocumentClassPtr.h"
 
 #include "support/strfwd.h"
-
-#include "insets/Inset.h"
+#include "support/types.h"
 
 #include "frontends/Clipboard.h"
 
@@ -27,7 +26,9 @@
 
 namespace lyx {
 
+class Buffer;
 class ErrorList;
+class Inset;
 class InsetText;
 class Cursor;
 class CursorData;
@@ -156,8 +157,8 @@ void selDel(Cursor & cur);
 void selClearOrDel(Cursor & cur);
 /// Calculate rectangular region of cell between \c i1 and \c i2.
 void region(CursorSlice const & i1, CursorSlice const & i2,
-    Inset::row_type & r1, Inset::row_type & r2,
-    Inset::col_type & c1, Inset::col_type & c2);
+			row_type & r1, row_type & r2,
+			col_type & c1, col_type & c2);
 /** Tabular has its own paste stack for multiple cells
  *  but it needs to know whether there is a more recent
  *  ordinary paste. Therefore which one is newer.

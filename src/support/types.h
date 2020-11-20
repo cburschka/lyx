@@ -45,6 +45,16 @@ namespace lyx {
 	/// a type for the nesting depth of a paragraph
 	typedef size_t     depth_type;
 
+	/// type for cell indices in inset
+	typedef size_t     idx_type;
+	/// type for row indices
+	typedef size_t     row_type;
+	/// type for col indices
+	typedef size_t     col_type;
+
+	/// type for cells and math insets
+	typedef void const * uid_type;
+
 // set this to '0' if you want to have really safe types
 #if 1
 

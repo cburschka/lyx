@@ -158,7 +158,7 @@ Inset * InsetMathGrid::clone() const
 }
 
 
-InsetMath::idx_type InsetMathGrid::index(row_type row, col_type col) const
+idx_type InsetMathGrid::index(row_type row, col_type col) const
 {
 	return col + ncols() * row;
 }
@@ -278,7 +278,7 @@ void InsetMathGrid::setHorizontalAlignments(docstring const & hh)
 }
 
 
-InsetMathGrid::col_type InsetMathGrid::guessColumns(docstring const & hh)
+col_type InsetMathGrid::guessColumns(docstring const & hh)
 {
 	col_type col = 0;
 	for (char_type const c : hh)
@@ -339,31 +339,31 @@ char InsetMathGrid::verticalAlignment() const
 }
 
 
-InsetMathGrid::col_type InsetMathGrid::ncols() const
+col_type InsetMathGrid::ncols() const
 {
 	return colinfo_.size() - 1;
 }
 
 
-InsetMathGrid::row_type InsetMathGrid::nrows() const
+row_type InsetMathGrid::nrows() const
 {
 	return rowinfo_.size() - 1;
 }
 
 
-InsetMathGrid::col_type InsetMathGrid::col(idx_type idx) const
+col_type InsetMathGrid::col(idx_type idx) const
 {
 	return idx % ncols();
 }
 
 
-InsetMathGrid::row_type InsetMathGrid::row(idx_type idx) const
+row_type InsetMathGrid::row(idx_type idx) const
 {
 	return idx / ncols();
 }
 
 
-InsetMathGrid::col_type InsetMathGrid::ncellcols(idx_type idx) const
+col_type InsetMathGrid::ncellcols(idx_type idx) const
 {
 	col_type cols = 1;
 	if (cellinfo_[idx].multi == CELL_NORMAL)
@@ -1647,7 +1647,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 					}
 				}
 				// append columns for the left over horizontal cells
-				for (InsetMath::col_type c = numcols; c < grid.ncols(); ++c) {
+				for (col_type c = numcols; c < grid.ncols(); ++c) {
 					addCol(c + startcol);
 					idx_type i = index(r + startrow, min(c + startcol, ncols() - 1));
 					cell(i).append(grid.cell(grid.index(r, c)));

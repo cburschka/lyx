@@ -27,6 +27,7 @@
 #include "InsetText.h"
 
 #include "support/Length.h"
+#include "support/types.h"
 
 #include <climits>
 #include <iosfwd>
@@ -419,12 +420,6 @@ public:
 		bool empty;
 	};
 
-	/// type for row numbers
-	typedef size_t row_type;
-	/// type for column numbers
-	typedef size_t col_type;
-	/// type for cell indices
-	typedef size_t idx_type;
 	/// index indicating an invalid position
 	static const idx_type npos = static_cast<idx_type>(-1);
 

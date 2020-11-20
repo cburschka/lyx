@@ -561,7 +561,7 @@ string const write_attribute(string const & name, int const & i)
 
 
 template <>
-string const write_attribute(string const & name, Tabular::idx_type const & i)
+string const write_attribute(string const & name, idx_type const & i)
 {
 	// we write only true attribute values so we remove a bit of the
 	// file format bloat for tabulars.
@@ -1041,7 +1041,7 @@ void Tabular::updateIndexes()
 }
 
 
-Tabular::idx_type Tabular::numberOfCellsInRow(row_type const row) const
+idx_type Tabular::numberOfCellsInRow(row_type const row) const
 {
 	idx_type result = 0;
 	for (col_type c = 0; c < ncols(); ++c)
@@ -1649,7 +1649,7 @@ int Tabular::textVOffset(idx_type cell) const
 }
 
 
-Tabular::idx_type Tabular::getFirstCellInRow(row_type row, bool const ct) const
+idx_type Tabular::getFirstCellInRow(row_type row, bool const ct) const
 {
 	col_type c = 0;
 	idx_type const numcells = numberOfCellsInRow(row);
@@ -1665,7 +1665,7 @@ Tabular::idx_type Tabular::getFirstCellInRow(row_type row, bool const ct) const
 }
 
 
-Tabular::idx_type Tabular::getLastCellInRow(row_type row, bool const ct) const
+idx_type Tabular::getLastCellInRow(row_type row, bool const ct) const
 {
 	col_type c = ncols() - 1;
 	// of course we check against 0 so we don't crash. but we have the same
@@ -1680,7 +1680,7 @@ Tabular::idx_type Tabular::getLastCellInRow(row_type row, bool const ct) const
 }
 
 
-Tabular::row_type Tabular::getFirstRow(bool const ct) const
+row_type Tabular::getFirstRow(bool const ct) const
 {
 	row_type r = 0;
 	if (!ct)
@@ -1692,7 +1692,7 @@ Tabular::row_type Tabular::getFirstRow(bool const ct) const
 }
 
 
-Tabular::row_type Tabular::getLastRow(bool const ct) const
+row_type Tabular::getLastRow(bool const ct) const
 {
 	row_type r = nrows() - 1;
 	if (!ct)
@@ -1704,7 +1704,7 @@ Tabular::row_type Tabular::getLastRow(bool const ct) const
 }
 
 
-Tabular::row_type Tabular::cellRow(idx_type cell) const
+row_type Tabular::cellRow(idx_type cell) const
 {
 	if (cell >= numberofcells)
 		return nrows() - 1;
@@ -1714,7 +1714,7 @@ Tabular::row_type Tabular::cellRow(idx_type cell) const
 }
 
 
-Tabular::col_type Tabular::cellColumn(idx_type cell) const
+col_type Tabular::cellColumn(idx_type cell) const
 {
 	if (cell >= numberofcells)
 		return ncols() - 1;
@@ -2005,7 +2005,7 @@ Tabular::CellData & Tabular::cellInfo(idx_type cell)
 }
 
 
-Tabular::idx_type Tabular::setMultiColumn(Cursor & cur, idx_type cell, idx_type number,
+idx_type Tabular::setMultiColumn(Cursor & cur, idx_type cell, idx_type number,
 					  bool const right_border)
 {
 	idx_type const col = cellColumn(cell);
@@ -2056,7 +2056,7 @@ bool Tabular::hasMultiRow(row_type r) const
 	return false;
 }
 
-Tabular::idx_type Tabular::setMultiRow(Cursor & cur, idx_type cell, idx_type number,
+idx_type Tabular::setMultiRow(Cursor & cur, idx_type cell, idx_type number,
 				       bool const bottom_border,
 				       LyXAlignment const halign)
 {
@@ -2102,7 +2102,7 @@ Tabular::idx_type Tabular::setMultiRow(Cursor & cur, idx_type cell, idx_type num
 }
 
 
-Tabular::idx_type Tabular::columnSpan(idx_type cell) const
+idx_type Tabular::columnSpan(idx_type cell) const
 {
 	row_type const row = cellRow(cell);
 	col_type const col = cellColumn(cell);
@@ -2114,7 +2114,7 @@ Tabular::idx_type Tabular::columnSpan(idx_type cell) const
 }
 
 
-Tabular::idx_type Tabular::rowSpan(idx_type cell) const
+idx_type Tabular::rowSpan(idx_type cell) const
 {
 	col_type const column = cellColumn(cell);
 	col_type row = cellRow(cell) + 1;
@@ -2194,7 +2194,7 @@ bool Tabular::isLastCell(idx_type cell) const
 }
 
 
-Tabular::idx_type Tabular::cellAbove(idx_type cell) const
+idx_type Tabular::cellAbove(idx_type cell) const
 {
 	if (cellRow(cell) == 0)
 		return cell;
@@ -2208,7 +2208,7 @@ Tabular::idx_type Tabular::cellAbove(idx_type cell) const
 }
 
 
-Tabular::idx_type Tabular::cellBelow(idx_type cell) const
+idx_type Tabular::cellBelow(idx_type cell) const
 {
 	row_type const nextrow = cellRow(cell) + rowSpan(cell);
 	if (nextrow < nrows())
@@ -2217,7 +2217,7 @@ Tabular::idx_type Tabular::cellBelow(idx_type cell) const
 }
 
 
-Tabular::idx_type Tabular::cellIndex(row_type row, col_type column) const
+idx_type Tabular::cellIndex(row_type row, col_type column) const
 {
 	LASSERT(column != npos && column < ncols(), column = 0);
 	LASSERT(row != npos && row < nrows(), row = 0);
@@ -2368,7 +2368,7 @@ bool Tabular::haveLTLastFoot(bool withcaptions) const
 }
 
 
-Tabular::idx_type Tabular::setLTCaption(Cursor & cur, row_type row, bool what)
+idx_type Tabular::setLTCaption(Cursor & cur, row_type row, bool what)
 {
 	idx_type i = getFirstCellInRow(row);
 	if (what) {
@@ -4366,8 +4366,8 @@ bool InsetTabular::insetAllowed(InsetCode code) const
 
 bool InsetTabular::allowMultiPar() const
 {
-	for (Tabular::col_type c = 0; c < tabular.ncols(); ++c) {
-		for (Tabular::row_type r = 0; r < tabular.nrows(); ++r) {
+	for (col_type c = 0; c < tabular.ncols(); ++c) {
+		for (row_type r = 0; r < tabular.nrows(); ++r) {
 			if (tabular.cellInset(r,c)->allowMultiPar())
 				return true;
 		}
@@ -6226,7 +6226,7 @@ void InsetTabular::setCursorFromCoordinates(Cursor & cur, int x, int y) const
 }
 
 
-InsetTabular::idx_type InsetTabular::getNearestCell(BufferView & bv, int x, int y) const
+idx_type InsetTabular::getNearestCell(BufferView & bv, int x, int y) const
 {
 	idx_type idx_min = 0;
 	int dist_min = numeric_limits<int>::max();
@@ -7661,8 +7661,8 @@ string InsetTabular::params2string(InsetTabular const & inset)
 
 void InsetTabular::setLayoutForHiddenCells(DocumentClass const & dc)
 {
-	for (Tabular::col_type c = 0; c < tabular.ncols(); ++c) {
-		for (Tabular::row_type r = 0; r < tabular.nrows(); ++r) {
+	for (col_type c = 0; c < tabular.ncols(); ++c) {
+		for (row_type r = 0; r < tabular.nrows(); ++r) {
 			if (!tabular.isPartOfMultiColumn(r,c) &&
 			    !tabular.isPartOfMultiRow(r,c))
 				continue;

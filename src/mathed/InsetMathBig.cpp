@@ -64,7 +64,7 @@ Inset * InsetMathBig::clone() const
 }
 
 
-InsetMathBig::size_type InsetMathBig::size() const
+size_type InsetMathBig::size() const
 {
 	// order: big Big bigg Bigg biggg Biggg
 	//        0   1   2    3    4     5

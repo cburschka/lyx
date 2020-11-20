@@ -445,7 +445,7 @@ Inset * Inset::editXY(Cursor &, int x, int y)
 }
 
 
-Inset::idx_type Inset::index(row_type row, col_type col) const
+idx_type Inset::index(row_type row, col_type col) const
 {
 	if (row != 0)
 		LYXERR0("illegal row: " << row);

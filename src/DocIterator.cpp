@@ -271,7 +271,7 @@ pos_type DocIterator::lastpos() const
 }
 
 
-DocIterator::idx_type DocIterator::lastidx() const
+idx_type DocIterator::lastidx() const
 {
 	return top().lastidx();
 }
@@ -298,13 +298,13 @@ size_t DocIterator::nrows() const
 }
 
 
-DocIterator::row_type DocIterator::row() const
+row_type DocIterator::row() const
 {
 	return top().row();
 }
 
 
-DocIterator::col_type DocIterator::col() const
+col_type DocIterator::col() const
 {
 	return top().col();
 }
@@ -723,7 +723,7 @@ void DocIterator::append(vector<CursorSlice> const & x)
 }
 
 
-void DocIterator::append(DocIterator::idx_type idx, pos_type pos)
+void DocIterator::append(idx_type idx, pos_type pos)
 {
 	slices_.push_back(CursorSlice());
 	top().idx() = idx;

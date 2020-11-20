@@ -421,7 +421,7 @@ bool InsetMathScript::hasDown() const
 }
 
 
-Inset::idx_type InsetMathScript::idxOfScript(bool up) const
+idx_type InsetMathScript::idxOfScript(bool up) const
 {
 	if (nargs() == 1)
 		return 0;

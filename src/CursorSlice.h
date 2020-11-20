@@ -44,13 +44,6 @@ public:
 	friend class StableDocIterator;
 	//@}
 
-	/// type for cell number in inset
-	typedef size_t idx_type;
-	/// type for row indices
-	typedef size_t row_type;
-	/// type for col indices
-	typedef size_t col_type;
-
 	///
 	CursorSlice();
 	///
