@@ -207,9 +207,9 @@ public:
 		int wline = 0;
 		int hline = fm.maxHeight();
 		QStringList::const_iterator sit;
-		for (sit = titlesegs.constBegin(); sit != titlesegs.constEnd(); ++sit) {
-			if (fm.width(*sit) > wline)
-				wline = fm.width(*sit);
+		for (QString const & seg : titlesegs) {
+			if (fm.width(seg) > wline)
+				wline = fm.width(seg);
 		}
 		// The longest line in the reference font (for English)
 		// is 180. Calculate scale factor from that.
@@ -831,13 +831,11 @@ void GuiView::saveUISettings() const
 	QSettings settings;
 
 	// Save the toolbar private states
-	ToolbarMap::iterator end = d.toolbars_.end();
-	for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
-		it->second->saveSession(settings);
+	for (auto const & tb_p : d.toolbars_)
+		tb_p.second->saveSession(settings);
 	// Now take care of all other dialogs
-	map<string, DialogPtr>::const_iterator it = d.dialogs_.begin();
-	for (; it!= d.dialogs_.end(); ++it)
-		it->second->saveSession(settings);
+	for (auto const & dlg_p : d.dialogs_)
+		dlg_p.second->saveSession(settings);
 }
 
 
@@ -892,12 +890,10 @@ bool GuiView::restoreLayout()
 		initToolbars();
 
 	// init the toolbars that have not been restored
-	Toolbars::Infos::iterator cit = guiApp->toolbars().begin();
-	Toolbars::Infos::iterator end = guiApp->toolbars().end();
-	for (; cit != end; ++cit) {
-		GuiToolbar * tb = toolbar(cit->name);
+	for (auto const & tb_p : guiApp->toolbars()) {
+		GuiToolbar * tb = toolbar(tb_p.name);
 		if (tb && !tb->isRestored())
-			initToolbar(cit->name);
+			initToolbar(tb_p.name);
 	}
 
 	// update lock (all) toolbars positions
@@ -932,9 +928,8 @@ void GuiView::updateLockToolbars()
 
 void GuiView::constructToolbars()
 {
-	ToolbarMap::iterator it = d.toolbars_.begin();
-	for (; it != d.toolbars_.end(); ++it)
-		delete it->second;
+	for (auto const & tb_p : d.toolbars_)
+		delete tb_p.second;
 	d.toolbars_.clear();
 
 	// I don't like doing this here, but the standard toolbar
@@ -944,20 +939,16 @@ void GuiView::constructToolbars()
 	d.layout_->move(0,0);
 
 	// extracts the toolbars from the backend
-	Toolbars::Infos::iterator cit = guiApp->toolbars().begin();
-	Toolbars::Infos::iterator end = guiApp->toolbars().end();
-	for (; cit != end; ++cit)
-		d.toolbars_[cit->name] =  new GuiToolbar(*cit, *this);
+	for (ToolbarInfo const & inf : guiApp->toolbars())
+		d.toolbars_[inf.name] =  new GuiToolbar(inf, *this);
 }
 
 
 void GuiView::initToolbars()
 {
 	// extracts the toolbars from the backend
-	Toolbars::Infos::iterator cit = guiApp->toolbars().begin();
-	Toolbars::Infos::iterator end = guiApp->toolbars().end();
-	for (; cit != end; ++cit)
-		initToolbar(cit->name);
+	for (ToolbarInfo const & inf : guiApp->toolbars())
+		initToolbar(inf.name);
 }
 
 
@@ -1169,12 +1160,9 @@ void GuiView::dropEvent(QDropEvent * event)
 		vector<const Format *> found_formats;
 
 		// Find all formats that have the correct extension.
-		vector<const Format *> const & import_formats
-			= theConverters().importableFormats();
-		vector<const Format *>::const_iterator it = import_formats.begin();
-		for (; it != import_formats.end(); ++it)
-			if ((*it)->hasExtension(ext))
-				found_formats.push_back(*it);
+		for (const Format * fmt : theConverters().importableFormats())
+			if (fmt->hasExtension(ext))
+				found_formats.push_back(fmt);
 
 		FuncRequest cmd;
 		if (!found_formats.empty()) {
@@ -1405,10 +1393,9 @@ bool GuiView::event(QEvent * e)
 			if (lyxrc.full_screen_menubar)
 				menuBar()->hide();
 			if (lyxrc.full_screen_toolbars) {
-				ToolbarMap::iterator end = d.toolbars_.end();
-				for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
-					if (it->second->isVisibiltyOn() && it->second->isVisible())
-						it->second->hide();
+				for (auto const & tb_p  : d.toolbars_)
+					if (tb_p.second->isVisibiltyOn() && tb_p.second->isVisible())
+						tb_p.second->hide();
 			}
 			for (int i = 0; i != d.splitter_->count(); ++i)
 				d.tabWorkArea(i)->setFullScreen(true);
@@ -1423,10 +1410,9 @@ bool GuiView::event(QEvent * e)
 			if (lyxrc.full_screen_menubar && !menuBar()->isVisible())
 				menuBar()->show();
 			if (lyxrc.full_screen_toolbars) {
-				ToolbarMap::iterator end = d.toolbars_.end();
-				for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
-					if (it->second->isVisibiltyOn() && !it->second->isVisible())
-						it->second->show();
+				for (auto const & tb_p  : d.toolbars_)
+					if (tb_p.second->isVisibiltyOn() && !tb_p.second->isVisible())
+						tb_p.second->show();
 				//updateToolbars();
 			}
 			for (int i = 0; i != d.splitter_->count(); ++i)
@@ -1708,7 +1694,6 @@ void GuiView::updateLayoutList()
 
 void GuiView::updateToolbars()
 {
-	ToolbarMap::iterator end = d.toolbars_.end();
 	if (d.current_work_area_) {
 		int context = 0;
 		if (d.current_work_area_->bufferView().cursor().inMathed()
@@ -1733,11 +1718,11 @@ void GuiView::updateToolbars()
 			minibuffer_focus_ = false;
 		}
 
-		for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
-			it->second->update(context);
+		for (auto const & tb_p : d.toolbars_)
+			tb_p.second->update(context);
 	} else
-		for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
-			it->second->update();
+		for (auto const & tb_p : d.toolbars_)
+			tb_p.second->update();
 }
 
 
@@ -2510,8 +2495,8 @@ static bool import(GuiView * lv, FileName const & filename,
 	if (find(loaders.begin(), loaders.end(), format) == loaders.end()) {
 		vector<string>::const_iterator it = loaders.begin();
 		vector<string>::const_iterator en = loaders.end();
-		for (; it != en; ++it) {
-			if (!theConverters().isReachable(format, *it))
+		for (string const & loader : loaders) {
+			if (!theConverters().isReachable(format, loader))
 				continue;
 
 			string const tofile =
@@ -3225,11 +3210,7 @@ bool GuiView::closeWorkArea(GuiWorkArea * wa, bool close_buffer)
 bool GuiView::closeBuffer(Buffer & buf)
 {
 	bool success = true;
-	ListOfBuffers clist = buf.getChildren();
-	ListOfBuffers::const_iterator it = clist.begin();
-	ListOfBuffers::const_iterator const bend = clist.end();
-	for (; it != bend; ++it) {
-		Buffer * child_buf = *it;
+	for (Buffer * child_buf : buf.getChildren()) {
 		if (theBufferList().isOthersChild(&buf, child_buf)) {
 			child_buf->setParent(nullptr);
 			continue;
@@ -3480,10 +3461,7 @@ bool GuiView::reloadBuffer(Buffer & buf)
 
 void GuiView::checkExternallyModifiedBuffers()
 {
-	BufferList::iterator bit = theBufferList().begin();
-	BufferList::iterator const bend = theBufferList().end();
-	for (; bit != bend; ++bit) {
-		Buffer * buf = *bit;
+	for (Buffer * buf : theBufferList()) {
 		if (buf->fileName().exists() && buf->isChecksumModified()) {
 			docstring text = bformat(_("Document \n%1$s\n has been externally modified."
 					" Reload now? Any local changes will be lost."),
@@ -4915,21 +4893,15 @@ void GuiView::disconnectDialog(string const & name)
 
 void GuiView::hideAll() const
 {
-	map<string, DialogPtr>::const_iterator it  = d.dialogs_.begin();
-	map<string, DialogPtr>::const_iterator end = d.dialogs_.end();
-
-	for(; it != end; ++it)
-		it->second->hideView();
+	for(auto const & dlg_p : d.dialogs_)
+		dlg_p.second->hideView();
 }
 
 
 void GuiView::updateDialogs()
 {
-	map<string, DialogPtr>::const_iterator it  = d.dialogs_.begin();
-	map<string, DialogPtr>::const_iterator end = d.dialogs_.end();
-
-	for(; it != end; ++it) {
-		Dialog * dialog = it->second.get();
+	for(auto const & dlg_p : d.dialogs_)
+		Dialog * dialog = dlg_p.second.get();
 		if (dialog) {
 			if (dialog->needBufferOpen() && !documentBufferView())
 				hideDialog(fromqstr(dialog->name()), nullptr);
