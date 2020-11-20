@@ -805,7 +805,9 @@ std::set<const Inset *> gatherInfo(ParagraphList::const_iterator par)
 			} else {
 				auto subpar = inset->paragraphs().begin();
 				while (subpar != inset->paragraphs().end()) {
-					values.merge(gatherInfo(subpar));
+					auto subinfos = gatherInfo(subpar);
+					for (auto & subinfo: subinfos)
+						values.insert(subinfo);
 					++subpar;
 				}
 			}
@@ -905,7 +907,9 @@ void outputDocBookInfo(
 				auto oldPar = paragraphs.iterator_at(p);
 				auto newPar = makeAny(text, buf, xs2, rp, oldPar);
 
-				infoInsets.merge(gatherInfo(oldPar));
+				auto subinfos = gatherInfo(oldPar);
+				for (auto & subinfo: subinfos)
+					infoInsets.insert(subinfo);
 
 				// Insert the indices of all the paragraphs that were just generated (typically, one).
 				// **Make the hypothesis that, when an abstract has a list, all its items are consecutive.**
