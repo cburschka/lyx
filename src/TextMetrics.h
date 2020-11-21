@@ -76,7 +76,7 @@ public:
 		     bool const expand_on_multipars = true);
 
 	/// The "nodraw" drawing stage for one single paragraph: set the
-	/// positions of the insets contained this paragraph in metrics
+	/// positions of the insets contained in this paragraph in metrics
 	/// cache. Related to BufferView::updatePosCache.
 	void updatePosCache(pit_type pit) const;
 
@@ -99,11 +99,9 @@ public:
 	/// is this position in the paragraph right-to-left?
 	bool isRTL(CursorSlice const & sl, bool boundary) const;
 	/// is between pos-1 and pos an RTL<->LTR boundary?
-	bool isRTLBoundary(pit_type pit,
-	  pos_type pos) const;
+	bool isRTLBoundary(pit_type pit, pos_type pos) const;
 	/// would be a RTL<->LTR boundary between pos and the given font?
-	bool isRTLBoundary(pit_type pit,
-	  pos_type pos, Font const & font) const;
+	bool isRTLBoundary(pit_type pit, pos_type pos, Font const & font) const;
 
 
 	/// Rebreaks the given paragraph.
