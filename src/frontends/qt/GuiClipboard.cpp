@@ -35,6 +35,8 @@
 
 #include "frontends/alert.h"
 
+#include "support/checksum.h"
+
 #include <QApplication>
 #include <QBuffer>
 #include <QClipboard>
@@ -46,8 +48,6 @@
 #include <QStringList>
 #include <QTextDocument>
 #include <QTimer>
-
-#include <boost/crc.hpp>
 
 #include <memory>
 #include <map>
@@ -431,11 +431,8 @@ void GuiClipboard::put(string const & lyx, docstring const & html, docstring con
 		data->setData(lyxMimeType(), qlyx);
 		// If the OS has not the concept of clipboard ownership,
 		// we recognize internal data through its checksum.
-		if (!hasInternal()) {
-			boost::crc_32_type crc32;
-			crc32.process_bytes(lyx.c_str(), lyx.size());
-			checksum = crc32.checksum();
-		}
+		if (!hasInternal())
+			checksum = support::checksum(lyx);
 	}
 	// Don't test for text.empty() since we want to be able to clear the
 	// clipboard.
@@ -528,9 +525,7 @@ bool GuiClipboard::isInternal() const
 	// ourself by comparing its checksum with the stored one.
 	QByteArray const ar = cache_.data(lyxMimeType());
 	string const data(ar.data(), ar.count());
-	boost::crc_32_type crc32;
-	crc32.process_bytes(data.c_str(), data.size());
-	return checksum == crc32.checksum();
+	return checksum == static_cast<std::uint32_t>(support::checksum(data));
 }
 
 

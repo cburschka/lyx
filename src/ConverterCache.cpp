@@ -25,8 +25,8 @@
 #include "support/lyxtime.h"
 #include "support/Package.h"
 
+#include "support/checksum.h"
 #include "support/lassert.h"
-#include <boost/crc.hpp>
 
 #include <algorithm>
 #include <fstream>
@@ -41,14 +41,6 @@ namespace lyx {
 
 namespace {
 
-unsigned long do_crc(string const & s)
-{
-	boost::crc_32_type crc;
-	crc = for_each(s.begin(), s.end(), crc);
-	return crc.checksum();
-}
-
-
 // FIXME THREAD
 // This should be OK because it is only assigned during init()
 static FileName cache_dir;
@@ -62,7 +54,8 @@ public:
 		: timestamp(t), checksum(c)
 	{
 		ostringstream os;
-		os << setw(10) << setfill('0') << do_crc(orig_from.absFileName())
+		os << setw(10) << setfill('0')
+		   << support::checksum(orig_from.absFileName())
 		   << '-' << to_format;
 		cache_name = FileName(addName(cache_dir.absFileName(), os.str()));
 		LYXERR(Debug::FILES, "Add file cache item " << orig_from

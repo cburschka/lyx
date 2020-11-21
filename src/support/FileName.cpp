@@ -35,7 +35,7 @@
 #include <QThread>
 #endif
 
-#include <boost/crc.hpp>
+#include "support/checksum.h"
 
 #include <algorithm>
 #include <iterator>
@@ -537,19 +537,13 @@ bool FileName::link(FileName const & name) const
 
 unsigned long checksum_ifstream_fallback(char const * file)
 {
-	unsigned long result = 0;
 	//LYXERR(Debug::FILES, "lyx::sum() using istreambuf_iterator (fast)");
 	ifstream ifs(file, ios_base::in | ios_base::binary);
 	if (!ifs)
-		return result;
-
-	istreambuf_iterator<char> beg(ifs);
-	istreambuf_iterator<char> end;
-	boost::crc_32_type crc;
-	crc = for_each(beg, end, crc);
-	result = crc.checksum();
-	return result;
+		return 0;
+	return support::checksum(ifs);
 }
+
 
 unsigned long FileName::checksum() const
 {
@@ -583,11 +577,9 @@ unsigned long FileName::checksum() const
 	qint64 size = fi.size();
 	uchar * ubeg = qf.map(0, size);
 	uchar * uend = ubeg + size;
-	boost::crc_32_type ucrc;
-	ucrc.process_block(ubeg, uend);
+	result = support::checksum(ubeg, uend);
 	qf.unmap(ubeg);
 	qf.close();
-	result = ucrc.checksum();
 
 #else // QT_VERSION
 
@@ -619,9 +611,7 @@ unsigned long FileName::checksum() const
 	char * beg = static_cast<char*>(mm);
 	char * end = beg + info.st_size;
 
-	boost::crc_32_type crc;
-	crc.process_block(beg, end);
-	result = crc.checksum();
+	result = support::checksum(beg, end);
 
 	munmap(mm, info.st_size);
 	close(fd);

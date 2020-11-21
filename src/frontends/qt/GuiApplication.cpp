@@ -59,6 +59,7 @@
 
 #include "insets/InsetText.h"
 
+#include "support/checksum.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
@@ -145,8 +146,6 @@
 #ifdef Q_OS_MAC
 #include <QMacPasteboardMime>
 #endif // Q_OS_MAC
-
-#include <boost/crc.hpp>
 
 #include <exception>
 #include <sstream>
@@ -1708,9 +1707,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			&& !is_open)) {
 			// We want the ui session to be saved per document and not per
 			// window number. The filename crc is a good enough identifier.
-			boost::crc_32_type crc;
-			crc = for_each(fname.begin(), fname.end(), crc);
-			createView(crc.checksum());
+			createView(support::checksum(fname));
 			current_view_->openDocument(fname);
 			if (!current_view_->documentBufferView())
 				current_view_->close();
@@ -2670,10 +2667,8 @@ void GuiApplication::restoreGuiSession()
 		FileName const & file_name = last.file_name;
 		if (!current_view_ || (!lyxrc.open_buffers_in_tabs
 			  && current_view_->documentBufferView() != 0)) {
-			boost::crc_32_type crc;
 			string const & fname = file_name.absFileName();
-			crc = for_each(fname.begin(), fname.end(), crc);
-			createView(crc.checksum());
+			createView(support::checksum(fname));
 		}
 		current_view_->loadDocument(file_name, false);
 

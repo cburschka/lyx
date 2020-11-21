@@ -38,6 +38,8 @@ liblyxsupport_a_SOURCES = \
 	bind.h \
 	Cache.h \
 	Changer.h \
+	checksum.cpp \
+	checksum.h \
 	ConsoleApplication.cpp \
 	ConsoleApplication.h \
 	ConsoleApplicationPrivate.h \
