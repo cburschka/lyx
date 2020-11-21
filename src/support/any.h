@@ -13,11 +13,23 @@
 #define LYX_ANY_H
 
 #if __cplusplus >= 201703L
-	#include <any>
-	namespace lyx { using std::any; }
+
+#include <any>
+
+namespace lyx {
+using std::any;
+using std::any_cast;
+}
+
 #else
-	#include <boost/any.hpp>
-	namespace lyx { using boost::any; }
-#endif
+
+#include <boost/any.hpp>
+
+namespace lyx {
+using boost::any;
+using boost::any_cast;
+}
+
+#endif // __cplusplus >= 201703L
 
 #endif // LYX_ANY_H

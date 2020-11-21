@@ -25,6 +25,7 @@
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
 
+#include <algorithm> // sort, lower_bound
 #include <functional>
 #include <fstream>
 #include <istream>
