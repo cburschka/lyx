@@ -1399,6 +1399,10 @@ bool GuiView::event(QEvent * e)
 			}
 			for (int i = 0; i != d.splitter_->count(); ++i)
 				d.tabWorkArea(i)->setFullScreen(true);
+#if QT_VERSION > 0x050903
+			//Qt's 5.9.4 ba44cdae38406c safe area measures won't allow us to go negative in margins
+			setAttribute(Qt::WA_ContentsMarginsRespectsSafeArea, false);
+#endif
 			setContentsMargins(-2, -2, -2, -2);
 			// bug 5274
 			hideDialogs("prefs", nullptr);
@@ -1417,6 +1421,9 @@ bool GuiView::event(QEvent * e)
 			}
 			for (int i = 0; i != d.splitter_->count(); ++i)
 				d.tabWorkArea(i)->setFullScreen(false);
+#if QT_VERSION > 0x050903
+			setAttribute(Qt::WA_ContentsMarginsRespectsSafeArea, true);
+#endif
 			setContentsMargins(0, 0, 0, 0);
 		}
 		return result;
@@ -4652,8 +4659,14 @@ bool GuiView::lfunUiToggle(string const & ui_component)
 		//are the frames in default state?
 		d.current_work_area_->setFrameStyle(QFrame::NoFrame);
 		if (l == 0) {
+#if QT_VERSION >  0x050903
+			setAttribute(Qt::WA_ContentsMarginsRespectsSafeArea, false);
+#endif
 			setContentsMargins(-2, -2, -2, -2);
 		} else {
+#if QT_VERSION >  0x050903
+			setAttribute(Qt::WA_ContentsMarginsRespectsSafeArea, true);
+#endif
 			setContentsMargins(0, 0, 0, 0);
 		}
 	} else
