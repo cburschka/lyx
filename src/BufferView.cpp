@@ -3065,6 +3065,8 @@ void BufferView::caretPosAndDim(Point & p, Dimension & dim) const
 		dim.wid = lyxrc.cursor_width;
 
 	p = getPos(cur);
+	// center fat carets horizontally
+	p.x_ -= dim.wid / 2;
 	p.y_ -= dim.asc;
 }
 

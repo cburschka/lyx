@@ -138,9 +138,8 @@ public:
 	{
 		if (dim.empty())
 			return;
-		// correction is (1) for horizontal scrolling and (2) for
-		// better positionning of large cursors.
-		int const xx = x - horiz_offset - dim.wid / 2;
+		// correction for horizontal scrolling
+		int const xx = x - horiz_offset;
 		int const lx = dim.height() / 3;
 
 		// draw caret box
