@@ -14,10 +14,9 @@
 
 #include "graphics/GraphicsParams.h"
 
+#include "support/any.h"
 #include "support/Length.h"
 #include "support/unique_ptr.h"
-
-#include <boost/any.hpp>
 
 #include <functional>
 #include <map>
@@ -339,7 +338,7 @@ public:
 	 */
 	template <typename Factory>
 	TransformStore(TransformID id_, Factory const & factory)
-		: id(id_), any_factory(boost::any(factory)) {}
+		: id(id_), any_factory(any(factory)) {}
 
 	typedef TransformCommand::ptr_type ComPtr;
 	typedef TransformOption::ptr_type  OptPtr;
@@ -353,7 +352,7 @@ public:
 
 private:
 	TransformID id;
-	boost::any any_factory;
+	any any_factory;
 };
 
 } // namespace external

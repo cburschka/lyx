@@ -326,13 +326,13 @@ string const sanitizeLatexOption(string const & input)
 namespace {
 
 template <typename Factory, typename Data, typename Transformer>
-void extractIt(boost::any const & any_factory,
+void extractIt(any const & any_factory,
 	       Data const & data, Transformer & transformer)
 {
 	if (any_factory.type() != typeid(Factory))
 		return;
 
-	Factory factory = boost::any_cast<Factory>(any_factory);
+	Factory factory = any_cast<Factory>(any_factory);
 	if (factory)
 		transformer = factory(data);
 }
