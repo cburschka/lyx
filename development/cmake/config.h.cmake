@@ -50,8 +50,6 @@
 
 #cmakedefine LYX_MERGE_FILES 1
 
-#cmakedefine LYX_USE_STD_REGEX 1
-
 // Define if callstack can be printed
 #cmakedefine LYX_CALLSTACK_PRINTING 1
 

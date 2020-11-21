@@ -6,10 +6,4 @@
 
 project(boost)
 
-
-if(LYX_USE_STD_REGEX)
-	message(STATUS "Using std regex")
-else()
-	add_subdirectory(regex) 
-endif()
-
+message(STATUS "Using std regex")

@@ -3,10 +3,7 @@ include $(top_srcdir)/config/common.am
 DIST_SUBDIRS = boost dtl hunspell mythes libiconv zlib
 
 if USE_INCLUDED_BOOST
-if LYX_USE_STD_REGEX
-else
 BOOST = boost
-endif
 endif
 
 if USE_INCLUDED_HUNSPELL

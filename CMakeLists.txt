@@ -380,13 +380,7 @@ unset(LYX_GCC11_MODE)
 if(UNIX OR MINGW)
 	if (CMAKE_CXX_COMPILER_ID MATCHES "^([cC]lang|AppleClang)$")
 	  # ignore the GCC_VERSION for clang
-	  # and use the resulting CXX11_STD_REGEX found in FindCXX11Compiler.cmake
 	  message(STATUS "Using clang")
-	  if(CXX11_STD_REGEX)
-	    set(LYX_USE_STD_REGEX 1)
-	  else()
-	    set(LYX_USE_STD_REGEX 0)
-	  endif()
 	else()
 	  execute_process(COMMAND ${CMAKE_CXX_COMPILER} -dumpfullversion OUTPUT_VARIABLE GCC_VERSION ERROR_VARIABLE _error RESULT_VARIABLE _err OUTPUT_STRIP_TRAILING_WHITESPACE)
 	  #message(STATUS "dumpfullversion: error = ${_error}, result = ${_err}")
@@ -399,7 +393,6 @@ if(UNIX OR MINGW)
 	  if(GCC_VERSION VERSION_LESS 4.9)
 		message(FATAL_ERROR "gcc >= 4.9 is required.")
 	  endif()
-	  set(LYX_USE_STD_REGEX 1)
 	endif()
 	set(LYX_GCC11_MODE "${CXX11_FLAG}")
 else()
@@ -407,7 +400,6 @@ else()
 		# Drop support for msvc versions prior to 1900 (Visual Studio 2015)
 		message(FATAL_ERROR "Visual Studio >= 2015 is required.")
 	endif()
-	set(LYX_USE_STD_REGEX 1)
 endif()
 
 if(LYX_3RDPARTY_BUILD)
@@ -941,40 +933,12 @@ if(NOT LYX_EXTERNAL_DTL)
   add_subdirectory(3rdparty/dtl)
 endif()
 
-if(LYX_USE_STD_REGEX)
-  # Set only include path.
-  # Use internal boost, which is known to exist
-  # we don't need any libraries
-  set(Lyx_Boost_Libraries)
-  add_definitions(-DBOOST_USER_CONFIG=<config.h>)
-  include_directories(${TOP_SRC_DIR}/3rdparty/boost)
-else()
-  # Using boost-regex
-  if(LYX_EXTERNAL_BOOST)
-    message(STATUS "Searching for external boost")
-    find_package(Boost COMPONENTS regex)
-    if(Boost_FOUND)
-      message(STATUS "Boost found")
-      message(STATUS "Boost-libs = ${Boost_LIBRARIES}")
-      set(Lyx_Boost_Libraries ${Boost_LIBRARIES})
-      if (LYX_STDLIB_DEBUG OR LYX_DEBUG_GLIBC OR LYX_DEBUG_GLIBC_PEDANTIC)
-	# Comment from 	Jean-Marc Lasgouttes:
-	# In general, system boost libraries are incompatible with
-	# the use of stdlib-debug in libstdc++. See ticket #9736 for
-	# details.
-	message(FATAL_ERROR "Compiling LyX with stdlib-debug and system boost libraries may lead to crashes. Consider using '-DLYX_STDLIB_DEBUG=OFF -DLYX_DEBUG_GLIBC=OFF -DLYX_DEBUG_GLIBC_PEDANTIC=OFF' or using '-DLYX_EXTERNAL_BOOST=OFF'")
-      endif()
-    else()
-      message(FATAL_ERROR "Boost not found" ${Boost_ERROR_REASON})
-    endif()
-  else()
-    # Using included boost
-    set(Lyx_Boost_Libraries boost_regex)
-    add_definitions(-DBOOST_USER_CONFIG=<config.h>)
-    include_directories(${TOP_SRC_DIR}/3rdparty/boost)
-    add_subdirectory(3rdparty/boost "${TOP_BINARY_DIR}/3rdparty/boost")
-  endif()
-endif()
+# Set only include path.
+# Use internal boost, which is known to exist
+# we don't need any libraries
+set(Lyx_Boost_Libraries)
+add_definitions(-DBOOST_USER_CONFIG=<config.h>)
+include_directories(${TOP_SRC_DIR}/3rdparty/boost)
 
 if(WIN32)
 	if(LYX_CONSOLE)
@@ -1173,10 +1137,6 @@ unset(tmp_vi)
 
 if(QTVERSION MATCHES "^([0-9]+)\\.([0-9]+)\\.([0-9]+).*")
 	MATH(EXPR QT4_VERSION "(${CMAKE_MATCH_1}<<16)|(${CMAKE_MATCH_2}<<8)|${CMAKE_MATCH_3}")
-endif()
-
-if (NOT HAVE_REGEX)
-	set(LYX_USE_STD_REGEX 0)
 endif()
 
 

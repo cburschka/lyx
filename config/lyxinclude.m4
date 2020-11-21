@@ -213,46 +213,6 @@ AC_DEFUN([LYX_CXX_CXX11_FLAGS],
 ])
 
 
-dnl Usage: LYX_CXX_USE_REGEX
-dnl decide whether we want to use std::regex and set the
-dnl LYX_USE_STD_REGEX macro and conditional accordingly.
-AC_DEFUN([LYX_CXX_USE_REGEX],
-[AC_ARG_ENABLE(std-regex,
-  AS_HELP_STRING([--enable-std-regex],[use std::regex instead of boost::regex (default is autodetected)]),
-  [lyx_std_regex=$enableval],
-  [AC_MSG_CHECKING([for correct regex implementation])
-   save_CPPFLAGS=$CPPFLAGS
-   CPPFLAGS="$AM_CPPFLAGS $CPPFLAGS"
-   save_CXXFLAGS=$CXXFLAGS
-   CXXFLAGS="$AM_CXXFLAGS $CXXFLAGS"
-   # The following code snippet has been taken taken from example in
-   #   http://stackoverflow.com/questions/8561850/compile-stdregex-iterator-with-gcc
-   AC_LINK_IFELSE([AC_LANG_PROGRAM([[
-	#include <regex>
-	#include <iostream>
-
-	#include <string.h>
-
-	typedef std::regex_iterator<const char *> Myiter;
-     ]], [[
-	const char *pat = "axayaz";
-	Myiter::regex_type rx("a");
-	Myiter next(pat, pat + strlen(pat), rx);
-	Myiter end;
-   ]])],[lyx_std_regex=yes],[lyx_std_regex=no])
-   CXXFLAGS=$save_CXXFLAGS
-   CPPFLAGS=$save_CPPFLAGS
-   AC_MSG_RESULT([$lyx_std_regex])
- ])
-
- if test $lyx_std_regex = yes ; then
-  lyx_flags="$lyx_flags std-regex"
-  AC_DEFINE([LYX_USE_STD_REGEX], 1, [define to 1 if std::regex should be preferred to boost::regex])
- fi
- AM_CONDITIONAL([LYX_USE_STD_REGEX], test $lyx_std_regex = yes)
-])
-
-
 dnl Usage: LYX_CXX_USE_CALL_ONCE
 dnl check whether we can use std::call_once and set the
 dnl LYX_USE_STD_CALL_ONCE macro and conditional accordingly.
@@ -319,7 +279,6 @@ LYX_PROG_CLANG
 LYX_CXX_CXX11_FLAGS($enable_cxx_mode)
 LYX_LIB_STDCXX
 LYX_LIB_STDCXX_CXX11_ABI
-LYX_CXX_USE_REGEX
 LYX_CXX_USE_CALL_ONCE
 AC_LANG_POP(C++)
 
