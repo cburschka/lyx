@@ -3295,8 +3295,23 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 	 * move at all
 	 */
 	if (paint_caret) {
-		Row const & caret_row = d->cursor_.textRow();
-		caret_row.changed(true);
+		Cursor cur(d->cursor_);
+		Point p;
+		Dimension dim;
+		caretPosAndDim(p, dim);
+		while (cur.depth() > 1) {
+			if (cur.inTexted()) {
+				TextMetrics const & tm = textMetrics(cur.text());
+				if (p.x_ >= tm.origin().x_
+					&& p.x_ + dim.width() <= tm.origin().x_ + tm.dim().width())
+					break;
+			} else {
+				// in mathed
+				break;
+			}
+			cur.pop();
+		}
+		cur.textRow().changed(true);
 	}
 }
 
