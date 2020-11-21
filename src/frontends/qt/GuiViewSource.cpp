@@ -25,7 +25,6 @@
 #include "GuiView.h"
 #include "FuncRequest.h"
 #include "LyX.h"
-#include "Paragraph.h"
 #include "TexRow.h"
 
 #include "support/debug.h"
@@ -34,10 +33,7 @@
 #include "support/docstring_list.h"
 #include "support/gettext.h"
 
-#include <boost/crc.hpp>
-
 #include <QBoxLayout>
-#include <QComboBox>
 #include <QScrollBar>
 #include <QSettings>
 #include <QTextCursor>

@@ -87,7 +87,6 @@
 #include <QByteArray>
 #include <QDateTime>
 #include <QDesktopWidget>
-#include <QDir>
 #include <QEvent>
 #include <QFileOpenEvent>
 #include <QFileInfo>
