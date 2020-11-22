@@ -162,6 +162,7 @@ logicalmkup
 \author -131811572 "Yuriy Skalko"
 \author 5863208 "ab"
 \author 5863344 "Enrico Forestieri"
+\author 244031559 "Yuriy"
 \author 1675569489 "Stephan Witt"
 \end_header
 
@@ -38032,11 +38033,17 @@ All spell-checker dictionaries supported by \SpecialChar LyX
 
 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
+\change_deleted 244031559 1606069762
+
 https://sourceforge.net/projects/lyxwininstaller/files/hunspell/
+\change_inserted 244031559 1606069762
+https://www.lyx.org/trac/export/HEAD/lyxsvn/dictionaries/trunk/dicts/
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -38045,12 +38052,30 @@ https://sourceforge.net/projects/lyxwininstaller/files/hunspell/
 \begin_inset Newline newline
 \end_inset
 
-There are 2
+
+\change_deleted 244031559 1606070170
+There are
+\change_inserted 244031559 1606070176
+You should download
+\change_unchanged
+ 2
 \begin_inset space ~
 \end_inset
 
-files for each language.
- To install a dictionary on Windows, copy the 2
+files for each language
+\change_inserted 244031559 1606070127
+ (use 
+\emph on
+Original Format
+\emph default
+ link at the end of the opened webpage)
+\change_unchanged
+.
+ To install a dictionary on Windows, copy the
+\change_inserted 244031559 1606069925
+se
+\change_unchanged
+ 2
 \begin_inset space ~
 \end_inset
 
@@ -38414,18 +38439,29 @@ user
 
 \begin_layout Standard
 If you want to install new\SpecialChar breakableslash
-further thesaurus dictionaries, you can downloaded
- them from here:
+
+\change_deleted 244031559 1606069849
+further
+\change_inserted 244031559 1606069853
+updated
+\change_unchanged
+ thesaurus dictionaries, you can download them from here:
 \begin_inset Newline newline
 \end_inset
 
 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
+\change_deleted 244031559 1606069803
+
 https://sourceforge.net/projects/lyxwininstaller/files/thesaurus/
+\change_inserted 244031559 1606069803
+https://www.lyx.org/trac/export/HEAD/lyxsvn/dictionaries/trunk/thes/
+\change_unchanged
+
 \end_layout
 
 \end_inset
