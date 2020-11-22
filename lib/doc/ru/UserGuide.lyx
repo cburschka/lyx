@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 598
+\lyxformat 599
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -34287,7 +34287,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://sourceforge.net/projects/lyxwininstaller/files/hunspell/
+https://www.lyx.org/trac/export/HEAD/lyxsvn/dictionaries/trunk/dicts/
 \end_layout
 
 \end_inset
@@ -34296,9 +34296,13 @@ https://sourceforge.net/projects/lyxwininstaller/files/hunspell/
 \begin_inset Newline newline
 \end_inset
 
-Для каждого языка имеется 2 файла.
- Чтобы установить словарь в Windows, скопируйте 2 файла в подкаталог установки
- \SpecialChar LyX
+Для каждого языка нужно скачать 2 файла (используйте ссылку 
+\emph on
+Original Format
+\emph default
+ в конце открывшейся страницы).
+ Чтобы установить словарь в Windows, скопируйте эти 2 файла в подкаталог
+ установки \SpecialChar LyX
  
 \family typewriter
 ~
@@ -34667,8 +34671,8 @@ user/
 \end_layout
 
 \begin_layout Standard
-Если вы желаете установить новые/дополнительные словари тезауруса, то можете
- скачать их здесь:
+Если вы желаете установить обновленные или дополнительные словари тезауруса,
+ то можете скачать их здесь:
 \begin_inset Newline newline
 \end_inset
 
@@ -34678,7 +34682,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://sourceforge.net/projects/lyxwininstaller/files/thesaurus/
+https://www.lyx.org/trac/export/HEAD/lyxsvn/dictionaries/trunk/thes/
 \end_layout
 
 \end_inset
@@ -34687,17 +34691,17 @@ https://sourceforge.net/projects/lyxwininstaller/files/thesaurus/
 \end_layout
 
 \begin_layout Standard
-Для установки нового словаря, загрузите два файла для этого словаря в место,
- указанное путем к тезаурусу (который установлен в 
+Для установки нового словаря, загрузите два файла для этого словаря в каталог,
+ путь которого установлен в 
 \family sans
 Инструменты\SpecialChar menuseparator
 Настройки\SpecialChar menuseparator
 Пути\SpecialChar menuseparator
 Словари тезауруса
 \family default
-) и перезапустите \SpecialChar LyX
+, и перезапустите \SpecialChar LyX
 .
- Если этот путь еще не определен, вы можете расположть словарь в необходимом
+ Если этот путь еще не определен, вы можете расположить словарь в подходящем
  месте, по вашему выбору, и указать это \SpecialChar LyX
 .
 \end_layout
