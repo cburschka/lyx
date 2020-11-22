@@ -18,7 +18,6 @@
 
 #include "Encoding.h"
 #include "LayoutFile.h"
-#include "Layout.h"
 #include "Lexer.h"
 #include "TextClass.h"
 #include "version.h"

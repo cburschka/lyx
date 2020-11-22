@@ -12,11 +12,11 @@
 #ifndef LYX_MAGIC_H
 #define LYX_MAGIC_H
 
+#include "support/debug.h"
+
 namespace lyx {
 
 #ifdef HAVE_MAGIC_H
-
-#include "support/debug.h"
 
 #include <magic.h>
 

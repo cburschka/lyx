@@ -38,7 +38,6 @@
 #include "Language.h"
 #include "LaTeXFonts.h"
 #include "LayoutFile.h"
-#include "LyX.h"
 #include "LyXAction.h"
 #include "LyXRC.h"
 #include "ModuleList.h"

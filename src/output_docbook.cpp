@@ -31,6 +31,7 @@
 #include "mathed/InsetMath.h"
 #include "insets/InsetNote.h"
 
+#include "support/debug.h"
 #include "support/lassert.h"
 #include "support/textutils.h"
 

@@ -13,17 +13,11 @@
 
 #include "InsetERT.h"
 
-#include "Buffer.h"
-#include "BufferParams.h"
-#include "BufferView.h"
 #include "Cursor.h"
-#include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "Language.h"
-#include "Layout.h"
 #include "Lexer.h"
-#include "LyXAction.h"
 #include "OutputParams.h"
 #include "xml.h"
 #include "ParagraphParameters.h"

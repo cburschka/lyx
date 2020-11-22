@@ -10,8 +10,6 @@
 
 #include <config.h>
 
-#include "support/lassert.h"
-
 #include "InsetMathXArrow.h"
 
 #include "MathData.h"
@@ -21,6 +19,8 @@
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 
+#include "support/debug.h"
+#include "support/lassert.h"
 
 #include <algorithm>
 

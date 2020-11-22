@@ -16,8 +16,6 @@
 
 #include "InsetCode.h"
 
-#include "OutputParams.h"
-
 #include "support/docstring.h"
 
 #include <string>
@@ -27,8 +25,9 @@
 
 namespace lyx {
 
-class Lexer;
 class Buffer;
+class Lexer;
+class OutputParams;
 
 class ParamInfo {
 public:

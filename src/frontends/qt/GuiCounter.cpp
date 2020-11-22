@@ -12,6 +12,7 @@
 
 #include "GuiCounter.h"
 
+#include "GuiView.h"
 #include "qt_helpers.h"
 
 #include "Buffer.h"
@@ -22,6 +23,7 @@
 #include "insets/InsetCommandParams.h"
 
 #include "support/convert.h"
+#include "support/debug.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 

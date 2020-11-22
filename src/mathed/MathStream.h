@@ -19,7 +19,6 @@
 
 #include "support/Changer.h"
 #include "support/strfwd.h"
-#include "support/unique_ptr.h"
 
 
 namespace lyx {

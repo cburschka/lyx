@@ -17,8 +17,6 @@
 #include "ui_ChangesUi.h"
 
 #include "support/debug.h"
-#include "support/docstring.h"
-
 
 namespace lyx {
 namespace frontend {

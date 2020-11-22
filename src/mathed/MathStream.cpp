@@ -18,6 +18,8 @@
 
 #include "TexRow.h"
 
+
+#include "support/debug.h"
 #include "support/docstring.h"
 #include "support/textutils.h"
 

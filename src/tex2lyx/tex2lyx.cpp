@@ -26,6 +26,7 @@
 
 #include "support/ConsoleApplication.h"
 #include "support/convert.h"
+#include "support/debug.h"
 #include "support/ExceptionMessage.h"
 #include "support/filetools.h"
 #include "support/lassert.h"

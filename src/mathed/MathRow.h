@@ -25,7 +25,6 @@
 namespace lyx {
 
 class BufferView;
-class Dimension;
 class MathData;
 class MetricsInfo;
 class PainterInfo;

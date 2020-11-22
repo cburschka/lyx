@@ -14,13 +14,12 @@
 
 #include "InsetText.h"
 
-#include "Dimension.h"
-
 #include "support/unique_ptr.h"
 
 
 namespace lyx {
 
+class Dimension;
 class RenderPreview;
 
 namespace graphics {

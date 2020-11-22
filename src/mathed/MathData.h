@@ -15,8 +15,6 @@
 #ifndef MATH_DATA_H
 #define MATH_DATA_H
 
-#include "Dimension.h"
-
 #include "MathAtom.h"
 #include "MathRow.h"
 
@@ -33,6 +31,7 @@ namespace lyx {
 class Buffer;
 class BufferView;
 class Cursor;
+class Dimension;
 class DocIterator;
 class LaTeXFeatures;
 class ReplaceData;

@@ -15,10 +15,6 @@
 
 #include "qt_helpers.h"
 
-#include "support/gettext.h"
-#include "support/lstrings.h"
-#include "support/lyxtime.h"
-
 #include "Author.h"
 #include "Buffer.h"
 #include "BufferParams.h"
@@ -27,7 +23,6 @@
 #include "Cursor.h"
 #include "FuncRequest.h"
 #include "LyXRC.h"
-#include "Text.h"
 
 #include <QDateTime>
 #include <QTextBrowser>

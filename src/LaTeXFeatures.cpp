@@ -28,6 +28,7 @@
 #include "LaTeXPackages.h"
 #include "Layout.h"
 #include "LyXRC.h"
+#include "OutputParams.h"
 #include "TextClass.h"
 #include "TexRow.h"
 #include "texstream.h"

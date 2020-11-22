@@ -14,12 +14,13 @@
 #ifndef BASE_CLIPBOARD_H
 #define BASE_CLIPBOARD_H
 
-#include "support/FileName.h"
 #include "support/strfwd.h"
 
 namespace lyx {
 
 class Cursor;
+
+namespace support { class FileName; }
 
 namespace frontend {
 

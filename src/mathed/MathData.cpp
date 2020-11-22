@@ -27,6 +27,7 @@
 #include "BufferView.h"
 #include "CoordCache.h"
 #include "Cursor.h"
+#include "Dimension.h"
 
 #include "mathed/InsetMathUnknown.h"
 

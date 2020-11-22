@@ -44,7 +44,6 @@
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
-#include "Row.h"
 #include "TexRow.h"
 #include "texstream.h"
 #include "TextClass.h"

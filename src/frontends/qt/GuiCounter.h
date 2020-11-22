@@ -14,12 +14,13 @@
 
 #include "InsetParamsWidget.h"
 #include "ui_CounterUi.h"
-#include "GuiView.h"
 
 namespace lyx {
 class InsetCommandParams;
 
 namespace frontend {
+
+class GuiView;
 
 class GuiCounter : public InsetParamsWidget, public Ui::CounterUi
 {

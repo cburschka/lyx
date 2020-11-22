@@ -30,7 +30,6 @@
 #include "Paragraph.h"
 
 #include "support/gettext.h"
-#include "support/lstrings.h"
 
 #include <QAbstractItemModel>
 #include <QPushButton>

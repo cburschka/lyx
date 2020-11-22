@@ -44,7 +44,6 @@
 #include "insets/InsetWrap.h"
 
 #include "support/debug.h"
-#include "support/gettext.h"
 #include "support/lstrings.h"
 
 #include "frontends/Application.h"

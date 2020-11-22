@@ -13,8 +13,6 @@
 #include "InsetHyperlink.h"
 
 #include "Buffer.h"
-#include "DispatchResult.h"
-#include "Encoding.h"
 #include "Format.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
@@ -25,6 +23,7 @@
 #include "xml.h"
 #include "texstream.h"
 
+#include "support/debug.h"
 #include "support/docstream.h"
 #include "support/FileName.h"
 #include "support/filetools.h"

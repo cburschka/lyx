@@ -15,7 +15,6 @@
 
 #include "InsetParamsWidget.h"
 #include "ui_BoxUi.h"
-#include "Font.h"
 
 namespace lyx {
 namespace frontend {

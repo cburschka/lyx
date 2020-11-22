@@ -13,12 +13,12 @@
 #ifndef LATEXFEATURES_H
 #define LATEXFEATURES_H
 
-#include "OutputParams.h"
 #include "support/strfwd.h"
 
 #include <set>
 #include <list>
 #include <map>
+#include <vector>
 
 
 namespace lyx {
@@ -27,6 +27,8 @@ class Buffer;
 class BufferParams;
 class InsetLayout;
 class Language;
+class otexstream;
+class OutputParams;
 struct TexString;
 
 /** The packages and commands that a buffer needs. This class
