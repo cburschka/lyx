@@ -1295,6 +1295,7 @@ static void buildAccentsMap()
   accents["imath"] = "ı";
   accents["i"] = "ı";
   accents["jmath"] = "ȷ";
+  accents["cdot"] = "·";
   accents["lyxmathsym{ß}"] = "ß";
   accents["text{ß}"] = "ß";
   accents["ddot{\\imath}"] = "ï";
@@ -1360,7 +1361,7 @@ void Intervall::removeAccents()
 {
   if (accents.empty())
     buildAccentsMap();
-  static regex const accre("\\\\(([\\S]|grave|breve|lyxmathsym|text|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot|ogonek|cedilla|subring|textsubring|subhat|textsubcircum|subtilde|textsubtilde|dgrave|textdoublegrave|rcap|textroundcap|slashed)\\{[^\\{\\}]+\\}|(i|imath|jmath)(?![a-zA-Z]))");
+  static regex const accre("\\\\(([\\S]|grave|breve|lyxmathsym|text|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot|ogonek|cedilla|subring|textsubring|subhat|textsubcircum|subtilde|textsubtilde|dgrave|textdoublegrave|rcap|textroundcap|slashed)\\{[^\\{\\}]+\\}|(i|imath|jmath|cdot)(?![a-zA-Z]))");
   smatch sub;
   for (sregex_iterator itacc(par.begin(), par.end(), accre), end; itacc != end; ++itacc) {
     sub = *itacc;
@@ -1371,7 +1372,11 @@ void Intervall::removeAccents()
       for (size_t i = 0; i < val.size(); i++) {
         par[pos+i] = val[i];
       }
-      addIntervall(pos+val.size(), pos + sub.str(0).size());
+      // Remove possibly following space too
+      if (par[pos+sub.str(0).size()] == ' ')
+	addIntervall(pos+val.size(), pos + sub.str(0).size()+1);
+      else
+	addIntervall(pos+val.size(), pos + sub.str(0).size());
       for (size_t i = pos+val.size(); i < pos + sub.str(0).size(); i++) {
         // remove traces of any remaining chars
         par[i] = ' ';
