@@ -39,10 +39,10 @@ Sublabel: special
 # XeTeX with TeX fonts
 ######################
 # XeTeX with TeX-fonts works only for input encodings "utf8-plain" and "ascii".
-# Ignore all (excect dedicated XeTeX tests):
+# Ignore all (except dedicated XeTeX tests):
 export/export/latex/lyxbugs/wrong_output_3059-rtl-tables-xetex_pdf4_texF
 !export/export/.*xetex.*_pdf4_texF
-export/.*/(|ar|ca|cs|da|de|en|el|es|eu|fa|fr|gl|he|hu|id|it|nb||nl|pl|pt|pt_BR|pt_PT|ro|ru|sk|sl|sr|sv|uk).*_pdf4_texF
+export/.*/(|ar|ca|cs|da|de|en|el|es|eu|fa|fr|gl|he|hu|id|it|lt|nb||nl|pl|pt|pt_BR|pt_PT|ro|ru|sk|sl|sr|sv|uk).*_pdf4_texF
 
 # Only PDFLaTeX
 ###############
