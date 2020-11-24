@@ -399,10 +399,6 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 			os << '}';
 			++count;
 		} else if (f.color() != Color_none) {
-			if (needs_cprotection) {
-				os << "\\cprotect";
-				count += 9;
-			}
 			os << "\\textcolor{"
 			   << from_ascii(lcolor.getLaTeXName(f.color()))
 			   << "}{";
