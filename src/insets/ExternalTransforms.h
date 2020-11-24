@@ -307,6 +307,7 @@ std::string const sanitizeDocBookOption(std::string const & input);
 
 
 enum TransformID {
+	None = -1,
 	Rotate,
 	Resize,
 	Clip,

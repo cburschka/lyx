@@ -36,7 +36,7 @@ typedef Translator<TransformID, string> TransformIDTranslator;
 
 static TransformIDTranslator const initIDTranslator()
 {
-	TransformIDTranslator translator(TransformID(-1), "");
+	TransformIDTranslator translator(None, "");
 	translator.addPair(Rotate, "Rotate");
 	translator.addPair(Resize, "Resize");
 	translator.addPair(Clip,   "Clip");
