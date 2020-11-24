@@ -203,7 +203,7 @@ void initSymbols()
 			} else
 				htmlname = xmlname = "";
 			MacroTable::iterator it = MacroTable::globalMacros().insert(
-					0, from_utf8(macro));
+					nullptr, from_utf8(macro));
 			if (!extra.empty() || !htmlname.empty() || !xmlname.empty() || !required.empty()) {
 				MathWordList::iterator wit = theMathWordList.find(it->first);
 				if (wit != theMathWordList.end())
