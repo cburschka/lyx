@@ -343,6 +343,12 @@ GuiAbout::GuiAbout(GuiView & lv)
 }
 
 
+GuiAbout::~GuiAbout()
+{
+	delete d;
+}
+
+
 void GuiAbout::on_buttonBox_rejected()
 {
 	close();

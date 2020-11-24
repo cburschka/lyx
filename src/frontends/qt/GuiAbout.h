@@ -24,6 +24,7 @@ class GuiAbout : public DialogView
 public:
 	// Constructor
 	GuiAbout(GuiView & lv);
+	~GuiAbout();
 
 private Q_SLOTS:
 	void on_buttonBox_rejected();
