@@ -614,17 +614,11 @@ docstring const InsetQuotesParams::getShortGuiLabel(docstring const & str) const
 ///////////////////////////////////////////////////////////////////////
 
 InsetQuotes::InsetQuotes(Buffer * buf, string const & str)
-	: Inset(buf),
-	  style_(InsetQuotesParams::EnglishQuotes), side_(InsetQuotesParams::OpeningQuote),
-	  pass_thru_(false), internal_fontenc_(false), rtl_(false)
+	: Inset(buf)
 {
 	if (buf) {
 		global_style_ = buf->masterBuffer()->params().quotes_style;
 		fontspec_ = buf->masterBuffer()->params().useNonTeXFonts;
-	}
-	else {
-		global_style_ = InsetQuotesParams::EnglishQuotes;
-		fontspec_ = false;
 	}
 
 	parseString(str);
@@ -633,8 +627,7 @@ InsetQuotes::InsetQuotes(Buffer * buf, string const & str)
 
 InsetQuotes::InsetQuotes(Buffer * buf, char_type c, InsetQuotesParams::QuoteLevel level,
 			 string const & side, string const & style)
-	: Inset(buf), level_(level), pass_thru_(false), fontspec_(false),
-	  internal_fontenc_(false), rtl_(false)
+	: Inset(buf), level_(level)
 {
 	bool dynamic = false;
 	if (buf) {
@@ -643,9 +636,7 @@ InsetQuotes::InsetQuotes(Buffer * buf, char_type c, InsetQuotesParams::QuoteLeve
 		dynamic = buf->masterBuffer()->params().dynamic_quotes;
 		fontspec_ = buf->masterBuffer()->params().useNonTeXFonts;
 	} else {
-		global_style_ = InsetQuotesParams::EnglishQuotes;
 		fontenc_ = "OT1";
-		fontspec_ = false;
 	}
 	if (style.empty())
 		style_ = dynamic ? InsetQuotesParams::DynamicQuotes : global_style_;

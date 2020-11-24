@@ -187,25 +187,25 @@ private:
 	InsetQuotesParams::QuoteStyle getStyle(std::string const &);
 
 	///
-	InsetQuotesParams::QuoteStyle style_;
+	InsetQuotesParams::QuoteStyle style_ = InsetQuotesParams::EnglishQuotes;
 	///
-	InsetQuotesParams::QuoteSide side_;
+	InsetQuotesParams::QuoteSide side_ = InsetQuotesParams::OpeningQuote;
 	///
-	InsetQuotesParams::QuoteLevel level_;
+	InsetQuotesParams::QuoteLevel level_ = InsetQuotesParams::PrimaryQuotes;
 	///
-	InsetQuotesParams::QuoteStyle global_style_;
+	InsetQuotesParams::QuoteStyle global_style_ = InsetQuotesParams::EnglishQuotes;
 	/// Current font encoding
 	std::string fontenc_;
 	/// Code of the contextual language
 	std::string context_lang_;
 	/// Is this in a pass-thru context?
-	bool pass_thru_;
+	bool pass_thru_ = false;
 	/// Do we use fontspec?
-	bool fontspec_;
+	bool fontspec_ = false;
 	/// Do we have an internal font encoding?
-	bool internal_fontenc_;
+	bool internal_fontenc_ = false;
 	/// Are we writing RTL?
-	bool rtl_;
+	bool rtl_ = false;
 	///
 	friend class InsetQuotesParams;
 
