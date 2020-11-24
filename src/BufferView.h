@@ -26,6 +26,7 @@ namespace lyx {
 
 namespace support { class FileName; }
 
+namespace frontend { class CaretGeometry; }
 namespace frontend { class Painter; }
 namespace frontend { class GuiBufferViewDelegate; }
 
@@ -311,6 +312,10 @@ public:
 	bool caretInView() const;
 	/// get the position and height of the caret
 	void caretPosAndDim(Point & p, Dimension & dim) const;
+	/// compute the shape of the caret
+	void buildCaretGeometry(bool complet);
+	/// the shape of the caret
+	frontend::CaretGeometry const & caretGeometry() const;
 
 	///
 	void draw(frontend::Painter & pain, bool paint_caret);

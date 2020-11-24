@@ -12,6 +12,7 @@ AM_CPPFLAGS += -I$(srcdir)/.. \
 liblyxfrontends_a_SOURCES = \
 	alert.h \
 	Application.h \
+	CaretGeometry.h \
 	FontLoader.h \
 	FontMetrics.h \
 	Delegates.h \

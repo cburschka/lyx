@@ -68,7 +68,6 @@ public:
 /**
  * Implementation of the work area (buffer view GUI)
 */
-class CaretWidget;
 
 struct GuiWorkArea::Private
 {
@@ -91,6 +90,10 @@ struct GuiWorkArea::Private
 	void showCaret();
 	/// hide the caret if it is visible
 	void hideCaret();
+	/* Draw the caret. Parameter \c horiz_offset is not 0 when there
+	 * has been horizontal scrolling in current row
+	 */
+	void drawCaret(QPainter & painter, int horiz_offset) const;
 	/// Set the range and value of the scrollbar and connect to its valueChanged
 	/// signal.
 	void updateScrollbar();
@@ -118,8 +121,6 @@ struct GuiWorkArea::Private
 	///
 	QImage screen_;
 
-	///
-	CaretWidget * caret_;
 	/// is the caret currently displayed
 	bool caret_visible_;
 	///

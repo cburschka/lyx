@@ -53,6 +53,7 @@
 #include "mathed/MathData.h"
 
 #include "frontends/alert.h"
+#include "frontends/CaretGeometry.h"
 #include "frontends/Delegates.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/NullPainter.h"
@@ -288,6 +289,8 @@ struct BufferView::Private
 	CursorSlice current_row_slice_;
 	/// are we hovering something that we can click
 	bool clickable_inset_;
+	/// shape of the caret
+	frontend::CaretGeometry caret_geometry_;
 };
 
 
@@ -3067,7 +3070,88 @@ void BufferView::caretPosAndDim(Point & p, Dimension & dim) const
 	p = getPos(cur);
 	// center fat carets horizontally
 	p.x_ -= dim.wid / 2;
+	// p is top-left
 	p.y_ -= dim.asc;
+}
+
+
+void BufferView::buildCaretGeometry(bool complet)
+{
+	Point p;
+	Dimension dim;
+	caretPosAndDim(p, dim);
+
+	Cursor const & cur = d->cursor_;
+	Font const & realfont = cur.real_current_font;
+	frontend::FontMetrics const & fm = theFontMetrics(realfont.fontInfo());
+	bool const isrtl = realfont.isVisibleRightToLeft();
+	int const dir = isrtl ? -1 : 1;
+
+	frontend::CaretGeometry & cg = d->caret_geometry_;
+	cg.shapes.clear();
+
+	// The caret itself, slanted for italics in text edit mode except
+	// for selections because the selection rect does not slant
+	bool const slant = fm.italic() && cur.inTexted() && !cur.selection();
+	double const slope = slant ? fm.italicSlope() : 0;
+	cg.shapes.push_back(
+		{{iround(p.x_ + dim.asc * slope), p.y_},
+		 {iround(p.x_ - dim.des * slope), p.y_ + dim.height()},
+		 {iround(p.x_ + dir * dim.wid - dim.des * slope), p.y_ + dim.height()},
+		 {iround(p.x_ + dir * dim.wid + dim.asc * slope), p.y_}}
+		);
+
+	// The language indicator _| (if needed)
+	Language const * doclang = buffer().params().language;
+	if (!((realfont.language() == doclang && isrtl == doclang->rightToLeft())
+		  || realfont.language() == latex_language)) {
+		int const lx = dim.height() / 3;
+		int const xx = iround(p.x_ - dim.des * slope);
+		int const yy = p.y_ + dim.height();
+		cg.shapes.push_back(
+			{{xx, yy - dim.wid},
+			 {xx + dir * (dim.wid + lx - 1), yy - dim.wid},
+			 {xx + dir * (dim.wid + lx - 1), yy},
+			 {xx, yy}}
+			);
+	}
+
+	// The completion triangle |> (if needed)
+	if (complet) {
+		int const m = p.y_ + dim.height() / 2;
+		int const d = dim.height() / 8;
+		// offset for slanted carret
+		int const sx = iround((dim.asc - (dim.height() / 2 - d)) * slope);
+		// starting position x
+		int const xx = p.x_ + dir * dim.wid + sx;
+		cg.shapes.push_back(
+			{{xx, m - d},
+			 {xx + dir * d, m},
+			 {xx, m + d},
+			 {xx, m + d - dim.wid},
+			 {xx + dir * d - dim.wid, m},
+			 {xx, m - d + dim.wid}}
+			);
+	}
+
+	// compute extremal x values
+	cg.left = 1000000;
+	cg.right = -1000000;
+	cg.top = 1000000;
+	cg.bottom = -1000000;
+	for (auto const & shape : cg.shapes)
+		for (Point const & p : shape) {
+			cg.left = min(cg.left, p.x_);
+			cg.right = max(cg.right, p.x_);
+			cg.top = min(cg.top, p.y_);
+			cg.bottom = max(cg.bottom, p.y_);
+		}
+}
+
+
+frontend::CaretGeometry const &  BufferView::caretGeometry() const
+{
+	return d->caret_geometry_;
 }
 
 
@@ -3296,19 +3380,13 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 	 */
 	if (paint_caret) {
 		Cursor cur(d->cursor_);
-		Point p;
-		Dimension dim;
-		caretPosAndDim(p, dim);
 		while (cur.depth() > 1) {
-			if (cur.inTexted()) {
-				TextMetrics const & tm = textMetrics(cur.text());
-				if (p.x_ >= tm.origin().x_
-					&& p.x_ + dim.width() <= tm.origin().x_ + tm.dim().width())
-					break;
-			} else {
-				// in mathed
+			if (!cur.inTexted())
 				break;
-			}
+			TextMetrics const & tm = textMetrics(cur.text());
+			if (d->caret_geometry_.left >= tm.origin().x_
+				&& d->caret_geometry_.right <= tm.origin().x_ + tm.dim().width())
+				break;
 			cur.pop();
 		}
 		cur.textRow().changed(true);

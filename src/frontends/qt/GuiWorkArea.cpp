@@ -15,7 +15,6 @@
 #include "GuiWorkArea_Private.h"
 
 #include "ColorCache.h"
-#include "FontLoader.h"
 #include "GuiApplication.h"
 #include "GuiCompleter.h"
 #include "GuiKeySymbol.h"
@@ -33,7 +32,6 @@
 #include "Font.h"
 #include "FuncRequest.h"
 #include "KeySymbol.h"
-#include "Language.h"
 #include "LyX.h"
 #include "LyXRC.h"
 #include "LyXVC.h"
@@ -51,6 +49,8 @@
 #include "support/TempFile.h"
 
 #include "frontends/Application.h"
+#include "frontends/CaretGeometry.h"
+
 #include "frontends/FontMetrics.h"
 #include "frontends/WorkAreaManager.h"
 
@@ -125,100 +125,6 @@ mouse_button::state q_motion_state(Qt::MouseButtons state)
 
 namespace frontend {
 
-class CaretWidget {
-public:
-	CaretWidget() : dir(1), l_shape(false), completable(false),
-					x(0), y(0), slope(0)
-	{}
-
-	/* Draw the caret. Parameter \c horiz_offset is not 0 when there
-	 * has been horizontal scrolling in current row
-	 */
-	void draw(QPainter & painter, int horiz_offset)
-	{
-		if (dim.empty())
-			return;
-		// correction for horizontal scrolling
-		int const xx = x - horiz_offset;
-		int const lx = dim.height() / 3;
-
-		// draw caret box
-		painter.setPen(color);
-		QPainterPath path;
-		path.moveTo(xx + dim.asc * slope, y);
-		path.lineTo(xx - dim.des * slope, y + dim.height());
-		path.lineTo(xx + dir * dim.wid - dim.des * slope, y + dim.height());
-		path.lineTo(xx + dir * dim.wid + dim.asc * slope, y);
-		painter.setRenderHint(QPainter::Antialiasing, true);
-		painter.fillPath(path, color);
-		painter.setRenderHint(QPainter::Antialiasing, false);
-
-		// draw RTL/LTR indication
-		if (l_shape)
-			painter.fillRect(xx - dim.des * slope,
-			                 y + dim.height() - dim.wid + 1,
-			                 dir * (dim.wid + lx - 1), dim.wid, color);
-
-		// draw completion triangle
-		if (completable) {
-			int const m = y + dim.height() / 2;
-			int const d = dim.height() / 8;
-			// offset for slanted carret
-			int const sx = (dim.asc - (dim.height() / 2 - d)) * slope;
-			painter.setPen(QPen(color, dim.width()));
-			painter.drawLine(xx + dir * dim.wid + sx, m - d,
-			                 xx + dir * (dim.wid + d) + sx, m);
-			painter.drawLine(xx + dir * dim.wid + sx, m + d,
-			                 xx + dir * (dim.wid + d) + sx, m);
-		}
-	}
-
-	void update(BufferView const * bv, bool complet) {
-		// Cursor size and position
-		Point point;
-		bv->caretPosAndDim(point, dim);
-		x = point.x_;
-		y = point.y_;
-		completable = complet;
-
-		Cursor const & cur = bv->cursor();
-		Font const & realfont = cur.real_current_font;
-		FontMetrics const & fm = theFontMetrics(realfont.fontInfo());
-		BufferParams const & bp = bv->buffer().params();
-		bool const samelang = realfont.language() == bp.language;
-		bool const isrtl = realfont.isVisibleRightToLeft();
-		dir = isrtl ? -1 : 1;
-		// special shape
-		l_shape = (!samelang || isrtl != bp.language->rightToLeft())
-			&& realfont.language() != latex_language;
-
-		// use slanted caret for italics in text edit mode
-		// except for selections because the selection rect does not slant
-		bool const slant = fm.italic() && cur.inTexted() && !cur.selection();
-		slope = slant ? fm.italicSlope() : 0;
-
-		color = guiApp->colorCache().get(Color_cursor);
-	}
-
-	/// text direction (1 for LtR, -1 for RtL)
-	int dir;
-	/// indication for language change
-	bool l_shape;
-	/// triangle to show that a completion is available
-	bool completable;
-	///
-	QColor color;
-	/// dimension uf base caret
-	Dimension dim;
-	/// x position (were the vertical line is drawn)
-	int x;
-	/// y position (the top of the caret)
-	int y;
-	/// the slope for drawing slanted caret
-	double slope;
-};
-
-
 // This is a 'heartbeat' generating synthetic mouse move events when the
 // cursor is at the top or bottom edge of the viewport. One scroll per 0.2 s
 SyntheticMouseEvent::SyntheticMouseEvent()
@@ -227,7 +133,7 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 
 
 GuiWorkArea::Private::Private(GuiWorkArea * parent)
-: p(parent), buffer_view_(nullptr), lyx_view_(nullptr), caret_(nullptr),
+: p(parent), buffer_view_(nullptr), lyx_view_(nullptr),
   caret_visible_(false), need_resize_(false), preedit_lines_(1),
   last_pixel_ratio_(1.0), completer_(new GuiCompleter(p, p)),
   dialog_mode_(false), shell_escape_(false), read_only_(false),
@@ -266,7 +172,6 @@ GuiWorkArea::Private::~Private()
 		buffer_view_->buffer().workAreaManager().remove(p);
 	} catch(...) {}
 	delete buffer_view_;
-	delete caret_;
 	// Completer has a QObject parent and is thus automatically destroyed.
 	// See #4758.
 	// delete completer_;
@@ -316,7 +221,6 @@ void GuiWorkArea::init()
 	// With Qt4.5 a mouse event will happen before the first paint event
 	// so make sure that the buffer view has an up to date metrics.
 	d->buffer_view_->resize(viewport()->width(), viewport()->height());
-	d->caret_ = new frontend::CaretWidget();
 
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setAcceptDrops(true);
@@ -606,7 +510,7 @@ void GuiWorkArea::Private::resetCaret()
 		&& !completer_->popupVisible()
 		&& !completer_->inlineVisible();
 
-	caret_->update(buffer_view_, completable);
+	buffer_view_->buildCaretGeometry(completable);
 
 	needs_caret_geometry_update_ = true;
 	caret_visible_ = true;
@@ -644,6 +548,33 @@ void GuiWorkArea::Private::hideCaret()
 	caret_visible_ = false;
 	//if (!qApp->focusWidget())
 		p->viewport()->update();
+}
+
+
+/* Draw the caret. Parameter \c horiz_offset is not 0 when there
+ * has been horizontal scrolling in current row
+ */
+void GuiWorkArea::Private::drawCaret(QPainter & painter, int horiz_offset) const
+{
+	if (buffer_view_->caretGeometry().shapes.empty())
+		return;
+
+	QColor const color = guiApp->colorCache().get(Color_cursor);
+	painter.setPen(color);
+	painter.setRenderHint(QPainter::Antialiasing, true);
+	for (auto const & shape : buffer_view_->caretGeometry().shapes) {
+		bool first = true;
+		QPainterPath path;
+		for (Point const & p : shape) {
+			if (first) {
+				path.moveTo(p.x_ - horiz_offset, p.y_);
+				first = false;
+			} else
+				path.lineTo(p.x_ - horiz_offset, p.y_);
+		}
+		painter.fillPath(path, color);
+	}
+	painter.setRenderHint(QPainter::Antialiasing, false);
 }
 
 
@@ -1194,9 +1125,11 @@ void GuiWorkArea::Private::paintPreeditText(GuiPainter & pain)
 	// FIXME: shall we use real_current_font here? (see #10478)
 	FontInfo const font = buffer_view_->cursor().getFont().fontInfo();
 	FontMetrics const & fm = theFontMetrics(font);
-	int const height = fm.maxHeight();
-	int cur_x = caret_->x;
-	int cur_y = caret_->y + height;
+	Point point;
+	Dimension dim;
+	buffer_view_->caretPosAndDim(point, dim);
+	int cur_x = point.x_;
+	int cur_y = point.y_ + dim.height();
 
 	// get attributes of input method cursor.
 	// cursor_pos : cursor position in preedit string.
@@ -1249,7 +1182,7 @@ void GuiWorkArea::Private::paintPreeditText(GuiPainter & pain)
 		// if we reached the right extremity of the screen, go to next line.
 		if (cur_x + fm.width(typed_char) > p->viewport()->width() - right_margin) {
 			cur_x = right_margin;
-			cur_y += height + 1;
+			cur_y += dim.height() + 1;
 			++preedit_lines_;
 		}
 		// preedit strings are displayed with dashed underline
@@ -1347,7 +1280,7 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 	if (d->caret_visible_) {
 		if (d->needs_caret_geometry_update_)
 			d->updateCaretGeometry();
-		d->caret_->draw(pain, d->buffer_view_->horizScrollOffset());
+		d->drawCaret(pain, d->buffer_view_->horizScrollOffset());
 	}
 
 	d->updateScreen(ev->rect());
@@ -1390,10 +1323,11 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 
 
 	// redraw area of preedit string.
-	int height = d->caret_->dim.height();
-	int cur_y = d->caret_->y;
-	viewport()->update(0, cur_y, viewport()->width(),
-		(height + 1) * d->preedit_lines_);
+	// int height = d->caret_->dim.height();
+	// int cur_y = d->caret_->y;
+	// viewport()->update(0, cur_y, viewport()->width(),
+	// 	(height + 1) * d->preedit_lines_);
+	viewport()->update();
 
 	if (d->preedit_string_.empty()) {
 		d->preedit_lines_ = 1;
@@ -1411,12 +1345,14 @@ QVariant GuiWorkArea::inputMethodQuery(Qt::InputMethodQuery query) const
 	switch (query) {
 		// this is the CJK-specific composition window position and
 		// the context menu position when the menu key is pressed.
-		case Qt::ImMicroFocus:
-			return QRect(d->caret_->x - 10 * (d->preedit_lines_ != 1),
-						 d->caret_->y + d->caret_->dim.height() * d->preedit_lines_,
-						 d->caret_->dim.width(), d->caret_->dim.height());
-		default:
-			return QWidget::inputMethodQuery(query);
+	case Qt::ImMicroFocus: {
+		CaretGeometry const & cg = bufferView().caretGeometry();
+		return QRect(cg.left - 10 * (d->preedit_lines_ != 1),
+		             cg.top + cg.height() * d->preedit_lines_,
+		             cg.width(), cg.height());
+	}
+	default:
+		return QWidget::inputMethodQuery(query);
 	}
 }
 
