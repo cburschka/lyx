@@ -307,7 +307,11 @@ InsetMathMacro::InsetMathMacro(Buffer * buf, docstring const & name)
 InsetMathMacro::InsetMathMacro(InsetMathMacro const & that)
 	: InsetMathNest(that), d(new Private(*that.d))
 {
-	setBuffer(*that.buffer_);
+	// FIXME This should not really be necessary, but when we are
+	// initializing the table of global macros, we create macros
+	// with no associated Buffer.
+	if (that.buffer_)
+		setBuffer(*that.buffer_);
 	d->updateChildren(this);
 }
 

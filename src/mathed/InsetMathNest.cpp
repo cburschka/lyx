@@ -85,7 +85,11 @@ using cap::selClearOrDel;
 InsetMathNest::InsetMathNest(Buffer * buf, idx_type nargs)
 	: InsetMath(buf), cells_(nargs), lock_(false)
 {
-	setBuffer(*buf);
+	// FIXME This should not really be necessary, but when we are
+	// initializing the table of global macros, we create macros
+	// with no associated Buffer.
+	if (buf)
+		setBuffer(*buf);
 }
 
 
