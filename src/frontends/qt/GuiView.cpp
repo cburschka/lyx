@@ -2500,19 +2500,17 @@ static bool import(GuiView * lv, FileName const & filename,
 	string loader_format;
 	vector<string> loaders = theConverters().loaders();
 	if (find(loaders.begin(), loaders.end(), format) == loaders.end()) {
-		vector<string>::const_iterator it = loaders.begin();
-		vector<string>::const_iterator en = loaders.end();
 		for (string const & loader : loaders) {
 			if (!theConverters().isReachable(format, loader))
 				continue;
 
 			string const tofile =
 				support::changeExtension(filename.absFileName(),
-				theFormats().extension(*it));
+				theFormats().extension(loader));
 			if (theConverters().convert(nullptr, filename, FileName(tofile),
-				filename, format, *it, errorList) != Converters::SUCCESS)
+				filename, format, loader, errorList) != Converters::SUCCESS)
 				return false;
-			loader_format = *it;
+			loader_format = loader;
 			break;
 		}
 		if (loader_format.empty()) {
