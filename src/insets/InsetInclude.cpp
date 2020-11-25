@@ -1308,7 +1308,19 @@ void add_preview(RenderMonitoredPreview & renderer, InsetInclude const & inset,
 	InsetCommandParams const & params = inset.params();
 	if (RenderPreview::previewText() && preview_wanted(params, buffer)) {
 		renderer.setAbsFile(includedFileName(buffer, params));
-		docstring const snippet = latexString(inset);
+		docstring snippet;
+		try {
+			// InsetInclude::latex() throws if generation of LaTeX
+			// fails, e.g. if lyx2lyx fails because file is too
+			// new, or knitr fails.
+			snippet = latexString(inset);
+		} catch (...) {
+			// remove current preview because it is likely
+			// associated with the previous included file name
+			renderer.removePreview(buffer);
+			LYXERR0("Preview of include failed.");
+			return;
+		}
 		renderer.addPreview(snippet, buffer);
 	}
 }
