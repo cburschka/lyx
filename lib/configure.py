@@ -948,7 +948,7 @@ def checkConverterEntries():
     # On SuSE the scripts have a .sh suffix, and on debian they are in /usr/share/tex4ht/
     # Both SuSE and debian have oolatex
     checkProg('a LaTeX -> Open Document (tex4ht) converter', [
-        'oolatex $$i', 'mk4ht oolatex $$i', 'oolatex.sh $$i', '/usr/share/tex4ht/oolatex $$i',
+        'oolatex $$i', 'make4ht -f odt $$i', 'oolatex.sh $$i', '/usr/share/tex4ht/oolatex $$i',
         'htlatex $$i \'xhtml,ooffice\' \'ooffice/! -cmozhtf\' \'-coo\' \'-cvalidate\''],
         rc_entry = [ r'\converter latex      odt        "%%"	"needaux"' ])
     # On windows it is called latex2rt.exe
