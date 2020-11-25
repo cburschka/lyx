@@ -255,8 +255,12 @@ string guessFormatFromContents(FileName const & fn)
 			} else if (stamp == "\377\330") {
 				format =  "jpg";
 
+			} else if (prefixIs(str, "\x89PNG")) {
+				format =  "png";
+
 			} else if (stamp == "\001\332") {
 				format =  "sgi";
+
 			} else if (prefixIs(str, binEPSStamp)) {
 				format =  "eps";
 
@@ -318,9 +322,6 @@ string guessFormatFromContents(FileName const & fn)
 
 		else if (contains(str, " EMF"))
 			format = "emf";
-
-		else if (contains(str, "PNG"))
-			format = "png";
 
 		else if (contains(str, "%!PS-Adobe")) {
 			// eps or ps
