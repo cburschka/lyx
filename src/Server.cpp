@@ -378,6 +378,9 @@ bool LyXComm::pipeServer()
 			if (!resetPipe(i, !success))
 				return false;
 			break;
+		case CONNECTING_STATE:
+			LYXERR0("Wrong pipe state");
+			break;
 		}
 	}
 

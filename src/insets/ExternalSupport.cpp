@@ -480,6 +480,8 @@ string const substituteIt<TransformOption>(string const & input,
 	case Resize:
 		ptr = store.getOptionTransformer(params.resizedata);
 		break;
+	case None:
+		break;
 	}
 
 	if (!ptr)
