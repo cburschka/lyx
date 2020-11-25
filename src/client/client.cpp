@@ -93,14 +93,6 @@ Messages const & getMessages(string const &)
 
 namespace support {
 
-string itoa(unsigned int i)
-{
-	char buf[20];
-	sprintf(buf, "%d", i);
-	return buf;
-}
-
-
 /// Returns the absolute pathnames of all lyx local sockets in
 /// file system encoding.
 /// Parts stolen from lyx::support::DirList().
@@ -469,7 +461,7 @@ int h(vector<docstring> const &)
 
 
 docstring clientName =
-	from_ascii(itoa(::getppid()) + ">" + itoa(::getpid()));
+	from_ascii(to_string(::getppid()) + ">" + to_string(::getpid()));
 
 int n(vector<docstring> const & arg)
 {
