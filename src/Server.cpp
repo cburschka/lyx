@@ -1003,7 +1003,7 @@ struct Sleep : QThread
 } // namespace
 
 
-bool LyXComm::loadFilesInOtherInstance()
+bool LyXComm::loadFilesInOtherInstance() const
 {
 	int pipefd;
 	FileName const pipe(inPipeName());

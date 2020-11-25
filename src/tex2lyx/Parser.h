@@ -310,7 +310,7 @@ public:
 	///
 	std::string verbatimOption();
 	///
-	void error(std::string const & msg);
+	void error(std::string const & msg) const;
 	/// The previous token.
 	Token const prev_token() const;
 	/// The current token.

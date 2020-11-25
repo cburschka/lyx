@@ -1101,20 +1101,20 @@ public:
   int depts[MAXOPENED];
   int closes[MAXOPENED];
   int actualdeptindex;
-  int previousNotIgnored(int);
-  int nextNotIgnored(int);
+  int previousNotIgnored(int) const;
+  int nextNotIgnored(int) const;
   void handleOpenP(int i);
   void handleCloseP(int i, bool closingAllowed);
   void resetOpenedP(int openPos);
   void addIntervall(int upper);
   void addIntervall(int low, int upper); /* if explicit */
   void removeAccents();
-  void setForDefaultLang(KeyInfo const & defLang);
+  void setForDefaultLang(KeyInfo const & defLang) const;
   int findclosing(int start, int end, char up, char down, int repeat);
   void handleParentheses(int lastpos, bool closingAllowed);
   bool hasTitle;
   int langcount;	// Number of disabled language specs up to current position in actual interval
-  int isOpeningPar(int pos);
+  int isOpeningPar(int pos) const;
   string titleValue;
   void output(ostringstream &os, int lastpos);
   // string show(int lastpos);
@@ -1122,7 +1122,7 @@ public:
 
 vector<Border> Intervall::borders = vector<Border>(30);
 
-int Intervall::isOpeningPar(int pos)
+int Intervall::isOpeningPar(int pos) const
 {
   if ((pos < 0) || (size_t(pos) >= par.size()))
     return 0;
@@ -1137,7 +1137,7 @@ int Intervall::isOpeningPar(int pos)
   return 1;
 }
 
-void Intervall::setForDefaultLang(KeyInfo const & defLang)
+void Intervall::setForDefaultLang(KeyInfo const & defLang) const
 {
   // Enable the use of first token again
   if (ignoreidx >= 0) {
@@ -1418,7 +1418,7 @@ void Intervall::resetOpenedP(int openPos)
   closes[1] = -1;
 }
 
-int Intervall::previousNotIgnored(int start)
+int Intervall::previousNotIgnored(int start) const
 {
     int idx = 0;                          /* int intervalls */
     for (idx = ignoreidx; idx >= 0; --idx) {
@@ -1430,7 +1430,7 @@ int Intervall::previousNotIgnored(int start)
     return start;
 }
 
-int Intervall::nextNotIgnored(int start)
+int Intervall::nextNotIgnored(int start) const
 {
     int idx = 0;                          /* int intervalls */
     for (idx = 0; idx <= ignoreidx; idx++) {
@@ -1504,7 +1504,7 @@ class LatexInfo {
     else
       return false;
   };
-  int find(int start, KeyInfo::KeyType keytype) {
+  int find(int start, KeyInfo::KeyType keytype) const {
     if (start < 0)
       return -1;
     int tmpIdx = start;
@@ -1526,7 +1526,7 @@ class LatexInfo {
     else
       return entries_[keyinfo];
   };
-  void setForDefaultLang(KeyInfo &defLang) {interval_.setForDefaultLang(defLang);};
+  void setForDefaultLang(KeyInfo const & defLang) {interval_.setForDefaultLang(defLang);};
   void addIntervall(int low, int up) { interval_.addIntervall(low, up); };
 };
 
@@ -1577,14 +1577,14 @@ class MathInfo {
     m.mathSize = end - start;
     entries_.push_back(m);
   }
-  bool empty() { return entries_.empty(); };
-  size_t getEndPos() {
+  bool empty() const { return entries_.empty(); };
+  size_t getEndPos() const {
     if (entries_.empty() || (actualIdx_ >= entries_.size())) {
       return 0;
     }
     return entries_[actualIdx_].mathEnd;
   }
-  size_t getStartPos() {
+  size_t getStartPos() const {
     if (entries_.empty() || (actualIdx_ >= entries_.size())) {
       return 100000;                    /*  definitely enough? */
     }
@@ -1594,7 +1594,7 @@ class MathInfo {
     actualIdx_ = 0;
     return getStartPos();
   }
-  size_t getSize() {
+  size_t getSize() const {
     if (entries_.empty() || (actualIdx_ >= entries_.size())) {
       return size_t(0);
     }

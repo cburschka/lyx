@@ -35,7 +35,7 @@ public:
 	///
 	~Impl();
 	///
-	Image const * image();
+	Image const * image() const;
 	///
 	void statusChanged();
 
@@ -125,7 +125,7 @@ PreviewImage::Impl::~Impl()
 }
 
 
-Image const * PreviewImage::Impl::image()
+Image const * PreviewImage::Impl::image() const
 {
 	if (iloader_.status() == WaitingToLoad)
 		iloader_.startLoading();

@@ -877,7 +877,7 @@ void Parser::dump() const
 }
 
 
-void Parser::error(string const & msg)
+void Parser::error(string const & msg) const
 {
 	cerr << "Line ~" << lineno_ << ":  parse error: " << msg << endl;
 	dump();

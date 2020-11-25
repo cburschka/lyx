@@ -120,7 +120,7 @@ private:
 	void closeConnection();
 
 	/// Load files in another running instance of LyX
-	bool loadFilesInOtherInstance();
+	bool loadFilesInOtherInstance() const;
 
 #ifndef _WIN32
 	/// start a pipe
@@ -212,7 +212,7 @@ public:
 	///
 	void notifyClient(std::string const &);
 	///
-	bool deferredLoadingToOtherInstance() { return pipes_.deferredLoading(); }
+	bool deferredLoadingToOtherInstance() const { return pipes_.deferredLoading(); }
 
 	/// whilst crashing etc.
 	void emergencyCleanup() { pipes_.emergencyCleanup(); }
