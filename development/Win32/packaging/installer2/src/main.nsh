@@ -976,6 +976,9 @@ Section -ConfigureScript # Runs the configure.py script
 SectionEnd
 
 Function DefaultDesktopFileAssoc # Custom function, called before the components page, reads the states of SecDesktop and SecFileAssoc from registry (if overinstalling) and sets them
+
+  Call CheckDictionaries # Search for already installed dictionaries, in dictionaries.nsh
+
   ${IfNot} ${FileExists} "$INSTDIR\Uninstall-LyX.exe"
     Return # Not over-installing
   ${EndIf}
@@ -989,8 +992,6 @@ Function DefaultDesktopFileAssoc # Custom function, called before the components
   ${If} $0 == ""
     SectionSetFlags ${SecDesktop} 0 # 0 means unselected
   ${EndIf}
-
-  Call CheckDictionaries # Also search for already installed dictionaries, in dictionaries.nsh
 FunctionEnd
 
 Function StartLyX

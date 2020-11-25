@@ -1,3 +1,11 @@
+#-------------------------------------------------------------
+# - - - - - - - - - - - - Preamble - - - - - - - - - - - - - -
+#-------------------------------------------------------------
+
+  # ===== Variables =====
+
+    Var lcID # containts the ID of the default Windows UI Language
+
 # ================
 # Helper Functions
 # ================
@@ -22,9 +30,10 @@
 
 !define DownloadThesaurus "!insertmacro DownloadThesaurus"
 
-!macro CheckHunspell sectionIdx langCode
+!macro CheckHunspell sectionIdx langCode langID
   Push ${sectionIdx}
   Push ${langCode}
+  Push ${langID}
   Call CheckHunspell
 !macroend
 
@@ -79,19 +88,24 @@ Function DownloadThesaurus
 FunctionEnd
 
 Function CheckHunspell
-  Exch $9 # ${langCode}
+  Exch $9 # ${langID}
   Exch
-  Exch $8 # ${sectionIdx}
+  Exch $8 # ${langCode}
+  Exch 2
+  Exch $7 # ${sectionIdx}
 
-  ${If} ${FileExists} "$INSTDIR\Resources\dicts\$9.aff"
-  ${OrIf} ${FileExists} "$INSTDIR\Resources\dicts\$9.dic"
-    IntOp $9 ${SF_SELECTED} | ${SF_RO}
-    SectionSetFlags $8 $9
-    SectionSetSize $8 0
+  ${If} ${FileExists} "$INSTDIR\Resources\dicts\$8.aff"
+  ${OrIf} ${FileExists} "$INSTDIR\Resources\dicts\$8.dic"
+    IntOp $8 ${SF_SELECTED} | ${SF_RO}
+    SectionSetFlags $7 $8
+    SectionSetSize $7 0
+  ${ElseIf} $lcID == $9
+    SectionSetFlags $7 ${SF_SELECTED}
   ${EndIf}
 
-  Pop $8
+  Pop $7
   Pop $9
+  Pop $8
 FunctionEnd
 
 Function CheckThesaurus
@@ -447,7 +461,9 @@ SectionGroup /e "$(SecDictionaries)" SecDictionaries
   SectionEnd
 
   Section /o "Português (PT)" SecDPortuguesePT
-    ${DownloadHunspell} "pt_PT"
+    # already installed by default
+    SectionIn RO
+    #${DownloadHunspell} "pt_PT"
     AddSize 1532
   SectionEnd
 
@@ -457,7 +473,9 @@ SectionGroup /e "$(SecDictionaries)" SecDictionaries
   SectionEnd
 
   Section /o "Русский" SecDRussian
-    ${DownloadHunspell} "ru_RU"
+    # already installed by default
+    SectionIn RO
+    #${DownloadHunspell} "ru_RU"
     AddSize 1976
   SectionEnd
 
@@ -737,98 +755,100 @@ SectionGroup "$(SecThesaurus)" SecThesaurus
 
 SectionGroupEnd
 
-# Custom function, called before entering the components page, when over-installing
+# Custom function, called before entering the components page
 # checks the directory for already existent dictionaries and marks the corresponding sections above
-Function CheckDictionaries 
+# also activates the section to download dictionary for the current UI language
+Function CheckDictionaries
 
-  # FIXME check if installing over existent LyX
+  System::Call "kernel32::GetUserDefaultUILanguage() i.s"
+  Pop $lcID
 
-  # Check Hunspell dictionaries
-  ${CheckHunspell} ${SecDAfrikaans}       "af_ZA"
-  ${CheckHunspell} ${SecDArabic}          "ar_SA"
-  ${CheckHunspell} ${SecDArmenian}        "hy_AM"
-  ${CheckHunspell} ${SecDIndonesian}      "id_ID"
-  ${CheckHunspell} ${SecDMalayan}         "ms_MY"
-  ${CheckHunspell} ${SecDBelarusian}      "be_BY"
-  ${CheckHunspell} ${SecDBosnian}         "bs_BA"
-  ${CheckHunspell} ${SecDBreton}          "br_FR"
-  ${CheckHunspell} ${SecDBulgarian}       "bg_BG"
-  ${CheckHunspell} ${SecDCatalanian}      "ca_ES"
-  ${CheckHunspell} ${SecDCzech}           "cs_CZ"
-  ${CheckHunspell} ${SecDCoptic}          "cop_EG"
-  ${CheckHunspell} ${SecDWelsh}           "cy_GB"
-  ${CheckHunspell} ${SecDDanish}          "da_DK"
-  ${CheckHunspell} ${SecDGermanAlt}       "de-alt"
-  ${CheckHunspell} ${SecDGermanAT}        "de_AT"
-  ${CheckHunspell} ${SecDGermanCH}        "de_CH"
- #${CheckHunspell} ${SecDGermanD}         "de_DE" # Enabled by default
-  ${CheckHunspell} ${SecDGreek}           "el_GR"
-  ${CheckHunspell} ${SecDEstonian}        "et_EE"
-  ${CheckHunspell} ${SecDEnglishAU}       "en_AU"
-  ${CheckHunspell} ${SecDEnglishCA}       "en_CA"
- #${CheckHunspell} ${SecDEnglishGB}       "en_GB" # Enabled by default
-  ${CheckHunspell} ${SecDEnglishNZ}       "en_NZ"
- #${CheckHunspell} ${SecDEnglishUS}       "en_US" # Enabled by default
- #${CheckHunspell} ${SecDSpanishES}       "es_ES" # Enabled by default
- #${CheckHunspell} ${SecDSpanishMX}       "es_MX" # Enabled by default
-  ${CheckHunspell} ${SecDEsperanto}       "eo_EO"
-  ${CheckHunspell} ${SecDBasque}          "eu_ES"
-  ${CheckHunspell} ${SecDFarsi}           "fa_IR"
- #${CheckHunspell} ${SecDFaroese}         "fo_FO" # Not supported
- #${CheckHunspell} ${SecDFrench}          "fr_FR" # Enabled by default
-  ${CheckHunspell} ${SecDFrenchCanada}    "fr_CA"
-  ${CheckHunspell} ${SecDFriulian}        "fur_IT"
-  ${CheckHunspell} ${SecDIrish}           "ga_IE"
-  ${CheckHunspell} ${SecDScottish}        "gd_GB"
-  ${CheckHunspell} ${SecDGalician}        "gl_ES"
-  ${CheckHunspell} ${SecDCroatian}        "hr_HR"
-  ${CheckHunspell} ${SecDHindi}           "hi_IN"
-  ${CheckHunspell} ${SecDInterlingua}     "ia_IA"
-  ${CheckHunspell} ${SecDIcelandic}       "is_IS"
-  ${CheckHunspell} ${SecDItalian}         "it_IT"
-  ${CheckHunspell} ${SecDHebrew}          "he_IL"
- #${CheckHunspell} ${SecDGeorgian}        "ka_GE" # Missing
-  ${CheckHunspell} ${SecDKazakh}          "kk_KZ"
-  ${CheckHunspell} ${SecDKhmer}           "km_KH"
-  ${CheckHunspell} ${SecDKorean}          "ko_KR"
- #${CheckHunspell} ${SecDHaitianCreole}   "ht_HT" # Not supported
-  ${CheckHunspell} ${SecDKurdishL}        "kmr"
- #${CheckHunspell} ${SecDKurdishT}        "ku_TR" # Not supported
-  ${CheckHunspell} ${SecDLatin}           "la_LA"
-  ${CheckHunspell} ${SecDLithuanian}      "lt_LT"
-  ${CheckHunspell} ${SecDLatvian}         "lv_LV"
-  ${CheckHunspell} ${SecDMacedonian}      "mk_MK"
-  ${CheckHunspell} ${SecDHungarian}       "hu_HU"
-  ${CheckHunspell} ${SecDMarathi}         "mr_IN"
-  ${CheckHunspell} ${SecDDutch}           "nl_NL"
-  ${CheckHunspell} ${SecDNorwegianNB}     "nb_NO"
-  ${CheckHunspell} ${SecDNorwegianNN}     "nn_NO"
-  ${CheckHunspell} ${SecDOccitan}         "oc_FR"
-  ${CheckHunspell} ${SecDLao}             "lo_LA"
-  ${CheckHunspell} ${SecDPolish}          "pl_PL"
-  ${CheckHunspell} ${SecDPortugueseBR}    "pt_BR"
-  ${CheckHunspell} ${SecDPortuguesePT}    "pt_PT"
-  ${CheckHunspell} ${SecDRomanian}        "ro_RO"
-  ${CheckHunspell} ${SecDRussian}         "ru_RU"
-  ${CheckHunspell} ${SecDSorbianD}        "dsb_DE"
-  ${CheckHunspell} ${SecDSorbianH}        "hsb_DE"
-  ${CheckHunspell} ${SecDAlbanian}        "sq_AL"
-  ${CheckHunspell} ${SecDSlovenian}       "sl_SI"
-  ${CheckHunspell} ${SecDSlovakian}       "sk_SK"
-  ${CheckHunspell} ${SecDSerbianC}        "sr_RS"
-  ${CheckHunspell} ${SecDSerbianL}        "sr_RS-Latin"
-  ${CheckHunspell} ${SecDSwedish}         "sv_SE"
-  ${CheckHunspell} ${SecDTamil}           "ta_IN"
-  ${CheckHunspell} ${SecDTelugu}          "te_IN"
-  ${CheckHunspell} ${SecDThai}            "th_TH"
-  ${CheckHunspell} ${SecDTibetan}         "bo_CN"
-  ${CheckHunspell} ${SecDVietnamese}      "vi_VN"
-  ${CheckHunspell} ${SecDTurkmen}         "tk_TM"
-  ${CheckHunspell} ${SecDTurkish}         "tr_TR"
-  ${CheckHunspell} ${SecDUkrainian}       "uk_UA"
-  ${CheckHunspell} ${SecDUrdu}            "ur_PK"
+  # Check Hunspell dictionaries           language code    language ID (HHH means does not exis)
+  ${CheckHunspell} ${SecDAfrikaans}       "af_ZA"          "1078"
+  ${CheckHunspell} ${SecDArabic}          "ar_SA"          "1025"
+  ${CheckHunspell} ${SecDArmenian}        "hy_AM"          "1067"
+  ${CheckHunspell} ${SecDIndonesian}      "id_ID"          "1057"
+  ${CheckHunspell} ${SecDMalayan}         "ms_MY"          "1086"
+  ${CheckHunspell} ${SecDBelarusian}      "be_BY"          "1059"
+  ${CheckHunspell} ${SecDBosnian}         "bs_BA"          "5146"
+  ${CheckHunspell} ${SecDBreton}          "br_FR"          "1150"
+  ${CheckHunspell} ${SecDBulgarian}       "bg_BG"          "1026"
+  ${CheckHunspell} ${SecDCatalanian}      "ca_ES"          "1027"
+  ${CheckHunspell} ${SecDCzech}           "cs_CZ"          "1029"
+  ${CheckHunspell} ${SecDCoptic}          "cop_EG"         "HHH1"
+  ${CheckHunspell} ${SecDWelsh}           "cy_GB"          "1106"
+  ${CheckHunspell} ${SecDDanish}          "da_DK"          "1030"
+  ${CheckHunspell} ${SecDGermanAlt}       "de-alt"         "HHH2"
+  ${CheckHunspell} ${SecDGermanAT}        "de_AT"          "3079"
+  ${CheckHunspell} ${SecDGermanCH}        "de_CH"          "2055"
+ #${CheckHunspell} ${SecDGermanD}         "de_DE"          "1031" # Installed by default
+  ${CheckHunspell} ${SecDGreek}           "el_GR"          "1032"
+  ${CheckHunspell} ${SecDEstonian}        "et_EE"          "1061"
+  ${CheckHunspell} ${SecDEnglishAU}       "en_AU"          "3081"
+  ${CheckHunspell} ${SecDEnglishCA}       "en_CA"          "4105"
+ #${CheckHunspell} ${SecDEnglishGB}       "en_GB"          "2057" # Installed by default
+  ${CheckHunspell} ${SecDEnglishNZ}       "en_NZ"          "5129"
+ #${CheckHunspell} ${SecDEnglishUS}       "en_US"          "1033" # Installed by default
+ #${CheckHunspell} ${SecDSpanishES}       "es_ES"          "1034" # Installed by default
+ #${CheckHunspell} ${SecDSpanishMX}       "es_MX"          "2058" # Installed by default
+  ${CheckHunspell} ${SecDEsperanto}       "eo_EO"          "HHH3"
+  ${CheckHunspell} ${SecDBasque}          "eu_ES"          "1069"
+  ${CheckHunspell} ${SecDFarsi}           "fa_IR"          "1065"
+ #${CheckHunspell} ${SecDFaroese}         "fo_FO"          "1080" # Not supported
+ #${CheckHunspell} ${SecDFrench}          "fr_FR"          "1036" # Installed by default
+  ${CheckHunspell} ${SecDFrenchCanada}    "fr_CA"          "3084"
+  ${CheckHunspell} ${SecDFriulian}        "fur_IT"         "HHH4"
+  ${CheckHunspell} ${SecDIrish}           "ga_IE"          "2108"
+  ${CheckHunspell} ${SecDScottish}        "gd_GB"          "1084"
+  ${CheckHunspell} ${SecDGalician}        "gl_ES"          "1110"
+  ${CheckHunspell} ${SecDCroatian}        "hr_HR"          "1050"
+  ${CheckHunspell} ${SecDHindi}           "hi_IN"          "1081"
+  ${CheckHunspell} ${SecDInterlingua}     "ia_IA"          "HHH5"
+  ${CheckHunspell} ${SecDIcelandic}       "is_IS"          "1039"
+  ${CheckHunspell} ${SecDItalian}         "it_IT"          "1040"
+  ${CheckHunspell} ${SecDHebrew}          "he_IL"          "1037"
+ #${CheckHunspell} ${SecDGeorgian}        "ka_GE"          "1079" # Missing
+  ${CheckHunspell} ${SecDKazakh}          "kk_KZ"          "1087"
+  ${CheckHunspell} ${SecDKhmer}           "km_KH"          "1107"
+  ${CheckHunspell} ${SecDKorean}          "ko_KR"          "1042"
+ #${CheckHunspell} ${SecDHaitianCreole}   "ht_HT"          "HHH6" # Not supported
+  ${CheckHunspell} ${SecDKurdishL}        "kmr"            "HHH7"
+ #${CheckHunspell} ${SecDKurdishT}        "ku_TR"          "HHH8" # Not supported
+  ${CheckHunspell} ${SecDLatin}           "la_LA"          "1142"
+  ${CheckHunspell} ${SecDLithuanian}      "lt_LT"          "1063"
+  ${CheckHunspell} ${SecDLatvian}         "lv_LV"          "1062"
+  ${CheckHunspell} ${SecDMacedonian}      "mk_MK"          "1071"
+  ${CheckHunspell} ${SecDHungarian}       "hu_HU"          "1038"
+  ${CheckHunspell} ${SecDMarathi}         "mr_IN"          "1102"
+  ${CheckHunspell} ${SecDDutch}           "nl_NL"          "1043"
+  ${CheckHunspell} ${SecDNorwegianNB}     "nb_NO"          "1044"
+  ${CheckHunspell} ${SecDNorwegianNN}     "nn_NO"          "2068"
+  ${CheckHunspell} ${SecDOccitan}         "oc_FR"          "HHH9"
+  ${CheckHunspell} ${SecDLao}             "lo_LA"          "1108"
+  ${CheckHunspell} ${SecDPolish}          "pl_PL"          "1045"
+  ${CheckHunspell} ${SecDPortugueseBR}    "pt_BR"          "1046"
+ #${CheckHunspell} ${SecDPortuguesePT}    "pt_PT"          "2070" # Installed by default
+  ${CheckHunspell} ${SecDRomanian}        "ro_RO"          "1048"
+ #${CheckHunspell} ${SecDRussian}         "ru_RU"          "1049" # Installed by default
+  ${CheckHunspell} ${SecDSorbianD}        "dsb_DE"         "HHH0"
+  ${CheckHunspell} ${SecDSorbianH}        "hsb_DE"         "HHH1"
+  ${CheckHunspell} ${SecDAlbanian}        "sq_AL"          "1052"
+  ${CheckHunspell} ${SecDSlovenian}       "sl_SI"          "1060"
+  ${CheckHunspell} ${SecDSlovakian}       "sk_SK"          "1051"
+  ${CheckHunspell} ${SecDSerbianC}        "sr_RS"          "3098"
+  ${CheckHunspell} ${SecDSerbianL}        "sr_RS-Latin"    "2074"
+  ${CheckHunspell} ${SecDSwedish}         "sv_SE"          "1053"
+  ${CheckHunspell} ${SecDTamil}           "ta_IN"          "1097"
+  ${CheckHunspell} ${SecDTelugu}          "te_IN"          "1098"
+  ${CheckHunspell} ${SecDThai}            "th_TH"          "1054"
+  ${CheckHunspell} ${SecDTibetan}         "bo_CN"          "1105"
+  ${CheckHunspell} ${SecDVietnamese}      "vi_VN"          "1066"
+  ${CheckHunspell} ${SecDTurkmen}         "tk_TM"          "1090"
+  ${CheckHunspell} ${SecDTurkish}         "tr_TR"          "1055"
+  ${CheckHunspell} ${SecDUkrainian}       "uk_UA"          "1058"
+  ${CheckHunspell} ${SecDUrdu}            "ur_PK"          "1056"
 
-  # Chech Thesaurus dictionaries
+  # Check Thesaurus dictionaries
   ${CheckThesaurus} ${SecTArabic}           "ar_SA"
   ${CheckThesaurus} ${SecTIndonesian}       "id_ID"
   ${CheckThesaurus} ${SecTBulgarian}        "bg_BG"
