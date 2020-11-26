@@ -1089,6 +1089,13 @@ void InsetBibtex::docbook(XMLStream & xs, OutputParams const &) const
 
 	docstring const reflabel = buffer().B_("References");
 
+	// Check that the bibliography is not empty, to ensure that the document is valid.
+	if (cites.empty()) {
+		xs << XMLStream::ESCAPE_NONE << "<!-- The bibliography is empty! -->";
+		xs << xml::CR();
+		return;
+	}
+
 	// Tell BiblioInfo our purpose (i.e. generate HTML rich text).
 	CiteItem ci;
 	ci.context = CiteItem::Export;
@@ -1100,7 +1107,8 @@ void InsetBibtex::docbook(XMLStream & xs, OutputParams const &) const
 	xs << xml::CR();
 	xs << xml::StartTag("title");
 	xs << reflabel;
-	xs << xml::EndTag("title") << xml::CR();
+	xs << xml::EndTag("title");
+	xs << xml::CR();
 
 	// Translation between keys in each entry and DocBook tags.
 	// IDs for publications; list: http://tdg.docbook.org/tdg/5.2/biblioid.html.
@@ -1155,11 +1163,6 @@ void InsetBibtex::docbook(XMLStream & xs, OutputParams const &) const
 	// Loop over the entries. If there are no entries, add a comment to say so.
 	auto vit = cites.begin();
 	auto ven = cites.end();
-
-	if (vit == ven) {
-		xs << XMLStream::ESCAPE_NONE << "<!-- No entry in the bibliography. -->";
-		xs << xml::CR();
-	}
 
 	for (; vit != ven; ++vit) {
 		auto const biit = bibinfo.find(*vit);
