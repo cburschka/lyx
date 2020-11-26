@@ -741,7 +741,8 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs,
 
 	// Traverse everything that might belong to <info>.
 	bool hasAbstractLayout = false;
-	depth_type abstractDepth = -1;
+	static depth_type INVALID_DEPTH = 100000;
+	depth_type abstractDepth = INVALID_DEPTH;
 	pit_type cpit = bpit;
 	for (; cpit < epit; ++cpit) {
 		// Skip paragraphs that don't generate anything in DocBook.
@@ -767,7 +768,7 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs,
 
 		// Deeper paragraphs following the abstract must still be considered as part of the abstract.
 		// For instance, this includes lists. There should not be any other kind of paragraph in between.
-		if (abstractDepth != -1 && style.docbookininfo() == "never") {
+		if (abstractDepth != INVALID_DEPTH && style.docbookininfo() == "never") {
 			if (par.getDepth() > abstractDepth) {
 				abstractWithLayout.emplace(cpit);
 				continue;
@@ -775,7 +776,7 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs,
 			if (par.getDepth() == abstractDepth) {
 				// This is not an abstract paragraph and it should not either be considered as part
 				// of it. It breaks the rule that abstract paragraphs must follow each other.
-				abstractDepth = -1;
+				abstractDepth = INVALID_DEPTH;
 				break;
 			}
 		}
