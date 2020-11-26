@@ -331,6 +331,11 @@ export/templates/Articles/Journal_of_the_Acoustical_Society_of_America_%28JASA%2
 #
 export/templates/Articles/Journal_of_Statistical_Software_%28JSS%29_version_2_(lyx22|lyx23|pdf2)
 
+# These fail on updated TL 2020 after an update to "babel-greek" because of
+# missing symbols. I (Scott) checked the output of an older TL system and
+# indeed the output looks good (no  missing symbols). This issue was reported
+# to the babel-greek maintainer and is being looked into.
+export/.*/el/.*_(dvi3|pdf5)_texF
 
 # ================================================
 Sublabel: externalissues
