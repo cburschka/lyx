@@ -573,7 +573,7 @@ void InsetMathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 	if (macro)
 		macro->unlock();
 
-	dim.wid += leftOffset(mi.base.bv) + rightOffset(mi.base.bv);;
+	dim.wid += leftOffset(mi.base.bv) + rightOffset(mi.base.bv);
 	dim.des += bottomOffset(mi.base.bv);
 	dim.asc += topOffset(mi.base.bv);
 }

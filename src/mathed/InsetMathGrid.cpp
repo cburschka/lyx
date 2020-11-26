@@ -483,7 +483,7 @@ void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 	colinfo_[ncols()].width  = 0;
 
 	// compute horizontal offsets
-	colinfo_[0].offset = border() + colinfo_[0].lines * vlinesep();;
+	colinfo_[0].offset = border() + colinfo_[0].lines * vlinesep();
 	for (col_type col = 1; col <= ncols(); ++col) {
 		colinfo_[col].offset =
 			colinfo_[col - 1].offset +

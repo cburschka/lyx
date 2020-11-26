@@ -162,7 +162,7 @@ void InsetNewpage::draw(PainterInfo & pi, int x, int y) const
 		pi.pain.lines(xp, yp, 2, ColorName());
 
 		//mid-rule
-		xp[0] = xp[1] = int(x + wid * 0.5);;
+		xp[0] = xp[1] = int(x + wid * 0.5);
 		yp[0] = int(y - 0.875 * asc * 0.75);
 		yp[1] = int(y - 0.125 * asc * 0.75);
 		pi.pain.lines(xp, yp, 2, ColorName());
