@@ -79,6 +79,11 @@ Style Affiliation
 	  Color			Green
 	  Series		Bold	
 	EndFont
+	DocBookTag                        address
+	DocBookTagType                    paragraph
+	DocBookWrapperTag                 author
+	DocBookWrapperMergeWithPrevious   true
+	DocBookInInfo                     always
 End
 
 
@@ -91,6 +96,12 @@ Style Affiliation_(alternate)
 	  Tooltip		"Optional argument to the altaffiliation command"
 	EndArgument
 	PassThru		1
+	DocBookTag                        address
+	DocBookAttr                       role='alternate'
+	DocBookTagType                    paragraph
+	DocBookWrapperTag                 author
+	DocBookWrapperMergeWithPrevious   true
+	DocBookInInfo                     always
 End
 
 
@@ -123,6 +134,12 @@ Style Author_Email
 	TextFont
 	  Family		Roman
 	EndFont
+	DocBookTag            email
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType block
+	DocBookWrapperMergeWithPrevious  true
+	DocBookInInfo         always
 End
 
 
@@ -135,6 +152,12 @@ Style Author_URL
 	  Tooltip		"Optional argument to the homepage command"
 	EndArgument
 	PassThru		1
+	DocBookTag            uri
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType block
+	DocBookWrapperMergeWithPrevious  true
+	DocBookInInfo         always
 End
 
 
@@ -164,6 +187,10 @@ Style Keywords
 	  Color			Green
 	  Series		Bold
 	EndFont
+	DocBookTag          keyword
+	DocBookTagType      paragraph
+	DocBookWrapperTag   keywordset
+	DocBookInInfo       always
 End
 
 
@@ -171,6 +198,16 @@ Style PACS
 	CopyStyle		Keywords
 	LatexName		pacs
 	LabelString		"PACS numbers:"
+	DocBookTag            subjectset
+	DocBookAttr           role='pacs'
+	DocBookTagType        block
+	DocBookItemWrapperTag      subject
+	DocBookItemWrapperTagType  paragraph
+	DocBookItemTag        subjectterm
+	DocBookItemTagType    inline
+	DocBookWrapperTag     NONE
+	DocBookWrapperAttr    ""
+	DocBookInInfo         always
 End
 
 
@@ -184,13 +221,22 @@ Style Preprint
 	BottomSep		1.5
 	ParSep			1.5
 	Align			Left
+	DocBookWrapperTag   cover
+	DocBookWrapperAttr  role='preprint'
+	DocBookTag          para
+	DocBookInInfo       always
 End
 
 
 Style Thanks
+	# TODO: This style has a misleading name, innit?
 	CopyStyle		Affiliation
 	LatexName		thanks
 	LabelString		"Title footnote:"
+	DocBookTag            subtitle
+	DocBookAttr           role='footnote'
+	DocBookWrapperTag     NONE
+	DocBookInInfo         maybe
 End
 
 
@@ -223,6 +269,8 @@ Style Acknowledgments
 	  Size			Larger
 	EndFont
 	TopSep			0.7
+	DocBookTag            para
+	DocBookWrapperTag     acknowledgements
 End
 
 

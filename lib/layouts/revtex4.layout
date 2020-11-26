@@ -55,6 +55,7 @@ Style Standard
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
+	DocBookTag            para
 End
 
 
@@ -113,6 +114,10 @@ Style Preprint
 	BottomSep             1.5
 	ParSep                1.5
 	Align                 Left
+	DocBookWrapperTag   cover
+	DocBookWrapperAttr  role='preprint'
+	DocBookTag          para
+	DocBookInInfo       always
 End
 
 
@@ -149,6 +154,11 @@ Style Affiliation
 	LabelFont
 	  Shape               Italic
 	EndFont
+	DocBookTag                        address
+	DocBookTagType                    paragraph
+	DocBookWrapperTag                 author
+	DocBookWrapperMergeWithPrevious   true
+	DocBookInInfo                     always
 End
 
 
@@ -162,6 +172,12 @@ Style Affiliation_(alternate)
 		Tooltip       "Optional argument to the altaffiliation command"
 	EndArgument
 	LabelString           "Affiliation (alternate):"
+	DocBookTag                        address
+	DocBookAttr                       role='alternate'
+	DocBookTagType                    paragraph
+	DocBookWrapperTag                 author
+	DocBookWrapperMergeWithPrevious   true
+	DocBookInInfo                     always
 End
 
 
@@ -198,6 +214,13 @@ Style Thanks
 	CopyStyle             Affiliation
 	LatexName             thanks
 	LabelString           "Thanks:"
+	DocBookTag            personblurb
+	DocBookAttr           role='thanks'
+	DocBookTagType        paragraph
+	DocBookItemTag        para
+	DocBookWrapperTag     author
+	DocBookWrapperMergeWithPrevious true
+	DocBookInInfo         always
 End
 
 
@@ -217,6 +240,12 @@ Style Author_Email
 	LabelFont
 	  Family              Roman
 	EndFont
+	DocBookTag            email
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType block
+	DocBookWrapperMergeWithPrevious  true
+	DocBookInInfo         always
 End
 
 
@@ -230,6 +259,12 @@ Style Author_URL
 		Tooltip       "Optional argument to the homepage command"
 	EndArgument
 	LabelString           "URL:"
+	DocBookTag            uri
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType block
+	DocBookWrapperMergeWithPrevious  true
+	DocBookInInfo         always
 End
 
 
@@ -256,6 +291,8 @@ Style Acknowledgments
 	  Series              Bold
 	  Size                Large
 	EndFont
+	DocBookTag            para
+	DocBookWrapperTag     acknowledgements
 End
 
 
@@ -268,6 +305,16 @@ Style PACS
 	LabelType             Static
 	LabelSep              M
 	LabelString           "PACS number:"
+	DocBookTag            subjectset
+	DocBookAttr           role='pacs'
+	DocBookTagType        block
+	DocBookItemWrapperTag      subject
+	DocBookItemWrapperTagType  paragraph
+	DocBookItemTag        subjectterm
+	DocBookItemTagType    inline
+	DocBookWrapperTag     NONE
+	DocBookWrapperAttr    ""
+	DocBookInInfo         always
 End
 
 

@@ -55,6 +55,8 @@ std::string Floating::docbookFloatType() const
 		return "table";
 	} else if (floattype_ == "algorithm") {
 		return "algorithm";
+	} else if (floattype_ == "video") {
+		return "video";
 	} else {
 		// If nothing matches, return something that will not be valid.
 		LYXERR0("Unrecognised float type: " + floattype_);
@@ -118,7 +120,7 @@ string Floating::docbookAttr() const
 string Floating::docbookTag(bool hasTitle) const
 {
 	// TODO: configure this in the layouts?
-	if (docbookFloatType() == "figure" || docbookFloatType() == "algorithm") {
+	if (docbookFloatType() == "figure" || docbookFloatType() == "algorithm" || docbookFloatType() == "video") {
 		return hasTitle ? "figure" : "informalfigure";
 	} else if (docbookFloatType() == "table") {
 		return hasTitle ? "table" : "informaltable";

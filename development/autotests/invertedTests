@@ -453,7 +453,7 @@ export/examples/.*/American_Mathematical_Society_%28AMS%29_docbook5
 export/examples/Articles/American_Chemical_Society_%28ACS%29_docbook5
 #   - A&A: formula with two references (only one xml:id allowed per <equation> tag).
 export/examples/Articles/Astronomy_%26_Astrophysics_docbook5
-#   - Elsevier: footnotes in the metadata (author footnotes are definitely not supported, though).
+#   - Elsevier: footnotes in the metadata (author footnotes are not supported, except maybe through annotations).
 export/templates/Articles/Elsevier_docbook5
 # - Branches may cause problems (especially when mixing with parts that must go in <info>).
 export/export/latex/languages/supported-languages_(|babel|babel_auto-legacy)_?docbook5
@@ -493,6 +493,12 @@ export/examples/(es|fr)/Modules/Linguistics_docbook5
 export/examples/ko/cjk-ko-doc_docbook5
 # - Metadata in abstract paragraph.
 export/templates/Articles/Springers_Global_Journal_Template_%28V._3%29_docbook5
+# - Sweave impossible to implement. Document irremediably wrong (no .bib file, still referenced in the text).
+export/templates/Articles/R_Journal_docbook5
+# - Misplaced acknowledgements (fixable).
+export/templates/Articles/REVTeX_%28V._4%29_docbook5
+# - Forbidden inlines, equation in formatting, broken references, float in paragraphs, videos.
+export/templates/Articles/REVTeX_%28V._4.1%29_docbook5
 
 Sublabel: docbook poster
 # Posters cannot be properly exported, the LyX documents are too far from

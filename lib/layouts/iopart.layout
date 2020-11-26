@@ -226,6 +226,16 @@ Style PACS
 	CopyStyle	Keywords
 	LatexName	pacs
 	LabelString	"Physics and Astronomy Classification System number:"
+	DocBookTag          subjectset
+	DocBookAttr         role='pacs'
+	DocBookTagType      block
+	DocBookItemWrapperTag      subject
+	DocBookItemWrapperTagType  paragraph
+	DocBookItemTag      subjectterm
+	DocBookItemTagType  inline
+	DocBookWrapperTag   NONE
+	DocBookWrapperAttr  ""
+	DocBookInInfo       always
 End
 
 
@@ -233,6 +243,16 @@ Style MSC
 	CopyStyle	Keywords
 	LatexName	ams
 	LabelString	"Mathematics Subject Classification number:"
+	DocBookTag          subjectset
+	DocBookAttr         role='msc'
+	DocBookTagType      block
+	DocBookItemWrapperTag      subject
+	DocBookItemWrapperTagType  paragraph
+	DocBookItemTag      subjectterm
+	DocBookItemTagType  inline
+	DocBookWrapperTag   NONE
+	DocBookWrapperAttr  ""
+	DocBookInInfo       always
 End
 
 

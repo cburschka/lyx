@@ -379,6 +379,9 @@ public:
 	/// Should the layouts that should/must go into <info> be generated?
 	bool docbook_generate_info = true;
 
+	/// Should wrappers be ignored? Mostly useful to avoid generation of <abstract>.
+	bool docbook_ignore_wrapper = false;
+
 	/// Are we generating this material for inclusion in a TOC-like entity?
 	bool for_toc = false;
 

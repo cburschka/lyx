@@ -170,7 +170,7 @@ string fontToAttribute(xml::FontTypes type) {
 
 // Higher-level convenience functions.
 
-void openParTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar)
+void openParTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar, const OutputParams & runparams)
 {
 	if (par == prevpar)
 		prevpar = nullptr;
@@ -182,7 +182,7 @@ void openParTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar
 	// next paragraph is the affiliation, then it should be output in the same <author> tag (different
 	// layout, same wrapper tag).
 	Layout const & lay = par->layout();
-	bool openWrapper = lay.docbookwrappertag() != "NONE";
+	bool openWrapper = lay.docbookwrappertag() != "NONE" && !runparams.docbook_ignore_wrapper;
 	if (prevpar != nullptr) {
 		Layout const & prevlay = prevpar->layout();
 		if (prevlay.docbookwrappertag() != "NONE") {
@@ -209,19 +209,20 @@ void openParTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar
 		}
 	}
 
+	xml::openTag(xs, lay.docbookitemwrappertag(), lay.docbookitemwrapperattr(), lay.docbookitemwrappertagtype());
 	xml::openTag(xs, lay.docbookitemtag(), lay.docbookitemattr(), lay.docbookitemtagtype());
 	xml::openTag(xs, lay.docbookiteminnertag(), lay.docbookiteminnerattr(), lay.docbookiteminnertagtype());
 }
 
 
-void closeParTag(XMLStream & xs, Paragraph const * par, Paragraph const * nextpar)
+void closeParTag(XMLStream & xs, Paragraph const * par, Paragraph const * nextpar, const OutputParams & runparams)
 {
 	if (par == nextpar)
 		nextpar = nullptr;
 
 	// See comment in openParTag.
 	Layout const & lay = par->layout();
-	bool closeWrapper = lay.docbookwrappertag() != "NONE";
+	bool closeWrapper = lay.docbookwrappertag() != "NONE" && !runparams.docbook_ignore_wrapper;
 	if (nextpar != nullptr) {
 		Layout const & nextlay = nextpar->layout();
 		if (nextlay.docbookwrappertag() != "NONE") {
@@ -236,6 +237,7 @@ void closeParTag(XMLStream & xs, Paragraph const * par, Paragraph const * nextpa
 	// Main logic.
 	xml::closeTag(xs, lay.docbookiteminnertag(), lay.docbookiteminnertagtype());
 	xml::closeTag(xs, lay.docbookitemtag(), lay.docbookitemtagtype());
+	xml::closeTag(xs, lay.docbookitemwrappertag(), lay.docbookitemwrappertagtype());
 	xml::closeTag(xs, lay.docbookinnertag(), lay.docbookinnertagtype());
 	xml::closeTag(xs, lay.docbooktag(), lay.docbooktagtype());
 	if (closeWrapper)
@@ -412,12 +414,12 @@ void makeParagraph(
 			continue;
 
 		if (open_par)
-			openParTag(xs, &*par, prevpar);
+			openParTag(xs, &*par, prevpar, runparams);
 
 		xs << XMLStream::ESCAPE_NONE << parXML;
 
 		if (close_par)
-			closeParTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr);
+			closeParTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr, runparams);
 	}
 }
 
@@ -446,7 +448,7 @@ void makeEnvironment(Text const &text,
 	// Output the opening tag for this environment, but only if it has not been previously opened (condition
 	// implemented in openParTag).
 	auto prevpar = text.paragraphs().getParagraphBefore(par);
-	openParTag(xs, &*par, prevpar); // TODO: switch in layout for par/block?
+	openParTag(xs, &*par, prevpar, runparams);
 
 	// Generate the contents of this environment. There is a special case if this is like some environment.
 	Layout const & style = par->layout();
@@ -483,7 +485,7 @@ void makeEnvironment(Text const &text,
 	}
 
 	// Close the environment.
-	closeParTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr); // TODO: switch in layout for par/block?
+	closeParTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr, runparams);
 }
 
 
@@ -630,14 +632,14 @@ void makeCommand(
 
 	// Generate this command.
 	auto prevpar = text.paragraphs().getParagraphBefore(par);
-	openParTag(xs, &*par, prevpar);
+	openParTag(xs, &*par, prevpar, runparams);
 
 	auto pars = par->simpleDocBookOnePar(buf, runparams,text.outerFont(distance(begin, par)));
 	for (auto & parXML : pars)
 		// TODO: decide what to do with openParTag/closeParTag in new lines.
 		xs << XMLStream::ESCAPE_NONE << parXML;
 
-	closeParTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr);
+	closeParTag(xs, &*par, (nextpar != end) ? &*nextpar : nullptr, runparams);
 }
 
 
@@ -737,6 +739,7 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs,
 
 	// Traverse everything that might belong to <info>.
 	bool hasAbstractLayout = false;
+	depth_type abstractDepth = -1;
 	pit_type cpit = bpit;
 	for (; cpit < epit; ++cpit) {
 		// Skip paragraphs that don't generate anything in DocBook.
@@ -755,8 +758,24 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs,
 		// If this is marked as an abstract by the layout, put it in the right set.
 		if (style.docbookabstract()) {
 			hasAbstractLayout = true;
+			abstractDepth = par.getDepth();
 			abstractWithLayout.emplace(cpit);
 			continue;
+		}
+
+		// Deeper paragraphs following the abstract must still be considered as part of the abstract.
+		// For instance, this includes lists. There should not be any other kind of paragraph in between.
+		if (abstractDepth != -1 && style.docbookininfo() == "never") {
+			if (par.getDepth() > abstractDepth) {
+				abstractWithLayout.emplace(cpit);
+				continue;
+			}
+			if (par.getDepth() == abstractDepth) {
+				// This is not an abstract paragraph and it should not either be considered as part
+				// of it. It breaks the rule that abstract paragraphs must follow each other.
+				abstractDepth = -1;
+				break;
+			}
 		}
 
 		// Based on layout information, store this paragraph in one set: should be in <info>, must be,
@@ -769,7 +788,7 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs,
 				(style.docbooktag() == "NONE" || style.docbooktag() == "para") &&
 				style.docbookwrappertag() == "NONE")
 			// In this case, it is very likely that style.docbookininfo() == "never"! Be extra careful
-			// about anything that gets caught here.
+			// about anything that gets caught here. For instance, don't ake into account
 			abstractNoLayout.emplace(cpit);
 		else // This should definitely not be in <info>.
 			break;
@@ -901,6 +920,7 @@ void outputDocBookInfo(
 
 		auto rp = runparams;
 		rp.docbook_generate_info = false;
+		rp.docbook_ignore_wrapper = true;
 
 		set<pit_type> doneParas; // Paragraphs that have already been converted (mostly to deal with lists).
 		for (auto const & p : info.abstract) {
@@ -908,6 +928,7 @@ void outputDocBookInfo(
 				auto oldPar = paragraphs.iterator_at(p);
 				auto newPar = makeAny(text, buf, xs2, rp, oldPar);
 
+				// Find insets that should go outside the abstract.
 				auto subinfos = gatherInfo(oldPar);
 				for (auto & subinfo: subinfos)
 					infoInsets.insert(subinfo);
@@ -968,23 +989,18 @@ void outputDocBookInfo(
 	// - Finally, always output the abstract as the last item of the <info>, as it requires special treatment
 	// (especially if it contains several paragraphs that are empty).
 	if (hasAbstract) {
-		if (info.abstractLayout) {
-			xs << XMLStream::ESCAPE_NONE << abstract;
-			xs << xml::CR();
-		} else {
-			string tag = paragraphs[*info.abstract.begin()].layout().docbookforceabstracttag();
-			if (tag == "NONE")
-				tag = "abstract";
+		string tag = paragraphs[*info.abstract.begin()].layout().docbookforceabstracttag();
+		if (tag == "NONE")
+			tag = "abstract";
 
-			if (!xs.isLastTagCR())
-				xs << xml::CR();
+		if (!xs.isLastTagCR())
+			xs << xml::CR();
 
-			xs << xml::StartTag(tag);
-			xs << xml::CR();
-			xs << XMLStream::ESCAPE_NONE << abstract;
-			xs << xml::EndTag(tag);
-			xs << xml::CR();
-		}
+		xs << xml::StartTag(tag);
+		xs << xml::CR();
+		xs << XMLStream::ESCAPE_NONE << abstract;
+		xs << xml::EndTag(tag);
+		xs << xml::CR();
 	}
 
 	// End the <info> tag if it was started.

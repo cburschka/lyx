@@ -757,6 +757,11 @@ void docbookNoSubfigures(XMLStream & xs, OutputParams const & runparams, const I
 
 void InsetFloat::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
+//	if (runparams.docbook_in_par) {
+//		xs << xml::EndTag("para");
+//		xs << xml::CR();
+//	}
+
 	const InsetCaption* caption = getCaptionInset();
 	const InsetLabel* label = getLabelInset();
 
@@ -780,6 +785,11 @@ void InsetFloat::docbook(XMLStream & xs, OutputParams const & runparams) const
 		docbookSubfigures(xs, runparams, caption, label, subfigures);
 	else
 		docbookNoSubfigures(xs, runparams, caption, label, ftype, this);
+
+//	if (runparams.docbook_in_par) {
+//		xs << xml::CR();
+//		xs << xml::StartTag("para");
+//	}
 }
 
 

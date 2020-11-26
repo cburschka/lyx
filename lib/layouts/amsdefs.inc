@@ -215,10 +215,11 @@ Style Thanks
 	CopyStyle             Address
 	LatexName             thanks
 	LabelString           "Thanks:"
-	DocBookTag            para
-	DocBookWrapperTag     acknowledgements
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     othercredit
 	DocBookWrapperMergeWithPrevious true
-	DocBookInInfo         never
+	DocBookInInfo         always
 End
 
 

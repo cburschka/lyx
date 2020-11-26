@@ -49,7 +49,11 @@ Style Terms
 End
 
 Style Keywords
-        CopyStyle             Terms
-        LatexName             keywords
-        LabelString           "Keywords:"
+	CopyStyle             Terms
+	LatexName             keywords
+	LabelString           "Keywords:"
+	DocBookTag          keyword
+	DocBookTagType      paragraph
+	DocBookWrapperTag   keywordset
+	DocBookInInfo       always
 End
