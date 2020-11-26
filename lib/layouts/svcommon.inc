@@ -363,6 +363,8 @@ Style Subtitle
 	  Size		Large
 	EndFont
 	DocBookTag            subtitle
+	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 End
 
 Style Author

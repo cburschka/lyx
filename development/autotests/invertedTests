@@ -499,6 +499,8 @@ export/templates/Articles/R_Journal_docbook5
 export/templates/Articles/REVTeX_%28V._4%29_docbook5
 # - Forbidden inlines, equation in formatting, broken references, float in paragraphs, videos.
 export/templates/Articles/REVTeX_%28V._4.1%29_docbook5
+# - Address at the end of the document (only allowed in abstract), misplaced acknowledgements.
+export/templates/Articles/Kluwer_docbook5
 
 Sublabel: docbook poster
 # Posters cannot be properly exported, the LyX documents are too far from

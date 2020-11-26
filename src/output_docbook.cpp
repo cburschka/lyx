@@ -183,7 +183,8 @@ void openParTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar
 	// layout, same wrapper tag).
 	Layout const & lay = par->layout();
 	bool openWrapper = lay.docbookwrappertag() != "NONE" && !runparams.docbook_ignore_wrapper;
-	if (prevpar != nullptr) {
+
+	if (prevpar != nullptr && !runparams.docbook_ignore_wrapper) {
 		Layout const & prevlay = prevpar->layout();
 		if (prevlay.docbookwrappertag() != "NONE") {
 			if (prevlay.docbookwrappertag() == lay.docbookwrappertag() &&
@@ -223,7 +224,8 @@ void closeParTag(XMLStream & xs, Paragraph const * par, Paragraph const * nextpa
 	// See comment in openParTag.
 	Layout const & lay = par->layout();
 	bool closeWrapper = lay.docbookwrappertag() != "NONE" && !runparams.docbook_ignore_wrapper;
-	if (nextpar != nullptr) {
+
+	if (nextpar != nullptr && !runparams.docbook_ignore_wrapper) {
 		Layout const & nextlay = nextpar->layout();
 		if (nextlay.docbookwrappertag() != "NONE") {
 			if (nextlay.docbookwrappertag() == lay.docbookwrappertag() &&

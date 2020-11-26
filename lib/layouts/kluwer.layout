@@ -41,6 +41,7 @@ Style Standard
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
+	DocBookTag            para
 End
 
 
@@ -126,6 +127,9 @@ Style Title
 	  Size                Largest
 	EndFont
 	HTMLTitle             true
+	DocBookTag            title
+	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 End
 
 
@@ -146,6 +150,9 @@ Style Subtitle
 	  Size                Larger
 	  Shape               Italic
 	EndFont
+	DocBookTag            subtitle
+	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 End
 
 
@@ -162,6 +169,9 @@ Style Date
 	Font
 	  Size                Large
 	EndFont
+	DocBookTag            date
+	DocBookTagType        paragraph
+	DocBookInInfo         always
 End
 
 
@@ -180,6 +190,11 @@ Style Author
 	  Size                Normal
 	  Series              Bold
 	EndFont
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType inline
+	DocBookInInfo         always
 End
 
 
@@ -196,6 +211,12 @@ Style Address
 	  Size                normal
 	  Shape               Italic
 	EndFont
+	DocBookTag            address
+	DocBookTagType        block
+	DocBookWrapperTag     author
+	DocBookWrapperTagType inline
+	DocBookWrapperMergeWithPrevious  true
+	DocBookInInfo         always
 End
 
 
@@ -214,6 +235,9 @@ Style AddressForOffprints
 	  Shape               Italic
 	  Color               Red
 	EndFont
+	DocBookTag            address
+	DocBookAttr           role='offprints'
+	DocBookTagType        block
 End
 
 
@@ -236,6 +260,9 @@ Style RunningTitle
 	  Shape               Italic
 	  Color               Red
 	EndFont
+	DocBookTag            titleabbrev
+	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 End
 
 
@@ -257,6 +284,10 @@ Style RunningAuthor
 	  Shape               Italic
 	  Color               Red
 	EndFont
+	DocBookTag            authorinitials
+	DocBookAttr           role='running-author'
+	DocBookTagType        paragraph
+	DocBookInInfo         always
 End
 
 
@@ -299,6 +330,10 @@ Style Keywords
 	  Series              Bold
 	  Size                Small
 	EndFont
+	DocBookTag            keyword
+	DocBookTagType        paragraph
+	DocBookWrapperTag     keywordset
+	DocBookInInfo         always
 End
 
 
@@ -320,6 +355,8 @@ Style Acknowledgements
 	  Series              Bold
 	  Size                Large
 	EndFont
+	DocBookTag            para
+	DocBookWrapperTag     acknowledgements
 End
 
 
