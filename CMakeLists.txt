@@ -1279,4 +1279,10 @@ endif()
 # can be run last
 add_subdirectory(development/cmake/post_install)
 
+string(TIMESTAMP current_date "%Y-%m-%d %H:%M")
+execute_process(COMMAND ${LYX_GITVERSION} describe --tags
+	WORKING_DIRECTORY "${TOP_SRC_DIR}"
+	OUTPUT_VARIABLE current_version
+	OUTPUT_STRIP_TRAILING_WHITESPACE)
+file(APPEND "${TOP_BINARY_DIR}/Testing/IgnoredCount" "${current_date} ${current_version} Ignored tests = ${LYX_ignored_count}\n")
 message(STATUS)

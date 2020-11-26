@@ -159,7 +159,11 @@ macro(maketestname testname inverted listinverted listignored listunreliable lis
   endif()
   set(sublabel "${${listlabels}}")
   findexpr(mfound ${testname} ${listignoredx} sublabel)
-  if (NOT mfound)
+  if (mfound)
+    MATH(EXPR lyx_ignored_count "${lyx_ignored_count}+1")
+    # No testname because ignored
+    set(${testname} "")
+  else()
     set(sublabel2 "")
     findexpr(foundunreliable ${testname} ${listunreliablex} sublabel2)
     if (foundunreliable)
@@ -194,9 +198,6 @@ macro(maketestname testname inverted listinverted listignored listunreliable lis
       set(${testname} "${tmpprefix}${${testname}}")
       set(${listlabels} ${sublabel})
     endif()
-  else()
-    # No testname because ignored
-    set(${testname} "")
   endif()
 endmacro()
 

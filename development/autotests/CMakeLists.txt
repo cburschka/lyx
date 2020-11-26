@@ -122,5 +122,8 @@ if(QT_USES_X11)
 endif()
 
 if (LYX_ENABLE_EXPORT_TESTS)
+  set(lyx_ignored_count 0)
   include(${TOP_SRC_DIR}/development/autotests/ExportTests.cmake)
+  message(STATUS "Number of ignored export tests now ${lyx_ignored_count}")
+  set(LYX_ignored_count ${lyx_ignored_count} PARENT_SCOPE)
 endif()
