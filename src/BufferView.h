@@ -26,7 +26,7 @@ namespace lyx {
 
 namespace support { class FileName; }
 
-namespace frontend { class CaretGeometry; }
+namespace frontend { struct CaretGeometry; }
 namespace frontend { class Painter; }
 namespace frontend { class GuiBufferViewDelegate; }
 
