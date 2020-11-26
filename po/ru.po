@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-10-23 10:28+0300\n"
-"PO-Revision-Date: 2020-10-29 09:58+0200\n"
+"PO-Revision-Date: 2020-12-18 10:44+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -3413,7 +3413,7 @@ msgstr "Применены свойства текста: %1$s"
 
 #: src/Text3.cpp:2679
 msgid "Path to thesaurus directory not set!"
-msgstr "Путь к словарю тезауруса не установлен!"
+msgstr "Каталог для словарей тезауруса не задан!"
 
 #: src/Text3.cpp:2680
 msgid ""
@@ -3422,10 +3422,10 @@ msgid ""
 "Please refer to sec. 6.15.1 of the User's Guide for setup\n"
 "instructions."
 msgstr ""
-"Путь к каталогу тезауруса не указан.\n"
+"Каталог для словарей тезауруса не задан.\n"
 "Тезаурус не работает.\n"
-"Пожалуйста, обратитесь к разделу 6.15.1 Руководства пользователя за\n"
-"инструкциями по установке."
+"Пожалуйста, обратитесь к разделу 6.16.1 Руководства пользователя за\n"
+"инструкциями по настройке."
 
 #: src/Text3.cpp:2747 src/Text3.cpp:2758
 msgid "Paragraph layout set"
@@ -8765,7 +8765,7 @@ msgstr "Вертикальный промежуток"
 
 #: src/insets/Inset.cpp:121 lib/ui/stdtoolbars.inc:261
 msgid "Info"
-msgstr "Инфо"
+msgstr "Поле"
 
 #: src/insets/Inset.cpp:166
 msgid "Horizontal Math Space"
@@ -14412,7 +14412,7 @@ msgstr "Презентации"
 #: lib/layouts/beamer.layout:907 lib/layouts/beamer.layout:1244
 #: lib/layouts/beamer.layout:1437
 msgid "Overlay Specifications|v"
-msgstr "Определение оверлея|о"
+msgstr "Определение оверлея"
 
 #: lib/layouts/beamer.layout:88 lib/layouts/beamer.layout:192
 msgid "Overlay specifications for this list"
@@ -20213,7 +20213,7 @@ msgstr "На слайдах"
 
 #: lib/layouts/powerdot.layout:640
 msgid "Overlay Specification|S"
-msgstr "Определение оверлея|о"
+msgstr "Определение оверлея"
 
 #: lib/layouts/powerdot.layout:641
 msgid "Specify the overlay settings (see powerdot manual)"
@@ -25746,7 +25746,7 @@ msgstr "Следующая заметка"
 
 #: lib/ui/stdtoolbars.inc:260
 msgid "LyX Documentation Tools"
-msgstr "Инструменты документирования LyX"
+msgstr "Документирование LyX"
 
 #: lib/ui/stdtoolbars.inc:262
 msgid "Menu Separator"
@@ -35122,7 +35122,7 @@ msgstr "Пропустить это слово для текущей сесси�
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:158
 msgid "I&gnore All"
-msgstr "Пропустить все"
+msgstr "Пропустить всё"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:175
 msgid "Add the word to your personal dictionary"
