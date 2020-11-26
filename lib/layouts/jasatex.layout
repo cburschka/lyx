@@ -43,6 +43,7 @@ Style Standard
 	Align		Block
 	AlignPossible	Block, Left, Right, Center
 	LabelType	No_Label
+	DocBookTag  para
 End
 
 
@@ -80,6 +81,9 @@ Style Title
 	  Size		Largest
 	EndFont
 	HTMLTitle	true
+	DocBookTag            title
+	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 End
 
 
@@ -100,6 +104,11 @@ Style Author
 	Font
 	  Size		Large
 	EndFont
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType inline
+	DocBookInInfo         always
 End
 
 
@@ -116,6 +125,12 @@ Style Affiliation
 	Font
 	  Shape		Italic
 	EndFont
+	DocBookTag                        affiliation
+	DocBookWrapperTag                 author
+	DocBookWrapperMergeWithPrevious   true
+	DocBookItemTag                    orgname
+	DocBookItemTagType                paragraph
+	DocBookInInfo                     always
 End
 
 
@@ -127,6 +142,13 @@ Style "Alternative Affiliation"
 	  LabelString	"Affiliation Prefix"
 	  Tooltip	"A prefix like 'Also at '"
 	EndArgument
+	DocBookTag                        affiliation
+	DocBookAttr                       role='alternate'
+	DocBookWrapperTag                 author
+	DocBookWrapperMergeWithPrevious   true
+	DocBookItemTag                    orgname
+	DocBookItemTagType                paragraph
+	DocBookInInfo                     always
 End
 
 
@@ -136,12 +158,24 @@ Style Homepage
 	Font
 	  Shape		Up
 	EndFont
+	DocBookTag                        uri
+	DocBookTagType                    paragraph
+	DocBookWrapperTag                 author
+	DocBookWrapperMergeWithPrevious   true
+	DocBookItemTag                    NONE
+	DocBookInInfo                     always
 End
 
 
 Style Email
 	CopyStyle	Homepage
 	LatexName	email
+	DocBookTag                        email
+	DocBookTagType                    paragraph
+	DocBookWrapperTag                 author
+	DocBookWrapperMergeWithPrevious   true
+	DocBookItemTag                    NONE
+	DocBookInInfo                     always
 End
 
 
@@ -161,6 +195,9 @@ Style Date
 	Font
 	  Size		Large
 	EndFont
+	DocBookTag            date
+	DocBookTagType        paragraph
+	DocBookInInfo         always
 End
 
 
@@ -190,6 +227,8 @@ Style Abstract
 	  Series	Bold
 	  Size		Large
 	EndFont
+	DocBookTag       NONE
+	DocBookAbstract  true
 End
 
 
@@ -210,7 +249,11 @@ Style Keywords
 	LabelFont
 	  Color		Green
 	  Series	Bold
-	EndFont		
+	EndFont
+	DocBookTag            keyword
+	DocBookTagType        paragraph
+	DocBookWrapperTag     keywordset
+	DocBookInInfo         always
 End
 
 
@@ -218,6 +261,16 @@ Style PACS
 	CopyStyle	Keywords
 	LatexName	pacs
 	LabelString	"PACS numbers:"
+	DocBookTag          subjectset
+	DocBookAttr         role='pacs'
+	DocBookTagType      block
+	DocBookItemWrapperTag      subject
+	DocBookItemWrapperTagType  paragraph
+	DocBookItemTag      subjectterm
+	DocBookItemTagType  inline
+	DocBookWrapperTag   NONE
+	DocBookWrapperAttr  ""
+	DocBookInInfo       always
 End
 
 Style "Preprint number"
@@ -241,6 +294,8 @@ Style Acknowledgments
 	  Series	Bold
 	  Size		Normal
 	EndFont
+	DocBookTag            para
+	DocBookWrapperTag     acknowledgements
 End
 
 

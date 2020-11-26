@@ -501,6 +501,8 @@ export/templates/Articles/REVTeX_%28V._4%29_docbook5
 export/templates/Articles/REVTeX_%28V._4.1%29_docbook5
 # - Address at the end of the document (only allowed in abstract), misplaced acknowledgements.
 export/templates/Articles/Kluwer_docbook5
+# - Empty bibliography, broken references, empty figures.
+export/templates/Articles/Journal_of_the_Acoustical_Society_of_America_%28JASA%29_docbook5
 
 Sublabel: docbook poster
 # Posters cannot be properly exported, the LyX documents are too far from

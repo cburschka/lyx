@@ -97,6 +97,8 @@ Style Acknowledgement
 	  Size                Small
 	  Shape               Italic
 	EndFont
+	DocBookTag            para
+	DocBookWrapperTag     acknowledgements
 End
 
 
