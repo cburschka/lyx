@@ -14,7 +14,7 @@
 #include "GuiFontLoader.h"
 
 #include "FontLoader.h"
-#include "FontInfo.h"
+#include "Font.h"
 #include "GuiFontMetrics.h"
 #include "qt_helpers.h"
 
@@ -129,8 +129,8 @@ GuiFontInfo & fontinfo(FontInfo const & f)
             (f.size() < NUM_SIZE);
     if (!fontIsRealized) {
         // We can reset the font to something sensible in release mode.
+        LYXERR0("Unrealized font!" << f);
         LATTEST(false);
-        LYXERR0("Unrealized font!");
         FontInfo f2 = f;
         f2.realize(sane_font);
         GuiFontInfo * & fi = fontinfo_ptr(f2);

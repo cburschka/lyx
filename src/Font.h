@@ -119,6 +119,9 @@ private:
 	mutable bool open_encoding_;
 };
 
+///
+std::ostream & operator<<(std::ostream & os, FontInfo const & f);
+
 
 ///
 inline
