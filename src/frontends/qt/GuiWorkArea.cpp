@@ -1345,7 +1345,11 @@ QVariant GuiWorkArea::inputMethodQuery(Qt::InputMethodQuery query) const
 	switch (query) {
 		// this is the CJK-specific composition window position and
 		// the context menu position when the menu key is pressed.
+#if (QT_VERSION < 0x050000)
 	case Qt::ImMicroFocus: {
+#else
+	case Qt::ImCursorRectangle: {
+#endif
 		CaretGeometry const & cg = bufferView().caretGeometry();
 		return QRect(cg.left - 10 * (d->preedit_lines_ != 1),
 		             cg.top + cg.height() * d->preedit_lines_,
