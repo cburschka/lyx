@@ -12,8 +12,9 @@
 #include <config.h>
 
 #include "Spacing.h"
-#include "support/lstrings.h"
 #include "support/convert.h"
+#include "support/lstrings.h"
+#include "support/lyxlib.h"
 
 #include <ostream>
 
@@ -55,7 +56,7 @@ void Spacing::set(Spacing::Space sp, string const & val)
 {
 	space = sp;
 	if (sp == Other) {
-		switch (int(convert<double>(val) * 1000 + 0.5)) {
+		switch (support::iround(convert<double>(val) * 1000)) {
 		case 1000:
 			space = Single;
 			break;

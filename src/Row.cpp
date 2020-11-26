@@ -26,6 +26,7 @@
 #include "support/debug.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
+#include "support/lyxlib.h"
 
 #include <algorithm>
 #include <ostream>
@@ -297,7 +298,7 @@ int Row::left_x() const
 		x += cit->full_width();
 		++cit;
 	}
-	return int(x + 0.5);
+	return support::iround(x);
 }
 
 
@@ -313,7 +314,7 @@ int Row::right_x() const
 		else
 			break;
 	}
-	return int(x + 0.5);
+	return support::iround(x);
 }
 
 

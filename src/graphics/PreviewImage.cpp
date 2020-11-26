@@ -19,6 +19,7 @@
 #include "PreviewLoader.h"
 
 #include "support/FileName.h"
+#include "support/lyxlib.h"
 
 
 using namespace std;
@@ -85,7 +86,7 @@ Dimension PreviewImage::dim() const
 	if (!image)
 		return dim;
 
-	dim.asc = int(pimpl_->ascent_frac_ * double(image->height()) + 0.5);
+	dim.asc = support::iround(pimpl_->ascent_frac_ * double(image->height()));
 	dim.des = image->height() - dim.asc;
 	dim.wid = image->width();
 	return dim;
