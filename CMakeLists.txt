@@ -706,7 +706,7 @@ else()
 	# The following setting with LYX_GCC11_MODE is needed because cmake does not honor
 	# CMAKE_CXX_STANDARD while performing tests like
 	# check_cxx_source_compiles("..." HAVE_DEF_MAKE_UNIQUE)
-	set(LYX_CXX_FLAGS "-Wall -Wunused-parameter ${LYX_GCC11_MODE}${LYX_CXX_FLAGS}")
+	set(LYX_CXX_FLAGS "-Wall -Wextra -Wno-deprecated-copy ${LYX_GCC11_MODE}${LYX_CXX_FLAGS}")
 	if(LYX_STDLIB_DEBUG)
 	  set(LYX_CXX_FLAGS "${LYX_CXX_FLAGS} -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC")
         else()
