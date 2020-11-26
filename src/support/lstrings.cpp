@@ -1446,8 +1446,8 @@ std::string formatFPNumber(double x)
 	os << std::fixed;
 	// Prevent outputs of 23.4200000000000017 but output small numbers
 	// with at least 6 significant digits.
-	double const logarithm = log10(fabs(x));
-	os << std::setprecision(max(6 - iround(logarithm), 0)) << x;
+	int const precision = (x == 0.0) ? 0 : max(6 - iround(log10(fabs(x))), 0);
+	os << std::setprecision(precision) << x;
 	string result = os.str();
 	if (result.find('.') != string::npos) {
 		result = rtrim(result, "0");
