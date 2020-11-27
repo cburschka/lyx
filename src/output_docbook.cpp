@@ -1101,7 +1101,7 @@ void docbookParagraphs(Text const &text,
 		Layout const &style = par->layout();
 
 		// Think about adding <section> and/or </section>s.
-		if (isLayoutSectioning(style)) {
+		if (isLayoutSectioning(style) || par->params().startOfAppendix()) {
 			int level = style.toclevel;
 
 			// Need to close a previous section if it has the same level or a higher one (close <section> if opening a
@@ -1122,8 +1122,7 @@ void docbookParagraphs(Text const &text,
 			}
 
 			// Open the new section: first push it onto the stack, then output it in DocBook.
-			string sectionTag = (currentlyInAppendix && style.docbooksectiontag() == "chapter") ?
-								"appendix" : style.docbooksectiontag();
+			string sectionTag = (par->params().startOfAppendix()) ? "appendix" : style.docbooksectiontag();
 			headerLevels.push(std::make_pair(level, sectionTag));
 
 			// Some sectioning-like elements should not be output (such as FrontMatter).
