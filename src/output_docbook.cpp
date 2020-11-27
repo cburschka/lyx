@@ -1063,9 +1063,6 @@ void docbookParagraphs(Text const &text,
 				return;
 			});
 
-	std::stack<std::pair<int, string>> headerLevels; // Used to determine when to open/close sections: store the depth
-	// of the section and the tag that was used to open it.
-
 	// Detect whether the document contains sections. If there are no sections, treatment is largely simplified.
 	// In particular, there can't be an abstract, unless it is manually marked.
 	bool documentHasSections;
@@ -1082,6 +1079,9 @@ void docbookParagraphs(Text const &text,
 	DocBookInfoTag info = getParagraphsWithInfo(paragraphs, bpit, eppit, true, true);
 	outputDocBookInfo(text, buf, xs, runparams, paragraphs, info);
 	bpit = info.epit;
+
+	std::stack<std::pair<int, string>> headerLevels; // Used to determine when to open/close sections: store the depth
+	// of the section and the tag that was used to open it.
 
 	// Then, iterate through the paragraphs of this document.
 	auto par = text.paragraphs().iterator_at(bpit);

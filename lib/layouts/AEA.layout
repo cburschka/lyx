@@ -53,6 +53,9 @@ Style ShortTitle
 	LatexName	shortTitle
 	InTitle		1
 	Align		Center
+	DocBookTag            titleabbrev
+	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 End
 
 Style Publication_Month
@@ -66,24 +69,39 @@ Style Publication_Month
 	LabelFont
 	  Color		Red
 	EndFont
+	DocBookTag            date
+	DocBookAttr           role='month'
+	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 End
 
 Style Publication_Year
 	CopyStyle	Publication_Month
 	LatexName	pubYear
 	LabelString	"Publication Year:"
+	DocBookTag            date
+	DocBookAttr           role='year'
+	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 End
 
 Style Publication_Volume
 	CopyStyle	Publication_Month
 	LatexName	pubVolume
 	LabelString	"Publication Volume:"
+	DocBookTag            volumenum
+	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 End
 
 Style Publication_Issue
 	CopyStyle	Publication_Month
 	LatexName	pubIssue
 	LabelString	"Publication Issue:"
+	DocBookTag            issuenum
+	DocBookAttr           ""
+	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 End
 
 Style JEL
@@ -111,6 +129,10 @@ Style Acknowledgement
 	LabelString	"Acknowledgement."
 	Preamble
 	EndPreamble
+	DocBookTag         para
+	DocBookAttr        ""
+	DocBookWrapperTag  acknowledgements
+	DocBookWrapperMergeWithPrevious  true
 End
 
 Style Figure_Notes
@@ -122,6 +144,7 @@ Style Figure_Notes
 	Argument 1
 	  LabelString	"Figure Note"
 	  Tooltip	"Text of a note in a figure"
+	  DocBookTag  emphasis
 	EndArgument
 	LeftMargin	MMM
 	TopSep		0.5
@@ -137,6 +160,8 @@ Style Figure_Notes
 	  Shape		Italic
 	  Size		Small
 	EndFont
+	DocBookTag         para
+	DocBookWrapperTag  note
 End
 
 Style Table_Notes
@@ -145,6 +170,8 @@ Style Table_Notes
 	Argument 1
 	  LabelString	"Table Note"
 	  Tooltip	"Text of a note in a table"
+	  Tooltip	"Text of a note in a figure"
+	  DocBookTag  emphasis
 	EndArgument
 End
 

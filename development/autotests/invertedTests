@@ -513,6 +513,12 @@ export/templates/Articles/Int._Journal_of_Modern_Physics_(C|D)_docbook5
 # - Broken references.
 export/templates/Articles/Journal_of_the_Acoustical_Society_of_America_%28JASA%29_docbook5
 export/templates/Articles/Astronomy_%26_Astrophysics_docbook5
+export/templates/Articles/American_Psychological_Association_%28APA%29_docbook5
+# - Empty article!?
+export/templates/Articles/Hebrew_Article_%28KOMA-Script%29_docbook5
+# - Empty figure. Broken references. Float notes not implemented (how to do it?).
+export/templates/Articles/American_Economic_Association_%28AEA%29_docbook5
+export/templates/Articles/American_Psychological_Association_%28APA%29,_v._7_docbook5
 
 Sublabel: docbook poster
 # Posters cannot be properly exported, the LyX documents are too far from

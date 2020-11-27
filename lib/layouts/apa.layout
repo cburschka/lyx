@@ -71,6 +71,10 @@ Style RightHeader
 	  Size                Small
 	EndFont
 	Align                 Right
+	DocBookTag            titleabbrev
+	DocBookAttr           role='right-header'
+	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 End
 
 
@@ -123,6 +127,10 @@ Style ShortTitle
 	  Shape               Up
 	EndFont
 	DocBookTag            titleabbrev
+	DocBookTagType        paragraph
+	DocBookInInfo         maybe
+	DocBookTag            titleabbrev
+	DocBookAttr           role='short-title'
 	DocBookTagType        paragraph
 	DocBookInInfo         maybe
 End

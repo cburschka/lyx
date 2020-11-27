@@ -154,6 +154,10 @@ Style LeftHeader
 	  Series              Bold
 	  Size                Small
 	EndFont
+	DocBookTag            authorinitials
+	DocBookAttr           role='left-header'
+	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 End
 
 
@@ -612,6 +616,9 @@ Style Course
 	  Size                Small
 	  Shape               Italic
 	EndFont
+	DocBookTag            releaseinfo
+	DocBookAttr           role='course'
+	DocBookInInfo         always
 End
 
 
@@ -632,7 +639,14 @@ Style addORCIDlink
 	  LabelString         "Author-name"
 	  Tooltip             ORCID
 	  Mandatory           1
+	  DocBookTag          phrase
+	  DocBookAttr         role='author-name'
 	EndArgument
+	# TODO: for DocBook, this won't work outside the preamble.
+	DocBookTag            personblurb
+	DocBookAttr           role='orcid'
+	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 End
 
 
