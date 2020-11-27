@@ -1275,9 +1275,9 @@ void Buffer::updatePreviews() const
 	if (!ploader)
 		return;
 
-	InsetIterator it = inset_iterator_begin(*d->inset);
-	InsetIterator const end = inset_iterator_end(*d->inset);
-	for (; it != end; ++it)
+	InsetIterator it = begin(*d->inset);
+	InsetIterator const itend = end(*d->inset);
+	for (; it != itend; ++it)
 		it->addPreview(it, *ploader);
 
 	ploader->startLoading();
@@ -2581,7 +2581,7 @@ void Buffer::collectBibKeys(FileNameList & checkedFiles) const
 	if (!parent())
 		clearIncludeList();
 
-	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
+	for (InsetIterator it = begin(inset()); it; ++it) {
 		it->collectBibKeys(it, checkedFiles);
 		if (it->lyxCode() == BIBITEM_CODE) {
 			if (parent() != nullptr)
@@ -2959,10 +2959,10 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 
 		docstring const oldname = from_utf8(func.getArg(0));
 		docstring const newname = from_utf8(func.getArg(1));
-		InsetIterator it  = inset_iterator_begin(inset());
-		InsetIterator const end = inset_iterator_end(inset());
+		InsetIterator it  = begin(inset());
+		InsetIterator const itend = end(inset());
 		bool success = false;
-		for (; it != end; ++it) {
+		for (; it != itend; ++it) {
 			if (it->lyxCode() == BRANCH_CODE) {
 				InsetBranch & ins = static_cast<InsetBranch &>(*it);
 				if (ins.branch() == oldname) {
@@ -3841,11 +3841,9 @@ void Buffer::updateMacros() const
 
 void Buffer::getUsedBranches(std::list<docstring> & result, bool const from_master) const
 {
-	InsetIterator it  = inset_iterator_begin(inset());
-	InsetIterator const end = inset_iterator_end(inset());
-	for (; it != end; ++it) {
-		if (it->lyxCode() == BRANCH_CODE) {
-			InsetBranch & br = static_cast<InsetBranch &>(*it);
+	for (Inset const & it : inset()) {
+		if (it.lyxCode() == BRANCH_CODE) {
+			InsetBranch const & br = static_cast<InsetBranch const &>(it);
 			docstring const name = br.branch();
 			if (!from_master && !params().branchlist().find(name))
 				result.push_back(name);
@@ -3853,10 +3851,10 @@ void Buffer::getUsedBranches(std::list<docstring> & result, bool const from_mast
 				result.push_back(name);
 			continue;
 		}
-		if (it->lyxCode() == INCLUDE_CODE) {
+		if (it.lyxCode() == INCLUDE_CODE) {
 			// get buffer of external file
 			InsetInclude const & ins =
-				static_cast<InsetInclude const &>(*it);
+				static_cast<InsetInclude const &>(it);
 			Buffer * child = ins.loadIfNeeded();
 			if (!child)
 				continue;
@@ -4027,7 +4025,7 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to)
 
 	string const paramName = "key";
 	UndoGroupHelper ugh(this);
-	InsetIterator it = inset_iterator_begin(inset());
+	InsetIterator it = begin(inset());
 	for (; it; ++it) {
 		if (it->lyxCode() != CITE_CODE)
 			continue;

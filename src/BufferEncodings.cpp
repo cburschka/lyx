@@ -35,11 +35,8 @@ void BufferEncodings::initUnicodeMath(Buffer const & buffer, bool for_master)
 	}
 
 	// Check this buffer
-	Inset & inset = buffer.inset();
-	InsetIterator it = inset_iterator_begin(inset);
-	InsetIterator const end = inset_iterator_end(inset);
-	for (; it != end; ++it)
-		it->initUnicodeMath();
+	for (Inset const & it : buffer.inset())
+		it.initUnicodeMath();
 
 	if (!for_master)
 		return;

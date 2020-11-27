@@ -1189,11 +1189,8 @@ namespace graphics {
 
 void getGraphicsGroups(Buffer const & b, set<string> & ids)
 {
-	Inset & inset = b.inset();
-	InsetIterator it  = inset_iterator_begin(inset);
-	InsetIterator const end = inset_iterator_end(inset);
-	for (; it != end; ++it) {
-		InsetGraphics const * ins = it->asInsetGraphics();
+	for (Inset const & it : b.inset()) {
+		InsetGraphics const * ins = it.asInsetGraphics();
 		if (!ins)
 			continue;
 		InsetGraphicsParams const & inspar = ins->getParams();
@@ -1208,11 +1205,8 @@ int countGroupMembers(Buffer const & b, string const & groupId)
 	int n = 0;
 	if (groupId.empty())
 		return n;
-	Inset & inset = b.inset();
-	InsetIterator it = inset_iterator_begin(inset);
-	InsetIterator const end = inset_iterator_end(inset);
-	for (; it != end; ++it) {
-		InsetGraphics const * ins = it->asInsetGraphics();
+	for (Inset const & it : b.inset()) {
+		InsetGraphics const * ins = it.asInsetGraphics();
 		if (!ins)
 			continue; 
 		if (ins->getParams().groupId == groupId)
@@ -1226,11 +1220,8 @@ string getGroupParams(Buffer const & b, string const & groupId)
 {
 	if (groupId.empty())
 		return string();
-	Inset & inset = b.inset();
-	InsetIterator it  = inset_iterator_begin(inset);
-	InsetIterator const end = inset_iterator_end(inset);
-	for (; it != end; ++it) {
-		InsetGraphics const * ins = it->asInsetGraphics();
+	for (Inset const & it : b.inset()) {
+		InsetGraphics const * ins = it.asInsetGraphics();
 		if (!ins)
 			continue;
 		InsetGraphicsParams const & inspar = ins->getParams();
@@ -1252,9 +1243,9 @@ void unifyGraphicsGroups(Buffer & b, string const & argument)
 	// This handles undo groups automagically
 	UndoGroupHelper ugh(&b);
 	Inset & inset = b.inset();
-	InsetIterator it  = inset_iterator_begin(inset);
-	InsetIterator const end = inset_iterator_end(inset);
-	for (; it != end; ++it) {
+	InsetIterator it  = begin(inset);
+	InsetIterator const itend = end(inset);
+	for (; it != itend; ++it) {
 		InsetGraphics * ins = it->asInsetGraphics();
 		if (!ins)
 			continue;

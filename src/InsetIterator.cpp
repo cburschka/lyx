@@ -25,7 +25,7 @@ InsetIterator::InsetIterator(Inset & inset)
 }
 
 
-InsetIterator inset_iterator_begin(Inset & inset)
+InsetIterator begin(Inset & inset)
 {
 	InsetIterator it = InsetIterator(inset);
 	it.forwardInset();
@@ -33,7 +33,7 @@ InsetIterator inset_iterator_begin(Inset & inset)
 }
 
 
-InsetIterator inset_iterator_end(Inset & inset)
+InsetIterator end(Inset & inset)
 {
 	return InsetIterator(inset);
 }

@@ -33,9 +33,9 @@ public:
 	Inset & operator*() { return *nextInset(); }
 };
 
-InsetIterator inset_iterator_begin(Inset & inset);
+InsetIterator begin(Inset & inset);
 
-InsetIterator inset_iterator_end(Inset & inset);
+InsetIterator end(Inset & inset);
 
 
 

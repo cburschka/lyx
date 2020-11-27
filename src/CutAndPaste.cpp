@@ -292,8 +292,8 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 	// Prepare the paragraphs and insets for insertion.
 	insertion.swap(in.paragraphs());
 
-	InsetIterator const i_end = inset_iterator_end(in);
-	for (InsetIterator it = inset_iterator_begin(in); it != i_end; ++it) {
+	InsetIterator const i_end = end(in);
+	for (InsetIterator it = begin(in); it != i_end; ++it) {
 		// Even though this will also be done later, it has to be done here
 		// since some inset might try to access the buffer() member.
 		it->setBuffer(const_cast<Buffer &>(buffer));
@@ -315,7 +315,7 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 				if (oldname == newname)
 					continue;
 				// adapt the references
-				for (InsetIterator itt = inset_iterator_begin(in);
+				for (InsetIterator itt = begin(in);
 				      itt != i_end; ++itt) {
 					if (itt->lyxCode() == REF_CODE) {
 						InsetCommand * ref = itt->asInsetCommand();
@@ -346,7 +346,7 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 			if (oldname == newname)
 				break;
 			// adapt the references
-			for (InsetIterator itt = inset_iterator_begin(in); itt != i_end; ++itt) {
+			for (InsetIterator itt = begin(in); itt != i_end; ++itt) {
 				if (itt->lyxCode() == REF_CODE) {
 					InsetCommand & ref = static_cast<InsetCommand &>(*itt);
 					if (ref.getParam("reference") == oldname)
@@ -393,7 +393,7 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 			if (oldkey == newkey)
 				break;
 			// adapt the references
-			for (InsetIterator itt = inset_iterator_begin(in);
+			for (InsetIterator itt = begin(in);
 			     itt != i_end; ++itt) {
 				if (itt->lyxCode() == CITE_CODE) {
 					InsetCommand * ref = itt->asInsetCommand();
@@ -806,10 +806,10 @@ void switchBetweenClasses(DocumentClassConstPtr oldone,
 
 	// layouts
 	ParIterator it = par_iterator_begin(in);
-	ParIterator end = par_iterator_end(in);
+	ParIterator pend = par_iterator_end(in);
 	// for remembering which layouts we've had to add
 	set<docstring> newlayouts;
-	for (; it != end; ++it) {
+	for (; it != pend; ++it) {
 		docstring const name = it->layout().name();
 
 		// the pasted text will keep their own layout name. If this layout does
@@ -832,8 +832,8 @@ void switchBetweenClasses(DocumentClassConstPtr oldone,
 	}
 
 	// character styles and hidden table cells
-	InsetIterator const i_end = inset_iterator_end(in);
-	for (InsetIterator iit = inset_iterator_begin(in); iit != i_end; ++iit) {
+	InsetIterator const i_end = end(in);
+	for (InsetIterator iit = begin(in); iit != i_end; ++iit) {
 		InsetCode const code = iit->lyxCode();
 		if (code == FLEX_CODE) {
 			// FIXME: Should we verify all InsetCollapsible?
