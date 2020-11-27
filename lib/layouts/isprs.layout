@@ -110,7 +110,10 @@ Style Title
     Series              Bold
     Size		LARGE
   EndFont
-	HTMLTitle             true
+  HTMLTitle             true
+  DocBookTag            title
+  DocBookTagType        paragraph
+  DocBookInInfo         maybe
 End
 
 Style Address

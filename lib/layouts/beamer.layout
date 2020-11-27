@@ -1002,12 +1002,16 @@ Style Title
     LabelString   "Short Title|S"
     Tooltip       "Short title which appears in the sidebar/header"
     InsertCotext   1
+	# TODO: In DocBook, output it in a titleabbrev outside this title.
   EndArgument
   Font
     Size           Huge
     Series         Bold
     Color          Blue
   EndFont
+  DocBookTag       title
+  DocBookTagType   paragraph
+  DocBookInInfo    maybe
 End
 
 Style Title_(Plain_Frame)

@@ -146,11 +146,15 @@ Style Title
   Argument 1
     LabelString "Short title"
     Mandatory 0
+	# TODO: In DocBook, output it in a titleabbrev outside this title.
   EndArgument
   Font
     Size Largest
   EndFont
   DependsOn Abstract
+  DocBookTag      title
+  DocBookTagType  paragraph
+  DocBookInInfo   maybe
 End
 
 Style Subtitle
