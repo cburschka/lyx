@@ -23,6 +23,8 @@ Style Subtitle
 	  Size                Normal
 	  Series              Bold
 	EndFont
+	DocBookTag            subtitle
+	DocBookInInfo         maybe
 End
 
 

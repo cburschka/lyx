@@ -26,6 +26,8 @@ Style Subtitle
 		Size   Large
 		Shape  Italic
 	EndFont
+	DocBookTag            subtitle
+	DocBookInInfo         maybe
 End
 
 Style Terms        
