@@ -1,17 +1,17 @@
-Public release of LyX version 2.3.5
+Public release of LyX version 2.3.6
 ===================================
 
-We are proud to announce the release of LyX 2.3.5. This is the fifth
+We are proud to announce the release of LyX 2.3.6. This is the sixth
 maintenance release in the 2.3.x series. We encourage all users to
 upgrade to this version.
 
-You can download LyX 2.3.5 from http://www.lyx.org/Download/.
+You can download LyX 2.3.6 from http://www.lyx.org/Download/.
 
 LyX is a document processor that encourages an approach to writing based 
 on the structure of your documents and not simply their appearance. It is
 released under a Free and Open Source Software license.
 
-LyX 2.3.5 is the result of on-going efforts to make our stable version more 
+LyX 2.3.6 is the result of on-going efforts to make our stable version more 
 reliable and more stable. Most of the changes are incremental, but quite a 
 few important bugs have now been fixed.
 
@@ -20,7 +20,7 @@ and configured automatically. Users of previous versions have recently reported
 configuration failures when Inkscape 1.0 is installed, leading to an incomplete
 (and all but unusable) installation of LyX. This should also be fixed.
 
-If you think you have found a bug in LyX 2.3.5, please open a bug report at
+If you think you have found a bug in LyX 2.3.6, please open a bug report at
 http://www.lyx.org/trac/wiki/BugTrackerHome. If you're not sure whether it
 really is a bug, you can e-mail the LyX developers' mailing list (lyx-devel 
 <at> lists.lyx.org) and ask. 
@@ -31,7 +31,7 @@ is at http://wiki.lyx.org/. If you can't find the answer there, e-mail the
 LyX users' list (lyx-users <at> lists.lyx.org), where you will find an 
 active community of people who are ready to help.
 
-We hope you enjoy using LyX 2.3.5.
+We hope you enjoy using LyX 2.3.6.
 
 The LyX team.
 http://www.lyx.org
@@ -45,25 +45,48 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Add layout file for revtex 4.2.
+- Added layout for American Psychological Association (APA), v. 7 (apa7).
 
 
 * USER INTERFACE
 
-- Keep citation style when all selected citations are deleted (bug 11748).
+- Improve UI of math matrix dialog UI (bug 11888).
 
-- Add shortcut for Insert > Separated <Environment> Above.
+- Fix display of 'by chapter' labels in AMS classes (bug 11741).
+
+- Add support for the doublestroke package in mathed (bug 11887).
+
+- Fix behavior of text style dialog when "Immediate Apply" is checked (bug 11926).
+
+- Focus keyword field in Thesaurus dialog.
+
+- Allow creation of a child file from the include dialog (bug 4475).
+
+- Make sure to load the correct math fonts in certain cases.
+
+- Update autocorrect in mathed so that pressing '*' after a delimiter will
+  cycle through all sizes.
+
+- Display character styles along with fonts in status bar (bug 11951).
+
+
+* MISCELLANEOUS
+
+- Adjust debug output for fonts by not breaking lines that should go together.
 
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Updated Brazilian Portuguese, Dutsch, German, Interlingua, Italian, Russian
-  and Slovak user interface localization.
+- Update Czech, German, Italian, Slovak, Russian and French user interface localizations. 
+
+- Update French translation of Customization manual
 
 
 * BUILD/INSTALLATION
 
-- Provide the option to code sign the LyX application on Mac.
+- Wininstaller, temporary remove the option to run LyX from the finish page
+  due to upcoming fix of the issue where after installing LyX as admin, this option
+  would execute LyX as admin too.
 
 
 
@@ -72,115 +95,70 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix crash with non-encodable glyph in nomcenlature inset (bug 11584).
+- Fix output of titles in branches and other insets (follow-up to bug 11787).
 
-- Fix crash with non-encodable glyph in class options (bug 11865).
-
-- Support for Inkscape 1.0 (new command line syntax) (bug 11742).
-
-- Fix problems with non-ASCII characters in file path with recent LaTeX
-  (bug 11146).
-
-- Fix problems with recent LaTeX when \input@path contains tilde and space
-  (bug 11699).
-
-- Fix output with class-provided geometry package (bug 11724).
-
-- Fix erroneous space in output caused by changebar module (bug 11473).
-
-- Correctly strike out deleted text after deleted display math (bug 11716).
-
-- Fix loading of amsmath in beamer article classes (bug 11768).
-
-- Prevent polyglossia options from being output to PDF TOC (bug 11813).
-
-- Use real typographic quotation marks in PDF TOC (with pdflatex).
-
-- Fix problems with apostrophe in path on Windows (bug 9368).
-
-- Don't open a new instance just because no files are given (bug 11635).
-
-- Fix tablefootnote loading order (bug 11841).
-
-- Fix reloading of changed include inset (bug 11842).
-
-- Don't output \maketitle twice with branches (bug 11787).
-
-- Output \PassOptionsToPackage before any package is loaded (bug 11862).
+- Fix clipping of vector images and when exporting from command line
+  (follow-up to bug 11180).
 
 
 * USER INTERFACE
 
-- Avoid crash in some cases where a dialog is shown during operation
-  (bug 11763).
+- Fix crash when pasting math grid with more rows in source than target
+  (bug 11897).
 
-- Fix crash with nested insets when spaces are removed automatically (bug 11777).
+- Fix problem with drawing of auto-opened insets (bug 11870).
 
-- Fix a crash reported on lyx users.
-  There was an uninitialized buffer member of MathData in LFUN dispatch.
+- Fix crash when rejecting changes and the cursor is in an inset that will be
+  deleted (bug 10316).
 
-- Fix backspace deletion of selected items with change tracking (bug 11630).
+- Ask to save hidden dirty documents (bug 11405).
 
-- Fix display glitch where the change tracking cue blinks with the cursor
-  (bug 11684).
+- Fix background color of collapsible insets with sublabel.
 
-- Consider shorthand in biblatex cite display (bug 11696).
+- Do not paste tabulators when pasting multiple cell outside table (bug 4449).
 
-- Properly resize columns of child document table widget.
+- Fix language when pasting multiple cell outside table (bug 11898).
 
-- Fix problem with validation of InsetLayout.
+- Fix input of decimal numbers in RtL context (bug 11900).
 
-- Fix over-hasty resetting of dialog in Child Documents settings (bug 11564).
+- Fix the LyX icon in the Wayland dash (bug 11847).
 
-- Fix problems when pasting ZERO WIDTH NON-JOINER (bug 11790).
+- Fix display bug when typing in a paragraph where row heights change (bug 11601).
 
-- Remove newlines from LFUNs entered in the shortcut dialog.
+- Fix wrong marking-text-behavior with doubleclick on notebook touchpads (Windows)
 
-- Add copy, paste, etc, to math context menu (but 11799).
+- Fix spacing of limits of sum-like operators in display style.
 
-- Avoid bleeding of inset background outside of inset (bug 11786).
+- Fix positioning of super- and subscripts with integral signs.
 
-- Disallow adding columns with gathered environment as this is not
-  supported (bug 11812).
+- Fix counter in bibliography inset (bug 11920).
 
-- Preserve paragraph spacing when breaking a paragraph at the start
-  (bug 11817).
+- Do not allow editing of math package list in Document > Settings > Math Options,
+  thus preventing a crash (bug 11931).
 
-- Improve reporting of undefined control sequences in preamble (bug 11844).
+- Maintain standard layout for separating paragraphs when switching layouts (bug 11936).
 
-- Fix direction of some parts of text in bidi texts (bug 11691).
+- Prevent permanent disabling of widgets in Vertical/Horizontal Space dialogs
+  (bug 11952).
 
-- Do not insert \textquoteright with Hunspell (bug 11832).
+- Fix behavior of Edit button in Include dialog.
 
-- Fix disappearing selection with clipboard managers on X11 (bug 11715).
+- Localize some previously unlocalized strings (bug 11954 ).
 
-- Correct hierarchy level of Bib(la)tex inset in outliner if "Show in Toc"
-  is selected (bug 11863).
+- Fix bug where cursor blinks at the wrong position after changing layout (bug 11912).
 
-- Don't close a document if the "close or hide" dialog is canceled (bug
-  11456).
-  
-- Disable PDF bookmarksopen level widget if booksmarksopen is false
-  (bug 11289).
+- Fix PrettyFormat for Part (bug 11986).
 
-- Fix encoding issues with python 3 when generating preview snippets.
+- Fix on-screen display of special math fonts (bug 11802).
 
-
-* TEX2LYX
-
-- Fix import of nested polyglossia language environments (bug 11878).
-
-
-* LYXHTML
-
-- Don't output LaTeX preamble snippets with HTML (bug 11780).
+- Fix white frame border in fullscreen mode.
 
 
 * BUILD/INSTALLATION
 
-- Do not break configuration if a layout file is not decodable. Rather than that, 
-  issue a warning and skip that file (bug 11736).
+- Wininstaller, fix bug where previous installations, with emergency version
+  greater than 1, could not be seen in registry on overinstall
 
-- Download dictionary and thesaurus files, on Windows, from our SVN repo (bug 11192).
-
-- Avoid many warnings with g++ 10 and clang++ 10.
+- Do not break configuration if a module file is not decodable (file
+  not encoded in utf-8). Rather than that, issue a warning and skip
+  that file (a variant of bug 11736).
