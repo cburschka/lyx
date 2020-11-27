@@ -19,7 +19,6 @@
 #include "Converter.h"
 #include "Encoding.h"
 #include "Format.h"
-#include "InsetIterator.h"
 #include "LaTeXFeatures.h"
 #include "LyXRC.h"
 #include "output.h"
@@ -28,8 +27,6 @@
 #include "texstream.h"
 
 #include "frontends/Application.h" // hexName
-
-#include "insets/Inset.h"
 
 #include "support/convert.h"
 #include "support/debug.h"

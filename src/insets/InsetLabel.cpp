@@ -14,16 +14,12 @@
 
 #include "InsetRef.h"
 
-#include "buffer_funcs.h"
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "BufferView.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
-#include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "InsetIterator.h"
 #include "Language.h"
 #include "LyX.h"
 #include "ParIterator.h"
@@ -33,7 +29,6 @@
 #include "TextClass.h"
 #include "TocBackend.h"
 
-#include "mathed/InsetMathHull.h"
 #include "mathed/InsetMathRef.h"
 
 #include "frontends/alert.h"

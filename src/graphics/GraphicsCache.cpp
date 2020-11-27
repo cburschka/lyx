@@ -13,7 +13,6 @@
 
 #include "GraphicsCache.h"
 #include "GraphicsCacheItem.h"
-#include "GraphicsImage.h"
 
 #include "Format.h"
 
@@ -21,7 +20,6 @@
 
 #include "support/debug.h"
 #include "support/FileName.h"
-#include "support/filetools.h"
 
 #include <map>
 

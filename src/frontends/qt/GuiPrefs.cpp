@@ -49,8 +49,6 @@
 #include "support/os.h"
 #include "support/Package.h"
 
-#include "graphics/GraphicsTypes.h"
-
 #include "frontends/alert.h"
 #include "frontends/Application.h"
 #include "frontends/FontLoader.h"

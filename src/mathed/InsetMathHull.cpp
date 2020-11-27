@@ -51,7 +51,6 @@
 #include "insets/InsetRef.h"
 #include "insets/RenderPreview.h"
 
-#include "graphics/GraphicsImage.h"
 #include "graphics/PreviewImage.h"
 #include "graphics/PreviewLoader.h"
 

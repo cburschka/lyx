@@ -40,9 +40,6 @@
 #include "Undo.h"
 #include "version.h"
 
-#include "graphics/GraphicsImage.h"
-#include "graphics/GraphicsLoader.h"
-
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/lassert.h"

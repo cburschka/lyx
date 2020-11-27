@@ -23,7 +23,6 @@
 #include "Exporter.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "InsetIterator.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "LyXRC.h"

@@ -12,12 +12,9 @@
 
 #include "GraphicsConverter.h"
 
-#include "Buffer.h"
 #include "Converter.h"
 #include "Format.h"
-#include "LyXRC.h"
 
-#include "frontends/alert.h"
 #include "support/lassert.h"
 #include "support/convert.h"
 #include "support/debug.h"
@@ -25,7 +22,6 @@
 #include "support/filetools.h"
 #include "support/ForkedCalls.h"
 #include "support/lstrings.h"
-#include "support/os.h"
 
 #include "support/TempFile.h"
 

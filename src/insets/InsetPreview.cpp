@@ -16,7 +16,6 @@
 #include "BufferView.h"
 #include "Cursor.h"
 #include "Dimension.h"
-#include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "RenderPreview.h"
