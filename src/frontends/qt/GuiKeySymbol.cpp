@@ -11,10 +11,6 @@
 #include <config.h>
 
 #include "GuiKeySymbol.h"
-
-#include "KeySymbol.h"
-#include "GuiApplication.h"
-
 #include "qt_helpers.h"
 
 #include "support/lassert.h"

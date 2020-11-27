@@ -17,8 +17,6 @@
 
 #include "support/gettext.h"
 
-#include "frontends/KeySymbol.h"
-
 using namespace std;
 
 namespace lyx {
