@@ -169,7 +169,7 @@ QString getBlock(char_type c)
 
 	// c falls into an uncovered area, but we can guess which
 	if (c > unicode_blocks[lastBlock].end
-	    && c < unicode_blocks[lastBlock + 1].start)
+	    && (lastBlock == no_blocks-1 || c < unicode_blocks[lastBlock + 1].start))
 		return QString();
 
 	// guessing was wrong so far. do a real search.
