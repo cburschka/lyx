@@ -36,9 +36,13 @@ class DocIterator
 {
 public:
 	///
-	DocIterator();
-	///
-	explicit DocIterator(Buffer *buf);
+	DocIterator() = default;
+
+	// We could be able to get rid of this if only every BufferView were
+	// associated to a buffer on construction.
+	explicit DocIterator(Buffer *buf)
+		: buffer_(buf)
+	{}
 
 	/// access to owning buffer
 	Buffer * buffer() const { return buffer_; }
@@ -271,7 +275,10 @@ private:
 	friend DocIterator doc_iterator_begin(Buffer const * buf, Inset const * inset);
 	friend DocIterator doc_iterator_end(Buffer const * buf, Inset const * inset);
 	///
-	explicit DocIterator(Buffer * buf, Inset * inset);
+	explicit DocIterator(Buffer * buf, Inset * inset)
+		: inset_(inset), buffer_(buf)
+	{}
+	
 	/**
 	 * Normally, when the cursor is at position i, it is painted *before*
 	 * the character at position i. However, what if we want the cursor
@@ -297,15 +304,15 @@ private:
 	 * happen *before* i. If the cursor, however, were painted *after* i, that
 	 * would be very unnatural...
 	 */
-	bool boundary_;
+	bool boundary_ = false;
 	///
 	std::vector<CursorSlice> const & internalData() const { return slices_; }
 	///
 	std::vector<CursorSlice> slices_;
 	///
-	Inset * inset_;
+	Inset * inset_ = nullptr;
 	///
-	Buffer * buffer_;
+	Buffer * buffer_ = nullptr;
 };
 
 

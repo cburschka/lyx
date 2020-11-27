@@ -44,23 +44,6 @@ using namespace lyx::support;
 namespace lyx {
 
 
-DocIterator::DocIterator()
-	: boundary_(false), inset_(nullptr), buffer_(nullptr)
-{}
-
-
-// We could be able to get rid of this if only every BufferView were
-// associated to a buffer on construction.
-DocIterator::DocIterator(Buffer * buf)
-	: boundary_(false), inset_(nullptr), buffer_(buf)
-{}
-
-
-DocIterator::DocIterator(Buffer * buf, Inset * inset)
-	: boundary_(false), inset_(inset), buffer_(buf)
-{}
-
-
 DocIterator doc_iterator_begin(const Buffer * buf0, const Inset * inset0)
 {
 	Buffer * buf = const_cast<Buffer *>(buf0);
