@@ -731,6 +731,11 @@ void docbookNoSubfigures(XMLStream & xs, OutputParams const & runparams, const I
 	if (ftype.docbookFloatType() == "table")
 		rpNoTitle.docbook_in_table = true;
 
+	// Generate the contents of the float (to check for emptiness).
+	odocstringstream os2;
+	XMLStream xs2(os2);
+	thisFloat->InsetText::docbook(xs, rpNoTitle);
+
 	// Organisation: <float> <title if any/> <contents without title/> </float>.
 	docstring attr = docstring();
 	if (label)
@@ -749,7 +754,24 @@ void docbookNoSubfigures(XMLStream & xs, OutputParams const & runparams, const I
 		xs << xml::EndTag(titleTag);
 		xs << xml::CR();
 	}
-	thisFloat->InsetText::docbook(xs, rpNoTitle);
+
+	if (!os2.str().empty()) {
+		xs << XMLStream::ESCAPE_NONE << os2.str();
+	} else {
+		xs << xml::StartTag("mediaobject");
+		xs << xml::CR();
+		xs << xml::StartTag("textobject");
+		xs << xml::CR();
+		xs << xml::StartTag("phrase");
+		xs << "This figure is empty.";
+		xs << xml::EndTag("phrase");
+		xs << xml::CR();
+		xs << xml::EndTag("textobject");
+		xs << xml::CR();
+		xs << xml::EndTag("mediaobject");
+		xs << xml::CR();
+	}
+
 	xs << xml::EndTag(ftype.docbookTag(caption != nullptr));
 	xs << xml::CR();
 }
@@ -777,8 +799,8 @@ void InsetFloat::docbook(XMLStream & xs, OutputParams const & runparams) const
 	}
 
 	// Gather a few things from global environment that are shared between all following cases.
-	FloatList const &floats = buffer().params().documentClass().floats();
-	Floating const &ftype = floats.getType(params_.type);
+	FloatList const & floats = buffer().params().documentClass().floats();
+	Floating const & ftype = floats.getType(params_.type);
 
 	// Switch on subfigures.
 	if (!subfigures.empty())

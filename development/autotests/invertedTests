@@ -498,7 +498,7 @@ export/examples/(es|fr)/Modules/Linguistics_docbook5
 export/examples/ko/cjk-ko-doc_docbook5
 # - Metadata in abstract paragraph.
 export/templates/Articles/Springers_Global_Journal_Template_%28V._3%29_docbook5
-# - Sweave impossible to implement. Document irremediably wrong (no .bib file, still referenced in the text).
+# - Sweave impossible to implement. Broken references (no .bib file, still referenced in the text).
 export/templates/Articles/R_Journal_docbook5
 # - Forbidden inlines, equation in formatting, broken references, float in paragraphs, videos.
 export/templates/Articles/REVTeX_%28V._4.1%29_docbook5
