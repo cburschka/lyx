@@ -413,16 +413,6 @@ bool Counters::remove(docstring const & cnt)
 }
 
 
-void Counters::copy(Counters const & from, Counters & to, docstring const & match) const
-{
-	for (auto const & ctr : counterList_) {
-		if (ctr.first.find(match) != string::npos || match == "") {
-			to.set(ctr.first, from.value(ctr.first));
-		}
-	}
-}
-
-
 docstring Counters::labelItem(docstring const & ctr,
 			      docstring const & numbertype) const
 {

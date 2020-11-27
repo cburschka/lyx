@@ -160,10 +160,6 @@ public:
 	void reset(docstring const & match);
 	/// Remove counter \p cnt.
 	bool remove(docstring const & cnt);
-	/// Copy counters whose name matches match from the &from to
-	/// the &to array of counters. Empty string matches all.
-	void copy(Counters const & from, Counters & to,
-		  docstring const & match = docstring()) const;
 	/** returns the expanded string representation of counter \c
 	 *  c. The \c lang code is used to translate the string.
 	 */
