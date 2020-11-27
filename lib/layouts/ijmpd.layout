@@ -35,6 +35,7 @@ Style Standard
   Align		Block
   AlignPossible	Block, Left, Right, Center
   LabelType	No_Label
+  DocBookTag para
 End
 
 Input stdcounters.inc
@@ -88,6 +89,9 @@ Style MarkBoth
   \DeclareRobustCommand{\foreign@language}[1]{%
     \lowercase{\oldforeign@language{#1}}}
   EndPreamble
+  DocBookTag    IGNORE
+  # TODO: a mix of titleabbrev and authorinitials... 
+  DocBookInInfo always
 End
 
 Style Catchline
@@ -107,6 +111,8 @@ Style Catchline
     Series	Bold
     Color	Green
   EndFont
+  DocBookTag    IGNORE
+  DocBookInInfo always
 End
 
 Style Title
@@ -126,6 +132,9 @@ Style Title
   Font
     Size	Largest
   EndFont
+  DocBookTag      title
+  DocBookTagType  paragraph
+  DocBookInInfo   maybe
 End
 
 Style Author
@@ -144,6 +153,20 @@ Style Author
   Font
     Size	Large
   EndFont
+  DocBookTag            personname
+  DocBookTagType        paragraph
+  DocBookWrapperTag     author
+  DocBookWrapperTagType inline
+  DocBookInInfo         always
+End
+
+Style Address
+  DocBookTag            address
+  DocBookTagType        paragraph
+  DocBookWrapperTag     author
+  DocBookWrapperTagType inline
+  DocBookWrapperMergeWithPrevious true
+  DocBookInInfo         always
 End
 
 Style History
@@ -158,6 +181,8 @@ Style History
   Font
     Size	Small
   EndFont
+  DocBookTag     releaseinfo
+  DocBookInInfo  always
 End
 
 InsetLayout Flex:Received
@@ -175,7 +200,10 @@ InsetLayout Flex:Received
     Color	green
     Size	Small
   EndFont
-	ResetsFont true
+  ResetsFont true
+  DocBookTag      date
+  DocBookAttr     role='received'
+  DocBookTagType  inline
 End
 
 InsetLayout Flex:Revised
@@ -193,7 +221,10 @@ InsetLayout Flex:Revised
     Color	green
     Size	Small
   EndFont
-	ResetsFont true
+  ResetsFont true
+  DocBookTag      date
+  DocBookAttr     role='revised'
+  DocBookTagType  inline
 End
 
 InsetLayout Flex:Comby
@@ -211,7 +242,7 @@ InsetLayout Flex:Comby
     Color	green
     Size	Small
   EndFont
-	ResetsFont true
+  ResetsFont true
 End
 
 Style Abstract
@@ -225,6 +256,11 @@ Style Abstract
   Font
     Size	Small
   EndFont
+  DocBookAbstract       true
+  DocBookInInfo         always
+  DocBookWrapperTag     abstract
+  DocBookWrapperMergeWithPrevious    true
+  DocBookTag            para
 End
 
 Style Keywords
@@ -245,6 +281,10 @@ Style Keywords
    Shape	Italic
    Size		Small
   EndFont
+  DocBookTag         keyword
+  DocBookTagType     paragraph
+  DocBookWrapperTag  keywordset
+  DocBookInInfo      always
 End
 
 InsetLayout Flex:TableCaption
@@ -262,7 +302,9 @@ InsetLayout Flex:TableCaption
     Color	green
     Size	Small
   EndFont
-	ResetsFont true
+  ResetsFont true
+  DocBookTag      caption
+  DocBookTagType  paragraph
 End
 
 InsetLayout Flex:Refcite
@@ -280,7 +322,7 @@ InsetLayout Flex:Refcite
     Color	green
     Size	Small
   EndFont
-	ResetsFont true
+  ResetsFont true
 End
 
 Style ItemList
@@ -312,6 +354,9 @@ Style ItemList
   HTMLTag	ul
   HTMLItem	li
   HTMLLabel	NONE
+  DocBookTag            itemizedlist
+  DocBookItemTag        listitem
+  DocBookItemInnerTag   para
 End
 
 Style RomanList
@@ -350,6 +395,9 @@ Style RomanList
   HTMLItem	li
   HTMLLabel	NONE
   RefPrefix	enu
+  DocBookTag            orderedlist
+  DocBookItemTag        listitem
+  DocBookItemInnerTag   para
 End
 
 Style Proof
@@ -370,6 +418,8 @@ Style Proof
    Series	Bold
   EndFont
   EndLabelType	Box
+  DocBookTag            para
+  DocBookAttr           role='proof'
 End
 
 Counter theorem
@@ -385,6 +435,8 @@ Style Theorem
   LabelFont
    Series	Bold
   EndFont
+  DocBookTag            para
+  DocBookAttr           role='theorem'
 End
 
 Counter remark
@@ -486,6 +538,9 @@ Style Appendix
   Font
    Series	Bold
   EndFont
+  DocBookTag      title
+  DocBookTagType  paragraph
+  DocBookSection  true
 End
 
 Style Bibliography
