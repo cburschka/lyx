@@ -324,6 +324,7 @@ Style AuthorNote
 	EndFont
 	DocBookTag            para
 	DocBookWrapperTag     acknowledgements
+	DocBookSection        true
 End
 
 

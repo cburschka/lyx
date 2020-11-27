@@ -271,6 +271,7 @@ Style Acknowledgments
 	TopSep			0.7
 	DocBookTag            para
 	DocBookWrapperTag     acknowledgements
+	DocBookSection        true
 End
 
 

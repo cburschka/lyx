@@ -94,4 +94,7 @@ Style Acknowledgments
 #  LatexType             Command
 	LatexName             acknowledgments
 	LabelString           "ACKNOWLEDGMENTS"
+	DocBookTag            para
+	DocBookWrapperTag     acknowledgements
+	DocBookSection        true
 End
