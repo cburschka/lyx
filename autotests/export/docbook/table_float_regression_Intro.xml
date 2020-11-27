@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This DocBook file was created by LyX 2.4.0dev
+  See http://www.lyx.org/ for more information -->
+<article xml:lang="fr_FR" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
+<title>Introduction à LyX</title>
+<section>
+<title>La philosophie de LyX</title>
+<para>Le tableau&#xA0;<xref linkend="tab.Unit-s" /> décrit les unités utilisées dans LyX.</para>
+<tbody>
+<tr>
+<td align='center' valign='top'>unité</td>
+<td align='center' valign='top'>nom/description</td>
+</tr>
+<tr>
+<td align='center' valign='top'>mm</td>
+<td align='center' valign='top'>millimètre</td>
+</tr>
+<tr>
+<td align='center' valign='top'>cm</td>
+<td align='center' valign='top'>centimètre</td>
+</tr>
+<tr>
+<td align='center' valign='top'>in</td>
+<td align='center' valign='top'>inch/pouce (1&#x2009;in = 2.54&#x2009;cm)</td>
+</tr>
+<tr>
+<td align='center' valign='top'>pt</td>
+<td align='center' valign='top'>point (72.27&#x2009;pt = 1&#x2009;in)</td>
+</tr>
+<tr>
+<td align='center' valign='top'>pc</td>
+<td align='center' valign='top'>pica (1&#x2009;pc = 12&#x2009;pt)</td>
+</tr>
+<tr>
+<td align='center' valign='top'>sp</td>
+<td align='center' valign='top'>scaled point/point divisé (65536&#x2009;sp = 1&#x2009;pt)</td>
+</tr>
+<tr>
+<td align='center' valign='top'>bp</td>
+<td align='center' valign='top'>big point/point arrondi (72&#x2009;bp = 1&#x2009;in)</td>
+</tr>
+<tr>
+<td align='center' valign='top'>dd</td>
+<td align='center' valign='top'>didot (72&#x2009;dd <inlineequation>
+<alt role='tex'>\approx</alt>
+ <m:math>
+ 
+ <m:mrow><m:mo>&#x2248;</m:mo>
+ </m:mrow>
+ </m:math>
+</inlineequation> 37.6&#x2009;mm)</td>
+</tr>
+<tr>
+<td align='center' valign='top'>cc</td>
+<td align='center' valign='top'>cicero (1&#x2009;cc = 12&#x2009;dd)</td>
+</tr>
+<tr>
+<td align='center' valign='top'>Scale%</td>
+<td align='center' valign='top'>% largeur originale</td>
+</tr>
+<tr>
+<td align='center' valign='top'>text%</td>
+<td align='center' valign='top'>% largeur du texte</td>
+</tr>
+<tr>
+<td align='center' valign='top'>col%</td>
+<td align='center' valign='top'>% largeur de la colonne</td>
+</tr>
+<tr>
+<td align='center' valign='top'>page%</td>
+<td align='center' valign='top'>% largeur du papier</td>
+</tr>
+<tr>
+<td align='center' valign='top'>line%</td>
+<td align='center' valign='top'>% de la ligne</td>
+</tr>
+<tr>
+<td align='center' valign='top'>theight%</td>
+<td align='center' valign='top'>% hauteur du texte</td>
+</tr>
+<tr>
+<td align='center' valign='top'>pheight%</td>
+<td align='center' valign='top'>% hauteur du papier</td>
+</tr>
+<tr>
+<td align='center' valign='top'>ex</td>
+<td align='center' valign='top'>hauteur de la lettre x dans la police courante</td>
+</tr>
+<tr>
+<td align='center' valign='top'>em</td>
+<td align='center' valign='top'>largeur de la lettre M dans la police courante</td>
+</tr>
+<tr>
+<td align='center' valign='top'>mu</td>
+<td align='center' valign='top'>unité mathématique (1&#x2009;mu = 1/18&#x2009;em)</td>
+</tr>
+</tbody>
+<table xml:id="tab.Unit-s">
+<caption>Unités</caption>
+<mediaobject>
+<textobject>
+<phrase>This figure is empty.</phrase>
+</textobject>
+</mediaobject>
+</table>
+</section>
+</article>
