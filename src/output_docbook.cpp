@@ -1084,20 +1084,16 @@ void docbookParagraphs(Text const &text,
 	bpit = info.epit;
 
 	// Then, iterate through the paragraphs of this document.
-	bool currentlyInAppendix = false;
-
 	auto par = text.paragraphs().iterator_at(bpit);
 	auto end = text.paragraphs().iterator_at(epit);
 	while (par != end) {
-		OutputParams ourparams = runparams;
-
-		if (par->params().startOfAppendix())
-			currentlyInAppendix = true;
+		// Skip paragraphs not producing any output.
 		if (hasOnlyNotes(*par)) {
 			++par;
 			continue;
 		}
 
+		OutputParams ourparams = runparams;
 		Layout const &style = par->layout();
 
 		// Think about adding <section> and/or </section>s.
