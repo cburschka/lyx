@@ -227,7 +227,7 @@ Style Abstract
 	  Series	Bold
 	  Size		Large
 	EndFont
-	DocBookTag       NONE
+	DocBookTag       para
 	DocBookAbstract  true
 End
 
@@ -297,6 +297,7 @@ Style Acknowledgments
 	DocBookTag            para
 	DocBookWrapperTag     acknowledgements
 	DocBookSection        true
+	DocBookAbstract       false
 End
 
 

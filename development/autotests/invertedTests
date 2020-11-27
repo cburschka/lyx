@@ -504,8 +504,6 @@ export/templates/Articles/R_Journal_docbook5
 export/templates/Articles/REVTeX_%28V._4.1%29_docbook5
 # - Address at the end of the document (only allowed in abstract).
 export/templates/Articles/Kluwer_docbook5
-# - Broken references, empty figures.
-export/templates/Articles/Journal_of_the_Acoustical_Society_of_America_%28JASA%29_docbook5
 # - Broken references, empty figures, misplaced acknowledgements (template not viable for DocBook).
 export/templates/Articles/International_Union_of_Crystallography_%28IUCr%29_docbook5
 # - Biographies after bibliography: DocBook does not allow content after a bibliography.
@@ -513,6 +511,7 @@ export/templates/Articles/Mathematical_Monthly_docbook5
 # - Empty figure, very custom table caption (maybe fixable?), strange appendices (not in ToC).
 export/templates/Articles/Int._Journal_of_Modern_Physics_(C|D)_docbook5
 # - Broken references.
+export/templates/Articles/Journal_of_the_Acoustical_Society_of_America_%28JASA%29_docbook5
 export/templates/Articles/Astronomy_%26_Astrophysics_docbook5
 
 Sublabel: docbook poster

@@ -1161,11 +1161,16 @@ void docbookParagraphs(Text const &text,
 			Inset const *firstInset = par->getInset(0);
 			if (firstInset && (firstInset->lyxCode() == BIBITEM_CODE || firstInset->lyxCode() == BIBTEX_CODE)) {
 				while (!headerLevels.empty()) {
+					// Don't close appendices before bibliographies.
+					if (headerLevels.top().second == "appendix")
+						break;
+
+					// Pop the section from the stack.
 					int level = headerLevels.top().first;
 					docstring tag = from_utf8("</" + headerLevels.top().second + ">");
 					headerLevels.pop();
 
-					// Output the tag only if it corresponds to a legit section.
+					// Output the tag only if it corresponds to a legit section, as the rest of the code.
 					if (level != Layout::NOT_IN_TOC) {
 						xs << XMLStream::ESCAPE_NONE << tag;
 						xs << xml::CR();
