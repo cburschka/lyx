@@ -1108,6 +1108,9 @@ void docbookParagraphs(Text const &text,
 			// <h2> after a <h2>, <h3>, <h4>, <h5> or <h6>). More examples:
 			//   - current: h2; back: h1; do not close any <section>
 			//   - current: h1; back: h2; close two <section> (first the <h2>, then the <h1>, so a new <h1> can come)
+			// Some layouts require that Layout::NOT_IN_TOC sections still cause closing of previous sections. This is
+			// mostly to ensure that the section is positioned at a DocBook-compatible level (acknowledgements: cannot
+			// be under a section!).
 			while (!headerLevels.empty() && level <= headerLevels.top().first) {
 				// Output the tag only if it corresponds to a legit section.
 				int stackLevel = headerLevels.top().first;

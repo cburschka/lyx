@@ -33,16 +33,18 @@ End
 
 Style Abstract
   Font
-    Size Normal
+    Size     Normal
   EndFont
-  LabelType Static
+  LabelType  Static
   LabelFont
-    Size Normal
-    Series Bold
+    Size     Normal
+    Series   Bold
   EndFont
-  LabelString "Abstract:"
-  LabelSep " "
-  Margin Dynamic
+  LabelString      "Abstract:"
+  LabelSep         " "
+  Margin           Dynamic
+  DocBookTag       para
+  DocBookAbstract  true
 End
 
 Style Standard
@@ -55,6 +57,7 @@ Style Standard
 	Align                 Block
 	AlignPossible         Block Center
 	LabelType             No_Label
+	DocBookTag            para
 End
 
 Style Author
@@ -62,48 +65,60 @@ Style Author
 End
 
 Style Abbreviated_Title
-  CopyStyle Title
-  LatexType command
-  LatexName markright
+  CopyStyle   Title
+  LatexType   command
+  LatexName   markright
   Font
-    Size  Large
+    Size      Large
   EndFont
-  Align Center
+  Align       Center
+  DocBookTag  titleabbrev
 End
 
 Style Biographies
   Align Left
-  Category BackMatter
+  Category    BackMatter
   LabelString "Biographies"
-  LabelType Centered
+  LabelType   Centered
   LabelFont
-    Color Blue
-    Shape Italic
+    Color  Blue
+    Shape  Italic
     Family Roman
   EndFont
   LatexType Environment
   LatexName biog
   KeepEmpty 1
+  # Cannot work properly, as toclevel is set to NOT_IN_TOC.
+  DocBookSection     true
+  # DocBookSectionTag  section
+  DocBookTag         title
+  DocBookTagType     paragraph
+  DocBookWrapperTag  section
 End
 
 Style Author_Biography
-  Align Left
+  Align    Left
   Category BackMatter
   Argument 1
     LabelString "Name"
-    Mandatory 0
+    Mandatory   0
+	DocBookTag  emphasis
+	DocBookAttr role='name'
   EndArgument
   LabelString "Author Biography"
-  LabelSep " "
-  LabelType Static
+  LabelSep    " "
+  LabelType   Static
   LabelFont
-    Color Blue
-    Shape Italic
+    Color  Blue
+    Shape  Italic
     Family Roman
   EndFont
-  LatexType Command
-  LatexName item
-  Margin Dynamic
+  LatexType  Command
+  LatexName  item
+  Margin     Dynamic
+  DocBookTag         para
+  DocBookWrapperTag  section
+  DocBookWrapperMergeWithPrevious  true
 End
 
 Style Affiliation
@@ -120,24 +135,31 @@ Style Affiliation
   LatexType Environment
   LatexName affil
   Margin Dynamic
+  DocBookTag         para
+  DocBookAttr        role='affiliation'
+  DocBookWrapperTag  section
+  DocBookWrapperMergeWithPrevious  true
 End
 
 Style Acknowledgments
-  Category  BackMatter
+  Category       BackMatter
   Argument 1
-    LabelString "Title of acknowledgment"
-    Mandatory 1
+    LabelString  "Title of acknowledgment"
+    Mandatory    1
   EndArgument
-  LabelString "Acknowledgments"
-  LabelType Static
-  LabelSep " "
+  LabelString    "Acknowledgments"
+  LabelType      Static
+  LabelSep       " "
   LabelFont
-    Series Bold
-    Size Large
+    Series       Bold
+    Size         Large
   EndFont
-  LatexName acknowledgment
-  LatexType   Environment
-  Margin Dynamic
+  LatexName      acknowledgment
+  LatexType      Environment
+  Margin         Dynamic
+  DocBookTag            para
+  DocBookWrapperTag     acknowledgements
+  DocBookSection        true
 End
 
 InsetLayout Flex:URL
