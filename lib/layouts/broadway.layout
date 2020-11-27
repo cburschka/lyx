@@ -218,6 +218,11 @@ Style Author
 	ParSep                1.5
 	Align                 Center
 	AlignPossible         Left, Right, Center
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType inline
+	DocBookInInfo         always
 End
 
 

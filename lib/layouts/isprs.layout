@@ -92,6 +92,11 @@ Style Author
   Font
     Size              	Large
   EndFont
+  DocBookTag            personname
+  DocBookTagType        paragraph
+  DocBookWrapperTag     author
+  DocBookWrapperTagType inline
+  DocBookInInfo         always
 
 End
 # Title style definition

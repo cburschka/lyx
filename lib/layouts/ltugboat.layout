@@ -175,6 +175,11 @@ Style Author
 	LeftMargin            MM
 	Align                 Left
 	LabelType             No_Label
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType inline
+	DocBookInInfo         always
 End
 
 

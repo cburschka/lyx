@@ -76,6 +76,11 @@ Style Author
 		LabelString     "Surname"
 		ToolTip         "Surname"
 	EndArgument
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType inline
+	DocBookInInfo         always
 End
 
 Style Affil

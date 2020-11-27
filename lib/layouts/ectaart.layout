@@ -114,6 +114,11 @@ Style Author
 	LatexName	author
 	NewLine		0
 	InTitle		1
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType inline
+	DocBookInInfo         always
 End
 
 Style Authors_Block

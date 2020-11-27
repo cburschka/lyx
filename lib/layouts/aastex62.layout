@@ -160,9 +160,15 @@ Style Author
 	Argument 1
 		LabelString     ORCID
 		ToolTip         "Enter the 16 digit ORCID as xxxx-xxxx-xxxx-xxxx"
+		# TODO: In DocBook, this cannot be in the <personname>, it must be directly within <author>.
 	EndArgument
 	Align           Center
 	Margin          Dynamic
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType inline
+	DocBookInInfo         always
 End
 
 Style Affiliation

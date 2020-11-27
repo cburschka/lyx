@@ -1070,6 +1070,11 @@ Style Author
     Size           Largest
     Color          Blue
   EndFont
+  DocBookTag            personname
+  DocBookTagType        paragraph
+  DocBookWrapperTag     author
+  DocBookWrapperTagType inline
+  DocBookInInfo         always
 End
 
 Style Institute

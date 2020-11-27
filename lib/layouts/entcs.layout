@@ -55,6 +55,11 @@ Style Author
 	Preamble
 		\newcommand{\setauthor}[1]{\def\theAuthor{#1}}
 	EndPreamble
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType inline
+	DocBookInInfo         always
 End
 
 

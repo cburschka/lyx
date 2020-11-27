@@ -204,6 +204,11 @@ Style Author
 	  Series              Bold
 	  Shape               Italic
 	EndFont
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType inline
+	DocBookInInfo         always
 End
 
 

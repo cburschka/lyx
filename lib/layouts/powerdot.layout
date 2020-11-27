@@ -85,6 +85,11 @@ Style Author
     Size        Large
     Color       Blue
   EndFont
+  DocBookTag            personname
+  DocBookTagType        paragraph
+  DocBookWrapperTag     author
+  DocBookWrapperTagType inline
+  DocBookInInfo         always
 End
 
 ###

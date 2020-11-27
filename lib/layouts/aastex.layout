@@ -159,7 +159,9 @@ Style Author
 	  Shape		SmallCaps
 	EndFont
 	DocBookTag            personname
+	DocBookTagType        paragraph
 	DocBookWrapperTag     author
+	DocBookWrapperTagType inline
 	DocBookInInfo         always
 End
 
