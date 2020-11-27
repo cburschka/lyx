@@ -70,18 +70,10 @@ vector<string> const & Cache::loadableFormats() const
 	if (!fmts.empty())
 		return fmts;
 
-	// The formats recognised by LyX
-	Formats::const_iterator begin = theFormats().begin();
-	Formats::const_iterator end   = theFormats().end();
-
-	// The formats natively loadable.
-	vector<string> nformat = frontend::loadableImageFormats();
-
-	vector<string>::const_iterator it = nformat.begin();
-	for (; it != nformat.end(); ++it) {
-		for (Formats::const_iterator fit = begin; fit != end; ++fit) {
-			if (fit->extension() == *it) {
-				fmts.push_back(fit->name());
+	for (string const & native_extension : frontend::loadableImageFormats()) {
+		for (Format const & format : theFormats()) {
+			if (format.extension() == native_extension) {
+				fmts.push_back(format.name());
 				break;
 			}
 		}
@@ -89,11 +81,8 @@ vector<string> const & Cache::loadableFormats() const
 
 	if (lyxerr.debugging()) {
 		LYXERR(Debug::GRAPHICS, "LyX recognises the following image formats:");
-
-		vector<string>::const_iterator fbegin = fmts.begin();
-		vector<string>::const_iterator fend = fmts.end();
-		for (vector<string>::const_iterator fit = fbegin; fit != fend; ++fit) {
-			LYXERR(Debug::GRAPHICS, *fit << ',');
+		for (string const & format : fmts) {
+			LYXERR(Debug::GRAPHICS, format << ',');
 		}
 	}
 
