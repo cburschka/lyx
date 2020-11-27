@@ -27,6 +27,7 @@ Style Standard
 	Align			Block
 	AlignPossible		Block, Left, Right, Center
 	LabelType		No_Label
+	DocBookTag      para
 End
 
 Input stdtitle.inc
@@ -70,6 +71,7 @@ Style "Short Title"
 	Font
 	  Size			Small
 	EndFont
+	DocBookTag      titleabbrev
 End
 
 InsetLayout "Flex:City"
@@ -116,16 +118,19 @@ Style "Main Author"
 	Argument 1
 	  LabelString		"Affiliation Key"
 	  Tooltip		"Affiliation key of the author"
+	  # DocBookTag    othername
 	EndArgument
 	Argument 2
 	  Mandatory		1
 	  LabelString		"Forename"
 	  Tooltip		"Forename"
+	  # DocBookTag    firstname
 	EndArgument
 	Argument 3
 	  Mandatory		1
 	  LabelString		"Surname"
 	  Tooltip		"Surname"
+	  # DocBookTag    surname
 	EndArgument
 	Argument 4
 	  Mandatory		1
@@ -134,11 +139,18 @@ Style "Main Author"
 	  Font
 	    Shape		Italic
 	  EndFont
+	  # DocBookTag    email
 	EndArgument
 	BottomSep		0.5
 	ParSkip			0.4
 	Align			Center
 	LabelType		No_Label
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType inline
+	DocBookInInfo         always
+	# TODO: a lot of information is available, but the email would be output in the <personname> tag, and that does not make sense. The two first arguments should be grouped in <personname>, the rest must live outside <personname>.
 End
 
 Style "Co Author"
@@ -170,6 +182,9 @@ Style "Short Author"
 	  Series		Bold
 	  Color			Green
 	EndFont
+	DocBookInInfo   always
+	DocBookTag      authorinitials
+	DocBookWrapperTag     NONE
 End
 
 Style Affiliation
@@ -195,6 +210,10 @@ Style Keyword
 	CopyStyle		"Short Author"
 	LatexName		keyword
 	LabelString		"Keyword:"
+	DocBookTag         keyword
+	DocBookTagType     paragraph
+	DocBookWrapperTag  keywordset
+	DocBookInInfo      always
 End
 
 Style Vita
@@ -225,6 +244,7 @@ Style Synopsis
   LabelString			"Synopsis"
   Align				Left
   AlignPossible			Left
+  DocBookAttr       role='synopsis'
 End
 
 Style Acknowledgements
@@ -234,6 +254,8 @@ Style Acknowledgements
   LabelString			"Acknowledgements:"
   Category			BackMatter
   TopSep			0.7
+  DocBookTag            para
+  DocBookWrapperTag     acknowledgements
 End
 
 Style References
@@ -266,6 +288,8 @@ Style References
     LabelString			"Reference"
     Mandatory			1
     AutoInsert			1
+	DocBookTag          bibliomixed
   EndArgument
   Align				Left
+  DocBookTag        bibliography
 End
