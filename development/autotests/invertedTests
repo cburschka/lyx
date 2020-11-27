@@ -427,7 +427,7 @@ export/doc(|/de|/es|/fr|/ja)/Additional_docbook5
 #   The resulting documents should still be easy to fully convert into DocBook.
 #   - AASTeX.
 export/export/docbook/bibliography_precooked_aastex_docbook5
-export/examples/Articles/American_Astronomical_Society_%28AASTeX_v._6.2%29_docbook5
+export/(examples|templates)/Articles/American_Astronomical_Society_%28AASTeX_v._6.2%29_docbook5
 #   - Springer. (The svmono_light should still pass.)
 export/templates/Books/Springer.*/.*_docbook5
 !export/export/docbook/svmono_light_docbook5
