@@ -120,6 +120,10 @@ InsetLayout Flex:Keywords
 	  Color		green
 	  Size		Small
 	EndFont
+	DocBookTag         keyword
+	DocBookTagType     paragraph
+	DocBookWrapperTag  keywordset
+	DocBookInInfo      always
 End
 
 

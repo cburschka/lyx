@@ -102,6 +102,10 @@ Style Keywords
 	  Color				Green
 	  Series			Bold
 	EndFont
+	DocBookTag         keyword
+	DocBookTagType     paragraph
+	DocBookWrapperTag  keywordset
+	DocBookInInfo      always
 End
 
 Style "Plain Keywords"

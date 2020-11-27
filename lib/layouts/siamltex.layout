@@ -313,6 +313,10 @@ Style Keywords
 	CopyStyle             Abstract
 	LatexName             keywords
 	LabelString           "Key words:"
+	DocBookTag         keyword
+	DocBookTagType     paragraph
+	DocBookWrapperTag  keywordset
+	DocBookInInfo      always
 End
 
 

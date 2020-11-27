@@ -282,6 +282,10 @@ Style Keywords
   CopyStyle	Abstract
   LatexName	IEEEkeywords
   LabelString	"Index Terms---"
+  DocBookTag         keyword
+  DocBookTagType     paragraph
+  DocBookWrapperTag  keywordset
+  DocBookInInfo      always
 End
 
 
