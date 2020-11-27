@@ -714,11 +714,47 @@ void docbookSubfigures(XMLStream & xs, OutputParams const & runparams, const Ins
 }
 
 
+void docbookGenerateFillerMedia(XMLStream & xs)
+{
+	xs << xml::StartTag("mediaobject");
+	xs << xml::CR();
+	xs << xml::StartTag("textobject");
+	xs << xml::CR();
+	xs << xml::StartTag("phrase");
+	xs << "This figure is empty.";
+	xs << xml::EndTag("phrase");
+	xs << xml::CR();
+	xs << xml::EndTag("textobject");
+	xs << xml::CR();
+	xs << xml::EndTag("mediaobject");
+	xs << xml::CR();
+}
+
+
+void docbookGenerateFillerTable(XMLStream & xs, BufferParams::TableOutput format)
+{
+	switch (format) {
+	case BufferParams::HTMLTable:
+		xs << xml::StartTag("tr");
+		xs << xml::CR();
+		xs << xml::StartTag("td");
+		xs << "This table is empty.";
+		xs << xml::EndTag("td");
+		xs << xml::CR();
+		xs << xml::EndTag("tr");
+		xs << xml::CR();
+		break;
+	case BufferParams::CALSTable:
+		// CALS tables allow for <mediaobject>, use that instead.
+		docbookGenerateFillerMedia(xs);
+		break;
+	}
+}
+
+
 void docbookNoSubfigures(XMLStream & xs, OutputParams const & runparams, const InsetCaption * caption,
                          const InsetLabel * label, Floating const & ftype, const InsetFloat * thisFloat)
 {
-	string const &titleTag = ftype.docbookCaption();
-
 	// Ensure there is no label output, it is supposed to be handled as xml:id.
 	OutputParams rpNoLabel = runparams;
 	if (label)
@@ -734,7 +770,7 @@ void docbookNoSubfigures(XMLStream & xs, OutputParams const & runparams, const I
 	// Generate the contents of the float (to check for emptiness).
 	odocstringstream os2;
 	XMLStream xs2(os2);
-	thisFloat->InsetText::docbook(xs, rpNoTitle);
+	thisFloat->InsetText::docbook(xs2, rpNoTitle);
 
 	// Organisation: <float> <title if any/> <contents without title/> </float>.
 	docstring attr = docstring();
@@ -746,32 +782,28 @@ void docbookNoSubfigures(XMLStream & xs, OutputParams const & runparams, const I
 		attr += from_utf8(ftype.docbookAttr());
 	}
 
+	// - Open the float tag.
 	xs << xml::StartTag(ftype.docbookTag(caption != nullptr), attr);
 	xs << xml::CR();
+
+	// - Generate the caption.
 	if (caption) {
+		string const &titleTag = ftype.docbookCaption();
 		xs << xml::StartTag(titleTag);
 		caption->getCaptionAsDocBook(xs, rpNoLabel);
 		xs << xml::EndTag(titleTag);
 		xs << xml::CR();
 	}
 
-	if (!os2.str().empty()) {
+	// - Output the actual content of the float.
+	if (!os2.str().empty())
 		xs << XMLStream::ESCAPE_NONE << os2.str();
-	} else {
-		xs << xml::StartTag("mediaobject");
-		xs << xml::CR();
-		xs << xml::StartTag("textobject");
-		xs << xml::CR();
-		xs << xml::StartTag("phrase");
-		xs << "This figure is empty.";
-		xs << xml::EndTag("phrase");
-		xs << xml::CR();
-		xs << xml::EndTag("textobject");
-		xs << xml::CR();
-		xs << xml::EndTag("mediaobject");
-		xs << xml::CR();
-	}
+	else if (ftype.docbookFloatType() == "table")
+		docbookGenerateFillerTable(xs, thisFloat->buffer().params().docbook_table_output);
+	else
+		docbookGenerateFillerMedia(xs);
 
+	// - Close the float.
 	xs << xml::EndTag(ftype.docbookTag(caption != nullptr));
 	xs << xml::CR();
 }

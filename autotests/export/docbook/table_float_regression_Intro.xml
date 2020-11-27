@@ -6,6 +6,8 @@
 <section>
 <title>La philosophie de LyX</title>
 <para>Le tableau&#xA0;<xref linkend="tab.Unit-s" /> décrit les unités utilisées dans LyX.</para>
+<table xml:id="tab.Unit-s">
+<caption>Unités</caption>
 <tbody>
 <tr>
 <td align='center' valign='top'>unité</td>
@@ -95,13 +97,6 @@
 <td align='center' valign='top'>unité mathématique (1&#x2009;mu = 1/18&#x2009;em)</td>
 </tr>
 </tbody>
-<table xml:id="tab.Unit-s">
-<caption>Unités</caption>
-<mediaobject>
-<textobject>
-<phrase>This figure is empty.</phrase>
-</textobject>
-</mediaobject>
 </table>
 </section>
 </article>
