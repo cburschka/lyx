@@ -34,6 +34,9 @@ Style RunTitle
 	LabelFont
 	  Color		Red
 	EndFont
+	DocBookTag            titleabbrev
+	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 End
 
 Style RunAuthor
@@ -41,6 +44,9 @@ Style RunAuthor
 	LatexType	Command
 	LatexName	runauthor
 	LabelString	"Running Author:"
+	DocBookTag            authorinitials
+	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 End
 
 Style Abstract
@@ -61,6 +67,11 @@ Style Abstract
 	  Size			Normal
 	  Series		Medium
 	EndFont
+	DocBookAbstract       true
+	DocBookInInfo         always
+	DocBookWrapperTag     abstract
+	DocBookWrapperMergeWithPrevious    true
+	DocBookTag            para
 End
 
 Style Address
@@ -71,6 +82,8 @@ Style Address
 		Tooltip       "Optional argument for the address"
 	EndArgument
 	LabelString	"Address:"
+	DocBookInInfo         always
+	DocBookTag            address
 End
 
 Style Email
@@ -95,18 +108,24 @@ Style Email
 	  Size		Normal
 	  Color		Blue
 	EndFont
-        Preamble
+	Preamble
 		\def\lyxead[#1]#2{\ead[label=#1]{#2}}
-        EndPreamble
+	EndPreamble
+	DocBookTag            email
+	DocBookWrapperTag     address
+	DocBookInInfo         always
 End
 
 Style Web_Address
 	CopyStyle	Email
 	LatexName	lyxeadurl
 	LabelString	"Web address:"
-        Preamble
+	Preamble
 		\def\lyxeadurl[#1]#2{\ead[label=#1,url]{#2}}
-        EndPreamble
+	EndPreamble
+	DocBookTag            uri
+	DocBookWrapperTag     address
+	DocBookInInfo         always
 End
 
 Style Author
@@ -126,6 +145,11 @@ Style Authors_Block
 	LatexType	Environment
 	LatexName	aug
 	LabelString	"Authors Block:"
+	DocBookTag            personname
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType inline
+	DocBookInInfo         always
 End
 
 Style Keyword

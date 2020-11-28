@@ -245,6 +245,11 @@ Style Abstract
 	TopSep          1.3
 	BottomSep       0.7
 	ParSep          0.7
+	DocBookAbstract       true
+	DocBookInInfo         always
+	DocBookWrapperTag     abstract
+	DocBookWrapperMergeWithPrevious    true
+	DocBookTag            para
 End
 
 Style Statements
