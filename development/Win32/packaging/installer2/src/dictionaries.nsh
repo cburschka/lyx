@@ -460,7 +460,7 @@ SectionGroup /e "$(SecDictionaries)" SecDictionaries
     AddSize 5510
   SectionEnd
 
-  Section /o "Português (PT)" SecDPortuguesePT
+  Section "Português (PT)" SecDPortuguesePT
     # already installed by default
     SectionIn RO
     #${DownloadHunspell} "pt_PT"
@@ -472,7 +472,7 @@ SectionGroup /e "$(SecDictionaries)" SecDictionaries
     AddSize 2199
   SectionEnd
 
-  Section /o "Русский" SecDRussian
+  Section "Русский" SecDRussian
     # already installed by default
     SectionIn RO
     #${DownloadHunspell} "ru_RU"
