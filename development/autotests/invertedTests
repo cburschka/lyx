@@ -530,6 +530,7 @@ Sublabel: docbook poster
 export/.*Poster.*_docbook5
 
 Sublabel: docbook beamer
-# Beamer is not yet implemented.
+# Beamer is not yet implemented. One test passes, but mostly by chance.
+!export/templates/Presentations/Slides_docbook5
 export/(examples|templates)/(de|es|fr|ja|ru)/Presentations/.*_docbook5
 export/(examples|templates)/Presentations/.*_docbook5
