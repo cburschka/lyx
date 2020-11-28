@@ -170,6 +170,12 @@ Style Address
 	Font
 	  Shape		Italic
 	EndFont
+	DocBookTag            address
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType inline
+	DocBookWrapperMergeWithPrevious    true
+	DocBookInInfo         always
 End
 
 
@@ -180,6 +186,12 @@ Style Email
 	Font
 	  Shape		Up
 	EndFont
+	DocBookTag            email
+	DocBookTagType        paragraph
+	DocBookWrapperTag     author
+	DocBookWrapperTagType inline
+	DocBookWrapperMergeWithPrevious    true
+	DocBookInInfo         always
 End
 
 
@@ -209,6 +221,11 @@ Style Abstract
 	  Series	Bold
 	  Size		Large
 	EndFont
+	DocBookAbstract       true
+	DocBookInInfo         always
+	DocBookWrapperTag     abstract
+	DocBookWrapperMergeWithPrevious    true
+	DocBookTag            para
 End
 
 
@@ -295,9 +312,9 @@ Style Acknowledgments
 	  Series	Bold
 	  Size		Normal
 	EndFont
-	DocBookTag            para
-	DocBookWrapperTag     acknowledgements
-	DocBookSection        true
+	# TODO: For IOP, this is rather a title than a paragraph style. But it's not in the TOC, so not much can be done.
+	DocBookTag  para
+	DocBookAttr role='acknowledgments'
 End
 
 
