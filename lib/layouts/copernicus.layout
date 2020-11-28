@@ -79,7 +79,6 @@ Style Author
 	DocBookTag            personname
 	DocBookTagType        paragraph
 	DocBookWrapperTag     author
-	DocBookWrapperTagType inline
 	DocBookInInfo         always
 End
 
@@ -96,7 +95,6 @@ Style Affil
 	DocBookTag            address
 	DocBookTagType        block
 	DocBookWrapperTag     author
-	DocBookWrapperTagType inline
 	DocBookWrapperMergeWithPrevious  true
 	DocBookInInfo         always
 End
