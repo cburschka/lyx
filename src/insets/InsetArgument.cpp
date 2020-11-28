@@ -126,6 +126,7 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype, bool 
 		docbooktag_ = (*lait).second.docbooktag;
 		docbooktagtype_ = (*lait).second.docbooktagtype;
 		docbookattr_ = (*lait).second.docbookattr;
+		docbookargumentbeforemaintag_ = (*lait).second.docbookargumentbeforemaintag;
 		pass_thru_local_ = false;
 		if (lait->second.is_toc_caption) {
 			is_toc_caption_ = true;
@@ -312,6 +313,10 @@ InsetLayout::InsetDecoration InsetArgument::decoration() const
 
 
 void InsetArgument::docbook(XMLStream & xs, OutputParams const & rp) const {
+	// Ignore arguments that have already been output.
+	if (rp.docbook_prepended_arguments.find(this) != rp.docbook_prepended_arguments.end())
+		return;
+
 	if (docbooktag_ != from_ascii("NONE") && docbooktag_ != from_ascii("IGNORE")) {
 		// TODO: implement docbooktagtype_.
 		xs << xml::StartTag(docbooktag_, docbookattr_);

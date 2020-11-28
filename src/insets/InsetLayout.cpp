@@ -95,6 +95,8 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		IL_DOCBOOKTAGTYPE,
 		IL_DOCBOOKSECTION,
 		IL_DOCBOOKININFO,
+		IL_DOCBOOKARGUMENTBEFOREMAINTAG,
+		IL_DOCBOOKNOTINPARA,
 		IL_DOCBOOKWRAPPERTAG,
 		IL_DOCBOOKWRAPPERTAGTYPE,
 		IL_DOCBOOKWRAPPERATTR,
@@ -148,6 +150,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		{ "custompars", IL_CUSTOMPARS },
 		{ "decoration", IL_DECORATION },
 		{ "display", IL_DISPLAY },
+		{ "docbookargumentbeforemaintag", IL_DOCBOOKARGUMENTBEFOREMAINTAG },
 		{ "docbookattr", IL_DOCBOOKATTR },
 		{ "docbookininfo", IL_DOCBOOKININFO },
 		{ "docbookitemattr", IL_DOCBOOKITEMATTR },
@@ -156,6 +159,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		{ "docbookitemwrapperattr", IL_DOCBOOKITEMWRAPPERATTR },
 		{ "docbookitemwrappertag", IL_DOCBOOKITEMWRAPPERTAG },
 		{ "docbookitemwrappertagtype", IL_DOCBOOKITEMWRAPPERTAGTYPE },
+		{ "docbooknotinpara", IL_DOCBOOKNOTINPARA },
 		{ "docbooksection", IL_DOCBOOKSECTION },
 		{ "docbooktag", IL_DOCBOOKTAG },
 		{ "docbooktagtype", IL_DOCBOOKTAGTYPE },
@@ -514,6 +518,12 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		case IL_DOCBOOKININFO:
 			lex >> docbookininfo_;
 			break;
+		case IL_DOCBOOKARGUMENTBEFOREMAINTAG:
+			lex >> docbookargumentbeforemaintag_;
+			break;
+		case IL_DOCBOOKNOTINPARA:
+			lex >> docbooknotinpara_;
+			break;
 		case IL_DOCBOOKSECTION:
 			lex >> docbooksection_;
 			break;
@@ -819,6 +829,9 @@ void InsetLayout::readArgument(Lexer & lex)
 		} else if (tok == "docbooktagtype") {
 			lex.next();
 			arg.docbooktagtype = lex.getDocString();
+		} else if (tok == "docbookargumentbeforemaintag") {
+			lex.next();
+			arg.docbookargumentbeforemaintag = lex.getBool();
 		} else {
 			lex.printError("Unknown tag");
 			error = true;

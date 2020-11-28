@@ -158,6 +158,10 @@ public:
 	///
 	bool docbooksection() const { return docbooksection_; }
 	///
+	bool docbooknotinpara() const { return docbooknotinpara_; }
+	///
+	bool docbookargumentbeforemaintag() const { return docbookargumentbeforemaintag_; }
+	///
 	std::string docbookwrappertag() const { return docbookwrappertag_; }
 	///
 	std::string docbookwrappertagtype() const;
@@ -310,6 +314,10 @@ private:
 	std::string docbookattr_;
 	///
 	mutable std::string docbookininfo_;
+	///
+	bool docbooknotinpara_ = false;
+	///
+	bool docbookargumentbeforemaintag_ = false;
 	///
 	bool docbooksection_ = false;
 	///

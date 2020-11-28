@@ -26,6 +26,7 @@ class Encoding;
 class ExportData;
 class Font;
 class Language;
+class InsetArgument;
 
 class OutputParams {
 public:
@@ -381,6 +382,9 @@ public:
 
 	/// Should wrappers be ignored? Mostly useful to avoid generation of <abstract>.
 	bool docbook_ignore_wrapper = false;
+
+	/// Some parameters are output before the rest of the paragraph, they should not be generated a second time.
+	std::set<InsetArgument const *> docbook_prepended_arguments = {};
 
 	/// Are we generating this material for inclusion in a TOC-like entity?
 	bool for_toc = false;

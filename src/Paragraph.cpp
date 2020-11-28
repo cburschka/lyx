@@ -865,6 +865,7 @@ int Paragraph::eraseChars(pos_type start, pos_type end, bool trackChanges)
 	return end - i;
 }
 
+
 // Handle combining characters
 int Paragraph::Private::latexSurrogatePair(BufferParams const & bparams,
 		otexstream & os, char_type c, char_type next,

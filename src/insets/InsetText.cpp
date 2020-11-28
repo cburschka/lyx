@@ -621,8 +621,35 @@ void InsetText::docbook(XMLStream & xs, OutputParams const & rp, XHTMLOptions op
 	if (!rp.docbook_generate_info && il.docbookininfo() != "never")
 		return;
 
+	// In some cases, the input parameters must be overridden for outer tags.
+	bool writeOuterTag = opts & WriteOuterTag;
+	if (writeOuterTag) {
+		// For each paragraph, if there are only Bibitems and the corresponding text, don't write the outer tags.
+		bool allBibitems = std::all_of(text().paragraphs().begin(), text().paragraphs().end(), [](Paragraph const & par) {
+			auto nInsets = std::distance(par.insetList().begin(), par.insetList().end());
+			auto parSize = (size_t) par.size();
+			return nInsets == 1 && parSize > 1 && par.insetList().begin()->inset->lyxCode() == BIBITEM_CODE;
+		});
+		writeOuterTag = !allBibitems;
+	}
+
+	// Detect arguments that should be output before the paragraph.
+	// Don't reuse runparams.docbook_prepended_arguments, as the same object is used in InsetArgument to determine
+	// whether the inset should be output or not, whatever the context (i.e. position with respect to the wrapper).
+	std::set<InsetArgument const *> prependedArguments;
+	for (auto const & par : paragraphs()) {
+		for (pos_type i = 0; i < par.size(); ++i) {
+			if (par.getInset(i) && par.getInset(i)->lyxCode() == ARG_CODE) {
+				InsetArgument const *arg = par.getInset(i)->asInsetArgument();
+				if (arg->docbookargumentbeforemaintag())
+					prependedArguments.insert(par.getInset(i)->asInsetArgument());
+			}
+		}
+	}
+
 	// Start outputting this inset.
-	if (opts & WriteOuterTag) {
+	// - First, wrapper around the inset and its main tag.
+	if (writeOuterTag) {
 		if (!il.docbookwrappertag().empty() && il.docbookwrappertag() != "NONE" && il.docbookwrappertag() != "IGNORE")
 			xml::openTag(xs, il.docbookwrappertag(), il.docbookwrapperattr(), il.docbookwrappertagtype());
 
@@ -634,7 +661,19 @@ void InsetText::docbook(XMLStream & xs, OutputParams const & rp, XHTMLOptions op
 				attrs += from_ascii(" xlink:href=\"") + text_.asString() + from_ascii("\"");
 			xml::openTag(xs, il.docbooktag(), attrs, il.docbooktagtype());
 		}
+	}
 
+	// - Think about the arguments.
+	OutputParams np = runparams;
+	np.docbook_in_par = true;
+	for (auto const & arg : prependedArguments)
+		arg->docbook(xs, np);
+
+	// - Mark the newly generated arguments are not-to-be-generated-again.
+	runparams.docbook_prepended_arguments = std::move(prependedArguments);
+
+	// - Deal with the first item.
+	if (writeOuterTag) {
 		if (!il.docbookitemwrappertag().empty() && il.docbookitemwrappertag() != "NONE" && il.docbookitemwrappertag() != "IGNORE")
 			xml::openTag(xs, il.docbookitemwrappertag(), il.docbookitemwrapperattr(), il.docbookitemwrappertagtype());
 
@@ -650,11 +689,13 @@ void InsetText::docbook(XMLStream & xs, OutputParams const & rp, XHTMLOptions op
 	if (il.isPassThru())
 		runparams.pass_thru = true;
 
+	// - Write the main content of the inset.
 	xs.startDivision(false);
 	docbookParagraphs(text_, buffer(), xs, runparams);
 	xs.endDivision();
 
-	if (opts & WriteOuterTag) {
+	// - Close the required tags.
+	if (writeOuterTag) {
 		if (!il.docbookitemtag().empty() && il.docbookitemtag() != "NONE" && il.docbookitemtag() != "IGNORE")
 			xml::closeTag(xs, il.docbookitemtag(), il.docbookitemtagtype());
 

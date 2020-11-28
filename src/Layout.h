@@ -115,6 +115,7 @@ public:
 		docstring docbooktag;
 		docstring docbooktagtype;
 		docstring docbookattr;
+		bool docbookargumentbeforemaintag = false;
 	};
 	///
 	typedef std::map<std::string, latexarg> LaTeXArgMap;

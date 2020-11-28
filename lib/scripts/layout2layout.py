@@ -11,7 +11,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 87
+currentFormat = 88
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -296,7 +296,10 @@ currentFormat = 87
 # Incremented to format 86, 20 October 2020 by tcuvelier
 # New tag DocBookSection.
 
-# Incremeted to format 87, 2 November 2020 by rkh
+# Incremented to format 87, 2 November 2020 by rkh
+
+# Incremented to format 88, 28 November 2020 by tcuvelier
+# New tag DocBookNotInPara.
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
@@ -357,6 +360,7 @@ def concatenate_label(old, new):
         return old[0:-1] + new + b'"'
     else:
         return b'"' + old + new + b'"'
+
 
 # appends a string to a list unless it's already there
 def addstring(s, l):
@@ -545,6 +549,11 @@ def convert(lines, end_format):
             i += 1
             while i < len(lines) and not re_EndBabelPreamble.match(lines[i]):
                 i += 1
+            continue
+
+        if 87 <= format <= 88:
+            # nothing to do.
+            i += 1
             continue
 
         if format == 86:

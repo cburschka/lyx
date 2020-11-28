@@ -347,7 +347,7 @@ void makeParagraph(
 			special_case = true;
 	}
 
-	size_t nInsets = std::distance(par->insetList().begin(), par->insetList().end());
+	auto nInsets = std::distance(par->insetList().begin(), par->insetList().end());
 	auto parSize = (size_t) par->size();
 
 	// Plain layouts must be ignored.
@@ -376,6 +376,40 @@ void makeParagraph(
 		return lyxCodeSpecialCases.find(inset.inset->lyxCode()) != lyxCodeSpecialCases.end();
 	};
 	special_case |= nInsets == parSize && std::all_of(par->insetList().begin(), par->insetList().end(), isLyxCodeSpecialCase);
+
+	// Flex elements (InsetLayout) have their own parameter to control the special case.
+	auto isFlexSpecialCase = [](InsetList::Element inset) {
+		if (inset.inset->lyxCode() != FLEX_CODE)
+			return false;
+		// Standard condition: check the parameter.
+		if (inset.inset->getLayout().docbooknotinpara())
+			return true;
+
+		// If the parameter is not set, maybe the flex inset only contains things that should match the standard
+		// condition. In this case, isLyxCodeSpecialCase must also check for bibitems...
+		auto isLyxCodeSpecialCase = [](InsetList::Element inset) {
+			return lyxCodeSpecialCases.find(inset.inset->lyxCode()) != lyxCodeSpecialCases.end() ||
+					inset.inset->lyxCode() == BIBITEM_CODE;
+		};
+		if (InsetText * text = inset.inset->asInsetText()) {
+			for (auto const & par : text->paragraphs()) {
+				auto nInsets = std::distance(par.insetList().begin(), par.insetList().end());
+				auto parSize = (size_t) par.size();
+
+				if (nInsets == 1 && par.insetList().begin()->inset->lyxCode() == BIBITEM_CODE)
+					return true;
+				if (nInsets != parSize)
+					return false;
+				if (!std::all_of(par.insetList().begin(), par.insetList().end(), isLyxCodeSpecialCase))
+					return false;
+			}
+			return true;
+		}
+
+		// No case matched: give up.
+		return false;
+	};
+	special_case |= nInsets == parSize && std::all_of(par->insetList().begin(), par->insetList().end(), isFlexSpecialCase);
 
 	// Open a paragraph if it is allowed, we are not already within a paragraph, and the insets in the paragraph do
 	// not forbid paragraphs (aka special cases).

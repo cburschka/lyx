@@ -39,6 +39,8 @@ public:
 
 	std::string name() const { return name_; }
 
+	bool docbookargumentbeforemaintag() const { return docbookargumentbeforemaintag_; }
+
 	/// \name Public functions inherited from Inset class
 	//@{
 	///
@@ -131,6 +133,8 @@ private:
 	docstring docbooktagtype_;
 	/// DocBook attributes.
 	docstring docbookattr_;
+	///
+	bool docbookargumentbeforemaintag_ = false;
 
 protected:
 	/// \name Protected functions inherited from Inset class
