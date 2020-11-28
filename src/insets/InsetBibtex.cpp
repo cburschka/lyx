@@ -43,7 +43,6 @@
 #include "support/ExceptionMessage.h"
 #include "support/FileNameList.h"
 #include "support/filetools.h"
-#include "support/regex.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/os.h"
@@ -52,6 +51,7 @@
 
 #include <limits>
 #include <map>
+#include <regex>
 #include <utility>
 
 #include <iostream>
@@ -1188,8 +1188,8 @@ void InsetBibtex::docbook(XMLStream & xs, OutputParams const &) const
 		string html = to_utf8(bibinfo.getInfo(entry.key(), buffer(), ci));
 		regex tagRegex("<span class=\"bib-([^\"]*)\">([^<]*)</span>");
 		smatch match;
-		auto tagIt = lyx::sregex_iterator(html.cbegin(), html.cend(), tagRegex, regex_constants::match_default);
-		auto tagEnd = lyx::sregex_iterator();
+		auto tagIt = sregex_iterator(html.cbegin(), html.cend(), tagRegex, regex_constants::match_default);
+		auto tagEnd = sregex_iterator();
 		map<string, string> delayedTags;
 
 		// Read all tags from HTML and convert those that have a 1:1 matching.

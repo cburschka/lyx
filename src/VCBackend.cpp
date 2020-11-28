@@ -26,11 +26,11 @@
 #include "support/lstrings.h"
 #include "support/PathChanger.h"
 #include "support/Systemcall.h"
-#include "support/regex.h"
 #include "support/TempFile.h"
 
 #include <fstream>
 #include <iomanip>
+#include <regex>
 #include <sstream>
 
 using namespace std;

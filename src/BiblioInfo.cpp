@@ -32,10 +32,10 @@
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
-#include "support/regex.h"
 #include "support/textutils.h"
 
 #include <map>
+#include <regex>
 #include <set>
 
 using namespace std;
@@ -383,8 +383,8 @@ docstring convertLaTeXCommands(docstring const & str)
 		// {\v a} to \v{a} (see #9340).
 		// FIXME: This is a sort of mini-tex2lyx.
 		//        Use the real tex2lyx instead!
-		static lyx::regex const tma_reg("^\\{\\\\[bcCdfGhHkrtuUv]\\s\\w\\}");
-		if (lyx::regex_search(to_utf8(val), tma_reg)) {
+		static regex const tma_reg("^\\{\\\\[bcCdfGhHkrtuUv]\\s\\w\\}");
+		if (regex_search(to_utf8(val), tma_reg)) {
 			val = val.substr(1);
 			val.replace(2, 1, from_ascii("{"));
 			continue;
@@ -411,8 +411,8 @@ docstring convertLaTeXCommands(docstring const & str)
 		// look for that and change it, if necessary.
 		// FIXME: This is a sort of mini-tex2lyx.
 		//        Use the real tex2lyx instead!
-		static lyx::regex const reg("^\\\\\\W\\w");
-		if (lyx::regex_search(to_utf8(val), reg)) {
+		static regex const reg("^\\\\\\W\\w");
+		if (regex_search(to_utf8(val), reg)) {
 			val.insert(3, from_ascii("}"));
 			val.insert(2, from_ascii("{"));
 		}

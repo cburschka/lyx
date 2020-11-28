@@ -100,7 +100,6 @@ liblyxsupport_a_SOURCES = \
 	pmprof.h \
 	qstring_helpers.cpp \
 	qstring_helpers.h \
-	regex.h \
 	signals.h \
 	socktools.cpp \
 	socktools.h \

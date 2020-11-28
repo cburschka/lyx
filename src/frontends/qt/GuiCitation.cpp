@@ -45,9 +45,8 @@
 
 #undef KeyPress
 
-#include "support/regex.h"
-
 #include <algorithm>
+#include <regex>
 #include <string>
 #include <vector>
 
@@ -987,21 +986,21 @@ static docstring escape_special_chars(docstring const & expr)
 {
 	// Search for all chars '.|*?+(){}[^$]\'
 	// Note that '[', ']', and '\' must be escaped.
-	static const lyx::regex reg("[.|*?+(){}^$\\[\\]\\\\]");
+	static const regex reg("[.|*?+(){}^$\\[\\]\\\\]");
 
 	// $& is an ECMAScript format expression that expands to all
 	// of the current match
 	// To prefix a matched expression with a single literal backslash, we
 	// need to escape it for the C++ compiler and use:
 	// FIXME: UNICODE
-	return from_utf8(lyx::regex_replace(to_utf8(expr), reg, string("\\$&")));
+	return from_utf8(regex_replace(to_utf8(expr), reg, string("\\$&")));
 }
 
 
 vector<docstring> GuiCitation::searchKeys(BiblioInfo const & bi,
 	vector<docstring> const & keys_to_search, bool only_keys,
  	docstring const & search_expression, docstring const & field,
-	bool case_sensitive, bool regex)
+	bool case_sensitive, bool re)
 {
 	vector<docstring> foundKeys;
 
@@ -1009,17 +1008,17 @@ vector<docstring> GuiCitation::searchKeys(BiblioInfo const & bi,
 	if (expr.empty())
 		return foundKeys;
 
-	if (!regex)
+	if (!re)
 		// We must escape special chars in the search_expr so that
-		// it is treated as a simple string by lyx::regex.
+		// it is treated as a simple string by regex.
 		expr = escape_special_chars(expr);
 
-	lyx::regex reg_exp;
+	regex reg_exp;
 	try {
 		reg_exp.assign(to_utf8(expr), case_sensitive ?
-			lyx::regex_constants::ECMAScript : lyx::regex_constants::icase);
-	} catch (lyx::regex_error const & e) {
-		// lyx::regex throws an exception if the regular expression is not
+			regex_constants::ECMAScript : regex_constants::icase);
+	} catch (regex_error const & e) {
+		// regex throws an exception if the regular expression is not
 		// valid.
 		LYXERR(Debug::GUI, e.what());
 		return vector<docstring>();
@@ -1045,10 +1044,10 @@ vector<docstring> GuiCitation::searchKeys(BiblioInfo const & bi,
 			continue;
 
 		try {
-			if (lyx::regex_search(sdata, reg_exp))
+			if (regex_search(sdata, reg_exp))
 				foundKeys.push_back(*it);
 		}
-		catch (lyx::regex_error const & e) {
+		catch (regex_error const & e) {
 			LYXERR(Debug::GUI, e.what());
 			return vector<docstring>();
 		}

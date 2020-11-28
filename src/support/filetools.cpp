@@ -42,7 +42,6 @@
 #include <QDir>
 
 #include "support/lassert.h"
-#include "support/regex.h"
 
 #include <fcntl.h>
 #ifdef HAVE_MAGIC_H
@@ -59,6 +58,7 @@
 
 #include <utility>
 #include <fstream>
+#include <regex>
 #include <sstream>
 #include <vector>
 

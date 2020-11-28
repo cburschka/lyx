@@ -36,9 +36,8 @@
 #include "support/Systemcall.h"
 #include "support/os.h"
 
-#include "support/regex.h"
-
 #include <fstream>
+#include <regex>
 #include <stack>
 
 

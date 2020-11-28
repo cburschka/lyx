@@ -19,11 +19,10 @@
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/lassert.h"
-
-#include "support/regex.h"
 #include "support/TempFile.h"
 
 #include <fstream>
+#include <regex>
 
 using namespace std;
 using namespace lyx::support;

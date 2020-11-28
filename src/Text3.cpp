@@ -72,13 +72,13 @@
 #include "support/lassert.h"
 #include "support/limited_stack.h"
 #include "support/lstrings.h"
-#include "support/regex.h"
 
 #include "mathed/InsetMathHull.h"
 #include "mathed/InsetMathMacroTemplate.h"
 #include "lyxfind.h"
 
 #include <clocale>
+#include <regex>
 #include <sstream>
 
 using namespace std;

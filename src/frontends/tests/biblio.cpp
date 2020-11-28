@@ -2,8 +2,7 @@
 
 #include <iostream>
 #include <map>
-
-#include "support/regex.h"
+#include <regex>
 
 using namespace std;
 
@@ -16,13 +15,13 @@ string const escape_special_chars(string const & expr)
 {
 	// Search for all chars '.|*?+(){}[^$]\'
 	// Note that '[', ']', and '\' must be escaped.
-	lyx::regex reg("[.|*?+(){}^$\\[\\]\\\\]");
+	regex reg("[.|*?+(){}^$\\[\\]\\\\]");
 
 	// $& is a ECMAScript format expression that expands to all
 	// of the current match
 	// To prefix a matched expression with a single literal backslash, we
 	// need to escape it for the C++ compiler and use:
-	return lyx::regex_replace(expr, reg, "\\$&");
+	return regex_replace(expr, reg, "\\$&");
 }
 
 
@@ -49,11 +48,11 @@ public:
 
 		// Attempts to find a match for the current RE
 		// somewhere in data.
-		return lyx::regex_search(data, regex_);
+		return regex_search(data, regex_);
 	}
 private:
 	InfoMap const map_;
-	mutable lyx::regex regex_;
+	mutable regex regex_;
 };
 
 
@@ -77,7 +76,7 @@ void test_RegexMatch()
 		cout << rm("hello") << endl;
 		cout << rm("hei") << endl;
 	}
-	catch (lyx::regex_error & regerr) {
+	catch (regex_error & regerr) {
 		cout << regerr.what() << endl;
 	}
 }

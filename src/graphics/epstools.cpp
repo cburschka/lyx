@@ -29,7 +29,8 @@
 #include "support/docstream.h"
 #include "support/filetools.h"
 #include "support/FileName.h"
-#include "support/regex.h"
+
+#include <regex>
 
 using namespace std;
 using namespace lyx::support;
@@ -58,13 +59,13 @@ string const readBB_from_PSFile(FileName const & file)
 		return string();
 	}
 
-	static lyx::regex bbox_re("^%%BoundingBox:\\s*([-]*[[:digit:]]+)"
+	static regex bbox_re("^%%BoundingBox:\\s*([-]*[[:digit:]]+)"
 		"\\s+([-]*[[:digit:]]+)\\s+([-]*[[:digit:]]+)\\s+([-]*[[:digit:]]+)");
 	ifstream is(file_.toFilesystemEncoding().c_str());
 	while (is) {
 		string s;
 		getline(is,s);
-		lyx::smatch what;
+		smatch what;
 		if (regex_match(s, what, bbox_re)) {
 			// Our callers expect the tokens in the string
 			// separated by single spaces.

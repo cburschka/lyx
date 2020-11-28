@@ -19,9 +19,10 @@
 #include "support/debug.h"
 #include "support/filetools.h"
 #include "support/qstring_helpers.h"
-#include "support/regex.h"
 
 #include <QDir>
+
+#include <regex>
 
 #if defined(__CYGWIN__)
 #include "support/os_cygwin.cpp"

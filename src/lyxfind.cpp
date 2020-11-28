@@ -46,10 +46,10 @@
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
-
-#include "support/regex.h"
 #include "support/textutils.h"
+
 #include <map>
+#include <regex>
 
 using namespace std;
 using namespace lyx::support;
@@ -773,10 +773,10 @@ string escape_for_regex(string s, bool match_latex)
 bool regex_replace(string const & s, string & t, string const & searchstr,
 		   string const & replacestr)
 {
-	lyx::regex e(searchstr, regex_constants::ECMAScript);
+	regex e(searchstr, regex_constants::ECMAScript);
 	ostringstream oss;
 	ostream_iterator<char, char> it(oss);
-	lyx::regex_replace(it, s.begin(), s.end(), e, replacestr);
+	regex_replace(it, s.begin(), s.end(), e, replacestr);
 	// tolerate t and s be references to the same variable
 	bool rv = (s != oss.str());
 	t = oss.str();
@@ -881,9 +881,9 @@ private:
 	// normalized string to search
 	string par_as_string;
 	// regular expression to use for searching
-	lyx::regex regexp;
+	regex regexp;
 	// same as regexp, but prefixed with a ".*?"
-	lyx::regex regexp2;
+	regex regexp2;
 	// leading format material as string
 	string lead_as_string;
 	// par_as_string after removal of lead_as_string
@@ -955,11 +955,11 @@ static size_t identifyLeading(string const & s)
 	// @TODO Support \item[text]
 	// Kornel: Added textsl, textsf, textit, texttt and noun
 	// + allow to search for colored text too
-	while (regex_replace(t, t, REGEX_BOS "\\\\(((footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge|emph|noun|minisec|text(bf|md|sl|sf|it|tt))|((textcolor|foreignlanguage|latexenvironment)\\{[a-z]+\\*?\\})|(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part|chapter)\\*?)\\{", "")
-	       || regex_replace(t, t, REGEX_BOS "\\$", "")
-	       || regex_replace(t, t, REGEX_BOS "\\\\\\[", "")
-	       || regex_replace(t, t, REGEX_BOS " ?\\\\item\\{[a-z]+\\}", "")
-	       || regex_replace(t, t, REGEX_BOS "\\\\begin\\{[a-zA-Z_]*\\*?\\}", ""))
+	while (regex_replace(t, t, "^\\\\(((footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge|emph|noun|minisec|text(bf|md|sl|sf|it|tt))|((textcolor|foreignlanguage|latexenvironment)\\{[a-z]+\\*?\\})|(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part|chapter)\\*?)\\{", "")
+	       || regex_replace(t, t, "^\\$", "")
+	       || regex_replace(t, t, "^\\\\\\[", "")
+	       || regex_replace(t, t, "^ ?\\\\item\\{[a-z]+\\}", "")
+	       || regex_replace(t, t, "^\\\\begin\\{[a-zA-Z_]*\\*?\\}", ""))
 	       ;
 	LYXERR(Debug::FIND, "  after removing leading $, \\[ , \\emph{, \\textbf{, etc.: '" << t << "'");
 	return s.find(t);
@@ -2688,13 +2688,13 @@ static int identifyClosing(string & t)
 	int open_braces = 0;
 	do {
 		LYXERR(Debug::FIND, "identifyClosing(): t now is '" << t << "'");
-		if (regex_replace(t, t, "(.*[^\\\\])\\$" REGEX_EOS, "$1"))
+		if (regex_replace(t, t, "(.*[^\\\\])\\$$", "$1"))
 			continue;
-		if (regex_replace(t, t, "(.*[^\\\\])\\\\\\]" REGEX_EOS, "$1"))
+		if (regex_replace(t, t, "(.*[^\\\\])\\\\\\]$", "$1"))
 			continue;
-		if (regex_replace(t, t, "(.*[^\\\\])\\\\end\\{[a-zA-Z_]*\\*?\\}" REGEX_EOS, "$1"))
+		if (regex_replace(t, t, "(.*[^\\\\])\\\\end\\{[a-zA-Z_]*\\*?\\}$", "$1"))
 			continue;
-		if (regex_replace(t, t, "(.*[^\\\\])\\}" REGEX_EOS, "$1")) {
+		if (regex_replace(t, t, "(.*[^\\\\])\\}$", "$1")) {
 			++open_braces;
 			continue;
 		}
@@ -2825,10 +2825,10 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 			regexp2_str = "(" + lead_as_regexp + ").*?" + par_as_string;
 		}
 		LYXERR(Debug::FIND, "Setting regexp to : '" << regexp_str << "'");
-		regexp = lyx::regex(regexp_str);
+		regexp = regex(regexp_str);
 
 		LYXERR(Debug::FIND, "Setting regexp2 to: '" << regexp2_str << "'");
-		regexp2 = lyx::regex(regexp2_str);
+		regexp2 = regex(regexp2_str);
 	}
 }
 

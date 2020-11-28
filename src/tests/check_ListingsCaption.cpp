@@ -1,9 +1,9 @@
 #include <config.h>
 
 #include "../support/debug.h"
-#include "../support/regex.h"
 
 #include <iostream>
+#include <regex>
 
 
 using namespace lyx;

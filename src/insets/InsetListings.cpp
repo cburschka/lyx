@@ -44,8 +44,7 @@
 #include "frontends/alert.h"
 #include "frontends/Application.h"
 
-#include "support/regex.h"
-
+#include <regex>
 #include <sstream>
 
 using namespace std;

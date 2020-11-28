@@ -40,9 +40,9 @@
 #include "support/docstring.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "support/regex.h"
 
 #include <algorithm>
+#include <regex>
 
 
 using namespace std;

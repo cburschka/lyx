@@ -58,8 +58,7 @@
 
 // for FileFilter.
 // FIXME: Remove
-#include "support/regex.h"
-
+#include <regex>
 
 using namespace std;
 using namespace lyx::support;
@@ -496,10 +495,10 @@ static string const convert_brace_glob(string const & glob)
 {
 	// Matches " *.{abc,def,ghi}", storing "*." as group 1 and
 	// "abc,def,ghi" as group 2, while allowing spaces in group 2.
-	static lyx::regex const glob_re(" *([^ {]*)\\{([^}]+)\\}");
+	static regex const glob_re(" *([^ {]*)\\{([^}]+)\\}");
 	// Matches "abc" and "abc,", storing "abc" as group 1,
 	// while ignoring surrounding spaces.
-	static lyx::regex const block_re(" *([^ ,}]+) *,? *");
+	static regex const block_re(" *([^ ,}]+) *,? *");
 
 	string pattern;
 
@@ -624,14 +623,14 @@ FileFilterList::FileFilterList(docstring const & qt_style_filter)
 
 	// Split data such as "TeX documents (*.tex);;LyX Documents (*.lyx)"
 	// into individual filters.
-	static lyx::regex const separator_re(";;");
+	static regex const separator_re(";;");
 
 	string::const_iterator it = filter.begin();
 	string::const_iterator const end = filter.end();
 	while (true) {
 		match_results<string::const_iterator> what;
 
-		if (!lyx::regex_search(it, end, what, separator_re)) {
+		if (!regex_search(it, end, what, separator_re)) {
 			parse_filter(string(it, end));
 			break;
 		}
@@ -650,10 +649,10 @@ void FileFilterList::parse_filter(string const & filter)
 {
 	// Matches "TeX documents (plain) (*.tex)",
 	// storing "TeX documents (plain) " as group 1 and "*.tex" as group 2.
-	static lyx::regex const filter_re("(.*)\\(([^()]+)\\) *$");
+	static regex const filter_re("(.*)\\(([^()]+)\\) *$");
 
 	match_results<string::const_iterator> what;
-	if (!lyx::regex_search(filter, what, filter_re)) {
+	if (!regex_search(filter, what, filter_re)) {
 		// Just a glob, no description.
 		filters_.push_back(Filter(docstring(), trim(filter)));
 	} else {
