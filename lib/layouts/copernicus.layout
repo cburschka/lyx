@@ -93,6 +93,12 @@ Style Affil
 		LabelString     "Affiliation Mark"
 		ToolTip         "identify the author with the corresponding affiliation. 1, 2, 3, etc. should be inserted."
 	EndArgument
+	DocBookTag            address
+	DocBookTagType        block
+	DocBookWrapperTag     author
+	DocBookWrapperTagType inline
+	DocBookWrapperMergeWithPrevious  true
+	DocBookInInfo         always
 End
 
 Style Running_Title
@@ -101,6 +107,9 @@ Style Running_Title
 	CopyStyle       InFrontmatter
 	LatexName       runningtitle
 	LabelString     "Running title:"
+	DocBookTag            titleabbrev
+	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 End
 
 Style FirstPage
@@ -114,6 +123,8 @@ Style FirstPage
 		Shape           Italic
 		Color           Red
 	EndFont
+	DocBookTag            IGNORE
+	DocBookInInfo         maybe
 End
 
 Style RunningAuthor
@@ -122,6 +133,9 @@ Style RunningAuthor
 	CopyStyle       InFrontmatter
 	LatexName       runningauthor
 	LabelString     "Running author:"
+	DocBookTag            authorinitials
+	DocBookTagType        paragraph
+	DocBookInInfo         maybe
 End
 
 Style Publications
@@ -151,6 +165,9 @@ Style Correspondence
 	CopyStyle       Publications
 	LatexName       correspondence
 	LabelString     "Correspondence:"
+	DocBookTag      address
+	DocBookAttr     role='correspondence'
+	DocBookInInfo   always
 End
 
 Style Received
@@ -159,6 +176,9 @@ Style Received
 	CopyStyle       Publications
 	LatexName       received
 	LabelString     "Received:"
+	DocBookTag      date
+	DocBookAttr     role='received'
+	DocBookInInfo   always
 End
 
 Style Accepted
@@ -167,6 +187,9 @@ Style Accepted
 	CopyStyle       Publications
 	LatexName       accepted
 	LabelString     "Accepted:"
+	DocBookTag      date
+	DocBookAttr     role='accepted'
+	DocBookInInfo   always
 End
 
 Style Pubdiscuss
@@ -176,6 +199,9 @@ Style Pubdiscuss
 	CopyStyle       Publications
 	LatexName       pubdiscuss
 	LabelString     "Pubdiscuss:"
+	DocBookTag      date
+	DocBookAttr     role='pubdiscuss'
+	DocBookInInfo   always
 End
 
 Style Revised
@@ -185,6 +211,9 @@ Style Revised
 	CopyStyle       Publications
 	LatexName       revised
 	LabelString     "Revised:"
+	DocBookTag      date
+	DocBookAttr     role='revised'
+	DocBookInInfo   always
 End
 
 Style Published
@@ -194,6 +223,9 @@ Style Published
 	CopyStyle       Publications
 	LatexName       published
 	LabelString     "Published:"
+	DocBookTag      date
+	DocBookAttr     role='published'
+	DocBookInInfo   always
 End
 
 Style Abstract
@@ -224,12 +256,19 @@ Style Statements
 	LatexType       Command
 	Margin          Dynamic
 	KeepEmpty       0
+	DocBookTag      para
+	DocBookAttr     role='statements'
 End
 
 Style Copyrightstatement
 	CopyStyle       Statements
 	LatexName       copyrightstatement
 	LabelString     "Copyright:"
+	DocBookTag            para
+	DocBookWrapperTag     legalnotice
+	DocBookWrapperTagType block
+	DocBookWrapperMergeWithPrevious  true
+	DocBookInInfo         maybe
 End
 
 Style Introduction
@@ -238,6 +277,8 @@ Style Introduction
 	LabelString     "\thesection Introduction"
 	KeepEmpty       1
 	LabelSep        ""
+	DocBookSection  true
+	DocBookSectionTag  section
 End
 
 Style Conclusions
@@ -246,6 +287,8 @@ Style Conclusions
 	LabelString     "\thesection Conclusions"
 	KeepEmpty       1
 	LabelSep        ""
+	DocBookSection  true
+	DocBookSectionTag  section
 End
 
 Counter appendix
@@ -308,24 +351,32 @@ Style CodeAvailability
 	CopyStyle       Statements
 	LabelString     "Code availability."
 	LatexName       codeavailability
+	DocBookTag      para
+	DocBookAttr     role='codeavailability'
 End
 
 Style DataAvailability
 	CopyStyle       Statements
 	LabelString     "Data availability."
 	LatexName       dataavailability
+	DocBookTag      para
+	DocBookAttr     role='dataavailability'
 End
 
 Style CodeAndDataAvailability
 	CopyStyle       Statements
 	LabelString     "Code and data availability."
 	LatexName       codedataavailability
+	DocBookTag      para
+	DocBookAttr     role='codedataavailability'
 End
 
 Style SampleAvailability
 	CopyStyle       Statements
 	LabelString     "Sample availability."
 	LatexName       sampleavailability
+	DocBookTag      para
+	DocBookAttr     role='sampleavailability'
 End
 
 Style Statements2
@@ -334,30 +385,41 @@ Style Statements2
 	TopSep          1.3
 	BottomSep       0.7
 	ParSep          0.7
+	DocBookTag      para
+	DocBookAttr     role='statements'
 End
 
 Style AuthorContribution
 	CopyStyle       Statements2
 	LabelString     "Author contributions."
 	LatexName       authorcontribution
+	DocBookTag      para
+	DocBookAttr     role='authorcontribution'
 End
 
 Style CompetingInterests
 	CopyStyle       Statements2
 	LatexName       competinginterests
 	LabelString     "Competing Interests."
+	DocBookTag      para
+	DocBookAttr     role='competinginterests'
 End
 
 Style Disclaimer
 	CopyStyle       Statements2
 	LatexName       disclaimer
 	LabelString     "Disclaimer."
+	DocBookTag      para
+	DocBookAttr     role='disclaimer'
 End
 
 Style Acknowledgements
 	CopyStyle       Statements2
 	LatexName       acknowledgements
 	LabelString     "Acknowledgements."
+	DocBookTag            para
+	DocBookWrapperTag     acknowledgements
+	DocBookSection        true
 End
 
 Style Bibliography

@@ -175,6 +175,10 @@ void openParTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar
 	if (par == prevpar)
 		prevpar = nullptr;
 
+	// If the previous paragraph is empty, don't consider it when opening wrappers.
+	if (prevpar && prevpar->empty() && !prevpar->allowEmpty())
+		prevpar = nullptr;
+
 	// When should the wrapper be opened here? Only if the previous paragraph has the SAME wrapper tag
 	// (usually, they won't have the same layout) and the CURRENT one allows merging.
 	// The main use case is author information in several paragraphs: if the name of the author is the
@@ -219,6 +223,10 @@ void openParTag(XMLStream & xs, const Paragraph * par, const Paragraph * prevpar
 void closeParTag(XMLStream & xs, Paragraph const * par, Paragraph const * nextpar, const OutputParams & runparams)
 {
 	if (par == nextpar)
+		nextpar = nullptr;
+
+	// If the next paragraph is empty, don't consider it when closing wrappers.
+	if (nextpar && nextpar->empty() && !nextpar->allowEmpty())
 		nextpar = nullptr;
 
 	// See comment in openParTag.
