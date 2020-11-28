@@ -126,7 +126,7 @@ tex2lyx_SOURCES = \
 tex2lyx_LDADD = \
 	$(LYX_OBJS) \
 	$(top_builddir)/src/support/liblyxsupport.a \
-	$(LIBICONV) $(BOOST_LIBS) \
+	$(LIBICONV) \
 	$(QT_LIB) $(QT_LDFLAGS) \
 	@LIBS@ $(ICONV_LIBS) $(ZLIB_LIBS) $(LIBSHLWAPI) $(LIBPSAPI)
 

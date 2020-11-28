@@ -386,7 +386,7 @@ if test x$GXX = xyes; then
       AC_LANG_POP(C++)
     fi
   case $gxx_version in
-      2.*|3.*|4.@<:@0-6@:>@) AC_MSG_ERROR([gcc >= 4.7 is required]);;
+      2.*|3.*|4.@<:@0-8@:>@) AC_MSG_ERROR([gcc >= 4.9 is required]);;
   esac
   if test x$enable_stdlib_debug = xyes ; then
     dnl FIXME: for clang/libc++, one should define _LIBCPP_DEBUG2=0
@@ -429,55 +429,10 @@ AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 	if test x$lyx_cv_with_included_boost = xyes ; then
 	    lyx_included_libs="$lyx_included_libs boost"
 	    BOOST_INCLUDES='-I$(top_srcdir)/3rdparty/boost'
-	    if test $lyx_std_regex = yes ; then
-	      BOOST_LIBS=""
-	    else
-	      BOOST_LIBS='$(top_builddir)/3rdparty/boost/liblyxboost.a'
-	    fi
 	else
 	    BOOST_INCLUDES=
-	    if test $lyx_std_regex = yes ; then
-	      BOOST_LIBS=""
-	    else
-	      AC_LANG_PUSH(C++)
-	      save_LIBS=$LIBS
-
-	      AC_MSG_CHECKING([for multithreaded boost libraries])
-	      LIBS="$save_LIBS -lboost_regex-mt $LIBTHREAD"
-	      AC_LINK_IFELSE(
-		[AC_LANG_PROGRAM([#include <boost/regex.hpp>],
-			[boost::regex reg;])],
-		[AC_MSG_RESULT([yes])
-		 BOOST_MT="-mt"],
-		[AC_MSG_RESULT([no])
-		 AC_MSG_CHECKING([for plain boost libraries])
-		 LIBS="$save_LIBS -lboost_regex"
-		 AC_LINK_IFELSE(
-		     [AC_LANG_PROGRAM([#include <boost/regex.hpp>],
-			     [boost::regex reg;])],
-		     [AC_MSG_RESULT([yes])
-		      BOOST_MT=""],
-		     [AC_MSG_RESULT([no])
-		      AC_MSG_ERROR([cannot find suitable boost library (do not use --without-included-boost)])
-		 ])
-	      ])
-	      LIBS=$save_LIBS
-	      AC_LANG_POP(C++)
-
-	      dnl In general, system boost libraries are incompatible with
-	      dnl the use of stdlib-debug in libstdc++. See ticket #9736 for
-	      dnl details.
-	      if test $enable_stdlib_debug = "yes" ; then
-		LYX_WARNING([Compiling LyX with stdlib-debug and system boost libraries may lead to
-   crashes. Consider using --disable-stdlib-debug or removing
-   --without-included-boost.])
-	      fi
-
-	      BOOST_LIBS="-lboost_regex${BOOST_MT}"
-	    fi
 	fi
 	AC_SUBST(BOOST_INCLUDES)
-	AC_SUBST(BOOST_LIBS)
 ])
 
 

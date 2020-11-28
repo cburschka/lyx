@@ -1,7 +1,5 @@
 include $(top_srcdir)/config/common.am
 
-noinst_LIBRARIES = liblyxboost.a
-
 EXTRA_DIST = boost \
 	CMakeLists.txt \
 	LICENSE_1_0.txt \
@@ -13,23 +11,4 @@ EXTRA_DIST = boost \
 
 AM_CPPFLAGS += -DBOOST_USER_CONFIG="<config.h>" 
 AM_CPPFLAGS +=  $(BOOST_INCLUDES)
-
-liblyxboost_a_SOURCES = \
-	libs/regex/src/internals.hpp \
-	libs/regex/src/c_regex_traits.cpp \
-	libs/regex/src/cpp_regex_traits.cpp \
-	libs/regex/src/cregex.cpp \
-	libs/regex/src/fileiter.cpp \
-	libs/regex/src/instances.cpp \
-	libs/regex/src/posix_api.cpp \
-	libs/regex/src/regex.cpp \
-	libs/regex/src/regex_debug.cpp \
-	libs/regex/src/regex_raw_buffer.cpp \
-	libs/regex/src/regex_traits_defaults.cpp \
-	libs/regex/src/w32_regex_traits.cpp \
-	libs/regex/src/wc_regex_traits.cpp \
-	libs/regex/src/wide_posix_api.cpp \
-	libs/regex/src/winstances.cpp \
-	libs/regex/src/static_mutex.cpp
-
 

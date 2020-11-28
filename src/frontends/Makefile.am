@@ -42,7 +42,7 @@ TESTS = \
 check_PROGRAMS = \
 	biblio
 
-biblio_LDADD = $(BOOST_LIBS) $(ICONV_LIBS) $(ZLIB_LIBS)
+biblio_LDADD = $(ICONV_LIBS) $(ZLIB_LIBS)
 biblio_SOURCES = \
 	tests/biblio.cpp \
 	tests/boost.cpp

@@ -219,11 +219,6 @@ values):
     optimization of LyX. The compile may be much quicker with some
     compilers, but LyX will run more slowly.
 
-  o --disable-std-regex forces the compiler to use boost::regex. The
-    default is to use std::regex for known good C++ libraries, but the
-    test is not robust for clang. --enable-std-regex will force the
-    use of std::regex.
-
   o --enable-debug will add debug information to your binary. This
     requires a lot more disk space, but is a must if you want to try
     to debug problems in LyX. There is no run-time penalty.
@@ -238,13 +233,9 @@ values):
   o --enable-stdlib-debug adds some debug code in the standard
     library; this slows down the code, but has been helpful in the
     past to find bugs. Note that this is in general incompatible with
-    the system boost library (which is used when
-    --without-included-boost is specified). You may have to use
+    the system hunspell library (as of version 1.5). You may have to use
     --disable-stdlib-debug when linking development versions against
-    your system's boost library.
-    The same problem applies to hunspell (as of hunspell 1.5). So either
-    compile --with-included-hunspell or --disable-stdlib-debug when
-    linking development versions against your system's hunspell library.
+    your system's hunspell library.
 
 
 

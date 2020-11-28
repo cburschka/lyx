@@ -20,7 +20,7 @@ EXTRA_DIST = lyx_commit_hash.h.in \
 	mathed/CMakeLists.txt \
 	tests/CMakeLists.txt
 
-OTHERLIBS = $(BOOST_LIBS) $(MYTHES_LIBS) $(ENCHANT_LIBS) $(HUNSPELL_LIBS) \
+OTHERLIBS = $(MYTHES_LIBS) $(ENCHANT_LIBS) $(HUNSPELL_LIBS) \
             @LIBS@ $(ICONV_LIBS) $(ZLIB_LIBS) $(SOCKET_LIBS) \
 	    $(LIBSHLWAPI) $(LIBPSAPI)
 
@@ -696,7 +696,7 @@ ADD_FRAMEWORKS = -framework QtGui -framework QtCore -framework AppKit -framework
 endif
 
 TESTS_LIBS = support/liblyxsupport.a \
-	$(LIBICONV) $(BOOST_LIBS) @LIBS@ \
+	$(LIBICONV) @LIBS@ \
 	$(ICONV_LIBS) $(ZLIB_LIBS) $(QT_LIB) $(LIBSHLWAPI)
 
 check_layout_CPPFLAGS = $(AM_CPPFLAGS)
