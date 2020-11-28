@@ -5,9 +5,7 @@ EXTRA_DIST = boost \
 	LICENSE_1_0.txt \
 	libs/CMakeLists.txt \
 	libs/regex/CMakeLists.txt \
-	libs/regex/src/CMakeLists.txt \
-	libs/regex/src/usinstances.cpp
-# The last file above is only compiled for msvc (see cmake)
+	libs/regex/src/CMakeLists.txt
 
 AM_CPPFLAGS += -DBOOST_USER_CONFIG="<config.h>" 
 AM_CPPFLAGS +=  $(BOOST_INCLUDES)
