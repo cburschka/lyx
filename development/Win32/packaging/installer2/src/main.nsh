@@ -19,6 +19,7 @@
 
     Var LatexPath # Used to store path to "latex.exe"
     Var StartMenuFolder # Used to store the start menu folder
+    Var pathPrefix
 
     # FIXME Variables needed due to "old" set of language strings, delete
     Var LaTeXInstalled
@@ -703,14 +704,7 @@ Section -CompilePython
 SectionEnd
 
 Section -LyxrcDist
-  FileOpen $R0 "$INSTDIR\Resources\lyxrc.dist" a
-  FileSeek $R0 0 END
-  # set some general things
-  FileWrite $R0 '\screen_zoom 120$\r$\n'
-  FileWrite $R0 '\path_prefix "$LatexPath;$$LyXDir\bin;$$LyXDir\Python;$$LyXDir\Python\Lib;$$LyXDir\imagemagick;$$LyXDir\ghostscript\bin'
-
-  # Do not overwrite $R0 in this Section!!!
-  # =======================================
+  StrCpy $pathPrefix "$LatexPath;$$LyXDir\bin;$$LyXDir\Python;$$LyXDir\Python\Lib;$$LyXDir\imagemagick;$$LyXDir\ghostscript\bin"
 
   # Find additional software and add their install locations to the path_prefix
   # This list contains all software, which write the string value "InstallLocation" in their corresponding keys in "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall"
@@ -728,7 +722,7 @@ Section -LyxrcDist
       ${If} $1 == "\" # If ends with "\"
         StrCpy $0 $0 -1 # Remove "\"
       ${EndIf}
-      FileWrite $R0 ";$0"
+      StrCpy $pathPrefix "$pathPrefix;$0"
     ${EndIf}
   ${Next}
   ${List.Destroy} editors
@@ -739,7 +733,7 @@ Section -LyxrcDist
   ReadRegStr $0 SHCTX "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$0" "DisplayIcon"
   ${StrStrAdv} $0 $0 "\gvim.exe" ">" "<" "0" "0" "0" # get everything before "\gvim.exe"
   ${If} $0 != ""
-    FileWrite $R0 ";$0"
+    StrCpy $pathPrefix "$pathPrefix;$0"
   ${EndIf}
 
   # JabRef, Hard to locate, JabRef uses MSI installer, lets try to find it through the .bib extension
@@ -753,7 +747,7 @@ Section -LyxrcDist
     ${StrRep} $0 $0 '"' "" # Remove quotes
     ${StrStrAdv} $0 $0 "\JabRef.exe" ">" "<" "0" "0" "0" # Get everything before "\JabRef.exe"
     ${If} ${FileExists} "$0\JabRef.exe"
-      FileWrite $R0 ";$0"
+      StrCpy $pathPrefix "$pathPrefix;$0"
       ${Break}
     ${EndIf}
     SetShellVarContext current # Retry as user
@@ -769,7 +763,7 @@ Section -LyxrcDist
     ${StrRep} $0 $0 '"' "" # Remove quotes
     ${StrStrAdv} $0 $0 "\gnumeric.exe" ">" "<" "0" "0" "0" # Get everything before "\gnumeric.exe"
     ${If} $0 != ""
-      FileWrite $R0 ";$0"
+      StrCpy $pathPrefix "$pathPrefix;$0"
       ${Break}
     ${EndIf}
     SetShellVarContext current # Retry as user
@@ -782,7 +776,7 @@ Section -LyxrcDist
   ${If} $1 = 0
     ${StrStrAdv} $0 $0 "\pandoc.exe" ">" "<" "0" "0" "0" # Get everything before "\pandoc.exe"
     ${If} $0 != ""
-      FileWrite $R0 ";$0"
+      StrCpy $pathPrefix "$pathPrefix;$0"
     ${EndIf}
   ${EndIf}
 
@@ -792,7 +786,7 @@ Section -LyxrcDist
   ${SearchAllRegistry} $0 $1 $1 "SOFTWARE" "LilyPond" 0 0 # Helper Function from above
   ReadRegStr $0 SHCTX "SOFTWARE\$0" "Install_Dir"
   ${If} $0 != ""
-    FileWrite $R0 ";$0\usr\bin"
+    StrCpy $pathPrefix "$pathPrefix;$0\usr\bin"
     ${Map.Set} softwarePathsMap "LilyPond" "$0\usr\bin"
   ${EndIf}
 
@@ -800,7 +794,7 @@ Section -LyxrcDist
   ${SearchAllRegistry} $2 $1 $1 "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall" "GIMP" 0 0 # Helper Function from above
   ReadRegStr $0 SHCTX "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$2" "InstallLocation"
   ${If} $0 != ""
-    FileWrite $R0 ";$0bin" # Install Location ends with '\' for Gimp in Registry
+    StrCpy $pathPrefix "$pathPrefix;$0bin" # Install Location ends with '\' for Gimp in Registry
     ReadRegStr $0 SHCTX "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$2" "DisplayIcon"
     ${StrStrAdv} $0 $0 ".exe" ">" "<" "0" "0" "0" # Get everything before the ".exe"
     ${StrStrAdv} $0 $0 "\" "<" ">" "0" "0" "0" # Get everything after the last "\", $0 contains "gimp-10" now
@@ -811,7 +805,7 @@ Section -LyxrcDist
   ${SearchAllRegistry} $0 $1 $1 "SOFTWARE" "Krita" 0 0 # Helper Function from above
   ReadRegStr $0 SHCTX "SOFTWARE\$0" "InstallLocation"
   ${If} $0 != ""
-    FileWrite $R0 ";$0\bin"
+    StrCpy $pathPrefix "$pathPrefix;$0\bin"
     ${Map.Set} softwarePathsMap "ImageEditor" "krita"
   ${EndIf}
 
@@ -825,15 +819,20 @@ Section -LyxrcDist
     ${StrRep} $0 $0 '"' "" # Remove quotes
     ${StrStrAdv} $0 $0 "\photoshop.exe" ">" "<" "0" "0" "0" # Get everything before "\photoshop.exe"
     ${If} $0 != ""
-      FileWrite $R0 ";$0"
+      StrCpy $pathPrefix "$pathPrefix;$0"
       ${Break}
     ${EndIf}
     SetShellVarContext current # Retry as user
   ${Next}
 
-  FileWrite $R0 '"$\r$\n'
-
   ClearErrors
+
+  FileOpen $R0 "$INSTDIR\Resources\lyxrc.dist" a
+  FileSeek $R0 0 END
+  # set some general things
+  FileWrite $R0 '\screen_zoom 120$\r$\n'
+
+  FileWrite $R0 '\path_prefix "$pathPrefix"$\r$\n'
   
   # use pdfview for all types of PDF files
   FileWrite $R0 '\format "pdf5" "pdf" "PDF (LuaTeX)" "u" "pdfview" "" "document,vector,menu=export" "application/pdf"$\r$\n\
@@ -967,6 +966,11 @@ Section -ConfigureScript # Runs the configure.py script
   ${EndIf}
   StrCpy $LaTeXInstalled $R9 # FIXME remove
   DetailPrint $(TEXT_CONFIGURE_LYX) # Uses R9 to display the name of the installed latex distribution
+
+  # Manipulate PATH environment of the running installer process, so that configure.py can find all the stuff needed
+  ReadEnvStr $0 "PATH"
+  ${StrRep} $pathPrefix $pathPrefix "$$LyXDir" "$INSTDIR"
+  System::Call 'Kernel32::SetEnvironmentVariable(t "PATH", t "$pathPrefix;$0")'
   
   Call PrepareShellCTX
   SetShellVarContext current # Otherwise $APPDATA would return C:\ProgrammData instead of C:\Users\username\AppData\Roaming
