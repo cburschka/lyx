@@ -519,6 +519,9 @@ export/templates/Articles/Hebrew_Article_%28KOMA-Script%29_docbook5
 # - Empty figure. Broken references. Float notes not implemented (how to do it?).
 export/templates/Articles/American_Economic_Association_%28AEA%29_docbook5
 export/templates/Articles/American_Psychological_Association_%28APA%29,_v._7_docbook5
+# - Empty figure. Dedications: IEEE wants them in the preamble, DocBook outsie. How to implement biographies?
+#   They should have their own section...
+export/templates/Articles/IEEE_Transactions(.*)_docbook5
 
 Sublabel: docbook poster
 # Posters cannot be properly exported, the LyX documents are too far from

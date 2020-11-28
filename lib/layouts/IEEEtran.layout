@@ -105,7 +105,7 @@ InsetLayout Flex:IEEE_membership
     Color	green
     Size	Small
   EndFont
-	ResetsFont true
+  ResetsFont true
 End
 
 
@@ -213,6 +213,7 @@ Style Special_Paper_Notice
     Shape	Italic
     Size	Large
   EndFont
+  DocBookTag  subtitle
 End
 
 
@@ -223,6 +224,10 @@ Style After_Title_Text
     Shape	Up
     Size	Normal
   EndFont
+  DocBookTag          para
+  DocBookWrapperTag   dedication
+  DocBookWrapperAttr  role='IEEEaftertitletext'
+  DocBookInInfo       always
 End
 
 
@@ -247,6 +252,8 @@ Style Page_headings
   \DeclareRobustCommand{\foreign@language}[1]{%
     \lowercase{\oldforeign@language{#1}}}
   EndPreamble
+  DocBookTag          titleabbrev
+  DocBookInInfo       maybe
 End
 
 
@@ -262,6 +269,8 @@ Style Publication_ID
     Shape	Up
     Size	Small
   EndFont
+  DocBookTag     releaseinfo
+  DocBookInInfo  always
 End
 
 
@@ -284,6 +293,11 @@ Style Abstract
     Series	Bold
     Size	Small
   EndFont
+  DocBookAbstract       true
+  DocBookInInfo         always
+  DocBookWrapperTag     abstract
+  DocBookWrapperMergeWithPrevious    true
+  DocBookTag            para
 End
 
 
@@ -295,6 +309,7 @@ Style Keywords
   DocBookTagType     paragraph
   DocBookWrapperTag  keywordset
   DocBookInInfo      always
+  DocBookAbstract    false
 End
 
 
@@ -459,4 +474,6 @@ Style Proof
   LabelFont
     Shape	Italic
   EndFont
+  DocBookTag            para
+  DocBookAttr           role='proof'
 End
