@@ -1,10 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-DIST_SUBDIRS = boost dtl hunspell mythes libiconv zlib
-
-if USE_INCLUDED_BOOST
-BOOST = boost
-endif
+DIST_SUBDIRS = dtl hunspell mythes libiconv zlib
 
 if USE_INCLUDED_HUNSPELL
 HUNSPELL = hunspell
@@ -26,7 +22,7 @@ if BUILD_INCLUDED_DTL
 DTL=dtl
 endif
 
-SUBDIRS = $(BOOST) $(DTL) $(HUNSPELL) $(MYTHES) $(ICONV) $(ZLIB)
+SUBDIRS = $(DTL) $(HUNSPELL) $(MYTHES) $(ICONV) $(ZLIB)
 
 EXTRA_DIST = \
 	scripts/evince_sync/evince_backward_search \
