@@ -11,7 +11,7 @@
 
 #include "support/checksum.h"
 #include "boost/crc.hpp"
-#include <iterator>
+#include <algorithm>
 
 namespace lyx {
 
