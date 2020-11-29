@@ -337,6 +337,12 @@ export/templates/Articles/Journal_of_Statistical_Software_%28JSS%29_version_2_(l
 # to the babel-greek maintainer and is being looked into.
 export/.*/el/.*_(dvi3|pdf5)_texF
 
+# It is not high priority to look into the underlying cause of these two
+# failures since TeX fonts are not commonly used with LuaTeX and the ectaart
+# class is not in TeX Live.
+export/templates/Articles/Econometrica_(dvi3|pdf5)_texF
+
+
 # ================================================
 Sublabel: externalissues
 # Export fails due to non-LaTeX external tool,
