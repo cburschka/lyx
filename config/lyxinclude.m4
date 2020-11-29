@@ -421,9 +421,9 @@ dnl        be used.
 AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 	AC_MSG_CHECKING([whether to use included boost library])
 	AC_ARG_WITH(included-boost,
-	    [AS_HELP_STRING([--without-included-boost], [do not use the boost lib supplied with LyX, try to find one in the system directories - compilation will abort if nothing suitable is found])],
+	    [AS_HELP_STRING([--with-included-boost], [use the boost lib supplied with LyX])],
 	    [lyx_cv_with_included_boost=$withval],
-	    [lyx_cv_with_included_boost=yes])
+	    [lyx_cv_with_included_boost=no])
 	AM_CONDITIONAL(USE_INCLUDED_BOOST, test x$lyx_cv_with_included_boost = xyes)
 	AC_MSG_RESULT([$lyx_cv_with_included_boost])
 	if test x$lyx_cv_with_included_boost = xyes ; then
