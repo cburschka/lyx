@@ -94,6 +94,8 @@ AC_SUBST(LIBPSAPI)
 AC_CHECK_LIB(gdi32, main)
 AC_CHECK_LIB(ole32, main)
 
+LYX_USE_INCLUDED_BOOST
+
 ### we need to know the byte order for unicode conversions
 AC_C_BIGENDIAN
 
@@ -274,9 +276,23 @@ extern "C"
 char * strerror(int n);
 #endif
 
+#define BOOST_USER_CONFIG <config.h>
+
+#if !defined(ENABLE_ASSERTIONS)
+#  define BOOST_DISABLE_ASSERTS 1
+#endif
+#define BOOST_ENABLE_ASSERT_HANDLER 1
+
+#define BOOST_DISABLE_THREADS 1
+#define BOOST_NO_WREGEX 1
+#define BOOST_NO_WSTRING 1
+
 #ifdef __CYGWIN__
 #  define _DEFAULT_SOURCE
 #  define NOMINMAX
+#  define BOOST_POSIX 1
+#  define BOOST_POSIX_API 1
+#  define BOOST_POSIX_PATH 1
 #endif
 
 #ifdef __sparc__
@@ -317,6 +333,7 @@ AC_DEFINE_UNQUOTED([LYX_RELEASE_PATCH],$lyx_patch,[Patch version number])
 AC_CONFIG_FILES([Makefile \
       lyx.1:lyx.1in \
       3rdparty/Makefile \
+      3rdparty/boost/Makefile \
       3rdparty/dtl/Makefile \
       3rdparty/hunspell/Makefile \
       3rdparty/mythes/Makefile \
