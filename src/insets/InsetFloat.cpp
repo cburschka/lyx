@@ -256,6 +256,12 @@ string InsetFloat::getAlignment() const
 }
 
 
+CtObject InsetFloat::getCtObject(OutputParams const &) const
+{
+	return CtObject::OmitObject;
+}
+
+
 LyXAlignment InsetFloat::contentAlignment() const
 {
 	LyXAlignment align = LYX_ALIGN_NONE;
@@ -457,8 +463,8 @@ void InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 
 	if (runparams.inDeletedInset) {
 		// This has to be done manually since we need it inside the float
-		OutputParams::CtObject ctobject = runparams.ctObject;
-		runparams.ctObject = OutputParams::CT_DISPLAYOBJECT;
+		CtObject ctobject = runparams.ctObject;
+		runparams.ctObject = CtObject::DisplayObject;
 		Changes::latexMarkChange(os, buffer().params(), Change(Change::UNCHANGED),
 					 Change(Change::DELETED), runparams);
 		runparams.ctObject = ctobject;

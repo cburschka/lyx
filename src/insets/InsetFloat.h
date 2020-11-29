@@ -123,7 +123,7 @@ private:
 	///
 	std::string getAlignment() const;
 	///
-	OutputParams::CtObject CtObject(OutputParams const &) const override { return OutputParams::CT_OMITOBJECT; }
+	CtObject getCtObject(OutputParams const &) const override;
 
 	InsetFloatParams params_;
 };

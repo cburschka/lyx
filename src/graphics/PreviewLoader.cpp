@@ -190,7 +190,7 @@ private:
 	/// Called by the ForkedCall process that generated the bitmap files.
 	void finishedGenerating(pid_t, int);
 	///
-	void dumpPreamble(otexstream &, OutputParams::FLAVOR) const;
+	void dumpPreamble(otexstream &, FLAVOR) const;
 	///
 	void dumpData(odocstream &, BitmapFile const &) const;
 
@@ -637,37 +637,37 @@ void PreviewLoader::Impl::startLoading(bool wait)
 			&& buffer_.params().default_output_format != "default";
 	// Use LATEX flavor if the document does not specify a specific
 	// output format (see bug 9371).
-	OutputParams::FLAVOR flavor = docformat
+	FLAVOR flavor = docformat
 					? buffer_.params().getOutputFlavor()
-					: OutputParams::LATEX;
+					: FLAVOR::LATEX;
 	if (buffer_.params().encoding().package() == Encoding::japanese) {
 		latexparam = " --latex=platex";
-		flavor = OutputParams::LATEX;
+		flavor = FLAVOR::LATEX;
 	}
 	else if (buffer_.params().useNonTeXFonts) {
-		if (flavor == OutputParams::LUATEX)
+		if (flavor == FLAVOR::LUATEX)
 			latexparam = " --latex=lualatex";
 		else {
-			flavor = OutputParams::XETEX;
+			flavor = FLAVOR::XETEX;
 			latexparam = " --latex=xelatex";
 		}
 	}
 	else {
 		switch (flavor) {
-			case OutputParams::PDFLATEX:
+			case FLAVOR::PDFLATEX:
 				latexparam = " --latex=pdflatex";
 				break;
-			case OutputParams::XETEX:
+			case FLAVOR::XETEX:
 				latexparam = " --latex=xelatex";
 				break;
-			case OutputParams::LUATEX:
+			case FLAVOR::LUATEX:
 				latexparam = " --latex=lualatex";
 				break;
-			case OutputParams::DVILUATEX:
+			case FLAVOR::DVILUATEX:
 				latexparam = " --latex=dvilualatex";
 				break;
 			default:
-				flavor = OutputParams::LATEX;
+				flavor = FLAVOR::LATEX;
 		}
 	}
 	dumpPreamble(os, flavor);
@@ -811,10 +811,10 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 }
 
 
-void PreviewLoader::Impl::dumpPreamble(otexstream & os, OutputParams::FLAVOR flavor) const
+void PreviewLoader::Impl::dumpPreamble(otexstream & os, FLAVOR flavor) const
 {
 	// Dump the preamble only.
-	LYXERR(Debug::LATEX, "dumpPreamble, flavor == " << flavor);
+	LYXERR(Debug::LATEX, "dumpPreamble, flavor == " << static_cast<int>(flavor));
 	OutputParams runparams(&buffer_.params().encoding());
 	runparams.flavor = flavor;
 	runparams.nice = true;

@@ -42,7 +42,6 @@
 #include "LyX.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
-#include "OutputParams.h"
 #include "xml.h"
 #include "output_xhtml.h"
 #include "Paragraph.h"

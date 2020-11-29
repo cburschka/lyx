@@ -141,7 +141,7 @@ public:
 	/// or an empty string on error.
 	std::string prepareHTMLFile(OutputParams const & runparams) const;
 	///
-	OutputParams::CtObject CtObject(OutputParams const &) const override { return OutputParams::CT_OBJECT; }
+	CtObject getCtObject(OutputParams const &) const override;
 
 private:
 	///

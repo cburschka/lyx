@@ -26,7 +26,6 @@
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "LyX.h"
-#include "OutputParams.h"
 #include "xml.h"
 #include "texstream.h"
 #include "TocBackend.h"

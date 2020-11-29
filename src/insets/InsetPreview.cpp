@@ -17,7 +17,6 @@
 #include "Cursor.h"
 #include "Dimension.h"
 #include "MetricsInfo.h"
-#include "OutputParams.h"
 #include "RenderPreview.h"
 #include "texstream.h"
 

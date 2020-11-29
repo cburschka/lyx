@@ -28,7 +28,6 @@
 #include "Language.h"
 #include "Lexer.h"
 #include "output_xhtml.h"
-#include "OutputParams.h"
 #include "Paragraph.h"
 #include "ParagraphList.h"
 #include "ParIterator.h"

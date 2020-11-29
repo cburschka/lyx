@@ -21,7 +21,6 @@
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
-#include "OutputParams.h"
 #include "RenderPreview.h"
 #include "texstream.h"
 

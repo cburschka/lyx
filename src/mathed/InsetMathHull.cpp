@@ -1091,9 +1091,9 @@ void InsetMathHull::validate(LaTeXFeatures & features) const
 }
 
 
-OutputParams::CtObject InsetMathHull::CtObject(OutputParams const & runparams) const
+CtObject InsetMathHull::getCtObject(OutputParams const & runparams) const
 {
-	OutputParams::CtObject res = OutputParams::CT_NORMAL;
+	CtObject res = CtObject::Normal;
 	switch(type_) {
 	case hullNone:
 	case hullSimple:
@@ -1112,9 +1112,9 @@ OutputParams::CtObject InsetMathHull::CtObject(OutputParams const & runparams) c
 	case hullMultline: {
 		if (runparams.inulemcmd
 		    && (!runparams.local_font || runparams.local_font->fontInfo().strikeout() != FONT_ON))
-			res = OutputParams::CT_UDISPLAYOBJECT;
+			res = CtObject::UDisplayObject;
 		else
-			res = OutputParams::CT_DISPLAYOBJECT;
+			res = CtObject::DisplayObject;
 		break;
 		}
 	}

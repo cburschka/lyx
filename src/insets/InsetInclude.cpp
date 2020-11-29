@@ -32,7 +32,6 @@
 #include "MetricsInfo.h"
 #include "output_plaintext.h"
 #include "output_xhtml.h"
-#include "OutputParams.h"
 #include "texstream.h"
 #include "TextClass.h"
 #include "TocBackend.h"
@@ -1291,7 +1290,7 @@ docstring latexString(InsetInclude const & inset)
 	// We don't need to set runparams.encoding since this will be done
 	// by latex() anyway.
 	OutputParams runparams(nullptr);
-	runparams.flavor = OutputParams::LATEX;
+	runparams.flavor = FLAVOR::LATEX;
 	runparams.for_preview = true;
 	inset.latex(os, runparams);
 

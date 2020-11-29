@@ -24,6 +24,7 @@
 #ifndef INSET_TABULAR_H
 #define INSET_TABULAR_H
 
+#include "Changes.h"
 #include "InsetText.h"
 
 #include "support/Length.h"

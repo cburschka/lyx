@@ -22,7 +22,6 @@
 #include "MathData.h"
 #include "MathFactory.h"
 #include "MathSupport.h"
-#include "OutputParams.h"
 #include "ParIterator.h"
 #include "xml.h"
 

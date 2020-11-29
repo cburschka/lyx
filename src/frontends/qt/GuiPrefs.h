@@ -16,6 +16,7 @@
 
 #include "GuiDialog.h"
 
+#include "ColorCode.h"
 #include "Converter.h"
 #include "Format.h"
 #include "KeyMap.h"

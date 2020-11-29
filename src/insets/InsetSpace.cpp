@@ -24,7 +24,6 @@
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
-#include "OutputParams.h"
 #include "texstream.h"
 #include "xml.h"
 

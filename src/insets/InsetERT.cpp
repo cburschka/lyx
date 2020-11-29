@@ -18,7 +18,6 @@
 #include "FuncStatus.h"
 #include "Language.h"
 #include "Lexer.h"
-#include "OutputParams.h"
 #include "xml.h"
 #include "ParagraphParameters.h"
 #include "Paragraph.h"

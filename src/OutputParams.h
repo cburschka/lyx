@@ -28,20 +28,30 @@ class Font;
 class Language;
 class InsetArgument;
 
+
+enum class FLAVOR : int {
+	DVILUATEX,
+	LATEX,
+	LUATEX,
+	PDFLATEX,
+	XETEX,
+	DOCBOOK5,
+	HTML,
+	TEXT,
+	LYX
+};
+
+enum class CtObject : int {
+	Normal,
+	Object,
+	DisplayObject,
+	UDisplayObject,
+	OmitObject
+};
+
+
 class OutputParams {
 public:
-	enum FLAVOR {
-		DVILUATEX,
-		LATEX,
-		LUATEX,
-		PDFLATEX,
-		XETEX,
-		DOCBOOK5,
-		HTML,
-		TEXT,
-		LYX
-	};
-
 	enum MathFlavor {
 		NotApplicable,
 		MathAsMathML,
@@ -62,21 +72,13 @@ public:
 		SUBFLOAT
 	};
 
-	enum CtObject {
-		CT_NORMAL,
-		CT_OBJECT,
-		CT_DISPLAYOBJECT,
-		CT_UDISPLAYOBJECT,
-		CT_OMITOBJECT
-	};
-
 	OutputParams(Encoding const *);
 	~OutputParams();
 
 	/** The file that we export depends occasionally on what is to
 	    compile the file.
 	*/
-	FLAVOR flavor = LATEX;
+	FLAVOR flavor = FLAVOR::LATEX;
 	/// is it some flavor of LaTeX?
 	bool isLaTeX() const;
 	/// does this flavour support full unicode?
@@ -307,7 +309,7 @@ public:
 	/** What kind of change tracking object is this?
 	 * Relevant for strikeout method in output
 	 */
-	mutable CtObject ctObject = CT_NORMAL;
+	mutable CtObject ctObject = CtObject::Normal;
 
 	/** allow output of only part of the top-level paragraphs
 	 *  par_begin: beginning paragraph

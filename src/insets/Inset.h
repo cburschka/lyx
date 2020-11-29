@@ -55,7 +55,6 @@ class LaTeXFeatures;
 class Lexer;
 class MathAtom;
 class MetricsInfo;
-class OutputParams;
 class PainterInfo;
 class ParIterator;
 class Text;
@@ -470,7 +469,7 @@ public:
 	/// does this inset try to use all available space (like \\hfill does)?
 	virtual bool isHfill() const { return false; }
 
-	virtual OutputParams::CtObject CtObject(OutputParams const &) const { return OutputParams::CT_NORMAL; }
+	virtual CtObject getCtObject(OutputParams const &) const;
 
 	enum RowFlags {
 		Inline = 0,

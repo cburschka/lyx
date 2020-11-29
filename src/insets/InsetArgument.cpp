@@ -22,7 +22,6 @@
 #include "Language.h"
 #include "Layout.h"
 #include "Lexer.h"
-#include "OutputParams.h"
 #include "ParIterator.h"
 #include "TexRow.h"
 #include "texstream.h"

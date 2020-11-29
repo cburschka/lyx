@@ -23,7 +23,6 @@
 #include "FuncStatus.h"
 #include "Lexer.h"
 #include "LyX.h"
-#include "OutputParams.h"
 #include "output_docbook.h"
 #include "output_xhtml.h"
 #include "TextClass.h"

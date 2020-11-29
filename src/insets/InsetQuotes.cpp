@@ -27,7 +27,6 @@
 #include "Lexer.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
-#include "OutputParams.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
 #include "texstream.h"
@@ -913,8 +912,8 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 		// LuaTeX does not respect {} as ligature breaker by design,
 		// see https://tex.stackexchange.com/q/349725/19291
 		docstring const nolig =
-				(runparams.flavor == OutputParams::LUATEX
-				 || runparams.flavor == OutputParams::DVILUATEX) ?
+				(runparams.flavor == FLAVOR::LUATEX
+				 || runparams.flavor == FLAVOR::DVILUATEX) ?
 					from_ascii("\\/") : from_ascii("{}");
 		// !` ?` => !{}` ?{}`
 		if (prefixIs(qstr, from_ascii("`"))

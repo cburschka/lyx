@@ -72,7 +72,6 @@
 #include "BufferParams.h"
 #include "Encoding.h"
 #include "LyX.h" // use_gui
-#include "OutputParams.h"
 
 #include <iomanip>
 

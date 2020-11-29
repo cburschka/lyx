@@ -51,7 +51,6 @@
 #include "LyX.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
-#include "OutputParams.h"
 #include "TexRow.h"
 #include "Text.h"
 

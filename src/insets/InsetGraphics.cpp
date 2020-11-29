@@ -65,7 +65,6 @@ TODO
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "Mover.h"
-#include "OutputParams.h"
 #include "output_docbook.h"
 #include "output_xhtml.h"
 #include "xml.h"
@@ -112,9 +111,9 @@ namespace {
 string findTargetFormat(string const & format, OutputParams const & runparams)
 {
 	// Are we latexing to DVI or PDF?
-	if (runparams.flavor == OutputParams::PDFLATEX
-	    || runparams.flavor == OutputParams::XETEX
-	    || runparams.flavor == OutputParams::LUATEX) {
+	if (runparams.flavor == FLAVOR::PDFLATEX
+	    || runparams.flavor == FLAVOR::XETEX
+	    || runparams.flavor == FLAVOR::LUATEX) {
 		LYXERR(Debug::GRAPHICS, "findTargetFormat: PDF mode");
 		Format const * const f = theFormats().getFormat(format);
 		// Convert vector graphics to pdf
@@ -128,7 +127,7 @@ string findTargetFormat(string const & format, OutputParams const & runparams)
 	}
 
     // for HTML and DocBook, we leave the known formats and otherwise convert to png
-    if (runparams.flavor == OutputParams::HTML || runparams.flavor == OutputParams::DOCBOOK5) {
+    if (runparams.flavor == FLAVOR::HTML || runparams.flavor == FLAVOR::DOCBOOK5) {
 		Format const * const f = theFormats().getFormat(format);
 		// Convert vector graphics to svg
 		if (f && f->vectorFormat() && theConverters().isReachable(format, "svg"))
@@ -697,7 +696,7 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 		}
 		// only show DVI-specific warning when export format is plain latex
 		if (!isValidDVIFileName(output_file)
-			&& runparams.flavor == OutputParams::LATEX) {
+			&& runparams.flavor == FLAVOR::LATEX) {
 				frontend::Alert::warning(_("Problematic filename for DVI"),
 				         _("The following filename can cause troubles "
 					       "when running the exported file through LaTeX "
@@ -845,8 +844,8 @@ void InsetGraphics::latex(otexstream & os,
 	string after;
 
 	// Write the options if there are any.
-	bool const ps = runparams.flavor == OutputParams::LATEX
-		|| runparams.flavor == OutputParams::DVILUATEX;
+	bool const ps = runparams.flavor == FLAVOR::LATEX
+		|| runparams.flavor == FLAVOR::DVILUATEX;
 	string const opts = createLatexOptions(ps);
 	LYXERR(Debug::GRAPHICS, "\tOpts = " << opts);
 
@@ -1038,6 +1037,12 @@ string InsetGraphics::prepareHTMLFile(OutputParams const & runparams) const
 		return string();
 	runparams.exportdata->addExternalFile("xhtml", to_file, output_to_file);
 	return output_to_file;
+}
+
+
+CtObject InsetGraphics::getCtObject(OutputParams const &) const
+{
+	return CtObject::Object;
 }
 
 

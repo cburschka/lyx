@@ -15,6 +15,7 @@
 #include "Author.h"
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "OutputParams.h"
 
 #include "frontends/alert.h"
 

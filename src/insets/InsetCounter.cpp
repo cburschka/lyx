@@ -15,7 +15,6 @@
 #include "BufferParams.h"
 #include "Counters.h"
 #include "LaTeXFeatures.h"
-#include "OutputParams.h"
 #include "output_xhtml.h"
 #include "xml.h"
 #include "texstream.h"

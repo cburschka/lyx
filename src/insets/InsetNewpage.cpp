@@ -18,7 +18,6 @@
 #include "FuncStatus.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
-#include "OutputParams.h"
 #include "xml.h"
 #include "texstream.h"
 #include "Text.h"

@@ -29,7 +29,6 @@
 
 #include "mathed/MathData.h"
 
-#include "insets/Inset.h"
 #include "insets/InsetText.h"
 
 #include "support/debug.h"

@@ -905,7 +905,7 @@ static docstring buffer_to_latex(Buffer & buffer)
 	odocstringstream ods;
 	otexstream os(ods);
 	runparams.nice = true;
-	runparams.flavor = OutputParams::XETEX;
+	runparams.flavor = FLAVOR::XETEX;
 	runparams.linelen = 10000; //lyxrc.plaintext_linelen;
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
@@ -928,7 +928,7 @@ static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions co
 		// OutputParams runparams(&buffer.params().encoding());
 		OutputParams runparams(encodings.fromLyXName("utf8"));
 		runparams.nice = true;
-		runparams.flavor = OutputParams::XETEX;
+		runparams.flavor = FLAVOR::XETEX;
 		runparams.linelen = 10000; //lyxrc.plaintext_linelen;
 		runparams.dryrun = true;
 		runparams.for_search = true;
@@ -3119,7 +3119,7 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 		// OutputParams runparams(&cur.buffer()->params().encoding());
 		OutputParams runparams(encodings.fromLyXName("utf8"));
 		runparams.nice = true;
-		runparams.flavor = OutputParams::XETEX;
+		runparams.flavor = FLAVOR::XETEX;
 		runparams.linelen = 10000; //lyxrc.plaintext_linelen;
 		// No side effect of file copying and image conversion
 		runparams.dryrun = true;
@@ -3165,7 +3165,7 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 	//OutputParams runparams(&buf.params().encoding());
 	OutputParams runparams(encodings.fromLyXName("utf8"));
 	runparams.nice = false;
-	runparams.flavor = OutputParams::XETEX;
+	runparams.flavor = FLAVOR::XETEX;
 	runparams.linelen = 8000; //lyxrc.plaintext_linelen;
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
@@ -3641,7 +3641,7 @@ static int findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, Ma
 		// OutputParams runparams(&repl_buffer.params().encoding());
 		OutputParams runparams(encodings.fromLyXName("utf8"));
 		runparams.nice = false;
-		runparams.flavor = OutputParams::XETEX;
+		runparams.flavor = FLAVOR::XETEX;
 		runparams.linelen = 8000; //lyxrc.plaintext_linelen;
 		runparams.dryrun = true;
 		TeXOnePar(repl_buffer, repl_buffer.text(), 0, os, runparams);

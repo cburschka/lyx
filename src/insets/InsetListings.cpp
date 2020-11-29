@@ -30,7 +30,6 @@
 #include "output_latex.h"
 #include "output_docbook.h"
 #include "output_xhtml.h"
-#include "OutputParams.h"
 #include "TextClass.h"
 #include "TexRow.h"
 #include "texstream.h"

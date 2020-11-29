@@ -28,7 +28,6 @@
 #include "LaTeXFeatures.h"
 #include "output_latex.h"
 #include "xml.h"
-#include "OutputParams.h"
 #include "PDFOptions.h"
 #include "texstream.h"
 #include "TextClass.h"
@@ -907,7 +906,7 @@ void InsetBibtex::validate(LaTeXFeatures & features) const
 	// FIXME XHTML
 	// It'd be better to be able to get this from an InsetLayout, but at present
 	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
-	if (features.runparams().flavor == OutputParams::HTML)
+	if (features.runparams().flavor == FLAVOR::HTML)
 		features.addCSSSnippet("div.bibtexentry { margin-left: 2em; text-indent: -2em; }\n"
 			"span.bibtexlabel:before{ content: \"[\"; }\n"
 			"span.bibtexlabel:after{ content: \"] \"; }");

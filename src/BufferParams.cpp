@@ -1521,8 +1521,8 @@ void BufferParams::validate(LaTeXFeatures & features) const
 				  LaTeXFeatures::isAvailable("xcolor");
 
 		switch (features.runparams().flavor) {
-		case OutputParams::LATEX:
-		case OutputParams::DVILUATEX:
+		case FLAVOR::LATEX:
+		case FLAVOR::DVILUATEX:
 			if (xcolorulem) {
 				features.require("ct-xcolor-ulem");
 				features.require("ulem");
@@ -1531,9 +1531,9 @@ void BufferParams::validate(LaTeXFeatures & features) const
 				features.require("ct-none");
 			}
 			break;
-		case OutputParams::LUATEX:
-		case OutputParams::PDFLATEX:
-		case OutputParams::XETEX:
+		case FLAVOR::LUATEX:
+		case FLAVOR::PDFLATEX:
+		case FLAVOR::XETEX:
 			if (xcolorulem) {
 				features.require("ct-xcolor-ulem");
 				features.require("ulem");
@@ -2066,9 +2066,9 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	if (output_sync) {
 		if (!output_sync_macro.empty())
 			os << from_utf8(output_sync_macro) +"\n";
-		else if (features.runparams().flavor == OutputParams::LATEX)
+		else if (features.runparams().flavor == FLAVOR::LATEX)
 			os << "\\usepackage[active]{srcltx}\n";
-		else if (features.runparams().flavor == OutputParams::PDFLATEX)
+		else if (features.runparams().flavor == FLAVOR::PDFLATEX)
 			os << "\\synctex=-1\n";
 	}
 
@@ -2345,7 +2345,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	    && !features.isProvided("xunicode")) {
 		// The `xunicode` package officially only supports XeTeX,
 		//  but also works with LuaTeX. We work around its XeTeX test.
-		if (features.runparams().flavor != OutputParams::XETEX) {
+		if (features.runparams().flavor != FLAVOR::XETEX) {
 			os << "% Pretend to xunicode that we are XeTeX\n"
 			   << "\\def\\XeTeXpicfile{}\n";
 		}
@@ -2712,7 +2712,7 @@ vector<string> BufferParams::backends() const
 }
 
 
-OutputParams::FLAVOR BufferParams::getOutputFlavor(string const & format) const
+FLAVOR BufferParams::getOutputFlavor(string const & format) const
 {
 	string const dformat = (format.empty() || format == "default") ?
 		getDefaultOutputFormat() : format;
@@ -2722,26 +2722,26 @@ OutputParams::FLAVOR BufferParams::getOutputFlavor(string const & format) const
 	if (it != default_flavors_.end())
 		return it->second;
 
-	OutputParams::FLAVOR result = OutputParams::LATEX;
+	FLAVOR result = FLAVOR::LATEX;
 
 	// FIXME It'd be better not to hardcode this, but to do
 	//       something with formats.
 	if (dformat == "xhtml")
-		result = OutputParams::HTML;
+		result = FLAVOR::HTML;
 	else if (dformat == "docbook5")
-		result = OutputParams::DOCBOOK5;
+		result = FLAVOR::DOCBOOK5;
 	else if (dformat == "text")
-		result = OutputParams::TEXT;
+		result = FLAVOR::TEXT;
 	else if (dformat == "lyx")
-		result = OutputParams::LYX;
+		result = FLAVOR::LYX;
 	else if (dformat == "pdflatex")
-		result = OutputParams::PDFLATEX;
+		result = FLAVOR::PDFLATEX;
 	else if (dformat == "xetex")
-		result = OutputParams::XETEX;
+		result = FLAVOR::XETEX;
 	else if (dformat == "luatex")
-		result = OutputParams::LUATEX;
+		result = FLAVOR::LUATEX;
 	else if (dformat == "dviluatex")
-		result = OutputParams::DVILUATEX;
+		result = FLAVOR::DVILUATEX;
 	else {
 		// Try to determine flavor of default output format
 		vector<string> backs = backends();
@@ -3255,8 +3255,8 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 		// Create list of inputenc options:
 		set<string> encoding_set;
 		// luainputenc fails with more than one encoding
-		if (features.runparams().flavor != OutputParams::LUATEX
-			&& features.runparams().flavor != OutputParams::DVILUATEX)
+		if (features.runparams().flavor != FLAVOR::LUATEX
+			&& features.runparams().flavor != FLAVOR::DVILUATEX)
 			// list all input encodings used in the document
 			encoding_set = features.getEncodingSet(doc_encoding);
 
@@ -3280,8 +3280,8 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 					os << ',';
 				os << from_ascii(doc_encoding);
 			}
-		   	if (features.runparams().flavor == OutputParams::LUATEX
-			    || features.runparams().flavor == OutputParams::DVILUATEX)
+		   	if (features.runparams().flavor == FLAVOR::LUATEX
+			    || features.runparams().flavor == FLAVOR::DVILUATEX)
 				os << "]{luainputenc}\n";
 			else
 				os << "]{inputenc}\n";
@@ -3304,8 +3304,8 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 			    || features.isProvided("inputenc"))
 				break;
 			os << "\\usepackage[" << from_ascii(encoding().latexName());
-		   	if (features.runparams().flavor == OutputParams::LUATEX
-			    || features.runparams().flavor == OutputParams::DVILUATEX)
+		   	if (features.runparams().flavor == FLAVOR::LUATEX
+			    || features.runparams().flavor == FLAVOR::DVILUATEX)
 				os << "]{luainputenc}\n";
 			else
 				os << "]{inputenc}\n";
@@ -3366,7 +3366,7 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 		bool const babelfonts = features.useBabel()
 				&& features.isAvailable("babel-2017/11/03");
 		string const texmapping =
-			(features.runparams().flavor == OutputParams::XETEX) ?
+			(features.runparams().flavor == FLAVOR::XETEX) ?
 			"Mapping=tex-text" : "Ligatures=TeX";
 		if (fontsRoman() != "default") {
 			if (babelfonts)

@@ -26,7 +26,6 @@
 #include "InsetLayout.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
-#include "OutputParams.h"
 #include "TextClass.h"
 #include "TocBackend.h"
 

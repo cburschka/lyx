@@ -18,7 +18,6 @@
 #include "Citation.h"
 #include "DocumentClassPtr.h"
 #include "LayoutModuleList.h"
-#include "OutputParams.h"
 #include "paper.h"
 
 #include "insets/InsetQuotes.h"
@@ -49,6 +48,8 @@ class Lexer;
 class PDFOptions;
 class Spacing;
 class VSpace;
+
+enum class FLAVOR : int;
 
 /** Buffer parameters.
  *  This class contains all the parameters for this buffer's use. Some
@@ -193,8 +194,7 @@ public:
 	/// return the default output format of the current backend
 	std::string getDefaultOutputFormat() const;
 	/// return the output flavor of \p format or the default
-	OutputParams::FLAVOR getOutputFlavor(
-		  std::string const & format = std::string()) const;
+	FLAVOR getOutputFlavor(std::string const & format = std::string()) const;
 	///
 	bool isExportable(std::string const & format, bool need_viewable) const;
 	///
@@ -613,7 +613,7 @@ private:
 	///
 	void readIncludeonly(Lexer &);
 	/// A cache for the default flavors
-	typedef std::map<std::string, OutputParams::FLAVOR> DefaultFlavorCache;
+	typedef std::map<std::string, FLAVOR> DefaultFlavorCache;
 	///
 	mutable DefaultFlavorCache default_flavors_;
 	/// the cite engine

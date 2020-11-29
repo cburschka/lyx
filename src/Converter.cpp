@@ -23,6 +23,7 @@
 #include "LaTeX.h"
 #include "LyXRC.h"
 #include "Mover.h"
+#include "OutputParams.h"
 #include "ParagraphList.h"
 #include "Session.h"
 
@@ -258,28 +259,28 @@ void Converters::updateLast(Formats const & formats)
 }
 
 
-OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path,
+FLAVOR Converters::getFlavor(Graph::EdgePath const & path,
 					   Buffer const * buffer) const
 {
 	for (auto const & edge : path) {
 		Converter const & conv = converterlist_[edge];
 		if (conv.latex() || conv.need_aux()) {
 			if (conv.latex_flavor() == "latex")
-				return OutputParams::LATEX;
+				return FLAVOR::LATEX;
 			if (conv.latex_flavor() == "xelatex")
-				return OutputParams::XETEX;
+				return FLAVOR::XETEX;
 			if (conv.latex_flavor() == "lualatex")
-				return OutputParams::LUATEX;
+				return FLAVOR::LUATEX;
 			if (conv.latex_flavor() == "dvilualatex")
-				return OutputParams::DVILUATEX;
+				return FLAVOR::DVILUATEX;
 			if (conv.latex_flavor() == "pdflatex")
-				return OutputParams::PDFLATEX;
+				return FLAVOR::PDFLATEX;
 		}
 		if (conv.docbook())
-			return OutputParams::DOCBOOK5;
+			return FLAVOR::DOCBOOK5;
 	}
 	return buffer ? buffer->params().getOutputFlavor()
-		      : OutputParams::LATEX;
+		      : FLAVOR::LATEX;
 }
 
 
@@ -601,16 +602,16 @@ Converters::RetVal Converters::convert(Buffer const * buffer,
 				LASSERT(buffer, return FAILURE);
 				string command;
 				switch (runparams.flavor) {
-				case OutputParams::DVILUATEX:
+				case FLAVOR::DVILUATEX:
 					command = dvilualatex_command_;
 					break;
-				case OutputParams::LUATEX:
+				case FLAVOR::LUATEX:
 					command = lualatex_command_;
 					break;
-				case OutputParams::PDFLATEX:
+				case FLAVOR::PDFLATEX:
 					command = pdflatex_command_;
 					break;
-				case OutputParams::XETEX:
+				case FLAVOR::XETEX:
 					command = xelatex_command_;
 					break;
 				default:
@@ -832,7 +833,7 @@ bool Converters::scanLog(Buffer const & buffer, string const & /*command*/,
 			 FileName const & filename, ErrorList & errorList)
 {
 	OutputParams runparams(nullptr);
-	runparams.flavor = OutputParams::LATEX;
+	runparams.flavor = FLAVOR::LATEX;
 	LaTeX latex("", runparams, filename);
 	TeXErrors terr;
 	int const result = latex.scanLogFile(terr);

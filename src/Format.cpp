@@ -818,20 +818,20 @@ string const Formats::extensions(string const & name) const
 
 namespace {
 
-typedef Translator<OutputParams::FLAVOR, string> FlavorTranslator;
+typedef Translator<FLAVOR, string> FlavorTranslator;
 
 
 FlavorTranslator initFlavorTranslator()
 {
-	FlavorTranslator f(OutputParams::LATEX, "latex");
-	f.addPair(OutputParams::DVILUATEX, "dviluatex");
-	f.addPair(OutputParams::LUATEX, "luatex");
-	f.addPair(OutputParams::PDFLATEX, "pdflatex");
-	f.addPair(OutputParams::XETEX, "xetex");
-	f.addPair(OutputParams::DOCBOOK5, "docbook-xml");
-	f.addPair(OutputParams::HTML, "xhtml");
-	f.addPair(OutputParams::TEXT, "text");
-	f.addPair(OutputParams::LYX, "lyx");
+	FlavorTranslator f(FLAVOR::LATEX, "latex");
+	f.addPair(FLAVOR::DVILUATEX, "dviluatex");
+	f.addPair(FLAVOR::LUATEX, "luatex");
+	f.addPair(FLAVOR::PDFLATEX, "pdflatex");
+	f.addPair(FLAVOR::XETEX, "xetex");
+	f.addPair(FLAVOR::DOCBOOK5, "docbook-xml");
+	f.addPair(FLAVOR::HTML, "xhtml");
+	f.addPair(FLAVOR::TEXT, "text");
+	f.addPair(FLAVOR::LYX, "lyx");
 	return f;
 }
 
@@ -845,14 +845,14 @@ FlavorTranslator const & flavorTranslator()
 } // namespace
 
 
-std::string flavor2format(OutputParams::FLAVOR flavor)
+std::string flavor2format(FLAVOR flavor)
 {
 	return flavorTranslator().find(flavor);
 }
 
 
 /* Not currently needed, but I'll leave the code in case it is.
-OutputParams::FLAVOR format2flavor(std::string fmt)
+FLAVOR format2flavor(std::string fmt)
 {
 	return flavorTranslator().find(fmt);
 } */

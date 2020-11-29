@@ -12,8 +12,6 @@
 #ifndef FORMAT_H
 #define FORMAT_H
 
-#include "OutputParams.h"
-
 #include "support/strfwd.h"
 #include "support/trivstring.h"
 
@@ -24,6 +22,8 @@ namespace lyx {
 namespace support { class FileName; }
 
 class Buffer;
+
+enum class FLAVOR : int;
 
 class Format {
 public:
@@ -219,9 +219,9 @@ private:
 };
 
 ///
-std::string flavor2format(OutputParams::FLAVOR flavor);
+std::string flavor2format(FLAVOR flavor);
 // Not currently used.
-// OutputParams::FLAVOR format2flavor(std::string fmt);
+// FLAVOR format2flavor(std::string fmt);
 
 /// The global instance.
 /// Implementation is in LyX.cpp.

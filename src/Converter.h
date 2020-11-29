@@ -13,7 +13,6 @@
 #define CONVERTER_H
 
 #include "Graph.h"
-#include "OutputParams.h"
 #include "support/trivstring.h"
 
 #include <vector>
@@ -29,6 +28,9 @@ class Buffer;
 class ErrorList;
 class Format;
 class Formats;
+class OutputParams;
+
+enum class FLAVOR : int;
 
 class ConversionException : public std::exception {
 public:
@@ -175,7 +177,7 @@ public:
 	///
 	Graph::EdgePath getPath(std::string const & from, std::string const & to);
 	///
-	OutputParams::FLAVOR getFlavor(Graph::EdgePath const & path,
+	FLAVOR getFlavor(Graph::EdgePath const & path,
 					   Buffer const * buffer = nullptr) const;
 	///
 	std::string getHyperrefDriver(Graph::EdgePath const & path) const;

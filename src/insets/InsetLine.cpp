@@ -22,7 +22,6 @@
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
-#include "OutputParams.h"
 #include "output_docbook.h"
 #include "output_xhtml.h"
 #include "texstream.h"

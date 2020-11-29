@@ -29,7 +29,6 @@
 #include "LyX.h" // use_gui
 #include "LyXRC.h"
 #include "MetricsInfo.h"
-#include "OutputParams.h"
 #include "output_latex.h"
 #include "output_xhtml.h"
 #include "texstream.h"
@@ -570,7 +569,7 @@ static docstring latexString(InsetExternal const & inset)
 	// We don't need to set runparams.encoding since it is not used by
 	// latex().
 	OutputParams runparams(0);
-	runparams.flavor = OutputParams::LATEX;
+	runparams.flavor = FLAVOR::LATEX;
 	inset.latex(os, runparams);
 	return ods.str();
 }
@@ -713,7 +712,7 @@ void InsetExternal::latex(otexstream & os, OutputParams const & runparams) const
 
 	// If the template has specified a PDFLaTeX output, then we try and
 	// use that.
-	if (runparams.flavor == OutputParams::PDFLATEX) {
+	if (runparams.flavor == FLAVOR::PDFLATEX) {
 		external::Template const * const et_ptr =
 			external::getTemplatePtr(params_);
 		if (!et_ptr)
@@ -816,25 +815,25 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 
 	string format;
 	switch (features.runparams().flavor) {
-	case OutputParams::LATEX:
-	case OutputParams::DVILUATEX:
+	case FLAVOR::LATEX:
+	case FLAVOR::DVILUATEX:
 		format = "LaTeX";
 		break;
-	case OutputParams::LUATEX:
-	case OutputParams::PDFLATEX:
-	case OutputParams::XETEX:
+	case FLAVOR::LUATEX:
+	case FLAVOR::PDFLATEX:
+	case FLAVOR::XETEX:
 		format = "PDFLaTeX";
 		break;
-	case OutputParams::DOCBOOK5:
+	case FLAVOR::DOCBOOK5:
 		format = "DocBook";
 		break;
-	case OutputParams::HTML:
+	case FLAVOR::HTML:
 		format = "html";
 		break;
-	case OutputParams::TEXT:
+	case FLAVOR::TEXT:
 		format = "text";
 		break;
-	case OutputParams::LYX:
+	case FLAVOR::LYX:
 		format = "lyx";
 		break;
 	}

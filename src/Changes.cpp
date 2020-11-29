@@ -429,7 +429,7 @@ int Changes::latexMarkChange(otexstream & os, BufferParams const & bparams,
 	int column = 0;
 
 	if (oldChange.type != Change::UNCHANGED) {
-		if (oldChange.type != Change::DELETED || runparams.ctObject != OutputParams::CT_OMITOBJECT) {
+		if (oldChange.type != Change::DELETED || runparams.ctObject != CtObject::OmitObject) {
 			// close \lyxadded or \lyxdeleted
 			os << '}';
 			column++;
@@ -446,13 +446,13 @@ int Changes::latexMarkChange(otexstream & os, BufferParams const & bparams,
 
 	docstring macro_beg;
 	if (change.type == Change::DELETED) {
-		if (runparams.ctObject == OutputParams::CT_OMITOBJECT)
+		if (runparams.ctObject == CtObject::OmitObject)
 			return 0;
-		else if (runparams.ctObject == OutputParams::CT_OBJECT)
+		else if (runparams.ctObject == CtObject::Object)
 			macro_beg = from_ascii("\\lyxobjdeleted");
-		else if (runparams.ctObject == OutputParams::CT_DISPLAYOBJECT)
+		else if (runparams.ctObject == CtObject::DisplayObject)
 			macro_beg = from_ascii("\\lyxdisplayobjdeleted");
-		else if (runparams.ctObject == OutputParams::CT_UDISPLAYOBJECT)
+		else if (runparams.ctObject == CtObject::UDisplayObject)
 			macro_beg = from_ascii("\\lyxudisplayobjdeleted");
 		else {
 			macro_beg = from_ascii("\\lyxdeleted");

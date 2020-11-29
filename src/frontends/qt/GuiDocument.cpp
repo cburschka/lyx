@@ -46,7 +46,6 @@
 #include "LayoutModuleList.h"
 #include "LyXRC.h"
 #include "ModuleList.h"
-#include "OutputParams.h"
 #include "PDFOptions.h"
 #include "qt_helpers.h"
 #include "Session.h"

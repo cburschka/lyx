@@ -31,7 +31,6 @@
 #include "Buffer.h"
 #include "Encoding.h"
 #include "Lexer.h"
-#include "OutputParams.h"
 
 #include "frontends/alert.h"
 

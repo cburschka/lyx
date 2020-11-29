@@ -20,7 +20,6 @@
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Layout.h"
-#include "OutputParams.h"
 #include "output_docbook.h"
 #include "ParIterator.h"
 #include "TextClass.h"

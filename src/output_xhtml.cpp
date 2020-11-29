@@ -19,7 +19,6 @@
 #include "Counters.h"
 #include "Font.h"
 #include "Layout.h"
-#include "OutputParams.h"
 #include "Paragraph.h"
 #include "ParagraphList.h"
 #include "ParagraphParameters.h"

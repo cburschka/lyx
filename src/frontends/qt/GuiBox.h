@@ -13,6 +13,7 @@
 #ifndef GUIBOX_H
 #define GUIBOX_H
 
+#include "ColorCode.h"
 #include "InsetParamsWidget.h"
 #include "ui_BoxUi.h"
 

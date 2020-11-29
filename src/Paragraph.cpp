@@ -1236,7 +1236,7 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 		    && !runparams.inIPA
 			// TODO #10961: && not in inset Flex Code
 			// TODO #10961: && not in layout LyXCode
-		    && (!bparams.useNonTeXFonts || runparams.flavor != OutputParams::XETEX)) {
+		    && (!bparams.useNonTeXFonts || runparams.flavor != FLAVOR::XETEX)) {
 			if (c == 0x2013) {
 				// en-dash
 				os << "--";
@@ -1390,7 +1390,7 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 			features.addPreambleSnippet(os.release(), true);
 	}
 
-	if (features.runparams().flavor == OutputParams::HTML
+	if (features.runparams().flavor == FLAVOR::HTML
 	    && layout_->htmltitle()) {
 		features.setHTMLTitle(owner_->asString(AS_STR_INSETS | AS_STR_SKIPDELETE));
 	}
@@ -1485,7 +1485,7 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 		} else if (!bp.use_dash_ligatures
 			   && (c == 0x2013 || c == 0x2014)
 			   && bp.useNonTeXFonts
-			   && features.runparams().flavor == OutputParams::XETEX)
+			   && features.runparams().flavor == FLAVOR::XETEX)
 			// XeTeX's dash behaviour is determined via a global setting
 			features.require("xetexdashbreakstate");
 		BufferEncodings::validate(c, features);
@@ -2510,7 +2510,7 @@ void Paragraph::latex(BufferParams const & bparams,
 		if (c == META_INSET
 		    && i >= start_pos && (end_pos == -1 || i < end_pos)) {
 			if (isDeleted(i))
-				runparams.ctObject = getInset(i)->CtObject(runparams);
+				runparams.ctObject = getInset(i)->getCtObject(runparams);
 	
 			InsetMath const * im = getInset(i)->asInsetMath();
 			if (im && im->asHullInset()
@@ -2835,14 +2835,14 @@ void Paragraph::latex(BufferParams const & bparams,
 				if (incremented)
 					--parInline;
 
-				if (runparams.ctObject == OutputParams::CT_DISPLAYOBJECT
-				    || runparams.ctObject == OutputParams::CT_UDISPLAYOBJECT) {
+				if (runparams.ctObject == CtObject::DisplayObject
+				    || runparams.ctObject == CtObject::UDisplayObject) {
 					// Close \lyx*deleted and force its
 					// reopening (if needed)
 					os << '}';
 					column++;
 					runningChange = Change(Change::UNCHANGED);
-					runparams.ctObject = OutputParams::CT_NORMAL;
+					runparams.ctObject = CtObject::Normal;
 				}
 			}
 		} else if (i >= start_pos && (end_pos == -1 || i < end_pos)) {

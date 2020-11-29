@@ -30,7 +30,6 @@
 #include "xml.h"
 #include "output_latex.h"
 #include "output_xhtml.h"
-#include "OutputParams.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
 #include "TexRow.h"

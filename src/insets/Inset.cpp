@@ -594,6 +594,12 @@ bool Inset::undefined() const
 }
 
 
+CtObject Inset::getCtObject(OutputParams const &) const
+{
+	return CtObject::Normal;
+}
+
+
 void Inset::dump() const
 {
 	write(lyxerr);

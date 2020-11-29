@@ -15,6 +15,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "Changes.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
 #include "Font.h"

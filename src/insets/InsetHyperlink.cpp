@@ -17,7 +17,6 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
-#include "OutputParams.h"
 #include "output_docbook.h"
 #include "output_xhtml.h"
 #include "xml.h"

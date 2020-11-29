@@ -88,7 +88,7 @@ public:
 	///
 	bool outerDisplay() const;
 	///
-	OutputParams::CtObject CtObject(OutputParams const &) const override;
+	CtObject getCtObject(OutputParams const &) const override;
 	///
 	void validate(LaTeXFeatures & features) const override;
 	/// identifies HullInset

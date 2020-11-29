@@ -21,7 +21,6 @@
 #include "FuncRequest.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
-#include "OutputParams.h"
 #include "output_xhtml.h"
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
