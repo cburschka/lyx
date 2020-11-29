@@ -673,6 +673,7 @@ void InsetText::docbook(XMLStream & xs, OutputParams const & rp, XHTMLOptions op
 	runparams.docbook_prepended_arguments = std::move(prependedArguments);
 
 	// - Deal with the first item.
+	// TODO: in things like SciPoster, this should also check if the item tag is allowed. Hard to formalise for now...
 	if (writeOuterTag) {
 		if (!il.docbookitemwrappertag().empty() && il.docbookitemwrappertag() != "NONE" && il.docbookitemwrappertag() != "IGNORE")
 			xml::openTag(xs, il.docbookitemwrappertag(), il.docbookitemwrapperattr(), il.docbookitemwrappertagtype());

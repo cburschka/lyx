@@ -10,18 +10,19 @@
 Format 85
 
 InsetLayout Flex:SectionBox
-	LyXType               custom
-	LabelString           "Section Box"
-	LatexType             environment
-	LatexName             sectionbox
-	Decoration            classic
-	MultiPar              true
-	CustomPars            true
-	Requires	      sectionbox
+	LyXType            custom
+	LabelString        "Section Box"
+	LatexType          environment
+	LatexName          sectionbox
+	Decoration         classic
+	MultiPar           true
+	CustomPars         true
+	Requires	       sectionbox
 	Argument 1
 		LabelString    "Width"
 		MenuString     "Section Box Width|S"
 		Tooltip        "Width of the section Box"
+		DocBookTag     IGNORE
 	EndArgument
 	Argument 2
 		LabelString    "Heading"
@@ -34,19 +35,24 @@ InsetLayout Flex:SectionBox
 		    Size       Large
 		    Series     Bold
 		EndFont
+		DocBookTag     title
+		DocBookTagType paragraph
+		DocBookArgumentBeforeMainTag  true
 	EndArgument
-	ResetsFont             true
+	ResetsFont         true
+	DocBookTag         section
+	DocBookItemTag     para
 End
 
 InsetLayout Flex:SubsectionBox
-	CopyStyle             Flex:SectionBox
-	LabelString           "Subsection Box"
-	LatexName             subsectionbox
+	CopyStyle          Flex:SectionBox
+	LabelString        "Subsection Box"
+	LatexName          subsectionbox
 End
 
 InsetLayout Flex:SubsubsectionBox
-	CopyStyle             Flex:SectionBox
-	LabelString           "Subsubsection Box"
-	LatexName             subsubsectionbox
+	CopyStyle          Flex:SectionBox
+	LabelString        "Subsubsection Box"
+	LatexName          subsubsectionbox
 End
 

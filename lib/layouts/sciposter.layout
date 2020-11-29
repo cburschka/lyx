@@ -181,3 +181,11 @@ InsetLayout Flex:Most_Giant_Snippet
 	LabelString           "Most Giant"
 	LeftDelim             {\VERYHuge{}
 End
+
+# InsetLayout Flex:Multiple_Columns
+#   DocBookWrapperTag NONE
+#   DocBookTag        NONE
+#   DocBookItemWrapperTag  NONE
+#   DocBookItemTag    NONE
+#   DocBookNotInPara  true
+# End

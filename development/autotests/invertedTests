@@ -427,8 +427,9 @@ export/mathmacros/testcases_speed_docbook5
 export/mathmacros/testcases_environments_docbook5
 export/mathmacros/masterOfSpace_docbook5
 export/doc/sl/Tutorial_docbook5
-# - Sidebars can be nested in LyX (mostly with shapepar), but not in DocBook.
-export/doc(|/de|/es|/fr|/ja)/Additional_docbook5
+# - Sidebars can be nested in LyX (mostly with shapepar), but not in DocBook. Also, multicol issues (like columns in
+#   columns).
+export/doc(|/de|/es|/fr|/ja|/ru)/Additional_docbook5
 # - Many templates are too complex for automatic conversion to work reliably.
 #   The resulting documents should still be easy to fully convert into DocBook.
 #   - AASTeX.
@@ -529,6 +530,9 @@ export/templates/Articles/American_Psychological_Association_%28APA%29,_v._7_doc
 # - Empty figure. Dedications: IEEE wants them in the preamble, DocBook outside. How to implement biographies?
 #   They should have their own section...
 export/templates/Articles/IEEE_Transactions(.*)_docbook5
+# - Bibliography in the middle of the document (potentially fixable, but complicated, because some documents have
+#   several bibliographies, like books with one bibliography per chapter), subsections.
+export/export/docbook/SciPoster_docbook5
 
 Sublabel: docbook poster
 # Posters cannot be properly exported, the LyX documents are too far from

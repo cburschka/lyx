@@ -22,16 +22,25 @@ InsetLayout Flex:Multiple_Columns
     Mandatory		1
     DefaultArg		2
     PassThru		1
+	DocBookTag      IGNORE
   EndArgument
   Argument 2
     LabelString		"Preface"
     Tooltip			"An optional preface"
+	DocBookTag      para
+	DocBookAttr     role='preface'
+	DocBookArgumentBeforeMainTag  true
   EndArgument
   Argument 3
     LabelString		"Space Before Page Break"
     Tooltip			"Free space that needs to be on the page to start the multiple columns on this page"
     Requires		2
+	DocBookTag      IGNORE
   EndArgument
-	ResetsFont true
+  ResetsFont        true
+  DocBookWrapperTag NONE
+  DocBookTag        NONE
+  DocBookNotInPara  true
+  DocBookItemTag    para
 End
 
