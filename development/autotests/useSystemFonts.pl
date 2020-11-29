@@ -203,6 +203,10 @@ sub interpretedCopy($$$$)
 	    my $ext = $isrel[1];
 	    if ($rStatus->{"filetype"} eq "prefix_only") {
 	      $f = getNewNameOf("$sourcedir/$f", $rFiles);
+	      if ($format eq "docbook5") {
+		$rF->[1] = join(',', @{$filelist});
+		$l =  join('', @$rF);
+	      }
 	    }
 	    else {
 	      my ($newname, $res1);

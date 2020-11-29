@@ -335,7 +335,7 @@ sub checkForLatexCommand($)
 	if ($param eq "bibtex") {
 	  my $rElem1 = newMatch("ext" => ".bib",
 				 "filetype" => "prefix_for_list",
-				 "search" => qr/^bibfiles\s+\"(.+)\"/,
+				 "search" => qr/^bibfiles\s+\"([^\"]+)\"/,
 				 "result" => ["bibfiles \"", "1", "\""]);
 	  my $rElem2 = newMatch("ext" => ".bst",
 				 "filetype" => "prefix_for_list",
