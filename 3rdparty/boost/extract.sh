@@ -5,7 +5,7 @@
 #
 # http://www.boost.org/doc/libs/1_47_0/tools/bcp/doc/html/index.html
 #
-# Does also work with an outdated bcp version 
+# Does also work with an outdated bcp version
 #
 # Usage: extract.sh <path to new boost version>
 #
@@ -23,7 +23,6 @@ bcp --boost=$1 \
 	boost/any.hpp \
 	boost/assert.hpp \
 	boost/crc.hpp \
-	boost/cstdint.hpp \
 	boost/lexical_cast.hpp \
 	boost/signals2.hpp \
 	boost/signals2/connection.hpp \
