@@ -600,6 +600,7 @@ InsetLayout "Flex:URL"
 	EndFont
 	HTMLIsBlock           false
 	DocBookTag            link
+	DocBookTagType        inline
 End
 
 InsetLayout Argument
