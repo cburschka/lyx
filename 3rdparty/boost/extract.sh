@@ -38,7 +38,7 @@ find boost -name \*.hpp | xargs rm
 #find libs  -name \*.cpp | xargs rm
 
 cp -vR needed/boost .
-cp -vR needed/libs .
+#cp -vR needed/libs .
 
 rm -rf needed
 
