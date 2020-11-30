@@ -16,6 +16,7 @@
 #include "support/trivstring.h"
 
 #include <vector>
+#include <string>
 
 namespace lyx {
 
