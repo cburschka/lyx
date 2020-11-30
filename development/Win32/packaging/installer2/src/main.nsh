@@ -957,15 +957,6 @@ Section -UninstallInfoRegistry # Registry information in "SOFTWARE\Microsoft\Win
 SectionEnd
 
 Section -ConfigureScript # Runs the configure.py script
-  ${StrStr} $0 $LatexPath "\miktex\bin"
-  # R9 is used in $(TEXT_CONFIGURE_LYX)
-  ${If} $0 == "" # TexLive
-    StrCpy $R9 "TeXLive"
-  ${Else}
-    StrCpy $R9 "MiKTeX"
-  ${EndIf}
-  StrCpy $LaTeXInstalled $R9 # FIXME remove
-  DetailPrint $(TEXT_CONFIGURE_LYX) # Uses R9 to display the name of the installed latex distribution
 
   # Manipulate PATH environment of the running installer process, so that configure.py can find all the stuff needed
   ReadEnvStr $0 "PATH"
@@ -975,6 +966,17 @@ Section -ConfigureScript # Runs the configure.py script
   Call PrepareShellCTX
   SetShellVarContext current # Otherwise $APPDATA would return C:\ProgrammData instead of C:\Users\username\AppData\Roaming
   SetOutPath "$APPDATA\LyX${VERSION_MAJOR}.${VERSION_MINOR}" # Need to run configure from the user dir, because it creates .lst files and some folders.
+
+  ${StrStr} $0 $LatexPath "\miktex\bin"
+  # R9 is used in $(TEXT_CONFIGURE_LYX)
+  ${If} $0 == "" # TexLive
+    StrCpy $R9 "TeXLive"
+  ${Else}
+    StrCpy $R9 "MiKTeX"
+  ${EndIf}
+  StrCpy $LaTeXInstalled $R9 # FIXME remove
+  DetailPrint $(TEXT_CONFIGURE_LYX) # Uses R9 to display the name of the installed latex distribution
+  
   nsExec::ExecToLog '"$INSTDIR\Python\python.exe" "$INSTDIR\Resources\configure.py"'
   Pop $0 # Return value
 SectionEnd
