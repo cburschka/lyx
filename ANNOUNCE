@@ -11,14 +11,15 @@ LyX is a document processor that encourages an approach to writing based
 on the structure of your documents and not simply their appearance. It is
 released under a Free and Open Source Software license.
 
-LyX 2.3.6 is the result of on-going efforts to make our stable version more 
-reliable and more stable. Most of the changes are incremental, but quite a 
-few important bugs have now been fixed.
+LyX 2.3.6 is the sixth maintenance release in the 2.3.x series. It is the 
+result of on-going efforts to make our stable version more reliable and 
+more stable. Most of the changes are fairly minor, fixes of smallish bugs, 
+but a couple crashes have been fixed, as well. 
 
-One important change is that Inkscape 1.0 is now supported: It will be detected
-and configured automatically. Users of previous versions have recently reported
-configuration failures when Inkscape 1.0 is installed, leading to an incomplete
-(and all but unusable) installation of LyX. This should also be fixed.
+One oft-requested feature (going back 13 years) is the ability to create
+new child documents from within the 'include file' dialog. This is now
+possible. Another equally old bug that has been fixed is that pasting
+table content outside a table no longer pastes tab characters.
 
 If you think you have found a bug in LyX 2.3.6, please open a bug report at
 http://www.lyx.org/trac/wiki/BugTrackerHome. If you're not sure whether it
