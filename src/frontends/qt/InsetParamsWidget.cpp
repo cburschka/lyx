@@ -13,6 +13,7 @@
 
 #include "InsetParamsWidget.h"
 
+#include "insets/Inset.h"
 #include "qt_helpers.h"
 
 #include <QLineEdit>
@@ -42,9 +43,9 @@ bool CheckedWidget::check() const
 }
 
 
-
-InsetParamsWidget::InsetParamsWidget(QWidget * parent) : QWidget(parent)
+QString InsetParamsWidget::dialogTitle() const
 {
+	return toqstr(insetName(insetCode()));
 }
 
 
