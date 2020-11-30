@@ -237,22 +237,16 @@ docstring InsetNewpage::insetLabel() const
 	switch (params_.kind) {
 		case InsetNewpageParams::NEWPAGE:
 			return _("New Page");
-			break;
 		case InsetNewpageParams::PAGEBREAK:
 			return _("Page Break");
-			break;
 		case InsetNewpageParams::CLEARPAGE:
 			return _("Clear Page");
-			break;
 		case InsetNewpageParams::CLEARDOUBLEPAGE:
 			return _("Clear Double Page");
-			break;
 		case InsetNewpageParams::NOPAGEBREAK:
 			return _("No Page Break");
-			break;
 		default:
 			return _("New Page");
-			break;
 	}
 }
 
@@ -263,12 +257,10 @@ ColorCode InsetNewpage::ColorName() const
 		case InsetNewpageParams::PAGEBREAK:
 		case InsetNewpageParams::NOPAGEBREAK:
 			return Color_pagebreak;
-			break;
 		case InsetNewpageParams::NEWPAGE:
 		case InsetNewpageParams::CLEARPAGE:
 		case InsetNewpageParams::CLEARDOUBLEPAGE:
 			return Color_newpage;
-			break;
 	}
 	// not really useful, but to avoids gcc complaints
 	return Color_newpage;
