@@ -296,7 +296,7 @@ void InsetNote::validate(LaTeXFeatures & features) const
 {
 	switch (params_.type) {
 	case InsetNoteParams::Comment:
-		if (features.runparams().flavor == FLAVOR::HTML)
+		if (features.runparams().flavor == Flavor::Html)
 			// we do output this but set display to "none" by default,
 			// but people might want to use it.
 			InsetCollapsible::validate(features);

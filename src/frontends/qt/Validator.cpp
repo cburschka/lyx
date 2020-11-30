@@ -234,7 +234,7 @@ QValidator::State PathValidator::validate(QString & qtext, int &) const
 
 void PathValidator::setChecker(KernelDocType const & type, LyXRC const & rc)
 {
-	latex_doc_ = type == KernelDocType::LATEX;
+	latex_doc_ = type == KernelDocType::LaTeX;
 	tex_allows_spaces_ = rc.tex_allows_spaces;
 }
 

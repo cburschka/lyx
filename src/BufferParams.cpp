@@ -142,20 +142,20 @@ typedef Translator<string, QuoteStyle> QuotesStyleTranslator;
 QuotesStyleTranslator const init_quotesstyletranslator()
 {
 	QuotesStyleTranslator translator
-		(string_quotes_style[0], QuoteStyle::EnglishQuotes);
-	translator.addPair(string_quotes_style[1], QuoteStyle::SwedishQuotes);
-	translator.addPair(string_quotes_style[2], QuoteStyle::GermanQuotes);
-	translator.addPair(string_quotes_style[3], QuoteStyle::PolishQuotes);
-	translator.addPair(string_quotes_style[4], QuoteStyle::SwissQuotes);
-	translator.addPair(string_quotes_style[5], QuoteStyle::DanishQuotes);
-	translator.addPair(string_quotes_style[6], QuoteStyle::PlainQuotes);
-	translator.addPair(string_quotes_style[7], QuoteStyle::BritishQuotes);
-	translator.addPair(string_quotes_style[8], QuoteStyle::SwedishGQuotes);
-	translator.addPair(string_quotes_style[9], QuoteStyle::FrenchQuotes);
-	translator.addPair(string_quotes_style[10], QuoteStyle::FrenchINQuotes);
-	translator.addPair(string_quotes_style[11], QuoteStyle::RussianQuotes);
-	translator.addPair(string_quotes_style[12], QuoteStyle::CJKQuotes);
-	translator.addPair(string_quotes_style[13], QuoteStyle::CJKAngleQuotes);
+		(string_quotes_style[0], QuoteStyle::English);
+	translator.addPair(string_quotes_style[1], QuoteStyle::Swedish);
+	translator.addPair(string_quotes_style[2], QuoteStyle::German);
+	translator.addPair(string_quotes_style[3], QuoteStyle::Polish);
+	translator.addPair(string_quotes_style[4], QuoteStyle::Swiss);
+	translator.addPair(string_quotes_style[5], QuoteStyle::Danish);
+	translator.addPair(string_quotes_style[6], QuoteStyle::Plain);
+	translator.addPair(string_quotes_style[7], QuoteStyle::British);
+	translator.addPair(string_quotes_style[8], QuoteStyle::SwedishG);
+	translator.addPair(string_quotes_style[9], QuoteStyle::French);
+	translator.addPair(string_quotes_style[10], QuoteStyle::FrenchIN);
+	translator.addPair(string_quotes_style[11], QuoteStyle::Russian);
+	translator.addPair(string_quotes_style[12], QuoteStyle::CJK);
+	translator.addPair(string_quotes_style[13], QuoteStyle::CJKAngle);
 	return translator;
 }
 
@@ -394,7 +394,7 @@ BufferParams::BufferParams()
 	paragraph_separation = ParagraphIndentSeparation;
 	is_math_indent = false;
 	math_numbering_side = DEFAULT;
-	quotes_style = QuoteStyle::EnglishQuotes;
+	quotes_style = QuoteStyle::English;
 	dynamic_quotes = false;
 	fontsize = "default";
 
@@ -1522,8 +1522,8 @@ void BufferParams::validate(LaTeXFeatures & features) const
 				  LaTeXFeatures::isAvailable("xcolor");
 
 		switch (features.runparams().flavor) {
-		case FLAVOR::LATEX:
-		case FLAVOR::DVILUATEX:
+		case Flavor::LaTeX:
+		case Flavor::DviLuaTeX:
 			if (xcolorulem) {
 				features.require("ct-xcolor-ulem");
 				features.require("ulem");
@@ -1532,9 +1532,9 @@ void BufferParams::validate(LaTeXFeatures & features) const
 				features.require("ct-none");
 			}
 			break;
-		case FLAVOR::LUATEX:
-		case FLAVOR::PDFLATEX:
-		case FLAVOR::XETEX:
+		case Flavor::LuaTeX:
+		case Flavor::PdfLaTeX:
+		case Flavor::XeTeX:
 			if (xcolorulem) {
 				features.require("ct-xcolor-ulem");
 				features.require("ulem");
@@ -2067,9 +2067,9 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	if (output_sync) {
 		if (!output_sync_macro.empty())
 			os << from_utf8(output_sync_macro) +"\n";
-		else if (features.runparams().flavor == FLAVOR::LATEX)
+		else if (features.runparams().flavor == Flavor::LaTeX)
 			os << "\\usepackage[active]{srcltx}\n";
-		else if (features.runparams().flavor == FLAVOR::PDFLATEX)
+		else if (features.runparams().flavor == Flavor::PdfLaTeX)
 			os << "\\synctex=-1\n";
 	}
 
@@ -2346,7 +2346,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	    && !features.isProvided("xunicode")) {
 		// The `xunicode` package officially only supports XeTeX,
 		//  but also works with LuaTeX. We work around its XeTeX test.
-		if (features.runparams().flavor != FLAVOR::XETEX) {
+		if (features.runparams().flavor != Flavor::XeTeX) {
 			os << "% Pretend to xunicode that we are XeTeX\n"
 			   << "\\def\\XeTeXpicfile{}\n";
 		}
@@ -2713,7 +2713,7 @@ vector<string> BufferParams::backends() const
 }
 
 
-FLAVOR BufferParams::getOutputFlavor(string const & format) const
+Flavor BufferParams::getOutputFlavor(string const & format) const
 {
 	string const dformat = (format.empty() || format == "default") ?
 		getDefaultOutputFormat() : format;
@@ -2723,26 +2723,26 @@ FLAVOR BufferParams::getOutputFlavor(string const & format) const
 	if (it != default_flavors_.end())
 		return it->second;
 
-	FLAVOR result = FLAVOR::LATEX;
+	Flavor result = Flavor::LaTeX;
 
 	// FIXME It'd be better not to hardcode this, but to do
 	//       something with formats.
 	if (dformat == "xhtml")
-		result = FLAVOR::HTML;
+		result = Flavor::Html;
 	else if (dformat == "docbook5")
-		result = FLAVOR::DOCBOOK5;
+		result = Flavor::DocBook5;
 	else if (dformat == "text")
-		result = FLAVOR::TEXT;
+		result = Flavor::Text;
 	else if (dformat == "lyx")
-		result = FLAVOR::LYX;
+		result = Flavor::LyX;
 	else if (dformat == "pdflatex")
-		result = FLAVOR::PDFLATEX;
+		result = Flavor::PdfLaTeX;
 	else if (dformat == "xetex")
-		result = FLAVOR::XETEX;
+		result = Flavor::XeTeX;
 	else if (dformat == "luatex")
-		result = FLAVOR::LUATEX;
+		result = Flavor::LuaTeX;
 	else if (dformat == "dviluatex")
-		result = FLAVOR::DVILUATEX;
+		result = Flavor::DviLuaTeX;
 	else {
 		// Try to determine flavor of default output format
 		vector<string> backs = backends();
@@ -3256,8 +3256,8 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 		// Create list of inputenc options:
 		set<string> encoding_set;
 		// luainputenc fails with more than one encoding
-		if (features.runparams().flavor != FLAVOR::LUATEX
-			&& features.runparams().flavor != FLAVOR::DVILUATEX)
+		if (features.runparams().flavor != Flavor::LuaTeX
+			&& features.runparams().flavor != Flavor::DviLuaTeX)
 			// list all input encodings used in the document
 			encoding_set = features.getEncodingSet(doc_encoding);
 
@@ -3281,8 +3281,8 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 					os << ',';
 				os << from_ascii(doc_encoding);
 			}
-		   	if (features.runparams().flavor == FLAVOR::LUATEX
-			    || features.runparams().flavor == FLAVOR::DVILUATEX)
+		   	if (features.runparams().flavor == Flavor::LuaTeX
+			    || features.runparams().flavor == Flavor::DviLuaTeX)
 				os << "]{luainputenc}\n";
 			else
 				os << "]{inputenc}\n";
@@ -3305,8 +3305,8 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 			    || features.isProvided("inputenc"))
 				break;
 			os << "\\usepackage[" << from_ascii(encoding().latexName());
-		   	if (features.runparams().flavor == FLAVOR::LUATEX
-			    || features.runparams().flavor == FLAVOR::DVILUATEX)
+		   	if (features.runparams().flavor == Flavor::LuaTeX
+			    || features.runparams().flavor == Flavor::DviLuaTeX)
 				os << "]{luainputenc}\n";
 			else
 				os << "]{inputenc}\n";
@@ -3367,7 +3367,7 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 		bool const babelfonts = features.useBabel()
 				&& features.isAvailable("babel-2017/11/03");
 		string const texmapping =
-			(features.runparams().flavor == FLAVOR::XETEX) ?
+			(features.runparams().flavor == Flavor::XeTeX) ?
 			"Mapping=tex-text" : "Ligatures=TeX";
 		if (fontsRoman() != "default") {
 			if (babelfonts)

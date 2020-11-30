@@ -190,7 +190,7 @@ private:
 	/// Called by the ForkedCall process that generated the bitmap files.
 	void finishedGenerating(pid_t, int);
 	///
-	void dumpPreamble(otexstream &, FLAVOR) const;
+	void dumpPreamble(otexstream &, Flavor) const;
 	///
 	void dumpData(odocstream &, BitmapFile const &) const;
 
@@ -637,37 +637,37 @@ void PreviewLoader::Impl::startLoading(bool wait)
 			&& buffer_.params().default_output_format != "default";
 	// Use LATEX flavor if the document does not specify a specific
 	// output format (see bug 9371).
-	FLAVOR flavor = docformat
+	Flavor flavor = docformat
 					? buffer_.params().getOutputFlavor()
-					: FLAVOR::LATEX;
+					: Flavor::LaTeX;
 	if (buffer_.params().encoding().package() == Encoding::japanese) {
 		latexparam = " --latex=platex";
-		flavor = FLAVOR::LATEX;
+		flavor = Flavor::LaTeX;
 	}
 	else if (buffer_.params().useNonTeXFonts) {
-		if (flavor == FLAVOR::LUATEX)
+		if (flavor == Flavor::LuaTeX)
 			latexparam = " --latex=lualatex";
 		else {
-			flavor = FLAVOR::XETEX;
+			flavor = Flavor::XeTeX;
 			latexparam = " --latex=xelatex";
 		}
 	}
 	else {
 		switch (flavor) {
-			case FLAVOR::PDFLATEX:
+			case Flavor::PdfLaTeX:
 				latexparam = " --latex=pdflatex";
 				break;
-			case FLAVOR::XETEX:
+			case Flavor::XeTeX:
 				latexparam = " --latex=xelatex";
 				break;
-			case FLAVOR::LUATEX:
+			case Flavor::LuaTeX:
 				latexparam = " --latex=lualatex";
 				break;
-			case FLAVOR::DVILUATEX:
+			case Flavor::DviLuaTeX:
 				latexparam = " --latex=dvilualatex";
 				break;
 			default:
-				flavor = FLAVOR::LATEX;
+				flavor = Flavor::LaTeX;
 		}
 	}
 	dumpPreamble(os, flavor);
@@ -811,7 +811,7 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 }
 
 
-void PreviewLoader::Impl::dumpPreamble(otexstream & os, FLAVOR flavor) const
+void PreviewLoader::Impl::dumpPreamble(otexstream & os, Flavor flavor) const
 {
 	// Dump the preamble only.
 	LYXERR(Debug::LATEX, "dumpPreamble, flavor == " << static_cast<int>(flavor));

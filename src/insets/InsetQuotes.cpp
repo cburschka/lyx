@@ -122,7 +122,7 @@ QuoteStyle InsetQuotesParams::getQuoteStyle(string const & s,
 		if (i >= stylescount()) {
 			LYXERR0("ERROR (InsetQuotes::InsetQuotes):"
 				" bad style specification.");
-			res = QuoteStyle::EnglishQuotes;
+			res = QuoteStyle::English;
 		}
 	}
 
@@ -154,7 +154,7 @@ QuoteSide InsetQuotesParams::getQuoteSide(string const & s,
 		if (i >= 2) {
 			LYXERR0("ERROR (InsetQuotes::InsetQuotes):"
 				" bad side specification.");
-			res = QuoteSide::OpeningQuote;
+			res = QuoteSide::Opening;
 		}
 	}
 
@@ -186,7 +186,7 @@ QuoteLevel InsetQuotesParams::getQuoteLevel(string const & s,
 		if (i >= 2) {
 			LYXERR0("ERROR (InsetQuotes::InsetQuotes):"
 				" bad level specification.");
-			res = QuoteLevel::PrimaryQuotes;
+			res = QuoteLevel::Primary;
 		}
 	}
 
@@ -207,105 +207,105 @@ char_type InsetQuotesParams::getQuoteChar(QuoteStyle const & style, QuoteLevel c
 	char_type right_secondary;
 
 	switch (style) {
-	case QuoteStyle::EnglishQuotes: {
+	case QuoteStyle::English: {
 		left_primary = 0x201c; // ``
 		right_primary = 0x201d; // ''
 		left_secondary = 0x2018; // `
 		right_secondary = 0x2019; // '
 		break;
 	}
-	case QuoteStyle::SwedishQuotes: {
+	case QuoteStyle::Swedish: {
 		left_primary = 0x201d; // ''
 		right_primary = 0x201d; // ''
 		left_secondary = 0x2019; // '
 		right_secondary = 0x2019; // '
 		break;
 	}
-	case QuoteStyle::GermanQuotes: {
+	case QuoteStyle::German: {
 		left_primary = 0x201e; // ,,
 		right_primary = 0x201c; // ``
 		left_secondary = 0x201a; // ,
 		right_secondary = 0x2018; // `
 		break;
 	}
-	case QuoteStyle::PolishQuotes: {
+	case QuoteStyle::Polish: {
 		left_primary =  0x201e; // ,,
 		right_primary = 0x201d; // ''
 		left_secondary = 0x201a; // ,
 		right_secondary = 0x2019; // '
 		break;
 	}
-	case QuoteStyle::SwissQuotes: {
+	case QuoteStyle::Swiss: {
 		left_primary = 0x00ab; // <<
 		right_primary = 0x00bb; // >>
 		left_secondary = 0x2039; // <
 		right_secondary = 0x203a; // >
 		break;
 	}
-	case QuoteStyle::DanishQuotes: {
+	case QuoteStyle::Danish: {
 		left_primary = 0x00bb; // >>
 		right_primary = 0x00ab; // <<
 		left_secondary = 0x203a; // >
 		right_secondary = 0x2039; // <
 		break;
 	}
-	case QuoteStyle::PlainQuotes: {
+	case QuoteStyle::Plain: {
 		left_primary = 0x0022; // "
 		right_primary = 0x0022; // "
 		left_secondary = 0x0027; // '
 		right_secondary = 0x0027; // '
 		break;
 	}
-	case QuoteStyle::BritishQuotes: {
+	case QuoteStyle::British: {
 		left_primary = 0x2018; // `
 		right_primary = 0x2019; // '
 		left_secondary = 0x201c; // ``
 		right_secondary = 0x201d; // ''
 		break;
 	}
-	case QuoteStyle::SwedishGQuotes: {
+	case QuoteStyle::SwedishG: {
 		left_primary = 0x00bb; // >>
 		right_primary = 0x00bb; // >>
 		left_secondary = 0x2019; // '
 		right_secondary = 0x2019; // '
 		break;
 	}
-	case QuoteStyle::FrenchQuotes: {
+	case QuoteStyle::French: {
 		left_primary = 0x00ab; // <<
 		right_primary = 0x00bb; // >>
 		left_secondary = 0x201c; // ``
 		right_secondary = 0x201d; // ''
 		break;
 	}
-	case QuoteStyle::FrenchINQuotes:{
+	case QuoteStyle::FrenchIN:{
 		left_primary = 0x00ab; // <<
 		right_primary = 0x00bb; // >>
 		left_secondary =  0x00ab; // <<
 		right_secondary = 0x00bb; // >>
 		break;
 	}
-	case QuoteStyle::RussianQuotes:{
+	case QuoteStyle::Russian:{
 		left_primary = 0x00ab; // <<
 		right_primary = 0x00bb; // >>
 		left_secondary =  0x201e; // ,,
 		right_secondary = 0x201c; // ``
 		break;
 	}
-	case QuoteStyle::CJKQuotes:{
+	case QuoteStyle::CJK:{
 		left_primary = 0x300c; // LEFT CORNER BRACKET
 		right_primary = 0x300d; // RIGHT CORNER BRACKET
 		left_secondary =  0x300e; // LEFT WHITE CORNER BRACKET
 		right_secondary = 0x300f; // RIGHT WHITE CORNER BRACKET
 		break;
 	}
-	case QuoteStyle::CJKAngleQuotes:{
+	case QuoteStyle::CJKAngle:{
 		left_primary = 0x300a; // LEFT DOUBLE ANGLE BRACKET
 		right_primary = 0x300b; // RIGHT DOUBLE ANGLE BRACKET
 		left_secondary =  0x3008; // LEFT ANGLE BRACKET
 		right_secondary = 0x3009; // RIGHT ANGLE BRACKET
 		break;
 	}
-	case QuoteStyle::DynamicQuotes:
+	case QuoteStyle::Dynamic:
 	default:
 		// should not happen
 		left_primary = 0x003f; // ?
@@ -316,14 +316,14 @@ char_type InsetQuotesParams::getQuoteChar(QuoteStyle const & style, QuoteLevel c
 	}
 
 	switch (level) {
-	case QuoteLevel::SecondaryQuotes:
+	case QuoteLevel::Secondary:
 		if (rtl)
-			return (side == QuoteSide::ClosingQuote) ? left_secondary : right_secondary;
-		return (side == QuoteSide::OpeningQuote) ? left_secondary : right_secondary;
-	case QuoteLevel::PrimaryQuotes:
+			return (side == QuoteSide::Closing) ? left_secondary : right_secondary;
+		return (side == QuoteSide::Opening) ? left_secondary : right_secondary;
+	case QuoteLevel::Primary:
 		if (rtl)
-			return (side == QuoteSide::ClosingQuote) ? left_primary : right_primary;
-		return (side == QuoteSide::OpeningQuote) ? left_primary : right_primary;
+			return (side == QuoteSide::Closing) ? left_primary : right_primary;
+		return (side == QuoteSide::Opening) ? left_primary : right_primary;
 	default:
 		break;
 	}
@@ -555,7 +555,7 @@ map<string, docstring> InsetQuotesParams::getTypes() const
 	// get all quote types
 	for (sty = 0; sty < stylescount(); ++sty) {
 		style = QuoteStyle(sty);
-		if (style == QuoteStyle::DynamicQuotes)
+		if (style == QuoteStyle::Dynamic)
 			continue;
 		for (sid = 0; sid < 2; ++sid) {
 			side = QuoteSide(sid);
@@ -577,10 +577,10 @@ docstring const InsetQuotesParams::getGuiLabel(QuoteStyle const & qs, bool langd
 {
 	docstring const styledesc =
 		bformat(_("%1$souter%2$s and %3$sinner%4$s[[quotation marks]]"),
-		    	docstring(1, getQuoteChar(qs, QuoteLevel::PrimaryQuotes, QuoteSide::OpeningQuote)),
-			docstring(1, getQuoteChar(qs, QuoteLevel::PrimaryQuotes, QuoteSide::ClosingQuote)),
-			docstring(1, getQuoteChar(qs, QuoteLevel::SecondaryQuotes, QuoteSide::OpeningQuote)),
-			docstring(1, getQuoteChar(qs, QuoteLevel::SecondaryQuotes, QuoteSide::ClosingQuote))
+		    	docstring(1, getQuoteChar(qs, QuoteLevel::Primary, QuoteSide::Opening)),
+			docstring(1, getQuoteChar(qs, QuoteLevel::Primary, QuoteSide::Closing)),
+			docstring(1, getQuoteChar(qs, QuoteLevel::Secondary, QuoteSide::Opening)),
+			docstring(1, getQuoteChar(qs, QuoteLevel::Secondary, QuoteSide::Closing))
 			);
 
 	if (!langdef)
@@ -598,7 +598,7 @@ docstring const InsetQuotesParams::getShortGuiLabel(docstring const & str) const
 	QuoteSide const side = getQuoteSide(s);
 	QuoteLevel const level = getQuoteLevel(s);
 
-	return (side == QuoteSide::OpeningQuote) ?
+	return (side == QuoteSide::Opening) ?
 		bformat(_("%1$stext"),
 		       docstring(1, getQuoteChar(style, level, side))) :
 		bformat(_("text%1$s"),
@@ -638,14 +638,14 @@ InsetQuotes::InsetQuotes(Buffer * buf, char_type c, QuoteLevel level,
 		fontenc_ = "OT1";
 	}
 	if (style.empty())
-		style_ = dynamic ? QuoteStyle::DynamicQuotes : global_style_;
+		style_ = dynamic ? QuoteStyle::Dynamic : global_style_;
 	else
 		style_ = getStyle(style);
 
 	if (side == "left" || side == "opening")
-		side_ = QuoteSide::OpeningQuote;
+		side_ = QuoteSide::Opening;
 	else if (side == "right" || side == "closing")
-		side_ = QuoteSide::ClosingQuote;
+		side_ = QuoteSide::Closing;
 	else
 		setSide(c);
 }
@@ -661,9 +661,9 @@ void InsetQuotes::setSide(char_type c)
 {
 	// Decide whether opening or closing quote
 	if (lyx::isSpace(c) || isOpenPunctuation(c))
-		side_ = QuoteSide::OpeningQuote;// opening quote
+		side_ = QuoteSide::Opening;// opening quote
 	else
-		side_ = QuoteSide::ClosingQuote;// closing quote
+		side_ = QuoteSide::Closing;// closing quote
 }
 
 
@@ -677,38 +677,38 @@ void InsetQuotes::parseString(string const & s, bool const allow_wildcards)
 
 QuoteStyle InsetQuotes::getStyle(string const & s)
 {
-	QuoteStyle qs = QuoteStyle::EnglishQuotes;
+	QuoteStyle qs = QuoteStyle::English;
 
 	if (s == "english")
-		qs = QuoteStyle::EnglishQuotes;
+		qs = QuoteStyle::English;
 	else if (s == "swedish")
-		qs = QuoteStyle::SwedishQuotes;
+		qs = QuoteStyle::Swedish;
 	else if (s == "german")
-		qs = QuoteStyle::GermanQuotes;
+		qs = QuoteStyle::German;
 	else if (s == "polish")
-		qs = QuoteStyle::PolishQuotes;
+		qs = QuoteStyle::Polish;
 	else if (s == "swiss")
-		qs = QuoteStyle::SwissQuotes;
+		qs = QuoteStyle::Swiss;
 	else if (s == "danish")
-		qs = QuoteStyle::DanishQuotes;
+		qs = QuoteStyle::Danish;
 	else if (s == "plain")
-		qs = QuoteStyle::PlainQuotes;
+		qs = QuoteStyle::Plain;
 	else if (s == "british")
-		qs = QuoteStyle::BritishQuotes;
+		qs = QuoteStyle::British;
 	else if (s == "swedishg")
-		qs = QuoteStyle::SwedishGQuotes;
+		qs = QuoteStyle::SwedishG;
 	else if (s == "french")
-		qs = QuoteStyle::FrenchQuotes;
+		qs = QuoteStyle::French;
 	else if (s == "frenchin")
-		qs = QuoteStyle::FrenchINQuotes;
+		qs = QuoteStyle::FrenchIN;
 	else if (s == "russian")
-		qs = QuoteStyle::RussianQuotes;
+		qs = QuoteStyle::Russian;
 	else if (s == "cjk")
-		qs = QuoteStyle::CJKQuotes;
+		qs = QuoteStyle::CJK;
 	else if (s == "cjkangle")
-		qs = QuoteStyle::CJKAngleQuotes;
+		qs = QuoteStyle::CJKAngle;
 	else if (s == "dynamic")
-		qs = QuoteStyle::DynamicQuotes;
+		qs = QuoteStyle::Dynamic;
 
 	return qs;
 }
@@ -718,23 +718,23 @@ docstring InsetQuotes::displayString() const
 {
 	// In PassThru, we use straight quotes
 	if (pass_thru_)
-		return (level_ == QuoteLevel::PrimaryQuotes) ?
+		return (level_ == QuoteLevel::Primary) ?
 					from_ascii("\"") : from_ascii("'");
 
 	QuoteStyle style =
-			(style_ == QuoteStyle::DynamicQuotes) ? global_style_ : style_;
+			(style_ == QuoteStyle::Dynamic) ? global_style_ : style_;
 
 	docstring retdisp = docstring(1, quoteparams.getQuoteChar(style, level_, side_, rtl_));
 
 	// in French, thin spaces are added inside double guillemets
 	if (prefixIs(context_lang_, "fr")
-	    && level_ == QuoteLevel::PrimaryQuotes
-	    && (style == QuoteStyle::SwissQuotes
-		|| style == QuoteStyle::FrenchQuotes
-		|| style == QuoteStyle::FrenchINQuotes)) {
+	    && level_ == QuoteLevel::Primary
+	    && (style == QuoteStyle::Swiss
+		|| style == QuoteStyle::French
+		|| style == QuoteStyle::FrenchIN)) {
 		// THIN SPACE (U+2009)
 		char_type const thin_space = 0x2009;
-		if (side_ == QuoteSide::OpeningQuote)
+		if (side_ == QuoteSide::Opening)
 			retdisp += thin_space;
 		else
 			retdisp = thin_space + retdisp;
@@ -757,7 +757,7 @@ void InsetQuotes::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetQuotes::draw(PainterInfo & pi, int x, int y) const
 {
 	FontInfo font = pi.base.font;
-	if (style_ == QuoteStyle::DynamicQuotes)
+	if (style_ == QuoteStyle::Dynamic)
 		font.setPaintColor(Color_special);
 	else
 		font.setPaintColor(pi.textColor(font.realColor()));
@@ -839,17 +839,17 @@ bool InsetQuotes::getStatus(Cursor & cur, FuncRequest const & cmd,
 void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 {
 	QuoteStyle style =
-			(style_ == QuoteStyle::DynamicQuotes) ? global_style_ : style_;
+			(style_ == QuoteStyle::Dynamic) ? global_style_ : style_;
 	char_type quotechar = quoteparams.getQuoteChar(style, level_, side_, rtl_);
 	docstring qstr;
 
 	// In pass-thru context, we output plain quotes
 	if (runparams.pass_thru)
-		qstr = (level_ == QuoteLevel::PrimaryQuotes) ? from_ascii("\"") : from_ascii("'");
-	else if (style == QuoteStyle::PlainQuotes && fontspec_) {
+		qstr = (level_ == QuoteLevel::Primary) ? from_ascii("\"") : from_ascii("'");
+	else if (style == QuoteStyle::Plain && fontspec_) {
 		// For XeTeX and LuaTeX,we need to disable mapping to get straight
 		// quotes. We define our own commands that do this
-		qstr = (level_ == QuoteLevel::PrimaryQuotes) ?
+		qstr = (level_ == QuoteLevel::Primary) ?
 			from_ascii("\\textquotedblplain") : from_ascii("\\textquotesingleplain");
 	}
 	else if (runparams.use_polyglossia) {
@@ -859,21 +859,21 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 	}
 	// The CJK marks are not yet covered by utf8 inputenc (we don't have the entry in
 	// unicodesymbols, since we don't want to add fake synbols there).
-	else if (style == QuoteStyle::CJKQuotes || style  == QuoteStyle::CJKAngleQuotes) {
+	else if (style == QuoteStyle::CJK || style  == QuoteStyle::CJKAngle) {
 		if (runparams.encoding && runparams.encoding->name() != "utf8"
 		    && runparams.encoding->encodable(quotechar))
 			qstr = docstring(1, quotechar);
 		else
 			qstr = quoteparams.getLaTeXQuote(quotechar, "int");
 	}
-	else if ((style == QuoteStyle::SwissQuotes
-		 || style == QuoteStyle::FrenchQuotes
-		 || style == QuoteStyle::FrenchINQuotes)
-		 && level_ == QuoteLevel::PrimaryQuotes
+	else if ((style == QuoteStyle::Swiss
+		 || style == QuoteStyle::French
+		 || style == QuoteStyle::FrenchIN)
+		 && level_ == QuoteLevel::Primary
 		 && prefixIs(runparams.local_font->language()->code(), "fr")) {
 		// Specific guillemets of French babel
 		// including correct French spacing
-		if (side_ == QuoteSide::OpeningQuote)
+		if (side_ == QuoteSide::Opening)
 			qstr = from_ascii("\\og");
 		else
 			qstr = from_ascii("\\fg");
@@ -912,8 +912,8 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 		// LuaTeX does not respect {} as ligature breaker by design,
 		// see https://tex.stackexchange.com/q/349725/19291
 		docstring const nolig =
-				(runparams.flavor == FLAVOR::LUATEX
-				 || runparams.flavor == FLAVOR::DVILUATEX) ?
+				(runparams.flavor == Flavor::LuaTeX
+				 || runparams.flavor == Flavor::DviLuaTeX) ?
 					from_ascii("\\/") : from_ascii("{}");
 		// !` ?` => !{}` ?{}`
 		if (prefixIs(qstr, from_ascii("`"))
@@ -945,19 +945,19 @@ int InsetQuotes::plaintext(odocstringstream & os,
 
 docstring InsetQuotes::getQuoteEntity(bool isHTML) const {
 	QuoteStyle style =
-			(style_ == QuoteStyle::DynamicQuotes) ? global_style_ : style_;
+			(style_ == QuoteStyle::Dynamic) ? global_style_ : style_;
 	docstring res = isHTML ? quoteparams.getHTMLQuote(quoteparams.getQuoteChar(style, level_, side_)) :
 					quoteparams.getXMLQuote(quoteparams.getQuoteChar(style, level_, side_));
 
 	// in French, thin spaces are added inside double guillemets
 	if (prefixIs(context_lang_, "fr")
-	    && level_ == QuoteLevel::PrimaryQuotes
-	    && (style == QuoteStyle::FrenchQuotes
-		|| style == QuoteStyle::FrenchINQuotes
-		|| style == QuoteStyle::SwissQuotes)) {
+	    && level_ == QuoteLevel::Primary
+	    && (style == QuoteStyle::French
+		|| style == QuoteStyle::FrenchIN
+		|| style == QuoteStyle::Swiss)) {
 		// THIN SPACE (U+2009)
 		docstring const thin_space = from_ascii("&#x2009;");
-		if (side_ == QuoteSide::OpeningQuote) // Open quote: space after
+		if (side_ == QuoteSide::Opening) // Open quote: space after
 			res += thin_space;
 		else // Close quote: space before
 			res = thin_space + res;
@@ -1008,7 +1008,7 @@ void InsetQuotes::updateBuffer(ParIterator const & it, UpdateType /* utype*/, bo
 void InsetQuotes::validate(LaTeXFeatures & features) const
 {
 	QuoteStyle style =
-			(style_ == QuoteStyle::DynamicQuotes) ? global_style_ : style_;
+			(style_ == QuoteStyle::Dynamic) ? global_style_ : style_;
 	char_type type = quoteparams.getQuoteChar(style, level_, side_);
 
 	// Handle characters that are not natively supported by

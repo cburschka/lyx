@@ -29,16 +29,16 @@ class Language;
 class InsetArgument;
 
 
-enum class FLAVOR : int {
-	DVILUATEX,
-	LATEX,
-	LUATEX,
-	PDFLATEX,
-	XETEX,
-	DOCBOOK5,
-	HTML,
-	TEXT,
-	LYX
+enum class Flavor : int {
+	DviLuaTeX,
+	LaTeX,
+	LuaTeX,
+	PdfLaTeX,
+	XeTeX,
+	DocBook5,
+	Html,
+	Text,
+	LyX
 };
 
 enum class CtObject : int {
@@ -78,7 +78,7 @@ public:
 	/** The file that we export depends occasionally on what is to
 	    compile the file.
 	*/
-	FLAVOR flavor = FLAVOR::LATEX;
+	Flavor flavor = Flavor::LaTeX;
 	/// is it some flavor of LaTeX?
 	bool isLaTeX() const;
 	/// does this flavour support full unicode?

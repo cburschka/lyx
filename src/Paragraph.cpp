@@ -1236,7 +1236,7 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 		    && !runparams.inIPA
 			// TODO #10961: && not in inset Flex Code
 			// TODO #10961: && not in layout LyXCode
-		    && (!bparams.useNonTeXFonts || runparams.flavor != FLAVOR::XETEX)) {
+		    && (!bparams.useNonTeXFonts || runparams.flavor != Flavor::XeTeX)) {
 			if (c == 0x2013) {
 				// en-dash
 				os << "--";
@@ -1390,7 +1390,7 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 			features.addPreambleSnippet(os.release(), true);
 	}
 
-	if (features.runparams().flavor == FLAVOR::HTML
+	if (features.runparams().flavor == Flavor::Html
 	    && layout_->htmltitle()) {
 		features.setHTMLTitle(owner_->asString(AS_STR_INSETS | AS_STR_SKIPDELETE));
 	}
@@ -1485,7 +1485,7 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 		} else if (!bp.use_dash_ligatures
 			   && (c == 0x2013 || c == 0x2014)
 			   && bp.useNonTeXFonts
-			   && features.runparams().flavor == FLAVOR::XETEX)
+			   && features.runparams().flavor == Flavor::XeTeX)
 			// XeTeX's dash behaviour is determined via a global setting
 			features.require("xetexdashbreakstate");
 		BufferEncodings::validate(c, features);

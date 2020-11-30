@@ -24,7 +24,7 @@ namespace support { class FileName; }
 
 class Buffer;
 
-enum class FLAVOR : int;
+enum class Flavor : int;
 
 class Format {
 public:
@@ -220,9 +220,9 @@ private:
 };
 
 ///
-std::string flavor2format(FLAVOR flavor);
+std::string flavor2format(Flavor flavor);
 // Not currently used.
-// FLAVOR format2flavor(std::string fmt);
+// Flavor format2flavor(std::string fmt);
 
 /// The global instance.
 /// Implementation is in LyX.cpp.

@@ -36,25 +36,25 @@ OutputParams::~OutputParams()
 
 bool OutputParams::isLaTeX() const
 {
-	return flavor == FLAVOR::LATEX
-			|| flavor == FLAVOR::LUATEX
-			|| flavor == FLAVOR::DVILUATEX
-			|| flavor == FLAVOR::PDFLATEX
-			|| flavor == FLAVOR::XETEX;
+	return flavor == Flavor::LaTeX
+			|| flavor == Flavor::LuaTeX
+			|| flavor == Flavor::DviLuaTeX
+			|| flavor == Flavor::PdfLaTeX
+			|| flavor == Flavor::XeTeX;
 }
 
 
 bool OutputParams::isFullUnicode() const
 {
-	return flavor == FLAVOR::LUATEX
-			|| flavor == FLAVOR::DVILUATEX
-			|| flavor == FLAVOR::XETEX;
+	return flavor == Flavor::LuaTeX
+			|| flavor == Flavor::DviLuaTeX
+			|| flavor == Flavor::XeTeX;
 }
 
 
 bool OutputParams::useBidiPackage() const
 {
-	return use_polyglossia && flavor == FLAVOR::XETEX;
+	return use_polyglossia && flavor == Flavor::XeTeX;
 }
 
 } // namespace lyx

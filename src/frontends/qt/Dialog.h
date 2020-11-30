@@ -40,8 +40,8 @@ class GuiView;
  */
 enum class KernelDocType : int
 {
-	LATEX,
-	LITERATE
+	LaTeX,
+	Literate
 };
 
 /** \c Dialog collects the different parts of a Model-Controller-View

@@ -2321,7 +2321,7 @@ int Buffer::runChktex()
 
 	// Generate the LaTeX file if neccessary
 	OutputParams runparams(&params().encoding());
-	runparams.flavor = FLAVOR::LATEX;
+	runparams.flavor = Flavor::LaTeX;
 	runparams.nice = false;
 	runparams.linelen = lyxrc.plaintext_linelen;
 	ExportStatus const retval =
@@ -4069,23 +4069,23 @@ unique_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 			   << "\n\n";
 		}
 		// output paragraphs
-		if (runparams.flavor == FLAVOR::LYX) {
+		if (runparams.flavor == Flavor::LyX) {
 			Paragraph const & par = text().paragraphs()[par_begin];
 			ostringstream ods;
 			depth_type dt = par.getDepth();
 			par.write(ods, params(), dt);
 			os << from_utf8(ods.str());
-		} else if (runparams.flavor == FLAVOR::HTML) {
+		} else if (runparams.flavor == Flavor::Html) {
 			XMLStream xs(os);
 			setMathFlavor(runparams);
 			xhtmlParagraphs(text(), *this, xs, runparams);
-		} else if (runparams.flavor == FLAVOR::TEXT) {
+		} else if (runparams.flavor == Flavor::Text) {
 			bool dummy = false;
 			// FIXME Handles only one paragraph, unlike the others.
 			// Probably should have some routine with a signature like them.
 			writePlaintextParagraph(*this,
 				text().paragraphs()[par_begin], os, runparams, dummy);
-		} else if (runparams.flavor == FLAVOR::DOCBOOK5) {
+		} else if (runparams.flavor == Flavor::DocBook5) {
 			XMLStream xs{os};
 			docbookParagraphs(text(), *this, xs, runparams);
 		} else {
@@ -4123,7 +4123,7 @@ unique_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 		else if (output == OnlyBody)
 			os << _("Preview body");
 		os << "\n\n";
-		if (runparams.flavor == FLAVOR::LYX) {
+		if (runparams.flavor == Flavor::LyX) {
 			ostringstream ods;
 			if (output == FullSource)
 				write(ods);
@@ -4132,14 +4132,14 @@ unique_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 			else if (output == OnlyBody)
 				text().write(ods);
 			os << from_utf8(ods.str());
-		} else if (runparams.flavor == FLAVOR::HTML) {
+		} else if (runparams.flavor == Flavor::Html) {
 			writeLyXHTMLSource(os, runparams, output);
-		} else if (runparams.flavor == FLAVOR::TEXT) {
+		} else if (runparams.flavor == Flavor::Text) {
 			if (output == OnlyPreamble) {
 				os << "% "<< _("Plain text does not have a preamble.");
 			} else
 				writePlaintextFile(*this, os, runparams);
-		} else if (runparams.flavor == FLAVOR::DOCBOOK5) {
+		} else if (runparams.flavor == Flavor::DocBook5) {
 			writeDocBookSource(os, runparams, output);
 		} else {
 			// latex or literate
@@ -4374,7 +4374,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 	}
 	MarkAsExporting exporting(this);
 	string backend_format;
-	runparams.flavor = FLAVOR::LATEX;
+	runparams.flavor = Flavor::LaTeX;
 	runparams.linelen = lyxrc.plaintext_linelen;
 	runparams.includeall = includeall;
 	vector<string> backs = params().backends();
@@ -4418,13 +4418,13 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 		LYXERR(Debug::FILES, "backend_format=" << backend_format);
 		// FIXME: Don't hardcode format names here, but use a flag
 		if (backend_format == "pdflatex")
-			runparams.flavor = FLAVOR::PDFLATEX;
+			runparams.flavor = Flavor::PdfLaTeX;
 		else if (backend_format == "luatex")
-			runparams.flavor = FLAVOR::LUATEX;
+			runparams.flavor = Flavor::LuaTeX;
 		else if (backend_format == "dviluatex")
-			runparams.flavor = FLAVOR::DVILUATEX;
+			runparams.flavor = Flavor::DviLuaTeX;
 		else if (backend_format == "xetex")
-			runparams.flavor = FLAVOR::XETEX;
+			runparams.flavor = Flavor::XeTeX;
 	}
 
 	string filename = latexName(false);
@@ -4435,7 +4435,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 
 	// Plain text backend
 	if (backend_format == "text") {
-		runparams.flavor = FLAVOR::TEXT;
+		runparams.flavor = Flavor::Text;
 		try {
 			writePlaintextFile(*this, FileName(filename), runparams);
 		}
@@ -4443,7 +4443,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 	}
 	// HTML backend
 	else if (backend_format == "xhtml") {
-		runparams.flavor = FLAVOR::HTML;
+		runparams.flavor = Flavor::Html;
 		setMathFlavor(runparams);
 		if (makeLyXHTMLFile(FileName(filename), runparams) == ExportKilled)
 			return ExportKilled;
@@ -4451,7 +4451,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 		writeFile(FileName(filename));
 	// DocBook backend
 	else if (backend_format == "docbook5") {
-		runparams.flavor = FLAVOR::DOCBOOK5;
+		runparams.flavor = Flavor::DocBook5;
 		runparams.nice = false;
 		if (makeDocBookFile(FileName(filename), runparams) == ExportKilled)
 			return ExportKilled;

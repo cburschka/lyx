@@ -30,7 +30,7 @@ class Format;
 class Formats;
 class OutputParams;
 
-enum class FLAVOR : int;
+enum class Flavor : int;
 
 class ConversionException : public std::exception {
 public:
@@ -177,7 +177,7 @@ public:
 	///
 	Graph::EdgePath getPath(std::string const & from, std::string const & to);
 	///
-	FLAVOR getFlavor(Graph::EdgePath const & path,
+	Flavor getFlavor(Graph::EdgePath const & path,
 					   Buffer const * buffer = nullptr) const;
 	///
 	std::string getHyperrefDriver(Graph::EdgePath const & path) const;

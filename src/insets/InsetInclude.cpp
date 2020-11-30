@@ -1290,7 +1290,7 @@ docstring latexString(InsetInclude const & inset)
 	// We don't need to set runparams.encoding since this will be done
 	// by latex() anyway.
 	OutputParams runparams(nullptr);
-	runparams.flavor = FLAVOR::LATEX;
+	runparams.flavor = Flavor::LaTeX;
 	runparams.for_preview = true;
 	inset.latex(os, runparams);
 

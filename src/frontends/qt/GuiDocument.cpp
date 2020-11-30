@@ -2267,7 +2267,7 @@ void GuiDocument::updateQuoteStyles(bool const set)
 	bool has_default = false;
 	for (int i = 0; i < quoteparams.stylescount(); ++i) {
 		QuoteStyle qs = QuoteStyle(i);
-		if (qs == QuoteStyle::DynamicQuotes)
+		if (qs == QuoteStyle::Dynamic)
 			continue;
 		bool const langdef = (qs == def);
 		if (langdef) {

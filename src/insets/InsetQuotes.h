@@ -23,51 +23,51 @@ namespace lyx {
 ///
 enum class QuoteStyle : int {
 	///
-	EnglishQuotes,
+	English,
 	///
-	SwedishQuotes,
+	Swedish,
 	///
-	GermanQuotes,
+	German,
 	///
-	PolishQuotes,
+	Polish,
 	///
-	SwissQuotes,
+	Swiss,
 	///
-	DanishQuotes,
+	Danish,
 	///
-	PlainQuotes,
+	Plain,
 	///
-	BritishQuotes,
+	British,
 	///
-	SwedishGQuotes,
+	SwedishG,
 	///
-	FrenchQuotes,
+	French,
 	///
-	FrenchINQuotes,
+	FrenchIN,
 	///
-	RussianQuotes,
+	Russian,
 	///
-	CJKQuotes,
+	CJK,
 	///
-	CJKAngleQuotes,
+	CJKAngle,
 	///
-	DynamicQuotes
+	Dynamic
 };
 
 ///
 enum class QuoteSide : int {
 	///
-	OpeningQuote,
+	Opening,
 	///
-	ClosingQuote
+	Closing
 };
 
 ///
 enum class QuoteLevel : int {
 	///
-	SecondaryQuotes,
+	Secondary,
 	///
-	PrimaryQuotes
+	Primary
 };
 
 
@@ -100,15 +100,15 @@ public:
 	/// Returns the quote style from the shortcut string
 	QuoteStyle getQuoteStyle(std::string const & s,
 		bool const allow_wildcards = false,
-		QuoteStyle fallback = QuoteStyle::EnglishQuotes) const;
+		QuoteStyle fallback = QuoteStyle::English) const;
 	/// Returns the quote sind from the shortcut string
 	QuoteSide getQuoteSide(std::string const & s,
 		bool const allow_wildcards = false,
-		QuoteSide fallback = QuoteSide::OpeningQuote) const;
+		QuoteSide fallback = QuoteSide::Opening) const;
 	/// Returns the quote level from the shortcut string
 	QuoteLevel getQuoteLevel(std::string const & s,
 		bool const allow_wildcards = false,
-		QuoteLevel fallback = QuoteLevel::PrimaryQuotes) const;
+		QuoteLevel fallback = QuoteLevel::Primary) const;
 };
 
 ///
@@ -191,13 +191,13 @@ private:
 	QuoteStyle getStyle(std::string const &);
 
 	///
-	QuoteStyle style_ = QuoteStyle::EnglishQuotes;
+	QuoteStyle style_ = QuoteStyle::English;
 	///
-	QuoteSide side_ = QuoteSide::OpeningQuote;
+	QuoteSide side_ = QuoteSide::Opening;
 	///
-	QuoteLevel level_ = QuoteLevel::PrimaryQuotes;
+	QuoteLevel level_ = QuoteLevel::Primary;
 	///
-	QuoteStyle global_style_ = QuoteStyle::EnglishQuotes;
+	QuoteStyle global_style_ = QuoteStyle::English;
 	/// Current font encoding
 	std::string fontenc_;
 	/// Code of the contextual language

@@ -259,28 +259,28 @@ void Converters::updateLast(Formats const & formats)
 }
 
 
-FLAVOR Converters::getFlavor(Graph::EdgePath const & path,
+Flavor Converters::getFlavor(Graph::EdgePath const & path,
 					   Buffer const * buffer) const
 {
 	for (auto const & edge : path) {
 		Converter const & conv = converterlist_[edge];
 		if (conv.latex() || conv.need_aux()) {
 			if (conv.latex_flavor() == "latex")
-				return FLAVOR::LATEX;
+				return Flavor::LaTeX;
 			if (conv.latex_flavor() == "xelatex")
-				return FLAVOR::XETEX;
+				return Flavor::XeTeX;
 			if (conv.latex_flavor() == "lualatex")
-				return FLAVOR::LUATEX;
+				return Flavor::LuaTeX;
 			if (conv.latex_flavor() == "dvilualatex")
-				return FLAVOR::DVILUATEX;
+				return Flavor::DviLuaTeX;
 			if (conv.latex_flavor() == "pdflatex")
-				return FLAVOR::PDFLATEX;
+				return Flavor::PdfLaTeX;
 		}
 		if (conv.docbook())
-			return FLAVOR::DOCBOOK5;
+			return Flavor::DocBook5;
 	}
 	return buffer ? buffer->params().getOutputFlavor()
-		      : FLAVOR::LATEX;
+		      : Flavor::LaTeX;
 }
 
 
@@ -602,16 +602,16 @@ Converters::RetVal Converters::convert(Buffer const * buffer,
 				LASSERT(buffer, return FAILURE);
 				string command;
 				switch (runparams.flavor) {
-				case FLAVOR::DVILUATEX:
+				case Flavor::DviLuaTeX:
 					command = dvilualatex_command_;
 					break;
-				case FLAVOR::LUATEX:
+				case Flavor::LuaTeX:
 					command = lualatex_command_;
 					break;
-				case FLAVOR::PDFLATEX:
+				case Flavor::PdfLaTeX:
 					command = pdflatex_command_;
 					break;
-				case FLAVOR::XETEX:
+				case Flavor::XeTeX:
 					command = xelatex_command_;
 					break;
 				default:
@@ -833,7 +833,7 @@ bool Converters::scanLog(Buffer const & buffer, string const & /*command*/,
 			 FileName const & filename, ErrorList & errorList)
 {
 	OutputParams runparams(nullptr);
-	runparams.flavor = FLAVOR::LATEX;
+	runparams.flavor = Flavor::LaTeX;
 	LaTeX latex("", runparams, filename);
 	TeXErrors terr;
 	int const result = latex.scanLogFile(terr);

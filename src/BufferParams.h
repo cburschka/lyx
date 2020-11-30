@@ -52,7 +52,7 @@ class PDFOptions;
 class Spacing;
 class VSpace;
 
-enum class FLAVOR : int;
+enum class Flavor : int;
 enum class QuoteStyle : int;
 
 /** Buffer parameters.
@@ -198,7 +198,7 @@ public:
 	/// return the default output format of the current backend
 	std::string getDefaultOutputFormat() const;
 	/// return the output flavor of \p format or the default
-	FLAVOR getOutputFlavor(std::string const & format = std::string()) const;
+	Flavor getOutputFlavor(std::string const & format = std::string()) const;
 	///
 	bool isExportable(std::string const & format, bool need_viewable) const;
 	///
@@ -617,7 +617,7 @@ private:
 	///
 	void readIncludeonly(Lexer &);
 	/// A cache for the default flavors
-	typedef std::map<std::string, FLAVOR> DefaultFlavorCache;
+	typedef std::map<std::string, Flavor> DefaultFlavorCache;
 	///
 	mutable DefaultFlavorCache default_flavors_;
 	/// the cite engine

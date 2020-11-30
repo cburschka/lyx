@@ -1263,8 +1263,8 @@ string const LaTeXFeatures::getPackages() const
 
 	if (mustProvide("changebar")) {
 		packages << "\\usepackage";
-		if (runparams_.flavor == FLAVOR::LATEX
-		    || runparams_.flavor == FLAVOR::DVILUATEX)
+		if (runparams_.flavor == Flavor::LaTeX
+		    || runparams_.flavor == Flavor::DviLuaTeX)
 			packages << "[dvips]";
 		packages << "{changebar}\n";
 	}
@@ -1278,8 +1278,8 @@ string const LaTeXFeatures::getPackages() const
 
 	// [pdf]lscape is used to rotate longtables
 	if (mustProvide("lscape")) {
-		if (runparams_.flavor == FLAVOR::LATEX
-		    || runparams_.flavor == FLAVOR::DVILUATEX)
+		if (runparams_.flavor == Flavor::LaTeX
+		    || runparams_.flavor == Flavor::DviLuaTeX)
 			packages << "\\usepackage{lscape}\n";
 		else
 			packages << "\\usepackage{pdflscape}\n";
@@ -1526,10 +1526,10 @@ TexString LaTeXFeatures::getMacros() const
 		macros << "\\XeTeXdashbreakstate 0" << '\n';
 
 	if (mustProvide("papersize")) {
-		if (runparams_.flavor == FLAVOR::LATEX
-		    || runparams_.flavor == FLAVOR::DVILUATEX)
+		if (runparams_.flavor == Flavor::LaTeX
+		    || runparams_.flavor == Flavor::DviLuaTeX)
 			macros << papersizedvi_def << '\n';
-		else if  (runparams_.flavor == FLAVOR::LUATEX)
+		else if  (runparams_.flavor == Flavor::LuaTeX)
 			macros << papersizepdflua_def << '\n';
 		else
 			macros << papersizepdf_def << '\n';
@@ -1655,13 +1655,13 @@ TexString LaTeXFeatures::getMacros() const
 	if (mustProvide("textquotedbl"))
 		macros << textquotedbl_def << '\n';
 	if (mustProvide("textquotesinglep")) {
-		if (runparams_.flavor == FLAVOR::XETEX)
+		if (runparams_.flavor == Flavor::XeTeX)
 			macros << textquotesinglep_xetex_def << '\n';
 		else
 			macros << textquotesinglep_luatex_def << '\n';
 	}
 	if (mustProvide("textquotedblp")) {
-		if (runparams_.flavor == FLAVOR::XETEX)
+		if (runparams_.flavor == Flavor::XeTeX)
 			macros << textquotedblp_xetex_def << '\n';
 		else
 			macros << textquotedblp_luatex_def << '\n';
@@ -1689,7 +1689,7 @@ TexString LaTeXFeatures::getMacros() const
 	if (mustProvide("lyxgreyedout")) {
 		// We need different version for RTL (#8647)
 		if (hasRTLLanguage()) {
-			if (runparams_.flavor == FLAVOR::LUATEX)
+			if (runparams_.flavor == Flavor::LuaTeX)
 				if (useBabel())
 					macros << lyxgreyedout_luartl_babel_def;
 				else

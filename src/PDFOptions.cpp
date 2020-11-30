@@ -191,7 +191,7 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 	// this if the current input encoding does not support a character.
 	// FIXME: don't use \inputencoding if "inputenc" is not loaded (#9839).
 	if (need_unicode && enc && enc->iconvName() != "UTF-8") {
-	    if (runparams.flavor != FLAVOR::XETEX)
+	    if (runparams.flavor != Flavor::XeTeX)
 			os << "\\inputencoding{utf8}\n";
 		os << setEncoding("UTF-8");
 	}
@@ -211,7 +211,7 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 		os << from_utf8(opt);
 	if (need_unicode && enc && enc->iconvName() != "UTF-8") {
 		os << setEncoding(enc->iconvName());
-	    if (runparams.flavor != FLAVOR::XETEX)
+	    if (runparams.flavor != Flavor::XeTeX)
 			os << "\\inputencoding{" << from_ascii(enc->latexName()) << "}\n";
 	}
 }
