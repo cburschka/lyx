@@ -14,7 +14,7 @@ macro(sources _program)
 	set(${_program}_SOURCES ${_tmplist})
 	add_executable(${_program} ${_tmplist})
 	target_link_libraries(${_program} support
-		${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY}
+		${Lyx_Boost_Libraries} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY}
 		${ZLIB_LIBRARY} ${ICONV_LIBRARY})
 	lyx_target_link_libraries(${_program} Magic)
 	if(CYGWIN)
@@ -39,7 +39,7 @@ file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/regfiles")
 
 set(_depends)
 foreach(_src ${check_PROGRAMS})
-	sources(${_src} ${_src}.cpp dummy_functions.cpp)
+	sources(${_src} ${_src}.cpp dummy_functions.cpp boost.cpp)
 	string(REPLACE "check_" "" _srcx ${_src})
 	set(src_data_file "${TOP_SRC_DIR}/src/support/tests/regfiles/${_srcx}")
 	if (MSVC AND EXISTS "${src_data_file}.MSVC")

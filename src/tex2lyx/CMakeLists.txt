@@ -45,6 +45,7 @@ set_target_properties(${_tex2lyx} PROPERTIES
 
 target_link_libraries(${_tex2lyx}
 	support
+	${Lyx_Boost_Libraries}
 	${QT_QTCORE_LIBRARY}
 	${QT_QTGUI_LIBRARY}
 	${ICONV_LIBRARY})

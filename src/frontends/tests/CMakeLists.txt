@@ -7,8 +7,8 @@ project(testFrontends)
 
 set(TESTS "test_biblio")
 
-add_executable(biblio biblio.cpp)
-#target_link_libraries(biblio)
+add_executable(biblio biblio.cpp boost.cpp)
+target_link_libraries(biblio ${Lyx_Boost_Libraries})
 add_dependencies(lyx_run_tests biblio)
 set_target_properties(biblio PROPERTIES FOLDER "tests/frontends")
 

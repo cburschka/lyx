@@ -82,7 +82,7 @@ set_target_properties(support PROPERTIES FOLDER "applications/LyX")
 
 qt_use_modules(support Core Gui)
 
-target_link_libraries(support ${QT_QTCORE_LIBRARY} ${ZLIB_LIBRARY})
+target_link_libraries(support ${Lyx_Boost_Libraries} ${QT_QTCORE_LIBRARY} ${ZLIB_LIBRARY})
 
 lyx_add_gcc_pch(support)
 

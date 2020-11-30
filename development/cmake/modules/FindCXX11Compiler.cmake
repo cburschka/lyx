@@ -36,7 +36,7 @@ INCLUDE(FindPackageHandleStandardArgs)
 
 # get cmake-known std numbers
 # Detection of c++20 works well, but our code is not ready for it yet.
-# We currently get errors from our code.
+# We currently get errors with internal boost and also from our code.
 set(_max_std_num 17)
 lyxgetknowncmakestd(${_max_std_num} tmpnums)
 

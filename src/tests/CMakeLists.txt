@@ -8,7 +8,7 @@ set(check_layout_SOURCES)
 foreach(_f insets/InsetLayout.cpp CiteEnginesList.cpp Color.cpp Counters.cpp Floating.cpp
        FloatList.cpp FontInfo.cpp Layout.cpp LayoutFile.cpp Lexer.cpp
        ModuleList.cpp Spacing.cpp TextClass.cpp tests/check_layout.cpp
-       tests/dummy_functions.cpp)
+       tests/boost.cpp tests/dummy_functions.cpp)
   list(APPEND check_layout_SOURCES "${TOP_SRC_DIR}/src/${_f}")
 endforeach()
 
@@ -17,7 +17,7 @@ include_directories(${TOP_SRC_DIR}/src/support/tests)
 add_executable(check_layout ${check_layout_SOURCES})
 
 target_link_libraries(check_layout support
-  ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY}
+  ${Lyx_Boost_Libraries} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY}
   ${ZLIB_LIBRARY} ${ICONV_LIBRARY})
 if(CYGWIN)
     target_link_libraries(check_layout shlwapi)
@@ -67,7 +67,7 @@ endforeach()
 set(check_ExternalTransforms_SOURCES)
 foreach(_f graphics/GraphicsParams.cpp insets/ExternalTransforms.cpp
 	tests/check_ExternalTransforms.cpp
-	tests/dummy_functions.cpp)
+	tests/boost.cpp tests/dummy_functions.cpp)
     list(APPEND check_ExternalTransforms_SOURCES ${TOP_SRC_DIR}/src/${_f})
 endforeach()
 
@@ -75,7 +75,7 @@ include_directories(${TOP_SRC_DIR}/src/tests)
 add_executable(check_ExternalTransforms ${check_ExternalTransforms_SOURCES})
 
 target_link_libraries(check_ExternalTransforms support
-	${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY})
+	${Lyx_Boost_Libraries} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY})
 lyx_target_link_libraries(check_ExternalTransforms Magic)
 
 add_dependencies(lyx_run_tests check_ExternalTransforms)
@@ -90,13 +90,13 @@ add_test(NAME "check_ExternalTransforms"
 add_dependencies(lyx_run_tests check_ExternalTransforms)
 
 set(check_Length_SOURCES)
-foreach(_f tests/check_Length.cpp tests/dummy_functions.cpp)
+foreach(_f tests/check_Length.cpp tests/boost.cpp tests/dummy_functions.cpp)
   list(APPEND check_Length_SOURCES ${TOP_SRC_DIR}/src/${_f})
 endforeach()
 add_executable(check_Length ${check_Length_SOURCES})
 
 target_link_libraries(check_Length support
-	${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY})
+	${Lyx_Boost_Libraries} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY})
 lyx_target_link_libraries(check_Length Magic)
 
 add_dependencies(lyx_run_tests check_Length)
@@ -112,13 +112,13 @@ add_dependencies(lyx_run_tests check_Length)
 
 include_directories(${TOP_SRC_DIR}/src/tests)
 set(check_ListingsCaption_SOURCES)
-foreach(_f tests/check_ListingsCaption.cpp tests/dummy_functions.cpp)
+foreach(_f tests/check_ListingsCaption.cpp tests/boost.cpp tests/dummy_functions.cpp)
   list(APPEND check_ListingsCaption_SOURCES ${TOP_SRC_DIR}/src/${_f})
 endforeach()
 add_executable(check_ListingsCaption ${check_ListingsCaption_SOURCES})
 
 target_link_libraries(check_ListingsCaption support
-	${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY})
+	${Lyx_Boost_Libraries} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY})
 lyx_target_link_libraries(check_ListingsCaption Magic)
 
 add_dependencies(lyx_run_tests check_ListingsCaption)
