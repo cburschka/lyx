@@ -25,8 +25,6 @@
 #ifndef VALIDATOR_H
 #define VALIDATOR_H
 
-#include "Dialog.h" // KernelDocType
-
 #include "support/Length.h"
 
 #include <QValidator>
@@ -34,12 +32,13 @@
 class QWidget;
 class QLineEdit;
 
-
 namespace lyx {
 
 class LyXRC;
 
 namespace frontend {
+
+enum class KernelDocType : int;
 
 /** A class to ascertain whether the data passed to the @c validate()
  *  member function can be interpreted as a GlueLength.

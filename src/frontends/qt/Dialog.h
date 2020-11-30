@@ -38,7 +38,7 @@ class GuiView;
  *  without making the kernel header files available to the
  *  dialog's Controller or View.
  */
-enum KernelDocType
+enum class KernelDocType : int
 {
 	LATEX,
 	LITERATE

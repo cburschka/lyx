@@ -13,14 +13,15 @@
 #include <config.h>
 
 #include "Validator.h"
-#include "qt_helpers.h"
 
-#include "support/gettext.h"
+#include "Dialog.h"
 #include "LyXRC.h"
+#include "qt_helpers.h"
 
 #include "frontends/alert.h"
 
 #include "support/docstring.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 
 #include <QLineEdit>
@@ -233,7 +234,7 @@ QValidator::State PathValidator::validate(QString & qtext, int &) const
 
 void PathValidator::setChecker(KernelDocType const & type, LyXRC const & rc)
 {
-	latex_doc_ = type == LATEX;
+	latex_doc_ = type == KernelDocType::LATEX;
 	tex_allows_spaces_ = rc.tex_allows_spaces;
 }
 

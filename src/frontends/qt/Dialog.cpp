@@ -91,12 +91,12 @@ QString Dialog::bufferFilePath() const
 KernelDocType Dialog::docType() const
 {
 	if (buffer().params().isLatex())
-		return LATEX;
+		return KernelDocType::LATEX;
 	if (buffer().params().isLiterate())
-		return LITERATE;
+		return KernelDocType::LITERATE;
 
 	// This case should not happen.
-	return LATEX;
+	return KernelDocType::LATEX;
 }
 
 
