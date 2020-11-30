@@ -1,6 +1,6 @@
 -*- text -*-
 
-This file describes what has been done in the preparation of LyX 2.3.6.
+This file describes what has been done in the preparation of LyX 2.3.7.
 All comments are welcome.
 
 We try to group things by topic and in decreasing order of importance.
@@ -15,51 +15,28 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Added layout for American Psychological Association (APA), v. 7 (apa7).
-
-
-* USER INTERFACE
-
-- Improve UI of math matrix dialog UI (bug 11888).
-
-- Fix display of 'by chapter' labels in AMS classes (bug 11741).
-
-- Add support for the doublestroke package in mathed (bug 11887).
-
-- Fix behavior of text style dialog when "Immediate Apply" is checked (bug 11926).
-
-- Focus keyword field in Thesaurus dialog.
-
-- Allow creation of a child file from the include dialog (bug 4475).
-
-- Make sure to load the correct math fonts in certain cases.
-
-- Update autocorrect in mathed so that pressing '*' after a delimiter will
-  cycle through all sizes.
-
-- Display character styles along with fonts in status bar (bug 11951).
 
 
 * MISCELLANEOUS
 
-- Adjust debug output for fonts by not breaking lines that should go together.
 
 
 * TEX2LYX IMPROVEMENTS
 
 
+
+* USER INTERFACE
+
+
+
+
 * DOCUMENTATION AND LOCALIZATION
 
-- Update Czech, German, Italian, Slovak, Russian and French user interface localizations. 
 
-- Update French translation of Customization manual
 
 
 * BUILD/INSTALLATION
 
-- Wininstaller, temporary remove the option to run LyX from the finish page
-  due to upcoming fix of the issue where after installing LyX as admin, this option
-  would execute LyX as admin too.
 
 
 
@@ -68,88 +45,44 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix output of titles in branches and other insets (follow-up to bug 11787).
 
-- Fix clipping of vector images and when exporting from command line
-  (follow-up to bug 11180).
 
 
 * USER INTERFACE
 
-- Fix crash when pasting math grid with more rows in source than target
-  (bug 11897).
 
-- Fix problem with drawing of auto-opened insets (bug 11870).
-
-- Fix crash when rejecting changes and the cursor is in an inset that will be
-  deleted (bug 10316).
-
-- Ask to save hidden dirty documents (bug 11405).
-
-- Fix background color of collapsible insets with sublabel.
-
-- Do not paste tabulators when pasting multiple cell outside table (bug 4449).
-
-- Fix language when pasting multiple cell outside table (bug 11898).
-
-- Fix input of decimal numbers in RtL context (bug 11900).
-
-- Fix the LyX icon in the Wayland dash (bug 11847).
-
-- Fix display bug when typing in a paragraph where row heights change (bug 11601).
-
-- Fix wrong marking-text-behavior with doubleclick on notebook touchpads (Windows)
-
-- Fix spacing of limits of sum-like operators in display style.
-
-- Fix positioning of super- and subscripts with integral signs.
-
-- Fix counter in bibliography inset (bug 11920).
-
-- Do not allow editing of math package list in Document > Settings > Math Options,
-  thus preventing a crash (bug 11931).
-
-- Maintain standard layout for separating paragraphs when switching layouts (bug 11936).
-
-- Prevent permanent disabling of widgets in Vertical/Horizontal Space dialogs
-  (bug 11952).
-
-- Fix behavior of Edit button in Include dialog.
-
-- Localize some previously unlocalized strings (bug 11954 ).
-
-- Fix bug where cursor blinks at the wrong position after changing layout (bug 11912).
-
-- Fix PrettyFormat for Part (bug 11986).
-
-- Fix on-screen display of special math fonts (bug 11802).
-
-- Fix white frame border in fullscreen mode.
 
 
 * INTERNALS
 
 
+
+
+
 * DOCUMENTATION AND LOCALIZATION
+
+
 
 
 * LYX2LYX
 
 
+
+
 * TEX2LYX
+
+
 
 
 * LYXHTML
 
 
+
+
 * ADVANCED FIND AND REPLACE
+
+
 
 
 * BUILD/INSTALLATION
 
-- Wininstaller, fix bug where previous installations, with emergency version
-  greater than 1, could not be seen in registry on overinstall
-
-- Do not break configuration if a module file is not decodable (file
-  not encoded in utf-8). Rather than that, issue a warning and skip
-  that file (a variant of bug 11736).
