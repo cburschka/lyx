@@ -13,7 +13,7 @@
 #ifndef LATEXFEATURES_H
 #define LATEXFEATURES_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 #include <set>
 #include <list>
