@@ -1820,11 +1820,11 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 	BufferParams const & bp = bv->buffer().masterBuffer()->params();
 
 	// The global setting
-	InsetQuotesParams::QuoteStyle globalqs = bp.quotes_style;
+	QuoteStyle globalqs = bp.quotes_style;
 	char const globalqsc = quoteparams.getStyleChar(globalqs);
 
 	// The current language's default
-	InsetQuotesParams::QuoteStyle langdefqs =
+	QuoteStyle langdefqs =
 		bp.getQuoteStyle(bv->cursor().current_font.language()->quoteStyle());
 	char const langqs = quoteparams.getStyleChar(langdefqs);
 

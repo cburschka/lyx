@@ -1781,8 +1781,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				}
 			}
 		}
-		InsetQuotesParams::QuoteLevel const quote_level = inner
-				? InsetQuotesParams::SecondaryQuotes : InsetQuotesParams::PrimaryQuotes;
+		QuoteLevel const quote_level = inner
+				? QuoteLevel::SecondaryQuotes : QuoteLevel::PrimaryQuotes;
 		cur.insert(new InsetQuotes(cur.buffer(), c, quote_level, cmd.getArg(1), cmd.getArg(2)));
 		cur.buffer()->updateBuffer();
 		cur.posForward();

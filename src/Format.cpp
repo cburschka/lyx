@@ -14,6 +14,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "LyXRC.h"
+#include "OutputParams.h"
 #include "ServerSocket.h"
 
 #include "frontends/alert.h" //to be removed?

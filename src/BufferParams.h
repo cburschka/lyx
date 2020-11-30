@@ -16,13 +16,13 @@
 #define BUFFERPARAMS_H
 
 #include "Citation.h"
+#include "ColorCode.h"
 #include "DocumentClassPtr.h"
 #include "LayoutModuleList.h"
 #include "paper.h"
 
-#include "insets/InsetQuotes.h"
-
 #include "support/copied_ptr.h"
+#include "support/types.h"
 
 #include <map>
 #include <vector>
@@ -35,21 +35,25 @@ class Author;
 class AuthorList;
 class BranchList;
 class Bullet;
+class Buffer;
 class DocumentClass;
 class Encoding;
 class Font;
 class Format;
 class IndicesList;
 class Language;
+class LaTeXFeatures;
 class LayoutFile;
 class LayoutFileIndex;
 class Length;
 class Lexer;
+class otexstream;
 class PDFOptions;
 class Spacing;
 class VSpace;
 
 enum class FLAVOR : int;
+enum class QuoteStyle : int;
 
 /** Buffer parameters.
  *  This class contains all the parameters for this buffer's use. Some
@@ -125,7 +129,7 @@ public:
 	 */
 	ParagraphSeparation paragraph_separation;
 	///
-	InsetQuotesParams::QuoteStyle quotes_style;
+	QuoteStyle quotes_style;
 	///
 	bool dynamic_quotes;
 	///
@@ -224,7 +228,7 @@ public:
 	Font const getFont() const;
 
 	/// translate quote style string to enum value
-	InsetQuotesParams::QuoteStyle getQuoteStyle(std::string const & qs) const;
+	QuoteStyle getQuoteStyle(std::string const & qs) const;
 
 	/* these are for the PaperLayout */
 	/// the papersize

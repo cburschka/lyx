@@ -55,6 +55,7 @@
 #include "VSpace.h"
 
 #include "insets/InsetListingsParams.h"
+#include "insets/InsetQuotes.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -2259,25 +2260,25 @@ void GuiDocument::updateQuoteStyles(bool const set)
 		fromqstr(langModule->languageCO->itemData(
 			langModule->languageCO->currentIndex()).toString()));
 
-	InsetQuotesParams::QuoteStyle def = bp_.getQuoteStyle(lang->quoteStyle());
+	QuoteStyle def = bp_.getQuoteStyle(lang->quoteStyle());
 
 	langModule->quoteStyleCO->clear();
 
 	bool has_default = false;
 	for (int i = 0; i < quoteparams.stylescount(); ++i) {
-		InsetQuotesParams::QuoteStyle qs = InsetQuotesParams::QuoteStyle(i);
-		if (qs == InsetQuotesParams::DynamicQuotes)
+		QuoteStyle qs = QuoteStyle(i);
+		if (qs == QuoteStyle::DynamicQuotes)
 			continue;
 		bool const langdef = (qs == def);
 		if (langdef) {
 			// add the default style on top
 			langModule->quoteStyleCO->insertItem(0,
-				toqstr(quoteparams.getGuiLabel(qs, langdef)), qs);
+				toqstr(quoteparams.getGuiLabel(qs, langdef)), static_cast<int>(qs));
 			has_default = true;
 		}
 		else
 			langModule->quoteStyleCO->addItem(
-				toqstr(quoteparams.getGuiLabel(qs, langdef)), qs);
+				toqstr(quoteparams.getGuiLabel(qs, langdef)), static_cast<int>(qs));
 	}
 	if (set && has_default)
 		// (re)set to the default style
@@ -3437,8 +3438,8 @@ void GuiDocument::applyView()
 			// this should never happen
 			bp_.inputenc = "utf8";
 	}
-	bp_.quotes_style = (InsetQuotesParams::QuoteStyle) langModule->quoteStyleCO->itemData(
-		langModule->quoteStyleCO->currentIndex()).toInt();
+	bp_.quotes_style = QuoteStyle(langModule->quoteStyleCO->itemData(
+		langModule->quoteStyleCO->currentIndex()).toInt());
 	bp_.dynamic_quotes = langModule->dynamicQuotesCB->isChecked();
 
 	QString const langname = langModule->languageCO->itemData(
@@ -3958,7 +3959,7 @@ void GuiDocument::paramsToDialog()
 	updateQuoteStyles();
 
 	langModule->quoteStyleCO->setCurrentIndex(
-		langModule->quoteStyleCO->findData(bp_.quotes_style));
+		langModule->quoteStyleCO->findData(static_cast<int>(bp_.quotes_style)));
 	langModule->dynamicQuotesCB->setChecked(bp_.dynamic_quotes);
 
 	// LaTeX input encoding: set after the fonts (see below)

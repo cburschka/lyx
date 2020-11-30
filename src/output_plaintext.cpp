@@ -21,6 +21,8 @@
 #include "ParagraphList.h"
 #include "ParagraphParameters.h"
 
+#include "insets/Inset.h"
+
 #include "support/debug.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"

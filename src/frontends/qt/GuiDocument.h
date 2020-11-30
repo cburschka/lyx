@@ -37,6 +37,8 @@
 #include "ui_PreambleUi.h"
 #include "ui_TextLayoutUi.h"
 
+#include "support/unique_ptr.h"
+
 #include <QStandardItemModel>
 
 namespace lyx {

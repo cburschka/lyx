@@ -20,58 +20,62 @@
 
 namespace lyx {
 
+///
+enum class QuoteStyle : int {
+	///
+	EnglishQuotes,
+	///
+	SwedishQuotes,
+	///
+	GermanQuotes,
+	///
+	PolishQuotes,
+	///
+	SwissQuotes,
+	///
+	DanishQuotes,
+	///
+	PlainQuotes,
+	///
+	BritishQuotes,
+	///
+	SwedishGQuotes,
+	///
+	FrenchQuotes,
+	///
+	FrenchINQuotes,
+	///
+	RussianQuotes,
+	///
+	CJKQuotes,
+	///
+	CJKAngleQuotes,
+	///
+	DynamicQuotes
+};
+
+///
+enum class QuoteSide : int {
+	///
+	OpeningQuote,
+	///
+	ClosingQuote
+};
+
+///
+enum class QuoteLevel : int {
+	///
+	SecondaryQuotes,
+	///
+	PrimaryQuotes
+};
+
+
 /** Quotes.
   Used for the various quotes. German, English, French, all either
   double or single **/
 class InsetQuotesParams {
 public:
-	///
-	enum QuoteStyle {
-		///
-		EnglishQuotes,
-		///
-		SwedishQuotes,
-		///
-		GermanQuotes,
-		///
-		PolishQuotes,
-		///
-		SwissQuotes,
-		///
-		DanishQuotes,
-		///
-		PlainQuotes,
-		///
-		BritishQuotes,
-		///
-		SwedishGQuotes,
-		///
-		FrenchQuotes,
-		///
-		FrenchINQuotes,
-		///
-		RussianQuotes,
-		///
-		CJKQuotes,
-		///
-		CJKAngleQuotes,
-		///
-		DynamicQuotes
-	};
-	///
-	enum QuoteSide {
-		///
-		OpeningQuote,
-		///
-		ClosingQuote
-	};
-	///
-	enum QuoteLevel {
-		///
-		SecondaryQuotes,
-		///
-		PrimaryQuotes
-	};
 	/// Returns the unicode character of a given quote
 	char_type getQuoteChar(QuoteStyle const &, QuoteLevel const &,
 			       QuoteSide const &, bool const rtl = false) const;
@@ -96,15 +100,15 @@ public:
 	/// Returns the quote style from the shortcut string
 	QuoteStyle getQuoteStyle(std::string const & s,
 		bool const allow_wildcards = false,
-		QuoteStyle fallback = EnglishQuotes) const;
+		QuoteStyle fallback = QuoteStyle::EnglishQuotes) const;
 	/// Returns the quote sind from the shortcut string
 	QuoteSide getQuoteSide(std::string const & s,
 		bool const allow_wildcards = false,
-		QuoteSide fallback = OpeningQuote) const;
+		QuoteSide fallback = QuoteSide::OpeningQuote) const;
 	/// Returns the quote level from the shortcut string
 	QuoteLevel getQuoteLevel(std::string const & s,
 		bool const allow_wildcards = false,
-		QuoteLevel fallback = PrimaryQuotes) const;
+		QuoteLevel fallback = QuoteLevel::PrimaryQuotes) const;
 };
 
 ///
@@ -125,7 +129,7 @@ public:
 	  */
 	explicit InsetQuotes(Buffer * buf, std::string const & str = "eld");
 	/// Direct access to inner/outer quotation marks
-	InsetQuotes(Buffer * buf, char_type c, InsetQuotesParams::QuoteLevel level,
+	InsetQuotes(Buffer * buf, char_type c, QuoteLevel level,
 		    std::string const & side = std::string(),
 		    std::string const & style = std::string());
 	///
@@ -184,16 +188,16 @@ private:
 	///
 	docstring getQuoteEntity(bool isHTML) const;
 	///
-	InsetQuotesParams::QuoteStyle getStyle(std::string const &);
+	QuoteStyle getStyle(std::string const &);
 
 	///
-	InsetQuotesParams::QuoteStyle style_ = InsetQuotesParams::EnglishQuotes;
+	QuoteStyle style_ = QuoteStyle::EnglishQuotes;
 	///
-	InsetQuotesParams::QuoteSide side_ = InsetQuotesParams::OpeningQuote;
+	QuoteSide side_ = QuoteSide::OpeningQuote;
 	///
-	InsetQuotesParams::QuoteLevel level_ = InsetQuotesParams::PrimaryQuotes;
+	QuoteLevel level_ = QuoteLevel::PrimaryQuotes;
 	///
-	InsetQuotesParams::QuoteStyle global_style_ = InsetQuotesParams::EnglishQuotes;
+	QuoteStyle global_style_ = QuoteStyle::EnglishQuotes;
 	/// Current font encoding
 	std::string fontenc_;
 	/// Code of the contextual language

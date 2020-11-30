@@ -45,6 +45,7 @@
 #include "frontends/alert.h"
 
 #include "insets/InsetListingsParams.h"
+#include "insets/InsetQuotes.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -135,26 +136,26 @@ ParSepTranslator const & parseptranslator()
 
 
 // Quotes style
-typedef Translator<string, InsetQuotesParams::QuoteStyle> QuotesStyleTranslator;
+typedef Translator<string, QuoteStyle> QuotesStyleTranslator;
 
 
 QuotesStyleTranslator const init_quotesstyletranslator()
 {
 	QuotesStyleTranslator translator
-		(string_quotes_style[0], InsetQuotesParams::EnglishQuotes);
-	translator.addPair(string_quotes_style[1], InsetQuotesParams::SwedishQuotes);
-	translator.addPair(string_quotes_style[2], InsetQuotesParams::GermanQuotes);
-	translator.addPair(string_quotes_style[3], InsetQuotesParams::PolishQuotes);
-	translator.addPair(string_quotes_style[4], InsetQuotesParams::SwissQuotes);
-	translator.addPair(string_quotes_style[5], InsetQuotesParams::DanishQuotes);
-	translator.addPair(string_quotes_style[6], InsetQuotesParams::PlainQuotes);
-	translator.addPair(string_quotes_style[7], InsetQuotesParams::BritishQuotes);
-	translator.addPair(string_quotes_style[8], InsetQuotesParams::SwedishGQuotes);
-	translator.addPair(string_quotes_style[9], InsetQuotesParams::FrenchQuotes);
-	translator.addPair(string_quotes_style[10], InsetQuotesParams::FrenchINQuotes);
-	translator.addPair(string_quotes_style[11], InsetQuotesParams::RussianQuotes);
-	translator.addPair(string_quotes_style[12], InsetQuotesParams::CJKQuotes);
-	translator.addPair(string_quotes_style[13], InsetQuotesParams::CJKAngleQuotes);
+		(string_quotes_style[0], QuoteStyle::EnglishQuotes);
+	translator.addPair(string_quotes_style[1], QuoteStyle::SwedishQuotes);
+	translator.addPair(string_quotes_style[2], QuoteStyle::GermanQuotes);
+	translator.addPair(string_quotes_style[3], QuoteStyle::PolishQuotes);
+	translator.addPair(string_quotes_style[4], QuoteStyle::SwissQuotes);
+	translator.addPair(string_quotes_style[5], QuoteStyle::DanishQuotes);
+	translator.addPair(string_quotes_style[6], QuoteStyle::PlainQuotes);
+	translator.addPair(string_quotes_style[7], QuoteStyle::BritishQuotes);
+	translator.addPair(string_quotes_style[8], QuoteStyle::SwedishGQuotes);
+	translator.addPair(string_quotes_style[9], QuoteStyle::FrenchQuotes);
+	translator.addPair(string_quotes_style[10], QuoteStyle::FrenchINQuotes);
+	translator.addPair(string_quotes_style[11], QuoteStyle::RussianQuotes);
+	translator.addPair(string_quotes_style[12], QuoteStyle::CJKQuotes);
+	translator.addPair(string_quotes_style[13], QuoteStyle::CJKAngleQuotes);
 	return translator;
 }
 
@@ -393,7 +394,7 @@ BufferParams::BufferParams()
 	paragraph_separation = ParagraphIndentSeparation;
 	is_math_indent = false;
 	math_numbering_side = DEFAULT;
-	quotes_style = InsetQuotesParams::EnglishQuotes;
+	quotes_style = QuoteStyle::EnglishQuotes;
 	dynamic_quotes = false;
 	fontsize = "default";
 
@@ -1452,7 +1453,7 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 		os << "default";
 	}
 	os << "\n\\quotes_style "
-	   << string_quotes_style[quotes_style]
+	   << string_quotes_style[static_cast<int>(quotes_style)]
 	   << "\n\\dynamic_quotes " << dynamic_quotes
 	   << "\n\\papercolumns " << columns
 	   << "\n\\papersides " << sides
@@ -2789,7 +2790,7 @@ Font const BufferParams::getFont() const
 }
 
 
-InsetQuotesParams::QuoteStyle BufferParams::getQuoteStyle(string const & qs) const
+QuoteStyle BufferParams::getQuoteStyle(string const & qs) const
 {
 	return quotesstyletranslator().find(qs);
 }
