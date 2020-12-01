@@ -110,19 +110,21 @@ struct GuiWorkArea::Private
 	void updateScreen(QRectF const & rc);
 
 	///
-	GuiWorkArea * p;
+	GuiWorkArea * p = nullptr;
 	///
-	BufferView * buffer_view_;
+	BufferView * buffer_view_ = nullptr;
 	///
-	GuiView * lyx_view_;
+	GuiView * lyx_view_ = nullptr;
 
 	/// Do we need an intermediate image when painting (for now macOS and Wayland)
-	bool use_backingstore_;
+	bool use_backingstore_ = false;
 	///
 	QImage screen_;
 
 	/// is the caret currently displayed
-	bool caret_visible_;
+	bool caret_visible_ = false;
+	///
+	bool needs_caret_geometry_update_ = true;
 	///
 	QTimer caret_timeout_;
 
@@ -132,25 +134,25 @@ struct GuiWorkArea::Private
 	DoubleClick dc_event_;
 
 	///
-	bool need_resize_;
+	bool need_resize_ = false;
 
 	/// the current preedit text of the input method
 	docstring preedit_string_;
 	/// Number of lines used by preedit text
-	int preedit_lines_;
+	int preedit_lines_ = 1;
 	/// the attributes of the preedit text
 	QList<QInputMethodEvent::Attribute> preedit_attr_;
 
 	/// Ratio between physical pixels and device-independent pixels
 	/// We save the last used value to detect changes of the
 	/// current pixel_ratio of the viewport.
-	double last_pixel_ratio_;
+	double last_pixel_ratio_ = 1.0;
 	///
 	GuiCompleter * completer_;
 
 	/// Special mode in which Esc and Enter (with or without Shift)
 	/// are ignored
-	bool dialog_mode_;
+	bool dialog_mode_ = false;
 	/// store the name of the context menu when the mouse is
 	/// pressed. This is used to get the correct context menu
 	/// when the menu is actually shown (after releasing on Windows)
@@ -161,17 +163,15 @@ struct GuiWorkArea::Private
 	///
 	support::FileName file_name_;
 	///
-	bool shell_escape_;
+	bool shell_escape_ = false;
 	///
-	bool read_only_;
+	bool read_only_ = false;
 	///
 	docstring vc_status_;
 	///
-	bool clean_;
+	bool clean_ = true;
 	///
-	bool externally_modified_;
-	///
-	bool needs_caret_geometry_update_;
+	bool externally_modified_ = false;
 
 }; // GuiWorkArea
 

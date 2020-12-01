@@ -130,26 +130,15 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 
 
 GuiWorkArea::Private::Private(GuiWorkArea * parent)
-: p(parent), buffer_view_(nullptr), lyx_view_(nullptr),
-  caret_visible_(false), need_resize_(false), preedit_lines_(1),
-  last_pixel_ratio_(1.0), completer_(new GuiCompleter(p, p)),
-  dialog_mode_(false), shell_escape_(false), read_only_(false),
-  clean_(true), externally_modified_(false), needs_caret_geometry_update_(true)
+	: p(parent), completer_(new GuiCompleter(p, p))
 {
-/* Qt on macOS and Wayland does not respect the
- * Qt::WA_OpaquePaintEvent attribute and resets the widget backing
- * store at each update. Therefore, we use our own backing store in
- * these two cases. */
-#if QT_VERSION >= 0x050000
+	/* Qt on macOS and Wayland does not respect the
+	 * Qt::WA_OpaquePaintEvent attribute and resets the widget backing
+	 * store at each update. Therefore, we use our own backing store
+	 * in these two cases.
+	 */
 	use_backingstore_ = guiApp->platformName() == "cocoa"
 		|| guiApp->platformName().contains("wayland");
-#else
-#  ifdef Q_OS_MAC
-	use_backingstore_ = true;
-#  else
-	use_backingstore_ = false;
-#  endif
-#endif
 
 	int const time = QApplication::cursorFlashTime() / 2;
 	if (time > 0) {
