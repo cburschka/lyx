@@ -1809,11 +1809,7 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 	InsetQuotes const * qinset =
 		static_cast<InsetQuotes const *>(inset);
 
-	map<string, docstring> styles = quoteparams.getTypes();
 	string const qtype = qinset->getType();
-
-	map<string, docstring>::const_iterator qq = styles.begin();
-	map<string, docstring>::const_iterator end = styles.end();
 
 	MenuDefinition aqs;
 
@@ -1856,10 +1852,12 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 		main_dynamic_qs = true;
 	}
 	// now traverse through the static styles ...
-	for (; qq != end; ++qq) {
-		docstring const style = from_ascii(qq->first);
-		bool langdef = (style[0] == langqs);
-		bool globaldef = (style[0] == globalqsc);
+	map<string, docstring> styles = quoteparams.getTypes();
+	for (auto const & s : styles) {
+		char style_char = (s.first)[0];
+		bool langdef = (style_char == langqs);
+		bool globaldef = (style_char == globalqsc);
+		docstring const style = from_ascii(s.first);
 
 		if (prefixIs(style, qtype[0])) {
 			FuncRequest cmd = FuncRequest(LFUN_INSET_MODIFY, subcmd + style);
