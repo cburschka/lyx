@@ -351,15 +351,15 @@ int BufferView::leftMargin() const
 
 int BufferView::topMargin() const
 {
-	// original value was 20px, which is 0.2in at 100dpi
-	return zoomedPixels(20);
+	// Original value was 20px at 100dpi. For internal buffers like in
+	// advanced search and replace, a value of 5px is enough.
+	return zoomedPixels(buffer().isInternal() ? 5 : 20);
 }
 
 
 int BufferView::bottomMargin() const
 {
-	// original value was 20px, which is 0.2in at 100dpi
-	return zoomedPixels(20);
+	return topMargin();
 }
 
 
