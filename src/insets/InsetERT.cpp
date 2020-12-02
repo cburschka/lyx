@@ -16,12 +16,13 @@
 #include "Cursor.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "InsetLayout.h"
 #include "Language.h"
 #include "Lexer.h"
 #include "xml.h"
 #include "ParagraphParameters.h"
 #include "Paragraph.h"
-#include <output_docbook.h>
+#include "output_docbook.h"
 
 #include "support/docstream.h"
 #include "support/gettext.h"
@@ -170,9 +171,9 @@ docstring const InsetERT::buttonLabel(BufferView const & bv) const
 {
 	// U+1F512 LOCK
 	docstring const locked = tempfile_ ? docstring(1, 0x1F512) : docstring();
-	if (decoration() == InsetLayout::MINIMALISTIC)
+	if (decoration() == InsetDecoration::MINIMALISTIC)
 		return locked;
-	if (decoration() == InsetLayout::CLASSIC)
+	if (decoration() == InsetDecoration::CLASSIC)
 		return locked + (isOpen(bv) ? _("ERT") : getNewLabel(_("ERT")));
 	return locked + getNewLabel(_("ERT"));
 }

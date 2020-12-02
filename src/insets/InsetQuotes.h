@@ -15,7 +15,7 @@
 
 #include "Inset.h"
 
-#include "support/docstring.h"
+#include <map>
 
 
 namespace lyx {

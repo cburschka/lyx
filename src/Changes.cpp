@@ -17,6 +17,7 @@
 #include "Author.h"
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "Color.h"
 #include "Encoding.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"

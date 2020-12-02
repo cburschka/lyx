@@ -22,7 +22,6 @@
 #include "LayoutModuleList.h"
 #include "ModuleList.h"
 #include "Preamble.h"
-#include "TextClass.h"
 
 #include "support/ConsoleApplication.h"
 #include "support/convert.h"

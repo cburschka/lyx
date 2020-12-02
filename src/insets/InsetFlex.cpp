@@ -58,10 +58,10 @@ InsetLayout const & InsetFlex::getLayout() const
 }
 
 
-InsetLayout::InsetDecoration InsetFlex::decoration() const
+InsetDecoration InsetFlex::decoration() const
 {
-	InsetLayout::InsetDecoration const dec = getLayout().decoration();
-	return dec == InsetLayout::DEFAULT ? InsetLayout::CONGLOMERATE : dec;
+	InsetDecoration const dec = getLayout().decoration();
+	return dec == InsetDecoration::DEFAULT ? InsetDecoration::CONGLOMERATE : dec;
 }
 
 
@@ -97,11 +97,11 @@ bool InsetFlex::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_DISSOLVE:
 		if (!cmd.argument().empty()) {
 			InsetLayout const & il = getLayout();
-			InsetLayout::InsetLyXType const type =
+			InsetLyXType const type =
 				translateLyXType(to_utf8(cmd.argument()));
 			if (il.lyxtype() == type
 			    || (il.name() == DocumentClass::plainInsetLayout().name()
-				    && type == InsetLayout::CHARSTYLE)) {
+				    && type == InsetLyXType::CHARSTYLE)) {
 				FuncRequest temp_cmd(LFUN_INSET_DISSOLVE);
 				return InsetCollapsible::getStatus(cur, temp_cmd, flag);
 			} else
@@ -120,12 +120,12 @@ void InsetFlex::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_DISSOLVE:
 		if (!cmd.argument().empty()) {
 			InsetLayout const & il = getLayout();
-			InsetLayout::InsetLyXType const type =
+			InsetLyXType const type =
 				translateLyXType(to_utf8(cmd.argument()));
 
 			if (il.lyxtype() == type
 			    || (il.name() == DocumentClass::plainInsetLayout().name()
-				    && type == InsetLayout::CHARSTYLE)) {
+				    && type == InsetLyXType::CHARSTYLE)) {
 				FuncRequest temp_cmd(LFUN_INSET_DISSOLVE);
 				InsetCollapsible::doDispatch(cur, temp_cmd);
 			} else

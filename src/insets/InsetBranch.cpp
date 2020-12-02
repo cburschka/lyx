@@ -111,7 +111,7 @@ docstring const InsetBranch::buttonLabel(BufferView const &) const
 	if (inchild && master_selected != child_selected)
 		symb += (child_selected ? tick : cross);
 
-	if (decoration() == InsetLayout::MINIMALISTIC)
+	if (decoration() == InsetDecoration::MINIMALISTIC)
 		return symb + params_.branch;
 
 	docstring s;

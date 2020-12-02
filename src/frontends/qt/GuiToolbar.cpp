@@ -448,11 +448,11 @@ void DynamicMenuButton::loadFlexInsets()
 	QMenu * m = menu();
 	m->clear();
 	string const & menutype = tbitem_.name;
-	InsetLayout::InsetLyXType ftype;
+	InsetLyXType ftype;
 	if (menutype == "dynamic-custom-insets")
-		ftype = InsetLayout::CUSTOM;
+		ftype = InsetLyXType::CUSTOM;
 	else if (menutype == "dynamic-char-styles")
-		ftype = InsetLayout::CHARSTYLE;
+		ftype = InsetLyXType::CHARSTYLE;
 	else {
 		// this should have been taken care of earlier
 		LASSERT(false, return);

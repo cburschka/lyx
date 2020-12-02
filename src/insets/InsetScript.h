@@ -12,6 +12,7 @@
 #ifndef INSET_SCRIPT_H
 #define INSET_SCRIPT_H
 
+#include "FontInfo.h"
 #include "InsetText.h"
 
 

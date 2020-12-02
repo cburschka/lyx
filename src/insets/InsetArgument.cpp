@@ -18,6 +18,7 @@
 #include "Cursor.h"
 #include "FuncStatus.h"
 #include "FuncRequest.h"
+#include "InsetLayout.h"
 #include "InsetList.h"
 #include "Language.h"
 #include "Layout.h"
@@ -272,7 +273,7 @@ bool InsetArgument::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 string InsetArgument::contextMenuName() const
 {
-	if (decoration() == InsetLayout::CONGLOMERATE)
+	if (decoration() == InsetDecoration::CONGLOMERATE)
 		return "context-argument-conglomerate";
 	else
 		return "context-argument";
@@ -302,12 +303,12 @@ ColorCode InsetArgument::labelColor() const {
 }
 
 
-InsetLayout::InsetDecoration InsetArgument::decoration() const
+InsetDecoration InsetArgument::decoration() const
 {
-	InsetLayout::InsetDecoration dec = getLayout().decoration();
+	InsetDecoration dec = getLayout().decoration();
 	if (!decoration_.empty())
 		dec = translateDecoration(decoration_);
-	return dec == InsetLayout::DEFAULT ? InsetLayout::CLASSIC : dec;
+	return dec == InsetDecoration::DEFAULT ? InsetDecoration::CLASSIC : dec;
 }
 
 

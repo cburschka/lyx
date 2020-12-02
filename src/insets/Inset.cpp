@@ -27,6 +27,7 @@
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "InsetLayout.h"
 #include "MetricsInfo.h"
 #include "output_xhtml.h"
 #include "xml.h"
@@ -584,6 +585,12 @@ InsetLayout const & Inset::getLayout() const
 	if (!buffer_)
 		return DocumentClass::plainInsetLayout();
 	return buffer().params().documentClass().insetLayout(layoutName());
+}
+
+
+bool Inset::isPassThru() const
+{
+	return getLayout().isPassThru();
 }
 
 

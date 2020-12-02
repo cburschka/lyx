@@ -23,6 +23,7 @@
 #include "Cursor.h"
 #include "FuncRequest.h"
 #include "GuiView.h"
+#include "Layout.h"
 #include "Lexer.h"
 #include "Paragraph.h"
 #include "ParagraphParameters.h"

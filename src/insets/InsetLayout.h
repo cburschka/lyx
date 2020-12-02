@@ -27,33 +27,35 @@ namespace lyx {
 class Lexer;
 class TextClass;
 
+
+enum class InsetDecoration : int {
+	CLASSIC,
+	MINIMALISTIC,
+	CONGLOMERATE,
+	DEFAULT
+};
+
+enum class InsetLyXType : int {
+	NOLYXTYPE,
+	CHARSTYLE,
+	CUSTOM,
+	END,
+	STANDARD
+};
+
+enum class InsetLaTeXType : int {
+	NOLATEXTYPE,
+	COMMAND,
+	ENVIRONMENT,
+	ILT_ERROR
+};
+
+
 ///
 class InsetLayout {
 public:
 	///
 	InsetLayout() { labelfont_.setColor(Color_error); }
-	///
-	enum InsetDecoration {
-		CLASSIC,
-		MINIMALISTIC,
-		CONGLOMERATE,
-		DEFAULT
-	};
-	///
-	enum InsetLyXType {
-		NOLYXTYPE,
-		CHARSTYLE,
-		CUSTOM,
-		END,
-		STANDARD
-	};
-	///
-	enum InsetLaTeXType {
-		NOLATEXTYPE,
-		COMMAND,
-		ENVIRONMENT,
-		ILT_ERROR
-	};
 	///
 	bool read(Lexer & lexrc, TextClass const & tclass,
 			bool validating = false);
@@ -246,7 +248,7 @@ private:
 		* Values are 'charstyle', 'custom' (things that by default look like a
 		* footnote), 'standard'.
 		*/
-	InsetLyXType lyxtype_ = STANDARD;
+	InsetLyXType lyxtype_ = InsetLyXType::STANDARD;
 	///
 	docstring labelstring_ = from_ascii("UNDEFINED");
 	///
@@ -254,9 +256,9 @@ private:
 	///
 	bool contentaslabel_ = false;
 	///
-	InsetDecoration decoration_ = DEFAULT;
+	InsetDecoration decoration_ = InsetDecoration::DEFAULT;
 	///
-	InsetLaTeXType latextype_ = NOLATEXTYPE;
+	InsetLaTeXType latextype_ = InsetLaTeXType::NOLATEXTYPE;
 	///
 	std::string latexname_;
 	///
@@ -400,8 +402,8 @@ private:
 };
 
 ///
-InsetLayout::InsetLyXType translateLyXType(std::string const & str);
-InsetLayout::InsetDecoration translateDecoration(std::string const & str);
+InsetLyXType translateLyXType(std::string const & str);
+InsetDecoration translateDecoration(std::string const & str);
 
 } // namespace lyx
 

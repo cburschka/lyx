@@ -22,6 +22,7 @@
 #include "Encoding.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "InsetLayout.h"
 #include "InsetList.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"

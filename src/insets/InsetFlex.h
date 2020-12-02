@@ -15,6 +15,7 @@
 
 #include "InsetCollapsible.h"
 
+
 namespace lyx {
 
 /** The Flex inset, e.g., CharStyle, Custom inset or XML short element
@@ -31,7 +32,7 @@ public:
 	///
 	InsetCode lyxCode() const override { return FLEX_CODE; }
 	/// Default looks
-	InsetLayout::InsetDecoration decoration() const override;
+	InsetDecoration decoration() const override;
 	///
 	void write(std::ostream &) const override;
 	/// should paragraph indentation be omitted in any case?

@@ -71,6 +71,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "Encoding.h"
+#include "FontInfo.h"
 #include "LyX.h" // use_gui
 
 #include <iomanip>

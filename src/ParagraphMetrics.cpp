@@ -26,7 +26,6 @@
 #include "Layout.h"
 #include "LayoutEnums.h"
 #include "Paragraph.h"
-#include "Row.h"
 #include "TextClass.h"
 
 #include "frontends/FontMetrics.h"

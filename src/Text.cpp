@@ -29,7 +29,6 @@
 #include "Cursor.h"
 #include "CursorSlice.h"
 #include "CutAndPaste.h"
-#include "DispatchResult.h"
 #include "Encoding.h"
 #include "ErrorList.h"
 #include "factory.h"
@@ -43,7 +42,6 @@
 #include "ParagraphParameters.h"
 #include "TextClass.h"
 #include "TextMetrics.h"
-#include "Undo.h"
 #include "WordList.h"
 
 #include "insets/Inset.h"
@@ -2044,7 +2042,7 @@ docstring Text::currentState(CursorData const & cur, bool devel_mode) const
 
 	// Custom text style
 	InsetLayout const & layout = cur.inset().getLayout();
-	if (layout.lyxtype() == InsetLayout::CHARSTYLE)
+	if (layout.lyxtype() == InsetLyXType::CHARSTYLE)
 		os << _(", Style: ") << translateIfPossible(layout.labelstring());
 
 	if (devel_mode) {

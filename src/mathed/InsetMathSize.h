@@ -12,6 +12,7 @@
 #ifndef MATHSIZEINSET_H
 #define MATHSIZEINSET_H
 
+#include "FontEnums.h"
 #include "InsetMathNest.h"
 
 

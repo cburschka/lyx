@@ -32,28 +32,28 @@ using namespace lyx::support;
 
 namespace lyx {
 
-InsetLayout::InsetDecoration translateDecoration(std::string const & str)
+InsetDecoration translateDecoration(std::string const & str)
 {
 	if (compare_ascii_no_case(str, "classic") == 0)
-		return InsetLayout::CLASSIC;
+		return InsetDecoration::CLASSIC;
 	if (compare_ascii_no_case(str, "minimalistic") == 0)
-		return InsetLayout::MINIMALISTIC;
+		return InsetDecoration::MINIMALISTIC;
 	if (compare_ascii_no_case(str, "conglomerate") == 0)
-		return InsetLayout::CONGLOMERATE;
-	return InsetLayout::DEFAULT;
+		return InsetDecoration::CONGLOMERATE;
+	return InsetDecoration::DEFAULT;
 }
 
 namespace {
 
-InsetLayout::InsetLaTeXType translateLaTeXType(std::string const & str)
+InsetLaTeXType translateLaTeXType(std::string const & str)
 {
 	if (compare_ascii_no_case(str, "command") == 0)
-		return InsetLayout::COMMAND;
+		return InsetLaTeXType::COMMAND;
 	if (compare_ascii_no_case(str, "environment") == 0)
-		return InsetLayout::ENVIRONMENT;
+		return InsetLaTeXType::ENVIRONMENT;
 	if (compare_ascii_no_case(str, "none") == 0)
-		return InsetLayout::NOLATEXTYPE;
-	return InsetLayout::ILT_ERROR;
+		return InsetLaTeXType::NOLATEXTYPE;
+	return InsetLaTeXType::ILT_ERROR;
 }
 
 } // namespace
@@ -256,13 +256,13 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 			string lt;
 			lex >> lt;
 			lyxtype_ = translateLyXType(lt);
-			if (lyxtype_  == NOLYXTYPE) {
+			if (lyxtype_  == InsetLyXType::NOLYXTYPE) {
 				LYXERR0("Unknown LyXType `" << lt << "'.");
 				// this is not really a reason to abort
 				if (validating)
 					return false;
 			}
-			if (lyxtype_ == CHARSTYLE) {
+			if (lyxtype_ == InsetLyXType::CHARSTYLE) {
 				// by default, charstyles force the plain layout
 				multipar_ = false;
 				forceplain_ = true;
@@ -273,7 +273,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 			string lt;
 			lex >> lt;
 			latextype_ = translateLaTeXType(lt);
-			if (latextype_  == ILT_ERROR) {
+			if (latextype_  == InsetLaTeXType::ILT_ERROR) {
 				LYXERR0("Unknown LaTeXType `" << lt << "'.");
 				// this is not really a reason to abort
 				if (validating)
@@ -599,17 +599,17 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 }
 
 
-InsetLayout::InsetLyXType translateLyXType(std::string const & str)
+InsetLyXType translateLyXType(std::string const & str)
 {
 	if (compare_ascii_no_case(str, "charstyle") == 0)
-		return InsetLayout::CHARSTYLE;
+		return InsetLyXType::CHARSTYLE;
 	if (compare_ascii_no_case(str, "custom") == 0)
-		return InsetLayout::CUSTOM;
+		return InsetLyXType::CUSTOM;
 	if (compare_ascii_no_case(str, "end") == 0)
-		return InsetLayout::END;
+		return InsetLyXType::END;
 	if (compare_ascii_no_case(str, "standard") == 0)
-		return InsetLayout::STANDARD;
-	return InsetLayout::NOLYXTYPE;
+		return InsetLyXType::STANDARD;
+	return InsetLyXType::NOLYXTYPE;
 }
 
 

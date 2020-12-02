@@ -16,21 +16,19 @@
 #include "Buffer.h"
 #include "BufferView.h"
 #include "BufferParams.h"
-#include "Counters.h"
 #include "Cursor.h"
-#include "DispatchResult.h"
 #include "Encoding.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "InsetCaption.h"
 #include "InsetLabel.h"
+#include "InsetLayout.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "output_latex.h"
 #include "output_docbook.h"
 #include "output_xhtml.h"
-#include "TextClass.h"
 #include "TexRow.h"
 #include "texstream.h"
 
@@ -607,9 +605,9 @@ docstring const InsetListings::buttonLabel(BufferView const & bv) const
 {
 	// FIXME UNICODE
 	docstring const locked = tempfile_ ? docstring(1, 0x1F512) : docstring();
-	if (decoration() == InsetLayout::MINIMALISTIC)
+	if (decoration() == InsetDecoration::MINIMALISTIC)
 		return locked;
-	if (decoration() == InsetLayout::CLASSIC)
+	if (decoration() == InsetDecoration::CLASSIC)
 		return locked + (isOpen(bv) ? _("Listing") : getNewLabel(_("Listing")));
 	return locked + getNewLabel(_("Listing"));
 }

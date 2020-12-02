@@ -15,8 +15,6 @@
 #ifndef CHANGES_H
 #define CHANGES_H
 
-#include "Color.h"
-
 #include "support/strfwd.h"
 #include "support/types.h"
 #include "support/lyxtime.h"
@@ -28,6 +26,7 @@ namespace lyx {
 
 class AuthorList;
 class Buffer;
+class Color;
 class DocIterator;
 class FontInfo;
 class OutputParams;

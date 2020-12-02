@@ -86,7 +86,7 @@ InsetCollapsible::~InsetCollapsible()
 
 InsetCollapsible::CollapseStatus InsetCollapsible::status(BufferView const & bv) const
 {
-	if (decoration() == InsetLayout::CONGLOMERATE)
+	if (decoration() == InsetDecoration::CONGLOMERATE)
 		return status_;
 	return view_[&bv].auto_open_ ? Open : status_;
 }
@@ -95,21 +95,21 @@ InsetCollapsible::CollapseStatus InsetCollapsible::status(BufferView const & bv)
 InsetCollapsible::Geometry InsetCollapsible::geometry(BufferView const & bv) const
 {
 	switch (decoration()) {
-	case InsetLayout::CLASSIC:
+	case InsetDecoration::CLASSIC:
 		if (status(bv) == Open)
 			return view_[&bv].openinlined_ ? LeftButton : TopButton;
 		return ButtonOnly;
 
-	case InsetLayout::MINIMALISTIC: {
+	case InsetDecoration::MINIMALISTIC: {
 		return status(bv) == Open ?
 			(tempfile_ ? LeftButton : NoButton)
 			: ButtonOnly;
 	}
 
-	case InsetLayout::CONGLOMERATE:
+	case InsetDecoration::CONGLOMERATE:
 		return status(bv) == Open ? SubLabel : Corners ;
 
-	case InsetLayout::DEFAULT:
+	case InsetDecoration::DEFAULT:
 		break; // this shouldn't happen
 	}
 
@@ -260,6 +260,18 @@ bool InsetCollapsible::setMouseHover(BufferView const * bv, bool mouse_hover)
 {
 	view_[bv].mouse_hover_ = mouse_hover;
 	return true;
+}
+
+
+ColorCode InsetCollapsible::backgroundColor(PainterInfo const &) const
+{
+	return getLayout().bgcolor();
+}
+
+
+ColorCode InsetCollapsible::labelColor() const
+{
+	return getLayout().labelfont().color();
 }
 
 
@@ -434,8 +446,8 @@ bool InsetCollapsible::editable() const
 		return false;
 	
 	switch (decoration()) {
-	case InsetLayout::CLASSIC:
-	case InsetLayout::MINIMALISTIC:
+	case InsetDecoration::CLASSIC:
+	case InsetDecoration::MINIMALISTIC:
 		return status_ == Open;
 	default:
 		return true;
@@ -684,7 +696,7 @@ docstring const InsetCollapsible::buttonLabel(BufferView const & bv) const
 {
 	// U+1F512 LOCK
 	docstring const locked = tempfile_ ? docstring(1, 0x1F512) : docstring();
-	if (decoration() == InsetLayout::MINIMALISTIC)
+	if (decoration() == InsetDecoration::MINIMALISTIC)
 		return locked;
 	// indicate changed content in label (#8645)
 	// ✎ U+270E LOWER RIGHT PENCIL
@@ -707,10 +719,22 @@ void InsetCollapsible::setStatus(Cursor & cur, CollapseStatus status)
 }
 
 
-InsetLayout::InsetDecoration InsetCollapsible::decoration() const
+InsetDecoration InsetCollapsible::decoration() const
 {
-	InsetLayout::InsetDecoration const dec = getLayout().decoration();
-	return dec == InsetLayout::DEFAULT ? InsetLayout::CLASSIC : dec;
+	InsetDecoration const dec = getLayout().decoration();
+	return dec == InsetDecoration::DEFAULT ? InsetDecoration::CLASSIC : dec;
+}
+
+
+FontInfo InsetCollapsible::getFont() const
+{
+	return getLayout().font();
+}
+
+
+FontInfo InsetCollapsible::getLabelfont() const
+{
+	return getLayout().labelfont();
 }
 
 
@@ -719,7 +743,7 @@ string InsetCollapsible::contextMenu(BufferView const & bv, int x,
 {
 	string context_menu = contextMenuName();
 	string const it_context_menu = InsetText::contextMenuName();
-	if (decoration() == InsetLayout::CONGLOMERATE)
+	if (decoration() == InsetDecoration::CONGLOMERATE)
 		return context_menu + ";" + it_context_menu;
 
 	string const ic_context_menu = InsetCollapsible::contextMenuName();
@@ -739,7 +763,7 @@ string InsetCollapsible::contextMenu(BufferView const & bv, int x,
 
 string InsetCollapsible::contextMenuName() const
 {
-	if (decoration() == InsetLayout::CONGLOMERATE)
+	if (decoration() == InsetDecoration::CONGLOMERATE)
 		return "context-conglomerate";
 	else
 		return "context-collapsible";

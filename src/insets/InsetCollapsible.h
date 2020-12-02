@@ -18,12 +18,16 @@
 
 #include "Box.h"
 
+#include "support/unique_ptr.h"
+
 #include <map>
 
 namespace lyx {
 
 class CursorSlice;
 class InsetLayout;
+
+enum class InsetDecoration : int;
 
 namespace support { class TempFile; }
 
@@ -120,11 +124,11 @@ public:
 	 */
 
 	/// Default looks
-	virtual InsetLayout::InsetDecoration decoration() const;
+	virtual InsetDecoration decoration() const;
 	/// Inset font
-	virtual FontInfo getFont() const { return getLayout().font(); }
+	virtual FontInfo getFont() const;
 	/// Label font
-	virtual FontInfo getLabelfont() const { return getLayout().labelfont(); }
+	virtual FontInfo getLabelfont() const;
 	///
 	enum Geometry {
 		TopButton,
@@ -145,10 +149,9 @@ public:
 	///
 	bool setMouseHover(BufferView const * bv, bool mouse_hover) const override;
 	///
-	ColorCode backgroundColor(PainterInfo const &) const override
-		{ return getLayout().bgcolor(); }
+	ColorCode backgroundColor(PainterInfo const &) const override;
 	///
-	ColorCode labelColor() const override { return getLayout().labelfont().color(); }
+	ColorCode labelColor() const override;
 	///
 	InsetCode lyxCode() const override { return COLLAPSIBLE_CODE; }
 

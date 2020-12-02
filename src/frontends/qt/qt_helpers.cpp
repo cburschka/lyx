@@ -14,26 +14,15 @@
 
 #include "qt_helpers.h"
 
-#include "FileDialog.h"
 #include "LengthCombo.h"
+#include "LyXRC.h"
 
 #include "frontends/alert.h"
-
-#include "BufferParams.h"
-#include "FloatList.h"
-#include "FuncRequest.h"
-#include "Language.h"
-#include "LyX.h"
-#include "LyXRC.h"
-#include "LyXAction.h"
-#include "TextClass.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
-#include "support/Length.h"
 #include "support/lstrings.h"
-#include "support/os.h"
 #include "support/Package.h"
 #include "support/PathChanger.h"
 #include "support/Systemcall.h"

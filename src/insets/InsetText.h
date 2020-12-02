@@ -17,6 +17,7 @@
 #include "ColorCode.h"
 #include "Text.h"
 
+
 namespace lyx {
 
 class CompletionList;
@@ -154,23 +155,20 @@ public:
 	///
 	bool insetAllowed(InsetCode) const override;
 	///
-	bool allowSpellCheck() const override { return getLayout().spellcheck() && !getLayout().isPassThru(); }
+	bool allowSpellCheck() const override;
 	///
 	virtual bool isMacroScope() const { return false; }
 	///
-	bool allowMultiPar() const override { return getLayout().isMultiPar(); }
+	bool allowMultiPar() const override;
 	///
 	bool isInTitle() const override { return intitle_context_; }
 	///
 	/// should paragraphs be forced to use the empty layout?
-	bool forcePlainLayout(idx_type = 0) const override
-		{ return getLayout().forcePlainLayout(); }
+	bool forcePlainLayout(idx_type = 0) const override;
 	/// should the user be allowed to customize alignment, etc.?
-	bool allowParagraphCustomization(idx_type = 0) const override
-		{ return getLayout().allowParagraphCustomization(); }
+	bool allowParagraphCustomization(idx_type = 0) const override;
 	/// should paragraphs be forced to use a local font language switch?
-	bool forceLocalFontSwitch() const override
-		{ return getLayout().forceLocalFontSwitch(); }
+	bool forceLocalFontSwitch() const override;
 
 	/// Update the counters of this inset and of its contents
 	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false) override;

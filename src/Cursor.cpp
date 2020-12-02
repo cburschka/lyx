@@ -38,6 +38,7 @@
 #include "support/gettext.h"
 #include "support/lassert.h"
 
+#include "insets/InsetLayout.h"
 #include "insets/InsetTabular.h"
 
 #include "mathed/InsetMath.h"

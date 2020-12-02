@@ -12,7 +12,7 @@
 #ifndef INSETARGUMENT_H
 #define INSETARGUMENT_H
 
-
+#include "FontInfo.h"
 #include "InsetCollapsible.h"
 
 
@@ -80,7 +80,7 @@ public:
 	/// \name Public functions inherited from InsetCollapsible class
 	//@{
 	///
-	InsetLayout::InsetDecoration decoration() const override;
+	InsetDecoration decoration() const override;
 	///
 	FontInfo getFont() const override;
 	///

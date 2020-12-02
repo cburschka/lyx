@@ -13,8 +13,6 @@
 #include <config.h>
 
 #include "Layout.h"
-#include "FontInfo.h"
-#include "Language.h"
 #include "Lexer.h"
 #include "output_xhtml.h"
 #include "TextClass.h"
@@ -23,7 +21,6 @@
 #include "support/docstream.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
-#include "support/Messages.h"
 #include "support/textutils.h"
 
 

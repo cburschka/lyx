@@ -17,11 +17,11 @@
 
 #include "ColorCode.h"
 #include "InsetCode.h"
-#include "InsetLayout.h"
 #include "LayoutEnums.h"
 #include "OutputEnums.h"
 #include "OutputParams.h"
 
+#include "support/docstring.h"
 #include "support/strfwd.h"
 #include "support/types.h"
 
@@ -452,7 +452,7 @@ public:
 	///
 	virtual InsetLayout const & getLayout() const;
 	///
-	virtual bool isPassThru() const { return getLayout().isPassThru(); }
+	virtual bool isPassThru() const;
 	/// Is this inset embedded in a title?
 	virtual bool isInTitle() const { return false; }
 	/// Is this inset's layout defined in the document's textclass?

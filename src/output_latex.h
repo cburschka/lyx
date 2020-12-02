@@ -14,7 +14,6 @@
 
 #include <utility>
 
-#include "support/docstream.h"
 #include "Layout.h"
 #include "ParagraphList.h"
 
