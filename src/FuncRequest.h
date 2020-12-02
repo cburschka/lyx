@@ -105,25 +105,25 @@ public:
 
 private:
 	/// the action
-	FuncCode action_;
+	FuncCode action_ = LFUN_NOACTION;
 	/// the action's string argument
 	docstring argument_;
 	/// who initiated the action
-	Origin origin_;
+	Origin origin_ = INTERNAL;
 	/// to which view should be this command sent (see bug #11004)
 	/// NULL=current view
-	frontend::GuiView* view_origin_;
+	frontend::GuiView* view_origin_ = nullptr;
 	/// the x coordinate of a mouse press
-	int x_;
+	int x_ = 0;
 	/// the y coordinate of a mouse press
-	int y_;
+	int y_ = 0;
 	/// some extra information (like button number)
-	mouse_button::state button_;
+	mouse_button::state button_ = mouse_button::none;
 	///
-	KeyModifier modifier_;
+	KeyModifier modifier_ = NoModifier;
 	/// Commands should be run synchronously when they
 	/// are launched via "command-sequence" or "repeat" or "buffer-forall"
-	bool allow_async_;
+	bool allow_async_ = true;
 };
 
 
