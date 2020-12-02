@@ -45,8 +45,6 @@ public:
 
 	bool neverIndent() const override { return true; }
 
-	bool inheritFont() const override { return false; }
-
 	InsetCode lyxCode() const override { return PREVIEW_CODE; }
 
 	docstring layoutName() const override { return from_ascii("Preview"); }
