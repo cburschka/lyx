@@ -1193,6 +1193,10 @@ void Layout::readArgument(Lexer & lex, bool validating)
 			latexargs_));
 	latexarg & arg = lam[id];
 
+	if (listpreamble)
+		// list preamble has no delimiters by default
+		arg.nodelims = true;
+
 	bool error = false;
 	bool finished = false;
 	while (!finished && lex.isOK() && !error) {
