@@ -28,7 +28,7 @@ public:
 	explicit InsetMathCommand(Buffer * buf, docstring const & name,
 		bool needs_math_mode = true);
 	///
-	marker_type marker(BufferView const *) const override { return NO_MARKER; }
+	marker_type marker(BufferView const *) const override { return marker_type::NO_MARKER; }
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///

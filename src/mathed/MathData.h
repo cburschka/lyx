@@ -16,8 +16,9 @@
 #define MATH_DATA_H
 
 #include "MathAtom.h"
-#include "MathRow.h"
+#include "MathClass.h"
 
+#include "Dimension.h"
 #include "OutputEnums.h"
 
 #include "support/strfwd.h"
@@ -33,13 +34,14 @@ class BufferView;
 class Cursor;
 class Dimension;
 class DocIterator;
-class LaTeXFeatures;
-class ReplaceData;
-class MacroContext;
 class InsetMathMacro;
+class LaTeXFeatures;
+class MacroContext;
+class MathRow;
 class MetricsInfo;
 class PainterInfo;
 class ParIterator;
+class ReplaceData;
 class TextMetricsInfo;
 class TextPainter;
 

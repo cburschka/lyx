@@ -15,9 +15,10 @@
 
 #include "InsetMathBrace.h"
 #include "InsetMathFont.h"
+#include "InsetMathMacro.h"
 #include "InsetMathScript.h"
 #include "MacroTable.h"
-#include "InsetMathMacro.h"
+#include "MathRow.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 #include "MetricsInfo.h"

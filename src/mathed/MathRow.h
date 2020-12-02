@@ -12,7 +12,6 @@
 #ifndef MATH_ROW_H
 #define MATH_ROW_H
 
-#include "InsetMath.h"
 #include "MathClass.h"
 
 #include "ColorCode.h"
@@ -25,10 +24,12 @@
 namespace lyx {
 
 class BufferView;
+class InsetMath;
 class MathData;
 class MetricsInfo;
 class PainterInfo;
 
+enum class marker_type : int;
 
 /*
  * While for editing purpose it is important that macros are counted
@@ -67,7 +68,7 @@ public:
 		/// count whether the current mathdata is nested in macro(s)
 		int macro_nesting;
 		/// Marker type
-		InsetMath::marker_type marker;
+		marker_type marker;
 
 		/// When type is INSET
 		/// the math inset (also for BEGIN and END)

@@ -45,7 +45,6 @@
 #include "xml.h"
 #include "output_xhtml.h"
 #include "Paragraph.h"
-#include "ParagraphParameters.h"
 #include "ParIterator.h"
 #include "TexRow.h"
 #include "texstream.h"

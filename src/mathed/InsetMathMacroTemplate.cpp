@@ -216,13 +216,13 @@ Inset * InsetDisplayLabelBox::clone() const
 }
 
 
-InsetMath::marker_type InsetDisplayLabelBox::marker(BufferView const * bv) const
+marker_type InsetDisplayLabelBox::marker(BufferView const * bv) const
 {
 	if (parent_.editing(bv)
 	    || !parent_.cell(parent_.displayIdx()).empty())
-		return MARKER;
+		return marker_type::MARKER;
 	else
-		return NO_MARKER;
+		return marker_type::NO_MARKER;
 }
 
 

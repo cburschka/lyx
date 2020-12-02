@@ -50,7 +50,9 @@
 #include "insets/InsetRef.h"
 #include "insets/InsetText.h"
 
+#include "mathed/InsetMath.h"
 #include "mathed/MathData.h"
+#include "mathed/MathRow.h"
 
 #include "frontends/alert.h"
 #include "frontends/CaretGeometry.h"

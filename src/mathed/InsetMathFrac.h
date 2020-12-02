@@ -25,7 +25,7 @@ public:
 	///
 	InsetMathFracBase(Buffer * buf, idx_type ncells = 2);
 	///
-	marker_type marker(BufferView const *) const override { return MARKER2; }
+	marker_type marker(BufferView const *) const override { return marker_type::MARKER2; }
 	///
 	bool idxUpDown(Cursor &, bool up) const override;
 	///

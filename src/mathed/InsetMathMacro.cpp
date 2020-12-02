@@ -19,6 +19,7 @@
 #include "MathCompletionList.h"
 #include "MathExtern.h"
 #include "MathFactory.h"
+#include "MathRow.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 
@@ -74,7 +75,7 @@ public:
 	///
 	InsetMathMacro const * owner() { return mathMacro_; }
 	///
-	marker_type marker(BufferView const *) const override { return NO_MARKER; }
+	marker_type marker(BufferView const *) const override { return marker_type::NO_MARKER; }
 	///
 	InsetCode lyxCode() const override { return ARGUMENT_PROXY_CODE; }
 	/// The math data to use for display
@@ -352,7 +353,7 @@ bool InsetMathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 
 	MathRow::Element e_beg(mi, MathRow::BEGIN);
 	e_beg.inset = this;
-	e_beg.marker = (d->nesting_ == 1) ? marker(mi.base.bv) : NO_MARKER;
+	e_beg.marker = (d->nesting_ == 1) ? marker(mi.base.bv) : marker_type::NO_MARKER;
 	mrow.push_back(e_beg);
 
 	d->macro_->lock();
@@ -371,7 +372,7 @@ bool InsetMathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 
 	MathRow::Element e_end(mi, MathRow::END);
 	e_end.inset = this;
-	e_end.marker = (d->nesting_ == 1) ? marker(mi.base.bv) : NO_MARKER;
+	e_end.marker = (d->nesting_ == 1) ? marker(mi.base.bv) : marker_type::NO_MARKER;
 	mrow.push_back(e_end);
 
 	return has_contents;
@@ -544,29 +545,29 @@ bool InsetMathMacro::editMetrics(BufferView const * bv) const
 }
 
 
-InsetMath::marker_type InsetMathMacro::marker(BufferView const * bv) const
+marker_type InsetMathMacro::marker(BufferView const * bv) const
 {
 	if (nargs() == 0)
-		return NO_MARKER;
+		return marker_type::NO_MARKER;
 
 	switch (d->displayMode_) {
 	case DISPLAY_INIT:
 	case DISPLAY_INTERACTIVE_INIT:
-		return NO_MARKER;
+		return marker_type::NO_MARKER;
 	case DISPLAY_UNFOLDED:
-		return MARKER;
+		return marker_type::MARKER;
 	case DISPLAY_NORMAL:
 		switch (lyxrc.macro_edit_style) {
 		case LyXRC::MACRO_EDIT_INLINE:
-			return MARKER2;
+			return marker_type::MARKER2;
 		case LyXRC::MACRO_EDIT_INLINE_BOX:
-			return d->editing_[bv] ? BOX_MARKER : MARKER2;
+			return d->editing_[bv] ? marker_type::BOX_MARKER : marker_type::MARKER2;
 		case LyXRC::MACRO_EDIT_LIST:
-			return MARKER2;
+			return marker_type::MARKER2;
 		}
 	}
 	// please gcc 4.6
-	return NO_MARKER;
+	return marker_type::NO_MARKER;
 }
 
 

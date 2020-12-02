@@ -20,6 +20,8 @@
 #include "CoordCache.h"
 #include "MetricsInfo.h"
 
+#include "mathed/InsetMath.h"
+
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
@@ -37,7 +39,7 @@ namespace lyx {
 
 MathRow::Element::Element(MetricsInfo const & mi, Type t, MathClass mc)
 	: type(t), mclass(mc), before(0), after(0), macro_nesting(mi.base.macro_nesting),
-	  marker(InsetMath::NO_MARKER), inset(nullptr), compl_unique_to(0), ar(nullptr),
+	  marker(marker_type::NO_MARKER), inset(nullptr), compl_unique_to(0), ar(nullptr),
 	  color(Color_red)
 {}
 
@@ -49,11 +51,11 @@ namespace {
 int markerMargin(MathRow::Element const & e)
 {
 	switch(e.marker) {
-	case InsetMath::MARKER:
-	case InsetMath::MARKER2:
-	case InsetMath::BOX_MARKER:
+	case marker_type::MARKER:
+	case marker_type::MARKER2:
+	case marker_type::BOX_MARKER:
 		return 2;
-	case InsetMath::NO_MARKER:
+	case marker_type::NO_MARKER:
 		return 0;
 	}
 	// should not happen
@@ -66,16 +68,16 @@ void afterMetricsMarkers(MetricsInfo const & , MathRow::Element & e,
 {
 	// handle vertical space for markers
 	switch(e.marker) {
-	case InsetMath::NO_MARKER:
+	case marker_type::NO_MARKER:
 		break;
-	case InsetMath::MARKER:
+	case marker_type::MARKER:
 		++dim.des;
 		break;
-	case InsetMath::MARKER2:
+	case marker_type::MARKER2:
 		++dim.asc;
 		++dim.des;
 		break;
-	case InsetMath::BOX_MARKER:
+	case marker_type::BOX_MARKER:
 		FontInfo font;
 		font.setSize(TINY_SIZE);
 		Dimension namedim;
@@ -93,7 +95,7 @@ void afterMetricsMarkers(MetricsInfo const & , MathRow::Element & e,
 void drawMarkers(PainterInfo const & pi, MathRow::Element const & e,
                  int const x, int const y)
 {
-	if (e.marker == InsetMath::NO_MARKER)
+	if (e.marker == marker_type::NO_MARKER)
 		return;
 
 	CoordCache const & coords = pi.base.bv->coordCache();
@@ -104,7 +106,7 @@ void drawMarkers(PainterInfo const & pi, MathRow::Element const & e,
 	int const r = x + dim.width() - e.after;
 
 	// Grey lower box
-	if (e.marker == InsetMath::BOX_MARKER) {
+	if (e.marker == marker_type::BOX_MARKER) {
 		// draw header and rectangle around
 		FontInfo font;
 		font.setSize(TINY_SIZE);
@@ -132,8 +134,8 @@ void drawMarkers(PainterInfo const & pi, MathRow::Element const & e,
 	pi.pain.line(r - 3, d, r, d, pen_color);
 
 	// Upper corners
-	if (e.marker == InsetMath::BOX_MARKER
-	    || e.marker == InsetMath::MARKER2) {
+	if (e.marker == marker_type::BOX_MARKER
+	    || e.marker == marker_type::MARKER2) {
 		int const a = y - dim.ascent();
 		pi.pain.line(l, a + 3, l, a, pen_color);
 		pi.pain.line(r, a + 3, r, a, pen_color);
@@ -198,7 +200,7 @@ MathRow::MathRow(MetricsInfo & mi, MathData const * ar)
 		// for linearized insets (macros...) too
 		if (e.type == BEGIN)
 			bef.after = max(bef.after, markerMargin(e));
-		if (e.type == END && e.marker != InsetMath::NO_MARKER) {
+		if (e.type == END && e.marker != marker_type::NO_MARKER) {
 			Element & aft = elements_[after(i)];
 			aft.before = max(aft.before, markerMargin(e));
 		}

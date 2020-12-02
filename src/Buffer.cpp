@@ -69,7 +69,6 @@
 
 #include "insets/InsetBranch.h"
 #include "insets/InsetInclude.h"
-#include "insets/InsetTabular.h"
 #include "insets/InsetText.h"
 
 #include "mathed/InsetMathHull.h"

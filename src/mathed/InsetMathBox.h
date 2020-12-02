@@ -58,7 +58,7 @@ public:
 	///
 	mode_type currentMode() const override { return TEXT_MODE; }
 	///
-	marker_type marker(BufferView const *) const override { return NO_MARKER; }
+	marker_type marker(BufferView const *) const override { return marker_type::NO_MARKER; }
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
@@ -118,7 +118,7 @@ public:
 	///
 	explicit InsetMathBoxed(Buffer * buf);
 	///
-	marker_type marker(BufferView const *) const override { return NO_MARKER; }
+	marker_type marker(BufferView const *) const override { return marker_type::NO_MARKER; }
 	///
 	void validate(LaTeXFeatures & features) const override;
 	///

@@ -50,6 +50,15 @@ enum Limits {
 };
 
 
+/// The possible marker types for math insets
+enum class marker_type : int {
+	NO_MARKER,
+	MARKER2,
+	MARKER,
+	BOX_MARKER
+};
+
+
 /**
 
 Abstract base class for all math objects.  A math insets is for use of the
@@ -123,8 +132,6 @@ public:
 	/// this is overridden by specific insets
 	mode_type currentMode() const override { return MATH_MODE; }
 
-	// The possible marker types for math insets
-	enum marker_type { NO_MARKER, MARKER2, MARKER, BOX_MARKER };
 	/// this is overridden by insets with specific edit marker type
 	virtual marker_type marker(BufferView const *) const;
 
