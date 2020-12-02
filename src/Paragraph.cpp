@@ -2591,7 +2591,8 @@ void Paragraph::latex(BufferParams const & bparams,
 				c == META_INSET
 				&& getInset(i)
 				&& getInset(i)->allowMultiPar()
-				&& getInset(i)->lyxCode() != ERT_CODE;
+				&& getInset(i)->lyxCode() != ERT_CODE
+				&& getInset(i)->producesOutput();
 
 		bool closeLanguage = false;
 		bool lang_switched_at_inset = false;
