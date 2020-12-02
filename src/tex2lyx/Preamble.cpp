@@ -121,6 +121,9 @@ const char * const known_german_quotes_languages[] = {"austrian", "bulgarian",
 const char * const known_polish_quotes_languages[] = {"afrikaans", "bosnian", "croatian",
 "dutch", "magyar", "polish", "romanian", "serbian", "serbian-latin", 0};
 
+/// languages with hungarian quotes (.lyx names)
+const char * const known_hungarian_quotes_languages[] = {"magyar", 0};
+
 /// languages with russian quotes (.lyx names)
 const char * const known_russian_quotes_languages[] = {"azerbaijani", "oldrussian",
 "russian", "ukrainian", 0};
@@ -3173,6 +3176,9 @@ void Preamble::parse(Parser & p, string const & forceclass,
 	// polish
 	else if (is_known(h_language, known_polish_quotes_languages))
 		h_quotes_style = "polish";
+	// hungarian
+	else if (is_known(h_language, known_hungarian_quotes_languages))
+		h_quotes_style = "hungarian";
 	// russian
 	else if (is_known(h_language, known_russian_quotes_languages))
 		h_quotes_style = "russian";

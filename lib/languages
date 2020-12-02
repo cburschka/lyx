@@ -57,6 +57,7 @@
 #   - french:	  <<text>>		``text''	(outward guillemets -- 66_99)
 #   - frenchin:   <<text>>		<<text>>	(French Imprimerie Nationale style)
 #   - german:	  ,,text``		,text`		(99/66 -- 9/6)
+#   - hungarian:  ,,text''		>>text<<	(99/99 -- double inward guillemets)
 #   - polish:	  ,,text''		,text'		(99/99 -- 9/9)
 #   - russian:    <<text>>		,,text``       	(outward guillemets -- 99/66)
 #   - swedish:	  ''text''		'text'		(99_99 -- 9_9)
@@ -1116,7 +1117,7 @@ Language magyar
 	BabelName        magyar
 	PolyglossiaName  magyar
 	XindyName        hungarian
-	QuoteStyle       polish
+	QuoteStyle       hungarian
 	Encoding         iso8859-2
 	FontEncoding	 T1|OT1
 	DateFormats      "yyyy. MMMM d.|yyyy. MMM d.|yyyy.MM.dd."

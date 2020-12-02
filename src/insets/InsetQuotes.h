@@ -51,6 +51,8 @@ enum class QuoteStyle : int {
 	///
 	CJKAngle,
 	///
+	Hungarian,
+	///
 	Dynamic
 };
 

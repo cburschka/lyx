@@ -7,6 +7,11 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2020-12-02 Jürgen Spitzmüller <spitz@lyx.org>
+ 	* Format incremented to 600: Hungarian quote style
+ 	  New buffer param \quotes_style hungarian
+ 	  \begin_inset Quotes h{l,r}{d,s}
+
 2020-10-10 Pavel Sanda <sanda@lyx.org>
 	* Format incremented to 599: Add inset for \nopagebreak macro (part of InseNewPage now).
 

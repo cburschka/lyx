@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 599
+\lyxformat 600
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -19447,7 +19447,13 @@ Quote Style
 \family default
  (note that \SpecialChar LyX
  makes a sensible proposal for the selected main language).
- There are 14
+ There are 1
+\change_deleted -712698321 1606924196
+4
+\change_inserted -712698321 1606924196
+5
+\change_unchanged
+
 \begin_inset space ~
 \end_inset
 
@@ -20078,6 +20084,76 @@ these inner
 \end_inset
 
  quotation marks (another style common in Sweden)
+\change_inserted -712698321 1606924211
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\change_inserted -712698321 1606924279
+
+\family sans
+\begin_inset Quotes pld
+\end_inset
+
+Outer
+\begin_inset Quotes prd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes ald
+\end_inset
+
+inner
+\begin_inset Quotes ard
+\end_inset
+
+
+\family default
+ Produces 
+\family sans
+
+\begin_inset Quotes pld
+\end_inset
+
+
+\family default
+these outer
+\family sans
+
+\begin_inset Quotes prd
+\end_inset
+
+
+\family default
+ and 
+\family sans
+
+\begin_inset Quotes ald
+\end_inset
+
+
+\family default
+these inner
+\family sans
+
+\begin_inset Quotes ard
+\end_inset
+
+
+\family default
+ quotation marks (as common in Hungary)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Labeling

@@ -3971,6 +3971,28 @@ def revert_nopagebreak(document):
         document.body[i : end + 1] = subst
 
 
+def revert_hrquotes(document):
+    " Revert Hungarian Quotation marks "
+    
+    i = find_token(document.header, "\\quotes_style hungarian", 0)
+    if i != -1:
+        document.header[i] = "\\quotes_style polish"
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Quotes h")
+        if i == -1:
+            return
+        if document.body[i] == "\\begin_inset Quotes hld":
+            document.body[i] = "\\begin_inset Quotes pld"
+        elif document.body[i] == "\\begin_inset Quotes hrd":
+            document.body[i] = "\\begin_inset Quotes prd"
+        elif document.body[i] == "\\begin_inset Quotes hls":
+            document.body[i] = "\\begin_inset Quotes ald"
+        elif document.body[i] == "\\begin_inset Quotes hrs":
+            document.body[i] = "\\begin_inset Quotes ard"
+
+
 ##
 # Conversion hub
 #
@@ -4031,10 +4053,12 @@ convert = [
            [596, [convert_parskip]],
            [597, [convert_libertinus_rm_fonts]],
            [598, []],
-           [599, []]
+           [599, []],
+           [600, []]
           ]
 
-revert =  [[598, [revert_nopagebreak]],
+revert =  [[598, [revert_hrquotes]],
+           [598, [revert_nopagebreak]],
            [597, [revert_docbook_table_output]],
            [596, [revert_libertinus_rm_fonts,revert_libertinus_sftt_fonts]],
            [595, [revert_parskip,revert_line_vspaces]],

@@ -67,10 +67,11 @@ namespace {
  * r    <<russian>>  (,,inner quotation``)
  * j    [U+300C]cjk[U+300D]  ([U+300E]inner quotation[U+300F]) [CORNER BRACKETS]
  * k    [U+300A]cjkangle[U+300B]  ([U+3008]inner quotation[U+3009]) [ANGLE BRACKETS]
+ * h    ,,hungarian''   (>>inner quotation<<)
  * x    dynamic style (inherits document settings)
  */
 
-char const * const style_char = "esgpcaqbwfirjkx";
+char const * const style_char = "esgpcaqbwfirjkhx";
 char const * const side_char = "lr" ;
 char const * const level_char = "sd";
 
@@ -303,6 +304,13 @@ char_type InsetQuotesParams::getQuoteChar(QuoteStyle const & style, QuoteLevel c
 		right_primary = 0x300b; // RIGHT DOUBLE ANGLE BRACKET
 		left_secondary =  0x3008; // LEFT ANGLE BRACKET
 		right_secondary = 0x3009; // RIGHT ANGLE BRACKET
+		break;
+	}
+	case QuoteStyle::Hungarian: {
+		left_primary =  0x201e; // ,,
+		right_primary = 0x201d; // ''
+		left_secondary = 0x00bb; // >>
+		right_secondary = 0x00ab; // <<
 		break;
 	}
 	case QuoteStyle::Dynamic:
@@ -707,6 +715,8 @@ QuoteStyle InsetQuotes::getStyle(string const & s)
 		qs = QuoteStyle::CJK;
 	else if (s == "cjkangle")
 		qs = QuoteStyle::CJKAngle;
+	else if (s == "hungarian")
+		qs = QuoteStyle::Hungarian;
 	else if (s == "dynamic")
 		qs = QuoteStyle::Dynamic;
 

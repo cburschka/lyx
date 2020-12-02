@@ -73,7 +73,8 @@ static char const * const string_paragraph_separation[] = {
 
 static char const * const string_quotes_style[] = {
 	"english", "swedish", "german", "polish", "swiss", "danish", "plain",
-	"british", "swedishg", "french", "frenchin", "russian", "cjk", "cjkangle", ""
+	"british", "swedishg", "french", "frenchin", "russian", "cjk", "cjkangle",
+	"hungarian", ""
 };
 
 
@@ -156,6 +157,7 @@ QuotesStyleTranslator const init_quotesstyletranslator()
 	translator.addPair(string_quotes_style[11], QuoteStyle::Russian);
 	translator.addPair(string_quotes_style[12], QuoteStyle::CJK);
 	translator.addPair(string_quotes_style[13], QuoteStyle::CJKAngle);
+	translator.addPair(string_quotes_style[14], QuoteStyle::Hungarian);
 	return translator;
 }
 
