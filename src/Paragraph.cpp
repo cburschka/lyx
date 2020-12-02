@@ -2903,6 +2903,31 @@ void Paragraph::latex(BufferParams const & bparams,
 		alien_script.clear();
 	}
 
+	Font const font = empty()
+		? getLayoutFont(bparams, real_outerfont)
+		: getFont(bparams, size() - 1, real_outerfont);
+
+	InsetText const * textinset = inInset().asInsetText();
+
+	bool const maintext = textinset
+		? textinset->text().isMainText()
+		: false;
+
+	size_t const numpars = textinset
+		? textinset->text().paragraphs().size()
+		: 0;
+
+	bool needPar = false;
+
+	if (style.resfont.size() != font.fontInfo().size()
+	    && (!runparams.isLastPar || maintext
+		|| (numpars > 1 && d->ownerCode() != CELL_CODE
+		    && (inInset().getLayout().isDisplay()
+			|| parInline)))
+	    && !style.isCommand()) {
+		needPar = true;
+	}
+
 	// If we have an open font definition, we have to close it
 	if (open_font) {
 		// Make sure that \\par is done with the font of the last
@@ -2914,31 +2939,6 @@ void Paragraph::latex(BufferParams const & bparams,
 		// We must not change the font for the last paragraph
 		// of non-multipar insets, tabular cells or commands,
 		// since this produces unwanted whitespace.
-
-		Font const font = empty()
-			? getLayoutFont(bparams, real_outerfont)
-			: getFont(bparams, size() - 1, real_outerfont);
-
-		InsetText const * textinset = inInset().asInsetText();
-
-		bool const maintext = textinset
-			? textinset->text().isMainText()
-			: false;
-
-		size_t const numpars = textinset
-			? textinset->text().paragraphs().size()
-			: 0;
-
-		bool needPar = false;
-
-		if (style.resfont.size() != font.fontInfo().size()
-		    && (!runparams.isLastPar || maintext
-			|| (numpars > 1 && d->ownerCode() != CELL_CODE
-			    && (inInset().getLayout().isDisplay()
-				|| parInline)))
-		    && !style.isCommand()) {
-			needPar = true;
-		}
 #ifdef FIXED_LANGUAGE_END_DETECTION
 		if (next_) {
 			running_font.latexWriteEndChanges(os, bparams,
@@ -2956,11 +2956,11 @@ void Paragraph::latex(BufferParams const & bparams,
 		running_font.latexWriteEndChanges(os, bparams, runparams,
 				basefont, basefont, needPar);
 #endif
-		if (needPar) {
-			// The \par could not be inserted at the same nesting
-			// level of the font size change, so do it now.
-			os << "{\\" << font.latexSize() << "\\par}";
-		}
+	}
+	if (needPar) {
+		// The \par could not be inserted at the same nesting
+		// level of the font size change, so do it now.
+		os << "{\\" << font.latexSize() << "\\par}";
 	}
 
 	column += Changes::latexMarkChange(os, bparams, runningChange,
