@@ -751,7 +751,7 @@ def checkFormatEntries(dtl_tools):
 \Format pdf6       pdf    "PDF (graphics)"        "" "%%"	""	"vector"	"application/pdf"
 \Format pdf7       pdf    "PDF (cropped)"         "" "%%"	""	"document,vector"	""
 \Format pdf8       pdf    "PDF (lower resolution)"         "" "%%"	""	"document,vector"	""
-\Format pdf9       pdf    "PDF (docbook)"         "" "%%"	""	"document,vector,menu=export"	""'''])
+\Format pdf9       pdf    "PDF (DocBook)"         "" "%%"	""	"document,vector,menu=export"	""'''])
     #
     checkViewer('a DVI previewer', ['xdvi', 'kdvi', 'okular',
                                     'evince', 'xreader',
