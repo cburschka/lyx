@@ -78,39 +78,13 @@ static void resetGrid(InsetMathGrid & grid)
 }
 
 
-
 //////////////////////////////////////////////////////////////
-
-
-InsetMathGrid::CellInfo::CellInfo()
-	: multi(CELL_NORMAL)
-{}
-
-
-
-//////////////////////////////////////////////////////////////
-
-
-InsetMathGrid::RowInfo::RowInfo()
-	: descent(0), ascent(0), lines(0), skip(0),
-	  allow_newpage(true)
-{}
-
 
 
 int InsetMathGrid::RowInfo::skipPixels(MetricsInfo const & mi) const
 {
 	return mi.base.inPixels(crskip);
 }
-
-
-
-//////////////////////////////////////////////////////////////
-
-
-InsetMathGrid::ColInfo::ColInfo()
-	: align('c'), width(0), offset(0), lines(0), skip(0)
-{}
 
 
 //////////////////////////////////////////////////////////////

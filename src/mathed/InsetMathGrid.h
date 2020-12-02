@@ -39,54 +39,45 @@ public:
 	};
 
 	/// additional per-cell information
-	class CellInfo {
-	public:
-		///
-		CellInfo();
+	struct CellInfo {
 		/// multicolumn flag
-		Multicolumn multi;
+		Multicolumn multi = CELL_NORMAL;
 		/// special multi columns alignment
 		docstring align;
 	};
 
 	/// additional per-row information
-	class RowInfo {
-	public:
-		///
-		RowInfo();
+	struct RowInfo {
 		///
 		int skipPixels(MetricsInfo const & mi) const;
 		/// cached descent
-		mutable int descent;
+		mutable int descent = 0;
 		/// cached ascent
-		mutable int ascent;
+		mutable int ascent = 0;
 		/// cached offset for each bufferview
 		mutable std::map<BufferView const *, int> offset;
 		/// how many hlines above this row?
-		unsigned int lines;
+		unsigned int lines = 0;
 		/// parameter to the line break
 		Length crskip;
 		/// extra distance between lines
-		int skip;
+		int skip = 0;
 		/// Is a page break allowed after this row?
-		bool allow_newpage;
+		bool allow_newpage = true;
 	};
 
 	// additional per-row information
-	class ColInfo {
-	public:
-		///
-		ColInfo();
+	struct ColInfo {
 		/// currently possible: 'l', 'c', 'r'
-		char align;
+		char align = 'c';
 		/// cached width
-		mutable int width;
+		mutable int width = 0;
 		/// cached offset
-		mutable int offset;
+		mutable int offset = 0;
 		/// how many lines to the left of this column?
-		unsigned int lines;
+		unsigned int lines = 0;
 		/// additional amount to the right to be skipped when drawing
-		int skip;
+		int skip = 0;
 		/// Special alignment.
 		/// This does also contain align_ and lines_ if it is nonempty.
 		/// It needs to be in sync with align_ and lines_ because some
