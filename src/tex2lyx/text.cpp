@@ -317,11 +317,11 @@ char const * const known_tex_extensions[] = {"tex", 0};
 
 /// spaces known by InsetSpace
 char const * const known_spaces[] = { " ", "space", 
-",", "thinspace",//                                   \, = \thinspace
+",", "thinspace",//                                   \\, = \\thinspace
 "quad", "qquad", "enspace", "enskip",
-";", ">", "medspace",//                               \; = \> = \medspace
-":", "thickspace",//                                  \: = \thickspace
-"!", "negthinspace",//                                \! = \negthinspace
+";", ">", "medspace",//                               \\; = \\> = \medspace
+":", "thickspace",//                                  \\: = \\thickspace
+"!", "negthinspace",//                                \\! = \\negthinspace
 "negmedspace", "negthickspace",
 "textvisiblespace", "hfill", "dotfill", "hrulefill", "leftarrowfill",
 "rightarrowfill", "upbracefill", "downbracefill", 0};
