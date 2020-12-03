@@ -1229,14 +1229,10 @@ string const LaTeXFeatures::getPackageOptions() const
 {
 	ostringstream packageopts;
 	// Output all the package option stuff we have been asked to do.
-	map<string, string>::const_iterator it =
-		params_.documentClass().packageOptions().begin();
-	map<string, string>::const_iterator en =
-		params_.documentClass().packageOptions().end();
-	for (; it != en; ++it)
-		if (mustProvide(it->first))
-			packageopts << "\\PassOptionsToPackage{" << it->second << "}"
-				 << "{" << it->first << "}\n";
+	for (auto const & p : params_.documentClass().packageOptions())
+		if (mustProvide(p.first))
+			packageopts << "\\PassOptionsToPackage{" << p.second << "}"
+				 << "{" << p.first << "}\n";
 	return packageopts.str();
 }
 
@@ -2215,10 +2211,8 @@ void LaTeXFeatures::getFloatDefinitions(otexstream & os) const
 	// \newfloat{algorithm}{htbp}{loa}
 	// \providecommand{\algorithmname}{Algorithm}
 	// \floatname{algorithm}{\protect\algorithmname}
-	UsedFloats::const_iterator cit = usedFloats_.begin();
-	UsedFloats::const_iterator end = usedFloats_.end();
-	for (; cit != end; ++cit) {
-		Floating const & fl = floats.getType(cit->first);
+	for (auto const & cit : usedFloats_) {
+		Floating const & fl = floats.getType(cit.first);
 
 		// For builtin floats we do nothing.
 		if (fl.isPredefined())
@@ -2267,7 +2261,7 @@ void LaTeXFeatures::getFloatDefinitions(otexstream & os) const
 			// used several times, when the same style is still in
 			// effect. (Lgb)
 		}
-		if (cit->second)
+		if (cit.second)
 			// The subfig package is loaded later
 			os << "\n\\AtBeginDocument{\\newsubfloat{" << from_ascii(fl.floattype()) << "}}\n";
 	}
@@ -2312,13 +2306,10 @@ void LaTeXFeatures::expandMultiples()
 {
 	for (Features::iterator it = features_.begin(); it != features_.end();) {
 		if (contains(*it, ',')) {
-			vector<string> const multiples = getVectorFromString(*it, ",");
-			vector<string>::const_iterator const end = multiples.end();
-			vector<string>::const_iterator itm = multiples.begin();
 			// Do nothing if any multiple is already required
-			for (; itm != end; ++itm) {
-				if (!isRequired(*itm))
-					require(*itm);
+			for (string const & pkg : getVectorFromString(*it, ",")) {
+				if (!isRequired(pkg))
+					require(pkg);
 			}
 			features_.erase(it);
 			it = features_.begin();
