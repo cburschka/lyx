@@ -321,7 +321,7 @@ char const * const known_tex_extensions[] = {"tex", 0};
 char const * const known_spaces[] = { " ", "space", 
 ",", "thinspace",//                                   \\, = \\thinspace
 "quad", "qquad", "enspace", "enskip",
-";", ">", "medspace",//                               \\; = \\> = \medspace
+";", ">", "medspace",//                               \\; = \\> = \\medspace
 ":", "thickspace",//                                  \\: = \\thickspace
 "!", "negthinspace",//                                \\! = \\negthinspace
 "negmedspace", "negthickspace",
