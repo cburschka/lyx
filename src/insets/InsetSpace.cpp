@@ -861,6 +861,13 @@ docstring InsetSpace::xhtml(XMLStream & xs, OutputParams const &) const
 
 void InsetSpace::validate(LaTeXFeatures & features) const
 {
+	if (features.isAvailable("LaTeX-2020/10/01"))
+		// As of this version, the LaTeX kernel
+		// includes all spaces.
+		return;
+
+	// In earlier versions, we require amsmath
+	// for some text and math spaces
 	if ((params_.kind == InsetSpaceParams::NEGMEDIUM
 	     || params_.kind == InsetSpaceParams::NEGTHICK)
 	    || (!params_.math
