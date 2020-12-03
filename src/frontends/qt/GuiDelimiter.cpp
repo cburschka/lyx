@@ -468,9 +468,6 @@ void GuiDelimiter::on_swapPB_clicked()
 }
 
 
-Dialog * createGuiDelimiter(GuiView & lv) { return new GuiDelimiter(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 

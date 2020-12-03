@@ -146,9 +146,6 @@ void GuiSearch::replace(docstring const & search, docstring const & replace,
 }
 
 
-Dialog * createGuiSearch(GuiView & lv) { return new GuiSearch(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 

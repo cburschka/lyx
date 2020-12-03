@@ -5207,10 +5207,6 @@ void GuiDocument::setOutputSync(bool on)
 }
 
 
-
-Dialog * createGuiDocument(GuiView & lv) { return new GuiDocument(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 

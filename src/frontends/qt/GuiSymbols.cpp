@@ -504,12 +504,6 @@ void GuiSymbols::dispatchParams()
 }
 
 
-Dialog * createGuiSymbols(GuiView & lv)
-{
-	return new GuiSymbols(lv);
-}
-
-
 } // namespace frontend
 } // namespace lyx
 

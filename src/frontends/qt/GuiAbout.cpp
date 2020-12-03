@@ -355,9 +355,6 @@ void GuiAbout::on_buttonBox_rejected()
 }
 
 
-Dialog * createGuiAbout(GuiView & lv) { return new GuiAbout(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 

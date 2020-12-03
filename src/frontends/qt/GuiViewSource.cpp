@@ -474,12 +474,6 @@ void GuiViewSource::restoreSession()
 }
 
 
-Dialog * createGuiViewSource(GuiView & lv)
-{
-	return new GuiViewSource(lv);
-}
-
-
 } // namespace frontend
 } // namespace lyx
 

@@ -178,8 +178,6 @@ bool GuiErrorList::goTo(int item)
 }
 
 
-Dialog * createGuiErrorList(GuiView & lv) { return new GuiErrorList(lv); }
-
 } // namespace frontend
 } // namespace lyx
 

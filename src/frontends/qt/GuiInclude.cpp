@@ -393,9 +393,6 @@ void GuiInclude::dispatchParams()
 }
 
 
-Dialog * createGuiInclude(GuiView & lv) { return new GuiInclude(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 

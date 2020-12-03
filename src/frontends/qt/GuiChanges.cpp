@@ -123,9 +123,6 @@ void GuiChanges::rejectChange()
 }
 
 
-Dialog * createGuiChanges(GuiView & lv) { return new GuiChanges(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 

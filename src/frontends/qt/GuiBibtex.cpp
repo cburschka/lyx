@@ -642,9 +642,6 @@ void GuiBibtex::dispatchParams()
 }
 
 
-Dialog * createGuiBibtex(GuiView & lv) { return new GuiBibtex(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 

@@ -181,9 +181,6 @@ void GuiMathMatrix::slotClose()
 }
 
 
-Dialog * createGuiMathMatrix(GuiView & lv) { return new GuiMathMatrix(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 

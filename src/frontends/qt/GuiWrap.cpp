@@ -206,9 +206,6 @@ void GuiWrap::dispatchParams()
 }
 
 
-Dialog * createGuiWrap(GuiView & lv) { return new GuiWrap(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 

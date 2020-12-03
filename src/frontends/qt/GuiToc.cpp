@@ -89,12 +89,6 @@ bool GuiToc::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-Dialog * createGuiToc(GuiView & lv)
-{
-	return new GuiToc(lv);
-}
-
-
 } // namespace frontend
 } // namespace lyx
 

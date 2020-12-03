@@ -171,12 +171,6 @@ FuncCode GuiTabularCreate::getLfun() const
 }
 
 
-Dialog * createGuiTabularCreate(GuiView & lv)
-{
-	return new GuiTabularCreate(lv);
-}
-
-
 } // namespace frontend
 } // namespace lyx
 

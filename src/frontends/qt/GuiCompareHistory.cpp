@@ -154,9 +154,6 @@ void GuiCompareHistory::slotButtonBox(QAbstractButton * button)
 }
 
 
-Dialog * createGuiCompareHistory(GuiView & lv) { return new GuiCompareHistory(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 

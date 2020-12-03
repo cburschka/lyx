@@ -43,7 +43,7 @@ SOURCEFILES = \
 	ButtonPolicy.cpp \
 	ButtonPolicy.h \
 	Dialog.cpp \
-	Dialog.h \
+	DialogFactory.cpp \
 	Action.cpp \
 	BulletsModule.cpp \
 	ButtonController.cpp \
@@ -171,6 +171,8 @@ MOCHEADER = \
 	BulletsModule.h \
 	CategorizedCombo.h \
 	CustomizedWidgets.h \
+	Dialog.h \
+	DialogFactory.h \
 	DialogView.h \
 	DockView.h \
 	EmptyTable.h \

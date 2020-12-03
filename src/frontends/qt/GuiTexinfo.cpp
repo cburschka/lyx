@@ -186,9 +186,6 @@ string GuiTexInfo::classOptions(string const & classname) const
 */
 
 
-Dialog * createGuiTexInfo(GuiView & lv) { return new GuiTexInfo(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 

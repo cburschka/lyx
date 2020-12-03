@@ -702,9 +702,6 @@ void GuiListings::setParams(InsetListingsParams const & params)
 }
 
 
-Dialog * createGuiListings(GuiView & lv) { return new GuiListings(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 

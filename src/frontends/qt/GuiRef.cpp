@@ -618,10 +618,6 @@ void GuiRef::dispatchParams()
 }
 
 
-
-Dialog * createGuiRef(GuiView & lv) { return new GuiRef(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 

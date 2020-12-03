@@ -696,9 +696,6 @@ void GuiCharacter::restoreSession()
 }
 
 
-Dialog * createGuiCharacter(GuiView & lv) { return new GuiCharacter(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 

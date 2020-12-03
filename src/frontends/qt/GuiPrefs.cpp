@@ -3686,9 +3686,6 @@ QString GuiPreferences::browse(QString const & file,
 }
 
 
-Dialog * createGuiPreferences(GuiView & lv) { return new GuiPreferences(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 

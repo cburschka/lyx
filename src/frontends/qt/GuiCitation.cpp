@@ -1101,9 +1101,6 @@ void GuiCitation::restoreSession()
 }
 
 
-Dialog * createGuiCitation(GuiView & lv) { return new GuiCitation(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 

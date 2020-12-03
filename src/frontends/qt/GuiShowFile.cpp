@@ -64,9 +64,6 @@ void GuiShowFile::clearParams()
 }
 
 
-Dialog * createGuiShowFile(GuiView & lv) { return new GuiShowFile(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 

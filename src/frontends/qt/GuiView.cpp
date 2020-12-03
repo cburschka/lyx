@@ -15,6 +15,7 @@
 
 #include "GuiView.h"
 
+#include "DialogFactory.h"
 #include "DispatchResult.h"
 #include "FileDialog.h"
 #include "FontLoader.h"
@@ -4924,134 +4925,10 @@ void GuiView::updateDialogs()
 	updateLayoutList();
 }
 
-Dialog * createDialog(GuiView & lv, string const & name);
-
-// will be replaced by a proper factory...
-Dialog * createGuiAbout(GuiView & lv);
-Dialog * createGuiBibtex(GuiView & lv);
-Dialog * createGuiChanges(GuiView & lv);
-Dialog * createGuiCharacter(GuiView & lv);
-Dialog * createGuiCitation(GuiView & lv);
-Dialog * createGuiCompare(GuiView & lv);
-Dialog * createGuiCompareHistory(GuiView & lv);
-Dialog * createGuiDelimiter(GuiView & lv);
-Dialog * createGuiDocument(GuiView & lv);
-Dialog * createGuiErrorList(GuiView & lv);
-Dialog * createGuiExternal(GuiView & lv);
-Dialog * createGuiGraphics(GuiView & lv);
-Dialog * createGuiInclude(GuiView & lv);
-Dialog * createGuiIndex(GuiView & lv);
-Dialog * createGuiListings(GuiView & lv);
-Dialog * createGuiLog(GuiView & lv);
-Dialog * createGuiLyXFiles(GuiView & lv);
-Dialog * createGuiMathMatrix(GuiView & lv);
-Dialog * createGuiNote(GuiView & lv);
-Dialog * createGuiParagraph(GuiView & lv);
-Dialog * createGuiPhantom(GuiView & lv);
-Dialog * createGuiPreferences(GuiView & lv);
-Dialog * createGuiPrint(GuiView & lv);
-Dialog * createGuiPrintindex(GuiView & lv);
-Dialog * createGuiRef(GuiView & lv);
-Dialog * createGuiSearch(GuiView & lv);
-Dialog * createGuiSearchAdv(GuiView & lv);
-Dialog * createGuiSendTo(GuiView & lv);
-Dialog * createGuiShowFile(GuiView & lv);
-Dialog * createGuiSpellchecker(GuiView & lv);
-Dialog * createGuiSymbols(GuiView & lv);
-Dialog * createGuiTabularCreate(GuiView & lv);
-Dialog * createGuiTexInfo(GuiView & lv);
-Dialog * createGuiToc(GuiView & lv);
-Dialog * createGuiThesaurus(GuiView & lv);
-Dialog * createGuiViewSource(GuiView & lv);
-Dialog * createGuiWrap(GuiView & lv);
-Dialog * createGuiProgressView(GuiView & lv);
-
-
 
 Dialog * GuiView::build(string const & name)
 {
-	LASSERT(isValidName(name), return nullptr);
-
-	Dialog * dialog = createDialog(*this, name);
-	if (dialog)
-		return dialog;
-
-	if (name == "aboutlyx")
-		return createGuiAbout(*this);
-	if (name == "bibtex")
-		return createGuiBibtex(*this);
-	if (name == "changes")
-		return createGuiChanges(*this);
-	if (name == "character")
-		return createGuiCharacter(*this);
-	if (name == "citation")
-		return createGuiCitation(*this);
-	if (name == "compare")
-		return createGuiCompare(*this);
-	if (name == "comparehistory")
-		return createGuiCompareHistory(*this);
-	if (name == "document")
-		return createGuiDocument(*this);
-	if (name == "errorlist")
-		return createGuiErrorList(*this);
-	if (name == "external")
-		return createGuiExternal(*this);
-	if (name == "file")
-		return createGuiShowFile(*this);
-	if (name == "findreplace")
-		return createGuiSearch(*this);
-	if (name == "findreplaceadv")
-		return createGuiSearchAdv(*this);
-	if (name == "graphics")
-		return createGuiGraphics(*this);
-	if (name == "include")
-		return createGuiInclude(*this);
-	if (name == "index")
-		return createGuiIndex(*this);
-	if (name == "index_print")
-		return createGuiPrintindex(*this);
-	if (name == "listings")
-		return createGuiListings(*this);
-	if (name == "log")
-		return createGuiLog(*this);
-	if (name == "lyxfiles")
-		return createGuiLyXFiles(*this);
-	if (name == "mathdelimiter")
-		return createGuiDelimiter(*this);
-	if (name == "mathmatrix")
-		return createGuiMathMatrix(*this);
-	if (name == "note")
-		return createGuiNote(*this);
-	if (name == "paragraph")
-		return createGuiParagraph(*this);
-	if (name == "phantom")
-		return createGuiPhantom(*this);
-	if (name == "prefs")
-		return createGuiPreferences(*this);
-	if (name == "ref")
-		return createGuiRef(*this);
-	if (name == "sendto")
-		return createGuiSendTo(*this);
-	if (name == "spellchecker")
-		return createGuiSpellchecker(*this);
-	if (name == "symbols")
-		return createGuiSymbols(*this);
-	if (name == "tabularcreate")
-		return createGuiTabularCreate(*this);
-	if (name == "texinfo")
-		return createGuiTexInfo(*this);
-	if (name == "thesaurus")
-		return createGuiThesaurus(*this);
-	if (name == "toc")
-		return createGuiToc(*this);
-	if (name == "view-source")
-		return createGuiViewSource(*this);
-	if (name == "wrap")
-		return createGuiWrap(*this);
-	if (name == "progress")
-		return createGuiProgressView(*this);
-
-	return nullptr;
+	return createDialog(*this, name);
 }
 
 

@@ -265,13 +265,6 @@ void GuiProgressView::hideEvent(QHideEvent*)
 }
 
 
-Dialog * createGuiProgressView(GuiView & guiview)
-{
-	return new GuiProgressView(guiview, Qt::BottomDockWidgetArea);
-}
-
-
-
 } // namespace frontend
 } // namespace lyx
 

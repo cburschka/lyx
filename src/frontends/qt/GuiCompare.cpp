@@ -378,8 +378,6 @@ bool GuiCompare::initialiseParams(std::string const &par)
 	return true;
 }
 
-Dialog * createGuiCompare(GuiView & lv) { return new GuiCompare(lv); }
-
 
 } // namespace frontend
 } // namespace lyx

@@ -131,9 +131,6 @@ void GuiPrintindex::dispatchParams()
 }
 
 
-Dialog * createGuiPrintindex(GuiView & lv) { return new GuiPrintindex(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 

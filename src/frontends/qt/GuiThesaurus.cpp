@@ -279,9 +279,6 @@ Thesaurus::Meanings const & GuiThesaurus::getMeanings(WordLangTuple const & wl)
 }
 
 
-Dialog * createGuiThesaurus(GuiView & lv) { return new GuiThesaurus(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 

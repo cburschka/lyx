@@ -620,8 +620,6 @@ FuncCode GuiLyXFiles::getLfun() const
 	return LFUN_NOACTION;
 }
 
-Dialog * createGuiLyXFiles(GuiView & lv) { return new GuiLyXFiles(lv); }
-
 
 } // namespace frontend
 } // namespace lyx

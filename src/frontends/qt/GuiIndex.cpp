@@ -96,9 +96,6 @@ void GuiIndex::dispatchParams()
 }
 
 
-Dialog * createGuiIndex(GuiView & lv) { return new GuiIndex(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 

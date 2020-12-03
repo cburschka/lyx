@@ -396,12 +396,6 @@ void GuiParagraph::restoreSession()
 }
 
 
-Dialog * createGuiParagraph(GuiView & lv)
-{
-	return new GuiParagraph(lv);
-}
-
-
 } // namespace frontend
 } // namespace lyx
 

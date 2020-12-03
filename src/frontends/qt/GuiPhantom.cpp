@@ -89,9 +89,6 @@ void GuiPhantom::dispatchParams()
 }
 
 
-Dialog * createGuiPhantom(GuiView & lv) { return new GuiPhantom(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 

@@ -324,9 +324,6 @@ void GuiLog::getContents(ostream & ss) const
 }
 
 
-Dialog * createGuiLog(GuiView & lv) { return new GuiLog(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 

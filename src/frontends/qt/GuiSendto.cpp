@@ -152,8 +152,6 @@ void GuiSendTo::dispatchParams()
 	dispatch(FuncRequest(lfun, sdata));
 }
 
-Dialog * createGuiSendTo(GuiView & lv) { return new GuiSendTo(lv); }
-
 
 } // namespace frontend
 } // namespace lyx

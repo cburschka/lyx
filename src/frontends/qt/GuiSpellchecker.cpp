@@ -614,16 +614,6 @@ void GuiSpellchecker::updateView()
 }
 
 
-Dialog * createGuiSpellchecker(GuiView & lv)
-{
-	GuiSpellchecker * gui = new GuiSpellchecker(lv, Qt::RightDockWidgetArea);
-#ifdef Q_OS_MAC
-	gui->setFloating(true);
-#endif
-	return gui;
-}
-
-
 } // namespace frontend
 } // namespace lyx
 

@@ -827,9 +827,6 @@ bool GuiGraphics::isFileNameValid(string const & fname) const
 }
 
 
-Dialog * createGuiGraphics(GuiView & lv) { return new GuiGraphics(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 

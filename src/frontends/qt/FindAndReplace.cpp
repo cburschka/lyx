@@ -633,17 +633,6 @@ void FindAndReplaceWidget::updateGUI()
 }
 
 
-Dialog * createGuiSearchAdv(GuiView & lv)
-{
-	FindAndReplace * gui = new FindAndReplace(lv, Qt::RightDockWidgetArea);
-#ifdef Q_OS_MAC
-	// On Mac show and floating
-	gui->setFloating(true);
-#endif
-	return gui;
-}
-
-
 } // namespace frontend
 } // namespace lyx
 

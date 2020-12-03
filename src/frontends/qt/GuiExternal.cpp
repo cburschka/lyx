@@ -680,9 +680,6 @@ QString GuiExternal::browse(QString const & input,
 }
 
 
-Dialog * createGuiExternal(GuiView & lv) { return new GuiExternal(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 

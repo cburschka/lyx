@@ -90,9 +90,6 @@ void GuiNote::dispatchParams()
 }
 
 
-Dialog * createGuiNote(GuiView & lv) { return new GuiNote(lv); }
-
-
 } // namespace frontend
 } // namespace lyx
 
