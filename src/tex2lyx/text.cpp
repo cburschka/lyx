@@ -316,16 +316,24 @@ char const * const known_pdftex_graphics_formats[] = {"png", "pdf", "jpg",
 char const * const known_tex_extensions[] = {"tex", 0};
 
 /// spaces known by InsetSpace
-char const * const known_spaces[] = { " ", "space", ",",
-"thinspace", "quad", "qquad", "enspace", "enskip",
-"medspace", "thickspace", "negthinspace", "negmedspace", "negthickspace",
+char const * const known_spaces[] = { " ", "space", 
+",", "thinspace",//                                   \, = \thinspace
+"quad", "qquad", "enspace", "enskip",
+";", ">", "medspace",//                               \; = \> = \medspace
+":", "thickspace",//                                  \: = \thickspace
+"!", "negthinspace",//                                \! = \negthinspace
+"negmedspace", "negthickspace",
 "textvisiblespace", "hfill", "dotfill", "hrulefill", "leftarrowfill",
 "rightarrowfill", "upbracefill", "downbracefill", 0};
 
 /// the same as known_spaces with .lyx names
 char const * const known_coded_spaces[] = { "space{}", "space{}",
-"thinspace{}", "thinspace{}", "quad{}", "qquad{}", "enspace{}", "enskip{}",
-"medspace{}", "thickspace{}", "negthinspace{}", "negmedspace{}", "negthickspace{}",
+"thinspace{}", "thinspace{}",
+"quad{}", "qquad{}", "enspace{}", "enskip{}",
+"medspace{}", "medspace{}", "medspace{}",
+"thickspace{}", "thickspace{}",
+"negthinspace{}", "negthinspace{}",
+"negmedspace{}", "negthickspace{}",
 "textvisiblespace{}", "hfill{}", "dotfill{}", "hrulefill{}", "leftarrowfill{}",
 "rightarrowfill{}", "upbracefill{}", "downbracefill{}", 0};
 
@@ -5585,9 +5593,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			   << '\n';
 			end_inset(os);
 			// LaTeX swallows whitespace after all spaces except
-			// "\\,". We have to do that here, too, because LyX
+			// "\\,", "\\>", "\\!", "\\;", and "\\:".
+			// We have to do that here, too, because LyX
 			// adds "{}" which would make the spaces significant.
-			if (t.cs() !=  ",")
+			if (!contains(",>!;:", t.cs()))
 				eat_whitespace(p, os, context, false);
 			// LyX adds "{}" after all spaces except "\\ " and
 			// "\\,", so we have to remove "{}".
