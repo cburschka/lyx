@@ -344,6 +344,11 @@ static void finishEnvironment(otexstream & os, OutputParams const & runparams,
 				popLanguageName();
 			}
 		}
+		if (data.style->latextype == LATEX_BIB_ENVIRONMENT)
+			// bibliography needs a blank line after
+			// each item for backref to function properly
+			// (see #12041)
+			os << '\n';
 		state->nest_level_ -= 1;
 		string const & name = data.style->latexname();
 		if (!name.empty())
