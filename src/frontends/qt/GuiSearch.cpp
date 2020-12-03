@@ -66,9 +66,6 @@ GuiSearch::GuiSearch(GuiView & lv)
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	bc().setCancel(buttonBox->button(QDialogButtonBox::Close));
-	bc().addReadOnly(replaceCO);
-	bc().addReadOnly(replacePB);
-	bc().addReadOnly(replaceallPB);
 
 	findCO->setCompleter(0);
 	replaceCO->setCompleter(0);
@@ -80,6 +77,7 @@ GuiSearch::GuiSearch(GuiView & lv)
 
 void GuiSearch::showEvent(QShowEvent * e)
 {
+	findChanged();
 	findPB->setFocus();
 	findCO->lineEdit()->selectAll();
 	GuiDialog::showEvent(e);
@@ -88,15 +86,12 @@ void GuiSearch::showEvent(QShowEvent * e)
 
 void GuiSearch::findChanged()
 {
-	if (findCO->currentText().isEmpty()) {
-		findPB->setEnabled(false);
-		replacePB->setEnabled(false);
-		replaceallPB->setEnabled(false);
-	} else {
-		findPB->setEnabled(true);
-		replacePB->setEnabled(!isBufferReadonly());
-		replaceallPB->setEnabled(!isBufferReadonly());
-	}
+	bool const replace = !findCO->currentText().isEmpty() && !isBufferReadonly();
+	findPB->setEnabled(replace);
+	replacePB->setEnabled(replace);
+	replaceallPB->setEnabled(replace);
+	replaceLA->setEnabled(replace);
+	replaceCO->setEnabled(replace);
 }
 
 
