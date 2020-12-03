@@ -145,6 +145,9 @@ public:
 	/// the text before the first \item. Typically, list
 	/// parameters (such as lengths) are adjusted here.
 	bool in_list_preamble;
+	/// Store commands that should not be converted
+	/// (stored without \\)
+	std::set<std::string> pass_thru_cmds;
 	/// we are handling a standard paragraph in an itemize-like
 	/// environment
 	bool deeper_paragraph;

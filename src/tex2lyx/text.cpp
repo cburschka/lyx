@@ -64,6 +64,8 @@ void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,
 		newcontext.layout = &context.textclass.plainLayout();
 	else
 		newcontext.font = context.font;
+	// Inherit commands to pass through
+	newcontext.pass_thru_cmds = context.pass_thru_cmds;
 	if (layout)
 		output_arguments(os, p, outer, false, string(), newcontext,
 		                 layout->latexargs());
@@ -1733,7 +1735,13 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			os << "wide " << convert<string>(is_starred)
 			   << "\nsideways false"
 			   << "\nstatus open\n\n";
+			set<string> pass_thru_cmds = parent_context.pass_thru_cmds;
+			if (unstarred_name == "algorithm")
+				// in algorithm, \; has special meaning
+				parent_context.pass_thru_cmds.insert(";");
 			parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
+			if (unstarred_name == "algorithm")
+				parent_context.pass_thru_cmds = pass_thru_cmds;
 			end_inset(os);
 			// We don't need really a new paragraph, but
 			// we must make sure that the next item gets a \begin_layout.
@@ -1869,7 +1877,13 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			eat_whitespace(p, os, parent_context, false);
 			parent_context.check_layout(os);
 			begin_inset(os, "IPA\n");
+			set<string> pass_thru_cmds = parent_context.pass_thru_cmds;
+			// These commands have special meanings in IPA
+			parent_context.pass_thru_cmds.insert("!");
+			parent_context.pass_thru_cmds.insert(";");
+			parent_context.pass_thru_cmds.insert(":");
 			parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
+			parent_context.pass_thru_cmds = pass_thru_cmds;
 			end_inset(os);
 			p.skip_spaces();
 			preamble.registerAutomaticallyLoadedPackage("tipa");
@@ -4121,7 +4135,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			begin_inset(os, "IPA\n");
 			bool merging_hyphens_allowed = context.merging_hyphens_allowed;
 			context.merging_hyphens_allowed = false;
+			set<string> pass_thru_cmds = context.pass_thru_cmds;
+			// These commands have special meanings in IPA
+			context.pass_thru_cmds.insert("!");
+			context.pass_thru_cmds.insert(";");
+			context.pass_thru_cmds.insert(":");
 			parse_text_in_inset(p, os, FLAG_ITEM, outer, context);
+			context.pass_thru_cmds = pass_thru_cmds;
 			context.merging_hyphens_allowed = merging_hyphens_allowed;
 			end_inset(os);
 			preamble.registerAutomaticallyLoadedPackage("tipa");
@@ -5586,7 +5606,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			continue;
 		}
 
-		if ((where = is_known(t.cs(), known_spaces))) {
+		if ((where = is_known(t.cs(), known_spaces))
+		    && (context.pass_thru_cmds.find(t.cs()) == context.pass_thru_cmds.end())) {
 			context.check_layout(os);
 			begin_inset(os, "space ");
 			os << '\\' << known_coded_spaces[where - known_spaces]

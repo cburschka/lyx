@@ -91,6 +91,7 @@ Context::Context(bool need_layout_,
 		layout = &textclass.defaultLayout();
 	if (!parent_layout)
 		parent_layout = &textclass.defaultLayout();
+	pass_thru_cmds.clear();
 }
 
 
