@@ -2625,7 +2625,6 @@ void Paragraph::latex(BufferParams const & bparams,
 				os << "}";
 				alien_script.clear();
 			}
-			bool needPar = false;
 			if (in_ct_deletion) {
 				// We have to close and then reopen \lyxdeleted,
 				// as strikeout needs to be on lowest level.
@@ -2636,6 +2635,7 @@ void Paragraph::latex(BufferParams const & bparams,
 				// Force language closing
 				current_font.setLanguage(basefont.language());
 			Font const nextfont = (i == body_pos-1) ? basefont : current_font;
+			bool needPar = false;
 			column += running_font.latexWriteEndChanges(
 				    os, bparams, runparams, basefont,
 				    nextfont, needPar);
@@ -2703,8 +2703,8 @@ void Paragraph::latex(BufferParams const & bparams,
 				if (in_ct_deletion) {
 					// We have to close and then reopen \lyxdeleted,
 					// as strikeout needs to be on lowest level.
-					bool needPar = false;
 					OutputParams rp = runparams;
+					bool needPar = false;
 					column += running_font.latexWriteEndChanges(
 						os, bparams, rp, basefont,
 						basefont, needPar);
