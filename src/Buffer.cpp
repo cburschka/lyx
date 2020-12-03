@@ -3138,6 +3138,11 @@ ParConstIterator Buffer::par_iterator_end() const
 	return ParConstIterator(doc_iterator_end(this));
 }
 
+bool Buffer::empty() const
+{
+	return paragraphs().size() == 1 && paragraphs().front().empty();
+}
+
 
 Language const * Buffer::language() const
 {

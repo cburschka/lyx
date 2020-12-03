@@ -67,7 +67,7 @@ FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 	// We don't want two cursors blinking.
 	find_work_area_->stopBlinkingCaret();
 	replace_work_area_->stopBlinkingCaret();
-	old_buffer_ = view_.documentBufferView() ? 
+	old_buffer_ = view_.documentBufferView() ?
 	    &(view_.documentBufferView()->buffer()) : 0;
 
 	// align items on top
@@ -90,6 +90,7 @@ void FindAndReplaceWidget::dockLocationChanged(Qt::DockWidgetArea area)
 
 bool FindAndReplaceWidget::eventFilter(QObject * obj, QEvent * event)
 {
+	updateGUI();
 	if (event->type() != QEvent::KeyPress
 		  || (obj != find_work_area_ && obj != replace_work_area_))
 		return QWidget::eventFilter(obj, event);
@@ -622,7 +623,10 @@ void FindAndReplaceWidget::updateGUI()
 	} else
 		old_buffer_ = nullptr;
 
-	bool const replace_enabled = bv && !bv->buffer().isReadonly();
+	bool const find_enabled = !find_work_area_->bufferView().buffer().empty();
+	findNextPB->setEnabled(find_enabled);
+	bool const replace_enabled = find_enabled && bv && !bv->buffer().isReadonly();
+	replaceLabel->setEnabled(replace_enabled);
 	replace_work_area_->setEnabled(replace_enabled);
 	replacePB->setEnabled(replace_enabled);
 	replaceallPB->setEnabled(replace_enabled);

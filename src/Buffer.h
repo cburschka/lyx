@@ -567,6 +567,8 @@ public:
 	ParIterator par_iterator_end();
 	///
 	ParConstIterator par_iterator_end() const;
+	/// Is document empty ?
+	bool empty() const;
 
 	// Position of the child buffer where it appears first in the master.
 	DocIterator firstChildPosition(Buffer const * child);
