@@ -8,7 +8,7 @@
 # be removed later.
 
 
-Format 85
+Format 89
 Style LyX-Code
 	Category              MainText
 	Margin                Static

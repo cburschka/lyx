@@ -8,7 +8,7 @@
 
 # Author: Jürgen Spitzmüller <spitz@lyx.org>
 
-Format 85
+Format 89
 
 #
 # Counters
@@ -123,7 +123,7 @@ Style Subexample
 	CopyStyle	      Numbered_Examples_(consecutive)
 	LatexName             covsubexamples
 	LabelCounter          "subexample"
-	StepMasterCounter     true
+	StepParentCounter     true
 	Requires	      covington
 	Argument 1
 		LabelString   "Subexamples options"
