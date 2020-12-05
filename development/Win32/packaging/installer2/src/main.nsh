@@ -655,7 +655,7 @@ Section -TexRessources # Section installs cls files from Ressources\tex and upda
     ${If} ${FileExists} "$0\broadway.cls"
       Return
     ${EndIf}
-    CopyFiles "$INSTDIR\Resources\tex\*.*" $0
+    CopyFiles /SILENT "$INSTDIR\Resources\tex\*.*" $0
     ExecWait '$LatexPath\texhash' # Update package file list
 
   ${Else} # Miktex
@@ -955,6 +955,19 @@ Section -UninstallInfoRegistry # Registry information in "SOFTWARE\Microsoft\Win
   IntFmt $0 "0x%08X" $0
   WriteRegDWORD SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX${APP_VERSION_DOTLESS}" "EstimatedSize" $0
 SectionEnd
+
+!if ${VERSION_MINOR} > 0 # Only valid for minor releases of the same major release (e.g. not valid for 3.0)
+  Section -CopyOldPreferences # Searches user's preferences (userdir) from previous minor release and copies it if necessary
+    Call PrepareShellCTX
+    SetShellVarContext current # Otherwise $APPDATA would return C:\ProgrammData instead of C:\Users\username\AppData\Roaming
+    
+    IntOp $0 ${VERSION_MINOR} - 1 # only check the direct previous minor release
+    ${If} ${FileExists} "$APPDATA\LyX${VERSION_MAJOR}.$0\lyxrc.defaults"
+    ${AndIfNot} ${FileExists} "$APPDATA\LyX${VERSION_MAJOR}.${VERSION_MINOR}\lyxrc.defaults"
+      CopyFiles /SILENT "$APPDATA\LyX${VERSION_MAJOR}.$0\*.*" "$APPDATA\LyX${VERSION_MAJOR}.${VERSION_MINOR}"
+    ${EndIf}
+  SectionEnd
+!endif
 
 Section -ConfigureScript # Runs the configure.py script
 
