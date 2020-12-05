@@ -2,7 +2,7 @@
 # Probably broken by Jean-Marc Lasgouttes <Jean-Marc.Lasgouttes@inria.fr>
 # modified and modularized by Emmanuel GUREGHIAN <gureghia@boston.bertin.fr>
 # Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
-# Modularized Jan '08 by Richard Heck <rgheck@brown.edu>
+# Modularized Jan '08 by Richard Kimberly Heck <rikiheck@lyx.org>
 
 # Including the maths stuff
 Format 89

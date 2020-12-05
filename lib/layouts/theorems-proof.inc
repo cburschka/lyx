@@ -6,7 +6,7 @@
 # (Themorem (1.1), Corollary (1.2) Theorem (1.3), etc.
 # These are only the theorems styles environnements
 # Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
-# Modularized Jan 08 by Richard Heck <rgheck@comcast.net>
+# Modularized Jan 08 by Richard Kimberly Heck <rikiheck@lyx.org>
 
 Format 89
 

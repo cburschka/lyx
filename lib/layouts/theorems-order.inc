@@ -1,5 +1,5 @@
 # Sets the order of the main theorem environments
-# Author: Richard Heck
+# Author: Richard Kimberly Heck
 
 Format 89
 

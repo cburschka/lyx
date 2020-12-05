@@ -1,7 +1,7 @@
 # Standard RefPrefix definitions. 
 # This defines the label prefixes for use with refstyle.sty.
 #
-# Author: Richard Heck <rgheck@comcast.net>
+# Author: Richard Kimberly Heck <rikiheck@lyx.org>
 #
 # Note that this file is included in stdsections.inc, which is included
 # in stdclass.inc, so any file that includes either of these will get

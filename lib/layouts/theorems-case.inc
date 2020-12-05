@@ -1,5 +1,5 @@
 # Original Author : Paul Rubin <rubin@msu.edu>
-# Modified by Richard Heck to use enumitem
+# Modified by Richard Kimberly Heck to use enumitem
 
 # Definition of case environment as an enumeration
 

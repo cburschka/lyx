@@ -8,7 +8,7 @@
 # This file is included by the citation engines, so there is no need
 # to include it in individual classes.
 #
-# Author: Richard Heck <rgheck@comcast.net>
+# Author: Richard Kimberly Heck <rikiheck@lyx.org>
 #         Jürgen Spitzmüller <spitz@lyx.org>
 
 Format 89
