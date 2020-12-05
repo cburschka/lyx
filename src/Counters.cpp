@@ -59,6 +59,7 @@ bool Counter::read(Lexer & lex)
 		CT_PRETTYFORMAT,
 		CT_INITIALVALUE,
 		CT_GUINAME,
+		CT_LATEXNAME,
 		CT_END
 	};
 
@@ -68,6 +69,7 @@ bool Counter::read(Lexer & lex)
 		{ "initialvalue", CT_INITIALVALUE},
 		{ "labelstring", CT_LABELSTRING },
 		{ "labelstringappendix", CT_LABELSTRING_APPENDIX },
+		{ "latexname", CT_LATEXNAME },
 		{ "prettyformat", CT_PRETTYFORMAT },
 		{ "within", CT_WITHIN }
 	};
@@ -119,6 +121,10 @@ bool Counter::read(Lexer & lex)
 			case CT_GUINAME:
 				lex.next();
 				guiname_ = lex.getDocString();
+				break;
+			case CT_LATEXNAME:
+				lex.next();
+				latexname_ = lex.getDocString();
 				break;
 			case CT_END:
 				getout = true;
@@ -371,6 +377,22 @@ docstring const & Counters::guiName(docstring const & cntr) const
 	if (guiname.empty())
 		return cntr;
 	return guiname;
+}
+
+
+docstring const & Counters::latexName(docstring const & cntr) const
+{
+	CounterList::const_iterator it = counterList_.find(cntr);
+	if (it == counterList_.end()) {
+		lyxerr << "step: Counter does not exist: "
+			   << to_utf8(cntr) << endl;
+		return empty_docstring();
+	}
+
+	docstring const & latexname = it->second.latexName();
+	if (latexname.empty())
+		return cntr;
+	return latexname;
 }
 
 

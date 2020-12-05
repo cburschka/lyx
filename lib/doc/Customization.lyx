@@ -138,6 +138,7 @@ logicalmkup
 \docbook_table_output 0
 \author -970929547 "Thibaut Cuvelier"
 \author -712698321 "Jürgen Spitzmüller"
+\author -584632292 "Richard Kimberly Heck"
 \author -495245474 "Jean-Marc Lasgouttes"
 \author 5863208 "ab"
 \author 232239728 "Owner"
@@ -22876,8 +22877,8 @@ string
 
 \end_inset
 
-=
-\begin_inset Quotes erd
+= 
+\begin_inset Quotes eld
 \end_inset
 
 
@@ -22895,6 +22896,51 @@ LabelString
 \end_inset
 
 , but for use in the Appendix.
+\change_inserted -584632292 1607202551
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -584632292 1607202682
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+LaTeXName
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1607202576
+string
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ = 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+] The counter name as used in \SpecialChar LaTeX
+.
+ (E.g., in \SpecialChar LyX
+, there is a counter named `theorem', but it is output to \SpecialChar LaTeX
+ as `thm'.)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description

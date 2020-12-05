@@ -69,6 +69,8 @@ public:
 	docstring const & prettyFormat() const { return prettyformat_; }
 	///
 	docstring const & guiName() const { return guiname_; }
+	///
+	docstring const & latexName() const { return latexname_; }
 
 	/// Returns a map of LaTeX-like strings to format the counter.
 	/** For each language, the string is similar to what one gets
@@ -101,6 +103,8 @@ private:
 	docstring prettyformat_;
 	///
 	docstring guiname_;
+	/// The name used for the counter in LaTeX
+	docstring latexname_;
 	/// Cache of the labelstring with \\the<counter> expressions expanded,
 	/// indexed by language
 	mutable StringMap flatlabelstring_;
@@ -177,6 +181,8 @@ public:
 			       std::string const & lang) const;
 	///
 	docstring const & guiName(docstring const & cntr) const;
+	///
+	docstring const & latexName(docstring const & cntr) const;
 	/// Are we in appendix?
 	bool appendix() const { return appendix_; }
 	/// Set the state variable indicating whether we are in appendix.
