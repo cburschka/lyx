@@ -4,7 +4,7 @@
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 
-# authors Richard Heck and [SchAirport]
+# authors Richard Kimberly Heck and [SchAirport]
 
 # Full author contact details are available in file CREDITS
 

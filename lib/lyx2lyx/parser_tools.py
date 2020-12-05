@@ -1,7 +1,7 @@
 # This file is part of lyx2lyx
 # -*- coding: utf-8 -*-
 # Copyright (C) 2002-2011 Dekel Tsur <dekel@lyx.org>,
-# José Matos <jamatos@lyx.org>, Richard Heck <rgheck@comcast.net>
+# José Matos <jamatos@lyx.org>, Richard Kimberly Heck <rikiheck@lyx.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License

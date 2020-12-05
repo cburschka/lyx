@@ -1,4 +1,4 @@
-# Moved here by rgheck. Original author cloudy.
+# Moved here by rikiheck. Original author cloudy.
 
 Format 89
 
