@@ -373,8 +373,6 @@ public:
 	bool spellcheck_continuously = false;
 	/// spellcheck notes and comments?
 	bool spellcheck_notes = true;
-	/// minimum length of words to complete
-	unsigned int completion_minlength = 6;
 	///
 	bool use_kbmap = false;
 	///
@@ -523,6 +521,8 @@ public:
 	bool completion_inline_text = false;
 	///
 	int completion_inline_dots = -1;
+	/// minimum length of words to complete
+	unsigned int completion_minlength = 6;
 	///
 	double completion_popup_delay = 2.0;
 	///
