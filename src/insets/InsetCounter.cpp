@@ -96,23 +96,25 @@ void InsetCounter::latex(otexstream & os, OutputParams const &) const
 		return;
 
 	string const cmd = getCmdName();
-	docstring cntr = getParam("counter");
+	docstring const & cntr = getParam("counter");
 	Counters & cnts = buffer().params().documentClass().counters();
+	docstring const & latexname = cnts.latexName(cntr);
+
 	if (cmd == "set") {
 		docstring const & val = getParam("value");
-		os << "\\setcounter{" << cntr << "}{" << val << "}";
+		os << "\\setcounter{" << latexname << "}{" << val << "}";
 	} else if (cmd == "addto") {
 		docstring const & val = getParam("value");
-		os << "\\addtocounter{" << cntr << "}{" << val << "}";
+		os << "\\addtocounter{" << latexname << "}{" << val << "}";
 	} else if (cmd == "reset") {
-		os << "\\setcounter{" << cntr << "}{0}";
+		os << "\\setcounter{" << latexname << "}{0}";
 	} else if (cmd == "save") {
 		cnts.saveValue(cntr);
 		os << "\\setcounter{" << lyxSaveCounter()
-		   << "}{\\value{" << cntr << "}}";
+		   << "}{\\value{" << latexname << "}}";
 	} else if (cmd == "restore") {
 		cnts.restoreValue(cntr);
-		os << "\\setcounter{" << cntr
+		os << "\\setcounter{" << latexname
 		   << "}{\\value{" << lyxSaveCounter() << "}}";
 	}
 }
