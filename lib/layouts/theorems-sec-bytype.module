@@ -17,51 +17,57 @@ Format 89
 # We need separate counters for each theorem-like style.
 Counter theorem
 	GuiName Theorem
-	Within         section
+	Within section
+	LaTeXName thm
 End
 Counter corollary
 	GuiName Corollary
-	Within         section
+	Within section
+	LaTeXName cor
 End
 Counter lemma
 	GuiName Lemma
-	Within         section
+	Within section
+	LaTeXName lem
 End
 Counter proposition
 	GuiName Proposition
-	Within         section
+	Within section
+	LaTeXName prop
 End
 Counter conjecture
 	GuiName Conjecture
-	Within         section
+	Within section
 End
 Counter fact
 	GuiName Fact
-	Within         section
+	Within section
 End
 Counter definition
 	GuiName Definition
-	Within         section
+	Within section
+	LaTeXName defn
 End
 Counter example
 	GuiName Example
-	Within         section
+	Within section
 End
 Counter problem
 	GuiName Problem
-	Within         section
+	Within section
 End
 Counter exercise
 	GuiName Exercise
-	Within         section
+	Within section
+	LaTeXName sca
 End
 Counter remark
 	GuiName Remark
-	Within         section
+	Within section
 End
 Counter claim
 	GuiName Claim
-	Within         section
+	Within section
 End
 
 Style Theorem

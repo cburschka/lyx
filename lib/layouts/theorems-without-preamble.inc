@@ -32,7 +32,9 @@ OutlinerName thm "Definitions & Theorems"
 
 Counter		theorem
 	GuiName Theorem
+	LaTeXName thm
 End
+
 Style Theorem
 	Category	Reasoning
 	Margin		First_Dynamic

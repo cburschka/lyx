@@ -40,47 +40,49 @@ Requires	amsmath
 # We need separate counters for each theorem-like style.
 Counter criterion
 	GuiName Criterion
-	Within         chapter
+	Within chapter
 End
 Counter algorithm
 	GuiName Algorithm
-	Within         chapter
+	Within chapter
+	LaTeXName lyxalgorithm
 End
 Counter axiom
 	GuiName Axiom
-	Within         chapter
+	Within chapter
+	LaTeXName ax
 End
 Counter condition
 	GuiName Condition
-	Within         chapter
+	Within chapter
 End
 Counter note
 	GuiName Note
-	Within         chapter
+	Within chapter
 End
 Counter notation
 	GuiName Notation
-	Within         chapter
+	Within chapter
 End
 Counter summary
 	GuiName Summary
-	Within         chapter
+	Within chapter
 End
 Counter acknowledgement
 	GuiName Acknowledgement
-	Within         chapter
+	Within chapter
 End
 Counter conclusion
 	GuiName Conclusion
-	Within         chapter
+	Within chapter
 End
 Counter assumption
 	GuiName Assumption
-	Within         chapter
+	Within chapter
 End
 Counter question
 	GuiName Question
-	Within         chapter
+	Within chapter
 End
 
 

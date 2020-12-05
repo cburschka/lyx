@@ -27,55 +27,63 @@
 Format 89
 Counter theorem
 	GuiName Theorem
-	Within         chapter
+	Within chapter
+	LaTeXName thm
 End
 Counter corollary
 	GuiName Corollary
-	Within         chapter
+	Within chapter
+	LaTeXName cor
 End
 Counter lemma
 	GuiName Lemma
-	Within         chapter
+	Within chapter
+	LaTeXName lem
 End
 Counter proposition
 	GuiName Proposition
-	Within         chapter
+	Within chapter
+	LaTeXName prop
 End
 Counter conjecture
 	GuiName Conjecture
-	Within         chapter
+	Within chapter
 End
 Counter fact
 	GuiName Fact
-	Within         chapter
+	Within chapter
 End
 Counter definition
 	GuiName Definition
-	Within         chapter
+	Within chapter
+	LaTeXName defn
 End
 Counter example
 	GuiName Example
-	Within         chapter
+	Within chapter
 End
 Counter problem
 	GuiName Problem
-	Within         chapter
+	Within chapter
 End
 Counter exercise
 	GuiName Exercise
-	Within         chapter
+	Within chapter
+	LaTeXName sca
 End
 Counter solution
 	GuiName Solution
-	Within         chapter
+	Within chapter
+	LaTeXName sol
 End
 Counter remark
 	GuiName Remark
-	Within         chapter
+	Within chapter
+	LaTeXName rem
 End
 Counter claim
 	GuiName Claim
-	Within         chapter
+	Within chapter
 End
 
 OutlinerName thm "Definitions & Theorems"
