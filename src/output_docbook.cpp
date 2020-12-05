@@ -347,7 +347,7 @@ void makeParagraph(
 			special_case = true;
 	}
 
-	auto nInsets = std::distance(par->insetList().begin(), par->insetList().end());
+	size_t nInsets = std::distance(par->insetList().begin(), par->insetList().end());
 	auto parSize = (size_t) par->size();
 
 	// Plain layouts must be ignored.
@@ -381,6 +381,7 @@ void makeParagraph(
 	auto isFlexSpecialCase = [](InsetList::Element inset) {
 		if (inset.inset->lyxCode() != FLEX_CODE)
 			return false;
+
 		// Standard condition: check the parameter.
 		if (inset.inset->getLayout().docbooknotinpara())
 			return true;
@@ -393,7 +394,7 @@ void makeParagraph(
 		};
 		if (InsetText * text = inset.inset->asInsetText()) {
 			for (auto const & par : text->paragraphs()) {
-				auto nInsets = std::distance(par.insetList().begin(), par.insetList().end());
+				size_t nInsets = std::distance(par.insetList().begin(), par.insetList().end());
 				auto parSize = (size_t) par.size();
 
 				if (nInsets == 1 && par.insetList().begin()->inset->lyxCode() == BIBITEM_CODE)
