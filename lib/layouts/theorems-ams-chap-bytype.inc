@@ -23,66 +23,47 @@
 # - Case (by inclusion)
 
 
-# We need separate counters for each theorem-like style.
 Format 89
+
+Input theorem-counters-bytype.inc
+
 Counter theorem
-	GuiName Theorem
 	Within chapter
-	LaTeXName thm
 End
 Counter corollary
-	GuiName Corollary
 	Within chapter
-	LaTeXName cor
 End
 Counter lemma
-	GuiName Lemma
 	Within chapter
-	LaTeXName lem
 End
 Counter proposition
-	GuiName Proposition
 	Within chapter
-	LaTeXName prop
 End
 Counter conjecture
-	GuiName Conjecture
 	Within chapter
 End
 Counter fact
-	GuiName Fact
 	Within chapter
 End
 Counter definition
-	GuiName Definition
 	Within chapter
-	LaTeXName defn
 End
 Counter example
-	GuiName Example
 	Within chapter
 End
 Counter problem
-	GuiName Problem
 	Within chapter
 End
 Counter exercise
-	GuiName Exercise
 	Within chapter
-	LaTeXName sca
 End
 Counter solution
-	GuiName Solution
 	Within chapter
-	LaTeXName sol
 End
 Counter remark
-	GuiName Remark
 	Within chapter
-	LaTeXName rem
 End
 Counter claim
-	GuiName Claim
 	Within chapter
 End
 
