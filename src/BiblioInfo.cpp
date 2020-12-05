@@ -5,7 +5,7 @@
  *
  * \author Angus Leeming
  * \author Herbert Voß
- * \author Richard Heck
+ * \author Richard Kimberly Heck
  * \author Julien Rioux
  * \author Jürgen Spitzmüller
  *

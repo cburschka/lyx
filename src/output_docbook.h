@@ -7,7 +7,7 @@
  * \author Lars Gullik Bjønnes
  * \author José Matos
  * \author Thibaut Cuvelier
- * \author Richard Heck
+ * \author Richard Kimberly Heck
  *
  * Full author contact details are available in file CREDITS.
  */

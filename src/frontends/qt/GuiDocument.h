@@ -5,7 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Edwin Leuven
- * \author Richard Heck (modules)
+ * \author Richard Kimberly Heck (modules)
  *
  * Full author contact details are available in file CREDITS.
  */

@@ -6,7 +6,7 @@
  * \author Lars Gullik Bjønnes
  * \author Martin Vermeer
  * \author André Pönitz
- * \author Richard Heck (roman numerals)
+ * \author Richard Kimberly Heck (roman numerals)
  *
  * Full author contact details are available in file CREDITS.
  */

@@ -4,7 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Edwin Leuven
- * \author Richard Heck
+ * \author Richard Kimberly Heck
  * \author Abdelrazak Younes
  * \author Angus Leeming
  *

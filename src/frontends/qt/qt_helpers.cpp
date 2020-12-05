@@ -5,7 +5,7 @@
  *
  * \author Dekel Tsur
  * \author Jürgen Spitzmüller
- * \author Richard Heck
+ * \author Richard Kimberly Heck
  *
  * Full author contact details are available in file CREDITS.
  */

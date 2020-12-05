@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Richard Heck
+ * \author Richard Kimberly Heck
  * \author Et Alia
  *
  * Some of the material in this file previously appeared in

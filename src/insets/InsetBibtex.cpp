@@ -4,7 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Alejandro Aguilar Sierra
- * \author Richard Heck (BibTeX parser improvements)
+ * \author Richard Kimberly Heck (BibTeX parser improvements)
  * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.

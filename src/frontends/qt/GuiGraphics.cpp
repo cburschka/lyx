@@ -7,7 +7,7 @@
  * \author John Levon
  * \author Edwin Leuven
  * \author Herbert Voß
- * \author Richard Heck
+ * \author Richard Kimberly Heck
  *
  * Full author contact details are available in file CREDITS.
  */

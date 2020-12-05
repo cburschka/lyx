@@ -5,7 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Angus Leeming
- * \author Richard Heck
+ * \author Richard Kimberly Heck
  *
  * Full author contact details are available in file CREDITS.
  *

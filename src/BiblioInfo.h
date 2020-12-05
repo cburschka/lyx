@@ -6,7 +6,7 @@
  *
  * \author Angus Leeming
  * \author Herbert Voß
- * \author Richard Heck
+ * \author Richard Kimberly Heck
  * \author Julien Rioux
  *
  * Full author contact details are available in file CREDITS.

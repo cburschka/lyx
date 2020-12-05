@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Richard Heck
+ * \author Richard Kimberly Heck
  *
  * Some of this code is based upon qstringlistmodel.{h,cpp}, which is
  * part of the Qt toolkit, copyright (C) 1992-2007 Trolltech ASA, and

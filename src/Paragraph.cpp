@@ -5,7 +5,7 @@
  *
  * \author Asger Alstrup
  * \author Lars Gullik Bjønnes
- * \author Richard Heck (XHTML output)
+ * \author Richard Kimberly Heck (XHTML output)
  * \author Jean-Marc Lasgouttes
  * \author Angus Leeming
  * \author John Levon

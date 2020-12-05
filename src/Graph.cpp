@@ -4,7 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Dekel Tsur (original code)
- * \author Richard Heck (re-implementation)
+ * \author Richard Kimberly Heck (re-implementation)
  *
  * Full author contact details are available in file CREDITS.
  */

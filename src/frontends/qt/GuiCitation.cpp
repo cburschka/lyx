@@ -7,7 +7,7 @@
  * \author Angus Leeming
  * \author Kalle Dalheimer
  * \author Abdelrazak Younes
- * \author Richard Heck
+ * \author Richard Kimberly Heck
  *
  * Full author contact details are available in file CREDITS.
  */
