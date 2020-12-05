@@ -88,8 +88,6 @@ GuiThesaurus::GuiThesaurus(GuiView & lv)
 
 	bc().setCancel(buttonBox->button(QDialogButtonBox::Close));
 	bc().setApply(replacePB, true);
-	bc().addReadOnly(replaceED);
-	bc().addReadOnly(replacePB);
 	bc().setPolicy(ButtonPolicy::OkApplyCancelReadOnlyPolicy);
 
 	setFocusProxy(entryCO);
@@ -188,32 +186,25 @@ void GuiThesaurus::updateLists()
 	Thesaurus::Meanings meanings =
 		getMeanings(WordLangTuple(qstring_to_ucs4(entryCO->currentText()), language));
 
-	for (Thesaurus::Meanings::const_iterator cit = meanings.begin();
-		cit != meanings.end(); ++cit) {
+	for (auto const & meaning_p : meanings) {
 		QTreeWidgetItem * i = new QTreeWidgetItem(meaningsTV);
-		i->setText(0, toqstr(cit->first));
+		i->setText(0, toqstr(meaning_p.first));
 		meaningsTV->expandItem(i);
-		for (vector<docstring>::const_iterator cit2 = cit->second.begin();
-			cit2 != cit->second.end(); ++cit2) {
-				QTreeWidgetItem * i2 = new QTreeWidgetItem(i);
-				i2->setText(0, toqstr(*cit2));
-			}
-		meaningsTV->setEnabled(true);
-		lookupPB->setEnabled(true);
-		bool const readonly = isBufferReadonly();
-		replaceED->setEnabled(!readonly);
-		replacePB->setEnabled(!readonly);
+		for (docstring const & word : meaning_p.second) {
+			QTreeWidgetItem * i2 = new QTreeWidgetItem(i);
+			i2->setText(0, toqstr(word));
+		}
 	}
 
-	if (meanings.empty()) {
-		if (!thesaurus.thesaurusAvailable(lang_code)) {
-			QTreeWidgetItem * i = new QTreeWidgetItem(meaningsTV);
-			i->setText(0, qt_("No thesaurus available for this language!"));
-			meaningsTV->setEnabled(false);
-			lookupPB->setEnabled(false);
-			replaceED->setEnabled(false);
-			replacePB->setEnabled(false);
-		}
+	meaningsTV->setEnabled(!meanings.empty());
+	lookupPB->setEnabled(!meanings.empty());
+	selectionLA->setEnabled(!meanings.empty() && !isBufferReadonly());
+	replaceED->setEnabled(!meanings.empty() && !isBufferReadonly());
+	replacePB->setEnabled(!meanings.empty() && !isBufferReadonly());
+
+	if (meanings.empty() && !thesaurus.thesaurusAvailable(lang_code)) {
+		QTreeWidgetItem * i = new QTreeWidgetItem(meaningsTV);
+		i->setText(0, qt_("No thesaurus available for this language!"));
 	}
 
 	meaningsTV->setUpdatesEnabled(true);
