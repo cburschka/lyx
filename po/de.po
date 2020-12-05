@@ -94,15 +94,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-11-27 12:18-0500\n"
-"PO-Revision-Date: 2020-11-04 07:15+0100\n"
+"POT-Creation-Date: 2020-12-05 13:46+0100\n"
+"PO-Revision-Date: 2020-12-05 13:47+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 3.36.0\n"
+"X-Generator: Gtranslator 3.38.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:33
@@ -380,7 +380,7 @@ msgstr "&Hinzufügen"
 #: src/frontends/qt4/ui/ChangesUi.ui:91 src/frontends/qt4/ui/SendtoUi.ui:92
 #: src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/frontends/qt4/ButtonController.cpp:238
-#: src/frontends/qt4/GuiApplication.cpp:1814
+#: src/frontends/qt4/GuiApplication.cpp:1837
 #: src/frontends/qt4/GuiCompare.cpp:192
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -27358,7 +27358,7 @@ msgstr "Neu &konfigurieren"
 msgid "&Without LaTeX"
 msgstr "&Ohne LaTeX"
 
-#: src/LyX.cpp:600 src/VCBackend.cpp:967 src/VCBackend.cpp:971
+#: src/LyX.cpp:600 src/VCBackend.cpp:971 src/VCBackend.cpp:975
 msgid "&Continue"
 msgstr "&Fortfahren"
 
@@ -28409,7 +28409,7 @@ msgstr "Format "
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/Text3.cpp:2220 src/frontends/qt4/GuiApplication.cpp:1715
+#: src/Text3.cpp:2220 src/frontends/qt4/GuiApplication.cpp:1738
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
@@ -28597,15 +28597,19 @@ msgstr "Externes Material"
 msgid "Nomenclature Entries"
 msgstr "Nomenklatureinträge"
 
-#: src/VCBackend.cpp:63 src/VCBackend.cpp:873 src/VCBackend.cpp:878
-#: src/VCBackend.cpp:927 src/VCBackend.cpp:986 src/VCBackend.cpp:1045
-#: src/VCBackend.cpp:1053 src/VCBackend.cpp:1354 src/VCBackend.cpp:1456
-#: src/VCBackend.cpp:1462 src/VCBackend.cpp:1485 src/VCBackend.cpp:1971
+#: src/VCBackend.cpp:65
+msgid "Perhaps the RCS package is not installed on your system?"
+msgstr "Ist das RCS-Paket auf Ihrem System installiert?"
+
+#: src/VCBackend.cpp:66 src/VCBackend.cpp:877 src/VCBackend.cpp:882
+#: src/VCBackend.cpp:931 src/VCBackend.cpp:990 src/VCBackend.cpp:1049
+#: src/VCBackend.cpp:1057 src/VCBackend.cpp:1358 src/VCBackend.cpp:1460
+#: src/VCBackend.cpp:1466 src/VCBackend.cpp:1489 src/VCBackend.cpp:1975
 #: src/frontends/qt4/GuiView.cpp:3311 src/frontends/qt4/GuiView.cpp:3355
 msgid "Revision control error."
 msgstr "Fehler der Versionskontrolle."
 
-#: src/VCBackend.cpp:64
+#: src/VCBackend.cpp:67
 #, c-format
 msgid ""
 "Some problem occurred while running the command:\n"
@@ -28614,35 +28618,35 @@ msgstr ""
 "Bei der Ausführung des Befehls\n"
 "'%1$s' ist ein Fehler aufgetreten."
 
-#: src/VCBackend.cpp:636
+#: src/VCBackend.cpp:640
 msgid "Up-to-date"
 msgstr "Aktuell"
 
-#: src/VCBackend.cpp:638
+#: src/VCBackend.cpp:642
 msgid "Locally Modified"
 msgstr "Lokal modifiziert"
 
-#: src/VCBackend.cpp:640
+#: src/VCBackend.cpp:644
 msgid "Locally Added"
 msgstr "Lokal hinzugefügt"
 
-#: src/VCBackend.cpp:642
+#: src/VCBackend.cpp:646
 msgid "Needs Merge"
 msgstr "Zusammenführung erforderlich"
 
-#: src/VCBackend.cpp:644
+#: src/VCBackend.cpp:648
 msgid "Needs Checkout"
 msgstr "Auschecken erforderlich"
 
-#: src/VCBackend.cpp:646
+#: src/VCBackend.cpp:650
 msgid "No CVS file"
 msgstr "Keine CVS-Datei"
 
-#: src/VCBackend.cpp:648
+#: src/VCBackend.cpp:652
 msgid "Cannot retrieve CVS status"
 msgstr "Kann CVS-Status nicht ermitteln"
 
-#: src/VCBackend.cpp:874
+#: src/VCBackend.cpp:878
 msgid ""
 "The repository version is newer then the current check out.\n"
 "You have to update from repository first or revert your changes."
@@ -28651,7 +28655,7 @@ msgstr ""
 "Sie müssen zuerst aus dem Repositorium aktualisieren oder Ihre Änderungen\n"
 "rückgängig machen."
 
-#: src/VCBackend.cpp:879
+#: src/VCBackend.cpp:883
 #, c-format
 msgid ""
 "Bad status when checking in changes.\n"
@@ -28664,7 +28668,7 @@ msgstr ""
 "'%1$s'\n"
 "\n"
 
-#: src/VCBackend.cpp:928 src/VCBackend.cpp:1486
+#: src/VCBackend.cpp:932 src/VCBackend.cpp:1490
 #, c-format
 msgid ""
 "Error when updating from repository.\n"
@@ -28680,7 +28684,7 @@ msgstr ""
 "LyX wird das Dokument neu zu laden versuchen,\n"
 "nachdem Sie OK gedrückt haben."
 
-#: src/VCBackend.cpp:962
+#: src/VCBackend.cpp:966
 #, c-format
 msgid ""
 "There were detected changes in the working directory:\n"
@@ -28695,20 +28699,20 @@ msgstr ""
 "Im Fall eines Dateikonflikts müssen Sie diesen manuell beheben\n"
 "oder zur Repositoriumsversion zurückkehren."
 
-#: src/VCBackend.cpp:966 src/VCBackend.cpp:970 src/VCBackend.cpp:1527
-#: src/VCBackend.cpp:1531
+#: src/VCBackend.cpp:970 src/VCBackend.cpp:974 src/VCBackend.cpp:1531
+#: src/VCBackend.cpp:1535
 msgid "Changes detected"
 msgstr "Änderungen gefunden"
 
-#: src/VCBackend.cpp:967 src/VCBackend.cpp:971
+#: src/VCBackend.cpp:971 src/VCBackend.cpp:975
 msgid "&Abort"
 msgstr "&Abbrechen"
 
-#: src/VCBackend.cpp:967 src/VCBackend.cpp:1528
+#: src/VCBackend.cpp:971 src/VCBackend.cpp:1532
 msgid "View &Log ..."
 msgstr "&Logdatei ansehen ..."
 
-#: src/VCBackend.cpp:987
+#: src/VCBackend.cpp:991
 #, c-format
 msgid ""
 "Error when updating document %1$s from repository.\n"
@@ -28726,7 +28730,7 @@ msgstr ""
 "LyX wird das Dokument neu zu laden versuchen,\n"
 "nachdem Sie OK gedrückt haben."
 
-#: src/VCBackend.cpp:1046
+#: src/VCBackend.cpp:1050
 #, c-format
 msgid ""
 "The document %1$s is not in repository.\n"
@@ -28736,7 +28740,7 @@ msgstr ""
 "Sie müssen es erst einchecken, bevor Sie Änderungen\n"
 "rückgängig machen können."
 
-#: src/VCBackend.cpp:1054
+#: src/VCBackend.cpp:1058
 #, c-format
 msgid ""
 "Cannot revert document %1$s to repository version.\n"
@@ -28746,12 +28750,12 @@ msgstr ""
 "nicht zur Repositoriumsversion rückgängig machen.\n"
 "Der Status '%2$s' ist unerwartet."
 
-#: src/VCBackend.cpp:1339 src/VCBackend.cpp:1475 src/VCBackend.cpp:1512
-#: src/VCBackend.cpp:1566 src/VCBackend.cpp:1956
+#: src/VCBackend.cpp:1343 src/VCBackend.cpp:1479 src/VCBackend.cpp:1516
+#: src/VCBackend.cpp:1570 src/VCBackend.cpp:1960
 msgid "Error: Could not generate logfile."
 msgstr "Fehler: Konnte Logdatei nicht erstellen."
 
-#: src/VCBackend.cpp:1355 src/VCBackend.cpp:1972
+#: src/VCBackend.cpp:1359 src/VCBackend.cpp:1976
 msgid ""
 "Error when committing to repository.\n"
 "You have to manually resolve the problem.\n"
@@ -28762,7 +28766,7 @@ msgstr ""
 "LyX wird das Dokument neu laden, nachdem\n"
 "Sie OK gedrückt haben."
 
-#: src/VCBackend.cpp:1457
+#: src/VCBackend.cpp:1461
 msgid ""
 "Error while acquiring write lock.\n"
 "Another user is most probably editing\n"
@@ -28774,7 +28778,7 @@ msgstr ""
 "anderer Benutzer das Dokument!\n"
 "Überprüfen Sie auch das Zugriffsrecht auf das Repositorium."
 
-#: src/VCBackend.cpp:1463
+#: src/VCBackend.cpp:1467
 msgid ""
 "Error while releasing write lock.\n"
 "Check the access to the repository."
@@ -28782,7 +28786,7 @@ msgstr ""
 "Fehler beim Aufheben der Schreibsperre.\n"
 "Überprüfen Sie das Zugriffsrecht auf das Repositorium."
 
-#: src/VCBackend.cpp:1522
+#: src/VCBackend.cpp:1526
 #, c-format
 msgid ""
 "There were detected changes in the working directory:\n"
@@ -28800,31 +28804,31 @@ msgstr ""
 "\n"
 "Fortfahren?"
 
-#: src/VCBackend.cpp:1528 src/VCBackend.cpp:1532
+#: src/VCBackend.cpp:1532 src/VCBackend.cpp:1536
 #: src/frontends/qt4/FindAndReplace.cpp:383 src/frontends/qt4/GuiPrefs.cpp:1976
 #: src/lyxfind.cpp:164 src/lyxfind.cpp:432 src/lyxfind.cpp:460
 msgid "&Yes"
 msgstr "&Ja"
 
-#: src/VCBackend.cpp:1528 src/VCBackend.cpp:1532
+#: src/VCBackend.cpp:1532 src/VCBackend.cpp:1536
 #: src/frontends/qt4/FindAndReplace.cpp:383 src/frontends/qt4/GuiPrefs.cpp:1976
 #: src/lyxfind.cpp:164 src/lyxfind.cpp:432 src/lyxfind.cpp:460
 msgid "&No"
 msgstr "&Nein"
 
-#: src/VCBackend.cpp:1591
+#: src/VCBackend.cpp:1595
 msgid "SVN File Locking"
 msgstr "SVN Dateisperrung"
 
-#: src/VCBackend.cpp:1592 src/VCBackend.cpp:1597
+#: src/VCBackend.cpp:1596 src/VCBackend.cpp:1601
 msgid "Locking property unset."
 msgstr "Dateisperrung deaktiviert."
 
-#: src/VCBackend.cpp:1592 src/VCBackend.cpp:1597
+#: src/VCBackend.cpp:1596 src/VCBackend.cpp:1601
 msgid "Locking property set."
 msgstr "Dateisperrung aktiviert."
 
-#: src/VCBackend.cpp:1593
+#: src/VCBackend.cpp:1597
 msgid "Do not forget to commit the locking property into the repository."
 msgstr ""
 "Um wirksam zu werden, muss die Datei-Sperrung ins Repositorium übermittelt "
@@ -29164,43 +29168,43 @@ msgstr "Neu konfigurieren"
 msgid "Quit %1"
 msgstr "%1 beenden"
 
-#: src/frontends/qt4/GuiApplication.cpp:1151
+#: src/frontends/qt4/GuiApplication.cpp:1174
 msgid "Nothing to do"
 msgstr "Nichts zu tun"
 
-#: src/frontends/qt4/GuiApplication.cpp:1157
+#: src/frontends/qt4/GuiApplication.cpp:1180
 msgid "Unknown action"
 msgstr "Unbekannte Aktion"
 
-#: src/frontends/qt4/GuiApplication.cpp:1201
+#: src/frontends/qt4/GuiApplication.cpp:1224
 msgid "Command not handled"
 msgstr "Befehl wurde nicht ausgeführt"
 
-#: src/frontends/qt4/GuiApplication.cpp:1207
+#: src/frontends/qt4/GuiApplication.cpp:1230
 msgid "Command disabled"
 msgstr "Befehl ist deaktiviert"
 
-#: src/frontends/qt4/GuiApplication.cpp:1321
+#: src/frontends/qt4/GuiApplication.cpp:1344
 msgid "Command not allowed without a buffer open"
 msgstr "Dieser Befehl ist nur bei geöffnetem Dokument möglich"
 
-#: src/frontends/qt4/GuiApplication.cpp:1328
+#: src/frontends/qt4/GuiApplication.cpp:1351
 msgid "the <LFUN-COMMAND> argument of buffer-forall is not valid"
 msgstr "Das <LFUN-COMMAND>-Argument des Befehls 'buffer-forall' ist ungültig."
 
-#: src/frontends/qt4/GuiApplication.cpp:1530
+#: src/frontends/qt4/GuiApplication.cpp:1553
 msgid "Running configure..."
 msgstr "Neukonfiguration wird durchgeführt..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1538
+#: src/frontends/qt4/GuiApplication.cpp:1561
 msgid "Reloading configuration..."
 msgstr "Konfiguration wird neu geladen..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1545
+#: src/frontends/qt4/GuiApplication.cpp:1568
 msgid "System reconfiguration failed"
 msgstr "Neukonfiguration des Systems fehlgeschlagen"
 
-#: src/frontends/qt4/GuiApplication.cpp:1546
+#: src/frontends/qt4/GuiApplication.cpp:1569
 msgid ""
 "The system reconfiguration has failed.\n"
 "Default textclass is used but LyX may\n"
@@ -29212,11 +29216,11 @@ msgstr ""
 "der Lage, korrekt zu arbeiten.\n"
 "Bitte rekonfigurieren Sie nochmals, wenn nötig."
 
-#: src/frontends/qt4/GuiApplication.cpp:1551
+#: src/frontends/qt4/GuiApplication.cpp:1574
 msgid "System reconfigured"
 msgstr "Das System wurde neu konfiguriert"
 
-#: src/frontends/qt4/GuiApplication.cpp:1552
+#: src/frontends/qt4/GuiApplication.cpp:1575
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -29226,55 +29230,55 @@ msgstr ""
 "Sie müssen LyX neu starten, um die aktualisierten\n"
 "Spezifikationen für die Dokumentklassen zu nutzen."
 
-#: src/frontends/qt4/GuiApplication.cpp:1632
+#: src/frontends/qt4/GuiApplication.cpp:1655
 msgid "Exiting."
 msgstr "LyX wird beendet."
 
-#: src/frontends/qt4/GuiApplication.cpp:1727
+#: src/frontends/qt4/GuiApplication.cpp:1750
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Hilfe-Datei %1$s wird geöffnet..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1741
+#: src/frontends/qt4/GuiApplication.cpp:1764
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntax: set-color <lyx_name> <x11_name>"
 
-#: src/frontends/qt4/GuiApplication.cpp:1757
+#: src/frontends/qt4/GuiApplication.cpp:1780
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\" ist fehlgeschlagen -- die Farbe ist nicht definiert oder "
 "darf nicht umdefiniert werden."
 
-#: src/frontends/qt4/GuiApplication.cpp:1861
+#: src/frontends/qt4/GuiApplication.cpp:1884
 #, c-format
 msgid "Cannot iterate more than %1$d times"
 msgstr "Mehr als %1$d Wiederholungen sind nicht möglich."
 
-#: src/frontends/qt4/GuiApplication.cpp:1960
+#: src/frontends/qt4/GuiApplication.cpp:1983
 #, c-format
 msgid "Applied \"%1$s\" to %2$d buffer(s)"
 msgstr "Der Befehl \"%1$s\" wurde auf %2$d Dateien (Pufferspeicher) angewandt"
 
-#: src/frontends/qt4/GuiApplication.cpp:2035
+#: src/frontends/qt4/GuiApplication.cpp:2058
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Dokument-Standardeinstellungen gespeichert in %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:2039
+#: src/frontends/qt4/GuiApplication.cpp:2062
 msgid "Unable to save document defaults"
 msgstr "Die Dokument-Standardeinstellungen können nicht gespeichert werden"
 
-#: src/frontends/qt4/GuiApplication.cpp:2243
-#: src/frontends/qt4/GuiApplication.cpp:2258
+#: src/frontends/qt4/GuiApplication.cpp:2266
+#: src/frontends/qt4/GuiApplication.cpp:2281
 msgid "Unknown function."
 msgstr "Unbekannte Funktion."
 
-#: src/frontends/qt4/GuiApplication.cpp:2740
+#: src/frontends/qt4/GuiApplication.cpp:2763
 msgid "The current document was closed."
 msgstr "Das aktuelle Dokument wurde geschlossen."
 
-#: src/frontends/qt4/GuiApplication.cpp:2750
+#: src/frontends/qt4/GuiApplication.cpp:2773
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -29286,12 +29290,12 @@ msgstr ""
 "\n"
 "Exception: "
 
-#: src/frontends/qt4/GuiApplication.cpp:2754
-#: src/frontends/qt4/GuiApplication.cpp:2760
+#: src/frontends/qt4/GuiApplication.cpp:2777
+#: src/frontends/qt4/GuiApplication.cpp:2783
 msgid "Software exception Detected"
 msgstr "Softwareausnahme erkannt"
 
-#: src/frontends/qt4/GuiApplication.cpp:2758
+#: src/frontends/qt4/GuiApplication.cpp:2781
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -29299,12 +29303,12 @@ msgstr ""
 "LyX hat einen ziemlich seltsamen Fehler entdeckt. Das Programm wird jetzt "
 "versuchen, alle ungespeicherten Dateien zu speichern, und dann beendet."
 
-#: src/frontends/qt4/GuiApplication.cpp:3050
-#: src/frontends/qt4/GuiApplication.cpp:3062
+#: src/frontends/qt4/GuiApplication.cpp:3073
+#: src/frontends/qt4/GuiApplication.cpp:3085
 msgid "Could not find UI definition file"
 msgstr "Die Benutzeroberflächen-Definitionsdatei konnte nicht gefunden werden"
 
-#: src/frontends/qt4/GuiApplication.cpp:3051
+#: src/frontends/qt4/GuiApplication.cpp:3074
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -29315,13 +29319,13 @@ msgstr ""
 "%1$s.\n"
 "Bitte überprüfen Sie Ihre Installation."
 
-#: src/frontends/qt4/GuiApplication.cpp:3057
+#: src/frontends/qt4/GuiApplication.cpp:3080
 msgid "Could not find default UI file"
 msgstr ""
 "Die Standard-Benutzeroberflächen-Definitionsdatei konnte nicht gefunden "
 "werden"
 
-#: src/frontends/qt4/GuiApplication.cpp:3058
+#: src/frontends/qt4/GuiApplication.cpp:3081
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -29330,7 +29334,7 @@ msgstr ""
 "für die Benutzeroberfläche!\n"
 "Bitte überprüfen Sie Ihre Installation."
 
-#: src/frontends/qt4/GuiApplication.cpp:3063
+#: src/frontends/qt4/GuiApplication.cpp:3086
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -33995,11 +33999,11 @@ msgstr ""
 "Das angegebene Dokument %1$s\n"
 "konnte nicht geöffnet werden."
 
-#: src/output_latex.cpp:1484
+#: src/output_latex.cpp:1489
 msgid "Error in latexParagraphs"
 msgstr "Fehler in latexParagraphs"
 
-#: src/output_latex.cpp:1485
+#: src/output_latex.cpp:1490
 #, c-format
 msgid ""
 "You are using at least one layout (%1$s) intended for the title, after using "
