@@ -1048,7 +1048,7 @@ void LyXAction::init()
  * \li Origin: Levon, 16 Oct 2002
  * \endvar
  */
-		{ LFUN_CHANGES_MERGE, "changes-merge", Noop, Edit },
+		{ LFUN_CHANGES_MERGE, "changes-merge", ReadOnly, Edit },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_CHANGES_OUTPUT

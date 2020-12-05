@@ -46,8 +46,6 @@ GuiChanges::GuiChanges(GuiView & lv)
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	bc().setCancel(buttonBox->button(QDialogButtonBox::Cancel));
-	bc().addReadOnly(acceptPB);
-	bc().addReadOnly(rejectPB);
 }
 
 
@@ -60,8 +58,8 @@ void GuiChanges::updateContents()
 
 	Change const & c = bufferview()->getCurrentChange();
 	bool const changePresent = c.type != Change::UNCHANGED;
-	rejectPB->setEnabled(changePresent);
-	acceptPB->setEnabled(changePresent);
+	rejectPB->setEnabled(changePresent && !isBufferReadonly());
+	acceptPB->setEnabled(changePresent && !isBufferReadonly());
 	bool const inserted = c.type == Change::INSERTED;
 
 	QString text;
