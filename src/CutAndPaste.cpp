@@ -277,7 +277,13 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 					tmpbuf->eraseChar(i--, false);
 		}
 
-		if (lyxrc.ct_markup_copied)
+		if (lyxrc.ct_markup_copied) {
+			// Only change to inserted if ct is active,
+			// otherwise leave markup as is
+			if (buffer.params().track_changes)
+				tmpbuf->setChange(Change(Change::INSERTED));
+		} else
+			// Resolve all markup to inserted or unchanged
 			tmpbuf->setChange(Change(buffer.params().track_changes ?
 						 Change::INSERTED : Change::UNCHANGED));
 	}
