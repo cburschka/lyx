@@ -168,7 +168,10 @@ bool InsetERT::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 docstring const InsetERT::buttonLabel(BufferView const & bv) const
 {
+	// U+1F512 LOCK
 	docstring const locked = tempfile_ ? docstring(1, 0x1F512) : docstring();
+	if (decoration() == InsetLayout::MINIMALISTIC)
+		return locked;
 	if (decoration() == InsetLayout::CLASSIC)
 		return locked + (isOpen(bv) ? _("ERT") : getNewLabel(_("ERT")));
 	return locked + getNewLabel(_("ERT"));

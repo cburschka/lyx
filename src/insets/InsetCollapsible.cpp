@@ -100,8 +100,11 @@ InsetCollapsible::Geometry InsetCollapsible::geometry(BufferView const & bv) con
 			return view_[&bv].openinlined_ ? LeftButton : TopButton;
 		return ButtonOnly;
 
-	case InsetLayout::MINIMALISTIC:
-		return status(bv) == Open ? NoButton : ButtonOnly ;
+	case InsetLayout::MINIMALISTIC: {
+		return status(bv) == Open ?
+			(tempfile_ ? LeftButton : NoButton)
+			: ButtonOnly;
+	}
 
 	case InsetLayout::CONGLOMERATE:
 		return status(bv) == Open ? SubLabel : Corners ;
@@ -677,12 +680,14 @@ docstring InsetCollapsible::getLabel() const
 
 docstring const InsetCollapsible::buttonLabel(BufferView const & bv) const
 {
+	// U+1F512 LOCK
+	docstring const locked = tempfile_ ? docstring(1, 0x1F512) : docstring();
+	if (decoration() == InsetLayout::MINIMALISTIC)
+		return locked;
 	// indicate changed content in label (#8645)
 	// ✎ U+270E LOWER RIGHT PENCIL
 	docstring const indicator = (isChanged() && geometry(bv) == ButtonOnly)
 		? docstring(1, 0x270E) : docstring();
-	// U+1F512 LOCK
-	docstring const locked = tempfile_ ? docstring(1, 0x1F512) : docstring();
 	InsetLayout const & il = getLayout();
 	docstring const label = getLabel();
 	if (!il.contentaslabel() || geometry(bv) != ButtonOnly)
