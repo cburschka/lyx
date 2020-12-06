@@ -588,6 +588,10 @@ FindAndReplace::FindAndReplace(GuiView & parent,
 	widget_ = new FindAndReplaceWidget(parent);
 	setWidget(widget_);
 	setFocusProxy(widget_);
+#ifdef Q_OS_MAC
+	// On Mac show and floating
+	setFloating(true);
+#endif
 
 	connect(this, SIGNAL(dockLocationChanged(Qt::DockWidgetArea)),
 	        widget_, SLOT(dockLocationChanged(Qt::DockWidgetArea)));

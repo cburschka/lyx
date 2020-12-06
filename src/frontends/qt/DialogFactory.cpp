@@ -156,14 +156,8 @@ Dialog * createDialog(GuiView & gv, string const & name)
 		return new GuiShowFile(gv);
 	if (name == "findreplace")
 		return new GuiSearch(gv);
-	if (name == "findreplaceadv") {
-		FindAndReplace * gui = new FindAndReplace(gv, Qt::RightDockWidgetArea);
-#ifdef Q_OS_MAC
-		// On Mac show and floating
-		gui->setFloating(true);
-#endif
-		return gui;
-	}
+	if (name == "findreplaceadv")
+		return new FindAndReplace(gv);
 	if (name == "graphics")
 		return new GuiGraphics(gv);
 	if (name == "include")
@@ -194,14 +188,8 @@ Dialog * createDialog(GuiView & gv, string const & name)
 		return new GuiRef(gv);
 	if (name == "sendto")
 		return new GuiSendTo(gv);
-	if (name == "spellchecker") {
-		GuiSpellchecker * gui = new GuiSpellchecker(gv, Qt::RightDockWidgetArea);
-#ifdef Q_OS_MAC
-		// On Mac show and floating
-		gui->setFloating(true);
-#endif
-		return gui;
-	}
+	if (name == "spellchecker")
+		return new GuiSpellchecker(gv);
 	if (name == "symbols")
 		return new GuiSymbols(gv);
 	if (name == "tabularcreate")
@@ -217,7 +205,7 @@ Dialog * createDialog(GuiView & gv, string const & name)
 	if (name == "wrap")
 		return new GuiWrap(gv);
 	if (name == "progress")
-		return new GuiProgressView(gv, Qt::BottomDockWidgetArea);
+		return new GuiProgressView(gv);
 
 	return nullptr;
 }

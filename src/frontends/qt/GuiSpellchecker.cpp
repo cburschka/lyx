@@ -598,6 +598,10 @@ GuiSpellchecker::GuiSpellchecker(GuiView & parent,
 	widget_ = new SpellcheckerWidget(&parent, this);
 	setWidget(widget_);
 	setFocusProxy(widget_);
+#ifdef Q_OS_MAC
+	// On Mac show and floating
+	setFloating(true);
+#endif
 }
 
 

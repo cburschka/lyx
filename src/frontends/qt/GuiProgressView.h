@@ -46,7 +46,7 @@ class GuiProgressView : public DockView
 public:
 	GuiProgressView(
 		GuiView & parent, ///< the main window where to dock.
-		Qt::DockWidgetArea area, ///< Position of the dock (and also drawer)
+		Qt::DockWidgetArea area = Qt::BottomDockWidgetArea, ///< Position of the dock (and also drawer)
 		Qt::WindowFlags flags = 0);
 
 	~GuiProgressView();
