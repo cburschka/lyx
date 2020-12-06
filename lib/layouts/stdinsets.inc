@@ -368,6 +368,7 @@ InsetLayout Listings
 	ForcePlain            true
 	NeedCProtect          true
 	RefPrefix             lst
+	EditExternal          true
 	HTMLTag               pre
 	HTMLStyle
 		div.float-listings {
