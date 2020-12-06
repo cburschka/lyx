@@ -50163,21 +50163,59 @@ Ctrl+arrow key
 
 \begin_layout Standard
 
-\change_inserted -712698321 1578924785
+\change_inserted -712698321 1607270592
 The option 
 \family sans
 Keep change tracking markup on copy and paste
 \family default
- is for users who don't want tracked changes to be dissolved on copy and
- paste operations (i.
+ is only relevant in documents that 
+\emph on
+do not
+\emph default
+ track changes.
+ In such documents, change-tracked text will be copied and pasted as is
+ is (keeping 
+\emph on
+addition
+\emph default
+ and 
+\emph on
+deletion
+\emph default
+ markup) with this option selected.
+ It the option is not selected, pasted text will be inserted without any
+ markup (i.
 \begin_inset space \thinspace{}
 \end_inset
 
-e., inserted as new text with the deletions removed).
- If this is checked, the change-tracked text will be copied and pasted as
- is, independent if changes are currently tracked or not.
+e., as 
+\begin_inset Quotes els
+\end_inset
+
+unchanged
+\begin_inset Quotes ers
+\end_inset
+
+ text).
  This also applies to wrapping to\SpecialChar breakableslash
 dissolving from insets.
+ In documents that 
+\emph on
+do
+\emph default
+ track changes, pasted text is 
+\emph on
+always
+\emph default
+ marked as 
+\begin_inset Quotes els
+\end_inset
+
+new
+\begin_inset Quotes ers
+\end_inset
+
+ notwithstanding the state of this option.
 \change_unchanged
 
 \end_layout

@@ -8649,12 +8649,10 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
-
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
-
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8667,7 +8665,6 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8691,7 +8688,6 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
-
 Dies ist Unformatiert*.
 \end_layout
 
@@ -46580,17 +46576,40 @@ Die Option
 \family sans
 Änderungsmarkierungen beim Kopieren und Einfügen behalten
 \family default
- können Sie auswählen, wenn Sie nicht möchten, dass verfolgte Änderungen
- beim Kopieren und Einfügen aufgelöst werden (d.
+ ist nur für Dokumente relevant, die aktuell 
+\emph on
+keine
+\emph default
+ Änderungen aufzeichnen.
+ In solchen Dokumenten werden Textpassagen unter Beibehaltung der Änderungsmarki
+erungen (Markierung von neuem und gelöschtem Text) eingefügt, wenn diese
+ Option gewählt ist.
+ Wenn die Option 
+\emph on
+nicht
+\emph default
+ gewählt ist, wird Text immer ohne Markierungen eingefügt (d.
 \begin_inset space \thinspace{}
 \end_inset
 
-h., dass als gelöscht markierter Text entfernt und alles andere als neu eingefügt
- wird).
- Wenn dies ausgewählt ist, wird der kopierte Text mit den Markierungen eingefügt
-, unabhängig davon, ob Änderungen gerade verfolgt werden oder nicht.
+h.
+ vorhandene Markierungen werden aufgelöst).
  Das betrifft auch das Umwandeln von Text in\SpecialChar breakableslash
 von Einfügungen.
+ In Dokumenten, die Änderungen aufzeichnen wird eingefügter Text unabhängig
+ von dieser Option 
+\emph on
+immer
+\emph default
+ als 
+\begin_inset Quotes gls
+\end_inset
+
+neuer Text
+\begin_inset Quotes grs
+\end_inset
+
+ markiert.
 \end_layout
 
 \begin_layout Standard
