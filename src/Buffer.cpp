@@ -2592,16 +2592,16 @@ void Buffer::collectBibKeys(FileNameList & checkedFiles) const
 }
 
 
-void Buffer::addBiblioInfo(BiblioInfo const & bin) const
+void Buffer::addBiblioInfo(BiblioInfo const & bi_in) const
 {
 	// We add the biblio info to the parent buffer,
 	// if there is one, but also to this buffer, in case
 	// it is compiled alone.
-	BiblioInfo & bi = d->bibinfo_;
-	bi.mergeBiblioInfo(bin);
+	BiblioInfo & our_bi = d->bibinfo_;
+	our_bi.mergeBiblioInfo(bi_in);
 
 	if (parent())
-		parent()->addBiblioInfo(bin);
+		parent()->addBiblioInfo(bi_in);
 }
 
 
