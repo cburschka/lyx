@@ -651,11 +651,13 @@ bool InsetCollapsible::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	case LFUN_INSET_EDIT:
-		flag.setEnabled(getLayout().editExternally() && tempfile_ == nullptr);
+		flag.setEnabled(!buffer().hasReadonlyFlag() &&
+			getLayout().editExternally() && tempfile_ == nullptr);
 		return true;
 
 	case LFUN_INSET_END_EDIT:
-		flag.setEnabled(getLayout().editExternally() && tempfile_ != nullptr);
+		flag.setEnabled(!buffer().hasReadonlyFlag() &&
+			getLayout().editExternally() && tempfile_ != nullptr);
 		return true;
 
 	default:
