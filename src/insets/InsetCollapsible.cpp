@@ -648,11 +648,11 @@ bool InsetCollapsible::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	case LFUN_INSET_EDIT:
-		flag.setEnabled(getLayout().editExternally() && tempfile_ == 0);
+		flag.setEnabled(getLayout().editExternally() && tempfile_ == nullptr);
 		return true;
 
 	case LFUN_INSET_END_EDIT:
-		flag.setEnabled(getLayout().editExternally() && tempfile_ != 0);
+		flag.setEnabled(getLayout().editExternally() && tempfile_ != nullptr);
 		return true;
 
 	default:
@@ -681,11 +681,13 @@ docstring const InsetCollapsible::buttonLabel(BufferView const & bv) const
 	// ✎ U+270E LOWER RIGHT PENCIL
 	docstring const indicator = (isChanged() && geometry(bv) == ButtonOnly)
 		? docstring(1, 0x270E) : docstring();
+	// U+1F512 LOCK
+	docstring const locked = tempfile_ ? docstring(1, 0x1F512) : docstring();
 	InsetLayout const & il = getLayout();
 	docstring const label = getLabel();
 	if (!il.contentaslabel() || geometry(bv) != ButtonOnly)
 		return indicator + label;
-	return indicator + getNewLabel(label);
+	return locked + indicator + getNewLabel(label);
 }
 
 
