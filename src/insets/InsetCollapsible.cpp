@@ -693,7 +693,7 @@ docstring const InsetCollapsible::buttonLabel(BufferView const & bv) const
 	InsetLayout const & il = getLayout();
 	docstring const label = getLabel();
 	if (!il.contentaslabel() || geometry(bv) != ButtonOnly)
-		return indicator + label;
+		return locked + indicator + label;
 	return locked + indicator + getNewLabel(label);
 }
 
