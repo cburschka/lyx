@@ -23,7 +23,7 @@
 
 Format 89
 
-Input theorem-counters-bytype.inc
+Input theorems-counters-bytype.inc
 
 OutlinerName thm "Definitions & Theorems"
 
