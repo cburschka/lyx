@@ -62,6 +62,8 @@ struct SpellcheckerWidget::Private
 {
 	Private(SpellcheckerWidget * parent, DockView * dv, GuiView * gv)
 		: p(parent), dv_(dv), gv_(gv), incheck_(false), wrap_around_(false) {}
+	///
+	void updateView();
 	/// update from controller
 	void updateSuggestions(docstring_list & words);
 	/// move to next position after current word
@@ -146,9 +148,6 @@ SpellcheckerWidget::SpellcheckerWidget(GuiView * gv, DockView * dv, QWidget * pa
 	language_model->sort(0);
 	d->ui.languageCO->setModel(language_model);
 	d->ui.languageCO->setModelColumn(1);
-
-	d->ui.wordED->setReadOnly(true);
-
 	d->ui.suggestionsLW->installEventFilter(this);
 }
 
@@ -208,27 +207,48 @@ void SpellcheckerWidget::on_replaceCO_highlighted(const QString & str)
 
 void SpellcheckerWidget::updateView()
 {
-	BufferView * bv = d->gv_->documentBufferView();
-	// we need a buffer view and the buffer has to be writable
-	bool const enabled = bv != 0 && !bv->buffer().isReadonly();
-	setEnabled(enabled);
-	if (enabled && hasFocus()) {
-		Cursor const & cursor = bv->cursor();
-		if (d->start_.empty() || !d->isCurrentBuffer(cursor)) {
-			if (cursor.selection()) {
-				d->begin_ = cursor.selectionBegin();
-				d->end_   = cursor.selectionEnd();
-				d->start_ = d->begin_;
-				bv->cursor().setCursor(d->start_);
+	d->updateView();
+}
+
+
+void SpellcheckerWidget::Private::updateView()
+{
+	BufferView * bv = gv_->documentBufferView();
+	bool const enabled = bv != nullptr;
+	// Check cursor position
+	if (enabled && p->hasFocus()) {
+		Cursor const & cur = bv->cursor();
+		if (start_.empty() || !isCurrentBuffer(cur)) {
+			if (cur.selection()) {
+				begin_ = cur.selectionBegin();
+				end_   = cur.selectionEnd();
+				start_ = begin_;
+				bv->cursor().setCursor(start_);
 			} else {
-				d->begin_ = DocIterator();
-				d->end_   = DocIterator();
-				d->start_ = cursor;
+				begin_ = DocIterator();
+				end_   = DocIterator();
+				start_ = cur;
 			}
-			d->wrapAround(false);
-			d->check();
+			wrapAround(false);
+			check();
 		}
 	}
+
+	// Enable widgets as needed.
+	bool const has_word = enabled && !ui.wordED->text().isEmpty();
+	bool const can_replace = has_word && !bv->buffer().isReadonly();
+	ui.findNextPB->setEnabled(enabled);
+	ui.TextLabel3->setEnabled(enabled);
+	ui.wordED->setEnabled(enabled);
+	ui.ignorePB->setEnabled(has_word);
+	ui.ignoreAllPB->setEnabled(has_word);
+	ui.addPB->setEnabled(has_word);
+	ui.TextLabel1->setEnabled(can_replace);
+	ui.replaceCO->setEnabled(can_replace);
+	ui.TextLabel2->setEnabled(has_word);
+	ui.suggestionsLW->setEnabled(has_word);
+	ui.replacePB->setEnabled(can_replace);
+	ui.replaceAllPB->setEnabled(can_replace);
 }
 
 DocIterator const SpellcheckerWidget::Private::cursor() const
@@ -587,6 +607,8 @@ void SpellcheckerWidget::Private::check()
 	setLanguage(word_lang.lang());
 	// mark misspelled word
 	setSelection(from, to);
+	// enable relevant widgets
+	updateView();
 }
 
 
