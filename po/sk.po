@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-11-27 12:18-0500\n"
-"PO-Revision-Date: 2020-10-30 10:44+0000\n"
+"POT-Creation-Date: 2020-12-05 09:40+0100\n"
+"PO-Revision-Date: 2020-12-05 08:45+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2864,7 +2864,7 @@ msgstr "Odsadenie &vzorcov"
 
 #: src/frontends/qt4/ui/MathsUi.ui:98 src/frontends/qt4/ui/TextLayoutUi.ui:48
 msgid "Size of the indentation"
-msgstr "Veľkosť odsadzovania"
+msgstr "Hodnota zarážky"
 
 #: src/frontends/qt4/ui/MathsUi.ui:176
 msgid "Formula numbering side:"
@@ -4507,7 +4507,7 @@ msgstr "Definovať odsadenie/dĺžku návestia pre zoznam nomenklatúry."
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:22
 msgid "&List Indentation:"
-msgstr "O&dsadzovanie zoznamu:"
+msgstr "Z&arážky v zozname:"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:39
 msgid "Custom &Width:"
@@ -4515,8 +4515,7 @@ msgstr "V&lastná šírka:"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:52
 msgid "Custom value. \"List Indentation\" needs to be set to \"Custom\"."
-msgstr ""
-"Vlastná hodnota. \"Odsadzovanie zoznamov\" je treba nastaviť na \"Vlastné\"."
+msgstr "Vlastná hodnota. \"Zarážky v zozname\" treba nastaviť na \"Vlastné\"."
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:40
 msgid "Avai&lable indexes:"
@@ -5243,7 +5242,7 @@ msgstr "Delenie odstavcov"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:35
 msgid "Indent consecutive paragraphs"
-msgstr "Odsadenie postupných odstavcov"
+msgstr "Zarážky postupných odstavcov"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:38
 msgid "&Indentation:"
@@ -8899,8 +8898,7 @@ msgid ""
 "algorithm."
 msgstr ""
 "Použiť balík algorithm2e pre plávajúce algoritmy namiesto LyXovej samohonky "
-"plávajúcich algoritmov. Použiť štýl 'Algorithm' na vklad a odsadenie "
-"algoritmu."
+"plávajúcich algoritmov. Použiť štýl 'Algorithm' na vklad a zarážka algoritmu."
 
 #: lib/layouts/algorithm2e.module:25 lib/layouts/powerdot.layout:549
 #: lib/layouts/revtex4-x.inc:267 lib/layouts/stdfloats.inc:48
@@ -28280,6 +28278,10 @@ msgstr "Externý materiál"
 #: src/TocBackend.cpp:290
 msgid "Nomenclature Entries"
 msgstr "Zoznam nomenklatúr"
+
+#: src/VCBackend.cpp:65
+msgid "Perhaps the RCS package is not installed on your system?"
+msgstr "Azda že balík RCS nie je inštalovaný vo vašom počítači?"
 
 #: src/VCBackend.cpp:63 src/VCBackend.cpp:873 src/VCBackend.cpp:878
 #: src/VCBackend.cpp:927 src/VCBackend.cpp:986 src/VCBackend.cpp:1045
