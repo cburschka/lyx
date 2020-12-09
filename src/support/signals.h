@@ -12,7 +12,7 @@
 #ifndef LYX_SIGNALS_H
 #define LYX_SIGNALS_H
 
-#include "boost/signals2.hpp"
+#include <boost/signals2/signal.hpp>
 
 #include <memory>
 

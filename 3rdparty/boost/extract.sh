@@ -24,9 +24,7 @@ bcp --boost=$1 \
 	boost/assert.hpp \
 	boost/crc.hpp \
 	boost/lexical_cast.hpp \
-	boost/signals2.hpp \
-	boost/signals2/connection.hpp \
-	boost/signals2/trackable.hpp \
+	boost/signals2/signal.hpp \
 	\
 	needed
 
