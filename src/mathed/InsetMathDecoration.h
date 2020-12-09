@@ -39,8 +39,8 @@ public:
 	void infoize(odocstream & os) const override;
 	///
 	MathClass mathClass() const override;
-	/// The default limits value
-	Limits defaultLimits() const override { return allowsLimitsChange() ? LIMITS : NO_LIMITS; }
+	/// The default limits value in \c display style
+	Limits defaultLimits(bool display) const override;
 	/// whether the inset has limit-like sub/superscript
 	Limits limits() const override { return limits_; }
 	/// sets types of sub/superscripts

@@ -146,6 +146,8 @@ public:
 	MathClass mathClass() const;
 	/// math class of last interesting element
 	MathClass lastMathClass() const;
+	/// is the cell in display style
+	bool displayStyle() const { return display_style_; }
 
 	/// access to cached x coordinate of last drawing
 	int xo(BufferView const & bv) const;
@@ -192,6 +194,8 @@ protected:
 	mutable int mindes_ = 0;
 	mutable int slevel_ = 0;
 	mutable int sshift_ = 0;
+	/// cached value for display style
+	mutable bool display_style_ = false;
 	Buffer * buffer_ = nullptr;
 
 private:

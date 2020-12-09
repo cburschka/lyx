@@ -1299,10 +1299,12 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 				in->limits(NO_LIMITS);
 			else
 				in->limits(AUTO_LIMITS);
-		} else if (in->limits() == AUTO_LIMITS)
-			in->limits(in->defaultLimits() == LIMITS ? NO_LIMITS : LIMITS);
-		else
+		} else if (in->limits() != AUTO_LIMITS)
 			in->limits(AUTO_LIMITS);
+		else if (in->defaultLimits(cur.cell().displayStyle()) == LIMITS)
+			in->limits(NO_LIMITS);
+		else
+			in->limits(LIMITS);
 		return;
 	}
 

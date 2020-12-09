@@ -398,14 +398,14 @@ bool InsetMathMacro::allowsLimitsChange() const
 }
 
 
-Limits InsetMathMacro::defaultLimits() const
+Limits InsetMathMacro::defaultLimits(bool display) const
 {
 	if (d->expanded_.empty())
 		return NO_LIMITS;
 	// Guess from the expanded macro
 	InsetMath const * in = d->expanded_.back().nucleus();
 	Limits const lim = in->limits() == AUTO_LIMITS
-		? in->defaultLimits() : in->limits();
+		? in->defaultLimits(display) : in->limits();
 	LATTEST(lim != AUTO_LIMITS);
 	return lim;
 }

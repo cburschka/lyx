@@ -224,6 +224,7 @@ bool MathData::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 {
 	bool has_contents = false;
 	BufferView * bv = mi.base.bv;
+	display_style_ = mi.base.font.style() == DISPLAY_STYLE;
 	MathData * ar = const_cast<MathData*>(this);
 	ar->updateMacros(&bv->cursor(), mi.macrocontext,
 	                 InternalUpdate, mi.base.macro_nesting);

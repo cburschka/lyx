@@ -30,10 +30,18 @@ public:
 	docstring name() const override;
 	///
 	MathClass mathClass() const override { return math_class_; }
+	/// The default limits value in \c display style
+	Limits defaultLimits(bool display) const override;
+	/// whether the inset has limit-like sub/superscript
+	Limits limits() const override { return limits_; }
+	/// sets types of sub/superscripts
+	void limits(Limits lim) override { limits_ = lim; }
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
 	void draw(PainterInfo & pi, int x, int y) const override;
+	///
+	void write(WriteStream & os) const override;
 	///
 	void infoize(odocstream & os) const override;
 	///
@@ -47,6 +55,8 @@ private:
 	Inset * clone() const override;
 	///
 	MathClass math_class_;
+	///
+	Limits limits_ = AUTO_LIMITS;
 };
 
 

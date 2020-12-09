@@ -58,10 +58,12 @@ docstring InsetMathSymbol::name() const
 
 
 /// The default limits value
-Limits InsetMathSymbol::defaultLimits() const
+Limits InsetMathSymbol::defaultLimits(bool display) const
 {
-	return (allowsLimitsChange() && sym_->extra != "func")
-			? LIMITS : NO_LIMITS;
+	if (allowsLimitsChange() && sym_->extra != "func" && display)
+		return LIMITS;
+	else
+		return NO_LIMITS;
 }
 
 

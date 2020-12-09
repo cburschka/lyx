@@ -32,6 +32,10 @@ public:
 	InsetMathScript(Buffer * buf, MathAtom const & at, bool up);
 	///
 	mode_type currentMode() const override { return MATH_MODE; }
+	/// whether the inset has limit-like sub/superscript
+	Limits limits() const override;
+	/// sets types of sub/superscripts
+	void limits(Limits lim) override;
 	///
 	MathClass mathClass() const override;
 	///

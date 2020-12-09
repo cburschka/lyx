@@ -42,7 +42,7 @@ public:
 	///
 	bool isOrdAlpha() const;
 	/// The default limits value
-	Limits defaultLimits() const override;
+	Limits defaultLimits(bool display) const override;
 	/// whether the inset has limit-like sub/superscript
 	Limits limits() const override { return limits_; }
 	/// sets types of sub/superscripts

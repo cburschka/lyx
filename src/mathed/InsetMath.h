@@ -209,8 +209,8 @@ public:
 
 	/// Whether the inset allows \(no)limits
 	bool allowsLimitsChange() const { return mathClass() == MC_OP; }
-	/// The default limits value
-	virtual Limits defaultLimits() const { return NO_LIMITS; }
+	/// The default limits value depending on whether display mode is on
+	virtual Limits defaultLimits(bool /* display */) const { return NO_LIMITS; }
 	/// whether the inset has limit-like sub/superscript
 	virtual Limits limits() const { return AUTO_LIMITS; }
 	/// sets types of sub/superscripts
