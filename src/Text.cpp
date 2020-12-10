@@ -1868,9 +1868,15 @@ bool Text::dissolveInset(Cursor & cur)
 		 */
 		DocumentClass const & tclass = cur.buffer()->params().documentClass();
 		if (inset_it.lastpos() == 1
-			&& !tclass.isPlainLayout(plist[0].layout())
-			&& !tclass.isDefaultLayout(plist[0].layout()))
-			cur.paragraph().makeSameLayout(plist[0]);
+		    && !tclass.isPlainLayout(plist[0].layout())
+		    && !tclass.isDefaultLayout(plist[0].layout())) {
+			// Copy all parameters except depth.
+			Paragraph & par = cur.paragraph();
+			par.setLayout(plist[0].layout());
+			depth_type const dpth = par.getDepth();
+			par.params() = plist[0].params();
+			par.params().depth(dpth);
+		}
 
 		pasteParagraphList(cur, plist, b.params().documentClassPtr(),
 				   b.errorList("Paste"));
