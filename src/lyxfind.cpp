@@ -1296,6 +1296,13 @@ static void buildAccentsMap()
   accents["i"] = "ı";
   accents["jmath"] = "ȷ";
   accents["cdot"] = "·";
+  accents["hairspace"]     = u8"\uf0000";	// select from free unicode plane 15
+  accents["thinspace"]     = u8"\uf0002";	// and used _only_ by findadv
+  accents["negthinspace"]  = u8"\uf0003";	// to omit backslashed latex macros
+  accents["medspace"]      = u8"\uf0004";	// See https://en.wikipedia.org/wiki/Private_Use_Areas
+  accents["negmedspace"]   = u8"\uf0005";
+  accents["thickspace"]    = u8"\uf0006";
+  accents["negthickspace"] = u8"\uf0007";
   accents["lyxmathsym{ß}"] = "ß";
   accents["text{ß}"] = "ß";
   accents["ddot{\\imath}"] = "ï";
@@ -1361,7 +1368,7 @@ void Intervall::removeAccents()
 {
   if (accents.empty())
     buildAccentsMap();
-  static regex const accre("\\\\(([\\S]|grave|breve|lyxmathsym|text|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot|ogonek|cedilla|subring|textsubring|subhat|textsubcircum|subtilde|textsubtilde|dgrave|textdoublegrave|rcap|textroundcap|slashed)\\{[^\\{\\}]+\\}|(i|imath|jmath|cdot)(?![a-zA-Z]))");
+  static regex const accre("\\\\(([\\S]|grave|breve|lyxmathsym|text|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot|ogonek|cedilla|subring|textsubring|subhat|textsubcircum|subtilde|textsubtilde|dgrave|textdoublegrave|rcap|textroundcap|slashed)\\{[^\\{\\}]+\\}|(i|imath|jmath|cdot|[a-z]+space)(?![a-zA-Z]))");
   smatch sub;
   for (sregex_iterator itacc(par.begin(), par.end(), accre), end; itacc != end; ++itacc) {
     sub = *itacc;
@@ -2007,6 +2014,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("quad|qquad|hfill|dotfill",               KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   makeKey("textvisiblespace|nobreakspace",          KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   makeKey("negthickspace|negmedspace|negthinspace", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+  makeKey("thickspace|medspace|thinspace",          KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   // Skip
   // makeKey("enskip|smallskip|medskip|bigskip|vfill", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   // Custom space/skip, remove the content (== length value)
