@@ -380,8 +380,8 @@ PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
 {
 	font_scaling_factor_ = int(buffer_.fontScalingFactor());
 	if (theApp()) {
-		fg_color_ = convert(theApp()->hexName(foregroundColor()).c_str(), 16);
-		bg_color_ = convert(theApp()->hexName(backgroundColor()).c_str(), 16);
+		fg_color_ = convert(theApp()->hexName(foregroundColor()), 16);
+		bg_color_ = convert(theApp()->hexName(backgroundColor()), 16);
 	} else {
 		fg_color_ = 0x0;
 		bg_color_ = 0xffffff;
@@ -444,8 +444,8 @@ PreviewLoader::Impl::preview(string const & latex_snippet) const
 	int fg = 0x0;
 	int bg = 0xffffff;
 	if (theApp()) {
-		fg = convert(theApp()->hexName(foregroundColor()).c_str(), 16);
-		bg = convert(theApp()->hexName(backgroundColor()).c_str(), 16);
+		fg = convert(theApp()->hexName(foregroundColor()), 16);
+		bg = convert(theApp()->hexName(backgroundColor()), 16);
 	}
 	if (font_scaling_factor_ != fs || fg_color_ != fg || bg_color_ != bg) {
 		// Schedule refresh of all previews on zoom or color changes.
