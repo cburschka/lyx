@@ -10,38 +10,42 @@
 # Usage: extract.sh <path to new boost version>
 #
 
+HEADERS="\
+  boost/any.hpp \
+  boost/assert.hpp \
+  boost/crc.hpp \
+  boost/lexical_cast.hpp \
+  boost/signals2/signal.hpp \
+  "
+
 if [ -z $1 ]
 then
-    echo "Usage: extract.sh <path to new boost version>"
+    echo "Usage: extract.sh [--report] <path to new boost version>"
+    echo "Update our local boost copy"
+    echo "With --report, create a HTML report that contains in particular the dependencies"
     exit 1
 fi
+
+if [ x$1 = x--report ]; then
+    bcp --boost=$2 --report $HEADERS report.html
+    exit 0;
+fi
+
 
 rm -rf needed
 mkdir needed
 
-bcp --boost=$1 \
-	boost/any.hpp \
-	boost/assert.hpp \
-	boost/crc.hpp \
-	boost/lexical_cast.hpp \
-	boost/signals2/signal.hpp \
-	\
-	needed
-
+bcp --boost=$1 $HEADERS needed/
 
 # we do not use the provided MSVC project files
 find needed -name '*.vcpro*' | xargs rm
 
+# remove old boost headers
 find boost -name \*.hpp | xargs rm
-#find libs  -name \*.cpp | xargs rm
 
+# copy new headers
 cp -vR needed/boost .
-#cp -vR needed/libs .
 
 rm -rf needed
 
-# found by bcp but not needed by us
-rm -rf boost/typeof
-rm -rf libs/config
-rm -rf libs/smart_ptr
 
