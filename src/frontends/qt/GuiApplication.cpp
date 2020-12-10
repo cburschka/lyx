@@ -527,7 +527,7 @@ pair<QString,bool> iconName(FuncRequest const & f, bool unknown, bool rtl)
 	search_mode const mode = theGuiApp()->imageSearchMode();
 	// The folders where icons are searched for
 	QStringList imagedirs;
-	imagedirs << "images/" << "images/ipa/";
+	imagedirs << "images/ipa/" << "images/";
 	// This is used to search for rtl version of icons which have the +rrtl suffix.
 	QStringList suffixes;
 	if (rtl)
