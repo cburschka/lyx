@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-12-02 16:26+0100\n"
-"PO-Revision-Date: 2020-12-02 15:32+0000\n"
+"POT-Creation-Date: 2020-12-08 10:52+0100\n"
+"PO-Revision-Date: 2020-12-08 10:00+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -4020,13 +4020,15 @@ msgstr "Zobraz meno makra v stavovom riadku pri editácii mat. makrov v riadku"
 msgid "Edit Math Macros with a parameter list (like in LyX < 1.6)"
 msgstr "Editácia mat. makrov s prehľadom parametrov (ako v LyXe < 1.6)"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:154
+#: src/frontends/qt/ui/PrefEditUi.ui:90
 msgid ""
-"If this is checked, deleted and added text in change tracking mode will not "
-"be resolved on copy/paste operations and when moving content from/to insets"
+"If this is checked, change tracking markup will not be resolved on copy/"
+"paste operations and when moving content from/to insets if change tracking "
+"is deactivated."
 msgstr ""
-"Keď zaškrtnuté, zmazaný alebo pridaný text sa v móde sledovania zmien nebude "
-"riešiť pri operáciách kopírovať/vkladať a pri presúvaní obsahu z/do vložiek"
+"Keď zaškrtnuté a mód sledovania zmien je deaktivovaný, tak sa zmazaný alebo "
+"pridaný text riešiť pri operáciách kopírovať/vkladať a pri presúvaní obsahu "
+"z/do vložiek."
 
 #: src/frontends/qt/ui/PrefEditUi.ui:157
 msgid "&Keep change tracking markup on copy and paste"
@@ -29120,9 +29122,13 @@ msgstr "Žiadny užívateľský adresár LyX-u. Koniec."
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Vytváram adresár %1$s"
 
-#: src/LyX.cpp:1109
-msgid "Failed to create directory. Exiting."
-msgstr "Nepodarilo sa vytvoriť adresár. Končím."
+#: src/LyX.cpp:1106
+msgid ""
+"Failed to create directory. Perhaps wrong -userdir option?\n"
+"Exiting."
+msgstr ""
+"Nepodarilo sa vytvoriť adresár. Hádam nesprávna voľba --userdir?\n"
+"Končím."
 
 #: src/LyX.cpp:1182
 msgid "List of supported debug flags:"
@@ -30186,6 +30192,10 @@ msgstr "Rovnice"
 #: src/TocBackend.cpp:298
 msgid "Nomenclature Entries"
 msgstr "Zoznam nomenklatúr"
+
+#: src/VCBackend.cpp:64
+msgid "Perhaps the RCS package is not installed on your system?"
+msgstr "Azda že balík RCS nie je inštalovaný vo vašom počítači?"
 
 #: src/VCBackend.cpp:63 src/VCBackend.cpp:875 src/VCBackend.cpp:880
 #: src/VCBackend.cpp:929 src/VCBackend.cpp:988 src/VCBackend.cpp:1047
