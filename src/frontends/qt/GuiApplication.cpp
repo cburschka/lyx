@@ -86,6 +86,7 @@
 #include <tuple>
 
 #include <QByteArray>
+#include <QBitmap>
 #include <QDateTime>
 #include <QDesktopWidget>
 #include <QEvent>
@@ -102,6 +103,7 @@
 #include <QMenuBar>
 #include <QMimeData>
 #include <QObject>
+#include <QPainter>
 #include <QPixmap>
 #include <QRegExp>
 #include <QSessionManager>
@@ -475,9 +477,10 @@ QString themeIconName(QString const & action)
 }
 
 
-// the returned bool is true if the icon needs to be flipped
-pair<QString,bool> iconName(FuncRequest const & f, bool unknown, bool rtl)
+IconInfo iconInfo(FuncRequest const & f, bool unknown, bool rtl)
 {
+	IconInfo res;
+
 	QStringList names;
 	QString lfunname = toqstr(lyxaction.getActionName(f.action()));
 
@@ -539,16 +542,61 @@ pair<QString,bool> iconName(FuncRequest const & f, bool unknown, bool rtl)
 			for (QString const & suffix : suffixes) {
 				QString id = imagedir;
 				FileName fname = imageLibFileSearch(id, name + suffix, "svgz,png", mode);
-				if (fname.exists())
-					return make_pair(toqstr(fname.absFileName()),
-					                 rtl && suffix.isEmpty());
+				if (fname.exists()) {
+					docstring const fpath = fname.absoluteFilePath();
+					res.filepath = toqstr(fname.absFileName());
+					// these icons are subject to inversion in dark mode
+					res.invert = (contains(fpath, from_ascii("math")) || contains(fpath, from_ascii("ert-insert"))
+						      || suffixIs(fname.onlyPath().absoluteFilePath(), from_ascii("ipa")));
+					res.swap = rtl && suffix.isEmpty();
+					return res;
+				}
 			}
 
 	LYXERR(Debug::GUI, "Cannot find icon for command \""
 			   << lyxaction.getActionName(f.action())
 			   << '(' << to_utf8(f.argument()) << ")\"");
 
-	return make_pair(QString(), false);
+	return res;
+}
+
+
+QPixmap prepareForDarkMode(QPixmap pixmap)
+{
+	QPalette palette = QPalette();
+	QColor text_color = palette.color(QPalette::Active, QPalette::WindowText);
+	QColor bg_color = palette.color(QPalette::Active, QPalette::Window);
+
+	// guess whether we are in dark mode
+	if (text_color.black() > bg_color.black())
+		// not in dark mode, do nothing
+		return pixmap;
+
+	// create a layer with black text turned to QPalette::WindowText
+	QPixmap black_overlay(pixmap.size());
+	black_overlay.fill(text_color);
+	black_overlay.setMask(pixmap.createMaskFromColor(Qt::black, Qt::MaskOutColor));
+
+	// create a layer with blue text turned to lighter blue
+	QPixmap blue_overlay(pixmap.size());
+	QColor math_blue(0, 0, 255);
+	blue_overlay.fill(math_blue.lighter());
+	blue_overlay.setMask(pixmap.createMaskFromColor(math_blue, Qt::MaskOutColor));
+
+	// create a layer with ("latex") red text turned to lighter red
+	QPixmap red_overlay(pixmap.size());
+	QColor math_red(128, 0, 0);
+	QColor math_red_light(233, 175, 175);
+	red_overlay.fill(math_red_light);
+	red_overlay.setMask(pixmap.createMaskFromColor(math_red, Qt::MaskOutColor));
+
+	// put layers on top of existing pixmap
+	QPainter painter(&pixmap);
+	painter.drawPixmap(pixmap.rect(), black_overlay);
+	painter.drawPixmap(pixmap.rect(), blue_overlay);
+	painter.drawPixmap(pixmap.rect(), red_overlay);
+
+	return pixmap;
 }
 
 
@@ -559,8 +607,11 @@ QPixmap getPixmap(QString const & path, QString const & name, QString const & ex
 	QString fpath = toqstr(fname.absFileName());
 	QPixmap pixmap = QPixmap();
 
-	if (pixmap.load(fpath))
+	if (pixmap.load(fpath)) {
+		if (fpath.contains("math") || fpath.contains("ipa"))
+			return prepareForDarkMode(pixmap);
 		return pixmap;
+	}
 
 	bool const list = ext.contains(",");
 	LYXERR(Debug::GUI, "Cannot load pixmap \""
@@ -588,20 +639,21 @@ QIcon getIcon(FuncRequest const & f, bool unknown, bool rtl)
 	}
 #endif
 
-	QString icon;
-	bool flip;
-	tie(icon, flip) = iconName(f, unknown, rtl);
-	if (icon.isEmpty())
+	IconInfo icondata = iconInfo(f, unknown, rtl);
+	if (icondata.filepath.isEmpty())
 		return QIcon();
 
 	//LYXERR(Debug::GUI, "Found icon: " << icon);
 	QPixmap pixmap = QPixmap();
-	if (!pixmap.load(icon)) {
-		LYXERR0("Cannot load icon " << icon << ".");
+	if (!pixmap.load(icondata.filepath)) {
+		LYXERR0("Cannot load icon " << icondata.filepath << ".");
 		return QIcon();
 	}
 
-	if (flip)
+	if (icondata.invert)
+		pixmap = prepareForDarkMode(pixmap);
+
+	if (icondata.swap)
 		return QIcon(pixmap.transformed(QTransform().scale(-1, 1)));
 	else
 		return QIcon(pixmap);
@@ -1129,7 +1181,7 @@ void GuiApplication::clearSession()
 
 docstring Application::iconName(FuncRequest const & f, bool unknown)
 {
-	return qstring_to_ucs4(lyx::frontend::iconName(f, unknown, false).first);
+	return qstring_to_ucs4(lyx::frontend::iconInfo(f, unknown, false).filepath);
 }
 
 
