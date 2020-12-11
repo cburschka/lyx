@@ -522,6 +522,17 @@ Section -CheckSilent # This section checks if it's a silent install and calls ne
   Call DefaultDesktopFileAssoc
 SectionEnd
 
+Section -UninstallOld
+  ${If} ${FileExists} "$INSTDIR\Uninstall-LyX.exe"
+    ${GetFileVersion} "$INSTDIR\Uninstall-LyX.exe" $0
+    StrCpy $0 $0 3 # get only the first 3 chars, e.g. "2.3"
+    ${If} $0 != "${VERSION_MAJOR}.${VERSION_MINOR}"
+      ExecWait "$INSTDIR\Uninstall-LyX.exe /S _?=$INSTDIR" # silently uninstall old LyX
+      Delete "$INSTDIR\Uninstall-LyX.exe"
+    ${EndIf}
+  ${EndIf}
+SectionEnd
+
 Section -OverInstallReg # If over-installing, we need to delete the registry keys written by the previous installment
   Call PrepareShellCTX # Helper function from above
   StrCpy $1 0
