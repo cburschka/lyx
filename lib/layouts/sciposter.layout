@@ -7,7 +7,7 @@
 #
 # Input general definitions
 
-Format 89
+Format 90
 
 Input stdclass.inc
 
@@ -54,7 +54,7 @@ Style LeftLogo
   LabelSep        xx
   LabelFont
     Series        Bold
-    Color         Blue
+    Color         textlabel1
   EndFont
   Argument 1
     LabelString   "Logo Size"

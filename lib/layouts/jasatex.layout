@@ -4,7 +4,7 @@
 # JASATeX textclass definition file.
 # Author: Uwe Stöhr (uwestoehr@web.de)
 
-Format 89
+Format 90
 
 Columns			1
 Sides			1
@@ -247,7 +247,7 @@ Style Keywords
 	LabelType	Static
 	LabelString	"Keywords:"
 	LabelFont
-	  Color		Green
+	  Color		textlabel2
 	  Series	Bold
 	EndFont
 	DocBookTag            keyword
@@ -317,7 +317,7 @@ InsetLayout "Flex:Online citation"
 	  Misc		No_Bar
 	EndFont
 	LabelFont
-	  Color		green
+	  Color		textlabel2
 	  Size		Small
 	EndFont
 End

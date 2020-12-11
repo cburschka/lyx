@@ -27,7 +27,7 @@
 # Another command, \ingred{...}, is defined to typeset a
 # list of ingredients.
 
-Format 89
+Format 90
 Input scrclass.inc
 Input numreport.inc
 
@@ -92,7 +92,7 @@ Style Recipe
     Size		Large
     Series		Bold
     Shape		Italic
-    Color		red
+    Color		textlabel3
   EndFont
   DocBookTag    bridgehead
   DocBookAttr   renderas='sect2'
@@ -133,7 +133,7 @@ Style Ingredients
   LabelFont
     Series		Bold
     Shape		Italic
-    Color		red
+    Color		textlabel3
   EndFont
   Preamble
    \renewcommand*\l@subsubsection{\@dottedtocline{3}{3em}{0em}}

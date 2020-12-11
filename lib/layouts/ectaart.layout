@@ -3,7 +3,7 @@
 #  \DeclareCategory{Articles}
 # Author : Koji Yokota <yok...@res.otaru-uc.ac.jp>
 
-Format 89
+Format 90
 Input article.layout
 
 TitleLatexType		Environment
@@ -32,7 +32,7 @@ Style RunTitle
 	LabelString	"Running Title:"
 	LabelSep	M
 	LabelFont
-	  Color		Red
+	  Color		textlabel3
 	EndFont
 	DocBookTag            titleabbrev
 	DocBookTagType        paragraph
@@ -106,7 +106,7 @@ Style Email
 	  Family	Roman
 	  Series	Medium
 	  Size		Normal
-	  Color		Blue
+	  Color		textlabel1
 	EndFont
 	Preamble
 		\def\lyxead[#1]#2{\ead[label=#1]{#2}}
@@ -211,14 +211,14 @@ InsetLayout Flex:Corresponding_Author
 	CopyStyle	Flex:Thanks_Reference
 	LatexName	corref
 	LabelString	"Corresponding Author"
-	BgColor		black
+	BgColor		foreground
 End
 
 InsetLayout Flex:Author
 	CopyStyle	Flex:Thanks_Reference
 	LatexName	author
 	LabelString	"Author"
-	BgColor		green
+	BgColor		textlabel2
 End
 
 InsetLayout Flex:Name_(First_Name)
@@ -245,7 +245,7 @@ InsetLayout Flex:By_Same_Author_(bib)
 	CopyStyle	Flex:Thanks_Reference
 	LatexName	bysame
 	LabelString	"bysame"
-	BgColor		blue
+	BgColor		textlabel1
 End
 
 Counter Thanks

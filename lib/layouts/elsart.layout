@@ -23,7 +23,7 @@
 #       numbered sections, as does the class file.
 
 
-Format 89
+Format 90
 Columns                 1
 Sides                   2
 PageStyle               headings
@@ -78,7 +78,7 @@ Style Keywords
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
 	Font
-	  Color               blue
+	  Color               textlabel1
 	EndFont
 	DocBookTag         keyword
 	DocBookTagType     paragraph

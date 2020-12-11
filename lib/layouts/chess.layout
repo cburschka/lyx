@@ -17,7 +17,7 @@
 # \vspace*{-0.5in})
 #
 
-Format 89
+Format 90
 
 Requires	chess
 
@@ -47,11 +47,11 @@ Style Mainline
 	TopSep                0.0
 	ParSep                0.0
 	LabelFont
-	  Color               blue
+	  Color               textlabel1
 	  Series              bold
 	EndFont
 	TextFont
-	  Color               blue
+	  Color               textlabel1
 	EndFont
 	DocBookTag            para
 	DocBookAttr           role='mainline'
@@ -148,7 +148,7 @@ Style ChessBoard
 	LabelString           "[chessboard]"
 	KeepEmpty             1
 	LabelFont
-	  Color               red
+	  Color               textlabel3
 	EndFont
 	DocBookTag            para
 	DocBookAttr           role='chess-board'
@@ -164,7 +164,7 @@ Style BoardCentered
 	LabelString            "[centered board]"
 	KeepEmpty              1
 	LabelFont
-	  Color                red
+	  Color               textlabel3
 	EndFont
 	DocBookTag            para
 	DocBookAttr           role='board-centered'
@@ -180,13 +180,13 @@ Style HighLight
 	LeftMargin            MMMMMMMM
 	LabelString           "Highlights:"
 	LabelFont
-	  Color               black
+	  Color               foreground
 	  Series              Bold
 	  Shape               SmallCaps
 	EndFont
 	TextFont
 	  Series              Bold
-	  Color               black
+	  Color               foreground
 	EndFont
 	DocBookTag            para
 	DocBookAttr           role='highlights'

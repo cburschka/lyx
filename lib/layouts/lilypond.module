@@ -8,7 +8,7 @@
 
 # Author: Julien Rioux <jrioux@lyx.org>
 
-Format 89
+Format 90
 OutputFormat           lilypond-book
 
 InsetLayout "Flex:LilyPond"
@@ -39,11 +39,11 @@ InsetLayout "Flex:LilyPond"
 	  Tooltip             "A comma-separated option list (see the LilyPond documentation for available options)."
 	  Decoration          Conglomerate
 	  Font
-	    Color             black
+	    Color             foreground
 	    Family            typewriter
 	  EndFont
 	  LabelFont
-	    Color             black
+	    Color             foreground
 	  EndFont
 	EndArgument
 End

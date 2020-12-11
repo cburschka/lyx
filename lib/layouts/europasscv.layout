@@ -35,7 +35,7 @@
 
 
 # General textclass parameters
-Format 89
+Format 90
 
 Columns		 1
 Sides		 1
@@ -88,7 +88,7 @@ Style Name
 	Align           Left
 	LabelFont
 	  Series	Bold
-	  Color		Magenta
+	  Color		textlabel3
 	EndFont
 	DocBookTag            personname
 	DocBookTagType        paragraph
@@ -308,7 +308,7 @@ Style Item
 	LabelString	"Item:"
 	LabelFont
 	  Series	Bold
-	  Color		Blue
+	  Color		textlabel1
 	EndFont
 	DocBookTag      sidebar
 	DocBookTagType  block
@@ -343,7 +343,7 @@ InsetLayout Flex:ItemInset
 	LabelString	"Subitems"
 	LabelFont
 	  Series	Bold
-	  Color		Black
+	  Color		foreground
 	EndFont
 End
 
@@ -381,7 +381,7 @@ InsetLayout Flex:BlueItemInset
 	LabelString	"Blue subitems"
 	LabelFont
 	  Series	Bold
-	  Color		Blue
+	  Color		textlabel1
 	EndFont
 End
 
@@ -444,7 +444,7 @@ Style MotherTongue
 	EndFont
 	LabelFont
 	  Series	Bold
-	  Color		Blue
+	  Color		textlabel1
 	EndFont
 	DocBookTag  para
 	DocBookAttr role='mother-tongue'
@@ -464,7 +464,7 @@ Style LangHeader
 	LabelType	Static
 	LabelFont
 	  Series	Bold
-	  Color		Green
+	  Color		textlabel2
 	EndFont
 End
 
@@ -542,7 +542,7 @@ Style End
 	LabelString	"End of CV"
 	LabelFont
 	  Series	Bold
-	  Color		Green
+	  Color		textlabel2
 	EndFont
 	Preamble
 		\cvclosedtrue
@@ -556,7 +556,7 @@ InsetLayout "Flex:Highlight"
 	Decoration	Conglomerate
 	LabelString	"Highlight"
 	Font
-	  Color		red
+	  Color		textlabel3
 	  Size		Small
 	  Family	Roman
 	  Shape		Up
@@ -566,7 +566,7 @@ InsetLayout "Flex:Highlight"
 	  Misc		No_Bar
 	EndFont
 	LabelFont
-	  Color		green
+	  Color		textlabel2
 	  Size		Small
 	EndFont
 End

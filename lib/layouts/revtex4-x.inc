@@ -13,7 +13,7 @@
 #     - add support for \onlinecite{}
 
 
-Format 89
+Format 90
 
 Input stdclass.inc
 Input numrevtex.inc
@@ -76,7 +76,7 @@ Style Affiliation
 	EndFont
 	LabelString		"Affiliation:"
 	LabelFont
-	  Color			Green
+	  Color			textlabel2
 	  Series		Bold	
 	EndFont
 	DocBookTag                        address
@@ -184,7 +184,7 @@ Style Keywords
 	LabelSep		M
 	LabelString		"Keywords:"
 	LabelFont
-	  Color			Green
+	  Color			textlabel2
 	  Series		Bold
 	EndFont
 	DocBookTag          keyword
@@ -394,7 +394,7 @@ InsetLayout Flex:Surname
 	  # from the surrounding environment
 	EndFont
 	LabelFont
-	  Color			green
+	  Color			textlabel2
 	  Size			Small
 	EndFont
 	ResetsFont true

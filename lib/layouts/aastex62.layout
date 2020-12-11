@@ -50,7 +50,7 @@
 #       - aastex6.cls loads hyperref (with pre-set options) and url
 #         -> option clash if "Use Hyerref" is selected in Document>Settings
 
-Format 89
+Format 90
 
 Provides hyperref 1
 
@@ -145,7 +145,7 @@ Style Email
 	Align           Left
 	Font
 		Shape           Up
-		Color           Blue
+		Color           textlabel1
 		Size            Small
 	EndFont
 End
@@ -155,7 +155,7 @@ Style Author
 	LabelString     "Author:"
 	LabelFont
 		Shape           Italic
-		Color           Green
+		Color           textlabel2
 	EndFont
 	Argument 1
 		LabelString     ORCID
@@ -179,7 +179,7 @@ Style Affiliation
 	LabelSep        "x"
 	LabelFont
 		Shape           Italic
-		Color           Green
+		Color           textlabel2
 	EndFont
 	Align           Center
 End
@@ -195,7 +195,7 @@ Style Collaboration
 	LabelSep        "x"
 	LabelFont
 		Shape           Italic
-		Color           Green
+		Color           textlabel2
 	EndFont
 	Align           Center
 End
@@ -212,7 +212,7 @@ Style Nocollaboration
 	LabelSep        "x"
 	LabelFont
 		Shape           Italic
-		Color           Green
+		Color           textlabel2
 	EndFont
 End
 
@@ -229,7 +229,7 @@ Style Acknowledgements
 	LabelType       Above
 	Margin          Static
 	LabelFont
-		Color           Green
+		Color           textlabel2
 	EndFont
 End
 

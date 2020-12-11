@@ -6,7 +6,7 @@
 #DescriptionEnd
 #Author: Uwe Stöhr <uwestoehr@web.de>
 
-Format 89
+Format 90
 
 Style "Caption setup"
 	LatexType	command
@@ -29,7 +29,7 @@ Style "Caption setup"
 	LabelType	Static
 	LabelString	"Caption setup:"
 	LabelFont
-	  Color		Green
+	  Color		textlabel2
 	EndFont
 	Requires	bicaption
 End

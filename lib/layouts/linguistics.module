@@ -8,7 +8,7 @@
 
 # Author: Jürgen Spitzmüller <spitz@lyx.org>
 
-Format 89
+Format 90
 
 #
 # Counters
@@ -78,7 +78,7 @@ Style Numbered_Example_(multiline)
 	LabelType             Static
 	LabelCounter          "examplei"
 	LabelFont
-		Color         Blue
+		Color         textlabel1
 	EndFont
 	Requires	      covington
 	Category              Linguistics

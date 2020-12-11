@@ -12,7 +12,7 @@
 # Author: Uwe Stöhr (uwestoehr@web.de)
 
 
-Format 89
+Format 90
 
 Sides		1
 Columns		1
@@ -104,7 +104,7 @@ Style Catchline
   LabelString	"Catchline"
   LabelFont
     Series	Bold
-    Color	Green
+    Color	textlabel2
   EndFont
   DocBookTag    IGNORE
   DocBookInInfo always
@@ -204,7 +204,7 @@ InsetLayout Flex:Received
     Misc	No_Bar
   EndFont
   LabelFont
-    Color	green
+    Color	textlabel2
     Size	Small
   EndFont
   ResetsFont true
@@ -225,7 +225,7 @@ InsetLayout Flex:Revised
     Misc	No_Bar
   EndFont
   LabelFont
-    Color	green
+    Color	textlabel2
     Size	Small
   EndFont
   ResetsFont true
@@ -264,7 +264,7 @@ InsetLayout Flex:Keywords
     Misc	No_Bar
   EndFont
   LabelFont
-    Color	green
+    Color	textlabel2
     Size	Small
   EndFont
   ResetsFont true
@@ -293,7 +293,7 @@ InsetLayout Flex:TableCaption
     Misc	No_Bar
   EndFont
   LabelFont
-    Color	green
+    Color	textlabel2
     Size	Small
   EndFont
   ResetsFont true
@@ -313,7 +313,7 @@ InsetLayout Flex:Refcite
     Misc	No_Bar
   EndFont
   LabelFont
-    Color	green
+    Color	textlabel2
     Size	Small
   EndFont
   ResetsFont true

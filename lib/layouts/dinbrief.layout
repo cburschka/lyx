@@ -16,7 +16,7 @@
 
 # TODO: DocBook doesn't support several letters in the same file.
 
-Format 89
+Format 90
 
 Input letter.layout
 
@@ -42,7 +42,7 @@ Style DinBrief
 	  Series	Medium
 	  Shape		Italic
 	  Size		Small
-	  Color		blue
+	  Color		textlabel1
 	EndFont
 End
 
@@ -289,7 +289,7 @@ Style encl
 	  Series	Medium
 	  Shape		Up
 	  Size		Normal
-	  Color		black
+	  Color		foreground
 	EndFont
 	DocBookTag  para
 	DocBookAttr role='enclosed'

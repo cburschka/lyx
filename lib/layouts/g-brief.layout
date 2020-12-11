@@ -4,7 +4,7 @@
 # Letter textclass definition file.
 # Author : Thomas Hartkens <thomas@hartkens.de>
 
-Format 89
+Format 90
 Input stdinsets.inc
 Input stdfloats.inc
 Input stdcounters.inc
@@ -32,7 +32,7 @@ Style Letter
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
-	  Color               Blue
+	  Color               textlabel1
 	EndFont
 End
 
@@ -52,7 +52,7 @@ Style Name
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
-	  Color               Blue
+	  Color               textlabel1
 	EndFont
 End
 

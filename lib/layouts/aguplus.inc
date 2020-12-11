@@ -6,7 +6,7 @@
 # ftp://ftp.agu.org/journals/latex/journals
 
 
-Format 89
+Format 90
 Input stdclass.inc
 
 SecNumDepth             4
@@ -95,7 +95,7 @@ Style Left_Header
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
-	  Color               red
+	  Color               textlabel3
 	EndFont
 End
 

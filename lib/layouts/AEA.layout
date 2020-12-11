@@ -4,7 +4,7 @@
 # Authors : Koji Yokota <yokota@res.otaru-uc.ac.jp>
 #           Uwe Stöhr <uwestoehr@web.de>
 
-Format 89
+Format 90
 Input stdclass.inc
 Input theorems-ams.module
 Input theorems-bytype.module
@@ -67,7 +67,7 @@ Style Publication_Month
 	LabelString	"Publication Month:"
 	LabelSep	M
 	LabelFont
-	  Color		Red
+	  Color		textlabel3
 	EndFont
 	DocBookTag            date
 	DocBookAttr           role='month'

@@ -5,7 +5,7 @@
 # Author: Uwe Stöhr (uwestoehr@web.de)
 # IUCr LaTeX files can be downloaded from ftp://ftp.iucr.org/templates/latex/
 
-Format 89
+Format 90
 
 Columns				1
 Sides				1
@@ -91,7 +91,7 @@ InsetLayout "Flex:City"
 	  Misc			No_Bar
 	EndFont
 	LabelFont
-	  Color			green
+	  Color			textlabel2
 	  Size			Small
 	EndFont
 End
@@ -180,7 +180,7 @@ Style "Short Author"
 	LabelSep		xx
 	LabelFont
 	  Series		Bold
-	  Color			Green
+	  Color			textlabel2
 	EndFont
 	DocBookInInfo   always
 	DocBookTag      authorinitials
@@ -201,7 +201,7 @@ Style Affiliation
 	EndFont
 	LabelFont
 	  Series		Bold
-	  Color			Green
+	  Color			textlabel2
 	  Shape			Up
 	EndFont
 End

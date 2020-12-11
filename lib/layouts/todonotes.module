@@ -10,7 +10,7 @@
 # Authors: Stephen <stephen4mailinglists@googlemail.com>
 #          Jürgen Spitzmüller <spitz@lyx.org>
 
-Format 89
+Format 90
 
 OutlinerName todonotes "TODO"
 
@@ -62,7 +62,7 @@ InsetLayout Flex:TODO_Note_(Margin)
 	Decoration	classic
 	BgColor		orange
 	Font
-	    Color	black
+	    Color	foreground
 	    Family	Typewriter
 	EndFont
 	LabelFont

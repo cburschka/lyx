@@ -8,7 +8,7 @@
 # Author: Juergen Spitzmueller <spitz@lyx.org>
 #         Uwe Stöhr <uwestoehr@lyx.org>
 
-Format 89
+Format 90
 
 #
 # helper commands
@@ -33,7 +33,7 @@ Style Define_Avatar
 	EndArgument
 	PassThru		1
 	LabelFont
-	  Color			green
+	  Color			textlabel2
 	  Series		Bold
 	EndFont
 	Requires		pdfcomment
@@ -75,7 +75,7 @@ InsetLayout "Flex:PDF-Comment-Setup"
 	LabelString		"PDF (Setup)"
 	LatexName		pdfcommentsetup
 	LabelFont
-	  Color			magenta
+	  Color			textlabel3
 	  Size			Small
 	EndFont
 	MultiPar		false
@@ -98,7 +98,7 @@ InsetLayout "Flex:PDF-Annotation"
 	LabelString		PDF
 	LatexName		pdfcomment
 	LabelFont
-	  Color			magenta
+	  Color			textlabel3
 	  Size			Small
 	EndFont
 	MultiPar		false
@@ -116,7 +116,7 @@ InsetLayout "Flex:PDF-Margin"
 	LabelString		"PDF (Margin)"
 	LatexName		pdfmargincomment
 	LabelFont
-	  Color			green
+	  Color			textlabel2
 	  Size			Small
 	EndFont
 End
@@ -183,7 +183,7 @@ InsetLayout "Flex:PDF-Reply"
 	LabelString		"PDF (Reply)"
 	LatexName		pdfreply
 	LabelFont
-	  Color			blue
+	  Color			textlabel1
 	  Size			Small
 	EndFont
 End
@@ -195,7 +195,7 @@ InsetLayout "Flex:PDF-Tooltip"
 	NeedMBoxProtect		0
 	NewlineCmd		""
 	LabelFont
-	  Color			red
+	  Color			textlabel3
 	  Size			Small
 	EndFont
 	Argument post:1

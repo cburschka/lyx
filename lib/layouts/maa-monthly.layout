@@ -6,7 +6,7 @@
 #
 # Author : John Perry <john.perry@usm.edu>
 
-Format 89
+Format 90
 
 Provides amscls 1
 Provides amsmath 1
@@ -81,7 +81,7 @@ Style Biographies
   LabelString "Biographies"
   LabelType   Centered
   LabelFont
-    Color  Blue
+    Color  textlabel1
     Shape  Italic
     Family Roman
   EndFont
@@ -109,7 +109,7 @@ Style Author_Biography
   LabelSep    " "
   LabelType   Static
   LabelFont
-    Color  Blue
+    Color  textlabel1
     Shape  Italic
     Family Roman
   EndFont
@@ -128,7 +128,7 @@ Style Affiliation
   LabelSep " "
   LabelType Static
   LabelFont
-    Color Blue
+    Color textlabel1
     Shape Italic
     Family Roman
   EndFont

@@ -2,7 +2,7 @@
 # Author : José Abílio Oliveira Matos <jamatos@lyx.org>
 # Character Styles definition
 
-Format 89
+Format 90
 
 InsetLayout Flex:Filename
 	LabelString Filename
@@ -13,7 +13,7 @@ InsetLayout Flex:Filename
 	EndFont
 	LabelFont
 	  Family              Roman
-	  Color               blue
+	  Color               textlabel1
 	EndFont
 	ResetsFont true
 End
@@ -28,7 +28,7 @@ InsetLayout Flex:Directory
 	EndFont
 	LabelFont
 	  Family              Roman
-	  Color               blue
+	  Color               textlabel1
 	EndFont
 	ResetsFont true
 End
@@ -39,7 +39,7 @@ InsetLayout Flex:Firstname
 	DocBookTag            firstname
 	LabelFont
 	  Shape               Up
-	  Color               blue
+	  Color               textlabel1
 	EndFont
 	ResetsFont true
 End
@@ -50,7 +50,7 @@ InsetLayout Flex:Surname
 	DocBookTag            surname
 	LabelFont
 	  Shape               Up
-	  Color               blue
+	  Color               textlabel1
 	EndFont
 	ResetsFont true
 End
@@ -64,7 +64,7 @@ InsetLayout Flex:Literal
 	EndFont
 	LabelFont
 	  Family              Roman
-	  Color               blue
+	  Color               textlabel1
 	EndFont
 	ResetsFont true
 End
@@ -78,7 +78,7 @@ InsetLayout Flex:Email
         EndFont
         LabelFont
           Family              Roman
-          Color               blue
+          Color               textlabel1
         EndFont
 	ResetsFont true
 End
@@ -92,7 +92,7 @@ InsetLayout Flex:KeyCombo
         EndFont
         LabelFont
           Family              Roman
-          Color               blue
+          Color               textlabel1
         EndFont
 	ResetsFont true
 End
@@ -106,7 +106,7 @@ InsetLayout Flex:KeyCap
         EndFont
         LabelFont
           Family              Roman
-          Color               blue
+          Color               textlabel1
         EndFont
 	ResetsFont true
 End
@@ -120,7 +120,7 @@ InsetLayout Flex:GuiMenu
         EndFont
         LabelFont
           Family              Roman
-          Color               blue
+          Color               textlabel1
         EndFont
 	ResetsFont true
 End
@@ -134,7 +134,7 @@ InsetLayout Flex:GuiMenuItem
         EndFont
         LabelFont
           Family              Roman
-          Color               blue
+          Color               textlabel1
         EndFont
 	ResetsFont true
 End
@@ -148,7 +148,7 @@ InsetLayout Flex:GuiButton
         EndFont
         LabelFont
           Family              Roman
-          Color               blue
+          Color               textlabel1
         EndFont
 	ResetsFont true
 End
@@ -162,7 +162,7 @@ InsetLayout Flex:MenuChoice
         EndFont
         LabelFont
           Family              Roman
-          Color               blue
+          Color               textlabel1
         EndFont
 	ResetsFont true
 End

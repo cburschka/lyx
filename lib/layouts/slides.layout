@@ -8,7 +8,7 @@
 #
 
 
-Format 89
+Format 90
 Columns        1
 Sides          1
 PageStyle      Plain
@@ -110,12 +110,12 @@ Style Slide
 	  Family          Typewriter
 	  Series          Bold
 	  Size            Large
-	  Color           Blue
+	  Color           textlabel1
 	EndFont
 	LabelFont
 	  Family          Typewriter
 	  Size            Large
-	  Color           Blue
+	  Color           textlabel1
 	EndFont
 	Preamble
 		\newcommand{\lyxnewslide}[1]{
@@ -148,14 +148,14 @@ Style Overlay
 	  Series          Bold
 	  Size            Large
 	  Shape                       SmallCaps
-	  Color           Magenta
+	  Color           textlabel3
 	EndFont
 	LabelFont
 	  Family          Typewriter
 	  Series          Bold
 	  Size            Large
 	  Shape                       SmallCaps
-	  Color           Magenta
+	  Color           textlabel3
 	EndFont
 	Preamble
 		\newcommand{\lyxnewoverlay}[1]{
@@ -188,14 +188,14 @@ Style Note
 	  Series          Bold
 	  Size            Large
 	  Shape                       Italic
-	  Color           Magenta
+	  Color           textlabel3
 	EndFont
 	LabelFont
 	  Family          Typewriter
 	  Series          Bold
 	  Size            Large
 	  Shape                       Italic
-	  Color           Magenta
+	  Color           textlabel3
 	EndFont
 	Preamble
 		\newcommand{\lyxnewnote}[1]{
@@ -218,12 +218,12 @@ Style InvisibleText
 	Font
 	  Family          Roman
 	  Size            Normal
-	  Color           Cyan
+	  Color           greyedouttext
 	EndFont
 	LabelFont
 	  Family          Roman
 	  Size            Normal
-	  Color           Cyan
+	  Color           greyedouttext
 	EndFont
 	Preamble
 		\newcommand{\lyxinvisible}[1]{\invisible}
@@ -242,12 +242,12 @@ Style VisibleText
 	Font
 	  Family          Roman
 	  Size            Normal
-	  Color           Green
+	  Color           textlabel2
 	EndFont
 	LabelFont
 	  Family          Roman
 	  Size            Normal
-	  Color           Green
+	  Color           textlabel2
 	EndFont
 	Preamble
 		\newcommand{\lyxvisible}[1]{\visible}

@@ -5,7 +5,7 @@
 # Created: 29-Aug-05 by Mael Hilléreau
 # Modified: 20-May-06 by Uwe Stöhr, 18-Mar-2013 Jürgen Spitzmüller
 
-Format 89
+Format 90
 
 Input stdcounters.inc
 Input stdinsets.inc
@@ -57,7 +57,7 @@ Style Title
   Font
     Series      Bold
     Size        Largest
-    Color       Blue
+    Color       textlabel1
   EndFont
   HTMLTitle     true
   DocBookTag      title
@@ -83,7 +83,7 @@ Style Author
   LabelType     No_Label
   Font
     Size        Large
-    Color       Blue
+    Color       textlabel1
   EndFont
   DocBookTag            personname
   DocBookTagType        paragraph
@@ -110,7 +110,7 @@ Style Date
   LabelType     No_Label
   Font
     Size        Large
-    Color       Blue
+    Color       textlabel1
   EndFont
 End
 
@@ -154,7 +154,7 @@ Style Slide
   Font
     Series      Bold
     Size        Large
-    Color       Magenta
+    Color       textlabel3
   EndFont
 End
 
@@ -190,7 +190,7 @@ Style WideSlide
   CopyStyle     Slide
   LatexName     lyxend\lyxwideslide
   Font
-    Color       Green
+    Color       textlabel2
   EndFont
 End
 
@@ -205,7 +205,7 @@ Style EmptySlide
   LabelType     Static
   KeepEmpty     1
   Font
-    Color       Cyan
+    Color       greyedouttext
   EndFont
 End
 
@@ -232,7 +232,7 @@ Style Note
   Font
     Series      Bold
     Size        Large
-    Color       Red
+    Color       textlabel3
   EndFont
 End
 
@@ -249,7 +249,7 @@ Style Section
   LabelString   "\arabic{section}"
   Font
     Size        Larger
-    Color       Blue
+    Color       textlabel1
   EndFont
   LabelStringAppendix "\Alph{section}"
   Argument 1

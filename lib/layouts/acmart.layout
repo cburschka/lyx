@@ -9,7 +9,7 @@
 # Reviewed following tickets #10722 & #10723
 #          by Jean-Pierre Chrétien <jpc@lyx.org>
 
-Format 89
+Format 90
 
 Provides amscls 1
 Provides amsmath 1
@@ -92,7 +92,7 @@ Style Thanks
     Family Roman
   EndFont
   LabelFont
-    Color Blue
+    Color textlabel1
     Shape Italic
     Family Roman
   EndFont
@@ -111,7 +111,7 @@ Style ACM_Journal
   LabelString "Journal's Short Name: "
   LabelType Static
   LabelFont
-    Color Blue
+    Color textlabel1
     Shape Italic
   EndFont
   LatexName acmJournal
@@ -184,7 +184,7 @@ Style Email
   LabelString "Email address: "
   LabelType Static
   LabelFont
-    Color Blue
+    Color textlabel1
     Shape Italic
     Family Roman
   EndFont
@@ -200,7 +200,7 @@ Style ORCID
     Family Roman
   EndFont
   LabelFont
-    Color Blue
+    Color textlabel1
     Shape Italic
   EndFont
   LatexName orcid
@@ -212,7 +212,7 @@ Style Affiliation
     Family Roman
   EndFont
   LabelFont
-    Color Blue
+    Color textlabel1
     Shape Italic
   EndFont
   LabelString "Affiliation: "
@@ -296,7 +296,7 @@ Style TitleNote
   EndFont
   LabelFont
     Family Roman
-    Color Blue
+    Color textlabel1
     Shape Italic
   EndFont
   LabelString "Title Note: "
@@ -413,7 +413,7 @@ Style CCSXML
   LatexType Environment
   Font
     Family Typewriter
-    Color blue
+    Color textlabel1
     Shape Italic
   EndFont
   FreeSpacing 1
@@ -438,7 +438,7 @@ Style CCS_Description
   LatexName ccsdesc
   Font
     Family Typewriter
-    Color Blue
+    Color textlabel1
     Shape Italic
   EndFont
   LabelFont
@@ -494,7 +494,7 @@ Style ShortAuthors
   Margin Dynamic
   LabelFont
     Family Roman
-    Color blue
+    Color textlabel1
     Shape Italic
   EndFont
   Preamble

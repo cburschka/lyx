@@ -24,7 +24,8 @@
 # see www.springer.de/author/tex/help-journals.html for class files
 
 
-Format 89
+Format 90
+
 Input svcommon.inc
 
 NoStyle Front_Matter
@@ -86,7 +87,7 @@ Style Headnote
 	LabelFont
 	  Series	Bold
 	  Shape		Italic
-	  Color		Red
+	  Color		textlabel3
 	EndFont
 End
 
@@ -99,7 +100,7 @@ InsetLayout Flex:thanks
 	LyxType		custom
 	Font
 	  Size		Small
-	  Color		Green
+	  Color		textlabel2
 	EndFont
 	ResetsFont true
 End
@@ -117,7 +118,7 @@ InsetLayout Flex:Keywords
 	LatexName	keywords
 	LabelString	"Keywords"
 	LabelFont
-	  Color		green
+	  Color		textlabel2
 	  Size		Small
 	EndFont
 	DocBookTag         keyword

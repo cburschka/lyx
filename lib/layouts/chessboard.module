@@ -7,7 +7,7 @@
 # Author: Kornel Benko <kornel@lyx.org>
 #         Jürgen Spitzmüller <spitz@lyx.org>
 
-Format 89
+Format 90
 
 #
 # XSkak basics
@@ -24,7 +24,7 @@ Style NewChessGame
 		Family         typewriter
 		Series         Medium
 		Size           Normal
-		Color          red
+		Color          latex
 	EndFont
 	KeepEmpty		1
 	Argument 1
@@ -52,10 +52,10 @@ InsetLayout Flex:Mainline
 	PassThru		1
 	ParbreakIsNewline	1
 	LabelFont
-		Color		blue
+		Color		textlabel1
 	EndFont
 	Font
-		Color		blue
+		Color		textlabel1
 	EndFont
 	Argument 1
 		LabelString	"Options"
@@ -72,7 +72,7 @@ InsetLayout Flex:Mainline
 		LeftDelim	"<br/>"
 		RightDelim	"%"
 		Font
-			Color	green
+			Color	textlabel2
 		EndFont
 	EndArgument
 	Requires		xskak
@@ -104,7 +104,7 @@ InsetLayout Flex:SetChessBoard
 		Family		typewriter
 	EndFont
 	LabelFont
-		Color		blue
+		Color		textlabel1
 	EndFont
 	Requires		chessboard
 	DocBookTag      para

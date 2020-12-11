@@ -18,7 +18,7 @@
 # 2013-05-26  Updated for aa.cls version 8.2
 
 
-Format 89
+Format 90
 Columns		2
 Sides		2
 SecNumDepth	3
@@ -281,7 +281,7 @@ InsetLayout "Flex:institutemark"
 	  Misc		No_Bar
 	EndFont
 	LabelFont
-	  Color		green
+	  Color		textlabel2
 	  Size		Small
 	EndFont
 	MultiPar	true
@@ -396,7 +396,7 @@ InsetLayout Flex:Institute
 	LatexType	command
 	LatexName	inst
 	Font
-	  Color		blue
+	  Color		textlabel1
 	EndFont
 	ResetsFont true
 End
@@ -408,7 +408,7 @@ InsetLayout Flex:E-Mail
 	LatexName	email
 	Font
 	  Family	Typewriter
-	  Color		blue
+	  Color		textlabel1
 	EndFont
 	ResetsFont true
 End

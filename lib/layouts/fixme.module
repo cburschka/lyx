@@ -13,7 +13,7 @@
 # Authors: Mark Edgington <edgimar@gmail.com>
 #          Jürgen Spitzmüller <spitz@lyx.org>
 
-Format 89
+Format 90
 
 OutlinerName fixme "Fixme"
 
@@ -58,7 +58,7 @@ InsetLayout Flex:Fixme_Note
         LatexName             fxnote
         Decoration            classic
         LabelFont
-          Color               magenta
+          Color               textlabel3
           Size                Small
         EndFont
         MultiPar              false

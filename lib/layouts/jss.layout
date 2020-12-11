@@ -8,7 +8,7 @@
 # License: GNU GPL version 2 or later
 # JSS LaTeX files can be downloaded from http://www.jstatsoft.org/downloads/JSSstyle.zip
 
-Format 89
+Format 90
 
 # Read the definitions from article.layout
 Input article.layout
@@ -99,7 +99,7 @@ Style Keywords
 	LabelType			Static
 	LabelString			"Keywords:"
 	LabelFont
-	  Color				Green
+	  Color				textlabel2
 	  Series			Bold
 	EndFont
 	DocBookTag         keyword
@@ -202,7 +202,7 @@ InsetLayout "Flex:Code Chunk"
 	  Family			Typewriter
 	EndFont
 	LabelFont
-	  Color				Green
+	  Color				textlabel2
 	EndFont
 End
 
@@ -228,7 +228,7 @@ Style "Code"
 	EndFont
 	LabelFont
 	  Series			Bold
-	  Color				Green
+	  Color				textlabel2
 	EndFont
 	HTMLTag				pre
 	HTMLItem			p

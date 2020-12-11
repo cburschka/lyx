@@ -43,7 +43,7 @@
 # 	The new "aastex6.layout" depends on aastex6.cls but inputs this
 #       file for the definitions (cf. LyX ticket #10027)
 
-Format 89
+Format 90
 Columns			1
 Sides			1
 #SecNumDepth		3
@@ -206,7 +206,7 @@ Style Altaffilation
 	LabelType	Static
 	LabelString	"Alternative affiliation:"
 	LabelFont
-	  Color		green
+	  Color		textlabel2
 	EndFont
 	DocBookTag                        affiliation
 	DocBookAttr                       role='alternate'
@@ -314,7 +314,7 @@ InsetLayout "Flex:altaffilmark"
 	  Misc		No_Bar
 	EndFont
 	LabelFont
-	  Color		green
+	  Color		textlabel2
 	  Size		Small
 	EndFont
 End
@@ -476,8 +476,8 @@ Style Bibliography
 	  Tooltip        "LaTeX code to be inserted before the first bibliography item"
 	  PassThru       1
 	  Font
-	    Family typewriter
-	    Color latex
+	    Family 	typewriter
+	    Color 	latex
 	  EndFont
 	EndArgument
 End
@@ -569,7 +569,7 @@ Style "Table note"
 	LabelType	Static
 	LabelString	"Table note:"
 	LabelFont
-	  Color		magenta
+	  Color		textlabel3
 	EndFont
 	DocBookTag      remark
 	DocBookTagType  paragraph
@@ -593,7 +593,7 @@ InsetLayout "Flex:tablenotemark"
 	  Misc		No_Bar
 	EndFont
 	LabelFont
-	  Color		magenta
+	  Color		textlabel3
 	  Size		Small
 	EndFont
 	DocBookTag      remark

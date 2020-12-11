@@ -3,7 +3,7 @@
 # Heavily modifed and enhanced by several developers.
 
 
-Format 89
+Format 90
 Columns                 1
 Sides                   1
 PageStyle               Empty
@@ -71,7 +71,7 @@ Style Opening
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
-	  Color               red
+	  Color               textlabel3
 	EndFont
 	DocBookTag            para
 	DocBookAttr           role='opening'
@@ -95,7 +95,7 @@ Style Signature
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
-	  Color               red
+	  Color               textlabel3
 	EndFont
 	DocBookTag            para
 	DocBookAttr           role='signature'
@@ -118,7 +118,7 @@ Style cc
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
-	  Color               green
+	  Color               textlabel2
 	EndFont
 	DocBookTag            para
 	DocBookAttr           role='carbon-copy'

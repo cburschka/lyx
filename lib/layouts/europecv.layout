@@ -5,12 +5,13 @@
 # Author : Uwe Stöhr (uwestoehr@web.de)
 
 
+Format 90
+
 # General textclass parameters
-Format 89
-	Columns		1
-	Sides		1
-	SecNumDepth	-1
-	TocDepth	-1
+Columns		1
+Sides		1
+SecNumDepth	-1
+TocDepth	-1
 
 
 # Standard style definition
@@ -41,7 +42,7 @@ Style Name
 	LabelString	"Name:"
 	LabelFont
 	  Series	Bold
-	  Color		Blue
+	  Color		textlabel1
 	EndFont
 	DocBookTag            personname
 	DocBookTagType        paragraph
@@ -239,7 +240,7 @@ Style Item
 	LabelString	"Item:"
 	LabelFont
 	  Series	Bold
-	  Color		Blue
+	  Color		textlabel1
 	EndFont
 	DocBookTag      sidebar
 	DocBookTagType  block
@@ -268,7 +269,7 @@ Style Begin
 	LabelString	"Begin of CV"
 	LabelFont
 	  Series	Bold
-	  Color		Green
+	  Color		textlabel2
 	EndFont
 End
 
@@ -300,7 +301,7 @@ Style MotherTongue
 	EndFont
 	LabelFont
 	  Series	Bold
-	  Color		Blue
+	  Color		textlabel1
 	EndFont
 	DocBookTag  para
 	DocBookAttr role='mother-tongue'
@@ -382,7 +383,7 @@ Style End
 	LabelString	"End of CV"
 	LabelFont
 	  Series	Bold
-	  Color		Green
+	  Color		textlabel2
 	EndFont
 End
 
@@ -403,7 +404,7 @@ InsetLayout "Flex:VerticalSpace"
 	  Misc		No_Bar
 	EndFont
 	LabelFont
-	  Color		green
+	  Color		textlabel2
 	  Size		Small
 	EndFont
 End

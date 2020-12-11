@@ -9,7 +9,7 @@
 # Converted article -> egs Martin Vermeer
 
 
-Format 89
+Format 90
 Columns                 2
 Sides                   1
 PageStyle               Plain
@@ -381,7 +381,7 @@ Style Author
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
-	  Color               red
+	  Color               textlabel3
 	EndFont
 	DocBookTag            personname
 	DocBookTagType        paragraph
@@ -408,7 +408,7 @@ Style Affil
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
-	  Color               red
+	  Color               textlabel3
 	EndFont
 End
 
@@ -430,7 +430,7 @@ Style Journal
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
-	  Color               red
+	  Color               textlabel3
 	EndFont
 End
 
@@ -453,7 +453,7 @@ Style msnumber
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
-	  Color               red
+	  Color               textlabel3
 	EndFont
 End
 
@@ -476,7 +476,7 @@ Style FirstAuthor
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
-	  Color               red
+	  Color               textlabel3
 	EndFont
 End
 
@@ -498,7 +498,7 @@ Style Received
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
-	  Color               red
+	  Color               textlabel3
 	EndFont
 End
 
@@ -520,7 +520,7 @@ Style Accepted
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
-	  Color               red
+	  Color               textlabel3
 	EndFont
 End
 
@@ -542,7 +542,7 @@ Style Offsets
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
-	  Color               red
+	  Color               textlabel3
 	EndFont
 End
 
@@ -664,8 +664,8 @@ Style Bibliography
 	  Tooltip        "LaTeX code to be inserted before the first bibliography item"
 	  PassThru       1
 	  Font
-	    Family typewriter
-	    Color latex
+	    Family	typewriter
+	    Color	latex
 	  EndFont
 	EndArgument
 End
@@ -722,7 +722,7 @@ Style LaTeX
 	LabelType             No_Label
 	FreeSpacing           1
 	Font
-	  Color               red
+	  Color               textlabel3
 	EndFont
 End
 

@@ -5,7 +5,7 @@
 # Author: Peter Sütterlin <pit@uni-sw.gwdg.de>
 
 
-Format 89
+Format 90
 Style Subtitle
 	Margin                Static
 	LatexType             Command
@@ -120,6 +120,6 @@ Style Thesaurus
 	  Size                Small
 	EndFont
 	LabelFont
-	  Color               Red
+	  Color               textlabel3
 	EndFont
 End

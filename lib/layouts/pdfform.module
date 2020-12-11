@@ -7,7 +7,7 @@
 #DescriptionEnd
 # Author: Uwe Stöhr <uwestoehr@lyx.org>
 
-Format 89
+Format 90
 
 #
 # the form environment
@@ -33,7 +33,7 @@ Style "Begin PDF Form"
 	EndArgument
 	LabelFont
 	  Series			Bold
-	  Color				Green
+	  Color				textlabel2
 	EndFont
 	Requires			hyperref
 End
@@ -70,7 +70,7 @@ InsetLayout Flex:TextField
 	  PassThruChars		"\[]{}"
 	EndArgument
 	LabelFont
-	  Color				magenta
+	  Color				textlabel3
 	  Size				Small
 	EndFont
 	Requires			hyperref

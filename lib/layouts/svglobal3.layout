@@ -15,7 +15,7 @@
 #
 # see ftp://ftp.springer.de/pub/tex/latex/svjour3/ for class files
 
-Format 89
+Format 90
 
 Input svcommon.inc
 
@@ -59,7 +59,7 @@ InsetLayout Flex:Keywords
 	LatexName	keywords
 	LabelString	"Keywords"
 	LabelFont
-	  Color		green
+	  Color		textlabel2
 	  Size		Small
 	EndFont
 	DocBookTag         keyword

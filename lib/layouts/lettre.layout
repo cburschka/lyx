@@ -31,7 +31,7 @@
 # TODO: DocBook doesn't support several letters in the same file.
 
 
-Format 89
+Format 90
 
 #(pre)declarations (just to impose some order on the menus)
 Style Standard
@@ -185,7 +185,7 @@ Style Place
   LabelFont 
     Series		Bold
     Shape		Italic
-    Color		red
+    Color		textlabel3
   EndFont
   Preamble
    \newcommand{\Myplace}[1]{   % will save the info for future use
@@ -215,7 +215,7 @@ Style NoPlace
   LabelFont 
     Series		Bold
     Shape		Italic
-    Color		red
+    Color		textlabel3
   EndFont
 
   Preamble
@@ -251,7 +251,7 @@ Style Date
   LabelFont 
     Series		Bold
     Shape		Italic
-    Color		red
+    Color		textlabel3
   EndFont
   DocBookTag      date
   DocBookTagType  paragraph
@@ -272,7 +272,7 @@ Style NoDate
   LabelFont 
     Series		Bold
     Shape		Italic
-    Color		red
+    Color		textlabel3
   EndFont
   Preamble
   EndPreamble
@@ -299,7 +299,7 @@ Style Location
   LabelFont 
     Series		Bold
     Shape		Italic
-    Color		red
+    Color		textlabel3
   EndFont
   Preamble
    \newcommand{\MyLocation}[1]{ % will save the info for future use
@@ -332,7 +332,7 @@ Style Telephone
   LabelFont 
     Series		Bold
     Shape		Italic
-    Color		red
+    Color		textlabel3
   EndFont
   Preamble
     \newcommand{\MyTelephone}[1]{ % will save the info for future use
@@ -360,7 +360,7 @@ Style NoTelephone
   LabelFont 
     Series		Bold
     Shape		Italic
-    Color		red
+    Color		textlabel3
   EndFont
   Preamble
    \newcommand{\MyNoTelephone}{
@@ -395,7 +395,7 @@ Style Fax
   LabelFont 
     Series		Bold
     Shape		Italic
-    Color		red
+    Color		textlabel3
   EndFont
   Preamble
    \newcommand{\MyFax}[1]{ % will save the info for future use
@@ -425,7 +425,7 @@ Style NoFax
   LabelFont 
     Series		Bold
     Shape		Italic
-    Color		red
+    Color		textlabel3
   EndFont
   Preamble
    \newcommand{\MyNoFax}{
@@ -461,7 +461,7 @@ Style Email
   LabelFont 
     Series		Bold
     Shape		Italic
-    Color		red
+    Color		textlabel3
   EndFont
   Preamble
    \newcommand{\MyEmail}[1]{ % will save the info for future use
@@ -495,7 +495,7 @@ Style Subject
   LabelFont 
     Series		Bold
     Shape		Italic
-    Color		red
+    Color		textlabel3
   EndFont
   DocBookTag     title
   DocBookTagType paragraph
@@ -514,7 +514,7 @@ Style YourRef
   LabelFont 
     Series		Bold
     Shape		Italic
-    Color		red
+    Color		textlabel3
   EndFont
   DocBookTag      productnumber
   DocBookAttr     role='your-ref'
@@ -534,7 +534,7 @@ Style MyRef
   LabelFont 
     Series		Bold
     Shape		Italic
-    Color		red
+    Color		textlabel3
   EndFont
   DocBookTag      productnumber
   DocBookAttr     role='my-ref'
@@ -597,7 +597,7 @@ Style EndOfMessage
   LabelFont 
     Series		Bold
     Shape		Italic
-    Color		red
+    Color		textlabel3
   EndFont
   DocBookTag  NONE
 End
@@ -618,7 +618,7 @@ Style Opening
   LabelFont 
     Series		Bold
     Shape		Italic
-    Color		red
+    Color		textlabel3
   EndFont
 End
 
@@ -646,7 +646,7 @@ Style Signature
   LabelFont 
     Series		Bold
     Shape		Italic
-    Color		red
+    Color		textlabel3
   EndFont
   Preamble
       %% automatic assignment of signatures
@@ -684,7 +684,7 @@ Style encl
   LabelFont 
     Series		Bold
     Shape		Italic
-    Color		red
+    Color		textlabel3
   EndFont
   Preamble
     \newcommand{\lyxenc}[1]{
@@ -705,7 +705,7 @@ Style 	cc
   LabelFont 
     Series		Bold
     Shape		Italic
-    Color		red
+    Color		textlabel3
   EndFont
   Preamble
     \newcommand{\lyxcc}[1]{
@@ -730,7 +730,7 @@ Style Post_Scriptum
   LabelFont 
     Series		Bold
     Shape		Italic
-    Color		red
+    Color		textlabel3
   EndFont
   Preamble
     \newcommand{\lyxps}[1]{

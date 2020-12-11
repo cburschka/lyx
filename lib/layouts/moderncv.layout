@@ -7,11 +7,12 @@
 
 
 # General textclass parameters
-Format 89
-	Columns		1
-	Sides		1
-	SecNumDepth	-1
-	TocDepth	-1
+Format 90
+
+Columns		1
+Sides		1
+SecNumDepth	-1
+TocDepth	-1
 
 Provides hyperref	1
 Provides url		1
@@ -47,7 +48,7 @@ Style CVStyle
 	LabelString	"CV Style:"
 	LabelFont
 	  Series	Bold
-	  Color		Blue
+	  Color		textlabel1
 	EndFont
 	Argument 1
 	  LabelString	"Style Options"
@@ -279,7 +280,7 @@ Style Photo
 	LabelFont
 	  Family	Roman
 	  Series	Bold
-	  Color		Blue
+	  Color		textlabel1
 	EndFont
 	LatexName	photo
 	LabelString	"Photo:"
@@ -347,7 +348,7 @@ Style EmptySection
 	LabelType	Static
 	LabelString	"Empty Section"
 	LabelFont
-	  Color		Green
+	  Color		textlabel2
 	EndFont
 End
 
@@ -384,7 +385,7 @@ Style Columns
 	LabelBottomSep	0.5
 	LabelFont
 	  Series	Bold
-	  Color		Blue
+	  Color		textlabel1
 	EndFont
 	TocLevel	1
 	DocBookTag  NONE
@@ -410,7 +411,7 @@ InsetLayout Flex:Column
 	LabelString	"Column"
 	LabelFont
 	  Series	Bold
-	  Color		Blue
+	  Color		textlabel1
 	EndFont
 	ResetsFont true
 	DocBookTag  sidebar
@@ -469,7 +470,7 @@ Style Entry
 	LabelString	"Entry:"
 	LabelFont
 	  Series	Bold
-	  Color		Blue
+	  Color		textlabel1
 	EndFont
 	DocBookTag  para
 End
@@ -493,7 +494,7 @@ Style Item
 	LabelString	"Item:"
 	LabelFont
 	  Series	Bold
-	  Color		Blue
+	  Color		textlabel1
 	EndFont
 	DocBookTag  para
 End
@@ -527,7 +528,7 @@ Style ItemWithComment
 	EndFont
 	LabelFont
 	  Series	Bold
-	  Color		Blue
+	  Color		textlabel1
 	  Shape		Up
 	EndFont
 	DocBookTag  para
@@ -713,7 +714,7 @@ Style Enclosing
 	LabelFont
 	  Shape		Up
 	  Series	Bold
-	  Color		Blue
+	  Color		textlabel1
 	EndFont
 	
 End

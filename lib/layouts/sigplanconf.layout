@@ -17,7 +17,7 @@
 # ACM style files can be obtained at
 # http://www.acm.org/sigs/pubs/proceed/template.html
 
-Format 89
+Format 90
 
 Columns			1
 Sides			1
@@ -89,7 +89,7 @@ Style Conference
 	LabelType	Static
 	LabelString	"Conference:"
 	LabelFont
-	  Color		Green
+	  Color		textlabel2
 	  Series	Bold
 	EndFont
 End

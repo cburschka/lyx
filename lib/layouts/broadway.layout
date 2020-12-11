@@ -4,7 +4,7 @@
 
 # For theater plays
 
-Format 89
+Format 90
 Columns                 1
 Sides                   1
 SecNumDepth             2
@@ -55,7 +55,7 @@ Style Narrative
 	LabelType             No_Label
 	Font
 	  Shape               Italic
-	  Color               Black
+	  Color               foreground
 	EndFont
 End
 
@@ -152,10 +152,10 @@ Style Parenthetical
 	EndLabelString        ")"
 	Font
 	  Shape               Italic
-	  Color               Blue
+	  Color               textlabel1
 	EndFont
 	LabelFont
-	  Color               Blue
+	  Color               textlabel1
 	EndFont
 End
 

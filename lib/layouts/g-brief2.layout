@@ -6,7 +6,7 @@
 #          Thomas Hartkens <thomas@hartkens.de>
 
 # Input general definitions
-Format 89
+Format 90
 Input stdfloats.inc
 Input stdcounters.inc
 Input stdinsets.inc
@@ -75,7 +75,7 @@ Style Letter
   LabelFont
     Series		Bold
     Shape		Italic
-    Color               Blue
+    Color               textlabel1
   EndFont
 End
 
@@ -95,7 +95,7 @@ Style Name
   LabelFont
     Series		Bold
     Shape		Italic
-    Color		Blue
+    Color		textlabel1
   EndFont
 End
 
@@ -117,7 +117,7 @@ Style NameRowA
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -137,7 +137,7 @@ Style NameRowB
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -157,7 +157,7 @@ Style NameRowC
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -177,7 +177,7 @@ Style NameRowD
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -197,7 +197,7 @@ Style NameRowE
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -217,7 +217,7 @@ Style NameRowF
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -237,7 +237,7 @@ Style NameRowG
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -259,7 +259,7 @@ Style AddressRowA
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -279,7 +279,7 @@ Style AddressRowB
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -299,7 +299,7 @@ Style AddressRowC
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -319,7 +319,7 @@ Style AddressRowD
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -339,7 +339,7 @@ Style AddressRowE
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -359,7 +359,7 @@ Style AddressRowF
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -380,7 +380,7 @@ Style TelephoneRowA
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -400,7 +400,7 @@ Style TelephoneRowB
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -420,7 +420,7 @@ Style TelephoneRowC
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -440,7 +440,7 @@ Style TelephoneRowD
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -460,7 +460,7 @@ Style TelephoneRowE
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -480,7 +480,7 @@ Style TelephoneRowF
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -501,7 +501,7 @@ Style InternetRowA
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -521,7 +521,7 @@ Style InternetRowB
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -541,7 +541,7 @@ Style InternetRowC
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -561,7 +561,7 @@ Style InternetRowD
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -581,7 +581,7 @@ Style InternetRowE
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -601,7 +601,7 @@ Style InternetRowF
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -622,7 +622,7 @@ Style BankRowA
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -642,7 +642,7 @@ Style BankRowB
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -662,7 +662,7 @@ Style BankRowC
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -682,7 +682,7 @@ Style BankRowD
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color	       	textlabel2
   EndFont
 End
 
@@ -702,7 +702,7 @@ Style BankRowE
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -722,7 +722,7 @@ Style BankRowF
   LabelFont
     Series		Bold
     Shape		Italic
-    Color       Green
+    Color       	textlabel2
   EndFont
 End
 
@@ -745,7 +745,7 @@ Style ReturnAddress
   LabelFont
     Series		Bold
     Shape		Italic
-    Color               Blue
+    Color               textlabel1
   EndFont
 End
 
@@ -767,7 +767,7 @@ Style PostalComment
   LabelFont
     Series		Bold
     Shape		Italic
-    Color               Blue
+    Color               textlabel1
   EndFont
 End
 
@@ -790,7 +790,7 @@ Style Address
   LabelFont
     Series		Bold
     Shape		Italic
-    Color               Blue
+    Color               textlabel1
   EndFont
 End
 
@@ -811,7 +811,7 @@ Style MyRef
   LabelFont
     Series		Bold
     Shape		Italic
-    Color               Blue
+    Color               textlabel1
   EndFont
 End
 
@@ -832,7 +832,7 @@ Style YourRef
   LabelFont
     Series		Bold
     Shape		Italic
-    Color               Blue
+    Color               textlabel1
   EndFont
 End
 
@@ -853,7 +853,7 @@ Style YourMail
   LabelFont
     Series		Bold
     Shape		Italic
-    Color               Blue
+    Color               textlabel1
   EndFont
 End
 
@@ -874,7 +874,7 @@ Style Date
   LabelFont
     Series		Bold
     Shape		Italic
-    Color               Blue
+    Color               textlabel1
   EndFont
 End
 
@@ -896,7 +896,7 @@ Style Reference
   LabelFont
     Series		Bold
     Shape		Italic
-    Color               Blue
+    Color               textlabel1
   EndFont
 End
 
@@ -919,7 +919,7 @@ Style Opening
   LabelFont
     Series		Bold
     Shape		Italic
-    Color               Blue
+    Color               textlabel1
   EndFont
 End
 
@@ -941,7 +941,7 @@ Style Closing
   LabelFont
     Series		Bold
     Shape		Italic
-    Color               Blue
+    Color               textlabel1
   EndFont
   #define the environment lyxGruss
   Preamble
@@ -967,7 +967,7 @@ Style Signature
   LabelFont
     Series		Bold
     Shape		Italic
-    Color               Blue
+    Color               textlabel1
   EndFont
 End
 
@@ -989,7 +989,7 @@ Style Encl.
   LabelFont
     Series		Bold
     Shape		Italic
-    Color               Blue
+    Color               textlabel1
   EndFont
 End
 
@@ -1011,7 +1011,7 @@ Style cc
   LabelFont
     Series		Bold
     Shape		Italic
-    Color               Blue
+    Color               textlabel1
   EndFont
 End
 

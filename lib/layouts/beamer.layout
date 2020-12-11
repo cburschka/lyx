@@ -6,7 +6,7 @@
 #   Richard Kimberly Heck <rikiheck@lyx.org>, Martin Vermeer <martin.vermeer@hut.fi> and probably others.
 
 
-Format 89
+Format 90
 
 #
 # GLOBAL SETTINGS
@@ -525,7 +525,7 @@ Style Frame
     RightDelim     }
     Decoration     conglomerate
     Font
-      Color        blue
+      Color        textlabel1
       Size         largest
     EndFont
     AutoInsert     1
@@ -621,7 +621,7 @@ Style FrameTitle
   Align            Block
   LabelType        No_Label
   Font
-    Color          Blue
+    Color          textlabel1
     Size           Largest
   EndFont
   Argument 1
@@ -652,7 +652,7 @@ Style FrameSubtitle
   Align            Block
   LabelType        No_Label
   Font
-    Color          Blue
+    Color          textlabel1
   EndFont
   Argument 1
     LabelString    "On Slide"
@@ -951,7 +951,7 @@ Style Block
     Mandatory      1
     Decoration     conglomerate
     Font
-      Color        blue
+      Color        textlabel1
       Size         large
     EndFont
     AutoInsert     1
@@ -967,7 +967,7 @@ Style ExampleBlock
   LatexName        exampleblock
   LabelString      "Example Block:"
   Font
-    Color          green
+    Color          textlabel2
   EndFont
 End
 
@@ -976,7 +976,7 @@ Style AlertBlock
   LatexName        alertblock
   LabelString      "Alert Block:"
   Font
-    Color          red
+    Color          error
   EndFont
 End
 
@@ -1007,7 +1007,7 @@ Style Title
   Font
     Size           Huge
     Series         Bold
-    Color          Blue
+    Color          textlabel1
   EndFont
   DocBookTag       title
   DocBookTagType   paragraph
@@ -1043,7 +1043,7 @@ Style Subtitle
   Font
     Size           Large
     Series         Bold
-    Color          Blue
+    Color          textlabel1
   EndFont
   DocBookTag       subtitle
   DocBookInInfo    maybe
@@ -1068,7 +1068,7 @@ Style Author
   EndArgument
   Font
     Size           Largest
-    Color          Blue
+    Color          textlabel1
   EndFont
   DocBookTag            personname
   DocBookTagType        paragraph
@@ -1096,7 +1096,7 @@ Style Institute
   EndArgument
   Font
     Size           Large
-    Color          Blue
+    Color          textlabel1
   EndFont
 End
 
@@ -1116,7 +1116,7 @@ InsetLayout "Flex:InstituteMark"
     Misc           No_Bar
   EndFont
   LabelFont
-    Color          blue
+    Color          textlabel1
     Size           Small
   EndFont
 End
@@ -1140,7 +1140,7 @@ Style Date
   EndArgument
   Font
     Size           Largest
-    Color          Blue
+    Color          textlabel1
   EndFont
 End
 
@@ -1160,7 +1160,7 @@ Style TitleGraphic
   Font
     Size           Huge
     Series         Bold
-    Color          Blue
+    Color          textlabel1
   EndFont
 End
 
@@ -1311,7 +1311,7 @@ Style Corollary
    KeepEmpty       1
    LabelFont
      Series        Bold
-     Color         Blue
+     Color         textlabel1
      Size          Large
    EndFont
   Argument 1
@@ -1349,7 +1349,7 @@ Style Example
   LabelString      "Example."
   LabelFont
     Series         Bold
-    Color          Green
+    Color          textlabel2
   EndFont
 End
 
@@ -1509,7 +1509,7 @@ InsetLayout Flex:Alert
   LatexType        command
   LatexName        alert
   Font
-    Color          red
+    Color          error
   EndFont
   Argument 1
     LabelString    "Action"
@@ -1529,7 +1529,7 @@ InsetLayout Flex:Structure
   LatexType        command
   LatexName        structure
   Font
-    Color          blue
+    Color          textlabel1
   EndFont
   Argument 1
     LabelString    "Action"
@@ -1549,7 +1549,7 @@ InsetLayout Flex:Only
   LatexType        command
   LatexName        only
   Font
-    Color          red
+    Color          textlabel3
   EndFont
   Argument 1
     LabelString    "Action"
@@ -1570,7 +1570,7 @@ InsetLayout Flex:Uncover
   LatexType        command
   LatexName        uncover
   Font
-    Color          red
+    Color          textlabel3
   EndFont
   Argument 1
     LabelString    "Action"
@@ -1591,7 +1591,7 @@ InsetLayout Flex:Visible
   LatexType        command
   LatexName        visible
   Font
-    Color          red
+    Color          textlabel3
   EndFont
   Argument 1
     LabelString    "Action"
@@ -1612,7 +1612,7 @@ InsetLayout Flex:Invisible
   LatexType        command
   LatexName        invisible
   Font
-    Color          red
+    Color          textlabel3
   EndFont
   Argument 1
     LabelString    "Action"
@@ -1633,7 +1633,7 @@ InsetLayout Flex:Alternative
   LatexType        command
   LatexName        alt
   Font
-    Color          red
+    Color          textlabel3
   EndFont
   Argument 1
     LabelString    "Action"
@@ -1659,7 +1659,7 @@ InsetLayout Flex:Beamer_Note
   LatexName        note
   Decoration       Classic
   Font
-    Color          blue
+    Color          textlabel1
   EndFont
   Argument 1
     LabelString    "Action"

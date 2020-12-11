@@ -7,7 +7,7 @@
 #Authors: Jürgen Spitzmüller
 #         Uwe Stöhr <uwestoehr@lyx.org>
 
-Format 89
+Format 90
 
 InsetLayout Flex:Color_Box
   LyXType               custom
@@ -92,7 +92,7 @@ Style Color_Box_Line
   CopyStyle        Color_Box_Separator
   LatexName        tcbline
   LabelFont 
-    Color          blue
+    Color          textlabel1
   EndFont
   Requires         tcolorbox
 End
@@ -118,7 +118,7 @@ Style Color_Box_Setup
     Family         typewriter
   EndFont
   LabelFont
-    Color          green
+    Color          textlabel2
     Family         roman
   EndFont
   Requires         tcolorbox
@@ -133,7 +133,7 @@ Style New_Color_Box_Type
     Family         roman
   EndFont
   LabelFont
-    Color          green
+    Color          textlabel2
   EndFont
   Argument 1
     LabelString    "New Box Options"

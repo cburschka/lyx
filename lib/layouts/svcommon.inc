@@ -19,7 +19,7 @@
 # see http://www.springer.com/authors for class files and further instructions
 
 
-Format 89
+Format 90
 PageStyle		Plain
 
 
@@ -91,7 +91,7 @@ Style Front_Matter
 	  Family	Sans
 	  Series	Bold
 	  Size		Largest
-	  Color		Blue
+	  Color		textlabel1
 	EndFont
 End
 
@@ -392,7 +392,7 @@ Style Institute
 	LabelString	"Author data:"
 	LabelFont
 	  Family	Typewriter
-	  Color		Blue
+	  Color		textlabel1
 	EndFont
 	Requires	url
 	Align 		Left
@@ -424,7 +424,7 @@ Style TOC_Title
 	LabelString	"TOC title:"
 	LabelFont
 	  Family	Typewriter
-	  Color		Blue
+	  Color		textlabel1
 	EndFont  
 End
 
@@ -509,10 +509,10 @@ Style Abstract*
 	LatexName	abstract*
 	LabelString	"Abstract* (not printed)"
 	LabelFont
-	  Color		Blue
+	  Color		textlabel1
 	EndFont
 	TextFont	
-	  Color		Blue
+	  Color		textlabel1
 	EndFont
 	DocBookAbstract       true
 	DocBookInInfo         always

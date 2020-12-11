@@ -15,7 +15,7 @@
 # 2003-03-03  Updated for lyx 1.3.0.
 
 
-Format 89
+Format 90
 Columns                 1
 Sides                   2
 SecNumDepth             4
@@ -233,7 +233,7 @@ Style AddressForOffprints
 	LabelFont
 	  Size                Small
 	  Shape               Italic
-	  Color               Red
+	  Color               textlabel3
 	EndFont
 	DocBookTag            address
 	DocBookAttr           role='offprints'
@@ -258,7 +258,7 @@ Style RunningTitle
 	LabelFont
 	  Series              Medium
 	  Shape               Italic
-	  Color               Red
+	  Color               textlabel3
 	EndFont
 	DocBookTag            titleabbrev
 	DocBookTagType        paragraph
@@ -282,7 +282,7 @@ Style RunningAuthor
 	LabelFont
 	  Series              Medium
 	  Shape               Italic
-	  Color               Red
+	  Color               textlabel3
 	EndFont
 	DocBookTag            authorinitials
 	DocBookAttr           role='running-author'

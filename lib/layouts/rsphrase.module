@@ -7,7 +7,7 @@
 #DescriptionEnd
 #Author: Uwe Stöhr <uwestoehr@web.de>
 
-Format 89
+Format 90
 
 InsetLayout "Flex:R-S number"
 	LyxType		custom
@@ -26,7 +26,7 @@ InsetLayout "Flex:R-S number"
 	  Misc		No_Bar
 	EndFont
 	LabelFont
-	  Color		green
+	  Color		textlabel2
 	  Size		Small
 	EndFont
 End
@@ -60,7 +60,7 @@ Style "Safety phrase"
 	LabelType	Static
 	LabelString	"S phrase:"
 	LabelFont
-	  Color		Green
+	  Color		textlabel2
 	EndFont
 End
 

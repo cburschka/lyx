@@ -4,7 +4,7 @@
 # elsarticle textclass definition file.
 # Author: Uwe Stöhr (uwestoehr@web.de)
 
-Format 89
+Format 90
 
 Columns				1
 Sides				1
@@ -96,7 +96,7 @@ InsetLayout "Flex:Titlenotemark"
 	  Misc			No_Bar
 	EndFont
 	LabelFont
-	  Color			green
+	  Color			textlabel2
 	  Size			Small
 	EndFont
 	DocBookTag      footnoteref
@@ -123,7 +123,7 @@ Style "Title footnote"
 	LabelType		Static
 	LabelString		"Title footnote:"
 	LabelFont
-	  Color			Green
+	  Color			textlabel2
 	  Series		Bold
 	EndFont
 	DocBookTag      footnote
@@ -206,7 +206,7 @@ InsetLayout "Flex:CorAuthormark"
 	LatexName		corref
 	LabelString		"CorAuthor mark"
 	LabelFont
-	  Color			blue
+	  Color			textlabel1
 	EndFont
 End
 
@@ -316,7 +316,7 @@ Style Keywords
 	LabelType		Static
 	LabelString		"Keywords:"
 	LabelFont
-	  Color			Green
+	  Color			textlabel2
 	  Series		Bold
 	EndFont
 	DocBookTag         keyword

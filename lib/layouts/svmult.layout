@@ -8,7 +8,7 @@
 #  Class and style files and templates are found at:
 #       http://wiki.lyx.org/Examples/Springer
 #
-Format 89
+Format 90
 
 Input svcommon.inc
 
@@ -43,7 +43,7 @@ Style Title*
 	Margin		First_Dynamic
 	HTMLTitle	true
 	LabelFont
-	  Color		Blue
+	  Color		textlabel1
 	EndFont
 	# DocBook: should be a separator for articles, but it's not supposed to be in TOC. 
 	# If it was, it would be easy to use DocBookSection.
@@ -99,7 +99,7 @@ Style Author
 	EndFont
 	LabelFont
 	  Family	Typewriter
-	  Color		Blue
+	  Color		textlabel1
 	EndFont
 End
 

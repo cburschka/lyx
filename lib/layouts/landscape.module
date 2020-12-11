@@ -6,7 +6,7 @@
 #
 #Author: Jürgen Spitzmüller <spitz@lyx.org>
 
-Format 89
+Format 90
 
 InsetLayout Flex:Landscape
 	LyXType		custom
@@ -18,7 +18,7 @@ InsetLayout Flex:Landscape
 	LatexType	environment
 	LabelFont
 	  Family	Roman
-	  Color		red
+	  Color		textlabel3
 	EndFont
 	Requires        lscape
 End

@@ -7,7 +7,7 @@
 #Author: Jürgen Spitzmüller <spitz@lyx.org>
 #        Uwe Stöhr <uwestoehr@lyx.org>
 
-Format 89
+Format 90
 
 InsetLayout Flex:Reflectbox
 	LyXType		custom
@@ -17,7 +17,7 @@ InsetLayout Flex:Reflectbox
 	LatexName	reflectbox
 	LabelFont
 	  Family	Roman
-	  Color		red
+	  Color		textlabel3
 	EndFont
 	ResetsFont	0
 	Requires	graphicx
