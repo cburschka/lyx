@@ -11,7 +11,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 89
+currentFormat = 90
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -304,6 +304,9 @@ currentFormat = 89
 # Incremented to format 89, 5 December 2020 by rkh
 # New tag LaTeXName for counters
 
+# Incremented to format 90, 11 December 2020 by spitz
+# Use semantic label colors
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -554,7 +557,7 @@ def convert(lines, end_format):
                 i += 1
             continue
 
-        if 87 <= format <= 89:
+        if 87 <= format <= 90:
             # nothing to do.
             i += 1
             continue
