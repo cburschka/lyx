@@ -14,7 +14,6 @@ HEADERS="\
   boost/any.hpp \
   boost/assert.hpp \
   boost/crc.hpp \
-  boost/lexical_cast.hpp \
   boost/signals2/signal.hpp \
   "
 
