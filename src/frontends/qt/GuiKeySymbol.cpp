@@ -11,6 +11,9 @@
 #include <config.h>
 
 #include "GuiKeySymbol.h"
+#if defined(Q_OS_MAC) && QT_VERSION > 0x050000
+#include "GuiApplication.h"
+#endif
 #include "qt_helpers.h"
 
 #include "support/lassert.h"
