@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 598
+\lyxformat 600
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -20313,204 +20313,26 @@ Color
 status collapsed
 
 \begin_layout Plain Layout
-
-\emph on
-none
+string
 \end_layout
 
 \end_inset
 
-, 
-\begin_inset Flex Code
-status collapsed
+] Siehe Anhang
+\begin_inset space ~
+\end_inset
 
-\begin_layout Plain Layout
-black
-\end_layout
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Namen-von-Farben"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-white
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-red
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-green
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-blue
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-cyan
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-magenta
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-yellow
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-brown
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-darkgray
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-gray
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-lightgray
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-lime
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-orange
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-olive
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-pink
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-purple
-\end_layout
-
-\end_inset
-
-,
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-teal
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-violet
-\end_layout
-
-\end_inset
-
-]
+ für zulässige Argumente.
 \end_layout
 
 \begin_layout Description
@@ -28087,7 +27909,14 @@ Statische Farben
 \end_layout
 
 \begin_layout Standard
-Die folgenden Farben sind fest definiert und können nicht verändert werden:
+Die folgenden Farben sind fest definiert und können nicht verändert werden.
+ Bitte verwenden Sie diese Farben 
+\emph on
+nicht
+\emph default
+ in Layoutdefinitionen, denn sie harmonieren nicht gut mit manchen Farbschemata
+ (bspw.
+ dunkle Schemata):
 \end_layout
 
 \begin_layout Description
@@ -28844,6 +28673,30 @@ tabularline
 tabularonoffline
 \lang ngerman
  Farbe von Tabellenlinien
+\end_layout
+
+\begin_layout Description
+
+\lang english
+textlabel1
+\lang ngerman
+ Farbe 1 von der Marke von Absatzlayouts
+\end_layout
+
+\begin_layout Description
+
+\lang english
+textlabel2 
+\lang ngerman
+Farbe 2 von der Marke von Absatzlayouts
+\end_layout
+
+\begin_layout Description
+
+\lang english
+textlabel3 
+\lang ngerman
+Farbe 3 von der Marke von Absatzlayouts
 \end_layout
 
 \begin_layout Description

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 599
+\lyxformat 600
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -23103,6 +23103,8 @@ Color
 \end_inset
 
  [
+\change_deleted -712698321 1607682984
+
 \begin_inset Flex Code
 status collapsed
 
@@ -23304,7 +23306,41 @@ violet
 
 \end_inset
 
+
+\change_inserted -712698321 1607683139
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1607683135
+string
+\end_layout
+
+\end_inset
+
+] See appendix
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Names-of-colors"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for 
+\change_deleted -712698321 1607683144
 ]
+\change_inserted -712698321 1607683146
+valid arguments.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -32887,7 +32923,17 @@ Static colors
 \end_layout
 
 \begin_layout Standard
-These are fixed colors that cannot be customized:
+These are fixed colors that cannot be customized
+\change_inserted -712698321 1607683177
+.
+ Please do 
+\emph on
+not
+\emph default
+ use these colors in layout definitions, since they will not work well with
+ some color themes (such as dark themes)
+\change_unchanged
+:
 \end_layout
 
 \begin_layout Description
@@ -33264,6 +33310,28 @@ tabularline Table line color
 
 \begin_layout Description
 tabularonoffline Table line color
+\change_inserted -712698321 1607682522
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1607682563
+textlabel1 Color 1 of layout and custom inset labels
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1607682565
+textlabel2 Color 2 of layout and custom inset labels
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1607682568
+textlabel3 Color 3 of layout and custom inset labels
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
