@@ -371,6 +371,12 @@ FunctionEnd
 Function RetrieveSMState # Custom function, called after the Startmenu page has been created
   ${IfNot} ${FileExists} "$INSTDIR\Uninstall-LyX.exe"
     Return # Not over-installing
+  ${Else}
+    ${GetFileVersion} "$INSTDIR\Uninstall-LyX.exe" $0
+    StrCpy $0 $0 3 # get only the first 3 chars, e.g. "2.3"
+    ${If} $0 != "${VERSION_MAJOR}.${VERSION_MINOR}"
+      Return # Installing over a wrong version
+    ${EndIf}
   ${EndIf}
 
   Call PrepareShellCTX # Helper function from above
@@ -1015,6 +1021,12 @@ Function DefaultDesktopFileAssoc # Custom function, called before the components
 
   ${IfNot} ${FileExists} "$INSTDIR\Uninstall-LyX.exe"
     Return # Not over-installing
+  ${Else}
+    ${GetFileVersion} "$INSTDIR\Uninstall-LyX.exe" $0
+    StrCpy $0 $0 3 # get only the first 3 chars, e.g. "2.3"
+    ${If} $0 != "${VERSION_MAJOR}.${VERSION_MINOR}"
+      Return # Installing over a wrong version
+    ${EndIf}
   ${EndIf}
 
   Call PrepareShellCTX
