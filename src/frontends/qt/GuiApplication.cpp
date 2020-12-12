@@ -580,14 +580,13 @@ QPixmap prepareForDarkMode(QPixmap pixmap)
 	// create a layer with blue text turned to lighter blue
 	QPixmap blue_overlay(pixmap.size());
 	QColor math_blue(0, 0, 255);
-	blue_overlay.fill(math_blue.lighter());
+	blue_overlay.fill(guiApp->colorCache().get(Color(Color_math)));
 	blue_overlay.setMask(pixmap.createMaskFromColor(math_blue, Qt::MaskOutColor));
 
 	// create a layer with ("latex") red text turned to lighter red
 	QPixmap red_overlay(pixmap.size());
 	QColor math_red(128, 0, 0);
-	QColor math_red_light(233, 175, 175);
-	red_overlay.fill(math_red_light);
+	red_overlay.fill(guiApp->colorCache().get(Color(Color_latex)));
 	red_overlay.setMask(pixmap.createMaskFromColor(math_red, Qt::MaskOutColor));
 
 	// put layers on top of existing pixmap
