@@ -62,7 +62,7 @@ QPalette::ColorRole role(ColorCode col)
 void ColorCache::init()
 {
 	for (int col = 0; col <= Color_ignore; ++col) {
-		lcolors_[col] = QColor(lcolor.getX11HexName(ColorCode(col)).c_str());
+		lcolors_[col] = QColor(lcolor.getX11HexName(ColorCode(col), isDarkMode()).c_str());
 	}
 
 	initialized_ = true;
@@ -104,7 +104,7 @@ QColor ColorCache::get(Color const & color, bool syscolors) const
 			(base_color.blue() + merge_color.blue()) / 2);
 	}
 	// used by branches
-	return QColor(lcolor.getX11HexName(color.baseColor).c_str());
+	return QColor(lcolor.getX11HexName(color.baseColor, isDarkMode()).c_str());
 }
 
 
@@ -116,6 +116,16 @@ bool ColorCache::isSystem(ColorCode const color) const
 		return pal_.brush(QPalette::Active, cr).color() != white;
 	} else
 		return cr != QPalette::NoRole;
+}
+
+
+bool ColorCache::isDarkMode() const
+{
+	QPalette palette = QPalette();
+	QColor text_color = palette.color(QPalette::Active, QPalette::WindowText);
+	QColor bg_color = palette.color(QPalette::Active, QPalette::Window);
+	
+	return (text_color.black() < bg_color.black());
 }
 
 

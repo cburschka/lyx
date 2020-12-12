@@ -60,7 +60,7 @@ namespace {
 
 // The format should also be updated in configure.py, and conversion code
 // should be added to prefs2prefs_prefs.py.
-static unsigned int const LYXRC_FILEFORMAT = 34; // yuriy: rename kmap files
+static unsigned int const LYXRC_FILEFORMAT = 35; // spitz: dark mode colors
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
 	{ "\\accept_compound", LyXRC::RC_ACCEPT_COMPOUND },
@@ -657,6 +657,10 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			}
 			string const x11_name = lexrc.getString();
 
+			string x11_darkname = x11_name;
+			if (lexrc.next())
+				x11_darkname = lexrc.getString();
+
 			ColorCode const col =
 				lcolor.getFromLyXName(lyx_name);
 			if (col == Color_none ||
@@ -664,9 +668,10 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			    col == Color_ignore)
 				break;
 
-			if (!lcolor.setColor(col, x11_name))
+			if (!lcolor.setColor(col, x11_name, x11_darkname))
 				LYXERR0("Bad lyxrc set_color for " << lyx_name);
-			LYXERR(Debug::LYXRC, "Set " << lyx_name << "(" << col << ") to " << x11_name);
+			LYXERR(Debug::LYXRC, "Set " << lyx_name << "(" << col << ") to "
+			       << x11_name << " and " << x11_darkname);
 			break;
 		}
 
@@ -1987,12 +1992,15 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 	case RC_SET_COLOR:
 		for (int i = 0; i < Color_ignore; ++i) {
 			ColorCode lc = static_cast<ColorCode>(i);
-			string const col = lcolor.getX11HexName(lc);
+			string const col = lcolor.getAllX11HexNames(lc).first;
+			string const darkcol = lcolor.getAllX11HexNames(lc).second;
 			if (ignore_system_lyxrc
-			    || col != system_lcolor.getX11HexName(lc)) {
+			    || col != system_lcolor.getAllX11HexNames(lc).first
+			    || darkcol != system_lcolor.getAllX11HexNames(lc).second) {
 				os << "\\set_color \""
 				   << lcolor.getLyXName(lc) << "\" \""
-				   << col << "\"\n";
+				   << col << "\" \""
+				   << darkcol << "\"\n";
 			}
 		}
 		if (tag != RC_LAST)

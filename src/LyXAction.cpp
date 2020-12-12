@@ -3680,10 +3680,11 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_SET_COLOR
- * \li Action: Set the given LyX color to the color defined by the X11 name given.
+ * \li Action: Set the given LyX color to the color defined by the X11 name given,
+ *             and optionally a specific color for dark mode.
  * \li Notion: A new color entry is created if the color is unknown.
                Color names can be stored as a part of user settings.
- * \li Syntax: set-color <LYX_NAME> <X11_NAME>
+ * \li Syntax: set-color <LYX_NAME> <X11_NAME> [<X11_DARKNAME>]
  * \li Origin: SLior, 11 Jun 2000
  * \endvar
  */

@@ -137,6 +137,10 @@
 # Incremented to format 34, by yuriy
 #   Rename *.kmap files for Cyrillic languages
 
+# Incremented to format 35, by spitz
+#   \set_color now takes three arguments
+#   \set_color lyxname x11hexname x11darkhexname
+
 # NOTE: The format should also be updated in LYXRC.cpp and
 # in configure.py.
 
@@ -499,5 +503,6 @@ conversions = [
 	[ 31, []],
 	[ 32, []],
 	[ 33, []],
-	[ 34, [rename_cyrillic_kmap_files]]
+	[ 34, [rename_cyrillic_kmap_files]],
+	[ 35, []]
 ]

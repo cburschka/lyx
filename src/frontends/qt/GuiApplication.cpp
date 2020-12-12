@@ -1807,11 +1807,12 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	case LFUN_SET_COLOR: {
 		string const lyx_name = cmd.getArg(0);
-		string const x11_name = cmd.getArg(1);
+		string x11_name = cmd.getArg(1);
+		string x11_darkname = cmd.getArg(2);
 		if (lyx_name.empty() || x11_name.empty()) {
 			if (current_view_)
 				current_view_->message(
-					_("Syntax: set-color <lyx_name> <x11_name>"));
+					_("Syntax: set-color <lyx_name> <x11_name> <x11_darkname>"));
 			break;
 		}
 
@@ -1824,7 +1825,11 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			graphics::GCache::get().changeDisplay(true);
 #endif
 
-		if (!lcolor.setColor(lyx_name, x11_name)) {
+		if (x11_darkname.empty() && colorCache().isDarkMode()) {
+			x11_darkname = x11_name;
+			x11_name.clear();
+		}
+		if (!lcolor.setColor(lyx_name, x11_name, x11_darkname)) {
 			if (current_view_)
 				current_view_->message(
 					bformat(_("Set-color \"%1$s\" failed "
