@@ -380,7 +380,10 @@ Function RetrieveSMState # Custom function, called after the Startmenu page has 
       StrCpy $StartMenuFolder ">$StartMenuFolder"
     ${Else}
       GetDlgItem $0 $mui.StartMenuPage 1005 # Get the HWND of the checkbox, MUI2 does not provide variable for that
-      SendMessage $0 ${BM_CLICK} 0 0 # NSIS delivers no other possibility here other than to send a click event to the checkbox
+      ${NSD_GetState} $0 $1
+      ${If} $1 = ${BST_UNCHECKED}
+        SendMessage $0 ${BM_CLICK} 0 0 # NSIS delivers no other possibility here other than to send a click event to the checkbox
+      ${EndIf}
     ${EndIf}
   ${EndIf}
 FunctionEnd
@@ -563,6 +566,7 @@ Section -ProgramFiles
   # Visual C++ redistributable (if native build)
   File "${FILES_DEPS}\bin\concrt140.dll"
   File "${FILES_DEPS}\bin\msvcp140.dll"
+  File "${FILES_DEPS}\bin\msvcp140_1.dll"
   File "${FILES_DEPS}\bin\vcamp140.dll"
   File "${FILES_DEPS}\bin\vccorlib140.dll"
   File "${FILES_DEPS}\bin\vcomp140.dll"
