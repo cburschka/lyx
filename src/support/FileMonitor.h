@@ -20,6 +20,7 @@
 #include "support/signals.h"
 
 #include <memory>
+#include <map>
 
 #include <QFileSystemWatcher>
 #include <QObject>
