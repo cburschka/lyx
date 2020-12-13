@@ -38,7 +38,7 @@ namespace graphics {
 class Converter::Impl {
 public:
 	///
-	Impl(FileName const & doc_fname,
+	Impl(Converter const & parent, FileName const & doc_fname,
 	     FileName const & from_file, string const & to_file_base,
 	     string const & from_format, string const & to_format);
 
@@ -60,6 +60,8 @@ public:
 	sig finishedConversion;
 
 	///
+	Converter const & parent_;
+	///
 	FileName const doc_fname_;
 	///
 	string script_command_;
@@ -71,8 +73,6 @@ public:
 	bool valid_process_;
 	///
 	bool finished_;
-	///
-	Trackable tracker_;
 };
 
 
@@ -86,14 +86,8 @@ bool Converter::isReachable(string const & from_format_name,
 Converter::Converter(FileName const & doc_fname,
                      FileName const & from_file, string const & to_file_base,
                      string const & from_format, string const & to_format)
-	: pimpl_(new Impl(doc_fname, from_file, to_file_base, from_format, to_format))
+	: pimpl_(make_shared<Impl>(*this, doc_fname, from_file, to_file_base, from_format, to_format))
 {}
-
-
-Converter::~Converter()
-{
-	delete pimpl_;
-}
 
 
 void Converter::startConversion() const
@@ -123,10 +117,10 @@ static void build_script(string const & doc_fname,
 		  ostream & script);
 
 
-Converter::Impl::Impl(FileName const & doc_fname,
+Converter::Impl::Impl(Converter const & parent, FileName const & doc_fname,
 		      FileName const & from_file, string const & to_file_base,
 		      string const & from_format, string const & to_format)
-	: doc_fname_(doc_fname), valid_process_(false), finished_(false)
+	: parent_(parent), doc_fname_(doc_fname), valid_process_(false), finished_(false)
 {
 	LYXERR(Debug::GRAPHICS, "Converter c-tor:\n"
 		<< "doc_fname:        " << doc_fname
@@ -188,9 +182,12 @@ void Converter::Impl::startConversion()
 	}
 
 	ForkedCall::sigPtr ptr = ForkedCallQueue::add(script_command_);
-	ptr->connect(ForkedCall::slot([this](pid_t pid, int retval){
-				converted(pid, retval);
-			}).track_foreign(tracker_.p()));
+	weak_ptr<Converter::Impl> this_ = parent_.pimpl_;
+	ptr->connect([this_](pid_t pid, int retval){
+			if (auto p = this_.lock()) {
+				p->converted(pid, retval);
+			}
+		});
 }
 
 

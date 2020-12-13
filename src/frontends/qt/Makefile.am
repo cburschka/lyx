@@ -37,7 +37,7 @@ AM_CPPFLAGS += \
 	-I$(top_srcdir)/src/frontends \
 	-I$(top_srcdir)/images \
 	$(QT_INCLUDES) \
-	$(BOOST_INCLUDES) $(ICONV_INCLUDES) $(ZLIB_INCLUDES)
+	$(BOOST_INCLUDES) $(ICONV_INCLUDES) $(ZLIB_INCLUDES) $(NOD_INCLUDES)
 
 SOURCEFILES = \
 	ButtonPolicy.cpp \

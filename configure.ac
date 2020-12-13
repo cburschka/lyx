@@ -94,6 +94,7 @@ AC_SUBST(LIBPSAPI)
 AC_CHECK_LIB(gdi32, main)
 AC_CHECK_LIB(ole32, main)
 
+LYX_USE_INCLUDED_NOD
 LYX_USE_INCLUDED_BOOST
 
 ### we need to know the byte order for unicode conversions
@@ -337,6 +338,7 @@ AC_CONFIG_FILES([Makefile \
       3rdparty/dtl/Makefile \
       3rdparty/hunspell/Makefile \
       3rdparty/mythes/Makefile \
+      3rdparty/nod/Makefile \
       3rdparty/libiconv/Makefile \
       $ICONV_ICONV_H_IN \
       3rdparty/zlib/Makefile \

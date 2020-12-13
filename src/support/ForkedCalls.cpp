@@ -24,6 +24,8 @@
 #include "support/bind.h"
 
 #include <cerrno>
+#include <cstring>
+#include <list>
 #include <queue>
 #include <sstream>
 #include <utility>

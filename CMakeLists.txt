@@ -940,6 +940,8 @@ set(Lyx_Boost_Libraries)
 add_definitions(-DBOOST_USER_CONFIG=<config.h>)
 include_directories(${TOP_SRC_DIR}/3rdparty/boost)
 
+include_directories(${TOP_SRC_DIR}/3rdparty/nod)
+
 if(WIN32)
 	if(LYX_CONSOLE)
 		set(LYX_QTMAIN_LIBRARY)

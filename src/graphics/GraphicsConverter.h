@@ -19,6 +19,7 @@
 
 #include "support/signals.h"
 
+#include <memory>
 
 namespace lyx {
 
@@ -38,9 +39,6 @@ public:
 	Converter(support::FileName const & doc_fname,
 		  support::FileName const & from_file, std::string const & to_file_base,
 		  std::string const & from_format, std::string const & to_format);
-
-	/// Needed for the pimpl
-	~Converter();
 
 	/// We are explicit about when we begin the conversion process.
 	void startConversion() const;
@@ -70,7 +68,7 @@ private:
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;
 	/// The pointer never changes although *pimpl_'s contents may.
-	Impl * const pimpl_;
+	std::shared_ptr<Impl> const pimpl_;
 };
 
 } // namespace graphics

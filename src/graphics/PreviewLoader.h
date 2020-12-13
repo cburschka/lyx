@@ -18,11 +18,12 @@
 #ifndef PREVIEWLOADER_H
 #define PREVIEWLOADER_H
 
+#include "ColorCode.h"
 #include "support/signals.h"
 
 #include <QObject>
 
-#include "ColorCode.h"
+#include <memory>
 
 namespace lyx {
 
@@ -39,8 +40,6 @@ public:
 	 *  LaTeX file.
 	 */
 	PreviewLoader(Buffer const & buffer);
-	///
-	~PreviewLoader();
 
 	/** Is there an image already associated with this snippet of LaTeX?
 	 *  If so, returns a pointer to it, else returns 0.
@@ -108,7 +107,7 @@ private:
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;
 	/// The pointer never changes although *pimpl_'s contents may.
-	Impl * const pimpl_;
+	std::shared_ptr<Impl> const pimpl_;
 };
 
 } // namespace graphics

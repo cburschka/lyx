@@ -9,7 +9,7 @@ bin_PROGRAMS = lyxclient
 EXTRA_DIST = lyxclient.1in CMakeLists.txt
 
 AM_CPPFLAGS += -I$(srcdir)/.. \
-	$(BOOST_INCLUDES) $(ICONV_INCLUDES) $(ZLIB_INCLUDES)
+	$(BOOST_INCLUDES) $(ICONV_INCLUDES) $(ZLIB_INCLUDES) $(NOD_INCLUDES)
 
 lyxclient_LDADD = \
 	$(top_builddir)/src/support/liblyxsupport.a \

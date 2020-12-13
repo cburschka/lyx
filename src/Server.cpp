@@ -60,8 +60,12 @@
 #include <iostream>
 
 #ifdef _WIN32
-#include <io.h>
-#include <QCoreApplication>
+# include <io.h>
+# include <QCoreApplication>
+#else
+# ifdef HAVE_UNISTD_H
+#  include <unistd.h>
+# endif
 #endif
 #include <QThread>
 

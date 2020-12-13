@@ -416,6 +416,34 @@ if test x$GXX = xyes; then
 fi
 ])
 
+dnl Usage: LYX_USE_INCLUDED_NOD : select if the included nod should be used.
+AC_DEFUN([LYX_USE_INCLUDED_NOD],[
+	AC_MSG_CHECKING([whether to use included nod library])
+	AC_ARG_WITH(included-nod,
+	    [AS_HELP_STRING([--without-included-nod], [do not use the nod lib supplied with LyX, try to find one in the system directories - compilation will abort if nothing suitable is found])],
+	    [lyx_cv_with_included_nod=$withval],
+	    [lyx_cv_with_included_nod=yes])
+	AM_CONDITIONAL(USE_INCLUDED_NOD, test x$lyx_cv_with_included_nod = xyes)
+	AC_MSG_RESULT([$lyx_cv_with_included_nod])
+	if test x$lyx_cv_with_included_nod = xyes ; then
+	    lyx_included_libs="$lyx_included_libs nod"
+	    NOD_INCLUDES='-I$(top_srcdir)/3rdparty/nod'
+	else
+	    NOD_INCLUDES=
+	    AC_LANG_PUSH(C++)
+	    AC_MSG_CHECKING([for nod library])
+	    AC_LINK_IFELSE(
+		[AC_LANG_PROGRAM([#include <nod.hpp>],
+		    [nod::scoped_connection conn;])],
+		[AC_MSG_RESULT([yes])],
+		[AC_MSG_RESULT([no])
+		AC_MSG_ERROR([cannot find suitable nod library (do not use --without-included-nod)])
+	    ])
+	    AC_LANG_POP(C++)
+	fi
+	AC_SUBST(NOD_INCLUDES)
+])
+
 dnl Usage: LYX_USE_INCLUDED_BOOST : select if the included boost should
 dnl        be used.
 AC_DEFUN([LYX_USE_INCLUDED_BOOST],[

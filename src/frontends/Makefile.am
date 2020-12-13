@@ -7,7 +7,7 @@ DIST_SUBDIRS = qt .
 noinst_LIBRARIES = liblyxfrontends.a
 
 AM_CPPFLAGS += -I$(srcdir)/.. \
-	$(BOOST_INCLUDES) $(ICONV_INCLUDES) $(ZLIB_INCLUDES)
+	$(BOOST_INCLUDES) $(ICONV_INCLUDES) $(ZLIB_INCLUDES) $(NOD_INCLUDES)
 
 liblyxfrontends_a_SOURCES = \
 	alert.h \

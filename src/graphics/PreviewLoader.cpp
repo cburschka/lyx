@@ -226,8 +226,6 @@ private:
 	///
 	QTimer * delay_refresh_;
 	///
-	Trackable trackable_;
-	///
 	bool finished_generating_;
 
 	/// We don't own this
@@ -244,14 +242,8 @@ lyx::Converter const * PreviewLoader::Impl::pconverter_;
 //
 
 PreviewLoader::PreviewLoader(Buffer const & b)
-	: pimpl_(new Impl(*this, b))
+	: pimpl_(make_shared<Impl>(*this, b))
 {}
-
-
-PreviewLoader::~PreviewLoader()
-{
-	delete pimpl_;
-}
 
 
 PreviewImage const * PreviewLoader::preview(string const & latex_snippet) const
@@ -721,9 +713,12 @@ void PreviewLoader::Impl::startLoading(bool wait)
 
 	// Initiate the conversion from LaTeX to bitmap images files.
 	ForkedCall::sigPtr convert_ptr = make_shared<ForkedCall::sig>();
-	convert_ptr->connect(ForkedProcess::slot([this](pid_t pid, int retval){
-				finishedGenerating(pid, retval);
-			}).track_foreign(trackable_.p()));
+	weak_ptr<PreviewLoader::Impl> this_ = parent_.pimpl_;
+	convert_ptr->connect([this_](pid_t pid, int retval){
+			if (auto p = this_.lock()) {
+				p->finishedGenerating(pid, retval);
+			}
+		});
 
 	ForkedCall call(buffer_.filePath());
 	int ret = call.startScript(command, convert_ptr);

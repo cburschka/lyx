@@ -21,6 +21,7 @@
 #include "support/lassert.h"
 #include "support/Timeout.h"
 
+#include <list>
 #include <queue>
 #include <memory>
 #include <set>
