@@ -25,7 +25,7 @@
 
 Format 89
 
-Input theorem-counters-bytype.inc
+Input theorems-counters-bytype.inc
 
 Counter theorem
 	Within chapter
