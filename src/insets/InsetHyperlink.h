@@ -32,8 +32,6 @@ public:
 	///
 	bool hasSettings() const override { return true; }
 	///
-	bool forceLTR(OutputParams const &) const override { return true; }
-	///
 	bool isInToc() const override { return true; }
 	///
 	void toString(odocstream &) const override;
