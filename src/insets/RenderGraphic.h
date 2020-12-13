@@ -31,7 +31,7 @@ public:
 	/// compute the size of the object returned in dim
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	/// draw inset
-	void draw(PainterInfo & pi, int x, int y) const override;
+	void draw(PainterInfo & pi, int x, int y, bool const darkmode = false) const override;
 
 	/// Refresh the info about which file to display and how to display it.
 	void update(graphics::Params const & params);

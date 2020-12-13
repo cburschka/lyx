@@ -52,7 +52,7 @@ public:
 	/// Compute the size of the object, returned in dim
 	void metrics(MetricsInfo &, Dimension & dim) const override;
 	///
-	void draw(PainterInfo & pi, int x, int y) const override;
+	void draw(PainterInfo & pi, int x, int y, bool const darkmode = false) const override;
 
 	/** Find the PreviewLoader and add a LaTeX snippet to it.
 	 *  Do not start the loading process.
@@ -112,7 +112,7 @@ class RenderMonitoredPreview : public RenderPreview {
 public:
 	explicit RenderMonitoredPreview(Inset const *);
 	///
-	void draw(PainterInfo & pi, int x, int y) const override;
+	void draw(PainterInfo & pi, int x, int y, bool const darkmode = false) const override;
 	///
 	void setAbsFile(support::FileName const & file);
 	///

@@ -30,7 +30,7 @@ public:
 	/// compute the size of the object returned in dim
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	/// draw inset and update (xo, yo)-cache
-	void draw(PainterInfo & pi, int x, int y) const override;
+	void draw(PainterInfo & pi, int x, int y, bool const darkmode = false) const override;
 
 	/// Provide the text for the button
 	void update(docstring const &, bool editable,

@@ -57,7 +57,7 @@ public:
 	void point(int, int, Color) override {}
 
 	/// draw an image from the image cache
-	void image(int, int, int, int, graphics::Image const &) override {}
+	void image(int, int, int, int, graphics::Image const &, bool) override {}
 
 	/// draw a string
 	void text(int, int, docstring const &, FontInfo const &) override {}

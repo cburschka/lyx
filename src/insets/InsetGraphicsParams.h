@@ -63,6 +63,10 @@ public:
 	/// any userdefined special command
 	std::string special;
 
+	/// Does this need to be handled specifically
+	/// in dark mode? (use by InsetInfo)
+	bool darkModeSensitive;
+
 	///
 	InsetGraphicsParams();
 	///

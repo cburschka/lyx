@@ -54,7 +54,7 @@ void RenderButton::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void RenderButton::draw(PainterInfo & pi, int x, int y) const
+void RenderButton::draw(PainterInfo & pi, int x, int y, bool) const
 {
 	// Draw it as a box with the LaTeX text
 	FontInfo font = inherit_font_ ? pi.base.font : sane_font;

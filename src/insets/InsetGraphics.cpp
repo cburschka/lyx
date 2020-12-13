@@ -293,7 +293,7 @@ void InsetGraphics::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetGraphics::draw(PainterInfo & pi, int x, int y) const
 {
-	graphic_->draw(pi, x, y);
+	graphic_->draw(pi, x, y, params_.darkModeSensitive);
 }
 
 

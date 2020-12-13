@@ -104,7 +104,7 @@ public:
 
 	/// draw an image from the image cache
 	void image(int x, int y, int w, int h,
-		lyx::graphics::Image const & image) override;
+		lyx::graphics::Image const & image, bool const darkmode = false) override;
 
 	/// draw a string at position x, y (y is the baseline).
 	void text(int x, int y, docstring const & str, FontInfo const & f) override;

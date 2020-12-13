@@ -233,14 +233,24 @@ void GuiPainter::arc(int x, int y, unsigned int w, unsigned int h,
 }
 
 
-void GuiPainter::image(int x, int y, int w, int h, graphics::Image const & i)
+void GuiPainter::image(int x, int y, int w, int h, graphics::Image const & i, bool const darkmode)
 {
 	graphics::GuiImage const & qlimage =
 		static_cast<graphics::GuiImage const &>(i);
 
 	fillRectangle(x, y, w, h, Color_graphicsbg);
 
-	QImage const & image = qlimage.image();
+	QImage image = qlimage.image();
+	
+	QPalette palette = QPalette();
+	QColor text_color = palette.color(QPalette::Active, QPalette::WindowText);
+	QColor bg_color = palette.color(QPalette::Active, QPalette::Window);
+	// guess whether we are in dark mode
+	if (darkmode && text_color.black() < bg_color.black())
+		// FIXME this is only a cheap approximation
+		// Ideally, replace colors as in GuiApplication::prepareForDarkmode()
+		image.invertPixels();
+
 	QRectF const drect = QRectF(x, y, w, h);
 	QRectF const srect = QRectF(0, 0, image.width(), image.height());
 	// Bilinear filtering is needed on a rare occasion for instant previews when

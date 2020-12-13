@@ -74,6 +74,7 @@ void InsetGraphicsParams::init()
 
 	bbox = graphics::BoundingBox();	// bounding box
 	clip = false;			// clip image
+	darkModeSensitive = false;	// dark mode dependency (InsetInfo)
 
 	rotateAngle = "0";		// angle of rotation in degrees
 	rotateOrigin.erase();		// Origin of rotation
@@ -96,6 +97,7 @@ void InsetGraphicsParams::copy(InsetGraphicsParams const & params)
 
 	bbox = params.bbox;
 	clip = params.clip;
+	darkModeSensitive = params.darkModeSensitive;
 
 	rotateAngle = params.rotateAngle;
 	rotateOrigin = params.rotateOrigin;
@@ -119,6 +121,7 @@ bool operator==(InsetGraphicsParams const & left,
 
 	    left.bbox == right.bbox &&
 	    left.clip == right.clip &&
+	    left.darkModeSensitive == right.darkModeSensitive &&
 
 	    left.rotateAngle == right.rotateAngle &&
 	    left.rotateOrigin == right.rotateOrigin &&

@@ -1078,6 +1078,10 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype, bool cons
 		igp.lyxscale = percent_scale;
 		igp.scale = string();
 		igp.width = Length(1, Length::EM);
+		if (contains(file.absoluteFilePath(), from_ascii("math"))
+		    || contains(file.absoluteFilePath(), from_ascii("ert-insert"))
+		    || suffixIs(file.onlyPath().absoluteFilePath(), from_ascii("ipa")))
+			igp.darkModeSensitive = true;
 		inset->setParams(igp);
 		clear();
 		Font const f(inherit_font, params_.lang);

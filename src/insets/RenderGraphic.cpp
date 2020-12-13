@@ -187,7 +187,7 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
+void RenderGraphic::draw(PainterInfo & pi, int x, int y, bool const darkmode) const
 {
 	// This will draw the graphics. If the graphics has not been
 	// loaded yet, we draw just a rectangle.
@@ -197,7 +197,7 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 	int const h = dim_.height();
 
 	if (displayGraphic(params_) && readyToDisplay(loader_))
-		pi.pain.image(x1, y1, w, h, *loader_.image());
+		pi.pain.image(x1, y1, w, h, *loader_.image(), darkmode);
 
 	else {
 		Color c = pi.change.changed() ? pi.change.color() : Color_foreground;

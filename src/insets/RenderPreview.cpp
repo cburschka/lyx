@@ -154,7 +154,7 @@ void RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void RenderPreview::draw(PainterInfo & pi, int x, int y) const
+void RenderPreview::draw(PainterInfo & pi, int x, int y, bool const) const
 {
 	LBUFERR(pi.base.bv);
 
@@ -280,7 +280,7 @@ void RenderMonitoredPreview::setAbsFile(FileName const & file)
 }
 
 
-void RenderMonitoredPreview::draw(PainterInfo & pi, int x, int y) const
+void RenderMonitoredPreview::draw(PainterInfo & pi, int x, int y, bool const) const
 {
 	RenderPreview::draw(pi, x, y);
 	startMonitoring();
