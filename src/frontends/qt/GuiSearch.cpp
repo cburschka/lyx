@@ -86,8 +86,8 @@ void GuiSearch::showEvent(QShowEvent * e)
 
 void GuiSearch::findChanged()
 {
+	findPB->setEnabled(!findCO->currentText().isEmpty());
 	bool const replace = !findCO->currentText().isEmpty() && !isBufferReadonly();
-	findPB->setEnabled(replace);
 	replacePB->setEnabled(replace);
 	replaceallPB->setEnabled(replace);
 	replaceLA->setEnabled(replace);
