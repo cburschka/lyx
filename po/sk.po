@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-12-08 10:52+0100\n"
-"PO-Revision-Date: 2020-12-08 10:00+0000\n"
+"POT-Creation-Date: 2020-12-12 21:24+0100\n"
+"PO-Revision-Date: 2020-12-12 20:34+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -28048,6 +28048,18 @@ msgid "LaTeX text"
 msgstr "LaTeX: text"
 
 #: src/Color.cpp:257
+msgid "Text label 1"
+msgstr "Označenie textu 1"
+
+#: src/Color.cpp:258
+msgid "Text label 2"
+msgstr "Označenie textu 2"
+
+#: src/Color.cpp:259
+msgid "Text label 3"
+msgstr "Označenie textu 3"
+
+#: src/Color.cpp:257
 msgid "inline completion"
 msgstr "priame doplňovanie"
 
@@ -30850,9 +30862,9 @@ msgstr "Končím."
 msgid "Opening help file %1$s..."
 msgstr "Otváram súbor s pomocníkom %1$s…"
 
-#: src/frontends/qt/GuiApplication.cpp:1741
-msgid "Syntax: set-color <lyx_name> <x11_name>"
-msgstr "Syntax: set-color <lyx_name> <x11_name>"
+#: src/frontends/qt/GuiApplication.cpp:1814
+msgid "Syntax: set-color <lyx_name> <x11_name> <x11_darkname>"
+msgstr "Syntax: set-color <názov_v_lyx-e> <názov_v_x11> <tmavý_názov_v_x11>"
 
 #: src/frontends/qt/GuiApplication.cpp:1757
 #, c-format
