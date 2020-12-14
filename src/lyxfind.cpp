@@ -8,6 +8,7 @@
  * \author Jürgen Vigna
  * \author Alfredo Braunstein
  * \author Tommaso Cucinotta
+ * \author Kornel Benko
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -943,6 +944,10 @@ static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions co
 					    AS_STR_INSETS | AS_STR_SKIPDELETE | AS_STR_PLAINTEXT,
 					    &runparams);
 		}
+		// Even in ignore-format we have to remove "\text{}" parts
+		string t = to_utf8(str);
+		while (regex_replace(t, t, "\\\\text\\{([^\\}]*)\\}", "$1"));
+		str = from_utf8(t);
 	}
 	return str;
 }
@@ -955,7 +960,13 @@ static size_t identifyLeading(string const & s)
 	// @TODO Support \item[text]
 	// Kornel: Added textsl, textsf, textit, texttt and noun
 	// + allow to search for colored text too
-	while (regex_replace(t, t, "^\\\\(((footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge|emph|noun|minisec|text(bf|md|sl|sf|it|tt))|((textcolor|foreignlanguage|latexenvironment)\\{[a-z]+\\*?\\})|(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part|chapter)\\*?)\\{", "")
+	while (regex_replace(t, t, "^\\\\(("
+	                     "(author|title|subtitle|subject|publishers|dedication|uppertitleback|lowertitleback|extratitle|"
+	                       "lyxaddress|lyxrightaddress|"
+	                       "footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge|"
+	                       "emph|noun|minisec|text(bf|md|sl|sf|it|tt))|"
+	                     "((textcolor|foreignlanguage|latexenvironment)\\{[a-z]+\\*?\\})|"
+	                     "(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part|chapter)\\*?)\\{", "")
 	       || regex_replace(t, t, "^\\$", "")
 	       || regex_replace(t, t, "^\\\\\\[", "")
 	       || regex_replace(t, t, "^ ?\\\\item\\{[a-z]+\\}", "")
@@ -1056,6 +1067,8 @@ class KeyInfo {
     isIgnored,
     /* like \lettrine[lines=5]{}{} */
     cleanToStart,
+    // like isStandard, but always remove head
+    headRemove,
     /* End of arguments marker for lettrine,
      * so that they can be ignored */
     endArguments
@@ -1142,11 +1155,15 @@ void Intervall::setForDefaultLang(KeyInfo const & defLang) const
   // Enable the use of first token again
   if (ignoreidx >= 0) {
     int value = defLang._tokenstart + defLang._tokensize;
+    int borderidx = 0;
+    if (hasTitle) {
+      borderidx = 1;
+    }
     if (value > 0) {
-      if (borders[0].low < value)
-        borders[0].low = value;
-      if (borders[0].upper < value)
-        borders[0].upper = value;
+      if (borders[borderidx].low < value)
+        borders[borderidx].low = value;
+      if (borders[borderidx].upper < value)
+        borders[borderidx].upper = value;
     }
   }
 }
@@ -1368,7 +1385,7 @@ void Intervall::removeAccents()
 {
   if (accents.empty())
     buildAccentsMap();
-  static regex const accre("\\\\(([\\S]|grave|breve|lyxmathsym|text|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot|ogonek|cedilla|subring|textsubring|subhat|textsubcircum|subtilde|textsubtilde|dgrave|textdoublegrave|rcap|textroundcap|slashed)\\{[^\\{\\}]+\\}|(i|imath|jmath|cdot|[a-z]+space)(?![a-zA-Z]))");
+  static regex const accre("\\\\(([\\S]|grave|breve|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot|ogonek|cedilla|subring|textsubring|subhat|textsubcircum|subtilde|textsubtilde|dgrave|textdoublegrave|rcap|textroundcap|slashed)\\{[^\\{\\}]+\\}|(i|imath|jmath|cdot|[a-z]+space)(?![a-zA-Z]))");
   smatch sub;
   for (sregex_iterator itacc(par.begin(), par.end(), accre), end; itacc != end; ++itacc) {
     sub = *itacc;
@@ -1478,12 +1495,11 @@ class LatexInfo {
       return -1;
     }
     if (entries_[0].keytype == KeyInfo::isTitle) {
+      interval_.hasTitle = true;
       if (! entries_[0].disabled) {
-        interval_.hasTitle = true;
         interval_.titleValue = entries_[0].head;
       }
       else {
-        interval_.hasTitle = false;
         interval_.titleValue = "";
       }
       removeHead(entries_[0]);
@@ -1708,6 +1724,20 @@ void LatexInfo::buildEntries(bool isPatternString)
         }
       }
     };
+    if (keys.find(key) != keys.end()) {
+      if (keys[key].keytype == KeyInfo::headRemove) {
+        KeyInfo found1 = keys[key];
+        found1.disabled = true;
+        found1.head = "\\" + key + "{";
+        found1._tokenstart = sub.position(size_t(0));
+        found1._tokensize = found1.head.length();
+        found1._dataStart = found1._tokenstart + found1.head.length();
+        int endpos = interval_.findclosing(found1._dataStart, interval_.par.length(), '{', '}', 1);
+        found1._dataEnd = endpos;
+        removeHead(found1);
+        continue;
+      }
+    }
     if (evaluatingRegexp) {
       if (sub.str(1).compare("endregexp") == 0) {
         evaluatingRegexp = false;
@@ -1979,6 +2009,8 @@ void LatexInfo::buildKeys(bool isPatternString)
   static bool keysBuilt = false;
   if (keysBuilt && !isPatternString) return;
 
+  // Keys to ignore in any case
+  makeKey("text|textcyrillic|lyxmathsym", KeyInfo(KeyInfo::headRemove, 1, true), true);
   // Known standard keys with 1 parameter.
   // Split is done, if not at start of region
   makeKey("textsf|textss|texttt", KeyInfo(KeyInfo::isStandard, 1, ignoreFormats.getFamily()), isPatternString);
@@ -2291,13 +2323,14 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       }
       break;
     }
-    case KeyInfo::endArguments:
+    case KeyInfo::endArguments: {
       // Remove trailing '{}' too
       actual._dataStart += 1;
       actual._dataEnd += 1;
       interval_.addIntervall(actual._tokenstart, actual._dataEnd+1);
       nextKeyIdx = getNextKey();
       break;
+    }
     case KeyInfo::noMain:
       // fall through
     case KeyInfo::isStandard: {
@@ -2481,7 +2514,8 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       break;
     }
     case KeyInfo::invalid:
-      // This cannot happen, already handled
+    case KeyInfo::headRemove:
+      // These two cases cannot happen, already handled
       // fall through
     default: {
       // LYXERR(Debug::INFO, "Unhandled keytype");
