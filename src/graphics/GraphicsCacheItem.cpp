@@ -119,7 +119,7 @@ public:
 	ImageStatus status_;
 
 	/// This signal is emitted when the image loading status changes.
-	signals2::signal<void()> statusChanged;
+	signal<void()> statusChanged;
 
 	///
 	unique_ptr<Converter> converter_;
@@ -195,7 +195,7 @@ ImageStatus CacheItem::status() const
 }
 
 
-signals2::connection CacheItem::connect(slot_type const & slot) const
+connection CacheItem::connect(slot_type const & slot) const
 {
 	return pimpl_->statusChanged.connect(slot);
 }

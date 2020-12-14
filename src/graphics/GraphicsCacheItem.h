@@ -81,9 +81,9 @@ public:
 	/** Connect and you'll be informed when the loading status of the image
 	 *  changes.
 	 */
-	typedef signals2::signal<void()>::slot_type slot_type;
+	typedef signal<void()>::slot_type slot_type;
 	///
-	signals2::connection connect(slot_type const &) const;
+	connection connect(slot_type const &) const;
 
 private:
 	/// noncopyable

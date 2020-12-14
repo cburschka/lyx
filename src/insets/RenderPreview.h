@@ -101,7 +101,7 @@ private:
 	/** Store the connection to the preview loader so that we connect
 	 *  only once.
 	 */
-	signals2::scoped_connection ploader_connection_;
+	scoped_connection ploader_connection_;
 
 	/// Inform the core that the inset has changed.
 	Inset const * parent_;
@@ -122,9 +122,9 @@ public:
 
 	/// Connect and you'll be informed when the file changes.
 	/// Do not forget to track objects used by the slot.
-	typedef signals2::signal<void()> sig;
+	typedef signal<void()> sig;
 	typedef sig::slot_type slot;
-	signals2::connection connect(slot const & slot);
+	connection connect(slot const & slot);
 
 	/// equivalent to dynamic_cast
 	RenderMonitoredPreview * asMonitoredPreview() override { return this; }

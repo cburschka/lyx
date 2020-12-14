@@ -192,9 +192,9 @@ public:
 	/// We modify a local copy of the image once it is loaded.
 	ImagePtr image_;
 	/// This signal is emitted when the image loading status changes.
-	signals2::signal<void()> signal_;
+	signal<void()> signal_;
 	/// The connection of the signal statusChanged
-	signals2::scoped_connection connection_;
+	scoped_connection connection_;
 
 	double displayPixelRatio() const
 	{
@@ -364,7 +364,7 @@ void Loader::setDisplayPixelRatio(double scale)
 }
 
 
-signals2::connection Loader::connect(slot const & slot) const
+connection Loader::connect(slot const & slot) const
 {
 	return pimpl_->signal_.connect(slot);
 }

@@ -180,7 +180,7 @@ public:
 	void refreshPreviews();
 
 	/// Emit this signal when an image is ready for display.
-	signals2::signal<void(PreviewImage const &)> imageReady;
+	signal<void(PreviewImage const &)> imageReady;
 
 	Buffer const & buffer() const { return buffer_; }
 
@@ -282,7 +282,7 @@ void PreviewLoader::refreshPreviews()
 }
 
 
-signals2::connection PreviewLoader::connect(slot const & slot) const
+connection PreviewLoader::connect(slot const & slot) const
 {
 	return pimpl_->imageReady.connect(slot);
 }

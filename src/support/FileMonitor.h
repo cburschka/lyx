@@ -130,10 +130,10 @@ class FileMonitor : public QObject
 public:
 	FileMonitor(std::shared_ptr<FileMonitorGuard> monitor);
 
-	typedef signals2::signal<void(bool)> sig;
+	typedef signal<void(bool)> sig;
 	typedef sig::slot_type slot;
 	/// Connect and you'll be informed when the file has changed.
-	signals2::connection connect(slot const &);
+	connection connect(slot const &);
 	/// absolute path being tracked
 	std::string const & filename() { return monitor_->filename(); }
 	/// Make sure the good file is being monitored, after e.g. a move or a

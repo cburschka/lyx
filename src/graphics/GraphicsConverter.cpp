@@ -55,7 +55,7 @@ public:
 	/** At the end of the conversion process inform the outside world
 	 *  by emitting a signal.
 	 */
-	typedef signals2::signal<void(bool)> sig;
+	typedef signal<void(bool)> sig;
 	///
 	sig finishedConversion;
 
@@ -96,7 +96,7 @@ void Converter::startConversion() const
 }
 
 
-signals2::connection Converter::connect(slot_type const & slot) const
+connection Converter::connect(slot_type const & slot) const
 {
 	return pimpl_->finishedConversion.connect(slot);
 }

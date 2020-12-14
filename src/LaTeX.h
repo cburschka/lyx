@@ -163,7 +163,7 @@ public:
 	};
 
 	/// This signal emits an informative message
-	signals2::signal<void(docstring)> message;
+	signal<void(docstring)> message;
 
 
 	/**

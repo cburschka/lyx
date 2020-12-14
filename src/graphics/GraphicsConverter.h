@@ -48,10 +48,10 @@ public:
 	 *  If the conversion is successful, then the listener is passed \c true.
 	 *  The connection is closed when this is destroyed.
 	 */
-	typedef signals2::signal<void(bool)> sig_type;
+	typedef signal<void(bool)> sig_type;
 	typedef sig_type::slot_type slot_type;
 	///
-	signals2::connection connect(slot_type const &) const;
+	connection connect(slot_type const &) const;
 
 	/** If the conversion is successful, this returns the name of the
 	 *  resulting file.

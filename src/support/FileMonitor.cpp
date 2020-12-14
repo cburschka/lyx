@@ -188,7 +188,7 @@ void FileMonitor::connectToFileMonitorGuard()
 }
 
 
-signals2::connection FileMonitor::connect(slot const & slot)
+connection FileMonitor::connect(slot const & slot)
 {
 	return fileChanged_.connect(slot);
 }

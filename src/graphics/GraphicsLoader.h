@@ -90,10 +90,10 @@ public:
 	/** Connect and you'll be informed when the loading status of the image
 	 *  changes.
 	 */
-	typedef signals2::signal<void()> sig;
+	typedef signal<void()> sig;
 	typedef sig::slot_type slot;
 	///
-	signals2::connection connect(slot const &) const;
+	connection connect(slot const &) const;
 
 	/** The loaded image with Pixmap set.
 	 *  If the Pixmap is not yet set (see status() for why...), returns 0.

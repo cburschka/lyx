@@ -53,7 +53,7 @@ public:
 	 *  we can return easily to C++ methods, rather than just globally
 	 *  accessible functions.
 	 */
-	typedef signals2::signal<void(pid_t, int)> sig;
+	typedef signal<void(pid_t, int)> sig;
 	typedef sig::slot_type slot;
 
 	/** The signal is connected in the calling routine to the desired

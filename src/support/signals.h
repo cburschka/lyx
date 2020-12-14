@@ -18,7 +18,9 @@
 
 namespace lyx {
 
-namespace signals2 = ::nod;
+using nod::signal;
+using nod::connection;
+using nod::scoped_connection;
 
 namespace support {
 

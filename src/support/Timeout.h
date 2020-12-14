@@ -40,7 +40,7 @@ public:
 	/// restart the timer
 	void restart();
 	/// signal emitted on timer expiry
-	signals2::signal<void()> timeout;
+	signal<void()> timeout;
 	/// emit the signal
 	void emit();
 	/// set the timer type

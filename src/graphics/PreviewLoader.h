@@ -76,10 +76,10 @@ public:
 	 *  has been created and is ready for loading through
 	 *  lyx::graphics::PreviewImage::image().
 	 */
-	typedef signals2::signal<void(PreviewImage const &)> sig;
+	typedef signal<void(PreviewImage const &)> sig;
 	typedef sig::slot_type slot;
 	///
-	signals2::connection connect(slot const &) const;
+	connection connect(slot const &) const;
 
 	/** When PreviewImage has finished loading the image file into memory,
 	 *  it tells the PreviewLoader to tell the outside world
