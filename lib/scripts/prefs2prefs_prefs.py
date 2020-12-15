@@ -455,6 +455,16 @@ def rename_cyrillic_kmap_files(line):
 	line = line.replace('"koi8-u"', '"ukrainian"')
 	return (True, line)
 
+def add_dark_color(line):
+	if not line.lower().startswith("\\set_color "):
+		return no_match
+	colre = re.compile(r'^\\set_color\s+(.*)\s+(.*)"', re.IGNORECASE)
+	m = colre.match(line)
+	if not m:
+		return no_match
+	line += " " + m.group(2) + '"'
+	return (True, line)
+
 # End conversions for LyX 2.3 to 2.4
 ####################################
 
@@ -504,5 +514,5 @@ conversions = [
 	[ 32, []],
 	[ 33, []],
 	[ 34, [rename_cyrillic_kmap_files]],
-	[ 35, []]
+	[ 35, [add_dark_color]]
 ]
