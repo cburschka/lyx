@@ -1129,7 +1129,7 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 {
 	char_type const c = owner_->getUChar(bparams, runparams, i);
 
-	if (style.pass_thru || runparams.pass_thru
+	if (style.pass_thru || runparams.pass_thru || runparams.for_search
 	    || contains(style.pass_thru_chars, c)
 	    || contains(runparams.pass_thru_chars, c)) {
 		if (c != '\0') {

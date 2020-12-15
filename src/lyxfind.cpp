@@ -944,9 +944,9 @@ static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions co
 					    AS_STR_INSETS | AS_STR_SKIPDELETE | AS_STR_PLAINTEXT,
 					    &runparams);
 		}
-		// Even in ignore-format we have to remove "\text{}" parts
+		// Even in ignore-format we have to remove "\text{}, \lyxmathsym{}" parts
 		string t = to_utf8(str);
-		while (regex_replace(t, t, "\\\\text\\{([^\\}]*)\\}", "$1"));
+		while (regex_replace(t, t, "\\\\(text|lyxmathsym)\\{([^\\}]*)\\}", "$2"));
 		str = from_utf8(t);
 	}
 	return str;
@@ -1320,8 +1320,6 @@ static void buildAccentsMap()
   accents["negmedspace"]   = u8"\uf0005";
   accents["thickspace"]    = u8"\uf0006";
   accents["negthickspace"] = u8"\uf0007";
-  accents["lyxmathsym{ß}"] = "ß";
-  accents["text{ß}"] = "ß";
   accents["ddot{\\imath}"] = "ï";
   buildaccent("ddot", "aAeEhHiIioOtuUwWxXyY",
                       "äÄëËḧḦïÏïöÖẗüÜẅẄẍẌÿŸ");	// umlaut
@@ -1358,7 +1356,7 @@ static void buildAccentsMap()
   buildaccent("ogonek|k", "AaEeIiUuOo",
                           "ĄąĘęĮįŲųǪǫ");	// ogonek
   buildaccent("cedilla|c", "CcGgKkLlNnRrSsTtEeDdHh",
-                           "ÇçĢĢĶķĻļŅņŖŗŞşŢţȨȩḐḑḨḩ");	// cedilla
+                           "ÇçĢģĶķĻļŅņŖŗŞşŢţȨȩḐḑḨḩ");	// cedilla
   buildaccent("subring|textsubring", "Aa",
                                      "Ḁḁ");	// subring
   buildaccent("subhat|textsubcircum", "DdEeLlNnTtUu",
