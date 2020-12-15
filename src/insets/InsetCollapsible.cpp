@@ -223,6 +223,7 @@ void InsetCollapsible::metrics(MetricsInfo & mi, Dimension & dim) const
 		int d = 0;
 		theFontMetrics(font).rectText(buttonLabel(bv), w, a, d);
 		dim.des += a + d;
+		dim.wid = max(dim.wid, w);
 		break;
 		}
 	case TopButton:
