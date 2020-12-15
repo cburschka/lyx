@@ -87,7 +87,7 @@ struct SpellcheckerWidget::Private
 		return false;
 	}
 	void canCheck() { incheck_ = false; }
-	/// check for wrap around
+	/// set if checking already started from the beginning
 	void wrapAround(bool flag) {
 		wrap_around_ = flag;
 		if (flag) {
@@ -103,7 +103,9 @@ struct SpellcheckerWidget::Private
 	DocIterator const cursor() const;
 	/// status checks
 	bool isCurrentBuffer(DocIterator const & cursor) const;
+	/// return true if we ended a complete cycle
 	bool isWrapAround(DocIterator const & cursor) const;
+	/// returns true if we did already start from the beginning
 	bool isWrapAround() const { return wrap_around_; }
 	bool atLastPos(DocIterator const & cursor) const;
 	/// validate the cached doc iterators
@@ -129,7 +131,7 @@ struct SpellcheckerWidget::Private
 	DocIterator end_;
 	///
 	bool incheck_;
-	///
+	/// Did we already start from the beginning?
 	bool wrap_around_;
 };
 
