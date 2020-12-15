@@ -490,8 +490,6 @@ void SpellcheckerWidget::on_replaceAllPB_clicked()
 	LYXERR(Debug::GUI, "Replace all (" << replacement << ")");
 	dispatch(FuncRequest(LFUN_WORD_REPLACE, datastring));
 	d->forward();
-	// replace all wraps around
-	d->wrapAround(true);
 	d->check(); // continue spellchecking
 	d->canCheck();
 }
