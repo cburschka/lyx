@@ -55,8 +55,6 @@ private:
 	///
 	class Impl;
 	///
-	friend class Impl;
-	///
 	Impl * const pimpl_;
 	/// one-shot or repeating
 	Type type;
