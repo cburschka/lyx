@@ -29,7 +29,7 @@ class SpellcheckerWidget : public QTabWidget
 	Q_OBJECT
 
 public:
-	SpellcheckerWidget(GuiView * gv, DockView * dv, QWidget * parent = 0);
+	SpellcheckerWidget(GuiView * gv, DockView * dv, QWidget * parent = nullptr);
 	~SpellcheckerWidget();
 	///
 	void updateView();
