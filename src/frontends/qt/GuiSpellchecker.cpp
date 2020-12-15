@@ -97,7 +97,7 @@ struct SpellcheckerWidget::Private
 	/// test for existing association with a document buffer
 	/// and test for already active check
 	bool disabled() {
-		return gv_->documentBufferView() == 0 || inCheck();
+		return gv_->documentBufferView() == nullptr || inCheck();
 	}
 	/// the cursor position of the buffer view
 	DocIterator const cursor() const;
@@ -407,7 +407,7 @@ void SpellcheckerWidget::on_languageCO_activated(int index)
 bool SpellcheckerWidget::initialiseParams(std::string const &)
 {
 	BufferView * bv = d->gv_->documentBufferView();
-	if (bv == 0)
+	if (bv == nullptr)
 		return false;
 	std::set<Language const *> langs =
 		bv->buffer().masterBuffer()->getLanguages();
@@ -629,7 +629,7 @@ GuiSpellchecker::GuiSpellchecker(GuiView & parent,
 
 GuiSpellchecker::~GuiSpellchecker()
 {
-	setFocusProxy(0);
+	setFocusProxy(nullptr);
 	delete widget_;
 }
 
