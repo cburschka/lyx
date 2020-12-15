@@ -458,11 +458,11 @@ def rename_cyrillic_kmap_files(line):
 def add_dark_color(line):
 	if not line.lower().startswith("\\set_color "):
 		return no_match
-	colre = re.compile(r'^\\set_color\s+(.*)\s+(.*)"', re.IGNORECASE)
+	colre = re.compile(r'^\\set_color\s+("[^"]+")\s+("[^"]+")\s*$', re.IGNORECASE)
 	m = colre.match(line)
 	if not m:
 		return no_match
-	line += " " + m.group(2) + '"'
+	line += " " + m.group(2)
 	return (True, line)
 
 # End conversions for LyX 2.3 to 2.4
