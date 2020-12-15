@@ -254,7 +254,7 @@ ColorSet::ColorSet()
 	{ Color_foreground, N_("text"), "foreground", black, Linen, "foreground" },
 	{ Color_selection, N_("selection"), "selection", "#add8e6", "#add8e6", "selection" },
 	{ Color_selectiontext, N_("selected text"), "selectiontext", black, black, "selectiontext" },
-	{ Color_latex, N_("LaTeX text"), "latex", DarkRed, "#f2af7d", "latex" },
+	{ Color_latex, N_("LaTeX text"), "latex", DarkRed, "#D66613", "latex" },
 	{ Color_textlabel1, N_("Text label 1"), "textlabel1", blue, "#86a4ff", "textlabel1" },
 	{ Color_textlabel2, N_("Text label 2"), "textlabel2", Green, green, "textlabel2" },
 	{ Color_textlabel3, N_("Text label 3"), "textlabel3", magenta, magenta, "textlabel3" },
