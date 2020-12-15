@@ -152,6 +152,8 @@ SOURCEFILES = \
 NOMOCHEADER = \
 	ButtonController.h \
 	ColorCache.h \
+	Dialog.h \
+	DialogFactory.h \
 	FileDialog.h \
 	GuiFontExample.h \
 	GuiFontLoader.h \
@@ -171,8 +173,6 @@ MOCHEADER = \
 	BulletsModule.h \
 	CategorizedCombo.h \
 	CustomizedWidgets.h \
-	Dialog.h \
-	DialogFactory.h \
 	DialogView.h \
 	DockView.h \
 	EmptyTable.h \
