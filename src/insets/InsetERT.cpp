@@ -171,8 +171,6 @@ docstring const InsetERT::buttonLabel(BufferView const & bv) const
 {
 	// U+1F512 LOCK
 	docstring const locked = tempfile_ ? docstring(1, 0x1F512) : docstring();
-	if (decoration() == InsetDecoration::MINIMALISTIC)
-		return locked;
 	if (decoration() == InsetDecoration::CLASSIC)
 		return locked + (isOpen(bv) ? _("ERT") : getNewLabel(_("ERT")));
 	return locked + getNewLabel(_("ERT"));

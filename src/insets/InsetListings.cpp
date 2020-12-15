@@ -605,8 +605,6 @@ docstring const InsetListings::buttonLabel(BufferView const & bv) const
 {
 	// FIXME UNICODE
 	docstring const locked = tempfile_ ? docstring(1, 0x1F512) : docstring();
-	if (decoration() == InsetDecoration::MINIMALISTIC)
-		return locked;
 	if (decoration() == InsetDecoration::CLASSIC)
 		return locked + (isOpen(bv) ? _("Listing") : getNewLabel(_("Listing")));
 	return locked + getNewLabel(_("Listing"));

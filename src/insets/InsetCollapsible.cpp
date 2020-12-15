@@ -696,8 +696,6 @@ docstring const InsetCollapsible::buttonLabel(BufferView const & bv) const
 {
 	// U+1F512 LOCK
 	docstring const locked = tempfile_ ? docstring(1, 0x1F512) : docstring();
-	if (decoration() == InsetDecoration::MINIMALISTIC)
-		return locked;
 	// indicate changed content in label (#8645)
 	// ✎ U+270E LOWER RIGHT PENCIL
 	docstring const indicator = (isChanged() && geometry(bv) == ButtonOnly)
