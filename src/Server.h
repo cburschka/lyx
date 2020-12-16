@@ -14,8 +14,7 @@
 #ifndef SERVER_H
 #define SERVER_H
 
-#include "support/signals.h"
-
+#include <memory>
 #include <vector>
 
 #ifdef _WIN32
@@ -28,6 +27,21 @@
 namespace lyx {
 
 class Server;
+
+
+/// A small utility to track the lifetime of an object.
+class Trackable {
+public:
+	Trackable() : p_(std::make_shared<int>(0)) {}
+	Trackable(Trackable const &) : Trackable() {}
+	Trackable(Trackable &&) : Trackable() {}
+	Trackable & operator=(Trackable const &) { return *this; }
+	Trackable & operator=(Trackable &&) { return *this; }
+	// This weak pointer lets you know if the parent object has been destroyed
+	std::weak_ptr<void> p() const { return p_; }
+private:
+	std::shared_ptr<void> const p_;
+};
 
 
 /** This class manages the pipes used for communicating with clients.
@@ -191,7 +205,7 @@ private:
 	bool deferred_loading_;
 
 	/// Track object's liveness
-	support::Trackable tracker_;
+	Trackable tracker_;
 };
 
 

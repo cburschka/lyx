@@ -55,7 +55,6 @@
 #include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/os.h"
-#include "support/signals.h"
 
 #include <iostream>
 
