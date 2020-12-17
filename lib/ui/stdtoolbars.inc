@@ -212,6 +212,28 @@ ToolbarSet
 		Item "Toggle math panels" "toolbar-toggle math_panels"
 	End
 
+	Toolbar "math_panels" "Math Panels"
+		PopupMenu "space" "Math spacings"
+		PopupMenu "style" "Styles & classes"
+		PopupMenu "frac-square" "Fractions"
+		PopupMenu "font" "Fonts"
+		PopupMenu "functions" "Functions"
+		IconPalette "latex_deco" "Frame decorations"
+		IconPalette "latex_varsz" "Big operators"
+		IconPalette "latex_misc" "Miscellaneous"
+		IconPalette "latex_greek" "Greek"
+		IconPalette "latex_arrow" "Arrows"
+		IconPalette "latex_ams_arrows" "Arrows (extended)"
+		IconPalette "latex_bop" "Operators"
+		IconPalette "latex_ams_ops" "Operators (extended)"
+		IconPalette "latex_brel" "Relations"
+		IconPalette "latex_ams_rel" "Relations (extended)"
+		IconPalette "latex_ams_nrel" "Negative relations (extended)"
+		IconPalette "latex_dots" "Dots"
+		IconPalette "latex_delim" "Delimiters (fixed size)"
+		IconPalette "latex_ams_misc" "Miscellaneous (extended)"
+	End
+
 	Toolbar "mathmacrotemplate" "Math Macros"
 		Item "Remove last argument" "math-macro-remove-param"
 		Item "Append argument" "math-macro-add-param"
@@ -304,28 +326,6 @@ ToolbarSet
 		Item "Use SVN file locking property" "vc-locking-toggle"
 		Separator
 		Item "Update local directory from repository" "vc-repo-update"
-	End
-
-	Toolbar "math_panels" "Math Panels"
-		PopupMenu "space" "Math spacings"
-		PopupMenu "style" "Styles & classes"
-		PopupMenu "frac-square" "Fractions"
-		PopupMenu "font" "Fonts"
-		PopupMenu "functions" "Functions"
-		IconPalette "latex_deco" "Frame decorations"
-		IconPalette "latex_varsz" "Big operators"
-		IconPalette "latex_misc" "Miscellaneous"
-		IconPalette "latex_greek" "Greek"
-		IconPalette "latex_arrow" "Arrows"
-		IconPalette "latex_ams_arrows" "Arrows (extended)"
-		IconPalette "latex_bop" "Operators"
-		IconPalette "latex_ams_ops" "Operators (extended)"
-		IconPalette "latex_brel" "Relations"
-		IconPalette "latex_ams_rel" "Relations (extended)"
-		IconPalette "latex_ams_nrel" "Negative relations (extended)"
-		IconPalette "latex_dots" "Dots"
-		IconPalette "latex_delim" "Delimiters (fixed size)"
-		IconPalette "latex_ams_misc" "Miscellaneous (extended)"
 	End
 
 	Toolbar "functions" "Functions"
