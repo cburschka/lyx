@@ -16,18 +16,18 @@ Additionally to the top ones, these languages should be reviewed for the followi
 "Listing"
 "Listings"
 
-id ro sr
+ro sr
 
 -----
 (30.11.2017, LyX 2.3.0 release )
 Additionally to the top ones, these languages should be reviewed for the following strings
 "List of Listings"
-bg ca da es fi gl he id ko nb nn pl ro sl sr tr zh_CN zh_TW
+bg ca da es fi gl he ko nb nn pl ro sl sr tr zh_CN zh_TW
 
 "Nomenclature[[output]]" -> The string that is output to PDF for the nomenclature list
 "see equation[[nomencl]]"
 "page[[nomencl]]"
-bg ca da fi gl he id ja ko nb nn pl ro sl sr tr zh_CN zh_TW
+bg ca da fi gl he ja ko nb nn pl ro sl sr tr zh_CN zh_TW
 
 -----
 LyX 2.4.0 release
@@ -35,7 +35,7 @@ LyX 2.4.0 release
 "Notes[[Endnotes]]" -> The header string of endnotes (with "Endnotes (Basic)" and "Footnotes as Endnotes
 (Basic)" modules). This is to be distinguished from "Notes" used by the Notes inset (which is more an
 annotation than a list of (end)notes)
-ar bg cs el en es eu fi fr he hu id ja nb nl nn pl pt_BR pt_PT sv tr uk zh_CN zh_TW
+ar bg cs el en es eu fi fr he hu ja nb nl nn pl pt_BR pt_PT sv tr uk zh_CN zh_TW
 Note that the localized enotez package has the following translations that probably should be used:
 Catalan: Notes
 Croatian: Bilje\v{s}ke
