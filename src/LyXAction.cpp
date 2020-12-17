@@ -3976,6 +3976,19 @@ void LyXAction::init()
 		{ LFUN_TOOLBAR_MOVABLE, "toolbar-movable", NoBuffer, Buffer },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_TOOLBAR_SET
+ * \li Action: Sets visibility of a given toolbar to on, off, or auto.
+ * \li Notion: Skipping "auto" when allowauto is false.
+ * \li Syntax: toolbar-set <NAME> [on|off|auto]
+ * \li Params: <NAME>: standard|extra|table|math|mathmacrotemplate|\n
+		       minibuffer|review|view/update|math_panels|vcs|
+		       view-others|update-others
+ * \li Origin: spitz, 17 Dec 2020
+ * \endvar
+ */
+		{ LFUN_TOOLBAR_SET, "toolbar-set", NoBuffer, Buffer },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_TOOLBAR_TOGGLE
  * \li Action: Toggles visibility of a given toolbar between on/off/auto.
  * \li Notion: Skipping "auto" when allowauto is false.

@@ -611,36 +611,51 @@ bool GuiToolbar::isVisibiltyOn() const
 }
 
 
-void GuiToolbar::toggle()
+void GuiToolbar::setState(string const state)
 {
-	docstring state;
-	if (visibility_ & Toolbars::ALLOWAUTO) {
-		if (!(visibility_ & Toolbars::AUTO)) {
+	docstring newstate;
+	if (state == "auto") {
+		if (visibility_ & Toolbars::ALLOWAUTO) {
 			visibility_ |= Toolbars::AUTO;
 			hide();
-			state = _("auto");
-		} else {
-			visibility_ &= ~Toolbars::AUTO;
-			if (isVisible()) {
-				hide();
-				state = _("off");
-			} else {
-				show();
-				state = _("on");
-			}
-		}
+			newstate = _("auto");
+		} else
+			owner_.message(bformat(_("Toolbar \"%1$s\" does not support state \"auto\""),
+				qstring_to_ucs4(windowTitle())));
 	} else {
-		if (isVisible()) {
+		if (visibility_ & Toolbars::AUTO)
+			visibility_ &= ~Toolbars::AUTO;
+		if (state == "off") {
 			hide();
-			state = _("off");
-		} else {
+			newstate = _("off");
+		} else if (state == "on") {
 			show();
-			state = _("on");
+			newstate = _("on");
 		}
 	}
 
 	owner_.message(bformat(_("Toolbar \"%1$s\" state set to %2$s"),
-		qstring_to_ucs4(windowTitle()), state));
+		qstring_to_ucs4(windowTitle()), newstate));
+}
+
+
+void GuiToolbar::toggle()
+{
+	if (visibility_ & Toolbars::ALLOWAUTO) {
+		if (!(visibility_ & Toolbars::AUTO) && !isVisibiltyOn()) {
+			setState("auto");
+		} else {
+			if (isVisibiltyOn())
+				setState("off");
+			else
+				setState("on");
+		}
+	} else {
+		if (isVisible())
+			setState("off");
+		else
+			setState("on");
+	}
 }
 
 void GuiToolbar::movable(bool silent)

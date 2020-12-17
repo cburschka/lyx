@@ -8649,10 +8649,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8665,6 +8667,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8688,6 +8691,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -38548,12 +38552,16 @@ enen Werkzeugleisten eingestellt werden.
 Befehlseingabefenster
 \family default
  können an- und ausgeschaltet werden.
- Der Zustand 
+ Der Status 
 \emph on
 an
 \emph default
  ist im Menü mit einem Häkchen gekennzeichnet.
- Die Werkzeugleisten 
+ 
+\end_layout
+
+\begin_layout Standard
+Die Werkzeugleisten 
 \family sans
 Überarbeiten
 \family default
@@ -38571,29 +38579,36 @@ Kontrollflächen
 \family default
 , 
 \family sans
-Mathe-Makros
+Mathe-Makros,
 \family default
- und 
+ 
 \family sans
 Mathe
 \family default
- können zusätzlich auf den Zustand 
+ und 
+\family sans
+Phonetische Symbole
+\family default
+ können zusätzlich auf den Status 
 \emph on
 automatisch
 \emph default
- gesetzt werden, der im Menü mit dem Suffix 
-\family sans
-(automatisch)
-\family default
- gekennzeichnet ist.
+ gesetzt werden.
+ Der Status dieser Werkzeugleisten wird in einem Untermenü mit den Einträgen
+ Ein, Aus und Automatisch gesetzt und angezeigt.
 \end_layout
 
 \begin_layout Standard
-Im Zustand 
+Im Status 
 \emph on
 an
 \emph default
- wird die Werkzeugleiste permanent angezeigt, im Zustand 
+ wird die Werkzeugleiste permanent angezeigt, im Status 
+\emph on
+aus
+\emph default
+ nie.
+ Im Zustand 
 \emph on
 automatisch
 \emph default
@@ -38603,13 +38618,18 @@ automatisch
 \family sans
 Überarbeiten
 \family default
- nur angezeigt wird, wenn Änderungsverfolgung aktiviert ist, die Mathe und
- Tabellen Werkzeugleisten werden nur angezeigt, wenn der Cursor in einer
+ nur angezeigt wird, wenn Änderungsverfolgung aktiviert ist, die Mathe-
+ und Tabellen-Werkzeugleisten werden nur angezeigt, wenn der Cursor in einer
  Formel bzw.
 \begin_inset space \space{}
 \end_inset
 
-Tabelle ist.
+Tabelle ist, die Werkzeugleiste mit phonetischen Symbolen nur in der Einfügung
+ 
+\emph on
+Phonetische Symbole
+\emph default
+.
 \end_layout
 
 \begin_layout Standard

@@ -8751,14 +8751,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8771,7 +8769,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8795,7 +8792,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -41119,13 +41115,41 @@ Command
 
 Buffer
 \family default
- can be turned on and off.
+ can be turned 
+\emph on
+on
+\emph default
+ and 
+\emph on
+off
+\emph default
+.
  The 
 \emph on
 on
 \emph default
  state is denoted in the menu with a checkmark.
- The 
+
+\change_deleted -712698321 1608195495
+ 
+\change_inserted -712698321 1608195492
+
+\end_layout
+
+\begin_layout Standard
+The
+\change_inserted -712698321 1608195407
+ 
+\family sans
+Phonetic
+\begin_inset space ~
+\end_inset
+
+Symbols
+\family default
+,
+\change_unchanged
+ 
 \family sans
 Table
 \family default
@@ -41156,12 +41180,34 @@ Panels
  toolbars can additionally be set to the state 
 \emph on
 automatic
+\change_deleted -712698321 1608195728
+
 \emph default
-, denoted in the menu with the suffix 
+, 
+\change_inserted -712698321 1608196033
+.
+ The state of these toolbars is set and indicated in a submenu which lets
+ you select 
+\family sans
+On
+\family default
+, 
+\family sans
+Off
+\family default
+, and 
+\family sans
+Automatic
+\family default
+.
+\change_deleted -712698321 1608195563
+denoted in the menu with the suffix 
 \family sans
 (auto)
 \family default
 .
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -41169,7 +41215,15 @@ In the
 \emph on
 on
 \emph default
- state the toolbar is permanently shown; in the 
+ state the toolbar is permanently shown
+\change_inserted -712698321 1608195803
+, in the 
+\emph on
+off
+\emph default
+ state it is never shown
+\change_unchanged
+; in the 
 \emph on
 automatic
 \emph default
@@ -41177,7 +41231,11 @@ automatic
  or when a certain feature is enabled.
  That means that the review toolbar will only be shown if change tracking
  is activated, the math and table toolbars are only shown if the cursor
- is inside a formula or table respectively.
+ is inside a formula or table respectively
+\change_inserted -712698321 1608195857
+, the phonetic symbols toolbar only in the phonetic symbols environment
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Standard

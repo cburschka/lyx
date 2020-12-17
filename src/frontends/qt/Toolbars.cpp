@@ -405,8 +405,7 @@ void Toolbars::readToolbarSettings(Lexer & lex)
 
 		if (visibility & ALLOWAUTO) {
 			if (ToolbarInfo const * ti = info(name))
-				const_cast<ToolbarInfo *>(ti)->gui_name +=
-					" (" + _("auto") + ")";
+				const_cast<ToolbarInfo *>(ti)->allow_auto = true;
 		}
 	}
 }

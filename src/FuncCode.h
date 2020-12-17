@@ -491,6 +491,8 @@ enum FuncCode
 	LFUN_IF_RELATIVES,              // spitz 20200102
 	LFUN_WINDOW_RAISE,              // forenr, 20202104
 	LFUN_CITATION_OPEN,             // sanda, 20200815
+	LFUN_TOOLBAR_SET,               // spitz 20201217
+	// 385
 	LFUN_LASTACTION                 // end of the table
 };
 

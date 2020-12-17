@@ -1415,8 +1415,19 @@ void MenuDefinition::expandToolbars()
 	Toolbars::Infos::const_iterator cit = guiApp->toolbars().begin();
 	Toolbars::Infos::const_iterator end = guiApp->toolbars().end();
 	for (; cit != end; ++cit) {
-		MenuItem const item(MenuItem::Command, toqstr(cit->gui_name),
-				FuncRequest(LFUN_TOOLBAR_TOGGLE, cit->name));
+		MenuItem item(MenuItem::Command, toqstr(cit->gui_name),
+			      FuncRequest(LFUN_TOOLBAR_TOGGLE, cit->name));
+		if (cit->allow_auto) {
+			MenuDefinition tristate;
+			tristate.add(MenuItem(MenuItem::Command, qt_("[[Toolbar]]On|O"),
+					      FuncRequest(LFUN_TOOLBAR_SET, cit->name + " on")));
+			tristate.add(MenuItem(MenuItem::Command, qt_("[[Toolbar]]Off|f"),
+					      FuncRequest(LFUN_TOOLBAR_SET, cit->name + " off")));
+			tristate.add(MenuItem(MenuItem::Command, qt_("[[Toolbar]]Automatic|A"),
+					      FuncRequest(LFUN_TOOLBAR_SET, cit->name + " auto")));
+			item = MenuItem(MenuItem::Submenu,toqstr(cit->gui_name));
+			item.setSubmenu(tristate);
+		}
 		if (guiApp->toolbars().isMainToolbar(cit->name))
 			add(item);
 		else

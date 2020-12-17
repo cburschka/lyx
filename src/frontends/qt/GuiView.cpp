@@ -2117,6 +2117,41 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		flag.setOnOff(devel_mode_);
 		break;
 
+	case LFUN_TOOLBAR_SET: {
+		string const name = cmd.getArg(0);
+		string const state = cmd.getArg(1);
+		if (name.empty() || state.empty()) {
+			enable = false;
+			docstring const msg =
+				_("Function toolbar-set requires two arguments!");
+			flag.message(msg);
+			break;
+		}
+		if (state != "on" && state != "off" && state != "auto") {
+			enable = false;
+			docstring const msg =
+				bformat(_("Invalid argument \"%1$s\" to function toolbar-set!"),
+					from_utf8(state));
+			flag.message(msg);
+			break;
+		}
+		if (GuiToolbar * t = toolbar(name)) {
+			bool const autovis = t->visibility() & Toolbars::AUTO;
+			if (state == "on")
+				flag.setOnOff(t->isVisible() && !autovis);
+			else if (state == "off")
+				flag.setOnOff(!t->isVisible() && !autovis);
+			else if (state == "auto")
+				flag.setOnOff(autovis);
+		} else {
+			enable = false;
+			docstring const msg =
+				bformat(_("Unknown toolbar \"%1$s\""), from_utf8(name));
+			flag.message(msg);
+		}
+		break;
+	}
+
 	case LFUN_TOOLBAR_TOGGLE: {
 		string const name = cmd.getArg(0);
 		if (GuiToolbar * t = toolbar(name))
@@ -4274,6 +4309,14 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			else
 				dr.setMessage(_("Developer mode is now disabled."));
 			break;
+
+		case LFUN_TOOLBAR_SET: {
+			string const name = cmd.getArg(0);
+			string const state = cmd.getArg(1);
+			if (GuiToolbar * t = toolbar(name))
+				t->setState(state);
+			break;
+		}
 
 		case LFUN_TOOLBAR_TOGGLE: {
 			string const name = cmd.getArg(0);
