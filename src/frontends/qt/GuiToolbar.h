@@ -158,8 +158,8 @@ public:
 
 	///
 	Action * addItem(ToolbarItem const & item);
-    ///
-    GuiView const & owner() { return owner_; }
+	///
+	GuiView const & owner() { return owner_; }
 
 Q_SIGNALS:
 	///
