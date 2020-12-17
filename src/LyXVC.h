@@ -192,7 +192,7 @@ private:
 	Buffer * owner_;
 
 	///
-	unique_ptr<VCS> vcs;
+	unique_ptr<VCS> vcs_;
 };
 
 
