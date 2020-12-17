@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-12-14 00:20+0100\n"
-"PO-Revision-Date: 2020-12-14 05:46+0700\n"
+"PO-Revision-Date: 2020-12-17 06:04+0700\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: Indonesian <was.uthm@gmail.com>\n"
 "Language: id\n"
@@ -60,7 +60,7 @@ msgstr "Info Pembuatan"
 
 #: src/frontends/qt/ui/AboutUi.ui:338
 msgid "Release Notes"
-msgstr "Nota Rilis"
+msgstr "Catatan Rilis"
 
 #: src/frontends/qt/ui/AboutUi.ui:383
 msgid "Copy version information to clipboard"
@@ -1173,7 +1173,7 @@ msgstr "Mengembalikan warna ke warna bawaan"
 
 #: src/frontends/qt/ui/ColorUi.ui:99
 msgid "Greyed-out notes:"
-msgstr "Nota Kelabu:"
+msgstr "Catatan Kelabu:"
 
 #: src/frontends/qt/ui/ColorUi.ui:118 src/frontends/qt/ui/ColorUi.ui:256
 #: src/frontends/qt/GuiDocument.cpp:2156 src/frontends/qt/GuiDocument.cpp:2186
@@ -1277,7 +1277,7 @@ msgstr "Pilih penghitung ke perubahan"
 
 #: src/frontends/qt/ui/CounterUi.ui:45
 msgid "&Action:"
-msgstr "&Akasi:"
+msgstr "&Aksi:"
 
 #: src/frontends/qt/ui/CounterUi.ui:63
 msgid "Select the action to perform on selected counter"
@@ -3120,7 +3120,7 @@ msgstr "Hanya internal LyX"
 
 #: src/frontends/qt/ui/NoteUi.ui:47
 msgid "LyX &Note"
-msgstr "&Nota LyX"
+msgstr "&Catatan LyX"
 
 #: src/frontends/qt/ui/NoteUi.ui:54
 msgid "Export to LaTeX/Docbook but don't print"
@@ -3136,7 +3136,7 @@ msgstr "Catatan ini akan dicetak dengan huruf kelabu"
 
 #: src/frontends/qt/ui/NoteUi.ui:67
 msgid "&Greyed out"
-msgstr "Nota Kela&bu"
+msgstr "Kela&bu"
 
 #: src/frontends/qt/ui/NumberingUi.ui:37
 msgid "Add line numbers to the document"
@@ -3529,9 +3529,8 @@ msgid "Lo&ngest label"
 msgstr "&Label terpanjang"
 
 #: src/frontends/qt/ui/ParagraphUi.ui:201
-#, fuzzy
 msgid "&Do not indent paragraph"
-msgstr "&Jangan Paragraf Masuk"
+msgstr "Jangan Paragraf Mas&uk"
 
 #: src/frontends/qt/ui/PhantomUi.ui:47
 msgid "Horizontal and vertical space of the phantom content"
@@ -3972,15 +3971,14 @@ msgid "Edit Math Macros with a parameter list (like in LyX < 1.6)"
 msgstr "Sunting Makro Matematika dengan daftar parameter (spt pada LyX < 1.6)"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:90
-#, fuzzy
 msgid ""
 "If this is checked, change tracking markup will not be resolved on copy/"
 "paste operations and when moving content from/to insets if change tracking "
 "is deactivated."
 msgstr ""
-"Jika ini dipilh, teks yang dihapus dan ditambahkan dalam moda pelacakan "
-"perubahan tidak akan diselesaikan pada operasi salin/tempel dan saat "
-"memindahkan isi dari/ke sisipan"
+"Jika ini dicentang, tanda pelacakan perubahan tidak akan diselesaikan pada "
+"operasi salin/tempel dan saat memindahkan isi dari/ke inset jika pelacakan "
+"perubahan dinonaktifkan."
 
 #: src/frontends/qt/ui/PrefEditUi.ui:93
 msgid "&Keep change tracking markup on copy and paste"
@@ -4764,12 +4762,12 @@ msgstr "Tampilkan t&ombol gabungan mengandung:"
 #: src/frontends/qt/ui/PrefSpellcheckerUi.ui:41
 msgid "If unchecked, notes and comments will be excluded from spell checking"
 msgstr ""
-"Apabila tidak dipilih, nota dan komentar tidak akan diperhitungkan oleh "
+"Apabila tidak dipilih, catatan dan komentar tidak akan diperhitungkan oleh "
 "pemeriksa ejaan"
 
 #: src/frontends/qt/ui/PrefSpellcheckerUi.ui:44
 msgid "Spellcheck &notes and comments"
-msgstr "Periksa ejaan nota dan k&omentar"
+msgstr "Periksa ejaan catatan dan k&omentar"
 
 #: src/frontends/qt/ui/PrefSpellcheckerUi.ui:51
 msgid "&Spellchecker engine:"
@@ -5803,7 +5801,7 @@ msgid ""
 "Filter items that are not output (in notes, inactive branches, deleted in "
 "change tracking, etc.)"
 msgstr ""
-"Tapis butir yang bukan keluaran (dalam nota, cabang tidak aktif, dihapus "
+"Tapis butir yang bukan keluaran (dalam catatan, cabang tidak aktif, dihapus "
 "dalam pelacakan perubahan, dll.)"
 
 #: src/frontends/qt/ui/TocUi.ui:327
@@ -6424,7 +6422,7 @@ msgstr "Penghargaan."
 
 #: lib/layouts/AEA.layout:138
 msgid "Figure Notes"
-msgstr "Nota Gambar"
+msgstr "Catatan Gambar"
 
 #: lib/layouts/AEA.layout:142 lib/layouts/AEA.layout:333
 #: lib/layouts/IEEEtran.layout:36 lib/layouts/aa.layout:37
@@ -6470,28 +6468,28 @@ msgstr "TeksUtama"
 
 #: lib/layouts/AEA.layout:145
 msgid "Figure Note"
-msgstr "Nota Gambar"
+msgstr "Catatan Gambar"
 
 #: lib/layouts/AEA.layout:146 lib/layouts/AEA.layout:173
 msgid "Text of a note in a figure"
-msgstr "Teks nota pada gambar"
+msgstr "Teks catatan pada gambar"
 
 #: lib/layouts/AEA.layout:154 lib/layouts/apax.inc:240
 #: lib/layouts/beamer.layout:1441 lib/layouts/powerdot.layout:228
 msgid "Note:"
-msgstr "Nota:"
+msgstr "Catatan:"
 
 #: lib/layouts/AEA.layout:167
 msgid "Table Notes"
-msgstr "Nota Tabel"
+msgstr "Catatan Tabel"
 
 #: lib/layouts/AEA.layout:171
 msgid "Table Note"
-msgstr "Nota Tabel"
+msgstr "Catatan Tabel"
 
 #: lib/layouts/AEA.layout:172
 msgid "Text of a note in a table"
-msgstr "Teks dari Nota pada tabel"
+msgstr "Teks dari Catatan pada tabel"
 
 #: lib/layouts/AEA.layout:178 lib/layouts/IEEEtran.layout:49
 #: lib/layouts/acmart.layout:548 lib/layouts/acmart.layout:552
@@ -7477,10 +7475,10 @@ msgstr ""
 "yang ditulis dalam preambel. Ini dapat digunakan, jika seseorang ingin, "
 "menyertakan kode preambel dalam isi dokumen LyX. 2. Corak 'Di Judul' yang "
 "akan memasukkan isi ke dalam isi dokumen LaTeX, tetapi sebelum \\maketitle "
-"dikeluarkan. Ini berguna untuk membuat cabang dan nota dalam materi terkait "
-"judul. (Jika anda memasukkannya ke dalam tata letak Standar, akan memberi "
-"tahu ke LyX untuk membuat keluaran \\maketitle, yang mungkin ditulis terlalu "
-"dini.)"
+"dikeluarkan. Ini berguna untuk membuat cabang dan catatan dalam materi "
+"terkait judul. (Jika anda memasukkannya ke dalam tata letak Standar, akan "
+"memberi tahu ke LyX untuk membuat keluaran \\maketitle, yang mungkin ditulis "
+"terlalu dini.)"
 
 #: lib/layouts/InStar.module:17
 msgid "In Preamble"
@@ -7905,7 +7903,7 @@ msgstr "altaffilmark"
 
 #: lib/layouts/aastex.layout:305
 msgid "altaffiliation mark"
-msgstr "altaffiliation mark"
+msgstr "tanda altaffiliation"
 
 #: lib/layouts/aastex.layout:336
 msgid "Subject headings:"
@@ -7945,7 +7943,7 @@ msgstr "CatatanKePenyunting"
 
 #: lib/layouts/aastex.layout:504
 msgid "Note to Editor:"
-msgstr "Nota untuk Penyunting:"
+msgstr "Catatan untuk Penyunting:"
 
 #: lib/layouts/aastex.layout:516 lib/layouts/aastex6.layout:106
 #: lib/layouts/aastex62.layout:117
@@ -7963,15 +7961,15 @@ msgstr "KomentarTabel"
 
 #: lib/layouts/aastex.layout:551
 msgid "Note. ---"
-msgstr "Nota. ---"
+msgstr "Catatan. ---"
 
 #: lib/layouts/aastex.layout:562
 msgid "Table note"
-msgstr "Nota Tabel"
+msgstr "Catatan tabel"
 
 #: lib/layouts/aastex.layout:570
 msgid "Table note:"
-msgstr "Nota Tabel:"
+msgstr "Catatan Tabel:"
 
 #: lib/layouts/aastex.layout:580
 msgid "tablenotemark"
@@ -8043,7 +8041,7 @@ msgstr "Perangkat lunak:"
 
 #: lib/layouts/aastex6.layout:103 lib/layouts/aastex62.layout:114
 msgid "APPENDIX"
-msgstr "APPENDIKS"
+msgstr "LAMPIRAN"
 
 #: lib/layouts/aastex6.layout:107 lib/layouts/aastex62.layout:118
 msgid "References-"
@@ -8051,7 +8049,7 @@ msgstr "Referensi:-"
 
 #: lib/layouts/aastex6.layout:114 lib/layouts/aastex62.layout:125
 msgid "Note-"
-msgstr "Nota-"
+msgstr "Catatan-"
 
 #: lib/layouts/aastex62.layout:3 lib/examples/Articles:0
 msgid "American Astronomical Society (AASTeX v. 6.2)"
@@ -8108,7 +8106,7 @@ msgstr "Tanpa kolaborasi"
 
 #: lib/layouts/aastex62.layout:241 lib/layouts/copernicus.layout:302
 msgid "Section Appendix"
-msgstr "Appendiks Section"
+msgstr "Lampiran Subbab"
 
 #: lib/layouts/aastex62.layout:245
 msgid "\\Alph{appendix}."
@@ -8240,7 +8238,7 @@ msgstr "Grafik[[mathematika]]"
 
 #: lib/layouts/achemso.layout:260 lib/layouts/achemso.layout:272
 msgid "Graph[[mathematical]]"
-msgstr "Graph[[matematika]]"
+msgstr "Grafik[[matematika]]"
 
 #: lib/layouts/achemso.layout:266
 msgid "List of Graphs[[mathematical]]"
@@ -8410,23 +8408,23 @@ msgstr "JudulCatatan"
 
 #: lib/layouts/acmart.layout:302
 msgid "Title Note: "
-msgstr "Judul Nota: "
+msgstr "Judul catatan: "
 
 #: lib/layouts/acmart.layout:308
 msgid "SubtitleNote"
-msgstr "Nota Anak Judul"
+msgstr "AnakJudulCatatan"
 
 #: lib/layouts/acmart.layout:310
 msgid "Subtitle Note: "
-msgstr "Nota Anak Judul: "
+msgstr "Anak Judul Catatan: "
 
 #: lib/layouts/acmart.layout:314 lib/layouts/apax.inc:304
 msgid "AuthorNote"
-msgstr "NotaPenulis"
+msgstr "CatatanPenulis"
 
 #: lib/layouts/acmart.layout:316
 msgid "Note: "
-msgstr "Nota: "
+msgstr "Catatan: "
 
 #: lib/layouts/acmart.layout:320
 msgid "ACM Volume"
@@ -9483,11 +9481,11 @@ msgstr "EnamAfiliasi"
 #: lib/layouts/theorems-without-preamble.inc:469
 #: lib/layouts/theorems-without-preamble.inc:472
 msgid "Note"
-msgstr "Nota"
+msgstr "Catatan"
 
 #: lib/layouts/apax.inc:323
 msgid "Author Note:"
-msgstr "Nota Penulis:"
+msgstr "Catatan Penulis:"
 
 #: lib/layouts/apax.inc:340 lib/layouts/egs.layout:416
 msgid "Journal"
@@ -9679,7 +9677,7 @@ msgstr "\\Alph{section}"
 
 #: lib/layouts/beamer.layout:366
 msgid "Subsection \\arabic{section}.\\arabic{subsection}"
-msgstr "SubSubBab \\arabic{section}.\\arabic{subsection}"
+msgstr "Subsubbab \arabic{section}.\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:378
 msgid "The subsection as it appears in the table of contents/running headers"
@@ -9693,7 +9691,7 @@ msgstr "\\arabic{section}.\\arabic{subsection}"
 msgid ""
 "Subsubsection \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
 msgstr ""
-"Subsubseksi \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
+"Subsubsubbab \arabic{section}.\arabic{subsection}.\arabic{subsubsection}"
 
 #: lib/layouts/beamer.layout:440
 msgid ""
@@ -10133,7 +10131,7 @@ msgstr "Kode-LyX"
 
 #: lib/layouts/beamer.layout:1428
 msgid "NoteItem"
-msgstr "NoteItem"
+msgstr "CatatanButir"
 
 #: lib/layouts/beamer.layout:1466 lib/layouts/beamer.layout:1468
 #: src/FontInfo.cpp:48 src/frontends/qt/GuiCharacter.cpp:138
@@ -10181,15 +10179,15 @@ msgstr "Tuliskan teks bawaan disini"
 
 #: lib/layouts/beamer.layout:1655
 msgid "Beamer Note"
-msgstr "Nota Beamer"
+msgstr "Catatan Beamer"
 
 #: lib/layouts/beamer.layout:1673
 msgid "Note Options"
-msgstr "Pilihan Nota"
+msgstr "Pilihan Catatan"
 
 #: lib/layouts/beamer.layout:1674
 msgid "Specifiy note options (see beamer manual)"
-msgstr "Nyatakan pilihan nota (lihat manual beamer)"
+msgstr "Nyatakan pilihan catatan (lihat manual beamer)"
 
 #: lib/layouts/beamer.layout:1679
 msgid "ArticleMode"
@@ -10760,7 +10758,7 @@ msgstr "\\thesection Kesimpulan"
 
 #: lib/layouts/copernicus.layout:306
 msgid "Appendix \\Alph{appendix}:"
-msgstr "Appendix \\Alph{appendix}:"
+msgstr "Lampiran \\Alph{appendix}:"
 
 #: lib/layouts/copernicus.layout:318
 msgid "\\Alph{appendix}\\arabic{subappendix}"
@@ -11600,7 +11598,7 @@ msgstr "Catatan \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:473
 msgid "Note \\arabic{theorem}"
-msgstr "Nota \\arabic{theorem}"
+msgstr "Catatan \arabic{theorem}"
 
 #: lib/layouts/elsart.layout:482
 msgid "Claim \\arabic{theorem}"
@@ -11624,7 +11622,7 @@ msgstr "TandaJudulNota"
 
 #: lib/layouts/elsarticle.layout:87
 msgid "Titlenote mark"
-msgstr "Tanda JudulNota"
+msgstr "Tanda JudulCatatan"
 
 #: lib/layouts/elsarticle.layout:107
 msgid "Title footnote"
@@ -11751,7 +11749,7 @@ msgstr "endnote"
 #: lib/layouts/foottoend.module:20 lib/layouts/foottoend.module:23
 #: lib/layouts/memoir.layout:319 lib/layouts/memoir.layout:322
 msgid "Notes[[Endnotes]]"
-msgstr "Nota[[Endnotes]]"
+msgstr "Catatan [[Endnotes]]"
 
 #: lib/layouts/enotez.module:2
 msgid "Endnotes (Extended)"
@@ -11774,7 +11772,7 @@ msgstr ""
 
 #: lib/layouts/entcs.layout:3
 msgid "Electronic Notes in Theor. Comp. Sc. (ENTCS)"
-msgstr "Nota Elektronik di Theor. Comp. Sc. (ENTCS)"
+msgstr "Catatan Elektronik di Theor. Comp. Sc. (ENTCS)"
 
 #: lib/layouts/entcs.layout:116 lib/layouts/siamltex.layout:324
 msgid "Key words:"
@@ -12477,7 +12475,7 @@ msgstr "Kesalahan Fatal (MP Targ.)"
 
 #: lib/layouts/fixme.module:233
 msgid "FxNote"
-msgstr "NotaFx"
+msgstr "CatatanFx"
 
 #: lib/layouts/fixme.module:237
 msgid "FxNote*"
@@ -14365,7 +14363,7 @@ msgstr "Latihan #."
 
 #: lib/layouts/llncs.layout:397
 msgid "Note #."
-msgstr "Nota #."
+msgstr "Catatan #."
 
 #: lib/layouts/llncs.layout:404
 msgid "Problem #."
@@ -14896,7 +14894,7 @@ msgstr "Penutup"
 
 #: lib/layouts/moderncv.layout:705 lib/layouts/svcommon.inc:593
 msgid "Alternative Name"
-msgstr "Alternati Nama"
+msgstr "Alternatif Nama"
 
 #: lib/layouts/moderncv.layout:706
 msgid "Alternative instead of 'Enclosure'"
@@ -15005,7 +15003,7 @@ msgstr "\\Roman{section}."
 
 #: lib/layouts/numrevtex.inc:10
 msgid "Appendix \\Alph{section}:"
-msgstr "Appendix \\Alph{section}:"
+msgstr "Lampiran \\Alph{section}:"
 
 #: lib/layouts/numrevtex.inc:18
 msgid "\\Alph{subsection}."
@@ -16062,11 +16060,11 @@ msgstr "PerihalAnda"
 
 #: lib/layouts/scrlettr.layout:281 lib/layouts/scrlttr2.layout:408
 msgid "Yourmail"
-msgstr "Surat saudara"
+msgstr "Surel anda"
 
 #: lib/layouts/scrlettr.layout:284 lib/layouts/scrlttr2.layout:412
 msgid "Your letter of:"
-msgstr "Surat saudara tentang:"
+msgstr "Surat anda tentang:"
 
 #: lib/layouts/scrlettr.layout:288 lib/layouts/scrlttr2.layout:416
 msgid "Myref"
@@ -16489,7 +16487,7 @@ msgstr "Overlay Baru:"
 
 #: lib/layouts/slides.layout:185
 msgid "New Note:"
-msgstr "Nota Baru:"
+msgstr "Catatan Baru:"
 
 #: lib/layouts/slides.layout:210
 msgid "InvisibleText"
@@ -16670,7 +16668,7 @@ msgstr "Batas Tabel"
 
 #: lib/layouts/stdinsets.inc:11
 msgid "Marginal notes"
-msgstr "Nota tepi"
+msgstr "Catatan batas"
 
 #: lib/layouts/stdinsets.inc:12
 msgid "Footnotes"
@@ -16678,7 +16676,7 @@ msgstr "Catatan kaki"
 
 #: lib/layouts/stdinsets.inc:13
 msgid "Notes"
-msgstr "Nota"
+msgstr "Catatan"
 
 #: lib/layouts/stdinsets.inc:14 src/frontends/qt/GuiDocument.cpp:1779
 msgid "Branches"
@@ -16748,7 +16746,7 @@ msgstr "halaman[[nomencl]]"
 
 #: lib/layouts/stdinsets.inc:755 lib/layouts/stdinsets.inc:763
 msgid "Nomenclature[[output]]"
-msgstr "Nomenklatur"
+msgstr "Nomenklatur[[keluaran]]"
 
 #: lib/layouts/stdlayouts.inc:109 src/insets/InsetInclude.cpp:415
 msgid "Verbatim*"
@@ -16764,7 +16762,7 @@ msgstr "Bab \\thechapter"
 
 #: lib/layouts/stdsections.inc:58
 msgid "Appendix \\thechapter"
-msgstr "Appendix \\thechapter"
+msgstr "Lampiran \\thechapter"
 
 #: lib/layouts/stdstarsections.inc:103
 msgid "Subparagraph*"
@@ -16873,11 +16871,11 @@ msgstr "Bab berjalan:"
 
 #: lib/layouts/svcommon.inc:471
 msgid "Running Section"
-msgstr "Anakbab Berjalan"
+msgstr "Subbab Berjalan"
 
 #: lib/layouts/svcommon.inc:474
 msgid "Running section:"
-msgstr "Anakbab berjalan:"
+msgstr "Subbab berjalan:"
 
 #: lib/layouts/svcommon.inc:506
 msgid "Abstract*"
@@ -17301,12 +17299,12 @@ msgid ""
 msgstr ""
 "Mendefinisikan beberapa lingkungan teorema tambahan untuk digunakan dalam "
 "paket Teorema AMS. Paket AMS termasuk Kriteria, Algoritma, Aksioma, Kondisi, "
-"Nota, Notasi, Rungkasan, Penghargaan, Kesimpulan, Fakta, Asumsi, dan Kasus, "
-"baik dalam bentuk bernomor atau tanpa nomor. Berlainan dengan modul AMS-"
-"extended biasa, berbagai tipe teorema yang disediakan disini masing-masing "
-"mempunyai sistem penghitung yang terpisah (misal, kriteria 1, kriteria 2, "
-"aksioma 1, asumsi 1, kriteria 3, ...,akan berlainan dengan kriteria 1, "
-"kriteria 2, aksioma 3, asumsi 4, ...)."
+"Catatan, Notasi, Ringkasan, Penghargaan, Kesimpulan, Fakta, Asumsi, dan "
+"Kasus, baik dalam bentuk bernomor atau tanpa nomor. Berlainan dengan modul "
+"AMS-extended biasa, berbagai tipe teorema yang disediakan disini masing-"
+"masing mempunyai sistem penghitung yang terpisah (misal, kriteria 1, "
+"kriteria 2, aksioma 1, asumsi 1, kriteria 3, ...,akan berlainan dengan "
+"kriteria 1, kriteria 2, aksioma 3, asumsi 4, ...)."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:44
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:81
@@ -17374,19 +17372,19 @@ msgstr "Kondisi."
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:261
 #: lib/layouts/theorems-without-preamble.inc:466
 msgid "Note \\thenote."
-msgstr "Nota \\thenote."
+msgstr "Catatan \\thenote."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:224
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:282
 #: lib/layouts/theorems-ams-extended.module:217
 msgid "Note*"
-msgstr "Nota*"
+msgstr "Catatan*"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:227
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:285
 #: lib/layouts/theorems-ams-extended.module:220
 msgid "Note."
-msgstr "Nota."
+msgstr "Catatan."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:246
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:304
@@ -17535,8 +17533,9 @@ msgid ""
 msgstr ""
 "Mendefinisikan beberapa lingkungan teorema tambahan untuk digunakan dalam "
 "paket Teorema AMS. Paket AMS termasuk Kriteria, Algoritma, Aksioma, Kondisi, "
-"Nota, Notasi, Ringkasan, Penghargaan, Kesimpulan, Fakta, Asumsi, dan Kasus, "
-"baik dalam bentuk berbintang (starred) atau tanpa bintang (non-starred)"
+"Catatan, Notasi, Ringkasan, Penghargaan, Kesimpulan, Fakta, Asumsi, dan "
+"Kasus, baik dalam bentuk berbintang (starred) atau tanpa bintang (non-"
+"starred)"
 
 #: lib/layouts/theorems-ams-extended.module:40
 msgid "Criterion \\thetheorem."
@@ -17556,7 +17555,7 @@ msgstr "Kondisi \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:201
 msgid "Note \\thetheorem."
-msgstr "Nota \\thetheorem."
+msgstr "Catatan \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:239
 msgid "Notation \\thetheorem."
@@ -17880,7 +17879,7 @@ msgstr "Properti \\theproperty."
 
 #: lib/layouts/todonotes.module:2
 msgid "TODO Notes"
-msgstr "Nota TODO"
+msgstr "Catatan TODO"
 
 #: lib/layouts/todonotes.module:9
 msgid ""
@@ -17916,7 +17915,7 @@ msgstr "Menuliskan kepala atur sendiri untuk Daftar TODO disini"
 
 #: lib/layouts/todonotes.module:59
 msgid "TODO Note (Margin)"
-msgstr "Nota TODO (Batas)"
+msgstr "Catatan TODO (Batas)"
 
 #: lib/layouts/todonotes.module:61
 msgid "TODO (Margin)"
@@ -17924,7 +17923,7 @@ msgstr "TODO (Batas)"
 
 #: lib/layouts/todonotes.module:80 lib/layouts/todonotes.module:92
 msgid "TODO Note Options|s"
-msgstr "Nota TODO (Batas)|s"
+msgstr "Catatan TODO (Batas)|s"
 
 #: lib/layouts/todonotes.module:81 lib/layouts/todonotes.module:110
 msgid "See the todonotes manual for possible options"
@@ -17932,7 +17931,7 @@ msgstr "Baca manual todonotes untuk menemukan pilihan yang mungkin"
 
 #: lib/layouts/todonotes.module:87
 msgid "TODO Note (inline)"
-msgstr "Nota TODO (sebaris)"
+msgstr "Catatan TODO (sebaris)"
 
 #: lib/layouts/todonotes.module:89
 msgid "TODO (Inline)"
@@ -17968,11 +17967,11 @@ msgstr "Buku Tufte"
 
 #: lib/layouts/tufte-book.layout:27 lib/layouts/tufte-book.layout:156
 msgid "Sidenote"
-msgstr "Nota samping"
+msgstr "Catatan samping"
 
 #: lib/layouts/tufte-book.layout:28 lib/layouts/tufte-book.layout:161
 msgid "sidenote"
-msgstr "nota samping"
+msgstr "catatan samping"
 
 #: lib/layouts/tufte-book.layout:29
 msgid "bibl. entry"
@@ -17980,11 +17979,11 @@ msgstr "bibl. entri"
 
 #: lib/layouts/tufte-book.layout:176
 msgid "Marginnote"
-msgstr "Nota tepi"
+msgstr "Catatan batas"
 
 #: lib/layouts/tufte-book.layout:180
 msgid "marginnote"
-msgstr "nota tepi"
+msgstr "catatan batas"
 
 #: lib/layouts/tufte-book.layout:189
 msgid "NewThought"
@@ -19474,7 +19473,7 @@ msgstr "Bingkai Dua Garis|s"
 
 #: lib/ui/stdcontext.inc:214 lib/ui/stdmenus.inc:536
 msgid "LyX Note|N"
-msgstr "Nota LyX|N"
+msgstr "Catatan LyX|n"
 
 #: lib/ui/stdcontext.inc:215
 msgid "Comment|m"
@@ -19482,15 +19481,15 @@ msgstr "Komentar|K"
 
 #: lib/ui/stdcontext.inc:216 lib/ui/stdmenus.inc:538
 msgid "Greyed Out|G"
-msgstr "Nota Kelabu|b"
+msgstr "Kelabu|b"
 
 #: lib/ui/stdcontext.inc:218
 msgid "Open All Notes|A"
-msgstr "Buka Semua Nota|B"
+msgstr "Buka Semua catatan|B"
 
 #: lib/ui/stdcontext.inc:219
 msgid "Close All Notes|l"
-msgstr "Tutup Semua Nota|T"
+msgstr "Tutup Semua Catatan|T"
 
 #: lib/ui/stdcontext.inc:227 lib/ui/stdmenus.inc:548
 msgid "Phantom|P"
@@ -20259,7 +20258,7 @@ msgstr "Pengaturan Lipatan Teks...|W"
 
 #: lib/ui/stdmenus.inc:146
 msgid "Note Settings...|N"
-msgstr "Pengaturan Nota...|N"
+msgstr "Pengaturan Catatan...|C"
 
 #: lib/ui/stdmenus.inc:147
 msgid "Phantom Settings...|h"
@@ -20639,7 +20638,7 @@ msgstr "Ambangan|a"
 
 #: lib/ui/stdmenus.inc:382
 msgid "Note|N"
-msgstr "Nota|N"
+msgstr "Catatan|n"
 
 #: lib/ui/stdmenus.inc:383
 msgid "Branch|B"
@@ -20935,7 +20934,7 @@ msgstr "Catatan LaTeX|C"
 
 #: lib/ui/stdmenus.inc:567
 msgid "Start Appendix Here|x"
-msgstr "Mulai Appendiks Disini|k"
+msgstr "Mulai Lampiran Disini|L"
 
 #: lib/ui/stdmenus.inc:571
 msgid "View Master Document|M"
@@ -20991,7 +20990,7 @@ msgstr "Batas Buku|B"
 
 #: lib/ui/stdmenus.inc:596
 msgid "Next Note|N"
-msgstr "Nota Selanjutnya|N"
+msgstr "Catatan Selanjutnya|C"
 
 #: lib/ui/stdmenus.inc:597
 msgid "Next Change|C"
@@ -21347,7 +21346,7 @@ msgstr "Sisipkan catatan tepi"
 
 #: lib/ui/stdtoolbars.inc:140
 msgid "Insert LyX note"
-msgstr "Sisipkan Nota LyX"
+msgstr "Sisipkan Catatan LyX"
 
 #: lib/ui/stdtoolbars.inc:141
 msgid "Insert box"
@@ -21671,7 +21670,7 @@ msgstr "Tolak semua perubahan"
 
 #: lib/ui/stdtoolbars.inc:256
 msgid "Insert note"
-msgstr "Sisipkan Nota"
+msgstr "Sisipkan Catatan"
 
 #: lib/ui/stdtoolbars.inc:257
 msgid "Next note"
@@ -26355,9 +26354,8 @@ msgid "PDF (lower resolution)"
 msgstr "PDF (resolusi rendah)"
 
 #: lib/configure.py:754
-#, fuzzy
 msgid "PDF (DocBook)"
-msgstr "PDF (docbook)"
+msgstr "PDF (DocBook)"
 
 #: lib/configure.py:759
 msgid "DVI"
@@ -26389,7 +26387,7 @@ msgstr "htm|HTML"
 
 #: lib/configure.py:769
 msgid "Noteedit"
-msgstr "Noteedit"
+msgstr "Catatansunting"
 
 #: lib/configure.py:772
 msgid "OpenDocument (tex4ht)"
@@ -28020,19 +28018,16 @@ msgid "LaTeX text"
 msgstr "Teks LaTeX"
 
 #: src/Color.cpp:258
-#, fuzzy
 msgid "Text label 1"
-msgstr "label indeks"
+msgstr "Label teks 1"
 
 #: src/Color.cpp:259
-#, fuzzy
 msgid "Text label 2"
-msgstr "label indeks"
+msgstr "Label teks 2"
 
 #: src/Color.cpp:260
-#, fuzzy
 msgid "Text label 3"
-msgstr "label indeks"
+msgstr "Label teks 3"
 
 #: src/Color.cpp:261
 msgid "inline completion"
@@ -28048,11 +28043,11 @@ msgstr "tampilan potongan"
 
 #: src/Color.cpp:266
 msgid "note label"
-msgstr "label nota"
+msgstr "label catatan"
 
 #: src/Color.cpp:267
 msgid "note background"
-msgstr "latarbelakang nota"
+msgstr "catatan latarbelakang"
 
 #: src/Color.cpp:268
 msgid "comment label"
@@ -29118,11 +29113,12 @@ msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Membuat direktori %1$s"
 
 #: src/LyX.cpp:1106
-#, fuzzy
 msgid ""
 "Failed to create directory. Perhaps wrong -userdir option?\n"
 "Exiting."
-msgstr "Gagal membuat direktori baru. Keluar."
+msgstr ""
+"Gagal membuat direktori baru. Mungkin salah pilihan -userdir?\n"
+"Keluar."
 
 #: src/LyX.cpp:1179
 msgid "List of supported debug flags:"
@@ -29202,7 +29198,7 @@ msgstr ""
 "                  Format Berkas->Nama Singkat untuk memperoleh parameter\n"
 "                  yang bisa dipakai (yang berbeda dengan format nama dari\n"
 "                  menu Berkas->Ekspor). Untuk ekspor ke\n"
-"                  format keluaran dokumen bawaan, gunakan 'default'.\n"
+"                  format keluaran dokumen bawaan, gunakan 'bawaan'.\n"
 "                  Catatan, urutan -e dan -x adalah penting.\n"
 "\t-E [--export-to] fmt namaberkas\n"
 "                  dimana fmt adalah format ekspor yang dipilih (lihat --"
@@ -30213,7 +30209,7 @@ msgstr "Entri Nomenklatur"
 
 #: src/VCBackend.cpp:64
 msgid "Perhaps the RCS package is not installed on your system?"
-msgstr ""
+msgstr "Mungkin paket RCS belum dipasang di sistem anda?"
 
 #: src/VCBackend.cpp:65 src/VCBackend.cpp:878 src/VCBackend.cpp:883
 #: src/VCBackend.cpp:932 src/VCBackend.cpp:991 src/VCBackend.cpp:1050
@@ -30675,7 +30671,7 @@ msgstr "KESALAHAN: LyX tidak bisa membaca berkas PENGHARGAAN\n"
 
 #: src/frontends/qt/GuiAbout.cpp:95
 msgid "ERROR: LyX wasn't able to find the RELEASE-NOTES file\n"
-msgstr "KESALAHAN: LyX tidak bisa menemukan NOTA-RILIS\n"
+msgstr "KESALAHAN: LyX tidak bisa menemukan CATATAN-RILIS\n"
 
 #: src/frontends/qt/GuiAbout.cpp:96 src/frontends/qt/GuiAbout.cpp:101
 msgid ""
@@ -30688,7 +30684,7 @@ msgstr ""
 #: src/frontends/qt/GuiAbout.cpp:100
 msgid "ERROR: LyX wasn't able to read the RELEASE-NOTES file\n"
 msgstr ""
-"KESALAHAN: LyX tidak bisa membaca NOTA-RILIS\n"
+"KESALAHAN: LyX tidak bisa membaca CATATAN-RILIS\n"
 "\n"
 
 #: src/frontends/qt/GuiAbout.cpp:183
@@ -30876,9 +30872,8 @@ msgid "Opening help file %1$s..."
 msgstr "Membuka berkas bantuan %1$s..."
 
 #: src/frontends/qt/GuiApplication.cpp:1814
-#, fuzzy
 msgid "Syntax: set-color <lyx_name> <x11_name> <x11_darkname>"
-msgstr "Syntax: set-color <lyx_name> <x11_name>"
+msgstr "Sintaks: set-color<lyx_name><x11_name><x11_darkname>"
 
 #: src/frontends/qt/GuiApplication.cpp:1834
 #, c-format
@@ -31550,11 +31545,11 @@ msgstr "Diperlukan validasi!"
 
 #: src/frontends/qt/GuiDocument.cpp:703
 msgid "Layout is valid!"
-msgstr "Tataletak tidak sah!"
+msgstr "Tataletak tidak valid!"
 
 #: src/frontends/qt/GuiDocument.cpp:704
 msgid "Layout is invalid!"
-msgstr "Tataletak tidak sah!"
+msgstr "Tataletak tidak valid!"
 
 #: src/frontends/qt/GuiDocument.cpp:716
 msgid "Conversion to current format impossible!"
@@ -32969,7 +32964,7 @@ msgstr "Pengaturan Nomeklatur"
 
 #: src/frontends/qt/GuiNote.cpp:24
 msgid "Note Settings"
-msgstr "Pengaturan Nota"
+msgstr "Pengaturan Catatan"
 
 #: src/frontends/qt/GuiParagraph.cpp:50
 msgid "Paragraph Settings"
@@ -33883,7 +33878,7 @@ msgid ""
 "The file name '%1$s' is invalid!\n"
 "Aborting import."
 msgstr ""
-"Nama berkas '%1$s' tidak sah!\n"
+"Nama berkas '%1$s' tidak valid!\n"
 "Impor dibatalkan."
 
 #: src/frontends/qt/GuiView.cpp:2627 src/frontends/qt/GuiView.cpp:2893
@@ -35973,7 +35968,7 @@ msgstr "Urutan: "
 
 #: src/insets/InsetNote.cpp:252
 msgid "note"
-msgstr "nota"
+msgstr "catatan"
 
 #: src/insets/InsetPhantom.cpp:62
 msgid "Phantom"
@@ -36081,7 +36076,7 @@ msgstr "subscript"
 
 #: src/insets/InsetScript.cpp:347
 msgid "superscript"
-msgstr "superscript"
+msgstr "superskrip"
 
 #: src/insets/InsetSpace.cpp:71
 msgid "Protected Space"
@@ -36284,7 +36279,7 @@ msgstr "%1$d kata sudah dirubah."
 
 #: src/lyxfind.cpp:3705
 msgid "Invalid regular expression!"
-msgstr "Ekspresi reguler tidak sah!"
+msgstr "Ekspresi reguler tidak valid!"
 
 #: src/lyxfind.cpp:3714
 msgid "One match has been replaced."
