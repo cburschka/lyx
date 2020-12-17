@@ -499,11 +499,6 @@ void InsetMathNest::handleNest(Cursor & cur, MathAtom const & nest,
 			//
 			cur.handleNest(nest);
 			cur.insert(arg);
-
-			// cur is in the font inset now. If the loop continues,
-			// we need to get outside again for the next cell
-			if (col + 1 <= c2 || row + 1 <= r2)
-				cur.pop_back();
 		}
 	}
 }
