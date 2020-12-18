@@ -565,8 +565,8 @@ void CVS::scanMaster()
 	LYXERR(Debug::LYXVC, "LyXVC::CVS: scanMaster. \n     Checking: " << master_);
 	// Ok now we do the real scan...
 	ifstream ifs(master_.toFilesystemEncoding().c_str());
-	string name = onlyFileName(owner_->absFileName());
-	string tmpf = '/' + name + '/';
+	string const name = onlyFileName(owner_->absFileName());
+	string const tmpf = '/' + name + '/';
 	LYXERR(Debug::LYXVC, "\tlooking for `" << tmpf << '\'');
 	string line;
 	static regex const reg("/(.*)/(.*)/(.*)/(.*)/(.*)");
@@ -589,8 +589,8 @@ void CVS::scanMaster()
 			//sm[5]; // tag or tagdate
 			FileName file(owner_->absFileName());
 			if (file.isReadableFile()) {
-				time_t mod = file.lastModified();
-				string mod_date = rtrim(asctime(gmtime(&mod)), "\n");
+				time_t const mod = file.lastModified();
+				string const mod_date = rtrim(asctime(gmtime(&mod)), "\n");
 				LYXERR(Debug::LYXVC, "Date in Entries: `" << file_date
 					<< "'\nModification date of file: `" << mod_date << '\'');
 				if (file.isReadOnly()) {
