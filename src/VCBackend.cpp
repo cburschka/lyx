@@ -538,6 +538,8 @@ FileName const CVS::findFile(FileName const & file)
 {
 	// First we look for the CVS/Entries in the same dir
 	// where we have file.
+	// Note that it is not necessary to search parent directories, since
+	// there will be a CVS/Entries file in every subdirectory.
 	FileName const entries(onlyPath(file.absFileName()) + "/CVS/Entries");
 	string const tmpf = '/' + onlyFileName(file.absFileName()) + '/';
 	LYXERR(Debug::LYXVC, "LyXVC: Checking if file is under cvs in `" << entries
