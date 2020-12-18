@@ -1157,22 +1157,21 @@ bool CVS::prepareFileRevisionEnabled()
 //
 /////////////////////////////////////////////////////////////////////
 
-SVN::SVN(FileName const & m, Buffer * b) : VCS(b)
+SVN::SVN(Buffer * b) : VCS(b)
 {
 	// Here we know that the buffer file is either already in SVN or
 	// about to be registered
-	master_ = m;
 	locked_mode_ = false;
 	scanMaster();
 }
 
 
-FileName const SVN::findFile(FileName const & file)
+bool SVN::findFile(FileName const & file)
 {
 	// First we check the existence of repository meta data.
 	if (VCS::checkParentDirs(file, ".svn").empty()) {
 		LYXERR(Debug::LYXVC, "Cannot find SVN meta data for " << file);
-		return FileName();
+		return false;
 	}
 
 	// Now we check the status of the file.
@@ -1181,7 +1180,7 @@ FileName const SVN::findFile(FileName const & file)
 	bool found = 0 == doVCCommandCall("svn info " + quoteName(fname),
 						file.onlyPath());
 	LYXERR(Debug::LYXVC, "SVN control: " << (found ? "enabled" : "disabled"));
-	return found ? file : FileName();
+	return found;
 }
 
 
@@ -1822,21 +1821,20 @@ bool SVN::toggleReadOnlyEnabled()
 //
 /////////////////////////////////////////////////////////////////////
 
-GIT::GIT(FileName const & m, Buffer * b) : VCS(b)
+GIT::GIT(Buffer * b) : VCS(b)
 {
 	// Here we know that the buffer file is either already in GIT or
 	// about to be registered
-	master_ = m;
 	scanMaster();
 }
 
 
-FileName const GIT::findFile(FileName const & file)
+bool GIT::findFile(FileName const & file)
 {
 	// First we check the existence of repository meta data.
 	if (VCS::checkParentDirs(file, ".git").empty()) {
 		LYXERR(Debug::LYXVC, "Cannot find GIT meta data for " << file);
-		return FileName();
+		return false;
 	}
 
 	// Now we check the status of the file.
@@ -1844,7 +1842,7 @@ FileName const GIT::findFile(FileName const & file)
 	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
-		return FileName();
+		return false;
 	}
 
 	string const fname = onlyFileName(file.absFileName());
@@ -1857,7 +1855,7 @@ FileName const GIT::findFile(FileName const & file)
 	tmpf.refresh();
 	bool found = !tmpf.isFileEmpty();
 	LYXERR(Debug::LYXVC, "GIT control: " << (found ? "enabled" : "disabled"));
-	return found ? file : FileName();
+	return found;
 }
 
 

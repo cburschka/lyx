@@ -131,12 +131,6 @@ protected:
 	 */
 	static int doVCCommandCall(std::string const & cmd, support::FileName const & path);
 
-	/**
-	 * The master VC file. For RCS this is *,v or RCS/ *,v. master should
-	 * have full path.
-	 */
-	support::FileName master_;
-
 	/// The status of the VC controlled file.
 	VCStatus vcstatus_;
 
@@ -216,6 +210,12 @@ protected:
 	void scanMaster() override;
 private:
 	bool getRevisionInfo();
+	/**
+	 * The master VC file. For RCS this is *,v or RCS/ *,v.
+	 * master should have full path.
+	 */
+	support::FileName master_;
+
 	/**
 	 * The version of the VC file. I am not sure if this can be a
 	 * string or if it must be a float/int.
@@ -322,6 +322,11 @@ protected:
 	};
 
 private:
+	/**
+	 * The master VC file. For CVS this is CVS/Entries
+	 * master should have full path.
+	 */
+	support::FileName master_;
 	// revision number from scanMaster
 	std::string version_;
 
@@ -379,11 +384,10 @@ class SVN : public VCS {
 public:
 	///
 	explicit
-	SVN(support::FileName const & m, Buffer * b);
+	SVN(Buffer * b);
 
 	/// Determine whether the file is under SVN control
-	/// \return the file itself if so, else empty
-	static support::FileName const findFile(support::FileName const & file);
+	static bool findFile(support::FileName const & file);
 
 	/// get file from repo, the caller must ensure that it does not exist locally
 	static bool retrieve(support::FileName const & file);
@@ -490,11 +494,11 @@ class GIT : public VCS {
 public:
 	///
 	explicit
-	GIT(support::FileName const & m, Buffer * b);
+	GIT(Buffer * b);
 
 	/// Determine whether the file is under GIT control
 	/// \return the file itself if so, else empty
-	static support::FileName const findFile(support::FileName const & file);
+	static bool findFile(support::FileName const & file);
 
 	/// get file from repo, the caller must ensure that it does not exist locally
 	static bool retrieve(support::FileName const & file);

@@ -58,9 +58,9 @@ bool LyXVC::fileInVC(FileName const & fn)
 		return true;
 	if (!CVS::findFile(fn).empty())
 		return true;
-	if (!SVN::findFile(fn).empty())
+	if (SVN::findFile(fn))
 		return true;
-	if (!GIT::findFile(fn).empty())
+	if (GIT::findFile(fn))
 		return true;
 	return false;
 }
@@ -80,13 +80,13 @@ bool LyXVC::file_found_hook(FileName const & fn)
 		return true;
 	}
 	// Check if file is under SVN
-	if (!(found_file = SVN::findFile(fn)).empty()) {
-		vcs_.reset(new SVN(found_file, owner_));
+	if (SVN::findFile(fn)) {
+		vcs_.reset(new SVN(owner_));
 		return true;
 	}
 	// Check if file is under GIT
-	if (!(found_file = GIT::findFile(fn)).empty()) {
-		vcs_.reset(new GIT(found_file, owner_));
+	if (GIT::findFile(fn)) {
+		vcs_.reset(new GIT(owner_));
 		return true;
 	}
 
@@ -104,8 +104,8 @@ bool LyXVC::file_not_found_hook(FileName const & fn)
 	// checked out.
 	bool foundRCS = !RCS::findFile(fn).empty();
 	bool foundCVS = foundRCS ? false : !CVS::findFile(fn).empty();
-	bool foundSVN = (foundRCS || foundCVS) ? false : !SVN::findFile(fn).empty();
-	bool foundGIT = (foundRCS || foundCVS || foundSVN) ? false : !GIT::findFile(fn).empty();
+	bool foundSVN = (foundRCS || foundCVS) ? false : SVN::findFile(fn);
+	bool foundGIT = (foundRCS || foundCVS || foundSVN) ? false : GIT::findFile(fn);
 	if (foundRCS || foundCVS || foundSVN || foundGIT) {
 		docstring const file = makeDisplayPath(fn.absFileName(), 20);
 		docstring const text =
@@ -159,14 +159,14 @@ bool LyXVC::registrer()
 		if (!found.empty()) {
 			LYXERR(Debug::LYXVC, "LyXVC: registering "
 				<< to_utf8(filename.displayName()) << " with GIT");
-			vcs_.reset(new GIT(found, owner_));
+			vcs_.reset(new GIT(owner_));
 
 		} else {
 			found = VCS::checkParentDirs(filename, ".svn/entries");
 			if (!found.empty()) {
 				LYXERR(Debug::LYXVC, "LyXVC: registering "
 					<< to_utf8(filename.displayName()) << " with SVN");
-				vcs_.reset(new SVN(found, owner_));
+				vcs_.reset(new SVN(owner_));
 
 			} else {
 				// We only need to check the current directory, since CVS meta-data
