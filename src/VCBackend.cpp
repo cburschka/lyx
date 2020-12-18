@@ -201,7 +201,7 @@ void RCS::scanMaster()
 			// get locker here
 			if (contains(token, ';')) {
 				locker_ = "Unlocked";
-				vcstatus = UNLOCKED;
+				vcstatus_ = UNLOCKED;
 				continue;
 			}
 			string tmpt;
@@ -215,7 +215,7 @@ void RCS::scanMaster()
 				// s2 is user, and s1 is version
 				if (s1 == version_) {
 					locker_ = s2;
-					vcstatus = LOCKED;
+					vcstatus_ = LOCKED;
 					break;
 				}
 			} while (!contains(tmpt, ';'));
@@ -595,15 +595,15 @@ void CVS::scanMaster()
 					<< "'\nModification date of file: `" << mod_date << '\'');
 				if (file.isReadOnly()) {
 					// readonly checkout is unlocked
-					vcstatus = UNLOCKED;
+					vcstatus_ = UNLOCKED;
 				} else {
 					FileName bdir(addPath(master_.onlyPath().absFileName(),"Base"));
 					FileName base(addName(bdir.absFileName(),name));
 					// if base version is existent "cvs edit" was used to lock
-					vcstatus = base.isReadableFile() ? LOCKED : NOLOCKING;
+					vcstatus_ = base.isReadableFile() ? LOCKED : NOLOCKING;
 				}
 			} else {
-				vcstatus = NOLOCKING;
+				vcstatus_ = NOLOCKING;
 			}
 			break;
 		}
@@ -813,7 +813,7 @@ void CVS::getDiff(OperationMode opmode, FileName const & tmpf)
 
 int CVS::edit()
 {
-	vcstatus = LOCKED;
+	vcstatus_ = LOCKED;
 	return doVCCommand("cvs -q edit " + getTarget(File),
 		FileName(owner_->filePath()));
 }
@@ -821,7 +821,7 @@ int CVS::edit()
 
 int CVS::unedit()
 {
-	vcstatus = UNLOCKED;
+	vcstatus_ = UNLOCKED;
 	return doVCCommand("cvs -q unedit " + getTarget(File),
 		FileName(owner_->filePath()));
 }
@@ -860,7 +860,7 @@ LyXVC::CommandResult CVS::checkIn(string const & msg, string & log)
 	CvsStatus status = getStatus();
 	switch (status) {
 	case UpToDate:
-		if (vcstatus != NOLOCKING)
+		if (vcstatus_ != NOLOCKING)
 			if (unedit())
 				return LyXVC::ErrorCommand;
 		log = "CVS: Proceeded";
@@ -902,7 +902,7 @@ bool CVS::isLocked() const
 
 bool CVS::checkInEnabled()
 {
-	if (vcstatus != NOLOCKING)
+	if (vcstatus_ != NOLOCKING)
 		return isLocked();
 	else
 		return true;
@@ -918,7 +918,7 @@ bool CVS::isCheckInWithConfirmation()
 
 string CVS::checkOut()
 {
-	if (vcstatus != NOLOCKING && edit())
+	if (vcstatus_ != NOLOCKING && edit())
 		return string();
 	TempFile tempfile("lyxvout");
 	FileName tmpf = tempfile.name();
@@ -945,7 +945,7 @@ string CVS::checkOut()
 
 bool CVS::checkOutEnabled()
 {
-	if (vcstatus != NOLOCKING)
+	if (vcstatus_ != NOLOCKING)
 		return !isLocked();
 	else
 		return true;
@@ -1035,7 +1035,7 @@ bool CVS::revert()
 	CvsStatus status = getStatus();
 	switch (status) {
 	case UpToDate:
-		if (vcstatus != NOLOCKING)
+		if (vcstatus_ != NOLOCKING)
 			return 0 == unedit();
 		break;
 	case NeedsMerge:
@@ -1188,12 +1188,12 @@ void SVN::scanMaster()
 {
 	// vcstatus code is somewhat superflous,
 	// until we want to implement read-only toggle for svn.
-	vcstatus = NOLOCKING;
+	vcstatus_ = NOLOCKING;
 	if (checkLockMode()) {
 		if (isLocked())
-			vcstatus = LOCKED;
+			vcstatus_ = LOCKED;
 		else
-			vcstatus = UNLOCKED;
+			vcstatus_ = UNLOCKED;
 	}
 }
 
@@ -1864,7 +1864,7 @@ void GIT::scanMaster()
 {
 	// vcstatus code is somewhat superflous,
 	// until we want to implement read-only toggle for git.
-	vcstatus = NOLOCKING;
+	vcstatus_ = NOLOCKING;
 }
 
 

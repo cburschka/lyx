@@ -35,7 +35,7 @@ public:
 		NOLOCKING,
 	};
 
-	VCS(Buffer * b) : vcstatus(NOLOCKING), owner_(b) {}
+	VCS(Buffer * b) : vcstatus_(NOLOCKING), owner_(b) {}
 	virtual ~VCS() {}
 
 	/// the name of the vc backend
@@ -92,7 +92,7 @@ public:
 	/// return the owning buffer
 	Buffer * owner() const { return owner_; }
 	/// return the lock status of this file
-	VCStatus status() const { return vcstatus; }
+	VCStatus status() const { return vcstatus_; }
 	/// do we need special handling for read-only toggling?
 	/// (also used for check-out operation)
 	virtual bool toggleReadOnlyEnabled() = 0;
@@ -132,7 +132,7 @@ protected:
 	support::FileName master_;
 
 	/// The status of the VC controlled file.
-	VCStatus vcstatus;
+	VCStatus vcstatus_;
 
 	/// The buffer using this VC
 	Buffer * const owner_;
