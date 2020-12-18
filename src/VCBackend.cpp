@@ -537,25 +537,19 @@ CVS::CVS(FileName const & m, Buffer * b) : VCS(b)
 
 FileName const CVS::findFile(FileName const & file)
 {
-	// First we look for the CVS/Entries in the same dir
-	// where we have file.
+	LYXERR(Debug::LYXVC, "LyXVC: Checking if "
+		   << onlyFileName(file.absFileName()) << "is under cvs");
+	// First we look for the CVS/Entries in the same dir where we have file.
 	// Note that it is not necessary to search parent directories, since
 	// there will be a CVS/Entries file in every subdirectory.
 	FileName const entries(onlyPath(file.absFileName()) + "/CVS/Entries");
-	string const tmpf = '/' + onlyFileName(file.absFileName()) + '/';
-	LYXERR(Debug::LYXVC, "LyXVC: Checking if file is under cvs in `" << entries
-			     << "' for `" << tmpf << '\'');
 	if (entries.isReadableFile()) {
-		// Ok we are at least in a CVS dir. Parse the CVS/Entries
-		// and see if we can find this file. We do a fast and
-		// dirty parse here.
-		ifstream ifs(entries.toFilesystemEncoding().c_str());
-		string line;
-		while (getline(ifs, line)) {
-			LYXERR(Debug::LYXVC, "\tEntries: " << line);
-			if (contains(line, tmpf))
-				return entries;
-		}
+		// We are in a CVS-managed directory
+		// See if the file is known to CVS
+		string const cmd = "cvs log " + quoteName(file.toFilesystemEncoding());
+		int const ret = doVCCommandCall(cmd, file.onlyPath());
+		if (ret == 0)
+			return entries;
 	}
 	return FileName();
 }
@@ -1837,23 +1831,13 @@ bool GIT::findFile(FileName const & file)
 		return false;
 	}
 
-	// Now we check the status of the file.
-	TempFile tempfile("lyxvcout");
-	FileName tmpf = tempfile.name();
-	if (tmpf.empty()) {
-		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
-		return false;
-	}
-
+	// Now we check if the file is known to git.
 	string const fname = onlyFileName(file.absFileName());
 	LYXERR(Debug::LYXVC, "LyXVC: Checking if file is under git control for `"
 			<< fname << '\'');
-	doVCCommandCall("git ls-files " +
-			quoteName(fname) + " > " +
-			quoteName(tmpf.toFilesystemEncoding()),
+	int const ret = doVCCommandCall("git log " + quoteName(fname),
 			file.onlyPath());
-	tmpf.refresh();
-	bool found = !tmpf.isFileEmpty();
+	bool const found = (ret == 0);
 	LYXERR(Debug::LYXVC, "GIT control: " << (found ? "enabled" : "disabled"));
 	return found;
 }
