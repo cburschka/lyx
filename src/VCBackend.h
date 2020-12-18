@@ -492,7 +492,7 @@ public:
 	explicit
 	GIT(support::FileName const & m, Buffer * b);
 
-	/// Determine whether the file is under RCS control
+	/// Determine whether the file is under GIT control
 	/// \return the file itself if so, else empty
 	static support::FileName const findFile(support::FileName const & file);
 
