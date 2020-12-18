@@ -107,7 +107,6 @@ bool VCS::makeRCSRevision(string const &version, string &revis) const
 
 FileName VCS::checkParentDirs(FileName const & start, std::string const & file)
 {
-	static FileName empty;
 	FileName dirname = start.onlyPath();
 	do {
 		FileName tocheck = FileName(addPathName(dirname.absFileName(), file));
@@ -117,7 +116,7 @@ FileName VCS::checkParentDirs(FileName const & start, std::string const & file)
 		// this construct because of #8295
 		dirname = FileName(dirname.absFileName()).parentPath();
 	} while (!dirname.empty());
-	return empty;
+	return FileName();
 }
 
 
