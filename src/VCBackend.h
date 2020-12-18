@@ -152,7 +152,8 @@ public:
 	explicit
 	RCS(support::FileName const & m, Buffer * b);
 
-	/// return the revision file for the given file, if found
+	/// Determine whether the file is under RCS control
+	/// \return the file containing the meta-data (FILE,v) if so, else empty
 	static support::FileName const findFile(support::FileName const & file);
 
 	/// get file from repo, the caller must ensure that it does not exist locally
@@ -238,7 +239,8 @@ public:
 	explicit
 	CVS(support::FileName const & m, Buffer * b);
 
-	/// return the revision file for the given file, if found
+	/// Determine whether the file is under CVS control
+	/// \return the file containing the meta-data (CVS/entries) if so, else empty
 	static support::FileName const findFile(support::FileName const & file);
 
 	/// get file from repo, the caller must ensure that it does not exist locally
@@ -379,7 +381,8 @@ public:
 	explicit
 	SVN(support::FileName const & m, Buffer * b);
 
-	/// return the revision file for the given file, if found
+	/// Determine whether the file is under SVN control
+	/// \return the file itself if so, else empty
 	static support::FileName const findFile(support::FileName const & file);
 
 	/// get file from repo, the caller must ensure that it does not exist locally
@@ -489,7 +492,8 @@ public:
 	explicit
 	GIT(support::FileName const & m, Buffer * b);
 
-	/// return the revision file for the given file, if found
+	/// Determine whether the file is under RCS control
+	/// \return the file itself if so, else empty
 	static support::FileName const findFile(support::FileName const & file);
 
 	/// get file from repo, the caller must ensure that it does not exist locally
