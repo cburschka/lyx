@@ -1175,17 +1175,9 @@ FileName const SVN::findFile(FileName const & file)
 	}
 
 	// Now we check the status of the file.
-	TempFile tempfile("lyxvcout");
-	FileName tmpf = tempfile.name();
-	if (tmpf.empty()) {
-		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
-		return FileName();
-	}
-
 	string const fname = onlyFileName(file.absFileName());
 	LYXERR(Debug::LYXVC, "LyXVC: Checking if file is under svn control for `" << fname << '\'');
-	bool found = 0 == doVCCommandCall("svn info " + quoteName(fname)
-						+ " > " + quoteName(tmpf.toFilesystemEncoding()),
+	bool found = 0 == doVCCommandCall("svn info " + quoteName(fname),
 						file.onlyPath());
 	LYXERR(Debug::LYXVC, "SVN control: " << (found ? "enabled" : "disabled"));
 	return found ? file : FileName();
