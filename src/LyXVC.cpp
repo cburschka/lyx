@@ -198,8 +198,6 @@ bool LyXVC::registrer()
 	}
 	if (response.empty())
 		response = _("(no initial description)");
-	// FIXME This will fail with svn if the current directory has not
-	// itself been added.
 	vcs_->registrer(to_utf8(response));
 	return true;
 }

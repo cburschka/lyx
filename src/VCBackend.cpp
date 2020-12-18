@@ -1251,7 +1251,7 @@ bool SVN::retrieve(FileName const & file)
 
 void SVN::registrer(string const & /*msg*/)
 {
-	doVCCommand("svn add -q " + quoteName(onlyFileName(owner_->absFileName())),
+	doVCCommand("svn add -q --parents " + quoteName(onlyFileName(owner_->absFileName())),
 		    FileName(owner_->filePath()));
 }
 
