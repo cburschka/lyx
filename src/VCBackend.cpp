@@ -1183,12 +1183,8 @@ void SVN::scanMaster()
 	// vcstatus code is somewhat superflous,
 	// until we want to implement read-only toggle for svn.
 	vcstatus_ = NOLOCKING;
-	if (checkLockMode()) {
-		if (isLocked())
-			vcstatus_ = LOCKED;
-		else
-			vcstatus_ = UNLOCKED;
-	}
+	if (checkLockMode())
+		vcstatus_ = isLocked() ? LOCKED : UNLOCKED;
 }
 
 
