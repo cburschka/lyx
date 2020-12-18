@@ -105,7 +105,7 @@ public:
 
 	/// Check the directory of file and all parent directories
 	/// for the existence of repository-info like .git or .svn
-	static bool checkparentdirs(support::FileName const & file, std::string const & vcsdir);
+	static bool checkParentDirs(support::FileName const & file, std::string const & vcsdir);
 
 protected:
 	/// parse information from the version file

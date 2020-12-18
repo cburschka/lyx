@@ -105,7 +105,7 @@ bool VCS::makeRCSRevision(string const &version, string &revis) const
 }
 
 
-bool VCS::checkparentdirs(FileName const & file, std::string const & vcsdir)
+bool VCS::checkParentDirs(FileName const & file, std::string const & vcsdir)
 {
 	FileName dirname = file.onlyPath();
 	do {
@@ -1167,7 +1167,7 @@ SVN::SVN(FileName const & m, Buffer * b) : VCS(b)
 FileName const SVN::findFile(FileName const & file)
 {
 	// First we check the existence of repository meta data.
-	if (!VCS::checkparentdirs(file, ".svn")) {
+	if (!VCS::checkParentDirs(file, ".svn")) {
 		LYXERR(Debug::LYXVC, "Cannot find SVN meta data for " << file);
 		return FileName();
 	}
@@ -1839,7 +1839,7 @@ GIT::GIT(FileName const & m, Buffer * b) : VCS(b)
 FileName const GIT::findFile(FileName const & file)
 {
 	// First we check the existence of repository meta data.
-	if (!VCS::checkparentdirs(file, ".git")) {
+	if (!VCS::checkParentDirs(file, ".git")) {
 		LYXERR(Debug::LYXVC, "Cannot find GIT meta data for " << file);
 		return FileName();
 	}
