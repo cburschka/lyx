@@ -103,9 +103,15 @@ public:
 	/// can this operation be processed in the current VCS?
 	virtual bool prepareFileRevisionEnabled() = 0;
 
-	/// Check the directory of file and all parent directories
-	/// for the existence of repository-info like .git or .svn
-	static bool checkParentDirs(support::FileName const & file, std::string const & vcsdir);
+	/// Check the directory given in start and all parent directories
+	/// for the existence of some other file
+	/// \param start : where we start looking (we will strip the filename if given
+	///			and just use the directory
+	/// \param file : the directory or file for which to look
+	///			Note that this can be e.g. ".git/index", so we will look for the .git
+	///			directory and also for an index file in it.
+	/// Returns a FileName object for the found file or else an empty FileName
+	static support::FileName checkParentDirs(support::FileName const & start, std::string const & file);
 
 protected:
 	/// parse information from the version file

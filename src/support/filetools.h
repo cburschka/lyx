@@ -210,7 +210,11 @@ std::string const quoteName(std::string const & file, quote_style style = quote_
 /// Add a filename to a path. Any path from filename is stripped first.
 std::string const addName(std::string const & path, std::string const & fname);
 
-/// Append sub-directory(ies) to path in an intelligent way
+/// Add a relative path to a path. Does not strip the pathname
+std::string const addPathName(std::string const & path, std::string const & fname);
+
+/// Append sub-directory(ies) to path in an intelligent way. Will append the
+/// trailing directory separator if that is not provided.
 std::string const addPath(std::string const & path, std::string const & path2);
 
 /** Change extension of oldname to extension.

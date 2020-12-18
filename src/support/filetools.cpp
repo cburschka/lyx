@@ -654,6 +654,19 @@ string const addName(string const & path, string const & fname)
 }
 
 
+string const addPathName(std::string const & path, std::string const & fname)
+{
+	string const pathpart = onlyPath(fname);
+	string const namepart = onlyFileName(fname);
+	string newpath = path;
+	if (!pathpart.empty())
+		newpath = addPath(newpath, pathpart);
+	if (!namepart.empty())
+		newpath = addName(newpath, namepart);
+	return newpath;
+}
+
+
 // Strips path from filename
 string const onlyFileName(string const & fname)
 {

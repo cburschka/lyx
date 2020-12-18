@@ -153,30 +153,36 @@ bool LyXVC::registrer()
 
 	// it is very likely here that the vcs is not created yet...
 	if (!vcs_) {
-		//check in the root directory of the document
-		FileName const cvs_entries(onlyPath(filename.absFileName()) + "/CVS/Entries");
-		FileName const svn_entries(onlyPath(filename.absFileName()) + "/.svn/entries");
-		FileName const git_index(onlyPath(filename.absFileName()) + "/.git/index");
+		FileName found = VCS::checkParentDirs(filename, ".git/index");
 
-		if (git_index.isReadableFile()) {
+		if (!found.empty()) {
 			LYXERR(Debug::LYXVC, "LyXVC: registering "
 				<< to_utf8(filename.displayName()) << " with GIT");
-			vcs_.reset(new GIT(git_index, owner_));
-
-		} else if (svn_entries.isReadableFile()) {
-			LYXERR(Debug::LYXVC, "LyXVC: registering "
-				<< to_utf8(filename.displayName()) << " with SVN");
-			vcs_.reset(new SVN(svn_entries, owner_));
-
-		} else if (cvs_entries.isReadableFile()) {
-			LYXERR(Debug::LYXVC, "LyXVC: registering "
-				<< to_utf8(filename.displayName()) << " with CVS");
-			vcs_.reset(new CVS(cvs_entries, owner_));
+			vcs_.reset(new GIT(found, owner_));
 
 		} else {
-			LYXERR(Debug::LYXVC, "LyXVC: registering "
-				<< to_utf8(filename.displayName()) << " with RCS");
-			vcs_.reset(new RCS(FileName(), owner_));
+			found = VCS::checkParentDirs(filename, ".svn/entries");
+			if (!found.empty()) {
+				LYXERR(Debug::LYXVC, "LyXVC: registering "
+					<< to_utf8(filename.displayName()) << " with SVN");
+				vcs_.reset(new SVN(found, owner_));
+
+			} else {
+				// We only need to check the current directory, since CVS meta-data
+				// is in every sub-directory.
+				FileName const cvs_entries(onlyPath(filename.absFileName()) + "/CVS/Entries");
+				if (cvs_entries.isReadableFile()) {
+					LYXERR(Debug::LYXVC, "LyXVC: registering "
+						<< to_utf8(filename.displayName()) << " with CVS");
+					vcs_.reset(new CVS(cvs_entries, owner_));
+
+				} else {
+					// If all else fails, use RCS
+					LYXERR(Debug::LYXVC, "LyXVC: registering "
+						<< to_utf8(filename.displayName()) << " with RCS");
+					vcs_.reset(new RCS(FileName(), owner_));
+				}
+			}
 		}
 	}
 
@@ -191,6 +197,8 @@ bool LyXVC::registrer()
 	}
 	if (response.empty())
 		response = _("(no initial description)");
+	// FIXME This will fail with svn if the current directory has not
+	// itself been added.
 	vcs_->registrer(to_utf8(response));
 	return true;
 }
