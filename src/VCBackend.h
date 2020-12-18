@@ -129,7 +129,8 @@ protected:
 	 * @param path the path from which to execute
 	 * @return exit status
 	 */
-	static int doVCCommandCall(std::string const & cmd, support::FileName const & path);
+	static int doVCCommandCall(std::string const & cmd,
+			support::FileName const & path = support::FileName());
 
 	/// The status of the VC controlled file.
 	VCStatus vcstatus_;

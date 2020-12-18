@@ -161,8 +161,8 @@ bool RCS::retrieve(FileName const & file)
 {
 	LYXERR(Debug::LYXVC, "LyXVC::RCS: retrieve.\n\t" << file);
 	// The caller ensures that file does not exist, so no need to check that.
-	return doVCCommandCall("co -q -r " + quoteName(file.toFilesystemEncoding()),
-	                       FileName()) == 0;
+	int const ret = doVCCommandCall("co -q -r " + quoteName(file.toFilesystemEncoding()));
+	return ret == 0;
 }
 
 

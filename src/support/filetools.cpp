@@ -1147,7 +1147,7 @@ cmd_ret const runCommand(string const & cmd)
 FileName const findtexfile(string const & fil, string const & /*format*/,
 						   bool const onlykpse)
 {
-	/* There is no problem to extend this function too use other
+	/* There is no problem to extend this function to use other
 	   methods to look for files. It could be setup to look
 	   in environment paths and also if wanted as a last resort
 	   to a recursive find. One of the easier extensions would
