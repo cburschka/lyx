@@ -450,8 +450,8 @@ void InsetMathNest::handleNest(Cursor & cur, MathAtom const & nest)
 void InsetMathNest::handleNest(Cursor & cur, MathAtom const & nest,
 	docstring const & arg)
 {
-	CursorSlice i1 = cur.selBegin();
-	CursorSlice i2 = cur.selEnd();
+	DocIterator const i1 = cur.selectionBegin();
+	DocIterator const i2 = cur.selectionEnd();
 	if (!i1.inset().asInsetMath())
 		return;
 	if (i1.idx() == i2.idx()) {
@@ -462,8 +462,9 @@ void InsetMathNest::handleNest(Cursor & cur, MathAtom const & nest,
 	}
 
 	// multiple selected cells in a simple non-grid inset
-	if (i1.asInsetMath()->nrows() == 0 || i1.asInsetMath()->ncols() == 0) {
+	if (i1.inset().nrows() == 0 || i1.inset().ncols() == 0) {
 		for (idx_type i = i1.idx(); i <= i2.idx(); ++i) {
+			cur.setCursor(i1);
 			// select cell
 			cur.idx() = i;
 			cur.pos() = 0;
@@ -471,14 +472,9 @@ void InsetMathNest::handleNest(Cursor & cur, MathAtom const & nest,
 			cur.pos() = cur.lastpos();
 			cur.setSelection();
 
-			// change font of cell
+			// do the real job
 			cur.handleNest(nest);
 			cur.insert(arg);
-
-			// cur is in the font inset now. If the loop continues,
-			// we need to get outside again for the next cell
-			if (i + 1 <= i2.idx())
-				cur.pop_back();
 		}
 		return;
 	}
@@ -486,17 +482,18 @@ void InsetMathNest::handleNest(Cursor & cur, MathAtom const & nest,
 	// the complicated case with multiple selected cells in a grid
 	row_type r1, r2;
 	col_type c1, c2;
-	cap::region(i1, i2, r1, r2, c1, c2);
+	cap::region(i1.top(), i2.top(), r1, r2, c1, c2);
 	for (row_type row = r1; row <= r2; ++row) {
 		for (col_type col = c1; col <= c2; ++col) {
+			cur.setCursor(i1);
 			// select cell
-			cur.idx() = i1.asInsetMath()->index(row, col);
+			cur.idx() = i1.inset().index(row, col);
 			cur.pos() = 0;
 			cur.resetAnchor();
 			cur.pos() = cur.lastpos();
 			cur.setSelection();
 
-			//
+			// do the real job
 			cur.handleNest(nest);
 			cur.insert(arg);
 		}
