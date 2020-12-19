@@ -182,17 +182,13 @@ void InsetMathDelim::mathematica(MathematicaStream & os) const
 void InsetMathDelim::mathmlize(MathStream & ms) const
 {
 	ms << "<" << from_ascii(ms.namespacedTag("mo")) << " form='prefix' fence='true' stretchy='true' symmetric='true'>"
-	   << "<" << from_ascii(ms.namespacedTag("mrow")) << ">"
 	   << convertDelimToXMLEscape(left_, ms.xmlMode())
-	   << "</" << from_ascii(ms.namespacedTag("mrow")) << ">"
 	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">"
 	   << "\n"
 	   << cell(0)
 	   << "\n"
 	   << "<" << from_ascii(ms.namespacedTag("mo")) << " form='postfix' fence='true' stretchy='true' symmetric='true'>"
-	   << "<" << from_ascii(ms.namespacedTag("mrow")) << ">"
 	   << convertDelimToXMLEscape(right_, ms.xmlMode())
-	   << "</" << from_ascii(ms.namespacedTag("mrow")) << ">"
 	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">"
 	   << "\n";
 }
