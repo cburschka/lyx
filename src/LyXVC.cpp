@@ -99,9 +99,8 @@ bool LyXVC::file_found_hook(FileName const & fn)
 bool LyXVC::file_not_found_hook(FileName const & fn)
 {
 	// Check if file is under version control.
-	// This happens if we are trying to load does not exist.
-	// It may yet exist in the repository and so could be
-	// checked out.
+	// This happens if we are trying to load file that does not exist.
+	// It may yet exist in the repository and so could be checked out.
 	bool foundRCS = !RCS::findFile(fn).empty();
 	bool foundCVS = foundRCS ? false : !CVS::findFile(fn).empty();
 	bool foundSVN = (foundRCS || foundCVS) ? false : SVN::findFile(fn);
