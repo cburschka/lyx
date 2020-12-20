@@ -45,19 +45,4 @@ liblyxhunspell_a_SOURCES = \
 	1.7.0/src/hunspell/suggestmgr.hxx \
 	1.7.0/src/hunspell/utf_info.hxx \
 	1.7.0/src/hunspell/w_char.hxx \
-	1.7.0/src/parsers/firstparser.cxx \
-	1.7.0/src/parsers/firstparser.hxx \
-	1.7.0/src/parsers/htmlparser.cxx \
-	1.7.0/src/parsers/htmlparser.hxx \
-	1.7.0/src/parsers/latexparser.cxx \
-	1.7.0/src/parsers/latexparser.hxx \
-	1.7.0/src/parsers/manparser.cxx \
-	1.7.0/src/parsers/manparser.hxx \
-	1.7.0/src/parsers/odfparser.cxx \
-	1.7.0/src/parsers/odfparser.hxx \
-	1.7.0/src/parsers/testparser.cxx \
-	1.7.0/src/parsers/textparser.cxx \
-	1.7.0/src/parsers/textparser.hxx \
-	1.7.0/src/parsers/xmlparser.cxx \
-	1.7.0/src/parsers/xmlparser.hxx \
 	1.7.0/src/win_api/config.h
