@@ -454,6 +454,18 @@ AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 	    [lyx_cv_with_included_boost=no])
 	AM_CONDITIONAL(USE_INCLUDED_BOOST, test x$lyx_cv_with_included_boost = xyes)
 	AC_MSG_RESULT([$lyx_cv_with_included_boost])
+	if test x$lyx_cv_with_included_boost = xno ; then
+	    AC_LANG_PUSH(C++)
+	    AC_MSG_CHECKING([for boost library])
+	    AC_LINK_IFELSE(
+		[AC_LANG_PROGRAM([#include <boost/crc.hpp>],
+		    [boost::crc_32_type crc;])],
+		[AC_MSG_RESULT([yes])],
+		[AC_MSG_RESULT([no])
+		lyx_cv_with_included_boost=yes
+	    ])
+	    AC_LANG_POP(C++)
+	fi
 	if test x$lyx_cv_with_included_boost = xyes ; then
 	    lyx_included_libs="$lyx_included_libs boost"
 	    BOOST_INCLUDES='-I$(top_srcdir)/3rdparty/boost'
