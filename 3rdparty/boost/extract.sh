@@ -38,8 +38,8 @@ bcp --boost=$1 $HEADERS needed/
 # we do not use the provided MSVC project files
 find needed -name '*.vcpro*' | xargs rm
 
-# remove old boost headers
-find boost -name \*.hpp | xargs rm
+# remove old boost code
+rm -rf boost/*
 
 # copy new headers
 cp -vR needed/boost .
