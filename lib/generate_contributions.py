@@ -492,6 +492,14 @@ contributors = [
                  "3 January 2009",
                  u"CMake build system, Slovak translation, Advanced search with format"),
 
+     contributor(u"Lorenzo Bertini",
+                 "lorenzobertini97 () gmail ! com",
+                 "GPL",
+                 "Contributions licensing",
+                 "m=160829081615487",
+                 "18 December 2020",
+                 u"Bug fixes"),
+
      contributor(u"Jacob Bishop",
                  "bishop.jacob () gmail ! com",
                  "GPL",
