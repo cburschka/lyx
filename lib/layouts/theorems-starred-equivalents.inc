@@ -1,7 +1,7 @@
 # Sets the order of the main theorem environments
 # Author: Richard Kimberly Heck
 
-Format 89
+Format 90
 
 Style Theorem
 	CopyStyle	Theorem*

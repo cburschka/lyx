@@ -7,7 +7,7 @@
 # in stdclass.inc, so any file that includes either of these will get
 # the standard RefPrefix definitions.
 
-Format 89
+Format 90
 
 ModifyStyle Part
 	RefPrefix part
