@@ -15,7 +15,7 @@ set(HUNSPELL_VERSION 1.7.0)
 
 set(SRCDIR ${CMAKE_CURRENT_SOURCE_DIR}/${HUNSPELL_VERSION}/src)
 
-include_directories(./ ${SRCDIR}/hunspell ${SRCDIR}/parsers ${SRCDIR}/tools)
+include_directories(./ ${SRCDIR}/hunspell)
 
 if(WIN32)
     include_directories(${SRCDIR}/win_api)
