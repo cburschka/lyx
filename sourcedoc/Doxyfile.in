@@ -310,10 +310,9 @@ INPUT                  = @top_srcdir@/src
 # *.c *.cc *.cxx *.cpp *.c++ *.java *.ii *.ixx *.ipp *.i++ *.inl *.h *.hh *.hxx *.hpp 
 # *.h++ *.idl *.odl
 
-FILE_PATTERNS          = *.C \
+FILE_PATTERNS          = *.cpp \
                          *.h \
-                         *.c \
-			 *.cpp
+                         *.c
 
 # The RECURSIVE tag can be used to turn specify whether or not subdirectories 
 # should be searched for input files as well. Possible values are YES and NO. 
@@ -878,6 +877,8 @@ GENERATE_LEGEND        = YES
 # the various graphs.
 
 DOT_CLEANUP            = YES
+
+DOT_GRAPH_MAX_NODES    = 200
 
 #---------------------------------------------------------------------------
 # Configuration::addtions related to the search engine   
