@@ -245,6 +245,8 @@ public:
 	// Dissolve the inset under cursor
 	/// FIXME: replace Cursor with DocIterator.
 	bool dissolveInset(Cursor & cur);
+	/// FIXME: replace Cursor with DocIterator.
+	bool splitInset(Cursor & cur);
 	///
 	bool selectWordWhenUnderCursor(Cursor & cur, word_location);
 	/// Change the case of the word at cursor position.

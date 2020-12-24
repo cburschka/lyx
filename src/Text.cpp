@@ -33,6 +33,7 @@
 #include "ErrorList.h"
 #include "factory.h"
 #include "Font.h"
+#include "FuncRequest.h"
 #include "Language.h"
 #include "Layout.h"
 #include "Lexer.h"
@@ -1894,6 +1895,80 @@ bool Text::dissolveInset(Cursor & cur)
 	cur.resetAnchor();
 	cur.forceBufferUpdate();
 
+	return true;
+}
+
+
+bool Text::splitInset(Cursor & cur)
+{
+	LASSERT(this == cur.text(), return false);
+
+	if (isMainText() || cur.inset().nargs() != 1)
+		return false;
+
+	cur.recordUndo();
+	if (cur.selection()) {
+		// start from selection begin
+		setCursor(cur, cur.selBegin().pit(), cur.selBegin().pos());
+		cur.clearSelection();
+	}
+	// save split position inside inset
+	// (we need to copy the whole inset first)
+	pos_type spos = cur.pos();
+	pit_type spit = cur.pit();
+	// some things only need to be done if the inset has content
+	bool const inset_non_empty = cur.lastpit() != 0 || cur.lastpos() != 0;
+
+	// move right before the inset
+	cur.popBackward();
+	cur.resetAnchor();
+	// remember position outside inset
+	pos_type ipos = cur.pos();
+	pit_type ipit = cur.pit();
+	// select inset ...
+	++cur.pos();
+	cur.setSelection();
+	// ... and copy
+	cap::copySelectionToTemp(cur);
+	cur.clearSelection();
+	cur.resetAnchor();
+	// paste copied inset
+	cap::pasteFromTemp(cur, cur.buffer()->errorList("Paste"));
+	cur.forceBufferUpdate();
+
+	// if the inset has text, cut after split position
+	// and paste to new inset
+	if (inset_non_empty) {
+		// go back to first inset
+		cur.text()->setCursor(cur, ipit, ipos);
+		cur.forwardPos();
+		setCursor(cur, spit, spos);
+		cur.resetAnchor();
+		setCursor(cur, cur.lastpit(), getPar(cur.lastpit()).size());
+		cur.setSelection();
+		cap::cutSelectionToTemp(cur);
+		cur.setMark(false);
+		cur.selHandle(false);
+		cur.resetAnchor();
+		Cursor dummy = cur;
+		dummy.pos() = dummy.pit() = 0;
+		if (cur.bv().checkDepm(dummy, cur))
+			cur.forceBufferUpdate();
+		// Move out of and jump over inset
+		cur.popBackward();
+		++cur.pos();
+
+		// enter new inset
+		cur.forwardPos();
+		cur.setCursor(cur);
+		cur.resetAnchor();
+		cur.text()->selectAll(cur);
+		cutSelection(cur, false);
+		cap::pasteFromTemp(cur, cur.buffer()->errorList("Paste"));
+		cur.text()->setCursor(cur, 0, 0);
+	}
+
+	cur.finishUndo();
 	return true;
 }
 

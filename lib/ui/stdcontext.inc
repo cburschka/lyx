@@ -357,6 +357,8 @@ Menuset
 		Item "Paste" "paste"
 		Submenu "Paste Recent|e" "edit_pasterecent"
 		Separator
+		OptItem "Split Inset|t" "inset-split"
+		Separator
 		Item "Jump Back to Saved Bookmark|B" "bookmark-goto 0"
 		OptItem "Forward Search|F" "forward-search"
 		Separator

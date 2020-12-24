@@ -493,6 +493,7 @@ enum FuncCode
 	LFUN_CITATION_OPEN,             // sanda, 20200815
 	LFUN_TOOLBAR_SET,               // spitz 20201217
 	// 385
+	LFUN_INSET_SPLIT,               // jspitzm 20201222
 	LFUN_LASTACTION                 // end of the table
 };
 

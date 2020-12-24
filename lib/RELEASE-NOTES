@@ -95,6 +95,9 @@
 * paragraph-select is a new convenience function to select the paragraph
   surrounding the actual cursor position.
 
+* split-inset is a new convenience function that splits an inset into two at the given
+  cursor position. This is only implemented for text insets currently.
+
 * tabular-style-insert: Insert a table in a specified style.
 
 

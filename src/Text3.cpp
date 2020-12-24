@@ -1370,6 +1370,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_INSET_SPLIT: {
+		if (splitInset(cur)) {
+			needsUpdate = true;
+			cur.forceBufferUpdate();
+		}
+		break;
+	}
+
 	case LFUN_GRAPHICS_SET_GROUP: {
 		InsetGraphics * ins = graphics::getCurrentGraphicsInset(cur);
 		if (!ins)

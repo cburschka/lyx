@@ -4226,6 +4226,7 @@ bool InsetTableCell::getStatus(Cursor & cur, FuncRequest const & cmd,
 {
 	bool enabled = true;
 	switch (cmd.action()) {
+	case LFUN_INSET_SPLIT:
 	case LFUN_INSET_DISSOLVE:
 		enabled = false;
 		break;

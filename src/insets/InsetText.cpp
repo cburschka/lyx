@@ -320,6 +320,7 @@ void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 		fixParagraphsFont();
 		break;
 
+	case LFUN_INSET_SPLIT:
 	case LFUN_INSET_DISSOLVE: {
 		bool const main_inset = text_.isMainText();
 		bool const target_inset = cmd.argument().empty()
@@ -351,6 +352,7 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
 	switch (cmd.action()) {
+	case LFUN_INSET_SPLIT:
 	case LFUN_INSET_DISSOLVE: {
 		bool const main_inset = text_.isMainText();
 		bool const target_inset = cmd.argument().empty()

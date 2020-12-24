@@ -2226,6 +2226,20 @@ void LyXAction::init()
 		{ LFUN_INSET_SETTINGS, "inset-settings", ReadOnly | AtPoint, Edit },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_INSET_SPLIT
+ * \li Action: Splits the current inset into two at current position.
+ * \li Syntax: inset-split [<INSET>]
+ * \li Params: <INSET>: this can be used to make sure the right kind of inset
+			is dissolved. For example "split" entry in the charstyles
+			sub-menu should only dissolve the charstyle inset, even if the
+			cursor is inside several nested insets of different type.\n
+			For values see #lyx::InsetLayout::lyxtype_ .
+ * \li Origin: spitz, 22 Dec 2020
+ * \endvar
+ */
+		{ LFUN_INSET_SPLIT, "inset-split", AtPoint, Edit },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_INSET_TOGGLE
  * \li Action: Toggles the collapsible inset at cursor position,
                or the inset we are currently in.
