@@ -608,8 +608,8 @@ unsigned long FileName::checksum() const
 		return 0;
 	}
 
-	char * beg = static_cast<char*>(mm);
-	char * end = beg + info.st_size;
+	unsigned char * beg = static_cast<unsigned char*>(mm);
+	unsigned char * end = beg + info.st_size;
 
 	result = support::checksum(beg, end);
 

@@ -9,9 +9,10 @@
  * Full author contact details are available in file CREDITS.
  */
 
+#include <config.h>
 #include "support/checksum.h"
-#include "boost/crc.hpp"
-#include <algorithm>
+
+#include <zlib.h>
 
 namespace lyx {
 
@@ -19,9 +20,8 @@ namespace support {
 
 unsigned long checksum(std::string const & s)
 {
-	boost::crc_32_type crc;
-	crc.process_bytes(s.c_str(), s.size());
-	return crc.checksum();
+	auto p = reinterpret_cast<unsigned char const *>(s.c_str());
+	return crc32(0, p, s.size());
 }
 
 unsigned long checksum(std::ifstream & ifs)
@@ -29,16 +29,17 @@ unsigned long checksum(std::ifstream & ifs)
 	std::istreambuf_iterator<char> beg(ifs);
 	std::istreambuf_iterator<char> end;
 
-	boost::crc_32_type crc;
-	crc = for_each(beg, end, crc);
-	return crc.checksum();
+	unsigned long sum = 0;
+	for (auto & it = beg; beg != end; ++it) {
+		unsigned char c = *it;
+		sum = crc32(sum, &c, 1);
+	}
+	return sum;
 }
 
-unsigned long checksum(char const * beg, char const * end)
+unsigned long checksum(unsigned char const * beg, unsigned char const * end)
 {
-	boost::crc_32_type crc;
-	crc.process_block(beg, end);
-	return crc.checksum();
+	return crc32(0, beg, end - beg);
 }
 
 } // namespace support

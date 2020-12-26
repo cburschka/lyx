@@ -21,7 +21,7 @@ namespace support {
 
 unsigned long checksum(std::string const & s);
 unsigned long checksum(std::ifstream & ifs);
-unsigned long checksum(char const * beg, char const * end);
+unsigned long checksum(unsigned char const * beg, unsigned char const * end);
 
 } // namespace support
 
