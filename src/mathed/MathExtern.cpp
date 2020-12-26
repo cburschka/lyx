@@ -1395,7 +1395,7 @@ namespace {
 
 } // namespace
 
-void write(MathData const & dat, WriteStream & wi)
+void write(MathData const & dat, TeXMathStream & wi)
 {
 	wi.firstitem() = true;
 	docstring s;
@@ -1419,7 +1419,7 @@ void write(MathData const & dat, WriteStream & wi)
 }
 
 
-void writeString(docstring const & s, WriteStream & os)
+void writeString(docstring const & s, TeXMathStream & os)
 {
 	if (!os.latex()) {
 		os << (os.asciiOnly() ? escape(s) : s);
@@ -1436,14 +1436,14 @@ void writeString(docstring const & s, WriteStream & os)
 				os.pendingSpace(space);
 			} catch (EncodingException const & e) {
 				switch (os.output()) {
-				case WriteStream::wsDryrun: {
+				case TeXMathStream::wsDryrun: {
 					os << "<" << _("LyX Warning: ")
 					   << _("uncodable character") << " '";
 					os << docstring(1, e.failed_char);
 					os << "'>";
 					break;
 				}
-				case WriteStream::wsPreview: {
+				case TeXMathStream::wsPreview: {
 					// indicate the encoding error by a boxed '?'
 					os << "{\\fboxsep=1pt\\fbox{?}}";
 					LYXERR0("Uncodable character" << " '"
@@ -1451,7 +1451,7 @@ void writeString(docstring const & s, WriteStream & os)
 						<< "'");
 					break;
 				}
-				case WriteStream::wsDefault:
+				case TeXMathStream::wsDefault:
 				default:
 					// throw again
 					throw;
@@ -1510,14 +1510,14 @@ void writeString(docstring const & s, WriteStream & os)
 				os.pendingSpace(true);
 		} catch (EncodingException const & e) {
 			switch (os.output()) {
-			case WriteStream::wsDryrun: {
+			case TeXMathStream::wsDryrun: {
 				os << "<" << _("LyX Warning: ")
 				   << _("uncodable character") << " '";
 				os << docstring(1, e.failed_char);
 				os << "'>";
 				break;
 			}
-			case WriteStream::wsPreview: {
+			case TeXMathStream::wsPreview: {
 				// indicate the encoding error by a boxed '?'
 				os << "{\\fboxsep=1pt\\fbox{?}}";
 				LYXERR0("Uncodable character" << " '"
@@ -1525,7 +1525,7 @@ void writeString(docstring const & s, WriteStream & os)
 					<< "'");
 				break;
 			}
-			case WriteStream::wsDefault:
+			case TeXMathStream::wsDefault:
 			default:
 				// throw again
 				throw;

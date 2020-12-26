@@ -82,7 +82,7 @@ public:
 	///
 	bool extraBraces() const override;
 	///
-	void write(WriteStream & os) const override;
+	void write(TeXMathStream & os) const override;
 	///
 	void maple(MapleStream &) const override;
 	///
@@ -121,7 +121,7 @@ public:
 	///
 	explicit InsetMathBinom(Buffer * buf, Kind kind = BINOM);
 	///
-	void write(WriteStream & os) const override;
+	void write(TeXMathStream & os) const override;
 	///
 	void normalize(NormalStream &) const override;
 	/// Generalized fractions are of inner class (see The TeXbook, p.292)

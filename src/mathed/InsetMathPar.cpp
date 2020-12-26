@@ -42,7 +42,7 @@ void InsetMathPar::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetMathPar::write(WriteStream & os) const
+void InsetMathPar::write(TeXMathStream & os) const
 {
 	for (idx_type i = 0; i < nargs(); ++i)
 		os << cell(i) << "\n";

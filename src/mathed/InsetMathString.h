@@ -49,7 +49,7 @@ public:
 	///
 	void mathmlize(MathMLStream &) const override;
 	///
-	void write(WriteStream & os) const override;
+	void write(TeXMathStream & os) const override;
 	///
 	InsetCode lyxCode() const override { return MATH_STRING_CODE; }
 

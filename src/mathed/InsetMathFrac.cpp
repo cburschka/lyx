@@ -386,7 +386,7 @@ void InsetMathFrac::drawT(TextPainter & /*pain*/, int /*x*/, int /*y*/) const
 }
 
 
-void InsetMathFrac::write(WriteStream & os) const
+void InsetMathFrac::write(TeXMathStream & os) const
 {
 	MathEnsurer ensurer(os);
 	switch (kind_) {
@@ -698,7 +698,7 @@ bool InsetMathBinom::extraBraces() const
 }
 
 
-void InsetMathBinom::write(WriteStream & os) const
+void InsetMathBinom::write(TeXMathStream & os) const
 {
 	MathEnsurer ensurer(os);
 	switch (kind_) {

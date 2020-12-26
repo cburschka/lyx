@@ -88,7 +88,7 @@ void InsetMathArray::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetMathArray::write(WriteStream & os) const
+void InsetMathArray::write(TeXMathStream & os) const
 {
 	MathEnsurer ensurer(os);
 

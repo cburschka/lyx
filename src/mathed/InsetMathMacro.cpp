@@ -1133,7 +1133,7 @@ bool InsetMathMacro::folded() const
 }
 
 
-void InsetMathMacro::write(WriteStream & os) const
+void InsetMathMacro::write(TeXMathStream & os) const
 {
 	mode_type mode = currentMode();
 	MathEnsurer ensurer(os, mode == MATH_MODE, true, mode == TEXT_MODE);

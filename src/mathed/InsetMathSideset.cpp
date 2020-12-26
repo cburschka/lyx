@@ -334,7 +334,7 @@ bool InsetMathSideset::idxUpDown(Cursor & cur, bool up) const
 }
 
 
-void InsetMathSideset::write(WriteStream & os) const
+void InsetMathSideset::write(TeXMathStream & os) const
 {
 	MathEnsurer ensurer(os);
 

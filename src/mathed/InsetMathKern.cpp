@@ -57,7 +57,7 @@ void InsetMathKern::draw(PainterInfo &, int, int) const
 {}
 
 
-void InsetMathKern::write(WriteStream & os) const
+void InsetMathKern::write(TeXMathStream & os) const
 {
 	if (wid_.empty())
 		os << "\\kern" << ' ';

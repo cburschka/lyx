@@ -97,7 +97,7 @@ void InsetMathSubstack::infoize(odocstream & os) const
 }
 
 
-void InsetMathSubstack::write(WriteStream & os) const
+void InsetMathSubstack::write(TeXMathStream & os) const
 {
 	MathEnsurer ensurer(os);
 	os << "\\substack{";

@@ -59,7 +59,7 @@ void InsetMathSize::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetMathSize::write(WriteStream & os) const
+void InsetMathSize::write(TeXMathStream & os) const
 {
 	MathEnsurer ensurer(os);
 	os << "{\\" << key_->name << ' ' << cell(0) << '}';

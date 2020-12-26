@@ -104,7 +104,7 @@ public:
 	void dump() const override;
 
 	/// writes \\, name(), and args in braces and '\\lyxlock' if necessary
-	void write(WriteStream & os) const override;
+	void write(TeXMathStream & os) const override;
 	/// writes [, name(), and args in []
 	void normalize(NormalStream & os) const override;
 	///

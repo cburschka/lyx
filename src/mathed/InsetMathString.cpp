@@ -101,7 +101,7 @@ void InsetMathString::mathmlize(MathMLStream &) const
 }
 
 
-void InsetMathString::write(WriteStream & os) const
+void InsetMathString::write(TeXMathStream & os) const
 {
 	writeString(str_, os);
 }

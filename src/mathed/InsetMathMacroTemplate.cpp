@@ -1170,20 +1170,20 @@ void InsetMathMacroTemplate::write(ostream & os) const
 {
 	odocstringstream oss;
 	otexrowstream ots(oss);
-	WriteStream wi(ots, false, false, WriteStream::wsDefault);
+	TeXMathStream wi(ots, false, false, TeXMathStream::wsDefault);
 	oss << "FormulaMacro\n";
 	write(wi);
 	os << to_utf8(oss.str());
 }
 
 
-void InsetMathMacroTemplate::write(WriteStream & os) const
+void InsetMathMacroTemplate::write(TeXMathStream & os) const
 {
 	write(os, false);
 }
 
 
-int InsetMathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) const
+int InsetMathMacroTemplate::write(TeXMathStream & os, bool overwriteRedefinition) const
 {
 	int num_lines = 0;
 

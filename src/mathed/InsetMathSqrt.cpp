@@ -69,7 +69,7 @@ void InsetMathSqrt::drawT(TextPainter & /*pain*/, int /*x*/, int /*y*/) const
 }
 
 
-void InsetMathSqrt::write(WriteStream & os) const
+void InsetMathSqrt::write(TeXMathStream & os) const
 {
 	MathEnsurer ensurer(os);
 	os << "\\sqrt{" << cell(0) << '}';

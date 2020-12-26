@@ -91,7 +91,7 @@ void InsetMathSpecialChar::drawT(TextPainter & pain, int x, int y) const
 }
 
 
-void InsetMathSpecialChar::write(WriteStream & os) const
+void InsetMathSpecialChar::write(TeXMathStream & os) const
 {
 	os << '\\' << name_;
 	if (name_.size() != 1)

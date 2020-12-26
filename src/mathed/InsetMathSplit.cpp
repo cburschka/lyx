@@ -142,7 +142,7 @@ bool InsetMathSplit::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetMathSplit::write(WriteStream & ws) const
+void InsetMathSplit::write(TeXMathStream & ws) const
 {
 	MathEnsurer ensurer(ws);
 	if (ws.fragile())

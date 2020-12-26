@@ -35,7 +35,7 @@ public:
 	int kerning(BufferView const *) const override { return kerning_; }
 
 	///
-	void write(WriteStream & os) const override;
+	void write(TeXMathStream & os) const override;
 	///
 	void validate(LaTeXFeatures & features) const override;
 	///

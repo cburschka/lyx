@@ -380,7 +380,7 @@ void initMath()
 }
 
 
-bool ensureMath(WriteStream & os, bool needs_mathmode, bool macro,
+bool ensureMath(TeXMathStream & os, bool needs_mathmode, bool macro,
                 bool textmode_macro)
 {
 	bool brace = os.pendingBrace();
@@ -420,8 +420,8 @@ bool ensureMath(WriteStream & os, bool needs_mathmode, bool macro,
 }
 
 
-int ensureMode(WriteStream & os, InsetMath::mode_type mode,
-		bool locked, bool ascii)
+int ensureMode(TeXMathStream & os, InsetMath::mode_type mode,
+               bool locked, bool ascii)
 {
 	bool textmode = mode == InsetMath::TEXT_MODE;
 	if (os.latex() && textmode && os.pendingBrace()) {

@@ -819,11 +819,11 @@ void PreviewLoader::Impl::dumpPreamble(otexstream & os, Flavor flavor) const
 	buffer_.writeLaTeXSource(os, buffer_.filePath(), runparams, Buffer::OnlyPreamble);
 
 	// FIXME! This is a HACK! The proper fix is to control the 'true'
-	// passed to WriteStream below:
+	// passed to TeXMathStream below:
 	// int InsetMathNest::latex(Buffer const &, odocstream & os,
 	//                          OutputParams const & runparams) const
 	// {
-	//	WriteStream wi(os, runparams.moving_arg, true);
+	//	TeXMathStream wi(os, runparams.moving_arg, true);
 	//	par_->write(wi);
 	//	return wi.line();
 	// }

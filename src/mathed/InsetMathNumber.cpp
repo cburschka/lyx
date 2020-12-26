@@ -82,7 +82,7 @@ void InsetMathNumber::htmlize(HtmlStream & os) const
 }
 
 
-void InsetMathNumber::write(WriteStream & os) const
+void InsetMathNumber::write(TeXMathStream & os) const
 {
 	os << str_;
 }

@@ -3441,7 +3441,7 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 		for (int s = cur.depth() - 1; s >= 0; --s) {
 			CursorSlice const & cs = cur[s];
 			if (cs.asInsetMath() && cs.asInsetMath()->asHullInset()) {
-				WriteStream ws(os);
+				TeXMathStream ws(os);
 				cs.asInsetMath()->asHullInset()->header_write(ws);
 				break;
 			}
@@ -3465,7 +3465,7 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 			CursorSlice const & cs2 = cur[s];
 			InsetMath * inset = cs2.asInsetMath();
 			if (inset && inset->asHullInset()) {
-				WriteStream ws(os);
+				TeXMathStream ws(os);
 				inset->asHullInset()->footer_write(ws);
 				break;
 			}

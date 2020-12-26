@@ -105,7 +105,7 @@ class MapleStream;
 class MaximaStream;
 class MathematicaStream;
 class MathMLStream;
-class WriteStream;
+class TeXMathStream;
 
 class MathData;
 class InsetMathMacroTemplate;
@@ -216,7 +216,7 @@ public:
 	/// sets types of sub/superscripts
 	virtual void limits(Limits) {}
 	/// write limits status for LaTeX and LyX code
-	void writeLimits(WriteStream & os) const;
+	void writeLimits(TeXMathStream & os) const;
 
 	/// replace things by other things
 	virtual void replace(ReplaceData &) {}
@@ -231,7 +231,7 @@ public:
 	// write(). This is to shut off a clang warning.
 	using Inset::write;
 	/// write LaTeX and LyX code
-	virtual void write(WriteStream & os) const;
+	virtual void write(TeXMathStream & os) const;
 	/// write normalized content
 	virtual void normalize(NormalStream &) const;
 	/// write content as something readable by Maple

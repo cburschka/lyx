@@ -33,7 +33,7 @@ public:
 	///
 	void infoize(odocstream & os) const override;
 	///
-	void write(WriteStream & os) const override;
+	void write(TeXMathStream & os) const override;
 	///
 	InsetCode lyxCode() const override { return MATH_PAR_CODE; }
 

@@ -74,7 +74,7 @@ void InsetMathDelim::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetMathDelim::write(WriteStream & os) const
+void InsetMathDelim::write(TeXMathStream & os) const
 {
 	MathEnsurer ensurer(os);
 	os << "\\left" << convertDelimToLatexName(left_) << cell(0)

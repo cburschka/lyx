@@ -62,7 +62,7 @@ void InsetMathEnsureMath::drawT(TextPainter & pain, int x, int y) const
 }
 
 
-void InsetMathEnsureMath::write(WriteStream & os) const
+void InsetMathEnsureMath::write(TeXMathStream & os) const
 {
 	ModeSpecifier specifier(os, MATH_MODE);
 	os << "\\ensuremath{" << cell(0) << "}";

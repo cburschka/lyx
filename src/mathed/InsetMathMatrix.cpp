@@ -32,7 +32,7 @@ Inset * InsetMathMatrix::clone() const
 }
 
 
-void InsetMathMatrix::write(WriteStream & os) const
+void InsetMathMatrix::write(TeXMathStream & os) const
 {
 	InsetMathGrid::write(os);
 }

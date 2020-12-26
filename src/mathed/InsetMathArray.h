@@ -38,7 +38,7 @@ public:
 	InsetMathArray const * asArrayInset() const override { return this; }
 
 	///
-	void write(WriteStream & os) const override;
+	void write(TeXMathStream & os) const override;
 	///
 	void infoize(odocstream & os) const override;
 	///

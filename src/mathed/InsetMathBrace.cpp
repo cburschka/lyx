@@ -72,7 +72,7 @@ void InsetMathBrace::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetMathBrace::write(WriteStream & os) const
+void InsetMathBrace::write(TeXMathStream & os) const
 {
 	os << '{' << cell(0) << '}';
 }

@@ -146,7 +146,7 @@ void InsetMathDecoration::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetMathDecoration::write(WriteStream & os) const
+void InsetMathDecoration::write(TeXMathStream & os) const
 {
 	MathEnsurer ensurer(os);
 	if (os.fragile() && protect())

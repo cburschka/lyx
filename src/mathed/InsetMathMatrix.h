@@ -30,7 +30,7 @@ public:
 	InsetMathMatrix const * asMatrixInset() const override { return this; }
 
 	///
-	void write(WriteStream & os) const override;
+	void write(TeXMathStream & os) const override;
 	///
 	void normalize(NormalStream &) const override;
 	///

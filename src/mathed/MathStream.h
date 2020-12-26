@@ -31,7 +31,7 @@ class MathData;
 // LaTeX/LyX
 //
 
-class WriteStream {
+class TeXMathStream {
 public:
 	///
 	enum OutputType {
@@ -46,11 +46,11 @@ public:
 		STRIKEOUT
 	};
 	///
-	explicit WriteStream(otexrowstream & os, bool fragile = false,
-	                     bool latex = false, OutputType output = wsDefault,
-	                     Encoding const * encoding = nullptr);
+	explicit TeXMathStream(otexrowstream & os, bool fragile = false,
+	                       bool latex = false, OutputType output = wsDefault,
+	                       Encoding const * encoding = nullptr);
 	///
-	~WriteStream();
+	~TeXMathStream();
 	///
 	int line() const { return line_; }
 	///
@@ -149,26 +149,26 @@ private:
 };
 
 ///
-WriteStream & operator<<(WriteStream &, MathAtom const &);
+TeXMathStream & operator<<(TeXMathStream &, MathAtom const &);
 ///
-WriteStream & operator<<(WriteStream &, MathData const &);
+TeXMathStream & operator<<(TeXMathStream &, MathData const &);
 ///
-WriteStream & operator<<(WriteStream &, docstring const &);
+TeXMathStream & operator<<(TeXMathStream &, docstring const &);
 ///
-WriteStream & operator<<(WriteStream &, char const * const);
+TeXMathStream & operator<<(TeXMathStream &, char const * const);
 ///
-WriteStream & operator<<(WriteStream &, char);
+TeXMathStream & operator<<(TeXMathStream &, char);
 ///
-WriteStream & operator<<(WriteStream &, int);
+TeXMathStream & operator<<(TeXMathStream &, int);
 ///
-WriteStream & operator<<(WriteStream &, unsigned int);
+TeXMathStream & operator<<(TeXMathStream &, unsigned int);
 
 /// ensure correct mode, possibly by opening \ensuremath or \lyxmathsym
-bool ensureMath(WriteStream & os, bool needs_mathmode = true,
+bool ensureMath(TeXMathStream & os, bool needs_mathmode = true,
                 bool macro = false, bool textmode_macro = false);
 
 /// ensure the requested mode, possibly by closing \ensuremath or \lyxmathsym
-int ensureMode(WriteStream & os, InsetMath::mode_type mode, bool locked, bool ascii);
+int ensureMode(TeXMathStream & os, InsetMath::mode_type mode, bool locked, bool ascii);
 
 
 /**
@@ -222,14 +222,14 @@ class MathEnsurer
 {
 public:
 	///
-	explicit MathEnsurer(WriteStream & os, bool needs_mathmode = true,
+	explicit MathEnsurer(TeXMathStream & os, bool needs_mathmode = true,
 	                     bool macro = false, bool textmode_macro = false)
 		: os_(os), brace_(ensureMath(os, needs_mathmode, macro, textmode_macro)) {}
 	///
 	~MathEnsurer() { os_.pendingBrace(brace_); }
 private:
 	///
-	WriteStream & os_;
+	TeXMathStream & os_;
 	///
 	bool brace_;
 };
@@ -274,8 +274,8 @@ class ModeSpecifier
 {
 public:
 	///
-	explicit ModeSpecifier(WriteStream & os, InsetMath::mode_type mode,
-				bool locked = false, bool ascii = false)
+	explicit ModeSpecifier(TeXMathStream & os, InsetMath::mode_type mode,
+	                       bool locked = false, bool ascii = false)
 		: os_(os), oldmodes_(ensureMode(os, mode, locked, ascii)) {}
 	///
 	~ModeSpecifier()
@@ -286,7 +286,7 @@ public:
 	}
 private:
 	///
-	WriteStream & os_;
+	TeXMathStream & os_;
 	///
 	int oldmodes_;
 };

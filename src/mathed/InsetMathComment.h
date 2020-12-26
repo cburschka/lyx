@@ -36,7 +36,7 @@ public:
 	void drawT(TextPainter & pi, int x, int y) const override;
 
 	///
-	void write(WriteStream & os) const override;
+	void write(TeXMathStream & os) const override;
 	///
 	void maple(MapleStream &) const override;
 	///

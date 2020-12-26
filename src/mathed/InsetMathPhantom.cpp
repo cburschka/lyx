@@ -249,7 +249,7 @@ void InsetMathPhantom::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetMathPhantom::write(WriteStream & os) const
+void InsetMathPhantom::write(TeXMathStream & os) const
 {
 	MathEnsurer ensurer(os);
 	if (os.fragile())

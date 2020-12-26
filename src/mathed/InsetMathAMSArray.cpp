@@ -146,7 +146,7 @@ bool InsetMathAMSArray::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetMathAMSArray::write(WriteStream & os) const
+void InsetMathAMSArray::write(TeXMathStream & os) const
 {
 	MathEnsurer ensurer(os);
 	os << "\\begin{" << name_ << '}';

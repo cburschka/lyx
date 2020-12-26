@@ -266,7 +266,7 @@ void InsetMathSpace::normalize(NormalStream & os) const
 }
 
 
-void InsetMathSpace::write(WriteStream & os) const
+void InsetMathSpace::write(TeXMathStream & os) const
 {
 	// All kinds work in text and math mode, so simply suspend
 	// writing a possibly pending mode closing brace.

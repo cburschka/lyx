@@ -41,7 +41,7 @@ public:
 	///
 	void maxima(MaximaStream &) const override;
 	///
-	void write(WriteStream & os) const override;
+	void write(TeXMathStream & os) const override;
 	///
 	InsetCode lyxCode() const override { return MATH_DIFF_CODE; }
 private:

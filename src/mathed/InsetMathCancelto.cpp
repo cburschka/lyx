@@ -88,7 +88,7 @@ void InsetMathCancelto::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetMathCancelto::write(WriteStream & os) const
+void InsetMathCancelto::write(TeXMathStream & os) const
 {
 	MathEnsurer ensurer(os);
 	os << "\\cancelto{" << cell(1) << "}{" << cell(0) << '}';

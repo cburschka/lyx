@@ -66,7 +66,7 @@ void InsetMathDiagram::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetMathDiagram::write(WriteStream & os) const
+void InsetMathDiagram::write(TeXMathStream & os) const
 {
 	MathEnsurer ensurer(os);
 	os << "\\Diagram";

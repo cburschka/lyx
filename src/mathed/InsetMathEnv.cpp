@@ -51,7 +51,7 @@ void InsetMathEnv::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetMathEnv::write(WriteStream & os) const
+void InsetMathEnv::write(TeXMathStream & os) const
 {
 	MathEnsurer ensurer(os);
 	os << "\\begin{" << name_ << '}' << cell(0) << "\\end{" << name_ << '}';

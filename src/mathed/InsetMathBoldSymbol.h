@@ -40,7 +40,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const override;
 	///
-	void write(WriteStream & os) const override;
+	void write(TeXMathStream & os) const override;
 	///
 	void mathmlize(MathMLStream &) const override;
 	///

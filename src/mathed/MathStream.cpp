@@ -88,7 +88,7 @@ NormalStream & operator<<(NormalStream & ns, int i)
 /////////////////////////////////////////////////////////////////
 
 
-WriteStream & operator<<(WriteStream & ws, docstring const & s)
+TeXMathStream & operator<<(TeXMathStream & ws, docstring const & s)
 {
 	// Skip leading '\n' if we had already output a newline char
 	size_t const first =
@@ -126,14 +126,14 @@ WriteStream & operator<<(WriteStream & ws, docstring const & s)
 }
 
 
-WriteStream::WriteStream(otexrowstream & os, bool fragile, bool latex,
-						 OutputType output, Encoding const * encoding)
+TeXMathStream::TeXMathStream(otexrowstream & os, bool fragile, bool latex,
+                             OutputType output, Encoding const * encoding)
 	: os_(os), fragile_(fragile), latex_(latex),
 	  output_(output), encoding_(encoding)
 {}
 
 
-WriteStream::~WriteStream()
+TeXMathStream::~TeXMathStream()
 {
 	if (pendingbrace_)
 		os_ << '}';
@@ -142,49 +142,49 @@ WriteStream::~WriteStream()
 }
 
 
-void WriteStream::addlines(unsigned int n)
+void TeXMathStream::addlines(unsigned int n)
 {
 	line_ += n;
 }
 
 
-void WriteStream::pendingSpace(bool how)
+void TeXMathStream::pendingSpace(bool how)
 {
 	pendingspace_ = how;
 }
 
 
-void WriteStream::pendingBrace(bool brace)
+void TeXMathStream::pendingBrace(bool brace)
 {
 	pendingbrace_ = brace;
 }
 
 
-void WriteStream::textMode(bool textmode)
+void TeXMathStream::textMode(bool textmode)
 {
 	textmode_ = textmode;
 }
 
 
-void WriteStream::lockedMode(bool locked)
+void TeXMathStream::lockedMode(bool locked)
 {
 	locked_ = locked;
 }
 
 
-void WriteStream::asciiOnly(bool ascii)
+void TeXMathStream::asciiOnly(bool ascii)
 {
 	ascii_ = ascii;
 }
 
 
-Changer WriteStream::changeRowEntry(TexRow::RowEntry entry)
+Changer TeXMathStream::changeRowEntry(TexRow::RowEntry entry)
 {
 	return changeVar(row_entry_, entry);
 }
 
 
-bool WriteStream::startOuterRow()
+bool TeXMathStream::startOuterRow()
 {
 	if (TexRow::isNone(row_entry_))
 		return false;
@@ -192,28 +192,28 @@ bool WriteStream::startOuterRow()
 }
 
 
-WriteStream & operator<<(WriteStream & ws, MathAtom const & at)
+TeXMathStream & operator<<(TeXMathStream & ws, MathAtom const & at)
 {
 	at->write(ws);
 	return ws;
 }
 
 
-WriteStream & operator<<(WriteStream & ws, MathData const & ar)
+TeXMathStream & operator<<(TeXMathStream & ws, MathData const & ar)
 {
 	write(ar, ws);
 	return ws;
 }
 
 
-WriteStream & operator<<(WriteStream & ws, char const * s)
+TeXMathStream & operator<<(TeXMathStream & ws, char const * s)
 {
 	ws << from_utf8(s);
 	return ws;
 }
 
 
-WriteStream & operator<<(WriteStream & ws, char c)
+TeXMathStream & operator<<(TeXMathStream & ws, char c)
 {
 	if (c == '\n' && !ws.canBreakLine())
 		return ws;
@@ -238,7 +238,7 @@ WriteStream & operator<<(WriteStream & ws, char c)
 }
 
 
-WriteStream & operator<<(WriteStream & ws, int i)
+TeXMathStream & operator<<(TeXMathStream & ws, int i)
 {
 	if (ws.pendingBrace()) {
 		ws.os() << '}';
@@ -251,7 +251,7 @@ WriteStream & operator<<(WriteStream & ws, int i)
 }
 
 
-WriteStream & operator<<(WriteStream & ws, unsigned int i)
+TeXMathStream & operator<<(TeXMathStream & ws, unsigned int i)
 {
 	if (ws.pendingBrace()) {
 		ws.os() << '}';

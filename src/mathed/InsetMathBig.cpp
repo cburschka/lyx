@@ -120,7 +120,7 @@ void InsetMathBig::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetMathBig::write(WriteStream & os) const
+void InsetMathBig::write(TeXMathStream & os) const
 {
 	MathEnsurer ensurer(os);
 	os << '\\' << name_ << delim_;

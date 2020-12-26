@@ -50,7 +50,7 @@ public:
 	size_type lastIdx() const override { return 0; }
 
 	/// write LaTeX and Lyx code
-	void write(WriteStream & os) const override;
+	void write(TeXMathStream & os) const override;
 	/// write normalized content
 	void normalize(NormalStream &) const override;
 	/// write content as MathML

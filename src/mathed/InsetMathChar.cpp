@@ -195,7 +195,7 @@ void InsetMathChar::drawT(TextPainter & pain, int x, int y) const
 }
 
 
-void InsetMathChar::write(WriteStream & os) const
+void InsetMathChar::write(TeXMathStream & os) const
 {
 	os.os().put(char_);
 }

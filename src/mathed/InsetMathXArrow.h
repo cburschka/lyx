@@ -26,7 +26,7 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	void write(WriteStream & os) const override;
+	void write(TeXMathStream & os) const override;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///

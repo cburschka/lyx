@@ -1237,14 +1237,14 @@ void InsetMathGrid::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetMathGrid::write(WriteStream & os) const
+void InsetMathGrid::write(TeXMathStream & os) const
 {
 	write(os, 0, 0, nrows(), ncols());
 }
 
-void InsetMathGrid::write(WriteStream & os,
-			  row_type beg_row, col_type beg_col,
-			  row_type end_row, col_type end_col) const
+void InsetMathGrid::write(TeXMathStream & os,
+                          row_type beg_row, col_type beg_col,
+                          row_type end_row, col_type end_col) const
 {
 	MathEnsurer ensurer(os, false);
 	docstring eol;

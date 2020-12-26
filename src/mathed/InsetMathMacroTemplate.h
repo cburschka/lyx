@@ -47,10 +47,10 @@ public:
 	///
 	void write(std::ostream & os) const override;
 	///
-	void write(WriteStream & os) const override;
+	void write(TeXMathStream & os) const override;
 	/// Output LaTeX code, but assume that the macro is not defined yet
 	/// if overwriteRedefinition is true
-	int write(WriteStream & os, bool overwriteRedefinition) const;
+	int write(TeXMathStream & os, bool overwriteRedefinition) const;
 	/// Nothing happens. This is simply to suppress the default output.
 	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///

@@ -45,7 +45,7 @@ public:
 	///
 	void htmlize(HtmlStream &) const override;
 	///
-	void write(WriteStream & os) const override;
+	void write(TeXMathStream & os) const override;
 	///
 	void validate(LaTeXFeatures & features) const override;
 	///

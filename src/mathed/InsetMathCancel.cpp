@@ -77,7 +77,7 @@ void InsetMathCancel::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetMathCancel::write(WriteStream & os) const
+void InsetMathCancel::write(TeXMathStream & os) const
 {
 	MathEnsurer ensurer(os);
 	switch (kind_) {

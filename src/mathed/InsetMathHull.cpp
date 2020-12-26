@@ -121,28 +121,28 @@ namespace {
 
 
 	// writes a preamble for underlined or struck out math display
-	void writeMathdisplayPreamble(WriteStream & os)
+	void writeMathdisplayPreamble(TeXMathStream & os)
 	{
 		if (os.strikeoutMath())
 			return;
 
-		if (os.ulemCmd() == WriteStream::UNDERLINE)
+		if (os.ulemCmd() == TeXMathStream::UNDERLINE)
 			os << "\\raisebox{-\\belowdisplayshortskip}{"
 			      "\\parbox[b]{\\linewidth}{";
-		else if (os.ulemCmd() == WriteStream::STRIKEOUT)
+		else if (os.ulemCmd() == TeXMathStream::STRIKEOUT)
 			os << "\\parbox{\\linewidth}{";
 	}
 
 
 	// writes a postamble for underlined or struck out math display
-	void writeMathdisplayPostamble(WriteStream & os)
+	void writeMathdisplayPostamble(TeXMathStream & os)
 	{
 		if (os.strikeoutMath())
 			return;
 
-		if (os.ulemCmd() == WriteStream::UNDERLINE)
+		if (os.ulemCmd() == TeXMathStream::UNDERLINE)
 			os << "}}\\\\\n";
-		else if (os.ulemCmd() == WriteStream::STRIKEOUT)
+		else if (os.ulemCmd() == TeXMathStream::STRIKEOUT)
 			os << "}\\\\\n";
 	}
 
@@ -678,7 +678,7 @@ void InsetMathHull::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 	} else {
 		odocstringstream os;
 		otexrowstream ots(os);
-		WriteStream wi(ots, false, true, WriteStream::wsDefault);
+		TeXMathStream wi(ots, false, true, TeXMathStream::wsDefault);
 		write(wi);
 		dim.wid = os.str().size();
 		dim.asc = 1;
@@ -694,7 +694,7 @@ void InsetMathHull::drawT(TextPainter & pain, int x, int y) const
 	} else {
 		odocstringstream os;
 		otexrowstream ots(os);
-		WriteStream wi(ots, false, true, WriteStream::wsDefault);
+		TeXMathStream wi(ots, false, true, TeXMathStream::wsDefault);
 		write(wi);
 		pain.draw(x, y, os.str().c_str());
 	}
@@ -713,7 +713,7 @@ static docstring latexString(InsetMathHull const & inset)
 	if (inset.isBufferValid())
 		encoding = &(inset.buffer().params().encoding());
 	otexrowstream ots(ls);
-	WriteStream wi(ots, false, true, WriteStream::wsPreview, encoding);
+	TeXMathStream wi(ots, false, true, TeXMathStream::wsPreview, encoding);
 	inset.write(wi);
 	return ls.str();
 }
@@ -1122,7 +1122,7 @@ CtObject InsetMathHull::getCtObject(OutputParams const & runparams) const
 }
 
 
-void InsetMathHull::header_write(WriteStream & os) const
+void InsetMathHull::header_write(TeXMathStream & os) const
 {
 	bool n = numberedType();
 
@@ -1188,7 +1188,7 @@ void InsetMathHull::header_write(WriteStream & os) const
 }
 
 
-void InsetMathHull::footer_write(WriteStream & os) const
+void InsetMathHull::footer_write(TeXMathStream & os) const
 {
 	bool n = numberedType();
 
@@ -1698,7 +1698,7 @@ docstring InsetMathHull::eolString(row_type row, bool fragile, bool latex,
 	return res + InsetMathGrid::eolString(row, fragile, latex, last_eoln);
 }
 
-void InsetMathHull::write(WriteStream & os) const
+void InsetMathHull::write(TeXMathStream & os) const
 {
 	ModeSpecifier specifier(os, MATH_MODE);
 	header_write(os);
@@ -2304,7 +2304,7 @@ void InsetMathHull::write(ostream & os) const
 {
 	odocstringstream oss;
 	otexrowstream ots(oss);
-	WriteStream wi(ots, false, false, WriteStream::wsDefault);
+	TeXMathStream wi(ots, false, false, TeXMathStream::wsDefault);
 	oss << "Formula ";
 	write(wi);
 	os << to_utf8(oss.str());
@@ -2348,7 +2348,7 @@ int InsetMathHull::plaintext(odocstringstream & os,
 	odocstringstream oss;
 	otexrowstream ots(oss);
 	Encoding const * const enc = encodings.fromLyXName("utf8");
-	WriteStream wi(ots, false, true, WriteStream::wsDefault, enc);
+	TeXMathStream wi(ots, false, true, TeXMathStream::wsDefault, enc);
 
 	// Fix Bug #6139
 	if (type_ == hullRegexp)
@@ -2415,7 +2415,7 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 	// Workaround for db2latex: db2latex always includes equations with
 	// \ensuremath{} or \begin{display}\end{display}
 	// so we strip LyX' math environment
-	WriteStream wi(ols, false, false, WriteStream::wsDefault, runparams.encoding);
+	TeXMathStream wi(ols, false, false, TeXMathStream::wsDefault, runparams.encoding);
 	InsetMathGrid::write(wi);
 	ms << from_utf8(subst(subst(to_utf8(ls.str()), "&", "&amp;"), "<", "&lt;"));
 	ms << "</" << from_ascii("alt") << ">";
@@ -2541,7 +2541,7 @@ void InsetMathHull::mathmlize(MathMLStream & ms) const
 }
 
 
-void InsetMathHull::mathAsLatex(WriteStream & os) const
+void InsetMathHull::mathAsLatex(TeXMathStream & os) const
 {
 	MathEnsurer ensurer(os, false);
 	bool havenumbers = haveNumbers();
@@ -2677,7 +2677,7 @@ docstring InsetMathHull::xhtml(XMLStream & xs, OutputParams const & op) const
 		// $...$ or whatever.
 		odocstringstream ls;
 		otexrowstream ots(ls);
-		WriteStream wi(ots, false, true, WriteStream::wsPreview);
+		TeXMathStream wi(ots, false, true, TeXMathStream::wsPreview);
 		ModeSpecifier specifier(wi, MATH_MODE);
 		mathAsLatex(wi);
 		docstring const latex = ls.str();

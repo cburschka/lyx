@@ -95,7 +95,7 @@ public:
 	mode_type currentMode() const override;
 
 	/// Assumes that macros are up-to-date
-	void write(WriteStream & os) const override;
+	void write(TeXMathStream & os) const override;
 	///
 	void normalize(NormalStream & os) const override;
 	///

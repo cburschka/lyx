@@ -94,7 +94,7 @@ void InsetMathColor::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetMathColor::write(WriteStream & os) const
+void InsetMathColor::write(TeXMathStream & os) const
 {
 	// We have to ensure correct spacing when the front and/or back
 	// atoms are not ordinary ones (bug 11827).

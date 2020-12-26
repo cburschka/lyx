@@ -56,7 +56,7 @@ public:
 	///
 	void htmlize(HtmlStream & ms) const override;
 	///
-	void write(WriteStream & os) const override;
+	void write(TeXMathStream & os) const override;
 	/// generate something that will be understood by the Dialogs.
 	InsetSpaceParams params() const;
 	///

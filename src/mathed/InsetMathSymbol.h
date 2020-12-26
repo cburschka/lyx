@@ -72,7 +72,7 @@ public:
 	///
 	void octave(OctaveStream &) const override;
 	///
-	void write(WriteStream & os) const override;
+	void write(TeXMathStream & os) const override;
 	///
 	void infoize2(odocstream & os) const override;
 	///

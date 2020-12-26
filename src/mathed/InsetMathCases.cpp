@@ -111,7 +111,7 @@ bool InsetMathCases::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetMathCases::write(WriteStream & os) const
+void InsetMathCases::write(TeXMathStream & os) const
 {
 	MathEnsurer ensurer(os);
 	if (os.fragile())

@@ -255,7 +255,7 @@ void InsetMathNest::dump() const
 {
 	odocstringstream oss;
 	otexrowstream ots(oss);
-	WriteStream os(ots);
+	TeXMathStream os(ots);
 	os << "---------------------------------------------\n";
 	write(os);
 	os << "\n";
@@ -326,7 +326,7 @@ MathData InsetMathNest::glue() const
 }
 
 
-void InsetMathNest::write(WriteStream & os) const
+void InsetMathNest::write(TeXMathStream & os) const
 {
 	MathEnsurer ensurer(os, currentMode() == MATH_MODE);
 	ModeSpecifier specifier(os, currentMode(), lockedMode());
@@ -358,16 +358,16 @@ void InsetMathNest::normalize(NormalStream & os) const
 
 void InsetMathNest::latex(otexstream & os, OutputParams const & runparams) const
 {
-	WriteStream wi(os, runparams.moving_arg, true,
-			runparams.dryrun ? WriteStream::wsDryrun : WriteStream::wsDefault,
-			runparams.encoding);
+	TeXMathStream wi(os, runparams.moving_arg, true,
+	                 runparams.dryrun ? TeXMathStream::wsDryrun : TeXMathStream::wsDefault,
+	                 runparams.encoding);
 	wi.strikeoutMath(runparams.inDeletedInset);
 	if (runparams.inulemcmd) {
-		wi.ulemCmd(WriteStream::UNDERLINE);
+		wi.ulemCmd(TeXMathStream::UNDERLINE);
 		if (runparams.local_font) {
 			FontInfo f = runparams.local_font->fontInfo();
 			if (f.strikeout() == FONT_ON)
-				wi.ulemCmd(WriteStream::STRIKEOUT);
+				wi.ulemCmd(TeXMathStream::STRIKEOUT);
 		}
 	}
 	wi.canBreakLine(os.canBreakLine());

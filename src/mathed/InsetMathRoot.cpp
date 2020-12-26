@@ -132,7 +132,7 @@ void InsetMathRoot::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetMathRoot::write(WriteStream & os) const
+void InsetMathRoot::write(TeXMathStream & os) const
 {
 	MathEnsurer ensurer(os);
 	os << "\\sqrt[" << cell(1) << "]{" << cell(0) << '}';
