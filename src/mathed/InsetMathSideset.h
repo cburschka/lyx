@@ -54,7 +54,7 @@ public:
 	/// write normalized content
 	void normalize(NormalStream &) const override;
 	/// write content as MathML
-	void mathmlize(MathStream &) const override;
+	void mathmlize(MathMLStream &) const override;
 	/// write content as HTML
 	void htmlize(HtmlStream &) const override;
 

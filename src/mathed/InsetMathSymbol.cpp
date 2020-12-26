@@ -156,7 +156,7 @@ void InsetMathSymbol::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathSymbol::mathmlize(MathStream & ms) const
+void InsetMathSymbol::mathmlize(MathMLStream & ms) const
 {
 	// FIXME We may need to do more interesting things
 	// with MathMLtype.

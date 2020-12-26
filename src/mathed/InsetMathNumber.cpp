@@ -68,7 +68,7 @@ void InsetMathNumber::octave(OctaveStream & os) const
 }
 
 
-void InsetMathNumber::mathmlize(MathStream & ms) const
+void InsetMathNumber::mathmlize(MathMLStream & ms) const
 {
 	ms << "<" << from_ascii(ms.namespacedTag("mn")) << ">"
 	   << str_

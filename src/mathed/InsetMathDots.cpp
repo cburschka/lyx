@@ -85,7 +85,7 @@ void InsetMathDots::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetMathDots::mathmlize(MathStream & ms) const
+void InsetMathDots::mathmlize(MathMLStream & ms) const
 {
 	// which symbols we support is decided by what is listed in
 	// lib/symbols as generating a dots inset

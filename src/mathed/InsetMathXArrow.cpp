@@ -84,7 +84,7 @@ void InsetMathXArrow::normalize(NormalStream & os) const
 }
 
 
-void InsetMathXArrow::mathmlize(MathStream & ms) const
+void InsetMathXArrow::mathmlize(MathMLStream & ms) const
 {
 	char const * arrow;
 

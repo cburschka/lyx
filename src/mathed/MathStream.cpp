@@ -267,12 +267,12 @@ WriteStream & operator<<(WriteStream & ws, unsigned int i)
 //////////////////////////////////////////////////////////////////////
 
 
-MathStream::MathStream(odocstream & os, std::string const & xmlns, bool xmlMode)
+MathMLStream::MathMLStream(odocstream & os, std::string const & xmlns, bool xmlMode)
 	: os_(os), tab_(0), line_(0), in_text_(false), xmlns_(xmlns), xml_mode_(xmlMode)
 {}
 
 
-void MathStream::cr()
+void MathMLStream::cr()
 {
 	os() << '\n';
 	for (int i = 0; i < tab(); ++i)
@@ -280,60 +280,60 @@ void MathStream::cr()
 }
 
 
-void MathStream::defer(docstring const & s)
+void MathMLStream::defer(docstring const & s)
 {
 	deferred_ << s;
 }
 
 
-void MathStream::defer(string const & s)
+void MathMLStream::defer(string const & s)
 {
 	deferred_ << from_utf8(s);
 }
 
 
-docstring MathStream::deferred() const
+docstring MathMLStream::deferred() const
 {
 	return deferred_.str();
 }
 
 
-MathStream & operator<<(MathStream & ms, MathAtom const & at)
+MathMLStream & operator<<(MathMLStream & ms, MathAtom const & at)
 {
 	at->mathmlize(ms);
 	return ms;
 }
 
 
-MathStream & operator<<(MathStream & ms, MathData const & ar)
+MathMLStream & operator<<(MathMLStream & ms, MathData const & ar)
 {
 	mathmlize(ar, ms);
 	return ms;
 }
 
 
-MathStream & operator<<(MathStream & ms, char const * s)
+MathMLStream & operator<<(MathMLStream & ms, char const * s)
 {
 	ms.os() << s;
 	return ms;
 }
 
 
-MathStream & operator<<(MathStream & ms, char c)
+MathMLStream & operator<<(MathMLStream & ms, char c)
 {
 	ms.os() << c;
 	return ms;
 }
 
 
-MathStream & operator<<(MathStream & ms, char_type c)
+MathMLStream & operator<<(MathMLStream & ms, char_type c)
 {
 	ms.os().put(c);
 	return ms;
 }
 
 
-MathStream & operator<<(MathStream & ms, MTag const & t)
+MathMLStream & operator<<(MathMLStream & ms, MTag const & t)
 {
 	++ms.tab();
 	ms.cr();
@@ -345,7 +345,7 @@ MathStream & operator<<(MathStream & ms, MTag const & t)
 }
 
 
-MathStream & operator<<(MathStream & ms, ETag const & t)
+MathMLStream & operator<<(MathMLStream & ms, ETag const & t)
 {
 	ms.cr();
 	if (ms.tab() > 0)
@@ -355,7 +355,7 @@ MathStream & operator<<(MathStream & ms, ETag const & t)
 }
 
 
-MathStream & operator<<(MathStream & ms, CTag const & t)
+MathMLStream & operator<<(MathMLStream & ms, CTag const & t)
 {
 	ms.cr();
 	ms.os() << "<" << from_ascii(ms.namespacedTag(t.tag_));
@@ -366,7 +366,7 @@ MathStream & operator<<(MathStream & ms, CTag const & t)
 }
 
 
-MathStream & operator<<(MathStream & ms, docstring const & s)
+MathMLStream & operator<<(MathMLStream & ms, docstring const & s)
 {
 	ms.os() << s;
 	return ms;
@@ -461,7 +461,7 @@ HtmlStream & operator<<(HtmlStream & ms, docstring const & s)
 //////////////////////////////////////////////////////////////////////
 
 
-SetMode::SetMode(MathStream & ms, bool text)
+SetMode::SetMode(MathMLStream & ms, bool text)
 	: ms_(ms)
 {
 	was_text_ = ms_.inText();

@@ -69,7 +69,7 @@ void InsetMathEnsureMath::write(WriteStream & os) const
 }
 
 
-void InsetMathEnsureMath::mathmlize(MathStream & ms) const
+void InsetMathEnsureMath::mathmlize(MathMLStream & ms) const
 {
 	SetMode mathmode(ms, false);
 	ms << MTag("mstyle", "class='math'")

@@ -138,7 +138,7 @@ void InsetMathCancel::htmlize(HtmlStream & os) const
 }
 
 
-void InsetMathCancel::mathmlize(MathStream & ms) const
+void InsetMathCancel::mathmlize(MathMLStream & ms) const
 {
 	switch (kind_) {
 	case cancel:

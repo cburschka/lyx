@@ -123,7 +123,7 @@ void InsetMathExInt::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathExInt::mathmlize(MathStream & ms) const
+void InsetMathExInt::mathmlize(MathMLStream & ms) const
 {
 	// At the moment, we are not extracting sums and the like for MathML.
 	// If we should decide to do so later, then we'll need to re-merge

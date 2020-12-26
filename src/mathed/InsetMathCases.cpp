@@ -143,7 +143,7 @@ void InsetMathCases::maple(MapleStream & os) const
 }
 
 
-void InsetMathCases::mathmlize(MathStream & ms) const
+void InsetMathCases::mathmlize(MathMLStream & ms) const
 {
 	ms << "<" << from_ascii(ms.namespacedTag("mo"))
 	   << " form='prefix' fence='true' stretchy='true' symmetric='true'>"

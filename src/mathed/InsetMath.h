@@ -104,7 +104,7 @@ class OctaveStream;
 class MapleStream;
 class MaximaStream;
 class MathematicaStream;
-class MathStream;
+class MathMLStream;
 class WriteStream;
 
 class MathData;
@@ -241,7 +241,7 @@ public:
 	/// write content as something readable by Mathematica
 	virtual void mathematica(MathematicaStream &) const;
 	/// write content as MathML
-	virtual void mathmlize(MathStream &) const;
+	virtual void mathmlize(MathMLStream &) const;
 	/// write content as HTML, best we can.
 	/// the idea for this, and some of the details, come from
 	/// eLyXer, written by Alex Fernandez. no code is borrowed. rather,

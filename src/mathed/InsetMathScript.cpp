@@ -594,11 +594,11 @@ void InsetMathScript::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathScript::mathmlize(MathStream & ms) const
+void InsetMathScript::mathmlize(MathMLStream & ms) const
 {
 	bool d = hasDown() && !down().empty();
 	bool u = hasUp() && !up().empty();
-	// FIXME: the MathStream should be able to give us this information
+	// FIXME: the MathMLStream should be able to give us this information
 	bool l = has_limits_;
 
 	if (u && d)

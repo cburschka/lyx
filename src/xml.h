@@ -25,7 +25,7 @@ class Paragraph;
 class OutputParams;
 
 // Inspiration for the *Tag structs and for XMLStream
-// came from MathStream and its cousins.
+// came from MathMLStream and its cousins.
 
 namespace xml {
 struct StartTag;

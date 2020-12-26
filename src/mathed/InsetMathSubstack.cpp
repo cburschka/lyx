@@ -125,7 +125,7 @@ void InsetMathSubstack::maple(MapleStream & os) const
 }
 
 
-void InsetMathSubstack::mathmlize(MathStream & ms) const
+void InsetMathSubstack::mathmlize(MathMLStream & ms) const
 {
 	int movers = 0;
 	row_type const numrows = nrows();

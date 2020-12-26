@@ -89,7 +89,7 @@ void InsetMathUnknown::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathUnknown::mathmlize(MathStream &) const
+void InsetMathUnknown::mathmlize(MathMLStream &) const
 {
 	throw MathExportException();
 }

@@ -122,7 +122,7 @@ void InsetMathExFunc::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathExFunc::mathmlize(MathStream & ms) const
+void InsetMathExFunc::mathmlize(MathMLStream & ms) const
 {
 	ms << "<" << from_ascii(ms.namespacedTag("mi")) << ">"
 	   << name_

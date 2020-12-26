@@ -341,10 +341,10 @@ public:
 class MathExportException : public std::exception {};
 
 
-class MathStream {
+class MathMLStream {
 public:
 	/// Builds a stream proxy for os; the MathML namespace is given by xmlns (supposed to be already defined elsewhere in the document).
-	explicit MathStream(odocstream & os, std::string const & xmlns = "", bool xmlMode = false);
+	explicit MathMLStream(odocstream & os, std::string const & xmlns = "", bool xmlMode = false);
 	///
 	void cr();
 	///
@@ -354,7 +354,7 @@ public:
 	///
 	int & tab() { return tab_; }
 	///
-	friend MathStream & operator<<(MathStream &, char const *);
+	friend MathMLStream & operator<<(MathMLStream &, char const *);
 	///
 	void defer(docstring const &);
 	///
@@ -393,35 +393,35 @@ private:
 };
 
 ///
-MathStream & operator<<(MathStream &, MathAtom const &);
+MathMLStream & operator<<(MathMLStream &, MathAtom const &);
 ///
-MathStream & operator<<(MathStream &, MathData const &);
+MathMLStream & operator<<(MathMLStream &, MathData const &);
 ///
-MathStream & operator<<(MathStream &, docstring const &);
+MathMLStream & operator<<(MathMLStream &, docstring const &);
 ///
-MathStream & operator<<(MathStream &, char const *);
+MathMLStream & operator<<(MathMLStream &, char const *);
 ///
-MathStream & operator<<(MathStream &, char);
+MathMLStream & operator<<(MathMLStream &, char);
 ///
-MathStream & operator<<(MathStream &, char_type);
+MathMLStream & operator<<(MathMLStream &, char_type);
 ///
-MathStream & operator<<(MathStream &, MTag const &);
+MathMLStream & operator<<(MathMLStream &, MTag const &);
 ///
-MathStream & operator<<(MathStream &, ETag const &);
+MathMLStream & operator<<(MathMLStream &, ETag const &);
 ///
-MathStream & operator<<(MathStream &, CTag const &);
+MathMLStream & operator<<(MathMLStream &, CTag const &);
 
 
 /// A simpler version of ModeSpecifier, for MathML
 class SetMode {
 public:
 	///
-	explicit SetMode(MathStream & ms, bool text);
+	explicit SetMode(MathMLStream & ms, bool text);
 	///
 	~SetMode();
 private:
 	///
-	MathStream & ms_;
+	MathMLStream & ms_;
 	///
 	bool was_text_;
 };

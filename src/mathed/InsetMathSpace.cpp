@@ -195,7 +195,7 @@ void InsetMathSpace::octave(OctaveStream & os) const
 }
 
 
-void InsetMathSpace::mathmlize(MathStream & ms) const
+void InsetMathSpace::mathmlize(MathMLStream & ms) const
 {
 	SpaceInfo const & si = space_info[space_];
 	if (si.negative || !si.visible)

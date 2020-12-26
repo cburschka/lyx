@@ -51,7 +51,7 @@ public:
 	void normalize(NormalStream &) const override;
 	// Don't need mathmlize or htmlize, as this is handled by
 	// InsetMathMatrix after being extracted in MathExtern.
-	// void mathmlize(MathStream &) const override;
+	// void mathmlize(MathMLStream &) const override;
 	// void htmlize(HtmlStream &) const override;
 	///
 	void validate(LaTeXFeatures & features) const override;

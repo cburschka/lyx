@@ -1586,7 +1586,7 @@ void mathematica(MathData const & dat, MathematicaStream & os)
 }
 
 
-void mathmlize(MathData const & dat, MathStream & ms)
+void mathmlize(MathData const & dat, MathMLStream & ms)
 {
 	MathData ar = dat;
 	extractStructure(ar, MATHML);

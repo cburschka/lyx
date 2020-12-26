@@ -202,7 +202,7 @@ void InsetMath::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMath::mathmlize(MathStream & ms) const
+void InsetMath::mathmlize(MathMLStream & ms) const
 {
 	ms << "<!-- " << from_utf8(insetName(lyxCode())) << " -->";
 	ms << MTag("mi");

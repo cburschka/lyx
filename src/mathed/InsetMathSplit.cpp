@@ -186,7 +186,7 @@ void InsetMathSplit::infoize(odocstream & os) const
 }
 
 
-void InsetMathSplit::mathmlize(MathStream & ms) const
+void InsetMathSplit::mathmlize(MathMLStream & ms) const
 {
 	// split, gathered, aligned, alignedat
 	// At the moment, those seem to display just fine without any

@@ -33,7 +33,7 @@ public:
 	///
 	void normalize(NormalStream & ns) const override;
 	///
-	void mathmlize(MathStream & ms) const override;
+	void mathmlize(MathMLStream & ms) const override;
 	///
 	void htmlize(HtmlStream & ms) const override;
 	///
@@ -68,7 +68,7 @@ public:
 	/// write normalized content
 	void normalize(NormalStream & ns) const override;
 	///
-	void mathmlize(MathStream & ms) const override;
+	void mathmlize(MathMLStream & ms) const override;
 	///
 	void htmlize(HtmlStream & ms) const override;
 	///
@@ -95,7 +95,7 @@ public:
 	/// write normalized content
 	void normalize(NormalStream & ns) const override;
 	///
-	void mathmlize(MathStream & ms) const override;
+	void mathmlize(MathMLStream & ms) const override;
 	///
 	void htmlize(HtmlStream & ms) const override;
 	///
@@ -128,7 +128,7 @@ public:
 	///
 	void write(WriteStream & os) const override;
 	///
-	void mathmlize(MathStream & ms) const override;
+	void mathmlize(MathMLStream & ms) const override;
 	///
 	void htmlize(HtmlStream & ms) const override;
 	/// write normalized content

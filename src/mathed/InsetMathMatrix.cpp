@@ -92,7 +92,7 @@ void InsetMathMatrix::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathMatrix::mathmlize(MathStream & ms) const
+void InsetMathMatrix::mathmlize(MathMLStream & ms) const
 {
 	ms << "<" << from_ascii(ms.namespacedTag("mo")) << " form='prefix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>"
 	   << convertDelimToXMLEscape(left_, ms.xmlMode())

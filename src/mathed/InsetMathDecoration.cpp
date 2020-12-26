@@ -223,7 +223,7 @@ namespace {
 	}
 } // namespace
 
-void InsetMathDecoration::mathmlize(MathStream & ms) const
+void InsetMathDecoration::mathmlize(MathMLStream & ms) const
 {
 	TranslationMap const & t = translationMap();
 	TranslationMap::const_iterator cur = t.find(to_utf8(key_->name));

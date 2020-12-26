@@ -141,7 +141,7 @@ void InsetMathStackrel::normalize(NormalStream & os) const
 }
 
 
-void InsetMathStackrel::mathmlize(MathStream & ms) const
+void InsetMathStackrel::mathmlize(MathMLStream & ms) const
 {
 	if (nargs() > 2)
 		ms << "<" << from_ascii(ms.namespacedTag("munderover")) << ">"

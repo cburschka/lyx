@@ -21,7 +21,7 @@ class NormalStream;
 class MapleStream;
 class MaximaStream;
 class MathematicaStream;
-class MathStream;
+class MathMLStream;
 class OctaveStream;
 class WriteStream;
 class MathData;
@@ -32,7 +32,7 @@ void normalize(MathData const &, NormalStream &);
 void maple(MathData const &, MapleStream &);
 void maxima(MathData const &, MaximaStream &);
 void mathematica(MathData const &, MathematicaStream &);
-void mathmlize(MathData const &, MathStream &);
+void mathmlize(MathData const &, MathMLStream &);
 void octave(MathData const &, OctaveStream &);
 
 bool extractNumber(MathData const & ar, int & i);

@@ -1158,7 +1158,7 @@ void InsetMathGrid::normalize(NormalStream & os) const
 }
 
 
-void InsetMathGrid::mathmlize(MathStream & ms) const
+void InsetMathGrid::mathmlize(MathMLStream & ms) const
 {
 	bool const havetable = nrows() > 1 || ncols() > 1;
 	if (havetable)

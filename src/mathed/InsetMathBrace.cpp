@@ -96,7 +96,7 @@ void InsetMathBrace::octave(OctaveStream & os) const
 }
 
 
-void InsetMathBrace::mathmlize(MathStream & ms) const
+void InsetMathBrace::mathmlize(MathMLStream & ms) const
 {
 	ms << MTag("mrow") << cell(0) << ETag("mrow");
 }

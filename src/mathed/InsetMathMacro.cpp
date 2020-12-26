@@ -169,7 +169,7 @@ public:
 	///
 	void mathematica(MathematicaStream & ms) const override { ms << mathMacro_->cell(idx_); }
 	///
-	void mathmlize(MathStream & ms) const override { ms << mathMacro_->cell(idx_); }
+	void mathmlize(MathMLStream & ms) const override { ms << mathMacro_->cell(idx_); }
 	///
 	void htmlize(HtmlStream & ms) const override { ms << mathMacro_->cell(idx_); }
 	///
@@ -1240,7 +1240,7 @@ void InsetMathMacro::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathMacro::mathmlize(MathStream & ms) const
+void InsetMathMacro::mathmlize(MathMLStream & ms) const
 {
 	// macro_ is 0 if this is an unknown macro
 	LATTEST(d->macro_ || d->displayMode_ != DISPLAY_NORMAL);

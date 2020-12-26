@@ -103,7 +103,7 @@ void InsetMathOverset::normalize(NormalStream & os) const
 }
 
 
-void InsetMathOverset::mathmlize(MathStream & ms) const
+void InsetMathOverset::mathmlize(MathMLStream & ms) const
 {
 	ms << "<" << from_ascii(ms.namespacedTag("mover")) << " accent='false'>"
 	   << cell(0) << cell(1)

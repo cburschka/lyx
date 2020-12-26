@@ -94,7 +94,7 @@ void InsetMathString::octave(OctaveStream & os) const
 }
 
 
-void InsetMathString::mathmlize(MathStream &) const
+void InsetMathString::mathmlize(MathMLStream &) const
 {
 	// useless, no doubt, but we should not be here
 	LATTEST(false);

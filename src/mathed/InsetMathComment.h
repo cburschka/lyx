@@ -44,7 +44,7 @@ public:
 	///
 	void octave(OctaveStream &) const override {}
 	///
-	void mathmlize(MathStream &) const override;
+	void mathmlize(MathMLStream &) const override;
 	///
 	void htmlize(HtmlStream &) const override;
 	///

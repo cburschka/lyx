@@ -46,7 +46,7 @@ public:
 	///
 	InsetCode lyxCode() const override { return MATH_PHANTOM_CODE; }
 	/// Nothing for now
-	void mathmlize(MathStream &) const override {}
+	void mathmlize(MathMLStream &) const override {}
 	/// Nothing for HTML
 	void htmlize(HtmlStream &) const override {}
 	/// request "external features"

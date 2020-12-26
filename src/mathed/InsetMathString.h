@@ -47,7 +47,7 @@ public:
 	///
 	void mathematica(MathematicaStream &) const override;
 	///
-	void mathmlize(MathStream &) const override;
+	void mathmlize(MathMLStream &) const override;
 	///
 	void write(WriteStream & os) const override;
 	///

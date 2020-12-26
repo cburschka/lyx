@@ -37,7 +37,7 @@ public:
 	///
 	void write(WriteStream & os) const override;
 	/// FIXME XHTML For now, we do nothing with color.
-	void mathmlize(MathStream &) const override {}
+	void mathmlize(MathMLStream &) const override {}
 	/// FIXME XHTML For now, we do nothing with color.
 	void htmlize(HtmlStream &) const override {}
 	///

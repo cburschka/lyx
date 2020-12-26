@@ -65,7 +65,7 @@ public:
 	/// write content as something readable by Mathematica
 	void mathematica(MathematicaStream &) const override;
 	/// write content as MathML
-	void mathmlize(MathStream &) const override;
+	void mathmlize(MathMLStream &) const override;
 	/// write content as HTML
 	void htmlize(HtmlStream &) const override;
 	/// write content as something readable by Octave

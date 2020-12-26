@@ -35,7 +35,7 @@ public:
 	///
 	void normalize(NormalStream & os) const override;
 	///
-	void mathmlize(MathStream &) const override;
+	void mathmlize(MathMLStream &) const override;
 	///
 	void htmlize(HtmlStream &) const override;
 	///

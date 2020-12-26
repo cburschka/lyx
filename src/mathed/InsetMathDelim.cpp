@@ -179,7 +179,7 @@ void InsetMathDelim::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathDelim::mathmlize(MathStream & ms) const
+void InsetMathDelim::mathmlize(MathMLStream & ms) const
 {
 	ms << "<" << from_ascii(ms.namespacedTag("mo")) << " form='prefix' fence='true' stretchy='true' symmetric='true'>"
 	   << convertDelimToXMLEscape(left_, ms.xmlMode())

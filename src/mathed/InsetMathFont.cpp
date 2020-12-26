@@ -191,7 +191,7 @@ void InsetMathFont::htmlize(HtmlStream & os) const
 
 
 // The fonts we want to support are listed in lib/symbols
-void InsetMathFont::mathmlize(MathStream & ms) const
+void InsetMathFont::mathmlize(MathMLStream & ms) const
 {
 	// FIXME These are not quite right, because they do not nest
 	// correctly. A proper fix would presumably involve tracking

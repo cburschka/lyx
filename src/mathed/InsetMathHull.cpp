@@ -2404,7 +2404,7 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 	// With DocBook 5, MathML must be within its own namespace; defined in Buffer.cpp::writeDocBookSource as "m".
 	// Output everything in a separate stream so that this does not interfere with the standard flow of DocBook tags.
 	odocstringstream osmath;
-	MathStream ms(osmath, "m", true);
+	MathMLStream ms(osmath, "m", true);
 
 	// Output the MathML subtree.
 	odocstringstream ls;
@@ -2427,7 +2427,7 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 	try {
 		// First, generate the MathML expression.
 		odocstringstream ostmp;
-		MathStream mstmp(ostmp, ms.xmlns(), ms.xmlMode());
+		MathMLStream mstmp(ostmp, ms.xmlns(), ms.xmlMode());
 		InsetMathGrid::mathmlize(mstmp);
 
 		// Then, output it (but only if the generation can be done without errors!).
@@ -2505,7 +2505,7 @@ void InsetMathHull::htmlize(HtmlStream & os) const
 // this duplicates code from InsetMathGrid, but
 // we need access here to number information,
 // and we simply do not have that in InsetMathGrid.
-void InsetMathHull::mathmlize(MathStream & ms) const
+void InsetMathHull::mathmlize(MathMLStream & ms) const
 {
 	bool const havenumbers = haveNumbers();
 	bool const havetable = havenumbers || nrows() > 1 || ncols() > 1;
@@ -2592,7 +2592,7 @@ docstring InsetMathHull::xhtml(XMLStream & xs, OutputParams const & op) const
 	// FIXME Eventually we would like to do this inset by inset.
 	if (mathtype == BufferParams::MathML) {
 		odocstringstream os;
-		MathStream ms(os);
+		MathMLStream ms(os);
 		try {
 			mathmlize(ms);
 			success = true;

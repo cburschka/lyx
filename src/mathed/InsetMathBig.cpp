@@ -135,7 +135,7 @@ void InsetMathBig::normalize(NormalStream & os) const
 }
 
 
-void InsetMathBig::mathmlize(MathStream & ms) const
+void InsetMathBig::mathmlize(MathMLStream & ms) const
 {
 	ms << "<" << from_ascii(ms.namespacedTag("mo"))
 	   << " form='prefix' fence='true' stretchy='true' symmetric='true'>"

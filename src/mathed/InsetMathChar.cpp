@@ -228,7 +228,7 @@ void InsetMathChar::octave(OctaveStream & os) const
 // mathalpha, then we'll treat it as an identifier, otherwise as an
 // operator.
 // Worst case: We get bad spacing, or bad italics.
-void InsetMathChar::mathmlize(MathStream & ms) const
+void InsetMathChar::mathmlize(MathMLStream & ms) const
 {
 	std::string entity;
 	switch (char_) {

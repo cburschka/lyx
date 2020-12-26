@@ -491,7 +491,7 @@ void InsetMathFrac::octave(OctaveStream & os) const
 }
 
 
-void InsetMathFrac::mathmlize(MathStream & ms) const
+void InsetMathFrac::mathmlize(MathMLStream & ms) const
 {
 	switch (kind_) {
 	case ATOP:
@@ -730,7 +730,7 @@ void InsetMathBinom::normalize(NormalStream & os) const
 }
 
 
-void InsetMathBinom::mathmlize(MathStream & ms) const
+void InsetMathBinom::mathmlize(MathMLStream & ms) const
 {
 	char ldelim = ' ';
 	char rdelim = ' ';
