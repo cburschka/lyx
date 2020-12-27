@@ -1671,6 +1671,15 @@ void latexParagraphs(Buffer const & buf,
 					os << '\n' << '\n';
 				continue;
 			}
+		} else {
+			// This is the last par
+			Paragraph const & cpar = paragraphs.at(pit);
+			if (!runparams.for_search && !cpar.empty()
+			    && cpar.isDeleted(0, cpar.size()) && !bparams.output_changes) {
+				if (!cpar.parEndChange().deleted())
+					os << '\n' << '\n';
+				continue;
+			}
 		}
 
 		TeXEnvironmentData const data =
