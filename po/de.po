@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-12-17 11:21+0100\n"
-"PO-Revision-Date: 2020-12-17 11:24+0100\n"
+"POT-Creation-Date: 2020-12-27 16:57+0100\n"
+"PO-Revision-Date: 2020-12-27 17:05+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -627,13 +627,13 @@ msgstr "Bo&x:"
 
 #: src/frontends/qt/ui/BoxUi.ui:204 src/frontends/qt/ui/BoxUi.ui:234
 #: src/frontends/qt/ui/TabularUi.ui:213 src/frontends/qt/ui/TabularUi.ui:404
-#: lib/ui/stdcontext.inc:460 src/frontends/qt/GuiMathMatrix.cpp:54
+#: lib/ui/stdcontext.inc:462 src/frontends/qt/GuiMathMatrix.cpp:54
 msgid "Top"
 msgstr "Oben"
 
 #: src/frontends/qt/ui/BoxUi.ui:209 src/frontends/qt/ui/BoxUi.ui:239
 #: src/frontends/qt/ui/TabularUi.ui:218 src/frontends/qt/ui/TabularUi.ui:409
-#: lib/ui/stdcontext.inc:461 src/frontends/qt/GuiMathMatrix.cpp:55
+#: lib/ui/stdcontext.inc:463 src/frontends/qt/GuiMathMatrix.cpp:55
 #: src/frontends/qt/GuiTabular.cpp:250
 msgid "Middle"
 msgstr "Mitte"
@@ -655,7 +655,7 @@ msgstr "Mitte"
 #: lib/layouts/g-brief2.layout:589 lib/layouts/g-brief2.layout:609
 #: lib/layouts/g-brief2.layout:630 lib/layouts/g-brief2.layout:650
 #: lib/layouts/g-brief2.layout:670 lib/layouts/g-brief2.layout:690
-#: lib/layouts/g-brief2.layout:710 lib/ui/stdcontext.inc:462
+#: lib/layouts/g-brief2.layout:710 lib/ui/stdcontext.inc:464
 #: src/frontends/qt/GuiMathMatrix.cpp:56
 msgid "Bottom"
 msgstr "Unten"
@@ -832,7 +832,7 @@ msgid "Add A&ll"
 msgstr "A&lle hinzufügen"
 
 #: src/frontends/qt/ui/BranchesUnknownUi.ui:58 src/Buffer.cpp:1453
-#: src/Buffer.cpp:4677 src/Buffer.cpp:4771 src/LyXVC.cpp:114 src/LyXVC.cpp:304
+#: src/Buffer.cpp:4677 src/Buffer.cpp:4771 src/LyXVC.cpp:114 src/LyXVC.cpp:310
 #: src/buffer_funcs.cpp:56 src/frontends/qt/GuiBranches.cpp:219
 #: src/frontends/qt/GuiClipboard.cpp:246 src/frontends/qt/GuiDocument.cpp:2781
 #: src/frontends/qt/GuiParagraph.cpp:165 src/frontends/qt/GuiPrefs.cpp:3362
@@ -3608,7 +3608,7 @@ msgstr "&Doppelseitiges Dokument"
 msgid "Line &spacing"
 msgstr "Zeilen&abstand"
 
-#: src/frontends/qt/ui/ParagraphUi.ui:60 src/Text.cpp:2032
+#: src/frontends/qt/ui/ParagraphUi.ui:60 src/Text.cpp:2115
 #: src/frontends/qt/GuiDocument.cpp:865
 msgid "Single"
 msgstr "Einfach"
@@ -3617,7 +3617,7 @@ msgstr "Einfach"
 msgid "1.5"
 msgstr "1,5"
 
-#: src/frontends/qt/ui/ParagraphUi.ui:70 src/Text.cpp:2038
+#: src/frontends/qt/ui/ParagraphUi.ui:70 src/Text.cpp:2121
 #: src/frontends/qt/GuiDocument.cpp:869
 msgid "Double"
 msgstr "Doppelt"
@@ -3943,7 +3943,7 @@ msgstr "&Grafiken anzeigen"
 
 #: src/frontends/qt/ui/PrefDisplayUi.ui:105
 msgid "Instant &preview:"
-msgstr "Sofortige &Vorschau:"
+msgstr "Eingebettete &Vorschau:"
 
 #: src/frontends/qt/ui/PrefDisplayUi.ui:116 src/FontInfo.cpp:60
 #: src/frontends/qt/GuiDocument.cpp:136
@@ -6591,7 +6591,7 @@ msgstr "Abstract"
 #: lib/layouts/theorems-ams-extended.module:328
 #: lib/layouts/theorems-ams-extended.module:345
 #: lib/layouts/theorems-ams-extended.module:348
-#: lib/layouts/theorems-counters-extended-bytype.inc:27
+#: lib/layouts/theorems-counters-extended-bytype.inc:28
 msgid "Acknowledgement"
 msgstr "Danksagung"
 
@@ -6691,7 +6691,7 @@ msgstr "Text einer Tabellenanmerkung"
 #: lib/layouts/theorems-bytype.inc:63 lib/layouts/theorems-bytype.inc:66
 #: lib/layouts/theorems-chap-bytype.module:56
 #: lib/layouts/theorems-chap.module:16 lib/layouts/theorems-chap.module:21
-#: lib/layouts/theorems-counters-bytype.inc:4
+#: lib/layouts/theorems-counters-bytype.inc:5
 #: lib/layouts/theorems-named.module:47 lib/layouts/theorems-named.module:50
 #: lib/layouts/theorems-order.inc:7 lib/layouts/theorems-sec-bytype.module:56
 #: lib/layouts/theorems-sec.module:15 lib/layouts/theorems-sec.module:20
@@ -6726,7 +6726,7 @@ msgstr "Theorem"
 #: lib/layouts/theorems-ams-extended.module:89
 #: lib/layouts/theorems-ams-extended.module:106
 #: lib/layouts/theorems-ams-extended.module:109
-#: lib/layouts/theorems-counters-extended-bytype.inc:7
+#: lib/layouts/theorems-counters-extended-bytype.inc:8
 msgid "Algorithm"
 msgstr "Algorithmus"
 
@@ -6746,7 +6746,7 @@ msgstr "Algorithmus"
 #: lib/layouts/theorems-ams-extended.module:130
 #: lib/layouts/theorems-ams-extended.module:147
 #: lib/layouts/theorems-ams-extended.module:150
-#: lib/layouts/theorems-counters-extended-bytype.inc:11
+#: lib/layouts/theorems-counters-extended-bytype.inc:12
 msgid "Axiom"
 msgstr "Axiom"
 
@@ -6781,7 +6781,7 @@ msgstr "Fall \\thecase."
 #: lib/layouts/theorems-ams.inc:321 lib/layouts/theorems-bytype.inc:314
 #: lib/layouts/theorems-bytype.inc:324 lib/layouts/theorems-bytype.inc:327
 #: lib/layouts/theorems-chap-bytype.module:188
-#: lib/layouts/theorems-counters-bytype.inc:48
+#: lib/layouts/theorems-counters-bytype.inc:49
 #: lib/layouts/theorems-order.inc:73 lib/layouts/theorems-sec-bytype.module:144
 #: lib/layouts/theorems-starred-equivalents.inc:83
 #: lib/layouts/theorems-starred.inc:310 lib/layouts/theorems-starred.inc:313
@@ -6809,7 +6809,7 @@ msgstr "Behauptung"
 #: lib/layouts/theorems-ams-extended.module:368
 #: lib/layouts/theorems-ams-extended.module:385
 #: lib/layouts/theorems-ams-extended.module:388
-#: lib/layouts/theorems-counters-extended-bytype.inc:30
+#: lib/layouts/theorems-counters-extended-bytype.inc:31
 msgid "Conclusion"
 msgstr "Schlussfolgerung"
 
@@ -6829,7 +6829,7 @@ msgstr "Schlussfolgerung"
 #: lib/layouts/theorems-ams-extended.module:170
 #: lib/layouts/theorems-ams-extended.module:187
 #: lib/layouts/theorems-ams-extended.module:190
-#: lib/layouts/theorems-counters-extended-bytype.inc:15
+#: lib/layouts/theorems-counters-extended-bytype.inc:16
 msgid "Condition"
 msgstr "Bedingung"
 
@@ -6847,7 +6847,7 @@ msgstr "Bedingung"
 #: lib/layouts/theorems-ams.inc:150 lib/layouts/theorems-bytype.inc:134
 #: lib/layouts/theorems-bytype.inc:143 lib/layouts/theorems-bytype.inc:146
 #: lib/layouts/theorems-chap-bytype.module:104
-#: lib/layouts/theorems-counters-bytype.inc:20
+#: lib/layouts/theorems-counters-bytype.inc:21
 #: lib/layouts/theorems-order.inc:31 lib/layouts/theorems-sec-bytype.module:88
 #: lib/layouts/theorems-starred-equivalents.inc:34
 #: lib/layouts/theorems-starred.inc:141 lib/layouts/theorems-starred.inc:144
@@ -6875,7 +6875,7 @@ msgstr "Vermutung"
 #: lib/layouts/theorems-bytype.inc:74 lib/layouts/theorems-bytype.inc:83
 #: lib/layouts/theorems-bytype.inc:86
 #: lib/layouts/theorems-chap-bytype.module:68
-#: lib/layouts/theorems-counters-bytype.inc:8 lib/layouts/theorems-order.inc:13
+#: lib/layouts/theorems-counters-bytype.inc:9 lib/layouts/theorems-order.inc:13
 #: lib/layouts/theorems-sec-bytype.module:64
 #: lib/layouts/theorems-starred-equivalents.inc:13
 #: lib/layouts/theorems-starred.inc:84 lib/layouts/theorems-starred.inc:87
@@ -6903,7 +6903,7 @@ msgstr "Korollar"
 #: lib/layouts/theorems-ams-extended.module:49
 #: lib/layouts/theorems-ams-extended.module:65
 #: lib/layouts/theorems-ams-extended.module:68
-#: lib/layouts/theorems-counters-extended-bytype.inc:4
+#: lib/layouts/theorems-counters-extended-bytype.inc:5
 msgid "Criterion"
 msgstr "Kriterium"
 
@@ -6921,7 +6921,7 @@ msgstr "Kriterium"
 #: lib/layouts/theorems-ams.inc:197 lib/layouts/theorems-bytype.inc:174
 #: lib/layouts/theorems-bytype.inc:190 lib/layouts/theorems-bytype.inc:193
 #: lib/layouts/theorems-chap-bytype.module:128
-#: lib/layouts/theorems-counters-bytype.inc:26
+#: lib/layouts/theorems-counters-bytype.inc:27
 #: lib/layouts/theorems-order.inc:37 lib/layouts/theorems-sec-bytype.module:104
 #: lib/layouts/theorems-starred-equivalents.inc:41
 #: lib/layouts/theorems-starred.inc:187 lib/layouts/theorems-starred.inc:190
@@ -6946,7 +6946,7 @@ msgstr "Definition"
 #: lib/layouts/theorems-ams.inc:216 lib/layouts/theorems-bytype.inc:201
 #: lib/layouts/theorems-bytype.inc:211 lib/layouts/theorems-bytype.inc:214
 #: lib/layouts/theorems-chap-bytype.module:140
-#: lib/layouts/theorems-counters-bytype.inc:30
+#: lib/layouts/theorems-counters-bytype.inc:31
 #: lib/layouts/theorems-order.inc:43 lib/layouts/theorems-sec-bytype.module:112
 #: lib/layouts/theorems-starred-equivalents.inc:48
 #: lib/layouts/theorems-starred.inc:206 lib/layouts/theorems-starred.inc:209
@@ -6970,7 +6970,7 @@ msgstr "Beispiel"
 #: lib/layouts/theorems-ams.inc:255 lib/layouts/theorems-bytype.inc:244
 #: lib/layouts/theorems-bytype.inc:254 lib/layouts/theorems-bytype.inc:257
 #: lib/layouts/theorems-chap-bytype.module:164
-#: lib/layouts/theorems-counters-bytype.inc:36
+#: lib/layouts/theorems-counters-bytype.inc:37
 #: lib/layouts/theorems-order.inc:55 lib/layouts/theorems-sec-bytype.module:128
 #: lib/layouts/theorems-starred-equivalents.inc:69
 #: lib/layouts/theorems-starred.inc:245 lib/layouts/theorems-starred.inc:248
@@ -7000,7 +7000,7 @@ msgstr "Aufgabe"
 #: lib/layouts/theorems-bytype.inc:94 lib/layouts/theorems-bytype.inc:103
 #: lib/layouts/theorems-bytype.inc:106
 #: lib/layouts/theorems-chap-bytype.module:80
-#: lib/layouts/theorems-counters-bytype.inc:12
+#: lib/layouts/theorems-counters-bytype.inc:13
 #: lib/layouts/theorems-order.inc:19 lib/layouts/theorems-sec-bytype.module:72
 #: lib/layouts/theorems-starred-equivalents.inc:20
 #: lib/layouts/theorems-starred.inc:103 lib/layouts/theorems-starred.inc:106
@@ -7029,7 +7029,7 @@ msgstr "Lemma"
 #: lib/layouts/theorems-ams-extended.module:248
 #: lib/layouts/theorems-ams-extended.module:265
 #: lib/layouts/theorems-ams-extended.module:268
-#: lib/layouts/theorems-counters-extended-bytype.inc:21
+#: lib/layouts/theorems-counters-extended-bytype.inc:22
 msgid "Notation"
 msgstr "Notation"
 
@@ -7044,7 +7044,7 @@ msgstr "Notation"
 #: lib/layouts/theorems-ams.inc:236 lib/layouts/theorems-bytype.inc:223
 #: lib/layouts/theorems-bytype.inc:233 lib/layouts/theorems-bytype.inc:236
 #: lib/layouts/theorems-chap-bytype.module:152
-#: lib/layouts/theorems-counters-bytype.inc:33
+#: lib/layouts/theorems-counters-bytype.inc:34
 #: lib/layouts/theorems-order.inc:49 lib/layouts/theorems-sec-bytype.module:120
 #: lib/layouts/theorems-starred-equivalents.inc:62
 #: lib/layouts/theorems-starred.inc:226 lib/layouts/theorems-starred.inc:229
@@ -7071,7 +7071,7 @@ msgstr "Problem"
 #: lib/layouts/theorems-ams.inc:130 lib/layouts/theorems-bytype.inc:114
 #: lib/layouts/theorems-bytype.inc:123 lib/layouts/theorems-bytype.inc:126
 #: lib/layouts/theorems-chap-bytype.module:92
-#: lib/layouts/theorems-counters-bytype.inc:16
+#: lib/layouts/theorems-counters-bytype.inc:17
 #: lib/layouts/theorems-order.inc:25 lib/layouts/theorems-sec-bytype.module:80
 #: lib/layouts/theorems-starred-equivalents.inc:27
 #: lib/layouts/theorems-starred.inc:122 lib/layouts/theorems-starred.inc:125
@@ -7097,7 +7097,7 @@ msgstr "Satz"
 #: lib/layouts/theorems-ams.inc:302 lib/layouts/theorems-bytype.inc:286
 #: lib/layouts/theorems-bytype.inc:303 lib/layouts/theorems-bytype.inc:306
 #: lib/layouts/theorems-chap-bytype.module:176
-#: lib/layouts/theorems-counters-bytype.inc:44
+#: lib/layouts/theorems-counters-bytype.inc:45
 #: lib/layouts/theorems-order.inc:67 lib/layouts/theorems-sec-bytype.module:136
 #: lib/layouts/theorems-starred-equivalents.inc:76
 #: lib/layouts/theorems-starred.inc:291 lib/layouts/theorems-starred.inc:294
@@ -7128,7 +7128,7 @@ msgstr "Bemerkung \\theremark."
 #: lib/layouts/theorems-ams.inc:262 lib/layouts/theorems-ams.inc:271
 #: lib/layouts/theorems-ams.inc:274 lib/layouts/theorems-bytype.inc:265
 #: lib/layouts/theorems-bytype.inc:275 lib/layouts/theorems-bytype.inc:278
-#: lib/layouts/theorems-counters-bytype.inc:40
+#: lib/layouts/theorems-counters-bytype.inc:41
 #: lib/layouts/theorems-order.inc:61
 #: lib/layouts/theorems-starred-equivalents.inc:55
 #: lib/layouts/theorems-starred.inc:264 lib/layouts/theorems-starred.inc:267
@@ -7169,7 +7169,7 @@ msgstr "Lösung \\thesolution."
 #: lib/layouts/theorems-ams-extended.module:288
 #: lib/layouts/theorems-ams-extended.module:305
 #: lib/layouts/theorems-ams-extended.module:308
-#: lib/layouts/theorems-counters-extended-bytype.inc:24 lib/examples/Articles:0
+#: lib/layouts/theorems-counters-extended-bytype.inc:25 lib/examples/Articles:0
 msgid "Summary"
 msgstr "Zusammenfassung"
 
@@ -9658,7 +9658,7 @@ msgstr "Sechs Zugehörigkeiten"
 #: lib/layouts/theorems-ams-extended.module:210
 #: lib/layouts/theorems-ams-extended.module:226
 #: lib/layouts/theorems-ams-extended.module:229
-#: lib/layouts/theorems-counters-extended-bytype.inc:18
+#: lib/layouts/theorems-counters-extended-bytype.inc:19
 #: lib/layouts/theorems-without-preamble.inc:460
 #: lib/layouts/theorems-without-preamble.inc:462
 #: lib/layouts/theorems-without-preamble.inc:469
@@ -10291,7 +10291,7 @@ msgstr "Beispiele."
 #: lib/layouts/theorems-ams.inc:170 lib/layouts/theorems-bytype.inc:154
 #: lib/layouts/theorems-bytype.inc:163 lib/layouts/theorems-bytype.inc:166
 #: lib/layouts/theorems-chap-bytype.module:116
-#: lib/layouts/theorems-counters-bytype.inc:23
+#: lib/layouts/theorems-counters-bytype.inc:24
 #: lib/layouts/theorems-sec-bytype.module:96
 #: lib/layouts/theorems-starred.inc:160 lib/layouts/theorems-starred.inc:163
 #: lib/layouts/theorems-without-preamble.inc:185
@@ -13546,7 +13546,7 @@ msgstr "Satz \\theproposition."
 #: lib/layouts/theorems-ams-extended.module:449
 #: lib/layouts/theorems-ams-extended.module:465
 #: lib/layouts/theorems-ams-extended.module:468
-#: lib/layouts/theorems-counters-extended-bytype.inc:36
+#: lib/layouts/theorems-counters-extended-bytype.inc:37
 #: lib/layouts/theorems-without-preamble.inc:440
 #: lib/layouts/theorems-without-preamble.inc:442
 #: lib/layouts/theorems-without-preamble.inc:449
@@ -17677,7 +17677,7 @@ msgstr "Schlussfolgerung."
 #: lib/layouts/theorems-ams-extended.module:409
 #: lib/layouts/theorems-ams-extended.module:426
 #: lib/layouts/theorems-ams-extended.module:429
-#: lib/layouts/theorems-counters-extended-bytype.inc:33
+#: lib/layouts/theorems-counters-extended-bytype.inc:34
 msgid "Assumption"
 msgstr "Annahme"
 
@@ -18493,7 +18493,7 @@ msgstr "Deutsch (Schweiz)"
 msgid "German (Switzerland, old spelling)"
 msgstr "Deutsch (Schweiz, alte Rechtschreibung)"
 
-#: lib/languages:816 lib/ui/stdtoolbars.inc:318 lib/ui/stdtoolbars.inc:612
+#: lib/languages:816 lib/ui/stdtoolbars.inc:224 lib/ui/stdtoolbars.inc:612
 #: src/frontends/qt/GuiSymbols.cpp:62
 msgid "Greek"
 msgstr "Griechisch"
@@ -19473,21 +19473,21 @@ msgid "Copy as Reference|R"
 msgstr "Als Querverweis kopieren|k"
 
 #: lib/ui/stdcontext.inc:61 lib/ui/stdcontext.inc:355 lib/ui/stdmenus.inc:108
-#: lib/ui/stdtoolbars.inc:86 src/Text3.cpp:1540
-#: src/mathed/InsetMathNest.cpp:562
+#: lib/ui/stdtoolbars.inc:86 src/Text3.cpp:1548
+#: src/mathed/InsetMathNest.cpp:554
 msgid "Cut"
 msgstr "Ausschneiden"
 
 #: lib/ui/stdcontext.inc:62 lib/ui/stdcontext.inc:356 lib/ui/stdmenus.inc:109
-#: lib/ui/stdtoolbars.inc:87 src/Text3.cpp:1545
-#: src/mathed/InsetMathNest.cpp:571
+#: lib/ui/stdtoolbars.inc:87 src/Text3.cpp:1553
+#: src/mathed/InsetMathNest.cpp:563
 msgid "Copy"
 msgstr "Kopieren"
 
 #: lib/ui/stdcontext.inc:63 lib/ui/stdcontext.inc:357 lib/ui/stdmenus.inc:110
-#: lib/ui/stdtoolbars.inc:88 src/Text3.cpp:1485
+#: lib/ui/stdtoolbars.inc:88 src/Text3.cpp:1493
 #: src/frontends/qt/GuiToolbar.cpp:420 src/mathed/InsetMathGrid.cpp:1560
-#: src/mathed/InsetMathNest.cpp:541
+#: src/mathed/InsetMathNest.cpp:533
 msgid "Paste"
 msgstr "Einfügen"
 
@@ -19608,15 +19608,15 @@ msgstr "Große Anfangsbuchstaben|A"
 #: lib/ui/stdcontext.inc:148 lib/ui/stdcontext.inc:159
 #: lib/ui/stdcontext.inc:166 lib/ui/stdcontext.inc:267
 #: lib/ui/stdcontext.inc:285 lib/ui/stdcontext.inc:314
-#: lib/ui/stdcontext.inc:424 lib/ui/stdcontext.inc:437
-#: lib/ui/stdcontext.inc:490 lib/ui/stdcontext.inc:502
-#: lib/ui/stdcontext.inc:526 lib/ui/stdcontext.inc:537
-#: lib/ui/stdcontext.inc:545 lib/ui/stdcontext.inc:555
-#: lib/ui/stdcontext.inc:563 lib/ui/stdcontext.inc:571
-#: lib/ui/stdcontext.inc:579 lib/ui/stdcontext.inc:592
-#: lib/ui/stdcontext.inc:602 lib/ui/stdcontext.inc:623
-#: lib/ui/stdcontext.inc:631 lib/ui/stdcontext.inc:677
-#: lib/ui/stdcontext.inc:686 lib/ui/stdmenus.inc:576
+#: lib/ui/stdcontext.inc:426 lib/ui/stdcontext.inc:439
+#: lib/ui/stdcontext.inc:492 lib/ui/stdcontext.inc:504
+#: lib/ui/stdcontext.inc:528 lib/ui/stdcontext.inc:539
+#: lib/ui/stdcontext.inc:547 lib/ui/stdcontext.inc:557
+#: lib/ui/stdcontext.inc:565 lib/ui/stdcontext.inc:573
+#: lib/ui/stdcontext.inc:581 lib/ui/stdcontext.inc:594
+#: lib/ui/stdcontext.inc:604 lib/ui/stdcontext.inc:625
+#: lib/ui/stdcontext.inc:633 lib/ui/stdcontext.inc:679
+#: lib/ui/stdcontext.inc:688 lib/ui/stdmenus.inc:576
 msgid "Settings...|S"
 msgstr "Einstellungen...|E"
 
@@ -19624,7 +19624,7 @@ msgstr "Einstellungen...|E"
 msgid "Go Back|G"
 msgstr "Gehe zurück|G"
 
-#: lib/ui/stdcontext.inc:118 lib/ui/stdcontext.inc:523
+#: lib/ui/stdcontext.inc:118 lib/ui/stdcontext.inc:525
 msgid "Copy as Reference|C"
 msgstr "Als Querverweis kopieren|k"
 
@@ -19645,7 +19645,7 @@ msgid "Close Inset|C"
 msgstr "Einfügung schließen|s"
 
 #: lib/ui/stdcontext.inc:158 lib/ui/stdcontext.inc:164
-#: lib/ui/stdcontext.inc:180 lib/ui/stdcontext.inc:639
+#: lib/ui/stdcontext.inc:180 lib/ui/stdcontext.inc:641
 msgid "Dissolve Inset|D"
 msgstr "Einfügung auflösen|ü"
 
@@ -19841,27 +19841,27 @@ msgstr "Benutzerdefiniert|t"
 msgid "Settings...|e"
 msgstr "Einstellungen...|n"
 
-#: lib/ui/stdcontext.inc:308 lib/ui/stdcontext.inc:586
+#: lib/ui/stdcontext.inc:308 lib/ui/stdcontext.inc:588
 msgid "Include|c"
 msgstr "Include|c"
 
-#: lib/ui/stdcontext.inc:309 lib/ui/stdcontext.inc:587
+#: lib/ui/stdcontext.inc:309 lib/ui/stdcontext.inc:589
 msgid "Input|p"
 msgstr "Input|p"
 
-#: lib/ui/stdcontext.inc:310 lib/ui/stdcontext.inc:588
+#: lib/ui/stdcontext.inc:310 lib/ui/stdcontext.inc:590
 msgid "Verbatim|V"
 msgstr "Unformatiert|U"
 
-#: lib/ui/stdcontext.inc:311 lib/ui/stdcontext.inc:589
+#: lib/ui/stdcontext.inc:311 lib/ui/stdcontext.inc:591
 msgid "Verbatim (marked blanks)|b"
 msgstr "Unformatiert (Leerzeichen markiert)|m"
 
-#: lib/ui/stdcontext.inc:312 lib/ui/stdcontext.inc:590
+#: lib/ui/stdcontext.inc:312 lib/ui/stdcontext.inc:592
 msgid "Listing|L"
 msgstr "Programmlisting|l"
 
-#: lib/ui/stdcontext.inc:316 lib/ui/stdcontext.inc:594
+#: lib/ui/stdcontext.inc:316 lib/ui/stdcontext.inc:596
 msgid "Edit Included File...|E"
 msgstr "Eingebettete Datei bearbeiten...|b"
 
@@ -19910,335 +19910,339 @@ msgid "End Editing Externally..."
 msgstr "Externe Bearbeitung beenden..."
 
 #: lib/ui/stdcontext.inc:360
+msgid "Split Inset|t"
+msgstr "Einfügung spalten|f"
+
+#: lib/ui/stdcontext.inc:362
 msgid "Jump Back to Saved Bookmark|B"
 msgstr "Zum gespeicherten Lesezeichen springen|L"
 
-#: lib/ui/stdcontext.inc:361 lib/ui/stdmenus.inc:600
+#: lib/ui/stdcontext.inc:363 lib/ui/stdmenus.inc:600
 msgid "Forward Search|F"
 msgstr "Vorwärtssuche|V"
 
-#: lib/ui/stdcontext.inc:363 lib/ui/stdmenus.inc:120
+#: lib/ui/stdcontext.inc:365 lib/ui/stdmenus.inc:120
 msgid "Move Paragraph Up|o"
 msgstr "Absatz nach oben verschieben|o"
 
-#: lib/ui/stdcontext.inc:364 lib/ui/stdmenus.inc:121
+#: lib/ui/stdcontext.inc:366 lib/ui/stdmenus.inc:121
 msgid "Move Paragraph Down|v"
 msgstr "Absatz nach unten verschieben|u"
 
-#: lib/ui/stdcontext.inc:368
+#: lib/ui/stdcontext.inc:370
 msgid "Promote Section|r"
 msgstr "Verschachtelungstiefe des Abschnitts verringern|r"
 
-#: lib/ui/stdcontext.inc:369
+#: lib/ui/stdcontext.inc:371
 msgid "Demote Section|m"
 msgstr "Verschachtelungstiefe des Abschnitts erhöhen|s"
 
-#: lib/ui/stdcontext.inc:370
+#: lib/ui/stdcontext.inc:372
 msgid "Move Section Down|D"
 msgstr "Abschnitt nach unten verschieben|n"
 
-#: lib/ui/stdcontext.inc:371 lib/ui/stdcontext.inc:659
+#: lib/ui/stdcontext.inc:373 lib/ui/stdcontext.inc:661
 msgid "Move Section Up|U"
 msgstr "Abschnitt nach oben verschieben|b"
 
-#: lib/ui/stdcontext.inc:373
+#: lib/ui/stdcontext.inc:375
 msgid "Insert Regular Expression"
 msgstr "Regulären Ausdruck einfügen"
 
-#: lib/ui/stdcontext.inc:375 lib/ui/stdcontext.inc:648
+#: lib/ui/stdcontext.inc:377 lib/ui/stdcontext.inc:650
 msgid "Accept Change|c"
 msgstr "Änderung akzeptieren|k"
 
-#: lib/ui/stdcontext.inc:376
+#: lib/ui/stdcontext.inc:378
 msgid "Reject Change|j"
 msgstr "Änderung ablehnen|b"
 
-#: lib/ui/stdcontext.inc:378 lib/ui/stdmenus.inc:124
+#: lib/ui/stdcontext.inc:380 lib/ui/stdmenus.inc:124
 msgid "Text Properties|x"
 msgstr "Texteigenschaften|x"
 
-#: lib/ui/stdcontext.inc:379 lib/ui/stdmenus.inc:125
+#: lib/ui/stdcontext.inc:381 lib/ui/stdmenus.inc:125
 msgid "Custom Text Styles|S"
 msgstr "Spezifische Textstile|T"
 
-#: lib/ui/stdcontext.inc:380 lib/ui/stdmenus.inc:123
+#: lib/ui/stdcontext.inc:382 lib/ui/stdmenus.inc:123
 msgid "Paragraph Settings...|P"
 msgstr "Absatz-Einstellungen...|A"
 
-#: lib/ui/stdcontext.inc:381
+#: lib/ui/stdcontext.inc:383
 msgid "Unify Graphics Groups|U"
 msgstr "Grafikgruppe zusammenstellen|z"
 
-#: lib/ui/stdcontext.inc:384
+#: lib/ui/stdcontext.inc:386
 msgid "Fullscreen Mode"
 msgstr "Vollbildmodus"
 
-#: lib/ui/stdcontext.inc:385
+#: lib/ui/stdcontext.inc:387
 msgid "Close Current View"
 msgstr "Aktuelle Ansicht schließen"
 
-#: lib/ui/stdcontext.inc:393
+#: lib/ui/stdcontext.inc:395
 msgid "Anything|A"
 msgstr "Beliebige Sequenz (mit Leerzeichen)|S"
 
-#: lib/ui/stdcontext.inc:394
+#: lib/ui/stdcontext.inc:396
 msgid "Anything Non-Empty|o"
 msgstr "Beliebige Sequenz (ohne Leerzeichen)|o"
 
-#: lib/ui/stdcontext.inc:395
+#: lib/ui/stdcontext.inc:397
 msgid "Any Word|W"
 msgstr "Beliebiges Wort (ohne Ziffern)|W"
 
-#: lib/ui/stdcontext.inc:396
+#: lib/ui/stdcontext.inc:398
 msgid "Any Number|N"
 msgstr "Beliebige Ziffer|Z"
 
-#: lib/ui/stdcontext.inc:397
+#: lib/ui/stdcontext.inc:399
 msgid "User Defined|U"
 msgstr "Benutzerdefiniert|u"
 
-#: lib/ui/stdcontext.inc:406 lib/ui/stdmenus.inc:267
+#: lib/ui/stdcontext.inc:408 lib/ui/stdmenus.inc:267
 msgid "Append Argument"
 msgstr "Argument hinzufügen"
 
-#: lib/ui/stdcontext.inc:407 lib/ui/stdmenus.inc:268
+#: lib/ui/stdcontext.inc:409 lib/ui/stdmenus.inc:268
 msgid "Remove Last Argument"
 msgstr "Letztes Argument entfernen"
 
-#: lib/ui/stdcontext.inc:409
+#: lib/ui/stdcontext.inc:411
 msgid "Make First Non-Optional Into Optional Argument"
 msgstr "Das erste nicht-optionale Argument in ein optionales ändern"
 
-#: lib/ui/stdcontext.inc:410
+#: lib/ui/stdcontext.inc:412
 msgid "Make Last Optional Into Non-Optional Argument"
 msgstr "Das letzte optionale Argument in ein nicht-optionales ändern"
 
-#: lib/ui/stdcontext.inc:411 lib/ui/stdmenus.inc:272
+#: lib/ui/stdcontext.inc:413 lib/ui/stdmenus.inc:272
 msgid "Insert Optional Argument"
 msgstr "Optionales Argument einfügen"
 
-#: lib/ui/stdcontext.inc:412 lib/ui/stdmenus.inc:273
+#: lib/ui/stdcontext.inc:414 lib/ui/stdmenus.inc:273
 msgid "Remove Optional Argument"
 msgstr "Optionales Argument entfernen"
 
-#: lib/ui/stdcontext.inc:414 lib/ui/stdmenus.inc:275
+#: lib/ui/stdcontext.inc:416 lib/ui/stdmenus.inc:275
 msgid "Append Argument Eating From the Right"
 msgstr "Argument von rechts hinzufügen"
 
-#: lib/ui/stdcontext.inc:415 lib/ui/stdmenus.inc:276
+#: lib/ui/stdcontext.inc:417 lib/ui/stdmenus.inc:276
 msgid "Append Optional Argument Eating From the Right"
 msgstr "Optionales Argument von rechts hinzufügen"
 
-#: lib/ui/stdcontext.inc:416 lib/ui/stdmenus.inc:277
+#: lib/ui/stdcontext.inc:418 lib/ui/stdmenus.inc:277
 msgid "Remove Last Argument Spitting Out to the Right"
 msgstr "Letztes Argument rechts entfernen"
 
-#: lib/ui/stdcontext.inc:425
+#: lib/ui/stdcontext.inc:427
 msgid "Reload|R"
 msgstr "Neu laden|u"
 
-#: lib/ui/stdcontext.inc:427 lib/ui/stdcontext.inc:439
-#: lib/ui/stdcontext.inc:547
+#: lib/ui/stdcontext.inc:429 lib/ui/stdcontext.inc:441
+#: lib/ui/stdcontext.inc:549
 msgid "Edit Externally...|x"
 msgstr "Datei extern bearbeiten...|x"
 
-#: lib/ui/stdcontext.inc:447 lib/ui/stdmenus.inc:222
+#: lib/ui/stdcontext.inc:449 lib/ui/stdmenus.inc:222
 msgid "Top|T"
 msgstr "Oben|O"
 
-#: lib/ui/stdcontext.inc:448 lib/ui/stdmenus.inc:224
+#: lib/ui/stdcontext.inc:450 lib/ui/stdmenus.inc:224
 msgid "Bottom|B"
 msgstr "Unten|U"
 
-#: lib/ui/stdcontext.inc:449 lib/ui/stdmenus.inc:218
+#: lib/ui/stdcontext.inc:451 lib/ui/stdmenus.inc:218
 msgid "Left|L"
 msgstr "Links|L"
 
-#: lib/ui/stdcontext.inc:450 lib/ui/stdmenus.inc:220
+#: lib/ui/stdcontext.inc:452 lib/ui/stdmenus.inc:220
 msgid "Right|R"
 msgstr "Rechts|R"
 
-#: lib/ui/stdcontext.inc:451
+#: lib/ui/stdcontext.inc:453
 msgid "Reset Formal Defaults|F"
 msgstr "Auf formalen Standard zurücksetzen|f"
 
-#: lib/ui/stdcontext.inc:455
+#: lib/ui/stdcontext.inc:457
 msgid "Left|f"
 msgstr "Links|L"
 
-#: lib/ui/stdcontext.inc:456 lib/ui/stdmenus.inc:219
+#: lib/ui/stdcontext.inc:458 lib/ui/stdmenus.inc:219
 msgid "Center|C"
 msgstr "Zentriert|Z"
 
-#: lib/ui/stdcontext.inc:457
+#: lib/ui/stdcontext.inc:459
 msgid "Right|h"
 msgstr "Rechts|R"
 
-#: lib/ui/stdcontext.inc:458
+#: lib/ui/stdcontext.inc:460
 msgid "Decimal"
 msgstr "Dezimal"
 
-#: lib/ui/stdcontext.inc:466
+#: lib/ui/stdcontext.inc:468
 msgid "Multicolumn|u"
 msgstr "Mehrfachspalte|h"
 
-#: lib/ui/stdcontext.inc:467
+#: lib/ui/stdcontext.inc:469
 msgid "Multirow|w"
 msgstr "Mehrfachzeile|f"
 
-#: lib/ui/stdcontext.inc:469
+#: lib/ui/stdcontext.inc:471
 msgid "Append Row|A"
 msgstr "Zeile anfügen|a"
 
-#: lib/ui/stdcontext.inc:470 lib/ui/stdmenus.inc:227
+#: lib/ui/stdcontext.inc:472 lib/ui/stdmenus.inc:227
 msgid "Delete Row|D"
 msgstr "Zeile löschen|ö"
 
-#: lib/ui/stdcontext.inc:471 lib/ui/stdmenus.inc:228
+#: lib/ui/stdcontext.inc:473 lib/ui/stdmenus.inc:228
 msgid "Copy Row|o"
 msgstr "Zeile kopieren|k"
 
-#: lib/ui/stdcontext.inc:472 lib/ui/stdmenus.inc:229
+#: lib/ui/stdcontext.inc:474 lib/ui/stdmenus.inc:229
 msgid "Move Row Up"
 msgstr "Zeile nach oben verschieben"
 
-#: lib/ui/stdcontext.inc:473 lib/ui/stdmenus.inc:230
+#: lib/ui/stdcontext.inc:475 lib/ui/stdmenus.inc:230
 msgid "Move Row Down"
 msgstr "Zeile nach unten verschieben"
 
-#: lib/ui/stdcontext.inc:475
+#: lib/ui/stdcontext.inc:477
 msgid "Append Column|p"
 msgstr "Spalte anfügen|S"
 
-#: lib/ui/stdcontext.inc:476 lib/ui/stdmenus.inc:234
+#: lib/ui/stdcontext.inc:478 lib/ui/stdmenus.inc:234
 msgid "Delete Column|e"
 msgstr "Spalte löschen|p"
 
-#: lib/ui/stdcontext.inc:477
+#: lib/ui/stdcontext.inc:479
 msgid "Copy Column|y"
 msgstr "Spalte kopieren|t"
 
-#: lib/ui/stdcontext.inc:478 lib/ui/stdmenus.inc:236
+#: lib/ui/stdcontext.inc:480 lib/ui/stdmenus.inc:236
 msgid "Move Column Right|v"
 msgstr "Spalte nach rechts verschieben"
 
-#: lib/ui/stdcontext.inc:479 lib/ui/stdmenus.inc:237
+#: lib/ui/stdcontext.inc:481 lib/ui/stdmenus.inc:237
 msgid "Move Column Left"
 msgstr "Spalte nach links verschieben"
 
-#: lib/ui/stdcontext.inc:483 lib/ui/stdmenus.inc:201
+#: lib/ui/stdcontext.inc:485 lib/ui/stdmenus.inc:201
 msgid "Multi-page Table|g"
 msgstr "Mehrseitige Tabelle|t"
 
-#: lib/ui/stdcontext.inc:484
+#: lib/ui/stdcontext.inc:486
 msgid "Formal Style|m"
 msgstr "Formaler Stil|F"
 
-#: lib/ui/stdcontext.inc:486
+#: lib/ui/stdcontext.inc:488
 msgid "Borders|d"
 msgstr "Rahmenlinien|R"
 
-#: lib/ui/stdcontext.inc:487
+#: lib/ui/stdcontext.inc:489
 msgid "Alignment|i"
 msgstr "Ausrichtung|s"
 
-#: lib/ui/stdcontext.inc:488
+#: lib/ui/stdcontext.inc:490
 msgid "Columns/Rows|C"
 msgstr "Zeilen/Spalten|Z"
 
-#: lib/ui/stdcontext.inc:500
+#: lib/ui/stdcontext.inc:502
 msgid "Transform Field to Static Text|T"
 msgstr "Textfeld in statischen Text umwandeln|T"
 
-#: lib/ui/stdcontext.inc:501
+#: lib/ui/stdcontext.inc:503
 msgid "Copy Text|o"
 msgstr "Text kopieren|o"
 
-#: lib/ui/stdcontext.inc:510 lib/ui/stdcontext.inc:534
+#: lib/ui/stdcontext.inc:512 lib/ui/stdcontext.inc:536
 msgid "Activate Branch|A"
 msgstr "Aktiviere Zweig|A"
 
-#: lib/ui/stdcontext.inc:511 lib/ui/stdcontext.inc:535
+#: lib/ui/stdcontext.inc:513 lib/ui/stdcontext.inc:537
 msgid "Deactivate Branch|e"
 msgstr "Deaktiviere Zweig|Z"
 
-#: lib/ui/stdcontext.inc:512
+#: lib/ui/stdcontext.inc:514
 msgid "Activate Branch in Master|M"
 msgstr "Aktiviere Zweig im Hauptdokument|H"
 
-#: lib/ui/stdcontext.inc:513
+#: lib/ui/stdcontext.inc:515
 msgid "Deactivate Branch in Master|v"
 msgstr "Deaktiviere Zweig im Hauptdokument|v"
 
-#: lib/ui/stdcontext.inc:514
+#: lib/ui/stdcontext.inc:516
 msgid "Invert Inset|I"
 msgstr "Einfügung umkehren|u"
 
-#: lib/ui/stdcontext.inc:515
+#: lib/ui/stdcontext.inc:517
 msgid "Add Unknown Branch|w"
 msgstr "Unbekannten Zweig hinzufügen|w"
 
-#: lib/ui/stdcontext.inc:524
+#: lib/ui/stdcontext.inc:526
 msgid "Insert Reference at Cursor Position|I"
 msgstr "Verweis an der Cursor-Position einfügen|V"
 
-#: lib/ui/stdcontext.inc:618
+#: lib/ui/stdcontext.inc:620
 msgid "All Indexes|A"
 msgstr "Alle Indexe|A"
 
-#: lib/ui/stdcontext.inc:621
+#: lib/ui/stdcontext.inc:623
 msgid "Subindex|b"
 msgstr "Unterindex|t"
 
-#: lib/ui/stdcontext.inc:649 lib/ui/stdmenus.inc:583
+#: lib/ui/stdcontext.inc:651 lib/ui/stdmenus.inc:583
 msgid "Reject Change|R"
 msgstr "Änderung ablehnen|b"
 
-#: lib/ui/stdcontext.inc:657
+#: lib/ui/stdcontext.inc:659
 msgid "Promote Section|P"
 msgstr "Verschachtelungstiefe des Abschnitts verringern|r"
 
-#: lib/ui/stdcontext.inc:658
+#: lib/ui/stdcontext.inc:660
 msgid "Demote Section|D"
 msgstr "Verschachtelungstiefe des Abschnitts erhöhen|s"
 
-#: lib/ui/stdcontext.inc:660
+#: lib/ui/stdcontext.inc:662
 msgid "Move Section Down|w"
 msgstr "Abschnitt nach unten verschieben|n"
 
-#: lib/ui/stdcontext.inc:662
+#: lib/ui/stdcontext.inc:664
 msgid "Select Section|S"
 msgstr "Abschnitt auswählen|h"
 
-#: lib/ui/stdcontext.inc:670
+#: lib/ui/stdcontext.inc:672
 msgid "Wrap by Preview|y"
-msgstr "Sofortige Vorschau|V"
+msgstr "Eingebettete Vorschau|r"
 
-#: lib/ui/stdcontext.inc:679
+#: lib/ui/stdcontext.inc:681
 msgid "Open Target...|O"
 msgstr "Verweisziel öffnen...|ö"
 
-#: lib/ui/stdcontext.inc:695 lib/ui/stdmenus.inc:361
+#: lib/ui/stdcontext.inc:697 lib/ui/stdmenus.inc:361
 msgid "Lock Toolbars|L"
 msgstr "Verankere die Werkzeugleisten|V"
 
-#: lib/ui/stdcontext.inc:697 lib/ui/stdmenus.inc:363
+#: lib/ui/stdcontext.inc:699 lib/ui/stdmenus.inc:363
 msgid "Small-sized Icons"
 msgstr "Kleine Symbole"
 
-#: lib/ui/stdcontext.inc:698 lib/ui/stdmenus.inc:364
+#: lib/ui/stdcontext.inc:700 lib/ui/stdmenus.inc:364
 msgid "Normal-sized Icons"
 msgstr "Normalgroße Symbole"
 
-#: lib/ui/stdcontext.inc:699 lib/ui/stdmenus.inc:365
+#: lib/ui/stdcontext.inc:701 lib/ui/stdmenus.inc:365
 msgid "Big-sized Icons"
 msgstr "Große Symbole"
 
-#: lib/ui/stdcontext.inc:700 lib/ui/stdmenus.inc:366
+#: lib/ui/stdcontext.inc:702 lib/ui/stdmenus.inc:366
 msgid "Huge-sized Icons"
 msgstr "Riesige Symbole"
 
-#: lib/ui/stdcontext.inc:701 lib/ui/stdmenus.inc:367
+#: lib/ui/stdcontext.inc:703 lib/ui/stdmenus.inc:367
 msgid "Giant-sized Icons"
 msgstr "Gigantische Symbole"
 
@@ -21772,286 +21776,286 @@ msgstr "Cases-Umgebung einfügen"
 msgid "Toggle math panels"
 msgstr "Mathe-Kontrollflächen an/aus"
 
-#: lib/ui/stdtoolbars.inc:215 src/TocBackend.cpp:297
+#: lib/ui/stdtoolbars.inc:215
+msgid "Math Panels"
+msgstr "Mathe-Kontrollflächen"
+
+#: lib/ui/stdtoolbars.inc:216
+msgid "Math spacings"
+msgstr "Mathe-Abstände"
+
+#: lib/ui/stdtoolbars.inc:217
+msgid "Styles & classes"
+msgstr "Stile und Klassen"
+
+#: lib/ui/stdtoolbars.inc:218 lib/ui/stdtoolbars.inc:401
+msgid "Fractions"
+msgstr "Brüche"
+
+#: lib/ui/stdtoolbars.inc:219 lib/ui/stdtoolbars.inc:418
+#: src/frontends/qt/GuiDocument.cpp:1764
+msgid "Fonts"
+msgstr "Schriften"
+
+#: lib/ui/stdtoolbars.inc:220 lib/ui/stdtoolbars.inc:331
+msgid "Functions"
+msgstr "Funktionen"
+
+#: lib/ui/stdtoolbars.inc:221
+msgid "Frame decorations"
+msgstr "Rahmen-Verzierungen"
+
+#: lib/ui/stdtoolbars.inc:222
+msgid "Big operators"
+msgstr "Große Operatoren"
+
+#: lib/ui/stdtoolbars.inc:223 lib/ui/stdtoolbars.inc:666
+#: src/frontends/qt/GuiDocument.cpp:5091
+msgid "Miscellaneous"
+msgstr "Verschiedenes"
+
+#: lib/ui/stdtoolbars.inc:225 lib/ui/stdtoolbars.inc:491
+#: src/frontends/qt/GuiSymbols.cpp:90
+msgid "Arrows"
+msgstr "Pfeile"
+
+#: lib/ui/stdtoolbars.inc:226 lib/ui/stdtoolbars.inc:918
+msgid "Arrows (extended)"
+msgstr "Pfeile (erweitert)"
+
+#: lib/ui/stdtoolbars.inc:227 lib/ui/stdtoolbars.inc:529
+msgid "Operators"
+msgstr "Operatoren"
+
+#: lib/ui/stdtoolbars.inc:228 lib/ui/stdtoolbars.inc:1182
+msgid "Operators (extended)"
+msgstr "Operatoren (erweitert)"
+
+#: lib/ui/stdtoolbars.inc:229 lib/ui/stdtoolbars.inc:565
+msgid "Relations"
+msgstr "Relationen"
+
+#: lib/ui/stdtoolbars.inc:230 lib/ui/stdtoolbars.inc:996
+msgid "Relations (extended)"
+msgstr "Relationen (erweitert)"
+
+#: lib/ui/stdtoolbars.inc:231
+msgid "Negative relations (extended)"
+msgstr "Negierte Relationen (erweitert)"
+
+#: lib/ui/stdtoolbars.inc:232 lib/ui/stdtoolbars.inc:433
+msgid "Dots"
+msgstr "Punkte"
+
+#: lib/ui/stdtoolbars.inc:233 lib/ui/stdtoolbars.inc:1255
+msgid "Delimiters (fixed size)"
+msgstr "Trennzeichen (feste Größe)"
+
+#: lib/ui/stdtoolbars.inc:234 lib/ui/stdtoolbars.inc:771
+msgid "Miscellaneous (extended)"
+msgstr "Verschiedenes (erweitert)"
+
+#: lib/ui/stdtoolbars.inc:237 src/TocBackend.cpp:297
 msgid "Math Macros"
 msgstr "Mathe-Makros"
 
-#: lib/ui/stdtoolbars.inc:216
+#: lib/ui/stdtoolbars.inc:238
 msgid "Remove last argument"
 msgstr "Letztes Argument entfernen"
 
-#: lib/ui/stdtoolbars.inc:217
+#: lib/ui/stdtoolbars.inc:239
 msgid "Append argument"
 msgstr "Argument hinzufügen"
 
-#: lib/ui/stdtoolbars.inc:219
+#: lib/ui/stdtoolbars.inc:241
 msgid "Make first non-optional into optional argument"
 msgstr "Das erste nicht-optionale Argument in ein optionales ändern"
 
-#: lib/ui/stdtoolbars.inc:220
+#: lib/ui/stdtoolbars.inc:242
 msgid "Make last optional into non-optional argument"
 msgstr "Das letzte optionale Argument in ein nicht-optionales ändern"
 
-#: lib/ui/stdtoolbars.inc:222
+#: lib/ui/stdtoolbars.inc:244
 msgid "Remove optional argument"
 msgstr "Optionales Argument entfernen"
 
-#: lib/ui/stdtoolbars.inc:223
+#: lib/ui/stdtoolbars.inc:245
 msgid "Insert optional argument"
 msgstr "Optionales Argument einfügen"
 
-#: lib/ui/stdtoolbars.inc:225
+#: lib/ui/stdtoolbars.inc:247
 msgid "Remove last argument spitting out to the right"
 msgstr "Letztes Argument rechts entfernen"
 
-#: lib/ui/stdtoolbars.inc:226
+#: lib/ui/stdtoolbars.inc:248
 msgid "Append argument eating from the right"
 msgstr "Argument von rechts hinzufügen"
 
-#: lib/ui/stdtoolbars.inc:227
+#: lib/ui/stdtoolbars.inc:249
 msgid "Append optional argument eating from the right"
 msgstr "Optionales Argument von rechts hinzufügen"
 
-#: lib/ui/stdtoolbars.inc:230
+#: lib/ui/stdtoolbars.inc:252
 msgid "Phonetic Symbols"
 msgstr "Phonetische Symbole"
 
-#: lib/ui/stdtoolbars.inc:231 lib/ui/stdtoolbars.inc:1282
+#: lib/ui/stdtoolbars.inc:253 lib/ui/stdtoolbars.inc:1282
 msgid "IPA Pulmonic Consonants"
 msgstr "IPA: Pulmonische Konsonanten"
 
-#: lib/ui/stdtoolbars.inc:232 lib/ui/stdtoolbars.inc:1344
+#: lib/ui/stdtoolbars.inc:254 lib/ui/stdtoolbars.inc:1344
 msgid "IPA Non-Pulmonic Consonants"
 msgstr "IPA: Nichtpulmonische Konsonanten"
 
-#: lib/ui/stdtoolbars.inc:233 lib/ui/stdtoolbars.inc:1358
+#: lib/ui/stdtoolbars.inc:255 lib/ui/stdtoolbars.inc:1358
 msgid "IPA Vowels"
 msgstr "IPA: Vokale"
 
-#: lib/ui/stdtoolbars.inc:234 lib/ui/stdtoolbars.inc:1389
+#: lib/ui/stdtoolbars.inc:256 lib/ui/stdtoolbars.inc:1389
 msgid "IPA Other Symbols"
 msgstr "IPA: Andere Symbole"
 
-#: lib/ui/stdtoolbars.inc:235 lib/ui/stdtoolbars.inc:1404
+#: lib/ui/stdtoolbars.inc:257 lib/ui/stdtoolbars.inc:1404
 msgid "IPA Suprasegmentals"
 msgstr "IPA: Suprasegmentalia"
 
-#: lib/ui/stdtoolbars.inc:236 lib/ui/stdtoolbars.inc:1416
+#: lib/ui/stdtoolbars.inc:258 lib/ui/stdtoolbars.inc:1416
 msgid "IPA Diacritics"
 msgstr "IPA: Diakritika"
 
-#: lib/ui/stdtoolbars.inc:237 lib/ui/stdtoolbars.inc:1451
+#: lib/ui/stdtoolbars.inc:259 lib/ui/stdtoolbars.inc:1451
 msgid "IPA Tones and Word Accents"
 msgstr "IPA: Ton- und Wortakzentzeichen"
 
-#: lib/ui/stdtoolbars.inc:240
+#: lib/ui/stdtoolbars.inc:262
 msgid "Command Buffer"
 msgstr "Befehlseingabefenster"
 
-#: lib/ui/stdtoolbars.inc:244
+#: lib/ui/stdtoolbars.inc:266
 msgid "Review[[Toolbar]]"
 msgstr "Überarbeiten"
 
 # , c-format
 # , c-format
-#: lib/ui/stdtoolbars.inc:245
+#: lib/ui/stdtoolbars.inc:267
 msgid "Track changes"
 msgstr "Änderungen verfolgen"
 
-#: lib/ui/stdtoolbars.inc:246
+#: lib/ui/stdtoolbars.inc:268
 msgid "Show changes in output"
 msgstr "Änderungen in der Ausgabe anzeigen"
 
-#: lib/ui/stdtoolbars.inc:248
+#: lib/ui/stdtoolbars.inc:270
 msgid "Next change"
 msgstr "Nächste Änderung"
 
-#: lib/ui/stdtoolbars.inc:249
+#: lib/ui/stdtoolbars.inc:271
 msgid "Accept change inside selection"
 msgstr "Änderung innerhalb Auswahl akzeptieren"
 
-#: lib/ui/stdtoolbars.inc:250
+#: lib/ui/stdtoolbars.inc:272
 msgid "Reject change inside selection"
 msgstr "Änderung innerhalb Auswahl verwerfen"
 
-#: lib/ui/stdtoolbars.inc:252
+#: lib/ui/stdtoolbars.inc:274
 msgid "Merge changes"
 msgstr "Änderungen akzeptieren oder verwerfen"
 
-#: lib/ui/stdtoolbars.inc:253
+#: lib/ui/stdtoolbars.inc:275
 msgid "Accept all changes"
 msgstr "Alle Änderungen akzeptieren"
 
-#: lib/ui/stdtoolbars.inc:254
+#: lib/ui/stdtoolbars.inc:276
 msgid "Reject all changes"
 msgstr "Alle Änderungen ablehnen"
 
-#: lib/ui/stdtoolbars.inc:256
+#: lib/ui/stdtoolbars.inc:278
 msgid "Insert note"
 msgstr "Notiz einfügen"
 
-#: lib/ui/stdtoolbars.inc:257
+#: lib/ui/stdtoolbars.inc:279
 msgid "Next note"
 msgstr "Nächste Notiz"
 
-#: lib/ui/stdtoolbars.inc:260
+#: lib/ui/stdtoolbars.inc:282
 msgid "LyX Documentation Tools"
 msgstr "LyX-Dokumentationswerkzeuge"
 
-#: lib/ui/stdtoolbars.inc:261 src/insets/Inset.cpp:122
+#: lib/ui/stdtoolbars.inc:283 src/insets/Inset.cpp:122
 msgid "Info"
 msgstr "Info"
 
-#: lib/ui/stdtoolbars.inc:262
+#: lib/ui/stdtoolbars.inc:284
 msgid "Menu Separator"
 msgstr "Menütrenner"
 
-#: lib/ui/stdtoolbars.inc:264
+#: lib/ui/stdtoolbars.inc:286
 msgid "LyX Logo"
 msgstr "LyX-Logo"
 
-#: lib/ui/stdtoolbars.inc:265
+#: lib/ui/stdtoolbars.inc:287
 msgid "TeX Logo"
 msgstr "TeX-Logo"
 
-#: lib/ui/stdtoolbars.inc:266
+#: lib/ui/stdtoolbars.inc:288
 msgid "LaTeX Logo"
 msgstr "LaTeX-Logo"
 
-#: lib/ui/stdtoolbars.inc:267
+#: lib/ui/stdtoolbars.inc:289
 msgid "LaTeX2e Logo"
 msgstr "LaTeX2e-Logo"
 
-#: lib/ui/stdtoolbars.inc:270
+#: lib/ui/stdtoolbars.inc:292
 msgid "View Other Formats"
 msgstr "Andere Formate ansehen"
 
-#: lib/ui/stdtoolbars.inc:274
+#: lib/ui/stdtoolbars.inc:296
 msgid "Update Other Formats"
 msgstr "Andere Formate aktualisieren"
 
-#: lib/ui/stdtoolbars.inc:294 src/frontends/qt/GuiLog.cpp:256
+#: lib/ui/stdtoolbars.inc:316 src/frontends/qt/GuiLog.cpp:256
 msgid "Version Control"
 msgstr "Versionskontrolle"
 
-#: lib/ui/stdtoolbars.inc:295
+#: lib/ui/stdtoolbars.inc:317
 msgid "Register"
 msgstr "Registrieren"
 
-#: lib/ui/stdtoolbars.inc:296
+#: lib/ui/stdtoolbars.inc:318
 msgid "Check-out for edit"
 msgstr "Zur Bearbeitung auschecken"
 
-#: lib/ui/stdtoolbars.inc:297
+#: lib/ui/stdtoolbars.inc:319
 msgid "Check-in changes"
 msgstr "Änderungen einchecken"
 
-#: lib/ui/stdtoolbars.inc:298
+#: lib/ui/stdtoolbars.inc:320
 msgid "View revision log"
 msgstr "Versionsprotokoll ansehen"
 
-#: lib/ui/stdtoolbars.inc:299
+#: lib/ui/stdtoolbars.inc:321
 msgid "Revert changes"
 msgstr "Änderungen rückgängig machen"
 
-#: lib/ui/stdtoolbars.inc:300
+#: lib/ui/stdtoolbars.inc:322
 msgid "Compare with older revision"
 msgstr "Vergleiche mit älterer Überarbeitung"
 
-#: lib/ui/stdtoolbars.inc:301
+#: lib/ui/stdtoolbars.inc:323
 msgid "Compare with last revision"
 msgstr "Vergleiche mit letzter Überarbeitung"
 
-#: lib/ui/stdtoolbars.inc:302
+#: lib/ui/stdtoolbars.inc:324
 msgid "Insert Version Info"
 msgstr "Versionsinformationen einfügen"
 
-#: lib/ui/stdtoolbars.inc:304
+#: lib/ui/stdtoolbars.inc:326
 msgid "Use SVN file locking property"
 msgstr "SVN-Dateisperrung verwenden"
 
-#: lib/ui/stdtoolbars.inc:306
+#: lib/ui/stdtoolbars.inc:328
 msgid "Update local directory from repository"
 msgstr "Lokales Verzeichnis aus dem Repositorium aktualisieren"
-
-#: lib/ui/stdtoolbars.inc:309
-msgid "Math Panels"
-msgstr "Mathe-Kontrollflächen"
-
-#: lib/ui/stdtoolbars.inc:310
-msgid "Math spacings"
-msgstr "Mathe-Abstände"
-
-#: lib/ui/stdtoolbars.inc:311
-msgid "Styles & classes"
-msgstr "Stile und Klassen"
-
-#: lib/ui/stdtoolbars.inc:312 lib/ui/stdtoolbars.inc:401
-msgid "Fractions"
-msgstr "Brüche"
-
-#: lib/ui/stdtoolbars.inc:313 lib/ui/stdtoolbars.inc:418
-#: src/frontends/qt/GuiDocument.cpp:1764
-msgid "Fonts"
-msgstr "Schriften"
-
-#: lib/ui/stdtoolbars.inc:314 lib/ui/stdtoolbars.inc:331
-msgid "Functions"
-msgstr "Funktionen"
-
-#: lib/ui/stdtoolbars.inc:315
-msgid "Frame decorations"
-msgstr "Rahmen-Verzierungen"
-
-#: lib/ui/stdtoolbars.inc:316
-msgid "Big operators"
-msgstr "Große Operatoren"
-
-#: lib/ui/stdtoolbars.inc:317 lib/ui/stdtoolbars.inc:666
-#: src/frontends/qt/GuiDocument.cpp:5091
-msgid "Miscellaneous"
-msgstr "Verschiedenes"
-
-#: lib/ui/stdtoolbars.inc:319 lib/ui/stdtoolbars.inc:491
-#: src/frontends/qt/GuiSymbols.cpp:90
-msgid "Arrows"
-msgstr "Pfeile"
-
-#: lib/ui/stdtoolbars.inc:320 lib/ui/stdtoolbars.inc:918
-msgid "Arrows (extended)"
-msgstr "Pfeile (erweitert)"
-
-#: lib/ui/stdtoolbars.inc:321 lib/ui/stdtoolbars.inc:529
-msgid "Operators"
-msgstr "Operatoren"
-
-#: lib/ui/stdtoolbars.inc:322 lib/ui/stdtoolbars.inc:1182
-msgid "Operators (extended)"
-msgstr "Operatoren (erweitert)"
-
-#: lib/ui/stdtoolbars.inc:323 lib/ui/stdtoolbars.inc:565
-msgid "Relations"
-msgstr "Relationen"
-
-#: lib/ui/stdtoolbars.inc:324 lib/ui/stdtoolbars.inc:996
-msgid "Relations (extended)"
-msgstr "Relationen (erweitert)"
-
-#: lib/ui/stdtoolbars.inc:325
-msgid "Negative relations (extended)"
-msgstr "Negierte Relationen (erweitert)"
-
-#: lib/ui/stdtoolbars.inc:326 lib/ui/stdtoolbars.inc:433
-msgid "Dots"
-msgstr "Punkte"
-
-#: lib/ui/stdtoolbars.inc:327 lib/ui/stdtoolbars.inc:1255
-msgid "Delimiters (fixed size)"
-msgstr "Trennzeichen (feste Größe)"
-
-#: lib/ui/stdtoolbars.inc:328 lib/ui/stdtoolbars.inc:771
-msgid "Miscellaneous (extended)"
-msgstr "Verschiedenes (erweitert)"
 
 #: lib/ui/stdtoolbars.inc:332
 msgid "arccos"
@@ -26779,7 +26783,7 @@ msgstr "Feynman-Diagramme"
 
 #: lib/examples/Articles:0
 msgid "Instant Preview"
-msgstr "Sofortige Vorschau"
+msgstr "Eingebettete Vorschau"
 
 #: lib/examples/Articles:0
 msgid "Itemize Bullets"
@@ -27057,7 +27061,7 @@ msgstr "Versuch, ein geändertes Dokument zu schließen!"
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Das temporäre Verzeichnis %1$s konnte nicht entfernt werden"
 
-#: src/Buffer.cpp:994 src/Text.cpp:571
+#: src/Buffer.cpp:994 src/Text.cpp:572
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Unbekanntes Token: %1$s %2$s\n"
@@ -28846,15 +28850,15 @@ msgstr "Die Ausgabe ist leer"
 msgid "No output file was generated."
 msgstr "Es wurde keine Ausgabedatei erzeugt."
 
-#: src/Cursor.cpp:416 src/Text.cpp:2055
+#: src/Cursor.cpp:416 src/Text.cpp:2138
 msgid ", Inset: "
 msgstr ", Einfügung: "
 
-#: src/Cursor.cpp:417 src/Text.cpp:2057
+#: src/Cursor.cpp:417 src/Text.cpp:2140
 msgid ", Cell: "
 msgstr ", Zelle: "
 
-#: src/Cursor.cpp:418 src/Text.cpp:2060
+#: src/Cursor.cpp:418 src/Text.cpp:2143
 msgid ", Position: "
 msgstr ", Position: "
 
@@ -28898,12 +28902,12 @@ msgstr "Unbekannter Zweig"
 msgid "&Don't Add"
 msgstr "&Nicht hinzufügen"
 
-#: src/CutAndPaste.cpp:829 src/Text.cpp:410
+#: src/CutAndPaste.cpp:829 src/Text.cpp:411
 #, c-format
 msgid "Layout `%1$s' was not found."
 msgstr "Der Absatzstil ,%1$s` wurde nicht gefunden."
 
-#: src/CutAndPaste.cpp:830 src/Text.cpp:411
+#: src/CutAndPaste.cpp:830 src/Text.cpp:412
 msgid "Layout Not Found"
 msgstr "Absatzstil nicht gefunden"
 
@@ -29263,7 +29267,7 @@ msgstr "Neu &konfigurieren"
 msgid "&Without LaTeX"
 msgstr "&Ohne LaTeX"
 
-#: src/LyX.cpp:596 src/VCBackend.cpp:972 src/VCBackend.cpp:976
+#: src/LyX.cpp:596 src/VCBackend.cpp:968 src/VCBackend.cpp:972
 msgid "&Continue"
 msgstr "&Fortfahren"
 
@@ -30104,28 +30108,28 @@ msgstr "Das Dokument wurde nicht gespeichert"
 msgid "You must save the document before it can be registered."
 msgstr "Sie müssen das Dokument speichern, bevor es registriert werden kann."
 
-#: src/LyXVC.cpp:185
+#: src/LyXVC.cpp:191
 msgid "LyX VC: Initial description"
 msgstr "LyX-VK: Anfängliche Beschreibung"
 
-#: src/LyXVC.cpp:186 src/LyXVC.cpp:193
+#: src/LyXVC.cpp:192 src/LyXVC.cpp:199
 msgid "(no initial description)"
 msgstr "(keine anfängliche Beschreibung)"
 
-#: src/LyXVC.cpp:205 src/LyXVC.cpp:224
+#: src/LyXVC.cpp:211 src/LyXVC.cpp:230
 msgid "LyX VC: Log message"
 msgstr "LyX-VK: Protokollmeldung"
 
-#: src/LyXVC.cpp:206 src/LyXVC.cpp:212 src/LyXVC.cpp:225 src/LyXVC.cpp:231
-#: src/LyXVC.cpp:242
+#: src/LyXVC.cpp:212 src/LyXVC.cpp:218 src/LyXVC.cpp:231 src/LyXVC.cpp:237
+#: src/LyXVC.cpp:248
 msgid "(no log message)"
 msgstr "(keine Protokollmeldung)"
 
-#: src/LyXVC.cpp:246 src/frontends/qt/GuiView.cpp:3637
+#: src/LyXVC.cpp:252 src/frontends/qt/GuiView.cpp:3637
 msgid "LyX VC: Log Message"
 msgstr "LyX VK: Protokollmeldung"
 
-#: src/LyXVC.cpp:298
+#: src/LyXVC.cpp:304
 #, c-format
 msgid ""
 "Reverting to the stored version of the document %1$s will lose all current "
@@ -30138,11 +30142,11 @@ msgstr ""
 "\n"
 "Möchten Sie zur älteren Version zurückkehren?"
 
-#: src/LyXVC.cpp:303
+#: src/LyXVC.cpp:309
 msgid "Revert to stored version of document?"
 msgstr "Zur gespeicherten Version des Dokuments zurückkehren?"
 
-#: src/LyXVC.cpp:304 src/frontends/qt/GuiView.cpp:4221
+#: src/LyXVC.cpp:310 src/frontends/qt/GuiView.cpp:4221
 msgid "&Revert"
 msgstr "&Wiederherstellen"
 
@@ -30162,15 +30166,15 @@ msgstr ""
 "Die zuvor verwendete Ausrichtung ist mit dem neuen Format nicht möglich.\n"
 "Es wird die Standardeinstellung verwendet."
 
-#: src/Text.cpp:437
+#: src/Text.cpp:438
 msgid "Unknown Inset"
 msgstr "Unbekannte Einfügung"
 
-#: src/Text.cpp:553 src/insets/InsetTabular.cpp:472
+#: src/Text.cpp:554 src/insets/InsetTabular.cpp:472
 msgid "Change tracking author index missing"
 msgstr "Autorindex für die Änderungsverfolgung fehlt"
 
-#: src/Text.cpp:554 src/insets/InsetTabular.cpp:473
+#: src/Text.cpp:555 src/insets/InsetTabular.cpp:473
 #, c-format
 msgid ""
 "A change tracking author information for index %1$d is missing. This can "
@@ -30185,11 +30189,11 @@ msgstr ""
 "die entsprechenden Änderungen von anderer Seite eingespielt wurden oder der "
 "entsprechende Autor die Datei erneut bearbeitet hat.\n"
 
-#: src/Text.cpp:570
+#: src/Text.cpp:571
 msgid "Unknown token"
 msgstr "Unbekanntes Token"
 
-#: src/Text.cpp:955
+#: src/Text.cpp:956
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -30197,65 +30201,65 @@ msgstr ""
 "Sie können am Anfang eines Absatzes kein Leerzeichen einfügen. Bitte lesen "
 "Sie das Tutorium."
 
-#: src/Text.cpp:964
+#: src/Text.cpp:965
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Sie können zwei Leerzeichen nicht auf diese Weise eingeben. Bitte lesen Sie "
 "das Tutorium."
 
-#: src/Text.cpp:975
+#: src/Text.cpp:976
 msgid "Character is uncodable in this verbatim context."
 msgstr "Das Zeichen ist in diesem unformatierten Absatz nicht kodierbar."
 
-#: src/Text.cpp:2000
+#: src/Text.cpp:2083
 msgid "[Change Tracking] "
 msgstr "[Änderungsverfolgung] "
 
-#: src/Text.cpp:2008
+#: src/Text.cpp:2091
 #, c-format
 msgid "Changed by %1$s[[author]] on %2$s[[date]]. "
 msgstr "Geändert von %1$s[[Autor]] am %2$s[[Datum]]. "
 
-#: src/Text.cpp:2018 src/mathed/InsetMathFont.cpp:235
+#: src/Text.cpp:2101 src/mathed/InsetMathFont.cpp:235
 #: src/mathed/InsetMathFontOld.cpp:111
 #, c-format
 msgid "Font: %1$s"
 msgstr "Schrift: %1$s"
 
-#: src/Text.cpp:2023
+#: src/Text.cpp:2106
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Tiefe: %1$d"
 
-#: src/Text.cpp:2029
+#: src/Text.cpp:2112
 msgid ", Spacing: "
 msgstr ", Abstand: "
 
-#: src/Text.cpp:2035 src/frontends/qt/GuiDocument.cpp:867
+#: src/Text.cpp:2118 src/frontends/qt/GuiDocument.cpp:867
 msgid "OneHalf"
 msgstr "Eineinhalb"
 
-#: src/Text.cpp:2041
+#: src/Text.cpp:2124
 msgid "Other ("
 msgstr "Andere ("
 
-#: src/Text.cpp:2052
+#: src/Text.cpp:2135
 msgid ", Style: "
 msgstr ", Stil:"
 
-#: src/Text.cpp:2058
+#: src/Text.cpp:2141
 msgid ", Paragraph: "
 msgstr ", Absatz: "
 
-#: src/Text.cpp:2059
+#: src/Text.cpp:2142
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:2066
+#: src/Text.cpp:2149
 msgid ", Char: 0x"
 msgstr ", Zeichen: 0x"
 
-#: src/Text.cpp:2068
+#: src/Text.cpp:2151
 msgid ", Boundary: "
 msgstr ", Grenze: "
 
@@ -30271,7 +30275,7 @@ msgstr "Mathe-Editor-Modus"
 msgid "No valid math formula"
 msgstr "Keine gültige Matheformel"
 
-#: src/Text3.cpp:204 src/mathed/InsetMathNest.cpp:1036
+#: src/Text3.cpp:204 src/mathed/InsetMathNest.cpp:1028
 msgid "Already in regular expression mode"
 msgstr "Bereits im Regexp-Modus"
 
@@ -30279,40 +30283,40 @@ msgstr "Bereits im Regexp-Modus"
 msgid "Regexp editor mode"
 msgstr "Regexp-Editor-Modus"
 
-#: src/Text3.cpp:1579
+#: src/Text3.cpp:1587
 msgid "Layout "
 msgstr "Format "
 
-#: src/Text3.cpp:1580 src/Text3.cpp:2145
+#: src/Text3.cpp:1588 src/Text3.cpp:2153
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/Text3.cpp:2144
+#: src/Text3.cpp:2152
 msgid "Table Style "
 msgstr "Tabellenstil"
 
-#: src/Text3.cpp:2338 src/frontends/qt/GuiApplication.cpp:1787
+#: src/Text3.cpp:2346 src/frontends/qt/GuiApplication.cpp:1787
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
-#: src/Text3.cpp:2500
+#: src/Text3.cpp:2508
 msgid "Invalid argument (number exceeds stack size)!"
 msgstr "Ungültiges Argument (Zahl größer als Zwischenspeicher)!"
 
-#: src/Text3.cpp:2504
+#: src/Text3.cpp:2512
 msgid "Invalid argument (must be a non-negative number)!"
 msgstr "Ungültiges Argument (muss eine nicht-negative Zahl sein)!"
 
-#: src/Text3.cpp:2509 src/Text3.cpp:2527
+#: src/Text3.cpp:2517 src/Text3.cpp:2535
 #, c-format
 msgid "Text properties applied: %1$s"
 msgstr "Angewendete Texteigenschaften: %1$s"
 
-#: src/Text3.cpp:2679
+#: src/Text3.cpp:2687
 msgid "Path to thesaurus directory not set!"
 msgstr "Pfad zum Thesaurus-Wörterbuch nicht festlegt!"
 
-#: src/Text3.cpp:2680
+#: src/Text3.cpp:2688
 msgid ""
 "The path to the thesaurus directory has not been specified.\n"
 "The thesaurus is not functional.\n"
@@ -30324,7 +30328,7 @@ msgstr ""
 "Im Benutzerhandbuch, Abschnitt 6.15.11, finden Sie Hinweise,\n"
 "um den Thesaurus einzurichten."
 
-#: src/Text3.cpp:2747 src/Text3.cpp:2758
+#: src/Text3.cpp:2755 src/Text3.cpp:2766
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
@@ -30502,10 +30506,10 @@ msgstr "Nomenklatureinträge"
 msgid "Perhaps the RCS package is not installed on your system?"
 msgstr "Ist das RCS-Paket auf Ihrem System installiert?"
 
-#: src/VCBackend.cpp:65 src/VCBackend.cpp:878 src/VCBackend.cpp:883
-#: src/VCBackend.cpp:932 src/VCBackend.cpp:991 src/VCBackend.cpp:1050
-#: src/VCBackend.cpp:1058 src/VCBackend.cpp:1359 src/VCBackend.cpp:1461
-#: src/VCBackend.cpp:1467 src/VCBackend.cpp:1490 src/VCBackend.cpp:1976
+#: src/VCBackend.cpp:65 src/VCBackend.cpp:874 src/VCBackend.cpp:879
+#: src/VCBackend.cpp:928 src/VCBackend.cpp:987 src/VCBackend.cpp:1046
+#: src/VCBackend.cpp:1054 src/VCBackend.cpp:1342 src/VCBackend.cpp:1444
+#: src/VCBackend.cpp:1450 src/VCBackend.cpp:1473 src/VCBackend.cpp:1948
 #: src/frontends/qt/GuiView.cpp:3553 src/frontends/qt/GuiView.cpp:3596
 msgid "Revision control error."
 msgstr "Fehler der Versionskontrolle."
@@ -30519,35 +30523,35 @@ msgstr ""
 "Bei der Ausführung des Befehls\n"
 "'%1$s' ist ein Fehler aufgetreten."
 
-#: src/VCBackend.cpp:639
+#: src/VCBackend.cpp:635
 msgid "Up-to-date"
 msgstr "Aktuell"
 
-#: src/VCBackend.cpp:641
+#: src/VCBackend.cpp:637
 msgid "Locally Modified"
 msgstr "Lokal modifiziert"
 
-#: src/VCBackend.cpp:643
+#: src/VCBackend.cpp:639
 msgid "Locally Added"
 msgstr "Lokal hinzugefügt"
 
-#: src/VCBackend.cpp:645
+#: src/VCBackend.cpp:641
 msgid "Needs Merge"
 msgstr "Zusammenführung erforderlich"
 
-#: src/VCBackend.cpp:647
+#: src/VCBackend.cpp:643
 msgid "Needs Checkout"
 msgstr "Auschecken erforderlich"
 
-#: src/VCBackend.cpp:649
+#: src/VCBackend.cpp:645
 msgid "No CVS file"
 msgstr "Keine CVS-Datei"
 
-#: src/VCBackend.cpp:651
+#: src/VCBackend.cpp:647
 msgid "Cannot retrieve CVS status"
 msgstr "Kann CVS-Status nicht ermitteln"
 
-#: src/VCBackend.cpp:879
+#: src/VCBackend.cpp:875
 msgid ""
 "The repository version is newer then the current check out.\n"
 "You have to update from repository first or revert your changes."
@@ -30556,7 +30560,7 @@ msgstr ""
 "Sie müssen zuerst aus dem Repositorium aktualisieren oder Ihre Änderungen\n"
 "rückgängig machen."
 
-#: src/VCBackend.cpp:884
+#: src/VCBackend.cpp:880
 #, c-format
 msgid ""
 "Bad status when checking in changes.\n"
@@ -30569,7 +30573,7 @@ msgstr ""
 "'%1$s'\n"
 "\n"
 
-#: src/VCBackend.cpp:933 src/VCBackend.cpp:1491
+#: src/VCBackend.cpp:929 src/VCBackend.cpp:1474
 #, c-format
 msgid ""
 "Error when updating from repository.\n"
@@ -30585,7 +30589,7 @@ msgstr ""
 "LyX wird das Dokument neu zu laden versuchen,\n"
 "nachdem Sie OK gedrückt haben."
 
-#: src/VCBackend.cpp:967
+#: src/VCBackend.cpp:963
 #, c-format
 msgid ""
 "There were detected changes in the working directory:\n"
@@ -30600,20 +30604,20 @@ msgstr ""
 "Im Fall eines Dateikonflikts müssen Sie diesen manuell beheben\n"
 "oder zur Repositoriumsversion zurückkehren."
 
-#: src/VCBackend.cpp:971 src/VCBackend.cpp:975 src/VCBackend.cpp:1532
-#: src/VCBackend.cpp:1536
+#: src/VCBackend.cpp:967 src/VCBackend.cpp:971 src/VCBackend.cpp:1515
+#: src/VCBackend.cpp:1519
 msgid "Changes detected"
 msgstr "Änderungen gefunden"
 
-#: src/VCBackend.cpp:972 src/VCBackend.cpp:976
+#: src/VCBackend.cpp:968 src/VCBackend.cpp:972
 msgid "&Abort"
 msgstr "&Abbrechen"
 
-#: src/VCBackend.cpp:972 src/VCBackend.cpp:1533
+#: src/VCBackend.cpp:968 src/VCBackend.cpp:1516
 msgid "View &Log ..."
 msgstr "&Logdatei ansehen ..."
 
-#: src/VCBackend.cpp:992
+#: src/VCBackend.cpp:988
 #, c-format
 msgid ""
 "Error when updating document %1$s from repository.\n"
@@ -30631,7 +30635,7 @@ msgstr ""
 "LyX wird das Dokument neu zu laden versuchen,\n"
 "nachdem Sie OK gedrückt haben."
 
-#: src/VCBackend.cpp:1051
+#: src/VCBackend.cpp:1047
 #, c-format
 msgid ""
 "The document %1$s is not in repository.\n"
@@ -30641,7 +30645,7 @@ msgstr ""
 "Sie müssen es erst einchecken, bevor Sie Änderungen\n"
 "rückgängig machen können."
 
-#: src/VCBackend.cpp:1059
+#: src/VCBackend.cpp:1055
 #, c-format
 msgid ""
 "Cannot revert document %1$s to repository version.\n"
@@ -30651,12 +30655,12 @@ msgstr ""
 "nicht zur Repositoriumsversion rückgängig machen.\n"
 "Der Status '%2$s' ist unerwartet."
 
-#: src/VCBackend.cpp:1344 src/VCBackend.cpp:1480 src/VCBackend.cpp:1517
-#: src/VCBackend.cpp:1571 src/VCBackend.cpp:1961
+#: src/VCBackend.cpp:1327 src/VCBackend.cpp:1463 src/VCBackend.cpp:1500
+#: src/VCBackend.cpp:1554 src/VCBackend.cpp:1933
 msgid "Error: Could not generate logfile."
 msgstr "Fehler: Konnte Logdatei nicht erstellen."
 
-#: src/VCBackend.cpp:1360 src/VCBackend.cpp:1977
+#: src/VCBackend.cpp:1343 src/VCBackend.cpp:1949
 msgid ""
 "Error when committing to repository.\n"
 "You have to manually resolve the problem.\n"
@@ -30667,7 +30671,7 @@ msgstr ""
 "LyX wird das Dokument neu laden, nachdem\n"
 "Sie OK gedrückt haben."
 
-#: src/VCBackend.cpp:1462
+#: src/VCBackend.cpp:1445
 msgid ""
 "Error while acquiring write lock.\n"
 "Another user is most probably editing\n"
@@ -30679,7 +30683,7 @@ msgstr ""
 "anderer Benutzer das Dokument!\n"
 "Überprüfen Sie auch das Zugriffsrecht auf das Repositorium."
 
-#: src/VCBackend.cpp:1468
+#: src/VCBackend.cpp:1451
 msgid ""
 "Error while releasing write lock.\n"
 "Check the access to the repository."
@@ -30687,7 +30691,7 @@ msgstr ""
 "Fehler beim Aufheben der Schreibsperre.\n"
 "Überprüfen Sie das Zugriffsrecht auf das Repositorium."
 
-#: src/VCBackend.cpp:1527
+#: src/VCBackend.cpp:1510
 #, c-format
 msgid ""
 "There were detected changes in the working directory:\n"
@@ -30705,31 +30709,31 @@ msgstr ""
 "\n"
 "Fortfahren?"
 
-#: src/VCBackend.cpp:1533 src/VCBackend.cpp:1537
+#: src/VCBackend.cpp:1516 src/VCBackend.cpp:1520
 #: src/frontends/qt/FindAndReplace.cpp:385 src/frontends/qt/GuiPrefs.cpp:1862
 #: src/lyxfind.cpp:263 src/lyxfind.cpp:530 src/lyxfind.cpp:558
 msgid "&Yes"
 msgstr "&Ja"
 
-#: src/VCBackend.cpp:1533 src/VCBackend.cpp:1537
+#: src/VCBackend.cpp:1516 src/VCBackend.cpp:1520
 #: src/frontends/qt/FindAndReplace.cpp:385 src/frontends/qt/GuiPrefs.cpp:1862
 #: src/lyxfind.cpp:263 src/lyxfind.cpp:530 src/lyxfind.cpp:558
 msgid "&No"
 msgstr "&Nein"
 
-#: src/VCBackend.cpp:1596
+#: src/VCBackend.cpp:1579
 msgid "SVN File Locking"
 msgstr "SVN Dateisperrung"
 
-#: src/VCBackend.cpp:1597 src/VCBackend.cpp:1602
+#: src/VCBackend.cpp:1580 src/VCBackend.cpp:1585
 msgid "Locking property unset."
 msgstr "Dateisperrung deaktiviert."
 
-#: src/VCBackend.cpp:1597 src/VCBackend.cpp:1602
+#: src/VCBackend.cpp:1580 src/VCBackend.cpp:1585
 msgid "Locking property set."
 msgstr "Dateisperrung aktiviert."
 
-#: src/VCBackend.cpp:1598
+#: src/VCBackend.cpp:1581
 msgid "Do not forget to commit the locking property into the repository."
 msgstr ""
 "Um wirksam zu werden, muss die Datei-Sperrung ins Repositorium übermittelt "
@@ -36530,22 +36534,22 @@ msgstr ""
 "Die Informationen für die Änderungen von Tabellenzeilen- oder -spalten sind "
 "unvollständig. Sie werden ignoriert."
 
-#: src/insets/InsetTabular.cpp:5528
+#: src/insets/InsetTabular.cpp:5529
 msgid "Selections not supported."
 msgstr ""
 "Gleichzeitiges Verschieben mehrerer Zeilen/Spalten ist leider nicht möglich."
 
-#: src/insets/InsetTabular.cpp:5550
+#: src/insets/InsetTabular.cpp:5551
 msgid "Multi-column in current or destination column."
 msgstr ""
 "Diese oder die Zielspalte ist eine Mehrfachspalte. Verschieben nicht möglich."
 
-#: src/insets/InsetTabular.cpp:5562
+#: src/insets/InsetTabular.cpp:5563
 msgid "Multi-row in current or destination row."
 msgstr ""
 "Diese oder die Zielzeile ist eine Mehrfachzeile. Verschieben nicht möglich."
 
-#: src/insets/InsetTabular.cpp:6077
+#: src/insets/InsetTabular.cpp:6078
 msgid "Selection size should match clipboard content."
 msgstr ""
 "Die Anzahl der ausgewählten Zellen stimmt nicht mit dem Inhalt der "
@@ -36553,7 +36557,7 @@ msgstr ""
 
 # , c-format
 # , c-format
-#: src/insets/InsetText.cpp:1259
+#: src/insets/InsetText.cpp:1261
 msgid "[contains tracked changes]"
 msgstr "[enthält verfolgte Änderungen]"
 
@@ -36662,32 +36666,32 @@ msgstr "Die Zeichenkette wurde ersetzt."
 msgid "%1$d strings have been replaced."
 msgstr "%1$d Zeichenketten wurden ersetzt."
 
-#: src/lyxfind.cpp:3737
+#: src/lyxfind.cpp:3755
 msgid "Invalid regular expression!"
 msgstr "Ungültiger regulärer Ausdruck!"
 
-#: src/lyxfind.cpp:3746
+#: src/lyxfind.cpp:3764
 msgid "One match has been replaced."
 msgstr "Ein Treffer wurde ersetzt."
 
-#: src/lyxfind.cpp:3749
+#: src/lyxfind.cpp:3767
 msgid "Two matches have been replaced."
 msgstr "Zwei Treffer wurden ersetzt."
 
-#: src/lyxfind.cpp:3752
+#: src/lyxfind.cpp:3770
 #, c-format
 msgid "%1$d matches have been replaced."
 msgstr "%1$d Treffer wurden ersetzt."
 
-#: src/lyxfind.cpp:3758
+#: src/lyxfind.cpp:3776
 msgid "Match not found."
 msgstr "Die Zeichenkette wurde nicht gefunden!"
 
-#: src/lyxfind.cpp:3764
+#: src/lyxfind.cpp:3782
 msgid "Match has been replaced."
 msgstr "Die Zeichenkette wurde ersetzt."
 
-#: src/lyxfind.cpp:3766
+#: src/lyxfind.cpp:3784
 msgid "Match found."
 msgstr "Die Zeichenkette wurde gefunden!"
 
@@ -36808,19 +36812,19 @@ msgstr "Mathe-Makro: \\%1$s"
 msgid "Invalid macro! \\%1$s"
 msgstr "Ungültiges Makro! \\%1$s"
 
-#: src/mathed/InsetMathNest.cpp:1022
+#: src/mathed/InsetMathNest.cpp:1014
 msgid "create new math text environment ($...$)"
 msgstr "Neue Mathe-Textumgebung erzeugen ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1025
+#: src/mathed/InsetMathNest.cpp:1017
 msgid "entered math text mode (textrm)"
 msgstr "Mathe-Textmodus betreten (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1047
+#: src/mathed/InsetMathNest.cpp:1039
 msgid "Regular expression editor mode"
 msgstr "Bearbeitungsmodus für reguläre Ausdrücke"
 
-#: src/mathed/InsetMathNest.cpp:1920
+#: src/mathed/InsetMathNest.cpp:1912
 #, c-format
 msgid "Cannot apply %1$s here."
 msgstr "%1$s kann hier nicht angewendet werden."
