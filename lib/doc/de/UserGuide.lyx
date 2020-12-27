@@ -8649,12 +8649,10 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
-
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
-
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8667,7 +8665,6 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8691,7 +8688,6 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
-
 Dies ist Unformatiert*.
 \end_layout
 
@@ -34668,10 +34664,10 @@ name "sec:Dokumentteile-vorschauen"
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Sofortige Vorschau
+Eingebettete Vorschau
 \end_layout
 
 \end_inset
@@ -34788,7 +34784,7 @@ Anzeige
  aktivieren.
  Dann setzen Sie 
 \family sans
-Sofortige
+Eingebettete
 \begin_inset space \space{}
 \end_inset
 
@@ -34809,7 +34805,7 @@ Vorschaugröße
 \begin_layout Standard
 Wenn Sie alles außer Mathe vorschauen wollen, setzen Sie 
 \family sans
-Sofortige
+Eingebettete
 \begin_inset space \space{}
 \end_inset
 
@@ -46502,9 +46498,9 @@ Hier kann festgelegt werden, ob Grafiken in \SpecialChar LyX
 \begin_layout Standard
 
 \family sans
-Sofortige Vorschau
+Eingebettete Vorschau
 \family default
- aktiviert die sofortige Vorschau von Dokumentteilen.
+ aktiviert die lokale Vorschau von Dokumentteilen.
  Dieses Feature ist in Abschnitt
 \begin_inset space ~
 \end_inset
