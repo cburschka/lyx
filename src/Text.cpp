@@ -1950,10 +1950,13 @@ bool Text::splitInset(Cursor & cur)
 		cur.setMark(false);
 		cur.selHandle(false);
 		cur.resetAnchor();
-		Cursor dummy = cur;
-		dummy.pos() = dummy.pit() = 0;
-		if (cur.bv().checkDepm(dummy, cur))
+		bool atlastpos;
+		if (cur.pos() == 0 && cur.pit() > 0) {
+			// if we are at par start, remove this par
+			cur.text()->backspace(cur);
 			cur.forceBufferUpdate();
+		} else if (cur.pos() == cur.lastpos())
+			atlastpos = true;
 		// Move out of and jump over inset
 		cur.popBackward();
 		++cur.pos();
@@ -1966,6 +1969,11 @@ bool Text::splitInset(Cursor & cur)
 		cutSelection(cur, false);
 		cap::pasteFromTemp(cur, cur.buffer()->errorList("Paste"));
 		cur.text()->setCursor(cur, 0, 0);
+		if (atlastpos && cur.paragraph().isFreeSpacing() && cur.paragraph().empty()) {
+			// We started from par end, remove extra empty par in free spacing insets
+			cur.text()->erase(cur);
+			cur.forceBufferUpdate();
+		}
 	}
 
 	cur.finishUndo();
