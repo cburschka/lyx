@@ -2884,10 +2884,15 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 			regexp2_str = "(" + lead_as_regexp + ").*?" + par_as_string;
 		}
 		LYXERR(Debug::FIND, "Setting regexp to : '" << regexp_str << "'");
-		regexp = regex(regexp_str);
-
 		LYXERR(Debug::FIND, "Setting regexp2 to: '" << regexp2_str << "'");
-		regexp2 = regex(regexp2_str);
+		if (! opt.casesensitive) {
+			regexp = regex(regexp_str, std::regex_constants::icase);
+			regexp2 = regex(regexp2_str, std::regex_constants::icase);
+		}
+		else {
+			regexp = regex(regexp_str);
+			regexp2 = regex(regexp2_str);
+		}
 	}
 }
 
