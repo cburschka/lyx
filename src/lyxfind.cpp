@@ -668,12 +668,12 @@ Escapes const & get_lyx_unescapes()
 	static Escapes escape_map;
 	if (escape_map.empty()) {
 		escape_map.push_back(P("\\%", "%"));
+		escape_map.push_back(P("\\{", "{"));
+		escape_map.push_back(P("\\}", "}"));
 		escape_map.push_back(P("\\mathcircumflex ", "^"));
 		escape_map.push_back(P("\\mathcircumflex", "^"));
 		escape_map.push_back(P("\\backslash ", "\\"));
 		escape_map.push_back(P("\\backslash", "\\"));
-		escape_map.push_back(P("\\\\{", "_x_<"));
-		escape_map.push_back(P("\\\\}", "_x_>"));
 		escape_map.push_back(P("\\sim ", "~"));
 		escape_map.push_back(P("\\sim", "~"));
 	}
@@ -751,10 +751,10 @@ string escape_for_regex(string s, bool match_latex)
 		t = s.substr(new_pos + 8, end_pos - (new_pos + 8));
 		LYXERR(Debug::FIND, "t in regexp      : " << t);
 		t = apply_escapes(t, get_lyx_unescapes());
-		LYXERR(Debug::FIND, "t in regexp [lyx]: " << t);
+		LYXERR(Debug::FIND, "t in regexp after unescapes [lyx]: " << t);
 		if (match_latex) {
 			t = apply_escapes(t, get_regexp_latex_escapes());
-			LYXERR(Debug::FIND, "t in regexp [ltx]: " << t);
+			LYXERR(Debug::FIND, "t in regexp after latex_escapes [ltx]: " << t);
 		}
 		if (end_pos == s.size()) {
 			s.replace(new_pos, end_pos - new_pos, t);
@@ -1320,6 +1320,22 @@ static void buildAccentsMap()
   accents["negmedspace"]   = u8"\uf0005";
   accents["thickspace"]    = u8"\uf0006";
   accents["negthickspace"] = u8"\uf0007";
+  accents["lyx"]           = u8"\uf0010";	// Used logos
+  accents["LyX"]           = u8"\uf0010";
+  accents["tex"]           = u8"\uf0011";
+  accents["TeX"]           = u8"\uf0011";
+  accents["latex"]         = u8"\uf0012";
+  accents["LaTeX"]         = u8"\uf0012";
+  accents["latexe"]        = u8"\uf0013";
+  accents["LaTeXe"]        = u8"\uf0013";
+  accents["backslash lyx"]           = u8"\uf0010";	// Used logos inserted with starting \backslash
+  accents["backslash LyX"]           = u8"\uf0010";
+  accents["backslash tex"]           = u8"\uf0011";
+  accents["backslash TeX"]           = u8"\uf0011";
+  accents["backslash latex"]         = u8"\uf0012";
+  accents["backslash LaTeX"]         = u8"\uf0012";
+  accents["backslash latexe"]        = u8"\uf0013";
+  accents["backslash LaTeXe"]        = u8"\uf0013";
   accents["ddot{\\imath}"] = "ï";
   buildaccent("ddot", "aAeEhHiIioOtuUwWxXyY",
                       "äÄëËḧḦïÏïöÖẗüÜẅẄẍẌÿŸ");	// umlaut
@@ -1383,7 +1399,9 @@ void Intervall::removeAccents()
 {
   if (accents.empty())
     buildAccentsMap();
-  static regex const accre("\\\\(([\\S]|grave|breve|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot|ogonek|cedilla|subring|textsubring|subhat|textsubcircum|subtilde|textsubtilde|dgrave|textdoublegrave|rcap|textroundcap|slashed)\\{[^\\{\\}]+\\}|(i|imath|jmath|cdot|[a-z]+space)(?![a-zA-Z]))");
+  static regex const accre("\\\\(([\\S]|grave|breve|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot|ogonek|"
+         "cedilla|subring|textsubring|subhat|textsubcircum|subtilde|textsubtilde|dgrave|textdoublegrave|rcap|textroundcap|slashed)\\{[^\\{\\}]+\\}"
+      "|((i|imath|jmath|cdot|[a-z]+space)|((backslash )?([lL]y[xX]|[tT]e[xX]|[lL]a[tT]e[xX]e?)))(?![a-zA-Z]))");
   smatch sub;
   for (sregex_iterator itacc(par.begin(), par.end(), accre), end; itacc != end; ++itacc) {
     sub = *itacc;
@@ -2091,7 +2109,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, false), isPatternString);
 
   // Survives, like known character
-  makeKey("lyx|LyX|latex|LaTeX|latexe|LaTeXe|tex|TeX", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+  // makeKey("lyx|LyX|latex|LaTeX|latexe|LaTeXe|tex|TeX", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   makeKey("item|listitem", KeyInfo(KeyInfo::isList, 1, false), isPatternString);
 
   makeKey("begin|end", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
@@ -2797,6 +2815,7 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 			LYXERR(Debug::FIND, "lead_as_regexp is '" << lead_as_regexp << "'");
 			LYXERR(Debug::FIND, "par_as_string now is '" << par_as_string << "'");
 		}
+		LYXERR(Debug::FIND, "par_as_string before escape_for_regex() is '" << par_as_string << "'");
 		par_as_string = escape_for_regex(par_as_string, !opt.ignoreformat);
 		// Insert (.*?) before trailing closure of math, macros and environments, so to catch parts of them.
 		LYXERR(Debug::FIND, "par_as_string now is '" << par_as_string << "'");
@@ -2934,7 +2953,11 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		return mres;
 
 	docstring docstr = stringifyFromForSearch(opt, cur, len);
-	string str = normalize(docstr, true);
+	string str;
+	if (use_regexp || opt.casesensitive)
+		str = normalize(docstr, true);
+	else
+		str = normalize(lowercase(docstr), true);
 	if (!opt.ignoreformat) {
 		str = correctlanguagesetting(str, false, !opt.ignoreformat);
 	}
@@ -2960,13 +2983,6 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		if (re_it == sregex_iterator())
 			return mres;
 		match_results<string::const_iterator> const & m = *re_it;
-
-		if (0) { // Kornel Benko: DO NOT CHECKK
-			// Check braces on the segment that matched the entire regexp expression,
-			// plus the last subexpression, if a (.*?) was inserted in the constructor.
-			if (!braces_match(m[0].first, m[0].second, open_braces))
-				return mres;
-		}
 
 		// Check braces on segments that matched all (.*?) subexpressions,
 		// except the last "padding" one inserted by lyx.
@@ -3090,10 +3106,7 @@ MatchResult MatchStringAdv::operator()(DocIterator const & cur, int len, bool at
 string MatchStringAdv::normalize(docstring const & s, bool hack_braces) const
 {
 	string t;
-	if (! opt.casesensitive)
-		t = lyx::to_utf8(lowercase(s));
-	else
-		t = lyx::to_utf8(s);
+	t = lyx::to_utf8(s);
 	// Remove \n at begin
 	while (!t.empty() && t[0] == '\n')
 		t = t.substr(1);
