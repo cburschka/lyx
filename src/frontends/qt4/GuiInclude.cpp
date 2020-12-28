@@ -317,14 +317,17 @@ bool GuiInclude::isValid()
 		okPB->setText(qt_("&OK"));
 		return true;
 	}
-	// Do we have a LyX filename?
-	if (!isLyXFileName(fromqstr(fname))) {
-		okPB->setText(qt_("&OK"));
-		return false;
-	}
+
 	string const bpath = buffer().filePath();
 	// Path might be relative to current Buffer, so make absolute
 	FileName const absfname = support::makeAbsPath(fromqstr(fname), bpath);
+
+	// Do we have a LyX filename?
+	if (!isLyXFileName(fromqstr(fname))) {
+		okPB->setText(qt_("&OK"));
+		return absfname.exists();
+	}
+
 	// Set OK button text according to whether file already exists
 	okPB->setText(absfname.exists() ? qt_("&OK") : qt_("&Create"));
 	// enable edit button iff file is open in some Buffer
