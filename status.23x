@@ -76,10 +76,12 @@ What's new
 
 * USER INTERFACE
 
-- Fix crash when pasting math grid with more rows in source than target
-  (bug 11897).
+- Re-enable input of non-LyX files (e.g., tex, pgf) (bug 12056).
 
 - Fix problem with display of menus on Gnome Wayland (bug 11746).
+
+- Fix crash when pasting math grid with more rows in source than target
+  (bug 11897).
 
 - Fix problem with drawing of auto-opened insets (bug 11870).
 
