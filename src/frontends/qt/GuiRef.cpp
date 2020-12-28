@@ -67,7 +67,7 @@ GuiRef::GuiRef(GuiView & lv)
 	        refsTW, SLOT(setFocus()));
 #else
 	connect(filter_, &FancyLineEdit::downPressed,
-	        refsTW, [=](){ focusAndHighlight(refsTW); });
+	        refsTW, [=, this](){ focusAndHighlight(refsTW); });
 #endif
 
 	filterBarL->addWidget(filter_, 0);

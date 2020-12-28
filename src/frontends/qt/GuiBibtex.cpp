@@ -113,7 +113,7 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 	        availableLV, SLOT(setFocus()));
 #else
 	connect(filter_, &FancyLineEdit::downPressed,
-	        availableLV, [=](){ focusAndHighlight(availableLV); });
+	        availableLV, [=, this](){ focusAndHighlight(availableLV); });
 #endif
 
 	availableLV->setToolTip(formatToolTip(qt_("This list consists of all databases that are indexed by LaTeX and thus are found without a file path. "

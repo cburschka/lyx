@@ -185,7 +185,7 @@ InsetInclude::InsetInclude(Buffer * buf, InsetCommandParams const & p)
 	  set_label_(false), label_(nullptr), child_buffer_(nullptr), file_exist_(false),
 	  recursion_error_(false)
 {
-	preview_->connect([=](){ fileChanged(); });
+	preview_->connect([this](){ fileChanged(); });
 
 	if (isListings(params())) {
 		InsetListingsParams listing_params(to_utf8(p["lstparams"]));
@@ -201,7 +201,7 @@ InsetInclude::InsetInclude(InsetInclude const & other)
 	  set_label_(false), label_(nullptr), child_buffer_(nullptr), 
 	  file_exist_(other.file_exist_),recursion_error_(other.recursion_error_)
 {
-	preview_->connect([=](){ fileChanged(); });
+	preview_->connect([this](){ fileChanged(); });
 
 	if (other.label_)
 		label_ = new InsetLabel(*other.label_);

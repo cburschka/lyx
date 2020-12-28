@@ -1673,7 +1673,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		modulesModule->availableLV, SLOT(setFocus()));
 #else
 	connect(filter_, &FancyLineEdit::downPressed,
-		modulesModule->availableLV, [=](){ focusAndHighlight(modulesModule->availableLV); });
+		modulesModule->availableLV, [=, this](){ focusAndHighlight(modulesModule->availableLV); });
 #endif
 
 

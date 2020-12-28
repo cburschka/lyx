@@ -197,7 +197,7 @@ GuiLyXFiles::GuiLyXFiles(GuiView & lv)
 		filesLW, SLOT(setFocus()));
 #else
 	connect(filter_, &FancyLineEdit::downPressed,
-		filesLW, [=](){ focusAndHighlight(filesLW); });
+		filesLW, [=, this](){ focusAndHighlight(filesLW); });
 #endif
 
 	filterBarL->addWidget(filter_, 0);

@@ -648,7 +648,7 @@ void InsetExternal::updatePreview() const
 		renderer_ = make_unique<RenderMonitoredPreview>(this);
 		RenderMonitoredPreview * preview_ptr = renderer_->asMonitoredPreview();
 		// This connection is closed at the same time as this is destroyed.
-		preview_ptr->connect([=]() { fileChanged(); });
+		preview_ptr->connect([this]() { fileChanged(); });
 		add_preview_and_start_loading(*preview_ptr, *this, buffer());
 		break;
 	}
