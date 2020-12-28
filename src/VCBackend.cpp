@@ -1830,7 +1830,7 @@ bool GIT::findFile(FileName const & file)
 	string const fname = onlyFileName(file.absFileName());
 	LYXERR(Debug::LYXVC, "LyXVC: Checking if file is under git control for `"
 			<< fname << '\'');
-	int const ret = doVCCommandCall("git log " + quoteName(fname),
+	int const ret = doVCCommandCall("git log -n 0 " + quoteName(fname),
 			file.onlyPath());
 	bool const found = (ret == 0);
 	LYXERR(Debug::LYXVC, "GIT control: " << (found ? "enabled" : "disabled"));
