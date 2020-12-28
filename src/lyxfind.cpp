@@ -1307,35 +1307,73 @@ static void buildaccent(string n, string param, string values)
   }
 }
 
+// Helper function
+static string getutf8(unsigned uchar)
+{
+	#define maxc 5
+	string ret = string();
+	char c[maxc] = {0};
+	if (uchar <= 0x7f) {
+		c[maxc-1] = uchar & 0x7f;
+	}
+	else {
+		unsigned char rest = 0x40;
+		unsigned char first = 0x80;
+		int start = maxc-1;
+		if (uchar >= (1 << 11)) {
+			// needed at least 3 bytes
+			c[4] = (uchar & 0x0f) | 0x30;
+			uchar >>= 4;
+			start = maxc-2;
+		}
+		for (int i = start; i >=0; --i) {
+			if (uchar < rest) {
+				c[i] = first + uchar;
+				break;
+			}
+			c[i] = 0x80 | (uchar &  0x3f);
+			uchar >>= 6;
+			rest >>= 1;
+			first >>= 1;
+			first |= 0x80;
+		}
+	}
+	for (int i = 0; i < maxc; i++) {
+		if (c[i] == 0) continue;
+		ret += c[i];
+	}
+	return(ret);
+}
+
 static void buildAccentsMap()
 {
   accents["imath"] = "ı";
   accents["i"] = "ı";
   accents["jmath"] = "ȷ";
   accents["cdot"] = "·";
-  accents["hairspace"]     = u8"\uf0000";	// select from free unicode plane 15
-  accents["thinspace"]     = u8"\uf0002";	// and used _only_ by findadv
-  accents["negthinspace"]  = u8"\uf0003";	// to omit backslashed latex macros
-  accents["medspace"]      = u8"\uf0004";	// See https://en.wikipedia.org/wiki/Private_Use_Areas
-  accents["negmedspace"]   = u8"\uf0005";
-  accents["thickspace"]    = u8"\uf0006";
-  accents["negthickspace"] = u8"\uf0007";
-  accents["lyx"]           = u8"\uf0010";	// Used logos
-  accents["LyX"]           = u8"\uf0010";
-  accents["tex"]           = u8"\uf0011";
-  accents["TeX"]           = u8"\uf0011";
-  accents["latex"]         = u8"\uf0012";
-  accents["LaTeX"]         = u8"\uf0012";
-  accents["latexe"]        = u8"\uf0013";
-  accents["LaTeXe"]        = u8"\uf0013";
-  accents["backslash lyx"]           = u8"\uf0010";	// Used logos inserted with starting \backslash
-  accents["backslash LyX"]           = u8"\uf0010";
-  accents["backslash tex"]           = u8"\uf0011";
-  accents["backslash TeX"]           = u8"\uf0011";
-  accents["backslash latex"]         = u8"\uf0012";
-  accents["backslash LaTeX"]         = u8"\uf0012";
-  accents["backslash latexe"]        = u8"\uf0013";
-  accents["backslash LaTeXe"]        = u8"\uf0013";
+  accents["hairspace"]     = getutf8(0xf0000);	// select from free unicode plane 15
+  accents["thinspace"]     = getutf8(0xf0002);	// and used _only_ by findadv
+  accents["negthinspace"]  = getutf8(0xf0003);	// to omit backslashed latex macros
+  accents["medspace"]      = getutf8(0xf0004);	// See https://en.wikipedia.org/wiki/Private_Use_Areas
+  accents["negmedspace"]   = getutf8(0xf0005);
+  accents["thickspace"]    = getutf8(0xf0006);
+  accents["negthickspace"] = getutf8(0xf0007);
+  accents["lyx"]           = getutf8(0xf0010);	// Used logos
+  accents["LyX"]           = getutf8(0xf0010);
+  accents["tex"]           = getutf8(0xf0011);
+  accents["TeX"]           = getutf8(0xf0011);
+  accents["latex"]         = getutf8(0xf0012);
+  accents["LaTeX"]         = getutf8(0xf0012);
+  accents["latexe"]        = getutf8(0xf0013);
+  accents["LaTeXe"]        = getutf8(0xf0013);
+  accents["backslash lyx"]           = getutf8(0xf0010);	// Used logos inserted with starting \backslash
+  accents["backslash LyX"]           = getutf8(0xf0010);
+  accents["backslash tex"]           = getutf8(0xf0011);
+  accents["backslash TeX"]           = getutf8(0xf0011);
+  accents["backslash latex"]         = getutf8(0xf0012);
+  accents["backslash LaTeX"]         = getutf8(0xf0012);
+  accents["backslash latexe"]        = getutf8(0xf0013);
+  accents["backslash LaTeXe"]        = getutf8(0xf0013);
   accents["ddot{\\imath}"] = "ï";
   buildaccent("ddot", "aAeEhHiIioOtuUwWxXyY",
                       "äÄëËḧḦïÏïöÖẗüÜẅẄẍẌÿŸ");	// umlaut
