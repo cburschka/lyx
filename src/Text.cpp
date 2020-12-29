@@ -1950,7 +1950,7 @@ bool Text::splitInset(Cursor & cur)
 		cur.setMark(false);
 		cur.selHandle(false);
 		cur.resetAnchor();
-		bool atlastpos;
+		bool atlastpos = false;
 		if (cur.pos() == 0 && cur.pit() > 0) {
 			// if we are at par start, remove this par
 			cur.text()->backspace(cur);
