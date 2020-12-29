@@ -94,7 +94,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-12-27 16:57+0100\n"
+"POT-Creation-Date: 2020-12-29 12:04-0500\n"
 "PO-Revision-Date: 2020-12-27 17:05+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
@@ -26782,14 +26782,6 @@ msgid "Feynman Diagrams"
 msgstr "Feynman-Diagramme"
 
 #: lib/examples/Articles:0
-msgid "Instant Preview"
-msgstr "Eingebettete Vorschau"
-
-#: lib/examples/Articles:0
-msgid "Itemize Bullets"
-msgstr "Auflistungszeichen"
-
-#: lib/examples/Articles:0
 msgid "Minted File Listing"
 msgstr "Minted-Programmlistings (Dateien)"
 
@@ -26800,6 +26792,14 @@ msgstr "Minted-Programmlistings"
 #: lib/examples/Articles:0
 msgid "XY-Figure"
 msgstr "XY-Figure"
+
+#: lib/examples/Articles:0
+msgid "Instant Preview"
+msgstr "Eingebettete Vorschau"
+
+#: lib/examples/Articles:0
+msgid "Itemize Bullets"
+msgstr "Auflistungszeichen"
 
 #: lib/examples/Articles:0
 msgid "XY-Pic"
@@ -26814,36 +26814,36 @@ msgid "Serial Letter 1"
 msgstr "Serienbrief 1"
 
 #: lib/examples/Articles:0
-msgid "Serial Letter 2"
-msgstr "Serienbrief 2"
-
-#: lib/examples/Articles:0
 msgid "Serial Letter 3"
 msgstr "Serienbrief 3"
+
+#: lib/examples/Articles:0
+msgid "Serial Letter 2"
+msgstr "Serienbrief 2"
 
 #: lib/examples/Articles:0
 msgid "Localization Test"
 msgstr "Übersetzungstest"
 
 #: lib/examples/Articles:0
-msgid "Hazard and Precautionary Statements"
-msgstr "H- und P-Sätze"
-
-#: lib/examples/Articles:0
-msgid "LilyPond Book"
-msgstr "LilyPond-Buch"
+msgid "Noweb Listerrors"
+msgstr "Noweb-Fehlerbericht"
 
 #: lib/examples/Articles:0
 msgid "Multilingual Captions"
 msgstr "Mehrsprachige Legenden"
 
 #: lib/examples/Articles:0
+msgid "Hazard and Precautionary Statements"
+msgstr "H- und P-Sätze"
+
+#: lib/examples/Articles:0
 msgid "Noweb2LyX"
 msgstr "Noweb2LyX"
 
 #: lib/examples/Articles:0
-msgid "Noweb Listerrors"
-msgstr "Noweb-Fehlerbericht"
+msgid "LilyPond Book"
+msgstr "LilyPond-Buch"
 
 #: lib/examples/Articles:0 src/frontends/qt/GuiDocument.cpp:1762
 msgid "Modules"
@@ -26894,28 +26894,32 @@ msgid "Hebrew Article (KOMA-Script)"
 msgstr "Hebräischer Aufsatz (KOMA-Script)"
 
 #: lib/examples/Articles:0
-msgid "00 Main File"
-msgstr "00 Hauptdatei"
+msgid "10 Glossary"
+msgstr "10 Glossar"
 
 #: lib/examples/Articles:0
-msgid "01 Dedication"
-msgstr "01 Widmung"
+msgid "11 References"
+msgstr "11 Literaturverzeichnis"
 
 #: lib/examples/Articles:0
 msgid "02 Foreword"
 msgstr "02 Vorwort"
 
 #: lib/examples/Articles:0
-msgid "03 Preface"
-msgstr "03 Vorwort"
-
-#: lib/examples/Articles:0
-msgid "04 Acknowledgements"
-msgstr "04 Danksagungen"
+msgid "01 Dedication"
+msgstr "01 Widmung"
 
 #: lib/examples/Articles:0
 msgid "05 Contributor List"
 msgstr "05 Liste der Mitwirkenden"
+
+#: lib/examples/Articles:0
+msgid "09 Appendix"
+msgstr "09 Anhang"
+
+#: lib/examples/Articles:0
+msgid "00 Main File"
+msgstr "00 Hauptdatei"
 
 #: lib/examples/Articles:0
 msgid "06 Acronym"
@@ -26926,20 +26930,28 @@ msgid "07 Part"
 msgstr "07 Teil"
 
 #: lib/examples/Articles:0
+msgid "03 Preface"
+msgstr "03 Vorwort"
+
+#: lib/examples/Articles:0
+msgid "04 Acknowledgements"
+msgstr "04 Danksagungen"
+
+#: lib/examples/Articles:0
 msgid "08 Author"
 msgstr "08 Autor"
 
 #: lib/examples/Articles:0
-msgid "09 Appendix"
-msgstr "09 Anhang"
+msgid "10 Solutions"
+msgstr "10 Lösungen"
 
 #: lib/examples/Articles:0
-msgid "10 Glossary"
-msgstr "10 Glossar"
+msgid "08 Appendix"
+msgstr "08 Anhang"
 
 #: lib/examples/Articles:0
-msgid "11 References"
-msgstr "11 Literaturverzeichnis"
+msgid "07 Chapter"
+msgstr "07 Kapitel"
 
 #: lib/examples/Articles:0
 msgid "05 Acronym"
@@ -26950,28 +26962,16 @@ msgid "06 Part"
 msgstr "06 Teil"
 
 #: lib/examples/Articles:0
-msgid "07 Chapter"
-msgstr "07 Kapitel"
-
-#: lib/examples/Articles:0
-msgid "08 Appendix"
-msgstr "08 Anhang"
-
-#: lib/examples/Articles:0
 msgid "09 Glossary"
 msgstr "09 Glossar"
 
 #: lib/examples/Articles:0
-msgid "10 Solutions"
-msgstr "10 Lösungen"
+msgid "Simple"
+msgstr "Schlicht"
 
 #: lib/examples/Articles:0
 msgid "Colored"
 msgstr "Farbig"
-
-#: lib/examples/Articles:0
-msgid "Simple"
-msgstr "Schlicht"
 
 #: lib/examples/Articles:0
 msgid "Chapter 1"
@@ -31081,7 +31081,7 @@ msgid "Quit %1"
 msgstr "%1 beenden"
 
 #: src/frontends/qt/GuiApplication.cpp:704 src/frontends/qt/GuiInclude.cpp:318
-#: src/frontends/qt/GuiInclude.cpp:323 src/frontends/qt/GuiInclude.cpp:330
+#: src/frontends/qt/GuiInclude.cpp:328 src/frontends/qt/GuiInclude.cpp:333
 msgid "&OK"
 msgstr "&OK"
 
@@ -31385,7 +31385,7 @@ msgstr "alle Literaturverzeichnisse"
 #: src/frontends/qt/GuiBibtex.cpp:459 src/frontends/qt/GuiBibtex.cpp:469
 #: src/frontends/qt/GuiCompare.cpp:163 src/frontends/qt/GuiCompare.cpp:167
 #: src/frontends/qt/GuiDocument.cpp:2832 src/frontends/qt/GuiExternal.cpp:676
-#: src/frontends/qt/GuiGraphics.cpp:791 src/frontends/qt/GuiInclude.cpp:377
+#: src/frontends/qt/GuiGraphics.cpp:791 src/frontends/qt/GuiInclude.cpp:380
 #: src/frontends/qt/GuiLyXFiles.cpp:365 src/frontends/qt/GuiLyXFiles.cpp:371
 #: src/frontends/qt/GuiView.cpp:2409 src/frontends/qt/GuiView.cpp:2468
 #: src/frontends/qt/GuiView.cpp:2604 src/frontends/qt/GuiView.cpp:2738
@@ -32752,15 +32752,15 @@ msgstr ""
 "Geben Sie rechts Listing-Parameter ein. Geben Sie '?' für eine Liste "
 "gültiger Parameter ein."
 
-#: src/frontends/qt/GuiInclude.cpp:330
+#: src/frontends/qt/GuiInclude.cpp:333
 msgid "&Create"
 msgstr "&Erstellen"
 
-#: src/frontends/qt/GuiInclude.cpp:359
+#: src/frontends/qt/GuiInclude.cpp:362
 msgid "Select document to include"
 msgstr "Wählen Sie das einzubindende Dokument"
 
-#: src/frontends/qt/GuiInclude.cpp:366
+#: src/frontends/qt/GuiInclude.cpp:369
 msgid "LaTeX/LyX Documents (*.tex *.lyx)"
 msgstr "LaTeX/LyX-Dokumente (*.tex *.lyx)"
 
@@ -36666,32 +36666,32 @@ msgstr "Die Zeichenkette wurde ersetzt."
 msgid "%1$d strings have been replaced."
 msgstr "%1$d Zeichenketten wurden ersetzt."
 
-#: src/lyxfind.cpp:3755
+#: src/lyxfind.cpp:3787
 msgid "Invalid regular expression!"
 msgstr "Ungültiger regulärer Ausdruck!"
 
-#: src/lyxfind.cpp:3764
+#: src/lyxfind.cpp:3796
 msgid "One match has been replaced."
 msgstr "Ein Treffer wurde ersetzt."
 
-#: src/lyxfind.cpp:3767
+#: src/lyxfind.cpp:3799
 msgid "Two matches have been replaced."
 msgstr "Zwei Treffer wurden ersetzt."
 
-#: src/lyxfind.cpp:3770
+#: src/lyxfind.cpp:3802
 #, c-format
 msgid "%1$d matches have been replaced."
 msgstr "%1$d Treffer wurden ersetzt."
 
-#: src/lyxfind.cpp:3776
+#: src/lyxfind.cpp:3808
 msgid "Match not found."
 msgstr "Die Zeichenkette wurde nicht gefunden!"
 
-#: src/lyxfind.cpp:3782
+#: src/lyxfind.cpp:3814
 msgid "Match has been replaced."
 msgstr "Die Zeichenkette wurde ersetzt."
 
-#: src/lyxfind.cpp:3784
+#: src/lyxfind.cpp:3816
 msgid "Match found."
 msgstr "Die Zeichenkette wurde gefunden!"
 
