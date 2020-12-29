@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-12-29 12:04-0500\n"
-"PO-Revision-Date: 2020-12-12 20:34+0000\n"
+"POT-Creation-Date: 2020-12-29 20:35+0100\n"
+"PO-Revision-Date: 2020-12-29 19:50+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -19677,9 +19677,8 @@ msgid "End Editing Externally..."
 msgstr "Externú úpravu dokončiť…"
 
 #: lib/ui/stdcontext.inc:360
-#, fuzzy
 msgid "Split Inset|t"
-msgstr "Otvoriť vložku|i"
+msgstr "Rozdeliť vložku"
 
 #: lib/ui/stdcontext.inc:362
 msgid "Jump Back to Saved Bookmark|B"
@@ -33623,9 +33622,9 @@ msgid "auto"
 msgstr "auto"
 
 #: src/frontends/qt/GuiToolbar.cpp:623
-#, fuzzy, c-format
+#, c-format
 msgid "Toolbar \"%1$s\" does not support state \"auto\""
-msgstr "Stav lišty nástrojov \"%1$s\" nastavený na %2$s"
+msgstr "Lišta \"%1$s\" nepodporuje stav \"auto\""
 
 #: src/frontends/qt/GuiToolbar.cpp:630 src/insets/InsetBranch.cpp:78
 #: src/insets/InsetBranch.cpp:81
@@ -33749,12 +33748,12 @@ msgstr "neplatný-argument pre funkciu 'master-buffer-forall'"
 
 #: src/frontends/qt/GuiView.cpp:2126
 msgid "Function toolbar-set requires two arguments!"
-msgstr ""
+msgstr "Funkcia toolbar-set vyžaduje dva argumenty!"
 
 #: src/frontends/qt/GuiView.cpp:2133
 #, c-format
 msgid "Invalid argument \"%1$s\" to function toolbar-set!"
-msgstr ""
+msgstr "Neplatný argument \"%1$s\" funkcie toolbar-set!"
 
 #: src/frontends/qt/GuiView.cpp:2149 src/frontends/qt/GuiView.cpp:2162
 #: src/frontends/qt/GuiView.cpp:2179
@@ -34403,18 +34402,16 @@ msgid "Open Outliner..."
 msgstr "Otvoriť prehľad…"
 
 #: src/frontends/qt/Menus.cpp:1422
-#, fuzzy
 msgid "[[Toolbar]]On|O"
-msgstr "Recenzovať"
+msgstr "Zapnúť|Z"
 
 #: src/frontends/qt/Menus.cpp:1424
-#, fuzzy
 msgid "[[Toolbar]]Off|f"
-msgstr "Recenzovať"
+msgstr "Vypnúť|V"
 
 #: src/frontends/qt/Menus.cpp:1426
 msgid "[[Toolbar]]Automatic|A"
-msgstr ""
+msgstr "Automatická|A"
 
 #: src/frontends/qt/Menus.cpp:1438
 msgid "Other Toolbars"
