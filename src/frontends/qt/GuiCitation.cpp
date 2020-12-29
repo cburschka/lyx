@@ -157,7 +157,7 @@ GuiCitation::GuiCitation(GuiView & lv)
 	        availableLV, SLOT(setFocus()));
 #else
 	connect(filter_, &FancyLineEdit::downPressed,
-	        availableLV, [=, this](){ focusAndHighlight(availableLV); });
+	        availableLV, [this](){ focusAndHighlight(availableLV); });
 #endif
 	connect(regexp_, SIGNAL(triggered()),
 		this, SLOT(regexChanged()));
