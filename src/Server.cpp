@@ -866,7 +866,7 @@ int LyXComm::startPipe(string const & file, bool write)
 	if (!write) {
 		// Make sure not to call read_ready after destruction.
 		weak_ptr<void> tracker = tracker_.p();
-		theApp()->registerSocketCallback(fd, [=](){
+		theApp()->registerSocketCallback(fd, [this, tracker](){
 				if (!tracker.expired())
 					read_ready();
 			});

@@ -854,7 +854,7 @@ void Parser::tokenize_one()
 	}
 
 	case catIgnore: {
-		cerr << "ignoring a char: " << c << "\n";
+		cerr << "ignoring a char: " << static_cast<uint32_t>(c) << "\n";
 		break;
 	}
 

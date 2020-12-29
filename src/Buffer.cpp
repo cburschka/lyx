@@ -1771,7 +1771,7 @@ Buffer::ExportStatus Buffer::makeLaTeXFile(FileName const & fname,
 	catch (EncodingException const & e) {
 		docstring const failed(1, e.failed_char);
 		ostringstream oss;
-		oss << "0x" << hex << e.failed_char << dec;
+		oss << "0x" << hex << static_cast<uint32_t>(e.failed_char) << dec;
 		if (getParFromID(e.par_id).paragraph().layout().pass_thru) {
 			docstring msg = bformat(_("Uncodable character '%1$s'"
 						  " (code point %2$s)"),

@@ -370,9 +370,9 @@ ostream & operator<<(ostream & os, Token const & t)
 		os << '\\' << to_utf8(cs);
 	}
 	else if (t.cat() == catLetter)
-		os << t.character();
+		os << static_cast<uint32_t>(t.character());
 	else
-		os << '[' << t.character() << ',' << t.cat() << ']';
+		os << '[' << static_cast<uint32_t>(t.character()) << ',' << t.cat() << ']';
 	return os;
 }
 
