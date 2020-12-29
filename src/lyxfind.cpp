@@ -1320,12 +1320,6 @@ static string getutf8(unsigned uchar)
 		unsigned char rest = 0x40;
 		unsigned char first = 0x80;
 		int start = maxc-1;
-		if (uchar >= (1 << 11)) {
-			// needed at least 3 bytes
-			c[4] = (uchar & 0x0f) | 0x30;
-			uchar >>= 4;
-			start = maxc-2;
-		}
 		for (int i = start; i >=0; --i) {
 			if (uchar < rest) {
 				c[i] = first + uchar;
