@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 600
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -59,17 +59,20 @@
 % \renewcommand{\tableautorefname}{Tab.\negthinspace}
 %}
 %\@ifpackageloaded{babel}{\addto\extrasenglish{\refnamechanges}}{\refnamechanges}
+% Added by lyx2lyx
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage
 \use_default_options true
 \begin_modules
 customHeadersFooters
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package default
 \inputencoding utf8
-\fontencoding global
+\fontencoding auto
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
 \font_typewriter "lmtt" "default"
@@ -77,7 +80,9 @@ customHeadersFooters
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -101,7 +106,7 @@ customHeadersFooters
 \pdf_backref false
 \pdf_pdfusetitle true
 \pdf_quoted_options "pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
-\papersize a4paper
+\papersize a4
 \use_geometry false
 \use_package amsmath 2
 \use_package amssymb 2
@@ -153,14 +158,15 @@ customHeadersFooters
 \filename_suffix 0
 \color #faf0e6
 \end_branch
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
 \end_index
 \secnumdepth 3
 \tocdepth 2
-\paragraph_separation skip
-\defskip medskip
+\paragraph_separation indent
+\paragraph_indentation default
 \is_math_indent 1
 \math_indentation default
 \math_numbering_side default
@@ -170,6 +176,7 @@ customHeadersFooters
 \papersides 2
 \paperpagestyle fancy
 \tracking_changes false
+\postpone_fragile_content false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
@@ -685,6 +692,7 @@ status open
 \begin_inset CommandInset include
 LatexCommand include
 filename "Summary.lyx"
+literal "true"
 
 \end_inset
 
@@ -803,6 +811,7 @@ status open
 \begin_inset CommandInset include
 LatexCommand include
 filename "Chapter_1.lyx"
+literal "true"
 
 \end_inset
 
@@ -823,6 +832,7 @@ status open
 \begin_inset CommandInset include
 LatexCommand include
 filename "Chapter_2.lyx"
+literal "true"
 
 \end_inset
 
@@ -912,6 +922,7 @@ status open
 \begin_inset CommandInset include
 LatexCommand include
 filename "Acknowledgments.lyx"
+literal "true"
 
 \end_inset
 
@@ -933,6 +944,7 @@ status open
 \begin_inset CommandInset include
 LatexCommand include
 filename "Appendix.lyx"
+literal "true"
 
 \end_inset
 
@@ -972,6 +984,7 @@ The bibliography and nomenclature are in an own sub-document, so that they
 \begin_inset CommandInset include
 LatexCommand include
 filename "Bibliography.lyx"
+literal "true"
 
 \end_inset
 

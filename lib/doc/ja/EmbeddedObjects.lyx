@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 589
+\lyxformat 600
 \begin_document
 \begin_header
 \save_transient_properties false
@@ -167,6 +167,9 @@
 \usepackage{subfig}
 \DeclareCaptionOption{large}[]{\def\captionfont{\large}}
 \DeclareCaptionOption{Large}[]{\def\captionfont{\Large}}
+% Added by lyx2lyx
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
 \end_preamble
 \options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,dvipsnames,table,bookmarkpackage=false
 \use_default_options false
@@ -176,7 +179,7 @@ graphicboxes
 varwidth
 ruby
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language japanese
 \language_package default
 \inputencoding utf8
@@ -251,8 +254,8 @@ ruby
 \bottommargin 3cm
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation skip
-\defskip medskip
+\paragraph_separation indent
+\paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style english
@@ -265,6 +268,7 @@ ruby
 \bullet 2 2 35 -1
 \bullet 3 2 7 -1
 \tracking_changes false
+\postpone_fragile_content false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0

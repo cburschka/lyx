@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 600
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -17,11 +17,11 @@
 \end_preamble
 \options graybox,envcountchap,sectrefs
 \use_default_options false
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package default
 \inputencoding utf8
-\fontencoding global
+\fontencoding auto
 \font_roman "times" "default"
 \font_sans "helvet" "default"
 \font_typewriter "courier" "default"
@@ -29,7 +29,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -73,6 +75,7 @@
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -89,6 +92,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
+\postpone_fragile_content false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
@@ -156,6 +160,7 @@ optional subtitle
 \begin_inset CommandInset include
 LatexCommand include
 filename "01_Dedication.lyx"
+literal "true"
 
 \end_inset
 
@@ -166,6 +171,7 @@ filename "01_Dedication.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 filename "02_Foreword.lyx"
+literal "true"
 
 \end_inset
 
@@ -176,6 +182,7 @@ filename "02_Foreword.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 filename "03_Preface.lyx"
+literal "true"
 
 \end_inset
 
@@ -196,6 +203,7 @@ acknowledgements are optional:
 \begin_inset CommandInset include
 LatexCommand include
 filename "04_Acknowledgements.lyx"
+literal "true"
 
 \end_inset
 
@@ -215,6 +223,7 @@ LatexCommand tableofcontents
 \begin_inset CommandInset include
 LatexCommand include
 filename "05_Acronym.lyx"
+literal "true"
 
 \end_inset
 
@@ -229,6 +238,7 @@ filename "05_Acronym.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 filename "06_Part.lyx"
+literal "true"
 
 \end_inset
 
@@ -239,6 +249,7 @@ filename "06_Part.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 filename "07_Chapter.lyx"
+literal "true"
 
 \end_inset
 
@@ -249,6 +260,7 @@ filename "07_Chapter.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 filename "08_Appendix.lyx"
+literal "true"
 
 \end_inset
 
@@ -263,6 +275,7 @@ filename "08_Appendix.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 filename "09_Glossary.lyx"
+literal "true"
 
 \end_inset
 
@@ -273,6 +286,7 @@ filename "09_Glossary.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 filename "10_Solutions.lyx"
+literal "true"
 
 \end_inset
 

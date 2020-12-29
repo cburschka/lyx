@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 589
+\lyxformat 600
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -35,7 +35,7 @@
 \end_preamble
 \options b5paper
 \use_default_options false
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package default
 \inputencoding utf8-cjk
@@ -119,6 +119,7 @@
 \tablestyle default
 \bulletLaTeX 0 "\mytextbullet"
 \tracking_changes false
+\postpone_fragile_content false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0

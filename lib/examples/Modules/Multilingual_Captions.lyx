@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 600
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -29,17 +29,20 @@
 [Tabelle][Tabellenverzeichnis]
 % inform bicaption about the new float types
 \PassOptionsToPackage{listtype+=Ger}{bicaption}
+% Added by lyx2lyx
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
 \end_preamble
 \options liststotoc
 \use_default_options true
 \begin_modules
 bicaption
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package default
 \inputencoding utf8
-\fontencoding global
+\fontencoding auto
 \font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -47,7 +50,9 @@ bicaption
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -94,14 +99,15 @@ bicaption
 \use_refstyle 1
 \use_minted 0
 \notefontcolor #0000ff
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
 \end_index
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation skip
-\defskip medskip
+\paragraph_separation indent
+\paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style english
@@ -110,6 +116,7 @@ bicaption
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
+\postpone_fragile_content false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 589
+\lyxformat 600
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -40,7 +40,7 @@
 \begin_modules
 logicalmkup
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language spanish
 \language_package default
 \inputencoding utf8
@@ -128,6 +128,7 @@ logicalmkup
 \paperpagestyle headings
 \tablestyle default
 \tracking_changes false
+\postpone_fragile_content false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0

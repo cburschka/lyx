@@ -1,16 +1,16 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 600
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin /systemlyxdir/examples/he/
 \textclass article
 \use_default_options false
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language hebrew
 \language_package default
 \inputencoding utf8x
-\fontencoding global
+\fontencoding auto
 \font_roman "lmodern" "FreeSerif"
 \font_sans "default" "FreeSans"
 \font_typewriter "default" "FreeMono"
@@ -18,7 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts true
 \font_sc false
-\font_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -53,6 +55,7 @@
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \index אינדקס
 \shortcut idx
 \color #008000
@@ -69,6 +72,7 @@
 \papersides 1
 \paperpagestyle plain
 \tracking_changes false
+\postpone_fragile_content false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
@@ -264,20 +268,20 @@ status collapsed
 .
  \SpecialChar LaTeX
  בנוה מסביב לפילוסופיה דומה לזו של ליקס.
- לסלי למפורט אמר פעם )ראה הפניה ]
+ לסלי למפורט אמר פעם (ראה הפניה ]
 \numeric on
 1
 \numeric off
-[(
+[)
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-רמז: מן הסתם ההפניה הביבליוגרפיה הזאת )
+רמז: מן הסתם ההפניה הביבליוגרפיה הזאת (
 \lang english
 citation reference
 \lang hebrew
-( לא צריכה להכתב כסתם מספר.
+) לא צריכה להכתב כסתם מספר.
  מה אם בסופו של דבר הספר של למפורט יהיה הספר השני בביבליוגרפיה?
 \end_layout
 
@@ -372,8 +376,8 @@ What you see is what you mean
 \end_layout
 
 \begin_layout Standard
-לליקס תכונות רבות שמקלות על כתיבת מסמכים )אחרי הכל, למה שמישהו ירצה להשתמש
- בה אחרת?(
+לליקס תכונות רבות שמקלות על כתיבת מסמכים (אחרי הכל, למה שמישהו ירצה להשתמש
+ בה אחרת?)
 \begin_inset Note Note
 status collapsed
 
@@ -420,11 +424,11 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-רמז: מן הסתם, ההפניות )
+רמז: מן הסתם, ההפניות (
 \lang english
 cross-references
 \lang hebrew
-( האלה לא צריכות להיות סתם כתובות.
+) האלה לא צריכות להיות סתם כתובות.
  מה אם נשנה את מספרי החלקים?
 \end_layout
 
@@ -479,7 +483,7 @@ status collapsed
 \lang english
 code
 \lang hebrew
-(.
+).
 \end_layout
 
 \end_inset
@@ -542,11 +546,11 @@ status collapsed
 \lang english
 ax^2+bx+c=0
 \lang hebrew
- )משוואה 
+ (משוואה 
 \numeric on
 1
 \numeric off
-(, אזי 
+), אזי 
 \lang english
 x
 \lang hebrew
@@ -562,11 +566,11 @@ b^2-4ac
 \lang english
 2a
 \lang hebrew
- )משוואה 
+ (משוואה 
 \numeric on
 2
 \numeric off
-(.
+).
 \end_layout
 
 \begin_layout Standard
@@ -586,11 +590,11 @@ f(x+deltax)-f(x)
 \lang english
 x
 \lang hebrew
- )משוואה 
+ (משוואה 
 \numeric on
 3
 \numeric off
-(.
+).
 \end_layout
 
 \begin_layout Standard

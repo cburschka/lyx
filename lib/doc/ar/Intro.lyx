@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 575
+\lyxformat 600
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -26,7 +26,7 @@
   \pagenumbering{arabic} }
 \end_preamble
 \use_default_options false
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language arabic_arabi
 \language_package default
 \inputencoding utf8
@@ -38,7 +38,9 @@
 \font_default_family default
 \use_non_tex_fonts true
 \font_sc false
-\font_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -104,6 +106,7 @@
 \paperpagestyle default
 \tablestyle default
 \tracking_changes false
+\postpone_fragile_content false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0

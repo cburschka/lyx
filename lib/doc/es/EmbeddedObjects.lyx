@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 600
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -153,6 +153,9 @@
  {\usepackage{diagbox}
   \setboolean{diagbox}{true}}
  {\setboolean{diagbox}{false}}
+% Added by lyx2lyx
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
 \end_preamble
 \options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,dvipsnames,table
 \use_default_options false
@@ -161,11 +164,11 @@ initials
 graphicboxes
 varwidth
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language spanish
 \language_package babel
 \inputencoding utf8
-\fontencoding global
+\fontencoding auto
 \font_roman "lmodern" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -173,7 +176,9 @@ varwidth
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -223,14 +228,15 @@ varwidth
 \use_refstyle 0
 \use_minted 0
 \notefontcolor #0000ff
+\use_lineno 0
 \index Índice
 \shortcut idx
 \color #008000
 \end_index
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation skip
-\defskip medskip
+\paragraph_separation indent
+\paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style swiss
@@ -239,6 +245,7 @@ varwidth
 \papersides 2
 \paperpagestyle default
 \tracking_changes false
+\postpone_fragile_content false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
@@ -39938,6 +39945,7 @@ Anexar
 \begin_inset CommandInset include
 LatexCommand include
 filename "DocumentoPostizo1.lyx"
+literal "true"
 
 \end_inset
 
@@ -40058,6 +40066,7 @@ Incorporar
 \begin_inset CommandInset include
 LatexCommand input
 filename "DocumentoPostizo2.lyx"
+literal "true"
 
 \end_inset
 
@@ -40077,6 +40086,7 @@ input
 \begin_inset CommandInset include
 LatexCommand input
 filename "DocumentoTextoPostizo.txt"
+literal "true"
 
 \end_inset
 
@@ -40141,6 +40151,7 @@ Aquí se inserta un documento hijo en modo Literal:
 \begin_inset CommandInset include
 LatexCommand verbatiminput
 filename "DocumentoTextoPostizo.txt"
+literal "true"
 
 \end_inset
 
@@ -40160,6 +40171,7 @@ Marcar espacios en la salida
 \begin_inset CommandInset include
 LatexCommand verbatiminput*
 filename "DocumentoTextoPostizo.txt"
+literal "true"
 
 \end_inset
 
@@ -41164,6 +41176,7 @@ reference "lst:archivo-listado"
 LatexCommand lstinputlisting
 filename "EmbeddedObjects.lyx"
 lstparams "breaklines=true,caption={Líneas  10 - 15 de este archivo LyX},firstline=10,label={lst:archivo-listado},language={[LaTeX]TeX},lastline=15"
+literal "true"
 
 \end_inset
 

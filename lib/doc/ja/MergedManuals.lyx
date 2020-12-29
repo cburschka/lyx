@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 600
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -16,11 +16,11 @@ multicol
 shapepar
 initials
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language japanese
 \language_package default
-\inputencoding utf8-platex
-\fontencoding global
+\inputencoding utf8
+\fontencoding auto
 \font_roman "lmodern" "IPAexMincho"
 \font_sans "default" "IPAexGothic"
 \font_typewriter "default" "default"
@@ -28,7 +28,9 @@ initials
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -63,6 +65,7 @@ initials
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -79,6 +82,7 @@ initials
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
+\postpone_fragile_content false
 \output_changes false
 \html_math_output 2
 \html_css_as_file 0
@@ -117,6 +121,7 @@ LatexCommand tableofcontents
 \begin_inset CommandInset include
 LatexCommand include
 filename "Intro.lyx"
+literal "true"
 
 \end_inset
 
@@ -131,6 +136,7 @@ filename "Intro.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 filename "Tutorial.lyx"
+literal "true"
 
 \end_inset
 
@@ -145,6 +151,7 @@ filename "Tutorial.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 filename "UserGuide.lyx"
+literal "true"
 
 \end_inset
 
@@ -159,6 +166,7 @@ filename "UserGuide.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 filename "Additional.lyx"
+literal "true"
 
 \end_inset
 
@@ -173,6 +181,7 @@ filename "Additional.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 filename "EmbeddedObjects.lyx"
+literal "true"
 
 \end_inset
 
@@ -187,6 +196,7 @@ filename "EmbeddedObjects.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 filename "Math.lyx"
+literal "true"
 
 \end_inset
 
@@ -201,6 +211,7 @@ filename "Math.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 filename "Customization.lyx"
+literal "true"
 
 \end_inset
 
@@ -216,6 +227,7 @@ filename "Customization.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 filename "../LFUNs.lyx"
+literal "true"
 
 \end_inset
 
@@ -230,6 +242,7 @@ status open
 \begin_inset CommandInset include
 LatexCommand include
 filename "../examples/linguistics.lyx"
+literal "true"
 
 \end_inset
 
@@ -240,6 +253,7 @@ filename "../examples/linguistics.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 filename "../lib/examples/xypic.lyx"
+literal "true"
 
 \end_inset
 

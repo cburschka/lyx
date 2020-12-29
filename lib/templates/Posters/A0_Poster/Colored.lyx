@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 600
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -15,6 +15,9 @@
 
 % For \arrayrulecolor
 \usepackage{colortbl}
+% Added by lyx2lyx
+\setlength{\parskip}{\bigskipamount}
+\setlength{\parindent}{0pt}
 \end_preamble
 \options a0,portrait
 \use_default_options false
@@ -22,11 +25,11 @@
 tcolorbox
 multicol
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package default
 \inputencoding utf8
-\fontencoding global
+\fontencoding auto
 \font_roman "palatino" "default"
 \font_sans "berasans" "default"
 \font_typewriter "beramono" "default"
@@ -34,7 +37,9 @@ multicol
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -69,6 +74,7 @@ multicol
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -79,8 +85,8 @@ multicol
 \bottommargin 1cm
 \secnumdepth 0
 \tocdepth 0
-\paragraph_separation skip
-\defskip bigskip
+\paragraph_separation indent
+\paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style english
@@ -89,6 +95,7 @@ multicol
 \papersides 1
 \paperpagestyle empty
 \tracking_changes false
+\postpone_fragile_content false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0

@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 600
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -38,11 +38,81 @@
 \begin_modules
 linguistics
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
+\begin_local_layout
+### Inserted by lyx2lyx (deprecated ling glosses) ###
+InsetLayout Flex:Tri-Glosse
+  LyXType               custom
+  LabelString           "Tri-Gloss (old version)"
+  MenuString            "Tri-Gloss (old version)"
+  LatexType             environment
+  LatexName             lingglosss
+  Decoration            minimalistic
+  LabelFont
+    Size                Small
+  EndFont
+  MultiPar              true
+  CustomPars            false
+  ForcePlain            true
+  ParbreakIsNewline     true
+  FreeSpacing           true
+  InToc                 true
+  Requires              covington
+  Preamble
+          \def\glosstr{}
+          \@ifundefined{lingglosss}{%
+          \newenvironment{lingglosss}[2][]{
+              \def\glosstr{\glt #1}%
+              \glll #2}
+          {\glosstr\glend}}{}
+  EndPreamble
+  ResetsFont            true
+  Argument 1
+          Decoration    conglomerate
+          LabelString   "Translation"
+          MenuString    "Glosse Translation|s"
+          Tooltip       "Add a translation for the glosse"
+  EndArgument
+End
+### Inserted by lyx2lyx (deprecated ling glosses) ###
+InsetLayout Flex:Glosse
+  LyXType               custom
+  LabelString           "Gloss (old version)"
+  MenuString            "Gloss (old version)"
+  LatexType             environment
+  LatexName             linggloss
+  Decoration            minimalistic
+  LabelFont
+    Size                Small
+  EndFont
+  MultiPar              true
+  CustomPars            false
+  ForcePlain            true
+  ParbreakIsNewline     true
+  FreeSpacing           true
+  Requires              covington
+  Preamble
+          \def\glosstr{}
+          \@ifundefined{linggloss}{%
+          \newenvironment{linggloss}[2][]{
+             \def\glosstr{\glt #1}%
+             \gll #2}
+          {\glosstr\glend}}{}
+  EndPreamble
+  InToc                 true
+  ResetsFont            true
+  Argument 1
+          Decoration    conglomerate
+          LabelString   "Translation"
+          MenuString    "Glosse Translation|s"
+          Tooltip       "Add a translation for the glosse"
+  EndArgument
+End
+\end_local_layout
 \language spanish
 \language_package default
 \inputencoding utf8
-\fontencoding global
+\fontencoding auto
 \font_roman "lmodern" "FreeSerif"
 \font_sans "default" "FreeSans"
 \font_typewriter "default" "FreeMono"
@@ -50,7 +120,9 @@ linguistics
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -94,6 +166,7 @@ linguistics
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \index Índice
 \shortcut idx
 \color #008000
@@ -110,6 +183,7 @@ linguistics
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
+\postpone_fragile_content false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0

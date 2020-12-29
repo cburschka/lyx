@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 600
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -16,11 +16,11 @@
 \begin_modules
 theorems-std
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package default
 \inputencoding utf8
-\fontencoding global
+\fontencoding auto
 \font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -28,7 +28,9 @@ theorems-std
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -63,6 +65,7 @@ theorems-std
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -79,6 +82,7 @@ theorems-std
 \papersides 2
 \paperpagestyle headings
 \tracking_changes false
+\postpone_fragile_content false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
@@ -133,19 +137,6 @@ http://www.ctan.org/get/macros/latex/contrib/elsarticle/elsdoc.pdf
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout BeginFrontmatter
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Keep this empty!
 \end_layout
 
 \end_inset
@@ -682,19 +673,6 @@ PACS
 MSC
 \series default
  are optional classifications.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrontmatter
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Keep this empty!
 \end_layout
 
 \end_inset

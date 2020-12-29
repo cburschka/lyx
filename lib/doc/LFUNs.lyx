@@ -1,5 +1,5 @@
-# gen_lfuns.py generated this file. For more info see http://www.lyx.org/
-\lyxformat 509
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 600
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -16,7 +16,7 @@
 }
 \end_preamble
 \use_default_options false
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \begin_local_layout
 Style Description
 LabelIndent           MM
@@ -25,8 +25,8 @@ End
 \end_local_layout
 \language english
 \language_package default
-\inputencoding auto
-\fontencoding global
+\inputencoding auto-legacy
+\fontencoding auto
 \font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -34,7 +34,9 @@ End
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype 0
@@ -67,6 +69,8 @@ End
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -79,11 +83,14 @@ End
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
+\postpone_fragile_content false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
@@ -446,7 +453,7 @@ Action Sets the layout (that is, environment) for the current paragraph.
 \end_layout
 
 \begin_layout Description
-Syntax layout <LAYOUT> [ignorenests]
+Syntax layout <LAYOUT> [ignoreautonests]
 \end_layout
 
 \begin_layout Description
@@ -454,7 +461,7 @@ Params <LAYOUT>: the layout to use
 \begin_inset Newline newline
 \end_inset
 
-ignorenests: If specified, nesting advices will be ignored.
+ignoreautonests: If specified, nesting advices will be ignored.
 \end_layout
 
 \begin_layout Subsection*
@@ -562,7 +569,7 @@ Notion Contrary to `layout', this function resets the current (or selection) lay
 \end_layout
 
 \begin_layout Description
-Syntax layout-toggle <LAYOUT> [ignorenests]
+Syntax layout-toggle <LAYOUT> [ignoreautonests]
 \end_layout
 
 \begin_layout Description
@@ -570,7 +577,7 @@ Params <LAYOUT>: the layout to toggle
 \begin_inset Newline newline
 \end_inset
 
-ignorenests: If specified, nesting advices will be ignored.
+ignoreautonests: If specified, nesting advices will be ignored.
 \end_layout
 
 \begin_layout Description
@@ -1554,6 +1561,38 @@ Origin AAS, 97-02-23
 \end_layout
 
 \begin_layout Subsection*
+citation-open
+\end_layout
+
+\begin_layout Description
+Action Opens the corresponding pdf/url for a given citation inset.
+\end_layout
+
+\begin_layout Description
+Syntax citation-open [EXTERNAL] TARGET
+\end_layout
+
+\begin_layout Description
+Params <TARGET>: URL (https:,file:) of the document.
+\begin_inset Newline newline
+\end_inset
+
+<EXTERNAL>: Use external executable script for finding target
+\begin_inset Newline newline
+\end_inset
+
+	       and launching viewer. In this case TARGET consists of author and year
+\begin_inset Newline newline
+\end_inset
+
+	       and will be passed as an input argument to the script.
+\end_layout
+
+\begin_layout Description
+Origin Sanda, 16 Aug 2020
+\end_layout
+
+\begin_layout Subsection*
 clipboard-paste
 \end_layout
 
@@ -1794,7 +1833,7 @@ Params <NAME>: aboutlyx|bibitem|bibtex|box|branch|changes|character|citation|
 \begin_inset Newline newline
 \end_inset
 
-compare|document|errorlist|ert|external|file|findreplace|findreplaceadv|float|
+compare|counter|document|errorlist|ert|external|file|findreplace|findreplaceadv|float|
 \begin_inset Newline newline
 \end_inset
 
@@ -2763,6 +2802,30 @@ graphics|href|include|index|index_print|label|line|
 \end_inset
 
 listings|note|phantom|ref|space|tabular|vspace|wrap>.
+\end_layout
+
+\begin_layout Subsection*
+inset-split
+\end_layout
+
+\begin_layout Description
+Action Splits the current inset into two at current position.
+\end_layout
+
+\begin_layout Description
+Syntax inset-split [<INSET>]
+\end_layout
+
+\begin_layout Description
+Params <INSET>: this can be used to make sure the right kind of inset 			is dissolved. For example "split" entry in the charstyles 			sub-menu should only dissolve the charstyle inset, even if the 			cursor is inside several nested insets of different type.
+\begin_inset Newline newline
+\end_inset
+
+			For values see lyx::InsetLayout::lyxtype_ .
+\end_layout
+
+\begin_layout Description
+Origin spitz, 22 Dec 2020
 \end_layout
 
 \begin_layout Subsection*
@@ -6056,6 +6119,22 @@ Origin Asger, 2 Feb 1997
 \end_layout
 
 \begin_layout Subsection*
+buffer-reset-export
+\end_layout
+
+\begin_layout Description
+Action Removes the auxiliary file before next export to assure export is done afresh.
+\end_layout
+
+\begin_layout Description
+Syntax buffer-reset-export
+\end_layout
+
+\begin_layout Description
+Origin spitz, 27 Dec 2019
+\end_layout
+
+\begin_layout Subsection*
 buffer-save-as-default
 \end_layout
 
@@ -6204,7 +6283,11 @@ Notion Saves the current buffer to disk, using the filename that is already asso
 \end_layout
 
 \begin_layout Description
-Syntax buffer-write
+Syntax buffer-write [force]
+\end_layout
+
+\begin_layout Description
+Params force: write even if buffer is clean.
 \end_layout
 
 \begin_layout Subsection*
@@ -6412,6 +6495,26 @@ Origin 11 July 2016
 \end_layout
 
 \begin_layout Subsection*
+ifrelatives
+\end_layout
+
+\begin_layout Description
+Action Helper function for master-related actions
+\end_layout
+
+\begin_layout Description
+Notion In a buffer, the function will be disabled if the buffer has no master or children. It thus allows to enable actions only in documents with master/children
+\end_layout
+
+\begin_layout Description
+Syntax ifrelatives <ACTION>
+\end_layout
+
+\begin_layout Description
+Origin spitz, 2 January 2020
+\end_layout
+
+\begin_layout Subsection*
 lyx-quit
 \end_layout
 
@@ -6457,6 +6560,70 @@ If absent or "default", then the default output format of the document is used.
 
 \begin_layout Description
 Origin rkh, 18 April 2018
+\end_layout
+
+\begin_layout Subsection*
+master-buffer-forall
+\end_layout
+
+\begin_layout Description
+Action Applies a command to a buffer and all it children, starting from the master.
+\end_layout
+
+\begin_layout Description
+Syntax master-buffer-forall <LFUN-COMMAND>
+\end_layout
+
+\begin_layout Description
+Params <LFUN-COMMAND>: The command to be applied to the buffers.
+\end_layout
+
+\begin_layout Description
+Sample Close all Notes in buffers:
+\begin_inset Newline newline
+\end_inset
+
+	       master-buffer-forall inset-forall Note inset-toggle close
+\begin_inset Newline newline
+\end_inset
+
+	       Toggle change tracking on buffers:
+\begin_inset Newline newline
+\end_inset
+
+	       master-buffer-forall changes-track
+\begin_inset Newline newline
+\end_inset
+
+	       Toggle read-only for buffers:
+\begin_inset Newline newline
+\end_inset
+
+	       master-buffer-forall buffer-toggle-read-only
+\begin_inset Newline newline
+\end_inset
+
+	       Show statistics for individual buffers:
+\begin_inset Newline newline
+\end_inset
+
+	       master-buffer-forall statistics
+\begin_inset Newline newline
+\end_inset
+
+	       Activate the branch named "Solutions" in buffers:
+\begin_inset Newline newline
+\end_inset
+
+	       master-buffer-forall branch-activate Solutions
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Origin spitz, 31 Dec 2019
 \end_layout
 
 \begin_layout Subsection*
@@ -6553,6 +6720,34 @@ Params <NAME>: *|standard|extra|table|math|mathmacrotemplate| minibuffer|review|
 
 \begin_layout Description
 Origin daniel, 12 July 2016
+\end_layout
+
+\begin_layout Subsection*
+toolbar-set
+\end_layout
+
+\begin_layout Description
+Action Sets visibility of a given toolbar to on, off, or auto.
+\end_layout
+
+\begin_layout Description
+Notion Skipping "auto" when allowauto is false.
+\end_layout
+
+\begin_layout Description
+Syntax toolbar-set <NAME> [on|off|auto]
+\end_layout
+
+\begin_layout Description
+Params <NAME>: standard|extra|table|math|mathmacrotemplate|
+\begin_inset Newline newline
+\end_inset
+
+		       minibuffer|review|view/update|math_panels|vcs| 		       view-others|update-others
+\end_layout
+
+\begin_layout Description
+Origin spitz, 17 Dec 2020
 \end_layout
 
 \begin_layout Subsection*
@@ -6709,26 +6904,6 @@ Origin Abdel, 21 Oct 2006
 
 \begin_layout Section
 System Functions (Preferences, LyX Server etc.)
-\end_layout
-
-\begin_layout Subsection*
-bidi
-\end_layout
-
-\begin_layout Description
-Action Helper function for bidirectional toolbar icons
-\end_layout
-
-\begin_layout Description
-Notion In a text, the function is marked as `unknown' when the current direction does not correspond to DIRECTION (ltr or rtl). Otherwise the function behaves exactly as ACTION. The result is that ACTION will be associated to a different icon depending on text direction.
-\end_layout
-
-\begin_layout Description
-Syntax bidi <DIRECTION> <ACTION>
-\end_layout
-
-\begin_layout Description
-Origin JMarc, 21 July 2019
 \end_layout
 
 \begin_layout Subsection*
@@ -7174,7 +7349,7 @@ set-color
 \end_layout
 
 \begin_layout Description
-Action Set the given LyX color to the color defined by the X11 name given.
+Action Set the given LyX color to the color defined by the X11 name given, and optionally a specific color for dark mode.
 \end_layout
 
 \begin_layout Description
@@ -7182,7 +7357,7 @@ Notion A new color entry is created if the color is unknown. Color names can be 
 \end_layout
 
 \begin_layout Description
-Syntax set-color <LYX_NAME> <X11_NAME>
+Syntax set-color <LYX_NAME> <X11_NAME> [<X11_DARKNAME>]
 \end_layout
 
 \begin_layout Description
@@ -7567,6 +7742,26 @@ Notion Automatically replace the currently selected text. Depends on lyxrc setti
 
 \begin_layout Description
 Syntax self-insert <STRING>
+\end_layout
+
+\begin_layout Subsection*
+window-raise
+\end_layout
+
+\begin_layout Description
+Action Raises the LyX window.
+\end_layout
+
+\begin_layout Description
+Notion Brings the LyX window to the front. Such behavior is allowed on Windows only when no other application has focus. This action is used when LyX is in single instance mode.
+\end_layout
+
+\begin_layout Description
+Syntax window-raise
+\end_layout
+
+\begin_layout Description
+Origin forenr, 21 Apr 2020
 \end_layout
 
 \end_body

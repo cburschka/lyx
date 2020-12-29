@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 600
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -49,6 +49,9 @@
 \AtBeginDocument{\setdefaultlanguage[numerals=maghrib]{arabic}} %%%% without this line nomenclature list not appear in pdf.
 %\renewcommand{\nomname}{المصطلحات}%% used arabic title for nomname
 \newcommand\lettergroup[1]{} % without this line "unknown english letters" appear in the index list in pdf.
+% Added by lyx2lyx
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
 \end_preamble
 \options refpage,intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
 \use_default_options false
@@ -56,11 +59,11 @@
 customHeadersFooters
 enumitem
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language arabic_arabi
 \language_package default
 \inputencoding utf8
-\fontencoding global
+\fontencoding auto
 \font_roman "lmodern" "Scheherazade"
 \font_sans "lmss" "Scheherazade"
 \font_typewriter "lmtt" "Scheherazade"
@@ -68,7 +71,9 @@ enumitem
 \font_default_family default
 \use_non_tex_fonts true
 \font_sc false
-\font_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -128,14 +133,15 @@ enumitem
 \filename_suffix 0
 \color #aa55ff
 \end_branch
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
 \end_index
 \secnumdepth 3
 \tocdepth 2
-\paragraph_separation skip
-\defskip medskip
+\paragraph_separation indent
+\paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style french
@@ -144,6 +150,7 @@ enumitem
 \papersides 2
 \paperpagestyle default
 \tracking_changes false
+\postpone_fragile_content false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0

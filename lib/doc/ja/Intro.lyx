@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 574
+\lyxformat 600
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -29,7 +29,7 @@
 \begin_modules
 ruby
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language japanese
 \language_package auto
 \inputencoding utf8
@@ -41,7 +41,9 @@ ruby
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc true
-\font_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -68,7 +70,7 @@ ruby
 \pdf_backref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "unicode=false, linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
-\papersize a4paper
+\papersize a4
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
@@ -90,6 +92,7 @@ ruby
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \index 索引
 \shortcut idx
 \color #008000
@@ -107,6 +110,7 @@ ruby
 \paperpagestyle default
 \tablestyle default
 \tracking_changes false
+\postpone_fragile_content false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
@@ -2149,7 +2153,7 @@ literal "false"
 や目次も完全には表示されません．脚注を開くには
 \begin_inset Graphics
 	filename clipart/footnote.png
-	height 14pt
+	special height=14pt
 	rotateOrigin centerBaseline
 
 \end_inset
@@ -2175,7 +2179,7 @@ literal "false"
 は，次のような明るい灰色の箱で表されます
 \begin_inset Graphics
 	filename clipart/reference.png
-	height 12pt
+	special height=12pt
 
 \end_inset
 
