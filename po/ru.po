@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-12-29 12:04-0500\n"
-"PO-Revision-Date: 2020-12-18 10:44+0200\n"
+"PO-Revision-Date: 2020-12-29 23:31+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -3540,9 +3540,8 @@ msgid "Lo&ngest label"
 msgstr "Самая длин&ная метка"
 
 #: src/frontends/qt/ui/ParagraphUi.ui:201
-#, fuzzy
 msgid "&Do not indent paragraph"
-msgstr "&Делать отступ в начале абзаца"
+msgstr "Не делать отступ в начале абзаца"
 
 #: src/frontends/qt/ui/PhantomUi.ui:47
 msgid "Horizontal and vertical space of the phantom content"
@@ -3984,15 +3983,14 @@ msgstr ""
 "Редактировать математические макросы со списком параметров (как в LyX < 1.6)"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:90
-#, fuzzy
 msgid ""
 "If this is checked, change tracking markup will not be resolved on copy/"
 "paste operations and when moving content from/to insets if change tracking "
 "is deactivated."
 msgstr ""
-"Если этот флажок установлен, то удалённый и добавленный текст в режиме "
-"отслеживания изменений будет сохраняться помеченным при выполнении операций "
-"копирования/вставки и при перемещении содержимого во вставки / из вставок."
+"Если этот флажок установлен, то удалённый и добавленный текст будет "
+"сохраняться помеченным при его копировании/вставке и при перемещении "
+"содержимого во вставки / из вставок при отключенном отслеживании изменений."
 
 #: src/frontends/qt/ui/PrefEditUi.ui:93
 msgid "&Keep change tracking markup on copy and paste"
@@ -19707,9 +19705,8 @@ msgid "End Editing Externally..."
 msgstr "Завершить внешнее редактирование..."
 
 #: lib/ui/stdcontext.inc:360
-#, fuzzy
 msgid "Split Inset|t"
-msgstr "Развернуть вставку|Р"
+msgstr "Разделить вставку|д"
 
 #: lib/ui/stdcontext.inc:362
 msgid "Jump Back to Saved Bookmark|B"
@@ -26369,9 +26366,8 @@ msgid "PDF (lower resolution)"
 msgstr "PDF (низкое разрешение)"
 
 #: lib/configure.py:754
-#, fuzzy
 msgid "PDF (DocBook)"
-msgstr "PDF (docbook)"
+msgstr "PDF (DocBook)"
 
 #: lib/configure.py:759
 msgid "DVI"
@@ -28032,19 +28028,16 @@ msgid "LaTeX text"
 msgstr "текст LaTeX"
 
 #: src/Color.cpp:258
-#, fuzzy
 msgid "Text label 1"
-msgstr "метка рубрики"
+msgstr "метка текста 1"
 
 #: src/Color.cpp:259
-#, fuzzy
 msgid "Text label 2"
-msgstr "метка рубрики"
+msgstr "метка текста 2"
 
 #: src/Color.cpp:260
-#, fuzzy
 msgid "Text label 3"
-msgstr "метка рубрики"
+msgstr "метка текста 3"
 
 #: src/Color.cpp:261
 msgid "inline completion"
@@ -29127,11 +29120,12 @@ msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Создаётся каталог  %1$s"
 
 #: src/LyX.cpp:1106
-#, fuzzy
 msgid ""
 "Failed to create directory. Perhaps wrong -userdir option?\n"
 "Exiting."
-msgstr "Ошибка при создании каталога. Завершение работы."
+msgstr ""
+"Ошибка при создании каталога. Возможно неверный параметр -userdir?\n"
+"Завершение работы."
 
 #: src/LyX.cpp:1179
 msgid "List of supported debug flags:"
@@ -30211,7 +30205,7 @@ msgstr "Обозначения"
 
 #: src/VCBackend.cpp:64
 msgid "Perhaps the RCS package is not installed on your system?"
-msgstr ""
+msgstr "Возможно в системе не установлен пакет RCS?"
 
 #: src/VCBackend.cpp:65 src/VCBackend.cpp:874 src/VCBackend.cpp:879
 #: src/VCBackend.cpp:928 src/VCBackend.cpp:987 src/VCBackend.cpp:1046
@@ -30870,9 +30864,8 @@ msgid "Opening help file %1$s..."
 msgstr "Открываем файл помощи %1$s..."
 
 #: src/frontends/qt/GuiApplication.cpp:1814
-#, fuzzy
 msgid "Syntax: set-color <lyx_name> <x11_name> <x11_darkname>"
-msgstr "Синтаксис: set-color <lyx_name> <x11_name>"
+msgstr "Синтаксис: set-color <lyx_name> <x11_name> <x11_darkname>"
 
 #: src/frontends/qt/GuiApplication.cpp:1834
 #, c-format
@@ -33686,9 +33679,9 @@ msgid "auto"
 msgstr "автоматически"
 
 #: src/frontends/qt/GuiToolbar.cpp:623
-#, fuzzy, c-format
+#, c-format
 msgid "Toolbar \"%1$s\" does not support state \"auto\""
-msgstr "Состояние панели \"%1$s\" установлено в %2$s"
+msgstr "Панель \"%1$s\" не поддерживает состояние \"Автоматически\""
 
 #: src/frontends/qt/GuiToolbar.cpp:630 src/insets/InsetBranch.cpp:78
 #: src/insets/InsetBranch.cpp:81
@@ -33812,12 +33805,12 @@ msgstr "Недопустимый аргумент для master-buffer-forall"
 
 #: src/frontends/qt/GuiView.cpp:2126
 msgid "Function toolbar-set requires two arguments!"
-msgstr ""
+msgstr "Для функции toolbar-set нужно задать 2 аргумента!"
 
 #: src/frontends/qt/GuiView.cpp:2133
 #, c-format
 msgid "Invalid argument \"%1$s\" to function toolbar-set!"
-msgstr ""
+msgstr "Неверный аргумент \"%1$s\" для функции toolbar-set!"
 
 #: src/frontends/qt/GuiView.cpp:2149 src/frontends/qt/GuiView.cpp:2162
 #: src/frontends/qt/GuiView.cpp:2179
@@ -34470,18 +34463,16 @@ msgid "Open Outliner..."
 msgstr "Показать на панели навигации..."
 
 #: src/frontends/qt/Menus.cpp:1422
-#, fuzzy
 msgid "[[Toolbar]]On|O"
-msgstr "Рецензирование"
+msgstr "Вкл.|В"
 
 #: src/frontends/qt/Menus.cpp:1424
-#, fuzzy
 msgid "[[Toolbar]]Off|f"
-msgstr "Рецензирование"
+msgstr "Выкл.|ы"
 
 #: src/frontends/qt/Menus.cpp:1426
 msgid "[[Toolbar]]Automatic|A"
-msgstr ""
+msgstr "Автоматически|А"
 
 #: src/frontends/qt/Menus.cpp:1438
 msgid "Other Toolbars"
