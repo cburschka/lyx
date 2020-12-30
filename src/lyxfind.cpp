@@ -51,6 +51,10 @@
 
 #include <map>
 #include <regex>
+#include <QtCore>	// sets QT_VERSION
+#if (QT_VERSION >= 0x050000)
+#include <QRegularExpression>
+#endif
 
 using namespace std;
 using namespace lyx::support;
@@ -793,22 +797,35 @@ bool regex_replace(string const & s, string & t, string const & searchstr,
  ** @param unmatched
  ** Number of open braces that must remain open at the end for the verification to succeed.
  **/
-bool braces_match(string::const_iterator const & beg,
-		  string::const_iterator const & end,
+#if (QT_VERSION >= 0x050000)
+bool braces_match(QString const & beg,
 		  int unmatched = 0)
+#else
+bool braces_match(string const & beg,
+		int unmatched = 0)
+#endif
 {
 	int open_pars = 0;
-	string::const_iterator it = beg;
-	LYXERR(Debug::FIND, "Checking " << unmatched << " unmatched braces in '" << string(beg, end) << "'");
-	for (; it != end; ++it) {
+#if (QT_VERSION >= 0x050000)
+	LYXERR(Debug::FIND, "Checking " << unmatched << " unmatched braces in '" << beg.toStdString() << "'");
+#else
+	LYXERR(Debug::FIND, "Checking " << unmatched << " unmatched braces in '" << beg << "'");
+#endif
+	int lastidx = beg.size();
+	for (int i=0; i < lastidx; ++i) {
 		// Skip escaped braces in the count
-		if (*it == '\\') {
-			++it;
-			if (it == end)
+#if (QT_VERSION >= 0x050000)
+		QChar c = beg.at(i);
+#else
+		char c = beg.at(i);
+#endif
+		if (c == '\\') {
+			++i;
+			if (i >= lastidx)
 				break;
-		} else if (*it == '{') {
+		} else if (c == '{') {
 			++open_pars;
-		} else if (*it == '}') {
+		} else if (c == '}') {
 			if (open_pars == 0) {
 				LYXERR(Debug::FIND, "Found unmatched closed brace");
 				return false;
@@ -837,6 +854,7 @@ public:
 
 /** The class performing a match between a position in the document and the FindAdvOptions.
  **/
+
 class MatchStringAdv {
 public:
 	MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & opt);
@@ -852,6 +870,10 @@ public:
 	 ** The length of the matching text, or zero if no match was found.
 	 **/
 	MatchResult operator()(DocIterator const & cur, int len = -1, bool at_begin = true) const;
+#if (QT_VERSION >= 0x050000)
+	bool regexIsValid;
+	string regexError;
+#endif
 
 public:
 	/// buffer
@@ -882,9 +904,14 @@ private:
 	// normalized string to search
 	string par_as_string;
 	// regular expression to use for searching
+	// regexp2 is same as regexp, but prefixed with a ".*?"
+#if (QT_VERSION >= 0x050000)
+	QRegularExpression regexp;
+	QRegularExpression regexp2;
+#else
 	regex regexp;
-	// same as regexp, but prefixed with a ".*?"
 	regex regexp2;
+#endif
 	// leading format material as string
 	string lead_as_string;
 	// par_as_string after removal of lead_as_string
@@ -2876,9 +2903,9 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 					lng -= 2;
 					open_braces++;
 				}
-	else
+				else
 					break;
-}
+			}
 			if (lng < par_as_string.size())
 				par_as_string = par_as_string.substr(0,lng);
 			/*
@@ -2917,14 +2944,59 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 		}
 		LYXERR(Debug::FIND, "Setting regexp to : '" << regexp_str << "'");
 		LYXERR(Debug::FIND, "Setting regexp2 to: '" << regexp2_str << "'");
+#if (QT_VERSION >= 0x050000)
+		QRegularExpression::PatternOptions popts;
 		if (! opt.casesensitive) {
-			regexp = regex(regexp_str, std::regex_constants::icase);
-			regexp2 = regex(regexp2_str, std::regex_constants::icase);
+			popts = QRegularExpression::CaseInsensitiveOption;
 		}
 		else {
+			popts = QRegularExpression::NoPatternOption;
+		}
+		regexp = QRegularExpression(QString::fromStdString(regexp_str), popts);
+		regexp2 = QRegularExpression(QString::fromStdString(regexp2_str), popts);
+		regexError = "";
+		if (regexp.isValid() && regexp2.isValid()) {
+			regexIsValid = true;
+			// Check '{', '}' pairs inside the regex
+			int balanced = 0;
+			int skip = 1;
+			for (unsigned i = 0; i < par_as_string.size(); i+= skip) {
+				char c = par_as_string[i];
+				if (c == '\\') {
+					skip = 2;
+					continue;
+				}
+				if (c == '{')
+					balanced++;
+				else if (c == '}') {
+					balanced--;
+					if (balanced < 0)
+						break;
+				}
+				skip = 1;
+			}
+			if (balanced != 0) {
+				regexIsValid = false;
+				regexError = "Unbalanced curly brackets in regexp \"" + regexp_str + "\"";
+			}
+		}
+		else {
+			regexIsValid = false;
+			if (!regexp.isValid())
+				regexError += "Invalid regexp \"" + regexp_str + "\", error = " + regexp.errorString().toStdString();
+			if (!regexp2.isValid())
+				regexError += "Invalid regexp2 \"" + regexp2_str + "\", error = " + regexp2.errorString().toStdString();
+		}
+#else
+		if (opt.casesensitive) {
 			regexp = regex(regexp_str);
 			regexp2 = regex(regexp2_str);
 		}
+		else {
+			regexp = regex(regexp_str, std::regex_constants::icase);
+			regexp2 = regex(regexp2_str, std::regex_constants::icase);
+		}
+#endif
 	}
 }
 
@@ -2934,23 +3006,29 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 // \&  ==> 1
 // --- ==> 1
 // \\[a-zA-Z]+ ==> 1
+#if (QT_VERSION >= 0x050000)
+static int computeSize(QStringRef s, int len)
+#define isLyxAlpha(arg) arg.isLetter()
+#else
 static int computeSize(string s, int len)
+#define isLyxAlpha(arg) isalpha(arg)
+#endif
 {
 	if (len == 0)
 		return 0;
 	int skip = 1;
 	int count = 0;
 	for (int i = 0; i < len; i += skip, count++) {
-		if (s[i] == '\\') {
+		if (s.at(i) == '\\') {
 			skip = 2;
-			if (isalpha(s[i+1])) {
+			if (isLyxAlpha(s.at(i+1))) {
 				for (int j = 2;  i+j < len; j++) {
-					if (! isalpha(s[i+j])) {
-						if (s[i+j] == ' ')
+					if (isLyxAlpha(s.at(i+j))) {
+						if (s.at(i+j) == ' ')
 							skip++;
-						else if ((s[i+j] == '{') && s[i+j+1] == '}')
+						else if ((s.at(i+j) == '{') && s.at(i+j+1) == '}')
 							skip += 2;
-						else if ((s[i+j] == '{') && (i + j + 1 >= len))
+						else if ((s.at(i+j) == '{') && (i + j + 1 >= len))
 							skip++;
 						break;
 					}
@@ -2958,15 +3036,15 @@ static int computeSize(string s, int len)
 				}
 			}
 		}
-		else if (s[i] == '{') {
-			if (s[i+1] == '}')
+		else if (s.at(i) == '{') {
+			if (s.at(i+1) == '}')
 				skip = 2;
 			else
 				skip = 3;
 		}
-		else if (s[i] == '-') {
-			if (s[i+1] == '-') {
-				if (s[i+2] == '-')
+		else if (s.at(i) == '-') {
+			if (s.at(i+1) == '-') {
+				if (s.at(i+2) == '-')
 					skip = 3;
 				else
 					skip = 2;
@@ -3007,6 +3085,24 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 
 	if (use_regexp) {
 		LYXERR(Debug::FIND, "Searching in regexp mode: at_begin=" << at_begin);
+#if (QT_VERSION >= 0x050000)
+		QString qstr = QString::fromStdString(str);
+		QRegularExpression const *p_regexp;
+		QRegularExpression::MatchType flags = QRegularExpression::NormalMatch;
+		if (at_begin) {
+			p_regexp = &regexp;
+		} else {
+			p_regexp = &regexp2;
+		}
+		QRegularExpressionMatch match = p_regexp->match(qstr, 0, flags);
+		if (!match.hasMatch())
+			return mres;
+		// Check braces on segments that matched all (.*?) subexpressions,
+		// except the last "padding" one inserted by lyx.
+		for (int i = 1; i < match.lastCapturedIndex(); ++i)
+			if (!braces_match(match.captured(i), open_braces))
+				return mres;
+#else
 		regex const *p_regexp;
 		regex_constants::match_flag_type flags;
 		if (at_begin) {
@@ -3020,13 +3116,12 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		if (re_it == sregex_iterator())
 			return mres;
 		match_results<string::const_iterator> const & m = *re_it;
-
 		// Check braces on segments that matched all (.*?) subexpressions,
 		// except the last "padding" one inserted by lyx.
 		for (size_t i = 1; i < m.size() - 1; ++i)
-			if (!braces_match(m[i].first, m[i].second, open_braces))
+			if (!braces_match(m[i], open_braces))
 				return mres;
-
+#endif
 		// Exclude from the returned match length any length
 		// due to close wildcards added at end of regexp
 		// and also the length of the leading (e.g. '\emph{}')
@@ -3034,19 +3129,40 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		// Whole found string, including the leading: m[0].second - m[0].first
 		// Size of the leading string: m[1].second - m[1].first
 		int leadingsize = 0;
+		int result;
+		size_t pos;
+#if (QT_VERSION >= 0x050000)
+		if (match.lastCapturedIndex() > 0)
+			leadingsize = match.capturedEnd(1) - match.capturedStart(1);
+
+		int lastidx = match.lastCapturedIndex();
+		for (int i = 0; i <= lastidx; i++) {
+			LYXERR(Debug::FIND, "Match " << i << " is " << match.capturedEnd(i) - match.capturedStart(i) << " long");
+		}
+		if (close_wildcards == 0)
+			result = match.capturedEnd(0) - match.capturedStart(0);
+		else
+			result =  match.capturedStart(lastidx + 1 - close_wildcards) - match.capturedStart(0);
+
+		pos = match.capturedStart(0);
+		// Ignore last closing characters
+		while (result > 0) {
+			if (qstr.at(pos+result-1) == '}')
+				--result;
+			else
+				break;
+		}
+#else
 		if (m.size() > 1)
 			leadingsize = m[1].second - m[1].first;
-		int result;
 		for (size_t i = 0; i < m.size(); i++) {
 			LYXERR(Debug::FIND, "Match " << i << " is " << m[i].second - m[i].first << " long");
 		}
 		if (close_wildcards == 0)
 			result = m[0].second - m[0].first;
-
 		else
 			result =  m[m.size() - close_wildcards].first - m[0].first;
-
-		size_t pos = m.position(size_t(0));
+		pos = m.position(size_t(0));
 		// Ignore last closing characters
 		while (result > 0) {
 			if (str[pos+result-1] == '}')
@@ -3054,12 +3170,18 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 			else
 				break;
 		}
+#endif
 		if (result > leadingsize)
 			result -= leadingsize;
 		else
 			result = 0;
+#if (QT_VERSION >= 0x050000)
+		mres.match_len = computeSize(QStringRef(&qstr, pos+leadingsize,result), result);
+		mres.match2end = qstr.size() - pos - leadingsize;
+#else
 		mres.match_len = computeSize(str.substr(pos+leadingsize,result), result);
 		mres.match2end = str.size() - pos - leadingsize;
+#endif
 		mres.pos = pos+leadingsize;
 		return mres;
 	}
@@ -3773,6 +3895,12 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 
 	try {
 		MatchStringAdv matchAdv(bv->buffer(), opt);
+#if (QT_VERSION >= 0x050000)
+		if (!matchAdv.regexIsValid) {
+			bv->message(lyx::from_utf8(matchAdv.regexError));
+			return(false);
+		}
+#endif
 		int length = bv->cursor().selectionEnd().pos() - bv->cursor().selectionBegin().pos();
 		if (length > 0)
 			bv->putSelectionAt(bv->cursor().selectionBegin(), length, !opt.forward);
