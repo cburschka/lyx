@@ -2947,7 +2947,8 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 		|| lyxrc_orig.roman_font_foundry != lyxrc_new.roman_font_foundry
 		|| lyxrc_orig.sans_font_foundry != lyxrc_new.sans_font_foundry
 		|| lyxrc_orig.use_scalable_fonts != lyxrc_new.use_scalable_fonts
-		|| lyxrc_orig.font_sizes != lyxrc_new.font_sizes
+		|| !std::equal(std::begin(lyxrc_orig.font_sizes), std::end(lyxrc_orig.font_sizes),
+			       std::begin(lyxrc_new.font_sizes))
 		|| lyxrc_orig.typewriter_font_foundry != lyxrc_new.typewriter_font_foundry
 		|| lyxrc_orig.defaultZoom != lyxrc_new.defaultZoom) {
 			dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
