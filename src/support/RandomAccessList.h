@@ -296,7 +296,7 @@ public:
 
 	const_iterator iterator_at(size_t i) const
 	{
-		return (i == size()) ? end() : iterCont_[i];
+		return (i == size()) ? end() : const_iterator(iterCont_[i]);
 	}
 
 	iterator iterator_at(size_t i)

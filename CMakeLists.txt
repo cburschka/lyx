@@ -1069,6 +1069,13 @@ if(MSVC)
 		set(CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL} /Zc:wchar_t-")
 	endif()
 
+	if (MSVC_VERSION GREATER_EQUAL 1914)
+		# Ensure the __cplusplus macro is set to a sensible value.
+		set(CMAKE_CXX_FLAGS_DEBUG      "${CMAKE_CXX_FLAGS_DEBUG} /Zc:__cplusplus")
+		set(CMAKE_CXX_FLAGS_RELEASE    "${CMAKE_CXX_FLAGS_RELEASE} /Zc:__cplusplus")
+		set(CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL} /Zc:__cplusplus")
+	endif()
+
 	message(STATUS "----- Warning level      : ${CMAKE_CXX_WARNING_LEVEL}  ${WARNING_LEVEL_MESSAGE}")
 	message(STATUS "----- Warnings as errors : ${MSVC_W_ERROR}")
 	message(STATUS "----- Warnings disabled  : ${MSVC_W_DISABLE}")
