@@ -1064,6 +1064,8 @@ class KeyInfo {
     noContent,
     /* Char, like \backslash */
     isChar,
+    /* remove starting backslash */
+    isText,
     /* \part, \section*, ... */
     isSectioning,
     /* title, author etc */
@@ -1719,6 +1721,7 @@ void LatexInfo::buildEntries(bool isPatternString)
   bool math_end_waiting = false;
   size_t math_pos = 10000;
   string math_end;
+  static vector<string> usedText = vector<string>();
 
   interval_.removeAccents();
 
@@ -1768,6 +1771,11 @@ void LatexInfo::buildEntries(bool isPatternString)
   }
   // Ignore language if there is math somewhere in pattern-string
   if (isPatternString) {
+    for (auto s: usedText) {
+      // Remove entries created in previous search runs
+      keys.erase(s);
+    }
+    usedText = vector<string>();
     if (! mi.empty()) {
       // Disable language
       keys["foreignlanguage"].disabled = true;
@@ -1837,12 +1845,15 @@ void LatexInfo::buildEntries(bool isPatternString)
       }
       if (keys.find(key) == keys.end()) {
         found = KeyInfo(KeyInfo::isStandard, 0, true);
+        LYXERR(Debug::INFO, "Undefined key " << key << " ==> will be used as text");
+        found = KeyInfo(KeyInfo::isText, 0, false);
         if (isPatternString) {
           found.keytype = KeyInfo::isChar;
           found.disabled = false;
           found.used = true;
         }
         keys[key] = found;
+        usedText.push_back(key);
       }
       else
         found = keys[key];
@@ -2033,7 +2044,7 @@ void LatexInfo::buildEntries(bool isPatternString)
             // Disable this key, treate it as standard
             found.keytype = KeyInfo::isStandard;
             found.disabled = true;
-            if ((codeEnd == interval_.par.length()) &&
+            if ((codeEnd +1 >= interval_.par.length()) &&
                 (found._tokenstart == codeStart)) {
               // trickery, because the code inset starts
               // with \selectlanguage ...
@@ -2117,6 +2128,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("textasciicircum|textasciitilde", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   makeKey("textasciiacute|texemdash",       KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   makeKey("dots|ldots",                     KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+  makeKey("guillemotright|guillemotleft",   KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   // Spaces
   makeKey("quad|qquad|hfill|dotfill",               KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   makeKey("textvisiblespace|nobreakspace",          KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
@@ -2169,6 +2181,7 @@ void LatexInfo::buildKeys(bool isPatternString)
 
   // Survives, like known character
   // makeKey("lyx|LyX|latex|LaTeX|latexe|LaTeXe|tex|TeX", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+  makeKey("tableofcontents", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   makeKey("item|listitem", KeyInfo(KeyInfo::isList, 1, false), isPatternString);
 
   makeKey("begin|end", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
@@ -2357,6 +2370,9 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       interval_.closes[0] = -1;
       break;
     }
+    case KeyInfo::isText:
+      interval_.addIntervall(actual._tokenstart, actual._tokenstart+1);
+      break;
     case KeyInfo::noContent: {          /* char like "\hspace{2cm}" */
       if (actual.disabled)
         interval_.addIntervall(actual._tokenstart, actual._dataEnd);
@@ -2642,8 +2658,10 @@ int LatexInfo::process(ostringstream & os, KeyInfo const & actual )
   int output_end;
   if (actual._dataEnd < end)
     output_end = interval_.nextNotIgnored(actual._dataEnd);
-  else
+  else if (interval_.par.size() > (size_t) end)
     output_end = interval_.nextNotIgnored(end);
+  else
+    output_end = interval_.par.size();
   if ((actual.keytype == KeyInfo::isMain) && actual.disabled) {
     interval_.addIntervall(actual._tokenstart, actual._tokenstart+actual._tokensize);
   }
@@ -2945,12 +2963,10 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 		LYXERR(Debug::FIND, "Setting regexp to : '" << regexp_str << "'");
 		LYXERR(Debug::FIND, "Setting regexp2 to: '" << regexp2_str << "'");
 #if (QT_VERSION >= 0x050000)
-		QRegularExpression::PatternOptions popts;
+		// Handle \w properly
+		QRegularExpression::PatternOptions popts = QRegularExpression::UseUnicodePropertiesOption | QRegularExpression::MultilineOption;
 		if (! opt.casesensitive) {
-			popts = QRegularExpression::CaseInsensitiveOption;
-		}
-		else {
-			popts = QRegularExpression::NoPatternOption;
+			popts |= QRegularExpression::CaseInsensitiveOption;
 		}
 		regexp = QRegularExpression(QString::fromStdString(regexp_str), popts);
 		regexp2 = QRegularExpression(QString::fromStdString(regexp2_str), popts);
@@ -3021,15 +3037,17 @@ static int computeSize(string s, int len)
 	for (int i = 0; i < len; i += skip, count++) {
 		if (s.at(i) == '\\') {
 			skip = 2;
-			if (isLyxAlpha(s.at(i+1))) {
+			if (i + 1 < len && isLyxAlpha(s.at(i+1))) {
 				for (int j = 2;  i+j < len; j++) {
-					if (isLyxAlpha(s.at(i+j))) {
+					if (! isLyxAlpha(s.at(i+j))) {
 						if (s.at(i+j) == ' ')
 							skip++;
-						else if ((s.at(i+j) == '{') && s.at(i+j+1) == '}')
-							skip += 2;
-						else if ((s.at(i+j) == '{') && (i + j + 1 >= len))
-							skip++;
+						else if (s.at(i+j) == '{') {
+							if (i+j+1 < len && s.at(i+j+1) == '}')
+								skip += 2;
+							else if (i + j + 1 >= len)
+								skip++;
+						}
 						break;
 					}
 					skip++;
@@ -3037,14 +3055,14 @@ static int computeSize(string s, int len)
 			}
 		}
 		else if (s.at(i) == '{') {
-			if (s.at(i+1) == '}')
+			if (i + 1 < len && s.at(i+1) == '}')
 				skip = 2;
 			else
 				skip = 3;
 		}
 		else if (s.at(i) == '-') {
-			if (s.at(i+1) == '-') {
-				if (s.at(i+2) == '-')
+			if (i+1 < len && s.at(i+1) == '-') {
+				if (i + 2 < len && s.at(i+2) == '-')
 					skip = 3;
 				else
 					skip = 2;
