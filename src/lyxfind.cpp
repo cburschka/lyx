@@ -51,9 +51,17 @@
 
 #include <map>
 #include <regex>
-#include <QtCore>	// sets QT_VERSION
-#if (QT_VERSION >= 0x050000)
-#include <QRegularExpression>
+#define USE_QT_FOR_SEARCH
+#if defined(USE_QT_FOR_SEARCH)
+	#include <QtCore>	// sets QT_VERSION
+	#if (QT_VERSION >= 0x050000)
+		#include <QRegularExpression>
+		#define QTSEARCH 1
+	#else
+		#define QTSEARCH 0
+	#endif
+#else
+	#define QTSEARCH 0
 #endif
 
 using namespace std;
@@ -797,7 +805,7 @@ bool regex_replace(string const & s, string & t, string const & searchstr,
  ** @param unmatched
  ** Number of open braces that must remain open at the end for the verification to succeed.
  **/
-#if (QT_VERSION >= 0x050000)
+#if QTSEARCH
 bool braces_match(QString const & beg,
 		  int unmatched = 0)
 #else
@@ -806,7 +814,7 @@ bool braces_match(string const & beg,
 #endif
 {
 	int open_pars = 0;
-#if (QT_VERSION >= 0x050000)
+#if QTSEARCH
 	LYXERR(Debug::FIND, "Checking " << unmatched << " unmatched braces in '" << beg.toStdString() << "'");
 #else
 	LYXERR(Debug::FIND, "Checking " << unmatched << " unmatched braces in '" << beg << "'");
@@ -814,7 +822,7 @@ bool braces_match(string const & beg,
 	int lastidx = beg.size();
 	for (int i=0; i < lastidx; ++i) {
 		// Skip escaped braces in the count
-#if (QT_VERSION >= 0x050000)
+#if QTSEARCH
 		QChar c = beg.at(i);
 #else
 		char c = beg.at(i);
@@ -847,9 +855,11 @@ bool braces_match(string const & beg,
 class MatchResult {
 public:
 	int match_len;
+	int match_prefix;
 	int match2end;
 	int pos;
-	MatchResult(): match_len(0),match2end(0), pos(0) {};
+	int leadsize;
+	MatchResult(): match_len(0),match_prefix(0),match2end(0), pos(0),leadsize(0) {};
 };
 
 /** The class performing a match between a position in the document and the FindAdvOptions.
@@ -870,7 +880,7 @@ public:
 	 ** The length of the matching text, or zero if no match was found.
 	 **/
 	MatchResult operator()(DocIterator const & cur, int len = -1, bool at_begin = true) const;
-#if (QT_VERSION >= 0x050000)
+#if QTSEARCH
 	bool regexIsValid;
 	string regexError;
 #endif
@@ -905,7 +915,7 @@ private:
 	string par_as_string;
 	// regular expression to use for searching
 	// regexp2 is same as regexp, but prefixed with a ".*?"
-#if (QT_VERSION >= 0x050000)
+#if QTSEARCH
 	QRegularExpression regexp;
 	QRegularExpression regexp2;
 #else
@@ -2372,6 +2382,7 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
     }
     case KeyInfo::isText:
       interval_.addIntervall(actual._tokenstart, actual._tokenstart+1);
+      nextKeyIdx = getNextKey();
       break;
     case KeyInfo::noContent: {          /* char like "\hspace{2cm}" */
       if (actual.disabled)
@@ -2952,17 +2963,17 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 			// TODO: Adapt '\[12345678]' in par_as_string to acount for the first '()
 			// Unfortunately is '\1', '\2', etc not working for strings with extra format
 			// so the convert has no effect in that case
-			for (int i = 8; i > 0; --i) {
+			for (int i = 7; i > 0; --i) {
 				string orig = "\\\\" + std::to_string(i);
-				string dest = "\\" + std::to_string(i+1);
+				string dest = "\\" + std::to_string(i+2);
 				while (regex_replace(par_as_string, par_as_string, orig, dest));
 			}
-			regexp_str = "(" + lead_as_regexp + ")" + par_as_string;
-			regexp2_str = "(" + lead_as_regexp + ").*?" + par_as_string;
+			regexp_str = "(" + lead_as_regexp + ")()" + par_as_string;
+			regexp2_str = "(" + lead_as_regexp + ")(.*?)" + par_as_string;
 		}
 		LYXERR(Debug::FIND, "Setting regexp to : '" << regexp_str << "'");
 		LYXERR(Debug::FIND, "Setting regexp2 to: '" << regexp2_str << "'");
-#if (QT_VERSION >= 0x050000)
+#if QTSEARCH
 		// Handle \w properly
 		QRegularExpression::PatternOptions popts = QRegularExpression::UseUnicodePropertiesOption | QRegularExpression::MultilineOption;
 		if (! opt.casesensitive) {
@@ -3022,7 +3033,7 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 // \&  ==> 1
 // --- ==> 1
 // \\[a-zA-Z]+ ==> 1
-#if (QT_VERSION >= 0x050000)
+#if QTSEARCH
 static int computeSize(QStringRef s, int len)
 #define isLyxAlpha(arg) arg.isLetter()
 #else
@@ -3103,7 +3114,7 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 
 	if (use_regexp) {
 		LYXERR(Debug::FIND, "Searching in regexp mode: at_begin=" << at_begin);
-#if (QT_VERSION >= 0x050000)
+#if QTSEARCH
 		QString qstr = QString::fromStdString(str);
 		QRegularExpression const *p_regexp;
 		QRegularExpression::MatchType flags = QRegularExpression::NormalMatch;
@@ -3117,7 +3128,7 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 			return mres;
 		// Check braces on segments that matched all (.*?) subexpressions,
 		// except the last "padding" one inserted by lyx.
-		for (int i = 1; i < match.lastCapturedIndex(); ++i)
+		for (int i = 3; i < match.lastCapturedIndex(); ++i)
 			if (!braces_match(match.captured(i), open_braces))
 				return mres;
 #else
@@ -3136,7 +3147,7 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		match_results<string::const_iterator> const & m = *re_it;
 		// Check braces on segments that matched all (.*?) subexpressions,
 		// except the last "padding" one inserted by lyx.
-		for (size_t i = 1; i < m.size() - 1; ++i)
+		for (size_t i = 3; i < m.size() - 1; ++i)
 			if (!braces_match(m[i], open_braces))
 				return mres;
 #endif
@@ -3149,10 +3160,10 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		int leadingsize = 0;
 		int result;
 		size_t pos;
-#if (QT_VERSION >= 0x050000)
-		if (match.lastCapturedIndex() > 0)
+#if QTSEARCH
+		if (match.lastCapturedIndex() > 0) {
 			leadingsize = match.capturedEnd(1) - match.capturedStart(1);
-
+		}
 		int lastidx = match.lastCapturedIndex();
 		for (int i = 0; i <= lastidx; i++) {
 			LYXERR(Debug::FIND, "Match " << i << " is " << match.capturedEnd(i) - match.capturedStart(i) << " long");
@@ -3162,17 +3173,11 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		else
 			result =  match.capturedStart(lastidx + 1 - close_wildcards) - match.capturedStart(0);
 
-		pos = match.capturedStart(0);
-		// Ignore last closing characters
-		while (result > 0) {
-			if (qstr.at(pos+result-1) == '}')
-				--result;
-			else
-				break;
-		}
+		pos = match.capturedStart(1);
 #else
-		if (m.size() > 1)
+		if (m.size() > 2) {
 			leadingsize = m[1].second - m[1].first;
+		}
 		for (size_t i = 0; i < m.size(); i++) {
 			LYXERR(Debug::FIND, "Match " << i << " is " << m[i].second - m[i].first << " long");
 		}
@@ -3180,27 +3185,23 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 			result = m[0].second - m[0].first;
 		else
 			result =  m[m.size() - close_wildcards].first - m[0].first;
-		pos = m.position(size_t(0));
-		// Ignore last closing characters
-		while (result > 0) {
-			if (str[pos+result-1] == '}')
-				--result;
-			else
-				break;
-		}
+		pos = m.position(size_t(1));
 #endif
 		if (result > leadingsize)
 			result -= leadingsize;
 		else
 			result = 0;
-#if (QT_VERSION >= 0x050000)
-		mres.match_len = computeSize(QStringRef(&qstr, pos+leadingsize,result), result);
-		mres.match2end = qstr.size() - pos - leadingsize;
+#if QTSEARCH
+		mres.match_prefix = match.capturedEnd(2) - match.capturedStart(2);
+		mres.match_len = computeSize(QStringRef(&qstr, pos+leadingsize,result), result) - mres.match_prefix;
+		mres.match2end = qstr.size() - pos - leadingsize - mres.match_prefix;
 #else
-		mres.match_len = computeSize(str.substr(pos+leadingsize,result), result);
-		mres.match2end = str.size() - pos - leadingsize;
+		mres.match_prefix = = m[2].second - m[2].first;
+		mres.match_len = computeSize(str.substr(pos+leadingsize,result), result) - mres.match_prefix;
+		mres.match2end = str.size() - pos - leadingsize - mres.match_prefix;
 #endif
-		mres.pos = pos+leadingsize;
+		mres.pos = pos+leadingsize + mres.match_prefix;
+		mres.leadsize = leadingsize;
 		return mres;
 	}
 
@@ -3558,6 +3559,20 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 }
 
 
+#if 0
+static void displayMResult(MatchResult &mres)
+{
+  LYXERR0( "pos: " << mres.pos);
+  LYXERR0( "leadsize: " << mres.leadsize);
+  LYXERR0( "match_len: " << mres.match_len);
+  LYXERR0( "match_prefix: " << mres.match_prefix);
+  LYXERR0( "match2end: " << mres.match2end);
+}
+	#define displayMres(s) displayMResult(s);
+#else
+	#define displayMres(s)
+#endif
+
 /// Finds forward
 int findForwardAdv(DocIterator & cur, MatchStringAdv const & match)
 {
@@ -3566,16 +3581,18 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv const & match)
 	while (!theApp()->longOperationCancelled() && cur) {
 		LYXERR(Debug::FIND, "findForwardAdv() cur: " << cur);
 		MatchResult mres = match(cur, -1, false);
+		displayMres(mres)
 		int match_len = mres.match_len;
-		LYXERR(Debug::FIND, "match_len: " << match_len);
 		if ((mres.pos > 100000) || (mres.match2end > 100000) || (match_len > 100000)) {
 			LYXERR(Debug::INFO, "BIG LENGTHS: " << mres.pos << ", " << match_len << ", " << mres.match2end);
 			match_len = 0;
 		}
 		if (match_len > 0) {
 			// Try to find the begin of searched string
-			int increment = mres.pos/2;
-			while (mres.pos > 5 && (increment > 5)) {
+			int increment;
+			increment = mres.match_prefix/2;
+			LYXERR(Debug::FIND, "Set increment to " << increment);
+			while (mres.match_prefix > 1 && (increment > 1)) {
 				DocIterator old_cur = cur;
 				for (int i = 0; i < increment && cur; cur.forwardPos(), i++) {
 				}
@@ -3587,23 +3604,32 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv const & match)
 				}
 				else {
 					MatchResult mres2 = match(cur, -1, false);
+					displayMres(mres2)
 					if ((mres2.match2end < mres.match2end) ||
 					  (mres2.match_len < mres.match_len)) {
 						cur = old_cur;
 						increment /= 2;
 					}
-					else {
+					else if ((mres2.match2end == mres.match2end) && (mres2.match_len == mres.match_len)) {
+						// next part with the same increment as before
 						mres = mres2;
-						increment -= 2;
-						if (increment > mres.pos/2)
-							increment = mres.pos/2;
+						if (increment > mres.match_prefix/2)
+							increment = mres.match_prefix/2;
+					}
+					else {
+						// Something wrong here
+						LYXERR0( "Increment = " << increment << " match_prefix = " << mres.match_prefix);
+						break;
 					}
 				}
 			}
 			int match_len_zero_count = 0;
+			MatchResult mres3;
 			for (int i = 0; !theApp()->longOperationCancelled() && cur; cur.forwardPos()) {
-				if (i++ > 10) {
-					int remaining_len = match(cur, -1, false).match_len;
+				if (i++ > 3) {
+					mres3 = match(cur, -1, false);
+					displayMres(mres3)
+					int remaining_len = mres3.match_len;
 					if (remaining_len <= 0) {
 						// Apparently the searched string is not in the remaining part
 						break;
@@ -3613,26 +3639,29 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv const & match)
 					}
 				}
 				LYXERR(Debug::FIND, "Advancing cur: " << cur);
-				int match_len3 = match(cur, 1).match_len;
+				mres3 = match(cur, 1);
+				displayMres(mres3)
+				int match_len3 = mres3.match_len;
 				if (match_len3 < 0)
 					continue;
-				int match_len2 = match(cur).match_len;
+				mres3 = match(cur);
+				displayMres(mres3)
+				int match_len2 = mres3.match_len;
 				LYXERR(Debug::FIND, "match_len2: " << match_len2);
 				if (match_len2 > 0) {
 					// Sometimes in finalize we understand it wasn't a match
 					// and we need to continue the outest loop
+					LYXERR(Debug::FIND, "Finalizing");
 					int len = findAdvFinalize(cur, match);
 					if (len > 0) {
 						return len;
 					}
 				}
-				if (match_len2 >= 0) {
-					if (match_len2 == 0)
-						match_len_zero_count++;
-					else
-						match_len_zero_count = 0;
-				}
-				else {
+				if (match_len2 > 0)
+					match_len_zero_count = 0;
+				else if (match_len2 == 0)
+					match_len_zero_count++;
+				if (match_len2 < 0) {
 					if (++match_len_zero_count > 3) {
 						LYXERR(Debug::FIND, "match_len2_zero_count: " << match_len_zero_count << ", match_len was " << match_len);
 					}
@@ -3913,7 +3942,7 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 
 	try {
 		MatchStringAdv matchAdv(bv->buffer(), opt);
-#if (QT_VERSION >= 0x050000)
+#if QTSEARCH
 		if (!matchAdv.regexIsValid) {
 			bv->message(lyx::from_utf8(matchAdv.regexError));
 			return(false);
