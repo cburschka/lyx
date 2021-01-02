@@ -281,6 +281,7 @@ dist_rudoc_DATA = \
 	ru/Additional.lyx \
 	ru/Intro.lyx \
 	ru/Math.lyx \
+	ru/Shortcuts.lyx \
 	ru/Tutorial.lyx \
 	ru/UserGuide.lyx
 
