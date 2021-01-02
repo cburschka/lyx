@@ -854,6 +854,11 @@ bool braces_match(string const & beg,
 
 class MatchResult {
 public:
+	enum range {
+		newIsTooFar,
+		newIsBetter,
+                newIsInvalid
+        };
 	int match_len;
 	int match_prefix;
 	int match2end;
@@ -861,6 +866,17 @@ public:
 	int leadsize;
 	MatchResult(): match_len(0),match_prefix(0),match2end(0), pos(0),leadsize(0) {};
 };
+
+static MatchResult::range interpretMatch(MatchResult &oldres, MatchResult &newres)
+{
+  if (newres.match2end < oldres.match2end)
+    return MatchResult::newIsTooFar;
+  if (newres.match_len < oldres.match_len)
+    return MatchResult::newIsTooFar;
+  if ((newres.match_len == oldres.match_len) && (newres.match2end == oldres.match2end))
+    return MatchResult::newIsBetter;
+  return MatchResult::newIsInvalid;
+}
 
 /** The class performing a match between a position in the document and the FindAdvOptions.
  **/
@@ -1074,7 +1090,7 @@ class KeyInfo {
     noContent,
     /* Char, like \backslash */
     isChar,
-    /* remove starting backslash */
+    /* replace starting backslash with '#' */
     isText,
     /* \part, \section*, ... */
     isSectioning,
@@ -1485,9 +1501,9 @@ void Intervall::removeAccents()
       }
       // Remove possibly following space too
       if (par[pos+sub.str(0).size()] == ' ')
-	addIntervall(pos+val.size(), pos + sub.str(0).size()+1);
+        addIntervall(pos+val.size(), pos + sub.str(0).size()+1);
       else
-	addIntervall(pos+val.size(), pos + sub.str(0).size());
+        addIntervall(pos+val.size(), pos + sub.str(0).size());
       for (size_t i = pos+val.size(); i < pos + sub.str(0).size(); i++) {
         // remove traces of any remaining chars
         par[i] = ' ';
@@ -1570,7 +1586,7 @@ class LatexInfo {
 
  public:
  LatexInfo(string const & par, bool isPatternString)
-	 : entidx_(-1), interval_(isPatternString, par)
+         : entidx_(-1), interval_(isPatternString, par)
   {
     buildKeys(isPatternString);
     entries_ = vector<KeyInfo>();
@@ -2004,7 +2020,13 @@ void LatexInfo::buildEntries(bool isPatternString)
           optionalEnd = optend;
         }
         string token = sub.str(5);
-        int closings = found.parenthesiscount;
+        int closings;
+        if (interval_.par[optend] != '{') {
+          closings = 0;
+          found.parenthesiscount = 0;
+        }
+        else
+          closings = found.parenthesiscount;
         if (found.parenthesiscount == 1) {
           found.head = "\\" + key + "{";
         }
@@ -2381,7 +2403,8 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       break;
     }
     case KeyInfo::isText:
-      interval_.addIntervall(actual._tokenstart, actual._tokenstart+1);
+      interval_.par[actual._tokenstart] = '#';
+      //interval_.addIntervall(actual._tokenstart, actual._tokenstart+1);
       nextKeyIdx = getNextKey();
       break;
     case KeyInfo::noContent: {          /* char like "\hspace{2cm}" */
@@ -3159,7 +3182,6 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		// Size of the leading string: m[1].second - m[1].first
 		int leadingsize = 0;
 		int result;
-		size_t pos;
 #if QTSEARCH
 		if (match.lastCapturedIndex() > 0) {
 			leadingsize = match.capturedEnd(1) - match.capturedStart(1);
@@ -3173,7 +3195,6 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		else
 			result =  match.capturedStart(lastidx + 1 - close_wildcards) - match.capturedStart(0);
 
-		pos = match.capturedStart(1);
 #else
 		if (m.size() > 2) {
 			leadingsize = m[1].second - m[1].first;
@@ -3185,7 +3206,6 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 			result = m[0].second - m[0].first;
 		else
 			result =  m[m.size() - close_wildcards].first - m[0].first;
-		pos = m.position(size_t(1));
 #endif
 		if (result > leadingsize)
 			result -= leadingsize;
@@ -3193,14 +3213,19 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 			result = 0;
 #if QTSEARCH
 		mres.match_prefix = match.capturedEnd(2) - match.capturedStart(2);
-		mres.match_len = computeSize(QStringRef(&qstr, pos+leadingsize,result), result) - mres.match_prefix;
-		mres.match2end = qstr.size() - pos - leadingsize - mres.match_prefix;
+		// mres.match_len = computeSize(QStringRef(&qstr, pos+leadingsize,result), result) - mres.match_prefix;
+		mres.match_len = match.capturedEnd(0) - match.capturedEnd(2);
+		// mres.match2end = qstr.size() - pos - leadingsize - mres.match_prefix;
+		mres.match2end = qstr.size() - match.capturedEnd(0);
+		mres.pos = match.capturedStart(2);
 #else
-		mres.match_prefix = = m[2].second - m[2].first;
-		mres.match_len = computeSize(str.substr(pos+leadingsize,result), result) - mres.match_prefix;
-		mres.match2end = str.size() - pos - leadingsize - mres.match_prefix;
+		mres.match_prefix = m[2].second - m[2].first;
+		// mres.match_len = computeSize(str.substr(pos+leadingsize,result), result) - mres.match_prefix;
+		mres.match_len = m[0].second - m[2].second;
+		// mres.match2end = str.size() - pos - leadingsize - mres.match_prefix;
+		mres.match2end = str.size() - m[0].second;
+		mres.pos = m[2].first;
 #endif
-		mres.pos = pos+leadingsize + mres.match_prefix;
 		mres.leadsize = leadingsize;
 		return mres;
 	}
@@ -3320,7 +3345,6 @@ string MatchStringAdv::normalize(docstring const & s, bool hack_braces) const
 		LYXERR(Debug::FIND, "  further removing stale empty \\emph{}, \\textbf{} macros from: " << t);
 	while (regex_replace(t, t, "\\\\((sub)?(((sub)?section)|paragraph)|part)\\*?(\\{(\\{\\})?\\})+", ""))
 		LYXERR(Debug::FIND, "  further removing stale empty \\emph{}, \\textbf{} macros from: " << t);
-
 	while (regex_replace(t, t, "\\\\(foreignlanguage|textcolor|item)\\{[a-z]+\\}(\\{(\\{\\})?\\})+", ""));
 	// FIXME - check what preceeds the brace
 	if (hack_braces) {
@@ -3558,7 +3582,6 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 	return len;
 }
 
-
 #if 0
 static void displayMResult(MatchResult &mres)
 {
@@ -3590,9 +3613,13 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv const & match)
 		if (match_len > 0) {
 			// Try to find the begin of searched string
 			int increment;
-			increment = mres.match_prefix/2;
+                        int firstInvalid = 100000;
+                        if (mres.match_prefix + mres.pos - mres.leadsize > 0)
+                          increment = (mres.match_prefix + mres.pos - mres.leadsize)/2;
+                        else
+                          increment = 10;
 			LYXERR(Debug::FIND, "Set increment to " << increment);
-			while (mres.match_prefix > 1 && (increment > 1)) {
+			while (increment > 0) {
 				DocIterator old_cur = cur;
 				for (int i = 0; i < increment && cur; cur.forwardPos(), i++) {
 				}
@@ -3605,24 +3632,31 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv const & match)
 				else {
 					MatchResult mres2 = match(cur, -1, false);
 					displayMres(mres2)
-					if ((mres2.match2end < mres.match2end) ||
-					  (mres2.match_len < mres.match_len)) {
-						cur = old_cur;
-						increment /= 2;
-					}
-					else if ((mres2.match2end == mres.match2end) && (mres2.match_len == mres.match_len)) {
-						// next part with the same increment as before
-						mres = mres2;
-						if (increment > mres.match_prefix/2)
-							increment = mres.match_prefix/2;
-					}
-					else {
-						// Something wrong here
-						LYXERR0( "Increment = " << increment << " match_prefix = " << mres.match_prefix);
-						break;
-					}
+                                          switch (interpretMatch(mres, mres2)) {
+                                          case MatchResult::newIsTooFar:
+                                            // behind the expected match
+                                            firstInvalid = increment;
+                                            cur = old_cur;
+                                            increment /= 2;
+                                            break;
+                                          case MatchResult::newIsBetter:
+                                            // not reached yet
+                                            mres = mres2;
+                                            firstInvalid -= increment;
+                                            if (increment > firstInvalid/2)
+                                              increment = firstInvalid/2;
+                                            break;
+                                          default:
+                                            // Handle not like MatchResult::newIsTooFar
+                                            LYXERR0( "Something is wrong: Increment = " << increment << " match_prefix = " << mres.match_prefix);
+                                            firstInvalid--;
+                                            increment = firstInvalid -1;
+                                            cur = old_cur;
+                                            break;
+                                          }
 				}
 			}
+                        // LYXERR0("Leaving first loop");
 			int match_len_zero_count = 0;
 			MatchResult mres3;
 			for (int i = 0; !theApp()->longOperationCancelled() && cur; cur.forwardPos()) {
