@@ -77,12 +77,6 @@ Section "View PDF file"
   System::Call "shell32::FindExecutable(t '$PLUGINSDIR\a.pdf', t '', t .r0)"
   StrCpy $ViewerFileName $0
   ${GetFileName} $ViewerFileName $Viewer
-
-  ${If} $Viewer == ""
-    MessageBox MB_OK|MB_ICONEXCLAMATION "No PDF viewer is installed. \
-        Please install a PDF viewer such as Adobe Reader."
-    Quit        
-  ${EndIf}
   
   ${if} $Viewer == "AcroRd32.exe"
   ${orif} $Viewer == "AcroRd64.exe"
