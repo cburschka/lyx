@@ -900,10 +900,10 @@ void InsetFloat::setSubfloat(bool s, bool update_label)
 
 void InsetFloat::setNewLabel()
 {
-	docstring lab = _("float: ");
+	docstring lab = _("Float: ");
 
 	if (params_.subfloat)
-		lab = _("subfloat: ");
+		lab = _("Subfloat: ");
 
 	lab += floatName(params_.type);
 

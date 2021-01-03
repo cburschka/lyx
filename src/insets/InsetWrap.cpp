@@ -65,7 +65,7 @@ void InsetWrap::setCaptionType(std::string const & type)
 {
 	InsetCaptionable::setCaptionType(type);
 	params_.type = captionType();
-	setLabel(_("wrap: ") + floatName(type));
+	setLabel(_("Wrap: ") + floatName(type));
 }
 
 

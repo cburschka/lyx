@@ -16,7 +16,7 @@ OutlinerName index        "Index Entries" #no AddToToc (built-in)
 OutlinerName listing      "Listings" #no AddToToc (built-in)
 
 InsetLayout Marginal
-	LabelString           margin
+	LabelString           Margin
 	LatexType             command
 	LatexName             marginpar
 	Font
