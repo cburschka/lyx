@@ -44,7 +44,7 @@ Menuset
 	Menu "file"
 		Item "New|N" "buffer-new"
 		Item "New from Template...|m" "dialog-show lyxfiles templates"
-		Item "Open...|O" "file-open"
+		Item "Open|O" "file-open"
 		Submenu "Open Recent|t" "file_lastfiles"
 		Item "Open Example...|p" "dialog-show lyxfiles examples"
 		Separator
