@@ -232,7 +232,7 @@ bool InsetCaption::getStatus(Cursor & cur, FuncRequest const & cmd,
 			if (cur.depth() > 1) {
 				varia = cur[cur.depth() - 2].inset().allowsCaptionVariation(type);
 			}
-			status.setEnabled(varia
+			status.setEnabled(!is_subfloat_ && varia
 					  && buffer().params().documentClass().hasInsetLayout(
 						from_ascii("Caption:" + type)));
 			return true;
