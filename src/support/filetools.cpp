@@ -683,8 +683,12 @@ string const onlyFileName(string const & fname)
 
 
 // Search the string for ${VAR} and $VAR and replace VAR using getenv.
+// If VAR does not exist, ${VAR} and $VAR are left as is in the string.
 string const replaceEnvironmentPath(string const & path)
 {
+	if (!contains(path, '$'))
+		return path;
+
 	// ${VAR} is defined as
 	// $\{[A-Za-z_][A-Za-z_0-9]*\}
 	static string const envvar_br = "[$]\\{([A-Za-z_][A-Za-z_0-9]*)\\}";
@@ -702,14 +706,23 @@ string const replaceEnvironmentPath(string const & path)
 		string result = path;
 		while (1) {
 			smatch what;
+			bool brackets = true;
 			if (!regex_match(result, what, envvar_br_re)) {
+				brackets = false;
 				if (!regex_match(result, what, envvar_re))
 					break;
 			}
 			string env_var = getEnv(what.str(2));
+			if (env_var.empty()) {
+				// temporarily use escape (0x1B) in place of $
+				if (brackets)
+					env_var = "\e{" + what.str(2) + '}';
+				else
+					env_var = "\e" + what.str(2);
+			}
 			result = what.str(1) + env_var + what.str(3);
 		}
-		return result;
+		return subst(result, '\e', '$');
 	} catch (exception const & e) {
 		LYXERR0("Something is very wrong: " << e.what());
 		return path;
