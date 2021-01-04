@@ -103,7 +103,7 @@ Menuset
 		Separator
 		OptItem "Plural|a" "inset-modify ref toggle-plural"
 		OptItem "Capitalize|C" "inset-modify ref toggle-caps"
-		Item "No Prefix" "inset-modify ref toggle-noprefix"
+		OptItem "No Prefix" "inset-modify ref toggle-noprefix"
 		Separator
 		Item "Settings...|S" "inset-settings"
 	End
