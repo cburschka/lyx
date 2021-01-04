@@ -2137,7 +2137,7 @@ Buffer::ExportStatus Buffer::writeDocBookSource(odocstream & os,
 		// parsep in output_docbook.cpp).
 		os << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 		   << "<!-- This DocBook file was created by LyX " << lyx_version
-		   << "\n  See http://www.lyx.org/ for more information -->\n";
+		   << "\n  See https://www.lyx.org/ for more information -->\n";
 
 		// Directly output the root tag, based on the current type of document.
 		string languageCode = params().language->code();
