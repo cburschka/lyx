@@ -130,14 +130,14 @@ void HunspellChecker::Private::cleanCache()
 
 	for (; it != end; ++it) {
 		delete it->second;
-		it->second = 0;
+		it->second = nullptr;
 	}
 
 	LangPersonalWordList::const_iterator pdit = personal_.begin();
 	LangPersonalWordList::const_iterator pdet = personal_.end();
 
 	for (; pdit != pdet; ++pdit) {
-		if ( 0 == pdit->second)
+		if (pdit->second == nullptr)
 			continue;
 		PersonalWordList * pd = pdit->second;
 		pd->save();
@@ -226,7 +226,7 @@ Hunspell * HunspellChecker::Private::speller(Language const * lang)
 Hunspell * HunspellChecker::Private::lookup(Language const * lang)
 {
 	Spellers::iterator it = spellers_.find(lang->lang());
-	return it != spellers_.end() ? it->second : 0;
+	return it != spellers_.end() ? it->second : nullptr;
 }
 
 
@@ -248,8 +248,8 @@ Hunspell * HunspellChecker::Private::addSpeller(Language const * lang, string & 
 
 Hunspell * HunspellChecker::Private::addSpeller(Language const * lang)
 {
-	Hunspell * h = 0;
-	for (int p = 0; p < maxLookupSelector() && 0 == h; ++p) {
+	Hunspell * h = nullptr;
+	for (int p = 0; p < maxLookupSelector() && nullptr == h; ++p) {
 		string lpath = dictPath(p);
 		h = addSpeller(lang, lpath);
 	}
@@ -276,7 +276,7 @@ int HunspellChecker::Private::numDictionaries() const
 	Spellers::const_iterator et = spellers_.end();
 
 	for (; it != et; ++it)
-		result += it->second != 0;
+		result += it->second != nullptr;
 	return result;
 }
 
