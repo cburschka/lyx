@@ -1624,6 +1624,8 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		bool found = lyxfind(this, FuncRequest(LFUN_WORD_FIND, data));
 		if (found)
 			dr.screenUpdate(Update::Force | Update::FitCursor);
+		else
+			dr.setMessage(_("Search string not found!"));
 		break;
 	}
 
@@ -1637,6 +1639,8 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		}
 		if (lyxfind(this, req))
 			dr.screenUpdate(Update::Force | Update::FitCursor);
+		else
+			dr.setMessage(_("Search string not found!"));
 
 		d->search_request_cache_ = req;
 		break;
@@ -1660,6 +1664,8 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			dr.forceBufferUpdate();
 			dr.screenUpdate(Update::Force | Update::FitCursor);
 		}
+		else
+			dr.setMessage(_("Search string not found!"));
 		break;
 	}
 
