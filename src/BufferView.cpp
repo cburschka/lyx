@@ -796,23 +796,24 @@ void BufferView::bookmarkEditPosition()
 
 void BufferView::saveBookmark(unsigned int idx)
 {
+	if (buffer().isInternal())
+		return;
+
 	// tentatively save bookmark, id and pos will be used to
 	// acturately locate a bookmark in a 'live' lyx session.
 	// pit and pos will be updated with bottom level pit/pos
 	// when lyx exits.
-	if (!buffer_.isInternal()) {
-		theSession().bookmarks().save(
-			buffer_.fileName(),
-			d->cursor_.bottom().pit(),
-			d->cursor_.bottom().pos(),
-			d->cursor_.paragraph().id(),
-			d->cursor_.pos(),
-			idx
-			);
-		if (idx)
-			// emit message signal.
-			message(_("Save bookmark"));
-	}
+	theSession().bookmarks().save(
+		buffer_.fileName(),
+		d->cursor_.bottom().pit(),
+		d->cursor_.bottom().pos(),
+		d->cursor_.paragraph().id(),
+		d->cursor_.pos(),
+		idx
+	);
+	if (idx)
+		// emit message signal.
+		message(_("Save bookmark"));
 }
 
 
