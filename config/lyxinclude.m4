@@ -386,7 +386,7 @@ if test x$GXX = xyes; then
       AC_LANG_POP(C++)
     fi
   case $gxx_version in
-      2.*|3.*|4.@<:@0-8@:>@) AC_MSG_ERROR([gcc >= 4.9 is required]);;
+      2.*|3.*|4.@<:@0-8@:>@*) AC_MSG_ERROR([gcc >= 4.9 is required]);;
   esac
   if test x$enable_stdlib_debug = xyes ; then
     dnl FIXME: for clang/libc++, one should define _LIBCPP_DEBUG2=0
