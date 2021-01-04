@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-12-29 20:35+0100\n"
-"PO-Revision-Date: 2020-12-29 19:50+0000\n"
+"POT-Creation-Date: 2021-01-04 07:29+0100\n"
+"PO-Revision-Date: 2021-01-04 07:25+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -16673,6 +16673,10 @@ msgstr "Heslá registier"
 msgid "Listings"
 msgstr "Výpisy"
 
+#: lib/layouts/stdinsets.inc:19
+msgid "Margin"
+msgstr "Okraj"
+
 #: lib/layouts/stdinsets.inc:19 src/insets/InsetMarginal.cpp:36
 msgid "margin"
 msgstr "okraje"
@@ -20054,8 +20058,8 @@ msgid "New from Template...|m"
 msgstr "Nový zo šablóny…|b"
 
 #: lib/ui/stdmenus.inc:47
-msgid "Open...|O"
-msgstr "Otvoriť…|O"
+msgid "Open|O"
+msgstr "Otvoriť|O"
 
 #: lib/ui/stdmenus.inc:48
 msgid "Open Recent|t"
@@ -27705,6 +27709,10 @@ msgstr "Ďalej sa nedá zrušovať"
 msgid "No further redo information"
 msgstr "Ďalej sa nedá opakovať"
 
+#: src/BufferView.cpp:1628 src/BufferView.cpp:1643 src/BufferView.cpp:1668
+msgid "Search string not found!"
+msgstr "Hľadaný reťazec nebol nájdený!"
+
 #: src/BufferView.cpp:1683
 msgid "Mark off"
 msgstr "Značka vypnutá"
@@ -35018,12 +35026,12 @@ msgid "float"
 msgstr "plávajúci objekt"
 
 #: src/insets/InsetFloat.cpp:903
-msgid "float: "
-msgstr "plávajúci objekt: "
+msgid "Float: "
+msgstr "Plávajúci objekt: "
 
 #: src/insets/InsetFloat.cpp:906
-msgid "subfloat: "
-msgstr "pod-plávajúci objekt: "
+msgid "Subfloat: "
+msgstr "Plávajúci podobjekt: "
 
 #: src/insets/InsetFloat.cpp:916
 msgid " (sideways)"
@@ -36122,8 +36130,8 @@ msgid "[contains tracked changes]"
 msgstr "[obsahuje sledované zmeny]"
 
 #: src/insets/InsetWrap.cpp:68
-msgid "wrap: "
-msgstr "obtekanie: "
+msgid "Wrap: "
+msgstr "Obtekanie: "
 
 #: src/insets/InsetWrap.cpp:201
 msgid "wrap"
@@ -36807,6 +36815,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Open...|O"
+#~ msgstr "Otvoriť…|O"
 
 #~ msgid "<No Documents Open>"
 #~ msgstr "<Niet otvorených dokumentov>"
@@ -42126,3 +42137,12 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "&Indent Paragraph"
 #~ msgstr "Ods&adiť odstavec"
+
+#~ msgid "float: "
+#~ msgstr "plávajúci objekt: "
+
+#~ msgid "subfloat: "
+#~ msgstr "pod-plávajúci objekt: "
+
+#~ msgid "wrap: "
+#~ msgstr "obtekanie: "
