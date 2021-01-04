@@ -73,6 +73,11 @@ static docstring const lyxarrow_def = from_ascii(
 	"{\\leavevmode\\,$\\triangleleft$\\,\\allowbreak}\n"
 	"{\\leavevmode\\,$\\triangleright$\\,\\allowbreak}}");
 
+static docstring const aastex_case_def = from_ascii(
+		"\\providecommand\\case[2]{\\mbox{$\\frac{#1}{#2}$}}%");
+// Copied from https://github.com/AASJournals/AASTeX60/blob/master/cls/aastex63.cls#L1645
+// Adapted to providecommand for compatibility reasons.
+
 // ZERO WIDTH SPACE (ZWSP) is actually not a space character
 // but marks a line break opportunity. Several commands provide a
 // line break opportunity. They differ in side-effects:
@@ -1557,6 +1562,9 @@ TexString LaTeXFeatures::getMacros() const
 
 	if (mustProvide("lyxarrow"))
 		macros << lyxarrow_def << '\n';
+
+	if (mustProvide("aastex_case"))
+		macros << aastex_case_def << '\n';
 
 	if (mustProvide("lyxzerowidthspace"))
 		macros << lyxZWSP_def << '\n';

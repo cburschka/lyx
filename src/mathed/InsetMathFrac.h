@@ -46,6 +46,7 @@ public:
 	///
 	enum Kind {
 		FRAC,
+		AASTEX_CASE,
 		CFRAC,
 		CFRACLEFT,
 		CFRACRIGHT,
