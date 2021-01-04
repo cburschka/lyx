@@ -3557,6 +3557,34 @@ static void displayMResult(MatchResult &mres, int increment)
 	#define displayMres(s,i)
 #endif
 
+static bool findAdvForwardInnermost(DocIterator & cur)
+{
+	size_t d;
+	DocIterator old_cur(cur.buffer());
+	int forwardCount = 0;
+	do {
+		d = cur.depth();
+		old_cur = cur;
+		cur.forwardPos();
+		if (!cur) {
+			break;
+		}
+		if (cur.depth() > d) {
+			forwardCount++;
+			continue;
+		}
+		if (cur.depth() == d)
+			break;
+	} while(1);
+	cur = old_cur;
+	if (forwardCount > 0) {
+		LYXERR(Debug::FIND, "Forwarded " << forwardCount << " step(s) (searching for innermost match)");
+		return true;;
+	}
+	else
+		return false;
+}
+
 /** Finalize an advanced find operation, advancing the cursor to the innermost
  ** position that matches, plus computing the length of the matching text to
  ** be selected
@@ -3565,34 +3593,30 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, int expecte
 {
 	// Search the foremost position that matches (avoids find of entire math
 	// inset when match at start of it)
-	size_t d;
 	DocIterator old_cur(cur.buffer());
 	MatchResult mres;
-	do {
-		LYXERR(Debug::FIND, "Forwarding one step (searching for innermost match)");
-		d = cur.depth();
-		old_cur = cur;
-		cur.forwardPos();
-		if (!cur)
-			break;
-		if (cur.depth() > d)
-			continue;
-		if (cur.depth() == d)
-			break;
+	int max_match;
+	if (findAdvForwardInnermost(cur)) {
 		mres = match(cur);
-		displayMres(mres, 1);
+		displayMres(mres, 0);
 		if (expected_len > 0) {
 			if (mres.match_len < expected_len)
-				break;
+				return 0;
 		}
 		else {
 			if (mres.match_len <= 0)
-				break;
+				return 0;
 		}
-	} while (1);
-	cur = old_cur;
-	mres = match(cur);      /* match valid only if not searching whole words */
-	int max_match = mres.match_len;
+		max_match = mres.match_len;
+	}
+	else if (expected_len < 0) {
+		mres = match(cur);      /* match valid only if not searching whole words */
+		displayMres(mres, 0);
+		max_match = mres.match_len;
+	}
+	else {
+		max_match = expected_len;
+	}
 	if (max_match <= 0) return 0;
 	LYXERR(Debug::FIND, "Ok");
 
@@ -3627,7 +3651,10 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, int expecte
           int maxl = cur.lastpos() - cur.pos();
           // Greedy behaviour while matching regexps
           while (maxl > minl) {
-            int actual_match = match(cur, len).match_len;
+	    MatchResult mres2;
+	    mres2 = match(cur, len);
+	    displayMres(mres2, len);
+            int actual_match = mres2.match_len;
             if (actual_match >= max_match) {
               // actual_match > max_match _can_ happen,
               // if the search area splits
@@ -3690,24 +3717,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv const & match)
 	if (!cur)
 		return 0;
 	while (!theApp()->longOperationCancelled() && cur) {
-		{
-		  // forward to
-		  size_t d;
-		  DocIterator old_cur(cur.buffer());
-		  do {
-		    d = cur.depth();
-		    old_cur = cur;
-		    cur.forwardPos();
-		    if (!cur)
-		      break;
-		    if (cur.depth() > d)
-		      continue;
-		    if (cur.depth() == d)
-		      break;
-		  } while (1);
-		  cur = old_cur;
-		}
-
+		(void) findAdvForwardInnermost(cur);
 		LYXERR(Debug::FIND, "findForwardAdv() cur: " << cur);
 		MatchResult mres = match(cur, -1, false);
 		displayMres(mres,-1)
