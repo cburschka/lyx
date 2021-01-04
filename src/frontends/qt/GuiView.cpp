@@ -491,7 +491,7 @@ public:
 				   Buffer::ExportStatus (*asyncFunc)(Buffer const *, Buffer *, string const &),
 				   Buffer::ExportStatus (Buffer::*syncFunc)(string const &, bool) const,
 				   Buffer::ExportStatus (Buffer::*previewFunc)(string const &) const,
-				   bool allow_async);
+				   bool allow_async, bool use_tmpdir = false);
 
 	QVector<GuiWorkArea*> guiWorkAreas();
 
@@ -3845,14 +3845,13 @@ Buffer::ExportStatus GuiView::GuiViewPrivate::previewAndDestroy(
 }
 
 
-bool GuiView::GuiViewPrivate::asyncBufferProcessing(
-			   string const & argument,
+bool GuiView::GuiViewPrivate::asyncBufferProcessing(string const & argument,
 			   Buffer const * used_buffer,
 			   docstring const & msg,
 			   Buffer::ExportStatus (*asyncFunc)(Buffer const *, Buffer *, string const &),
 			   Buffer::ExportStatus (Buffer::*syncFunc)(string const &, bool) const,
 			   Buffer::ExportStatus (Buffer::*previewFunc)(string const &) const,
-			   bool allow_async)
+			   bool allow_async, bool use_tmpdir)
 {
 	if (!used_buffer)
 		return false;
@@ -3888,7 +3887,7 @@ bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 	} else {
 		Buffer::ExportStatus status;
 		if (syncFunc) {
-			status = (used_buffer->*syncFunc)(format, false);
+			status = (used_buffer->*syncFunc)(format, use_tmpdir);
 		} else if (previewFunc) {
 			status = (used_buffer->*previewFunc)(format);
 		} else
@@ -4045,7 +4044,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 						_("Exporting ..."),
 						&GuiViewPrivate::compileAndDestroy,
 						&Buffer::doExport,
-						nullptr, cmd.allowAsync());
+						nullptr, cmd.allowAsync(), true);
 			break;
 		}
 		case LFUN_BUFFER_VIEW: {
@@ -4063,7 +4062,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 						docstring(),
 						&GuiViewPrivate::compileAndDestroy,
 						&Buffer::doExport,
-						nullptr, cmd.allowAsync());
+						nullptr, cmd.allowAsync(), true);
 			break;
 		}
 		case LFUN_MASTER_BUFFER_VIEW: {
