@@ -689,7 +689,7 @@ public:
 	QString translate(const char * /* context */,
 		const char *sourceText,
 #if QT_VERSION >= 0x050000
-		const char * /* disambiguation */ = 0, int /* n */ = -1) const override
+		const char * /* disambiguation */ = nullptr, int /* n */ = -1) const override
 #else
 		const char * /*comment*/ = 0) const override
 #endif
@@ -1463,7 +1463,7 @@ DispatchResult const & GuiApplication::dispatch(FuncRequest const & cmd)
 {
 	DispatchResult dr;
 
-	Buffer * buffer = 0;
+	Buffer * buffer = nullptr;
 	if (cmd.view_origin() && current_view_ != cmd.view_origin()) {
 		//setCurrentView(cmd.view_origin); //does not work
 		dr.setError(true);
@@ -1553,8 +1553,8 @@ void GuiApplication::gotoBookmark(unsigned int idx, bool openFile,
 
 	// if the current buffer is not that one, switch to it.
 	BufferView * doc_bv = current_view_ ?
-		current_view_->documentBufferView() : 0;
-	Cursor const * old = doc_bv ? &doc_bv->cursor() : 0;
+		current_view_->documentBufferView() : nullptr;
+	Cursor const * old = doc_bv ? &doc_bv->cursor() : nullptr;
 	if (!doc_bv || doc_bv->buffer().fileName() != tmp.filename) {
 		if (switchToBuffer) {
 			dispatch(FuncRequest(LFUN_BUFFER_SWITCH, file));
@@ -1631,7 +1631,7 @@ void GuiApplication::validateCurrentView()
 		// currently at least one view exists but no view has the focus.
 		// choose the last view to make it current.
 		// a view without any open document is preferred.
-		GuiView * candidate = 0;
+		GuiView * candidate = nullptr;
 		QHash<int, GuiView *>::const_iterator it = d->views_.begin();
 		QHash<int, GuiView *>::const_iterator end = d->views_.end();
 		for (; it != end; ++it) {
@@ -1718,7 +1718,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_BUFFER_NEW:
 		validateCurrentView();
 		if (!current_view_
-		   || (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != 0)) {
+		   || (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != nullptr)) {
 			createView(QString(), false); // keep hidden
 			current_view_->newDocument(to_utf8(cmd.argument()));
 			current_view_->show();
@@ -1733,7 +1733,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		string const temp = cmd.getArg(1);
 		validateCurrentView();
 		if (!current_view_
-		   || (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != 0)) {
+		   || (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != nullptr)) {
 			createView();
 			current_view_->newDocument(file, temp, true);
 			if (!current_view_->documentBufferView())
@@ -1754,7 +1754,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			&& theBufferList().getBuffer(FileName(fname));
 		if (!current_view_
 		    || (!lyxrc.open_buffers_in_tabs
-			&& current_view_->documentBufferView() != 0
+			&& current_view_->documentBufferView() != nullptr
 			&& !is_open)) {
 			// We want the ui session to be saved per document and not per
 			// window number. The filename crc is a good enough identifier.
@@ -1780,7 +1780,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	case LFUN_HELP_OPEN: {
 		// FIXME: create a new method shared with LFUN_FILE_OPEN.
-		if (current_view_ == 0)
+		if (current_view_ == nullptr)
 			createView();
 		string const arg = to_utf8(cmd.argument());
 		if (arg.empty()) {
@@ -1953,7 +1953,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		string arg = argument;
 		// FIXME: this LFUN should also work without any view.
 		Buffer * buffer = (current_view_ && current_view_->documentBufferView())
-				  ? &(current_view_->documentBufferView()->buffer()) : 0;
+				  ? &(current_view_->documentBufferView()->buffer()) : nullptr;
 		// This handles undo groups automagically
 		UndoGroupHelper ugh(buffer);
 		while (!arg.empty()) {
@@ -1983,7 +1983,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			// all of the buffers might be locally hidden. That is, there is no
 			// active buffer.
 			if (!view || !view->currentBufferView())
-				activeBuffers[view] = 0;
+				activeBuffers[view] = nullptr;
 			else
 				activeBuffers[view] = &view->currentBufferView()->buffer();
 
@@ -2008,7 +2008,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 		GuiView * const homeView = currentView();
 		Buffer * b = theBufferList().first();
-		Buffer * nextBuf = 0;
+		Buffer * nextBuf = nullptr;
 		int numProcessed = 0;
 		while (true) {
 			if (b != last)
@@ -2159,7 +2159,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			// is not terminated when closing the last view.
 			// Create a new one to be able to dispatch the
 			// LFUN_DIALOG_SHOW to this view.
-			if (current_view_ == 0)
+			if (current_view_ == nullptr)
 				createView();
 		}
 	}
@@ -2434,7 +2434,7 @@ void GuiApplication::resetGui()
 		return;
 
 	if (d->global_menubar_)
-		d->menus_.fillMenuBar(d->global_menubar_, 0, false);
+		d->menus_.fillMenuBar(d->global_menubar_, nullptr, false);
 
 	QHash<int, GuiView *>::iterator it;
 	for (it = d->views_.begin(); it != d->views_.end(); ++it) {
@@ -2722,7 +2722,7 @@ void GuiApplication::restoreGuiSession()
 	for (auto const & last : lastopened) {
 		FileName const & file_name = last.file_name;
 		if (!current_view_ || (!lyxrc.open_buffers_in_tabs
-			  && current_view_->documentBufferView() != 0)) {
+			  && current_view_->documentBufferView() != nullptr)) {
 			string const & fname = file_name.absFileName();
 			createView(support::checksum(fname));
 		}
@@ -2986,7 +2986,7 @@ void GuiApplication::unregisterView(GuiView * gv)
 	if(d->views_.contains(gv->id()) && d->views_.value(gv->id()) == gv) {
 		d->views_.remove(gv->id());
 		if (current_view_ == gv)
-			current_view_ = 0;
+			current_view_ = nullptr;
 	}
 }
 
@@ -3043,7 +3043,7 @@ void GuiApplication::hideDialogs(string const & name, Inset * inset) const
 
 Buffer const * GuiApplication::updateInset(Inset const * inset) const
 {
-	Buffer const * buf = 0;
+	Buffer const * buf = nullptr;
 	QHash<int, GuiView *>::const_iterator end = d->views_.end();
 	for (QHash<int, GuiView *>::iterator it = d->views_.begin(); it != end; ++it) {
 		if (Buffer const * ptr = (*it)->updateInset(inset))
@@ -3056,7 +3056,7 @@ Buffer const * GuiApplication::updateInset(Inset const * inset) const
 bool GuiApplication::searchMenu(FuncRequest const & func,
 	docstring_list & names) const
 {
-	BufferView * bv = 0;
+	BufferView * bv = nullptr;
 	if (current_view_)
 		bv = current_view_->currentBufferView();
 	return d->menus_.searchMenu(func, names, bv);
