@@ -2575,6 +2575,10 @@ dist_articletemplates_DATA = \
 	templates/Articles/REVTeX_%28V._4.1%29.lyx \
 	templates/Articles/Springers_Global_Journal_Template_%28V._3%29.lyx
 
+arpresentationtemplatesdir = $(pkgdatadir)/templates/ar/Presentations
+dist_arpresentationtemplates_DATA = \
+	templates/ar/Presentations/Beamer.lyx
+
 depresentationtemplatesdir = $(pkgdatadir)/templates/de/Presentations
 dist_depresentationtemplates_DATA = \
 	templates/de/Presentations/Beamer.lyx
@@ -2711,6 +2715,7 @@ endif
 dist_noinst_DATA += lyx.desktop.in images/lyx.png
 
 exampleandtemplate_files = \
+			   $(dist_arpresentationexamples_DATA) \
 			   $(dist_articleexamples_DATA) \
 			   $(dist_articlechessexamples_DATA) \
 			   $(dist_articletemplates_DATA) \
