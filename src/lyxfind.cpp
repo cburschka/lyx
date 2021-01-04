@@ -4115,9 +4115,8 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 			match_len = findForwardAdv(cur, matchAdv);
 		else
 			match_len = findBackwardsAdv(cur, matchAdv);
-	} catch (...) {
-		// This may only be raised by lyx::regex()
-		bv->message(_("Invalid regular expression!"));
+	} catch (exception & ex) {
+		bv->message(from_ascii(ex.what()));
 		return false;
 	}
 
