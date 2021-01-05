@@ -1258,7 +1258,7 @@ void InsetMathGrid::write(TeXMathStream & os,
 		for (col_type col = beg_col; col < end_col; ++col) {
 			idx_type const idx = index(row, col);
 			bool const empty_cell = cell(idx).empty();
-			if (!empty_cell || cellinfo_[idx].multi != CELL_NORMAL)
+			if (last_eoln && (!empty_cell || cellinfo_[idx].multi != CELL_NORMAL))
 				last_eoln = false;
 			if (!empty_cell || cellinfo_[idx].multi != CELL_NORMAL ||
 			    colinfo_[col + 1].lines) {
@@ -1269,7 +1269,7 @@ void InsetMathGrid::write(TeXMathStream & os,
 		for (col_type col = beg_col; col < end_col;) {
 			int nccols = 1;
 			idx_type const idx = index(row, col);
-			TexRow::RowEntry entry = TexRow::mathEntry(id(),idx);
+			TexRow::RowEntry const entry = TexRow::mathEntry(id(),idx);
 			os.texrow().start(entry);
 			if (col >= lastcol) {
 				++col;
