@@ -557,6 +557,29 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 	if (row_index < pm.rows().size())
 		pm.rows().resize(row_index);
 
+	// This type of margin can only be handled at the global paragraph level
+	if (par.layout().margintype == MARGIN_RIGHT_ADDRESS_BOX) {
+		int offset = 0;
+		if (par.isRTL(buffer.params())) {
+			// globally align the paragraph to the left.
+			int minleft = max_width_;
+			for (Row const & row : pm.rows())
+				minleft = min(minleft, row.left_margin);
+			offset = right_margin - minleft;
+		} else {
+			// globally align the paragraph to the right.
+			int maxwid = 0;
+			for (Row const & row : pm.rows())
+				maxwid = max(maxwid, row.width());
+			offset = max_width_ - right_margin - maxwid;
+		}
+
+		for (Row & row : pm.rows()) {
+			row.left_margin += offset;
+			row.dim().wid += offset;
+		}
+	}
+
 	// The space above and below the paragraph.
 	int const top = parTopSpacing(pit);
 	pm.rows().front().dim().asc += top;
@@ -779,22 +802,6 @@ int TextMetrics::labelFill(Row const & row) const
 }
 
 
-#if 0
-// Not used, see TextMetrics::breakRow
-// this needs special handling - only newlines count as a break point
-static pos_type addressBreakPoint(pos_type i, Paragraph const & par)
-{
-	pos_type const end = par.size();
-
-	for (; i < end; ++i)
-		if (par.isNewline(i))
-			return i + 1;
-
-	return end;
-}
-#endif
-
-
 int TextMetrics::labelEnd(pit_type const pit) const
 {
 	// labelEnd is only needed if the layout fills a flushleft label.
@@ -885,14 +892,6 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 	row.dim().wid = row.left_margin;
 	// the width available for the row.
 	int const width = max_width_ - row.right_margin;
-
-#if 0
-	//FIXME: As long as leftMargin() is not correctly implemented for
-	// MARGIN_RIGHT_ADDRESS_BOX, we should also not do this here.
-	// Otherwise, long rows will be painted off the screen.
-	if (par.layout().margintype == MARGIN_RIGHT_ADDRESS_BOX)
-		return addressBreakPoint(pos, par);
-#endif
 
 	// check for possible inline completion
 	DocIterator const & ic_it = bv_->inlineCompletionPos();
@@ -1729,24 +1728,9 @@ int TextMetrics::leftMargin(pit_type const pit, pos_type const pos) const
 		}
 		break;
 
-	case MARGIN_RIGHT_ADDRESS_BOX: {
-#if 0
-		// The left margin depends on the widest row in this paragraph.
-		// This code is wrong because it depends on the rows, but at the
-		// same time this function is used in redoParagraph to construct
-		// the rows.
-		ParagraphMetrics const & pm = par_metrics_[pit];
-		int minfill = max_width_;
-		for (row : pm.rows())
-			if (row.fill() < minfill)
-				minfill = row.fill();
-		l_margin += bfm.signedWidth(layout.leftmargin);
-		l_margin += minfill;
-#endif
-		// also wrong, but much shorter.
-		l_margin += max_width_ / 2;
+	case MARGIN_RIGHT_ADDRESS_BOX:
+		// This is handled globally in redoParagraph().
 		break;
-	}
 	}
 
 	if (!par.params().leftIndent().zero())
