@@ -123,12 +123,14 @@ public:
 	int height() const { return dim_.height(); }
 
 	/**
-	 * Returns the left beginning of the text.
+	 * Returns the left beginning of a row starting at \c pos.
 	 * This information cannot be taken from the layout object, because
 	 * in LaTeX the beginning of the text fits in some cases
 	 * (for example sections) exactly the label-width.
 	 */
 	int leftMargin(pit_type pit, pos_type pos) const;
+	/// Return the left beginning of a row which is not the first one.
+	/// This is the left margin when there is no indentation.
 	int leftMargin(pit_type pit) const;
 
 	///

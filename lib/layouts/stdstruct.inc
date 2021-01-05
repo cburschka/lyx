@@ -27,13 +27,12 @@ Style Abstract
 	Align                 Block
 	LabelType             Centered
 	LabelString           "Abstract"
-	LabelBottomSep        0.5
+	LabelBottomSep        0.2
 	Font
 	  Size                Small
 	EndFont
 	LabelFont
 	  Series              Bold
-	  Size                Large
 	EndFont
 	HTMLLabelFirst        1
 	HTMLForceCSS          1
