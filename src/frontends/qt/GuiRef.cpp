@@ -317,7 +317,7 @@ void GuiRef::updateContents()
 	typeCO->clear();
 
 	// FIXME Bring InsetMathRef on par with InsetRef
-	// (see #9798)
+	// (see #11104)
 	typeCO->addItem(qt_("<reference>"), "ref");
 	typeCO->addItem(qt_("(<reference>)"), "eqref");
 	typeCO->addItem(qt_("<page>"), "pageref");
