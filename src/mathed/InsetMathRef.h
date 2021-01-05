@@ -29,7 +29,7 @@ public:
 	///
 	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false) override;
 	///
-	//void write(TeXMathStream & os) const override;
+	void write(TeXMathStream & os) const override;
 	///
 	void infoize(odocstream & os) const override;
 	///
@@ -61,10 +61,6 @@ public:
 		docstring short_gui_name;
 	};
 	static ref_type_info types[];
-	///
-	static int getType(docstring const & name);
-	///
-	static docstring const & getName(int type);
 	///
 	docstring const getTarget() const;
 	///

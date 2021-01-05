@@ -543,6 +543,14 @@ docstring const uppercase(docstring const & a)
 }
 
 
+docstring capitalize(docstring const & s) {
+	docstring ret = s;
+	char_type t = uppercase(ret[0]);
+	ret[0] = t;
+	return ret;
+}
+
+
 string const ascii_lowercase(string const & a)
 {
 	string tmp(a);

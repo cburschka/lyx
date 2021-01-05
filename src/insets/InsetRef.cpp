@@ -174,16 +174,6 @@ bool InsetRef::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-namespace {
-
-void capitalize(docstring & s) {
-	char_type t = uppercase(s[0]);
-	s[0] = t;
-}
-
-} // namespace
-
-
 // the ref argument is the label name we are referencing.
 // we expect ref to be in the form: pfx:suffix.
 //
@@ -199,7 +189,8 @@ void capitalize(docstring & s) {
 // label, thus: \prettyref{pfx:suffix}.
 //
 docstring InsetRef::getFormattedCmd(docstring const & ref,
-	docstring & label, docstring & prefix, docstring const & caps) const
+	docstring & label, docstring & prefix, bool use_refstyle,
+	bool use_caps)
 {
 	static docstring const defcmd = from_ascii("\\ref");
 	static docstring const prtcmd = from_ascii("\\prettyref");
@@ -216,11 +207,12 @@ docstring InsetRef::getFormattedCmd(docstring const & ref,
 
 	if (prefix.empty()) {
 		// we have ":xxxx"
+		LYXERR0("Label `" << ref << "' contains nothign before `:'.");
 		label = ref;
 		return defcmd;
 	}
 
-	if (!buffer().params().use_refstyle) {
+	if (!use_refstyle) {
 		// \prettyref uses the whole label
 		label = ref;
 		return prtcmd;
@@ -237,8 +229,8 @@ docstring InsetRef::getFormattedCmd(docstring const & ref,
 			return defcmd;
 		}
 	}
-	if (caps == "true") {
-		capitalize(prefix);
+	if (use_caps) {
+		prefix = support::capitalize(prefix);
 	}
 	return from_ascii("\\") + prefix + from_ascii("ref");
 }
@@ -261,7 +253,7 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 	if (rp.inulemcmd > 0)
 		os << "\\mbox{";
 
-	if (cmd == "eqref" && buffer().params().use_refstyle) {
+	if (buffer().params().use_refstyle && cmd == "eqref") {
 		// we advertise this as printing "(n)", so we'll do that, at least
 		// for refstyle, since refstlye's own \eqref prints, by default,
 		// "equation n". if one wants \eqref, one can get it by using a
@@ -271,10 +263,12 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 	else if (cmd == "formatted") {
 		docstring label;
 		docstring prefix;
+		bool const use_caps   = getParam("caps") == "true";
+		bool const use_plural = getParam("plural") == "true";
 		docstring const fcmd =
-			getFormattedCmd(data, label, prefix, getParam("caps"));
+			getFormattedCmd(data, label, prefix, use_caps);
 		os << fcmd;
-		if (buffer().params().use_refstyle && getParam("plural") == "true")
+		if (buffer().params().use_refstyle && use_plural)
 		    os << "[s]";
 		os << '{' << label << '}';
 	}
@@ -542,9 +536,11 @@ void InsetRef::validate(LaTeXFeatures & features) const
 		docstring const data = getEscapedLabel(features.runparams());
 		docstring label;
 		docstring prefix;
+		bool const use_refstyle = buffer().params().use_refstyle;
+		bool const use_caps   = getParam("caps") == "true";
 		docstring const fcmd =
-			getFormattedCmd(data, label, prefix, getParam("caps"));
-		if (buffer().params().use_refstyle) {
+			getFormattedCmd(data, label, prefix, use_refstyle, use_caps);
+		if (use_refstyle) {
 			features.require("refstyle");
 			if (prefix == "cha")
 				features.addPreambleSnippet(from_ascii("\\let\\charef=\\chapref"));

@@ -12,6 +12,7 @@
 
 #include "InsetMathRef.h"
 
+#include "BufferParams.h"
 #include "BufferView.h"
 #include "Buffer.h"
 #include "Cursor.h"
@@ -21,14 +22,18 @@
 #include "LyX.h"
 #include "MathData.h"
 #include "MathFactory.h"
+#include "MathStream.h"
 #include "MathSupport.h"
 #include "ParIterator.h"
 #include "xml.h"
 
 #include "insets/InsetCommand.h"
+#include "insets/InsetRef.h"
 
 #include "support/debug.h"
 #include "support/gettext.h"
+#include "support/lstrings.h"
+#include "support/textutils.h"
 
 #include <ostream>
 
@@ -75,7 +80,9 @@ void InsetMathRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 			MathData ar;
 			if (createInsetMath_fromDialogStr(cmd.argument(), ar)) {
 				cur.recordUndo();
+				Buffer & buf = buffer();
 				*this = *ar[0].nucleus()->asRefInset();
+				setBuffer(buf);
 				break;
 			}
 		}
@@ -170,11 +177,24 @@ docstring const InsetMathRef::screenLabel() const
 
 void InsetMathRef::validate(LaTeXFeatures & features) const
 {
+	// This really should not happen here but does.
+	if (!buffer_) {
+		LYXERR0("Unassigned buffer_ in InsetMathRef::write!");
+		LYXERR0("LaTeX output may be wrong!");
+	}
+	bool const use_refstyle =
+		buffer_ && buffer().params().use_refstyle;
+
 	if (commandname() == "vref" || commandname() == "vpageref")
 		features.require("varioref");
-	else if (commandname() == "prettyref")
-		features.require("prettyref");
-	else if (commandname() == "eqref")
+	else if (commandname() == "formatted") {
+		if (use_refstyle)
+			features.require("refstyle");
+		else
+			features.require("prettyref");
+	}
+	// if eqref is used with refstyle, we do our own output
+	else if (commandname() == "eqref" && use_refstyle)
 		features.require("amsmath");
 	else if (commandname() == "nameref")
 		features.require("nameref");
@@ -240,14 +260,99 @@ void InsetMathRef::changeTarget(docstring const & target)
 }
 
 
+void InsetMathRef::write(TeXMathStream & os) const
+{
+	docstring const & cmd = commandname();
+	// This should not happen, but of course it does
+	if (!buffer_) {
+		LYXERR0("Unassigned buffer_ in InsetMathRef::write!");
+		LYXERR0("LaTeX output may be wrong!");
+	}
+	bool const use_refstyle =
+		buffer_ && buffer().params().use_refstyle;
+	bool special_case =  cmd == "formatted" ||
+			cmd == "labelonly" ||
+			(cmd == "eqref" && use_refstyle);
+	// are we writing to the LyX file or not in a special case?
+	if (!os.latex() || !special_case) {
+		// if so, then this is easy
+		InsetMathCommand::write(os);
+		return;
+	}
+	// we need to translate 'formatted' to prettyref or refstyle-type
+	// commands and just output the label with labelonly
+	// most of this is borrowed from InsetRef and should be kept in 
+	// sync with that.
+	ModeSpecifier specifier(os, currentMode(), lockedMode(), asciiOnly());
+	MathEnsurer ensurer(os, false);
+
+	if (use_refstyle && cmd == "eqref") {
+		// we advertise this as printing "(n)", so we'll do that, at least
+		// for refstyle, since refstlye's own \eqref prints, by default,
+		// "equation n". if one wants \eqref, one can get it by using a
+		// formatted label in this case.
+		os << '(' << from_ascii("\\ref{") << cell(0) << from_ascii("})");
+	}
+	else if (cmd == "formatted") {
+		if (!use_refstyle)
+			os << "\\prettyref{" << cell(0) << "}";
+		else {
+			 odocstringstream ods;
+			// get the label we are referencing
+			for (auto const & d : cell(0)) {
+				ods << d;
+			}
+			docstring const ref = ods.str();
+
+			/*
+			At the moment, the 'plural' and 'caps' options will
+			not work here. The reason is that we handle these as
+			'internal' LyX argumemts, but those are not handled by
+			InsetCommandParams::getCommand, which is what is used
+			in createInsetMath_fromDialogStr to interpret the data
+			coming from the dialog.
+			If this is fixed, then what follows will get the info
+			we need.
+			Fixing it, I think, would mean sub-classing
+			InsetCommandParams to InsetRefParams, and the overriding
+			getCommand.
+			*******************************************************
+			// reset
+			ods.str(docstring());
+			ods.clear();
+			// get the options from the optional argument
+			for (auto const & d : cell(1))
+				ods << d;
+			docstring const options = ods.str();
+			bool const caps   = support::contains(options, 'C');
+			bool const plural = support::contains(options, 's');
+			*/
+			docstring label;
+			docstring prefix;
+			docstring const fcmd =
+				InsetRef::getFormattedCmd(ref, label, prefix, true);
+			os << fcmd;
+			//if (plural)
+			//	os << "[s]";
+			os << '{' << label << '}';
+		}
+	}
+	else if (cmd == "labelonly") {
+		// noprefix does not work here, for reasons given above.
+		os << cell(0);
+	}
+}
+
+
 InsetMathRef::ref_type_info InsetMathRef::types[] = {
 	{ from_ascii("ref"),       from_ascii(N_("Standard[[mathref]]")),   from_ascii(N_("Ref: "))},
 	{ from_ascii("eqref"),     from_ascii(N_("Equation")),              from_ascii(N_("EqRef: "))},
 	{ from_ascii("pageref"),   from_ascii(N_("Page Number")),           from_ascii(N_("Page: "))},
 	{ from_ascii("vpageref"),  from_ascii(N_("Textual Page Number")),   from_ascii(N_("TextPage: "))},
 	{ from_ascii("vref"),      from_ascii(N_("Standard+Textual Page")), from_ascii(N_("Ref+Text: "))},
-	{ from_ascii("prettyref"), from_ascii(N_("PrettyRef")),             from_ascii(N_("FormatRef: "))},
+	{ from_ascii("formatted"), from_ascii(N_("PrettyRef")),             from_ascii(N_("FormatRef: "))},
 	{ from_ascii("nameref"),   from_ascii(N_("Reference to Name")),     from_ascii(N_("NameRef: "))},
+	{ from_ascii("labelonly"), from_ascii(N_("Label Only")),             from_ascii(N_("Label Only: "))},
 	{ from_ascii(""), from_ascii(""), from_ascii("") }
 };
 

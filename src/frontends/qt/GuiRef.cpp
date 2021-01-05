@@ -145,13 +145,14 @@ void GuiRef::enableView(bool enable)
 void GuiRef::enableBoxes()
 {
 	QString const reftype =
-		typeCO->itemData(typeCO->currentIndex()).toString();
+	    typeCO->itemData(typeCO->currentIndex()).toString();
 	bool const isFormatted = (reftype == "formatted");
 	bool const isLabelOnly = (reftype == "labelonly");
 	bool const usingRefStyle = buffer().params().use_refstyle;
-	pluralCB->setEnabled(isFormatted && usingRefStyle);
-	capsCB->setEnabled(isFormatted && usingRefStyle);
-	noprefixCB->setEnabled(isLabelOnly);
+	bool const intext = bufferview()->cursor().inTexted();
+	pluralCB->setEnabled(intext && isFormatted && usingRefStyle);
+	capsCB->setEnabled(intext && isFormatted && usingRefStyle);
+	noprefixCB->setEnabled(intext && isLabelOnly);
 }
 
 
@@ -324,11 +325,8 @@ void GuiRef::updateContents()
 	typeCO->addItem(qt_("on page <page>"), "vpageref");
 	typeCO->addItem(qt_("<reference> on page <page>"), "vref");
 	typeCO->addItem(qt_("Textual reference"), "nameref");
-	if (bufferview()->cursor().inTexted()) {
-		typeCO->addItem(qt_("Formatted reference"), "formatted");
-		typeCO->addItem(qt_("Label only"), "labelonly");
-	} else
-		typeCO->addItem(qt_("Formatted reference"), "prettyref");
+	typeCO->addItem(qt_("Formatted reference"), "formatted");
+	typeCO->addItem(qt_("Label only"), "labelonly");
 
 	referenceED->setText(toqstr(params_["reference"]));
 

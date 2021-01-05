@@ -90,6 +90,13 @@ public:
 	//@}
 	///
 	bool outputActive() const { return active_; }
+	/// \return the command for a formatted reference to ref
+	/// \param label we're cross-referencing
+	/// \param argument for reference command
+	/// \param prefix of the label (before :)
+	/// Also used by InsetMathRef
+	static docstring getFormattedCmd(docstring const & ref, docstring & label,
+			docstring & prefix, bool use_refstyle, bool use_caps = false);
 
 protected:
 	///
@@ -110,12 +117,6 @@ private:
 
 	/// \return the label with things that need to be escaped escaped
 	docstring getEscapedLabel(OutputParams const &) const;
-	/// \return the command for a formatted reference to ref
-	/// \param label we're cross-referencing
-	/// \param argument for reference command
-	/// \param prefix of the label (before :)
-	docstring getFormattedCmd(docstring const & ref, docstring & label,
-			docstring & prefix, docstring const & caps) const;
 
 	///
 	mutable docstring screen_label_;

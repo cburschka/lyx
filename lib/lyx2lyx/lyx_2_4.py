@@ -3993,6 +3993,40 @@ def revert_hrquotes(document):
             document.body[i] = "\\begin_inset Quotes ard"
 
 
+def convert_math_refs(document):
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Formula", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Can't find end of inset at line %d of body!" % i)
+            i += 1
+            continue
+        while i < j:
+            document.body[i] = document.body[i].replace("\\prettyref", "\\formatted")
+            i += 1
+        
+
+def revert_math_refs(document):
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Formula", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Can't find end of inset at line %d of body!" % i)
+            i += 1
+            continue
+        while i < j:
+            document.body[i] = document.body[i].replace("\\formatted", "\\prettyref")
+            if "\\labelonly" in document.body[i]:
+                document.body[i] = re.sub("\\\\labelonly{([^}]+?)}", "\\1", document.body[i])
+            i += 1
+        
+
 ##
 # Conversion hub
 #
@@ -4054,10 +4088,12 @@ convert = [
            [597, [convert_libertinus_rm_fonts]],
            [598, []],
            [599, []],
-           [600, []]
+           [600, []],
+           [601, [convert_math_refs]]
           ]
 
-revert =  [[598, [revert_hrquotes]],
+revert =  [[599, [revert_math_refs]],
+           [598, [revert_hrquotes]],
            [598, [revert_nopagebreak]],
            [597, [revert_docbook_table_output]],
            [596, [revert_libertinus_rm_fonts,revert_libertinus_sftt_fonts]],
