@@ -1610,10 +1610,7 @@ int TextMetrics::leftMargin(pit_type const pit, pos_type const pos) const
 	LASSERT(pit < int(pars.size()), return 0);
 	Paragraph const & par = pars[pit];
 	LASSERT(pos >= 0, return 0);
-	// We do not really care whether pos > par.size(), since we do not
-	// access the data. It can be actially useful, when querying the
-	// margin without indentation (see RowPainter::paintTopLevelLabel).
-
+	LASSERT(pos <= par.size(), return 0);
 	Buffer const & buffer = bv_->buffer();
 	//lyxerr << "TextMetrics::leftMargin: pit: " << pit << " pos: " << pos << endl;
 	DocumentClass const & tclass = buffer.params().documentClass();
@@ -1767,8 +1764,8 @@ int TextMetrics::leftMargin(pit_type const pit, pos_type const pos) const
 	    && !text_->inset().neverIndent()
 	    // display style insets do not need indentation
 	    && !(!par.empty()
-	         && par.isInset(0)
-	         && par.getInset(0)->rowFlags() & Inset::Display)
+	         && par.isInset(pos)
+	         && par.getInset(pos)->rowFlags() & Inset::Display)
 	    && (!(tclass.isDefaultLayout(par.layout())
 	        || tclass.isPlainLayout(par.layout()))
 	        || buffer.params().paragraph_separation
