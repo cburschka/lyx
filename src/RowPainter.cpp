@@ -462,8 +462,8 @@ void RowPainter::paintTopLevelLabel() const
 		 * respect to the left and right margins.
 		 */
 		int const leftm = row_.isRTL() ? tm_.rightMargin(row_.pit())
-		                               : tm_.leftMargin(row_.pit());
-		int const rightm = row_.isRTL() ? tm_.leftMargin(row_.pit())
+		                               : tm_.leftMargin(row_.pit(), 1);
+		int const rightm = row_.isRTL() ? tm_.leftMargin(row_.pit(), 1)
 			                            : tm_.rightMargin(row_.pit());
 		x += leftm - row_.left_margin + (tm_.width() - leftm -rightm) / 2
 			- fm.width(str) / 2;
