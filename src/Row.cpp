@@ -626,15 +626,17 @@ Row::findElement(pos_type const pos, bool const boundary, double & x) const
 
 	const_iterator cit = begin();
 	for ( ; cit != end() ; ++cit) {
-		/** Look whether the cursor is inside the element's
-		 * span. Note that it is necessary to take the
-		 * boundary into account, and to accept virtual
-		 * elements, which have pos == endpos.
+		/** Look whether the cursor is inside the element's span. Note
+		 * that it is necessary to take the boundary into account, and
+		 * to accept virtual elements, in which case the position
+		 * will be before the virtual element.
 		 */
-		if (pos + boundary_corr >= cit->pos
-		    && (pos + boundary_corr < cit->endpos || cit->isVirtual())) {
-				x += cit->pos2x(pos);
-				break;
+		if (cit->isVirtual() && pos + boundary_corr == cit->pos)
+			break;
+		else if (pos + boundary_corr >= cit->pos
+		         && pos + boundary_corr < cit->endpos) {
+			x += cit->pos2x(pos);
+			break;
 		}
 		x += cit->full_width();
 	}
