@@ -1132,7 +1132,9 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 	if (style.pass_thru || runparams.pass_thru || runparams.for_search
 	    || contains(style.pass_thru_chars, c)
 	    || contains(runparams.pass_thru_chars, c)) {
-		if (c != '\0') {
+		if ((c == '\\') && runparams.for_search)
+			os << "\\\\";
+		else if (c != '\0') {
 			Encoding const * const enc = runparams.encoding;
 			if (enc && !enc->encodable(c))
 				throw EncodingException(c);

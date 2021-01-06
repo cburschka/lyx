@@ -870,16 +870,15 @@ public:
 
 static MatchResult::range interpretMatch(MatchResult &oldres, MatchResult &newres)
 {
-  if (newres.match2end < oldres.match2end)
+  int range = oldres.match_len;
+  if (range < 2) range = 2;
+  if (newres.match2end < oldres.match2end - oldres.match_len)
     return MatchResult::newIsTooFar;
   if (newres.match_len < oldres.match_len)
     return MatchResult::newIsTooFar;
-  if ((newres.match_len == oldres.match_len) && (newres.match2end == oldres.match2end))
-    return MatchResult::newIsBetter;
-  if ((newres.match_len == oldres.match_len) && (newres.match2end -2 == oldres.match2end)) {
-    // The string contained for instance "\usepackage...fontenc ..."
-    // and now after moved 9 char forward contains "ge...{fontenc} ..."
-    // so we accept it as OK
+  if ((newres.match_len == oldres.match_len) &&
+      (newres.match2end < oldres.match2end + range) &&
+      (newres.match2end > oldres.match2end - range)) {
     return MatchResult::newIsBetter;
   }
   return MatchResult::newIsInvalid;
@@ -1785,6 +1784,9 @@ void LatexInfo::buildEntries(bool isPatternString)
         continue;
     }
     else {
+      size_t pos = submath.position(size_t(0));
+      if ((pos > 0) && (interval_.par[pos-1] == '\\'))
+        continue;
       if (submath.str(1).compare("begin") == 0) {
         math_end_waiting = true;
         math_end = submath.str(2);
@@ -1842,7 +1844,12 @@ void LatexInfo::buildEntries(bool isPatternString)
           }
         }
       }
-    };
+    }
+    else {
+      size_t pos = sub.position(size_t(0));
+      if ((pos > 0) && (interval_.par[pos-1] == '\\'))
+        continue;
+    }
     if (keys.find(key) != keys.end()) {
       if (keys[key].keytype == KeyInfo::headRemove) {
         KeyInfo found1 = keys[key];
@@ -2055,10 +2062,10 @@ void LatexInfo::buildEntries(bool isPatternString)
         if (found.keytype == KeyInfo::doRemove) {
           if (closings > 0) {
             size_t endpar = 2 + interval_.findclosing(found._dataStart, interval_.par.length(), '{', '}', closings);
-	    if (endpar >= interval_.par.length())
-	      found._dataStart = interval_.par.length();
-	    else
-	      found._dataStart = endpar;
+            if (endpar >= interval_.par.length())
+              found._dataStart = interval_.par.length();
+            else
+              found._dataStart = endpar;
             found._tokensize = found._dataStart - found._tokenstart;
           }
           else {
@@ -2943,7 +2950,9 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 		string lead_as_regexp;
 		if (lead_size > 0) {
 			// @todo No need to search for \regexp{} insets in leading material
-			lead_as_regexp = escape_for_regex(par_as_string.substr(0, lead_size), !opt.ignoreformat);
+			static std::regex specialChars { R"([-[\]{}()*+?.,\^$|#\s\\])" };
+			lead_as_regexp = std::regex_replace(par_as_string.substr(0, lead_size), specialChars,  R"(\$&)" );
+			// lead_as_regexp = escape_for_regex(par_as_string.substr(0, lead_size), !opt.ignoreformat);
 			par_as_string = par_as_string_nolead;
 			LYXERR(Debug::FIND, "lead_as_regexp is '" << lead_as_regexp << "'");
 			LYXERR(Debug::FIND, "par_as_string now is '" << par_as_string << "'");
@@ -3589,15 +3598,21 @@ static bool findAdvForwardInnermost(DocIterator & cur)
  ** position that matches, plus computing the length of the matching text to
  ** be selected
  **/
-int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, int expected_len)
+int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, int expected_len, int prefix_len = 0)
 {
 	// Search the foremost position that matches (avoids find of entire math
 	// inset when match at start of it)
 	DocIterator old_cur(cur.buffer());
 	MatchResult mres;
 	int max_match;
+	// If (prefix_len > 0) means that forwarding 1 position will remove the complete entry
+	// Happens with e.g. hyperlinks
+	// either one sees "http://www.bla.bla" or nothing
+	// so the search for "www" gives prefix_len = 7 (== sizeof("http://")
+	// and although we search for only 3 chars, we find the whole hyperlink inset
+	bool at_begin = (prefix_len == 0);
 	if (findAdvForwardInnermost(cur)) {
-		mres = match(cur);
+		mres = match(cur, -1, at_begin);
 		displayMres(mres, 0);
 		if (expected_len > 0) {
 			if (mres.match_len < expected_len)
@@ -3633,12 +3648,12 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, int expecte
             LYXERR(Debug::FIND, "verifying unmatch with len = " << len);
           }
           // Length of matched text (different from len param)
-          int old_match = match(cur, len).match_len;
+          int old_match = match(cur, len, at_begin).match_len;
           if (old_match < 0)
             old_match = 0;
           int new_match;
           // Greedy behaviour while matching regexps
-          while ((new_match = match(cur, len + 1).match_len) > old_match) {
+          while ((new_match = match(cur, len + 1, at_begin).match_len) > old_match) {
             ++len;
             old_match = new_match;
             LYXERR(Debug::FIND, "verifying   match with len = " << len);
@@ -3652,7 +3667,7 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, int expecte
           // Greedy behaviour while matching regexps
           while (maxl > minl) {
 	    MatchResult mres2;
-	    mres2 = match(cur, len);
+	    mres2 = match(cur, len, at_begin);
 	    displayMres(mres2, len);
             int actual_match = mres2.match_len;
             if (actual_match >= max_match) {
@@ -3688,7 +3703,7 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, int expecte
             }
             if (cur.pos() != old_cur.pos()) {
               // OK, forwarded 1 pos in actual inset
-              actual_match = match(cur, len-1).match_len;
+              actual_match = match(cur, len-1, at_begin).match_len;
               if (actual_match == max_match) {
                 // Ha, got it! The shorter selection has the same match length
                 len--;
@@ -3702,7 +3717,7 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, int expecte
             }
             else {
               LYXERR(Debug::INFO, "cur.pos() == old_cur.pos(), this should never happen");
-              actual_match = match(cur, len).match_len;
+              actual_match = match(cur, len, at_begin).match_len;
               if (actual_match == max_match)
                 old_cur = cur;
             }
@@ -3780,7 +3795,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv const & match)
 			// LYXERR0("Leaving first loop");
 			{
 			  LYXERR(Debug::FIND, "Finalizing 1");
-			  int len = findAdvFinalize(cur, match, mres.match_len);
+			  int len = findAdvFinalize(cur, match, mres.match_len, mres.match_prefix);
 			  if (len > 0)
 			    return len;
 			  else {
@@ -4126,7 +4141,7 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 		else
 			match_len = findBackwardsAdv(cur, matchAdv);
 	} catch (exception & ex) {
-		bv->message(from_ascii(ex.what()));
+		bv->message(from_utf8(ex.what()));
 		return false;
 	}
 
