@@ -229,9 +229,8 @@ public:
 	typedef std::vector<Bookmark> BookmarkList;
 
 public:
-	/// constructor, set max_bookmarks
-	/// allow 9 regular bookmarks, bookmark 0 is temporary
-	BookmarksSection() : bookmarks(10), max_bookmarks(9) {}
+	///
+	BookmarksSection() : bookmarks(max_bookmarks + 1) {}
 
 	/// Save the current position as bookmark
 	void save(support::FileName const & fname, pit_type bottom_pit, pos_type bottom_pos,
@@ -265,11 +264,12 @@ public:
 
 private:
 
+	/// allow 9 regular bookmarks, bookmark 0 is temporary
+	unsigned int const max_bookmarks = 9;
+
 	/// a list of bookmarks
 	BookmarkList bookmarks;
 
-	///
-	unsigned int const max_bookmarks;
 };
 
 
