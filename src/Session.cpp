@@ -325,7 +325,7 @@ bool BookmarksSection::isValid(unsigned int i) const
 
 bool BookmarksSection::hasValid() const
 {
-	for (size_t i = 1; i <= size(); ++i) {
+	for (size_t i = 1; i < bookmarks.size(); ++i) {
 		if (isValid(i))
 			return true;
 	}

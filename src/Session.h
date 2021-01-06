@@ -246,7 +246,7 @@ public:
 	bool hasValid() const;
 
 	///
-	unsigned int size() const { return max_bookmarks; }
+	unsigned int size() const { return bookmarks.size(); }
 
 	/// clear all bookmarks
 	void clear();

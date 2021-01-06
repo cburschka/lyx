@@ -3297,9 +3297,10 @@ bool GuiView::closeBuffer(Buffer & buf)
 	if (success) {
 		// goto bookmark to update bookmark pit.
 		// FIXME: we should update only the bookmarks related to this buffer!
+		// FIXME: this is done also in LFUN_WINDOW_CLOSE!
 		LYXERR(Debug::DEBUG, "GuiView::closeBuffer()");
-		for (unsigned int i = 0; i < theSession().bookmarks().size(); ++i)
-			guiApp->gotoBookmark(i + 1, false, false);
+		for (unsigned int i = 1; i < theSession().bookmarks().size(); ++i)
+			guiApp->gotoBookmark(i, false, false);
 
 		if (saveBufferIfNeeded(buf, false)) {
 			buf.removeAutosaveFile();

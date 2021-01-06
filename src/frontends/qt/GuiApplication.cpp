@@ -1684,9 +1684,10 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 
 	case LFUN_WINDOW_CLOSE:
+		// FIXME: this is done also in GuiView::closeBuffer()!
 		// update bookmark pit of the current buffer before window close
-		for (size_t i = 0; i < theSession().bookmarks().size(); ++i)
-			gotoBookmark(i+1, false, false);
+		for (size_t i = 1; i < theSession().bookmarks().size(); ++i)
+			gotoBookmark(i, false, false);
 		// clear the last opened list, because
 		// maybe this will end the session
 		theSession().lastOpened().clear();
