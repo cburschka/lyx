@@ -26,7 +26,7 @@
 namespace lyx {
 
 InsetMathEnsureMath::InsetMathEnsureMath(Buffer * buf)
-	: InsetMathNest(buf, 1)
+	: InsetMathGrid(buf, 1, 1)
 {}
 
 
