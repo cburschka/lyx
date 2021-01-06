@@ -34,21 +34,20 @@ public:
 	///
 	void drawT(TextPainter & pi, int x, int y) const override;
 	///
-	void addRow(row_type row) override {}
+	void addRow(row_type) override {}
 	///
-	void delRow(row_type row) override {}
+	void delRow(row_type) override {}
 	///
-	void swapRow(row_type row) override {}
+	void swapRow(row_type) override {}
 	///
-	void addCol(col_type col) override {}
+	void addCol(col_type) override {}
 	///
-	void delCol(col_type col) override {}
+	void delCol(col_type) override {}
 	///
-	docstring eolString(row_type row, bool fragile, bool latex,
-	                    bool last_eoln) const override
+	docstring eolString(row_type, bool, bool, bool) const override
 	{ return docstring(); }
 	///
-	docstring eocString(col_type col, col_type lastcol) const override
+	docstring eocString(col_type, col_type) const override
 	{ return docstring(); }
 	///
 	void write(TeXMathStream & os) const override;
