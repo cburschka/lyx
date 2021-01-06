@@ -79,10 +79,6 @@ private:
 	bool isBufferDependent() const override { return true; }
 	void saveSession(QSettings & settings) const override;
 	void restoreSession() override;
-	/** Disconnect from the inset when the Apply button is pressed.
-	 *  Allows easy insertion of multiple citations.
-	 */
-	bool disconnectOnApply() const override { return true; }
 	//@}
 
 	///
