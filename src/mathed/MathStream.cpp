@@ -106,6 +106,8 @@ TeXMathStream & operator<<(TeXMathStream & ws, docstring const & s)
 	} else if (ws.pendingSpace()) {
 		if (isAlphaASCII(s[first]))
 			ws.os() << ' ';
+		else if (s[first] == '[' && ws.useBraces())
+			ws.os() << "{}";
 		else if (s[first] == ' ' && ws.textMode())
 			ws.os() << '\\';
 		ws.pendingSpace(false);
@@ -148,9 +150,17 @@ void TeXMathStream::addlines(unsigned int n)
 }
 
 
-void TeXMathStream::pendingSpace(bool how)
+void TeXMathStream::pendingSpace(bool space)
 {
-	pendingspace_ = how;
+	pendingspace_ = space;
+	if (!space)
+		usebraces_ = false;
+}
+
+
+void TeXMathStream::useBraces(bool braces)
+{
+	usebraces_ = braces;
 }
 
 
@@ -226,6 +236,8 @@ TeXMathStream & operator<<(TeXMathStream & ws, char c)
 	} else if (ws.pendingSpace()) {
 		if (isAlphaASCII(c))
 			ws.os() << ' ';
+		else if (c == '[' && ws.useBraces())
+			ws.os() << "{}";
 		else if (c == ' ' && ws.textMode())
 			ws.os() << '\\';
 		ws.pendingSpace(false);

@@ -1214,8 +1214,11 @@ void InsetMathMacro::write(TeXMathStream & os) const
 	}
 
 	// add space if there was no argument
-	if (first)
+	// or add braces if we have optionals but none are present and [ follows
+	if (first) {
 		os.pendingSpace(true);
+		os.useBraces(d->optionals_ > 0);
+	}
 
 	// write \(no)limits modifiers if relevant
 	writeLimits(os);

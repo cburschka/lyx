@@ -80,9 +80,13 @@ public:
 	/// tell which ulem command type we are inside
 	UlemCmdType ulemCmd() const { return ulemcmd_; }
 	/// writes space if next thing is isalpha()
-	void pendingSpace(bool how);
+	void pendingSpace(bool space);
 	/// writes space if next thing is isalpha()
 	bool pendingSpace() const { return pendingspace_; }
+	/// write braces if a space is pending and next char is [
+	void useBraces(bool braces);
+	/// write braces if a space is pending and next char is [
+	bool useBraces() const { return usebraces_; }
 	/// tell whether to write the closing brace of \ensuremath
 	void pendingBrace(bool brace);
 	/// tell whether to write the closing brace of \ensuremath
@@ -124,6 +128,8 @@ private:
 	OutputType output_ = wsDefault;
 	/// do we have a space pending?
 	bool pendingspace_ = false;
+	/// do we have to write braces when a space is pending and [ follows?
+	bool usebraces_ = false;
 	/// do we have a brace pending?
 	bool pendingbrace_ = false;
 	/// are we in text mode when producing latex code?
