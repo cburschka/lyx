@@ -1740,8 +1740,8 @@ class MathInfo {
 
 void LatexInfo::buildEntries(bool isPatternString)
 {
-  static regex const rmath("\\$|\\\\\\[|\\\\\\]|\\\\(begin|end)\\{((eqnarray|equation|flalign|gather|multline|align|alignat)\\*?)\\}");
-  static regex const rkeys("\\$|\\\\\\[|\\\\\\]|\\\\((([a-zA-Z]+\\*?)(\\{([a-z]+\\*?)\\}|=[0-9]+[a-z]+)?))");
+  static regex const rmath("(\\\\)*(\\$|\\\\\\[|\\\\\\]|\\\\(begin|end)\\{((eqnarray|equation|flalign|gather|multline|align|alignat)\\*?)\\})");
+  static regex const rkeys("(\\\\)*(\\$|\\\\\\[|\\\\\\]|\\\\((([a-zA-Z]+\\*?)(\\{([a-z]+\\*?)\\}|=[0-9]+[a-z]+)?)))");
   static bool disableLanguageOverride = false;
   smatch sub, submath;
   bool evaluatingRegexp = false;
@@ -1762,48 +1762,46 @@ void LatexInfo::buildEntries(bool isPatternString)
 
   for (sregex_iterator itmath(interval_.par.begin(), interval_.par.end(), rmath), end; itmath != end; ++itmath) {
     submath = *itmath;
+    if ((submath.position(2) - submath.position(0)) %2 == 1) {
+      // prefixed by odd count of '\\'
+      continue;
+    }
     if (math_end_waiting) {
-      size_t pos = submath.position(size_t(0));
+      size_t pos = submath.position(size_t(2));
       if ((math_end == "$") &&
-          (submath.str(0) == "$") &&
-          (interval_.par[pos-1] != '\\')) {
+          (submath.str(2) == "$")) {
         mi.insert("$", math_pos, pos + 1);
         math_end_waiting = false;
       }
       else if ((math_end == "\\]") &&
-               (submath.str(0) == "\\]")) {
+               (submath.str(2) == "\\]")) {
         mi.insert("\\]", math_pos, pos + 2);
         math_end_waiting = false;
       }
-      else if ((submath.str(1).compare("end") == 0) &&
-          (submath.str(2).compare(math_end) == 0)) {
-        mi.insert(math_end, math_pos, pos + submath.str(0).length());
+      else if ((submath.str(3).compare("end") == 0) &&
+          (submath.str(4).compare(math_end) == 0)) {
+        mi.insert(math_end, math_pos, pos + submath.str(2).length());
         math_end_waiting = false;
       }
       else
         continue;
     }
     else {
-      size_t pos = submath.position(size_t(0));
-      if ((pos > 0) && (interval_.par[pos-1] == '\\'))
-        continue;
-      if (submath.str(1).compare("begin") == 0) {
+      if (submath.str(3).compare("begin") == 0) {
         math_end_waiting = true;
-        math_end = submath.str(2);
-        math_pos = submath.position(size_t(0));
+        math_end = submath.str(4);
+        math_pos = submath.position(size_t(2));
       }
-      else if (submath.str(0).compare("\\[") == 0) {
+      else if (submath.str(2).compare("\\[") == 0) {
         math_end_waiting = true;
         math_end = "\\]";
-        math_pos = submath.position(size_t(0));
+        math_pos = submath.position(size_t(2));
       }
-      else if (submath.str(0) == "$") {
-        size_t pos = submath.position(size_t(0));
-        if ((pos == 0) || (interval_.par[pos-1] != '\\')) {
-          math_end_waiting = true;
-          math_end = "$";
-          math_pos = pos;
-        }
+      else if (submath.str(2) == "$") {
+        size_t pos = submath.position(size_t(2));
+        math_end_waiting = true;
+        math_end = "$";
+        math_pos = pos;
       }
     }
   }
@@ -1830,14 +1828,18 @@ void LatexInfo::buildEntries(bool isPatternString)
   math_pos = mi.getFirstPos();
   for (sregex_iterator it(interval_.par.begin(), interval_.par.end(), rkeys), end; it != end; ++it) {
     sub = *it;
-    string key = sub.str(3);
+    if ((sub.position(2) - sub.position(0)) %2 == 1) {
+      // prefixed by odd count of '\\'
+      continue;
+    }
+    string key = sub.str(5);
     if (key == "") {
-      if (sub.str(0)[0] == '\\')
-        key = sub.str(0)[1];
+      if (sub.str(2)[0] == '\\')
+        key = sub.str(2)[1];
       else {
-        key = sub.str(0);
+        key = sub.str(2);
         if (key == "$") {
-          size_t k_pos = sub.position(size_t(0));
+          size_t k_pos = sub.position(size_t(2));
           if ((k_pos > 0) && (interval_.par[k_pos - 1] == '\\')) {
             // Escaped '$', ignoring
             continue;
@@ -1845,17 +1847,12 @@ void LatexInfo::buildEntries(bool isPatternString)
         }
       }
     }
-    else {
-      size_t pos = sub.position(size_t(0));
-      if ((pos > 0) && (interval_.par[pos-1] == '\\'))
-        continue;
-    }
     if (keys.find(key) != keys.end()) {
       if (keys[key].keytype == KeyInfo::headRemove) {
         KeyInfo found1 = keys[key];
         found1.disabled = true;
         found1.head = "\\" + key + "{";
-        found1._tokenstart = sub.position(size_t(0));
+        found1._tokenstart = sub.position(size_t(2));
         found1._tokensize = found1.head.length();
         found1._dataStart = found1._tokenstart + found1.head.length();
         int endpos = interval_.findclosing(found1._dataStart, interval_.par.length(), '{', '}', 1);
@@ -1865,10 +1862,10 @@ void LatexInfo::buildEntries(bool isPatternString)
       }
     }
     if (evaluatingRegexp) {
-      if (sub.str(1).compare("endregexp") == 0) {
+      if (sub.str(3).compare("endregexp") == 0) {
         evaluatingRegexp = false;
         // found._tokenstart already set
-        found._dataEnd = sub.position(size_t(0)) + 13;
+        found._dataEnd = sub.position(size_t(2)) + 13;
         found._dataStart = found._dataEnd;
         found._tokensize = found._dataEnd - found._tokenstart;
         found.parenthesiscount = 0;
@@ -1880,7 +1877,7 @@ void LatexInfo::buildEntries(bool isPatternString)
     }
     else {
       if (evaluatingMath) {
-        if (size_t(sub.position(size_t(0))) < mi.getEndPos())
+        if (size_t(sub.position(size_t(2))) < mi.getEndPos())
           continue;
         evaluatingMath = false;
         mi.incrEntry();
@@ -1902,7 +1899,7 @@ void LatexInfo::buildEntries(bool isPatternString)
         found = keys[key];
       if (key.compare("regexp") == 0) {
         evaluatingRegexp = true;
-        found._tokenstart = sub.position(size_t(0));
+        found._tokenstart = sub.position(size_t(2));
         found._tokensize = 0;
         continue;
       }
@@ -1911,9 +1908,9 @@ void LatexInfo::buildEntries(bool isPatternString)
     if (found.keytype == KeyInfo::isIgnored)
       continue;
     else if (found.keytype == KeyInfo::isMath) {
-      if (size_t(sub.position(size_t(0))) == math_pos) {
+      if (size_t(sub.position(size_t(2))) == math_pos) {
         found = keys[key];
-        found._tokenstart = sub.position(size_t(0));
+        found._tokenstart = sub.position(size_t(2));
         found._tokensize = mi.getSize();
         found._dataEnd = found._tokenstart + found._tokensize;
         found._dataStart = found._dataEnd;
@@ -1928,21 +1925,21 @@ void LatexInfo::buildEntries(bool isPatternString)
         bool discardComment;
         found = keys[key];
         found.keytype = KeyInfo::doRemove;
-        if ((sub.str(5).compare("longtable") == 0) ||
-            (sub.str(5).compare("tabular") == 0)) {
+        if ((sub.str(7).compare("longtable") == 0) ||
+            (sub.str(7).compare("tabular") == 0)) {
           discardComment = true;        /* '%' */
         }
         else {
           discardComment = false;
           static regex const removeArgs("^(multicols|multipar|sectionbox|subsectionbox|tcolorbox)$");
           smatch sub2;
-          string token = sub.str(5);
+          string token = sub.str(7);
           if (regex_match(token, sub2, removeArgs)) {
             found.keytype = KeyInfo::removeWithArg;
           }
         }
-        // discard spaces before pos(0)
-        int pos = sub.position(size_t(0));
+        // discard spaces before pos(2)
+        int pos = sub.position(size_t(2));
         int count;
         for (count = 0; pos - count > 0; count++) {
           char c = interval_.par[pos-count-1];
@@ -1954,9 +1951,9 @@ void LatexInfo::buildEntries(bool isPatternString)
             break;
         }
         found._tokenstart = pos - count;
-        if (sub.str(1).compare(0, 5, "begin") == 0) {
-          size_t pos1 = pos + sub.str(0).length();
-          if (sub.str(5).compare("cjk") == 0) {
+        if (sub.str(3).compare(0, 5, "begin") == 0) {
+          size_t pos1 = pos + sub.str(2).length();
+          if (sub.str(7).compare("cjk") == 0) {
             pos1 = interval_.findclosing(pos1+1, interval_.par.length()) + 1;
             if ((interval_.par[pos1] == '{') && (interval_.par[pos1+1] == '}'))
               pos1 += 2;
@@ -1989,7 +1986,7 @@ void LatexInfo::buildEntries(bool isPatternString)
         }
         else {
           // Handle "\end{...}"
-          found._dataStart = pos + sub.str(0).length();
+          found._dataStart = pos + sub.str(2).length();
           found._dataEnd = found._dataStart;
           found._tokensize = count + found._dataEnd - pos;
           found.parenthesiscount = 0;
@@ -1999,16 +1996,16 @@ void LatexInfo::buildEntries(bool isPatternString)
       }
     }
     else if (found.keytype != KeyInfo::isRegex) {
-      found._tokenstart = sub.position(size_t(0));
+      found._tokenstart = sub.position(size_t(2));
       if (found.parenthesiscount == 0) {
         // Probably to be discarded
-        size_t following_pos = sub.position(size_t(0)) + sub.str(3).length() + 1;
+        size_t following_pos = sub.position(size_t(2)) + sub.str(5).length() + 1;
         char following = interval_.par[following_pos];
         if (following == ' ')
-          found.head = "\\" + sub.str(3) + " ";
+          found.head = "\\" + sub.str(5) + " ";
         else if (following == '=') {
           // like \uldepth=1000pt
-          found.head = sub.str(0);
+          found.head = sub.str(2);
         }
         else
           found.head = "\\" + key;
@@ -2036,7 +2033,7 @@ void LatexInfo::buildEntries(bool isPatternString)
           evaluatingOptional = true;
           optionalEnd = optend;
         }
-        string token = sub.str(5);
+        string token = sub.str(7);
         int closings;
         if (interval_.par[optend] != '{') {
           closings = 0;
@@ -2050,7 +2047,7 @@ void LatexInfo::buildEntries(bool isPatternString)
         }
         else if (found.parenthesiscount > 1) {
           if (token != "") {
-            found.head = sub.str(0) + "{";
+            found.head = sub.str(2) + "{";
             closings = found.parenthesiscount - 1;
           }
           else {
@@ -3379,6 +3376,28 @@ MatchResult MatchStringAdv::operator()(DocIterator const & cur, int len, bool at
 	return mres;
 }
 
+static bool simple_replace(string &t, string from, string to)
+{
+  regex repl("(\\\\)*(" + from + ")");
+  string s("");
+  size_t lastpos = 0;
+  smatch sub;
+  for (sregex_iterator it(t.begin(), t.end(), repl), end; it != end; ++it) {
+    sub = *it;
+    if ((sub.position(2) - sub.position(0)) % 2 == 1)
+      continue;
+    if (lastpos < (size_t) sub.position(2))
+      s += t.substr(lastpos, sub.position(2) - lastpos);
+    s += to;
+    lastpos = sub.position(2) + sub.length(2);
+  }
+  if (lastpos == 0)
+    return false;
+  else if (lastpos < t.length())
+    s += t.substr(lastpos, t.length() - lastpos);
+  t = s;
+  return true;
+}
 
 string MatchStringAdv::normalize(docstring const & s, bool hack_braces) const
 {
@@ -3426,10 +3445,11 @@ string MatchStringAdv::normalize(docstring const & s, bool hack_braces) const
 			while (regex_replace(t, t, "\\{", "_x_<")
 			       || regex_replace(t, t, "\\}", "_x_>"))
 				LYXERR(Debug::FIND, "After {} replacement: '" << t << "'");
-		else
-			while (regex_replace(t, t, "\\\\\\{", "_x_<")
-			       || regex_replace(t, t, "\\\\\\}", "_x_>"))
-				LYXERR(Debug::FIND, "After {} replacement: '" << t << "'");
+		else {
+			simple_replace(t, "\\\\\\{", "_x_<");
+			simple_replace(t, "\\\\\\}", "_x_>");
+			LYXERR(Debug::FIND, "After {} replacement: '" << t << "'");
+		}
 	}
 
 	return t;
