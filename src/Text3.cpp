@@ -2151,7 +2151,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				// Unknown style. Report and fall back to default.
 				cur.errorMessage(from_utf8(N_("Table Style ")) + from_utf8(tabstyle) +
 						     from_utf8(N_(" not known")));
-			
 		}
 		if (doInsertInset(cur, this, cmd, false, true))
 			cur.posForward();
@@ -2167,7 +2166,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			break;
 		int const r = convert<int>(rows);
 		int const c = convert<int>(cols);
-			
+
 		string suffix;
 		if (r == 1)
 			suffix = "_1x1";
@@ -2261,7 +2260,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_NOMENCL_INSERT: {
 		InsetCommandParams p(NOMENCL_CODE);
 		if (cmd.argument().empty()) {
-			p["symbol"] = 
+			p["symbol"] =
 				bv->cursor().innerText()->getStringForDialog(bv->cursor());
 			cur.clearSelection();
 		} else
@@ -2906,7 +2905,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	bool enable = true;
 	bool allow_in_passthru = false;
 	InsetCode code = NO_CODE;
-	
+
 	switch (cmd.action()) {
 
 	case LFUN_DEPTH_DECREMENT:
