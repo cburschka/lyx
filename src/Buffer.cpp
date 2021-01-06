@@ -4056,18 +4056,29 @@ unique_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 	// Some macros rely on font encoding
 	runparams.main_fontenc = params().main_font_encoding();
 
+	// Use the right wrapping for the comment at the beginning of the generated
+	// snippet, so that it is either valid LaTeX or valid XML (including HTML and DocBook).
+	docstring comment_start = from_ascii("% ");
+	docstring comment_end = from_ascii("");
+	if (runparams.flavor == Flavor::Html || runparams.flavor == Flavor::DocBook5) {
+		comment_start = from_ascii("<!-- ");
+		comment_end = from_ascii(" -->");
+	}
+
 	if (output == CurrentParagraph) {
 		runparams.par_begin = par_begin;
 		runparams.par_end = par_end;
 		if (par_begin + 1 == par_end) {
-			os << "% "
+			os << comment_start
 			   << bformat(_("Preview source code for paragraph %1$d"), par_begin)
+			   << comment_end
 			   << "\n\n";
 		} else {
-			os << "% "
+			os << comment_start
 			   << bformat(_("Preview source code from paragraph %1$s to %2$s"),
 					convert<docstring>(par_begin),
 					convert<docstring>(par_end - 1))
+			   << comment_end
 			   << "\n\n";
 		}
 		// output paragraphs
@@ -4117,13 +4128,14 @@ unique_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 				d->ignore_parent = false;
 		}
 	} else {
-		os << "% ";
+		os << comment_start;
 		if (output == FullSource)
 			os << _("Preview source code");
 		else if (output == OnlyPreamble)
 			os << _("Preview preamble");
 		else if (output == OnlyBody)
 			os << _("Preview body");
+		os << comment_end;
 		os << "\n\n";
 		if (runparams.flavor == Flavor::LyX) {
 			ostringstream ods;
@@ -4137,9 +4149,9 @@ unique_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 		} else if (runparams.flavor == Flavor::Html) {
 			writeLyXHTMLSource(os, runparams, output);
 		} else if (runparams.flavor == Flavor::Text) {
-			if (output == OnlyPreamble) {
+			if (output == OnlyPreamble)
 				os << "% "<< _("Plain text does not have a preamble.");
-			} else
+			else
 				writePlaintextFile(*this, os, runparams);
 		} else if (runparams.flavor == Flavor::DocBook5) {
 			writeDocBookSource(os, runparams, output);
