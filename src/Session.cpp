@@ -339,6 +339,20 @@ BookmarksSection::Bookmark const & BookmarksSection::bookmark(unsigned int i) co
 }
 
 
+BookmarksSection::BookmarkPosList
+BookmarksSection::bookmarksInPar(FileName const & fn, int const par_id) const
+{
+	// FIXME: we do not consider the case of bottom_pit.
+	// This is probably not a problem.
+	BookmarksSection::BookmarkPosList bip;
+	for (size_t i = 1; i < bookmarks.size(); ++i)
+		if (bookmarks[i].filename == fn && bookmarks[i].top_id == par_id)
+			bip.push_back({i, bookmarks[i].top_pos});
+
+	return bip;
+}
+
+
 LastCommandsSection::LastCommandsSection(unsigned int num) :
 	default_num_last_commands(30),
 	absolute_max_last_commands(100)

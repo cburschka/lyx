@@ -331,8 +331,9 @@ ColorSet::ColorSet()
 	{ Color_buttonhoverbg, N_("button background under focus"), "buttonhoverbg", "#C7C7CA", "#C7C7CA", "buttonhoverbg" },
 	{ Color_paragraphmarker, N_("paragraph marker"), "paragraphmarker", grey80, grey40, "paragraphmarker"},
 	{ Color_previewframe, N_("preview frame"), "previewframe", black, Linen, "previewframe"},
-	{ Color_inherit, N_("inherit"), "inherit", black, Linen, "inherit" },
 	{ Color_regexpframe, N_("regexp frame"), "regexpframe", Green, green, "regexpframe" },
+	{ Color_bookmark, N_("bookmark"), "bookmark", RoyalBlue, RoyalBlue, "bookmark" },
+	{ Color_inherit, N_("inherit"), "inherit", black, Linen, "inherit" },
 	{ Color_ignore, N_("ignore"), "ignore", black, Linen, "ignore" },
 	{ Color_ignore, nullptr, nullptr, nullptr, nullptr, nullptr }
 	};
