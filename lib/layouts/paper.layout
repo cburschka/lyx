@@ -11,6 +11,19 @@ Sides                   1
 SecNumDepth             3
 TocDepth                3
 
+AddToPreamble
+	% Save and disable \example as this might clash
+	% with theorems
+	\let\origexample\example
+	\let\endorigexample\endexample
+	\let\example\relax
+	% If theorems hasn't been loaded, restore example
+	\AtBeginDocument{%
+	\@ifundefined{example}{\let\example\origexample}{}
+	}
+EndPreamble
+
+
 Style Standard
 	Category              MainText
 	Margin                Static
