@@ -393,7 +393,7 @@ Sublabel: varioref
 # varioref is not working with XeTeX/LuaTeX for Russian, as it uses some
 # char macros which are not defined for these engines.
 export/doc/ru/UserGuide_(dvi3|pdf[45])_(system|tex)F
-export/doc/ru/(Math|Additional)_(dvi3|pdf[45])_systemF
+export/doc/ru/(Math|Additional|Shortcuts)_(dvi3|pdf[45])_systemF
 
 
 # ================================================
