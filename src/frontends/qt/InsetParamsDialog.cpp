@@ -193,14 +193,16 @@ docstring InsetParamsDialog::checkWidgets(bool immediate)
 		? d->widget_->creationCode() : LFUN_INSET_MODIFY;
 	bool const lfun_ok = lyx::getStatus(FuncRequest(code, argument)).enabled();
 
+	bool const changed_inset = ins && (ins != d->inset_ || d->changed_);
 	buttonBox->button(QDialogButtonBox::Ok)->setEnabled(!immediate && widget_ok
-							    && !read_only && valid_argument);
-	bool const can_be_restored = !immediate && !read_only
-			&& ins && (ins != d->inset_ || d->changed_);
+							    && !read_only && valid_argument
+							    && (!ins || changed_inset));
+	bool const can_be_restored = !immediate && !read_only && changed_inset;
 	buttonBox->button(QDialogButtonBox::Reset)->setEnabled(can_be_restored);
-	buttonBox->button(QDialogButtonBox::Apply)->setEnabled(ins && !immediate
+	buttonBox->button(QDialogButtonBox::Apply)->setEnabled(!immediate
 							       && lfun_ok && widget_ok
-							       && !read_only && valid_argument);
+							       && !read_only && valid_argument
+							       && changed_inset);
 	immediateApplyCB->setEnabled(ins && !read_only);
 	// This seems to be the only way to access custom buttons
 	QList<QAbstractButton*> buttons = buttonBox->buttons();
