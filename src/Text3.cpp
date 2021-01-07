@@ -1645,7 +1645,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (para.layout().isEnvironment())
 			layout = para.layout().name();
 		depth_type split_depth = cur.paragraph().params().depth();
-		depth_type nextpar_depth = 0;
+		vector<depth_type> nextpars_depth;
 		if (outer || previous) {
 			// check if we have an environment in our scope
 			pit_type pit = cur.pit();
@@ -1670,9 +1670,20 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			}
 		}
 		if ((outer || normal) && cur.pit() < cur.lastpit()) {
-			// save nesting of following paragraph
-			Paragraph cpar = pars_[cur.pit() + 1];
-			nextpar_depth = cpar.params().depth();
+			// save nesting of following paragraphs if they are deeper
+			// or same depth
+			pit_type offset = 1;
+			depth_type cur_depth = pars_[cur.pit()].params().depth();
+			while (cur.pit() + offset <= cur.lastpit()) {
+				Paragraph cpar = pars_[cur.pit() + offset];
+				depth_type nextpar_depth = cpar.params().depth();
+				if (cur_depth <= nextpar_depth) {
+					nextpars_depth.push_back(nextpar_depth);
+					cur_depth = nextpar_depth;
+					++offset;
+				} else
+					break;
+			}
 		}
 		if (before)
 			cur.top().setPitPos(cur.pit(), 0);
@@ -1700,17 +1711,20 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		else
 			lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK, "inverse"));
 		lyx::dispatch(FuncRequest(LFUN_LAYOUT, layout));
-		if ((outer || normal) && nextpar_depth > 0) {
-			// restore nesting of following paragraph
+		if ((outer || normal) && !nextpars_depth.empty()) {
+			// restore nesting of following paragraphs
 			DocIterator scur = cur;
-			depth_type const max_depth = cur.paragraph().params().depth() + 1;
-			cur.forwardPar();
-			while (cur.paragraph().params().depth() < min(nextpar_depth, max_depth)) {
-				depth_type const olddepth = cur.paragraph().params().depth();
-				lyx::dispatch(FuncRequest(LFUN_DEPTH_INCREMENT));
-				if (olddepth == cur.paragraph().params().depth())
-					// leave loop if no incrementation happens
-					break;
+			depth_type max_depth = cur.paragraph().params().depth() + 1;
+			for (auto nextpar_depth : nextpars_depth) {
+				cur.forwardPar();
+				while (cur.paragraph().params().depth() < min(nextpar_depth, max_depth)) {
+					depth_type const olddepth = cur.paragraph().params().depth();
+					lyx::dispatch(FuncRequest(LFUN_DEPTH_INCREMENT));
+					if (olddepth == cur.paragraph().params().depth())
+						// leave loop if no incrementation happens
+						break;
+				}
+				max_depth = cur.paragraph().params().depth() + 1;
 			}
 			cur.setCursor(scur);
 		}
