@@ -263,12 +263,13 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 	else if (cmd == "formatted") {
 		docstring label;
 		docstring prefix;
-		bool const use_caps   = getParam("caps") == "true";
-		bool const use_plural = getParam("plural") == "true";
+		bool const use_caps     = getParam("caps") == "true";
+		bool const use_plural   = getParam("plural") == "true";
+		bool const use_refstyle = buffer().params().use_refstyle;
 		docstring const fcmd =
-			getFormattedCmd(data, label, prefix, use_caps);
+			getFormattedCmd(data, label, prefix, use_refstyle, use_caps);
 		os << fcmd;
-		if (buffer().params().use_refstyle && use_plural)
+		if (use_refstyle && use_plural)
 		    os << "[s]";
 		os << '{' << label << '}';
 	}
