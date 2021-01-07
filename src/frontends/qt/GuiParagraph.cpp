@@ -75,7 +75,7 @@ GuiParagraph::GuiParagraph(GuiView & lv)
 	synchronizedViewCB->setChecked(false);
 #endif
 
-	on_synchronizedViewCB_toggled();
+	setButtons(synchronizedViewCB->isChecked());
 	QDoubleValidator * val = new QDoubleValidator(linespacingValue);
 	val->setNotation(QDoubleValidator::StandardNotation);
 	linespacingValue->setValidator(val);
@@ -155,16 +155,26 @@ LyXAlignment GuiParagraph::getAlignmentFromDialog() const
 }
 
 
-void GuiParagraph::on_synchronizedViewCB_toggled()
+void GuiParagraph::on_synchronizedViewCB_stateChanged(int state)
 {
-	bool in_sync = synchronizedViewCB->isChecked();
+	bool in_sync = state == Qt::Checked;
+	setButtons(in_sync);
+
+	// Apply pending changes
+	if (in_sync) 
+		changed();
+}
+
+
+void GuiParagraph::setButtons(bool const in_sync)
+{
 	buttonBox->button(QDialogButtonBox::Reset)->setEnabled(!in_sync);
 	buttonBox->button(QDialogButtonBox::Apply)->setEnabled(!in_sync);
 	buttonBox->button(QDialogButtonBox::Ok)->setEnabled(!in_sync);
-	if (!in_sync)
-		buttonBox->button(QDialogButtonBox::Cancel)->setText(qt_("&Cancel"));
-	else
+	if (in_sync) 
 		buttonBox->button(QDialogButtonBox::Cancel)->setText(qt_("&Close"));
+	else
+		buttonBox->button(QDialogButtonBox::Cancel)->setText(qt_("&Cancel"));
 }
 
 
@@ -246,7 +256,7 @@ void GuiParagraph::applyView()
 
 void GuiParagraph::updateView()
 {
-	on_synchronizedViewCB_toggled();
+	setButtons(synchronizedViewCB->isChecked());
 
 	ParagraphParameters const & pp = params();
 

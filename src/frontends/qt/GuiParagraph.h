@@ -60,12 +60,14 @@ private:
 	bool hasLabelwidth() const;
 	///
 	LyXAlignment alignPossible() const;
+	///
+	void setButtons(bool const in_sync);
 
 private Q_SLOTS:
 	///
 	void changed();
 	///
-	void on_synchronizedViewCB_toggled();
+	void on_synchronizedViewCB_stateChanged(int state);
 	///
 	void on_linespacing_activated(int);
 	/// Apply changes
