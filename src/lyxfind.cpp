@@ -51,6 +51,8 @@
 
 #include <map>
 #include <regex>
+
+//#define ResultsDebug
 #define USE_QT_FOR_SEARCH
 #if defined(USE_QT_FOR_SEARCH)
 	#include <QtCore>	// sets QT_VERSION
@@ -797,7 +799,7 @@ bool regex_replace(string const & s, string & t, string const & searchstr,
 	return rv;
 }
 
-
+#if 0
 /** Checks if supplied string segment is well-formed from the standpoint of matching open-closed braces.
  **
  ** Verify that closed braces exactly match open braces. This avoids that, for example,
@@ -851,7 +853,7 @@ bool braces_match(string const & beg,
 	LYXERR(Debug::FIND, "Braces match as expected");
 	return true;
 }
-
+#endif
 
 class MatchResult {
 public:
@@ -865,6 +867,9 @@ public:
 	int match2end;
 	int pos;
 	int leadsize;
+#if defined(ResultsDebug)
+	vector <string> result = vector <string>();
+#endif
 	MatchResult(): match_len(0),match_prefix(0),match2end(0), pos(0),leadsize(0) {};
 };
 
@@ -1407,6 +1412,8 @@ static void buildAccentsMap()
   accents["i"] = "ı";
   accents["jmath"] = "ȷ";
   accents["cdot"] = "·";
+  accents["guillemotright"] = "»";
+  accents["guillemotleft"] = "«";
   accents["hairspace"]     = getutf8(0xf0000);	// select from free unicode plane 15
   accents["thinspace"]     = getutf8(0xf0002);	// and used _only_ by findadv
   accents["negthinspace"]  = getutf8(0xf0003);	// to omit backslashed latex macros
@@ -1497,7 +1504,7 @@ void Intervall::removeAccents()
     buildAccentsMap();
   static regex const accre("\\\\(([\\S]|grave|breve|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot|ogonek|"
          "cedilla|subring|textsubring|subhat|textsubcircum|subtilde|textsubtilde|dgrave|textdoublegrave|rcap|textroundcap|slashed)\\{[^\\{\\}]+\\}"
-      "|((i|imath|jmath|cdot|[a-z]+space)|((backslash )?([lL]y[xX]|[tT]e[xX]|[lL]a[tT]e[xX]e?|lyxarrow)))(?![a-zA-Z]))");
+      "|((i|imath|jmath|cdot|[a-z]+space)|((backslash )?([lL]y[xX]|[tT]e[xX]|[lL]a[tT]e[xX]e?|lyxarrow))|guillemot(left|right))(?![a-zA-Z]))");
   smatch sub;
   for (sregex_iterator itacc(par.begin(), par.end(), accre), end; itacc != end; ++itacc) {
     sub = *itacc;
@@ -1838,13 +1845,6 @@ void LatexInfo::buildEntries(bool isPatternString)
         key = sub.str(2)[1];
       else {
         key = sub.str(2);
-        if (key == "$") {
-          size_t k_pos = sub.position(size_t(2));
-          if ((k_pos > 0) && (interval_.par[k_pos - 1] == '\\')) {
-            // Escaped '$', ignoring
-            continue;
-          }
-        }
       }
     }
     if (keys.find(key) != keys.end()) {
@@ -2183,7 +2183,6 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("textasciicircum|textasciitilde", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   makeKey("textasciiacute|texemdash",       KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   makeKey("dots|ldots",                     KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
-  makeKey("guillemotright|guillemotleft",   KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   // Spaces
   makeKey("quad|qquad|hfill|dotfill",               KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   makeKey("textvisiblespace|nobreakspace",          KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
@@ -3178,11 +3177,6 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		QRegularExpressionMatch match = p_regexp->match(qstr, 0, flags);
 		if (!match.hasMatch())
 			return mres;
-		// Check braces on segments that matched all (.*?) subexpressions,
-		// except the last "padding" one inserted by lyx.
-		for (int i = 3; i < match.lastCapturedIndex(); ++i)
-			if (!braces_match(match.captured(i), open_braces))
-				return mres;
 #else
 		regex const *p_regexp;
 		regex_constants::match_flag_type flags;
@@ -3197,49 +3191,25 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		if (re_it == sregex_iterator())
 			return mres;
 		match_results<string::const_iterator> const & m = *re_it;
-		// Check braces on segments that matched all (.*?) subexpressions,
-		// except the last "padding" one inserted by lyx.
-		for (size_t i = 3; i < m.size() - 1; ++i)
-			if (!braces_match(m[i], open_braces))
-				return mres;
 #endif
-		// Exclude from the returned match length any length
-		// due to close wildcards added at end of regexp
-		// and also the length of the leading (e.g. '\emph{}')
+		// Whole found string, including the leading
+		// std: m[0].second - m[0].first
+		// Qt: match.capturedEnd(0) - match.capturedStart(0)
 		//
-		// Whole found string, including the leading: m[0].second - m[0].first
-		// Size of the leading string: m[1].second - m[1].first
+		// Size of the leading string
+		// std: m[1].second - m[1].first
+		// Qt: match.capturedEnd(1) - match.capturedStart(1)
 		int leadingsize = 0;
-		int result;
 #if QTSEARCH
 		if (match.lastCapturedIndex() > 0) {
 			leadingsize = match.capturedEnd(1) - match.capturedStart(1);
 		}
-		int lastidx = match.lastCapturedIndex();
-		for (int i = 0; i <= lastidx; i++) {
-			LYXERR(Debug::FIND, "Match " << i << " is " << match.capturedEnd(i) - match.capturedStart(i) << " long");
-		}
-		if (close_wildcards == 0)
-			result = match.capturedEnd(0) - match.capturedStart(0);
-		else
-			result =  match.capturedStart(lastidx + 1 - close_wildcards) - match.capturedStart(0);
 
 #else
 		if (m.size() > 2) {
 			leadingsize = m[1].second - m[1].first;
 		}
-		for (size_t i = 0; i < m.size(); i++) {
-			LYXERR(Debug::FIND, "Match " << i << " is " << m[i].second - m[i].first << " long");
-		}
-		if (close_wildcards == 0)
-			result = m[0].second - m[0].first;
-		else
-			result =  m[m.size() - close_wildcards].first - m[0].first;
 #endif
-		if (result > leadingsize)
-			result -= leadingsize;
-		else
-			result = 0;
 #if QTSEARCH
 		mres.match_prefix = match.capturedEnd(2) - match.capturedStart(2);
 		mres.match_len = match.capturedEnd(0) - match.capturedEnd(2);
@@ -3298,6 +3268,25 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		if (mres.match2end < 0)
 		  mres.match_len = 0;
 		mres.leadsize = leadingsize;
+#if defined(ResultsDebug)
+	#if QTSEARCH
+		if (mres.match_len > 0) {
+		  string a0 = match.captured(0).mid(mres.pos + mres.match_prefix, mres.match_len).toStdString();
+		  mres.result.push_back(a0);
+		  for (int i = 3; i <= match.lastCapturedIndex(); i++) {
+		    mres.result.push_back(match.captured(i).toStdString());
+		  }
+		}
+	#else
+		if (mres.match_len > 0) {
+		  string a0 = m[0].str().substr(mres.pos + mres.match_prefix, mres.match_len);
+		  mres.result.push_back(a0);
+		  for (size_t i = 3; i < m.size(); i++) {
+		    mres.result.push_back(m[i]);
+		  }
+		}
+	#endif
+#endif
 		return mres;
 	}
 
@@ -3571,7 +3560,7 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 	return ods.str();
 }
 
-#if 0
+#if defined(ResultsDebug)
 // Debugging output
 static void displayMResult(MatchResult &mres, int increment)
 {
@@ -3580,6 +3569,8 @@ static void displayMResult(MatchResult &mres, int increment)
   LYXERR0( "match_len: " << mres.match_len);
   LYXERR0( "match_prefix: " << mres.match_prefix);
   LYXERR0( "match2end: " << mres.match2end);
+  for (size_t i = 0; i < mres.result.size(); i++)
+    LYXERR0( "Match " << i << " = \"" << mres.result[i] << "\"");
 }
 	#define displayMres(s,i) displayMResult(s,i);
 #else
