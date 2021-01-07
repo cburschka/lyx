@@ -42,14 +42,20 @@ public:
 	 */
 	explicit FileName(std::string const & abs_filename);
 
-	/// copy constructor.
+	/// copy constructor
 	FileName(FileName const &);
 
-	/// constructor with base name and suffix.
+	/// move constructor
+	FileName(FileName &&) noexcept;
+
+	/// constructor with base name and suffix
 	FileName(FileName const & fn, std::string const & suffix);
 
-	///
+	/// copy assign
 	FileName & operator=(FileName const &);
+
+	/// move assign
+	FileName & operator=(FileName &&) noexcept;
 
 	virtual ~FileName();
 	/** Set a new filename.
@@ -219,7 +225,7 @@ private:
 	bool copyTo(FileName const &, bool, FileNameSet &) const;
 	///
 	struct Private;
-	Private * const d;
+	Private * d;
 };
 
 
