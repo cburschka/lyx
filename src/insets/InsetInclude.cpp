@@ -563,6 +563,16 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 	FileName const included_file = includedFileName(buffer(), params());
 	Buffer const * const masterBuffer = buffer().masterBuffer();
 
+	if (runparams.inDeletedInset) {
+		// We cannot strike-out whole children,
+		// so we just output a note.
+		os << "\\textbf{"
+		   << bformat(buffer().B_("[INCLUDED FILE %1$s DELETED!]"),
+			      from_utf8(included_file.onlyFileName()))
+		   << "}";
+		return;
+	}
+
 	// if incfile is relative, make it relative to the master
 	// buffer directory.
 	if (!FileName::isAbsolute(incfile)) {
