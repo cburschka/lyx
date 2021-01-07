@@ -277,7 +277,7 @@ public:
 	void message(docstring const & msg) const;
 	/// display an error message
 	void errorMessage(docstring const & msg) const;
-	/// get the resut of the last dispatch
+	/// get the result of the last dispatch
 	DispatchResult const & result() const;
 
 	/// Set the cursor language from current input method language
@@ -286,7 +286,7 @@ public:
 	 * or partial match with the whole list of languages.
 	 */
 	void setLanguageFromInput();
-	/// Set the current font of the cursor from its location. 
+	/// Set the current font of the cursor from its location.
 	void setCurrentFont();
 
 	/**
