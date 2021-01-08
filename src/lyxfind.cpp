@@ -867,10 +867,8 @@ public:
 	int match2end;
 	int pos;
 	int leadsize;
-#if defined(ResultsDebug)
 	vector <string> result = vector <string>();
-#endif
-	MatchResult(): match_len(0),match_prefix(0),match2end(0), pos(0),leadsize(0) {};
+	MatchResult(int len = 0): match_len(len),match_prefix(0),match2end(0), pos(0),leadsize(0) {};
 };
 
 static MatchResult::range interpretMatch(MatchResult &oldres, MatchResult &newres)
@@ -961,8 +959,21 @@ private:
 public:
 	// Are we searching with regular expressions ?
 	bool use_regexp;
+	int valid_matches;
+	vector <string> matches = vector <string>(10);
+	void FillResults(MatchResult &found_mr);
 };
 
+void MatchStringAdv::FillResults(MatchResult &found_mr)
+{
+  if (found_mr.match_len > 0) {
+    valid_matches = found_mr.result.size();
+    for (size_t i = 0; i < found_mr.result.size(); i++)
+      matches[i] = found_mr.result[i];
+  }
+  else
+    valid_matches = 0;
+}
 
 static docstring buffer_to_latex(Buffer & buffer)
 {
@@ -3268,8 +3279,7 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		if (mres.match2end < 0)
 		  mres.match_len = 0;
 		mres.leadsize = leadingsize;
-#if defined(ResultsDebug)
-	#if QTSEARCH
+#if QTSEARCH
 		if (mres.match_len > 0) {
 		  string a0 = match.captured(0).mid(mres.pos + mres.match_prefix, mres.match_len).toStdString();
 		  mres.result.push_back(a0);
@@ -3277,7 +3287,7 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		    mres.result.push_back(match.captured(i).toStdString());
 		  }
 		}
-	#else
+#else
 		if (mres.match_len > 0) {
 		  string a0 = m[0].str().substr(mres.pos + mres.match_prefix, mres.match_len);
 		  mres.result.push_back(a0);
@@ -3285,7 +3295,6 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		    mres.result.push_back(m[i]);
 		  }
 		}
-	#endif
 #endif
 		return mres;
 	}
@@ -3609,47 +3618,48 @@ static bool findAdvForwardInnermost(DocIterator & cur)
  ** position that matches, plus computing the length of the matching text to
  ** be selected
  **/
-int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, int expected_len, int prefix_len = 0)
+MatchResult &findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, MatchResult const & expected = MatchResult(-1))
 {
 	// Search the foremost position that matches (avoids find of entire math
 	// inset when match at start of it)
 	DocIterator old_cur(cur.buffer());
 	MatchResult mres;
-	int max_match;
+	static MatchResult fail = MatchResult();
+	static MatchResult max_match;
 	// If (prefix_len > 0) means that forwarding 1 position will remove the complete entry
 	// Happens with e.g. hyperlinks
 	// either one sees "http://www.bla.bla" or nothing
 	// so the search for "www" gives prefix_len = 7 (== sizeof("http://")
 	// and although we search for only 3 chars, we find the whole hyperlink inset
-	bool at_begin = (prefix_len == 0);
+	bool at_begin = (expected.match_prefix == 0);
 	if (findAdvForwardInnermost(cur)) {
 		mres = match(cur, -1, at_begin);
 		displayMres(mres, 0);
-		if (expected_len > 0) {
-			if (mres.match_len < expected_len)
-				return 0;
+		if (expected.match_len > 0) {
+			if (mres.match_len < expected.match_len)
+				return fail;
 		}
 		else {
 			if (mres.match_len <= 0)
-				return 0;
+				return fail;
 		}
 		max_match = mres.match_len;
 	}
-	else if (expected_len < 0) {
+	else if (expected.match_len < 0) {
 		mres = match(cur);      /* match valid only if not searching whole words */
 		displayMres(mres, 0);
-		max_match = mres.match_len;
+		max_match = mres;
 	}
 	else {
-		max_match = expected_len;
+		max_match = expected;
 	}
-	if (max_match <= 0) return 0;
+	if (max_match.match_len <= 0) return fail;
 	LYXERR(Debug::FIND, "Ok");
 
 	// Compute the match length
         int len = 1;
 	if (cur.pos() + len > cur.lastpos())
-	  return 0;
+	  return fail;
 	// regexp should use \w+, \S+, or \b(some string)\b
 	// to search for whole words
 	if (match.opt.matchword && !match.use_regexp) {
@@ -3659,18 +3669,17 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, int expecte
             LYXERR(Debug::FIND, "verifying unmatch with len = " << len);
           }
           // Length of matched text (different from len param)
-          int old_match = match(cur, len, at_begin).match_len;
-          if (old_match < 0)
-            old_match = 0;
-          int new_match;
+          static MatchResult old_match = match(cur, len, at_begin);
+          if (old_match.match_len < 0)
+            old_match = fail;
+          MatchResult new_match;
           // Greedy behaviour while matching regexps
-          while ((new_match = match(cur, len + 1, at_begin).match_len) > old_match) {
+          while ((new_match = match(cur, len + 1, at_begin)).match_len > old_match.match_len) {
             ++len;
             old_match = new_match;
             LYXERR(Debug::FIND, "verifying   match with len = " << len);
           }
-          if (old_match == 0)
-            len = 0;
+	  return old_match;
         }
         else {
           int minl = 1;
@@ -3681,7 +3690,7 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, int expecte
 	    mres2 = match(cur, len, at_begin);
 	    displayMres(mres2, len);
             int actual_match = mres2.match_len;
-            if (actual_match >= max_match) {
+            if (actual_match >= max_match.match_len) {
               // actual_match > max_match _can_ happen,
               // if the search area splits
               // some following word so that the regex
@@ -3703,7 +3712,7 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, int expecte
           old_cur = cur;
           // Search for real start of matched characters
           while (len > 1) {
-            int actual_match;
+            MatchResult actual_match;
             do {
               cur.forwardPos();
             } while (cur.depth() > old_cur.depth()); /* Skip inner insets */
@@ -3714,8 +3723,8 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, int expecte
             }
             if (cur.pos() != old_cur.pos()) {
               // OK, forwarded 1 pos in actual inset
-              actual_match = match(cur, len-1, at_begin).match_len;
-              if (actual_match == max_match) {
+              actual_match = match(cur, len-1, at_begin);
+              if (actual_match.match_len == max_match.match_len) {
                 // Ha, got it! The shorter selection has the same match length
                 len--;
                 old_cur = cur;
@@ -3728,17 +3737,22 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, int expecte
             }
             else {
               LYXERR(Debug::INFO, "cur.pos() == old_cur.pos(), this should never happen");
-              actual_match = match(cur, len, at_begin).match_len;
-              if (actual_match == max_match)
+              actual_match = match(cur, len, at_begin);
+              if (actual_match.match_len == max_match.match_len) {
                 old_cur = cur;
+		max_match = actual_match;
+	      }
             }
           }
+	  if (len == 0)
+	    return fail;
+	  else
+	    return max_match;
 	}
-	return len;
 }
 
 /// Finds forward
-int findForwardAdv(DocIterator & cur, MatchStringAdv const & match)
+int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 {
 	if (!cur)
 		return 0;
@@ -3806,9 +3820,11 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv const & match)
 			// LYXERR0("Leaving first loop");
 			{
 			  LYXERR(Debug::FIND, "Finalizing 1");
-			  int len = findAdvFinalize(cur, match, mres.match_len, mres.match_prefix);
-			  if (len > 0)
-			    return len;
+			  MatchResult found_match = findAdvFinalize(cur, match, mres);
+			  if (found_match.match_len > 0) {
+			    match.FillResults(found_match);
+			    return found_match.match_len;
+			  }
 			  else {
 			    // try next possible match
 			    cur.forwardPos();
@@ -3846,9 +3862,10 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv const & match)
 					// Sometimes in finalize we understand it wasn't a match
 					// and we need to continue the outest loop
 					LYXERR(Debug::FIND, "Finalizing 2");
-					int len = findAdvFinalize(cur, match, mres.match_len);
-					if (len > 0) {
-						return len;
+					MatchResult mres4 = findAdvFinalize(cur, match, mres.match_len);
+					if (mres4.match_len > 0) {
+						match.FillResults(mres4);
+						return mres4.match_len;
 					}
 				}
 				if (match_len2 > 0)
@@ -3880,11 +3897,11 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv const & match)
 
 
 /// Find the most backward consecutive match within same paragraph while searching backwards.
-int findMostBackwards(DocIterator & cur, MatchStringAdv const & match)
+MatchResult &findMostBackwards(DocIterator & cur, MatchStringAdv const & match)
 {
 	DocIterator cur_begin = doc_iterator_begin(cur.buffer());
 	DocIterator tmp_cur = cur;
-	int len = findAdvFinalize(tmp_cur, match, -1);
+	static MatchResult mr = findAdvFinalize(tmp_cur, match, MatchResult(-1));
 	Inset & inset = cur.inset();
 	for (; cur != cur_begin; cur.backwardPos()) {
 		LYXERR(Debug::FIND, "findMostBackwards(): cur=" << cur);
@@ -3892,13 +3909,13 @@ int findMostBackwards(DocIterator & cur, MatchStringAdv const & match)
 		new_cur.backwardPos();
 		if (new_cur == cur || &new_cur.inset() != &inset || !match(new_cur).match_len)
 			break;
-		int new_len = findAdvFinalize(new_cur, match, -1);
-		if (new_len == len)
+		MatchResult new_mr = findAdvFinalize(new_cur, match, MatchResult(-1));
+		if (new_mr.match_len == mr.match_len)
 			break;
-		len = new_len;
+		mr = new_mr;
 	}
 	LYXERR(Debug::FIND, "findMostBackwards(): exiting with cur=" << cur);
-	return len;
+	return mr;
 }
 
 
@@ -3929,8 +3946,11 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match)
 				found_match = (match(cur).match_len > 0);
 				LYXERR(Debug::FIND, "findBackAdv3: found_match="
 				       << found_match << ", cur: " << cur);
-				if (found_match)
-					return findMostBackwards(cur, match);
+				if (found_match) {
+					MatchResult found_mr = findMostBackwards(cur, match);
+					match.FillResults(found_mr);
+					return found_mr.match_len;
+				}
 
 				// Stop if begin of document reached
 				if (cur == cur_begin)
