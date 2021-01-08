@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-01-04 07:29+0100\n"
-"PO-Revision-Date: 2021-01-04 07:25+0000\n"
+"POT-Creation-Date: 2021-01-08 12:14+0100\n"
+"PO-Revision-Date: 2021-01-08 11:19+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -34,8 +34,8 @@ msgid "Open library directory in file browser"
 msgstr "Otvorí adresár knižnice v prehliadači"
 
 #: src/frontends/qt/ui/AboutUi.ui:165
-msgid "&Open..."
-msgstr "&Otvoriť…"
+msgid "&Open"
+msgstr "&Otvoriť"
 
 #: src/frontends/qt/ui/AboutUi.ui:200
 msgid "User directory"
@@ -44,10 +44,6 @@ msgstr "Adresár užívateľa"
 #: src/frontends/qt/ui/AboutUi.ui:231
 msgid "Open user directory in file browser"
 msgstr "Otvoriť používateľský adresár v prehliadači"
-
-#: src/frontends/qt/ui/AboutUi.ui:234
-msgid "O&pen..."
-msgstr "O&tvoriť…"
 
 #: src/frontends/qt/ui/AboutUi.ui:263
 msgid "Credits"
@@ -20058,8 +20054,8 @@ msgid "New from Template...|m"
 msgstr "Nový zo šablóny…|b"
 
 #: lib/ui/stdmenus.inc:47
-msgid "Open|O"
-msgstr "Otvoriť|O"
+msgid "Open...|O"
+msgstr "Otvoriť…|O"
 
 #: lib/ui/stdmenus.inc:48
 msgid "Open Recent|t"
@@ -28306,6 +28302,10 @@ msgstr "zdedené"
 msgid "regexp frame"
 msgstr "regulárny výraz: rám"
 
+#: src/Color.cpp:335
+msgid "bookmark"
+msgstr "Záložka"
+
 #: src/Color.cpp:336
 msgid "ignore"
 msgstr "ignorovať"
@@ -35154,6 +35154,11 @@ msgstr ""
 "'%1$s'\n"
 "sa nenašiel. LyX bude toto vloženie ignorovať."
 
+#: src/insets/InsetInclude.cpp:570
+#, c-format
+msgid "[INCLUDED FILE %1$s DELETED!]"
+msgstr "[VLOŽENÝ SÚBOR%1$s ZMAZANÝ!]"
+
 #: src/insets/InsetInclude.cpp:792
 #, c-format
 msgid ""
@@ -36234,10 +36239,6 @@ msgstr "Reťazec bol nahradený."
 msgid "%1$d strings have been replaced."
 msgstr "%1$d reťazcov bolo nahradených."
 
-#: src/lyxfind.cpp:3787
-msgid "Invalid regular expression!"
-msgstr "Neplatný regulárny výraz!"
-
 #: src/lyxfind.cpp:3796
 msgid "One match has been replaced."
 msgstr "Jeden vhodný reťazec bol nahradený."
@@ -36406,6 +36407,10 @@ msgstr "Pekný odkaz"
 #: src/mathed/InsetMathRef.cpp:249
 msgid "FormatRef: "
 msgstr "FormatRef: "
+
+#: src/mathed/InsetMathRef.cpp:355
+msgid "Label Only: "
+msgstr "Len heslo: "
 
 #: src/mathed/InsetMathSize.cpp:108
 #, c-format
@@ -36816,8 +36821,17 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
-#~ msgid "Open...|O"
-#~ msgstr "Otvoriť…|O"
+#~ msgid "Open|O"
+#~ msgstr "Otvoriť|O"
+
+#~ msgid "&Open..."
+#~ msgstr "&Otvoriť…"
+
+#~ msgid "O&pen..."
+#~ msgstr "O&tvoriť…"
+
+#~ msgid "Invalid regular expression!"
+#~ msgstr "Neplatný regulárny výraz!"
 
 #~ msgid "<No Documents Open>"
 #~ msgstr "<Niet otvorených dokumentov>"
