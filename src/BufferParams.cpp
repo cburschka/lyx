@@ -3452,7 +3452,7 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 	bool const ot1 = (main_font_encoding() == "default" || main_font_encoding() == "OT1");
 	bool const dryrun = features.runparams().dryrun;
 	bool const complete = (fontsSans() == "default" && fontsTypewriter() == "default");
-	bool const nomath = (fontsMath() == "default");
+	bool const nomath = (fontsMath() != "auto");
 
 	// ROMAN FONTS
 	os << theLaTeXFonts().getLaTeXFont(from_ascii(fontsRoman())).getLaTeXCode(
