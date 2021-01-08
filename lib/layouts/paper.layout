@@ -12,17 +12,16 @@ SecNumDepth             3
 TocDepth                3
 
 AddToPreamble
-	% Save and disable \example as this might clash
-	% with theorems
-	\let\origexample\example
-	\let\endorigexample\endexample
-	\let\example\relax
-	% If theorems hasn't been loaded, restore example
-	\AtBeginDocument{%
-	\@ifundefined{example}{\let\example\origexample}{}
-	}
+  % Save and disable \example as this might
+  % clash with theorems
+  \let\paperclassexample\example
+  \let\endpaperclassexample\endexample
+  \let\example\relax
+  % If theorems hasn't been loaded, restore example
+  \AtBeginDocument{%
+    \@ifundefined{example}{\let\example\paperclassexample}{}
+  }
 EndPreamble
-
 
 Style Standard
 	Category              MainText
