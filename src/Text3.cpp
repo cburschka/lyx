@@ -1483,11 +1483,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		cur.message(_("Cut"));
 		break;
 
-	case LFUN_COPY:
-		copySelection(cur);
-		cur.message(_("Copy"));
-		break;
-
 	case LFUN_SERVER_GET_XY:
 		cur.message(from_utf8(
 			convert<string>(tm->cursorX(cur.top(), cur.boundary()))
@@ -3118,7 +3113,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_CUT:
-	case LFUN_COPY:
 		enable = cur.selection();
 		break;
 

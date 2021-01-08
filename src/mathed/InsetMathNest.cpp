@@ -566,11 +566,6 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.forceBufferUpdate();
 		break;
 
-	case LFUN_COPY:
-		copySelection(cur);
-		cur.message(_("Copy"));
-		break;
-
 	case LFUN_MOUSE_PRESS:
 		lfunMousePress(cur, cmd);
 		break;

@@ -4527,16 +4527,6 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cell(cur.idx())->dispatch(cur, cmd);
 		break;
 
-	case LFUN_COPY:
-		if (!cur.selection())
-			break;
-		if (cur.selIsMultiCell()) {
-			cur.finishUndo();
-			copySelection(cur);
-		} else
-			cell(cur.idx())->dispatch(cur, cmd);
-		break;
-
 	case LFUN_CLIPBOARD_PASTE:
 	case LFUN_PRIMARY_SELECTION_PASTE: {
 		docstring const clip = (act == LFUN_CLIPBOARD_PASTE) ?
