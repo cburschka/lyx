@@ -1251,6 +1251,10 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 	}
 
+	case LFUN_COPY:
+		flag.setEnabled(cur.selection());
+		break;
+
 	default:
 		return false;
 	}
@@ -2186,6 +2190,11 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			insertPlaintextFile(FileName(fname), as_paragraph);
 		break;
 	}
+
+	case LFUN_COPY:
+		cap::copySelection(cur);
+		cur.message(_("Copy"));
+		break;
 
 	default:
 		// OK, so try the Buffer itself...
