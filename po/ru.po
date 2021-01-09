@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2020-12-29 12:04-0500\n"
-"PO-Revision-Date: 2021-01-09 12:34+0200\n"
+"PO-Revision-Date: 2021-01-11 22:20+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -2203,8 +2203,8 @@ msgid ""
 "Pass content of the `Name' field literally to LaTeX. Check this if you want "
 "to enter LaTeX code."
 msgstr ""
-"Передавать содержимое поля «Название» буквально в LaTeX. Выберите этот "
-"пункт, если вы хотите ввести код LaTeX."
+"Передавать содержимое поля «Имя» буквально в LaTeX. Выберите этот пункт, "
+"если вы хотите ввести код LaTeX."
 
 #: src/frontends/qt/ui/HyperlinkUi.ui:106
 msgid "Specify the link target"
@@ -2323,8 +2323,8 @@ msgid ""
 "Pass content of the `Caption' field literally to LaTeX. Check this if you "
 "want to enter LaTeX code."
 msgstr ""
-"Передавать содержимое поля «Название» буквально в LaTeX. Выберите этот "
-"пункт, если вы хотите ввести код LaTeX."
+"Передавать содержимое поля «Подпись» буквально в LaTeX. Выберите этот пункт, "
+"если вы хотите ввести код LaTeX."
 
 #: src/frontends/qt/ui/IndexUi.ui:40
 msgid "Available I&ndexes:"
@@ -5265,7 +5265,7 @@ msgstr "Объединить ячейки разных строк"
 
 #: src/frontends/qt/ui/TabularUi.ui:51
 msgid "M&ultirow"
-msgstr "Многострочность"
+msgstr "Объединённая строка"
 
 #: src/frontends/qt/ui/TabularUi.ui:63
 msgid "&Vertical Offset:"
@@ -5390,7 +5390,7 @@ msgstr "Объединить ячейки разных столбцов"
 
 #: src/frontends/qt/ui/TabularUi.ui:531
 msgid "Mu&lticolumn"
-msgstr "&Многоколоночность"
+msgstr "Объединённый столбец"
 
 #: src/frontends/qt/ui/TabularUi.ui:540
 msgid "LaTe&X argument:"
@@ -5478,7 +5478,7 @@ msgstr "Настройки многостраничной таблицы"
 
 #: src/frontends/qt/ui/TabularUi.ui:1311
 msgid "Select for tables that span multiple pages"
-msgstr "Выберите для таблиц, которые занимают несколько страниц"
+msgstr "Установите для таблиц, которые занимают несколько страниц"
 
 #: src/frontends/qt/ui/TabularUi.ui:1314
 msgid "&Use multi-page table"
@@ -19879,11 +19879,11 @@ msgstr "По точке"
 
 #: lib/ui/stdcontext.inc:468
 msgid "Multicolumn|u"
-msgstr "Несколько столбцов"
+msgstr "Объединить столбцы"
 
 #: lib/ui/stdcontext.inc:469
 msgid "Multirow|w"
-msgstr "Несколько строк"
+msgstr "Объединить строки"
 
 #: lib/ui/stdcontext.inc:471
 msgid "Append Row|A"
@@ -20379,11 +20379,11 @@ msgstr "Формальный стиль"
 
 #: lib/ui/stdmenus.inc:204
 msgid "Multicolumn|M"
-msgstr "Многоколоночность"
+msgstr "Объединить столбцы"
 
 #: lib/ui/stdmenus.inc:205
 msgid "Multirow|u"
-msgstr "Многострочность"
+msgstr "Объединить строки"
 
 #: lib/ui/stdmenus.inc:207
 msgid "Top Line|T"
@@ -21499,11 +21499,11 @@ msgstr "Повернуть таблицу"
 
 #: lib/ui/stdtoolbars.inc:184
 msgid "Set multi-column"
-msgstr "Многостолбцовая ячейка"
+msgstr "Объединить столбцы"
 
 #: lib/ui/stdtoolbars.inc:185
 msgid "Set multi-row"
-msgstr "Многострочная ячейка"
+msgstr "Объединить строки"
 
 #: lib/ui/stdtoolbars.inc:188
 msgid "Math"
@@ -31149,11 +31149,11 @@ msgstr "Ветка"
 
 #: src/frontends/qt/GuiBranches.cpp:54
 msgid "Activated"
-msgstr "Включено"
+msgstr "Активна"
 
 #: src/frontends/qt/GuiBranches.cpp:56
 msgid "Filename Suffix"
-msgstr "Суффикс файла"
+msgstr "Суффикс имени файла"
 
 #: src/frontends/qt/GuiBranches.cpp:135 src/frontends/qt/GuiBranches.cpp:143
 #: src/frontends/qt/GuiDocument.cpp:3271 src/frontends/qt/GuiDocument.cpp:4563

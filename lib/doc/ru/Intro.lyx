@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 601
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -1072,8 +1072,8 @@ status collapsed
 \begin_layout Standard
 Чтобы упростить вам поиск ответов на вопросы и описать все возможности \SpecialChar LyX
 ,
- документация была разделена на несколько различных файлов.
- Каждый из них имеет свою цель, как описано ниже.
+ документация была разделена на несколько файлов.
+ Каждый из них имеет своё назначение, как описано ниже.
  Однако перед тем, как открыть любой из этих файлов, сначала вам следует
  до конца прочитать эту главу, так как она содержит много полезной информации
  и комментариев, которые помогут сохранить вам время.
@@ -1115,10 +1115,17 @@ literal "false"
 \end_inset
 
 .
- Если у вас есть вопросы, которые плохо освещены в документации, и вам нужна
- быстрая помощь, есть список рассылки пользователей \SpecialChar LyX
-, который доступен по
- адресу 
+\end_layout
+
+\begin_layout Subsection
+Получение помощи
+\end_layout
+
+\begin_layout Standard
+Если у вас возникли вопросы, которые плохо освещены в документации, и вам
+ нужна быстрая помощь, есть список рассылки пользователей \SpecialChar LyX
+, который доступен
+ по адресу 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-users@lists.lyx.org"
@@ -1128,6 +1135,28 @@ literal "false"
 \end_inset
 
 .
+ Регистрация в списке полезна, но не обязательна.
+ Подробности описаны на 
+\begin_inset CommandInset href
+LatexCommand href
+name "сайте \\LyX"
+target "https://www.lyx.org/MailingLists"
+literal "true"
+
+\end_inset
+
+.
+ Также существует 
+\begin_inset CommandInset href
+LatexCommand href
+name "вики проекта \\LyX"
+target "https://wiki.lyx.org/"
+literal "true"
+
+\end_inset
+
+, которая содержит много полезной информации.
+ 
 \end_layout
 
 \begin_layout Subsection
