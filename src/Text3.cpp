@@ -1672,7 +1672,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			while (cur.pit() + offset <= cur.lastpit()) {
 				Paragraph cpar = pars_[cur.pit() + offset];
 				depth_type nextpar_depth = cpar.params().depth();
-				if (cur_depth <= nextpar_depth) {
+				if (cur_depth <= nextpar_depth && nextpar_depth > 0) {
 					nextpars_depth.push_back(nextpar_depth);
 					cur_depth = nextpar_depth;
 					++offset;
