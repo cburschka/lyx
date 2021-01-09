@@ -103,6 +103,13 @@ void InsetRef::changeTarget(docstring const & new_label)
 
 void InsetRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
+	// Ctrl + click: go to label
+	if (cmd.action() == LFUN_MOUSE_RELEASE && cmd.modifier() == ControlModifier) {
+			lyx::dispatch(FuncRequest(LFUN_BOOKMARK_SAVE, "0"));
+			lyx::dispatch(FuncRequest(LFUN_LABEL_GOTO, getParam("reference")));
+			return;
+		}
+
 	string const inset = cmd.getArg(0);
 	string const arg   = cmd.getArg(1);
 	string pstring;
@@ -123,13 +130,6 @@ void InsetRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 			return;
 		}
 	}
-
-	// Ctrl + click: go to label
-	if (cmd.action() == LFUN_MOUSE_RELEASE && cmd.modifier() == ControlModifier) {
-			lyx::dispatch(FuncRequest(LFUN_BOOKMARK_SAVE, "0"));
-			lyx::dispatch(FuncRequest(LFUN_LABEL_GOTO, getParam("reference")));
-			return;
-		}
 
 	// otherwise not for us
 	if (pstring.empty())
@@ -459,6 +459,18 @@ void InsetRef::updateBuffer(ParIterator const & it, UpdateType, bool const /*del
 	for (int i = 0; !types[i].latex_name.empty(); ++i) {
 		if (cmd == types[i].latex_name) {
 			label = _(types[i].short_gui_name);
+			// indicate plural and caps
+			if (cmd == "formatted") {
+				bool const isPlural = getParam("plural") == "true";
+				bool const isCaps = getParam("caps") == "true";
+				if (isPlural)
+					label += from_ascii("+");
+				if (isCaps) {
+					// up arrow (shift key) symbol
+					label += docstring(1, char_type(0x21E7));
+				}
+			}
+			label += from_ascii(": ");
 			break;
 		}
 	}
@@ -580,14 +592,14 @@ bool InsetRef::forceLTR(OutputParams const & rp) const
 
 
 InsetRef::type_info const InsetRef::types[] = {
-	{ "ref",       N_("Standard"),              N_("Ref: ")},
-	{ "eqref",     N_("Equation"),              N_("EqRef: ")},
-	{ "pageref",   N_("Page Number"),           N_("Page: ")},
-	{ "vpageref",  N_("Textual Page Number"),   N_("TextPage: ")},
-	{ "vref",      N_("Standard+Textual Page"), N_("Ref+Text: ")},
-	{ "nameref",   N_("Reference to Name"),     N_("NameRef: ")},
-	{ "formatted", N_("Formatted"),             N_("Format: ")},
-	{ "labelonly", N_("Label Only"),            N_("Label: ")},
+	{ "ref",       N_("Standard"),              N_("Ref")},
+	{ "eqref",     N_("Equation"),              N_("EqRef")},
+	{ "pageref",   N_("Page Number"),           N_("Page")},
+	{ "vpageref",  N_("Textual Page Number"),   N_("TextPage")},
+	{ "vref",      N_("Standard+Textual Page"), N_("Ref+Text")},
+	{ "nameref",   N_("Reference to Name"),     N_("NameRef")},
+	{ "formatted", N_("Formatted"),             N_("Format")},
+	{ "labelonly", N_("Label Only"),            N_("Label")},
 	{ "", "", "" }
 };
 
