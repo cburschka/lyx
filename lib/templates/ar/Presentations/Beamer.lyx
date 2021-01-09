@@ -33,10 +33,12 @@
 \use_microtype false
 \use_dash_ligatures false
 \graphics default
-\default_output_format default
+\default_output_format pdf4
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -994,7 +996,17 @@ status open
 
 \begin_deeper
 \begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 5cm
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Theorem
@@ -1012,7 +1024,17 @@ status open
 \end_layout
 
 \begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 5cm
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Corollary
@@ -1098,8 +1120,6 @@ status open
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Note
 status open
 
