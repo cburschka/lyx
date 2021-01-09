@@ -959,10 +959,13 @@ private:
 public:
 	// Are we searching with regular expressions ?
 	bool use_regexp;
-	int valid_matches;
-	vector <string> matches = vector <string>(10);
+	static int valid_matches;
+	static vector <string> matches;
 	void FillResults(MatchResult &found_mr);
 };
+
+int MatchStringAdv::valid_matches = 0;
+vector <string> MatchStringAdv::matches = vector <string>(10);
 
 void MatchStringAdv::FillResults(MatchResult &found_mr)
 {
@@ -4051,8 +4054,37 @@ static void changeFirstCase(Buffer & buffer, TextCase first_case, TextCase other
 	right = pit->size();
 	pit->changeCase(buffer.params(), pos_type(1), right, others_case);
 }
-
 } // namespace
+
+#if 1
+static bool replaceMatches(string &t, int maxmatchnum, vector <string> const & replacements)
+{
+  // Should replace the string "$" + std::to_string(matchnum) with replacement
+  // if the char '$' is not prefixed with odd number of char '\\'
+  static regex const rematch("(\\\\)*(\\$\\$([0-9]))");
+  string s;
+  size_t lastpos = 0;
+  smatch sub;
+  for (sregex_iterator it(t.begin(), t.end(), rematch), end; it != end; ++it) {
+    sub = *it;
+    if ((sub.position(2) - sub.position(0)) % 2 == 1)
+      continue;
+    int num = stoi(sub.str(3), nullptr, 10);
+    if (num >= maxmatchnum)
+      continue;
+    if (lastpos < (size_t) sub.position(2))
+      s += t.substr(lastpos, sub.position(2) - lastpos);
+    s += replacements[num];
+    lastpos = sub.position(2) + sub.length(2);
+  }
+  if (lastpos == 0)
+    return false;
+  else if (lastpos < t.length())
+    s += t.substr(lastpos, t.length() - lastpos);
+  t = s;
+  return true;
+}
+#endif
 
 ///
 static int findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, MatchStringAdv & matchAdv)
@@ -4084,6 +4116,9 @@ static int findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, Ma
 	ostringstream oss;
 	repl_buffer_orig.write(oss);
 	string lyx = oss.str();
+	if (matchAdv.valid_matches > 0) {
+	  replaceMatches(lyx, matchAdv.valid_matches, matchAdv.matches);
+	}
 	Buffer repl_buffer("", false);
 	repl_buffer.setUnnamed(true);
 	LASSERT(repl_buffer.readString(lyx), return 0);
