@@ -137,6 +137,7 @@ void InsetRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	bool const isSet = (getParam(pstring) == "true");
 	setParam(pstring, from_ascii(isSet ? "false"  : "true"));
+	cur.forceBufferUpdate();
 }
 
 
