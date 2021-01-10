@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-01-08 12:14+0100\n"
-"PO-Revision-Date: 2021-01-08 11:19+0000\n"
+"POT-Creation-Date: 2021-01-09 17:07+0100\n"
+"PO-Revision-Date: 2021-01-09 18:06+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -34,7 +34,7 @@ msgid "Open library directory in file browser"
 msgstr "Otvorí adresár knižnice v prehliadači"
 
 #: src/frontends/qt/ui/AboutUi.ui:165
-msgid "&Open"
+msgid "[[do]]&Open"
 msgstr "&Otvoriť"
 
 #: src/frontends/qt/ui/AboutUi.ui:200
@@ -44,6 +44,10 @@ msgstr "Adresár užívateľa"
 #: src/frontends/qt/ui/AboutUi.ui:231
 msgid "Open user directory in file browser"
 msgstr "Otvoriť používateľský adresár v prehliadači"
+
+#: src/frontends/qt/ui/AboutUi.ui:234
+msgid "[[do]]O&pen"
+msgstr "O&tvoriť"
 
 #: src/frontends/qt/ui/AboutUi.ui:263
 msgid "Credits"
@@ -1340,16 +1344,16 @@ msgstr "Zobrazenie"
 msgid "Show ERT button only"
 msgstr "Zobraziť len tlačidlo ERT"
 
-#: src/frontends/qt/ui/ERTUi.ui:43
+#: src/frontends/qt/ui/ERTUi.ui:62
 msgid "&Collapsed"
-msgstr "Z&balené"
+msgstr "&Sklapnuté"
 
 #: src/frontends/qt/ui/ERTUi.ui:50
 msgid "Show ERT contents"
 msgstr "Zobraziť obsah ERT"
 
-#: src/frontends/qt/ui/ERTUi.ui:53
-msgid "O&pen"
+#: src/frontends/qt/ui/ERTUi.ui:72
+msgid "[[is]]O&pen"
 msgstr "O&tvorené"
 
 #: src/frontends/qt/ui/ErrorListUi.ui:38
@@ -42160,3 +42164,9 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "wrap: "
 #~ msgstr "obtekanie: "
+
+#~ msgid "&Open"
+#~ msgstr "&Otvoriť"
+
+#~ msgid "O&pen"
+#~ msgstr "O&tvorené"
