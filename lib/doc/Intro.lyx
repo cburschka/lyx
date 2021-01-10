@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 601
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -38,9 +38,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc true
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -105,12 +105,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes false
-\postpone_fragile_content false
+\tablestyle default
+\tracking_changes true
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\author -584632292 "Richard Kimberly Heck"
 \end_header
 
 \begin_body
@@ -858,9 +862,9 @@ reference "sec:Contrib"
 \end_layout
 
 \begin_layout Standard
-Also, please do us a favor – if anything in these manuals confuses you,
- is unclear, or wrong, don't hesitate to let us know! You can reach the
- current document maintainers by emailing 
+Also, please do us a favor: if anything in these manuals confuses you, is
+ unclear, or wrong, don't hesitate to let us know! You can reach the current
+ document maintainers by emailing 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -870,7 +874,19 @@ literal "false"
 \end_inset
 
 .
- If you have questions that are not obviously answered in the documentation,
+ 
+\change_inserted -584632292 1610248366
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -584632292 1610248375
+Where To Get Help
+\end_layout
+
+\begin_layout Standard
+If you have questions that are not obviously answered in the documentation
  and need help fast, there is an active users' mailing list which you can
  reach at 
 \begin_inset CommandInset href
@@ -882,6 +898,30 @@ literal "false"
 \end_inset
 
 .
+
+\change_inserted -584632292 1610248524
+ You do not have to register to post, but you may wish to do so.
+ See 
+\begin_inset CommandInset href
+LatexCommand href
+name "the LyX website"
+target "https://www.lyx.org/MailingLists"
+literal "false"
+
+\end_inset
+
+ for further information.
+ LyX also has a 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://wiki.lyx.org/"
+literal "false"
+
+\end_inset
+
+ that will answer many questions about how to get LyX to do various things.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -1372,6 +1412,8 @@ reference "tab:Units"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
