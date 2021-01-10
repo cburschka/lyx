@@ -283,6 +283,13 @@ void InsetHyperlink::validate(LaTeXFeatures & features) const
 }
 
 
+pair<int, int> InsetHyperlink::isWords() const
+{
+	docstring const label = getParam("name");
+	return pair<int, int>(label.size(), wordCount(label));
+}
+
+
 string InsetHyperlink::contextMenuName() const
 {
 	return "context-hyperlink";

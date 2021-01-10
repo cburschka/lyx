@@ -975,6 +975,21 @@ int count_char(docstring const & str, docstring::value_type chr)
 }
 
 
+int wordCount(docstring const & d)
+{
+	docstring dt = trim(d);
+	if (dt.empty())
+		return 0;
+	int words = 1;
+	for (auto const & c : dt) {
+		if (isSpace(c))
+			words++;
+	}
+	return words;
+}
+
+
+
 int count_bin_chars(string const & str)
 {
 	QString const qstr = toqstr(str).simplified();

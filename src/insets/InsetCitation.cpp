@@ -37,7 +37,6 @@
 #include "support/FileNameList.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
-#include "support/textutils.h"
 
 #include <algorithm>
 #include <climits>
@@ -776,15 +775,11 @@ void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 		os << "}";
 }
 
+
 pair<int, int> InsetCitation::isWords() const
 {
 	docstring const label = generateLabel(false);
-	int words = 1;
-	for (auto const & c : label) {
-		if (lyx::isSpace(c))
-			words++;
-	}
-	return pair<int, int>(label.size(), words);
+	return pair<int, int>(label.size(), wordCount(label));
 }
 
 
