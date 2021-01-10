@@ -125,7 +125,7 @@ std::ostringstream & operator<<(std::ostringstream & os, lyx::FindAndReplaceOpti
 std::istringstream & operator>>(std::istringstream & is, lyx::FindAndReplaceOptions & opt);
 
 /// Perform a FindAdv operation.
-bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt);
+bool findAdv(BufferView * bv, FindAndReplaceOptions & opt);
 
 /** Computes the simple-text or LaTeX export (depending on opt) of buf starting
  ** from cur and ending len positions after cur, if len is positive, or at the

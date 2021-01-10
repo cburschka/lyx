@@ -893,7 +893,7 @@ static MatchResult::range interpretMatch(MatchResult &oldres, MatchResult &newre
 
 class MatchStringAdv {
 public:
-	MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & opt);
+	MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt);
 
 	/** Tests if text starting at the supplied position matches with the one provided to the MatchStringAdv
 	 ** constructor as opt.search, under the opt.* options settings.
@@ -2971,7 +2971,32 @@ void MatchStringAdv::CreateRegexp(FindAndReplaceOptions const & opt, string rege
 #endif
 }
 
-MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & opt)
+static void modifyRegexForMatchWord(string &t)
+{
+	string s("");
+	regex wordre("(\\\\)*((\\.|\\\\b))");
+	size_t lastpos = 0;
+	smatch sub;
+	for (sregex_iterator it(t.begin(), t.end(), wordre), end; it != end; ++it) {
+		sub = *it;
+		if ((sub.position(2) - sub.position(0)) % 2 == 1) {
+			continue;
+		}
+		else if (sub.str(2) == "\\\\b")
+			return;
+		if (lastpos < (size_t) sub.position(2))
+			s += t.substr(lastpos, sub.position(2) - lastpos);
+		s += "\\S";
+		lastpos = sub.position(2) + sub.length(2);
+	}
+	if (lastpos == 0)
+		return;
+	else if (lastpos < t.length())
+		s += t.substr(lastpos, t.length() - lastpos);
+      t = "\\b" + s + "\\b";
+}
+
+MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 	: p_buf(&buf), p_first_buf(&buf), opt(opt)
 {
 	static std::regex specialChars { R"([-[\]{}()*+?.,\^$|#\s\\])" };
@@ -3006,6 +3031,12 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 		string lead_as_regex_string = std::regex_replace(lead_as_string, specialChars,  R"(\$&)" );
 		par_as_string_nolead = par_as_string.substr(lead_size, par_as_string.size() - lead_size);
 		string par_as_regex_string_nolead = std::regex_replace(par_as_string_nolead, specialChars,  R"(\$&)" );
+		/* Handle whole words too in this case
+		*/
+		if (opt.matchword) {
+			par_as_regex_string_nolead = "\\b" + par_as_regex_string_nolead + "\\b";
+			opt.matchword = false;
+		}
 		string regexp_str = "(" + lead_as_regex_string + ")()" + par_as_regex_string_nolead;
 		string regexp2_str = "(" + lead_as_regex_string + ")(.*?)" + par_as_regex_string_nolead;
 		CreateRegexp(opt, regexp_str, regexp2_str);
@@ -3084,6 +3115,17 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 				string orig = "\\\\" + std::to_string(i);
 				string dest = "\\" + std::to_string(i+2);
 				while (regex_replace(par_as_string, par_as_string, orig, dest));
+			}
+			/* opt.matchword is ignored if using regex
+			  but expanding par_as_string with "\\b" is not appropriate here
+			  if regex contains for instance '.*' or '.+'
+			  1.) Nothing to do, if 'par_as_string' contains "\\b" already.
+			      (Means, that the user knows how to handle whole words
+			  2.) else replace '.' with "\\S" and prepend + append "\\b"
+			*/
+			if (opt.matchword) {
+				modifyRegexForMatchWord(par_as_string);
+				opt.matchword = false;
 			}
 			regexp_str = "(" + lead_as_regexp + ")()" + par_as_string;
 			regexp2_str = "(" + lead_as_regexp + ")(.*?)" + par_as_string;
@@ -4179,7 +4221,7 @@ static int findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, Ma
 
 
 /// Perform a FindAdv operation.
-bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
+bool findAdv(BufferView * bv, FindAndReplaceOptions & opt)
 {
 	DocIterator cur;
 	int pos_len = 0;
