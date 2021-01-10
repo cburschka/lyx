@@ -2240,8 +2240,10 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// use \PassOptionsToPackage here because the user could have
 	// already loaded subfig in the preamble.
 	if (features.mustProvide("subfig"))
-		atlyxpreamble << "\\@ifundefined{showcaptionsetup}{}{%\n"
-		                 " \\PassOptionsToPackage{caption=false}{subfig}}\n"
+		atlyxpreamble << "\\ifdefined\\showcaptionsetup\n"
+		                 " % Caption package is used. Advise subfig not to load it again.\n"
+		                 " \\PassOptionsToPackage{caption=false}{subfig}\n"
+		                 "\\fi\n"
 		                 "\\usepackage{subfig}\n";
 
 	// Itemize bullet settings need to be last in case the user
