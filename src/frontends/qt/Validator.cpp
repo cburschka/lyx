@@ -57,6 +57,9 @@ QValidator::State LengthValidator::validate(QString & qtext, int &) const
 	if (ok && unsigned_ && d < 0)
 		return QValidator::Invalid;
 
+	if (ok && positive_ && d <=0)
+		return QValidator::Invalid;
+
 	if (qtext.isEmpty() || (ok && !dp))
 		return QValidator::Acceptable;
 
@@ -81,21 +84,24 @@ QValidator::State LengthValidator::validate(QString & qtext, int &) const
 	if (unsigned_ && l.value() < 0)
 		return QValidator::Invalid;
 
-	return b_.inPixels(100) <= l.inPixels(100) ?
+	if (positive_ && l.value() <= 0)
+		return QValidator::Invalid;
+
+	return bottom_.inPixels(100) <= l.inPixels(100) ?
 		QValidator::Acceptable : QValidator::Intermediate;
 }
 
 
 void LengthValidator::setBottom(Length const & b)
 {
-	b_ = b;
+	bottom_ = b;
 	no_bottom_ = false;
 }
 
 
 void LengthValidator::setBottom(GlueLength const & g)
 {
-	g_ = g;
+	glue_bottom_ = g;
 	no_bottom_ = false;
 	glue_length_ = true;
 }
@@ -138,6 +144,15 @@ LengthAutoValidator * unsignedLengthAutoValidator(QLineEdit * ed, QString const 
 	LengthAutoValidator * v = new LengthAutoValidator(ed, autotext);
 	v->setBottom(Length());
 	v->setUnsigned(true);
+	return v;
+}
+
+
+LengthAutoValidator * positiveLengthAutoValidator(QLineEdit * ed, QString const & autotext)
+{
+	LengthAutoValidator * v = new LengthAutoValidator(ed, autotext);
+	v->setBottom(Length());
+	v->setPositive(true);
 	return v;
 }
 
@@ -242,10 +257,10 @@ void PathValidator::setChecker(KernelDocType const & type, LyXRC const & rc)
 PathValidator * getPathValidator(QLineEdit * ed)
 {
 	if (!ed)
-		return 0;
+		return nullptr;
 	QValidator * validator = const_cast<QValidator *>(ed->validator());
 	if (!validator)
-		return 0;
+		return nullptr;
 	return dynamic_cast<PathValidator *>(validator);
 }
 

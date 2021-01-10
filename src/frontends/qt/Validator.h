@@ -61,16 +61,18 @@ public:
 	//@{
 	void setBottom(Length const &);
 	void setBottom(GlueLength const &);
-	Length bottom() const { return b_; }
+        Length bottom() const { return bottom_; }
 	void setUnsigned(bool const u) { unsigned_ = u; }
+        void setPositive(bool const u) { positive_ = u; }
 	//@}
 
 private:
-	Length b_;
-	GlueLength g_;
+        Length bottom_;
+        GlueLength glue_bottom_;
 	bool no_bottom_;
 	bool glue_length_;
 	bool unsigned_;
+        bool positive_;
 };
 
 
@@ -105,6 +107,10 @@ private:
 
 /// @returns a new @c LengthAutoValidator that does not accept negative lengths.
 LengthAutoValidator * unsignedLengthAutoValidator(QLineEdit *, QString const & autotext);
+
+
+/// @returns a new @c LengthAutoValidator that does not accept negative lengths.
+LengthAutoValidator * positiveLengthAutoValidator(QLineEdit *, QString const & autotext);
 
 
 /**
