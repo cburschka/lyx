@@ -770,6 +770,7 @@ void GuiGraphics::dispatchParams()
 	InsetGraphicsParams tmp_params(params_);
 	string const lfun = InsetGraphics::params2string(tmp_params, buffer());
 	dispatch(FuncRequest(getLfun(), lfun));
+	connectToNewInset();
 }
 
 

@@ -198,25 +198,7 @@ void GuiCitation::applyView()
 	QString const after = textAfterED->text();
 
 	applyParams(choice, full, force, before, after);
-
-	// If we have just created a citation inset, then we want to attach the
-	// dialog to it. This (i) allows further modification of that inset and
-	// (ii) prevents an additional click on Apply or OK from unexpectedly
-	// creating another inset. (See #3964.)
-	GuiView & view = const_cast<GuiView &>(lyxview());
-	BufferView * bv = view.currentBufferView();
-	// should have one, but just to be safe...
-	if (bv) {
-		// are we attached to an inset already?
-		Inset * ins = bv->editedInset("citation");
-		if (!ins) {
-			// no, so we just inserted one, and now we are behind it.
-			Cursor const & cur = bv->cursor();
-			ins = cur.prevInset();
-			if (ins)
-				bv->editInset("citation", ins);
-		}
-	}
+	connectToNewInset();
 }
 
 

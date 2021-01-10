@@ -266,6 +266,8 @@ protected:
 	virtual void apply();
 	/// To be called when the buffer view has changed
 	virtual void onBufferViewChanged() = 0;
+	///
+	void connectToNewInset();
 
 private:
 	/** The Dialog's name is the means by which a dialog identifies

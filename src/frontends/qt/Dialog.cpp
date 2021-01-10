@@ -275,5 +275,30 @@ void Dialog::restoreSession()
 		settings.value(sessionKey() + "/geometry").toByteArray());
 }
 
+
+// If we have just created an inset, then we want to attach the
+// dialog to it. This (i) allows further modification of that inset and
+// (ii) prevents an additional click on Apply or OK from unexpectedly
+// creating another inset. (See #3964 and #11030.)
+void Dialog::connectToNewInset()
+{
+	GuiView & view = const_cast<GuiView &>(lyxview());
+	BufferView * bv = view.currentBufferView();
+	// should have one, but just to be safe...
+	if (!bv)
+		return;
+
+	// are we attached to an inset already?
+	Inset * ins = bv->editedInset(fromqstr(name_));
+	if (ins)
+		return;
+
+	// no, so we just inserted one, and now we are behind it.
+	Cursor const & cur = bv->cursor();
+	ins = cur.prevInset();
+	if (ins)
+		bv->editInset(fromqstr(name_), ins);
+}
+
 } // namespace frontend
 } // namespace lyx
