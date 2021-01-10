@@ -1295,6 +1295,24 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		return;
 	}
 
+	case LFUN_PHANTOM_INSERT: {
+		docstring const & arg = cmd.argument();
+		docstring newarg;
+		if (arg == "Phantom")
+			newarg = from_ascii("\\phantom");
+		else if (arg == "HPhantom")
+			newarg = from_ascii("\\hphantom");
+		else if (arg == "VPhantom")
+			newarg = from_ascii("\\vphantom");
+		if (newarg.empty())
+			LYXERR0("Unknown phantom type " + newarg);
+		else {
+			FuncRequest const newfunc(LFUN_MATH_INSERT, newarg);
+			lyx::dispatch(newfunc);
+		}
+		break;
+	}
+
 	default:
 		InsetMath::doDispatch(cur, cmd);
 		break;
