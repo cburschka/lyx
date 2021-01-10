@@ -37,6 +37,7 @@
 #include "support/FileNameList.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/textutils.h"
 
 #include <algorithm>
 #include <climits>
@@ -594,7 +595,7 @@ int InsetCitation::plaintext(odocstringstream & os,
 	if (cmd == "nocite")
 		return 0;
 
-	docstring const label = generateLabel(false);
+	docstring const label = generateLabel();
 	os << label;
 	return label.size();
 }
@@ -658,7 +659,7 @@ docstring InsetCitation::xhtml(XMLStream & xs, OutputParams const &) const
 void InsetCitation::toString(odocstream & os) const
 {
 	odocstringstream ods;
-	plaintext(ods, OutputParams(0));
+	plaintext(ods, OutputParams(nullptr));
 	os << ods.str();
 }
 
@@ -773,6 +774,17 @@ void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 
 	if (runparams.inulemcmd)
 		os << "}";
+}
+
+pair<int, int> InsetCitation::isWords() const
+{
+	docstring const label = generateLabel(false);
+	int words = 1;
+	for (auto const & c : label) {
+		if (lyx::isSpace(c))
+			words++;
+	}
+	return pair<int, int>(label.size(), words);
 }
 
 

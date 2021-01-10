@@ -101,6 +101,8 @@ public:
 	bool openCitationPossible() const;
 	/// search and open citation source
 	void openCitation();
+	///
+	std::pair<int, int> isWords() const override;
 
 private:
 	/// tries to make a pretty label and makes a basic one if not

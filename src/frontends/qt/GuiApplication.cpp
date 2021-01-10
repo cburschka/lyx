@@ -1056,6 +1056,7 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	setDesktopFileName(lyx_package);
 #endif
 
+	// FIXME Deprecated. Should use QRandomGenerator since 5.10
 	qsrand(QDateTime::currentDateTime().toTime_t());
 
 	// Install LyX translator for missing Qt translations

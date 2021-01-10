@@ -466,6 +466,9 @@ public:
 	/// is this equivalent to a space (which is BTW different from
 	/// a line separator)?
 	virtual bool isSpace() const { return false; }
+	/// returns chars, words if the inset is equivalent to such, otherwise
+	/// (0,0), which should be interpreted as 'false'
+	virtual std::pair<int, int> isWords() const { return std::pair<int,int>(0, 0); }
 	/// does this inset try to use all available space (like \\hfill does)?
 	virtual bool isHfill() const { return false; }
 

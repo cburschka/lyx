@@ -5365,6 +5365,12 @@ void Buffer::Impl::updateStatistics(DocIterator & from, DocIterator & to, bool s
 				}
 				else if (ins && ins->isSpace())
 					++blank_count_;
+				else if (ins) {
+					pair<int, int> words = ins->isWords();
+					char_count_ += words.first;
+					word_count_ += words.second;
+					inword = false;
+				}
 				else {
 					char_type const c = par.getChar(pos);
 					if (isPrintableNonspace(c))
