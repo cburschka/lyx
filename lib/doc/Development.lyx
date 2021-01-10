@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 601
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -3616,7 +3616,7 @@ Wontfix
 \end_layout
 
 \begin_layout Paragraph
-suspended tests
+Suspended tests
 \end_layout
 
 \begin_layout Standard
@@ -5178,7 +5178,7 @@ PDF (pdflatex)
 
 \begin_layout Enumerate
 All fixes (typos, compilation fixes, updates info etc.) go at first into
- the current GIT branch because the user should benefit from all fixes with
+ the current Git branch because the user should benefit from all fixes with
  every minor release.
  Feel free to commit directly to branch as long as you follow rule
 \begin_inset space ~
@@ -5213,12 +5213,10 @@ The main documentation consists of these files:
 \end_layout
 
 \begin_layout Description
-Welcome.lyx it is the first file you see after an installation.
+Welcome.lyx It is the first file you see after an installation.
  We assume that a new user sees this.
  It is therefore designed to be as simple as possible.
  Therefore please don't add any new formatting, only fix typos etc.
- Welcome.lyx is up to date for \SpecialChar LyX
- 2.1.x, currently maintained by Uwe Stöhr.
 \end_layout
 
 \begin_layout Description
@@ -5229,60 +5227,47 @@ Intro.lyx This is the manual new users will read to learn \SpecialChar LyX
  Since new users will first learn about the formatting possibilities of
  \SpecialChar LyX
  please keep this file that simple.
- Intro.lyx is up to date for \SpecialChar LyX
- 2.1.x, currently maintained by Uwe Stöhr.
 \end_layout
 
 \begin_layout Description
-Tutorial.lyx our tutorial.
+Tutorial.lyx Our tutorial.
  It must be always up to date.
  Normally there is nothing to add since we don't want to overwhelm new users
  with too much details.
- The will learn these details while using \SpecialChar LyX
+ They will learn these details while using \SpecialChar LyX
  and we have special manuals.
- Tutorial.lyx is up to date for \SpecialChar LyX
- 2.1.x, currently maintained by Uwe Stöhr.
 \end_layout
 
 \begin_layout Description
-UserGuide.lyx our main user guide.
+UserGuide.lyx Our main user guide.
  It covers a mixture of basic and detailed information.
  Some information is also in the Math and EmbeddedObjects manual so that
  the UserGuide refers to these files.
- UserGuide.lyx is up to date for \SpecialChar LyX
- 2.1.x, currently maintained by Uwe Stöhr.
 \end_layout
 
 \begin_layout Description
-EmbeddedObjects.lyx a special manual to explain things like tables floats
+EmbeddedObjects.lyx A special manual to explain things like tables floats
  boxes etc.
  in all detail.
- EmbeddedObjects.lyx is up to date for \SpecialChar LyX
- 2.1.x, currently maintained by Uwe
- Stöhr.
 \end_layout
 
 \begin_layout Description
-Math.lyx a special manual to explain everything regarding math in all detail.
- Math.lyx is up to date for \SpecialChar LyX
- 2.1.x, currently maintained by Uwe Stöhr.
+Math.lyx A special manual to explain everything regarding math in all detail.
 \end_layout
 
 \begin_layout Description
-Additional.lyx this manual covers information that would be too much detail
+Additional.lyx This manual covers information that would be too much detail
  for the UserGuide or would make the UserGuide uncompilable or only compilable
  when installing a lot of special \SpecialChar LaTeX
--packages.
+ packages.
  What should be in the UserGuide or better in Additional is a matter of
  taste.
- it is up to you to decide that.
- Additional.lyx is not completely up to date for \SpecialChar LyX
- 2.1.x.
- Only chapter
+ It is up to you to decide that.
+ Additional.lyx is not completely up to date (only chapter
 \begin_inset space ~
 \end_inset
 
-8 is up to date and currently maintained by Uwe Stöhr.
+8 is up to date).
  It certainly needs a rewrite and update.
  For example many info in chapter
 \begin_inset space ~
@@ -5293,7 +5278,7 @@ Additional.lyx this manual covers information that would be too much detail
 \end_layout
 
 \begin_layout Description
-Customization.lyx this manual covers information how to customize \SpecialChar LyX
+Customization.lyx This manual covers information how to customize \SpecialChar LyX
  for certain
  output formats, operating systems, languages etc.
  It is currently completely out of date and needs a major rewrite and update.
@@ -5861,7 +5846,12 @@ switch (f) {
 
 \begin_layout Plain Layout
 
-case FOO_BAR1: ...; 
+case FOO_BAR1:
+\end_layout
+
+\begin_layout Plain Layout
+
+	...;
 \end_layout
 
 \begin_layout Plain Layout
@@ -5871,7 +5861,12 @@ case FOO_BAR1: ...;
 
 \begin_layout Plain Layout
 
-case FOO_BAR2: ...; 
+case FOO_BAR2:
+\end_layout
+
+\begin_layout Plain Layout
+
+	...;
 \end_layout
 
 \begin_layout Plain Layout
@@ -5881,12 +5876,12 @@ case FOO_BAR2: ...;
 
 \begin_layout Plain Layout
 
-default: ...; 
+default: // not needed and would shadow a wrong use of Foo
 \end_layout
 
 \begin_layout Plain Layout
 
-	// not needed and would shadow a wrong use of Foo
+	...;
 \end_layout
 
 \begin_layout Plain Layout
@@ -6393,6 +6388,42 @@ enum Foo {
 \end_layout
 
 \begin_layout Standard
+or (C++11)
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+enum class Foo {
+\end_layout
+
+\begin_layout Plain Layout
+
+	One = 1,
+\end_layout
+
+\begin_layout Plain Layout
+
+	Two = 2,
+\end_layout
+
+\begin_layout Plain Layout
+
+	Three = 3
+\end_layout
+
+\begin_layout Plain Layout
+
+};
+\end_layout
+
+\end_inset
+
 and not
 \end_layout
 
