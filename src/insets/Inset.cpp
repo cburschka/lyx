@@ -317,7 +317,7 @@ docstring insetDisplayName(InsetCode c)
 
 void Inset::dispatch(Cursor & cur, FuncRequest & cmd)
 {
-	if (buffer_ == 0) {
+	if (buffer_ == nullptr) {
 		lyxerr << "Unassigned buffer_ member in Inset::dispatch()" << std::endl;
 		lyxerr << "LyX Code: " << lyxCode() << " name: "
 		       << insetName(lyxCode()) << std::endl;
@@ -632,8 +632,8 @@ Buffer const * Inset::updateFrontend() const
 	// are in the CutAndPaste stack. See InsetGraphics, RenderGraphics and
 	// RenderPreview.
 	if (!buffer_)
-		return 0;
-	return theApp() ? theApp()->updateInset(this) : 0;
+		return nullptr;
+	return theApp() ? theApp()->updateInset(this) : nullptr;
 }
 
 
