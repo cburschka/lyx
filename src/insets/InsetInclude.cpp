@@ -400,7 +400,7 @@ bool InsetInclude::isChildIncluded() const
 
 docstring InsetInclude::screenLabel() const
 {
-	docstring pre = file_exist_ ? docstring() : _("FILE MISSING:");
+	docstring pre = file_exist_ ? docstring() : _("MISSING:");
 
 	docstring temp;
 
@@ -1357,41 +1357,44 @@ void InsetInclude::addToToc(DocIterator const & cpit, bool output_active,
 		InsetListingsParams p(to_utf8(params()["lstparams"]));
 		b.argumentItem(from_utf8(p.getParamValue("caption")));
 		b.pop();
-	} else if (isVerbatim(params())) {
+		return;
+	}
+	if (isVerbatim(params())) {
 		TocBuilder & b = backend.builder("child");
 		b.pushItem(cpit, screenLabel(), output_active);
 		b.pop();
-	} else {
-		Buffer const * const childbuffer = loadIfNeeded();
-
-		TocBuilder & b = backend.builder("child");
-		string const fname = ltrim(to_utf8(params()["filename"]));
-		// mark non-existent childbuffer with FILE MISSING
-		docstring const str = (childbuffer ? from_ascii("") : _("FILE MISSING: "))
-			+ from_utf8(onlyFileName(fname)) + " (" + from_utf8(fname) + ")";
-		b.pushItem(cpit, str, output_active);
-		b.pop();
-
-		if (!childbuffer)
-			return;
-
-		if (checkForRecursiveInclude(childbuffer))
-			return;
-		buffer().pushIncludedBuffer(childbuffer);
-		// Update the child's tocBackend. The outliner uses the master's, but
-		// the navigation menu uses the child's.
-		childbuffer->tocBackend().update(output_active, utype);
-		// Include Tocs from children
-		childbuffer->inset().addToToc(DocIterator(), output_active, utype,
-		                              backend);
-		buffer().popIncludedBuffer();
-		// Copy missing outliner names (though the user has been warned against
-		// having different document class and module selection between master
-		// and child).
-		for (auto const & name
-			     : childbuffer->params().documentClass().outlinerNames())
-			backend.addName(name.first, translateIfPossible(name.second));
+		return;
 	}
+	// the common case
+	Buffer const * const childbuffer = loadIfNeeded();
+
+	TocBuilder & b = backend.builder("child");
+	string const fname = ltrim(to_utf8(params()["filename"]));
+	// mark non-existent file with MISSING
+	docstring const str = (file_exist_ ? from_ascii("") : _("MISSING: "))
+		+ from_utf8(onlyFileName(fname)) + " (" + from_utf8(fname) + ")";
+	b.pushItem(cpit, str, output_active);
+	b.pop();
+
+	if (!childbuffer)
+		return;
+
+	if (checkForRecursiveInclude(childbuffer))
+		return;
+	buffer().pushIncludedBuffer(childbuffer);
+	// Update the child's tocBackend. The outliner uses the master's, but
+	// the navigation menu uses the child's.
+	childbuffer->tocBackend().update(output_active, utype);
+	// Include Tocs from children
+	childbuffer->inset().addToToc(DocIterator(), output_active, utype,
+								  backend);
+	buffer().popIncludedBuffer();
+	// Copy missing outliner names (though the user has been warned against
+	// having different document class and module selection between master
+	// and child).
+	for (auto const & name
+			 : childbuffer->params().documentClass().outlinerNames())
+		backend.addName(name.first, translateIfPossible(name.second));
 }
 
 
