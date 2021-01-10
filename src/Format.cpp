@@ -720,10 +720,9 @@ bool Formats::view(Buffer const & buffer, FileName const & filename,
 bool Formats::edit(Buffer const & buffer, FileName const & filename,
 			 string const & format_name) const
 {
-	if (filename.empty() || !filename.exists()) {
-		Alert::error(_("Cannot edit file"),
-			bformat(_("File does not exist: %1$s"),
-				from_utf8(filename.absFileName())));
+	if (filename.empty()) {
+		Alert::error(_("No Filename"),
+			_("No filename was provided!"));
 		return false;
 	}
 
