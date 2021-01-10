@@ -425,7 +425,7 @@ void GuiPainter::buttonText(int x, int baseline, docstring const & s,
 	FontMetrics const & fm = theFontMetrics(font);
 	fm.buttonText(s, offset, width, ascent, descent);
 
-	static int const d = offset / 2;
+	int const d = offset / 2;
 
 	fillRectangle(x + d + 1, baseline - ascent + 1, width - offset - 1,
 			      ascent + descent - 1, back);
