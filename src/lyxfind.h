@@ -105,6 +105,7 @@ public:
 	bool casesensitive;
 	bool matchword;
 	bool forward;
+	bool matchstart;
 	bool expandmacros;
 	bool ignoreformat;
 	/// This is docstring() if no replace was requested

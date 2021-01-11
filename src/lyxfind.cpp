@@ -3056,9 +3056,7 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 	{
 		string lead_as_regexp;
 		if (lead_size > 0) {
-			// @todo No need to search for \regexp{} insets in leading material
 			lead_as_regexp = std::regex_replace(par_as_string.substr(0, lead_size), specialChars,  R"(\$&)" );
-			// lead_as_regexp = escape_for_regex(par_as_string.substr(0, lead_size), !opt.ignoreformat);
 			par_as_string = par_as_string_nolead;
 			LYXERR(Debug::FIND, "lead_as_regexp is '" << lead_as_regexp << "'");
 			LYXERR(Debug::FIND, "par_as_string now is '" << par_as_string << "'");
@@ -3097,6 +3095,11 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 			}
 			if (lng < par_as_string.size())
 				par_as_string = par_as_string.substr(0,lng);
+			if ((lng > 0) && (par_as_string[0] == '^')) {
+				par_as_string = par_as_string.substr(1);
+				--lng;
+				opt.matchstart = true;
+			}
 		}
 		LYXERR(Debug::FIND, "par_as_string now is '" << par_as_string << "'");
 		LYXERR(Debug::FIND, "Open braces: " << open_braces);
@@ -3117,11 +3120,11 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 				while (regex_replace(par_as_string, par_as_string, orig, dest));
 			}
 			/* opt.matchword is ignored if using regex
-			  but expanding par_as_string with "\\b" is not appropriate here
+			  so expanding par_as_string with "\\b" seems appropriate here
 			  if regex contains for instance '.*' or '.+'
 			  1.) Nothing to do, if 'par_as_string' contains "\\b" already.
 			      (Means, that the user knows how to handle whole words
-			  2.) else replace '.' with "\\S" and prepend + append "\\b"
+			  2.) else replace '.' with "\\S" and wrap the regex with "\\b"
 			*/
 			if (opt.matchword) {
 				modifyRegexForMatchWord(par_as_string);
@@ -3383,8 +3386,18 @@ MatchResult MatchStringAdv::operator()(DocIterator const & cur, int len, bool at
 	int res = mres.match_len;
 	LYXERR(Debug::FIND,
 	       "res=" << res << ", at_begin=" << at_begin
-	       << ", matchword=" << opt.matchword
+	       << ", matchstart=" << opt.matchstart
 	       << ", inTexted=" << cur.inTexted());
+	if (opt.matchstart) {
+		if (cur.pos() != 0)
+			mres.match_len = 0;
+		else if (mres.match_prefix > 0)
+			mres.match_len = 0;
+		return mres;
+	}
+	else
+		return mres;
+	/* DEAD CODE follows
 	if (res == 0 || !at_begin || !opt.matchword || !cur.inTexted())
 		return mres;
 	if ((len > 0) && (res < len)) {
@@ -3420,6 +3433,7 @@ MatchResult MatchStringAdv::operator()(DocIterator const & cur, int len, bool at
 	}
 	mres.match_len = 0;
 	return mres;
+	*/
 }
 
 #if 0
