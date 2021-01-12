@@ -4403,8 +4403,13 @@ int Paragraph::find(docstring const & str, bool cs, bool mw,
 				break;
 			odocstringstream os;
 			inset->toString(os);
-			if (!os.str().empty())
-				break;
+			if (!os.str().empty()) {
+				int const insetstringsize = os.str().length();
+				for (int j = 0; j < insetstringsize && pos < parsize; ++i, ++j) {
+					if (str[i] != os.str()[j])
+						break;
+				}
+			}
 			pos++;
 		}
 		if (cs && str[i] != d->text_[pos])
