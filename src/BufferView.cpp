@@ -1653,20 +1653,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	case LFUN_WORD_REPLACE: {
-		bool has_deleted = false;
-		if (cur.selection()) {
-			DocIterator beg = cur.selectionBegin();
-			DocIterator end = cur.selectionEnd();
-			if (beg.pit() == end.pit()) {
-				for (pos_type p = beg.pos() ; p < end.pos() ; ++p) {
-					if (!cur.inMathed() && cur.paragraph().isDeleted(p)) {
-						has_deleted = true;
-						break;
-					}
-				}
-			}
-		}
-		if (lyxreplace(this, cmd, has_deleted)) {
+		if (lyxreplace(this, cmd)) {
 			dr.forceBufferUpdate();
 			dr.screenUpdate(Update::Force | Update::FitCursor);
 		}

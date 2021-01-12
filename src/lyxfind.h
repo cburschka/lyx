@@ -60,8 +60,7 @@ bool lyxfind(BufferView * bv, FuncRequest const & ev);
  * The string is encoded by \c replace2string.
  * \return whether we did anything
  */
-bool lyxreplace(BufferView * bv,
-		FuncRequest const &, bool has_deleted = false);
+bool lyxreplace(BufferView * bv, FuncRequest const &);
 
 /// find the next change in the buffer
 bool findNextChange(BufferView * bv);

@@ -376,7 +376,7 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 		// This causes a minor bug as undo will restore this selection,
 		// which the user did not create (#8986).
 		cur.innerText()->selectWord(cur, WHOLE_WORD);
-		searchstr = cur.selectionAsString(false);
+		searchstr = cur.selectionAsString(false, true);
 	}
 
 	// if we still don't have a search string, report the error
@@ -385,7 +385,7 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 		return make_pair(false, 0);
 
 	bool have_selection = cur.selection();
-	docstring const selected = cur.selectionAsString(false);
+	docstring const selected = cur.selectionAsString(false, true);
 	bool match =
 		case_sens
 		? searchstr == selected
@@ -468,8 +468,7 @@ bool lyxfind(BufferView * bv, FuncRequest const & ev)
 }
 
 
-bool lyxreplace(BufferView * bv,
-		FuncRequest const & ev, bool has_deleted)
+bool lyxreplace(BufferView * bv, FuncRequest const & ev)
 {
 	if (!bv || ev.action() != LFUN_WORD_REPLACE)
 		return false;
@@ -491,40 +490,31 @@ bool lyxreplace(BufferView * bv,
 
 	bool update = false;
 
-	if (!has_deleted) {
-		int replace_count = 0;
-		if (all) {
-			replace_count = replaceAll(bv, search, rplc, casesensitive, matchword);
-			update = replace_count > 0;
-		} else {
-			pair<bool, int> rv =
-				replaceOne(bv, search, rplc, casesensitive, matchword, forward, findnext);
-			update = rv.first;
-			replace_count = rv.second;
-		}
+	int replace_count = 0;
+	if (all) {
+		replace_count = replaceAll(bv, search, rplc, casesensitive, matchword);
+		update = replace_count > 0;
+	} else {
+		pair<bool, int> rv =
+			replaceOne(bv, search, rplc, casesensitive, matchword, forward, findnext);
+		update = rv.first;
+		replace_count = rv.second;
+	}
 
-		Buffer const & buf = bv->buffer();
-		if (!update) {
-			// emit message signal.
-			buf.message(_("String not found."));
+	Buffer const & buf = bv->buffer();
+	if (!update) {
+		// emit message signal.
+		buf.message(_("String not found."));
+	} else {
+		if (replace_count == 0) {
+			buf.message(_("String found."));
+		} else if (replace_count == 1) {
+			buf.message(_("String has been replaced."));
 		} else {
-			if (replace_count == 0) {
-				buf.message(_("String found."));
-			} else if (replace_count == 1) {
-				buf.message(_("String has been replaced."));
-			} else {
-				docstring const str =
-					bformat(_("%1$d strings have been replaced."), replace_count);
-				buf.message(str);
-			}
+			docstring const str =
+				bformat(_("%1$d strings have been replaced."), replace_count);
+			buf.message(str);
 		}
-	} else if (findnext) {
-		// if we have deleted characters, we do not replace at all, but
-		// rather search for the next occurence
-		if (findOne(bv, search, casesensitive, matchword, forward, true, findnext))
-			update = true;
-		else
-			bv->message(_("String not found."));
 	}
 	return update;
 }
