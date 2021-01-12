@@ -464,7 +464,7 @@ bool lyxfind(BufferView * bv, FuncRequest const & ev)
 	bool matchword     = parse_bool(howto);
 	bool forward       = parse_bool(howto);
 
-	return findOne(bv, search, casesensitive, matchword, forward, true, true);
+	return findOne(bv, search, casesensitive, matchword, forward, false, true);
 }
 
 

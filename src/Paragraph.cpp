@@ -4388,6 +4388,13 @@ int Paragraph::find(docstring const & str, bool cs, bool mw,
 	int i = 0;
 	pos_type const parsize = d->text_.size();
 	for (i = 0; i < strsize && pos < parsize; ++i, ++pos) {
+		// ignore deleted matter
+		if (!del && isDeleted(pos)) {
+			if (pos == parsize - 1)
+				break;
+			pos++;
+			continue;
+		}
 		// Ignore "invisible" letters such as ligature breaks
 		// and hyphenation chars while searching
 		while (pos < parsize - 1 && isInset(pos)) {
@@ -4403,8 +4410,6 @@ int Paragraph::find(docstring const & str, bool cs, bool mw,
 		if (cs && str[i] != d->text_[pos])
 			break;
 		if (!cs && uppercase(str[i]) != uppercase(d->text_[pos]))
-			break;
-		if (!del && isDeleted(pos))
 			break;
 	}
 
