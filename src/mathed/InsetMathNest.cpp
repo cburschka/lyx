@@ -898,7 +898,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (cmd.argument().empty()) {
 			// do superscript if LyX handles
 			// deadkeys
-			cur.recordUndoSelection();
+			cur.recordUndoInset();
 			script(cur, true, grabAndEraseSelection(cur));
 		}
 		break;
@@ -1874,10 +1874,12 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 		return true;
 	} else if (currentMode() != InsetMath::TEXT_MODE) {
 		if (c == '_') {
+			cur.recordUndoInset();
 			script(cur, false, save_selection);
 			return true;
 		}
 		if (c == '^') {
+			cur.recordUndoInset();
 			script(cur, true, save_selection);
 			return true;
 		}
