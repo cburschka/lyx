@@ -4162,6 +4162,8 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				insertLyXFile(from_utf8(cmd.getArg(0)), true);
 			else
 				insertLyXFile(cmd.argument());
+			dr.forceBufferUpdate();
+			dr.screenUpdate(Update::Force);
 			break;
 		}
 
