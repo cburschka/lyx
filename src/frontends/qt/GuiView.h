@@ -376,8 +376,8 @@ private:
 	bool lfunUiToggle(std::string const & ui_component);
 	///
 	void toggleFullScreen();
-	///
-	void insertLyXFile(docstring const & fname, bool ignorelang = false);
+        /// \return whether we did anything
+        bool insertLyXFile(docstring const & fname, bool ignorelang = false);
 	///
 	/// Open Export As ... dialog. \p iformat is the format the
 	/// filter is initially set to.

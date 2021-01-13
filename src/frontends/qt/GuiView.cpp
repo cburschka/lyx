@@ -2716,11 +2716,11 @@ void GuiView::newDocument(string const & filename, string templatefile,
 }
 
 
-void GuiView::insertLyXFile(docstring const & fname, bool ignorelang)
+bool GuiView::insertLyXFile(docstring const & fname, bool ignorelang)
 {
 	BufferView * bv = documentBufferView();
 	if (!bv)
-		return;
+		return false;
 
 	// FIXME UNICODE
 	FileName filename(to_utf8(fname));
@@ -2742,7 +2742,7 @@ void GuiView::insertLyXFile(docstring const & fname, bool ignorelang)
 					 QStringList(qt_("LyX Documents (*.lyx)")));
 
 		if (result.first == FileDialog::Later)
-			return;
+			return false;
 
 		// FIXME UNICODE
 		filename.set(fromqstr(result.second));
@@ -2751,12 +2751,13 @@ void GuiView::insertLyXFile(docstring const & fname, bool ignorelang)
 		if (filename.empty()) {
 			// emit message signal.
 			message(_("Canceled."));
-			return;
+			return false;
 		}
 	}
 
 	bv->insertLyXFile(filename, ignorelang);
 	bv->buffer().errors("Parse");
+	return true;
 }
 
 
@@ -4158,12 +4159,11 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 
 		case LFUN_FILE_INSERT: {
-			if (cmd.getArg(1) == "ignorelang")
-				insertLyXFile(from_utf8(cmd.getArg(0)), true);
-			else
-				insertLyXFile(cmd.argument());
-			dr.forceBufferUpdate();
-			dr.screenUpdate(Update::Force);
+			bool const ignore_lang = cmd.getArg(1) == "ignorelang";
+			if (insertLyXFile(from_utf8(cmd.getArg(0)), ignore_lang)) {
+				dr.forceBufferUpdate();
+				dr.screenUpdate(Update::Force);
+			}
 			break;
 		}
 
