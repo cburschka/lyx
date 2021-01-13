@@ -4397,21 +4397,26 @@ int Paragraph::find(docstring const & str, bool cs, bool mw,
 		}
 		// Ignore "invisible" letters such as ligature breaks
 		// and hyphenation chars while searching
-		while (pos < parsize - 1 && isInset(pos)) {
+		bool nonmatch = false;
+		while (pos < parsize && isInset(pos)) {
 			Inset const * inset = getInset(pos);
-			if (!inset->isLetter())
+			if (!inset->isLetter() && !inset->isChar())
 				break;
 			odocstringstream os;
 			inset->toString(os);
 			if (!os.str().empty()) {
 				int const insetstringsize = os.str().length();
 				for (int j = 0; j < insetstringsize && pos < parsize; ++i, ++j) {
-					if (str[i] != os.str()[j])
+					if (str[i] != os.str()[j]) {
+						nonmatch = true;
 						break;
+					}
 				}
 			}
 			pos++;
 		}
+		if (nonmatch || i == strsize)
+			break;
 		if (cs && str[i] != d->text_[pos])
 			break;
 		if (!cs && uppercase(str[i]) != uppercase(d->text_[pos]))
