@@ -216,6 +216,9 @@ void InsetCommand::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		InsetCommandParams p(p_.code());
 		InsetCommand::string2params(to_utf8(cmd.argument()), p);
+		if (p == p_)
+			// no change
+			break;
 		if (p.getCmdName().empty())
 			cur.noScreenUpdate();
 		else {
@@ -226,6 +229,8 @@ void InsetCommand::doDispatch(Cursor & cur, FuncRequest & cmd)
 				string const data = InsetCommand::params2string(p);
 				lyx::dispatch(FuncRequest(LFUN_INSET_INSERT, data));
 				lyx::dispatch(FuncRequest(LFUN_CHAR_DELETE_FORWARD));
+				cur.forceBufferUpdate();
+				break;
 			} else
 				setParams(p);
 		}
