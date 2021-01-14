@@ -4393,6 +4393,7 @@ int Paragraph::find(docstring const & str, bool cs, bool mw,
 			if (pos == parsize - 1)
 				break;
 			pos++;
+			--i;
 			continue;
 		}
 		// Ignore "invisible" letters such as ligature breaks
