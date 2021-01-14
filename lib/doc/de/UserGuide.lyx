@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 601
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -31934,24 +31934,15 @@ Sollen die Zeichen |
 
 in Nomenklatureinträgen mit \SpecialChar TeX
 -Code erscheinen, müssen sie geschützt werden.
- indem man ein Anführungszeichen davor setzt.
+ indem man ein Prozentzeichen davor setzt.
  Um zu verhindern, dass das Anführungszeichen nachfolgende Zeichen beeinflusst,
  wird es mit einem leeren \SpecialChar TeX
--Klammerpaar abgeschlossen: ""{}
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
+-Klammerpaar abgeschlossen: %"{}
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
-symbol "\"@, \"|, \"!, \"\"{}"
-description "Das Anführungszeichen wird im TeX-Code mit der Sequenz ' \"\"{}\"\"{} ' ausgegeben."
+symbol "%@, %|, %!, %\"{}"
+description "Das Anführungszeichen wird im TeX-Code mit der Sequenz ' %\"{}%\"{} ' ausgegeben."
 literal "true"
-
-\end_inset
-
-
-\end_layout
 
 \end_inset
 

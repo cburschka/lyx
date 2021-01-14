@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 601
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -34034,7 +34034,26 @@ If the characters |
 
 should appear in nomenclature entries containing \SpecialChar TeX
  code they need to be escaped
- by adding a quote character in front of them.
+ by adding a 
+\change_deleted -712698321 1610611122
+quote
+\change_inserted -712698321 1610611123
+percent
+\change_unchanged
+ character in front of them.
+\change_inserted -712698321 1610611807
+
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "%@, %|, %!, %\""
+description "The quote sign in TeX code is output by writing ' %\"{}%\"{} '."
+literal "true"
+
+\end_inset
+
+
+\change_deleted -712698321 1610611114
+
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "\"@, \"|, \"!, \"\""
@@ -34043,6 +34062,8 @@ literal "true"
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 601
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -68,9 +68,9 @@ enumitem
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -119,6 +119,7 @@ enumitem
 \justification true
 \use_refstyle 1
 \use_minted 0
+\use_lineno 0
 \notefontcolor #0000ff
 \branch Pregunta
 \selected 1
@@ -130,7 +131,6 @@ enumitem
 \filename_suffix 0
 \color #aa55ff
 \end_branch
-\use_lineno 0
 \index Índice
 \shortcut idx
 \color #008000
@@ -146,12 +146,15 @@ enumitem
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\docbook_table_output 0
 \end_header
 
 \begin_body
@@ -1955,6 +1958,7 @@ reference "tab:Prueba-deslizamiento-horizontal"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -8075,6 +8079,8 @@ Resumen.
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -11346,6 +11352,8 @@ reference "tab:Anchura-espacios"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -23836,6 +23844,8 @@ arg   "layout-paragraph"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -23962,6 +23972,8 @@ reference "fig:Estrella"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -23972,6 +23984,8 @@ status open
 
 
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -24013,6 +24027,8 @@ Estructura indefinible
 
 
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -24134,6 +24150,8 @@ reference "tab:Un cuadro flotante"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -25778,6 +25796,8 @@ reference "tab:Acentos-y-comandos"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -27170,6 +27190,8 @@ reference "tab:Estilos-de-tipografía"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -32441,7 +32463,17 @@ Para introducir en entradas de la nomenclatura con código \SpecialChar TeX
 \begin_inset space \space{}
 \end_inset
 
-, es necesario que vayan precedidos por comillas como secuencia de escape.
+, es necesario que vayan precedidos por comillas
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+NOTE: This is now a percent character, not longer a quote character!
+\end_layout
+
+\end_inset
+
+ como secuencia de escape.
  
 \lang english
 To avoid that a single " affects the following characters one writes braces
@@ -32454,7 +32486,7 @@ To avoid that a single " affects the following characters one writes braces
 
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
-symbol "\"@, \"|, \"!, \"\"{}"
+symbol "%@, %|, %!, %\"{}"
 description "El carácter comillas en código TeX se obtiene escribiendo ' \"\"{}\"\"{} '."
 literal "true"
 
@@ -34553,6 +34585,7 @@ reference "fig:Diseño-de-página"
 \align center
 \begin_inset Float figure
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -48940,6 +48973,7 @@ reference "tab:Unidades"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
