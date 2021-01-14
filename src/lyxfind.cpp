@@ -763,32 +763,34 @@ string correctRegex(string t)
 	/* Convert \backslash => \
 	 * and \{, \}, \[, \] => {, }, [, ]
 	 */
-        string s("");
-        regex wordre("(\\\\)*(\\\\((backslash) ?|[\\[\\]\\{\\}]))");
-        size_t lastpos = 0;
-        smatch sub;
-        for (sregex_iterator it(t.begin(), t.end(), wordre), end; it != end; ++it) {
-                sub = *it;
-                string replace;
-                if ((sub.position(2) - sub.position(0)) % 2 == 1) {
-                        continue;
-                }
-                else {
-                        if (sub.str(4) == "backslash")
-                                replace = "\\";
-                        else
-                                replace = sub.str(3);
-                }
-                if (lastpos < (size_t) sub.position(2))
-                        s += t.substr(lastpos, sub.position(2) - lastpos);
-                s += replace;
-                lastpos = sub.position(2) + sub.length(2);
-        }
-        if (lastpos == 0)
-                return t;
-        else if (lastpos < t.length())
-                s += t.substr(lastpos, t.length() - lastpos);
-        return s;
+	string s("");
+	regex wordre("(\\\\)*(\\\\((backslash|mathcircumflex) ?|[\\[\\]\\{\\}]))");
+	size_t lastpos = 0;
+	smatch sub;
+	for (sregex_iterator it(t.begin(), t.end(), wordre), end; it != end; ++it) {
+		sub = *it;
+		string replace;
+		if ((sub.position(2) - sub.position(0)) % 2 == 1) {
+			continue;
+		}
+		else {
+			if (sub.str(4) == "backslash")
+				replace = "\\";
+			else if (sub.str(4) == "mathcircumflex")
+				replace = "^";
+			else
+				replace = sub.str(3);
+		}
+		if (lastpos < (size_t) sub.position(2))
+			s += t.substr(lastpos, sub.position(2) - lastpos);
+		s += replace;
+		lastpos = sub.position(2) + sub.length(2);
+	}
+	if (lastpos == 0)
+		return t;
+	else if (lastpos < t.length())
+		s += t.substr(lastpos, t.length() - lastpos);
+	return s;
 }
 
 /// Within \regexp{} apply get_lyx_unescapes() only (i.e., preserve regexp semantics of the string),
@@ -2121,7 +2123,7 @@ void LatexInfo::buildEntries(bool isPatternString)
           }
           closings = 0;
         }
-        if (interval_.par.substr(found._dataStart-1, 15).compare("\\endarguments{}") == 0) {
+        if (interval_.par.substr(found._dataStart, 15).compare("\\endarguments{}") == 0) {
           found._dataStart += 15;
         }
         size_t endpos;
@@ -3120,9 +3122,9 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 			++close_wildcards;
 		}
 		*/
+		size_t lng = par_as_string.size();
 		if (!opt.ignoreformat) {
 			// Remove extra '\}' at end if not part of \{\.\}
-			size_t lng = par_as_string.size();
 			while(lng > 2) {
 				if (par_as_string.substr(lng-2, 2).compare("\\}") == 0) {
 					if (lng >= 6) {
@@ -3137,11 +3139,11 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 			}
 			if (lng < par_as_string.size())
 				par_as_string = par_as_string.substr(0,lng);
-			if ((lng > 0) && (par_as_string[0] == '^')) {
-				par_as_string = par_as_string.substr(1);
-				--lng;
-				opt.matchstart = true;
-			}
+		}
+		if ((lng > 0) && (par_as_string[0] == '^')) {
+			par_as_string = par_as_string.substr(1);
+			--lng;
+			opt.matchstart = true;
 		}
 		LYXERR(Debug::FIND, "par_as_string now is '" << par_as_string << "'");
 		LYXERR(Debug::FIND, "Open braces: " << open_braces);

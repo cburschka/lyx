@@ -549,7 +549,7 @@ void getArgInsets(otexstream & os, OutputParams const & runparams, Layout::LaTeX
 			}
 		}
 	}
-	if (runparams.for_search) {
+	if (runparams.for_search && argnr > 1) {
 		// Mark end of arguments for findadv() only
 		os << "\\endarguments{}";
 	}
