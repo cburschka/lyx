@@ -398,7 +398,7 @@ docstring nomenclWidest(Buffer const & buffer, OutputParams const & runparams)
 							ParamInfo::HANDLING_LATEXIFY)
 				: docstring();
 			// strip out % characters which are used as escape in nomencl
-			// but act as comment in out context here´
+			// but act as comment in our context here
 			symbol = subst(symbol, from_ascii("%"), docstring());
 			// This is only an approximation,
 			// but the best we can get.
