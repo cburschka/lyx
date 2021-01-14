@@ -1,4 +1,4 @@
-include $(top_srcdir)/config/common.am
+fginclude $(top_srcdir)/config/common.am
 
 SUBDIRS = doc lyx2lyx
 
@@ -2467,6 +2467,8 @@ dist_layouts_DATA =\
 	layouts/theorems-ams-extended-chap-bytype.module \
 	layouts/theorems-case.inc \
 	layouts/theorems-chap.module \
+	layouts/theorems-counters-bytype.inc \
+	layouts/theorems-counters-extended-bytype.inc \
 	layouts/theorems.inc \
 	layouts/theorems-bytype.inc \
 	layouts/theorems-bytype.module \
