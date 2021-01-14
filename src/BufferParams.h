@@ -151,7 +151,7 @@ public:
 	/// on to class BufferView::updateDocumentClass(). The exception, of course,
 	/// is in GuiDocument, where we use a BufferParams simply to hold a copy of
 	/// the parameters from the active Buffer.
-	void makeDocumentClass(bool const clone = false);
+	void makeDocumentClass(bool clone = false, bool internal = false);
 	/// Returns the DocumentClass currently in use: the BaseClass as modified
 	/// by modules.
 	DocumentClass const & documentClass() const;

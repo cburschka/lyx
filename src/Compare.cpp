@@ -396,7 +396,7 @@ void Compare::run()
 		dest_buffer->params().documentClassPtr();
 	// We do not want to share the DocumentClass with the other Buffer.
 	// See bug #10295.
-	dest_buffer->params().makeDocumentClass();
+	dest_buffer->params().makeDocumentClass(dest_buffer->isClone(), dest_buffer->isInternal());
 
 	doStatusMessage();
 	// Do the real work

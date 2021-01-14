@@ -2567,7 +2567,7 @@ LayoutFileIndex const & BufferParams::baseClassID() const
 }
 
 
-void BufferParams::makeDocumentClass(bool const clone)
+void BufferParams::makeDocumentClass(bool clone, bool internal)
 {
 	if (!baseClass())
 		return;
@@ -2577,7 +2577,7 @@ void BufferParams::makeDocumentClass(bool const clone)
 	for (auto const & mod : layout_modules_)
 		mods.push_back(mod);
 
-	doc_class_ = getDocumentClass(*baseClass(), mods, cite_engine_, clone);
+	doc_class_ = getDocumentClass(*baseClass(), mods, cite_engine_, clone, internal);
 
 	TextClass::ReturnValues success = TextClass::OK;
 	if (!forced_local_layout_.empty())

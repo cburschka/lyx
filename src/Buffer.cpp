@@ -1006,7 +1006,7 @@ int Buffer::readHeader(Lexer & lex)
 
 	params().shell_escape = theSession().shellescapeFiles().find(absFileName());
 
-	params().makeDocumentClass();
+	params().makeDocumentClass(isClone(), isInternal());
 
 	return unknown_tokens;
 }

@@ -564,7 +564,7 @@ private:
 	friend DocumentClassPtr
 		getDocumentClass(LayoutFile const &, LayoutModuleList const &,
 				 std::string const &,
-				 bool const clone);
+				 bool clone, bool internal);
 };
 
 
@@ -575,7 +575,7 @@ private:
 DocumentClassPtr getDocumentClass(LayoutFile const & baseClass,
 			LayoutModuleList const & modlist,
 			std::string const & cengine = std::string(),
-			bool const clone = false);
+			bool clone = false, bool internal = false);
 
 /// convert page sides option to text 1 or 2
 std::ostream & operator<<(std::ostream & os, PageSides p);

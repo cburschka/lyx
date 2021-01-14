@@ -1024,7 +1024,7 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter)
 void BufferView::makeDocumentClass()
 {
 	DocumentClassConstPtr olddc = buffer_.params().documentClassPtr();
-	buffer_.params().makeDocumentClass();
+	buffer_.params().makeDocumentClass(buffer_.isClone(), buffer_.isInternal());
 	updateDocumentClass(olddc);
 }
 
