@@ -158,13 +158,6 @@ FileName::FileName(FileName const & rhs) : d(new Private)
 }
 
 
-FileName::FileName(FileName && rhs) noexcept
-	: d(rhs.d)
-{
-	rhs.d = nullptr;
-}
-
-
 FileName::FileName(FileName const & rhs, string const & suffix) : d(new Private)
 {
 	set(rhs, suffix);
@@ -177,15 +170,6 @@ FileName & FileName::operator=(FileName const & rhs)
 		return *this;
 	d->name = rhs.d->name;
 	d->fi = rhs.d->fi;
-	return *this;
-}
-
-
-FileName & FileName::operator=(FileName && rhs) noexcept
-{
-	auto temp = rhs.d;
-	rhs.d = d;
-	d = temp;
 	return *this;
 }
 
