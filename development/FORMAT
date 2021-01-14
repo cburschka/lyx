@@ -7,6 +7,11 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2021-01-05 Richard Kimberly Heck <rikiheck@lyx.org>
+	* Format incremented to 601: Add refstyle support for mathed
+	  Use 'formatted' in the LyX file to indicate formatted references,
+	  rather than the previous 'refstyle'
+
 2020-12-02 Jürgen Spitzmüller <spitz@lyx.org>
  	* Format incremented to 600: Hungarian quote style
  	  New buffer param \quotes_style hungarian
