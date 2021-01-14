@@ -1879,10 +1879,10 @@ DocumentClassPtr getDocumentClass(LayoutFile const & baseClass, LayoutModuleList
 		if (!lm) {
 			if (show_warnings) {
 				docstring const msg =
-							bformat(_("The module %1$s has been requested by\n"
-							"this document but has not been found in the list of\n"
-							"available modules. If you recently installed it, you\n"
-							"probably need to reconfigure LyX.\n"), from_utf8(mod));
+					bformat(_("The module %1$s has been requested by\n"
+					"this document but has not been found in the list of\n"
+					"available modules. If you recently installed it, you\n"
+					"probably need to reconfigure LyX.\n"), from_utf8(mod));
 				frontend::Alert::warning(_("Module not available"), msg);
 			}
 			continue;
@@ -1902,7 +1902,7 @@ DocumentClassPtr getDocumentClass(LayoutFile const & baseClass, LayoutModuleList
 		FileName layout_file = libFileSearch("layouts", lm->getFilename());
 		if (!doc_class->read(layout_file, TextClass::MODULE)) {
 			docstring const msg =
-						bformat(_("Error reading module %1$s\n"), from_utf8(mod));
+				bformat(_("Error reading module %1$s\n"), from_utf8(mod));
 			frontend::Alert::warning(_("Read Error"), msg);
 		}
 	}
@@ -1914,10 +1914,10 @@ DocumentClassPtr getDocumentClass(LayoutFile const & baseClass, LayoutModuleList
 	if (!ce) {
 		if (show_warnings) {
 			docstring const msg =
-						bformat(_("The cite engine %1$s has been requested by\n"
-						"this document but has not been found in the list of\n"
-						"available engines. If you recently installed it, you\n"
-						"probably need to reconfigure LyX.\n"), from_utf8(cengine));
+				bformat(_("The cite engine %1$s has been requested by\n"
+				"this document but has not been found in the list of\n"
+				"available engines. If you recently installed it, you\n"
+				"probably need to reconfigure LyX.\n"), from_utf8(cengine));
 			frontend::Alert::warning(_("Cite Engine not available"), msg);
 		}
 	} else if (!ce->isAvailable() && show_warnings) {
@@ -1935,7 +1935,7 @@ DocumentClassPtr getDocumentClass(LayoutFile const & baseClass, LayoutModuleList
 		FileName layout_file = libFileSearch("citeengines", ce->getFilename());
 		if (!doc_class->read(layout_file, TextClass::CITE_ENGINE)) {
 			docstring const msg =
-						bformat(_("Error reading cite engine %1$s\n"), from_utf8(cengine));
+				bformat(_("Error reading cite engine %1$s\n"), from_utf8(cengine));
 			frontend::Alert::warning(_("Read Error"), msg);
 		}
 	}
