@@ -2471,6 +2471,9 @@ void Cursor::setCurrentFont()
 
 void Cursor::checkBufferStructure()
 {
+	if (buffer()->isInternal())
+		return;
+
 	Buffer const * master = buffer()->masterBuffer();
 	master->tocBackend().updateItem(*this);
 	if (master != buffer() && !master->hasGuiDelegate())
