@@ -2085,6 +2085,10 @@ void LatexInfo::buildEntries(bool isPatternString)
           key += interval_.par.substr(params, optend-params);
           evaluatingOptional = true;
           optionalEnd = optend;
+          if (found.keytype == KeyInfo::isSectioning) {
+            // Remove optional values (but still keep in header)
+            interval_.addIntervall(params, optend);
+          }
         }
         string token = sub.str(7);
         int closings;
