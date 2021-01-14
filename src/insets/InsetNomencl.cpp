@@ -393,10 +393,13 @@ docstring nomenclWidest(Buffer const & buffer, OutputParams const & runparams)
 				continue;
 			nomencl = static_cast<InsetNomencl const *>(inset);
 			// Use proper formatting. We do not escape makeindex chars here
-			docstring const symbol = nomencl ?
+			docstring symbol = nomencl ?
 				nomencl->params().prepareCommand(runparams, nomencl->getParam("symbol"),
 							ParamInfo::HANDLING_LATEXIFY)
 				: docstring();
+			// strip out % characters which are used as escape in nomencl
+			// but act as comment in out context here´
+			symbol = subst(symbol, from_ascii("%"), docstring());
 			// This is only an approximation,
 			// but the best we can get.
 			int const wx = use_gui ?
