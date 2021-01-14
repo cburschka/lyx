@@ -155,6 +155,9 @@ TocBuilder & TocBackend::builder(string const & type)
 // all TOCs.
 bool TocBackend::updateItem(DocIterator const & dit_in) const
 {
+	if (dit_in.buffer() && dit_in.buffer()->isInternal())
+		return false;
+
 	// we need a text
 	DocIterator dit = dit_in.getInnerText();
 
