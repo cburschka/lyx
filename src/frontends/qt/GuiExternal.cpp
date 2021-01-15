@@ -644,6 +644,7 @@ void GuiExternal::dispatchParams()
 {
 	string const lfun = InsetExternal::params2string(params_, buffer());
 	dispatch(FuncRequest(getLfun(), lfun));
+	connectToNewInset();
 }
 
 
