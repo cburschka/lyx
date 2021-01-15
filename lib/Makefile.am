@@ -1,4 +1,4 @@
-fginclude $(top_srcdir)/config/common.am
+include $(top_srcdir)/config/common.am
 
 SUBDIRS = doc lyx2lyx
 
