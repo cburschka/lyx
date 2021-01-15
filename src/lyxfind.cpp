@@ -909,7 +909,7 @@ public:
 static MatchResult::range interpretMatch(MatchResult &oldres, MatchResult &newres)
 {
   int range = oldres.match_len;
-  if (range < 2) range = 2;
+  if (range > 0) range--;
   if (newres.match2end < oldres.match2end - oldres.match_len)
     return MatchResult::newIsTooFar;
   if (newres.match_len < oldres.match_len)
@@ -3670,8 +3670,9 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 
 #if defined(ResultsDebug)
 // Debugging output
-static void displayMResult(MatchResult &mres, int increment)
+static void displayMResult(MatchResult &mres, int increment, string from)
 {
+  LYXERR0( "from:\t\t\t" << from);
   LYXERR0( "pos: " << mres.pos << " increment " << increment);
   LYXERR0( "leadsize: " << mres.leadsize);
   LYXERR0( "match_len: " << mres.match_len);
@@ -3681,9 +3682,9 @@ static void displayMResult(MatchResult &mres, int increment)
   for (size_t i = 0; i < mres.result.size(); i++)
     LYXERR0( "Match " << i << " = \"" << mres.result[i] << "\"");
 }
-	#define displayMres(s,i) displayMResult(s,i);
+	#define displayMres(s,i, txt) displayMResult(s,i, xtx);
 #else
-	#define displayMres(s,i)
+	#define displayMres(s,i, txt)
 #endif
 
 /*
@@ -3738,26 +3739,35 @@ MatchResult &findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, Ma
 	// and although we search for only 3 chars, we find the whole hyperlink inset
 	bool at_begin = (expected.match_prefix == 0);
 	//if (findAdvForwardInnermost(cur)) {
-	if (0) {
-		mres = match(cur, -1, at_begin);
-		displayMres(mres, 0);
-		if (expected.match_len > 0) {
+	if (expected.match_len > 0) {
+		old_cur = cur;
+		max_match = expected;
+		do {
+			size_t d = cur.depth();
+			cur.forwardPos();
+			if (!cur)
+				break;
+			if (cur.depth() < d)
+				break;
+			if ((cur.depth() == d) && at_begin)
+				break;
+			mres = match(cur, -1, at_begin);
+			displayMres(mres, -1, "Checking innermost");
 			if (mres.match_len < expected.match_len)
-				return fail;
-		}
-		else {
-			if (mres.match_len <= 0)
-				return fail;
-		}
-		max_match = mres;
-	}
-	else if (expected.match_len < 0) {
-		mres = match(cur);      /* match valid only if not searching whole words */
-		displayMres(mres, 0);
-		max_match = mres;
+				break;
+			if (!at_begin && (mres.match_prefix > max_match.match_prefix))
+				break;
+			max_match = mres;
+			at_begin = (max_match.match_prefix == 0);
+			old_cur = cur;;
+		} while(1);
+		cur = old_cur;
 	}
 	else {
-		max_match = expected;
+		// (expected.match_len <= 0)
+		mres = match(cur);      /* match valid only if not searching whole words */
+		displayMres(mres, 0, "Start with negative match");
+		max_match = mres;
 	}
 	if (max_match.match_len <= 0) return fail;
 	LYXERR(Debug::FIND, "Ok");
@@ -3794,7 +3804,7 @@ MatchResult &findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, Ma
           while (maxl > minl) {
             MatchResult mres2;
             mres2 = match(cur, len, at_begin);
-            displayMres(mres2, len);
+            displayMres(mres2, len, "Finalize loop");
             int actual_match = mres2.match_len;
             if (actual_match >= max_match.match_len) {
               // actual_match > max_match _can_ happen,
@@ -3868,7 +3878,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 		//(void) findAdvForwardInnermost(cur);
 		LYXERR(Debug::FIND, "findForwardAdv() cur: " << cur);
 		MatchResult mres = match(cur, -1, false);
-		displayMres(mres,-1)
+		displayMres(mres,-1, "Starting findForwardAdv")
 		int match_len = mres.match_len;
 		if ((mres.pos > 100000) || (mres.match2end > 100000) || (match_len > 100000)) {
 			LYXERR(Debug::INFO, "BIG LENGTHS: " << mres.pos << ", " << match_len << ", " << mres.match2end);
@@ -3881,7 +3891,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 			if (mres.match_prefix + mres.pos - mres.leadsize > 1)
 			  increment = (mres.match_prefix + mres.pos - mres.leadsize + 1)*3/4;
 			else
-			  increment = 10;
+			  increment = 1;
 			LYXERR(Debug::FIND, "Set increment to " << increment);
 			while (increment > 0) {
 				DocIterator old_cur = cur;
@@ -3895,7 +3905,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 				}
 				else {
 					MatchResult mres2 = match(cur, -1, false);
-					displayMres(mres2,increment)
+					displayMres(mres2,increment, "findForwardAdv loop")
 					switch (interpretMatch(mres, mres2)) {
 					case MatchResult::newIsTooFar:
 					  // behind the expected match
@@ -3947,7 +3957,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 			for (int i = 0; !theApp()->longOperationCancelled() && cur; cur.forwardPos()) {
 				if (i++ > 3) {
 					mres3 = match(cur, -1, false);
-					displayMres(mres3, 1)
+					displayMres(mres3, 1, 1 "Prepare finalize in findForwardAdv")
 					int remaining_len = mres3.match_len;
 					if (remaining_len <= 0) {
 						// Apparently the searched string is not in the remaining part
@@ -3959,12 +3969,12 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 				}
 				LYXERR(Debug::FIND, "Advancing cur: " << cur);
 				mres3 = match(cur, 1);
-				displayMres(mres3, 1)
+				displayMres(mres3, 1, "Prepare 2 finalize in findForwardAdv")
 				int match_len3 = mres3.match_len;
 				if (match_len3 < 0)
 					continue;
 				mres3 = match(cur);
-				displayMres(mres3, 1)
+				displayMres(mres3, 1, "Prepare 3 finalize in findForwardAdv")
 				int match_len2 = mres3.match_len;
 				LYXERR(Debug::FIND, "match_len2: " << match_len2);
 				if (match_len2 > 0) {
