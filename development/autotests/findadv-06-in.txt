@@ -1,23 +1,29 @@
 # Basic test for searching with par-style awareness
+UseShortcut "C-F20" "layout Part"
+UseShortcut "C-F21" "layout Chapter"
+UseShortcut "C-F22" "layout Section"
+UseShortcut "C-F23" "layout Subsection"
+UseShortcut "C-F24" "layout Subsubsection"
+UseShortcut "C-F25" "layout Paragraph"
+UseShortcut "C-F26" "layout Subparagraph"
+UseShortcut "C-F29" "layout Standard"
 
+PrepareShortcuts
 Lang sk_SK.utf8
 CO: findadv-06.ctrl
 TestBegin test.lyx -dbg key,find > findadv-06.loga.txt 2>&1
-KD: 50
+KD: 100
 CN: Part 1
 KK: foo\[Return]
-KK: \Ao2
-KK: foo\[Return]
-KK: \Ao9
-KK: foo\C\[Home]
+KK: \C\[F22]foo\[Return]
+KK: \C\[F29]foo\C\[Home]
 KK: \Axbuffer-write\[Return]
 KK: \Axdialog-show findreplaceadv\[Return]
 # Uncheck ignore format
 KK: \At\Ai\Ah
 KK: \CF
-KK: \Aj
-KK: \Ao2
-KK: foo\[Return]
+#KK: \Aj
+KK: \C\[F22]foo\[Return]
 CP: Putting selection at .*idx: 0 par: 1 pos: 0\n with len: 3
 #
 CN: Part 2
@@ -28,7 +34,7 @@ KK: \[Delete]
 # Uncheck ignore format
 #KK: \At\Ai\Ah
 #KK: \CF
-KK: \Ao9
+KK: \C\[F29]
 KK: foo\[Return]\[Return]\[Return]
 CP: Putting selection at .*idx: 0 par: 0 pos: 0\n with len: 3
 CP: Putting selection at .*idx: 0 par: 1 pos: 0\n with len: 3
