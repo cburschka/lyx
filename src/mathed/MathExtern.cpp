@@ -599,7 +599,7 @@ void extractFunctions(MathData & ar, ExternalMath kind)
 		extractScript(exp, jt, ar.end(), true);
 
 		// create a proper inset as replacement
-		auto p = make_unique<InsetMathExFunc>(buf, name);
+		auto p = lyx::make_unique<InsetMathExFunc>(buf, name);
 
 		// jt points to the "argument". Get hold of this.
 		MathData::iterator st =
@@ -684,7 +684,7 @@ void extractIntegrals(MathData & ar, ExternalMath kind)
 			continue;
 
 		// core is part from behind the scripts to the 'd'
-		auto p = make_unique<InsetMathExInt>(buf, from_ascii("int"));
+		auto p = lyx::make_unique<InsetMathExInt>(buf, from_ascii("int"));
 
 		// handle scripts if available
 		if (!testIntSymbol(*it)) {
@@ -769,7 +769,7 @@ void extractSums(MathData & ar)
 			continue;
 
 		// create a proper inset as replacement
-		auto p = make_unique<InsetMathExInt>(buf, from_ascii("sum"));
+		auto p = lyx::make_unique<InsetMathExInt>(buf, from_ascii("sum"));
 
 		// collect lower bound and summation index
 		InsetMathScript const * sub = ar[i]->asScriptInset();
@@ -857,7 +857,7 @@ void extractDiff(MathData & ar)
 		}
 
 		// create a proper diff inset
-		auto diff = make_unique<InsetMathDiff>(buf);
+		auto diff = lyx::make_unique<InsetMathDiff>(buf);
 
 		// collect function, let jt point behind last used item
 		MathData::iterator jt = it + 1;

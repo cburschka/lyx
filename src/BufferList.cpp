@@ -128,7 +128,7 @@ Buffer * BufferList::createNewBuffer(string const & s)
 {
 	unique_ptr<Buffer> tmpbuf;
 	try {
-		tmpbuf = make_unique<Buffer>(s);
+		tmpbuf = lyx::make_unique<Buffer>(s);
 	} catch (ExceptionMessage const & message) {
 		if (message.type_ == ErrorException) {
 			Alert::error(message.title_, message.details_);

@@ -1471,7 +1471,7 @@ bool Buffer::save() const
 	// proper location once that has been done successfully. that
 	// way we preserve the original file if something goes wrong.
 	string const justname = fileName().onlyFileNameWithoutExt();
-	auto tempfile = make_unique<TempFile>(fileName().onlyPath(),
+	auto tempfile = lyx::make_unique<TempFile>(fileName().onlyPath(),
 	                                      justname + "-XXXXXX.lyx");
 	bool const symlink = fileName().isSymLink();
 	if (!symlink)

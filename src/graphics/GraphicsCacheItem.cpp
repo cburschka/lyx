@@ -442,7 +442,7 @@ void CacheItem::Impl::convertToDisplayFormat()
 	// Connect a signal to this->imageConverted and pass this signal to
 	// the graphics converter so that we can load the modified file
 	// on completion of the conversion process.
-	converter_ = make_unique<Converter>(doc_file_, filename,
+	converter_ = lyx::make_unique<Converter>(doc_file_, filename,
 	                                    to_file_base.absFileName(),
 	                                    from, to_);
 	// Connection is closed at the same time as *this is destroyed.
