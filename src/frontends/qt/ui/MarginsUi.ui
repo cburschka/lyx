@@ -1,46 +1,57 @@
-<ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>MarginsUi</class>
- <widget class="QWidget" name="MarginsUi" >
-  <property name="geometry" >
+ <widget class="QWidget" name="MarginsUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>329</width>
-    <height>373</height>
+    <height>411</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
+  <layout class="QGridLayout">
+   <property name="leftMargin">
     <number>11</number>
    </property>
-   <property name="spacing" >
+   <property name="topMargin">
+    <number>11</number>
+   </property>
+   <property name="rightMargin">
+    <number>11</number>
+   </property>
+   <property name="bottomMargin">
+    <number>11</number>
+   </property>
+   <property name="spacing">
     <number>6</number>
    </property>
-   <item row="0" column="0" >
-    <widget class="QCheckBox" name="marginCB" >
-     <property name="toolTip" >
-      <string>Use the margin settings provided by the document class</string>
+   <item row="0" column="0">
+    <widget class="QCheckBox" name="marginCB">
+     <property name="acceptDrops">
+      <bool>true</bool>
      </property>
-     <property name="text" >
+     <property name="toolTip">
+      <string>Use the margin settings provided by the document class.
+Note that if this is unchecked, leaving a field empty may use different defaults values (determined either by the geometry package or by classes/packages overriding geometry's defaults).</string>
+     </property>
+     <property name="text">
       <string>&amp;Default margins</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="1" >
+   <item row="1" column="1">
     <spacer>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
-     <property name="sizeType" >
+     <property name="sizeType">
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
        <height>20</height>
@@ -48,15 +59,15 @@
      </property>
     </spacer>
    </item>
-   <item row="2" column="0" >
+   <item row="2" column="0">
     <spacer>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeType" >
+     <property name="sizeType">
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
        <height>20</height>
@@ -64,122 +75,140 @@
      </property>
     </spacer>
    </item>
-   <item row="1" column="0" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
+   <item row="1" column="0">
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>6</number>
      </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
      <item>
-      <layout class="QVBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
+      <layout class="QVBoxLayout">
+       <property name="spacing">
         <number>6</number>
        </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
        <item>
-        <widget class="QLabel" name="topL" >
-         <property name="enabled" >
+        <widget class="QLabel" name="topL">
+         <property name="enabled">
           <bool>false</bool>
          </property>
-         <property name="text" >
+         <property name="text">
           <string>&amp;Top:</string>
          </property>
-         <property name="buddy" >
+         <property name="buddy">
           <cstring>topLE</cstring>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="bottomL" >
-         <property name="enabled" >
+        <widget class="QLabel" name="bottomL">
+         <property name="enabled">
           <bool>false</bool>
          </property>
-         <property name="text" >
+         <property name="text">
           <string>&amp;Bottom:</string>
          </property>
-         <property name="buddy" >
+         <property name="buddy">
           <cstring>bottomLE</cstring>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="innerL" >
-         <property name="enabled" >
+        <widget class="QLabel" name="innerL">
+         <property name="enabled">
           <bool>false</bool>
          </property>
-         <property name="text" >
+         <property name="text">
           <string>&amp;Inner:</string>
          </property>
-         <property name="buddy" >
+         <property name="buddy">
           <cstring>innerLE</cstring>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="outerL" >
-         <property name="enabled" >
+        <widget class="QLabel" name="outerL">
+         <property name="enabled">
           <bool>false</bool>
          </property>
-         <property name="text" >
+         <property name="text">
           <string>O&amp;uter:</string>
          </property>
-         <property name="buddy" >
+         <property name="buddy">
           <cstring>outerLE</cstring>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="headsepL" >
-         <property name="enabled" >
+        <widget class="QLabel" name="headsepL">
+         <property name="enabled">
           <bool>false</bool>
          </property>
-         <property name="text" >
+         <property name="text">
           <string>Head &amp;sep:</string>
          </property>
-         <property name="buddy" >
+         <property name="buddy">
           <cstring>headsepLE</cstring>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="headheightL" >
-         <property name="enabled" >
+        <widget class="QLabel" name="headheightL">
+         <property name="enabled">
           <bool>false</bool>
          </property>
-         <property name="text" >
+         <property name="text">
           <string>Head &amp;height:</string>
          </property>
-         <property name="buddy" >
+         <property name="buddy">
           <cstring>headheightLE</cstring>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="footskipL" >
-         <property name="enabled" >
+        <widget class="QLabel" name="footskipL">
+         <property name="enabled">
           <bool>false</bool>
          </property>
-         <property name="text" >
+         <property name="text">
           <string>&amp;Foot skip:</string>
          </property>
-         <property name="buddy" >
+         <property name="buddy">
           <cstring>footskipLE</cstring>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="columnsepL" >
-         <property name="enabled" >
+        <widget class="QLabel" name="columnsepL">
+         <property name="enabled">
           <bool>false</bool>
          </property>
-         <property name="text" >
+         <property name="text">
           <string>&amp;Column sep:</string>
          </property>
-         <property name="buddy" >
+         <property name="buddy">
           <cstring>columnsepLE</cstring>
          </property>
         </widget>
@@ -187,210 +216,291 @@
       </layout>
      </item>
      <item>
-      <layout class="QVBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
+      <layout class="QVBoxLayout">
+       <property name="spacing">
         <number>6</number>
        </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
        <item>
-          <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <widget class="QLineEdit" name="topLE" >
-            <property name="enabled" >
-              <bool>false</bool>
-            </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="lyx::frontend::LengthCombo" native="1" name="topUnit" >
-            <property name="enabled" >
-              <bool>false</bool>
-            </property>
-            </widget>
-          </item>
-          </layout>
+        <layout class="QHBoxLayout">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLineEdit" name="topLE">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="lyx::frontend::LengthCombo" name="topUnit" native="true">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
-          <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <widget class="QLineEdit" name="bottomLE" >
-            <property name="enabled" >
-              <bool>false</bool>
-            </property>
-            <property name="text" >
-              <string/>
-            </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="lyx::frontend::LengthCombo" native="1" name="bottomUnit" >
-            <property name="enabled" >
-              <bool>false</bool>
-            </property>
-            </widget>
-          </item>
-          </layout>
+        <layout class="QHBoxLayout">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLineEdit" name="bottomLE">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="lyx::frontend::LengthCombo" name="bottomUnit" native="true">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
-          <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <widget class="QLineEdit" name="innerLE" >
-            <property name="enabled" >
-              <bool>false</bool>
-            </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="lyx::frontend::LengthCombo" native="1" name="innerUnit" >
-            <property name="enabled" >
-              <bool>false</bool>
-            </property>
-            </widget>
-          </item>
-          </layout>
+        <layout class="QHBoxLayout">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLineEdit" name="innerLE">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="lyx::frontend::LengthCombo" name="innerUnit" native="true">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
-          <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <widget class="QLineEdit" name="outerLE" >
-            <property name="enabled" >
-              <bool>false</bool>
-            </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="lyx::frontend::LengthCombo" native="1" name="outerUnit" >
-            <property name="enabled" >
-              <bool>false</bool>
-            </property>
-            </widget>
-          </item>
-          </layout>
+        <layout class="QHBoxLayout">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLineEdit" name="outerLE">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="lyx::frontend::LengthCombo" name="outerUnit" native="true">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
-          <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <widget class="QLineEdit" name="headsepLE" >
-            <property name="enabled" >
-              <bool>false</bool>
-            </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="lyx::frontend::LengthCombo" native="1" name="headsepUnit" >
-            <property name="enabled" >
-              <bool>false</bool>
-            </property>
-            </widget>
-          </item>
-          </layout>
+        <layout class="QHBoxLayout">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLineEdit" name="headsepLE">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="lyx::frontend::LengthCombo" name="headsepUnit" native="true">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
-          <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <widget class="QLineEdit" name="headheightLE" >
-            <property name="enabled" >
-              <bool>false</bool>
-            </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="lyx::frontend::LengthCombo" native="1" name="headheightUnit" >
-            <property name="enabled" >
-              <bool>false</bool>
-            </property>
-            </widget>
-          </item>
-          </layout>
+        <layout class="QHBoxLayout">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLineEdit" name="headheightLE">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="lyx::frontend::LengthCombo" name="headheightUnit" native="true">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
-          <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <widget class="QLineEdit" name="footskipLE" >
-            <property name="enabled" >
-              <bool>false</bool>
-            </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="lyx::frontend::LengthCombo" native="1" name="footskipUnit" >
-            <property name="enabled" >
-              <bool>false</bool>
-            </property>
-            </widget>
-          </item>
-          </layout>
+        <layout class="QHBoxLayout">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLineEdit" name="footskipLE">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="lyx::frontend::LengthCombo" name="footskipUnit" native="true">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
-          <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <widget class="QLineEdit" name="columnsepLE" >
-            <property name="enabled" >
-              <bool>false</bool>
-            </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="lyx::frontend::LengthCombo" native="1" name="columnsepUnit" >
-            <property name="enabled" >
-              <bool>false</bool>
-            </property>
-            </widget>
-          </item>
-          </layout>
+        <layout class="QHBoxLayout">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLineEdit" name="columnsepLE">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="lyx::frontend::LengthCombo" name="columnsepUnit" native="true">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
-      </layout> 
-    </item>
+      </layout>
+     </item>
     </layout>
    </item>
   </layout>
@@ -412,7 +522,7 @@
   <tabstop>footskipLE</tabstop>
  </tabstops>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>
