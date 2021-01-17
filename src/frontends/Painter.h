@@ -127,7 +127,7 @@ public:
 
 	/// draw an image from the image cache
 	virtual void image(int x, int y, int w, int h,
-		graphics::Image const & image, bool const darkmode = false) = 0;
+		graphics::Image const & image, bool revert_in_darkmode = false) = 0;
 
 	/// draw a string at position x, y (y is the baseline).
 	virtual void text(int x, int y, docstring const & str, FontInfo const & f) = 0;
