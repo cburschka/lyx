@@ -1,4 +1,17 @@
 # Basic test for searching with par-style awareness
+UseShortcut "C-F20" "layout Part"
+UseShortcut "C-F21" "layout Chapter"
+UseShortcut "C-F22" "layout Section"
+UseShortcut "C-F23" "layout Subsection"
+UseShortcut "C-F24" "layout Subsubsection"
+UseShortcut "C-F25" "layout Paragraph"
+UseShortcut "C-F26" "layout Subparagraph"
+UseShortcut "C-F29" "layout Standard"
+UseShortcut "C-F30" "layout Itemize"
+
+PrepareShortcuts
+Lang sk_SK.utf8
+CO: findadv-06.ctrl
 
 Lang sk_SK.utf8
 CO: findadv-07.ctrl
@@ -7,16 +20,16 @@ KD: 100
 CN: Part 1
 KK: foo bar\[Return]
 #select itemized
-KK: \Aob
+KK: \C\[F30]
 KK: foo bar\[Return]
-KK: \Ao9
+KK: \C\[F29]
 KK: foo bar\C\[Home]
 KK: \Axbuffer-write\[Return]
 KK: \Axdialog-show findreplaceadv\[Return]
 # Uncheck ignore format
 KK: \At\Ai\Ah
 KK: \CF
-KK: \Aob
+KK: \C\[F30]
 Sleep 1
 KK: foo\[Return]
 CP: Putting selection at .*idx: 0 par: 1 pos: 0\n with len: 3
@@ -29,7 +42,7 @@ KK: \[Delete]
 # Uncheck ignore format
 #KK: \At\Ai\Ah
 #KK: \CF
-KK: \Aob
+KK: \C\[F30]
 Sleep 1
 KK: bar\[Return]
 CP: Putting selection at .*idx: 0 par: 1 pos: 4\n with len: 3
