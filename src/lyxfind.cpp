@@ -769,6 +769,7 @@ string correctRegex(string t, bool withformat)
 	regex wordre("(\\\\)*(\\\\((backslash|mathcircumflex) ?|[\\[\\]\\{\\}]))");
 	size_t lastpos = 0;
 	smatch sub;
+	bool backslashed = false;
 	for (sregex_iterator it(t.begin(), t.end(), wordre), end; it != end; ++it) {
 		sub = *it;
 		string replace;
@@ -779,21 +780,30 @@ string correctRegex(string t, bool withformat)
 			if (sub.str(4) == "backslash") {
 				replace = "\\";
 				if (withformat) {
+					// tranforms '\backslash \{' into '\{'
+					// and '\{' into '{'
 					sregex_iterator it2 = it;
 					++it2;
 					smatch sub2 = *it2;
-					if (sub2.str(3) == "{")
+					if ((sub2.str(3) == "{") ||  (sub2.str(3) == "}")) {
 						replace = "";
-					else if (sub2.str(3) == "}")
-						replace = "";
+						backslashed = true;
+					}
 				}
 			}
 			else if (sub.str(4) == "mathcircumflex")
 				replace = "^";
-			else if (withformat && (sub.str(3) == "{"))
-				replace = accents["braceleft"];
-			else if (withformat && (sub.str(3) == "}"))
-				replace = accents["braceright"];
+			else if (backslashed) {
+				backslashed = false;
+				if (withformat && (sub.str(3) == "{"))
+					replace = accents["braceleft"];
+				else if (withformat && (sub.str(3) == "}"))
+					replace = accents["braceright"];
+				else {
+					// else part should not exist
+					LASSERT(1, /**/);
+				}
+			}
 			else
 				replace = sub.str(3);
 		}
