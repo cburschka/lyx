@@ -71,6 +71,8 @@ using namespace lyx::support;
 
 namespace lyx {
 
+typedef map<string, string> AccentsMap;
+static AccentsMap accents = map<string, string>();
 
 // Helper class for deciding what should be ignored
 class IgnoreFormats {
@@ -758,7 +760,7 @@ string string2regex(string in)
 	return temp2;
 }
 
-string correctRegex(string t)
+string correctRegex(string t, bool withformat)
 {
 	/* Convert \backslash => \
 	 * and \{, \}, \[, \] => {, }, [, ]
@@ -774,14 +776,24 @@ string correctRegex(string t)
 			continue;
 		}
 		else {
-			if (sub.str(4) == "backslash")
+			if (sub.str(4) == "backslash") {
 				replace = "\\";
+				if (withformat) {
+					sregex_iterator it2 = it;
+					++it2;
+					smatch sub2 = *it2;
+					if (sub2.str(3) == "{")
+						replace = "";
+					else if (sub2.str(3) == "}")
+						replace = "";
+				}
+			}
 			else if (sub.str(4) == "mathcircumflex")
 				replace = "^";
-			else if (sub.str(3) == "{")
-				replace = "\\braceleft";
-			else if (sub.str(3) == "}")
-				replace = "\\braceright";
+			else if (withformat && (sub.str(3) == "{"))
+				replace = accents["braceleft"];
+			else if (withformat && (sub.str(3) == "}"))
+				replace = accents["braceright"];
 			else
 				replace = sub.str(3);
 		}
@@ -800,7 +812,7 @@ string correctRegex(string t)
 /// Within \regexp{} apply get_lyx_unescapes() only (i.e., preserve regexp semantics of the string),
 /// while outside apply get_lyx_unescapes()+get_regexp_escapes().
 /// If match_latex is true, then apply regexp_latex_escapes() to \regexp{} contents as well.
-string escape_for_regex(string s)
+string escape_for_regex(string s, bool withformat)
 {
 	size_t lastpos = 0;
 	string result = "";
@@ -816,7 +828,7 @@ string escape_for_regex(string s)
 				break;
 		}
 		size_t end_pos = s.find("\\endregexp{}}", regex_pos + 8);
-		result += correctRegex(s.substr(regex_pos + 8, end_pos -(regex_pos + 8)));
+		result += correctRegex(s.substr(regex_pos + 8, end_pos -(regex_pos + 8)), withformat);
 		lastpos = end_pos + 13;
 	}
 	return result;
@@ -1387,9 +1399,6 @@ void Intervall::addIntervall(int low, int upper)
   }
 }
 
-typedef map<string, string> AccentsMap;
-static AccentsMap accents = map<string, string>();
-
 static void buildaccent(string n, string param, string values)
 {
   stringstream s(n);
@@ -1488,6 +1497,8 @@ static void buildAccentsMap()
   accents["latexe"]        = getutf8(0xf0013);
   accents["LaTeXe"]        = getutf8(0xf0013);
   accents["lyxarrow"]      = getutf8(0xf0020);
+  accents["braceleft"]     = getutf8(0xf0030);
+  accents["braceright"]    = getutf8(0xf0031);
   accents["backslash lyx"]           = getutf8(0xf0010);	// Used logos inserted with starting \backslash
   accents["backslash LyX"]           = getutf8(0xf0010);
   accents["backslash tex"]           = getutf8(0xf0011);
@@ -1562,7 +1573,7 @@ void Intervall::removeAccents()
     buildAccentsMap();
   static regex const accre("\\\\(([\\S]|grave|breve|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot|ogonek|"
          "cedilla|subring|textsubring|subhat|textsubcircum|subtilde|textsubtilde|dgrave|textdoublegrave|rcap|textroundcap|slashed)\\{[^\\{\\}]+\\}"
-      "|((i|imath|jmath|cdot|[a-z]+space)|((backslash )?([lL]y[xX]|[tT]e[xX]|[lL]a[tT]e[xX]e?|lyxarrow))|guillemot(left|right)|textasciicircum|mathcircumflex|sim)(?![a-zA-Z]))");
+      "|((i|imath|jmath|cdot|[a-z]+space)|((backslash )?([lL]y[xX]|[tT]e[xX]|[lL]a[tT]e[xX]e?|lyxarrow))|(brace|guillemot)(left|right)|textasciicircum|mathcircumflex|sim)(?![a-zA-Z]))");
   smatch sub;
   for (sregex_iterator itacc(par.begin(), par.end(), accre), end; itacc != end; ++itacc) {
     sub = *itacc;
@@ -2242,7 +2253,6 @@ void LatexInfo::buildKeys(bool isPatternString)
   // Known charaters
   // No split
   makeKey("backslash|textbackslash|slash",  KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
-  makeKey("braceleft|braceright",           KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   makeKey("textasciicircum|textasciitilde", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   makeKey("textasciiacute|texemdash",       KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   makeKey("dots|ldots",                     KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
@@ -3121,7 +3131,7 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 			LYXERR(Debug::FIND, "par_as_string now is '" << par_as_string << "'");
 		}
 		LYXERR(Debug::FIND, "par_as_string before escape_for_regex() is '" << par_as_string << "'");
-		par_as_string = escape_for_regex(par_as_string);
+		par_as_string = escape_for_regex(par_as_string, !opt.ignoreformat);
 		// Insert (.*?) before trailing closure of math, macros and environments, so to catch parts of them.
 		LYXERR(Debug::FIND, "par_as_string now is '" << par_as_string << "'");
 		LYXERR(Debug::FIND, "par_as_string after correctRegex is '" << par_as_string << "'");
@@ -3258,6 +3268,13 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		str = normalize(lowercase(docstr));
 	if (!opt.ignoreformat) {
 		str = correctlanguagesetting(str, false, !opt.ignoreformat);
+		// remove closing '}' and '\n' to allow for use of '$' in regex
+		size_t lng = str.size();
+		while ((lng > 1) && ((str[lng -1] == '}') || (str[lng -1] == '\n')))
+			lng--;
+		if (lng != str.size()) {
+			str = str.substr(0, lng);
+		}
 	}
 	if (str.empty()) {
 		mres.match_len = -1;
@@ -3322,7 +3339,7 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		int matchend = match.capturedEnd(0);
 		while (mres.match_len > 0) {
 		  QChar c = qstr.at(matchend - 1);
-		  if (c == '\n') {
+		  if ((c == '\n') || (c == '}') || (c == '{')) {
 		    mres.match_len--;
 		    matchend--;
 		  }
