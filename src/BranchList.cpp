@@ -13,6 +13,7 @@
 
 #include "BranchList.h"
 #include "Color.h"
+#include "ColorSet.h"
 
 #include "frontends/Application.h"
 
@@ -28,11 +29,7 @@ namespace lyx {
 Branch::Branch()
 	: selected_(false), filenameSuffix_(false)
 {
-	// no theApp() with command line export
-	if (theApp())
-		theApp()->getRgbColor(Color_background, color_);
-	else
-		frontend::Application::getRgbColorUncached(Color_background, color_);
+	color_ = "background";
 }
 
 
@@ -75,30 +72,15 @@ void Branch::setFileNameSuffix(bool b)
 }
 
 
-RGBColor const & Branch::color() const
+string const & Branch::color() const
 {
 	return color_;
 }
 
 
-void Branch::setColor(RGBColor const & c)
-{
-	color_ = c;
-}
-
-
 void Branch::setColor(string const & str)
 {
-	if (str.size() == 7 && str[0] == '#')
-		color_ = rgbFromHexName(str);
-	else {
-		// no color set or invalid color - use normal background
-		// no theApp() with command line export
-		if (theApp())
-			theApp()->getRgbColor(Color_background, color_);
-		else
-			frontend::Application::getRgbColorUncached(Color_background, color_);
-	}
+	color_ = str;
 }
 
 

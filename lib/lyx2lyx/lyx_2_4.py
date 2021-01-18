@@ -4025,7 +4025,47 @@ def revert_math_refs(document):
             if "\\labelonly" in document.body[i]:
                 document.body[i] = re.sub("\\\\labelonly{([^}]+?)}", "\\1", document.body[i])
             i += 1
-        
+
+
+def convert_branch_colors(document):
+    " Convert branch colors to semantic values "
+
+    i = 0
+    while True:
+        i = find_token(document.header, "\\branch", i)
+        if i == -1:
+            break
+        j = find_token(document.header, "\\end_branch", i)
+        if j == -1:
+           document.warning("Malformed LyX document. Can't find end of branch definition!")
+           break
+        # We only support the standard LyX background for now
+        k = find_token(document.header, "\\color #faf0e6", i, j)
+        if k != -1:
+           document.header[k] = "\\color background"
+        i += 1
+
+
+def revert_branch_colors(document):
+    " Revert semantic branch colors "
+
+    i = 0
+    while True:
+        i = find_token(document.header, "\\branch", i)
+        if i == -1:
+            break
+        j = find_token(document.header, "\\end_branch", i)
+        if j == -1:
+           document.warning("Malformed LyX document. Can't find end of branch definition!")
+           break
+        k = find_token(document.header, "\\color", i, j)
+        if k != -1:
+           bcolor = get_value(document.header, "\\color", k)
+           if bcolor[1] != "#":
+               # this will be read as background by LyX 2.3
+               document.header[k] = "\\color none"
+        i += 1
+
 
 ##
 # Conversion hub
@@ -4089,10 +4129,13 @@ convert = [
            [598, []],
            [599, []],
            [600, []],
-           [601, [convert_math_refs]]
+           [601, [convert_math_refs]],
+           [602, [convert_branch_colors]]
           ]
 
-revert =  [[599, [revert_math_refs]],
+revert =  [[601, [revert_branch_colors]],
+           [600, []],
+           [599, [revert_math_refs]],
            [598, [revert_hrquotes]],
            [598, [revert_nopagebreak]],
            [597, [revert_docbook_table_output]],

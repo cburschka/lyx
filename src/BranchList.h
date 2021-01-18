@@ -61,9 +61,7 @@ public:
 	/// Select/deselect filename suffix property.
 	void setFileNameSuffix(bool);
 	///
-	RGBColor const & color() const;
-	///
-	void setColor(RGBColor const &);
+	std::string const & color() const;
 	/**
 	 * Set color from a string "#rrggbb".
 	 * Use Color:background if the string is no valid color.
@@ -80,7 +78,7 @@ private:
 	///
 	bool filenameSuffix_;
 	///
-	RGBColor color_;
+	std::string color_;
 };
 
 

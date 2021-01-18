@@ -21,6 +21,7 @@
 #include "BufferParams.h"
 #include "Bullet.h"
 #include "Chktex.h"
+#include "ColorSet.h"
 #include "Converter.h"
 #include "Counters.h"
 #include "Cursor.h"
@@ -2938,7 +2939,12 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 				undo().recordUndoBufferParams(CursorData());
 				branch_list.add(branch_name);
 				branch = branch_list.find(branch_name);
-				string const x11hexname = X11hexname(branch->color());
+				string x11hexname;
+				string const bcolor = branch->color();
+				if (bcolor.size() == 7 && bcolor[0] == '#')
+					x11hexname = bcolor;
+				else
+					x11hexname = lcolor.getX11HexName(lcolor.getFromLyXName(bcolor));
 				docstring const str = branch_name + ' ' + from_ascii(x11hexname);
 				lyx::dispatch(FuncRequest(LFUN_SET_COLOR, str));
 				dr.setError(false);

@@ -991,11 +991,16 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 			if (tok == "\\color") {
 				lex.eatLine();
 				string color = lex.getString();
-				if (branch_ptr)
+				if (branch_ptr) {
 					branch_ptr->setColor(color);
+					if (branch_ptr->color() == "none")
+						color = lcolor.getX11HexName(Color_background);
+				}
 				// Update also the Color table:
 				if (color == "none")
 					color = lcolor.getX11HexName(Color_background);
+				else if (color.size() != 7 || color[0] != '#')
+					color = lcolor.getFromLyXName(color);
 				// FIXME UNICODE
 				lcolor.setColor(to_utf8(branch), color);
 			}
@@ -1387,7 +1392,7 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 		os << "\\branch " << to_utf8(br.branch())
 		   << "\n\\selected " << br.isSelected()
 		   << "\n\\filename_suffix " << br.hasFileNameSuffix()
-		   << "\n\\color " << lyx::X11hexname(br.color())
+		   << "\n\\color " << br.color()
 		   << "\n\\end_branch"
 		   << "\n";
 	}

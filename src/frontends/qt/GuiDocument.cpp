@@ -5008,7 +5008,13 @@ void GuiDocument::dispatchParams()
 		for (; it != end; ++it) {
 			docstring const & current_branch = it->branch();
 			Branch const * branch = branchlist.find(current_branch);
-			string const x11hexname = X11hexname(branch->color());
+			string const bcolor = branch->color();
+			RGBColor rgbcol;
+			if (bcolor.size() == 7 && bcolor[0] == '#')
+				rgbcol = lyx::rgbFromHexName(bcolor);
+			else
+				guiApp->getRgbColor(lcolor.getFromLyXName(bcolor), rgbcol);
+			string const x11hexname = X11hexname(rgbcol);
 			// display the new color
 			docstring const str = current_branch + ' ' + from_ascii(x11hexname);
 			dispatch(FuncRequest(LFUN_SET_COLOR, str));

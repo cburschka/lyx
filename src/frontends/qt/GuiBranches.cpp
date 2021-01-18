@@ -134,7 +134,13 @@ void GuiBranches::updateView()
 		newItem->setText(0, bname);
 		newItem->setText(1, it->isSelected() ? qt_("Yes") : qt_("No"));
 
-		QColor const itemcolor = rgb2qcolor(it->color());
+		std::string bcolor = it->color();
+		RGBColor rgbcol;
+		if (bcolor.size() == 7 && bcolor[0] == '#')
+			rgbcol = lyx::rgbFromHexName(bcolor);
+		else
+			guiApp->getRgbColor(lcolor.getFromLyXName(bcolor), rgbcol);
+		QColor const itemcolor = rgb2qcolor(rgbcol);
 		if (itemcolor.isValid()) {
 			QPixmap coloritem(30, 10);
 			coloritem.fill(itemcolor);
@@ -153,6 +159,7 @@ void GuiBranches::updateView()
 	removePB->setEnabled(have_sel);
 	renamePB->setEnabled(have_sel);
 	colorPB->setEnabled(have_sel);
+	resetColorPB->setEnabled(have_sel);
 	activatePB->setEnabled(have_sel);
 	suffixPB->setEnabled(have_sel);
 	// emit signal
@@ -264,6 +271,7 @@ void GuiBranches::on_branchesTW_itemSelectionChanged()
 	removePB->setEnabled(have_sel);
 	renamePB->setEnabled(have_sel);
 	colorPB->setEnabled(have_sel);
+	resetColorPB->setEnabled(have_sel);
 	activatePB->setEnabled(have_sel);
 	suffixPB->setEnabled(have_sel);
 }
@@ -292,6 +300,26 @@ void GuiBranches::on_colorPB_clicked()
 }
 
 
+void GuiBranches::on_resetColorPB_clicked()
+{
+	QTreeWidgetItem * item = branchesTW->currentItem();
+	if (item == 0)
+		return;
+
+	QString sel_branch = item->text(0);
+	if (sel_branch.isEmpty())
+		return;
+
+	docstring current_branch = qstring_to_ucs4(sel_branch);
+	Branch * branch = branchlist_.find(current_branch);
+	if (!branch)
+		return;
+	branch->setColor("background");
+	newBranchLE->clear();
+	updateView();
+}
+
+
 void GuiBranches::toggleColor(QTreeWidgetItem * item)
 {
 	if (item == 0)
@@ -306,7 +334,13 @@ void GuiBranches::toggleColor(QTreeWidgetItem * item)
 	if (!branch)
 		return;
 
-	QColor const initial = rgb2qcolor(branch->color());
+	std::string bcolor = branch->color();
+	RGBColor rgbcol;
+	if (bcolor.size() == 7 && bcolor[0] == '#')
+		rgbcol = lyx::rgbFromHexName(bcolor);
+	else
+		guiApp->getRgbColor(lcolor.getFromLyXName(bcolor), rgbcol);
+	QColor const initial = rgb2qcolor(rgbcol);
 	QColor ncol = QColorDialog::getColor(initial, qApp->focusWidget());
 	if (!ncol.isValid())
 		return;

@@ -7,6 +7,10 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2021-01-17 Jürgen Spitzmüller <spitz@lyx.org>
+ 	* Format incremented to 602: Allow semantic branch colors
+ 	  \color can now also take lyx names besides hexnames.
+
 2021-01-05 Richard Kimberly Heck <rikiheck@lyx.org>
 	* Format incremented to 601: Add refstyle support for mathed
 	  Use 'formatted' in the LyX file to indicate formatted references,
