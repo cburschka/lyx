@@ -4067,6 +4067,25 @@ def revert_branch_colors(document):
         i += 1
 
 
+def revert_darkmode_graphics(document):
+    " Revert darkModeSensitive InsetGraphics param "
+
+    i = 0
+    while (True):
+        i = find_token(document.body, "\\begin_inset Graphics", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Can't find end of graphics inset at line %d!!" %(i))
+            i += 1
+            continue
+        k = find_token(document.body, "\tdarkModeSensitive", i, j)
+        if k != -1:
+            del document.body[k]
+        i += 1
+
+
 ##
 # Conversion hub
 #
@@ -4130,10 +4149,12 @@ convert = [
            [599, []],
            [600, []],
            [601, [convert_math_refs]],
-           [602, [convert_branch_colors]]
+           [602, [convert_branch_colors]],
+           [603, []]
           ]
 
-revert =  [[601, [revert_branch_colors]],
+revert =  [[602, [revert_darkmode_graphics]],
+           [601, [revert_branch_colors]],
            [600, []],
            [599, [revert_math_refs]],
            [598, [revert_hrquotes]],

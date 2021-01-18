@@ -74,7 +74,7 @@ void InsetGraphicsParams::init()
 
 	bbox = graphics::BoundingBox();	// bounding box
 	clip = false;			// clip image
-	darkModeSensitive = false;	// dark mode dependency (InsetInfo)
+	darkModeSensitive = false;	// dark mode dependency
 
 	rotateAngle = "0";		// angle of rotation in degrees
 	rotateOrigin.erase();		// Origin of rotation
@@ -146,6 +146,8 @@ void InsetGraphicsParams::Write(ostream & os, Buffer const & buffer) const
 		os << "\tlyxscale " << lyxscale << '\n';
 	if (!display)
 		os << "\tdisplay false\n";
+	if (darkModeSensitive)
+		os << "\tdarkModeSensitive\n";
 	if (!scale.empty() && !float_equal(convert<double>(scale), 0.0, 0.05)) {
 		if (!float_equal(convert<double>(scale), 100.0, 0.05))
 			os << "\tscale " << scale << '\n';
@@ -195,6 +197,8 @@ bool InsetGraphicsParams::Read(Lexer & lex, string const & token,
 	} else if (token == "display") {
 		lex.next();
 		display = lex.getString() != "false";
+	} else if (token == "darkModeSensitive") {
+		darkModeSensitive = true;
 	} else if (token == "scale") {
 		lex.next();
 		scale = lex.getString();

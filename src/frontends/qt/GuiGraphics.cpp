@@ -194,14 +194,8 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(draftCB, SIGNAL(stateChanged(int)),
 		this, SLOT(change_adaptor()));
-	// FIXME: we should connect to clicked() when we move to Qt 4.2	because
-	// the toggled(bool) signal is also triggered when we update the widgets
-	// (rgh-4/07) this isn't as much or a problem as it was, because we're now
-	// using blockSignals() to keep from triggering that signal when we call
-	// setChecked(). Note, too, that clicked() would get called whenever it
-	// is clicked, even right clicked (I think), not just whenever it is
-	// toggled.
-	connect(displayGB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(displayGB, SIGNAL(clicked(bool)), this, SLOT(change_adaptor()));
+	connect(darkModeCB, SIGNAL(clicked(bool)), this, SLOT(change_adaptor()));
 	connect(displayscale, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 	connect(groupCO, SIGNAL(currentIndexChanged(int)),
@@ -223,6 +217,7 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	bc().addReadOnly(draftCB);
 	bc().addReadOnly(clip);
 	bc().addReadOnly(displayGB);
+	bc().addReadOnly(darkModeCB);
 	bc().addReadOnly(sizeGB);
 	bc().addReadOnly(rotationGB);
 	bc().addReadOnly(latexoptions);
@@ -555,6 +550,7 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & params)
 	// Update the draft and clip mode
 	draftCB->setChecked(params.draft);
 	clip->setChecked(params.clip);
+	darkModeCB->setChecked(params.darkModeSensitive);
 	displayGB->setChecked(params.display);
 	displayscale->setText(toqstr(convert<string>(params.lyxscale)));
 
@@ -678,6 +674,7 @@ void GuiGraphics::applyView()
 	igp.draft = draftCB->isChecked();
 	igp.clip = clip->isChecked();
 	igp.display = displayGB->isChecked();
+	igp.darkModeSensitive = darkModeCB->isChecked();
 
 	//the graphics section
 	if (scaleCB->isChecked() && !Scale->text().isEmpty()) {

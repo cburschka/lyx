@@ -234,7 +234,7 @@ void GuiPainter::arc(int x, int y, unsigned int w, unsigned int h,
 
 
 void GuiPainter::image(int x, int y, int w, int h, graphics::Image const & i,
-		       bool revert_in_darkmode)
+		       bool const revert_in_darkmode)
 {
 	graphics::GuiImage const & qlimage =
 		static_cast<graphics::GuiImage const &>(i);
@@ -247,25 +247,7 @@ void GuiPainter::image(int x, int y, int w, int h, graphics::Image const & i,
 	QColor text_color = palette.color(QPalette::Active, QPalette::WindowText);
 	QColor bg_color = palette.color(QPalette::Active, QPalette::Window);
 	// guess whether we are in dark mode
-	bool const in_dark_mode = text_color.black() < bg_color.black();
-	// if we are in dark mode, check whether we have transparent pixels
-	if (in_dark_mode && !revert_in_darkmode) {
-		QImage img = image.convertToFormat(QImage::Format_ARGB32);
-		for (int x = 0 ; x < img.width() ; x++) {
-			if (revert_in_darkmode)
-				break;
-			for (int y = 0 ; y < img.height() ; y++) {
-				QRgb currentPixel = (img.pixel(x, y));
-				if (qAlpha(currentPixel) == 0) {
-					// we have transparent pixels, revert
-					// this image in dark mode (#12076)
-					revert_in_darkmode = true;
-					break;
-				}
-			}
-		}
-	}
-	if (in_dark_mode && revert_in_darkmode)
+	if (revert_in_darkmode && text_color.black() < bg_color.black())
 		// FIXME this is only a cheap approximation
 		// Ideally, replace colors as in GuiApplication::prepareForDarkmode()
 		image.invertPixels();

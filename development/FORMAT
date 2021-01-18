@@ -7,6 +7,10 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2021-01-18 Jürgen Spitzmüller <spitz@lyx.org>
+ 	* Format incremented to 603: New InsetGraphics param darkModeSensitive
+ 	  This advises LyX to revert colors in dark mode.
+
 2021-01-17 Jürgen Spitzmüller <spitz@lyx.org>
  	* Format incremented to 602: Allow semantic branch colors
  	  \color can now also take lyx names besides hexnames.
