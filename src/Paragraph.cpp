@@ -1136,9 +1136,9 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 			if (c == '\\')
 				os << "\\\\";
 			else if (c == '{')
-				os << "\\braceleft";
+				os << "\\braceleft ";
 			else if (c == '}')
-				os << "\\braceright";
+				os << "\\braceright ";
 			else if (c != '\0')
 				os.put(c);
 		}

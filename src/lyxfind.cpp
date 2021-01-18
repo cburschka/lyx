@@ -640,101 +640,6 @@ namespace {
 
 typedef vector<pair<string, string> > Escapes;
 
-/// A map of symbols and their escaped equivalent needed within a regex.
-/// @note Beware of order
-/*
-Escapes const & get_regexp_escapes()
-{
-	typedef std::pair<std::string, std::string> P;
-
-	static Escapes escape_map;
-	if (escape_map.empty()) {
-		escape_map.push_back(P("$", "_x_$"));
-		escape_map.push_back(P("{", "_x_{"));
-		escape_map.push_back(P("}", "_x_}"));
-		escape_map.push_back(P("[", "_x_["));
-		escape_map.push_back(P("]", "_x_]"));
-		escape_map.push_back(P("(", "_x_("));
-		escape_map.push_back(P(")", "_x_)"));
-		escape_map.push_back(P("+", "_x_+"));
-		escape_map.push_back(P("*", "_x_*"));
-		escape_map.push_back(P(".", "_x_."));
-		escape_map.push_back(P("\\", "(?:\\\\|\\\\backslash)"));
-		escape_map.push_back(P("~", "(?:\\\\textasciitilde|\\\\sim)"));
-		escape_map.push_back(P("^", "(?:\\^|\\\\textasciicircum\\{\\}|\\\\textasciicircum|\\\\mathcircumflex)"));
-		escape_map.push_back(P("_x_", "\\"));
-	}
-	return escape_map;
-}
-*/
-
-/// A map of lyx escaped strings and their unescaped equivalent.
-/*
-Escapes const & get_lyx_unescapes()
-{
-	typedef std::pair<std::string, std::string> P;
-
-	static Escapes escape_map;
-	if (escape_map.empty()) {
-		escape_map.push_back(P("\\%", "%"));
-		escape_map.push_back(P("\\{", "{"));
-		escape_map.push_back(P("\\}", "}"));
-		escape_map.push_back(P("\\mathcircumflex ", "^"));
-		escape_map.push_back(P("\\mathcircumflex", "^"));
-		escape_map.push_back(P("\\backslash ", "\\"));
-		escape_map.push_back(P("\\backslash", "\\"));
-		escape_map.push_back(P("\\sim ", "~"));
-		escape_map.push_back(P("\\sim", "~"));
-	}
-	return escape_map;
-}
-*/
-
-/// A map of escapes turning a regexp matching text to one matching latex.
-/*
-Escapes const & get_regexp_latex_escapes()
-{
-	typedef std::pair<std::string, std::string> P;
-
-	static Escapes escape_map;
-	if (escape_map.empty()) {
-		escape_map.push_back(P("\\\\", "(?:\\\\\\\\|\\\\backslash|\\\\textbackslash\\{\\}|\\\\textbackslash)"));
-		escape_map.push_back(P("(<?!\\\\\\\\textbackslash)\\{", "\\\\\\{"));
-		escape_map.push_back(P("(<?!\\\\\\\\textbackslash\\\\\\{)\\}", "\\\\\\}"));
-		escape_map.push_back(P("\\[", "\\{\\[\\}"));
-		escape_map.push_back(P("\\]", "\\{\\]\\}"));
-		escape_map.push_back(P("\\^", "(?:\\^|\\\\textasciicircum\\{\\}|\\\\textasciicircum|\\\\mathcircumflex)"));
-		escape_map.push_back(P("%", "\\\\\\%"));
-		escape_map.push_back(P("#", "\\\\#"));
-	}
-	return escape_map;
-}
-*/
-
-/** @todo Probably the maps need to be migrated to regexps, in order to distinguish if
- ** the found occurrence were escaped.
- **/
-/*
-string apply_escapes(string s, Escapes const & escape_map)
-{
-	LYXERR(Debug::FIND, "Escaping: '" << s << "'");
-	Escapes::const_iterator it;
-	for (it = escape_map.begin(); it != escape_map.end(); ++it) {
-//		LYXERR(Debug::FIND, "Escaping " << it->first << " as " << it->second);
-		unsigned int pos = 0;
-		while (pos < s.length() && (pos = s.find(it->first, pos)) < s.length()) {
-			s.replace(pos, it->first.length(), it->second);
-			LYXERR(Debug::FIND, "After escape: " << s);
-			pos += it->second.length();
-//			LYXERR(Debug::FIND, "pos: " << pos);
-		}
-	}
-	LYXERR(Debug::FIND, "Escaped : '" << s << "'");
-	return s;
-}
-*/
-
-
 string string2regex(string in)
 {
 	static std::regex specialChars { R"([-[\]{}()*+?.,\^$|#\s\$\\])" };
@@ -780,12 +685,10 @@ string correctRegex(string t, bool withformat)
 			if (sub.str(4) == "backslash") {
 				replace = "\\";
 				if (withformat) {
-					// tranforms '\backslash \{' into '\{'
+					// transforms '\backslash \{' into '\{'
 					// and '\{' into '{'
-					sregex_iterator it2 = it;
-					++it2;
-					smatch sub2 = *it2;
-					if ((sub2.str(3) == "{") ||  (sub2.str(3) == "}")) {
+					string next = t.substr(sub.position(2) + sub.str(2).length(), 2);
+					if ((next == "\\{") || (next == "\\}")) {
 						replace = "";
 						backslashed = true;
 					}
@@ -858,62 +761,6 @@ bool regex_replace(string const & s, string & t, string const & searchstr,
 	t = oss.str();
 	return rv;
 }
-
-#if 0
-/** Checks if supplied string segment is well-formed from the standpoint of matching open-closed braces.
- **
- ** Verify that closed braces exactly match open braces. This avoids that, for example,
- ** \frac{.*}{x} matches \frac{x+\frac{y}{x}}{z} with .* being 'x+\frac{y'.
- **
- ** @param unmatched
- ** Number of open braces that must remain open at the end for the verification to succeed.
- **/
-#if QTSEARCH
-bool braces_match(QString const & beg,
-		  int unmatched = 0)
-#else
-bool braces_match(string const & beg,
-		int unmatched = 0)
-#endif
-{
-	int open_pars = 0;
-#if QTSEARCH
-	LYXERR(Debug::FIND, "Checking " << unmatched << " unmatched braces in '" << beg.toStdString() << "'");
-#else
-	LYXERR(Debug::FIND, "Checking " << unmatched << " unmatched braces in '" << beg << "'");
-#endif
-	int lastidx = beg.size();
-	for (int i=0; i < lastidx; ++i) {
-		// Skip escaped braces in the count
-#if QTSEARCH
-		QChar c = beg.at(i);
-#else
-		char c = beg.at(i);
-#endif
-		if (c == '\\') {
-			++i;
-			if (i >= lastidx)
-				break;
-		} else if (c == '{') {
-			++open_pars;
-		} else if (c == '}') {
-			if (open_pars == 0) {
-				LYXERR(Debug::FIND, "Found unmatched closed brace");
-				return false;
-			} else
-				--open_pars;
-		}
-	}
-	if (open_pars != unmatched) {
-		LYXERR(Debug::FIND, "Found " << open_pars
-		       << " instead of " << unmatched
-		       << " unmatched open braces at the end of count");
-		return false;
-	}
-	LYXERR(Debug::FIND, "Braces match as expected");
-	return true;
-}
-#endif
 
 class MatchResult {
 public:
@@ -3199,68 +3046,6 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 	}
 }
 
-#if 0
-// Count number of characters in string
-// {]} ==> 1
-// \&  ==> 1
-// --- ==> 1
-// \\[a-zA-Z]+ ==> 1
-#if QTSEARCH
-static int computeSize(QStringRef s, int len)
-#define isLyxAlpha(arg) arg.isLetter()
-#else
-static int computeSize(string s, int len)
-#define isLyxAlpha(arg) isalpha(arg)
-#endif
-{
-	if (len == 0)
-		return 0;
-	int skip = 1;
-	int count = 0;
-	for (int i = 0; i < len; i += skip, count++) {
-		if (s.at(i) == '\\') {
-			skip = 2;
-			if (i + 1 < len && isLyxAlpha(s.at(i+1))) {
-				for (int j = 2;  i+j < len; j++) {
-					if (! isLyxAlpha(s.at(i+j))) {
-						if (s.at(i+j) == ' ')
-							skip++;
-						else if (s.at(i+j) == '{') {
-							if (i+j+1 < len && s.at(i+j+1) == '}')
-								skip += 2;
-							else if (i + j + 1 >= len)
-								skip++;
-						}
-						break;
-					}
-					skip++;
-				}
-			}
-		}
-		else if (s.at(i) == '{') {
-			if (i + 1 < len && s.at(i+1) == '}')
-				skip = 2;
-			else
-				skip = 3;
-		}
-		else if (s.at(i) == '-') {
-			if (i+1 < len && s.at(i+1) == '-') {
-				if (i + 2 < len && s.at(i+2) == '-')
-					skip = 3;
-				else
-					skip = 2;
-			}
-			else
-				skip = 1;
-		}
-		else {
-			skip = 1;
-		}
-	}
-	return count;
-}
-#endif
-
 MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) const
 {
 	MatchResult mres;
@@ -3272,10 +3057,7 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 
 	docstring docstr = stringifyFromForSearch(opt, cur, len);
 	string str;
-	if (use_regexp || opt.casesensitive)
-		str = normalize(docstr);
-	else
-		str = normalize(lowercase(docstr));
+	str = normalize(docstr);
 	if (!opt.ignoreformat) {
 		str = correctlanguagesetting(str, false, !opt.ignoreformat);
 		// remove closing '}' and '\n' to allow for use of '$' in regex
@@ -3293,7 +3075,9 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 	LYXERR(Debug::FIND, "Matching against     '" << lyx::to_utf8(docstr) << "'");
 	LYXERR(Debug::FIND, "After normalization: '" << str << "'");
 
-	if (use_regexp) {
+	LASSERT(use_regexp, /**/);
+	{
+		// use_regexp always true
 		LYXERR(Debug::FIND, "Searching in regexp mode: at_begin=" << at_begin);
 #if QTSEARCH
 		QString qstr = QString::fromStdString(str);
@@ -3417,34 +3201,6 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 #endif
 		return mres;
 	}
-
-	// else !use_regexp: but all code paths above return
-	LYXERR(Debug::FIND, "Searching in normal mode: par_as_string='"
-				 << par_as_string << "', str='" << str << "'");
-	LYXERR(Debug::FIND, "Searching in normal mode: lead_as_string='"
-				 << lead_as_string << "', par_as_string_nolead='"
-				 << par_as_string_nolead << "'");
-
-	if (at_begin) {
-		LYXERR(Debug::FIND, "size=" << par_as_string.size()
-					 << ", substr='" << str.substr(0, par_as_string.size()) << "'");
-		if (str.substr(0, par_as_string.size()) == par_as_string) {
-			mres.match_len = par_as_string.size();
-			mres.match2end = str.size();
-			mres.pos = 0;
-			return mres;
-		}
-	} else {
-		// Start the search _after_ the leading part
-		size_t pos = str.find(par_as_string_nolead, lead_as_string.size());
-		if (pos != string::npos) {
-			mres.match_len = par_as_string.size();
-			mres.match2end = str.size() - pos;
-			mres.pos = pos;
-			return mres;
-		}
-	}
-	return mres;
 }
 
 
@@ -3749,29 +3505,9 @@ MatchResult &findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, Ma
 	int len = 1;
 	if (cur.pos() + len > cur.lastpos())
 	  return fail;
-	// regexp should use \w+, \S+, or \b(some string)\b
-	// to search for whole words
-	if (match.opt.matchword && !match.use_regexp) {
-	  LYXERR(Debug::FIND, "verifying unmatch with len = " << len);
-	  while (cur.pos() + len <= cur.lastpos() && match(cur, len).match_len <= 0) {
-	    ++len;
-	    LYXERR(Debug::FIND, "verifying unmatch with len = " << len);
-	  }
-	  // Length of matched text (different from len param)
-	  static MatchResult old_match = match(cur, len, at_begin);
-	  if (old_match.match_len < 0)
-	    old_match = fail;
-	  MatchResult new_match;
-	  // Greedy behaviour while matching regexps
-	  while ((new_match = match(cur, len + 1, at_begin)).match_len > old_match.match_len) {
-	    ++len;
-	    old_match = new_match;
-	    LYXERR(Debug::FIND, "verifying   match with len = " << len);
-	  }
-	  displayMres(old_match, "SEARCH RESULT", cur)
-	  return old_match;
-	}
-	else {
+
+	LASSERT(match.use_regexp, /**/);
+	{
           int minl = 1;
           int maxl = cur.lastpos() - cur.pos();
           // Greedy behaviour while matching regexps
@@ -4120,7 +3856,6 @@ static void changeFirstCase(Buffer & buffer, TextCase first_case, TextCase other
 }
 } // namespace
 
-#if 1
 static bool replaceMatches(string &t, int maxmatchnum, vector <string> const & replacements)
 {
   // Should replace the string "$" + std::to_string(matchnum) with replacement
@@ -4148,7 +3883,6 @@ static bool replaceMatches(string &t, int maxmatchnum, vector <string> const & r
   t = s;
   return true;
 }
-#endif
 
 ///
 static int findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, MatchStringAdv & matchAdv)
