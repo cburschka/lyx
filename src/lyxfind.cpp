@@ -778,6 +778,10 @@ string correctRegex(string t)
 				replace = "\\";
 			else if (sub.str(4) == "mathcircumflex")
 				replace = "^";
+			else if (sub.str(3) == "{")
+				replace = "\\braceleft";
+			else if (sub.str(3) == "}")
+				replace = "\\braceright";
 			else
 				replace = sub.str(3);
 		}
@@ -2238,6 +2242,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   // Known charaters
   // No split
   makeKey("backslash|textbackslash|slash",  KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+  makeKey("braceleft|braceright",           KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   makeKey("textasciicircum|textasciitilde", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   makeKey("textasciiacute|texemdash",       KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
   makeKey("dots|ldots",                     KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
@@ -2931,6 +2936,7 @@ static string correctlanguagesetting(string par, bool isPatternString, bool with
 				return "";
 			}
 		}
+
 	}
 	else {
 		// LYXERR(Debug::INFO, "No regex formats");
@@ -3316,7 +3322,7 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		int matchend = match.capturedEnd(0);
 		while (mres.match_len > 0) {
 		  QChar c = qstr.at(matchend - 1);
-		  if ((c == '\n') || (c == '}') || (c == '{')) {
+		  if (c == '\n') {
 		    mres.match_len--;
 		    matchend--;
 		  }
