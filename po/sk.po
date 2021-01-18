@@ -3,13 +3,13 @@
 #
 # Zdenko Podobný <zdpo@mailbox.sk>, 2003, 2006.
 # Kornel Benko <Kornel.Benko@berlin.de>, 2009.
-# Kornel Benko <kornel@lyx.org>, 2009-2020.
+# Kornel Benko <kornel@lyx.org>, 2009-2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-01-09 17:07+0100\n"
-"PO-Revision-Date: 2021-01-09 18:06+0000\n"
+"POT-Creation-Date: 2021-01-18 11:47+0100\n"
+"PO-Revision-Date: 2021-01-18 11:07+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -659,6 +659,14 @@ msgstr "Invertované"
 #: src/frontends/qt/ui/BranchesUi.ui:25
 msgid "&New:[[branch]]"
 msgstr "&Nová:"
+
+#: src/frontends/qt/ui/BranchesUi.ui:169
+msgid "Reset branch color to default (standard background)"
+msgstr "Obnoviť farby vetvy (na štandardné pozadie)"
+
+#: src/frontends/qt/ui/BranchesUi.ui:172
+msgid "R&eset Color"
+msgstr "O&bnoviť farbu"
 
 #: src/frontends/qt/ui/BranchesUi.ui:35
 msgid ""
@@ -1326,7 +1334,7 @@ msgstr "Nastaviť na štandardné nastavenie triedy dokumentu"
 
 #: src/frontends/qt/ui/DocumentUi.ui:96
 msgid "Use Class Defaults"
-msgstr "Použiť triedny štandard"
+msgstr "Použiť triedne predvoľby"
 
 #: src/frontends/qt/ui/DocumentUi.ui:109
 msgid "Save settings as defaults for new documents"
@@ -2086,6 +2094,17 @@ msgstr "Zobraziť v L&yXe"
 #: src/frontends/qt/ui/GraphicsUi.ui:605
 msgid "Sca&le on screen (%):"
 msgstr "Mierka na obra&zovke (%):"
+
+#: src/frontends/qt/ui/GraphicsUi.ui:589
+msgid ""
+"If LyX uses a dark theme, revert the colors of this graphics in the workarea"
+msgstr ""
+"Keď LyX používa tmavý námet, tak obráti farby tejto grafiky v pracovnej "
+"ploche"
+
+#: src/frontends/qt/ui/GraphicsUi.ui:592
+msgid "Re&vert colors in dark mode"
+msgstr "Obrá&tiť farby tmavého námetu"
 
 #: src/frontends/qt/ui/GraphicsUi.ui:631
 msgid "Assign the graphic to a group of graphics that share the same settings"
@@ -2863,10 +2882,6 @@ msgstr "Roz&lišovať veľkosť písmen"
 #: src/frontends/qt/ui/LyXFilesUi.ui:110
 msgid "The available language(s) of the selected file will be displayed here"
 msgstr "Tu sú zobrazené dostupné jazyky vybraného súboru"
-
-#: src/frontends/qt/ui/MarginsUi.ui:28
-msgid "Use the margin settings provided by the document class"
-msgstr "Použi nastavenie okrajov z triedy dokumentu"
 
 #: src/frontends/qt/ui/MarginsUi.ui:31
 msgid "&Default margins"
@@ -7061,6 +7076,10 @@ msgstr "IEEE Transakcie"
 #: src/insets/InsetRef.cpp:585
 msgid "Standard"
 msgstr "Štandard"
+
+#: src/insets/InsetRef.cpp:595
+msgid "Ref"
+msgstr "Ref"
 
 #: lib/layouts/IEEEtran.layout:68 lib/layouts/aa.layout:222
 #: lib/layouts/aapaper.layout:78 lib/layouts/aapaper.layout:172
@@ -11842,6 +11861,10 @@ msgstr ""
 #: src/mathed/InsetMathRef.cpp:245
 msgid "Equation"
 msgstr "Rovnica"
+
+#: src/insets/InsetRef.cpp:596
+msgid "EqRef"
+msgstr "EqRef"
 
 #: lib/layouts/eqs-within-sections.module:19
 msgid "\\thesection.\\arabic{equation}"
@@ -25576,6 +25599,10 @@ msgstr "Spájajúci oblúk hore"
 msgid "Bottom tie bar"
 msgstr "Spájajúci oblúk dole"
 
+#: src/insets/InsetInclude.cpp:403
+msgid "MISSING:"
+msgstr "CHÝBA:"
+
 #: lib/ui/stdtoolbars.inc:1405
 msgid "Long"
 msgstr "Trvanie dlhé"
@@ -28831,6 +28858,14 @@ msgstr "Žiadne informácie pre prezeranie %1$s"
 msgid "Auto-view file %1$s failed"
 msgstr "Automatický prehľad súboru %1$s sa nepodaril"
 
+#: src/Format.cpp:724
+msgid "No Filename"
+msgstr "Súbor bez mena"
+
+#: src/Format.cpp:725
+msgid "No filename was provided!"
+msgstr "Neposkytnuté meno súboru!"
+
 #: src/Format.cpp:724 src/Format.cpp:736 src/Format.cpp:749 src/Format.cpp:760
 msgid "Cannot edit file"
 msgstr "Nemôžem editovať súbor"
@@ -31864,6 +31899,26 @@ msgstr "Výstupné formáty"
 #: src/frontends/qt/GuiDocument.cpp:1781
 msgid "LaTeX Preamble"
 msgstr "Preambula LaTeX-u"
+
+#: src/frontends/qt/GuiDocument.cpp:2085 src/frontends/qt/GuiDocument.cpp:2171
+msgid "Class defaults"
+msgstr "Triedne predvoľby"
+
+#: src/frontends/qt/GuiDocument.cpp:2085 src/frontends/qt/GuiDocument.cpp:2171
+msgid "Package defaults"
+msgstr "Predvoľby balíka"
+
+#: src/frontends/qt/GuiDocument.cpp:2088 src/frontends/qt/GuiDocument.cpp:2174
+msgid "If no value is given, the defaults as set by the class are used."
+msgstr "Bez danej hodnoty sa použijú triedne predvoľby."
+
+#: src/frontends/qt/GuiDocument.cpp:2089 src/frontends/qt/GuiDocument.cpp:2175
+msgid ""
+"If no value is given, the defaults as set by the geometry package or a "
+"package/class overriding geometry's defaults are used."
+msgstr ""
+"Bez danej hodnoty sa predvoľby berú z balíka geometry alebo z triedy "
+"použitého balíka."
 
 #: src/frontends/qt/GuiDocument.cpp:2169 src/frontends/qt/GuiDocument.cpp:2199
 msgid "&Default..."
@@ -35107,10 +35162,6 @@ msgstr "súbor"
 msgid "Hyperlink (%1$s) to %2$s"
 msgstr "Hyperlinka (%1$s) na %2$s"
 
-#: src/insets/InsetInclude.cpp:403
-msgid "FILE MISSING:"
-msgstr "SÚBOR CHÝBA:"
-
 #: src/insets/InsetInclude.cpp:421
 msgid "Include (excluded)"
 msgstr "Zahrnúť (vylúčené)"
@@ -35275,9 +35326,9 @@ msgstr ""
 "Obsah súboru bude písaný ako komentár. Problematický súbor:\n"
 "%1$s"
 
-#: src/insets/InsetInclude.cpp:1360
-msgid "FILE MISSING: "
-msgstr "CHÝBAJÚCI SÚBOR: "
+#: src/insets/InsetInclude.cpp:1374
+msgid "MISSING: "
+msgstr "CHÝBA: "
 
 #: src/insets/InsetIndex.cpp:156
 msgid "Index sorting failed"
@@ -36000,6 +36051,10 @@ msgstr "Strana: "
 msgid "Textual Page Number"
 msgstr "Strana v textovej forme"
 
+#: src/insets/InsetRef.cpp:598
+msgid "TextPage"
+msgstr "Strana textu"
+
 #: src/insets/InsetRef.cpp:588 src/mathed/InsetMathRef.cpp:247
 msgid "TextPage: "
 msgstr "Strana textu: "
@@ -36007,6 +36062,10 @@ msgstr "Strana textu: "
 #: src/insets/InsetRef.cpp:589 src/mathed/InsetMathRef.cpp:248
 msgid "Standard+Textual Page"
 msgstr "Štandard+strana v textovej forme"
+
+#: src/insets/InsetRef.cpp:599
+msgid "Ref+Text"
+msgstr "Ref+Text"
 
 #: src/insets/InsetRef.cpp:589 src/mathed/InsetMathRef.cpp:248
 msgid "Ref+Text: "
@@ -36016,6 +36075,10 @@ msgstr "Ref+Text: "
 msgid "Reference to Name"
 msgstr "Referencia na meno"
 
+#: src/insets/InsetRef.cpp:600
+msgid "NameRef"
+msgstr "Meno ref"
+
 #: src/insets/InsetRef.cpp:590 src/mathed/InsetMathRef.cpp:250
 msgid "NameRef: "
 msgstr "Meno ref: "
@@ -36024,17 +36087,13 @@ msgstr "Meno ref: "
 msgid "Formatted"
 msgstr "Formátované"
 
-#: src/insets/InsetRef.cpp:591
-msgid "Format: "
-msgstr "Formát: "
+#: src/insets/InsetRef.cpp:601
+msgid "Format"
+msgstr "Formát"
 
 #: src/insets/InsetRef.cpp:592
 msgid "Label Only"
 msgstr "Len heslo"
-
-#: src/insets/InsetRef.cpp:592
-msgid "Label: "
-msgstr "Heslo: "
 
 #: src/insets/InsetScript.cpp:337
 msgid "subscript"
@@ -36824,6 +36883,15 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Use the margin settings provided by the document class"
+#~ msgstr "Použi nastavenie okrajov z triedy dokumentu"
+
+#~ msgid "Format: "
+#~ msgstr "Formát: "
+
+#~ msgid "Label: "
+#~ msgstr "Heslo: "
 
 #~ msgid "Open|O"
 #~ msgstr "Otvoriť|O"
@@ -37925,9 +37993,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Export failure"
 #~ msgstr "Exportovanie zlyhalo"
-
-#~ msgid "Format"
-#~ msgstr "Formát"
 
 #~ msgid "Conversion Failed!"
 #~ msgstr "Konverzia zlyhala!"
@@ -42170,3 +42235,9 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "O&pen"
 #~ msgstr "O&tvorené"
+
+#~ msgid "FILE MISSING:"
+#~ msgstr "SÚBOR CHÝBA:"
+
+#~ msgid "FILE MISSING: "
+#~ msgstr "CHÝBAJÚCI SÚBOR: "
