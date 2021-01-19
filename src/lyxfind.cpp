@@ -784,14 +784,15 @@ static MatchResult::range interpretMatch(MatchResult &oldres, MatchResult &newre
 {
   int range = oldres.match_len;
   if (range > 0) range--;
-  if (newres.match2end < oldres.match2end - oldres.match_len)
+  if (newres.match2end < oldres.match2end - range)
     return MatchResult::newIsTooFar;
   if (newres.match_len < oldres.match_len)
     return MatchResult::newIsTooFar;
-  if ((newres.match_len == oldres.match_len) &&
-      (newres.match2end < oldres.match2end + range) &&
-      (newres.match2end > oldres.match2end - range)) {
-    return MatchResult::newIsBetter;
+  if (newres.match_len == oldres.match_len) {
+    if ((newres.match2end == oldres.match2end) ||
+      ((newres.match2end < oldres.match2end + range) &&
+       (newres.match2end > oldres.match2end - range)))
+      return MatchResult::newIsBetter;
   }
   return MatchResult::newIsInvalid;
 }
@@ -2774,7 +2775,7 @@ static string correctlanguagesetting(string par, bool isPatternString, bool with
 		// can be digested by our search engine
 		LYXERR(Debug::FIND, "input: \"" << par << "\"");
 		result = splitOnKnownMacros(par.substr(0,parlen), isPatternString);
-		LYXERR(Debug::FIND, "After split: \"" << result << "\"");
+		LYXERR(Debug::FIND, "After splitOnKnownMacros:\n\"" << result << "\"");
 	}
 	else
 		result = par.substr(0, parlen);
@@ -2987,11 +2988,10 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 			LYXERR(Debug::FIND, "lead_as_regexp is '" << lead_as_regexp << "'");
 			LYXERR(Debug::FIND, "par_as_string now is '" << par_as_string << "'");
 		}
-		LYXERR(Debug::FIND, "par_as_string before escape_for_regex() is '" << par_as_string << "'");
+		// LYXERR(Debug::FIND, "par_as_string before escape_for_regex() is '" << par_as_string << "'");
 		par_as_string = escape_for_regex(par_as_string, !opt.ignoreformat);
 		// Insert (.*?) before trailing closure of math, macros and environments, so to catch parts of them.
-		LYXERR(Debug::FIND, "par_as_string now is '" << par_as_string << "'");
-		LYXERR(Debug::FIND, "par_as_string after correctRegex is '" << par_as_string << "'");
+		// LYXERR(Debug::FIND, "par_as_string now is '" << par_as_string << "'");
 		++close_wildcards;
 		size_t lng = par_as_string.size();
 		if (!opt.ignoreformat) {
@@ -3011,14 +3011,15 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 			if (lng < par_as_string.size())
 				par_as_string = par_as_string.substr(0,lng);
 		}
+		LYXERR(Debug::FIND, "par_as_string after correctRegex is '" << par_as_string << "'");
 		if ((lng > 0) && (par_as_string[0] == '^')) {
 			par_as_string = par_as_string.substr(1);
 			--lng;
 			opt.matchstart = true;
 		}
-		LYXERR(Debug::FIND, "par_as_string now is '" << par_as_string << "'");
-		LYXERR(Debug::FIND, "Open braces: " << open_braces);
-		LYXERR(Debug::FIND, "Replaced text (to be used as regex): " << par_as_string);
+		// LYXERR(Debug::FIND, "par_as_string now is '" << par_as_string << "'");
+		// LYXERR(Debug::FIND, "Open braces: " << open_braces);
+		// LYXERR(Debug::FIND, "Replaced text (to be used as regex): " << par_as_string);
 
 		// If entered regexp must match at begin of searched string buffer
 		// Kornel: Added parentheses to use $1 for size of the leading string
@@ -3072,8 +3073,7 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		mres.match_len = -1;
 		return mres;
 	}
-	LYXERR(Debug::FIND, "Matching against     '" << lyx::to_utf8(docstr) << "'");
-	LYXERR(Debug::FIND, "After normalization: '" << str << "'");
+	LYXERR(Debug::FIND, "After normalization: Matching against:\n'" << str << "'");
 
 	LASSERT(use_regexp, /**/);
 	{
@@ -3282,7 +3282,7 @@ string MatchStringAdv::normalize(docstring const & s) const
 	// Remove stale empty \emph{}, \textbf{} and similar blocks from latexify
 	// Kornel: Added textsl, textsf, textit, texttt and noun
 	// + allow to seach for colored text too
-	LYXERR(Debug::FIND, "Removing stale empty \\emph{}, \\textbf{}, \\*section{} macros from: " << t);
+	LYXERR(Debug::FIND, "Removing stale empty macros from: " << t);
 	while (regex_replace(t, t, "\\\\(emph|noun|text(bf|sl|sf|it|tt)|(u|uu)line|(s|x)out|uwave)(\\{(\\{\\})?\\})+", ""))
 		LYXERR(Debug::FIND, "  further removing stale empty \\emph{}, \\textbf{} macros from: " << t);
 	while (regex_replace(t, t, "\\\\((sub)?(((sub)?section)|paragraph)|part)\\*?(\\{(\\{\\})?\\})+", ""))
@@ -3341,9 +3341,11 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
  */
 docstring latexifyFromCursor(DocIterator const & cur, int len)
 {
+	/*
 	LYXERR(Debug::FIND, "Latexifying with len=" << len << " from cursor at pos: " << cur);
 	LYXERR(Debug::FIND, "  with cur.lastpost=" << cur.lastpos() << ", cur.lastrow="
 	       << cur.lastrow() << ", cur.lastcol=" << cur.lastcol());
+	*/
 	Buffer const & buf = *cur.buffer();
 
 	odocstringstream ods;
@@ -3665,7 +3667,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 					default:
 					  // Todo@
 					  // Handle not like MatchResult::newIsTooFar
-					  LYXERR0( "Something is wrong: Increment = " << increment << " match_prefix = " << mres.match_prefix);
+					  LYXERR0( "Probably too far: Increment = " << increment << " match_prefix = " << mres.match_prefix);
 					  firstInvalid--;
 					  increment = increment*3/4;
 					  cur = old_cur;
@@ -4070,7 +4072,7 @@ ostringstream & operator<<(ostringstream & os, FindAndReplaceOptions const & opt
 
 istringstream & operator>>(istringstream & is, FindAndReplaceOptions & opt)
 {
-	LYXERR(Debug::FIND, "parsing");
+	// LYXERR(Debug::FIND, "parsing");
 	string s;
 	string line;
 	getline(is, line);
@@ -4082,7 +4084,7 @@ istringstream & operator>>(istringstream & is, FindAndReplaceOptions & opt)
 			break;
 		getline(is, line);
 	}
-	LYXERR(Debug::FIND, "file_buf_name: '" << s << "'");
+	// LYXERR(Debug::FIND, "file_buf_name: '" << s << "'");
 	opt.find_buf_name = from_utf8(s);
 	is >> opt.casesensitive >> opt.matchword >> opt.forward >> opt.expandmacros >> opt.ignoreformat >> opt.replace_all;
 	is.get();	// Waste space before replace string
@@ -4096,7 +4098,7 @@ istringstream & operator>>(istringstream & is, FindAndReplaceOptions & opt)
 			break;
 		getline(is, line);
 	}
-	LYXERR(Debug::FIND, "repl_buf_name: '" << s << "'");
+	// LYXERR(Debug::FIND, "repl_buf_name: '" << s << "'");
 	opt.repl_buf_name = from_utf8(s);
 	is >> opt.keep_case;
 	int i;
@@ -4105,9 +4107,11 @@ istringstream & operator>>(istringstream & is, FindAndReplaceOptions & opt)
 	is >> i;
 	opt.restr = FindAndReplaceOptions::SearchRestriction(i);
 
+	/*
 	LYXERR(Debug::FIND, "parsed: " << opt.casesensitive << ' ' << opt.matchword << ' ' << opt.forward << ' '
 	       << opt.expandmacros << ' ' << opt.ignoreformat << ' ' << opt.keep_case << ' '
 	       << opt.scope << ' ' << opt.restr);
+	*/
 	return is;
 }
 
