@@ -2943,8 +2943,10 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 				string const bcolor = branch->color();
 				if (bcolor.size() == 7 && bcolor[0] == '#')
 					x11hexname = bcolor;
-				else
-					x11hexname = lcolor.getX11HexName(lcolor.getFromLyXName(bcolor));
+				else {
+					bool const darkmode = theApp() ? theApp()->isInDarkMode() : false;
+					x11hexname = lcolor.getX11HexName(lcolor.getFromLyXName(bcolor), darkmode);
+				}
 				docstring const str = branch_name + ' ' + from_ascii(x11hexname);
 				lyx::dispatch(FuncRequest(LFUN_SET_COLOR, str));
 				dr.setError(false);
