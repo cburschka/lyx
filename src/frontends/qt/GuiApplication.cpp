@@ -2895,6 +2895,11 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 	return false;
 }
 
+bool GuiApplication::isInDarkMode()
+{
+	return colorCache().isDarkMode();
+}
+
 
 bool GuiApplication::getRgbColor(ColorCode col, RGBColor & rgbcol)
 {

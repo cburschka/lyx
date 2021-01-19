@@ -74,6 +74,7 @@ public:
 	void exit(int status) override;
 	bool event(QEvent * e) override;
 	bool getRgbColor(ColorCode col, RGBColor & rgbcol) override;
+	bool isInDarkMode() override;
 	std::string const hexName(ColorCode col) override;
 	void registerSocketCallback(int fd, SocketCallback func) override;
 	void unregisterSocketCallback(int fd) override;

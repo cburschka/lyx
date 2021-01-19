@@ -203,6 +203,11 @@ public:
 	/// Like getRgbColor(), but static and slower
 	static bool getRgbColorUncached(ColorCode col, RGBColor & rgbcol);
 
+	/**
+	 * @return true if LyX uses a dark theme
+	 */
+	virtual bool isInDarkMode() = 0;
+
 	/** Eg, passing Color_black returns "000000",
 	*      passing Color_white returns "ffffff".
 	*/
