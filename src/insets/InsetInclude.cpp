@@ -1217,8 +1217,6 @@ void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 		button_.metrics(mi, dim);
 	}
 
-	Box b(0, dim.wid, -dim.asc, dim.des);
-	button_.setBox(b);
 }
 
 

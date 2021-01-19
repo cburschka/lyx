@@ -13,7 +13,6 @@
 #define RENDERBUTTON_H
 
 #include "RenderBase.h"
-#include "Box.h"
 #include "support/docstring.h"
 
 
@@ -36,11 +35,6 @@ public:
 	void update(docstring const &, bool editable,
 		    bool inherit, bool broken = false);
 
-	/// The "sensitive area" box, i.e., the button area
-	Box box() const { return button_box_; }
-	///
-	void setBox(Box b) { button_box_ = b; }
-
 	/// equivalent to dynamic_cast
 	RenderButton * asButton() override { return this; }
 
@@ -50,7 +44,6 @@ private:
 	bool editable_;
 	bool broken_;
 	bool inherit_font_;
-	Box button_box_;
 };
 
 
