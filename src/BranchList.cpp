@@ -81,6 +81,16 @@ string const & Branch::color() const
 void Branch::setColor(string const & str)
 {
 	color_ = str;
+
+	// Update the Color table
+	string color = str;
+	bool darkmode = theApp() ? theApp()->isInDarkMode() : false;
+	if (color == "none")
+		color = lcolor.getX11HexName(Color_background, darkmode);
+	else if (color.size() != 7 || color[0] != '#')
+		color = lcolor.getX11HexName(lcolor.getFromLyXName(color), darkmode);
+	// FIXME UNICODE
+	lcolor.setColor(to_utf8(branch_), color);
 }
 
 

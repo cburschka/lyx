@@ -991,18 +991,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 			if (tok == "\\color") {
 				lex.eatLine();
 				string color = lex.getString();
-				if (branch_ptr) {
+				if (branch_ptr)
 					branch_ptr->setColor(color);
-					if (branch_ptr->color() == "none")
-						color = lcolor.getX11HexName(Color_background);
-				}
-				// Update also the Color table:
-				if (color == "none")
-					color = lcolor.getX11HexName(Color_background);
-				else if (color.size() != 7 || color[0] != '#')
-					color = lcolor.getFromLyXName(color);
-				// FIXME UNICODE
-				lcolor.setColor(to_utf8(branch), color);
 			}
 		}
 	} else if (token == "\\index") {
