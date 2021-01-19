@@ -182,7 +182,7 @@ char_type replaceCommaInBraces(docstring & params)
 InsetInclude::InsetInclude(Buffer * buf, InsetCommandParams const & p)
 	: InsetCommand(buf, p), include_label(uniqueID()),
 	  preview_(make_unique<RenderMonitoredPreview>(this)), failedtoload_(false),
-	  set_label_(false), label_(nullptr), child_buffer_(nullptr), file_exist_(false),
+	  label_(nullptr), child_buffer_(nullptr), file_exist_(false),
 	  recursion_error_(false)
 {
 	preview_->connect([this](){ fileChanged(); });
@@ -198,7 +198,7 @@ InsetInclude::InsetInclude(Buffer * buf, InsetCommandParams const & p)
 InsetInclude::InsetInclude(InsetInclude const & other)
 	: InsetCommand(other), include_label(other.include_label),
 	  preview_(make_unique<RenderMonitoredPreview>(this)), failedtoload_(false),
-	  set_label_(false), label_(nullptr), child_buffer_(nullptr), 
+	  label_(nullptr), child_buffer_(nullptr),
 	  file_exist_(other.file_exist_),recursion_error_(other.recursion_error_)
 {
 	preview_->connect([this](){ fileChanged(); });
@@ -376,7 +376,6 @@ void InsetInclude::setParams(InsetCommandParams const & p)
 	recursion_error_ = false;
 
 	InsetCommand::setParams(p);
-	set_label_ = false;
 
 	if (preview_->monitoring())
 		preview_->stopMonitoring();
@@ -1196,6 +1195,12 @@ void InsetInclude::collectBibKeys(InsetIterator const & /*di*/, FileNameList & c
 }
 
 
+bool InsetInclude::inheritFont() const
+{
+	return !isVerbatim(params());
+}
+
+
 void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	LBUFERR(mi.base.bv);
@@ -1210,13 +1215,9 @@ void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 	if (use_preview) {
 		preview_->metrics(mi, dim);
 	} else {
-		if (!set_label_) {
-			set_label_ = true;
-			button_.update(screenLabel(), true, false, !file_exist_ || recursion_error_);
-		}
-		button_.metrics(mi, dim);
+		setBroken(!file_exist_ || recursion_error_);
+		InsetCommand::metrics(mi, dim);
 	}
-
 }
 
 
@@ -1234,7 +1235,7 @@ void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 	if (use_preview)
 		preview_->draw(pi, x, y);
 	else
-		button_.draw(pi, x, y);
+		InsetCommand::draw(pi, x, y);
 }
 
 
@@ -1425,11 +1426,8 @@ void InsetInclude::updateBuffer(ParIterator const & it, UpdateType utype, bool c
 	if (childbuffer) {
 		if (!checkForRecursiveInclude(childbuffer))
 			childbuffer->updateBuffer(Buffer::UpdateChildOnly, utype);
-		button_.update(screenLabel(), true, false, recursion_error_);
 		return;
 	}
-
-	button_.update(screenLabel(), true, false, !file_exist_);
 
 	if (!isListings(params()))
 		return;

@@ -127,8 +127,6 @@ protected:
 	//@}
 
 private:
-	///
-	RenderButton & button() const { return button_; }
 	/// This should provide the text for the button
 	virtual docstring screenLabel() const = 0;
 

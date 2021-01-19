@@ -15,8 +15,6 @@
 
 #include "InsetCommand.h"
 
-#include "RenderButton.h"
-
 #include "support/unique_ptr.h"
 
 
@@ -70,6 +68,8 @@ public:
 	void setBuffer(Buffer & buffer) override;
 	///
 	bool isLabeled() const override { return true; }
+	///
+	bool inheritFont() const override;
 	/// Override these InsetButton methods if Previewing
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
@@ -168,8 +168,6 @@ private:
 	///
 	mutable bool failedtoload_;
 	/// cache
-	mutable bool set_label_;
-	mutable RenderButton button_;
 	mutable docstring listings_label_;
 	InsetLabel * label_;
 	mutable Buffer * child_buffer_;
