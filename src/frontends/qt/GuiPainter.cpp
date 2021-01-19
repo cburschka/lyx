@@ -242,12 +242,8 @@ void GuiPainter::image(int x, int y, int w, int h, graphics::Image const & i,
 	fillRectangle(x, y, w, h, Color_graphicsbg);
 
 	QImage image = qlimage.image();
-	
-	QPalette palette = QPalette();
-	QColor text_color = palette.color(QPalette::Active, QPalette::WindowText);
-	QColor bg_color = palette.color(QPalette::Active, QPalette::Window);
-	// guess whether we are in dark mode
-	if (revert_in_darkmode && text_color.black() < bg_color.black())
+
+	if (revert_in_darkmode && guiApp && guiApp->colorCache().isDarkMode())
 		// FIXME this is only a cheap approximation
 		// Ideally, replace colors as in GuiApplication::prepareForDarkmode()
 		image.invertPixels();

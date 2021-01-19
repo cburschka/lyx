@@ -63,7 +63,7 @@ public:
 	///
 	std::string const & color() const;
 	/**
-	 * Set color from a string "#rrggbb".
+	 * Set color from a hexcolor string "#rrggbb" or a lyx color name.
 	 * Use Color:background if the string is no valid color.
 	 * This ensures compatibility with LyX 1.4.0 that had the symbolic
 	 * color "none" that was displayed as Color:background.
