@@ -4086,6 +4086,26 @@ def revert_darkmode_graphics(document):
         i += 1
 
 
+def revert_branch_darkcols(document):
+    " Revert dark branch colors "
+
+    i = 0
+    while True:
+        i = find_token(document.header, "\\branch", i)
+        if i == -1:
+            break
+        j = find_token(document.header, "\\end_branch", i)
+        if j == -1:
+           document.warning("Malformed LyX document. Can't find end of branch definition!")
+           break
+        k = find_token(document.header, "\\color", i, j)
+        if k != -1:
+            m = re.search('\\\\color (\S+) (\S+)', document.header[k])
+            if m:
+                document.header[k] = "\\color " + m.group(1)
+        i += 1
+
+
 ##
 # Conversion hub
 #
@@ -4150,10 +4170,12 @@ convert = [
            [600, []],
            [601, [convert_math_refs]],
            [602, [convert_branch_colors]],
-           [603, []]
+           [603, []],
+           [604, []]
           ]
 
-revert =  [[602, [revert_darkmode_graphics]],
+revert =  [[603, [revert_branch_darkcols]],
+           [602, [revert_darkmode_graphics]],
            [601, [revert_branch_colors]],
            [600, []],
            [599, [revert_math_refs]],

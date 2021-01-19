@@ -153,6 +153,16 @@ RGBColor const RGBColorFromLaTeX(string const & color)
 }
 
 
+RGBColor const inverseRGBColor(RGBColor color)
+{
+	color.r = 255 - color.r;
+	color.g = 255 - color.g;
+	color.b = 255 - color.b;
+
+	return color;
+}
+
+
 Color::Color(ColorCode base_color) : baseColor(base_color),
 	mergeColor(Color_ignore)
 {}

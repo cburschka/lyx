@@ -990,9 +990,13 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 			}
 			if (tok == "\\color") {
 				lex.eatLine();
-				string color = lex.getString();
+				vector<string> const colors = getVectorFromString(lex.getString(), " ");
+				string const lmcolor = colors.front();
+				string dmcolor;
+				if (colors.size() > 1)
+					dmcolor = colors.back();
 				if (branch_ptr)
-					branch_ptr->setColor(color);
+					branch_ptr->setColors(lmcolor, dmcolor);
 			}
 		}
 	} else if (token == "\\index") {
@@ -1382,7 +1386,7 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 		os << "\\branch " << to_utf8(br.branch())
 		   << "\n\\selected " << br.isSelected()
 		   << "\n\\filename_suffix " << br.hasFileNameSuffix()
-		   << "\n\\color " << br.color()
+		   << "\n\\color " << br.lightModeColor() << " " << br.darkModeColor()
 		   << "\n\\end_branch"
 		   << "\n";
 	}

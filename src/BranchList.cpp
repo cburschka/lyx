@@ -29,7 +29,8 @@ namespace lyx {
 Branch::Branch()
 	: selected_(false), filenameSuffix_(false)
 {
-	color_ = "background";
+	lmcolor_ = "background";
+	dmcolor_ = "background";
 }
 
 
@@ -74,23 +75,57 @@ void Branch::setFileNameSuffix(bool b)
 
 string const & Branch::color() const
 {
-	return color_;
+	return (theApp() && theApp()->isInDarkMode())
+			? dmcolor_ : lmcolor_;
 }
 
 
-void Branch::setColor(string const & str)
+string const & Branch::lightModeColor() const
 {
-	color_ = str;
+	return lmcolor_;
+}
+
+
+string const & Branch::darkModeColor() const
+{
+	return dmcolor_;
+}
+
+
+void Branch::setColor(string const & col)
+{
+	if (theApp() && theApp()->isInDarkMode())
+		setColors(string(), col);
+	else
+		setColors(col);
+}
+
+
+void Branch::setColors(string const & lmcol, string const & dmcol)
+{
+	if (lmcol.empty() && lmcolor_ == "background" && support::prefixIs(dmcol, "#"))
+		lmcolor_ = X11hexname(inverseRGBColor(rgbFromHexName(dmcol)));
+	else if (!lmcol.empty())
+		lmcolor_ = lmcol;
+	if (dmcol.empty() && dmcolor_ == "background" && support::prefixIs(lmcol, "#"))
+		dmcolor_ = X11hexname(inverseRGBColor(rgbFromHexName(lmcol)));
+	else if (!dmcol.empty())
+		dmcolor_ = dmcol;
 
 	// Update the Color table
-	string color = str;
-	bool darkmode = theApp() ? theApp()->isInDarkMode() : false;
-	if (color == "none")
-		color = lcolor.getX11HexName(Color_background, darkmode);
-	else if (color.size() != 7 || color[0] != '#')
-		color = lcolor.getX11HexName(lcolor.getFromLyXName(color), darkmode);
+	string lmcolor = lmcolor_;
+	string dmcolor = dmcolor_;
+	if (lmcolor == "none")
+		lmcolor = lcolor.getX11HexName(Color_background);
+	else if (lmcolor.size() != 7 || lmcolor[0] != '#')
+		lmcolor = lcolor.getX11HexName(lcolor.getFromLyXName(lmcolor));
+	if (dmcolor == "none")
+		lmcolor = lcolor.getX11HexName(Color_background, true);
+	else if (dmcolor.size() != 7 || dmcolor[0] != '#')
+		dmcolor = lcolor.getX11HexName(lcolor.getFromLyXName(dmcolor), true);
+
 	// FIXME UNICODE
-	lcolor.setColor(to_utf8(branch_), color);
+	lcolor.setColor(to_utf8(branch_), lmcolor, dmcolor);
 }
 
 

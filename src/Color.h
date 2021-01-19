@@ -64,6 +64,8 @@ RGBColor rgbFromHexName(std::string const & x11hexname);
 std::string const outputLaTeXColor(RGBColor const & color);
 /// Inverse of outputLaTeXColor
 RGBColor const RGBColorFromLaTeX(std::string const & color);
+/// Inverted color
+RGBColor const inverseRGBColor(RGBColor color);
 
 } // namespace lyx
 

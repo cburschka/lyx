@@ -7,6 +7,10 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2021-01-19 Jürgen Spitzmüller <spitz@lyx.org>
+ 	* Format incremented to 604: Branch colors now take two values:
+ 	  \color lightmode darkmode
+
 2021-01-18 Jürgen Spitzmüller <spitz@lyx.org>
  	* Format incremented to 603: New InsetGraphics param darkModeSensitive
  	  This advises LyX to revert colors in dark mode.

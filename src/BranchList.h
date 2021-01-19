@@ -62,13 +62,21 @@ public:
 	void setFileNameSuffix(bool);
 	///
 	std::string const & color() const;
+	///
+	std::string const & lightModeColor() const;
+	///
+	std::string const & darkModeColor() const;
 	/**
-	 * Set color from a hexcolor string "#rrggbb" or a lyx color name.
+	 * Set background color from a hexcolor string "#rrggbb" or a lyx color name.
 	 * Use Color:background if the string is no valid color.
 	 * This ensures compatibility with LyX 1.4.0 that had the symbolic
 	 * color "none" that was displayed as Color:background.
+	 * This sets the dark color if in dark mode, else the light color.
 	 */
-	void setColor(std::string const &);
+	void setColor(std::string const & color);
+	/// Set dark and light background colors
+	void setColors(std::string const & color,
+		      std::string const & dmcolor = std::string());
 
 private:
 	///
@@ -77,8 +85,10 @@ private:
 	bool selected_;
 	///
 	bool filenameSuffix_;
-	///
-	std::string color_;
+	/// light mode background color
+	std::string lmcolor_;
+	/// dark mode background color
+	std::string dmcolor_;
 };
 
 
