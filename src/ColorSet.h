@@ -63,6 +63,12 @@ public:
 	bool setColor(std::string const & lyxname, std::string const & x11hexname,
 		      std::string const & x11darkhexname = std::string());
 
+	/** set the given LyX color to a latexcolor if not yet defined
+	 *  \returns true if successful. A new color entry
+	 *  is created if the color is unknown.
+	 */
+	bool setLaTeXName(std::string const & lyxname, std::string const & latexname);
+
 	/// Get the GUI name of \c color.
 	docstring const getGUIName(ColorCode c) const;
 
