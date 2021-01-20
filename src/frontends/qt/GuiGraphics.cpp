@@ -363,7 +363,7 @@ void GuiGraphics::setAutoText()
 	if (scaleCB->isChecked())
 		return;
 	if (!Scale->isEnabled() && Scale->text() != "100")
-		Scale->setText(qt_(autostr));
+		Scale->setText("100");
 
 	setAutoTextCB(WidthCB, Width, widthUnit);
 	setAutoTextCB(HeightCB, Height, heightUnit);
