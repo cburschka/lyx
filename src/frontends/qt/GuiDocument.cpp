@@ -164,6 +164,7 @@ bool is_fontcolor;
 lyx::RGBColor set_notefontcolor;
 bool is_notefontcolor;
 lyx::RGBColor set_boxbgcolor;
+bool is_boxbgcolor;
 bool forced_fontspec_activation;
 
 } // anonymous namespace
@@ -2292,6 +2293,7 @@ void GuiDocument::changeBoxBackgroundColor()
 		colorButtonStyleSheet(newColor));
 	// save color
 	set_boxbgcolor = rgbFromHexName(fromqstr(newColor.name()));
+	is_boxbgcolor = true;
 	change_adaptor();
 }
 
@@ -2302,6 +2304,7 @@ void GuiDocument::deleteBoxBackgroundColor()
 	theApp()->getRgbColor(Color_shadedbg, set_boxbgcolor);
 	colorModule->boxBackgroundPB->setStyleSheet(
 		colorButtonStyleSheet(rgb2qcolor(set_boxbgcolor)));
+	is_boxbgcolor = false;
 	change_adaptor();
 }
 
@@ -3521,6 +3524,7 @@ void GuiDocument::applyView()
 	bp_.notefontcolor = set_notefontcolor;
 	bp_.isnotefontcolor = is_notefontcolor;
 	bp_.boxbgcolor = set_boxbgcolor;
+	bp_.isboxbgcolor = is_boxbgcolor;
 
 	// numbering
 	if (bp_.documentClass().hasTocLevels()) {
@@ -4050,6 +4054,7 @@ void GuiDocument::paramsToDialog()
 	colorModule->boxBackgroundPB->setStyleSheet(
 		colorButtonStyleSheet(rgb2qcolor(bp_.boxbgcolor)));
 	set_boxbgcolor = bp_.boxbgcolor;
+	is_boxbgcolor = bp_.isboxbgcolor;
 
 	// numbering
 	int const min_toclevel = documentClass().min_toclevel();

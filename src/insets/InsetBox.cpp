@@ -220,8 +220,7 @@ ColorCode InsetBox::backgroundColor(PainterInfo const &) const
 		return getLayout().bgcolor();
 
 	if (params_.type == "Shaded") {
-		// FIXME: This hardcoded color is a hack!
-		if (buffer().params().boxbgcolor == lyx::rgbFromHexName("#ff0000"))
+		if (buffer().params().isboxbgcolor)
 			return getLayout().bgcolor();
 
 		ColorCode c = lcolor.getFromLyXName("boxbgcolor");

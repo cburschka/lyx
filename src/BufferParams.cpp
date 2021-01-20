@@ -461,9 +461,10 @@ BufferParams::BufferParams()
 	fontcolor = lyx::rgbFromHexName("#000000");
 	isfontcolor = false;
 	// light gray is the default font color for greyed-out notes
-	isnotefontcolor = false;
 	notefontcolor = lyx::rgbFromHexName("#cccccc");
+	isnotefontcolor = false;
 	boxbgcolor = lyx::rgbFromHexName("#ff0000");
+	isboxbgcolor = false;
 	compressed = lyxrc.save_compressed;
 	for (int iter = 0; iter < 4; ++iter) {
 		user_defined_bullet(iter) = ITEMIZE_DEFAULTS[iter];
@@ -1060,6 +1061,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		string color = lex.getString();
 		boxbgcolor = lyx::rgbFromHexName(color);
 		lcolor.setColor("boxbgcolor", color);
+		isboxbgcolor = true;
 	} else if (token == "\\paperwidth") {
 		lex >> paperwidth;
 	} else if (token == "\\paperheight") {
@@ -1382,7 +1384,7 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 		os << "\\fontcolor " << lyx::X11hexname(fontcolor) << '\n';
 	if (isnotefontcolor)
 		os << "\\notefontcolor " << lyx::X11hexname(notefontcolor) << '\n';
-	if (boxbgcolor != lyx::rgbFromHexName("#ff0000"))
+	if (isboxbgcolor)
 		os << "\\boxbgcolor " << lyx::X11hexname(boxbgcolor) << '\n';
 
 	for (auto const & br : branchlist()) {

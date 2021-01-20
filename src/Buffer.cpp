@@ -948,6 +948,7 @@ int Buffer::readHeader(Lexer & lex)
 	params().notefontcolor = RGBColor(0xCC, 0xCC, 0xCC);
 	params().isnotefontcolor = false;
 	params().boxbgcolor = RGBColor(0xFF, 0, 0);
+	params().isboxbgcolor = false;
 	params().html_latex_start.clear();
 	params().html_latex_end.clear();
 	params().html_math_img_scale = 1.0;
