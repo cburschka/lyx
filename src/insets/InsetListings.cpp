@@ -312,9 +312,9 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 			}
 		}
 		++par;
-		// Add new line for displayed listing between paragraphs.
+		// Add new line between paragraphs in displayed listings.
 		// Exception: merged paragraphs in change tracking mode.
-		// Also, ´for the inline case, if there are multiple paragraphs
+		// Also, for the inline case, if there are multiple paragraphs
 		// they are simply joined. Otherwise, expect latex errors.
 		if (par != end && !isInline && !captionline && !par->parEndChange().deleted())
 			code += "\n";
