@@ -52,7 +52,7 @@
 #include <map>
 #include <regex>
 
-#define ResultsDebug
+//#define ResultsDebug
 #define USE_QT_FOR_SEARCH
 #if defined(USE_QT_FOR_SEARCH)
 	#include <QtCore>	// sets QT_VERSION
