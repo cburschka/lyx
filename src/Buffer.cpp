@@ -946,6 +946,7 @@ int Buffer::readHeader(Lexer & lex)
 	params().fontcolor = RGBColor(0, 0, 0);
 	params().isfontcolor = false;
 	params().notefontcolor = RGBColor(0xCC, 0xCC, 0xCC);
+	params().isnotefontcolor = false;
 	params().boxbgcolor = RGBColor(0xFF, 0, 0);
 	params().html_latex_start.clear();
 	params().html_latex_end.clear();

@@ -327,9 +327,8 @@ bool InsetNote::allowSpellCheck() const
 FontInfo InsetNote::getFont() const
 {
 	FontInfo font = getLayout().font();
-	// FIXME: This hardcoded color is a hack!
 	if (params_.type == InsetNoteParams::Greyedout
-	    && buffer().params().notefontcolor != lyx::rgbFromHexName("#cccccc")) {
+	    && buffer().params().isnotefontcolor) {
 		ColorCode c = lcolor.getFromLyXName("notefontcolor");
 		if (c != Color_none)
 			font.setColor(c);

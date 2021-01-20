@@ -162,6 +162,7 @@ bool is_backgroundcolor;
 lyx::RGBColor set_fontcolor;
 bool is_fontcolor;
 lyx::RGBColor set_notefontcolor;
+bool is_notefontcolor;
 lyx::RGBColor set_boxbgcolor;
 bool forced_fontspec_activation;
 
@@ -2264,6 +2265,7 @@ void GuiDocument::changeNoteFontColor()
 		colorButtonStyleSheet(newColor));
 	// save color
 	set_notefontcolor = rgbFromHexName(fromqstr(newColor.name()));
+	is_notefontcolor = true;
 	change_adaptor();
 }
 
@@ -2274,6 +2276,7 @@ void GuiDocument::deleteNoteFontColor()
 	theApp()->getRgbColor(Color_greyedouttext, set_notefontcolor);
 	colorModule->noteFontColorPB->setStyleSheet(
 		colorButtonStyleSheet(rgb2qcolor(set_notefontcolor)));
+	is_notefontcolor = false;
 	change_adaptor();
 }
 
@@ -3516,6 +3519,7 @@ void GuiDocument::applyView()
 	bp_.fontcolor = set_fontcolor;
 	bp_.isfontcolor = is_fontcolor;
 	bp_.notefontcolor = set_notefontcolor;
+	bp_.isnotefontcolor = is_notefontcolor;
 	bp_.boxbgcolor = set_boxbgcolor;
 
 	// numbering
@@ -4034,6 +4038,7 @@ void GuiDocument::paramsToDialog()
 	colorModule->noteFontColorPB->setStyleSheet(
 		colorButtonStyleSheet(rgb2qcolor(bp_.notefontcolor)));
 	set_notefontcolor = bp_.notefontcolor;
+	is_notefontcolor = bp_.isnotefontcolor;
 
 	if (bp_.isbackgroundcolor) {
 		colorModule->backgroundPB->setStyleSheet(
