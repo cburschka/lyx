@@ -547,76 +547,45 @@ docstring const lyxgreyedoutDef(bool const ct)
 	    << "\\newenvironment{lyxgreyedout}\n"
 	    << "{";
 	if (ct)
-		ods << "\\colorlet{lyxadded}{lyxadded!30}\\colorlet{lyxdeleted}{lyxdeleted!30}";
+		ods << "\\colorlet{lyxadded}{lyxadded!30}\\colorlet{lyxdeleted}{lyxdeleted!30}%\n ";
 	ods << "\\textcolor{note_fontcolor}\\bgroup\\ignorespaces}\n"
-	    << "  {\\ignorespacesafterend\\egroup}\n";
+	    << "{\\ignorespacesafterend\\egroup}\n";
 
 	return ods.str();
 }
 
-docstring const lyxgreyedoutRTLDef(bool const ct)
+docstring const lyxgreyedoutRTLDef(bool const ct, bool const lua, bool const babel)
 {
 	odocstringstream ods;
 
 	ods << "%% The greyedout annotation environment (with RTL support)\n"
-	    << "\\NewEnviron{lyxgreyedout}{%\n"
-	    << "\\if@rl%\n"
-	    << "\\everypar{";
+	    << "\\NewEnviron{lyxgreyedout}{%\n";
+	if (lua && !babel)
+		// luabidi uses this switch
+		ods << "  \\if@RTL%\n";
+	else
+		ods << "  \\if@rl%\n";
+	ods << "    \\everypar{%\n";
+	if (lua)
+		ods << "      \\color{note_fontcolor}\\pardir TRT \\textdir TRT\\ignorespaces%\n"
+		    << "    }%\n";
+	else
+		ods << "      \\textcolor{note_fontcolor}\\beginL\\ignorespaces%\n"
+		    << "    }%\n";
 	if (ct)
-		ods << "\\colorlet{lyxadded}{lyxadded!30}\\colorlet{lyxdeleted}{lyxdeleted!30}";
-	ods << "\\textcolor{note_fontcolor}\\beginL\\ignorespaces}%\n"
-	    << "\\BODY\\everypar{\\ignorespacesafterend\\endL}\n"
-	    << "\\else%\n";
+		ods << "    \\colorlet{lyxadded}{lyxadded!30}\\colorlet{lyxdeleted}{lyxdeleted!30}%\n";
+	if (lua)
+		ods << "    \\BODY\\everypar{\\ignorespacesafterend}%\n";
+	else
+		ods << "    \\BODY\\everypar{\\ignorespacesafterend\\endL}%\n";
+	ods << "  \\else%\n";
 	if (ct)
-	       ods << "\\colorlet{lyxadded}{lyxadded!30}\\colorlet{lyxdeleted}{lyxdeleted!30}";
-	ods << "\\textcolor{note_fontcolor}\\bgroup\\ignorespaces%\n"
-	    << "\\BODY\\ignorespacesafterend\\egroup\n"
-	    << "\\fi}\n";
+		ods << "    \\colorlet{lyxadded}{lyxadded!30}\\colorlet{lyxdeleted}{lyxdeleted!30}%\n";
+	ods << "    \\textcolor{note_fontcolor}\\bgroup\\ignorespaces%\n"
+	    << "    \\BODY\\ignorespacesafterend\\egroup%\n"
+	    << "  \\fi%\n"
+	    << "}\n";
 
-	return ods.str();
-}
-
-docstring const lyxgreyedoutLuaRTLDef(bool const ct)
-{
-	odocstringstream ods;
-
-	ods << "%% The greyedout annotation environment (with RTL support)\n"
-	    << "\\NewEnviron{lyxgreyedout}{%\n"
-	    << "\\if@RTL%\n"
-	    << "\\everypar{";
-	if (ct)
-		ods << "\\colorlet{lyxadded}{lyxadded!30}\\colorlet{lyxdeleted}{lyxdeleted!30}";
-	ods << "\\color{note_fontcolor}\\pardir TRT \\textdir TRT\\ignorespaces}%\n"
-	    << "\\BODY\\everypar{\\ignorespacesafterend}\n"
-	    << "\\else%\n";
-	if (ct)
-		ods << "\\colorlet{lyxadded}{lyxadded!30}\\colorlet{lyxdeleted}{lyxdeleted!30}";
-	ods << "\\textcolor{note_fontcolor}\\bgroup\\ignorespaces%\n"
-	    << "\\BODY\\ignorespacesafterend\\egroup\n"
-	    << "\\fi}\n";
-
-	return ods.str();
-}
-
-docstring const lyxgreyedoutLuaRTLBabelDef(bool const ct)
-{
-	odocstringstream ods;
-
-	ods << "%% The greyedout annotation environment (with RTL support)\n"
-	    << "\\NewEnviron{lyxgreyedout}{%\n"
-	    << "\\if@rl%\n"
-	    << "\\everypar{";
-	if (ct)
-		ods << "\\colorlet{lyxadded}{lyxadded!30}\\colorlet{lyxdeleted}{lyxdeleted!30}";
-	ods << "\\color{note_fontcolor}\\pardir TRT \\textdir TRT\\ignorespaces}%\n"
-	    << "\\BODY\\everypar{\\ignorespacesafterend}\n"
-	    << "\\else%\n";
-	if (ct)
-		ods << "\\colorlet{lyxadded}{lyxadded!30}\\colorlet{lyxdeleted}{lyxdeleted!30}";
-	ods << "\\textcolor{note_fontcolor}\\bgroup\\ignorespaces%\n"
-	    << "\\BODY\\ignorespacesafterend\\egroup\n"
-	    << "\\fi}\n";
-	
 	return ods.str();
 }
 
@@ -1737,15 +1706,9 @@ TexString LaTeXFeatures::getMacros() const
 	if (mustProvide("lyxgreyedout")) {
 		bool const ct = mustProvide("ct-xcolor-ulem");
 		// We need different version for RTL (#8647)
-		if (hasRTLLanguage()) {
-			if (runparams_.flavor == Flavor::LuaTeX)
-				if (useBabel())
-					macros << lyxgreyedoutLuaRTLBabelDef(ct);
-				else
-					macros << lyxgreyedoutLuaRTLDef(ct);
-			else
-				macros << lyxgreyedoutRTLDef(ct);
-		} else
+		if (hasRTLLanguage())
+			macros << lyxgreyedoutRTLDef(ct, (runparams_.flavor == Flavor::LuaTeX), useBabel());
+		else
 			macros << lyxgreyedoutDef(ct);
 	}
 
