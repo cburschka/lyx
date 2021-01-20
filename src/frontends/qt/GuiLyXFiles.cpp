@@ -600,7 +600,7 @@ void GuiLyXFiles::dispatchParams()
 	string arg;
 	if (type_ == "templates")
 		arg = "newfile ";
-	arg += fromqstr(file_);
+	arg += quoteName(fromqstr(file_));
 	FuncCode const lfun = getLfun();
 
 	if (lfun == LFUN_NOACTION)
