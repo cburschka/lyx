@@ -52,7 +52,7 @@
 #include <map>
 #include <regex>
 
-//#define ResultsDebug
+#define ResultsDebug
 #define USE_QT_FOR_SEARCH
 #if defined(USE_QT_FOR_SEARCH)
 	#include <QtCore>	// sets QT_VERSION
@@ -782,16 +782,13 @@ public:
 
 static MatchResult::range interpretMatch(MatchResult &oldres, MatchResult &newres)
 {
-  int range = oldres.match_len;
-  if (range > 0) range--;
-  if (newres.match2end < oldres.match2end - range)
+  if (newres.match2end < oldres.match2end)
     return MatchResult::newIsTooFar;
   if (newres.match_len < oldres.match_len)
     return MatchResult::newIsTooFar;
+
   if (newres.match_len == oldres.match_len) {
-    if ((newres.match2end == oldres.match2end) ||
-      ((newres.match2end < oldres.match2end + range) &&
-       (newres.match2end > oldres.match2end - range)))
+    if (newres.match2end == oldres.match2end)
       return MatchResult::newIsBetter;
   }
   return MatchResult::newIsInvalid;
@@ -3593,6 +3590,8 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 	if (!cur)
 		return 0;
 	bool repeat = false;
+	DocIterator orig_cur;	// to be used if repeat not successful
+	MatchResult orig_mres;
 	while (!theApp()->longOperationCancelled() && cur) {
 		//(void) findAdvForwardInnermost(cur);
 		LYXERR(Debug::FIND, "findForwardAdv() cur: " << cur);
@@ -3675,10 +3674,19 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 					}
 				}
 			}
-			if (mres.match_len > 0 && mres.match_prefix + mres.pos - mres.leadsize > 0) {
-				repeat = true;
-				cur.forwardPos();
-				continue;
+			if (mres.match_len > 0) {
+				if (mres.match_prefix + mres.pos - mres.leadsize > 0) {
+					repeat = true;
+					orig_cur = cur;
+					orig_mres = mres;
+					cur.forwardPos();
+					continue;
+				}
+			}
+			else if (repeat) {
+				// seems to never be reached.
+				cur = orig_cur;
+				mres = orig_mres;
 			}
 			// LYXERR0("Leaving first loop");
 			LYXERR(Debug::FIND, "Finalizing 1");
