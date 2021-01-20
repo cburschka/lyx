@@ -88,6 +88,9 @@ if(HUNSPELL_FOUND)
   "
   )
 
+# The trick with faking the link command (see the else block) does not work
+# with XCode (350a9daf).
+if(APPLE OR LYX_EXTERNAL_HUNSPELL)
   try_compile(HAVE_HUNSPELL_CXXABI
     "${CMAKE_BINARY_DIR}"
     "${HunspellTestFile}"
@@ -95,6 +98,17 @@ if(HUNSPELL_FOUND)
       "-DINCLUDE_DIRECTORIES:STRING=${HUNSPELL_INCLUDE_DIR}"
     LINK_LIBRARIES ${HUNSPELL_LIBRARY}
     OUTPUT_VARIABLE  LOG2)
+else()
+  try_compile(HAVE_HUNSPELL_CXXABI
+    "${CMAKE_BINARY_DIR}"
+    "${HunspellTestFile}"
+    CMAKE_FLAGS
+      "-DINCLUDE_DIRECTORIES:STRING=${HUNSPELL_INCLUDE_DIR}"
+      # At this point, ../lib/libhunspell.a has not been built so we
+      # cannot complete the linking.
+      "-DCMAKE_CXX_LINK_EXECUTABLE='${CMAKE_COMMAD} echo dummy (fake) link command since libhunspell.a not built yet.'"
+    OUTPUT_VARIABLE  LOG2)
+endif()
 
   message(STATUS "HAVE_HUNSPELL_CXXABI = ${HAVE_HUNSPELL_CXXABI}")
   #message(STATUS "LOG2 = ${LOG2}")
