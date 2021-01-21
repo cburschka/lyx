@@ -61,6 +61,8 @@ public:
 	/// Select/deselect filename suffix property.
 	void setFileNameSuffix(bool);
 	///
+	void setListID(int const id) { branch_list_id_ = id; }
+	///
 	std::string const & color() const;
 	///
 	std::string const & lightModeColor() const;
@@ -77,6 +79,8 @@ public:
 	/// Set dark and light background colors
 	void setColors(std::string const & color,
 		      std::string const & dmcolor = std::string());
+	///
+	int listID() const { return branch_list_id_; }
 
 private:
 	///
@@ -89,6 +93,8 @@ private:
 	std::string lmcolor_;
 	/// dark mode background color
 	std::string dmcolor_;
+	///
+	int branch_list_id_;
 };
 
 
@@ -99,10 +105,13 @@ public:
 	typedef List::const_iterator const_iterator;
 
 	///
-	BranchList() : separator_(from_ascii("|")) {}
+	BranchList() : separator_(from_ascii("|")), id_(rand()) {}
 
 	///
 	docstring separator() const { return separator_; }
+
+	///
+	int id() const { return id_; }
 
 	///
 	bool empty() const { return list_.empty(); }
@@ -139,6 +148,8 @@ private:
 	List list_;
 	///
 	docstring separator_;
+	///
+	int id_;
 };
 
 } // namespace lyx

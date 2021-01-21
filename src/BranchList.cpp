@@ -17,6 +17,7 @@
 
 #include "frontends/Application.h"
 
+#include "support/convert.h"
 #include "support/lstrings.h"
 
 #include <algorithm>
@@ -125,7 +126,8 @@ void Branch::setColors(string const & lmcol, string const & dmcol)
 		dmcolor = lcolor.getX11HexName(lcolor.getFromLyXName(dmcolor), true);
 
 	// FIXME UNICODE
-	lcolor.setColor(to_utf8(branch_), lmcolor, dmcolor);
+	lcolor.setColor("branch" + convert<string>(branch_list_id_)
+			+ to_utf8(branch_), lmcolor, dmcolor);
 }
 
 
@@ -174,6 +176,7 @@ bool BranchList::add(docstring const & s)
 			br.setBranch(name);
 			br.setSelected(false);
 			br.setFileNameSuffix(false);
+			br.setListID(id_);
 			list_.push_back(br);
 		}
 		if (j == docstring::npos)
@@ -200,7 +203,7 @@ bool BranchList::rename(docstring const & oldname,
 	if (find(newname)) {
 		// new name already taken
 		if (merge)
-		      return remove(oldname);
+			return remove(oldname);
 		return false;
 	}
 

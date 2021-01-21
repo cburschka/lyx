@@ -28,6 +28,7 @@
 #include "TextClass.h"
 #include "TocBackend.h"
 
+#include "support/convert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
@@ -134,7 +135,9 @@ ColorCode InsetBranch::backgroundColor(PainterInfo const & pi) const
 	if (params_.branch.empty())
 		return Inset::backgroundColor(pi);
 	// FIXME UNICODE
-	ColorCode c = lcolor.getFromLyXName(to_utf8(params_.branch));
+	string const branchcol = "branch" + convert<string>(buffer().params().branchlist().id())
+			+ to_utf8(params_.branch);
+	ColorCode c = lcolor.getFromLyXName(branchcol);
 	if (c == Color_none)
 		c = Color_error;
 	return c;
