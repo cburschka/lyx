@@ -823,10 +823,6 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 	if (cur.buffer()->isReadonly())
 		return false;
 
-	// We allow all kinds of "mumbo-jumbo" when freespacing.
-	if (oldpar.isFreeSpacing())
-		return false;
-
 	// Whether a common inset is found and whether the cursor is still in
 	// the same paragraph (possibly nested).
 	int const depth = cur.find(&old.inset());
@@ -834,8 +830,9 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		&& old.pit() == cur[depth].pit();
 
 	/*
-	 * (1) If the chars around the old cursor were spaces, delete some of
-	 * them, but only if the cursor has really moved.
+	 * (1) If the chars around the old cursor were spaces and the
+	 * paragraph is not in free spacing mode, delete some of them, but
+	 * only if the cursor has really moved.
 	 */
 
 	/* There are still some small problems that can lead to
@@ -845,43 +842,44 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 	   cut and paste and the selection has a space at the
 	   beginning and then save right after the paste. (Lgb)
 	*/
+	if (!oldpar.isFreeSpacing()) {
+		// find range of spaces around cursors
+		pos_type from = old.pos();
+		while (from > 0
+			   && oldpar.isLineSeparator(from - 1)
+			   && !oldpar.isDeleted(from - 1))
+			--from;
+		pos_type to = old.pos();
+		while (to < old.lastpos()
+			   && oldpar.isLineSeparator(to)
+			   && !oldpar.isDeleted(to))
+			++to;
 
-	// find range of spaces around cursors
-	pos_type from = old.pos();
-	while (from > 0
-		   && oldpar.isLineSeparator(from - 1)
-		   && !oldpar.isDeleted(from - 1))
-		--from;
-	pos_type to = old.pos();
-	while (to < old.lastpos()
-		   && oldpar.isLineSeparator(to)
-		   && !oldpar.isDeleted(to))
-		++to;
+		int num_spaces = to - from;
+		// If we are not at the start of the paragraph, keep one space
+		if (from != to && from > 0)
+			--num_spaces;
 
-	int num_spaces = to - from;
-	// If we are not at the start of the paragraph, keep one space
-	if (from != to && from > 0)
-		--num_spaces;
+		// If cursor is inside range, keep one additional space
+		if (same_par && cur.pos() > from && cur.pos() < to)
+			--num_spaces;
 
-	// If cursor is inside range, keep one additional space
-	if (same_par && cur.pos() > from && cur.pos() < to)
-		--num_spaces;
-
-	// Remove spaces and adapt cursor.
-	if (num_spaces > 0) {
-		old.recordUndo();
-		int const deleted =
-			deleteSpaces(oldpar, from, to, num_spaces, trackChanges);
-		// correct cur position
-		// FIXME: there can be other cursors pointing there, we should update them
-		if (same_par) {
-			if (cur[depth].pos() >= to)
-				cur[depth].pos() -= deleted;
-			else if (cur[depth].pos() > from)
-				cur[depth].pos() = min(from + 1, old.lastpos());
-			need_anchor_change = true;
+		// Remove spaces and adapt cursor.
+		if (num_spaces > 0) {
+			old.recordUndo();
+			int const deleted =
+				deleteSpaces(oldpar, from, to, num_spaces, trackChanges);
+			// correct cur position
+			// FIXME: there can be other cursors pointing there, we should update them
+			if (same_par) {
+				if (cur[depth].pos() >= to)
+					cur[depth].pos() -= deleted;
+				else if (cur[depth].pos() > from)
+					cur[depth].pos() = min(from + 1, old.lastpos());
+				need_anchor_change = true;
+			}
+			result = true;
 		}
-		result = true;
 	}
 
 	/*
@@ -940,35 +938,40 @@ void Text::deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool tra
 	for (pit_type pit = first; pit <= last; ++pit) {
 		Paragraph & par = pars_[pit];
 
-		// We allow all kinds of "mumbo-jumbo" when freespacing.
-		if (par.isFreeSpacing())
-			continue;
+		/*
+		 * (1) Delete consecutive spaces
+		 */
+		if (!par.isFreeSpacing()) {
+			pos_type from = 0;
+			while (from < par.size()) {
+				// skip non-spaces
+				while (from < par.size()
+					   && (!par.isLineSeparator(from) || par.isDeleted(from)))
+					++from;
+				// find string of spaces
+				pos_type to = from;
+				while (to < par.size()
+					   && par.isLineSeparator(to) && !par.isDeleted(to))
+					++to;
+				// empty? We are done
+				if (from == to)
+					break;
 
-		pos_type from = 0;
-		while (from < par.size()) {
-			// skip non-spaces
-			while (from < par.size()
-			       && (!par.isLineSeparator(from) || par.isDeleted(from)))
-				++from;
-			// find string of spaces
-			pos_type to = from;
-			while (to < par.size()
-			       && par.isLineSeparator(to) && !par.isDeleted(to))
-				++to;
-			// empty? We are done
-			if (from == to)
-				break;
+				int num_spaces = to - from;
 
-			int num_spaces = to - from;
+				// If we are not at the extremity of the paragraph, keep one space
+				if (from != to && from > 0 && to < par.size())
+					--num_spaces;
 
-			// If we are not at the extremity of the paragraph, keep one space
-			if (from != to && from > 0 && to < par.size())
-				--num_spaces;
-
-			// Remove spaces if needed
-			int const deleted = deleteSpaces(par, from , to, num_spaces, trackChanges);
-			from = to - deleted;
+				// Remove spaces if needed
+				int const deleted = deleteSpaces(par, from , to, num_spaces, trackChanges);
+				from = to - deleted;
+			}
 		}
+
+		/*
+		 * (2) Delete empty pragraphs
+		 */
 
 		// don't delete anything if this is the only remaining paragraph
 		// within the given range. Note: Text::acceptOrRejectChanges()
