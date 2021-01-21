@@ -89,6 +89,8 @@ public:
 	bool inheritFont() const override { return false; }
 	/// Can the cell contain several paragraphs?
 	bool allowMultiPar() const override { return !isMultiRow && (!isMultiColumn || isFixedWidth); }
+	///
+	bool canPaintChange(BufferView const &) const override { return false; }
 private:
 	///
 	InsetTableCell() = delete;
