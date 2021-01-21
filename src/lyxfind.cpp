@@ -3128,23 +3128,25 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		// we have to 'unify' the length of the post-match.
 		// Done by ignoring closing parenthesis and linefeeds at string end
 		int matchend = match.capturedEnd(0);
-		while (mres.match_len > 0) {
-		  QChar c = qstr.at(matchend - 1);
-		  if ((c == '\n') || (c == '}') || (c == '{')) {
-		    mres.match_len--;
-		    matchend--;
-		  }
-		  else
-		    break;
-		}
 		size_t strsize = qstr.size();
-		while (strsize > (size_t) match.capturedEnd(0)) {
-			QChar c = qstr.at(strsize-1);
-			if ((c == '\n') || (c == '}')) {
-				--strsize;
+		if (!opt.ignoreformat) {
+			while (mres.match_len > 0) {
+				QChar c = qstr.at(matchend - 1);
+				if ((c == '\n') || (c == '}') || (c == '{')) {
+					mres.match_len--;
+					matchend--;
+				}
+				else
+					break;
 			}
-			else
-				break;
+			while (strsize > (size_t) match.capturedEnd(0)) {
+				QChar c = qstr.at(strsize-1);
+				if ((c == '\n') || (c == '}')) {
+					--strsize;
+				}
+				else
+					break;
+			}
 		}
 		// LYXERR0(qstr.toStdString());
 		mres.match2end = strsize - matchend;
@@ -3155,22 +3157,24 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		// ignore closing parenthesis and linefeeds at string end
 		size_t strend = m[0].second - m[0].first;
 		int matchend = strend;
-		while (mres.match_len > 0) {
-		  char c = str.at(matchend - 1);
-		  if ((c == '\n') || (c == '}') || (c == '{')) {
-		    mres.match_len--;
-		    matchend--;
-		  }
-		  else
-		    break;
-		}
 		size_t strsize = str.size();
-		while (strsize > strend) {
-			if ((str.at(strsize-1) == '}') || (str.at(strsize-1) == '\n')) {
-				--strsize;
+		if (!opt.ignoreformat) {
+			while (mres.match_len > 0) {
+				char c = str.at(matchend - 1);
+				if ((c == '\n') || (c == '}') || (c == '{')) {
+					mres.match_len--;
+					matchend--;
+				}
+				else
+					break;
 			}
-			else
-				break;
+			while (strsize > strend) {
+				if ((str.at(strsize-1) == '}') || (str.at(strsize-1) == '\n')) {
+					--strsize;
+				}
+				else
+					break;
+			}
 		}
 		// LYXERR0(str);
 		mres.match2end = strsize - matchend;
@@ -3446,20 +3450,24 @@ static void displayMResult(MatchResult &mres, string from, DocIterator & cur)
  ** be selected
  ** Return the cur.pos() difference between start and end of found match
  **/
-MatchResult &findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, MatchResult const & expected = MatchResult(-1))
+MatchResult findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, MatchResult const & expected = MatchResult(-1))
 {
 	// Search the foremost position that matches (avoids find of entire math
 	// inset when match at start of it)
 	DocIterator old_cur(cur.buffer());
 	MatchResult mres;
 	static MatchResult fail = MatchResult();
-	static MatchResult max_match;
+	MatchResult max_match;
 	// If (prefix_len > 0) means that forwarding 1 position will remove the complete entry
 	// Happens with e.g. hyperlinks
 	// either one sees "http://www.bla.bla" or nothing
 	// so the search for "www" gives prefix_len = 7 (== sizeof("http://")
 	// and although we search for only 3 chars, we find the whole hyperlink inset
 	bool at_begin = (expected.match_prefix == 0);
+	if (!match.opt.forward && match.opt.ignoreformat) {
+		if (expected.pos > 0)
+			return fail;
+	}
 	LASSERT(at_begin, /**/);
 	if (expected.match_len > 0 && at_begin) {
 		// Search for deepest match
@@ -3709,11 +3717,12 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 
 
 /// Find the most backward consecutive match within same paragraph while searching backwards.
-MatchResult &findMostBackwards(DocIterator & cur, MatchStringAdv const & match)
+MatchResult findMostBackwards(DocIterator & cur, MatchStringAdv const & match, MatchResult &expected)
 {
-	DocIterator cur_begin = doc_iterator_begin(cur.buffer());
+	DocIterator cur_begin = cur;
+	cur_begin.pos() = 0;
 	DocIterator tmp_cur = cur;
-	static MatchResult mr = findAdvFinalize(tmp_cur, match, MatchResult(-1));
+	MatchResult mr = findAdvFinalize(tmp_cur, match, expected);
 	Inset & inset = cur.inset();
 	for (; cur != cur_begin; cur.backwardPos()) {
 		LYXERR(Debug::FIND, "findMostBackwards(): cur=" << cur);
@@ -3721,7 +3730,7 @@ MatchResult &findMostBackwards(DocIterator & cur, MatchStringAdv const & match)
 		new_cur.backwardPos();
 		if (new_cur == cur || &new_cur.inset() != &inset || !match(new_cur).match_len)
 			break;
-		MatchResult new_mr = findAdvFinalize(new_cur, match, MatchResult(-1));
+		MatchResult new_mr = findAdvFinalize(new_cur, match, expected);
 		if (new_mr.match_len == mr.match_len)
 			break;
 		mr = new_mr;
@@ -3745,9 +3754,9 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match)
 	bool pit_changed = false;
 	do {
 		cur.pos() = 0;
-		bool found_match = (match(cur, -1, false).match_len > 0);
+		MatchResult found_match = match(cur, -1, false);
 
-		if (found_match) {
+		if (found_match.match_len > 0) {
 			if (pit_changed)
 				cur.pos() = cur.lastpos();
 			else
@@ -3755,14 +3764,15 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match)
 			LYXERR(Debug::FIND, "findBackAdv2: cur: " << cur);
 			DocIterator cur_prev_iter;
 			do {
-				found_match = (match(cur).match_len > 0);
+				found_match = match(cur);
 				LYXERR(Debug::FIND, "findBackAdv3: found_match="
-				       << found_match << ", cur: " << cur);
-				if (found_match) {
-					MatchResult found_mr = findMostBackwards(cur, match);
-					match.FillResults(found_mr);
-					LASSERT(found_mr.pos_len > 0, /**/);
-					return found_mr.pos_len;
+				       << (found_match.match_len > 0) << ", cur: " << cur);
+				if (found_match.match_len > 0) {
+					MatchResult found_mr = findMostBackwards(cur, match, found_match);
+					if (found_mr.pos_len > 0) {
+						match.FillResults(found_mr);
+						return found_mr.pos_len;
+					}
 				}
 
 				// Stop if begin of document reached
