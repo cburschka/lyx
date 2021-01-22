@@ -7,6 +7,12 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2021-01-22 Jürgen Spitzmüller <spitz@lyx.org>
+ 	* Format incremented to 605: Extended variable table cell support.
+ 	  - Multicolumn now supports multiple paragraphs in non-fixed-width context.
+ 	  - Multicolumn now supports valign in non-fixed-width context.
+ 	  - varwidth columns now properly align horizontally and vertically.
+
 2021-01-19 Jürgen Spitzmüller <spitz@lyx.org>
  	* Format incremented to 604: Branch colors now take two values:
  	  \color lightmode darkmode

@@ -4106,6 +4106,125 @@ def revert_branch_darkcols(document):
         i += 1
 
 
+def revert_vcolumns2(document):
+    """Revert varwidth columns with line breaks etc."""
+    i = 0
+    needvarwidth = False
+    needarray = False
+    needcellvarwidth = False
+    try:
+        while True:
+            i = find_token(document.body, "\\begin_inset Tabular", i+1)
+            if i == -1:
+                return
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Could not find end of tabular.")
+                continue
+
+            # Collect necessary column information
+            m = i + 1
+            nrows = int(document.body[i+1].split('"')[3])
+            ncols = int(document.body[i+1].split('"')[5])
+            col_info = []
+            for k in range(ncols):
+                m = find_token(document.body, "<column", m)
+                width = get_option_value(document.body[m], 'width')
+                varwidth = get_option_value(document.body[m], 'varwidth')
+                alignment = get_option_value(document.body[m], 'alignment')
+                valignment = get_option_value(document.body[m], 'valignment')
+                special = get_option_value(document.body[m], 'special')
+                col_info.append([width, varwidth, alignment, valignment, special, m])
+                m += 1
+
+            # Now parse cells
+            m = i + 1
+            lines = []
+            for row in range(nrows):
+                for col in range(ncols):
+                    m = find_token(document.body, "<cell", m)
+                    multicolumn = get_option_value(document.body[m], 'multicolumn') != ""
+                    multirow = get_option_value(document.body[m], 'multirow') != ""
+                    fixedwidth = get_option_value(document.body[m], 'width') != ""
+                    rotate = get_option_value(document.body[m], 'rotate')
+                    cellalign = get_option_value(document.body[m], 'alignment')
+                    cellvalign = get_option_value(document.body[m], 'valignment')
+                    # Check for: linebreaks, multipars, non-standard environments
+                    begcell = m
+                    endcell = find_token(document.body, "</cell>", begcell)
+                    vcand = False
+                    if find_token(document.body, "\\begin_inset Newline", begcell, endcell) != -1:
+                        vcand = not fixedwidth and not multirow
+                    elif count_pars_in_inset(document.body, begcell + 2) > 1:
+                        vcand = not fixedwidth and not multirow
+                    elif get_value(document.body, "\\begin_layout", begcell) != "Plain Layout":
+                        vcand = not fixedwidth and not multirow
+                    colalignment = col_info[col][2]
+                    colvalignment = col_info[col][3]
+                    if vcand:
+                        if rotate == "" and ((colalignment == "left" and colvalignment == "top") or (multicolumn == True and cellalign == "left" and cellvalign == "top")):
+                            if col_info[col][0] == "" and col_info[col][1] == "" and col_info[col][4] == "":
+                                needvarwidth = True
+                                col_line = col_info[col][5]
+                                needarray = True
+                                vval = "V{\\linewidth}"
+                                if multicolumn:
+                                    document.body[m] = document.body[m][:-1] + " special=\"" + vval + "\">"
+                                else:
+                                    document.body[col_line] = document.body[col_line][:-1] + " special=\"" + vval + "\">"
+                        else:
+                            alarg = ""
+                            if multicolumn:
+                                if cellvalign == "middle":
+                                    alarg = "[m]"
+                                elif cellvalign == "bottom":
+                                    alarg = "[b]"
+                            else:
+                                document.warning("col: %i, alignment: %s" % (col, colvalignment))
+                                if colvalignment == "middle":
+                                    alarg = "[m]"
+                                elif colvalignment == "bottom":
+                                    alarg = "[b]"
+                            flt = find_token(document.body, "\\begin_layout", begcell, endcell)
+                            elt = find_token_backwards(document.body, "\\end_layout", endcell)
+                            if flt != -1 and elt != -1:
+                                document.body[elt:elt+1] = put_cmd_in_ert("\\end{cellvarwidth}")
+                                document.body[flt+1:flt+1] = put_cmd_in_ert("\\begin{cellvarwidth}" + alarg)
+                                needcellvarwidth = True
+                                needvarwidth = True
+                        # ERT newlines and linebreaks (since LyX < 2.4 automatically inserts parboxes
+                        # with newlines, and we do not want that)
+                        while True:
+                            endcell = find_token(document.body, "</cell>", begcell)
+                            linebreak = False
+                            nl = find_token(document.body, "\\begin_inset Newline newline", begcell, endcell)
+                            if nl == -1:
+                                nl = find_token(document.body, "\\begin_inset Newline linebreak", begcell, endcell)
+                                if nl == -1:
+                                     break
+                                linebreak = True
+                            nle = find_end_of_inset(document.body, nl)
+                            del(document.body[nle:nle+1])
+                            if linebreak:
+                                document.body[nl:nl+1] = put_cmd_in_ert("\\linebreak{}")
+                            else:
+                                document.body[nl:nl+1] = put_cmd_in_ert("\\\\")
+                    m += 1
+
+            i = j
+
+    finally:
+        if needarray == True:
+            add_to_preamble(document, ["\\usepackage{array}"])
+        if needcellvarwidth == True:
+            add_to_preamble(document, ["%% Variable width box for table cells",
+                                       "\\newenvironment{cellvarwidth}[1][t]",
+                                       "    {\\begin{varwidth}[#1]{\\linewidth}}",
+                                       "    {\\@finalstrut\\@arstrutbox\\end{varwidth}}"])
+        if needvarwidth == True:
+            add_to_preamble(document, ["\\usepackage{varwidth}"])
+
+
 ##
 # Conversion hub
 #
@@ -4171,10 +4290,12 @@ convert = [
            [601, [convert_math_refs]],
            [602, [convert_branch_colors]],
            [603, []],
-           [604, []]
+           [604, []],
+           [605, []]
           ]
 
-revert =  [[603, [revert_branch_darkcols]],
+revert =  [[604, [revert_vcolumns2]],
+           [603, [revert_branch_darkcols]],
            [602, [revert_darkmode_graphics]],
            [601, [revert_branch_colors]],
            [600, []],

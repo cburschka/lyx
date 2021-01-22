@@ -193,6 +193,12 @@ static docstring const tabularnewline_def = from_ascii(
 	"%% Because html converters don't know tabularnewline\n"
 	"\\providecommand{\\tabularnewline}{\\\\}\n");
 
+static docstring const cellvarwidth_def = from_ascii(
+	"%% Variable width box for table cells\n"
+	"\\newenvironment{cellvarwidth}[1][t]\n"
+	"    {\\begin{varwidth}[#1]{\\linewidth}}\n"
+	"    {\\@finalstrut\\@arstrutbox\\end{varwidth}}\n");
+
 // We want to omit the file extension for includegraphics, but this does not
 // work when the filename contains other dots.
 // Idea from http://www.tex.ac.uk/cgi-bin/texfaq2html?label=unkgrfextn
@@ -1694,6 +1700,9 @@ TexString LaTeXFeatures::getMacros() const
 	// some problems with tex->html converters
 	if (mustProvide("NeedTabularnewline"))
 		macros << tabularnewline_def;
+
+	if (mustProvide("cellvarwidth"))
+		macros << cellvarwidth_def;
 
 	// greyed-out environment (note inset)
 	// the color is specified in the routine
