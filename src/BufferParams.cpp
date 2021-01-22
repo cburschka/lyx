@@ -704,9 +704,10 @@ BufferParams::MathNumber BufferParams::getMathNumber() const
 
 
 string BufferParams::readToken(Lexer & lex, string const & token,
-	FileName const & filepath)
+	FileName const & filename)
 {
 	string result;
+	FileName const & filepath = filename.onlyPath();
 
 	if (token == "\\textclass") {
 		lex.next();
@@ -1028,7 +1029,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 					color = lcolor.getX11HexName(Color_background);
 				// FIXME UNICODE
 				if (!shortcut.empty())
-					lcolor.setColor(to_utf8(shortcut), color);
+					lcolor.setColor(to_utf8(shortcut)+ "@" + filename.absFileName(), color);
 			}
 		}
 	} else if (token == "\\author") {
@@ -1055,12 +1056,14 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		notefontcolor = lyx::rgbFromHexName(color);
 		lcolor.setColor("notefontcolor", color);
 		lcolor.setLaTeXName("notefontcolor", "note_fontcolor");
+		// set a local name for the painter
+		lcolor.setColor("notefontcolor@" + filename.absFileName(), color);
 		isnotefontcolor = true;
 	} else if (token == "\\boxbgcolor") {
 		lex.eatLine();
 		string color = lex.getString();
 		boxbgcolor = lyx::rgbFromHexName(color);
-		lcolor.setColor("boxbgcolor", color);
+		lcolor.setColor("boxbgcolor@" + filename.absFileName(), color);
 		isboxbgcolor = true;
 	} else if (token == "\\paperwidth") {
 		lex >> paperwidth;

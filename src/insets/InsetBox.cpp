@@ -34,6 +34,7 @@
 
 #include "support/debug.h"
 #include "support/docstream.h"
+#include "support/FileName.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/Translator.h"
@@ -220,10 +221,10 @@ ColorCode InsetBox::backgroundColor(PainterInfo const &) const
 		return getLayout().bgcolor();
 
 	if (params_.type == "Shaded") {
-		if (buffer().params().isboxbgcolor)
+		if (!buffer().params().isboxbgcolor)
 			return getLayout().bgcolor();
 
-		ColorCode c = lcolor.getFromLyXName("boxbgcolor");
+		ColorCode c = lcolor.getFromLyXName("boxbgcolor@" + buffer().fileName().absFileName());
 		if (c == Color_none)
 			return getLayout().bgcolor();
 		return c;

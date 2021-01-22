@@ -34,6 +34,7 @@
 
 #include "support/debug.h"
 #include "support/docstream.h"
+#include "support/FileName.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
@@ -456,7 +457,8 @@ ColorCode InsetIndex::labelColor() const
 	if (params_.index.empty() || params_.index == from_ascii("idx"))
 		return InsetCollapsible::labelColor();
 	// FIXME UNICODE
-	ColorCode c = lcolor.getFromLyXName(to_utf8(params_.index));
+	ColorCode c = lcolor.getFromLyXName(to_utf8(params_.index)
+					    + "@" + buffer().fileName().absFileName());
 	if (c == Color_none)
 		c = InsetCollapsible::labelColor();
 	return c;

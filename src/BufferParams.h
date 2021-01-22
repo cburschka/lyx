@@ -17,6 +17,7 @@
 
 #include "Citation.h"
 #include "ColorCode.h"
+#include "ColorSet.h"
 #include "DocumentClassPtr.h"
 #include "LayoutModuleList.h"
 #include "paper.h"
@@ -78,7 +79,7 @@ public:
 	/// read a header token, if unrecognised, return it or an unknown class name
 	std::string readToken(Lexer & lex,
 		std::string const & token, ///< token to read.
-		support::FileName const & filepath);
+		support::FileName const & filename);
 
 	///
 	void writeFile(std::ostream &, Buffer const *) const;

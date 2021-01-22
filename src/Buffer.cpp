@@ -988,7 +988,7 @@ int Buffer::readHeader(Lexer & lex)
 				      << token << '\'');
 
 		string const result =
-			params().readToken(lex, token, d->filename.onlyPath());
+			params().readToken(lex, token, d->filename);
 		if (!result.empty()) {
 			if (token == "\\textclass") {
 				d->layout_position = result;
