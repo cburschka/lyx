@@ -444,7 +444,7 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 			if ((par->layout() != nextpar->layout()
 			     || par->params().depth() == nextpar->params().depth()
 			     || par->params().leftIndent() == nextpar->params().leftIndent())
-			    && !runparams.for_search && !cpar.empty()
+			    && !cpar.empty()
 			    && cpar.isDeleted(0, cpar.size()) && !buf.params().output_changes) {
 				if (!buf.params().output_changes && !cpar.parEndChange().deleted())
 					os << '\n' << '\n';
@@ -759,7 +759,7 @@ void TeXOnePar(Buffer const & buf,
 
 	// Do not output empty commands if the whole paragraph has
 	// been deleted with ct and changes are not output.
-	if (!runparams_in.for_search && style.latextype != LATEX_ENVIRONMENT
+	if (style.latextype != LATEX_ENVIRONMENT
 	    && !par.empty() && par.isDeleted(0, par.size()) && !bparams.output_changes)
 		return;
 
@@ -1665,7 +1665,7 @@ void latexParagraphs(Buffer const & buf,
 			if ((par->layout() != nextpar->layout()
 			     || par->params().depth() == nextpar->params().depth()
 			     || par->params().leftIndent() == nextpar->params().leftIndent())
-			    && !runparams.for_search && !cpar.empty()
+			    && !cpar.empty()
 			    && cpar.isDeleted(0, cpar.size()) && !bparams.output_changes) {
 				if (!cpar.parEndChange().deleted())
 					os << '\n' << '\n';
@@ -1674,7 +1674,7 @@ void latexParagraphs(Buffer const & buf,
 		} else {
 			// This is the last par
 			Paragraph const & cpar = paragraphs.at(pit);
-			if (!runparams.for_search && !cpar.empty()
+			if (!cpar.empty()
 			    && cpar.isDeleted(0, cpar.size()) && !bparams.output_changes) {
 				if (!cpar.parEndChange().deleted())
 					os << '\n' << '\n';

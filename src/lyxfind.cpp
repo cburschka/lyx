@@ -3622,10 +3622,10 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 		else {	// match_len > 0
 			// Try to find the begin of searched string
 			int increment;
-			int firstInvalid = 100000;
+			int firstInvalid = cur.lastpos() - cur.pos();
 			{
 				int incrmatch = (mres.match_prefix + mres.pos - mres.leadsize + 1)*3/4;
-				int incrcur = (cur.lastpos() - cur.pos() + 1 )*3/4;
+				int incrcur = (firstInvalid + 1 )*3/4;
 				if (incrcur < incrmatch)
 					increment = incrcur;
 				else
@@ -3636,54 +3636,44 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 			LYXERR(Debug::FIND, "Set increment to " << increment);
 			while (increment > 0) {
 				DocIterator old_cur = cur;
-				size_t skipping = cur.depth();
-				for (int i = 0; i < increment && cur; i++) {
-					cur.forwardPos();
-					while (cur && cur.depth() > skipping) {
-						cur.pos() = cur.lastpos();
-						cur.forwardPos();
-					}
-				}
-				if (! cur || (cur.pit() > old_cur.pit())) {
-					// Are we outside of the paragraph?
-					// This can happen if moving past some UTF8-encoded chars
-					cur = old_cur;
+				if (cur.pos() + increment >= cur.lastpos()) {
 					increment /= 2;
+					continue;
 				}
-				else {
-					MatchResult mres2 = match(cur, -1, false);
-					displayMres(mres2, "findForwardAdv loop", cur)
-					switch (interpretMatch(mres, mres2)) {
+				cur.pos() = cur.pos() + increment;
+				MatchResult mres2 = match(cur, -1, false);
+				displayMres(mres2, "findForwardAdv loop", cur)
+				switch (interpretMatch(mres, mres2)) {
 					case MatchResult::newIsTooFar:
-					  // behind the expected match
-					  firstInvalid = increment;
-					  cur = old_cur;
-					  increment /= 2;
-					  break;
+						// behind the expected match
+						firstInvalid = increment;
+						cur = old_cur;
+						increment /= 2;
+						break;
 					case MatchResult::newIsBetter:
-					  // not reached yet, but cur.pos()+increment is bettert
-					  mres = mres2;
-					  firstInvalid -= increment;
-					  if (increment > firstInvalid*3/4)
-					    increment = firstInvalid*3/4;
-					  if ((mres2.pos == mres2.leadsize) && (increment >= mres2.match_prefix)) {
-					    if (increment >= mres2.match_prefix)
-					      increment = (mres2.match_prefix+1)*3/4;
-					  }
-					  break;
+						// not reached yet, but cur.pos()+increment is bettert
+						mres = mres2;
+						firstInvalid -= increment;
+						if (increment > firstInvalid*3/4)
+							increment = firstInvalid*3/4;
+						if ((mres2.pos == mres2.leadsize) && (increment >= mres2.match_prefix)) {
+							if (increment >= mres2.match_prefix)
+								increment = (mres2.match_prefix+1)*3/4;
+						}
+						break;
 					default:
-					  // Todo@
-					  // Handle not like MatchResult::newIsTooFar
-					  LYXERR0( "Probably too far: Increment = " << increment << " match_prefix = " << mres.match_prefix);
-					  firstInvalid--;
-					  increment = increment*3/4;
-					  cur = old_cur;
-					  break;
-					}
+						// Todo@
+						// Handle not like MatchResult::newIsTooFar
+						LYXERR0( "Probably too far: Increment = " << increment << " match_prefix = " << mres.match_prefix);
+						firstInvalid--;
+						increment = increment*3/4;
+						cur = old_cur;
+					break;
 				}
 			}
 			if (mres.match_len > 0) {
 				if (mres.match_prefix + mres.pos - mres.leadsize > 0) {
+					// The match seems to indicate some deeper level 
 					repeat = true;
 					orig_cur = cur;
 					orig_mres = mres;
@@ -3692,7 +3682,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 				}
 			}
 			else if (repeat) {
-				// seems to never be reached.
+				// should never be reached.
 				cur = orig_cur;
 				mres = orig_mres;
 			}
@@ -3700,15 +3690,15 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 			LYXERR(Debug::FIND, "Finalizing 1");
 			MatchResult found_match = findAdvFinalize(cur, match, mres);
 			if (found_match.match_len > 0) {
-			  LASSERT(found_match.pos_len > 0, /**/);
-			  match.FillResults(found_match);
-			  return found_match.pos_len;
+				LASSERT(found_match.pos_len > 0, /**/);
+				match.FillResults(found_match);
+				return found_match.pos_len;
 			}
 			else {
-			  // try next possible match
-			  cur.forwardPos();
-			  repeat = false;
-			  continue;
+				// try next possible match
+				cur.forwardPos();
+				repeat = false;
+				continue;
 			}
 		}
 	}
