@@ -83,7 +83,7 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 	odocstringstream ourlatex;
 	otexstream ots(ourlatex);
 	InsetText::latex(ots, runparams);
-	if (runparams.for_search) {
+	if (runparams.for_searchAdv != OutputParams::NoSearch) {
 		// No need for special handling, if we are only searching for some patterns
 		os << ourlatex.str() << "}";
 		return;

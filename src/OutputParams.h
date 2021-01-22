@@ -395,7 +395,13 @@ public:
 	bool for_tooltip = false;
 
 	/// Are we generating this material for use by advanced search?
-	bool for_search = false;
+	enum Search {
+		NoSearch,
+		SearchWithDeleted,
+		SearchWithoutDeleted
+	};
+		
+	enum Search for_searchAdv = NoSearch;
 
 	/// Are we generating this material for instant preview?
 	bool for_preview = false;

@@ -983,7 +983,7 @@ int InsetBibtex::plaintext(odocstringstream & os,
 	// We could output more information here, e.g., what databases are included
 	// and information about options. But I don't necessarily see any reason to
 	// do this right now.
-	if (op.for_tooltip || op.for_toc || op.for_search) {
+	if (op.for_tooltip || op.for_toc || op.for_searchAdv != OutputParams::NoSearch) {
 		os << '[' << reflabel << ']' << '\n';
 		return PLAINTEXT_NEWLINE;
 	}

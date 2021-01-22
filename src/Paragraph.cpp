@@ -1129,10 +1129,10 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 {
 	char_type const c = owner_->getUChar(bparams, runparams, i);
 
-	if (style.pass_thru || runparams.pass_thru || runparams.for_search
+	if (style.pass_thru || runparams.pass_thru || (runparams.for_searchAdv != OutputParams::NoSearch)
 	    || contains(style.pass_thru_chars, c)
 	    || contains(runparams.pass_thru_chars, c)) {
-		if (runparams.for_search) {
+		if (runparams.for_searchAdv != OutputParams::NoSearch) {
 			if (c == '\\')
 				os << "\\\\";
 			else if (c == '{')
@@ -2517,6 +2517,11 @@ void Paragraph::latex(BufferParams const & bparams,
 		char_type const c = d->text_[i];
 
 		// Check whether a display math inset follows
+		bool output_changes;
+		if (runparams.for_searchAdv == OutputParams::NoSearch)
+			output_changes = bparams.output_changes;
+		else
+			output_changes = (runparams.for_searchAdv == OutputParams::SearchWithDeleted);
 		if (c == META_INSET
 		    && i >= start_pos && (end_pos == -1 || i < end_pos)) {
 			if (isDeleted(i))
@@ -2532,7 +2537,7 @@ void Paragraph::latex(BufferParams const & bparams,
 				// cannot set it here because it is a counter.
 				deleted_display_math = isDeleted(i);
 			}
-			if (bparams.output_changes && deleted_display_math
+			if (output_changes && deleted_display_math
 			    && runningChange == change
 			    && change.type == Change::DELETED
 			    && !os.afterParbreak()) {
@@ -2555,7 +2560,7 @@ void Paragraph::latex(BufferParams const & bparams,
 			}
 		}
 
-		if (bparams.output_changes && runningChange != change) {
+		if (output_changes && runningChange != change) {
 			if (!alien_script.empty()) {
 				column += 1;
 				os << "}";
@@ -2578,7 +2583,7 @@ void Paragraph::latex(BufferParams const & bparams,
 
 		// do not output text which is marked deleted
 		// if change tracking output is disabled
-		if (!bparams.output_changes && change.deleted()) {
+		if (!output_changes && change.deleted()) {
 			continue;
 		}
 
@@ -2592,7 +2597,7 @@ void Paragraph::latex(BufferParams const & bparams,
 				      : current_font;
 
 		Font const last_font = running_font;
-		bool const in_ct_deletion = (bparams.output_changes
+		bool const in_ct_deletion = (output_changes
 					     && runningChange == change
 					     && change.type == Change::DELETED
 					     && !os.afterParbreak());

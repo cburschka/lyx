@@ -100,6 +100,10 @@ class IgnoreFormats {
 	///
 	bool getLanguage() const { return ignoreLanguage_; }
 	///
+	bool getDeleted() const { return ignoreDeleted_; }
+	///
+	void setIgnoreDeleted(bool value);
+	///
 	void setIgnoreFormat(string const & type, bool value);
 
 private:
@@ -123,6 +127,8 @@ private:
 	bool ignoreColor_ = false;
 	///
 	bool ignoreLanguage_ = false;
+	///
+	bool ignoreDeleted_ = false;
 };
 
 
@@ -160,6 +166,9 @@ void IgnoreFormats::setIgnoreFormat(string const & type, bool value)
 	}
 	else if (type == "strike") {
 		ignoreStrikeOut_ = value;
+	}
+	else if (type == "deleted") {
+		ignoreDeleted_ = value;
 	}
 }
 
@@ -897,7 +906,10 @@ static docstring buffer_to_latex(Buffer & buffer)
 	runparams.linelen = 10000; //lyxrc.plaintext_linelen;
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
-	runparams.for_search = true;
+	if (ignoreFormats.getDeleted())
+		runparams.for_searchAdv = OutputParams::SearchWithoutDeleted;
+	else
+		runparams.for_searchAdv = OutputParams::SearchWithDeleted;
 	pit_type const endpit = buffer.paragraphs().size();
 	for (pit_type pit = 0; pit != endpit; ++pit) {
 		TeXOnePar(buffer, buffer.text(), pit, os, runparams);
@@ -919,16 +931,23 @@ static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions co
 		runparams.flavor = Flavor::XeTeX;
 		runparams.linelen = 10000; //lyxrc.plaintext_linelen;
 		runparams.dryrun = true;
-		runparams.for_search = true;
+		int option = AS_STR_INSETS |AS_STR_PLAINTEXT;
+		if (ignoreFormats.getDeleted()) {
+			option |= AS_STR_SKIPDELETE;
+			runparams.for_searchAdv = OutputParams::SearchWithoutDeleted;
+		}
+		else {
+			runparams.for_searchAdv = OutputParams::SearchWithDeleted;
+		}
 		for (pos_type pit = pos_type(0); pit < (pos_type)buffer.paragraphs().size(); ++pit) {
 			Paragraph const & par = buffer.paragraphs().at(pit);
 			LYXERR(Debug::FIND, "Adding to search string: '"
 			       << par.asString(pos_type(0), par.size(),
-					       AS_STR_INSETS | AS_STR_SKIPDELETE | AS_STR_PLAINTEXT,
+					       option,
 					       &runparams)
 			       << "'");
 			str += par.asString(pos_type(0), par.size(),
-					    AS_STR_INSETS | AS_STR_SKIPDELETE | AS_STR_PLAINTEXT,
+					    option,
 					    &runparams);
 		}
 		// Even in ignore-format we have to remove "\text{}, \lyxmathsym{}" parts
@@ -3310,11 +3329,18 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 		runparams.linelen = 10000; //lyxrc.plaintext_linelen;
 		// No side effect of file copying and image conversion
 		runparams.dryrun = true;
-		runparams.for_search = true;
+		int option = AS_STR_INSETS | AS_STR_PLAINTEXT;
+		if (ignoreFormats.getDeleted()) {
+			option |= AS_STR_SKIPDELETE;
+			runparams.for_searchAdv = OutputParams::SearchWithoutDeleted;
+		}
+		else {
+			runparams.for_searchAdv = OutputParams::SearchWithDeleted;
+		}
 		LYXERR(Debug::FIND, "Stringifying with cur: "
 		       << cur << ", from pos: " << cur.pos() << ", end: " << end);
 		return par.asString(cur.pos(), end,
-			AS_STR_INSETS | AS_STR_SKIPDELETE | AS_STR_PLAINTEXT,
+			option,
 			&runparams);
 	} else if (cur.inMathed()) {
 		CursorSlice cs = cur.top();
@@ -3358,7 +3384,12 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 	runparams.linelen = 8000; //lyxrc.plaintext_linelen;
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
-	runparams.for_search = true;
+	if (ignoreFormats.getDeleted()) {
+		runparams.for_searchAdv = OutputParams::SearchWithoutDeleted;
+	}
+	else {
+		runparams.for_searchAdv = OutputParams::SearchWithDeleted;
+	}
 
 	if (cur.inTexted()) {
 		// @TODO what about searching beyond/across paragraph breaks ?
