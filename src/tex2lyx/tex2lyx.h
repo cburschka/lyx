@@ -66,7 +66,7 @@ std::string find_file(std::string const & name, std::string const & path,
  * Therefore this may only be used to parse text in insets or table cells.
  */
 void parse_text_in_inset(Parser & p, std::ostream & os, unsigned flags,
-                         bool outer, Context const & context,
+                         bool outer, Context & context,
                          InsetLayout const * layout = nullptr,
                          std::string const & rdelim = "");
 

@@ -176,6 +176,10 @@ public:
 	static TeXFont normalfont;
 	/// Table rotation angle
 	int tablerotation;
+	///
+	bool in_table_cell;
+	///
+	char cell_align;
 
 private:
 	void begin_layout(std::ostream & os, Layout const * const & l);

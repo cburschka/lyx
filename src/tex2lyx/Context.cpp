@@ -85,7 +85,7 @@ Context::Context(bool need_layout_,
 	  new_layout_allowed(true), merging_hyphens_allowed(true),
 	  textclass(textclass_),
 	  layout(layout_), parent_layout(parent_layout_),
-	  font(font_), tablerotation(0)
+	  font(font_), tablerotation(0), in_table_cell(false), cell_align('c')
 {
 	if (!layout)
 		layout = &textclass.defaultLayout();

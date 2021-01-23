@@ -54,7 +54,7 @@ void output_arguments(ostream &, Parser &, bool, bool, const string &, Context &
 
 
 void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,
-		Context const & context, InsetLayout const * layout,
+		Context & context, InsetLayout const * layout,
 		string const & rdelim)
 {
 	bool const forcePlainLayout =
@@ -66,6 +66,8 @@ void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,
 		newcontext.font = context.font;
 	// Inherit commands to pass through
 	newcontext.pass_thru_cmds = context.pass_thru_cmds;
+	// and table cell
+	newcontext.in_table_cell = context.in_table_cell;
 	if (layout)
 		output_arguments(os, p, outer, false, string(), newcontext,
 		                 layout->latexargs());
@@ -81,6 +83,7 @@ void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,
 		output_arguments(os, p, outer, false, "post", newcontext,
 		                 layout->postcommandargs());
 	newcontext.check_end_layout(os);
+	context.cell_align = newcontext.cell_align;
 }
 
 
@@ -95,7 +98,8 @@ void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,
 		context.textclass.insetLayouts().find(from_ascii(name));
 	if (it != context.textclass.insetLayouts().end())
 		layout = &(it->second);
-	parse_text_in_inset(p, os, flags, outer, context, layout, rdelim);
+	Context newcontext = context;
+	parse_text_in_inset(p, os, flags, outer, newcontext, layout, rdelim);
 }
 
 /// parses a paragraph snippet, useful for example for \\emph{...}
@@ -5525,28 +5529,36 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		// the code for the alignment was put here
 		// put them in their own if if this is fixed
 		if (t.cs() == "fboxrule" || t.cs() == "fboxsep"
-		    || t.cs() == "shadowsize"
-		    || t.cs() == "raggedleft" || t.cs() == "centering"
-		    || t.cs() == "raggedright") {
+		    || t.cs() == "shadowsize") {
 			if (t.cs() == "fboxrule")
 				fboxrule = "";
 			if (t.cs() == "fboxsep")
 				fboxsep = "";
 			if (t.cs() == "shadowsize")
 				shadow_size = "";
-			if (t.cs() != "raggedleft" && t.cs() != "centering"
-		         && t.cs() != "raggedright") {
+			p.skip_spaces(true);
+			while (p.good() && p.next_token().cat() != catSpace
+			       && p.next_token().cat() != catNewline
+			       && p.next_token().cat() != catEscape) {
+				if (t.cs() == "fboxrule")
+					fboxrule = fboxrule + p.get_token().asInput();
+				if (t.cs() == "fboxsep")
+					fboxsep = fboxsep + p.get_token().asInput();
+				if (t.cs() == "shadowsize")
+					shadow_size = shadow_size + p.get_token().asInput();
+			}
+			continue;
+		}
+
+		if (t.cs() == "raggedleft" || t.cs() == "centering" || t.cs() == "raggedright") {
+			if (context.in_table_cell) {
+				if (t.cs() == "raggedleft")
+					context.cell_align = 'r';
+				else if (t.cs() == "centering")
+					context.cell_align = 'c';
+				else if (t.cs() == "raggedright")
+					context.cell_align = 'l';
 				p.skip_spaces(true);
-				while (p.good() && p.next_token().cat() != catSpace
-				       && p.next_token().cat() != catNewline
-				       && p.next_token().cat() != catEscape) {
-					if (t.cs() == "fboxrule")
-						fboxrule = fboxrule + p.get_token().asInput();
-					if (t.cs() == "fboxsep")
-						fboxsep = fboxsep + p.get_token().asInput();
-					if (t.cs() == "shadowsize")
-						shadow_size = shadow_size + p.get_token().asInput();
-				}
 			} else {
 				output_ert_inset(os, t.asInput(), context);
 			}
