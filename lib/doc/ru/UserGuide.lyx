@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 601
+\lyxformat 604
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -131,12 +131,12 @@ logicalmkup
 \branch Вопрос
 \selected 1
 \filename_suffix 0
-\color #00ff00
+\color #00ff00 #ff00ff
 \end_branch
 \branch Ответ
 \selected 0
 \filename_suffix 0
-\color #aa55ff
+\color #aa55ff #55aa00
 \end_branch
 \index Index
 \shortcut idx
@@ -8066,6 +8066,7 @@ Return
 \end_layout
 
 \begin_layout Verbatim
+
 Это текст в окружении 
 \begin_inset Quotes rld
 \end_inset
@@ -8080,6 +8081,7 @@ Return
 \begin_layout Verbatim
 \noindent
 \align block
+
 Следующие две строки - пустые:
 \end_layout
 
@@ -8092,6 +8094,7 @@ Return
 \end_layout
 
 \begin_layout Verbatim
+
 В окружении 
 \begin_inset Quotes rld
 \end_inset
@@ -8127,6 +8130,7 @@ Return
 \end_layout
 
 \begin_layout Verbatim*
+
 Это текст в окружении 
 \begin_inset Quotes rld
 \end_inset
@@ -30574,9 +30578,20 @@ textbf{#1}}}
 \end_inset
 
 , то их необходимо экранировать, добавляя перед ними знак процента.
+ 
+\lang english
+To avoid that a single " affects the following characters one writes braces
+ behind it
+\lang spanish
+: 
+\family sans
+""{}
+\family default
+\lang russian
+
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
-symbol "%@, %|, %!, %\""
+symbol "%@, %|, %!, %\"{}"
 description "Знак кавычки в коде TeX выводится записью ' %\"{}%\"{} '."
 literal "true"
 
