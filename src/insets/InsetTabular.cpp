@@ -1321,24 +1321,7 @@ void toggleFixedWidth(Cursor & cur, InsetTableCell * inset,
 	if (!multirow)
 		return;
 
-	// merge all paragraphs to one
 	BufferParams const & bp = cur.bv().buffer().params();
-	while (inset->paragraphs().size() > 1)
-		mergeParagraph(bp, inset->paragraphs(), 0);
-
-	// This is relevant for multirows
-	if (fixedWidth)
-		return;
-
-	// remove newlines
-	ParagraphList::iterator pit = inset->paragraphs().begin();
-	for (; pit != inset->paragraphs().end(); ++pit) {
-		for (pos_type j = 0; j != pit->size(); ++j) {
-			if (pit->isNewline(j))
-				pit->eraseChar(j, bp.track_changes);
-		}
-	}
-
 	// reset layout
 	cur.push(*inset);
 	// undo information has already been recorded
@@ -3165,6 +3148,8 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 		} else if (!isPartOfMultiRow(row, c)) {
 			if (!runparams.nice)
 				os.texrow().start(par.id(), 0);
+			if (isMultiRow(cell))
+				newrp.isNonLong = true;
 			inset->latex(os, newrp);
 		}
 
@@ -5723,8 +5708,7 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 			// fall through
 		case Tabular::VALIGN_TOP:
 			status.setEnabled((!tabular.getPWidth(cur.idx()).zero()
-					   || tabular.getUsebox(cur.idx()) == Tabular::BOX_VARWIDTH)
-					  && !tabular.isMultiRow(cur.idx()));
+					   || tabular.getUsebox(cur.idx()) == Tabular::BOX_VARWIDTH));
 			status.setOnOff(
 				tabular.getVAlignment(cur.idx(), flag) == Tabular::LYX_VALIGN_TOP);
 			break;
@@ -5734,8 +5718,7 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 			// fall through
 		case Tabular::VALIGN_BOTTOM:
 			status.setEnabled((!tabular.getPWidth(cur.idx()).zero()
-					   || tabular.getUsebox(cur.idx()) == Tabular::BOX_VARWIDTH)
-					  && !tabular.isMultiRow(cur.idx()));
+					   || tabular.getUsebox(cur.idx()) == Tabular::BOX_VARWIDTH));
 			status.setOnOff(
 				tabular.getVAlignment(cur.idx(), flag) == Tabular::LYX_VALIGN_BOTTOM);
 			break;
@@ -5745,8 +5728,7 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 			// fall through
 		case Tabular::VALIGN_MIDDLE:
 			status.setEnabled((!tabular.getPWidth(cur.idx()).zero()
-					   || tabular.getUsebox(cur.idx()) == Tabular::BOX_VARWIDTH)
-					  && !tabular.isMultiRow(cur.idx()));
+					   || tabular.getUsebox(cur.idx()) == Tabular::BOX_VARWIDTH));
 			status.setOnOff(
 				tabular.getVAlignment(cur.idx(), flag) == Tabular::LYX_VALIGN_MIDDLE);
 			break;
@@ -6047,20 +6029,8 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return cell(cur.idx())->getStatus(cur, cmd, status);
 	}
 
-	// disable in non-fixed-width cells
 	case LFUN_PARAGRAPH_BREAK:
-		// multirow does not allow paragraph breaks
-		if (tabular.isMultiRow(cur.idx())) {
-			status.setEnabled(false);
-			return true;
-		}
-		// fall through
 	case LFUN_NEWLINE_INSERT:
-		if (tabular.isMultiRow(cur.idx())
-		    && tabular.getPWidth(cur.idx()).zero()) {
-			status.setEnabled(false);
-			return true;
-		}
 		return cell(cur.idx())->getStatus(cur, cmd, status);
 
 	case LFUN_NEWPAGE_INSERT:

@@ -59,7 +59,7 @@ enum {
 	FLAG_END        = 1 << 3,  //  next \\end ends the parsing process
 	FLAG_BRACK_LAST = 1 << 4,  //  next closing bracket ends the parsing
 	FLAG_TEXTMODE   = 1 << 5,  //  we are in a box
-	FLAG_ITEM       = 1 << 6,  //  read a (possibly braced token)
+	FLAG_ITEM       = 1 << 6,  //  read a (possibly braced) token
 	FLAG_LEAVE      = 1 << 7,  //  leave the loop at the end
 	FLAG_SIMPLE     = 1 << 8,  //  next $ leaves the loop
 	FLAG_EQUATION   = 1 << 9,  //  next \] leaves the loop

@@ -245,6 +245,11 @@ public:
 	 */
 	mutable docstring post_macro;
 
+	/** Whether we in a command that is not \\long (i.e. cannot have multiple
+	 *  paragraphs)
+	 */
+	mutable bool isNonLong = false;
+
 	/** Whether we are entering a display math inset.
 	 *  Needed to correctly strike out deleted math in change tracking.
 	 */

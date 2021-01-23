@@ -934,6 +934,67 @@ void handle_hline_below(RowInfo & ri, vector<CellInfo> & ci)
 }
 
 
+void parse_cell_content(ostringstream & os2, Parser & parse, Context & newcontext,
+			vector< vector<CellInfo> > cellinfo, vector<ColInfo> colinfo,
+			size_t const row, size_t const col)
+{
+	bool turn = false;
+	int rotate = 0;
+	bool varwidth = false;
+	if (parse.next_token().cs() == "begin") {
+		parse.pushPosition();
+		parse.get_token();
+		string const env = parse.getArg('{', '}');
+		if (env == "sideways" || env == "turn") {
+			string angle = "90";
+			if (env == "turn") {
+				turn = true;
+				angle = parse.getArg('{', '}');
+			}
+			active_environments.push_back(env);
+			parse.ertEnvironment(env);
+			active_environments.pop_back();
+			parse.skip_spaces();
+			if (!parse.good() && support::isStrInt(angle))
+				rotate = convert<int>(angle);
+		} else if (env == "cellvarwidth") {
+			active_environments.push_back(env);
+			parse.ertEnvironment(env);
+			active_environments.pop_back();
+			parse.skip_spaces();
+			varwidth = true;
+		}
+		parse.popPosition();
+	}
+	if (rotate != 0) {
+		cellinfo[row][col].rotate = rotate;
+		parse.get_token();
+		active_environments.push_back(parse.getArg('{', '}'));
+		if (turn)
+			parse.getArg('{', '}');
+		parse_text_in_inset(parse, os2, FLAG_END, false, newcontext);
+		active_environments.pop_back();
+		preamble.registerAutomaticallyLoadedPackage("rotating");
+	} else if (varwidth) {
+		parse.get_token();
+		active_environments.push_back(parse.getArg('{', '}'));
+		// valign arg
+		if (parse.hasOpt())
+			cellinfo[row][col].valign = parse.getArg('[', ']')[1];
+		newcontext.in_table_cell = true;
+		parse_text_in_inset(parse, os2, FLAG_END, false, newcontext);
+		if (cellinfo[row][col].multi == CELL_NORMAL)
+			colinfo[col].align = newcontext.cell_align;
+		else
+			cellinfo[row][col].align = newcontext.cell_align;
+		active_environments.pop_back();
+		preamble.registerAutomaticallyLoadedPackage("varwidth");
+	} else {
+		parse_text_in_inset(parse, os2, FLAG_CELL, false, newcontext);
+	}
+}
+
+
 } // anonymous namespace
 
 
@@ -1284,7 +1345,11 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 				cellinfo[row][col].mrxnum = ncells - 1;
 
 				ostringstream os2;
-				parse_text_in_inset(parse, os2, FLAG_ITEM, false, newcontext);
+				parse.get_token();// skip {
+				parse_cell_content(os2, parse, newcontext,
+							cellinfo, colinfo,
+							row, col);
+				parse.get_token();// skip }
 				if (!cellinfo[row][col].content.empty()) {
 					// This may or may not work in LaTeX,
 					// but it does not work in LyX.
@@ -1321,7 +1386,11 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 				cellinfo[row][col].leftlines  = ci.leftlines;
 				cellinfo[row][col].rightlines = ci.rightlines;
 				ostringstream os2;
-				parse_text_in_inset(parse, os2, FLAG_ITEM, false, newcontext);
+				parse.get_token();// skip {
+				parse_cell_content(os2, parse, newcontext,
+							cellinfo, colinfo,
+							row, col);
+				parse.get_token();// skip }
 				if (!cellinfo[row][col].content.empty()) {
 					// This may or may not work in LaTeX,
 					// but it does not work in LyX.
@@ -1416,64 +1485,13 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 				for (size_t c = 1; c < colinfo.size(); ++c)
 					cellinfo[row][c].multi = CELL_PART_OF_MULTICOLUMN;
 			} else {
-				bool turn = false;
-				int rotate = 0;
-				bool varwidth = false;
-				if (parse.next_token().cs() == "begin") {
-					parse.pushPosition();
-					parse.get_token();
-					string const env = parse.getArg('{', '}');
-					if (env == "sideways" || env == "turn") {
-						string angle = "90";
-						if (env == "turn") {
-							turn = true;
-							angle = parse.getArg('{', '}');
-						}
-						active_environments.push_back(env);
-						parse.ertEnvironment(env);
-						active_environments.pop_back();
-						parse.skip_spaces();
-						if (!parse.good() && support::isStrInt(angle))
-							rotate = convert<int>(angle);
-					} else if (env == "cellvarwidth") {
-						active_environments.push_back(env);
-						parse.ertEnvironment(env);
-						active_environments.pop_back();
-						parse.skip_spaces();
-						varwidth = true;
-					}
-					parse.popPosition();
-				}
+				ostringstream os2;
+				parse_cell_content(os2, parse, newcontext,
+							cellinfo, colinfo,
+							row, col);
 				cellinfo[row][col].leftlines  = colinfo[col].leftlines;
 				cellinfo[row][col].rightlines = colinfo[col].rightlines;
 				cellinfo[row][col].align      = colinfo[col].align;
-				ostringstream os2;
-				if (rotate != 0) {
-					cellinfo[row][col].rotate = rotate;
-					parse.get_token();
-					active_environments.push_back(parse.getArg('{', '}'));
-					if (turn)
-						parse.getArg('{', '}');
-					parse_text_in_inset(parse, os2, FLAG_END, false, newcontext);
-					active_environments.pop_back();
-					preamble.registerAutomaticallyLoadedPackage("rotating");
-				} else if (varwidth) {
-					parse.get_token();
-					active_environments.push_back(parse.getArg('{', '}'));
-					// valign arg
-					if (parse.hasOpt())
-						cellinfo[row][col].valign = parse.getArg('[', ']')[1];
-					newcontext.in_table_cell = true;
-					parse_text_in_inset(parse, os2, FLAG_END, false, newcontext);
-					if (cellinfo[row][col].multi == CELL_NORMAL)
-						colinfo[col].align = newcontext.cell_align;
-					else
-						cellinfo[row][col].align = newcontext.cell_align;
-					active_environments.pop_back();
-					preamble.registerAutomaticallyLoadedPackage("varwidth");
-				} else {
-					parse_text_in_inset(parse, os2, FLAG_CELL, false, newcontext);
-				}
 				cellinfo[row][col].content += os2.str();
 			}
 		}

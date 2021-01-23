@@ -1455,12 +1455,17 @@ void TeXOnePar(Buffer const & buf,
 	// Note from JMarc: we will re-add a \n explicitly in
 	// TeXEnvironment, because it is needed in this case
 	if (nextpar && !os.afterParbreak() && !last_was_separator) {
-		Layout const & next_layout = nextpar->layout();
-		if (!text.inset().getLayout().parbreakIgnored() && !merged_par)
+		if (runparams.isNonLong)
+			// This is to allow parbreak in multirow
+			// It could also be used for other non-long
+			// contexts
+			os << "\\endgraf";
+		else if (!text.inset().getLayout().parbreakIgnored() && !merged_par)
 			// Make sure to start a new line
 			os << breakln;
 		// A newline '\n' is always output before a command,
 		// so avoid doubling it.
+		Layout const & next_layout = nextpar->layout();
 		if (!next_layout.isCommand()) {
 			// Here we now try to avoid spurious empty lines by
 			// outputting a paragraph break only if: (case 1) the

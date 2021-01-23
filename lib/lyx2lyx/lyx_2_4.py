@@ -4154,11 +4154,11 @@ def revert_vcolumns2(document):
                     endcell = find_token(document.body, "</cell>", begcell)
                     vcand = False
                     if find_token(document.body, "\\begin_inset Newline", begcell, endcell) != -1:
-                        vcand = not fixedwidth and not multirow
+                        vcand = not fixedwidth
                     elif count_pars_in_inset(document.body, begcell + 2) > 1:
-                        vcand = not fixedwidth and not multirow
+                        vcand = not fixedwidth
                     elif get_value(document.body, "\\begin_layout", begcell) != "Plain Layout":
-                        vcand = not fixedwidth and not multirow
+                        vcand = not fixedwidth
                     colalignment = col_info[col][2]
                     colvalignment = col_info[col][3]
                     if vcand:
@@ -4174,13 +4174,12 @@ def revert_vcolumns2(document):
                                     document.body[col_line] = document.body[col_line][:-1] + " special=\"" + vval + "\">"
                         else:
                             alarg = ""
-                            if multicolumn:
+                            if multicolumn or multirow:
                                 if cellvalign == "middle":
                                     alarg = "[m]"
                                 elif cellvalign == "bottom":
                                     alarg = "[b]"
                             else:
-                                document.warning("col: %i, alignment: %s" % (col, colvalignment))
                                 if colvalignment == "middle":
                                     alarg = "[m]"
                                 elif colvalignment == "bottom":
@@ -4209,6 +4208,20 @@ def revert_vcolumns2(document):
                                 document.body[nl:nl+1] = put_cmd_in_ert("\\linebreak{}")
                             else:
                                 document.body[nl:nl+1] = put_cmd_in_ert("\\\\")
+                        # Replace parbreaks in multirow with \\endgraf
+                        if multirow == True:
+                            flt = find_token(document.body, "\\begin_layout", begcell, endcell)
+                            if flt != -1:
+                                while True:
+                                    elt = find_end_of_layout(document.body, flt)
+                                    if elt == -1:
+                                        document.warning("Malformed LyX document! Missing layout end.")
+                                        break
+                                    endcell = find_token(document.body, "</cell>", begcell)
+                                    flt = find_token(document.body, "\\begin_layout", elt, endcell)
+                                    if flt == -1:
+                                        break
+                                    document.body[elt : flt + 1] = put_cmd_in_ert("\\endgraf{}")
                     m += 1
 
             i = j

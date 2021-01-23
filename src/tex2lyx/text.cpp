@@ -5105,6 +5105,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			continue;
 		}
 
+		if (t.cs() == "endgraf" && context.in_table_cell) {
+			context.new_paragraph(os);
+			context.check_layout(os);
+			skip_spaces_braces(p);
+			continue;
+		}
+
 		if (t.cs() == "input" || t.cs() == "include"
 		    || t.cs() == "verbatiminput"
 		    || t.cs() == "lstinputlisting"
