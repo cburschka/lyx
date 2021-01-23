@@ -934,8 +934,8 @@ void handle_hline_below(RowInfo & ri, vector<CellInfo> & ci)
 }
 
 
-void parse_cell_content(ostringstream & os2, Parser & parse, Context & newcontext,
-			vector< vector<CellInfo> > cellinfo, vector<ColInfo> colinfo,
+void parse_cell_content(ostringstream & os2, Parser & parse, unsigned int flags, Context & newcontext,
+			vector< vector<CellInfo> > & cellinfo, vector<ColInfo> & colinfo,
 			size_t const row, size_t const col)
 {
 	bool turn = false;
@@ -990,7 +990,7 @@ void parse_cell_content(ostringstream & os2, Parser & parse, Context & newcontex
 		active_environments.pop_back();
 		preamble.registerAutomaticallyLoadedPackage("varwidth");
 	} else {
-		parse_text_in_inset(parse, os2, FLAG_CELL, false, newcontext);
+		parse_text_in_inset(parse, os2, flags, false, newcontext);
 	}
 }
 
@@ -1346,7 +1346,7 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 
 				ostringstream os2;
 				parse.get_token();// skip {
-				parse_cell_content(os2, parse, newcontext,
+				parse_cell_content(os2, parse, FLAG_BRACE_LAST, newcontext,
 							cellinfo, colinfo,
 							row, col);
 				parse.get_token();// skip }
@@ -1387,7 +1387,7 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 				cellinfo[row][col].rightlines = ci.rightlines;
 				ostringstream os2;
 				parse.get_token();// skip {
-				parse_cell_content(os2, parse, newcontext,
+				parse_cell_content(os2, parse, FLAG_BRACE_LAST, newcontext,
 							cellinfo, colinfo,
 							row, col);
 				parse.get_token();// skip }
@@ -1486,7 +1486,7 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 					cellinfo[row][c].multi = CELL_PART_OF_MULTICOLUMN;
 			} else {
 				ostringstream os2;
-				parse_cell_content(os2, parse, newcontext,
+				parse_cell_content(os2, parse, FLAG_CELL, newcontext,
 							cellinfo, colinfo,
 							row, col);
 				cellinfo[row][col].leftlines  = colinfo[col].leftlines;
