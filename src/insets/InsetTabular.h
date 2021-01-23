@@ -68,6 +68,8 @@ public:
 	///
 	void toggleFixedWidth(bool fw) { isFixedWidth = fw; }
 	///
+	void toggleVarWidth(bool vw) { isVarwidth = vw; }
+	///
 	void toggleMultiCol(bool m) { isMultiColumn = m; }
 	///
 	void toggleMultiRow(bool m) { isMultiRow = m; }
@@ -122,6 +124,8 @@ private:
 	// --rkh
 	///
 	bool isFixedWidth;
+	///
+	bool isVarwidth;
 	///
 	bool isMultiColumn;
 	///

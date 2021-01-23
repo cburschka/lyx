@@ -1385,6 +1385,7 @@ bool Tabular::setMColumnPWidth(Cursor & cur, idx_type cell,
 bool Tabular::toggleVarwidth(idx_type cell, bool const varwidth)
 {
 	column_info[cellColumn(cell)].varwidth = varwidth;
+	cellInset(cell).get()->toggleVarWidth(varwidth);
 	return true;
 }
 
@@ -4194,7 +4195,7 @@ Tabular::BoxType Tabular::useBox(idx_type cell) const
 /////////////////////////////////////////////////////////////////////
 
 InsetTableCell::InsetTableCell(Buffer * buf)
-	: InsetText(buf, InsetText::PlainLayout), isFixedWidth(false),
+	: InsetText(buf, InsetText::PlainLayout), isFixedWidth(false), isVarwidth(false),
 	  isMultiColumn(false), isMultiRow(false), contentAlign(LYX_ALIGN_CENTER)
 {}
 
@@ -4288,7 +4289,7 @@ void InsetTableCell::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	// We tell metrics here not to expand on multiple pars
 	// This is the difference to InsetText::Metrics
-	if (hasFixedWidth())
+	if (hasFixedWidth() || isVarwidth)
 		tm.metrics(mi, dim, mi.base.textwidth, false);
 	else
 		tm.metrics(mi, dim, 0, false);
