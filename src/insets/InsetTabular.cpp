@@ -5722,8 +5722,9 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 			flag = false;
 			// fall through
 		case Tabular::VALIGN_TOP:
-			status.setEnabled(!tabular.getPWidth(cur.idx()).zero()
-				&& !tabular.isMultiRow(cur.idx()));
+			status.setEnabled((!tabular.getPWidth(cur.idx()).zero()
+					   || tabular.getUsebox(cur.idx()) == Tabular::BOX_VARWIDTH)
+					  && !tabular.isMultiRow(cur.idx()));
 			status.setOnOff(
 				tabular.getVAlignment(cur.idx(), flag) == Tabular::LYX_VALIGN_TOP);
 			break;
@@ -5732,7 +5733,9 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 			flag = false;
 			// fall through
 		case Tabular::VALIGN_BOTTOM:
-			status.setEnabled(!tabular.isMultiRow(cur.idx()));
+			status.setEnabled((!tabular.getPWidth(cur.idx()).zero()
+					   || tabular.getUsebox(cur.idx()) == Tabular::BOX_VARWIDTH)
+					  && !tabular.isMultiRow(cur.idx()));
 			status.setOnOff(
 				tabular.getVAlignment(cur.idx(), flag) == Tabular::LYX_VALIGN_BOTTOM);
 			break;
@@ -5741,7 +5744,9 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 			flag = false;
 			// fall through
 		case Tabular::VALIGN_MIDDLE:
-			status.setEnabled(!tabular.isMultiRow(cur.idx()));
+			status.setEnabled((!tabular.getPWidth(cur.idx()).zero()
+					   || tabular.getUsebox(cur.idx()) == Tabular::BOX_VARWIDTH)
+					  && !tabular.isMultiRow(cur.idx()));
 			status.setOnOff(
 				tabular.getVAlignment(cur.idx(), flag) == Tabular::LYX_VALIGN_MIDDLE);
 			break;
