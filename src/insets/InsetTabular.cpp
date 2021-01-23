@@ -4198,12 +4198,6 @@ InsetTableCell::InsetTableCell(Buffer * buf)
 	  isMultiColumn(false), isMultiRow(false), contentAlign(LYX_ALIGN_CENTER)
 {}
 
-bool InsetTableCell::forcePlainLayout(idx_type) const
-{
-	return isMultiRow;
-}
-
-
 bool InsetTableCell::allowParagraphCustomization(idx_type) const
 {
 	return isFixedWidth;
@@ -7395,12 +7389,6 @@ void InsetTabular::rejectChanges()
 bool InsetTabular::allowParagraphCustomization(idx_type cell) const
 {
 	return tabular.getPWidth(cell).zero();
-}
-
-
-bool InsetTabular::forcePlainLayout(idx_type cell) const
-{
-	return tabular.isMultiRow(cell);
 }
 
 

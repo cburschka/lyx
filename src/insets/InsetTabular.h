@@ -136,8 +136,6 @@ private:
 	///
 	bool usePlainLayout() const override { return true; }
 	///
-	bool forcePlainLayout(idx_type = 0) const override;
-	///
 	bool allowParagraphCustomization(idx_type = 0) const override;
 	///
 	bool forceLocalFontSwitch() const override;
@@ -1033,8 +1031,6 @@ public:
 	// "normal" means without width set!
 	/// should all paragraphs be output with "Standard" layout?
 	bool allowParagraphCustomization(idx_type cell = 0) const override;
-	///
-	bool forcePlainLayout(idx_type cell = 0) const override;
 	///
 	void addPreview(DocIterator const & inset_pos,
 		graphics::PreviewLoader &) const override;
