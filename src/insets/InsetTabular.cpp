@@ -4497,9 +4497,10 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			tabular.cell_info[r][c].decimal_hoffset = tm.width() - decimal_width;
 			tabular.cell_info[r][c].decimal_width = decimal_width;
 
-			// with LYX_VALIGN_BOTTOM the descent is relative to the last par
-			// = descent of text in last par + bottomOffset:
-			int const lastpardes = tm.last().second->descent()
+			// with LYX_VALIGN_BOTTOM the descent is relative to the last
+			// row of the last par (note that the par might have multile rows!)
+			// = descent of text in last row + bottomOffset:
+			int const lastpardes = tm.last().second->rows().back().descent()
 				+ bottomOffset(mi.base.bv);
 			int offset = 0;
 			switch (tabular.getVAlignment(cell)) {
