@@ -1751,7 +1751,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		//   current_view_ is not null.
 		validateCurrentView();
 		// FIXME: create a new method shared with LFUN_HELP_OPEN.
-		string const fname = to_utf8(cmd.argument());
+		string const fname = trim(to_utf8(cmd.argument()), "\"");
 		bool const is_open = FileName::isAbsolute(fname)
 			&& theBufferList().getBuffer(FileName(fname));
 		if (!current_view_
