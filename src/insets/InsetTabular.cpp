@@ -871,49 +871,92 @@ void Tabular::insertRow(row_type const row, bool copy)
 }
 
 
-void Tabular::moveColumn(col_type col, ColDirection direction)
+void Tabular::moveColumn(col_type col_start, col_type col_end,
+			 ColDirection direction)
 {
-	if (direction == Tabular::LEFT)
-		col = col - 1;
-
-	std::swap(column_info[col], column_info[col + 1]);
-
-	for (row_type r = 0; r < nrows(); ++r) {
-		std::swap(cell_info[r][col], cell_info[r][col + 1]);
-		std::swap(cell_info[r][col].left_line, cell_info[r][col + 1].left_line);
-		std::swap(cell_info[r][col].right_line, cell_info[r][col + 1].right_line);
-
-		idx_type const i = cellIndex(r, col);
-		idx_type const j = cellIndex(r, col + 1);
-		if (buffer().params().track_changes) {
-			cellInfo(i).inset->setChange(Change(Change::INSERTED));
-			cellInfo(j).inset->setChange(Change(Change::INSERTED));
+	if (direction == Tabular::LEFT) {
+		for (col_type col = col_start; col <= col_end; ++col) {
+			std::swap(column_info[col - 1], column_info[col]);
+			for (row_type r = 0; r < nrows(); ++r) {
+				std::swap(cell_info[r][col - 1], cell_info[r][col]);
+				std::swap(cell_info[r][col - 1].left_line, cell_info[r][col].left_line);
+				std::swap(cell_info[r][col - 1].right_line, cell_info[r][col].right_line);
+		
+				if (buffer().params().track_changes) {
+					idx_type const i = cellIndex(r, col - 1);
+					idx_type const j = cellIndex(r, col);
+					cellInfo(i).inset->setChange(Change(Change::INSERTED));
+					cellInfo(j).inset->setChange(Change(Change::INSERTED));
+				}
+			}
+			updateIndexes();
+			if (col == ncols())
+				break;
+		}
+	} else {
+		for (col_type col = col_end; col >= col_start; --col) {
+			std::swap(column_info[col], column_info[col + 1]);
+			for (row_type r = 0; r < nrows(); ++r) {
+				std::swap(cell_info[r][col], cell_info[r][col + 1]);
+				std::swap(cell_info[r][col].left_line, cell_info[r][col + 1].left_line);
+				std::swap(cell_info[r][col].right_line, cell_info[r][col + 1].right_line);
+		
+				if (buffer().params().track_changes) {
+					idx_type const i = cellIndex(r, col);
+					idx_type const j = cellIndex(r, col + 1);
+					cellInfo(i).inset->setChange(Change(Change::INSERTED));
+					cellInfo(j).inset->setChange(Change(Change::INSERTED));
+				}
+			}
+			updateIndexes();
+			if (col == 0)
+				break;
 		}
 	}
-	updateIndexes();
 }
 
 
-void Tabular::moveRow(row_type row, RowDirection direction)
+void Tabular::moveRow(row_type row_start, row_type row_end, RowDirection direction)
 {
-	if (direction == Tabular::UP)
-		row = row - 1;
+	if (direction == Tabular::UP) {
+		for (row_type row = row_start; row <= row_end; ++row) {
+			std::swap(row_info[row - 1], row_info[row]);
+			for (col_type c = 0; c < ncols(); ++c) {
+				std::swap(cell_info[row - 1][c], cell_info[row][c]);
+				std::swap(cell_info[row - 1][c].top_line, cell_info[row][c].top_line);
+				std::swap(cell_info[row - 1][c].bottom_line, cell_info[row][c].bottom_line);
+		
+				idx_type const i = cellIndex(row - 1, c);
+				idx_type const j = cellIndex(row, c);
+				if (buffer().params().track_changes) {
+					cellInfo(i).inset->setChange(Change(Change::INSERTED));
+					cellInfo(j).inset->setChange(Change(Change::INSERTED));
+				}
+			}
+			updateIndexes();
+			if (row == nrows())
+				break;
+		}
+	} else {
+		for (row_type row = row_end; row >= row_start; --row) {
+			std::swap(row_info[row], row_info[row + 1]);
+			for (col_type c = 0; c < ncols(); ++c) {
+				std::swap(cell_info[row][c], cell_info[row + 1][c]);
+				std::swap(cell_info[row][c].top_line, cell_info[row + 1][c].top_line);
+				std::swap(cell_info[row][c].bottom_line, cell_info[row + 1][c].bottom_line);
 
-	std::swap(row_info[row], row_info[row + 1]);
-
-	for (col_type c = 0; c < ncols(); ++c) {
-		std::swap(cell_info[row][c], cell_info[row + 1][c]);
-		std::swap(cell_info[row][c].top_line, cell_info[row + 1][c].top_line);
-		std::swap(cell_info[row][c].bottom_line, cell_info[row + 1][c].bottom_line);
-
-		idx_type const i = cellIndex(row, c);
-		idx_type const j = cellIndex(row + 1, c);
-		if (buffer().params().track_changes) {
-			cellInfo(i).inset->setChange(Change(Change::INSERTED));
-			cellInfo(j).inset->setChange(Change(Change::INSERTED));
+				idx_type const i = cellIndex(row, c);
+				idx_type const j = cellIndex(row + 1, c);
+				if (buffer().params().track_changes) {
+					cellInfo(i).inset->setChange(Change(Change::INSERTED));
+					cellInfo(j).inset->setChange(Change(Change::INSERTED));
+				}
+			}
+			updateIndexes();
+			if (row == 0)
+				break;
 		}
 	}
-	updateIndexes();
 }
 
 
@@ -5507,31 +5550,39 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 		case Tabular::MOVE_COLUMN_LEFT:
 		case Tabular::MOVE_ROW_DOWN:
 		case Tabular::MOVE_ROW_UP: {
-			if (cur.selection()) {
-				status.message(_("Selections not supported."));
-				status.setEnabled(false);
-				break;
+			row_type rs, re;
+			col_type cs, ce;
+			if (cur.selIsMultiCell())
+				getSelection(cur, rs, re, cs, ce);
+			else {
+				rs = tabular.cellRow(cur.idx());
+				re = rs;
+				cs = tabular.cellColumn(cur.idx());
+				ce = cs;
 			}
-
-			if ((action == Tabular::MOVE_COLUMN_RIGHT &&
-				tabular.ncols() == tabular.cellColumn(cur.idx()) + 1) ||
-			    (action == Tabular::MOVE_COLUMN_LEFT &&
-				tabular.cellColumn(cur.idx()) == 0) ||
-			    (action == Tabular::MOVE_ROW_DOWN &&
-				tabular.nrows() == tabular.cellRow(cur.idx()) + 1) ||
-			    (action == Tabular::MOVE_ROW_UP &&
-				tabular.cellRow(cur.idx()) == 0)) {
+			if ((action == Tabular::MOVE_COLUMN_RIGHT
+			     && tabular.ncols() == ce + 1)
+			    || (action == Tabular::MOVE_COLUMN_LEFT && cs == 0)
+			    || (action == Tabular::MOVE_ROW_DOWN
+				&& tabular.nrows() == re + 1)
+			    || (action == Tabular::MOVE_ROW_UP && rs == 0)) {
 					status.setEnabled(false);
 					break;
 			}
 
 			if (action == Tabular::MOVE_COLUMN_RIGHT ||
 			    action == Tabular::MOVE_COLUMN_LEFT) {
-				if (tabular.hasMultiColumn(tabular.cellColumn(cur.idx())) ||
-				    tabular.hasMultiColumn(tabular.cellColumn(cur.idx()) +
-					(action == Tabular::MOVE_COLUMN_RIGHT ? 1 : -1))) {
-					status.message(_("Multi-column in current or"
-							 " destination column."));
+				bool has_multicol = (action == Tabular::MOVE_COLUMN_RIGHT)
+						? tabular.hasMultiRow(ce + 1)
+						: tabular.hasMultiRow(cs - 1);
+				for (col_type c = cs; c <= ce; ++c) {
+					if (tabular.hasMultiColumn(c)) {
+						has_multicol = true;
+						break;
+					}
+				}
+				if (has_multicol) {
+					status.message(_("Multi-column in selected or destination columns."));
 					status.setEnabled(false);
 					break;
 				}
@@ -5539,11 +5590,17 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 
 			if (action == Tabular::MOVE_ROW_DOWN ||
 			    action == Tabular::MOVE_ROW_UP) {
-				if (tabular.hasMultiRow(tabular.cellRow(cur.idx())) ||
-				    tabular.hasMultiRow(tabular.cellRow(cur.idx()) +
-					(action == Tabular::MOVE_ROW_DOWN ? 1 : -1))) {
-					status.message(_("Multi-row in current or"
-							 " destination row."));
+				bool has_multirow = (action == Tabular::MOVE_ROW_DOWN)
+						? tabular.hasMultiRow(re + 1)
+						: tabular.hasMultiRow(rs - 1);
+				for (row_type r = rs; r <= re; ++r) {
+					if (tabular.hasMultiRow(r)) {
+						has_multirow = true;
+						break;
+					}
+				}
+				if (has_multirow) {
+					status.message(_("Multi-row in selected or destination rows."));
 					status.setEnabled(false);
 					break;
 				}
@@ -6590,23 +6647,51 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		break;
 
 	case Tabular::MOVE_COLUMN_RIGHT:
-		tabular.moveColumn(column, Tabular::RIGHT);
-		cur.idx() = tabular.cellIndex(row, column + 1);
+		tabular.moveColumn(sel_col_start, sel_col_end, Tabular::RIGHT);
+		if (cur.selection()) {
+			cur.selection(false);
+			cur.idx() = tabular.cellIndex(sel_row_start, sel_col_start + 1);
+			cur.resetAnchor();
+			cur.idx() = tabular.cellIndex(sel_row_end, sel_col_end + 1);
+			cur.setSelection();
+		} else
+			cur.idx() = tabular.cellIndex(row, column + 1);
 		break;
 
 	case Tabular::MOVE_COLUMN_LEFT:
-		tabular.moveColumn(column, Tabular::LEFT);
-		cur.idx() = tabular.cellIndex(row, column - 1);
+		tabular.moveColumn(sel_col_start, sel_col_end, Tabular::LEFT);
+		if (cur.selection()) {
+			cur.selection(false);
+			cur.idx() = tabular.cellIndex(sel_row_start, sel_col_start - 1);
+			cur.resetAnchor();
+			cur.idx() = tabular.cellIndex(sel_row_end, sel_col_end - 1);
+			cur.setSelection();
+		} else
+			cur.idx() = tabular.cellIndex(row, column - 1);
 		break;
 
 	case Tabular::MOVE_ROW_DOWN:
-		tabular.moveRow(row, Tabular::DOWN);
-		cur.idx() = tabular.cellIndex(row + 1, column);
+		tabular.moveRow(sel_row_start, sel_row_end, Tabular::DOWN);
+		if (cur.selection()) {
+			cur.selection(false);
+			cur.idx() = tabular.cellIndex(sel_row_start + 1, sel_col_start);
+			cur.resetAnchor();
+			cur.idx() = tabular.cellIndex(sel_row_end + 1, sel_col_end);
+			cur.setSelection();
+		} else
+			cur.idx() = tabular.cellIndex(row + 1, column);
 		break;
 
 	case Tabular::MOVE_ROW_UP:
-		tabular.moveRow(row, Tabular::UP);
-		cur.idx() = tabular.cellIndex(row - 1, column);
+		tabular.moveRow(sel_row_start, sel_row_end, Tabular::UP);
+		if (cur.selection()) {
+			cur.selection(false);
+			cur.idx() = tabular.cellIndex(sel_row_start - 1, sel_col_start);
+			cur.resetAnchor();
+			cur.idx() = tabular.cellIndex(sel_row_end - 1, sel_col_end);
+			cur.setSelection();
+		} else
+			cur.idx() = tabular.cellIndex(row - 1, column);
 		break;
 
 	case Tabular::SET_LINE_TOP:

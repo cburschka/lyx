@@ -550,9 +550,11 @@ public:
 	///
 	void insertRow(row_type row, bool copy);
 	///
-	void moveColumn(col_type col, ColDirection direction);
+	void moveColumn(col_type col_start, col_type col_end,
+			ColDirection direction);
 	///
-	void moveRow(row_type row, RowDirection direction);
+	void moveRow(row_type row_start, row_type row_end,
+		     RowDirection direction);
 	///
 	void appendColumn(col_type column);
 	///
