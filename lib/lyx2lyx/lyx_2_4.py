@@ -4187,7 +4187,42 @@ def revert_vcolumns2(document):
                             flt = find_token(document.body, "\\begin_layout", begcell, endcell)
                             elt = find_token_backwards(document.body, "\\end_layout", endcell)
                             if flt != -1 and elt != -1:
-                                document.body[elt:elt+1] = put_cmd_in_ert("\\end{cellvarwidth}")
+                                extralines = []
+                                # we need to reset character layouts if necessary
+                                el = find_token(document.body, '\\emph on', flt, elt)
+                                if el != -1:
+                                    extralines.append("\\emph default")
+                                el = find_token(document.body, '\\noun on', flt, elt)
+                                if el != -1:
+                                    extralines.append("\\noun default")
+                                el = find_token(document.body, '\\series', flt, elt)
+                                if el != -1:
+                                    extralines.append("\\series default")
+                                el = find_token(document.body, '\\family', flt, elt)
+                                if el != -1:
+                                    extralines.append("\\family default")
+                                el = find_token(document.body, '\\shape', flt, elt)
+                                if el != -1:
+                                    extralines.append("\\shape default")
+                                el = find_token(document.body, '\\color', flt, elt)
+                                if el != -1:
+                                    extralines.append("\\color inherit")
+                                el = find_token(document.body, '\\size', flt, elt)
+                                if el != -1:
+                                    extralines.append("\\size default")
+                                el = find_token(document.body, '\\bar under', flt, elt)
+                                if el != -1:
+                                    extralines.append("\\bar default")
+                                el = find_token(document.body, '\\uuline on', flt, elt)
+                                if el != -1:
+                                    extralines.append("\\uuline default")
+                                el = find_token(document.body, '\\uwave on', flt, elt)
+                                if el != -1:
+                                    extralines.append("\\uwave default")
+                                el = find_token(document.body, '\\strikeout on', flt, elt)
+                                if el != -1:
+                                    extralines.append("\\strikeout default")
+                                document.body[elt:elt+1] = extralines + put_cmd_in_ert("\\end{cellvarwidth}") + ["\end_layout"]
                                 document.body[flt+1:flt+1] = put_cmd_in_ert("\\begin{cellvarwidth}" + alarg)
                                 needcellvarwidth = True
                                 needvarwidth = True
