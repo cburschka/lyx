@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-01-22 10:09+0100\n"
-"PO-Revision-Date: 2021-01-22 09:11+0000\n"
+"POT-Creation-Date: 2021-01-25 12:03+0100\n"
+"PO-Revision-Date: 2021-01-25 11:15+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -9663,7 +9663,7 @@ msgstr ""
 #: lib/layouts/scrclass.inc:143 lib/layouts/stdsections.inc:33
 #: lib/layouts/tufte-handout.layout:41
 msgid "The part as it appears in the table of contents/running headers"
-msgstr "Časť ako sa zobrazí v zozname/priebežných hlavičkách"
+msgstr "Časť ako sa zobrazí v obsahu či v priebežných hlavičkách"
 
 #: lib/layouts/beamer.layout:304
 msgid "Section \\arabic{section}"
@@ -9673,7 +9673,7 @@ msgstr "Sekcia \\arabic{section}"
 #: lib/layouts/simplecv.layout:53 lib/layouts/stdsections.inc:114
 #: lib/layouts/tufte-book.layout:130
 msgid "The section as it appears in the table of contents/running headers"
-msgstr "Sekcia ako sa zobrazí v zozname/priebežných hlavičkách"
+msgstr "Sekcia ako sa zobrazí v obsahu či v priebežných hlavičkách"
 
 #: lib/layouts/beamer.layout:328 lib/layouts/numarticle.inc:11
 #: lib/layouts/powerdot.layout:254
@@ -9686,7 +9686,7 @@ msgstr "Podsekcia \\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:378
 msgid "The subsection as it appears in the table of contents/running headers"
-msgstr "Podsekcia ako sa zobrazí v zozname/priebežných hlavičkách"
+msgstr "Podsekcia ako sa zobrazí v obsahu či v priebežných hlavičkách"
 
 #: lib/layouts/beamer.layout:390
 msgid "\\arabic{section}.\\arabic{subsection}"
@@ -9701,7 +9701,7 @@ msgstr ""
 #: lib/layouts/beamer.layout:440
 msgid ""
 "The subsubsection as it appears in the table of contents/running headers"
-msgstr "Podpodsekcia ako sa zobrazí v zozname/priebežných hlavičkách"
+msgstr "Podpodsekcia ako sa zobrazí v obsahu či v priebežných hlavičkách"
 
 #: lib/layouts/beamer.layout:452
 msgid "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
@@ -11725,8 +11725,8 @@ msgid ""
 msgstr ""
 "Pridáva vložku pre koncové poznámky. Používa balík endnotes, ktorý má svoje "
 "nedostatky, ale funguje dobre aj so staršou LaTeX distribúciou. Nutné je "
-"pridať súpis koncových poznámok (Vložiť->Zoznam/obsah/referencie->Koncové "
-"poznámky) tam, kde sa koncové poznámky majú objaviť."
+"pridať súpis koncových poznámok (Vložiť->Zoznamy->Koncové poznámky) tam, kde "
+"sa koncové poznámky majú objaviť."
 
 #: lib/layouts/endnotes.module:15 lib/layouts/endnotes.module:42
 #: lib/layouts/enotez.module:15 lib/layouts/enotez.module:36
@@ -11772,8 +11772,8 @@ msgstr ""
 "Pridáva vložku pre koncové poznámky. Používa balík enotez, ktorý je mocnejší "
 "a prispôsobivejší ako balík endnotes (modul 'Koncové poznámky "
 "(jednoduché)'), ale požaduje dosť modernú LaTeX distribúciu (a LaTeX3). "
-"Nutné je pridať súpis koncových poznámok (Vložiť->Zoznam/obsah/referencie-"
-">Koncové poznámky) tam, kde sa koncové poznámky majú objaviť."
+"Nutné je pridať súpis koncových poznámok (Vložiť->Zoznamy->Koncové poznámky) "
+"tam, kde sa koncové poznámky majú objaviť."
 
 #: lib/layouts/entcs.layout:3
 msgid "Electronic Notes in Theor. Comp. Sc. (ENTCS)"
@@ -12630,8 +12630,8 @@ msgid ""
 msgstr ""
 "Nastaviť všetky poznámky pod čiarou ako koncové poznámky. Používa balík "
 "endnotes, ktorý má svoje nedostatky, ale funguje dobre aj so staršou LaTeX "
-"distribúciou. Nutné je pridať súpis koncových poznámok (Vložiť->Zoznam/obsah/"
-"referencie->Koncové poznámky) tam, kde sa koncové poznámky majú objaviť."
+"distribúciou. Nutné je pridať súpis koncových poznámok (Vložiť->Zoznamy-"
+">Koncové poznámky) tam, kde sa koncové poznámky majú objaviť."
 
 #: lib/layouts/foottoenotez.module:2
 msgid "Footnotes as Endnotes (Extended)"
@@ -12649,8 +12649,7 @@ msgstr ""
 "enotez, ktorý je mocnejší a prispôsobivejší ako balík endnotes (modul "
 "'Koncové poznámky (jednoduché)'), ale požaduje dosť modernú LaTeX "
 "distribúciu (a LaTeX3). Nutné je pridať súpis koncových poznámok (Vložiť-"
-">Zoznam/obsah/referencie->Koncové poznámky) tam, kde sa koncové poznámky "
-"majú objaviť."
+">Zoznamy->Koncové poznámky) tam, kde sa koncové poznámky majú objaviť."
 
 #: lib/layouts/frletter.layout:3 lib/examples/Articles:0
 msgid "French Letter (frletter)"
@@ -14488,7 +14487,7 @@ msgstr "Krátky titul(Zoznam)|K"
 
 #: lib/layouts/memoir.layout:78 lib/layouts/memoir.layout:93
 msgid "The chapter as it appears in the table of contents"
-msgstr "Kapitola ako sa zobrazí v zozname"
+msgstr "Kapitola ako sa zobrazí v obsahu"
 
 #: lib/layouts/memoir.layout:82 lib/layouts/memoir.layout:106
 #: lib/layouts/memoir.layout:121 lib/layouts/memoir.layout:136
@@ -14508,7 +14507,7 @@ msgstr "Kapitola*"
 
 #: lib/layouts/memoir.layout:102
 msgid "The section as it appears in the table of contents"
-msgstr "Sekcia ako sa zobrazí v zozname"
+msgstr "Sekcia ako sa zobrazí v obsahu"
 
 #: lib/layouts/memoir.layout:107
 msgid "The section as it appears in the running headers"
@@ -14516,7 +14515,7 @@ msgstr "Sekcia ako sa zobrazí v priebežných hlavičkách"
 
 #: lib/layouts/memoir.layout:117
 msgid "The subsection as it appears in the table of contents"
-msgstr "Podsekcia ako sa zobrazí v zozname"
+msgstr "Podsekcia ako sa zobrazí v obsahu"
 
 #: lib/layouts/memoir.layout:122
 msgid "The subsection as it appears in the running headers"
@@ -14524,7 +14523,7 @@ msgstr "Podsekcia ako sa zobrazí v priebežných hlavičkách"
 
 #: lib/layouts/memoir.layout:132
 msgid "The subsubsection as it appears in the table of contents"
-msgstr "Podpodsekcia ako sa zobrazí v zozname"
+msgstr "Podpodsekcia ako sa zobrazí v obsahu"
 
 #: lib/layouts/memoir.layout:137
 msgid "The subsubsection as it appears in the running headers"
@@ -14532,7 +14531,7 @@ msgstr "Podpodsekcia ako sa zobrazí v priebežných hlavičkách"
 
 #: lib/layouts/memoir.layout:147
 msgid "The paragraph as it appears in the table of contents"
-msgstr "Odstavec ako sa zobrazí v zozname"
+msgstr "Odstavec ako sa zobrazí v obsahu"
 
 #: lib/layouts/memoir.layout:152
 msgid "The paragraph as it appears in the running headers"
@@ -14540,7 +14539,7 @@ msgstr "Odstavec ako sa zobrazí v priebežných hlavičkách"
 
 #: lib/layouts/memoir.layout:162
 msgid "The subparagraph as it appears in the table of contents"
-msgstr "Pododstavec ako sa zobrazí v zozname"
+msgstr "Pododstavec ako sa zobrazí v obsahu"
 
 #: lib/layouts/memoir.layout:167
 msgid "The subparagraph as it appears in the running headers"
@@ -14572,7 +14571,7 @@ msgstr "Titul básne"
 
 #: lib/layouts/memoir.layout:231 lib/layouts/memoir.layout:252
 msgid "The poem title as it appears in the table of contents"
-msgstr "Titul básne ako sa zobrazí v zozname"
+msgstr "Titul básne ako sa zobrazí v obsahu"
 
 #: lib/layouts/memoir.layout:236
 msgid "The poem title as it appears in the running headers"
@@ -15954,7 +15953,7 @@ msgstr "Kapitola (zoznam)"
 #: lib/layouts/scrclass.inc:154 lib/layouts/stdsections.inc:75
 #: lib/layouts/tufte-book.layout:99
 msgid "The chapter as it appears in the table of contents/running headers"
-msgstr "Kapitola ako sa zobrazí v zozname/priebežných hlavičkách"
+msgstr "Kapitola ako sa zobrazí v obsahu či v priebežných hlavičkách"
 
 #: lib/layouts/scrclass.inc:160
 msgid "Addsec"
@@ -20642,7 +20641,7 @@ msgstr "Pole|P"
 
 #: lib/ui/stdmenus.inc:380
 msgid "List/Contents/References|/"
-msgstr "Zoznam/obsah/referencie|/"
+msgstr "Zoznamy|y"
 
 #: lib/ui/stdmenus.inc:381
 msgid "Float|a"
@@ -20686,7 +20685,7 @@ msgstr "Referenčná značka…|z"
 
 #: lib/ui/stdmenus.inc:394
 msgid "Nomenclature Entry...|y"
-msgstr "Záznam nomenklatúry…|y"
+msgstr "Záznam nomenklatúry…|ú"
 
 #: lib/ui/stdmenus.inc:396
 msgid "Table...|T"
@@ -30199,9 +30198,9 @@ msgstr "Grafiky"
 msgid "Equations"
 msgstr "Rovnice"
 
-#: src/TocBackend.cpp:298
+#: src/TocBackend.cpp:301
 msgid "Nomenclature Entries"
-msgstr "Zoznam nomenklatúr"
+msgstr "Zápisy nomenklatúry"
 
 #: src/VCBackend.cpp:64
 msgid "Perhaps the RCS package is not installed on your system?"
@@ -30571,7 +30570,7 @@ msgstr "Nie kategorizované"
 
 #: src/frontends/qt/FileDialog.cpp:188
 msgid "Directories"
-msgstr "Adresári"
+msgstr "Adresáre"
 
 #: src/frontends/qt/FindAndReplace.cpp:281
 msgid "File"
@@ -31872,9 +31871,9 @@ msgstr "Farby"
 msgid "Change Tracking"
 msgstr "Sledovanie zmien"
 
-#: src/frontends/qt/GuiDocument.cpp:1771
+#: src/frontends/qt/GuiDocument.cpp:1773
 msgid "Numbering & TOC"
-msgstr "Číslovanie & TOC"
+msgstr "Číslovanie & obsah"
 
 #: src/frontends/qt/GuiDocument.cpp:1773
 msgid "Indexes"
@@ -34462,7 +34461,7 @@ msgstr "Iné listiny"
 
 #: src/frontends/qt/Menus.cpp:1381
 msgid "(Empty Table of Contents)"
-msgstr "Prázdny obsah tabuliek"
+msgstr "Prázdny obsah"
 
 #: src/frontends/qt/Menus.cpp:1390
 msgid "Open Outliner..."
