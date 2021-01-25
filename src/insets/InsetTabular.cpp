@@ -1350,7 +1350,8 @@ void Tabular::setColumnPWidth(Cursor & cur, idx_type cell,
 		toggleFixedWidth(cur, cellInset(cidx).get(),
 				 !getPWidth(cidx).zero(), isMultiRow(cidx));
 		if (isMultiRow(cidx))
-			setAlignment(cidx, LYX_ALIGN_LEFT, false);
+			setAlignment(cidx, column_info[c].alignment,
+				     !column_info[c].p_width.zero());
 	}
 	// cur can become invalid after paragraphs were merged
 	cur.fixIfBroken();
