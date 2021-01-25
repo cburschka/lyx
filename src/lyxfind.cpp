@@ -31,6 +31,7 @@
 #include "Paragraph.h"
 #include "Text.h"
 #include "Encoding.h"
+#include "Language.h"
 
 #include "frontends/Application.h"
 #include "frontends/alert.h"
@@ -128,9 +129,8 @@ private:
 	///
 	bool ignoreLanguage_ = false;
 	///
-	bool ignoreDeleted_ = false;
+	bool ignoreDeleted_ = true;
 };
-
 
 void IgnoreFormats::setIgnoreFormat(string const & type, bool value)
 {
@@ -2770,7 +2770,7 @@ string splitOnKnownMacros(string par, bool isPatternString)
  * Resulting modified string is set to "", if
  * the searched tex does not contain all the features in the search pattern
  */
-static string correctlanguagesetting(string par, bool isPatternString, bool withformat)
+static string correctlanguagesetting(string par, bool isPatternString, bool withformat, lyx::Buffer *pbuf = nullptr)
 {
 	static Features regex_f;
 	static int missed = 0;
@@ -2790,6 +2790,22 @@ static string correctlanguagesetting(string par, bool isPatternString, bool with
 		// Split the latex input into pieces which
 		// can be digested by our search engine
 		LYXERR(Debug::FIND, "input: \"" << par << "\"");
+		if (isPatternString && (pbuf != nullptr)) { // Check if we should disable/enable test for language
+			// We check for polyglossia, because in runparams.flavor we use Flavor::XeTeX
+			string doclang = pbuf->params().language->polyglossia();
+			static regex langre("\\\\(foreignlanguage)\\{([^\\}]+)\\}");
+			smatch sub;
+			bool toIgnoreLang = true;
+			for (sregex_iterator it(par.begin(), par.end(), langre), end; it != end; ++it) {
+				sub = *it;
+				if (sub.str(2) != doclang) {
+					toIgnoreLang = false;
+					break;
+				}
+			}
+			setIgnoreFormat("language", toIgnoreLang);
+
+		}
 		result = splitOnKnownMacros(par.substr(0,parlen), isPatternString);
 		LYXERR(Debug::FIND, "After splitOnKnownMacros:\n\"" << result << "\"");
 	}
@@ -2957,8 +2973,8 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 
 	size_t lead_size = 0;
 	// correct the language settings
-	par_as_string = correctlanguagesetting(par_as_string, true, !opt.ignoreformat);
-	opt.matchstart = false;
+	par_as_string = correctlanguagesetting(par_as_string, true, !opt.ignoreformat, &buf);
+	opt.matchAtStart = false;
 	if (!use_regexp) {
 		identifyClosing(par_as_string); // Removes math closings ($, ], ...) at end of string
 		if (opt.ignoreformat) {
@@ -3031,7 +3047,7 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 		if ((lng > 0) && (par_as_string[0] == '^')) {
 			par_as_string = par_as_string.substr(1);
 			--lng;
-			opt.matchstart = true;
+			opt.matchAtStart = true;
 		}
 		// LYXERR(Debug::FIND, "par_as_string now is '" << par_as_string << "'");
 		// LYXERR(Debug::FIND, "Open braces: " << open_braces);
@@ -3230,9 +3246,9 @@ MatchResult MatchStringAdv::operator()(DocIterator const & cur, int len, bool at
 	int res = mres.match_len;
 	LYXERR(Debug::FIND,
 	       "res=" << res << ", at_begin=" << at_begin
-	       << ", matchstart=" << opt.matchstart
+	       << ", matchAtStart=" << opt.matchAtStart
 	       << ", inTexted=" << cur.inTexted());
-	if (opt.matchstart) {
+	if (opt.matchAtStart) {
 		if (cur.pos() != 0)
 			mres.match_len = 0;
 		else if (mres.match_prefix > 0)
