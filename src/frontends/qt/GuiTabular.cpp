@@ -427,14 +427,17 @@ void GuiTabular::nonbooktabs_toggled(bool const check)
 }
 
 
-static void setParam(string & param_str, Tabular::Feature f, string const & arg = string())
+static void addParam(set<string> & params, Tabular::Feature f,
+		     string const & arg = string())
 {
-	param_str += ' ';
-	param_str += featureAsString(f) + ' ' + arg;
+	if (arg.empty())
+		params.insert(featureAsString(f));
+	else
+		params.insert(featureAsString(f) + ' ' + arg);
 }
 
 
-void GuiTabular::setHAlign(string & param_str) const
+void GuiTabular::setHAlign(set<string> & params) const
 {
 	Tabular::Feature num = Tabular::ALIGN_LEFT;
 	Tabular::Feature multi_num = Tabular::M_ALIGN_LEFT;
@@ -458,13 +461,13 @@ void GuiTabular::setHAlign(string & param_str) const
 	}
 
 	if (multicolumnCB->isChecked())
-		setParam(param_str, multi_num);
+		addParam(params, multi_num);
 	else
-		setParam(param_str, num);
+		addParam(params, num);
 }
 
 
-void GuiTabular::setVAlign(string & param_str) const
+void GuiTabular::setVAlign(set<string> & params) const
 {
 	int const align = vAlignCO->currentIndex();
 	enum VALIGN { TOP, MIDDLE, BOTTOM };
@@ -494,35 +497,34 @@ void GuiTabular::setVAlign(string & param_str) const
 			break;
 	}
 	if (multicolumnCB->isChecked() || multirowCB->isChecked())
-		setParam(param_str, multi_num);
+		addParam(params, multi_num);
 	else
-		setParam(param_str, num);
+		addParam(params, num);
 }
 
 
-void GuiTabular::setTableAlignment(string & param_str) const
+void GuiTabular::setTableAlignment(set<string> & params) const
 {
 	int const align = TableAlignCO->currentIndex();
 	switch (align) {
-		case 0: setParam(param_str, Tabular::TABULAR_VALIGN_TOP);
+		case 0: addParam(params, Tabular::TABULAR_VALIGN_TOP);
 			break;
-		case 1: setParam(param_str, Tabular::TABULAR_VALIGN_MIDDLE);
+		case 1: addParam(params, Tabular::TABULAR_VALIGN_MIDDLE);
 			break;
-		case 2: setParam(param_str, Tabular::TABULAR_VALIGN_BOTTOM);
+		case 2: addParam(params, Tabular::TABULAR_VALIGN_BOTTOM);
 			break;
 	}
 }
 
 
-docstring GuiTabular::dialogToParams() const
+set<string> const GuiTabular::getTabFeatures() const
 {
-	string param_str = "tabular";
-
+	set<string> res;
 	// table width
 	string tabwidth = widgetsToLength(tabularWidthED, tabularWidthUnitLC);
 	if (tabwidth.empty())
 		tabwidth = "0pt";
-	setParam(param_str, Tabular::SET_TABULAR_WIDTH, tabwidth);
+	addParam(res, Tabular::SET_TABULAR_WIDTH, tabwidth);
 
 	// apply the fixed width values
 	// this must be done before applying the column alignment
@@ -531,49 +533,49 @@ docstring GuiTabular::dialogToParams() const
 	if (width.empty() || columnTypeCO->currentIndex() != 2)
 		width = "0pt";
 	if (multicolumnCB->isChecked())
-		setParam(param_str, Tabular::SET_MPWIDTH, width);
+		addParam(res, Tabular::SET_MPWIDTH, width);
 	else
-		setParam(param_str, Tabular::SET_PWIDTH, width);
+		addParam(res, Tabular::SET_PWIDTH, width);
 
 	bool const varwidth = specialAlignmentED->text().isEmpty()
 			&& columnTypeCO->currentIndex() == 1;
 	if (varwidth)
-		setParam(param_str, Tabular::TOGGLE_VARWIDTH_COLUMN, "on");
+		addParam(res, Tabular::TOGGLE_VARWIDTH_COLUMN, "on");
 	else
-		setParam(param_str, Tabular::TOGGLE_VARWIDTH_COLUMN, "off");
+		addParam(res, Tabular::TOGGLE_VARWIDTH_COLUMN, "off");
 
 	// apply the column alignment
 	// multirows inherit the alignment from the column; if a column width
 	// is set, multirows are always left-aligned so that in this case
 	// its alignment must not be applied (see bug #8084)
 	if (!(multirowCB->isChecked() && width != "0pt"))
-		setHAlign(param_str);
+		setHAlign(res);
 
 	// SET_DECIMAL_POINT must come after setHAlign() (ALIGN_DECIMAL)
 	string decimal_sep = fromqstr(decimalPointED->text());
 	if (decimal_sep.empty())
 		decimal_sep = to_utf8(decimal_sep_);
-	setParam(param_str, Tabular::SET_DECIMAL_POINT, decimal_sep);
+	addParam(res, Tabular::SET_DECIMAL_POINT, decimal_sep);
 
-	setVAlign(param_str);
-	setTableAlignment(param_str);
+	setVAlign(res);
+	setTableAlignment(res);
 	//
 	if (booktabsRB->isChecked())
-		setParam(param_str, Tabular::SET_BOOKTABS);
+		addParam(res, Tabular::SET_BOOKTABS);
 	else
-		setParam(param_str, Tabular::UNSET_BOOKTABS);
+		addParam(res, Tabular::UNSET_BOOKTABS);
 
 	//
 	switch (topspaceCO->currentIndex()) {
 		case 0:
-			setParam(param_str, Tabular::SET_TOP_SPACE, "none");
+			addParam(res, Tabular::SET_TOP_SPACE, "none");
 			break;
 		case 1:
-			setParam(param_str, Tabular::SET_TOP_SPACE, "default");
+			addParam(res, Tabular::SET_TOP_SPACE, "default");
 			break;
 		case 2:
 			if (!topspaceED->text().isEmpty())
-				setParam(param_str, Tabular::SET_TOP_SPACE,
+				addParam(res, Tabular::SET_TOP_SPACE,
 					 widgetsToLength(topspaceED, topspaceUnitLC));
 			break;
 	}
@@ -581,14 +583,14 @@ docstring GuiTabular::dialogToParams() const
 	//
 	switch (bottomspaceCO->currentIndex()) {
 		case 0:
-			setParam(param_str, Tabular::SET_BOTTOM_SPACE, "none");
+			addParam(res, Tabular::SET_BOTTOM_SPACE, "none");
 			break;
 		case 1:
-			setParam(param_str, Tabular::SET_BOTTOM_SPACE, "default");
+			addParam(res, Tabular::SET_BOTTOM_SPACE, "default");
 			break;
 		case 2:
 			if (!bottomspaceED->text().isEmpty())
-				setParam(param_str, Tabular::SET_BOTTOM_SPACE,
+				addParam(res, Tabular::SET_BOTTOM_SPACE,
 					widgetsToLength(bottomspaceED,
 							bottomspaceUnitLC));
 			break;
@@ -597,14 +599,14 @@ docstring GuiTabular::dialogToParams() const
 	//
 	switch (interlinespaceCO->currentIndex()) {
 		case 0:
-			setParam(param_str, Tabular::SET_INTERLINE_SPACE, "none");
+			addParam(res, Tabular::SET_INTERLINE_SPACE, "none");
 			break;
 		case 1:
-			setParam(param_str, Tabular::SET_INTERLINE_SPACE, "default");
+			addParam(res, Tabular::SET_INTERLINE_SPACE, "default");
 			break;
 		case 2:
 			if (!interlinespaceED->text().isEmpty())
-				setParam(param_str, Tabular::SET_INTERLINE_SPACE,
+				addParam(res, Tabular::SET_INTERLINE_SPACE,
 					widgetsToLength(interlinespaceED,
 							interlinespaceUnitLC));
 			break;
@@ -612,165 +614,181 @@ docstring GuiTabular::dialogToParams() const
 
 	//
 	if (resetFormalCB->isChecked())
-		setParam(param_str, Tabular::RESET_FORMAL_DEFAULT);
+		addParam(res, Tabular::RESET_FORMAL_DEFAULT);
 	else if (borders->topLineSet() && borders->bottomLineSet() && borders->leftLineSet()
 		&& borders->rightLineSet())
-		setParam(param_str, Tabular::SET_ALL_LINES);
+		addParam(res, Tabular::SET_ALL_LINES);
 	else if (borders->topLineUnset() && borders->bottomLineUnset() && borders->leftLineUnset()
 		&& borders->rightLineUnset())
-		setParam(param_str, Tabular::UNSET_ALL_LINES);
+		addParam(res, Tabular::UNSET_ALL_LINES);
 	else {
 		if (borders->getLeft() != GuiSetBorder::LINE_UNDECIDED)
-			setParam(param_str, Tabular::SET_LINE_LEFT,
+			addParam(res, Tabular::SET_LINE_LEFT,
 				 borders->leftLineSet() ? "true" : "false");
 		if (borders->getRight() != GuiSetBorder::LINE_UNDECIDED)
-			setParam(param_str, Tabular::SET_LINE_RIGHT,
+			addParam(res, Tabular::SET_LINE_RIGHT,
 				 borders->rightLineSet() ? "true" : "false");
 		if (borders->getTop() != GuiSetBorder::LINE_UNDECIDED)
-			setParam(param_str, Tabular::SET_LINE_TOP,
+			addParam(res, Tabular::SET_LINE_TOP,
 				 borders->topLineSet() ? "true" : "false");
 		if (borders->getBottom() != GuiSetBorder::LINE_UNDECIDED)
-			setParam(param_str, Tabular::SET_LINE_BOTTOM,
+			addParam(res, Tabular::SET_LINE_BOTTOM,
 				 borders->bottomLineSet() ? "true" : "false");
 	}
 	if (borders->topLineLTSet())
-		setParam(param_str, Tabular::SET_LTRIM_TOP, "false");
+		addParam(res, Tabular::SET_LTRIM_TOP, "false");
 	else if (borders->topLineLTUnset())
-		setParam(param_str, Tabular::SET_LTRIM_TOP, "true");
+		addParam(res, Tabular::SET_LTRIM_TOP, "true");
 	if (borders->topLineRTSet())
-		setParam(param_str, Tabular::SET_RTRIM_TOP, "false");
+		addParam(res, Tabular::SET_RTRIM_TOP, "false");
 	else if (borders->topLineRTUnset())
-		setParam(param_str, Tabular::SET_RTRIM_TOP, "true");
+		addParam(res, Tabular::SET_RTRIM_TOP, "true");
 	if (borders->bottomLineLTSet())
-		setParam(param_str, Tabular::SET_LTRIM_BOTTOM, "false");
+		addParam(res, Tabular::SET_LTRIM_BOTTOM, "false");
 	else if (borders->bottomLineLTUnset())
-		setParam(param_str, Tabular::SET_LTRIM_BOTTOM, "true");
+		addParam(res, Tabular::SET_LTRIM_BOTTOM, "true");
 	if (borders->bottomLineRTSet())
-		setParam(param_str, Tabular::SET_RTRIM_BOTTOM, "false");
+		addParam(res, Tabular::SET_RTRIM_BOTTOM, "false");
 	else if (borders->bottomLineRTUnset())
-		setParam(param_str, Tabular::SET_RTRIM_BOTTOM, "true");
+		addParam(res, Tabular::SET_RTRIM_BOTTOM, "true");
 
 	// apply the special alignment
 	string special = fromqstr(specialAlignmentED->text());
 	if (support::trim(special).empty())
 		special = "none";
 	if (multicolumnCB->isChecked())
-		setParam(param_str, Tabular::SET_SPECIAL_MULTICOLUMN, special);
+		addParam(res, Tabular::SET_SPECIAL_MULTICOLUMN, special);
 	else
-		setParam(param_str, Tabular::SET_SPECIAL_COLUMN, special);
+		addParam(res, Tabular::SET_SPECIAL_COLUMN, special);
 
 	//
 	if (multicolumnCB->isChecked())
-		setParam(param_str, Tabular::SET_MULTICOLUMN);
+		addParam(res, Tabular::SET_MULTICOLUMN);
 	else
-		setParam(param_str, Tabular::UNSET_MULTICOLUMN);
+		addParam(res, Tabular::UNSET_MULTICOLUMN);
 
 	// apply the multirow offset
 	string mroffset = widgetsToLength(multirowOffsetED, multirowOffsetUnitLC);
 	if (mroffset.empty())
 		mroffset = "0pt";
 	if (multirowCB->isChecked())
-		setParam(param_str, Tabular::SET_MROFFSET, mroffset);
+		addParam(res, Tabular::SET_MROFFSET, mroffset);
 	//
 	if (multirowCB->isChecked())
-		setParam(param_str, Tabular::SET_MULTIROW);
+		addParam(res, Tabular::SET_MULTIROW);
 	else
-		setParam(param_str, Tabular::UNSET_MULTIROW);
+		addParam(res, Tabular::UNSET_MULTIROW);
 	// store the table rotation angle
 	string const tabular_angle = convert<string>(rotateTabularAngleSB->value());
 	if (rotateTabularCB->isChecked())
-		setParam(param_str, Tabular::SET_ROTATE_TABULAR, tabular_angle);
+		addParam(res, Tabular::SET_ROTATE_TABULAR, tabular_angle);
 	else
-		setParam(param_str, Tabular::UNSET_ROTATE_TABULAR, tabular_angle);
+		addParam(res, Tabular::UNSET_ROTATE_TABULAR, tabular_angle);
 	// store the cell rotation angle
 	string const cell_angle = convert<string>(rotateCellAngleSB->value());
 	if (rotateCellCB->isChecked())
-		setParam(param_str, Tabular::SET_ROTATE_CELL, cell_angle);
+		addParam(res, Tabular::SET_ROTATE_CELL, cell_angle);
 	else
-		setParam(param_str, Tabular::UNSET_ROTATE_CELL, cell_angle);
+		addParam(res, Tabular::UNSET_ROTATE_CELL, cell_angle);
 	//
 	if (longTabularCB->isChecked())
-		setParam(param_str, Tabular::SET_LONGTABULAR);
+		addParam(res, Tabular::SET_LONGTABULAR);
 	else
-		setParam(param_str, Tabular::UNSET_LONGTABULAR);
+		addParam(res, Tabular::UNSET_LONGTABULAR);
 	//
 	if (newpageCB->isChecked())
-		setParam(param_str, Tabular::SET_LTNEWPAGE);
+		addParam(res, Tabular::SET_LTNEWPAGE);
 	else
-		setParam(param_str, Tabular::UNSET_LTNEWPAGE);
+		addParam(res, Tabular::UNSET_LTNEWPAGE);
 	//
 	if (captionStatusCB->isChecked())
-		setParam(param_str, Tabular::SET_LTCAPTION);
+		addParam(res, Tabular::SET_LTCAPTION);
 	else
-		setParam(param_str, Tabular::UNSET_LTCAPTION);
+		addParam(res, Tabular::UNSET_LTCAPTION);
 	//
 	if (headerStatusCB->isChecked())
-		setParam(param_str, Tabular::SET_LTHEAD, "none");
+		addParam(res, Tabular::SET_LTHEAD, "none");
 	else
-		setParam(param_str, Tabular::UNSET_LTHEAD, "none");
+		addParam(res, Tabular::UNSET_LTHEAD, "none");
 	//
 	if (headerBorderAboveCB->isChecked())
-		setParam(param_str, Tabular::SET_LTHEAD, "dl_above");
+		addParam(res, Tabular::SET_LTHEAD, "dl_above");
 	else
-		setParam(param_str, Tabular::UNSET_LTHEAD, "dl_above");
+		addParam(res, Tabular::UNSET_LTHEAD, "dl_above");
 	//
 	if (headerBorderBelowCB->isChecked())
-		setParam(param_str, Tabular::SET_LTHEAD, "dl_below");
+		addParam(res, Tabular::SET_LTHEAD, "dl_below");
 	else
-		setParam(param_str, Tabular::UNSET_LTHEAD, "dl_below");
+		addParam(res, Tabular::UNSET_LTHEAD, "dl_below");
 	if (firstheaderBorderAboveCB->isChecked())
-		setParam(param_str, Tabular::SET_LTFIRSTHEAD, "dl_above");
+		addParam(res, Tabular::SET_LTFIRSTHEAD, "dl_above");
 	else
-		setParam(param_str, Tabular::UNSET_LTFIRSTHEAD, "dl_above");
+		addParam(res, Tabular::UNSET_LTFIRSTHEAD, "dl_above");
 	if (firstheaderBorderBelowCB->isChecked())
-		setParam(param_str, Tabular::SET_LTFIRSTHEAD, "dl_below");
+		addParam(res, Tabular::SET_LTFIRSTHEAD, "dl_below");
 	else
-		setParam(param_str, Tabular::UNSET_LTFIRSTHEAD, "dl_below");
+		addParam(res, Tabular::UNSET_LTFIRSTHEAD, "dl_below");
 	if (firstheaderStatusCB->isChecked())
-		setParam(param_str, Tabular::SET_LTFIRSTHEAD, "none");
+		addParam(res, Tabular::SET_LTFIRSTHEAD, "none");
 	else
-		setParam(param_str, Tabular::UNSET_LTFIRSTHEAD, "none");
+		addParam(res, Tabular::UNSET_LTFIRSTHEAD, "none");
 	if (firstheaderNoContentsCB->isChecked())
-		setParam(param_str, Tabular::SET_LTFIRSTHEAD, "empty");
+		addParam(res, Tabular::SET_LTFIRSTHEAD, "empty");
 	else
-		setParam(param_str, Tabular::UNSET_LTFIRSTHEAD, "empty");
+		addParam(res, Tabular::UNSET_LTFIRSTHEAD, "empty");
 	if (footerStatusCB->isChecked())
-		setParam(param_str, Tabular::SET_LTFOOT, "none");
+		addParam(res, Tabular::SET_LTFOOT, "none");
 	else
-		setParam(param_str, Tabular::UNSET_LTFOOT, "none");
+		addParam(res, Tabular::UNSET_LTFOOT, "none");
 	if (footerBorderAboveCB->isChecked())
-		setParam(param_str, Tabular::SET_LTFOOT, "dl_above");
+		addParam(res, Tabular::SET_LTFOOT, "dl_above");
 	else
-		setParam(param_str, Tabular::UNSET_LTFOOT, "dl_above");
+		addParam(res, Tabular::UNSET_LTFOOT, "dl_above");
 	if (footerBorderBelowCB->isChecked())
-		setParam(param_str, Tabular::SET_LTFOOT, "dl_below");
+		addParam(res, Tabular::SET_LTFOOT, "dl_below");
 	else
-		setParam(param_str, Tabular::UNSET_LTFOOT, "dl_below");
+		addParam(res, Tabular::UNSET_LTFOOT, "dl_below");
 	if (lastfooterStatusCB->isChecked())
-		setParam(param_str, Tabular::SET_LTLASTFOOT, "none");
+		addParam(res, Tabular::SET_LTLASTFOOT, "none");
 	else
-		setParam(param_str, Tabular::UNSET_LTLASTFOOT, "none");
+		addParam(res, Tabular::UNSET_LTLASTFOOT, "none");
 	if (lastfooterBorderAboveCB->isChecked())
-		setParam(param_str, Tabular::SET_LTLASTFOOT, "dl_above");
+		addParam(res, Tabular::SET_LTLASTFOOT, "dl_above");
 	else
-		setParam(param_str, Tabular::UNSET_LTLASTFOOT, "dl_above");
+		addParam(res, Tabular::UNSET_LTLASTFOOT, "dl_above");
 	if (lastfooterBorderBelowCB->isChecked())
-		setParam(param_str, Tabular::SET_LTLASTFOOT, "dl_below");
+		addParam(res, Tabular::SET_LTLASTFOOT, "dl_below");
 	else
-		setParam(param_str, Tabular::UNSET_LTLASTFOOT, "dl_below");
+		addParam(res, Tabular::UNSET_LTLASTFOOT, "dl_below");
 	if (lastfooterNoContentsCB->isChecked())
-		setParam(param_str, Tabular::SET_LTLASTFOOT, "empty");
+		addParam(res, Tabular::SET_LTLASTFOOT, "empty");
 	else
-		setParam(param_str, Tabular::UNSET_LTLASTFOOT, "empty");
+		addParam(res, Tabular::UNSET_LTLASTFOOT, "empty");
 
 	if (leftRB->isChecked())
-		setParam(param_str, Tabular::LONGTABULAR_ALIGN_LEFT);
+		addParam(res, Tabular::LONGTABULAR_ALIGN_LEFT);
 	else if (centerRB->isChecked())
-		setParam(param_str, Tabular::LONGTABULAR_ALIGN_CENTER);
+		addParam(res, Tabular::LONGTABULAR_ALIGN_CENTER);
 	else if (rightRB->isChecked())
-		setParam(param_str, Tabular::LONGTABULAR_ALIGN_RIGHT);
+		addParam(res, Tabular::LONGTABULAR_ALIGN_RIGHT);
 
-	return from_utf8(param_str);
+	return res;
+}
+
+
+docstring GuiTabular::dialogToParams() const
+{
+	set<string> features = getTabFeatures();
+	// Only modify features that have changed
+	vector<string> changed_features;
+	for (auto const & f : features) {
+		if (features_.find(f) == features_.end())
+			changed_features.push_back(f);
+	}
+	if (changed_features.empty())
+		return docstring();
+
+	return from_utf8("tabular " + support::getStringFromVector(changed_features, " "));
 }
 
 
@@ -1116,6 +1134,8 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 		captionStatusCB->setChecked(false);
 		captionStatusCB->blockSignals(false);
 		checkEnabled();
+		// Store feature status
+		features_ = getTabFeatures();
 		return;
 	} else {
 		// longtables cannot have a vertical alignment
@@ -1197,6 +1217,9 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 
 	// after setting the features, check if they are enabled
 	checkEnabled();
+
+	// Finally, store feature status
+	features_ = getTabFeatures();
 }
 
 

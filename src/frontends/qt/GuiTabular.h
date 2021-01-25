@@ -54,11 +54,13 @@ private:
 	///
 	void enableWidgets() const;
 	///
-	void setHAlign(std::string & param_str) const;
+	void setHAlign(std::set<std::string> & params) const;
 	///
-	void setVAlign(std::string & param_str) const;
+	void setVAlign(std::set<std::string> & params) const;
 	///
-	void setTableAlignment(std::string & param_str) const;
+	void setTableAlignment(std::set<std::string> & params) const;
+	///
+	std::set<std::string> const getTabFeatures() const;
 	///
 	void setWidthAndAlignment();
 	///
@@ -78,6 +80,8 @@ private:
 	int lastrow_;
 	///
 	docstring decimal_sep_;
+	///
+	std::set<std::string> features_;
 };
 
 } // namespace frontend
