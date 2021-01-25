@@ -2453,6 +2453,9 @@ PrefLanguage::PrefLanguage(GuiPreferences * form)
 		                      index.data(Qt::UserRole).toString());
 	}
 	uiLanguageCO->blockSignals(false);
+
+	// FIXME: restore this when it works (see discussion in #6450).
+	respectOSkbdCB->hide();
 }
 
 
