@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2021-01-26 19:28+0100\n"
-"PO-Revision-Date: 2021-01-11 22:20+0200\n"
+"PO-Revision-Date: 2021-01-27 13:59+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -35,7 +35,7 @@ msgstr "Открыть каталог библиотек в файловом м�
 
 #: src/frontends/qt/ui/AboutUi.ui:165
 msgid "[[do]]&Open"
-msgstr ""
+msgstr "&Открыть"
 
 #: src/frontends/qt/ui/AboutUi.ui:200
 msgid "User directory"
@@ -46,9 +46,8 @@ msgid "Open user directory in file browser"
 msgstr "Открыть каталог пользователя в файловом менеджере"
 
 #: src/frontends/qt/ui/AboutUi.ui:234
-#, fuzzy
 msgid "[[do]]O&pen"
-msgstr "&Развёрнутый"
+msgstr "О&ткрыть"
 
 #: src/frontends/qt/ui/AboutUi.ui:263
 msgid "Credits"
@@ -727,12 +726,11 @@ msgstr "&Новая:"
 
 #: src/frontends/qt/ui/BranchesUi.ui:169
 msgid "Reset branch color to default (standard background)"
-msgstr ""
+msgstr "Сбросить цвет ветки к значению по умолчанию (стандартный фон)"
 
 #: src/frontends/qt/ui/BranchesUi.ui:172
-#, fuzzy
 msgid "R&eset Color"
-msgstr "С&бросить"
+msgstr "С&бросить цвет"
 
 #: src/frontends/qt/ui/BranchesUnknownUi.ui:25
 msgid "Add the selected branches to the list."
@@ -1360,7 +1358,6 @@ msgid "Show ERT contents"
 msgstr "Показывать содержимое ERT"
 
 #: src/frontends/qt/ui/ERTUi.ui:72
-#, fuzzy
 msgid "[[is]]O&pen"
 msgstr "&Развёрнутый"
 
@@ -2093,10 +2090,12 @@ msgstr "Масштаб на экране (%):"
 msgid ""
 "If LyX uses a dark theme, revert the colors of this graphics in the workarea"
 msgstr ""
+"При использовании тёмной темы LyX инвертировать цвета этого изображения в "
+"рабочей области"
 
 #: src/frontends/qt/ui/GraphicsUi.ui:592
 msgid "Re&vert colors in dark mode"
-msgstr ""
+msgstr "&Инвертировать цвета в тёмном режиме"
 
 #: src/frontends/qt/ui/GraphicsUi.ui:615 src/frontends/qt/ui/GraphicsUi.ui:634
 msgid "Additional LaTeX options"
@@ -16719,7 +16718,6 @@ msgid "Listings"
 msgstr "Листинги"
 
 #: lib/layouts/stdinsets.inc:19
-#, fuzzy
 msgid "Margin"
 msgstr "Примечание на полях"
 
@@ -19678,7 +19676,7 @@ msgstr "Править включаемый файл...|ф"
 
 #: lib/ui/stdcontext.inc:323 lib/ui/stdmenus.inc:468
 msgid "New Page|N"
-msgstr "Новая страница|ц"
+msgstr "Разрыв страницы|ц"
 
 #: lib/ui/stdcontext.inc:324 lib/ui/stdmenus.inc:469
 msgid "Page Break|a"
@@ -19690,11 +19688,11 @@ msgstr "Запрет разрыва страницы"
 
 #: lib/ui/stdcontext.inc:326 lib/ui/stdmenus.inc:471
 msgid "Clear Page|C"
-msgstr "Очистить страницу|ч"
+msgstr "Новая страница"
 
 #: lib/ui/stdcontext.inc:327 lib/ui/stdmenus.inc:472
 msgid "Clear Double Page|D"
-msgstr "Очистить двойную страницу|д"
+msgstr "Новая нечётная страница"
 
 #: lib/ui/stdcontext.inc:334 lib/ui/stdmenus.inc:465
 msgid "Ragged Line Break|R"
@@ -20674,7 +20672,6 @@ msgid "Branch|B"
 msgstr "Ветка|В"
 
 #: lib/ui/stdmenus.inc:384
-#, fuzzy
 msgid "Custom Inset|s"
 msgstr "Пользовательская вставка|П"
 
@@ -27751,9 +27748,8 @@ msgid "No further redo information"
 msgstr "Нет дальнейшей информации для повторения отменённого действия"
 
 #: src/BufferView.cpp:1634 src/BufferView.cpp:1649 src/BufferView.cpp:1661
-#, fuzzy
 msgid "Search string not found!"
-msgstr "Строка не найдена."
+msgstr "Строка не найдена!"
 
 #: src/BufferView.cpp:1682
 msgid "Mark off"
@@ -28346,9 +28342,8 @@ msgid "regexp frame"
 msgstr "рамка рег. выражения"
 
 #: src/Color.cpp:345
-#, fuzzy
 msgid "bookmark"
-msgstr "&Закладки"
+msgstr "закладка"
 
 #: src/Color.cpp:346
 msgid "inherit"
@@ -28879,14 +28874,12 @@ msgid "Auto-view file %1$s failed"
 msgstr "Автопросмотр файла %1$s не удался"
 
 #: src/Format.cpp:724
-#, fuzzy
 msgid "No Filename"
-msgstr "Имя файла"
+msgstr "Нет имени файла"
 
 #: src/Format.cpp:725
-#, fuzzy
 msgid "No filename was provided!"
-msgstr "Не указано имя файла"
+msgstr "Не указано имя файла!"
 
 #: src/Format.cpp:735 src/Format.cpp:748 src/Format.cpp:759
 msgid "Cannot edit file"
@@ -31946,24 +31939,24 @@ msgid "LaTeX Preamble"
 msgstr "Преамбула LaTeX"
 
 #: src/frontends/qt/GuiDocument.cpp:2087 src/frontends/qt/GuiDocument.cpp:2173
-#, fuzzy
 msgid "Class defaults"
 msgstr "По умолчанию для класса"
 
 #: src/frontends/qt/GuiDocument.cpp:2087 src/frontends/qt/GuiDocument.cpp:2173
-#, fuzzy
 msgid "Package defaults"
-msgstr "По умолчанию для языка"
+msgstr "По умолчанию для пакета"
 
 #: src/frontends/qt/GuiDocument.cpp:2090 src/frontends/qt/GuiDocument.cpp:2176
 msgid "If no value is given, the defaults as set by the class are used."
-msgstr ""
+msgstr "Если пусто, то используется значение по умолчанию для класса."
 
 #: src/frontends/qt/GuiDocument.cpp:2091 src/frontends/qt/GuiDocument.cpp:2177
 msgid ""
 "If no value is given, the defaults as set by the geometry package or a "
 "package/class overriding geometry's defaults are used."
 msgstr ""
+"Если пусто, то используется значение по умолчанию из пакета geometry или "
+"пакета/класса, заменяющего это значение из geometry."
 
 #: src/frontends/qt/GuiDocument.cpp:2220 src/frontends/qt/GuiDocument.cpp:2250
 msgid "&Default..."
@@ -34962,7 +34955,7 @@ msgstr "Под-%1$s"
 #: src/insets/InsetCaption.cpp:447
 #, c-format
 msgid "%1$s %2$s: [[Caption label (ex. Figure 1: )]]"
-msgstr ""
+msgstr "%1$s %2$s – "
 
 #: src/insets/InsetCitation.cpp:319
 msgid "No bibliography defined!"
@@ -35140,12 +35133,10 @@ msgid "float"
 msgstr "Плавающий объект"
 
 #: src/insets/InsetFloat.cpp:903
-#, fuzzy
 msgid "Float: "
 msgstr "Плавающий объект: "
 
 #: src/insets/InsetFloat.cpp:906
-#, fuzzy
 msgid "Subfloat: "
 msgstr "Плавающий подобъект: "
 
@@ -35220,9 +35211,8 @@ msgid "Hyperlink (%1$s) to %2$s"
 msgstr "Гиперссылка (%1$s) на %2$s"
 
 #: src/insets/InsetInclude.cpp:402
-#, fuzzy
 msgid "MISSING:"
-msgstr "ФАЙЛ ОТСУТСТВУЕТ:"
+msgstr "ОТСУТСТВУЕТ:"
 
 #: src/insets/InsetInclude.cpp:420
 msgid "Include (excluded)"
@@ -35273,7 +35263,7 @@ msgstr ""
 #: src/insets/InsetInclude.cpp:569
 #, c-format
 msgid "[INCLUDED FILE %1$s DELETED!]"
-msgstr ""
+msgstr "[ВКЛЮЧЁННЫЙ ФАЙЛ %1$s УДАЛЁН!]"
 
 #: src/insets/InsetInclude.cpp:801
 #, c-format
@@ -35387,9 +35377,8 @@ msgstr ""
 "%1$s"
 
 #: src/insets/InsetInclude.cpp:1373
-#, fuzzy
 msgid "MISSING: "
-msgstr "ФАЙЛ ОТСУТСТВУЕТ: "
+msgstr "ОТСУТСТВУЕТ: "
 
 #: src/insets/InsetIndex.cpp:157
 msgid "Index sorting failed"
@@ -36014,7 +36003,7 @@ msgstr "Примечание на полях"
 
 #: src/insets/InsetNewpage.cpp:239 src/insets/InsetNewpage.cpp:249
 msgid "New Page"
-msgstr "Новая страница"
+msgstr "Разрыв страницы"
 
 #: src/insets/InsetNewpage.cpp:241
 msgid "Page Break"
@@ -36022,11 +36011,11 @@ msgstr "Разрыв страницы с выравниванием"
 
 #: src/insets/InsetNewpage.cpp:243
 msgid "Clear Page"
-msgstr "Очистить страницу"
+msgstr "Новая страница"
 
 #: src/insets/InsetNewpage.cpp:245
 msgid "Clear Double Page"
-msgstr "Очистить двойную страницу"
+msgstr "Новая нечётная страница"
 
 #: src/insets/InsetNewpage.cpp:247
 msgid "No Page Break"
@@ -36097,14 +36086,12 @@ msgid "text%1$s"
 msgstr "текст%1$s"
 
 #: src/insets/InsetRef.cpp:595
-#, fuzzy
 msgid "Ref"
-msgstr "Re"
+msgstr "Ссылка"
 
 #: src/insets/InsetRef.cpp:596
-#, fuzzy
 msgid "EqRef"
-msgstr "Формула: "
+msgstr "Формула"
 
 #: src/insets/InsetRef.cpp:597 src/mathed/InsetMathRef.cpp:350
 msgid "Page Number"
@@ -36115,36 +36102,32 @@ msgid "Textual Page Number"
 msgstr "Текстовый номер страницы"
 
 #: src/insets/InsetRef.cpp:598
-#, fuzzy
 msgid "TextPage"
-msgstr "Текст стр.: "
+msgstr "Текст стр."
 
 #: src/insets/InsetRef.cpp:599 src/mathed/InsetMathRef.cpp:352
 msgid "Standard+Textual Page"
 msgstr "Ссылка+Текстовый номер страницы"
 
 #: src/insets/InsetRef.cpp:599
-#, fuzzy
 msgid "Ref+Text"
-msgstr "Ссылка+Текст: "
+msgstr "Ссылка+Текст"
 
 #: src/insets/InsetRef.cpp:600 src/mathed/InsetMathRef.cpp:354
 msgid "Reference to Name"
 msgstr "Ссылка на название"
 
 #: src/insets/InsetRef.cpp:600
-#, fuzzy
 msgid "NameRef"
-msgstr "Название: "
+msgstr "Название"
 
 #: src/insets/InsetRef.cpp:601
 msgid "Formatted"
 msgstr "Форматированная"
 
 #: src/insets/InsetRef.cpp:601
-#, fuzzy
 msgid "Format"
-msgstr "&Формат:"
+msgstr "Формат"
 
 #: src/insets/InsetRef.cpp:602 src/mathed/InsetMathRef.cpp:355
 msgid "Label Only"
@@ -36234,11 +36217,11 @@ msgstr ""
 
 #: src/insets/InsetTabular.cpp:5585
 msgid "Column movement not supported with multi-columns."
-msgstr ""
+msgstr "Перемещение столбцов недоступно для объединённых столбцов."
 
 #: src/insets/InsetTabular.cpp:5603
 msgid "Row movement not supported with multi-rows."
-msgstr ""
+msgstr "Перемещение строк недоступно для объединённых строк."
 
 #: src/insets/InsetTabular.cpp:6105
 msgid "Selection size should match clipboard content."
@@ -36249,7 +36232,6 @@ msgid "[contains tracked changes]"
 msgstr "[содержит отслеживаемые изменения]"
 
 #: src/insets/InsetWrap.cpp:68
-#, fuzzy
 msgid "Wrap: "
 msgstr "Обтекаемый объект: "
 
@@ -36549,9 +36531,8 @@ msgid "NameRef: "
 msgstr "Название: "
 
 #: src/mathed/InsetMathRef.cpp:355
-#, fuzzy
 msgid "Label Only: "
-msgstr "Только метка"
+msgstr "Только метка: "
 
 #: src/mathed/InsetMathSize.cpp:108
 #, c-format
@@ -36962,30 +36943,3 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Неизвестный пользователь"
-
-#~ msgid "&Open..."
-#~ msgstr "&Открыть..."
-
-#~ msgid "O&pen..."
-#~ msgstr "О&ткрыть..."
-
-#~ msgid "Use the margin settings provided by the document class"
-#~ msgstr "Использовать параметры полей класса документа"
-
-#~ msgid "Format: "
-#~ msgstr "Формат: "
-
-#~ msgid "Label: "
-#~ msgstr "Метка: "
-
-#~ msgid "Selections not supported."
-#~ msgstr "Выделения не поддерживаются."
-
-#~ msgid "Multi-column in current or destination column."
-#~ msgstr "Мульти-столбец в текущем или целевом столбце."
-
-#~ msgid "Multi-row in current or destination row."
-#~ msgstr "Мульти-строка в текущей или целевой строке."
-
-#~ msgid "Invalid regular expression!"
-#~ msgstr "Некорректное регулярное выражение!"
