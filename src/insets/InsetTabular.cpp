@@ -5573,8 +5573,8 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 			if (action == Tabular::MOVE_COLUMN_RIGHT ||
 			    action == Tabular::MOVE_COLUMN_LEFT) {
 				bool has_multicol = (action == Tabular::MOVE_COLUMN_RIGHT)
-						? tabular.hasMultiRow(ce + 1)
-						: tabular.hasMultiRow(cs - 1);
+						? tabular.hasMultiColumn(ce + 1)
+						: tabular.hasMultiColumn(cs - 1);
 				for (col_type c = cs; c <= ce; ++c) {
 					if (tabular.hasMultiColumn(c)) {
 						has_multicol = true;
