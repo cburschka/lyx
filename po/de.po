@@ -94,7 +94,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-01-26 16:41+0100\n"
+"POT-Creation-Date: 2021-01-26 19:28+0100\n"
 "PO-Revision-Date: 2021-01-26 16:44+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
@@ -2747,7 +2747,7 @@ msgstr "&Paket zur Code-Hervorhebung:"
 #: src/frontends/qt/ui/ListingsUi.ui:14 lib/layouts/numreport.inc:37
 #: lib/layouts/stdcounters.inc:77 lib/layouts/stdinsets.inc:337
 #: lib/layouts/stdinsets.inc:343 lib/layouts/stdinsets.inc:392
-#: lib/layouts/stdinsets.inc:398 src/insets/InsetCaption.cpp:404
+#: lib/layouts/stdinsets.inc:398 src/insets/InsetCaption.cpp:414
 #: src/insets/InsetListings.cpp:611 src/insets/InsetListings.cpp:612
 msgid "Listing"
 msgstr "Listing"
@@ -9564,7 +9564,7 @@ msgid "Centered"
 msgstr "Zentriert"
 
 #: lib/layouts/apa.layout:285 lib/layouts/apax.inc:384
-#: lib/layouts/stdinsets.inc:688 src/insets/InsetCaption.cpp:430
+#: lib/layouts/stdinsets.inc:688 src/insets/InsetCaption.cpp:440
 msgid "standard"
 msgstr "Standard"
 
@@ -26768,12 +26768,12 @@ msgid "LyX Archive (tar.gz)"
 msgstr "LyX-Archiv (tar.gz)"
 
 #: lib/examples/Articles:0
-msgid "Game 1"
-msgstr "Spiel 1"
-
-#: lib/examples/Articles:0
 msgid "Game 2"
 msgstr "Spiel 2"
+
+#: lib/examples/Articles:0
+msgid "Game 1"
+msgstr "Spiel 1"
 
 #: lib/examples/Articles:0
 msgid "Example (LyXified)"
@@ -26793,6 +26793,22 @@ msgid "External Material"
 msgstr "Externes Material"
 
 #: lib/examples/Articles:0
+msgid "XY-Pic"
+msgstr "XY-Pic"
+
+#: lib/examples/Articles:0
+msgid "Itemize Bullets"
+msgstr "Auflistungszeichen"
+
+#: lib/examples/Articles:0
+msgid "XY-Figure"
+msgstr "XY-Figure"
+
+#: lib/examples/Articles:0
+msgid "Minted File Listing"
+msgstr "Minted-Programmlistings (Dateien)"
+
+#: lib/examples/Articles:0
 msgid "Feynman Diagrams"
 msgstr "Feynman-Diagramme"
 
@@ -26801,24 +26817,8 @@ msgid "Instant Preview"
 msgstr "Eingebettete Vorschau"
 
 #: lib/examples/Articles:0
-msgid "Itemize Bullets"
-msgstr "Auflistungszeichen"
-
-#: lib/examples/Articles:0
-msgid "Minted File Listing"
-msgstr "Minted-Programmlistings (Dateien)"
-
-#: lib/examples/Articles:0
 msgid "Minted Listings"
 msgstr "Minted-Programmlistings"
-
-#: lib/examples/Articles:0
-msgid "XY-Figure"
-msgstr "XY-Figure"
-
-#: lib/examples/Articles:0
-msgid "XY-Pic"
-msgstr "XY-Pic"
 
 #: lib/examples/Articles:0
 msgid "Graphics and Insets"
@@ -26841,12 +26841,12 @@ msgid "Localization Test"
 msgstr "Übersetzungstest"
 
 #: lib/examples/Articles:0
-msgid "Hazard and Precautionary Statements"
-msgstr "H- und P-Sätze"
+msgid "Noweb Listerrors"
+msgstr "Noweb-Fehlerbericht"
 
 #: lib/examples/Articles:0
-msgid "LilyPond Book"
-msgstr "LilyPond-Buch"
+msgid "Hazard and Precautionary Statements"
+msgstr "H- und P-Sätze"
 
 #: lib/examples/Articles:0
 msgid "Multilingual Captions"
@@ -26857,8 +26857,8 @@ msgid "Noweb2LyX"
 msgstr "Noweb2LyX"
 
 #: lib/examples/Articles:0
-msgid "Noweb Listerrors"
-msgstr "Noweb-Fehlerbericht"
+msgid "LilyPond Book"
+msgstr "LilyPond-Buch"
 
 #: lib/examples/Articles:0 src/frontends/qt/GuiDocument.cpp:1764
 msgid "Modules"
@@ -26869,12 +26869,12 @@ msgid "Beamer (Complex)"
 msgstr "Beamer (komplex)"
 
 #: lib/examples/Articles:0
-msgid "Foils"
-msgstr "Foils"
-
-#: lib/examples/Articles:0
 msgid "Foils Landslide"
 msgstr "Foils (Querformat)"
+
+#: lib/examples/Articles:0
+msgid "Foils"
+msgstr "Foils"
 
 #: lib/examples/Articles:0
 msgid "Welcome"
@@ -26889,84 +26889,88 @@ msgid "Multilingual Typesetting with platex"
 msgstr "Mehrsprachige Dokumente mit platex"
 
 #: lib/examples/Articles:0
-msgid "Mathematical Monthly"
-msgstr "Mathematical Monthly"
-
-#: lib/examples/Articles:0
-msgid "Springers Global Journal Template (V. 3)"
-msgstr "Springers globale Vorlage für Zeitschriften (V. 3)"
+msgid "IEEE Transactions Conference"
+msgstr "IEEE Transactions Conference"
 
 #: lib/examples/Articles:0
 msgid "Hebrew Article (KOMA-Script)"
 msgstr "Hebräischer Aufsatz (KOMA-Script)"
 
 #: lib/examples/Articles:0
-msgid "IEEE Transactions Conference"
-msgstr "IEEE Transactions Conference"
-
-#: lib/examples/Articles:0
 msgid "IEEE Transactions Journal"
 msgstr "IEEE Transactions Journal"
 
 #: lib/examples/Articles:0
-msgid "00 Main File"
-msgstr "00 Hauptdatei"
+msgid "Springers Global Journal Template (V. 3)"
+msgstr "Springers globale Vorlage für Zeitschriften (V. 3)"
 
 #: lib/examples/Articles:0
-msgid "01 Dedication"
-msgstr "01 Widmung"
-
-#: lib/examples/Articles:0
-msgid "02 Foreword"
-msgstr "02 Vorwort"
-
-#: lib/examples/Articles:0
-msgid "03 Preface"
-msgstr "03 Vorwort"
-
-#: lib/examples/Articles:0
-msgid "04 Acknowledgements"
-msgstr "04 Danksagungen"
-
-#: lib/examples/Articles:0
-msgid "05 Contributor List"
-msgstr "05 Liste der Mitwirkenden"
-
-#: lib/examples/Articles:0
-msgid "06 Acronym"
-msgstr "06 Akronyme"
-
-#: lib/examples/Articles:0
-msgid "07 Part"
-msgstr "07 Teil"
-
-#: lib/examples/Articles:0
-msgid "08 Author"
-msgstr "08 Autor"
-
-#: lib/examples/Articles:0
-msgid "09 Appendix"
-msgstr "09 Anhang"
-
-#: lib/examples/Articles:0
-msgid "10 Glossary"
-msgstr "10 Glossar"
+msgid "Mathematical Monthly"
+msgstr "Mathematical Monthly"
 
 #: lib/examples/Articles:0
 msgid "11 References"
 msgstr "11 Literaturverzeichnis"
 
 #: lib/examples/Articles:0
-msgid "05 Acronym"
-msgstr "05 Akronyme"
+msgid "09 Appendix"
+msgstr "09 Anhang"
+
+#: lib/examples/Articles:0
+msgid "04 Acknowledgements"
+msgstr "04 Danksagungen"
+
+#: lib/examples/Articles:0
+msgid "08 Author"
+msgstr "08 Autor"
+
+#: lib/examples/Articles:0
+msgid "07 Part"
+msgstr "07 Teil"
+
+#: lib/examples/Articles:0
+msgid "02 Foreword"
+msgstr "02 Vorwort"
+
+#: lib/examples/Articles:0
+msgid "05 Contributor List"
+msgstr "05 Liste der Mitwirkenden"
+
+#: lib/examples/Articles:0
+msgid "00 Main File"
+msgstr "00 Hauptdatei"
+
+#: lib/examples/Articles:0
+msgid "10 Glossary"
+msgstr "10 Glossar"
+
+#: lib/examples/Articles:0
+msgid "06 Acronym"
+msgstr "06 Akronyme"
+
+#: lib/examples/Articles:0
+msgid "01 Dedication"
+msgstr "01 Widmung"
+
+#: lib/examples/Articles:0
+msgid "03 Preface"
+msgstr "03 Vorwort"
 
 #: lib/examples/Articles:0
 msgid "06 Part"
 msgstr "06 Teil"
 
 #: lib/examples/Articles:0
+msgid "05 Acronym"
+msgstr "05 Akronyme"
+
+#: lib/examples/Articles:0
 msgid "07 Chapter"
 msgstr "07 Kapitel"
+
+#: lib/examples/Articles:0
+msgid "10 Solutions"
+msgstr "10 Lösungen"
 
 #: lib/examples/Articles:0
 msgid "08 Appendix"
@@ -26977,10 +26981,6 @@ msgid "09 Glossary"
 msgstr "09 Glossar"
 
 #: lib/examples/Articles:0
-msgid "10 Solutions"
-msgstr "10 Lösungen"
-
-#: lib/examples/Articles:0
 msgid "Colored"
 msgstr "Farbig"
 
@@ -26989,16 +26989,16 @@ msgid "Simple"
 msgstr "Schlicht"
 
 #: lib/examples/Articles:0
-msgid "Chapter 1"
-msgstr "Kapitel 1"
-
-#: lib/examples/Articles:0
 msgid "Chapter 2"
 msgstr "Kapitel 2"
 
 #: lib/examples/Articles:0
 msgid "Main File"
 msgstr "Hauptdatei"
+
+#: lib/examples/Articles:0
+msgid "Chapter 1"
+msgstr "Kapitel 1"
 
 #: lib/examples/Articles:0
 msgid "PhD Thesis"
@@ -27701,7 +27701,7 @@ msgstr ""
 "%1$s ist schreibgeschützt.\n"
 "Bitte speichern Sie die Datei unter einem neuen Namen."
 
-#: src/Buffer.cpp:5187 src/insets/InsetCaption.cpp:398
+#: src/Buffer.cpp:5187 src/insets/InsetCaption.cpp:408
 msgid "Senseless!!! "
 msgstr "Sinnlos!!! "
 
@@ -35309,10 +35309,15 @@ msgstr ""
 "Der Status des Zweigs '%1$s' wurde im Hauptdokument geändert. Bitte denken "
 "Sie daran, das Hauptdokument zu speichern."
 
-#: src/insets/InsetCaption.cpp:413
+#: src/insets/InsetCaption.cpp:423
 #, c-format
 msgid "Sub-%1$s"
 msgstr "Unter-%1$s"
+
+#: src/insets/InsetCaption.cpp:447
+#, c-format
+msgid "%1$s %2$s: [[Caption label (ex. Figure 1: )]]"
+msgstr ""
 
 #: src/insets/InsetCitation.cpp:319
 msgid "No bibliography defined!"
@@ -36589,15 +36594,15 @@ msgstr ""
 "Die Informationen für die Änderungen von Tabellenzeilen- oder -spalten sind "
 "unvollständig. Sie werden ignoriert."
 
-#: src/insets/InsetTabular.cpp:5630
+#: src/insets/InsetTabular.cpp:5585
 msgid "Column movement not supported with multi-columns."
 msgstr "Verschieben von Spalten mit Mehrfachspalten leider nicht möglich."
 
-#: src/insets/InsetTabular.cpp:5648
+#: src/insets/InsetTabular.cpp:5603
 msgid "Row movement not supported with multi-rows."
 msgstr "Verschieben von Zeilen mit Mehrfachzeilen leider nicht möglich."
 
-#: src/insets/InsetTabular.cpp:6150
+#: src/insets/InsetTabular.cpp:6105
 msgid "Selection size should match clipboard content."
 msgstr ""
 "Die Anzahl der ausgewählten Zellen stimmt nicht mit dem Inhalt der "
@@ -37376,7 +37381,7 @@ msgstr "Unbekannter Benutzer"
 #~ msgid "&Go!"
 #~ msgstr "&Los!"
 
-#, fuzzy, c-format
+#, fuzzy
 #~ msgid "%1$s"
 #~ msgstr "Unter-%1$s"
 
@@ -37452,7 +37457,6 @@ msgstr "Unbekannter Benutzer"
 #~ msgid "Question \\thechapter.\\thequestion."
 #~ msgstr "Frage \\thechapter.\\thequestion."
 
-#, c-format
 #~ msgid "LyX: %1$s"
 #~ msgstr "LyX: %1$s"
 
@@ -37681,7 +37685,6 @@ msgstr "Unbekannter Benutzer"
 #~ msgid "Select the typewriter (monospaced) typeface"
 #~ msgstr "Wählen sie die dicktengleiche (Schreibmachinen-)Schrift"
 
-#, c-format
 #~ msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 #~ msgstr ""
 #~ "Sie haben versucht, die Datei %1$s in sich selbst einzubetten! Die "
@@ -37697,7 +37700,6 @@ msgstr "Unbekannter Benutzer"
 #~ msgid "&Maintain counters and references"
 #~ msgstr "&Zähler und Querverweise wahren"
 
-#, c-format
 #~ msgid "Auto-saving %1$s"
 #~ msgstr "Automatische Speicherung von %1$s"
 
