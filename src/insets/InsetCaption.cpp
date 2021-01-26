@@ -442,10 +442,9 @@ void InsetCaption::updateBuffer(ParIterator const & it, UpdateType utype, bool c
 				sec += from_ascii(" ");
 			sec += bformat(from_ascii("(%1$s)"), labelstring);
 		}
-		if (!sec.empty())
-			full_label_ = bformat(from_ascii("%1$s %2$s: "), name, sec);
-		else
-			full_label_ = bformat(from_ascii("%1$s #: "), name);
+		if (sec.empty())
+			sec = from_ascii("#");
+		full_label_ = bformat(master.B_("%1$s %2$s: [[Caption label (ex. Figure 1: )]]"), name, sec);
 	}
 
 	// Do the real work now.
