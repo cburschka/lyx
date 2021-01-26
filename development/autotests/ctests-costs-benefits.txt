@@ -1,0 +1,16 @@
+The ctests are not convenient tests. In this file we can attempt to log the
+benefits and costs to using them so we can periodically evaluate which tests we
+should keep and which we should get rid of.
+
+Below are some objective costs:
+
+- The time it takes to run the ctests.
+- The email discussion back-and-forth.
+
+There are also some non-objective costs. The ctests are annoying and not fun to
+maintain, discuss, and fix. Although it's hard to measure this "annoyance"
+cost, it should be taken into account when we review.
+
+Below we can try to keep a log of which bugs are found with which ctests. This
+way we can see which tests are the most useful. It is difficult to objectively
+differentiate between minor bugs and important bugs.
