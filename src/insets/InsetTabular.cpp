@@ -5570,8 +5570,8 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 					break;
 			}
 
-			if (action == Tabular::MOVE_COLUMN_RIGHT ||
-			    action == Tabular::MOVE_COLUMN_LEFT) {
+			if (action == Tabular::MOVE_COLUMN_RIGHT
+			    || action == Tabular::MOVE_COLUMN_LEFT) {
 				bool has_multicol = (action == Tabular::MOVE_COLUMN_RIGHT)
 						? tabular.hasMultiColumn(ce + 1)
 						: tabular.hasMultiColumn(cs - 1);
@@ -5582,14 +5582,14 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 					}
 				}
 				if (has_multicol) {
-					status.message(_("Multi-column in selected or destination columns."));
+					status.message(_("Column movement not supported with multi-columns."));
 					status.setEnabled(false);
 					break;
 				}
 			}
 
-			if (action == Tabular::MOVE_ROW_DOWN ||
-			    action == Tabular::MOVE_ROW_UP) {
+			if (action == Tabular::MOVE_ROW_DOWN
+			    || action == Tabular::MOVE_ROW_UP) {
 				bool has_multirow = (action == Tabular::MOVE_ROW_DOWN)
 						? tabular.hasMultiRow(re + 1)
 						: tabular.hasMultiRow(rs - 1);
@@ -5600,7 +5600,7 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 					}
 				}
 				if (has_multirow) {
-					status.message(_("Multi-row in selected or destination rows."));
+					status.message(_("Row movement not supported with multi-rows."));
 					status.setEnabled(false);
 					break;
 				}
