@@ -96,6 +96,8 @@ private:
 	///
 	mutable int labelwidth_ = 0;
 	///
+	mutable bool rtl_ = false;
+	///
 	std::string floattype_;
 	///
 	bool is_subfloat_ = false;
