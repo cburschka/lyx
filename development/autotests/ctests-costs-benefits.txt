@@ -14,3 +14,8 @@ cost, it should be taken into account when we review.
 Below we can try to keep a log of which bugs are found with which ctests. This
 way we can see which tests are the most useful. It is difficult to objectively
 differentiate between minor bugs and important bugs.
+
+Examples where convergence tests took time and annoyance to figure out that they
+were actually "false positives" (i.e., no bug that should be fixed):
+
+https://www.mail-archive.com/search?l=mid&q=20210125200655.e27xaaoy2belyxhw%40tallinn
