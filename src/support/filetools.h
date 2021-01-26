@@ -118,12 +118,14 @@ bool isBinaryFile(FileName const & filename);
       -# user_lyxdir
       -# build_lyxdir (if not empty)
       -# system_lyxdir
-    The third parameter `ext' is optional.
+    \p onlyglobal determines whether user_lyxdir should be included.
+    ext, search_mode and onlyglobal are optional.
 */
 FileName const libFileSearch(std::string const & dir,
 				std::string const & name,
 				std::string const & ext = std::string(),
-				search_mode mode = must_exist);
+				search_mode mode = must_exist,
+				bool const onlyglobal = false);
 
 /** Same as libFileSearch(), but tries first to find an
   internationalized version of the file by prepending $LANG_ to the

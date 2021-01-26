@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 601
+\lyxformat 605
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -109,7 +109,7 @@ logicalmkup
 \branch OutDated
 \selected 0
 \filename_suffix 0
-\color #f5fae7
+\color #f5fae7 #0a0518
 \end_branch
 \index Index
 \shortcut idx
@@ -10375,6 +10375,115 @@ stdclass.inc
 \end_inset
 
 , which contains most of the basic layouts.
+\change_inserted -712698321 1611646803
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1611646804
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1611646837
+InputGlobal
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1611646804
+<filename>
+\end_layout
+
+\end_inset
+
+] is a variant of the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1611646804
+Input
+\end_layout
+
+\end_inset
+
+ command which does not look for files in the user directory.
+ This allows to create a file 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1611646804
+name.layout
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1611646804
+name.inc
+\end_layout
+
+\end_inset
+
+ in the user directory which includes a global file with the same name via
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1611646853
+InputGlobal name
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1611646855
+InputGlobal name.inc
+\end_layout
+
+\end_inset
+
+, respectively (with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1611646804
+Input
+\end_layout
+
+\end_inset
+
+, the file would recursively include itself).
+ This way, you can modify global files without having to completely copy
+ them.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description

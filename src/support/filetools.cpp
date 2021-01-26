@@ -335,12 +335,16 @@ FileName const fileSearch(string const & path, string const & name,
 //   2) build_lyxdir (if not empty)
 //   3) system_lyxdir
 FileName const libFileSearch(string const & dir, string const & name,
-			   string const & ext, search_mode mode)
+			   string const & ext, search_mode mode,
+			   bool const only_global)
 {
-	FileName fullname = fileSearch(addPath(package().user_support().absFileName(), dir),
-				     name, ext, mode);
-	if (!fullname.empty())
-		return fullname;
+	FileName fullname;
+	if (!only_global) {
+		fullname = fileSearch(addPath(package().user_support().absFileName(), dir),
+					     name, ext, mode);
+		if (!fullname.empty())
+			return fullname;
+	}
 
 	if (!package().build_support().empty())
 		fullname = fileSearch(addPath(package().build_support().absFileName(), dir),

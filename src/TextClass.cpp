@@ -59,7 +59,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 90; // spitz: semantic label colors
+int const LAYOUT_FORMAT = 91; // spitz: InputGlobal method
 
 
 // Layout format for the current lyx file format. Controls which format is
@@ -165,6 +165,7 @@ enum TextClassTags {
 	TC_OUTPUTTYPE = 1,
 	TC_OUTPUTFORMAT,
 	TC_INPUT,
+	TC_INPUT_GLOBAL,
 	TC_STYLE,
 	TC_MODIFYSTYLE,
 	TC_PROVIDESTYLE,
@@ -249,6 +250,7 @@ LexerKeyword textClassTags[] = {
 	{ "htmltocsection",    TC_HTMLTOCSECTION },
 	{ "ifcounter",         TC_IFCOUNTER },
 	{ "input",             TC_INPUT },
+	{ "inputglobal",       TC_INPUT_GLOBAL },
 	{ "insetlayout",       TC_INSETLAYOUT },
 	{ "leftmargin",        TC_LEFTMARGIN },
 	{ "maxcitenames",      TC_MAXCITENAMES },
@@ -432,6 +434,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 		bool modifystyle  = false;
 		bool providestyle = false;
 		bool ifcounter    = false;
+		bool only_global  = false;
 
 		switch (static_cast<TextClassTags>(le)) {
 
@@ -459,6 +462,9 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			}
 			break;
 
+		case TC_INPUT_GLOBAL:
+			only_global = true;
+		// fall through
 		case TC_INPUT: // Include file
 			if (lexrc.next()) {
 				FileName tmp;
@@ -466,9 +472,13 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 				if (!path().empty() && (prefixIs(inc, "./") ||
 							prefixIs(inc, "../")))
 					tmp = fileSearch(path(), inc, "layout");
-				else
+				else {
+					// InputGlobal only searches in the system and
+					// build directories. This allows to reuse and
+					// modify files in the user directory.
 					tmp = libFileSearch("layouts", inc,
-							    "layout");
+							    "layout", must_exist, only_global);
+				}
 
 				if (tmp.empty()) {
 					lexrc.printError("Could not find input file: " + inc);
