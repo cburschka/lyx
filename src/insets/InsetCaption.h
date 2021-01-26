@@ -94,13 +94,13 @@ private:
 	///
 	mutable docstring full_label_;
 	///
-	mutable int labelwidth_;
+	mutable int labelwidth_ = 0;
 	///
 	std::string floattype_;
 	///
-	bool is_subfloat_;
+	bool is_subfloat_ = false;
 	///
-	bool is_deleted_;
+	bool is_deleted_ = false;
 	///
 	std::string type_;
 };
