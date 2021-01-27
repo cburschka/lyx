@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-01-26 19:28+0100\n"
-"PO-Revision-Date: 2021-01-25 11:15+0000\n"
+"POT-Creation-Date: 2021-01-27 10:43+0100\n"
+"PO-Revision-Date: 2021-01-27 09:47+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -34894,7 +34894,7 @@ msgstr "Pod-%1$s"
 #: src/insets/InsetCaption.cpp:447
 #, c-format
 msgid "%1$s %2$s: [[Caption label (ex. Figure 1: )]]"
-msgstr ""
+msgstr "%1$s %2$s: "
 
 #: src/insets/InsetCitation.cpp:319
 msgid "No bibliography defined!"
@@ -36158,11 +36158,11 @@ msgstr ""
 
 #: src/insets/InsetTabular.cpp:5585
 msgid "Column movement not supported with multi-columns."
-msgstr ""
+msgstr "Prechod na iný stĺpec sa vo viac-stĺpcovom okolí nepodporuje."
 
 #: src/insets/InsetTabular.cpp:5603
 msgid "Row movement not supported with multi-rows."
-msgstr ""
+msgstr "Prechod na iný riadok sa vo viac-riadkovým okolí nepodporuje."
 
 #: src/insets/InsetTabular.cpp:6105
 msgid "Selection size should match clipboard content."
@@ -36882,15 +36882,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
-
-#~ msgid "Selections not supported."
-#~ msgstr "Výbery nie sú podporované."
-
-#~ msgid "Multi-column in current or destination column."
-#~ msgstr "Viac-stĺpcové v aktuálnom alebo cieľovom stĺpci."
-
-#~ msgid "Multi-row in current or destination row."
-#~ msgstr "Viac-riadkové v aktuálnom alebo cieľovom riadku."
 
 #~ msgid "Use the margin settings provided by the document class"
 #~ msgstr "Použi nastavenie okrajov z triedy dokumentu"
