@@ -30,7 +30,7 @@ from lyxpreview_tools import error
 
 def usage(prog_name):
     msg = "Usage: %s [-d] [-e extensions] [-t target extension] from_file to_file"
-    return  msg % prog_name
+    return msg % prog_name
 
 
 def main(argv):
@@ -53,7 +53,7 @@ def main(argv):
       error(usage(progname))
     abs_from_file = args[0]
     if not os.path.isabs(abs_from_file):
-      error("%s is not an absolute file name.\n%s" % abs_from_file, usage(progname))
+      error("%s is not an absolute file name.\n%s" % (abs_from_file, usage(progname)))
     from_dir = os.path.dirname(abs_from_file)
 
     # output directory
@@ -64,7 +64,7 @@ def main(argv):
       if targext != '.':
         to_dir += "." + targext
       if not os.path.isabs(to_dir):
-        error("%s is not an absolute file name.\n%s" % to_dir, usage(progname))
+        error("%s is not an absolute file name.\n%s" % (to_dir, usage(progname)))
 
     if not copy_all(from_dir, to_dir, exts):
       # some kind of failure
