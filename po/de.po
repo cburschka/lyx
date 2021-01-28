@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-01-26 19:28+0100\n"
-"PO-Revision-Date: 2021-01-26 16:44+0100\n"
+"POT-Creation-Date: 2021-01-28 10:29+0100\n"
+"PO-Revision-Date: 2021-01-28 10:33+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -6573,7 +6573,7 @@ msgstr "Schlagwörter:"
 #: lib/layouts/ltugboat.layout:186 lib/layouts/ltugboat.layout:200
 #: lib/layouts/maa-monthly.layout:34 lib/layouts/paper.layout:150
 #: lib/layouts/revtex.layout:141 lib/layouts/revtex4-x.inc:58
-#: lib/layouts/revtex4.layout:271 lib/layouts/scrclass.inc:291
+#: lib/layouts/revtex4.layout:271 lib/layouts/scrclass.inc:296
 #: lib/layouts/siamltex.layout:269 lib/layouts/sigplanconf.layout:207
 #: lib/layouts/sigplanconf.layout:223 lib/layouts/spie.layout:85
 #: lib/layouts/stdstruct.inc:13 lib/layouts/stdstruct.inc:29
@@ -6651,7 +6651,7 @@ msgstr "Abbildungsanmerkungen"
 #: lib/layouts/powerdot.layout:449 lib/layouts/powerdot.layout:471
 #: lib/layouts/powerdot.layout:491 lib/layouts/revtex.layout:24
 #: lib/layouts/revtex4.layout:49 lib/layouts/rsphrase.module:44
-#: lib/layouts/scrclass.inc:26 lib/layouts/scrclass.inc:352
+#: lib/layouts/scrclass.inc:26 lib/layouts/scrclass.inc:357
 #: lib/layouts/scrlettr.layout:10 lib/layouts/scrlttr2.layout:20
 #: lib/layouts/siamltex.layout:38 lib/layouts/sigplanconf.layout:42
 #: lib/layouts/simplecv.layout:19 lib/layouts/slides.layout:62
@@ -7508,7 +7508,7 @@ msgstr "Kurztitel für den Anhang"
 #: lib/layouts/powerdot.layout:391 lib/layouts/recipebook.layout:48
 #: lib/layouts/recipebook.layout:50 lib/layouts/report.layout:18
 #: lib/layouts/report.layout:20 lib/layouts/scrbook.layout:35
-#: lib/layouts/scrbook.layout:37 lib/layouts/scrclass.inc:296
+#: lib/layouts/scrbook.layout:37 lib/layouts/scrclass.inc:301
 #: lib/layouts/scrreprt.layout:12 lib/layouts/scrreprt.layout:14
 #: lib/layouts/siamltex.layout:339 lib/layouts/simplecv.layout:196
 #: lib/layouts/stdstruct.inc:59 lib/layouts/svcommon.inc:657
@@ -8346,8 +8346,8 @@ msgstr "American Chemical Society (ACS)"
 #: lib/layouts/iopart.layout:67 lib/layouts/jasatex.layout:75
 #: lib/layouts/memoir.layout:68 lib/layouts/revtex4-x.inc:245
 #: lib/layouts/scrclass.inc:142 lib/layouts/scrclass.inc:153
-#: lib/layouts/scrclass.inc:164 lib/layouts/scrclass.inc:312
-#: lib/layouts/scrclass.inc:335 lib/layouts/siamltex.layout:206
+#: lib/layouts/scrclass.inc:164 lib/layouts/scrclass.inc:317
+#: lib/layouts/scrclass.inc:340 lib/layouts/siamltex.layout:206
 #: lib/layouts/simplecv.layout:52 lib/layouts/stdinsets.inc:694
 #: lib/layouts/stdsections.inc:32 lib/layouts/stdsections.inc:74
 #: lib/layouts/stdsections.inc:113 lib/layouts/tufte-book.layout:98
@@ -9569,7 +9569,7 @@ msgid "standard"
 msgstr "Standard"
 
 #: lib/layouts/apa.layout:292 lib/layouts/apax.inc:391
-#: lib/layouts/scrclass.inc:313 lib/layouts/scrclass.inc:336
+#: lib/layouts/scrclass.inc:318 lib/layouts/scrclass.inc:341
 #: lib/layouts/stdinsets.inc:695
 msgid "The caption as it appears in the list of figures/tables"
 msgstr "Die Legende, wie sie im Abbildungs-/Tabellenverzeichnis erscheint"
@@ -16219,31 +16219,35 @@ msgstr "Innenseite unten"
 msgid "Extratitle"
 msgstr "Zusatztitel"
 
-#: lib/layouts/scrclass.inc:305
+#: lib/layouts/scrclass.inc:289
+msgid "Frontispiece"
+msgstr "Frontispiz"
+
+#: lib/layouts/scrclass.inc:310
 msgid "Above"
 msgstr "Oberhalb"
 
-#: lib/layouts/scrclass.inc:306
+#: lib/layouts/scrclass.inc:311
 msgid "above"
 msgstr "oberhalb"
 
-#: lib/layouts/scrclass.inc:328
+#: lib/layouts/scrclass.inc:333
 msgid "Below"
 msgstr "Unterhalb"
 
-#: lib/layouts/scrclass.inc:329
+#: lib/layouts/scrclass.inc:334
 msgid "below"
 msgstr "unterhalb"
 
-#: lib/layouts/scrclass.inc:351
+#: lib/layouts/scrclass.inc:356
 msgid "Dictum"
 msgstr "Diktum"
 
-#: lib/layouts/scrclass.inc:361
+#: lib/layouts/scrclass.inc:366
 msgid "Dictum Author"
 msgstr "Diktum-Autor"
 
-#: lib/layouts/scrclass.inc:362
+#: lib/layouts/scrclass.inc:367
 msgid "The author of this dictum"
 msgstr "Der Autors dieses Diktums"
 
@@ -26768,12 +26772,12 @@ msgid "LyX Archive (tar.gz)"
 msgstr "LyX-Archiv (tar.gz)"
 
 #: lib/examples/Articles:0
-msgid "Game 2"
-msgstr "Spiel 2"
-
-#: lib/examples/Articles:0
 msgid "Game 1"
 msgstr "Spiel 1"
+
+#: lib/examples/Articles:0
+msgid "Game 2"
+msgstr "Spiel 2"
 
 #: lib/examples/Articles:0
 msgid "Example (LyXified)"
@@ -26793,22 +26797,6 @@ msgid "External Material"
 msgstr "Externes Material"
 
 #: lib/examples/Articles:0
-msgid "XY-Pic"
-msgstr "XY-Pic"
-
-#: lib/examples/Articles:0
-msgid "Itemize Bullets"
-msgstr "Auflistungszeichen"
-
-#: lib/examples/Articles:0
-msgid "XY-Figure"
-msgstr "XY-Figure"
-
-#: lib/examples/Articles:0
-msgid "Minted File Listing"
-msgstr "Minted-Programmlistings (Dateien)"
-
-#: lib/examples/Articles:0
 msgid "Feynman Diagrams"
 msgstr "Feynman-Diagramme"
 
@@ -26817,8 +26805,24 @@ msgid "Instant Preview"
 msgstr "Eingebettete Vorschau"
 
 #: lib/examples/Articles:0
+msgid "Itemize Bullets"
+msgstr "Auflistungszeichen"
+
+#: lib/examples/Articles:0
+msgid "Minted File Listing"
+msgstr "Minted-Programmlistings (Dateien)"
+
+#: lib/examples/Articles:0
 msgid "Minted Listings"
 msgstr "Minted-Programmlistings"
+
+#: lib/examples/Articles:0
+msgid "XY-Figure"
+msgstr "XY-Figure"
+
+#: lib/examples/Articles:0
+msgid "XY-Pic"
+msgstr "XY-Pic"
 
 #: lib/examples/Articles:0
 msgid "Graphics and Insets"
@@ -26841,12 +26845,12 @@ msgid "Localization Test"
 msgstr "Übersetzungstest"
 
 #: lib/examples/Articles:0
-msgid "Noweb Listerrors"
-msgstr "Noweb-Fehlerbericht"
-
-#: lib/examples/Articles:0
 msgid "Hazard and Precautionary Statements"
 msgstr "H- und P-Sätze"
+
+#: lib/examples/Articles:0
+msgid "LilyPond Book"
+msgstr "LilyPond-Buch"
 
 #: lib/examples/Articles:0
 msgid "Multilingual Captions"
@@ -26857,8 +26861,8 @@ msgid "Noweb2LyX"
 msgstr "Noweb2LyX"
 
 #: lib/examples/Articles:0
-msgid "LilyPond Book"
-msgstr "LilyPond-Buch"
+msgid "Noweb Listerrors"
+msgstr "Noweb-Fehlerbericht"
 
 #: lib/examples/Articles:0 src/frontends/qt/GuiDocument.cpp:1764
 msgid "Modules"
@@ -26869,12 +26873,12 @@ msgid "Beamer (Complex)"
 msgstr "Beamer (komplex)"
 
 #: lib/examples/Articles:0
-msgid "Foils Landslide"
-msgstr "Foils (Querformat)"
-
-#: lib/examples/Articles:0
 msgid "Foils"
 msgstr "Foils"
+
+#: lib/examples/Articles:0
+msgid "Foils Landslide"
+msgstr "Foils (Querformat)"
 
 #: lib/examples/Articles:0
 msgid "Welcome"
@@ -26889,88 +26893,84 @@ msgid "Multilingual Typesetting with platex"
 msgstr "Mehrsprachige Dokumente mit platex"
 
 #: lib/examples/Articles:0
-msgid "IEEE Transactions Conference"
-msgstr "IEEE Transactions Conference"
-
-#: lib/examples/Articles:0
-msgid "Hebrew Article (KOMA-Script)"
-msgstr "Hebräischer Aufsatz (KOMA-Script)"
-
-#: lib/examples/Articles:0
-msgid "IEEE Transactions Journal"
-msgstr "IEEE Transactions Journal"
+msgid "Mathematical Monthly"
+msgstr "Mathematical Monthly"
 
 #: lib/examples/Articles:0
 msgid "Springers Global Journal Template (V. 3)"
 msgstr "Springers globale Vorlage für Zeitschriften (V. 3)"
 
 #: lib/examples/Articles:0
-msgid "Mathematical Monthly"
-msgstr "Mathematical Monthly"
+msgid "Hebrew Article (KOMA-Script)"
+msgstr "Hebräischer Aufsatz (KOMA-Script)"
 
 #: lib/examples/Articles:0
-msgid "11 References"
-msgstr "11 Literaturverzeichnis"
+msgid "IEEE Transactions Conference"
+msgstr "IEEE Transactions Conference"
 
 #: lib/examples/Articles:0
-msgid "09 Appendix"
-msgstr "09 Anhang"
-
-#: lib/examples/Articles:0
-msgid "04 Acknowledgements"
-msgstr "04 Danksagungen"
-
-#: lib/examples/Articles:0
-msgid "08 Author"
-msgstr "08 Autor"
-
-#: lib/examples/Articles:0
-msgid "07 Part"
-msgstr "07 Teil"
-
-#: lib/examples/Articles:0
-msgid "02 Foreword"
-msgstr "02 Vorwort"
-
-#: lib/examples/Articles:0
-msgid "05 Contributor List"
-msgstr "05 Liste der Mitwirkenden"
+msgid "IEEE Transactions Journal"
+msgstr "IEEE Transactions Journal"
 
 #: lib/examples/Articles:0
 msgid "00 Main File"
 msgstr "00 Hauptdatei"
 
 #: lib/examples/Articles:0
-msgid "10 Glossary"
-msgstr "10 Glossar"
-
-#: lib/examples/Articles:0
-msgid "06 Acronym"
-msgstr "06 Akronyme"
-
-#: lib/examples/Articles:0
 msgid "01 Dedication"
 msgstr "01 Widmung"
+
+#: lib/examples/Articles:0
+msgid "02 Foreword"
+msgstr "02 Vorwort"
 
 #: lib/examples/Articles:0
 msgid "03 Preface"
 msgstr "03 Vorwort"
 
 #: lib/examples/Articles:0
-msgid "06 Part"
-msgstr "06 Teil"
+msgid "04 Acknowledgements"
+msgstr "04 Danksagungen"
+
+#: lib/examples/Articles:0
+msgid "05 Contributor List"
+msgstr "05 Liste der Mitwirkenden"
+
+#: lib/examples/Articles:0
+msgid "06 Acronym"
+msgstr "06 Akronyme"
+
+#: lib/examples/Articles:0
+msgid "07 Part"
+msgstr "07 Teil"
+
+#: lib/examples/Articles:0
+msgid "08 Author"
+msgstr "08 Autor"
+
+#: lib/examples/Articles:0
+msgid "09 Appendix"
+msgstr "09 Anhang"
+
+#: lib/examples/Articles:0
+msgid "10 Glossary"
+msgstr "10 Glossar"
+
+#: lib/examples/Articles:0
+msgid "11 References"
+msgstr "11 Literaturverzeichnis"
 
 #: lib/examples/Articles:0
 msgid "05 Acronym"
 msgstr "05 Akronyme"
 
 #: lib/examples/Articles:0
-msgid "07 Chapter"
-msgstr "07 Kapitel"
+msgid "06 Part"
+msgstr "06 Teil"
 
 #: lib/examples/Articles:0
-msgid "10 Solutions"
-msgstr "10 Lösungen"
+msgid "07 Chapter"
+msgstr "07 Kapitel"
 
 #: lib/examples/Articles:0
 msgid "08 Appendix"
@@ -26981,6 +26981,10 @@ msgid "09 Glossary"
 msgstr "09 Glossar"
 
 #: lib/examples/Articles:0
+msgid "10 Solutions"
+msgstr "10 Lösungen"
+
+#: lib/examples/Articles:0
 msgid "Colored"
 msgstr "Farbig"
 
@@ -26989,16 +26993,16 @@ msgid "Simple"
 msgstr "Schlicht"
 
 #: lib/examples/Articles:0
+msgid "Chapter 1"
+msgstr "Kapitel 1"
+
+#: lib/examples/Articles:0
 msgid "Chapter 2"
 msgstr "Kapitel 2"
 
 #: lib/examples/Articles:0
 msgid "Main File"
 msgstr "Hauptdatei"
-
-#: lib/examples/Articles:0
-msgid "Chapter 1"
-msgstr "Kapitel 1"
 
 #: lib/examples/Articles:0
 msgid "PhD Thesis"
@@ -35317,7 +35321,7 @@ msgstr "Unter-%1$s"
 #: src/insets/InsetCaption.cpp:447
 #, c-format
 msgid "%1$s %2$s: [[Caption label (ex. Figure 1: )]]"
-msgstr ""
+msgstr "%1$s %2$s: "
 
 #: src/insets/InsetCitation.cpp:319
 msgid "No bibliography defined!"
