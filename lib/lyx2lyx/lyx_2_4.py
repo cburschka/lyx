@@ -26,14 +26,13 @@ from datetime import (datetime, date, time)
 
 # Uncomment only what you need to import, please.
 
-from parser_tools import (count_pars_in_inset, del_token, find_end_of_inset,
-    find_end_of_layout, find_token, find_token_backwards, find_token_exact,
-    find_re, get_bool_value,
+from parser_tools import (count_pars_in_inset, del_complete_lines, del_token,
+    find_end_of_inset, find_end_of_layout, find_token, find_token_backwards,
+    find_token_exact, find_re, get_bool_value, get_containing_inset,
     get_containing_layout, get_option_value, get_value, get_quoted_value)
-#    del_value, del_complete_lines,
+#    del_value, 
 #    find_complete_lines, find_end_of,
 #    find_re, find_substring,
-#    get_containing_inset,
 #    is_in_inset, set_bool_value
 #    find_tokens, check_token
 
@@ -4273,6 +4272,93 @@ def revert_vcolumns2(document):
             add_to_preamble(document, ["\\usepackage{varwidth}"])
 
 
+def convert_vcolumns2(document):
+    """Convert varwidth ERT to native"""
+    i = 0
+    try:
+        while True:
+            i = find_token(document.body, "\\begin_inset Tabular", i+1)
+            if i == -1:
+                return
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Could not find end of tabular.")
+                continue
+
+            # Parse cells
+            nrows = int(document.body[i+1].split('"')[3])
+            ncols = int(document.body[i+1].split('"')[5])
+            m = i + 1
+            lines = []
+            for row in range(nrows):
+                for col in range(ncols):
+                    m = find_token(document.body, "<cell", m)
+                    multirow = get_option_value(document.body[m], 'multirow') != ""
+                    begcell = m
+                    endcell = find_token(document.body, "</cell>", begcell)
+                    vcand = False
+                    cvw = find_token(document.body, "begin{cellvarwidth}", begcell, endcell)
+                    if cvw != -1:
+                        vcand = document.body[cvw - 1] == "\\backslash" and get_containing_inset(document.body, cvw)[0] == "ERT"
+                    if vcand:
+                        # Remove ERTs with cellvarwidth env
+                        ecvw = find_token(document.body, "end{cellvarwidth}", begcell, endcell)
+                        if ecvw != -1:
+                            if document.body[ecvw - 1] == "\\backslash":
+                                eertins = get_containing_inset(document.body, ecvw)
+                                if eertins and eertins[0] == "ERT":
+                                    del document.body[eertins[1] : eertins[2] + 1]
+                             
+                        cvw = find_token(document.body, "begin{cellvarwidth}", begcell, endcell)   
+                        ertins = get_containing_inset(document.body, cvw)
+                        if ertins and ertins[0] == "ERT":
+                            del(document.body[ertins[1] : ertins[2] + 1])
+                        
+                        # Convert ERT newlines (as cellvarwidth detection relies on that)
+                        while True:
+                            endcell = find_token(document.body, "</cell>", begcell)
+                            nl = find_token(document.body, "\\backslash", begcell, endcell)
+                            if nl == -1 or document.body[nl + 2] != "\\backslash":
+                                break
+                            ertins = get_containing_inset(document.body, nl)
+                            if ertins and ertins[0] == "ERT":
+                                document.body[ertins[1] : ertins[2] + 1] = ["\\begin_inset Newline newline", "", "\\end_inset"]
+
+                        # Same for linebreaks
+                        while True:
+                            endcell = find_token(document.body, "</cell>", begcell)
+                            nl = find_token(document.body, "linebreak", begcell, endcell)
+                            if nl == -1 or document.body[nl - 1] != "\\backslash":
+                                break
+                            ertins = get_containing_inset(document.body, nl)
+                            if ertins and ertins[0] == "ERT":
+                                document.body[ertins[1] : ertins[2] + 1] = ["\\begin_inset Newline linebreak", "", "\\end_inset"]
+
+                        # And \\endgraf
+                        if multirow == True:
+                            endcell = find_token(document.body, "</cell>", begcell)
+                            nl = find_token(document.body, "endgraf{}", begcell, endcell)
+                            if nl == -1 or document.body[nl - 1] != "\\backslash":
+                                break
+                            ertins = get_containing_inset(document.body, nl)
+                            if ertins and ertins[0] == "ERT":
+                                    document.body[ertins[1] : ertins[2] + 1] = ["\\end_layout", "", "\\begin_layout Plain Layout"]
+                    m += 1
+
+            i += 1
+
+    finally:
+        del_complete_lines(document.preamble,
+                                ['% Added by lyx2lyx',
+                                 '%% Variable width box for table cells',
+                                 r'\newenvironment{cellvarwidth}[1][t]',
+                                 r'    {\begin{varwidth}[#1]{\linewidth}}',
+                                 r'    {\@finalstrut\@arstrutbox\end{varwidth}}'])
+        del_complete_lines(document.preamble,
+                                ['% Added by lyx2lyx',
+                                 r'\usepackage{varwidth}'])
+
+
 ##
 # Conversion hub
 #
@@ -4339,7 +4425,7 @@ convert = [
            [602, [convert_branch_colors]],
            [603, []],
            [604, []],
-           [605, []]
+           [605, [convert_vcolumns2]]
           ]
 
 revert =  [[604, [revert_vcolumns2]],
