@@ -1749,7 +1749,7 @@ bool TextClass::load(string const & path) const
 		       << to_utf8(makeDisplayPath(layout_file.absFileName()))
 		       << "'\n(Check `" << name_
 		       << "')\nCheck your installation and "
-		          "try Options/Reconfigure..."
+		          "try Tools/Reconfigure..."
 		       << endl;
 	}
 
