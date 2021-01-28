@@ -286,6 +286,11 @@ Style Extratitle
 	LatexName             extratitle
 End
 
+Style Frontispiece
+	CopyStyle             Titlehead
+	LatexName             frontispiece
+End
+
 Input stdstruct.inc
 
 Style Abstract

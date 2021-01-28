@@ -4369,6 +4369,33 @@ def convert_vcolumns2(document):
                                  r'\usepackage{varwidth}'])
 
 
+frontispiece_def = [
+    r'### Inserted by lyx2lyx (frontispiece layout) ###',
+    r'Style Frontispiece',
+    r'  CopyStyle             Titlehead',
+    r'  LatexName             frontispiece',
+    r'End',
+]
+
+
+def convert_koma_frontispiece(document):
+    """Remove local KOMA frontispiece definition"""
+    if document.textclass[:3] != "scr":
+        return
+
+    if document.del_local_layout(frontispiece_def):
+        document.add_module("ruby")
+
+
+def revert_koma_frontispiece(document):
+    """Add local KOMA frontispiece definition"""
+    if document.textclass[:3] != "scr":
+        return
+
+    if find_token(document.body, "\\begin_layout Frontispiece", 0) != -1:
+        document.append_local_layout(frontispiece_def)
+
+
 ##
 # Conversion hub
 #
@@ -4435,10 +4462,12 @@ convert = [
            [602, [convert_branch_colors]],
            [603, []],
            [604, []],
-           [605, [convert_vcolumns2]]
+           [605, [convert_vcolumns2]],
+           [606, [convert_koma_frontispiece]]
           ]
 
-revert =  [[604, [revert_vcolumns2]],
+revert =  [[605, [revert_koma_frontispiece]],
+           [604, [revert_vcolumns2]],
            [603, [revert_branch_darkcols]],
            [602, [revert_darkmode_graphics]],
            [601, [revert_branch_colors]],
