@@ -4222,7 +4222,17 @@ def revert_vcolumns2(document):
                                 if el != -1:
                                     extralines.append("\\strikeout default")
                                 document.body[elt:elt+1] = extralines + put_cmd_in_ert("\\end{cellvarwidth}") + ["\end_layout"]
-                                document.body[flt+1:flt+1] = put_cmd_in_ert("\\begin{cellvarwidth}" + alarg)
+                                parlang = -1
+                                for q in range(flt, elt):
+                                    if document.body[q] != "" and document.body[q][0] != "\\":
+                                        break
+                                    if document.body[q][:5] == "\\lang":
+                                        parlang = q
+                                        break
+                                if parlang != -1:
+                                    document.body[parlang+1:parlang+1] = put_cmd_in_ert("\\begin{cellvarwidth}" + alarg)
+                                else:
+                                    document.body[flt+1:flt+1] = put_cmd_in_ert("\\begin{cellvarwidth}" + alarg)
                                 needcellvarwidth = True
                                 needvarwidth = True
                         # ERT newlines and linebreaks (since LyX < 2.4 automatically inserts parboxes
