@@ -31,6 +31,23 @@ export/export/latex/inputenc-cp858_pdf2
 export/export/latex/CJK/ko_default_pdf2
 
 
+# ================================================
+Sublabel: lyx_wontfix
+# Tests that would fail because of LyX bugs or missing features. Not worth it
+# to invert because would take up testing time for issues that are not likely
+# to be fixed.
+# ================================================
+
+# lyx2lyx roundtrip does not converge in these cases because ERT is added on
+# each backwards export. The exports still compile; it is just that there is
+# no convergence.
+# Simplified example: \textbf{hello} -> \textbf{\textbf{hello}} -> ...
+#
+# https://www.mail-archive.com/search?l=mid&q=20210125200655.e27xaaoy2belyxhw%40tallinn
+export/doc/es/Additional_lyx(16|20|21|22|23)
+export/doc/(fr|ru)/UserGuide_lyx(16|20|21|22|23)
+
+
 # ===========================================
 Sublabel: special
 # Documents that do not work with all exports
