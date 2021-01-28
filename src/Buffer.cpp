@@ -354,6 +354,9 @@ public:
 	/// whether the bibinfo cache is valid
 	mutable bool bibinfo_cache_valid_;
 
+	///
+	mutable bool need_update;
+
 private:
 	int word_count_;
 	int char_count_;
@@ -460,7 +463,7 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	  internal_buffer(false), read_only(readonly_), file_fully_loaded(false),
 	  need_format_backup(false), ignore_parent(false), macro_lock(false),
 	  externally_modified_(false), bibinfo_cache_valid_(false),
-	  word_count_(0), char_count_(0), blank_count_(0)
+	  need_update(false), word_count_(0), char_count_(0), blank_count_(0)
 {
 	refreshFileMonitor();
 	if (!cloned_buffer_) {
@@ -5283,6 +5286,18 @@ void Buffer::updateBuffer(ParIterator & parit, UpdateType utype, bool const dele
 	// points to, if applicable).
 	parit.text()->inset().isChanged(changed);
 	popIncludedBuffer();
+}
+
+
+void Buffer::forceUpdate() const
+{
+	d->need_update = true;
+}
+
+
+bool Buffer::needUpdate() const
+{
+	return d->need_update;
 }
 
 

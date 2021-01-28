@@ -564,6 +564,48 @@ Paragraph::Private::Private(Private const & p, Paragraph * owner,
 }
 
 
+/////////////////////////////////////////////////////////////////////
+//
+// Paragraph
+//
+/////////////////////////////////////////////////////////////////////
+
+namespace {
+
+/** This helper class should be instantiated at the start of methods
+ * that can create or merge changes. If as a result the value of
+ * Paragraph::isChanged is modified, it makes sure that updateBuffer()
+ * will be run.
+ */
+struct ChangesMonitor {
+	///
+	ChangesMonitor(Paragraph & par)
+		: par_(par), was_changed_(par.isChanged()) {}
+	///
+	~ChangesMonitor()
+	{
+		/* We may need to run updateBuffer to check whether the buffer
+		 * contains changes (and toggle the changes toolbar). We do it
+		 * when:
+		 * 1. the `changedness' of the paragraph has changed,
+		 * 2. and we are not in the situation where the buffer has changes
+		 * and new changes are added to the paragraph.
+		 */
+		if (par_.isChanged() != was_changed_
+		    && par_.inInset().isBufferValid()
+		    && !(par_.inInset().buffer().areChangesPresent() && par_.isChanged()))
+			par_.inInset().buffer().forceUpdate();
+	}
+
+private:
+	///
+	Paragraph const & par_;
+	///
+	bool was_changed_;
+};
+
+}
+
 void Paragraph::addChangesToToc(DocIterator const & cdit, Buffer const & buf,
                                 bool output_active, TocBackend & backend) const
 {
@@ -629,6 +671,9 @@ Change Paragraph::parEndChange() const
 
 void Paragraph::setChange(Change const & change)
 {
+	// Make sure that Buffer::hasChangesPresent is updated
+	ChangesMonitor cm(*this);
+
 	// beware of the imaginary end-of-par character!
 	d->changes_.set(change, 0, size() + 1);
 
@@ -655,6 +700,9 @@ void Paragraph::setChange(Change const & change)
 
 void Paragraph::setChange(pos_type pos, Change const & change)
 {
+	// Make sure that Buffer::hasChangesPresent is updated
+	ChangesMonitor cm(*this);
+
 	LASSERT(pos >= 0 && pos <= size(), return);
 	d->changes_.set(change, pos);
 
@@ -674,6 +722,9 @@ Change const & Paragraph::lookupChange(pos_type pos) const
 
 void Paragraph::acceptChanges(pos_type start, pos_type end)
 {
+	// Make sure that Buffer::hasChangesPresent is updated
+	ChangesMonitor cm(*this);
+
 	LASSERT(start >= 0 && start <= size(), return);
 	LASSERT(end > start && end <= size() + 1, return);
 
@@ -712,6 +763,9 @@ void Paragraph::rejectChanges(pos_type start, pos_type end)
 	LASSERT(start >= 0 && start <= size(), return);
 	LASSERT(end > start && end <= size() + 1, return);
 
+	// Make sure that Buffer::hasChangesPresent is updated
+	ChangesMonitor cm(*this);
+
 	for (pos_type pos = start; pos < end; ++pos) {
 		switch (lookupChange(pos).type) {
 			case Change::UNCHANGED:
@@ -747,6 +801,9 @@ void Paragraph::Private::insertChar(pos_type pos, char_type c,
 {
 	LASSERT(pos >= 0 && pos <= int(text_.size()), return);
 
+	// Make sure that Buffer::hasChangesPresent is updated
+	ChangesMonitor cm(*owner_);
+
 	// track change
 	changes_.insert(change, pos);
 
@@ -779,6 +836,9 @@ bool Paragraph::insertInset(pos_type pos, Inset * inset,
 	LASSERT(inset, return false);
 	LASSERT(pos >= 0 && pos <= size(), return false);
 
+	// Make sure that Buffer::hasChangesPresent is updated
+	ChangesMonitor cm(*this);
+
 	// Paragraph::insertInset() can be used in cut/copy/paste operation where
 	// d->inset_owner_ is not set yet.
 	if (d->inset_owner_ && !d->inset_owner_->insetAllowed(inset->lyxCode()))
@@ -800,6 +860,9 @@ bool Paragraph::insertInset(pos_type pos, Inset * inset,
 bool Paragraph::eraseChar(pos_type pos, bool trackChanges)
 {
 	LASSERT(pos >= 0 && pos <= size(), return false);
+
+	// Make sure that Buffer::hasChangesPresent is updated
+	ChangesMonitor cm(*this);
 
 	// keep the logic here in sync with the logic of isMergedOnEndOfParDeletion()
 
@@ -1707,6 +1770,9 @@ void Paragraph::insert(pos_type pos, docstring const & str,
 void Paragraph::appendChar(char_type c, Font const & font,
 		Change const & change)
 {
+	// Make sure that Buffer::hasChangesPresent is updated
+	ChangesMonitor cm(*this);
+
 	// track change
 	d->changes_.insert(change, d->text_.size());
 	// when appending characters, no need to update tables
@@ -1719,6 +1785,9 @@ void Paragraph::appendChar(char_type c, Font const & font,
 void Paragraph::appendString(docstring const & s, Font const & font,
 		Change const & change)
 {
+	// Make sure that Buffer::hasChangesPresent is updated
+	ChangesMonitor cm(*this);
+
 	pos_type end = s.size();
 	size_t oldsize = d->text_.size();
 	size_t newsize = oldsize + end;

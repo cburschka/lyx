@@ -735,6 +735,10 @@ public:
 	void updateBuffer(UpdateScope scope, UpdateType utype) const;
 	///
 	void updateBuffer(ParIterator & parit, UpdateType utype, bool const deleted = false) const;
+	/// Forces an updateBuffer() call
+	void forceUpdate() const;
+	/// Do we need to call updateBuffer()?
+	bool needUpdate() const;
 
 	/// Spellcheck starting from \p from.
 	/// \p from initial position, will then points to the next misspelled
@@ -771,7 +775,7 @@ public:
 	int wordCount() const;
 	int charCount(bool with_blanks) const;
 
-	/// FIXME: dummy function for now
+	///
 	bool areChangesPresent() const;
 
 	///

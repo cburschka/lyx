@@ -2417,7 +2417,7 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 	// Do we have a selection?
 	theSelection().haveSelection(cursor().selection());
 
-	if (cur.needBufferUpdate()) {
+	if (cur.needBufferUpdate() || buffer().needUpdate()) {
 		cur.clearBufferUpdate();
 		buffer().updateBuffer();
 	}
