@@ -1270,7 +1270,6 @@ def checkConverterEntries():
 \converter klyx       lyx        "python -tt $$s/lyx2lyx/lyx2lyx -c euc_kr -o $$o $$i"	""
 \converter lyxpreview png        "python -tt $$s/scripts/lyxpreview2bitmap.py --png"	""
 \converter lyxpreview ppm        "python -tt $$s/scripts/lyxpreview2bitmap.py --ppm"	""
-\converter docbook    docbook5   "cp $$i $$o"	"xml"
 ''')
 
 
