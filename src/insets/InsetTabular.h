@@ -93,6 +93,8 @@ public:
 	bool allowMultiPar() const override { return !isMultiRow && (!isMultiColumn || isFixedWidth); }
 	///
 	bool canPaintChange(BufferView const &) const override { return false; }
+	/// This assures we never output \maketitle in table cells
+	bool isInTitle() const override { return true; }
 private:
 	///
 	InsetTableCell() = delete;
