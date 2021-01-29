@@ -1,4 +1,6 @@
 # Check that searching for regexp "([a-z]+)\s\1" finds duplicate words.
+UseShortcut "C-F20" "regexp-mode"
+PrepareShortcuts
 
 Lang it_IT.utf8
 CO: findadv-19.ctrl
@@ -7,7 +9,7 @@ KD: 50
 KK: Hello world world!\C\[Home]
 KK: \Cs
 KK: \CF
-KK: \Axregexp-mode\[Return]([a-z]+)\\s\\1\[Return]
+KK: \C\[F20]([a-z]+)\\s\\1\[Return]
 CP: Putting selection at .*idx: 0 par: 0 pos: 6\n with len: 11
 Sleep 1
 TestEnd

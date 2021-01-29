@@ -1,5 +1,6 @@
 # Test for searching with regular expressions
 UseShortcut "C-F30" "layout Itemize"
+UseShortcut "C-F20" "regexp-mode"
 
 PrepareShortcuts
 
@@ -14,7 +15,7 @@ KK: \CF
 KK: \At\Ai\Ah
 KK: \CF
 KK: \C\[F30]
-KK: \Axregexp-mode\[Return][a-z]* \[Return]
+KK: \C\[F20][a-z]* \[Return]
 CP: Putting selection at .*idx: 0 par: 0 pos: 0\n with len: 3
 
 CN: Part 2
@@ -26,7 +27,7 @@ KK: \[Delete]
 #KK: \At\Ai\Ah
 #KK: \CF
 KK: \C\[F30]
-KK: \Axregexp-mode\[Return][a-z]* \[Return]\[Return]
+KK: \C\[F20][a-z]* \[Return]\[Return]
 CP: Putting selection at .*idx: 0 par: 0 pos: 0\n with len: 3
 CP: Putting selection at .*idx: 0 par: 1 pos: 0\n with len: 3
 TestEnd

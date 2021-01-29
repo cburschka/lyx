@@ -7,13 +7,16 @@
 # It will fail if the Italian translation changes, if "ignore format" is
 # unchecked by default, or if the wrap-around mechanism changes (e.g. does not
 # ask if the cursor started at the beginning of the buffer).
+UseShortcut "C-F20" "regexp-mode"
+PrepareShortcuts
 
 Lang it_IT.utf8
 CO: findadv-re-05.ctrl
 TestBegin test.lyx -dbg key,find > findadv-re-05.loga.txt 2>&1
 KK: \Cm\\frac 1-x\[Down]1+x^2 \C\[Home]
 KK: \CF
-KK: \Cm\\frac \Axregexp-mode\[Return].* \[Down]1+x^2 \[Return]
+KK: \Cm\\frac \C\[F20].* \[Down]1+x^2 \[Return]\[Return]
+CP: Putting selection at .*idx: 0 par: 0 pos: 0\n .*idx: 0 par: 0 pos: 0\n with len: 1
 CP: raggiunta la fine cercando in avanti
 TestEnd
 Lang C

@@ -1,4 +1,6 @@
 # Finding regexps within \frac{}
+UseShortcut "C-F20" "regexp-mode"
+PrepareShortcuts
 
 Lang sk_SK.utf8
 CO: findadv-re-06.ctrl
@@ -9,7 +11,7 @@ KK: \CF
 # Uncheck ignore format (depends on IT language)
 KK: \At\Ai\Ah
 KK: \CF
-KK: \Cm\\frac \Axregexp-mode\[Return].* \[Down]1+x^2 \[Return]
+KK: \Cm\\frac \C\[F20].* \[Down]1+x^2 \[Return]
 CP: Putting selection at .*idx: 0 par: 0 pos: 0\n .*idx: 0 par: 0 pos: 0\n with len: 1
 TestEnd
 Lang C

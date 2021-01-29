@@ -1,11 +1,13 @@
 # Avoiding recursive replacements when replaced text matches search pattern
 # Addresses #7675.
 #
+
 Lang it_IT.utf8
 
 CO: findadv-20.1.ctrl
 TestBegin test.lyx -dbg key,find > findadv-20.loga.txt 2>&1
 CN: Part 1
+KD: 100
 KK: a a a\C\[Home]
 KK: \CF
 KK: a\[Tab]
@@ -20,6 +22,7 @@ Lang it_IT.utf8
 CO: findadv-20.2.ctrl
 TestBegin test2.lyx -dbg key,find > findadv-20.logb.txt 2>&1
 CN: Part 2
+KD: 100
 KK: \Cma  \Cma  \Cma \C\[Home]
 KK: \CF
 KK: a\[Tab]

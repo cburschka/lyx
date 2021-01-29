@@ -1,5 +1,7 @@
 # Test for searching with regular expressions
 # Test for #8381
+UseShortcut "C-F20" "regexp-mode"
+PrepareShortcuts
 
 Lang sk_SK.utf8
 CO: findadv-21.ctrl
@@ -24,7 +26,7 @@ KK: \CF
 KK: \At\Ai\Ah
 KK: \CF
 KK: \Aoe
-KK: \Axregexp-mode\[Return][a-z]* \[Return]\[Return]
+KK: \C\[F20][a-z]* \[Return]\[Return]
 Cr: ^.*Putting
 #Cr: ^.*action=buffer-begin
 CP: Putting selection at cur= inset: .* idx: 0 par: 3 pos: 0\n with len: 4
@@ -39,7 +41,7 @@ KK: \CF\[Delete]
 #KK: \At\Ai\Ah
 #KK: \CF
 KK: \Aol
-KK: \Axregexp-mode\[Return][a-z]2  \Axregexp-mode\[Return][a-z]+
+KK: \C\[F20][a-z]2  \C\[F20][a-z]+
 KK: \[Return]\[Return]\[Return]\[Return]\[Return]\[Return]
 Cr: ^.*Putting
 CP: Putting selection at cur= inset: .* idx: 0 par: 6 pos: 0\n with len: 8

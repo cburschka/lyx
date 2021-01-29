@@ -1,5 +1,8 @@
 # Finding special latex/regexp chars: \
 #
+UseShortcut "C-F20" "regexp-mode"
+PrepareShortcuts
+
 Lang it_IT.utf8
 CO: findadv-re-02.ctrl
 TestBegin test.lyx -dbg key,find > findadv-re-02.loga.txt 2>&1
@@ -7,7 +10,7 @@ CN: Part 1
 KK: \\()[]{}%^#@?*.\C\[Home]
 KK: \Cs
 KK: \CF
-KK: \Axregexp-mode\[Return]\\\\\[Return]
+KK: \C\[F20]\\\\\[Return]
 CP: Putting selection at .*idx: 0 par: 0 pos: 0\n with len: 1
 TestEnd
 #
@@ -19,7 +22,7 @@ KK: \CF
 # Uncheck ignore format
 KK: \At\Ai\Ah
 KK: \CF
-KK: \Axregexp-mode\[Return]\\\\\[Return]
+KK: \C\[F20]\\\\\[Return]
 CP: Putting selection at .*idx: 0 par: 0 pos: 0\n with len: 1
 TestEnd
 
@@ -30,7 +33,7 @@ TestBegin test.lyx -dbg key,find >> findadv-re-02.loga.txt 2>&1
 CN: Part 3
 CO: >> findadv-re-02.ctrl
 KK: \CF
-KK: \Axregexp-mode\[Return]%\[Return]
+KK: \C\[F20]%\[Return]
 CP: Putting selection at .*idx: 0 par: 0 pos: 7\n with len: 1
 TestEnd
 #
@@ -42,7 +45,7 @@ KK: \CF
 # Uncheck ignore format
 KK: \At\Ai\Ah
 KK: \CF
-KK: \Axregexp-mode\[Return]%\[Return]
+KK: \C\[F20]%\[Return]
 CP: Putting selection at .*idx: 0 par: 0 pos: 7\n with len: 1
 TestEnd
 
@@ -53,7 +56,7 @@ CO: >> findadv-re-02.ctrl
 TestBegin test.lyx -dbg key,find >> findadv-re-02.loga.txt 2>&1
 CN: Part 5
 KK: \CF
-KK: \Axregexp-mode\[Return]\\^\[Return]
+KK: \C\[F20]\\^\[Return]
 CP: Putting selection at .*idx: 0 par: 0 pos: 8\n with len: 1
 TestEnd
 #
@@ -65,7 +68,7 @@ KK: \CF
 # Uncheck ignore format
 KK: \At\Ai\Ah
 KK: \CF
-KK: \Axregexp-mode\[Return]\\^\[Return]
+KK: \C\[F20]\\^\[Return]
 CP: Putting selection at .*idx: 0 par: 0 pos: 8\n with len: 1
 TestEnd
 Lang C
