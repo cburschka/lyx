@@ -43,7 +43,7 @@ namespace lyx {
 class Branch {
 public:
 	///
-	Branch();
+	Branch() {}
 	///
 	docstring const & branch() const;
 	///
@@ -86,15 +86,15 @@ private:
 	///
 	docstring branch_;
 	///
-	bool selected_;
+	bool selected_ = false;
 	///
-	bool filenameSuffix_;
+	bool filenameSuffix_ = false;
 	/// light mode background color
-	std::string lmcolor_;
+	std::string lmcolor_ = "background";
 	/// dark mode background color
-	std::string dmcolor_;
+	std::string dmcolor_ = "background";
 	///
-	int branch_list_id_;
+	int branch_list_id_ = 0;
 };
 
 

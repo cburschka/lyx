@@ -27,14 +27,6 @@ using namespace std;
 
 namespace lyx {
 
-Branch::Branch()
-	: selected_(false), filenameSuffix_(false)
-{
-	lmcolor_ = "background";
-	dmcolor_ = "background";
-}
-
-
 docstring const & Branch::branch() const
 {
 	return branch_;
