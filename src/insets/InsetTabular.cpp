@@ -2884,9 +2884,14 @@ void Tabular::TeXCellPreamble(otexstream & os, idx_type cell,
 		os << "\\multirow{" << rowSpan(cell) << "}{";
 		if (!getPWidth(cell).zero())
 			os << from_ascii(getPWidth(cell).asLatexString());
-		else
-			// we need to set a default value
-			os << "*";
+		else {
+			if (column_info[c].varwidth)
+				// this inherits varwidth size
+				os << "=";
+			else
+				// we need to set a default value
+				os << "*";
+		}
 		os << "}";
 		if (!getMROffset(cell).zero())
 			os << "[" << from_ascii(getMROffset(cell).asLatexString()) << "]";

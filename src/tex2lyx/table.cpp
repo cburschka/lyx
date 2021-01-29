@@ -1335,7 +1335,7 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 					parse.skip_spaces(true);
 				}
 
-				if (width != "*")
+				if (width != "*" && width != "=")
 					colinfo[col].width = width;
 				if (!vmove.empty())
 					cellinfo[row][col].mroffset = vmove;
