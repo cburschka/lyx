@@ -318,11 +318,43 @@ def checkProg(description, progs, rc_entry=None, path=None, not_found =''):
                         addToRC(rc_entry[idx].replace('%%', ac_prog))
                     return [ac_dir, ac_word]
         # if not successful
-        logger.info(msg + ' no')
+        logger.info(msg + ' not in path')
     # write rc entries for 'not found'
     if len(rc_entry) > 0:  # the last one.
         addToRC(rc_entry[-1].replace('%%', not_found))
     return ['', not_found]
+
+
+def check_java():
+    """ Check for Java, don't give up as often as checkProg, using platform-dependent techniques """
+    if os.name == 'nt':
+        # Check in the registry.
+        try:  # Python 3.
+            import winreg
+        except ImportError:  # Python 2.
+            import _winreg as winreg
+
+        potential_keys_64b = ["SOFTWARE\\JavaSoft\\Java Runtime Environment", "SOFTWARE\\JavaSoft\\Java Development Kit",
+                              "SOFTWARE\\JavaSoft\\JDK", "SOFTWARE\\JavaSoft\\JRE"]
+        potential_keys_32b = [k.replace('SOFTWARE', 'SOFTWARE\\WOW6432Node') for k in potential_keys_64b]
+        potential_keys = potential_keys_64b + potential_keys_32b
+
+        reg_hive = winreg.HKEY_LOCAL_MACHINE
+        for key in potential_keys:
+            try:
+                with winreg.OpenKey(reg_hive, key) as reg_key:
+                    version = winreg.QueryValueEx(reg_key, "CurrentVersion")[0]
+                with winreg.OpenKey(reg_hive, key + '\\' + version) as reg_key:
+                    java_bin = winreg.QueryValueEx(reg_key, "JavaHome")[0] + '\\bin\\java.exe'
+                    logger.info('+checking for java: found in Windows registry, ' + str(java_bin))
+                    return java_bin
+            except OSError:
+                pass
+
+        # The test failed, no Java found.
+        return ''
+    else:
+        return ''
 
 
 def checkProgAlternatives(description, progs, rc_entry=None,
@@ -413,7 +445,7 @@ def checkProgAlternatives(description, progs, rc_entry=None,
                     break
             if found_alt:
                 break
-        if found_alt == False:
+        if not found_alt:
             # if not successful
             logger.info(msg + ' no')
     if found_prime:
@@ -1960,6 +1992,8 @@ Format %i
     LATEX = checkLatex(dtl_tools)
     # check java and perl before any checkProg that may require them
     java = checkProg('a java interpreter', ['java'])[1]
+    if java == '':
+        java = check_java()
     perl = checkProg('a perl interpreter', ['perl'])[1]
     (inkscape_path, inkscape_gui) = os.path.split(checkInkscape())
     # On Windows, we need to call the "inkscape.com" wrapper
