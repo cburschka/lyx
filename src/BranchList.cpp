@@ -113,7 +113,7 @@ void Branch::setColors(string const & lmcol, string const & dmcol)
 	else if (lmcolor.size() != 7 || lmcolor[0] != '#')
 		lmcolor = lcolor.getX11HexName(lcolor.getFromLyXName(lmcolor));
 	if (dmcolor == "none")
-		lmcolor = lcolor.getX11HexName(Color_background, true);
+		dmcolor = lcolor.getX11HexName(Color_background, true);
 	else if (dmcolor.size() != 7 || dmcolor[0] != '#')
 		dmcolor = lcolor.getX11HexName(lcolor.getFromLyXName(dmcolor), true);
 
