@@ -34,8 +34,7 @@ namespace lyx {
 namespace frontend {
 
 LengthValidator::LengthValidator(QWidget * parent)
-	: QValidator(parent),
-	  no_bottom_(true), glue_length_(false), unsigned_(false)
+	: QValidator(parent)
 {}
 
 

@@ -61,18 +61,18 @@ public:
 	//@{
 	void setBottom(Length const &);
 	void setBottom(GlueLength const &);
-        Length bottom() const { return bottom_; }
+	Length bottom() const { return bottom_; }
 	void setUnsigned(bool const u) { unsigned_ = u; }
-        void setPositive(bool const u) { positive_ = u; }
+	void setPositive(bool const u) { positive_ = u; }
 	//@}
 
 private:
-        Length bottom_;
-        GlueLength glue_bottom_;
-	bool no_bottom_;
-	bool glue_length_;
-	bool unsigned_;
-        bool positive_;
+	Length bottom_;
+	GlueLength glue_bottom_;
+	bool no_bottom_ = true;
+	bool glue_length_ = false;
+	bool unsigned_ = false;
+	bool positive_ = false;
 };
 
 
