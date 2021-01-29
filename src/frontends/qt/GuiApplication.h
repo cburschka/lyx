@@ -269,9 +269,9 @@ struct IconInfo {
 	/// Absolute path to icon file
 	QString filepath;
 	/// Swap the icon in RTL mode
-	bool swap;
+	bool swap = false;
 	/// Invert the icon in dark mode
-	bool invert;
+	bool invert = false;
 };
 
 /// \return the pixmap for the given path, name and extension.
