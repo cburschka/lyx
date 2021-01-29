@@ -54,7 +54,9 @@ Format 5
 # Paragraph menu
 #
 
+# We are using here "M-o" as a prefix, so unbind the following
 \unbind "M-o" "inset-settings"
+
 \bind "C-M-i" "inset-settings"
 #\bind "M-o l"                   "paragraph-params \align left"
 #\bind "M-o r"                   "paragraph-params \align right"
@@ -129,7 +131,6 @@ Format 5
 \bind "M-o Up"                  "outline-up"
 \bind "M-o Down"                "outline-down"
 
-\bind "M-o Return"              "command-alternatives environment-split ; environment-split previous"
 \bind "M-o S-Return"            "environment-split outer"
 
 #
