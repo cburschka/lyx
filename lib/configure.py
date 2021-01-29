@@ -753,6 +753,7 @@ def checkFormatEntries(dtl_tools):
 \Format docbook5   xml    "DocBook 5"             "" ""	"%%"	"document,menu=export"	"application/docbook+xml"
 \Format dot        dot    "Graphviz Dot"          "" ""	"%%"	"vector"	"text/vnd.graphviz"
 \Format dviluatex  tex    "LaTeX (dviluatex)"     "" "" "%%"	"document,menu=export"	""
+\Format epub       epub    ePub                   "" "" "%%"    "document,menu=export"  "application/epub+zip"
 \Format platex     tex    "LaTeX (pLaTeX)"        "" "" "%%" 	"document,menu=export"	""
 \Format literate   nw      NoWeb                  N  ""	"%%"	"document,menu=export"	""
 \Format sweave     Rnw    "Sweave"                S  "" "%%"	"document,menu=export"	""
@@ -1004,6 +1005,10 @@ def checkConverterEntries():
     #
     checkProg('DocBook converter -> PDF (docbook)', ['pandoc -f docbook -t latex --latex-engine=lualatex --toc -o $$o $$i'],
         rc_entry = [ r'\converter docbook5      pdf9      "%%"	""' ])
+    #
+    global java
+    if java != '':
+        addToRC('\\converter docbook5 epub "python $$s/scripts/docbook2epub.py \\"' + java + '\\" $$i $$o" ""')
     #
     checkProg('a MS Word Office Open XML converter -> LaTeX', ['pandoc -s -f docx -o $$o -t latex $$i'],
         rc_entry = [ r'\converter word2      latex      "%%"	""' ])
