@@ -93,7 +93,7 @@ static mouse_button::state q_button_state(Qt::MouseButton button)
 		case Qt::LeftButton:
 			b = mouse_button::button1;
 			break;
-		case Qt::MidButton:
+		case Qt::MiddleButton:
 			b = mouse_button::button2;
 			break;
 		case Qt::RightButton:
@@ -112,7 +112,7 @@ mouse_button::state q_motion_state(Qt::MouseButtons state)
 	mouse_button::state b = mouse_button::none;
 	if (state & Qt::LeftButton)
 		b |= mouse_button::button1;
-	if (state & Qt::MidButton)
+	if (state & Qt::MiddleButton)
 		b |= mouse_button::button2;
 	if (state & Qt::RightButton)
 		b |= mouse_button::button3;
@@ -1549,7 +1549,7 @@ TabWorkArea::TabWorkArea(QWidget * parent)
 
 void TabWorkArea::mousePressEvent(QMouseEvent *me)
 {
-	if (me->button() == Qt::MidButton)
+	if (me->button() == Qt::MiddleButton)
 		midpressed_tab_ = tabBar()->tabAt(me->pos());
 	else
 		QTabWidget::mousePressEvent(me);
@@ -1558,7 +1558,7 @@ void TabWorkArea::mousePressEvent(QMouseEvent *me)
 
 void TabWorkArea::mouseReleaseEvent(QMouseEvent *me)
 {
-	if (me->button() == Qt::MidButton) {
+	if (me->button() == Qt::MiddleButton) {
 		int const midreleased_tab = tabBar()->tabAt(me->pos());
 		if (midpressed_tab_ == midreleased_tab && posIsTab(me->pos()))
 			closeTab(midreleased_tab);
