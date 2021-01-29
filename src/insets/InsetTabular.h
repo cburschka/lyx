@@ -74,7 +74,7 @@ public:
 	///
 	void toggleMultiRow(bool m) { isMultiRow = m; }
 	///
-	void setContentAlignment(LyXAlignment al) {contentAlign = al; }
+	void setContentAlignment(LyXAlignment al) { contentAlign = al; }
 	/// writes the contents of the cell as a string, optionally
 	/// descending into insets
 	docstring asString(bool intoInsets = true);

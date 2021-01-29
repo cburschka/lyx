@@ -977,7 +977,7 @@ void InsetText::updateBuffer(ParIterator const & it, UpdateType utype, bool cons
 			cnt.restoreLastLayout();
 			// FIXME cnt.restoreLastCounter()?
 		}
-		// Record in this inset is embedded in a title layout
+		// Record if this inset is embedded in a title layout
 		// This is needed to decide when \maketitle is output.
 		intitle_context_ = it.paragraph().layout().intitle;
 		// Also check embedding layouts

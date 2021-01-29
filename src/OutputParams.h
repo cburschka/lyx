@@ -121,7 +121,7 @@ public:
 	*/
 	mutable bool need_maketitle = false;
 
-	/** have_maketitle == true means that \maketitle already hase been output.
+	/** have_maketitle == true means that \maketitle already has been output.
 	*/
 	mutable bool have_maketitle = false;
 
