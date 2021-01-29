@@ -5007,6 +5007,8 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 	cbuf.tocBackend().update(true, utype);
 	if (scope == UpdateMaster)
 		cbuf.structureChanged();
+
+	d->need_update = false;
 }
 
 
