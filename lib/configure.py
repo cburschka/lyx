@@ -275,7 +275,7 @@ def checkProg(description, progs, rc_entry=None, path=None, not_found =''):
                      "for each prog and not_found.")
         sys.exit(2)
     logger.info('checking for ' + description + '...')
-    ## print '(' + ','.join(progs) + ')',
+    logger.debug('(' + ','.join(progs) + ')')
     additional_path = path
     path = os.environ["PATH"].split(os.pathsep) + additional_path
     extlist = ['']
@@ -343,7 +343,7 @@ def checkProgAlternatives(description, progs, rc_entry=None,
         logger.error("rc entry should have one item or item for each prog and not_found.")
         sys.exit(2)
     logger.info('checking for ' + description + '...')
-    ## print '(' + ','.join(progs) + ')',
+    logger.debug('(' + ','.join(progs) + ')')
     additional_path = path
     path = os.environ["PATH"].split(os.pathsep) + additional_path
     extlist = ['']
