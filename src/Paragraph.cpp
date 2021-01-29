@@ -56,6 +56,7 @@
 
 #include "support/debug.h"
 #include "support/docstring_list.h"
+#include "support/ExceptionMessage.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
@@ -591,10 +592,12 @@ struct ChangesMonitor {
 		 * 2. and we are not in the situation where the buffer has changes
 		 * and new changes are added to the paragraph.
 		 */
-		if (par_.isChanged() != was_changed_
-		    && par_.inInset().isBufferValid()
-		    && !(par_.inInset().buffer().areChangesPresent() && par_.isChanged()))
-			par_.inInset().buffer().forceUpdate();
+		try {
+			if (par_.isChanged() != was_changed_
+				&& par_.inInset().isBufferValid()
+				&& !(par_.inInset().buffer().areChangesPresent() && par_.isChanged()))
+				par_.inInset().buffer().forceUpdate();
+		} catch(support::ExceptionMessage const &) {}
 	}
 
 private:
