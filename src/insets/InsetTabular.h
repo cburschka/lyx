@@ -72,6 +72,8 @@ public:
 	///
 	void addToToc(DocIterator const & di, bool output_active,
 				  UpdateType utype, TocBackend & backend) const;
+	/// This assures we never output \maketitle in table cells
+	bool isInTitle() const { return true; }
 private:
 	/// unimplemented
 	InsetTableCell();
