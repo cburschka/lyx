@@ -2943,6 +2943,8 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 			} else {
 				undo().recordUndoBufferParams(CursorData());
 				branch_list.add(branch_name);
+				branch = branch_list.find(branch_name);
+				branch->setColors("background", "background");
 				dr.setError(false);
 				dr.screenUpdate(Update::Force);
 			}
