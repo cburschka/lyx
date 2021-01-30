@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 605
+\lyxformat 606
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -10389,6 +10389,8 @@ status collapsed
 
 \change_inserted -712698321 1611646837
 InputGlobal
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -10401,6 +10403,8 @@ status collapsed
 
 \change_inserted -712698321 1611646804
 <filename>
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -10413,6 +10417,8 @@ status collapsed
 
 \change_inserted -712698321 1611646804
 Input
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -10426,6 +10432,8 @@ status collapsed
 
 \change_inserted -712698321 1611646804
 name.layout
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -10438,6 +10446,8 @@ status collapsed
 
 \change_inserted -712698321 1611646804
 name.inc
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -10451,6 +10461,8 @@ status collapsed
 
 \change_inserted -712698321 1611646853
 InputGlobal name
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -10463,6 +10475,8 @@ status collapsed
 
 \change_inserted -712698321 1611646855
 InputGlobal name.inc
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -10475,6 +10489,8 @@ status collapsed
 
 \change_inserted -712698321 1611646804
 Input
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -10634,6 +10650,57 @@ noprefix "false"
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1612018485
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1612018457
+ModifyInsetLayout
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1612018466
+<type>
+\end_layout
+
+\end_inset
+
+] Modifies the layout of an inset.
+ If the layout does not exist, this section is ignored.
+ Must end with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1612018452
+End
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -11212,6 +11279,61 @@ EndPreamble
 \end_inset
 
 .
+\change_inserted -712698321 1612018500
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1612018547
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1612018506
+ProvideInsetLayout
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1612018509
+<type>
+\end_layout
+
+\end_inset
+
+] Defines the layout of an inset if it does not already exist.
+ If the layout does exist, this section is ignored.
+ Must end with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1612018500
+End
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description

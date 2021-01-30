@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 605
+\lyxformat 606
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -8493,6 +8493,41 @@ noprefix "false"
 status collapsed
 
 \begin_layout Plain Layout
+ModifyInsetLayout
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<Typ>
+\end_layout
+
+\end_inset
+
+] Ändert die Eigenschaften des angegebenen Layouts einer Einfügung.
+ Wenn dieses nicht existiert, wird die Anweisung ignoriert.
+ Muss mit 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+End
+\end_layout
+
+\end_inset
+
+ beendet werden.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 ModifyStyle
 \end_layout
 
@@ -8947,6 +8982,51 @@ status collapsed
 
 \begin_layout Plain Layout
 EndPreamble
+\end_layout
+
+\end_inset
+
+ beendet werden.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ProvideInsetLayout
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<Typ>
+\end_layout
+
+\end_inset
+
+] Erstellt das Layout einer Einfügung, falls es noch nicht existiert.
+ Existiert es bereits, wird 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ProvideInsetLayout
+\end_layout
+
+\end_inset
+
+ ignoriert.
+ Muss mit 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+End
 \end_layout
 
 \end_inset
