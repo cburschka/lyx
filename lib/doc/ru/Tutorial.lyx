@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 606
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -3192,9 +3192,9 @@ Enter
  и выберите 
 \family sans
 Вставка\SpecialChar menuseparator
-Списки\SpecialChar breakableslash
-содержание\SpecialChar breakableslash
-библиографии\SpecialChar menuseparator
+Содержание\SpecialChar breakableslash
+библиография\SpecialChar breakableslash
+список\SpecialChar menuseparator
 Содержание
 \family default
 .
@@ -3752,7 +3752,7 @@ arg   "toolbar-toggle math_panels"
 \end_layout
 
 \begin_layout Subsection
-Корни, диакритические знаки и ограничители 
+Корни, диакритические знаки и скобки 
 \end_layout
 
 \begin_layout Standard
@@ -3803,11 +3803,11 @@ arg   "math-insert \\hat"
 \end_layout
 
 \begin_layout Standard
-Ограничители, такие как круглые, квадратные и фигурные скобки, работают
- подобным образом, но чуть более сложно.
+Скобки, такие как круглые, квадратные или фигурные, работают подобным образом,
+ но чуть более сложно.
  Для появления окна 
 \family sans
-Ограничители
+Скобки
 \family default
  нажмите кнопку 
 \begin_inset Info
@@ -3816,7 +3816,7 @@ arg   "dialog-show mathdelimiter"
 \end_inset
 
 .
- Ваш текущий выбор ограничителей отображается вверху окна.
+ Ваш текущий выбор скобок отображается вверху окна.
  По умолчанию — это пара круглых скобок, но вы может выбрать пару фигурных
  скобок, фигурную и круглую скобку, или даже выбрать пустой квадрат, чтобы
  получить что-то вроде 
@@ -3832,22 +3832,22 @@ arg   "dialog-show mathdelimiter"
 \end_inset
 
  (пустой ограничитель отображается в \SpecialChar LyX
- как прерывистая чёрная линия, но она
- не будет показана на печати).
+ как линия из точек, но она не будет
+ показана на печати).
 \end_layout
 
 \begin_layout Standard
 Если вы ленивы — можете набрать круглые скобки в математическом режиме на
  клавиатуре, без помощи окна 
 \family sans
-Ограничител
+Скобки
 \family default
-и.
+.
  Однако эти круглые скобки будут того же размера, что и обычный текст, и
  они будут плохо выглядеть, если вы заключили в скобки большую дробь или
  матрицу.
- Поэтому лучше воспользоваться одной из трёх кнопок ограничителей, которые
- вставляют их сразу, например 
+ Поэтому лучше воспользоваться одной из трёх кнопок, которые сразу вставляют
+ нужный вид скобок, например 
 \begin_inset Info
 type  "icon"
 arg   "math-delim ( )"
@@ -3857,8 +3857,8 @@ arg   "math-delim ( )"
 \end_layout
 
 \begin_layout Standard
-Также вы можете вставить ограничители, знаки корня или диакритические знаки
- в уже существующий текст.
+Также вы можете вставить скобки, знаки корня или диакритические знаки в
+ уже существующий текст.
  Выделите желаемую часть формулы и нажмите на нужной кнопке панели.
  Попробуйте этот способ для преобразования Второго закона Ньютона из скалярной
  в векторную форму (
@@ -5026,9 +5026,9 @@ bib
 -файлов выберите 
 \family sans
 Вставка\SpecialChar menuseparator
-Списки\SpecialChar breakableslash
-содержание\SpecialChar breakableslash
-библиографии\SpecialChar menuseparator
+Содержание\SpecialChar breakableslash
+библиография\SpecialChar breakableslash
+список\SpecialChar menuseparator
 Библиография
 \begin_inset space ~
 \end_inset

@@ -1,9 +1,9 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 600
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin unavailable
+\origin /systemlyxdir/doc/ru/
 \textclass scrbook
 \begin_preamble
 % that links to image floats jumps
@@ -152,9 +152,13 @@
  {\usepackage{diagbox}
   \setboolean{diagbox}{true}}
  {\setboolean{diagbox}{false}}
-% Added by lyx2lyx
-\setlength{\parskip}{\medskipamount}
-\setlength{\parindent}{0pt}
+
+% caption separator in floats
+\usepackage[labelsep=space]{caption}
+
+% Use serif font
+\addtokomafont{disposition}{\rmfamily}
+\addtokomafont{descriptionlabel}{\rmfamily}
 \end_preamble
 \options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,dvipsnames,table
 \use_default_options false
@@ -163,11 +167,11 @@ initials
 graphicboxes
 varwidth
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language russian
 \language_package default
 \inputencoding utf8
-\fontencoding global
+\fontencoding auto
 \font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -175,28 +179,32 @@ varwidth
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
-\use_microtype false
+\use_microtype true
 \use_dash_ligatures false
 \graphics default
-\default_output_format default
+\default_output_format pdf2
 \output_sync 0
 \bibtex_command default
 \index_command makeindex
+\float_placement class
+\float_alignment class
 \paperfontsize 12
 \spacing single
 \use_hyperref true
-\pdf_title "LyX's Figure, Table, Floats, Notes, and Boxes manual"
-\pdf_author "LyX Team, Uwe Stöhr"
-\pdf_subject "LyX-documentation about figures, tables, floats, notes, and boxes"
-\pdf_keywords "LyX, Tables, Figures, Floats, Boxes, Notes"
+\pdf_title "Руководство по объектам LyX"
+\pdf_author "Команда разработки LyX"
+\pdf_subject "Документация LyX - Руководство по объектам"
+\pdf_keywords "LyX"
 \pdf_bookmarks true
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 1
-\pdf_breaklinks false
+\pdf_breaklinks true
 \pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
@@ -224,6 +232,7 @@ varwidth
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_lineno 0
 \notefontcolor #0000ff
 \index Index
 \shortcut idx
@@ -231,8 +240,8 @@ varwidth
 \end_index
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation indent
-\paragraph_indentation default
+\paragraph_separation skip
+\defskip halfline
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style russian
@@ -240,18 +249,21 @@ varwidth
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes true
+\tablestyle default
+\tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
-\html_be_strict false
-\author 2089656932 "User"
+\html_be_strict true
+\docbook_table_output 0
 \end_header
 
 \begin_body
 
 \begin_layout Title
-Подробное руководство по рисункам, таблицам, плавающим объектам, заметкам,
+Расширенное руководство по рисункам, таблицам, плавающим объектам, заметкам,
  блокам и внешнему материалу \SpecialChar LyX
 
 \end_layout
@@ -294,16 +306,6 @@ literal "false"
 \end_inset
 
 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-автор: Uwe Stöhr
-\end_layout
-
-\end_inset
-
-
 \begin_inset Newline newline
 \end_inset
 
@@ -311,9 +313,7 @@ status collapsed
 \begin_inset Newline newline
 \end_inset
 
-Версия
-\family sans
- 2.4.x
+Версия 2.4.x
 \end_layout
 
 \begin_layout Standard
@@ -362,17 +362,8 @@ sidecap
 \series default
 .
  Если они не установлены, вы все равно можете экспортировать документ, но
- разделы, в которых требуются пакеты, не будут отображаться в выводе.
-\end_layout
-
-\begin_layout Plain Layout
-Последнюю PDF-версию этого документа можно найти здесь:
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-https://wiki.lyx.org/LyX/Manuals#EmbeddedObjects
+ разделы, в которых требуются пакеты, не будут отображаться в результирующем
+ документе.
 \end_layout
 
 \end_inset
@@ -383,7 +374,7 @@ https://wiki.lyx.org/LyX/Manuals#EmbeddedObjects
 \begin_layout Chapter
 Рисунки
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Рисунки
@@ -393,10 +384,10 @@ status open
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Графика|see
+Изображения|see
 \begin_inset ERT
 status collapsed
 
@@ -427,12 +418,20 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-Графический диалог
+Диалоговое окно 
+\begin_inset Quotes rld
+\end_inset
+
+Изображение
+\begin_inset Quotes rrd
+\end_inset
+
+
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Рисунки ! графический диалог
+Рисунки ! создание
 \end_layout
 
 \end_inset
@@ -461,13 +460,14 @@ arg   "dialog-show-new-inset graphics"
 Изображение
 \family default
 .
- После этого появится диалоговое окно выбора файла для загрузки.
+ После этого появится диалоговое окно для задания используемого файла с
+ изображением.
  Изображение появится в выходе точно в том месте, где оно находится в тексте.
 \end_layout
 
 \begin_layout Standard
-Графический диалог можно вызвать в любое время, щелкнув на изображении.
- Это диалоговое окно содержит три вкладки:
+Это диалоговое окно можно вызвать в любое время, щелкнув на изображении.
+ Оно содержит три вкладки:
 \end_layout
 
 \begin_layout Description
@@ -478,7 +478,7 @@ arg   "dialog-show-new-inset graphics"
  Здесь вы можете выбрать файл изображения и настроить его внешний вид для
  вывода.
  Доступные единицы измерения для задания размера изображения объяснены в
- приложении.
+ приложении
 \begin_inset space ~
 \end_inset
 
@@ -495,7 +495,7 @@ reference "cha:Units-available-in"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Рисунки ! повернутые
@@ -503,7 +503,7 @@ status open
 
 \end_inset
 
-Вы можете вращать изображения против часовой стрелки, задав угол поворота
+Вы можете вращать изображения, задав угол поворота (против часовой стрелки)
  и исходную точку поворота.
  Изображение также будет повернуто внутри \SpecialChar LyX
 .
@@ -512,7 +512,7 @@ status open
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Рисунки ! масштабированные
@@ -525,7 +525,7 @@ status open
  Если вы установите только ширину или только высоту, другой размер будет
  определен автоматически.
  Если вы установите оба параметра, то изображение будет преобразовано до
- заданного размера, возможно, искажая его.
+ заданного размера, возможно c искажением пропорций.
  Чтобы изображение не искажалось, используйте параметр 
 \family sans
 Сохранять пропорции
@@ -574,7 +574,7 @@ status open
 \family sans
 Обрезать по координатам
 \family default
- распечатает только область изображения в пределах заданных координат.
+ задаст вывод только области изображения в пределах указанных координат.
  Обычно не требуется беспокоиться о координатах изображения, так что эту
  вкладку можно игнорировать.
 \end_layout
@@ -608,7 +608,7 @@ LyX
 \family sans
 Черновой режим
 \family default
- позволяет отображать изображение на выходе только в виде пустой рамки по
+ позволяет отображать изображение на выводе только в виде пустой рамки по
  размеру изображения.
 \begin_inset Newline newline
 \end_inset
@@ -620,7 +620,7 @@ LyX
  вы можете определить группу настроек изображения или выбрать одну из существующ
 их.
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Рисунки ! группировка настроек
@@ -631,10 +631,10 @@ status open
  Изображения в такой группе имеют общие настройки, поэтому настройка одного
  изображения в группе автоматически корректирует и все остальные изображения
  в группе.
- Таким образом, вы можете, например, изменить размер группы изображений
- без необходимости вручную изменять каждое из них.
+ То есть, вы можете изменить размер многих изображений сразу без необходимости
+ вручную настраивать каждое из них.
  Присоединиться к существующей группе также можно с помощью контекстного
- меню изображения, обращая внимание на название нужной группы.
+ меню изображения, используя название нужной группы.
 \end_layout
 
 \begin_layout Standard
@@ -715,7 +715,7 @@ name "sec:Figure-Floats"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Плавающие объекты ! рисунки
@@ -725,7 +725,7 @@ status open
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Рисунки ! плавающие объекты
@@ -765,8 +765,8 @@ arg   "float-insert figure"
 Плавающий объект\SpecialChar menuseparator
 Рисунок
 \family default
- вставляет плавающий объект с подписью, имеющей метку «Рисунок #:» (# —
- это фактическое число).
+ вставляет плавающий объект с подписью, имеющей метку «Рисунок № – ...» (№
+ — это его номер).
  Вы можете вставить изображение над подписью, как на рисунке
 \begin_inset space ~
 \end_inset
@@ -807,6 +807,8 @@ reference "sec:Caption-Placement"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -850,6 +852,8 @@ name "fig:A-star-in"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -893,7 +897,7 @@ name "fig:A-3D-object"
 
 \begin_layout Standard
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Ссылки ! на рисунки
@@ -919,8 +923,8 @@ reference "fig:A-3D-object"
 
 \end_inset
 
-, являются примерами ссылочных рисунков.
- На рисунки можно ссылаться в тексте, ссылаясь на их ярлыки.
+, являются примерами рисунков с ссылками на них в тексте.
+ На рисунки можно ссылаться, используя их метки.
  Для этого вставьте метку в подпись, используя меню 
 \family sans
 Вставка\SpecialChar menuseparator
@@ -948,7 +952,7 @@ arg   "dialog-show-new-inset ref"
  Важно использовать именно такие ссылки на плавающие объекты, а не расплывчатые
  ссылки, вроде «рисунок, приведенный выше», потому что, в конечном счете,
  именно \SpecialChar LaTeX
- будет размещать плавающие объекты в окончательном документе, и
+ будет размещать плавающие объекты в результирующем документе, и
  они могут вообще не быть «выше».
 \begin_inset Newline newline
 \end_inset
@@ -971,8 +975,11 @@ reference "sec:Referencing-Floats"
 Обычно в плавающем рисунке размещается только одно изображение, но иногда
  может потребоваться использовать два изображения с отдельными подзаголовками.
  Это можно сделать, вставив плавающие рисунки в существующие плавающие рисунки.
- Обратите внимание, что в общий Список рисунков документа добавляется только
- основная подпись плавающего объекта.
+ Обратите внимание, что в 
+\emph on
+Список рисунков
+\emph default
+ документа добавляется только основная подпись плавающего объекта.
  Рисунок
 \begin_inset space ~
 \end_inset
@@ -1009,6 +1016,8 @@ reference "fig:A-star"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -1019,6 +1028,8 @@ status open
 
 
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -1061,6 +1072,8 @@ name "fig:Pink-object"
 
 
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -1115,7 +1128,7 @@ name "fig:Two-distorted-images"
 \end_inset
 
 Два искаженных изображения; оба находятся в группе настроек изображения
- с названием «distorted».
+ с названием «distorted»
 \end_layout
 
 \end_inset
@@ -1145,7 +1158,7 @@ name "sec:Image-Formats"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Форматы изображений
@@ -1155,7 +1168,7 @@ status open
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Рисунки ! форматы изобажений
@@ -1167,7 +1180,7 @@ status open
 \end_layout
 
 \begin_layout Standard
-Вы можете располагать изображения в файлах любого известного формата.
+Вы можете вставлять изображения в любом известном формате.
  Но, как объяснено в приложении
 \begin_inset space ~
 \end_inset
@@ -1179,7 +1192,7 @@ reference "cha:Output-File-Formats"
 
 \end_inset
 
-, каждый формат выходного документа допускает только несколько форматов
+, для каждого формата выходного документа допустимы только несколько форматов
  изображений.
  Поэтому \SpecialChar LyX
  использует программу 
@@ -1188,8 +1201,8 @@ ImageMagick
 \family default
  в фоновом режиме для преобразования изображений в нужный формат.
  Чтобы ускорить рабочий процесс, избегая этих преобразований в фоновом режиме,
- можно использовать только те форматы изображений, которые могут быть напрямую
- встроены в формат выходного файла.
+ желательно использовать только те форматы изображений, которые могут быть
+ напрямую встроены в формат выходного файла.
  Форматы выходных файлов объяснены в приложении
 \begin_inset space ~
 \end_inset
@@ -1216,14 +1229,21 @@ reference "cha:Output-File-Formats"
 изображения состоят из значений пикселей, часто в упакованном виде.
  Поэтому они не полностью масштабируемы и выглядят мозаичными при большом
  увеличении.
- Хорошо известными форматами растровых изображений являются “Graphics Interchang
-e Format” (GIF, расширение файла «
+ Хорошо известными форматами растровых изображений являются 
+\begin_inset Quotes rld
+\end_inset
+
+Graphics Interchange Format
+\begin_inset Quotes rrd
+\end_inset
+
+ (GIF, расширение файла «
 \family typewriter
 .gif
 \family default
-»).
+»)
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 GIF|see
@@ -1254,11 +1274,11 @@ status collapsed
 \end_inset
 
 , 
-\begin_inset Quotes eld
+\begin_inset Quotes rld
 \end_inset
 
 Portable Network Graphics
-\begin_inset Quotes erd
+\begin_inset Quotes rrd
 \end_inset
 
  (PNG, расширение файла 
@@ -1275,7 +1295,7 @@ Portable Network Graphics
 
 )
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 PNG|see
@@ -1306,14 +1326,14 @@ status collapsed
 \end_inset
 
  и 
-\begin_inset Quotes eld
+\begin_inset Quotes rld
 \end_inset
 
 Joint Photographic Experts Group
-\begin_inset Quotes erd
+\begin_inset Quotes rrd
 \end_inset
 
- (JPG, расширение файла 
+ (JPEG, расширение файла 
 \begin_inset Quotes rld
 \end_inset
 
@@ -1326,11 +1346,11 @@ Joint Photographic Experts Group
 \end_inset
 
  или 
-\family typewriter
-
 \begin_inset Quotes rld
 \end_inset
 
+
+\family typewriter
 .jpeg
 \family default
 
@@ -1339,10 +1359,10 @@ Joint Photographic Experts Group
 
 )
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
-JPG|see
+JPEG|see
 \begin_inset ERT
 status collapsed
 
@@ -1378,28 +1398,28 @@ status collapsed
 \end_inset
 
 изображения состоят из векторов и поэтому могут масштабироваться до любого
- размера без потери данных.
+ размера без потери качества.
  Возможность масштабирования необходима, если вы хотите создавать презентации,
  потому что презентации всегда масштабируются видеопроектором.
  Масштабирование также полезно для онлайн-документов, чтобы пользователь
- мог изменять размеры диаграмм.
+ мог изменять масштаб диаграмм.
 \begin_inset Newline newline
 \end_inset
 
 Хорошо известные форматы масштабируемых изображений: 
-\begin_inset Quotes eld
-\end_inset
-
-Scalable Vector Graphics
-\begin_inset Quotes erd
-\end_inset
-
- (SVG, расширение файла 
-\family typewriter
-
 \begin_inset Quotes rld
 \end_inset
 
+Scalable Vector Graphics
+\begin_inset Quotes rrd
+\end_inset
+
+ (SVG, расширение файла 
+\begin_inset Quotes rld
+\end_inset
+
+
+\family typewriter
 .svg
 \family default
 
@@ -1408,7 +1428,7 @@ Scalable Vector Graphics
 
 )
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 SVG|see
@@ -1439,19 +1459,19 @@ status collapsed
 \end_inset
 
 , 
-\begin_inset Quotes eld
-\end_inset
-
-Encapsulated PostScript
-\begin_inset Quotes erd
-\end_inset
-
- (EPS, расширение файла 
-\family typewriter
-
 \begin_inset Quotes rld
 \end_inset
 
+Encapsulated PostScript
+\begin_inset Quotes rrd
+\end_inset
+
+ (EPS, расширение файла 
+\begin_inset Quotes rld
+\end_inset
+
+
+\family typewriter
 .eps
 \family default
 
@@ -1460,7 +1480,7 @@ Encapsulated PostScript
 
 )
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 EPS|see
@@ -1491,19 +1511,19 @@ status collapsed
 \end_inset
 
 , 
-\begin_inset Quotes eld
-\end_inset
-
-Portable Document Format
-\begin_inset Quotes erd
-\end_inset
-
- (PDF, расширение файла 
-\family typewriter
-
 \begin_inset Quotes rld
 \end_inset
 
+Portable Document Format
+\begin_inset Quotes rrd
+\end_inset
+
+ (PDF, расширение файла 
+\begin_inset Quotes rld
+\end_inset
+
+
+\family typewriter
 .pdf
 \family default
 
@@ -1512,7 +1532,7 @@ Portable Document Format
 
 )
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 PDF|see
@@ -1543,19 +1563,19 @@ status collapsed
 \end_inset
 
 , 
-\begin_inset Quotes eld
-\end_inset
-
-Windows Metafile
-\begin_inset Quotes erd
-\end_inset
-
- (WMF, расширение файла 
-\family typewriter
-
 \begin_inset Quotes rld
 \end_inset
 
+Windows Metafile
+\begin_inset Quotes rrd
+\end_inset
+
+ (WMF, расширение файла 
+\begin_inset Quotes rld
+\end_inset
+
+
+\family typewriter
 .wmf
 \family default
 
@@ -1564,10 +1584,10 @@ Windows Metafile
 
 )
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
-SVG|see
+WMF|see
 \begin_inset ERT
 status collapsed
 
@@ -1599,7 +1619,7 @@ status collapsed
  изображение в PDF или EPS-изображение, и результатом все равно будет растровое
  изображение.
  В таких случаях к исходному изображению добавляется только заголовок со
- свойствами изображения.
+ свойствами изображения
 \begin_inset Foot
 status collapsed
 
@@ -1618,26 +1638,23 @@ Adobe Photoshop
 \end_layout
 
 \begin_layout Standard
-Обычно невозможно преобразовать растровое изображение в масштабируемое,
- только наоборот.
+Обычно невозможно преобразовать растровое изображение в векторное, только
+ наоборот.
  Только форматы изображений PDF и EPS можно напрямую встроить в выходные
  файлы PDF и PostScript, соответственно.
  SVG- и WMF-изображения пересчитываются в растровые изображения при создании
- выходного файла, потому что в настоящее время не имеется подходящего конвертера
-\begin_inset Newline linebreak
+ выходного файла, потому что в настоящее время не существует конвертера
+ WMF/SVG
+\begin_inset Formula $\to$
 \end_inset
 
-
-\begin_inset Formula $\textrm{WMF/SVG}\to\textrm{PDF/EPS}$
-\end_inset
-
-.
+PDF/EPS.
 \end_layout
 
 \begin_layout Chapter
 Таблицы
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Таблица
@@ -1665,8 +1682,8 @@ arg   "tabular-insert"
 Таблица
 \family default
 .
- Кнопка на панели инструментов предлагает графический выбор: перемещайте
- мышь, выделяя столбцы и строки таблицы, которая должна быть создана, а
+ Кнопка на панели инструментов предлагает интерактивное задание размера
+ таблицы: перемещайте мышь для изменения количества столбцов и строк, а
  затем нажмите кнопку мыши.
  Когда для создания таблицы используется меню, появляется диалоговое окно
  с запросом количества строк и столбцов, также здесь можно выбрать 
@@ -1677,7 +1694,7 @@ arg   "tabular-insert"
 \end_layout
 
 \begin_layout Standard
-В таблице по умолчанию изображаются линии вокруг любой ячейки, а первая
+По умолчанию в таблице изображаются линии вокруг каждой ячейки, а первая
  строка отображается отделенной от остальной части таблицы двойной линией,
  состоящей из линии под ячейками первой строки и линией над ячейками второй
  строки.
@@ -1901,23 +1918,23 @@ C
 \end_layout
 
 \begin_layout Standard
-Другие доступные стили включают:
+Другие доступные стили:
 \end_layout
 
 \begin_layout Itemize
 \begin_inset Quotes rld
 \end_inset
 
-простую сетку
+простая сетка
 \begin_inset Quotes rrd
 \end_inset
 
-, которая выглядит как приведенная выше таблица, но без первой строки (разделенн
-ой двойной линией),
+, которая выглядит как приведенная выше таблица, но без отделения первой
+ строки двойной линией;
 \end_layout
 
 \begin_layout Itemize
-таблица без рамок и линий,
+таблица без рамок и линий;
 \end_layout
 
 \begin_layout Itemize
@@ -1958,12 +1975,20 @@ C
 \end_layout
 
 \begin_layout Section
-Табличный диалог
+Диалоговое окно 
+\begin_inset Quotes rld
+\end_inset
+
+Таблица
+\begin_inset Quotes rrd
+\end_inset
+
+
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Таблица ! диалог
+Таблица ! диалоговое окно
 \end_layout
 
 \end_inset
@@ -1972,7 +1997,7 @@ status open
 \end_layout
 
 \begin_layout Standard
-Вы можете изменить таблицу, щелкнув по ней правой кнопкой мыши, после чего
+Вы можете изменять таблицу, щелкнув по ней правой кнопкой мыши, после чего
  появится контекстное меню.
  Использование опции Формальный стиль преобразует таблицу в формальную,
  как описано в разд.
@@ -2044,7 +2069,7 @@ OK
 
 таблицы Здесь вы можете задать ширину таблицы
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Таблица ! ширина
@@ -2089,8 +2114,7 @@ reference "subsec:Multiple-Lines-in"
 \begin_inset Newline newline
 \end_inset
 
-Кроме того, вы можете пометить одну или несколько ячеек одной строки как
- многоколоночную, см.
+Кроме того, вы можете объединить несколько ячеек одной строки, см.
  разд.
 \begin_inset space \thinspace{}
 \end_inset
@@ -2102,7 +2126,7 @@ reference "subsec:Multicolumns"
 
 \end_inset
 
- , или ячейки одного столбца как многострочные ячейки, см.
+, или несколько ячеек одного столбца, см.
  разд.
 \begin_inset space \thinspace{}
 \end_inset
@@ -2451,13 +2475,13 @@ reference "sec:Special-Longtable-Issues"
 
 \end_inset
 
- подробно описываются возможности организации многостраничной таблицы.
+ подробно описываются возможности организации многостраничных таблиц.
 \end_layout
 
 \begin_layout Section
 Панель инструментов таблицы
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Таблица ! панель инструментов
@@ -2474,17 +2498,16 @@ status open
  Обычно появляется в нижней части главного окна \SpecialChar LyX
 , когда курсор находится
  внутри таблицы.
- Вы также можете включить его, чтобы он всегда отображался, щелкнув правой
- кнопкой мыши в строке главного меню \SpecialChar LyX
+ Вы также можете включить ее, чтобы она всегда отображалась, щелкнув правой
+ кнопкой мыши по строке главного меню \SpecialChar LyX
  и выбрав 
 \family sans
-Таблица (автоматически)
-\family default
-.
+Таблица\SpecialChar menuseparator
+Вкл.
 \end_layout
 
 \begin_layout Standard
-Эта панель инструментов содержит следующие значки:
+Эта панель инструментов содержит следующие кнопки:
 \end_layout
 
 \begin_layout Labeling
@@ -2604,7 +2627,7 @@ type  "icon"
 arg   "tabular-feature toggle-line-right"
 \end_inset
 
- добавляет линию с правой стороны текущей ячейки/строки или выделения
+ добавляет линию справа от текущей ячейки/строки или выделения
 \end_layout
 
 \begin_layout Labeling
@@ -2648,7 +2671,7 @@ type  "icon"
 arg   "tabular-feature reset-formal-default"
 \end_inset
 
- при использовании формальной таблицы сбрасывает границу до значения по
+ при использовании формальной таблицы сбрасывает границы до значения по
  умолчанию (только горизонтальные линии в верхней и нижней строках)
 \end_layout
 
@@ -2757,8 +2780,7 @@ type  "icon"
 arg   "tabular-feature multicolumn"
 \end_inset
 
- устанавливает (сбрасывает) текущую ячейку в (из) многостолбцовую или выделение
- в (из) многостолбцовое
+ объединяет столбцы выделенных ячеек
 \end_layout
 
 \begin_layout Labeling
@@ -2768,8 +2790,7 @@ type  "icon"
 arg   "tabular-feature multirow"
 \end_inset
 
- устанавливает (сбрасывает) текущую ячейку в (из) многострочную или выделение
- в (из) многострочное
+ объединяет строки выделенных ячеек
 \end_layout
 
 \begin_layout Standard
@@ -2794,7 +2815,7 @@ status open
 \begin_layout Section
 Меню редактирования таблицы
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Таблица ! меню редактирования
@@ -2811,8 +2832,12 @@ status open
 Правка\SpecialChar menuseparator
 Таблица
 \family default
- позволяет добавлять и удалять линии границ для текущей строки/столбца и
- устанавливать текущий выбор как многоколоночный.
+ позволяет добавлять и удалять линии границ для текущей строки/столбца,
+ объединять ячейки и т.
+\begin_inset space \thinspace{}
+\end_inset
+
+п.
  Меню доступно только тогда, когда курсор находится внутри таблицы.
 \end_layout
 
@@ -2826,7 +2851,7 @@ name "sec:Table-Floats"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Плавающие объекты ! таблицы
@@ -2836,7 +2861,7 @@ status open
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Таблица ! плавающая
@@ -2866,6 +2891,7 @@ reference "sec:FloatIntroduction"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -2880,7 +2906,7 @@ name "tab:a table float"
 
 \end_inset
 
-Плавающая таблица.
+Плавающая таблица
 \end_layout
 
 \end_inset
@@ -2957,16 +2983,7 @@ name "tab:a table float"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-Joe
+Интеграл
 \end_layout
 
 \end_inset
@@ -2975,16 +2992,7 @@ Joe
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-Mary
+Матрица
 \end_layout
 
 \end_inset
@@ -2993,16 +3001,7 @@ Mary
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-Ted
+Уравнение
 \end_layout
 
 \end_inset
@@ -3067,7 +3066,7 @@ c & d
 \bar no
 \noun off
 \color none
-\begin_inset Formula $1+1=2$
+\begin_inset Formula $1+x=2$
 \end_inset
 
 
@@ -3105,9 +3104,9 @@ arg   "float-insert table"
 \end_layout
 
 \begin_layout Standard
-Плавающий объект выглядит как складывающаяся коробка с заголовком «Таблица
- №: ...» (№ — это фактический номер таблицы).
- Вы можете вставлять таблицы в плавающий объект над или под заголовком.
+Плавающий объект выглядит как сворачивающийся блок.
+ Внутри расположена подпись «Таблица № – ...» (№ — это фактический номер таблицы).
+ Вы можете вставлять таблицы в плавающий объект под или над подписью.
 \end_layout
 
 \begin_layout Standard
@@ -3126,24 +3125,24 @@ reference "tab:a table float"
 \end_layout
 
 \begin_layout Standard
-Заголовок над таблицей — это общее правило, которое не поддерживается в
- стандартных классах \SpecialChar LaTeX
+Подпись над таблицей — это общее правило, которое не поддерживается в стандартны
+х классах \SpecialChar LaTeX
 .
  Это означает, что если вы используете классы документов — 
 \family sans
-статья
+article
 \family default
 , 
 \family sans
-книга
+book
 \family default
 , 
 \family sans
-письмо
+letter
 \family default
  или 
 \family sans
-отчет
+report
 \family default
 , между заголовком и таблицей не будет промежутка.
  Чтобы вставить необходимый промежуток, добавьте в преамбуле документа в
@@ -3210,12 +3209,12 @@ reference "sec:Caption-Formatting"
 
 \end_inset
 
-, используется для настройки формата заголовка.
+, используется для настройки формата подписи.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Ссылки ! на таблицы
@@ -3224,7 +3223,7 @@ status open
 \end_inset
 
 На таблицы можно ссылаться в тексте, указывая их метки.
- Для этого вставьте метку в заголовок, используя меню 
+ Для этого вставьте метку в подпись, используя меню 
 \family sans
 Вставка\SpecialChar menuseparator
 Метка
@@ -3275,7 +3274,7 @@ name "sec:Multi-page-Tables"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Таблица ! многостраничная
@@ -3298,7 +3297,7 @@ status open
 \family default
  диалогового окна таблицы, чтобы автоматически разделить таблицу на несколько
  страниц.
- Это позволяет использовать следующие параметры:
+ При этом становятся доступны следующие параметры:
 \end_layout
 
 \begin_layout Description
@@ -3504,10 +3503,6 @@ TEL.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_deleted 2089656932 1612519049
- 
-\change_unchanged
 продолжение на следующей странице
 \end_layout
 
@@ -4498,10 +4493,6 @@ Franz
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_deleted 2089656932 1612519049
- 
-\change_unchanged
 
 \end_layout
 
@@ -5535,7 +5526,7 @@ addtocounter{table}{-1}
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 См.
@@ -5568,7 +5559,7 @@ name "subsec:Footnotes-in-Multi-page"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Таблица ! многостраничная ! сноски
@@ -5600,7 +5591,7 @@ reference "tab:DiffCaptions"
 \begin_layout Subsection
 Выравнивание многостраничной таблицы
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Таблица ! многостраничная ! выравнивание
@@ -6025,12 +6016,12 @@ reference "subsec:Multi-page-Table-Captions"
 \end_layout
 
 \begin_layout Subsection
-Заголовки многостраничных таблиц
+Подписи многостраничных таблиц
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Таблица ! многостраничная ! заголовки
+Таблица ! многостраничная ! подписи
 \end_layout
 
 \end_inset
@@ -6048,8 +6039,8 @@ name "subsec:Multi-page-Table-Captions"
 \begin_layout Standard
 Многостраничная таблица не может быть помещена в плавающую таблицу, потому
  что плавающая таблица может располагаться только на одной странице.
- Но окружение заголовков с плавающей запятой можно использовать для многостранич
-ных таблиц, если вы используете опцию 
+ Но вставку подписи можно использовать для многостраничных таблиц, если
+ вы используете опцию 
 \family sans
 Подпись
 \family default
@@ -6065,7 +6056,7 @@ reference "sec:Multi-page-Tables"
 \end_inset
 
 .
- Только одна строка таблицы может содержать подпись, заголовок или подвал.
+ Только одна строка таблицы должна содержать подпись, первая или последняя.
 \end_layout
 
 \begin_layout Standard
@@ -6091,10 +6082,10 @@ reference "sec:Multi-page-Tables"
 \begin_layout Plain Layout
 Многостраничная таблица с заголовком
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Multi-page table
+Многостраничная таблица
 \end_layout
 
 \end_inset
@@ -6502,7 +6493,7 @@ status open
 \begin_layout Subsubsection
 Ссылки на многостраничные таблицы
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Таблица ! многостраничная ! ссылки
@@ -6827,7 +6818,7 @@ asd
 \end_layout
 
 \begin_layout Standard
-Чтобы сослаться на многостраничную таблицу, вставьте метку в ее заголовок.
+Чтобы сослаться на многостраничную таблицу, вставьте метку в ее подпись.
 \end_layout
 
 \begin_layout Standard
@@ -8982,10 +8973,6 @@ Franz
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_deleted 2089656932 1612519049
- 
-\change_unchanged
 
 \end_layout
 
@@ -11183,6 +11170,7 @@ status open
 \noindent
 \begin_inset Float table
 placement H
+alignment document
 wide false
 sideways false
 status open
@@ -11405,6 +11393,7 @@ reference "tab:Table-with-and"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -11908,6 +11897,7 @@ LyX поддерживает многоколоночность напрямую
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -12102,6 +12092,8 @@ reference "tab:Table-without-half"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -14870,6 +14862,7 @@ reference "tab:Example-booktabs-table"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -15306,11 +15299,6 @@ mytoprule[width]}
 toprule
 \family default
 .
-
-\change_deleted 2089656932 1612519049
- 
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -15615,6 +15603,7 @@ status open
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -16890,6 +16879,7 @@ status open
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -17526,6 +17516,7 @@ cellcolor{Maroon}
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -18025,6 +18016,7 @@ rowcolors{1}{white}{lightgray}
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -18204,6 +18196,7 @@ hline]{1}{lightgray}{cyan}
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -18568,6 +18561,7 @@ Wc
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -18816,6 +18810,7 @@ arrayrulecolor{black}}
 
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -18984,6 +18979,7 @@ reference "tab:Table-with-colored"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -19204,6 +19200,8 @@ reference "tab:Table-with-different-hor"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -19838,6 +19836,8 @@ multicolumn{1}{|c|}{
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -20619,6 +20619,7 @@ noprefix "false"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -20812,6 +20813,7 @@ reference "tab:Table-with-rotated-multi"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -21676,6 +21678,7 @@ reference "tab:Vertical-alignment-of"
 \noindent
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -21704,6 +21707,8 @@ name "tab:Vertical-alignment-of"
 
 
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -21805,6 +21810,8 @@ status collapsed
 
 
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -22019,6 +22026,7 @@ arg   "tabular-feature align-decimal"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -22106,6 +22114,7 @@ name "tab:Table-cells-align"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -22308,6 +22317,7 @@ reference "tab:Table-align-operator"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -22950,6 +22960,7 @@ S{2.5cm}{2}
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -23207,6 +23218,7 @@ arrayrulewidth}{1.5pt}
 
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -23514,6 +23526,8 @@ arrayrulewidth 0.4pt}}
 
 
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -23709,11 +23723,7 @@ reference "tab:Table-with-vertical"
 
 \end_inset
 
- 
-\change_deleted 2089656932 1612519049
- 
-\change_unchanged
-\SpecialChar LaTeX
+ \SpecialChar LaTeX
 -аргумент
 \end_layout
 
@@ -23739,6 +23749,8 @@ Vc
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -23920,6 +23932,7 @@ arydshln
 \begin_layout Standard
 \begin_inset Float table
 placement H
+alignment document
 wide false
 sideways false
 status open
@@ -24546,6 +24559,7 @@ status open
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -25406,7 +25420,7 @@ name "chap:Floats"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Плавающие объекты
@@ -25429,7 +25443,7 @@ name "sec:FloatIntroduction"
 \end_layout
 
 \begin_layout Standard
-Плавающий объект — это блок части документа, связанный с какой-то меткой,
+Плавающий объект — это фрагмент документа, связанный с какой-то меткой,
  который не имеет фиксированного местоположения.
  Он может «плавать» (перемещаться) вперед или назад на страницу или две,
  туда, где он лучше всего размещается.
@@ -25442,8 +25456,8 @@ name "sec:FloatIntroduction"
 Примечание на полях
 \family default
  также относятся к плавающим объектам, потому что они могут перемещаться
- на следующую страницу, когда на текущей странице слишком много сносок/примечани
-й.
+ на следующую страницу, когда на текущей странице слишком много сносок\SpecialChar breakableslash
+примечаний.
 \end_layout
 
 \begin_layout Standard
@@ -25451,7 +25465,8 @@ name "sec:FloatIntroduction"
  Изображения и таблицы можно равномерно распределить по страницам, чтобы
  избежать пустого пространства и страниц без текста.
  Поскольку плавающий объект часто разрушает контекст между текстом и изображение
-м/таблицей, в тексте можно ссылаться на каждый плавающий объект.
+м\SpecialChar breakableslash
+таблицей, в тексте можно ссылаться на каждый плавающий объект.
  Поэтому плавающие объекты нумеруются.
  Ссылки описываются в разделе
 \begin_inset space ~
@@ -25486,7 +25501,7 @@ arg   "float-insert table"
 \end_inset
 
  на панели инструментов).
- Это вызывает вставку поля с меткой, 
+ Это также вызывает вставку поля с меткой, 
 \family sans
 Подпись
 \family default
@@ -25509,9 +25524,9 @@ reference "sec:Caption-Placement"
 
 .
  Чтобы документ \SpecialChar LyX
- оставался читаемым, вы можете открывать и закрывать блок
- плавающего объекта, щелкая левой кнопкой мыши по метке блока.
- Закрытый блок плавающего объекта выглядит подобно такому: 
+ оставался читаемым, вы можете сворачивать и разворачивать
+ блок плавающего объекта, щелкая левой кнопкой мыши по метке блока.
+ Свернутый блок плавающего объекта выглядит подобно такому: 
 \begin_inset Graphics
 	filename ../clipart/float.png
 	scale 95
@@ -25558,7 +25573,7 @@ reference "sec:Table-Floats"
 
 \end_inset
 
-, соответственно, \SpecialChar LyX
+ соответственно, \SpecialChar LyX
  предлагает типы плавающих объектов 
 \family sans
 Алгоритм
@@ -25593,7 +25608,7 @@ reference "sec:Wrap-Floats"
 \begin_layout Subsection
 Плавающий объект Алгоритм
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Плавающие объекты ! алгоритмы
@@ -25607,6 +25622,7 @@ status open
 \begin_layout Standard
 \begin_inset Float algorithm
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -25634,7 +25650,7 @@ for I in 1..N loop
 \begin_inset Newline newline
 \end_inset
 
- Sum:= Sum + A(I); /*comment*/
+ Sum := Sum + A(I);  /* comment */
 \begin_inset Newline newline
 \end_inset
 
@@ -25700,8 +25716,6 @@ reference "alg:Example-Algorithm-float"
 
 mm для того, чтобы нижняя линейка располагалась поближе к последней строке
  алгоритма.
-\change_inserted 2089656932 1612520006
-
 \end_layout
 
 \begin_layout Standard
@@ -25754,7 +25768,7 @@ amsmath
 \begin_layout Section
 Нумерация плавающих объектов
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Плавающие объекты ! нумерация
@@ -25870,7 +25884,7 @@ reference "subsec:Footnote-Numbering"
 
 \end_inset
 
- для получения подробной информации и важных примечаний о командах нумерации.
+ для получения подробной информации и важных замечаний о командах нумерации.
 \end_layout
 
 \begin_layout Section
@@ -25883,7 +25897,7 @@ name "sec:Referencing-Floats"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Плавающие объекты ! ссылки
@@ -25893,7 +25907,7 @@ status open
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Ссылки ! на плавающие объекты
@@ -25954,8 +25968,8 @@ arg   "dialog-show-new-inset ref"
  Если у вас открыто несколько документов \SpecialChar LyX
 , выберите тот, над которым вы
  работаете, из раскрывающегося списка в верхней части диалогового окна.
- Теперь вы можете отсортировать ярлыки в алфавитном порядке, а затем выбрать
- необходимый.
+ Теперь вы можете отсортировать метки в алфавитном порядке, а затем выбрать
+ необходимую.
  Будет вставлено серое поле перекрестной ссылки, подобное 
 \begin_inset Graphics
 	filename ../clipart/reference.png
@@ -26003,7 +26017,7 @@ name "subsec:Cross-Reference-Formats"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Ссылки ! форматы
@@ -26031,7 +26045,7 @@ reference "fig:Two-distorted-images"
 
 \begin_layout Description
 (<ссылка>): выводит номер плавающего объекта в скобках, этот стиль обычно
- используется для ссылки на формулы, особенно если имя ссылки «Equation»
+ используется для ссылки на формулы, особенно если имя ссылки «Формула»
  опущено: 
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -26118,7 +26132,11 @@ reference "fig:Two-distorted-images"
 \end_layout
 
 \begin_layout Description
-Отформатированнаяссылка: выводит само-определенный формат перекрестной ссылки.
+Отформатированная
+\begin_inset space ~
+\end_inset
+
+ссылка: выводит само-определенный формат перекрестной ссылки.
 \begin_inset Newline newline
 \end_inset
 
@@ -26384,13 +26402,13 @@ status open
 
 \end_inset
 
- не заложены все возможные ярлыки \SpecialChar LyX
+ не заложены все возможные префиксы \SpecialChar LyX
 
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-«fig:» — это, например, ярлык \SpecialChar LyX
+«fig:» — это, например, префикс \SpecialChar LyX
  для меток в подписях к рисункам.
 \end_layout
 
@@ -26545,11 +26563,7 @@ extras***
 \family typewriter
 ***
 \family default
- 
-\change_deleted 2089656932 1612519049
- 
-\change_unchanged
-— это название используемого языка.
+ — это название используемого языка.
 \end_layout
 
 \begin_layout Standard
@@ -26769,7 +26783,7 @@ name "sec:Float-Settings"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Плавающие объекты ! настройки
@@ -26819,7 +26833,7 @@ name "sec:Float-Placement"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Плавающие объекты ! размещение
@@ -27375,7 +27389,7 @@ name "sec:Rotated-Floats"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Плавающие объекты ! поворот
@@ -27451,6 +27465,8 @@ status open
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways true
 status open
@@ -27545,7 +27561,7 @@ e
 \begin_layout Section
 Плавающие подобъекты
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Плавающие объекты ! подобъекты
@@ -27618,6 +27634,8 @@ reference "tab:Two-subtables-side"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -27647,6 +27665,8 @@ name "tab:Two-subtables-side"
 
 
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -27741,6 +27761,8 @@ e
 
 
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -27843,6 +27865,8 @@ b
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -27872,6 +27896,8 @@ name "tab:Two-subtables-upon"
 \begin_layout Plain Layout
 \align center
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -27950,6 +27976,8 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -28043,7 +28071,7 @@ e
 \begin_layout Section
 Рядом размещенные плавающие объекты
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Плавающие объекты ! размещенные рядом
@@ -28108,6 +28136,8 @@ reference "sec:Minipages"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -28263,7 +28293,7 @@ Variable-width_Minipages
 \begin_layout Section
 Форматирование подписей
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Подпись ! форматирование
@@ -28273,7 +28303,7 @@ status open
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Плавающие объекты ! форматирование подписей
@@ -28298,11 +28328,11 @@ name "sec:Caption-Formatting"
 \family default
  — это окружение абзаца по умолчанию для плавающих объектов.
  В \SpecialChar LyX
- подписи отображаются в виде меток, например, «Рисунок #:» с последующим
+ подписи отображаются в виде меток, например, «Рисунок №» с последующим
  текстом подписи.
- «#» — это фактический номер ссылки.
+ «№» — это фактический номер рисунка.
  По умолчанию метка и номер имеют тот же шрифт, что и текст подписи, а после
- номера стоит двоеточие, чтобы отделить метку от текста.
+ номера стоит тире или двоеточие, чтобы отделить метку от текста.
  Этот формат подписи подходит для многих, но не для всех документов.
 \end_layout
 
@@ -28313,7 +28343,7 @@ caption
 \series default
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
@@ -28476,6 +28506,7 @@ status open
 \begin_layout Standard
 \begin_inset Float figure
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -28536,6 +28567,7 @@ on}
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -28728,7 +28760,7 @@ KOMA-Script
 \family default
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
@@ -28808,7 +28840,7 @@ literal "true"
 \begin_layout Section
 Размещение подписей
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Подпись ! размещение
@@ -28818,7 +28850,7 @@ status open
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Плавающие объекты ! размещение подписей
@@ -28861,7 +28893,7 @@ caption
 \series default
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
@@ -28912,7 +28944,7 @@ KOMA-Script
 \family default
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
@@ -28985,6 +29017,8 @@ reference "tab:A-standard-table"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -29128,6 +29162,8 @@ c & d
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -30000,6 +30036,8 @@ FigBesBeg
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -30025,7 +30063,7 @@ name "fig:cap-beside-fig"
 
 \end_inset
 
-Это подпись рядом с рисунком.
+Это подпись рядом с рисунком
 \end_layout
 
 \end_inset
@@ -30072,6 +30110,8 @@ TabBesBeg
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -30086,7 +30126,7 @@ name "tab:cap-beside-tab"
 
 \end_inset
 
-Это подпись рядом с таблицей.
+Это подпись рядом с таблицей
 \end_layout
 
 \end_inset
@@ -30347,6 +30387,8 @@ sidecaptionvpos{figure}{c}
 
 
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -30372,7 +30414,7 @@ name "fig:cap-beside-fig-2"
 
 \end_inset
 
-Это вертикально расположенная подпись рядом с рисунком.
+Это вертикально расположенная подпись рядом с рисунком
 \end_layout
 
 \end_inset
@@ -30419,6 +30461,8 @@ TabBesBeg[5]
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -30444,7 +30488,7 @@ reference "tab:cap-beside-tab"
 
 \end_inset
 
-.
+
 \end_layout
 
 \end_inset
@@ -31928,6 +31972,7 @@ usepackage{ftnright}
 \begin_layout Standard
 \begin_inset Float figure
 placement !h
+alignment document
 wide false
 sideways false
 status open
@@ -31995,6 +32040,7 @@ name "fig:Standard-footnote-placement"
 \begin_layout Standard
 \begin_inset Float figure
 placement !h
+alignment document
 wide false
 sideways false
 status open
@@ -32125,6 +32171,8 @@ theendnotes
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -32538,10 +32586,6 @@ normalmarginpar
 
 \end_inset
 
-
-\change_deleted 2089656932 1612519049
- 
-\change_unchanged
 
 \end_layout
 
@@ -35421,11 +35465,7 @@ depth}{
 \end_layout
 
 \begin_layout Standard
-в поле Код TeX 
-\change_deleted 2089656932 1612519049
- 
-\change_unchanged
-перед этим словом, а после — закрывающую скобку 
+в поле Код TeX перед этим словом, а после — закрывающую скобку 
 \begin_inset Quotes eld
 \end_inset
 
@@ -35719,11 +35759,6 @@ status open
  В этом случае также необходимо указать цвет фона (\SpecialChar LyX
  по умолчанию устанавливает
  белый цвет).
-
-\change_deleted 2089656932 1612519049
- 
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -38420,7 +38455,7 @@ fi
 \begin_layout Section
 Буквицы
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Буквицы
@@ -38430,7 +38465,7 @@ status open
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Обтекание текстом ! буквицы
@@ -38923,7 +38958,7 @@ fi
 \begin_layout Chapter
 Внешние части документа
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Внешние части документа
@@ -39000,7 +39035,7 @@ LyX Другой документ \SpecialChar LyX
 \begin_layout Section
 Внешний материал
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Внешние части документа ! внешний материал
@@ -39751,6 +39786,7 @@ status open
 \begin_inset CommandInset include
 LatexCommand include
 filename "../DummyDocument1.lyx"
+literal "true"
 
 \end_inset
 
@@ -39858,6 +39894,7 @@ status open
 \begin_inset CommandInset include
 LatexCommand input
 filename "../DummyDocument2.lyx"
+literal "true"
 
 \end_inset
 
@@ -39913,6 +39950,7 @@ textvisiblespace
 \begin_inset CommandInset include
 LatexCommand verbatiminput
 filename "../DummyTextDocument.txt"
+literal "true"
 
 \end_inset
 
@@ -39932,6 +39970,7 @@ filename "../DummyTextDocument.txt"
 \begin_inset CommandInset include
 LatexCommand verbatiminput*
 filename "../DummyTextDocument.txt"
+literal "true"
 
 \end_inset
 
@@ -40033,11 +40072,6 @@ status open
 Ввести
 \family default
 ).
-
-\change_deleted 2089656932 1612519049
- 
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -40123,7 +40157,7 @@ status collapsed
 \end_layout
 
 \begin_layout Chapter
-Листинги программных кодов
+Листинги программ
 \begin_inset CommandInset label
 LatexCommand label
 name "cha:Program-Code-Listings"
@@ -40928,8 +40962,9 @@ reference "lst:file-listing"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
-filename "EmbeddedObjects.lyx"
+filename "../EmbeddedObjects.lyx"
 lstparams "breaklines=true,caption={Lines 10 - 15 of this LyX file},extendedchars=true,firstline=10,label={lst:file-listing},language={[LaTeX]TeX},lastline=15"
+literal "true"
 
 \end_inset
 
@@ -41128,6 +41163,7 @@ reference "tab:Units"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -41900,7 +41936,7 @@ name "cha:Output-File-Formats"
 \begin_layout Section
 DVI
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Форматы файлов ! DVI
@@ -41910,7 +41946,7 @@ status open
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 DVI|see
@@ -42008,7 +42044,7 @@ DVI
 \begin_layout Section
 PostScript
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Форматы файлов ! PostScript
@@ -42018,7 +42054,7 @@ status open
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 PostScript|see
@@ -42060,8 +42096,8 @@ status collapsed
  PostScript был разработан компанией Adobe как язык принтера.
  Таким образом, файл содержит команды, которые принтер использует для печати
  файла.
- PostScript можно рассматривать как «язык программирования»; вы можете производи
-ть вычисления с его помощью и рисовать диаграммы и изображения.
+ PostScript можно рассматривать как «язык программирования»; с его помощью
+ вы можете производить вычисления, рисовать диаграммы и изображения
 \begin_inset Foot
 status collapsed
 
@@ -42084,6 +42120,7 @@ literal "true"
 
 \end_inset
 
+.
  Благодаря этой возможности файлы для непосредственно печати часто более
  объемные, чем их исходные PDF-файлы.
 \end_layout
@@ -42094,7 +42131,7 @@ PostScript содержит изображения только в формат�
  Поскольку \SpecialChar LyX
  позволяет использовать в документе любой известный формат изображени
 я, он должен преобразовывать фоновые изображения в EPS.
- Если у вас, например, 50 изображений в документе, \SpecialChar LyX
+ Если у вас, к примеру, 50 изображений в документе, \SpecialChar LyX
  должен выполнять 50
  преобразований при каждом просмотре или экспорте документа.
  Это значительно замедлит рабочий процесс с \SpecialChar LyX
@@ -42123,7 +42160,7 @@ Postscript
 \begin_layout Section
 PDF
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Форматы файлов ! PDF
@@ -42140,8 +42177,7 @@ status open
 .pdf
 \family default
 ».
- «Portable Document Format» (PDF) был разработан Adobe как производная от
- PostScript.
+ «Portable Document Format» (PDF) был разработан Adobe на основе PostScript.
  Он более компактен и использует меньше команд, чем PostScript.
  Как следует из термина «портативный», его можно обрабатывать в любой компьютерн
 ой системе, и результат на выводе выглядит одинаково.
@@ -42149,7 +42185,7 @@ status open
 
 \begin_layout Standard
 PDF может содержать изображения в собственном формате, в формате «Joint
- Photographic Experts Group» (JPG, расширение файла «
+ Photographic Experts Group» (JPEG, расширение файла «
 \family typewriter
 .jpg
 \family default
@@ -45742,7 +45778,7 @@ status collapsed
 \end_layout
 
 \begin_layout Chapter
-Объяснение уравнений
+Объяснение уравнения
 \begin_inset space ~
 \end_inset
 

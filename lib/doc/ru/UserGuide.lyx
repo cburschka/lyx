@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 605
+\lyxformat 606
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -25166,14 +25166,14 @@ name "sec:Brackets-and-Delimiters"
 \begin_layout Standard
 В \SpecialChar LyX
  доступно несколько видов скобок.
- Для некоторых целей достаточно использовать только ключевые 
+ Иногда использования клавиш 
 \family typewriter
 []{}()|<>
 \family default
-.
+ будет достаточно.
  Но если вы хотите охватить большую структуру, например матрицу или дробь,
- или у вас должно быть несколько уровней скобок, лучше использовать значок
- ограничителя 
+ или у вас должно быть несколько уровней скобок, лучше использовать кнопку
+ 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show mathdelimiter"
@@ -25184,7 +25184,7 @@ arg   "dialog-show mathdelimiter"
 Панели формул
 \family default
 .
- Например, если вы построите скобки вокруг матрицы следующим образом:
+ Например, если вы введете скобки вокруг матрицы следующим образом:
 \begin_inset Formula 
 \[
 \left[\begin{array}{cc}
@@ -25196,7 +25196,7 @@ arg   "dialog-show mathdelimiter"
 \end_inset
 
 это облегчит просмотр вложенных скобок.
- Ниже, выражение слева вводилось с помощью значка ограничителя 
+ Ниже, выражение слева вводилось с помощью кнопки 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show mathdelimiter"
@@ -25234,9 +25234,9 @@ arg   "dialog-show mathdelimiter"
 
 \end_inset
 
-Если вы используете значок ограничителя, круглые скобки и другие скобки
- из этого меню автоматически будут менять размер, чтобы соответствовать
- размеру того, что находится внутри.
+Если вы используете кнопку, то круглые и другие скобки из этого меню автоматичес
+ки будут менять размер, чтобы соответствовать размеру того, что находится
+ внутри.
 \end_layout
 
 \begin_layout Standard
@@ -25263,7 +25263,7 @@ arg   "dialog-show mathdelimiter"
 \begin_layout Standard
 Если вы хотите поместить скобки вокруг существующих математических структур,
  таких как квадратный корень, вы можете сделать это, сначала выделив (выбрав)
- структуру, которая должна идти внутри скобок.
+ структуру, которая должна размещаться внутри скобок.
  Затем выберите соответствующие скобки слева и справа и нажмите 
 \family sans
 Вставить
@@ -27349,11 +27349,9 @@ name "subsec:Table-of-Contents"
 Содержание вставляется с помощью меню 
 \family sans
 Вставка\SpecialChar menuseparator
-Списки\SpecialChar breakableslash
-\SpecialChar allowbreak
-содержание\SpecialChar breakableslash
-\SpecialChar allowbreak
-библиографии\SpecialChar menuseparator
+Содержание\SpecialChar breakableslash
+библиография\SpecialChar breakableslash
+список\SpecialChar menuseparator
 Содержание
 \family default
 .
@@ -27431,11 +27429,9 @@ name "subsec:List-of-Figures"
  Вы можете вставить их через подменю 
 \family sans
 Вставка\SpecialChar menuseparator
-Списки\SpecialChar breakableslash
-\SpecialChar allowbreak
-содержание\SpecialChar breakableslash
-\SpecialChar allowbreak
-библиографии
+Содержание\SpecialChar breakableslash
+библиография\SpecialChar breakableslash
+список
 \family default
 .
  Элементы таких списков — это номера и заголовки соответствующих плавающих
@@ -28395,8 +28391,9 @@ status collapsed
 \family sans
 Вставка\SpecialChar menuseparator
 \SpecialChar allowbreak
-Списки/\SpecialChar allowbreak
-содержание/библиографии\SpecialChar menuseparator
+Содержание\SpecialChar breakableslash
+библиография\SpecialChar breakableslash
+список\SpecialChar menuseparator
 Библиография Bib(la)TeX
 \family default
 .
@@ -28505,7 +28502,9 @@ biblatex
 : используйте меню 
 \family sans
 Вставка\SpecialChar menuseparator
-Списки/содержание/библиографии\SpecialChar menuseparator
+Содержание\SpecialChar breakableslash
+библиография\SpecialChar breakableslash
+список\SpecialChar menuseparator
 Библиография Bib(la)TeX
 \family default
 .
@@ -29439,8 +29438,9 @@ arg   "index-insert"
 Предметный указатель вставляется в документ с помощью меню 
 \family sans
 Вставка\SpecialChar menuseparator
-Списки/\SpecialChar allowbreak
-содержание/библиографии\SpecialChar menuseparator
+Содержание\SpecialChar breakableslash
+библиография\SpecialChar breakableslash
+список\SpecialChar menuseparator
 Предметный указатель
 \family default
 .
@@ -30182,11 +30182,9 @@ Index
 \family sans
 Вставка\SpecialChar menuseparator
 \SpecialChar allowbreak
-Списки\SpecialChar breakableslash
-\SpecialChar allowbreak
-содержание\SpecialChar breakableslash
-\SpecialChar allowbreak
-библиографии
+Содержание\SpecialChar breakableslash
+библиография\SpecialChar breakableslash
+список
 \family default
 , а в меню 
 \family sans
@@ -31015,9 +31013,9 @@ status collapsed
 \family sans
 Вставка\SpecialChar menuseparator
 \SpecialChar allowbreak
-Списки/\SpecialChar allowbreak
-содержание/\SpecialChar allowbreak
-библиографии\SpecialChar menuseparator
+Содержание\SpecialChar breakableslash
+библиография\SpecialChar breakableslash
+список\SpecialChar menuseparator
 Список обозначений
 \family default
 .
@@ -37967,7 +37965,7 @@ reference "subsec:Clear-Page-Breaks"
 \begin_layout Subsection
 
 \family sans
-Списки/содержание/библиографии
+Содержание/библиография/список
 \end_layout
 
 \begin_layout Standard

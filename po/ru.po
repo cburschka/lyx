@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2021-01-26 19:28+0100\n"
-"PO-Revision-Date: 2021-01-27 13:59+0200\n"
+"PO-Revision-Date: 2021-02-03 01:54+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -1309,7 +1309,7 @@ msgstr "Код TeX: "
 
 #: src/frontends/qt/ui/DelimiterUi.ui:221
 msgid "Match delimiter types"
-msgstr "Обеспечивать соответствие типов ограничителей"
+msgstr "Обеспечивать соответствие типов скобок"
 
 #: src/frontends/qt/ui/DelimiterUi.ui:224
 msgid "&Keep matched"
@@ -1319,7 +1319,7 @@ msgstr "&Обеспечивать соответствие"
 msgid ""
 "Swap left and right delimiter type (while reversing to the appropriate "
 "direction)"
-msgstr "Поменять местами левый и правый ограничитель"
+msgstr "Поменять местами левую и правую скобку"
 
 #: src/frontends/qt/ui/DelimiterUi.ui:243
 msgid "S&wap && Reverse"
@@ -7876,7 +7876,7 @@ msgstr "Описание"
 #: lib/layouts/stdlists.inc:53 lib/layouts/stdlists.inc:94
 #: lib/layouts/stdlists.inc:139 lib/layouts/stdlyxlist.inc:7
 msgid "List"
-msgstr "Список"
+msgstr "Списки"
 
 #: lib/layouts/aastex.layout:3
 msgid "American Astronomical Society (AASTeX v. 5)"
@@ -11745,7 +11745,7 @@ msgid ""
 msgstr ""
 "Добавляет вставку \"Концевая сноска\" в дополнение к обычным сноскам. "
 "Используется пакет endnotes. Вам нужно будет добавить список концевых сносок "
-"(Вставка > Списки/содержание/библиографии > Концевые сноски) там, где вы "
+"(Вставка > Содержание/библиография/список > Концевые сноски) там, где вы "
 "хотите увидеть концевые сноски."
 
 #: lib/layouts/endnotes.module:15 lib/layouts/endnotes.module:42
@@ -11792,8 +11792,8 @@ msgstr ""
 "Добавляет вставку \"Концевая сноска\" в дополнение к обычным сноскам. "
 "Используется пакет enotez, более мощный и настраиваемый, чем пакет endnotes "
 "(модуль \"Концевые сноски (основной)\"), но требующий свежей версии LaTeX (с "
-"LaTeX3). Вам нужно будет добавить список концевых сносок (Вставка > Списки/"
-"содержание/библиографии > Концевые сноски) там, где вы хотите увидеть "
+"LaTeX3). Вам нужно будет добавить список концевых сносок (Вставка > "
+"Содержание/библиография/список > Концевые сноски) там, где вы хотите увидеть "
 "концевые сноски."
 
 #: lib/layouts/entcs.layout:3
@@ -12649,8 +12649,8 @@ msgid ""
 "where you want the endnotes to appear."
 msgstr ""
 "Делает все обычные сноски концевыми. Используется пакет endnotes. Вам нужно "
-"будет добавить список концевых сносок (Вставка > Списки/содержание/"
-"библиографии > Концевые сноски) там, где вы хотите увидеть концевые сноски."
+"будет добавить список концевых сносок (Вставка > Содержание/библиография/"
+"список > Концевые сноски) там, где вы хотите увидеть концевые сноски."
 
 #: lib/layouts/foottoenotez.module:2
 msgid "Footnotes as Endnotes (Extended)"
@@ -12667,7 +12667,7 @@ msgstr ""
 "Делает все обычные сноски концевыми. Используется пакет enotez, более мощный "
 "и настраиваемый, чем пакет endnotes (модуль \"Обычные сноски в виде концевых "
 "(основной)\"), но требующий свежей версии LaTeX (с LaTeX3). Вам нужно будет "
-"добавить список концевых сносок (Вставка > Списки/содержание/библиографии > "
+"добавить список концевых сносок (Вставка > Содержание/библиография/список > "
 "Концевые сноски) там, где вы хотите увидеть концевые сноски."
 
 #: lib/layouts/frletter.layout:3 lib/examples/Articles:0
@@ -19220,7 +19220,7 @@ msgstr "Окружение split|s"
 
 #: lib/ui/stdcontext.inc:37 lib/ui/stdmenus.inc:495
 msgid "Delimiters...|r"
-msgstr "Ограничители...|г"
+msgstr "Скобки...|б"
 
 #: lib/ui/stdcontext.inc:38 lib/ui/stdmenus.inc:496
 msgid "Matrix...|x"
@@ -20657,7 +20657,7 @@ msgstr "Поле|е"
 
 #: lib/ui/stdmenus.inc:380
 msgid "List/Contents/References|/"
-msgstr "Списки/содержание/библиографии|/"
+msgstr "Содержание/библиография/список|/"
 
 #: lib/ui/stdmenus.inc:381
 msgid "Float|a"
@@ -21569,7 +21569,7 @@ msgstr "Вставить { }"
 
 #: lib/ui/stdtoolbars.inc:203
 msgid "Insert delimiters"
-msgstr "Вставить ограничители"
+msgstr "Вставить скобки"
 
 #: lib/ui/stdtoolbars.inc:205
 msgid "Insert matrix"
@@ -31542,7 +31542,7 @@ msgstr "Огромный"
 
 #: src/frontends/qt/GuiDelimiter.cpp:184
 msgid "Math Delimiter"
-msgstr "Ограничители"
+msgstr "Скобки"
 
 #: src/frontends/qt/GuiDelimiter.cpp:244 src/frontends/qt/GuiDelimiter.cpp:245
 #: src/frontends/qt/GuiDelimiter.cpp:455 src/frontends/qt/GuiDelimiter.cpp:457
@@ -35709,11 +35709,11 @@ msgstr "Горизонтальная линия"
 
 #: src/insets/InsetListings.cpp:332
 msgid "no more lstline delimiters available"
-msgstr "ограничители lstline недоступны"
+msgstr "нет больше доступных разделителей lstline"
 
 #: src/insets/InsetListings.cpp:337
 msgid "Running out of delimiters"
-msgstr "Выход за пределы ограничителя"
+msgstr "Разделители закончились"
 
 #: src/insets/InsetListings.cpp:338
 msgid ""
