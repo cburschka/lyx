@@ -805,11 +805,11 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 			lex >> docbooksectiontag_;
 			break;
 
-        case LT_DOCBOOKITEMWRAPPERTAG:
-            lex >> docbookitemwrappertag_;
-            break;
-
-        case LT_DOCBOOKITEMWRAPPERATTR:
+		case LT_DOCBOOKITEMWRAPPERTAG:
+			lex >> docbookitemwrappertag_;
+			break;
+	
+		case LT_DOCBOOKITEMWRAPPERATTR:
 			lex >> docbookitemwrapperattr_;
 			break;
 
