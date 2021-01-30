@@ -123,7 +123,8 @@ enum AsStringParameter
 	AS_STR_INSETS = 2, ///< Go into insets.
 	AS_STR_NEWLINES = 4, ///< Get also newline characters.
 	AS_STR_SKIPDELETE = 8, ///< Skip deleted text in change tracking.
-	AS_STR_PLAINTEXT = 16 ///< Don't export formatting when descending into insets.
+	AS_STR_PLAINTEXT = 16, ///< Don't export formatting when descending into insets.
+	AS_STR_MATHED = 32 ///< Use a format suitable for mathed (eg. for InsetRef).
 };
 
 

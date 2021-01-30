@@ -1167,7 +1167,7 @@ void clearCutStack()
 }
 
 
-docstring selection(size_t sel_index, DocumentClassConstPtr docclass)
+docstring selection(size_t sel_index, DocumentClassConstPtr docclass, bool for_math)
 {
 	if (sel_index >= theCuts.size())
 		return docstring();
@@ -1177,7 +1177,11 @@ docstring selection(size_t sel_index, DocumentClassConstPtr docclass)
 	if (!buffer)
 		return docstring();
 
-	return buffer->paragraphs().back().asString(AS_STR_INSETS | AS_STR_NEWLINES);
+	int options = AS_STR_INSETS | AS_STR_NEWLINES;
+	if (for_math)
+		options |= AS_STR_MATHED;
+
+	return buffer->paragraphs().back().asString(options);
 }
 
 

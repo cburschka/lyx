@@ -4144,6 +4144,14 @@ docstring Paragraph::asString(pos_type beg, pos_type end, int options, const Out
 			if (c == META_INSET && (options & AS_STR_PLAINTEXT)) {
 				LASSERT(runparams != nullptr, return docstring());
 				getInset(i)->plaintext(os, *runparams);
+			} else if (c == META_INSET && (options & AS_STR_MATHED)
+				   && getInset(i)->lyxCode() == REF_CODE) {
+				Buffer const & buf = getInset(i)->buffer();
+				OutputParams rp(&buf.params().encoding());
+				Font const font(inherit_font, buf.params().language);
+				rp.local_font = &font;
+				otexstream ots(os);
+				getInset(i)->latex(ots, rp);
 			} else {
 				getInset(i)->toString(os);
 			}
