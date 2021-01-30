@@ -3198,7 +3198,7 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 		} else if (!isPartOfMultiRow(row, c)) {
 			if (!runparams.nice)
 				os.texrow().start(par.id(), 0);
-			if (isMultiRow(cell))
+			if (isMultiRow(cell) && !LaTeXFeatures::isAvailable("multirow-2021/01/29"))
 				newrp.isNonLong = true;
 			inset->latex(os, newrp);
 		}

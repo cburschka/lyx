@@ -577,7 +577,11 @@
 %%% Specific package versions
 % This only works if the package has been loaded before
 \IfFileExists{babel.sty}{\RequirePackage{babel}}{}
+% This introduces \babelfonts
 \TestPackageVersion{babel}{2017/11/03}
+\IfFileExists{multirow.sty}{\RequirePackage{multirow}}{}
+% This introduces multiple paragraphs in multirows
+\TestPackageVersion{multirow}{2021/01/29}
 
 %%% Document classes
 % The list of layout files has been put in this file here by the
