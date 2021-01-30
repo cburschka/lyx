@@ -122,9 +122,14 @@
 
 % Tests whether an package is present in a specific version (or newer)
 % Syntax: \TestPackageVersion{<name>}{<yyyy/mm/dd>}
-% Note: This requires the package to be loaded first
 
 \newcommand{\TestPackageVersion}[2]{
+   % The actual test only works if the package has been loaded before
+   \IfFileExists{#1.sty}{\RequirePackage{#1}}{}
+   \@TestPackageVersion{#1}{#2}
+}
+
+\newcommand{\@TestPackageVersion}[2]{
   \message{^^J\prefix checking for package #1 at least as of #2...}
   \IfFileExists{#1.sty}
   {
@@ -575,11 +580,8 @@
 %\TestPackage{mathdesign}% But see above!
 
 %%% Specific package versions
-% This only works if the package has been loaded before
-\IfFileExists{babel.sty}{\RequirePackage{babel}}{}
 % This introduces \babelfonts
 \TestPackageVersion{babel}{2017/11/03}
-\IfFileExists{multirow.sty}{\RequirePackage{multirow}}{}
 % This introduces multiple paragraphs in multirows
 \TestPackageVersion{multirow}{2021/01/29}
 
