@@ -37,8 +37,11 @@ namespace cap {
 std::vector<docstring> availableSelections(Buffer const *);
 /// Get the number of available elements in the cut buffer.
 size_type numberOfSelections();
-/// Get the sel_index-th element of the cut buffer in plain text format.
-docstring selection(size_t sel_index, DocumentClassConstPtr docclass);
+/**
+ * Get the sel_index-th element of the cut buffer in plain text format
+ * or, if \param for_math is true, in a format suitable for mathed.
+ */
+docstring selection(size_t sel_index, DocumentClassConstPtr docclass, bool for_math = false);
 
 /**
  * Replace using the font of the first selected character and select

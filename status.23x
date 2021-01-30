@@ -31,6 +31,8 @@ What's new
   does not move the cursor out of the whole equation anymore and is now
   equivalent to hitting the left arrow key (bug 11678).
 
+- Other than directly inserted, now references can also be pasted as insets
+  into an equation, instead of simply as text (bug 11539). 
 
 * DOCUMENTATION AND LOCALIZATION
 
