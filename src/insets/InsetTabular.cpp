@@ -811,7 +811,7 @@ void Tabular::deleteRow(row_type const row, bool const force)
 		if (row + 1 < nrows() &&
 		    cell_info[row][c].multirow == CELL_BEGIN_OF_MULTIROW &&
 		    cell_info[row + 1][c].multirow == CELL_PART_OF_MULTIROW) {
-				cell_info[row + 1][c].multirow = CELL_BEGIN_OF_MULTIROW;
+				cell_info[row + 1][c] = cell_info[row][c];
 		}
 	}
 	if (ct)
@@ -973,7 +973,7 @@ void Tabular::deleteColumn(col_type const col, bool const force)
 		if (col + 1 < ncols() &&
 		    cell_info[r][col].multicolumn == CELL_BEGIN_OF_MULTICOLUMN &&
 		    cell_info[r][col + 1].multicolumn == CELL_PART_OF_MULTICOLUMN) {
-				cell_info[r][col + 1].multicolumn = CELL_BEGIN_OF_MULTICOLUMN;
+				cell_info[r][col + 1] = cell_info[r][col]; 
 		}
 		if (!ct)
 			cell_info[r].erase(cell_info[r].begin() + col);
