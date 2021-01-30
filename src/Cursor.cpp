@@ -1347,9 +1347,20 @@ bool Cursor::backspace(bool const force)
 			// [|], can not delete from inside
 			return false;
 		} else {
-			if (inMathed())
-				pullArg();
-			else
+			if (inMathed()) {
+				switch (inset().asInsetMath()->getType()) {
+				case hullEqnArray:
+				case hullAlign:
+				case hullFlAlign: {
+					FuncRequest cmd(LFUN_CHAR_BACKWARD);
+					this->dispatch(cmd);
+					break;
+				}
+				default:
+					pullArg();
+					break;
+				}
+			} else
 				popBackward();
 			return true;
 		}

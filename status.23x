@@ -27,7 +27,9 @@ What's new
 
 * USER INTERFACE
 
-
+- Backspace at the very start of a cell part of eqnarray or align environments
+  does not move the cursor out of the whole equation anymore and is now
+  equivalent to hitting the left arrow key (bug 11678).
 
 
 * DOCUMENTATION AND LOCALIZATION
