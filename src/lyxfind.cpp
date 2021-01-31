@@ -50,7 +50,7 @@
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
-#include <map>
+#include <unordered_map>
 #include <regex>
 
 //#define ResultsDebug
@@ -72,8 +72,9 @@ using namespace lyx::support;
 
 namespace lyx {
 
-typedef map<string, string> AccentsMap;
-static AccentsMap accents = map<string, string>();
+typedef unordered_map<string, string> AccentsMap;
+typedef unordered_map<string,string>::const_iterator AccentsIterator;
+static AccentsMap accents = unordered_map<string, string>();
 
 // Helper class for deciding what should be ignored
 class IgnoreFormats {
@@ -1452,8 +1453,9 @@ void Intervall::removeAccents()
   for (sregex_iterator itacc(par.begin(), par.end(), accre), end; itacc != end; ++itacc) {
     sub = *itacc;
     string key = sub.str(1);
-    if (accents.find(key) != accents.end()) {
-      string val = accents[key];
+    AccentsIterator it_ac = accents.find(key);
+    if (it_ac != accents.end()) {
+      string val = it_ac->second;
       size_t pos = sub.position(size_t(0));
       for (size_t i = 0; i < val.size(); i++) {
         par[pos+i] = val[i];
@@ -1528,9 +1530,10 @@ int Intervall::nextNotIgnored(int start) const
     return start;
 }
 
-typedef map<string, KeyInfo> KeysMap;
+typedef unordered_map<string, KeyInfo> KeysMap;
+typedef unordered_map<string, KeyInfo>::const_iterator KeysIterator;
 typedef vector< KeyInfo> Entries;
-static KeysMap keys = map<string, KeyInfo>();
+static KeysMap keys = unordered_map<string, KeyInfo>();
 
 class LatexInfo {
  private:
@@ -1790,9 +1793,10 @@ void LatexInfo::buildEntries(bool isPatternString)
         key = sub.str(2);
       }
     }
-    if (keys.find(key) != keys.end()) {
-      if (keys[key].keytype == KeyInfo::headRemove) {
-        KeyInfo found1 = keys[key];
+    KeysIterator it_key = keys.find(key);
+    if (it_key != keys.end()) {
+      if (it_key->second.keytype == KeyInfo::headRemove) {
+        KeyInfo found1 = it_key->second;
         found1.disabled = true;
         found1.head = "\\" + key + "{";
         found1._tokenstart = sub.position(size_t(2));
@@ -1826,7 +1830,7 @@ void LatexInfo::buildEntries(bool isPatternString)
         mi.incrEntry();
         math_pos = mi.getStartPos();
       }
-      if (keys.find(key) == keys.end()) {
+      if (it_key == keys.end()) {
         found = KeyInfo(KeyInfo::isStandard, 0, true);
         LYXERR(Debug::INFO, "Undefined key " << key << " ==> will be used as text");
         found = KeyInfo(KeyInfo::isText, 0, false);
