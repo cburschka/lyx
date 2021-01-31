@@ -272,16 +272,20 @@ void ViewSourceWidget::updateView(BufferView const * bv)
 		//the real highlighting is done with an ExtraSelection
 		QTextCharFormat format;
 		{
-		// We create a new color with the lightness of AlternateBase and
-		// the hue and saturation of Highlight
-		QPalette palette = viewSourceTV->palette();
-		QBrush alt = palette.alternateBase();
-		QColor high = palette.highlight().color().toHsl();
-		QColor col = QColor::fromHsl(high.hue(),
-		                             high.hslSaturation(),
-		                             alt.color().lightness());
-		alt.setColor(col);
-		format.setBackground(alt);
+		// We create a new color with the slightly altered lightness
+		// of the Base and the hue and saturation of the Highlight brush
+		QPalette const palette = viewSourceTV->palette();
+		QBrush extraselbrush = palette.base();
+		int const extrasellightness =
+				(palette.text().color().black() > palette.window().color().black()) ?
+					extraselbrush.color().darker(107).lightness()// light mode
+				      : extraselbrush.color().darker().lightness();// dark mode
+		QColor const highlight = palette.highlight().color().toHsl();
+		QColor const extraselcol = QColor::fromHsl(highlight.hue(),
+							   highlight.hslSaturation(),
+							   extrasellightness);
+		extraselbrush.setColor(extraselcol);
+		format.setBackground(extraselbrush);
 		}
 		format.setProperty(QTextFormat::FullWidthSelection, true);
 		QTextEdit::ExtraSelection sel;
