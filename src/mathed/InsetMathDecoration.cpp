@@ -13,6 +13,7 @@
 
 #include "InsetMathDecoration.h"
 
+#include "BufferView.h"
 #include "MathData.h"
 #include "MathParser.h"
 #include "MathSupport.h"
@@ -119,15 +120,19 @@ void InsetMathDecoration::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	cell(0).metrics(mi, dim);
 
-	dh_  = 6; //mathed_char_height(LM_TC_VAR, mi, 'I', ascent_, descent_);
-	dw_  = 6; //mathed_char_width(LM_TC_VAR, mi, 'x');
+	int const l1 = mi.base.bv->zoomedPixels(1);
+	int const l2 = 2 * l1;
+	int const l3 = 3 * l1;
+
+	dh_  = l2; //mathed_char_height(LM_TC_VAR, mi, 'I', ascent_, descent_);
+	dw_  = l3; //mathed_char_width(LM_TC_VAR, mi, 'x');
 
 	if (upper()) {
-		dy_ = -dim.asc - dh_;
-		dim.asc += dh_ + 1;
+		dy_ = -dim.asc - dh_ - l1;
+		dim.asc += dh_ + l1;
 	} else {
-		dy_ = dim.des + 1;
-		dim.des += dh_ + 2;
+		dy_ = dim.des + l1;
+		dim.des += dh_ + l2;
 	}
 }
 

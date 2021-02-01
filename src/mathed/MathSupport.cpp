@@ -298,31 +298,31 @@ double const dot[] = {
 //	1, 0.5, 0.2, 0.5, 0.2,
 //	1, 0.4, 0.4, 0.6, 0.4,
 //	1, 0.5, 0.5, 0.5, 0.5,
-	5, 0.4, 0.4, 0.6, 0.4,
+	5, 0.4, 0.6, 0.6, 0.6,
 	0
 };
 
 
 double const ddot[] = {
-	5, 0.0, 0.4, 0.3, 0.4,
-	5, 0.6, 0.4, 1.0, 0.4,
+	5, 0.1, 0.6, 0.3, 0.6,
+	5, 0.6, 0.6, 0.8, 0.6,
 	0
 };
 
 
 double const dddot[] = {
-	1, 0.1,  0.5, 0.2,  0.5,
-	1, 0.45, 0.5, 0.55, 0.5,
-	1, 0.8,  0.5, 0.9,  0.5,
+	5, -0.2, 0.6, 0.0, 0.6,
+	5,  0.3, 0.6, 0.5, 0.6,
+	5,  0.8, 0.6, 1.0, 0.6,
 	0
 };
 
 
 double const ddddot[] = {
-	1, 0.1,  0.5, 0.2,  0.5,
-	1, 0.45, 0.5, 0.55, 0.5,
-	1, 0.8,  0.5, 0.9,  0.5,
-	1, 1.15, 0.5, 1.25, 0.5,
+	5, -0.4, 0.6, -0.2, 0.6,
+	5,  0.1, 0.6,  0.3, 0.6,
+	5,  0.6, 0.6,  0.8, 0.6,
+	5,  1.1, 0.6,  1.3, 0.6,
 	0
 };
 
@@ -344,8 +344,10 @@ double const dline3[] = {
 
 
 double const ring[] = {
-	2, 5,
-	0.5, 0.8,  0.8, 0.5,  0.5, 0.2,  0.2, 0.5,  0.5, 0.8,
+	2, 9,
+	0.5, 0.8,  0.7, 0.7,  0.8, 0.4,
+	0.7, 0.1,  0.5, 0.0,  0.3, 0.1,
+	0.2, 0.4,  0.3, 0.7,  0.5, 0.8,
 	0
 };
 
@@ -364,8 +366,8 @@ double const  Vert[] = {
 
 
 double const tilde[] = {
-	2, 4,
-	0.00, 0.8,  0.25, 0.2,  0.75, 0.8,  1.00, 0.2,
+	2, 6,
+	0.0, 0.8,  0.15, 0.2,  0.35, 0.2,  0.65, 0.8,  0.85, 0.8,  1.0, 0.2,
 	0
 };
 
@@ -594,9 +596,11 @@ int mathed_string_width(FontInfo const & font, docstring const & s)
 void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 	docstring const & name)
 {
+	int const lw = pi.base.solidLineThickness();
+
 	if (name == ".") {
 		pi.pain.line(x + w/2, y, x + w/2, y + h,
-			  Color_cursor, Painter::line_onoffdash);
+			  Color_cursor, Painter::line_onoffdash, lw);
 		return;
 	}
 
@@ -638,16 +642,16 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 			pi.pain.line(
 				int(x + xx + 0.5), int(y + yy + 0.5),
 				int(x + x2 + 0.5), int(y + y2 + 0.5),
-				pi.base.font.color());
+				pi.base.font.color(), Painter::line_solid, lw);
 			if (code == 5) {  // thicker, but rounded
 				pi.pain.line(
 					int(x + xx + 0.5+1), int(y + yy + 0.5-1),
 					int(x + x2 + 0.5-1), int(y + y2 + 0.5-1),
-				pi.base.font.color());
+				pi.base.font.color(), Painter::line_solid, lw);
 				pi.pain.line(
 					int(x + xx + 0.5+1), int(y + yy + 0.5+1),
 					int(x + x2 + 0.5-1), int(y + y2 + 0.5+1),
-				pi.base.font.color());
+				pi.base.font.color(), Painter::line_solid, lw);
 			}
 		} else {
 			int xp[32];
@@ -665,7 +669,8 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 				yp[j] = int(y + yy + 0.5);
 				//  lyxerr << "P[" << j ' ' << xx << ' ' << yy << ' ' << x << ' ' << y << ']';
 			}
-			pi.pain.lines(xp, yp, n2, pi.base.font.color());
+			pi.pain.lines(xp, yp, n2, pi.base.font.color(),
+				Painter::fill_none, Painter::line_solid, lw);
 		}
 	}
 }
