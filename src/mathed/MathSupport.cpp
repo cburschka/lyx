@@ -644,14 +644,48 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 				int(x + x2 + 0.5), int(y + y2 + 0.5),
 				pi.base.font.color(), Painter::line_solid, lw);
 			if (code == 5) {  // thicker, but rounded
-				pi.pain.line(
-					int(x + xx + 0.5+1), int(y + yy + 0.5-1),
-					int(x + x2 + 0.5-1), int(y + y2 + 0.5-1),
-				pi.base.font.color(), Painter::line_solid, lw);
-				pi.pain.line(
-					int(x + xx + 0.5+1), int(y + yy + 0.5+1),
-					int(x + x2 + 0.5-1), int(y + y2 + 0.5+1),
-				pi.base.font.color(), Painter::line_solid, lw);
+				double const xa = x + xx + 0.5;
+				double const xb = x + x2 + 0.5;
+				double const ya = y + yy + 0.5;
+				double const yb = y + y2 + 0.5;
+				pi.pain.line(int(xa + 1), int(ya - 1),
+				             int(xb - 1), int(yb - 1),
+				             pi.base.font.color(),
+				             Painter::line_solid, lw);
+				pi.pain.line(int(xa + 1), int(ya + 1),
+				             int(xb - 1), int(yb + 1),
+				             pi.base.font.color(),
+				             Painter::line_solid, lw);
+				if (xa + 2 <= xb - 2) {
+					pi.pain.line(int(xa + 2), int(ya - 2),
+						     int(xb - 2), int(yb - 2),
+						     pi.base.font.color(),
+						     Painter::line_solid, lw);
+					pi.pain.line(int(xa + 2), int(ya + 2),
+						     int(xb - 2), int(yb + 2),
+						     pi.base.font.color(),
+						     Painter::line_solid, lw);
+				}
+				if (xa + 3 <= xb - 3) {
+					pi.pain.line(int(xa + 3), int(ya - 3),
+						     int(xb - 3), int(yb - 3),
+						     pi.base.font.color(),
+						     Painter::line_solid, lw);
+					pi.pain.line(int(xa + 3), int(ya + 3),
+						     int(xb - 3), int(yb + 3),
+						     pi.base.font.color(),
+						     Painter::line_solid, lw);
+				}
+				if (xa + 4 <= xb - 4) {
+					pi.pain.line(int(xa + 4), int(ya - 4),
+						     int(xb - 4), int(yb - 4),
+						     pi.base.font.color(),
+						     Painter::line_solid, lw);
+					pi.pain.line(int(xa + 4), int(ya + 4),
+						     int(xb - 4), int(yb + 4),
+						     pi.base.font.color(),
+						     Painter::line_solid, lw);
+				}
 			}
 		} else {
 			int xp[32];
