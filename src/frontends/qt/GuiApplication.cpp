@@ -1479,13 +1479,16 @@ DispatchResult const & GuiApplication::dispatch(FuncRequest const & cmd)
 
 	dr.screenUpdate(Update::FitCursor);
 	{
-		// This handles undo groups automagically
+		// All the code is kept inside the undo group because
+		// updateBuffer can create undo actions (see #11292)
 		UndoGroupHelper ugh(buffer);
 		dispatch(cmd, dr);
-		// redraw the screen at the end (first of the two drawing steps).
-		// This is done unless explicitly requested otherwise.
-		// This code is kept inside the undo group because updateBuffer
-		// can create undo actions (see #11292)
+		if (dr.screenUpdate() & Update::ForceAll) {
+			for (Buffer const * b : theBufferList())
+				b->changed(true);
+			dr.screenUpdate(dr.screenUpdate() & ~Update::ForceAll);
+		}
+
 		updateCurrentView(cmd, dr);
 	}
 

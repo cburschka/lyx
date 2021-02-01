@@ -29,7 +29,9 @@ namespace Update {
 		SinglePar = 8,
 		/// Only the inset decorations need to be redrawn, no text metrics
 		/// update is needed.
-		Decoration = 16
+		Decoration = 16,
+		/// Force metrics and redraw for all buffers.
+		ForceAll = 32
 	};
 
 inline flags operator|(flags const f, flags const g)

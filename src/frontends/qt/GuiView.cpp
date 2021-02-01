@@ -4550,7 +4550,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 					      lyxrc.currentZoom, lyxrc.defaultZoom));
 
 			guiApp->fontLoader().update();
-			dr.screenUpdate(Update::Force | Update::FitCursor);
+			dr.screenUpdate(Update::ForceAll | Update::FitCursor);
 			break;
 		}
 
