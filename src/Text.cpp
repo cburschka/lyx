@@ -859,11 +859,12 @@ void Text::insertStringAsLines(Cursor & cur, docstring const & str,
 	pos_type pos = cur.pos();
 
 	// The special chars we handle
-	map<wchar_t, InsetSpecialChar::Kind> specialchars;
-	specialchars[0x200c] = InsetSpecialChar::LIGATURE_BREAK;
-	specialchars[0x200b] = InsetSpecialChar::ALLOWBREAK;
-	specialchars[0x2026] = InsetSpecialChar::LDOTS;
-	specialchars[0x2011] = InsetSpecialChar::NOBREAKDASH;
+	static map<wchar_t, InsetSpecialChar::Kind> specialchars = {
+		{ 0x200c, InsetSpecialChar::LIGATURE_BREAK },
+		{ 0x200b, InsetSpecialChar::ALLOWBREAK },
+		{ 0x2026, InsetSpecialChar::LDOTS },
+		{ 0x2011, InsetSpecialChar::NOBREAKDASH }
+	};
 
 	// insert the string, don't insert doublespace
 	bool space_inserted = true;
