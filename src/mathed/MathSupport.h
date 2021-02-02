@@ -46,6 +46,8 @@ int mathed_char_width(FontInfo const &, char_type c);
 
 int mathed_char_kerning(FontInfo const &, char_type c);
 
+double mathed_char_slope(MetricsBase const & mb, char_type c);
+
 void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 	docstring const & name);
 

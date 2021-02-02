@@ -13,13 +13,14 @@
 
 #include "InsetMathDecoration.h"
 
-#include "BufferView.h"
+#include "InsetMathChar.h"
 #include "MathData.h"
 #include "MathParser.h"
 #include "MathSupport.h"
 #include "MathStream.h"
 #include "MetricsInfo.h"
 
+#include "BufferView.h"
 #include "LaTeXFeatures.h"
 
 #include "support/debug.h"
@@ -143,11 +144,20 @@ void InsetMathDecoration::draw(PainterInfo & pi, int x, int y) const
 
 	cell(0).draw(pi, x, y);
 	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
-	if (wide())
-		mathed_draw_deco(pi, x + 1, y + dy_, dim0.wid, dh_, key_->name);
-	else
-		mathed_draw_deco(pi, x + 1 + (dim0.wid - dw_) / 2,
-			y + dy_, dw_, dh_, key_->name);
+	if (wide()) {
+		mathed_draw_deco(pi, x, y + dy_, dim0.wid, dh_, key_->name);
+		return;
+	}
+	// Lacking the necessary font parameters, in order to properly align
+	// the decoration we have to resort to heuristics for choosing a
+	// suitable value for shift
+	char_type c = (cell(0).empty() || !cell(0)[0]->asCharInset())
+		? 0 : cell(0)[0]->asCharInset()->getChar();
+	double slope = (c == 0) ? 0.0 : mathed_char_slope(pi.base, c);
+	int kerning = (c == 0) ? 0 : mathed_char_kerning(pi.base.font, c);
+	int shift = (kerning == 0) ? int(dim0.asc * slope) : kerning;
+	mathed_draw_deco(pi, x + (dim0.wid - dw_) / 2 + shift,
+	                 y + dy_, dw_, dh_, key_->name);
 }
 
 

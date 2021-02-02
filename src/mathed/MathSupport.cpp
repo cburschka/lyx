@@ -20,6 +20,7 @@
 #include "MathParser.h"
 #include "MathStream.h"
 
+#include "Encoding.h"
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 
@@ -32,6 +33,7 @@
 #include "support/docstream.h"
 #include "support/lassert.h"
 #include "support/Length.h"
+#include "support/textutils.h"
 
 #include <map>
 #include <algorithm>
@@ -569,6 +571,15 @@ int mathed_char_kerning(FontInfo const & font, char_type c)
 {
 	frontend::FontMetrics const & fm = theFontMetrics(font);
 	return max(0, fm.rbearing(c) - fm.width(c));
+}
+
+
+double mathed_char_slope(MetricsBase const & mb, char_type c)
+{
+	bool slanted = isAlphaASCII(c) || Encodings::isMathAlpha(c);
+	if (slanted && mb.fontname == "mathnormal")
+		return theFontMetrics(mb.font).italicSlope();
+	return 0.0;
 }
 
 
