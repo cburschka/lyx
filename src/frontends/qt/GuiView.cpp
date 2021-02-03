@@ -4659,12 +4659,6 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 	}
 
-	// Part of automatic menu appearance feature.
-	if (isFullScreen()) {
-		if (menuBar()->isVisible() && lyxrc.full_screen_menubar)
-			menuBar()->hide();
-	}
-
 	// Need to update bv because many LFUNs here might have destroyed it
 	bv = currentBufferView();
 

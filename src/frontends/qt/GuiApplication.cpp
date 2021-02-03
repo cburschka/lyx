@@ -2178,6 +2178,11 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 	}
 
+	if (current_view_ && current_view_->isFullScreen()) {
+		if (current_view_->menuBar()->isVisible() && lyxrc.full_screen_menubar)
+			current_view_->menuBar()->hide();
+	}
+
 	if (cmd.origin() == FuncRequest::LYXSERVER)
 		updateCurrentView(cmd, dr);
 }
