@@ -895,12 +895,12 @@ void Text::insertStringAsLines(Cursor & cur, docstring const & str,
 				++pos;
 				space_inserted = true;
 			}
-		} else if (specialchars.find(ch) != specialchars.end()) {
-			if (par.insertInset(pos, new InsetSpecialChar(specialchars.find(ch)->second),
-					font, bparams.track_changes ?
-						Change(Change::INSERTED)
-						  : Change(Change::UNCHANGED)))
-				++pos;
+		} else if (specialchars.find(ch) != specialchars.end()
+			   && (par.insertInset(pos, new InsetSpecialChar(specialchars.find(ch)->second),
+					       font, bparams.track_changes
+					       ? Change(Change::INSERTED)
+					       : Change(Change::UNCHANGED)))) {
+			++pos;
 			space_inserted = false;
 		} else if (!isPrintable(ch)) {
 			// Ignore (other) unprintables
