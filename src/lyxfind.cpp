@@ -953,7 +953,7 @@ static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions co
 		}
 		// Even in ignore-format we have to remove "\text{}, \lyxmathsym{}" parts
 		string t = to_utf8(str);
-		while (regex_replace(t, t, "\\\\(text|lyxmathsym)\\{([^\\}]*)\\}", "$2"));
+		while (regex_replace(t, t, "\\\\(text|lyxmathsym|ensuremath)\\{([^\\}]*)\\}", "$2"));
 		str = from_utf8(t);
 	}
 	return str;
@@ -2102,7 +2102,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   if (keysBuilt && !isPatternString) return;
 
   // Keys to ignore in any case
-  makeKey("text|textcyrillic|lyxmathsym", KeyInfo(KeyInfo::headRemove, 1, true), true);
+  makeKey("text|textcyrillic|lyxmathsym|ensuremath", KeyInfo(KeyInfo::headRemove, 1, true), true);
   // Known standard keys with 1 parameter.
   // Split is done, if not at start of region
   makeKey("textsf|textss|texttt", KeyInfo(KeyInfo::isStandard, 1, ignoreFormats.getFamily()), isPatternString);
