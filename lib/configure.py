@@ -224,11 +224,9 @@ def checkTeXPaths():
         inpname = inpname.replace('~', '\\string~')
         os.write(fd, b'\\relax')
         os.close(fd)
-        latex_out = cmdOutput(r'latex "\nonstopmode\input{%s}\makeatletter\@@end"'
-                              % inpname)
+        latex_out = cmdOutput(r'latex "\nonstopmode\input{%s}\makeatletter\@@end"' % inpname)
         if 'Error' in latex_out:
-            latex_out = cmdOutput(r'latex "\nonstopmode\input{\"%s\"}\makeatletter\@@end"'
-                                  % inpname)
+            latex_out = cmdOutput(r'latex "\nonstopmode\input{\"%s\"}\makeatletter\@@end"' % inpname)
         if 'Error' in latex_out:
             logger.warning("configure: TeX engine needs posix-style paths in latex files")
             windows_style_tex_paths = 'false'
@@ -240,7 +238,7 @@ def checkTeXPaths():
 
 
 ## Searching some useful programs
-def checkProg(description, progs, rc_entry = [], path = [], not_found = ''):
+def checkProg(description, progs, rc_entry=None, path=None, not_found =''):
     '''
         This function will search a program in $PATH plus given path
         If found, return directory and program name (not the options).
@@ -266,6 +264,11 @@ def checkProg(description, progs, rc_entry = [], path = [], not_found = ''):
             was found
 
     '''
+    if path is None:
+        path = []
+    if rc_entry is None:
+        rc_entry = []
+
     # one rc entry for each progs plus not_found entry
     if len(rc_entry) > 1 and len(rc_entry) != len(progs) + 1:
         logger.error("rc entry should have one item or item "
@@ -322,12 +325,19 @@ def checkProg(description, progs, rc_entry = [], path = [], not_found = ''):
     return ['', not_found]
 
 
-def checkProgAlternatives(description, progs, rc_entry = [],
-                          alt_rc_entry = [], path = [], not_found = ''):
+def checkProgAlternatives(description, progs, rc_entry=None,
+                          alt_rc_entry=None, path=None, not_found=''):
     '''
         The same as checkProg, but additionally, all found programs will be added
         as alt_rc_entries
     '''
+    if path is None:
+        path = []
+    if alt_rc_entry is None:
+        alt_rc_entry = []
+    if rc_entry is None:
+        rc_entry = []
+
     # one rc entry for each progs plus not_found entry
     if len(rc_entry) > 1 and len(rc_entry) != len(progs) + 1:
         logger.error("rc entry should have one item or item for each prog and not_found.")
@@ -441,11 +451,14 @@ def addAlternatives(rcs, alt_type):
     return alt
 
 
-def listAlternatives(progs, alt_type, rc_entry = []):
+def listAlternatives(progs, alt_type, rc_entry=None):
     '''
         Returns a list of \\prog_alternatives strings to be used as alternative
         rc entries.  alt_type can be a string or a list of strings.
     '''
+    if rc_entry is None:
+        rc_entry = []
+
     if len(rc_entry) > 1 and len(rc_entry) != len(progs) + 1:
         logger.error("rc entry should have one item or item for each prog and not_found.")
         sys.exit(2)
@@ -462,38 +475,63 @@ def listAlternatives(progs, alt_type, rc_entry = []):
     return alt_rc_entry
 
 
-def checkViewer(description, progs, rc_entry = [], path = []):
+def checkViewer(description, progs, rc_entry=None, path=None):
     ''' The same as checkProgAlternatives, but for viewers '''
+    if path is None:
+        path = []
+    if rc_entry is None:
+        rc_entry = []
+
     alt_rc_entry = listAlternatives(progs, 'viewer', rc_entry)
     return checkProgAlternatives(description, progs, rc_entry,
                                  alt_rc_entry, path, not_found = 'auto')
 
 
-def checkEditor(description, progs, rc_entry = [], path = []):
+def checkEditor(description, progs, rc_entry=None, path=None):
     ''' The same as checkProgAlternatives, but for editors '''
+    if path is None:
+        path = []
+    if rc_entry is None:
+        rc_entry = []
+
     alt_rc_entry = listAlternatives(progs, 'editor', rc_entry)
     return checkProgAlternatives(description, progs, rc_entry,
                                  alt_rc_entry, path, not_found = 'auto')
 
 
-def checkViewerNoRC(description, progs, rc_entry = [], path = []):
+def checkViewerNoRC(description, progs, rc_entry=None, path=None):
     ''' The same as checkViewer, but do not add rc entry '''
+    if path is None:
+        path = []
+    if rc_entry is None:
+        rc_entry = []
+
     alt_rc_entry = listAlternatives(progs, 'viewer', rc_entry)
     rc_entry = []
     return checkProgAlternatives(description, progs, rc_entry,
                                  alt_rc_entry, path, not_found = 'auto')
 
 
-def checkEditorNoRC(description, progs, rc_entry = [], path = []):
+def checkEditorNoRC(description, progs, rc_entry=None, path=None):
     ''' The same as checkViewer, but do not add rc entry '''
+    if rc_entry is None:
+        rc_entry = []
+    if path is None:
+        path = []
+
     alt_rc_entry = listAlternatives(progs, 'editor', rc_entry)
     rc_entry = []
     return checkProgAlternatives(description, progs, rc_entry,
                                  alt_rc_entry, path, not_found = 'auto')
 
 
-def checkViewerEditor(description, progs, rc_entry = [], path = []):
+def checkViewerEditor(description, progs, rc_entry=None, path=None):
     ''' The same as checkProgAlternatives, but for viewers and editors '''
+    if rc_entry is None:
+        rc_entry = []
+    if path is None:
+        path = []
+
     alt_rc_entry = listAlternatives(progs, ['editor', 'viewer'], rc_entry)
     return checkProgAlternatives(description, progs, rc_entry,
                                  alt_rc_entry, path, not_found = 'auto')
