@@ -1126,6 +1126,7 @@ pod                lyxblacktext  0   0 func     x  x     amsmath
 # mathtools.sty
 vcentcolon         cmr          58  58    mathrel :  :          mathtools
 ordinarycolon      cmr          58  58    mathrel :  :          mathtools
+\def\bigtimes{\mathop{\diagup\kern-16mu\diagdown}} mathtools
 \def\dblcolon{\vcentcolon\mathrel{\kern-0.9mu}\vcentcolon}      mathrel ::          ::          mathtools
 \def\coloneqq{\vcentcolon\mathrel{\kern-1.2mu}=}                mathrel &coloneq;   &#x2254;    mathtools
 \def\Coloneqq{\dblcolon\mathrel{\kern-1.2mu}=}                  mathrel &Colone;    &#x2A74;    mathtools
