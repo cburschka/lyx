@@ -303,7 +303,7 @@ author: Uwe Stöhr
 
 
 \family sans
-Version 2.3.x
+Version 2.4.x
 \end_layout
 
 \begin_layout Standard
@@ -530,6 +530,14 @@ externally
 \begin_layout Description
 
 \family sans
+Coordinates
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
 Clipping
 \family default
  Alternatively to the usage of scaling units it is possible to set image
@@ -1599,7 +1607,7 @@ Windows Metafile
 status collapsed
 
 \begin_layout Plain Layout
-SVG|see
+WMF|see
 \begin_inset ERT
 status collapsed
 
@@ -25937,7 +25945,7 @@ for I in 1..N loop
 \begin_inset Newline newline
 \end_inset
 
- Sum:= Sum + A(I); /*comment*/
+ Sum := Sum + A(I); /* comment */
 \begin_inset Newline newline
 \end_inset
 
