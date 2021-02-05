@@ -66,9 +66,9 @@ MathClass InsetMathDecoration::mathClass() const
 }
 
 
-Limits InsetMathDecoration::defaultLimits(bool display) const
+Limits InsetMathDecoration::defaultLimits(bool /*display*/) const
 {
-	if (allowsLimitsChange() && display)
+	if (allowsLimitsChange())
 		return LIMITS;
 	else
 		return NO_LIMITS;
