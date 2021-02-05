@@ -509,9 +509,12 @@ void InsetMathScript::write(TeXMathStream & os) const
 {
 	MathEnsurer ensurer(os);
 
-	if (!nuc().empty())
+	if (!nuc().empty()) {
 		os << nuc();
-	else if (os.firstitem())
+		// Avoid double superscript errors (bug #1633)
+		if (os.latex() && hasUp() && nuc().back()->getChar() == '\'')
+			os << "{}";
+	} else if (os.firstitem())
 		LYXERR(Debug::MATHED, "suppressing {} when writing");
 	else
 		os << "{}";
