@@ -169,13 +169,13 @@ string const & texName(char_type math_symbol)
 
 void setDelimiterName(QListWidgetItem * lwi, string const & name)
 {
-	lwi->setToolTip(toqstr(name));
+	lwi->setData(Qt::UserRole, toqstr(name));
 }
 
 
 string getDelimiterName(QListWidgetItem const * lwi)
 {
-	return fromqstr(lwi->data(Qt::ToolTipRole).toString());
+	return fromqstr(lwi->data(Qt::UserRole).toString());
 }
 
 
@@ -219,6 +219,7 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 		QListWidgetItem * lwi = new QListWidgetItem(QIcon(pixmap), QString());
 		setDelimiterName(lwi, delim);
 		left_list_items_[ms.unicode] = lwi;
+		lwi->setToolTip(toqstr(delim));
 		lwi->setSizeHint(icon_size);
 		leftLW->addItem(lwi);
 	}
@@ -232,10 +233,10 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 
 	// The last element is the empty one.
 	QListWidgetItem * lwi = new QListWidgetItem(qt_("(None)"));
-	lwi->setToolTip(qt_("(No Delimiter)"));
+	lwi->setToolTip(qt_("No Delimiter"));
 	left_list_items_['?'] = lwi;
 	QListWidgetItem * rwi = new QListWidgetItem(qt_("(None)"));
-	rwi->setToolTip(qt_("(No Delimiter)"));
+	rwi->setToolTip(qt_("No Delimiter"));
 	right_list_items_['?'] = rwi;
 	leftLW->addItem(lwi);
 	rightLW->addItem(rwi);
