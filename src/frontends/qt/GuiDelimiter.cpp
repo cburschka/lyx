@@ -80,13 +80,10 @@ static docstring fix_name(string const & str, bool big)
 }
 
 struct MathSymbol {
-	MathSymbol(char_type uc = '?', unsigned char fc = 0,
-		FontFamily ff = SYMBOL_FAMILY, string icon = string())
-		: unicode(uc), fontcode(fc), fontfamily(ff), icon(icon)
+	MathSymbol(char_type uc = '?', string icon = string())
+		: unicode(uc), icon(icon)
 	{}
 	char_type unicode;
-	unsigned char fontcode;
-	FontFamily fontfamily;
 	string icon;
 };
 
@@ -97,6 +94,10 @@ static map<std::string, MathSymbol> math_symbols_;
 /// \c math_symbols_.
 static map<char_type, string> tex_names_;
 
+typedef map<char_type, QListWidgetItem *> ListItems;
+ListItems left_list_items_;
+ListItems right_list_items_;
+
 void initMathSymbols()
 {
 	// FIXME: Ideally, those unicode codepoints would be defined
@@ -104,34 +105,34 @@ void initMathSymbols()
 	// defined with non-unicode ids for use within mathed.
 	// FIXME 2: We should fill-in this map with the parsed "symbols"
 	// file done in MathFactory.cpp.
-	math_symbols_["("] = MathSymbol('(', 40, CMR_FAMILY, "lparen");
-	math_symbols_[")"] = MathSymbol(')', 41, CMR_FAMILY, "rparen");
-	math_symbols_["{"] = MathSymbol('{', 102, CMSY_FAMILY, "lbrace");
-	math_symbols_["}"] = MathSymbol('}', 103, CMSY_FAMILY, "rbrace");
-	math_symbols_["["] = MathSymbol('[', 91, CMR_FAMILY, "lbracket");
-	math_symbols_["]"] = MathSymbol(']', 93, CMR_FAMILY, "rbracket");
-	math_symbols_["|"] = MathSymbol('|', 106, CMSY_FAMILY, "mid");
-	math_symbols_["/"] = MathSymbol('/', 47, CMR_FAMILY, "slash");
-	math_symbols_["backslash"] = MathSymbol('\\', 110, CMSY_FAMILY, "backslash");
-	math_symbols_["lceil"] = MathSymbol(0x2308, 100, CMSY_FAMILY, "lceil");
-	math_symbols_["rceil"] = MathSymbol(0x2309, 101, CMSY_FAMILY, "rceil");
-	math_symbols_["lfloor"] = MathSymbol(0x230A, 98, CMSY_FAMILY, "lfloor");
-	math_symbols_["rfloor"] = MathSymbol(0x230B, 99, CMSY_FAMILY, "rfloor");
-	math_symbols_["langle"] = MathSymbol(0x2329, 104, CMSY_FAMILY, "langle");
-	math_symbols_["rangle"] = MathSymbol(0x232A, 105, CMSY_FAMILY, "rangle");
-	math_symbols_["llbracket"] = MathSymbol(0x27e6, 74, STMARY_FAMILY, "llbracket");
-	math_symbols_["rrbracket"] = MathSymbol(0x27e7, 75, STMARY_FAMILY, "rrbracket");
-	math_symbols_["uparrow"] = MathSymbol(0x2191, 34, CMSY_FAMILY, "uparrow");
-	math_symbols_["Uparrow"] = MathSymbol(0x21D1, 42, CMSY_FAMILY, "uparrow2");
-	math_symbols_["updownarrow"] = MathSymbol(0x2195, 108, CMSY_FAMILY, "updownarrow");
-	math_symbols_["Updownarrow"] = MathSymbol(0x21D5, 109, CMSY_FAMILY, "updownarrow2");
-	math_symbols_["downarrow"] = MathSymbol(0x2193, 35, CMSY_FAMILY, "downarrow");
-	math_symbols_["Downarrow"] = MathSymbol(0x21D3, 43, CMSY_FAMILY, "downarrow2");
-	math_symbols_["downdownarrows"] = MathSymbol(0x21CA, 184, MSA_FAMILY, "downdownarrows");
-	math_symbols_["downharpoonleft"] = MathSymbol(0x21C3, 188, MSA_FAMILY, "downharpoonleft");
-	math_symbols_["downharpoonright"] = MathSymbol(0x21C2, 186, MSA_FAMILY, "downharpoonright");
-	math_symbols_["vert"] = MathSymbol(0x007C, 106, CMSY_FAMILY, "vert");
-	math_symbols_["Vert"] = MathSymbol(0x2016, 107, CMSY_FAMILY, "vert2");
+	math_symbols_["("] = MathSymbol('(', "lparen");
+	math_symbols_[")"] = MathSymbol(')', "rparen");
+	math_symbols_["{"] = MathSymbol('{', "lbrace");
+	math_symbols_["}"] = MathSymbol('}', "rbrace");
+	math_symbols_["["] = MathSymbol('[', "lbracket");
+	math_symbols_["]"] = MathSymbol(']', "rbracket");
+	math_symbols_["|"] = MathSymbol('|', "mid");
+	math_symbols_["/"] = MathSymbol('/', "slash");
+	math_symbols_["backslash"] = MathSymbol('\\', "backslash");
+	math_symbols_["lceil"] = MathSymbol(0x2308, "lceil");
+	math_symbols_["rceil"] = MathSymbol(0x2309, "rceil");
+	math_symbols_["lfloor"] = MathSymbol(0x230A, "lfloor");
+	math_symbols_["rfloor"] = MathSymbol(0x230B, "rfloor");
+	math_symbols_["langle"] = MathSymbol(0x2329, "langle");
+	math_symbols_["rangle"] = MathSymbol(0x232A, "rangle");
+	math_symbols_["llbracket"] = MathSymbol(0x27e6, "llbracket");
+	math_symbols_["rrbracket"] = MathSymbol(0x27e7, "rrbracket");
+	math_symbols_["uparrow"] = MathSymbol(0x2191, "uparrow");
+	math_symbols_["Uparrow"] = MathSymbol(0x21D1, "uparrow2");
+	math_symbols_["updownarrow"] = MathSymbol(0x2195, "updownarrow");
+	math_symbols_["Updownarrow"] = MathSymbol(0x21D5, "updownarrow2");
+	math_symbols_["downarrow"] = MathSymbol(0x2193, "downarrow");
+	math_symbols_["Downarrow"] = MathSymbol(0x21D3, "downarrow2");
+	math_symbols_["downdownarrows"] = MathSymbol(0x21CA, "downdownarrows");
+	math_symbols_["downharpoonleft"] = MathSymbol(0x21C3, "downharpoonleft");
+	math_symbols_["downharpoonright"] = MathSymbol(0x21C2, "downharpoonright");
+	math_symbols_["vert"] = MathSymbol(0x007C, "vert");
+	math_symbols_["Vert"] = MathSymbol(0x2016, "vert2");
 
 	map<string, MathSymbol>::const_iterator it = math_symbols_.begin();
 	map<string, MathSymbol>::const_iterator end = math_symbols_.end();
@@ -196,6 +197,9 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 	leftLW->setDragDropMode(QAbstractItemView::NoDragDrop);
 	rightLW->setDragDropMode(QAbstractItemView::NoDragDrop);
 
+	left_list_items_.clear();
+	right_list_items_.clear();
+
 	initMathSymbols();
 
 	QSize icon_size(32, 32);
@@ -205,8 +209,6 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 	leftLW->setIconSize(icon_size);
 	rightLW->setIconSize(icon_size);
 
-	typedef map<char_type, QListWidgetItem *> ListItems;
-	ListItems list_items;
 	// The last element is the empty one.
 	int const end = nr_latex_delimiters - 1;
 	for (int i = 0; i < end; ++i) {
@@ -216,19 +218,25 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 		QPixmap pixmap = getPixmap("images/math/", toqstr(ms.icon), "svgz,png");
 		QListWidgetItem * lwi = new QListWidgetItem(QIcon(pixmap), QString());
 		setDelimiterName(lwi, delim);
-		list_items[ms.unicode] = lwi;
+		left_list_items_[ms.unicode] = lwi;
 		lwi->setSizeHint(icon_size);
 		leftLW->addItem(lwi);
 	}
 
 	for (int i = 0; i != leftLW->count(); ++i) {
 		MathSymbol const & ms = mathSymbol(getDelimiterName(leftLW->item(i)));
-		rightLW->addItem(list_items[doMatch(ms.unicode)]->clone());
+		QListWidgetItem * rwi = left_list_items_[doMatch(ms.unicode)]->clone();
+		right_list_items_[ms.unicode] = rwi;
+		rightLW->addItem(rwi);
 	}
 
 	// The last element is the empty one.
 	QListWidgetItem * lwi = new QListWidgetItem(qt_("(None)"));
+	lwi->setToolTip(qt_("(No Delimiter)"));
+	left_list_items_['?'] = lwi;
 	QListWidgetItem * rwi = new QListWidgetItem(qt_("(None)"));
+	rwi->setToolTip(qt_("(No Delimiter)"));
+	right_list_items_['?'] = rwi;
 	leftLW->addItem(lwi);
 	rightLW->addItem(rwi);
 
@@ -248,24 +256,42 @@ char_type GuiDelimiter::doMatch(char_type const symbol)
 {
 	string const & str = texName(symbol);
 	string match;
-	if (str == "(") match = ")";
-	else if (str == ")") match = "(";
-	else if (str == "[") match = "]";
-	else if (str == "]") match = "[";
-	else if (str == "{") match = "}";
-	else if (str == "}") match = "{";
-	else if (str == "l") match = "r";
-	else if (str == "rceil") match = "lceil";
-	else if (str == "lceil") match = "rceil";
-	else if (str == "rfloor") match = "lfloor";
-	else if (str == "lfloor") match = "rfloor";
-	else if (str == "rangle") match = "langle";
-	else if (str == "langle") match = "rangle";
-	else if (str == "llbracket") match = "rrbracket";
-	else if (str == "rrbracket") match = "llbracket";
-	else if (str == "backslash") match = "/";
-	else if (str == "/") match = "backslash";
-	else return symbol;
+	if (str == "(")
+		match = ")";
+	else if (str == ")")
+		match = "(";
+	else if (str == "[")
+		match = "]";
+	else if (str == "]")
+		match = "[";
+	else if (str == "{")
+		match = "}";
+	else if (str == "}")
+		match = "{";
+	else if (str == "l")
+		match = "r";
+	else if (str == "rceil")
+		match = "lceil";
+	else if (str == "lceil")
+		match = "rceil";
+	else if (str == "rfloor")
+		match = "lfloor";
+	else if (str == "lfloor")
+		match = "rfloor";
+	else if (str == "rangle")
+		match = "langle";
+	else if (str == "langle")
+		match = "rangle";
+	else if (str == "llbracket")
+		match = "rrbracket";
+	else if (str == "rrbracket")
+		match = "llbracket";
+	else if (str == "backslash")
+		match = "/";
+	else if (str == "/")
+		match = "backslash";
+	else
+		return symbol;
 
 	return mathSymbol(match).unicode;
 }
@@ -431,24 +457,14 @@ void GuiDelimiter::on_swapPB_clicked()
 	// Convert back to QString to locate them in the widget.
 	MathSymbol const & nlms = mathSymbol(texName(lc));
 	MathSymbol const & nrms = mathSymbol(texName(rc));
-	QString lqs(nlms.fontcode ?
-		QChar(nlms.fontcode) : toqstr(docstring(1, nlms.unicode)));
-	QString rqs(nrms.fontcode ?
-		QChar(nrms.fontcode) : toqstr(docstring(1, nrms.unicode)));
-
-	// Handle unencoded "symbol" of "(None)".
-	if (lqs == "?")
-		lqs = qt_("(None)");
-	if(rqs == "?")
-		rqs = qt_("(None)");
 
 	// Locate matching QListWidgetItem.
-	QList<QListWidgetItem *> lwi = leftLW->findItems(lqs, Qt::MatchExactly);
-	QList<QListWidgetItem *> rwi = rightLW->findItems(rqs, Qt::MatchExactly);
+	QListWidgetItem * lwi = left_list_items_[nlms.unicode];
+	QListWidgetItem * rwi = right_list_items_[nrms.unicode];
 
 	// Select.
-	leftLW->setCurrentItem(lwi.first());
-	rightLW->setCurrentItem(rwi.first());
+	leftLW->setCurrentItem(lwi);
+	rightLW->setCurrentItem(rwi);
 
 	updateTeXCode(sizeCO->currentIndex());
 }
