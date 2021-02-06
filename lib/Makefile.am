@@ -2690,6 +2690,233 @@ dist_xtemplates_DATA = \
 	xtemplates/vector_graphics.xtemplate \
 	xtemplates/xfig.xtemplate
 
+#ePub related dependencies
+#1) conversion script itself
+dist_scripts_DATA += scripts/docbook2epub.py
+
+#2) xslt processor - Saxon 6.5.5
+dist_scripts_DATA += \
+	scripts/saxon6.LICENSE.txt \
+	scripts/saxon6.5.5.jar
+
+#3) xslt Stylesheets 1.79.2
+docbookdir = $(pkgdatadir)/docbook
+dist_docbook_DATA = \
+	docbook/COPYING \
+	docbook/source.txt \
+	docbook/VERSION \
+	docbook/VERSION.xsl
+
+docbookcommondir = $(pkgdatadir)/docbook/common
+dist_docbookcommon_DATA = \
+	docbook/common/addns.xsl \
+	docbook/common/af.xml \
+	docbook/common/am.xml \
+	docbook/common/ar.xml \
+	docbook/common/ast.xml \
+	docbook/common/as.xml \
+	docbook/common/autoidx-kimber.xsl \
+	docbook/common/autoidx-kosek.xsl \
+	docbook/common/az.xml \
+	docbook/common/bg.xml \
+	docbook/common/bn_in.xml \
+	docbook/common/bn.xml \
+	docbook/common/bs.xml \
+	docbook/common/build.xml \
+	docbook/common/ca.xml \
+	docbook/common/charmap.xml \
+	docbook/common/charmap.xsl \
+	docbook/common/common.xml \
+	docbook/common/common.xsl \
+	docbook/common/cs.xml \
+	docbook/common/cy.xml \
+	docbook/common/da.xml \
+	docbook/common/de.xml \
+	docbook/common/el.xml \
+	docbook/common/entities.ent \
+	docbook/common/en.xml \
+	docbook/common/eo.xml \
+	docbook/common/es.xml \
+	docbook/common/et.xml \
+	docbook/common/eu.xml \
+	docbook/common/fa.xml \
+	docbook/common/fi.xml \
+	docbook/common/fr.xml \
+	docbook/common/ga.xml \
+	docbook/common/gentext.xsl \
+	docbook/common/gl.xml \
+	docbook/common/gu.xml \
+	docbook/common/he.xml \
+	docbook/common/hi.xml \
+	docbook/common/hr.xml \
+	docbook/common/hu.xml \
+	docbook/common/id.xml \
+	docbook/common/insertfile.xsl \
+	docbook/common/is.xml \
+	docbook/common/it.xml \
+	docbook/common/ja.xml \
+	docbook/common/ka.xml \
+	docbook/common/kn.xml \
+	docbook/common/ko.xml \
+	docbook/common/ky.xml \
+	docbook/common/l10n.dtd \
+	docbook/common/l10n.xml \
+	docbook/common/l10n.xsl \
+	docbook/common/labels.xsl \
+	docbook/common/la.xml \
+	docbook/common/lt.xml \
+	docbook/common/lv.xml \
+	docbook/common/ml.xml \
+	docbook/common/mn.xml \
+	docbook/common/mr.xml \
+	docbook/common/nb.xml \
+	docbook/common/nds.xml \
+	docbook/common/nl.xml \
+	docbook/common/nn.xml \
+	docbook/common/olink.xsl \
+	docbook/common/or.xml \
+	docbook/common/pa.xml \
+	docbook/common/pi.xml \
+	docbook/common/pi.xsl \
+	docbook/common/pl.xml \
+	docbook/common/pt_br.xml \
+	docbook/common/pt.xml \
+	docbook/common/refentry.xml \
+	docbook/common/refentry.xsl \
+	docbook/common/ro.xml \
+	docbook/common/ru.xml \
+	docbook/common/sk.xml \
+	docbook/common/sl.xml \
+	docbook/common/sq.xml \
+	docbook/common/sr_Latn.xml \
+	docbook/common/sr.xml \
+	docbook/common/stripns.xsl \
+	docbook/common/subtitles.xsl \
+	docbook/common/sv.xml \
+	docbook/common/table.xsl \
+	docbook/common/targetdatabase.dtd \
+	docbook/common/targets.xsl \
+	docbook/common/ta.xml \
+	docbook/common/te.xml \
+	docbook/common/th.xml \
+	docbook/common/titles.xsl \
+	docbook/common/tl.xml \
+	docbook/common/tr.xml \
+	docbook/common/uk.xml \
+	docbook/common/ur.xml \
+	docbook/common/utility.xml \
+	docbook/common/utility.xsl \
+	docbook/common/vi.xml \
+	docbook/common/xh.xml \
+	docbook/common/zh_cn.xml \
+	docbook/common/zh_tw.xml \
+	docbook/common/zh.xml
+
+docbookepub3dir = $(pkgdatadir)/docbook/epub3
+dist_docbookepub3_DATA = \
+	docbook/epub3/build.xml \
+	docbook/epub3/chunkfast.xsl \
+	docbook/epub3/chunk.xsl \
+	docbook/epub3/docbook-epub.css.xml \
+	docbook/epub3/docbook.xsl \
+	docbook/epub3/epub3-chunk-mods.xsl \
+	docbook/epub3/epub3-element-mods.xsl \
+	docbook/epub3/profile-chunk.xsl \
+	docbook/epub3/profile-docbook.xsl \
+	docbook/epub3/README \
+	docbook/epub3/titlepage.templates.xml \
+	docbook/epub3/titlepage.templates.xsl
+
+docbooklibdir = $(pkgdatadir)/docbook/lib
+dist_docbooklib_DATA = \
+	docbook/lib/build.xml \
+	docbook/lib/lib.xsl
+
+docbookxhtml5dir = $(pkgdatadir)/docbook/xhtml5
+dist_docbookxhtml5_DATA = \
+	docbook/xhtml5/build.xml \
+	docbook/xhtml5/chunkfast.xsl \
+	docbook/xhtml5/chunk.xsl \
+	docbook/xhtml5/docbook.css.xml \
+	docbook/xhtml5/docbook.xsl \
+	docbook/xhtml5/html5-chunk-mods.xsl \
+	docbook/xhtml5/html5-element-mods.xsl \
+	docbook/xhtml5/onechunk.xsl \
+	docbook/xhtml5/profile-chunk.xsl \
+	docbook/xhtml5/profile-docbook.xsl \
+	docbook/xhtml5/README \
+	docbook/xhtml5/xhtml2xhtml5.xsl \
+	docbook/xhtml5/xhtml-docbook.xsl \
+	docbook/xhtml5/xhtml-profile-docbook.xsl
+
+docbookxhtmldir = $(pkgdatadir)/docbook/xhtml
+dist_docbookxhtml_DATA = \
+	docbook/xhtml/admon.xsl \
+	docbook/xhtml/annotations.xsl \
+	docbook/xhtml/autoidx-kimber.xsl \
+	docbook/xhtml/autoidx-kosek.xsl \
+	docbook/xhtml/autoidx-ng.xsl \
+	docbook/xhtml/autoidx.xsl \
+	docbook/xhtml/autotoc.xsl \
+	docbook/xhtml/biblio-iso690.xsl \
+	docbook/xhtml/biblio.xsl \
+	docbook/xhtml/block.xsl \
+	docbook/xhtml/build.xml \
+	docbook/xhtml/callout.xsl \
+	docbook/xhtml/changebars.xsl \
+	docbook/xhtml/chunk-changebars.xsl \
+	docbook/xhtml/chunk-code.xsl \
+	docbook/xhtml/chunk-common.xsl \
+	docbook/xhtml/chunker.xsl \
+	docbook/xhtml/chunkfast.xsl \
+	docbook/xhtml/chunktoc.xsl \
+	docbook/xhtml/chunk.xsl \
+	docbook/xhtml/component.xsl \
+	docbook/xhtml/division.xsl \
+	docbook/xhtml/docbook.css.xml \
+	docbook/xhtml/docbook-no-doctype.xsl \
+	docbook/xhtml/docbook.xsl \
+	docbook/xhtml/ebnf.xsl \
+	docbook/xhtml/footnote.xsl \
+	docbook/xhtml/formal.xsl \
+	docbook/xhtml/glossary.xsl \
+	docbook/xhtml/graphics.xsl \
+	docbook/xhtml/highlight.xsl \
+	docbook/xhtml/html-rtf.xsl \
+	docbook/xhtml/htmltbl.xsl \
+	docbook/xhtml/html.xsl \
+	docbook/xhtml/index.xsl \
+	docbook/xhtml/info.xsl \
+	docbook/xhtml/inline.xsl \
+	docbook/xhtml/its.xsl \
+	docbook/xhtml/keywords.xsl \
+	docbook/xhtml/lists.xsl \
+	docbook/xhtml/maketoc.xsl \
+	docbook/xhtml/manifest.xsl \
+	docbook/xhtml/math.xsl \
+	docbook/xhtml/oldchunker.xsl \
+	docbook/xhtml/onechunk.xsl \
+	docbook/xhtml/param.xsl \
+	docbook/xhtml/pi.xsl \
+	docbook/xhtml/profile-chunk-code.xsl \
+	docbook/xhtml/profile-chunk.xsl \
+	docbook/xhtml/profile-docbook.xsl \
+	docbook/xhtml/profile-onechunk.xsl \
+	docbook/xhtml/publishers.xsl \
+	docbook/xhtml/qandaset.xsl \
+	docbook/xhtml/refentry.xsl \
+	docbook/xhtml/sections.xsl \
+	docbook/xhtml/synop.xsl \
+	docbook/xhtml/table.xsl \
+	docbook/xhtml/task.xsl \
+	docbook/xhtml/titlepage.templates.xml \
+	docbook/xhtml/titlepage.templates.xsl \
+	docbook/xhtml/titlepage.xsl \
+	docbook/xhtml/toc.xsl \
+	docbook/xhtml/verbatim.xsl \
+	docbook/xhtml/xref.xsl
+
+
 if INSTALL_POSIX
 # install application icons. The 'hicolor' theme is the default theme
 # where applications themselves should install their icons.
