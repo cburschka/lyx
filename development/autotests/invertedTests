@@ -393,7 +393,7 @@ Sublabel: varioref
 # varioref is not working with XeTeX/LuaTeX for Russian, as it uses some
 # char macros which are not defined for these engines.
 export/doc/ru/UserGuide_(dvi3|pdf[45])_(system|tex)F
-export/doc/ru/(Math|Additional|Shortcuts)_(dvi3|pdf[45])_systemF
+export/doc/ru/(Math|Additional|Shortcuts|EmbeddedObjects)_(dvi3|pdf[45])_systemF
 
 
 # ================================================
@@ -471,7 +471,7 @@ export/templates/Articles/Elsevier_docbook5
 export/export/latex/languages/supported-languages_(|babel|babel_auto-legacy)_?docbook5
 # - EmbeddedObjects: this document is too complex, with captions within tables, many LaTeX parameters when including
 #   a file, uncaptioned tables in the same float, etc.
-export/doc(|/de|/es|/fr|/ja)/EmbeddedObjects_docbook5
+export/doc(|/de|/es|/fr|/ja|/ru)/EmbeddedObjects_docbook5
 # - Math: formula in inline tag, formula with two references (only one xml:id allowed per <equation> tag).
 export/doc(|/de|/es|/fr|/ja|/ru)/Math_docbook5
 # - UserGuide: formula in inline tag, use of fancyhdr
