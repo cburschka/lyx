@@ -84,8 +84,10 @@ public:
 	/// writes space if next thing is isalpha()
 	bool pendingSpace() const { return pendingspace_; }
 	/// write braces if a space is pending and next char is [
+	/// or when a prime immediately follows a superscript
 	void useBraces(bool braces);
 	/// write braces if a space is pending and next char is [
+	/// or when a prime immediately follows a superscript
 	bool useBraces() const { return usebraces_; }
 	/// tell whether to write the closing brace of \ensuremath
 	void pendingBrace(bool brace);
@@ -128,7 +130,8 @@ private:
 	OutputType output_ = wsDefault;
 	/// do we have a space pending?
 	bool pendingspace_ = false;
-	/// do we have to write braces when a space is pending and [ follows?
+	/// do we have to write braces when a space is pending and [ follows,
+	/// or when a prime immediately follows a superscript?
 	bool usebraces_ = false;
 	/// do we have a brace pending?
 	bool pendingbrace_ = false;

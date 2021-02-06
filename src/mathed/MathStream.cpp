@@ -111,6 +111,10 @@ TeXMathStream & operator<<(TeXMathStream & ws, docstring const & s)
 		else if (s[first] == ' ' && ws.textMode())
 			ws.os() << '\\';
 		ws.pendingSpace(false);
+	} else if (ws.useBraces()) {
+		if (s[first] == '\'')
+			ws.os() << "{}";
+		ws.useBraces(false);
 	}
 	ws.os() << s.substr(first);
 	int lf = 0;
@@ -241,6 +245,10 @@ TeXMathStream & operator<<(TeXMathStream & ws, char c)
 		else if (c == ' ' && ws.textMode())
 			ws.os() << '\\';
 		ws.pendingSpace(false);
+	} else if (ws.useBraces()) {
+		if (c == '\'')
+			ws.os() << "{}";
+		ws.useBraces(false);
 	}
 	ws.os() << c;
 	if (c == '\n')

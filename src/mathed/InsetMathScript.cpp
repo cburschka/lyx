@@ -511,7 +511,7 @@ void InsetMathScript::write(TeXMathStream & os) const
 
 	if (!nuc().empty()) {
 		os << nuc();
-		// Avoid double superscript errors (bug #1633)
+		// Avoid double superscript errors (bug 1633)
 		if (os.latex() && hasUp() && nuc().back()->getChar() == '\'')
 			os << "{}";
 	} else if (os.firstitem())
@@ -529,8 +529,13 @@ void InsetMathScript::write(TeXMathStream & os) const
 		    (up().size() == 1 && up().back()->asBraceInset() &&
 		     up().back()->asBraceInset()->cell(0).empty())))
 			os << "^ {}";
-		else
+		else {
 			os << "^{" << up() << '}';
+			// Avoid double superscript errors by writing an
+			// empty group {} when a prime immediately follows
+			if (os.latex())
+				os.useBraces(true);
+		}
 	}
 
 	if (lock_ && !os.latex())
