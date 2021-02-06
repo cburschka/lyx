@@ -2,7 +2,7 @@
 # Author: Jacob Bishop <bishop.jacob@gmail.com> based on the apa 
 # layout written by Randy Gobbel.
 
-Format 90
+Format 92
 Columns                 1
 Sides                   1
 PageStyle               Headers

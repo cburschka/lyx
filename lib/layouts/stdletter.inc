@@ -3,7 +3,7 @@
 # Heavily modifed and enhanced by several developers.
 
 
-Format 90
+Format 92
 Columns                 1
 Sides                   1
 PageStyle               Empty
