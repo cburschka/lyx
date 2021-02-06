@@ -81,12 +81,13 @@ static docstring fix_name(string const & str, bool big)
 
 struct MathSymbol {
 	MathSymbol(char_type uc = '?', unsigned char fc = 0,
-		FontFamily ff = SYMBOL_FAMILY)
-		: unicode(uc), fontcode(fc), fontfamily(ff)
+		FontFamily ff = SYMBOL_FAMILY, string icon = string())
+		: unicode(uc), fontcode(fc), fontfamily(ff), icon(icon)
 	{}
 	char_type unicode;
 	unsigned char fontcode;
 	FontFamily fontfamily;
+	string icon;
 };
 
 /// TeX-name / Math-symbol map.
@@ -103,34 +104,34 @@ void initMathSymbols()
 	// defined with non-unicode ids for use within mathed.
 	// FIXME 2: We should fill-in this map with the parsed "symbols"
 	// file done in MathFactory.cpp.
-	math_symbols_["("] = MathSymbol('(', 40, CMR_FAMILY);
-	math_symbols_[")"] = MathSymbol(')', 41, CMR_FAMILY);
-	math_symbols_["{"] = MathSymbol('{', 102, CMSY_FAMILY);
-	math_symbols_["}"] = MathSymbol('}', 103, CMSY_FAMILY);
-	math_symbols_["["] = MathSymbol('[', 91, CMR_FAMILY);
-	math_symbols_["]"] = MathSymbol(']', 93, CMR_FAMILY);
-	math_symbols_["|"] = MathSymbol('|', 106, CMSY_FAMILY);
-	math_symbols_["/"] = MathSymbol('/', 47, CMR_FAMILY);
-	math_symbols_["backslash"] = MathSymbol('\\', 110, CMSY_FAMILY);
-	math_symbols_["lceil"] = MathSymbol(0x2308, 100, CMSY_FAMILY);
-	math_symbols_["rceil"] = MathSymbol(0x2309, 101, CMSY_FAMILY);
-	math_symbols_["lfloor"] = MathSymbol(0x230A, 98, CMSY_FAMILY);
-	math_symbols_["rfloor"] = MathSymbol(0x230B, 99, CMSY_FAMILY);
-	math_symbols_["langle"] = MathSymbol(0x2329, 104, CMSY_FAMILY);
-	math_symbols_["rangle"] = MathSymbol(0x232A, 105, CMSY_FAMILY);
-	math_symbols_["llbracket"] = MathSymbol(0x27e6, 74, STMARY_FAMILY);
-	math_symbols_["rrbracket"] = MathSymbol(0x27e7, 75, STMARY_FAMILY);
-	math_symbols_["uparrow"] = MathSymbol(0x2191, 34, CMSY_FAMILY);
-	math_symbols_["Uparrow"] = MathSymbol(0x21D1, 42, CMSY_FAMILY);
-	math_symbols_["updownarrow"] = MathSymbol(0x2195, 108, CMSY_FAMILY);
-	math_symbols_["Updownarrow"] = MathSymbol(0x21D5, 109, CMSY_FAMILY);
-	math_symbols_["downarrow"] = MathSymbol(0x2193, 35, CMSY_FAMILY);
-	math_symbols_["Downarrow"] = MathSymbol(0x21D3, 43, CMSY_FAMILY);
-	math_symbols_["downdownarrows"] = MathSymbol(0x21CA, 184, MSA_FAMILY);
-	math_symbols_["downharpoonleft"] = MathSymbol(0x21C3, 188, MSA_FAMILY);
-	math_symbols_["downharpoonright"] = MathSymbol(0x21C2, 186, MSA_FAMILY);
-	math_symbols_["vert"] = MathSymbol(0x007C, 106, CMSY_FAMILY);
-	math_symbols_["Vert"] = MathSymbol(0x2016, 107, CMSY_FAMILY);
+	math_symbols_["("] = MathSymbol('(', 40, CMR_FAMILY, "lparen");
+	math_symbols_[")"] = MathSymbol(')', 41, CMR_FAMILY, "rparen");
+	math_symbols_["{"] = MathSymbol('{', 102, CMSY_FAMILY, "lbrace");
+	math_symbols_["}"] = MathSymbol('}', 103, CMSY_FAMILY, "rbrace");
+	math_symbols_["["] = MathSymbol('[', 91, CMR_FAMILY, "lbracket");
+	math_symbols_["]"] = MathSymbol(']', 93, CMR_FAMILY, "rbracket");
+	math_symbols_["|"] = MathSymbol('|', 106, CMSY_FAMILY, "mid");
+	math_symbols_["/"] = MathSymbol('/', 47, CMR_FAMILY, "slash");
+	math_symbols_["backslash"] = MathSymbol('\\', 110, CMSY_FAMILY, "backslash");
+	math_symbols_["lceil"] = MathSymbol(0x2308, 100, CMSY_FAMILY, "lceil");
+	math_symbols_["rceil"] = MathSymbol(0x2309, 101, CMSY_FAMILY, "rceil");
+	math_symbols_["lfloor"] = MathSymbol(0x230A, 98, CMSY_FAMILY, "lfloor");
+	math_symbols_["rfloor"] = MathSymbol(0x230B, 99, CMSY_FAMILY, "rfloor");
+	math_symbols_["langle"] = MathSymbol(0x2329, 104, CMSY_FAMILY, "langle");
+	math_symbols_["rangle"] = MathSymbol(0x232A, 105, CMSY_FAMILY, "rangle");
+	math_symbols_["llbracket"] = MathSymbol(0x27e6, 74, STMARY_FAMILY, "llbracket");
+	math_symbols_["rrbracket"] = MathSymbol(0x27e7, 75, STMARY_FAMILY, "rrbracket");
+	math_symbols_["uparrow"] = MathSymbol(0x2191, 34, CMSY_FAMILY, "uparrow");
+	math_symbols_["Uparrow"] = MathSymbol(0x21D1, 42, CMSY_FAMILY, "uparrow2");
+	math_symbols_["updownarrow"] = MathSymbol(0x2195, 108, CMSY_FAMILY, "updownarrow");
+	math_symbols_["Updownarrow"] = MathSymbol(0x21D5, 109, CMSY_FAMILY, "updownarrow2");
+	math_symbols_["downarrow"] = MathSymbol(0x2193, 35, CMSY_FAMILY, "downarrow");
+	math_symbols_["Downarrow"] = MathSymbol(0x21D3, 43, CMSY_FAMILY, "downarrow2");
+	math_symbols_["downdownarrows"] = MathSymbol(0x21CA, 184, MSA_FAMILY, "downdownarrows");
+	math_symbols_["downharpoonleft"] = MathSymbol(0x21C3, 188, MSA_FAMILY, "downharpoonleft");
+	math_symbols_["downharpoonright"] = MathSymbol(0x21C2, 186, MSA_FAMILY, "downharpoonright");
+	math_symbols_["vert"] = MathSymbol(0x007C, 106, CMSY_FAMILY, "vert");
+	math_symbols_["Vert"] = MathSymbol(0x2016, 107, CMSY_FAMILY, "vert2");
 
 	map<string, MathSymbol>::const_iterator it = math_symbols_.begin();
 	map<string, MathSymbol>::const_iterator end = math_symbols_.end();
@@ -167,13 +168,13 @@ string const & texName(char_type math_symbol)
 
 void setDelimiterName(QListWidgetItem * lwi, string const & name)
 {
-	lwi->setData(Qt::UserRole, toqstr(name));
+	lwi->setToolTip(toqstr(name));
 }
 
 
 string getDelimiterName(QListWidgetItem const * lwi)
 {
-	return fromqstr(lwi->data(Qt::UserRole).toString());
+	return fromqstr(lwi->data(Qt::ToolTipRole).toString());
 }
 
 
@@ -197,13 +198,12 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 
 	initMathSymbols();
 
-	FontInfo lyxfont;
-	lyxfont.setFamily(CMR_FAMILY);
-	QFontMetrics fm(frontend::getFont(lyxfont));
-	QSize item_size(fm.maxWidth(), fm.height() + 8);
+	QSize icon_size(32, 32);
 
-	leftLW->setMinimumWidth(5 * item_size.width());
-	rightLW->setMinimumWidth(5 * item_size.width());
+	leftLW->setMinimumWidth(5 * icon_size.width());
+	rightLW->setMinimumWidth(5 * icon_size.width());
+	leftLW->setIconSize(icon_size);
+	rightLW->setIconSize(icon_size);
 
 	typedef map<char_type, QListWidgetItem *> ListItems;
 	ListItems list_items;
@@ -212,26 +212,12 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 	for (int i = 0; i < end; ++i) {
 		string const delim = latex_delimiters[i];
 		MathSymbol const & ms = mathSymbol(delim);
-		QString symbol(ms.fontcode?
-			QChar(ms.fontcode) : toqstr(docstring(1, ms.unicode)));
-		QListWidgetItem * lwi = new QListWidgetItem(symbol);
-		lyxfont.setFamily(ms.fontfamily);
-		QFont const & font = frontend::getFont(lyxfont);
-		lwi->setFont(font);
+		// get pixmap with bullets
+		QPixmap pixmap = getPixmap("images/math/", toqstr(ms.icon), "svgz,png");
+		QListWidgetItem * lwi = new QListWidgetItem(QIcon(pixmap), QString());
 		setDelimiterName(lwi, delim);
-		lwi->setToolTip(toqstr(delim));
-		lwi->setSizeHint(item_size);
-		switch (ms.fontfamily) {
-		case CMSY_FAMILY:
-		case STMARY_FAMILY:
-			// Hack to work around the broken metrics of these fonts
-			// FIXME: Better fix the fonts or use fonts that are not broken
-			lwi->setTextAlignment(Qt::AlignTop | Qt::AlignHCenter);
-			break;
-		default:
-			lwi->setTextAlignment(Qt::AlignCenter);
-		}
 		list_items[ms.unicode] = lwi;
+		lwi->setSizeHint(icon_size);
 		leftLW->addItem(lwi);
 	}
 
