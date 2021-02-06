@@ -26,6 +26,8 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
+#include <QBitmap>
+#include <QPainter>
 #include <QPixmap>
 #include <QCheckBox>
 #include <QListWidgetItem>
@@ -86,6 +88,27 @@ struct MathSymbol {
 	char_type unicode;
 	string icon;
 };
+
+
+QPixmap getSelectedPixmap(QPixmap pixmap)
+{
+	QPalette palette = QPalette();
+	QColor text_color = (guiApp->isInDarkMode())
+			? palette.color(QPalette::Active, QPalette::WindowText)
+			: Qt::black;
+	QColor highlight_color = palette.color(QPalette::Active, QPalette::HighlightedText);
+
+	// create a layer with black text turned to QPalette::HighlightedText
+	QPixmap hl_overlay(pixmap.size());
+	hl_overlay.fill(highlight_color);
+	hl_overlay.setMask(pixmap.createMaskFromColor(text_color, Qt::MaskOutColor));
+
+	// put layers on top of existing pixmap
+	QPainter painter(&pixmap);
+	painter.drawPixmap(pixmap.rect(), hl_overlay);
+
+	return pixmap;
+}
 
 /// TeX-name / Math-symbol map.
 static map<std::string, MathSymbol> math_symbols_;
@@ -216,7 +239,9 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 		MathSymbol const & ms = mathSymbol(delim);
 		// get pixmap with bullets
 		QPixmap pixmap = getPixmap("images/math/", toqstr(ms.icon), "svgz,png");
-		QListWidgetItem * lwi = new QListWidgetItem(QIcon(pixmap), QString());
+		QIcon icon(pixmap);
+		icon.addPixmap(getSelectedPixmap(pixmap), QIcon::Selected);
+		QListWidgetItem * lwi = new QListWidgetItem(icon, QString());
 		setDelimiterName(lwi, delim);
 		left_list_items_[ms.unicode] = lwi;
 		lwi->setToolTip(toqstr(delim));
