@@ -38622,12 +38622,24 @@ status collapsed
 \family sans
 Сохранить закладку 1
 \family default
-.
+ (
+\begin_inset Info
+type  "shortcut"
+arg   "bookmark-save 1"
+\end_inset
+
+).
  Затем перейдите к разделу 6.3 и используйте 
 \family sans
 Сохранить закладку 2
 \family default
-.
+ (
+\begin_inset Info
+type  "shortcut"
+arg   "bookmark-save 2"
+\end_inset
+
+).
  Теперь вы можете легко перемещаться между этими разделами с помощью меню
  или сочетаний клавиш 
 \begin_inset Info
@@ -38647,8 +38659,7 @@ arg   "bookmark-goto 2"
 \end_layout
 
 \begin_layout Standard
-Сохраненные закладки действительны до закрытия документа.
- Подменю 
+Подменю 
 \family sans
 Очистить закладки
 \family default

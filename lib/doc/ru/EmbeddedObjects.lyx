@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 606
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -263,9 +263,9 @@ varwidth
 \begin_body
 
 \begin_layout Title
-Расширенное руководство по рисункам, таблицам, плавающим объектам, заметкам,
- блокам и внешнему материалу \SpecialChar LyX
-
+Расширенное руководство \SpecialChar LyX
+ по рисункам, таблицам, плавающим объектам, заметкам,
+ блокам и внешнему материалу
 \end_layout
 
 \begin_layout Author
@@ -11132,11 +11132,11 @@ Franz
 \end_layout
 
 \begin_layout Section
-Многоколоночные и многострочные ячейки
+Объединенные ячейки
 \end_layout
 
 \begin_layout Subsection
-Многострочность в ячейках таблицы
+Несколько строк в ячейках
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Multiple-Lines-in"
@@ -11675,7 +11675,7 @@ i
 \end_layout
 
 \begin_layout Subsection
-Многоколоночность
+Объединение столбцов
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Multicolumns"
@@ -11711,18 +11711,18 @@ arg   "tabular-feature multicolumn"
 \family sans
 Правка\SpecialChar menuseparator
 Таблица\SpecialChar menuseparator
-Многоколоночность
+Объединить столбцы
 \family default
 , либо щелкните правой кнопкой мыши на этих ячейках и выберите 
 \family sans
 Столбцы/строки\SpecialChar menuseparator
-Многоколоночность
+Объединить столбцы
 \family default
  в контекстном меню.
 \end_layout
 
 \begin_layout Standard
-Многоколоночность имеет собственные настройки ячеек.
+Объединенные ячейки имеют собственные настройки.
  Это означает, что изменение границ ячеек, выравнивания ячеек и их ширины
  влияет только на несколько столбцов.
  Вот пример таблицы с ячейкой из нескольких столбцов в первой строке и одной
@@ -11891,7 +11891,7 @@ status open
 
 \begin_layout Standard
 LyX поддерживает многоколоночность напрямую, но мы должны учитывать ширину
- ячеек столбцов, охватываемых многоколоночной ячейкой.
+ ячеек столбцов, охватываемых оьъединенной ячейкой.
 \end_layout
 
 \begin_layout Standard
@@ -12478,7 +12478,7 @@ centering}m{2.5cm}
 \end_layout
 
 \begin_layout Subsection
-Многострочность
+Объединение строк
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Multirows"
@@ -12510,11 +12510,11 @@ arg   "tabular-feature multirow"
 \family sans
 Правка\SpecialChar menuseparator
 Таблица\SpecialChar menuseparator
-Многострочность
+Объединить строки
 \family default
 , либо щелкните правой кнопкой мыши на отмеченных ячейках и выберите 
 \family sans
-Многострочность
+Объединить строки
 \family default
  в контекстном меню.
 \end_layout
@@ -12977,7 +12977,7 @@ eee
 \end_layout
 
 \begin_layout Subsection
-Ячейки с диагональной (-ыми) линией (-ями)
+Ячейки с диагональными линиями
 \end_layout
 
 \begin_layout Standard
@@ -30797,7 +30797,9 @@ status open
  Вы можете вставлять их, используя меню 
 \family sans
 Вставка\SpecialChar menuseparator
-Списки/содержание/библиографии
+Содержание\SpecialChar breakableslash
+библиография\SpecialChar breakableslash
+список
 \family default
 .
 \end_layout
@@ -30809,22 +30811,20 @@ status open
 \end_layout
 
 \begin_layout Standard
-Вы можете найти список рисунков и таблиц в конце этого документа.
+Вы можете найти примеры списков рисунков и таблиц в конце этого документа.
 \end_layout
 
 \begin_layout Chapter
-Заметки
+Примечания
 \end_layout
 
 \begin_layout Section
-Заметки в \SpecialChar LyX
-
+Заметки
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Заметки ! заметки \SpecialChar LyX
-
+Заметки ! заметки
 \end_layout
 
 \end_inset
@@ -30849,11 +30849,7 @@ arg   "note-insert"
 \end_layout
 
 \begin_layout Description
-Заметка
-\begin_inset space ~
-\end_inset
-
-LyX Этот тип заметок предназначен для внутреннего использования, которые
+Заметка Этот тип заметок предназначен для внутреннего использования, которые
  не будут отображаться в выводе.
  Кнопка этого типа выглядит так:
 \begin_inset Newline newline
@@ -31047,11 +31043,11 @@ arg   "note-insert"
 
  панели инструментов для вставки заметок, вставляется 
 \family sans
-Заметка LyX
+Заметка
 \family default
 .
  Вы можете переключаться между тремя типами заметок, щелкнув правой кнопкой
- мыши на блоке заметок.
+ мыши на блоке заметки.
  Если вы хотите превратить существующий текст в заметку, выделите его и
  нажмите кнопку панели инструментов заметки.
  Чтобы преобразовать заметку в текст, нажмите на клавиатуре клавишу 
@@ -31062,7 +31058,7 @@ Backspace
 \family sans
 Delete
 \family default
-, когда курсор находится в самой последней позиции заметки, соответственно.
+, когда курсор находится в последней позиции заметки, соответственно.
 \end_layout
 
 \begin_layout Standard
@@ -32024,7 +32020,7 @@ name "fig:Standard-footnote-placement"
 
 \end_inset
 
-Стандартное размещение сноски в двухколоночных документах.
+Стандартное размещение сноски в двухколоночных документах
 \end_layout
 
 \end_inset
@@ -32097,8 +32093,6 @@ name "fig:Footnote-placement-in"
  
 \series bold
 ftnright
-\series default
-.
 \end_layout
 
 \end_inset
@@ -32364,7 +32358,7 @@ status open
 
 \end_inset
 
-, 
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "footmisc"
@@ -32376,8 +32370,8 @@ literal "true"
 \end_layout
 
 \begin_layout Standard
-Чтобы узнать о других возможностях форматирования сносок, обратитесь к \SpecialChar LaTeX
--книгам,
+Чтобы узнать о других возможностях форматирования сносок, обратитесь к литератур
+е по \SpecialChar LaTeX
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -32403,8 +32397,7 @@ status open
 \end_inset
 
 , то можете настроить все параметры сносок с помощью команд для конкретных
- классов, см.
- 
+ классов 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "KOMA-Script"
@@ -33642,7 +33635,7 @@ reference "tab:Units"
 \end_layout
 
 \begin_layout Description
-Глубина Это обычный текст «высота».
+Глубина Это «высота» обычного текста.
  Он игнорирует общую глубину, когда в поле содержатся несколько текстовых
  строк:
 \begin_inset Newline newline
@@ -33694,7 +33687,7 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-Высота Это высота текста внутри поля.
+Высота Это высота текста внутри блока.
  Значение, например, 2 для этого размера установит высоту поля в 2
 \begin_inset space ~
 \end_inset
@@ -33779,7 +33772,7 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-Ширина Это устанавливает ширину поля как высоту: 
+Ширина Это устанавливает ширину блока как высоту: 
 \begin_inset Box Boxed
 position "c"
 hor_pos "c"
@@ -35451,7 +35444,7 @@ raisebox{подъем}[высота][глубина]{содержимое-бло
 
 \begin_layout Standard
 Чтобы сместить, например, слово «предотвращение» так, чтобы нижняя часть
- «самого глубокого» символа «п» находилась на базовой линии, вставьте команду
+ «самого глубокого» символа «р» находилась на базовой линии, вставьте команду
 \end_layout
 
 \begin_layout Standard
@@ -35465,7 +35458,11 @@ depth}{
 \end_layout
 
 \begin_layout Standard
-в поле Код TeX перед этим словом, а после — закрывающую скобку 
+в поле 
+\family sans
+Код TeX
+\family default
+ перед этим словом, а после — закрывающую скобку 
 \begin_inset Quotes eld
 \end_inset
 
@@ -35477,7 +35474,11 @@ depth}{
 \begin_inset Quotes erd
 \end_inset
 
- в поле Код TeX.
+ в поле 
+\family sans
+Код TeX
+\family default
+.
 \begin_inset Newline newline
 \end_inset
 
@@ -38493,31 +38494,31 @@ status open
 
 \end_inset
 
- и необходимо использовать модуль 
+ и в документе необходимо использовать модуль 
 \family sans
-Инициалы
+Инициалы (буквица)
 \family default
- в документе (меню 
+ (меню 
 \family sans
 Документ\SpecialChar menuseparator
 Настройки\SpecialChar menuseparator
 Модули
 \family default
 ).
- Чтобы вставить буквицу, используйте стиль 
+ Чтобы вставить буквицу, используйте окружение 
 \family sans
-Initial
+Буквица
 \family default
 .
  Этот стиль имеет обязательный аргумент и два необязательных аргумента.
- Аргументы вставляются через меню 
+ Аргументы добавляются через меню 
 \family sans
-Вставить
+Вставка
 \family default
 .
  Обязательный аргумент 
 \family sans
-Initial
+Буквица
 \family default
  содержит букву (буквы), которая является начальной, аргумент 
 \family sans
@@ -38528,13 +38529,13 @@ Initial
 \family sans
 Параметры
 \family default
- содержит параметры для изменения буквицы.
+ содержит параметры для настройки буквицы.
  Для получения дополнительной информации о возможных параметрах см.
  документацию по 
 \series bold
 lettrine
 \series default
-, 
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "lettrine"
@@ -39010,8 +39011,8 @@ LyX Другой документ \SpecialChar LyX
 \begin_inset space ~
 \end_inset
 
-строки Текстовый документ либо текстовые строки вставляются в документ слитно,
- но пустая текстовая строка порождает новый абзац.
+строки Текстовый документ; текстовые строки объединяются в абзац, для начала
+ следующего абзаца нужна пустая строка.
 \end_layout
 
 \begin_layout Description
@@ -39047,26 +39048,29 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Средства поддержки внешних данных позволяют вставлять файлы в документ без
- преобразования их пользователем в формат, который может быть принят при
- выводе документа.
+Пункт меню 
+\family sans
+Внешний материал
+\family default
+ позволяет вставлять файлы в документ без преобразования их пользователем
+ в формат, совместимый с форматом вывода документа.
  \SpecialChar LyX
  позаботится о необходимых преобразованиях.
- Это похоже на обработку изображений, которые можно вставлять в различные
- графические форматы в документах \SpecialChar LyX
+ Это похоже на обработку изображений, которые можно вставлять в различных
+ графических форматах в документы \SpecialChar LyX
 .
  Если вы включили 
 \family sans
 Мгновенный предпросмотр
 \family default
  в настройках \SpecialChar LyX
- в меню 
+ (раздел 
 \family sans
 Вид и поведение\SpecialChar menuseparator
 Вид
 \family default
-, внешние типы данных Dia и Xfig будут отображаться в \SpecialChar LyX
- непосредственно.
+), внешние форматы Dia и Xfig будут отображаться в окне \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -39476,7 +39480,7 @@ Beamer
 , так же, как и изображения, которые обычно вставляются через диалоговое
  окно 
 \family sans
-Графика
+Изображение
 \family default
 , как описано в разделе
 \begin_inset space ~
@@ -39570,7 +39574,7 @@ spreadsheet.lyx
 \family default
 , как и изображения, которые обычно включаются через диалоговое окно 
 \family sans
-Графика
+Изображение
 \family default
 , как описано в разд.
 \begin_inset space ~
@@ -39700,12 +39704,10 @@ status open
 \begin_layout Standard
 Дочерние документы используются, если имеется большой документ, состоящий
  из нескольких крупных частей или разделов.
- Для сопровождения такого документа часто бывает полезно, а иногда даже
- требуется разделить документ на несколько файлов, которые можно редактировать
- отдельно.
- В этом случае различные документы являются так называемыми «дочерними документа
-ми», а главный документ связывает их для вывода всего документа или нескольких
- его частей.
+ Для работы с таким документом часто бывает полезно, а иногда даже необходимо
+ разделить документ на несколько файлов, которые можно редактировать отдельно.
+ Эти файлы будут так называемыми «дочерними документами», а главный документ
+ будет связывать их для вывода всего документа или нескольких его частей.
  Дочерний документ наследует некоторые элементы от своего главного, например
  преамбулу \SpecialChar LaTeX
 , библиографию и метки для перекрестных ссылок.
@@ -39713,10 +39715,10 @@ status open
 
 \begin_layout Standard
 Чтобы иметь возможность работать с дочерними документами без необходимости
- открывать их главном, укажите в дочернем документе имя и расположение главного
- документа в поле 
+ открывать их главный документ, укажите в дочернем документе имя и расположение
+ главного документа в поле 
 \family sans
-Главный
+Главный документ
 \family default
  в меню 
 \family sans
@@ -39758,7 +39760,11 @@ status open
 \end_layout
 
 \begin_layout Description
-Включить Можно включать документы \SpecialChar LyX
+Включить
+\begin_inset space ~
+\end_inset
+
+(include) Можно включать документы \SpecialChar LyX
  и \SpecialChar LaTeX
 .
  Когда вы нажимаете кнопку 
@@ -39845,7 +39851,11 @@ status open
 \end_layout
 
 \begin_layout Description
-Ввести Этот метод очень похож на метод 
+Ввести
+\begin_inset space ~
+\end_inset
+
+(input) Этот метод очень похож на метод 
 \family sans
 Включить
 \family default
@@ -39902,7 +39912,7 @@ literal "true"
 \end_layout
 
 \begin_layout Description
-Дословно С помощью этого метода можно включить любой текстовый файл.
+Буквально С помощью этого метода можно включить любой текстовый файл.
  Содержимое файла будет показано в выводе; никакая команда, используемая
  в нем, не вызывается.
  Можно использовать опцию 
@@ -39944,7 +39954,7 @@ textvisiblespace
 \begin_layout Standard
 Дочерний документ, вставленный как 
 \family sans
-Дословно
+Буквально
 \family default
 :
 \begin_inset CommandInset include
@@ -39960,7 +39970,7 @@ literal "true"
 
  Дочерний документ, вставленный как 
 \family sans
-Дословно
+Буквально
 \family default
  с использованием параметра 
 \family sans
@@ -39997,7 +40007,7 @@ status open
  Как видно из приведенных выше примеров, текст документов, включенных как
  
 \family sans
-Дословно
+Буквально
 \family default
 , не разрывается в конце строк документа.
 \end_layout
@@ -40080,7 +40090,11 @@ status open
 Общие счетчики и ссылки
 \family default
  вы можете настроить способ обработки номеров страниц, ссылок, счетчиков
- разделов и т.д.
+ разделов и т.
+\begin_inset space \thinspace{}
+\end_inset
+
+д.
 \end_layout
 
 \begin_layout Itemize
@@ -40089,7 +40103,11 @@ status open
 Строго поддерживать
 \family default
  \SpecialChar LyX
- гарантирует, что все номера страниц, ссылки и т.д.
+ гарантирует, что все номера страниц, ссылки и т.
+\begin_inset space \thinspace{}
+\end_inset
+
+д.
  верны, как если бы был выведен весь документ.
  Это полезно, если требуется, чтобы выбранные вложенные документы выглядели
  точно так же, как в контексте всего документа.
@@ -40131,7 +40149,7 @@ status open
 \end_layout
 
 \begin_layout Standard
-Как вариант, вы можете поместить каждый включенный файл в отдельную ветку.
+Как вариант, вы можете поместить каждый включенный файл в отдельную ветку
 \begin_inset Foot
 status collapsed
 
@@ -40149,6 +40167,7 @@ status collapsed
 
 \end_inset
 
+.
  Включая/отключая ветки, вы можете регулировать появление дочерних файлов
  в выводе.
  Этот способ имеет то преимущество, что он также работает с вложенными под-докум
@@ -40424,7 +40443,7 @@ status open
 
 \begin_layout Plain Layout
 
-int a=5;
+int a = 5;
 \end_layout
 
 \end_inset
@@ -40453,7 +40472,7 @@ b
 \family sans
 p
 \family default
-», соответствующие описанным в разделе 
+», соответствующие описанным в разделе
 \begin_inset space ~
 \end_inset
 
@@ -40511,7 +40530,8 @@ reference "lst:Example-Listing"
 \end_inset
 
 Вставка\SpecialChar menuseparator
-Списки/содержание/библиографии\SpecialChar menuseparator
+Содержание/библиография\SpecialChar breakableslash
+список\SpecialChar menuseparator
 Список листингов
 \family default
 .

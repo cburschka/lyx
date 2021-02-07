@@ -240,8 +240,8 @@ subequations
 \begin_body
 
 \begin_layout Title
-Расширенное руководство по математике \SpecialChar LyX
-
+Расширенное руководство \SpecialChar LyX
+ по математике
 \end_layout
 
 \begin_layout Author
@@ -870,6 +870,12 @@ T@\SpecialChar TeX
 
 \begin_layout Standard
 Неразрывный пробел вставляется с помощью 
+\begin_inset Info
+type  "shortcuts"
+arg   "command-alternatives math-space ; space-insert protected"
+\end_inset
+
+ или 
 \family sans
 Вставка\SpecialChar menuseparator
 Форматирование\SpecialChar menuseparator
@@ -880,11 +886,11 @@ T@\SpecialChar TeX
 \end_layout
 
 \begin_layout Subsection*
-Заметки по синтаксису
+Замечания по используемому синтаксису
 \end_layout
 
 \begin_layout Itemize
-Символ ␣ обозначает пробел в вводе.
+Символ ␣ обозначает клавишу пробела, нажимаемую пользователем.
 \end_layout
 
 \begin_layout Itemize
@@ -3393,6 +3399,12 @@ phantom
 \begin_inset space \textvisiblespace{}
 \end_inset
 
+
+\backslash
+mathrm
+\begin_inset space \textvisiblespace{}
+\end_inset
+
 F
 \end_layout
 
@@ -3434,6 +3446,12 @@ phantom
 \begin_inset space \textvisiblespace{}
 \end_inset
 
+
+\backslash
+mathrm
+\begin_inset space \textvisiblespace{}
+\end_inset
+
 F
 \end_layout
 
@@ -3459,11 +3477,11 @@ F
 \begin_layout Plain Layout
 
 \backslash
-Lambda^
+Lambda
 \begin_inset space \textvisiblespace{}
 \end_inset
 
-
+^
 \backslash
 phantom
 \begin_inset space \textvisiblespace{}
@@ -3839,7 +3857,7 @@ underline
 \end_layout
 
 \begin_layout Standard
-Чтобы подчеркнуть дважды, используйте 
+Чтобы подчеркнуть двойной линией, используйте 
 \series bold
 
 \backslash
@@ -4389,7 +4407,11 @@ hdotsfor
 
 \end_inset
 
-, которая имеет следующий формат:
+ (необходима загрузка пакета 
+\series bold
+mathtools
+\series default
+), которая имеет следующий формат:
 \end_layout
 
 \begin_layout Standard
@@ -7078,11 +7100,7 @@ _7
 \begin_inset space \textvisiblespace{}
 \end_inset
 
-^
-\begin_inset space \textvisiblespace{}
-\end_inset
-
-C
+^C
 \end_layout
 
 \end_inset
@@ -10866,10 +10884,17 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Иногда в формулу необходимо вставить горизонтальный промежуток.
+Иногда в формулу необходимо вставить горизонтальный пробел.
  Это делается путем вставки неразрывного пробела (
+\begin_inset Info
+type  "shortcut"
+arg   "command-alternatives math-space ; space-insert protected"
+\end_inset
+
+ или 
 \family sans
 Вставка\SpecialChar menuseparator
+\SpecialChar allowbreak
 Форматирование\SpecialChar menuseparator
 Неразрывный пробел
 \family default
@@ -13514,6 +13539,10 @@ fbox
 \begin_inset space \textvisiblespace{}
 \end_inset
 
+
+\begin_inset Formula $\leftarrow\leftarrow$
+\end_inset
+
 A=B
 \end_layout
 
@@ -13541,6 +13570,10 @@ A=B
 \backslash
 fbox
 \begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\begin_inset Formula $\leftarrow\leftarrow$
 \end_inset
 
 
@@ -15794,7 +15827,7 @@ ointop
  и расположен под интегралами:
 \begin_inset Formula 
 \begin{equation}
-\iiint_{V}X\,\mathrm{d}V=U\label{eq:VolInt}
+\iiint\limits_{V}X\,\mathrm{d}V=U\label{eq:VolInt}
 \end{equation}
 
 \end_inset
@@ -37185,10 +37218,10 @@ literal "true"
 
 \shape smallcaps
 F.
- Mittelbach; M.
+ Mittelbach, M.
  Goossens
 \shape default
-: 
+ 
 \shape italic
 The \SpecialChar LaTeX
  Companion
@@ -37209,7 +37242,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Description"
-target "https://www.tug.org/~hvoss/PDF/mathmode.pdf"
+target "http://mirrors.ctan.org/obsolete/info/math/voss/mathmode/Mathmode.pdf"
 literal "false"
 
 \end_inset
@@ -37230,7 +37263,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Description"
-target "https://www.ctan.org/tex-archive/macros/latex/required/amslatex/math/amsldoc.pdf"
+target "http://tug.ctan.org/info/amslatex/english/amsldoc.pdf"
 literal "false"
 
 \end_inset
@@ -37264,7 +37297,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "List"
-target "ftp://ftp.dante.de/tex-archive/info/symbols/comprehensive/symbols-a4.pdf"
+target "http://tug.ctan.org/info/symbols/comprehensive/symbols-a4.pdf"
 literal "false"
 
 \end_inset
