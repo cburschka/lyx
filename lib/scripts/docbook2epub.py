@@ -21,6 +21,10 @@ import tempfile
 import zipfile
 
 
+def _parse_nullable_argument(arg):
+    return arg if arg != '' and arg != 'none' else None
+
+
 class DocBookToEpub:
     def __init__(self, args=None):
         if args is None:
@@ -31,10 +35,10 @@ class DocBookToEpub:
             sys.exit(1)
 
         self.own_path = sys.argv[0]
-        self.java_path = sys.argv[1] if sys.argv[1] != '' and sys.argv[1] != 'none' else None
-        self.saxon_path = sys.argv[2] if sys.argv[2] != '' and sys.argv[2] != 'none' else None
-        self.xsltproc_path = sys.argv[3] if sys.argv[3] != '' and sys.argv[3] != 'none' else None
-        self.xslt_path = sys.argv[4] if sys.argv[4] != '' and sys.argv[4] != 'none' else None
+        self.java_path = _parse_nullable_argument(sys.argv[1])
+        self.saxon_path = _parse_nullable_argument(sys.argv[2])
+        self.xsltproc_path = _parse_nullable_argument(sys.argv[3])
+        self.xslt_path = _parse_nullable_argument(sys.argv[4])
         self.input = sys.argv[5]
         self.output = sys.argv[6]
         self.script_folder = os.path.dirname(self.own_path) + '/../'
