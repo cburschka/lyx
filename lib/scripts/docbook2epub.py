@@ -39,7 +39,7 @@ if __name__ == '__main__':
     xslt = script_folder + 'docbook/epub3/chunk.xsl'
     saxon_jar = script_folder + 'scripts/saxon6.5.5.jar'
     saxon_params = 'base.dir=%s' % output_dir
-    command = '"' + java_path + '" -jar "' + saxon_jar + '" ' + input + ' ' + xslt + ' ' + saxon_params
+    command = '"' + java_path + '" -jar "' + saxon_jar + '" "' + input + '" "' + xslt + '" "' + saxon_params + '"'
 
     print('XSLT style sheet to use:')
     print(xslt)
