@@ -51,6 +51,7 @@ if __name__ == '__main__':
         # On Windows, it is typical to have spaces in folder names, and that requires to wrap the whole command
         # in quotes. On Linux, this might create errors when starting the command.
         quoted_command = '"' + command + '"'
+    # This could be simplified by using subprocess.run, but this requires Python 3.5.
 
     if os.system(quoted_command) != 0:
         print('docbook2epub fails')
