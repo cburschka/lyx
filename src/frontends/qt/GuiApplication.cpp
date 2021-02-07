@@ -944,7 +944,7 @@ public:
 struct GuiApplication::Private
 {
 	Private(): language_model_(nullptr), meta_fake_bit(NoModifier),
-		global_menubar_(nullptr)
+		global_menubar_(nullptr), last_state_(Qt::ApplicationInactive)
 	{
 	#if (QT_VERSION < 0x050000) || (QT_VERSION >= 0x050400)
 	#if defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
@@ -1011,6 +1011,8 @@ struct GuiApplication::Private
 
 	/// Only used on mac.
 	QMenuBar * global_menubar_;
+	/// Holds previous application state on Mac
+	Qt::ApplicationState last_state_;
 
 #ifdef Q_OS_MAC
 	/// Linkback mime handler for MacOSX.
@@ -1084,6 +1086,10 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	setupApplescript();
 	appleCleanupEditMenu();
 	appleCleanupViewMenu();
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 1, 0))
+	connect(this, SIGNAL(applicationStateChanged(Qt::ApplicationState)),
+			this, SLOT(onApplicationStateChanged(Qt::ApplicationState)));
+#endif
 #endif
 
 #if defined(Q_WS_X11) || defined(QPA_XCB)
@@ -3291,6 +3297,36 @@ void GuiApplication::onLastWindowClosed()
 	if (d->global_menubar_)
 		d->global_menubar_->grabKeyboard();
 }
+
+
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 1, 0))
+void GuiApplication::onApplicationStateChanged(Qt::ApplicationState state)
+{
+	std::string name = "unknown";
+	switch (state) {
+	case Qt::ApplicationSuspended:
+		name = "ApplicationSuspended";
+		break;
+	case Qt::ApplicationHidden:
+		name = "ApplicationHidden";
+		break;
+	case Qt::ApplicationInactive:
+		name = "ApplicationInactive";
+		break;
+	case Qt::ApplicationActive:
+		name = "ApplicationActive";
+		/// The Dock icon click produces 2 sequential QEvent::ApplicationStateChangeEvent events.
+		/// cmd+tab only one QEvent::ApplicationStateChangeEvent event
+		if (d->views_.empty() && d->last_state_ == state) {
+			LYXERR(Debug::GUI, "Open new window...");
+			createView();
+		}
+		break;
+	}
+	LYXERR(Debug::GUI, "onApplicationStateChanged..." << name);
+	d->last_state_ = state;
+}
+#endif
 
 
 void GuiApplication::startLongOperation() {

@@ -228,6 +228,10 @@ private Q_SLOTS:
 	void onLocaleChanged();
 	///
 	void slotProcessFuncRequestQueue() { processFuncRequestQueue(); }
+	///
+#if (QT_VERSION >= 0x050100)
+	void onApplicationStateChanged(Qt::ApplicationState state);
+#endif
 
 private:
 	///
