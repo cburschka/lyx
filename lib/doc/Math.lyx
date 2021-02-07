@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin /systemlyxdir/doc/
+\origin unavailable
 \textclass scrartcl
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -233,14 +233,16 @@ subequations
 \html_be_strict false
 \docbook_table_output 0
 \author -563046850 "Jean-Marc LASGOUTTES"
+\author 5863208 "ab"
 \author 47243155 "Jean-Marc"
+\author 232239728 "Owner"
 \end_header
 
 \begin_body
 
 \begin_layout Title
 \SpecialChar LyX
-'s detailed Math manual
+'s Detailed Math Manual
 \end_layout
 
 \begin_layout Author
@@ -272,7 +274,7 @@ literal "false"
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 author: Uwe Stöhr
@@ -359,12 +361,12 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-This document explains \SpecialChar LyX
-'s math features and is furthermore a collection
- of \SpecialChar LaTeX
--commands used for mathematical characters and constructs.
- The explanations are designed for the usage of commands.
- It is therefore required that you have read the section 
+This document details \SpecialChar LyX
+'s math features and the \SpecialChar LaTeX
+-commands used for mathematical
+ characters and constructs.
+ It is oriented toward the use of commands.
+ The user should read the 
 \family typewriter
 Mathematical
 \begin_inset space ~
@@ -372,7 +374,7 @@ Mathematical
 
 Formulas
 \family default
- of the User's Guide.
+ section of the User's Guide before proceeding.
 \end_layout
 
 \begin_layout Standard
@@ -404,8 +406,9 @@ g toolbar buttons when available.
 \end_layout
 
 \begin_layout Standard
-If not specially mentioned the commands are only available within formulas.
- To be able to use all commands explained in this document, the option 
+Unless specially mentioned, math commands are only available within formulas.
+ To be able to use all of the commands explained in this document, the option
+ 
 \family sans
 Use AMS math package
 \family default
@@ -466,10 +469,10 @@ AmS
 
 -math commands
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-A list with all 
+A list containing all 
 \begin_inset ERT
 status collapsed
 
@@ -519,7 +522,7 @@ Formula ! inline
 
 \end_inset
 
- that is embedded into a text line, use one of the shortcuts 
+ that is embedded in a text line, use one of the shortcuts 
 \begin_inset Info
 type  "shortcuts"
 arg   "math-mode"
@@ -537,7 +540,7 @@ arg   "math-mode"
 
 To create a display style formula
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Formula ! display style
@@ -556,13 +559,33 @@ arg   "math-display"
 \end_layout
 
 \begin_layout Standard
-To change a display style formula to an inline formula, set the cursor into
- the formula and use one of the shortcuts 
+To change a display style formula to an inline formula, place the cursor
+ inside the formula and use 
+\change_deleted 5863208 1612729312
+one of 
+\change_unchanged
+the shortcut
+\change_deleted 5863208 1612729314
+s
+\change_unchanged
+ 
+\change_deleted 5863208 1612729303
+
 \begin_inset Info
 type  "shortcuts"
 arg   "math-mode"
 \end_inset
 
+
+\change_inserted 5863208 1612729281
+
+\begin_inset Info
+type  "shortcuts"
+arg   "math-mutate simple"
+\end_inset
+
+
+\change_unchanged
  or the menu 
 \family sans
 Edit\SpecialChar menuseparator
@@ -570,7 +593,20 @@ Math\SpecialChar menuseparator
 Change formula type
 \family default
 .
- The same way is used to change an inline formula to a display style formula.
+ 
+\change_inserted 5863208 1612729555
+Similarly you can use the shortcut 
+\begin_inset Info
+type  "shortcuts"
+arg   "math-mutate equation"
+\end_inset
+
+ to change from an inline to a display style formula.
+ 
+\change_deleted 5863208 1612729557
+The same method is used to change an inline formula to a display style formula.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -593,8 +629,8 @@ displaystyle
 
 \end_inset
 
- to a formula.
- Then a new blue box appears in which the desired formula part is inserted.
+ in a formula.
+ A new blue box will appear in which the desired formula part is inserted.
 \end_layout
 
 \begin_layout Standard
@@ -602,6 +638,8 @@ Only inline formulas are allowed inside tables.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 232239728 1610897673
 The 
 \family sans
 math toolbar
@@ -664,10 +702,53 @@ Math
 \end_inset
 
 .
+\change_inserted 232239728 1610897478
+
 \end_layout
 
 \begin_layout Standard
-The \SpecialChar TeX
+
+\change_inserted 232239728 1610918987
+
+\family sans
+Math toolbar
+\family default
+ visibility is controlled in the menu 
+\family sans
+View\SpecialChar menuseparator
+Toolbars\SpecialChar menuseparator
+Math
+\family default
+.
+ Three options will be presented, On, Off, and Automatic.
+ Selecting On will cause the toolbar to be shown permanently at the bottom
+ of the screen.
+ Selecting Off will disable the toolbar.
+ Selecting Automatic will cause the toolbar to automatically appear when
+ the cursor is located within a formula.
+ The active state of the toolbar is indicated by a checkmark next to the
+ current menu selection.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 232239728 1610897730
+The menu functionality appears to have changed, I rewrote the paragraph
+ for the current functionality
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+\SpecialChar TeX
  mode
 \begin_inset Index idx
 status collapsed
@@ -726,8 +807,8 @@ Preamble
 \end_layout
 
 \begin_layout Standard
-To edit matrices, case differentiations and multiline formulas subsequently,
- use the menus 
+To edit matrices, case differentiations and multiline formulas, use the
+ menus 
 \family sans
 Edit\SpecialChar menuseparator
 Math
@@ -753,7 +834,7 @@ table toolbar
  When lines and columns are swapped via the menu, the column or line where
  the cursor is in is exchanged with the column to the right or the line
  below, respectively.
- Is the cursor in the last column or row, the exchange is done with the
+ If the cursor is in the last column or row, the exchange is done with the
  column to the left or the line above.
 \end_layout
 
@@ -834,7 +915,7 @@ text
  The text appears black in \SpecialChar LyX
  and can therefore be distinguished from the
  other formula parts which appear blue.
- In the output mathematical text is set upright, in contrary to other formula
+ In the output, mathematical text is set upright contrary to other formula
  parts.
 \end_layout
 
@@ -843,8 +924,8 @@ Command Scheme
 \end_layout
 
 \begin_layout Standard
-Most of the \SpecialChar LaTeX
--commands for math constructs have the following scheme:
+Most \SpecialChar LaTeX
+-commands for math constructs have the following syntax:
 \end_layout
 
 \begin_layout Standard
@@ -879,9 +960,24 @@ A command always starts with a backslash
 \end_inset
 
 .
- To omit optional arguments, also omit the associated brackets.
- The braces around the required arguments are named in this document as
- \SpecialChar TeX
+ To omit the 
+\series bold
+optional
+\series default
+ 
+\series bold
+argument
+\series default
+s, also omit the associated brackets.
+ The braces around the 
+\series bold
+required
+\series default
+ 
+\series bold
+arguments
+\series default
+ are referred to in this document as \SpecialChar TeX
  braces
 \begin_inset Index idx
 status collapsed
@@ -894,31 +990,37 @@ T@\SpecialChar TeX
 \end_inset
 
 .
- If you add in a formula a left brace to a command name, \SpecialChar LyX
+ If you append a left brace to a command name inside a formula, \SpecialChar LyX
  automatically
- creates a \SpecialChar TeX
+ creates a right \SpecialChar TeX
  brace.
- In all other cases \SpecialChar TeX
- braces are created in formulas with the command 
+ In all other cases standalone \SpecialChar TeX
+ braces are created in formulas with the
+ command 
 \series bold
 
 \backslash
 {
 \series default
 .
+ Normal braces are created by typing 
+\series bold
+{
+\series default
+.
  \SpecialChar TeX
  braces appear red in \SpecialChar LyX
-, in contrary to normal braces which appear blue.
+, normal braces appear blue.
  In \SpecialChar TeX
- mode no command is needed to get \SpecialChar TeX
+ mode a command is not needed to get \SpecialChar TeX
  braces.
  \SpecialChar TeX
- braces don't appear in the output.
+ braces don't appear in the output while normal braces do.
 \end_layout
 
 \begin_layout Standard
-When commands without arguments, like commands for symbols are entered in
- \SpecialChar TeX
+When commands without arguments, like commands for symbols, are entered
+ in \SpecialChar TeX
  mode, a space character must 
 \emph on
 always
@@ -930,12 +1032,46 @@ always
 \end_layout
 
 \begin_layout Standard
-A protected space is inserted with 
+A protected space is inserted with
+\change_inserted 232239728 1610908934
+ 
+\change_deleted 5863208 1612729787
+the menu selection 
+\change_inserted 5863208 1612729774
+
 \begin_inset Info
 type  "shortcuts"
-arg   "command-alternatives space-insert protected ; math-space"
+arg   "command-alternatives math-space ; space-insert protected"
 \end_inset
 
+
+\change_deleted 232239728 1610908788
+
+\begin_inset Info
+type  "shortcuts"
+arg   "command-alternatives space-insert protected;  math-space"
+\end_inset
+
+
+\change_inserted 5863208 1612729766
+or with the menu selection
+\family sans
+ 
+\change_inserted 232239728 1610908897
+Insert\SpecialChar menuseparator
+Formatting\SpecialChar menuseparator
+Protected Space
+\family default
+ or 
+\change_inserted 5863208 1612729638
+
+\family sans
+Ctrl+Space
+\change_deleted 5863208 1612729640
+
+\family default
+Ctrl+Space
+\change_unchanged
 .
 \end_layout
 
@@ -943,7 +1079,15 @@ arg   "command-alternatives space-insert protected ; math-space"
 \begin_inset Newpage newpage
 \end_inset
 
-Syntax Explanation
+
+\change_deleted 5863208 1612098922
+Syntax 
+\change_unchanged
+Explanation
+\change_inserted 5863208 1612100879
+ of Syntax Used in this Manual
+\change_unchanged
+
 \end_layout
 
 \begin_layout Itemize
@@ -951,7 +1095,11 @@ The symbol
 \begin_inset space \textvisiblespace{}
 \end_inset
 
- denotes a space character to be input.
+ denotes a space character to be input
+\change_inserted 5863208 1612098935
+ by the user
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Itemize
@@ -988,7 +1136,7 @@ Shift+Tab
 \end_layout
 
 \begin_layout Subsection*
-Available units
+Available Units
 \end_layout
 
 \begin_layout Standard
@@ -1104,7 +1252,13 @@ Inch (1
 \begin_inset space \thinspace{}
 \end_inset
 
-in = 2,54
+in = 2
+\change_deleted 232239728 1610909338
+,
+\change_inserted 232239728 1610909338
+.
+\change_unchanged
+54
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1394,13 +1548,6 @@ em)
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Basic Functions
 \end_layout
@@ -1636,10 +1783,10 @@ A
 As the caret is in some languages an accent, vowels will be accentuated
  in this case and not set as exponents
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Depending on the used keyboard settings this can also happen for characters
+Depending on the keyboard settings used this can also happen for characters
  other than vowels.
 \end_layout
 
@@ -2024,7 +2171,7 @@ D
 \backslash
 cfrac
 \series default
- sets the fraction always in the size of a displayed formula, also when
+ always sets the fraction size to that of a displayed formula, even when
  it is part of another fraction.
 \end_layout
 
@@ -2087,7 +2234,7 @@ cfracleft
 \backslash
 cfracright
 \series default
- are no real \SpecialChar LaTeX
+ are not real \SpecialChar LaTeX
  commands but represent the command 
 \series bold
 
@@ -2177,13 +2324,13 @@ unitfrac
 \begin_inset Formula $\unitfrac{5}{31}$
 \end_inset
 
- There is furthermore the command 
+ There is also the command 
 \series bold
 
 \backslash
 unitfracthree
 \series default
- that offers to write a fraction in combination with a number: 
+ which allows you to write a fraction in combination with a number: 
 \begin_inset Formula $\unitfrac[2]{1}{3}$
 \end_inset
 
@@ -2227,8 +2374,8 @@ unitfrac[number]{numerator}{denominator}
 \end_layout
 
 \begin_layout Standard
-How to define own fractions where the fraction stroke can be changed, is
- explained in 
+How to define your own fractions where the fraction stroke can be changed
+ is explained in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Self-defined-Fractions"
@@ -2494,7 +2641,7 @@ Distance is the number of Big Points (unit bp;
 \begin_inset Formula $\mathrm{72\,bp=1\,inch}$
 \end_inset
 
-), that the index should be moved to the left or top, resp..
+), that the index should be moved to the left or up, resp..
  The commands are written to the index.
  This way the command
 \begin_inset Newline newline
@@ -3339,7 +3486,7 @@ Indices created with sub- and superscripts:
 \begin_inset Text
 
 \begin_layout Plain Layout
-correct indices:
+Correct indices:
 \end_layout
 
 \end_inset
@@ -3365,9 +3512,9 @@ correct indices:
 \end_layout
 
 \begin_layout Standard
-The shorter index is by default placed below or above the first character
+The shorter index is placed by default below or above the first character
  of the longer index.
- To avoid this there is the command 
+ This is corrected using the command 
 \series bold
 
 \backslash
@@ -3394,7 +3541,7 @@ phantom
 status collapsed
 
 \begin_layout Plain Layout
-can be found in the submenu of the toolbar button 
+Found in the submenu of the toolbar button 
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\space"
@@ -3411,17 +3558,12 @@ type  "icon"
 arg   "math/phantom"
 \end_inset
 
- that creates one or more phantom characters.
- When inserting 
-\series bold
-
-\backslash
-phantom
-\series default
- a small blue box appears that is superposed with two red arrows.
- The arrows indicate that the complete width and height of the box content
- will be created as placeholder.
- Phantom characters are accordingly placeholders with the size of the characters.
+ to create one or more phantom characters.
+ When inserting phantom characters a small blue box appears that is superposed
+ with two red arrows.
+ The arrows indicate the width and height of the box to be created as a
+ placeholder.
+ Phantom characters are placeholders with the same character size.
 \end_layout
 
 \begin_layout Standard
@@ -3474,6 +3616,16 @@ phantom
 \begin_inset space \textvisiblespace{}
 \end_inset
 
+
+\change_inserted 5863208 1612176450
+
+\backslash
+mathrm
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\change_unchanged
 F
 \end_layout
 
@@ -3515,6 +3667,16 @@ phantom
 \begin_inset space \textvisiblespace{}
 \end_inset
 
+
+\change_inserted 5863208 1612707447
+
+\backslash
+mathrm
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\change_unchanged
 F
 \end_layout
 
@@ -3540,10 +3702,22 @@ F
 \begin_layout Plain Layout
 
 \backslash
-Lambda^
+Lambda
+\change_inserted 5863208 1612707546
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
+
+\change_unchanged
+^
+\change_deleted 5863208 1612707563
+
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\change_unchanged
 
 \backslash
 phantom
@@ -3903,7 +4077,7 @@ A+B
 \end_layout
 
 \begin_layout Standard
-In the last example it doesn't matter if first 
+In the last example it doesn't matter if 
 \series bold
 
 \backslash
@@ -3915,7 +4089,7 @@ overline
 \backslash
 underline
 \series default
- is inserted.
+ is inserted first.
 \end_layout
 
 \begin_layout Standard
@@ -3925,11 +4099,36 @@ To double underline use
 \backslash
 underline
 \series default
- twice.
+ twice
+\change_deleted 5863208 1612707977
+ 
+\change_inserted 5863208 1612707993
+ (or as many times you want).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 232239728 1610990247
 It is possible to place up to 6 lines above or below characters.
+\change_deleted 5863208 1612729848
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 232239728 1610990434
+I put 30 over and under lines in my test so I don't know what the actual
+ maximum is, but it's greater than 6.
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -4074,7 +4273,7 @@ arg   "math-insert \\ldots"
 
 \end_inset
 
- For listings dots at the baseline are used (
+ For listings, dots at the baseline are used (
 \series bold
 
 \backslash
@@ -4092,8 +4291,8 @@ ldots
 
 \end_inset
 
-), while for operations dots are needed that are on the same height as the
- operators (
+), while for operations, dots are needed that are on the same height as
+ the operators (
 \series bold
 
 \backslash
@@ -4435,7 +4634,7 @@ To use
 \backslash
 iddots
 \series default
-, one of the options 
+, the option 
 \family sans
 Use mathdots package (automatically)
 \family default
@@ -4482,7 +4681,27 @@ hdotsfor
 
 \end_inset
 
-, that has the following scheme:
+ and have the following scheme
+\change_inserted 5863208 1612709418
+ (
+\family sans
+mathtools
+\family default
+ must be loaded 
+\family sans
+always
+\family default
+ under 
+\family sans
+Math
+\begin_inset space ~
+\end_inset
+
+Options
+\family default
+ for this to work)
+\change_unchanged
+:
 \end_layout
 
 \begin_layout Standard
@@ -4505,7 +4724,7 @@ In the following matrix the command
 \backslash
 hdotsfor[2]{4}
 \series default
- was inserted in the first box of the second line, to get an ellipsis with
+ was inserted in the first box of the second line to get an ellipsis with
  a dot distance twice as long as with the command 
 \series bold
 
@@ -4541,7 +4760,7 @@ dotfill
 \series default
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Commands ! D ! 
@@ -4781,7 +5000,7 @@ C & F & 10000
 \end_layout
 
 \begin_layout Standard
-To add or delete rows and columns subsequently, the math toolbar buttons
+To subsequently add or delete rows and columns, the math toolbar buttons
  
 \begin_inset Info
 type  "icon"
@@ -5324,8 +5543,7 @@ arraystretch
 
 \end_inset
 
- is used.
- It is used as follows:
+ is used as follows:
 \end_layout
 
 \begin_layout Standard
@@ -5364,17 +5582,9 @@ renewcommand
 arraystretch
 \series default
 .
- To double e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-the row separation, use the factor 2.
+ For example to double the row separation, use a stretch factor of 2.
  This is then used for all following matrices.
- To go back to the original separation, assign the factor 1 to 
+ To restore the original separation, assign a stretch factor of 1 to 
 \series bold
 
 \backslash
@@ -5413,8 +5623,8 @@ smallmatrix
  is used
 \change_unchanged
 .
- When it is inserted a blue box with two dashed lines appears.
- In this box the matrix is inserted.
+ When it is inserted in a line a blue box with two dashed lines appears.
+ Adjust the matrix rows and columns as desired.
 \end_layout
 
 \begin_layout Standard
@@ -6086,7 +6296,7 @@ These commands are used to emphasize levels of brackets:
 \begin_inset Text
 
 \begin_layout Plain Layout
-all brackets in the same size:
+All brackets in the same size:
 \end_layout
 
 \end_inset
@@ -6109,7 +6319,7 @@ all brackets in the same size:
 \begin_inset Text
 
 \begin_layout Plain Layout
-this looks better:
+This looks better:
 \end_layout
 
 \end_inset
@@ -6151,7 +6361,7 @@ C
 \end_layout
 
 \begin_layout Standard
-Here is an overview about all bracket sizes:
+Here is an example containing all bracket sizes:
 \end_layout
 
 \begin_layout Standard
@@ -6202,13 +6412,13 @@ Bigg)^0,5
 \end_layout
 
 \begin_layout Standard
-Besides the 
+In addition to the 
 \series bold
 
 \backslash
 big
 \series default
--commands there is the variant 
+-commands there is a variant, 
 \series bold
 
 \backslash
@@ -6226,16 +6436,16 @@ bigm
 
 \end_inset
 
- that adds a bit more space between the bracket and its content, and the
- variant 
+, that adds a bit more space between the bracket and its content.
+ Other variants 
 \series bold
 
 \backslash
-bigl
+bigl 
 \series default
--
+and
 \series bold
-
+ 
 \backslash
 bigr
 \series default
@@ -6253,7 +6463,7 @@ bigr
 
 \end_inset
 
-, that don't add additional space.
+, don't add additional space.
  The 
 \emph on
 l
@@ -6264,8 +6474,7 @@ l
 \backslash
 bigl
 \series default
- is for a left bracket; for a right bracket this will be replaced by an
- 
+ is for a left bracket; for a right bracket this is replaced by an 
 \emph on
 r
 \emph default
@@ -6274,7 +6483,7 @@ r
 \end_layout
 
 \begin_layout Standard
-In the following table is a comparison of the variants:
+The following table contains comparisons of the variants:
 \end_layout
 
 \begin_layout Standard
@@ -6473,7 +6682,7 @@ Bracket size ! automatic
 \end_layout
 
 \begin_layout Standard
-Brackets with variable size can be inserted with the commands 
+Variably sized brackets can be inserted with the commands 
 \series bold
 
 \backslash
@@ -6516,7 +6725,7 @@ arg   "dialog-show mathdelimiter"
 \end_inset
 
 .
- Directly behind 
+ The desired bracket must be inserted directly behind the 
 \series bold
 
 \backslash
@@ -6528,7 +6737,7 @@ left
 \backslash
 right
 \series default
- the wanted bracket must be inserted.
+ commands.
  The bracket size will then automatically be calculated for the output.
 \end_layout
 
@@ -6700,8 +6909,8 @@ left
 right
 \series default
  will be converted by \SpecialChar LyX
- to brackets in the right size when the document is
- reloaded and an omitted bracket will appear as dashed line.
+ to brackets with the correct size when the document
+ is reloaded and an omitted bracket will appear as dashed line.
 \end_layout
 
 \begin_layout Standard
@@ -6730,17 +6939,9 @@ middle
 
 \end_inset
 
- is additionally available for all brackets and limits.
+ is available for all brackets and limits.
  With this command the height of the following character is adapted to the
- one of the surrounding brackets, what is e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-needed for physical vectors:
+ one of the surrounding brackets, for example in the case of physical vectors:
 \begin_inset Formula 
 \[
 \left\langle \phi\:\middle|\:J=\frac{3}{2}\,,\,M_{J}\right\rangle 
@@ -6965,7 +7166,7 @@ overbrace
 \backslash
 underbrace
 \series default
- is inserted at first.
+ is inserted first.
 \end_layout
 
 \begin_layout Standard
@@ -6976,7 +7177,7 @@ underbrace
 \end_layout
 
 \begin_layout Standard
-If you set in the document settings under 
+If in document settings under 
 \family sans
 Math
 \begin_inset space ~
@@ -6984,7 +7185,7 @@ Math
 
 Options
 \family default
- for the package 
+ the option for the package 
 \series bold
 mathtools
 \series default
@@ -6998,7 +7199,7 @@ Packages ! mathtools
 
 \end_inset
 
- the option 
+ is set to 
 \family sans
 Load
 \begin_inset space ~
@@ -7006,7 +7207,7 @@ Load
 
 always
 \family default
-, you have access to square brackets:
+, you will also have access to square brackets:
 \end_layout
 
 \begin_layout Standard
@@ -7204,9 +7405,13 @@ _7
 \end_inset
 
 ^
+\change_deleted 5863208 1612711596
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
+
+\change_unchanged
 C
 \end_layout
 
@@ -7397,15 +7602,14 @@ _5
 \begin_inset VSpace bigskip
 \end_inset
 
-When brackets should overlap each other, multiline formulas, as described
- in 
+When brackets overlap each other, multiline formulas as described in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Multiline-Formulas"
 
 \end_inset
 
-, must be used:
+ must be used:
 \begin_inset Formula 
 \begin{eqnarray*}
 A & = & \underbrace{gggg+bbqq}_{r}+\:dddd\\
@@ -7414,8 +7618,8 @@ A & = & \underbrace{gggg+bbqq}_{r}+\:dddd\\
 
 \end_inset
 
-In the first row the formula is inserted together with the first brace.
- It is hereby important that the space command
+In the first row, the formula is inserted together with the first brace.
+ It is important that the space command
 \begin_inset Foot
 status collapsed
 
@@ -7442,11 +7646,11 @@ reference "subsec:Predefined-Space"
 \begin_inset Formula $d$
 \end_inset
 
-, because the brace that ends behind the 
+ because the brace that ends behind the 
 \begin_inset Formula $q$
 \end_inset
 
- prevents that the following 
+ prevents the following 
 \begin_inset Quotes eld
 \end_inset
 
@@ -7454,12 +7658,12 @@ reference "subsec:Predefined-Space"
 \begin_inset Quotes erd
 \end_inset
 
- is surrounded by space.
+ from being surrounded by spaces.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-because a bracket is not handled as a character, see 
+Because a bracket is not handled as a character, see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Binary-Operators"
@@ -7471,7 +7675,7 @@ reference "subsec:Binary-Operators"
 
 \end_inset
 
- In the second row the second brace is inserted.
+ The second brace is inserted in the second row.
  As it should begin before the 
 \begin_inset Formula $b$
 \end_inset
@@ -7489,7 +7693,7 @@ hphantom{gggg+
 status collapsed
 
 \begin_layout Plain Layout
-more about 
+More about 
 \series bold
 
 \backslash
@@ -7515,7 +7719,7 @@ reference "subsec:Placeholders"
 \begin_inset Quotes erd
 \end_inset
 
- is also surrounded by space in the formula.
+ is surrounded by spaces in the formula.
  The brace is placed under the command 
 \series bold
 
@@ -7527,7 +7731,7 @@ hphantom{bbqq+dddd}
 
 \begin_layout Standard
 It gets more complicated when brackets overlap each other above and under
- the formula, like in the following example:
+ the formula as in the following example:
 \begin_inset ERT
 status collapsed
 
@@ -7569,9 +7773,9 @@ jot}{3pt}
 The first formula row is the same as the second row of the previous example,
  with the difference that the brace is above.
  The second row contains the formula together with the second brace.
- To avoid that there is space between the upper brace in the first row and
- the formula, the row spacing needs to be reduced.
- This is not easily possible due to a bug in \SpecialChar LyX
+ To avoid the space between the upper brace in the first row and the formula,
+ the row spacing needs to be reduced.
+ This is not easily done due to a bug in \SpecialChar LyX
 .
 \begin_inset Foot
 status collapsed
@@ -8415,15 +8619,7 @@ dasharrow
 \begin_inset VSpace medskip
 \end_inset
 
-Arrows used as accents like e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-vector arrows are listed in 
+Arrows used as accents such as vector arrows are listed in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Accents"
@@ -8437,7 +8633,7 @@ reference "sec:Accents"
 \begin_inset VSpace bigskip
 \end_inset
 
-Furthermore there are the labeled arrows
+Labeled arrows
 \begin_inset Index idx
 status collapsed
 
@@ -8447,7 +8643,7 @@ Arrows ! labeled
 
 \end_inset
 
- 
+ are also available using the commands 
 \series bold
 
 \backslash
@@ -8498,7 +8694,7 @@ vspace{4mm}
 
 .
  When inserting one of these commands in a formula, an arrow with two blue
- boxes appear where the label can be inserted.
+ boxes appears indicating where the labels can be inserted.
  The length of the arrow adapts to the label width.
 \end_layout
 
@@ -8618,7 +8814,7 @@ F(a)
 \end_layout
 
 \begin_layout Standard
-If you set in the document settings under 
+If in the document settings under 
 \family sans
 Math
 \begin_inset space ~
@@ -8648,7 +8844,7 @@ Load
 
 always
 \family default
-, you have access to the following labeled arrows:
+ is set, you will have access to the following labeled arrows:
 \end_layout
 
 \begin_layout Standard
@@ -9179,7 +9375,7 @@ xrightleftharpoons
 \end_layout
 
 \begin_layout Standard
-The command scheme is for all these arrows:
+The command scheme for all of these arrows is:
 \end_layout
 
 \begin_layout Standard
@@ -9248,7 +9444,7 @@ F(x)
 \end_layout
 
 \begin_layout Subsection
-Vertical and diagonal Arrows
+Vertical and Diagonal Arrows
 \begin_inset Index idx
 status collapsed
 
@@ -9600,7 +9796,7 @@ nwarrow
 \begin_inset VSpace medskip
 \end_inset
 
-Vertical arrows can be used also as delimiters together with the commands
+Vertical arrows can also be used as delimiters together with the commands
  described in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -9650,7 +9846,7 @@ arg   "math-insert \\hat"
 \end_layout
 
 \begin_layout Subsection
-Accents for one Character
+Accents for One Character
 \begin_inset ERT
 status collapsed
 
@@ -9668,7 +9864,7 @@ texorpdfstring{
 status collapsed
 
 \begin_layout Plain Layout
-accents in text see 
+For accents in text see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Accents-in-Text"
@@ -10214,7 +10410,7 @@ A
 \end_layout
 
 \begin_layout Standard
-You can directly insert accents like é to formulas.
+You can directly insert accents such as é in formulas.
  \SpecialChar LyX
  will transform them to the corresponding accent command.
  For umlauts
@@ -10227,14 +10423,14 @@ Umlauts
 
 \end_inset
 
- it is better to insert a quotation mark before the vowel.
+ however it is better to insert a quotation mark before the vowel.
  These two characters are then treated by \SpecialChar LaTeX
  as 
 \emph on
 one
 \emph default
  character when the formula part with the umlaut is marked as German.
- In contrary to 
+ In contrast to 
 \series bold
 
 \backslash
@@ -10355,13 +10551,13 @@ i
 \end_layout
 
 \begin_layout Standard
-Another advantage to 
+One advantage with 
 \series bold
 
 \backslash
 ddot
 \series default
- is that umlauts can directly be converted to mathematical text because
+ is that umlauts can be directly converted to mathematical text because
  the accent commands above are 
 \emph on
 not allowed
@@ -10373,7 +10569,7 @@ in mathematical text
 .
  To convert an accented character to mathematical text, only the character
  under the accent may be converted.
- This applies also for all other conversions, e.
+ This applies for all conversions, e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -10382,11 +10578,6 @@ g.
 \end_inset
 
 to italic or bold.
-\end_layout
-
-\begin_layout Standard
-In mathematical text, umlauts and other accented characters can directly
- be inserted.
 \end_layout
 
 \begin_layout Standard
@@ -10567,15 +10758,8 @@ fi
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
-Accents for several Characters
+Accents for Several Characters
 \begin_inset Index idx
 status collapsed
 
@@ -10899,7 +11083,7 @@ A=B
 \begin_inset VSpace medskip
 \end_inset
 
-With these commands as many characters as you like can be accented.
+Using these commands you can accent as many characters as you like.
  But the accents 
 \series bold
 
@@ -10925,7 +11109,7 @@ widehat
 \end_layout
 
 \begin_layout Standard
-With the commands 
+It is also possible to accent several characters using the commands 
 \series bold
 
 \backslash
@@ -10961,8 +11145,7 @@ underset
 
 \end_inset
 
- described in the previous subsection it is also possible to accent several
- characters.
+ described in the previous subsection.
  The command 
 \series bold
 
@@ -11033,11 +11216,37 @@ Space ! horizontal ! predefined
 \begin_layout Standard
 Sometimes it is necessary to insert horizontal space into a formula.
  This is done by inserting a protected space (shortcut 
+\change_inserted 5863208 1612729962
+
+\begin_inset Info
+type  "shortcut"
+arg   "command-alternatives math-space ; space-insert protected"
+\end_inset
+
+
+\change_deleted 5863208 1612729965
+
 \begin_inset Info
 type  "shortcut"
 arg   "command-alternatives space-insert protected ; math-space"
 \end_inset
 
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 232239728 1611160593
+What is intended here?
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 ).
  A 
 \begin_inset Quotes eld
@@ -11067,12 +11276,17 @@ arg   "math-insert \\space"
 \end_inset
 
  or special commands.
- Independent from the inserted command, one can select the size again by
- pressing 
+ The size can be adjusted at any time by positioning the cursor on the 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\space"
+\end_inset
+
+ and pressing 
 \family sans
 Space
 \family default
- afterwards.
+ until the desired size is achieved.
 \end_layout
 
 \begin_layout Standard
@@ -11517,7 +11731,7 @@ hspace{1em}
 \end_layout
 
 \begin_layout Standard
-Space
+Space's
 \begin_inset space ~
 \end_inset
 
@@ -11541,7 +11755,7 @@ reference "subsec:Variable-Space"
 \begin_inset space ~
 \end_inset
 
-9 seems to produce no space.
+9 appears to produce no space.
  It is displayed red in \SpecialChar LyX
  contrary to the other sizes, because it is a negative
  space.
@@ -11666,15 +11880,8 @@ Result
 
 \begin_layout Standard
 Negative spaces can lead to characters overlapping each other.
- Thus they can be used to enforce ligatures, which are e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-useful for summation operators:
+ Thus they can be used to enforce ligatures, which are useful for things
+ such as summation operators:
 \end_layout
 
 \begin_layout Standard
@@ -11785,8 +11992,9 @@ f_kl
 
 \begin_layout Standard
 \noindent
-Relations like for example equal signs, are always surrounded by space.
- To suppress this, the equal sign is placed into a \SpecialChar TeX
+Relational operators, for example equal or less than signs, are always surrounde
+d by space.
+ To suppress this, the operator is placed into a \SpecialChar TeX
  brace.
  The following example demonstrates this:
 \end_layout
@@ -11803,7 +12011,7 @@ Relations like for example equal signs, are always surrounded by space.
 \begin_inset Text
 
 \begin_layout Plain Layout
-normal equation
+Normal equation
 \end_layout
 
 \end_inset
@@ -11826,7 +12034,7 @@ normal equation
 \begin_inset Text
 
 \begin_layout Plain Layout
-equation without space
+Equation without space
 \end_layout
 
 \end_inset
@@ -11872,9 +12080,10 @@ B
 \end_layout
 
 \begin_layout Standard
-Spaces are needed for physical units, because the space between the value
- and the unit is the smallest one and not a normal space.
- For units in text, the smallest space is inserted via the menu 
+Another example of controlled spaces is physical units.
+ The space between a value and its unit is smaller than a normal space,
+ typically a thin space is used.
+ For units in text, the smaller space is inserted via the menu 
 \family sans
 Insert\SpecialChar menuseparator
 Formatting\SpecialChar menuseparator
@@ -11921,7 +12130,7 @@ h
 \begin_inset Text
 
 \begin_layout Plain Layout
-space between value and unit
+Space between value and unit
 \end_layout
 
 \end_inset
@@ -11949,7 +12158,7 @@ h
 \begin_inset Text
 
 \begin_layout Plain Layout
-smallest space between value and unit
+Thin space between value and unit
 \end_layout
 
 \end_inset
@@ -11981,7 +12190,7 @@ texorpdfstring{
 status collapsed
 
 \begin_layout Plain Layout
-for vertical space in formulas see 
+For vertical space in formulas see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Line-Separation"
@@ -12069,7 +12278,7 @@ hspace
 \end_inset
 
 .
- Then a long 
+ A long 
 \begin_inset Quotes eld
 \end_inset
 
@@ -12085,8 +12294,8 @@ hspace
 \begin_inset Quotes erd
 \end_inset
 
- appears.
- The length can be specified by left-clicking on the 
+ will appear, the length of which can be specified by left-clicking on the
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -12104,7 +12313,7 @@ hspace
 
 .
  The length may also be negative.
- When a space would be the first character in a line it would be omitted.
+ If the space is the first character in a line, it will ordinarily be omitted.
  To force its output use the command 
 \series bold
 
@@ -12337,7 +12546,7 @@ Besides
 \backslash
 hfill
 \series default
-, there are the commands 
+, there are also commands, 
 \series bold
 
 \backslash
@@ -12347,9 +12556,10 @@ dotfill
 \series bold
 
 \backslash
-hrulefill
+hrulefill,
 \series default
- that fill the space with a pattern, see 
+ that fill the space with a pattern.
+ See 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Ellipses"
@@ -12395,7 +12605,7 @@ maximum space.
 \end_layout
 
 \begin_layout Subsection
-Space besides inline Formulas
+Space Besides Inline Formulas
 \begin_inset Index idx
 status collapsed
 
@@ -12546,13 +12756,6 @@ mathsurround
 \end_inset
 
 pt.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -12710,15 +12913,15 @@ The command
 fbox
 \series default
  is not suitable to frame displayed formulas because the formula will always
- be set in the size of the text.
- 
+ be set in the size of the documents text.
+ Conversly 
 \series bold
 
 \backslash
 boxed
 \series default
- is in contrary not suitable to frame inline formulas, because the formula
- will always be set in the size of a displayed formula.
+ is not suitable to frame inline formulas because the formula will always
+ be set in the size of a displayed formula.
 \end_layout
 
 \begin_layout Standard
@@ -12746,7 +12949,7 @@ framebox
 
 \end_inset
 
- where additionally the frame width and the alignment can be specified.
+ with which the frame width and the alignment can be specified.
  
 \series bold
 
@@ -12778,16 +12981,16 @@ r
 \emph on
 l
 \emph default
- left aligns, 
+ left aligns and 
 \emph on
 r
 \emph default
  right aligns the formula in the box.
- When no position is given, the formula will be centered.
+ If no position is given the formula will be centered.
 \begin_inset Newline newline
 \end_inset
 
-If no width is given, also no position can be given.
+If width is not given then position can not be given.
  In this case the frame width is adjusted to the box content like for 
 \series bold
 
@@ -13005,10 +13208,9 @@ B
 \end_layout
 
 \begin_layout Standard
-The frame thickness can also be adjusted.
- To do this the following commands have to be inserted in \SpecialChar TeX
- mode before the
- formula
+To adjust the frame thickness the following commands are inserted in \SpecialChar TeX
+ mode
+ before the formula:
 \end_layout
 
 \begin_layout Standard
@@ -13057,11 +13259,11 @@ distance
 \begin_inset Quotes erd
 \end_inset
 
- specifies the minimal distance between the frame and the first character
+ specifies the minimum distance between the frame and the first character
  in the box.
- An example for this is the following framed formula:
+ An example of this is given in the following framed formula:
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -13110,7 +13312,7 @@ fboxsep
 \begin_layout Standard
 were inserted in \SpecialChar TeX
  mode.
- The given values are used for all following boxes.
+ These values are then used for all following boxes.
 \end_layout
 
 \begin_layout Standard
@@ -13140,7 +13342,7 @@ fboxsep
 \series default
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -13162,7 +13364,7 @@ is inserted in \SpecialChar TeX
 \end_layout
 
 \begin_layout Subsection
-Boxes without Frame
+Boxes Without Frame
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Boxes-without-Frame"
@@ -13183,7 +13385,7 @@ Boxes ! without frame
 \end_layout
 
 \begin_layout Standard
-For boxes without a frame there are the following box commands: 
+For boxes without a frame the following box commands: 
 \series bold
 
 \backslash
@@ -13237,7 +13439,7 @@ raisebox
 
 \end_inset
 
-
+ are available.
 \end_layout
 
 \begin_layout Standard
@@ -13268,17 +13470,18 @@ raisebox{height}{box content}
 \end_layout
 
 \begin_layout Standard
-When the box should contain a formula, an extra formula is needed like for
- 
+When the box contains a formula, an extra formula is needed like for 
 \series bold
 
 \backslash
 fbox
 \series default
 .
- 
-\series medium
+\end_layout
 
+\begin_layout Standard
+
+\series medium
 \begin_inset Note Greyedout
 status open
 
@@ -13486,7 +13689,7 @@ makebox
 \backslash
 framebox
 \series default
-, with the difference that there is no frame.
+, except that there is no frame.
 \end_layout
 
 \begin_layout Subsection
@@ -13542,7 +13745,7 @@ Packages ! color
 
 \end_inset
 
- has to be loaded in the \SpecialChar LaTeX
+ must be loaded in the \SpecialChar LaTeX
 -preamble with the line
 \begin_inset Foot
 status collapsed
@@ -13588,7 +13791,7 @@ usepackage{color}
 \begin_inset VSpace medskip
 \end_inset
 
-To color boxes, the command 
+To create color boxes, the command 
 \series bold
 
 \backslash
@@ -13687,6 +13890,10 @@ white
  and 
 \series bold
 yellow
+\begin_inset VSpace smallskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -13766,6 +13973,14 @@ fbox
 \begin_inset space \textvisiblespace{}
 \end_inset
 
+
+\change_inserted 232239728 1611182042
+
+\begin_inset Formula $\gets\gets$
+\end_inset
+
+
+\change_unchanged
 A=B
 \end_layout
 
@@ -13795,6 +14010,14 @@ fbox
 \begin_inset space \textvisiblespace{}
 \end_inset
 
+
+\change_inserted 232239728 1611182036
+
+\begin_inset Formula $\gets\gets$
+\end_inset
+
+
+\change_unchanged
 
 \backslash
 colorbox{green
@@ -13840,6 +14063,10 @@ C=D
 \end_inset
 
 
+\begin_inset VSpace smallskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -13849,7 +14076,7 @@ C=D
 \backslash
 colorbox
 \series default
- only colors the box but not the characters in the box.
+ only colors the box background, not the characters in the box.
  To color all characters, the whole formula is highlighted and the desired
  color is chosen in the 
 \family sans
@@ -13873,13 +14100,13 @@ Text
 \begin_inset space ~
 \end_inset
 
-Style\SpecialChar menuseparator
+Properties\SpecialChar menuseparator
 Customized
 \family default
 .
- The formula number then has the same color as the formula.
- When the formula number should get another color than the formula characters,
- the color must be changed within the formula.
+ The formula number will have the same color as the formula.
+ If a different color for the formula number is desired, the color must
+ be changed within the formula.
 \end_layout
 
 \begin_layout Standard
@@ -14069,7 +14296,7 @@ fcolorbox{cyan
 \begin_inset VSpace bigskip
 \end_inset
 
-To use other colors than the predefined ones, they have to be defined first.
+To use colors other than predefined ones, they must be defined first.
 \end_layout
 
 \begin_layout Standard
@@ -14128,7 +14355,7 @@ definecolor
 \series bold
 cmyk
 \series default
- is the color space that denotes the colors 
+ is the color space denoting the colors 
 \series bold
 cyan
 \series default
@@ -14145,7 +14372,7 @@ yellow
 black
 \series default
 .
- The four comma separated numbers are the portion factor for the corresponding
+ The four comma separated numbers are the portion factors for the corresponding
  colors of the color space.
  The factors can be in the range of 0
 \begin_inset space \thinspace{}
@@ -14158,13 +14385,13 @@ black
 1.
  Instead of 
 \series bold
-cmyk
+cmyk,
 \series default
- also the color space 
+ the color space 
 \series bold
 rgb
 \series default
- can be used for definitions.
+ can also be used for definitions.
  
 \series bold
 rgb
@@ -14181,8 +14408,7 @@ green
 \series bold
 blue
 \series default
-, so that there are in this case three portion factors for the corresponding
- colors.
+, so there are three portion factors for the corresponding colors.
  Furthermore there is the color space 
 \series bold
 gray
@@ -14191,7 +14417,7 @@ gray
 \end_layout
 
 \begin_layout Standard
-As example a framed box with the new defined color 
+As an example here is a framed box with the newly defined color 
 \series bold
 darkgreen
 \series default
@@ -14536,13 +14762,9 @@ linewidth
 
 \end_inset
 
- is hereby the line width set for the document.
- Because the frame is outside the parbox, 2
-\begin_inset space \thinspace{}
-\end_inset
-
-times the frame separation and the frame thickness must be subtracted from
- the line width.
+ is the line width set for the document.
+ Because the frame is outside the parbox, two times the frame separation
+ and the frame thickness must be subtracted from the line width.
  To be able to multiply and subtract in arguments, the \SpecialChar LaTeX
 -package 
 \series bold
@@ -14855,7 +15077,7 @@ reference "sec:Formula-Styles"
 \backslash
 ]
 \series default
- hereby create a displayed formula.
+ create a displayed formula.
 \end_layout
 
 \begin_layout Standard
@@ -14940,9 +15162,13 @@ Integrals
 \end_layout
 
 \begin_layout Standard
-To be able to use all integral operators listed here, the option 
+To be able to use all of the integral operators listed here, the 
 \family sans
-Use esint package automatically
+Load automatically
+\family default
+ option for the
+\family sans
+ esint package
 \family default
  must be set in the document settings under 
 \family sans
@@ -15616,18 +15842,9 @@ intop
 \backslash
 ointop
 \series default
- etc..
- These operators are different from 
-\series bold
-
-\backslash
-int
-\series default
  etc.
-\begin_inset space \space{}
-\end_inset
-
-in the style the operator limits are displayed, see 
+ These operators differ in the style the operator limits are displayed,
+ see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Operator-Limits"
@@ -15635,7 +15852,6 @@ reference "subsec:Operator-Limits"
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Subsubsection*
@@ -15647,7 +15863,7 @@ The letter
 \emph on
 d
 \emph default
- in an integral is an operator, that therefore has to be set upright.
+ in an integral is an operator that has to be set upright.
  This is done by highlighting the 
 \emph on
 d
@@ -15680,7 +15896,7 @@ reference "subsec:Font-Styles"
 \end_inset
 
 .
- Finally the smallest space is inserted before the 
+ Also the smallest space is inserted before the 
 \emph on
 d
 \emph default
@@ -15715,7 +15931,7 @@ correct:
 \end_layout
 
 \begin_layout Standard
-For multiple integrals there are the following commands:
+The following commands exist for multiple integrals:
 \begin_inset VSpace medskip
 \end_inset
 
@@ -16046,13 +16262,13 @@ A(x)
 \end_layout
 
 \begin_layout Standard
-Limits of inline formulas are set right beside the operator.
+Limits of inline formulas are set on the right side of the operator.
  Limits in displayed formulas are set above or below the operator, except
  for integral limits.
 \end_layout
 
 \begin_layout Standard
-To force that the limits are set beside the operator, the cursor is set
+To force the limits to be set beside the operator, the cursor is placed
  directly behind the operator and the limits type is changed with the menu
  
 \family sans
@@ -16077,7 +16293,7 @@ arg   "math-limits"
 \end_layout
 
 \begin_layout Standard
-The default limits type is this:
+The default displayed formulas limits type is this:
 \begin_inset Formula 
 \[
 \sum_{x=0}^{\infty}\frac{1}{x^{2}}
@@ -16085,7 +16301,7 @@ The default limits type is this:
 
 \end_inset
 
-This is how it looks when the limits type was changed to 
+This is how it looks when the limits type is changed to 
 \family sans
 \series bold
 Inline
@@ -16115,20 +16331,38 @@ intop
 \backslash
 ointop
 \series default
- etc., the limits are by default set beside the operator.
+ etc., the limits by default are set beside the operator.
  But for multiple integrals the limits are often set below the operator.
- In the following example the limits type was therefore set to 
+ In the following example the limits type was set to 
 \series bold
 Display
 \series default
  and so set below the integrals:
 \begin_inset Formula 
 \begin{equation}
-\iiint_{V}X\,\mathrm{d}V=U\label{eq:VolInt}
+\iiint\limits_{V}X\,\mathrm{d}V=U\label{eq:VolInt}
 \end{equation}
 
 \end_inset
 
+
+\change_deleted 5863208 1612725771
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 232239728 1611193306
+This integral did not have its limits set to Display in the original document
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -16173,7 +16407,7 @@ substack
 \end_inset
 
  are used.
- To create for example this expression 
+ To create this expression 
 \begin_inset Formula 
 \begin{equation}
 \sum_{\begin{subarray}{c}
@@ -16189,7 +16423,7 @@ k\,\in\,\mathbb{N}
 \end_layout
 
 \begin_layout Standard
-the following has to be done:
+the following must be done:
 \begin_inset Newline newline
 \end_inset
 
@@ -16208,8 +16442,8 @@ n
 _
 \series default
  is typed in.
- One is now in a blue box under the summation operator and insert there
- the command 
+ The cursor is now in a blue box under the summation operator.
+ Insert the command 
 \series bold
 
 \backslash
@@ -16220,8 +16454,8 @@ subarray
 
 \series default
 .
- The blue box is now within a purple box and now several lines can be written
- among each other.
+ The blue box is now within a purple box and now multiple limit lines can
+ be written.
  A new line is created by inserting a line break (
 \begin_inset Info
 type  "shortcut"
@@ -16229,7 +16463,7 @@ arg   "newline-insert newline"
 \end_inset
 
 ).
- When now
+ When 
 \begin_inset Newline newline
 \end_inset
 
@@ -16241,7 +16475,7 @@ arg   "newline-insert newline"
 
 
 \series default
-is typed in, a new box appears below for the new line.
+is typed in, a new box appears below for the new limit line.
 \end_layout
 
 \begin_layout Standard
@@ -16292,15 +16526,16 @@ subarray
 \begin_inset VSpace bigskip
 \end_inset
 
-Like in formula 
+As in formula 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:substack"
 
 \end_inset
 
- there can be too much space beside an operator, because the characters
- following the operator are set beside the limits.
+ there can be too much space beside an operator.
+ This occurs because the characters following the operator are set beside
+ the limits.
  To avoid this the command 
 \series bold
 
@@ -16320,15 +16555,7 @@ smashoperator
 \end_inset
 
  can be used.
- To activate it, set in the document settings under 
-\family sans
-Math
-\begin_inset space ~
-\end_inset
-
-Options
-\family default
- for the package 
+ To use it, set the package 
 \series bold
 mathtools
 \series default
@@ -16342,7 +16569,15 @@ Packages ! mathtools
 
 \end_inset
 
- the option 
+ in the document settings under 
+\family sans
+Math
+\begin_inset space ~
+\end_inset
+
+Options
+\family default
+ to 
 \family sans
 Load
 \begin_inset space ~
@@ -16459,7 +16694,7 @@ Y\smashoperator{\sum_{1\le i\le j\le n}^{n=3456}}X_{ij}=Y\smashoperator[l]{\sum_
 
 \begin_layout Standard
 When several consecutive operators have limits the typesetting of the limits
- looks often imperfect in the output, see this example:
+ looks often imperfect in the output, for example:
 \begin_inset Formula 
 \[
 \text{a)}\lim_{n\to\infty}\max_{p\ge n}\quad\text{b)}\lim_{n\to\infty}\max_{p^{2}\ge n}\quad\text{c)}\lim_{n\to\infty}\sup_{p^{2}\ge nK}\quad\text{d)}\limsup_{n\to\infty}\max_{p\ge n}
@@ -16467,7 +16702,7 @@ When several consecutive operators have limits the typesetting of the limits
 
 \end_inset
 
-To improve the typesetting set in the document settings under 
+To improve the typesetting, in the document settings under 
 \family sans
 Math
 \begin_inset space ~
@@ -16489,16 +16724,16 @@ Packages ! mathtools
 
 \end_inset
 
- the option 
+, set the option to
 \family sans
-Load
+ Load
 \begin_inset space ~
 \end_inset
 
 always
 \family default
 .
- Then insert into your formula the command 
+ Then insert the command 
 \series bold
 
 \backslash
@@ -16593,7 +16828,7 @@ underset
 
 \end_inset
 
- characters can be placed above or below an operator, respectively.
+ characters can be placed above or below an operator respectively.
  With the command 
 \series bold
 
@@ -17864,7 +18099,7 @@ arg   "math-insert \\pm"
 \end_layout
 
 \begin_layout Standard
-To typeset the Laplace operator also 
+To typeset the Laplace operator, 
 \series bold
 
 \backslash
@@ -17884,13 +18119,13 @@ nabla
 \begin_inset Formula $\nabla^{2}$
 \end_inset
 
-) can be used instead of 
+) can also be used instead of 
 \series bold
 
 \backslash
 bigtriangleup
 \series default
- .
+.
 \end_layout
 
 \begin_layout Standard
@@ -17954,7 +18189,7 @@ DeclareMathOperator
 
 \end_inset
 
- custom operators can be defined in the \SpecialChar LaTeX
+, custom operators can be defined in the \SpecialChar LaTeX
 -preamble.
  Its command scheme is:
 \end_layout
@@ -18005,7 +18240,8 @@ defines the command
 \backslash
 Lozenge
 \series default
-, that inserts a big operator consisting of the lozenge symbol from 
+, that inserts a big operator consisting of the black lozenge symbol from
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Miscellaneous-Symbols"
@@ -18118,15 +18354,7 @@ mathbin
 \backslash
 mathop
 \series default
- can e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-be used to use one limit for several operators:
+ can be used to use one limit for several operators:
 \end_layout
 
 \begin_layout Standard
@@ -18786,17 +19014,17 @@ mathscr
 \end_layout
 
 \begin_layout Standard
-Predefined is the style 
+The style 
 \series bold
 
 \backslash
 mathnormal
 \series default
-.
+ is predefined.
 \end_layout
 
 \begin_layout Standard
-The style commands work also for letters in mathematical constructs:
+The style commands also work for letters in mathematical constructs:
 \begin_inset Formula 
 \[
 \mathfrak{A=\frac{b}{C}}
@@ -18816,8 +19044,8 @@ Characters in mathematical text don't appear in a math font style but in
 textrm
 \series default
 .
- That their style can't be set correctly via the text style dialog is a
- bug in \SpecialChar LyX
+ Note that their style can't be set correctly via the text style dialog.
+ This is a known bug in \SpecialChar LyX
 .
 \begin_inset Foot
 status collapsed
@@ -18840,13 +19068,13 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-Instead of the style commands the dialog 
+Instead of the style commands, 
 \family sans
 Edit\SpecialChar menuseparator
 Math\SpecialChar menuseparator
 Text Style
 \family default
- or the toolbar button 
+ dialog, or the toolbar button, 
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\font"
@@ -18883,9 +19111,9 @@ To make a complete formula bold, the command
 \backslash
 mathbf
 \series default
- from the previous subsection cannot be used, because it doesn't work for
+ from the previous subsection cannot be used because it doesn't work for
  small Greek letters.
- Furthermore it prints Latin letters always upright, like in the following
+ Additionally it always prints Latin letters upright, as in the following
  equation:
 \end_layout
 
@@ -19152,8 +19380,8 @@ Font ! size
 \end_layout
 
 \begin_layout Standard
-For characters in formulas there are, analog to characters in text, the
- following size commands:
+As with characters in text, the following size commands are available for
+ formula characters:
 \end_layout
 
 \begin_layout Standard
@@ -19223,23 +19451,23 @@ tiny
 \end_layout
 
 \begin_layout Standard
-The size produced by the commands depends on the document font size, which
- corresponds to the command 
+The font size produced by the commands depends on the document's original
+ font size, which corresponds to the command 
 \series bold
 
 \backslash
 normalsize
 \series default
 .
- The other commands produce smaller or larger sizes than 
+ The other commands produce character sizes smaller or larger than 
 \series bold
 
 \backslash
 normalsize
 \series default
 .
- The font size can however not exceed a certain value.
- Is for example the document font size 12
+ There are however limits to how small or large the font size can be changed.
+ If for example the document font size is 12
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -19256,25 +19484,24 @@ Huge
 huge
 \series default
 .
- 
 \end_layout
 
 \begin_layout Standard
 A size command is inserted in \SpecialChar TeX
- mode before the formula and sets the size
- for all following formula and text characters.
+ mode before a formula and sets the size for
+ all of the following formulas and text characters.
  To switch back to the initial size, the command 
 \series bold
 
 \backslash
 normalsize
 \series default
- is inserted behind the formula in \SpecialChar TeX
+ is inserted behind the formula, again in \SpecialChar TeX
  mode.
 \end_layout
 
 \begin_layout Standard
-Within a formula the size can be changed using the following size commands
+Size can also be changed within a formula using the following size commands
  or the toolbar button 
 \begin_inset Info
 type  "icon"
@@ -19437,12 +19664,12 @@ After entering these commands, a blue box appears in which the formula parts
 \end_layout
 
 \begin_layout Standard
-There is a further method to change the font size, that though only works
+There is another method for changing the font size, although it only works
  for symbols or letters in mathematical text.
- To use it, one of the above text size commands is inserted in mathematical
+ To use it, one of the above text size commands is inserted into mathematical
  text.
- All following characters until the end of the mathematical text or until
- another size command will have the selected size.
+ All characters until the end of the mathematical text or until another
+ size command will have the selected size.
  Two examples:
 \begin_inset VSpace -2mm
 \end_inset
@@ -19493,13 +19720,10 @@ normalsize
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset VSpace medskip
 \end_inset
 
-Before both formulas the command 
+Before the first formula the command 
 \series bold
 
 \backslash
@@ -19598,13 +19822,13 @@ Greek letters
 \end_layout
 
 \begin_layout Standard
-Greek letters can also be inserted via the toolbar button 
+Greek letters can be inserted via the toolbar button 
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\alpha"
 \end_inset
 
-.
+ as well as by command.
  All international typesetting norms purport that Greek letters in math
  have to be typeset italic/slanted.
  In some languages, like French or Russian, they are nevertheless sometimes
@@ -20515,7 +20739,7 @@ omega
 \end_layout
 
 \begin_layout Standard
-How to create special upright Greek letters is explained in 
+Creating upright Greek letters is explained in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Upright-small-Greek"
@@ -20893,10 +21117,9 @@ Omega
 \begin_inset VSpace medskip
 \end_inset
 
-That the big Greek letters appear upright is caused by a design bug when
- \SpecialChar TeX
- was developed.
- To get correct italic big letters, begin every command with 
+The big Greek letters appearing upright is caused by a design bug in \SpecialChar TeX
+.
+ To create correct italic big letters, begin every command with 
 \series bold
 var
 \series default
@@ -22988,7 +23211,7 @@ officialeuro
 
 \end_inset
 
-, that is only available in \SpecialChar TeX
+, which is also only available in \SpecialChar TeX
  mode.
 \end_layout
 
@@ -23329,7 +23552,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-All following relations can also be inserted via the toolbar button 
+All of the following relations can also be inserted via the toolbar button
+ 
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\leq"
@@ -24677,7 +24901,7 @@ arg   "math-insert \\leqq"
 \end_layout
 
 \begin_layout Standard
-Relations are, in contrary to symbols, always surrounded by space.
+Contrary to symbols, relations are always surrounded by space.
 \end_layout
 
 \begin_layout Standard
@@ -24826,8 +25050,8 @@ italic
 \end_inset
 
 .
- Therefore there are predefined functions which are additionally a bit separated
- from prefactors.
+ Also predefined functions are separated a bit from the character in front
+ of them.
  They are inserted as commands starting with a backslash before their name.
 \end_layout
 
@@ -25405,12 +25629,12 @@ Functions ! self-defined
 \end_layout
 
 \begin_layout Standard
-To use a function that is not predefined, like for example the sign function
+To use a function that is not predefined, for instance the sign function
  sgn(x), there are two possibilities:
 \end_layout
 
 \begin_layout Itemize
-Define the function by inserting the following line to the \SpecialChar LaTeX
+Define the function by inserting the following line in the \SpecialChar LaTeX
 -preamble
 \begin_inset Foot
 status collapsed
@@ -25480,7 +25704,7 @@ DeclareMathOperator
 \begin_inset Newline newline
 \end_inset
 
-Now the new defined function can be called with the command 
+Now the newly defined function can be called with the command 
 \series bold
 
 \backslash
@@ -25496,7 +25720,7 @@ Write the formula as usual, mark the formula name, in our example the letters
 sgn
 \emph default
 , and change it to mathematical text.
- Finally, a space is inserted between prefactor and function.
+ Finally, insert a space between the prefactor and function.
 \end_layout
 
 \begin_layout Standard
@@ -25603,8 +25827,8 @@ A
 \end_layout
 
 \begin_layout Standard
-The first method is more suitable when the self-defined function should
- be used several times.
+The first method is more suitable when the self-defined function will be
+ used several times.
 \end_layout
 
 \begin_layout Subsection
@@ -25930,9 +26154,9 @@ The modulo-function is special, because it exists in four variants.
 \begin_layout Standard
 In an inline formula less space is set before the function names for all
  variants.
- By default the modulo-functions take only the first following character
- into account.
- To use more than one character, one has to put them into \SpecialChar TeX
+ By default the modulo-functions take only the first character following
+ the command into account.
+ To use more than one character, put them in \SpecialChar TeX
  braces:
 \begin_inset Formula 
 \begin{align*}
@@ -25965,7 +26189,7 @@ The characters ^ and _ would normally create a superscript and subscript,
  respectively.
  To get these characters you have to insert them with a leading 
 \backslash
-:
+.
 \end_layout
 
 \begin_layout Standard
@@ -26539,7 +26763,7 @@ arg   "math-insert \\digamma"
 \end_layout
 
 \begin_layout Standard
-An exception are the commands 
+The commands 
 \series bold
 !
 \begin_inset space \hspace{}
@@ -26557,7 +26781,7 @@ An exception are the commands
 
 `
 \series default
-, because they can be inserted in \SpecialChar LyX
+ are exceptions because they can be inserted in \SpecialChar LyX
  directly to text.
 \end_layout
 
@@ -26583,7 +26807,7 @@ Accents ! in text
 \end_layout
 
 \begin_layout Standard
-With the following commands all letters can be accented.
+Any letter can be accented with the following commands.
  The commands must be inserted in \SpecialChar TeX
  mode.
 \end_layout
@@ -27235,7 +27459,7 @@ The accents
 \series bold
 ^
 \series default
- can in combination with vowels directly be inserted with the keyboard without
+ can in combination with vowels be directly inserted with the keyboard without
  using \SpecialChar TeX
  mode.
  The same applies for the tilde
@@ -27312,7 +27536,7 @@ v
 \series default
  and accents that are inserted directly with the keyboard are also available
  in mathematical text.
- For the other accents there are special math commands to be used in formulas,
+ For the other accents there are special math commands used in formulas,
  see 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -27327,7 +27551,7 @@ reference "subsec:Accents-for-one"
 \begin_inset VSpace bigskip
 \end_inset
 
-Furthermore, with the command 
+With the command 
 \series bold
 
 \backslash
@@ -27345,8 +27569,8 @@ textcircled
 
 \end_inset
 
- all numbers and letters can be set into a circle, quasi accented with a
- circle, similar to the copyright symbol.
+ any number or letter can be set into a circle, quasi accented with a circle,
+ similar to the copyright symbol.
 \end_layout
 
 \begin_layout Standard
@@ -27468,7 +27692,7 @@ raisebox{-1.5pt}W}
 \end_layout
 
 \begin_layout Standard
-One has to take care that the character fits in the circle.
+One has to take care that the character fits into the circle.
  
 \series bold
 
@@ -27480,7 +27704,7 @@ Large
 status collapsed
 
 \begin_layout Plain Layout
-see 
+See 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Font-Sizes"
@@ -27492,7 +27716,7 @@ reference "subsec:Font-Sizes"
 
 \end_inset
 
- specifies thereby the size of the circle.
+ specifies the size of the circle.
  With the help of 
 \series bold
 
@@ -27504,7 +27728,7 @@ raisebox
 status collapsed
 
 \begin_layout Plain Layout
-see 
+See 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Boxes-without-Frame"
@@ -27612,7 +27836,7 @@ Centered is the predefined standard.
 \end_layout
 
 \begin_layout Description
-Indented this can be set using the menu 
+Indented can be set using the menu 
 \family sans
 Document\SpecialChar menuseparator
 Settings
@@ -27632,12 +27856,12 @@ When
 Indented
 \series default
  is used, the indentation can be adjusted.
- The default value depends on the used document class.
+ The default value depends on the document class.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-And two different numbering styles that can be set in the menu 
+Two different numbering styles are available in the menu 
 \family sans
 Document\SpecialChar menuseparator
 Settings
@@ -27708,7 +27932,7 @@ General
 
 \begin_layout Standard
 In \SpecialChar LyX
- multiline formulas are created by pressing 
+, multiline formulas are created by pressing 
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
@@ -27726,7 +27950,7 @@ reference "subsec:Standard-align-Environment"
 
 \end_inset
 
- or, when automatically loading the package
+ or, when automatically loading of the package
 \family sans
  AMS math
 \family default
@@ -27742,8 +27966,8 @@ reference "subsec:Eqnarray-Environment"
 \end_inset
 
 .
- The align environment is recommended because it provides in any case a
- typographically correct output.
+ The align environment is recommended as it provides a typographically correct
+ output in all cases.
 \end_layout
 
 \begin_layout Standard
@@ -27766,7 +27990,7 @@ arg   "newline-insert newline"
 \end_inset
 
 .
- To add or delete lines, the math toolbar buttons 
+ To add or delete lines, use the math toolbar buttons 
 \begin_inset Info
 type  "icon"
 arg   "tabular-feature append-row"
@@ -27778,12 +28002,12 @@ type  "icon"
 arg   "tabular-feature delete-row"
 \end_inset
 
-, respectively, or the menu 
+ respectively, or the menu option
 \family sans
-Edit\SpecialChar menuseparator
+ Edit\SpecialChar menuseparator
 Rows & Columns
 \family default
- can be used.
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -27808,7 +28032,7 @@ Formula ! multiline ! Line separation
 \end_layout
 
 \begin_layout Standard
-There is sometimes not enough space in multiline formulas between the lines:
+Sometimes there is not enough space in multiline formulas between the lines:
 \begin_inset Formula 
 \begin{eqnarray*}
 B^{2}(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2})+4x_{0}^{2}x^{2}+4x_{0}xD & = & \textrm{-}4x^{2}B^{2}+4x_{0}xB^{2}\\
@@ -27822,8 +28046,8 @@ B^{2}(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2})+4x_{0}^{2}x^{2}+4x_{0}xD & = & \te
 
 \begin_layout Standard
 In \SpecialChar LaTeX
- additional line space is specified as optional argument of the new line
- command.
+ additional line space is specified as an optional argument of the new
+ line command.
  This is not yet possible in \SpecialChar LyX
 
 \begin_inset Foot
@@ -27857,7 +28081,7 @@ literal "false"
  is inserted at the end of the first line.
  One gets: 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -27911,7 +28135,7 @@ end{eqnarray*}
 \begin_inset VSpace bigskip
 \end_inset
 
-To set the line separation for all lines in a formula, the length 
+To set the line separation for all lines in a formula, the length of 
 \series bold
 
 \backslash
@@ -27935,13 +28159,13 @@ jot
 \end_inset
 
 .
- Predefined for 
+ 
 \series bold
 
 \backslash
 jot
 \series default
- is the value 3
+ is predefined as 3
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -27950,7 +28174,7 @@ pt.
 \begin_inset space \thinspace{}
 \end_inset
 
-mm additional line separation as in the previous example, the command
+mm of additional line separation as in the previous example, the command
 \end_layout
 
 \begin_layout Standard
@@ -28051,7 +28275,13 @@ jot}{3pt}
 
 \end_inset
 
- To get back to the predefined distance, 
+ To get restore 
+\series bold
+
+\backslash
+jot
+\series default
+ to its original value, 
 \series bold
 
 \backslash
@@ -28087,7 +28317,7 @@ Formula ! multiline ! Column separation
 
 \begin_layout Standard
 Multiline formulas form a matrix.
- A formula in the eqnarray environment is for example a matrix with three
+ A formula in the eqnarray environment for example is a matrix with three
  columns.
  By changing the column separation in this environment, the space beside
  the relation sign can be changed.
@@ -28112,11 +28342,7 @@ arraycolsep
 
 \end_inset
 
- according to:
-\begin_inset Newline newline
-\end_inset
-
-column separation = 2
+ according to the formula: column separation = 2
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -28125,7 +28351,26 @@ column separation = 2
 
 \backslash
 arraycolsep
+\change_deleted 5863208 1612730022
+
 \series default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 232239728 1611406079
+How does units play into this? (cm/in/pt) Is the 2 unitless and the result
+ takes on the units of the input value?
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \begin_inset Newline newline
 \end_inset
@@ -28145,13 +28390,12 @@ arraycolsep}{1cm}
 
 \begin_layout Standard
 inserted in \SpecialChar TeX
- mode, sets for all following formulas a column separation of
- 2
+ mode, sets all following formula column separations to 2
 \begin_inset space \thinspace{}
 \end_inset
 
 cm.
- To get back to the predefined distance, 
+ To return to the predefined distance, 
 \series bold
 
 \backslash
@@ -28171,7 +28415,7 @@ A formula with 2
 
 cm column separation:
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -28199,7 +28443,7 @@ A formula with the predefined column separation for matrices of 10
 
 pt:
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -28250,9 +28494,8 @@ Long formulas can be typeset using these methods:
 \end_layout
 
 \begin_layout Itemize
-When one side of the equation is much shorter than the line width, this
- one is chosen for the left side and the right side is typeset over two
- lines:
+If one side of an equation is much shorter than the line width, this is
+ chosen for the left side and the right side is typeset over two lines:
 \begin_inset Formula 
 \begin{eqnarray}
 H & = & W_{SB}+W_{mv}+W_{D}-\frac{\hbar^{2}}{2m_{0}}\Delta-\frac{\hbar^{2}}{2m_{1}}\Delta_{1}-\frac{\hbar^{2}}{2m_{2}}\Delta_{2}-\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{1}|}\nonumber \\
@@ -28265,7 +28508,7 @@ The minus sign at the beginning of the second line does normally not appear
  as an operator because it is the first character of the line.
  Thus it would not be surrounded by space and could not be distinguished
  from the fraction bar.
- To avoid this, 3
+ To avoid this, a 3
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -28280,7 +28523,7 @@ hspace
 status collapsed
 
 \begin_layout Plain Layout
-for more about 
+For more about 
 \series bold
 
 \backslash
@@ -28314,7 +28557,7 @@ hspace
 \end_layout
 
 \begin_layout Itemize
-When both sides of the equation are too long, the command 
+When both sides of the equation are long, the command 
 \series bold
 
 \backslash
@@ -28350,15 +28593,15 @@ After the insertion of
 \backslash
 lefteqn
 \series default
-, the cursor is in a purple box that is a bit shifted to the left from the
+, the cursor is in a purple box that is shifted a bit to the left from the
  blue one.
- In this the formula is inserted.
+ The formula is inserted there.
 \begin_inset Newline newline
 \end_inset
 
-The content of the further lines is inserted to the second or another formula
+The content of additional lines is inserted in the second or another formula
  column.
- The greater the column number where it was inserted, the larger the indentation.
+ The greater the insertion column number , the larger the indentation.
 \begin_inset VSpace medskip
 \end_inset
 
@@ -28402,8 +28645,7 @@ the term
 
 \begin_layout Itemize
 Due to a bug in \SpecialChar LyX
- the cursor cannot be set with the mouse into the first
- line.
+ the cursor cannot be set with the mouse in the first line.
 \begin_inset Foot
 status collapsed
 
@@ -28472,7 +28714,7 @@ Fractions ! multiline
 
 \begin_layout Standard
 There are cases where the denominator and/or the numerator of a fraction
- is so long that the fraction does not fit into one line.
+ is so long that the fraction does not fit on one line.
  It is then necessary to add a line break within the fraction.
  This can be done using the command 
 \series bold
@@ -28493,7 +28735,7 @@ splitfrac
 \end_inset
 
 .
- To activate it, set in the document settings under 
+ To activate it, go to the document settings under 
 \family sans
 Math
 \begin_inset space ~
@@ -28515,7 +28757,7 @@ Packages ! mathtools
 
 \end_inset
 
- the option 
+ and set its option to 
 \family sans
 Load
 \begin_inset space ~
@@ -28542,7 +28784,7 @@ splitfrac{first line}{second line}
 \end_layout
 
 \begin_layout Standard
-and is used as denominator and/or numerator:
+and is used for either the denominator or numerator:
 \end_layout
 
 \begin_layout Standard
@@ -28638,7 +28880,7 @@ left.
 status collapsed
 
 \begin_layout Plain Layout
-for more about 
+For more about 
 \series bold
 
 \backslash
@@ -28780,11 +29022,11 @@ Edit\SpecialChar menuseparator
 Math\SpecialChar menuseparator
 Change Formula Type
 \family default
- already existing formulas can be converted to Align environments.
+ pre-existing formulas can be converted to Align environments.
 \end_layout
 
 \begin_layout Standard
-To add or delete columns, the math toolbar buttons 
+To add or delete columns, use the math toolbar buttons 
 \begin_inset Info
 type  "icon"
 arg   "tabular-feature append-column"
@@ -28796,7 +29038,7 @@ type  "icon"
 arg   "tabular-feature delete-column"
 \end_inset
 
-, respectively, or the menu 
+ respectively, or the menu option 
 \family sans
 Edit\SpecialChar menuseparator
 Rows & Columns
@@ -28805,7 +29047,7 @@ Rows & Columns
 \end_layout
 
 \begin_layout Subsubsection
-Standard align Environment
+Standard Align Environment
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Standard-align-Environment"
@@ -28826,7 +29068,7 @@ Formula ! multiline ! align environment
 \end_layout
 
 \begin_layout Standard
-This Align environment is created by pressing 
+This align environment is created by pressing 
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
@@ -28859,10 +29101,10 @@ As it can be seen, the formulas in this environment are placed so as if
 \backslash
 hfill
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-more about 
+For more about 
 \series bold
 
 \backslash
@@ -28887,10 +29129,10 @@ reference "subsec:Variable-Space"
 \series bold
 Indented
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-formula styles see 
+For formula styles see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Formula-Styles"
@@ -28929,7 +29171,7 @@ Formula ! multiline ! alignat environment
 
 \begin_layout Standard
 The alignat environment has no predefined column separation.
- It can be inserted manually with the spaces that are described 
+ It can be inserted manually with the spaces that are described in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Space"
@@ -28940,7 +29182,7 @@ reference "subsec:Space"
 \end_layout
 
 \begin_layout Standard
-The above example in the alignat environment where 1
+The above example is shown in the alignat environment where 1
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -28954,8 +29196,8 @@ C & \ne A & B & \ne D
 \end_inset
 
 Because the column separation can be set separately for every column, this
- environment is especially suitable to set three and more formulas side
- by side.
+ environment is especially suitable to set three or more formulas side by
+ side.
 \end_layout
 
 \begin_layout Subsubsection
@@ -28980,8 +29222,8 @@ Formula ! multiline ! flalign environment
 \end_layout
 
 \begin_layout Standard
-In this environment the first two columns are always set as much as possible
- to the left and the last two ones to the right.
+In this environment the first column is always set to the left as much as
+ possible and the last one to the right.
  An example:
 \begin_inset Formula 
 \begin{flalign*}
@@ -28997,7 +29239,7 @@ X & =\textrm{-}1 & Y & =\textrm{-}2 & Z & =4
 \begin_layout Standard
 By creating a flalign environment with an odd number of columns where an
  empty \SpecialChar TeX
- brace is inserted to the last column, several formulas in a document
+ brace is inserted in the last column, several formulas in a document
  can be set to the left, although the formula style 
 \series bold
 Centered
@@ -29023,7 +29265,7 @@ The first two columns contain the formula.
 \series bold
 Indented
 \series default
-, 30
+, a 30
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -29052,11 +29294,11 @@ Formula ! multiline ! eqnarray environment
 \end_layout
 
 \begin_layout Standard
-When this environment has been created, three blue boxes appear.
+When this environment is created, three blue boxes appear.
  The content of the first box is right aligned, the content of the last
- one left aligned.
- The content of the middle box appears centered and a bit smaller, because
- it is designed to insert there only relation characters.
+ box left aligned.
+ The content of the middle box appears centered and a bit smaller because
+ it is intended for relational characters only.
 \begin_inset Formula 
 \begin{eqnarray*}
 \frac{ABC}{D} & \frac{ABC}{D} & \frac{ABC}{D}\\
@@ -29084,7 +29326,7 @@ Formula ! multiline ! gather environment
 \end_layout
 
 \begin_layout Standard
-This environment consists of only one centered column.
+This environment consists of one centered column.
  Every line can be numbered.
 \begin_inset Formula 
 \begin{gather}
@@ -29119,12 +29361,11 @@ Formula ! multiline ! multline environment
 \end_layout
 
 \begin_layout Standard
-The multline environment consists, like the gather environment, of only
- one column.
+The multline environment consists, like the gather environment, of one column.
  But the first line is left aligned, the last one right aligned.
  All other lines are centered.
  Therefore this environment is suitable for long formulas.
- As example formula 
+ Using example formula 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:lefteqn"
@@ -29145,13 +29386,15 @@ reference "eq:lefteqn"
 \end_layout
 
 \begin_layout Standard
-In the output only the last (first) line of a multline environment appears
- numbered when the document numbering is right (left).
+In the output, only the last line of a multline environment appears numbered
+ when the document numbering is on the right .
+ If the document numbering is on the left then only the first line will
+ appear numbered.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-numbering styles see 
+For numbering styles see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Formula-Styles"
@@ -29366,8 +29609,8 @@ Math
 
 \begin_layout Standard
 The first three have the same properties as the corresponding multiline
- formula environments, but it is possible to set further formula parts beside
- them.
+ formula environments, but it is possible to set additional formula parts
+ beside them.
  An example:
 \begin_inset Formula 
 \[
@@ -29413,7 +29656,7 @@ The aligned environment is also suitable for long formulas whose lines are
  horizontally aligned.
  Using aligned in a displayed formula has the advantage that the formula
  number is vertically centered behind the lines.
- As example formula 
+ For example here is formula 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:shortlong"
@@ -29506,7 +29749,7 @@ split
 \end_layout
 
 \begin_layout Subsection
-Text in multiline Formulas
+Text in Multiline Formulas
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Text-in-multiline"
@@ -29537,8 +29780,8 @@ Formula ! multiline ! text
 \end_layout
 
 \begin_layout Standard
-In the Align environments, and the multline and gather environment, text
- can be inserted that will appear in a separate line and doesn't affect
+In the align environments as well as the multline and gather environment,
+ text can be inserted that will appear in a separate line and doesn't affect
  the column alignment.
  To do this, the command 
 \series bold
@@ -29579,13 +29822,13 @@ The text should not be longer than a line because it cannot be hyphenated.
 intertext
 \series default
  directly, the text is written as mathematical text.
- 
+ Therefore 
 \series bold
 
 \backslash
 intertext
 \series default
- must hereby be at the beginning of a line and appears in the output above
+ must be at the beginning of a line and will appear in the output above
  this line.
  An example where the text was inserted at the beginning of the second line:
 \begin_inset Formula 
@@ -29607,7 +29850,7 @@ I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
 intertext
 \series default
  always creates some vertical space between the text and the formula lines.
- To avoid this space, set in the document settings under 
+ To avoid this space, in the document settings under 
 \family sans
 Math
 \begin_inset space ~
@@ -29629,7 +29872,7 @@ Packages ! mathtools
 
 \end_inset
 
- the option 
+ set the option to 
 \family sans
 Load
 \begin_inset space ~
@@ -29749,11 +29992,15 @@ arg   "command-sequence math-display; math-number-toggle;"
 \family sans
 Edit\SpecialChar menuseparator
 Math\SpecialChar menuseparator
-Toggle
+Number
 \begin_inset space ~
 \end_inset
 
-Numbering
+Whole
+\begin_inset space ~
+\end_inset
+
+Formula
 \family default
  (shortcut 
 \begin_inset Info
@@ -29763,26 +30010,43 @@ arg   "math-number-toggle"
 
 ).
  The formula number is displayed in \SpecialChar LyX
- behind the formula as a number sign
- in parentheses.
- The number sign is replaced in the output by the formula number.
+ behind the formula as a number in parenthes
+es.
+ 
+\change_deleted 232239728 1611410645
+The number sign is replaced in the output by the formula number.
+\change_deleted 5863208 1612727075
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 232239728 1611410697
+LyX appears to put the actual formula number in the raw file now
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
-When numbering is turned on in multiline formulas, all lines will be numbered.
+When numbering is turned on in multiline formulas, all formulas will be
+ numbered.
  But the numbering can be controlled with the menu 
 \family sans
 Edit\SpecialChar menuseparator
 Math\SpecialChar menuseparator
-Toggle
+Number
 \begin_inset space ~
 \end_inset
 
-Numbering
-\begin_inset space ~
-\end_inset
-
-of
+This
 \begin_inset space ~
 \end_inset
 
@@ -29794,7 +30058,7 @@ type  "shortcut"
 arg   "math-number-line-toggle"
 \end_inset
 
-) for every line.
+) for every formula.
 \end_layout
 
 \begin_layout Standard
@@ -29825,7 +30089,7 @@ Cross-references ! to formulas
 
 \begin_layout Standard
 All labeled formulas can be cross-referenced.
- A label is added by the menu 
+ A label is added with the menu 
 \family sans
 Insert\SpecialChar menuseparator
 Label
@@ -29837,7 +30101,7 @@ arg   "label-insert"
 \end_inset
 
 .
- The cursor must hereby be inside a displayed formula.
+ The cursor must be inside a displayed formula.
  Alternatively you can right-click on the formula and choose 
 \family sans
 Equation Label
@@ -29848,7 +30112,7 @@ Equation Label
 eq:
 \series default
  in a text field.
- The label is inserted there behind the prefix.
+ The label is inserted behind the prefix.
  The predefined prefix means 
 \begin_inset Quotes eld
 \end_inset
@@ -29858,7 +30122,7 @@ equation
 \end_inset
 
  and makes it easier to find labels in large documents because it marks
- it as formula label to divide it from e.
+ it as a formula label to distinguish it from e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -29872,7 +30136,7 @@ section labels.
 Insert\SpecialChar menuseparator
 Label
 \family default
- is used again or you right-click on a formula and then on 
+ is used again or you can right-click on a formula and then on 
 \family sans
 Equation Label
 \family default
@@ -29881,7 +30145,8 @@ Equation Label
 
 \begin_layout Standard
 The name of the label is displayed in \SpecialChar LyX
- within two parentheses behind formula.
+ within parentheses behind the formula
+ number.
  A formula with a label is always numbered.
 \end_layout
 
@@ -30096,7 +30361,7 @@ Subequations
 \end_layout
 
 \begin_layout Standard
-Referencing subequations work like for normal equations: 
+Referencing subequations works like normal equations: 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:b"
@@ -30131,7 +30396,7 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-By inserting subequations vertical space is added before it.
+When inserting subequations, vertical space is added before the equation.
  To remove this, insert -5
 \begin_inset space \thinspace{}
 \end_inset
@@ -30145,10 +30410,10 @@ Subequations
 \series bold
 Indented
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-formula styles see 
+For formula styles see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Formula-Styles"
@@ -30200,7 +30465,7 @@ roman{equation}}
 \backslash
 theparentequation
 \series default
- creates hereby the parent number and 
+ creates the parent number and 
 \series bold
 
 \backslash
@@ -30218,7 +30483,7 @@ reference "subsec:Numbering-with-Roman"
 \end_layout
 
 \begin_layout Standard
-Here is an example for a multiline formula where the numbering is customized
+Here is an example of a multiline formula where the numbering is customized
  and turned off for the second line:
 \begin_inset Flex Subequations
 status open
@@ -30300,7 +30565,7 @@ Formula numbering ! with Roman numbers
 
 \begin_layout Standard
 Formulas can also be numbered with Roman numbers and Latin letters.
- To number for example with small Roman numbers, the command
+ To number with small Roman numbers, the command
 \end_layout
 
 \begin_layout Standard
@@ -30350,7 +30615,7 @@ roman{equation}
 \series default
 .
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 The command 
@@ -30359,13 +30624,13 @@ The command
 \backslash
 renewcommand
 \series default
- has the same scheme like the command 
+ has the same scheme as the command 
 \series bold
 
 \backslash
 newcommand
 \series default
- that is described in 
+ described in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:The-Command-newcommand"
@@ -30517,7 +30782,7 @@ status open
 \series bold
 Note:
 \series default
- Only maximal 26
+ Only a maximum of 26
 \begin_inset space ~
 \end_inset
 
@@ -30706,7 +30971,7 @@ As you see, formulas are numbered serially independent from the numbering
 \end_inset
 
  when the style is changed, new equation counters have to be defined.
- A description about this can be found in the file 
+ A description of this can be found in the file 
 \begin_inset CommandInset href
 LatexCommand href
 name "Formula-numbering.lyx"
@@ -30806,8 +31071,8 @@ Formula numbering ! self-defined delimiters
 
 \end_inset
 
-With the standard numbering parentheses are set around the formula number.
- To replace the parentheses for example by vertical bars, the following
+With standard numbering, parentheses are set around a formula number.
+ To replace the parentheses for example with vertical bars, the following
  line is added to the \SpecialChar LaTeX
 -preamble:
 \end_layout
@@ -30864,8 +31129,8 @@ To use other characters, the vertical bars besides the
 \series bold
 #1
 \series default
- are replaced by one ore more characters.
- To get only the formula number the vertical bars are omitted.
+ are replaced by one or more characters.
+ To display only the formula number the vertical bars are omitted.
 \end_layout
 
 \begin_layout Standard
@@ -30923,7 +31188,7 @@ tag*
 
 something
 \series default
- is inserted instead, the star prevents the parentheses around the expression:
+ is inserted instead, the parentheses are removed:
 \begin_inset Formula 
 \[
 A+B=C\tag*{something}
@@ -31052,7 +31317,7 @@ makeatletter.
 \backslash
 makeatother
 \series default
- reverts this.
+ disables this.
  So the command sequence in \SpecialChar TeX
  mode is:
 \end_layout
@@ -31287,7 +31552,7 @@ numberwithin{counter}{sectioning}
 
 \begin_layout Standard
 Counter denotes what kind of numbering is affected, sectioning denotes what
- number is before the dot.
+ the number before the dot is.
 \end_layout
 
 \begin_layout Standard
@@ -31338,7 +31603,7 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-tables so that the number of the part is the sectioning,
+ tables so that the number of the part is the sectioning,
 \begin_inset Newline newline
 \end_inset
 
@@ -31429,13 +31694,13 @@ arabic{table}}
 \backslash
 numberwithin
 \series default
- uses internally the command 
+ internally uses the command 
 \series bold
 
 \backslash
 @addtoreset
 \series default
-, described above, that also needs to be reverted.
+, described above, and would also need to be reverted.
 \begin_inset ERT
 status collapsed
 
@@ -31536,8 +31801,8 @@ The
 \end_layout
 
 \begin_layout Standard
-This chemical equation can directly be created as formula.
- To avoid that the symbols appear italic, everything is highlighted and
+Chemical equations can be created as formulas.
+ To avoid the symbols appearing in italic, everything is highlighted and
  changed by the shortcut 
 \begin_inset Info
 type  "shortcut"
@@ -31549,7 +31814,7 @@ arg   "font-roman"
 status collapsed
 
 \begin_layout Plain Layout
-font styles
+For font styles
 \series bold
  
 \series default
@@ -31588,7 +31853,7 @@ ce
 
 \end_inset
 
- that is available when the \SpecialChar LaTeX
+ which is available when the \SpecialChar LaTeX
 -package 
 \series bold
 mhchem
@@ -31610,7 +31875,7 @@ Packages ! mhchem
 \backslash
 ce
 \series default
- to a formula a new blue box appears where chemical formulas can be inserted
+ in a formula a new blue box appears where chemical formulas can be inserted
  in an intuitive way.
 \end_layout
 
@@ -32137,7 +32402,7 @@ cf
 
 \end_inset
 
- that has to be used for special cases.
+ that is used for special cases.
  For more information about 
 \series bold
 
@@ -32173,7 +32438,7 @@ amscd
 \series bold
 xymatrix
 \series default
- that are explained in the following.
+ and are explained below.
 \end_layout
 
 \begin_layout Subsection
@@ -32207,7 +32472,7 @@ F@<<<E@<<<D
 \end_layout
 
 \begin_layout Standard
-To get them, the command 
+To create them, the command 
 \series bold
 
 \backslash
@@ -32226,8 +32491,8 @@ CD
 
 \series default
  is inserted to a formula.
- A blue box appears with two dashed lines where further commands can be
- inserted.
+ A blue box appears with two dashed lines where additional commands can
+ be inserted.
  With 
 \begin_inset Info
 type  "shortcut"
@@ -32235,11 +32500,12 @@ arg   "newline-insert newline"
 \end_inset
 
  a new line is created.
- Horizontal relations are inserted in odd, vertical in even formula lines.
+ Horizontal relations are inserted in odd formula lines, vertical in even
+ formula lines.
 \end_layout
 
 \begin_layout Standard
-To create the relations there are the following commands:
+To create the relations use the following commands:
 \end_layout
 
 \begin_layout Itemize
@@ -32431,14 +32697,14 @@ reference "sec:Matrices"
 \end_layout
 
 \begin_layout Standard
-In contrary to amscd diagrams, xymatrices supports diagonal and curved arrows,
+Contrary to amscd diagrams, xymatrices support diagonal and curved arrows,
  and much more.
- All possibilities to create commutative diagrams and decorations are explained
+ The commands used to create commutative diagrams and decorations are explained
  in detail in the 
 \emph on
 XY-pic manual
 \emph default
- that you find in the menu 
+ found in the menu 
 \family sans
 Help\SpecialChar menuseparator
 Specific
@@ -32490,8 +32756,8 @@ Feynman
 Diagram
 \series default
  in a formula.
- Then you are able to add new matrix columns and rows like for normal matrices,
- see 
+ Then you will be able to add new matrix columns and rows like for normal
+ matrices, see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Matrices"
@@ -32502,16 +32768,16 @@ reference "sec:Matrices"
 \end_layout
 
 \begin_layout Standard
-Examples how to create 
+Examples of how to create 
 \noun on
 Feynman-
 \noun default
 diagrams in \SpecialChar LyX
- is given in the 
+ are given in the 
 \emph on
-Feynman-diagram manual
+Feynman-diagram
 \emph default
- that you find in the menu 
+ manual that you find in the menu 
 \family sans
 Help\SpecialChar menuseparator
 Specific
@@ -32653,10 +32919,10 @@ status open
 \series bold
 Note:
 \series default
- Assure that the name of the new command is not already used in your document
- or by \SpecialChar LaTeX
+ Verify that the name of the new command is not already used in your document
+ or by the \SpecialChar LaTeX
 -packages that you use.
- When you for example define the command 
+ If you for example define the command 
 \series bold
 
 \backslash
@@ -32668,7 +32934,7 @@ le
 \backslash
 Leftarrow
 \series default
-, you get an error message because 
+, you will get an error message because 
 \series bold
 
 \backslash
@@ -33151,7 +33417,7 @@ Macros
 
 \begin_layout Standard
 User-defined commands are especially convenient for complex expressions.
- When you are for example dealing with a document that has quadratic equations,
+ For example if you are dealing with a document that has quadratic equations,
  the same solution type occurs several times.
  The general form of a quadratic equation is
 \begin_inset Formula 
@@ -33320,7 +33586,7 @@ arg   "math-macro newmacroname_newcommand"
 
 
 \begin_inset Graphics
-	filename clipart/macrobox.png
+	filename C:/Program Files/LyX 2.4/Resources/doc/clipart/macrobox.png
 	scale 95
 
 \end_inset
@@ -33475,7 +33741,7 @@ qG
 
 
 \begin_inset Graphics
-	filename clipart/macrouse.png
+	filename C:/Program Files/LyX 2.4/Resources/doc/clipart/macrouse.png
 	scale 95
 
 \end_inset
@@ -33524,7 +33790,7 @@ Editing\SpecialChar menuseparator
 Control
 \family default
  different styles to edit macros.
- To find the style that suits you the most, choose a style and set the cursor
+ To find the style that suits you best, choose a style and set the cursor
  in a macro formula to see the difference.
 \end_layout
 
@@ -33574,8 +33840,7 @@ xleftarrow[#2]{#1}}
 
 \series default
 in \SpecialChar LyX
- as normal text, highlighting it completely and using then the shortcut
- 
+ as normal text, highlighting it completely and using the shortcut 
 \family sans
 Ctrl+M
 \family default
@@ -33593,7 +33858,7 @@ newcommand
 
 \begin_layout Standard
 Math macros currently have the problem that further formulas in macro definition
-s are handled wrongly.
+s are handled wrong.
  Therefore the example 
 \series bold
 
@@ -33625,7 +33890,7 @@ When the cursor is in a macro definition box, you will see the macro toolbar
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename clipart/MacroToolbar.png
+	filename C:/Program Files/LyX 2.4/Resources/doc/clipart/MacroToolbar.png
 
 \end_inset
 
@@ -35802,10 +36067,10 @@ boldmath
 \series default
  environment
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-see 
+See 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Bold-Formulas"
@@ -35962,7 +36227,7 @@ in \SpecialChar TeX
 
 \begin_layout Standard
 Due to the command some space is automatically added before the formula.
- To revert this, -6
+ To correct this, -6
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -35971,10 +36236,10 @@ mm vertical space is inserted before the formula.
 \series bold
 Indented
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-formula styles see 
+For formula styles see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Formula-Styles"
@@ -35988,7 +36253,7 @@ reference "sec:Formula-Styles"
 
 
 \series default
- is used, -9
+ is used, a -9
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -36156,7 +36421,7 @@ matrix is used with left aligned columns for the
 status collapsed
 
 \begin_layout Plain Layout
-matrices see 
+For matrices see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Matrices"
@@ -36187,7 +36452,7 @@ footnotesize
 status collapsed
 
 \begin_layout Plain Layout
-font sizes see 
+For font sizes see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Font-Sizes"
@@ -36210,7 +36475,7 @@ Indented
 status collapsed
 
 \begin_layout Plain Layout
-formula styles see 
+For formula styles see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Formula-Styles"
@@ -36537,11 +36802,12 @@ Text ! in formulas
 
 \begin_layout Standard
 In some cases you might want to insert text characters directly into formulas.
- When for example the centered dot · is often used in formulas like 
+ For example the centered dot · is often used in formulas like 
 \begin_inset Formula $\nu=5·10^{5}\,\mathrm{Hz}$
 \end_inset
 
-, one would have to insert the command 
+.
+ One would have to insert the command 
 \series bold
 
 \backslash
@@ -36552,7 +36818,7 @@ cdot
 status collapsed
 
 \begin_layout Plain Layout
-see 
+See 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Binary-Operators"
@@ -36564,7 +36830,7 @@ reference "subsec:Binary-Operators"
 
 \end_inset
 
- all the time, because this character is defined in all encodings as text
+ all the time, because this character is defined in all encodings as a text
  character.
  But the encoding can be changed by this \SpecialChar LaTeX
 -preamble line:
@@ -36606,8 +36872,8 @@ textperiodcentered
  is used.
  But this command is not available in a formula so that you would get \SpecialChar LaTeX
 -errors.
- With the changed encoding the right command is chosen automatically, depending
- on if the character was inserted into a formula or not.
+ With the changed encoding the correct command is chosen automatically,
+ depending on if the character was inserted into a formula or not.
 \end_layout
 
 \begin_layout Standard
@@ -36811,7 +37077,7 @@ always
 status collapsed
 
 \begin_layout Plain Layout
-done with font styles, see 
+Done with font styles, see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Font-Styles"
@@ -36849,9 +37115,9 @@ This convention is automatically fulfilled when the command
 unittwo
 \series default
  is used.
- When it is entered to a formula, two boxes appear.
+ When it is entered in a formula, two boxes appear.
  In the first one the value is inserted, in the second one the unit, and
- one gets as above: 
+ the result is as above: 
 \begin_inset Formula $\unit[30]{km/h}$
 \end_inset
 
@@ -36890,7 +37156,7 @@ Percent and perthousand signs are set like physical units:
 \end_layout
 
 \begin_layout Itemize
-The degree sign follows directly on the value: 15°, but not when it is used
+The degree sign follows the value directly: 15°, except when it is used
  in units: 15
 \begin_inset space \thinspace{}
 \end_inset
@@ -37685,6 +37951,19 @@ literal "true"
 \end_inset
 
 
+\change_inserted 5863208 1612728717
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Description"
+target "http://mirrors.ctan.org/obsolete/info/math/voss/mathmode/Mathmode.pdf"
+literal "false"
+
+\end_inset
+
+
+\change_deleted 5863208 1612728717
+
 \begin_inset CommandInset href
 LatexCommand href
 name "Description"
@@ -37693,8 +37972,28 @@ literal "false"
 
 \end_inset
 
+
+\change_unchanged
  of \SpecialChar LaTeX
 's math abilities
+\change_deleted 5863208 1612728849
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 232239728 1611367909
+Bad Link
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Bibliography
@@ -37706,6 +38005,19 @@ literal "true"
 \end_inset
 
 
+\change_inserted 5863208 1612728836
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Description"
+target "http://tug.ctan.org/info/amslatex/english/amsldoc.pdf"
+literal "false"
+
+\end_inset
+
+
+\change_deleted 5863208 1612728836
+
 \begin_inset CommandInset href
 LatexCommand href
 name "Description"
@@ -37714,6 +38026,8 @@ literal "false"
 
 \end_inset
 
+
+\change_unchanged
  of 
 \begin_inset ERT
 status collapsed
@@ -37729,6 +38043,24 @@ AmS
 
 -\SpecialChar LaTeX
 
+\change_deleted 5863208 1612728851
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 232239728 1611367919
+Bad Link
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Bibliography
@@ -37740,6 +38072,19 @@ literal "true"
 \end_inset
 
 
+\change_inserted 5863208 1612728963
+
+\begin_inset CommandInset href
+LatexCommand href
+name "List"
+target "http://tug.ctan.org/info/symbols/comprehensive/symbols-a4.pdf"
+literal "false"
+
+\end_inset
+
+
+\change_deleted 5863208 1612728963
+
 \begin_inset CommandInset href
 LatexCommand href
 name "List"
@@ -37748,8 +38093,28 @@ literal "false"
 
 \end_inset
 
+
+\change_unchanged
  of all symbols available with \SpecialChar LaTeX
 -packages
+\change_deleted 5863208 1612728966
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 232239728 1611367959
+Bad link
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Bibliography
