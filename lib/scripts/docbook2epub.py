@@ -26,16 +26,16 @@ class DocBookToEpub:
         if args is None:
             args = sys.argv
 
-        if len(args) != 5:
-            print('Five arguments are expected, only %s found.' % len(sys.argv))
-            print(args)
+        if len(args) != 6:
+            print('Six arguments are expected, only %s found: %s.' % (len(args), args))
             sys.exit(1)
 
         self.own_path = sys.argv[0]
         self.java_path = sys.argv[1] if sys.argv[1] != '' and sys.argv[1] != 'none' else ''
         self.xsltproc_path = sys.argv[2] if sys.argv[2] != '' and sys.argv[2] != 'none' else ''
-        self.input = sys.argv[3]
-        self.output = sys.argv[4]
+        self.xslt_path = sys.argv[3] if sys.argv[3] != '' and sys.argv[3] != 'none' else ''
+        self.input = sys.argv[4]
+        self.output = sys.argv[5]
         self.script_folder = os.path.dirname(self.own_path) + '/../'
 
         print('Generating ePub with the following parameters:')
@@ -50,7 +50,10 @@ class DocBookToEpub:
         self.package_opf = self.output_dir + '/OEBPS/package.opf'  # Does not exist yet,
         print('Temporary output directory: %s' % self.output_dir)
 
-        self.xslt = self.script_folder + 'docbook/epub3/chunk.xsl'
+        if self.xslt_path == '':
+            self.xslt = self.script_folder + 'docbook/epub3/chunk.xsl'
+        else:
+            self.xslt = self.xslt_path + '/epub3/chunk.xsl'
         print('XSLT style sheet to use:')
         print(self.xslt)
 
