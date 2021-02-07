@@ -26,22 +26,25 @@ class DocBookToEpub:
         if args is None:
             args = sys.argv
 
-        if len(args) != 6:
-            print('Six arguments are expected, only %s found: %s.' % (len(args), args))
+        if len(args) != 7:
+            print('Seven arguments are expected, only %s found: %s.' % (len(args), args))
             sys.exit(1)
 
         self.own_path = sys.argv[0]
         self.java_path = sys.argv[1] if sys.argv[1] != '' and sys.argv[1] != 'none' else None
-        self.xsltproc_path = sys.argv[2] if sys.argv[2] != '' and sys.argv[2] != 'none' else None
-        self.xslt_path = sys.argv[3] if sys.argv[3] != '' and sys.argv[3] != 'none' else None
-        self.input = sys.argv[4]
-        self.output = sys.argv[5]
+        self.saxon_path = sys.argv[2] if sys.argv[2] != '' and sys.argv[2] != 'none' else None
+        self.xsltproc_path = sys.argv[3] if sys.argv[3] != '' and sys.argv[3] != 'none' else None
+        self.xslt_path = sys.argv[4] if sys.argv[4] != '' and sys.argv[4] != 'none' else None
+        self.input = sys.argv[5]
+        self.output = sys.argv[6]
         self.script_folder = os.path.dirname(self.own_path) + '/../'
 
         print('Generating ePub with the following parameters:')
         print(self.own_path)
         print(self.java_path)
+        print(self.saxon_path)
         print(self.xsltproc_path)
+        print(self.xslt_path)
         print(self.input)
         print(self.output)
 
@@ -56,6 +59,9 @@ class DocBookToEpub:
             self.xslt = self.xslt_path + '/epub3/chunk.xsl'
         print('XSLT style sheet to use:')
         print(self.xslt)
+
+        if self.saxon_path is None:
+            self.saxon_path = self.script_folder + 'scripts/saxon6.5.5.jar'
 
         # These will be filled during the execution of the script.
         self.renamed = None
@@ -95,9 +101,8 @@ class DocBookToEpub:
         return '"' + self.xsltproc_path + '" ' + params + ' "' + self.xslt + '" "' + self.input + '"'
 
     def start_xslt_transformation_saxon6(self):
-        saxon_jar = self.script_folder + 'scripts/saxon6.5.5.jar'
         params = 'base.dir=%s' % self.output_dir
-        executable = '"' + self.java_path + '" -jar "' + saxon_jar + '"'
+        executable = '"' + self.java_path + '" -jar "' + self.saxon_path + '"'
         return executable + ' "' + self.input + '" "' + self.xslt + '" "' + params + '"'
 
     def get_images_from_package_opf(self):
