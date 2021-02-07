@@ -21,7 +21,7 @@ import zipfile
 import glob
 
 if __name__ == '__main__':
-    if len(sys.argv) != 3:
+    if len(sys.argv) != 4:
         sys.exit(1)
     own_path, java_path, input, output = sys.argv
     script_folder = os.path.dirname(own_path) + '/../'
