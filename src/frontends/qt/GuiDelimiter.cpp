@@ -233,8 +233,13 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 
 	QSize icon_size(32, 32);
 
-	leftLW->setMinimumWidth(5 * icon_size.width());
-	rightLW->setMinimumWidth(5 * icon_size.width());
+	// we calculate the appropriate width to fit 4 icons in a row
+	leftLW->setMinimumWidth((4 * (icon_size.width() + (2 * leftLW->spacing())))
+				+ (leftLW->frameWidth() * 2)
+				+ leftLW->verticalScrollBar()->height());
+	rightLW->setMinimumWidth((4 * (icon_size.width() + (2 * rightLW->spacing())))
+				 + (rightLW->frameWidth() * 2)
+				 + rightLW->verticalScrollBar()->height());
 	leftLW->setIconSize(icon_size);
 	rightLW->setIconSize(icon_size);
 
