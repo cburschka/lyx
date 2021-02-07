@@ -13,7 +13,7 @@
 
 from __future__ import print_function
 
-# import glob  # Not powerful enough before Python 3.5.
+import glob
 import os
 import shutil
 import sys
@@ -29,6 +29,7 @@ def parse_arguments():
 
     print('Generating ePub with the following parameters:')
     print(own_path)
+    print(java_path)
     print(input)
     print(output)
 
@@ -68,6 +69,59 @@ def start_xslt_transformation(input, output_dir, script_folder, java_path):
     print('Generated ePub contents.')
 
 
+def get_images_from_package_opf(package_opf):
+    images = []
+
+    # Example in the OPF file:
+    #     <item id="d436e1" href="D:/LyX/lib/images/buffer-view.svgz" media-type="image/SVGZ"/>
+    # The XHTML files are also <item> tags:
+    #     <item id="id-d0e2" href="index.xhtml" media-type="application/xhtml+xml"/>
+    try:
+        with open(package_opf, 'r') as f:
+            for line in f.readlines():
+                if '<item' in line and 'media-type="image' in line:
+                    images.append(line.split('href="')[1].split('"')[0])
+    except FileNotFoundError:
+        print('The package.opf file was not found, probably due to a DocBook error. The ePub file will be corrupt.')
+
+    return images
+
+
+def change_image_paths(file, renamed):
+    # This could be optimised, as the same operation is performed a zillion times on many files:
+    # https://www.oreilly.com/library/view/python-cookbook/0596001673/ch03s15.html
+    with open(file, 'r', encoding='utf8') as f:
+        contents = list(f)
+
+    with open(file, 'w', encoding='utf8') as f:
+        for line in contents:
+            for (old, new) in renamed.items():
+                line = line.replace(old, new)
+            f.write(line)
+
+
+def copy_images(output_dir):
+    # Copy the assets to the OEBPS/images/. All paths are available in OEBPS/package.opf, but they must also be changed
+    # in the XHTML files. Typically, the current paths are absolute.
+
+    # First, get the mapping old file => file in the ePub archive.
+    original_images = get_images_from_package_opf(output_dir + '/OEBPS/package.opf')
+    renamed = {img: 'images/' + os.path.basename(img) for img in original_images}
+
+    # Then, transform all paths (both OPF and XHTML files).
+    change_image_paths(output_dir + '/OEBPS/package.opf', renamed)
+    for file in glob.glob(output_dir + '/OEBPS/*.xhtml'):
+        change_image_paths(file, renamed)
+
+    # Ensure that the destination path exists.
+    if not os.path.exists(output_dir + '/OEBPS/images/'):
+        os.mkdir(output_dir + '/OEBPS/images/')
+
+    # Finally, actually copy the image files.
+    for (old, new) in renamed.items():
+        shutil.copyfile(old, output_dir + '/OEBPS/' + new)
+
+
 def create_zip_archive(output, output_dir):
     with zipfile.ZipFile(output, 'w', zipfile.ZIP_DEFLATED) as zip:
         # Python 3.5 brings the `recursive` argument. For older versions, this trick is required...
@@ -83,4 +137,5 @@ if __name__ == '__main__':
     java_path, input, output, script_folder = parse_arguments()
     output_dir = create_temporary_folder()
     start_xslt_transformation(input, output_dir, script_folder, java_path)
+    copy_images(output_dir)
     create_zip_archive(output, output_dir)
