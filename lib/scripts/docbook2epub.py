@@ -46,7 +46,13 @@ if __name__ == '__main__':
     print('Command to execute:')
     print(command)
 
-    if os.system('"' + command + '"') != 0:
+    quoted_command = command
+    if os.name == 'nt':
+        # On Windows, it is typical to have spaces in folder names, and that requires to wrap the whole command
+        # in quotes. On Linux, this might create errors when starting the command.
+        quoted_command = '"' + command + '"'
+
+    if os.system(quoted_command) != 0:
         print('docbook2epub fails')
         shutil.rmtree(output_dir, ignore_errors=True)
         sys.exit(1)
