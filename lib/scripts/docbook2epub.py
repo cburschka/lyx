@@ -32,7 +32,6 @@ if __name__ == '__main__':
     print(output)
 
     output_dir = tempfile.mkdtemp().replace('\\', '/')
-    # os.chmod(output_dir, 0o777)
     print('Temporary output directory:')
     print(output_dir)
 
