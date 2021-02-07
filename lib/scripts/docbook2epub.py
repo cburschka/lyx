@@ -20,22 +20,29 @@ import sys
 import tempfile
 import zipfile
 
-if __name__ == '__main__':
+
+def parse_arguments():
     if len(sys.argv) != 4:
         sys.exit(1)
     own_path, java_path, input, output = sys.argv
     script_folder = os.path.dirname(own_path) + '/../'
 
-    print('Generating ePub:')
+    print('Generating ePub with the following parameters:')
     print(own_path)
     print(input)
     print(output)
 
+    return java_path, input, output, script_folder
+
+
+def create_temporary_folder():
     output_dir = tempfile.mkdtemp().replace('\\', '/')
     print('Temporary output directory:')
     print(output_dir)
+    return output_dir
 
-    # Start the XSLT transformation.
+
+def start_xslt_transformation(input, output_dir, script_folder, java_path):
     xslt = script_folder + 'docbook/epub3/chunk.xsl'
     saxon_jar = script_folder + 'scripts/saxon6.5.5.jar'
     saxon_params = 'base.dir=%s' % output_dir
@@ -60,9 +67,8 @@ if __name__ == '__main__':
 
     print('Generated ePub contents.')
 
-    # TODO: Copy the assets to the OEBPS/images/.
 
-    # Create the actual ePub file.
+def create_zip_archive(output, output_dir):
     with zipfile.ZipFile(output, 'w', zipfile.ZIP_DEFLATED) as zip:
         # Python 3.5 brings the `recursive` argument. For older versions, this trick is required...
         # for file in glob.glob(output_dir + '/**/*', recursive=True):
@@ -71,3 +77,10 @@ if __name__ == '__main__':
 
     shutil.rmtree(output_dir)
     print('Generated ePub.')
+
+
+if __name__ == '__main__':
+    java_path, input, output, script_folder = parse_arguments()
+    output_dir = create_temporary_folder()
+    start_xslt_transformation(input, output_dir, script_folder, java_path)
+    create_zip_archive(output, output_dir)
