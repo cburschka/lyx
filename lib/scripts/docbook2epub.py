@@ -9,7 +9,7 @@
 # Full author contact details are available in file CREDITS
 
 # Usage:
-#   python docbook2epub.py in.docbook out.epub
+#   python docbook2epub.py java_binary in.docbook out.epub
 
 from __future__ import print_function
 
