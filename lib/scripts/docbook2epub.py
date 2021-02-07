@@ -13,12 +13,12 @@
 
 from __future__ import print_function
 
+# import glob  # Not powerful enough before Python 3.5.
 import os
 import shutil
 import sys
 import tempfile
 import zipfile
-import glob
 
 if __name__ == '__main__':
     if len(sys.argv) != 4:
@@ -63,7 +63,9 @@ if __name__ == '__main__':
 
     # Create the actual ePub file.
     with zipfile.ZipFile(output, 'w', zipfile.ZIP_DEFLATED) as zip:
-        for file in glob.glob(output_dir + '/**/*', recursive=True):
+        # Python 3.5 brings the `recursive` argument. For older versions, this trick is required...
+        # for file in glob.glob(output_dir + '/**/*', recursive=True):
+        for file in [os.path.join(dp, f) for dp, dn, filenames in os.walk(output_dir) for f in filenames]:
             zip.write(file, os.path.relpath(file, output_dir), compress_type=zipfile.ZIP_STORED)
 
     shutil.rmtree(output_dir)
