@@ -22,18 +22,21 @@ import zipfile
 
 
 def parse_arguments():
-    if len(sys.argv) != 4:
+    if len(sys.argv) != 5:
+        print('Five arguments are expected, only %s found.' % len(sys.argv))
+        print(sys.argv)
         sys.exit(1)
-    own_path, java_path, input, output = sys.argv
+    own_path, java_path, xsltproc_path, input, output = sys.argv
     script_folder = os.path.dirname(own_path) + '/../'
 
     print('Generating ePub with the following parameters:')
     print(own_path)
     print(java_path)
+    print(xsltproc_path)
     print(input)
     print(output)
 
-    return java_path, input, output, script_folder
+    return java_path, xsltproc_path, input, output, script_folder
 
 
 def create_temporary_folder():
@@ -43,11 +46,16 @@ def create_temporary_folder():
     return output_dir
 
 
-def start_xslt_transformation(input, output_dir, script_folder, java_path):
+def start_xslt_transformation(input, output_dir, script_folder, java_path, xsltproc_path):
     xslt = script_folder + 'docbook/epub3/chunk.xsl'
-    saxon_jar = script_folder + 'scripts/saxon6.5.5.jar'
-    saxon_params = 'base.dir=%s' % output_dir
-    command = '"' + java_path + '" -jar "' + saxon_jar + '" "' + input + '" "' + xslt + '" "' + saxon_params + '"'
+    if xsltproc_path != '' and xsltproc_path != 'none':
+        command = start_xslt_transformation_xsltproc(input, output_dir, script_folder, xslt, xsltproc_path)
+    elif java_path != '' and java_path != 'none':
+        command = start_xslt_transformation_saxon6(input, output_dir, script_folder, xslt, java_path)
+    else:
+        print('docbook2epub fails: no XSLT processor available')
+        shutil.rmtree(output_dir, ignore_errors=True)
+        sys.exit(1)
 
     print('XSLT style sheet to use:')
     print(xslt)
@@ -62,11 +70,21 @@ def start_xslt_transformation(input, output_dir, script_folder, java_path):
     # This could be simplified by using subprocess.run, but this requires Python 3.5.
 
     if os.system(quoted_command) != 0:
-        print('docbook2epub fails')
+        print('docbook2epub fails: error from the XSLT processor')
         shutil.rmtree(output_dir, ignore_errors=True)
         sys.exit(1)
 
     print('Generated ePub contents.')
+
+
+def start_xslt_transformation_xsltproc(input, output_dir, _, xslt, xsltproc_path):
+    return '"' + xsltproc_path + '" -stringparam base.dir "' + output_dir + '" "' + xslt + '" "' + input + '"'
+
+
+def start_xslt_transformation_saxon6(input, output_dir, script_folder, xslt, java_path):
+    saxon_jar = script_folder + 'scripts/saxon6.5.5.jar'
+    params = 'base.dir=%s' % output_dir
+    return '"' + java_path + '" -jar "' + saxon_jar + '" "' + input + '" "' + xslt + '" "' + params + '"'
 
 
 def get_images_from_package_opf(package_opf):
@@ -134,8 +152,8 @@ def create_zip_archive(output, output_dir):
 
 
 if __name__ == '__main__':
-    java_path, input, output, script_folder = parse_arguments()
+    java_path, xsltproc_path, input, output, script_folder = parse_arguments()
     output_dir = create_temporary_folder()
-    start_xslt_transformation(input, output_dir, script_folder, java_path)
+    start_xslt_transformation(input, output_dir, script_folder, java_path, xsltproc_path)
     copy_images(output_dir)
     create_zip_archive(output, output_dir)

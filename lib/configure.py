@@ -1007,8 +1007,10 @@ def checkConverterEntries():
         rc_entry = [ r'\converter docbook5      pdf9      "%%"	""' ])
     #
     global java
-    if java != '':
-        addToRC('\\converter docbook5 epub "python $$s/scripts/docbook2epub.py \\"' + java + '\\" $$i $$o" ""')
+    if xsltproc != '':
+        addToRC('\\converter docbook5 epub "python $$s/scripts/docbook2epub.py none \\"' + xsltproc + '\\" $$i $$o" ""')
+    elif java != '':
+        addToRC('\\converter docbook5 epub "python $$s/scripts/docbook2epub.py \\"' + java + '\\" none $$i $$o" ""')
     #
     checkProg('a MS Word Office Open XML converter -> LaTeX', ['pandoc -s -f docx -o $$o -t latex $$i'],
         rc_entry = [ r'\converter word2      latex      "%%"	""' ])
@@ -2000,6 +2002,7 @@ Format %i
     if java == '':
         java = check_java()
     perl = checkProg('a perl interpreter', ['perl'])[1]
+    xsltproc = checkProg('xsltproc', ['xsltproc'])[1]
     (inkscape_path, inkscape_gui) = os.path.split(checkInkscape())
     # On Windows, we need to call the "inkscape.com" wrapper
     # for command line purposes. Other OSes do not differentiate.
