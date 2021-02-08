@@ -944,7 +944,10 @@ public:
 struct GuiApplication::Private
 {
 	Private(): language_model_(nullptr), meta_fake_bit(NoModifier),
-		global_menubar_(nullptr), last_state_(Qt::ApplicationInactive)
+		global_menubar_(nullptr)
+	#if (QT_VERSION >= QT_VERSION_CHECK(5, 1, 0))
+		, last_state_(Qt::ApplicationInactive)
+	#endif
 	{
 	#if (QT_VERSION < 0x050000) || (QT_VERSION >= 0x050400)
 	#if defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
@@ -1011,8 +1014,10 @@ struct GuiApplication::Private
 
 	/// Only used on mac.
 	QMenuBar * global_menubar_;
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 1, 0))
 	/// Holds previous application state on Mac
 	Qt::ApplicationState last_state_;
+#endif
 
 #ifdef Q_OS_MAC
 	/// Linkback mime handler for MacOSX.
