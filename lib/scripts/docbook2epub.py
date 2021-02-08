@@ -19,6 +19,7 @@ import shutil
 import sys
 import tempfile
 import zipfile
+from io import open  # Required for Python 2.
 
 
 def _parse_nullable_argument(arg):
