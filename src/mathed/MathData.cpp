@@ -969,6 +969,17 @@ MathClass MathData::mathClass() const
 }
 
 
+MathClass MathData::firstMathClass() const
+{
+	for (MathAtom const & at : *this) {
+		MathClass mc = at->mathClass();
+		if (mc != MC_UNKNOWN)
+			return mc;
+	}
+	return MC_ORD;
+}
+
+
 MathClass MathData::lastMathClass() const
 {
 	MathClass res = MC_ORD;

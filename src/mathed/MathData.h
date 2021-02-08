@@ -144,6 +144,8 @@ public:
 	void drawT(TextPainter & pi, int x, int y) const;
 	/// approximate mathclass of the data
 	MathClass mathClass() const;
+	/// math class of first interesting element
+	MathClass firstMathClass() const;
 	/// math class of last interesting element
 	MathClass lastMathClass() const;
 	/// is the cell in display style

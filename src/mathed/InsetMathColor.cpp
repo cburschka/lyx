@@ -98,12 +98,8 @@ void InsetMathColor::write(TeXMathStream & os) const
 {
 	// We have to ensure correct spacing when the front and/or back
 	// atoms are not ordinary ones (bug 11827).
-	docstring const frontclass =
-		!cell(0).empty() ? class_to_string(cell(0).front()->mathClass())
-		               : from_ascii("mathord");
-	docstring const backclass =
-		!cell(0).empty() ? class_to_string(cell(0).back()->mathClass())
-		               : from_ascii("mathord");
+	docstring const frontclass = class_to_string(cell(0).firstMathClass());
+	docstring const backclass = class_to_string(cell(0).lastMathClass());
 	bool adjchk = os.latex() && !os.inMathClass() && (normalcolor(color_) || oldstyle_);
 	bool adjust_front = frontclass != "mathord" && adjchk;
 	bool adjust_back = backclass != "mathord" && adjchk;
