@@ -84,11 +84,10 @@ compile LyX with up-to-date translations (at least gettext version
 
 The two following programs should be available at configuration time:
 
-  o Python 2.7 must be installed. Python is used for many simple tasks
-    that are executed by external scripts, such as the automatic
-    configuration step and the import of older LyX documents with the
-    lyx2lyx script (this script is called automatically when opening a
-    file). Python 3 (3.3 or later) support is work in progress.
+  o Python (2.7 or 3.5 and newer) must be installed. Python is used for many
+    simple tasks that are executed by external scripts, such as the automatic
+    configuration step and the import of older LyX documents with the lyx2lyx
+    script (this script is called automatically when opening a file).
 
 
 Creating the Makefile
