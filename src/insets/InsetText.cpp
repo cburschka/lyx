@@ -1184,7 +1184,8 @@ bool InsetText::automaticPopupCompletion() const
 
 bool InsetText::showCompletionCursor() const
 {
-	return lyxrc.completion_cursor_text;
+	return lyxrc.completion_cursor_text &&
+		(lyxrc.completion_inline_text || lyxrc.completion_popup_text);
 }
 
 

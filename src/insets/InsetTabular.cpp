@@ -7638,7 +7638,8 @@ bool InsetTabular::automaticPopupCompletion() const
 
 bool InsetTabular::showCompletionCursor() const
 {
-	return lyxrc.completion_cursor_text;
+	return lyxrc.completion_cursor_text &&
+		(lyxrc.completion_inline_text || lyxrc.completion_popup_text);
 }
 
 
