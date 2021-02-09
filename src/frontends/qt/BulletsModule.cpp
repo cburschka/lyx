@@ -10,18 +10,25 @@
 
 #include <config.h>
 
+#include "Bullet.h"
+
 #include "BulletsModule.h"
 #include "GuiApplication.h"
 #include "qt_helpers.h"
 
+#include <QBitmap>
 #include <QPixmap>
 #include <QPainter>
+#include <QScrollBar>
 
 using namespace std;
 
 namespace lyx {
 
 namespace frontend {
+
+int const CHARMAX = 36;
+int const FONTMAX = 6;
 
 BulletsModule::BulletsModule(QWidget * parent)
     : QWidget(parent)
@@ -41,12 +48,12 @@ BulletsModule::BulletsModule(QWidget * parent)
 	levelLW->addItem("4");
 
 	// insert pixmaps
-	setupPanel(new QListWidget(bulletpaneSW), qt_("Standard[[Bullets]]"), "standard");
-	setupPanel(new QListWidget(bulletpaneSW), qt_("Maths"), "amssymb");
-	setupPanel(new QListWidget(bulletpaneSW), qt_("Dings 1"), "psnfss1");
-	setupPanel(new QListWidget(bulletpaneSW), qt_("Dings 2"), "psnfss2");
-	setupPanel(new QListWidget(bulletpaneSW), qt_("Dings 3"), "psnfss3");
-	setupPanel(new QListWidget(bulletpaneSW), qt_("Dings 4"), "psnfss4");
+	setupPanel(new QListWidget(bulletpaneSW), qt_("Standard[[Bullets]]"), 0);
+	setupPanel(new QListWidget(bulletpaneSW), qt_("Maths"), 1, "math");
+	setupPanel(new QListWidget(bulletpaneSW), qt_("Dings 1"), 2);
+	setupPanel(new QListWidget(bulletpaneSW), qt_("Dings 2"), 3);
+	setupPanel(new QListWidget(bulletpaneSW), qt_("Dings 3"), 4);
+	setupPanel(new QListWidget(bulletpaneSW), qt_("Dings 4"), 5);
 
 	connect(levelLW, SIGNAL(currentRowChanged(int)),
 		this, SLOT(showLevel(int)));
@@ -55,8 +62,117 @@ BulletsModule::BulletsModule(QWidget * parent)
 }
 
 
+string const bulletIcon(int f, int c)
+{
+	static char const * BulletPanelIcons0[CHARMAX] = {
+		/* standard */
+		"bfendash", "vdash", "dashv", "flat", "natural",
+		"sharp", "ast", "star", "bullet", "circ", "cdot",
+		"dagger", "bigtriangleup", "bigtriangledown", "triangleleft",
+		"triangleright", "lhd", "rhd", "oplus", "ominus", "otimes",
+		"oslash", "odot", "spadesuit", "diamond", "diamond2", "box",
+		"diamondsuit", "heartsuit",  "clubsuit", "rightarrow", "leadsto",
+		"rightharpoonup", "rightharpoondown", "rightarrow2", "succ"
+	};
+	static char const * BulletPanelIcons1[CHARMAX] = {
+		/* amssymb */
+		"Rrightarrow", "rightarrowtail", "twoheadrightarrow", "rightsquigarrow",
+		"looparrowright", "multimap", "boxtimes", "boxplus", "boxminus",
+		"boxdot", "divideontimes", "Vvdash", "lessdot", "gtrdot", "maltese",
+		"bigstar", "checkmark", "vdash2", "backsim", "thicksim",
+		"centerdot", "circleddash", "circledast", "circledcirc",
+		"vartriangleleft", "vartriangleright", "vartriangle", "triangledown",
+		"lozenge", "square", "blacktriangleleft", "blacktriangleright", "blacktriangle",
+		"blacktriangledown", "blacklozenge", "blacksquare"
+	};
+	static char const * BulletPanelIcons2[CHARMAX] = {
+		/* psnfss1 */
+		"ding108", "ding109", "ding119", "pisymbol_psy197",
+		"pisymbol_psy196", "pisymbol_psy183", "ding71", "ding70",
+		"ding118", "ding117", "pisymbol_psy224", "pisymbol_psy215",
+		"ding111", "ding112", "ding113", "ding114",
+		"pisymbol_psy68", "pisymbol_psy209", "ding120", "ding121",
+		"ding122", "ding110", "ding115", "ding116",
+		"pisymbol_psy42", "ding67", "ding66", "ding82",
+		"ding81", "ding228", "ding162", "ding163",
+		"ding166", "ding167", "ding226", "ding227"
+	};
+	static char const * BulletPanelIcons3[CHARMAX] = {
+		/* psnfss2 */
+		"ding37", "ding38", "ding34", "ding36",
+		"ding39", "ding40", "ding41", "ding42",
+		"ding43", "ding44", "ding45", "ding47",
+		"ding53", "ding54", "ding59", "ding57",
+		"ding62", "ding61", "ding55", "ding56",
+		"ding58", "ding60", "ding63", "ding64",
+		"ding51", "ding52", "pisymbol_psy170", "pisymbol_psy167",
+		"pisymbol_psy168", "pisymbol_psy169",  "ding164", "ding165",
+		"ding171", "ding168", "ding169", "ding170"
+	};
+	static char const * BulletPanelIcons4[CHARMAX] = {
+		/* psnfss3 */
+		"ding65", "ding76", "ding75", "ding72",
+		"ding80", "ding74", "ding78", "ding77",
+		"ding79", "ding85", "ding90", "ding98",
+		"ding83", "ding84", "ding86", "ding87",
+		"ding88", "ding89", "ding92", "ding91",
+		"ding93", "ding105", "ding94", "ding99",
+		"ding103", "ding104", "ding106", "ding107",
+		"ding68", "ding69", "ding100", "ding101",
+		"ding102", "ding96", "ding95", "ding97"
+	};
+	static char const * BulletPanelIcons5[CHARMAX] = {
+		/* psnfss4 */
+		"ding223", "ding224", "ding225", "ding232",
+		"ding229", "ding230", "ding238", "ding237",
+		"ding236", "ding235", "ding234", "ding233",
+		"ding239", "ding241", "ding250", "ding251",
+		"ding49", "ding50", "ding217", "ding245",
+		"ding243", "ding248", "ding252", "ding253",
+		"ding219", "ding213", "ding221", "ding222",
+		"ding220", "ding212", "pisymbol_psy174", "pisymbol_psy222",
+		"ding254", "ding242", "ding231", "pisymbol_psy45"
+	};
+
+	static char const ** BulletPanelIcons[FONTMAX] = {
+		BulletPanelIcons0, BulletPanelIcons1,
+		BulletPanelIcons2, BulletPanelIcons3,
+		BulletPanelIcons4, BulletPanelIcons5
+	};
+
+	return BulletPanelIcons[f][c];
+}
+
+
+QPixmap getSelectedPixmap(QPixmap pixmap, QSize const icon_size)
+{
+	QPalette palette = QPalette();
+	QColor text_color = (guiApp->isInDarkMode())
+			? palette.color(QPalette::Active, QPalette::WindowText)
+			: Qt::black;
+	QColor highlight_color = palette.color(QPalette::Active, QPalette::HighlightedText);
+	QColor highlight_bg = palette.color(QPalette::Active, QPalette::Highlight);
+
+	// create a layer with black text turned to QPalette::HighlightedText
+	QPixmap hl_overlay(pixmap.size());
+	hl_overlay.fill(highlight_color);
+	hl_overlay.setMask(pixmap.createMaskFromColor(text_color, Qt::MaskOutColor));
+
+	// Create highlighted background
+	QPixmap hl_background(icon_size);
+	hl_background.fill(highlight_bg);
+
+	// put layers on top of existing pixmap
+	QPainter painter(&pixmap);
+	painter.drawPixmap(pixmap.rect(), hl_background);
+	painter.drawPixmap(pixmap.rect(), hl_overlay);
+
+	return pixmap;
+}
+
+
 void BulletsModule::setupPanel(QListWidget * lw, QString const & panelname,
-	string const & fname)
+	int const font, string const folder)
 {
 	connect(lw, SIGNAL(currentItemChanged(QListWidgetItem*, QListWidgetItem*)),
 		this, SLOT(bulletSelected(QListWidgetItem *, QListWidgetItem*)));
@@ -64,33 +180,36 @@ void BulletsModule::setupPanel(QListWidget * lw, QString const & panelname,
 	// add panelname to combox
 	bulletpaneCO->addItem(panelname);
 
-	// get pixmap with bullets
-	QPixmap pixmap = getPixmap("images", toqstr(fname), ".png");
-
-	int const w = pixmap.width() / 6;
-	int const h = pixmap.height() / 6;
-
-	// apply setting to listwidget
+	lw->setViewMode(QListView::IconMode);
+	lw->setDragDropMode(QAbstractItemView::NoDragDrop);
 	lw->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	lw->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	lw->setViewMode(QListView::IconMode);
 	lw->setFlow(QListView::LeftToRight);
-	lw->setMovement(QListView::Static);
+	lw->setSpacing(12);
 	lw->setUniformItemSizes(true);
-	lw->setGridSize(QSize(w, h));
-	// the widening by 21 is needed to avoid wrapping
-	lw->resize(6 * w + 21, 6 * h);
-	bulletpaneSW->setMinimumSize(6 * w + 5, 6 * h + 6);
 
-	// get individual bullets from pixmap
-	for (int row = 0; row < 6; ++row) {
-		for (int col = 0; col < 6; ++col) {
-			QPixmap small(w, h);
-			small.fill();
-			QPainter painter(&small);
-			painter.drawPixmap(small.rect(), pixmap, QRect(col * w, row * h, w, h));
-			new QListWidgetItem(QIcon(small), "" , lw, (6 * row + col));
-		}
+	QSize icon_size(26, 26);
+	lw->setIconSize(icon_size);
+
+	// we calculate the appropriate width to fit 6 icons in a row
+	lw->setFixedWidth((6 * (icon_size.width() + lw->spacing()))
+				+ (lw->frameWidth() * 2)
+				+ lw->verticalScrollBar()->height());
+	// and six rows
+	lw->setFixedHeight((6 * (icon_size.height() + lw->spacing()))
+				+ (lw->frameWidth() * 2)
+				+ lw->horizontalScrollBar()->height());
+
+	for (int i = 0; i < CHARMAX; ++i) {
+		string const iconname = bulletIcon(font, i);
+		// get pixmap with bullets
+		QPixmap pixmap = getPixmap("images/" + toqstr(folder) + "/", toqstr(iconname), "svgz");
+		QIcon icon(pixmap);
+		icon.addPixmap(getSelectedPixmap(pixmap, icon_size), QIcon::Selected);
+		QListWidgetItem * lwi = new QListWidgetItem(icon, QString());
+		lwi->setToolTip(toqstr(Bullet::bulletEntry(font, i)));
+		lwi->setSizeHint(icon_size);
+		lw->addItem(lwi);
 	}
 
 	// add bulletpanel to stackedwidget

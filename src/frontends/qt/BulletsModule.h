@@ -50,7 +50,7 @@ protected Q_SLOTS:
 private:
 	void selectItem(int font, int character, bool select);
 	void setupPanel(QListWidget * lw, QString const & panelname,
-		std::string const & fname);
+			int const font, std::string const folder = "bullets");
 
 	/// store results
 	Bullet bullets_[4];

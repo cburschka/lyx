@@ -1,153 +1,29 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>BulletsUi</class>
- <widget class="QWidget" name="BulletsUi" >
-  <property name="geometry" >
+ <widget class="QWidget" name="BulletsUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>415</width>
-    <height>321</height>
+    <width>414</width>
+    <height>380</height>
    </rect>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
-   <item row="1" column="2" colspan="2" >
-    <widget class="QComboBox" name="bulletpaneCO" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>7</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>&amp;Level:</string>
+     </property>
+     <property name="buddy">
+      <cstring>levelLW</cstring>
      </property>
     </widget>
    </item>
-   <item row="1" column="1" >
-    <widget class="QLabel" name="label_2" >
-     <property name="text" >
-      <string>&amp;Font:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>bulletpaneCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1" colspan="2" >
-    <widget class="QLabel" name="sizeL" >
-     <property name="text" >
-      <string>Si&amp;ze:</string>
-     </property>
-     <property name="alignment" >
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-     <property name="buddy" >
-      <cstring>bulletsizeCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="3" >
-    <widget class="QComboBox" name="bulletsizeCO" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>7</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <item>
-      <property name="text" >
-       <string>Default</string>
-      </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>Tiny</string>
-      </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>Smallest</string>
-      </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>Smaller</string>
-      </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>Small</string>
-      </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>Normal</string>
-      </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>Large</string>
-      </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>Larger</string>
-      </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>Largest</string>
-      </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>Huge</string>
-      </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>Huger</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="5" column="3" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="3" column="3" >
-    <widget class="QLineEdit" name="customLE" >
-     <property name="enabled" >
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1" colspan="2" >
-    <widget class="QCheckBox" name="customCB" >
-     <property name="text" >
-      <string>&amp;Custom bullet:</string>
-     </property>
-    </widget>
-   </item>
-   <item rowspan="5" row="1" column="0" >
-    <widget class="QListWidget" name="levelLW" >
-     <property name="maximumSize" >
+   <item row="1" column="0" rowspan="4">
+    <widget class="QListWidget" name="levelLW">
+     <property name="maximumSize">
       <size>
        <width>96</width>
        <height>16777215</height>
@@ -155,12 +31,36 @@
      </property>
     </widget>
    </item>
-   <item rowspan="5" row="1" column="4" >
+   <item row="1" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>&amp;Font:</string>
+       </property>
+       <property name="buddy">
+        <cstring>bulletpaneCO</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="bulletpaneCO">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="2" rowspan="4">
     <spacer>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>16</width>
        <height>271</height>
@@ -168,27 +68,141 @@
      </property>
     </spacer>
    </item>
-   <item row="0" column="0" >
-    <widget class="QLabel" name="label" >
-     <property name="text" >
-      <string>&amp;Level:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>levelLW</cstring>
-     </property>
-    </widget>
+   <item row="2" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QStackedWidget" name="bulletpaneSW">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
-   <item row="2" column="1" colspan="3" >
-    <widget class="QStackedWidget" name="bulletpaneSW" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>0</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
+   <item row="3" column="1">
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QCheckBox" name="customCB">
+       <property name="text">
+        <string>&amp;Custom bullet:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="customLE">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="sizeL">
+       <property name="text">
+        <string>Si&amp;ze:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="buddy">
+        <cstring>bulletsizeCO</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QComboBox" name="bulletsizeCO">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <item>
+        <property name="text">
+         <string>Default</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Tiny</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Smallest</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Smaller</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Small</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Normal</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Large</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Larger</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Largest</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Huge</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Huger</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="4" column="1">
+    <spacer>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
      </property>
-    </widget>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>
@@ -201,7 +215,7 @@
   <tabstop>bulletsizeCO</tabstop>
  </tabstops>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections>
@@ -211,11 +225,11 @@
    <receiver>customLE</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>203</x>
      <y>148</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>319</x>
      <y>149</y>
     </hint>
@@ -227,11 +241,11 @@
    <receiver>label_2</receiver>
    <slot>setDisabled(bool)</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>203</x>
      <y>148</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>273</x>
      <y>19</y>
     </hint>
@@ -243,11 +257,11 @@
    <receiver>bulletpaneCO</receiver>
    <slot>setDisabled(bool)</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>203</x>
      <y>148</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>320</x>
      <y>52</y>
     </hint>
@@ -259,11 +273,11 @@
    <receiver>bulletpaneSW</receiver>
    <slot>setDisabled(bool)</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>203</x>
      <y>148</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>320</x>
      <y>106</y>
     </hint>

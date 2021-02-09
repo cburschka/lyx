@@ -47,6 +47,8 @@ public:
 	Bullet & operator=(Bullet const &);
 	///
 	friend bool operator==(Bullet const &, Bullet const &);
+	///
+	static docstring const bulletEntry(int, int);
 protected:
 	///
 	void testInvariant() const;
@@ -74,8 +76,6 @@ private:
 	void generateText() const;
 	///
 	static docstring const bulletSize(int);
-	///
-	static docstring const bulletEntry(int, int);
 
 	///
 	int font;

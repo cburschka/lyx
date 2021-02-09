@@ -607,7 +607,8 @@ QPixmap getPixmap(QString const & path, QString const & name, QString const & ex
 	QPixmap pixmap = QPixmap();
 
 	if (pixmap.load(fpath)) {
-		if (fpath.contains("math") || fpath.contains("ipa"))
+		if (fpath.contains("math") || fpath.contains("ipa")
+		    || fpath.contains("bullets"))
 			return prepareForDarkMode(pixmap);
 		return pixmap;
 	}
