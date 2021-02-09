@@ -19,23 +19,12 @@ dist_noinst_DATA = \
 	fonts/test/check_glyphs.lyx \
 	images/README \
 	images/font-smallcaps.svgz \
-	images/math/ams_arrows.png \
-	images/math/ams_misc.png \
-	images/math/ams_nrel.png \
-	images/math/ams_ops.png \
-	images/math/ams_rel.png \
-	images/math/arrows.png \
-	images/math/bop.png \
-	images/math/brel.png \
 	images/math/deco.svgz \
 	images/math/delim0.svgz \
 	images/math/delim1.svgz \
 	images/math/delim.svgz \
 	images/math/dots.svgz \
-	images/math/font.svgz \
-	images/math/greek.png \
-	images/math/misc.png \
-	images/math/varsz.png
+	images/math/font.svgz
 
 skbinddir = $(pkgdatadir)/bind/sk
 dist_skbind_DATA = \
