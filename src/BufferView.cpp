@@ -2943,7 +2943,8 @@ void BufferView::insertLyXFile(FileName const & fname, bool const ignorelang)
 			buf.changeLanguage(buf.language(), d->cursor_.getFont().language());
 		buffer_.undo().recordUndo(d->cursor_);
 		cap::pasteParagraphList(d->cursor_, pars,
-					     buf.params().documentClassPtr(), el);
+					buf.params().documentClassPtr(),
+					buf.params().authors(), el);
 		res = _("Document %1$s inserted.");
 	} else {
 		res = _("Could not insert document %1$s");

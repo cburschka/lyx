@@ -77,8 +77,9 @@ namespace lyx {
 namespace {
 
 typedef pair<pit_type, int> PitPosPair;
+typedef pair<DocumentClassConstPtr, AuthorList > DocInfoPair;
 
-typedef limited_stack<pair<ParagraphList, DocumentClassConstPtr> > CutStack;
+typedef limited_stack<pair<ParagraphList, DocInfoPair > > CutStack;
 
 CutStack theCuts(10);
 // persistent selection, cleared until the next selection
@@ -601,10 +602,10 @@ Buffer * copyToTempBuffer(ParagraphList const & paragraphs, DocumentClassConstPt
 
 
 void putClipboard(ParagraphList const & paragraphs,
-		  DocumentClassConstPtr docclass, docstring const & plaintext,
+		  DocInfoPair docinfo, docstring const & plaintext,
 		  BufferParams const & bp)
 {
-	Buffer * buffer = copyToTempBuffer(paragraphs, docclass);
+	Buffer * buffer = copyToTempBuffer(paragraphs, docinfo.first);
 	if (!buffer) // already asserted in copyToTempBuffer()
 		return;
 
@@ -613,11 +614,9 @@ void putClipboard(ParagraphList const & paragraphs,
 	// applications, the number that can parse it should go up in the future.
 	buffer->params().html_math_output = BufferParams::MathML;
 
-	if (lyxrc.ct_markup_copied) {
-		// Copy authors to the params. We need those pointers.
-		for (Author const & a : bp.authors())
-			buffer->params().authors().record(a);
-	}
+	// Copy authors to the params. We need those pointers.
+	for (Author const & a : bp.authors())
+		buffer->params().authors().record(a);
 
 	// Make sure MarkAsExporting is deleted before buffer is
 	{
@@ -725,7 +724,7 @@ void copySelectionHelper(Buffer const & buf, Text const & text,
 		par.setInsetOwner(nullptr);
 	}
 
-	cutstack.push(make_pair(copy_pars, dc));
+	cutstack.push(make_pair(copy_pars, make_pair(dc, buf.params().authors())));
 }
 
 } // namespace
@@ -1018,7 +1017,7 @@ void copyInset(Cursor const & cur, Inset * inset, docstring const & plaintext)
 	Font font(inherit_font, bp.language);
 	par.insertInset(0, inset, font, Change(Change::UNCHANGED));
 	pars.push_back(par);
-	theCuts.push(make_pair(pars, bp.documentClassPtr()));
+	theCuts.push(make_pair(pars, make_pair(bp.documentClassPtr(), bp.authors())));
 
 	// stuff the selection onto the X clipboard, from an explicit copy request
 	putClipboard(theCuts[0].first, theCuts[0].second, plaintext, bp);
@@ -1065,7 +1064,7 @@ void copySelectionToStack(CursorData const & cur, CutStack & cutstack)
 		par.insert(0, grabSelection(cur), Font(sane_font, par.getParLanguage(bp)),
 			   Change(Change::UNCHANGED));
 		pars.push_back(par);
-		cutstack.push(make_pair(pars, bp.documentClassPtr()));
+		cutstack.push(make_pair(pars, make_pair(bp.documentClassPtr(), bp.authors())));
 	}
 }
 
@@ -1123,7 +1122,7 @@ void copySelection(Cursor const & cur, docstring const & plaintext)
 			while (pars.size() > 1)
 				mergeParagraph(bp, pars, 0);
 		}
-		theCuts.push(make_pair(pars, bp.documentClassPtr()));
+		theCuts.push(make_pair(pars, make_pair(bp.documentClassPtr(), bp.authors())));
 	} else {
 		copySelectionToStack(cur, theCuts);
 	}
@@ -1167,13 +1166,13 @@ void clearCutStack()
 }
 
 
-docstring selection(size_t sel_index, DocumentClassConstPtr docclass, bool for_math)
+docstring selection(size_t sel_index, DocInfoPair docinfo, bool for_math)
 {
 	if (sel_index >= theCuts.size())
 		return docstring();
 
 	unique_ptr<Buffer> buffer(copyToTempBuffer(theCuts[sel_index].first,
-	                                           docclass));
+	                                           docinfo.first));
 	if (!buffer)
 		return docstring();
 
@@ -1186,9 +1185,14 @@ docstring selection(size_t sel_index, DocumentClassConstPtr docclass, bool for_m
 
 
 void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
-			DocumentClassConstPtr docclass, ErrorList & errorList,
+			DocumentClassConstPtr docclass, AuthorList const & authors,
+			ErrorList & errorList,
 			cap::BranchAction branchAction)
 {
+	// Copy authors to the params. We need those pointers.
+	for (Author const & a : authors)
+		cur.buffer()->params().authors().record(a);
+	
 	if (cur.inTexted()) {
 		Text * text = cur.text();
 		LBUFERR(text);
@@ -1213,7 +1217,8 @@ bool pasteFromStack(Cursor & cur, ErrorList & errorList, size_t sel_index)
 
 	cur.recordUndo();
 	pasteParagraphList(cur, theCuts[sel_index].first,
-	                   theCuts[sel_index].second, errorList, BRANCH_ASK);
+	                   theCuts[sel_index].second.first, theCuts[sel_index].second.second,
+			   errorList, BRANCH_ASK);
 	return true;
 }
 
@@ -1226,7 +1231,8 @@ bool pasteFromTemp(Cursor & cur, ErrorList & errorList)
 
 	cur.recordUndo();
 	pasteParagraphList(cur, tempCut[0].first,
-	                   tempCut[0].second, errorList, BRANCH_IGNORE);
+			tempCut[0].second.first, tempCut[0].second.second,
+			errorList, BRANCH_IGNORE);
 	return true;
 }
 
@@ -1251,7 +1257,9 @@ bool pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs,
 			if (buffer.readString(lyx)) {
 				cur.recordUndo();
 				pasteParagraphList(cur, buffer.paragraphs(),
-					buffer.params().documentClassPtr(), errorList);
+						   buffer.params().documentClassPtr(),
+						   buffer.params().authors(),
+						   errorList);
 				return true;
 			}
 		}
@@ -1289,7 +1297,9 @@ bool pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs,
 					buffer.changeLanguage(buffer.language(), cur.getFont().language());
 					cur.recordUndo();
 					pasteParagraphList(cur, buffer.paragraphs(),
-						buffer.params().documentClassPtr(), errorList);
+							   buffer.params().documentClassPtr(),
+							   buffer.params().authors(),
+							   errorList);
 					return true;
 				}
 			}
@@ -1369,7 +1379,9 @@ void pasteSelection(Cursor & cur, ErrorList & errorList)
 		return;
 	cur.recordUndo();
 	pasteParagraphList(cur, selectionBuffer[0].first,
-			   selectionBuffer[0].second, errorList);
+			selectionBuffer[0].second.first,
+			selectionBuffer[0].second.second,
+			errorList);
 }
 
 

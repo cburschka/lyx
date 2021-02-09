@@ -1566,7 +1566,8 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			idocstringstream is(cmd.argument());
 			int n = 0;
 			is >> n;
-			topaste = cap::selection(n, buffer().params().documentClassPtr(), true);
+			topaste = cap::selection(n, make_pair(buffer().params().documentClassPtr(),
+							      buffer().params().authors()), true);
 		}
 		InsetMathGrid grid(buffer_, 1, 1);
 		if (!topaste.empty())

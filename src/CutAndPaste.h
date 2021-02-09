@@ -14,6 +14,7 @@
 #ifndef CUTANDPASTE_H
 #define CUTANDPASTE_H
 
+#include "Author.h"
 #include "DocumentClassPtr.h"
 
 #include "support/strfwd.h"
@@ -41,11 +42,13 @@ namespace cap {
 std::vector<docstring> availableSelections(Buffer const *);
 /// Get the number of available elements in the cut buffer.
 size_type numberOfSelections();
+///
+typedef std::pair<DocumentClassConstPtr, AuthorList > DocInfoPair;
 /**
  * Get the sel_index-th element of the cut buffer in plain text format
  * or, if \param for_math is true, in a format suitable for mathed.
  */
-docstring selection(size_t sel_index, DocumentClassConstPtr docclass, bool for_math = false);
+docstring selection(size_t sel_index, DocInfoPair docinfo, bool for_math = false);
 
 /**
  * Replace using the font of the first selected character and select
@@ -123,8 +126,9 @@ enum BranchAction {
 /// Paste the paragraph list \p parlist at the position given by \p cur.
 /// Does not handle undo. Does only work in text, not mathed.
 void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
-                        DocumentClassConstPtr textclass, ErrorList & errorList,
-                        BranchAction branchAction = BRANCH_ASK);
+			DocumentClassConstPtr textclass, AuthorList const & authors,
+			ErrorList & errorList,
+			BranchAction branchAction = BRANCH_ASK);
 
 
 /** Needed to switch between different classes. This works

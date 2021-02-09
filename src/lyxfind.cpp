@@ -3999,6 +3999,7 @@ static int findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, Ma
 		LYXERR(Debug::FIND, "Before pasteParagraphList() cur=" << cur << endl);
 		cap::pasteParagraphList(cur, repl_buffer.paragraphs(),
 					repl_buffer.params().documentClassPtr(),
+					repl_buffer.params().authors(),
 					bv->buffer().errorList("Paste"));
 		LYXERR(Debug::FIND, "After pasteParagraphList() cur=" << cur << endl);
 		sel_len = repl_buffer.paragraphs().begin()->size();

@@ -1881,6 +1881,7 @@ bool Text::dissolveInset(Cursor & cur)
 		}
 
 		pasteParagraphList(cur, plist, b.params().documentClassPtr(),
+				   b.params().authors(),
 				   b.errorList("Paste"));
 	}
 
