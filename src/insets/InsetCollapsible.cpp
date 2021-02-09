@@ -187,9 +187,12 @@ Dimension InsetCollapsible::dimensionCollapsed(BufferView const & bv) const
 {
 	Dimension dim;
 	FontInfo labelfont(getLabelfont());
+	int const offset =
+		(geometry(bv) != LeftButton && geometry(bv) != TopButton)
+		? Inset::textOffset(&bv) : 0;
 	labelfont.realize(sane_font);
 	theFontMetrics(labelfont).buttonText(
-		buttonLabel(bv), Inset::textOffset(&bv), dim.wid, dim.asc, dim.des);
+		buttonLabel(bv), offset, dim.wid, dim.asc, dim.des);
 	return dim;
 }
 
