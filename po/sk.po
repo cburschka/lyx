@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-01-29 14:45+0100\n"
-"PO-Revision-Date: 2021-01-29 15:14+0000\n"
+"POT-Creation-Date: 2021-02-09 11:14+0100\n"
+"PO-Revision-Date: 2021-02-09 13:59+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -26157,6 +26157,10 @@ msgstr "Graphviz Dot"
 msgid "LaTeX (dviluatex)"
 msgstr "LaTeX (dviluatex)"
 
+#: lib/configure.py:756
+msgid "ePub"
+msgstr "ePub"
+
 #: lib/configure.py:686
 msgid "LaTeX (pLaTeX)"
 msgstr "LaTeX (pLaTeX)"
@@ -31500,6 +31504,10 @@ msgstr "Mat. oddeľovač"
 #: src/frontends/qt/GuiDelimiter.cpp:455 src/frontends/qt/GuiDelimiter.cpp:457
 msgid "(None)"
 msgstr "(Žiadne)"
+
+#: src/frontends/qt/GuiDelimiter.cpp:272 src/frontends/qt/GuiDelimiter.cpp:275
+msgid "No Delimiter"
+msgstr "Bez oddeľovača"
 
 #: src/frontends/qt/GuiDelimiter.cpp:249
 msgid "Variable"
