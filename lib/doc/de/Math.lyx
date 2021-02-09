@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 606
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -165,9 +165,9 @@ subequations
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -216,8 +216,8 @@ subequations
 \justification true
 \use_refstyle 0
 \use_minted 0
-\notefontcolor #0000ff
 \use_lineno 0
+\notefontcolor #0000ff
 \index Stichwortverzeichnis
 \shortcut idx
 \color #008000
@@ -233,15 +233,18 @@ subequations
 \papercolumns 1
 \papersides 2
 \paperpagestyle plain
+\tablestyle default
 \bullet 1 0 6 -1
 \bullet 2 2 35 -1
 \bullet 3 2 7 -1
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
 \end_header
 
 \begin_body
@@ -297,7 +300,7 @@ Verfasser: Uwe Stöhr
 
 
 \family sans
-Version 2.3.x
+Version 2.4.x
 \end_layout
 
 \begin_layout Standard
@@ -522,10 +525,12 @@ Formel ! eingebettete
 
 \end_inset
 
- zu erstellen, drückt man 
-\family sans
-Strg+M
-\family default
+ zu erstellen, verwendet man einen der Tastenkürzel 
+\begin_inset Info
+type  "shortcuts"
+arg   "math-mode"
+\end_inset
+
  oder den Werkzeugleistenknopf 
 \begin_inset Info
 type  "icon"
@@ -546,10 +551,13 @@ Formel ! abgesetzte
 
 \end_inset
 
- zu erstellen, drückt man 
-\family sans
-Strg+Shift+M
-\family default
+ (die größer ist, ein anderes Format hat und in einem eigenen Absatz erscheint)
+ zu erstellen, verwendet man einen der Tastenkürzel 
+\begin_inset Info
+type  "shortcuts"
+arg   "math-display"
+\end_inset
+
 .
 \end_layout
 
@@ -557,21 +565,28 @@ Strg+Shift+M
 Um eine abgesetzte Formel in eine eingebettete umzuwandeln, setzt man den
  Cursor in die Formel und drückt 
 \family sans
-Strg+Shift+M
+
+\begin_inset Info
+type  "shortcuts"
+arg   "math-mutate simple"
+\end_inset
+
+
 \family default
  oder benutzt das Menü 
 \family sans
 Bearbeiten\SpecialChar menuseparator
 Mathe\SpecialChar menuseparator
-
-\begin_inset Newline linebreak
-\end_inset
-
 Formelart ändern
 \family default
 .
- Auf die selbe Weise lässt sich eine eingebettete in eine abgesetzte Formel
- umwandeln.
+ Analog können Sie das Tastenkürzel 
+\begin_inset Info
+type  "shortcuts"
+arg   "math-mutate equation"
+\end_inset
+
+ verwenden, um eine eingebettete in eine abgesetzte Formel umzuwandeln.
 \end_layout
 
 \begin_layout Standard
@@ -604,7 +619,7 @@ In einer Tabelle dürfen nur eingebettete Formeln verwendet werden.
 \end_layout
 
 \begin_layout Standard
-Die 
+Die Sichtbarkeit der 
 \family sans
 Mathe-Werkzeugleiste
 \family default
@@ -613,56 +628,37 @@ Mathe-Werkzeugleiste
 Ansicht\SpecialChar menuseparator
 Werkzeugleisten
 \family default
- eingeblendet werden.
+ gesteuert werden.
+ Es werden drei Optionen angeboten: 
+\family sans
+An
+\family default
+, 
+\family sans
+Aus
+\family default
+ und 
+\family sans
+Automatisch
+\family default
+.
  Wenn dort auf 
-\begin_inset Quotes eld
-\end_inset
-
-Mathe
-\begin_inset Quotes erd
-\end_inset
-
+\family sans
+An
+\family default
  geklickt wird, wird die Werkzeugleiste permanent am unteren Rand eingeblendet;
- diese Einstellung wird durch ein Häkchen im Menü 
+ wenn auf 
 \family sans
-Werkzeugleisten
+Aus
 \family default
- angezeigt.
- Wenn nun im Menü 
+ geklickt wird, wird sie nie gezeigt.
+ 
 \family sans
-Werkzeugleisten
+Automatisch
 \family default
- nochmal auf 
-\begin_inset Quotes eld
-\end_inset
-
-Mathe
-\begin_inset Quotes erd
-\end_inset
-
- geklickt wird, wird die Werkzeugleiste nur angezeigt, wenn sich der Cursor
- in einer Formel befindet; diese Einstellung wird durch die Umbenennung
- des Menüeintrags von 
-\begin_inset Quotes eld
-\end_inset
-
-Mathe
-\begin_inset Quotes erd
-\end_inset
-
- zu 
-\begin_inset Quotes eld
-\end_inset
-
-Mathe
-\begin_inset space ~
-\end_inset
-
-(automatisch)
-\begin_inset Quotes erd
-\end_inset
-
- angezeigt.
+ bewirkt, dass die Werkzeugleiste nur angezeigt wird, wenn sich der Cursor
+ in einer Formel befindet.
+ Die jeweilige Auswahl wird durch eine Markierung angezeigt.
 \end_layout
 
 \begin_layout Standard
@@ -949,9 +945,17 @@ immer
 
 \begin_layout Standard
 Ein geschütztes Leerzeichen gibt man mit 
-\family sans
-Strg+Leertaste
-\family default
+\begin_inset Info
+type  "shortcuts"
+arg   "command-alternatives math-space ; space-insert protected"
+\end_inset
+
+ oder über 
+\begin_inset Info
+type  "menu"
+arg   "space-insert protected"
+\end_inset
+
  ein.
 \end_layout
 
@@ -964,7 +968,7 @@ Das Symbol
 \begin_inset space \textvisiblespace{}
 \end_inset
 
- steht für ein einzugebendes Leerzeichen.
+ steht für ein von Benutzer*innen einzugebendes Leerzeichen.
 \end_layout
 
 \begin_layout Itemize
@@ -1013,6 +1017,7 @@ Verfügbare Einheiten
 \align center
 \begin_inset Float table
 placement H
+alignment document
 wide false
 sideways false
 status open
@@ -3473,6 +3478,12 @@ phantom
 \begin_inset space \textvisiblespace{}
 \end_inset
 
+
+\backslash
+mathrm
+\begin_inset space \textvisiblespace{}
+\end_inset
+
 F
 \end_layout
 
@@ -3514,6 +3525,12 @@ phantom
 \begin_inset space \textvisiblespace{}
 \end_inset
 
+
+\backslash
+mathrm
+\begin_inset space \textvisiblespace{}
+\end_inset
+
 F
 \end_layout
 
@@ -3539,7 +3556,11 @@ F
 \begin_layout Plain Layout
 
 \backslash
-Lambda^
+Lambda
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+^
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -3922,7 +3943,8 @@ underline
 \end_layout
 
 \begin_layout Standard
-Will man Ergebnisse doppelt unterstreichen, verwendet man zweimal hintereinander
+Will man Ergebnisse mehrfach unterstreichen, verwendet man zweimal (oder
+ so oft man braucht) hintereinander
 \begin_inset Newline linebreak
 \end_inset
 
@@ -3933,10 +3955,6 @@ Will man Ergebnisse doppelt unterstreichen, verwendet man zweimal hintereinander
 underline
 \series default
 .
-\end_layout
-
-\begin_layout Standard
-Man kann bis zu 6 Striche über oder unter Zeichen setzen.
 \end_layout
 
 \begin_layout Standard
@@ -4487,7 +4505,12 @@ hdotsfor
 
 \end_inset
 
-, der folgendes Schema besitzt:
+, der folgendes Schema besitzt (bitte beachten Sie, dass hierfür – in den
+ Dokument-Einstellungen unter Mathe-Optionen – stets 
+\family sans
+mathtools
+\family default
+ geladen werden muss):
 \end_layout
 
 \begin_layout Standard
@@ -4830,12 +4853,40 @@ Strg+Enter
 \begin_inset VSpace bigskip
 \end_inset
 
-Die 
+Unter 
 \family sans
-Verzierung
+Erscheinungsbild
 \family default
- fügt Klammern um die Matrix in der ausgewählten Art hinzu.
- Alternativ können Klammern entweder mit den Befehlen 
+ finden Sie Möglichkeiten, um Klammern in einer bestimmten Form um die Matrix
+ zu setzen.
+ Außerdem können Sie den Stil 
+\family sans
+small
+\family default
+ auswählen, der eine kleinere Matrix – wie diese: 
+\begin_inset Formula $\bigl(\begin{smallmatrix}0 & \textrm{-}\mathrm{i}\\
+\mathrm{i} & 0
+\end{smallmatrix}\bigr)$
+\end_inset
+
+ – einfügt, die sich für den laufenden Text anbietet.
+ Hier wurden die Klammern manuell hinzugefügt, mithilfe der Befehle 
+\series bold
+
+\backslash
+bigl(
+\series default
+ und 
+\series bold
+
+\backslash
+bigr)
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Alternativ können Klammern mit den Befehlen 
 \series bold
 
 \backslash
@@ -5339,7 +5390,8 @@ arraystretch
 \end_layout
 
 \begin_layout Standard
-Um Matrizen in eine Textzeile zu setzen, benutzt man den Befehl 
+Um (kleinere) Matrizen in eine Textzeile zu setzen, benutzt man den Befehl
+ 
 \series bold
 
 \backslash
@@ -6902,11 +6954,7 @@ _7
 \begin_inset space \textvisiblespace{}
 \end_inset
 
-^
-\begin_inset space \textvisiblespace{}
-\end_inset
-
-C
+^C
 \end_layout
 
 \end_inset
@@ -10730,7 +10778,13 @@ Leerraum ! horizontaler ! vordefiniert
 
 \begin_layout Standard
 Ab und an ist es notwendig in einer Formel horizontalen Leerraum einzufügen.
- Dazu gibt man ein geschütztes Leerzeichen ein.
+ Dazu gibt man ein geschütztes Leerzeichen (Tastenkürzel 
+\begin_inset Info
+type  "shortcut"
+arg   "command-alternatives math-space ; space-insert protected"
+\end_inset
+
+) ein.
  Es erscheint ein 
 \begin_inset Quotes gld
 \end_inset
@@ -13454,6 +13508,10 @@ fbox
 \begin_inset space \textvisiblespace{}
 \end_inset
 
+
+\begin_inset Formula $\gets\gets$
+\end_inset
+
 A=B
 \end_layout
 
@@ -13481,6 +13539,10 @@ A=B
 \backslash
 fbox
 \begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\begin_inset Formula $\gets\gets$
 \end_inset
 
 
@@ -15799,7 +15861,7 @@ Die normalen Grenzen sehen so aus:
 So sieht die Formel aus, wenn man die Grenzen neben das Summenzeichen setzt:
 \begin_inset Formula 
 \[
-\sum\nolimits _{x=0}^{\infty}\frac{1}{x^{2}}
+\sum\nolimits_{x=0}^{\infty}\frac{1}{x^{2}}
 \]
 
 \end_inset
@@ -15830,7 +15892,7 @@ Anzeige
  gesetzt und damit unter die Integrale geschrieben:
 \begin_inset Formula 
 \begin{equation}
-\iiint\limits _{V}X\,\mathrm{d}V=U\label{eq:VolInt}
+\iiint\limits_{V}X\,\mathrm{d}V=U\label{eq:VolInt}
 \end{equation}
 
 \end_inset
@@ -28761,7 +28823,7 @@ reference "eq:VolInt"
 :
 \begin_inset Formula 
 \begin{flalign}
-\hspace{30pt}\iiint\limits _{V}X\,\mathrm{d}V & =U & {}
+\hspace{30pt}\iiint\limits_{V}X\,\mathrm{d}V & =U & {}
 \end{flalign}
 
 \end_inset
@@ -29526,8 +29588,7 @@ N
 \family default
 ) nummeriert werden.
  Die Formelnummer erscheint in \SpecialChar LyX
- hinter der Formel als Raute in runden Klammern.
- Im Ausdruck erscheint anstelle der Raute die Formelnummer.
+ hinter der Formel als Nummer in runden Klammern.
 \end_layout
 
 \begin_layout Standard
@@ -37468,7 +37529,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Beschreibung"
-target "https://www.tug.org/~hvoss/PDF/mathmode.pdf"
+target "http://mirrors.ctan.org/obsolete/info/math/voss/mathmode/Mathmode.pdf"
 literal "false"
 
 \end_inset
@@ -37489,7 +37550,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Beschreibung"
-target "https://www.ctan.org/tex-archive/macros/latex/required/amslatex/math/amsldoc.pdf"
+target "http://tug.ctan.org/info/amslatex/english/amsldoc.pdf"
 literal "false"
 
 \end_inset
@@ -37523,7 +37584,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Auflistung"
-target "https://ctan.org/tex-archive/info/symbols/comprehensive/symbols-a4.pdf"
+target "http://tug.ctan.org/info/symbols/comprehensive/symbols-a4.pdf"
 literal "false"
 
 \end_inset
