@@ -34,6 +34,10 @@ Style Letter
 	  Shape               Italic
 	  Color               textlabel1
 	EndFont
+	AutoNests 
+		Standard,Itemize,Enumerate,Description,Labeling,Bibliography,Quotation,Quote,Verse,Corollary,
+		Definition,Definitions,Example,Examples,Fact,Lemma,Proof,Theorem,LyX-Code
+	EndAutoNests
 End
 
 
