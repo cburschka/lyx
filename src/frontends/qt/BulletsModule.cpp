@@ -227,6 +227,8 @@ void BulletsModule::showLevel(int level)
 	if (bullets_[level].getFont() < 0) {
 		customCB->setCheckState(Qt::Checked);
 		customLE->setText(toqstr(bullets_[level].getText()));
+		bulletsizeCO->setEnabled(false);
+		sizeL->setEnabled(false);
 	} else {
 		customCB->setCheckState(Qt::Unchecked);
 		customLE->clear();
@@ -234,6 +236,8 @@ void BulletsModule::showLevel(int level)
 		selectItem(current_font_, current_char_, true);
 		bulletpaneCO->setCurrentIndex(current_font_);
 		bulletpaneSW->setCurrentIndex(current_font_);
+		bulletsizeCO->setEnabled(true);
+		sizeL->setEnabled(true);
 	}
 	bulletsizeCO->setCurrentIndex(bullets_[level].getSize() + 1);
 }
@@ -262,6 +266,9 @@ void BulletsModule::bulletSelected(QListWidgetItem * item, QListWidgetItem *)
 
 void BulletsModule::on_customCB_clicked(bool custom)
 {
+	bulletsizeCO->setEnabled(!custom);
+	sizeL->setEnabled(!custom);
+
 	if (!custom) {
 		if (current_font_ < 0)
 			current_font_ = bulletpaneCO->currentIndex();
