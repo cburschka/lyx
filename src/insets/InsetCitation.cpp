@@ -50,6 +50,7 @@ InsetCitation::InsetCitation(Buffer * buf, InsetCommandParams const & p)
 	: InsetCommand(buf, p)
 {
 	buffer().removeBiblioTempFiles();
+	cleanKeys();
 }
 
 
@@ -167,6 +168,8 @@ void InsetCitation::doDispatch(Cursor & cur, FuncRequest & cmd)
 	// fall through
 	default:
 		InsetCommand::doDispatch(cur, cmd);
+		if (cmd.action() == LFUN_INSET_MODIFY)
+			cleanKeys();
 	}
 }
 
@@ -283,7 +286,7 @@ bool InsetCitation::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 bool InsetCitation::addKey(string const & key)
 {
-	docstring const ukey = from_utf8(key);
+	docstring const ukey = from_utf8(trim(key));
 	docstring const & curkeys = getParam("key");
 	if (curkeys.empty()) {
 		setParam("key", ukey);
@@ -292,10 +295,8 @@ bool InsetCitation::addKey(string const & key)
 	}
 
 	vector<docstring> keys = getVectorFromString(curkeys);
-	vector<docstring>::const_iterator it = keys.begin();
-	vector<docstring>::const_iterator en = keys.end();
-	for (; it != en; ++it) {
-		if (*it == ukey) {
+	for (auto const & k : keys) {
+		if (k == ukey) {
 			LYXERR0("Key " << key << " already present.");
 			return false;
 		}
@@ -602,21 +603,24 @@ int InsetCitation::plaintext(odocstringstream & os,
 
 static docstring const cleanupWhitespace(docstring const & citelist)
 {
-	docstring::const_iterator it  = citelist.begin();
-	docstring::const_iterator end = citelist.end();
 	// Paranoia check: make sure that there is no whitespace in here
 	// -- at least not behind commas or at the beginning
 	docstring result;
 	char_type last = ',';
-	for (; it != end; ++it) {
-		if (*it != ' ')
-			last = *it;
-		if (*it != ' ' || last != ',')
-			result += *it;
+	for (char_type c : citelist) {
+		if (c != ' ')
+			last = c;
+		if (c != ' ' || last != ',')
+			result += c;
 	}
 	return result;
 }
 
+
+void InsetCitation::cleanKeys() {
+	docstring cleankeys = cleanupWhitespace(getParam("key"));
+	setParam("key", cleankeys);
+}
 
 void InsetCitation::docbook(XMLStream & xs, OutputParams const &) const
 {

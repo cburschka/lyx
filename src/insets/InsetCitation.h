@@ -111,6 +111,8 @@ private:
 	docstring complexLabel(bool for_xhtml = false) const;
 	/// makes a very basic label, in case we can't make a pretty one
 	docstring basicLabel(bool for_xhtml = false) const;
+	/// trims the keys
+	void cleanKeys();
 
 	/// \name Private functions inherited from Inset class
 	//@{
