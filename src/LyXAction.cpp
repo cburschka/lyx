@@ -1901,6 +1901,16 @@ void LyXAction::init()
 		{ LFUN_HELP_OPEN, "help-open", NoBuffer | Argument, Buffer },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_LYXFILES_OPEN
+ * \li Action: Open lyxfiles (templates/examples). Create a view if he have none.
+ * \li Syntax: lyxfiles-open [<TYPE>]
+ * \li Params: <TYPE>: templates or examples. Default is templates.
+ * \li Origin: spitz, 10 Feb 2021
+ * \endvar
+ */
+		{ LFUN_LYXFILES_OPEN, "lyxfiles-open", NoBuffer | Argument, Buffer },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_HREF_INSERT
  * \li Action: Inserts hyperlinks into the document (clickable in pdf output).
  * \li Notion: Hyperlink target can be set via selection + hyperlink-insert function.

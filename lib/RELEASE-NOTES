@@ -90,6 +90,8 @@
 
 * ifrelatives is a helper function to check whether a buffer has a master or children.
 
+* lyxfiles-open opens the new examples or templates dialog.
+
 * master-buffer-forall executes an lfun in the master and all children of a document.
 
 * paragraph-select is a new convenience function to select the paragraph

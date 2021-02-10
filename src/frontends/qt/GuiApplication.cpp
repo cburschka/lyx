@@ -1379,6 +1379,7 @@ bool GuiApplication::getStatus(FuncRequest const & cmd, FuncStatus & flag) const
 	case LFUN_BUFFER_NEW:
 	case LFUN_BUFFER_NEW_TEMPLATE:
 	case LFUN_FILE_OPEN:
+	case LFUN_LYXFILES_OPEN:
 	case LFUN_HELP_OPEN:
 	case LFUN_SCREEN_FONT_UPDATE:
 	case LFUN_SET_COLOR:
@@ -1818,6 +1819,25 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		Buffer * buf = current_view_->loadDocument(fname, false);
 		if (buf)
 			buf->setReadonly(!current_view_->develMode());
+		break;
+	}
+
+	case LFUN_LYXFILES_OPEN: {
+		// This is the actual reason for this method (#12106).
+		validateCurrentView();
+		if (!current_view_
+		   || (!lyxrc.open_buffers_in_tabs
+		       && current_view_->documentBufferView() != nullptr))
+			createView();
+		string arg = to_utf8(cmd.argument());
+		if (arg.empty())
+			// set default
+			arg = "templates";
+		if (arg != "templates" && arg != "examples") {
+			current_view_->message(_("Wrong argument. Must be 'examples' or 'templates'."));
+			break;
+		}
+		lyx::dispatch(FuncRequest(LFUN_DIALOG_SHOW, "lyxfiles " + arg));
 		break;
 	}
 
