@@ -231,7 +231,7 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 
 	initMathSymbols();
 
-	QSize icon_size(32, 32);
+	QSize icon_size(26, 26);
 
 	// we calculate the appropriate width to fit 4 icons in a row
 	leftLW->setMinimumWidth((4 * (icon_size.width() + (2 * leftLW->spacing())))
