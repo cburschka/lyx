@@ -3524,6 +3524,11 @@ void GuiDocument::applyView()
 	bp_.isfontcolor = is_fontcolor;
 	bp_.notefontcolor = set_notefontcolor;
 	bp_.isnotefontcolor = is_notefontcolor;
+	if (is_notefontcolor) {
+		// Set information used in statusbar (#12130)
+		lcolor.setColor("notefontcolor", lyx::X11hexname(set_notefontcolor));
+		lcolor.setGUIName("notefontcolor", N_("greyedout inset text"));
+	}
 	bp_.boxbgcolor = set_boxbgcolor;
 	bp_.isboxbgcolor = is_boxbgcolor;
 

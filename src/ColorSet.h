@@ -69,6 +69,11 @@ public:
 	 */
 	bool setLaTeXName(std::string const & lyxname, std::string const & latexname);
 
+	/** set the GUI name of a given LyX color to a guiname if not yet defined
+	 *  \returns true if successful.
+	 */
+	bool setGUIName(std::string const & lyxname, std::string const & guiname);
+
 	/// Get the GUI name of \c color.
 	docstring const getGUIName(ColorCode c) const;
 

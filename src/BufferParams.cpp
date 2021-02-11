@@ -1056,6 +1056,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		notefontcolor = lyx::rgbFromHexName(color);
 		lcolor.setColor("notefontcolor", color);
 		lcolor.setLaTeXName("notefontcolor", "note_fontcolor");
+		lcolor.setGUIName("notefontcolor", N_("greyedout inset text"));
 		// set a local name for the painter
 		lcolor.setColor("notefontcolor@" + filename.absFileName(), color);
 		isnotefontcolor = true;
