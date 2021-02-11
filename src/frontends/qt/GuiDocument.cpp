@@ -1988,17 +1988,17 @@ void GuiDocument::setListingsMessage()
 
 void GuiDocument::listingsPackageChanged(int index)
 {
-        string const package = lst_packages[index];
-        if (package == "Minted" && lyxrc.pygmentize_command.empty()) {
-                Alert::warning(_("Pygments driver command not found!"),
-                    _("The driver command necessary to use the minted package\n"
-                      "(pygmentize) has not been found. Make sure you have\n"
-                      "the python-pygments module installed or, if the driver\n"
-                      "is named differently, to add the following line to the\n"
-                      "document preamble:\n\n"
-                      "\\AtBeginDocument{\\renewcommand{\\MintedPygmentize}{driver}}\n\n"
-                      "where 'driver' is name of the driver command."));
-        }
+	string const package = lst_packages[index];
+	if (package == "Minted" && lyxrc.pygmentize_command.empty()) {
+		Alert::warning(_("Pygments driver command not found!"),
+		    _("The driver command necessary to use the minted package\n"
+		      "(pygmentize) has not been found. Make sure you have\n"
+		      "the python-pygments module installed or, if the driver\n"
+		      "is named differently, to add the following line to the\n"
+		      "document preamble:\n\n"
+		      "\\AtBeginDocument{\\renewcommand{\\MintedPygmentize}{driver}}\n\n"
+		      "where 'driver' is name of the driver command."));
+	}
 }
 
 
