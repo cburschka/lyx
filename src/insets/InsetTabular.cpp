@@ -5308,8 +5308,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			if (insertPlaintextString(cur.bv(), clip, false)) {
 				// content has been replaced,
 				// so cursor might be invalid
-				cur.pos() = cur.lastpos();
-				cur.pit() = cur.lastpit();
+				cur.fixIfBroken();
 				bvcur.setCursor(cur);
 				break;
 			}
