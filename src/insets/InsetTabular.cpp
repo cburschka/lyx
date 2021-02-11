@@ -5332,7 +5332,8 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 					break;
 				}
 			}
-			else if (theClipboard().hasTextContents(Clipboard::LyXTextType)) {
+			else if (!theClipboard().isInternal()
+				 && theClipboard().hasTextContents(Clipboard::LyXTextType)) {
 				// This might be tabular data from another LyX instance. Check!
 				docstring const clip =
 					theClipboard().getAsText(Clipboard::PlainTextType);
