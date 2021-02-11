@@ -1648,7 +1648,9 @@ class MathInfo {
   public:
     string wait;
     size_t mathEnd;
+    size_t mathpostfixsize;
     size_t mathStart;
+    size_t mathprefixsize;
     size_t mathSize;
   };
   size_t actualIdx_;
@@ -1657,11 +1659,13 @@ class MathInfo {
   MathInfo() {
     actualIdx_ = 0;
   }
-  void insert(string const & wait, size_t start, size_t end) {
+  void insert(string const & wait, size_t start, size_t prefixsize, size_t end, size_t postfixsize) {
     MathEntry m = MathEntry();
     m.wait = wait;
     m.mathStart = start;
+    m.mathprefixsize = prefixsize;
     m.mathEnd = end;
+    m.mathpostfixsize = postfixsize;
     m.mathSize = end - start;
     entries_.push_back(m);
   }
@@ -1677,6 +1681,18 @@ class MathInfo {
       return 100000;                    /*  definitely enough? */
     }
     return entries_[actualIdx_].mathStart;
+  }
+  size_t getPrefixSize() const {
+    if (entries_.empty() || (actualIdx_ >= entries_.size())) {
+      return 0;
+    }
+    return entries_[actualIdx_].mathprefixsize;
+  }
+  size_t getPostfixSize() const {
+    if (entries_.empty() || (actualIdx_ >= entries_.size())) {
+      return 0;
+    }
+    return entries_[actualIdx_].mathpostfixsize;
   }
   size_t getFirstPos() {
     actualIdx_ = 0;
@@ -1708,8 +1724,10 @@ void LatexInfo::buildEntries(bool isPatternString)
   KeyInfo found;
   bool math_end_waiting = false;
   size_t math_pos = 10000;
+  size_t math_prefix_size = 1;
   string math_end;
   static vector<string> usedText = vector<string>();
+  static bool removeMathHull = false;
 
   interval_.removeAccents();
 
@@ -1723,17 +1741,17 @@ void LatexInfo::buildEntries(bool isPatternString)
       size_t pos = submath.position(size_t(2));
       if ((math_end == "$") &&
           (submath.str(2) == "$")) {
-        mi.insert("$", math_pos, pos + 1);
+        mi.insert("$", math_pos, 1, pos + 1, 1);
         math_end_waiting = false;
       }
       else if ((math_end == "\\]") &&
                (submath.str(2) == "\\]")) {
-        mi.insert("\\]", math_pos, pos + 2);
+        mi.insert("\\]", math_pos, 2, pos + 2, 2);
         math_end_waiting = false;
       }
       else if ((submath.str(3).compare("end") == 0) &&
           (submath.str(4).compare(math_end) == 0)) {
-        mi.insert(math_end, math_pos, pos + submath.str(2).length());
+        mi.insert(math_end, math_pos, math_prefix_size, pos + submath.str(2).length(), submath.str(2).length());
         math_end_waiting = false;
       }
       else
@@ -1744,6 +1762,7 @@ void LatexInfo::buildEntries(bool isPatternString)
         math_end_waiting = true;
         math_end = submath.str(4);
         math_pos = submath.position(size_t(2));
+        math_prefix_size = submath.str(2).length();
       }
       else if (submath.str(2).compare("\\[") == 0) {
         math_end_waiting = true;
@@ -1769,9 +1788,12 @@ void LatexInfo::buildEntries(bool isPatternString)
       // Disable language
       keys["foreignlanguage"].disabled = true;
       disableLanguageOverride = true;
+      removeMathHull = false;
     }
-    else
+    else {
+      removeMathHull = true;	// used later if not isPatternString
       disableLanguageOverride = false;
+    }
   }
   else {
     if (disableLanguageOverride) {
@@ -1863,6 +1885,10 @@ void LatexInfo::buildEntries(bool isPatternString)
         found._dataStart = found._dataEnd;
         found.parenthesiscount = 0;
         found.head = interval_.par.substr(found._tokenstart, found._tokensize);
+	if (removeMathHull) {
+	  interval_.addIntervall(found._tokenstart, found._tokenstart + mi.getPrefixSize());
+	  interval_.addIntervall(found._dataEnd - mi.getPostfixSize(), found._dataEnd);
+	}
         evaluatingMath = true;
       }
       else {
@@ -2690,7 +2716,10 @@ int LatexInfo::process(ostringstream & os, KeyInfo const & actual )
   }
   if (dstart < output_end)
     interval_.output(os, output_end);
-  interval_.addIntervall(actual._tokenstart, end);
+  if (nextKeyIdx < 0)
+    interval_.addIntervall(0, end);
+  else
+    interval_.addIntervall(actual._tokenstart, end);
   return nextKeyIdx;
 }
 
