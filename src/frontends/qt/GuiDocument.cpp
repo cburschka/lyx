@@ -1896,6 +1896,7 @@ void GuiDocument::filterModules(QString const & str)
 			item->setData(m.name, Qt::DisplayRole);
 			item->setData(toqstr(m.id), Qt::UserRole);
 			item->setData(m.description, Qt::ToolTipRole);
+			item->setEditable(false);
 			if (m.local)
 				item->setIcon(user_icon);
 			else
