@@ -4530,6 +4530,10 @@ void GuiDocument::paramsToDialog()
 	// clear changed branches cache
 	changedBranches_.clear();
 
+	// re-initiate module filter
+	if (!filter_->text().isEmpty())
+		moduleFilterPressed();
+
 	// reset trackers
 	nonModuleChanged_ = false;
 	shellescapeChanged_ = false;
