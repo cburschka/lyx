@@ -1371,7 +1371,7 @@ Row const & TextMetrics::getPitAndRowNearY(int & y, pit_type & pit,
 				--rit;
 				y = yy;
 			}
-		} else if (up && yy != y) {
+		} else if (up && yy < y) {
 			if (rit != rlast) {
 				y = yy + rit->height();
 				++rit;
