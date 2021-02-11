@@ -78,6 +78,8 @@ What's new
 
 - Disable direct insertion of multiple spaces in mathed text (bug 1311).
 
+- Fix crash in tabular when an empty paragraph is removed
+  automatically (bug 12117).
 
 
 * INTERNALS

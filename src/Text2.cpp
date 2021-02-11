@@ -925,6 +925,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		if (cur.depth() >= old.depth()) {
 			CursorSlice & curslice = cur[old.depth() - 1];
 			if (&curslice.inset() == &old.inset()
+			    && curslice.idx() == old.idx()
 			    && curslice.pit() > old.pit()) {
 				--curslice.pit();
 				// since a paragraph has been deleted, all the
