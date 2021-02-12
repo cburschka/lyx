@@ -172,9 +172,10 @@
 
 * XSLT processor is needed, two options were successfully tested
   a) xsltproc
-     - works on Linux and OSX (tested with xsltproc 1.1.32)
-     - fails on Windows
+     - Works on Linux and OSX (tested with xsltproc 1.1.32).
+     - Fails on Windows.
   b) Saxon
+     - Tested on Linux, OSX and Windows.
      - Java is a required dependency. Any JVM for Java 1.4 should be supported.
      - Only Saxon versions 6.5.4 and 6.5.5 are supported.
      - Version 6.5.5 is bundled with LyX.
