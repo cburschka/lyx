@@ -20,6 +20,9 @@
 #include "BufferView.h"
 #include "Buffer.h"
 #include "Cursor.h"
+#include "FuncRequest.h"
+#include "KeyMap.h"
+#include "GuiKeySymbol.h"
 #include "GuiView.h"
 
 #include "support/gettext.h"
@@ -29,6 +32,8 @@
 #include <QShowEvent>
 
 using namespace std;
+
+using lyx::KeySymbol;
 
 namespace lyx {
 namespace frontend {
@@ -75,6 +80,29 @@ GuiSearch::GuiSearch(GuiView & lv)
 }
 
 
+void GuiSearch::keyPressEvent(QKeyEvent * ev)
+{
+	KeySymbol sym;
+	setKeySymbol(&sym, ev);
+
+	// we catch the key sequences for forward and backwards search
+	if (sym.isOK()) {
+		KeyModifier mod = lyx::q_key_state(ev->modifiers());
+		KeySequence keyseq(&theTopLevelKeymap(), &theTopLevelKeymap());
+		FuncRequest fr = keyseq.addkey(sym, mod);
+		if (fr == FuncRequest(LFUN_WORD_FIND_FORWARD) || fr == FuncRequest(LFUN_WORD_FIND)) {
+			findClicked();
+			return;
+		}
+		if (fr == FuncRequest(LFUN_WORD_FIND_BACKWARD)) {
+			findClicked(true);
+			return;
+		}
+	}
+	QDialog::keyPressEvent(ev);
+}
+
+
 void GuiSearch::showEvent(QShowEvent * e)
 {
 	findChanged();
@@ -95,11 +123,11 @@ void GuiSearch::findChanged()
 }
 
 
-void GuiSearch::findClicked()
+void GuiSearch::findClicked(bool const backwards)
 {
 	docstring const needle = qstring_to_ucs4(findCO->currentText());
 	find(needle, caseCB->isChecked(), wordsCB->isChecked(),
-		!backwardsCB->isChecked());
+		(!backwards && !backwardsCB->isChecked()));
 	uniqueInsert(findCO, findCO->currentText());
 	findCO->lineEdit()->selectAll();
 }

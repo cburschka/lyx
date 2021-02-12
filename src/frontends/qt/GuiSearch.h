@@ -28,11 +28,14 @@ public:
 
 private Q_SLOTS:
 	void findChanged();
-	void findClicked();
+	void findClicked(bool const backwards = false);
 	void replaceClicked();
 	void replaceallClicked();
 
 private:
+	///
+	void keyPressEvent(QKeyEvent * e) override;
+	///
 	void showEvent(QShowEvent * e) override;
 	///
 	bool initialiseParams(std::string const &) override { return true; }
