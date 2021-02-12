@@ -1006,9 +1006,14 @@ def checkConverterEntries():
     checkProg('DocBook converter -> PDF (docbook)', ['pandoc -f docbook -t latex --latex-engine=lualatex --toc -o $$o $$i'],
         rc_entry = [ r'\converter docbook5      pdf9      "%%"	""' ])
     #
+    xpath, xslt_sheet = checkProg('XSLT stylesheets for ePub', ['chunk.xsl'], '', ['/usr/share/xml/docbook/stylesheet/docbook-xsl-ns/epub3'])
+    if xslt_sheet == 'chunk.xsl':
+        xpath = '/usr/share/xml/docbook/stylesheet/docbook-xsl-ns'
+    else:
+        xpath = 'none'
     global java
     if xsltproc != '':
-        addToRC('\\converter docbook5 epub "python $$s/scripts/docbook2epub.py none none \\"' + xsltproc + '\\" none $$i $$o" ""')
+        addToRC('\\converter docbook5 epub "python $$s/scripts/docbook2epub.py none none \\"' + xsltproc + '\\" ' + xpath + ' $$i $$o" ""')
     elif java != '':
         addToRC('\\converter docbook5 epub "python $$s/scripts/docbook2epub.py \\"' + java + '\\" none none none $$i $$o" ""')
     #
