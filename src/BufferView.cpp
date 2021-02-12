@@ -959,8 +959,15 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter)
 		CursorSlice const & cs = dit.innerTextSlice();
 		int offset = coordOffset(dit).y_;
 		int ypos = pm.position() + offset;
-		Dimension const & row_dim =
-			pm.getRow(cs.pos(), dit.boundary()).dim();
+		Row const & row = pm.getRow(cs.pos(), dit.boundary());
+		Dimension row_dim = row.dim();
+		// FIXME: the will not be necessary anymore if Row has both a
+		// dim() which is its full dimension and a contentsDim() which
+		// is the dimension of the text only.
+		if (&row == &pm.rows().front())
+			row_dim.asc = pm.ascent();
+		if (&row == &pm.rows().back())
+			row_dim.des = pm.descent();
 		int scrolled = 0;
 		if (recenter)
 			scrolled = scroll(ypos - height_/2);
