@@ -274,7 +274,7 @@ struct BufferView::Private
 	  */
 	frontend::GuiBufferViewDelegate * gui_;
 
-	/// Cache for Find Next
+	/// cache search string for simple search
 	docstring search_request_cache_;
 
 	///
