@@ -583,13 +583,13 @@ dist_images_DATA1X = \
 	images/dialog-show-new-inset_ref.svgz \
 	images/dialog-show_character.svgz \
 	images/dialog-show_findreplace.svgz \
+	images/dialog-show_findreplaceadv.svgz \
 	images/dialog-show_mathdelimiter.svgz \
 	images/dialog-show_mathmatrix.svgz \
 	images/dialog-show_print.svgz \
 	images/dialog-show_spellchecker.svgz \
+	images/dialog-show_toc.svgz \
 	images/dialog-show_vclog.svgz \
-	images/dialog-toggle_findreplaceadv.svgz \
-	images/dialog-toggle_toc.svgz \
 	images/down.svgz \
 	images/dynamic-char-styles.svgz \
 	images/dynamic-custom-insets.svgz \
@@ -2052,13 +2052,13 @@ dist_imagesoxygen_DATA1X = \
 	images/oxygen/dialog-show-new-inset_ref.svgz \
 	images/oxygen/dialog-show_character.svgz \
 	images/oxygen/dialog-show_findreplace.svgz \
+	images/oxygen/dialog-show_findreplaceadv.svgz \
 	images/oxygen/dialog-show_mathdelimiter.svgz \
 	images/oxygen/dialog-show_mathmatrix.svgz \
 	images/oxygen/dialog-show_print.svgz \
 	images/oxygen/dialog-show_spellchecker.svgz \
+	images/oxygen/dialog-show_toc.svgz \
 	images/oxygen/dialog-show_vclog.svgz \
-	images/oxygen/dialog-toggle_findreplaceadv.svgz \
-	images/oxygen/dialog-toggle_toc.svgz \
 	images/oxygen/dynamic-char-styles.svgz \
 	images/oxygen/dynamic-custom-insets.svgz \
 	images/oxygen/down.svgz \
@@ -2255,6 +2255,7 @@ dist_imagesclassic_DATA = \
 	images/classic/depth-decrement.png  \
 	images/classic/depth-increment.png  \
 	images/classic/dialog-preferences.png  \
+	images/classic/dialog-show_findreplaceadv.png  \
 	images/classic/dialog-show_mathdelimiter.png  \
 	images/classic/dialog-show_mathmatrix.png  \
 	images/classic/dialog-show-new-inset_citation.png  \
@@ -2265,9 +2266,8 @@ dist_imagesclassic_DATA = \
 	images/classic/dialog-show_findreplace.png  \
 	images/classic/dialog-show_print.png  \
 	images/classic/dialog-show_spellchecker.png  \
+	images/classic/dialog-show_toc.png  \
 	images/classic/dialog-show_vclog.png  \
-	images/classic/dialog-toggle_findreplaceadv.png  \
-	images/classic/dialog-toggle_toc.png  \
 	images/classic/down.png  \
 	images/classic/ert-insert.png  \
 	images/classic/file-open.png  \

@@ -490,6 +490,8 @@ IconInfo iconInfo(FuncRequest const & f, bool unknown, bool rtl)
 		name.replace(' ', '_');
 		name.replace(';', '_');
 		name.replace('\\', "backslash");
+		// avoid duplication for these
+		name.replace("dialog-toggle", "dialog-show");
 		names << name;
 
 		// then special default icon for some lfuns
