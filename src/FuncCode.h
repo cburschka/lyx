@@ -495,6 +495,7 @@ enum FuncCode
 	// 385
 	LFUN_INSET_SPLIT,               // jspitzm 20201222
 	LFUN_LYXFILES_OPEN,             // jspitzm 20210210
+	LFUN_SEARCH_STRING_SET,         // stwitt/jspitzm 20210212
 	LFUN_LASTACTION                 // end of the table
 };
 

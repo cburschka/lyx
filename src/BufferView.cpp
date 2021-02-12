@@ -275,7 +275,7 @@ struct BufferView::Private
 	frontend::GuiBufferViewDelegate * gui_;
 
 	/// Cache for Find Next
-	FuncRequest search_request_cache_;
+	docstring search_request_cache_;
 
 	///
 	map<string, Inset *> edited_insets_;
@@ -1155,6 +1155,7 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_MARK_OFF:
 	case LFUN_MARK_ON:
 	case LFUN_MARK_TOGGLE:
+	case LFUN_SEARCH_STRING_SET:
 	case LFUN_SCREEN_RECENTER:
 	case LFUN_SCREEN_SHOW_CURSOR:
 	case LFUN_BIBTEX_DATABASE_ADD:
@@ -1609,16 +1610,13 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	case LFUN_WORD_FIND_FORWARD:
 	case LFUN_WORD_FIND_BACKWARD: {
-		// FIXME THREAD
-		// Would it maybe be better if this variable were view specific anyway?
-		static docstring last_search;
 		docstring searched_string;
 
 		if (!cmd.argument().empty()) {
-			last_search = cmd.argument();
+			d->search_request_cache_ = cmd.argument();
 			searched_string = cmd.argument();
 		} else {
-			searched_string = last_search;
+			searched_string = d->search_request_cache_;
 		}
 
 		if (searched_string.empty())
@@ -1636,19 +1634,38 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	case LFUN_WORD_FIND: {
-		FuncRequest req = cmd;
-		if (cmd.argument().empty() && !d->search_request_cache_.argument().empty())
-			req = d->search_request_cache_;
-		if (req.argument().empty()) {
+		docstring arg = cmd.argument();
+		if (arg.empty() && !d->search_request_cache_.empty())
+			arg = d->search_request_cache_;
+		if (arg.empty()) {
 			lyx::dispatch(FuncRequest(LFUN_DIALOG_SHOW, "findreplace"));
 			break;
 		}
-		if (lyxfind(this, req))
+		if (lyxfind(this, FuncRequest(act, arg)))
 			dr.screenUpdate(Update::Force | Update::FitCursor);
 		else
 			dr.setMessage(_("Search string not found!"));
 
-		d->search_request_cache_ = req;
+		d->search_request_cache_ = arg;
+		break;
+	}
+
+	case LFUN_SEARCH_STRING_SET: {
+		docstring pattern = cmd.argument();
+		if (!pattern.empty()) {
+			d->search_request_cache_ = pattern;
+			break;
+		}
+		if (cur.selection())
+			pattern = cur.selectionAsString(false);
+		else {
+			pos_type spos = cur.pos();
+			cur.innerText()->selectWord(cur, WHOLE_WORD);
+			pattern = cur.selectionAsString(false);
+			cur.selection(false);
+			cur.pos() = spos;
+		}
+		d->search_request_cache_ = pattern;
 		break;
 	}
 

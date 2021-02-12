@@ -4346,6 +4346,17 @@ void LyXAction::init()
  */
 		{ LFUN_WORD_FIND, "word-find", ReadOnly, Edit },
 
+/*! 
+ * \var lyx::FuncCode lyx::LFUN_SEARCH_STRING_SET
+ * \li Action: Set search string buffer.
+ * \li Syntax: search-string-set [<DATA>] 
+ * \li Params: <DATA>: string to search for. If no parameter is given,
+ *                     use (word under) selection.
+ * \li Origin: stwitt, spitz, Feb 12 2021 
+ * \endvar 
+ */ 
+		{ LFUN_SEARCH_STRING_SET, "search-string-set", ReadOnly, Edit }, 
+
 /*!
  * \var lyx::FuncCode lyx::LFUN_WORD_FINDADV
  * \li Action: Search for next occurrence of a pattern.

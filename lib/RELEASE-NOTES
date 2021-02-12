@@ -97,6 +97,10 @@
 * paragraph-select is a new convenience function to select the paragraph
   surrounding the actual cursor position.
 
+* search-string-set [arg] stores the <arg>, the currently selected text or the word under
+  cursor in the search cache that is used by word-find[-backward|-forward] if no argument
+  is given to those. 
+
 * inset-split is a new convenience function that splits an inset into two at the given
   cursor position. This is only implemented for text insets currently.
 
