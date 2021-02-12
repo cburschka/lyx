@@ -164,15 +164,20 @@
 
 * The dependency on sgmltools was dropped, see DocBook 5 section.
 
-* Java is a required dependency to generate ePub files. Any JVM for Java 1.4
-  should be supported.
-
-* Saxon is a required dependency to generate ePub files. Only versions 6.5.4
-  and 6.5.5 are supported. Version 6.5.5 is bundled with LyX.
+!!! Dependencies to generate ePub files:
 
 * The DocBook XSLT 1.0 style sheets are a required dependency to generate
   ePub files. All versions since 1.76.0 are supported. Version 1.79.2 is
   bundled with LyX.
+
+* XSLT processor is needed, two options were successfully tested
+  a) xsltproc
+     - works on Linux and OSX (tested with xsltproc 1.1.32)
+     - fails on Windows
+  b) Saxon
+     - Java is a required dependency. Any JVM for Java 1.4 should be supported.
+     - Only Saxon versions 6.5.4 and 6.5.5 are supported.
+     - Version 6.5.5 is bundled with LyX.
 
 
 !!Known issues in version 2.4.0
