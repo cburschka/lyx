@@ -93,7 +93,7 @@ Format 5
 \bind "C-S-E"			"changes-track"  # it's what MS Word uses
 \bind "~S-M-quotedbl"		"quote-insert inner"
 \bind "~S-C-quotedbl"		"quote-insert outer auto plain"
-\bind "C-minus"			"specialchar-insert hyphenation"
+\bind "M-minus"			"specialchar-insert hyphenation"
 \bind "C-S-underscore"		"math-macro-fold"
 \bind "C-M-minus"		"specialchar-insert nobreakdash"
 \bind "M-S-Right"		"depth-increment"
@@ -124,10 +124,10 @@ Format 5
 
 \bind "F11"			"ui-toggle fullscreen"
 
-\bind "M-0"			"buffer-zoom"
-\bind "M-equal"			"buffer-zoom-in"
-\bind "M-plus"			"buffer-zoom-in"
-\bind "M-minus"			"buffer-zoom-out"
+\bind "C-0"			"buffer-zoom"
+\bind "C-equal"			"buffer-zoom-in"
+\bind "C-plus"			"buffer-zoom-in"
+\bind "C-minus"			"buffer-zoom-out"
 
 #
 # Motion group
