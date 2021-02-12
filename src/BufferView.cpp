@@ -1629,9 +1629,12 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		if (searched_string.empty())
 			break;
 
-		bool const fw = act == LFUN_WORD_FIND_FORWARD;
+		bool casesensitive;
+		bool matchword;
+		bool forward;
+		docstring const search = string2find(searched_string, casesensitive, matchword, forward);
 		docstring const data =
-			find2string(searched_string, true, false, fw);
+			find2string(search, casesensitive, matchword, act == LFUN_WORD_FIND_FORWARD);
 		bool found = lyxfind(this, FuncRequest(LFUN_WORD_FIND, data));
 		if (found)
 			dr.screenUpdate(Update::Force | Update::FitCursor);

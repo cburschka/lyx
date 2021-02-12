@@ -459,22 +459,35 @@ docstring const replace2string(docstring const & replace,
 }
 
 
+docstring const string2find(docstring const & argument,
+			      bool &casesensitive,
+			      bool &matchword,
+			      bool &forward)
+{
+	// data is of the form
+	// "<search>
+	//  <casesensitive> <matchword> <forward>"
+	docstring search;
+	docstring howto = split(argument, search, '\n');
+
+	casesensitive = parse_bool(howto);
+	matchword     = parse_bool(howto);
+	forward       = parse_bool(howto);
+
+	return search;
+}
+
+
 bool lyxfind(BufferView * bv, FuncRequest const & ev)
 {
 	if (!bv || ev.action() != LFUN_WORD_FIND)
 		return false;
 
 	//lyxerr << "find called, cmd: " << ev << endl;
-
-	// data is of the form
-	// "<search>
-	//  <casesensitive> <matchword> <forward>"
-	docstring search;
-	docstring howto = split(ev.argument(), search, '\n');
-
-	bool casesensitive = parse_bool(howto);
-	bool matchword     = parse_bool(howto);
-	bool forward       = parse_bool(howto);
+	bool casesensitive;
+	bool matchword;
+	bool forward;
+	docstring search = string2find(ev.argument(), casesensitive, matchword, forward);
 
 	return findOne(bv, search, casesensitive, matchword, forward, false, true);
 }

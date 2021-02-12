@@ -28,6 +28,14 @@ class BufferView;
 class DocIterator;
 class FuncRequest;
 
+/** Decode the \c argument to extract search plus options from a string
+ *  that came to the LyX core in a FuncRequest wrapper.
+ */
+docstring const string2find(docstring const & argument,
+			      bool &casesensitive,
+			      bool &matchword,
+			      bool &forward);
+
 /** Encode the parameters needed to find \c search as a string
  *  that can be dispatched to the LyX core in a FuncRequest wrapper.
  */
