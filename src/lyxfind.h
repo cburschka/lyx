@@ -124,7 +124,7 @@ public:
 };
 
 /// Set the formats that should be ignored
-void setIgnoreFormat(std::string const & type, bool value);
+void setIgnoreFormat(std::string const & type, bool value, bool fromUser = true);
 
 /// Write a FindAdvOptions instance to a stringstream
 std::ostringstream & operator<<(std::ostringstream & os, lyx::FindAndReplaceOptions const & opt);

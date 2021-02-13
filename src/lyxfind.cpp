@@ -106,7 +106,7 @@ class IgnoreFormats {
 	///
 	void setIgnoreDeleted(bool value);
 	///
-	void setIgnoreFormat(string const & type, bool value);
+	void setIgnoreFormat(string const & type, bool value, bool fromUser = true);
 
 private:
 	///
@@ -129,17 +129,23 @@ private:
 	bool ignoreColor_ = false;
 	///
 	bool ignoreLanguage_ = false;
+	bool userSelectedIgnoreLanguage_ = false;
 	///
 	bool ignoreDeleted_ = true;
 };
 
-void IgnoreFormats::setIgnoreFormat(string const & type, bool value)
+void IgnoreFormats::setIgnoreFormat(string const & type, bool value, bool fromUser)
 {
 	if (type == "color") {
 		ignoreColor_ = value;
 	}
 	else if (type == "language") {
-		ignoreLanguage_ = value;
+		if (fromUser) {
+			userSelectedIgnoreLanguage_ = value;
+			ignoreLanguage_ = value;
+		}
+		else
+			ignoreLanguage_ = (value || userSelectedIgnoreLanguage_);
 	}
 	else if (type == "sectioning") {
 		ignoreSectioning_ = value;
@@ -177,9 +183,9 @@ void IgnoreFormats::setIgnoreFormat(string const & type, bool value)
 IgnoreFormats ignoreFormats;
 
 
-void setIgnoreFormat(string const & type, bool value)
+void setIgnoreFormat(string const & type, bool value, bool fromUser)
 {
-  ignoreFormats.setIgnoreFormat(type, value);
+  ignoreFormats.setIgnoreFormat(type, value, fromUser);
 }
 
 
@@ -1677,9 +1683,9 @@ class MathInfo {
     m.wait = wait;
     m.mathStart = start;
     m.mathprefixsize = prefixsize;
-    m.mathEnd = end;
+    m.mathEnd = end + postfixsize;
     m.mathpostfixsize = postfixsize;
-    m.mathSize = end - start;
+    m.mathSize = m.mathEnd - m.mathStart;
     entries_.push_back(m);
   }
   bool empty() const { return entries_.empty(); };
@@ -1754,17 +1760,17 @@ void LatexInfo::buildEntries(bool isPatternString)
       size_t pos = submath.position(size_t(2));
       if ((math_end == "$") &&
           (submath.str(2) == "$")) {
-        mi.insert("$", math_pos, 1, pos + 1, 1);
+        mi.insert("$", math_pos, 1, pos, 1);
         math_end_waiting = false;
       }
       else if ((math_end == "\\]") &&
                (submath.str(2) == "\\]")) {
-        mi.insert("\\]", math_pos, 2, pos + 2, 2);
+        mi.insert("\\]", math_pos, 2, pos, 2);
         math_end_waiting = false;
       }
       else if ((submath.str(3).compare("end") == 0) &&
           (submath.str(4).compare(math_end) == 0)) {
-        mi.insert(math_end, math_pos, math_prefix_size, pos + submath.str(2).length(), submath.str(2).length());
+        mi.insert(math_end, math_pos, math_prefix_size, pos, submath.str(2).length());
         math_end_waiting = false;
       }
       else
@@ -2849,7 +2855,7 @@ static string correctlanguagesetting(string par, bool isPatternString, bool with
 					break;
 				}
 			}
-			setIgnoreFormat("language", toIgnoreLang);
+			setIgnoreFormat("language", toIgnoreLang, false);
 
 		}
 		result = splitOnKnownMacros(par.substr(0,parlen), isPatternString);
