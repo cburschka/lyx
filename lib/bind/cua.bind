@@ -107,6 +107,7 @@ Format 5
 #bind "C-F1"			"help-context"		# Not yet implemented!
 \bind "F2"			"buffer-write force"
 \bind "F3"			"word-find"
+\bind "C-F3"			"word-find-backward"
 \bind "C-F4"			"buffer-close"
 \bind "M-F4"			"lyx-quit"
 \bind "F5"			"screen-recenter"
