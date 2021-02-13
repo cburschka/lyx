@@ -251,6 +251,8 @@ public:
 	///
 	std::string const & docbookforceabstracttag() const;
 	///
+	bool docbooknofontinside() const { return docbooknofontinside_; }
+	///
 	bool isParagraph() const { return latextype == LATEX_PARAGRAPH; }
 	///
 	bool isCommand() const { return latextype == LATEX_COMMAND; }
@@ -573,6 +575,8 @@ private:
 	/// in LyX must be considered as the abstract if this is true); this text must be output with the specific tag
 	/// held by this attribute
 	mutable std::string docbookforceabstracttag_;
+	/// Whether font tags are allowed inside this tag.
+	bool docbooknofontinside_ = false;
 	/// Should we generate the default CSS for this layout, even if HTMLStyle
 	/// has been given? Default is false.
 	/// Note that the default CSS is output first, then the user CSS, so it is

@@ -1,0 +1,277 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 606
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\date{Janvier 2021}
+
+
+%espacement horizontal contrôlé TDM/TOC empêche chevauchement
+\usepackage{tocloft}
+\setlength{\cftfignumwidth}{3.5em}
+\cftsetindents{section}{0em}{2.8em}
+\cftsetindents{subsection}{2.4em}{3.7em}
+
+%
+\usepackage{xcolor}
+\colorlet{BLUE}{blue}
+
+%liens en gris TDM/TDF/TDT + hyperlien + citations biblio
+\hypersetup{urlcolor=gray}
+\hypersetup{linkcolor=gray}
+\hypersetup{citecolor=gray}
+
+% ???
+\usepackage{alltt}
+\usepackage{upquote}
+\newcommand{\nospace}[1]{\texttt{#1}}
+
+% faire apparaître les chapitres*
+\let\newchapter\chapter
+\long\def\chapter{\addtocontents{toc}{\penalty-3000}\newchapter}
+
+\usepackage{newtxmath}
+
+% tableau dans encadré TeX
+\usepackage{tabularx}
+
+
+
+% évite la numérotation des pages vides et met le numérotation i, ii, iii, iv, etc
+% pour les pages avant les chapitres (numérotés arabian)
+\usepackage{emptypage}
+\usepackage{etoolbox}
+% Fixing the appearance of the footer in the empty pages in between chapters.
+\let\origdoublepage\cleardoublepage
+\renewcommand{\cleardoublepage}{%
+  \clearpage
+  {\pagestyle{empty}\origdoublepage}%
+}
+% Finished fixing appearance
+
+% empêche que les pages incomplètes incorporent des espaces verticaux
+\raggedbottom
+
+% citations comme [1-4] au lieu de [1,2,3,4]
+\usepackage{cite}
+
+% pour l'index
+\usepackage{latexsym}
+\usepackage{textgreek}
+
+% séparation texte / notes de bas de page si page pas pleine
+%\addtolength{\skip\footins}{5pt} 
+\usepackage[bottom]{footmisc}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children no
+\language french
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "times" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize b5
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices true
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\use_lineno 0
+\backgroundcolor #ffffff
+\fontcolor #000000
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\index Index des fonctions extrinsèques
+\shortcut ind
+\color #008000
+\end_index
+\paperwidth 175cm
+\paperheight 240mm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style swiss
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle headings
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\series bold
+\noun on
+Think Julia
+\end_layout
+
+\begin_layout Author
+
+\size normal
+\noun on
+Auteurs: Ben Lauwens et Allen B.
+ Downey
+\size default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\size normal
+Traduction française et aménagements: Thierry Lepoint
+\end_layout
+
+\begin_layout Chapter
+Droits associés à la version française
+\end_layout
+
+\begin_layout Standard
+En vertu de la licence Creative Commons (
+\begin_inset CommandInset href
+LatexCommand href
+name "CC BY-NC-SA 3.0 FR"
+target "https://creativecommons.org/licenses/by-nc-sa/3.0/fr/"
+literal "false"
+
+\end_inset
+
+; 
+\emph on
+Attribution - Pas d’Utilisation Commerciale - Partage dans les Mêmes Conditions
+ 3.0 FR
+\emph default
+), vous êtes autorisé à partager (copier, distribuer et communiquer le matériel
+ par tous moyens et sous tous formats) et adapter (remixer, transformer
+ et créer à partir du matériel) selon les conditions suivantes:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Attribution
+\emph default
+ — Vous devez créditer le document, intégrer un lien vers la licence (en
+ l'occurrence: 
+\begin_inset CommandInset href
+LatexCommand href
+name "CC BY-NC-SA 3.0 FR"
+target "https://creativecommons.org/licenses/by-nc-sa/3.0/fr/legalcode"
+literal "false"
+
+\end_inset
+
+) et indiquer si des modifications ont été effectuées au document.
+ Vous devez indiquer ces informations par tous les moyens raisonnables,
+ sans toutefois suggérer que le présent auteur vous soutient ou soutient
+ la façon dont vous avez utilisé son travail.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Pas d’utilisation commerciale
+\emph default
+ — Vous n'êtes pas autorisé à faire un usage commercial du présent document,
+ tout ou partie du matériel le composant.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Partage dans les mêmes conditions — 
+\emph default
+Dans le cas où vous effectuez un remix, que vous transformez, ou créez à
+ partir du matériel composant le document original, vous devez diffuser
+ le document modifié dans les mêmes conditions, c'est-à-dire avec la même
+ licence avec laquelle le document original a été diffusé.
+ 
+\end_layout
+
+\begin_layout Standard
+Vous n'êtes pas autorisé à appliquer des conditions légales ou des mesures
+ techniques qui restreindraient légalement autrui à utiliser le document
+ dans les conditions décrites par la 
+\begin_inset CommandInset href
+LatexCommand href
+name "licence"
+target "https://creativecommons.org/licenses/by-nc-sa/3.0/fr/legalcode"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

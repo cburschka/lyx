@@ -182,6 +182,8 @@ public:
 	///
 	std::string docbookitemattr() const { return docbookitemattr_; }
 	///
+	bool docbooknofontinside() const { return docbooknofontinside_; }
+	///
 	std::set<std::string> required() const { return required_; }
 	///
 	bool isMultiPar() const { return multipar_; }
@@ -340,6 +342,8 @@ private:
 	mutable std::string docbookitemwrappertagtype_;
 	///
 	std::string docbookitemwrapperattr_;
+	///
+	bool docbooknofontinside_ = false;
 	///
 	std::set<std::string> required_;
 	///

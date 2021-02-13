@@ -106,6 +106,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		IL_DOCBOOKITEMWRAPPERTAG,
 		IL_DOCBOOKITEMWRAPPERTAGTYPE,
 		IL_DOCBOOKITEMWRAPPERATTR,
+        IL_DOCBOOKNOFONTINSIDE,
 		IL_INTOC,
 		IL_ISTOCCAPTION,
 		IL_LABELFONT,
@@ -159,6 +160,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		{ "docbookitemwrapperattr", IL_DOCBOOKITEMWRAPPERATTR },
 		{ "docbookitemwrappertag", IL_DOCBOOKITEMWRAPPERTAG },
 		{ "docbookitemwrappertagtype", IL_DOCBOOKITEMWRAPPERTAGTYPE },
+		{ "docbooknofontinside", IL_DOCBOOKNOFONTINSIDE },
 		{ "docbooknotinpara", IL_DOCBOOKNOTINPARA },
 		{ "docbooksection", IL_DOCBOOKSECTION },
 		{ "docbooktag", IL_DOCBOOKTAG },
@@ -556,6 +558,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		case IL_DOCBOOKWRAPPERATTR:
 			lex >> docbookwrapperattr_;
 			break;
+        case IL_DOCBOOKNOFONTINSIDE:
+            lex >> docbooknofontinside_;
+            break;
 		case IL_REQUIRES: {
 			lex.eatLine();
 			vector<string> const req

@@ -129,6 +129,7 @@ enum LayoutTags {
 	LT_DOCBOOKITEMINNERATTR,
 	LT_DOCBOOKITEMINNERTAGTYPE,
 	LT_DOCBOOKFORCEABSTRACTTAG,
+	LT_DOCBOOKNOFONTINSIDE,
 	LT_INPREAMBLE,
 	LT_HTMLTITLE,
 	LT_SPELLCHECK,
@@ -252,6 +253,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 		{ "docbookitemwrapperattr",    LT_DOCBOOKITEMWRAPPERATTR },
 		{ "docbookitemwrappertag",     LT_DOCBOOKITEMWRAPPERTAG },
 		{ "docbookitemwrappertagtype", LT_DOCBOOKITEMWRAPPERTAGTYPE },
+		{ "docbooknofontinside",       LT_DOCBOOKNOFONTINSIDE, },
 		{ "docbooksection",            LT_DOCBOOKSECTION },
 		{ "docbooksectiontag",         LT_DOCBOOKSECTIONTAG },
 		{ "docbooktag",                LT_DOCBOOKTAG },
@@ -852,6 +854,10 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 		case LT_DOCBOOKITEMINNERTAGTYPE:
 			lex >> docbookiteminnertagtype_;
 			break;
+
+        case LT_DOCBOOKNOFONTINSIDE:
+            lex >> docbooknofontinside_;
+            break;
 
 		case LT_SPELLCHECK:
 			lex >> spellcheck;
@@ -1719,7 +1725,8 @@ void Layout::write(ostream & os) const
 		os << "\tDocBookItemInnerTagType " << docbookiteminnertagtype_ << '\n';
 	if(!docbookforceabstracttag_.empty())
 		os << "\tDocBookForceAbstractTag " << docbookforceabstracttag_ << '\n';
-	os << "\tSpellcheck " << spellcheck << "\n"
+    os << "\tDocBookNoFontInside " << docbooknofontinside_ << "\n"
+	      "\tSpellcheck " << spellcheck << "\n"
 	      "\tForceLocal " << forcelocal << "\n"
 	      "End\n";
 }

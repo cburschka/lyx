@@ -11,7 +11,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 92
+currentFormat = 93
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -311,7 +311,10 @@ currentFormat = 92
 # InputGlobal tag
 
 # Incremented to format 92, 30 January 2021 by spitz
-# Add ProvideInsetLayout and ModifyIndetLayout
+# Add ProvideInsetLayout and ModifyInsetLayout
+
+# Incremented to format 93, 13 February 2021 by spitz
+# Add DocBookNoFontInside
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
@@ -563,7 +566,7 @@ def convert(lines, end_format):
                 i += 1
             continue
 
-        if 87 <= format <= 92:
+        if 87 <= format <= 93:
             # nothing to do.
             i += 1
             continue

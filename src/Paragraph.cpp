@@ -3448,6 +3448,10 @@ std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
 
 	// Parsing main loop.
 	for (pos_type i = initial; i < size(); ++i) {
+	    bool ignore_fonts_i = ignore_fonts
+                              || style.docbooknofontinside()
+                              || (getInset(i) && getInset(i)->getLayout().docbooknofontinside());
+
 		// Don't show deleted material in the output.
 		if (isDeleted(i))
 			continue;
@@ -3455,7 +3459,7 @@ std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
 		// If this is an InsetNewline, generate a new paragraph. Also reset the fonts, so that tags are closed in
 		// this paragraph.
 		if (getInset(i) && getInset(i)->lyxCode() == NEWLINE_CODE) {
-			if (!ignore_fonts)
+			if (!ignore_fonts_i)
 				xs->closeFontTags();
 
 			// Output one paragraph (i.e. one string entry in generatedParagraphs).
@@ -3468,7 +3472,7 @@ std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
 			xs = new XMLStream(os);
 
 			// Restore the fonts for the new paragraph, so that the right tags are opened for the new entry.
-			if (!ignore_fonts) {
+			if (!ignore_fonts_i) {
 				font_old = outerfont.fontInfo();
 				fs = old_fs;
 			}
@@ -3476,24 +3480,23 @@ std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
 
 		// Determine which tags should be opened or closed regarding fonts.
 		Font const font = getFont(buf.masterBuffer()->params(), i, outerfont);
-		if (!ignore_fonts) {
-			tie(tagsToOpen, tagsToClose) = computeDocBookFontSwitch(font_old, font, default_family, fs);
+        tie(tagsToOpen, tagsToClose) = computeDocBookFontSwitch(font_old, font, default_family, fs);
 
-			// FIXME XHTML
-			// Other such tags? What about the other text ranges?
+		if (!ignore_fonts_i) {
+            vector<xml::EndFontTag>::const_iterator cit = tagsToClose.begin();
+            vector<xml::EndFontTag>::const_iterator cen = tagsToClose.end();
+            for (; cit != cen; ++cit)
+                *xs << *cit;
+        }
 
-			vector<xml::EndFontTag>::const_iterator cit = tagsToClose.begin();
-			vector<xml::EndFontTag>::const_iterator cen = tagsToClose.end();
-			for (; cit != cen; ++cit)
-				*xs << *cit;
+        // Deal with the delayed characters *after* closing font tags.
+        if (!delayedChars.empty()) {
+            for (char_type c: delayedChars)
+                *xs << c;
+            delayedChars.clear();
+        }
 
-			// Deal with the delayed characters *after* closing font tags.
-			if (!delayedChars.empty()) {
-				for (char_type c: delayedChars)
-					*xs << c;
-				delayedChars.clear();
-			}
-
+        if (!ignore_fonts_i) {
 			vector<xml::FontTag>::const_iterator sit = tagsToOpen.begin();
 			vector<xml::FontTag>::const_iterator sen = tagsToOpen.end();
 			for (; sit != sen; ++sit)
@@ -3503,6 +3506,7 @@ std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
 			tagsToOpen.clear();
 		}
 
+        // Finally, write the next character or inset.
 		if (Inset const * inset = getInset(i)) {
 			if (!runparams.for_toc || inset->isInToc()) {
 				OutputParams np = runparams;
