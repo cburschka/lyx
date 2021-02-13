@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>416</width>
-    <height>228</height>
+    <height>240</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -30,7 +30,7 @@
        <item row="0" column="0">
         <widget class="QLabel" name="findLA">
          <property name="text">
-          <string>Fi&amp;nd:</string>
+          <string>&amp;Find:</string>
          </property>
          <property name="buddy">
           <cstring>findCO</cstring>
@@ -65,7 +65,7 @@
        <item row="1" column="0">
         <widget class="QLabel" name="replaceLA">
          <property name="text">
-          <string>Repla&amp;ce with:</string>
+          <string>Re&amp;place with:</string>
          </property>
          <property name="buddy">
           <cstring>replaceCO</cstring>
@@ -131,7 +131,7 @@
        <item>
         <widget class="QCheckBox" name="wordsCB">
          <property name="text">
-          <string>Match w&amp;hole words only</string>
+          <string>Match &amp;whole words only</string>
          </property>
         </widget>
        </item>
