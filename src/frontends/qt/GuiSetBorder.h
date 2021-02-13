@@ -27,7 +27,7 @@ class GuiSetBorder : public QWidget
 {
 	Q_OBJECT
 public:
-	GuiSetBorder(QWidget * parent = nullptr, Qt::WindowFlags fl = nullptr);
+	GuiSetBorder(QWidget * parent = nullptr, Qt::WindowFlags fl = {});
 
 	// We need tristate for multi-cell selection
 	enum BorderState {

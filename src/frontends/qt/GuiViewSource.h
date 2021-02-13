@@ -100,7 +100,7 @@ public:
 	GuiViewSource(
 		GuiView & parent, ///< the main window where to dock.
 		Qt::DockWidgetArea area = Qt::BottomDockWidgetArea, ///< Position of the dock (and also drawer)
-		Qt::WindowFlags flags = 0);
+		Qt::WindowFlags flags = {});
 
 	/// Controller inherited method.
 	///@{
