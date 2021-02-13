@@ -1015,7 +1015,7 @@ def checkConverterEntries():
     if xsltproc != '':
         addToRC('\\converter docbook5 epub "python $$s/scripts/docbook2epub.py none none \\"' + xsltproc + '\\" ' + xpath + ' $$i $$o" ""')
     elif java != '':
-        addToRC('\\converter docbook5 epub "python $$s/scripts/docbook2epub.py \\"' + java + '\\" none none none $$i $$o" ""')
+        addToRC('\\converter docbook5 epub "python $$s/scripts/docbook2epub.py \\"' + java + '\\" none none ' + xpath + ' $$i $$o" ""')
     #
     checkProg('a MS Word Office Open XML converter -> LaTeX', ['pandoc -s -f docx -o $$o -t latex $$i'],
         rc_entry = [ r'\converter word2      latex      "%%"	""' ])
