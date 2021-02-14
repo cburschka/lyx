@@ -420,14 +420,14 @@ GuiViewSource::GuiViewSource(GuiView & parent,
 void GuiViewSource::onBufferViewChanged()
 {
 	widget_->setText();
-	widget_->setEnabled((bool)bufferview());
+	widget_->setEnabled(static_cast<bool>(bufferview()));
 }
 
 
 void GuiViewSource::updateView()
 {
 	if (widget_->autoUpdateCB->isChecked()) {
-		widget_->setEnabled((bool)bufferview());
+		widget_->setEnabled(static_cast<bool>(bufferview()));
 		scheduleUpdate();
 	}
 	widget_->masterPerspectiveCB->setEnabled(buffer().parent());
@@ -437,7 +437,7 @@ void GuiViewSource::updateView()
 
 void GuiViewSource::enableView(bool enable)
 {
-	widget_->setEnabled((bool)bufferview());
+	widget_->setEnabled(static_cast<bool>(bufferview()));
 	if (bufferview())
 		widget_->updateDefaultFormat(*bufferview());
 	if (!enable)

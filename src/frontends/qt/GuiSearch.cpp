@@ -292,7 +292,7 @@ GuiSearch::GuiSearch(GuiView & parent, Qt::DockWidgetArea area, Qt::WindowFlags 
 
 void GuiSearch::onBufferViewChanged()
 {
-	widget_->setEnabled((bool)bufferview());
+	widget_->setEnabled(static_cast<bool>(bufferview()));
 	widget_->setBufferView(bufferview());
 }
 
