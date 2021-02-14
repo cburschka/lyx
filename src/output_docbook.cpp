@@ -1110,7 +1110,7 @@ void docbookParagraphs(Text const &text,
 	    // Check the condition on the first few elements.
 	    bool hasPreface = false;
 	    pit_type pref_bpit = bpit;
-	    pit_type pref_epit = bpit + 1;
+	    pit_type pref_epit = bpit;
 
 	    static const std::set<std::string> allowedElements = {
 	            // List from https://tdg.docbook.org/tdg/5.2/book.html
@@ -1118,7 +1118,7 @@ void docbookParagraphs(Text const &text,
 	            "glossary", "index", "part", "preface", "reference", "toc"
 	    };
 
-	    for (; pref_epit <= epit; ++pref_epit) {
+	    for (; pref_epit < epit; ++pref_epit) {
             auto par = text.paragraphs().iterator_at(pref_epit);
             if (allowedElements.find(par->layout().docbooktag()) != allowedElements.end() ||
                     allowedElements.find(par->layout().docbooksectiontag()) != allowedElements.end())
