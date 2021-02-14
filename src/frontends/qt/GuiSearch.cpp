@@ -74,8 +74,8 @@ GuiSearchWidget::GuiSearchWidget(QWidget * parent)
 
 	setFocusProxy(findCO);
 
-	findCO->setCompleter(0);
-	replaceCO->setCompleter(0);
+	findCO->setCompleter(nullptr);
+	replaceCO->setCompleter(nullptr);
 
 	replacePB->setEnabled(false);
 	replacePrevPB->setEnabled(false);
