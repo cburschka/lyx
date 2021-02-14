@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 606
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -110,7 +110,7 @@ logicalmkup
 \branch Obsolete
 \selected 0
 \filename_suffix 0
-\color #aaffff
+\color #aaffff #550000
 \end_branch
 \index Index
 \shortcut idx
@@ -321,7 +321,8 @@ de
  C'est dans celui-ci que \SpecialChar LyX
  place ses fichiers de configuration système; le
  répertoire utilisateur est celui dans lequel vous pouvez mettre vos versions
- modifiées Le premier sera appelé 
+ modifiées.
+ Le premier sera appelé 
 \begin_inset Flex Code
 status collapsed
 
@@ -2991,7 +2992,7 @@ status collapsed
 \end_inset
 
 .
- Puis renommez le en 
+ Puis renommez-le en 
 \family typewriter
 \series bold
 
