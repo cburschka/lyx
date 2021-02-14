@@ -71,6 +71,7 @@ Style Nationality
 	DocBookAttr           role='nationality'
 	DocBookInInfo         always
 	DocBookWrapperTag     NONE
+    DocBookNoFontInside   true
 End
 
 Style Birthday
@@ -81,6 +82,7 @@ Style Birthday
 	DocBookAttr           role='birthday'
 	DocBookInInfo         always
 	DocBookWrapperTag     NONE
+    DocBookNoFontInside   true
 End
 
 Style Address
@@ -132,6 +134,7 @@ Style Gender
 	DocBookAttr           role='gender'
 	DocBookInInfo         always
 	DocBookWrapperTag     NONE
+    DocBookNoFontInside   true
 End
 
 Style Fax
@@ -168,6 +171,7 @@ Style Picture
 	DocBookAttr           role='picture'
 	DocBookInInfo         always
 	DocBookWrapperTag     NONE
+    DocBookNoFontInside   true
 End
 
 Style AfterPicture

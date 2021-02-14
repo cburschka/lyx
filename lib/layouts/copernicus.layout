@@ -177,6 +177,7 @@ Style Received
 	DocBookTag      date
 	DocBookAttr     role='received'
 	DocBookInInfo   always
+    DocBookNoFontInside   true
 End
 
 Style Accepted
@@ -188,6 +189,7 @@ Style Accepted
 	DocBookTag      date
 	DocBookAttr     role='accepted'
 	DocBookInInfo   always
+    DocBookNoFontInside   true
 End
 
 Style Pubdiscuss
@@ -200,6 +202,7 @@ Style Pubdiscuss
 	DocBookTag      date
 	DocBookAttr     role='pubdiscuss'
 	DocBookInInfo   always
+    DocBookNoFontInside   true
 End
 
 Style Revised
@@ -212,6 +215,7 @@ Style Revised
 	DocBookTag      date
 	DocBookAttr     role='revised'
 	DocBookInInfo   always
+    DocBookNoFontInside   true
 End
 
 Style Published
@@ -224,6 +228,7 @@ Style Published
 	DocBookTag      date
 	DocBookAttr     role='published'
 	DocBookInInfo   always
+    DocBookNoFontInside   true
 End
 
 Style Abstract

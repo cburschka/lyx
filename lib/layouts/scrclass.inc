@@ -238,6 +238,7 @@ Style Date
 	DocBookTag            date
 	DocBookTagType        paragraph
 	DocBookInInfo         always
+    DocBookNoFontInside   true
 End
 
 

@@ -204,6 +204,7 @@ Style Birthday
 	DocBookAttr           role='birthday'
 	DocBookInInfo         always
 	DocBookWrapperTag     NONE
+    DocBookNoFontInside   true
 End
 
 Style Nationality
@@ -214,6 +215,7 @@ Style Nationality
 	DocBookAttr           role='nationality'
 	DocBookInInfo         always
 	DocBookWrapperTag     NONE
+    DocBookNoFontInside   true
 End
 
 Style Gender
@@ -224,6 +226,7 @@ Style Gender
 	DocBookAttr           role='gender'
 	DocBookInInfo         always
 	DocBookWrapperTag     NONE
+    DocBookNoFontInside   true
 End
 
 Style BeforePicture
@@ -247,6 +250,7 @@ Style Picture
 	DocBookAttr           role='picture'
 	DocBookInInfo         always
 	DocBookWrapperTag     NONE
+    DocBookNoFontInside   true
 End
 
 Style AfterPicture

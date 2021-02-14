@@ -73,6 +73,7 @@ Style Publication_Month
 	DocBookAttr           role='month'
 	DocBookTagType        paragraph
 	DocBookInInfo         maybe
+    DocBookNoFontInside   true
 End
 
 Style Publication_Year
@@ -83,6 +84,7 @@ Style Publication_Year
 	DocBookAttr           role='year'
 	DocBookTagType        paragraph
 	DocBookInInfo         maybe
+    DocBookNoFontInside   true
 End
 
 Style Publication_Volume

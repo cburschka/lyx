@@ -204,6 +204,7 @@ InsetLayout Flex:Received
   DocBookTag      date
   DocBookAttr     role='received'
   DocBookTagType  inline
+  DocBookNoFontInside   true
 End
 
 InsetLayout Flex:Revised
@@ -225,6 +226,7 @@ InsetLayout Flex:Revised
   DocBookTag      date
   DocBookAttr     role='revised'
   DocBookTagType  inline
+  DocBookNoFontInside   true
 End
 
 InsetLayout Flex:Comby
