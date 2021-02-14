@@ -128,6 +128,7 @@ void GuiSearchWidget::minimizeClicked(bool const toggle)
 	replaceallPB->setHidden(minimized_);
 	wordsCB->setHidden(minimized_);
 	caseCB->setHidden(minimized_);
+	CBGroupBox->setHidden(minimized_);
 	if (minimized_) {
 		minimizePB->setText(qt_("Ex&pand"));
 		minimizePB->setToolTip("Show replace and option widgets");
