@@ -142,6 +142,7 @@ Style Addpart
 		LabelString   "Short Title|S"
 		Tooltip       "The part as it appears in the table of contents/running headers"
 		InsertCotext  1
+        DocBookTag    titleabbrev
 	EndArgument
 End
 
@@ -153,6 +154,7 @@ Style Addchap
 		LabelString   "Short Title|S"
 		Tooltip       "The chapter as it appears in the table of contents/running headers"
 		InsertCotext  1
+        DocBookTag    titleabbrev
 	EndArgument
 End
 
@@ -164,6 +166,7 @@ Style Addsec
 		LabelString   "Short Title|S"
 		Tooltip       "The section as it appears in the table of contents/running headers"
 		InsertCotext  1
+        DocBookTag    titleabbrev
 	EndArgument
 End
 
@@ -318,6 +321,7 @@ InsetLayout Caption:Above
 		LabelString   "Short Title|S"
 		Tooltip       "The caption as it appears in the list of figures/tables"
 		InsertCotext  1
+        DocBookTag    titleabbrev
 	EndArgument
 	HTMLStyle
 		div.float-caption {
@@ -341,6 +345,7 @@ InsetLayout Caption:Below
 		LabelString   "Short Title|S"
 		Tooltip       "The caption as it appears in the list of figures/tables"
 		InsertCotext  1
+        DocBookTag    titleabbrev
 	EndArgument
 	HTMLStyle
 		div.float-caption {
