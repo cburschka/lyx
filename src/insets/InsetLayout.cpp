@@ -96,6 +96,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		IL_DOCBOOKSECTION,
 		IL_DOCBOOKININFO,
 		IL_DOCBOOKARGUMENTBEFOREMAINTAG,
+		IL_DOCBOOKARGUMENTAFTERMAINTAG,
 		IL_DOCBOOKNOTINPARA,
 		IL_DOCBOOKWRAPPERTAG,
 		IL_DOCBOOKWRAPPERTAGTYPE,
@@ -151,6 +152,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		{ "custompars", IL_CUSTOMPARS },
 		{ "decoration", IL_DECORATION },
 		{ "display", IL_DISPLAY },
+		{ "docbookargumentaftermaintag", IL_DOCBOOKARGUMENTAFTERMAINTAG },
 		{ "docbookargumentbeforemaintag", IL_DOCBOOKARGUMENTBEFOREMAINTAG },
 		{ "docbookattr", IL_DOCBOOKATTR },
 		{ "docbookininfo", IL_DOCBOOKININFO },
@@ -525,6 +527,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		case IL_DOCBOOKARGUMENTBEFOREMAINTAG:
 			lex >> docbookargumentbeforemaintag_;
 			break;
+		case IL_DOCBOOKARGUMENTAFTERMAINTAG:
+			lex >> docbookargumentaftermaintag_;
+			break;
 		case IL_DOCBOOKNOTINPARA:
 			lex >> docbooknotinpara_;
 			break;
@@ -839,6 +844,9 @@ void InsetLayout::readArgument(Lexer & lex)
 		} else if (tok == "docbookargumentbeforemaintag") {
 			lex.next();
 			arg.docbookargumentbeforemaintag = lex.getBool();
+		} else if (tok == "docbookargumentaftermaintag") {
+			lex.next();
+			arg.docbookargumentaftermaintag = lex.getBool();
 		} else {
 			lex.printError("Unknown tag");
 			error = true;

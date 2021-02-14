@@ -1284,6 +1284,12 @@ void Layout::readArgument(Lexer & lex, bool validating)
 		} else if (tok == "docbooktagtype") {
 			lex.next();
 			arg.docbooktagtype = lex.getDocString();
+		} else if (tok == "docbookargumentaftermaintag") {
+			lex.next();
+			arg.docbookargumentaftermaintag = lex.getBool();
+		} else if (tok == "docbookargumentbeforemaintag") {
+			lex.next();
+			arg.docbookargumentbeforemaintag = lex.getBool();
 		} else {
 			lex.printError("Unknown tag");
 			error = true;

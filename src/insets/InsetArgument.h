@@ -41,6 +41,8 @@ public:
 
 	bool docbookargumentbeforemaintag() const { return docbookargumentbeforemaintag_; }
 
+	bool docbookargumentaftermaintag() const { return docbookargumentaftermaintag_; }
+
 	/// \name Public functions inherited from Inset class
 	//@{
 	///
@@ -135,6 +137,8 @@ private:
 	docstring docbookattr_;
 	///
 	bool docbookargumentbeforemaintag_ = false;
+	///
+	bool docbookargumentaftermaintag_ = false;
 
 protected:
 	/// \name Protected functions inherited from Inset class

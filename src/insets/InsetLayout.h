@@ -164,6 +164,8 @@ public:
 	///
 	bool docbookargumentbeforemaintag() const { return docbookargumentbeforemaintag_; }
 	///
+	bool docbookargumentaftermaintag() const { return docbookargumentaftermaintag_; }
+	///
 	std::string docbookwrappertag() const { return docbookwrappertag_; }
 	///
 	std::string docbookwrappertagtype() const;
@@ -322,6 +324,8 @@ private:
 	bool docbooknotinpara_ = false;
 	///
 	bool docbookargumentbeforemaintag_ = false;
+    ///
+    bool docbookargumentaftermaintag_ = false;
 	///
 	bool docbooksection_ = false;
 	///
