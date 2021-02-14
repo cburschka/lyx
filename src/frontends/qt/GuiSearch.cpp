@@ -299,7 +299,6 @@ void GuiSearch::updateSize()
 {
 	widget_->setFixedHeight(widget_->sizeHint().height());
 	if (widget_->isMinimized())
-		// FIXME still a bit too tall
 		setFixedHeight(widget_->sizeHint().height());
 	else {
 		// undo setFixedHeight
