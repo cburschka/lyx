@@ -29,7 +29,6 @@
 
 #include "support/debug.h"
 #include "support/gettext.h"
-#include "support/debug.h"
 #include "frontends/alert.h"
 #include "frontends/Clipboard.h"
 
