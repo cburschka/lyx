@@ -12,6 +12,7 @@
 
 #include <config.h>
 
+#include "GuiApplication.h"
 #include "GuiSearch.h"
 
 #include "lyxfind.h"
@@ -28,8 +29,11 @@
 
 #include "support/debug.h"
 #include "support/gettext.h"
+#include "support/debug.h"
 #include "frontends/alert.h"
+#include "frontends/Clipboard.h"
 
+#include <QClipboard>
 #include <QLineEdit>
 #include <QSettings>
 #include <QShowEvent>
@@ -71,6 +75,11 @@ GuiSearchWidget::GuiSearchWidget(QWidget * parent)
 	connect(replaceallPB, SIGNAL(clicked()), this, SLOT(replaceallClicked()));
 	connect(findCO, SIGNAL(editTextChanged(QString)),
 		this, SLOT(findChanged()));
+	if(qApp->clipboard()->supportsFindBuffer()) {
+		connect(qApp->clipboard(), SIGNAL(findBufferChanged()),
+			this, SLOT(findBufferChanged()));
+		findBufferChanged();
+	}
 
 	setFocusProxy(findCO);
 
@@ -146,6 +155,16 @@ void GuiSearchWidget::showEvent(QShowEvent * e)
 	findPB->setFocus();
 	findCO->lineEdit()->selectAll();
 	QWidget::showEvent(e);
+}
+
+
+void GuiSearchWidget::findBufferChanged()
+{
+	docstring search = theClipboard().getFindBuffer();
+	if (!search.empty()) {
+		LYXERR(Debug::CLIPBOARD, "from findbuffer: " << search);
+		findCO->setCurrentText(toqstr(search));
+	}
 }
 
 

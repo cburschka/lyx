@@ -61,6 +61,7 @@
 #include "frontends/NullPainter.h"
 #include "frontends/Painter.h"
 #include "frontends/Selection.h"
+#include "frontends/Clipboard.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -274,9 +275,6 @@ struct BufferView::Private
 	  */
 	frontend::GuiBufferViewDelegate * gui_;
 
-	/// cache search string for simple search
-	docstring search_request_cache_;
-
 	///
 	map<string, Inset *> edited_insets_;
 
@@ -446,6 +444,22 @@ Buffer & BufferView::buffer()
 Buffer const & BufferView::buffer() const
 {
 	return buffer_;
+}
+
+
+docstring const & BufferView::searchRequestCache() const
+{
+	return theClipboard().getFindBuffer();
+}
+
+
+void BufferView::setSearchRequestCache(docstring const & text)
+{
+	bool casesensitive;
+	bool matchword;
+	bool forward;
+	docstring const search = string2find(text, casesensitive, matchword, forward);
+	theClipboard().setFindBuffer(search);
 }
 
 
@@ -1620,21 +1634,17 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		docstring searched_string;
 
 		if (!cmd.argument().empty()) {
-			d->search_request_cache_ = cmd.argument();
+			setSearchRequestCache(cmd.argument());
 			searched_string = cmd.argument();
 		} else {
-			searched_string = d->search_request_cache_;
+			searched_string = searchRequestCache();
 		}
 
 		if (searched_string.empty())
 			break;
 
-		bool casesensitive;
-		bool matchword;
-		bool forward;
-		docstring const search = string2find(searched_string, casesensitive, matchword, forward);
 		docstring const data =
-			find2string(search, casesensitive, matchword, act == LFUN_WORD_FIND_FORWARD);
+			find2string(searched_string, false, false, act == LFUN_WORD_FIND_FORWARD);
 		bool found = lyxfind(this, FuncRequest(LFUN_WORD_FIND, data));
 		if (found)
 			dr.screenUpdate(Update::Force | Update::FitCursor);
@@ -1645,8 +1655,8 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	case LFUN_WORD_FIND: {
 		docstring arg = cmd.argument();
-		if (arg.empty() && !d->search_request_cache_.empty())
-			arg = d->search_request_cache_;
+		if (arg.empty())
+			arg = searchRequestCache();
 		if (arg.empty()) {
 			lyx::dispatch(FuncRequest(LFUN_DIALOG_SHOW, "findreplace"));
 			break;
@@ -1656,14 +1666,14 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		else
 			dr.setMessage(_("Search string not found!"));
 
-		d->search_request_cache_ = arg;
+		setSearchRequestCache(arg);
 		break;
 	}
 
 	case LFUN_SEARCH_STRING_SET: {
 		docstring pattern = cmd.argument();
 		if (!pattern.empty()) {
-			d->search_request_cache_ = pattern;
+			setSearchRequestCache(pattern);
 			break;
 		}
 		if (cur.selection())
@@ -1675,7 +1685,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			cur.selection(false);
 			cur.pos() = spos;
 		}
-		d->search_request_cache_ = pattern;
+		setSearchRequestCache(pattern);
 		break;
 	}
 

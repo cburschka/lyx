@@ -82,8 +82,11 @@ public:
 	support::FileName getPastedGraphicsFileName(Cursor const & cur,
 		Clipboard::GraphicsType & type) const;
 
+	void setFindBuffer(docstring const & text) override;
+
 private Q_SLOTS:
 	void on_dataChanged();
+	void on_findChanged();
 	void update();
 
 private:

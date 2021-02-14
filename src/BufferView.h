@@ -109,6 +109,9 @@ public:
 	/// bottom margin
 	int bottomMargin() const;
 
+	docstring const & searchRequestCache() const;
+	void setSearchRequestCache(docstring const & text);
+
 	/// return the on-screen size of this length
 	/*
 	 *  This is a wrapper around Length::inPixels that uses the

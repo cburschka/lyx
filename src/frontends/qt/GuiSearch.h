@@ -42,6 +42,7 @@ public:
 
 private Q_SLOTS:
 	void findChanged();
+	void findBufferChanged();
 	void findClicked(bool const backwards = false);
 	void findPrevClicked();
 	void replaceClicked(bool const backwards = false);

@@ -65,6 +65,8 @@ public:
 	/// Get the contents of the window system clipboard as graphics file.
 	virtual support::FileName getAsGraphics(Cursor const & cur, GraphicsType type) const = 0;
 
+	virtual docstring const & getFindBuffer() { return find_buffer_; }
+
 	/**
 	 * Fill the system clipboard. The format of \p lyx is as written in
 	 * .lyx files, the format of \p text is plain text.
@@ -78,6 +80,8 @@ public:
 
 	/// Put a general string on the system clipboard (not LyX text)
 	virtual void put(std::string const & text) const = 0;
+
+	virtual void setFindBuffer(docstring const & text) { find_buffer_ = text;}
 
 	/// Does the clipboard contain text contents?
 	virtual bool hasTextContents(TextType type = AnyTextType) const = 0;
@@ -94,6 +98,9 @@ public:
 	/// \returns true if both the LyX and the plaintext versions of the
 	/// clipboard are empty, and no supported graphics format is available.
 	virtual bool empty() const = 0;
+
+private:
+	docstring find_buffer_;
 };
 
 } // namespace frontend

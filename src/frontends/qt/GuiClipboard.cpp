@@ -12,6 +12,7 @@
 
 #include <config.h>
 
+#include "GuiApplication.h"
 #include "GuiClipboard.h"
 
 #include "Buffer.h"
@@ -111,6 +112,11 @@ GuiClipboard::GuiClipboard()
 {
 	connect(qApp->clipboard(), SIGNAL(dataChanged()),
 		this, SLOT(on_dataChanged()));
+	if(qApp->clipboard()->supportsFindBuffer()) {
+		connect(qApp->clipboard(), SIGNAL(findBufferChanged()),
+			this, SLOT(on_findChanged()));
+		on_findChanged();
+	}
 	// initialize clipboard status.
 	update();
 }
@@ -541,6 +547,21 @@ bool GuiClipboard::hasInternal() const
 #else
 	return false;
 #endif
+}
+
+
+void GuiClipboard::setFindBuffer(docstring const & text)
+{
+	LYXERR(Debug::CLIPBOARD, "new findbuffer: " << text);
+	Clipboard::setFindBuffer(text);
+	qApp->clipboard()->setText(toqstr(text), QClipboard::FindBuffer);
+}
+
+
+void GuiClipboard::on_findChanged()
+{
+	Clipboard::setFindBuffer(from_utf8(fromqstr(
+		qApp->clipboard()->text(QClipboard::FindBuffer))));
 }
 
 

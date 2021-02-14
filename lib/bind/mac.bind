@@ -139,8 +139,9 @@ Format 5
 \bind "C-d"                          "buffer-view dvi"	# 'd' for dvi
 \bind "C-M-d"                        "command-alternatives master-buffer-view dvi; buffer.view dvi"
 \bind "C-S-D"                        "buffer-update dvi"	# 'd' for dvi
-#  -: "Command-E"                    # Use the selection for a find
-\bind "C-e"                          "font-emph"
+#  +: "Command-E"                    # Use the selection for a find
+\bind "C-e"                          "search-string-set"
+\bind "C-M-e"                        "font-emph"
 #  +: "Command-F"                    # Open a Find window
 \bind "C-f"                          "dialog-toggle findreplace"
 \bind "C-S-f"                        "dialog-toggle findreplaceadv"
