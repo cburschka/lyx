@@ -126,8 +126,6 @@ void GuiSearchWidget::minimizeClicked(bool const toggle)
 	replacePB->setHidden(minimized_);
 	replacePrevPB->setHidden(minimized_);
 	replaceallPB->setHidden(minimized_);
-	wordsCB->setHidden(minimized_);
-	caseCB->setHidden(minimized_);
 	CBGroupBox->setHidden(minimized_);
 	if (minimized_) {
 		minimizePB->setText(qt_("Ex&pand"));
