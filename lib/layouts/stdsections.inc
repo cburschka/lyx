@@ -34,6 +34,7 @@ Style Part
 		InsertCotext  1
 		IsTocCaption  1
         DocBookTag    titleabbrev
+        DocBookArgumentAfterMainTag  true
 	EndArgument
 	Font
 	  Series              Bold
@@ -77,6 +78,7 @@ Style Chapter
 		InsertCotext  1
 		IsTocCaption  1
         DocBookTag    titleabbrev
+        DocBookArgumentAfterMainTag  true
 	EndArgument
 	Font
 	  Series              Bold
@@ -117,6 +119,7 @@ Style Section
 		InsertCotext  1
 		IsTocCaption  1
         DocBookTag    titleabbrev
+        DocBookArgumentAfterMainTag  true
 	EndArgument
 	Font
 	  Series              Bold
