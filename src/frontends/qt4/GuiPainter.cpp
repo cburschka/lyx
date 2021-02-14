@@ -563,8 +563,8 @@ void GuiPainter::buttonText(int x, int baseline, docstring const & s,
 
 	static int const d = offset / 2;
 
-	fillRectangle(x + d + 1, baseline - ascent + 1, width - offset - 1,
-			      ascent + descent - 1, back);
+	fillRectangle(x + d, baseline - ascent, width - offset,
+			      ascent + descent, back);
 	rectangle(x + d, baseline - ascent, width - offset, ascent + descent, frame);
 	text(x + offset, baseline, s, font);
 }
