@@ -554,7 +554,9 @@ void GuiClipboard::setFindBuffer(docstring const & text)
 {
 	LYXERR(Debug::CLIPBOARD, "new findbuffer: " << text);
 	Clipboard::setFindBuffer(text);
-	qApp->clipboard()->setText(toqstr(text), QClipboard::FindBuffer);
+	if(qApp->clipboard()->supportsFindBuffer()) {
+		qApp->clipboard()->setText(toqstr(text), QClipboard::FindBuffer);
+	}
 }
 
 
