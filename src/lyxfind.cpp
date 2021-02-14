@@ -262,10 +262,12 @@ bool searchAllowed(docstring const & str)
 	return true;
 }
 
+} // namespace
+
 
 bool findOne(BufferView * bv, docstring const & searchstr,
 	     bool case_sens, bool whole, bool forward,
-	     bool find_del = true, bool check_wrap = false)
+	     bool find_del, bool check_wrap)
 {
 	if (!searchAllowed(searchstr))
 		return false;
@@ -312,6 +314,8 @@ bool findOne(BufferView * bv, docstring const & searchstr,
 	return match_len > 0;
 }
 
+
+namespace {
 
 int replaceAll(BufferView * bv,
 	       docstring const & searchstr, docstring const & replacestr,

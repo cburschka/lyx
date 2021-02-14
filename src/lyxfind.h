@@ -63,6 +63,10 @@ docstring const replace2string(docstring const & replace,
  */
 bool lyxfind(BufferView * bv, FuncRequest const & ev);
 
+bool findOne(BufferView * bv, docstring const & searchstr,
+	     bool case_sens, bool whole, bool forward,
+	     bool find_del = true, bool check_wrap = false);
+
 /** Parse the string encoding of the replace request that is found in
  *  \c ev.argument and act on it.
  * The string is encoded by \c replace2string.
