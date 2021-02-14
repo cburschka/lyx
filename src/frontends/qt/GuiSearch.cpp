@@ -158,8 +158,6 @@ void GuiSearchWidget::findChanged()
 	replacePB->setEnabled(replace);
 	replacePrevPB->setEnabled(replace);
 	replaceallPB->setEnabled(replace);
-	replaceLA->setEnabled(replace);
-	replaceCO->setEnabled(replace);
 }
 
 
