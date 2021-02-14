@@ -509,8 +509,8 @@ void RowPainter::paintLast() const
 		FontInfo const font = labelFont(true);
 		FontMetrics const & fm = theFontMetrics(font);
 		docstring const & str = par_.layout().endlabelstring();
-		double const x = row_.isRTL() ? x_ - fm.width(str) : x_;
-		pi_.pain.text(int(x), yo_, str, font);
+		double const x = row_.isRTL() ? row_.left_margin - fm.width(str) : row_.width();
+		pi_.pain.text(xo_ + x, yo_, str, font);
 		break;
 	}
 
