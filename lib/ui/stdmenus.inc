@@ -338,7 +338,7 @@ Menuset
 	Menu "view"
 		Item "Outline Pane|O" "dialog-toggle toc"
 		Item "Code Preview Pane|P" "dialog-toggle view-source"
-		Item "Messages Pane|g" "dialog-toggle progress"
+		Item "Messages Pane|M" "dialog-toggle progress"
 		Submenu "Toolbars|T" "toolbars"
 		Separator
 		OptItem "Unfold Math Macro|n" "math-macro-unfold"
