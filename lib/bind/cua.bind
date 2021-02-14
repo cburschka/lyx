@@ -72,8 +72,8 @@ Format 5
 \bind "C-S-M"			"math-display"
 \bind "C-M-n"			"command-sequence math-display; math-number-toggle;"
 
-\bind "C-f"			"dialog-show findreplace"
-\bind "C-S-f"			"dialog-show findreplaceadv"
+\bind "C-f"			"dialog-toggle findreplace"
+\bind "C-S-f"			"dialog-toggle findreplaceadv"
 \bind "C-i"			"inset-toggle"		# 'i' for Inset
 \bind "C-M-i"			"inset-settings"
 
