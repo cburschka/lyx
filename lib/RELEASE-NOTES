@@ -19,8 +19,13 @@
 * Ctrl-click on a cross-reference will now take you to its label.
 
 * Default shortcuts for saving bookmarks have been changed to Alt-NUM, where
-  NUM is the number of the bookmark. (They were previously Shift-F1, etc.) This
-  allows Shift-F3 to be used for word-find-backwards (i.e., find previous).
+  NUM is the number of the bookmark. (They were previously Shift-F1, etc.) 
+
+* This allows Shift-F3 to be used for word-find-backwards (i.e., find previous)
+  on Linux and Windows.
+
+* The shortcut for word-find on OSX is now Cmd-E, as is the Apple standard. The
+  shortcut for word-find-previous is Cmd-G.
 
 
 !!Documents compilation process and images conversion
