@@ -1102,6 +1102,63 @@ void docbookParagraphs(Text const &text,
 	outputDocBookInfo(text, buf, xs, runparams, paragraphs, info);
 	bpit = info.epit;
 
+	// In the specific case of books, there must be parts or chapters. In some cases, star sections are used at the
+	// beginning for many things like acknowledgements or licenses. DocBook has tags for many of these cases, but not
+	// the LyX layouts... Gather everything in a <preface>, that's the closest in meaning.
+	// This is only useful if the things after the <info> tag are not already parts or chapters!
+	if (buf.params().documentClass().docbookroot() == "book") {
+	    // Check the condition on the first few elements.
+	    bool hasPreface = false;
+	    pit_type pref_bpit = bpit;
+	    pit_type pref_epit = bpit + 1;
+
+	    static const std::set<std::string> allowedElements = {
+	            // List from https://tdg.docbook.org/tdg/5.2/book.html
+	            "acknowledgements", "appendix", "article", "bibliography", "chapter", "colophon", "dedication",
+	            "glossary", "index", "part", "preface", "reference", "toc"
+	    };
+
+	    for (; pref_epit <= epit; ++pref_epit) {
+            auto par = text.paragraphs().iterator_at(pref_epit);
+            if (allowedElements.find(par->layout().docbooktag()) != allowedElements.end() ||
+                    allowedElements.find(par->layout().docbooksectiontag()) != allowedElements.end())
+                break;
+
+            hasPreface = true;
+	    }
+
+	    // Output a preface if required. A title is needed for the document to be valid...
+	    if (hasPreface) {
+	        xs << xml::StartTag("preface");
+	        xs << xml::CR();
+
+	        xs << xml::StartTag("title");
+	        xs << "Preface";
+	        xs << xml::EndTag("title");
+            xs << xml::CR();
+
+            auto pref_par = text.paragraphs().iterator_at(pref_bpit);
+            auto pref_end = text.paragraphs().iterator_at(pref_epit);
+            while (pref_par != pref_end) {
+                // Skip paragraphs not producing any output.
+                if (hasOnlyNotes(*pref_par)) {
+                    ++pref_par;
+                    continue;
+                }
+
+                // TODO: must sections be handled here? If so, it might be useful to extract the corresponding loop
+                // in the rest of this function to use the same here (and avoid copy-paste mistakes).
+                pref_par = makeAny(text, buf, xs, runparams, pref_par);
+            }
+
+	        xs << xml::EndTag("preface");
+            xs << xml::CR();
+
+            // Skip what has just been generated in the preface.
+            bpit = pref_epit;
+	    }
+	}
+
 	std::stack<std::pair<int, string>> headerLevels; // Used to determine when to open/close sections: store the depth
 	// of the section and the tag that was used to open it.
 
