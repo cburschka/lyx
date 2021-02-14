@@ -65,7 +65,7 @@ private:
 		     bool casesensitive, bool matchword,
 		     bool forward, bool all);
 	///
-	BufferView const * bv_;
+	BufferView const * bv_ = {};
 	///
 	bool minimized_ = false;
 };
