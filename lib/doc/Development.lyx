@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 601
+\lyxformat 606
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -5897,6 +5897,46 @@ default: // not needed and would shadow a wrong use of Foo
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+Use default initialization such as
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+int i = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+Class * ptr = nullptr;
+\end_layout
+
+\end_inset
+
+rather than brace initialization:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+int i {};
+\end_layout
+
+\begin_layout Plain Layout
+
+Class * ptr {};
+\end_layout
+
+\end_inset
+
+for PODs.
+ Use brace initialization only for more complex data structures.
+ 
 \end_layout
 
 \begin_layout Section
