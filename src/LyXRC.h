@@ -370,7 +370,7 @@ public:
 	/// Accept compound words in spellchecker?
 	bool spellchecker_accept_compound = false;
 	/// spellcheck continuously?
-	bool spellcheck_continuously = false;
+	bool spellcheck_continuously = true;
 	/// spellcheck notes and comments?
 	bool spellcheck_notes = true;
 	///

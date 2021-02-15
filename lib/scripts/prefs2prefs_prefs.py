@@ -10,10 +10,26 @@
 
 # This file houses conversion information for the preferences file.
 
-# The converter functions take a line as argument and return a list:
-# 	(Bool, NewLine),
-# where the Bool says if  we've modified anything and the NewLine is
+# There are two kinds of converter functions.
+# 
+# Most of them take a line as argument and return a list:
+#     (Bool, NewLine),
+# where the Bool says if we've modified anything and the NewLine is
 # the new line, if so, which will be used to replace the old line.
+# This can be used to erase lines (return (True, "")) or to modify 
+# existing preference lines.
+# 
+# It is also possible for conversion routines to accept the whole
+# list of lines and process that. This is useful (as in the change
+# to format 35) when you need to add a preference if it's not already
+# there.
+
+
+######################################################################
+#
+# FORMAT CHANGES
+#
+######################################################################
 
 # Incremented to format 2, r39670 by jrioux
 #   Support for multiple file extensions per format.
@@ -141,8 +157,13 @@
 #   \set_color now takes three arguments
 #   \set_color lyxname x11hexname x11darkhexname
 
+# Incremented to format 36, by rkh
+#   Set spellcheck_continuously to FALSE if it is not otherwise set
+#   (the new default is true, so this keeps behavior the same for 
+#   existing users)
+
 # NOTE: The format should also be updated in LYXRC.cpp and
-# in configure.py.
+# in configure.py (search for lyxrc_fileformat).
 
 import re
 
@@ -465,6 +486,12 @@ def add_dark_color(line):
 	line += " " + m.group(2)
 	return (True, line)
 
+def add_spellcheck_default(lines):
+	for l in lines:
+		if l.startswith("\\spellcheck_continuously"):
+			return
+	lines.append("\\spellcheck_continuously false")
+
 # End conversions for LyX 2.3 to 2.4
 ####################################
 
@@ -514,5 +541,6 @@ conversions = [
 	[ 32, []],
 	[ 33, []],
 	[ 34, [rename_cyrillic_kmap_files]],
-	[ 35, [add_dark_color]]
+	[ 35, [add_dark_color]],
+	[ 36, [add_spellcheck_default]]
 ]

@@ -163,10 +163,15 @@ def main(argv):
             abort("Something is wrong with the conversion chain.")
 
         for c in convert:
-            for i in range(len(lines)):
-                (update, newline) = c(lines[i])
-                if update:
-                    lines[i] = newline
+            try:
+                # first see if the routine will accept a list of lines
+                c(lines)
+            except:
+                # if not, it wants individual lines
+                for i in range(len(lines)):
+                    (update, newline) = c(lines[i])
+                    if update:
+                        lines[i] = newline
 
         update_format(lines)
         format = get_format(lines)
