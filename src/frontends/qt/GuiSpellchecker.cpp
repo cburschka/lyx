@@ -467,7 +467,7 @@ void SpellcheckerWidget::on_findNextPB_clicked()
 		return;
 	docstring const textfield = qstring_to_ucs4(d->ui.wordED->text());
 	docstring const datastring = find2string(textfield,
-				true, true, true, false);
+				true, true, true, false, false);
 	LYXERR(Debug::GUI, "Spellchecker: find next (" << textfield << ")");
 	dispatch(FuncRequest(LFUN_WORD_FIND, datastring));
 	d->canCheck();

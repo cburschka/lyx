@@ -267,14 +267,15 @@ bool searchAllowed(docstring const & str)
 
 bool findOne(BufferView * bv, docstring const & searchstr,
 	     bool case_sens, bool whole, bool forward,
-	     bool find_del, bool check_wrap, bool auto_wrap)
+	     bool find_del, bool check_wrap, bool auto_wrap,
+	     bool instant)
 {
 	if (!searchAllowed(searchstr))
 		return false;
 
 	DocIterator cur = forward
-		? bv->cursor().selectionEnd()
-		: bv->cursor().selectionBegin();
+		? (instant ? bv->cursor().selectionBegin() : bv->cursor().selectionEnd())
+		: (instant ? bv->cursor().selectionEnd() : bv->cursor().selectionBegin());
 
 	MatchString const match(searchstr, case_sens, whole);
 
@@ -307,7 +308,8 @@ bool findOne(BufferView * bv, docstring const & searchstr,
 				bv->cursor().backwardPos();
 			}
 			bv->clearSelection();
-			if (findOne(bv, searchstr, case_sens, whole, forward, find_del, false, false))
+			if (findOne(bv, searchstr, case_sens, whole, forward,
+				    find_del, false, false, false))
 				return true;
 		}
 		bv->cursor().setCursor(cur_orig);
@@ -390,7 +392,8 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 	if (!cur.selection()) {
 		// no selection, non-empty search string: find it
 		if (!searchstr.empty()) {
-			bool const found = findOne(bv, searchstr, case_sens, whole, forward, true, findnext, wrap);
+			bool const found = findOne(bv, searchstr, case_sens, whole,
+						   forward, true, findnext, wrap, false);
 			return make_pair(found, 0);
 		}
 		// empty search string
@@ -419,7 +422,8 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 	// no selection or current selection is not search word:
 	// just find the search word
 	if (!have_selection || !match) {
-		bool const found = findOne(bv, searchstr, case_sens, whole, forward, true, findnext, wrap);
+		bool const found = findOne(bv, searchstr, case_sens, whole, forward,
+					   true, findnext, wrap, false);
 		return make_pair(found, 0);
 	}
 
@@ -435,7 +439,8 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 		        cur.pos() = cur.lastpos());
 	}
 	if (findnext)
-		findOne(bv, searchstr, case_sens, whole, forward, false, findnext, wrap);
+		findOne(bv, searchstr, case_sens, whole,
+			forward, false, findnext, wrap, false);
 
 	return make_pair(true, 1);
 }
@@ -445,14 +450,15 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 
 docstring const find2string(docstring const & search,
 			    bool casesensitive, bool matchword,
-			    bool forward, bool wrap)
+			    bool forward, bool wrap, bool instant)
 {
 	odocstringstream ss;
 	ss << search << '\n'
 	   << int(casesensitive) << ' '
 	   << int(matchword) << ' '
 	   << int(forward) << ' '
-	   << int(wrap);
+	   << int(wrap) << ' '
+	   << int(instant);
 	return ss.str();
 }
 
@@ -479,7 +485,8 @@ docstring const string2find(docstring const & argument,
 			      bool &casesensitive,
 			      bool &matchword,
 			      bool &forward,
-			      bool &wrap)
+			      bool &wrap,
+			      bool &instant)
 {
 	// data is of the form
 	// "<search>
@@ -490,7 +497,8 @@ docstring const string2find(docstring const & argument,
 	casesensitive = parse_bool(howto);
 	matchword     = parse_bool(howto);
 	forward       = parse_bool(howto, true);
-	wrap          = parse_bool(howto, true);
+	wrap          = parse_bool(howto);
+	instant       = parse_bool(howto);
 
 	return search;
 }
@@ -506,9 +514,13 @@ bool lyxfind(BufferView * bv, FuncRequest const & ev)
 	bool matchword;
 	bool forward;
 	bool wrap;
-	docstring search = string2find(ev.argument(), casesensitive, matchword, forward, wrap);
+	bool instant;
+	
+	docstring search = string2find(ev.argument(), casesensitive,
+				       matchword, forward, wrap, instant);
 
-	return findOne(bv, search, casesensitive, matchword, forward, false, true, wrap);
+	return findOne(bv, search, casesensitive, matchword, forward,
+		       false, true, wrap, instant);
 }
 
 

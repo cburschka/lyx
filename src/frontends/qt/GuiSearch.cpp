@@ -230,13 +230,12 @@ void GuiSearchWidget::replaceallClicked()
 
 
 void GuiSearchWidget::find(docstring const & search, bool casesensitive,
-			 bool matchword, bool forward, bool instant, bool wrap)
+			 bool matchword, bool forward, bool instant,
+			 bool wrap)
 {
 	docstring const sdata =
-		find2string(search, casesensitive, matchword, forward, wrap);
-	if (instant)
-		// re-query current match
-		dispatch(FuncRequest(LFUN_WORD_BACKWARD));
+		find2string(search, casesensitive, matchword,
+			    forward, wrap, instant);
 
 	dispatch(FuncRequest(LFUN_WORD_FIND, sdata));
 }

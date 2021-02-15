@@ -459,7 +459,9 @@ void BufferView::setSearchRequestCache(docstring const & text)
 	bool matchword;
 	bool forward;
 	bool wrap;
-	docstring const search = string2find(text, casesensitive, matchword, forward, wrap);
+	bool instant;
+	docstring const search = string2find(text, casesensitive, matchword,
+					     forward, wrap, instant);
 	theClipboard().setFindBuffer(search);
 }
 
@@ -1645,7 +1647,8 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 
 		docstring const data =
-			find2string(searched_string, false, false, act == LFUN_WORD_FIND_FORWARD, false);
+			find2string(searched_string, false, false,
+				    act == LFUN_WORD_FIND_FORWARD, false, false);
 		bool found = lyxfind(this, FuncRequest(LFUN_WORD_FIND, data));
 		if (found)
 			dr.screenUpdate(Update::Force | Update::FitCursor);
