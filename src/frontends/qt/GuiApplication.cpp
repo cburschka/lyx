@@ -1112,7 +1112,7 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 
 	// needs to be done before reading lyxrc
 	QWidget w;
-	lyxrc.dpi = (w.logicalDpiX() + w.logicalDpiY()) / 2;
+	lyxrc.dpi = (w.physicalDpiX() + w.physicalDpiY()) / 2;
 
 	guiApp = this;
 
