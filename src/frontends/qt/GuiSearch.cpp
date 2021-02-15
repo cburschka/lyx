@@ -101,6 +101,10 @@ void GuiSearchWidget::keyPressEvent(QKeyEvent * ev)
 		findClicked(ev->modifiers() == Qt::ShiftModifier);
 		return;
 	}
+	if (ev->key() == Qt::Key_Escape) {
+		dispatch(FuncRequest(LFUN_DIALOG_TOGGLE, "findreplace"));
+		return;
+	}
 
 	// we catch the key sequences for forward and backwards search
 	if (sym.isOK()) {
