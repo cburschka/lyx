@@ -847,7 +847,8 @@ void MenuDefinition::expandSpellingSuggestions(BufferView const * bv)
 								true,     // match word
 								false,    // all words
 								true,     // forward
-								false))); // find next
+								false,    // find next
+								false))); // auto-wrap
 					if (i < m)
 						add(w);
 					else

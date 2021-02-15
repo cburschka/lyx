@@ -61,11 +61,11 @@ private:
 	/// Searches occurrence of string
 	void find(docstring const & search,
 		  bool casesensitive, bool matchword,
-		  bool forward, bool instant);
+		  bool forward, bool instant, bool wrap);
 	/// Replaces occurrence of string
 	void replace(docstring const & search, docstring const & replace,
 		     bool casesensitive, bool matchword,
-		     bool forward, bool all);
+		     bool forward, bool all, bool wrap);
 	///
 	BufferView const * bv_ = nullptr;
 	///

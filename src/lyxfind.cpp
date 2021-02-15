@@ -267,7 +267,7 @@ bool searchAllowed(docstring const & str)
 
 bool findOne(BufferView * bv, docstring const & searchstr,
 	     bool case_sens, bool whole, bool forward,
-	     bool find_del, bool check_wrap)
+	     bool find_del, bool check_wrap, bool auto_wrap)
 {
 	if (!searchAllowed(searchstr))
 		return false;
@@ -286,16 +286,19 @@ bool findOne(BufferView * bv, docstring const & searchstr,
 		bv->putSelectionAt(cur, match_len, !forward);
 	else if (check_wrap) {
 		DocIterator cur_orig(bv->cursor());
-		docstring q;
-		if (forward)
-			q = _("End of file reached while searching forward.\n"
-			  "Continue searching from the beginning?");
-		else
-			q = _("Beginning of file reached while searching backward.\n"
-			  "Continue searching from the end?");
-		int wrap_answer = frontend::Alert::prompt(_("Wrap search?"),
-			q, 0, 1, _("&Yes"), _("&No"));
-		if (wrap_answer == 0) {
+		if (!auto_wrap) {
+			docstring q;
+			if (forward)
+				q = _("End of file reached while searching forward.\n"
+				  "Continue searching from the beginning?");
+			else
+				q = _("Beginning of file reached while searching backward.\n"
+				  "Continue searching from the end?");
+			int wrap_answer = frontend::Alert::prompt(_("Wrap search?"),
+				q, 0, 1, _("&Yes"), _("&No"));
+			auto_wrap = wrap_answer == 0;
+		}
+		if (auto_wrap) {
 			if (forward) {
 				bv->cursor().clear();
 				bv->cursor().push_back(CursorSlice(bv->buffer().inset()));
@@ -304,7 +307,7 @@ bool findOne(BufferView * bv, docstring const & searchstr,
 				bv->cursor().backwardPos();
 			}
 			bv->clearSelection();
-			if (findOne(bv, searchstr, case_sens, whole, forward, find_del, false))
+			if (findOne(bv, searchstr, case_sens, whole, forward, find_del, false, false))
 				return true;
 		}
 		bv->cursor().setCursor(cur_orig);
@@ -381,13 +384,13 @@ int replaceAll(BufferView * bv,
 // whether anything at all was done.
 pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 			   docstring const & replacestr, bool case_sens,
-			   bool whole, bool forward, bool findnext)
+			   bool whole, bool forward, bool findnext, bool wrap)
 {
 	Cursor & cur = bv->cursor();
 	if (!cur.selection()) {
 		// no selection, non-empty search string: find it
 		if (!searchstr.empty()) {
-			bool const found = findOne(bv, searchstr, case_sens, whole, forward, true, findnext);
+			bool const found = findOne(bv, searchstr, case_sens, whole, forward, true, findnext, wrap);
 			return make_pair(found, 0);
 		}
 		// empty search string
@@ -416,7 +419,7 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 	// no selection or current selection is not search word:
 	// just find the search word
 	if (!have_selection || !match) {
-		bool const found = findOne(bv, searchstr, case_sens, whole, forward, true, findnext);
+		bool const found = findOne(bv, searchstr, case_sens, whole, forward, true, findnext, wrap);
 		return make_pair(found, 0);
 	}
 
@@ -432,7 +435,7 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 		        cur.pos() = cur.lastpos());
 	}
 	if (findnext)
-		findOne(bv, searchstr, case_sens, whole, forward, false, findnext);
+		findOne(bv, searchstr, case_sens, whole, forward, false, findnext, wrap);
 
 	return make_pair(true, 1);
 }
@@ -441,13 +444,15 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 
 
 docstring const find2string(docstring const & search,
-			    bool casesensitive, bool matchword, bool forward)
+			    bool casesensitive, bool matchword,
+			    bool forward, bool wrap)
 {
 	odocstringstream ss;
 	ss << search << '\n'
 	   << int(casesensitive) << ' '
 	   << int(matchword) << ' '
-	   << int(forward);
+	   << int(forward) << ' '
+	   << int(wrap);
 	return ss.str();
 }
 
@@ -455,7 +460,7 @@ docstring const find2string(docstring const & search,
 docstring const replace2string(docstring const & replace,
 			       docstring const & search,
 			       bool casesensitive, bool matchword,
-			       bool all, bool forward, bool findnext)
+			       bool all, bool forward, bool findnext, bool wrap)
 {
 	odocstringstream ss;
 	ss << replace << '\n'
@@ -464,7 +469,8 @@ docstring const replace2string(docstring const & replace,
 	   << int(matchword) << ' '
 	   << int(all) << ' '
 	   << int(forward) << ' '
-	   << int(findnext);
+	   << int(findnext) << ' '
+	   << int(wrap);
 	return ss.str();
 }
 
@@ -472,17 +478,19 @@ docstring const replace2string(docstring const & replace,
 docstring const string2find(docstring const & argument,
 			      bool &casesensitive,
 			      bool &matchword,
-			      bool &forward)
+			      bool &forward,
+			      bool &wrap)
 {
 	// data is of the form
 	// "<search>
-	//  <casesensitive> <matchword> <forward>"
+	//  <casesensitive> <matchword> <forward> <wrap>"
 	docstring search;
 	docstring howto = split(argument, search, '\n');
 
 	casesensitive = parse_bool(howto);
 	matchword     = parse_bool(howto);
 	forward       = parse_bool(howto, true);
+	wrap          = parse_bool(howto, true);
 
 	return search;
 }
@@ -497,9 +505,10 @@ bool lyxfind(BufferView * bv, FuncRequest const & ev)
 	bool casesensitive;
 	bool matchword;
 	bool forward;
-	docstring search = string2find(ev.argument(), casesensitive, matchword, forward);
+	bool wrap;
+	docstring search = string2find(ev.argument(), casesensitive, matchword, forward, wrap);
 
-	return findOne(bv, search, casesensitive, matchword, forward, false, true);
+	return findOne(bv, search, casesensitive, matchword, forward, false, true, wrap);
 }
 
 
@@ -511,7 +520,7 @@ bool lyxreplace(BufferView * bv, FuncRequest const & ev)
 	// data is of the form
 	// "<search>
 	//  <replace>
-	//  <casesensitive> <matchword> <all> <forward> <findnext>"
+	//  <casesensitive> <matchword> <all> <forward> <findnext> <wrap>"
 	docstring search;
 	docstring rplc;
 	docstring howto = split(ev.argument(), rplc, '\n');
@@ -521,7 +530,8 @@ bool lyxreplace(BufferView * bv, FuncRequest const & ev)
 	bool matchword     = parse_bool(howto);
 	bool all           = parse_bool(howto);
 	bool forward       = parse_bool(howto, true);
-	bool findnext      = howto.empty() ? true : parse_bool(howto);
+	bool findnext      = parse_bool(howto, true);
+	bool wrap          = parse_bool(howto);
 
 	bool update = false;
 
@@ -531,7 +541,7 @@ bool lyxreplace(BufferView * bv, FuncRequest const & ev)
 		update = replace_count > 0;
 	} else {
 		pair<bool, int> rv =
-			replaceOne(bv, search, rplc, casesensitive, matchword, forward, findnext);
+			replaceOne(bv, search, rplc, casesensitive, matchword, forward, findnext, wrap);
 		update = rv.first;
 		replace_count = rv.second;
 	}
