@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-02-10 10:38+0100\n"
-"PO-Revision-Date: 2021-02-10 09:42+0000\n"
+"POT-Creation-Date: 2021-02-15 11:49+0100\n"
+"PO-Revision-Date: 2021-02-15 11:04+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -5091,21 +5091,81 @@ msgstr "Veľké písmená"
 msgid "Do not output part of label before \":\""
 msgstr "Neukazovať časť hesla ktorá je pred \":\""
 
+#: src/frontends/qt/ui/SearchUi.ui:34
+msgid "Find previous occurrence (Shift+Enter)"
+msgstr "Nájsť predošlí výskyt (Shift+Enter)"
+
+#: src/frontends/qt/ui/SearchUi.ui:37
+msgid "< Find"
+msgstr "< Hľadať"
+
+#: src/frontends/qt/ui/SearchUi.ui:51
+msgid "Replace all occurrences"
+msgstr "Nahradiť každý výskyt naraz"
+
+#: src/frontends/qt/ui/SearchUi.ui:86
+msgid "Hide replace and option widgets"
+msgstr "Skryť widgety pre náhradu a iné voľby"
+
+#: src/frontends/qt/ui/SearchUi.ui:96
+msgid "Rep&lace with:"
+msgstr "Nahrad&iť čím:"
+
+#: src/frontends/qt/ui/SearchUi.ui:106
+msgid "&Search:"
+msgstr "Hľada&j:"
+
+#: src/frontends/qt/ui/SearchUi.ui:141
+msgid "Replace and find next occurrence"
+msgstr "Nahradiť a nájsť ďalší výskyt"
+
+#: src/frontends/qt/ui/SearchUi.ui:143
+msgid "&Replace >"
+msgstr "Nah&radiť >"
+
+#: src/frontends/qt/ui/SearchUi.ui:161
+msgid "Replace and find previous occurrence"
+msgstr "Nahradiť a nájsť predošlí výskyt"
+
+#: src/frontends/qt/ui/SearchUi.ui:156
+msgid "< Re&place"
+msgstr "< &Nahradiť"
+
+#: src/frontends/qt/ui/SearchUi.ui:178
+msgid "Find next occurrence (Enter)"
+msgstr "Nájdi ďalší výskyt (Enter)"
+
+#: src/frontends/qt/ui/SearchUi.ui:172
+msgid "Find >"
+msgstr "Hľadať >"
+
+#: src/frontends/qt/ui/SearchUi.ui:220
+msgid "&Case sensitive[[search]]"
+msgstr "R&ozlišovať veľkosť písmen"
+
+#: src/frontends/qt/ui/SearchUi.ui:211
+msgid "Wh&ole words"
+msgstr "C&elé slová"
+
+#: src/frontends/qt/ui/SearchUi.ui:218
+msgid "If this is checked, LyX will search forward immediately"
+msgstr "Keď zaškrtnuté, LyX bude okamžite dopredu hľadať"
+
+#: src/frontends/qt/ui/SearchUi.ui:221
+msgid "Search as you t&ype"
+msgstr "Vyhľadávať pri &zadávaní"
+
+#: src/frontends/qt/ui/SearchUi.ui:228
+msgid "If the end/start of the document is reached, automatically wrap around"
+msgstr "Dosiahnutím začiatku/konca dokumentu automaticky pretočiť"
+
+#: src/frontends/qt/ui/SearchUi.ui:231
+msgid "&Wrap"
+msgstr "Ob&tekať"
+
 #: src/frontends/qt/ui/RefUi.ui:333 lib/ui/stdcontext.inc:106
 msgid "No Prefix"
 msgstr "Bez prefixu"
-
-#: src/frontends/qt/ui/SearchUi.ui:68
-msgid "Repla&ce with:"
-msgstr "Nahrad&iť čím:"
-
-#: src/frontends/qt/ui/SearchUi.ui:127
-msgid "Case &sensitive[[search]]"
-msgstr "R&ozlišovať veľkosť písmen"
-
-#: src/frontends/qt/ui/SearchUi.ui:134
-msgid "Match w&hole words only"
-msgstr "Hľadať len &celé slová"
 
 #: src/frontends/qt/ui/SendtoUi.ui:50
 msgid "Process the converted file with this command ($$FName = file name)"
@@ -20575,7 +20635,7 @@ msgid "Code Preview Pane|P"
 msgstr "Náhľady kódu|k"
 
 #: lib/ui/stdmenus.inc:341
-msgid "Messages Pane|g"
+msgid "Messages Pane|M"
 msgstr "Ladiace výpisy|L"
 
 #: lib/ui/stdmenus.inc:342
@@ -30735,6 +30795,11 @@ msgstr "Qt verzia (čas pustenia): %1$s"
 msgid "Qt Version (compile-time): %1$s"
 msgstr "Qt verzia (čas prekladu): %1$s"
 
+#: src/frontends/qt/GuiAbout.cpp:288
+#, c-format
+msgid "Python detected: %1$s"
+msgstr "Detekovaný python: %1$s"
+
 #: src/frontends/qt/GuiAbout.cpp:314
 msgid "About LyX"
 msgstr "O programe LyX"
@@ -33296,8 +33361,20 @@ msgstr "Skoč naspäť ku pôvodnej polohe kurzora"
 msgid "<No prefix>"
 msgstr "<Bez prefixu>"
 
-#: src/frontends/qt/GuiSearch.cpp:47
-msgid "Find and Replace"
+#: src/frontends/qt/GuiSearch.cpp:139
+msgid "Ex&pand"
+msgstr "&Rozšíriť"
+
+#: src/frontends/qt/GuiSearch.cpp:140
+msgid "Show replace and option widgets"
+msgstr "Ukázať widgety pre náhradu a iné voľby"
+
+#: src/frontends/qt/GuiSearch.cpp:142 src/frontends/qt/ui/SearchUi.ui:89
+msgid "&Minimize"
+msgstr "&Minimalizovať"
+
+#: src/frontends/qt/GuiSearch.cpp:267
+msgid "Search and Replace"
 msgstr "Hľadať a nahradiť"
 
 #: src/frontends/qt/GuiSendto.cpp:41
@@ -36898,6 +36975,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Match &whole words only"
+#~ msgstr "Hľadať len &celé slová"
 
 #~ msgid "Use the margin settings provided by the document class"
 #~ msgstr "Použi nastavenie okrajov z triedy dokumentu"
@@ -42259,3 +42339,15 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Custom Inset"
 #~ msgstr "Vlastnú vložku"
+
+#~ msgid "Re&place with:"
+#~ msgstr "Nahrad&iť čím:"
+
+#~ msgid "Case &sensitive[[search]]"
+#~ msgstr "R&ozlišovať veľkosť písmen"
+
+#~ msgid "Messages Pane|g"
+#~ msgstr "Ladiace výpisy|L"
+
+#~ msgid "Find and Replace"
+#~ msgstr "Hľadať a nahradiť"
