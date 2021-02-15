@@ -208,7 +208,17 @@
         <item>
          <widget class="QCheckBox" name="wordsCB">
           <property name="text">
-           <string>Match &amp;whole words only</string>
+           <string>&amp;Whole words</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="instantSearchCB">
+          <property name="toolTip">
+           <string>If this is checked, LyX will search forward immediately</string>
+          </property>
+          <property name="text">
+           <string>Search as you t&amp;ype</string>
           </property>
          </widget>
         </item>

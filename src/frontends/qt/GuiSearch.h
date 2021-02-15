@@ -60,7 +60,8 @@ private:
 	void showEvent(QShowEvent * e) override;
 	/// Searches occurrence of string
 	void find(docstring const & search,
-		  bool casesensitive, bool matchword, bool forward);
+		  bool casesensitive, bool matchword,
+		  bool forward, bool instant);
 	/// Replaces occurrence of string
 	void replace(docstring const & search, docstring const & replace,
 		     bool casesensitive, bool matchword,

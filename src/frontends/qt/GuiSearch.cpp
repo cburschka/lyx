@@ -173,22 +173,26 @@ void GuiSearchWidget::findBufferChanged()
 
 void GuiSearchWidget::findChanged()
 {
-	findPB->setEnabled(!findCO->currentText().isEmpty());
-	findPrevPB->setEnabled(!findCO->currentText().isEmpty());
-	bool const replace = !findCO->currentText().isEmpty()
-			&& bv_ && !bv_->buffer().isReadonly();
+	bool const emptytext = findCO->currentText().isEmpty();
+	findPB->setEnabled(!emptytext);
+	findPrevPB->setEnabled(!emptytext);
+	bool const replace = !emptytext && bv_ && !bv_->buffer().isReadonly();
 	replacePB->setEnabled(replace);
 	replacePrevPB->setEnabled(replace);
 	replaceallPB->setEnabled(replace);
+	if (instantSearchCB->isChecked() && !emptytext)
+		findClicked();
 }
 
 
 void GuiSearchWidget::findClicked(bool const backwards)
 {
 	docstring const needle = qstring_to_ucs4(findCO->currentText());
-	find(needle, caseCB->isChecked(), wordsCB->isChecked(), !backwards);
+	find(needle, caseCB->isChecked(), wordsCB->isChecked(), !backwards,
+	     instantSearchCB->isChecked());
 	uniqueInsert(findCO, findCO->currentText());
-	findCO->lineEdit()->selectAll();
+	if (!instantSearchCB->isChecked())
+		findCO->lineEdit()->selectAll();
 }
 
 
@@ -226,10 +230,14 @@ void GuiSearchWidget::replaceallClicked()
 
 
 void GuiSearchWidget::find(docstring const & search, bool casesensitive,
-			 bool matchword, bool forward)
+			 bool matchword, bool forward, bool instant)
 {
 	docstring const sdata =
 		find2string(search, casesensitive, matchword, forward);
+	if (instant)
+		// re-query current match
+		dispatch(FuncRequest(LFUN_WORD_BACKWARD));
+
 	dispatch(FuncRequest(LFUN_WORD_FIND, sdata));
 }
 
@@ -248,6 +256,7 @@ void GuiSearchWidget::saveSession(QSettings & settings, QString const & session_
 {
 	settings.setValue(session_key + "/casesensitive", caseCB->isChecked());
 	settings.setValue(session_key + "/words", wordsCB->isChecked());
+	settings.setValue(session_key + "/instant", instantSearchCB->isChecked());
 	settings.setValue(session_key + "/minimized", minimized_);
 }
 
@@ -257,6 +266,7 @@ void GuiSearchWidget::restoreSession(QString const & session_key)
 	QSettings settings;
 	caseCB->setChecked(settings.value(session_key + "/casesensitive", false).toBool());
 	wordsCB->setChecked(settings.value(session_key + "/words", false).toBool());
+	instantSearchCB->setChecked(settings.value(session_key + "/instant", false).toBool());
 	minimized_ = settings.value(session_key + "/minimized", false).toBool();
 	// initialize hidings
 	minimizeClicked(false);
