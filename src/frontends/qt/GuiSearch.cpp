@@ -137,10 +137,10 @@ void GuiSearchWidget::minimizeClicked(bool const toggle)
 	CBFrame->setHidden(minimized_);
 	if (minimized_) {
 		minimizePB->setText(qt_("Ex&pand"));
-		minimizePB->setToolTip("Show replace and option widgets");
+		minimizePB->setToolTip(qt_("Show replace and option widgets"));
 	} else {
 		minimizePB->setText(qt_("&Minimize"));
-		minimizePB->setToolTip("Hide replace and option widgets");
+		minimizePB->setToolTip(qt_("Hide replace and option widgets"));
 	}
 
 	Q_EMIT needSizeUpdate();
