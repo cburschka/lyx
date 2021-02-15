@@ -141,7 +141,6 @@ Format 5
 \bind "C-S-D"                        "buffer-update dvi"	# 'd' for dvi
 #  +: "Command-E"                    # Use the selection for a find
 \bind "C-e"                          "search-string-set"
-\bind "C-M-e"                        "font-emph"
 #  +: "Command-F"                    # Open a Find window
 \bind "C-f"                          "dialog-toggle findreplace"
 \bind "C-S-f"                        "dialog-toggle findreplaceadv"
@@ -152,8 +151,8 @@ Format 5
 \bind "C-S-g"                        "word-find-backward"
 #  +: "Command-H"                    # Hide the windows of the currently running application
 #  +: "Option-Command-H"             # Hide the windows of all other running applications
-#  -: "Command-I"                    # Italicize the selected text or toggle italic text on or off
-\bind "C-i"                          "inset-toggle" # 'i' for Inset
+#  +: "Command-I"                    # Italicize the selected text or toggle italic text on or off
+\bind "C-i"                          "command-alternatives inset-toggle; font-emph" # 'i' for Inset
 \bind "C-M-i"                        "inset-settings"
 #  -: "Option-Command-I"             # Display an inspector window
 #  -: "Command-J"                    # Scroll to a selection
