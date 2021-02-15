@@ -4426,6 +4426,9 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				sdata = bv->cursor().getEncoding()->name();
 				if (!sdata.empty())
 					showDialog("symbols", sdata);
+			} else if (name == "findreplace") {
+				sdata = to_utf8(bv->cursor().selectionAsString(false));
+				showDialog(name, sdata);
 			// bug 5274
 			} else if (name == "prefs" && isFullScreen()) {
 				lfunUiToggle("fullscreen");

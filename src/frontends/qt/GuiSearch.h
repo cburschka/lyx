@@ -38,6 +38,8 @@ public:
 	///
 	void setBufferView(BufferView const * bv) { bv_ = bv; }
 	///
+	bool initialiseParams(std::string const &);
+	///
 	bool isMinimized() { return minimized_; }
 
 private Q_SLOTS:
@@ -85,7 +87,8 @@ public:
 
 	/// Controller inherited method.
 	///@{
-	bool initialiseParams(std::string const &) override { return true; }
+	bool initialiseParams(std::string const & sdata) override
+		{ return widget_->initialiseParams(sdata); }
 	void clearParams() override {}
 	void dispatchParams() override {}
 	bool isBufferDependent() const override { return true; }

@@ -91,6 +91,14 @@ GuiSearchWidget::GuiSearchWidget(QWidget * parent)
 }
 
 
+bool GuiSearchWidget::initialiseParams(std::string const & str)
+{
+	if (!str.empty())
+		findCO->lineEdit()->setText(toqstr(str));
+	return true;
+}
+
+
 void GuiSearchWidget::keyPressEvent(QKeyEvent * ev)
 {
 	KeySymbol sym;
