@@ -27,6 +27,9 @@
 * The shortcut for word-find on OSX is now Cmd-E, as is the Apple standard. The
   shortcut for word-find-previous is Cmd-G.
 
+* Continuous spellcheck is now on by default, but only if the user does not have
+  an existing preferences file. In that case, the old setting is preserved.
+
 
 !!Documents compilation process and images conversion
 
