@@ -34,11 +34,7 @@
         <string>Find previous occurrence (Shift+Enter)</string>
        </property>
        <property name="text">
-        <string>Find[[Previous]]</string>
-       </property>
-       <property name="icon">
-        <iconset theme="go-previous">
-         <normaloff>.</normaloff>.</iconset>
+        <string>&lt; Find</string>
        </property>
       </widget>
      </item>
@@ -141,14 +137,10 @@
         <string>Replace and find next occurrence</string>
        </property>
        <property name="layoutDirection">
-        <enum>Qt::RightToLeft</enum>
+        <enum>Qt::LeftToRight</enum>
        </property>
        <property name="text">
-        <string>&amp;Replace[[Next]]</string>
-       </property>
-       <property name="icon">
-        <iconset theme="go-next">
-         <normaloff>.</normaloff>.</iconset>
+        <string>&amp;Replace &gt;</string>
        </property>
       </widget>
      </item>
@@ -161,11 +153,7 @@
         <string>Replace and find previous occurrence</string>
        </property>
        <property name="text">
-        <string>Re&amp;place[[Previous]]</string>
-       </property>
-       <property name="icon">
-        <iconset theme="go-previous">
-         <normaloff>.</normaloff>.</iconset>
+        <string>&lt; Re&amp;place</string>
        </property>
       </widget>
      </item>
@@ -178,14 +166,10 @@
         <string>Find next occurrence (Enter)</string>
        </property>
        <property name="layoutDirection">
-        <enum>Qt::RightToLeft</enum>
+        <enum>Qt::LeftToRight</enum>
        </property>
        <property name="text">
-        <string>Find[[Next]]</string>
-       </property>
-       <property name="icon">
-        <iconset theme="go-next">
-         <normaloff>.</normaloff>.</iconset>
+        <string>Find &gt;</string>
        </property>
        <property name="default">
         <bool>true</bool>
