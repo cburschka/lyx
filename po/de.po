@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-02-14 17:34+0100\n"
-"PO-Revision-Date: 2021-02-14 17:44+0100\n"
+"POT-Creation-Date: 2021-02-15 14:21+0100\n"
+"PO-Revision-Date: 2021-02-15 14:33+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -843,7 +843,7 @@ msgstr "A&lle hinzufügen"
 #: src/frontends/qt/ui/BranchesUnknownUi.ui:58 src/Buffer.cpp:1459
 #: src/Buffer.cpp:4695 src/Buffer.cpp:4789 src/LyXVC.cpp:114 src/LyXVC.cpp:310
 #: src/buffer_funcs.cpp:56 src/frontends/qt/GuiBranches.cpp:226
-#: src/frontends/qt/GuiClipboard.cpp:246 src/frontends/qt/GuiDocument.cpp:2837
+#: src/frontends/qt/GuiClipboard.cpp:252 src/frontends/qt/GuiDocument.cpp:2837
 #: src/frontends/qt/GuiParagraph.cpp:177 src/frontends/qt/GuiPrefs.cpp:3365
 #: src/frontends/qt/GuiView.cpp:2665 src/frontends/qt/GuiView.cpp:2897
 #: src/frontends/qt/GuiView.cpp:2921 src/frontends/qt/GuiView.cpp:2935
@@ -1097,7 +1097,7 @@ msgstr "S&prache:"
 #: lib/layouts/europasscv.layout:475 lib/layouts/europasscv.layout:482
 #: lib/layouts/europecv.layout:321 lib/layouts/europecv.layout:327
 #: lib/layouts/moderncv.layout:580 src/frontends/qt/GuiDocument.cpp:1770
-#: src/frontends/qt/GuiPrefs.cpp:2388 src/frontends/qt/Menus.cpp:916
+#: src/frontends/qt/GuiPrefs.cpp:2388 src/frontends/qt/Menus.cpp:917
 msgid "Language"
 msgstr "Sprache"
 
@@ -1726,8 +1726,7 @@ msgid "Replace all occurrences at once"
 msgstr "Alle Vorkommen auf einmal ersetzen"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:179
-#: src/frontends/qt/ui/SearchUi.ui:101
-#: src/frontends/qt/ui/SpellcheckerUi.ui:148
+#: src/frontends/qt/ui/SearchUi.ui:50 src/frontends/qt/ui/SpellcheckerUi.ui:148
 msgid "Replace &All"
 msgstr "&Alle ersetzen"
 
@@ -5274,65 +5273,83 @@ msgstr "Den Teil der Marke vor \":\" nicht ausgeben"
 msgid "No Prefix"
 msgstr "Ohne Präfix"
 
-#: src/frontends/qt/ui/SearchUi.ui:31
-msgid "&Case sensitive[[search]]"
-msgstr "&Groß-/Kleinschreibung beachten"
-
-#: src/frontends/qt/ui/SearchUi.ui:38
-msgid "Match &whole words only"
-msgstr "N&ur ganze Wörter"
-
-#: src/frontends/qt/ui/SearchUi.ui:81
+#: src/frontends/qt/ui/SearchUi.ui:34
 msgid "Find previous occurrence (Shift+Enter)"
 msgstr "Vorhergehender Treffer (Umschalt+Eingabe)"
 
-#: src/frontends/qt/ui/SearchUi.ui:84
-msgid "Find[[Previous]]"
-msgstr "Suchen"
+#: src/frontends/qt/ui/SearchUi.ui:37
+msgid "< Find"
+msgstr "< Suchen"
 
-#: src/frontends/qt/ui/SearchUi.ui:98
+#: src/frontends/qt/ui/SearchUi.ui:47
 msgid "Replace all occurrences"
 msgstr "Alle Vorkommen auf einmal ersetzen"
 
-#: src/frontends/qt/ui/SearchUi.ui:133
+#: src/frontends/qt/ui/SearchUi.ui:82 src/frontends/qt/GuiSearch.cpp:143
 msgid "Hide replace and option widgets"
 msgstr "Ersetzen-Werkzeuge und Optionen verbergen"
 
-#: src/frontends/qt/ui/SearchUi.ui:136 src/frontends/qt/GuiSearch.cpp:135
+#: src/frontends/qt/ui/SearchUi.ui:85 src/frontends/qt/GuiSearch.cpp:142
 msgid "&Minimize"
 msgstr "&Minimieren"
 
-#: src/frontends/qt/ui/SearchUi.ui:143
+#: src/frontends/qt/ui/SearchUi.ui:92
 msgid "Rep&lace with:"
 msgstr "E&rsetzen durch:"
 
-#: src/frontends/qt/ui/SearchUi.ui:153
+#: src/frontends/qt/ui/SearchUi.ui:102
 msgid "&Search:"
 msgstr "&Suchen:"
 
-#: src/frontends/qt/ui/SearchUi.ui:188
+#: src/frontends/qt/ui/SearchUi.ui:137
 msgid "Replace and find next occurrence"
 msgstr "Ersetze und finde nächsten Treffer"
 
-#: src/frontends/qt/ui/SearchUi.ui:194
-msgid "&Replace[[Next]]"
-msgstr "Erset&zen"
+#: src/frontends/qt/ui/SearchUi.ui:143
+msgid "&Replace >"
+msgstr "Erset&zen >"
 
-#: src/frontends/qt/ui/SearchUi.ui:208
+#: src/frontends/qt/ui/SearchUi.ui:153
 msgid "Replace and find previous occurrence"
 msgstr "Ersetze und finde vorhergehenden Treffer"
 
-#: src/frontends/qt/ui/SearchUi.ui:211
-msgid "Re&place[[Previous]]"
-msgstr "Erse&tzen"
+#: src/frontends/qt/ui/SearchUi.ui:156
+msgid "< Re&place"
+msgstr "< Erse&tzen"
 
-#: src/frontends/qt/ui/SearchUi.ui:225
+#: src/frontends/qt/ui/SearchUi.ui:166
 msgid "Find next occurrence (Enter)"
 msgstr "Nächster Treffer (Eingabe)"
 
+#: src/frontends/qt/ui/SearchUi.ui:172
+msgid "Find >"
+msgstr "Suchen >"
+
+#: src/frontends/qt/ui/SearchUi.ui:204
+msgid "&Case sensitive[[search]]"
+msgstr "&Groß-/Kleinschreibung beachten"
+
+#: src/frontends/qt/ui/SearchUi.ui:211
+msgid "Wh&ole words"
+msgstr "Gan&ze Wörter"
+
+#: src/frontends/qt/ui/SearchUi.ui:218
+msgid "If this is checked, LyX will search forward immediately"
+msgstr "Wenn dies ausgewählt ist, sucht LyX direkt vorwärts"
+
+#: src/frontends/qt/ui/SearchUi.ui:221
+msgid "Search as you t&ype"
+msgstr "Während der Eing&abe suchen"
+
+#: src/frontends/qt/ui/SearchUi.ui:228
+msgid "If the end/start of the document is reached, automatically wrap around"
+msgstr ""
+"Suche von vorne/hinten weiter, wenn das Ende oder der Anfang des Dokuments "
+"erreicht ist."
+
 #: src/frontends/qt/ui/SearchUi.ui:231
-msgid "Find[[Next]]"
-msgstr "Suchen"
+msgid "&Wrap"
+msgstr "Mit Schlei&fe"
 
 #: src/frontends/qt/ui/SendtoUi.ui:50
 msgid "Process the converted file with this command ($$FName = file name)"
@@ -5390,7 +5407,7 @@ msgstr "Ent&fernen"
 #: src/frontends/qt/ui/SpellcheckerUi.ui:20
 #: src/frontends/qt/GuiSpellchecker.cpp:274
 #: src/frontends/qt/GuiSpellchecker.cpp:281
-#: src/frontends/qt/GuiSpellchecker.cpp:562
+#: src/frontends/qt/GuiSpellchecker.cpp:564
 msgid "Spell Checker"
 msgstr "Rechtschreibprüfung"
 
@@ -7233,8 +7250,8 @@ msgstr "Lösung \\thesolution."
 msgid "Summary"
 msgstr "Zusammenfassung"
 
-#: lib/layouts/AEA.layout:333 src/frontends/qt/Menus.cpp:1783
-#: src/frontends/qt/Menus.cpp:1798
+#: lib/layouts/AEA.layout:333 src/frontends/qt/Menus.cpp:1784
+#: src/frontends/qt/Menus.cpp:1799
 msgid "Caption"
 msgstr "Legende"
 
@@ -15488,7 +15505,7 @@ msgstr "Geben Sie hier PDF-Kommentar-Optionen ein (siehe PDFComment-Anleitung)"
 msgid "PDF-Annotation"
 msgstr "PDF-Anmerkung"
 
-#: lib/layouts/pdfcomment.module:98 src/frontends/qt/GuiClipboard.cpp:174
+#: lib/layouts/pdfcomment.module:98 src/frontends/qt/GuiClipboard.cpp:180
 msgid "PDF"
 msgstr "PDF"
 
@@ -19544,7 +19561,7 @@ msgid "Cut"
 msgstr "Ausschneiden"
 
 #: lib/ui/stdcontext.inc:62 lib/ui/stdcontext.inc:356 lib/ui/stdmenus.inc:109
-#: lib/ui/stdtoolbars.inc:87 src/BufferView.cpp:2210
+#: lib/ui/stdtoolbars.inc:87 src/BufferView.cpp:2224
 msgid "Copy"
 msgstr "Kopieren"
 
@@ -20855,7 +20872,7 @@ msgid "Code Preview Pane|P"
 msgstr "Quelltext-Vorschau|Q"
 
 #: lib/ui/stdmenus.inc:341
-msgid "Messages Pane|g"
+msgid "Messages Pane|M"
 msgstr "Statusmeldungen|e"
 
 #: lib/ui/stdmenus.inc:342
@@ -21472,11 +21489,11 @@ msgstr "Rechtschreibung prüfen"
 msgid "Spellcheck continuously"
 msgstr "Rechtschreibung während der Eingabe überprüfen"
 
-#: lib/ui/stdtoolbars.inc:84 src/BufferView.cpp:1420
+#: lib/ui/stdtoolbars.inc:84 src/BufferView.cpp:1437
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: lib/ui/stdtoolbars.inc:85 src/BufferView.cpp:1440
+#: lib/ui/stdtoolbars.inc:85 src/BufferView.cpp:1457
 msgid "Redo"
 msgstr "Wiederholen"
 
@@ -26402,7 +26419,7 @@ msgstr "PBM"
 msgid "PGM"
 msgstr "PGM"
 
-#: lib/configure.py:737 src/frontends/qt/GuiClipboard.cpp:175
+#: lib/configure.py:737 src/frontends/qt/GuiClipboard.cpp:181
 msgid "PNG"
 msgstr "PNG"
 
@@ -26792,11 +26809,11 @@ msgstr "ps_tex"
 msgid "ps_tex|PSTEX"
 msgstr "ps_tex|PSTEX"
 
-#: lib/configure.py:872 src/frontends/qt/GuiClipboard.cpp:172
+#: lib/configure.py:872 src/frontends/qt/GuiClipboard.cpp:178
 msgid "Windows Metafile"
 msgstr "Windows Metafile"
 
-#: lib/configure.py:873 src/frontends/qt/GuiClipboard.cpp:171
+#: lib/configure.py:873 src/frontends/qt/GuiClipboard.cpp:177
 msgid "Enhanced Metafile"
 msgstr "Erweiterte Metadatei"
 
@@ -27263,7 +27280,7 @@ msgid "Overwrite modified file?"
 msgstr "Modifizierte Datei überschreiben?"
 
 #: src/Buffer.cpp:1459 src/Exporter.cpp:50
-#: src/frontends/qt/GuiClipboard.cpp:246 src/frontends/qt/GuiView.cpp:2665
+#: src/frontends/qt/GuiClipboard.cpp:252 src/frontends/qt/GuiView.cpp:2665
 #: src/frontends/qt/GuiView.cpp:2934 src/frontends/qt/GuiView.cpp:3037
 msgid "&Overwrite"
 msgstr "&Überschreiben"
@@ -27977,7 +27994,7 @@ msgstr ""
 "korrekte\n"
 "Ausgabe erzeugen können."
 
-#: src/BufferParams.cpp:2553 src/BufferView.cpp:1372 src/BufferView.cpp:1404
+#: src/BufferParams.cpp:2553 src/BufferView.cpp:1389 src/BufferView.cpp:1421
 msgid "Could not load class"
 msgstr "Konnte Klasse nicht laden"
 
@@ -27989,143 +28006,143 @@ msgstr "Fehler beim Einlesen interner Format-Informationen"
 msgid "Read Error"
 msgstr "Lesefehler"
 
-#: src/BufferView.cpp:177
+#: src/BufferView.cpp:178
 msgid "No more insets"
 msgstr "Keine weiteren Einfügungen"
 
-#: src/BufferView.cpp:816
+#: src/BufferView.cpp:833
 msgid "Save bookmark"
 msgstr "Lesezeichen speichern"
 
-#: src/BufferView.cpp:1041
+#: src/BufferView.cpp:1058
 msgid "Converting document to new document class..."
 msgstr "Das Dokument wird an die neue Dokumentklasse angepasst..."
 
-#: src/BufferView.cpp:1086
+#: src/BufferView.cpp:1103
 msgid "Document is read-only"
 msgstr "Dokument ist schreibgeschützt"
 
-#: src/BufferView.cpp:1088
+#: src/BufferView.cpp:1105
 msgid "Document has been modified externally"
 msgstr "Das Dokument wurde extern bearbeitet"
 
-#: src/BufferView.cpp:1097
+#: src/BufferView.cpp:1114
 msgid "This portion of the document is deleted."
 msgstr "Dieser Teil des Dokuments wird gelöscht."
 
-#: src/BufferView.cpp:1140 src/BufferView.cpp:2202
+#: src/BufferView.cpp:1157 src/BufferView.cpp:2216
 #: src/frontends/qt/GuiView.cpp:4086 src/frontends/qt/GuiView.cpp:4174
 msgid "Absolute filename expected."
 msgstr "Ein absoluter Dateipfad wird erwartet."
 
-#: src/BufferView.cpp:1370 src/BufferView.cpp:1402
+#: src/BufferView.cpp:1387 src/BufferView.cpp:1419
 #, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "Die Dokumentklasse ,%1$s` konnte nicht geladen werden."
 
-#: src/BufferView.cpp:1428
+#: src/BufferView.cpp:1445
 msgid "No further undo information"
 msgstr "Nichts mehr rückgängig zu machen"
 
-#: src/BufferView.cpp:1448
+#: src/BufferView.cpp:1465
 msgid "No further redo information"
 msgstr "Nichts mehr zu wiederholen"
 
-#: src/BufferView.cpp:1642 src/BufferView.cpp:1657 src/BufferView.cpp:1688
+#: src/BufferView.cpp:1656 src/BufferView.cpp:1671 src/BufferView.cpp:1702
 msgid "Search string not found!"
 msgstr "Die Zeichenkette wurde nicht gefunden!"
 
-#: src/BufferView.cpp:1709
+#: src/BufferView.cpp:1723
 msgid "Mark off"
 msgstr "Marke aus"
 
-#: src/BufferView.cpp:1715
+#: src/BufferView.cpp:1729
 msgid "Mark on"
 msgstr "Marke ein"
 
-#: src/BufferView.cpp:1722
+#: src/BufferView.cpp:1736
 msgid "Mark removed"
 msgstr "Marke entfernt"
 
-#: src/BufferView.cpp:1725
+#: src/BufferView.cpp:1739
 msgid "Mark set"
 msgstr "Marke gesetzt"
 
-#: src/BufferView.cpp:1816
+#: src/BufferView.cpp:1830
 msgid "Statistics for the selection:"
 msgstr "Statistik für die Auswahl:"
 
-#: src/BufferView.cpp:1818
+#: src/BufferView.cpp:1832
 msgid "Statistics for the document:"
 msgstr "Statistik für das Dokument:"
 
-#: src/BufferView.cpp:1821
+#: src/BufferView.cpp:1835
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d Wörter"
 
-#: src/BufferView.cpp:1823
+#: src/BufferView.cpp:1837
 msgid "One word"
 msgstr "Ein Wort"
 
-#: src/BufferView.cpp:1826
+#: src/BufferView.cpp:1840
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d Zeichen (inklusive Leerzeichen)"
 
-#: src/BufferView.cpp:1829
+#: src/BufferView.cpp:1843
 msgid "One character (including blanks)"
 msgstr "Ein Zeichen (inklusive Leerzeichen)"
 
-#: src/BufferView.cpp:1832
+#: src/BufferView.cpp:1846
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d Zeichen (ohne Leerzeichen)"
 
-#: src/BufferView.cpp:1835
+#: src/BufferView.cpp:1849
 msgid "One character (excluding blanks)"
 msgstr "Ein Zeichen (ohne Leerzeichen)"
 
-#: src/BufferView.cpp:1837
+#: src/BufferView.cpp:1851
 msgid "Statistics"
 msgstr "Statistik"
 
-#: src/BufferView.cpp:2060
+#: src/BufferView.cpp:2074
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr ""
 ",inset-forall` wurde abgebrochen, da die Zahl der Aktionen %1$d übersteigt"
 
-#: src/BufferView.cpp:2062
+#: src/BufferView.cpp:2076
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "Der Befehl \"%1$s\" wurde auf %2$d Einfügungen angewandt"
 
-#: src/BufferView.cpp:2070
+#: src/BufferView.cpp:2084
 msgid "Branch name"
 msgstr "Name des Zweigs"
 
-#: src/BufferView.cpp:2077 src/frontends/qt/GuiBranches.cpp:225
+#: src/BufferView.cpp:2091 src/frontends/qt/GuiBranches.cpp:225
 msgid "Branch already exists"
 msgstr "Zweig existiert bereits"
 
-#: src/BufferView.cpp:2959
+#: src/BufferView.cpp:2973
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Füge Dokument %1$s ein..."
 
-#: src/BufferView.cpp:2975
+#: src/BufferView.cpp:2989
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s ist eingefügt."
 
-#: src/BufferView.cpp:2977
+#: src/BufferView.cpp:2991
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Das Dokument %1$s konnte nicht eingefügt werden"
 
-#: src/BufferView.cpp:3473
+#: src/BufferView.cpp:3487
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -28136,11 +28153,11 @@ msgstr ""
 "konnte aufgrund des folgenden Fehlers\n"
 "nicht gelesen werden: %2$s"
 
-#: src/BufferView.cpp:3475
+#: src/BufferView.cpp:3489
 msgid "Could not read file"
 msgstr "Die Datei konnte nicht gelesen werden"
 
-#: src/BufferView.cpp:3482
+#: src/BufferView.cpp:3496
 #, c-format
 msgid ""
 "%1$s\n"
@@ -28149,17 +28166,17 @@ msgstr ""
 "%1$s\n"
 "ist nicht lesbar."
 
-#: src/BufferView.cpp:3483 src/frontends/qt/qt_helpers.cpp:311
+#: src/BufferView.cpp:3497 src/frontends/qt/qt_helpers.cpp:311
 #: src/frontends/qt/qt_helpers.cpp:314 src/frontends/qt/qt_helpers.cpp:320
 #: src/output.cpp:39
 msgid "Could not open file"
 msgstr "Die Datei konnte nicht geöffnet werden"
 
-#: src/BufferView.cpp:3490
+#: src/BufferView.cpp:3504
 msgid "Reading not UTF-8 encoded file"
 msgstr "Lese nicht-UTF-8-kodierte Datei"
 
-#: src/BufferView.cpp:3491
+#: src/BufferView.cpp:3505
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -30372,36 +30389,36 @@ msgstr "Regexp-Editor-Modus"
 msgid "Layout "
 msgstr "Format "
 
-#: src/Text3.cpp:1583 src/Text3.cpp:2162
+#: src/Text3.cpp:1583 src/Text3.cpp:2159
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/Text3.cpp:2161
+#: src/Text3.cpp:2158
 msgid "Table Style "
 msgstr "Tabellenstil"
 
-#: src/Text3.cpp:2354 src/frontends/qt/GuiApplication.cpp:1807
+#: src/Text3.cpp:2351 src/frontends/qt/GuiApplication.cpp:1807
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
-#: src/Text3.cpp:2516
+#: src/Text3.cpp:2513
 msgid "Invalid argument (number exceeds stack size)!"
 msgstr "Ungültiges Argument (Zahl größer als Zwischenspeicher)!"
 
-#: src/Text3.cpp:2520
+#: src/Text3.cpp:2517
 msgid "Invalid argument (must be a non-negative number)!"
 msgstr "Ungültiges Argument (muss eine nicht-negative Zahl sein)!"
 
-#: src/Text3.cpp:2525 src/Text3.cpp:2543
+#: src/Text3.cpp:2522 src/Text3.cpp:2540
 #, c-format
 msgid "Text properties applied: %1$s"
 msgstr "Angewendete Texteigenschaften: %1$s"
 
-#: src/Text3.cpp:2695
+#: src/Text3.cpp:2692
 msgid "Path to thesaurus directory not set!"
 msgstr "Pfad zum Thesaurus-Wörterbuch nicht festlegt!"
 
-#: src/Text3.cpp:2696
+#: src/Text3.cpp:2693
 msgid ""
 "The path to the thesaurus directory has not been specified.\n"
 "The thesaurus is not functional.\n"
@@ -30413,7 +30430,7 @@ msgstr ""
 "Im Benutzerhandbuch, Abschnitt 6.15.11, finden Sie Hinweise,\n"
 "um den Thesaurus einzurichten."
 
-#: src/Text3.cpp:2763 src/Text3.cpp:2774
+#: src/Text3.cpp:2760 src/Text3.cpp:2771
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
@@ -30796,13 +30813,13 @@ msgstr ""
 
 #: src/VCBackend.cpp:1516 src/VCBackend.cpp:1520
 #: src/frontends/qt/FindAndReplace.cpp:385 src/frontends/qt/GuiPrefs.cpp:1862
-#: src/lyxfind.cpp:297 src/lyxfind.cpp:569 src/lyxfind.cpp:597
+#: src/lyxfind.cpp:299 src/lyxfind.cpp:591 src/lyxfind.cpp:619
 msgid "&Yes"
 msgstr "&Ja"
 
 #: src/VCBackend.cpp:1516 src/VCBackend.cpp:1520
 #: src/frontends/qt/FindAndReplace.cpp:385 src/frontends/qt/GuiPrefs.cpp:1862
-#: src/lyxfind.cpp:297 src/lyxfind.cpp:569 src/lyxfind.cpp:597
+#: src/lyxfind.cpp:299 src/lyxfind.cpp:591 src/lyxfind.cpp:619
 msgid "&No"
 msgstr "&Nein"
 
@@ -31011,8 +31028,8 @@ msgstr "Erweiterte Suche läuft (drücken Sie ESC, um abzubrechen) ..."
 msgid "Advanced search cancelled by user"
 msgstr "Erweiterte Suche durch den Benutzer abgebrochen"
 
-#: src/frontends/qt/FindAndReplace.cpp:384 src/lyxfind.cpp:296
-#: src/lyxfind.cpp:568 src/lyxfind.cpp:596
+#: src/frontends/qt/FindAndReplace.cpp:384 src/lyxfind.cpp:298
+#: src/lyxfind.cpp:590 src/lyxfind.cpp:618
 msgid "Wrap search?"
 msgstr "Von vorne suchen?"
 
@@ -31823,39 +31840,39 @@ msgstr "Zitierschlüssel"
 msgid "Text after"
 msgstr "Text danach"
 
-#: src/frontends/qt/GuiClipboard.cpp:173
+#: src/frontends/qt/GuiClipboard.cpp:179
 msgid "LinkBack PDF"
 msgstr "LinkBack-PDF"
 
-#: src/frontends/qt/GuiClipboard.cpp:176
+#: src/frontends/qt/GuiClipboard.cpp:182
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/frontends/qt/GuiClipboard.cpp:185
+#: src/frontends/qt/GuiClipboard.cpp:191
 msgid "pasted"
 msgstr "eingefügt"
 
-#: src/frontends/qt/GuiClipboard.cpp:194
+#: src/frontends/qt/GuiClipboard.cpp:200
 #, c-format
 msgid "%1$s Files"
 msgstr "%1$s Dateien"
 
-#: src/frontends/qt/GuiClipboard.cpp:204
+#: src/frontends/qt/GuiClipboard.cpp:210
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "Wählen Sie einen Dateinamen, um die eingefügte Grafik zu speichern als"
 
-#: src/frontends/qt/GuiClipboard.cpp:214 src/frontends/qt/GuiView.cpp:2482
+#: src/frontends/qt/GuiClipboard.cpp:220 src/frontends/qt/GuiView.cpp:2482
 #: src/frontends/qt/GuiView.cpp:2623 src/frontends/qt/GuiView.cpp:2639
 #: src/frontends/qt/GuiView.cpp:2651 src/frontends/qt/GuiView.cpp:2668
 #: src/frontends/qt/GuiView.cpp:2753 src/frontends/qt/GuiView.cpp:4186
 msgid "Canceled."
 msgstr "Abgebrochen."
 
-#: src/frontends/qt/GuiClipboard.cpp:244
+#: src/frontends/qt/GuiClipboard.cpp:250
 msgid "Overwrite external file?"
 msgstr "Externe Datei überschreiben?"
 
-#: src/frontends/qt/GuiClipboard.cpp:245
+#: src/frontends/qt/GuiClipboard.cpp:251
 #, c-format
 msgid "File %1$s already exists, do you want to overwrite it?"
 msgstr "Datei %1$s existiert bereits. Soll sie überschrieben werden?"
@@ -33509,7 +33526,7 @@ msgstr "Den Pfad zu den Hunspell-Wörterbüchern festlegen"
 msgid "Give a filename for the LyX server pipe"
 msgstr "Geben Sie einen Dateinamen für die LyX-Server-Weiterleitung an"
 
-#: src/frontends/qt/GuiPrefs.cpp:1537 src/frontends/qt/GuiSpellchecker.cpp:617
+#: src/frontends/qt/GuiPrefs.cpp:1537 src/frontends/qt/GuiSpellchecker.cpp:619
 msgid "Spellchecker"
 msgstr "Rechtschreibprüfung"
 
@@ -33753,11 +33770,15 @@ msgstr "Springe zur ursprünglichen Cursor-Platzierung zurück"
 msgid "<No prefix>"
 msgstr "<Ohne Präfix>"
 
-#: src/frontends/qt/GuiSearch.cpp:132
+#: src/frontends/qt/GuiSearch.cpp:139
 msgid "Ex&pand"
 msgstr "E&rweitern"
 
-#: src/frontends/qt/GuiSearch.cpp:248
+#: src/frontends/qt/GuiSearch.cpp:140
+msgid "Show replace and option widgets"
+msgstr "Ersetzen-Werkzeuge und Optionen verbergen"
+
+#: src/frontends/qt/GuiSearch.cpp:278
 msgid "Search and Replace"
 msgstr "Suchen und Ersetzen"
 
@@ -33784,7 +33805,7 @@ msgid ""
 msgstr ""
 "Das Ende des Dokuments wurde erreicht. Möchten Sie am Anfang weitermachen?"
 
-#: src/frontends/qt/GuiSpellchecker.cpp:563
+#: src/frontends/qt/GuiSpellchecker.cpp:565
 msgid "Spell checker has no dictionaries."
 msgstr "Das Rechtschreibprogramm findet keine Wörterbücher."
 
@@ -34862,232 +34883,232 @@ msgstr "Keine Gruppe"
 msgid "More Spelling Suggestions"
 msgstr "Weitere Rechtschreibvorschläge"
 
-#: src/frontends/qt/Menus.cpp:861
+#: src/frontends/qt/Menus.cpp:862
 msgid "Add to personal dictionary|n"
 msgstr "Zum persönlichen Wörterbuch hinzufügen|n"
 
-#: src/frontends/qt/Menus.cpp:863
+#: src/frontends/qt/Menus.cpp:864
 msgid "Ignore all|I"
 msgstr "Alle ignorieren|i"
 
-#: src/frontends/qt/Menus.cpp:871
+#: src/frontends/qt/Menus.cpp:872
 msgid "Remove from personal dictionary|r"
 msgstr "Entfernen aus persönlichem Wörterbuch|E"
 
-#: src/frontends/qt/Menus.cpp:901
+#: src/frontends/qt/Menus.cpp:902
 msgid "Switch Language...|L"
 msgstr "Sprache wechseln...|p"
 
-#: src/frontends/qt/Menus.cpp:915
+#: src/frontends/qt/Menus.cpp:916
 msgid "Language|L"
 msgstr "Sprache|p"
 
-#: src/frontends/qt/Menus.cpp:917
+#: src/frontends/qt/Menus.cpp:918
 msgid "More Languages ...|M"
 msgstr "Weitere Sprachen ...|W"
 
-#: src/frontends/qt/Menus.cpp:987 src/frontends/qt/Menus.cpp:988
+#: src/frontends/qt/Menus.cpp:988 src/frontends/qt/Menus.cpp:989
 msgid "Hidden|H"
 msgstr "Versteckt|V"
 
-#: src/frontends/qt/Menus.cpp:992
+#: src/frontends/qt/Menus.cpp:993
 msgid "(No Documents Open)"
 msgstr "(Keine Dokumente geöffnet)"
 
-#: src/frontends/qt/Menus.cpp:1058
+#: src/frontends/qt/Menus.cpp:1059
 msgid "(No Bookmarks Saved Yet)"
 msgstr "(Noch keine Lesezeichen gespeichert)"
 
-#: src/frontends/qt/Menus.cpp:1098
+#: src/frontends/qt/Menus.cpp:1099
 msgid "View (Other Formats)|F"
 msgstr "Andere Formate ansehen|F"
 
-#: src/frontends/qt/Menus.cpp:1099
+#: src/frontends/qt/Menus.cpp:1100
 msgid "Update (Other Formats)|p"
 msgstr "Andere Formate aktualisieren|n"
 
-#: src/frontends/qt/Menus.cpp:1129
+#: src/frontends/qt/Menus.cpp:1130
 #, c-format
 msgid "View [%1$s]|V"
 msgstr "Ansehen [%1$s]|s"
 
-#: src/frontends/qt/Menus.cpp:1130
+#: src/frontends/qt/Menus.cpp:1131
 #, c-format
 msgid "Update [%1$s]|U"
 msgstr "Aktualisieren [%1$s]|u"
 
-#: src/frontends/qt/Menus.cpp:1246
+#: src/frontends/qt/Menus.cpp:1247
 msgid "(No Custom Insets Defined)"
 msgstr "(Keine spezifischen Einfügungen definiert!)"
 
-#: src/frontends/qt/Menus.cpp:1335
+#: src/frontends/qt/Menus.cpp:1336
 msgid "(No Document Open)"
 msgstr "(Kein Dokument geöffnet)"
 
-#: src/frontends/qt/Menus.cpp:1344
+#: src/frontends/qt/Menus.cpp:1345
 msgid "Master Document"
 msgstr "Hauptdokument"
 
-#: src/frontends/qt/Menus.cpp:1367
+#: src/frontends/qt/Menus.cpp:1368
 msgid "Other Lists"
 msgstr "Andere Verzeichnisse"
 
-#: src/frontends/qt/Menus.cpp:1381
+#: src/frontends/qt/Menus.cpp:1382
 msgid "(Empty Table of Contents)"
 msgstr "(Leeres Inhaltsverzeichnis)"
 
-#: src/frontends/qt/Menus.cpp:1390
+#: src/frontends/qt/Menus.cpp:1391
 msgid "Open Outliner..."
 msgstr "Dokumentgliederung öffnen..."
 
-#: src/frontends/qt/Menus.cpp:1422
+#: src/frontends/qt/Menus.cpp:1423
 msgid "[[Toolbar]]On|O"
 msgstr "An|A"
 
-#: src/frontends/qt/Menus.cpp:1424
+#: src/frontends/qt/Menus.cpp:1425
 msgid "[[Toolbar]]Off|f"
 msgstr "Aus|u"
 
-#: src/frontends/qt/Menus.cpp:1426
+#: src/frontends/qt/Menus.cpp:1427
 msgid "[[Toolbar]]Automatic|A"
 msgstr "Automatisch|o"
 
-#: src/frontends/qt/Menus.cpp:1438
+#: src/frontends/qt/Menus.cpp:1439
 msgid "Other Toolbars"
 msgstr "Andere Werkzeugleisten"
 
-#: src/frontends/qt/Menus.cpp:1501
+#: src/frontends/qt/Menus.cpp:1502
 msgid "Master Documents"
 msgstr "Hauptdokumente"
 
-#: src/frontends/qt/Menus.cpp:1517
+#: src/frontends/qt/Menus.cpp:1518
 msgid "Index List|I"
 msgstr "Stichwortverzeichnis|S"
 
-#: src/frontends/qt/Menus.cpp:1522
+#: src/frontends/qt/Menus.cpp:1523
 msgid "Index Entry|d"
 msgstr "Stichwort|h"
 
-#: src/frontends/qt/Menus.cpp:1537
+#: src/frontends/qt/Menus.cpp:1538
 #, c-format
 msgid "Index: %1$s"
 msgstr "Index: %1$s"
 
-#: src/frontends/qt/Menus.cpp:1542 src/frontends/qt/Menus.cpp:1571
+#: src/frontends/qt/Menus.cpp:1543 src/frontends/qt/Menus.cpp:1572
 #, c-format
 msgid "Index Entry (%1$s)"
 msgstr "Indexeintrag (%1$s)"
 
-#: src/frontends/qt/Menus.cpp:1588
+#: src/frontends/qt/Menus.cpp:1589
 msgid "No Citation in Scope!"
 msgstr "Keine Literaturverweis in Reichweite!"
 
-#: src/frontends/qt/Menus.cpp:1602 src/insets/InsetCitation.cpp:324
+#: src/frontends/qt/Menus.cpp:1603 src/insets/InsetCitation.cpp:324
 #: src/insets/InsetCitation.cpp:454
 msgid "No citations selected!"
 msgstr "Keine Literaturverweise ausgewählt!"
 
-#: src/frontends/qt/Menus.cpp:1651
+#: src/frontends/qt/Menus.cpp:1652
 msgid "All authors|h"
 msgstr "Alle Autoren|u"
 
-#: src/frontends/qt/Menus.cpp:1682
+#: src/frontends/qt/Menus.cpp:1683
 msgid "Force upper case|u"
 msgstr "Großschreibung erzwingen|G"
 
-#: src/frontends/qt/Menus.cpp:1696
+#: src/frontends/qt/Menus.cpp:1697
 msgid "No Text Field in Scope!"
 msgstr "Kein Textfeld in Reichweite!"
 
-#: src/frontends/qt/Menus.cpp:1715
+#: src/frontends/qt/Menus.cpp:1716
 msgid "Custom..."
 msgstr "Benutzerdefiniert..."
 
-#: src/frontends/qt/Menus.cpp:1791
+#: src/frontends/qt/Menus.cpp:1792
 #, c-format
 msgid "Caption (%1$s)"
 msgstr "Legende (%1$s)"
 
-#: src/frontends/qt/Menus.cpp:1816
+#: src/frontends/qt/Menus.cpp:1817
 msgid "No Quote in Scope!"
 msgstr "Kein Anführungszeichen in Reichweite!"
 
-#: src/frontends/qt/Menus.cpp:1848 src/frontends/qt/Menus.cpp:1852
-#: src/frontends/qt/Menus.cpp:1856 src/frontends/qt/Menus.cpp:1860
+#: src/frontends/qt/Menus.cpp:1849 src/frontends/qt/Menus.cpp:1853
+#: src/frontends/qt/Menus.cpp:1857 src/frontends/qt/Menus.cpp:1861
 #, c-format
 msgid "%1$s (dynamic)"
 msgstr "%1$s (dynamisch)"
 
-#: src/frontends/qt/Menus.cpp:1894
+#: src/frontends/qt/Menus.cpp:1895
 #, c-format
 msgid "Use dynamic quotes (%1$s)|d"
 msgstr "Dynamische Anführungszeichen (%1$s) verwenden|y"
 
-#: src/frontends/qt/Menus.cpp:1900
+#: src/frontends/qt/Menus.cpp:1901
 msgid "dynamic[[Quotes]]"
 msgstr "dynamisch"
 
-#: src/frontends/qt/Menus.cpp:1900 src/frontends/qt/Menus.cpp:1910
+#: src/frontends/qt/Menus.cpp:1901 src/frontends/qt/Menus.cpp:1911
 msgid "static[[Quotes]]"
 msgstr "statisch"
 
-#: src/frontends/qt/Menus.cpp:1902
+#: src/frontends/qt/Menus.cpp:1903
 #, c-format
 msgid "Reset to document default (%1$s, %2$s)|o"
 msgstr "Auf Dokumentvoreinstellungen zurücksetzen (%1$s, %2$s)|o"
 
-#: src/frontends/qt/Menus.cpp:1909
+#: src/frontends/qt/Menus.cpp:1910
 #, c-format
 msgid "Reset to language default (%1$s, %2$s)|l"
 msgstr "Auf Sprachvoreinstellung zurücksetzen (%1$s, %2$s)|S"
 
-#: src/frontends/qt/Menus.cpp:1911
+#: src/frontends/qt/Menus.cpp:1912
 #, c-format
 msgid "Reset to language default (%1$s)|l"
 msgstr "Auf Sprachvoreinstellung zurücksetzen (%1$s)|S"
 
-#: src/frontends/qt/Menus.cpp:1919
+#: src/frontends/qt/Menus.cpp:1920
 msgid "Change Style|y"
 msgstr "Stil ändern|t"
 
-#: src/frontends/qt/Menus.cpp:1960
+#: src/frontends/qt/Menus.cpp:1961
 #, c-format
 msgid "Insert Separated %1$s Above"
 msgstr "Separierte Umgebung (%1$s) oberhalb einfügen"
 
-#: src/frontends/qt/Menus.cpp:1962
+#: src/frontends/qt/Menus.cpp:1963
 #, c-format
 msgid "Separated %1$s Above"
 msgstr "Separierte Umgebung (%1$s) oberhalb"
 
-#: src/frontends/qt/Menus.cpp:1968 src/frontends/qt/Menus.cpp:1981
-#: src/frontends/qt/Menus.cpp:1998
+#: src/frontends/qt/Menus.cpp:1969 src/frontends/qt/Menus.cpp:1982
+#: src/frontends/qt/Menus.cpp:1999
 #, c-format
 msgid "Insert Separated %1$s Below"
 msgstr "Separierte Umgebung (%1$s) unterhalb einfügen"
 
-#: src/frontends/qt/Menus.cpp:1970 src/frontends/qt/Menus.cpp:1983
-#: src/frontends/qt/Menus.cpp:2004
+#: src/frontends/qt/Menus.cpp:1971 src/frontends/qt/Menus.cpp:1984
+#: src/frontends/qt/Menus.cpp:2005
 #, c-format
 msgid "Separated %1$s Below"
 msgstr "Separierte Umgebung (%1$s) unterhalb"
 
-#: src/frontends/qt/Menus.cpp:1996
+#: src/frontends/qt/Menus.cpp:1997
 #, c-format
 msgid "Insert Separated Outer %1$s Below"
 msgstr "Separierte äußere Umgebung (%1$s) unterhalb einfügen"
 
-#: src/frontends/qt/Menus.cpp:2002
+#: src/frontends/qt/Menus.cpp:2003
 #, c-format
 msgid "Separated Outer %1$s Below"
 msgstr "Separierte äußere Umgebung (%1$s) unterhalb"
 
-#: src/frontends/qt/Menus.cpp:2318
+#: src/frontends/qt/Menus.cpp:2319
 #, c-format
 msgid "Export [%1$s]|E"
 msgstr "Exportiere in das Standardformat [%1$s]|E"
 
-#: src/frontends/qt/Menus.cpp:2668
+#: src/frontends/qt/Menus.cpp:2669
 msgid "No Action Defined!"
 msgstr "Keine Aktion definiert!"
 
@@ -36756,7 +36777,7 @@ msgstr "Fehler beim Suchen"
 msgid "Search string is empty"
 msgstr "Die Such-Zeichenkette ist leer"
 
-#: src/lyxfind.cpp:291 src/lyxfind.cpp:566
+#: src/lyxfind.cpp:293 src/lyxfind.cpp:588
 msgid ""
 "End of file reached while searching forward.\n"
 "Continue searching from the beginning?"
@@ -36764,7 +36785,7 @@ msgstr ""
 "Das Ende des Dokuments wurde bei der Vorwärtssuche erreicht.\n"
 "Suche am Anfang fortsetzen?"
 
-#: src/lyxfind.cpp:294 src/lyxfind.cpp:594
+#: src/lyxfind.cpp:296 src/lyxfind.cpp:616
 msgid ""
 "Beginning of file reached while searching backward.\n"
 "Continue searching from the end?"
@@ -36772,45 +36793,45 @@ msgstr ""
 "Der Anfang des Dokuments wurde bei der Rückwärtssuche erreicht.\n"
 "Suche am Ende fortsetzen?"
 
-#: src/lyxfind.cpp:542
+#: src/lyxfind.cpp:564
 msgid "String not found."
 msgstr "Die Zeichenkette wurde nicht gefunden."
 
-#: src/lyxfind.cpp:545
+#: src/lyxfind.cpp:567
 msgid "String found."
 msgstr "Zeichenkette gefunden."
 
-#: src/lyxfind.cpp:547
+#: src/lyxfind.cpp:569
 msgid "String has been replaced."
 msgstr "Die Zeichenkette wurde ersetzt."
 
-#: src/lyxfind.cpp:550
+#: src/lyxfind.cpp:572
 #, c-format
 msgid "%1$d strings have been replaced."
 msgstr "%1$d Zeichenketten wurden ersetzt."
 
-#: src/lyxfind.cpp:4131
+#: src/lyxfind.cpp:4153
 msgid "One match has been replaced."
 msgstr "Ein Treffer wurde ersetzt."
 
-#: src/lyxfind.cpp:4134
+#: src/lyxfind.cpp:4156
 msgid "Two matches have been replaced."
 msgstr "Zwei Treffer wurden ersetzt."
 
-#: src/lyxfind.cpp:4137
+#: src/lyxfind.cpp:4159
 #, c-format
 msgid "%1$d matches have been replaced."
 msgstr "%1$d Treffer wurden ersetzt."
 
-#: src/lyxfind.cpp:4143
+#: src/lyxfind.cpp:4165
 msgid "Match not found."
 msgstr "Die Zeichenkette wurde nicht gefunden!"
 
-#: src/lyxfind.cpp:4149
+#: src/lyxfind.cpp:4171
 msgid "Match has been replaced."
 msgstr "Die Zeichenkette wurde ersetzt."
 
-#: src/lyxfind.cpp:4151
+#: src/lyxfind.cpp:4173
 msgid "Match found."
 msgstr "Die Zeichenkette wurde gefunden!"
 
@@ -37399,6 +37420,21 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "Match &whole words only"
+#~ msgstr "N&ur ganze Wörter"
+
+#~ msgid "Find[[Previous]]"
+#~ msgstr "Suchen"
+
+#~ msgid "&Replace[[Next]]"
+#~ msgstr "Erset&zen"
+
+#~ msgid "Re&place[[Previous]]"
+#~ msgstr "Erse&tzen"
+
+#~ msgid "Find[[Next]]"
+#~ msgstr "Suchen"
 
 #, fuzzy
 #~ msgid "Find next occurrence"
@@ -38001,9 +38037,6 @@ msgstr "Unbekannter Benutzer"
 
 #~ msgid "Edit"
 #~ msgstr "Bearbeiten"
-
-#~ msgid "Find"
-#~ msgstr "Suchen"
 
 #~ msgid "Templates"
 #~ msgstr "Vorlagen"
@@ -40579,9 +40612,6 @@ msgstr "Unbekannter Benutzer"
 
 #~ msgid "Box:Shaded"
 #~ msgstr "Box:Schattiert"
-
-#~ msgid "Wrap"
-#~ msgstr "Umflossenes Gleitobjekt"
 
 #~ msgid "Info:menu"
 #~ msgstr "Info:Menü"
