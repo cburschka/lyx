@@ -191,10 +191,10 @@ void setIgnoreFormat(string const & type, bool value, bool fromUser)
 
 namespace {
 
-bool parse_bool(docstring & howto)
+bool parse_bool(docstring & howto, bool const defvalue = false)
 {
 	if (howto.empty())
-		return false;
+		return defvalue;
 	docstring var;
 	howto = split(howto, var, ' ');
 	return var == "1";
@@ -482,7 +482,7 @@ docstring const string2find(docstring const & argument,
 
 	casesensitive = parse_bool(howto);
 	matchword     = parse_bool(howto);
-	forward       = parse_bool(howto);
+	forward       = parse_bool(howto, true);
 
 	return search;
 }
@@ -520,7 +520,7 @@ bool lyxreplace(BufferView * bv, FuncRequest const & ev)
 	bool casesensitive = parse_bool(howto);
 	bool matchword     = parse_bool(howto);
 	bool all           = parse_bool(howto);
-	bool forward       = parse_bool(howto);
+	bool forward       = parse_bool(howto, true);
 	bool findnext      = howto.empty() ? true : parse_bool(howto);
 
 	bool update = false;
