@@ -102,12 +102,9 @@ public:
 
 	/// right margin
 	int rightMargin() const;
+
 	/// left margin
 	int leftMargin() const;
-	/// top margin
-	int topMargin() const;
-	/// bottom margin
-	int bottomMargin() const;
 
 	docstring const & searchRequestCache() const;
 	void setSearchRequestCache(docstring const & text);

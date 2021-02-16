@@ -581,6 +581,28 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 		}
 	}
 
+	// FIXME: It might be better to move this in another method
+	// specially tailored for the main text.
+	// Top and bottom margin of the document (only at top-level)
+	if (text_->isMainText()) {
+		// original value was 20px, which is 0.2in at 100dpi
+		int const margin = bv_->zoomedPixels(20);
+		if (pit == 0) {
+			pm.rows().front().dim().asc += margin;
+			/* coverity thinks that we should update pm.dim().asc
+			 * below, but all the rows heights are actually counted as
+			 * part of the paragraph metric descent see loop above).
+			 */
+			// coverity[copy_paste_error]
+			pm.dim().des += margin;
+		}
+		ParagraphList const & pars = text_->paragraphs();
+		if (pit + 1 == pit_type(pars.size())) {
+			pm.rows().back().dim().des += margin;
+			pm.dim().des += margin;
+		}
+	}
+
 	// The space above and below the paragraph.
 	int const top = parTopSpacing(pit);
 	pm.rows().front().dim().asc += top;
@@ -590,18 +612,6 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 
 	pm.dim().asc += pm.rows()[0].ascent();
 	pm.dim().des -= pm.rows()[0].ascent();
-
-	// Top and bottom margin of the document (only at top-level)
-	// FIXME: It might be better to move this in another method
-	// specially tailored for the main text.
-	if (text_->isMainText()) {
-		if (pit == 0)
-			pm.dim().asc += bv_->topMargin();
-		ParagraphList const & pars = text_->paragraphs();
-		if (pit + 1 == pit_type(pars.size())) {
-			pm.dim().des += bv_->bottomMargin();
-		}
-	}
 
 	changed |= old_dim.height() != pm.dim().height();
 
@@ -1349,7 +1359,7 @@ Row const & TextMetrics::getPitAndRowNearY(int & y, pit_type & pit,
 {
 	ParagraphMetrics const & pm = par_metrics_[pit];
 
-	int yy = pm.position() - pm.rows().front().ascent();
+	int yy = pm.position() - pm.ascent();
 	LBUFERR(!pm.rows().empty());
 	RowList::const_iterator rit = pm.rows().begin();
 	RowList::const_iterator rlast = pm.rows().end();
