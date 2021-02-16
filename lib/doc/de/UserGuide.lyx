@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 601
+\lyxformat 606
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -131,12 +131,12 @@ logicalmkup
 \branch Frage
 \selected 1
 \filename_suffix 0
-\color #00ff00
+\color #00ff00 #ff00ff
 \end_branch
 \branch Antwort
 \selected 0
 \filename_suffix 0
-\color #aa55ff
+\color #aa55ff #55aa00
 \end_branch
 \index Stichwortverzeichnis
 \shortcut idx
@@ -1282,33 +1282,54 @@ Suchen:
  ein.
  Mit der Schaltfläche 
 \family sans
-Nächstes
-\family default
-
-\begin_inset space \space{}
-\end_inset
-
-
-\family sans
-suchen
-\family default
- wird der Text gesucht.
- Die Suchrichtung ist normalerweise vorwärts, es sei denn, 
-\family sans
-Rückwärts
+Suchen
 \begin_inset space ~
 \end_inset
 
-suchen
+>
 \family default
- ist aktiviert.
- Wurde der Suchbegriff gefunden, wird er markiert.
- Wenn Sie das Fenster schließen, können Sie mit der 
+ (oder der Eingabetaste oder dem Tastenkürzel 
+\begin_inset Info
+type  "shortcuts"
+arg   "word-find"
+\end_inset
+
+) wird der Text in Leserichtung gesucht.
+ 
 \family sans
-F3
+<
+\begin_inset space ~
+\end_inset
+
+Suchen 
 \family default
--Taste weiter suchen, aber nur vorwärts und ohne Unterscheidung zwischen
- groß und klein.
+(bzw.
+ 
+\family sans
+Umschalt+Eingabetaste
+\family default
+ oder 
+\begin_inset Info
+type  "shortcuts"
+arg   "word-find-backward"
+\end_inset
+
+) sucht rückwärts.
+ Wurde der Suchbegriff gefunden, wird er markiert.
+ Auch wenn Sie das Fenster schließen, können Sie mit 
+\begin_inset Info
+type  "shortcuts"
+arg   "word-find"
+\end_inset
+
+ oder 
+\begin_inset Info
+type  "shortcuts"
+arg   "word-find-backward"
+\end_inset
+
+ weiter suchen.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1324,8 +1345,7 @@ Ersetzen
 
 durch:
 \family default
- ersetzt.
- Dann können Sie weiter suchen.
+ ersetzt und es wird automatisch der nächste Treffer gesucht.
  Wenn Sie 
 \family sans
 Alles
@@ -1348,7 +1368,12 @@ durch:
 \end_layout
 
 \begin_layout Standard
-Über den Umschaltknopf 
+Außerdem bietet der Dialog folgende Optionen:
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
 \family sans
 Groß-/Kleinschreibung
 \begin_inset space ~
@@ -1356,8 +1381,7 @@ Groß-/Kleinschreibung
 
 beachten
 \family default
- können Sie festlegen, ob bei der Suche die Schreibweise berücksichtigt
- werden soll.
+ legt fest, ob bei der Suche die Schreibweise berücksichtigt werden soll.
  Ist sie aktiv, wird zum Beispiel bei der Suche nach 
 \begin_inset Quotes gld
 \end_inset
@@ -1377,8 +1401,9 @@ treffen
  nicht gefunden.
 \end_layout
 
-\begin_layout Standard
-Der Umschaltknopf 
+\begin_layout Itemize
+\noindent
+
 \family sans
 Nur
 \begin_inset space ~
@@ -1416,6 +1441,68 @@ Treffer
 \end_inset
 
  nicht gefunden.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Nur Auswahl
+\family default
+ beschränkt die Suche und das Ersetzen (inkl.
+ 
+\family sans
+Alles
+\begin_inset space ~
+\end_inset
+
+ersetzen
+\family default
+) auf den ausgewählten Text.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Direkt suchen
+\family default
+ bewirkt, dass unmittelbar während der Eingabe, ohne dass 
+\family sans
+Finden
+\begin_inset space ~
+\end_inset
+
+>
+\family default
+ gedrückt wird, (vorwärts) gesucht wird.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Mit Schleife
+\family default
+ startet automatisch am Anfang/Ende des Dokuments, nachdem das Ende bzw.
+ der Anfang erreicht wurde.
+ Wenn dies nicht ausgewählt ist, erscheint in diesem Fall ein Dialog, der
+ Sie fragt, was zu tun ist.
+ Beachten Sie, dass das Anklicken dieses Dialogs den Cursor in den Arbeitsbereic
+h setzt.
+ Sie müssen ihn also selbst wieder in den Suchdialog setzen.
+\end_layout
+
+\begin_layout Standard
+Es gibt weiterhin einen Knopf 
+\family sans
+Minimieren
+\family default
+, der es Ihnen ermöglicht, den Dialog so zu verkleinern, dass nur die erste
+ Zeile (mit den Such-Werkzeugen) angezeigt wird; die Ersetzen-Werkzeuge
+ und die Optionen werden ausgeblendet.
+ Nachdem Sie das gemacht haben, bringt Sie ein Knopf 
+\family sans
+Erweitern
+\family default
+ wieder zum ausgeklappten Dialog.
 \end_layout
 
 \begin_layout Standard
@@ -8649,10 +8736,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8665,6 +8754,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8688,6 +8778,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 

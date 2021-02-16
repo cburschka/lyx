@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 601
+\lyxformat 606
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -124,12 +124,12 @@ logicalmkup
 \branch Question
 \selected 1
 \filename_suffix 0
-\color #00ff00
+\color #00ff00 #ff00ff
 \end_branch
 \branch Answer
 \selected 0
 \filename_suffix 0
-\color #aa55ff
+\color #aa55ff #55aa00
 \end_branch
 \index Index
 \shortcut idx
@@ -1253,7 +1253,7 @@ Replace
 
 \begin_inset Info
 type  "shortcut"
-arg   "dialog-show findreplaceadv"
+arg   "dialog-toggle findreplace"
 \end_inset
 
  or
@@ -1263,7 +1263,7 @@ arg   "dialog-show findreplaceadv"
 
 \begin_inset Info
 type  "icon"
-arg   "dialog-show findreplace"
+arg   "dialog-toggle findreplace"
 \end_inset
 
 
@@ -1456,10 +1456,18 @@ and
 
 Replace
 \family default
- dialog.
+ 
+\change_inserted -712698321 1613466403
+widget
+\change_deleted -712698321 1613466406
+dialog
+\change_unchanged
+.
  Once you have found a word or expression, \SpecialChar LyX
  selects it.
- Hitting the 
+ 
+\change_deleted -712698321 1613466954
+Hitting the 
 \family sans
 Replace
 \family default
@@ -1472,15 +1480,41 @@ Replace
 with
 \family default
  field.
- You can click the 
+ 
+\change_unchanged
+You can click the 
 \family sans
 Find
+\change_inserted -712698321 1613466364
+
+\begin_inset space ~
+\end_inset
+
+>
+\change_deleted -712698321 1613466368
+
 \begin_inset space ~
 \end_inset
 
 Next
+\change_unchanged
+
 \family default
- button to skip the curren
+ button 
+\change_inserted -712698321 1613466698
+(or the 
+\family sans
+Return
+\family default
+ key or the 
+\begin_inset Info
+type  "shortcuts"
+arg   "word-find"
+\end_inset
+
+ shortcut) 
+\change_unchanged
+to skip the curren
 \change_inserted 5863208 1598126824
 tly selec
 \change_unchanged
@@ -1488,8 +1522,67 @@ t
 \change_inserted 5863208 1598126824
 ed
 \change_unchanged
- word.
- Hit 
+ word
+\change_inserted -712698321 1613466747
+, or 
+\family sans
+<
+\begin_inset space ~
+\end_inset
+
+Find 
+\family default
+(or 
+\family sans
+Shift+Return
+\family default
+ or the 
+\begin_inset Info
+type  "shortcuts"
+arg   "word-find-backward"
+\end_inset
+
+ shortcut) to search backwards
+\change_unchanged
+.
+ 
+\change_inserted -712698321 1613466989
+Even if you close the widget, 
+\begin_inset Info
+type  "shortcuts"
+arg   "word-find"
+\end_inset
+
+ and 
+\begin_inset Info
+type  "shortcuts"
+arg   "word-find-backward"
+\end_inset
+
+ will search further.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1613467040
+Hitting the 
+\family sans
+Replace
+\family default
+ button replaces the selected text with the contents of the 
+\family sans
+Replace
+\begin_inset space ~
+\end_inset
+
+with
+\family default
+ field and searches the next match.
+ 
+\change_unchanged
+Hit 
 \family sans
 Replace
 \begin_inset space ~
@@ -1498,7 +1591,26 @@ Replace
 All
 \family default
  to replace all occurrences of the text in the document automatically.
- The 
+
+\change_deleted -712698321 1613467539
+ 
+\change_inserted -712698321 1613467537
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1613467208
+Furthermore, the following options are available:
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\change_deleted -712698321 1613467225
+The 
+\change_unchanged
+
 \family sans
 Case
 \begin_inset space ~
@@ -1506,8 +1618,11 @@ Case
 
 sensitive
 \family default
- option can be used if you want the search to consider the case of the search
- word.
+ 
+\change_deleted -712698321 1613467228
+option 
+\change_unchanged
+can be used if you want the search to consider the case of the search word.
  If the toggle is set, searching for 
 \begin_inset Quotes eld
 \end_inset
@@ -1533,11 +1648,28 @@ test
 \end_inset
 
 .
- The 
+ 
+\change_inserted -712698321 1613467232
+
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\change_deleted -712698321 1613467234
+The 
 \family sans
-Match whole words only
+Match w
+\change_inserted -712698321 1613467207
+W
+\change_unchanged
+hole words
+\change_deleted -712698321 1613467237
+ only
 \family default
- option can be used to force \SpecialChar LyX
+ option
+\change_unchanged
+ can be used to force \SpecialChar LyX
  to only find complete words, e.
 \begin_inset space \thinspace{}
 \end_inset
@@ -1571,7 +1703,77 @@ starlet
 \end_inset
 
 .
- \SpecialChar LyX
+ 
+\change_inserted -712698321 1613467241
+
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\change_inserted -712698321 1613467258
+
+\family sans
+Selection only
+\family default
+ will limit search and replace, or replace all, to the current cursor selection.
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\change_inserted -712698321 1613467288
+
+\family sans
+Search as you type
+\family default
+ starts searching (forwards) immediately on input, without pressing the
+ 
+\family sans
+Find
+\begin_inset space ~
+\end_inset
+
+>
+\family default
+ key.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1613467400
+
+\family sans
+Wrap
+\family default
+ starts from the beginning/end of the document if the end/beginning has
+ been reached without asking.
+ If this is not checked, a dialog will pop up asking you what to do.
+ Note that responding to this dialog makes the cursor leave the search widget,
+ so you need to put it back manually.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing single
+
+\change_inserted -712698321 1613467875
+The widget also has a 
+\family sans
+Minimize
+\family default
+ button that lets you shrink the widget to only the first row (the search
+ widget), hiding replace and options.
+ If done so, and 
+\family sans
+Expand
+\family default
+ button brings you back to the full size.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing single
+\noindent
+\SpecialChar LyX
  also offers an advanced 
 \family sans
 Find
@@ -8751,12 +8953,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8769,6 +8973,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8792,6 +8997,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
