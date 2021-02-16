@@ -848,7 +848,8 @@ void MenuDefinition::expandSpellingSuggestions(BufferView const * bv)
 								false,    // all words
 								true,     // forward
 								false,    // find next
-								false))); // auto-wrap
+								false,    // auto-wrap
+								false))); // only selection
 					if (i < m)
 						add(w);
 					else

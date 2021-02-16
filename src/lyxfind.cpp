@@ -225,24 +225,33 @@ private:
 };
 
 
-int findForward(DocIterator & cur, MatchString const & match,
-		bool find_del = true)
+int findForward(DocIterator & cur, DocIterator const endcur,
+		MatchString const & match,
+		bool find_del = true, bool onlysel = false)
 {
-	for (; cur; cur.forwardChar())
+	for (; cur; cur.forwardChar()) {
+		if (onlysel && endcur.pit() == cur.pit()
+		    && endcur.idx() == cur.idx() && endcur.pos() < cur.pos())
+			break;
 		if (cur.inTexted()) {
 			int len = match(cur.paragraph(), cur.pos(), find_del);
 			if (len > 0)
 				return len;
 		}
+	}
 	return 0;
 }
 
 
-int findBackwards(DocIterator & cur, MatchString const & match,
-		  bool find_del = true)
+int findBackwards(DocIterator & cur, DocIterator const endcur,
+		  MatchString const & match,
+		  bool find_del = true, bool onlysel = false)
 {
 	while (cur) {
 		cur.backwardChar();
+		if (onlysel && endcur.pit() == cur.pit()
+		    && endcur.idx() == cur.idx() && endcur.pos() > cur.pos())
+			break;
 		if (cur.inTexted()) {
 			int len = match(cur.paragraph(), cur.pos(), find_del);
 			if (len > 0)
@@ -268,23 +277,56 @@ bool searchAllowed(docstring const & str)
 bool findOne(BufferView * bv, docstring const & searchstr,
 	     bool case_sens, bool whole, bool forward,
 	     bool find_del, bool check_wrap, bool auto_wrap,
-	     bool instant)
+	     bool instant, bool onlysel)
 {
 	if (!searchAllowed(searchstr))
 		return false;
 
+	DocIterator const endcur = forward ? bv->cursor().selectionEnd() : bv->cursor().selectionBegin();
+
+	if (onlysel && bv->cursor().selection()) {
+		docstring const matchstring = bv->cursor().selectionAsString(false);
+		docstring const lcmatchsting = support::lowercase(matchstring);
+		if (matchstring == searchstr || (!case_sens && lcmatchsting == lowercase(searchstr))) {
+			docstring q = _("The search string matches the selection, and search is limited to selection.\n"
+					"Continue search outside?");
+			int search_answer = frontend::Alert::prompt(_("Search outside selection?"),
+				q, 0, 1, _("&Yes"), _("&No"));
+			if (search_answer == 0) {
+				bv->clearSelection();
+				if (findOne(bv, searchstr, case_sens, whole, forward,
+					    find_del, check_wrap, auto_wrap, false, false))
+					return true;
+			}
+			return false;
+		}
+	}
+
 	DocIterator cur = forward
-		? (instant ? bv->cursor().selectionBegin() : bv->cursor().selectionEnd())
-		: (instant ? bv->cursor().selectionEnd() : bv->cursor().selectionBegin());
+		? ((instant || onlysel) ? bv->cursor().selectionBegin() : bv->cursor().selectionEnd())
+		: ((instant || onlysel) ? bv->cursor().selectionEnd() : bv->cursor().selectionBegin());
 
 	MatchString const match(searchstr, case_sens, whole);
 
 	int match_len = forward
-		? findForward(cur, match, find_del)
-		: findBackwards(cur, match, find_del);
+		? findForward(cur, endcur, match, find_del, onlysel)
+		: findBackwards(cur, endcur, match, find_del, onlysel);
 
 	if (match_len > 0)
 		bv->putSelectionAt(cur, match_len, !forward);
+	else if (onlysel) {
+		docstring q = _("The search string was not found within the selection.\n"
+				"Continue search outside?");
+		int search_answer = frontend::Alert::prompt(_("Search outside selection?"),
+			q, 0, 1, _("&Yes"), _("&No"));
+		if (search_answer == 0) {
+			bv->clearSelection();
+			if (findOne(bv, searchstr, case_sens, whole, forward,
+				    find_del, check_wrap, auto_wrap, false, false))
+				return true;
+		}
+		return false;
+	}
 	else if (check_wrap) {
 		DocIterator cur_orig(bv->cursor());
 		if (!auto_wrap) {
@@ -309,7 +351,7 @@ bool findOne(BufferView * bv, docstring const & searchstr,
 			}
 			bv->clearSelection();
 			if (findOne(bv, searchstr, case_sens, whole, forward,
-				    find_del, false, false, false))
+				    find_del, false, false, false, false))
 				return true;
 		}
 		bv->cursor().setCursor(cur_orig);
@@ -324,14 +366,16 @@ namespace {
 
 int replaceAll(BufferView * bv,
 	       docstring const & searchstr, docstring const & replacestr,
-	       bool case_sens, bool whole)
+	       bool case_sens, bool whole, bool onlysel)
 {
 	Buffer & buf = bv->buffer();
 
 	if (!searchAllowed(searchstr) || buf.isReadonly())
 		return 0;
 
-	DocIterator cur_orig(bv->cursor());
+	DocIterator startcur = bv->cursor().selectionBegin();
+	DocIterator endcur = bv->cursor().selectionEnd();
+	bool const had_selection = bv->cursor().selection();
 
 	MatchString const match(searchstr, case_sens, whole);
 	int num = 0;
@@ -341,29 +385,48 @@ int replaceAll(BufferView * bv,
 
 	Cursor cur(*bv);
 	cur.setCursor(doc_iterator_begin(&buf));
-	int match_len = findForward(cur, match, false);
+	int match_len = findForward(cur, endcur, match, false, onlysel);
 	while (match_len > 0) {
 		// Backup current cursor position and font.
 		pos_type const pos = cur.pos();
 		Font const font = cur.paragraph().getFontSettings(buf.params(), pos);
 		cur.recordUndo();
-		int striked = ssize -
+		int struck = ssize -
 			cur.paragraph().eraseChars(pos, pos + match_len,
 						   buf.params().track_changes);
 		cur.paragraph().insert(pos, replacestr, font,
 				       Change(buf.params().track_changes
 					      ? Change::INSERTED
 					      : Change::UNCHANGED));
-		for (int i = 0; i < rsize + striked; ++i)
+		for (int i = 0; i < rsize + struck; ++i)
 			cur.forwardChar();
+		if (onlysel && cur.pit() == endcur.pit() && cur.idx() == endcur.idx()) {
+			// Adjust end of selection for replace-all in selection
+			if (rsize > ssize) {
+				int const offset = rsize - ssize;
+				for (int i = 0; i < offset + struck; ++i)
+					endcur.forwardPos();
+			} else {
+				int const offset = ssize - rsize;
+				for (int i = 0; i < offset + struck; ++i)
+					endcur.backwardPos();
+			}
+		}
 		++num;
-		match_len = findForward(cur, match, false);
+		match_len = findForward(cur, endcur, match, false, onlysel);
 	}
 
 	bv->putSelectionAt(doc_iterator_begin(&buf), 0, false);
 
-	cur_orig.fixIfBroken();
-	bv->setCursor(cur_orig);
+	startcur.fixIfBroken();
+	bv->setCursor(startcur);
+
+	// Reset selection, accounting for changes in selection
+	if (had_selection) {
+		endcur.fixIfBroken();
+		bv->cursor().resetAnchor();
+		bv->setCursorSelectionTo(endcur);
+	}
 
 	return num;
 }
@@ -386,14 +449,15 @@ int replaceAll(BufferView * bv,
 // whether anything at all was done.
 pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 			   docstring const & replacestr, bool case_sens,
-			   bool whole, bool forward, bool findnext, bool wrap)
+			   bool whole, bool forward, bool findnext, bool wrap,
+			   bool onlysel)
 {
 	Cursor & cur = bv->cursor();
-	if (!cur.selection()) {
+	if (!cur.selection() || onlysel) {
 		// no selection, non-empty search string: find it
 		if (!searchstr.empty()) {
 			bool const found = findOne(bv, searchstr, case_sens, whole,
-						   forward, true, findnext, wrap, false);
+						   forward, true, findnext, wrap, false, onlysel);
 			return make_pair(found, 0);
 		}
 		// empty search string
@@ -423,7 +487,7 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 	// just find the search word
 	if (!have_selection || !match) {
 		bool const found = findOne(bv, searchstr, case_sens, whole, forward,
-					   true, findnext, wrap, false);
+					   true, findnext, wrap, false, onlysel);
 		return make_pair(found, 0);
 	}
 
@@ -440,7 +504,7 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 	}
 	if (findnext)
 		findOne(bv, searchstr, case_sens, whole,
-			forward, false, findnext, wrap, false);
+			forward, false, findnext, wrap, false, onlysel);
 
 	return make_pair(true, 1);
 }
@@ -450,7 +514,8 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 
 docstring const find2string(docstring const & search,
 			    bool casesensitive, bool matchword,
-			    bool forward, bool wrap, bool instant)
+			    bool forward, bool wrap, bool instant,
+			    bool onlysel)
 {
 	odocstringstream ss;
 	ss << search << '\n'
@@ -458,7 +523,8 @@ docstring const find2string(docstring const & search,
 	   << int(matchword) << ' '
 	   << int(forward) << ' '
 	   << int(wrap) << ' '
-	   << int(instant);
+	   << int(instant) << ' '
+	   << int(onlysel);
 	return ss.str();
 }
 
@@ -466,7 +532,8 @@ docstring const find2string(docstring const & search,
 docstring const replace2string(docstring const & replace,
 			       docstring const & search,
 			       bool casesensitive, bool matchword,
-			       bool all, bool forward, bool findnext, bool wrap)
+			       bool all, bool forward, bool findnext,
+			       bool wrap, bool onlysel)
 {
 	odocstringstream ss;
 	ss << replace << '\n'
@@ -476,7 +543,8 @@ docstring const replace2string(docstring const & replace,
 	   << int(all) << ' '
 	   << int(forward) << ' '
 	   << int(findnext) << ' '
-	   << int(wrap);
+	   << int(wrap) << ' '
+	   << int(onlysel);
 	return ss.str();
 }
 
@@ -486,11 +554,12 @@ docstring const string2find(docstring const & argument,
 			      bool &matchword,
 			      bool &forward,
 			      bool &wrap,
-			      bool &instant)
+			      bool &instant,
+			      bool &onlysel)
 {
 	// data is of the form
 	// "<search>
-	//  <casesensitive> <matchword> <forward> <wrap>"
+	//  <casesensitive> <matchword> <forward> <wrap> <onlysel>"
 	docstring search;
 	docstring howto = split(argument, search, '\n');
 
@@ -499,6 +568,7 @@ docstring const string2find(docstring const & argument,
 	forward       = parse_bool(howto, true);
 	wrap          = parse_bool(howto);
 	instant       = parse_bool(howto);
+	onlysel       = parse_bool(howto);
 
 	return search;
 }
@@ -515,12 +585,13 @@ bool lyxfind(BufferView * bv, FuncRequest const & ev)
 	bool forward;
 	bool wrap;
 	bool instant;
+	bool onlysel;
 	
 	docstring search = string2find(ev.argument(), casesensitive,
-				       matchword, forward, wrap, instant);
+				       matchword, forward, wrap, instant, onlysel);
 
 	return findOne(bv, search, casesensitive, matchword, forward,
-		       false, true, wrap, instant);
+		       false, true, wrap, instant, onlysel);
 }
 
 
@@ -532,7 +603,7 @@ bool lyxreplace(BufferView * bv, FuncRequest const & ev)
 	// data is of the form
 	// "<search>
 	//  <replace>
-	//  <casesensitive> <matchword> <all> <forward> <findnext> <wrap>"
+	//  <casesensitive> <matchword> <all> <forward> <findnext> <wrap> <onlysel>"
 	docstring search;
 	docstring rplc;
 	docstring howto = split(ev.argument(), rplc, '\n');
@@ -544,16 +615,23 @@ bool lyxreplace(BufferView * bv, FuncRequest const & ev)
 	bool forward       = parse_bool(howto, true);
 	bool findnext      = parse_bool(howto, true);
 	bool wrap          = parse_bool(howto);
+	bool onlysel       = parse_bool(howto);
+
+	if (!bv->cursor().selection())
+		// only selection only makes sense with selection
+		onlysel = false;
 
 	bool update = false;
 
 	int replace_count = 0;
 	if (all) {
-		replace_count = replaceAll(bv, search, rplc, casesensitive, matchword);
+		replace_count = replaceAll(bv, search, rplc, casesensitive,
+					   matchword, onlysel);
 		update = replace_count > 0;
 	} else {
 		pair<bool, int> rv =
-			replaceOne(bv, search, rplc, casesensitive, matchword, forward, findnext, wrap);
+			replaceOne(bv, search, rplc, casesensitive, matchword,
+				   forward, findnext, wrap, onlysel);
 		update = rv.first;
 		replace_count = rv.second;
 	}
@@ -561,15 +639,19 @@ bool lyxreplace(BufferView * bv, FuncRequest const & ev)
 	Buffer const & buf = bv->buffer();
 	if (!update) {
 		// emit message signal.
-		buf.message(_("String not found."));
+		if (onlysel)
+			buf.message(_("String not found in selection."));
+		else
+			buf.message(_("String not found."));
 	} else {
 		if (replace_count == 0) {
 			buf.message(_("String found."));
 		} else if (replace_count == 1) {
 			buf.message(_("String has been replaced."));
 		} else {
-			docstring const str =
-				bformat(_("%1$d strings have been replaced."), replace_count);
+			docstring const str = onlysel
+					? bformat(_("%1$d strings have been replaced in the selection."), replace_count)
+					: bformat(_("%1$d strings have been replaced."), replace_count);
 			buf.message(str);
 		}
 	}

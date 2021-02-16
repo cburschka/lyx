@@ -467,7 +467,7 @@ void SpellcheckerWidget::on_findNextPB_clicked()
 		return;
 	docstring const textfield = qstring_to_ucs4(d->ui.wordED->text());
 	docstring const datastring = find2string(textfield,
-				true, true, true, false, false);
+				true, true, true, false, false, false);
 	LYXERR(Debug::GUI, "Spellchecker: find next (" << textfield << ")");
 	dispatch(FuncRequest(LFUN_WORD_FIND, datastring));
 	d->canCheck();
@@ -487,7 +487,8 @@ void SpellcheckerWidget::on_replacePB_clicked()
 			false,  // all words
 			true,   // forward
 			false,  // find next
-			false); // auto-wrap
+			false,  // auto-wrap
+			false); // only selection
 
 	LYXERR(Debug::GUI, "Replace (" << replacement << ")");
 	dispatch(FuncRequest(LFUN_WORD_REPLACE, datastring));
@@ -510,7 +511,8 @@ void SpellcheckerWidget::on_replaceAllPB_clicked()
 			true,   // all words
 			true,   // forward
 			false,  // find next
-			false); // auto-wrap
+			false,  // auto-wrap
+			false); // only selection
 
 	LYXERR(Debug::GUI, "Replace all (" << replacement << ")");
 	dispatch(FuncRequest(LFUN_WORD_REPLACE, datastring));

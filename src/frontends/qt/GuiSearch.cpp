@@ -201,7 +201,7 @@ void GuiSearchWidget::findClicked(bool const backwards)
 {
 	docstring const needle = qstring_to_ucs4(findCO->currentText());
 	find(needle, caseCB->isChecked(), wordsCB->isChecked(), !backwards,
-	     instantSearchCB->isChecked(), wrapCB->isChecked());
+	     instantSearchCB->isChecked(), wrapCB->isChecked(), selectionCB->isChecked());
 	uniqueInsert(findCO, findCO->currentText());
 	if (!instantSearchCB->isChecked())
 		findCO->lineEdit()->selectAll();
@@ -219,7 +219,7 @@ void GuiSearchWidget::replaceClicked(bool const backwards)
 	docstring const needle = qstring_to_ucs4(findCO->currentText());
 	docstring const repl = qstring_to_ucs4(replaceCO->currentText());
 	replace(needle, repl, caseCB->isChecked(), wordsCB->isChecked(),
-		!backwards, false, wrapCB->isChecked());
+		!backwards, false, wrapCB->isChecked(), selectionCB->isChecked());
 	uniqueInsert(findCO, findCO->currentText());
 	uniqueInsert(replaceCO, replaceCO->currentText());
 }
@@ -235,7 +235,8 @@ void GuiSearchWidget::replaceallClicked()
 {
 	replace(qstring_to_ucs4(findCO->currentText()),
 		qstring_to_ucs4(replaceCO->currentText()),
-		caseCB->isChecked(), wordsCB->isChecked(), true, true, true);
+		caseCB->isChecked(), wordsCB->isChecked(),
+		true, true, true, selectionCB->isChecked());
 	uniqueInsert(findCO, findCO->currentText());
 	uniqueInsert(replaceCO, replaceCO->currentText());
 }
@@ -243,11 +244,11 @@ void GuiSearchWidget::replaceallClicked()
 
 void GuiSearchWidget::find(docstring const & search, bool casesensitive,
 			 bool matchword, bool forward, bool instant,
-			 bool wrap)
+			 bool wrap, bool onlysel)
 {
 	docstring const sdata =
 		find2string(search, casesensitive, matchword,
-			    forward, wrap, instant);
+			    forward, wrap, instant, onlysel);
 
 	dispatch(FuncRequest(LFUN_WORD_FIND, sdata));
 }
@@ -255,11 +256,11 @@ void GuiSearchWidget::find(docstring const & search, bool casesensitive,
 
 void GuiSearchWidget::replace(docstring const & search, docstring const & replace,
 			    bool casesensitive, bool matchword,
-			    bool forward, bool all, bool wrap)
+			    bool forward, bool all, bool wrap, bool onlysel)
 {
 	docstring const sdata =
 		replace2string(replace, search, casesensitive,
-				     matchword, all, forward, wrap);
+			       matchword, all, forward, true, wrap, onlysel);
 	dispatch(FuncRequest(LFUN_WORD_REPLACE, sdata));
 }
 
@@ -269,6 +270,7 @@ void GuiSearchWidget::saveSession(QSettings & settings, QString const & session_
 	settings.setValue(session_key + "/words", wordsCB->isChecked());
 	settings.setValue(session_key + "/instant", instantSearchCB->isChecked());
 	settings.setValue(session_key + "/wrap", wrapCB->isChecked());
+	settings.setValue(session_key + "/selection", selectionCB->isChecked());
 	settings.setValue(session_key + "/minimized", minimized_);
 }
 
@@ -280,6 +282,7 @@ void GuiSearchWidget::restoreSession(QString const & session_key)
 	wordsCB->setChecked(settings.value(session_key + "/words", false).toBool());
 	instantSearchCB->setChecked(settings.value(session_key + "/instant", false).toBool());
 	wrapCB->setChecked(settings.value(session_key + "/wrap", false).toBool());
+	selectionCB->setChecked(settings.value(session_key + "/selection", false).toBool());
 	minimized_ = settings.value(session_key + "/minimized", false).toBool();
 	// initialize hidings
 	minimizeClicked(false);

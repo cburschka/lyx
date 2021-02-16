@@ -213,12 +213,22 @@
          </widget>
         </item>
         <item>
+         <widget class="QCheckBox" name="selectionCB">
+          <property name="toolTip">
+           <string>Onlysearch in selection</string>
+          </property>
+          <property name="text">
+           <string>Selection onl&amp;y</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QCheckBox" name="instantSearchCB">
           <property name="toolTip">
            <string>If this is checked, LyX will search forward immediately</string>
           </property>
           <property name="text">
-           <string>Search as you t&amp;ype</string>
+           <string>Search as yo&amp;u type</string>
           </property>
          </widget>
         </item>

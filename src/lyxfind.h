@@ -36,7 +36,8 @@ docstring const string2find(docstring const & argument,
 			      bool &matchword,
 			      bool &forward,
 			      bool &wrap,
-			      bool &instant);
+			      bool &instant,
+			      bool &onlysel);
 
 /** Encode the parameters needed to find \c search as a string
  *  that can be dispatched to the LyX core in a FuncRequest wrapper.
@@ -46,7 +47,8 @@ docstring const find2string(docstring const & search,
 			      bool matchword,
 			      bool forward,
 			      bool wrap,
-			      bool instant);
+			      bool instant,
+			      bool onlysel);
 
 /** Encode the parameters needed to replace \c search with \c replace
  *  as a string that can be dispatched to the LyX core in a FuncRequest
@@ -59,7 +61,8 @@ docstring const replace2string(docstring const & replace,
 				 bool all,
 				 bool forward,
 				 bool findnext = true,
-				 bool wrap = true);
+				 bool wrap = true,
+				 bool onlysel = false);
 
 /** Parse the string encoding of the find request that is found in
  *  \c ev.argument and act on it.
@@ -71,7 +74,8 @@ bool lyxfind(BufferView * bv, FuncRequest const & ev);
 bool findOne(BufferView * bv, docstring const & searchstr,
 	     bool case_sens, bool whole, bool forward,
 	     bool find_del = true, bool check_wrap = false,
-	     bool auto_wrap = false, bool instant = false);
+	     bool auto_wrap = false, bool instant = false,
+	     bool onlysel = false);
 
 /** Parse the string encoding of the replace request that is found in
  *  \c ev.argument and act on it.
