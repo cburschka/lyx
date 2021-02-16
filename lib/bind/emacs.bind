@@ -54,9 +54,9 @@ Format 5
 # this is "quoted-insert" a total different meaning from "quote-insert"
 \bind "C-q"                    "self-insert \""
 #bind "C-r"                    "------"
-\bind "C-s"                    "dialog-toggle findreplace"
-\bind "C-S-s"                  "dialog-toggle findreplaceadv"
-\bind "M-~S-percent"           "dialog-toggle findreplaceadv"
+\bind "C-s"                    "dialog-show findreplace"
+\bind "C-S-s"                  "dialog-show findreplaceadv"
+\bind "M-~S-percent"           "dialog-show findreplaceadv"
 
 \bind "C-t"                    "chars-transpose"
 
