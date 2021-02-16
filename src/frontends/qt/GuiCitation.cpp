@@ -144,6 +144,8 @@ GuiCitation::GuiCitation(GuiView & lv)
 	connect(selectionManager, SIGNAL(selectionChanged()),
 		this, SLOT(setCitedKeys()));
 	connect(selectionManager, SIGNAL(updateHook()),
+		this, SLOT(setCitedKeys()));
+	connect(selectionManager, SIGNAL(updateHook()),
 		this, SLOT(updateControls()));
 	connect(selectionManager, SIGNAL(okHook()),
 		this, SLOT(on_buttonBox_accepted()));
