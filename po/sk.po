@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-02-15 11:49+0100\n"
-"PO-Revision-Date: 2021-02-15 11:04+0000\n"
+"POT-Creation-Date: 2021-02-16 19:44+0100\n"
+"PO-Revision-Date: 2021-02-16 18:52+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -5139,20 +5139,36 @@ msgstr "Nájdi ďalší výskyt (Enter)"
 msgid "Find >"
 msgstr "Hľadať >"
 
+#: src/frontends/qt/ui/SearchUi.ui:204
+msgid "Treat uppercase/lowercase writing as distinct"
+msgstr "Veľkosť písmen je jednoznačná"
+
 #: src/frontends/qt/ui/SearchUi.ui:220
 msgid "&Case sensitive[[search]]"
 msgstr "R&ozlišovať veľkosť písmen"
+
+#: src/frontends/qt/ui/SearchUi.ui:214
+msgid "Match whole words only"
+msgstr "Nájsť len zodpovedajúce celé slová"
 
 #: src/frontends/qt/ui/SearchUi.ui:211
 msgid "Wh&ole words"
 msgstr "C&elé slová"
 
+#: src/frontends/qt/ui/SearchUi.ui:224
+msgid "Limit search and replace to selection"
+msgstr "Obmedziť hľadanie a náhradu na výber"
+
+#: src/frontends/qt/ui/SearchUi.ui:221
+msgid "Selection onl&y"
+msgstr "&Len vo výbere"
+
 #: src/frontends/qt/ui/SearchUi.ui:218
 msgid "If this is checked, LyX will search forward immediately"
 msgstr "Keď zaškrtnuté, LyX bude okamžite dopredu hľadať"
 
-#: src/frontends/qt/ui/SearchUi.ui:221
-msgid "Search as you t&ype"
+#: src/frontends/qt/ui/SearchUi.ui:231
+msgid "Search as yo&u type"
 msgstr "Vyhľadávať pri &zadávaní"
 
 #: src/frontends/qt/ui/SearchUi.ui:228
@@ -5239,6 +5255,10 @@ msgid "Ignore this word"
 msgstr "Ignorovať toto slovo"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:58
+msgid "Ign&ore"
+msgstr "Ign&orovať"
+
+#: src/frontends/qt/ui/SpellcheckerUi.ui:58
 #: src/frontends/qt/ui/WorkAreaUi.ui:89
 msgid "&Ignore"
 msgstr "Ign&orovať"
@@ -5249,24 +5269,28 @@ msgid ""
 msgstr "Kontrolovaný jazyk. Tu môžte zmeniť jazyk kontrolovaného slova."
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:95
-msgid "&Find Next"
+msgid "Find Ne&xt"
 msgstr "Hľadať ďa&lšie"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:102
-msgid "Unknown word:"
-msgstr "Neznáme slovo:"
+msgid "Unknown &word:"
+msgstr "Ne&známe slovo:"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:112
 msgid "Current word"
 msgstr "Aktuálne slovo"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:119
-msgid "Re&placement:"
+msgid "Repla&cement:"
 msgstr "Náhr&ada:"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:135
 msgid "S&uggestions:"
 msgstr "Návr&hy:"
+
+#: src/frontends/qt/ui/SpellcheckerUi.ui:148
+msgid "Re&place All"
+msgstr "Nahradiť všet&ko"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:155
 msgid "Ignore this word throughout this session"
@@ -5279,6 +5303,10 @@ msgstr "Ignorovať všad&e"
 #: src/frontends/qt/ui/SpellcheckerUi.ui:175
 msgid "Add the word to your personal dictionary"
 msgstr "Pridať slovo do osobného slovníka"
+
+#: src/frontends/qt/ui/SpellcheckerUi.ui:178
+msgid "&Add[[Spellchecker]]"
+msgstr "Pr&idať"
 
 #: src/frontends/qt/ui/SymbolsUi.ui:40
 msgid ""
@@ -36337,6 +36365,27 @@ msgstr "Chyba pri hľadaní"
 msgid "Search string is empty"
 msgstr "Reťazec na hľadanie je prázdny"
 
+#: src/lyxfind.cpp:291
+msgid ""
+"The search string matches the selection, and search is limited to "
+"selection.\n"
+"Continue search outside?"
+msgstr ""
+"Hľadaný reťazec zodpovedá vybraniu, a hľadanie je obmedzené výberom.\n"
+"Pokračovať hľadaním vonku?"
+
+#: src/lyxfind.cpp:293 src/lyxfind.cpp:320
+msgid "Search outside selection?"
+msgstr "Hľadať mimo výberu?"
+
+#: src/lyxfind.cpp:318
+msgid ""
+"The search string was not found within the selection.\n"
+"Continue search outside?"
+msgstr ""
+"Hľadaný reťazec sa vo výbere nenašiel.\n"
+"Pokračovať hľadaním mimo výberu?"
+
 #: src/lyxfind.cpp:282 src/lyxfind.cpp:542
 msgid ""
 "End of file reached while searching forward.\n"
@@ -36353,6 +36402,10 @@ msgstr ""
 "Došlo k začiatku súboru hľadajúc spätne.\n"
 "Pokračovať hľadaním od konca?"
 
+#: src/lyxfind.cpp:643
+msgid "String not found in selection."
+msgstr "Reťazec vo výbere nenájdený."
+
 #: src/lyxfind.cpp:518
 msgid "String not found."
 msgstr "Reťazec nenájdený."
@@ -36364,6 +36417,11 @@ msgstr "Reťazec nájdený."
 #: src/lyxfind.cpp:523
 msgid "String has been replaced."
 msgstr "Reťazec bol nahradený."
+
+#: src/lyxfind.cpp:653
+#, c-format
+msgid "%1$d strings have been replaced in the selection."
+msgstr "%1$d reťazcov bolo vo výbere nahradených."
 
 #: src/lyxfind.cpp:526
 #, c-format
