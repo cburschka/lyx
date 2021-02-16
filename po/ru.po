@@ -1763,7 +1763,7 @@ msgstr "Другие параметры"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:156
 msgid "&Span columns"
-msgstr "&Занимать все столбцы"
+msgstr "&Занимать все колонки"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:163
 msgid "Rotate side&ways"
@@ -9847,7 +9847,7 @@ msgstr "Колонки"
 
 #: lib/layouts/beamer.layout:685
 msgid "Start column (increase depth!), width:"
-msgstr "Начало колонки (увеличьте вложенность!), ширина:"
+msgstr "Колонка (увеличьте вложенность!), ширина:"
 
 #: lib/layouts/beamer.layout:688 lib/layouts/powerdot.layout:504
 msgid "Column Options"
@@ -9871,7 +9871,7 @@ msgstr "Колонки по центру"
 
 #: lib/layouts/beamer.layout:734
 msgid "Columns (center aligned)"
-msgstr "Колонки (выравнивание по центру)"
+msgstr "Колонки (по центру)"
 
 #: lib/layouts/beamer.layout:739
 msgid "ColumnsTopAligned"
@@ -9879,7 +9879,7 @@ msgstr "Колонки по верху"
 
 #: lib/layouts/beamer.layout:742
 msgid "Columns (top aligned)"
-msgstr "Колонки (выравнивание по верху)"
+msgstr "Колонки (по верху)"
 
 #: lib/layouts/beamer.layout:752 lib/layouts/powerdot.layout:518
 msgid "Pause"
@@ -35142,7 +35142,7 @@ msgstr "Плавающий подобъект: "
 
 #: src/insets/InsetFloat.cpp:916
 msgid " (sideways)"
-msgstr " (в стороне)"
+msgstr " (поворот)"
 
 #: src/insets/InsetFloatList.cpp:82
 msgid "ERROR: Nonexistent float type!"

@@ -1090,7 +1090,7 @@ status collapsed
 
 \begin_inset Info
 type  "shortcut"
-arg   "dialog-show findreplaceadv"
+arg   "dialog-show findreplace"
 \end_inset
 
  или
@@ -1265,7 +1265,7 @@ Comma Separated Values
 
 замена
 \family default
- открывает диалоговое окно 
+ открывает панель 
 \family sans
 Поиск
 \begin_inset space ~
@@ -1280,7 +1280,61 @@ Comma Separated Values
 .
  Как только будет найдено слово или выражение, \SpecialChar LyX
  выделит его.
- Нажатие кнопки 
+ Вы можете нажать кнопку 
+\family sans
+Найти
+\begin_inset space ~
+\end_inset
+
+>
+\family default
+ (клавишу 
+\family sans
+Return
+\family default
+ или 
+\begin_inset Info
+type  "shortcuts"
+arg   "word-find"
+\end_inset
+
+), чтобы пропустить выделенное слово и искать дальше; или кнопку 
+\family sans
+<
+\begin_inset space ~
+\end_inset
+
+Найти
+\family default
+ (сочетание 
+\family sans
+Shift-Return
+\family default
+ или 
+\begin_inset Info
+type  "shortcuts"
+arg   "word-find-backward"
+\end_inset
+
+), чтобы искать в обратном направлении.
+ Даже при закрытой панели для поиска можно использовать сочетания клавиш
+ 
+\begin_inset Info
+type  "shortcuts"
+arg   "word-find"
+\end_inset
+
+ и 
+\begin_inset Info
+type  "shortcuts"
+arg   "word-find-backward"
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Нажатие кнопки 
 \family sans
 Заменить
 \family default
@@ -1292,16 +1346,7 @@ Comma Separated Values
 
 на
 \family default
-.
- Вы можете нажать кнопку 
-\family sans
-Найти
-\begin_inset space ~
-\end_inset
-
-далее
-\family default
-, чтобы пропустить выделенное слово.
+ и ищет следующее совпадение.
  Нажмите 
 \family sans
 Заменить
@@ -1311,7 +1356,10 @@ Comma Separated Values
 всё
 \family default
 , чтобы автоматически заменить все вхождения указанного текста в документе.
- Параметр 
+\end_layout
+
+\begin_layout Standard
+Имеются следующие настройки: 
 \family sans
 Учитывать
 \begin_inset space ~
@@ -1323,7 +1371,7 @@ Comma Separated Values
  слова.
  К примеру, если этот переключатель установлен, поиск «Тест» не будет соответств
 овать слову «тест».
- Опция 
+ 
 \family sans
 Только
 \begin_inset space ~
@@ -1338,8 +1386,20 @@ Comma Separated Values
  может использоваться, чтобы заставить \SpecialChar LyX
  находить только полные слова, например,
  поиск слова «звезда» не даст сопоставления со словом «звездами».
- \SpecialChar LyX
- также предлагает расширенную версию 
+\end_layout
+
+\begin_layout Standard
+Панель также содержит кнопку 
+\family sans
+Свернуть
+\family default
+, которая оставляет видимой только первую строку для поиска, скрывая строку
+ замены и настройки поиска.
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ также предлагает расширенную версию панели 
 \family sans
 Поиск
 \begin_inset space ~
