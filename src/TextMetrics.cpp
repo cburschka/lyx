@@ -1185,6 +1185,9 @@ void TextMetrics::setRowHeight(Row & row) const
 
 	row.dim().asc = maxasc;
 	row.dim().des = maxdes;
+
+	// This is useful for selections
+	row.contents_dim() = row.dim();
 }
 
 

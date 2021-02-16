@@ -210,6 +210,11 @@ public:
 	///
 	int descent() const { return dim_.des; }
 
+	///
+	Dimension const & contents_dim() const { return contents_dim_; }
+	///
+	Dimension & contents_dim() { return contents_dim_; }
+
 	/// The offset of the left-most cursor position on the row
 	int left_x() const;
 	/// The offset of the right-most cursor position on the row
@@ -348,6 +353,8 @@ private:
 	bool flushed_;
 	/// Row dimension.
 	Dimension dim_;
+	/// Row contents dimension. Does not contain the space above/below row.
+	Dimension contents_dim_;
 	/// true when this row lives in a right-to-left paragraph
 	bool rtl_;
 	/// true when a changebar should be drawn in the margin

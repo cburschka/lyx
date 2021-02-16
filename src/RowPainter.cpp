@@ -577,8 +577,10 @@ void RowPainter::paintSelection() const
 	if (!row_.selection())
 		return;
 
-	int const y1 = yo_ - row_.ascent();
-	int const y2 = y1 + row_.height();
+	int const y1 = yo_ - (row_.begin_margin_sel ? row_.ascent()
+	                                            : row_.contents_dim().asc);
+	int const y2 = yo_ + (row_.end_margin_sel ? row_.descent()
+	                                          : row_.contents_dim().des);
 
 	// draw the margins
 	if (row_.isRTL() ? row_.end_margin_sel : row_.begin_margin_sel)
