@@ -55,7 +55,7 @@
       <string>Ignore this word</string>
      </property>
      <property name="text">
-      <string>&amp;Ignore</string>
+      <string>Ign&amp;ore</string>
      </property>
     </widget>
    </item>
@@ -92,14 +92,14 @@
       <string/>
      </property>
      <property name="text">
-      <string>&amp;Find Next</string>
+      <string>Find Ne&amp;xt</string>
      </property>
     </widget>
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="TextLabel3">
      <property name="text">
-      <string>Unknown word:</string>
+      <string>Unknown &amp;word:</string>
      </property>
      <property name="buddy">
       <cstring>wordED</cstring>
@@ -116,7 +116,7 @@
    <item row="4" column="0">
     <widget class="QLabel" name="TextLabel1">
      <property name="text">
-      <string>Re&amp;placement:</string>
+      <string>Repla&amp;cement:</string>
      </property>
      <property name="buddy">
       <cstring>replaceCO</cstring>
@@ -145,7 +145,7 @@
       <string/>
      </property>
      <property name="text">
-      <string>Replace &amp;All</string>
+      <string>Re&amp;place All</string>
      </property>
     </widget>
    </item>
@@ -175,7 +175,7 @@
       <string>Add the word to your personal dictionary</string>
      </property>
      <property name="text">
-      <string>A&amp;dd</string>
+      <string>&amp;Add[[Spellchecker]]</string>
      </property>
     </widget>
    </item>
