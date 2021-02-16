@@ -110,7 +110,7 @@ void GuiSearchWidget::keyPressEvent(QKeyEvent * ev)
 		return;
 	}
 	if (ev->key() == Qt::Key_Escape) {
-		dispatch(FuncRequest(LFUN_DIALOG_TOGGLE, "findreplace"));
+		dispatch(FuncRequest(LFUN_DIALOG_HIDE, "findreplace"));
 		return;
 	}
 
@@ -295,7 +295,7 @@ GuiSearch::GuiSearch(GuiView & parent, Qt::DockWidgetArea area, Qt::WindowFlags 
 {
 	setWidget(widget_);
 	widget_->setBufferView(bufferview());
-	setFocusProxy(widget_->findCO);
+	setFocusProxy(widget_);
 
 	connect(widget_, SIGNAL(needTitleBarUpdate()), this, SLOT(updateTitle()));
 	connect(widget_, SIGNAL(needSizeUpdate()), this, SLOT(updateSize()));

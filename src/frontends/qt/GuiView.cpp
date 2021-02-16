@@ -4893,7 +4893,8 @@ void GuiView::doShowDialog(QString const & qname, QString const & qdata,
 				// activateWindow is needed for floating dockviews
 				dialog->asQWidget()->raise();
 				dialog->asQWidget()->activateWindow();
-				dialog->asQWidget()->setFocus();
+				if (dialog->wantInitialFocus())
+					dialog->asQWidget()->setFocus();
 			}
 		}
 	}

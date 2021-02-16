@@ -95,8 +95,10 @@ public:
 	void updateView() override;
 	void saveSession(QSettings & settings) const override;
 	void restoreSession() override;
-	bool wantInitialFocus() const override { return true; }
 	///@}
+
+protected:
+	bool wantInitialFocus() const override { return true; }
 
 public Q_SLOTS:
 	///
