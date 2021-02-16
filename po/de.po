@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-02-16 09:57+0100\n"
-"PO-Revision-Date: 2021-02-16 10:00+0100\n"
+"POT-Creation-Date: 2021-02-16 19:08+0100\n"
+"PO-Revision-Date: 2021-02-16 19:09+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -1693,7 +1693,7 @@ msgstr "Suche auf vollständige Wörter beschränken"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:123
 msgid "W&hole words"
-msgstr "Gan&ze Wörter"
+msgstr "Ganze W&örter"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:130
 msgid "Perform a case-sensitive search"
@@ -1719,14 +1719,14 @@ msgstr "Ersetze und finde nächsten Treffer [Eingabe]"
 #: src/frontends/qt/ui/SpellcheckerUi.ui:48
 #: src/frontends/qt/ui/ThesaurusUi.ui:86
 msgid "&Replace"
-msgstr "&Ersetzen"
+msgstr "Erset&zen"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:176
 msgid "Replace all occurrences at once"
 msgstr "Alle Vorkommen auf einmal ersetzen"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:179
-#: src/frontends/qt/ui/SearchUi.ui:50 src/frontends/qt/ui/SpellcheckerUi.ui:148
+#: src/frontends/qt/ui/SearchUi.ui:50
 msgid "Replace &All"
 msgstr "&Alle ersetzen"
 
@@ -3226,7 +3226,6 @@ msgstr "&Verfügbar:"
 
 #: src/frontends/qt/ui/ModulesUi.ui:126
 #: src/frontends/qt/ui/PrefConvertersUi.ui:266
-#: src/frontends/qt/ui/SpellcheckerUi.ui:178
 msgid "A&dd"
 msgstr "&Hinzufügen"
 
@@ -5441,9 +5440,8 @@ msgid "Ignore this word"
 msgstr "Dieses Wort ignorieren"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:58
-#: src/frontends/qt/ui/WorkAreaUi.ui:89
-msgid "&Ignore"
-msgstr "&Ignorieren"
+msgid "Ign&ore"
+msgstr "I&gnorieren"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:83
 msgid ""
@@ -5453,24 +5451,28 @@ msgstr ""
 "ändern."
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:95
-msgid "&Find Next"
-msgstr "&Nächstes suchen"
+msgid "Find Ne&xt"
+msgstr "Nächstes &suchen"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:102
-msgid "Unknown word:"
-msgstr "Unbekanntes Wort:"
+msgid "Unknown &word:"
+msgstr "Unbe&kanntes Wort:"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:112
 msgid "Current word"
 msgstr "Aktuelles Wort"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:119
-msgid "Re&placement:"
+msgid "Repla&cement:"
 msgstr "E&rsetzung:"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:135
 msgid "S&uggestions:"
 msgstr "&Vorschläge:"
+
+#: src/frontends/qt/ui/SpellcheckerUi.ui:148
+msgid "Re&place All"
+msgstr "Alle erse&tzen"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:155
 msgid "Ignore this word throughout this session"
@@ -5483,6 +5485,10 @@ msgstr "&Alle ignorieren"
 #: src/frontends/qt/ui/SpellcheckerUi.ui:175
 msgid "Add the word to your personal dictionary"
 msgstr "Das Wort zum persönlichen Wörterbuch hinzufügen"
+
+#: src/frontends/qt/ui/SpellcheckerUi.ui:178
+msgid "&Add[[Spellchecker]]"
+msgstr "Hinz&ufügen"
 
 #: src/frontends/qt/ui/SymbolsUi.ui:40
 msgid ""
@@ -6177,6 +6183,10 @@ msgstr "Nur Haupttext"
 #: src/frontends/qt/GuiView.cpp:4216
 msgid "&Reload"
 msgstr "Ne&u laden"
+
+#: src/frontends/qt/ui/WorkAreaUi.ui:89
+msgid "&Ignore"
+msgstr "&Ignorieren"
 
 #: src/frontends/qt/ui/WrapUi.ui:33
 msgid "Horizontal placement"
@@ -19578,7 +19588,7 @@ msgid "Cut"
 msgstr "Ausschneiden"
 
 #: lib/ui/stdcontext.inc:62 lib/ui/stdcontext.inc:356 lib/ui/stdmenus.inc:109
-#: lib/ui/stdtoolbars.inc:87 src/BufferView.cpp:2225
+#: lib/ui/stdtoolbars.inc:87 src/BufferView.cpp:2218
 msgid "Copy"
 msgstr "Kopieren"
 
@@ -21506,11 +21516,11 @@ msgstr "Rechtschreibung prüfen"
 msgid "Spellcheck continuously"
 msgstr "Rechtschreibung während der Eingabe überprüfen"
 
-#: lib/ui/stdtoolbars.inc:84 src/BufferView.cpp:1438
+#: lib/ui/stdtoolbars.inc:84 src/BufferView.cpp:1431
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: lib/ui/stdtoolbars.inc:85 src/BufferView.cpp:1458
+#: lib/ui/stdtoolbars.inc:85 src/BufferView.cpp:1451
 msgid "Redo"
 msgstr "Wiederholen"
 
@@ -28011,7 +28021,7 @@ msgstr ""
 "korrekte\n"
 "Ausgabe erzeugen können."
 
-#: src/BufferParams.cpp:2553 src/BufferView.cpp:1390 src/BufferView.cpp:1422
+#: src/BufferParams.cpp:2553 src/BufferView.cpp:1383 src/BufferView.cpp:1415
 msgid "Could not load class"
 msgstr "Konnte Klasse nicht laden"
 
@@ -28031,135 +28041,135 @@ msgstr "Keine weiteren Einfügungen"
 msgid "Save bookmark"
 msgstr "Lesezeichen speichern"
 
-#: src/BufferView.cpp:1059
+#: src/BufferView.cpp:1052
 msgid "Converting document to new document class..."
 msgstr "Das Dokument wird an die neue Dokumentklasse angepasst..."
 
-#: src/BufferView.cpp:1104
+#: src/BufferView.cpp:1097
 msgid "Document is read-only"
 msgstr "Dokument ist schreibgeschützt"
 
-#: src/BufferView.cpp:1106
+#: src/BufferView.cpp:1099
 msgid "Document has been modified externally"
 msgstr "Das Dokument wurde extern bearbeitet"
 
-#: src/BufferView.cpp:1115
+#: src/BufferView.cpp:1108
 msgid "This portion of the document is deleted."
 msgstr "Dieser Teil des Dokuments wird gelöscht."
 
-#: src/BufferView.cpp:1158 src/BufferView.cpp:2217
+#: src/BufferView.cpp:1151 src/BufferView.cpp:2210
 #: src/frontends/qt/GuiView.cpp:4086 src/frontends/qt/GuiView.cpp:4174
 msgid "Absolute filename expected."
 msgstr "Ein absoluter Dateipfad wird erwartet."
 
-#: src/BufferView.cpp:1388 src/BufferView.cpp:1420
+#: src/BufferView.cpp:1381 src/BufferView.cpp:1413
 #, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "Die Dokumentklasse ,%1$s` konnte nicht geladen werden."
 
-#: src/BufferView.cpp:1446
+#: src/BufferView.cpp:1439
 msgid "No further undo information"
 msgstr "Nichts mehr rückgängig zu machen"
 
-#: src/BufferView.cpp:1466
+#: src/BufferView.cpp:1459
 msgid "No further redo information"
 msgstr "Nichts mehr zu wiederholen"
 
-#: src/BufferView.cpp:1657 src/BufferView.cpp:1672 src/BufferView.cpp:1703
+#: src/BufferView.cpp:1650 src/BufferView.cpp:1665 src/BufferView.cpp:1696
 msgid "Search string not found!"
 msgstr "Die Zeichenkette wurde nicht gefunden!"
 
-#: src/BufferView.cpp:1724
+#: src/BufferView.cpp:1717
 msgid "Mark off"
 msgstr "Marke aus"
 
-#: src/BufferView.cpp:1730
+#: src/BufferView.cpp:1723
 msgid "Mark on"
 msgstr "Marke ein"
 
-#: src/BufferView.cpp:1737
+#: src/BufferView.cpp:1730
 msgid "Mark removed"
 msgstr "Marke entfernt"
 
-#: src/BufferView.cpp:1740
+#: src/BufferView.cpp:1733
 msgid "Mark set"
 msgstr "Marke gesetzt"
 
-#: src/BufferView.cpp:1831
+#: src/BufferView.cpp:1824
 msgid "Statistics for the selection:"
 msgstr "Statistik für die Auswahl:"
 
-#: src/BufferView.cpp:1833
+#: src/BufferView.cpp:1826
 msgid "Statistics for the document:"
 msgstr "Statistik für das Dokument:"
 
-#: src/BufferView.cpp:1836
+#: src/BufferView.cpp:1829
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d Wörter"
 
-#: src/BufferView.cpp:1838
+#: src/BufferView.cpp:1831
 msgid "One word"
 msgstr "Ein Wort"
 
-#: src/BufferView.cpp:1841
+#: src/BufferView.cpp:1834
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d Zeichen (inklusive Leerzeichen)"
 
-#: src/BufferView.cpp:1844
+#: src/BufferView.cpp:1837
 msgid "One character (including blanks)"
 msgstr "Ein Zeichen (inklusive Leerzeichen)"
 
-#: src/BufferView.cpp:1847
+#: src/BufferView.cpp:1840
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d Zeichen (ohne Leerzeichen)"
 
-#: src/BufferView.cpp:1850
+#: src/BufferView.cpp:1843
 msgid "One character (excluding blanks)"
 msgstr "Ein Zeichen (ohne Leerzeichen)"
 
-#: src/BufferView.cpp:1852
+#: src/BufferView.cpp:1845
 msgid "Statistics"
 msgstr "Statistik"
 
-#: src/BufferView.cpp:2075
+#: src/BufferView.cpp:2068
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr ""
 ",inset-forall` wurde abgebrochen, da die Zahl der Aktionen %1$d übersteigt"
 
-#: src/BufferView.cpp:2077
+#: src/BufferView.cpp:2070
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "Der Befehl \"%1$s\" wurde auf %2$d Einfügungen angewandt"
 
-#: src/BufferView.cpp:2085
+#: src/BufferView.cpp:2078
 msgid "Branch name"
 msgstr "Name des Zweigs"
 
-#: src/BufferView.cpp:2092 src/frontends/qt/GuiBranches.cpp:225
+#: src/BufferView.cpp:2085 src/frontends/qt/GuiBranches.cpp:225
 msgid "Branch already exists"
 msgstr "Zweig existiert bereits"
 
-#: src/BufferView.cpp:2974
+#: src/BufferView.cpp:2967
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Füge Dokument %1$s ein..."
 
-#: src/BufferView.cpp:2990
+#: src/BufferView.cpp:2983
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s ist eingefügt."
 
-#: src/BufferView.cpp:2992
+#: src/BufferView.cpp:2985
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Das Dokument %1$s konnte nicht eingefügt werden"
 
-#: src/BufferView.cpp:3488
+#: src/BufferView.cpp:3481
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -28170,11 +28180,11 @@ msgstr ""
 "konnte aufgrund des folgenden Fehlers\n"
 "nicht gelesen werden: %2$s"
 
-#: src/BufferView.cpp:3490
+#: src/BufferView.cpp:3483
 msgid "Could not read file"
 msgstr "Die Datei konnte nicht gelesen werden"
 
-#: src/BufferView.cpp:3497
+#: src/BufferView.cpp:3490
 #, c-format
 msgid ""
 "%1$s\n"
@@ -28183,17 +28193,17 @@ msgstr ""
 "%1$s\n"
 "ist nicht lesbar."
 
-#: src/BufferView.cpp:3498 src/frontends/qt/qt_helpers.cpp:311
+#: src/BufferView.cpp:3491 src/frontends/qt/qt_helpers.cpp:311
 #: src/frontends/qt/qt_helpers.cpp:314 src/frontends/qt/qt_helpers.cpp:320
 #: src/output.cpp:39
 msgid "Could not open file"
 msgstr "Die Datei konnte nicht geöffnet werden"
 
-#: src/BufferView.cpp:3505
+#: src/BufferView.cpp:3498
 msgid "Reading not UTF-8 encoded file"
 msgstr "Lese nicht-UTF-8-kodierte Datei"
 
-#: src/BufferView.cpp:3506
+#: src/BufferView.cpp:3499
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -34826,7 +34836,7 @@ msgstr "Bitte geben Sie das Dokument zunächst aus."
 msgid "Couldn't proceed."
 msgstr "Konnte nicht fortfahren."
 
-#: src/frontends/qt/GuiView.cpp:4978
+#: src/frontends/qt/GuiView.cpp:4979
 msgid "Disable Shell Escape"
 msgstr "Erlaubnis zum Aufruf externer Programme widerrufen"
 
