@@ -391,25 +391,30 @@ int replaceAll(BufferView * bv,
 		pos_type const pos = cur.pos();
 		Font const font = cur.paragraph().getFontSettings(buf.params(), pos);
 		cur.recordUndo();
-		int struck = ssize -
+		int ct_deleted_text = ssize -
 			cur.paragraph().eraseChars(pos, pos + match_len,
 						   buf.params().track_changes);
 		cur.paragraph().insert(pos, replacestr, font,
 				       Change(buf.params().track_changes
 					      ? Change::INSERTED
 					      : Change::UNCHANGED));
-		for (int i = 0; i < rsize + struck; ++i)
-			cur.forwardChar();
+		for (int i = 0; i < rsize + ct_deleted_text
+		     && cur.pos() < cur.lastpos(); ++i)
+			cur.forwardPos();
 		if (onlysel && cur.pit() == endcur.pit() && cur.idx() == endcur.idx()) {
 			// Adjust end of selection for replace-all in selection
 			if (rsize > ssize) {
 				int const offset = rsize - ssize;
-				for (int i = 0; i < offset + struck; ++i)
+				for (int i = 0; i < offset + ct_deleted_text
+				     && endcur.pos() < endcur.lastpos(); ++i)
 					endcur.forwardPos();
 			} else {
 				int const offset = ssize - rsize;
-				for (int i = 0; i < offset + struck; ++i)
+				for (int i = 0; i < offset && endcur.pos() > 0; ++i)
 					endcur.backwardPos();
+				for (int i = 0; i < ct_deleted_text
+				     && endcur.pos() < endcur.lastpos(); ++i)
+					endcur.forwardPos();
 			}
 		}
 		++num;
