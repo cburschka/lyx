@@ -200,6 +200,9 @@
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
          <widget class="QCheckBox" name="caseCB">
+          <property name="toolTip">
+           <string>Treat uppercase/lowercase writing as distinct</string>
+          </property>
           <property name="text">
            <string>&amp;Case sensitive[[search]]</string>
           </property>
@@ -207,6 +210,9 @@
         </item>
         <item>
          <widget class="QCheckBox" name="wordsCB">
+          <property name="toolTip">
+           <string>Match whole words only</string>
+          </property>
           <property name="text">
            <string>Wh&amp;ole words</string>
           </property>
@@ -215,7 +221,7 @@
         <item>
          <widget class="QCheckBox" name="selectionCB">
           <property name="toolTip">
-           <string>Onlysearch in selection</string>
+           <string>Limit search and replace to selection</string>
           </property>
           <property name="text">
            <string>Selection onl&amp;y</string>
