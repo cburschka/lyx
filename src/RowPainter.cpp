@@ -457,14 +457,16 @@ void RowPainter::paintTopLevelLabel() const
 
 	double x = x_;
 	if (layout.labeltype == LABEL_CENTERED) {
+		// The 'size + 1' is weird, but it makes sure that we get the
+		// left margin of non-first row.
+		int leftm = tm_.leftMargin(row_.pit(), par_.size() + 1);
+		int rightm = tm_.rightMargin(row_.pit());
+		if (row_.isRTL())
+			swap(leftm, rightm);
 		/* Currently, x points at row_.left_margin (which contains the
 		 * indent). First remove that, and then center the title with
 		 * respect to the left and right margins.
 		 */
-		int const leftm = row_.isRTL() ? tm_.rightMargin(row_.pit())
-		                               : tm_.leftMargin(row_.pit());
-		int const rightm = row_.isRTL() ? tm_.leftMargin(row_.pit())
-			                            : tm_.rightMargin(row_.pit());
 		x += leftm - row_.left_margin + (tm_.width() - leftm -rightm) / 2
 			- fm.width(str) / 2;
 	} else if (row_.isRTL()) {

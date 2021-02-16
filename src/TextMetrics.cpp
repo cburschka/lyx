@@ -1621,8 +1621,9 @@ void TextMetrics::deleteLineForward(Cursor & cur)
 
 int TextMetrics::leftMargin(pit_type pit) const
 {
-	// the + 1 is useful when the paragraph is empty
-	return leftMargin(pit, text_->paragraphs()[pit].size() + 1);
+	// FIXME: what is the semantics? It depends on whether the
+	// paragraph is empty!
+	return leftMargin(pit, text_->paragraphs()[pit].size());
 }
 
 
@@ -1635,7 +1636,7 @@ int TextMetrics::leftMargin(pit_type const pit, pos_type const pos) const
 	Paragraph const & par = pars[pit];
 	LASSERT(pos >= 0, return 0);
 	// We do not really care whether pos > par.size(), since we do not
-	// access the data. It can be actially useful, when querying the
+	// access the data. It can be actually useful, when querying the
 	// margin without indentation (see leftMargin(pit_type).
 
 	Buffer const & buffer = bv_->buffer();
