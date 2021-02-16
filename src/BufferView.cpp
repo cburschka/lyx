@@ -349,6 +349,20 @@ int BufferView::leftMargin() const
 }
 
 
+int BufferView::topMargin() const
+{
+	// Original value was 20px at 100dpi. For internal buffers like in
+	// advanced search and replace, a value of 5px is enough.
+	return zoomedPixels(buffer().isInternal() ? 5 : 20);
+}
+
+
+int BufferView::bottomMargin() const
+{
+	return topMargin();
+}
+
+
 int BufferView::inPixels(Length const & len) const
 {
 	Font const font = buffer().params().getFont();
