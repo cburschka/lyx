@@ -105,7 +105,7 @@ void GuiSearchWidget::keyPressEvent(QKeyEvent * ev)
 	setKeySymbol(&sym, ev);
 
 	// catch Return and Shift-Return
-	if (ev->key() == Qt::Key_Return) {
+	if (ev->key() == Qt::Key_Return || ev->key() == Qt::Key_Enter) {
 		findClicked(ev->modifiers() == Qt::ShiftModifier);
 		return;
 	}
