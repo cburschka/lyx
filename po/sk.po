@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-02-16 19:44+0100\n"
-"PO-Revision-Date: 2021-02-16 18:52+0000\n"
+"POT-Creation-Date: 2021-02-17 10:29+0100\n"
+"PO-Revision-Date: 2021-02-17 09:38+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1561,9 +1561,8 @@ msgid "Sear&ch"
 msgstr "&Hľadanie"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:29
-#: src/frontends/qt/ui/SearchUi.ui:33
-msgid "Fi&nd:"
-msgstr "Ná&jsť:"
+msgid "Search fo&r:"
+msgstr "Č&o hľadať:"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:53
 msgid "Replace &with:"
@@ -1582,10 +1581,6 @@ msgstr "Hľ&adať naspäť"
 msgid "Restrict search to whole words only"
 msgstr "Hľadať len celé slová"
 
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:123
-msgid "W&hole words"
-msgstr "C&elé slová"
-
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:130
 msgid "Perform a case-sensitive search"
 msgstr "Dbať aj na veľkosť písiem"
@@ -1594,18 +1589,10 @@ msgstr "Dbať aj na veľkosť písiem"
 msgid "Case &sensitive"
 msgstr "Ro&zlišovať veľkosť písmen"
 
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:147
-msgid "Find next occurrence [Enter]"
-msgstr "Nájdi ďalší výskyt [Enter]"
-
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:150 src/frontends/qt/ui/LogUi.ui:118
 #: src/frontends/qt/ui/SearchUi.ui:105
 msgid "Find &Next"
 msgstr "Hľadať ďa&lšie"
-
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:163
-msgid "Replace and find next occurrence [Enter]"
-msgstr "Nahradiť a nájsť ďalší výskyt [Enter]"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:166
 #: src/frontends/qt/ui/SearchUi.ui:118 src/frontends/qt/ui/SpellcheckerUi.ui:48
@@ -1624,7 +1611,7 @@ msgid "Replace &All"
 msgstr "Nahradiť všet&ko"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:193
-msgid "S&ettings"
+msgid "Settin&gs"
 msgstr "Nas&tavenia"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:208
@@ -1684,7 +1671,7 @@ msgid "I&gnore format"
 msgstr "&Ignorovať formát"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:328
-msgid "&Expand macros"
+msgid "E&xpand macros"
 msgstr "&Rozvinúť makrá"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:335
@@ -5096,8 +5083,20 @@ msgid "Find previous occurrence (Shift+Enter)"
 msgstr "Nájsť predošlí výskyt (Shift+Enter)"
 
 #: src/frontends/qt/ui/SearchUi.ui:37
-msgid "< Find"
-msgstr "< Hľadať"
+msgid "&< Find"
+msgstr "&< Hľadať"
+
+#: src/frontends/qt/FindAndReplace.cpp:643
+msgid "Find previous occurrence (Shift+Enter, forwards: Enter)"
+msgstr "Nájsť predošlí výskyt (Shift+Enter, vpred: Enter)"
+
+#: src/frontends/qt/FindAndReplace.cpp:644
+msgid "< Rep&lace"
+msgstr "< &Nahradiť"
+
+#: src/frontends/qt/FindAndReplace.cpp:645
+msgid "Replace and find previous occurrence (Shift+Enter, forwards: Enter)"
+msgstr "Nahradiť a nájsť predošlí výskyt (Shift+Enter, vpred: Enter)"
 
 #: src/frontends/qt/ui/SearchUi.ui:51
 msgid "Replace all occurrences"
@@ -5136,8 +5135,23 @@ msgid "Find next occurrence (Enter)"
 msgstr "Nájdi ďalší výskyt (Enter)"
 
 #: src/frontends/qt/ui/SearchUi.ui:172
-msgid "Find >"
-msgstr "Hľadať >"
+msgid "Find &>"
+msgstr "Hľadať &>"
+
+#: src/frontends/qt/FindAndReplace.cpp:648
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:147
+msgid "Find next occurrence (Enter, backwards: Shift+Enter)"
+msgstr "Nájdi ďalší výskyt (Enter, naspäť: Shift+Enter)"
+
+#: src/frontends/qt/FindAndReplace.cpp:649
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:166
+msgid "Rep&lace >"
+msgstr "Nah&radiť >"
+
+#: src/frontends/qt/FindAndReplace.cpp:650
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:163
+msgid "Replace and find next occurrence (Enter, backwards: Shift+Enter)"
+msgstr "Nahradiť a nájsť ďalší výskyt (Enter, späť: Shift+Enter)"
 
 #: src/frontends/qt/ui/SearchUi.ui:204
 msgid "Treat uppercase/lowercase writing as distinct"
@@ -37034,6 +37048,18 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "Fi&nd:"
+#~ msgstr "Ná&jsť:"
+
+#~ msgid "W&hole words"
+#~ msgstr "C&elé slová"
+
+#~ msgid "Find next occurrence [Enter]"
+#~ msgstr "Nájdi ďalší výskyt [Enter]"
+
+#~ msgid "S&ettings"
+#~ msgstr "Nas&tavenia"
+
 #~ msgid "Match &whole words only"
 #~ msgstr "Hľadať len &celé slová"
 
@@ -42409,3 +42435,9 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Find and Replace"
 #~ msgstr "Hľadať a nahradiť"
+
+#~ msgid "Replace and find next occurrence [Enter]"
+#~ msgstr "Nahradiť a nájsť ďalší výskyt [Enter]"
+
+#~ msgid "&Expand macros"
+#~ msgstr "&Rozvinúť makrá"
