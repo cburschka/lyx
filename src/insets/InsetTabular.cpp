@@ -3569,7 +3569,7 @@ void Tabular::docbookRowAsHTML(XMLStream & xs, row_type row,
 		Length const cwidth = column_info[c].p_width;
 		if (!cwidth.zero()) {
 			string const hwidth = cwidth.asHTMLString();
-			attr << "style =\"width: " << hwidth << ";\" ";
+			attr << "style=\"width: " << hwidth << ";\" ";
 		}
 
 		attr << "align='";
@@ -3805,7 +3805,7 @@ docstring Tabular::xhtmlRow(XMLStream & xs, row_type row,
 		Length const cwidth = column_info[c].p_width;
 		if (!cwidth.zero()) {
 			string const hwidth = cwidth.asHTMLString();
-			attr << "style =\"width: " << hwidth << ";\" ";
+			attr << "style=\"width: " << hwidth << ";\" ";
 		}
 
 		attr << "align='";
