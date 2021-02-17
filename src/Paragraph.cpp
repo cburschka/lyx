@@ -4502,10 +4502,12 @@ int Paragraph::find(docstring const & str, bool cs, bool mw,
 				break;
 			odocstringstream os;
 			inset->toString(os);
-			if (!os.str().empty()) {
-				int const insetstringsize = os.str().length();
+			docstring const insetstring = os.str();
+			if (!insetstring.empty()) {
+				int const insetstringsize = insetstring.length();
 				for (int j = 0; j < insetstringsize && pos < parsize; ++i, ++j) {
-					if (str[i] != os.str()[j]) {
+					if ((cs && str[i] != insetstring[j])
+					    || (!cs && uppercase(str[i]) != uppercase(insetstring[j]))) {
 						nonmatch = true;
 						break;
 					}
