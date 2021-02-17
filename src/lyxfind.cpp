@@ -279,6 +279,15 @@ bool findOne(BufferView * bv, docstring const & searchstr,
 	     bool find_del, bool check_wrap, bool auto_wrap,
 	     bool instant, bool onlysel)
 {
+	// Clean up previous selections with empty searchstr on instant
+	if (searchstr.empty() && instant) {
+		if (bv->cursor().selection()) {
+			bv->setCursor(bv->cursor().selectionBegin());
+			bv->clearSelection();
+		}
+		return false;
+	}
+
 	if (!searchAllowed(searchstr))
 		return false;
 

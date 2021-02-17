@@ -193,7 +193,7 @@ void GuiSearchWidget::findChanged()
 	replacePB->setEnabled(replace);
 	replacePrevPB->setEnabled(replace);
 	replaceallPB->setEnabled(replace);
-	if (instantSearchCB->isChecked() && !emptytext)
+	if (instantSearchCB->isChecked())
 		doFind(false, true);
 }
 
