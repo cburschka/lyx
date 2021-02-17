@@ -102,17 +102,13 @@ bool FindAndReplaceWidget::eventFilter(QObject * obj, QEvent * event)
 
 	case Qt::Key_Enter:
 	case Qt::Key_Return: {
-		// with shift we (temporarily) change search/replace direction
-		bool const searchback = searchbackCB->isChecked();
-		if (e->modifiers() == Qt::ShiftModifier && !searchback)
-			searchbackCB->setChecked(true);
-
-		if (obj == find_work_area_)
-			on_findNextPB_clicked();
+		bool const searchback = (e->modifiers() == Qt::ShiftModifier);
+		bool const replace = (obj == replace_work_area_);
+		findAndReplace(searchback, replace);
+		if (replace)
+			replace_work_area_->setFocus();
 		else
-			on_replacePB_clicked();
-		// back to how it was
-		searchbackCB->setChecked(searchback);
+			find_work_area_->setFocus();
 		return true;
 	}
 
