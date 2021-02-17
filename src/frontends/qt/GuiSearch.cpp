@@ -106,7 +106,7 @@ void GuiSearchWidget::keyPressEvent(QKeyEvent * ev)
 
 	// catch Return and Shift-Return
 	if (ev->key() == Qt::Key_Return || ev->key() == Qt::Key_Enter) {
-		findClicked(ev->modifiers() == Qt::ShiftModifier);
+		doFind(ev->modifiers() == Qt::ShiftModifier);
 		return;
 	}
 	if (ev->key() == Qt::Key_Escape) {
@@ -119,12 +119,13 @@ void GuiSearchWidget::keyPressEvent(QKeyEvent * ev)
 		KeyModifier mod = lyx::q_key_state(ev->modifiers());
 		KeySequence keyseq(&theTopLevelKeymap(), &theTopLevelKeymap());
 		FuncRequest fr = keyseq.addkey(sym, mod);
-		if (fr == FuncRequest(LFUN_WORD_FIND_FORWARD) || fr == FuncRequest(LFUN_WORD_FIND)) {
-			findClicked();
+		if (fr == FuncRequest(LFUN_WORD_FIND_FORWARD)
+		    || fr == FuncRequest(LFUN_WORD_FIND)) {
+			doFind();
 			return;
 		}
 		if (fr == FuncRequest(LFUN_WORD_FIND_BACKWARD)) {
-			findClicked(true);
+			doFind(true);
 			return;
 		}
 		if (fr == FuncRequest(LFUN_DIALOG_TOGGLE, "findreplace")) {
@@ -193,41 +194,31 @@ void GuiSearchWidget::findChanged()
 	replacePrevPB->setEnabled(replace);
 	replaceallPB->setEnabled(replace);
 	if (instantSearchCB->isChecked() && !emptytext)
-		findClicked(false, true);
+		doFind(false, true);
 }
 
 
-void GuiSearchWidget::findClicked(bool const backwards, bool const instant)
+void GuiSearchWidget::findClicked()
 {
-	docstring const needle = qstring_to_ucs4(findCO->currentText());
-	find(needle, caseCB->isChecked(), wordsCB->isChecked(), !backwards,
-	     instant, wrapCB->isChecked(), selectionCB->isChecked());
-	uniqueInsert(findCO, findCO->currentText());
-	if (!instant)
-		findCO->lineEdit()->selectAll();
+	doFind();
 }
 
 
 void GuiSearchWidget::findPrevClicked()
 {
-	findClicked(true);
+	doFind(true);
 }
 
 
-void GuiSearchWidget::replaceClicked(bool const backwards)
+void GuiSearchWidget::replaceClicked()
 {
-	docstring const needle = qstring_to_ucs4(findCO->currentText());
-	docstring const repl = qstring_to_ucs4(replaceCO->currentText());
-	replace(needle, repl, caseCB->isChecked(), wordsCB->isChecked(),
-		!backwards, false, wrapCB->isChecked(), selectionCB->isChecked());
-	uniqueInsert(findCO, findCO->currentText());
-	uniqueInsert(replaceCO, replaceCO->currentText());
+	doReplace();
 }
 
 
 void GuiSearchWidget::replacePrevClicked()
 {
-	replaceClicked(true);
+	doReplace(true);
 }
 
 
@@ -242,15 +233,37 @@ void GuiSearchWidget::replaceallClicked()
 }
 
 
+void GuiSearchWidget::doFind(bool const backwards, bool const instant)
+{
+	docstring const needle = qstring_to_ucs4(findCO->currentText());
+	find(needle, caseCB->isChecked(), wordsCB->isChecked(), !backwards,
+	     instant, wrapCB->isChecked(), selectionCB->isChecked());
+	uniqueInsert(findCO, findCO->currentText());
+	if (!instant)
+		findCO->lineEdit()->selectAll();
+}
+
+
 void GuiSearchWidget::find(docstring const & search, bool casesensitive,
-			 bool matchword, bool forward, bool instant,
-			 bool wrap, bool onlysel)
+			   bool matchword, bool forward, bool instant,
+			   bool wrap, bool onlysel)
 {
 	docstring const sdata =
 		find2string(search, casesensitive, matchword,
 			    forward, wrap, instant, onlysel);
 
 	dispatch(FuncRequest(LFUN_WORD_FIND, sdata));
+}
+
+
+void GuiSearchWidget::doReplace(bool const backwards)
+{
+	docstring const needle = qstring_to_ucs4(findCO->currentText());
+	docstring const repl = qstring_to_ucs4(replaceCO->currentText());
+	replace(needle, repl, caseCB->isChecked(), wordsCB->isChecked(),
+		!backwards, false, wrapCB->isChecked(), selectionCB->isChecked());
+	uniqueInsert(findCO, findCO->currentText());
+	uniqueInsert(replaceCO, replaceCO->currentText());
 }
 
 
@@ -261,6 +274,7 @@ void GuiSearchWidget::replace(docstring const & search, docstring const & replac
 	docstring const sdata =
 		replace2string(replace, search, casesensitive,
 			       matchword, all, forward, true, wrap, onlysel);
+
 	dispatch(FuncRequest(LFUN_WORD_REPLACE, sdata));
 }
 

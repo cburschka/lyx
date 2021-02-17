@@ -45,10 +45,9 @@ public:
 private Q_SLOTS:
 	void findChanged();
 	void findBufferChanged();
-	void findClicked(bool const backwards = false,
-			 bool const instant = false);
+	void findClicked();
 	void findPrevClicked();
-	void replaceClicked(bool const backwards = false);
+	void replaceClicked();
 	void replacePrevClicked();
 	void replaceallClicked();
 	void minimizeClicked(bool const toggle = true);
@@ -61,6 +60,11 @@ private:
 	void keyPressEvent(QKeyEvent * e) override;
 	///
 	void showEvent(QShowEvent * e) override;
+	///
+	void doFind(bool const backwards = false,
+		    bool const instant = false);
+	///
+	void doReplace(bool const backwards = false);
 	/// Searches occurrence of string
 	void find(docstring const & search,
 		  bool casesensitive, bool matchword,
