@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>283</width>
-    <height>359</height>
+    <width>374</width>
+    <height>380</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,7 +26,7 @@
       <item>
        <widget class="QLabel" name="findLabel">
         <property name="text">
-         <string>Fi&amp;nd:</string>
+         <string>Search fo&amp;r:</string>
         </property>
         <property name="buddy">
          <cstring>find_work_area_</cstring>
@@ -78,8 +78,8 @@
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>0</width>
-          <height>0</height>
+          <width>13</width>
+          <height>13</height>
          </size>
         </property>
        </spacer>
@@ -93,8 +93,8 @@
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>0</width>
-            <height>0</height>
+            <width>13</width>
+            <height>13</height>
            </size>
           </property>
          </spacer>
@@ -120,7 +120,7 @@
              <string>Restrict search to whole words only</string>
             </property>
             <property name="text">
-             <string>W&amp;hole words</string>
+             <string>Wh&amp;ole words</string>
             </property>
            </widget>
           </item>
@@ -144,10 +144,10 @@
              <bool>true</bool>
             </property>
             <property name="toolTip">
-             <string>Find next occurrence [Enter]</string>
+             <string>Find next occurrence (Enter, backwards: Shift+Enter)</string>
             </property>
             <property name="text">
-             <string>Find &amp;Next</string>
+             <string>Find &amp;&gt;</string>
             </property>
             <property name="default">
              <bool>true</bool>
@@ -160,10 +160,10 @@
              <bool>true</bool>
             </property>
             <property name="toolTip">
-             <string>Replace and find next occurrence [Enter]</string>
+             <string>Replace and find next occurrence (Enter, backwards: Shift+Enter)</string>
             </property>
             <property name="text">
-             <string>&amp;Replace</string>
+             <string>Rep&amp;lace &gt;</string>
             </property>
            </widget>
           </item>
@@ -190,7 +190,7 @@
   </widget>
   <widget class="QWidget" name="advancedTab">
    <attribute name="title">
-    <string>S&amp;ettings</string>
+    <string>Settin&amp;gs</string>
    </attribute>
    <layout class="QVBoxLayout" name="dynamicLayoutAdvanced_" stretch="0,0,1">
     <item>
@@ -325,7 +325,7 @@
          <bool>false</bool>
         </property>
         <property name="text">
-         <string>&amp;Expand macros</string>
+         <string>E&amp;xpand macros</string>
         </property>
        </widget>
       </item>
