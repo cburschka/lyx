@@ -464,7 +464,7 @@ void GuiWorkArea::Private::resizeBufferView()
 	bool const caret_in_view = buffer_view_->caretInView();
 	buffer_view_->resize(p->viewport()->width(), p->viewport()->height());
 	if (caret_in_view)
-		buffer_view_->scrollToCursor();
+		buffer_view_->showCursor();
 	resetCaret();
 
 	// Update scrollbars which might have changed due different

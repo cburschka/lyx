@@ -205,13 +205,13 @@ public:
 	/// This method will automatically scroll and update the BufferView
 	/// (metrics+drawing) if needed.
 	/// \param recenter Whether the cursor should be centered on screen
-	void showCursor(DocIterator const & dit, bool recenter,
+	/// \param force If true, disregard current position
+	void showCursor(DocIterator const & dit, bool recenter, bool force,
 		bool update);
 	/// Scroll to the cursor.
-	void scrollToCursor();
-	/// Scroll to the cursor.
 	/// \param recenter Whether the cursor should be centered on screen
-	bool scrollToCursor(DocIterator const & dit, bool recenter);
+	/// \param force If true, disregard current position
+	bool scrollToCursor(DocIterator const & dit, bool recenter, bool force);
 	/// scroll down document by the given number of pixels.
 	int scrollDown(int pixels);
 	/// scroll up document by the given number of pixels.

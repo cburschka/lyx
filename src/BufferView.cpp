@@ -171,18 +171,18 @@ bool findInset(DocIterator & dit, vector<InsetCode> const & codes,
 
 
 /// Moves cursor to the next inset with one of the given codes.
-void gotoInset(BufferView * bv, vector<InsetCode> const & codes,
+bool gotoInset(BufferView * bv, vector<InsetCode> const & codes,
 	       bool same_content)
 {
 	Cursor tmpcur = bv->cursor();
 	if (!findInset(tmpcur, codes, same_content)) {
 		bv->cursor().message(_("No more insets"));
-		return;
+		return false;
 	}
 
 	tmpcur.clearSelection();
 	bv->setCursor(tmpcur);
-	bv->showCursor();
+	return bv->scrollToCursor(bv->cursor(), false, true);
 }
 
 
@@ -541,13 +541,13 @@ void BufferView::processUpdateFlags(Update::flags flags)
 		if (needsFitCursor()) {
 			// First try to make the selection start visible
 			// (which is just the cursor when there is no selection)
-			scrollToCursor(d->cursor_.selectionBegin(), false);
+			scrollToCursor(d->cursor_.selectionBegin(), false, false);
 			// Metrics have to be recomputed (maybe again)
 			updateMetrics();
 			// Is the cursor visible? (only useful if cursor is at end of selection)
 			if (needsFitCursor()) {
 				// then try to make cursor visible instead
-				scrollToCursor(d->cursor_, false);
+				scrollToCursor(d->cursor_, false, false);
 				// Metrics have to be recomputed (maybe again)
 				updateMetrics(flags);
 			}
@@ -741,7 +741,7 @@ void BufferView::scrollDocView(int const pixels, bool update)
 	// cut off at the top
 	if (pixels <= d->scrollbarParameters_.min) {
 		DocIterator dit = doc_iterator_begin(&buffer_);
-		showCursor(dit, false, update);
+		showCursor(dit, false, false, update);
 		LYXERR(Debug::SCROLLING, "scroll to top");
 		return;
 	}
@@ -750,7 +750,7 @@ void BufferView::scrollDocView(int const pixels, bool update)
 	if (pixels >= d->scrollbarParameters_.max) {
 		DocIterator dit = doc_iterator_end(&buffer_);
 		dit.backwardPos();
-		showCursor(dit, false, update);
+		showCursor(dit, false, false, update);
 		LYXERR(Debug::SCROLLING, "scroll to bottom");
 		return;
 	}
@@ -775,7 +775,7 @@ void BufferView::scrollDocView(int const pixels, bool update)
 	DocIterator dit = doc_iterator_begin(&buffer_);
 	dit.pit() = i;
 	LYXERR(Debug::SCROLLING, "pixels = " << pixels << " -> scroll to pit " << i);
-	showCursor(dit, false, update);
+	showCursor(dit, false, false, update);
 }
 
 
@@ -961,32 +961,25 @@ int BufferView::workWidth() const
 
 void BufferView::recenter()
 {
-	showCursor(d->cursor_, true, true);
+	showCursor(d->cursor_, true, false, true);
 }
 
 
 void BufferView::showCursor()
 {
-	showCursor(d->cursor_, false, true);
+	showCursor(d->cursor_, false, false, true);
 }
 
 
 void BufferView::showCursor(DocIterator const & dit,
-	bool recenter, bool update)
+	bool recenter, bool force, bool update)
 {
-	if (scrollToCursor(dit, recenter) && update)
+	if (scrollToCursor(dit, recenter, force) && update)
 		processUpdateFlags(Update::Force);
 }
 
 
-void BufferView::scrollToCursor()
-{
-	if (scrollToCursor(d->cursor_, false))
-		processUpdateFlags(Update::Force);
-}
-
-
-bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter)
+bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter, bool force)
 {
 	// We are not properly started yet, delay until resizing is done.
 	if (height_ == 0)
@@ -1014,7 +1007,7 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter)
 	else if (bot_pit == tm.last().first + 1)
 		tm.newParMetricsDown();
 
-	if (tm.contains(bot_pit)) {
+	if (tm.contains(bot_pit) && !force) {
 		ParagraphMetrics const & pm = tm.parMetrics(bot_pit);
 		LBUFERR(!pm.rows().empty());
 		// FIXME: smooth scrolling doesn't work in mathed.
@@ -1078,9 +1071,9 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter)
 	else if (d->anchor_pit_ == max_pit)
 		d->anchor_ypos_ = height_ - offset - row_dim.descent();
 	else if (offset > height_)
-		d->anchor_ypos_ = height_ - offset - defaultRowHeight();
+		d->anchor_ypos_ = height_ - offset - row_dim.descent();
 	else
-		d->anchor_ypos_ = defaultRowHeight() * 2;
+		d->anchor_ypos_ = row_dim.ascent();
 
 	return true;
 }
@@ -1586,8 +1579,8 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 					success = setCursorFromEntries({id, pos},
 					                               {id_end, pos_end});
 				}
-				if (success)
-					dr.screenUpdate(Update::Force | Update::FitCursor);
+				if (success && scrollToCursor(d->cursor_, false, true))
+						dr.screenUpdate(Update::Force);
 			} else {
 				// Switch to other buffer view and resend cmd
 				lyx::dispatch(FuncRequest(
@@ -1600,19 +1593,13 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	case LFUN_NOTE_NEXT:
-		gotoInset(this, { NOTE_CODE }, false);
-		// FIXME: if SinglePar is changed to act on the inner
-		// paragraph, this will not be OK anymore. The update is
-		// useful for auto-open collapsible insets.
-		dr.screenUpdate(Update::SinglePar | Update::FitCursor);
+		if (gotoInset(this, { NOTE_CODE }, false))
+			dr.screenUpdate(Update::Force);
 		break;
 
 	case LFUN_REFERENCE_NEXT: {
-		gotoInset(this, { LABEL_CODE, REF_CODE }, true);
-		// FIXME: if SinglePar is changed to act on the inner
-		// paragraph, this will not be OK anymore. The update is
-		// useful for auto-open collapsible insets.
-		dr.screenUpdate(Update::SinglePar | Update::FitCursor);
+		if (gotoInset(this, { LABEL_CODE, REF_CODE }, true))
+			dr.screenUpdate(Update::Force);
 		break;
 	}
 
