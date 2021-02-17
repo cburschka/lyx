@@ -33,6 +33,7 @@ public:
 	FindAndReplaceWidget(GuiView & view);
 	bool initialiseParams(std::string const & params);
 	void updateGUI();
+	void updateButtons();
 
 public Q_SLOTS:
 	///
@@ -69,6 +70,7 @@ protected Q_SLOTS:
 	void on_findNextPB_clicked();
 	void on_replacePB_clicked();
 	void on_replaceallPB_clicked();
+	void on_searchbackCB_clicked();
 };
 
 

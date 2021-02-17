@@ -530,6 +530,12 @@ void FindAndReplaceWidget::on_replaceallPB_clicked()
 }
 
 
+void FindAndReplaceWidget::on_searchbackCB_clicked()
+{
+	updateButtons();
+}
+
+
 // Copy selected elements from bv's BufferParams to the dest_bv's
 static void copy_params(BufferView const & bv, BufferView & dest_bv) {
 	Buffer const & doc_buf = bv.buffer();
@@ -577,6 +583,7 @@ bool FindAndReplaceWidget::initialiseParams(std::string const & /*params*/)
 void FindAndReplace::updateView()
 {
 	widget_->updateGUI();
+	widget_->updateButtons();
 }
 
 
@@ -630,6 +637,22 @@ void FindAndReplaceWidget::updateGUI()
 	replace_work_area_->setEnabled(replace_enabled);
 	replacePB->setEnabled(replace_enabled);
 	replaceallPB->setEnabled(replace_enabled);
+}
+
+
+void FindAndReplaceWidget::updateButtons()
+{
+	if (searchbackCB->isChecked()) {
+		findNextPB->setText(qt_("&< Find"));
+		findNextPB->setToolTip(qt_("Find previous occurrence (Shift+Enter, forwards: Enter)"));
+		replacePB->setText(qt_("< Rep&lace"));
+		replacePB->setToolTip(qt_("Replace and find previous occurrence (Shift+Enter, forwards: Enter)"));
+	} else {
+		findNextPB->setText(qt_("Find &>"));
+		findNextPB->setToolTip(qt_("Find next occurrence (Enter, backwards: Shift+Enter)"));
+		replacePB->setText(qt_("Rep&lace >"));
+		replacePB->setToolTip(qt_("Replace and find next occurrence (Enter, backwards: Shift+Enter)"));
+	}
 }
 
 
