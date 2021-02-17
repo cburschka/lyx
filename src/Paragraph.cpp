@@ -2515,7 +2515,9 @@ void Paragraph::latex(BufferParams const & bparams,
 	// Do we have an open font change?
 	bool open_font = false;
 
-	Change runningChange = Change(Change::UNCHANGED);
+	Change runningChange =
+	    runparams.inDeletedInset && !inInset().canTrackChanges()
+	    ? runparams.changeOfDeletedInset : Change(Change::UNCHANGED);
 
 	Encoding const * const prev_encoding = runparams.encoding;
 
@@ -3050,8 +3052,9 @@ void Paragraph::latex(BufferParams const & bparams,
 		os << "{\\" << font.latexSize() << "\\par}";
 	}
 
-	column += Changes::latexMarkChange(os, bparams, runningChange,
-					   Change(Change::UNCHANGED), runparams);
+	if (!runparams.inDeletedInset || inInset().canTrackChanges())
+		column += Changes::latexMarkChange(os, bparams, runningChange,
+					Change(Change::UNCHANGED), runparams);
 
 	// Needed if there is an optional argument but no contents.
 	if (body_pos > 0 && body_pos == size()) {

@@ -40,6 +40,8 @@ public:
 	///
 	bool hasSettings() const override { return false; }
 	///
+	bool canTrackChanges() const override { return name_ != "URL"; }
+	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus &) const override;
 	///
