@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-02-16 19:08+0100\n"
-"PO-Revision-Date: 2021-02-16 19:09+0100\n"
+"POT-Creation-Date: 2021-02-17 09:51+0100\n"
+"PO-Revision-Date: 2021-02-17 10:04+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -1672,12 +1672,12 @@ msgid "Sear&ch"
 msgstr "Su&che"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:29
-msgid "Fi&nd:"
-msgstr "&Suchen:"
+msgid "Search fo&r:"
+msgstr "S&uchen nach:"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:53
 msgid "Replace &with:"
-msgstr "Ersetzen &durch:"
+msgstr "Er&setzen durch:"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:107
 msgid "Shift+Enter search backwards directly"
@@ -1692,8 +1692,9 @@ msgid "Restrict search to whole words only"
 msgstr "Suche auf vollständige Wörter beschränken"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:123
-msgid "W&hole words"
-msgstr "Ganze W&örter"
+#: src/frontends/qt/ui/SearchUi.ui:217
+msgid "Wh&ole words"
+msgstr "Gan&ze Wörter"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:130
 msgid "Perform a case-sensitive search"
@@ -1704,22 +1705,27 @@ msgid "Case &sensitive"
 msgstr "&Groß-/Kleinschreibung beachten"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:147
-msgid "Find next occurrence [Enter]"
-msgstr "Nächster Treffer [Eingabe]"
+#: src/frontends/qt/FindAndReplace.cpp:648
+msgid "Find next occurrence (Enter, backwards: Shift+Enter)"
+msgstr ""
+"Suche nächsten Treffer (Eingabetaste; rückwärts: Umschalt+Eingabetaste)"
 
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:150 src/frontends/qt/ui/LogUi.ui:118
-msgid "Find &Next"
-msgstr "&Nächstes suchen"
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:150
+#: src/frontends/qt/ui/SearchUi.ui:172 src/frontends/qt/FindAndReplace.cpp:647
+msgid "Find &>"
+msgstr "Suchen &>"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:163
-msgid "Replace and find next occurrence [Enter]"
-msgstr "Ersetze und finde nächsten Treffer [Eingabe]"
+#: src/frontends/qt/FindAndReplace.cpp:650
+msgid "Replace and find next occurrence (Enter, backwards: Shift+Enter)"
+msgstr ""
+"Ersetze und suche nächsten Treffer (Eingabetaste; rückwärts: Umschalt"
+"+Eingabetaste)"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:166
-#: src/frontends/qt/ui/SpellcheckerUi.ui:48
-#: src/frontends/qt/ui/ThesaurusUi.ui:86
-msgid "&Replace"
-msgstr "Erset&zen"
+#: src/frontends/qt/FindAndReplace.cpp:649
+msgid "Rep&lace >"
+msgstr "Erse&tzen >"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:176
 msgid "Replace all occurrences at once"
@@ -1731,8 +1737,8 @@ msgid "Replace &All"
 msgstr "&Alle ersetzen"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:193
-msgid "S&ettings"
-msgstr "E&instellungen"
+msgid "Settin&gs"
+msgstr "Einste&llungen"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:208
 msgid "The scope to which the search horizon is restricted"
@@ -1789,8 +1795,8 @@ msgid "I&gnore format"
 msgstr "Ignoriere For&mat"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:328
-msgid "&Expand macros"
-msgstr "&Makros ausklappen"
+msgid "E&xpand macros"
+msgstr "Mak&ros ausklappen"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:335
 msgid ""
@@ -1802,7 +1808,7 @@ msgstr ""
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:338
 msgid "&Preserve first case on replace"
-msgstr "Gr&oß-/Kleinschreibung bewahren"
+msgstr "Groß-/&Kleinschreibung bewahren"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:14
 #: src/frontends/qt/ui/OutputUi.ui:14 src/frontends/qt/ui/PDFSupportUi.ui:14
@@ -2966,6 +2972,10 @@ msgstr "&Suchen:"
 msgid "Hit Enter or click 'Find Next' to search"
 msgstr ""
 "Um die Suche zu starten drücken Sie die Return-Taste oder ,Nächstes suchen` "
+
+#: src/frontends/qt/ui/LogUi.ui:118
+msgid "Find &Next"
+msgstr "&Nächstes suchen"
 
 #: src/frontends/qt/ui/LogUi.ui:130
 msgid "&Open Containing Directory"
@@ -5276,9 +5286,9 @@ msgstr "Ohne Präfix"
 msgid "Find previous occurrence (Shift+Enter)"
 msgstr "Vorhergehender Treffer (Umschalt+Eingabe)"
 
-#: src/frontends/qt/ui/SearchUi.ui:37
-msgid "< Find"
-msgstr "< Suchen"
+#: src/frontends/qt/ui/SearchUi.ui:37 src/frontends/qt/FindAndReplace.cpp:642
+msgid "&< Find"
+msgstr "&< Suchen"
 
 #: src/frontends/qt/ui/SearchUi.ui:47
 msgid "Replace all occurrences"
@@ -5320,10 +5330,6 @@ msgstr "< Erse&tzen"
 msgid "Find next occurrence (Enter)"
 msgstr "Nächster Treffer (Eingabe)"
 
-#: src/frontends/qt/ui/SearchUi.ui:172
-msgid "Find >"
-msgstr "Suchen >"
-
 #: src/frontends/qt/ui/SearchUi.ui:204
 msgid "Treat uppercase/lowercase writing as distinct"
 msgstr "Groß- und Kleinschreibung differenzieren"
@@ -5335,10 +5341,6 @@ msgstr "&Groß-/Kleinschreibung beachten"
 #: src/frontends/qt/ui/SearchUi.ui:214
 msgid "Match whole words only"
 msgstr "Nur ganze Wörter suchen"
-
-#: src/frontends/qt/ui/SearchUi.ui:217
-msgid "Wh&ole words"
-msgstr "Gan&ze Wörter"
 
 #: src/frontends/qt/ui/SearchUi.ui:224
 msgid "Limit search and replace to selection"
@@ -5434,6 +5436,11 @@ msgstr "Ersetze durch das ausgewählte Wort"
 #: src/frontends/qt/ui/SpellcheckerUi.ui:45
 msgid "Replace word with current choice"
 msgstr "Wort durch die aktuelle Auswahl ersetzen"
+
+#: src/frontends/qt/ui/SpellcheckerUi.ui:48
+#: src/frontends/qt/ui/ThesaurusUi.ui:86
+msgid "&Replace"
+msgstr "Erset&zen"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:55
 msgid "Ignore this word"
@@ -30839,14 +30846,14 @@ msgstr ""
 "Fortfahren?"
 
 #: src/VCBackend.cpp:1516 src/VCBackend.cpp:1520
-#: src/frontends/qt/FindAndReplace.cpp:385 src/frontends/qt/GuiPrefs.cpp:1862
+#: src/frontends/qt/FindAndReplace.cpp:381 src/frontends/qt/GuiPrefs.cpp:1862
 #: src/lyxfind.cpp:294 src/lyxfind.cpp:321 src/lyxfind.cpp:341
 #: src/lyxfind.cpp:678 src/lyxfind.cpp:706
 msgid "&Yes"
 msgstr "&Ja"
 
 #: src/VCBackend.cpp:1516 src/VCBackend.cpp:1520
-#: src/frontends/qt/FindAndReplace.cpp:385 src/frontends/qt/GuiPrefs.cpp:1862
+#: src/frontends/qt/FindAndReplace.cpp:381 src/frontends/qt/GuiPrefs.cpp:1862
 #: src/lyxfind.cpp:294 src/lyxfind.cpp:321 src/lyxfind.cpp:341
 #: src/lyxfind.cpp:678 src/lyxfind.cpp:706
 msgid "&No"
@@ -31015,23 +31022,23 @@ msgstr "Nicht kategorisiert"
 msgid "Directories"
 msgstr "Verzeichnisse"
 
-#: src/frontends/qt/FindAndReplace.cpp:281
+#: src/frontends/qt/FindAndReplace.cpp:277
 msgid "File"
 msgstr "Datei"
 
-#: src/frontends/qt/FindAndReplace.cpp:284
+#: src/frontends/qt/FindAndReplace.cpp:280
 msgid "Master document"
 msgstr "Hauptdokument"
 
-#: src/frontends/qt/FindAndReplace.cpp:287
+#: src/frontends/qt/FindAndReplace.cpp:283
 msgid "Open files"
 msgstr "Geöffnete Dateien"
 
-#: src/frontends/qt/FindAndReplace.cpp:290
+#: src/frontends/qt/FindAndReplace.cpp:286
 msgid "Manuals"
 msgstr "Hilfedateien"
 
-#: src/frontends/qt/FindAndReplace.cpp:294
+#: src/frontends/qt/FindAndReplace.cpp:290
 #, c-format
 msgid ""
 "%1$s: the end was reached while searching forward.\n"
@@ -31040,7 +31047,7 @@ msgstr ""
 "%1$s: Das Ende des Dokuments wurde bei der Vorwärtssuche erreicht.\n"
 "Suche am Anfang fortsetzen?"
 
-#: src/frontends/qt/FindAndReplace.cpp:297
+#: src/frontends/qt/FindAndReplace.cpp:293
 #, c-format
 msgid ""
 "%1$s: the beginning was reached while searching backward.\n"
@@ -31049,30 +31056,45 @@ msgstr ""
 "%1$s: Der Anfang des Dokuments wurde bei der Rückwärtssuche erreicht.\n"
 "Suche am Ende fortsetzen?"
 
-#: src/frontends/qt/FindAndReplace.cpp:320
+#: src/frontends/qt/FindAndReplace.cpp:316
 msgid "Advanced search in progress (press ESC to cancel) . . ."
 msgstr "Erweiterte Suche läuft (drücken Sie ESC, um abzubrechen) ..."
 
-#: src/frontends/qt/FindAndReplace.cpp:366
+#: src/frontends/qt/FindAndReplace.cpp:362
 msgid "Advanced search cancelled by user"
 msgstr "Erweiterte Suche durch den Benutzer abgebrochen"
 
-#: src/frontends/qt/FindAndReplace.cpp:384 src/lyxfind.cpp:340
+#: src/frontends/qt/FindAndReplace.cpp:380 src/lyxfind.cpp:340
 #: src/lyxfind.cpp:677 src/lyxfind.cpp:705
 msgid "Wrap search?"
 msgstr "Von vorne suchen?"
 
-#: src/frontends/qt/FindAndReplace.cpp:435
+#: src/frontends/qt/FindAndReplace.cpp:431
 msgid "Nothing to search"
 msgstr "Nichts zum suchen"
 
-#: src/frontends/qt/FindAndReplace.cpp:483
+#: src/frontends/qt/FindAndReplace.cpp:479
 msgid "No open document(s) in which to search"
 msgstr "Keine Dokumente geöffnet, in denen gesucht werden kann"
 
-#: src/frontends/qt/FindAndReplace.cpp:585
+#: src/frontends/qt/FindAndReplace.cpp:588
 msgid "Advanced Find and Replace"
 msgstr "Erweitertes Suchen und Ersetzen"
+
+#: src/frontends/qt/FindAndReplace.cpp:643
+msgid "Find previous occurrence (Shift+Enter, forwards: Enter)"
+msgstr ""
+"Suche vorhergehenden Treffer (Umschalt+Eingabetaste; vorwärts: Eingabetaste)"
+
+#: src/frontends/qt/FindAndReplace.cpp:644
+msgid "< Rep&lace"
+msgstr "< Erse&tzen"
+
+#: src/frontends/qt/FindAndReplace.cpp:645
+msgid "Replace and find previous occurrence (Shift+Enter, forwards: Enter)"
+msgstr ""
+"Ersetze und suche vorhergehenden Treffer (Umschalt+Eingabetaste; vorwärts: "
+"Eingabetaste)"
 
 #: src/frontends/qt/FloatPlacement.cpp:182
 #: src/frontends/qt/GuiDocument.cpp:1139 src/frontends/qt/GuiDocument.cpp:2710
@@ -37481,6 +37503,18 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
 
+#~ msgid "Fi&nd:"
+#~ msgstr "&Suchen:"
+
+#~ msgid "W&hole words"
+#~ msgstr "Ganze W&örter"
+
+#~ msgid "Find next occurrence [Enter]"
+#~ msgstr "Nächster Treffer [Eingabe]"
+
+#~ msgid "S&ettings"
+#~ msgstr "E&instellungen"
+
 #, fuzzy
 #~ msgid "Onlysearch in selection"
 #~ msgstr "Änderung innerhalb Auswahl akzeptieren"
@@ -41277,9 +41311,6 @@ msgstr "Unbekannter Benutzer"
 
 #~ msgid "Find &Prev"
 #~ msgstr "&Voriges suchen"
-
-#~ msgid "Search for..."
-#~ msgstr "Suchen nach..."
 
 #~ msgid "Current buffer only"
 #~ msgstr "Nur aktueller Speicher"
