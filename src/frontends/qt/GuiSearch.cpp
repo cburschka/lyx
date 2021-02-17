@@ -193,17 +193,17 @@ void GuiSearchWidget::findChanged()
 	replacePrevPB->setEnabled(replace);
 	replaceallPB->setEnabled(replace);
 	if (instantSearchCB->isChecked() && !emptytext)
-		findClicked();
+		findClicked(false, true);
 }
 
 
-void GuiSearchWidget::findClicked(bool const backwards)
+void GuiSearchWidget::findClicked(bool const backwards, bool const instant)
 {
 	docstring const needle = qstring_to_ucs4(findCO->currentText());
 	find(needle, caseCB->isChecked(), wordsCB->isChecked(), !backwards,
-	     instantSearchCB->isChecked(), wrapCB->isChecked(), selectionCB->isChecked());
+	     instant, wrapCB->isChecked(), selectionCB->isChecked());
 	uniqueInsert(findCO, findCO->currentText());
-	if (!instantSearchCB->isChecked())
+	if (!instant)
 		findCO->lineEdit()->selectAll();
 }
 
