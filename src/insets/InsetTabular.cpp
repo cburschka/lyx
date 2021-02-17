@@ -3745,7 +3745,7 @@ void Tabular::docbook(XMLStream & xs, OutputParams const & runparams) const
 			if (((havefirsthead && row_info[r].endfirsthead) ||
 			     (havehead && row_info[r].endhead)) &&
 			    !row_info[r].caption) {
-				docbookRow(xs, r, runparams, true); // TODO: HTML vs CALS
+				docbookRow(xs, r, runparams, true);
 			}
 		}
 		xs << xml::EndTag("thead");
