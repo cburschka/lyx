@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This DocBook file was created by LyX 2.4.0dev
+  See https://www.lyx.org/ for more information -->
+<book xml:lang="fr_FR" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
+<title><personname><emphasis role='bold'>Think Julia</emphasis></personname></title>
+<chapter>
+<title>Droits associés à la version française</title>
+<para>En vertu de la licence Creative Commons (<link xlink:href="https://creativecommons.org/licenses/by-nc-sa/3.0/fr/">CC BY-NC-SA 3.0 FR</link>; <emphasis>Attribution - Pas d’Utilisation Commerciale - Partage dans les Mêmes Conditions 3.0 FR</emphasis>), vous êtes autorisé à partager (copier, distribuer et communiquer le matériel par tous moyens et sous tous formats) et adapter (remixer, transformer et créer à partir du matériel) selon les conditions suivantes:</para>
+<itemizedlist>
+<listitem>
+<para><emphasis>Attribution</emphasis> — Vous devez créditer le document, intégrer un lien vers la licence (en l'occurrence: <link xlink:href="https://creativecommons.org/licenses/by-nc-sa/3.0/fr/legalcode">CC BY-NC-SA 3.0 FR</link>) et indiquer si des modifications ont été effectuées au document. Vous devez indiquer ces informations par tous les moyens raisonnables, sans toutefois suggérer que le présent auteur vous soutient ou soutient la façon dont vous avez utilisé son travail. </para>
+</listitem>
+<listitem>
+<para><emphasis>Pas d’utilisation commerciale</emphasis> — Vous n'êtes pas autorisé à faire un usage commercial du présent document, tout ou partie du matériel le composant. </para>
+</listitem>
+<listitem>
+<para><emphasis>Partage dans les mêmes conditions —</emphasis> Dans le cas où vous effectuez un remix, que vous transformez, ou créez à partir du matériel composant le document original, vous devez diffuser le document modifié dans les mêmes conditions, c'est-à-dire avec la même licence avec laquelle le document original a été diffusé. </para>
+</listitem>
+</itemizedlist>
+<para>Vous n'êtes pas autorisé à appliquer des conditions légales ou des mesures techniques qui restreindraient légalement autrui à utiliser le document dans les conditions décrites par la <link xlink:href="https://creativecommons.org/licenses/by-nc-sa/3.0/fr/legalcode">licence</link>.</para>
+</chapter>
+<chapter>
+<title>Table</title>
+<para>Si vous appliquez l'appel histogram("brontosaure"), le programme retourne la valeur de d sous cette forme:</para>
+<informaltable>
+<tbody>
+<tr>
+<td style="width: 110mm;" align='left' valign='top'>
+<para><emphasis role='size_small'>Dict{Any,Any} with 9 entries<!-- \string: --></emphasis></para>
+<informaltable>
+<tbody>
+<tr>
+<td align='center' valign='top'>
+<para><!-- \textquotesingle --> n<!-- \textquotesingle --></para>
+</td>
+<td style="width: 3mm;" align='center' valign='top'>
+<para><emphasis role='size_small'>=&gt;</emphasis></para>
+</td>
+<td style="width: 3mm;" align='center' valign='top'>
+<para><emphasis role='size_small'>1</emphasis> </para>
+</td>
+</tr>
+<tr>
+<td align='center' valign='top'>
+<para><!-- \textquotesingle --> s<!-- \textquotesingle --></para>
+</td>
+<td style="width: 3mm;" align='center' valign='top'>
+<para><emphasis role='size_small'>=&gt;</emphasis></para>
+</td>
+<td style="width: 3mm;" align='center' valign='top'>
+<para><emphasis role='size_small'>1</emphasis> </para>
+</td>
+</tr>
+<tr>
+<td align='center' valign='top'>
+<para><!-- \textquotesingle --> a<!-- \textquotesingle --></para>
+</td>
+<td style="width: 3mm;" align='center' valign='top'>
+<para><emphasis role='size_small'>=&gt;</emphasis></para>
+</td>
+<td style="width: 3mm;" align='center' valign='top'>
+<para><emphasis role='size_small'>1</emphasis> </para>
+</td>
+</tr>
+<tr>
+<td align='center' valign='top'>
+<para><!-- \textquotesingle --> r<!-- \textquotesingle --></para>
+</td>
+<td style="width: 3mm;" align='center' valign='top'>
+<para><emphasis role='size_small'>=&gt;</emphasis></para>
+</td>
+<td style="width: 3mm;" align='center' valign='top'>
+<para><emphasis role='size_small'>2</emphasis> </para>
+</td>
+</tr>
+<tr>
+<td align='center' valign='top'>
+<para><!-- \textquotesingle --> t<!-- \textquotesingle --></para>
+</td>
+<td style="width: 3mm;" align='center' valign='top'>
+<para><emphasis role='size_small'>=&gt;</emphasis></para>
+</td>
+<td style="width: 3mm;" align='center' valign='top'>
+<para><emphasis role='size_small'>1</emphasis> </para>
+</td>
+</tr>
+<tr>
+<td align='center' valign='top'>
+<para><!-- \textquotesingle --> o<!-- \textquotesingle --></para>
+</td>
+<td style="width: 3mm;" align='center' valign='top'>
+<para><emphasis role='size_small'>=&gt;</emphasis></para>
+</td>
+<td style="width: 3mm;" align='center' valign='top'>
+<para><emphasis role='size_small'>2</emphasis> </para>
+</td>
+</tr>
+<tr>
+<td align='center' valign='top'>
+<para><!-- \textquotesingle --> u<!-- \textquotesingle --></para>
+</td>
+<td style="width: 3mm;" align='center' valign='top'>
+<para><emphasis role='size_small'>=&gt;</emphasis></para>
+</td>
+<td style="width: 3mm;" align='center' valign='top'>
+<para><emphasis role='size_small'>1</emphasis> </para>
+</td>
+</tr>
+<tr>
+<td align='center' valign='top'>
+<para><!-- \textquotesingle --> e<!-- \textquotesingle --></para>
+</td>
+<td style="width: 3mm;" align='center' valign='top'>
+<para><emphasis role='size_small'>=&gt;</emphasis></para>
+</td>
+<td style="width: 3mm;" align='center' valign='top'>
+<para><emphasis role='size_small'>1</emphasis> </para>
+</td>
+</tr>
+<tr>
+<td align='center' valign='top'>
+<para><!-- \textquotesingle --> b<!-- \textquotesingle --></para>
+</td>
+<td style="width: 3mm;" align='center' valign='top'>
+<para><emphasis role='size_small'>=&gt;</emphasis></para>
+</td>
+<td style="width: 3mm;" align='center' valign='top'>
+<para><emphasis role='size_small'>1</emphasis> </para>
+</td>
+</tr>
+</tbody>
+</informaltable>
+</td>
+</tr>
+</tbody>
+</informaltable>
+</chapter>
+</book>

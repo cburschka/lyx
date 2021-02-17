@@ -3611,8 +3611,11 @@ void Tabular::docbookRowAsHTML(XMLStream & xs, row_type row,
 		else if (isMultiRow(cell))
 			attr << " rowspan='" << rowSpan(cell) << "'";
 
+		OutputParams rp = runparams;
+		rp.docbook_in_par = false;
+		rp.docbook_force_pars = true;
 		xs << xml::StartTag(celltag, attr.str(), true);
-		cellInset(cell)->docbook(xs, runparams);
+		cellInset(cell)->docbook(xs, rp);
 		xs << xml::EndTag(celltag);
 		xs << xml::CR();
 		++cell;
