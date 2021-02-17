@@ -34,7 +34,7 @@
         <string>Find previous occurrence (Shift+Enter)</string>
        </property>
        <property name="text">
-        <string>&lt; Find</string>
+        <string>&amp;&lt; Find</string>
        </property>
       </widget>
      </item>
@@ -169,7 +169,7 @@
         <enum>Qt::LeftToRight</enum>
        </property>
        <property name="text">
-        <string>Find &gt;</string>
+        <string>Find &amp;&gt;</string>
        </property>
        <property name="default">
         <bool>true</bool>
