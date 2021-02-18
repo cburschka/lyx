@@ -335,6 +335,7 @@ void GuiSearchWidget::findBufferChanged()
 		LYXERR(Debug::CLIPBOARD, "from findbuffer: " << search);
 		findCO->lineEdit()->selectAll();
 		findCO->lineEdit()->insert(toqstr(search));
+		findCO->lineEdit()->selectAll();
 	}
 }
 
