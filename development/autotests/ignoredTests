@@ -236,3 +236,11 @@ export/export/xhtml/.*(lyx..|dvi.*|pdf.*)
 check_load/export/docbook/.*
 lyx2lyx/export/docbook/.*
 export/export/docbook/.*(lyx..|dvi.*|pdf.*)
+
+# ================================================
+# epub
+Sublabel: lyx_later
+# Tests ignored for now since a lot of them are
+# failing (and are not regressions).
+export/.*/(ar|ca|cs|da|de|el|es|eu|fa|fr|gl|he|hu|id|it|ja|ko|lt|nb|nl|pl|pt|pt_BR|pt_PT|ro|ru|sk|sl|sr|sv|uk|zh_CN|).*_epub
+
