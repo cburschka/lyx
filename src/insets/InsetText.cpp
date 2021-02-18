@@ -709,9 +709,9 @@ void InsetText::docbook(XMLStream & xs, OutputParams const & rp, XHTMLOptions op
 	docbookParagraphs(text_, buffer(), xs, runparams);
 	xs.endDivision();
 
-    // - Think about the arguments after the paragraph.
-    for (auto const & arg : appendedArguments)
-        arg->docbook(xs, np);
+	// - Think about the arguments after the paragraph.
+	for (auto const & arg : appendedArguments)
+		arg->docbook(xs, np);
 
 	// - Close the required tags.
 	if (writeOuterTag) {
