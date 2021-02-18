@@ -285,7 +285,7 @@ bool findOne(BufferView * bv, docstring const & searchstr,
 			bv->setCursor(bv->cursor().selectionBegin());
 			bv->clearSelection();
 		}
-		return false;
+		return true;
 	}
 
 	if (!searchAllowed(searchstr))
