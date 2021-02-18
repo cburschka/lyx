@@ -322,11 +322,8 @@ void GuiSearchWidget::findBufferChanged()
 	docstring search = theClipboard().getFindBuffer();
 	if (!search.empty()) {
 		LYXERR(Debug::CLIPBOARD, "from findbuffer: " << search);
-#if QT_VERSION > 0x050000
-		findCO->setCurrentText(toqstr(search));
-#else
-		findCO->setEditText(toqstr(search));
-#endif
+		findCO->lineEdit()->selectAll();
+		findCO->lineEdit()->insert(toqstr(search));
 	}
 }
 
