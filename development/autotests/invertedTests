@@ -440,6 +440,8 @@ export/templates/Books/Springer.*/.*_docbook5
 !export/export/docbook/svglo_docbook5
 export/export/docbook/sv.*_docbook5
 #   - scrbook with too many customisations.
+!export/templates/Theses/PhD_Thesis/Acknowledgments_docbook5
+!export/templates/Theses/PhD_Thesis/Summary_docbook5
 export/templates/Theses/PhD_Thesis/.*_docbook5
 #   - Hollywood, too much formatting in elements DocBook does not allow to be formatted (like address).
 export/(templates|examples)/Scripts/Hollywood_docbook5
