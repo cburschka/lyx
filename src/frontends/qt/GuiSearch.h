@@ -15,7 +15,9 @@
 
 #include "GuiDialog.h"
 #include "DockView.h"
+#include "FancyLineEdit.h"
 
+#include <QMenu>
 #include <QDockWidget>
 
 #include "ui_SearchUi.h"
@@ -51,6 +53,11 @@ private Q_SLOTS:
 	void replacePrevClicked();
 	void replaceallClicked();
 	void minimizeClicked(bool const toggle = true);
+	void caseSenseActTriggered();
+	void wholeWordsActTriggered();
+	void searchSelActTriggered();
+	void immediateActTriggered();
+	void wrapActTriggered();
 Q_SIGNALS:
 	void needTitleBarUpdate() const;
 	void needSizeUpdate() const;
@@ -74,9 +81,25 @@ private:
 		     bool casesensitive, bool matchword,
 		     bool forward, bool all, bool wrap, bool onlysel);
 	///
+	void handleIndicators();
+	///
 	BufferView const * bv_ = nullptr;
 	///
 	bool minimized_ = false;
+	/// contains the search box
+	FancyLineEdit * findLE_;
+	/// The options menu
+	QMenu * menu_;
+	/// And its actions
+	QAction * act_casesense_ = new QAction(this);
+	///
+	QAction * act_wholewords_ = new QAction(this);
+	///
+	QAction * act_selection_ = new QAction(this);
+	///
+	QAction * act_immediate_ = new QAction(this);
+	///
+	QAction * act_wrap_ = new QAction(this);
 };
 
 

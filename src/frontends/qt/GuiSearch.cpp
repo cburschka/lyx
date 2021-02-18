@@ -33,6 +33,7 @@
 #include "frontends/Clipboard.h"
 
 #include <QClipboard>
+#include <QPainter>
 #include <QLineEdit>
 #include <QSettings>
 #include <QShowEvent>
@@ -81,6 +82,36 @@ GuiSearchWidget::GuiSearchWidget(QWidget * parent)
 	}
 
 	setFocusProxy(findCO);
+
+	// Use a FancyLineEdit due to the indicator icons
+	findLE_ = new FancyLineEdit(this);
+	findCO->setLineEdit(findLE_);
+
+	// And a menu in minimal mode
+	menu_ = new QMenu();
+	act_casesense_ = new QAction(qt_("&Case sensitive[[search]]"), this);
+	act_casesense_->setCheckable(true);
+	act_wholewords_ = new QAction(qt_("Wh&ole words"), this);
+	act_wholewords_->setCheckable(true);
+	act_selection_ = new QAction(qt_("Selection onl&y"), this);
+	act_selection_->setCheckable(true);
+	act_immediate_ = new QAction(qt_("Search as yo&u type"), this);
+	act_immediate_->setCheckable(true);
+	act_wrap_ = new QAction(qt_("&Wrap"), this);
+	act_wrap_->setCheckable(true);
+
+	menu_->addAction(act_casesense_);
+	menu_->addAction(act_wholewords_);
+	menu_->addAction(act_selection_);
+	menu_->addAction(act_immediate_);
+	menu_->addAction(act_wrap_);
+	findLE_->setButtonMenu(FancyLineEdit::Right, menu_);
+
+	connect(act_casesense_, SIGNAL(triggered()), this, SLOT(caseSenseActTriggered()));
+	connect(act_wholewords_, SIGNAL(triggered()), this, SLOT(wholeWordsActTriggered()));
+	connect(act_selection_, SIGNAL(triggered()), this, SLOT(searchSelActTriggered()));
+	connect(act_immediate_, SIGNAL(triggered()), this, SLOT(immediateActTriggered()));
+	connect(act_wrap_, SIGNAL(triggered()), this, SLOT(wrapActTriggered()));
 
 	findCO->setCompleter(nullptr);
 	replaceCO->setCompleter(nullptr);
@@ -148,9 +179,18 @@ void GuiSearchWidget::minimizeClicked(bool const toggle)
 	replacePrevPB->setHidden(minimized_);
 	replaceallPB->setHidden(minimized_);
 	CBFrame->setHidden(minimized_);
+
 	if (minimized_) {
 		minimizePB->setText(qt_("Ex&pand"));
 		minimizePB->setToolTip(qt_("Show replace and option widgets"));
+		// update menu items
+		blockSignals(true);
+		act_casesense_->setChecked(caseCB->isChecked());
+		act_immediate_->setChecked(instantSearchCB->isChecked());
+		act_selection_->setChecked(selectionCB->isChecked());
+		act_wholewords_->setChecked(wordsCB->isChecked());
+		act_wrap_->setChecked(wrapCB->isChecked());
+		blockSignals(false);
 	} else {
 		minimizePB->setText(qt_("&Minimize"));
 		minimizePB->setToolTip(qt_("Hide replace and option widgets"));
@@ -158,6 +198,113 @@ void GuiSearchWidget::minimizeClicked(bool const toggle)
 
 	Q_EMIT needSizeUpdate();
 	Q_EMIT needTitleBarUpdate();
+	handleIndicators();
+}
+
+
+void GuiSearchWidget::handleIndicators()
+{
+	findLE_->setButtonVisible(FancyLineEdit::Right, minimized_);
+
+	QString tip;
+
+	if (minimized_) {
+		int pms = 0;
+		if (caseCB->isChecked())
+			++pms;
+		if (wordsCB->isChecked())
+			++pms;
+		if (selectionCB->isChecked())
+			++pms;
+		if (instantSearchCB->isChecked())
+			++pms;
+		if (wrapCB->isChecked())
+			++pms;
+
+		QPixmap bpixmap = getPixmap("images/", "search-options", "svgz,png");
+
+		if (pms > 0) {
+			int const gap = 3;
+			QPixmap tpixmap(pms * (bpixmap.width() + gap), bpixmap.height());
+			tpixmap.fill();
+			QPainter painter(&tpixmap);
+			int x = 0;
+			
+			tip = qt_("Active options:");
+			tip += "<ul>";
+			if (caseCB->isChecked()) {
+				tip += "<li>" + qt_("Case sensitive search");
+				QPixmap spixmap = getPixmap("images/", "search-case-sensitive", "svgz,png");
+				painter.drawPixmap(x, 0, spixmap);
+				x += spixmap.width() + gap;
+			}
+			if (wordsCB->isChecked()) {
+				tip += "<li>" + qt_("Whole words only");
+				QPixmap spixmap = getPixmap("images/", "search-whole-words", "svgz,png");
+				painter.drawPixmap(x, 0, spixmap);
+				x += spixmap.width() + gap;
+			}
+			if (selectionCB->isChecked()) {
+				tip += "<li>" + qt_("Search only in selection");
+				QPixmap spixmap = getPixmap("images/", "search-selection", "svgz,png");
+				painter.drawPixmap(x, 0, spixmap);
+				x += spixmap.width() + gap;
+			}
+			if (instantSearchCB->isChecked()) {
+				tip += "<li>" + qt_("Search as you type");
+				QPixmap spixmap = getPixmap("images/", "search-instant", "svgz,png");
+				painter.drawPixmap(x, 0, spixmap);
+				x += spixmap.width() + gap;
+			}
+			if (wrapCB->isChecked()) {
+				tip += "<li>" + qt_("Wrap search");
+				QPixmap spixmap = getPixmap("images/", "search-wrap", "svgz,png");
+				painter.drawPixmap(x, 0, spixmap);
+				x += spixmap.width() + gap;
+			}
+			tip += "</ul>";
+			findLE_->setButtonPixmap(FancyLineEdit::Right, tpixmap);
+		} else {
+			tip = qt_("Click here to change search options");
+			findLE_->setButtonPixmap(FancyLineEdit::Right, bpixmap);
+		}
+	}
+	findLE_->setButtonToolTip(FancyLineEdit::Right, tip);
+}
+
+
+void GuiSearchWidget::caseSenseActTriggered()
+{
+	caseCB->setChecked(act_casesense_->isChecked());
+	handleIndicators();
+}
+
+
+void GuiSearchWidget::wholeWordsActTriggered()
+{
+	wordsCB->setChecked(act_wholewords_->isChecked());
+	handleIndicators();
+}
+
+
+void GuiSearchWidget::searchSelActTriggered()
+{
+	selectionCB->setChecked(act_selection_->isChecked());
+	handleIndicators();
+}
+
+
+void GuiSearchWidget::immediateActTriggered()
+{
+	instantSearchCB->setChecked(act_immediate_->isChecked());
+	handleIndicators();
+}
+
+
+void GuiSearchWidget::wrapActTriggered()
+{
+	wrapCB->setChecked(act_wrap_->isChecked());
+	handleIndicators();
 }
 
 
@@ -293,10 +440,15 @@ void GuiSearchWidget::restoreSession(QString const & session_key)
 {
 	QSettings settings;
 	caseCB->setChecked(settings.value(session_key + "/casesensitive", false).toBool());
+	act_casesense_->setChecked(settings.value(session_key + "/casesensitive", false).toBool());
 	wordsCB->setChecked(settings.value(session_key + "/words", false).toBool());
+	act_wholewords_->setChecked(settings.value(session_key + "/words", false).toBool());
 	instantSearchCB->setChecked(settings.value(session_key + "/instant", false).toBool());
+	act_immediate_->setChecked(settings.value(session_key + "/instant", false).toBool());
 	wrapCB->setChecked(settings.value(session_key + "/wrap", false).toBool());
+	act_wrap_->setChecked(settings.value(session_key + "/wrap", false).toBool());
 	selectionCB->setChecked(settings.value(session_key + "/selection", false).toBool());
+	act_selection_->setChecked(settings.value(session_key + "/selection", false).toBool());
 	minimized_ = settings.value(session_key + "/minimized", false).toBool();
 	// initialize hidings
 	minimizeClicked(false);

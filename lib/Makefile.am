@@ -658,6 +658,12 @@ dist_images_DATA1X = \
 	images/paste.svgz \
 	images/redo.svgz \
 	images/reload.svgz \
+	images/search-case-sensitive.svgz \
+	images/search-instant.svgz \
+	images/search-options.svgz \
+	images/search-selection.svgz \
+	images/search-whole-words.svgz \
+	images/search-wrap.svgz \
 	images/script-insert_subscript.svgz \
 	images/script-insert_superscript.svgz \
 	images/specialchar-insert_latex.svgz \
