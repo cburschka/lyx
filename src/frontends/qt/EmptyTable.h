@@ -49,6 +49,10 @@ protected:
 	virtual void resetCellSize();
 
 private:
+	void adjustMinCellSize();
+
+	int cellheight = 20;
+	int cellwidth = 30;
 };
 
 

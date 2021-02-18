@@ -22,10 +22,6 @@
  * A simple widget for a quick "preview" in TabularCreateDialog
  */
 
-unsigned int const cellheight = 20;
-unsigned int const cellwidth = 30;
-
-
 EmptyTable::EmptyTable(QWidget * parent, int rows, int columns)
 	: QTableWidget(rows, columns, parent)
 {
@@ -34,7 +30,9 @@ EmptyTable::EmptyTable(QWidget * parent, int rows, int columns)
 	setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 	viewport()->resize(cellheight * rows, cellwidth * columns);
 	setSelectionMode(QAbstractItemView::NoSelection);
+	setFocusPolicy(Qt::NoFocus);
 	setEditTriggers(QAbstractItemView::NoEditTriggers);
+	adjustMinCellSize();
 }
 
 
@@ -42,6 +40,16 @@ QSize EmptyTable::sizeHint() const
 {
 	return QSize(cellwidth * (2 + columnCount()), cellheight * (2 + rowCount()));
 }
+
+
+void EmptyTable::adjustMinCellSize()
+{
+	setRowHeight(0, cellheight);
+	cellheight = rowHeight(0);
+	setColumnWidth(0, cellwidth);
+	cellwidth = columnWidth(0);
+}
+
 
 void EmptyTable::resetCellSize()
 {
