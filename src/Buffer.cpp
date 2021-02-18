@@ -3538,6 +3538,9 @@ void Buffer::collectChildren(ListOfBuffers & children, bool grand_children) cons
 	// loop over children
 	for (auto const & p : d->children_positions) {
 		Buffer * child = const_cast<Buffer *>(p.first);
+		// This can happen when called during GUI operations
+		if (!theBufferList().isLoaded(child))
+			continue;
 		// No duplicates
 		ListOfBuffers::const_iterator bit = find(children.begin(), children.end(), child);
 		if (bit != children.end())
