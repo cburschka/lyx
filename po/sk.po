@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-02-17 10:29+0100\n"
-"PO-Revision-Date: 2021-02-17 09:38+0000\n"
+"POT-Creation-Date: 2021-02-18 09:14+0100\n"
+"PO-Revision-Date: 2021-02-18 08:50+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1558,7 +1558,7 @@ msgstr "TabWidget"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:21
 msgid "Sear&ch"
-msgstr "&Hľadanie"
+msgstr "&Hľadať"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:29
 msgid "Search fo&r:"
@@ -1573,9 +1573,8 @@ msgid "Shift+Enter search backwards directly"
 msgstr "Shift+Enter hľadať naspäť priamo"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:110
-#: src/frontends/qt/ui/SearchUi.ui:141
 msgid "Search &backwards"
-msgstr "Hľ&adať naspäť"
+msgstr "Hľada&ť naspäť"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:120
 msgid "Restrict search to whole words only"
@@ -1583,11 +1582,11 @@ msgstr "Hľadať len celé slová"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:130
 msgid "Perform a case-sensitive search"
-msgstr "Dbať aj na veľkosť písiem"
+msgstr "Dbať aj na veľkosť písmen"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:133
 msgid "Case &sensitive"
-msgstr "Ro&zlišovať veľkosť písmen"
+msgstr "&A≠a"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:150 src/frontends/qt/ui/LogUi.ui:118
 #: src/frontends/qt/ui/SearchUi.ui:105
@@ -2839,10 +2838,10 @@ msgstr "&Otvoriť obsahujúci adresár"
 msgid "Update the display"
 msgstr "Aktualizovať zobrazenie"
 
-#: src/frontends/qt/ui/LogUi.ui:159 src/frontends/qt/ui/ViewSourceUi.ui:150
-#: src/frontends/qt/GuiRef.cpp:80
+#: src/frontends/qt/GuiRef.cpp:80 src/frontends/qt/ui/LogUi.ui:159
+#: src/frontends/qt/ui/ViewSourceUi.ui:150
 msgid "&Update"
-msgstr "&Aktualizovať"
+msgstr "A&ktualizovať"
 
 #: src/frontends/qt/ui/LyXFilesUi.ui:23
 msgid "Filter"
@@ -2864,7 +2863,7 @@ msgstr "Filtrovať aj podľa veľkosti písmen"
 
 #: src/frontends/qt/ui/LyXFilesUi.ui:75 src/frontends/qt/ui/RefUi.ui:71
 msgid "Case Sensiti&ve"
-msgstr "Roz&lišovať veľkosť písmen"
+msgstr "&A≠a"
 
 #: src/frontends/qt/ui/LyXFilesUi.ui:110
 msgid "The available language(s) of the selected file will be displayed here"
@@ -5106,6 +5105,34 @@ msgstr "Nahradiť každý výskyt naraz"
 msgid "Hide replace and option widgets"
 msgstr "Skryť widgety pre náhradu a iné voľby"
 
+#: src/frontends/qt/GuiSearch.cpp:233
+msgid "Active options:"
+msgstr "Aktívne možnosti:"
+
+#: src/frontends/qt/GuiSearch.cpp:236
+msgid "Case sensitive search"
+msgstr "Veľké a malé písmená sa pri hľadaní berú ako rozličné"
+
+#: src/frontends/qt/GuiSearch.cpp:242
+msgid "Whole words only"
+msgstr "Len zodpovedajúce celé slová"
+
+#: src/frontends/qt/GuiSearch.cpp:248
+msgid "Search only in selection"
+msgstr "Hľadať len vo vybranej oblasti"
+
+#: src/frontends/qt/GuiSearch.cpp:254
+msgid "Search as you type"
+msgstr "Vyhľadávať pri zadávaní"
+
+#: src/frontends/qt/GuiSearch.cpp:260
+msgid "Wrap search"
+msgstr "Cyklicky hľadať"
+
+#: src/frontends/qt/GuiSearch.cpp:268
+msgid "Click here to change search options"
+msgstr "Kliknite sem na zmenu volieb pre hľadanie"
+
 #: src/frontends/qt/ui/SearchUi.ui:96
 msgid "Rep&lace with:"
 msgstr "Nahrad&iť čím:"
@@ -5157,9 +5184,9 @@ msgstr "Nahradiť a nájsť ďalší výskyt (Enter, späť: Shift+Enter)"
 msgid "Treat uppercase/lowercase writing as distinct"
 msgstr "Veľkosť písmen je jednoznačná"
 
-#: src/frontends/qt/ui/SearchUi.ui:220
+#: src/frontends/qt/ui/SearchUi.ui:207
 msgid "&Case sensitive[[search]]"
-msgstr "R&ozlišovať veľkosť písmen"
+msgstr "&A≠a"
 
 #: src/frontends/qt/ui/SearchUi.ui:214
 msgid "Match whole words only"
@@ -5171,11 +5198,11 @@ msgstr "C&elé slová"
 
 #: src/frontends/qt/ui/SearchUi.ui:224
 msgid "Limit search and replace to selection"
-msgstr "Obmedziť hľadanie a náhradu na výber"
+msgstr "Obmedziť hľadanie a náhradu na vybranú oblasť"
 
-#: src/frontends/qt/ui/SearchUi.ui:221
+#: src/frontends/qt/GuiSearch.cpp:96 src/frontends/qt/ui/SearchUi.ui:227
 msgid "Selection onl&y"
-msgstr "&Len vo výbere"
+msgstr "&Len výber"
 
 #: src/frontends/qt/ui/SearchUi.ui:218
 msgid "If this is checked, LyX will search forward immediately"
@@ -5185,13 +5212,13 @@ msgstr "Keď zaškrtnuté, LyX bude okamžite dopredu hľadať"
 msgid "Search as yo&u type"
 msgstr "Vyhľadávať pri &zadávaní"
 
-#: src/frontends/qt/ui/SearchUi.ui:228
+#: src/frontends/qt/ui/SearchUi.ui:244
 msgid "If the end/start of the document is reached, automatically wrap around"
-msgstr "Dosiahnutím začiatku/konca dokumentu automaticky pretočiť"
+msgstr "Dosiahnutím začiatku/konca oblasti automaticky pretočiť"
 
-#: src/frontends/qt/ui/SearchUi.ui:231
+#: src/frontends/qt/GuiSearch.cpp:100 src/frontends/qt/ui/SearchUi.ui:247
 msgid "&Wrap"
-msgstr "Ob&tekať"
+msgstr "Pre&táčať"
 
 #: src/frontends/qt/ui/RefUi.ui:333 lib/ui/stdcontext.inc:106
 msgid "No Prefix"
@@ -31392,7 +31419,7 @@ msgstr "Re&gulárny výraz"
 
 #: src/frontends/qt/GuiCitation.cpp:113
 msgid "Case se&nsitive"
-msgstr "Roz&lišovať veľkosť písmen"
+msgstr "&A≠a"
 
 #: src/frontends/qt/GuiCitation.cpp:115
 msgid "Search as you &type"
@@ -32913,7 +32940,7 @@ msgstr "Protokolový súbor správy verzií nenájdený."
 
 #: src/frontends/qt/GuiLyXFiles.cpp:152
 msgid "Preferred &Language:"
-msgstr "Preferenčný &Jazyk:"
+msgstr "&Preferenčný Jazyk:"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:158 src/frontends/qt/GuiLyXFiles.cpp:587
 msgid "New File From Template"
