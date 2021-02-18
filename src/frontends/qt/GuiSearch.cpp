@@ -226,7 +226,7 @@ void GuiSearchWidget::handleIndicators()
 		if (pms > 0) {
 			int const gap = 3;
 			QPixmap tpixmap(pms * (bpixmap.width() + gap), bpixmap.height());
-			tpixmap.fill();
+			tpixmap.fill(Qt::transparent);
 			QPainter painter(&tpixmap);
 			int x = 0;
 			
@@ -263,9 +263,20 @@ void GuiSearchWidget::handleIndicators()
 				x += spixmap.width() + gap;
 			}
 			tip += "</ul>";
+			painter.end();
+			if (guiApp && guiApp->isInDarkMode()) {
+				QImage img = tpixmap.toImage();
+				img.invertPixels();
+				tpixmap.convertFromImage(img);
+			}
 			findLE_->setButtonPixmap(FancyLineEdit::Right, tpixmap);
 		} else {
 			tip = qt_("Click here to change search options");
+			if (guiApp && guiApp->isInDarkMode()) {
+				QImage img = bpixmap.toImage();
+				img.invertPixels();
+				bpixmap.convertFromImage(img);
+			}
 			findLE_->setButtonPixmap(FancyLineEdit::Right, bpixmap);
 		}
 	}
