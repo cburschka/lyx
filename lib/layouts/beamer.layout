@@ -666,12 +666,12 @@ End
 
 
 #
-# COLUMS
+# COLUMNS
 #
 
 Style Column
   Category         Columns
-  Margin           Static
+  Margin           Dynamic
   LatexType        Command
   LatexName        column
   ParSkip          0.5
@@ -689,7 +689,6 @@ Style Column
     LabelString    "Options"
     Tooltip        "Column options (see beamer manual)"
   EndArgument
-  LeftMargin       "Start column (increase depth!), width:xx"
   LabelFont
     Family         Roman
     Color          latex
@@ -699,16 +698,15 @@ End
 Style Columns
   Category         Columns
   KeepEmpty        1
-  Margin           Static
+  Margin           First_Dynamic
   LatexType        Environment
-  NextNoIndent     0
+  NextNoIndent     1
   ParIndent        MM
   Align            Left
   LabelType        Static
   LabelSep         xx
   LatexName        columns
   LabelString      "Columns"
-  LeftMargin       "Columnsxx"
   Argument 1
     LabelString    "Column Placement Options"
     Tooltip        "Column placement options (t, T, c, b)"
@@ -732,7 +730,6 @@ Style ColumnsCenterAligned
   CopyStyle        Columns
   LatexParam       [c]
   LabelString      "Columns (center aligned)"
-  LeftMargin       "Columns (center aligned)xx"
   ResetArgs        1
 End
 
@@ -740,7 +737,6 @@ Style ColumnsTopAligned
   CopyStyle        Columns
   LatexParam       [t]
   LabelString      "Columns (top aligned)"
-  LeftMargin       "Columns (top aligned)xx"
   ResetArgs        1
 End
 
