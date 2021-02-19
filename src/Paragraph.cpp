@@ -2562,7 +2562,7 @@ void Paragraph::latex(BufferParams const & bparams,
 						runparams);
 				runningChange = Change(Change::UNCHANGED);
 
-				os << "}] ";
+				os << (isEnvSeparator(i) ? "}]~" : "}] ");
 				column +=3;
 			}
 			// For InTitle commands, we have already opened a group
