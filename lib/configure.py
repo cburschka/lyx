@@ -1013,9 +1013,9 @@ def checkConverterEntries():
         xpath = 'none'
     global java
     if xsltproc != '':
-        addToRC('\\converter docbook5 epub "python $$s/scripts/docbook2epub.py none none \\"' + xsltproc + '\\" ' + xpath + ' $$i $$o" ""')
+        addToRC('\\converter docbook5 epub "python $$s/scripts/docbook2epub.py none none \\"' + xsltproc + '\\" ' + xpath + ' $$i $$r $$o" ""')
     elif java != '':
-        addToRC('\\converter docbook5 epub "python $$s/scripts/docbook2epub.py \\"' + java + '\\" none none ' + xpath + ' $$i $$o" ""')
+        addToRC('\\converter docbook5 epub "python $$s/scripts/docbook2epub.py \\"' + java + '\\" none none ' + xpath + ' $$i $$r $$o" ""')
     #
     checkProg('a MS Word Office Open XML converter -> LaTeX', ['pandoc -s -f docx -o $$o -t latex $$i'],
         rc_entry = [ r'\converter word2      latex      "%%"	""' ])

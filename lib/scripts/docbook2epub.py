@@ -9,7 +9,7 @@
 # Full author contact details are available in file CREDITS
 
 # Usage:
-#   python docbook2epub.py java_binary saxon_path xsltproc_path xslt_path in.docbook out.epub
+#   python docbook2epub.py java_binary saxon_path xsltproc_path xslt_path in.docbook in.orig.path out.epub
 
 from __future__ import print_function
 
@@ -26,13 +26,20 @@ def _parse_nullable_argument(arg):
     return arg if arg != '' and arg != 'none' else None
 
 
+class ImageRename:
+    def __init__(self, opf_path, local_path, epub_path):
+        self.opf_path = opf_path
+        self.local_path = local_path
+        self.epub_path = epub_path
+
+
 class DocBookToEpub:
     def __init__(self, args=None):
         if args is None:
             args = sys.argv
 
-        if len(args) != 7:
-            print('Seven arguments are expected, only %s found: %s.' % (len(args), args))
+        if len(args) != 8:
+            print('Exactly eight arguments are expected, only %s found: %s.' % (len(args), args))
             sys.exit(1)
 
         self.own_path = sys.argv[0]
@@ -41,7 +48,8 @@ class DocBookToEpub:
         self.xsltproc_path = _parse_nullable_argument(sys.argv[3])
         self.xslt_path = _parse_nullable_argument(sys.argv[4])
         self.input = sys.argv[5]
-        self.output = sys.argv[6]
+        self.input_path = sys.argv[6]
+        self.output = sys.argv[7]
         self.script_folder = os.path.dirname(self.own_path) + '/../'
 
         print('Generating ePub with the following parameters:')
@@ -51,6 +59,7 @@ class DocBookToEpub:
         print(self.xsltproc_path)
         print(self.xslt_path)
         print(self.input)
+        print(self.input_path)
         print(self.output)
 
         # Precompute paths that will be used later.
@@ -127,6 +136,21 @@ class DocBookToEpub:
 
         return images
 
+    def get_image_changes(self):
+        epub_folder = 'images/'
+
+        changes = []
+        for image in self.get_images_from_package_opf():
+            if os.path.exists(image):
+                file_system_path = image
+            elif os.path.exists(self.input_path + image):
+                file_system_path = self.input_path + image
+            else:
+                file_system_path = ''
+
+            changes.append(ImageRename(image, file_system_path, epub_folder + os.path.basename(image)))
+        return changes
+
     def change_image_paths(self, file):
         # This could be optimised, as the same operation is performed a zillion times on many files:
         # https://www.oreilly.com/library/view/python-cookbook/0596001673/ch03s15.html
@@ -135,8 +159,8 @@ class DocBookToEpub:
 
         with open(file, 'w', encoding='utf8') as f:
             for line in contents:
-                for (old, new) in self.renamed.items():
-                    line = line.replace(old, new)
+                for change in self.renamed:
+                    line = line.replace(change.opf_path, change.epub_path)
                 f.write(line)
 
     def copy_images(self):
@@ -144,8 +168,7 @@ class DocBookToEpub:
         # changed in the XHTML files. Typically, the current paths are absolute.
 
         # First, get the mapping old file => file in the ePub archive.
-        original_images = self.get_images_from_package_opf()
-        self.renamed = {img: 'images/' + os.path.basename(img) for img in original_images}
+        self.renamed = self.get_image_changes()
 
         # Then, transform all paths (both OPF and XHTML files).
         self.change_image_paths(self.output_dir + '/OEBPS/package.opf')
@@ -157,8 +180,8 @@ class DocBookToEpub:
             os.mkdir(self.output_dir + '/OEBPS/images/')
 
         # Finally, actually copy the image files.
-        for (old, new) in self.renamed.items():
-            shutil.copyfile(old, self.output_dir + '/OEBPS/' + new)
+        for change in self.renamed:
+            shutil.copyfile(change.local_path, self.output_dir + '/OEBPS/' + change.epub_path)
 
     def create_zip_archive(self):
         with zipfile.ZipFile(self.output, 'w', zipfile.ZIP_DEFLATED) as zip:
