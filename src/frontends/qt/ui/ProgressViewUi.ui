@@ -39,16 +39,16 @@
   </property>
   <layout class="QGridLayout">
    <property name="leftMargin">
-    <number>9</number>
+    <number>0</number>
    </property>
    <property name="topMargin">
-    <number>9</number>
+    <number>0</number>
    </property>
    <property name="rightMargin">
     <number>9</number>
    </property>
    <property name="bottomMargin">
-    <number>9</number>
+    <number>0</number>
    </property>
    <property name="spacing">
     <number>6</number>
@@ -86,7 +86,7 @@
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -94,16 +94,16 @@
       </attribute>
       <layout class="QGridLayout">
        <property name="leftMargin">
-        <number>9</number>
+        <number>0</number>
        </property>
        <property name="topMargin">
-        <number>9</number>
+        <number>0</number>
        </property>
        <property name="rightMargin">
-        <number>9</number>
+        <number>0</number>
        </property>
        <property name="bottomMargin">
-        <number>9</number>
+        <number>0</number>
        </property>
        <property name="spacing">
         <number>6</number>
@@ -121,6 +121,9 @@
            <width>16777215</width>
            <height>16777215</height>
           </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: </string>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -142,23 +145,23 @@
       <attribute name="title">
        <string>Settings</string>
       </attribute>
-      <layout class="QGridLayout" columnstretch="0,1">
+      <layout class="QGridLayout" columnstretch="0,0">
        <property name="leftMargin">
-        <number>9</number>
+        <number>0</number>
        </property>
        <property name="topMargin">
-        <number>9</number>
+        <number>0</number>
        </property>
        <property name="rightMargin">
-        <number>9</number>
+        <number>0</number>
        </property>
        <property name="bottomMargin">
-        <number>9</number>
+        <number>0</number>
        </property>
        <property name="spacing">
-        <number>6</number>
+        <number>0</number>
        </property>
-       <item row="0" column="1" rowspan="4">
+       <item row="0" column="1" rowspan="6">
         <widget class="QTreeWidget" name="debugMessagesTW">
          <property name="toolTip">
           <string>Select the debug messages that should be displayed</string>
@@ -170,7 +173,112 @@
          </column>
         </widget>
        </item>
-       <item row="3" column="0">
+       <item row="0" column="0">
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>9</number>
+         </property>
+         <property name="topMargin">
+          <number>9</number>
+         </property>
+         <property name="rightMargin">
+          <number>9</number>
+         </property>
+         <property name="bottomMargin">
+          <number>9</number>
+         </property>
+         <item>
+          <widget class="QCheckBox" name="sbarCB">
+           <property name="toolTip">
+            <string>Display statusbar messages?</string>
+           </property>
+           <property name="text">
+            <string>&amp;Statusbar messages</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="title">
+            <string>Debug messages</string>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+           <layout class="QGridLayout">
+            <property name="leftMargin">
+             <number>9</number>
+            </property>
+            <property name="topMargin">
+             <number>9</number>
+            </property>
+            <property name="rightMargin">
+             <number>9</number>
+            </property>
+            <property name="bottomMargin">
+             <number>9</number>
+            </property>
+            <property name="spacing">
+             <number>6</number>
+            </property>
+            <item row="0" column="2">
+             <widget class="QRadioButton" name="debugAnyRB">
+              <property name="toolTip">
+               <string>Display all debug messages</string>
+              </property>
+              <property name="text">
+               <string>&amp;All</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QRadioButton" name="debugSelectedRB">
+              <property name="toolTip">
+               <string>Display the debug messages selected to the right</string>
+              </property>
+              <property name="text">
+               <string>S&amp;elected</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QRadioButton" name="debugNoneRB">
+              <property name="toolTip">
+               <string>Display no debug messages</string>
+              </property>
+              <property name="text">
+               <string>&amp;None</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="autoClearCB">
+           <property name="toolTip">
+            <string>Automatic cleanup of the window before LaTeX compilation proceeds</string>
+           </property>
+           <property name="text">
+            <string>&amp;Clear automatically</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0" rowspan="5">
         <spacer>
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -185,92 +293,6 @@
           </size>
          </property>
         </spacer>
-       </item>
-       <item row="2" column="0">
-        <widget class="QCheckBox" name="autoClearCB">
-         <property name="toolTip">
-          <string>Automatic cleanup of the window before LaTeX compilation proceeds</string>
-         </property>
-         <property name="text">
-          <string>&amp;Clear automatically</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QGroupBox" name="groupBox">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="title">
-          <string>Debug messages</string>
-         </property>
-         <property name="flat">
-          <bool>true</bool>
-         </property>
-         <layout class="QGridLayout">
-          <property name="leftMargin">
-           <number>9</number>
-          </property>
-          <property name="topMargin">
-           <number>9</number>
-          </property>
-          <property name="rightMargin">
-           <number>9</number>
-          </property>
-          <property name="bottomMargin">
-           <number>9</number>
-          </property>
-          <property name="spacing">
-           <number>6</number>
-          </property>
-          <item row="0" column="0">
-           <widget class="QRadioButton" name="debugNoneRB">
-            <property name="toolTip">
-             <string>Display no debug messages</string>
-            </property>
-            <property name="text">
-             <string>&amp;None</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QRadioButton" name="debugSelectedRB">
-            <property name="toolTip">
-             <string>Display the debug messages selected to the right</string>
-            </property>
-            <property name="text">
-             <string>S&amp;elected</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2">
-           <widget class="QRadioButton" name="debugAnyRB">
-            <property name="toolTip">
-             <string>Display all debug messages</string>
-            </property>
-            <property name="text">
-             <string>&amp;All</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QCheckBox" name="sbarCB">
-         <property name="toolTip">
-          <string>Display statusbar messages?</string>
-         </property>
-         <property name="text">
-          <string>&amp;Statusbar messages</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
        </item>
       </layout>
      </widget>
