@@ -1850,7 +1850,7 @@ class MathInfo {
 
 void LatexInfo::buildEntries(bool isPatternString)
 {
-  static regex const rmath("(\\\\)*(\\$|\\\\\\[|\\\\\\]|\\\\(begin|end)\\{((eqnarray|equation|flalign|gather|multline|align|alignat)\\*?)\\})");
+  static regex const rmath("(\\\\)*(\\$|\\\\\\[|\\\\\\]|\\\\(begin|end)\\{((eqnarray|equation|flalign|gather|multline|align|x?x?alignat)\\*?\\})(\\{[0-9]+\\})?)");
   static regex const rkeys("(\\\\)*(\\$|\\\\\\[|\\\\\\]|\\\\((([a-zA-Z]+\\*?)(\\{([a-z]+\\*?)\\}|=[0-9]+[a-z]+)?)))");
   static bool disableLanguageOverride = false;
   smatch sub, submath;
@@ -1891,7 +1891,7 @@ void LatexInfo::buildEntries(bool isPatternString)
         math_end_waiting = false;
       }
       else if ((submath.str(3).compare("end") == 0) &&
-          (submath.str(4).compare(math_end) == 0)) {
+          (submath.str(5).compare(math_end) == 0)) {
         mi.insert(math_end, math_pos, math_prefix_size, pos, submath.str(2).length());
         math_end_waiting = false;
       }
@@ -1901,7 +1901,7 @@ void LatexInfo::buildEntries(bool isPatternString)
     else {
       if (submath.str(3).compare("begin") == 0) {
         math_end_waiting = true;
-        math_end = submath.str(4);
+        math_end = submath.str(5);
         math_pos = submath.position(size_t(2));
         math_prefix_size = submath.str(2).length();
       }
@@ -2029,6 +2029,13 @@ void LatexInfo::buildEntries(bool isPatternString)
 	if (removeMathHull) {
 	  interval_.addIntervall(found._tokenstart, found._tokenstart + mi.getPrefixSize());
 	  interval_.addIntervall(found._dataEnd - mi.getPostfixSize(), found._dataEnd);
+	}
+	else {
+	  // Treate all math constructs as simple math
+	  interval_.par[found._tokenstart] = '$';
+	  interval_.par[found._dataEnd - mi.getPostfixSize()] = '$';
+	  interval_.addIntervall(found._tokenstart + 1, found._tokenstart + mi.getPrefixSize());
+	  interval_.addIntervall(found._dataEnd - mi.getPostfixSize() + 1, found._dataEnd);
 	}
         evaluatingMath = true;
       }
