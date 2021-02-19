@@ -31,6 +31,8 @@
 
 #include <sstream>
 
+#include <iostream>
+
 using namespace std;
 using namespace lyx::support;
 
@@ -107,7 +109,7 @@ void InsetERT::docbook(XMLStream & xs, OutputParams const & runparams) const
             xs << XMLStream::ESCAPE_NONE << parXML;
 		auto p = pars.begin();
 		while (true) { // For each line of this ERT paragraph...
-			os << *p;
+            os << *p;
 			++p;
 			if (p != pars.end())
 				os << "\n";
@@ -129,10 +131,14 @@ void InsetERT::docbook(XMLStream & xs, OutputParams const & runparams) const
 //		auto lay = getLayout();
 //	}
 
-	// Output the ERT as a comment with the appropriate escaping.
-	xs << XMLStream::ESCAPE_NONE << "<!-- ";
-	xs << XMLStream::ESCAPE_COMMENTS << os.str();
-	xs << XMLStream::ESCAPE_NONE << " -->";
+	// Output the ERT as a comment with the appropriate escaping if the command is not recognised.
+	if (trim(os.str()) == from_ascii("\\textquotesingle")) {
+	    xs << "'";
+	} else {
+        xs << XMLStream::ESCAPE_NONE << "<!-- ";
+        xs << XMLStream::ESCAPE_COMMENTS << os.str();
+        xs << XMLStream::ESCAPE_NONE << " -->";
+    }
 }
 
 
