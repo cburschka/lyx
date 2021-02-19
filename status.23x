@@ -56,6 +56,10 @@ What's new
 
 - Fix tables in title.
 
+- Fix issue causing the coalesce of an empty description list item and an
+  immediately following nested itemize environment when loading documents
+  created with version 2.1 or earlier (bug 12148).
+
 
 * USER INTERFACE
 
