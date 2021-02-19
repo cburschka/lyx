@@ -98,7 +98,13 @@ void InsetERT::docbook(XMLStream & xs, OutputParams const & runparams) const
 	// in an ERT, use simple line breaks.
 	// New line after each paragraph of the ERT, save the last one.
 	while (true) { // For each paragraph in the ERT...
-		auto pars = par->simpleDocBookOnePar(buffer(), runparams, text().outerFont(distance(begin, par)), 0, false, true);
+        std::vector<docstring> pars_prepend;
+        std::vector<docstring> pars;
+        std::vector<docstring> pars_append;
+        tie(pars_prepend, pars, pars_append) = par->simpleDocBookOnePar(buffer(), runparams, text().outerFont(distance(begin, par)), 0, false, true);
+
+        for (docstring const & parXML : pars_prepend)
+            xs << XMLStream::ESCAPE_NONE << parXML;
 		auto p = pars.begin();
 		while (true) { // For each line of this ERT paragraph...
 			os << *p;
@@ -108,6 +114,8 @@ void InsetERT::docbook(XMLStream & xs, OutputParams const & runparams) const
 			else
 				break;
 		}
+        for (docstring const & parXML : pars_append)
+            xs << XMLStream::ESCAPE_NONE << parXML;
 
 		++par;
 		if (par != end)

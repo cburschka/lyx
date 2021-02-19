@@ -47,6 +47,7 @@
 
 #include "frontends/alert.h"
 
+#include "insets/InsetArgument.h"
 #include "insets/InsetBibitem.h"
 #include "insets/InsetLabel.h"
 #include "insets/InsetSpecialChar.h"
@@ -3419,35 +3420,55 @@ std::tuple<vector<xml::FontTag>, vector<xml::EndFontTag>> computeDocBookFontSwit
 } // anonymous namespace
 
 
-std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
+std::tuple<std::vector<docstring>, std::vector<docstring>, std::vector<docstring>>
+    Paragraph::simpleDocBookOnePar(Buffer const & buf,
                                                       OutputParams const & runparams,
                                                       Font const & outerfont,
                                                       pos_type initial,
                                                       bool is_last_par,
                                                       bool ignore_fonts) const
 {
-	// Track whether we have opened these tags
-	DocBookFontState fs;
-
-	Layout const & style = *d->layout_;
-	FontInfo font_old =
-			style.labeltype == LABEL_MANUAL ? style.labelfont : style.font;
-
-	string const default_family =
-			buf.masterBuffer()->params().fonts_default_family;
-
-	vector<xml::FontTag> tagsToOpen;
-	vector<xml::EndFontTag> tagsToClose;
-
+	std::vector<docstring> prependedParagraphs;
 	std::vector<docstring> generatedParagraphs;
-	DocBookFontState old_fs = fs;
+	std::vector<docstring> appendedParagraphs;
 	odocstringstream os;
-	auto * xs = new XMLStream(os); // XMLStream has no copy constructor: to create a new object, the only solution
-	// is to hold a pointer to the XMLStream (xs = XMLStream(os) is not allowed once the first object is built).
 
-	// When a font tag ends with a space, output it after the closing font tag. This requires to store delayed
-	// characters at some point.
-	std::vector<char_type> delayedChars;
+	// If there is an argument that must be output before the main tag, do it before handling the rest of the paragraph.
+	// Also tag all arguments that shouldn't go in the main content right now, so that they are never generated at the
+	// wrong place.
+	OutputParams rp = runparams;
+    for (pos_type i = initial; i < size(); ++i) {
+        if (getInset(i) && getInset(i)->lyxCode() == ARG_CODE) {
+            const InsetArgument * arg = getInset(i)->asInsetArgument();
+            if (arg->docbookargumentbeforemaintag()) {
+                auto xs_local = XMLStream(os);
+                arg->docbook(xs_local, rp);
+
+                prependedParagraphs.push_back(os.str());
+                os.str(from_ascii(""));
+
+                rp.docbook_prepended_arguments.insert(arg);
+            } else if (arg->docbookargumentaftermaintag()) {
+                rp.docbook_appended_arguments.insert(arg);
+            }
+        }
+    }
+
+    // State variables for the main loop.
+    auto xs = new XMLStream(os); // XMLStream has no copy constructor: to create a new object, the only solution
+    // is to hold a pointer to the XMLStream (xs = XMLStream(os) is not allowed once the first object is built).
+    std::vector<char_type> delayedChars; // When a font tag ends with a space, output it after the closing font tag.
+    // This requires to store delayed characters at some point.
+
+    DocBookFontState fs; // Track whether we have opened font tags
+    DocBookFontState old_fs = fs;
+
+    Layout const & style = *d->layout_;
+    FontInfo font_old = style.labeltype == LABEL_MANUAL ? style.labelfont : style.font;
+    string const default_family = buf.masterBuffer()->params().fonts_default_family;
+
+    vector<xml::FontTag> tagsToOpen;
+    vector<xml::EndFontTag> tagsToClose;
 
 	// Parsing main loop.
 	for (pos_type i = initial; i < size(); ++i) {
@@ -3511,8 +3532,13 @@ std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
 
         // Finally, write the next character or inset.
 		if (Inset const * inset = getInset(i)) {
-			if (!runparams.for_toc || inset->isInToc()) {
-				OutputParams np = runparams;
+		    bool inset_is_argument_elsewhere = getInset(i)->asInsetArgument() &&
+		            rp.docbook_appended_arguments.find(inset->asInsetArgument()) != rp.docbook_appended_arguments.end() &&
+		            rp.docbook_prepended_arguments.find(inset->asInsetArgument()) != rp.docbook_prepended_arguments.end();
+
+			if ((!rp.for_toc || inset->isInToc()) && !inset_is_argument_elsewhere) {
+			    // Arguments may need to be output
+				OutputParams np = rp;
 				np.local_font = &font;
 
 				// TODO: special case will bite here.
@@ -3520,7 +3546,7 @@ std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
 				inset->docbook(*xs, np);
 			}
 		} else {
-			char_type c = getUChar(buf.masterBuffer()->params(), runparams, i);
+			char_type c = getUChar(buf.masterBuffer()->params(), rp, i);
 			if (lyx::isSpace(c) && !ignore_fonts)
 				delayedChars.push_back(c);
 			else
@@ -3542,14 +3568,30 @@ std::vector<docstring> Paragraph::simpleDocBookOnePar(Buffer const & buf,
 
 	// In listings, new lines (i.e. \n characters in the output) are very important. Avoid generating one for the
 	// last line to get a clean output.
-	if (runparams.docbook_in_listing && !is_last_par)
+	if (rp.docbook_in_listing && !is_last_par)
 		*xs << xml::CR();
 
 	// Finalise the last (and most likely only) paragraph.
 	generatedParagraphs.push_back(os.str());
-	delete xs;
+    os.str(from_ascii(""));
+    delete xs;
 
-	return generatedParagraphs;
+    // If there is an argument that must be output after the main tag, do it after handling the rest of the paragraph.
+    for (pos_type i = initial; i < size(); ++i) {
+        if (getInset(i) && getInset(i)->lyxCode() == ARG_CODE) {
+            const InsetArgument * arg = getInset(i)->asInsetArgument();
+            if (arg->docbookargumentaftermaintag()) {
+                // Don't use rp, as this argument would not generate anything.
+                auto xs_local = XMLStream(os);
+                arg->docbook(xs_local, runparams);
+
+                appendedParagraphs.push_back(os.str());
+                os.str(from_ascii(""));
+            }
+        }
+    }
+
+	return std::tuple(prependedParagraphs, generatedParagraphs, appendedParagraphs);
 }
 
 

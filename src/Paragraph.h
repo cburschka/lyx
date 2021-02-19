@@ -204,7 +204,8 @@ public:
 	pos_type firstWordLyXHTML(XMLStream & xs, OutputParams const & runparams) const;
 
 	/// Outputs to stream the DocBook representation, one element per paragraph.
-	std::vector<docstring> simpleDocBookOnePar(Buffer const & buf,
+	std::tuple<std::vector<docstring>, std::vector<docstring>, std::vector<docstring>>
+	simpleDocBookOnePar(Buffer const & buf,
 							                   OutputParams const & runparams,
 							                   Font const & outerfont,
 							                   pos_type initial = 0,
