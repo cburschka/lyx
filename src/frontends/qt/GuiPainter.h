@@ -99,6 +99,15 @@ public:
 		int a1, int a2,
 		Color) override;
 
+	/// draw an ellipse
+	void ellipse(
+		double x, double y,
+		double rx, double ry,
+		Color,
+		fill_style fs = fill_none,
+		line_style ls = line_solid,
+		int lw = thin_line) override;
+
 	/// draw a pixel
 	void point(int x, int y, Color) override;
 

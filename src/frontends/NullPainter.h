@@ -53,6 +53,11 @@ public:
 	/// draw an arc
 	void arc(int, int, unsigned int, unsigned int, int, int, Color) override {}
 
+	/// draw an ellipse
+	void ellipse(double, double, double, double, Color,
+		fill_style = fill_none, line_style = line_solid,
+		int = thin_line) override {}
+
 	/// draw a pixel
 	void point(int, int, Color) override {}
 

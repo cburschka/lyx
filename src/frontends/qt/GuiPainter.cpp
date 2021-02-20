@@ -233,6 +233,25 @@ void GuiPainter::arc(int x, int y, unsigned int w, unsigned int h,
 }
 
 
+void GuiPainter::ellipse(double x, double y, double rx, double ry,
+	Color col, fill_style fs, line_style ls, int lw)
+{
+	QColor const color = computeColor(col);
+	setQPainterPen(color, ls, lw);
+	bool const do_antialiasing = renderHints() & TextAntialiasing;
+	setRenderHint(Antialiasing, do_antialiasing);
+	if (fs == fill_none) {
+		drawEllipse(QPointF(x, y), rx, ry);
+	} else {
+		QBrush const oldbrush = brush();
+		setBrush(QBrush(color));
+		drawEllipse(QPointF(x, y), rx, ry);
+		setBrush(oldbrush);
+	}
+	setRenderHint(Antialiasing, false);
+}
+
+
 void GuiPainter::image(int x, int y, int w, int h, graphics::Image const & i,
 		       bool const revert_in_darkmode)
 {

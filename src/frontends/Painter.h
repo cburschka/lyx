@@ -122,6 +122,11 @@ public:
 	virtual void arc(int x, int y, unsigned int w, unsigned int h,
 		int a1, int a2, Color) = 0;
 
+	/// draw an ellipse
+	virtual void ellipse(double x, double y, double rx, double ry, Color,
+		fill_style = fill_none, line_style = line_solid,
+		int line_width = thin_line) = 0;
+
 	/// draw a pixel
 	virtual void point(int x, int y, Color) = 0;
 

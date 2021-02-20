@@ -38,18 +38,15 @@ Inset * InsetMathDots::clone() const
 
 void InsetMathDots::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	dim = theFontMetrics(mi.base.font).dimension('M');
+	dim = theFontMetrics(mi.base.font).dimension('X');
 	dh_ = 0;
 	if (key_->name == "cdots" || key_->name == "dotsb"
 			|| key_->name == "dotsm" || key_->name == "dotsi")
 		dh_ = dim.asc / 2;
 	else if (key_->name == "dotsc")
 		dh_ = dim.asc / 4;
-	else if (key_->name == "vdots") {
-		dim.wid = (dim.wid / 2) + 1;
-		dh_ = dim.asc;
-	}
-	else if (key_->name == "ddots" || key_->name == "adots" || key_->name == "iddots")
+	else if (key_->name == "ddots" || key_->name == "adots"
+			|| key_->name == "iddots" || key_->name == "vdots")
 		dh_ = dim.asc;
 }
 
@@ -59,16 +56,10 @@ void InsetMathDots::draw(PainterInfo & pi, int x, int y) const
 	Dimension const dim = dimension(*pi.base.bv);
 	if (key_->name == "adots" || key_->name == "iddots")
 		--y;
+	else if (key_->name == "vdots")
+		x += (dim.width() - 2) / 2;
 	mathed_draw_deco(pi, x + 2, y - dh_, dim.width() - 2, dim.ascent(),
 			key_->name);
-	if (key_->name == "vdots" || key_->name == "ddots" || key_->name == "adots" || key_->name == "iddots")
-		++x;
-	if (key_->name == "adots" || key_->name == "iddots")
-		++y;
-	else if (key_->name != "vdots")
-		--y;
-	mathed_draw_deco(pi, x + 2, y - dh_, dim.width() - 2, dim.ascent(),
-		key_->name);
 }
 
 

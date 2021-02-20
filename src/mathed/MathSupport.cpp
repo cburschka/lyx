@@ -83,8 +83,8 @@ namespace {
 
 /*
  * Internal struct of a drawing: code n x1 y1 ... xn yn, where code is:
- * 0 = end, 1 = line, 2 = polyline, 3 = square line, 4 = square polyline
- * 5 = rounded thick line (i.e. dot for short line),
+ * 0 = end, 1 = line, 2 = polyline, 3 = square line, 4 = square polyline,
+ * 5 = ellipse with given center and horizontal and vertical radii,
  * 6 = shifted square polyline drawn at the other end
  */
 
@@ -333,50 +333,47 @@ double const hline[] = {
 
 
 double const dot[] = {
-//	1, 0.5, 0.2, 0.5, 0.2,
-//	1, 0.4, 0.4, 0.6, 0.4,
-//	1, 0.5, 0.5, 0.5, 0.5,
-	5, 0.4, 0.5, 0.6, 0.5,
+	5, 0.5, 0.5, 0.1, 0.1,
 	0
 };
 
 
 double const ddot[] = {
-	5, 0.1, 0.5, 0.3, 0.5,
-	5, 0.6, 0.5, 0.8, 0.5,
+	5, 0.2, 0.5, 0.1, 0.1,
+	5, 0.7, 0.5, 0.1, 0.1,
 	0
 };
 
 
 double const dddot[] = {
-	5, 0.0, 0.5, 0.2, 0.5,
-	5, 0.4, 0.5, 0.6, 0.5,
-	5, 0.8, 0.5, 1.0, 0.5,
+	5, 0.1, 0.5, 0.1, 0.1,
+	5, 0.5, 0.5, 0.1, 0.1,
+	5, 0.9, 0.5, 0.1, 0.1,
 	0
 };
 
 
 double const ddddot[] = {
-	5, -0.2, 0.5, 0.0, 0.5,
-	5,  0.2, 0.5, 0.4, 0.5,
-	5,  0.6, 0.5, 0.8, 0.5,
-	5,  1.0, 0.5, 1.2, 0.5,
+	5, -0.1, 0.5, 0.1, 0.1,
+	5,  0.3, 0.5, 0.1, 0.1,
+	5,  0.7, 0.5, 0.1, 0.1,
+	5,  1.1, 0.5, 0.1, 0.1,
 	0
 };
 
 
 double const hline3[] = {
-	1, 0.1,   0,  0.15,  0,
-	1, 0.475, 0,  0.525, 0,
-	1, 0.85,  0,  0.9,   0,
+	5, 0.15, 0.05, 0.0625, 0.0625,
+	5, 0.50, 0.05, 0.0625, 0.0625,
+	5, 0.85, 0.05, 0.0625, 0.0625,
 	0
 };
 
 
 double const dline3[] = {
-	1, 0.1,   0.1,   0.15,  0.15,
-	1, 0.475, 0.475, 0.525, 0.525,
-	1, 0.85,  0.85,  0.9,   0.9,
+	5, 0.25, 0.225, 0.0625, 0.0625,
+	5, 0.50, 0.475, 0.0625, 0.0625,
+	5, 0.75, 0.725, 0.0625, 0.0625,
 	0
 };
 
@@ -678,7 +675,7 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 
 	for (int i = 0; d[i]; ) {
 		int code = int(d[i++]);
-		if (code & 1) {  // code == 1 || code == 3 || code == 5
+		if (code == 1 || code == 3) {
 			double xx = d[i++];
 			double yy = d[i++];
 			double x2 = d[i++];
@@ -692,30 +689,19 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 				int(x + xx + 0.5), int(y + yy + 0.5),
 				int(x + x2 + 0.5), int(y + y2 + 0.5),
 				pi.base.font.color(), Painter::line_solid, lw);
-			if (code == 5) {  // thicker, but rounded
-				double const xa = x + xx + 0.5;
-				double const xb = x + x2 + 0.5;
-				double const ya = y + yy + 0.5;
-				double const yb = y + y2 + 0.5;
-				pi.pain.line(int(xa + 1), int(ya - 1),
-				             int(xb - 1), int(yb - 1),
-				             pi.base.font.color(),
-				             Painter::line_solid, lw);
-				pi.pain.line(int(xa + 1), int(ya + 1),
-				             int(xb - 1), int(yb + 1),
-				             pi.base.font.color(),
-				             Painter::line_solid, lw);
-				for (int k = 2; xa + k <= xb - k; k++) {
-					pi.pain.line(int(xa + k), int(ya - k),
-						     int(xb - k), int(yb - k),
-						     pi.base.font.color(),
-						     Painter::line_solid, lw);
-					pi.pain.line(int(xa + k), int(ya + k),
-						     int(xb - k), int(yb + k),
-						     pi.base.font.color(),
-						     Painter::line_solid, lw);
-				}
-			}
+		} else if (code == 5) {
+			double xx = d[i++];
+			double yy = d[i++];
+			double x2 = xx + d[i++];
+			double y2 = yy + d[i++];
+			mt.transform(xx, yy);
+			mt.transform(x2, y2);
+			double const xc = x + xx;
+			double const yc = y + yy;
+			double const rx = x2 - xx;
+			double const ry = y2 - yy;
+			pi.pain.ellipse(xc, yc, rx, ry,
+				pi.base.font.color(), Painter::fill_winding);
 		} else {
 			int xp[32];
 			int yp[32];
