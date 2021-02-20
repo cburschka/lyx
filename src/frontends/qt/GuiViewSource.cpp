@@ -359,7 +359,7 @@ void ViewSourceWidget::updateDefaultFormat(BufferView const & bv)
 
 void ViewSourceWidget::resizeEvent (QResizeEvent * event)
 {
-	QSize const & formSize = formLayout->sizeHint();
+	QSize const & formSize = gridLayout->sizeHint();
 	// minimize the size of the part that contains the buttons
 	if (width() * formSize.height() < height() * formSize.width()) {
 		layout_->setDirection(QBoxLayout::TopToBottom);
