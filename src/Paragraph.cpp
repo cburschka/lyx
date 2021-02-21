@@ -3591,7 +3591,7 @@ std::tuple<std::vector<docstring>, std::vector<docstring>, std::vector<docstring
         }
     }
 
-	return std::tuple(prependedParagraphs, generatedParagraphs, appendedParagraphs);
+	return std::make_tuple(prependedParagraphs, generatedParagraphs, appendedParagraphs);
 }
 
 
