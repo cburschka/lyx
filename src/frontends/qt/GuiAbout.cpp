@@ -335,7 +335,9 @@ GuiAbout::GuiAbout(GuiView & lv)
 					    Qt::SmoothTransformation));
 	d->ui.iconLA->setFixedWidth(iconsize);
 	d->ui.dirLibraryLA->setText(dirLibrary());
+	d->ui.dirLibraryLA->adjustSize();
 	d->ui.dirUserLA->setText(dirUser());
+	d->ui.dirUserLA->adjustSize();
 	d->ui.buildinfoTB->setText(buildinfo());
 	d->ui.releasenotesTB->setHtml(release_notes());
 	d->ui.releasenotesTB->setOpenExternalLinks(true);
