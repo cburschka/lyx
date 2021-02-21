@@ -109,7 +109,7 @@ void InsetERT::docbook(XMLStream & xs, OutputParams const & runparams) const
             xs << XMLStream::ESCAPE_NONE << parXML;
 		auto p = pars.begin();
 		while (true) { // For each line of this ERT paragraph...
-            os << *p;
+			os << *p;
 			++p;
 			if (p != pars.end())
 				os << "\n";
