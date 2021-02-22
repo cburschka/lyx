@@ -2020,10 +2020,21 @@ void TabWorkArea::updateTabTexts()
 			tab_text += "*";
 		QString tab_tooltip = it->abs();
 		if (buf.hasReadonlyFlag()) {
+#ifdef Q_OS_MAC
+			QLabel * readOnlyButton = new QLabel();
+			QIcon icon = QIcon(getPixmap("images/", "emblem-readonly", "svgz,png"));
+			readOnlyButton->setPixmap(icon.pixmap(QSize(16, 16)));
+			tabBar()->setTabButton(tab_index, QTabBar::RightSide, readOnlyButton);
+#else
 			setTabIcon(tab_index, QIcon(getPixmap("images/", "emblem-readonly", "svgz,png")));
+#endif
 			tab_tooltip = qt_("%1 (read only)").arg(tab_tooltip);
 		} else
+#ifdef Q_OS_MAC
+			tabBar()->setTabButton(tab_index, QTabBar::RightSide, 0);
+#else
 			setTabIcon(tab_index, QIcon());
+#endif
 		if (buf.notifiesExternalModification()) {
 			QString const warn = qt_("%1 (modified externally)");
 			tab_tooltip = warn.arg(tab_tooltip);
