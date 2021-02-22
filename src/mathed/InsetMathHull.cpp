@@ -480,13 +480,9 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	/* Compute \(above|below)displayskip
 	   true value in LaTeX is 10pt plus 2pt minus 5pt (in normal size at 10pt)
-	   We use the 'mean' value (12 + 5) / 2 = 8.5pt.
-	   FIXME: make this dependent of current size? (minor improvement)
-	   FIXME: if would be nice if this was not part of the inset, but
-	          just increased the row ascent/descent.
-	   FIXME: even better would be to handle the short skip case.
+	   But 12 pixels is what we are used to.
 	*/
-	int const bottom_display_margin = mi.base.inPixels(Length(8.5, Length::PT));
+	int const bottom_display_margin = 12;
 	int top_display_margin = bottom_display_margin;
 	// at start of paragraph, add an empty line
 	if (mi.vmode)
