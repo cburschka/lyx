@@ -602,6 +602,11 @@ GuiView::GuiView(int id)
 	// (such as "source" and "messages")
 	setDockOptions(QMainWindow::ForceTabbedDocks);
 
+#ifdef Q_OS_MAC
+	// use document mode tabs on docks
+	setDocumentMode(true);
+#endif
+
 	// For Drag&Drop.
 	setAcceptDrops(true);
 

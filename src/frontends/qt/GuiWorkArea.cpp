@@ -1470,41 +1470,9 @@ void EmbeddedWorkArea::disable()
 //
 ////////////////////////////////////////////////////////////////////
 
-#ifdef Q_OS_MAC
-class NoTabFrameMacStyle : public QProxyStyle {
-public:
-	///
-	QRect subElementRect(SubElement element, const QStyleOption * option,
-			     const QWidget * widget = 0) const
-	{
-		QRect rect = QProxyStyle::subElementRect(element, option, widget);
-		bool noBar = static_cast<QTabWidget const *>(widget)->count() <= 1;
-
-		// The Qt Mac style puts the contents into a 3 pixel wide box
-		// which looks very ugly and not like other Mac applications.
-		// Hence we remove this here, and moreover the 16 pixel round
-		// frame above if the tab bar is hidden.
-		if (element == QStyle::SE_TabWidgetTabContents) {
-			rect.adjust(- rect.left(), 0, rect.left(), 0);
-			if (noBar)
-				rect.setTop(0);
-		}
-
-		return rect;
-	}
-};
-
-NoTabFrameMacStyle noTabFrameMacStyle;
-#endif
-
-
 TabWorkArea::TabWorkArea(QWidget * parent)
 	: QTabWidget(parent), clicked_tab_(-1), midpressed_tab_(-1)
 {
-#ifdef Q_OS_MAC
-	setStyle(&noTabFrameMacStyle);
-#endif
-
 	QPalette pal = palette();
 	pal.setColor(QPalette::Active, QPalette::Button,
 		pal.color(QPalette::Active, QPalette::Window));
@@ -1544,6 +1512,10 @@ TabWorkArea::TabWorkArea(QWidget * parent)
 	        this, SLOT(closeTab(int)));
 
 	setUsesScrollButtons(true);
+#ifdef Q_OS_MAC
+	// use document mode tabs
+	setDocumentMode(true);
+#endif
 }
 
 
@@ -1634,7 +1606,16 @@ void TabWorkArea::showBar(bool show)
 {
 	tabBar()->setEnabled(show);
 	tabBar()->setVisible(show);
-	closeBufferButton->setVisible(show && lyxrc.single_close_tab_button);
+	if (documentMode()) {
+		// avoid blank corner widget when documentMode(true) is used
+		if (show && lyxrc.single_close_tab_button) {
+			setCornerWidget(closeBufferButton, Qt::TopRightCorner);
+			closeBufferButton->setVisible(true);
+		} else
+			// remove corner widget
+			setCornerWidget(nullptr);
+	} else
+		closeBufferButton->setVisible(show && lyxrc.single_close_tab_button);
 	setTabsClosable(!lyxrc.single_close_tab_button);
 }
 
