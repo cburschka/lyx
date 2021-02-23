@@ -480,9 +480,9 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	/* Compute \(above|below)displayskip
 	   true value in LaTeX is 10pt plus 2pt minus 5pt (in normal size at 10pt)
-	   But 12 pixels is what we are used to.
+	   But we use a fixed number of pixels and scale them with zoom.
 	*/
-	int const bottom_display_margin = 12;
+	int const bottom_display_margin = mi.base.bv->zoomedPixels(6);
 	int top_display_margin = bottom_display_margin;
 	// at start of paragraph, add an empty line
 	if (mi.vmode)
