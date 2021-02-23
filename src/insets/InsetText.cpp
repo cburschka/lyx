@@ -327,13 +327,14 @@ void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 			|| cmd.getArg(0) == insetName(lyxCode());
 
 		if (!main_inset && target_inset) {
+			UndoGroupHelper ugh(&buffer());
 			// Text::dissolveInset assumes that the cursor
 			// is inside the Inset.
-			if (&cur.inset() != this)
+			if (&cur.inset() != this) {
+				cur.recordUndo();
 				cur.pushBackward(*this);
-			cur.beginUndoGroup();
+			}
 			text_.dispatch(cur, cmd);
-			cur.endUndoGroup();
 		} else
 			cur.undispatched();
 		break;
