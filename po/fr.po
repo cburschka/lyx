@@ -363,7 +363,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2021-02-09 17:29+0100\n"
-"PO-Revision-Date: 2021-02-18 17:55+0100\n"
+"PO-Revision-Date: 2021-02-23 11:26+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -15362,7 +15362,7 @@ msgstr "Année"
 
 #: lib/layouts/moderncv.layout:435
 msgid "Degree or job title"
-msgstr ""
+msgstr "Niveau ou emploi"
 
 #: lib/layouts/moderncv.layout:445
 #, fuzzy
@@ -15385,7 +15385,7 @@ msgstr "Optionnel"
 
 #: lib/layouts/moderncv.layout:462
 msgid "Grade or other info"
-msgstr ""
+msgstr "Diplôme ou autre"
 
 #: lib/layouts/moderncv.layout:470
 msgid "Entry:"
@@ -16621,7 +16621,7 @@ msgstr "TitreSupplémentaire"
 
 #: lib/layouts/scrclass.inc:289
 msgid "Frontispiece"
-msgstr ""
+msgstr "Frontispice"
 
 #: lib/layouts/scrclass.inc:310
 msgid "Above"
@@ -18279,7 +18279,7 @@ msgstr ""
 
 #: lib/layouts/theorems-case.inc:12
 msgid "Case (Level 1)"
-msgstr ""
+msgstr "Cas (niveau 1)"
 
 #: lib/layouts/theorems-case.inc:13
 msgid "Case \\arabic{casei}."
@@ -18287,7 +18287,7 @@ msgstr "Cas \\arabic{casei}."
 
 #: lib/layouts/theorems-case.inc:16
 msgid "Case (Level 2)"
-msgstr ""
+msgstr "Cas (niveau 2)"
 
 #: lib/layouts/theorems-case.inc:18
 msgid "Case \\roman{caseii}."
@@ -18295,7 +18295,7 @@ msgstr "Cas \\arabic{caseii}."
 
 #: lib/layouts/theorems-case.inc:21
 msgid "Case (Level 3)"
-msgstr ""
+msgstr "Cas (niveau 3)"
 
 #: lib/layouts/theorems-case.inc:23
 msgid "Case \\alph{caseiii}."
@@ -18303,7 +18303,7 @@ msgstr "Cas \\alph{caseiii}."
 
 #: lib/layouts/theorems-case.inc:26
 msgid "Case (Level 4)"
-msgstr ""
+msgstr "Cas (niveau 4)"
 
 #: lib/layouts/theorems-case.inc:28
 msgid "Case \\arabic{caseiv}."
@@ -19359,11 +19359,11 @@ msgstr "Biolinum"
 
 #: lib/latexfonts:694
 msgid "Cantarell"
-msgstr ""
+msgstr "Cantarell"
 
 #: lib/latexfonts:705
 msgid "Chivo (Thin)"
-msgstr ""
+msgstr "Chivo (étroit))"
 
 #: lib/latexfonts:716
 #, fuzzy
@@ -19372,7 +19372,7 @@ msgstr "Iwona (Light)"
 
 #: lib/latexfonts:727
 msgid "Chivo"
-msgstr ""
+msgstr "Chivo"
 
 #: lib/latexfonts:737
 #, fuzzy
@@ -19403,7 +19403,7 @@ msgstr "Bera Sans"
 
 #: lib/latexfonts:787
 msgid "Fira Sans (Book)"
-msgstr ""
+msgstr "Fira Sans (Book)"
 
 #: lib/latexfonts:799
 #, fuzzy
@@ -19662,7 +19662,7 @@ msgstr "Times Roman (new TX)"
 
 #: lib/encodings:55
 msgid "Extended [ucs] (utf8x)"
-msgstr ""
+msgstr "Extended [ucs] (utf8x)"
 
 #: lib/encodings:59
 msgid "Armenian (ArmSCII8)"
@@ -19822,7 +19822,7 @@ msgstr "Coréen (EUC-KR)"
 
 #: lib/encodings:215
 msgid "Extended [CJK] (Chinese/Japanese/Korean)"
-msgstr ""
+msgstr "[CJK] étendu (ChinoisJaponais/Coréen)"
 
 #: lib/encodings:219
 msgid "Chinese (traditional) (EUC-TW)"
@@ -20923,7 +20923,7 @@ msgstr "Rechercher et remplacer (élaboré)..."
 
 #: lib/ui/stdmenus.inc:126
 msgid "Manage Counter Values..."
-msgstr ""
+msgstr "Gérer les valeurs des compteurs..."
 
 #: lib/ui/stdmenus.inc:130
 msgid "Table|T"
@@ -21687,10 +21687,13 @@ msgstr "Rejeter toutes les modifications|e"
 #: lib/ui/stdmenus.inc:586
 msgid "Accept All Changes (incl. Master/Children/Siblings)|p"
 msgstr ""
+"Accepter toutes les modifications (document/sous-document/apparentés inclus)|"
+"p"
 
 #: lib/ui/stdmenus.inc:587
 msgid "Reject All Changes (incl. Master/Children/Siblings)|j"
 msgstr ""
+"Rejeter toutes les modifications (document/sous-document/apparentés inclus)|j"
 
 #: lib/ui/stdmenus.inc:588
 msgid "Show Changes in Output|S"
@@ -26866,7 +26869,7 @@ msgstr "LaTeX (dviluatex)"
 
 #: lib/configure.py:756
 msgid "ePub"
-msgstr ""
+msgstr "ePub"
 
 #: lib/configure.py:757
 msgid "LaTeX (pLaTeX)"
@@ -28889,8 +28892,9 @@ msgid "button background (broken reference)"
 msgstr "fond du bouton d'insert (pointé)"
 
 #: src/Color.cpp:300
+#, fuzzy
 msgid "button frame (broken reference)"
-msgstr ""
+msgstr "bouton de cadre (référence cassée)"
 
 #: src/Color.cpp:301
 #, fuzzy
@@ -29338,6 +29342,10 @@ msgid ""
 "Undefined references or citations were found during the build.\n"
 "Please check the warnings in the LaTeX log (Document > LaTeX Log)."
 msgstr ""
+" Des références ou des citations indéfinies ont été trouvées lors de la "
+"compilation.\n"
+"Veuillez vérifier les avertissements dans le journal LaTeX (Document > "
+"Fichier journal)."
 
 #: src/Converter.cpp:893
 #, c-format
@@ -29699,7 +29707,7 @@ msgstr "Exécution de MakeIndex pour le paquetage nomencl."
 
 #: src/LaTeX.cpp:1114
 msgid "(NOTE: The erroneous command is in the preamble)"
-msgstr ""
+msgstr "(Nota : la commande incorrecte est dans le préambule)"
 
 #: src/LaTeX.cpp:1606 src/LaTeX.cpp:1612 src/LaTeX.cpp:1621
 msgid "BibTeX error: "
@@ -30989,7 +30997,7 @@ msgstr "Étiquettes et références"
 
 #: src/TocBackend.cpp:294
 msgid "Broken References and Citations"
-msgstr ""
+msgstr "Références et citations cassées"
 
 #: src/TocBackend.cpp:296 src/frontends/qt/GuiDocument.cpp:1763
 msgid "Child Documents"
@@ -31010,7 +31018,7 @@ msgstr "Entrées de la liste des symboles"
 
 #: src/VCBackend.cpp:64
 msgid "Perhaps the RCS package is not installed on your system?"
-msgstr ""
+msgstr "Le paquetage RCS n'est peut-être pas installé sur votre système."
 
 #: src/VCBackend.cpp:65 src/VCBackend.cpp:874 src/VCBackend.cpp:879
 #: src/VCBackend.cpp:928 src/VCBackend.cpp:987 src/VCBackend.cpp:1046
@@ -32019,7 +32027,7 @@ msgstr "S&upp. touche"
 
 #: src/frontends/qt/GuiChanges.cpp:78
 msgid " on[[date]] %1"
-msgstr ""
+msgstr "le %1"
 
 #: src/frontends/qt/GuiChanges.cpp:80
 #, fuzzy
@@ -32390,7 +32398,7 @@ msgstr "Unicode (CJK) (utf8)"
 
 #: src/frontends/qt/GuiDocument.cpp:986
 msgid "Traditional (auto-selected)"
-msgstr ""
+msgstr "Traditionnel (auto-sélection)"
 
 #: src/frontends/qt/GuiDocument.cpp:989
 #, fuzzy
@@ -32409,7 +32417,7 @@ msgstr "Utiliser l'encodage global du document."
 
 #: src/frontends/qt/GuiDocument.cpp:1002
 msgid "Standard Unicode support by the ``inputenc'' package."
-msgstr ""
+msgstr "Support standard Unicode via le paquetage « inputenc »"
 
 #: src/frontends/qt/GuiDocument.cpp:1005
 msgid ""
@@ -32417,12 +32425,17 @@ msgid ""
 "characters to LaTeX macros. For use with non-TeX fonts (XeTeX/LuaTeX) or "
 "custom preamble code."
 msgstr ""
+"Utiliser UTF-8 tel quel : ne charger aucun paquetage auxiliaire, ne "
+"convertir aucun caractère en macro LaTeX,. À utiliser avec des polices non-"
+"TeX (XeTeX/LuaTeX) ou un préambule adapté."
 
 #: src/frontends/qt/GuiDocument.cpp:1010
 msgid ""
 "Load ``inputenc'' with option 'utf8x' for extended Unicode support by the "
 "``ucs'' package."
 msgstr ""
+"Charger « inputenc » avec l'option « utf8x » pour obtenir Unicode étendu par "
+"le paquetage « ucs »."
 
 #: src/frontends/qt/GuiDocument.cpp:1014
 msgid "Language Default (no inputenc)"
@@ -32433,12 +32446,17 @@ msgid ""
 "Use the traditional default encoding of the text language. Switch encoding "
 "if a text part is set to a language with different default."
 msgstr ""
+"Utiliser l'encodage traditionnel implicite de la langue du texte. Basculer "
+"l'encodage si une langue avec un réglage implicite différent est affectée à "
+"une partie de texte."
 
 #: src/frontends/qt/GuiDocument.cpp:1020
 msgid ""
 "Do not load the 'inputenc' package. Switch encoding if required but do not "
 "write input encoding switch commands to the source."
 msgstr ""
+"Ne pas charger le paquetage « inputenc ». Changer d'encodage si demandé mais "
+"ne pas écrire de commandes de changement d'encodage dans le code source."
 
 #: src/frontends/qt/GuiDocument.cpp:1134
 msgid "10"
@@ -32738,12 +32756,16 @@ msgstr "Valeurs implicites du paquetage"
 #: src/frontends/qt/GuiDocument.cpp:2090 src/frontends/qt/GuiDocument.cpp:2176
 msgid "If no value is given, the defaults as set by the class are used."
 msgstr ""
+"En l'absence de valeur, les réglages implicites de la classe seront utilisés."
 
 #: src/frontends/qt/GuiDocument.cpp:2091 src/frontends/qt/GuiDocument.cpp:2177
 msgid ""
 "If no value is given, the defaults as set by the geometry package or a "
 "package/class overriding geometry's defaults are used."
 msgstr ""
+"En l'absence de valeur, les réglages implicites sont fixés par le paquetage "
+"« geometry » ou par un paquetage ou une classe écrasant les réglages "
+"implicites de geometry."
 
 #: src/frontends/qt/GuiDocument.cpp:2220 src/frontends/qt/GuiDocument.cpp:2250
 msgid "&Default..."
@@ -32751,7 +32773,7 @@ msgstr "&Implicite..."
 
 #: src/frontends/qt/GuiDocument.cpp:2451
 msgid "Direct (No inputenc)"
-msgstr ""
+msgstr "Direct (pas de inputenc)"
 
 #: src/frontends/qt/GuiDocument.cpp:2453
 #, fuzzy
@@ -34660,16 +34682,16 @@ msgstr "Commande non autorisée si aucun document n'est ouvert"
 
 #: src/frontends/qt/GuiView.cpp:2008
 msgid "Invalid argument of master-buffer-forall"
-msgstr ""
+msgstr "Argument invalide pour la commande master-buffer-forall"
 
 #: src/frontends/qt/GuiView.cpp:2126
 msgid "Function toolbar-set requires two arguments!"
-msgstr ""
+msgstr "La fonction toolbar-set nécessite deux arguments !"
 
 #: src/frontends/qt/GuiView.cpp:2133
 #, c-format
 msgid "Invalid argument \"%1$s\" to function toolbar-set!"
-msgstr ""
+msgstr "Argument \"%1$s\" invalide pour la fonction toolbar-set !"
 
 #: src/frontends/qt/GuiView.cpp:2149 src/frontends/qt/GuiView.cpp:2162
 #: src/frontends/qt/GuiView.cpp:2179
@@ -35119,7 +35141,7 @@ msgstr "Revenir à la sauvegarde du document ?"
 
 #: src/frontends/qt/GuiView.cpp:4238
 msgid "Buffer export reset."
-msgstr ""
+msgstr "RaZ exportation du tampon."
 
 #: src/frontends/qt/GuiView.cpp:4261
 msgid "Saving all documents..."
@@ -35336,7 +35358,7 @@ msgstr "Suivi des modifications"
 
 #: src/frontends/qt/Menus.cpp:1426
 msgid "[[Toolbar]]Automatic|A"
-msgstr ""
+msgstr "Automatique|A"
 
 #: src/frontends/qt/Menus.cpp:1438
 msgid "Other Toolbars"
@@ -35515,7 +35537,7 @@ msgstr ""
 
 #: src/frontends/qt/qt_helpers.cpp:280
 msgid "Invalid URL"
-msgstr ""
+msgstr "URL invalide"
 
 #: src/frontends/qt/qt_helpers.cpp:281
 #, fuzzy, c-format
@@ -35529,7 +35551,7 @@ msgstr "URL inaccessible"
 #: src/frontends/qt/qt_helpers.cpp:288
 #, c-format
 msgid "The URL `%1$s' could not be opened although it exists!"
-msgstr ""
+msgstr "L'URL `%1$s' n'a pu être ouvert bien qu'il existe !"
 
 #: src/frontends/qt/qt_helpers.cpp:312
 #, fuzzy
@@ -35539,7 +35561,7 @@ msgstr "Le script `%1$s' a échoué."
 #: src/frontends/qt/qt_helpers.cpp:315
 #, c-format
 msgid "No file was found using the pattern `%1$s'."
-msgstr ""
+msgstr "Aucun fichier trouvé via le filtre `%1$s'."
 
 #: src/frontends/qt/qt_helpers.cpp:321
 #, fuzzy, c-format
@@ -35657,7 +35679,7 @@ msgstr "Options : "
 
 #: src/insets/InsetBibtex.cpp:277
 msgid "[BIBLIOGRAPHY DELETED!]"
-msgstr ""
+msgstr "[BIBLIOGRAPHIE EFFACÉE]"
 
 #: src/insets/InsetBibtex.cpp:350
 msgid ""
@@ -35846,11 +35868,11 @@ msgstr ""
 
 #: src/insets/InsetCounter.cpp:62
 msgid "Set counter to ..."
-msgstr ""
+msgstr "Positionner le compteur à ..."
 
 #: src/insets/InsetCounter.cpp:63
 msgid "Increase counter by ..."
-msgstr ""
+msgstr "Incrémenter le compteur de ..."
 
 #: src/insets/InsetCounter.cpp:64
 #, fuzzy
@@ -35863,7 +35885,7 @@ msgstr "Enregistrer la valeur courante du compteur"
 
 #: src/insets/InsetCounter.cpp:66
 msgid "Restore saved counter value"
-msgstr ""
+msgstr "Restaurer la valeur enregistrée du compteur"
 
 #: src/insets/InsetCounter.cpp:142
 #, fuzzy
@@ -35898,7 +35920,7 @@ msgstr "Police : %1$s"
 #: src/insets/InsetCounter.cpp:225
 #, c-format
 msgid "Set value of counter %1$s to %2$s"
-msgstr ""
+msgstr "Positionner le compteur %1$s à %2$s"
 
 #: src/insets/InsetCounter.cpp:229
 #, fuzzy, c-format
@@ -35908,7 +35930,7 @@ msgstr "Impossible d'insérer le document %1$s"
 #: src/insets/InsetCounter.cpp:230
 #, c-format
 msgid "Add %1$s to value of counter %2$s"
-msgstr ""
+msgstr "Ajouter %1$s à la valeur du compteur %2$s"
 
 #: src/insets/InsetCounter.cpp:233
 #, fuzzy, c-format
@@ -35918,7 +35940,7 @@ msgstr "Police : %1$s"
 #: src/insets/InsetCounter.cpp:234
 #, c-format
 msgid "Reset value of counter %1$s"
-msgstr ""
+msgstr "RaZ compteur %1$s"
 
 #: src/insets/InsetCounter.cpp:237
 #, fuzzy, c-format
@@ -35928,7 +35950,7 @@ msgstr "Police : %1$s"
 #: src/insets/InsetCounter.cpp:238
 #, c-format
 msgid "Save value of counter %1$s"
-msgstr ""
+msgstr "Enregistrer le compteur %1$s"
 
 #: src/insets/InsetCounter.cpp:241
 #, fuzzy, c-format
@@ -35938,7 +35960,7 @@ msgstr "Document exporté en tant que %1$s"
 #: src/insets/InsetCounter.cpp:242
 #, c-format
 msgid "Restore value of counter %1$s"
-msgstr ""
+msgstr "Restaurer le compteur %1$s"
 
 #: src/insets/InsetExternal.cpp:404
 #, c-format
@@ -36049,6 +36071,11 @@ msgid ""
 " has attempted to include itself.\n"
 "The document set will not work properly until this is fixed!"
 msgstr ""
+"Le fichier\n"
+"%1$s\n"
+"a tenté de s'auto-inclure.\n"
+"Le document de fonctionnera pas correctement tant que cette erreur n'est pas "
+"résolue !"
 
 #: src/insets/InsetInclude.cpp:531
 #, fuzzy
@@ -36085,7 +36112,7 @@ msgstr ""
 #: src/insets/InsetInclude.cpp:569
 #, c-format
 msgid "[INCLUDED FILE %1$s DELETED!]"
-msgstr ""
+msgstr "[FICHIER INCLUS %1$s EFFACÉ !]"
 
 #: src/insets/InsetInclude.cpp:801
 #, c-format
@@ -37049,14 +37076,16 @@ msgid ""
 "Change tracking information for tabular row/column is incomplete. I will "
 "ignore this."
 msgstr ""
+"L'information de suivi de modifications pour les lignes/colonnes de tableau "
+"est incomplète. Elle sera ignorée."
 
 #: src/insets/InsetTabular.cpp:5590
 msgid "Column movement not supported with multi-columns."
-msgstr ""
+msgstr "Déplacement de colonne non implanté pour les colonnes multiples."
 
 #: src/insets/InsetTabular.cpp:5608
 msgid "Row movement not supported with multi-rows."
-msgstr ""
+msgstr "Déplacement de ligne non implanté pour les lignes multiples."
 
 #: src/insets/InsetTabular.cpp:6110
 msgid "Selection size should match clipboard content."
@@ -37331,7 +37360,7 @@ msgstr "Mode d'édition « expression régulière »"
 #: src/mathed/InsetMathNest.cpp:1934
 #, c-format
 msgid "Cannot apply %1$s here."
-msgstr ""
+msgstr "Impossible d'appliquer %1$s ici."
 
 #: src/mathed/InsetMathRef.cpp:348
 msgid "Standard[[mathref]]"
