@@ -64,10 +64,7 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 
 	// The filter bar
 	filter_ = new FancyLineEdit(this);
-	filter_->setButtonPixmap(FancyLineEdit::Right, getPixmap("images/", "editclear", "svgz,png"));
-	filter_->setButtonVisible(FancyLineEdit::Right, true);
-	filter_->setButtonToolTip(FancyLineEdit::Right, qt_("Clear text"));
-	filter_->setAutoHideButton(FancyLineEdit::Right, true);
+	filter_->setClearButton(true);
 	filter_->setPlaceholderText(qt_("All avail. databases"));
 
 	filterBarL->addWidget(filter_, 0);

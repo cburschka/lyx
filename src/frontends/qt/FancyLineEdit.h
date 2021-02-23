@@ -71,6 +71,9 @@ public:
 	explicit FancyLineEdit(QWidget *parent = 0);
 	~FancyLineEdit() {}
 
+	/// Set a button to clear contents
+	void setClearButton(bool visible);
+
 	QPixmap buttonPixmap(Side side) const;
 	void setButtonPixmap(Side side, const QPixmap &pixmap);
 

@@ -1656,10 +1656,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(modulesChanged()));
 	// The filter bar
 	filter_ = new FancyLineEdit(this);
-	filter_->setButtonPixmap(FancyLineEdit::Right, getPixmap("images/", "editclear", "svgz,png"));
-	filter_->setButtonVisible(FancyLineEdit::Right, true);
-	filter_->setButtonToolTip(FancyLineEdit::Right, qt_("Clear text"));
-	filter_->setAutoHideButton(FancyLineEdit::Right, true);
+	filter_->setClearButton(true);
 	filter_->setPlaceholderText(qt_("All avail. modules"));
 	modulesModule->moduleFilterBarL->addWidget(filter_, 0);
 	modulesModule->findModulesLA->setBuddy(filter_);
