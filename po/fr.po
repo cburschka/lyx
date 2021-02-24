@@ -363,7 +363,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2021-02-09 17:29+0100\n"
-"PO-Revision-Date: 2021-02-23 19:08+0100\n"
+"PO-Revision-Date: 2021-02-24 18:44+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -13613,7 +13613,7 @@ msgid ""
 msgstr ""
 "Ajouter un environnement pour les paragraphes avec renfoncement. Un "
 "paragraphe avec renfoncement est un paragraphe dans lequel la première ligne "
-"est au fer à gauche, alors que les autres lignes présentent un retrait."
+"est alignée à gauche, alors que les autres lignes présentent un retrait."
 
 #: lib/layouts/hanging.module:17
 msgid "Hanging"
@@ -20221,7 +20221,7 @@ msgstr "Modifier le fichier inclus...|s"
 
 #: lib/ui/stdcontext.inc:323 lib/ui/stdmenus.inc:468
 msgid "New Page|N"
-msgstr "Saut de page (fer en haut)|g"
+msgstr "Saut de page (calé en haut)|é"
 
 #: lib/ui/stdcontext.inc:324 lib/ui/stdmenus.inc:469
 msgid "Page Break|a"
@@ -20241,7 +20241,7 @@ msgstr "Saut de page impaire|u"
 
 #: lib/ui/stdcontext.inc:334 lib/ui/stdmenus.inc:465
 msgid "Ragged Line Break|R"
-msgstr "Passage à la ligne (fer à gauche)|l"
+msgstr "Passage à la ligne (aligné à gauche)|l"
 
 #: lib/ui/stdcontext.inc:335 lib/ui/stdmenus.inc:466
 msgid "Justified Line Break|J"
@@ -21274,7 +21274,7 @@ msgstr "Hyperlien...|l"
 
 #: lib/ui/stdmenus.inc:400
 msgid "Footnote|F"
-msgstr "Note de bas de page|b"
+msgstr "Note de bas de page|d"
 
 #: lib/ui/stdmenus.inc:401
 msgid "Marginal Note|M"
@@ -21434,7 +21434,7 @@ msgstr "Séparation de ligature|a"
 
 #: lib/ui/stdmenus.inc:464
 msgid "Optional Line Break|B"
-msgstr "Passage à la ligne optionnel|P"
+msgstr "Passage à la ligne optionnel|à"
 
 #: lib/ui/stdmenus.inc:478
 msgid "Display Formula|D"
@@ -35107,7 +35107,7 @@ msgstr "Supprimer du dictionnaire personnel|s"
 
 #: src/frontends/qt/Menus.cpp:901
 msgid "Switch Language...|L"
-msgstr "Changer de langue...|C"
+msgstr "Changer de langue...|g"
 
 #: src/frontends/qt/Menus.cpp:915
 msgid "Language|L"
@@ -36677,7 +36677,7 @@ msgstr "marge"
 
 #: src/insets/InsetNewpage.cpp:239 src/insets/InsetNewpage.cpp:249
 msgid "New Page"
-msgstr "Saut de page (fer en haut)"
+msgstr "Saut de page (calé en haut)"
 
 #: src/insets/InsetNewpage.cpp:241
 msgid "Page Break"
