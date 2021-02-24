@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-02-18 09:14+0100\n"
-"PO-Revision-Date: 2021-02-18 08:50+0000\n"
+"POT-Creation-Date: 2021-02-24 13:50+0100\n"
+"PO-Revision-Date: 2021-02-24 12:54+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -10004,9 +10004,9 @@ msgstr "Číslo pauzy"
 msgid "Number of slide where the context below the pause gets visible"
 msgstr "Číslo tej fólie kde sa kontext pod pauzou stane viditeľným"
 
-#: lib/layouts/beamer.layout:771 lib/layouts/powerdot.layout:537
+#: lib/layouts/beamer.layout:767 lib/layouts/powerdot.layout:537
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
-msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
+msgstr "– – – – – – – – – – – – – –"
 
 #: lib/layouts/beamer.layout:780 lib/layouts/beamer.layout:819
 msgid "Overprint"
@@ -31124,12 +31124,6 @@ msgstr "Nastavenia záznamu bibliografie"
 msgid "BibTeX Bibliography"
 msgstr "BibTeX bibliografia"
 
-#: src/frontends/qt/GuiBibtex.cpp:69 src/frontends/qt/GuiCitation.cpp:103
-#: src/frontends/qt/GuiDocument.cpp:1661 src/frontends/qt/GuiLyXFiles.cpp:191
-#: src/frontends/qt/GuiRef.cpp:61 src/frontends/qt/PanelStack.cpp:79
-msgid "Clear text"
-msgstr "Text vyprázdniť"
-
 #: src/frontends/qt/GuiBibtex.cpp:71
 msgid "All avail. databases"
 msgstr "Všetky dostupné databázy"
@@ -37074,6 +37068,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Clear text"
+#~ msgstr "Text vyprázdniť"
 
 #~ msgid "Fi&nd:"
 #~ msgstr "Ná&jsť:"
