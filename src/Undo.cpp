@@ -464,7 +464,6 @@ void Undo::Private::doTextUndoOrRedo(CursorData & cur, UndoElementStack & stack,
 		ErrorList el;
 		cap::switchBetweenClasses(olddc, buffer_.params().documentClassPtr(),
 			static_cast<InsetText &>(buffer_.inset()), el);
-		LATTEST(el.empty());
 	} else if (dit.inMathed()) {
 		// We stored the full cell here as there is not much to be
 		// gained by storing just 'a few' paragraphs (most if not
