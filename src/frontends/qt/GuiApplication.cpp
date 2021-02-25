@@ -63,6 +63,7 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
+#include "support/environment.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/ForkedCalls.h"
@@ -178,6 +179,19 @@ frontend::Application * createApplication(int & argc, char * argv[])
 #if defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
 	// On Windows, allow bringing the LyX window to top
 	AllowSetForegroundWindow(ASFW_ANY);
+#endif
+
+#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
+    // Attribute Qt::AA_EnableHighDpiScaling must be set before QCoreApplication is created
+    if (getEnv("QT_ENABLE_HIGHDPI_SCALING").empty()
+		&& getEnv("QT_AUTO_SCREEN_SCALE_FACTOR").empty())
+        QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
+#endif
+
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+    // HighDPI scale factor policy must be set before QGuiApplication is created
+    if (getEnv("QT_SCALE_FACTOR_ROUNDING_POLICY").empty())
+        QApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
 #endif
 
 	frontend::GuiApplication * guiApp = new frontend::GuiApplication(argc, argv);
