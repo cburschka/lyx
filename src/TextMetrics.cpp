@@ -30,6 +30,7 @@
 #include "MetricsInfo.h"
 #include "ParagraphParameters.h"
 #include "RowPainter.h"
+#include "Session.h"
 #include "Text.h"
 #include "TextClass.h"
 #include "VSpace.h"
@@ -1857,6 +1858,9 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 	if (text_->isRTL(pit))
 		swap(pi.leftx, pi.rightx);
 
+	BookmarksSection::BookmarkPosList bpl =
+		theSession().bookmarks().bookmarksInPar(bv_->buffer().fileName(), pm.par().id());
+
 	for (size_t i = 0; i != nrows; ++i) {
 
 		Row const & row = pm.rows()[i];
@@ -1945,6 +1949,11 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		rp.paintText();
 		rp.paintTooLargeMarks(row_x + row.left_x() < 0,
 				      row_x + row.right_x() > bv_->workWidth());
+		// indicate bookmarks presence in margin
+		for (auto const & bp_p : bpl)
+			if (bp_p.second >= row.pos() && bp_p.second < row.endpos())
+				rp.paintBookmark(bp_p.first);
+
 		y += row.descent();
 
 #if 0

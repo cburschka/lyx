@@ -228,6 +228,8 @@ enum ColorCode {
 	Color_paragraphmarker,
 	/// Preview frame color
 	Color_previewframe,
+	/// Bookmark indicator color
+	Color_bookmark,
 
 	// Logical attributes
 

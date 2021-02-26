@@ -69,6 +69,8 @@ public:
 	RowList const & rows() const { return rows_; }
 	///
 	int rightMargin(BufferView const & bv) const;
+	///
+	Paragraph const & par() const { return *par_; }
 
 	/// dump some information to lyxerr
 	void dump() const;

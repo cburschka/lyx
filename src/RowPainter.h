@@ -44,6 +44,7 @@ public:
 	void paintText();
 	void paintOnlyInsets();
 	void paintSelection() const;
+	void paintBookmark(int num) const;
 
 private:
 	void paintLanguageMarkings(Row::Element const & e) const;

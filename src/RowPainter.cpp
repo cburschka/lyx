@@ -627,7 +627,18 @@ void RowPainter::paintSelection() const
 		pi_.pain.fillRectangle(int(x), y1,
 		                       int(xo_ + tm_.width()) - int(x), y2 - y1,
 		                       Color_selection);
+}
 
+
+void RowPainter::paintBookmark(int num) const
+{
+	int const x = row_.isRTL()
+		? pi_.base.bv->workWidth() - pi_.base.bv->rightMargin() : 0;
+	FontInfo fi = pi_.base.bv->buffer().params().getFont().fontInfo();
+	fi.setColor(Color_bookmark);
+	// ❶ U+2776 DINGBAT NEGATIVE CIRCLED DIGIT ONE
+	char_type const ch = 0x2775 + num;
+	pi_.pain.text(x, yo_, ch, fi);
 }
 
 
