@@ -3,27 +3,24 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin unavailable
+\origin /systemlyxdir/examples/ru/Modules/
 \textclass scrartcl
 \begin_preamble
-% if pdflatex is used
-\usepackage{ifpdf}
-
-
 \@ifpackageloaded{babel}{
  % increase link area for cross-references and autoname them,
  \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
- \@ifundefined{extrasenglish}{\usepackage[english]{babel}}{}
- \addto\extrasenglish{%
+ \@ifundefined{extrasrussian}{\usepackage[russian]{babel}}{}
+ \addto\extrasrussian{%
   \renewcommand*{\equationautorefname}[1]{}%
-  \renewcommand{\sectionautorefname}{sec.\negthinspace}%
-  \renewcommand{\subsectionautorefname}{sec.\negthinspace}%
-  \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}%
+  \renewcommand{\sectionautorefname}{разд.\negthinspace}%
+  \renewcommand{\subsectionautorefname}{разд.\negthinspace}%
+  \renewcommand{\subsubsectionautorefname}{разд.\negthinspace}%
  }
 }{}
-% Added by lyx2lyx
-\setlength{\parskip}{\medskipamount}
-\setlength{\parindent}{0pt}
+
+% Use serif font
+\addtokomafont{disposition}{\rmfamily}
+\addtokomafont{descriptionlabel}{\rmfamily}
 \end_preamble
 \options BCOR8mm, most, usenames, dvipsnames
 \use_default_options false
@@ -32,12 +29,12 @@ tcolorbox
 \end_modules
 \maintain_unincluded_children no
 \language russian
-\language_package \usepackage[english,russian,shorthands=off]{babel}
+\language_package default
 \inputencoding utf8
 \fontencoding auto
 \font_roman "default" "default"
-\font_sans "PTSans-TLF" "default"
-\font_typewriter "PTMono-TLF" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -47,7 +44,7 @@ tcolorbox
 \font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
-\use_microtype false
+\use_microtype true
 \use_dash_ligatures false
 \graphics default
 \default_output_format default
@@ -66,7 +63,7 @@ tcolorbox
 \pdf_bookmarks true
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
-\pdf_bookmarksopenlevel 3
+\pdf_bookmarksopenlevel 2
 \pdf_breaklinks false
 \pdf_pdfborder true
 \pdf_colorlinks true
@@ -103,8 +100,8 @@ tcolorbox
 \end_index
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation indent
-\paragraph_indentation default
+\paragraph_separation skip
+\defskip halfline
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style russian
@@ -113,7 +110,7 @@ tcolorbox
 \papersides 1
 \paperpagestyle default
 \tablestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \change_bars false
 \postpone_fragile_content false
@@ -139,7 +136,7 @@ Uwe Stöhr
 status collapsed
 
 \begin_layout Plain Layout
-Перевод: Геннадий Чернышев, редактирование и обновление: Юрий Скалько.
+Перевод: Геннадий Чернышев, редактирование: Юрий Скалько.
 \end_layout
 
 \end_inset
@@ -158,11 +155,9 @@ LatexCommand tableofcontents
 
 \begin_layout Standard
 С модулем 
-\family sans
-\shape italic
+\emph on
 Красивые цветные блоки
-\family default
-\shape default
+\emph default
  у вас появляется возможность создания огромного разнообразия цветных блоков.
  Они особенно полезны для презентаций или учебных текстов, где вы можете,
  например, выделить результаты или форму\SpecialChar softhyphen
@@ -183,11 +178,11 @@ tcolorbox
  Поэтому \SpecialChar LyX
  может предоставить доступ только к его основным функциям.
  Более продвинутые возможности и примеры можно почерпнуть в руководстве
- 
+ по 
 \series bold
 tcolorbox
 \series default
-, 
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "tcolorbox"
@@ -204,12 +199,10 @@ literal "true"
 
 \begin_layout Standard
 Сначала загрузите модуль 
-\family sans
-\shape italic
+\emph on
 Красивые цветные блоки
-\family default
-\shape default
- в настройках документа файла.
+\emph default
+ в настройках документа.
 \end_layout
 
 \begin_layout Standard
@@ -287,7 +280,7 @@ status open
 
 \begin_layout Standard
 По умолчанию он имеет рамку с закругленными углами и занимает всю ширину
- текста, может содержать несколько абзацев и математику.
+ текста, может содержать несколько абзацев и формулы.
 \end_layout
 
 \begin_layout Standard
@@ -374,14 +367,12 @@ reference "subsec:Vertical"
 \end_layout
 
 \begin_layout Standard
-Подстраивающийся цветной блок вставляется через меню
-\begin_inset Newline newline
-\end_inset
-
-
+Подстраивающийся цветной блок вставляется через меню 
 \family sans
 Вставка\SpecialChar menuseparator
+\SpecialChar allowbreak
 Пользовательская вставка\SpecialChar menuseparator
+\SpecialChar allowbreak
 Подстраивающийся цветной блок
 \family default
 .
@@ -393,7 +384,7 @@ reference "subsec:Vertical"
  уменьшается или увеличивается, чтобы соответствовать указанной ши\SpecialChar softhyphen
 рине и
  высоте блока.
- Как указать ширину и высоту, описано в разделе 
+ Как указать ширину и высоту, описано в 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Geometry"
@@ -401,7 +392,7 @@ reference "subsec:Geometry"
 \end_inset
 
 .
- Если ширина и высота не указаны, результатом будет квадратное блок, занимающий
+ Если ширина и высота не указаны, результатом будет квадратный блок, занимающий
  всю доступную ширину страницы.
  Если указана только ширина, результат — также квадратный блок.
 \end_layout
@@ -477,8 +468,8 @@ cm.
 \end_layout
 
 \begin_layout Standard
-Примеры показывают, что текст внутри блока будет уменьшен до размера поля,
- но не увеличен.
+Примеры показывают, что текст внутри блока может быть уменьшен до размера
+ поля, но не увеличен.
 \end_layout
 
 \begin_layout Subsubsection
@@ -488,19 +479,13 @@ cm.
 \begin_layout Standard
 Пользовательский цветной блок вставляется через меню 
 \family sans
-
-\begin_inset Newline newline
-\end_inset
-
 Вставка\SpecialChar menuseparator
+\SpecialChar allowbreak
 Пользовательская вставка\SpecialChar menuseparator
+\SpecialChar allowbreak
 Пользовательский цветной блок №
 \family default
-, 
-\begin_inset Newline newline
-\end_inset
-
-где 
+, где 
 \family sans
 №
 \family default
@@ -526,11 +511,8 @@ reference "subsec:General"
 \begin_layout Standard
 Чтобы добавить заголовок в блок, выполните: 
 \family sans
-
-\begin_inset Newline newline
-\end_inset
-
 Вставка\SpecialChar menuseparator
+\SpecialChar allowbreak
 Настройки цветного блока
 \family default
 , введите 
@@ -637,9 +619,9 @@ name "subsec:Box-parts"
 Содержимое блока можно разделить на верхнюю и нижнюю части с помощью окружения
  
 \family sans
-Разделитель цветных блоков
+Разделитель цветного блока
 \family default
- в комбинированном списке выбора окру\SpecialChar softhyphen
+ в выпадающем списке выбора окру\SpecialChar softhyphen
 жений \SpecialChar LyX
  (в подсписке 
 \family sans
@@ -874,11 +856,7 @@ reference "subsec:Enhanced"
 .
  Тогда можно использовать параметр блока 
 \family typewriter
-segmentation style=
-\begin_inset Newline linebreak
-\end_inset
-
-{команды}
+segmentation style={команды}
 \family default
 , где 
 \family typewriter
@@ -897,7 +875,7 @@ Library skins
 \series bold
 tcolorbox
 \series default
-, 
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "tcolorbox"
@@ -1112,10 +1090,10 @@ name "subsec:General"
 Чтобы каждый раз не записывать команды блока, вы можете использовать окружение
  
 \family sans
-Настройка цветного блока
+Настройки цветного блока
 \family default
 .
- Оно вставляется через комбинированный список выбора окружений \SpecialChar LyX
+ Оно вставляется через выпадающий список выбора окружений \SpecialChar LyX
 .
  В нем можно занести все параметры, которые должны применяться для 
 \shape italic
@@ -1147,12 +1125,10 @@ cm.
 В большинстве документов требуется несколько типов блоков, и все блоки одного
  типа должны выглядеть одинаково.
  Для этого в модуле 
-\family sans
-\shape italic
+\emph on
 Красивые цветные блоки
-\family default
-\shape default
- предопределено 5 различных типов, которые вы можете настроить.
+\emph default
+ предопределено 5 различных типов, которые вы можете настраивать.
  Чтобы изменить их внешний вид, используйте окружение 
 \family sans
 Новый тип цветного блока
@@ -1190,7 +1166,7 @@ right color=yellow!50!white}
 \end_layout
 
 \begin_layout Standard
-Во врезке 
+Во вставке 
 \family sans
 Имя
 \family default
@@ -1206,7 +1182,11 @@ cBoxA
 \family typewriter
 cBoxB
 \family default
- — типа 2 и т.д.).
+ — типа 2 и т.
+\begin_inset space \thinspace{}
+\end_inset
+
+д.).
  Поскольку вы хотите настроить каждый блок этого типа, например, каждый
  блок должен иметь собственный заголовок, вам требуется один аргумент.
  Поэтому добавьте 
@@ -1230,11 +1210,11 @@ status open
 Примечание.
 
 \series default
- Если вы используете аргумент, 
+ Если вы используете аргумент, то нужно обязательно добавить вставку 
 \family sans
 Значение по умолчанию
 \family default
- также должно быть вставлено, но с пустым значением!
+, но оставить ее пустой!
 \end_layout
 
 \end_inset
@@ -1318,12 +1298,12 @@ title=Пользовательский блок
 \begin_inset Newline newline
 \end_inset
 
-предположим, что требуется тип блока, который можно пронумеровать; вставляем
+предположим, что требуется тип блока, который можно пронумеровать; добавляем
  
 \family typewriter
 auto counter, number within=section 
 \family default
-во вкладку 
+во вставку 
 \family sans
 Настройки нового блока
 \family default
@@ -1827,7 +1807,7 @@ Library
 
 skins
 \family default
-, 
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "tcolorbox"
@@ -2673,7 +2653,7 @@ tcbox raise=смещение
 \family typewriter
 смещение
 \family default
- — это цифровое значение такого смещения.
+ — это числовое значение такого смещения.
  Допустимые единицы измерения для смещений перечислены в Приложении
 \begin_inset space ~
 \end_inset
@@ -2692,8 +2672,8 @@ tcbox raise=0pt
 \family typewriter
 tcbox raise base
 \family default
- блок размещается так, чтобы основание содержимого блока совпадало с основанием
- окружающей строки.
+ блок размещается так, чтобы базисная линия содержимого блока совпадала
+ с базисной линией окружающей строки.
 \end_layout
 
 \begin_layout Standard
@@ -2786,7 +2766,7 @@ cm
 
 \end_inset
 
-...
+......
 \end_layout
 
 \begin_layout Subsubsection
@@ -2952,7 +2932,7 @@ tcolorbox
 \family sans
 Library raster
 \family default
-, 
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "tcolorbox"
@@ -7373,7 +7353,11 @@ Shadow Option Keys
 \series bold
 tcolorbox
 \series default
-, 
+
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "tcolorbox"
@@ -7494,7 +7478,7 @@ Generic Shadows
 \series bold
 tcolorbox
 \series default
-, 
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "tcolorbox"
