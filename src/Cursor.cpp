@@ -2037,20 +2037,39 @@ bool Cursor::mathForward(bool word)
 					posForward();
 				while (pos() < lastpos() && mc == nextMath().mathClass());
 		} else if (openable(nextAtom())) {
+			InsetMathScript const * n = nextMath().asScriptInset();
+			bool to_brace_deco = n
+				&& n->nuc().back()->lyxCode() == MATH_DECORATION_CODE
+				&& n->nuc().back()->mathClass() == MC_OP;
 			// single step: try to enter the next inset
 			pushBackward(nextMath());
 			inset().idxFirst(*this);
+			// Make sure the cursor moves directly to an
+			// \overbrace or \underbrace inset (bug 2264)
+			if (to_brace_deco) {
+				pushBackward(nextMath());
+				inset().idxFirst(*this);
+			}
 		} else
 			posForward();
 		return true;
 	}
 	if (inset().idxForward(*this))
 		return true;
+	InsetMath const * m = inset().asInsetMath();
+	bool from_brace_deco = m
+		&& m->lyxCode() == MATH_DECORATION_CODE
+		&& m->mathClass() == MC_OP;
 	// try to pop forwards --- but don't pop out of math! leave that to
 	// the FINISH lfuns
 	int s = depth() - 2;
-	if (s >= 0 && operator[](s).inset().asInsetMath())
-		return popForward();
+	if (s >= 0 && operator[](s).inset().asInsetMath() && popForward()) {
+		// Make sure the cursor moves directly to an
+		// \overbrace or \underbrace inset (bug 2264)
+		bool to_script = inset().asInsetMath()
+			&& inset().asInsetMath()->asScriptInset();
+		return from_brace_deco && to_script ? mathForward(word) : true;
+	}
 	return false;
 }
 
@@ -2072,21 +2091,41 @@ bool Cursor::mathBackward(bool word)
 				while (pos() > 0 && mc == prevMath().mathClass());
 			}
 		} else if (openable(prevAtom())) {
+			InsetMathScript const * p = prevMath().asScriptInset();
+			bool to_brace_deco = p
+				&& p->nuc().back()->lyxCode() == MATH_DECORATION_CODE
+				&& p->nuc().back()->mathClass() == MC_OP;
 			// single step: try to enter the preceding inset
 			posBackward();
 			push(nextMath());
 			inset().idxLast(*this);
+			// Make sure the cursor moves directly to an
+			// \overbrace or \underbrace inset (bug 2264)
+			if (to_brace_deco) {
+				posBackward();
+				push(nextMath());
+				inset().idxLast(*this);
+			}
 		} else
 			posBackward();
 		return true;
 	}
 	if (inset().idxBackward(*this))
 		return true;
+	InsetMath const * m = inset().asInsetMath();
+	bool from_brace_deco = m
+		&& m->lyxCode() == MATH_DECORATION_CODE
+		&& m->mathClass() == MC_OP;
 	// try to pop backwards --- but don't pop out of math! leave that to
 	// the FINISH lfuns
 	int s = depth() - 2;
-	if (s >= 0 && operator[](s).inset().asInsetMath())
-		return popBackward();
+	if (s >= 0 && operator[](s).inset().asInsetMath() && popBackward()) {
+		// Make sure the cursor moves directly to an
+		// \overbrace or \underbrace inset (bug 2264)
+		bool to_script = inset().asInsetMath()
+			&& inset().asInsetMath()->asScriptInset();
+		return from_brace_deco && to_script ? mathBackward(word) : true;
+	}
 	return false;
 }
 
