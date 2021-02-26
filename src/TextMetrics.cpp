@@ -30,7 +30,6 @@
 #include "MetricsInfo.h"
 #include "ParagraphParameters.h"
 #include "RowPainter.h"
-#include "Session.h"
 #include "Text.h"
 #include "TextClass.h"
 #include "VSpace.h"
@@ -880,10 +879,6 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 {
 	LATTEST(row.empty());
 	Paragraph const & par = text_->getPar(row.pit());
-	Buffer const & buf = text_->inset().buffer();
-	BookmarksSection::BookmarkPosList bpl =
-		theSession().bookmarks().bookmarksInPar(buf.fileName(), par.id());
-
 	pos_type const end = par.size();
 	pos_type const pos = row.pos();
 	pos_type const body_pos = par.beginOfBody();
@@ -910,23 +905,7 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 	// or the end of the par, then build a representation of the row.
 	pos_type i = pos;
 	FontIterator fi = FontIterator(*this, par, row.pit(), pos);
-	// The real stopping condition is a few lines below.
-	while (true) {
-		// Firstly, check whether there is a bookmark here.
-		for (auto const & bp_p : bpl)
-			if (bp_p.second == i) {
-				Font f = *fi;
-				f.fontInfo().setColor(Color_bookmark);
-				// ❶ U+2776 DINGBAT NEGATIVE CIRCLED DIGIT ONE
-				char_type const ch = 0x2775 + bp_p.first;
-				row.addVirtual(i, docstring(1, ch), f, Change());
-			}
-
-		// The stopping condition is here so that the display of a
-		// bookmark can take place at paragraph start too.
-		if (i >= end || (i != pos && row.width() > width))
-			break;
-
+	while (i < end && (i == pos || row.width() <= width)) {
 		char_type c = par.getChar(i);
 		// The most special cases are handled first.
 		if (par.isInset(i)) {
@@ -1020,7 +999,9 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 		// in the paragraph.
 		Font f(text_->layoutFont(row.pit()));
 		f.fontInfo().setColor(Color_paragraphmarker);
-		f.setLanguage(par.getParLanguage(buf.params()));
+		BufferParams const & bparams
+			= text_->inset().buffer().params();
+		f.setLanguage(par.getParLanguage(bparams));
 		// ¶ U+00B6 PILCROW SIGN
 		row.addVirtual(end, docstring(1, char_type(0x00B6)), f, change);
 	}

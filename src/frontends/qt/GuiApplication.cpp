@@ -2192,7 +2192,6 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	case LFUN_BOOKMARK_CLEAR:
 		theSession().bookmarks().clear();
-		dr.screenUpdate(Update::Force);
 		break;
 
 	case LFUN_DEBUG_LEVEL_SET:

@@ -262,12 +262,6 @@ public:
 	*/
 	BookmarkList & load() { return bookmarks; }
 
-	///
-	typedef std::vector<std::pair<unsigned int, pos_type>> BookmarkPosList;
-
-	/// return a list of bookmarks and position for this paragraph
-	BookmarkPosList bookmarksInPar(support::FileName const & fn, int par_id) const;
-
 private:
 
 	/// allow 9 regular bookmarks, bookmark 0 is temporary

@@ -1472,7 +1472,6 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 
 	case LFUN_BOOKMARK_SAVE:
-		dr.screenUpdate(Update::Force);
 		saveBookmark(convert<unsigned int>(to_utf8(cmd.argument())));
 		break;
 
