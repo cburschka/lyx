@@ -450,10 +450,8 @@ void Undo::Private::doUndoRedoAction(CursorData & cur, UndoElementStack & stack,
 		otherstack.top().bparams = new BufferParams(buffer_.params());
 		DocumentClassConstPtr olddc = buffer_.params().documentClassPtr();
 		buffer_.params() = *undo.bparams;
-		// The error list is not supposed to be helpful here.
-		ErrorList el;
 		cap::switchBetweenClasses(olddc, buffer_.params().documentClassPtr(),
-			static_cast<InsetText &>(buffer_.inset()), el);
+			static_cast<InsetText &>(buffer_.inset()));
 	} else if (dit.inMathed()) {
 		// We stored the full cell here as there is not much to be
 		// gained by storing just 'a few' paragraphs (most if not

@@ -627,10 +627,9 @@ void Buffer::cloneWithChildren(BufferMap & bufmap, CloneList_ptr clones) const
 	// The clone needs its own DocumentClass, since running updateBuffer() will
 	// modify it, and we would otherwise be sharing it with the original Buffer.
 	buffer_clone->params().makeDocumentClass(true);
-	ErrorList el;
 	cap::switchBetweenClasses(
 			params().documentClassPtr(), buffer_clone->params().documentClassPtr(),
-			static_cast<InsetText &>(buffer_clone->inset()), el);
+			static_cast<InsetText &>(buffer_clone->inset()));
 
 	bufmap[this] = buffer_clone;
 	clones->insert(buffer_clone);
@@ -672,10 +671,9 @@ Buffer * Buffer::cloneBufferOnly() const {
 	// The clone needs its own DocumentClass, since running updateBuffer() will
 	// modify it, and we would otherwise be sharing it with the original Buffer.
 	buffer_clone->params().makeDocumentClass(true);
-	ErrorList el;
 	cap::switchBetweenClasses(
 			params().documentClassPtr(), buffer_clone->params().documentClassPtr(),
-			static_cast<InsetText &>(buffer_clone->inset()), el);
+			static_cast<InsetText &>(buffer_clone->inset()));
 
 	clones->insert(buffer_clone);
 	buffer_clone->d->clone_list_ = clones;

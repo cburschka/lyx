@@ -2164,9 +2164,8 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		DocumentClassConstPtr olddc = defaults.params().documentClassPtr();
 		int const unknown_tokens = defaults.readHeader(lex);
 		DocumentClassConstPtr newdc = defaults.params().documentClassPtr();
-		ErrorList el;
 		InsetText & theinset = static_cast<InsetText &>(defaults.inset());
-		cap::switchBetweenClasses(olddc, newdc, theinset, el);
+		cap::switchBetweenClasses(olddc, newdc, theinset);
 
 		if (unknown_tokens != 0) {
 			lyxerr << "Warning in LFUN_BUFFER_SAVE_AS_DEFAULT!\n"

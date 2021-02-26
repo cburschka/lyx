@@ -407,10 +407,9 @@ void Compare::run()
 	// new buffer with the document class from wherever they came from.
 	// So we need to reset the document class of all the paragraphs.
 	// See bug #10295.
-	ErrorList el;
 	cap::switchBetweenClasses(
 			olddc, dest_buffer->params().documentClassPtr(),
-			static_cast<InsetText &>(dest_buffer->inset()), el);
+			static_cast<InsetText &>(dest_buffer->inset()));
 
 	finished(pimpl_->abort_);
 }
