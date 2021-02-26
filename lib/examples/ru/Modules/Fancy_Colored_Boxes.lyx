@@ -1,0 +1,7555 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 606
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrartcl
+\begin_preamble
+% if pdflatex is used
+\usepackage{ifpdf}
+
+
+\@ifpackageloaded{babel}{
+ % increase link area for cross-references and autoname them,
+ \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
+ \@ifundefined{extrasenglish}{\usepackage[english]{babel}}{}
+ \addto\extrasenglish{%
+  \renewcommand*{\equationautorefname}[1]{}%
+  \renewcommand{\sectionautorefname}{sec.\negthinspace}%
+  \renewcommand{\subsectionautorefname}{sec.\negthinspace}%
+  \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}%
+ }
+}{}
+% Added by lyx2lyx
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+\end_preamble
+\options BCOR8mm, most, usenames, dvipsnames
+\use_default_options false
+\begin_modules
+tcolorbox
+\end_modules
+\maintain_unincluded_children no
+\language russian
+\language_package \usepackage[english,russian,shorthands=off]{babel}
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "PTSans-TLF" "default"
+\font_typewriter "PTMono-TLF" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command bibtex
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Description of the module tcolorbox"
+\pdf_author "Uwe Stöhr"
+\pdf_subject "fancy colored boxes"
+\pdf_keywords "LyX, tcolorbox, colored boxes"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 3
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false, urlbordercolor={1 0 0}"
+\papersize a4
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 0
+\use_minted 0
+\use_lineno 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style russian
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes true
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Цветные блоки
+\end_layout
+
+\begin_layout Author
+автор: 
+\lang ngerman
+Uwe Stöhr
+\lang russian
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Перевод: Геннадий Чернышев, редактирование и обновление: Юрий Скалько.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+С модулем 
+\family sans
+\shape italic
+Красивые цветные блоки
+\family default
+\shape default
+ у вас появляется возможность создания огромного разнообразия цветных блоков.
+ Они особенно полезны для презентаций или учебных текстов, где вы можете,
+ например, выделить результаты или форму\SpecialChar softhyphen
+лы.
+ В этом документе описывается, как эти блоки используются с \SpecialChar LyX
+.
+\end_layout
+
+\begin_layout Standard
+Красивые блоки генерируются \SpecialChar LaTeX
+-пакетом 
+\series bold
+tcolorbox
+\series default
+.
+ Этот пакет имеет так много функций, что руководство по их использованию
+ превышает 400 страниц.
+ Поэтому \SpecialChar LyX
+ может предоставить доступ только к его основным функциям.
+ Более продвинутые возможности и примеры можно почерпнуть в руководстве
+ 
+\series bold
+tcolorbox
+\series default
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tcolorbox"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Подготовка
+\end_layout
+
+\begin_layout Standard
+Сначала загрузите модуль 
+\family sans
+\shape italic
+Красивые цветные блоки
+\family default
+\shape default
+ в настройках документа файла.
+\end_layout
+
+\begin_layout Standard
+Добавьте следующие параметры к параметрам класса документа в настройках
+ документа:
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+most, usenames, dvipsnames
+\end_layout
+
+\begin_layout Standard
+Параметр 
+\family typewriter
+most
+\family default
+ загружает большинство библиотек LaTeX-пакета 
+\series bold
+tcolorbox
+\series default
+.
+ Параметры 
+\family typewriter
+usenames
+\family default
+, 
+\family typewriter
+dvipsnames
+\family default
+ загружают дополнительные цвета, список см.
+ в приложении C в руководстве 
+\shape italic
+Встроенные объекты
+\shape default
+.
+\end_layout
+
+\begin_layout Section
+Основы
+\end_layout
+
+\begin_layout Subsection
+Типы блоков
+\end_layout
+
+\begin_layout Subsubsection
+Статический (стандартный) блок
+\end_layout
+
+\begin_layout Standard
+Статический цветной блок вставляется в документ посредством меню 
+\family sans
+Вставка\SpecialChar menuseparator
+Пользовательская вставка\SpecialChar menuseparator
+Цветной блок
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Это статический цветной блок: 
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+Базовый цветной блок.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+По умолчанию он имеет рамку с закругленными углами и занимает всю ширину
+ текста, может содержать несколько абзацев и математику.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Примечание.
+
+\series default
+ Блок может содержать принудительные разрывы страниц, но они будут проигнорирова
+ны.
+ О том, как получить разрывные блоки, см.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Beakable-boxes"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Динамический блок
+\end_layout
+
+\begin_layout Standard
+Динамический цветной блок вставляется через меню 
+\family sans
+Вставка\SpecialChar menuseparator
+Пользовательская вставка\SpecialChar menuseparator
+Динамический цветной блок
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Это динамический цветной блок: 
+\begin_inset Flex Dynamic Color Box
+status open
+
+\begin_layout Plain Layout
+Динамический цветной блок.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+В отличие от статических блоков, динамические блоки не могут иметь частей,
+ см.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Box-parts"
+
+\end_inset
+
+, и их нельзя сделать разрывными, но можно задать их вертикальное расположение,
+ см.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Vertical"
+
+\end_inset
+
+.
+ Ширина динамических блоков, по умолчанию, равна ширине их содержимого.
+\end_layout
+
+\begin_layout Subsubsection
+Подстраивающийся блок
+\end_layout
+
+\begin_layout Standard
+Подстраивающийся цветной блок вставляется через меню
+\begin_inset Newline newline
+\end_inset
+
+
+\family sans
+Вставка\SpecialChar menuseparator
+Пользовательская вставка\SpecialChar menuseparator
+Подстраивающийся цветной блок
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Подстраивающиеся блоки — это динамические блоки, но их содержимое автома\SpecialChar softhyphen
+тически
+ уменьшается или увеличивается, чтобы соответствовать указанной ши\SpecialChar softhyphen
+рине и
+ высоте блока.
+ Как указать ширину и высоту, описано в разделе 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Geometry"
+
+\end_inset
+
+.
+ Если ширина и высота не указаны, результатом будет квадратное блок, занимающий
+ всю доступную ширину страницы.
+ Если указана только ширина, результат — также квадратный блок.
+\end_layout
+
+\begin_layout Standard
+Это подстраивающийся цветной блок:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Fit Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+width=3cm
+\end_layout
+
+\end_inset
+
+Подстраивающийся цветной блок шириной 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm с текстом.
+ Подстраивающийся цветной блок шириной 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm с текстом.
+ Подстраивающийся цветной блок шириной 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm с текстом.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Fit Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+width=5cm, height=3cm
+\end_layout
+
+\end_inset
+
+Подстраивающийся цветной блок шириной 5
+\begin_inset space \thinspace{}
+\end_inset
+
+cm и высотой 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Примеры показывают, что текст внутри блока будет уменьшен до размера поля,
+ но не увеличен.
+\end_layout
+
+\begin_layout Subsubsection
+Пользовательский блок
+\end_layout
+
+\begin_layout Standard
+Пользовательский цветной блок вставляется через меню 
+\family sans
+
+\begin_inset Newline newline
+\end_inset
+
+Вставка\SpecialChar menuseparator
+Пользовательская вставка\SpecialChar menuseparator
+Пользовательский цветной блок №
+\family default
+, 
+\begin_inset Newline newline
+\end_inset
+
+где 
+\family sans
+№
+\family default
+ — это номер.
+\end_layout
+
+\begin_layout Standard
+Как использовать и настраивать пользовательские цветовые блоки, см.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:General"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Заголовки
+\end_layout
+
+\begin_layout Standard
+Чтобы добавить заголовок в блок, выполните: 
+\family sans
+
+\begin_inset Newline newline
+\end_inset
+
+Вставка\SpecialChar menuseparator
+Настройки цветного блока
+\family default
+, введите 
+\family typewriter
+title=
+\family default
+ и текст заголовка.
+\end_layout
+
+\begin_layout Standard
+Блок с заголовком: 
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Заголовок
+\end_layout
+
+\end_inset
+
+Базовый блок с заголовком.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Подзаголовок добавляется вставкой элемента 
+\family sans
+Подзаголовок
+\family default
+ из меню 
+\family sans
+Вставка\SpecialChar menuseparator
+Пользовательская вставка
+\family default
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Заголовок
+\end_layout
+
+\end_inset
+
+Базовый блок с подзаголовком.
+ 
+\begin_inset Flex Subtitle
+status open
+
+\begin_layout Plain Layout
+Подзаголовок
+\end_layout
+
+\end_inset
+
+ Содержимое под подзаголовком.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Текст заголовка и подзаголовка, по умолчанию, белый.
+ Как изменить этот цвет, см.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Title-text"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Части блока
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Box-parts"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Содержимое блока можно разделить на верхнюю и нижнюю части с помощью окружения
+ 
+\family sans
+Разделитель цветных блоков
+\family default
+ в комбинированном списке выбора окру\SpecialChar softhyphen
+жений \SpecialChar LyX
+ (в подсписке 
+\family sans
+Цветные блоки
+\family default
+).
+ Эта возможность позволяет обрабаты\SpecialChar softhyphen
+вать и настраивать каждую часть блока
+ отдельно и может применяться, скажем, когда что верхняя часть блока содержит
+ описание, а нижняя часть — уравнение.
+\end_layout
+
+\begin_layout Standard
+Блок, в котором содержимое разделено:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+Верхнее содержимое
+\end_layout
+
+\begin_layout Color Box Separator
+
+\end_layout
+
+\begin_layout Plain Layout
+Нижнее содержимое
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Линию разделения можно настроить, как описано в 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Lines"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Разделить блок также можно на левую и правую части, используя опцию блока
+ 
+\family typewriter
+sidebyside
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+sidebyside
+\end_layout
+
+\end_inset
+
+Левое содержимое
+\end_layout
+
+\begin_layout Color Box Separator
+
+\end_layout
+
+\begin_layout Plain Layout
+Правое содержимое
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+При этом, линию разделения можно сделать невидимой с помощью опции блока
+ 
+\family typewriter
+lower separated=false
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+sidebyside, lower separated=false
+\end_layout
+
+\end_inset
+
+Левое содержимое с невидимым разделителем
+\end_layout
+
+\begin_layout Color Box Separator
+
+\end_layout
+
+\begin_layout Plain Layout
+Правое содержимое
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Для цветных блоков доступно несколько вариантов компоновки, см.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Beamer"
+
+\end_inset
+
+, кото\SpecialChar softhyphen
+рые также влияют на размещение частей блока.
+ Например, с опцией 
+\family typewriter
+beamer
+\family default
+ части блока оформляются следующим образом:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+beamer
+\end_layout
+
+\end_inset
+
+Верхнее содержимое
+\end_layout
+
+\begin_layout Color Box Separator
+
+\end_layout
+
+\begin_layout Plain Layout
+Нижнее содержимое
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Линии в блоке
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Lines"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Чтобы изобразить обычную линию в блоке, используйте окружение 
+\family sans
+Линия цвет\SpecialChar softhyphen
+ного блока
+\family default
+.
+ По умолчанию, линия изображается пунктирной.
+ Заметьте, что это просто линия, а не разделитель частей блока!
+\end_layout
+
+\begin_layout Standard
+Блок с обычной линией:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+Текст
+\end_layout
+
+\begin_layout Color Box Line
+
+\end_layout
+
+\begin_layout Plain Layout
+Текст
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Стиль линии можно изменить, только если указан вариант компоновки блока,
+ см.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Enhanced"
+
+\end_inset
+
+.
+ Тогда можно использовать параметр блока 
+\family typewriter
+segmentation style=
+\begin_inset Newline linebreak
+\end_inset
+
+{команды}
+\family default
+, где 
+\family typewriter
+команды
+\family default
+ — это команды определения стиля линии.
+\end_layout
+
+\begin_layout Standard
+Для ознакомления с возможными командами см.
+ раздел 
+\family sans
+Library skins
+\family default
+ руководства по пакету 
+\series bold
+tcolorbox
+\series default
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tcolorbox"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Пример варианта компоновки блока 
+\family typewriter
+enhanced
+\family default
+ (расширенная) с двойной синей линией:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+enhanced, segmentation style={double=white,draw=blue,double distance=1pt,solid}
+\end_layout
+
+\end_inset
+
+Текст
+\end_layout
+
+\begin_layout Color Box Line
+
+\end_layout
+
+\begin_layout Plain Layout
+Текст
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Разделяемые блоки
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Beakable-boxes"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Для разделения блоков предназначена опция 
+\family typewriter
+breakable
+\family default
+.
+ Если внутри блока происходит разрыв страницы, блок будет, например, разделен
+ таким образом:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Разделяемый блок, breakable, title after break=продолжение...
+\end_layout
+
+\end_inset
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kas
+\begin_inset Newpage newpage
+\end_inset
+
+d gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+В приведенном примере специальный заголовок 
+\family typewriter
+продолжение...
+
+\family default
+ предназна\SpecialChar softhyphen
+чен для добавления в качестве заголовка в последующие, после разделени
+я, страницы блока, с помощью параметра 
+\family typewriter
+title after break
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Если блоки содержат вложенные блоки, только внешний блок можно объявить
+ разделяемым.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Примечание.
+
+\series default
+ Динамические блоки и подстраивающиеся блоки нельзя сделать разделяемыми!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Настройки
+\end_layout
+
+\begin_layout Subsection
+Общие
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:General"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+В этом разделе показаны многочисленные возможности настройки блоков.
+\end_layout
+
+\begin_layout Standard
+Чтобы каждый раз не записывать команды блока, вы можете использовать окружение
+ 
+\family sans
+Настройка цветного блока
+\family default
+.
+ Оно вставляется через комбинированный список выбора окружений \SpecialChar LyX
+.
+ В нем можно занести все параметры, которые должны применяться для 
+\shape italic
+всех
+\shape default
+ блоков документа, соответствующих окружению.
+ Например, после указания здесь 
+\family typewriter
+width=3cm
+\family default
+, 
+\family typewriter
+height=8cm
+\family default
+, все последующие блоки будут иметь высоту 8
+\begin_inset space \thinspace{}
+\end_inset
+
+cm и ширину 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+ Однако это малопригодно, если необходимо установить разные настройки для
+ разных типов блоков.
+\end_layout
+
+\begin_layout Standard
+В большинстве документов требуется несколько типов блоков, и все блоки одного
+ типа должны выглядеть одинаково.
+ Для этого в модуле 
+\family sans
+\shape italic
+Красивые цветные блоки
+\family default
+\shape default
+ предопределено 5 различных типов, которые вы можете настроить.
+ Чтобы изменить их внешний вид, используйте окружение 
+\family sans
+Новый тип цветного блока
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Если вы хотите, например, иметь тип блока, который выглядит как в 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Enhanced"
+
+\end_inset
+
+, используйте следующие параметры в окружении:
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+enhanced, frame style={left color=red!75!black,
+\begin_inset Newline newline
+\end_inset
+
+right color=blue!75!black},
+\begin_inset Newline newline
+\end_inset
+
+interior style={left color=red!20!white,
+\begin_inset Newline newline
+\end_inset
+
+right color=yellow!50!white}
+\end_layout
+
+\begin_layout Standard
+Во врезке 
+\family sans
+Имя
+\family default
+ впишите 
+\family typewriter
+cBoxA
+\family default
+ (
+\family typewriter
+cBoxA
+\family default
+ — это настраиваемый блок типа 1, 
+\family typewriter
+cBoxB
+\family default
+ — типа 2 и т.д.).
+ Поскольку вы хотите настроить каждый блок этого типа, например, каждый
+ блок должен иметь собственный заголовок, вам требуется один аргумент.
+ Поэтому добавьте 
+\family typewriter
+1
+\family default
+ во вставку 
+\family sans
+Аргументы
+\family default
+ окружения.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Примечание.
+
+\series default
+ Если вы используете аргумент, 
+\family sans
+Значение по умолчанию
+\family default
+ также должно быть вставлено, но с пустым значением!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout New Color Box Type
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
+cBoxA
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+
+1
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+enhanced, frame style={left color=red!75!black, right color=blue!75!black},
+ interior style={left color=red!20!white, right color=yellow!50!white},
+ #1
+\end_layout
+
+\begin_layout Standard
+Таким образом, определен тип блока 
+\family sans
+Пользовательский цветной блок 1
+\family default
+.
+ Блоки этого типа будут выглядеть следующим образом:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Пользовательский блок
+\end_layout
+
+\end_inset
+
+Пользовательский цветной блок 1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Другой пример:
+\begin_inset Newline newline
+\end_inset
+
+предположим, что требуется тип блока, который можно пронумеровать; вставляем
+ 
+\family typewriter
+auto counter, number within=section 
+\family default
+во вкладку 
+\family sans
+Настройки нового блока
+\family default
+ окружения 
+\family sans
+Новый тип цветного блока
+\family default
+.
+ 
+\family sans
+Имя
+\family default
+ — 
+\family typewriter
+cBoxB
+\family default
+, 
+\family sans
+Аргументы
+\family default
+ — 
+\family typewriter
+1
+\family default
+.
+ Затем вписываем
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+colback=red!5!white, colframe=red!75!black, 
+\begin_inset Newline newline
+\end_inset
+
+title=Пример~
+\backslash
+thetcbcounter : #1
+\end_layout
+
+\begin_layout Standard
+в окружение.
+ Это предопределяет префикс заголовка.
+ 
+\family typewriter
+
+\backslash
+thetcbcounter
+\family default
+ — это счетчик цветных блоков.
+ В поле 
+\family sans
+Пользовательский цветной блок 2
+\family default
+ указываем заголовок с помощью вкладки параметров:
+\end_layout
+
+\begin_layout New Color Box Type
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+auto counter, number within=section
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
+cBoxB
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+
+1
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+colback=red!5!white, colframe=red!75!black, title=Пример~
+\backslash
+thetcbcounter : #1
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 2
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Пользовательский нумерованный заголовок
+\end_layout
+
+\end_inset
+
+Пользовательский цветной блок 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Обратите внимание, что вы нет необходимости вписывать 
+\family typewriter
+title=...
+\family default
+, потому что это уже было сделано в определении данного типа блока.
+\end_layout
+
+\begin_layout Standard
+В то же время, по-прежнему можно настроить блок, добавив параметры 
+\shape italic
+после
+\shape default
+ заголовка:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 2
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Полужирный нумерованный заголовок, colback=lime, fonttitle=
+\backslash
+bfseries
+\end_layout
+
+\end_inset
+
+Пользовательский цветной блок 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Наконец, более сложный пример:
+\begin_inset Newline newline
+\end_inset
+
+предположим, вам нужен тип, который мы только что определили как 
+\family sans
+Пользовательский цветной блок 2
+\family default
+, но вы хотите добавить более одного параметра.
+ Это, например, полезно когда требуется еще один параметр перед имеющимся
+ списком параметров.
+\begin_inset Newline newline
+\end_inset
+
+Как и выше, добавьте
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+auto counter, number within=section
+\end_layout
+
+\begin_layout Standard
+во вкладку 
+\family sans
+Настройки нового блока
+\family default
+ окружения 
+\family sans
+Новый тип цветного блока
+\family default
+.
+ 
+\family sans
+Имя
+\family default
+ — 
+\family typewriter
+cBoxC
+\family default
+.
+ Теперь необходимы 2 аргумента, поэтому вставка 
+\family sans
+Аргументы
+\family default
+ должна содержать значение 
+\family typewriter
+2
+\family default
+.
+ Далее, вписываем
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+nobeforeafter, width=#1, square, colframe=orange!50!black,
+\family default
+\series bold
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+\series default
+title=Пример~
+\backslash
+thetcbcounter : #2
+\end_layout
+
+\begin_layout Standard
+в окружение.
+ В своем 
+\family sans
+Пользовательский цветной блок 3
+\family default
+ вы указываете ширину с помощью вкладки 
+\family sans
+Настройки цветного блока
+\family default
+ и заголовок (и другие параметры, если требуется) с помощью вкладки 
+\family sans
+Больше настроек цветных блоков
+\family default
+:
+\end_layout
+
+\begin_layout New Color Box Type
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+auto counter, number within=section
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
+cBoxC
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+
+2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+nobeforeafter, width=#1, square, colframe=orange!50!black, title=Пример~
+\backslash
+thetcbcounter : #2
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 3
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+4cm
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Заголовок
+\end_layout
+
+\end_inset
+
+Цветной блок пользователя 3 шириной 4
+\begin_inset space \thinspace{}
+\end_inset
+
+cm
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Custom Color Box 3
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+4cm
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Заголовок, beamer
+\end_layout
+
+\end_inset
+
+Цветной блок пользователя 3 шириной 4
+\begin_inset space \thinspace{}
+\end_inset
+
+cm с компоновкой 
+\emph on
+beamer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Ссылки
+\end_layout
+
+\begin_layout Standard
+В общем, нельзя использовать механизмы меток/ссылок \SpecialChar LyX
+ для красивых цветных
+ блоков.
+ На пронумерованные блоки можно ссылаться, добавив
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+, label={имя}
+\end_layout
+
+\begin_layout Standard
+в вставку 
+\family sans
+Настройки цветного блока
+\family default
+, где 
+\family typewriter
+имя
+\family default
+ — это текст метки, используемой для ссылки на этот блок.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom Color Box 2
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Эквивалентность массы и энергии, label={Einstein}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+E=mc^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Для ссылки на блок используйте команду
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+
+\backslash
+ref{name}
+\end_layout
+
+\begin_layout Standard
+в поле 
+\family sans
+Код TeX
+\family default
+ в том месте текста, где должна появиться ссылка.
+\end_layout
+
+\begin_layout Standard
+Ссылка на пример
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{Einstein}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Компоновка блоков
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LaTeX
+-пакет 
+\series bold
+tcolorbox
+\series default
+ предоставляет разные компоновки блоков.
+ Полный список см.
+ в руководстве по 
+\series bold
+tcolorbox
+\series default
+, раздел 
+\family sans
+Library
+\begin_inset space ~
+\end_inset
+
+skins
+\family default
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tcolorbox"
+literal "true"
+
+\end_inset
+
+, ниже описаны только самые важные из них.
+\end_layout
+
+\begin_layout Subsubsection
+Enhanced (расширенная)
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Enhanced"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Эта компоновка включается путем добавления параметра 
+\family typewriter
+enhanced
+\family default
+.
+ Без дополнительных опций результат выглядит стандартно.
+ Ее преимуществом являются некоторые дополнительные возможности, такие как
+ настройка линий, см.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Lines"
+
+\end_inset
+
+ или наличие теней, см.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Shadows"
+
+\end_inset
+
+.
+ Еще одна особенность — более привлекательный стиль оформления разделяемых
+ блоков:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Разделяемый блок с параметром 
+\family typewriter
+enhanced
+\family default
+, breakable, enhanced
+\end_layout
+
+\end_inset
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Еще одна полезная возможность — добавление цветных градиентов с опциями
+ стиля рамки (
+\family typewriter
+frame style
+\family default
+) и стиля внутреннего оформления (
+\family typewriter
+interior style
+\family default
+).
+ Используемый синтаксис:
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+frame style={left color=цвет, right color=цвет}
+\family default
+\series bold
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
+где 
+\family typewriter
+цвет
+\family default
+ — это наименование цвета или его определение, см.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Color"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Блок 
+\emph on
+enhanced
+\emph default
+ с цветным градиентом, enhanced, frame style={left color=red!75!black, right
+ color=blue!75!black}, interior style={left color=red!20!white, right color=yell
+ow!50!white}
+\end_layout
+
+\end_inset
+
+Верхнее содержимое
+\end_layout
+
+\begin_layout Color Box Separator
+
+\end_layout
+
+\begin_layout Plain Layout
+Нижнее содержимое
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+В качестве альтернативы можно использовать изображение PNG-формата в качестве
+ фона для блоков с опцией 
+\family typewriter
+frame style image=имя-файла
+\family default
+, где 
+\family typewriter
+имя-файла
+\family default
+ — это имя файла с изображением.
+\end_layout
+
+\begin_layout Subsubsection
+Bicolor (двухцветная)
+\end_layout
+
+\begin_layout Standard
+С этой компоновкой нижнее содержимое получает цвет фона, отличный от цвета
+ фона верхней части.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Блок с компоновкой 
+\emph on
+bicolor
+\emph default
+, bicolor
+\end_layout
+
+\end_inset
+
+Верхнее содержимое
+\end_layout
+
+\begin_layout Color Box Separator
+
+\end_layout
+
+\begin_layout Plain Layout
+Нижнее содержимое
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Цвет нижней части можно изменить с помощью опции 
+\family typewriter
+colbacklower
+\family default
+, см.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Color"
+
+\end_inset
+
+ для настройки цвета.
+\end_layout
+
+\begin_layout Subsubsection
+Beamer
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Beamer"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Это компоновка, имитирующая внешний вид класса документа презентации 
+\family sans
+Beamer
+\family default
+.
+ Ее внешний вид можно изменять, как для компоновки 
+\family typewriter
+enhanced
+\family default
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Enhanced"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Блок 
+\emph on
+beamer
+\emph default
+ с цветным градиентом, beamer, frame style={left color=red!75!black, right
+ color=blue!75!black}
+\end_layout
+
+\end_inset
+
+Верхнее содержимое
+\end_layout
+
+\begin_layout Color Box Separator
+
+\end_layout
+
+\begin_layout Plain Layout
+Нижнее содержимое
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Widget
+\end_layout
+
+\begin_layout Standard
+Похоже на стандартную, но цвета фона автоматически затемняются:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Блок 
+\emph on
+widget
+\emph default
+, widget
+\end_layout
+
+\end_inset
+
+Верхнее содержимое
+\end_layout
+
+\begin_layout Color Box Separator
+
+\end_layout
+
+\begin_layout Plain Layout
+Нижнее содержимое
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Empty (пустая)
+\end_layout
+
+\begin_layout Standard
+Эта компоновка не имеет расцветки.
+ Чтобы сделать заголовок видимым (поскольку, по умолчанию, он белый), нужно
+ изменить его цвет, см.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Title-text"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Блок с компоновкой 
+\emph on
+empty
+\emph default
+, empty, coltitle=orange
+\end_layout
+
+\end_inset
+
+Верхнее содержимое
+\end_layout
+
+\begin_layout Color Box Separator
+
+\end_layout
+
+\begin_layout Plain Layout
+Нижнее содержимое
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Размещение
+\end_layout
+
+\begin_layout Subsubsection
+Рядом
+\end_layout
+
+\begin_layout Standard
+Обычно блок представляет собой отдельный абзац.
+ Поэтому, по умолчанию, несколько блоков будут отображаться один за другим,
+ разделенные вертикальным промежутком.
+ Чтобы изменить такое расположение, например разместить блоки рядом по горизонта
+ли, используйте параметры размещения 
+\family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
+before=команда
+\family default
+ и 
+\family typewriter
+after=команда
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+По умолчанию перед блоком и после него имеется разрыв абзаца.
+ При использовании параметров размещения в форме 
+\family typewriter
+before=
+\family default
+, 
+\family typewriter
+after=
+\family default
+ ничего не будет добавлено, кроме блоков, размещенных рядом:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+width=3cm, square, valign=center, before=, after=
+\end_layout
+
+\end_inset
+
+Квадрат\SpecialChar softhyphen
+ный блок шириной 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+width=3cm, square, valign=center, before=, after=
+\end_layout
+
+\end_inset
+
+Квадрат\SpecialChar softhyphen
+ный блок шириной 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+width=3cm, square, valign=center, before=, after=
+\end_layout
+
+\end_inset
+
+Квадрат\SpecialChar softhyphen
+ный блок шириной 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Параметр 
+\family typewriter
+nobeforeafter
+\family default
+ является альтернативой для 
+\family typewriter
+before=, after=
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Для задания промежутка между блоками, можно использовать обычные функции
+ интервалов \SpecialChar LyX
+, такие как горизонтальное заполнение:
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+width=3cm, square, valign=center, nobeforeafter
+\end_layout
+
+\end_inset
+
+Квадрат\SpecialChar softhyphen
+ный блок шириной 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+width=3cm, square, valign=center, nobeforeafter
+\end_layout
+
+\end_inset
+
+Квадрат\SpecialChar softhyphen
+ный блок шириной 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+width=3cm, square, valign=center, nobeforeafter
+\end_layout
+
+\end_inset
+
+Квадрат\SpecialChar softhyphen
+ный блок шириной 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Если вы предпочитаете использование поля 
+\family sans
+Код TeX
+\family default
+, то также можете использовать параметр 
+\family typewriter
+after=
+\backslash
+hfill
+\family default
+, чтобы добавить горизонтальное заполнение.
+\end_layout
+
+\begin_layout Subsubsection
+Плавающее
+\end_layout
+
+\begin_layout Standard
+Как и в случае с таблицами и рисунками, очень полезно, чтобы блоки могли
+ «плавать» в тексте, для их размещении в оптимальном положении.
+ Это достигается с помощью параметра 
+\family typewriter
+float=опции
+\family default
+, где 
+\family typewriter
+опции
+\family default
+ — это указания плавающего размещения «
+\family typewriter
+h
+\family default
+», «
+\family typewriter
+t
+\family default
+», «
+\family typewriter
+b
+\family default
+» и «
+\family typewriter
+p
+\family default
+».
+ Они соответствуют параметрам, описанным в разделе 
+\family sans
+Размещение плавающих объектов
+\family default
+ руководства 
+\shape italic
+Встроенные объекты
+\shape default
+.
+ Варианты размещения могут быть смешаны и вставлены без их разделения, например,
+ «
+\family typewriter
+htbp
+\family default
+».
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Плавающий блок, float, width=5cm, valign=center
+\end_layout
+
+\end_inset
+
+Плавающий блок шириной 5
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Для плавающих блоков параметры 
+\family typewriter
+before=команда
+\family default
+ и 
+\family typewriter
+after=команда
+\family default
+ игнорируются.
+ Вместо этого можно вставить команду параметром 
+\family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
+every float=команда
+\family default
+ перед блоком.
+\end_layout
+
+\begin_layout Standard
+Если блок разделяется, 
+\family typewriter
+команда
+\family default
+ вставляется перед каждой частью последовательности разрывов.
+ Типичное применение — центрирование плавающего блока с помощью 
+\family typewriter
+every float=
+\backslash
+centering
+\family default
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Плавающий блок, float, width=5cm, valign=center, every float=
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+Плавающий блок шириной 5
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Вертикальное
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Vertical"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Вертикальное размещение блока по отношению к окружающей текстовой строке
+ может быть установлено только для динамических блоков.
+ Параметр 
+\family typewriter
+tcbox raise=смещение
+\family default
+ приподнимает или приспускает блок.
+ 
+\family typewriter
+смещение
+\family default
+ — это цифровое значение такого смещения.
+ Допустимые единицы измерения для смещений перечислены в Приложении
+\begin_inset space ~
+\end_inset
+
+A руководства 
+\shape italic
+Встроенные объекты
+\shape default
+.
+ Значение по умолчанию — 
+\family typewriter
+tcbox raise=0pt
+\family default
+.
+ С параметром 
+\family typewriter
+tcbox raise base
+\family default
+ блок размещается так, чтобы основание содержимого блока совпадало с основанием
+ окружающей строки.
+\end_layout
+
+\begin_layout Standard
+Пример:
+\end_layout
+
+\begin_layout Standard
+Строка......
+\begin_inset Flex Dynamic Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+tcbox raise base, nobeforeafter
+\end_layout
+
+\end_inset
+
+Блок, спущенный к основанию строки
+\end_layout
+
+\end_inset
+
+......
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\,$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+......
+\begin_inset Flex Dynamic Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+nobeforeafter
+\end_layout
+
+\end_inset
+
+Размещение по умолчанию в строке
+\end_layout
+
+\end_inset
+
+......
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\,$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+......
+\begin_inset Flex Dynamic Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+tcbox raise=1cm, nobeforeafter
+\end_layout
+
+\end_inset
+
+Блок, поднятый над основанием строки на 1
+\begin_inset space \thinspace{}
+\end_inset
+
+cm
+\end_layout
+
+\end_inset
+
+...
+\end_layout
+
+\begin_layout Subsubsection
+Растровое
+\end_layout
+
+\begin_layout Standard
+Самый простой способ разместить блоки в виде таблицы — это поместить их
+ в растровый блок.
+ Вставка 
+\family sans
+Растровый цветной блок
+\family default
+ доступна из меню 
+\family sans
+Вставка\SpecialChar menuseparator
+Пользовательская вставка
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Количество столбцов задается параметром 
+\family typewriter
+raster columns=число
+\family default
+, где 
+\family typewriter
+число
+\family default
+ — количество столбцов.
+ Все блоки, вставленные в растровый блок, теперь будут автоматически выводиться
+ в виде растра с 3 столбцами, а их ширина будет автоматически настраиваться.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Raster Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+raster columns=3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Блок
+\end_layout
+
+\end_inset
+
+Простой блок.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Блок
+\end_layout
+
+\end_inset
+
+Простой блок.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Блок
+\end_layout
+
+\end_inset
+
+Простой блок.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Блок
+\end_layout
+
+\end_inset
+
+Простой блок.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Блок
+\end_layout
+
+\end_inset
+
+Простой блок.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Для получения дополнительной информации о параметрах растрового цветного
+ блока обратитесь к руководству по 
+\series bold
+tcolorbox
+\series default
+, раздел 
+\family sans
+Library raster
+\family default
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tcolorbox"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Геометрия
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Geometry"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Ширина
+\end_layout
+
+\begin_layout Subsubsection*
+Блок целиком
+\end_layout
+
+\begin_layout Standard
+Ширина блока регулируется параметром 
+\family typewriter
+width=значение
+\family default
+.
+ Допустимые единицы измерения для 
+\family typewriter
+значение
+\family default
+ перечислены в Приложении A руководства 
+\shape italic
+
+\begin_inset Newline linebreak
+\end_inset
+
+Встроенные объекты
+\shape default
+.
+ Ширина по умолчанию — 
+\family typewriter
+width=1
+\backslash
+linewidth
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+width=6cm
+\end_layout
+
+\end_inset
+
+Блок шириной 6
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Также можно установить ширину только для текста поля с помощью опции 
+\family typewriter
+text width=значение
+\family default
+.
+ Если ширина меньше, чем требуется для текста, новые строки (при разбиении
+ текста) будут созданы автоматически.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+text width=4cm
+\end_layout
+
+\end_inset
+
+Некоторый длинный текст в блоке шириной 4
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Комбинирование 
+\family typewriter
+width
+\family default
+ и 
+\family typewriter
+text width
+\family default
+ не приведет к какому либо особому эффекту; будет задействована только последняя
+ заданная ширина.
+\end_layout
+
+\begin_layout Standard
+Чтобы увеличить ширину поля, необходимо использовать параметр 
+\family typewriter
+width
+\family default
+, а затем можно применить параметр 
+\family typewriter
+add to width=значение
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+width=10cm, add to width=2cm
+\end_layout
+
+\end_inset
+
+Блок шириной 10
+\begin_inset space \thinspace{}
+\end_inset
+
+cm, с дополнительной шириной 2
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Содержимое
+\end_layout
+
+\begin_layout Standard
+Для блоков с частями, размещенными рядом можно контролировать ширину частей
+ блока с помощью параметров
+\begin_inset space \hfill{}
+\end_inset
+
+ 
+\family typewriter
+sidebyside gap
+\family default
+, 
+\family typewriter
+lefthand width
+\family default
+, 
+\family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
+righthand width
+\family default
+, 
+\family typewriter
+lefthand ratio
+\family default
+ и 
+\family typewriter
+righthand ratio
+\family default
+.
+ Используемый синтаксис: 
+\family typewriter
+sidebyside gap=значение
+\family default
+.
+ Допустимые единицы измерения для 
+\family typewriter
+значение
+\family default
+ перечислены в Приложении A руководства 
+\shape italic
+Встроенные объекты
+\shape default
+.
+ Все варианты, конечно же, требуют наличия параметра 
+\family typewriter
+sidebyside
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+sidebyside gap
+\family default
+ задает расстояние между левой и правой частью:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+sidebyside, sidebyside gap=2cm
+\end_layout
+
+\end_inset
+
+Первая часть отделена на 2
+\begin_inset space \thinspace{}
+\end_inset
+
+cm
+\end_layout
+
+\begin_layout Color Box Separator
+
+\end_layout
+
+\begin_layout Plain Layout
+от второй части
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+lefthand width
+\family default
+ и 
+\family typewriter
+righthand width
+\family default
+ устанавливают абсолютную ширину левой и правой части, соответственно:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+sidebyside, lefthand width=3cm
+\end_layout
+
+\end_inset
+
+Первая часть шириной 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm
+\end_layout
+
+\begin_layout Color Box Separator
+
+\end_layout
+
+\begin_layout Plain Layout
+Вторая часть
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+lefthand ratio
+\family default
+ и 
+\family typewriter
+righthand ratio
+\family default
+ задают относительную ширину левой и правой частей, соответственно:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+sidebyside, lefthand ratio=0.3
+\end_layout
+
+\end_inset
+
+Первая часть шириной 30
+\begin_inset space \thinspace{}
+\end_inset
+
+% от ширины блока
+\end_layout
+
+\begin_layout Color Box Separator
+
+\end_layout
+
+\begin_layout Plain Layout
+Вторя часть
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Высота
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Height"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Блок в целом
+\end_layout
+
+\begin_layout Standard
+Высота блока задается параметром 
+\family typewriter
+height=значение
+\family default
+.
+ Высота по умолчанию — это высота, занимаемая содержимым блока.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+height=2cm
+\end_layout
+
+\end_inset
+
+Блок высотой 2
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Если указанная высота меньше высоты, занимаемой содержимым, то содержимое
+ будет помещено под блоком:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+height=2mm
+\end_layout
+
+\end_inset
+
+Блок высотой 2
+\begin_inset space \thinspace{}
+\end_inset
+
+mm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+С параметром 
+\family typewriter
+square
+\family default
+ высота будет автоматически установлена на величину ширины блока.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+width=3cm, square
+\end_layout
+
+\end_inset
+
+Квадрат-ный блок.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Для увеличения высоты блока, если содержимое занимает больше высоты, чем
+ ожидалось, необходимо использовать параметр 
+\family typewriter
+height
+\family default
+, а затем можно использовать параметр 
+\family typewriter
+height plus=значение
+\family default
+.
+ Приложение должно было бы установить максимально возможную высоту, если
+ вы пишете книгу, в которой интервал определен и не должен быть перезаписан
+ каким-либо значением.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+height=2cm, height plus=2cm
+\end_layout
+
+\end_inset
+
+Блок высотой 2
+\begin_inset space \thinspace{}
+\end_inset
+
+cm с дополнительной высотой 2
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+height=2cm, height plus=2cm
+\end_layout
+
+\end_inset
+
+Блок высотой 2
+\begin_inset space \thinspace{}
+\end_inset
+
+cm с дополнительной высотой 2
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+ Его содержимое занимает 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm, поэтому высота блока также будет 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+ Блок высотой 2
+\begin_inset space \thinspace{}
+\end_inset
+
+cm с дополнительной высотой 2
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+ Его содержимое занимает 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm, поэтому высота блока также будет 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+ Блок высотой 2
+\begin_inset space \thinspace{}
+\end_inset
+
+cm с дополнительной высотой 2
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+ Его содержимое занимает 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm, поэтому высота блока также будет 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+В некоторых случаях может быть полезно указать допустимый диапазон для высоты
+ с помощью параметра 
+\family typewriter
+height from=min to max
+\family default
+, где 
+\family typewriter
+min
+\family default
+ и 
+\family typewriter
+max
+\family default
+ — числовые значения.
+ Тогда высота будет не меньше заданного минимального значения или высоты,
+ потребляемой содержимым блока.
+ Она не будет превышать максимума, независимо от содержимого:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+height from=1cm to 3cm
+\end_layout
+
+\end_inset
+
+Блок с минимальной высотой 1
+\begin_inset space \thinspace{}
+\end_inset
+
+cm и максимальной высотой 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+height from=1cm to 3cm
+\end_layout
+
+\end_inset
+
+Блок с минимальной высотой 1
+\begin_inset space \thinspace{}
+\end_inset
+
+cm и максимальной высотой 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+ Блок с минимальной высотой 1
+\begin_inset space \thinspace{}
+\end_inset
+
+cm и максимальной высотой 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+ Содержимое в высоту занимает больше места, чем 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+ Блок с минимальной высотой 1
+\begin_inset space \thinspace{}
+\end_inset
+
+cm и максимальной высотой 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+ Содержимое в высоту занимает больше места, чем 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+ Блок с минимальной высотой 1
+\begin_inset space \thinspace{}
+\end_inset
+
+cm и максимальной высотой 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+ Содержимое в высоту занимает больше места, чем 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+С помощью параметра 
+\family typewriter
+add to height=значение
+\family default
+ можно добавить определенную высоту в блок.
+ Чтобы использовать это значение, необходимо разместить 
+\shape italic
+перед
+\shape default
+ ним параметр 
+\family typewriter
+height
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+height=1cm, add to height=1cm
+\end_layout
+
+\end_inset
+
+Блок высотой 1
+\begin_inset space \thinspace{}
+\end_inset
+
+cm и с дополнительной высотой 1
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+С помощью параметра 
+\family typewriter
+height fill=значение
+\family default
+ можно заставить блок использовать оставшуюся доступную высоту частей документа,
+ в которых он находится.
+ 
+\family typewriter
+значение
+\family default
+ может быть 
+\family typewriter
+true
+\family default
+ или 
+\family typewriter
+maximum
+\family default
+.
+ Последнее работает как 
+\family typewriter
+true
+\family default
+, но сжимает содержимое страницы перед блоком, насколько это возможно, чтобы
+ максимально увеличить высоту блока.
+\begin_inset Newline newline
+\end_inset
+
+В этом примере поле находится в основном тексте и поэтому занимает оставшуюся
+ часть текущей страницы:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+height fill=true
+\end_layout
+
+\end_inset
+
+Блок, заполняющий оставшуюся часть текущей страницы.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Содержимое
+\end_layout
+
+\begin_layout Standard
+Можно установить высоту только для текста блока параметром
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+text height=значение
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+text height=1.5cm
+\end_layout
+
+\end_inset
+
+Блок с высотой содержимого в 1.5
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+ С учетом разделителя рамки и толщины рамки высота блока превышает 1.5
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Сочетание 
+\family typewriter
+height
+\family default
+ и 
+\family typewriter
+text height
+\family default
+ не приводит к предполагаемому эффекту; применяется только последняя заданная
+ ширина.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+С помощью параметров 
+\family typewriter
+space=fraction
+\family default
+, 
+\family typewriter
+space to upper
+\family default
+, 
+\family typewriter
+space to 
+\begin_inset Newline linebreak
+\end_inset
+
+lower
+\family default
+, 
+\family typewriter
+space to both
+\family default
+ и 
+\family typewriter
+split=fraction
+\family default
+ можно указать, как высота должна быть распределена между верхней и нижней
+ частью блока.
+ Для 
+\family typewriter
+space
+\family default
+ с опцией 
+\family typewriter
+fraction
+\family default
+ — это часть дополнительной высоты (указанная высота минус высота, занимаемая
+ содержимым).
+ Например, 
+\family typewriter
+space=0.75
+\family default
+ добавляет 75
+\begin_inset space \thinspace{}
+\end_inset
+
+% дополнительного вертикального промежутка к верхней части:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+height=3cm, space=0.75
+\end_layout
+
+\end_inset
+
+Блок высотой 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm, где 75
+\begin_inset space \thinspace{}
+\end_inset
+
+% дополнительной высоты устанавливается на верхнее содержимое.
+\end_layout
+
+\begin_layout Color Box Separator
+
+\end_layout
+
+\begin_layout Plain Layout
+Нижнее содержимое
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+space to upper
+\family default
+ эквивалентно 
+\family typewriter
+space=1
+\family default
+, 
+\family typewriter
+space to lower
+\family default
+ эквивалентно 
+\family typewriter
+
+\begin_inset Newline linebreak
+\end_inset
+
+space=0
+\family default
+, 
+\family typewriter
+space to both
+\family default
+ эквивалентно 
+\family typewriter
+space=0.5
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+height=3cm, space to upper
+\end_layout
+
+\end_inset
+
+Блок высотой 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm, в котором вся дополнительная высота установлена на верхнее содержимое.
+\end_layout
+
+\begin_layout Color Box Separator
+
+\end_layout
+
+\begin_layout Plain Layout
+Нижнее содержимое
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Для 
+\family typewriter
+split
+\family default
+ с опцией 
+\family typewriter
+fraction
+\family default
+ — это часть полной высоты (а не дополнительной высоты).
+ Поэтому нужно быть осторожным, когда, например, верхняя часть занимает
+ больше высоты, чем заданно с помощью 
+\family typewriter
+split
+\family default
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+height=3cm, split=0.1
+\end_layout
+
+\end_inset
+
+Блок высотой 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm, в котором используется 10
+\begin_inset space \thinspace{}
+\end_inset
+
+% полной высоты.
+ Блок высотой 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm, в котором используется 10
+\begin_inset space \thinspace{}
+\end_inset
+
+% полной высоты.
+\end_layout
+
+\begin_layout Color Box Separator
+
+\end_layout
+
+\begin_layout Plain Layout
+Нижнее содержимое
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+С помощью параметра 
+\family typewriter
+equal height group=id
+\family default
+ можно установить одинаковую высоту для всех блоков в группе.
+ 
+\family typewriter
+id
+\family default
+ — это имя для ссылки на группу.
+ Это, например, полезно, если внутри группового блока размещены 3 рядом
+ расположенных блока:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+adjusted title=лимон, width=0.3
+\backslash
+columnwidth, nobeforeafter, equal height group=A
+\end_layout
+
+\end_inset
+
+Блок.
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+adjusted title=Грейпфрукт, width=0.3
+\backslash
+columnwidth, space to upper, nobeforeafter, equal height group=A
+\end_layout
+
+\end_inset
+
+Блок с частями.
+\end_layout
+
+\begin_layout Color Box Separator
+
+\end_layout
+
+\begin_layout Plain Layout
+Нижнее содержимое
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+adjusted title=, width=0.3
+\backslash
+columnwidth, nobeforeafter, equal height group=A
+\end_layout
+
+\end_inset
+
+Блок с длинным текстом.
+ Блок с длинным текстом.
+ Блок с длинным текстом.
+ Блок с длинным текстом.
+ Блок с длинным текстом.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Приведенный выше пример был набран путем добавления параметра 
+\family typewriter
+equal height group=A
+\family default
+ во все 3 блока.
+ 
+\family typewriter
+A
+\family default
+ — название группы блоков.
+\end_layout
+
+\begin_layout Standard
+Если имеется заголовок, который занимает только одну строку, рекомендуется
+ для всех блоков использовать параметр 
+\family typewriter
+adjusted title
+\family default
+ вместо 
+\family typewriter
+title
+\family default
+, чтобы гарантировать, что высота заголовка будет одинаковой для всех блоков.
+ В противном случае высота в приведенном выше примере была бы другой, потому
+ что «Грейпфрукт» требует большей высоты, чем «лимон».
+\end_layout
+
+\begin_layout Subsubsection
+Рамка
+\end_layout
+
+\begin_layout Standard
+Толщина рамки блока может быть изменена с помощью параметров 
+\family typewriter
+toprule
+\family default
+, 
+\family typewriter
+bottomrule
+\family default
+, 
+\family typewriter
+leftrule
+\family default
+, 
+\family typewriter
+rightrule
+\family default
+ и 
+\family typewriter
+titlerule
+\family default
+.
+ Каждый параметр изменяет соответствующую часть рамки.
+ Синтаксис: 
+\family typewriter
+toprule=значение
+\family default
+.
+ Допустимые единицы измерения для значений перечислены в Приложении A руководств
+а 
+\shape italic
+Встроенные объекты
+\shape default
+.
+ 
+\family typewriter
+значение
+\family default
+, по умолчанию, для всех частей составляет 0.5
+\begin_inset space \thinspace{}
+\end_inset
+
+mm.
+ Чтобы установить для всех частей рамки одно и то же значение, используйте
+ параметр 
+\family typewriter
+boxrule
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+leftrule=3mm, rightrule=4mm, toprule=2mm, bottomrule=1mm
+\end_layout
+
+\end_inset
+
+Левая линия шириной 3
+\begin_inset space \thinspace{}
+\end_inset
+
+mm, правая линия шириной 4
+\begin_inset space \thinspace{}
+\end_inset
+
+mm, верхняя линия 2
+\begin_inset space \thinspace{}
+\end_inset
+
+mm и нижняя линия 1
+\begin_inset space \thinspace{}
+\end_inset
+
+mm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+boxrule=6mm
+\end_layout
+
+\end_inset
+
+Блок с рамкой толщиной 6
+\begin_inset space \thinspace{}
+\end_inset
+
+mm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Линейка заголовка — это разделитель заголовка и содержимого блока.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Заголовок, titlerule=8mm, colbacktitle=blue
+\end_layout
+
+\end_inset
+
+Блок с линейкой заголовка толщиной 8
+\begin_inset space \thinspace{}
+\end_inset
+
+mm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Форма
+\end_layout
+
+\begin_layout Standard
+По умолчанию, блоки прямоугольные с закругленными ребрами.
+ Радиус закругления можно изменить с помощью параметра 
+\family typewriter
+arc=значение
+\family default
+.
+ Допустимые единицы измерения для значений перечислены в Приложении A руководств
+а 
+\shape italic
+Встроенные объекты
+\shape default
+.
+ По умолчанию 
+\family typewriter
+arc=1мм
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+arc=0mm
+\end_layout
+
+\end_inset
+
+Прямоугольный блок (
+\family typewriter
+arc=0
+\begin_inset space \thinspace{}
+\end_inset
+
+mm
+\family default
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+С помощью параметра 
+\family typewriter
+outer arc=значение
+\family default
+ можно независимо установить внешний радиус:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+arc=5mm, outer arc=0mm
+\end_layout
+
+\end_inset
+
+Блок с 
+\family typewriter
+arc=5
+\begin_inset space \thinspace{}
+\end_inset
+
+mm, outer arc=0
+\begin_inset space \thinspace{}
+\end_inset
+
+mm
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+arc=0mm, outer arc=0mm
+\end_layout
+
+\end_inset
+
+Прямоугольный блок (
+\family typewriter
+arc
+\family default
+ и 
+\family typewriter
+outer arc
+\family default
+ установлены в 0
+\family typewriter
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\family default
+mm).
+ То же самое может быть достигнуто с помощью параметра 
+\family typewriter
+sharp corners=all
+\family default
+, см.
+ ниже.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Общую форму блока можно изменить с помощью параметров 
+\family typewriter
+circular arc
+\family default
+, 
+\family typewriter
+bean arc
+\family default
+ и 
+\family typewriter
+octogon arc
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Параметр 
+\family typewriter
+circular arc
+\family default
+ устанавливает радиус ребра равным половине ширины блока.
+ Поэтому необходимо указать, как минимум, эту ширину.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+width=3.5cm, circular arc
+\end_layout
+
+\end_inset
+
+Блок шириной 3.5 см с круговой дугой
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Как видно, прямоугольник с круговой дугой выглядит некрасиво, когда его
+ ширина больше, чем высота.
+ Поэтому рекомендуется добавить параметр 
+\family typewriter
+square
+\family default
+, см.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Height"
+
+\end_inset
+
+, для получения одинаковых ширины и высоты.
+ В результате получится идеальный круг.
+ Чтобы позиционировать текст в блоке, используйте параметры выравнивания
+ текста, описанные в 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Alignment"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+width=4cm, square, valign=center, circular arc
+\end_layout
+
+\end_inset
+
+Блок шириной 4
+\begin_inset space \thinspace{}
+\end_inset
+
+cm с круговой дугой
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Параметр 
+\family typewriter
+bean arc
+\family default
+ устанавливает радиус края равным минимуму из значений половины ширины и
+ половины высоты блока.
+ В результате получится полукруг.
+ 
+\family typewriter
+bean arc
+\family default
+ требует указания параметров 
+\family typewriter
+width
+\family default
+ и 
+\family typewriter
+height
+\family default
+ либо 
+\family typewriter
+square
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+width=3.5cm, height=5cm, bean arc, nobeforeafter, valign=center
+\end_layout
+
+\end_inset
+
+Блок шириной 3.5
+\begin_inset space \thinspace{}
+\end_inset
+
+cm и высотой 5
+\begin_inset space \thinspace{}
+\end_inset
+
+cm с 
+\family typewriter
+bean arc
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+width=5cm, height=3.5cm, bean arc, nobeforeafter, valign=center
+\end_layout
+
+\end_inset
+
+Блок шириной 5
+\begin_inset space \thinspace{}
+\end_inset
+
+cm и высотой 3.5
+\begin_inset space \thinspace{}
+\end_inset
+
+cm с 
+\family typewriter
+bean arc
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Использование 
+\family typewriter
+bean arc
+\family default
+ для квадратного блока приводит к тому же результату, что и использование
+ 
+\family typewriter
+circular arc
+\family default
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+width=4cm, square, bean arc, valign=center
+\end_layout
+
+\end_inset
+
+Квадратный блок шириной 4
+\begin_inset space \thinspace{}
+\end_inset
+
+cm как 
+\family typewriter
+bean arc
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Параметр 
+\family typewriter
+octogon arc
+\family default
+ полезен для получения восьмиугольника.
+ Для восьмиугольника нужен квадратный блок и параметр 
+\family typewriter
+arc is angular
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+width=4cm, square, octogon arc, valign=center, arc is angular
+\end_layout
+
+\end_inset
+
+Квадратный блок шириной 4
+\begin_inset space \thinspace{}
+\end_inset
+
+cm с 
+\family typewriter
+octogon arc
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Примечание.
+
+\series default
+ Параметр 
+\family typewriter
+arc is angular
+\family default
+ является экспериментальным и может вызвать проблемы в некоторых версиях
+ \SpecialChar LaTeX
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Также возможно изменить только некоторые ребра блока.
+ Чтобы сделать ребро углом, имеется параметр 
+\family typewriter
+sharp corners=позиция
+\family default
+, где 
+\family typewriter
+позиция
+\family default
+ — это положение ребра.
+ Позиции 
+\family typewriter
+northwest
+\family default
+, 
+\family typewriter
+northeast
+\family default
+, 
+\family typewriter
+southwest
+\family default
+ и 
+\family typewriter
+southeast
+\family default
+ изменяют только соответствующее ребро.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+sharp corners=northeast
+\end_layout
+
+\end_inset
+
+Блок с углом вверху справа (
+\family typewriter
+northeast
+\family default
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Позиции 
+\family typewriter
+north
+\family default
+, 
+\family typewriter
+south
+\family default
+, 
+\family typewriter
+east
+\family default
+, 
+\family typewriter
+west
+\family default
+, 
+\family typewriter
+downhill
+\family default
+ и 
+\family typewriter
+uphill
+\family default
+ меняют два ребра.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+width=0.4
+\backslash
+columnwidth,sharp corners=east, nobeforeafter
+\end_layout
+
+\end_inset
+
+Блок с 2-мя углами справа (
+\family typewriter
+east
+\family default
+).
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+width=0.4
+\backslash
+columnwidth,sharp corners=uphill, nobeforeafter
+\end_layout
+
+\end_inset
+
+Блок с двумя углами: один внизу слева, другой вверху справа (
+\family typewriter
+uphill
+\family default
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Позиция 
+\family typewriter
+all
+\family default
+ меняет все ребра.
+\end_layout
+
+\begin_layout Subsection
+Выравнивание
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Alignment"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Горизонтальное
+\end_layout
+
+\begin_layout Standard
+Параметр 
+\family typewriter
+halign=выравнивание
+\family default
+ устанавливает выравнивание для всего содержимого блока, если нет частей
+ блока, в противном случае можно использовать параметры 
+\family typewriter
+halign upper
+\family default
+ и 
+\family typewriter
+halign lower
+\family default
+.
+ Значение 
+\family typewriter
+выравнивание
+\family default
+ может быть одним из следующих:
+\end_layout
+
+\begin_layout Description
+right содержимое выровнено по правому краю
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+halign=right
+\end_layout
+
+\end_inset
+
+Правое выравнивание.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+left содержимое выровнено по левому краю
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+halign=left
+\end_layout
+
+\end_inset
+
+Левое выравнивание.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+center содержимое центрировано
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+halign=center
+\end_layout
+
+\end_inset
+
+Горизонтально центрированный блок.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+justify содержимое выровнено (значение по умолчанию)
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+halign=justify
+\end_layout
+
+\end_inset
+
+Выровненный блок.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Пример блока с частями:
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+halign upper=left, halign lower=center
+\end_layout
+
+\end_inset
+
+Верхнее содержимое выравнено влево
+\end_layout
+
+\begin_layout Color Box Separator
+
+\end_layout
+
+\begin_layout Plain Layout
+Нижнее содержимое центрировано
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Выравнивание заголовка можно установить параметром 
+\family typewriter
+halign title
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Заголовок справа, halign title=right, halign upper=left, halign lower=cent
+er
+\end_layout
+
+\end_inset
+
+Верхнее содержимое выравнено влево
+\end_layout
+
+\begin_layout Color Box Separator
+
+\end_layout
+
+\begin_layout Plain Layout
+Нижнее содержимое центрировано
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Вертикальное
+\end_layout
+
+\begin_layout Standard
+Вертикальное выравнивание можно изменить только в том случае, если высота
+ блока явно установлена больше, чем высота, занимаемая содержимым блока.
+ См.
+ в 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Height"
+
+\end_inset
+
+ как это делается.
+\end_layout
+
+\begin_layout Standard
+Параметр 
+\family typewriter
+valign=выравнивание
+\family default
+ устанавливает выравнивание для всего содержимого блока, если блок не содержит
+ частей, в противном случае можно использовать параметры 
+\family typewriter
+valign upper
+\family default
+ и 
+\family typewriter
+valign lower
+\family default
+.
+ Значение 
+\family typewriter
+выравнивание
+\family default
+ может быть одним из следующих:
+\end_layout
+
+\begin_layout Description
+top содержимое выровнено по верхнему краю
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+height=2cm, valign=top
+\end_layout
+
+\end_inset
+
+Выравнивание по верхнему краю.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+bottom содержимое выровнено по нижнему краю
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+height=2cm, valign=bottom
+\end_layout
+
+\end_inset
+
+Выравнивание по нижнему краю.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+center содержимое вертикально центрировано
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+height=2cm, valign=center
+\end_layout
+
+\end_inset
+
+Вертикально центрированное содержимое.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+scale содержимое масштабируется по вертикали, чтобы соответствовать высоте
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+height=2cm, valign=scale
+\end_layout
+
+\end_inset
+
+Блок с масшабированным содержимым.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Пример блока с частями:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+height=4cm, space=0.5, valign upper=bottom, valign lower=center
+\end_layout
+
+\end_inset
+
+Верхее содержимое выровнено по нижнему краю
+\end_layout
+
+\begin_layout Color Box Separator
+
+\end_layout
+
+\begin_layout Plain Layout
+Нижнее содержимое центрировано
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Шрифты
+\end_layout
+
+\begin_layout Standard
+Параметры изменения шрифта имеют синтаксис 
+\family typewriter
+option=код
+\family default
+, где 
+\family typewriter
+код
+\family default
+ — это \SpecialChar LaTeX
+-команды изменения шрифта.
+ Например, код
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+
+\backslash
+sffamily
+\backslash
+bfseries
+\backslash
+large
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+делает шрифт без засечек полужирным и увеличивает размер шрифта до уровня
+ 
+\family typewriter
+
+\backslash
+large
+\family default
+.
+\end_layout
+
+\begin_layout Subsubsection
+Заголовок
+\end_layout
+
+\begin_layout Standard
+Шрифт заголовка можно изменить с помощью параметра 
+\family typewriter
+fonttitle
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Заголовок, fonttitle=
+\backslash
+sffamily
+\backslash
+bfseries
+\backslash
+large
+\end_layout
+
+\end_inset
+
+Измененный шрифт заголовка
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Содержимое
+\end_layout
+
+\begin_layout Standard
+Шрифт для текста верхней и нижней части блока можно изменить с помощью параметро
+в 
+\family typewriter
+fontupper
+\family default
+ и 
+\family typewriter
+fontlower
+\family default
+, соответственно.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Заголовок, fontupper=
+\backslash
+ttfamily, fontlower=
+\backslash
+small
+\end_layout
+
+\end_inset
+
+Измененный шрифт верхнего содержимого
+\end_layout
+
+\begin_layout Color Box Separator
+
+\end_layout
+
+\begin_layout Plain Layout
+Измененный шрифт нижнего содержимого
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Цвет
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Color"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Цвет специфицируется по одной из следующих схем:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Название
+\series default
+
+\begin_inset VSpace 3mm
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Например, 
+\family typewriter
+red
+\family default
+ означает
+\begin_inset Newline newline
+\end_inset
+
+100
+\begin_inset space \thinspace{}
+\end_inset
+
+% красный
+\begin_inset Newline newline
+\end_inset
+
+Пример:
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=red
+\end_layout
+
+\end_inset
+
+Красный
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Название!Процент
+\series default
+
+\begin_inset VSpace 3mm
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Например, 
+\family typewriter
+geen!30
+\family default
+ означает
+\begin_inset Newline newline
+\end_inset
+
+30
+\begin_inset space \thinspace{}
+\end_inset
+
+% зеленый и 70
+\begin_inset space \thinspace{}
+\end_inset
+
+% белый (или 
+\begin_inset Quotes rld
+\end_inset
+
+прозрачный
+\begin_inset Quotes rrd
+\end_inset
+
+)
+\begin_inset Newline newline
+\end_inset
+
+Пример:
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=green!30
+\end_layout
+
+\end_inset
+
+Зеленый!30
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Название1!Процент!Название2
+\series default
+
+\begin_inset VSpace 3mm
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Например, 
+\family typewriter
+red!30!blue
+\family default
+ означает
+\begin_inset Newline newline
+\end_inset
+
+30
+\begin_inset space \thinspace{}
+\end_inset
+
+% красный и 70
+\begin_inset space \thinspace{}
+\end_inset
+
+% синий
+\begin_inset Newline newline
+\end_inset
+
+Пример:
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=red!30!blue
+\end_layout
+
+\end_inset
+
+Красный!30!Синий
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Название1!Процент1!Название2!Процент3!Название3
+\series default
+
+\begin_inset VSpace 3mm
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Например, 
+\family typewriter
+red!71.4!green!70!blue
+\family default
+ означает
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $1-0.70=30\,$
+\end_inset
+
+% синий,
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\left(1-0.714\right)\cdot0.70=20.02\thinspace$
+\end_inset
+
+% зеленый и
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $0.714\cdot0.70=49.98\thinspace$
+\end_inset
+
+% красный
+\begin_inset Newline newline
+\end_inset
+
+Пример:
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=red!71.4!green!70!blue
+\end_layout
+
+\end_inset
+
+Красный!71.4!Зеленый!70!Синий
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Возможные названия цветов:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="5">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="18col%">
+<column alignment="left" valignment="top" width="18col%">
+<column alignment="left" valignment="top" width="18col%">
+<column alignment="left" valignment="top" width="18col%">
+<column alignment="left" valignment="top" width="18col%">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fcolorbox{black}{
+\end_layout
+
+\end_inset
+
+red
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+W
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ red
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fcolorbox{black}{
+\end_layout
+
+\end_inset
+
+green
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+W
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ green
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fcolorbox{black}{
+\end_layout
+
+\end_inset
+
+blue
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+W
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ blue
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fcolorbox{black}{
+\end_layout
+
+\end_inset
+
+cyan
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+W
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ cyan
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fcolorbox{black}{
+\end_layout
+
+\end_inset
+
+magenta
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+W
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ magenta
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(красный)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(зеленый)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(синий)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(голубой)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(пурпурно-красный)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fcolorbox{black}{
+\end_layout
+
+\end_inset
+
+yellow
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+W
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ yellow
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fcolorbox{black}{
+\end_layout
+
+\end_inset
+
+black
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+W
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ black
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fcolorbox{black}{
+\end_layout
+
+\end_inset
+
+gray
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+W
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ gray
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fcolorbox{black}{
+\end_layout
+
+\end_inset
+
+white
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+W
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ white
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fcolorbox{black}{
+\end_layout
+
+\end_inset
+
+darkgray
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+W
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ darkgray
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(желтый)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(черный)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(серый)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(белый)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(темно-серый)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\,$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fcolorbox{black}{
+\end_layout
+
+\end_inset
+
+lightgray
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+W
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ lightgray
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fcolorbox{black}{
+\end_layout
+
+\end_inset
+
+brown
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+W
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ brown
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fcolorbox{black}{
+\end_layout
+
+\end_inset
+
+lime
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+W
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ lime
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fcolorbox{black}{
+\end_layout
+
+\end_inset
+
+olive
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+W
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ olive
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fcolorbox{black}{
+\end_layout
+
+\end_inset
+
+orange
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+W
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ orange
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(светло-серый)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(коричневый)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(липовый)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(оливковый)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(оранжевый)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fcolorbox{black}{
+\end_layout
+
+\end_inset
+
+pink
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+W
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ pink
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fcolorbox{black}{
+\end_layout
+
+\end_inset
+
+purple
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+W
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ purple
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fcolorbox{black}{
+\end_layout
+
+\end_inset
+
+teal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+W
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ teal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fcolorbox{black}{
+\end_layout
+
+\end_inset
+
+violet
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+W
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ violet
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(розовый)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(пурпурный)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(бирюзовый)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(фиолетовый)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+, перечисленные в Приложении C руководства 
+\shape italic
+Встроенные объекты
+\shape default
+.
+\end_layout
+
+\begin_layout Subsubsection
+Фон
+\end_layout
+
+\begin_layout Standard
+Цвет фона задается параметром 
+\family typewriter
+colback
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=red!66!green!70!blue
+\end_layout
+
+\end_inset
+
+Цвет фона
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Рамка
+\end_layout
+
+\begin_layout Standard
+Цвет рамки устанавливается параметром 
+\family typewriter
+colframe
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colframe=red!30!blue
+\end_layout
+
+\end_inset
+
+Цвет рамки
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Фон заголовка
+\end_layout
+
+\begin_layout Standard
+Цвет фона заголовка регулируется параметром 
+\family typewriter
+colbacktitle
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=A title, colbacktitle=green!30
+\end_layout
+
+\end_inset
+
+Цвет фона заголовка
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Текст заголовка
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Title-text"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Цвет текста заголовка устанавливается параметром 
+\family typewriter
+coltitle
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=A title, coltitle=orange
+\end_layout
+
+\end_inset
+
+Цвет текста заголовка
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex Subtitle
+status open
+
+\begin_layout Plain Layout
+Подзаголовок
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Текст
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Весь текст
+\end_layout
+
+\begin_layout Standard
+Цвет всего текста блока задается параметром 
+\family typewriter
+coltext
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+coltext=red
+\end_layout
+
+\end_inset
+
+Цвет текста
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Верхнее и нижнее содержимое
+\end_layout
+
+\begin_layout Standard
+Цвет верхней и нижней части текста изменяется с помощью параметров 
+\family typewriter
+
+\begin_inset Newline linebreak
+\end_inset
+
+colupper
+\family default
+ и 
+\family typewriter
+collower
+\family default
+, соответственно.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colupper=green!30!blue, collower=green!70!blue
+\end_layout
+
+\end_inset
+
+Цвет верхнего содержимого
+\end_layout
+
+\begin_layout Color Box Separator
+
+\end_layout
+
+\begin_layout Plain Layout
+Цвет нижнего содержимого
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Тени
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Shadows"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Блоки можно декорировать тенями, только если указан его вариант компоновки,
+ см.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Enhanced"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Тень
+\end_layout
+
+\begin_layout Standard
+Тень добавляется с помощью параметра 
+\family typewriter
+drop shadow=цвет
+\family default
+, где 
+\family typewriter
+цвет
+\family default
+ — это наименование или определение цвета, см.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Color"
+
+\end_inset
+
+.
+ Цвет можно не указывать, тогда цвет тени будет 
+\family typewriter
+black!50!white
+\family default
+.
+ Параметр 
+\family typewriter
+drop fuzzy shadow
+\family default
+ создает полупрозрачную тень.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+enhanced, drop shadow, nobeforeafter
+\end_layout
+
+\end_inset
+
+Блок с тенью
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+enhanced, drop fuzzy shadow=purple, nobeforeafter
+\end_layout
+
+\end_inset
+
+Блок с полупрозрачной пурпурной тенью
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Тень по умолчанию помещается прямо под рамкой.
+ По другим вариантам размещения теней смотрите раздел 
+\family sans
+Shadow Option Keys
+\family default
+ руководства по 
+\series bold
+tcolorbox
+\series default
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tcolorbox"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Ореол
+\end_layout
+
+\begin_layout Standard
+Ореол добавляется с помощью параметра 
+\family typewriter
+halo=размер with цвет
+\family default
+, где 
+\family typewriter
+размер
+\family default
+ — это числовое значение, а 
+\family typewriter
+цвет
+\family default
+ — наименование или определение цвета.
+ Размер и цвет можно не указывать, тогда ореол имеет толщину 0.9
+\begin_inset space \thinspace{}
+\end_inset
+
+mm желтого цвета.
+ Обратите внимание, что нельзя указать только размер или только цвет, либо
+ обе опции должны быть опущены, либо обе указаны.
+ Параметр 
+\family typewriter
+fuzzy halo
+\family default
+ создает полупрозрачный ореол.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+enhanced, halo, nobeforeafter
+\end_layout
+
+\end_inset
+
+Блок с ореолом
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+enhanced, fuzzy halo=5mm with green, nobeforeafter
+\end_layout
+
+\end_inset
+
+Блок с зеленым полупрозрачным ореолом толщиной 5
+\begin_inset space \thinspace{}
+\end_inset
+
+mm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Типичные параметры
+\end_layout
+
+\begin_layout Standard
+Типичные тени/ореолы могут быть созданы с помощью параметров 
+\family typewriter
+shadow
+\family default
+ или 
+\family typewriter
+fuzzy shadow
+\family default
+.
+ Их краткое описание см.
+ в разделе 
+\family sans
+Generic Shadows
+\family default
+ руководства по 
+\series bold
+tcolorbox
+\series default
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tcolorbox"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+enhanced, title=Double shadow, shadow={-2.5mm}{-2.5mm}{0mm}{fill=blue, opacity=0.25
+}, shadow={1.5mm}{1.5mm}{0mm}{fill=red, opacity=0.25}
+\end_layout
+
+\end_inset
+
+Блок с 2-мя типичными тенями.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "tcolorbox"
+literal "true"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "https://ctan.org/tex-archive/macros/latex/contrib/tcolorbox/tcolorbox.pdf"
+literal "false"
+
+\end_inset
+
+ of the \SpecialChar LaTeX
+ package 
+\series bold
+tcolorbox
+\end_layout
+
+\end_body
+\end_document

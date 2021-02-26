@@ -300,6 +300,10 @@ dist_ruinsetexamples_DATA = \
 	examples/ru/Graphics_and_Insets/xyfigure.png \
 	examples/ru/Graphics_and_Insets/XY-Pic.lyx
 
+rumoduleexamplesdir = $(pkgdatadir)/examples/ru/Modules
+dist_rumoduleexamples_DATA = \
+	examples/ru/Modules/Fancy_Colored_Boxes.lyx
+
 rupresentationexamplesdir = $(pkgdatadir)/examples/ru/Presentations
 dist_rupresentationexamples_DATA = \
 	examples/ru/Presentations/Beamer.lyx \
