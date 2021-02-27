@@ -406,7 +406,7 @@ void GuiPainter::textDecoration(FontInfo const & f, int x, int y, int width)
 		doubleUnderline(f, x, y, width);
 	if (f.uwave() == FONT_ON)
 		// f.color() doesn't work on some circumstances
-		wavyHorizontalLine(x, y, width,  f.realColor().baseColor);
+		wavyHorizontalLine(f, x, y, width,  f.realColor().baseColor);
 }
 
 
@@ -546,21 +546,28 @@ void GuiPainter::dashedUnderline(FontInfo const & f, int x, int y, int width)
 }
 
 
-void GuiPainter::wavyHorizontalLine(int x, int y, int width, ColorCode col)
+void GuiPainter::wavyHorizontalLine(FontInfo const & f, int x, int y, int width, ColorCode col)
 {
-	setQPainterPen(computeColor(col));
-	int const step = 2;
+	FontMetrics const & fm = theFontMetrics(f);
+	int const pos = fm.underlinePos();
+
+	setQPainterPen(computeColor(col), line_solid, fm.lineWidth());
+	int const step = 2 * fm.lineWidth();
 	int const xend = x + width;
-	int height = 1;
+	int height = 1 * fm.lineWidth();
 	//FIXME: I am not sure if Antialiasing gives the best effect.
 	//setRenderHint(Antialiasing, true);
+	QVector<QPoint> points;
 	while (x < xend) {
 		height = - height;
-		drawLine(x, y - height, x + step, y + height);
+		points.append(QPoint(x, y + pos - height));
+		points.append(QPoint(x + step, y + pos + height));
 		x += step;
-		drawLine(x, y + height, x + step/2, y + height);
+		points.append(QPoint(x, (qreal)y + pos + height));
+		points.append(QPoint(x + step/2, y + pos + height));
 		x += step/2;
 	}
+	drawPolyline(points);
 	//setRenderHint(Antialiasing, false);
 }
 

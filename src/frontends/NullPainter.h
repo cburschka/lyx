@@ -105,7 +105,7 @@ public:
 	/// leave monochrome painting mode
 	void leaveMonochromeMode() override {}
 	/// draws a wavy line that can be used for underlining.
-	void wavyHorizontalLine(int, int, int, ColorCode) override {}
+	void wavyHorizontalLine(FontInfo const &, int, int, int, ColorCode) override {}
 };
 
 } // namespace frontend

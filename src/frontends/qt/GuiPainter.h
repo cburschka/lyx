@@ -160,7 +160,7 @@ public:
 	int preeditText(int x, int y,
 		char_type c, FontInfo const & f, preedit_style style) override;
 
-	void wavyHorizontalLine(int x, int y, int width, ColorCode col) override;
+	void wavyHorizontalLine(FontInfo const & f, int x, int y, int width, ColorCode col) override;
 
 private:
 	/// check the font, and if set, draw an underline

@@ -186,7 +186,7 @@ public:
 	/// leave monochrome painting mode
 	virtual void leaveMonochromeMode() = 0;
 	/// draws a wavy line that can be used for underlining.
-	virtual void wavyHorizontalLine(int x, int y, int width, ColorCode col) = 0;
+	virtual void wavyHorizontalLine(FontInfo const & f, int x, int y, int width, ColorCode col) = 0;
 private:
 	/// Ratio between physical pixels and device-independent pixels
 	double pixel_ratio_;
