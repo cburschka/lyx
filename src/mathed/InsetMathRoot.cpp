@@ -22,6 +22,8 @@
 
 #include "frontends/Painter.h"
 
+#include "support/lstrings.h"
+
 
 using namespace std;
 
@@ -134,7 +136,11 @@ void InsetMathRoot::draw(PainterInfo & pi, int x, int y) const
 void InsetMathRoot::write(WriteStream & os) const
 {
 	MathEnsurer ensurer(os);
-	os << "\\sqrt[" << cell(0) << "]{" << cell(1) << '}';
+	if (os.latex() && !cell(0).empty() && !cell(0).front()->asBraceInset()
+	    && support::contains(asString(cell(0)), '['))
+		os << "\\sqrt[{" << cell(0) << "}]{" << cell(1) << '}';
+	else
+		os << "\\sqrt[" << cell(0) << "]{" << cell(1) << '}';
 }
 
 

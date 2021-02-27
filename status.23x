@@ -60,6 +60,9 @@ What's new
   immediately following nested itemize environment when loading documents
   created with version 2.1 or earlier (bug 12148).
 
+- Fix export of the optional argument of \sqrt when it contains other
+  commands with optional arguments (bug 3294).
+
 
 * USER INTERFACE
 
