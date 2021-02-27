@@ -772,9 +772,12 @@ void mathedSymbolDraw(PainterInfo & pi, int x, int y, latexkeys const * sym)
 	//	<< "' drawn as: '" << sym->draw
 	//	<< "'" << endl;
 
-	bool const italic_upcase_greek = sym->inset == "cmr" &&
-		sym->extra == "mathalpha" &&
-		pi.base.fontname == "mathit";
+	bool const upcase_greek =
+		sym->inset == "cmr" && sym->extra == "mathalpha";
+	bool const bold_upcase_greek =
+		upcase_greek && pi.base.fontname == "mathbf";
+	bool const italic_upcase_greek =
+		upcase_greek && pi.base.fontname == "mathit";
 	std::string const font = italic_upcase_greek ? "cmm" : sym->inset;
 	bool const change_font = font != "cmr" ||
 				(pi.base.fontname != "mathbb" &&
@@ -784,6 +787,8 @@ void mathedSymbolDraw(PainterInfo & pi, int x, int y, latexkeys const * sym)
 				 pi.base.fontname != "mathscr");
 	Changer dummy = change_font ? pi.base.changeFontSet(font) : noChange();
 	pi.draw(x, y, mathedSymbol(pi.base, sym));
+	if (bold_upcase_greek)
+		pi.draw(x + 1, y, mathedSymbol(pi.base, sym));
 }
 
 
