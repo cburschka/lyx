@@ -1486,6 +1486,135 @@ static string getutf8(unsigned uchar)
 	return(ret);
 }
 
+static void addAccents(string latex_in, string unicode_out)
+{
+  latex_in = latex_in.substr(1);
+  AccentsIterator it_ac = accents.find(latex_in);
+  if (it_ac == accents.end()) {
+    accents[latex_in] = unicode_out;
+  }
+  else {
+    LYXERR0("Key " << latex_in  << " already set");
+  }
+}
+
+void static fillMissingUnicodesymbols()
+{
+  addAccents("\\textyen", getutf8(0x00a5));
+  addAccents("\\yen", getutf8(0x00a5));
+  addAccents("\\textsection", getutf8(0x00a7));
+  addAccents("\\mathsection", getutf8(0x00a7));
+  addAccents("\\textlnot", getutf8(0x00ac));
+  addAccents("\\neg", getutf8(0x00ac));
+  addAccents("\\textpm", getutf8(0x00b1));
+  addAccents("\\pm", getutf8(0x00b1));
+  addAccents("\\textparagraph", getutf8(0x00b6));
+  addAccents("\\mathparagraph", getutf8(0x00b6));
+  addAccents("\\textperiodcentered", getutf8(0x00b7));
+  addAccents("\\texttimes", getutf8(0x00d7));
+  addAccents("\\times", getutf8(0x00d7));
+  addAccents("\\dh", getutf8(0x00f0));
+  addAccents("\\eth", getutf8(0x00f0));
+  addAccents("\\textdiv", getutf8(0x00f7));
+  addAccents("\\div", getutf8(0x00f7));
+  addAccents("\\o", getutf8(0x00f8));
+  addAccents("\\j", getutf8(0x0237));
+  addAccents("\\textalpha", getutf8(0x03b1));
+  addAccents("\\alpha", getutf8(0x03b1));
+  addAccents("\\textbeta", getutf8(0x03b2));
+  addAccents("\\beta", getutf8(0x03b2));
+  addAccents("\\textgamma", getutf8(0x03b3));
+  addAccents("\\gamma", getutf8(0x03b3));
+  addAccents("\\textdelta", getutf8(0x03b4));
+  addAccents("\\delta", getutf8(0x03b4));
+  addAccents("\\textepsilon", getutf8(0x03b5));
+  addAccents("\\varepsilon", getutf8(0x03b5));
+  addAccents("\\textzeta", getutf8(0x03b6));
+  addAccents("\\zeta", getutf8(0x03b6));
+  addAccents("\\texteta", getutf8(0x03b7));
+  addAccents("\\eta", getutf8(0x03b7));
+  addAccents("\\texttheta", getutf8(0x03b8));
+  addAccents("\\theta", getutf8(0x03b8));
+  addAccents("\\textiota", getutf8(0x03b9));
+  addAccents("\\iota", getutf8(0x03b9));
+  addAccents("\\textkappa", getutf8(0x03ba));
+  addAccents("\\kappa", getutf8(0x03ba));
+  addAccents("\\textlambda", getutf8(0x03bb));
+  addAccents("\\lambda", getutf8(0x03bb));
+  addAccents("\\textmu", getutf8(0x03bc));
+  addAccents("\\mu", getutf8(0x03bc));
+  addAccents("\\textnu", getutf8(0x03bd));
+  addAccents("\\nu", getutf8(0x03bd));
+  addAccents("\\textxi", getutf8(0x03be));
+  addAccents("\\xi", getutf8(0x03be));
+  addAccents("\\textpi", getutf8(0x03c0));
+  addAccents("\\pi", getutf8(0x03c0));
+  addAccents("\\textrho", getutf8(0x03c1));
+  addAccents("\\rho", getutf8(0x03c1));
+  addAccents("\\textfinalsigma", getutf8(0x03c2));
+  addAccents("\\varsigma", getutf8(0x03c2));
+  addAccents("\\textsigma", getutf8(0x03c3));
+  addAccents("\\sigma", getutf8(0x03c3));
+  addAccents("\\texttau", getutf8(0x03c4));
+  addAccents("\\tau", getutf8(0x03c4));
+  addAccents("\\textupsilon", getutf8(0x03c5));
+  addAccents("\\upsilon", getutf8(0x03c5));
+  addAccents("\\textphi", getutf8(0x03c6));
+  addAccents("\\varphi", getutf8(0x03c6));
+  addAccents("\\textchi", getutf8(0x03c7));
+  addAccents("\\chi", getutf8(0x03c7));
+  addAccents("\\textpsi", getutf8(0x03c8));
+  addAccents("\\psi", getutf8(0x03c8));
+  addAccents("\\textomega", getutf8(0x03c9));
+  addAccents("\\omega", getutf8(0x03c9));
+  addAccents("\\textdigamma", getutf8(0x03dd));
+  addAccents("\\digamma", getutf8(0x03dd));
+  addAccents("\\hebalef", getutf8(0x05d0));
+  addAccents("\\aleph", getutf8(0x05d0));
+  addAccents("\\hebbet", getutf8(0x05d1));
+  addAccents("\\beth", getutf8(0x05d1));
+  addAccents("\\hebgimel", getutf8(0x05d2));
+  addAccents("\\gimel", getutf8(0x05d2));
+  addAccents("\\hebdalet", getutf8(0x05d3));
+  addAccents("\\daleth", getutf8(0x05d3));
+  addAccents("\\dag", getutf8(0x2020));
+  addAccents("\\dagger", getutf8(0x2020));
+  addAccents("\\ddag", getutf8(0x2021));
+  addAccents("\\ddagger", getutf8(0x2021));
+  addAccents("\\textbullet", getutf8(0x2022));
+  addAccents("\\bullet", getutf8(0x2022));
+  addAccents("\\dots", getutf8(0x2026));
+  addAccents("\\ldots", getutf8(0x2026));
+  addAccents("\\textasciiacute", getutf8(0x2032));
+  addAccents("\\prime", getutf8(0x2032));
+  addAccents("\\textasciigrave", getutf8(0x2035));
+  addAccents("\\backprime", getutf8(0x2035));
+  addAccents("\\textasteriskcentered", getutf8(0x204e));
+  addAccents("\\ast", getutf8(0x204e));
+  addAccents("\\textmho", getutf8(0x2127));
+  addAccents("\\mho", getutf8(0x2127));
+  addAccents("\\textleftarrow", getutf8(0x2190));
+  addAccents("\\leftarrow", getutf8(0x2190));
+  addAccents("\\textuparrow", getutf8(0x2191));
+  addAccents("\\uparrow", getutf8(0x2191));
+  addAccents("\\textrightarrow", getutf8(0x2192));
+  addAccents("\\rightarrow", getutf8(0x2192));
+  addAccents("\\textdownarrow", getutf8(0x2193));
+  addAccents("\\downarrow", getutf8(0x2193));
+  addAccents("\\textglobrise", getutf8(0x2197));
+  addAccents("\\nearrow", getutf8(0x2197));
+  addAccents("\\textglobfall", getutf8(0x2198));
+  addAccents("\\searrow", getutf8(0x2198));
+  addAccents("\\textsurd", getutf8(0x221a));
+  addAccents("\\surd", getutf8(0x221a));
+  addAccents("\\textbigcircle", getutf8(0x25ef));
+  addAccents("\\bigcirc", getutf8(0x25ef));
+  addAccents("\\textlangle", getutf8(0x27e8));
+  addAccents("\\langle", getutf8(0x27e8));
+  addAccents("\\textrangle", getutf8(0x27e9));
+  addAccents("\\rangle", getutf8(0x27e9));
+}
+
 static void buildAccentsMap()
 {
   accents["imath"] = "ı";
@@ -1577,6 +1706,8 @@ static void buildAccentsMap()
                                    "ȂȃȆȇȊȋȎȏȒȓȖȗ"); // inverted breve
   buildaccent("slashed", "oO",
                          "øØ"); // slashed
+  fillMissingUnicodesymbols(); // Add some still not handled entries contained in 'unicodesynbols'
+  // LYXERR0("Number of accents " << accents.size());
 }
 
 /*
