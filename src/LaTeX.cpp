@@ -135,6 +135,7 @@ LaTeX::LaTeX(string const & latex, OutputParams const & rp,
 
 void LaTeX::removeAuxiliaryFiles() const
 {
+	LYXERR(Debug::LATEX, "Removing auxiliary files");
 	// Note that we do not always call this function when there is an error.
 	// For example, if there is an error but an output file is produced we
 	// still would like to output (export/view) the file.
