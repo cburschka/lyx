@@ -34,6 +34,7 @@ class Inset;
 
 namespace frontend {
 
+class FancyLineEdit;
 class GuiView;
 
 class TocWidget : public QWidget, public Ui::TocUi
@@ -118,6 +119,8 @@ private:
 	GuiView & gui_view_;
 	// Timer for scheduling expensive update operations
 	QTimer * timer_;
+	/// Filter bar
+	FancyLineEdit * filter_;
 };
 
 } // namespace frontend

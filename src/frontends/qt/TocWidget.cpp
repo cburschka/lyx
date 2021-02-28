@@ -17,6 +17,7 @@
 #include "GuiView.h"
 #include "qt_helpers.h"
 #include "TocModel.h"
+#include "FancyLineEdit.h"
 
 #include "Buffer.h"
 #include "BufferView.h"
@@ -77,10 +78,17 @@ TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
 
 	// Only one item selected at a time.
 	tocTV->setSelectionMode(QAbstractItemView::SingleSelection);
-	setFocusProxy(tocTV);
 
 	// The toc types combo won't change its model.
 	typeCO->setModel(gui_view_.tocModels().nameModel());
+
+	// The filter bar
+	filter_ = new FancyLineEdit(this);
+	filter_->setClearButton(true);
+	filter_->setPlaceholderText(qt_("All items"));
+	filterBarL->addWidget(filter_, 0);
+	filterLA->setBuddy(filter_);
+	setFocusProxy(filter_);
 
 	// Make sure the buttons are disabled when first shown without a loaded
 	// Buffer.
@@ -92,8 +100,15 @@ TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
 		this, SLOT(showContextMenu(const QPoint &)));
 	connect(tocTV, SIGNAL(customContextMenuRequested(const QPoint &)),
 		this, SLOT(showContextMenu(const QPoint &)));
-	connect(filterLE, SIGNAL(textEdited(QString)),
+	connect(filter_, SIGNAL(textEdited(QString)),
 		this, SLOT(filterContents()));
+#if (QT_VERSION < 0x050000)
+	connect(filter_, SIGNAL(downPressed()),
+		tocTV, SLOT(setFocus()));
+#else
+	connect(filter_, &FancyLineEdit::downPressed,
+		tocTV, [this](){ focusAndHighlight(tocTV); });
+#endif
 	connect(activeFilterCO, SIGNAL(activated(int)),
 		this, SLOT(filterContents()));
 
@@ -521,7 +536,7 @@ void TocWidget::filterContents()
 		QModelIndex index = indices[i];
 		bool matches =
 			index.data().toString().contains(
-				filterLE->text(), Qt::CaseInsensitive);
+				filter_->text(), Qt::CaseInsensitive);
 		TocItem const & item =
 			gui_view_.tocModels().currentItem(current_type_, index);
 		matches &= (show_active && item.isOutput()) || (show_inactive && !item.isOutput());

@@ -42,7 +42,7 @@ public:
 	bool initialiseParams(std::string const & data) override;
 	void updateView() override;
 	void enableView(bool enable) override;
-	bool wantInitialFocus() const override { return false; }
+	bool wantInitialFocus() const override { return true; }
 	void closeEvent(QCloseEvent * event) override;
 	bool isClosing() const override { return is_closing_; }
 
