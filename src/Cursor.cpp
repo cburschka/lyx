@@ -1712,8 +1712,11 @@ void Cursor::handleNest(MathAtom const & a)
 {
 	idx_type const idx = a.nucleus()->asNestInset()->firstIdx();
 	//lyxerr << "Cursor::handleNest: " << idx << endl;
+	InsetMath const * im = selectionBegin().inset().asInsetMath();
+	Parse::flags const f = im && im->currentMode() != InsetMath::MATH_MODE
+		? Parse::TEXTMODE : Parse::NORMAL;
 	MathAtom t = a;
-	asArray(cap::grabAndEraseSelection(*this), t.nucleus()->cell(idx));
+	asArray(cap::grabAndEraseSelection(*this), t.nucleus()->cell(idx), f);
 	insert(t);
 	editInsertedInset();
 }
