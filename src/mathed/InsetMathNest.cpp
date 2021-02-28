@@ -791,7 +791,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.clearTargetX();
 		cur.macroModeClose();
 		if (!cur.inset().idxPrev(cur)) {
-			cur.idx() = lastIdx();
+			cur.idx() = cur.lastidx();
 			cur.pos() = lyxrc.mac_like_cursor_movement ? cur.lastpos() : 0;
 		}
 		break;
