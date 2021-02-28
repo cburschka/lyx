@@ -33,6 +33,9 @@
 #include <QPainter>
 #include <QStyle>
 #include <QPaintEvent>
+#if QT_VERSION >= 0x050000
+#include <QWindow>
+#endif
 
 enum { margin = 6 };
 
@@ -194,8 +197,13 @@ void FancyLineEdit::updateMargins()
 	Side realLeft = (leftToRight ? Left : Right);
 	Side realRight = (leftToRight ? Right : Left);
 
-	int leftMargin = m_d->m_iconbutton[realLeft]->pixmap().width() + 8;
-	int rightMargin = m_d->m_iconbutton[realRight]->pixmap().width() + 8;
+	qreal dpr = 1.0;
+#if QT_VERSION >= 0x050000
+	// Consider device/pixel ratio (HiDPI)
+	dpr = devicePixelRatio();
+#endif
+	int leftMargin = (m_d->m_iconbutton[realLeft]->pixmap().width() / dpr ) + 8;
+	int rightMargin = (m_d->m_iconbutton[realRight]->pixmap().width() / dpr) + 8;
 	// Note KDE does not reserve space for the highlight color
 	if (style()->inherits("OxygenStyle")) {
 		leftMargin = qMax(24, leftMargin);
@@ -334,14 +342,21 @@ IconButton::IconButton(QWidget *parent)
 
 void IconButton::paintEvent(QPaintEvent *)
 {
-	QPainter painter(this);
-	QRect pixmapRect = QRect(0, 0, m_pixmap.width(), m_pixmap.height());
+	qreal dpr = 1.0;
+#if QT_VERSION >= 0x050000
+	// Consider device/pixel ratio (HiDPI)
+	QWindow * window = this->window()->windowHandle();
+	dpr = window->devicePixelRatio();
+#endif
+	QRect pixmapRect(QPoint(), m_pixmap.size() / dpr);
 	pixmapRect.moveCenter(rect().center());
+	QPixmap pm = m_pixmap;
 
+	QPainter painter(this);
 	if (m_autoHide)
 		painter.setOpacity(m_iconOpacity);
 
-	painter.drawPixmap(pixmapRect, m_pixmap);
+	painter.drawPixmap(pixmapRect, pm);
 }
 
 

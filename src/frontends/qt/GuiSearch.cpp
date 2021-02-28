@@ -27,8 +27,11 @@
 #include "GuiKeySymbol.h"
 #include "GuiView.h"
 
+#include "qt_helpers.h"
+#include "support/filetools.h"
 #include "support/debug.h"
 #include "support/gettext.h"
+#include "support/FileName.h"
 #include "frontends/alert.h"
 #include "frontends/Clipboard.h"
 
@@ -38,8 +41,12 @@
 #include <QSettings>
 #include <QShowEvent>
 #include "QSizePolicy"
+#if QT_VERSION >= 0x050000
+#include <QSvgRenderer>
+#endif
 
 using namespace std;
+using namespace lyx::support;
 
 using lyx::KeySymbol;
 
@@ -221,13 +228,24 @@ void GuiSearchWidget::handleIndicators()
 		if (wrapCB->isChecked())
 			++pms;
 
+		bool const dark_mode = guiApp && guiApp->isInDarkMode();
+		qreal dpr = 1.0;
+#if QT_VERSION >= 0x050000
+		// Consider device/pixel ratio (HiDPI)
+		if (guiApp && guiApp->currentView())
+			dpr = guiApp->currentView()->devicePixelRatio();
+#endif
+		QString imagedir = "images/";
 		QPixmap bpixmap = getPixmap("images/", "search-options", "svgz,png");
+		QPixmap pm = bpixmap;
 
 		if (pms > 0) {
 			int const gap = 3;
-			QPixmap tpixmap(pms * (bpixmap.width() + gap), bpixmap.height());
-			tpixmap.fill(Qt::transparent);
-			QPainter painter(&tpixmap);
+			QPixmap scaled_pm = QPixmap(bpixmap.size() * dpr);
+			pm = QPixmap(pms * scaled_pm.width() + ((pms - 1) * gap),
+				     scaled_pm.height());
+			pm.fill(Qt::transparent);
+			QPainter painter(&pm);
 			int x = 0;
 			
 			tip = qt_("Active options:");
@@ -235,50 +253,118 @@ void GuiSearchWidget::handleIndicators()
 			if (caseCB->isChecked()) {
 				tip += "<li>" + qt_("Case sensitive search");
 				QPixmap spixmap = getPixmap("images/", "search-case-sensitive", "svgz,png");
+#if QT_VERSION < 0x050000
 				painter.drawPixmap(x, 0, spixmap);
-				x += spixmap.width() + gap;
+#else
+				// With Qt5, we render SVG directly for HiDPI scalability
+				FileName fname = imageLibFileSearch(imagedir, "search-case-sensitive", "svgz,png");
+				QString fpath = toqstr(fname.absFileName());
+				if (!fpath.isEmpty()) {
+					QSvgRenderer svgRenderer(fpath);
+					if (svgRenderer.isValid())
+						svgRenderer.render(&painter, QRectF(0, 0, spixmap.width() * dpr,
+										    spixmap.height() * dpr));
+				}
+#endif
+				x += (spixmap.width() * dpr) + gap;
 			}
 			if (wordsCB->isChecked()) {
 				tip += "<li>" + qt_("Whole words only");
 				QPixmap spixmap = getPixmap("images/", "search-whole-words", "svgz,png");
+#if QT_VERSION < 0x050000
 				painter.drawPixmap(x, 0, spixmap);
-				x += spixmap.width() + gap;
+#else
+				FileName fname = imageLibFileSearch(imagedir, "search-whole-words", "svgz,png");
+				QString fpath = toqstr(fname.absFileName());
+				if (!fpath.isEmpty()) {
+					QSvgRenderer svgRenderer(fpath);
+					if (svgRenderer.isValid())
+						svgRenderer.render(&painter, QRectF(x, 0, spixmap.width() * dpr,
+										    spixmap.height() * dpr));
+				}
+#endif
+				x += (spixmap.width() * dpr) + gap;
 			}
 			if (selectionCB->isChecked()) {
 				tip += "<li>" + qt_("Search only in selection");
 				QPixmap spixmap = getPixmap("images/", "search-selection", "svgz,png");
+#if QT_VERSION < 0x050000
 				painter.drawPixmap(x, 0, spixmap);
-				x += spixmap.width() + gap;
+#else
+				FileName fname = imageLibFileSearch(imagedir, "search-selection", "svgz,png");
+				QString fpath = toqstr(fname.absFileName());
+				if (!fpath.isEmpty()) {
+					QSvgRenderer svgRenderer(fpath);
+					if (svgRenderer.isValid())
+						svgRenderer.render(&painter, QRectF(x, 0, spixmap.width() * dpr,
+										    spixmap.height() * dpr));
+				}
+#endif
+				x += (spixmap.width() * dpr) + gap;
 			}
 			if (instantSearchCB->isChecked()) {
 				tip += "<li>" + qt_("Search as you type");
 				QPixmap spixmap = getPixmap("images/", "search-instant", "svgz,png");
+#if QT_VERSION < 0x050000
 				painter.drawPixmap(x, 0, spixmap);
-				x += spixmap.width() + gap;
+#else
+				FileName fname = imageLibFileSearch(imagedir, "search-instant", "svgz,png");
+				QString fpath = toqstr(fname.absFileName());
+				if (!fpath.isEmpty()) {
+					QSvgRenderer svgRenderer(fpath);
+					if (svgRenderer.isValid())
+						svgRenderer.render(&painter, QRectF(x, 0, spixmap.width() * dpr,
+										    spixmap.height() * dpr));
+				}
+#endif
+				x += (spixmap.width() * dpr) + gap;
 			}
 			if (wrapCB->isChecked()) {
 				tip += "<li>" + qt_("Wrap search");
 				QPixmap spixmap = getPixmap("images/", "search-wrap", "svgz,png");
+#if QT_VERSION < 0x050000
 				painter.drawPixmap(x, 0, spixmap);
-				x += spixmap.width() + gap;
+#else
+				FileName fname = imageLibFileSearch(imagedir, "search-wrap", "svgz,png");
+				QString fpath = toqstr(fname.absFileName());
+				if (!fpath.isEmpty()) {
+					QSvgRenderer svgRenderer(fpath);
+					if (svgRenderer.isValid())
+						svgRenderer.render(&painter, QRectF(x, 0, spixmap.width() * dpr,
+										    spixmap.height() * dpr));
+				}
+#endif
+				x += (spixmap.width() * dpr) + gap;
 			}
 			tip += "</ul>";
+#if QT_VERSION >= 0x050000
+			pm.setDevicePixelRatio(dpr);
+#endif
 			painter.end();
-			if (guiApp && guiApp->isInDarkMode()) {
-				QImage img = tpixmap.toImage();
-				img.invertPixels();
-				tpixmap.convertFromImage(img);
-			}
-			findLE_->setButtonPixmap(FancyLineEdit::Right, tpixmap);
 		} else {
 			tip = qt_("Click here to change search options");
-			if (guiApp && guiApp->isInDarkMode()) {
-				QImage img = bpixmap.toImage();
-				img.invertPixels();
-				bpixmap.convertFromImage(img);
+#if QT_VERSION >= 0x050000
+			// With Qt5, we render SVG directly for HiDPI scalability
+			FileName fname = imageLibFileSearch(imagedir, "search-options", "svgz,png");
+			QString fpath = toqstr(fname.absFileName());
+			if (!fpath.isEmpty()) {
+				QSvgRenderer svgRenderer(fpath);
+				if (svgRenderer.isValid()) {
+					pm = QPixmap(bpixmap.size() * dpr);
+					pm.fill(Qt::transparent);
+					QPainter painter(&pm);
+					svgRenderer.render(&painter);
+					pm.setDevicePixelRatio(dpr);
+				}
 			}
-			findLE_->setButtonPixmap(FancyLineEdit::Right, bpixmap);
+#endif
 		}
+		if (dark_mode) {
+			QImage img = pm.toImage();
+			img.invertPixels();
+			pm.convertFromImage(img);
+		}
+		findLE_->setButtonPixmap(FancyLineEdit::Right, pm);
 	}
 	findLE_->setButtonToolTip(FancyLineEdit::Right, tip);
 }
