@@ -417,7 +417,7 @@ void GuiSearchWidget::showEvent(QShowEvent * e)
 void GuiSearchWidget::findBufferChanged()
 {
 	docstring search = theClipboard().getFindBuffer();
-	// update from find buffer, but only if the strings differs (else we
+	// update from find buffer, but only if the strings differ (else we
 	// might end up in loops with search as you type)
 	if (!search.empty() && toqstr(search) != findCO->lineEdit()->text()) {
 		LYXERR(Debug::CLIPBOARD, "from findbuffer: " << search);
