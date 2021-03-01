@@ -132,7 +132,7 @@ Options avancées de \SpecialChar LyX
 \begin_layout Subtitle
 Version 2.3.x
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Informations de révision :
@@ -2139,9 +2139,7 @@ Outils supplémentaires
 
 \begin_layout Section
 Personnaliser une bibliographie avec Bib\SpecialChar TeX
-
-\lang english
- or Biblatex
+ ou Biblatex
 \end_layout
 
 \begin_layout Standard
@@ -7809,7 +7807,6 @@ $$t
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 .tex
 \end_layout
 
@@ -21373,34 +21370,29 @@ Copy
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This will create a copy of the current document.
- Since RCS does not support copy operations natively, the version history
- is not preserved, and the copy is added as a new file.
- It requires a clean document without any changes since the last checkin.
- You are asked for a file name and a description of the copy operation.
- After that the copy is created, both locally and in the repository.
- If the parent directories of the copied and original document differ, all
- relative paths of included files of the copy are adjusted (like in 
+Ceci va créer une copie du document.
+ Du fait que RCS ne prévoit pas à l'origine de gérer les opérations de copie,
+ l'historique de version n'est pas préservé et la copie est ajoutée comme
+ un nouveau fichier.
+ Elle suppose un document propre sans modifications depuis le dernier enregistre
+ment.
+ On vous demande un nom de fichier et une description de l'opération de
+ copie.
+ Ensuite la copie est créée, à la fois localement et dans le dépôt.
+ Si les répertoires parents de la copie et du document original sont différents,
+ tous les chemins relatifs des fichiers inclus sont corrigés (comme avec
+ 
 \family sans
-File\SpecialChar menuseparator
-Save As
+Fichier\SpecialChar menuseparator
+Enregistrer sous
 \family default
 \SpecialChar ldots
 ).
- Finally, the copy is loaded instead of the original document.
+ Enfin, la copie est chargée à la place du document original.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\lang english
-RCS
-\begin_inset space ~
-\end_inset
-
-commands: 
+\begin_layout Itemize
+Commandes RCS: 
 \begin_inset space ~
 \end_inset
 
@@ -21413,9 +21405,6 @@ Copy
 status collapsed
 
 \begin_layout Plain Layout
-
-\family typewriter
-\lang english
 \begin_inset Quotes qld
 \end_inset
 
@@ -21433,9 +21422,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\family typewriter
-\lang english
 \begin_inset Quotes qld
 \end_inset
 
@@ -21457,11 +21443,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-ci -q -u 
-\family typewriter
--i 
+ci -q -u -i 
 \begin_inset Quotes qld
 \end_inset
 
@@ -24601,36 +24583,28 @@ reference "subsec:VCS-Revision-Information"
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Further tuning
+Personnalisation avancée
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-With the recent addition of the 
+Avec l'implantation de la commande 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 vc-command
 \end_layout
 
 \end_inset
 
- function \SpecialChar LyX
- power users are allowed to create their own commands for revision
- control.
+, les utilisateurs avancés de \SpecialChar LyX
+ peuvent créer leurs propres commandes de
+ contrôle de version.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-As an example you can see how two TortoiseSVN commands could be integrated
- directly:
+Par exemple, vous pouvez voir comment deux commandes TortoiseSVN pourraient
+ être directement intégrées:
 \end_layout
 
 \begin_layout Description
@@ -24672,7 +24646,7 @@ vc-command DR "." "TortoiseProc /command:revert /path:$$p"
 \begin_layout Subsection
 
 \lang english
-Version control and Document comparison
+Contrôle de version et comparaison de documents
 \end_layout
 
 \begin_layout Standard
@@ -25021,47 +24995,36 @@ Génération des documents et du code (weaving and tangling)
 \end_layout
 
 \begin_layout Paragraph
-
-\lang english
 Using the noweb module
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you have installed Noweb and \SpecialChar LyX
- successfully, whenever you open a new document,
- after you have chosen its document class, use the 
+Si vous avez installé Noweb et \SpecialChar LyX
+ avec succès, chaque fois que vous ouvrez
+ un nouveau document, après avoir choisi sa classe, utilisez le menu
 \family sans
-Document\SpecialChar menuseparator
-Settings
+ Document\SpecialChar menuseparator
+Paramètres...
+
 \family default
- menu to add the 
-\begin_inset Quotes eld
+ pour ajouter le module 
+\begin_inset Quotes cld
 \end_inset
 
 noweb
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
- module.
- If Noweb is correctly installed, when you click on the 
-\begin_inset Quotes eld
+.
+ Vous le verrez en cliquant sur 
+\begin_inset Quotes cld
 \end_inset
 
-Modules
-\begin_inset Quotes erd
+ Modules
+\begin_inset Quotes crd
 \end_inset
 
- link, you will see the 
-\begin_inset Quotes eld
-\end_inset
-
-noweb
-\begin_inset Quotes erd
-\end_inset
-
- module in the available list and you can add it to your document.
+ dans le liste des modules disponibles.
 \end_layout
 
 \begin_layout Paragraph
@@ -25451,68 +25414,55 @@ notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 NOWEB_OUTPUT_DIR=$2 sh
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The next part of the converter setting is the
+Le prochain élément du réglage du convertisseur est le
 \begin_inset Newline newline
 \end_inset
 
 
-\begin_inset Quotes eld
+\begin_inset Quotes cld
 \end_inset
 
-Flags
-\begin_inset Quotes erd
+Drapeau
+\begin_inset Quotes crd
 \end_inset
 
- which is to be set to 
+ qui doit être mis à
 \end_layout
 
 \begin_layout LyX-Code
-
-\family typewriter
-\lang english
 parselog=$$s/scripts/listerrors
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This will run any errors that are generated by the 
-\begin_inset Quotes eld
-\end_inset
-
-build-script
-\begin_inset Quotes erd
-\end_inset
-
- process through the 
-\begin_inset Quotes eld
+Ceci filtrera par le programme 
+\begin_inset Quotes cld
 \end_inset
 
 listerrors
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
- program.
+ toute erreur créée par le 
+\family sans
+build-script
+\family default
+.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The build will normally take place in \SpecialChar LyX
-'s temporary directory, so the files
- produced by the conversion will be in that directory.
+La construction prendra normalement place dans le répertoire temporaire
+ de \SpecialChar LyX
+, les fichiers produits seront donc normalement dans ce répertoire.
  \SpecialChar LyX
- will copy out what it regards as the `main' file, but the 
+ exportera ce qui concerne le fichier principal, mais le programme de conversio
+n
 \family typewriter
-Noweb->Program
+ Noweb->Program
 \family default
- conversion may produce several files, and so most of these would then be
- deleted when \SpecialChar LyX
- was closed.
- This is why we pass in the NOWEB_OUTPUT_DIR environment variable so that
- the build-script chunk can place the generated files in that location.
+ peut produire d'autres fichiers, qui seront perdus quand \SpecialChar LyX
+ sera fermé.
+ C'est pourquoi nous transmettons la variable d'environnement NOWEB_OUTPUT_DIR
+ pour que les éléments de la conversion puissent être copiés à cet endroit.
 \end_layout
 
 \begin_layout Paragraph
@@ -25965,11 +25915,7 @@ ddd
 Notez cependant qu'il vous faut activer cette fonction du serveur \SpecialChar LyX
 , inactive
  par défaut.
- 
-\lang english
-La section
-\lang french
-
+ La section
 \begin_inset space ~
 \end_inset
 
@@ -25980,9 +25926,7 @@ reference "sec:Démarrer-le-Serveur"
 
 \end_inset
 
- 
-\lang english
-explique comment procéder.
+ explique comment procéder.
 \end_layout
 
 \begin_layout Subsubsection
@@ -26174,31 +26118,31 @@ nouvelle ligne
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
 \SpecialChar LyX
- and knitr/Sweave
+ et knitr/Sweave
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Support for 
+Les fonctionnalités de 
 \family sans
 knitr
 \family default
- and 
+ et 
 \family sans
 Sweave
 \family default
- is documented in the 
+ sont documentées dans le fichier d'exemple 
 \emph on
 knitr.lyx
 \emph default
- example file and in the Sweave manual (menu 
+ et dans le manuel 
+\emph on
+Sweave
+\emph default
+ (menu 
 \family sans
-Help\SpecialChar menuseparator
-Specific Manuals
+Aide\SpecialChar menuseparator
+Manuels Spécifiques
 \family default
 ).
 \end_layout
@@ -26853,8 +26797,6 @@ On the evening of the crime, he returned from the club exactly at ten.
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
 Espacements environnants
 \end_layout
 
