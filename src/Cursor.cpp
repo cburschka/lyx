@@ -2041,7 +2041,7 @@ bool Cursor::mathForward(bool word)
 				while (pos() < lastpos() && mc == nextMath().mathClass());
 		} else if (openable(nextAtom())) {
 			InsetMathScript const * n = nextMath().asScriptInset();
-			bool to_brace_deco = n
+			bool to_brace_deco = n && !n->nuc().empty()
 				&& n->nuc().back()->lyxCode() == MATH_DECORATION_CODE
 				&& n->nuc().back()->mathClass() == MC_OP;
 			// single step: try to enter the next inset
@@ -2095,7 +2095,7 @@ bool Cursor::mathBackward(bool word)
 			}
 		} else if (openable(prevAtom())) {
 			InsetMathScript const * p = prevMath().asScriptInset();
-			bool to_brace_deco = p
+			bool to_brace_deco = p && !p->nuc().empty()
 				&& p->nuc().back()->lyxCode() == MATH_DECORATION_CODE
 				&& p->nuc().back()->mathClass() == MC_OP;
 			// single step: try to enter the preceding inset
