@@ -1556,8 +1556,11 @@ docstring Cursor::macroName()
 void Cursor::handleNest(MathAtom const & a, int c)
 {
 	//lyxerr << "Cursor::handleNest: " << c << endl;
+	InsetMath const * im = selectionBegin().inset().asInsetMath();
+	Parse::flags const f = im && im->currentMode() != InsetMath::MATH_MODE
+		? Parse::TEXTMODE : Parse::NORMAL;
 	MathAtom t = a;
-	asArray(cap::grabAndEraseSelection(*this), t.nucleus()->cell(c));
+	asArray(cap::grabAndEraseSelection(*this), t.nucleus()->cell(c), f);
 	insert(t);
 	posBackward();
 	pushBackward(*nextInset());
