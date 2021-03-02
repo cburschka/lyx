@@ -934,6 +934,15 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 
 void Text::deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool trackChanges)
 {
+	pos_type last_pos = static_cast<pos_type>(pars_[last].size() - 1);
+	deleteEmptyParagraphMechanism(first, last, 0, last_pos, trackChanges);
+}
+
+
+void Text::deleteEmptyParagraphMechanism(pit_type first, pit_type last,
+					 pos_type first_pos, pos_type last_pos,
+					 bool trackChanges)
+{
 	LASSERT(first >= 0 && first <= last && last < (int) pars_.size(), return);
 
 	for (pit_type pit = first; pit <= last; ++pit) {
@@ -943,8 +952,9 @@ void Text::deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool tra
 		 * (1) Delete consecutive spaces
 		 */
 		if (!par.isFreeSpacing()) {
-			pos_type from = 0;
-			while (from < par.size()) {
+			pos_type from = (pit == first) ? first_pos : 0;
+			pos_type to_pos = (pit == last) ? last_pos + 1 : par.size();
+			while (from < to_pos) {
 				// skip non-spaces
 				while (from < par.size()
 					   && (!par.isLineSeparator(from) || par.isDeleted(from)))

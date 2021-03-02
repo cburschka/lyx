@@ -1496,7 +1496,8 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 	}
 
 	// finally, invoke the DEPM
-	deleteEmptyParagraphMechanism(begPit, endPit, cur.buffer()->params().track_changes);
+	deleteEmptyParagraphMechanism(begPit, endPit, begPos, endPos,
+				      cur.buffer()->params().track_changes);
 
 	cur.finishUndo();
 	cur.clearSelection();

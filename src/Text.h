@@ -310,6 +310,13 @@ public:
 	/// Does NOT handle undo (responsibility of the caller)
 	void deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool trackChanges);
 
+	/// delete double spaces, leading spaces, and empty paragraphs
+	/// from \first to \last paragraph and \first_pos to \last_pos
+	/// Does NOT handle undo (responsibility of the caller)
+	void deleteEmptyParagraphMechanism(pit_type first, pit_type last,
+					   pos_type first_pos, pos_type last_pos,
+					   bool trackChanges);
+
 	/// To resolve macros properly the texts get their DocIterator.
 	/// Every macro definition is stored with its DocIterator
 	/// as well. Only those macros with a smaller iterator become
