@@ -954,7 +954,7 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter)
 	  LYXERR(Debug::SCROLLING, "scrolling to cursor");
 
 	CursorSlice const & bot = dit.bottom();
-	TextMetrics & tm = d->text_metrics_[bot.text()];
+	TextMetrics & tm = textMetrics(bot.text());
 
 	pos_type const max_pit = pos_type(bot.text()->paragraphs().size() - 1);
 	pos_type bot_pit = bot.pit();
@@ -1021,8 +1021,10 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter)
 
 	d->anchor_pit_ = bot_pit;
 	CursorSlice const & cs = dit.innerTextSlice();
+	ParagraphMetrics const & inner_pm =
+		textMetrics(cs.text()).parMetrics(cs.pit());
 	Dimension const & row_dim =
-		pm.getRow(cs.pos(), dit.boundary()).dim();
+		inner_pm.getRow(cs.pos(), dit.boundary()).dim();
 
 	if (recenter)
 		d->anchor_ypos_ = height_/2;
