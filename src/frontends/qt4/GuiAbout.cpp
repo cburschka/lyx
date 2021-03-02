@@ -12,6 +12,8 @@
 
 #include "GuiAbout.h"
 
+#include "GuiApplication.h"
+
 #include "ui_AboutUi.h"
 
 #include "qt_helpers.h"
@@ -229,7 +231,7 @@ static QString version()
 	out << qt_("User directory: ");
 	out << toqstr(makeDisplayPath(package().user_support().absFileName()));
 	out << "\n";
-	out << toqstr(bformat(_("Qt Version (run-time): %1$s"), from_ascii(qVersion()))) << "\n";
+	out << toqstr(bformat(_("Qt Version (run-time): %1$s on platform %2$s"), from_ascii(qVersion()), qstring_to_ucs4(guiApp->platformName()))) << "\n";
 	out << toqstr(bformat(_("Qt Version (compile-time): %1$s"), from_ascii(QT_VERSION_STR))) << "\n";
 	return res;
 }
