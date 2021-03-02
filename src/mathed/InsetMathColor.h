@@ -34,6 +34,8 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const override;
 	/// we need package color
 	void validate(LaTeXFeatures & features) const override;
+	/// we inherit the mode
+	mode_type currentMode() const override { return current_mode_; }
 	///
 	void write(TeXMathStream & os) const override;
 	/// FIXME XHTML For now, we do nothing with color.
@@ -53,6 +55,8 @@ private:
 	bool oldstyle_;
 	/// Our color. Only valid LaTeX colors are allowed.
 	docstring color_;
+	/// the inherited mode
+	mutable mode_type current_mode_;
 };
 
 

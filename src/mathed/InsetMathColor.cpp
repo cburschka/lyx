@@ -36,7 +36,8 @@ InsetMathColor::InsetMathColor(Buffer * buf, bool oldstyle, ColorCode color)
 
 InsetMathColor::InsetMathColor(Buffer * buf, bool oldstyle,
 		docstring const & color)
-	: InsetMathNest(buf, 1), oldstyle_(oldstyle), color_(color)
+	: InsetMathNest(buf, 1), oldstyle_(oldstyle), color_(color),
+	  current_mode_(UNDECIDED_MODE)
 {}
 
 
@@ -48,12 +49,18 @@ Inset * InsetMathColor::clone() const
 
 void InsetMathColor::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	current_mode_ = isTextFont(mi.base.fontname) ? TEXT_MODE : MATH_MODE;
+	Changer dummy = mi.base.changeEnsureMath(current_mode_);
+
 	cell(0).metrics(mi, dim);
 }
 
 
 void InsetMathColor::draw(PainterInfo & pi, int x, int y) const
 {
+	current_mode_ = isTextFont(pi.base.fontname) ? TEXT_MODE : MATH_MODE;
+	Changer dummy = pi.base.changeEnsureMath(current_mode_);
+
 	ColorCode origcol = pi.base.font.color();
 	pi.base.font.setColor(lcolor.getFromLaTeXName(to_utf8(color_)));
 	cell(0).draw(pi, x, y);

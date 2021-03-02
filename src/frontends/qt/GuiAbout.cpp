@@ -275,7 +275,7 @@ static QString version(bool const plain = false)
 		out << '\n';
 	else
 		out << "</span></p><p>";
-	out << toqstr(bformat(_("Qt Version (run-time): %1$s"), from_ascii(qVersion())));
+	out << toqstr(bformat(_("Qt Version (run-time): %1$s on platform %2$s"), from_ascii(qVersion()), qstring_to_ucs4(guiApp->platformName())));
 	if (plain)
 		out << '\n';
 	else

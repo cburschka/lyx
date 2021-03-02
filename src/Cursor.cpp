@@ -1712,8 +1712,11 @@ void Cursor::handleNest(MathAtom const & a)
 {
 	idx_type const idx = a.nucleus()->asNestInset()->firstIdx();
 	//lyxerr << "Cursor::handleNest: " << idx << endl;
+	InsetMath const * im = selectionBegin().inset().asInsetMath();
+	Parse::flags const f = im && im->currentMode() != InsetMath::MATH_MODE
+		? Parse::TEXTMODE : Parse::NORMAL;
 	MathAtom t = a;
-	asArray(cap::grabAndEraseSelection(*this), t.nucleus()->cell(idx));
+	asArray(cap::grabAndEraseSelection(*this), t.nucleus()->cell(idx), f);
 	insert(t);
 	editInsertedInset();
 }
@@ -2038,7 +2041,7 @@ bool Cursor::mathForward(bool word)
 				while (pos() < lastpos() && mc == nextMath().mathClass());
 		} else if (openable(nextAtom())) {
 			InsetMathScript const * n = nextMath().asScriptInset();
-			bool to_brace_deco = n
+			bool to_brace_deco = n && !n->nuc().empty()
 				&& n->nuc().back()->lyxCode() == MATH_DECORATION_CODE
 				&& n->nuc().back()->mathClass() == MC_OP;
 			// single step: try to enter the next inset
@@ -2092,7 +2095,7 @@ bool Cursor::mathBackward(bool word)
 			}
 		} else if (openable(prevAtom())) {
 			InsetMathScript const * p = prevMath().asScriptInset();
-			bool to_brace_deco = p
+			bool to_brace_deco = p && !p->nuc().empty()
 				&& p->nuc().back()->lyxCode() == MATH_DECORATION_CODE
 				&& p->nuc().back()->mathClass() == MC_OP;
 			// single step: try to enter the preceding inset
