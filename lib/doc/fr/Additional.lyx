@@ -24644,95 +24644,80 @@ vc-command DR "." "TortoiseProc /command:revert /path:$$p"
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
 Contrôle de version et comparaison de documents
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-One of the typical uses of version control is to inspect the changes between
- revisions, usually by creating 
+Une des utilisations caractéristiques du contrôle de version consiste à
+ mettre en évidence les modifications entre versions, usuellement en créant
+ des fichiers 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 diff
 \end_layout
 
 \end_inset
 
- dumps.
- While this is useful for plain text files, it is much less useful in the
- case of \SpecialChar LyX
- files, which have more a complicated structure.
- Hence we provide binding to the Document comparison feature.
- There are two ways of calling this feature – either by direct call of 
+.
+ Alors que ceci est utilisé pour les fichiers textuels ordinaires, ça l'est
+ beaucoup moins dans le cas des fichiers LyX, dont la structures est plus
+ complexe.
+ Nous fournissons donc un lien vers la fonctionnalité \SpecialChar LyX
+ de comparaison de
+ documents.
+ Il y a deux façons d'invoquer cette comparaison, soit par un appel direct
+ de la fonction \SpecialChar LyX
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 vc-compare
 \end_layout
 
 \end_inset
 
- \SpecialChar LyX
- function (for details see \SpecialChar LyX
- functions manual) or by the toolbar icon 
+ (voir le manuel des fonctions \SpecialChar LyX
+ pour les détails), soit par l'icône de la
+ barre d'outils 
 \begin_inset Info
 type  "icon"
 arg   "vc-compare"
 \end_inset
 
- or the menu item 
+ ou l'entrée de menu 
 \begin_inset Info
 type  "menu"
 arg   "vc-compare"
 \end_inset
 
-, respectively.
- One can either compare two chosen revisions of the document or he can simply
- compare the current version of edited text with older revisions (where
- '
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-0
-\end_layout
-
-\end_inset
-
-' revisions back means comparison of the edited file with last commited
- revision).
- 
+ Il est possible de comparer deux révisions particulières du document, ou
+ plus simplement la version courante en cours de modification avec une version
+ antérieure (où la révision «0» est simplement la dernière révision enregistrée).
 \end_layout
 
 \begin_layout Standard
+Cette fonctionnalité est disponible avec SVN et RCS, bien que dans ce dernier
+ cas il y ait une contrainte due au schéma de versionnement plus compliqué:
+ lorsque que l'on désigne une révision, les chiffres pointent toujours sur
+ le dernier élément du numéro de révision, c'est-à-dire «35» dans 
+\begin_inset Quotes cld
+\end_inset
 
-\lang english
-This feature is supported for SVN and RCS though due to the more complicated
- versioning scheme of RCS there is a constraint – when addressing the revisions
- in dialog, numbers always point to the last number in RCS revision number,
- i.e.
- '35' in '1.2.35'.
- We don't currently support GIT addressing of revisions, one can just compare
- edited document with its revision X steps backs, where X is addressed as
- 
+1.2.35
+\begin_inset Quotes crd
+\end_inset
+
+.
+ En ce qui concerne GIT, la fonctionnalité n'est pas disponible, il est
+ juste possible de comparer un document modifié avec une révision antérieure
+ de X étapes, où X est défini par 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HEAD~X
 \end_layout
 
