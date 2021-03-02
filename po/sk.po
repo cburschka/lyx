@@ -3,13 +3,13 @@
 #
 # Zdenko Podobný <zdpo@mailbox.sk>, 2003, 2006.
 # Kornel Benko <Kornel.Benko@berlin.de>, 2009.
-# Kornel Benko <kornel@lyx.org>, 2009-2020.
+# Kornel Benko <kornel@lyx.org>, 2009-2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2020-12-05 09:40+0100\n"
-"PO-Revision-Date: 2020-12-05 08:45+0000\n"
+"POT-Creation-Date: 2021-03-02 09:40+0100\n"
+"PO-Revision-Date: 2021-03-02 08:41+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1288,7 +1288,7 @@ msgstr "Nastaviť na štandardné nastavenie triedy dokumentu"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:115
 msgid "Use Class Defaults"
-msgstr "Použiť triedny štandard"
+msgstr "Použiť triedne predvoľby"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:130
 msgid "Save settings as LyX's default document settings"
@@ -1308,7 +1308,7 @@ msgstr "Zobraziť len tlačidlo ERT"
 
 #: src/frontends/qt4/ui/ERTUi.ui:43
 msgid "&Collapsed"
-msgstr "Z&balené"
+msgstr "&Sklapnuté"
 
 #: src/frontends/qt4/ui/ERTUi.ui:50
 msgid "Show ERT contents"
@@ -1524,7 +1524,7 @@ msgstr "TabWidget"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:21
 msgid "Sear&ch"
-msgstr "&Hľadanie"
+msgstr "&Hľadať"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:29 src/frontends/qt4/ui/LogUi.ui:29
 #: src/frontends/qt4/ui/SearchUi.ui:28
@@ -1538,11 +1538,11 @@ msgstr "Nahrad&iť čím:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:77
 msgid "Perform a case-sensitive search"
-msgstr "Dbať aj na veľkosť písiem"
+msgstr "Dbať aj na veľkosť písmen"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:80
 msgid "Case &sensitive"
-msgstr "Ro&zlišovať veľkosť písmen"
+msgstr "&A≠a"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:96
 msgid "Find next occurrence [Enter]"
@@ -1579,7 +1579,7 @@ msgstr "Shift+Enter hľadať naspäť priamo"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:144
 #: src/frontends/qt4/ui/SearchUi.ui:196
 msgid "Search &backwards"
-msgstr "Hľ&adať naspäť"
+msgstr "Hľada&ť naspäť"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:160
 msgid "Replace all occurrences at once"
@@ -2687,7 +2687,7 @@ msgstr "Aktualizovať zobrazenie"
 #: src/frontends/qt4/ui/LogUi.ui:78 src/frontends/qt4/ui/RefUi.ui:332
 #: src/frontends/qt4/ui/ViewSourceUi.ui:150
 msgid "&Update"
-msgstr "&Aktualizovať"
+msgstr "A&ktualizovať"
 
 #: src/frontends/qt4/ui/LogUi.ui:111
 msgid "&Open Containing Directory"
@@ -4608,7 +4608,7 @@ msgstr "Filtrovať aj podľa veľkosti písmen"
 
 #: src/frontends/qt4/ui/RefUi.ui:95
 msgid "Case Sensiti&ve"
-msgstr "Roz&lišovať veľkosť písmen"
+msgstr "&A≠a"
 
 #: src/frontends/qt4/ui/RefUi.ui:110
 msgid "The (sub-)document from which the available labels are displayed"
@@ -9351,7 +9351,7 @@ msgstr ""
 #: lib/layouts/scrclass.inc:127 lib/layouts/stdsections.inc:33
 #: lib/layouts/tufte-handout.layout:41
 msgid "The part as it appears in the table of contents/running headers"
-msgstr "Časť ako sa zobrazí v zozname/priebežných hlavičkách"
+msgstr "Časť ako sa zobrazí v obsahu či v priebežných hlavičkách"
 
 #: lib/layouts/beamer.layout:261
 msgid "Section \\arabic{section}"
@@ -9361,7 +9361,7 @@ msgstr "Sekcia \\arabic{section}"
 #: lib/layouts/simplecv.layout:52 lib/layouts/stdsections.inc:96
 #: lib/layouts/tufte-book.layout:113
 msgid "The section as it appears in the table of contents/running headers"
-msgstr "Sekcia ako sa zobrazí v zozname/priebežných hlavičkách"
+msgstr "Sekcia ako sa zobrazí v obsahu či v priebežných hlavičkách"
 
 #: lib/layouts/beamer.layout:285 lib/layouts/numarticle.inc:10
 #: lib/layouts/powerdot.layout:245
@@ -9374,7 +9374,7 @@ msgstr "Podsekcia \\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:335
 msgid "The subsection as it appears in the table of contents/running headers"
-msgstr "Podsekcia ako sa zobrazí v zozname/priebežných hlavičkách"
+msgstr "Podsekcia ako sa zobrazí v obsahu či v priebežných hlavičkách"
 
 #: lib/layouts/beamer.layout:347
 msgid "\\arabic{section}.\\arabic{subsection}"
@@ -9389,7 +9389,7 @@ msgstr ""
 #: lib/layouts/beamer.layout:397
 msgid ""
 "The subsubsection as it appears in the table of contents/running headers"
-msgstr "Podpodsekcia ako sa zobrazí v zozname/priebežných hlavičkách"
+msgstr "Podpodsekcia ako sa zobrazí v obsahu či v priebežných hlavičkách"
 
 #: lib/layouts/beamer.layout:409
 msgid "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
@@ -9581,7 +9581,7 @@ msgstr "Číslo tej fólie kde sa kontext pod pauzou stane viditeľným"
 
 #: lib/layouts/beamer.layout:728 lib/layouts/powerdot.layout:492
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
-msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
+msgstr "– – – – – – – – – – – – – –"
 
 #: lib/layouts/beamer.layout:737 lib/layouts/beamer.layout:766
 msgid "Overprint"
@@ -13496,7 +13496,7 @@ msgstr "Krátky titul(Zoznam)|K"
 
 #: lib/layouts/memoir.layout:75 lib/layouts/memoir.layout:90
 msgid "The chapter as it appears in the table of contents"
-msgstr "Kapitola ako sa zobrazí v zozname"
+msgstr "Kapitola ako sa zobrazí v obsahu"
 
 #: lib/layouts/memoir.layout:79 lib/layouts/memoir.layout:103
 #: lib/layouts/memoir.layout:118 lib/layouts/memoir.layout:133
@@ -13511,7 +13511,7 @@ msgstr "Kapitola ako sa zobrazí v priebežných hlavičkách"
 
 #: lib/layouts/memoir.layout:99
 msgid "The section as it appears in the table of contents"
-msgstr "Sekcia ako sa zobrazí v zozname"
+msgstr "Sekcia ako sa zobrazí v obsahu"
 
 #: lib/layouts/memoir.layout:104
 msgid "The section as it appears in the running headers"
@@ -13519,7 +13519,7 @@ msgstr "Sekcia ako sa zobrazí v priebežných hlavičkách"
 
 #: lib/layouts/memoir.layout:114
 msgid "The subsection as it appears in the table of contents"
-msgstr "Podsekcia ako sa zobrazí v zozname"
+msgstr "Podsekcia ako sa zobrazí v obsahu"
 
 #: lib/layouts/memoir.layout:119
 msgid "The subsection as it appears in the running headers"
@@ -13527,7 +13527,7 @@ msgstr "Podsekcia ako sa zobrazí v priebežných hlavičkách"
 
 #: lib/layouts/memoir.layout:129
 msgid "The subsubsection as it appears in the table of contents"
-msgstr "Podpodsekcia ako sa zobrazí v zozname"
+msgstr "Podpodsekcia ako sa zobrazí v obsahu"
 
 #: lib/layouts/memoir.layout:134
 msgid "The subsubsection as it appears in the running headers"
@@ -13535,7 +13535,7 @@ msgstr "Podpodsekcia ako sa zobrazí v priebežných hlavičkách"
 
 #: lib/layouts/memoir.layout:144
 msgid "The paragraph as it appears in the table of contents"
-msgstr "Odstavec ako sa zobrazí v zozname"
+msgstr "Odstavec ako sa zobrazí v obsahu"
 
 #: lib/layouts/memoir.layout:149
 msgid "The paragraph as it appears in the running headers"
@@ -13543,7 +13543,7 @@ msgstr "Odstavec ako sa zobrazí v priebežných hlavičkách"
 
 #: lib/layouts/memoir.layout:159
 msgid "The subparagraph as it appears in the table of contents"
-msgstr "Pododstavec ako sa zobrazí v zozname"
+msgstr "Pododstavec ako sa zobrazí v obsahu"
 
 #: lib/layouts/memoir.layout:164
 msgid "The subparagraph as it appears in the running headers"
@@ -13575,7 +13575,7 @@ msgstr "Titul básne"
 
 #: lib/layouts/memoir.layout:228 lib/layouts/memoir.layout:249
 msgid "The poem title as it appears in the table of contents"
-msgstr "Titul básne ako sa zobrazí v zozname"
+msgstr "Titul básne ako sa zobrazí v obsahu"
 
 #: lib/layouts/memoir.layout:233
 msgid "The poem title as it appears in the running headers"
@@ -14892,7 +14892,7 @@ msgstr "Kapitola (zoznam)"
 #: lib/layouts/scrclass.inc:138 lib/layouts/stdsections.inc:65
 #: lib/layouts/tufte-book.layout:84
 msgid "The chapter as it appears in the table of contents/running headers"
-msgstr "Kapitola ako sa zobrazí v zozname/priebežných hlavičkách"
+msgstr "Kapitola ako sa zobrazí v obsahu či v priebežných hlavičkách"
 
 #: lib/layouts/scrclass.inc:144
 msgid "Addsec"
@@ -19254,7 +19254,7 @@ msgstr "Referenčná značka…|z"
 
 #: lib/ui/stdmenus.inc:387
 msgid "Nomenclature Entry...|y"
-msgstr "Záznam nomenklatúry…|y"
+msgstr "Záznam nomenklatúry…|ú"
 
 #: lib/ui/stdmenus.inc:389
 msgid "Table...|T"
@@ -28277,7 +28277,7 @@ msgstr "Externý materiál"
 
 #: src/TocBackend.cpp:290
 msgid "Nomenclature Entries"
-msgstr "Zoznam nomenklatúr"
+msgstr "Zápisy nomenklatúry"
 
 #: src/VCBackend.cpp:65
 msgid "Perhaps the RCS package is not installed on your system?"
@@ -28639,7 +28639,7 @@ msgstr "Nie kategorizované"
 
 #: src/frontends/qt4/FileDialog.cpp:188
 msgid "Directories"
-msgstr "Adresári"
+msgstr "Adresáre"
 
 #: src/frontends/qt4/FindAndReplace.cpp:280
 msgid "File"
@@ -28801,10 +28801,10 @@ msgstr "Adresár systému: "
 msgid "User directory: "
 msgstr "Adresár užívateľa: "
 
-#: src/frontends/qt4/GuiAbout.cpp:232
+#: src/frontends/qt4/GuiAbout.cpp:234
 #, c-format
-msgid "Qt Version (run-time): %1$s"
-msgstr "Qt verzia (čas pustenia): %1$s"
+msgid "Qt Version (run-time): %1$s on platform %2$s"
+msgstr "Qt verzia (čas pustenia): %1$s na platforme %2$s"
 
 #: src/frontends/qt4/GuiAbout.cpp:233
 #, c-format
@@ -29267,7 +29267,7 @@ msgstr "Re&gulárny výraz"
 
 #: src/frontends/qt4/GuiCitation.cpp:114
 msgid "Case se&nsitive"
-msgstr "Roz&lišovať veľkosť písmen"
+msgstr "&A≠a"
 
 #: src/frontends/qt4/GuiCitation.cpp:116
 msgid "Search as you &type"
@@ -29793,7 +29793,7 @@ msgstr "Farby"
 
 #: src/frontends/qt4/GuiDocument.cpp:1633
 msgid "Numbering & TOC"
-msgstr "Číslovanie & TOC"
+msgstr "Číslovanie & obsah"
 
 #: src/frontends/qt4/GuiDocument.cpp:1635
 msgid "Indexes"
@@ -31940,7 +31940,7 @@ msgstr "Iné listiny"
 
 #: src/frontends/qt4/Menus.cpp:1370
 msgid "(Empty Table of Contents)"
-msgstr "Prázdny obsah tabuliek"
+msgstr "Prázdny obsah"
 
 #: src/frontends/qt4/Menus.cpp:1379
 msgid "Open Outliner..."
