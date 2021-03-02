@@ -853,7 +853,10 @@ void switchBetweenClasses(DocumentClassConstPtr oldone,
 			docstring const & n = newone->insetLayout(layoutName).name();
 			bool const is_undefined = n.empty() ||
 				n == DocumentClass::plainInsetLayout().name();
-			if (!is_undefined)
+			docstring const & oldn = oldone->insetLayout(layoutName).name();
+			bool const was_undefined = oldn.empty() ||
+				oldn == DocumentClass::plainInsetLayout().name();
+			if (!is_undefined || was_undefined)
 				continue;
 
 			// The flex inset is undefined in newtc
