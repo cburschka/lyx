@@ -181,6 +181,10 @@ frontend::Application * createApplication(int & argc, char * argv[])
 	AllowSetForegroundWindow(ASFW_ANY);
 #endif
 
+
+// Setup high DPI handling. This is a bit complicated, but will be default in Qt6.
+// macOS does it by itself.
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) && !defined(Q_OS_MAC)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
     // Attribute Qt::AA_EnableHighDpiScaling must be set before QCoreApplication is created
     if (getEnv("QT_ENABLE_HIGHDPI_SCALING").empty()
@@ -192,6 +196,7 @@ frontend::Application * createApplication(int & argc, char * argv[])
     // HighDPI scale factor policy must be set before QGuiApplication is created
     if (getEnv("QT_SCALE_FACTOR_ROUNDING_POLICY").empty())
         QApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
+#endif
 #endif
 
 	frontend::GuiApplication * guiApp = new frontend::GuiApplication(argc, argv);
