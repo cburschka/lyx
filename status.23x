@@ -103,6 +103,9 @@ What's new
 
 - Fix wrap-around of spellchecker (#10383).
 
+- Avoid pointless 'undefined flex inset' errors when changing document
+  settings (bug 12163).
+
 
 * INTERNALS
 
