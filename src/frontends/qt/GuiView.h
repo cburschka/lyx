@@ -149,6 +149,8 @@ public:
 	/// updates the possible layouts selectable
 	void updateLayoutList();
 	void updateToolbars();
+	/// refill the toolbars (dark mode switch)
+	void refillToolbars();
 
 	///
 	LayoutBox * getLayoutDialog() const;

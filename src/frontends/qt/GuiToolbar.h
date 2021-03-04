@@ -152,6 +152,9 @@ public:
 	///
 	void toggle();
 
+	///
+	void refill();
+
 	/// toggles movability
 	void movable(bool silent = false);
 

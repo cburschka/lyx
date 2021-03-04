@@ -116,6 +116,14 @@ void GuiToolbar::fill()
 }
 
 
+void GuiToolbar::refill()
+{
+	filled_ = false;
+	clear();
+	fill();
+}
+
+
 void GuiToolbar::showEvent(QShowEvent * ev)
 {
 	fill();

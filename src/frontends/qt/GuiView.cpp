@@ -1470,6 +1470,12 @@ bool GuiView::event(QEvent * e)
 		return QMainWindow::event(e);
 	}
 
+	case QEvent::ApplicationPaletteChange: {
+		// runtime switch from/to dark mode
+		refillToolbars();
+		return QMainWindow::event(e);
+	}
+
 	default:
 		return QMainWindow::event(e);
 	}
@@ -1736,6 +1742,13 @@ void GuiView::updateToolbars()
 	} else
 		for (auto const & tb_p : d.toolbars_)
 			tb_p.second->update();
+}
+
+
+void GuiView::refillToolbars()
+{
+	for (auto const & tb_p : d.toolbars_)
+		tb_p.second->refill();
 }
 
 
