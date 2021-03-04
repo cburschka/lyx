@@ -149,8 +149,6 @@ public:
 	/// updates the possible layouts selectable
 	void updateLayoutList();
 	void updateToolbars();
-	/// refill the toolbars (dark mode switch)
-	void refillToolbars();
 
 	///
 	LayoutBox * getLayoutDialog() const;
@@ -374,6 +372,8 @@ private:
 	void initToolbar(std::string const & name);
 	/// Update lock (all) toolbars position
 	void updateLockToolbars();
+	/// refill the toolbars (dark/light mode switch)
+	void refillToolbars();
 	///
 	bool lfunUiToggle(std::string const & ui_component);
 	///
