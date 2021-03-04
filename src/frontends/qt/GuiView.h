@@ -378,8 +378,8 @@ private:
 	bool lfunUiToggle(std::string const & ui_component);
 	///
 	void toggleFullScreen();
-        /// \return whether we did anything
-        bool insertLyXFile(docstring const & fname, bool ignorelang = false);
+	/// \return whether we did anything
+	bool insertLyXFile(docstring const & fname, bool ignorelang = false);
 	///
 	/// Open Export As ... dialog. \p iformat is the format the
 	/// filter is initially set to.
@@ -396,23 +396,23 @@ private:
 	std::string const getTemplatesPath(Buffer & buf);
 	/// Save a buffer as a new file.
 	/**
-	Write a buffer to a new file name and rename the buffer
-    according to the new file name.
-
-    This function is e.g. used by menu callbacks and
-    LFUN_BUFFER_WRITE_AS.
-
-    If 'newname' is empty, the user is asked via a
-    dialog for the buffer's new name and location.
-
-    If 'newname' is non-empty and has an absolute path, that is used.
-    Otherwise the base directory of the buffer is used as the base
-    for any relative path in 'newname'.
-
-	 \p kind controls what is done besides the pure renaming:
-         * LV_WRITE_AS  => The buffer is written without version control actions.
-         * LV_VC_RENAME => The file is renamed in version control.
-         * LV_VC_COPY   => The file is copied in version control.
+	 * Write a buffer to a new file name and rename the buffer
+	 * according to the new file name.
+	 * 
+	 * This function is e.g. used by menu callbacks and
+	 * LFUN_BUFFER_WRITE_AS.
+	 * 
+	 * If 'newname' is empty, the user is asked via a
+	 * dialog for the buffer's new name and location.
+	 * 
+	 * If 'newname' is non-empty and has an absolute path, that is used.
+	 * Otherwise the base directory of the buffer is used as the base
+	 * for any relative path in 'newname'.
+	 * 
+	 * \p kind controls what is done besides the pure renaming:
+	 * LV_WRITE_AS  => The buffer is written without version control actions.
+	 * LV_VC_RENAME => The file is renamed in version control.
+	 * LV_VC_COPY   => The file is copied in version control.
 	 */
 	bool renameBuffer(Buffer & b, docstring const & newname,
 	                  RenameKind kind = LV_WRITE_AS);
@@ -427,7 +427,7 @@ private:
 	/// closes the tabworkarea and all tabs. If we are in a close event,
 	/// all buffers will be closed, otherwise they will be hidden.
 	bool closeTabWorkArea(TabWorkArea * twa);
-        /// gives the user the possibility to save their work
+	/// gives the user the possibility to save their work
 	/// or to discard the changes. If hiding is true, the
 	/// document will be reloaded.
 	bool saveBufferIfNeeded(Buffer & buf, bool hiding);
