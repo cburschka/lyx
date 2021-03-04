@@ -49,16 +49,6 @@
      </property>
     </widget>
    </item>
-   <item row="7" column="1">
-    <widget class="QPushButton" name="ignorePB">
-     <property name="toolTip">
-      <string>Ignore this word</string>
-     </property>
-     <property name="text">
-      <string>Ign&amp;ore</string>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
@@ -85,16 +75,6 @@
       </widget>
      </item>
     </layout>
-   </item>
-   <item row="3" column="1">
-    <widget class="QPushButton" name="findNextPB">
-     <property name="toolTip">
-      <string/>
-     </property>
-     <property name="text">
-      <string>Find Ne&amp;xt</string>
-     </property>
-    </widget>
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="TextLabel3">
@@ -149,16 +129,6 @@
      </property>
     </widget>
    </item>
-   <item row="8" column="1">
-    <widget class="QPushButton" name="ignoreAllPB">
-     <property name="toolTip">
-      <string>Ignore this word throughout this session</string>
-     </property>
-     <property name="text">
-      <string>I&amp;gnore All</string>
-     </property>
-    </widget>
-   </item>
    <item row="1" column="0" colspan="2">
     <widget class="Line" name="line">
      <property name="orientation">
@@ -194,6 +164,26 @@
       </size>
      </property>
     </spacer>
+   </item>
+   <item row="3" column="1">
+    <widget class="QPushButton" name="ignorePB">
+     <property name="toolTip">
+      <string>Ignore this word</string>
+     </property>
+     <property name="text">
+      <string>Ign&amp;ore</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QPushButton" name="ignoreAllPB">
+     <property name="toolTip">
+      <string>Ignore this word throughout this session</string>
+     </property>
+     <property name="text">
+      <string>I&amp;gnore All</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

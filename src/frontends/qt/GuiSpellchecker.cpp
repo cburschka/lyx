@@ -239,7 +239,6 @@ void SpellcheckerWidget::Private::updateView()
 	// Enable widgets as needed.
 	bool const has_word = enabled && !ui.wordED->text().isEmpty();
 	bool const can_replace = has_word && !bv->buffer().isReadonly();
-	ui.findNextPB->setEnabled(enabled);
 	ui.TextLabel3->setEnabled(enabled);
 	ui.wordED->setEnabled(enabled);
 	ui.ignorePB->setEnabled(has_word);
@@ -457,19 +456,6 @@ void SpellcheckerWidget::on_ignorePB_clicked()
 	LYXERR(Debug::GUI, "Spellchecker: ignore button");
 	d->forward();
 	d->check();
-	d->canCheck();
-}
-
-
-void SpellcheckerWidget::on_findNextPB_clicked()
-{
-	if (d->disabled())
-		return;
-	docstring const textfield = qstring_to_ucs4(d->ui.wordED->text());
-	docstring const datastring = find2string(textfield,
-				true, true, true, false, false, false);
-	LYXERR(Debug::GUI, "Spellchecker: find next (" << textfield << ")");
-	dispatch(FuncRequest(LFUN_WORD_FIND, datastring));
 	d->canCheck();
 }
 
