@@ -65,7 +65,13 @@ Changer MetricsBase::changeFontSet(string const & name)
 	augmentFont(font, name);
 	font.setSize(rc->old.font.size());
 	font.setStyle(rc->old.font.style());
-	if (name != "lyxtex"
+	if (name == "emph") {
+		font.setColor(oldcolor);
+		if (rc->old.font.shape() != UP_SHAPE)
+			font.setShape(UP_SHAPE);
+		else
+			font.setShape(ITALIC_SHAPE);
+	} else if (name != "lyxtex"
 	    && ((isTextFont(oldname) && oldcolor != Color_foreground)
 	        || (isMathFont(oldname) && oldcolor != Color_math)))
 		font.setColor(oldcolor);
