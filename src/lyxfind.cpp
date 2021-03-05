@@ -3225,6 +3225,7 @@ void MatchStringAdv::CreateRegexp(FindAndReplaceOptions const & opt, string rege
 			regexError += "Invalid regexp2 \"" + regexp2_str + "\", error = " + regexp2.errorString().toStdString();
 	}
 #else
+	(void)par_as_string;
 	if (opt.casesensitive) {
 		regexp = regex(regexp_str);
 		regexp2 = regex(regexp2_str);
