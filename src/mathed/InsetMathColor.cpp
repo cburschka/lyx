@@ -30,7 +30,8 @@ namespace lyx {
 
 InsetMathColor::InsetMathColor(Buffer * buf, bool oldstyle, ColorCode color)
 	: InsetMathNest(buf, 1), oldstyle_(oldstyle),
-	  color_(from_utf8(lcolor.getLaTeXName(color)))
+	  color_(from_utf8(lcolor.getLaTeXName(color))),
+	  current_mode_(UNDECIDED_MODE)
 {}
 
 
