@@ -2675,7 +2675,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			if (arg.size() > 100 || arg.empty()) {
 				if (cur.selection()) {
 					DocIterator selbeg = cur.selectionBegin();
-					cur.selection(false);
 					cur.clearSelection();
 					setCursorIntern(cur, selbeg.pit(), selbeg.pos());
 					cur.screenUpdateFlags(Update::Force);
