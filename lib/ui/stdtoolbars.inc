@@ -100,9 +100,9 @@ ToolbarSet
 		DynamicMenu "dynamic-custom-insets" "Custom insets"
 		Separator
 		Item "Toggle outline" "dialog-toggle toc"
-		Item "Toggle math toolbar" "toolbar-toggle math"
-		Item "Toggle table toolbar" "toolbar-toggle table"
-		Item "Toggle review toolbar" "toolbar-toggle review"
+		PopupMenu "toolbar-toggle_math" "Show math toolbar"
+		PopupMenu "toolbar-toggle_table" "Show table toolbar"
+		PopupMenu "toolbar-toggle_review" "Show review toolbar"
 	End
 
 	Toolbar "view/update" "View/Update"
@@ -209,7 +209,7 @@ ToolbarSet
 		Item "Delete row" "tabular-feature delete-row"
 		Item "Delete column" "tabular-feature delete-column"
 		Separator
-		Item "Toggle math panels" "toolbar-toggle math_panels"
+		PopupMenu "toolbar-toggle_math_panels" "Show math panels"
 	End
 
 	Toolbar "math_panels" "Math Panels"
@@ -295,6 +295,30 @@ ToolbarSet
 
 	Toolbar "update-others" "Update Other Formats"
 		UpdateFormats
+	End
+
+	Toolbar "toolbar-toggle_math" "Show math toolbar"
+		Item "[[Toolbar]]On" "toolbar-set math on"
+		Item "[[Toolbar]]Off" "toolbar-set math off"
+		Item "[[Toolbar]]Automatic" "toolbar-set math auto"
+	End
+
+	Toolbar "toolbar-toggle_math_panels" "Show math panels"
+		Item "[[Toolbar]]On" "toolbar-set math_panels on"
+		Item "[[Toolbar]]Off" "toolbar-set math_panels off"
+		Item "[[Toolbar]]Automatic" "toolbar-set math_panels auto"
+	End
+
+	Toolbar "toolbar-toggle_table" "Show table toolbar"
+		Item "[[Toolbar]]On" "toolbar-set table on"
+		Item "[[Toolbar]]Off" "toolbar-set table off"
+		Item "[[Toolbar]]Automatic" "toolbar-set table auto"
+	End
+
+	Toolbar "toolbar-toggle_review" "Show review toolbar"
+		Item "[[Toolbar]]On" "toolbar-set review on"
+		Item "[[Toolbar]]Off" "toolbar-set review off"
+		Item "[[Toolbar]]Automatic" "toolbar-set review auto"
 	End
 
 # The following three toolbars are disabled because of missing icons.
