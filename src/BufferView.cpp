@@ -50,7 +50,7 @@
 #include "insets/InsetRef.h"
 #include "insets/InsetText.h"
 
-#include "mathed/InsetMath.h"
+#include "mathed/InsetMathNest.h"
 #include "mathed/MathData.h"
 #include "mathed/MathRow.h"
 
@@ -669,12 +669,52 @@ string BufferView::contextMenu(int x, int y) const
 
 	// Get inset under mouse, if there is one.
 	Inset const * covering_inset = getCoveringInset(buffer_.text(), x, y);
-	if (covering_inset)
+	if (covering_inset) {
+		if (covering_inset->asInsetMath()) {
+			CoordCache::Insets const & inset_cache =
+				coordCache().getInsets();
+			Inset const * inner_inset = mathContextMenu(
+				covering_inset->asInsetMath()->asNestInset(),
+				inset_cache, x, y);
+			if (inner_inset)
+				return inner_inset->contextMenu(*this, x, y);
+		}
 		return covering_inset->contextMenu(*this, x, y);
+	}
 
 	return buffer_.inset().contextMenu(*this, x, y);
 }
 
+
+Inset const * BufferView::mathContextMenu(InsetMathNest const * inset,
+		CoordCache::Insets const & inset_cache, int x, int y) const
+{
+	for (size_t i = 0; i < inset->nargs(); ++i) {
+		MathData const & ar = inset->cell(i);
+		for (size_t j = 0; j < ar.size(); ++j) {
+			string const name = lyxerr.debugging(Debug::MATHED)
+				? insetName(ar[j].nucleus()->lyxCode())
+				: string();
+			LYXERR(Debug::MATHED, "Examining inset: " << name);
+			if (!ar[j].nucleus()->contextMenuName().empty()) {
+				if (inset_cache.covers(ar[j].nucleus(), x, y)) {
+					LYXERR(Debug::MATHED, "Hit inset: "
+					       << name);
+					return ar[j].nucleus();
+				}
+			}
+			InsetMathNest const * imn =
+				ar[j].nucleus()->asNestInset();
+			if (imn) {
+				Inset const * inner =
+					mathContextMenu(imn, inset_cache, x, y);
+				if (inner)
+					return inner;
+			}
+		}
+	}
+	return nullptr;
+}
 
 
 void BufferView::scrollDocView(int const pixels, bool update)

@@ -62,6 +62,8 @@ public:
 	///
 	bool hasSettings() const override { return true; }
 	///
+	bool clickable(BufferView const &, int, int) const override { return true; }
+	///
 	std::string contextMenuName() const override;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const override;

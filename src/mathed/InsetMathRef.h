@@ -33,6 +33,12 @@ public:
 	///
 	void infoize(odocstream & os) const override;
 	///
+	bool hasSettings() const override { return true; }
+	///
+	bool clickable(BufferView const &, int, int) const override { return true; }
+	///
+	std::string contextMenuName() const override { return "context-ref"; }
+	///
 	mode_type currentMode() const override { return TEXT_MODE; }
 	///
 	bool lockedMode() const override { return true; }

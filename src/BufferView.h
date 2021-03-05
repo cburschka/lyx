@@ -15,6 +15,7 @@
 #ifndef BUFFER_VIEW_H
 #define BUFFER_VIEW_H
 
+#include "CoordCache.h"
 #include "DocumentClassPtr.h"
 #include "TexRow.h"
 #include "update_flags.h"
@@ -32,7 +33,6 @@ namespace frontend { class GuiBufferViewDelegate; }
 
 class Buffer;
 class Change;
-class CoordCache;
 class Cursor;
 class CursorSlice;
 class Dimension;
@@ -42,6 +42,7 @@ class FuncRequest;
 class FuncStatus;
 class Intl;
 class Inset;
+class InsetMathNest;
 class Length;
 class MathData;
 class MathRow;
@@ -160,6 +161,9 @@ public:
 	docstring toolTip(int x, int y) const;
 	/// \return the context menu for the given position.
 	std::string contextMenu(int x, int y) const;
+	/// \return the math inset with a context menu for the given position
+	Inset const * mathContextMenu(InsetMathNest const * inset,
+		CoordCache::Insets const & inset_cache, int x, int y) const;
 
 	/// Save the current position as bookmark.
 	/// if idx == 0, save to temp_bookmark
