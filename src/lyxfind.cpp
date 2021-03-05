@@ -3328,7 +3328,7 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 		string lead_as_regexp;
 		if (lead_size > 0) {
 			lead_as_regexp = string2regex(par_as_string.substr(0, lead_size));
-			regex_replace(par_as_string_nolead, par_as_string_nolead, "}$", "");
+			(void)regex_replace(par_as_string_nolead, par_as_string_nolead, "}$", "");
 			par_as_string = par_as_string_nolead;
 			LYXERR(Debug::FIND, "lead_as_regexp is '" << lead_as_regexp << "'");
 			LYXERR(Debug::FIND, "par_as_string now is '" << par_as_string << "'");
