@@ -2510,8 +2510,16 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		docstring arg = cmd.argument();
 		if (arg.empty()) {
 			arg = cur.selectionAsString(false);
-			// FIXME
+			// Too large. We unselect if needed and try to get
+			// the first word in selection or under cursor
 			if (arg.size() > 100 || arg.empty()) {
+				if (cur.selection()) {
+					DocIterator selbeg = cur.selectionBegin();
+					cur.selection(false);
+					cur.clearSelection();
+					setCursorIntern(cur, selbeg.pit(), selbeg.pos());
+					cur.screenUpdateFlags(Update::Force);
+				}
 				// Get word or selection
 				selectWordWhenUnderCursor(cur, WHOLE_WORD);
 				arg = cur.selectionAsString(false);
