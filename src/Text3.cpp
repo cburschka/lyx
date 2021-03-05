@@ -2474,6 +2474,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_FONT_NO_SPELLCHECK: {
+		Font font(ignore_font, ignore_language);
+		font.fontInfo().setNoSpellcheck(FONT_TOGGLE);
+		toggleAndShow(cur, this, font);
+		break;
+	}
+
 	case LFUN_FONT_SIZE: {
 		Font font(ignore_font, ignore_language);
 		setLyXSize(to_utf8(cmd.argument()), font.fontInfo());
@@ -3550,6 +3557,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FONT_CROSSOUT:
 	case LFUN_FONT_UNDERUNDERLINE:
 	case LFUN_FONT_UNDERWAVE:
+	case LFUN_FONT_NO_SPELLCHECK:
 	case LFUN_TEXTSTYLE_UPDATE:
 		enable = !cur.paragraph().isPassThru();
 		break;

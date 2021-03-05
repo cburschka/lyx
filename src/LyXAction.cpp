@@ -1835,6 +1835,15 @@ void LyXAction::init()
 		{ LFUN_FONT_CROSSOUT, "font-crossout", Noop, Layout },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_FONT_NO_SPELLCHECK
+ * \li Action: Toggles nospellcheck status in the font (selection-wise).
+ * \li Syntax: font-nospellcheck
+ * \li Origin: spitz, 5 March 2021
+ * \endvar
+ */
+		{ LFUN_FONT_NO_SPELLCHECK, "font-nospellcheck", Noop, Layout },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_FONT_TYPEWRITER
  * \li Action: Toggles the typewriter family font (selection-wise).
  * \li Syntax: font-typewriter
