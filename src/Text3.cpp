@@ -3519,7 +3519,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		docstring const layout = resolveLayout(req_layout, cur);
 
 		enable = !owner_->forcePlainLayout() && !layout.empty();
-		status.setOnOff(isAlreadyLayout(layout, cur));
+		status.setOnOff(!owner_->forcePlainLayout() && isAlreadyLayout(layout, cur));
 		break;
 	}
 
