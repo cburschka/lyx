@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>477</width>
+    <width>400</width>
     <height>488</height>
    </rect>
   </property>
@@ -20,7 +20,7 @@
    <string>Spell Checker</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
+   <item row="0" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="languageLA">
@@ -91,6 +91,16 @@
      </property>
     </widget>
    </item>
+   <item row="4" column="1">
+    <widget class="QPushButton" name="skipAllPB">
+     <property name="toolTip">
+      <string>Skips all occurrences of this word within the current session.</string>
+     </property>
+     <property name="text">
+      <string>Skip A&amp;ll</string>
+     </property>
+    </widget>
+   </item>
    <item row="5" column="0">
     <widget class="QComboBox" name="replaceCO">
      <property name="focusPolicy">
@@ -146,7 +156,7 @@
      </property>
     </widget>
    </item>
-   <item row="7" column="0" rowspan="5">
+   <item row="7" column="0" rowspan="4">
     <widget class="QListWidget" name="suggestionsLW"/>
    </item>
    <item row="7" column="1">
@@ -159,7 +169,7 @@
      </property>
     </widget>
    </item>
-   <item row="9" column="1">
+   <item row="8" column="1">
     <widget class="QPushButton" name="ignoreAllPB">
      <property name="toolTip">
       <string>Ignore all occurrences of this word within this document. This is perdurant beyond the current session.</string>
@@ -169,7 +179,7 @@
      </property>
     </widget>
    </item>
-   <item row="10" column="1">
+   <item row="9" column="1">
     <widget class="QPushButton" name="addPB">
      <property name="toolTip">
       <string>Add the word to your personal dictionary</string>
@@ -179,7 +189,7 @@
      </property>
     </widget>
    </item>
-   <item row="11" column="1">
+   <item row="10" column="1">
     <spacer>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -194,16 +204,6 @@
       </size>
      </property>
     </spacer>
-   </item>
-   <item row="4" column="1">
-    <widget class="QPushButton" name="skipAllPB">
-     <property name="toolTip">
-      <string>Skips all occurrences of this word within the current session.</string>
-     </property>
-     <property name="text">
-      <string>Skip A&amp;ll</string>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>
