@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-03-05 15:06-0500\n"
-"PO-Revision-Date: 2021-02-24 12:54+0000\n"
+"POT-Creation-Date: 2021-03-06 09:27+0100\n"
+"PO-Revision-Date: 2021-03-06 08:37+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1021,11 +1021,11 @@ msgstr "Sémantické značkovanie"
 #: src/frontends/qt/ui/CharacterUi.ui:312
 msgid "Semantic emphasizing (italic by default, but can be adapted)"
 msgstr ""
-"Sémantické zvýraznenie (štandard je kurzíva, ale môže byť prispôsobené)"
+"Sémantické zdôraznenie (štandard je kurzíva, ale môže byť prispôsobené)"
 
 #: src/frontends/qt/ui/CharacterUi.ui:315
 msgid "&Emphasized"
-msgstr "Zvýr&aznenie"
+msgstr "Zdôr&aznenie"
 
 #: src/frontends/qt/ui/CharacterUi.ui:322
 msgid "Semantic markup of nouns (small caps by default, but can be adapted)"
@@ -2614,11 +2614,11 @@ msgstr "Okno pre odozvu"
 
 #: src/frontends/qt/ui/ListingsSettingsUi.ui:95
 msgid "Choose the LaTeX package for code syntax highlighting"
-msgstr "Vyberte LaTeX-balík na zdôraznenie syntaxu kódu"
+msgstr "Vyberte LaTeX-balík na vyzdvihnutie syntaxu kódu"
 
 #: src/frontends/qt/ui/ListingsSettingsUi.ui:98
 msgid "&Syntax Highlighting Package:"
-msgstr "Balík na zdôraznenie &syntaxu:"
+msgstr "Balík na vyzdvihnutie &syntaxu:"
 
 #: src/frontends/qt/ui/ListingsUi.ui:14 lib/layouts/numreport.inc:37
 #: lib/layouts/stdcounters.inc:77 lib/layouts/stdinsets.inc:337
@@ -4390,7 +4390,7 @@ msgid ""
 "Check to highlight additional languages (to the document language) visually "
 "in the work area"
 msgstr ""
-"Zaškrtnite na zvýraznenie dodatočných jazykov (ku jazyku dokumentu) "
+"Zaškrtnite na vyzdvihnutie dodatočných jazykov (ku jazyku dokumentu) "
 "viditeľné na pracovnej ploche"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:192
@@ -10219,7 +10219,7 @@ msgstr "Tučné"
 
 #: lib/layouts/beamer.layout:1482 lib/layouts/ectaart.layout:178
 msgid "Emphasize"
-msgstr "Zvýraznenie"
+msgstr "Zdôraznenie"
 
 #: lib/layouts/beamer.layout:1484
 msgid "Emph."
@@ -10607,7 +10607,7 @@ msgstr "Hlavný námet"
 
 #: lib/layouts/chess.layout:181
 msgid "Highlights:"
-msgstr "Hlavný námet:"
+msgstr "Hlavné námety:"
 
 #: lib/layouts/chess.layout:198
 msgid "Arrow"
@@ -12215,7 +12215,7 @@ msgstr "Koniec CV"
 #: lib/layouts/europasscv.layout:556 lib/layouts/europasscv.layout:561
 #: lib/layouts/soul.module:51
 msgid "Highlight"
-msgstr "Zvýrazniť"
+msgstr "Vyzdvihnutie"
 
 #: lib/layouts/europecv.layout:3 lib/examples/Articles:0
 msgid "Europe CV"
@@ -16596,7 +16596,7 @@ msgid ""
 "markup provided by the Text Properties dialog, words marked-up with soul are "
 "hyphenated."
 msgstr ""
-"Definuje štýly na zvýraznenie, odstúpenie, preškrtnutím, podčiarknutie a "
+"Definuje štýly na vyzdvihnutie, odstúpenie, preškrtnutím, podčiarknutie a "
 "zmenu na veľké/malé kapitálky, spôsobom balíka soul. Naproti značkovaniu "
 "poskytnuté v dialógu Vlastnosti Textu, slová takto označené sú oddeliteľné "
 "spojovníkom."
@@ -16651,7 +16651,7 @@ msgstr "underline"
 
 #: lib/layouts/soul.module:83
 msgid "highlight"
-msgstr "zvýrazniť"
+msgstr "vyzdvihnutie"
 
 #: lib/layouts/soul.module:87
 msgid "capitalise"
@@ -21295,7 +21295,7 @@ msgstr "Choď späť"
 
 #: lib/ui/stdtoolbars.inc:93
 msgid "Toggle emphasis"
-msgstr "Prepnúť zvýraznenie"
+msgstr "Prepnúť zdôraznenie"
 
 #: lib/ui/stdtoolbars.inc:94
 msgid "Toggle noun"
@@ -21326,17 +21326,14 @@ msgid "Toggle outline"
 msgstr "Prepnúť osnovu"
 
 #: lib/ui/stdtoolbars.inc:103 lib/ui/stdtoolbars.inc:300
-#, fuzzy
 msgid "Show math toolbar"
 msgstr "Zobraz lištu nástrojov pre matematiku"
 
 #: lib/ui/stdtoolbars.inc:104 lib/ui/stdtoolbars.inc:312
-#, fuzzy
 msgid "Show table toolbar"
 msgstr "Zobraz lištu nástrojov pre tabuľku"
 
 #: lib/ui/stdtoolbars.inc:105 lib/ui/stdtoolbars.inc:318
-#, fuzzy
 msgid "Show review toolbar"
 msgstr "Prepnúť lištu nástrojov pre náhľad"
 
@@ -21641,9 +21638,8 @@ msgid "Insert cases environment"
 msgstr "Vložiť cases prostredie"
 
 #: lib/ui/stdtoolbars.inc:212 lib/ui/stdtoolbars.inc:306
-#, fuzzy
 msgid "Show math panels"
-msgstr "Zobraziť &cestu"
+msgstr "Zobraziť matematické panely"
 
 #: lib/ui/stdtoolbars.inc:215
 msgid "Math Panels"
@@ -21882,21 +21878,18 @@ msgstr "Aktualizovať iné formáty"
 
 #: lib/ui/stdtoolbars.inc:301 lib/ui/stdtoolbars.inc:307
 #: lib/ui/stdtoolbars.inc:313 lib/ui/stdtoolbars.inc:319
-#, fuzzy
 msgid "[[Toolbar]]On"
-msgstr "Zapnúť|Z"
+msgstr "Zapnúť"
 
 #: lib/ui/stdtoolbars.inc:302 lib/ui/stdtoolbars.inc:308
 #: lib/ui/stdtoolbars.inc:314 lib/ui/stdtoolbars.inc:320
-#, fuzzy
 msgid "[[Toolbar]]Off"
-msgstr "Vypnúť|V"
+msgstr "Vypnúť"
 
 #: lib/ui/stdtoolbars.inc:303 lib/ui/stdtoolbars.inc:309
 #: lib/ui/stdtoolbars.inc:315 lib/ui/stdtoolbars.inc:321
-#, fuzzy
 msgid "[[Toolbar]]Automatic"
-msgstr "Automatická|A"
+msgstr "Automaticky"
 
 #: lib/ui/stdtoolbars.inc:340 src/frontends/qt/GuiLog.cpp:256
 msgid "Version Control"
@@ -26974,7 +26967,7 @@ msgid ""
 "Please install both packages or redefine \\lyxadded and \\lyxdeleted in the "
 "LaTeX preamble."
 msgstr ""
-"Zmeny nebudú zvýraznené v LaTeX-ovom výstupe, lebo ani xcolor ani ulem nie "
+"Zmeny nebudú vyzdvihnuté v LaTeX-ovom výstupe, lebo ani xcolor ani ulem nie "
 "sú inštalované.\n"
 "Prosím nainštalujte oba balíky alebo predefinujte \\lyxadded a \\lyxdeleted "
 "v LaTeX-ovej preambule."
@@ -28899,7 +28892,7 @@ msgstr "Prepnúť"
 #: src/FontInfo.cpp:617
 #, c-format
 msgid "Emphasis %1$s, "
-msgstr "Zvýrazniť %1$s, "
+msgstr "Zdôrazniť %1$s, "
 
 #: src/FontInfo.cpp:620
 #, c-format
@@ -29594,7 +29587,7 @@ msgstr ""
 #: src/LyXRC.cpp:3170
 msgid "The command to run the python pygments syntax highlighter."
 msgstr ""
-"Príkaz, ktorý python modul 'pygments' má spustiť na zdôraznenie syntaxu."
+"Príkaz, ktorý python modul 'pygments' má spustiť na vyzdvihnutie syntaxu."
 
 #: src/LyXRC.cpp:3179
 msgid ""
@@ -29673,7 +29666,7 @@ msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
 msgstr ""
-"Vyberte pre kontrolu zvýrazňovania slov ktoré nie sú v jazyku dokumentu."
+"Vyberte pre kontrolu vyzdvihnutia slov ktoré nie sú v jazyku dokumentu."
 
 #: src/LyXRC.cpp:3235
 msgid "The scrolling speed of the mouse wheel."
@@ -30842,9 +30835,9 @@ msgid "Built from git commit hash "
 msgstr "Zostavené zo zapísanej git transformácie "
 
 #: src/frontends/qt/GuiAbout.cpp:278
-#, fuzzy, c-format
+#, c-format
 msgid "Qt Version (run-time): %1$s on platform %2$s"
-msgstr "Qt verzia (čas pustenia): %1$s"
+msgstr "Qt verzia (čas pustenia): %1$s na platforme %2$s"
 
 #: src/frontends/qt/GuiAbout.cpp:283
 #, c-format
@@ -34543,13 +34536,12 @@ msgid "Add to personal dictionary|n"
 msgstr "Pridať do osobného slovníka|b"
 
 #: src/frontends/qt/Menus.cpp:865
-#, fuzzy
 msgid "Ignore|g"
-msgstr "Ignorovať"
+msgstr "Ignorovať|g"
 
 #: src/frontends/qt/Menus.cpp:867
 msgid "Ignore all|I"
-msgstr "Ignorovať všade|g"
+msgstr "Ignorovať všade|I"
 
 #: src/frontends/qt/Menus.cpp:875
 msgid "Remove from personal dictionary|r"
@@ -36053,11 +36045,11 @@ msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:839
 msgid "File encoding used by Pygments for highlighting"
-msgstr "Kódovanie súboru ktorý pygments použije pre zdôraznenie"
+msgstr "Kódovanie súboru ktorý pygments použije pre vyzdvihnutie"
 
 #: src/insets/InsetListingsParams.cpp:842
 msgid "Apply Python 3 highlighting"
-msgstr "Aplikuj python 3 zdôraznenie"
+msgstr "Aplikuj python 3 vyzdvihnutie"
 
 #: src/insets/InsetListingsParams.cpp:855
 msgid "A macro. Default: \\textvisiblespace"
