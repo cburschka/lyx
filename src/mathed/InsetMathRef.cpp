@@ -65,10 +65,20 @@ void InsetMathRef::infoize(odocstream & os) const
 
 void InsetMathRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
+	// Ctrl + click: go to label
+	if (cmd.action() == LFUN_MOUSE_RELEASE && cmd.modifier() == ControlModifier) {
+		LYXERR0("trying to goto ref '" << to_utf8(asString(cell(0))) << "'");
+		//FIXME: use DispatchResult argument
+		lyx::dispatch(FuncRequest(LFUN_LABEL_GOTO, asString(cell(0))));
+		return;
+	}
+
 	switch (cmd.action()) {
-	case LFUN_INSET_MODIFY:
-		if (cmd.getArg(0) == "ref") {
-			if (cmd.getArg(1) == "changetarget") {
+	case LFUN_INSET_MODIFY: {
+		string const arg0 = cmd.getArg(0);
+		string const arg1   = cmd.getArg(1);
+		if (arg0 == "ref") {
+			if (arg1 == "changetarget") {
 				string const oldtarget = cmd.getArg(2);
 				string const newtarget = cmd.getArg(3);
 				if (!oldtarget.empty() && !newtarget.empty()
@@ -85,13 +95,31 @@ void InsetMathRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 				setBuffer(buf);
 				break;
 			}
+		} else if (arg0 == "changetype") {
+			docstring const data = from_ascii(createDialogStr(arg1));
+			MathData ar;
+			if (createInsetMath_fromDialogStr(data, ar)) {
+				cur.recordUndo();
+				Buffer & buf = buffer();
+				*this = *ar[0].nucleus()->asRefInset();
+				setBuffer(buf);
+				break;
+			}
 		}
 		cur.undispatched();
 		break;
+	}
 
 	case LFUN_INSET_DIALOG_UPDATE: {
 		string const data = createDialogStr();
 		cur.bv().updateDialog("ref", data);
+		break;
+	}
+
+	case LFUN_INSET_SETTINGS: {
+		string const data = createDialogStr();
+		cur.bv().showDialog("ref", data, this);
+		cur.dispatched();
 		break;
 	}
 
@@ -100,14 +128,7 @@ void InsetMathRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.undispatched();
 			break;
 		}
-		if (cmd.button() == mouse_button::button3) {
-			LYXERR0("trying to goto ref '" << to_utf8(asString(cell(0))) << "'");
-			//FIXME: use DispatchResult argument
-			lyx::dispatch(FuncRequest(LFUN_LABEL_GOTO, asString(cell(0))));
-			break;
-		}
 		if (cmd.button() == mouse_button::button1) {
-			// Eventually trigger dialog with button 3, not 1
 			string const data = createDialogStr();
 			cur.bv().showDialog("ref", data, this);
 			break;
@@ -144,6 +165,7 @@ bool InsetMathRef::getStatus(Cursor & cur, FuncRequest const & cmd,
 	// we handle these
 	case LFUN_INSET_MODIFY:
 	case LFUN_INSET_DIALOG_UPDATE:
+	case LFUN_INSET_SETTINGS:
 	case LFUN_MOUSE_RELEASE:
 	case LFUN_MOUSE_PRESS:
 	case LFUN_MOUSE_DOUBLE:
@@ -227,9 +249,10 @@ void InsetMathRef::updateBuffer(ParIterator const & it, UpdateType /*utype*/, bo
 }
 
 
-string const InsetMathRef::createDialogStr() const
+string const InsetMathRef::createDialogStr(string const & type) const
 {
-	InsetCommandParams icp(REF_CODE, to_ascii(commandname()));
+	InsetCommandParams icp(REF_CODE, (type.empty()
+			?  to_ascii(commandname()) : type));
 	icp["reference"] = asString(cell(0));
 	if (!cell(1).empty())
 		icp["name"] = asString(cell(1));

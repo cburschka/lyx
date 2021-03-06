@@ -37,7 +37,7 @@ public:
 	///
 	bool clickable(BufferView const &, int, int) const override { return true; }
 	///
-	std::string contextMenuName() const override { return "context-ref"; }
+	std::string contextMenuName() const override { return "context-mathref"; }
 	///
 	mode_type currentMode() const override { return TEXT_MODE; }
 	///
@@ -56,7 +56,7 @@ public:
 	/// docbook output
 	void docbook(XMLStream &, OutputParams const &) const override;
 	/// generate something that will be understood by the Dialogs.
-	std::string const createDialogStr() const;
+	std::string const createDialogStr(std::string const & type = std::string()) const;
 
 	struct ref_type_info {
 		///

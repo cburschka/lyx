@@ -51,6 +51,7 @@
 #include "insets/InsetText.h"
 
 #include "mathed/InsetMathNest.h"
+#include "mathed/InsetMathRef.h"
 #include "mathed/MathData.h"
 #include "mathed/MathRow.h"
 
@@ -1244,7 +1245,8 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	case LFUN_LABEL_GOTO:
 		flag.setEnabled(!cmd.argument().empty()
-		    || getInsetByCode<InsetRef>(cur, REF_CODE));
+		    || getInsetByCode<InsetRef>(cur, REF_CODE)
+		    || getInsetByCode<InsetMathRef>(cur, MATH_REF_CODE));
 		break;
 
 	case LFUN_CHANGES_MERGE:
@@ -1535,6 +1537,12 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			// eventually call LFUN_PARAGRAPH_GOTO, but it seems best
 			// to have it here.
 			dr.screenUpdate(Update::Force | Update::FitCursor);
+		} else {
+			InsetMathRef * minset =
+				getInsetByCode<InsetMathRef>(cur, MATH_REF_CODE);
+			if (minset)
+				lyx::dispatch(FuncRequest(LFUN_LABEL_GOTO,
+							minset->getTarget()));
 		}
 		break;
 	}
