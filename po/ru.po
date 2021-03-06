@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2021-03-05 15:06-0500\n"
-"PO-Revision-Date: 2021-02-03 01:54+0200\n"
+"PO-Revision-Date: 2021-03-06 12:45+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -747,7 +747,7 @@ msgstr "Добавить все неизвестные ветки к списк�
 
 #: src/frontends/qt/ui/BranchesUnknownUi.ui:38
 msgid "Add A&ll"
-msgstr "Добавить &всё"
+msgstr "Добавить всё"
 
 #: src/frontends/qt/ui/BranchesUnknownUi.ui:58 src/Buffer.cpp:1457
 #: src/Buffer.cpp:4696 src/Buffer.cpp:4790 src/LyXVC.cpp:114 src/LyXVC.cpp:310
@@ -1559,13 +1559,12 @@ msgid "Sear&ch"
 msgstr "Поиск"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:55
-#, fuzzy
 msgid "Search fo&r:"
-msgstr "Ошибка поиска"
+msgstr "Найти:"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:92
 msgid "Replace &with:"
-msgstr "За&менить на:"
+msgstr "Заменить на:"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:137
 msgid "Shift+Enter search backwards directly"
@@ -1581,9 +1580,8 @@ msgstr "Искать только целые слова"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:153
 #: src/frontends/qt/ui/SearchUi.ui:217 src/frontends/qt/GuiSearch.cpp:101
-#, fuzzy
 msgid "Wh&ole words"
-msgstr "Только целые слова"
+msgstr "Только &целые слова"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:160
 msgid "Perform a case-sensitive search"
@@ -1595,27 +1593,23 @@ msgstr "Учитывать &регистр"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:205
 #: src/frontends/qt/FindAndReplace.cpp:648
-#, fuzzy
 msgid "Find next occurrence (Enter, backwards: Shift+Enter)"
-msgstr "Найти следующее совпадение [Enter]"
+msgstr "Найти следующее совпадение (Enter, предыдущее: Shift+Enter)"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:208
 #: src/frontends/qt/ui/SearchUi.ui:172 src/frontends/qt/FindAndReplace.cpp:647
-#, fuzzy
 msgid "Find &>"
-msgstr "&Найти далее"
+msgstr "Найти &>"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:221
 #: src/frontends/qt/FindAndReplace.cpp:650
-#, fuzzy
 msgid "Replace and find next occurrence (Enter, backwards: Shift+Enter)"
-msgstr "Заменить и найти следующее совпадение [Enter]"
+msgstr "Заменить и найти следующее совпадение (Enter, предыдущее: Shift+Enter)"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:224
 #: src/frontends/qt/FindAndReplace.cpp:649
-#, fuzzy
 msgid "Rep&lace >"
-msgstr "&Заменить"
+msgstr "Заменить >"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:234
 msgid "Replace all occurrences at once"
@@ -1624,10 +1618,9 @@ msgstr "Заменить все совпадения"
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:237
 #: src/frontends/qt/ui/SearchUi.ui:50
 msgid "Replace &All"
-msgstr "Заменить &всё"
+msgstr "Заменить вс&ё"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:264
-#, fuzzy
 msgid "Settin&gs"
 msgstr "Настройки"
 
@@ -1688,7 +1681,6 @@ msgid "I&gnore format"
 msgstr "&Игнорировать форматирование"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:399
-#, fuzzy
 msgid "E&xpand macros"
 msgstr "Развернуть макросы"
 
@@ -5127,104 +5119,88 @@ msgid "No Prefix"
 msgstr "Без префикса"
 
 #: src/frontends/qt/ui/SearchUi.ui:34
-#, fuzzy
 msgid "Find previous occurrence (Shift+Enter)"
-msgstr "Найти следующее совпадение [Enter]"
+msgstr "Найти предыдущее совпадение (Shift+Enter)"
 
 #: src/frontends/qt/ui/SearchUi.ui:37 src/frontends/qt/FindAndReplace.cpp:642
-#, fuzzy
 msgid "&< Find"
-msgstr "&Найти"
+msgstr "&< Найти"
 
 #: src/frontends/qt/ui/SearchUi.ui:47
-#, fuzzy
 msgid "Replace all occurrences"
 msgstr "Заменить все совпадения"
 
 #: src/frontends/qt/ui/SearchUi.ui:82 src/frontends/qt/GuiSearch.cpp:203
 msgid "Hide replace and option widgets"
-msgstr ""
+msgstr "Скрыть панель для замены и настройки"
 
 #: src/frontends/qt/ui/SearchUi.ui:85 src/frontends/qt/GuiSearch.cpp:202
-#, fuzzy
 msgid "&Minimize"
-msgstr "Минираздел"
+msgstr "&Свернуть"
 
 #: src/frontends/qt/ui/SearchUi.ui:92
-#, fuzzy
 msgid "Rep&lace with:"
-msgstr "Заменить &на:"
+msgstr "&Заменить на:"
 
 #: src/frontends/qt/ui/SearchUi.ui:102
-#, fuzzy
 msgid "&Search:"
-msgstr "Искать"
+msgstr "На&йти:"
 
 #: src/frontends/qt/ui/SearchUi.ui:137
-#, fuzzy
 msgid "Replace and find next occurrence"
-msgstr "Заменить и найти следующее совпадение [Enter]"
+msgstr "Заменить и найти следующее совпадение"
 
 #: src/frontends/qt/ui/SearchUi.ui:143
-#, fuzzy
 msgid "&Replace >"
-msgstr "&Заменить"
+msgstr "Заменить >"
 
 #: src/frontends/qt/ui/SearchUi.ui:153
-#, fuzzy
 msgid "Replace and find previous occurrence"
-msgstr "Заменить и найти следующее совпадение [Enter]"
+msgstr "Заменить и найти предыдущее совпадение"
 
 #: src/frontends/qt/ui/SearchUi.ui:156
-#, fuzzy
 msgid "< Re&place"
-msgstr "&Заменить"
+msgstr "< Заменить"
 
 #: src/frontends/qt/ui/SearchUi.ui:166
-#, fuzzy
 msgid "Find next occurrence (Enter)"
-msgstr "Найти следующее совпадение [Enter]"
+msgstr "Найти следующее совпадение (Enter)"
 
 #: src/frontends/qt/ui/SearchUi.ui:204
 msgid "Treat uppercase/lowercase writing as distinct"
-msgstr ""
+msgstr "Различать прописные и строчные буквы"
 
 #: src/frontends/qt/ui/SearchUi.ui:207 src/frontends/qt/GuiSearch.cpp:99
-#, fuzzy
 msgid "&Case sensitive[[search]]"
-msgstr "Учитывать &регистр"
+msgstr "&Учитывать регистр"
 
 #: src/frontends/qt/ui/SearchUi.ui:214
-#, fuzzy
 msgid "Match whole words only"
-msgstr "&Только целые слова"
+msgstr "Только целые слова"
 
 #: src/frontends/qt/ui/SearchUi.ui:224
 msgid "Limit search and replace to selection"
-msgstr ""
+msgstr "Вести поиск и замену только в выделенном тексте"
 
 #: src/frontends/qt/ui/SearchUi.ui:227 src/frontends/qt/GuiSearch.cpp:103
-#, fuzzy
 msgid "Selection onl&y"
-msgstr "Выделение|В"
+msgstr "Только в в&ыделении"
 
 #: src/frontends/qt/ui/SearchUi.ui:234
 msgid "If this is checked, LyX will search forward immediately"
-msgstr ""
+msgstr "Начинать поиск следующего совпадения сразу при вводе искомого текста"
 
 #: src/frontends/qt/ui/SearchUi.ui:237 src/frontends/qt/GuiSearch.cpp:105
-#, fuzzy
 msgid "Search as yo&u type"
-msgstr "Искать при &вводе текста"
+msgstr "Искать п&ри вводе текста"
 
 #: src/frontends/qt/ui/SearchUi.ui:244
 msgid "If the end/start of the document is reached, automatically wrap around"
-msgstr ""
+msgstr "При достижении конца документа, продолжать поиск/замену с его начала"
 
 #: src/frontends/qt/ui/SearchUi.ui:247 src/frontends/qt/GuiSearch.cpp:107
-#, fuzzy
 msgid "&Wrap"
-msgstr "Обтекаемый объект: "
+msgstr "Продол&жать с начала"
 
 #: src/frontends/qt/ui/SendtoUi.ui:50
 msgid "Process the converted file with this command ($$FName = file name)"
@@ -5305,7 +5281,6 @@ msgid ""
 msgstr "Язык для проверки. Изменение влияет на язык проверяемого слова."
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:82
-#, fuzzy
 msgid "Unknown &word:"
 msgstr "Нет в словаре:"
 
@@ -5314,7 +5289,6 @@ msgid "Current word"
 msgstr "Текущее слово"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:99
-#, fuzzy
 msgid "Repla&cement:"
 msgstr "&Замена:"
 
@@ -5323,18 +5297,16 @@ msgid "S&uggestions:"
 msgstr "&Варианты:"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:128
-#, fuzzy
 msgid "Re&place All"
-msgstr "Заменить &всё"
+msgstr "Заменить вс&ё"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:145
 msgid "Add the word to your personal dictionary"
 msgstr "Добавить слово в личный словарь"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:148
-#, fuzzy
 msgid "&Add[[Spellchecker]]"
-msgstr "Правописание"
+msgstr "Добавить"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:171
 msgid "Ignore this word"
@@ -5342,7 +5314,7 @@ msgstr "Пропустить это слово"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:174
 msgid "Ign&ore"
-msgstr ""
+msgstr "Игнорировать"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:181
 msgid "Ignore this word throughout this session"
@@ -5839,7 +5811,7 @@ msgstr "Язык тезауруса"
 
 #: src/frontends/qt/ui/ThesaurusUi.ui:40
 msgid "Index entry"
-msgstr "Запись в предметном указателе"
+msgstr "Запись в тезаурусе"
 
 #: src/frontends/qt/ui/ThesaurusUi.ui:43
 msgid "&Keyword:"
@@ -5847,19 +5819,19 @@ msgstr "&Ключевое слово:"
 
 #: src/frontends/qt/ui/ThesaurusUi.ui:56
 msgid "L&ookup"
-msgstr "&Искать"
+msgstr "&Найти"
 
 #: src/frontends/qt/ui/ThesaurusUi.ui:63 src/frontends/qt/ui/ThesaurusUi.ui:76
 msgid "The selected entry"
-msgstr "Выбранная запись"
+msgstr "Слово из тезауруса"
 
 #: src/frontends/qt/ui/ThesaurusUi.ui:66
 msgid "Sele&ction:"
-msgstr "&Выделение:"
+msgstr "&Выбранное слово:"
 
 #: src/frontends/qt/ui/ThesaurusUi.ui:83
 msgid "Replace the entry with the selection"
-msgstr "Заменить запись выбранным"
+msgstr "Заменить выбранным словом"
 
 #: src/frontends/qt/ui/ThesaurusUi.ui:93
 msgid "Click to select a proposal, double click to look it up."
@@ -5867,7 +5839,7 @@ msgstr "Щёлкните для выбора предложения, дважд�
 
 #: src/frontends/qt/ui/ThesaurusUi.ui:112
 msgid "Word to look up"
-msgstr "Искать слово"
+msgstr "Искомое слово"
 
 #: src/frontends/qt/ui/TocUi.ui:65
 msgid "Update navigation tree"
@@ -6013,7 +5985,7 @@ msgstr "Текущий абзац"
 
 #: src/frontends/qt/ui/ViewSourceUi.ui:152
 msgid "Complete Source"
-msgstr "Весь файл"
+msgstr "Весь документ"
 
 #: src/frontends/qt/ui/ViewSourceUi.ui:157
 msgid "Preamble Only"
@@ -6021,7 +5993,7 @@ msgstr "Только преамбула"
 
 #: src/frontends/qt/ui/ViewSourceUi.ui:162
 msgid "Body Only"
-msgstr "Только тело документа"
+msgstr "Только текст документа"
 
 #: src/frontends/qt/ui/ViewSourceUi.ui:189
 msgid "Select the output format"
@@ -7603,7 +7575,7 @@ msgid ""
 msgstr ""
 "Предоставляет два новых стиля: 1. Стиль \"В преамбуле\", который помещает "
 "все, что вводится в него в преамбулу. Это можно использовать, если вы хотите "
-"включить код преамбулы в тело документа LyX. 2. Стиль \"В заголовке\", "
+"включить код преамбулы в текст документа LyX. 2. Стиль \"В заголовке\", "
 "который помещает своё содержание в тело документа LaTeX до выдачи "
 "\\maketitle. Это полезно для создания веток и заметок в материале, связанном "
 "с заголовком. (Если вы поместите их в окружение \"Обычный\", то это будет "
@@ -16128,7 +16100,7 @@ msgstr "Доп. заголовок"
 
 #: lib/layouts/scrclass.inc:296
 msgid "Frontispiece"
-msgstr ""
+msgstr "Фронтиспис"
 
 #: lib/layouts/scrclass.inc:317
 msgid "Above"
@@ -20711,7 +20683,6 @@ msgid "Code Preview Pane|P"
 msgstr "Панель просмотра кода|к"
 
 #: lib/ui/stdmenus.inc:341
-#, fuzzy
 msgid "Messages Pane|M"
 msgstr "Панель сообщений|с"
 
@@ -21377,22 +21348,19 @@ msgstr "Пользовательская вставка"
 
 #: lib/ui/stdtoolbars.inc:102
 msgid "Toggle outline"
-msgstr "Переключить панель навигации"
+msgstr "Панель навигации"
 
 #: lib/ui/stdtoolbars.inc:103 lib/ui/stdtoolbars.inc:300
-#, fuzzy
 msgid "Show math toolbar"
-msgstr "Показать панель формул"
+msgstr "Панель формул"
 
 #: lib/ui/stdtoolbars.inc:104 lib/ui/stdtoolbars.inc:312
-#, fuzzy
 msgid "Show table toolbar"
-msgstr "Показать панель таблиц"
+msgstr "Панель таблиц"
 
 #: lib/ui/stdtoolbars.inc:105 lib/ui/stdtoolbars.inc:318
-#, fuzzy
 msgid "Show review toolbar"
-msgstr "Переключить панель рецензирования"
+msgstr "Панель рецензирования"
 
 #: lib/ui/stdtoolbars.inc:108
 msgid "View/Update"
@@ -21695,9 +21663,8 @@ msgid "Insert cases environment"
 msgstr "Вставить окружение cases"
 
 #: lib/ui/stdtoolbars.inc:212 lib/ui/stdtoolbars.inc:306
-#, fuzzy
 msgid "Show math panels"
-msgstr "Переключить математические панели"
+msgstr "Математические панели"
 
 #: lib/ui/stdtoolbars.inc:215
 msgid "Math Panels"
@@ -21936,21 +21903,18 @@ msgstr "Обновить другие форматы"
 
 #: lib/ui/stdtoolbars.inc:301 lib/ui/stdtoolbars.inc:307
 #: lib/ui/stdtoolbars.inc:313 lib/ui/stdtoolbars.inc:319
-#, fuzzy
 msgid "[[Toolbar]]On"
-msgstr "Вкл.|В"
+msgstr "Вкл."
 
 #: lib/ui/stdtoolbars.inc:302 lib/ui/stdtoolbars.inc:308
 #: lib/ui/stdtoolbars.inc:314 lib/ui/stdtoolbars.inc:320
-#, fuzzy
 msgid "[[Toolbar]]Off"
-msgstr "Выкл.|ы"
+msgstr "Выкл."
 
 #: lib/ui/stdtoolbars.inc:303 lib/ui/stdtoolbars.inc:309
 #: lib/ui/stdtoolbars.inc:315 lib/ui/stdtoolbars.inc:321
-#, fuzzy
 msgid "[[Toolbar]]Automatic"
-msgstr "Автоматически|А"
+msgstr "Автоматически"
 
 #: lib/ui/stdtoolbars.inc:340 src/frontends/qt/GuiLog.cpp:256
 msgid "Version Control"
@@ -26314,7 +26278,7 @@ msgstr "LaTeX (dviluatex)"
 
 #: lib/configure.py:756
 msgid "ePub"
-msgstr ""
+msgstr "ePub"
 
 #: lib/configure.py:757
 msgid "LaTeX (pLaTeX)"
@@ -27434,7 +27398,7 @@ msgstr "Просмотр преамбулы"
 
 #: src/Buffer.cpp:4144
 msgid "Preview body"
-msgstr "Просмотр тела документа"
+msgstr "Просмотр текста документа"
 
 #: src/Buffer.cpp:4160
 msgid "Plain text does not have a preamble."
@@ -27963,7 +27927,7 @@ msgstr "Применено \"%1$s\" к %2$d вставкам"
 
 #: src/BufferView.cpp:2080
 msgid "Branch name"
-msgstr "Имя ветки"
+msgstr "Ветка"
 
 #: src/BufferView.cpp:2087 src/frontends/qt/GuiBranches.cpp:225
 msgid "Branch already exists"
@@ -30806,17 +30770,15 @@ msgstr "Расширенный поиск и замена"
 
 #: src/frontends/qt/FindAndReplace.cpp:643
 msgid "Find previous occurrence (Shift+Enter, forwards: Enter)"
-msgstr ""
+msgstr "Найти предыдущее совпадение (Shift+Enter, следующее: Enter)"
 
 #: src/frontends/qt/FindAndReplace.cpp:644
-#, fuzzy
 msgid "< Rep&lace"
-msgstr "&Заменить"
+msgstr "< Заменить"
 
 #: src/frontends/qt/FindAndReplace.cpp:645
-#, fuzzy
 msgid "Replace and find previous occurrence (Shift+Enter, forwards: Enter)"
-msgstr "Заменить и найти следующее совпадение [Enter]"
+msgstr "Заменить и найти предыдущее совпадение (Shift+Enter, следующее: Enter)"
 
 #: src/frontends/qt/FloatPlacement.cpp:182
 #: src/frontends/qt/GuiDocument.cpp:1139 src/frontends/qt/GuiDocument.cpp:2707
@@ -30924,9 +30886,9 @@ msgid "Built from git commit hash "
 msgstr "Собран из коммита Git с хэшем "
 
 #: src/frontends/qt/GuiAbout.cpp:278
-#, fuzzy, c-format
+#, c-format
 msgid "Qt Version (run-time): %1$s on platform %2$s"
-msgstr "Версия Qt (выполнение): %1$s"
+msgstr "Версия Qt (выполнение): %1$s/%2$s"
 
 #: src/frontends/qt/GuiAbout.cpp:283
 #, c-format
@@ -30936,7 +30898,7 @@ msgstr "Версия Qt (компиляция): %1$s"
 #: src/frontends/qt/GuiAbout.cpp:288
 #, c-format
 msgid "Python detected: %1$s"
-msgstr ""
+msgstr "Команда запуска Python: %1$s"
 
 #: src/frontends/qt/GuiAbout.cpp:319
 msgid "About LyX"
@@ -31055,7 +31017,7 @@ msgstr "Открываем файл помощи %1$s..."
 
 #: src/frontends/qt/GuiApplication.cpp:1858
 msgid "Wrong argument. Must be 'examples' or 'templates'."
-msgstr ""
+msgstr "Неверный аргумент. Допустимы только 'examples' или 'templates'."
 
 #: src/frontends/qt/GuiApplication.cpp:1872
 msgid "Syntax: set-color <lyx_name> <x11_name> <x11_darkname>"
@@ -31707,9 +31669,8 @@ msgid "(None)"
 msgstr "(Нет)"
 
 #: src/frontends/qt/GuiDelimiter.cpp:272 src/frontends/qt/GuiDelimiter.cpp:275
-#, fuzzy
 msgid "No Delimiter"
-msgstr "Скобки"
+msgstr "Без скобки"
 
 #: src/frontends/qt/GuiDelimiter.cpp:280
 msgid "Variable"
@@ -33502,49 +33463,41 @@ msgstr "<Нет префикса>"
 
 #: src/frontends/qt/GuiSearch.cpp:191
 msgid "Ex&pand"
-msgstr ""
+msgstr "&Развернуть"
 
 #: src/frontends/qt/GuiSearch.cpp:192
 msgid "Show replace and option widgets"
-msgstr ""
+msgstr "Показать панель для замены и настройки"
 
 #: src/frontends/qt/GuiSearch.cpp:251
-#, fuzzy
 msgid "Active options:"
-msgstr "   параметры: "
+msgstr "Активные параметры:"
 
 #: src/frontends/qt/GuiSearch.cpp:254
-#, fuzzy
 msgid "Case sensitive search"
-msgstr "Учитывать &регистр"
+msgstr "Учитывать регистр"
 
 #: src/frontends/qt/GuiSearch.cpp:272
-#, fuzzy
 msgid "Whole words only"
 msgstr "Только целые слова"
 
 #: src/frontends/qt/GuiSearch.cpp:289
-#, fuzzy
 msgid "Search only in selection"
-msgstr "Искать только в формулах"
+msgstr "Искать только в выделении"
 
 #: src/frontends/qt/GuiSearch.cpp:306
-#, fuzzy
 msgid "Search as you type"
-msgstr "Искать при &вводе текста"
+msgstr "Искать при вводе текста"
 
 #: src/frontends/qt/GuiSearch.cpp:323
-#, fuzzy
 msgid "Wrap search"
-msgstr "Продолжить поиск?"
+msgstr "Продолжать с начала"
 
 #: src/frontends/qt/GuiSearch.cpp:345
-#, fuzzy
 msgid "Click here to change search options"
-msgstr "Нажмите, чтобы изменить цвет"
+msgstr "Нажмите, чтобы изменить настройки поиска"
 
 #: src/frontends/qt/GuiSearch.cpp:556
-#, fuzzy
 msgid "Search and Replace"
 msgstr "Поиск и замена"
 
@@ -34645,7 +34598,6 @@ msgid "Add to personal dictionary|n"
 msgstr "Добавить в личный словарь"
 
 #: src/frontends/qt/Menus.cpp:865
-#, fuzzy
 msgid "Ignore|g"
 msgstr "Игнорировать"
 
@@ -36520,17 +36472,20 @@ msgid ""
 "selection.\n"
 "Continue search outside?"
 msgstr ""
+"Искомая строка найдена в выделенном тексте и поиск ограничен выделением.\n"
+"Продолжить поиск вне выделения?"
 
 #: src/lyxfind.cpp:302 src/lyxfind.cpp:329
-#, fuzzy
 msgid "Search outside selection?"
-msgstr "Принять изменение внутри выделения"
+msgstr "Искать вне выделеного текста?"
 
 #: src/lyxfind.cpp:327
 msgid ""
 "The search string was not found within the selection.\n"
 "Continue search outside?"
 msgstr ""
+"Искомая строка не найдена в выделенном тексте.\n"
+"Продолжить поиск вне выделения?"
 
 #: src/lyxfind.cpp:344 src/lyxfind.cpp:684
 msgid ""
@@ -36549,9 +36504,8 @@ msgstr ""
 "Продолжать поиск с конца?"
 
 #: src/lyxfind.cpp:657
-#, fuzzy
 msgid "String not found in selection."
-msgstr "Строка не найдена."
+msgstr "Строка не найдена в выделенном тексте."
 
 #: src/lyxfind.cpp:659
 msgid "String not found."
@@ -36566,9 +36520,9 @@ msgid "String has been replaced."
 msgstr "Строка была заменена."
 
 #: src/lyxfind.cpp:667
-#, fuzzy, c-format
+#, c-format
 msgid "%1$d strings have been replaced in the selection."
-msgstr "%1$d строк было заменено."
+msgstr "%1$d строк было заменено в выделенном тексте."
 
 #: src/lyxfind.cpp:668
 #, c-format

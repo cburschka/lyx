@@ -1337,8 +1337,20 @@ arg   "word-find-backward"
 Нажатие кнопки 
 \family sans
 Заменить
+\begin_inset space ~
+\end_inset
+
+>
 \family default
- заменяет выделенный текст содержимым поля 
+ (
+\family sans
+<
+\begin_inset space ~
+\end_inset
+
+Заменить
+\family default
+) заменяет выделенный текст содержимым поля 
 \family sans
 Заменить
 \begin_inset space ~
@@ -1346,7 +1358,7 @@ arg   "word-find-backward"
 
 на
 \family default
- и ищет следующее совпадение.
+ и ищет следующее (предыдущее) совпадение.
  Нажмите 
 \family sans
 Заменить
@@ -1355,17 +1367,13 @@ arg   "word-find-backward"
 
 всё
 \family default
-, чтобы автоматически заменить все вхождения указанного текста в документе.
+, чтобы автоматически заменить все вхождения искомого текста в документе.
 \end_layout
 
 \begin_layout Standard
 Имеются следующие настройки: 
 \family sans
-Учитывать
-\begin_inset space ~
-\end_inset
-
-регистр
+Учитывать регистр
 \family default
  можно использовать, если требуется, чтобы поиск учитывал регистр искомого
  слова.
@@ -1373,19 +1381,36 @@ arg   "word-find-backward"
 овать слову «тест».
  
 \family sans
-Только
-\begin_inset space ~
-\end_inset
-
-целые
-\begin_inset space ~
-\end_inset
-
-слова
+Только целые слова
 \family default
  может использоваться, чтобы заставить \SpecialChar LyX
  находить только полные слова, например,
  поиск слова «звезда» не даст сопоставления со словом «звездами».
+ 
+\family sans
+Только в выделении
+\family default
+ ограничивает область поиска или замены текущим выделенным текстом.
+ 
+\family sans
+Искать при вводе текста
+\family default
+ позволяет начать поиск сразу при вводе текста, без нажатия кнопки 
+\family sans
+Найти
+\begin_inset space ~
+\end_inset
+
+>
+\family default
+.
+ 
+\family sans
+Продолжать с начала
+\family default
+ позволяет сразу продолжить поиск с начала документа при достижении его
+ конца (если настройка отключена, то будет появляться диалоговое окно для
+ уточнения дальнейшего действия).
 \end_layout
 
 \begin_layout Standard
@@ -33955,7 +33980,11 @@ arg   "dialog-toggle findreplaceadv"
 \family default
  простое слово и найдите его вхождение, нажав кнопку 
 \family sans
-Найти далее
+Найти
+\begin_inset space ~
+\end_inset
+
+>
 \family default
  в нижней части панели (или просто нажмите клавишу 
 \begin_inset Info
@@ -34083,6 +34112,10 @@ Shift+Return
  Чтобы найти следующее вхождение и заменить его, нажмите кнопку 
 \family sans
 Заменить
+\begin_inset space ~
+\end_inset
+
+>
 \family default
  или, в качестве альтернативы, 
 \begin_inset Info
@@ -34949,9 +34982,9 @@ arg   "thesaurus-entry"
 \end_layout
 
 \begin_layout Standard
-Язык автоматически выбирается из языка слова, на котором находится курсор,
- но вы также можете переключать язык в диалоговом окне, поскольку можете
- вводить слова для поиска прямо там.
+Язык автоматически выбирается в соответствии с языком слова, на котором
+ находится курсор, но вы также можете переключать язык в диалоговом окне,
+ поскольку можете вводить слова для поиска прямо там.
 \end_layout
 
 \begin_layout Standard
@@ -34960,8 +34993,9 @@ arg   "thesaurus-entry"
 \shape italic
 синтаксическая диаграмма
 \shape default
-), и вы должны использовать так называемую лемму — форму, используемую в
- словарях (именительный падеж, единственное число — для существительных,
+).
+ Также вы должны использовать так называемую лемму — форму, используемую
+ в словарях (именительный падеж, единственное число — для существительных,
  инфинитив несовершенного вида — для глаголов).
  Например, поиск слова в виде 
 \shape italic
@@ -39647,7 +39681,7 @@ status collapsed
 \begin_layout Standard
 \align left
 \begin_inset Tabular
-<lyxtabular version="3" rows="26" columns="2">
+<lyxtabular version="3" rows="27" columns="2">
 <features islongtable="true" longtabularalignment="center">
 <column alignment="right" valignment="top">
 <column alignment="left" valignment="top">
@@ -40337,7 +40371,7 @@ arg   "dialog-toggle toc"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Переключить панель навигации, 
+
 \family sans
 Вид\SpecialChar menuseparator
 Панель навигации
@@ -40367,7 +40401,11 @@ arg   "toolbar-toggle math"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Переключить панель формул
+
+\family sans
+Вид\SpecialChar menuseparator
+Панель инструментов\SpecialChar menuseparator
+Формула
 \end_layout
 
 \end_inset
@@ -40394,7 +40432,42 @@ arg   "toolbar-toggle table"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Переключить панель таблиц
+
+\family sans
+Вид\SpecialChar menuseparator
+Панель инструментов\SpecialChar menuseparator
+Таблица
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "toolbar-toggle review"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Вид\SpecialChar menuseparator
+Панель инструментов\SpecialChar menuseparator
+Рецензирование
 \end_layout
 
 \end_inset
