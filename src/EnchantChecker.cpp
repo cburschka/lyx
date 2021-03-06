@@ -119,7 +119,7 @@ EnchantChecker::~EnchantChecker()
 
 
 SpellChecker::Result EnchantChecker::check(WordLangTuple const & word,
-        std::vector<WordLangTuple> docdict)
+        std::vector<WordLangTuple> const & docdict)
 {
 	enchant::Dict * m = d->speller(word.lang()->code());
 
