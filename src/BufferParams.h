@@ -21,6 +21,7 @@
 #include "DocumentClassPtr.h"
 #include "LayoutModuleList.h"
 #include "paper.h"
+#include "WordLangTuple.h"
 
 #include "support/copied_ptr.h"
 #include "support/types.h"
@@ -335,6 +336,11 @@ public:
 	/// IndicesList:
 	IndicesList & indiceslist();
 	IndicesList const & indiceslist() const;
+	///
+	typedef std::vector<WordLangTuple> IgnoreList;
+	///
+	IgnoreList & spellignore();
+	IgnoreList const & spellignore() const;
 	/**
 	 * The LyX name of the input encoding for LaTeX. This can be one of
 	 * - \c auto: find out the input encoding from the used languages

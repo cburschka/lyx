@@ -4860,7 +4860,9 @@ SpellChecker::Result Paragraph::spellCheck(pos_type & from, pos_type & to,
 	docstring word = asString(from, to, AS_STR_INSETS | AS_STR_SKIPDELETE);
 	Language * lang = d->getSpellLanguage(from);
 
-	if (getFontSettings(d->inset_owner_->buffer().params(), from).fontInfo().nospellcheck() == FONT_ON)
+	BufferParams const & bparams = d->inset_owner_->buffer().params();
+
+	if (getFontSettings(bparams, from).fontInfo().nospellcheck() == FONT_ON)
 		return result;
 
 	wl = WordLangTuple(word, lang);
@@ -4872,10 +4874,10 @@ SpellChecker::Result Paragraph::spellCheck(pos_type & from, pos_type & to,
 		pos_type end = to;
 		if (!d->ignoreWord(word)) {
 			bool const trailing_dot = to < size() && d->text_[to] == '.';
-			result = speller->check(wl);
+			result = speller->check(wl, bparams.spellignore());
 			if (SpellChecker::misspelled(result) && trailing_dot) {
 				wl = WordLangTuple(word.append(from_ascii(".")), lang);
-				result = speller->check(wl);
+				result = speller->check(wl, bparams.spellignore());
 				if (!SpellChecker::misspelled(result)) {
 					LYXERR(Debug::GUI, "misspelled word is correct with dot: \"" <<
 					   word << "\" [" <<
@@ -4987,8 +4989,9 @@ void Paragraph::spellCheck() const
 			// start the spell checker on the unit of meaning
 			docstring word = asString(first, last, AS_STR_INSETS + AS_STR_SKIPDELETE);
 			WordLangTuple wl = WordLangTuple(word, lang);
+			BufferParams const & bparams = d->inset_owner_->buffer().params();
 			SpellChecker::Result result = !word.empty() ?
-				speller->check(wl) : SpellChecker::WORD_OK;
+				speller->check(wl, bparams.spellignore()) : SpellChecker::WORD_OK;
 			d->markMisspelledWords(first, last, result, word, skips);
 			first = ++last;
 		}

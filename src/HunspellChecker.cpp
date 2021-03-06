@@ -70,7 +70,8 @@ struct HunspellChecker::Private
 	Hunspell * speller(Language const * lang);
 	Hunspell * lookup(Language const * lang);
 	/// ignored words
-	bool isIgnored(WordLangTuple const & wl) const;
+	bool isIgnored(WordLangTuple const & wl,
+		       std::vector<WordLangTuple> const & docdict) const;
 	/// personal word list interface
 	void remove(WordLangTuple const & wl);
 	void insert(WordLangTuple const & wl);
@@ -281,10 +282,18 @@ int HunspellChecker::Private::numDictionaries() const
 }
 
 
-bool HunspellChecker::Private::isIgnored(WordLangTuple const & wl) const
+bool HunspellChecker::Private::isIgnored(WordLangTuple const & wl,
+					 vector<WordLangTuple> const & docdict) const
 {
 	IgnoreList::const_iterator it = ignored_.begin();
 	for (; it != ignored_.end(); ++it) {
+		if (it->lang()->code() != wl.lang()->code())
+			continue;
+		if (it->word() == wl.word())
+			return true;
+	}
+	it = docdict.begin();
+	for (; it != docdict.end(); ++it) {
 		if (it->lang()->code() != wl.lang()->code())
 			continue;
 		if (it->word() == wl.word())
@@ -344,9 +353,10 @@ HunspellChecker::~HunspellChecker()
 }
 
 
-SpellChecker::Result HunspellChecker::check(WordLangTuple const & wl)
+SpellChecker::Result HunspellChecker::check(WordLangTuple const & wl,
+					    vector<WordLangTuple> const & docdict)
 {
-	if (d->isIgnored(wl))
+	if (d->isIgnored(wl, docdict))
 		return WORD_OK;
 
 	Hunspell * h = d->speller(wl.lang());

@@ -118,7 +118,8 @@ EnchantChecker::~EnchantChecker()
 }
 
 
-SpellChecker::Result EnchantChecker::check(WordLangTuple const & word)
+SpellChecker::Result EnchantChecker::check(WordLangTuple const & word,
+        std::vector<WordLangTuple> docdict)
 {
 	enchant::Dict * m = d->speller(word.lang()->code());
 
@@ -132,6 +133,14 @@ SpellChecker::Result EnchantChecker::check(WordLangTuple const & word)
 
 	if (m->check(utf8word))
 		return WORD_OK;
+
+	vector<WordLangTuple>::const_iterator it = docdict.begin();
+	for (; it != docdict.end(); ++it) {
+		if (it->lang()->code() != word.lang()->code())
+			continue;
+		if (it->word() == word.word())
+			return LEARNED_WORD;
+	}
 
 	return UNKNOWN_WORD;
 }

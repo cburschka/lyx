@@ -42,7 +42,9 @@ private Q_SLOTS:
 	void on_replaceCO_highlighted(const QString & str);
 	void on_languageCO_activated(int index);
 	void on_ignoreAllPB_clicked();
+	void on_skipAllPB_clicked();
 	void on_addPB_clicked();
+	void on_skipPB_clicked();
 	void on_ignorePB_clicked();
 	void on_replacePB_clicked();
 

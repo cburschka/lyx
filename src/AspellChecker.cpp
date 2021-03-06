@@ -428,7 +428,8 @@ AspellChecker::~AspellChecker()
 }
 
 
-SpellChecker::Result AspellChecker::check(WordLangTuple const & word)
+SpellChecker::Result AspellChecker::check(WordLangTuple const & word,
+					  vector<WordLangTuple> const & docdict)
 {
 	AspellSpeller * m = d->speller(word.lang());
 
@@ -439,6 +440,13 @@ SpellChecker::Result AspellChecker::check(WordLangTuple const & word)
 		// MSVC compiled Aspell doesn't like it.
 		return WORD_OK;
 
+	vector<WordLangTuple>::const_iterator it = docdict.begin();
+	for (; it != docdict.end(); ++it) {
+		if (it->lang()->code() != word.lang()->code())
+			continue;
+		if (it->word() == word.word())
+			return LEARNED_WORD;
+	}
 	SpellChecker::Result rc = d->check(m, word);
 	return (rc == WORD_OK && d->learned(word)) ? LEARNED_WORD : rc;
 }

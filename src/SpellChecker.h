@@ -14,6 +14,7 @@
 #define SPELL_BASE_H
 
 #include "support/strfwd.h"
+#include <vector>
 
 
 namespace lyx {
@@ -59,7 +60,8 @@ public:
 			&& res != LEARNED_WORD; }
 
 	/// check the given word of the given lang code and return the result
-	virtual enum Result check(WordLangTuple const &) = 0;
+	virtual enum Result check(WordLangTuple const &,
+				  std::vector<WordLangTuple> const &) = 0;
 
 	/// Gives suggestions.
 	virtual void suggest(WordLangTuple const &, docstring_list & suggestions) = 0;

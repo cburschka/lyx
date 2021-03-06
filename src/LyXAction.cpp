@@ -3794,6 +3794,19 @@ void LyXAction::init()
 		{ LFUN_SPELLING_ADD, "spelling-add", ReadOnly, Edit },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_SPELLING_ADD_LOCAL
+ * \li Action: Add the word under the cursor to the document's local
+ *             spell checker dictionary.
+ *             The default for the language is retrieved from the cursor position.
+ * \li Syntax: spelling-add-local [<STRING>] [<LANG>]
+ * \li Params: <WORD>: word to add
+	       <LANG>: language name (see file languages)
+ * \li Origin: spitz, 6 Mar 2021
+ * \endvar
+ */
+		{ LFUN_SPELLING_ADD_LOCAL, "spelling-add-local", Noop, Edit },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_SPELLING_CONTINUOUSLY
  * \li Action: Toggle continuous spell checking.
  * \li Syntax: spelling-continuously

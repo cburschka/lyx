@@ -78,13 +78,23 @@ string AppleSpellChecker::Private::toString(SpellCheckResult status)
 }
 
 
-SpellChecker::Result AppleSpellChecker::check(WordLangTuple const & word)
+SpellChecker::Result AppleSpellChecker::check(WordLangTuple const & word,
+        std::vector<WordLangTuple> docdict)
 {
 	if (!hasDictionary(word.lang()))
 		return NO_DICTIONARY;
 
 	string const word_str = to_utf8(word.word());
 	string const lang = d->languageMap[word.lang()->lang()];
+
+ 	vector<WordLangTuple>::const_iterator it = docdict.begin();
+	for (; it != docdict.end(); ++it) {
+		if (it->lang()->code() != word.lang()->code())
+			continue;
+		if (it->word() == word.word())
+			return LEARNED_WORD;
+	}
+
 	SpellCheckResult result =
 		AppleSpeller_check(d->speller,
 			word_str.c_str(), lang.c_str());

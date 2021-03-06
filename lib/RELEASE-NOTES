@@ -116,6 +116,9 @@
   cursor in the search cache that is used by word-find[-backward|-forward] if no argument
   is given to those.
 
+* spelling-add-local adds words for a given language to the document's local spelling
+  dictionary.
+
 * inset-split is a new convenience function that splits an inset into two at the given
   cursor position. This is only implemented for text insets currently.
 

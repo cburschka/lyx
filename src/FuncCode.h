@@ -497,6 +497,8 @@ enum FuncCode
 	LFUN_LYXFILES_OPEN,             // jspitzm 20210210
 	LFUN_SEARCH_STRING_SET,         // stwitt/jspitzm 20210212
 	LFUN_FONT_NO_SPELLCHECK,        // jspitzm 20210305
+	LFUN_SPELLING_ADD_LOCAL,        // jspitzm 20210306
+	// 390
 	LFUN_LASTACTION                 // end of the table
 };
 

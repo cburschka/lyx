@@ -341,6 +341,7 @@ public:
 
 	AuthorList authorlist;
 	BranchList branchlist;
+	IgnoreList spellignore;
 	Bullet temp_bullets[4];
 	Bullet user_defined_bullets[4];
 	IndicesList indiceslist;
@@ -597,6 +598,21 @@ IndicesList & BufferParams::indiceslist()
 IndicesList const & BufferParams::indiceslist() const
 {
 	return pimpl_->indiceslist;
+}
+
+
+typedef std::vector<WordLangTuple> IgnoreList;
+
+
+IgnoreList & BufferParams::spellignore()
+{
+	return pimpl_->spellignore;
+}
+
+
+IgnoreList const & BufferParams::spellignore() const
+{
+	return pimpl_->spellignore;
 }
 
 
@@ -1032,6 +1048,14 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 					lcolor.setColor(to_utf8(shortcut)+ "@" + filename.absFileName(), color);
 			}
 		}
+	} else if (token == "\\spellchecker_ignore") {
+		lex.eatLine();
+		docstring wl = lex.getDocString();
+		docstring langcode;
+		docstring word = split(wl, langcode, ' ');
+		Language const * lang = languages.getFromCode(to_ascii(langcode));
+		if (lang)
+			spellignore().push_back(WordLangTuple(word, lang));
 	} else if (token == "\\author") {
 		lex.eatLine();
 		istringstream ss(lex.getString());
@@ -1405,6 +1429,12 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 		   << "\n\\shortcut " << to_utf8(id.shortcut())
 		   << "\n\\color " << lyx::X11hexname(id.color())
 		   << "\n\\end_index"
+		   << "\n";
+	}
+
+	for (auto const & si : spellignore()) {
+		os << "\\spellchecker_ignore " << si.lang()->code()
+		   << " " << to_utf8(si.word())
 		   << "\n";
 	}
 

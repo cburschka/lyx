@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>300</width>
-    <height>380</height>
+    <width>477</width>
+    <height>488</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -19,7 +19,78 @@
   <property name="windowTitle">
    <string>Spell Checker</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout" columnstretch="1,0">
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="languageLA">
+       <property name="text">
+        <string>&amp;Language:</string>
+       </property>
+       <property name="buddy">
+        <cstring>languageCO</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="languageCO">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+         <horstretch>100</horstretch>
+         <verstretch>32</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>The checked language. Switching this alters the language of the checked word.</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="TextLabel3">
+     <property name="text">
+      <string>Unknown &amp;word:</string>
+     </property>
+     <property name="buddy">
+      <cstring>wordED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLineEdit" name="wordED">
+     <property name="toolTip">
+      <string>Current word</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QPushButton" name="skipPB">
+     <property name="toolTip">
+      <string>Skip this match and go to next misspelling</string>
+     </property>
+     <property name="text">
+      <string>S&amp;kip</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="TextLabel1">
+     <property name="text">
+      <string>Repla&amp;cement:</string>
+     </property>
+     <property name="buddy">
+      <cstring>replaceCO</cstring>
+     </property>
+    </widget>
+   </item>
    <item row="5" column="0">
     <widget class="QComboBox" name="replaceCO">
      <property name="focusPolicy">
@@ -49,60 +120,6 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="2">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLabel" name="languageLA">
-       <property name="text">
-        <string>&amp;Language:</string>
-       </property>
-       <property name="buddy">
-        <cstring>languageCO</cstring>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="languageCO">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-         <horstretch>100</horstretch>
-         <verstretch>32</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="toolTip">
-        <string>The checked language. Switching this alters the language of the checked word.</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="TextLabel3">
-     <property name="text">
-      <string>Unknown &amp;word:</string>
-     </property>
-     <property name="buddy">
-      <cstring>wordED</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
-    <widget class="QLineEdit" name="wordED">
-     <property name="toolTip">
-      <string>Current word</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="TextLabel1">
-     <property name="text">
-      <string>Repla&amp;cement:</string>
-     </property>
-     <property name="buddy">
-      <cstring>replaceCO</cstring>
-     </property>
-    </widget>
-   </item>
    <item row="6" column="0">
     <widget class="QLabel" name="TextLabel2">
      <property name="sizePolicy">
@@ -122,24 +139,37 @@
    <item row="6" column="1">
     <widget class="QPushButton" name="replaceAllPB">
      <property name="toolTip">
-      <string/>
+      <string>Replace all occurrences of the word in the document with current choice</string>
      </property>
      <property name="text">
       <string>Re&amp;place All</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="2">
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+   <item row="7" column="0" rowspan="5">
+    <widget class="QListWidget" name="suggestionsLW"/>
+   </item>
+   <item row="7" column="1">
+    <widget class="QPushButton" name="ignorePB">
+     <property name="toolTip">
+      <string>Ignore this occurrence of the word permanently</string>
+     </property>
+     <property name="text">
+      <string>Ign&amp;ore</string>
      </property>
     </widget>
    </item>
-   <item row="7" column="0" rowspan="4">
-    <widget class="QListWidget" name="suggestionsLW"/>
-   </item>
    <item row="9" column="1">
+    <widget class="QPushButton" name="ignoreAllPB">
+     <property name="toolTip">
+      <string>Ignore all occurrences of this word within this document. This is perdurant beyond the current session.</string>
+     </property>
+     <property name="text">
+      <string>I&amp;gnore All</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="1">
     <widget class="QPushButton" name="addPB">
      <property name="toolTip">
       <string>Add the word to your personal dictionary</string>
@@ -149,7 +179,7 @@
      </property>
     </widget>
    </item>
-   <item row="10" column="1">
+   <item row="11" column="1">
     <spacer>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -165,23 +195,13 @@
      </property>
     </spacer>
    </item>
-   <item row="3" column="1">
-    <widget class="QPushButton" name="ignorePB">
-     <property name="toolTip">
-      <string>Ignore this word</string>
-     </property>
-     <property name="text">
-      <string>Ign&amp;ore</string>
-     </property>
-    </widget>
-   </item>
    <item row="4" column="1">
-    <widget class="QPushButton" name="ignoreAllPB">
+    <widget class="QPushButton" name="skipAllPB">
      <property name="toolTip">
-      <string>Ignore this word throughout this session</string>
+      <string>Skips all occurrences of this word within the current session.</string>
      </property>
      <property name="text">
-      <string>I&amp;gnore All</string>
+      <string>Skip A&amp;ll</string>
      </property>
     </widget>
    </item>

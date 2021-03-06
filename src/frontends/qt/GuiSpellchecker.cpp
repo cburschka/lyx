@@ -428,7 +428,7 @@ bool SpellcheckerWidget::initialiseParams(std::string const &)
 }
 
 
-void SpellcheckerWidget::on_ignoreAllPB_clicked()
+void SpellcheckerWidget::on_skipAllPB_clicked()
 {
 	/// ignore all occurrences of word
 	if (d->disabled())
@@ -436,6 +436,21 @@ void SpellcheckerWidget::on_ignoreAllPB_clicked()
 	LYXERR(Debug::GUI, "Spellchecker: ignore all button");
 	if (d->word_.lang() && !d->word_.word().empty())
 		theSpellChecker()->accept(d->word_);
+	d->forward();
+	d->check();
+	d->canCheck();
+}
+
+
+void SpellcheckerWidget::on_ignoreAllPB_clicked()
+{
+	/// ignore all occurrences of word
+	if (d->disabled())
+		return;
+	LYXERR(Debug::GUI, "Spellchecker: ignore all button");
+	if (d->word_.lang() && !d->word_.word().empty())
+		dispatch(FuncRequest(LFUN_SPELLING_ADD_LOCAL,
+				     d->word_.word() + " " + from_ascii(d->word_.lang()->lang())));
 	d->forward();
 	d->check();
 	d->canCheck();
@@ -455,12 +470,25 @@ void SpellcheckerWidget::on_addPB_clicked()
 }
 
 
+void SpellcheckerWidget::on_skipPB_clicked()
+{
+	/// ignore this occurrence of word
+	if (d->disabled())
+		return;
+	LYXERR(Debug::GUI, "Spellchecker: skip button");
+	d->forward();
+	d->check();
+	d->canCheck();
+}
+
+
 void SpellcheckerWidget::on_ignorePB_clicked()
 {
 	/// ignore this occurrence of word
 	if (d->disabled())
 		return;
 	LYXERR(Debug::GUI, "Spellchecker: ignore button");
+	dispatch(FuncRequest(LFUN_FONT_NO_SPELLCHECK));
 	d->forward();
 	d->check();
 	d->canCheck();

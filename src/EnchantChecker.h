@@ -15,8 +15,9 @@
 
 #include "SpellChecker.h"
 
+
 namespace enchant {
-    class Dict;
+	class Dict;
 }
 
 namespace lyx {
@@ -31,7 +32,8 @@ public:
 
 	/// SpellChecker inherited methods.
 	///@{
-	enum Result check(WordLangTuple const &) override;
+	enum Result check(WordLangTuple const &,
+			  std::vector<WordLangTuple> const &) override;
 	void suggest(WordLangTuple const &, docstring_list &) override;
 	void stem(WordLangTuple const &, docstring_list &) override {}
 	void insert(WordLangTuple const &) override;
