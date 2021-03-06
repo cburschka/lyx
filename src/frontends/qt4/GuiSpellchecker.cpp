@@ -368,6 +368,13 @@ void SpellcheckerWidget::Private::forward()
 	if (isWrapAround(cursor())) {
 		hide();
 	}
+	// If we reached the end of the document
+	// and have not yet wrapped (which was
+	// checked above), continue from beginning
+	if (cursor().pit() == cursor().lastpit()
+	    && cursor().pos() == cursor().lastpos()
+	    && cursor().text()->isMainText())
+		continueFromBeginning();
 }
 
 
