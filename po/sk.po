@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-03-06 09:27+0100\n"
-"PO-Revision-Date: 2021-03-06 08:37+0000\n"
+"POT-Creation-Date: 2021-03-06 19:26+0100\n"
+"PO-Revision-Date: 2021-03-06 19:03+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -5267,17 +5267,41 @@ msgstr "Ne&známe slovo:"
 msgid "Current word"
 msgstr "Aktuálne slovo"
 
+#: src/frontends/qt/ui/SpellcheckerUi.ui:77
+msgid "Skip this match and go to next misspelling"
+msgstr "Preskoč túto zhodu a choď k ďalšej chybe"
+
+#: src/frontends/qt/ui/SpellcheckerUi.ui:80
+msgid "S&kip"
+msgstr "Presko&čiť"
+
 #: src/frontends/qt/ui/SpellcheckerUi.ui:99
 msgid "Repla&cement:"
 msgstr "Náhr&ada:"
+
+#: src/frontends/qt/ui/SpellcheckerUi.ui:97
+msgid "Skips all occurrences of this word within the current session."
+msgstr "Preskočí všetky výskyty tohto slova v súčasnom sedeniu."
+
+#: src/frontends/qt/ui/SpellcheckerUi.ui:100
+msgid "Skip A&ll"
+msgstr "Preskočiť vše&tko"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:115
 msgid "S&uggestions:"
 msgstr "Návr&hy:"
 
+#: src/frontends/qt/ui/SpellcheckerUi.ui:152
+msgid "Replace all occurrences of the word in the document with current choice"
+msgstr "Nahradiť všetky výskyty tohto slova v dokumente aktuálnou voľbou"
+
 #: src/frontends/qt/ui/SpellcheckerUi.ui:128
 msgid "Re&place All"
 msgstr "Nahradiť všet&ko"
+
+#: src/frontends/qt/ui/SpellcheckerUi.ui:165
+msgid "Ignore this occurrence of the word permanently"
+msgstr "Ignorovať výskyt tohto slova permanentne"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:145
 msgid "Add the word to your personal dictionary"
@@ -5287,17 +5311,17 @@ msgstr "Pridať slovo do osobného slovníka"
 msgid "&Add[[Spellchecker]]"
 msgstr "Pr&idať"
 
-#: src/frontends/qt/ui/SpellcheckerUi.ui:171
-msgid "Ignore this word"
-msgstr "Ignorovať toto slovo"
-
 #: src/frontends/qt/ui/SpellcheckerUi.ui:174
 msgid "Ign&ore"
 msgstr "Ign&orovať"
 
-#: src/frontends/qt/ui/SpellcheckerUi.ui:181
-msgid "Ignore this word throughout this session"
-msgstr "Ignorovať toto slovo počas tohto celého sedenia"
+#: src/frontends/qt/ui/SpellcheckerUi.ui:175
+msgid ""
+"Ignore all occurrences of this word within this document. This is perdurant "
+"beyond the current session."
+msgstr ""
+"Ignorovať výskyt tohto slova v tomto dokumente. Platí aj pre každé neskoršie "
+"sedenie."
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:184
 msgid "I&gnore All"
@@ -34536,12 +34560,16 @@ msgid "Add to personal dictionary|n"
 msgstr "Pridať do osobného slovníka|b"
 
 #: src/frontends/qt/Menus.cpp:865
-msgid "Ignore|g"
-msgstr "Ignorovať|g"
+msgid "Ignore this occurrence|g"
+msgstr "Ignorovať tento výskyt|g"
 
 #: src/frontends/qt/Menus.cpp:867
-msgid "Ignore all|I"
-msgstr "Ignorovať všade|I"
+msgid "Ignore all for this session|I"
+msgstr "Ignorovať všetky počas tohto celého sedenia|I"
+
+#: src/frontends/qt/Menus.cpp:869
+msgid "Ignore all in this document|d"
+msgstr "Ignorovať všetky v tomto dokumente|d"
 
 #: src/frontends/qt/Menus.cpp:875
 msgid "Remove from personal dictionary|r"
