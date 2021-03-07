@@ -394,6 +394,7 @@ Sublabel: varioref
 # char macros which are not defined for these engines.
 export/doc/ru/UserGuide_(dvi3|pdf[45])_(system|tex)F
 export/doc/ru/(Math|Additional|Shortcuts|EmbeddedObjects)_(dvi3|pdf[45])_systemF
+export/examples/ru/Modules/Fancy_Colored_Boxes_(dvi3|pdf[45])_systemF
 
 
 # ================================================
@@ -490,7 +491,7 @@ export/examples/Modules/Chessboard_docbook5
 # - Empty figure and table (just a caption, while DocBook requires some content).
 export/examples/Localization_Test_docbook5
 # - Inline equation in formatting.
-export/examples/Modules/Fancy_Colored_Boxes_docbook5
+export/examples(|/ru)/Modules/Fancy_Colored_Boxes_docbook5
 # - Waiting for a new version of DocBook to be tagged on https://github.com/docbook/docbook (anything over 5.2b10a3).
 export/export/docbook/Localization_Test_docbook5
 export/examples/Graphics_and_Insets/Minted_Listings_docbook5
