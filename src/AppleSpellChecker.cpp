@@ -87,7 +87,7 @@ SpellChecker::Result AppleSpellChecker::check(WordLangTuple const & word,
 	string const word_str = to_utf8(word.word());
 	string const lang = d->languageMap[word.lang()->lang()];
 
- 	vector<WordLangTuple>::const_iterator it = docdict.begin();
+	vector<WordLangTuple>::const_iterator it = docdict.begin();
 	for (; it != docdict.end(); ++it) {
 		if (it->lang()->code() != word.lang()->code())
 			continue;

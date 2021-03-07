@@ -2770,7 +2770,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 	}
-	
+
 
 	case LFUN_SPELLING_IGNORE: {
 		Language const * language = getLanguage(cur, cmd.getArg(1));
