@@ -27,6 +27,7 @@ class QDragEnterEvent;
 class QDropEvent;
 class QLabel;
 class QShowEvent;
+class QSlider;
 
 
 namespace lyx {
@@ -495,6 +496,8 @@ private:
 	QLabel * version_control_;
 	/// Statusbar widget that shows zoom value
 	QLabel * zoom_value_;
+	/// The zoom slider widget
+	QSlider * zoom_slider_;
 
 	/// The rate from which the actual zoom value is calculated
 	/// from the default zoom pref

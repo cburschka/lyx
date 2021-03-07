@@ -629,14 +629,14 @@ GuiView::GuiView(int id)
 
 	QFontMetrics const fm(statusBar()->fontMetrics());
 
-	QSlider * zoomslider = new QSlider(Qt::Horizontal, statusBar());
+	zoom_slider_ = new QSlider(Qt::Horizontal, statusBar());
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
-	zoomslider->setFixedWidth(fm.horizontalAdvance('x') * 15);
+	zoom_slider_->setFixedWidth(fm.horizontalAdvance('x') * 15);
 #else
-	zoomslider->setFixedWidth(fm.width('x') * 15);
+	zoom_slider_->setFixedWidth(fm.width('x') * 15);
 #endif
 	// Make the defaultZoom center
-	zoomslider->setRange(10, (lyxrc.defaultZoom * 2) - 10);
+	zoom_slider_->setRange(10, (lyxrc.defaultZoom * 2) - 10);
 	// Initialize proper zoom value
 	QSettings settings;
 	zoom_ratio_ = settings.value("zoom_ratio", 1.0).toDouble();
@@ -644,19 +644,21 @@ GuiView::GuiView(int id)
 	int zoom = (int)(lyxrc.defaultZoom * zoom_ratio_);
 	if (zoom < static_cast<int>(zoom_min_))
 		zoom = zoom_min_;
-	zoomslider->setValue(zoom);
-	zoomslider->setToolTip(qt_("Workarea zoom level. Drag, use Ctrl-+/- or Shift-Mousewheel to adjust."));
-	zoomslider->setTickPosition(QSlider::TicksBelow);
-	zoomslider->setTickInterval(lyxrc.defaultZoom - 10);
-	statusBar()->addPermanentWidget(zoomslider);
+	zoom_slider_->setValue(zoom);
+	zoom_slider_->setToolTip(qt_("Workarea zoom level. Drag, use Ctrl-+/- or Shift-Mousewheel to adjust."));
+	zoom_slider_->setTickPosition(QSlider::TicksBelow);
+	zoom_slider_->setTickInterval(lyxrc.defaultZoom - 10);
+	statusBar()->addPermanentWidget(zoom_slider_);
+	zoom_slider_->setEnabled(currentBufferView());
 
-	connect(zoomslider, SIGNAL(sliderMoved(int)), this, SLOT(zoomSliderMoved(int)));
-	connect(zoomslider, SIGNAL(valueChanged(int)), this, SLOT(zoomValueChanged(int)));
-	connect(this, SIGNAL(currentZoomChanged(int)), zoomslider, SLOT(setValue(int)));
+	connect(zoom_slider_, SIGNAL(sliderMoved(int)), this, SLOT(zoomSliderMoved(int)));
+	connect(zoom_slider_, SIGNAL(valueChanged(int)), this, SLOT(zoomValueChanged(int)));
+	connect(this, SIGNAL(currentZoomChanged(int)), zoom_slider_, SLOT(setValue(int)));
 
 	zoom_value_ = new QLabel(statusBar());
 	zoom_value_->setText(toqstr(bformat(_("[[ZOOM]]%1$d%"), zoom)));
 	statusBar()->addPermanentWidget(zoom_value_);
+	zoom_value_->setEnabled(currentBufferView());
 
 	int const iconheight = max(int(d.normalIconSize), fm.height());
 	QSize const iconsize(iconheight, iconheight);
@@ -1358,6 +1360,8 @@ void GuiView::onBufferViewChanged()
 	// Buffer-dependent dialogs must be updated. This is done here because
 	// some dialogs require buffer()->text.
 	updateDialogs();
+	zoom_slider_->setEnabled(currentBufferView());
+	zoom_value_->setEnabled(currentBufferView());
 }
 
 
