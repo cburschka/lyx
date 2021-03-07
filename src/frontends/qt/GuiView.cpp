@@ -644,6 +644,7 @@ GuiView::GuiView(int id)
 	statusBar()->addPermanentWidget(zoomslider);
 
 	connect(zoomslider, SIGNAL(sliderMoved(int)), this, SLOT(zoomSliderMoved(int)));
+	connect(zoomslider, SIGNAL(valueChanged(int)), this, SLOT(zoomValueChanged(int)));
 	connect(this, SIGNAL(currentZoomChanged(int)), zoomslider, SLOT(setValue(int)));
 
 	int const iconheight = max(int(d.normalIconSize), fm.height());
@@ -753,6 +754,13 @@ void GuiView::zoomSliderMoved(int value)
 	currentWorkArea()->scheduleRedraw(true);
 	message(bformat(_("Zoom level is now %1$d% (default value: %2$d%)"),
 			value, lyxrc.defaultZoom));
+}
+
+
+void GuiView::zoomValueChanged(int value)
+{
+	if (value != lyxrc.currentZoom)
+		zoomSliderMoved(value);
 }
 
 

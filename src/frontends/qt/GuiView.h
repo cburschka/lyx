@@ -245,6 +245,8 @@ private Q_SLOTS:
 	///
 	void zoomSliderMoved(int);
 	///
+	void zoomValueChanged(int);
+	///
 	void on_currentWorkAreaChanged(GuiWorkArea *);
 	///
 	void onBufferViewChanged();
