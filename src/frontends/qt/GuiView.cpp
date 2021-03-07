@@ -630,7 +630,11 @@ GuiView::GuiView(int id)
 	QFontMetrics const fm(statusBar()->fontMetrics());
 
 	QSlider * zoomslider = new QSlider(Qt::Horizontal, statusBar());
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
 	zoomslider->setFixedWidth(fm.horizontalAdvance('x') * 15);
+#else
+	zoomslider->setFixedWidth(fm.width('x') * 15);
+#endif
 	// Make the defaultZoom center
 	zoomslider->setRange(10, (lyxrc.defaultZoom * 2) - 10);
 	zoomslider->setValue(lyxrc.currentZoom);
