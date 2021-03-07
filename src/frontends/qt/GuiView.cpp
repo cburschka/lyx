@@ -637,7 +637,14 @@ GuiView::GuiView(int id)
 #endif
 	// Make the defaultZoom center
 	zoomslider->setRange(10, (lyxrc.defaultZoom * 2) - 10);
-	zoomslider->setValue(lyxrc.currentZoom);
+	// Initialize proper zoom value
+	QSettings settings;
+	zoom_ratio_ = settings.value("zoom_ratio", 1.0).toDouble();
+	// Actual zoom value: default zoom + fractional offset
+	int zoom = (int)(lyxrc.defaultZoom * zoom_ratio_);
+	if (zoom < static_cast<int>(zoom_min_))
+		zoom = zoom_min_;
+	zoomslider->setValue(zoom);
 	zoomslider->setToolTip(qt_("Workarea zoom level. Drag, use Ctrl-+/- or Shift-Mousewheel to adjust."));
 	zoomslider->setTickPosition(QSlider::TicksBelow);
 	zoomslider->setTickInterval(lyxrc.defaultZoom - 10);
@@ -713,7 +720,6 @@ GuiView::GuiView(int id)
 	initToolbars();
 
 	// clear session data if any.
-	QSettings settings;
 	settings.remove("views");
 }
 
