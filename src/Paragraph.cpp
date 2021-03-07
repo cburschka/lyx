@@ -460,10 +460,12 @@ public:
 		return numskips;
 	}
 
-	void markMisspelledWords(pos_type const & first, pos_type const & last,
-							 SpellChecker::Result result,
-							 docstring const & word,
-							 SkipPositions const & skips);
+	void markMisspelledWords(Language const * lang,
+				 pos_type const & first, pos_type const & last,
+				 SpellChecker::Result result,
+				 docstring const & word,
+				 SkipPositions const & skips,
+				 vector<WordLangTuple> const & docdict);
 
 	InsetCode ownerCode() const
 	{
@@ -4924,10 +4926,12 @@ void Paragraph::anonymize()
 
 
 void Paragraph::Private::markMisspelledWords(
+	Language const * lang,
 	pos_type const & first, pos_type const & last,
 	SpellChecker::Result result,
 	docstring const & word,
-	SkipPositions const & skips)
+	SkipPositions const & skips,
+	vector<WordLangTuple> const & docdict)
 {
 	if (!SpellChecker::misspelled(result)) {
 		setMisspelled(first, last, SpellChecker::WORD_OK);
@@ -4945,8 +4949,9 @@ void Paragraph::Private::markMisspelledWords(
 		int wlen = 0;
 		speller->misspelledWord(index, wstart, wlen);
 		/// should not happen if speller supports range checks
-		if (!wlen) continue;
-		docstring const misspelled = word.substr(wstart, wlen);
+		if (!wlen)
+			continue;
+		docstring const candidate = word.substr(wstart, wlen);
 		wstart += first + numskipped;
 		if (snext < wstart) {
 			/// mark the range of correct spelling
@@ -4955,12 +4960,28 @@ void Paragraph::Private::markMisspelledWords(
 				wstart - 1, SpellChecker::WORD_OK);
 		}
 		snext = wstart + wlen;
+		// Check whether the candidate is in the document's local dict
+		vector<WordLangTuple>::const_iterator iit = docdict.begin();
+		SpellChecker::Result actresult = result;
+		for (; iit != docdict.end(); ++iit) {
+			if (iit->lang()->code() != lang->code())
+				continue;
+			if (iit->word() == candidate) {
+				actresult = SpellChecker::WORD_OK;
+				break;
+			}
+		}
 		numskipped += countSkips(it, et, snext);
 		/// mark the range of misspelling
-		setMisspelled(wstart, snext, result);
-		LYXERR(Debug::GUI, "misspelled word: \"" <<
-			   misspelled << "\" [" <<
-			   wstart << ".." << (snext-1) << "]");
+		setMisspelled(wstart, snext, actresult);
+		if (actresult == SpellChecker::WORD_OK)
+			LYXERR(Debug::GUI, "local dictionary word: \"" <<
+				   candidate << "\" [" <<
+				   wstart << ".." << (snext-1) << "]");
+		else
+			LYXERR(Debug::GUI, "misspelled word: \"" <<
+				   candidate << "\" [" <<
+				   wstart << ".." << (snext-1) << "]");
 		++snext;
 	}
 	if (snext <= last) {
@@ -4992,7 +5013,8 @@ void Paragraph::spellCheck() const
 			BufferParams const & bparams = d->inset_owner_->buffer().params();
 			SpellChecker::Result result = !word.empty() ?
 				speller->check(wl, bparams.spellignore()) : SpellChecker::WORD_OK;
-			d->markMisspelledWords(first, last, result, word, skips);
+			d->markMisspelledWords(lang, first, last, result, word, skips,
+					       bparams.spellignore());
 			first = ++last;
 		}
 	} else {
