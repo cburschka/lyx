@@ -125,7 +125,8 @@ public:
 		if (noun_ == FONT_ON)
 			return SMALLCAPS_SHAPE;
 		if (emph_ == FONT_ON)
-			return (shape_ == ITALIC_SHAPE) ? UP_SHAPE : ITALIC_SHAPE;
+			return (shape_ == ITALIC_SHAPE || shape_ == SLANTED_SHAPE)
+				? UP_SHAPE : ITALIC_SHAPE;
 		return shape_;
 	}
 
