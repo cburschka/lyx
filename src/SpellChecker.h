@@ -44,6 +44,8 @@ public:
 		IGNORED_WORD,
 		/// number of personal dictionary "word"
 		LEARNED_WORD,
+		/// number of document dictionary "word"
+		DOCUMENT_LEARNED_WORD,
 		/// missing dictionary for language
 		NO_DICTIONARY
 	};
@@ -57,7 +59,8 @@ public:
 		return res != WORD_OK
 			&& res != IGNORED_WORD
 			&& res != NO_DICTIONARY
-			&& res != LEARNED_WORD; }
+			&& res != LEARNED_WORD
+			&& res != DOCUMENT_LEARNED_WORD; }
 
 	/// check the given word of the given lang code and return the result
 	virtual enum Result check(WordLangTuple const &,

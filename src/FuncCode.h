@@ -499,6 +499,7 @@ enum FuncCode
 	LFUN_FONT_NO_SPELLCHECK,        // jspitzm 20210305
 	LFUN_SPELLING_ADD_LOCAL,        // jspitzm 20210306
 	// 390
+	LFUN_SPELLING_REMOVE_LOCAL,     // jspitzm 20210307
 	LFUN_LASTACTION                 // end of the table
 };
 

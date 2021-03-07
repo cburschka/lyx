@@ -3807,6 +3807,19 @@ void LyXAction::init()
 		{ LFUN_SPELLING_ADD_LOCAL, "spelling-add-local", Noop, Edit },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_SPELLING_REMOVE_LOCAL
+ * \li Action: Remove the word under the cursor from the document's local
+ *             spell checker dictionary.
+ *             The default for the language is retrieved from the cursor position.
+ * \li Syntax: spelling-remove-local [<STRING>] [<LANG>]
+ * \li Params: <WORD>: word to remove
+	       <LANG>: language name (see file languages)
+ * \li Origin: spitz, 7 Mar 2021
+ * \endvar
+ */
+		{ LFUN_SPELLING_REMOVE_LOCAL, "spelling-remove-local", Noop, Edit },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_SPELLING_CONTINUOUSLY
  * \li Action: Toggle continuous spell checking.
  * \li Syntax: spelling-continuously

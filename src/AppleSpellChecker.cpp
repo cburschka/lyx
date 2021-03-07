@@ -92,7 +92,7 @@ SpellChecker::Result AppleSpellChecker::check(WordLangTuple const & word,
 		if (it->lang()->code() != word.lang()->code())
 			continue;
 		if (it->word() == word.word())
-			return LEARNED_WORD;
+			return DOCUMENT_LEARNED_WORD;
 	}
 
 	SpellCheckResult result =

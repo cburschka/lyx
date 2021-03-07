@@ -2745,10 +2745,48 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			}
 		}
 		WordLangTuple wl(word, language);
-		bool const has_item = bv->buffer().params().spellignored(wl);
-		if (!has_item) {
+		if (!bv->buffer().params().spellignored(wl)) {
 			cur.recordUndoBufferParams();
 			bv->buffer().params().spellignore().push_back(wl);
+			cur.recordUndo();
+			// trigger re-check
+			WordLangTuple wl;
+			docstring_list suggestions;
+			Paragraph const & par = cur.paragraph();
+			pos_type from = cur.pos();
+			pos_type to = from;
+			par.spellCheck(from, to, wl, suggestions, true, true);
+		}
+		break;
+	}
+
+	case LFUN_SPELLING_REMOVE_LOCAL: {
+		Language const * language = getLanguage(cur, cmd.getArg(1));
+		docstring word = from_utf8(cmd.getArg(0));
+		if (word.empty()) {
+			word = cur.selectionAsString(false);
+			if (word.size() > 100)
+				break;
+			if (word.empty()) {
+				// Get word or selection
+				selectWordWhenUnderCursor(cur, WHOLE_WORD);
+				word = cur.selectionAsString(false);
+			}
+		}
+		WordLangTuple wl(word, language);
+		bool has_item = false;
+		vector<WordLangTuple>::const_iterator it = bv->buffer().params().spellignore().begin();
+		for (; it != bv->buffer().params().spellignore().end(); ++it) {
+			if (it->lang()->code() != wl.lang()->code())
+				continue;
+			if (it->word() == wl.word()) {
+				has_item = true;
+				break;
+			}
+		}
+		if (has_item) {
+			cur.recordUndoBufferParams();
+			bv->buffer().params().spellignore().erase(it);
 			cur.recordUndo();
 			// trigger re-check
 			WordLangTuple wl;
@@ -3492,6 +3530,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_SPELLING_ADD:
 	case LFUN_SPELLING_ADD_LOCAL:
+	case LFUN_SPELLING_REMOVE_LOCAL:
 	case LFUN_SPELLING_IGNORE:
 	case LFUN_SPELLING_REMOVE:
 		enable = theSpellChecker() != nullptr;

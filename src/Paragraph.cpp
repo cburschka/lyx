@@ -4961,11 +4961,11 @@ void Paragraph::Private::markMisspelledWords(
 		WordLangTuple const candidate(word.substr(wstart, wlen), lang);
 		SpellChecker::Result actresult = result;
 		if (inset_owner_->buffer().params().spellignored(candidate))
-			actresult = SpellChecker::WORD_OK;
+			actresult = SpellChecker::DOCUMENT_LEARNED_WORD;
 		numskipped += countSkips(it, et, snext);
 		/// mark the range of misspelling
 		setMisspelled(wstart, snext, actresult);
-		if (actresult == SpellChecker::WORD_OK)
+		if (actresult == SpellChecker::DOCUMENT_LEARNED_WORD)
 			LYXERR(Debug::GUI, "local dictionary word: \"" <<
 				   candidate.word() << "\" [" <<
 				   wstart << ".." << (snext-1) << "]");

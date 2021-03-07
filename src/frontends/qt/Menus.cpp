@@ -878,6 +878,13 @@ void MenuDefinition::expandSpellingSuggestions(BufferView const * bv)
 					FuncRequest(LFUN_SPELLING_REMOVE, arg)));
 		}
 		break;
+	case SpellChecker::DOCUMENT_LEARNED_WORD: {
+			LYXERR(Debug::GUI, "Document-Learned Word.");
+			docstring const arg = wl.word() + " " + from_ascii(wl.lang()->lang());
+			add(MenuItem(MenuItem::Command, qt_("Remove from document dictionary|r"),
+					FuncRequest(LFUN_SPELLING_REMOVE_LOCAL, arg)));
+		}
+		break;
 	case SpellChecker::NO_DICTIONARY:
 		LYXERR(Debug::GUI, "No dictionary for language " + from_ascii(wl.lang()->lang()));
 		// FALLTHROUGH

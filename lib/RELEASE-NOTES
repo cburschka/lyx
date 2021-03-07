@@ -119,6 +119,9 @@
 * spelling-add-local adds words for a given language to the document's local spelling
   dictionary.
 
+* spelling-remove-local removes words for a given language from the document's local
+  spelling dictionary.
+
 * inset-split is a new convenience function that splits an inset into two at the given
   cursor position. This is only implemented for text insets currently.
 

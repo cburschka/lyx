@@ -139,7 +139,7 @@ SpellChecker::Result EnchantChecker::check(WordLangTuple const & word,
 		if (it->lang()->code() != word.lang()->code())
 			continue;
 		if (it->word() == word.word())
-			return LEARNED_WORD;
+			return DOCUMENT_LEARNED_WORD;
 	}
 
 	return UNKNOWN_WORD;
