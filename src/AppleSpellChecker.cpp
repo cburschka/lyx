@@ -79,7 +79,7 @@ string AppleSpellChecker::Private::toString(SpellCheckResult status)
 
 
 SpellChecker::Result AppleSpellChecker::check(WordLangTuple const & word,
-        std::vector<WordLangTuple> docdict)
+        std::vector<WordLangTuple> const & docdict)
 {
 	if (!hasDictionary(word.lang()))
 		return NO_DICTIONARY;
