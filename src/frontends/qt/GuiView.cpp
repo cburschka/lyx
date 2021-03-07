@@ -635,6 +635,8 @@ GuiView::GuiView(int id)
 	zoomslider->setRange(10, (lyxrc.defaultZoom * 2) - 10);
 	zoomslider->setValue(lyxrc.currentZoom);
 	zoomslider->setToolTip(qt_("Workarea zoom level. Drag, use Ctrl-+/- or Shift-Mousewheel to adjust."));
+	zoomslider->setTickPosition(QSlider::TicksBelow);
+	zoomslider->setTickInterval(lyxrc.defaultZoom - 10);
 	statusBar()->addPermanentWidget(zoomslider);
 
 	connect(zoomslider, SIGNAL(sliderMoved(int)), this, SLOT(zoomSliderMoved(int)));
