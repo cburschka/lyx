@@ -654,6 +654,10 @@ GuiView::GuiView(int id)
 	connect(zoomslider, SIGNAL(valueChanged(int)), this, SLOT(zoomValueChanged(int)));
 	connect(this, SIGNAL(currentZoomChanged(int)), zoomslider, SLOT(setValue(int)));
 
+	zoom_value_ = new QLabel(statusBar());
+	zoom_value_->setText(toqstr(bformat(_("[[ZOOM]]%1$d%"), zoom)));
+	statusBar()->addPermanentWidget(zoom_value_);
+
 	int const iconheight = max(int(d.normalIconSize), fm.height());
 	QSize const iconsize(iconheight, iconheight);
 
@@ -758,8 +762,7 @@ void GuiView::zoomSliderMoved(int value)
 	DispatchResult dr;
 	dispatch(FuncRequest(LFUN_BUFFER_ZOOM, convert<string>(value)), dr);
 	currentWorkArea()->scheduleRedraw(true);
-	message(bformat(_("Zoom level is now %1$d% (default value: %2$d%)"),
-			value, lyxrc.defaultZoom));
+	zoom_value_->setText(toqstr(bformat(_("[[ZOOM]]%1$d%"), value)));
 }
 
 

@@ -493,6 +493,8 @@ private:
 	QLabel * read_only_;
 	/// Statusbar widget that shows version control status
 	QLabel * version_control_;
+	/// Statusbar widget that shows zoom value
+	QLabel * zoom_value_;
 
 	/// The rate from which the actual zoom value is calculated
 	/// from the default zoom pref
