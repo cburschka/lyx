@@ -1051,9 +1051,9 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\spellchecker_ignore") {
 		lex.eatLine();
 		docstring wl = lex.getDocString();
-		docstring langcode;
-		docstring word = split(wl, langcode, ' ');
-		Language const * lang = languages.getFromCode(to_ascii(langcode));
+		docstring language;
+		docstring word = split(wl, language, ' ');
+		Language const * lang = languages.getLanguage(to_ascii(language));
 		if (lang)
 			spellignore().push_back(WordLangTuple(word, lang));
 	} else if (token == "\\author") {
@@ -1433,7 +1433,7 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	}
 
 	for (auto const & si : spellignore()) {
-		os << "\\spellchecker_ignore " << si.lang()->code()
+		os << "\\spellchecker_ignore " << si.lang()->lang()
 		   << " " << to_utf8(si.word())
 		   << "\n";
 	}
