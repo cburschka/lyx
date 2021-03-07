@@ -616,6 +616,23 @@ IgnoreList const & BufferParams::spellignore() const
 }
 
 
+bool BufferParams::spellignored(WordLangTuple const & wl) const
+{
+	bool has_item = false;
+	vector<WordLangTuple> il = spellignore();
+	vector<WordLangTuple>::const_iterator it = il.begin();
+	for (; it != il.end(); ++it) {
+		if (it->lang()->code() != wl.lang()->code())
+			continue;
+		if (it->word() == wl.word()) {
+			has_item = true;
+			break;
+		}
+	}
+	return has_item;
+}
+
+
 Bullet & BufferParams::temp_bullet(lyx::size_type const index)
 {
 	LASSERT(index < 4, return pimpl_->temp_bullets[0]);

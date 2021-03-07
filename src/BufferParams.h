@@ -341,6 +341,7 @@ public:
 	///
 	IgnoreList & spellignore();
 	IgnoreList const & spellignore() const;
+	bool spellignored(WordLangTuple const & wl) const;
 	/**
 	 * The LyX name of the input encoding for LaTeX. This can be one of
 	 * - \c auto: find out the input encoding from the used languages

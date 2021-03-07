@@ -464,8 +464,7 @@ public:
 				 pos_type const & first, pos_type const & last,
 				 SpellChecker::Result result,
 				 docstring const & word,
-				 SkipPositions const & skips,
-				 vector<WordLangTuple> const & docdict);
+				 SkipPositions const & skips);
 
 	InsetCode ownerCode() const
 	{
@@ -4930,8 +4929,7 @@ void Paragraph::Private::markMisspelledWords(
 	pos_type const & first, pos_type const & last,
 	SpellChecker::Result result,
 	docstring const & word,
-	SkipPositions const & skips,
-	vector<WordLangTuple> const & docdict)
+	SkipPositions const & skips)
 {
 	if (!SpellChecker::misspelled(result)) {
 		setMisspelled(first, last, SpellChecker::WORD_OK);
@@ -4951,7 +4949,6 @@ void Paragraph::Private::markMisspelledWords(
 		/// should not happen if speller supports range checks
 		if (!wlen)
 			continue;
-		docstring const candidate = word.substr(wstart, wlen);
 		wstart += first + numskipped;
 		if (snext < wstart) {
 			/// mark the range of correct spelling
@@ -4961,26 +4958,20 @@ void Paragraph::Private::markMisspelledWords(
 		}
 		snext = wstart + wlen;
 		// Check whether the candidate is in the document's local dict
-		vector<WordLangTuple>::const_iterator iit = docdict.begin();
+		WordLangTuple const candidate(word.substr(wstart, wlen), lang);
 		SpellChecker::Result actresult = result;
-		for (; iit != docdict.end(); ++iit) {
-			if (iit->lang()->code() != lang->code())
-				continue;
-			if (iit->word() == candidate) {
-				actresult = SpellChecker::WORD_OK;
-				break;
-			}
-		}
+		if (inset_owner_->buffer().params().spellignored(candidate))
+			actresult = SpellChecker::WORD_OK;
 		numskipped += countSkips(it, et, snext);
 		/// mark the range of misspelling
 		setMisspelled(wstart, snext, actresult);
 		if (actresult == SpellChecker::WORD_OK)
 			LYXERR(Debug::GUI, "local dictionary word: \"" <<
-				   candidate << "\" [" <<
+				   candidate.word() << "\" [" <<
 				   wstart << ".." << (snext-1) << "]");
 		else
 			LYXERR(Debug::GUI, "misspelled word: \"" <<
-				   candidate << "\" [" <<
+				   candidate.word() << "\" [" <<
 				   wstart << ".." << (snext-1) << "]");
 		++snext;
 	}
@@ -5013,8 +5004,7 @@ void Paragraph::spellCheck() const
 			BufferParams const & bparams = d->inset_owner_->buffer().params();
 			SpellChecker::Result result = !word.empty() ?
 				speller->check(wl, bparams.spellignore()) : SpellChecker::WORD_OK;
-			d->markMisspelledWords(lang, first, last, result, word, skips,
-					       bparams.spellignore());
+			d->markMisspelledWords(lang, first, last, result, word, skips);
 			first = ++last;
 		}
 	} else {

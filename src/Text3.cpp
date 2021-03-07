@@ -2745,17 +2745,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			}
 		}
 		WordLangTuple wl(word, language);
-		bool has_item = false;
-		vector<WordLangTuple> il = bv->buffer().params().spellignore();
-		vector<WordLangTuple>::const_iterator it = il.begin();
-		for (; it != il.end(); ++it) {
-			if (it->lang()->code() != wl.lang()->code())
-				continue;
-			if (it->word() == wl.word()) {
-				has_item = true;
-				break;
-			}
-		}
+		bool const has_item = bv->buffer().params().spellignored(wl);
 		if (!has_item) {
 			cur.recordUndoBufferParams();
 			bv->buffer().params().spellignore().push_back(wl);
