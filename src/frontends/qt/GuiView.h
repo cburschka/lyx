@@ -220,6 +220,8 @@ Q_SIGNALS:
 	void triggerShowDialog(QString const & qname, QString const & qdata, Inset * inset);
 	// emitted when the work area or its buffer view changed
 	void bufferViewChanged();
+	/// emitted when zoom is modified
+	void currentZoomChanged(int);
 
 public Q_SLOTS:
 	///
@@ -240,6 +242,8 @@ private Q_SLOTS:
 
 	///
 	void checkCancelBackground();
+	///
+	void zoomSliderMoved(int);
 	///
 	void on_currentWorkAreaChanged(GuiWorkArea *);
 	///
@@ -354,6 +358,8 @@ public:
 	void disconnectDialog(std::string const & name);
 	///
 	bool develMode() const { return devel_mode_; }
+	///
+	void setCurrentZoom(int const v);
 
 private:
 	/// Saves the layout and geometry of the window

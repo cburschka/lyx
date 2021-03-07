@@ -102,6 +102,7 @@
 #include <QPoint>
 #include <QSettings>
 #include <QShowEvent>
+#include <QSlider>
 #include <QSplitter>
 #include <QStackedWidget>
 #include <QStatusBar>
@@ -627,6 +628,18 @@ GuiView::GuiView(int id)
 	connect(busylabel, SIGNAL(clicked()), this, SLOT(checkCancelBackground()));
 
 	QFontMetrics const fm(statusBar()->fontMetrics());
+
+	QSlider * zoomslider = new QSlider(Qt::Horizontal, statusBar());
+	zoomslider->setFixedWidth(fm.horizontalAdvance('x') * 15);
+	// Make the defaultZoom center
+	zoomslider->setRange(10, (lyxrc.defaultZoom * 2) - 10);
+	zoomslider->setValue(lyxrc.currentZoom);
+	zoomslider->setToolTip(qt_("Workarea zoom level. Drag, use Ctrl-+/- or Shift-Mousewheel to adjust."));
+	statusBar()->addPermanentWidget(zoomslider);
+
+	connect(zoomslider, SIGNAL(sliderMoved(int)), this, SLOT(zoomSliderMoved(int)));
+	connect(this, SIGNAL(currentZoomChanged(int)), zoomslider, SLOT(setValue(int)));
+
 	int const iconheight = max(int(d.normalIconSize), fm.height());
 	QSize const iconsize(iconheight, iconheight);
 
@@ -724,6 +737,16 @@ void GuiView::checkCancelBackground()
 			_("&Cancel export"), _("Co&ntinue"));
 	if (ret == 0)
 		Systemcall::killscript();
+}
+
+
+void GuiView::zoomSliderMoved(int value)
+{
+	DispatchResult dr;
+	dispatch(FuncRequest(LFUN_BUFFER_ZOOM, convert<string>(value)), dr);
+	currentWorkArea()->scheduleRedraw(true);
+	message(bformat(_("Zoom level is now %1$d% (default value: %2$d%)"),
+			value, lyxrc.defaultZoom));
 }
 
 
@@ -845,6 +868,13 @@ void GuiView::saveUISettings() const
 }
 
 
+void GuiView::setCurrentZoom(const int v)
+{
+	lyxrc.currentZoom = v;
+	Q_EMIT currentZoomChanged(v);
+}
+
+
 bool GuiView::restoreLayout()
 {
 	QSettings settings;
@@ -853,7 +883,7 @@ bool GuiView::restoreLayout()
 	int zoom = (int)(lyxrc.defaultZoom * zoom_ratio_);
 	if (zoom < static_cast<int>(zoom_min_))
 		zoom = zoom_min_;
-	lyxrc.currentZoom = zoom;
+	setCurrentZoom(zoom);
 	devel_mode_ = settings.value("devel_mode", devel_mode_).toBool();
 	settings.beginGroup("views");
 	settings.beginGroup(QString::number(id_));
@@ -4565,7 +4595,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			if (zoom < static_cast<int>(zoom_min_))
 				zoom = zoom_min_;
 
-			lyxrc.currentZoom = zoom;
+			setCurrentZoom(zoom);
 
 			dr.setMessage(bformat(_("Zoom level is now %1$d% (default value: %2$d%)"),
 					      lyxrc.currentZoom, lyxrc.defaultZoom));

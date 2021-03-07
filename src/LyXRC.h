@@ -318,6 +318,7 @@ public:
 	int defaultZoom = 150;
 	/// Actual zoom factor for screen fonts
 	/// (default zoom plus buffer zoom factor)
+	/// Do not set directly. Use GuiView::setCurrentZoom()
 	int currentZoom = 150;
 	/// Screen font sizes in points for each font size
 	std::string font_sizes[10] = { "5.0", "7.0", "8.0", "9.0", "10.0",
