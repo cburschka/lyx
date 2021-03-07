@@ -894,6 +894,7 @@ void GuiView::saveUISettings() const
 void GuiView::setCurrentZoom(const int v)
 {
 	lyxrc.currentZoom = v;
+	zoom_value_->setText(toqstr(bformat(_("[[ZOOM]]%1$d%"), v)));
 	Q_EMIT currentZoomChanged(v);
 }
 
