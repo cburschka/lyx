@@ -949,6 +949,7 @@ void GuiView::saveLayout() const
 		settings.setValue("geometry", saveGeometry());
 	settings.setValue("layout", saveState(0));
 	settings.setValue("icon_size", toqstr(d.iconSize(iconSize())));
+	settings.setValue("zoom_slider_visible", zoom_slider_->isVisible());
 }
 
 
@@ -991,6 +992,9 @@ bool GuiView::restoreLayout()
 
 	//code below is skipped when when ~/.config/LyX is (re)created
 	setIconSize(d.iconSize(settings.value(icon_key).toString()));
+
+	zoom_slider_->setVisible(settings.value("zoom_slider_visible", true).toBool());
+	zoom_value_->setVisible(settings.value("zoom_slider_visible", true).toBool());
 
 	if (guiApp->platformName() == "qt4x11" || guiApp->platformName() == "xcb") {
 		QPoint pos = settings.value("pos", QPoint(50, 50)).toPoint();
@@ -2341,7 +2345,11 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_UI_TOGGLE:
-		flag.setOnOff(isFullScreen());
+		if (cmd.argument() == "zoomslider") {
+			enable = doc_buffer;
+			flag.setOnOff(zoom_slider_->isVisible());
+		} else
+			flag.setOnOff(isFullScreen());
 		break;
 
 	case LFUN_DIALOG_DISCONNECT_INSET:
@@ -4842,6 +4850,9 @@ bool GuiView::lfunUiToggle(string const & ui_component)
 		statusBar()->setVisible(!statusBar()->isVisible());
 	} else if (ui_component == "menubar") {
 		menuBar()->setVisible(!menuBar()->isVisible());
+	} else if (ui_component == "zoomslider") {
+		zoom_slider_->setVisible(!zoom_slider_->isVisible());
+		zoom_value_->setVisible(!zoom_value_->isVisible());
 	} else
 	if (ui_component == "frame") {
 		int const l = contentsMargins().left();
