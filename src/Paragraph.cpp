@@ -4949,6 +4949,7 @@ void Paragraph::Private::markMisspelledWords(
 		/// should not happen if speller supports range checks
 		if (!wlen)
 			continue;
+		WordLangTuple const candidate(word.substr(wstart, wlen), lang);
 		wstart += first + numskipped;
 		if (snext < wstart) {
 			/// mark the range of correct spelling
@@ -4958,7 +4959,6 @@ void Paragraph::Private::markMisspelledWords(
 		}
 		snext = wstart + wlen;
 		// Check whether the candidate is in the document's local dict
-		WordLangTuple const candidate(word.substr(wstart, wlen), lang);
 		SpellChecker::Result actresult = result;
 		if (inset_owner_->buffer().params().spellignored(candidate))
 			actresult = SpellChecker::DOCUMENT_LEARNED_WORD;
