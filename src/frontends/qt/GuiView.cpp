@@ -657,6 +657,11 @@ GuiView::GuiView(int id)
 
 	zoom_value_ = new QLabel(statusBar());
 	zoom_value_->setText(toqstr(bformat(_("[[ZOOM]]%1$d%"), zoom)));
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
+	zoom_value_->setMinimumWidth(fm.horizontalAdvance("000%"));
+#else
+	zoom_value_->setMinimumWidth(fm.width("000%"));
+#endif
 	statusBar()->addPermanentWidget(zoom_value_);
 	zoom_value_->setEnabled(currentBufferView());
 
