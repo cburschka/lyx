@@ -630,6 +630,8 @@ GuiView::GuiView(int id)
 	QFontMetrics const fm(statusBar()->fontMetrics());
 
 	zoom_slider_ = new QSlider(Qt::Horizontal, statusBar());
+	// Small size slider for macOS to prevent the status bar from enlarging
+	zoom_slider_->setAttribute(Qt::WA_MacSmallSize);
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
 	zoom_slider_->setFixedWidth(fm.horizontalAdvance('x') * 15);
 #else
