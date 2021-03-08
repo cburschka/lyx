@@ -21,6 +21,11 @@
 #include <ios>
 #endif
 
+#ifdef WIN32
+#include <Windows.h>
+#endif
+
+
 using namespace std;
 
 
@@ -28,6 +33,13 @@ int main(int argc, char * argv[])
 {
 #ifdef HAVE_IOS
 	ios_base::sync_with_stdio(false);
+#endif
+
+#ifdef WIN32
+	if (AttachConsole(ATTACH_PARENT_PROCESS)) {
+		freopen("CONOUT$", "w", stdout);
+		freopen("CONOUT$", "w", stderr);
+	}
 #endif
 
 	// To avoid ordering of global object problems with some
