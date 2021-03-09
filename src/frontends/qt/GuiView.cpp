@@ -657,7 +657,7 @@ GuiView::GuiView(int id)
 	zoom_in_->setFlat(true);
 	zoom_in_->setFixedSize(QSize(fm.height(), fm.height()));
 	zoom_out_ = new QPushButton(statusBar());
-	zoom_out_->setText("-");
+	zoom_out_->setText(QString(0x2212));
 	zoom_out_->setFixedSize(QSize(fm.height(), fm.height()));
 	zoom_out_->setFlat(true);
 
