@@ -363,7 +363,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2021-03-05 15:06-0500\n"
-"PO-Revision-Date: 2021-03-02 10:47+0100\n"
+"PO-Revision-Date: 2021-03-09 18:29+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -21869,19 +21869,16 @@ msgid "Toggle outline"
 msgstr "(Dés)activer le Plan"
 
 #: lib/ui/stdtoolbars.inc:103 lib/ui/stdtoolbars.inc:300
-#, fuzzy
 msgid "Show math toolbar"
 msgstr "Afficher la barre d'outils mathématiques"
 
 #: lib/ui/stdtoolbars.inc:104 lib/ui/stdtoolbars.inc:312
-#, fuzzy
 msgid "Show table toolbar"
 msgstr "Afficher la barre d'outils tableaux"
 
 #: lib/ui/stdtoolbars.inc:105 lib/ui/stdtoolbars.inc:318
-#, fuzzy
 msgid "Show review toolbar"
-msgstr "(Dés)activer la barre d'outils de révision"
+msgstr "Afficher la barre d'outils de révision"
 
 #: lib/ui/stdtoolbars.inc:108
 msgid "View/Update"
@@ -22184,9 +22181,8 @@ msgid "Insert cases environment"
 msgstr "Insérer un environnement case"
 
 #: lib/ui/stdtoolbars.inc:212 lib/ui/stdtoolbars.inc:306
-#, fuzzy
 msgid "Show math panels"
-msgstr "(Dés)activer les palettes mathématiques"
+msgstr "Afficher les palettes mathématiques"
 
 #: lib/ui/stdtoolbars.inc:215
 msgid "Math Panels"
@@ -22425,21 +22421,18 @@ msgstr "Mettre à jour les autres formats"
 
 #: lib/ui/stdtoolbars.inc:301 lib/ui/stdtoolbars.inc:307
 #: lib/ui/stdtoolbars.inc:313 lib/ui/stdtoolbars.inc:319
-#, fuzzy
 msgid "[[Toolbar]]On"
-msgstr "Active|A"
+msgstr "Active"
 
 #: lib/ui/stdtoolbars.inc:302 lib/ui/stdtoolbars.inc:308
 #: lib/ui/stdtoolbars.inc:314 lib/ui/stdtoolbars.inc:320
-#, fuzzy
 msgid "[[Toolbar]]Off"
-msgstr "Inactive|I"
+msgstr "Inactive"
 
 #: lib/ui/stdtoolbars.inc:303 lib/ui/stdtoolbars.inc:309
 #: lib/ui/stdtoolbars.inc:315 lib/ui/stdtoolbars.inc:321
-#, fuzzy
 msgid "[[Toolbar]]Automatic"
-msgstr "Automatique|A"
+msgstr "Automatique"
 
 #: lib/ui/stdtoolbars.inc:340 src/frontends/qt/GuiLog.cpp:256
 msgid "Version Control"
@@ -35220,9 +35213,8 @@ msgid "Add to personal dictionary|n"
 msgstr "Ajouter au dictionnaire personnel|j"
 
 #: src/frontends/qt/Menus.cpp:865
-#, fuzzy
 msgid "Ignore|g"
-msgstr "Ignorer"
+msgstr "Ignorer[g"
 
 #: src/frontends/qt/Menus.cpp:867
 msgid "Ignore all|I"
