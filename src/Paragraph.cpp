@@ -307,7 +307,7 @@ public:
 	/// \return the number of characters written.
 	int latexSurrogatePair(BufferParams const &, otexstream & os,
 			       char_type c, char_type next,
-			       OutputParams const &);
+			       OutputParams const &) const;
 
 	/// Output a space in appropriate formatting (or a surrogate pair
 	/// if the next character is a combining character).
@@ -318,7 +318,7 @@ public:
 			     pos_type i,
 			     unsigned int & column,
 			     Font const & font,
-			     Layout const & style);
+			     Layout const & style) const;
 
 	/// This could go to ParagraphParameters if we want to.
 	int startTeXParParams(BufferParams const &, otexstream &,
@@ -342,7 +342,7 @@ public:
 				   unsigned int & column,
 				   bool const fontswitch_inset,
 				   bool const closeLanguage,
-				   bool const lang_switched_at_inset);
+				   bool const lang_switched_at_inset) const;
 
 	///
 	void latexSpecialChar(
@@ -354,7 +354,7 @@ public:
 				   Layout const & style,
 				   pos_type & i,
 				   pos_type end_pos,
-				   unsigned int & column);
+				   unsigned int & column) const;
 
 	///
 	bool latexSpecialT1(
@@ -401,7 +401,7 @@ public:
 		return speller_change_number > speller_state_.currentChangeNumber();
 	}
 
-	bool ignoreWord(docstring const & word) const ;
+	bool ignoreWord(docstring const & word) const;
 
 	void setMisspelled(pos_type from, pos_type to, SpellChecker::Result state)
 	{
@@ -937,7 +937,7 @@ int Paragraph::eraseChars(pos_type start, pos_type end, bool trackChanges)
 // Handle combining characters
 int Paragraph::Private::latexSurrogatePair(BufferParams const & bparams,
 		otexstream & os, char_type c, char_type next,
-		OutputParams const & runparams)
+		OutputParams const & runparams) const
 {
 	// Writing next here may circumvent a possible font change between
 	// c and next. Since next is only output if it forms a surrogate pair
@@ -974,7 +974,7 @@ bool Paragraph::Private::simpleTeXBlanks(BufferParams const & bparams,
 				       pos_type i,
 				       unsigned int & column,
 				       Font const & font,
-				       Layout const & style)
+				       Layout const & style) const
 {
 	if (style.pass_thru || runparams.pass_thru)
 		return false;
@@ -1027,7 +1027,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 				    unsigned int & column,
 				    bool const fontswitch_inset,
 				    bool const closeLanguage,
-				    bool const lang_switched_at_inset)
+				    bool const lang_switched_at_inset) const
 {
 	Inset * inset = owner_->getInset(i);
 	LBUFERR(inset);
@@ -1193,7 +1193,7 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 					  Layout const & style,
 					  pos_type & i,
 					  pos_type end_pos,
-					  unsigned int & column)
+					  unsigned int & column) const
 {
 	char_type const c = owner_->getUChar(bparams, runparams, i);
 
