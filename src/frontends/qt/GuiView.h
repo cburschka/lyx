@@ -29,6 +29,7 @@ class QPushButton;
 class QLabel;
 class QShowEvent;
 class QSlider;
+class QWidget;
 
 
 namespace lyx {
@@ -507,6 +508,8 @@ private:
 	QPushButton * zoom_in_;
 	/// Zoom out ("-") Button
 	QPushButton * zoom_out_;
+	/// The frame all slider elements are embedded in
+	QWidget * zoomwidget_;
 
 	/// The rate from which the actual zoom value is calculated
 	/// from the default zoom pref

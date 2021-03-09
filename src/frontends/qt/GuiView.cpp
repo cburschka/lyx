@@ -629,6 +629,9 @@ GuiView::GuiView(int id)
 
 	QFontMetrics const fm(statusBar()->fontMetrics());
 
+	zoomwidget_ = new QWidget(statusBar());
+	zoomwidget_->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+	QHBoxLayout * zoomlayout = new QHBoxLayout(zoomwidget_);
 	zoom_slider_ = new QSlider(Qt::Horizontal, statusBar());
 	// Small size slider for macOS to prevent the status bar from enlarging
 	zoom_slider_->setAttribute(Qt::WA_MacSmallSize);
@@ -661,12 +664,11 @@ GuiView::GuiView(int id)
 	zoom_out_->setFixedSize(QSize(fm.height(), fm.height()));
 	zoom_out_->setFlat(true);
 
-	statusBar()->addPermanentWidget(zoom_out_);
-	zoom_out_->setEnabled(currentBufferView());
-	statusBar()->addPermanentWidget(zoom_slider_);
-	zoom_slider_->setEnabled(currentBufferView());
-	zoom_in_->setEnabled(currentBufferView());
-	statusBar()->addPermanentWidget(zoom_in_);
+	zoomlayout->addWidget(zoom_out_);
+	zoomlayout->addWidget(zoom_slider_);
+	zoomlayout->addWidget(zoom_in_);
+	zoomwidget_->setEnabled(currentBufferView());
+	statusBar()->addPermanentWidget(zoomwidget_);
 
 	connect(zoom_slider_, SIGNAL(sliderMoved(int)), this, SLOT(zoomSliderMoved(int)));
 	connect(zoom_slider_, SIGNAL(valueChanged(int)), this, SLOT(zoomValueChanged(int)));
@@ -1400,10 +1402,8 @@ void GuiView::onBufferViewChanged()
 	// Buffer-dependent dialogs must be updated. This is done here because
 	// some dialogs require buffer()->text.
 	updateDialogs();
-	zoom_slider_->setEnabled(currentBufferView());
+	zoomwidget_->setEnabled(currentBufferView());
 	zoom_value_->setEnabled(currentBufferView());
-	zoom_in_->setEnabled(currentBufferView());
-	zoom_out_->setEnabled(currentBufferView());
 }
 
 
