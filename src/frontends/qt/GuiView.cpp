@@ -665,7 +665,7 @@ GuiView::GuiView(int id)
 	zoom_out_->setEnabled(currentBufferView());
 	statusBar()->addPermanentWidget(zoom_slider_);
 	zoom_slider_->setEnabled(currentBufferView());
-	zoom_out_->setEnabled(currentBufferView());
+	zoom_in_->setEnabled(currentBufferView());
 	statusBar()->addPermanentWidget(zoom_in_);
 
 	connect(zoom_slider_, SIGNAL(sliderMoved(int)), this, SLOT(zoomSliderMoved(int)));
