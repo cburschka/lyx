@@ -650,12 +650,29 @@ GuiView::GuiView(int id)
 	zoom_slider_->setToolTip(qt_("Workarea zoom level. Drag, use Ctrl-+/- or Shift-Mousewheel to adjust."));
 	zoom_slider_->setTickPosition(QSlider::TicksBelow);
 	zoom_slider_->setTickInterval(lyxrc.defaultZoom - 10);
+
+	// Buttons to change zoom stepwise
+	zoom_in_ = new QPushButton(statusBar());
+	zoom_in_->setText("+");
+	zoom_in_->setFlat(true);
+	zoom_in_->setFixedSize(QSize(fm.height(), fm.height()));
+	zoom_out_ = new QPushButton(statusBar());
+	zoom_out_->setText("-");
+	zoom_out_->setFixedSize(QSize(fm.height(), fm.height()));
+	zoom_out_->setFlat(true);
+
+	statusBar()->addPermanentWidget(zoom_out_);
+	zoom_out_->setEnabled(currentBufferView());
 	statusBar()->addPermanentWidget(zoom_slider_);
 	zoom_slider_->setEnabled(currentBufferView());
+	zoom_out_->setEnabled(currentBufferView());
+	statusBar()->addPermanentWidget(zoom_in_);
 
 	connect(zoom_slider_, SIGNAL(sliderMoved(int)), this, SLOT(zoomSliderMoved(int)));
 	connect(zoom_slider_, SIGNAL(valueChanged(int)), this, SLOT(zoomValueChanged(int)));
 	connect(this, SIGNAL(currentZoomChanged(int)), zoom_slider_, SLOT(setValue(int)));
+	connect(zoom_in_, SIGNAL(clicked()), this, SLOT(zoomInPressed()));
+	connect(zoom_out_, SIGNAL(clicked()), this, SLOT(zoomOutPressed()));
 
 	zoom_value_ = new QLabel(statusBar());
 	zoom_value_->setText(toqstr(bformat(_("[[ZOOM]]%1$d%"), zoom)));
@@ -779,6 +796,22 @@ void GuiView::zoomValueChanged(int value)
 {
 	if (value != lyxrc.currentZoom)
 		zoomSliderMoved(value);
+}
+
+
+void GuiView::zoomInPressed()
+{
+	DispatchResult dr;
+	dispatch(FuncRequest(LFUN_BUFFER_ZOOM_IN), dr);
+	currentWorkArea()->scheduleRedraw(true);
+}
+
+
+void GuiView::zoomOutPressed()
+{
+	DispatchResult dr;
+	dispatch(FuncRequest(LFUN_BUFFER_ZOOM_OUT), dr);
+	currentWorkArea()->scheduleRedraw(true);
 }
 
 
@@ -1369,6 +1402,8 @@ void GuiView::onBufferViewChanged()
 	updateDialogs();
 	zoom_slider_->setEnabled(currentBufferView());
 	zoom_value_->setEnabled(currentBufferView());
+	zoom_in_->setEnabled(currentBufferView());
+	zoom_out_->setEnabled(currentBufferView());
 }
 
 

@@ -25,6 +25,7 @@
 class QCloseEvent;
 class QDragEnterEvent;
 class QDropEvent;
+class QPushButton;
 class QLabel;
 class QShowEvent;
 class QSlider;
@@ -247,6 +248,10 @@ private Q_SLOTS:
 	void zoomSliderMoved(int);
 	///
 	void zoomValueChanged(int);
+	///
+	void zoomInPressed();
+	///
+	void zoomOutPressed();
 	///
 	void on_currentWorkAreaChanged(GuiWorkArea *);
 	///
@@ -498,6 +503,10 @@ private:
 	QLabel * zoom_value_;
 	/// The zoom slider widget
 	QSlider * zoom_slider_;
+	/// Zoom in ("+") Button
+	QPushButton * zoom_in_;
+	/// Zoom out ("-") Button
+	QPushButton * zoom_out_;
 
 	/// The rate from which the actual zoom value is calculated
 	/// from the default zoom pref
