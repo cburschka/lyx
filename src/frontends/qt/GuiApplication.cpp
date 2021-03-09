@@ -2317,7 +2317,8 @@ bool GuiApplication::queryKeySym(KeySymbol const & keysym,
 		// seq has been reset at this point
 		func = seq.addkey(keysym, NoModifier);
 
-	LYXERR(Debug::KEY, " Key (queried) [action=" << func.action() << "]["
+	LYXERR(Debug::KEY, " Key (queried) [action="
+	       << lyxaction.getActionName(func.action()) << "]["
 	       << seq.print(KeySequence::Portable) << ']');
 	return func.action() != LFUN_UNKNOWN_ACTION;
 }
@@ -2344,7 +2345,8 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 	d->cancel_meta_seq.reset();
 
 	FuncRequest func = d->cancel_meta_seq.addkey(keysym, state);
-	LYXERR(Debug::KEY, "action first set to [" << func.action() << ']');
+	LYXERR(Debug::KEY, "action first set to ["
+	       << lyxaction.getActionName(func.action()) << ']');
 
 	// When not cancel or meta-fake, do the normal lookup.
 	// Note how the meta_fake Mod1 bit is OR-ed in and reset afterwards.
@@ -2352,7 +2354,8 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 	if ((func.action() != LFUN_CANCEL) && (func.action() != LFUN_META_PREFIX)) {
 		// remove Caps Lock and Mod2 as a modifiers
 		func = d->keyseq.addkey(keysym, (state | d->meta_fake_bit));
-		LYXERR(Debug::KEY, "action now set to [" << func.action() << ']');
+		LYXERR(Debug::KEY, "action now set to ["
+		       << lyxaction.getActionName(func.action()) << ']');
 	}
 
 	// Don't remove this unless you know what you are doing.
@@ -2362,8 +2365,9 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 	if (func.action() == LFUN_NOACTION)
 		func = FuncRequest(LFUN_COMMAND_PREFIX);
 
-	LYXERR(Debug::KEY, " Key [action=" << func.action() << "]["
-		<< d->keyseq.print(KeySequence::Portable) << ']');
+	LYXERR(Debug::KEY, " Key [action="
+	       << lyxaction.getActionName(func.action()) << "]["
+	       << d->keyseq.print(KeySequence::Portable) << ']');
 
 	// already here we know if it any point in going further
 	// why not return already here if action == -1 and
@@ -2380,7 +2384,7 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 		// If addkey looked up a command and did not find further commands then
 		// seq has been reset at this point
 		func = d->keyseq.addkey(keysym, NoModifier);
-		LYXERR(Debug::KEY, "Action now " << func.action());
+		LYXERR(Debug::KEY, "Action now " << lyxaction.getActionName(func.action()));
 	}
 
 	if (func.action() == LFUN_UNKNOWN_ACTION) {
