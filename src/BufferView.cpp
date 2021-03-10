@@ -1015,10 +1015,11 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter)
 		LBUFERR(!pm.rows().empty());
 		// FIXME: smooth scrolling doesn't work in mathed.
 		CursorSlice const & cs = dit.innerTextSlice();
-		int offset = coordOffset(dit).y_;
-		int ypos = pm.position() + offset;
+		int const ypos = pm.position() + coordOffset(dit).y_;
+		ParagraphMetrics const & inner_pm =
+			textMetrics(cs.text()).parMetrics(cs.pit());
 		Dimension const & row_dim =
-			pm.getRow(cs.pos(), dit.boundary()).dim();
+			inner_pm.getRow(cs.pos(), dit.boundary()).dim();
 		int scrolled = 0;
 		if (recenter)
 			scrolled = scroll(ypos - height_/2);
