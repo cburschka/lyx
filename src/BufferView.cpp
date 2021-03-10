@@ -984,15 +984,14 @@ void BufferView::scrollToCursor()
 
 bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter)
 {
-	// We are not properly started yet, delay until resizing is
-	// done.
+	// We are not properly started yet, delay until resizing is done.
 	if (height_ == 0)
 		return false;
 
 	if (recenter)
-	  LYXERR(Debug::SCROLLING, "recentering and scrolling to cursor");
+		LYXERR(Debug::SCROLLING, "recentering and scrolling to cursor");
 	else
-	  LYXERR(Debug::SCROLLING, "scrolling to cursor");
+		LYXERR(Debug::SCROLLING, "scrolling to cursor");
 
 	CursorSlice const & bot = dit.bottom();
 	TextMetrics & tm = textMetrics(bot.text());
