@@ -1037,13 +1037,13 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter)
 		// If the top part of the row falls of the screen, we scroll
 		// up to align the top of the row with the top of the screen.
 		else if (ypos - row_dim.ascent() < 0 && ypos < height_) {
-			int ynew = row_dim.ascent();
+			int const ynew = row_dim.ascent();
 			scrolled = scrollUp(ynew - ypos);
 		}
 
 		// If the bottom of the row falls of the screen, we scroll down.
 		else if (ypos + row_dim.descent() > height_ && ypos > 0) {
-			int ynew = height_ - row_dim.descent();
+			int const ynew = height_ - row_dim.descent();
 			scrolled = scrollDown(ypos - ynew);
 		}
 
@@ -1057,7 +1057,7 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter)
 
 	tm.redoParagraph(bot_pit);
 	ParagraphMetrics const & pm = tm.parMetrics(bot_pit);
-	int offset = coordOffset(dit).y_;
+	int const offset = coordOffset(dit).y_;
 
 	d->anchor_pit_ = bot_pit;
 	CursorSlice const & cs = dit.innerTextSlice();
