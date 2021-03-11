@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-03-06 19:26+0100\n"
-"PO-Revision-Date: 2021-03-06 19:03+0000\n"
+"POT-Creation-Date: 2021-03-11 18:26+0100\n"
+"PO-Revision-Date: 2021-03-11 17:31+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -33900,6 +33900,28 @@ msgstr "verzia "
 msgid "unknown version"
 msgstr "neznáma verzia"
 
+#: src/frontends/qt/GuiView.cpp:641
+msgid "Workarea zoom level. Drag, use Ctrl-+/- or Shift-Mousewheel to adjust."
+msgstr ""
+"Úroveň lupy v pracovnom poli. Použ Ctrl-+/- alebo Shift a koliesko myši na "
+"úpravu."
+
+#: src/frontends/qt/GuiView.cpp:658 src/frontends/qt/GuiView.cpp:765
+msgid "[[ZOOM]]%1$d%"
+msgstr "%1$d%"
+
+#: src/frontends/qt/GuiView.cpp:689
+msgid "&Reset to default (%1$d%)"
+msgstr "Nastaviť na &Predvolené (%1$d%)"
+
+#: src/frontends/qt/GuiView.cpp:691
+msgid "Zoom &in"
+msgstr "&Priblížiť"
+
+#: src/frontends/qt/GuiView.cpp:692
+msgid "Zoom &out"
+msgstr "O&ddialiť"
+
 #: src/frontends/qt/GuiView.cpp:639
 msgid ""
 "WARNING: LaTeX is allowed to execute external commands for this document. "
@@ -34574,6 +34596,10 @@ msgstr "Ignorovať všetky v tomto dokumente|d"
 #: src/frontends/qt/Menus.cpp:875
 msgid "Remove from personal dictionary|r"
 msgstr "Vyhodiť z osobného slovníka|y"
+
+#: src/frontends/qt/Menus.cpp:884
+msgid "Remove from document dictionary|r"
+msgstr "Vyhodiť zo slovníka pre dokument|u"
 
 #: src/frontends/qt/Menus.cpp:905
 msgid "Switch Language...|L"
@@ -37106,9 +37132,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Find Ne&xt"
 #~ msgstr "Hľadať ďa&lšie"
-
-#~ msgid "Filter:"
-#~ msgstr "Filter:"
 
 #~ msgid "Enter string to filter contents"
 #~ msgstr "Zadajte reťazec na filtrovanie obsahu"
