@@ -648,8 +648,6 @@ GuiView::GuiView(int id)
 		zoom = zoom_min_;
 	zoom_slider_->setValue(zoom);
 	zoom_slider_->setToolTip(qt_("Workarea zoom level. Drag, use Ctrl-+/- or Shift-Mousewheel to adjust."));
-	zoom_slider_->setTickPosition(QSlider::TicksBelow);
-	zoom_slider_->setTickInterval(lyxrc.defaultZoom - 10);
 
 	// Buttons to change zoom stepwise
 	zoom_in_ = new QPushButton(statusBar());
