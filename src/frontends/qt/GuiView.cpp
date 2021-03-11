@@ -688,7 +688,6 @@ GuiView::GuiView(int id)
 	QPixmap shellescape = QIcon(getPixmap("images/", "emblem-shellescape", "svgz,png")).pixmap(iconsize);
 	shell_escape_ = new QLabel(statusBar());
 	shell_escape_->setPixmap(shellescape);
-	shell_escape_->setScaledContents(true);
 	shell_escape_->setAlignment(Qt::AlignCenter);
 	shell_escape_->setContextMenuPolicy(Qt::CustomContextMenu);
 	shell_escape_->setToolTip(qt_("WARNING: LaTeX is allowed to execute "
@@ -703,7 +702,6 @@ GuiView::GuiView(int id)
 	QPixmap readonly = QIcon(getPixmap("images/", "emblem-readonly", "svgz,png")).pixmap(iconsize);
 	read_only_ = new QLabel(statusBar());
 	read_only_->setPixmap(readonly);
-	read_only_->setScaledContents(true);
 	read_only_->setAlignment(Qt::AlignCenter);
 	read_only_->hide();
 	statusBar()->addPermanentWidget(read_only_);
