@@ -913,7 +913,7 @@ bool BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
 	// restoration is inaccurate. If a bookmark was within an inset,
 	// it will be restored to the left of the outmost inset that contains
 	// the bookmark.
-	if (bottom_pit < int(buffer_.paragraphs().size())) {
+	if (!success && bottom_pit < int(buffer_.paragraphs().size())) {
 		dit = doc_iterator_begin(&buffer_);
 
 		dit.pit() = bottom_pit;
