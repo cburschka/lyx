@@ -29,6 +29,7 @@ class QPushButton;
 class QLabel;
 class QShowEvent;
 class QSlider;
+class QToolButton;
 
 
 namespace lyx {
@@ -253,6 +254,8 @@ private Q_SLOTS:
 	///
 	void zoomOutPressed();
 	///
+	void resetDefaultZoom();
+	///
 	void on_currentWorkAreaChanged(GuiWorkArea *);
 	///
 	void onBufferViewChanged();
@@ -476,6 +479,8 @@ private:
 	void dispatchToBufferView(FuncRequest const & cmd, DispatchResult & dr);
 	///
 	void showMessage();
+	///
+	void enableZoomOptions();
 
 	/// This view ID.
 	int id_;
@@ -500,13 +505,19 @@ private:
 	/// Statusbar widget that shows version control status
 	QLabel * version_control_;
 	/// Statusbar widget that shows zoom value
-	QLabel * zoom_value_;
+	QToolButton * zoom_value_;
 	/// The zoom slider widget
 	QSlider * zoom_slider_;
 	/// Zoom in ("+") Button
 	QPushButton * zoom_in_;
 	/// Zoom out ("-") Button
 	QPushButton * zoom_out_;
+	/// Set zoom to default
+	QAction * act_zoom_default_;
+	/// Zoom in menu action
+	QAction * act_zoom_in_;
+	/// Zoom out menu action
+	QAction * act_zoom_out_;
 
 	/// The rate from which the actual zoom value is calculated
 	/// from the default zoom pref

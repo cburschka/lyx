@@ -672,8 +672,12 @@ GuiView::GuiView(int id)
 	connect(zoom_in_, SIGNAL(clicked()), this, SLOT(zoomInPressed()));
 	connect(zoom_out_, SIGNAL(clicked()), this, SLOT(zoomOutPressed()));
 
-	zoom_value_ = new QLabel(statusBar());
+	zoom_value_ = new QToolButton(statusBar());
 	zoom_value_->setText(toqstr(bformat(_("[[ZOOM]]%1$d%"), zoom)));
+	zoom_value_->setToolButtonStyle(Qt::ToolButtonTextOnly);
+	zoom_value_->setAutoRaise(true);
+	zoom_value_->setPopupMode(QToolButton::InstantPopup);
+	zoom_value_->setFixedHeight(fm.height());
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
 	zoom_value_->setMinimumWidth(fm.horizontalAdvance("000%"));
 #else
@@ -681,6 +685,21 @@ GuiView::GuiView(int id)
 #endif
 	statusBar()->addPermanentWidget(zoom_value_);
 	zoom_value_->setEnabled(currentBufferView());
+
+	act_zoom_default_ = new QAction(toqstr(bformat(_("&Reset to default (%1$d%)"),
+						       lyxrc.defaultZoom)), this);
+	act_zoom_in_ = new QAction(qt_("Zoom &in"), this);
+	act_zoom_out_ = new QAction(qt_("Zoom &out"), this);
+	zoom_value_->addAction(act_zoom_default_);
+	zoom_value_->addAction(act_zoom_in_);
+	zoom_value_->addAction(act_zoom_out_);
+	enableZoomOptions();
+	connect(act_zoom_default_, SIGNAL(triggered()),
+			this, SLOT(resetDefaultZoom()));
+	connect(act_zoom_in_, SIGNAL(triggered()),
+			this, SLOT(zoomInPressed()));
+	connect(act_zoom_out_, SIGNAL(triggered()),
+			this, SLOT(zoomOutPressed()));
 
 	int const iconheight = max(int(d.normalIconSize), fm.height());
 	QSize const iconsize(iconheight, iconheight);
@@ -779,6 +798,15 @@ void GuiView::checkCancelBackground()
 }
 
 
+void GuiView::enableZoomOptions()
+{
+	act_zoom_default_->setEnabled(zoom_slider_->value() != lyxrc.defaultZoom);
+	FuncStatus status;
+	act_zoom_in_->setEnabled(getStatus(FuncRequest(LFUN_BUFFER_ZOOM_IN), status));
+	act_zoom_out_->setEnabled(getStatus(FuncRequest(LFUN_BUFFER_ZOOM_OUT), status));
+}
+
+
 void GuiView::zoomSliderMoved(int value)
 {
 	DispatchResult dr;
@@ -792,6 +820,7 @@ void GuiView::zoomValueChanged(int value)
 {
 	if (value != lyxrc.currentZoom)
 		zoomSliderMoved(value);
+	enableZoomOptions();
 }
 
 
@@ -808,6 +837,13 @@ void GuiView::zoomOutPressed()
 	DispatchResult dr;
 	dispatch(FuncRequest(LFUN_BUFFER_ZOOM_OUT), dr);
 	currentWorkArea()->scheduleRedraw(true);
+}
+
+
+void GuiView::resetDefaultZoom()
+{
+	zoomValueChanged(lyxrc.defaultZoom);
+	enableZoomOptions();
 }
 
 
