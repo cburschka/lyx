@@ -353,6 +353,15 @@ BookmarksSection::bookmarksInPar(FileName const & fn, int const par_id) const
 }
 
 
+void BookmarksSection::adjustPosAfterPos(FileName const & fn,
+	int const par_id, pos_type pos, int offset)
+{
+	for (Bookmark & bkm : bookmarks)
+		if (bkm.filename == fn && bkm.top_id == par_id && bkm.top_pos > pos)
+			bkm.top_pos += offset;
+}
+
+
 LastCommandsSection::LastCommandsSection(unsigned int num) :
 	default_num_last_commands(30),
 	absolute_max_last_commands(100)

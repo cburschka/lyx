@@ -196,7 +196,7 @@ public:
 	/// top and bottom level information sometimes needs to be sync'ed. In particular,
 	/// top_id is determined when a bookmark is restored from session; and
 	/// bottom_pit and bottom_pos are determined from top_id when a bookmark
-	/// is save to session. (What a mess! :-)
+	/// is saved to session. (What a mess! :-)
 	///
 	/// TODO: bottom level pit and pos will be replaced by StableDocIterator
 	class Bookmark {
@@ -267,6 +267,13 @@ public:
 
 	/// return a list of bookmarks and position for this paragraph
 	BookmarkPosList bookmarksInPar(support::FileName const & fn, int par_id) const;
+
+	/* An insertion/deletion in paragraph \c par_id of buffer \c fn
+	 * lead to an offset \c offset after position \c pos. Update
+	 * bookmarks accordingly.
+	 */
+	void adjustPosAfterPos(support::FileName const & fn,
+	                       int const par_id, pos_type pos, int offset);
 
 private:
 
