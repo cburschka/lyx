@@ -690,9 +690,12 @@ GuiView::GuiView(int id)
 						       lyxrc.defaultZoom)), this);
 	act_zoom_in_ = new QAction(qt_("Zoom &in"), this);
 	act_zoom_out_ = new QAction(qt_("Zoom &out"), this);
+	act_zoom_show_ = new QAction(qt_("Show zoom slider"));
+	act_zoom_show_->setCheckable(true);
 	zoom_value_->addAction(act_zoom_default_);
 	zoom_value_->addAction(act_zoom_in_);
 	zoom_value_->addAction(act_zoom_out_);
+	zoom_value_->addAction(act_zoom_show_);
 	enableZoomOptions();
 	connect(act_zoom_default_, SIGNAL(triggered()),
 			this, SLOT(resetDefaultZoom()));
@@ -700,6 +703,8 @@ GuiView::GuiView(int id)
 			this, SLOT(zoomInPressed()));
 	connect(act_zoom_out_, SIGNAL(triggered()),
 			this, SLOT(zoomOutPressed()));
+	connect(act_zoom_show_, SIGNAL(triggered()),
+			this, SLOT(toogleZoomSlider()));
 
 	int const iconheight = max(int(d.normalIconSize), fm.height());
 	QSize const iconsize(iconheight, iconheight);
@@ -837,6 +842,13 @@ void GuiView::zoomOutPressed()
 	DispatchResult dr;
 	dispatch(FuncRequest(LFUN_BUFFER_ZOOM_OUT), dr);
 	currentWorkArea()->scheduleRedraw(true);
+}
+
+
+void GuiView::toogleZoomSlider()
+{
+	DispatchResult dr;
+	dispatch(FuncRequest(LFUN_UI_TOGGLE, "zoomslider"), dr);
 }
 
 
@@ -993,8 +1005,11 @@ bool GuiView::restoreLayout()
 	//code below is skipped when when ~/.config/LyX is (re)created
 	setIconSize(d.iconSize(settings.value(icon_key).toString()));
 
-	zoom_slider_->setVisible(settings.value("zoom_slider_visible", true).toBool());
-	zoom_value_->setVisible(settings.value("zoom_slider_visible", true).toBool());
+	bool const show_zoom_slider = settings.value("zoom_slider_visible", true).toBool();
+	zoom_slider_->setVisible(show_zoom_slider);
+	act_zoom_show_->setChecked(show_zoom_slider);
+	zoom_in_->setVisible(show_zoom_slider);
+	zoom_out_->setVisible(show_zoom_slider);
 
 	if (guiApp->platformName() == "qt4x11" || guiApp->platformName() == "xcb") {
 		QPoint pos = settings.value("pos", QPoint(50, 50)).toPoint();
@@ -4852,9 +4867,10 @@ bool GuiView::lfunUiToggle(string const & ui_component)
 		menuBar()->setVisible(!menuBar()->isVisible());
 	} else if (ui_component == "zoomslider") {
 		zoom_slider_->setVisible(!zoom_slider_->isVisible());
-		zoom_value_->setVisible(!zoom_value_->isVisible());
-	} else
-	if (ui_component == "frame") {
+		zoom_in_->setVisible(zoom_slider_->isVisible());
+		zoom_out_->setVisible(zoom_slider_->isVisible());
+		act_zoom_show_->setChecked(zoom_slider_->isVisible());
+	} else if (ui_component == "frame") {
 		int const l = contentsMargins().left();
 
 		//are the frames in default state?

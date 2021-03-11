@@ -256,6 +256,8 @@ private Q_SLOTS:
 	///
 	void resetDefaultZoom();
 	///
+	void toogleZoomSlider();
+	///
 	void on_currentWorkAreaChanged(GuiWorkArea *);
 	///
 	void onBufferViewChanged();
@@ -518,6 +520,8 @@ private:
 	QAction * act_zoom_in_;
 	/// Zoom out menu action
 	QAction * act_zoom_out_;
+	/// Show zoom slider
+	QAction * act_zoom_show_;
 
 	/// The rate from which the actual zoom value is calculated
 	/// from the default zoom pref
