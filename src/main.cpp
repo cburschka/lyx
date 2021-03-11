@@ -40,6 +40,7 @@ int main(int argc, char * argv[])
 		freopen("CONOUT$", "w", stdout);
 		freopen("CONOUT$", "w", stderr);
 	}
+	SetConsoleOutputCP(CP_UTF8);
 #endif
 
 	// To avoid ordering of global object problems with some
