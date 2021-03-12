@@ -690,7 +690,7 @@ GuiView::GuiView(int id)
 						       lyxrc.defaultZoom)), this);
 	act_zoom_in_ = new QAction(qt_("Zoom &in"), this);
 	act_zoom_out_ = new QAction(qt_("Zoom &out"), this);
-	act_zoom_show_ = new QAction(qt_("Show zoom slider"));
+	act_zoom_show_ = new QAction(qt_("Show zoom slider"), this);
 	act_zoom_show_->setCheckable(true);
 	zoom_value_->addAction(act_zoom_default_);
 	zoom_value_->addAction(act_zoom_in_);
