@@ -34,11 +34,20 @@ time_t current_time()
 docstring formatted_datetime(time_t t, string const & fmt)
 {
 	QString qres;
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 8, 0))
+	if (fmt.empty())
+		qres = QLocale().toString(QDateTime::fromSecsSinceEpoch(t),
+		                          QLocale::ShortFormat);
+	else
+		qres = QLocale().toString(QDateTime::fromSecsSinceEpoch(t),
+					  toqstr(fmt));
+#else
 	if (fmt.empty())
 		qres = QLocale().toString(QDateTime::fromTime_t(t),
 		                          QLocale::ShortFormat);
 	else
 		qres = QLocale().toString(QDateTime::fromTime_t(t), toqstr(fmt));
+#endif
 	return qstring_to_ucs4(qres);
 }
 
@@ -61,7 +70,11 @@ time_t from_asctime_utc(string t)
 		return static_cast<time_t>(-1);
 	}
 	loc_dt.setTimeSpec(Qt::UTC);
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 8, 0))
+	return loc_dt.toSecsSinceEpoch();
+#else
 	return loc_dt.toTime_t();
+#endif
 }
 
 } // namespace support

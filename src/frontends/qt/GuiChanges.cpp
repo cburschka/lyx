@@ -70,9 +70,15 @@ void GuiChanges::updateContents()
 			text += inserted ? qt_("Inserted by %1").arg(author)
 					 : qt_("Deleted by %1").arg(author);
 
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 8, 0))
+		QString const date =
+			QLocale().toString(QDateTime::fromSecsSinceEpoch(c.changetime),
+					QLocale::LongFormat);
+#else
 		QString const date =
 			QLocale().toString(QDateTime::fromTime_t(c.changetime),
 					QLocale::LongFormat);
+#endif
 		if (!date.isEmpty()) {
 			if (!author.isEmpty())
 				text += qt_(" on[[date]] %1").arg(date);

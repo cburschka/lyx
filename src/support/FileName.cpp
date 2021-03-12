@@ -519,7 +519,12 @@ time_t FileName::lastModified() const
 	// been touched between the object creation and now, we refresh the file
 	// information.
 	d->refresh();
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 8, 0))
+	return d->fi.lastModified().toSecsSinceEpoch();
+#else
 	return d->fi.lastModified().toTime_t();
+#endif
+	
 }
 
 

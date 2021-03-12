@@ -1089,7 +1089,7 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 #endif
 
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
-	QRandomGenerator(QDateTime::currentDateTime().toTime_t());
+	QRandomGenerator(QDateTime::currentDateTime().toSecsSinceEpoch());
 #else
 	qsrand(QDateTime::currentDateTime().toTime_t());
 #endif
