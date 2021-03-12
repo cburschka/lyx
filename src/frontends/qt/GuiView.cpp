@@ -673,7 +673,6 @@ GuiView::GuiView(int id)
 	connect(zoom_out_, SIGNAL(clicked()), this, SLOT(zoomOutPressed()));
 
 	zoom_value_ = new QToolButton(statusBar());
-	zoom_value_->setText(toqstr(bformat(_("[[ZOOM]]%1$d%"), zoom)));
 	zoom_value_->setToolButtonStyle(Qt::ToolButtonTextOnly);
 	zoom_value_->setAutoRaise(true);
 	zoom_value_->setPopupMode(QToolButton::InstantPopup);
@@ -696,6 +695,7 @@ GuiView::GuiView(int id)
 	zoom_value_->addAction(act_zoom_in_);
 	zoom_value_->addAction(act_zoom_out_);
 	zoom_value_->addAction(act_zoom_show_);
+	zoom_value_->setText(toqstr(bformat(_("[[ZOOM]]%1$d%"), zoom)));
 	enableZoomOptions();
 	connect(act_zoom_default_, SIGNAL(triggered()),
 			this, SLOT(resetDefaultZoom()));
