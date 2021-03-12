@@ -835,8 +835,9 @@ void Paragraph::Private::insertChar(pos_type pos, char_type c,
 	speller_state_.increasePosAfterPos(pos);
 
 	// Update bookmarks
-	theSession().bookmarks().adjustPosAfterPos(inset_owner_->buffer().fileName(),
-	                                           id_, pos, 1);
+	if (inset_owner_ && inset_owner_->isBufferValid())
+		theSession().bookmarks().adjustPosAfterPos(inset_owner_->buffer().fileName(),
+	                                               id_, pos, 1);
 }
 
 
@@ -922,8 +923,9 @@ bool Paragraph::eraseChar(pos_type pos, bool trackChanges)
 	d->speller_state_.refreshLast(size());
 
 	// Update bookmarks
-	theSession().bookmarks().adjustPosAfterPos(d->inset_owner_->buffer().fileName(),
-	                                           d->id_, pos, -1);
+	if (d->inset_owner_ && d->inset_owner_->isBufferValid())
+		theSession().bookmarks().adjustPosAfterPos(d->inset_owner_->buffer().fileName(),
+	                                               d->id_, pos, -1);
 
 	return true;
 }
