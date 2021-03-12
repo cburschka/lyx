@@ -327,6 +327,7 @@ main
 #endif
 {
   Void (*handler) ARGS((int));  /* Previous signal handler */
+  (void)handler;// avoid compiler warning [-Wunused-but-set-variable]
   int i;
 
   progname = argv[0];  /* name of this program */
@@ -390,6 +391,7 @@ mem_viol
 #endif
 {
   Void (* handler) ARGS((int));
+  (void)handler;// avoid compiler warning [-Wunused-but-set-variable]
   handler = (Void (*) ARGS((int))) signal (SIGSEGV, mem_viol);
   if (sig != SIGSEGV)
   {
@@ -659,6 +661,7 @@ dt2dv
   int nprefixes = 0;  /* number of prefixes in cmd_prefixes[] list. */
   static Token dtl_cmd = "";  /* DTL command name */
   COUNT nread = 0;  /* number of bytes read by a function from dtl file. */
+  (void)nread;// avoid compiler warning [-Wunused-but-set-variable]
 
   nprefixes = sizeof (cmd_prefixes) / sizeof (CmdPrefix);
 
@@ -1649,6 +1652,7 @@ xfer_hex
 {
   U4 unum = 0;  /* at most this space needed */
   COUNT nread = 0;  /* number of DTL bytes read by read_token */
+  (void)nread;// avoid compiler warning [-Wunused-but-set-variable]
   int nconv = 0;  /* number of arguments converted by sscanf */
   static Token token = "";  /* DTL token */
 
@@ -1695,6 +1699,7 @@ xfer_oct
 {
   U4 unum = 0;  /* at most this space needed */
   COUNT nread = 0;  /* number of DTL bytes read by read_token */
+  (void)nread;// avoid compiler warning [-Wunused-but-set-variable]
   int nconv = 0;  /* number of arguments converted by sscanf */
   static Token token = "";  /* DTL token */
 
@@ -1785,6 +1790,7 @@ get_unsigned
 {
   U4 unum = 0;  /* at most this space needed */
   COUNT nread = 0;  /* number of DTL bytes read by read_token */
+  (void)nread;// avoid compiler warning [-Wunused-but-set-variable]
   int nconv = 0;  /* number of arguments converted by sscanf */
   static Token token = "";  /* DTL token */
 
@@ -1818,6 +1824,7 @@ get_signed
 {
   S4 snum = 0;
   COUNT nread = 0;  /* number of DTL bytes read by read_token */
+  (void)nread;// avoid compiler warning [-Wunused-but-set-variable]
   int nconv = 0;  /* number of sscanf arguments converted and assigned */
   static Token token = "";
 
