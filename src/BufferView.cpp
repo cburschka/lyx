@@ -3159,7 +3159,7 @@ void BufferView::caretPosAndDim(Point & p, Dimension & dim) const
 	} else {
 		Font const font = cur.real_current_font;
 		frontend::FontMetrics const & fm = theFontMetrics(font);
-		dim.wid = fm.lineWidth();
+		dim.wid = max(fm.lineWidth(), 1);
 		dim.asc = fm.maxAscent();
 		dim.des = fm.maxDescent();
 	}
