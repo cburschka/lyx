@@ -5262,6 +5262,13 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 
+	case LFUN_COPY:
+		if (cur.selIsMultiCell())
+			copySelection(cur);
+		else
+			cell(cur.idx())->dispatch(cur, cmd);
+		break;
+
 	case LFUN_CUT:
 		if (cur.selIsMultiCell()) {
 			if (copySelection(cur)) {

@@ -2264,6 +2264,13 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	case LFUN_COPY:
+		// With multi-cell table content, we pass down to the inset
+		if (cur.inTexted() && cur.selection()
+		    && cur.selectionBegin().idx() != cur.selectionEnd().idx()) {
+			buffer_.dispatch(cmd, dr);
+			dispatched = dr.dispatched();
+			break;
+		}
 		cap::copySelection(cur);
 		cur.message(_("Copy"));
 		break;
