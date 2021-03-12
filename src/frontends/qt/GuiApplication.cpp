@@ -106,6 +106,9 @@
 #include <QObject>
 #include <QPainter>
 #include <QPixmap>
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
+#include <QRandomGenerator>
+#endif
 #include <QRegExp>
 #include <QSessionManager>
 #include <QSettings>
@@ -1085,8 +1088,11 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	setDesktopFileName(lyx_package);
 #endif
 
-	// FIXME Deprecated. Should use QRandomGenerator since 5.10
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
+	QRandomGenerator(QDateTime::currentDateTime().toTime_t());
+#else
 	qsrand(QDateTime::currentDateTime().toTime_t());
+#endif
 
 	// Install LyX translator for missing Qt translations
 	installTranslator(&d->gui_trans_);

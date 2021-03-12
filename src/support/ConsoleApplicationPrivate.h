@@ -16,6 +16,9 @@
 #include <QCoreApplication>
 #include <QDateTime>
 #include <QTimer>
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
+#include <QRandomGenerator>
+#endif
 
 #include <string>
 
@@ -38,7 +41,11 @@ public:
 		setOrganizationDomain("lyx.org");
 		setApplicationName(toqstr(app));
 
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
+		QRandomGenerator(QDateTime::currentDateTime().toTime_t());
+#else
 		qsrand(QDateTime::currentDateTime().toTime_t());
+#endif
 	}
 	int execute()
 	{
