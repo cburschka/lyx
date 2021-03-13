@@ -1956,8 +1956,13 @@ public:
 		filename_ = (filename.extension() == "lyx") ?
 			toqstr(filename.onlyFileNameWithoutExt())
 			: toqstr(filename.onlyFileName());
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
+		postfix_ = toqstr(filename.absoluteFilePath()).
+			split("/", Qt::SkipEmptyParts);
+#else
 		postfix_ = toqstr(filename.absoluteFilePath()).
 			split("/", QString::SkipEmptyParts);
+#endif
 		postfix_.pop_back();
 		abs_ = toqstr(filename.absoluteFilePath());
 		dottedPrefix_ = false;
