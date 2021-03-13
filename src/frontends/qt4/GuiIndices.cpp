@@ -146,7 +146,7 @@ void GuiIndices::updateView()
 		// restore selected index
 		if (iname == sel_index) {
 			indicesTW->setCurrentItem(newItem);
-			indicesTW->setItemSelected(newItem, true);
+			newItem->setSelected(true);
 		}
 	}
 	indicesTW->resizeColumnToContents(0);

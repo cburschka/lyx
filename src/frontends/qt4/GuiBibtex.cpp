@@ -215,8 +215,8 @@ void GuiBibtex::addDatabase()
 	// multiple selections are possible
 	for (int i = 0; i != add_->bibLW->count(); ++i) {
 		QListWidgetItem * const item = add_->bibLW->item(i);
-		if (add_->bibLW->isItemSelected(item)) {
-			add_->bibLW->setItemSelected(item, false);
+		if (item->isSelected()) {
+			item->setSelected(false);
 			QList<QListWidgetItem *> matches =
 				databaseLW->findItems(item->text(), Qt::MatchExactly);
 			if (matches.empty()) {
