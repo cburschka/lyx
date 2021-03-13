@@ -243,7 +243,11 @@ void CCItemDelegate::drawCategoryHeader(QPainter * painter, QStyleOptionViewItem
 
 	// draw the centered text
 	QFontMetrics fm(font);
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
+	int w = fm.horizontalAdvance(category);
+#else
 	int w = fm.width(category);
+#endif
 	int x = opt.rect.x() + (opt.rect.width() - w) / 2;
 	int y = opt.rect.y() + 3 * fm.ascent() / 2;
 	int left = x;
