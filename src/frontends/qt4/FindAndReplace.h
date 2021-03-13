@@ -78,7 +78,7 @@ public:
 	FindAndReplace(
 		GuiView & parent, ///< the main window where to dock.
 		Qt::DockWidgetArea area = Qt::RightDockWidgetArea, ///< Position of the dock (and also drawer)
-		Qt::WindowFlags flags = 0);
+		Qt::WindowFlags flags = {});
 
 	~FindAndReplace();
 

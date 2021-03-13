@@ -38,7 +38,7 @@ public:
 	         Qt::DockWidgetArea area = Qt::LeftDockWidgetArea, ///< Position of
 															   ///the dock (and
 															   ///also drawer)
-	         Qt::WindowFlags flags = 0);
+	         Qt::WindowFlags flags = {});
 
 	virtual ~DockView() {}
 
