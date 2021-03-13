@@ -226,6 +226,7 @@ QFont symbolFont(QString const & family, bool * ok)
 		return font;
 	}
 
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
 	// A simple setFamily() fails on Qt 2
 
 	QString const raw = rawName(family);
@@ -237,6 +238,7 @@ QFont symbolFont(QString const & family, bool * ok)
 		*ok = true;
 		return font;
 	}
+#endif
 
 	LYXERR_NOPOS(Debug::FONT, " FAILED :-(");
 	*ok = false;
@@ -370,7 +372,9 @@ QFont makeQFont(FontInfo const & f)
 	else
 		LYXERR(Debug::FONT, "This font is NOT an exact match");
 
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
 	LYXERR(Debug::FONT, "XFLD: " << font.rawName());
+#endif
 
 	font.setPointSizeF(f.realSize() * lyxrc.currentZoom / 100.0);
 
