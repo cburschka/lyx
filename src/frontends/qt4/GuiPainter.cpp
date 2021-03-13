@@ -418,7 +418,7 @@ void GuiPainter::text(int x, int y, docstring const & s,
 		// Morover the first/last element is possibly not the right one since the glyph may have changed.
 		int const lb = min(fm.lbearing(s[0]), 0);
 		int const mA = fm.maxAscent();
-		if (QPixmapCache::find(key, pm)) {
+		if (QPixmapCache::find(key, &pm)) {
 			// Draw the cached pixmap.
 			drawPixmap(x + lb, y - mA, pm);
 			return;
