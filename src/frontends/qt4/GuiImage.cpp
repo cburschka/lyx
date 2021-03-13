@@ -177,7 +177,7 @@ bool GuiImage::rotate(Params const & params)
 		return false;
 
 	QImage const & image = is_transformed_ ? transformed_ : original_;
-	QMatrix m;
+	QTransform m;
 	m.rotate(- params.angle);
 	transformed_ = image.transformed(m);
 	return true;
@@ -205,7 +205,7 @@ bool GuiImage::scale(Params const & params)
 	scale += 0.0001;
 #endif
 
-	QMatrix m;
+	QTransform m;
 	m.scale(scale, scale);
 	// Bilinear filtering is used to scale graphics preview
 	transformed_ = image.transformed(m, Qt::SmoothTransformation);
