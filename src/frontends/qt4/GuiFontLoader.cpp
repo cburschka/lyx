@@ -129,6 +129,7 @@ GuiFontInfo & fontinfo(FontInfo const & f)
 }
 
 
+#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
 QString rawName(QString const & family)
 {
 	for (size_t i = 0; i < nr_symbol_fonts; ++i)
@@ -138,6 +139,7 @@ QString rawName(QString const & family)
 	LYXERR(Debug::FONT, "BUG: family not found !");
 	return QString();
 }
+#endif
 
 
 QString symbolFamily(FontFamily family)
