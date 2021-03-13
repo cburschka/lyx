@@ -212,7 +212,7 @@ static void setTreeItemStatus(QTreeWidgetItem * tree_item, bool enabled)
 	// Change the color from black to gray or viceversa
 	QPalette::ColorGroup new_color =
 		enabled ? QPalette::Active : QPalette::Disabled;
-	tree_item->setTextColor(0, QApplication::palette().color(new_color,
+	tree_item->setForeground(0, QApplication::palette().color(new_color,
 	                                                         QPalette::Text));
 }
 
