@@ -336,7 +336,11 @@ QStringList texFileList(QString const & filename)
 	}
 
 	// remove duplicates
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 14, 0))
+	return QList<QString>(set.begin(), set.end());
+#else
 	return QList<QString>::fromSet(set);
+#endif
 }
 
 QString const externalLineEnding(docstring const & str)
