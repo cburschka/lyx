@@ -106,6 +106,9 @@
 #include <QObject>
 #include <QPixmap>
 #include <QPixmapCache>
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
+#include <QRandomGenerator>
+#endif
 #include <QRegExp>
 #include <QSessionManager>
 #include <QSettings>
@@ -1050,7 +1053,11 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	setDesktopFileName(lyx_package);
 #endif
 
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
+	QRandomGenerator(QDateTime::currentDateTime().toSecsSinceEpoch());
+#else
 	qsrand(QDateTime::currentDateTime().toTime_t());
+#endif
 
 	// Install translator for GUI elements.
 	installTranslator(&d->qt_trans_);
