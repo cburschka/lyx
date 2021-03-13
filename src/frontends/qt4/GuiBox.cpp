@@ -155,7 +155,7 @@ GuiBox::GuiBox(QWidget * parent) : InsetParamsWidget(parent)
 
 	// the background can be uncolored while the frame cannot
 	color_codes_ = colors();
-	qSort(color_codes_.begin(), color_codes_.end(), ColorSorter);
+	sort(color_codes_.begin(), color_codes_.end(), ColorSorter);
 	fillComboColor(backgroundColorCO, true);
 	fillComboColor(frameColorCO, false);
 

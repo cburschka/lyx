@@ -234,7 +234,7 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	bar    = barData();
 	strike = strikeData();
 	color  = colorData();
-	qSort(color.begin(), color.end(), ColorSorter);
+	sort(color.begin(), color.end(), ColorSorter);
 
 	language = languageData();
 	language.prepend(LanguagePair(qt_("Default"), "reset"));
