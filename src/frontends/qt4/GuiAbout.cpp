@@ -240,13 +240,31 @@ static QString buildinfo()
 {
 	QString res;
 	QTextStream out(&res);
-	out << "LyX " << lyx_version
-		<< " (" << lyx_release_date << ")" << endl;
+	out << "LyX "
+	    << lyx_version
+	    << " (" 
+	    << lyx_release_date 
+	    << ")" 
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
+	    << Qt::endl;
+#else
+	    << endl;
+#endif
 	if (std::string(lyx_git_commit_hash) != "none")
 		out << qt_("  Git commit hash ")
-		    << QString(lyx_git_commit_hash).left(8) << endl;
+		    << QString(lyx_git_commit_hash).left(8)
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
+	    	    << Qt::endl;
+#else
+	    	    << endl;
+#endif
 
-	out << lyx_version_info << endl;
+	out << lyx_version_info
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
+	    << Qt::endl;
+#else
+	    << endl;
+#endif
 	return res;
 }
 
