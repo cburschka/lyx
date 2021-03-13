@@ -4390,8 +4390,7 @@ bool GuiView::lfunUiToggle(string const & ui_component)
 		menuBar()->setVisible(!menuBar()->isVisible());
 	} else
 	if (ui_component == "frame") {
-		int l, t, r, b;
-		getContentsMargins(&l, &t, &r, &b);
+		int const l = contentsMargins().left();
 		//are the frames in default state?
 		d.current_work_area_->setFrameStyle(QFrame::NoFrame);
 		if (l == 0) {
