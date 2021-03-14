@@ -29,7 +29,6 @@ class QPushButton;
 class QLabel;
 class QShowEvent;
 class QSlider;
-class QToolButton;
 
 
 namespace lyx {
@@ -507,7 +506,7 @@ private:
 	/// Statusbar widget that shows version control status
 	QLabel * version_control_;
 	/// Statusbar widget that shows zoom value
-	QToolButton * zoom_value_;
+	QLabel * zoom_value_;
 	/// The zoom slider widget
 	QSlider * zoom_slider_;
 	/// Zoom in ("+") Button
@@ -542,6 +541,16 @@ class SEMenu : public QMenu
 	Q_OBJECT
 public:
 	explicit SEMenu(QWidget * parent);
+
+public Q_SLOTS:
+	void showMenu(QPoint const &) { exec(QCursor::pos()); }
+};
+
+class ZoomMenu : public QMenu
+{
+	Q_OBJECT
+public:
+	explicit ZoomMenu(QWidget *) {};
 
 public Q_SLOTS:
 	void showMenu(QPoint const &) { exec(QCursor::pos()); }

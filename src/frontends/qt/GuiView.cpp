@@ -672,29 +672,29 @@ GuiView::GuiView(int id)
 	connect(zoom_in_, SIGNAL(clicked()), this, SLOT(zoomInPressed()));
 	connect(zoom_out_, SIGNAL(clicked()), this, SLOT(zoomOutPressed()));
 
-	zoom_value_ = new QToolButton(statusBar());
-	zoom_value_->setToolButtonStyle(Qt::ToolButtonTextOnly);
-	zoom_value_->setAutoRaise(true);
-	zoom_value_->setPopupMode(QToolButton::InstantPopup);
+	zoom_value_ = new QLabel(statusBar());
 	zoom_value_->setFixedHeight(fm.height());
-	// Get sensible minimum width to heep the size constant
-	zoom_value_->setText(toqstr("000%"));
-	int const mw = zoom_value_->width();
-	zoom_value_->setMinimumWidth(mw);
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
+	zoom_value_->setMinimumWidth(fm.horizontalAdvance("000%"));
+#else
+	zoom_value_->setMinimumWidth(fm.width("000%"));
+#endif
+	zoom_value_->setText(toqstr(bformat(_("[[ZOOM]]%1$d%"), zoom)));
 	statusBar()->addPermanentWidget(zoom_value_);
 	zoom_value_->setEnabled(currentBufferView());
+	zoom_value_->setContextMenuPolicy(Qt::CustomContextMenu);
 
+	ZoomMenu * zoom_menu = new ZoomMenu(statusBar());
 	act_zoom_default_ = new QAction(toqstr(bformat(_("&Reset to default (%1$d%)"),
 						       lyxrc.defaultZoom)), this);
 	act_zoom_in_ = new QAction(qt_("Zoom &in"), this);
 	act_zoom_out_ = new QAction(qt_("Zoom &out"), this);
 	act_zoom_show_ = new QAction(qt_("Show zoom slider"), this);
 	act_zoom_show_->setCheckable(true);
-	zoom_value_->addAction(act_zoom_default_);
-	zoom_value_->addAction(act_zoom_in_);
-	zoom_value_->addAction(act_zoom_out_);
-	zoom_value_->addAction(act_zoom_show_);
-	zoom_value_->setText(toqstr(bformat(_("[[ZOOM]]%1$d%"), zoom)));
+	zoom_menu->addAction(act_zoom_default_);
+	zoom_menu->addAction(act_zoom_in_);
+	zoom_menu->addAction(act_zoom_out_);
+	zoom_menu->addAction(act_zoom_show_);
 	enableZoomOptions();
 	connect(act_zoom_default_, SIGNAL(triggered()),
 			this, SLOT(resetDefaultZoom()));
@@ -704,6 +704,8 @@ GuiView::GuiView(int id)
 			this, SLOT(zoomOutPressed()));
 	connect(act_zoom_show_, SIGNAL(triggered()),
 			this, SLOT(toogleZoomSlider()));
+	connect(zoom_value_, SIGNAL(customContextMenuRequested(QPoint)),
+		zoom_menu, SLOT(showMenu(QPoint)));
 
 	int const iconheight = max(int(d.normalIconSize), fm.height());
 	QSize const iconsize(iconheight, iconheight);
