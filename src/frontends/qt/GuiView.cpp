@@ -677,11 +677,10 @@ GuiView::GuiView(int id)
 	zoom_value_->setAutoRaise(true);
 	zoom_value_->setPopupMode(QToolButton::InstantPopup);
 	zoom_value_->setFixedHeight(fm.height());
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
-	zoom_value_->setMinimumWidth(fm.horizontalAdvance("000%"));
-#else
-	zoom_value_->setMinimumWidth(fm.width("000%"));
-#endif
+	// Get sensible minimum width to heep the size constant
+	zoom_value_->setText(toqstr("000%"));
+	int const mw = zoom_value_->width();
+	zoom_value_->setMinimumWidth(mw);
 	statusBar()->addPermanentWidget(zoom_value_);
 	zoom_value_->setEnabled(currentBufferView());
 
