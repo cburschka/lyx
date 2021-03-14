@@ -723,4 +723,13 @@ Menuset
 		Item "Giant-sized Icons" "icon-size giant"
 	End
 
+#
+# Zoom context menu
+#
+	Menu "context-zoom"
+		ZoomOptions
+		Separator
+		Item "Show Zoom Slider|S" "ui-toggle zoomslider"
+	End
+
 End

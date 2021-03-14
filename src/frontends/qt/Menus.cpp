@@ -197,7 +197,9 @@ public:
 		/** Commands to separate environments (context menu version). */
 		EnvironmentSeparatorsContext,
 		/** This is the list of quotation marks available */
-		SwitchQuotes
+		SwitchQuotes,
+		/** Options in the Zoom menu **/
+		ZoomOptions
 	};
 
 	explicit MenuItem(Kind kind) : kind_(kind), optional_(false) {}
@@ -374,6 +376,7 @@ public:
 	void expandCaptions(Buffer const * buf, bool switchcap = false);
 	void expandEnvironmentSeparators(BufferView const *, bool contextmenu = false);
 	void expandQuotes(BufferView const *);
+	void expandZoomOptions(BufferView const *);
 	///
 	ItemList items_;
 	///
@@ -489,7 +492,8 @@ void MenuDefinition::read(Lexer & lex)
 		md_switchcaptions,
 		md_env_separators,
 		md_env_separatorscontext,
-		md_switchquotes
+		md_switchquotes,
+		md_zoomoptions
 	};
 
 	LexerKeyword menutags[] = {
@@ -530,7 +534,8 @@ void MenuDefinition::read(Lexer & lex)
 		{ "toc", md_toc },
 		{ "toolbars", md_toolbars },
 		{ "updateformats", md_updateformats },
-		{ "viewformats", md_viewformats }
+		{ "viewformats", md_viewformats },
+		{ "zoomoptions", md_zoomoptions }
 	};
 
 	lex.pushTable(menutags);
@@ -685,6 +690,10 @@ void MenuDefinition::read(Lexer & lex)
 
 		case md_switchquotes:
 			add(MenuItem(MenuItem::SwitchQuotes));
+			break;
+
+		case md_zoomoptions:
+			add(MenuItem(MenuItem::ZoomOptions));
 			break;
 
 		case md_optsubmenu:
@@ -1815,6 +1824,49 @@ void MenuDefinition::expandCaptions(Buffer const * buf, bool switchcap)
 }
 
 
+void MenuDefinition::expandZoomOptions(BufferView const * bv)
+{
+	if (!bv)
+		return;
+
+	add(MenuItem(MenuItem::Command,
+		     toqstr(bformat(_("Reset to Default (%1$d%)|R"),
+				    lyxrc.defaultZoom)),
+		     FuncRequest(LFUN_BUFFER_ZOOM)));
+	add(MenuItem(MenuItem::Separator));
+	add(MenuItem(MenuItem::Command, qt_("Zoom In|I"),
+		     FuncRequest(LFUN_BUFFER_ZOOM_IN)));
+	add(MenuItem(MenuItem::Command, qt_("Zoom Out|O"),
+		     FuncRequest(LFUN_BUFFER_ZOOM_OUT)));
+	add(MenuItem(MenuItem::Separator));
+	// Offer some fractional values of the default
+	int z = lyxrc.defaultZoom * 1.75;
+	add(MenuItem(MenuItem::Command,
+		     toqstr(bformat(_("[[ZOOM]]%1$d%"), z)),
+		     FuncRequest(LFUN_BUFFER_ZOOM, convert<string>(z))));
+	z = lyxrc.defaultZoom * 1.5;
+	add(MenuItem(MenuItem::Command,
+		     toqstr(bformat(_("[[ZOOM]]%1$d%"), z)),
+		     FuncRequest(LFUN_BUFFER_ZOOM, convert<string>(z))));
+	z = lyxrc.defaultZoom * 1.25;
+	add(MenuItem(MenuItem::Command,
+		     toqstr(bformat(_("[[ZOOM]]%1$d%"), z)),
+		     FuncRequest(LFUN_BUFFER_ZOOM, convert<string>(z))));
+	z = lyxrc.defaultZoom * 0.75;
+	add(MenuItem(MenuItem::Command,
+		     toqstr(bformat(_("[[ZOOM]]%1$d%"), z)),
+		     FuncRequest(LFUN_BUFFER_ZOOM, convert<string>(z))));
+	z = lyxrc.defaultZoom * 0.5;
+	add(MenuItem(MenuItem::Command,
+		     toqstr(bformat(_("[[ZOOM]]%1$d%"), z)),
+		     FuncRequest(LFUN_BUFFER_ZOOM, convert<string>(z))));
+	z = lyxrc.defaultZoom * 0.25;
+	add(MenuItem(MenuItem::Command,
+		     toqstr(bformat(_("[[ZOOM]]%1$d%"), z)),
+		     FuncRequest(LFUN_BUFFER_ZOOM, convert<string>(z))));
+}
+
+
 void MenuDefinition::expandQuotes(BufferView const * bv)
 {
 	if (!bv)
@@ -2430,6 +2482,10 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 
 		case MenuItem::SwitchQuotes:
 			tomenu.expandQuotes(bv);
+			break;
+
+		case MenuItem::ZoomOptions:
+			tomenu.expandZoomOptions(bv);
 			break;
 
 		case MenuItem::Submenu: {

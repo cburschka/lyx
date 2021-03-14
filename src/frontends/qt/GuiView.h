@@ -253,9 +253,7 @@ private Q_SLOTS:
 	///
 	void zoomOutPressed();
 	///
-	void resetDefaultZoom();
-	///
-	void toogleZoomSlider();
+	void showZoomContextMenu();
 	///
 	void on_currentWorkAreaChanged(GuiWorkArea *);
 	///
@@ -480,8 +478,6 @@ private:
 	void dispatchToBufferView(FuncRequest const & cmd, DispatchResult & dr);
 	///
 	void showMessage();
-	///
-	void enableZoomOptions();
 
 	/// This view ID.
 	int id_;
@@ -513,14 +509,6 @@ private:
 	QPushButton * zoom_in_;
 	/// Zoom out ("-") Button
 	QPushButton * zoom_out_;
-	/// Set zoom to default
-	QAction * act_zoom_default_;
-	/// Zoom in menu action
-	QAction * act_zoom_in_;
-	/// Zoom out menu action
-	QAction * act_zoom_out_;
-	/// Show zoom slider
-	QAction * act_zoom_show_;
 
 	/// The rate from which the actual zoom value is calculated
 	/// from the default zoom pref
@@ -541,16 +529,6 @@ class SEMenu : public QMenu
 	Q_OBJECT
 public:
 	explicit SEMenu(QWidget * parent);
-
-public Q_SLOTS:
-	void showMenu(QPoint const &) { exec(QCursor::pos()); }
-};
-
-class ZoomMenu : public QMenu
-{
-	Q_OBJECT
-public:
-	explicit ZoomMenu(QWidget *) {};
 
 public Q_SLOTS:
 	void showMenu(QPoint const &) { exec(QCursor::pos()); }

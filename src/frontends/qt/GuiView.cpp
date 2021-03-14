@@ -684,28 +684,8 @@ GuiView::GuiView(int id)
 	zoom_value_->setEnabled(currentBufferView());
 	zoom_value_->setContextMenuPolicy(Qt::CustomContextMenu);
 
-	ZoomMenu * zoom_menu = new ZoomMenu(statusBar());
-	act_zoom_default_ = new QAction(toqstr(bformat(_("&Reset to default (%1$d%)"),
-						       lyxrc.defaultZoom)), this);
-	act_zoom_in_ = new QAction(qt_("Zoom &in"), this);
-	act_zoom_out_ = new QAction(qt_("Zoom &out"), this);
-	act_zoom_show_ = new QAction(qt_("Show zoom slider"), this);
-	act_zoom_show_->setCheckable(true);
-	zoom_menu->addAction(act_zoom_default_);
-	zoom_menu->addAction(act_zoom_in_);
-	zoom_menu->addAction(act_zoom_out_);
-	zoom_menu->addAction(act_zoom_show_);
-	enableZoomOptions();
-	connect(act_zoom_default_, SIGNAL(triggered()),
-			this, SLOT(resetDefaultZoom()));
-	connect(act_zoom_in_, SIGNAL(triggered()),
-			this, SLOT(zoomInPressed()));
-	connect(act_zoom_out_, SIGNAL(triggered()),
-			this, SLOT(zoomOutPressed()));
-	connect(act_zoom_show_, SIGNAL(triggered()),
-			this, SLOT(toogleZoomSlider()));
 	connect(zoom_value_, SIGNAL(customContextMenuRequested(QPoint)),
-		zoom_menu, SLOT(showMenu(QPoint)));
+		this, SLOT(showZoomContextMenu()));
 
 	int const iconheight = max(int(d.normalIconSize), fm.height());
 	QSize const iconsize(iconheight, iconheight);
@@ -804,15 +784,6 @@ void GuiView::checkCancelBackground()
 }
 
 
-void GuiView::enableZoomOptions()
-{
-	act_zoom_default_->setEnabled(zoom_slider_->value() != lyxrc.defaultZoom);
-	FuncStatus status;
-	act_zoom_in_->setEnabled(getStatus(FuncRequest(LFUN_BUFFER_ZOOM_IN), status));
-	act_zoom_out_->setEnabled(getStatus(FuncRequest(LFUN_BUFFER_ZOOM_OUT), status));
-}
-
-
 void GuiView::zoomSliderMoved(int value)
 {
 	DispatchResult dr;
@@ -826,7 +797,6 @@ void GuiView::zoomValueChanged(int value)
 {
 	if (value != lyxrc.currentZoom)
 		zoomSliderMoved(value);
-	enableZoomOptions();
 }
 
 
@@ -846,17 +816,12 @@ void GuiView::zoomOutPressed()
 }
 
 
-void GuiView::toogleZoomSlider()
+void GuiView::showZoomContextMenu()
 {
-	DispatchResult dr;
-	dispatch(FuncRequest(LFUN_UI_TOGGLE, "zoomslider"), dr);
-}
-
-
-void GuiView::resetDefaultZoom()
-{
-	zoomValueChanged(lyxrc.defaultZoom);
-	enableZoomOptions();
+	QMenu * menu = guiApp->menus().menu(toqstr("context-zoom"), * this);
+	if (!menu)
+		return;
+	menu->exec(QCursor::pos());
 }
 
 
@@ -1008,7 +973,6 @@ bool GuiView::restoreLayout()
 
 	bool const show_zoom_slider = settings.value("zoom_slider_visible", true).toBool();
 	zoom_slider_->setVisible(show_zoom_slider);
-	act_zoom_show_->setChecked(show_zoom_slider);
 	zoom_in_->setVisible(show_zoom_slider);
 	zoom_out_->setVisible(show_zoom_slider);
 
@@ -2363,7 +2327,10 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_UI_TOGGLE:
 		if (cmd.argument() == "zoomslider") {
 			enable = doc_buffer;
-			flag.setOnOff(zoom_slider_->isVisible());
+			// Test to avoid crash if called before zoom_slider_ is initialized
+			// FIXME: can probably be done better
+			if (enable)
+				flag.setOnOff(zoom_slider_->isVisible());
 		} else
 			flag.setOnOff(isFullScreen());
 		break;
@@ -2482,7 +2449,8 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 				bformat(_("Zoom level cannot be less than %1$d%."), zoom_min_);
 			flag.message(msg);
 			enable = false;
-		}
+		} else if (cmd.argument().empty() && lyxrc.currentZoom == lyxrc.defaultZoom)
+			enable = false;
 		else
 			enable = doc_buffer;
 		break;
@@ -4870,7 +4838,6 @@ bool GuiView::lfunUiToggle(string const & ui_component)
 		zoom_slider_->setVisible(!zoom_slider_->isVisible());
 		zoom_in_->setVisible(zoom_slider_->isVisible());
 		zoom_out_->setVisible(zoom_slider_->isVisible());
-		act_zoom_show_->setChecked(zoom_slider_->isVisible());
 	} else if (ui_component == "frame") {
 		int const l = contentsMargins().left();
 
