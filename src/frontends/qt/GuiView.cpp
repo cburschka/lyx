@@ -2327,10 +2327,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_UI_TOGGLE:
 		if (cmd.argument() == "zoomslider") {
 			enable = doc_buffer;
-			// Test to avoid crash if called before zoom_slider_ is initialized
-			// FIXME: can probably be done better
-			if (enable)
-				flag.setOnOff(zoom_slider_->isVisible());
+			flag.setOnOff(zoom_slider_ ? zoom_slider_->isVisible() : false);
 		} else
 			flag.setOnOff(isFullScreen());
 		break;
