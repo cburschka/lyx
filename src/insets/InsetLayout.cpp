@@ -770,6 +770,8 @@ void InsetLayout::readArgument(Lexer & lex)
 		} else if (tok == "menustring") {
 			lex.next();
 			arg.menustring = lex.getDocString();
+			if (arg.labelstring.empty())
+				arg.labelstring = arg.menustring;
 		} else if (tok == "mandatory") {
 			lex.next();
 			arg.mandatory = lex.getBool();
