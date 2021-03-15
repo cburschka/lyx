@@ -89,7 +89,9 @@
 #include <QByteArray>
 #include <QBitmap>
 #include <QDateTime>
+#if QT_VERSION < 0x060000
 #include <QDesktopWidget>
+#endif
 #include <QEvent>
 #include <QFileOpenEvent>
 #include <QFileInfo>
@@ -135,12 +137,14 @@
 
 #if (QT_VERSION < 0x050000) || (QT_VERSION >= 0x050400)
 #if defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
+#if (QT_VERSION < 0x060000)
 #if (QT_VERSION < 0x050000)
 #include <QWindowsMime>
 #define QWINDOWSMIME QWindowsMime
 #else
 #include <QWinMime>
 #define QWINDOWSMIME QWinMime
+#endif
 #endif
 #ifdef Q_CC_GNU
 #include <wtypes.h>
@@ -808,7 +812,7 @@ public:
 ////////////////////////////////////////////////////////////////////////
 // Windows specific stuff goes here...
 
-#if (QT_VERSION < 0x050000) || (QT_VERSION >= 0x050400)
+#if (QT_VERSION < 0x050000) || (QT_VERSION >= 0x050400 && QT_VERSION < 0x060000)
 #if defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
 // QWindowsMimeMetafile can only be compiled on Windows.
 
@@ -974,7 +978,7 @@ struct GuiApplication::Private
 		, last_state_(Qt::ApplicationInactive)
 	#endif
 	{
-	#if (QT_VERSION < 0x050000) || (QT_VERSION >= 0x050400)
+	#if (QT_VERSION < 0x050000) || (QT_VERSION >= 0x050400 && QT_VERSION < 0x060000)
 	#if defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
 		/// WMF Mime handler for Windows clipboard.
 		wmf_mime_ = new QWindowsMimeMetafile;
@@ -1049,7 +1053,7 @@ struct GuiApplication::Private
 	QMacPasteboardMimeGraphics mac_pasteboard_mime_;
 #endif
 
-#if (QT_VERSION < 0x050000) || (QT_VERSION >= 0x050400)
+#if (QT_VERSION < 0x050000) || (QT_VERSION >= 0x050400 && QT_VERSION < 0x060000)
 #if defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
 	/// WMF Mime handler for Windows clipboard.
 	QWindowsMimeMetafile * wmf_mime_;
@@ -1080,7 +1084,7 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	QCoreApplication::setOrganizationName(app_name);
 	QCoreApplication::setOrganizationDomain("lyx.org");
 	QCoreApplication::setApplicationName(lyx_package);
-#if QT_VERSION >= 0x050000
+#if QT_VERSION >= 0x050000 && QT_VERSION < 0x060000
 	QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 #endif
 
@@ -2567,6 +2571,7 @@ void GuiApplication::createView(QString const & geometry_arg, bool autoShow,
 		int x, y;
 		int w, h;
 		QChar sx, sy;
+#if QT_VERSION < 0x060000
 		QRegExp re( "[=]*(?:([0-9]+)[xX]([0-9]+)){0,1}[ ]*(?:([+-][0-9]*)){0,1}(?:([+-][0-9]*)){0,1}" );
 		re.indexIn(geometry_arg);
 		w = re.cap(1).toInt();
@@ -2575,6 +2580,16 @@ void GuiApplication::createView(QString const & geometry_arg, bool autoShow,
 		y = re.cap(4).toInt();
 		sx = re.cap(3).isEmpty() ? '+' : re.cap(3).at(0);
 		sy = re.cap(4).isEmpty() ? '+' : re.cap(4).at(0);
+#else
+		QRegularExpression re( "[=]*(?:([0-9]+)[xX]([0-9]+)){0,1}[ ]*(?:([+-][0-9]*)){0,1}(?:([+-][0-9]*)){0,1}" );
+		QRegularExpressionMatch match = re.match(geometry_arg);
+		w = match.captured(1).toInt();
+		h = match.captured(2).toInt();
+		x = match.captured(3).toInt();
+		y = match.captured(4).toInt();
+		sx = match.captured(3).isEmpty() ? '+' : match.captured(3).at(0);
+		sy = match.captured(4).isEmpty() ? '+' : match.captured(4).at(0);
+#endif
 		// Set initial geometry such that we can get the frame size.
 		view->setGeometry(x, y, w, h);
 		int framewidth = view->geometry().x() - view->x();
@@ -2582,7 +2597,11 @@ void GuiApplication::createView(QString const & geometry_arg, bool autoShow,
 		// Negative displacements must be interpreted as distances
 		// from the right or bottom screen borders.
 		if (sx == '-' || sy == '-') {
+#if QT_VERSION < 0x060000
 			QRect rec = QApplication::desktop()->screenGeometry();
+#else
+			QRect rec = QGuiApplication::primaryScreen()->geometry();
+#endif
 			if (sx == '-')
 				x += rec.width() - w - framewidth;
 			if (sy == '-')

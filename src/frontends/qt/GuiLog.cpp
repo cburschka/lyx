@@ -41,12 +41,21 @@ namespace frontend {
 // Regular expressions needed at several places
 // FIXME: These regexes are incomplete. It would be good if we could collect those used in LaTeX::scanLogFile
 //        and LaTeX::scanBlgFile and re-use them here!(spitz, 2013-05-27)
+#if QT_VERSION < 0x060000
 // Information
 QRegExp exprInfo("^(Document Class:|LaTeX Font Info:|File:|Package:|Language:|.*> INFO - |\\(|\\\\).*$");
 // Warnings
 QRegExp exprWarning("^(## Warning|LaTeX Warning|LaTeX Font Warning|Package [\\w\\.]+ Warning|Class \\w+ Warning|Warning--|Underfull|Overfull|.*> WARN - ).*$");
 // Errors
 QRegExp exprError("^(ERROR: |!|.*---line [0-9]+ of file|.*> FATAL - |.*> ERROR - |Missing character: There is no ).*$");
+#else
+// Information
+QRegularExpression exprInfo("^(Document Class:|LaTeX Font Info:|File:|Package:|Language:|.*> INFO - |\\(|\\\\).*$");
+// Warnings
+QRegularExpression exprWarning("^(## Warning|LaTeX Warning|LaTeX Font Warning|Package [\\w\\.]+ Warning|Class \\w+ Warning|Warning--|Underfull|Overfull|.*> WARN - ).*$");
+// Errors
+QRegularExpression exprError("^(ERROR: |!|.*---line [0-9]+ of file|.*> FATAL - |.*> ERROR - |Missing character: There is no ).*$");
+#endif
 
 
 /////////////////////////////////////////////////////////////////////
@@ -82,6 +91,7 @@ LogHighlighter::LogHighlighter(QTextDocument * parent)
 
 void LogHighlighter::highlightBlock(QString const & text)
 {
+#if QT_VERSION < 0x060000
 	// Info
 	int index = exprInfo.indexIn(text);
 	while (index >= 0) {
@@ -103,6 +113,35 @@ void LogHighlighter::highlightBlock(QString const & text)
 		setFormat(index, length, errorFormat);
 		index = exprError.indexIn(text, index + length);
 	}
+#else
+	// Info
+	QRegularExpressionMatch match = exprInfo.match(text);
+	int index = match.capturedStart(1);
+	while (index >= 0) {
+		int length = match.capturedEnd(1) - index;
+		setFormat(index, length, infoFormat);
+		match = exprInfo.match(text, index + length);
+		index = match.capturedStart(1);
+	}
+	// LaTeX Warning:
+	match = exprWarning.match(text);
+	index = match.capturedStart(1);
+	while (index >= 0) {
+		int length = match.capturedEnd(1) - index;
+		setFormat(index, length, warningFormat);
+		match = exprWarning.match(text, index + length);
+		index = match.capturedStart(1);
+	}
+	// ! error
+	match = exprError.match(text);
+	index = match.capturedStart(1);
+	while (index >= 0) {
+		int length = match.capturedEnd(1) - index;
+		setFormat(index, length, errorFormat);
+		match = exprError.match(text, index + length);
+		index = match.capturedStart(1);
+	}
+#endif
 }
 
 
@@ -195,7 +234,11 @@ void GuiLog::on_openDirPB_clicked()
 }
 
 
+#if QT_VERSION < 0x060000
 void GuiLog::goTo(QRegExp const & exp) const
+#else
+void GuiLog::goTo(QRegularExpression const & exp) const
+#endif
 {
 	QTextCursor const newc =
 		logTB->document()->find(exp, logTB->textCursor());
@@ -203,7 +246,11 @@ void GuiLog::goTo(QRegExp const & exp) const
 }
 
 
+#if QT_VERSION < 0x060000
 bool GuiLog::contains(QRegExp const & exp) const
+#else
+bool GuiLog::contains(QRegularExpression const & exp) const
+#endif
 {
 	return !logTB->document()->find(exp, logTB->textCursor()).isNull();
 }

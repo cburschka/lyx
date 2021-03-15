@@ -59,7 +59,9 @@ static QString credits()
 			out << qt_("Please install correctly to estimate the great\namount of work other people have done for the LyX project.");
 		} else {
 			QTextStream ts(&file);
+#if QT_VERSION < 0x060000
 			ts.setCodec("UTF-8");
+#endif
 			QString line;
 			do {
 				line = ts.readLine();
@@ -101,7 +103,9 @@ static QString release_notes()
 			out << qt_("Please install correctly to see what has changed\nfor this version of LyX.");
 		} else {
 			QTextStream ts(&file);
+#if QT_VERSION < 0x060000
 			ts.setCodec("UTF-8");
+#endif
 			QString line;
 			bool incomment = false;
 			bool inlist = false;
@@ -123,8 +127,13 @@ static QString release_notes()
 					continue;
 
 				// detect links to the tracker
+#if QT_VERSION < 0x060000
 				line.replace(QRegExp("(bug )(\\#)(\\d+)*"),
 					     "<a href=\"http://www.lyx.org/trac/ticket/\\3\">\\1\\3</a>");
+#else
+				line.replace(QRegularExpression("(bug )(\\#)(\\d+)*"),
+					     "<a href=\"http://www.lyx.org/trac/ticket/\\3\">\\1\\3</a>");
+#endif
 
 				// headings
 				if (line.startsWith("!!!")) {

@@ -66,10 +66,17 @@ private:
 	docstring title() const;
 	/// put the log file into the ostream
 	void getContents(std::ostream & ss) const;
+#if QT_VERSION < 0x060000
 	/// go to the next occurrence of the RegExp
 	void goTo(QRegExp const & exp) const;
 	/// does the document after cursor position contain the RegExp?
 	bool contains(QRegExp const & exp) const;
+#else
+	/// go to the next occurrence of the RegExp
+	void goTo(QRegularExpression const & exp) const;
+	/// does the document after cursor position contain the RegExp?
+	bool contains(QRegularExpression const & exp) const;
+#endif
 
 private:
 	/// Recognized log file-types

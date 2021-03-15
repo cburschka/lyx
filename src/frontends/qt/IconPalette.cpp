@@ -19,7 +19,9 @@
 #include <QToolTip>
 #include <QToolBar>
 #include <QApplication>
+#if QT_VERSION < 0x060000
 #include <QDesktopWidget>
+#endif
 #include <QPainter>
 #include <QStyle>
 #include <QStyleOptionFrame>
@@ -76,7 +78,9 @@ void TearOff::paintEvent(QPaintEvent * /*event*/)
 	menuOpt.checkType = QStyleOptionMenuItem::NotCheckable;
 	menuOpt.menuRect = rect();
 	menuOpt.maxIconWidth = 0;
+#if QT_VERSION < 0x060000
 	menuOpt.tabWidth = 0;
+#endif
 	menuOpt.menuItemType = QStyleOptionMenuItem::TearOff;
 	menuOpt.rect.setRect(fw, fw, width() - (fw * 2),
 		style()->pixelMetric(QStyle::PM_MenuTearoffHeight, 0, this));
@@ -92,12 +96,20 @@ IconPalette::IconPalette(QWidget * parent)
 	: QWidget(parent, Qt::Popup), tornoff_(false)
 {
 	QVBoxLayout * v = new QVBoxLayout(this);
+#if QT_VERSION < 0x060000
 	v->setMargin(0);
+#else
+	v->setContentsMargins(0, 0, 0, 0);
+#endif
 	v->setSpacing(0);
 	layout_ = new QGridLayout;
 	layout_->setSpacing(0);
 	const int fw = style()->pixelMetric(QStyle::PM_MenuPanelWidth, 0, this);
+#if QT_VERSION < 0x060000
 	layout_->setMargin(fw);
+#else
+	layout_->setContentsMargins(0, 0, 0, 0);
+#endif
 	tearoffwidget_ = new TearOff(this);
 	connect(tearoffwidget_, SIGNAL(tearOff()), this, SLOT(tearOff()));
 	v->addWidget(tearoffwidget_);
@@ -166,7 +178,11 @@ void IconPalette::showEvent(QShowEvent * /*event*/)
 		voffset -= parheight;
 	}
 
+#if QT_VERSION < 0x060000
 	QRect const screen = qApp->desktop()->availableGeometry(this);
+#else
+	QRect const screen = qApp->primaryScreen()->availableGeometry();
+#endif
 	QPoint const gpos = parentWidget()->mapToGlobal(
 		parentWidget()->geometry().bottomLeft());
 

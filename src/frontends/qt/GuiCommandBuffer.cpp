@@ -123,9 +123,17 @@ GuiCommandBuffer::GuiCommandBuffer(GuiView * view)
 	layout->addWidget(upPB, 0);
 	layout->addWidget(downPB, 0);
 	layout->addWidget(edit_, 10);
+#if QT_VERSION < 0x060000
 	layout->setMargin(0);
+#else
+	layout->setContentsMargins(0, 0, 0, 0);
+#endif
 	top->addLayout(layout);
+#if QT_VERSION < 0x060000
 	top->setMargin(0);
+#else
+	top->setContentsMargins(0, 0, 0, 0);
+#endif
 	setFocusProxy(edit_);
 
 	LastCommandsSection::LastCommands last_commands

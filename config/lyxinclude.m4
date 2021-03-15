@@ -63,7 +63,16 @@ AC_MSG_RESULT([$withval])
 ])
 
 
-dnl Check whether to configure for Qt4 or Qt5. Default is Qt5.
+dnl Check whether to configure for Qt4, Qt5, or Qt6. Default is Qt5.
+dnl
+AC_DEFUN([LYX_CHECK_QT6],[
+AC_MSG_CHECKING([whether Qt6 is requested])
+AC_ARG_ENABLE([qt6],
+  [AS_HELP_STRING([--enable-qt6],[use Qt6 for building])],
+  USE_QT6=$enableval, USE_QT6=no)
+AC_MSG_RESULT([$USE_QT6])
+AC_SUBST([USE_QT6])
+])
 dnl
 AC_DEFUN([LYX_CHECK_QT5],[
 AC_MSG_CHECKING([whether Qt5 is disabled])
@@ -372,7 +381,7 @@ if test x$GXX = xyes; then
     AM_CXXFLAGS="$AM_CXXFLAGS -fno-omit-frame-pointer"
   fi
 
-  if test x$USE_QT5 = xyes ; then
+  if test x$USE_QT5 = xyes -o x$USE_QT6 = xyes; then
       AS_CASE([$host], [*mingw*|*cygwin*], [], [AM_CXXFLAGS="-fPIC $AM_CXXFLAGS"])
   fi
   dnl Warnings are for preprocessor too

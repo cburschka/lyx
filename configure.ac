@@ -13,7 +13,10 @@ AC_CONFIG_AUX_DIR(config)
 # First check the version
 LYX_CHECK_VERSION
 LYX_VERSION_SUFFIX
+LYX_CHECK_QT6
+if test x$USE_QT6 = xno ; then
 LYX_CHECK_QT5
+fi
 # Check how the files should be packaged
 AC_CANONICAL_TARGET
 LYX_USE_PACKAGING

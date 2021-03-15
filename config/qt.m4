@@ -26,7 +26,10 @@ AC_DEFUN([QT_CHECK_COMPILE],
 		CXXFLAGS="$CXXFLAGS $QT_INCLUDES $QT_LDFLAGS"
 		qt_corelibs="-lQtCore -lQtCore4"
 		qt_guilibs="'-lQtCore -lQtGui' '-lQtCore4 -lQtGui4'"
-		if test $USE_QT5 = "yes" ; then
+		if test $USE_QT6 = "yes" ; then
+		    qt_corelibs="-lQt6Core -lQt6Core5Compat"
+		    qt_guilibs="-lQt6Core -lQt6Core5Compat -lQt6Concurrent -lQt6Gui -lQt6Svg -lQt6Widgets"
+		elif test $USE_QT5 = "yes" ; then
 		    qt_corelibs="-lQt5Core"
 		    qt_guilibs="-lQt5Core -lQt5Concurrent -lQt5Gui -lQt5Svg -lQt5Widgets"
 		fi
@@ -52,7 +55,9 @@ AC_DEFUN([QT_CHECK_COMPILE],
 	])
 
 	if test -z "$qt_cv_libname"; then
-		if test x$USE_QT5 = xyes ; then
+		if test x$USE_QT6 = xyes ; then
+			AC_MSG_RESULT([failed, retrying with Qt5])
+		elif test x$USE_QT5 = xyes ; then
 			AC_MSG_RESULT([failed, retrying with Qt4])
 		else
 			AC_MSG_RESULT([failed])
@@ -68,7 +73,9 @@ AC_DEFUN([QT_FIND_TOOL],
 [
 	$1=
 	qt_ext=qt4
-	if test "x$USE_QT5" != "xno" ; then
+	if test "x$USE_QT6" != "xno" ; then
+		qt_ext=qt6
+	elif test "x$USE_QT5" != "xno" ; then
 		qt_ext=qt5
 	fi
 
@@ -161,17 +168,41 @@ AC_DEFUN([QT_DO_IT_ALL],
 
 	dnl Check if it possible to do a pkg-config
 	PKG_PROG_PKG_CONFIG
-	if test -n "$PKG_CONFIG" ; then
-		QT_DO_PKG_CONFIG
-	fi
-	if test "$pkg_failed" != "no" ; then
-		QT_DO_MANUAL_CONFIG
+	dnl Not possible with Qt6 (QTBUG-86080)
+	if test x$USE_QT6 = xno ; then
+	    if test -n "$PKG_CONFIG" ; then
+		    QT_DO_PKG_CONFIG
+	    fi
+	    if test "$pkg_failed" != "no" ; then
+		    QT_DO_MANUAL_CONFIG
+	    fi
+	else
+	    QT6_QMAKE_CONFIG
+	    if test -z "$QT_LIB"; then
+		    QT_DO_MANUAL_CONFIG
+	    fi
 	fi
 
 	if test -z "$QT_LIB"; then
-	  dnl Try again with Qt4 if configuring for Qt5 fails
-	  if test x$USE_QT5 = xyes ; then
+	  dnl Try again with Qt5 and then Qt4 if configuring for Qt6/5 fails
+	  if test x$USE_QT6 = xyes ; then
+		USE_QT6=no
+		USE_QT5=yes
+		AC_SUBST([USE_QT6])
+		AC_SUBST([USE_QT5])
+		if test -n "$PKG_CONFIG" ; then
+		  QT_DO_PKG_CONFIG
+		fi
+		if test "$pkg_failed" != "no" ; then
+		  QT_DO_MANUAL_CONFIG
+		fi
+		if test -z "$QT_LIB"; then
+		  AC_MSG_ERROR([cannot find qt libraries.])
+		fi
+	  elif test x$USE_QT5 = xyes ; then
+		USE_QT6=no
 		USE_QT5=no
+		AC_SUBST([USE_QT6])
 		AC_SUBST([USE_QT5])
 		if test -n "$PKG_CONFIG" ; then
 		  QT_DO_PKG_CONFIG
@@ -197,8 +228,21 @@ AC_DEFUN([QT_DO_IT_ALL],
 	AC_CHECK_HEADER(QtGui/qtgui-config.h,
 	  [lyx_qt5_config=QtGui/qtgui-config.h],
 	  [lyx_qt5_config=qconfig.h],[-])
+	AC_CHECK_HEADER(QtGui/private/qtgui-config_p.h,
+	  [lyx_qt6_config=QtGui/private/qtgui-config_p.h],
+	  [lyx_qt6_config=qconfig.h],[-])
 	AC_MSG_CHECKING([whether Qt uses the X Window system])
-	if test x$USE_QT5 = xyes ; then
+	if test x$USE_QT6 = xyes ; then
+	  dnl FIXME: Check whether defining QPA_XCB makes sense with Qt6
+	  AC_PREPROC_IFELSE([AC_LANG_SOURCE([
+	    [#include <$lyx_qt6_config>]
+	    [#if !defined(QT_FEATURE_xcb) || QT_FEATURE_xcb < 0]
+	    [#error Fail]
+	    [#endif]])],
+	    [AC_MSG_RESULT(yes)
+	     AC_DEFINE(QPA_XCB, 1, [Define if Qt uses the X Window System])],
+	    [AC_MSG_RESULT(no)])
+	elif test x$USE_QT5 = xyes ; then
 	  AC_EGREP_CPP(xcb,
 	    [#include <$lyx_qt5_config>
 	    QT_QPA_DEFAULT_PLATFORM_NAME],
@@ -349,5 +393,77 @@ AC_DEFUN([QT_DO_MANUAL_CONFIG],
 
 	if test -n "$qt_cv_libname"; then
 		QT_GET_VERSION
+	fi
+])
+
+AC_DEFUN([QT6_QMAKE_CONFIG],
+[
+	AC_MSG_CHECKING([for Qt6])
+	dnl Use first qmake in PATH
+	ver=`qmake -v | grep -o "Qt version ."`
+	if test "$ver" = "Qt version 6"; then
+	    dnl Use a .pro file for getting qmake's variables
+	    lyx_test_qt_dir=`mktemp -d`
+	    lyx_test_qt_pro="$lyx_test_qt_dir/test.pro"
+	    lyx_test_qt_mak="$lyx_test_qt_dir/Makefile"
+	    cat > $lyx_test_qt_pro << EOF1
+qtHaveModule(core):		QT += core
+qtHaveModule(core5compat):	QT += core5compat
+percent.target = %
+percent.commands = @echo -n "\$(\$(@))\ "
+QMAKE_EXTRA_TARGETS += percent
+EOF1
+	    qmake $lyx_test_qt_pro -o $lyx_test_qt_mak 1>/dev/null 2>&1
+	    QT_CORE_INCLUDES=`cd $lyx_test_qt_dir; make -s -f $lyx_test_qt_mak INCPATH | sed 's/-I\. //g'`
+	    qt_corelibs=`cd $lyx_test_qt_dir; make -s -f $lyx_test_qt_mak LIBS`
+	    QT_CORE_LDFLAGS=`echo $qt_corelibs | tr ' ' '\n' | grep -e "^-L" | tr '\n' ' '`
+	    if test -z "$QT_CORE_LDFLAGS"; then
+		QT_CORE_LDFLAGS="-L`qmake -query QT_INSTALL_LIBS`"
+		QT_CORE_LIB="$qt_corelibs"
+	    else
+		QT_CORE_LIB=`echo $qt_corelibs | tr ' ' '\n' | grep -e "^-l" | tr '\n' ' '`
+	    fi
+	    if test -z "$QT_CORE_LIB"; then
+		AC_MSG_RESULT(no)
+	    else
+		AC_SUBST(QT_CORE_INCLUDES)
+		AC_SUBST(QT_CORE_LDFLAGS)
+		AC_SUBST(QT_CORE_LIB)
+		cat > $lyx_test_qt_pro << EOF2
+qtHaveModule(core):		QT += core
+qtHaveModule(core5compat):	QT += core5compat
+qtHaveModule(concurrent):	QT += concurrent
+qtHaveModule(gui):		QT += gui
+qtHaveModule(svg):		QT += svg
+qtHaveModule(widgets):		QT += widgets
+percent.target = %
+percent.commands = @echo -n "\$(\$(@))\ "
+QMAKE_EXTRA_TARGETS += percent
+EOF2
+		qmake $lyx_test_qt_pro -o $lyx_test_qt_mak 1>/dev/null 2>&1
+		QT_INCLUDES=`cd $lyx_test_qt_dir; make -s -f $lyx_test_qt_mak INCPATH | sed 's/-I\. //g'`
+		qt_guilibs=`cd $lyx_test_qt_dir; make -s -f $lyx_test_qt_mak LIBS`
+		QT_LDFLAGS=`echo $qt_guilibs | tr ' ' '\n' | grep -e "^-L" | tr '\n' ' '`
+		if test -z "$QT_LDFLAGS"; then
+		    QT_LDFLAGS="-L`qmake -query QT_INSTALL_LIBS`"
+		    QT_LIB="$qt_guilibs"
+		else
+		    QT_LIB=`echo $qt_guilibs | tr ' ' '\n' | grep -e "^-l" | tr '\n' ' '`
+		fi
+		QTLIB_VERSION=`qmake -v | grep "Qt version" | sed -e 's/.*\([[0-9]]\.[[0-9]]*\.[[0-9]]\).*/\1/'`
+		if test -z "$QT_LIB"; then
+		    AC_MSG_RESULT(no)
+		else
+		    AC_MSG_RESULT(yes)
+		    AC_SUBST(QT_INCLUDES)
+		    AC_SUBST(QT_LDFLAGS)
+		    AC_SUBST(QT_LIB)
+		    AC_SUBST(QTLIB_VERSION)
+		fi
+	    fi
+	    rm $lyx_test_qt_pro $lyx_test_qt_mak $lyx_test_qt_dir/.qmake.stash
+	    rmdir $lyx_test_qt_dir
+	else
+	    AC_MSG_RESULT(no)
 	fi
 ])

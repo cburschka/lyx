@@ -176,7 +176,11 @@ GuiTabular::GuiTabular(QWidget * parent)
 	connect(tabularWidthED, SIGNAL(textEdited(const QString &)),
 		this, SLOT(checkEnabled()));
 
+#if QT_VERSION < 0x060000
 	decimalPointED->setValidator(new QRegExpValidator(QRegExp("\\S"), this));
+#else
+	decimalPointED->setValidator(new QRegularExpressionValidator(QRegularExpression("\\S"), this));
+#endif
 	decimalPointED->setMaxLength(1);
 
 	// initialize the length validator

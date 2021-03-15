@@ -43,6 +43,7 @@ LaTeXHighlighter::LaTeXHighlighter(QTextDocument * parent, bool at_letter)
 
 void LaTeXHighlighter::highlightBlock(QString const & text)
 {
+#if QT_VERSION < 0x060000
 	// $ $
 	static const QRegExp exprMath("\\$[^\\$]*\\$");
 	int index = exprMath.indexIn(text);
@@ -127,6 +128,102 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 		setFormat(index, length, warningFormat);
 		index = exprWarning.indexIn(text, index + length);
 	}
+#else
+	// $ $
+	static const QRegularExpression exprMath("\\$[^\\$]*\\$");
+	QRegularExpressionMatch match = exprMath.match(text);
+	int index = match.capturedStart(1);
+	while (index >= 0) {
+		int length = match.capturedEnd(1) - index;
+		setFormat(index, length, mathFormat);
+		match = exprMath.match(text, index + length);
+		int index = match.capturedStart(1);
+	}
+	// [ ]
+	static const QRegularExpression exprStartDispMath("(\\\\\\[|"
+		"\\\\begin\\{equation\\**\\}|"
+		"\\\\begin\\{eqnarray\\**\\}|"
+		"\\\\begin\\{align(ed|at)*\\**\\}|"
+		"\\\\begin\\{flalign\\**\\}|"
+		"\\\\begin\\{gather\\**\\}|"
+		"\\\\begin\\{multline\\**\\}|"
+		"\\\\begin\\{array\\**\\}|"
+		"\\\\begin\\{cases\\**\\}"
+		")");
+	static const QRegularExpression exprEndDispMath("(\\\\\\]|"
+		"\\\\end\\{equation\\**\\}|"
+		"\\\\end\\{eqnarray\\**\\}|"
+		"\\\\end\\{align(ed|at)*\\**\\}|"
+		"\\\\end\\{flalign\\**\\}|"
+		"\\\\end\\{gather\\**\\}|"
+		"\\\\end\\{multline\\**\\}|"
+		"\\\\end\\{array\\**\\}|"
+		"\\\\end\\{cases\\**\\}"
+		")");
+	int startIndex = 0;
+	// if previous block was in 'disp math'
+	// start search from 0 (for end disp math)
+	// otherwise, start search from 'begin disp math'
+	if (previousBlockState() != 1) {
+		match = exprStartDispMath.match(text);
+		startIndex = match.capturedStart(1);
+	}
+	while (startIndex >= 0) {
+		match = exprEndDispMath.match(text, startIndex);
+		int endIndex = match.capturedStart(1);
+		int length;
+		if (endIndex == -1) {
+			setCurrentBlockState(1);
+			length = text.length() - startIndex;
+		} else {
+			length = match.capturedEnd(1) - startIndex;
+		}
+		setFormat(startIndex, length, mathFormat);
+		match = exprStartDispMath.match(text, startIndex + length);
+		startIndex = match.capturedStart(1);
+	}
+	// \whatever
+	static const QRegularExpression exprKeywordAtOther("\\\\[A-Za-z]+");
+	// \wh@tever
+	static const QRegularExpression exprKeywordAtLetter("\\\\[A-Za-z@]+");
+	QRegularExpression const & exprKeyword = at_letter_
+			? exprKeywordAtLetter : exprKeywordAtOther;
+	match = exprKeyword.match(text);
+	index = match.capturedStart(1);
+	while (index >= 0) {
+		int length = match.capturedEnd(1) - index;
+		setFormat(index, length, keywordFormat);
+		match = exprKeyword.match(text, index + length);
+		index = match.capturedStart(1);
+	}
+	// %comment
+	// Treat a line as a comment starting at a percent sign
+	// * that is the first character in a line
+	// * that is preceded by
+	// ** an even number of backslashes
+	// ** any character other than a backslash
+	QRegularExpression exprComment("(?:^|[^\\\\])(?:\\\\\\\\)*(%).*$");
+	match = exprComment.match(text);
+	index = match.capturedStart(1);
+	while (index >= 0) {
+		int const length = match.capturedEnd(1) - index
+				 - (index - match.capturedStart(0));
+		setFormat(index, length, commentFormat);
+		match = exprComment.match(text, index + length);
+		index = match.capturedStart(1);
+	}
+	// <LyX Warning: ...>
+	QString lyxwarn = qt_("LyX Warning: ");
+	QRegularExpression exprWarning("<" + lyxwarn + "[^<]*>");
+	match = exprWarning.match(text);
+	index = match.capturedStart(1);
+	while (index >= 0) {
+		int length = match.capturedEnd(1) - index;
+		setFormat(index, length, warningFormat);
+		match = exprWarning.match(text, index + length);
+		index = match.capturedStart(1);
+	}
+#endif
 }
 
 } // namespace frontend

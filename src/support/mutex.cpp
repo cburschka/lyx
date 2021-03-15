@@ -20,12 +20,20 @@ namespace lyx {
 
 struct Mutex::Private
 {
+#if QT_VERSION < 0x060000
 	// QMutex::Recursive: less risks for dead-locks
 	Private() : qmutex_(QMutex::Recursive)
 	{
 	}
 
 	QMutex qmutex_;
+#else
+	Private() : qmutex_()
+	{
+	}
+
+	QRecursiveMutex qmutex_;
+#endif
 };
 
 
