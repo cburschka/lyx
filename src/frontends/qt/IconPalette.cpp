@@ -27,6 +27,7 @@
 #include <QStyleOptionFrame>
 #include <QMouseEvent>
 #include <QVBoxLayout>
+#include <QWindow>
 
 namespace lyx {
 namespace frontend {
@@ -181,7 +182,7 @@ void IconPalette::showEvent(QShowEvent * /*event*/)
 #if QT_VERSION < 0x060000
 	QRect const screen = qApp->desktop()->availableGeometry(this);
 #else
-	QRect const screen = qApp->primaryScreen()->availableGeometry();
+	QRect const screen = window()->windowHandle()->screen()->availableGeometry();
 #endif
 	QPoint const gpos = parentWidget()->mapToGlobal(
 		parentWidget()->geometry().bottomLeft());
