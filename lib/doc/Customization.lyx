@@ -10662,6 +10662,8 @@ status collapsed
 
 \change_inserted -712698321 1612018457
 ModifyInsetLayout
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -10674,6 +10676,8 @@ status collapsed
 
 \change_inserted -712698321 1612018466
 <type>
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -10692,6 +10696,8 @@ status collapsed
 
 \change_inserted -712698321 1612018452
 End
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -11293,6 +11299,8 @@ status collapsed
 
 \change_inserted -712698321 1612018506
 ProvideInsetLayout
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -11305,6 +11313,8 @@ status collapsed
 
 \change_inserted -712698321 1612018509
 <type>
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -11323,6 +11333,8 @@ status collapsed
 
 \change_inserted -712698321 1612018500
 End
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -12732,7 +12744,39 @@ int
 ] Defines argument number <int> of a command\SpecialChar breakableslash
 environment associated with
  the current style.
- This is useful for things like section headings, and only makes sense with
+
+\change_inserted -584632292 1615846868
+ The definition must end with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846867
+EndArgument
+\end_layout
+
+\end_inset
+
+.
+
+\change_unchanged
+ 
+\change_inserted -584632292 1615846880
+See 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "subsec:Arguments"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for more information.
+ 
+\change_deleted -584632292 1615846694
+This is useful for things like section headings, and only makes sense with
  \SpecialChar LaTeX
 .
  Every (optional or required) argument of a command or environment – except
@@ -12756,11 +12800,15 @@ EndArgument
 \begin_deeper
 \begin_layout Quote
 
+\change_deleted -584632292 1615846694
+
 \family typewriter
 Argument 1
 \end_layout
 
 \begin_layout Quote
+
+\change_deleted -584632292 1615846694
 
 \family typewriter
 ...
@@ -12768,11 +12816,15 @@ Argument 1
 
 \begin_layout Quote
 
+\change_deleted -584632292 1615846694
+
 \family typewriter
 EndArgument
 \end_layout
 
 \begin_layout Quote
+
+\change_deleted -584632292 1615846694
 
 \family typewriter
 Argument 2
@@ -12780,17 +12832,23 @@ Argument 2
 
 \begin_layout Quote
 
+\change_deleted -584632292 1615846694
+
 \family typewriter
 ...
 \end_layout
 
 \begin_layout Quote
 
+\change_deleted -584632292 1615846694
+
 \family typewriter
 EndArgument
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -584632292 1615846694
 Inside the 
 \begin_inset Flex Code
 status collapsed
@@ -12805,6 +12863,8 @@ Argument
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -584632292 1615846694
 \begin_inset Flex Code
 status collapsed
 
@@ -12875,6 +12935,8 @@ Short Title|S
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -584632292 1615846694
 \begin_inset Flex Code
 status collapsed
 
@@ -12946,6 +13008,8 @@ LabelString
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -584632292 1615846694
 \begin_inset Flex Code
 status collapsed
 
@@ -12970,6 +13034,8 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -584632292 1615846694
 \begin_inset Flex Code
 status collapsed
 
@@ -13029,13 +13095,11 @@ status collapsed
 \end_inset
 
 
-\change_inserted -712698321 1555579782
-
 \end_layout
 
 \begin_layout Itemize
 
-\change_inserted -712698321 1555579780
+\change_deleted -584632292 1615846694
 \begin_inset Flex Code
 status collapsed
 
@@ -13083,11 +13147,11 @@ status collapsed
 
 ) to be used for line breaks.
  The initial backslash must not be specified.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -584632292 1615846694
 \begin_inset Flex Code
 status collapsed
 
@@ -13152,6 +13216,8 @@ Argument 2
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -584632292 1615846694
 \begin_inset Flex Code
 status collapsed
 
@@ -13206,6 +13272,8 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -584632292 1615846694
 \begin_inset Flex Code
 status collapsed
 
@@ -13260,6 +13328,8 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -584632292 1615846694
 \begin_inset Flex Code
 status collapsed
 
@@ -13294,6 +13364,8 @@ if no argument inset has been inserted (note that also an empty argument
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -584632292 1615846694
 \begin_inset Flex Code
 status collapsed
 
@@ -13319,6 +13391,8 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -584632292 1615846694
 \begin_inset Flex Code
 status collapsed
 
@@ -13336,13 +13410,11 @@ reference "subsec:Font-description"
 \end_inset
 
 .
-\change_inserted -712698321 1559484228
-
 \end_layout
 
 \begin_layout Itemize
 
-\change_inserted -712698321 1559484228
+\change_deleted -584632292 1615846694
 \begin_inset Flex Code
 status collapsed
 
@@ -13398,11 +13470,11 @@ reference "subsec:Paragraph-Styles"
 \end_inset
 
 .
-\change_unchanged
-
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -584632292 1615846694
 \begin_inset Flex Code
 status collapsed
 
@@ -13423,6 +13495,8 @@ reference "subsec:Font-description"
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -584632292 1615846694
 \begin_inset Flex Code
 status collapsed
 
@@ -13450,6 +13524,8 @@ Classic
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -584632292 1615846694
 \begin_inset Flex Code
 status collapsed
 
@@ -13484,13 +13560,13 @@ status collapsed
 \change_deleted -712698321 1559484200
  Currently, only one argument per style\SpecialChar breakableslash
 layout can be automatically inserted.
-\change_unchanged
+\change_deleted -584632292 1615846694
 
 \end_layout
 
 \begin_layout Itemize
 
-\change_inserted -712698321 1559491402
+\change_deleted -584632292 1615846694
 \begin_inset Flex Code
 status collapsed
 
@@ -13550,6 +13626,8 @@ AutoInsert
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -584632292 1615846694
 \begin_inset Flex Code
 status collapsed
 
@@ -13584,6 +13662,8 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -584632292 1615846694
 \begin_inset Flex Code
 status collapsed
 
@@ -13625,6 +13705,8 @@ PassThru
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -584632292 1615846694
 \begin_inset Flex Code
 status collapsed
 
@@ -13662,6 +13744,8 @@ that should be output in raw form, meaning without special translations
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -584632292 1615846694
 \begin_inset Flex Code
 status collapsed
 
@@ -13703,6 +13787,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -584632292 1615846694
 By default, the text entered in the \SpecialChar LyX
  workarea in the respective layout is
  the last (mandatory) argument of a command if the 
@@ -13773,6 +13859,8 @@ Command
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -584632292 1615846694
 Arguments for list 
 \begin_inset Flex Code
 status collapsed
@@ -13826,13 +13914,11 @@ Argument item:1
 \end_inset
 
 ).
-\change_inserted -712698321 1534487781
-
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted -712698321 1534488561
+\change_deleted -584632292 1615846694
 Finally, there is a special argument type with the prefix 
 \begin_inset Flex Code
 status collapsed
@@ -20087,13 +20173,35 @@ EndArgument
 
 .
  See 
+\change_inserted -584632292 1615846847
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Arguments"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\change_deleted -584632292 1615846847
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Paragraph-Styles"
 
 \end_inset
 
- for details.
+
+\change_unchanged
+ for 
+\change_deleted -584632292 1615846902
+details
+\change_inserted -584632292 1615846906
+more information
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Description
@@ -21454,6 +21562,8 @@ custom
 \end_inset
 
 , 
+\change_deleted -584632292 1615846609
+
 \begin_inset Flex Code
 status collapsed
 
@@ -21463,7 +21573,9 @@ element
 
 \end_inset
 
- or 
+ 
+\change_unchanged
+or 
 \begin_inset Flex Code
 status collapsed
 
@@ -22661,6 +22773,1344 @@ status collapsed
 
 ] Allow spell-checking the contents of this inset.
  Default is true.
+\change_inserted -584632292 1615846659
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -584632292 1615846729
+Arguments
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Arguments"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -584632292 1615846807
+Both paragraph styles and inset layouts allow for 
+\emph on
+arguments
+\emph default
+ as well as the main content.
+ This is especially useful for things like section headings and only makes
+ sense with \SpecialChar LaTeX
+.
+ Each (optional or required) argument of a command or environment—except
+ for the required argument that is associated with the content—has a separate
+ definition, where the number specifies the order of the arguments.
+ The definition must end with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+EndArgument
+\end_layout
+
+\end_inset
+
+.
+ So a command with two optional arguments looks like:
+\end_layout
+
+\begin_layout Quote
+
+\change_inserted -584632292 1615846730
+
+\family typewriter
+Argument 1
+\end_layout
+
+\begin_layout Quote
+
+\change_inserted -584632292 1615846730
+
+\family typewriter
+...
+\end_layout
+
+\begin_layout Quote
+
+\change_inserted -584632292 1615846730
+
+\family typewriter
+EndArgument
+\end_layout
+
+\begin_layout Quote
+
+\change_inserted -584632292 1615846730
+
+\family typewriter
+Argument 2
+\end_layout
+
+\begin_layout Quote
+
+\change_inserted -584632292 1615846730
+
+\family typewriter
+...
+\end_layout
+
+\begin_layout Quote
+
+\change_inserted -584632292 1615846730
+
+\family typewriter
+EndArgument
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -584632292 1615846730
+Inside the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+Argument
+\end_layout
+
+\end_inset
+
+ definition, the following specifications are possible:
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -584632292 1615846730
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+LabelString
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+[string]
+\end_layout
+
+\end_inset
+
+ The string that will appear both in the menu (to insert this argument)
+ and on the argument inset button (unless you also specify a separate 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+MenuString
+\end_layout
+
+\end_inset
+
+).
+ For the menu, you can define an accelerator by appending the respective
+ character to the string, divided by 
+\begin_inset Quotes eld
+\end_inset
+
+|
+\begin_inset Quotes erd
+\end_inset
+
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+Short Title|S
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -584632292 1615846730
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+MenuString
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+[string]
+\end_layout
+
+\end_inset
+
+ A separate string for the menu.
+ You can define an accelerator by appending the respective character to
+ the string, divided by 
+\begin_inset Quotes eld
+\end_inset
+
+|
+\begin_inset Quotes erd
+\end_inset
+
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+Short Title|S
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+).
+ This specification is optional.
+ If it is not given the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+LabelString
+\end_layout
+
+\end_inset
+
+ will be used instead for the menu.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -584632292 1615846730
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+Tooltip
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+[string]
+\end_layout
+
+\end_inset
+
+ A longer explanatory text that appears in the tooltip when hovering over
+ the argument inset.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -584632292 1615846730
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+Mandatory
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+1
+\end_layout
+
+\end_inset
+
+] Declare if this is a mandatory (1) or an optional (0) argument.
+ Mandatory arguments will be output empty if not given, while optional arguments
+ will not be output at all.
+ By default, mandatory arguments are delimited by 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+{...}
+\end_layout
+
+\end_inset
+
+, while optional arguments are delimited by 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+[...]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -584632292 1615846730
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+NewlineCmd
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+[string]
+\end_layout
+
+\end_inset
+
+ Option to define a different command (from the default 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+) to be used for line breaks.
+ The initial backslash must not be specified.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -584632292 1615846730
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+Requires
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+[int=0]
+\end_layout
+
+\end_inset
+
+ defines another argument (by its number) which this argument requires to
+ be output if it is itself output.
+ E.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in \SpecialChar LaTeX
+ commands, optional arguments often require previous optional arguments
+ to be output (at least empty), as in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+
+\backslash
+command[][argument]{text}
+\end_layout
+
+\end_inset
+
+.
+ This can be achieved by the statement 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+Requires 1
+\end_layout
+
+\end_inset
+
+ within 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+Argument 2
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -584632292 1615846730
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+LeftDelim
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+[string]
+\end_layout
+
+\end_inset
+
+ defines a custom left delimiter (instead of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+{
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+[
+\end_layout
+
+\end_inset
+
+).
+ A line break in the output can be indicated by 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+<br/>
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -584632292 1615846730
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+RightDelim
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+[string]
+\end_layout
+
+\end_inset
+
+ defines a custom right delimiter (instead of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+}
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+]
+\end_layout
+
+\end_inset
+
+).
+ A line break in the output can be indicated by 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+<br/>
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -584632292 1615846730
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+DefaultArg
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+[string]
+\end_layout
+
+\end_inset
+
+ defines an argument that is inserted if and only if no user-specified arguments
+ were given, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space \space{}
+\end_inset
+
+if no argument inset has been inserted (note that also an empty argument
+ inset omits the DefaultArg).
+ Multiple arguments need to be separated by comma.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -584632292 1615846730
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+PresetArg
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+[string]
+\end_layout
+
+\end_inset
+
+ defines an argument that is inserted in any case (alone or in addition
+ to user-specified arguments).
+ Multiple arguments need to be separated by comma.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -584632292 1615846730
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+Font
+\end_layout
+
+\end_inset
+
+ The font used for the argument content, see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Font-description"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -584632292 1615846730
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+FreeSpacing
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+1
+\end_layout
+
+\end_inset
+
+] As with paragraph styles, see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Paragraph-Styles"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -584632292 1615846730
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+LabelFont
+\end_layout
+
+\end_inset
+
+ The font used for the label; see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Font-description"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -584632292 1615846730
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+Decoration
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+
+\emph on
+Classic
+\emph default
+, Minimalistic, Conglomerate
+\end_layout
+
+\end_inset
+
+] describes the rendering style used for the inset's frame and buttons.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -584632292 1615846730
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+AutoInsert
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+[int=0]
+\end_layout
+
+\end_inset
+
+ If this is set to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+1
+\end_layout
+
+\end_inset
+
+, this argument is automatically inserted when the respective style is selected.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -584632292 1615846730
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+InsertOnNewline
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+[int=0]
+\end_layout
+
+\end_inset
+
+ If this is set to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+1
+\end_layout
+
+\end_inset
+
+, this argument will be inserted on a new line with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+AutoInsert
+\end_layout
+
+\end_inset
+
+ (only available within Flex insets).
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -584632292 1615846730
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+InsertCotext
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+[int=0]
+\end_layout
+
+\end_inset
+
+ If this is set to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+1
+\end_layout
+
+\end_inset
+
+, this argument will be inserted with a copy of the co-text (either selected
+ text or the whole paragraph) as content.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -584632292 1615846730
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+PassThru
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+
+\emph on
+inherited
+\emph default
+, true, false
+\end_layout
+
+\end_inset
+
+] Whether the contents of this argument should be output in raw form, meaning
+ without special translations that \SpecialChar LaTeX
+ would require.
+ By default, the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+PassThru
+\end_layout
+
+\end_inset
+
+ status is inherited by the inset or paragraph layout the argument belongs
+ to, true and false change the status for the given argument only.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -584632292 1615846730
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+PassThruChars
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+string of characters
+\end_layout
+
+\end_inset
+
+]
+\family typewriter
+ 
+\family default
+Defines individual characters
+\begin_inset Newline linebreak
+\end_inset
+
+that should be output in raw form, meaning without special translations
+ that \SpecialChar LaTeX
+ would require.
+ Note that, contrary to PassThru, this needs to be explicitly defined for
+ arguments.
+ That is, arguments do not inherit PassThruChars from their parent inset
+ or layout.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -584632292 1615846730
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+IsTocCaption
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+1
+\end_layout
+
+\end_inset
+
+] If this is set to 1, the argument will output its content in the corresponding
+ item in the table of contents.
+ See AddToToc.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -584632292 1615846730
+By default, the text entered in the \SpecialChar LyX
+ workarea in the respective layout is
+ the last (mandatory) argument of a command if the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+LatexType
+\end_layout
+
+\end_inset
+
+ is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+Command
+\end_layout
+
+\end_inset
+
+.
+ However, arguments with the prefix 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+post:
+\end_layout
+
+\end_inset
+
+ are output after this workarea argument.
+ Note that post-argument numbering restarts at 1, so the first argument
+ following the workarea argument is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+post:1
+\end_layout
+
+\end_inset
+
+.
+ Post-arguments are ignored in any other 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+LatexType
+\end_layout
+
+\end_inset
+
+ than 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+Command
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -584632292 1615846730
+Arguments for list 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+s (as in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+
+\backslash
+item[foo]
+\end_layout
+
+\end_inset
+
+) have the prefix 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+item:
+\end_layout
+
+\end_inset
+
+ followed by the number (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+Argument item:1
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -584632292 1615846730
+Finally, there is a special argument type with the prefix 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+listpreamble:
+\end_layout
+
+\end_inset
+
+.
+ It is not really an argument, but uses the argument interface (thus, the
+ prefix is also followed by a number, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+Argument listpreamble:1
+\end_layout
+
+\end_inset
+
+).
+ As the name implies, it is targeted at lists such as 
+\family sans
+Itemize
+\family default
+, 
+\family sans
+Enumerate
+\family default
+, 
+\family sans
+Description
+\family default
+, or 
+\family sans
+Bibliography
+\family default
+.
+ Its content will be output at the list start, before the first 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1615846730
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+, on an own line (a place that is otherwise not accessible in \SpecialChar LyX
+).
+ This way, users can insert redefinitions (of lengths etc.) to individual
+ lists.
+ By default, these arguments do not have a delimiter.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
