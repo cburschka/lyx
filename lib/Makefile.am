@@ -2872,9 +2872,15 @@ dist_xtemplates_DATA = \
 dist_scripts_DATA += scripts/docbook2epub.py
 
 #2) xslt processor - Saxon 6.5.5
-dist_scripts_DATA += \
+SAXON_FILES = \
 	scripts/saxon6.LICENSE.txt \
 	scripts/saxon6.5.5.jar
+
+if SAXON_INSTALL
+dist_scripts_DATA += $(SAXON_FILES)
+else
+dist_noinst_DATA += $(SAXON_FILES)
+endif
 
 #3) xslt Stylesheets 1.79.2
 docbookdir = $(pkgdatadir)/docbook

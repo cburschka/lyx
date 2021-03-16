@@ -939,3 +939,16 @@ AC_DEFUN([LYX_SET_VERSION_INFO],
  AC_SUBST(LYX_USERDIR_VER,"$lyx_userdir_ver")
 ])
 
+AC_DEFUN([LYX_CHECK_WITH_SAXON],
+[
+	lyx_use_saxon=true
+	AC_ARG_WITH(saxon, AS_HELP_STRING([--without-saxon],[do not install saxon library (epub export)]))
+	test "$with_saxon" = "no" && lyx_use_saxon=false
+
+	if $lyx_use_saxon ; then
+		AC_MSG_RESULT(Set to installing internal saxon.)
+	fi
+
+	AM_CONDITIONAL(SAXON_INSTALL, $lyx_use_saxon)
+    ])
+

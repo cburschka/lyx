@@ -196,6 +196,8 @@ AC_FUNC_SELECT_ARGTYPES
 LYX_CHECK_SPELL_ENGINES
 LYX_USE_INCLUDED_MYTHES
 
+LYX_CHECK_WITH_SAXON
+
 lyx_client_subdir=true
 dnl LIBS already contains some X extra libs that may interfere.
 save_LIBS="$LIBS"
