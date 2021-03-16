@@ -27,7 +27,9 @@
 #include <QStyleOptionFrame>
 #include <QMouseEvent>
 #include <QVBoxLayout>
+#if QT_VERSION >= 0x060000
 #include <QWindow>
+#endif
 
 namespace lyx {
 namespace frontend {
