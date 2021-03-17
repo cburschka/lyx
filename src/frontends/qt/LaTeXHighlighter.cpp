@@ -132,12 +132,12 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 	// $ $
 	static const QRegularExpression exprMath("\\$[^\\$]*\\$");
 	QRegularExpressionMatch match = exprMath.match(text);
-	int index = match.capturedStart(1);
+	int index = match.capturedStart(0);
 	while (index >= 0) {
-		int length = match.capturedEnd(1) - index;
+		int length = match.capturedLength(0);
 		setFormat(index, length, mathFormat);
 		match = exprMath.match(text, index + length);
-		index = match.capturedStart(1);
+		index = match.capturedStart(0);
 	}
 	// [ ]
 	static const QRegularExpression exprStartDispMath("(\\\\\\[|"
@@ -166,21 +166,21 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 	// otherwise, start search from 'begin disp math'
 	if (previousBlockState() != 1) {
 		match = exprStartDispMath.match(text);
-		startIndex = match.capturedStart(1);
+		startIndex = match.capturedStart(0);
 	}
 	while (startIndex >= 0) {
 		match = exprEndDispMath.match(text, startIndex);
-		int endIndex = match.capturedStart(1);
+		int endIndex = match.capturedStart(0);
 		int length;
 		if (endIndex == -1) {
 			setCurrentBlockState(1);
 			length = text.length() - startIndex;
 		} else {
-			length = match.capturedEnd(1) - startIndex;
+			length = endIndex - startIndex + match.capturedLength(0);
 		}
 		setFormat(startIndex, length, mathFormat);
 		match = exprStartDispMath.match(text, startIndex + length);
-		startIndex = match.capturedStart(1);
+		startIndex = match.capturedStart(0);
 	}
 	// \whatever
 	static const QRegularExpression exprKeywordAtOther("\\\\[A-Za-z]+");
@@ -189,12 +189,12 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 	QRegularExpression const & exprKeyword = at_letter_
 			? exprKeywordAtLetter : exprKeywordAtOther;
 	match = exprKeyword.match(text);
-	index = match.capturedStart(1);
+	index = match.capturedStart(0);
 	while (index >= 0) {
-		int length = match.capturedEnd(1) - index;
+		int length = match.capturedLength(0);
 		setFormat(index, length, keywordFormat);
 		match = exprKeyword.match(text, index + length);
-		index = match.capturedStart(1);
+		index = match.capturedStart(0);
 	}
 	// %comment
 	// Treat a line as a comment starting at a percent sign
@@ -206,7 +206,7 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 	match = exprComment.match(text);
 	index = match.capturedStart(1);
 	while (index >= 0) {
-		int const length = match.capturedEnd(1) - index
+		int const length = match.capturedLength(0)
 				 - (index - match.capturedStart(0));
 		setFormat(index, length, commentFormat);
 		match = exprComment.match(text, index + length);
@@ -216,12 +216,12 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 	QString lyxwarn = qt_("LyX Warning: ");
 	QRegularExpression exprWarning("<" + lyxwarn + "[^<]*>");
 	match = exprWarning.match(text);
-	index = match.capturedStart(1);
+	index = match.capturedStart(0);
 	while (index >= 0) {
-		int length = match.capturedEnd(1) - index;
+		int length = match.capturedLength(0);
 		setFormat(index, length, warningFormat);
 		match = exprWarning.match(text, index + length);
-		index = match.capturedStart(1);
+		index = match.capturedStart(0);
 	}
 #endif
 }
