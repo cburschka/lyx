@@ -952,3 +952,16 @@ AC_DEFUN([LYX_CHECK_WITH_SAXON],
 	AM_CONDITIONAL(SAXON_INSTALL, $lyx_use_saxon)
     ])
 
+AC_DEFUN([LYX_CHECK_WITH_XSLT_SHEETS],
+[
+	lyx_use_xslt_stylesheets=true
+	AC_ARG_WITH(xslt-stylesheets, AS_HELP_STRING([--without-xslt-stylesheets],[do not install XSLT Stylesheets (epub export)]))
+	test "$with_xslt_stylesheets" = "no" && lyx_use_xslt_stylesheets=false
+
+	if $lyx_use_xslt_stylesheets ; then
+		AC_MSG_RESULT(Set to installing XSLT Stylesheets.)
+	fi
+
+	AM_CONDITIONAL(XSLT_SHEETS_INSTALL, $lyx_use_xslt_stylesheets)
+    ])
+

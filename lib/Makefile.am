@@ -2884,14 +2884,14 @@ endif
 
 #3) xslt Stylesheets 1.79.2
 docbookdir = $(pkgdatadir)/docbook
-dist_docbook_DATA = \
+docbook_FILES = \
 	docbook/COPYING \
 	docbook/source.txt \
 	docbook/VERSION \
 	docbook/VERSION.xsl
 
 docbookcommondir = $(pkgdatadir)/docbook/common
-dist_docbookcommon_DATA = \
+docbookcommon_FILES = \
 	docbook/common/addns.xsl \
 	docbook/common/af.xml \
 	docbook/common/am.xml \
@@ -2996,7 +2996,7 @@ dist_docbookcommon_DATA = \
 	docbook/common/zh.xml
 
 docbookepub3dir = $(pkgdatadir)/docbook/epub3
-dist_docbookepub3_DATA = \
+docbookepub3_FILES = \
 	docbook/epub3/build.xml \
 	docbook/epub3/chunkfast.xsl \
 	docbook/epub3/chunk.xsl \
@@ -3011,12 +3011,12 @@ dist_docbookepub3_DATA = \
 	docbook/epub3/titlepage.templates.xsl
 
 docbooklibdir = $(pkgdatadir)/docbook/lib
-dist_docbooklib_DATA = \
+docbooklib_FILES = \
 	docbook/lib/build.xml \
 	docbook/lib/lib.xsl
 
 docbookxhtml5dir = $(pkgdatadir)/docbook/xhtml5
-dist_docbookxhtml5_DATA = \
+docbookxhtml5_FILES = \
 	docbook/xhtml5/build.xml \
 	docbook/xhtml5/chunkfast.xsl \
 	docbook/xhtml5/chunk.xsl \
@@ -3033,7 +3033,7 @@ dist_docbookxhtml5_DATA = \
 	docbook/xhtml5/xhtml-profile-docbook.xsl
 
 docbookxhtmldir = $(pkgdatadir)/docbook/xhtml
-dist_docbookxhtml_DATA = \
+docbookxhtml_FILES = \
 	docbook/xhtml/admon.xsl \
 	docbook/xhtml/annotations.xsl \
 	docbook/xhtml/autoidx-kimber.xsl \
@@ -3098,6 +3098,22 @@ dist_docbookxhtml_DATA = \
 	docbook/xhtml/toc.xsl \
 	docbook/xhtml/verbatim.xsl \
 	docbook/xhtml/xref.xsl
+
+if XSLT_SHEETS_INSTALL
+dist_docbook_DATA = $(docbook_FILES)
+dist_docbookcommon_DATA = $(docbookcommon_FILES)
+dist_docbookepub3_DATA = $(docbookepub3_FILES)
+dist_docbooklib_DATA = $(docbooklib_FILES)
+dist_docbookxhtml5_DATA = $(docbookxhtml5_FILES)
+dist_docbookxhtml_DATA = $(docbookxhtml_FILES)
+else
+dist_noinst_DATA += $(docbook_FILES)
+dist_noinst_DATA += $(docbookcommon_FILES)
+dist_noinst_DATA += $(docbookepub3_FILES)
+dist_noinst_DATA += $(docbooklib_FILES)
+dist_noinst_DATA += $(docbookxhtml5_FILES)
+dist_noinst_DATA += $(docbookxhtml_FILES)
+endif
 
 
 if INSTALL_POSIX
