@@ -188,8 +188,12 @@
 !!! Dependencies to generate ePub files:
 
 * The DocBook XSLT 1.0 style sheets are a required dependency to generate
-  ePub files. All versions since 1.76.0 are supported. Version 1.79.2 is
-  bundled with LyX.
+  ePub files. All versions since 1.76.0 are supported.
+
+  Version 1.79.2 is bundled with LyX. If your system already provides xslt
+  style sheets you can use configure parameter --without-xslt-stylesheets to
+  avoid installing them.
+
 
 * XSLT processor is needed, two options were successfully tested
   a) xsltproc
@@ -199,7 +203,9 @@
      - Tested on Linux, OSX and Windows.
      - Java is a required dependency. Any JVM for Java 1.4 should be supported.
      - Only Saxon versions 6.5.4 and 6.5.5 are supported.
-     - Version 6.5.5 is bundled with LyX.
+     - Version 6.5.5 is bundled with LyX. If your system already provides Saxon
+       (or xsltproc) you can use configure parameter --without-saxon to avoid
+       installation of this library.
 
 
 !!Known issues in version 2.4.0
