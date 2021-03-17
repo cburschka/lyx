@@ -137,7 +137,7 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 		int length = match.capturedEnd(1) - index;
 		setFormat(index, length, mathFormat);
 		match = exprMath.match(text, index + length);
-		int index = match.capturedStart(1);
+		index = match.capturedStart(1);
 	}
 	// [ ]
 	static const QRegularExpression exprStartDispMath("(\\\\\\[|"
