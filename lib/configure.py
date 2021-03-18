@@ -1003,8 +1003,10 @@ def checkConverterEntries():
     checkProg('an Open Document (Pandoc) -> LaTeX converter', ['pandoc -s -f odt -o $$o -t latex $$i'],
         rc_entry = [ r'\converter odt3        latex      "%%"	""' ])
     #
-    checkProg('DocBook converter -> PDF (docbook)', ['pandoc -f docbook -t latex --latex-engine=lualatex --toc -o $$o $$i'],
-        rc_entry = [ r'\converter docbook5      pdf9      "%%"	""' ])
+    checkProg('DocBook converter -> PDF (docbook)',
+              ['pandoc -f docbook -t latex --pdf-engine=lualatex --toc -o $$o $$i',  # Since Pandoc 2.0
+               'pandoc -f docbook -t latex --latex-engine=lualatex --toc -o $$o $$i'],  # Up to Pandoc 1.19
+              rc_entry = [ r'\converter docbook5      pdf9      "%%"	""' ])
     #
     xpath, xslt_sheet = checkProg('XSLT stylesheets for ePub', ['chunk.xsl'], '', ['/usr/share/xml/docbook/stylesheet/docbook-xsl-ns/epub3'])
     if xslt_sheet == 'chunk.xsl':
