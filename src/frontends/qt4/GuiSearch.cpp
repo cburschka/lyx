@@ -62,6 +62,9 @@ GuiSearch::GuiSearch(GuiView & lv)
 	bc().addReadOnly(replacePB);
 	bc().addReadOnly(replaceallPB);
 
+	findCO->setCompleter(0);
+	replaceCO->setCompleter(0);
+
 	replacePB->setEnabled(false);
 	replaceallPB->setEnabled(false);
 }
