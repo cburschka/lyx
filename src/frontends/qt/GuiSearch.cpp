@@ -564,6 +564,33 @@ GuiSearch::GuiSearch(GuiView & parent, Qt::DockWidgetArea area, Qt::WindowFlags 
 	connect(widget_, SIGNAL(needSizeUpdate()), this, SLOT(updateSize()));
 }
 
+
+void GuiSearch::mousePressEvent(QMouseEvent *event)
+{
+    if (isFloating() && event->button() == Qt::LeftButton) {
+        dragPosition = event->globalPos() - frameGeometry().topLeft();
+        event->accept();
+    }
+}
+
+
+void GuiSearch::mouseMoveEvent(QMouseEvent *event)
+{
+    if (isFloating() && event->buttons() & Qt::LeftButton) {
+        move(event->globalPos() - dragPosition);
+        event->accept();
+    }
+}
+
+
+void GuiSearch::mouseDoubleClickEvent(QMouseEvent *event)
+{
+    if (event->button() == Qt::LeftButton) {
+        setFloating(!isFloating());
+    }
+}
+
+
 void GuiSearch::onBufferViewChanged()
 {
 	widget_->setEnabled(static_cast<bool>(bufferview()));
