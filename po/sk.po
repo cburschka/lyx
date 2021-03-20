@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-03-11 18:26+0100\n"
-"PO-Revision-Date: 2021-03-11 17:31+0000\n"
+"POT-Creation-Date: 2021-03-20 10:06+0100\n"
+"PO-Revision-Date: 2021-03-20 09:26+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -20133,6 +20133,10 @@ msgstr "Obrovské ikony"
 msgid "Giant-sized Icons"
 msgstr "Gigantické ikony"
 
+#: lib/ui/stdcontext.inc:732
+msgid "Show Zoom Slider|S"
+msgstr "Ukáž posuvník lupy|U"
+
 #: lib/ui/stdmenus.inc:30
 msgid "File|F"
 msgstr "Súbor|S"
@@ -33910,18 +33914,6 @@ msgstr ""
 msgid "[[ZOOM]]%1$d%"
 msgstr "%1$d%"
 
-#: src/frontends/qt/GuiView.cpp:689
-msgid "&Reset to default (%1$d%)"
-msgstr "Nastaviť na &Predvolené (%1$d%)"
-
-#: src/frontends/qt/GuiView.cpp:691
-msgid "Zoom &in"
-msgstr "&Priblížiť"
-
-#: src/frontends/qt/GuiView.cpp:692
-msgid "Zoom &out"
-msgstr "O&ddialiť"
-
 #: src/frontends/qt/GuiView.cpp:639
 msgid ""
 "WARNING: LaTeX is allowed to execute external commands for this document. "
@@ -34734,6 +34726,18 @@ msgstr "Vlastné…"
 #, c-format
 msgid "Caption (%1$s)"
 msgstr "Popis (%1$s)"
+
+#: src/frontends/qt/Menus.cpp:1833
+msgid "Reset to Default (%1$d%)|R"
+msgstr "Nastaviť na Predvolené (%1$d%)|r"
+
+#: src/frontends/qt/Menus.cpp:1837
+msgid "Zoom In|I"
+msgstr "Priblížiť|r"
+
+#: src/frontends/qt/Menus.cpp:1839
+msgid "Zoom Out|O"
+msgstr "Oddialiť|d"
 
 #: src/frontends/qt/Menus.cpp:1820
 msgid "No Quote in Scope!"
