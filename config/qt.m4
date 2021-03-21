@@ -72,12 +72,13 @@ AC_DEFUN([QT_CHECK_COMPILE],
 AC_DEFUN([QT_FIND_TOOL],
 [
 	$1=
-	qt_ext=qt4
+	qt_major=4
 	if test "x$USE_QT6" != "xno" ; then
-		qt_ext=qt6
+		qt_major=6
 	elif test "x$USE_QT5" != "xno" ; then
-		qt_ext=qt5
+		qt_major=5
 	fi
+	qt_ext="qt$qt_major"
 
 	if test -n "$qt_cv_bin" ; then
 		AC_PATH_PROGS($1, [$2], [], $qt_cv_bin)
@@ -91,7 +92,7 @@ AC_DEFUN([QT_FIND_TOOL],
 		fi
 	fi
 	if test -z "$$1"; then
-		AC_CHECK_PROGS($1, [$2-$qt_ext $2],[],$PATH)
+		AC_CHECK_PROGS($1, [$2-$qt_ext $2$qt_major $2],[],$PATH)
 	fi
 	if test -z "$$1"; then
 		AC_MSG_ERROR([cannot find $2 binary.])
@@ -401,7 +402,16 @@ AC_DEFUN([QT6_QMAKE_CONFIG],
 	AC_MSG_CHECKING([for Qt6])
 	dnl Use first qmake in PATH
 	ver=`qmake -v | grep -o "Qt version ."`
+	qmake6=""
 	if test "$ver" = "Qt version 6"; then
+	    qmake6="qmake"
+	else
+	    ver=`qmake6 -v | grep -o "Qt version ."`
+	    if test "$ver" = "Qt version 6"; then
+		qmake6="qmake6"
+	    fi
+	fi
+	if test -n "$qmake6" ; then
 	    dnl Use a .pro file for getting qmake's variables
 	    lyx_test_qt_dir=`mktemp -d`
 	    lyx_test_qt_pro="$lyx_test_qt_dir/test.pro"
@@ -413,12 +423,12 @@ percent.target = %
 percent.commands = @echo -n "\$(\$(@))\ "
 QMAKE_EXTRA_TARGETS += percent
 EOF1
-	    qmake $lyx_test_qt_pro -o $lyx_test_qt_mak 1>/dev/null 2>&1
+	    $qmake6 $lyx_test_qt_pro -o $lyx_test_qt_mak 1>/dev/null 2>&1
 	    QT_CORE_INCLUDES=`cd $lyx_test_qt_dir; make -s -f $lyx_test_qt_mak INCPATH | sed 's/-I\. //g'`
 	    qt_corelibs=`cd $lyx_test_qt_dir; make -s -f $lyx_test_qt_mak LIBS`
 	    QT_CORE_LDFLAGS=`echo $qt_corelibs | tr ' ' '\n' | grep -e "^-L" | tr '\n' ' '`
 	    if test -z "$QT_CORE_LDFLAGS"; then
-		QT_CORE_LDFLAGS="-L`qmake -query QT_INSTALL_LIBS`"
+		QT_CORE_LDFLAGS="-L`$qmake6 -query QT_INSTALL_LIBS`"
 		QT_CORE_LIB="$qt_corelibs"
 	    else
 		QT_CORE_LIB=`echo $qt_corelibs | tr ' ' '\n' | grep -e "^-l" | tr '\n' ' '`
@@ -440,17 +450,17 @@ percent.target = %
 percent.commands = @echo -n "\$(\$(@))\ "
 QMAKE_EXTRA_TARGETS += percent
 EOF2
-		qmake $lyx_test_qt_pro -o $lyx_test_qt_mak 1>/dev/null 2>&1
+		$qmake6 $lyx_test_qt_pro -o $lyx_test_qt_mak 1>/dev/null 2>&1
 		QT_INCLUDES=`cd $lyx_test_qt_dir; make -s -f $lyx_test_qt_mak INCPATH | sed 's/-I\. //g'`
 		qt_guilibs=`cd $lyx_test_qt_dir; make -s -f $lyx_test_qt_mak LIBS`
 		QT_LDFLAGS=`echo $qt_guilibs | tr ' ' '\n' | grep -e "^-L" | tr '\n' ' '`
 		if test -z "$QT_LDFLAGS"; then
-		    QT_LDFLAGS="-L`qmake -query QT_INSTALL_LIBS`"
+		    QT_LDFLAGS="-L`$qmake6 -query QT_INSTALL_LIBS`"
 		    QT_LIB="$qt_guilibs"
 		else
 		    QT_LIB=`echo $qt_guilibs | tr ' ' '\n' | grep -e "^-l" | tr '\n' ' '`
 		fi
-		QTLIB_VERSION=`qmake -v | grep "Qt version" | sed -e 's/.*\([[0-9]]\.[[0-9]]*\.[[0-9]]\).*/\1/'`
+		QTLIB_VERSION=`$qmake6 -v | grep "Qt version" | sed -e 's/.*\([[0-9]]\.[[0-9]]*\.[[0-9]]\).*/\1/'`
 		if test -z "$QT_LIB"; then
 		    AC_MSG_RESULT(no)
 		else
