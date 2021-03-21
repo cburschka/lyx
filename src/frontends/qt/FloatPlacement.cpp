@@ -269,10 +269,10 @@ string const FloatPlacement::getAlignment() const
 }
 
 
-void FloatPlacement::on_placementCO_currentIndexChanged(QString const & text)
+void FloatPlacement::on_placementCO_currentIndexChanged(int index)
 {
 	checkAllowed();
-	if (text != "custom")
+	if (placementCO->itemText(index) != "custom")
 		return;
 	if (topCB->isChecked() || bottomCB->isChecked()
 	   || pageCB->isChecked() || herepossiblyCB->isChecked()

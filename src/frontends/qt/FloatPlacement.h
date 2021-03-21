@@ -54,7 +54,7 @@ public:
 	std::string const getAlignment() const;
 
 private Q_SLOTS:
-	void on_placementCO_currentIndexChanged(QString const &);
+	void on_placementCO_currentIndexChanged(int);
 	void changedSlot();
 
 private:
