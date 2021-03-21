@@ -72,7 +72,8 @@ DebugErrorItem errorTags[] = {
 	{ Debug::SELECTION, "selection", N_("Selection copy/paste mechanism")},
 	{ Debug::FIND,      "find",      N_("Find and replace mechanism")},
 	{ Debug::DEBUG,     "debug",     N_("Developers' general debug messages")},
-	{ Debug::ANY,       "any",       N_("All debugging messages")}
+	{ Debug::ANY,       "any",       N_("All debugging messages")},
+	{ Debug::ANY,       "all",       N_("All debugging messages")}
 };
 
 
