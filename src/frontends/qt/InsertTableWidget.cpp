@@ -76,7 +76,11 @@ void InsertTableWidget::mouseMoveEvent(QMouseEvent * event)
 {
 	// do this ourselves because when the mouse leaves the app
 	// we get an enter event (ie underMouse() is true)!!
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+	underMouse_ = geometry().contains(event->globalPosition().toPoint());
+#else
 	underMouse_ = geometry().contains(event->globalPos());
+#endif
 	if (!underMouse_) {
 		bottom_ = 0;
 		right_ = 0;
@@ -102,7 +106,11 @@ void InsertTableWidget::mouseMoveEvent(QMouseEvent * event)
 	if (bottom_ != b0 || right_ != r0) {
 		update();
 		QString const status = QString("%1x%2").arg(bottom_).arg(right_);
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+		QToolTip::showText(event->globalPosition().toPoint(), status , this);
+#else
 		QToolTip::showText(event->globalPos(), status , this);
+#endif
 	}
 }
 
