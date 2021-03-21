@@ -107,8 +107,8 @@ IconPalette::IconPalette(QWidget * parent)
 	v->setSpacing(0);
 	layout_ = new QGridLayout;
 	layout_->setSpacing(0);
-	const int fw = style()->pixelMetric(QStyle::PM_MenuPanelWidth, 0, this);
 #if QT_VERSION < 0x060000
+	const int fw = style()->pixelMetric(QStyle::PM_MenuPanelWidth, 0, this);
 	layout_->setMargin(fw);
 #else
 	layout_->setContentsMargins(0, 0, 0, 0);
