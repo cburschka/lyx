@@ -47,13 +47,21 @@ QString toqstr(docstring const & ucs4)
 	// need to be superfast.
 	if (ucs4.empty())
 		return QString();
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+	return QString::fromStdU32String(reinterpret_cast<std::u32string const &>(ucs4));
+#else
 	return QString::fromUcs4((uint const *)ucs4.data(), ucs4.length());
+#endif
 }
 
 QString toqstr(char_type ucs4)
 {
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+	return QString::fromStdU32String(std::u32string(ucs4, 1));
+#else
 	union { char_type c; uint i; } u = { ucs4 };
 	return QString::fromUcs4(&u.i, 1);
+#endif
 }
 
 docstring qstring_to_ucs4(QString const & qstr)
