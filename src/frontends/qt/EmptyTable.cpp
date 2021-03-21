@@ -118,8 +118,13 @@ void EmptyTable::mouseMoveEvent(QMouseEvent *ev)
 {
 	int cc = columnCount();
 	int rc = rowCount();
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+	int x = ev->position().x();
+	int y = ev->position().y();
+#else
 	int x = ev->x();
 	int y = ev->y();
+#endif
 	int w = cellwidth * cc;
 	int h = cellheight * rc;
 	int wl = cellwidth * (cc - 1);

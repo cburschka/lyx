@@ -90,8 +90,13 @@ void InsertTableWidget::mouseMoveEvent(QMouseEvent * event)
 
 	int const r0 = right_;
 	int const b0 = bottom_;
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+	right_ = event->position().x() / colwidth_ + 1;
+	bottom_ = event->position().y() / rowheight_ + 1;
+#else
 	right_ = event->x() / colwidth_ + 1;
 	bottom_ = event->y() / rowheight_ + 1;
+#endif
 
 	if (bottom_ == rows_) {
 		++rows_;

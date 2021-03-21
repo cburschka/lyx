@@ -80,19 +80,32 @@ void GuiSetBorder::init()
 
 void GuiSetBorder::mousePressEvent(QMouseEvent * e)
 {
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+	if (e->position().y() > e->position().x()) {
+		if (e->position().y() < height() - e->position().x()) {
+#else
 	if (e->y() > e->x()) {
 		if (e->y() < height() - e->x()) {
+#endif
 			if (left_.enabled) {
 				setLeft(left_.set == LINE_SET ? LINE_UNSET : LINE_SET);
 				// emit signal
 				leftSet();
 			}
 		} else {
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+			if (bottom_trim_left_.enabled && e->position().x() < margin + 4 + 2 * corner_length) {
+#else
 			if (bottom_trim_left_.enabled && e->x() < margin + 4 + 2 * corner_length) {
+#endif
 				setBottomLeftTrim(bottom_trim_left_.set == LINE_SET ? LINE_UNSET : LINE_SET);
 				// emit signal
 				bottomLTSet();
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+			} else if (bottom_trim_right_.enabled && e->position().x() > bwidth - margin - 2 * corner_length - 4) {
+#else
 			} else if (bottom_trim_right_.enabled && e->x() > bwidth - margin - 2 * corner_length - 4) {
+#endif
 					setBottomRightTrim(bottom_trim_right_.set == LINE_SET ? LINE_UNSET : LINE_SET);
 					// emit signal
 					bottomRTSet();
@@ -103,12 +116,21 @@ void GuiSetBorder::mousePressEvent(QMouseEvent * e)
 			}
 		}
 	} else {
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+		if (e->position().y() < height() - e->position().x()) {
+			if (top_trim_left_.enabled && e->position().x() < margin + 4 + 2 * corner_length) {
+#else
 		if (e->y() < height() - e->x()) {
 			if (top_trim_left_.enabled && e->x() < margin + 4 + 2 * corner_length) {
+#endif
 				setTopLeftTrim(top_trim_left_.set == LINE_SET ? LINE_UNSET : LINE_SET);
 				// emit signal
 				topLTSet();
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+			} else if (top_trim_right_.enabled && e->position().x() > bwidth - margin - 2 * corner_length - 4) {
+#else
 			} else if (top_trim_right_.enabled && e->x() > bwidth - margin - 2 * corner_length - 4) {
+#endif
 					setTopRightTrim(top_trim_right_.set == LINE_SET ? LINE_UNSET : LINE_SET);
 					// emit signal
 					topRTSet();

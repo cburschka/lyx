@@ -715,7 +715,11 @@ void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 {
 	if (d->dc_event_.active && d->dc_event_ == *e) {
 		d->dc_event_.active = false;
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+		FuncRequest cmd(LFUN_MOUSE_TRIPLE, e->position().x(), e->position().y(),
+#else
 		FuncRequest cmd(LFUN_MOUSE_TRIPLE, e->x(), e->y(),
+#endif
 			q_button_state(e->button()), q_key_state(e->modifiers()));
 		d->dispatch(cmd);
 		e->accept();
@@ -726,7 +730,11 @@ void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 	inputContext()->reset();
 #endif
 
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+	FuncRequest const cmd(LFUN_MOUSE_PRESS, e->position().x(), e->position().y(),
+#else
 	FuncRequest const cmd(LFUN_MOUSE_PRESS, e->x(), e->y(),
+#endif
 			q_button_state(e->button()), q_key_state(e->modifiers()));
 	d->dispatch(cmd);
 
@@ -736,7 +744,11 @@ void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 	// due to the DEPM. We need to do this after the mouse has been
 	// set in dispatch(), because the selection state might change.
 	if (e->button() == Qt::RightButton)
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+		d->context_menu_name_ = d->buffer_view_->contextMenu(e->position().x(), e->position().y());
+#else
 		d->context_menu_name_ = d->buffer_view_->contextMenu(e->x(), e->y());
+#endif
 
 	e->accept();
 }
@@ -747,7 +759,11 @@ void GuiWorkArea::mouseReleaseEvent(QMouseEvent * e)
 	if (d->synthetic_mouse_event_.timeout.running())
 		d->synthetic_mouse_event_.timeout.stop();
 
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+	FuncRequest const cmd(LFUN_MOUSE_RELEASE, e->position().x(), e->position().y(),
+#else
 	FuncRequest const cmd(LFUN_MOUSE_RELEASE, e->x(), e->y(),
+#endif
 			q_button_state(e->button()), q_key_state(e->modifiers()));
 #if (QT_VERSION > QT_VERSION_CHECK(5,10,1) && \
 	QT_VERSION < QT_VERSION_CHECK(5,15,1))
@@ -777,21 +793,37 @@ void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 
 	// we kill the triple click if we move
 	doubleClickTimeout();
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+	FuncRequest cmd(LFUN_MOUSE_MOTION, e->position().x(), e->position().y(),
+#else
 	FuncRequest cmd(LFUN_MOUSE_MOTION, e->x(), e->y(),
+#endif
 			q_motion_state(e->buttons()), q_key_state(e->modifiers()));
 
 	e->accept();
 
 	// If we're above or below the work area...
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+	if ((e->position().y() <= 20 || e->position().y() >= viewport()->height() - 20)
+#else
 	if ((e->y() <= 20 || e->y() >= viewport()->height() - 20)
+#endif
 			&& e->buttons() == mouse_button::button1) {
 		// Make sure only a synthetic event can cause a page scroll,
 		// so they come at a steady rate:
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+		if (e->position().y() <= 20)
+			// _Force_ a scroll up:
+			cmd.set_y(e->position().y() - 21);
+		else
+			cmd.set_y(e->position().y() + 21);
+#else
 		if (e->y() <= 20)
 			// _Force_ a scroll up:
 			cmd.set_y(e->y() - 21);
 		else
 			cmd.set_y(e->y() + 21);
+#endif
 		// Store the event, to be handled when the timeout expires.
 		d->synthetic_mouse_event_.cmd = cmd;
 
@@ -1088,7 +1120,11 @@ void GuiWorkArea::mouseDoubleClickEvent(QMouseEvent * ev)
 	d->dc_event_ = DoubleClick(ev);
 	QTimer::singleShot(QApplication::doubleClickInterval(), this,
 			SLOT(doubleClickTimeout()));
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+	FuncRequest cmd(LFUN_MOUSE_DOUBLE, ev->position().x(), ev->position().y(),
+#else
 	FuncRequest cmd(LFUN_MOUSE_DOUBLE, ev->x(), ev->y(),
+#endif
 			q_button_state(ev->button()), q_key_state(ev->modifiers()));
 	d->dispatch(cmd);
 	ev->accept();

@@ -58,8 +58,13 @@ protected:
 	bool event(QEvent * ev) override {
 		if (ev->type() == QEvent::MouseButtonPress) {
 			QMouseEvent * me = static_cast<QMouseEvent *>(ev);
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+			if (me->position().x() < 0 || me->position().y() < 0
+			    || me->position().x() > width() || me->position().y() > height())
+#else
 			if (me->x() < 0 || me->y() < 0
 			    || me->x() > width() || me->y() > height())
+#endif
 				hide();
 			return true;
 		}
