@@ -584,6 +584,15 @@ public:
 	/// what format to use for table output in DocBook. present choices are above
 	TableOutput docbook_table_output;
 
+	// do not change these values. we rely upon them.
+	enum MathMLNameSpacePrefix {
+		NoPrefix = 0,
+		MPrefix = 1,
+		MMLPrefix = 2
+	};
+	/// what prefix to use when outputting MathML. present choices are above
+	MathMLNameSpacePrefix docbook_mathml_prefix;
+
 	/// allow the LaTeX backend to run external programs
 	bool shell_escape;
 	/// generate output usable for reverse/forward search

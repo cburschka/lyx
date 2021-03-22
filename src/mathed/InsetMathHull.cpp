@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "InsetMathHull.h"
-
 #include "InsetMathChar.h"
 #include "InsetMathColor.h"
 #include "InsetMathFrac.h"
@@ -2368,8 +2367,7 @@ int InsetMathHull::plaintext(odocstringstream & os,
 }
 
 
-void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) const
-{
+void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) const {
 	// Choose the tag around the MathML equation.
 	docstring name;
 	bool doCR = false;
@@ -2384,9 +2382,17 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 	// TODO: recognise \tag from amsmath? This would allow having <equation> with a proper title.
 
 	docstring attr;
+
+	bool mathmlNamespaceInline = buffer().params().docbook_mathml_prefix == BufferParams::NoPrefix;
+	if (mathmlNamespaceInline)
+		attr += "xmlns=\"http://www.w3.org/1998/Math/MathML\"";
+
 	for (row_type i = 0; i < nrows(); ++i) {
 		if (!label(i).empty()) {
-			attr = "xml:id=\"" + xml::cleanID(label(i)) + "\"";
+			if (!attr.empty())
+				attr += " ";
+
+			attr += "xml:id=\"" + xml::cleanID(label(i)) + "\"";
 			break;
 		}
 	}
@@ -2398,20 +2404,28 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 	xs << xml::StartTag(name, attr);
 	xs << xml::CR();
 
-	// With DocBook 5, MathML must be within its own namespace; defined in Buffer.cpp::writeDocBookSource as "m".
+	// With DocBook 5, MathML must be within its own namespace (defined in Buffer.cpp::writeDocBookSource, except when
+	// it should be inlined).
 	// Output everything in a separate stream so that this does not interfere with the standard flow of DocBook tags.
+	std::string mathmlNamespacePrefix;
+	if (!mathmlNamespaceInline) {
+		if (buffer().params().docbook_mathml_prefix == BufferParams::MPrefix)
+			mathmlNamespacePrefix = "m";
+		else if (buffer().params().docbook_mathml_prefix == BufferParams::MMLPrefix)
+			mathmlNamespacePrefix = "mml";
+	}
+
 	odocstringstream osmath;
-	MathMLStream ms(osmath, "m", true);
+	MathMLStream ms(osmath, mathmlNamespacePrefix, true);
 
 	// Output the MathML subtree.
-	odocstringstream ls;
-	otexstream ols(ls);
-
 	// TeX transcription. Avoid MTag/ETag so that there are no extraneous spaces.
 	ms << "<" << from_ascii("alt") << " role='tex'" << ">";
 	// Workaround for db2latex: db2latex always includes equations with
 	// \ensuremath{} or \begin{display}\end{display}
 	// so we strip LyX' math environment
+	odocstringstream ls;
+	otexstream ols(ls);
 	TeXMathStream wi(ols, false, false, TeXMathStream::wsDefault, runparams.encoding);
 	InsetMathGrid::write(wi);
 	ms << from_utf8(subst(subst(to_utf8(ls.str()), "&", "&amp;"), "<", "&lt;"));
@@ -2434,7 +2448,8 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 		ms << ETag("math");
 	} catch (MathExportException const &) {
 		ms.cr();
-		osmath << "<mathphrase>MathML export failed. Please report this as a bug.</mathphrase>";
+		osmath << "<mathphrase>MathML export failed. Please report this as a bug to the LyX developers: "
+			"https://www.lyx.org/trac.</mathphrase>";
 	}
 
 	// Output the complete formula to the DocBook stream.
