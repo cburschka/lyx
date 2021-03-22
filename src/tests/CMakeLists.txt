@@ -17,7 +17,7 @@ include_directories(${TOP_SRC_DIR}/src/support/tests)
 add_executable(check_layout ${check_layout_SOURCES})
 
 target_link_libraries(check_layout support
-  ${Lyx_Boost_Libraries} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY}
+  ${Lyx_Boost_Libraries} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY} ${QtCore5CompatLibrary}
   ${ZLIB_LIBRARY} ${ICONV_LIBRARY})
 if(CYGWIN)
     target_link_libraries(check_layout shlwapi)
@@ -75,7 +75,7 @@ include_directories(${TOP_SRC_DIR}/src/tests)
 add_executable(check_ExternalTransforms ${check_ExternalTransforms_SOURCES})
 
 target_link_libraries(check_ExternalTransforms support
-	${Lyx_Boost_Libraries} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY})
+	${Lyx_Boost_Libraries} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY} ${QtCore5CompatLibrary})
 lyx_target_link_libraries(check_ExternalTransforms Magic)
 
 add_dependencies(lyx_run_tests check_ExternalTransforms)
@@ -96,7 +96,7 @@ endforeach()
 add_executable(check_Length ${check_Length_SOURCES})
 
 target_link_libraries(check_Length support
-	${Lyx_Boost_Libraries} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY})
+	${Lyx_Boost_Libraries} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY} ${QtCore5CompatLibrary})
 lyx_target_link_libraries(check_Length Magic)
 
 add_dependencies(lyx_run_tests check_Length)
@@ -118,7 +118,7 @@ endforeach()
 add_executable(check_ListingsCaption ${check_ListingsCaption_SOURCES})
 
 target_link_libraries(check_ListingsCaption support
-	${Lyx_Boost_Libraries} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY})
+	${Lyx_Boost_Libraries} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY} ${QtCore5CompatLibrary})
 lyx_target_link_libraries(check_ListingsCaption Magic)
 
 add_dependencies(lyx_run_tests check_ListingsCaption)

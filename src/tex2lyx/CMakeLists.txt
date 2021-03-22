@@ -48,8 +48,10 @@ target_link_libraries(${_tex2lyx}
 	${Lyx_Boost_Libraries}
 	${QT_QTCORE_LIBRARY}
 	${QT_QTGUI_LIBRARY}
+	${QtCore5CompatLibrary}
 	${ICONV_LIBRARY})
 
+qt_use_modules(${_tex2lyx} ${QtCore5CompatModule})
 lyx_target_link_libraries(${_tex2lyx} Magic)
 
 add_dependencies(${_tex2lyx} lyx_version)

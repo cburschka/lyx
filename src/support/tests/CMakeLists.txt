@@ -14,13 +14,14 @@ macro(sources _program)
 	set(${_program}_SOURCES ${_tmplist})
 	add_executable(${_program} ${_tmplist})
 	target_link_libraries(${_program} support
-		${Lyx_Boost_Libraries} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY}
+		${Lyx_Boost_Libraries}
+		${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY} ${QtCore5CompatLibrary}
 		${ZLIB_LIBRARY} ${ICONV_LIBRARY})
 	lyx_target_link_libraries(${_program} Magic)
 	if(CYGWIN)
 		target_link_libraries(${_program} shlwapi)
 	endif()
-	qt_use_modules(${_program} Core)
+	qt_use_modules(${_program} Core ${QtCore5CompatModule})
 	set_property(TARGET ${_program} PROPERTY INTERPROCEDURAL_OPTIMIZATION FALSE)
 endmacro()
 

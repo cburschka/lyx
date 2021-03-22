@@ -141,7 +141,8 @@ target_link_libraries(${_lyx}
 	${LYX_QTMAIN_LIBRARY}
 	${vld_dll})
 
-qt_use_modules(${_lyx} Core Gui)
+qt_use_modules(${_lyx} Core Gui ${QtCore5CompatModule})
+target_link_libraries(${_lyx} ${QtCore5CompatLibrary})
 
 if(QT_USES_X11)
   find_package(X11 REQUIRED)
