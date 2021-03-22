@@ -478,6 +478,7 @@ BufferParams::BufferParams()
 	html_math_img_scale = 1.0;
 	html_css_as_file = false;
 	docbook_table_output = HTMLTable;
+	docbook_mathml_prefix = MPrefix;
 	display_pixel_ratio = 1.0;
 
 	shell_escape = false;
@@ -1191,6 +1192,10 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		int temp;
 		lex >> temp;
 		docbook_table_output = static_cast<TableOutput>(temp);
+	} else if (token == "\\docbook_mathml_prefix") {
+		int temp;
+		lex >> temp;
+		docbook_mathml_prefix = static_cast<MathMLNameSpacePrefix>(temp);
 	} else if (token == "\\output_sync") {
 		lex >> output_sync;
 	} else if (token == "\\output_sync_macro") {
@@ -1555,6 +1560,7 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	   << "\\html_be_strict " << convert<string>(html_be_strict) << '\n';
 
 	os << "\\docbook_table_output " << docbook_table_output << '\n';
+	os << "\\docbook_mathml_prefix " << docbook_mathml_prefix << '\n';
 
 	if (html_math_img_scale != 1.0)
 		os << "\\html_math_img_scale " << convert<string>(html_math_img_scale) << '\n';

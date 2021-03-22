@@ -554,6 +554,7 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	h_html_css_as_file        = "0";
 	h_html_math_output        = "0";
 	h_docbook_table_output    = "0";
+	h_docbook_mathml_prefix   = "1";
 	h_index[0]                = "Index";
 	h_index_command           = "default";
 	h_inputencoding           = "auto-legacy";
@@ -2129,6 +2130,7 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 	   << "\\html_css_as_file " << h_html_css_as_file << "\n"
 	   << "\\html_be_strict " << h_html_be_strict << "\n"
 	   << "\\docbook_table_output " << h_docbook_table_output << "\n"
+	   << "\\docbook_mathml_prefix " << h_docbook_mathml_prefix << "\n"
 	   << authors_
 	   << "\\end_header\n\n"
 	   << "\\begin_body\n";

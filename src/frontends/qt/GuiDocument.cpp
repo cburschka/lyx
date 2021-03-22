@@ -3778,9 +3778,14 @@ void GuiDocument::applyView()
 	int tablefmt = outputModule->tableoutCB->currentIndex();
 	if (tablefmt == -1)
 		tablefmt = 0;
-	BufferParams::TableOutput const to =
-			static_cast<BufferParams::TableOutput>(tablefmt);
+	auto const to = static_cast<BufferParams::TableOutput>(tablefmt);
 	bp_.docbook_table_output = to;
+
+	int mathmlprefix = outputModule->mathmlprefixCB->currentIndex();
+	if (mathmlprefix == -1)
+		mathmlprefix = 0;
+	auto const mp = static_cast<BufferParams::MathMLNameSpacePrefix>(mathmlprefix);
+	bp_.docbook_mathml_prefix = mp;
 
 	bp_.save_transient_properties =
 		outputModule->saveTransientPropertiesCB->isChecked();
@@ -4422,6 +4427,7 @@ void GuiDocument::paramsToDialog()
 	outputModule->cssCB->setChecked(bp_.html_css_as_file);
 
 	outputModule->tableoutCB->setCurrentIndex(bp_.docbook_table_output);
+	outputModule->mathmlprefixCB->setCurrentIndex(bp_.docbook_mathml_prefix);
 
 	outputModule->saveTransientPropertiesCB
 		->setChecked(bp_.save_transient_properties);
