@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 608
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -127,9 +127,11 @@ shapepar
 \html_css_as_file 0
 \html_be_strict true
 \docbook_table_output 0
+\docbook_mathml_prefix 1
 \author -712698321 "Jürgen Spitzmüller"
 \author 5863208 "ab"
 \author 244031559 "Yuriy"
+\author 1075283030 "Thibaut"
 \author 1119979965 "Joel A. Kulesza"
 \end_header
 
@@ -5965,6 +5967,178 @@ There is at present no support for glossaries.
  Adding it would be fairly trivial, and welcome.
 \end_layout
 
+\begin_layout Chapter
+
+\change_inserted 1075283030 1616534180
+DocBook Output
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1075283030 1616534386
+Apart from HTML, \SpecialChar LyX
+ can generate documents in the DocBook XML vocabulary.
+ With versions 2.3 and before, only select templates could be used to generate
+ DocBook documents (only version 4).
+ Starting with \SpecialChar LyX
+ 2.4, most \SpecialChar LyX
+ layouts can generate valid DocBook documents (only
+ version 5).
+ This feature is built into \SpecialChar LyX
+ and does not require the use of external tools.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1075283030 1616534437
+The result is that the DocBook output can be customized and extended in
+ exactly the same way \SpecialChar LaTeX
+ output can be customized and extended: through layout
+ files and modules.
+ See chapter five of the 
+\emph on
+Customization 
+\emph default
+manual for the details.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1075283030 1616534475
+Most \SpecialChar LyX
+ features are supported with DocBook, like math output.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 1075283030 1616534741
+Math output is performed mostly in MathML (the major exception being constructio
+ns not supported by \SpecialChar LyX
+, i.e.
+ ERTs).
+ All formulae are also available in raw \SpecialChar TeX
+ in the DocBook output for further
+ processing.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 1075283030 1616534852
+Bibliographies and citations are implemented, including with an external
+ BibTeX file.
+ Bibliography entries are not prerendered when the detailed information
+ are available, but rather output with the standard DocBook constructs.
+ The external DocBook processor is expected to handle the rendering of entries.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 1075283030 1616534863
+Indexes are supported, including multiple indices.
+ Grouping (with 
+\family typewriter
+!
+\family default
+), page ranges, and cross-references (
+\family typewriter
+|see
+\family default
+) are supported, with the exception of the same symbols escaped.
+ Entry order (
+\family typewriter
+@
+\family default
+) and layout (
+\family typewriter
+|mathbf
+\family default
+) are not supported.
+ There is no support for escaping of index entries.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 1075283030 1616534884
+Glossaries are implemented.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1075283030 1616534894
+Two major parameters can be set at the document level.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 1075283030 1616534948
+Format for tables: \SpecialChar LyX
+ can generate tables either as HTML (default value) or
+ CALS, depending on the user's requirements.
+ Most DocBook processors accept both formats.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 1075283030 1616535006
+MathML prefix: in DocBook, MathML is included within its own name space,
+ unlike HTML.
+ The implication is that there must be an indication of the tags belonging
+ to the MathML standard.
+ Three choices are offered: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\change_inserted 1075283030 1616535044
+Inline: the MathML name space is defined for each formula (using the 
+\family typewriter
+xmlns
+\family default
+ attribute on each formula)
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 1075283030 1616535090
+With the 
+\family typewriter
+m
+\family default
+ prefix (default): the MathML name space is defined at the document level
+ (using the 
+\family typewriter
+xmlns:m
+\family default
+ attribute on the root element).
+ Each MathML is prefixed with 
+\family typewriter
+m
+\family default
+: for instance, 
+\family typewriter
+m:math
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 1075283030 1616535102
+With the 
+\family typewriter
+mml
+\family default
+ prefix: similar to the 
+\family typewriter
+m
+\family default
+ option, but with 
+\family typewriter
+mml
+\change_unchanged
+
+\end_layout
+
+\end_deeper
 \begin_layout Chapter
 The \SpecialChar LyX
  Server
