@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 606
+\lyxformat 607
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -155,6 +155,7 @@ logicalmkup
 \html_css_as_file 0
 \html_be_strict true
 \docbook_table_output 0
+\docbook_mathml_prefix 1
 \author -1402925745 "Günter Milde"
 \author -712698321 "Jürgen Spitzmüller"
 \author -584632292 "Richard Kimberly Heck"
@@ -7720,10 +7721,14 @@ To resume an enumeration, use the style
 Enumerate-Resume
 \family default
 .
- Its numbering appears in blue within \SpecialChar LyX
- to indicate that it is a resumed
- list and that the numbering will not be correct in \SpecialChar LyX
+ 
+\change_deleted -584632292 1616513280
+Its numbering appears in blue within \SpecialChar LyX
+ to indicate that it is a resumed list
+ and that the numbering will not be correct in \SpecialChar LyX
 , but in the output.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
