@@ -4397,10 +4397,18 @@ def revert_koma_frontispiece(document):
 
 
 def revert_spellchecker_ignore(document):
-    """Revert document spellchecker disctionary"""
-    i = 0
+    """Revert document spellchecker dictionary"""
     while True:
         i = find_token(document.header, "\\spellchecker_ignore")
+        if i == -1:
+            return
+        del document.header[i]
+
+
+def revert_docbook_mathml_prefix(document):
+    """Revert the DocBook parameter to choose the prefix for the MathML name space"""
+    while True:
+        i = find_token(document.header, "\\docbook_mathml_prefix")
         if i == -1:
             return
         del document.header[i]
@@ -4473,10 +4481,12 @@ convert = [
            [604, []],
            [605, [convert_vcolumns2]],
            [606, [convert_koma_frontispiece]],
-           [607, []]
+           [607, []],
+           [608, []]
           ]
 
-revert =  [[606, [revert_spellchecker_ignore]],
+revert =  [[607, [revert_docbook_mathml_prefix]],
+           [606, [revert_spellchecker_ignore]],
            [605, [revert_koma_frontispiece]],
            [604, [revert_vcolumns2]],
            [603, [revert_branch_darkcols]],
