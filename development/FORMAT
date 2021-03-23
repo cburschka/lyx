@@ -8,7 +8,10 @@ changes happened in particular if possible. A good example would be
 -----------------------
 
 2021-03-23 Thibaut Cuvelier <tcuvelier@lyx.org> 
- 	* Format incremented to 608: DocBook MathML-namespace prefix.
+ 	* Format incremented to 608: DocBook MathML-namespace prefix with the
+ 	  \docbook_mathml_prefix buffer parameter (enumerated value:
+ 	  MathMLNameSpacePrefix). Only common values for the prefix are proposed
+ 	  to the user, instead of a free-form field, for simplicity.
 
 2021-03-06 Jürgen Spitzmüller <spitz@lyx.org> 
 	* Format incremented to 607: \\spellchecker_ignore buffer param.
