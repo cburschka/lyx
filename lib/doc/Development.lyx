@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 606
+\lyxformat 607
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -101,6 +101,7 @@ logicalmkup
 \html_css_as_file 0
 \html_be_strict true
 \docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -192,10 +193,6 @@ File formats
  This chapter contains some background concerning these file formats.
  Several file formats are also described in detail in the regular user documenta
 tion.
-\end_layout
-
-\begin_layout Section
-File Format Numbers
 \end_layout
 
 \begin_layout Section
@@ -812,6 +809,103 @@ status collapsed
 \end_layout
 
 \begin_layout Section
+Backporting new styles to the stable version
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Backporting-new-styles"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Starting with the stable \SpecialChar LyX
+ 2.1 branch, there is a mechanism in place to backport
+ new styles to the stable version without the need to update the file format.
+ The basic idea is that the new style definition is automatically copied
+ to the document preamble so that it can even be used by older minor versions
+ that did not yet include the style.
+ To backport a new style to the stable version, the following steps are
+ needed:
+\end_layout
+
+\begin_layout Enumerate
+Add the line 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ForceLocal -1
+\end_layout
+
+\end_inset
+
+ to the style definition in the development version.
+\end_layout
+
+\begin_layout Enumerate
+Copy the style definition to the stable version, but use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ForceLocal 1
+\end_layout
+
+\end_inset
+
+ instead.
+ If needed adjust the format to the one used by the stable version (see
+ the customization manual for details of the layout file format).
+\end_layout
+
+\begin_layout Enumerate
+For each update of the style in a later stable version, increase the argument
+ of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ForceLocal
+\end_layout
+
+\end_inset
+
+ by one.
+ (In the stable version, the development version should not be touched.)
+\end_layout
+
+\begin_layout Standard
+For details about the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ForceLocal
+\end_layout
+
+\end_inset
+
+ flag see the customization manual.
+ No 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lyx2lyx
+\end_layout
+
+\end_inset
+
+ support is needed for backported styles: Since the style of the development
+ version has an infinite version number, it will always be used.
+ Furthermore, since its version number is less than one, the style will
+ not be written anymore to the document header for files saved by the new
+ version.
+\end_layout
+
+\begin_layout Section
 Updating the file format number of bind/ui files
 \end_layout
 
@@ -1036,103 +1130,6 @@ lib/lyx2lyx/lyx2lyx_tools.py
 
 .
  
-\end_layout
-
-\begin_layout Section
-Backporting new styles to the stable version
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:Backporting-new-styles"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Starting with the stable \SpecialChar LyX
- 2.1 branch, there is a mechanism in place to backport
- new styles to the stable version without the need to update the file format.
- The basic idea is that the new style definition is automatically copied
- to the document preamble so that it can even be used by older minor versions
- that did not yet include the style.
- To backport a new style to the stable version, the following steps are
- needed:
-\end_layout
-
-\begin_layout Enumerate
-Add the line 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-ForceLocal -1
-\end_layout
-
-\end_inset
-
- to the style definition in the development version.
-\end_layout
-
-\begin_layout Enumerate
-Copy the style definition to the stable version, but use 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-ForceLocal 1
-\end_layout
-
-\end_inset
-
- instead.
- If needed adjust the format to the one used by the stable version (see
- the customization manual for details of the layout file format).
-\end_layout
-
-\begin_layout Enumerate
-For each update of the style in a later stable version, increase the argument
- of 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-ForceLocal
-\end_layout
-
-\end_inset
-
- by one.
- (In the stable version, the development version should not be touched.)
-\end_layout
-
-\begin_layout Standard
-For details about the 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-ForceLocal
-\end_layout
-
-\end_inset
-
- flag see the customization manual.
- No 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-lyx2lyx
-\end_layout
-
-\end_inset
-
- support is needed for backported styles: Since the style of the development
- version has an infinite version number, it will always be used.
- Furthermore, since its version number is less than one, the style will
- not be written anymore to the document header for files saved by the new
- version.
 \end_layout
 
 \begin_layout Chapter
