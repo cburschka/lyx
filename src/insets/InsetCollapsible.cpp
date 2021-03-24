@@ -201,10 +201,6 @@ void InsetCollapsible::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	view_[mi.base.bv].auto_open_ = mi.base.bv->cursor().isInside(this);
 
-	FontInfo tmpfont = mi.base.font;
-	mi.base.font = getFont();
-	mi.base.font.realize(tmpfont);
-
 	BufferView const & bv = *mi.base.bv;
 
 	switch (geometry(bv)) {
@@ -254,8 +250,6 @@ void InsetCollapsible::metrics(MetricsInfo & mi, Dimension & dim) const
 		}
 		break;
 	}
-
-	mi.base.font = tmpfont;
 }
 
 

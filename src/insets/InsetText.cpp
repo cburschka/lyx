@@ -184,6 +184,15 @@ void InsetText::read(Lexer & lex)
 }
 
 
+void InsetText::setOuterFont(BufferView & bv, FontInfo const & outer) const
+{
+	TextMetrics & tm = bv.textMetrics(&text_);
+	FontInfo tmpfont = getFont();
+	tmpfont.realize(outer);
+	tm.font_.fontInfo() = tmpfont;
+}
+
+
 void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	TextMetrics & tm = mi.base.bv->textMetrics(&text_);
@@ -191,10 +200,12 @@ void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 	//lyxerr << "InsetText::metrics: width: " << mi.base.textwidth << endl;
 
 	int const horiz_offset = leftOffset(mi.base.bv) + rightOffset(mi.base.bv);
-
-	// Hand font through to contained lyxtext:
-	tm.font_.fontInfo() = mi.base.font;
 	mi.base.textwidth -= horiz_offset;
+
+	// Remember the full outer font
+	setOuterFont(*mi.base.bv, mi.base.font);
+	// and use it in these metrics computation.
+	mi.base.font = tm.font_.fontInfo();
 
 	// This can happen when a layout has a left and right margin,
 	// and the view is made very narrow. We can't do better than
