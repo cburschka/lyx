@@ -26,8 +26,7 @@ target_link_libraries(${_lyxclient}
 	${Lyx_Boost_Libraries}
 	${ICONV_LIBRARY}
 	${QT_QTCORE_LIBRARY}
-	${QT_QTGUI_LIBRARY}
-	${QtCore5CompatLibrary})
+	${QT_QTGUI_LIBRARY})
 
 qt_use_modules(${_lyxclient} ${QtCore5CompatModule})
 lyx_target_link_libraries(${_lyxclient} Magic ASPELL)
