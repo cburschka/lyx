@@ -728,18 +728,6 @@ InsetDecoration InsetCollapsible::decoration() const
 }
 
 
-FontInfo InsetCollapsible::getFont() const
-{
-	return getLayout().font();
-}
-
-
-FontInfo InsetCollapsible::getLabelfont() const
-{
-	return getLayout().labelfont();
-}
-
-
 string InsetCollapsible::contextMenu(BufferView const & bv, int x,
 	int y) const
 {

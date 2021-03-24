@@ -237,6 +237,20 @@ docstring Inset::layoutName() const
 }
 
 
+InsetLayout const & Inset::getLayout() const
+{
+	if (!buffer_)
+		return DocumentClass::plainInsetLayout();
+	return buffer().params().documentClass().insetLayout(layoutName());
+}
+
+
+bool Inset::isPassThru() const
+{
+	return getLayout().isPassThru();
+}
+
+
 bool Inset::isFreeSpacing() const
 {
 	return getLayout().isFreeSpacing();
@@ -258,6 +272,18 @@ bool Inset::forceLTR(OutputParams const &) const
 bool Inset::isInToc() const
 {
 	return getLayout().isInToc();
+}
+
+
+FontInfo Inset::getFont() const
+{
+	return getLayout().font();
+}
+
+
+FontInfo Inset::getLabelfont() const
+{
+	return getLayout().labelfont();
 }
 
 
@@ -577,20 +603,6 @@ int Inset::yo(BufferView const & bv) const
 bool Inset::covers(BufferView const & bv, int x, int y) const
 {
 	return bv.coordCache().getInsets().covers(this, x, y);
-}
-
-
-InsetLayout const & Inset::getLayout() const
-{
-	if (!buffer_)
-		return DocumentClass::plainInsetLayout();
-	return buffer().params().documentClass().insetLayout(layoutName());
-}
-
-
-bool Inset::isPassThru() const
-{
-	return getLayout().isPassThru();
 }
 
 

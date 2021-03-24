@@ -233,6 +233,12 @@ public:
 	virtual void cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const;
 
+	///
+	virtual docstring layoutName() const;
+	///
+	virtual InsetLayout const & getLayout() const;
+	///
+	virtual bool isPassThru() const;
 	/// Allow multiple blanks
 	virtual bool isFreeSpacing() const;
 	/// Don't eliminate empty paragraphs
@@ -241,6 +247,10 @@ public:
 	virtual bool forceLTR(OutputParams const &) const;
 	/// whether to include this inset in the strings generated for the TOC
 	virtual bool isInToc() const;
+	/// Inset font
+	virtual FontInfo getFont() const;
+	/// Label font
+	virtual FontInfo getLabelfont() const;
 
 	/// Where should we go when we press the up or down cursor key?
 	virtual bool idxUpDown(Cursor & cur, bool up) const;
@@ -447,12 +457,6 @@ public:
 	/// This default implementation returns an empty string.
 	virtual std::string contextMenuName() const;
 
-
-	virtual docstring layoutName() const;
-	///
-	virtual InsetLayout const & getLayout() const;
-	///
-	virtual bool isPassThru() const;
 	/// Is this inset embedded in a title?
 	virtual bool isInTitle() const { return false; }
 	/// Is this inset's layout defined in the document's textclass?
