@@ -111,8 +111,6 @@ void InsetCaption::addToToc(DocIterator const & cpit, bool output_active,
 
 void InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	FontInfo tmpfont = mi.base.font;
-	mi.base.font = mi.base.bv->buffer().params().getFont().fontInfo();
 	labelwidth_ = theFontMetrics(mi.base.font).width(full_label_);
 	// add some space to separate the label from the inset text
 	labelwidth_ += leftOffset(mi.base.bv) + rightOffset(mi.base.bv);
@@ -121,7 +119,6 @@ void InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 	// Correct for button and label width
 	mi.base.textwidth -= dim.wid;
 	InsetText::metrics(mi, textdim);
-	mi.base.font = tmpfont;
 	mi.base.textwidth += dim.wid;
 	dim.des = max(dim.des - textdim.asc + dim.asc, textdim.des);
 	dim.asc = textdim.asc;
@@ -152,7 +149,6 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 
 	rtl_ = !pi.ltr_pos;
 	FontInfo tmpfont = pi.base.font;
-	pi.base.font = pi.base.bv->buffer().params().getFont().fontInfo();
 	pi.base.font.setColor(pi.textColor(pi.base.font.color()).baseColor);
 	if (is_deleted_)
 		pi.base.font.setStrikeout(FONT_ON);
