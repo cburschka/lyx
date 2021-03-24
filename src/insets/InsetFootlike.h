@@ -28,10 +28,6 @@ public:
 	bool hasSettings() const override { return false; }
 private:
 	///
-	void metrics(MetricsInfo &, Dimension &) const override;
-	///
-	void draw(PainterInfo & pi, int x, int y) const override;
-	///
 	void write(std::ostream & os) const override;
 	///
 	bool insetAllowed(InsetCode) const override;
