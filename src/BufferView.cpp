@@ -3159,6 +3159,8 @@ void BufferView::caretPosAndDim(Point & p, Dimension & dim) const
 	} else {
 		Font const font = cur.real_current_font;
 		frontend::FontMetrics const & fm = theFontMetrics(font);
+		// lineWidth() can be 0 to mean 'thin line' on HiDpi, but the
+		// caret drawing code is not prepared for that.
 		dim.wid = max(fm.lineWidth(), 1);
 		dim.asc = fm.maxAscent();
 		dim.des = fm.maxDescent();
