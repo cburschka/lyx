@@ -1399,9 +1399,16 @@ bool GuiApplication::getStatus(FuncRequest const & cmd, FuncStatus & flag) const
 	case LFUN_REPEAT:
 	case LFUN_PREFERENCES_SAVE:
 	case LFUN_BUFFER_SAVE_AS_DEFAULT:
-	case LFUN_DEBUG_LEVEL_SET:
 		// these are handled in our dispatch()
 		break;
+
+	case LFUN_DEBUG_LEVEL_SET: {
+		string bad = Debug::badValue(to_utf8(cmd.argument()));
+		enable = bad.empty();
+		if (!bad.empty())
+			flag.message(bformat(_("Bad debug value `%1$s'."), from_utf8(bad)));
+		break;
+	}
 
 	case LFUN_WINDOW_CLOSE:
 		enable = !d->views_.empty();

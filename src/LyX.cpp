@@ -1180,10 +1180,15 @@ int parse_dbg(string const & arg, string const &, string &)
 		Debug::showTags(cout);
 		exit(0);
 	}
-	lyxerr << to_utf8(bformat(_("Setting debug level to %1$s"), from_utf8(arg))) << endl;
-
-	lyxerr.setLevel(Debug::value(arg));
-	Debug::showLevel(lyxerr, lyxerr.level());
+	string bad = Debug::badValue(arg);
+	if (bad.empty()) {
+		lyxerr.setLevel(Debug::value(arg));
+		Debug::showLevel(lyxerr, lyxerr.level());
+	} else {
+		cout << to_utf8(bformat(_("Bad debug value `%1$s'. Exiting."),
+		                        from_utf8(bad))) << endl;
+		exit(1);
+	}
 	return 1;
 }
 

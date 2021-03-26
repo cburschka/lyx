@@ -129,31 +129,59 @@ Debug::Type Debug::value(string const & val)
 		if (isStrInt(tmp))
 			l |= static_cast<Type>(convert<int>(tmp));
 		else
-		// Search for an explicit name
-		for (int i = 0 ; i < numErrorTags ; ++i)
-			if (tmp == errorTags[i].name) {
-				l |= errorTags[i].level;
-				break;
-			}
+			// Search for an explicit name
+			for (DebugErrorItem const & item : errorTags)
+				if (tmp == item.name) {
+					l |= item.level;
+					break;
+				}
 		if (st == string::npos)
-    		break;
+			break;
 		v.erase(0, st + 1);
 	}
 	return l;
 }
 
 
+string Debug::badValue(string const & val)
+{
+	string v = val;
+	while (!v.empty()) {
+		size_t const st = v.find(',');
+		string const tmp = ascii_lowercase(v.substr(0, st));
+		if (tmp.empty())
+			break;
+		// Is it a number?
+		if (!tmp.empty() && !isStrInt(tmp)) {
+			// Search for an explicit name
+			bool found = false;
+			for (DebugErrorItem const & item : errorTags)
+				if (tmp == item.name) {
+					found = true;
+					break;
+				}
+			if (!found)
+				return tmp;
+		}
+		if (st == string::npos)
+			break;
+		v.erase(0, st + 1);
+	}
+	return empty_string();
+}
+
+
 void Debug::showLevel(ostream & os, Debug::Type level)
 {
 	// Show what features are traced
-	for (int i = 0; i < numErrorTags; ++i) {
-		if (errorTags[i].level != Debug::ANY
-		      && errorTags[i].level != Debug::NONE
-		      && errorTags[i].level & level) {
+	for (DebugErrorItem const & item : errorTags) {
+		if (item.level != Debug::ANY
+		      && item.level != Debug::NONE
+		      && item.level & level) {
 			// avoid to_utf8(_(...)) re-entrance problem
-			docstring const s = _(errorTags[i].desc);
+			docstring const s = _(item.desc);
 			os << to_utf8(bformat(_("Debugging `%1$s' (%2$s)"),
-					from_utf8(errorTags[i].name), s))
+					from_utf8(item.name), s))
 			   << '\n';
 		}
 	}
@@ -163,10 +191,10 @@ void Debug::showLevel(ostream & os, Debug::Type level)
 
 void Debug::showTags(ostream & os)
 {
-	for (int i = 0; i != numErrorTags ; ++i)
-		os << setw(10) << static_cast<unsigned int>(errorTags[i].level)
-		   << setw(13) << errorTags[i].name
-		   << "  " << to_utf8(_(errorTags[i].desc)) << '\n';
+	for (DebugErrorItem const & item : errorTags)
+		os << setw(10) << static_cast<unsigned int>(item.level)
+		   << setw(13) << item.name
+		   << "  " << to_utf8(_(item.desc)) << '\n';
 	os.flush();
 }
 

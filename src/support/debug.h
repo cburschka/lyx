@@ -114,6 +114,10 @@ namespace Debug {
 	/// A function to convert debug level string names numerical values
 	Type value(std::string const & val);
 
+	/// Check the validity of debug level names
+	/// \return the first bad level name
+	std::string badValue(std::string const & val);
+
 	/// A function to convert index of level to their numerical value
 	Type value(int val);
 
