@@ -43,6 +43,7 @@
 # include "support/qstring_helpers.h"
 # include <QDir>
 # include <QDesktopServices>
+# include <QStandardPaths>
 #endif
 
 using namespace std;

@@ -153,7 +153,7 @@
 #endif
 #endif
 
-#ifdef Q_OS_MAC
+#if defined(Q_OS_MAC) && (QT_VERSION < 0x060000)
 #include <QMacPasteboardMime>
 #endif // Q_OS_MAC
 
@@ -752,7 +752,7 @@ public:
 //
 ////////////////////////////////////////////////////////////////////////
 
-#ifdef Q_OS_MAC
+#if defined(Q_OS_MAC) && (QT_VERSION < 0x060000)
 // QMacPasteboardMimeGraphics can only be compiled on Mac.
 
 class QMacPasteboardMimeGraphics : public QMacPasteboardMime
@@ -1048,7 +1048,7 @@ struct GuiApplication::Private
 	Qt::ApplicationState last_state_;
 #endif
 
-#ifdef Q_OS_MAC
+#if defined(Q_OS_MAC) && (QT_VERSION < 0x060000)
 	/// Linkback mime handler for MacOSX.
 	QMacPasteboardMimeGraphics mac_pasteboard_mime_;
 #endif
