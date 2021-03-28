@@ -425,9 +425,11 @@ void InsetRef::toString(odocstream & os) const
 
 void InsetRef::forOutliner(docstring & os, size_t const, bool const) const
 {
-	// There's no need for details in the TOC, and a long label
-	// will just get in the way.
-	os += '#';
+	// It's hard to know what to do here. Should we show XREF in the TOC?
+	// Or should we just show that there is one? For now, we do the former.
+	odocstringstream ods;
+	plaintext(ods, OutputParams(nullptr));
+	os += ods.str();
 }
 
 
