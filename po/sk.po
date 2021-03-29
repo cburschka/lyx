@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-03-20 10:06+0100\n"
-"PO-Revision-Date: 2021-03-20 09:26+0000\n"
+"POT-Creation-Date: 2021-03-29 09:41+0200\n"
+"PO-Revision-Date: 2021-03-29 11:38+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2473,8 +2473,8 @@ msgid "Click to select a local document class definition file"
 msgstr "Klikni na výber súboru pre lokálne definície dokumentovej triedy"
 
 #: src/frontends/qt/ui/LaTeXUi.ui:51
-msgid "&Local Layout..."
-msgstr "&Lokálna schéma…"
+msgid "&Local Class..."
+msgstr "&Lokálna trieda…"
 
 #: src/frontends/qt/ui/LaTeXUi.ui:61
 msgid "Class Options"
@@ -3210,6 +3210,30 @@ msgstr "HTML"
 #: src/frontends/qt/ui/OutputUi.ui:60
 msgid "CALS"
 msgstr "CALS"
+
+#: src/frontends/qt/ui/OutputUi.ui:87
+msgid "&MathML namespace prefix:"
+msgstr "M&athML prefix pre oblasť mien:"
+
+#: src/frontends/qt/ui/OutputUi.ui:103
+msgid ""
+"Namespace prefix to use for MathML formulae. For instance, with the <code>m</"
+"code> prefix, the MathML tags will be output like <code>m:math</code>."
+msgstr ""
+"Prefix oblasti mien pre MathML formuly. Napr., s prefixom <code>m</code>, "
+"budú MathML označenia tlačené ako <code>m:math</code>."
+
+#: src/frontends/qt/ui/OutputUi.ui:107
+msgid "No prefix (namespace defined inline for each tag)"
+msgstr "Bez prefixu (oblasť mien je definované pri každom označení)"
+
+#: src/frontends/qt/ui/OutputUi.ui:112
+msgid "m (default)"
+msgstr "m (štandard)"
+
+#: src/frontends/qt/ui/OutputUi.ui:117
+msgid "mml"
+msgstr "mml"
 
 #: src/frontends/qt/ui/OutputUi.ui:84
 msgid "LyX Format"
@@ -29257,10 +29281,10 @@ msgstr ""
 msgid "List of supported debug flags:"
 msgstr "Listina podporovaných ladiacich indikátorov:"
 
-#: src/LyX.cpp:1183
+#: src/LyX.cpp:1188
 #, c-format
-msgid "Setting debug level to %1$s"
-msgstr "Nastavenie úrovne ladenia na %1$s"
+msgid "Bad debug value `%1$s'. Exiting."
+msgstr "Zlá hodnota ladenia `%1$s'. Končím."
 
 #: src/LyX.cpp:1194
 msgid ""
@@ -30933,6 +30957,11 @@ msgstr "Príkaz bez spracovávania"
 #: src/frontends/qt/GuiApplication.cpp:1291
 msgid "Command disabled"
 msgstr "Príkaz blokovaný"
+
+#: src/frontends/qt/GuiApplication.cpp:1409
+#, c-format
+msgid "Bad debug value `%1$s'."
+msgstr "Zlá hodnota ladenia `%1$s'."
 
 #: src/frontends/qt/GuiApplication.cpp:1421 src/frontends/qt/GuiView.cpp:2020
 msgid "Command not allowed without a buffer open"
@@ -37133,6 +37162,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Setting debug level to %1$s"
+#~ msgstr "Nastavenie úrovne ladenia na %1$s"
 
 #~ msgid "Find Ne&xt"
 #~ msgstr "Hľadať ďa&lšie"
