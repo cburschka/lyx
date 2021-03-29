@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-03-02 09:40+0100\n"
-"PO-Revision-Date: 2021-03-02 08:41+0000\n"
+"POT-Creation-Date: 2021-03-28 10:24+0200\n"
+"PO-Revision-Date: 2021-03-29 11:40+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -963,11 +963,11 @@ msgstr "Sémantické značkovanie"
 #: src/frontends/qt4/ui/CharacterUi.ui:278
 msgid "Semantic emphasizing (italic by default, but can be adapted)"
 msgstr ""
-"Sémantické zvýraznenie (štandard je kurzíva, ale môže byť prispôsobené)"
+"Sémantické zdôraznenie (štandard je kurzíva, ale môže byť prispôsobené)"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:281
 msgid "&Emphasized"
-msgstr "Zvýr&aznenie"
+msgstr "Zdôr&aznenie"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:288
 msgid "Semantic markup of nouns (small caps by default, but can be adapted)"
@@ -2474,11 +2474,11 @@ msgstr "Okno pre odozvu"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:92
 msgid "Choose the LaTeX package for code syntax highlighting"
-msgstr "Vyberte LaTeX-balík na zdôraznenie syntaxu kódu"
+msgstr "Vyberte LaTeX-balík na vyzdvihnutie syntaxu kódu"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:95
 msgid "&Syntax Highlighting Package:"
-msgstr "Balík na zdôraznenie &syntaxu:"
+msgstr "Balík na vyzdvihnutie &syntaxu:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:331
 #: lib/layouts/stdinsets.inc:337 lib/layouts/stdinsets.inc:383
@@ -9843,7 +9843,7 @@ msgstr "Tučné"
 
 #: lib/layouts/beamer.layout:1406 lib/layouts/ectaart.layout:146
 msgid "Emphasize"
-msgstr "Zvýraznenie"
+msgstr "Zdôraznenie"
 
 #: lib/layouts/beamer.layout:1408
 msgid "Emph."
@@ -10228,7 +10228,7 @@ msgstr "Hlavný námet"
 
 #: lib/layouts/chess.layout:161
 msgid "Highlights:"
-msgstr "Hlavný námet:"
+msgstr "Hlavné námety:"
 
 #: lib/layouts/chess.layout:176
 msgid "Arrow"
@@ -11491,7 +11491,7 @@ msgstr "Koniec CV"
 
 #: lib/layouts/europasscv.layout:442 lib/layouts/europasscv.layout:447
 msgid "Highlight"
-msgstr "Zvýrazniť"
+msgstr "Vyzdvihnutie"
 
 #: lib/layouts/europecv.layout:3
 msgid "Europe CV"
@@ -19730,7 +19730,7 @@ msgstr "Choď späť"
 
 #: lib/ui/stdtoolbars.inc:87
 msgid "Toggle emphasis"
-msgstr "Prepnúť zvýraznenie"
+msgstr "Prepnúť zdôraznenie"
 
 #: lib/ui/stdtoolbars.inc:88
 msgid "Toggle noun"
@@ -26884,7 +26884,7 @@ msgstr "Prepnúť"
 #: src/Font.cpp:163
 #, c-format
 msgid "Emphasis %1$s, "
-msgstr "Zvýrazniť %1$s, "
+msgstr "Zdôrazniť %1$s, "
 
 #: src/Font.cpp:166
 #, c-format
@@ -27586,7 +27586,7 @@ msgstr ""
 #: src/LyXRC.cpp:3262
 msgid "The command to run the python pygments syntax highlighter."
 msgstr ""
-"Príkaz, ktorý python modul 'pygments' má spustiť na zdôraznenie syntaxu."
+"Príkaz, ktorý python modul 'pygments' má spustiť na vyzdvihnutie syntaxu."
 
 #: src/LyXRC.cpp:3271
 msgid ""
@@ -27665,7 +27665,7 @@ msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
 msgstr ""
-"Vyberte pre kontrolu zvýrazňovania slov ktoré nie sú v jazyku dokumentu."
+"Vyberte pre kontrolu vyzdvihnutia slov ktoré nie sú v jazyku dokumentu."
 
 #: src/LyXRC.cpp:3323
 msgid "The scrolling speed of the mouse wheel."
@@ -32972,11 +32972,11 @@ msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:838
 msgid "File encoding used by Pygments for highlighting"
-msgstr "Kódovanie súboru ktorý pygments použije pre zdôraznenie"
+msgstr "Kódovanie súboru ktorý pygments použije pre vyzdvihnutie"
 
 #: src/insets/InsetListingsParams.cpp:841
 msgid "Apply Python 3 highlighting"
-msgstr "Aplikuj python 3 zdôraznenie"
+msgstr "Aplikuj python 3 vyzdvihnutie"
 
 #: src/insets/InsetListingsParams.cpp:854
 msgid "A macro. Default: \\textvisiblespace"
