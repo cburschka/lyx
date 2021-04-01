@@ -56,8 +56,13 @@ GuiHSpace::GuiHSpace(bool math_mode, QWidget * parent)
 		spacingCO->addItem(qt_("Visible Space"), "visible");
 	spacingCO->addItem(qt_("Custom"), "custom");
 
+#if QT_VERSION < 0x050e00
 	connect(spacingCO, SIGNAL(highlighted(QString)),
 		this, SLOT(changedSlot()));
+#else
+	connect(spacingCO, SIGNAL(textHighlighted(QString)),
+		this, SLOT(changedSlot()));
+#endif
 	connect(valueLE, SIGNAL(textChanged(QString)),
 		this, SLOT(changedSlot()));
 	connect(spacingCO, SIGNAL(activated(int)),
