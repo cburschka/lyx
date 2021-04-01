@@ -2383,12 +2383,50 @@ Inset const * BufferView::getCoveringInset(Text const & text,
 }
 
 
+Inset const * BufferView::clickableMathInset(InsetMathNest const * inset,
+		CoordCache::Insets const & inset_cache, int x, int y) const
+{
+	for (size_t i = 0; i < inset->nargs(); ++i) {
+		MathData const & ar = inset->cell(i);
+		for (size_t j = 0; j < ar.size(); ++j) {
+			string const name = lyxerr.debugging(Debug::MATHED)
+				? insetName(ar[j].nucleus()->lyxCode())
+				: string();
+			LYXERR(Debug::MATHED, "Checking inset: " << name);
+			if (ar[j].nucleus()->clickable(*this, x, y)) {
+				if (inset_cache.covers(ar[j].nucleus(), x, y)) {
+					LYXERR(Debug::MATHED, "Clickable inset: "
+					       << name);
+					return ar[j].nucleus();
+				}
+			}
+			InsetMathNest const * imn =
+				ar[j].nucleus()->asNestInset();
+			if (imn) {
+				Inset const * inner =
+					clickableMathInset(imn, inset_cache, x, y);
+				if (inner)
+					return inner;
+			}
+		}
+	}
+	return nullptr;
+}
+
+
 void BufferView::updateHoveredInset() const
 {
 	// Get inset under mouse, if there is one.
 	int const x = d->mouse_position_cache_.x_;
 	int const y = d->mouse_position_cache_.y_;
 	Inset const * covering_inset = getCoveringInset(buffer_.text(), x, y);
+	if (covering_inset && covering_inset->asInsetMath()) {
+		Inset const * inner_inset = clickableMathInset(
+				covering_inset->asInsetMath()->asNestInset(),
+				coordCache().getInsets(), x, y);
+		if (inner_inset)
+			covering_inset = inner_inset;
+	}
 
 	d->clickable_inset_ = covering_inset && covering_inset->clickable(*this, x, y);
 

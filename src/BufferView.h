@@ -164,6 +164,9 @@ public:
 	/// \return the math inset with a context menu for the given position
 	Inset const * mathContextMenu(InsetMathNest const * inset,
 		CoordCache::Insets const & inset_cache, int x, int y) const;
+	/// \return the clickable math inset for the given position
+	Inset const * clickableMathInset(InsetMathNest const * inset,
+		CoordCache::Insets const & inset_cache, int x, int y) const;
 
 	/// Save the current position as bookmark.
 	/// if idx == 0, save to temp_bookmark
