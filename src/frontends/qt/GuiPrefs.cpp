@@ -915,12 +915,21 @@ PrefScreenFonts::PrefScreenFonts(GuiPreferences * form)
 {
 	setupUi(this);
 
+#if QT_VERSION < 0x050e00
 	connect(screenRomanCO, SIGNAL(activated(QString)),
 		this, SLOT(selectRoman(QString)));
 	connect(screenSansCO, SIGNAL(activated(QString)),
 		this, SLOT(selectSans(QString)));
 	connect(screenTypewriterCO, SIGNAL(activated(QString)),
 		this, SLOT(selectTypewriter(QString)));
+#else
+	connect(screenRomanCO, SIGNAL(textActivated(QString)),
+		this, SLOT(selectRoman(QString)));
+	connect(screenSansCO, SIGNAL(textActivated(QString)),
+		this, SLOT(selectSans(QString)));
+	connect(screenTypewriterCO, SIGNAL(textActivated(QString)),
+		this, SLOT(selectTypewriter(QString)));
+#endif
 
 	QFontDatabase fontdb;
 	QStringList families(fontdb.families());
@@ -929,12 +938,21 @@ PrefScreenFonts::PrefScreenFonts(GuiPreferences * form)
 		screenSansCO->addItem(family);
 		screenTypewriterCO->addItem(family);
 	}
+#if QT_VERSION < 0x050e00
 	connect(screenRomanCO, SIGNAL(activated(QString)),
 		this, SIGNAL(changed()));
 	connect(screenSansCO, SIGNAL(activated(QString)),
 		this, SIGNAL(changed()));
 	connect(screenTypewriterCO, SIGNAL(activated(QString)),
 		this, SIGNAL(changed()));
+#else
+	connect(screenRomanCO, SIGNAL(textActivated(QString)),
+		this, SIGNAL(changed()));
+	connect(screenSansCO, SIGNAL(textActivated(QString)),
+		this, SIGNAL(changed()));
+	connect(screenTypewriterCO, SIGNAL(textActivated(QString)),
+		this, SIGNAL(changed()));
+#endif
 	connect(screenZoomSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
 	connect(screenTinyED, SIGNAL(textChanged(QString)),
@@ -1641,10 +1659,17 @@ PrefConverters::PrefConverters(GuiPreferences * form)
 		this, SLOT(updateConverter()));
 	connect(convertersLW, SIGNAL(currentRowChanged(int)),
 		this, SLOT(switchConverter()));
+#if QT_VERSION < 0x050e00
 	connect(converterFromCO, SIGNAL(activated(QString)),
 		this, SLOT(changeConverter()));
 	connect(converterToCO, SIGNAL(activated(QString)),
 		this, SLOT(changeConverter()));
+#else
+	connect(converterFromCO, SIGNAL(textActivated(QString)),
+		this, SLOT(changeConverter()));
+	connect(converterToCO, SIGNAL(textActivated(QString)),
+		this, SLOT(changeConverter()));
+#endif
 	connect(converterED, SIGNAL(textEdited(QString)),
 		this, SLOT(changeConverter()));
 	connect(converterFlagED, SIGNAL(textEdited(QString)),
@@ -2004,12 +2029,21 @@ PrefFileformats::PrefFileformats(GuiPreferences * form)
 		this, SLOT(updatePrettyname()));
 	connect(formatsCB->lineEdit(), SIGNAL(textEdited(QString)),
 		this, SIGNAL(changed()));
+#if QT_VERSION < 0x050e00
 	connect(defaultFormatCB, SIGNAL(activated(QString)),
 		this, SIGNAL(changed()));
 	connect(defaultOTFFormatCB, SIGNAL(activated(QString)),
 		this, SIGNAL(changed()));
 	connect(defaultPlatexFormatCB, SIGNAL(activated(QString)),
 		this, SIGNAL(changed()));
+#else
+	connect(defaultFormatCB, SIGNAL(textActivated(QString)),
+		this, SIGNAL(changed()));
+	connect(defaultOTFFormatCB, SIGNAL(textActivated(QString)),
+		this, SIGNAL(changed()));
+	connect(defaultPlatexFormatCB, SIGNAL(textActivated(QString)),
+		this, SIGNAL(changed()));
+#endif
 	connect(viewerCO, SIGNAL(activated(int)),
 		this, SIGNAL(changed()));
 	connect(editorCO, SIGNAL(activated(int)),
