@@ -4770,17 +4770,18 @@ Buffer::ReadStatus Buffer::loadEmergency()
 	}
 
 	case 2: {
-		string f1 = d->filename.absFileName();
-		string f2 = emergencyFile.absFileName();
+		string const f1 = d->filename.absFileName();
+		string const f2 = emergencyFile.absFileName();
 		if (loadThisLyXFile(d->filename) != ReadSuccess)
 			return ReadCancel;
-		string par = "compare run-blocking " + quoteName(f1) + " " + quoteName(f2);
+		string const par = "compare run-blocking " + quoteName(f1) + " " + quoteName(f2);
 		LYXERR(Debug::FILES, par << "\n");
 		lyx::dispatch(FuncRequest(LFUN_DIALOG_SHOW, par));
 
 		//release the emergency buffer loaded by compare
 		Buffer * emerBuffer = theBufferList().getBuffer(emergencyFile);
-		if (emerBuffer) theBufferList().release(emerBuffer);
+		if (emerBuffer)
+			theBufferList().release(emerBuffer);
 
 		return ReadCancel; //Release the buffer of Original immediatelly
 	}
