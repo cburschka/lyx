@@ -318,7 +318,13 @@ int GuiCompare::run(bool blocking_mode)
 		return 0;
 
 	dest_buffer_->changed(true);
-	dest_buffer_->markDirty();
+	if (blocking_mode)
+		//blocking mode is infinitive and we don't want diff autosave
+		//if user decides to kill ther running lyx instance
+		dest_buffer_->markClean();
+	else
+		dest_buffer_->markDirty();
+
 
 	// get the options from the dialog
 	CompareOptions options;
@@ -364,10 +370,14 @@ bool GuiCompare::initialiseParams(std::string const &par)
 				return false;
 			}
 
-			// Wait for the Compare function to process in a thread (2 minute timeout)
-			compare_->wait(120000);
+			// Wait for the Compare function to process in a thread
+			compare_->wait();
 
 			finished(false);
+			//Hiding dialog does not work as intended through finished routine, because showView
+			//is triggered after initialiseParams returns true. So we return false, warning will
+			//show on the terminal though.
+			return false;
 		}
 	}
 

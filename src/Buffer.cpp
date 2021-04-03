@@ -4694,7 +4694,7 @@ Buffer::ReadStatus Buffer::loadEmergency()
 		"%1$s exists.\n\nRecover emergency save?"), file);
 
 	int const load_emerg = Alert::prompt(_("Load emergency save?"), text,
-		0, 2, _("&Recover"), _("&Load Original"), _("&Cancel"));
+		0, 3, _("&Recover"), _("&Load Original"), _("&Only show difference"), _("&Cancel"));
 
 	switch (load_emerg)
 	{
@@ -4769,6 +4769,21 @@ Buffer::ReadStatus Buffer::loadEmergency()
 		return ReadOriginal;
 	}
 
+	case 2: {
+		string f1 = d->filename.absFileName();
+		string f2 = emergencyFile.absFileName();
+		if (loadThisLyXFile(d->filename) != ReadSuccess)
+			return ReadCancel;
+		string par = "compare run-blocking " + quoteName(f1) + " " + quoteName(f2);
+		LYXERR(Debug::FILES, par << "\n");
+		lyx::dispatch(FuncRequest(LFUN_DIALOG_SHOW, par));
+
+		//release the emergency buffer loaded by compare
+		Buffer * emerBuffer = theBufferList().getBuffer(emergencyFile);
+		if (emerBuffer) theBufferList().release(emerBuffer);
+
+		return ReadCancel; //Release the buffer of Original immediatelly
+	}
 	default:
 		break;
 	}
