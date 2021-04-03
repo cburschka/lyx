@@ -122,8 +122,8 @@ void InsetMathDecoration::metrics(MetricsInfo & mi, Dimension & dim) const
 	cell(0).metrics(mi, dim);
 
 	int const l1 = mi.base.bv->zoomedPixels(1);
-	int const l2 = 4 * l1;
-	int const l3 = 4 * l1;
+	int const l2 = mathed_char_width(mi.base.font, 'x') - l1;
+	int const l3 = l2;
 
 	dh_  = l2; //mathed_char_height(LM_TC_VAR, mi, 'I', ascent_, descent_);
 	dw_  = l3; //mathed_char_width(LM_TC_VAR, mi, 'x');
