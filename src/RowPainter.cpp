@@ -289,7 +289,10 @@ void RowPainter::paintChange(Row::Element const & e) const
 
 void RowPainter::paintChangeBar() const
 {
-	pi_.pain.fillRectangle(5, yo_ - row_.ascent(), 3, row_.height(), Color_changebar);
+	int const x = pi_.base.bv->leftMargin() - pi_.base.bv->zoomedPixels(7);
+	Dimension const & cdim = row_.contents_dim();
+	pi_.pain.fillRectangle(x, yo_ - cdim.ascent(),
+	                       3, cdim.height(), Color_changebar);
 }
 
 
@@ -378,18 +381,17 @@ void RowPainter::paintAppendixStart(int y) const
 
 void RowPainter::paintTooLargeMarks(bool const left, bool const right) const
 {
-	if (left)
-		pi_.pain.line(pi_.base.dottedLineThickness(), yo_ - row_.ascent(),
-					  pi_.base.dottedLineThickness(), yo_ + row_.descent(),
-					  Color_scroll, Painter::line_onoffdash,
-		              pi_.base.dottedLineThickness());
+	int const lwid = pi_.base.dottedLineThickness();
+	Dimension const & cdim = row_.contents_dim();
+	if (left) {
+		int const x = pi_.base.bv->leftMargin() - lwid;
+		pi_.pain.line(x, yo_ - cdim.ascent(), x, yo_ + cdim.descent(),
+		              Color_scroll, Painter::line_onoffdash, lwid);
+	}
 	if (right) {
-		int const wwidth =
-			pi_.base.bv->workWidth() - pi_.base.dottedLineThickness();
-		pi_.pain.line(wwidth, yo_ - row_.ascent(),
-					  wwidth, yo_ + row_.descent(),
-					  Color_scroll, Painter::line_onoffdash,
-		              pi_.base.dottedLineThickness());
+		int const x = pi_.base.bv->workWidth() - pi_.base.bv->rightMargin();
+		pi_.pain.line(x, yo_ - cdim.ascent(), x, yo_ + cdim.descent(),
+		              Color_scroll, Painter::line_onoffdash, lwid);
 	}
 }
 

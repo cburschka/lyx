@@ -1905,6 +1905,9 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 			// Paint only the insets if the text itself is
 			// unchanged.
 			rp.paintOnlyInsets();
+			rp.paintTooLargeMarks(
+				row_x + row.left_x() < bv_->leftMargin(),
+				row_x + row.right_x() > bv_->workWidth() - bv_->rightMargin());
 			row.changed(false);
 			y += row.descent();
 			continue;
@@ -1947,8 +1950,9 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		if (i == nrows - 1)
 			rp.paintLast();
 		rp.paintText();
-		rp.paintTooLargeMarks(row_x + row.left_x() < 0,
-				      row_x + row.right_x() > bv_->workWidth());
+		rp.paintTooLargeMarks(
+			row_x + row.left_x() < bv_->leftMargin(),
+			row_x + row.right_x() > bv_->workWidth() - bv_->rightMargin());
 		// indicate bookmarks presence in margin
 		for (auto const & bp_p : bpl)
 			if (bp_p.second >= row.pos() && bp_p.second < row.endpos())
