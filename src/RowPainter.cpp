@@ -634,12 +634,15 @@ void RowPainter::paintSelection() const
 
 void RowPainter::paintBookmark(int num) const
 {
-	int const x = row_.isRTL()
-		? pi_.base.bv->workWidth() - pi_.base.bv->rightMargin() : 0;
-	FontInfo fi = pi_.base.bv->buffer().params().getFont().fontInfo();
+	BufferView const * bv = pi_.base.bv;
+	FontInfo fi = bv->buffer().params().getFont().fontInfo();
+	FontMetrics const & fm = theFontMetrics(fi);
 	fi.setColor(Color_bookmark);
 	// ❶ U+2776 DINGBAT NEGATIVE CIRCLED DIGIT ONE
 	char_type const ch = 0x2775 + num;
+	int const x = row_.isRTL()
+		? bv->workWidth() - bv->rightMargin() + (bv->defaultMargin() - fm.width(ch)) / 2
+		: bv->leftMargin() - (bv->defaultMargin() + fm.width(ch)) / 2;
 	pi_.pain.text(x, yo_, ch, fi);
 }
 

@@ -110,6 +110,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\editor_alternatives", LyXRC::RC_EDITOR_ALTERNATIVES },
 	{ "\\escape_chars", LyXRC::RC_ESC_CHARS },
 	{ "\\example_path", LyXRC::RC_EXAMPLEPATH },
+	{ "\\experimental:bookmarks_visibility", LyXRC::RC_BOOKMARKS_VISIBILITY },
 	{ "\\export_overwrite", LyXRC::RC_EXPORT_OVERWRITE },
 	{ "\\format", LyXRC::RC_FILEFORMAT },
 	{ "\\forward_search_dvi", LyXRC::RC_FORWARD_SEARCH_DVI },
@@ -1117,6 +1118,23 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			lexrc >> mouse_middlebutton_paste;
 			break;
 
+		case RC_BOOKMARKS_VISIBILITY:
+			if (lexrc.next()) {
+				string const tmp = lexrc.getString();
+				if (tmp == "none")
+					bookmarks_visibility = BMK_NONE;
+				else if (tmp == "margin")
+					bookmarks_visibility = BMK_MARGIN;
+				else if (tmp == "inline")
+					bookmarks_visibility = BMK_MARGIN;
+				else {
+					bookmarks_visibility = BMK_NONE;
+					LYXERR0("Unrecognized bookmark visibility " << tmp <<'"');
+				}
+			}
+			break;
+
+
 		case RC_LAST:
 			break; // this is just a dummy
 		}
@@ -1717,6 +1735,26 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (tag != RC_LAST)
 			break;
 		// fall through
+	case RC_BOOKMARKS_VISIBILITY:
+		if (ignore_system_lyxrc ||
+			bookmarks_visibility != system_lyxrc.bookmarks_visibility) {
+			string status;
+			switch (bookmarks_visibility) {
+			case BMK_NONE:
+				status = "none";
+				break;
+			case BMK_INLINE:
+				status = "inline";
+				break;
+			case BMK_MARGIN:
+				status = "margin";
+				break;
+			}
+			os << "\\experimental:bookmarks_visibility " << status << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+
 	case RC_MAC_DONTSWAP_CTRL_META:
 		if (ignore_system_lyxrc ||
 		    mac_dontswap_ctrl_meta
@@ -2833,6 +2871,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_BIBTEX_ALTERNATIVES:
 	case LyXRC::RC_BIBTEX_COMMAND:
 	case LyXRC::RC_BINDFILE:
+	case LyXRC::RC_BOOKMARKS_VISIBILITY:
 	case LyXRC::RC_CITATION_SEARCH:
 	case LyXRC::RC_CITATION_SEARCH_PATTERN:
 	case LyXRC::RC_CITATION_SEARCH_VIEW:

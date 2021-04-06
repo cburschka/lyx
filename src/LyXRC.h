@@ -51,6 +51,7 @@ public:
 		RC_BIBTEX_ALTERNATIVES,
 		RC_BIBTEX_COMMAND,
 		RC_BINDFILE,
+		RC_BOOKMARKS_VISIBILITY,
 		RC_CHECKLASTFILES,
 		RC_CHKTEX_COMMAND,
 		RC_CITATION_SEARCH,
@@ -564,6 +565,14 @@ public:
 	int cursor_width = 0;
 	/// One of: yes, no, ask
 	std::string close_buffer_with_last_view = "yes";
+	enum BookmarksVisibility {
+		BMK_NONE,
+		BMK_MARGIN,
+		BMK_INLINE
+	};
+
+	///
+	BookmarksVisibility bookmarks_visibility = BMK_NONE;
 };
 
 

@@ -101,6 +101,8 @@ public:
 	///
 	void setFullScreen(bool full_screen) { full_screen_ = full_screen; }
 
+	/// default value for the margins
+	int defaultMargin() const;
 	/// right margin
 	int rightMargin() const;
 	/// left margin

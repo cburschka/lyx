@@ -331,16 +331,20 @@ BufferView::~BufferView()
 }
 
 
-int BufferView::rightMargin() const
+int BufferView::defaultMargin() const
 {
 	// The value used to be hardcoded to 10
-	int const default_margin = zoomedPixels(10);
-	// The additional test for the case the outliner is opened.
-	if (!full_screen_ || !lyxrc.full_screen_limit
-	    || width_ < lyxrc.full_screen_width + 2 * default_margin)
-		return default_margin;
+	return zoomedPixels(20);
+}
 
-	return (width_ - lyxrc.full_screen_width) / 2;
+
+int BufferView::rightMargin() const
+{
+	// The additional test for the case the outliner is opened.
+	if (full_screen_ && lyxrc.full_screen_limit)
+		return max(defaultMargin(), (width_ - lyxrc.full_screen_width) / 2);
+
+	return defaultMargin();
 }
 
 
