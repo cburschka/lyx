@@ -1638,11 +1638,13 @@ InsetLayout Flex:Alternative
     LeftDelim      <
     RightDelim     >
     PassThru       1
+    AutoInsert     1
   EndArgument
   Argument 2
     LabelString    "Default Text"
     Tooltip        "Enter the default text here"
     Mandatory      1
+    AutoInsert     1
   EndArgument
   ResetsFont       true
   CustomPars       false
