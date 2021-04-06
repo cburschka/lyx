@@ -16,6 +16,7 @@
 
 #include "support/docstring.h"
 
+#include <cstdlib> // rand()
 #include <list>
 
 

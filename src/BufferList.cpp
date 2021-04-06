@@ -29,6 +29,7 @@
 #include "support/lassert.h"
 
 #include <algorithm>
+#include <cstdlib> // exit()
 #include <iterator>
 #include <memory>
 
