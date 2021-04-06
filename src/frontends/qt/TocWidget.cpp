@@ -534,7 +534,7 @@ void TocWidget::filterContents()
 	int size = indices.size();
 	for (int i = 0; i < size; i++) {
 		QModelIndex index = indices[i];
-		bool matches =
+		bool matches = filter_ &&
 			index.data().toString().contains(
 				filter_->text(), Qt::CaseInsensitive);
 		TocItem const & item =
