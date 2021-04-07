@@ -1754,7 +1754,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
-
+		// fall through
 	case RC_MAC_DONTSWAP_CTRL_META:
 		if (ignore_system_lyxrc ||
 		    mac_dontswap_ctrl_meta
