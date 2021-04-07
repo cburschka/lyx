@@ -1126,7 +1126,7 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 				else if (tmp == "margin")
 					bookmarks_visibility = BMK_MARGIN;
 				else if (tmp == "inline")
-					bookmarks_visibility = BMK_MARGIN;
+					bookmarks_visibility = BMK_INLINE;
 				else {
 					bookmarks_visibility = BMK_NONE;
 					LYXERR0("Unrecognized bookmark visibility " << tmp <<'"');
