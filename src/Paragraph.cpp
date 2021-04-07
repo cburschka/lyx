@@ -71,8 +71,8 @@
 using namespace std;
 using namespace lyx::support;
 
-// OSX clang, gcc < 4.8.0, and msvc < 2015 do not support C++11 thread_local
-#if defined(__APPLE__) || (defined(__GNUC__) && __GNUC__ == 4 && __GNUC_MINOR__ < 8)
+// OSX clang and msvc < 2015 do not support C++11 thread_local
+#if defined(__APPLE__)
 #define THREAD_LOCAL_STATIC static __thread
 #elif defined(_MSC_VER) && (_MSC_VER < 1900)
 #define THREAD_LOCAL_STATIC static __declspec(thread)
