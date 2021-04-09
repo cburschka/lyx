@@ -4914,6 +4914,13 @@ void Buffer::bufferRefs(TeXErrors const & terr, ErrorList & errorList) const
 }
 
 
+void Buffer::updateBuffer() const
+{
+	updateBuffer(UpdateMaster, InternalUpdate);
+	d->need_update = false;
+}
+
+
 void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 {
 	LBUFERR(!text().paragraphs().empty());

@@ -728,7 +728,7 @@ public:
 	/// Updates screen labels and some other information associated with
 	/// insets and paragraphs. Actually, it's more like a general "recurse
 	/// through the Buffer" routine, that visits all the insets and paragraphs.
-	void updateBuffer() const { updateBuffer(UpdateMaster, InternalUpdate); }
+	void updateBuffer() const;
 	/// \param scope: whether to start with the master document or just
 	/// do this one.
 	/// \param output: whether we are preparing for output.
