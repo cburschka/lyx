@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-03-29 09:41+0200\n"
-"PO-Revision-Date: 2021-03-29 11:38+0000\n"
+"POT-Creation-Date: 2021-04-03 13:57+0200\n"
+"PO-Revision-Date: 2021-04-03 12:05+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -27493,6 +27493,10 @@ msgstr "&Obnoviť"
 #: src/Buffer.cpp:4696
 msgid "&Load Original"
 msgstr "&Nahrať Pôvodné"
+
+#: src/Buffer.cpp:4697
+msgid "&Only show difference"
+msgstr "Ukáž len &rozdiely"
 
 #: src/Buffer.cpp:4707
 #, c-format
