@@ -4284,10 +4284,10 @@ static int findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, Ma
 	ostringstream oss;
 	repl_buffer_orig.write(oss);
 	string lyx = oss.str();
-	if (matchAdv.valid_matches > 0) {
-	  replaceMatches(lyx, matchAdv.valid_matches, matchAdv.matches);
-	}
-	Buffer repl_buffer("", false);
+	if (matchAdv.valid_matches > 0)
+		replaceMatches(lyx, matchAdv.valid_matches, matchAdv.matches);
+	Buffer repl_buffer(string(), false);
+	repl_buffer.setInternal(true);
 	repl_buffer.setUnnamed(true);
 	LASSERT(repl_buffer.readString(lyx), return 0);
 	if (opt.keep_case && sel_len >= 2) {
