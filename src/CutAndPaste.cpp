@@ -1263,6 +1263,7 @@ bool pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs,
 		string lyx = theClipboard().getAsLyX();
 		if (!lyx.empty()) {
 			Buffer buffer(string(), false);
+			buffer.setInternal(true);
 			buffer.setUnnamed(true);
 			if (buffer.readString(lyx)) {
 				cur.recordUndo();
@@ -1296,6 +1297,7 @@ bool pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs,
 			available = !text.empty();
 			if (available) {
 				Buffer buffer(string(), false);
+				buffer.setInternal(true);
 				buffer.setUnnamed(true);
 				available = buffer.importString(names[i], text, errorList);
 				if (available)
