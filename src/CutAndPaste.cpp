@@ -1225,6 +1225,7 @@ bool pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs,
 			// For some strange reason gcc 3.2 and 3.3 do not accept
 			// Buffer buffer(string(), false);
 			Buffer buffer("", false);
+			buffer.setInternal(true);
 			buffer.setUnnamed(true);
 			if (buffer.readString(lyx)) {
 				cur.recordUndo();
@@ -1258,6 +1259,7 @@ bool pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs,
 				// For some strange reason gcc 3.2 and 3.3 do not accept
 				// Buffer buffer(string(), false);
 				Buffer buffer("", false);
+				buffer.setInternal(true);
 				buffer.setUnnamed(true);
 				available = buffer.importString(names[i], text, errorList);
 				if (available)
