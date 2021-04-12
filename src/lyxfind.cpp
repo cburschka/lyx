@@ -1455,6 +1455,7 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 	repl_buffer_orig.write(oss);
 	string lyx = oss.str();
 	Buffer repl_buffer("", false);
+	repl_buffer.setInternal(true);
 	repl_buffer.setUnnamed(true);
 	LASSERT(repl_buffer.readString(lyx), return);
 	if (opt.keep_case && sel_len >= 2) {
