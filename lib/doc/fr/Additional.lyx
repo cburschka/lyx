@@ -132,14 +132,14 @@ Options avancées de \SpecialChar LyX
 \begin_layout Subtitle
 Version 2.3.x
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Informations de révision :
 \end_layout
 
 \begin_layout Plain Layout
-Traduction : Mise à jour pour 2.0 par JPChrétien, Date : 30/07/12011, relecture
+Traduction : Mise à jour pour 2.0 par JPChrétien, Date : 30/07/2011, relecture
  partielle pour 2.0.5, 31/10/2012, remplacement de Éditer/Visionner/Insérer/Navigu
 er par Édition/Affichage/Insertion/Navigation 
 \end_layout
@@ -166,12 +166,19 @@ appendix
 \end_layout
 
 \begin_layout Plain Layout
-Mise à jour pour 2.3 (JPC): 04/08/2017, nouveautés 2.3, revue générale; 28/01/2018
-, revue avant 2.3.0
+Mise à jour pour 2.3 (JPC) : 04/08/2017, nouveautés 2.3, revue générale; 28/01/201
+8, revue avant 2.3.0
 \end_layout
 
 \begin_layout Plain Layout
-Manque les sections 7.2.3 à 7.2.7 (CVS/SVN)
+Manquent les sections 7.2.3 à 7.2.7 (CVS/SVN)
+\end_layout
+
+\begin_layout Plain Layout
+Mise à jour avant 2.4 (JPC) : 13/04/2021, section 7.2.6 (GIT) et 7.2.7 traduites.
+ CVS/SVN restent non traduits pour deux raisons : ces systèmes à dépôt centralis
+é sont progressivement abandonnés au profit de GIT, et d'autre part les
+ utilisateurs des systèmes de contrôle de version sont généralement anglophones.
 \end_layout
 
 \end_inset
@@ -24185,169 +24192,155 @@ svn propset svn:eol-style native FILE_NAME
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-GIT commands in \SpecialChar LyX
+Les commandes GIT sous \SpecialChar LyX
 
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-A minimal subset of GIT commands is now supported by \SpecialChar LyX
-.
- You can find the commands in the 
+Un sous-ensemble minimal des commandes GIT est reconnu par LyX.
+ Les commandes se trouvent dans le sous-menu
 \family sans
-File\SpecialChar menuseparator
-Version
-\begin_inset space ~
-\end_inset
-
-Control
+ Fichier\SpecialChar menuseparator
+Contrôle de version
 \family default
- submenu.
- Please note that if you use password protected access to repository via
- ssh, you will be asked in terminal window.
+.
+ Notez bien que si vous utilisez un accès ssh au dépôt protégé par mot de
+ passe, l'authentification sera requise dans un terminal.
  \SpecialChar LyX
- was tested against GIT 1.7.
+ a été testé vis à vis de GIT 1.7
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Windows users please note that you need to ensure that git is on the path.
- This can be set from within \SpecialChar LyX
- at 
+Les utilisateurs de Windows devront s'assurer que git est bien dans le chemin
+ d’accès aux exécutables.
+ Ceci peut être réglé depuis \SpecialChar LyX
+ via 
 \family sans
-Tools\SpecialChar menuseparator
-Preferences\SpecialChar menuseparator
-Paths\SpecialChar menuseparator
-PATH prefix
+Outils\SpecialChar menuseparator
+Préférences\SpecialChar menuseparator
+Répertoires\SpecialChar menuseparator
+Préfixe PATH
 \family default
 .
 \end_layout
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-One big difference of GIT and the other supported version control systems
- is the distributed nature of GIT: With traditional version control systems
- there is one central server which hosts the repository.
- Users commit their changes to the server, and get updates made by other
- users from it.
- With GIT, users commit to a local repository.
- The local repository can be synchronized with one or more remote repositories
- using the 
+Une différence importante entre GIT et les autres systèmes de contrôle de
+ version reconnus réside dans la nature distribuée de GIT.
+ Avec les systèmes traditionnels,; il y a un serveur central qui héberge
+ le dépôt.
+ Les utilisateurs soumettent leurs modifications au serveur, et récupèrent
+ les mises à jour des autres auteurs depuis le serveur.
+ Avec GIT, les utilisateurs soumettent à un dépôt local.
+ Le dépôt local peut être synchronisé avec un dépôt distant ou plusieurs
+ en utilisant les commandes GIT 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 pull
 \end_layout
 
 \end_inset
 
- and 
+ et 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 push
 \end_layout
 
 \end_inset
 
- GIT commands.
+.
  \SpecialChar LyX
- does not interact in any way with remote GIT repositories.
- It works exclusively with the local repository in a very similar way as
- with a central CVS or SVN repository.
- If you use remote GIT repositories you need to do the 
+ n’interagit en aucune manière avec les dépôts distants, il ne travaille
+ qu'avec le dépôt local de manière similaire à ce qui est fait avec un dépôt
+ central CVS ou SVN.
+ Si vous utilisez des dépôts GIT distants, vous devez exécuter les opérations
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 pull
 \end_layout
 
 \end_inset
 
- and 
+ et 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 push
 \end_layout
 
 \end_inset
 
- operations with your favourite GIT client.
+ avec votre client GIT habituel.
 \end_layout
 
 \begin_layout Subsubsection
 
 \family sans
-\lang english
-Register
+Initialiser le contrôle de version
 \end_layout
 
 \begin_layout Standard
+Si votre document n'est pas sous le mode 
+\begin_inset Quotes cld
+\end_inset
 
-\lang english
-If your document is not under revision control, this is the only item shown
- in the menu.
- And if it is under revision control, the 
-\family sans
-Register
-\family default
- item is not visible.
+contrôle de version
+\begin_inset Quotes crd
+\end_inset
+
+, c'est le seul choix qui vous soit proposé.
+ Si vous êtes déjà sous ce mode, l'élément 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+S'inscrire
+\end_layout
+
+\end_inset
+
+ est grisé et inaccessible.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This command registers in GIT your document ONLY in case you have already
- the documents directory under GIT control (in particular 
+Cette commande initialise le contrôle de version de votre document sous
+ GIT UNIQUEMENT si le répertoire du document est déjà sous contrôle de GIT
+ (en particulier le fichier
 \family typewriter
-.git/index
+ .git/index
 \family default
- file exists).
- This means you have to checkout the archive by yourself.
+ existe).
+ Ceci signifie que vous devez créer l'archive vous-même.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Then you are asked interactively to supply an initial description of the
- document.
- Don't forget that registered file is not yet committed.
+On vous demandera ensuite une description initiale du document.
+ N'oubliez pas que la version initialisée n'est pas encore enregistrée.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-GIT command that is run: 
+La commande GIT exécutée: 
 \family typewriter
 git add 
 \begin_inset Quotes qld
 \end_inset
 
-<file-name>
+<nom-de-fichier>
 \begin_inset Quotes qld
 \end_inset
 
@@ -24355,63 +24348,68 @@ git add
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Read 
+Consulter 
 \family typewriter
 man git
 \family default
- to understand the switches.
+ pour comprendre les options.
 \end_layout
 
 \begin_layout Subsubsection
+Enregistrer
+\begin_inset space ~
+\end_inset
 
-\family sans
-\lang english
-Check In Changes
+les
+\begin_inset space ~
+\end_inset
+
+changements
 \end_layout
 
 \begin_layout Standard
+Lorsque vous avez fini de modifier un fichier, vous figez vos modification
+\lang english
+s.
+ 
+\lang french
+Il vous sera alors demandé une description de ceux-ci.
 
 \lang english
-When you are finished editing a file, you commit your changes.
- When you do this, you are asked for a description of the changes.
- After that changes are committed.
+ 
+\lang french
+Les modifications sont soumises ensuite.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-GIT command: 
+La commande GIT exécutée: 
 \family typewriter
-git commit -q -m"<description>" <file-name>
+git commit -q -m"<description>" <nom-de-fichier>
 \end_layout
 
 \begin_layout Subsubsection
 
 \family sans
-\lang english
-Revert To Repository Version
+Revenir à la version du dépôt
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This will discard all changes made to the document since the last check
- in.
- You get a warning before changes are discarded.
+Ceci annule tous les changements réalisés sur le document depuis que le
+ document a été figé la dernière fois.
+ Une demande de confirmation apparaît alors, avant que tous les changements
+ soient perdus.
 \end_layout
 
 \begin_layout Standard
-
+La commande GIT exécutée
 \lang english
-GIT command: 
+: 
 \family typewriter
 git checkout -q 
 \begin_inset Quotes qld
 \end_inset
 
-<file-name>
+<nom-de-fichier>
 \begin_inset Quotes qld
 \end_inset
 
@@ -24419,39 +24417,31 @@ git checkout -q
 \end_layout
 
 \begin_layout Subsubsection
-
-\family sans
-\lang english
-Rename
+Renommer
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This will rename the current document including the version history.
- It requires a clean document without any changes since the last checkin.
- You are asked for a file name and a description of the rename operation.
- After that the document is renamed, both locally and in the repository.
- If the parent directories of the new and old file names differ, all relative
- paths of included files are adjusted (like in 
+Cette commande va renommer le document courant, historique de versions inclus.
+ Elle requiert un document propre sans modifications depuis le dernier enregistr
+ement.
+ Elle vous demande un nom de fichier et une description de l'opération de
+ renommage.
+ Le document est renommé ensuite, à la fois localement et dans le dépôt.
+ Si les répertoires parents de l’ancien et du nouveau fichier diffèrent,
+ tous les chemins relatifs des fichiers inclus sont rectifiés (comme avec
+ 
 \family sans
-File\SpecialChar menuseparator
-Save As
+Fichier\SpecialChar menuseparator
+Enregistrer sous
 \family default
 \SpecialChar ldots
 ).
- Finally, the document is reloaded using the new name.
+ Enfin, le ficher est rechargé sous le nouveau nom.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\lang english
-GIT
-\begin_inset space ~
-\end_inset
-
-commands: 
+Les commandes GIT exécutées: 
 \begin_inset space ~
 \end_inset
 
@@ -24464,15 +24454,11 @@ commands:
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 git mv 
-\family typewriter
-
 \begin_inset Quotes qld
 \end_inset
 
-<file-name>
+<nom-de-fichier>
 \begin_inset Quotes qld
 \end_inset
 
@@ -24480,7 +24466,7 @@ git mv
 \begin_inset Quotes qld
 \end_inset
 
-<new-file-name>
+<nouveau-nom-de-fichier>
 \begin_inset Quotes qld
 \end_inset
 
@@ -24498,8 +24484,6 @@ git mv
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 git commit
 \end_layout
 
@@ -24509,77 +24493,71 @@ git commit
 \end_layout
 
 \begin_layout Subsubsection
-
-\family sans
-\lang english
-Show History
+Afficher l'historique
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This shows the complete history of the GIT document.
- The output of 
+Cette commande affiche l'historique complet du document sous GIT.
+ Le résultat de 
 \family typewriter
 git log 
 \begin_inset Quotes qld
 \end_inset
 
-<file-name>
+<nom-de-fichier>
 \begin_inset Quotes qld
 \end_inset
 
 
 \family default
- is shown in a browser.
+ est affiché dans un navigateur.
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Version Info
+Infos de version
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \SpecialChar LyX
- supports GIT hash number of the last commit to the file, author name, date
- and time of last commit.
- All those are extracted from 
+ reconnaît l'empreinte de validation GIT de la dernière soumission du fichier,
+ le nom de son auteur, la date et l'heure.
+ Toutes ces informations sont extraites via 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 git log -n 1 --pretty=format:%H%n%an%n%ai
 \end_layout
 
 \end_inset
 
 .
- Tree version information is obtained via 
+\end_layout
+
+\begin_layout Standard
+L'information sur la version de l'arborescence peut être obtenue via 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 git describe --abbrev --dirty --long
 \end_layout
 
 \end_inset
 
 .
- See 
+ 
+\end_layout
+
+\begin_layout Standard
+Voir 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:VCS-Revision-Information"
 
 \end_inset
 
- for other details.
+ pour d'autres détails.
 \end_layout
 
 \begin_layout Subsection
