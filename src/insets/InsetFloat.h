@@ -104,9 +104,7 @@ private:
 	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
 	bool insetAllowed(InsetCode) const override;
-	/** returns false if, when outputting LaTeX, font changes should
-	    be closed before generating this inset. This is needed for
-	    insets that may contain several paragraphs */
+	///
 	bool inheritFont() const override { return false; }
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const override;

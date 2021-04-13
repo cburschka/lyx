@@ -586,13 +586,9 @@ public:
 	/// returns whether paragraph breaks can occur inside this inset
 	virtual bool allowMultiPar() const { return false; }
 	/**
-	 * The font is inherited from the parent for LaTeX export if this
-	 * method returns true. No open font changes are closed in front of
-	 * the inset for LaTeX export, and the font is inherited for all other
-	 * exports as well as on screen.
-	 * If this method returns false all open font changes are closed in
-	 * front of the inset for LaTeX export. The default font is used
-	 * inside the inset for all exports and on screen.
+	 * The font inside the inset is inherited from the parent for
+	 * LaTeX export if this method returns true, as well as on screen.
+	 * Otherwise the document default font is used.
 	 */
 	virtual bool inheritFont() const { return true; }
 	/**

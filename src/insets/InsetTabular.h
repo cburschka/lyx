@@ -980,9 +980,7 @@ public:
 	bool canTrackChanges() const override { return true; }
 	///
 	bool canPaintChange(BufferView const &) const override { return true; }
-	/** returns false if, when outputting LaTeX, font changes should
-	    be closed before generating this inset. This is needed for
-	    insets that may contain several paragraphs */
+	///
 	bool inheritFont() const override { return false; }
 	///
 	bool allowMultiPar() const override;
