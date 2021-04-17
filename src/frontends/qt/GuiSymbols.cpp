@@ -409,12 +409,12 @@ void GuiSymbols::on_symbolsLW_clicked(QModelIndex const & index)
 }
 
 
-void GuiSymbols::on_categoryCO_activated(QString const & text)
+void GuiSymbols::on_categoryCO_activated(int)
 {
 	if (!categoryFilterCB->isChecked())
 		updateSymbolList(false);
 	else
-		scrollToItem(text);
+		scrollToItem(categoryCO->currentText());
 }
 
 

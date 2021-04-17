@@ -43,7 +43,7 @@ public Q_SLOTS:
 	void on_buttonBox_clicked(QAbstractButton *);
 	void on_symbolsLW_activated(QModelIndex const & index);
 	void on_symbolsLW_clicked(QModelIndex const & index);
-	void on_categoryCO_activated(QString const & text);
+	void on_categoryCO_activated(int);
 	void on_categoryFilterCB_toggled(bool);
 	void on_chosenLE_returnPressed();
 	void on_chosenLE_textChanged(QString const &);
