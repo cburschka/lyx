@@ -57,7 +57,7 @@ QString toqstr(docstring const & ucs4)
 QString toqstr(char_type ucs4)
 {
 #if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
-	return QString::fromStdU32String(std::u32string(ucs4, 1));
+	return QString::fromStdU32String(std::u32string(1, ucs4));
 #else
 	union { char_type c; uint i; } u = { ucs4 };
 	return QString::fromUcs4(&u.i, 1);
