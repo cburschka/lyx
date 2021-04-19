@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 608
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -40,7 +40,7 @@ shapepar
 \maintain_unincluded_children no
 \language french
 \language_package default
-\inputencoding utf8
+\inputencoding auto-legacy
 \fontencoding auto
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
@@ -49,9 +49,9 @@ shapepar
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -100,8 +100,8 @@ shapepar
 \justification true
 \use_refstyle 1
 \use_minted 0
-\notefontcolor #0000ff
 \use_lineno 0
+\notefontcolor #0000ff
 \index Index
 \shortcut idx
 \color #008000
@@ -118,12 +118,16 @@ shapepar
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -143,7 +147,7 @@ Informations de révision :
 \end_layout
 
 \begin_layout Plain Layout
-Traduction : Mise à jour pour 2.0 par JPChrétien, Date : 30/07/12011, relecture
+Traduction : Mise à jour pour 2.0 par JPChrétien, Date : 30/07/2011, relecture
  partielle pour 2.0.5, 31/10/2012, remplacement de Éditer/Visionner/Insérer/Navigu
 er par Édition/Affichage/Insertion/Navigation 
 \end_layout
@@ -170,12 +174,23 @@ appendix
 \end_layout
 
 \begin_layout Plain Layout
-Mise à jour pour 2.3 (JPC): 04/08/2017, nouveautés 2.3, revue générale; 28/01/2018
-, revue avant 2.3.0
+Mise à jour pour 2.3 (JPC) : 04/08/2017, nouveautés 2.3, revue générale; 28/01/201
+8, revue avant 2.3.0
 \end_layout
 
 \begin_layout Plain Layout
-Manque les sections 7.2.3 à 7.2.7 (CVS/SVN)
+Manquent les sections 7.2.3 à 7.2.7 (CVS/SVN)
+\end_layout
+
+\begin_layout Plain Layout
+Mise à jour avant 2.4 (JPC) : 13/04/2021, section 7.2.6 (GIT) et 7.2.7 traduites.
+ CVS/SVN restent non traduits pour deux raisons : ces systèmes à dépôt centralis
+é sont progressivement abandonnés au profit de GIT, et d'autre part les
+ utilisateurs des systèmes de contrôle de version sont généralement anglophones.
+\end_layout
+
+\begin_layout Plain Layout
+Importation de la dernière mise à jour de 2.3 dans 2.4 : 19/04/2021
 \end_layout
 
 \end_inset
@@ -2143,9 +2158,7 @@ Outils supplémentaires
 
 \begin_layout Section
 Personnaliser une bibliographie avec Bib\SpecialChar TeX
-
-\lang english
- or Biblatex
+ ou Biblatex
 \end_layout
 
 \begin_layout Standard
@@ -7813,7 +7826,6 @@ $$t
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
 .tex
 \end_layout
 
@@ -9986,7 +9998,7 @@ David Johnson;
 \noun default
 mise à jour par 
 \noun on
-Richard Kimberly Heck
+Richard Heck
 \end_layout
 
 \begin_layout Standard
@@ -21377,34 +21389,29 @@ Copy
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This will create a copy of the current document.
- Since RCS does not support copy operations natively, the version history
- is not preserved, and the copy is added as a new file.
- It requires a clean document without any changes since the last checkin.
- You are asked for a file name and a description of the copy operation.
- After that the copy is created, both locally and in the repository.
- If the parent directories of the copied and original document differ, all
- relative paths of included files of the copy are adjusted (like in 
+Ceci va créer une copie du document.
+ Du fait que RCS ne prévoit pas à l'origine de gérer les opérations de copie,
+ l'historique de version n'est pas préservé et la copie est ajoutée comme
+ un nouveau fichier.
+ Elle suppose un document propre sans modifications depuis le dernier enregistre
+ment.
+ On vous demande un nom de fichier et une description de l'opération de
+ copie.
+ Ensuite la copie est créée, à la fois localement et dans le dépôt.
+ Si les répertoires parents de la copie et du document original sont différents,
+ tous les chemins relatifs des fichiers inclus sont corrigés (comme avec
+ 
 \family sans
-File\SpecialChar menuseparator
-Save As
+Fichier\SpecialChar menuseparator
+Enregistrer sous
 \family default
 \SpecialChar ldots
 ).
- Finally, the copy is loaded instead of the original document.
+ Enfin, la copie est chargée à la place du document original.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\lang english
-RCS
-\begin_inset space ~
-\end_inset
-
-commands: 
+\begin_layout Itemize
+Commandes RCS: 
 \begin_inset space ~
 \end_inset
 
@@ -21417,9 +21424,6 @@ Copy
 status collapsed
 
 \begin_layout Plain Layout
-
-\family typewriter
-\lang english
 \begin_inset Quotes qld
 \end_inset
 
@@ -21437,9 +21441,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\family typewriter
-\lang english
 \begin_inset Quotes qld
 \end_inset
 
@@ -21461,11 +21462,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-ci -q -u 
-\family typewriter
--i 
+ci -q -u -i 
 \begin_inset Quotes qld
 \end_inset
 
@@ -24207,169 +24204,155 @@ svn propset svn:eol-style native FILE_NAME
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-GIT commands in \SpecialChar LyX
+Les commandes GIT sous \SpecialChar LyX
 
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-A minimal subset of GIT commands is now supported by \SpecialChar LyX
-.
- You can find the commands in the 
+Un sous-ensemble minimal des commandes GIT est reconnu par LyX.
+ Les commandes se trouvent dans le sous-menu
 \family sans
-File\SpecialChar menuseparator
-Version
-\begin_inset space ~
-\end_inset
-
-Control
+ Fichier\SpecialChar menuseparator
+Contrôle de version
 \family default
- submenu.
- Please note that if you use password protected access to repository via
- ssh, you will be asked in terminal window.
+.
+ Notez bien que si vous utilisez un accès ssh au dépôt protégé par mot de
+ passe, l'authentification sera requise dans un terminal.
  \SpecialChar LyX
- was tested against GIT 1.7.
+ a été testé vis à vis de GIT 1.7
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Windows users please note that you need to ensure that git is on the path.
- This can be set from within \SpecialChar LyX
- at 
+Les utilisateurs de Windows devront s'assurer que git est bien dans le chemin
+ d’accès aux exécutables.
+ Ceci peut être réglé depuis \SpecialChar LyX
+ via 
 \family sans
-Tools\SpecialChar menuseparator
-Preferences\SpecialChar menuseparator
-Paths\SpecialChar menuseparator
-PATH prefix
+Outils\SpecialChar menuseparator
+Préférences\SpecialChar menuseparator
+Répertoires\SpecialChar menuseparator
+Préfixe PATH
 \family default
 .
 \end_layout
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-One big difference of GIT and the other supported version control systems
- is the distributed nature of GIT: With traditional version control systems
- there is one central server which hosts the repository.
- Users commit their changes to the server, and get updates made by other
- users from it.
- With GIT, users commit to a local repository.
- The local repository can be synchronized with one or more remote repositories
- using the 
+Une différence importante entre GIT et les autres systèmes de contrôle de
+ version reconnus réside dans la nature distribuée de GIT.
+ Avec les systèmes traditionnels,; il y a un serveur central qui héberge
+ le dépôt.
+ Les utilisateurs soumettent leurs modifications au serveur, et récupèrent
+ les mises à jour des autres auteurs depuis le serveur.
+ Avec GIT, les utilisateurs soumettent à un dépôt local.
+ Le dépôt local peut être synchronisé avec un dépôt distant ou plusieurs
+ en utilisant les commandes GIT 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 pull
 \end_layout
 
 \end_inset
 
- and 
+ et 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 push
 \end_layout
 
 \end_inset
 
- GIT commands.
+.
  \SpecialChar LyX
- does not interact in any way with remote GIT repositories.
- It works exclusively with the local repository in a very similar way as
- with a central CVS or SVN repository.
- If you use remote GIT repositories you need to do the 
+ n’interagit en aucune manière avec les dépôts distants, il ne travaille
+ qu'avec le dépôt local de manière similaire à ce qui est fait avec un dépôt
+ central CVS ou SVN.
+ Si vous utilisez des dépôts GIT distants, vous devez exécuter les opérations
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 pull
 \end_layout
 
 \end_inset
 
- and 
+ et 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 push
 \end_layout
 
 \end_inset
 
- operations with your favourite GIT client.
+ avec votre client GIT habituel.
 \end_layout
 
 \begin_layout Subsubsection
 
 \family sans
-\lang english
-Register
+Initialiser le contrôle de version
 \end_layout
 
 \begin_layout Standard
+Si votre document n'est pas sous le mode 
+\begin_inset Quotes cld
+\end_inset
 
-\lang english
-If your document is not under revision control, this is the only item shown
- in the menu.
- And if it is under revision control, the 
-\family sans
-Register
-\family default
- item is not visible.
+contrôle de version
+\begin_inset Quotes crd
+\end_inset
+
+, c'est le seul choix qui vous soit proposé.
+ Si vous êtes déjà sous ce mode, l'élément 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+S'inscrire
+\end_layout
+
+\end_inset
+
+ est grisé et inaccessible.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This command registers in GIT your document ONLY in case you have already
- the documents directory under GIT control (in particular 
+Cette commande initialise le contrôle de version de votre document sous
+ GIT UNIQUEMENT si le répertoire du document est déjà sous contrôle de GIT
+ (en particulier le fichier
 \family typewriter
-.git/index
+ .git/index
 \family default
- file exists).
- This means you have to checkout the archive by yourself.
+ existe).
+ Ceci signifie que vous devez créer l'archive vous-même.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Then you are asked interactively to supply an initial description of the
- document.
- Don't forget that registered file is not yet committed.
+On vous demandera ensuite une description initiale du document.
+ N'oubliez pas que la version initialisée n'est pas encore enregistrée.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-GIT command that is run: 
+La commande GIT exécutée: 
 \family typewriter
 git add 
 \begin_inset Quotes qld
 \end_inset
 
-<file-name>
+<nom-de-fichier>
 \begin_inset Quotes qld
 \end_inset
 
@@ -24377,63 +24360,68 @@ git add
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Read 
+Consulter 
 \family typewriter
 man git
 \family default
- to understand the switches.
+ pour comprendre les options.
 \end_layout
 
 \begin_layout Subsubsection
+Enregistrer
+\begin_inset space ~
+\end_inset
 
-\family sans
-\lang english
-Check In Changes
+les
+\begin_inset space ~
+\end_inset
+
+changements
 \end_layout
 
 \begin_layout Standard
+Lorsque vous avez fini de modifier un fichier, vous figez vos modification
+\lang english
+s.
+ 
+\lang french
+Il vous sera alors demandé une description de ceux-ci.
 
 \lang english
-When you are finished editing a file, you commit your changes.
- When you do this, you are asked for a description of the changes.
- After that changes are committed.
+ 
+\lang french
+Les modifications sont soumises ensuite.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-GIT command: 
+La commande GIT exécutée: 
 \family typewriter
-git commit -q -m"<description>" <file-name>
+git commit -q -m"<description>" <nom-de-fichier>
 \end_layout
 
 \begin_layout Subsubsection
 
 \family sans
-\lang english
-Revert To Repository Version
+Revenir à la version du dépôt
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This will discard all changes made to the document since the last check
- in.
- You get a warning before changes are discarded.
+Ceci annule tous les changements réalisés sur le document depuis que le
+ document a été figé la dernière fois.
+ Une demande de confirmation apparaît alors, avant que tous les changements
+ soient perdus.
 \end_layout
 
 \begin_layout Standard
-
+La commande GIT exécutée
 \lang english
-GIT command: 
+: 
 \family typewriter
 git checkout -q 
 \begin_inset Quotes qld
 \end_inset
 
-<file-name>
+<nom-de-fichier>
 \begin_inset Quotes qld
 \end_inset
 
@@ -24441,39 +24429,31 @@ git checkout -q
 \end_layout
 
 \begin_layout Subsubsection
-
-\family sans
-\lang english
-Rename
+Renommer
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This will rename the current document including the version history.
- It requires a clean document without any changes since the last checkin.
- You are asked for a file name and a description of the rename operation.
- After that the document is renamed, both locally and in the repository.
- If the parent directories of the new and old file names differ, all relative
- paths of included files are adjusted (like in 
+Cette commande va renommer le document courant, historique de versions inclus.
+ Elle requiert un document propre sans modifications depuis le dernier enregistr
+ement.
+ Elle vous demande un nom de fichier et une description de l'opération de
+ renommage.
+ Le document est renommé ensuite, à la fois localement et dans le dépôt.
+ Si les répertoires parents de l’ancien et du nouveau fichier diffèrent,
+ tous les chemins relatifs des fichiers inclus sont rectifiés (comme avec
+ 
 \family sans
-File\SpecialChar menuseparator
-Save As
+Fichier\SpecialChar menuseparator
+Enregistrer sous
 \family default
 \SpecialChar ldots
 ).
- Finally, the document is reloaded using the new name.
+ Enfin, le ficher est rechargé sous le nouveau nom.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\lang english
-GIT
-\begin_inset space ~
-\end_inset
-
-commands: 
+Les commandes GIT exécutées: 
 \begin_inset space ~
 \end_inset
 
@@ -24486,15 +24466,11 @@ commands:
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 git mv 
-\family typewriter
-
 \begin_inset Quotes qld
 \end_inset
 
-<file-name>
+<nom-de-fichier>
 \begin_inset Quotes qld
 \end_inset
 
@@ -24502,7 +24478,7 @@ git mv
 \begin_inset Quotes qld
 \end_inset
 
-<new-file-name>
+<nouveau-nom-de-fichier>
 \begin_inset Quotes qld
 \end_inset
 
@@ -24520,8 +24496,6 @@ git mv
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 git commit
 \end_layout
 
@@ -24531,110 +24505,96 @@ git commit
 \end_layout
 
 \begin_layout Subsubsection
-
-\family sans
-\lang english
-Show History
+Afficher l'historique
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This shows the complete history of the GIT document.
- The output of 
+Cette commande affiche l'historique complet du document sous GIT.
+ Le résultat de 
 \family typewriter
 git log 
 \begin_inset Quotes qld
 \end_inset
 
-<file-name>
+<nom-de-fichier>
 \begin_inset Quotes qld
 \end_inset
 
 
 \family default
- is shown in a browser.
+ est affiché dans un navigateur.
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Version Info
+Infos de version
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \SpecialChar LyX
- supports GIT hash number of the last commit to the file, author name, date
- and time of last commit.
- All those are extracted from 
+ reconnaît l'empreinte de validation GIT de la dernière soumission du fichier,
+ le nom de son auteur, la date et l'heure.
+ Toutes ces informations sont extraites via 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 git log -n 1 --pretty=format:%H%n%an%n%ai
 \end_layout
 
 \end_inset
 
 .
- Tree version information is obtained via 
+\end_layout
+
+\begin_layout Standard
+L'information sur la version de l'arborescence peut être obtenue via 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 git describe --abbrev --dirty --long
 \end_layout
 
 \end_inset
 
 .
- See 
+ 
+\end_layout
+
+\begin_layout Standard
+Voir 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:VCS-Revision-Information"
 
 \end_inset
 
- for other details.
+ pour d'autres détails.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Further tuning
+Personnalisation avancée
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-With the recent addition of the 
+Avec l'implantation de la commande 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 vc-command
 \end_layout
 
 \end_inset
 
- function \SpecialChar LyX
- power users are allowed to create their own commands for revision
- control.
+, les utilisateurs avancés de \SpecialChar LyX
+ peuvent créer leurs propres commandes de
+ contrôle de version.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-As an example you can see how two TortoiseSVN commands could be integrated
- directly:
+Par exemple, vous pouvez voir comment deux commandes TortoiseSVN pourraient
+ être directement intégrées:
 \end_layout
 
 \begin_layout Description
@@ -24674,95 +24634,80 @@ vc-command DR "." "TortoiseProc /command:revert /path:$$p"
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Version control and Document comparison
+Contrôle de version et comparaison de documents
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-One of the typical uses of version control is to inspect the changes between
- revisions, usually by creating 
+Une des utilisations caractéristiques du contrôle de version consiste à
+ mettre en évidence les modifications entre versions, usuellement en créant
+ des fichiers 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 diff
 \end_layout
 
 \end_inset
 
- dumps.
- While this is useful for plain text files, it is much less useful in the
- case of \SpecialChar LyX
- files, which have more a complicated structure.
- Hence we provide binding to the Document comparison feature.
- There are two ways of calling this feature – either by direct call of 
+.
+ Alors que ceci est utilisé pour les fichiers textuels ordinaires, ça l'est
+ beaucoup moins dans le cas des fichiers LyX, dont la structures est plus
+ complexe.
+ Nous fournissons donc un lien vers la fonctionnalité \SpecialChar LyX
+ de comparaison de
+ documents.
+ Il y a deux façons d'invoquer cette comparaison, soit par un appel direct
+ de la fonction \SpecialChar LyX
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 vc-compare
 \end_layout
 
 \end_inset
 
- \SpecialChar LyX
- function (for details see \SpecialChar LyX
- functions manual) or by the toolbar icon 
+ (voir le manuel des fonctions \SpecialChar LyX
+ pour les détails), soit par l'icône de la
+ barre d'outils 
 \begin_inset Info
 type  "icon"
 arg   "vc-compare"
 \end_inset
 
- or the menu item 
+ ou l'entrée de menu 
 \begin_inset Info
 type  "menu"
 arg   "vc-compare"
 \end_inset
 
-, respectively.
- One can either compare two chosen revisions of the document or he can simply
- compare the current version of edited text with older revisions (where
- '
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-0
-\end_layout
-
-\end_inset
-
-' revisions back means comparison of the edited file with last commited
- revision).
- 
+ Il est possible de comparer deux révisions particulières du document, ou
+ plus simplement la version courante en cours de modification avec une version
+ antérieure (où la révision «0» est simplement la dernière révision enregistrée).
 \end_layout
 
 \begin_layout Standard
+Cette fonctionnalité est disponible avec SVN et RCS, bien que dans ce dernier
+ cas il y ait une contrainte due au schéma de versionnement plus compliqué:
+ lorsque que l'on désigne une révision, les chiffres pointent toujours sur
+ le dernier élément du numéro de révision, c'est-à-dire «35» dans 
+\begin_inset Quotes cld
+\end_inset
 
-\lang english
-This feature is supported for SVN and RCS though due to the more complicated
- versioning scheme of RCS there is a constraint – when addressing the revisions
- in dialog, numbers always point to the last number in RCS revision number,
- i.e.
- '35' in '1.2.35'.
- We don't currently support GIT addressing of revisions, one can just compare
- edited document with its revision X steps backs, where X is addressed as
- 
+1.2.35
+\begin_inset Quotes crd
+\end_inset
+
+.
+ En ce qui concerne GIT, la fonctionnalité n'est pas disponible, il est
+ juste possible de comparer un document modifié avec une révision antérieure
+ de X étapes, où X est défini par 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HEAD~X
 \end_layout
 
@@ -24910,7 +24855,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.literateprogramming.com/lpfaq.pdf
+http://www.xmarks.com/site/shelob.ce.ttu.edu/daves/lpfaq/faq.html
 \end_layout
 
 \end_inset
@@ -25025,47 +24970,36 @@ Génération des documents et du code (weaving and tangling)
 \end_layout
 
 \begin_layout Paragraph
-
-\lang english
 Using the noweb module
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you have installed Noweb and \SpecialChar LyX
- successfully, whenever you open a new document,
- after you have chosen its document class, use the 
+Si vous avez installé Noweb et \SpecialChar LyX
+ avec succès, chaque fois que vous ouvrez
+ un nouveau document, après avoir choisi sa classe, utilisez le menu
 \family sans
-Document\SpecialChar menuseparator
-Settings
+ Document\SpecialChar menuseparator
+Paramètres...
+
 \family default
- menu to add the 
-\begin_inset Quotes eld
+ pour ajouter le module 
+\begin_inset Quotes cld
 \end_inset
 
 noweb
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
- module.
- If Noweb is correctly installed, when you click on the 
-\begin_inset Quotes eld
+.
+ Vous le verrez en cliquant sur 
+\begin_inset Quotes cld
 \end_inset
 
-Modules
-\begin_inset Quotes erd
+ Modules
+\begin_inset Quotes crd
 \end_inset
 
- link, you will see the 
-\begin_inset Quotes eld
-\end_inset
-
-noweb
-\begin_inset Quotes erd
-\end_inset
-
- module in the available list and you can add it to your document.
+ dans le liste des modules disponibles.
 \end_layout
 
 \begin_layout Paragraph
@@ -25455,68 +25389,55 @@ notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 NOWEB_OUTPUT_DIR=$2 sh
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The next part of the converter setting is the
+Le prochain élément du réglage du convertisseur est le
 \begin_inset Newline newline
 \end_inset
 
 
-\begin_inset Quotes eld
+\begin_inset Quotes cld
 \end_inset
 
-Flags
-\begin_inset Quotes erd
+Drapeau
+\begin_inset Quotes crd
 \end_inset
 
- which is to be set to 
+ qui doit être mis à
 \end_layout
 
 \begin_layout LyX-Code
-
-\family typewriter
-\lang english
 parselog=$$s/scripts/listerrors
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This will run any errors that are generated by the 
-\begin_inset Quotes eld
-\end_inset
-
-build-script
-\begin_inset Quotes erd
-\end_inset
-
- process through the 
-\begin_inset Quotes eld
+Ceci filtrera par le programme 
+\begin_inset Quotes cld
 \end_inset
 
 listerrors
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
- program.
+ toute erreur créée par le 
+\family sans
+build-script
+\family default
+.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The build will normally take place in \SpecialChar LyX
-'s temporary directory, so the files
- produced by the conversion will be in that directory.
+La construction prendra normalement place dans le répertoire temporaire
+ de \SpecialChar LyX
+, les fichiers produits seront donc normalement dans ce répertoire.
  \SpecialChar LyX
- will copy out what it regards as the `main' file, but the 
+ exportera ce qui concerne le fichier principal, mais le programme de conversio
+n
 \family typewriter
-Noweb->Program
+ Noweb->Program
 \family default
- conversion may produce several files, and so most of these would then be
- deleted when \SpecialChar LyX
- was closed.
- This is why we pass in the NOWEB_OUTPUT_DIR environment variable so that
- the build-script chunk can place the generated files in that location.
+ peut produire d'autres fichiers, qui seront perdus quand \SpecialChar LyX
+ sera fermé.
+ C'est pourquoi nous transmettons la variable d'environnement NOWEB_OUTPUT_DIR
+ pour que les éléments de la conversion puissent être copiés à cet endroit.
 \end_layout
 
 \begin_layout Paragraph
@@ -25969,11 +25890,7 @@ ddd
 Notez cependant qu'il vous faut activer cette fonction du serveur \SpecialChar LyX
 , inactive
  par défaut.
- 
-\lang english
-La section
-\lang french
-
+ La section
 \begin_inset space ~
 \end_inset
 
@@ -25984,9 +25901,7 @@ reference "sec:Démarrer-le-Serveur"
 
 \end_inset
 
- 
-\lang english
-explique comment procéder.
+ explique comment procéder.
 \end_layout
 
 \begin_layout Subsubsection
@@ -26178,31 +26093,31 @@ nouvelle ligne
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
 \SpecialChar LyX
- and knitr/Sweave
+ et knitr/Sweave
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Support for 
+Les fonctionnalités de 
 \family sans
 knitr
 \family default
- and 
+ et 
 \family sans
 Sweave
 \family default
- is documented in the 
+ sont documentées dans le fichier d'exemple 
 \emph on
 knitr.lyx
 \emph default
- example file and in the Sweave manual (menu 
+ et dans le manuel 
+\emph on
+Sweave
+\emph default
+ (menu 
 \family sans
-Help\SpecialChar menuseparator
-Specific Manuals
+Aide\SpecialChar menuseparator
+Manuels Spécifiques
 \family default
 ).
 \end_layout
@@ -26857,8 +26772,6 @@ On the evening of the crime, he returned from the club exactly at ten.
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
 Espacements environnants
 \end_layout
 
@@ -28587,7 +28500,7 @@ Voici un exemple:
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "../SpecialParagraphShape.tex"
+filename "../../../../2.3.x/lib/doc/SpecialParagraphShape.tex"
 literal "true"
 
 \end_inset
