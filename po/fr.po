@@ -362,8 +362,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-03-28 10:51+0200\n"
-"PO-Revision-Date: 2021-03-29 10:23+0200\n"
+"POT-Creation-Date: 2021-04-19 10:53+0200\n"
+"PO-Revision-Date: 2021-04-19 10:54+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -835,8 +835,8 @@ msgstr "Type de boîte intérieure"
 #: src/frontends/qt/ui/TabularUi.ui:1219 src/frontends/qt/ui/TabularUi.ui:1267
 #: src/frontends/qt/GuiBox.cpp:420 src/frontends/qt/GuiBox.cpp:630
 #: src/frontends/qt/GuiDocument.cpp:124 src/frontends/qt/GuiGraphics.cpp:576
-#: src/frontends/qt/GuiMathMatrix.cpp:33 src/frontends/qt/GuiPrefs.cpp:2289
-#: src/frontends/qt/GuiPrefs.cpp:2312
+#: src/frontends/qt/GuiMathMatrix.cpp:33 src/frontends/qt/GuiPrefs.cpp:2323
+#: src/frontends/qt/GuiPrefs.cpp:2346
 msgid "None"
 msgstr "Aucun"
 
@@ -1110,10 +1110,10 @@ msgid "Add A&ll"
 msgstr "Ajouter &tout"
 
 #: src/frontends/qt/ui/BranchesUnknownUi.ui:58 src/Buffer.cpp:1458
-#: src/Buffer.cpp:4697 src/Buffer.cpp:4791 src/LyXVC.cpp:114 src/LyXVC.cpp:310
+#: src/Buffer.cpp:4697 src/Buffer.cpp:4807 src/LyXVC.cpp:114 src/LyXVC.cpp:310
 #: src/buffer_funcs.cpp:56 src/frontends/qt/GuiBranches.cpp:226
 #: src/frontends/qt/GuiClipboard.cpp:252 src/frontends/qt/GuiDocument.cpp:2834
-#: src/frontends/qt/GuiParagraph.cpp:177 src/frontends/qt/GuiPrefs.cpp:3376
+#: src/frontends/qt/GuiParagraph.cpp:177 src/frontends/qt/GuiPrefs.cpp:3410
 #: src/frontends/qt/GuiView.cpp:2804 src/frontends/qt/GuiView.cpp:3036
 #: src/frontends/qt/GuiView.cpp:3060 src/frontends/qt/GuiView.cpp:3074
 #: src/frontends/qt/GuiView.cpp:3176 src/frontends/qt/GuiView.cpp:3221
@@ -1170,8 +1170,8 @@ msgstr "&Taille :"
 #: src/frontends/qt/GuiDocument.cpp:3398 src/frontends/qt/GuiDocument.cpp:4894
 #: src/frontends/qt/GuiExternal.cpp:76 src/frontends/qt/GuiGraphics.cpp:71
 #: src/frontends/qt/GuiIndices.cpp:58 src/frontends/qt/GuiListings.cpp:160
-#: src/frontends/qt/GuiListings.cpp:167 src/frontends/qt/GuiPrefs.cpp:2445
-#: src/frontends/qt/GuiPrefs.cpp:2591 src/frontends/qt/GuiPrintNomencl.cpp:47
+#: src/frontends/qt/GuiListings.cpp:167 src/frontends/qt/GuiPrefs.cpp:2479
+#: src/frontends/qt/GuiPrefs.cpp:2625 src/frontends/qt/GuiPrintNomencl.cpp:47
 #: src/frontends/qt/GuiTabularCreate.cpp:107
 #: src/frontends/qt/GuiViewSource.cpp:341
 msgid "Default"
@@ -1366,7 +1366,7 @@ msgstr "Lan&gue :"
 #: lib/layouts/europasscv.layout:475 lib/layouts/europasscv.layout:482
 #: lib/layouts/europecv.layout:321 lib/layouts/europecv.layout:327
 #: lib/layouts/moderncv.layout:580 src/frontends/qt/GuiDocument.cpp:1767
-#: src/frontends/qt/GuiPrefs.cpp:2392 src/frontends/qt/Menus.cpp:938
+#: src/frontends/qt/GuiPrefs.cpp:2426 src/frontends/qt/Menus.cpp:938
 msgid "Language"
 msgstr "Langue"
 
@@ -1719,7 +1719,7 @@ msgstr ""
 msgid "Save as Document Defaults"
 msgstr "Enregistrer comme valeurs implicites"
 
-#: src/frontends/qt/ui/ERTUi.ui:38 src/frontends/qt/GuiPrefs.cpp:1301
+#: src/frontends/qt/ui/ERTUi.ui:38 src/frontends/qt/GuiPrefs.cpp:1319
 msgid "Display"
 msgstr "Affichage écran"
 
@@ -2570,7 +2570,7 @@ msgstr "&Modèle de remplissage :"
 msgid "&Protect:"
 msgstr "&Protégé :"
 
-#: src/frontends/qt/ui/HSpaceUi.ui:133 src/frontends/qt/GuiHSpace.cpp:212
+#: src/frontends/qt/ui/HSpaceUi.ui:133 src/frontends/qt/GuiHSpace.cpp:217
 msgid "Insert the spacing even after a line break"
 msgstr "Insérer l'espacement même après un saut de page"
 
@@ -3939,7 +3939,7 @@ msgstr "Double"
 #: src/frontends/qt/GuiDocument.cpp:1191 src/frontends/qt/GuiDocument.cpp:1537
 #: src/frontends/qt/GuiHSpace.cpp:57 src/frontends/qt/GuiPrefs.cpp:816
 #: src/frontends/qt/GuiPrefs.cpp:844 src/frontends/qt/GuiPrefs.cpp:871
-#: src/frontends/qt/GuiPrefs.cpp:2291 src/frontends/qt/GuiPrefs.cpp:2314
+#: src/frontends/qt/GuiPrefs.cpp:2325 src/frontends/qt/GuiPrefs.cpp:2348
 #: src/frontends/qt/GuiPrintNomencl.cpp:51 src/insets/InsetInfo.cpp:236
 #: src/insets/InsetInfo.cpp:246 src/insets/InsetInfo.cpp:250
 #: src/insets/InsetInfo.cpp:259 src/insets/InsetInfo.cpp:321
@@ -4195,8 +4195,8 @@ msgid "&Modify"
 msgstr "&Modifier"
 
 #: src/frontends/qt/ui/PrefConvertersUi.ui:286
-#: src/frontends/qt/ui/PrefShortcutsUi.ui:61 src/frontends/qt/GuiPrefs.cpp:3112
-#: src/frontends/qt/GuiPrefs.cpp:3198
+#: src/frontends/qt/ui/PrefShortcutsUi.ui:61 src/frontends/qt/GuiPrefs.cpp:3146
+#: src/frontends/qt/GuiPrefs.cpp:3232
 msgid "Remo&ve"
 msgstr "&Enlever"
 
@@ -4476,7 +4476,7 @@ msgstr ""
 "Définir un patron de recherche (voir le Manuel de l’utilisateur pour la "
 "syntaxe)"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:167 src/LyXRC.cpp:3103
+#: src/frontends/qt/ui/PrefEditUi.ui:167 src/LyXRC.cpp:3142
 msgid ""
 "Configure the width of the text cursor. Automatic zoom-controlled cursor "
 "width used when set to 0."
@@ -4854,7 +4854,7 @@ msgstr ""
 msgid "&Mark additional languages"
 msgstr "&Marquer les langues additionnelles"
 
-#: src/frontends/qt/ui/PrefLanguageUi.ui:199 src/LyXRC.cpp:3231
+#: src/frontends/qt/ui/PrefLanguageUi.ui:199 src/LyXRC.cpp:3270
 msgid ""
 "Select to use the current keyboard language, as set from the operating "
 "system, as default input language."
@@ -5053,7 +5053,7 @@ msgstr "Autres options"
 msgid "Output &line length:"
 msgstr "&Longueur de la ligne exportée :"
 
-#: src/frontends/qt/ui/PrefOutputUi.ui:186 src/LyXRC.cpp:3042
+#: src/frontends/qt/ui/PrefOutputUi.ui:186 src/LyXRC.cpp:3081
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -7674,7 +7674,7 @@ msgstr "Transactions IEEE"
 #: lib/layouts/slides.layout:61 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdinsets.inc:687 lib/layouts/stdletter.inc:12
 #: lib/layouts/svcommon.inc:26 lib/layouts/tufte-book.layout:35
-#: src/insets/InsetRef.cpp:595
+#: src/insets/InsetRef.cpp:597
 msgid "Standard"
 msgstr "Standard"
 
@@ -7882,7 +7882,7 @@ msgstr "TitreRevueExpert"
 #: lib/layouts/ijmpc.layout:496 lib/layouts/ijmpc.layout:498
 #: lib/layouts/ijmpd.layout:520 lib/layouts/ijmpd.layout:522
 #: lib/layouts/kluwer.layout:364 lib/layouts/kluwer.layout:377
-#: lib/examples/Articles:0 src/RowPainter.cpp:366
+#: lib/examples/Articles:0 src/RowPainter.cpp:369
 msgid "Appendix"
 msgstr "Annexe"
 
@@ -9217,7 +9217,7 @@ msgstr "Barre latérale (uniquement sigchi-a)"
 msgid "Margin figure (sigchi-a only)"
 msgstr "Fi)gure en marge (uniquement sigchi-a)"
 
-#: lib/layouts/acmart.layout:526 lib/layouts/beamer.layout:1724
+#: lib/layouts/acmart.layout:526 lib/layouts/beamer.layout:1726
 #: lib/layouts/powerdot.layout:577 lib/layouts/sciposter.layout:109
 #: lib/layouts/stdfloats.inc:33 lib/layouts/tufte-book.layout:286
 msgid "List of Figures"
@@ -9227,7 +9227,7 @@ msgstr "Liste des figures"
 msgid "Margin table (sigchi-a only)"
 msgstr "Tableau en marge (uniquement sigchi-a)"
 
-#: lib/layouts/acmart.layout:539 lib/layouts/beamer.layout:1711
+#: lib/layouts/acmart.layout:539 lib/layouts/beamer.layout:1713
 #: lib/layouts/powerdot.layout:560 lib/layouts/sciposter.layout:123
 #: lib/layouts/stdfloats.inc:18 lib/layouts/tufte-book.layout:270
 msgid "List of Tables"
@@ -9670,7 +9670,7 @@ msgstr "Planche"
 msgid "Planotable"
 msgstr "Planche de tableaux"
 
-#: lib/layouts/aguplus.inc:211 lib/layouts/beamer.layout:1706
+#: lib/layouts/aguplus.inc:211 lib/layouts/beamer.layout:1708
 #: lib/layouts/powerdot.layout:553 lib/layouts/powerdot.layout:631
 #: lib/layouts/sciposter.layout:118 lib/layouts/stdfloats.inc:13
 #: lib/ui/stdtoolbars.inc:153 src/insets/Inset.cpp:104
@@ -10059,7 +10059,7 @@ msgstr "CinqAffiliations"
 msgid "SixAffiliations"
 msgstr "SixAffiliations"
 
-#: lib/layouts/apax.inc:227 lib/layouts/beamer.layout:1653
+#: lib/layouts/apax.inc:227 lib/layouts/beamer.layout:1655
 #: lib/layouts/elsart.layout:470 lib/layouts/fixme.module:108
 #: lib/layouts/iopart.layout:106 lib/layouts/llncs.layout:394
 #: lib/layouts/powerdot.layout:215 lib/layouts/slides.layout:170
@@ -10330,7 +10330,7 @@ msgstr "Cadres"
 #: lib/layouts/beamer.layout:1531 lib/layouts/beamer.layout:1551
 #: lib/layouts/beamer.layout:1572 lib/layouts/beamer.layout:1593
 #: lib/layouts/beamer.layout:1614 lib/layouts/beamer.layout:1635
-#: lib/layouts/beamer.layout:1661 lib/layouts/pdfform.module:124
+#: lib/layouts/beamer.layout:1663 lib/layouts/pdfform.module:124
 msgid "Action"
 msgstr "Action"
 
@@ -10407,7 +10407,7 @@ msgstr "TitreCadre"
 #: lib/layouts/beamer.layout:1513 lib/layouts/beamer.layout:1533
 #: lib/layouts/beamer.layout:1553 lib/layouts/beamer.layout:1574
 #: lib/layouts/beamer.layout:1595 lib/layouts/beamer.layout:1616
-#: lib/layouts/beamer.layout:1637 lib/layouts/beamer.layout:1663
+#: lib/layouts/beamer.layout:1637 lib/layouts/beamer.layout:1665
 msgid "Specify the overlay settings (see beamer manual)"
 msgstr "Préciser les réglages du recouvrement (voir le manuel Beamer)"
 
@@ -10677,7 +10677,7 @@ msgstr "Corollaire."
 #: lib/layouts/beamer.layout:1532 lib/layouts/beamer.layout:1552
 #: lib/layouts/beamer.layout:1573 lib/layouts/beamer.layout:1594
 #: lib/layouts/beamer.layout:1615 lib/layouts/beamer.layout:1636
-#: lib/layouts/beamer.layout:1662
+#: lib/layouts/beamer.layout:1664
 msgid "Action Specifications|S"
 msgstr "Spécification d'action|S"
 
@@ -10786,43 +10786,43 @@ msgstr "Invisible"
 msgid "Alternative"
 msgstr "Alternative"
 
-#: lib/layouts/beamer.layout:1643
+#: lib/layouts/beamer.layout:1644
 msgid "Default Text"
 msgstr "Texte implicite"
 
-#: lib/layouts/beamer.layout:1644
+#: lib/layouts/beamer.layout:1645
 msgid "Enter the default text here"
 msgstr "Saisir le texte implicite ici"
 
-#: lib/layouts/beamer.layout:1651
+#: lib/layouts/beamer.layout:1653
 msgid "Beamer Note"
 msgstr "Note Beamer"
 
-#: lib/layouts/beamer.layout:1669
+#: lib/layouts/beamer.layout:1671
 msgid "Note Options"
 msgstr "Options de note"
 
-#: lib/layouts/beamer.layout:1670
+#: lib/layouts/beamer.layout:1672
 msgid "Specifiy note options (see beamer manual)"
 msgstr "Préciser les options de note (voir le manuel Beamer)"
 
-#: lib/layouts/beamer.layout:1675
+#: lib/layouts/beamer.layout:1677
 msgid "ArticleMode"
 msgstr "ModeArticle"
 
-#: lib/layouts/beamer.layout:1681
+#: lib/layouts/beamer.layout:1683
 msgid "Article"
 msgstr "Article"
 
-#: lib/layouts/beamer.layout:1686
+#: lib/layouts/beamer.layout:1688
 msgid "PresentationMode"
 msgstr "ModePresentation"
 
-#: lib/layouts/beamer.layout:1692
+#: lib/layouts/beamer.layout:1694
 msgid "Presentation"
 msgstr "Présentation"
 
-#: lib/layouts/beamer.layout:1719 lib/layouts/powerdot.layout:570
+#: lib/layouts/beamer.layout:1721 lib/layouts/powerdot.layout:570
 #: lib/layouts/powerdot.layout:627 lib/layouts/sciposter.layout:104
 #: lib/layouts/stdfloats.inc:28
 msgid "Figure"
@@ -12480,7 +12480,7 @@ msgstr ""
 "ajouter le numéro de section au numéro d'équation, comme dans « (2.1) »."
 
 #: lib/layouts/eqs-within-sections.module:17 lib/layouts/scrbook.layout:29
-#: lib/layouts/stdcounters.inc:81 src/insets/InsetRef.cpp:596
+#: lib/layouts/stdcounters.inc:81 src/insets/InsetRef.cpp:598
 #: src/mathed/InsetMathRef.cpp:372
 msgid "Equation"
 msgstr "Équation"
@@ -12789,7 +12789,7 @@ msgid "Size the photo is resized to"
 msgstr "Changement de taille de la photo"
 
 #: lib/layouts/europecv.layout:185 src/frontends/qt/GuiDocument.cpp:136
-#: src/insets/InsetRef.cpp:597
+#: src/insets/InsetRef.cpp:599
 msgid "Page"
 msgstr "Page"
 
@@ -16048,7 +16048,7 @@ msgstr "CaseÀCocher"
 msgid "ChoiceMenu"
 msgstr "Menu"
 
-#: lib/layouts/pdfform.module:90 src/insets/InsetRef.cpp:602
+#: lib/layouts/pdfform.module:90 src/insets/InsetRef.cpp:604
 msgid "Label"
 msgstr "Étiquette"
 
@@ -19932,7 +19932,7 @@ msgid "Cut"
 msgstr "Couper"
 
 #: lib/ui/stdcontext.inc:62 lib/ui/stdcontext.inc:376 lib/ui/stdmenus.inc:109
-#: lib/ui/stdtoolbars.inc:87 src/BufferView.cpp:2275
+#: lib/ui/stdtoolbars.inc:87 src/BufferView.cpp:2279
 msgid "Copy"
 msgstr "Copier"
 
@@ -21873,11 +21873,11 @@ msgstr "Correction orthographique"
 msgid "Spellcheck continuously"
 msgstr "Correction orthographique à la volée"
 
-#: lib/ui/stdtoolbars.inc:84 src/BufferView.cpp:1475
+#: lib/ui/stdtoolbars.inc:84 src/BufferView.cpp:1479
 msgid "Undo"
 msgstr "Annuler"
 
-#: lib/ui/stdtoolbars.inc:85 src/BufferView.cpp:1495
+#: lib/ui/stdtoolbars.inc:85 src/BufferView.cpp:1499
 msgid "Redo"
 msgstr "Refaire"
 
@@ -27650,7 +27650,7 @@ msgstr ""
 "%1$s vient d'une version plus récente de LyX, et le script lyx2lyx n'a pas "
 "réussi à le convertir."
 
-#: src/Buffer.cpp:1445 src/Buffer.cpp:4707 src/Buffer.cpp:4800
+#: src/Buffer.cpp:1445 src/Buffer.cpp:4707 src/Buffer.cpp:4816
 msgid "File is read-only"
 msgstr "Fichier en lecture seule"
 
@@ -28059,6 +28059,10 @@ msgstr "&Récupérer"
 msgid "&Load Original"
 msgstr "&Charger l'original"
 
+#: src/Buffer.cpp:4697
+msgid "&Only show difference"
+msgstr "N'afficher &que les différences"
+
 #: src/Buffer.cpp:4708
 #, c-format
 msgid ""
@@ -28133,7 +28137,7 @@ msgstr ""
 "Sauvegarde d'urgence renommée comme :\n"
 " %1$s"
 
-#: src/Buffer.cpp:4788
+#: src/Buffer.cpp:4804
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -28144,19 +28148,19 @@ msgstr ""
 "\n"
 "Voulez-vous charger la sauvegarde automatique ?"
 
-#: src/Buffer.cpp:4790
+#: src/Buffer.cpp:4806
 msgid "Load backup?"
 msgstr "Charger la sauvegarde automatique ?"
 
-#: src/Buffer.cpp:4791
+#: src/Buffer.cpp:4807
 msgid "&Load backup"
 msgstr "&Charger la sauvegarde"
 
-#: src/Buffer.cpp:4791
+#: src/Buffer.cpp:4807
 msgid "Load &original"
 msgstr "Charger l'&original"
 
-#: src/Buffer.cpp:4801
+#: src/Buffer.cpp:4817
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -28166,16 +28170,16 @@ msgstr ""
 "original %1$s est en lecture seule. Il faudra sauvegarder le document sous "
 "un autre nom."
 
-#: src/Buffer.cpp:5196 src/insets/InsetCaption.cpp:404
+#: src/Buffer.cpp:5219 src/insets/InsetCaption.cpp:404
 msgid "Senseless!!! "
 msgstr "Inapproprié !!! "
 
-#: src/Buffer.cpp:5451
+#: src/Buffer.cpp:5474
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Document %1$s rechargé."
 
-#: src/Buffer.cpp:5454
+#: src/Buffer.cpp:5477
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Impossible de recharger le document %1$s."
@@ -28394,7 +28398,7 @@ msgstr ""
 "sera utilisée. LyX ne pourra pas produire\n"
 "un résultat imprimable correct."
 
-#: src/BufferParams.cpp:2606 src/BufferView.cpp:1427 src/BufferView.cpp:1459
+#: src/BufferParams.cpp:2606 src/BufferView.cpp:1431 src/BufferView.cpp:1463
 msgid "Could not load class"
 msgstr "Chargement de la classe impossible"
 
@@ -28410,104 +28414,104 @@ msgstr "Erreur de lecture"
 msgid "No more insets"
 msgstr "Pas d'autre insert"
 
-#: src/BufferView.cpp:875
+#: src/BufferView.cpp:879
 msgid "Save bookmark"
 msgstr "Enregistrer le signet"
 
-#: src/BufferView.cpp:1095
+#: src/BufferView.cpp:1099
 msgid "Converting document to new document class..."
 msgstr "Conversion du document vers sa nouvelle classe..."
 
-#: src/BufferView.cpp:1140
+#: src/BufferView.cpp:1144
 msgid "Document is read-only"
 msgstr "Document en lecture seule"
 
-#: src/BufferView.cpp:1142
+#: src/BufferView.cpp:1146
 msgid "Document has been modified externally"
 msgstr "Le document a été modifié par une application externe"
 
-#: src/BufferView.cpp:1151
+#: src/BufferView.cpp:1155
 msgid "This portion of the document is deleted."
 msgstr "Cette portion du document est supprimée."
 
-#: src/BufferView.cpp:1194 src/BufferView.cpp:2260
+#: src/BufferView.cpp:1198 src/BufferView.cpp:2264
 #: src/frontends/qt/GuiView.cpp:4225 src/frontends/qt/GuiView.cpp:4313
 msgid "Absolute filename expected."
 msgstr "Chemin absolu requis."
 
-#: src/BufferView.cpp:1425 src/BufferView.cpp:1457
+#: src/BufferView.cpp:1429 src/BufferView.cpp:1461
 #, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "La classe de document « %1$s » n'a pas pu être chargée."
 
-#: src/BufferView.cpp:1483
+#: src/BufferView.cpp:1487
 msgid "No further undo information"
 msgstr "Pas d'information pour Annuler"
 
-#: src/BufferView.cpp:1503
+#: src/BufferView.cpp:1507
 msgid "No further redo information"
 msgstr "Pas d'information pour Refaire"
 
-#: src/BufferView.cpp:1700 src/BufferView.cpp:1715 src/BufferView.cpp:1746
+#: src/BufferView.cpp:1704 src/BufferView.cpp:1719 src/BufferView.cpp:1750
 msgid "Search string not found!"
 msgstr "Chaîne de caractères introuvable !"
 
-#: src/BufferView.cpp:1767
+#: src/BufferView.cpp:1771
 msgid "Mark off"
 msgstr "Marque désactivée"
 
-#: src/BufferView.cpp:1773
+#: src/BufferView.cpp:1777
 msgid "Mark on"
 msgstr "Marque activée"
 
-#: src/BufferView.cpp:1780
+#: src/BufferView.cpp:1784
 msgid "Mark removed"
 msgstr "Marque enlevée"
 
-#: src/BufferView.cpp:1783
+#: src/BufferView.cpp:1787
 msgid "Mark set"
 msgstr "Marque posée"
 
-#: src/BufferView.cpp:1874
+#: src/BufferView.cpp:1878
 msgid "Statistics for the selection:"
 msgstr "Statistiques pour la sélection :"
 
-#: src/BufferView.cpp:1876
+#: src/BufferView.cpp:1880
 msgid "Statistics for the document:"
 msgstr "Statistiques pour le document :"
 
-#: src/BufferView.cpp:1879
+#: src/BufferView.cpp:1883
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d mots"
 
-#: src/BufferView.cpp:1881
+#: src/BufferView.cpp:1885
 msgid "One word"
 msgstr "Un mot"
 
-#: src/BufferView.cpp:1884
+#: src/BufferView.cpp:1888
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d caractères (espaces inclus)"
 
-#: src/BufferView.cpp:1887
+#: src/BufferView.cpp:1891
 msgid "One character (including blanks)"
 msgstr "Un caractère (espaces inclus)"
 
-#: src/BufferView.cpp:1890
+#: src/BufferView.cpp:1894
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d caractères (espaces exclus)"
 
-#: src/BufferView.cpp:1893
+#: src/BufferView.cpp:1897
 msgid "One character (excluding blanks)"
 msgstr "Un caractère (espaces exclus)"
 
-#: src/BufferView.cpp:1895
+#: src/BufferView.cpp:1899
 msgid "Statistics"
 msgstr "Statistiques"
 
-#: src/BufferView.cpp:2118
+#: src/BufferView.cpp:2122
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
@@ -28515,35 +28519,35 @@ msgstr ""
 "Interruption de « inset-forall » du fait d'un nombre d'actions supérieur à "
 "%1$d"
 
-#: src/BufferView.cpp:2120
+#: src/BufferView.cpp:2124
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "\"%1$s\" appliqué à %2$d inserts"
 
-#: src/BufferView.cpp:2128
+#: src/BufferView.cpp:2132
 msgid "Branch name"
 msgstr "Nom de la branche"
 
-#: src/BufferView.cpp:2135 src/frontends/qt/GuiBranches.cpp:225
+#: src/BufferView.cpp:2139 src/frontends/qt/GuiBranches.cpp:225
 msgid "Branch already exists"
 msgstr "La branche existe déjà"
 
-#: src/BufferView.cpp:3024
+#: src/BufferView.cpp:3066
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Insertion du document %1$s..."
 
-#: src/BufferView.cpp:3040
+#: src/BufferView.cpp:3082
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Document %1$s inséré."
 
-#: src/BufferView.cpp:3042
+#: src/BufferView.cpp:3084
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Impossible d'insérer le document %1$s"
 
-#: src/BufferView.cpp:3540
+#: src/BufferView.cpp:3582
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -28554,11 +28558,11 @@ msgstr ""
 "%1$s\n"
 "à cause de l'erreur : %2$s"
 
-#: src/BufferView.cpp:3542
+#: src/BufferView.cpp:3584
 msgid "Could not read file"
 msgstr "Lecture du fichier impossible"
 
-#: src/BufferView.cpp:3549
+#: src/BufferView.cpp:3591
 #, c-format
 msgid ""
 "%1$s\n"
@@ -28567,17 +28571,17 @@ msgstr ""
 "%1$s\n"
 "est illisible."
 
-#: src/BufferView.cpp:3550 src/frontends/qt/qt_helpers.cpp:311
+#: src/BufferView.cpp:3592 src/frontends/qt/qt_helpers.cpp:311
 #: src/frontends/qt/qt_helpers.cpp:314 src/frontends/qt/qt_helpers.cpp:320
 #: src/output.cpp:39
 msgid "Could not open file"
 msgstr "Ouverture du fichier impossible"
 
-#: src/BufferView.cpp:3557
+#: src/BufferView.cpp:3599
 msgid "Reading not UTF-8 encoded file"
 msgstr "Lecture d'un fichier non encodé en UTF-8"
 
-#: src/BufferView.cpp:3558
+#: src/BufferView.cpp:3600
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -30037,7 +30041,7 @@ msgstr "Il manque le nom du fichier à importer pour --import"
 
 # Trouver un meilleur exemple !
 # Je n'en trouve pas en français... JPC
-#: src/LyXRC.cpp:3034
+#: src/LyXRC.cpp:3073
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
@@ -30045,13 +30049,13 @@ msgstr ""
 "Autoriser ou non les mots composés accolés, comme « diskdrive » pour « disk "
 "drive » ?"
 
-#: src/LyXRC.cpp:3038
+#: src/LyXRC.cpp:3077
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr "Spécifier une autre langue. La langue implicite est celle du document."
 
-#: src/LyXRC.cpp:3046
+#: src/LyXRC.cpp:3085
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -30059,7 +30063,7 @@ msgstr ""
 "Désélectionner si vous ne voulez pas que le texte sélectionné soit remplacé "
 "automatiquement par ce que vous tapez."
 
-#: src/LyXRC.cpp:3050
+#: src/LyXRC.cpp:3089
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -30067,14 +30071,14 @@ msgstr ""
 "Désélectionner si vous ne voulez pas que les options de classe soient "
 "réinitialisées aux valeurs implicites après un changement de classe."
 
-#: src/LyXRC.cpp:3054
+#: src/LyXRC.cpp:3093
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Intervalle de temps entre deux sauvegardes automatiques (en secondes). 0 "
 "signifie pas de sauvegarde automatique."
 
-#: src/LyXRC.cpp:3061
+#: src/LyXRC.cpp:3100
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -30082,7 +30086,7 @@ msgstr ""
 "Répertoire dans lequel mettre les copies de sauvegarde. Si laissé vide, LyX "
 "mettra la copie de sauvegarde dans le même répertoire que l'original."
 
-#: src/LyXRC.cpp:3065
+#: src/LyXRC.cpp:3104
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
@@ -30090,11 +30094,11 @@ msgstr ""
 "Définir les options de bibtex (voir man bibtex) ou sélectionner un autre "
 "compilateur (par ex. mlbibtex ou bibulus)."
 
-#: src/LyXRC.cpp:3069
+#: src/LyXRC.cpp:3108
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
 msgstr "Définir les options du programme BibTeX pour PLaTeX (LaTeX japonais)."
 
-#: src/LyXRC.cpp:3073
+#: src/LyXRC.cpp:3112
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -30102,11 +30106,11 @@ msgstr ""
 "Fichier de raccourcis clavier (bind). Vous pouvez mettre son chemin absolu, "
 "ou bien LyX cherchera dans ses répertoires bind/ global et local."
 
-#: src/LyXRC.cpp:3077
+#: src/LyXRC.cpp:3116
 msgid "Select to check whether the lastfiles still exist."
 msgstr "Sélectionner pour vérifier si les fichiers récents existent toujours."
 
-#: src/LyXRC.cpp:3081
+#: src/LyXRC.cpp:3120
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -30114,7 +30118,7 @@ msgstr ""
 "Définir comment lancer chktex. Par ex. « chktex -n11 -n1 -n3 -n6 -n9 -n22 -"
 "n25 -n30 -n38 ». Voir la documentation de ChkTeX."
 
-#: src/LyXRC.cpp:3088
+#: src/LyXRC.cpp:3127
 msgid ""
 "Forbid use of external converters with 'needauth' option to prevent "
 "undesired effects."
@@ -30122,7 +30126,7 @@ msgstr ""
 "Interdire l'utilisation de convertisseurs externes dotés de l'option "
 "'needauth' pour éviter des effets indésirables."
 
-#: src/LyXRC.cpp:3092
+#: src/LyXRC.cpp:3131
 msgid ""
 "Ask user before calling external converters with 'needauth' option to "
 "prevent undesired effects."
@@ -30130,7 +30134,7 @@ msgstr ""
 "Demander à l'utilisateur avant d'appeler des convertisseurs externes dotés "
 "de l'option 'needauth' pour éviter des effets indésirables."
 
-#: src/LyXRC.cpp:3099
+#: src/LyXRC.cpp:3138
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -30139,7 +30143,7 @@ msgstr ""
 "déplacez avec la barre de défilement. Cochez si vous préférez avoir toujours "
 "le curseur à l'écran."
 
-#: src/LyXRC.cpp:3107
+#: src/LyXRC.cpp:3146
 msgid ""
 "LyX normally doesn't allow the user to scroll further than the bottom of the "
 "document. Set to true if you prefer to scroll the bottom of the document to "
@@ -30149,15 +30153,15 @@ msgstr ""
 "Positionnez sur « vrai » si vous préférez voir la fin du document en haut de "
 "la fenêtre"
 
-#: src/LyXRC.cpp:3111
+#: src/LyXRC.cpp:3150
 msgid "Make Apple key act as Meta and Control key as Ctrl."
 msgstr "Faire agir la touche Apple comme Meta et la touche Control comme Ctrl."
 
-#: src/LyXRC.cpp:3115
+#: src/LyXRC.cpp:3154
 msgid "Use the Mac OS X conventions for cursor movement"
 msgstr "Utiliser la convention Mac OS X pour les mouvements du curseur"
 
-#: src/LyXRC.cpp:3119
+#: src/LyXRC.cpp:3158
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
@@ -30165,7 +30169,7 @@ msgstr ""
 "Afficher une petite boîte autour d'une macro mathématique avec le nom de la "
 "macro quand le curseur est à l'intérieur."
 
-#: src/LyXRC.cpp:3123
+#: src/LyXRC.cpp:3162
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
 "look in its global and local commands/ directories."
@@ -30173,18 +30177,18 @@ msgstr ""
 "Fichier de définition de commandes. Vous pouvez mettre son chemin absolu, ou "
 "bien LyX cherchera dans ses répertoires commands/ global et local."
 
-#: src/LyXRC.cpp:3127
+#: src/LyXRC.cpp:3166
 msgid ""
 "The default format used with LFUN_BUFFER_[VIEW|UPDATE] with non-TeX fonts."
 msgstr ""
 "Format implicite utilisé avec LFUN_BUFFER_[VIEW|UPDATE] avec des polices non-"
 "TeX."
 
-#: src/LyXRC.cpp:3131
+#: src/LyXRC.cpp:3170
 msgid "The default format used with LFUN_BUFFER_[VIEW|UPDATE]."
 msgstr "Format implicite utilisé avec LFUN_BUFFER_[VIEW|UPDATE]."
 
-#: src/LyXRC.cpp:3135
+#: src/LyXRC.cpp:3174
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -30192,11 +30196,11 @@ msgstr ""
 "Iconifier les fenêtres auxiliaires quand la fenêtre principale. (N'affecte "
 "que les fenêtres affichées après que le changement a été fait.)"
 
-#: src/LyXRC.cpp:3139
+#: src/LyXRC.cpp:3178
 msgid "Select how LyX will display any graphics."
 msgstr "Déterminer comment LyX affiche tous les graphiques."
 
-#: src/LyXRC.cpp:3143
+#: src/LyXRC.cpp:3182
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
@@ -30204,11 +30208,11 @@ msgstr ""
 "Chemin implicite pour vos documents. Si la valeur est vide, ce sera le "
 "répertoire dans lequel LyX a été lancé."
 
-#: src/LyXRC.cpp:3147
+#: src/LyXRC.cpp:3186
 msgid "Specify additional chars that can be part of a word."
 msgstr "Spécifier des caractères spéciaux pouvant faire partie d'un mot."
 
-#: src/LyXRC.cpp:3151
+#: src/LyXRC.cpp:3190
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
 "value selects the directory LyX was started from."
@@ -30216,7 +30220,7 @@ msgstr ""
 "Chemin dans lequel LyX proposera un choix d'exemples. Si la valeur est vide, "
 "ce sera le répertoire dans lequel LyX a été lancé."
 
-#: src/LyXRC.cpp:3158
+#: src/LyXRC.cpp:3197
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
@@ -30226,12 +30230,12 @@ msgstr ""
 "autre compilateur. Par ex., avec xindy / make-rules, la commande serait « "
 "makeindex.sh -m $$lang »."
 
-#: src/LyXRC.cpp:3162
+#: src/LyXRC.cpp:3201
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
 msgstr ""
 "Définir les options du programme d'indexation pour PLaTeX (LaTeX japonais)."
 
-#: src/LyXRC.cpp:3166
+#: src/LyXRC.cpp:3205
 msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
@@ -30239,13 +30243,13 @@ msgstr ""
 "Définir les options de makeindex (cf. man makeindex) utilisées pour la liste "
 "des symboles. Elles peuvent différer des options utilisées pour l'index."
 
-#: src/LyXRC.cpp:3170
+#: src/LyXRC.cpp:3209
 msgid "The command to run the python pygments syntax highlighter."
 msgstr ""
 "La commande permettant d'exécuter l'accentuation de syntaxe via pygments "
 "(écrit en python)."
 
-#: src/LyXRC.cpp:3179
+#: src/LyXRC.cpp:3218
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -30253,18 +30257,18 @@ msgstr ""
 "Choix du fichier de réaffectation clavier. Vous en avez besoin si vous tapez "
 "par exemple des documents en allemand sur un clavier français."
 
-#: src/LyXRC.cpp:3183
+#: src/LyXRC.cpp:3222
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr "Sélectionner s'il faut une commande de langue au début du document."
 
-#: src/LyXRC.cpp:3187
+#: src/LyXRC.cpp:3226
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr "Sélectionner s'il faut une commande de langue à la fin du document."
 
-#: src/LyXRC.cpp:3191
+#: src/LyXRC.cpp:3230
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -30273,15 +30277,15 @@ msgstr ""
 "Commande LaTeX pour passer de la langue du document à une autre langue. Par "
 "exemple \\selectlanguage{$$lang} où $$lang est le nom de la seconde langue."
 
-#: src/LyXRC.cpp:3195
+#: src/LyXRC.cpp:3234
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "Commande LaTeX pour revenir à la langue du document."
 
-#: src/LyXRC.cpp:3199
+#: src/LyXRC.cpp:3238
 msgid "The LaTeX command for local changing of the language."
 msgstr "Commande LaTeX pour un changement temporaire de langue."
 
-#: src/LyXRC.cpp:3203
+#: src/LyXRC.cpp:3242
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
@@ -30289,7 +30293,7 @@ msgstr ""
 "Désélectionner si vous ne voulez pas que la langue soit un paramètre de "
 "\\documentclass."
 
-#: src/LyXRC.cpp:3207
+#: src/LyXRC.cpp:3246
 msgid ""
 "The LaTeX command for loading the language package. E.g. "
 "\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
@@ -30297,7 +30301,7 @@ msgstr ""
 "Commande LaTeX pour charger le paquetage linguistique. Par exemple « "
 "\\usepackage{babel} », « \\usepackage{omega} »."
 
-#: src/LyXRC.cpp:3211
+#: src/LyXRC.cpp:3250
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -30305,24 +30309,24 @@ msgstr ""
 "Désélectionner si vous ne voulez pas utiliser babel quand la langue du "
 "document est la langue implicite."
 
-#: src/LyXRC.cpp:3215
+#: src/LyXRC.cpp:3254
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr ""
 "Désélectionner si vous ne voulez pas que LyX saute à la position qu'il a "
 "enregistré."
 
-#: src/LyXRC.cpp:3219
+#: src/LyXRC.cpp:3258
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr ""
 "Décocher pour éviter de charger les fichiers qui étaient ouverts lors de la "
 "dernière session LyX."
 
-#: src/LyXRC.cpp:3223
+#: src/LyXRC.cpp:3262
 msgid "De-select if you don't want LyX to create backup files."
 msgstr ""
 "Désélectionner si vous ne voulez pas que LyX crée des copies de sauvegarde."
 
-#: src/LyXRC.cpp:3227
+#: src/LyXRC.cpp:3266
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
@@ -30330,33 +30334,33 @@ msgstr ""
 "Sélectionner pour activer le soulignement des mots dans une langue autre que "
 "celle du document."
 
-#: src/LyXRC.cpp:3235
+#: src/LyXRC.cpp:3274
 msgid "The scrolling speed of the mouse wheel."
 msgstr "Vitesse de défilement de la molette de la souris."
 
-#: src/LyXRC.cpp:3239
+#: src/LyXRC.cpp:3278
 msgid "The completion popup delay."
 msgstr "Temporisation de l'affichage de la fenêtre auxiliaire de complétion."
 
-#: src/LyXRC.cpp:3243
+#: src/LyXRC.cpp:3282
 msgid "Select to display the completion popup in math mode."
 msgstr ""
 "Sélectionner pour afficher la fenêtre auxiliaire de complétion en mode "
 "mathématique."
 
-#: src/LyXRC.cpp:3247
+#: src/LyXRC.cpp:3286
 msgid "Select to display the completion popup in text mode."
 msgstr ""
 "Sélectionner pour afficher la fenêtre auxiliaire de complétion en mode texte."
 
-#: src/LyXRC.cpp:3251
+#: src/LyXRC.cpp:3290
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
 msgstr ""
 "Afficher la fenêtre auxiliaire de complétion sans délai après une tentative "
 "de complétion multiple."
 
-#: src/LyXRC.cpp:3255
+#: src/LyXRC.cpp:3294
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
@@ -30364,35 +30368,35 @@ msgstr ""
 "Afficher un petit triangle sur le curseur pour indiquer qu'une complétion "
 "est disponible."
 
-#: src/LyXRC.cpp:3259
+#: src/LyXRC.cpp:3298
 msgid "The inline completion delay."
 msgstr "Temporisation de complétion en ligne."
 
-#: src/LyXRC.cpp:3263
+#: src/LyXRC.cpp:3302
 msgid "Select to display the inline completion in math mode."
 msgstr ""
 "Sélectionner pour afficher la complétion en ligne en mode mathématique."
 
-#: src/LyXRC.cpp:3267
+#: src/LyXRC.cpp:3306
 msgid "Select to display the inline completion in text mode."
 msgstr "Sélectionner pour afficher la complétion en ligne en mode texte."
 
-#: src/LyXRC.cpp:3271
+#: src/LyXRC.cpp:3310
 msgid "Use \"...\" to shorten long completions."
 msgstr "Utiliser \"...\" pour raccourcir le complétions longues."
 
-#: src/LyXRC.cpp:3275
+#: src/LyXRC.cpp:3314
 msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
 msgstr "Autoriser les raccourcis TeXMacs, comme => convertie en \\Rightarrow."
 
-#: src/LyXRC.cpp:3279
+#: src/LyXRC.cpp:3318
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 "Nombre maximum de fichiers récents. On peut en avoir jusqu'à %1$d dans le "
 "menu Fichier."
 
-#: src/LyXRC.cpp:3284
+#: src/LyXRC.cpp:3323
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable.\n"
@@ -30402,41 +30406,41 @@ msgstr ""
 "d'environnement PATH.\n"
 "Utiliser le format natif du système d'exploitation."
 
-#: src/LyXRC.cpp:3290
+#: src/LyXRC.cpp:3329
 msgid "Shows a typeset preview of things such as math"
 msgstr ""
 "Afficher un aperçu de l'aspect final de certains éléments comme les math"
 
-#: src/LyXRC.cpp:3294
+#: src/LyXRC.cpp:3333
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr ""
 "Les équations en aperçu auront des étiquettes « (#) » au lieu d'avoir des "
 "numéros"
 
-#: src/LyXRC.cpp:3298
+#: src/LyXRC.cpp:3337
 msgid "Scale the preview size to suit."
 msgstr "Mettre l'aperçu à l'échelle pour qu'il tienne à l'écran."
 
-#: src/LyXRC.cpp:3302
+#: src/LyXRC.cpp:3341
 msgid "The option to print out in landscape."
 msgstr "Option pour imprimer en format paysage."
 
-#: src/LyXRC.cpp:3306
+#: src/LyXRC.cpp:3345
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Option pour spécifier les dimensions du papier."
 
-#: src/LyXRC.cpp:3310
+#: src/LyXRC.cpp:3349
 msgid "The option to specify paper type."
 msgstr "Option pour spécifier le type de papier."
 
-#: src/LyXRC.cpp:3314
+#: src/LyXRC.cpp:3353
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 "Sélectionner pour avoir un mouvement visuel de curseur bidirectionnel, "
 "désélectionner pour un mouvement logique."
 
-#: src/LyXRC.cpp:3318
+#: src/LyXRC.cpp:3357
 msgid ""
 "Specify whether, closing the last view of an open document, LyX should close "
 "the document (yes), hide it (no), or ask the user (ask)."
@@ -30444,7 +30448,7 @@ msgstr ""
 "Spécifier si, en fermant la dernière vue d'un document ouvert, LyX doit "
 "fermer le document (fermer), le cacher (cacher), ou demander (demander)."
 
-#: src/LyXRC.cpp:3322
+#: src/LyXRC.cpp:3361
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -30452,12 +30456,12 @@ msgstr ""
 "LyX détecte tout seul la résolution de votre moniteur en DPI (points par "
 "pouce). Si ça ne va pas, changez le réglage ici."
 
-#: src/LyXRC.cpp:3328
+#: src/LyXRC.cpp:3367
 msgid "The screen fonts used to display the text while editing."
 msgstr ""
 "Polices d'écran dans lesquelles s'affiche le texte en cours de modification."
 
-#: src/LyXRC.cpp:3337
+#: src/LyXRC.cpp:3376
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -30468,12 +30472,12 @@ msgstr ""
 "dans LyX. Si vous décochez cette option, LyX utilise la police bitmap de "
 "taille la plus proche disponible, au lieu de la mettre à l'échelle."
 
-#: src/LyXRC.cpp:3341
+#: src/LyXRC.cpp:3380
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 "Tailles de police utilisées pour calculer l'ajustement des polices d'écran."
 
-#: src/LyXRC.cpp:3346
+#: src/LyXRC.cpp:3385
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -30482,13 +30486,13 @@ msgstr ""
 "Facteur d'agrandissement des polices d'écran. Avec 100% les polices feront à "
 "peu près la même taille que sur le papier."
 
-#: src/LyXRC.cpp:3350
+#: src/LyXRC.cpp:3389
 msgid "Allow session manager to save and restore windows geometry."
 msgstr ""
 "Permettre au gestionnaire de session d'enregistrer et de restaurer la "
 "position des fenêtres."
 
-#: src/LyXRC.cpp:3354
+#: src/LyXRC.cpp:3393
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -30496,11 +30500,11 @@ msgstr ""
 "Démarrer le serveur LyX. Les tubes reçoivent le suffixe supplémentaire « .in "
 "» et « .out ». Réservé aux utilisateurs expérimentés."
 
-#: src/LyXRC.cpp:3361
+#: src/LyXRC.cpp:3400
 msgid "De-select if you don't want the startup banner."
 msgstr "Désélectionner pour inhiber la bannière de démarrage."
 
-#: src/LyXRC.cpp:3365
+#: src/LyXRC.cpp:3404
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
@@ -30508,12 +30512,12 @@ msgstr ""
 "LyX mettra ses répertoires temporaires ici. Ils seront supprimés quand vous "
 "quitterez LyX."
 
-#: src/LyXRC.cpp:3369
+#: src/LyXRC.cpp:3408
 msgid "This is the place where the files of the thesaurus library reside."
 msgstr ""
 "C'est l'endroit où résident les fichiers du dictionnaire des synonymes."
 
-#: src/LyXRC.cpp:3373
+#: src/LyXRC.cpp:3412
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -30521,7 +30525,7 @@ msgstr ""
 "Chemin dans lequel LyX va chercher les modèles. Si la valeur est vide, ce "
 "sera le répertoire dans lequel LyX a été lancé."
 
-#: src/LyXRC.cpp:3383
+#: src/LyXRC.cpp:3422
 msgid ""
 "Specify those directories which should be prepended to the TEXINPUTS "
 "environment variable.\n"
@@ -30532,7 +30536,7 @@ msgstr ""
 "Un « . » désigne le répertoire courant. Utiliser le format natif du système "
 "d'exploitation."
 
-#: src/LyXRC.cpp:3390
+#: src/LyXRC.cpp:3429
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -30540,7 +30544,7 @@ msgstr ""
 "Fichier d'interface utilisateur (UI). Vous pouvez mettre son chemin absolu, "
 "ou bien LyX cherchera dans ses répertoires ui/ global et local."
 
-#: src/LyXRC.cpp:3400
+#: src/LyXRC.cpp:3439
 msgid ""
 "Enable use the system colors for some things like main window background and "
 "selection."
@@ -30548,12 +30552,12 @@ msgstr ""
 "Activer les couleurs du système pour quelques objets comme la fenêtre "
 "principale et la sélection."
 
-#: src/LyXRC.cpp:3404
+#: src/LyXRC.cpp:3443
 msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr ""
 "Activer l'affichage automatique des bulles d'aide dans la zone de travail."
 
-#: src/LyXRC.cpp:3408
+#: src/LyXRC.cpp:3447
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Spécifier la commande de papier de la visionneuse DVI (laisser vide ou "
@@ -31178,14 +31182,14 @@ msgstr ""
 "Poursuivre ?"
 
 #: src/VCBackend.cpp:1522 src/VCBackend.cpp:1526
-#: src/frontends/qt/FindAndReplace.cpp:381 src/frontends/qt/GuiPrefs.cpp:1866
+#: src/frontends/qt/FindAndReplace.cpp:381 src/frontends/qt/GuiPrefs.cpp:1891
 #: src/lyxfind.cpp:303 src/lyxfind.cpp:330 src/lyxfind.cpp:350
 #: src/lyxfind.cpp:687 src/lyxfind.cpp:715
 msgid "&Yes"
 msgstr "&Oui"
 
 #: src/VCBackend.cpp:1522 src/VCBackend.cpp:1526
-#: src/frontends/qt/FindAndReplace.cpp:381 src/frontends/qt/GuiPrefs.cpp:1866
+#: src/frontends/qt/FindAndReplace.cpp:381 src/frontends/qt/GuiPrefs.cpp:1891
 #: src/lyxfind.cpp:303 src/lyxfind.cpp:330 src/lyxfind.cpp:350
 #: src/lyxfind.cpp:687 src/lyxfind.cpp:715
 msgid "&No"
@@ -31548,7 +31552,7 @@ msgstr "À propos de LyX"
 msgid "About %1"
 msgstr "À propos de %1"
 
-#: src/frontends/qt/GuiApplication.cpp:729 src/frontends/qt/GuiPrefs.cpp:3489
+#: src/frontends/qt/GuiApplication.cpp:729 src/frontends/qt/GuiPrefs.cpp:3523
 msgid "Preferences"
 msgstr "Préférences"
 
@@ -32680,7 +32684,7 @@ msgstr "Format du texte"
 msgid "Page Margins"
 msgstr "Marges"
 
-#: src/frontends/qt/GuiDocument.cpp:1768 src/frontends/qt/GuiPrefs.cpp:1058
+#: src/frontends/qt/GuiDocument.cpp:1768 src/frontends/qt/GuiPrefs.cpp:1076
 msgid "Colors"
 msgstr "Couleurs"
 
@@ -33226,7 +33230,7 @@ msgstr "Ressort horizontal"
 msgid "Visible Space"
 msgstr "Espace visible"
 
-#: src/frontends/qt/GuiHSpace.cpp:208
+#: src/frontends/qt/GuiHSpace.cpp:213
 msgid ""
 "Insert the spacing even after a line break.\n"
 "Note that a protected Half Quad will be turned into\n"
@@ -33858,71 +33862,71 @@ msgstr "&Commande :"
 msgid "Screen Fonts"
 msgstr "Polices d'écran"
 
-#: src/frontends/qt/GuiPrefs.cpp:1378
+#: src/frontends/qt/GuiPrefs.cpp:1396
 msgid "Paths"
 msgstr "Répertoires"
 
-#: src/frontends/qt/GuiPrefs.cpp:1465
+#: src/frontends/qt/GuiPrefs.cpp:1483
 msgid "Select directory for example files"
 msgstr "Choisir le répertoire des fichiers d'exemple"
 
-#: src/frontends/qt/GuiPrefs.cpp:1474
+#: src/frontends/qt/GuiPrefs.cpp:1492
 msgid "Select a document templates directory"
 msgstr "Choisir un répertoire de modèles de document"
 
-#: src/frontends/qt/GuiPrefs.cpp:1483
+#: src/frontends/qt/GuiPrefs.cpp:1501
 msgid "Select a temporary directory"
 msgstr "Choisir un répertoire temporaire"
 
-#: src/frontends/qt/GuiPrefs.cpp:1492
+#: src/frontends/qt/GuiPrefs.cpp:1510
 msgid "Select a backups directory"
 msgstr "Choisir un répertoire de sauvegardes automatiques"
 
-#: src/frontends/qt/GuiPrefs.cpp:1501
+#: src/frontends/qt/GuiPrefs.cpp:1519
 msgid "Select a document directory"
 msgstr "Choisir un répertoire de documents"
 
-#: src/frontends/qt/GuiPrefs.cpp:1510
+#: src/frontends/qt/GuiPrefs.cpp:1528
 msgid "Set the path to the thesaurus dictionaries"
 msgstr "Positionner le chemin vers les dictionnaires de synonymes"
 
-#: src/frontends/qt/GuiPrefs.cpp:1519
+#: src/frontends/qt/GuiPrefs.cpp:1537
 msgid "Set the path to the Hunspell dictionaries"
 msgstr "Saisir le chemin d'accès au dictionnaire hunspell"
 
-#: src/frontends/qt/GuiPrefs.cpp:1528
+#: src/frontends/qt/GuiPrefs.cpp:1546
 msgid "Give a filename for the LyX server pipe"
 msgstr "Donnez un nom de fichier au tube du serveur LyX"
 
-#: src/frontends/qt/GuiPrefs.cpp:1541 src/frontends/qt/GuiSpellchecker.cpp:642
+#: src/frontends/qt/GuiPrefs.cpp:1559 src/frontends/qt/GuiSpellchecker.cpp:642
 msgid "Spellchecker"
 msgstr "Correcteur Orthographique"
 
-#: src/frontends/qt/GuiPrefs.cpp:1547
+#: src/frontends/qt/GuiPrefs.cpp:1565
 msgid "Native"
 msgstr "Natif"
 
-#: src/frontends/qt/GuiPrefs.cpp:1553
+#: src/frontends/qt/GuiPrefs.cpp:1571
 msgid "Aspell"
 msgstr "Aspell"
 
-#: src/frontends/qt/GuiPrefs.cpp:1556
+#: src/frontends/qt/GuiPrefs.cpp:1574
 msgid "Enchant"
 msgstr "Enchant"
 
-#: src/frontends/qt/GuiPrefs.cpp:1559
+#: src/frontends/qt/GuiPrefs.cpp:1577
 msgid "Hunspell"
 msgstr "Hunspell"
 
-#: src/frontends/qt/GuiPrefs.cpp:1632
+#: src/frontends/qt/GuiPrefs.cpp:1650
 msgid "Converters"
 msgstr "Convertisseurs"
 
-#: src/frontends/qt/GuiPrefs.cpp:1865
+#: src/frontends/qt/GuiPrefs.cpp:1890
 msgid "SECURITY WARNING!"
 msgstr "AVERTISSEMENT DE SÉCURITÉ !"
 
-#: src/frontends/qt/GuiPrefs.cpp:1865
+#: src/frontends/qt/GuiPrefs.cpp:1890
 msgid ""
 "Unchecking this option has the effect that potentially harmful converters "
 "would be run without asking your permission first. This is UNSAFE and NOT "
@@ -33935,15 +33939,15 @@ msgstr ""
 "ce que vous faisiez. Êtes-vous sûr de vouloir continuer ? La réponse sûre et "
 "recommandée est NON !"
 
-#: src/frontends/qt/GuiPrefs.cpp:1985
+#: src/frontends/qt/GuiPrefs.cpp:2010
 msgid "File Formats"
 msgstr "Formats de fichier"
 
-#: src/frontends/qt/GuiPrefs.cpp:2219 src/frontends/qt/GuiPrefs.cpp:2371
+#: src/frontends/qt/GuiPrefs.cpp:2253 src/frontends/qt/GuiPrefs.cpp:2405
 msgid "Format in use"
 msgstr "Format utilisé"
 
-#: src/frontends/qt/GuiPrefs.cpp:2220
+#: src/frontends/qt/GuiPrefs.cpp:2254
 msgid ""
 "You cannot change a format's short name if the format is used by a "
 "converter. Please remove the converter first."
@@ -33951,17 +33955,17 @@ msgstr ""
 "Impossible de modifier le nom abrégé d'un format utilisé par un "
 "convertisseur. Enlever d'abord le convertisseur."
 
-#: src/frontends/qt/GuiPrefs.cpp:2372
+#: src/frontends/qt/GuiPrefs.cpp:2406
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "Impossible d'enlever un Format utilisé par un Convertisseur. Enlevez d'abord "
 "le convertisseur."
 
-#: src/frontends/qt/GuiPrefs.cpp:2472
+#: src/frontends/qt/GuiPrefs.cpp:2506
 msgid "LyX needs to be restarted!"
 msgstr "LyX doit être redémarré !"
 
-#: src/frontends/qt/GuiPrefs.cpp:2473
+#: src/frontends/qt/GuiPrefs.cpp:2507
 msgid ""
 "The change of user interface language will be fully effective only after a "
 "restart."
@@ -33969,80 +33973,80 @@ msgstr ""
 "La modification de la langue de l'interface ne sera complètement effective "
 "qu'après un redémarrage de LyX."
 
-#: src/frontends/qt/GuiPrefs.cpp:2573
+#: src/frontends/qt/GuiPrefs.cpp:2607
 msgid "User Interface"
 msgstr "Interface utilisateur"
 
-#: src/frontends/qt/GuiPrefs.cpp:2592
+#: src/frontends/qt/GuiPrefs.cpp:2626
 msgid "Classic"
 msgstr "Classique"
 
-#: src/frontends/qt/GuiPrefs.cpp:2593
+#: src/frontends/qt/GuiPrefs.cpp:2627
 msgid "Oxygen"
 msgstr "Oxygen"
 
-#: src/frontends/qt/GuiPrefs.cpp:2644
+#: src/frontends/qt/GuiPrefs.cpp:2678
 msgid "Document Handling"
 msgstr "Gestion des documents"
 
-#: src/frontends/qt/GuiPrefs.cpp:2751
+#: src/frontends/qt/GuiPrefs.cpp:2785
 msgid "Control"
 msgstr "Contrôle"
 
-#: src/frontends/qt/GuiPrefs.cpp:2872
+#: src/frontends/qt/GuiPrefs.cpp:2906
 msgid "Shortcuts"
 msgstr "Raccourcis"
 
-#: src/frontends/qt/GuiPrefs.cpp:2879
+#: src/frontends/qt/GuiPrefs.cpp:2913
 msgid "Function"
 msgstr "Fonction"
 
-#: src/frontends/qt/GuiPrefs.cpp:2880
+#: src/frontends/qt/GuiPrefs.cpp:2914
 msgid "Shortcut"
 msgstr "Raccourci"
 
-#: src/frontends/qt/GuiPrefs.cpp:2957
+#: src/frontends/qt/GuiPrefs.cpp:2991
 msgid "Cursor, Mouse and Editing Functions"
 msgstr "Contrôle du curseur, de la souris et de la saisie"
 
-#: src/frontends/qt/GuiPrefs.cpp:2961
+#: src/frontends/qt/GuiPrefs.cpp:2995
 msgid "Mathematical Symbols"
 msgstr "Symboles mathématiques"
 
-#: src/frontends/qt/GuiPrefs.cpp:2965
+#: src/frontends/qt/GuiPrefs.cpp:2999
 msgid "Document and Window"
 msgstr "Document et fenêtre"
 
-#: src/frontends/qt/GuiPrefs.cpp:2969
+#: src/frontends/qt/GuiPrefs.cpp:3003
 msgid "Font, Layouts and Textclasses"
 msgstr "Polices, formats et classes"
 
-#: src/frontends/qt/GuiPrefs.cpp:2973
+#: src/frontends/qt/GuiPrefs.cpp:3007
 msgid "System and Miscellaneous"
 msgstr "Système et divers"
 
-#: src/frontends/qt/GuiPrefs.cpp:3110 src/frontends/qt/GuiPrefs.cpp:3170
+#: src/frontends/qt/GuiPrefs.cpp:3144 src/frontends/qt/GuiPrefs.cpp:3204
 msgid "Res&tore"
 msgstr "&Restaurer"
 
-#: src/frontends/qt/GuiPrefs.cpp:3338 src/frontends/qt/GuiPrefs.cpp:3347
-#: src/frontends/qt/GuiPrefs.cpp:3353 src/frontends/qt/GuiPrefs.cpp:3416
+#: src/frontends/qt/GuiPrefs.cpp:3372 src/frontends/qt/GuiPrefs.cpp:3381
+#: src/frontends/qt/GuiPrefs.cpp:3387 src/frontends/qt/GuiPrefs.cpp:3450
 msgid "Failed to create shortcut"
 msgstr "Échec de la création du raccourci"
 
-#: src/frontends/qt/GuiPrefs.cpp:3339
+#: src/frontends/qt/GuiPrefs.cpp:3373
 msgid "Unknown or invalid LyX function"
 msgstr "Fonction LyX inconnue ou invalide"
 
-#: src/frontends/qt/GuiPrefs.cpp:3348
+#: src/frontends/qt/GuiPrefs.cpp:3382
 msgid "This LyX function is hidden and cannot be bound."
 msgstr "Cette fonction LyX est cachée et ne peut être associée."
 
-#: src/frontends/qt/GuiPrefs.cpp:3354
+#: src/frontends/qt/GuiPrefs.cpp:3388
 msgid "Invalid or empty key sequence"
 msgstr "Séquence de touches invalide ou vide"
 
-#: src/frontends/qt/GuiPrefs.cpp:3369
+#: src/frontends/qt/GuiPrefs.cpp:3403
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to %2$s.\n"
@@ -34052,19 +34056,19 @@ msgstr ""
 "Êtes-vous sûr de vouloir remplacer cette association par une association à "
 "%3$s ?"
 
-#: src/frontends/qt/GuiPrefs.cpp:3375
+#: src/frontends/qt/GuiPrefs.cpp:3409
 msgid "Redefine shortcut?"
 msgstr "Redéfinir le raccourci ?"
 
-#: src/frontends/qt/GuiPrefs.cpp:3376
+#: src/frontends/qt/GuiPrefs.cpp:3410
 msgid "&Redefine"
 msgstr "&Redéfinir"
 
-#: src/frontends/qt/GuiPrefs.cpp:3417
+#: src/frontends/qt/GuiPrefs.cpp:3451
 msgid "Can not insert shortcut to the list"
 msgstr "Échec de l'insertion du raccourci à la liste"
 
-#: src/frontends/qt/GuiPrefs.cpp:3448
+#: src/frontends/qt/GuiPrefs.cpp:3482
 msgid "Identity"
 msgstr "Identité"
 
@@ -35842,7 +35846,7 @@ msgstr "Aucune bibliographie définie !"
 msgid "+ %1$d more entries."
 msgstr "+ %1$d entrées supplémentaires."
 
-#: src/insets/InsetCitation.cpp:579 src/insets/InsetRef.cpp:514
+#: src/insets/InsetCitation.cpp:579 src/insets/InsetRef.cpp:516
 msgid "BROKEN: "
 msgstr "CASSÉ : "
 
@@ -36975,51 +36979,51 @@ msgstr "%1$stexte"
 msgid "text%1$s"
 msgstr "texte%1$s"
 
-#: src/insets/InsetRef.cpp:595
+#: src/insets/InsetRef.cpp:597
 msgid "Ref"
 msgstr "Ref"
 
-#: src/insets/InsetRef.cpp:596
+#: src/insets/InsetRef.cpp:598
 msgid "EqRef"
 msgstr "RéfÉq"
 
-#: src/insets/InsetRef.cpp:597 src/mathed/InsetMathRef.cpp:373
+#: src/insets/InsetRef.cpp:599 src/mathed/InsetMathRef.cpp:373
 msgid "Page Number"
 msgstr "Numéro de page"
 
-#: src/insets/InsetRef.cpp:598 src/mathed/InsetMathRef.cpp:374
+#: src/insets/InsetRef.cpp:600 src/mathed/InsetMathRef.cpp:374
 msgid "Textual Page Number"
 msgstr "N° de page du texte"
 
-#: src/insets/InsetRef.cpp:598
+#: src/insets/InsetRef.cpp:600
 msgid "TextPage"
 msgstr "PageTexte"
 
-#: src/insets/InsetRef.cpp:599 src/mathed/InsetMathRef.cpp:375
+#: src/insets/InsetRef.cpp:601 src/mathed/InsetMathRef.cpp:375
 msgid "Standard+Textual Page"
 msgstr "Standard + N° de page du texte"
 
-#: src/insets/InsetRef.cpp:599
+#: src/insets/InsetRef.cpp:601
 msgid "Ref+Text"
 msgstr "Réf+Texte"
 
-#: src/insets/InsetRef.cpp:600 src/mathed/InsetMathRef.cpp:377
+#: src/insets/InsetRef.cpp:602 src/mathed/InsetMathRef.cpp:377
 msgid "Reference to Name"
 msgstr "Référence au nom"
 
-#: src/insets/InsetRef.cpp:600
+#: src/insets/InsetRef.cpp:602
 msgid "NameRef"
 msgstr "RefNom"
 
-#: src/insets/InsetRef.cpp:601
+#: src/insets/InsetRef.cpp:603
 msgid "Formatted"
 msgstr "Mis en page"
 
-#: src/insets/InsetRef.cpp:601
+#: src/insets/InsetRef.cpp:603
 msgid "Format"
 msgstr "Format"
 
-#: src/insets/InsetRef.cpp:602 src/mathed/InsetMathRef.cpp:378
+#: src/insets/InsetRef.cpp:604 src/mathed/InsetMathRef.cpp:378
 msgid "Label Only"
 msgstr "Étiquette uniquement"
 
