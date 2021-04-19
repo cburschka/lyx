@@ -351,8 +351,8 @@ Guide de l'utilisateur
 
 \begin_layout Standard
 Ce manuel décrit aussi quelques fonctions spéciales, comme la gestion d'un
- fax, le contrôle de version et le support de SGML, qui nécessitent des
- logiciels supplémentaires pour fonctionner convenablement.
+ fax et le contrôle de version, qui nécessitent des logiciels supplémentaires
+ pour fonctionner convenablement.
  Il y a également un chapitre consacré à \SpecialChar LyX
  et HTML.
  Et enfin, il y a un chapitre sur les trucs et astuces \SpecialChar LaTeX
@@ -1017,7 +1017,7 @@ Sur ce dernier point, \SpecialChar LyX
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
-target "http://www.ctan.org/"
+target "https://www.ctan.org/"
 literal "false"
 
 \end_inset
@@ -4199,12 +4199,7 @@ La fenêtre vous présente un tableau avec des formes de puces.
  possibles.
  La rangée de boutons du haut sert à choisir le niveau de profondeur sur
  lequel vous agissez.
- Une boîte de texte sous le tableau affiche l'équivalent \SpecialChar LaTeX
- de la forme de
- puce actuellement sélectionnée, et ce champ peut être édité.
- Si vous modifiez le texte vous devrez aussi spécifier à la main dans le
- préambule \SpecialChar LaTeX
- les paquetages requis.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -5019,8 +5014,12 @@ automatiquement
 , ils seront implicitement sans empattement
  et gras dans un navigateur Web.
  Et ceci est vrai non seulement pour les styles prédéfinis, comme Section,
- mais pour tout style, y compris défini par l'utilisateur, puisque dans
- tous les cas, tout ce que connaît \SpecialChar LyX
+ mais pour tout style, y compris défini par l'utilisateur,.
+ De fait, les procédures d'exportation en XHTML ne font pas de distinction
+ entre les paragraphes et les styles de texte définis par l'utilisateur
+ et ceux prédéfinis par \SpecialChar LyX
+, puisque dans tous les cas, tout ce que connaît
+ \SpecialChar LyX
  se trouve dans les fichiers de format.
  Ceci s'applique également aux inserts textuels comme les notes de bas de
  page et divers inserts personnalisés.
@@ -5588,6 +5587,176 @@ Il n'y a actuellement pas d'exportation des glossaires.
  Il serait trivial de les ajouter, et ce serait bienvenu.
 \end_layout
 
+\begin_layout Chapter
+Exportation DocBook
+\end_layout
+
+\begin_layout Standard
+En plus de XHTML, \SpecialChar LyX
+ peut créer des documents avec le vocabulaire XML de Docbook.
+ Avec les versions 2.3 et antérieures, \SpecialChar LyX
+ ne disposait que de modèles sélectifs
+ pour engendrer des documents DocBook (version 4 seulement).
+ À partir de la version 2.4 de \SpecialChar LyX
+, la plupart des formats peuvent créer des
+ documents DocBook valides (version 5 uniquement).
+ Cette fonctionnalité est intégrée à \SpecialChar LyX
+ et ne requiert pas l'usage d'outils
+ externes.
+\end_layout
+
+\begin_layout Standard
+De ce fait, les exportations DocBook peuvent être personnalisées et enrichies
+ exactement de la même façon que le résultat de la compilation \SpecialChar LaTeX
+ peut être
+ personnalisé et enrichi: via les fichiers de format et les modules.
+ Voir le chapitre 
+\emph on
+
+\begin_inset Quotes cld
+\end_inset
+
+Installer de nouvelles classes
+\begin_inset Quotes crd
+\end_inset
+
+
+\emph default
+ du 
+\emph on
+Manuel de Personnalisation
+\emph default
+ pour les détails.
+\end_layout
+
+\begin_layout Standard
+La plupart des fonctionnalités de \SpecialChar LyX
+ sont accessibles poue DocBook:
+\end_layout
+
+\begin_layout Itemize
+les affichages mathématiques sont obtenus essentiellement en MathML (avec
+ comme exception principale les constructions qui ne sont pas reconnues
+ par \SpecialChar LyX
+, comme les ERT).
+ Toutes les formules sont également disponibles en \SpecialChar TeX
+ natif dans le résultat
+ DocBook pour un traitement ultérieur;
+\end_layout
+
+\begin_layout Itemize
+les bibliographies et les citations sont interprétées, y compris avec un
+ fichier BibTeX externe.
+ Les entrées bibliographiques ne sont pas pré-affichées quand une information
+ détaillée est disponible,; mais plutôt exportées avec les constructions
+ standard DocBook.
+ Le processeur externe DocBook est supposé gérer le rendu des entrées;
+\end_layout
+
+\begin_layout Itemize
+les index sont interprétés, y compris les index multiples.
+ Les regroupements (avec 
+\begin_inset Quotes cld
+\end_inset
+
+!
+\begin_inset Quotes crd
+\end_inset
+
+), les portées de pages et les références croisés (avec
+\family typewriter
+ |see
+\family default
+) sont reconnus, en exceptant l'évitement des symboles identiques.
+ L'ordre d'affichage (
+\family typewriter
+@
+\family default
+) et les types de caractères (
+\family typewriter
+|mathbf
+\family default
+) ne sont pas reconnus.
+ Il n'y a pas de support pour l'échappement des entrées d'index;
+\end_layout
+
+\begin_layout Itemize
+les glossaires sont interprétés.
+\end_layout
+
+\begin_layout Standard
+Deux paramètres essentiels peuvent être réglés au niveau du document:
+\end_layout
+
+\begin_layout Itemize
+le format des tableaux: \SpecialChar LyX
+ peut déclarer les tableaux soit en HTML (réglage
+ implicite), soit au format CALS, en fonction des desiderata de l'utilisateur.
+ La plupart des processeurs DocBook acceptent les deux formats.
+\end_layout
+
+\begin_layout Itemize
+le préfixe MathML: avec DocBook, MathML est inclus au sein des son propre
+ espace-nom, au contraire de HTML.
+ En conséquence, il doit uy avoir une indication des balises appartenant
+ au standard MathML.
+ Trois possibilités sont offertes:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+en ligne: l'espace-nom MathML est défini pour chaque formule (en utilisant
+ l'attribut 
+\family typewriter
+xmlns
+\family default
+ pour chacune);
+\end_layout
+
+\begin_layout Itemize
+avec le préfixe 
+\family typewriter
+m
+\family default
+ (implicite): l'espace-nom MathML est défini au niveau du document (en utilisant
+ l'attribut 
+\family typewriter
+xmlns:m
+\family default
+ à la racine).
+ Chaque MathML reçoit le préfixe 
+\family typewriter
+m
+\family default
+:, par exemple 
+\family typewriter
+m:math
+\family default
+;
+\end_layout
+
+\begin_layout Itemize
+avec le préfixe
+\family typewriter
+ mml
+\family default
+: comme l'option 
+\family typewriter
+m
+\family default
+, mais avec
+\family typewriter
+ mml.
+\end_layout
+
+\begin_layout Standard
+Cette option est particulièrement utile si vous voulez que \SpecialChar LyX
+ se conforme
+ à votre style personnel ou si vous avez à travailler avec un logiciel véreux
+ qui n'accepte qu'un seul préfixe pour MathML.
+\end_layout
+
+\end_deeper
 \begin_layout Chapter
 Le Serveur \SpecialChar LyX
 
@@ -7154,6 +7323,16 @@ lyxclient -g %f %l
 
 \begin_layout Standard
 La recherche inversée est déclenchée par SHIFT-clic.
+ Notez que ceci ne fonctionne que si Okular est en mode 
+\begin_inset Quotes cld
+\end_inset
+
+Navigation
+\begin_inset Quotes crd
+\end_inset
+
+ (i.e.
+ le symbole de main est cliqué).
 \end_layout
 
 \begin_layout Subsubsection*
@@ -23557,19 +23736,15 @@ vcs-time
 \begin_layout Standard
 
 \lang english
-You can obtain this info via InsetInfo (e.g.
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
+You can obtain this info via InsetInfo (
+\family sans
+\lang american
+Insérer\SpecialChar menuseparator
+Champ\SpecialChar menuseparator
 
 \lang english
-info-insert buffer vcs-date
-\end_layout
-
-\end_inset
-
+Révision du contrôle de version
+\family default
 ).
  The information will be available only when you have the file stored under
  svn managment (i.e.
@@ -24532,7 +24707,7 @@ Infos de version
 \begin_layout Standard
 \SpecialChar LyX
  reconnaît l'empreinte de validation GIT de la dernière soumission du fichier,
- le nom de son auteur, la date et l'heure.
+ sa forme abrégée, le nom de son auteur, la date et l'heure.
  Toutes ces informations sont extraites via 
 \begin_inset Flex Code
 status collapsed
