@@ -1089,7 +1089,15 @@ literal "false"
 \end_inset
 
 .
- Si vous avez des questions à laquelle la documentation ne répond pas de
+ 
+\end_layout
+
+\begin_layout Subsection
+Où trouver de l'aide?
+\end_layout
+
+\begin_layout Standard
+Si vous avez des questions à laquelle la documentation ne répond pas de
  manière évidente, et que vous avez besoin d'une aide urgente, vous pouvez
  joindre la liste de diffusion des utilisateurs à l'adresse 
 \begin_inset CommandInset href
@@ -1100,8 +1108,7 @@ literal "false"
 
 \end_inset
 
-.
- Pour les questions spécifiquement francophones, contactez la liste 
+ (pour les questions spécifiquement francophones, contactez la liste 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-fr@lists.lyx.org"
@@ -1110,7 +1117,30 @@ literal "false"
 
 \end_inset
 
-.
+).
+ Vous n'avez pas besoin de vous enregistrer pour envoyer un message à ces
+ listes, mais vous pouvez souhaiter le faire, voir 
+\begin_inset CommandInset href
+LatexCommand href
+name "le site web de LyX"
+target "https://www.lyx.org/MailingLists"
+literal "false"
+
+\end_inset
+
+ pour les détails.
+ \SpecialChar LyX
+ dispose également d'un 
+\begin_inset CommandInset href
+LatexCommand href
+name "wiki"
+target "http://wiki.lyx.org/"
+literal "false"
+
+\end_inset
+
+ où vous trouverez des réponses aux nombreuses questions concernant ses
+ fonctionnalités.
 \end_layout
 
 \begin_layout Subsection
