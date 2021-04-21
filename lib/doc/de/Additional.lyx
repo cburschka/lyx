@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 608
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -124,13 +124,15 @@ shapepar
 \papersides 2
 \paperpagestyle headings
 \tablestyle default
-\tracking_changes false
-\postpone_fragile_content false
+\tracking_changes true
 \output_changes false
 \change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -141,7 +143,7 @@ Erweiterte \SpecialChar LyX
 \end_layout
 
 \begin_layout Subtitle
-Version 2.3.x
+Version 2.4.x
 \end_layout
 
 \begin_layout Author
@@ -223,18 +225,14 @@ Auf längere Sicht ist es vom Entwicklerteam geplant und zu einem gewissen
  selber
  zu ändern.
  Auf diese Weise hat \SpecialChar LyX
- bereits viele Erweiterungen erfahren.
+ bereits viele Erweiterungen implementiert.
  All diese sind hier dokumentiert.
 \end_layout
 
 \begin_layout Standard
 Außerdem werden in diesem Handbuch auch einige spezielle Funktionen wie
- etwa Fax-Unterstützung, Versionskontrolle und Unterstützung für die 
-\family typewriter
-SGML-Tools
-\family default
- beschrieben, für die zur korrekten Funktion zusätzliche Software installiert
- sein muss.
+ etwa Fax-Unterstützung und Versionskontrolle beschrieben, für die zur korrekten
+ Funktion zusätzliche Software installiert sein muss.
  Es enthält auch ein Kapitel zur XHTML-Unterstützung von \SpecialChar LyX
 .
  Zuletzt gibt es noch ein Kapitel mit \SpecialChar LaTeX
@@ -333,7 +331,7 @@ WYSIWYM-Frontend für \SpecialChar LaTeX
  Es gibt Frontends für \SpecialChar LaTeX
 .
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Bekannte Beispiele sind 
@@ -354,29 +352,29 @@ shop
  Und dann gibt es natürlich auch die \SpecialChar LaTeX
 -Modi für 
 \family sans
-vi
+vi,
 \family default
- und 
+ 
 \family sans
 emacs
 \family default
-.
+ und Visual Studio Code.
 \end_layout
 
 \end_inset
 
  Sie sind im Grunde Editoren, die \SpecialChar LaTeX
- laufen lassen können und Fehler in der
+ aufrufen können und die Fehler in der
  editierten Datei markieren.
  Obwohl \SpecialChar LyX
- ein Editor ist, \SpecialChar LaTeX
- laufen lässt und auch Fehler in der Datei markiert,
- macht es auch viel, viel mehr.
+ ein Editor ist, der \SpecialChar LaTeX
+ aufruft und Fehler in der Datei markiert,
+ macht es viel, viel mehr.
  Erstens benötigen Sie \SpecialChar LaTeX
  nicht, um \SpecialChar LyX
  wirkungsvoll zu benutzen.
- Und \SpecialChar LyX
- fügt eigene Erweiterungen zu \SpecialChar LaTeX
+ Außerdem fügt \SpecialChar LyX
+ eigene Erweiterungen zu \SpecialChar LaTeX
  hinzu.
  Versuchen Sie irgendwann einmal folgendes: Wählen Sie 
 \family sans
@@ -421,23 +419,31 @@ Es gibt mehrere Befehle, bei denen automatisch \SpecialChar LaTeX
 
 \begin_layout Itemize
 
-\family sans
-Dokument\SpecialChar menuseparator
+\noun on
+Dokument
+\noun default
+\SpecialChar menuseparator
+
+\noun on
 Ansehen
 \end_layout
 
 \begin_layout Itemize
 
-\family sans
-Dokument\SpecialChar menuseparator
+\noun on
+Dokument
+\noun default
+\SpecialChar menuseparator
+
+\noun on
 Aktualisieren
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LaTeX
- wird nur gestartet, wenn die Datei seit dem letzten \SpecialChar LaTeX
--Lauf geändert wurde.
- 
+ wird nur gestartet, wenn die Datei seit dem letzten Aufruf von \SpecialChar LaTeX
+geändert
+ wurde.
 \end_layout
 
 \begin_layout Standard
@@ -501,9 +507,16 @@ Wenn Fehler auftreten, werden sie in der
 \begin_layout Standard
 Wenn \SpecialChar LaTeX
  mit 
+\noun on
+Ansicht
+\noun default
+\SpecialChar menuseparator
+
+\noun on
+DVI
 \family sans
-Ansicht\SpecialChar menuseparator
-DVI 
+\noun default
+ 
 \family default
 gestartet wurde, wird \SpecialChar LyX
  dann den DVI-Betrachter mit der 
@@ -512,10 +525,14 @@ gestartet wurde, wird \SpecialChar LyX
 \family default
 i-Datei ausführen.
  Wenn Sie 
-\family sans
-Ansicht\SpecialChar menuseparator
+\noun on
+Ansicht
+\noun default
+\SpecialChar menuseparator
+
+\noun on
 Postscript
-\family default
+\noun default
  aufgerufen haben, werden noch zwei Schritte ausgeführt:
 \end_layout
 
@@ -537,23 +554,15 @@ Ein PostScript Anzeigeprogramm wird ausgeführt und die Datei angezeigt.
 
 \begin_layout Standard
 Wenn Sie 
-\family sans
+\noun on
 Ansicht\SpecialChar menuseparator
 PDF
-\family default
-
 \begin_inset space ~
 \end_inset
 
-
-\family sans
 (ps2pdf)
-\family default
-
-\begin_inset space \space{}
-\end_inset
-
-aufgerufen haben, wird die 
+\noun default
+ aufgerufen haben, wird die 
 \family typewriter
 .ps
 \family default
@@ -614,11 +623,11 @@ lualatex
 
 \begin_layout Standard
 Mit 
-\family sans
+\noun on
 Datei\SpecialChar menuseparator
 Importieren\SpecialChar menuseparator
 LaTeX
-\family default
+\noun default
  können Sie eine \SpecialChar LaTeX
 -Datei nach \SpecialChar LyX
  importieren.
@@ -709,11 +718,15 @@ ion darstellen und wird es wohl auch nie können.
 -Dokument einsetzen müssen, können Sie
  eine \SpecialChar TeX
 -Code-Einfügung benutzen, die Sie mit 
+\noun on
+
 \begin_inset Info
 type  "menu"
 arg   "ert-insert"
 \end_inset
 
+
+\noun default
 , 
 \begin_inset Info
 type  "shortcut"
@@ -727,7 +740,6 @@ arg   "ert-insert"
 \end_inset
 
  erhalten.
- 
 \end_layout
 
 \begin_layout Standard
@@ -829,10 +841,6 @@ end{minipage}
 
 \backslash
 end{tabular}
-\end_layout
-
-\begin_layout LyX-Code
-
 \end_layout
 
 \begin_layout Standard
@@ -965,15 +973,11 @@ Alternativ zum \SpecialChar TeX
  \SpecialChar LaTeX
 -Strukturen enthält.
  Mit 
-\family sans
+\noun on
 Einfügen\SpecialChar menuseparator
-Datei
-\family default
-\SpecialChar menuseparator
-
-\family sans
+Datei\SpecialChar menuseparator
 Unterdokument
-\family default
+\noun default
  können Sie dann diese Datei einfügen (im Menüfenster 
 \family sans
 Unterdokument
@@ -1027,7 +1031,7 @@ rot.
 prüft NICHT
 \emph default
 , ob Ihre \SpecialChar TeX
--Code syntaktisch  richtig ist.
+-Code syntaktisch richtig ist.
 \end_layout
 
 \begin_layout Itemize
@@ -1050,12 +1054,12 @@ Die letzte Bemerkung bezieht sich auf zwei Dinge.
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
-target "http://www.ctan.org/"
+target "https://www.ctan.org/"
 literal "false"
 
 \end_inset
 
-  nach Einzelheiten.
+ nach Einzelheiten.
 \end_layout
 
 \begin_layout Standard
@@ -1099,7 +1103,7 @@ Wenn Sie \SpecialChar LaTeX
  Wenn nicht, hilft das Folgende weiter – wir empfehlen aber nochmals, ein
  \SpecialChar LaTeX
 -Buch für weitere Informationen heranzuziehen.
- In jedem Fall sollten Sie die untenstehenden Punkte lesen, weil sie erklären,
+ In jedem Fall sollten Sie die unten stehenden Punkte lesen, weil sie erklären,
  was Sie im \SpecialChar LaTeX
 -Vorspann eines \SpecialChar LyX
 -Dokumentes tun können und was Sie nicht tun
@@ -1222,15 +1226,17 @@ Die Befehle, die \SpecialChar LyX
  sie nicht ändern, ohne \SpecialChar LyX
  selber zu ändern.
  Sie können aber Ihre eigenen Sachen zum Vorspann hinzufügen.
- 
 \end_layout
 
 \begin_layout Standard
 Wählen Sie hierfür 
-\family sans
+\noun on
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
-LaTeX-Vorspann.
+LaTeX-Vorspann
+\family sans
+\noun default
+.
 
 \family default
  Dies öffnet ein Editierfenster, in das Sie Ihre bevorzugten Befehle schreiben
@@ -1561,20 +1567,12 @@ Dann werden die ersten Zeilen aller Absätze eingerückt.
 Wenn Sie statt der Einrückung zwischen Absätzen lieber einen vertikalen
  Abstand wollen, brauchen Sie den Vorspann nicht.
  Gehen Sie zu 
-\family sans
-Dokument
-\family default
+\noun on
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar ldots
 \SpecialChar menuseparator
-
-\family sans
-Einstellungen
-\family default
-\SpecialChar ldots
-\SpecialChar menuseparator
-
-\family sans
 Textformat
-\family default
+\noun default
  und wählen Sie dort bei 
 \family sans
 Absätze
@@ -1658,10 +1656,10 @@ Na ja, jedenfalls normalerweise.
 
 \begin_layout Standard
 Einige ziehen es vor, die Log-Datei direkt anzusehen, was man mit 
-\family sans
+\noun on
 Dokument\SpecialChar menuseparator
 LaTeX-Protokoll
-\family default
+\noun default
  erreicht.
  Es gibt einige ziemlich verbreitete Fehlermeldungen und Warnungen.
  Wir wollen diese hier beschreiben.
@@ -1748,16 +1746,16 @@ Es gibt einige allgemeine Möglichkeiten, mit denen man versuchen kann, die
 Mikrotypographische Erweiterungen aktivieren
 \family default
  in 
+\noun on
+
 \begin_inset Info
 type  "menu"
 arg   "dialog-show document"
 \end_inset
 
-
-\family sans
 \SpecialChar menuseparator
 Schriften
-\family default
+\noun default
  auswählen, sollte das Ergebnis schon deutlich besser sein.
  Außerdem reduziert \SpecialChar LaTeX
 -Code wie der folgende im Vorspann die übervollen Zeilen
@@ -1811,7 +1809,7 @@ http://www.tex.ac.uk/FAQ-overfull.html
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Standard
@@ -1833,11 +1831,15 @@ draft
 \end_inset
 
  in 
+\noun on
+
 \begin_inset Info
 type  "menu"
 arg   "dialog-show document"
 \end_inset
 
+
+\noun default
  eingeben, dann malt \SpecialChar LaTeX
  eine kleine schwarze Box an die entsprechenden Stellen
  im Rand.
@@ -1925,7 +1927,7 @@ usepackage
 -Befehl benutzt haben, fehlt eins der Pakete, das \SpecialChar LyX
  zu laden versucht.
  Benutzen Sie 
-\family sans
+\noun on
 Hilfe\SpecialChar menuseparator
 LaTeX
 \begin_inset ERT
@@ -1943,20 +1945,20 @@ fi\SpecialChar softhyphen
 gu\SpecialChar softhyphen
 ra\SpecialChar softhyphen
 tion
-\family default
+\noun default
 , um eine Liste der Pakete zu bekommen, die \SpecialChar LyX
  kennt.
  Diese Datei wird immer dann aktualisiert, wenn Sie \SpecialChar LyX
  neu konfigurieren (mit
  
-\family sans
+\noun on
 Werkzeuge\SpecialChar menuseparator
 Neu
 \begin_inset space ~
 \end_inset
 
 konfigurieren
-\family default
+\noun default
 ).
  Sie sagt Ihnen, welche Pakete gefunden wurden und was sie machen.
 \end_layout
@@ -2125,7 +2127,7 @@ vielleicht
 \emph default
  einen Fehler in \SpecialChar LyX
  gefunden\SpecialChar ldots
- 
+
 \end_layout
 
 \begin_layout Chapter
@@ -2270,11 +2272,11 @@ biblatex
 All diese Pakete werden in \SpecialChar LyX
  ähnlich benutzt.
  Unter 
-\family sans
+\noun on
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
 Literaturverzeichnis
-\family default
+\noun default
  wählen Sie zunächst das Stilformat 
 \family sans
 Biblatex
@@ -2455,17 +2457,19 @@ Quellen.bib
 Wissenschaft.bib
 \family default
 .
- 
 \end_layout
 
 \begin_layout Standard
 In
 \family sans
- Dokument\SpecialChar menuseparator
+ 
+\family default
+\noun on
+Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar ldots
 \SpecialChar menuseparator
 Literaturverzeichnis
-\family default
+\noun default
  aktivieren Sie 
 \family sans
 Unterteiltes
@@ -2705,11 +2709,11 @@ Mehrere Literaturverzeichnisse, zum Beispiel ein Literaturverzeichnis pro
  sind mit \SpecialChar LyX
  ebenfalls möglich.
  Gehen Sie hierzu zu 
-\family sans
+\noun on
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
 Literaturverzeichnis
-\family default
+\noun default
  und wählen Sie die relevante Einheit (z.
 \begin_inset space \thinspace{}
 \end_inset
@@ -2728,7 +2732,11 @@ pro Abschnitt
 Mehrere Literaturverzeichnisse
 \family default
  aus.
- Fügen Sie dann ein Bib(la)\SpecialChar TeX
+ Fügen Sie dann ein 
+\family sans
+Bib(la)
+\family default
+\SpecialChar TeX
 -Literaturverzeichnis in jede Einheit (z.
 \begin_inset space \thinspace{}
 \end_inset
@@ -2741,7 +2749,11 @@ B.
 \end_layout
 
 \begin_layout Standard
-Wenn Sie Bib\SpecialChar TeX
+Wenn Sie 
+\family sans
+Bib\SpecialChar TeX
+
+\family default
  verwenden, wird hierzu entweder das Paket 
 \begin_inset Flex Code
 status collapsed
@@ -3113,7 +3125,6 @@ Zum Beispiel haben wissenschaftliche Aufsätze meist fünf Hauptteile: Einleitun
  einem Hauptdokument eingebunden wird, welches Titel, Autoren, Zusammenfassung,
  Querverweise usw.
  enthält und die fünf Dateien einbindet.
- 
 \end_layout
 
 \begin_layout Standard
@@ -3147,10 +3158,10 @@ end{document}
 \begin_layout Standard
 In \SpecialChar LyX
  können externe Dateien sehr einfach über den Menüpunkt 
-\family sans
+\noun on
 Einfügen\SpecialChar menuseparator
 Datei
-\family default
+\noun default
  integriert werden.
  Die verschiedenen Möglichkeiten sind im 
 \emph on
@@ -3240,7 +3251,7 @@ Unterdokumente
 \emph on
 Eingebettete Objekte
 \emph default
- für weitere Informationen) 
+ für weitere Informationen)
 \end_layout
 
 \begin_layout Standard
@@ -3321,15 +3332,11 @@ Es ist möglich, Querverweise zwischen verschiedenen Dateien zu machen.
  B in einem Beispiel mit zwei Dateien, wobei B in A eingefügt wird.
  Setzen Sie jetzt in A eine Marke, auf die Sie in B verweisen wollen, so
  öffnen Sie in B 
-\family sans
-Einfügen
-\family default
-\SpecialChar menuseparator
+\noun on
+Einfügen\SpecialChar menuseparator
+Querverweis\SpecialChar ldots
 
-\family sans
-Querverweis
-\family default
-\SpecialChar ldots
+\noun default
  und wählen die gewünschte.
 \end_layout
 
@@ -3372,10 +3379,17 @@ Bib(la)TeX-Literaturverzeichnis
  soll, wenn das Unterdokument selbständig ausgegeben wird.
  Der entscheidende Punkt ist nun aber, dass Sie die Einfügung in einen Zweig
  einfügen (
-\family sans
+\noun on
 Einfügen\SpecialChar menuseparator
 Zweig\SpecialChar menuseparator
-Neuen Zweig einfügen
+Neuen
+\begin_inset space ~
+\end_inset
+
+Zweig
+\family sans
+\noun default
+ einfügen
 \family default
 ).
  Nennen Sie diesen bspw.
@@ -3389,27 +3403,27 @@ Unterdokument
 
 .
  In den Unterdokumenten aktivieren Sie nun diesen Zweig (
+\noun on
+
 \begin_inset Info
 type  "menu"
 arg   "dialog-show document"
 \end_inset
 
-
-\family sans
 \SpecialChar menuseparator
 Zweige
-\family default
+\noun default
 ), im Hauptdokument deaktivieren Sie ihn (
+\noun on
+
 \begin_inset Info
 type  "menu"
 arg   "dialog-show document"
 \end_inset
 
-
-\family sans
 \SpecialChar menuseparator
 Zweige
-\family default
+\noun default
 ).
  In der Folge wird das Literaturverzeichnis des Unterdokuments von der Hauptdate
 i ignoriert, vom Unterdokument aber ausgegeben.
@@ -3576,6 +3590,8 @@ zip
 status collapsed
 
 \begin_layout Plain Layout
+
+\noun on
 Datei\SpecialChar menuseparator
 Exportieren
 \end_layout
@@ -3633,6 +3649,8 @@ zip
 status collapsed
 
 \begin_layout Plain Layout
+
+\noun on
 \SpecialChar LyX
 \SpecialChar menuseparator
 \SpecialChar LyX
@@ -3642,6 +3660,9 @@ status collapsed
 \end_inset
 
  unter 
+\family sans
+\noun on
+
 \begin_inset Flex Code
 status collapsed
 
@@ -3654,6 +3675,9 @@ Konverter
 
 \end_inset
 
+
+\family default
+\noun default
  hinzu (die Option muss nach dem Skriptnamen eingefügt werden, nicht davor)
 \end_layout
 
@@ -3691,11 +3715,11 @@ aufsehenerregende
 Benutzerhandbuch
 \emph default
  beschrieben) das Seitenformat im Menü 
-\family sans
+\noun on
 Dokument-Einstellungen\SpecialChar menuseparator
 Seitenlayout\SpecialChar menuseparator
 Seiten-Stil
-\family default
+\noun default
  auf 
 \family sans
 ausgefallen
@@ -4036,18 +4060,18 @@ Das Dialogfenster
 
 \begin_layout Standard
 Öffnen Sie das Dialogfenster mit 
-\family sans
-Dokument
-\family default
-\SpecialChar menuseparator
-
-\family sans
+\noun on
+Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar ldots
 \SpecialChar menuseparator
-Auflistungszeichen.
+Auflistungszeichen
+\family sans
+\noun default
+.
+\end_layout
 
-\family default
- Der Dialog zeigt eine Tabelle der Auf\SpecialChar ligaturebreak
+\begin_layout Standard
+Der Dialog zeigt eine Tabelle der Auf\SpecialChar ligaturebreak
 listungszeichen.
  Auf linken Seite können Sie für die vier Ebenen jeweils sechs verschiedene
  Felder mit Zeichen auswählen.
@@ -4268,9 +4292,20 @@ pifont.sty
  Wenn Sie \SpecialChar LaTeX
 -Fehlermeldungen beim Ansehen oder Drucken der Datei erhalten,
  haben Sie wahrscheinlich ein Paket vergessen.
- \SpecialChar LyX
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\noindent
+\SpecialChar LyX
  beschränkt den Gebrauch nicht, weil Sie vielleicht lokal schreiben und
  dann irgendwohin exportieren.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4284,7 +4319,6 @@ So funktioniert es
 \begin_layout Standard
 Legen Sie fest, welche Aufzählungsebene Sie ändern wollen, und wählen Sie
  dann ein Zeichen sowie eine Größe aus.
- 
 \end_layout
 
 \begin_layout Standard
@@ -4428,11 +4462,11 @@ star
 
  Geben Sie jedes Zeichen einzeln an, indem Sie jeden Eintrag mit einem Befehl
  für das Zeichen beginnen, der über 
-\family sans
+\noun on
 Einfügen\SpecialChar menuseparator
 Benutzerdef.
  Aufzählung
-\family default
+\noun default
  zugewiesen wird.
  Dieser Eintrag hier wurde zum Beispiel mit dem Befehl 
 \family typewriter
@@ -4839,7 +4873,10 @@ llung korrespondieren: Wenn Abschnittsüberschriften auf dem Bildschirm fett
  Tatsächlich macht die XHTML-Ausgabe zwischen diesen keinen Unterschied.
  Ähnliches gilt für Texteinfügungen (wie etwa Fußnoten) und benutzerdefinierte
  Einfügungen.
- Im Ergebnis kann die XHTML-Ausgabe genauso angepasst und erweitert werden
+\end_layout
+
+\begin_layout Standard
+Im Ergebnis kann die XHTML-Ausgabe genauso angepasst und erweitert werden
  wie die \SpecialChar LaTeX
 -Ausgabe: mithilfe von Layout-Dateien und Modulen (bitte lesen
  Sie Kapitel
@@ -4897,7 +4934,6 @@ xymatrix
 
  oder \SpecialChar TeX
 -Modus verwendet –, wird diese Formel statt dessen als Bild ausgegeben.
- 
 \end_layout
 
 \begin_layout Itemize
@@ -4958,7 +4994,6 @@ xymatrix
 
  oder \SpecialChar TeX
 -Modus verwendet –, wird diese Formel statt dessen als Bild ausgegeben.
- 
 \end_layout
 
 \begin_layout Itemize
@@ -5003,6 +5038,8 @@ nicht
 \end_inset
 
 Die Größe der Bilder lässt sich in 
+\noun on
+
 \begin_inset Info
 type  "menu"
 arg   "dialog-show document"
@@ -5011,8 +5048,10 @@ arg   "dialog-show document"
 
 \family sans
 \SpecialChar menuseparator
-Formate
+
 \family default
+Formate
+\noun default
  über 
 \family sans
 Mathe-Bild-Skalierung
@@ -5115,16 +5154,16 @@ jsMath
 
 \begin_layout Standard
 Eine von diesen Ausgabemethoden müssen Sie in 
+\noun on
+
 \begin_inset Info
 type  "menu"
 arg   "dialog-show document"
 \end_inset
 
-
-\family sans
 \SpecialChar menuseparator
 Formate
-\family default
+\noun default
  wählen.
  In der Standardeinstellung ist MathML ausgewählt.
  Die Einstellung gilt dokumentweit.
@@ -5168,15 +5207,18 @@ Literaturverweise werden auf dieselbe Weise generiert wie auch die Verweise
  Die Verweise sehen in der Ausgabe also ganz ähnlich aus wie in \SpecialChar LyX
 , allerdings
  besser.
- Wenn Sie nummerische Verweise verwenden, gibt \SpecialChar LyX
- echte nummerische Marken
- aus, bspw.
+ Wenn Sie numerische Verweise verwenden, gibt \SpecialChar LyX
+ echte numerische Marken aus,
+ bspw.
  [1] oder [17], nicht einfach nur den Zitierschlüssel in eckigen Klammern
  (wie auf dem Bildschirm).
- Wenn Sie Autor-Jahr-Verweise verwenden, werden wie bei Bib\SpecialChar TeX
- kleine Buchstaben
- an das Jahr angehängt, wenn mehrere Titel eines Autors aus demselben Jahr
- zitiert werden.
+ Wenn Sie Autor-Jahr-Verweise verwenden, werden wie bei 
+\family sans
+Bib\SpecialChar TeX
+
+\family default
+ kleine Buchstaben an das Jahr angehängt, wenn mehrere Titel eines Autors
+ aus demselben Jahr zitiert werden.
  Die Marken werden den Literaturverzeichniseinträgen vorangestellt.
  Beachten Sie, dass es zurzeit keine Möglichkeit gibt, das Aussehen der
  Marken anzupassen (also etwa zwischen runden und eckigen Klammern auszuwählen).
@@ -5408,6 +5450,216 @@ n sind willkommen.
 \end_layout
 
 \begin_layout Chapter
+
+\lang english
+DocBook Output
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Neben HTML kann \SpecialChar LyX
+ auch Dokumente im DocBook-XML-Format erzeugen.
+ Mit den Versionen 2.3 und früher konnten nur ausgewählte Vorlagen verwendet
+ werden, um DocBook-Dokumente zu erzeugen (nur Version 4).
+ Ab \SpecialChar LyX
+ 2.4 können die meisten \SpecialChar LyX
+-Layouts gültige DocBook-Dokumente erzeugen (nur
+ Version 5).
+ Diese Funktion ist in \SpecialChar LyX
+ eingebaut und erfordert nicht die Verwendung externer
+ Werkzeuge.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Das Ergebnis ist, dass die DocBook-Ausgabe auf genau die gleiche Weise angepasst
+ und erweitert werden kann wie die \SpecialChar LaTeX
+-Ausgabe: durch Layout-Dateien und Module.
+ Einzelheiten dazu finden Sie in Kapitel 5 des Handbuchs "\SpecialChar LyX
+-Anpassung".
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Die meisten \SpecialChar LyX
+-Funktionen werden von DocBook unterstützt, wie z.
+ B.
+ die Ausgabe von mathematischen Formeln.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Die Ausgabe mathematischer Formeln erfolgt größtenteils in 
+\family sans
+MathML
+\family default
+ (eine große Ausnahme sind Konstruktionen, die von \SpecialChar LyX
+ nicht unterstützt werden,
+ z.B.
+ ERTs).
+ Alle Formeln sind auch in nativem \SpecialChar TeX
+ in der DocBook-Ausgabe zur Weiterverarbeitun
+g verfügbar.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Bibliographien und Zitate sind implementiert, auch mit einer externen 
+\family sans
+BibTeX
+\family default
+-Datei.
+ Wenn Detailinformationen vorhanden sind, werden Bibliographie-Einträge
+ nicht vorgerendert, sondern mit den Standard-DocBook-Konstrukten ausgegeben.
+ Es wird erwartet, dass der externe DocBook-Prozessor das Rendering der
+ Einträge übernimmt.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Stichwortverzeichnisse werden unterstützt, auch Mehrfach-Stichwortverzeichnisse.
+ Gruppierung (mit !), Seitenbereiche und Querverweise (|see) werden unterstützt,
+ mit Ausnahme der gleichen Symbole, die 
+\begin_inset Quotes gld
+\end_inset
+
+escaped
+\begin_inset Quotes grd
+\end_inset
+
+ werden.
+ Eintragsreihenfolge (@) und Layout (|
+\family sans
+mathbf
+\family default
+) werden nicht unterstützt.
+ Es gibt keine Unterstützung für das 
+\begin_inset Quotes gld
+\end_inset
+
+Escaping
+\begin_inset Quotes grd
+\end_inset
+
+ von Einträgen ins Stichwortverzeichnis.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Glossare sind implementiert.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Zwei wichtige Parameter können auf Dokumentebene eingestellt werden.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Tabellenformate: \SpecialChar LyX
+ kann Tabellen entweder als HTML (Standardwert) oder als
+ CALS erzeugen, je nach den Anforderungen des Benutzers.
+ Die meisten DocBook-Prozessoren akzeptieren beide Formate.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\lang english
+MathML
+\family default
+-Präfix: In DocBook ist 
+\family sans
+MathML
+\family default
+ im Gegensatz zu 
+\family sans
+HTML
+\family default
+ in einem eigenen Namensraum enthalten.
+ Das bedeutet, dass es einen Hinweis auf die Zugehörigkeit der Tags zum
+ MathML-Standard geben muss.
+ Es werden drei Auswahlmöglichkeiten angeboten:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang english
+Inline: der 
+\family sans
+MathML
+\family default
+-Namensraum wird für jede Formel definiert (über das 
+\family typewriter
+xmlns
+\family default
+-Attribut an jeder Formel)
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Mit dem Präfix 
+\family typewriter
+m
+\family default
+ (Standard): Der 
+\family sans
+MathML
+\family default
+-Namensraum wird auf Dokumentebene definiert (mit dem Attribut 
+\family typewriter
+xmlns:m
+\family default
+ auf dem Wurzelelement).
+ Jeder 
+\family sans
+MathML
+\family default
+ wird ein m vorangestellt: z.
+ B.
+ 
+\family typewriter
+m:math
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Mit dem Präfix 
+\family typewriter
+mml
+\family default
+: ähnlich wie die Option m, aber mit 
+\family typewriter
+mml
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Diese Option ist besonders nützlich, wenn Sie \SpecialChar LyX
+ an Ihren persönlichen Stil
+ anpassen wollen oder mit fehlerhafter Software arbeiten, die nur ein Präfix
+ für 
+\family sans
+MathML
+\family default
+ akzeptiert.
+\end_layout
+
+\end_deeper
+\begin_layout Chapter
 Der \SpecialChar LyX
 -Server
 \end_layout
@@ -5438,7 +5690,6 @@ JabRef
  Der \SpecialChar LyX
 -Server ist eher etwas für fortgeschrittene Anwender; für diese ist
  die folgende detaillierte Dokumentation vor allem gedacht.
- 
 \end_layout
 
 \begin_layout Section
@@ -5464,7 +5715,7 @@ Named Pipes
 \lang ngerman
  (
 \emph on
-benannter Pipes
+benannte Pipes
 \emph default
 ) zur Prozesskommunikation.
  Diese sind normalerweise im 
@@ -5549,17 +5800,26 @@ Ausgabe-Pipe
 \emph default
 ).
  Der Stamm der Pipe-Namen kann in 
-\begin_inset Info
-type  "menu"
-arg   "dialog-show prefs"
+\noun on
+Werkzeuge\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Pfade
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\noun off
+Auf einem Mac finden sich die Einstellungen unter 
+\noun default
+LyX > Einstellungen ...
+ > Pfade
+\end_layout
+
 \end_inset
 
 
-\family sans
-\SpecialChar menuseparator
-Pfade\SpecialChar menuseparator
-LyX-Server-Weiterleitung
-\family default
+\noun default
  geändert werden, beispielsweise in 
 \begin_inset Flex Code
 status collapsed
@@ -5766,10 +6026,10 @@ Funktion ist die Funktion, die \SpecialChar LyX
  ausführen soll.
  Dies sind dieselben Funktionen, die Sie auch im Minibuffer eingeben können
  (siehe 
-\family sans
+\noun on
 Hilfe\SpecialChar menuseparator
 LyX-Funktionen
-\family default
+\noun default
 ).
 \end_layout
 
@@ -6077,7 +6337,7 @@ inverse search
 ).
  Das heißt, dass Sie \SpecialChar LyX
  anweisen können, zu einer bestimmten Stelle (im \SpecialChar LyX
--Dolument)
+-Dokument)
  zu springen, indem Sie die entsprechende Stelle in der PDF\SpecialChar breakableslash
 DVI-Ausgabe anklicken.
  Hierfür muss der Betrachter in der Lage sein, mit \SpecialChar LyX
@@ -6177,11 +6437,11 @@ arg   "buffer-toggle-output-sync"
 
 .
  Alternativ können Sie auch in 
-\family sans
+\noun on
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
 Formate
-\family default
+\noun default
  die Option 
 \family sans
 Mit der Ausgabe synchronisieren
@@ -6204,11 +6464,11 @@ srcltx
 Sollten Sie eine andere Ausgabe in der \SpecialChar LaTeX
 -Datei benötigen, können Sie unter
  
-\family sans
+\noun on
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
 Formate
-\family default
+\noun default
  bei der Option 
 \family sans
 Mit der Ausgabe synchronisieren
@@ -6346,17 +6606,11 @@ LaTeX (plain)->DVI
 LaTeX (plain)->DraftDVI
 \family default
  in 
-\begin_inset Info
-type  "menu"
-arg   "dialog-show prefs"
-\end_inset
-
-
-\family sans
-\SpecialChar menuseparator
+\noun on
+Einstellungen\SpecialChar menuseparator
 Datei-Handhabung\SpecialChar menuseparator
 Konverter
-\family default
+\noun default
  in 
 \begin_inset Flex Code
 status collapsed
@@ -6392,7 +6646,6 @@ scrltx
  für die DVI-Ausgabe.
  Um die Funktionalität zu nutzen, laden Sie die Pakete wie folgt im \SpecialChar LyX
 -Vorspann:
- 
 \end_layout
 
 \begin_layout Itemize
@@ -6554,17 +6807,11 @@ LaTeX (plain)->DVI
 LaTeX (plain)->DraftDVI
 \family default
  unter 
-\begin_inset Info
-type  "menu"
-arg   "dialog-show prefs"
-\end_inset
-
-
-\family sans
-\SpecialChar menuseparator
+\noun on
+Einstellungen\SpecialChar menuseparator
 Datei-Handhabung\SpecialChar menuseparator
 Konverter
-\family default
+\noun default
  in 
 \begin_inset Flex Code
 status collapsed
@@ -6715,17 +6962,11 @@ Named Pipes
 \lang ngerman
  mit \SpecialChar LyX
  kommunizieren wollen, ändern Sie einfach den DVI-Betrachter in 
-\begin_inset Info
-type  "menu"
-arg   "dialog-show prefs"
-\end_inset
-
-
-\family sans
-\SpecialChar menuseparator
+\noun on
+Einstellungen\SpecialChar menuseparator
 Datei-Handhabung\SpecialChar menuseparator
 Dateiformate
-\family default
+\noun default
  in 
 \begin_inset Flex Code
 status collapsed
@@ -6801,19 +7042,14 @@ status collapsed
 
 \end_inset
 
- muss dabei noch mit dem tatsächlichen Pfad, in dem sich die LyX-Serverpipe-Weit
-erleitung befindet, ersetzt werden (siehe 
-\begin_inset Info
-type  "menu"
-arg   "dialog-show prefs"
-\end_inset
-
-
-\family sans
-\SpecialChar menuseparator
+ muss dabei noch mit dem tatsächlichen Pfad, in dem sich die \SpecialChar LyX
+-Serverpipe-Weiterl
+eitung befindet, ersetzt werden (siehe 
+\noun on
+Einstellungen\SpecialChar menuseparator
 Pfade\SpecialChar menuseparator
 LyX-Server-Weiterleitung
-\family default
+\noun default
 ).
 \begin_inset Foot
 status collapsed
@@ -6910,18 +7146,12 @@ Skim (Mac OSX)
 
 \begin_layout Standard
 Geben Sie als Betrachter-Einstellung in 
-\begin_inset Info
-type  "menu"
-arg   "dialog-show prefs"
-\end_inset
-
-
-\family sans
-\SpecialChar menuseparator
+\noun on
+Einstellungen\SpecialChar menuseparator
 Datei-Handhabung\SpecialChar menuseparator
 Dateiformate\SpecialChar menuseparator
 PDF (pdflatex)
-\family default
+\noun default
  das Folgende ein:
 \end_layout
 
@@ -6939,12 +7169,12 @@ LyX
 \end_inset
 
  in 
-\family sans
+\noun on
 Skim\SpecialChar menuseparator
 Einstellungen\SpecialChar ldots
 \SpecialChar menuseparator
 PDF-TeX Sync Unterstützung
-\family default
+\noun default
 .
 \end_layout
 
@@ -6961,7 +7191,7 @@ Evince (GNOME)
 \end_layout
 
 \begin_layout Standard
-Rückwärtssuche mit 
+Die Rückwärtssuche mit 
 \family sans
 Evince
 \family default
@@ -6986,9 +7216,13 @@ Gehen Sie in
 \family sans
 Okular
 \family default
- zu Einstellungen\SpecialChar menuseparator
+ zu 
+\noun on
+Einstellungen\SpecialChar menuseparator
 Okular einrichten\SpecialChar menuseparator
-Editor, wählen Sie als Editor 
+Editor
+\noun default
+, wählen Sie als Editor 
 \begin_inset Quotes gld
 \end_inset
 
@@ -7011,7 +7245,7 @@ lyxclient -g %f %l
 \end_layout
 
 \begin_layout Standard
-Rückwärtssuche wird mit 
+Die Rückwärtssuche wird mit 
 \family sans
 Shift-Klick
 \family default
@@ -7047,12 +7281,12 @@ Qpdfview
 Qpdfview
 \family default
  zu 
-\family sans
+\noun on
 Bearbeiten\SpecialChar menuseparator
 Einstellungen\SpecialChar ldots
 \SpecialChar menuseparator
 Verhalten
-\family default
+\noun default
 , klicken Sie auf das Eingabefeld 
 \begin_inset Quotes gld
 \end_inset
@@ -7075,7 +7309,7 @@ lyxclient -g %1 %2
 \end_layout
 
 \begin_layout Standard
-Rückwärtssuche wird mit Doppelklick initiiert.
+Die Rückwärtssuche wird mit Doppelklick initiiert.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -7084,10 +7318,10 @@ YAP (Windows)
 
 \begin_layout Standard
 Starten Sie YAP, gehen Sie zu 
-\family sans
+\noun on
 Ansicht\SpecialChar menuseparator
 Optionen
-\family default
+\noun default
  und wählen Sie den Reiter 
 \family sans
 DVI-Rückwärtssuche
@@ -7251,18 +7485,12 @@ Um mit
 SumatraPDF
 \family default
  Rückwärtssuche zu verwenden, geben Sie als Betrachter in 
-\begin_inset Info
-type  "menu"
-arg   "dialog-show prefs"
-\end_inset
-
-
-\family sans
-\SpecialChar menuseparator
+\noun on
+Einstellungen\SpecialChar menuseparator
 Datei-Handhabung\SpecialChar menuseparator
 Dateiformate\SpecialChar menuseparator
 PDF (pdflatex)
-\family default
+\noun default
  folgendes ein:
 \end_layout
 
@@ -7293,7 +7521,6 @@ SumatraPDF.exe
 \end_inset
 
  nicht in ihrem Befehlspfad liegen, verwenden Sie den vollen Dateipfad.
- 
 \end_layout
 
 \begin_layout Standard
@@ -7308,10 +7535,10 @@ YAP (Cygwin)
 Versichern Sie sich zunächst, dass YAP Ihr Standard-DVI-Betrachter in der
  Windows-Umgebung ist.
  Dann starten Sie diesen, gehen Sie zu 
-\family sans
+\noun on
 Ansicht\SpecialChar menuseparator
 Optionen
-\family default
+\noun default
  und wählen Sie den Reiter 
 \family sans
 DVI-Rückwärtssuche
@@ -7406,7 +7633,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Rückwärtssuche wird mit Doppelklick initiiert.
+Die Rückwärtssuche wird mit Doppelklick initiiert.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -7429,19 +7656,13 @@ SumatraPDF.sh
 \end_inset
 
  als Betrachter in 
-\begin_inset Info
-type  "menu"
-arg   "dialog-show prefs"
-\end_inset
-
-
-\family sans
-\SpecialChar menuseparator
+\noun on
+Einstellungen\SpecialChar menuseparator
 Datei-Handhabung\SpecialChar menuseparator
 Dateiformate\SpecialChar menuseparator
 PDF (pdf\SpecialChar softhyphen
 latex)
-\family default
+\noun default
  ein.
  
 \begin_inset Flex Code
@@ -7535,7 +7756,7 @@ lyxpipe
 \end_layout
 
 \begin_layout Standard
-Rückwärtssuche wird mit Doppelklick initiiert.
+Die Rückwärtssuche wird mit Doppelklick initiiert.
 \end_layout
 
 \begin_layout Section
@@ -7558,11 +7779,15 @@ Gegenteil
  Wenn Vorwärtssuche eingerichtet ist (wie im folgenden beschrieben), können
  Sie Ihren Cursor irgendwo in Ihrem \SpecialChar LyX
 -Dokument platzieren, dann 
+\noun on
+
 \begin_inset Info
 type  "menu"
 arg   "forward-search"
 \end_inset
 
+
+\noun default
  im Menü wählen (oder einfach 
 \family sans
 Vorwärtssuche
@@ -7595,17 +7820,11 @@ reference "subsec:rev-search"
 Zusätzlich müssen Sie \SpecialChar LyX
  für die Kommunikation mit dem Betrachter konfigurieren,
  und zwar in 
-\begin_inset Info
-type  "menu"
-arg   "dialog-show prefs"
-\end_inset
-
-
-\family sans
-\SpecialChar menuseparator
+\noun on
+Einstellungen\SpecialChar menuseparator
 Ausgabe\SpecialChar menuseparator
 Allgemein
-\family default
+\noun default
 .
  Dort bieten wir eine Reihe von getesteten Konfigurationen für spezifische
  Betrachter an, die Sie aus einer Auswahlliste wählen können.
@@ -7641,7 +7860,7 @@ $$t
 
 : Name der (temporären) exportierten 
 \begin_inset Flex Code
-status collapsed
+status open
 
 \begin_layout Plain Layout
 .tex
@@ -7824,27 +8043,20 @@ xpdf
 SyncTeX
 \family default
  (die vorbereiteten Konfigurationen in 
-\begin_inset Info
-type  "menu"
-arg   "dialog-show prefs"
-\end_inset
-
-
-\family sans
-\SpecialChar menuseparator
+\noun on
+Einstellungen\SpecialChar menuseparator
 Ausgabe\SpecialChar menuseparator
 Allgemein
-\family default
+\noun default
  enthalten diesen Aufruf).
- 
 \end_layout
 
 \begin_layout Standard
 Vorwärtssuche funktioniert mit DVI- und PDF-Ausgabe.
  \SpecialChar LyX
  prüft einfach, welches Ausgabeformat Sie verwendet haben (also, welches
- Format im temporären Verzeichnis vorfindlich ist) und wählt dann die passende
- Konfiguration für das entsprechende Format.
+ Format im temporären Verzeichnis bereits vorhanden ist) und wählt dann
+ die passende Konfiguration für das entsprechende Format.
 \end_layout
 
 \begin_layout Chapter
@@ -7978,21 +8190,17 @@ Der Anfang
 
 \begin_layout Standard
 Sie beginnen ein neues Dokument über den Menüpunkt 
-\family sans
+\noun on
 Datei\SpecialChar menuseparator
 Neu\SpecialChar ldots
-
-\family default
 
 \begin_inset space \space{}
 \end_inset
 
-(
-\family sans
-Strg+N
-\family default
-) oder 
-\family sans
+(Strg+N)
+\noun default
+ oder 
+\noun on
 Datei\SpecialChar menuseparator
 Neu
 \begin_inset space ~
@@ -8010,6 +8218,9 @@ ge\SpecialChar ldots
 \end_inset
 
 (Strg+Umschalt+N)
+\family sans
+\noun default
+
 \begin_inset Foot
 status collapsed
 
@@ -8037,6 +8248,8 @@ Astronomy & Astrophysics
 \family default
 \lang ngerman
  im Menü 
+\noun on
+
 \begin_inset Info
 type  "menu"
 arg   "dialog-show document"
@@ -8159,10 +8372,10 @@ maketitle
 \begin_layout Standard
 Wenn Sie im Titelblock Fußnoten verwenden wollen, zum Beispiel um Ihre gegenwärt
 ige Adresse anzugeben, können Sie dazu die normale Fußnote 
-\family sans
+\noun on
 Einfügen\SpecialChar menuseparator
 Fußnote
-\family default
+\noun default
  verwenden.
  \SpecialChar LyX
  verwendet dann automatisch die in diesem Fall korrekte \SpecialChar LaTeX
@@ -8177,10 +8390,10 @@ thanks{}
 
 \begin_layout Standard
 Unter 
-\family sans
+\noun on
 Bearbeiten\SpecialChar menuseparator
 Textstil
-\family default
+\noun default
  finden Sie außerdem zwei Einfügungen, die für den Titel relevant sind:
 \end_layout
 
@@ -8443,10 +8656,10 @@ Benutzerhandbuch
  Denken Sie aber daran, dass laut Vorgabe Tabellen linksbündig gesetzt werden
  sollten.
  Verwenden Sie dazu die Einstellungsmöglichkeit im Menü 
-\family sans
+\noun on
 Bearbeiten\SpecialChar menuseparator
 Absatz-Einstellungen
-\family default
+\noun default
  (
 \begin_inset Info
 type  "icon"
@@ -8464,10 +8677,13 @@ hrift neben dem Bild dar.
 
 \begin_layout Enumerate
 Erzeugen Sie eine breite Gleitabbildung: 
-\family sans
+\noun on
 Einfügen\SpecialChar menuseparator
 Gleitobjekt\SpecialChar menuseparator
-Abbildung.
+Abbildung
+\family sans
+\noun default
+.
 \end_layout
 
 \begin_layout Enumerate
@@ -8484,11 +8700,11 @@ Eingabe,
 
 \begin_layout Enumerate
 Fügen Sie die Abbildung ein: 
-\family sans
+\noun on
 Einfügen\SpecialChar menuseparator
-Grafik
-\family default
-\SpecialChar ldots
+Grafik\SpecialChar ldots
+
+\noun default
  Die Abbildung sollte auf eine Breite von 12
 \begin_inset Formula $\,$
 \end_inset
@@ -8499,7 +8715,7 @@ cm skaliert werden.
 \begin_layout Enumerate
 Positionieren Sie den Cursor hinter die Abbildung und fügen Sie einen horizontal
 en Leerraum ein: 
-\family sans
+\noun on
 Einfügen\SpecialChar menuseparator
 Formatierung\SpecialChar menuseparator
 Variabler
@@ -8511,7 +8727,7 @@ horiz.
 \end_inset
 
 Abstand
-\family default
+\noun default
 .
 \end_layout
 
@@ -8579,19 +8795,22 @@ referee
 \family default
  (Begutachtungsmodus) angegeben werden.
  Verwenden Sie hierzu im Menü 
-\family sans
+\noun on
 Dokument-Einstellungen\SpecialChar menuseparator
 Do\SpecialChar softhyphen
 ku\SpecialChar softhyphen
 ment\SpecialChar softhyphen
 klas\SpecialChar softhyphen
-se,
+se
+\family sans
+\noun default
+,
 \family default
  das Feld 
-\family sans
+\noun on
 Klassenoptionen\SpecialChar menuseparator
 Benutzerdefiniert
-\family default
+\noun default
 , und geben Sie dort das Wort 
 \family typewriter
 referee
@@ -8606,16 +8825,12 @@ Der Beispielartikel
 \begin_layout Standard
 Im Verzeichnis Beispiele, in das Sie über den entsprechenden Knopf im Dialog
  
-\family sans
+\noun on
 Datei\SpecialChar menuseparator
 Öffnen\SpecialChar ldots
-
-\family default
 \SpecialChar menuseparator
-
-\family sans
 Beispiele
-\family default
+\noun default
  gelangen, finden Sie einen Artikel für dieses Format (unter dem Titel 
 \family typewriter
 aa_sample.lyx
@@ -8633,7 +8848,6 @@ aa_sample.lyx
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Standard
@@ -8758,7 +8972,7 @@ Einen neuen Artikel beginnen
 \begin_layout Standard
 Es ist sehr ratsam, mit der beigefügten Vorlage zu beginnen.
  Klicken Sie dazu auf 
-\family sans
+\noun on
 Datei\SpecialChar menuseparator
 Neu
 \begin_inset space \space{}
@@ -8768,9 +8982,9 @@ von
 \begin_inset space \space{}
 \end_inset
 
-Vorlage
-\family default
-\SpecialChar ldots
+Vorlage\SpecialChar ldots
+
+\noun default
  und wählen Sie dann 
 \family typewriter
 aastex6.lyx
@@ -8811,11 +9025,11 @@ dig, bevor der Text eingereicht werden kann.
 \begin_layout Enumerate
 Exportieren Sie den Text als \SpecialChar LaTeX
 -Datei (
-\family sans
+\noun on
 Datei\SpecialChar menuseparator
 Exportieren\SpecialChar menuseparator
 LaTeX
-\family default
+\noun default
 ).
 \end_layout
 
@@ -9128,12 +9342,12 @@ flushrt
 Optionen
 \family default
  in 
-\family sans
+\noun on
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar ldots
 \SpecialChar menuseparator
 Dokumentformat
-\family default
+\noun default
  ein.
 \end_layout
 
@@ -9325,10 +9539,10 @@ figcaption
 \family default
  (2.14.2) – Sie können ein optionales Dateinamen-Argument einfügen, indem
  Sie den Cursor am Textanfang platzieren und 
-\family sans
+\noun on
 Einfügen\SpecialChar menuseparator
 Kurztitel
-\family default
+\noun default
  auswählen.
  
 \family sans
@@ -9523,10 +9737,10 @@ deluxtable
 \family default
  wirklich verwenden wollen, legen Sie die Tabelle mit einem normalen Editor
  als Datei an und fügen Sie diese über den Menüpunkt 
-\family sans
+\noun on
 Einfügen\SpecialChar menuseparator
 Datei
-\family default
+\noun default
  in Ihre \SpecialChar LyX
 -Datei ein.
  In der Datei 
@@ -9600,14 +9814,14 @@ layouts
 \begin_layout Enumerate
 Rekonfigurieren Sie \SpecialChar LyX
  mit 
-\family sans
+\noun on
 Werkzeuge\SpecialChar menuseparator
 Neu
 \begin_inset space ~
 \end_inset
 
 konfigurieren
-\family default
+\noun default
  und starten Sie \SpecialChar LyX
  dann neu.
 \end_layout
@@ -9622,7 +9836,7 @@ American Astronomical Society (V.
 \family default
 \lang ngerman
  als Auswahloption in 
-\family sans
+\noun on
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar ldots
 \SpecialChar menuseparator
@@ -9661,14 +9875,10 @@ Unterschriften von Tabellen zu zentrieren.
  Dies verursacht offenbar Probleme im Zusammenhang mit AAS\SpecialChar TeX
 , Sie sollten
  deshalb für diese Abschnitte in 
-\family sans
+\noun on
 Bearbeiten\SpecialChar menuseparator
-Absatz
-\family default
--
-\family sans
-Einstellungen
-\family default
+Absatz-Einstellungen
+\noun default
  die 
 \family sans
 Ausrichtung
@@ -9915,7 +10125,6 @@ ftp://ftp.ams.org/pub/tex/amslatex/
 ).
  Diese Klassen sind für jede Art von mathematischen Texten geeignet und
  nützlich.
- 
 \end_layout
 
 \begin_layout Standard
@@ -9925,7 +10134,6 @@ Es gibt zwei grundlegende AMS-Klassen:
 
 \begin_layout Enumerate
 amsart – Das AMS-Standardformat für Artikel.
- 
 \end_layout
 
 \begin_layout Enumerate
@@ -10264,7 +10472,6 @@ Wird oft verwendet, wenn ein Beweis generalisiert werden soll.
 \begin_layout Case
 Dies wird verwendet, um lange Argumentationen aufzuspalten, indem besondere
  Fälle betrachtet werden.
- 
 \end_layout
 
 \begin_layout Case
@@ -10737,27 +10944,19 @@ dinbrief
 LyXDir/templates
 \family default
  (
-\family sans
-Datei
-\family default
-\SpecialChar menuseparator
-
-\family sans
+\noun on
+Datei\SpecialChar menuseparator
 Neu
 \begin_inset space ~
 \end_inset
 
 von
-\family default
-
 \begin_inset space ~
 \end_inset
 
+Vorlage\SpecialChar ldots
 
-\family sans
-Vorlage
-\family default
-\SpecialChar ldots
+\noun default
 , 
 \family sans
 Strg+
@@ -10914,11 +11113,11 @@ Los geht's
 
 \begin_layout Standard
 Als erstes müssen Sie im Dialogfeld 
-\family sans
+\noun on
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
 Dokumentklasse
-\family default
+\noun default
  die Dokumentklasse 
 \family sans
 FoilTeX
@@ -10930,19 +11129,19 @@ sse wissen:
 
 \begin_layout Itemize
 Verändern Sie nicht die Einstellungen für 
-\family sans
+\noun on
 Textformat\SpecialChar menuseparator
 Zweispaltiges
 \begin_inset space ~
 \end_inset
 
 Dokument
-\family default
+\noun default
  und 
-\family sans
+\noun on
 Seitenlayout\SpecialChar menuseparator
 Orientierung
-\family default
+\noun default
 .
  Dies wird von der Klasse 
 \family sans
@@ -11112,20 +11311,16 @@ Weitere Optionen
 
 \begin_layout Standard
 Die folgenden Optionen können Sie im Feld 
-\family sans
+\noun on
 Klassenoptionen\SpecialChar menuseparator
 Benutzerdefiniert
-\family default
+\noun default
  im Menüfenster 
-\family sans
+\noun on
 Dokument-Einstellun\SpecialChar softhyphen
-gen
-\family default
-\SpecialChar menuseparator
-
-\family sans
+gen\SpecialChar menuseparator
 Dokumentklasse
-\family default
+\noun default
  verwenden:
 \end_layout
 
@@ -11785,10 +11980,10 @@ FoilTeX
  so dass diese immer genau an der Stelle eingefügt werden, an der sie im
  Originaltext stehen.
  Falls Sie die Platzierung der Gleitobjekte verändert haben (
-\family sans
+\noun on
 Dokument\SpecialChar menuseparator
 Einstellungen
-\family default
+\noun default
 ), so wird dies ignoriert.
 \end_layout
 
@@ -12164,11 +12359,11 @@ LogoOn
 
 \begin_layout Standard
 Falls Sie in 
-\family sans
+\noun on
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar ldots
 
-\family default
+\noun default
 
 \begin_inset space \space{}
 \end_inset
@@ -12688,7 +12883,7 @@ http://www.worldscinet.com/ijmpc/mkt/guidelines.shtml
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Itemize
@@ -12761,7 +12956,7 @@ Babel
 \family default
  nicht geladen wird.
  Hierfür gehen Sie 
-\family sans
+\noun on
 
 \begin_inset Info
 type  "menu"
@@ -12770,7 +12965,7 @@ arg   "dialog-show document"
 
 \SpecialChar menuseparator
 Sprache
-\family default
+\noun default
  und wählen Sie unter 
 \family sans
 Sprachpaket
@@ -13115,20 +13310,12 @@ Einen Artikel zur Einreichung vorbereiten
 \begin_layout Standard
 Bevor Sie Ihren Artikel einreichen, müssen Sie ihn als \SpecialChar LaTeX
 -Datei (
-\family sans
-Datei
-\family default
-\SpecialChar menuseparator
+\noun on
+Datei\SpecialChar menuseparator
+Exportieren\SpecialChar menuseparator
+LaTeX)
+\noun default
 
-\family sans
-Exportieren
-\family default
-\SpecialChar menuseparator
-
-\family sans
-LaTeX
-\family default
-)
 \begin_inset Foot
 status collapsed
 
@@ -13270,16 +13457,16 @@ Neu von Vorlage
 \begin_layout Itemize
 Um Ihr Dokument in ein PDF, PS, oder DVI umzuwandeln, versichern Sie sich,
  dass in 
+\noun on
+
 \begin_inset Info
 type  "menu"
 arg   "dialog-show document"
 \end_inset
 
 \SpecialChar menuseparator
-
-\family sans
 Mathe-Optionen
-\family default
+\noun default
  keine AMS-Pakete geladen werden!
 \end_layout
 
@@ -13545,7 +13732,6 @@ Exportieren
 LaTeX
 \family default
 ).
- 
 \end_layout
 
 \begin_layout Enumerate
@@ -15781,7 +15967,6 @@ chapterstyle
 \end_inset
 
 B.
- 
 \end_layout
 
 \begin_deeper
@@ -16781,7 +16966,6 @@ Ableitung
 
 \family sans
 Theorem.
- 
 \end_layout
 
 \begin_layout Standard
@@ -16897,8 +17081,6 @@ Dokumentklasse!slides!default
 von 
 \noun on
 John Weiss
-\noun default
- 
 \end_layout
 
 \begin_layout Subsection
@@ -17486,12 +17668,10 @@ Text
 folgen
 \emph default
  soll.
- 
 \end_layout
 
 \begin_layout Itemize
 Dann gehen Sie zum Anfang dieses Absatzes.
- 
 \end_layout
 
 \begin_layout Itemize
@@ -17530,7 +17710,6 @@ Sichtbaren
 Text
 \family default
 .
- 
 \end_layout
 
 \begin_layout Standard
@@ -17598,7 +17777,6 @@ Slide:
 \family default
 .
  Alle Absätze, die auf diese Zeile folgen, werden auf die neue Folie geschrieben.
- 
 \end_layout
 
 \begin_layout Standard
@@ -17970,7 +18148,6 @@ Legen Sie danach eine
 Overlay
 \family default
 -Folie an.
- 
 \end_layout
 
 \begin_layout Enumerate
@@ -18675,7 +18852,7 @@ prüfen
 \family typewriter
 chktex
 \family default
-  starten und ein Fenster mit den 
+ starten und ein Fenster mit den 
 \family typewriter
 chktex
 \family default
@@ -18720,7 +18897,7 @@ chktex
 besondere
 \emph default
  \SpecialChar LaTeX
--Datei erzeugen muss, damit  die Zeilennummern der 
+-Datei erzeugen muss, damit die Zeilennummern der 
 \family typewriter
 chktex
 \family default
@@ -20243,7 +20420,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Der aufgerufene RCS-Befehl ist 
+Der aufgerufene RCS-Befehl ist
 \end_layout
 
 \begin_layout LyX-Code
@@ -20734,7 +20911,7 @@ Bei der Registrierung werden Sie nach einer ersten Beschreibung des Dokuments
 \end_layout
 
 \begin_layout Standard
-Der ausgeführte CVS-Befehl ist: 
+Der ausgeführte CVS-Befehl ist:
 \end_layout
 
 \begin_layout LyX-Code
@@ -21332,7 +21509,7 @@ Bei der Registrierung werden Sie nach einer ersten Beschreibung des Dokuments
 \end_layout
 
 \begin_layout Standard
-Der ausgeführte SVN-Befehl ist: 
+Der ausgeführte SVN-Befehl ist:
 \end_layout
 
 \begin_layout LyX-Code
@@ -22195,17 +22372,12 @@ vcs-time
 
 \end_deeper
 \begin_layout Standard
-Sie können diese Informationen über die Info-Einfügung einbinden (bspw.
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-info-insert buffer vcs-date
-\end_layout
-
-\end_inset
-
+Sie können diese Informationen über die Info-Einfügung einbinden (
+\lang american
+Einfügen\SpecialChar menuseparator
+Textfeld\SpecialChar menuseparator
+Versionskontrolle: Revision
+\lang ngerman
 ).
  Die Information ist nur dann Verfügbar, wenn die Datei der SVN-Kontrolle
  unterliegt (d.
@@ -22290,7 +22462,7 @@ $Rev$
 
 ).
  Der SVN-Client wird dies dann automatisch nach jeder Aktualisierung und
- jeder Abschickung durch die Revisionsnummer ersetzen (bspw.
+ jedem Commit durch die Revisionsnummer ersetzen (bspw.
  
 \begin_inset Flex Code
 status collapsed
@@ -22472,7 +22644,6 @@ C:
 Neues Projekt
 \family default
  liegt.
- 
 \end_layout
 
 \begin_layout Enumerate
@@ -23076,7 +23247,7 @@ Bei der Registrierung werden Sie nach einer ersten Beschreibung des Dokuments
 \end_layout
 
 \begin_layout Standard
-Der ausgeführte GIT-Befehl ist: 
+Der ausgeführte GIT-Befehl ist:
 \end_layout
 
 \begin_layout LyX-Code
@@ -23211,11 +23382,15 @@ Versionsinformationen
 
 \begin_layout Standard
 \SpecialChar LyX
- unterstützt die GIT-Hash-Nummer des letzten Commits, Autorname, Datum und
- Uhrzeit des letzten Commits.
+ unterstützt die GIT-Hash-Nummer des letzten Commits, seiner abgekürzten
+ Form, Autorname, Datum und Uhrzeit des letzten Commits.
  Alles diese Informationen werden von 
 \family typewriter
-git log -n 1 --pretty=format:%H%n%an%n%ai
+git log -n 1 --pretty=format:%H%n
+\lang english
+%h%n
+\lang ngerman
+%an%n%ai
 \family default
  extrahiert.
  Informationen zutrVerzeichnisversion werden mittels 
@@ -23359,7 +23534,6 @@ status collapsed
 \end_inset
 
  bezeicinet dabei die aktuell editierte Version).
- 
 \end_layout
 
 \begin_layout Standard
@@ -23517,7 +23691,7 @@ Aus den FAQ zum Thema
 \emph on
 Literarische Programmierung
 \emph default
-: 
+:
 \end_layout
 
 \begin_layout Quote
@@ -24053,7 +24227,7 @@ Der erste Teil des Konverterbefehls,
 \family sans
 Konverter
 \family default
-, hat den Eintrag 
+, hat den Eintrag
 \end_layout
 
 \begin_layout LyX-Code
@@ -27276,7 +27450,7 @@ Hier ist ein Beispiel:
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "../SpecialParagraphShape.tex"
+filename "/Applications/LyX.app/Contents/Resources/doc/SpecialParagraphShape.tex"
 literal "true"
 
 \end_inset
