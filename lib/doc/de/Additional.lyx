@@ -124,7 +124,7 @@ shapepar
 \papersides 2
 \paperpagestyle headings
 \tablestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \change_bars false
 \postpone_fragile_content false
@@ -5450,14 +5450,10 @@ n sind willkommen.
 \end_layout
 
 \begin_layout Chapter
-
-\lang english
 DocBook Output
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Neben HTML kann \SpecialChar LyX
  auch Dokumente im DocBook-XML-Format erzeugen.
  Mit den Versionen 2.3 und früher konnten nur ausgewählte Vorlagen verwendet
@@ -5472,8 +5468,6 @@ Neben HTML kann \SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Das Ergebnis ist, dass die DocBook-Ausgabe auf genau die gleiche Weise angepasst
  und erweitert werden kann wie die \SpecialChar LaTeX
 -Ausgabe: durch Layout-Dateien und Module.
@@ -5482,8 +5476,6 @@ Das Ergebnis ist, dass die DocBook-Ausgabe auf genau die gleiche Weise angepasst
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Die meisten \SpecialChar LyX
 -Funktionen werden von DocBook unterstützt, wie z.
  B.
@@ -5491,8 +5483,6 @@ Die meisten \SpecialChar LyX
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 Die Ausgabe mathematischer Formeln erfolgt größtenteils in 
 \family sans
 MathML
@@ -5507,8 +5497,6 @@ g verfügbar.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 Bibliographien und Zitate sind implementiert, auch mit einer externen 
 \family sans
 BibTeX
@@ -5521,8 +5509,6 @@ BibTeX
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 Stichwortverzeichnisse werden unterstützt, auch Mehrfach-Stichwortverzeichnisse.
  Gruppierung (mit !), Seitenbereiche und Querverweise (|see) werden unterstützt,
  mit Ausnahme der gleichen Symbole, die 
@@ -5551,20 +5537,14 @@ Escaping
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 Glossare sind implementiert.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Zwei wichtige Parameter können auf Dokumentebene eingestellt werden.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 Tabellenformate: \SpecialChar LyX
  kann Tabellen entweder als HTML (Standardwert) oder als
  CALS erzeugen, je nach den Anforderungen des Benutzers.
@@ -5574,7 +5554,6 @@ Tabellenformate: \SpecialChar LyX
 \begin_layout Itemize
 
 \family sans
-\lang english
 MathML
 \family default
 -Präfix: In DocBook ist 
@@ -5593,8 +5572,6 @@ HTML
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 Inline: der 
 \family sans
 MathML
@@ -5607,8 +5584,6 @@ xmlns
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 Mit dem Präfix 
 \family typewriter
 m
@@ -5634,8 +5609,6 @@ m:math
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 Mit dem Präfix 
 \family typewriter
 mml
@@ -5646,8 +5619,6 @@ mml
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Diese Option ist besonders nützlich, wenn Sie \SpecialChar LyX
  an Ihren persönlichen Stil
  anpassen wollen oder mit fehlerhafter Software arbeiten, die nur ein Präfix
