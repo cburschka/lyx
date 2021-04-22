@@ -1836,6 +1836,14 @@ contributors = [
                  "12 January 2008",
                  u"small fixes"),
 
+     contributor(u"Christoph Schmitz",
+                 "<chr.schmitz () web ! de",
+                 "GPL",
+                 "Re: German Translation of \"Additional Features\"",
+                 "m=161899755219050",
+                 "21 April 2021",
+                 u"Contribution to German manuals"),
+
      contributor(u"Hubert Schreier",
                  "schreier () sc ! edu",
                  "",
