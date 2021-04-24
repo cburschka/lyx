@@ -610,7 +610,7 @@ contributors = [
                  "[no subject]",
                  "m=159048578028108",
                  "26 May 2020",
-                 u"Russian Translation of documentation"),
+                 u"Russian translation of documentation"),
 
      contributor(u"Yuri Chornoivan",
                  "yurchor () ukr ! net",
@@ -1837,7 +1837,7 @@ contributors = [
                  u"small fixes"),
 
      contributor(u"Christoph Schmitz",
-                 "<chr.schmitz () web ! de",
+                 "chr.schmitz () web ! de",
                  "GPL",
                  "Re: German Translation of \"Additional Features\"",
                  "m=161899755219050",
