@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 608
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -143,7 +143,7 @@ subequations
 \maintain_unincluded_children no
 \language french
 \language_package default
-\inputencoding utf8
+\inputencoding auto-legacy
 \fontencoding auto
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
@@ -152,9 +152,9 @@ subequations
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -203,8 +203,8 @@ subequations
 \justification true
 \use_refstyle 0
 \use_minted 0
-\notefontcolor #0000ff
 \use_lineno 0
+\notefontcolor #0000ff
 \index Index
 \shortcut idx
 \color #008000
@@ -220,15 +220,19 @@ subequations
 \papercolumns 1
 \papersides 2
 \paperpagestyle plain
+\tablestyle default
 \bullet 1 0 6 -1
 \bullet 2 2 35 -1
 \bullet 3 2 7 -1
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -266,7 +270,7 @@ literal "false"
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 auteur: Uwe Stöhr
@@ -305,6 +309,10 @@ Juillet 2016 : nouvelle mise à jour pour 2.2, une note ajoutée (JPC)
 Août 2017 : revue pour 2.3 (JPC)
 \end_layout
 
+\begin_layout Plain Layout
+Avril 2018 : revue pour 2.4 (JPC)
+\end_layout
+
 \end_inset
 
 
@@ -317,7 +325,7 @@ Août 2017 : revue pour 2.3 (JPC)
 
 
 \family sans
-Version 2.3.x
+Version 2.4.x
 \end_layout
 
 \begin_layout Standard
@@ -587,7 +595,7 @@ Alt+M D
 Pour changer une formule en ligne en une formule hors ligne, placez le curseur
  dans la formule et appuyez sur 
 \family sans
-Ctrl-M, Alt+C M, Alt+M M
+Alt+M T I
 \family default
  ou utilisez 
 \family sans
@@ -597,7 +605,13 @@ Changer le type de formule
 \family default
 .
  De la même façon, on peut changer une formule hors ligne en une formule
- en ligne.
+ en ligne avec le raccourci 
+\begin_inset Info
+type  "shortcuts"
+arg   "math-mutate equation"
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -630,22 +644,42 @@ Seules les formules en ligne sont autorisées dans les tableaux.
 \end_layout
 
 \begin_layout Standard
-La barre d'outils mathématique peut être activée avec le menu 
+La visibilité de la barre d'outils mathématique se règle avec le menu 
 \family sans
 Affichage\SpecialChar menuseparator
 Barres d'outils
 \family default
 .
- Quand vous cliquez sur 
+ Trois options sont proposées: Active, Inactive et Automatique.
+ Avec 
 \begin_inset Quotes cld
 \end_inset
 
-Math
+Active
 \begin_inset Quotes crd
 \end_inset
 
- la barre d'outils s'affiche de façon permanente en bas de l'interface;
- cet état est visualisé dans le menu 
+, la barre d'outils s'affiche de façon permanente en bas de l'interface.
+ En sélectionnant 
+\begin_inset Quotes cld
+\end_inset
+
+Inactive
+\begin_inset Quotes crd
+\end_inset
+
+, elle disparaît.
+ Enfin, le mode 
+\begin_inset Quotes cld
+\end_inset
+
+Automatique
+\begin_inset Quotes crd
+\end_inset
+
+ affiche la barre d'outils quand le curseur se trouve à l'intérieur d'une
+ formule.
+ L'état est visualisé dans le menu 
 \family sans
 Barres
 \begin_inset space ~
@@ -654,33 +688,7 @@ Barres
 d'outils 
 \family default
 par une coche.
- Si, dans cet état, vous cliquez une nouvelle fois sur 
-\begin_inset Quotes cld
-\end_inset
-
-Math
-\begin_inset Quotes crd
-\end_inset
-
- la barre d'outils ne s'affichera plus que lorsque le curseur se trouvera
- à l'intérieur d'une formule; cet état est visualisé en changeant l'entrée
- de menu de 
-\begin_inset Quotes cld
-\end_inset
-
-Math
-\begin_inset Quotes crd
-\end_inset
-
- en 
-\begin_inset Quotes cld
-\end_inset
-
-Math (auto)
-\begin_inset Quotes crd
-\end_inset
-
-.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -986,13 +994,15 @@ Si une espace doit apparaître dans la sortie finale, l'espace doit être
 \begin_layout Standard
 On insère une espace insécable avec 
 \family sans
-Ctrl+Espace
-\family default
-.
+Ctrl+Espace ou via le menu 
+\lang english
+Insérer\SpecialChar menuseparator
+Typographie spéciale\SpecialChar menuseparator
+Espace insécable.
 \end_layout
 
 \begin_layout Subsection*
-Explications sur la syntaxe
+Explications de la syntaxe utilisée dans ce manuel
 \end_layout
 
 \begin_layout Itemize
@@ -1000,7 +1010,7 @@ Le symbole
 \begin_inset space \textvisiblespace{}
 \end_inset
 
- indique que l'on doit mettre une espace.
+ indique que l'utilisateur doit saisir une espace.
 \end_layout
 
 \begin_layout Itemize
@@ -1044,6 +1054,7 @@ Unités disponibles
 \align center
 \begin_inset Float table
 placement H
+alignment document
 wide false
 sideways false
 status open
@@ -3505,6 +3516,12 @@ phantom
 \begin_inset space \textvisiblespace{}
 \end_inset
 
+
+\backslash
+mathrm
+\begin_inset space \textvisiblespace{}
+\end_inset
+
 F
 \end_layout
 
@@ -3543,6 +3560,12 @@ phantom
 \end_inset
 
 9
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\backslash
+mathrm
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -3964,12 +3987,12 @@ underline
 
 \begin_layout Standard
 Pour souligner deux fois, par exemple des résultats, on utilise 
-\backslash
-underline deux fois.
-\end_layout
+\series bold
 
-\begin_layout Standard
-Il est possible de mettre jusqu'à 6 lignes au-dessus ou en-dessous de caractères.
+\backslash
+underline
+\series default
+ deux fois (ou autant de fois que nécessaire).
 \end_layout
 
 \begin_layout Standard
@@ -4549,7 +4572,13 @@ hdotsfor
 
 \end_inset
 
-, qui a la syntaxe suivante:
+, qui a la syntaxe suivante (mathtools doit toujours être chargé via 
+\family sans
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
+Options mode math
+\family default
+ pour que ceci fonctionne):
 \end_layout
 
 \begin_layout Standard
@@ -4921,12 +4950,41 @@ Ctrl-Entrée
 \begin_inset VSpace bigskip
 \end_inset
 
-La 
+L
 \family sans
-Décoration
+'Apparence
 \family default
- permet d'ajouter des parenthèses du type choisi autour de la matrice.
- Une autre façon d'ajouter des parenthèses autour d'une matrice, est soit
+ permet d'ajouter des parenthèses du type choisi autour de la matrice, ou
+ pour sélecttionner le style 
+\begin_inset Quotes cld
+\end_inset
+
+petit
+\begin_inset Quotes crd
+\end_inset
+
+, approprié pour des matrices en ligne comme celle-ci 
+\begin_inset Formula $\bigl(\begin{smallmatrix}0 & \textrm{-}\mathrm{i}\\
+\mathrm{i} & 0
+\end{smallmatrix}\bigr)$
+\end_inset
+
+.
+ Ici le parenthèses ont été ajputées manuellement via les commandes
+\series bold
+ 
+\backslash
+bigl(
+\series default
+ et 
+\series bold
+
+\backslash
+bigr).
+\end_layout
+
+\begin_layout Standard
+Une autre façon d'ajouter des parenthèses autour d'une matrice, est soit
  d'utiliser les commandes 
 \series bold
 
@@ -5407,8 +5465,8 @@ arraystretch
 \end_layout
 
 \begin_layout Standard
-Pour insérer une matrice dans une ligne de texte, on utilise la commande
- 
+Pour insérer une petite matrice dans une ligne de texte, on eut également
+ utiliser la commande 
 \series bold
 
 \backslash
@@ -5438,7 +5496,7 @@ C & D
 \end{smallmatrix}\right)$
 \end_inset
 
- dans une ligne de texte.
+ dans une ligne de texte avec des délimiteurs automatiques.
 \end_layout
 
 \begin_layout Standard
@@ -10867,7 +10925,7 @@ Espace ! horizontal ! prédéfini
 Il es parfois nécessaire d'insérer un espacement horizontal dans une formule.
  On le fait en utilisant une espace insécable (raccourci 
 \family sans
-Ctrl-Espace
+Ctrl-Entrée
 \family default
 ).
  Un 
@@ -13587,6 +13645,14 @@ fbox
 \begin_inset space \textvisiblespace{}
 \end_inset
 
+
+\begin_inset Formula $\leftarrow$
+\end_inset
+
+
+\begin_inset Formula $\leftarrow$
+\end_inset
+
 A=B
 \end_layout
 
@@ -13703,7 +13769,11 @@ de
 \end_inset
 
 texte\SpecialChar menuseparator
-Personnalisé
+P
+\begin_inset Formula $\leftarrow\leftarrow$
+\end_inset
+
+ersonnalisé
 \family default
 \SpecialChar ldots
 .
@@ -15952,7 +16022,7 @@ ligne
 :
 \begin_inset Formula 
 \[
-\sum\nolimits _{x=0}^{\infty}\frac{1}{x^{2}}
+\sum\nolimits_{x=0}^{\infty}\frac{1}{x^{2}}
 \]
 
 \end_inset
@@ -15987,7 +16057,7 @@ ligne
 et elles sont donc placées sous les intégrales:
 \begin_inset Formula 
 \begin{equation}
-\iiint\limits _{V}X\,\mathrm{d}V=U\label{eq:VolInt}
+\iiint\limits_{V}X\,\mathrm{d}V=U\label{eq:VolInt}
 \end{equation}
 
 \end_inset
@@ -29142,7 +29212,7 @@ reference "eq:VolInt"
  indentée:
 \begin_inset Formula 
 \begin{flalign}
-\hspace{30pt}\iiint\limits _{V}X\,\mathrm{d}V & =U & {}
+\hspace{30pt}\iiint\limits_{V}X\,\mathrm{d}V & =U & {}
 \end{flalign}
 
 \end_inset
@@ -29959,6 +30029,7 @@ En anglais le dièse est le symbole du numéro (NdT).
 
 .
  Le dièse est remplacé dans la sortie finale par le numéro de la formule
+ entre parenthèses.
 \end_layout
 
 \begin_layout Standard
@@ -38167,7 +38238,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Description"
-target "https://www.tug.org/~hvoss/PDF/mathmode.pdf"
+target "http://mirrors.ctan.org/obsolete/info/math/voss/mathmode/Mathmode.pdf"
 literal "false"
 
 \end_inset
@@ -38188,7 +38259,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Description"
-target "https://www.ctan.org/tex-archive/macros/latex/required/amslatex/math/amsldoc.pdf"
+target "http://tug.ctan.org/info/amslatex/english/amsldoc.pdf"
 literal "false"
 
 \end_inset
@@ -38222,7 +38293,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Liste"
-target "https://ctan.org/tex-archive/info/symbols/comprehensive/symbols-a4.pdf"
+target "http://tug.ctan.org/info/symbols/comprehensive/symbols-a4.pdf"
 literal "false"
 
 \end_inset
