@@ -142,6 +142,7 @@ logicalmkup
 \author -584632292 "Richard Kimberly Heck"
 \author -495245474 "Jean-Marc Lasgouttes"
 \author 5863208 "ab"
+\author 34634807 "Jean-Pierre"
 \author 232239728 "Owner"
 \author 731793113 "Richard Kimberly Heck" rikiheck@lyx.org
 \author 1075283030 "Thibaut"
@@ -11942,7 +11943,13 @@ Simple_Grid
 
 \end_inset
 
-, but with the header column offset with a second horizontal line.
+, but with the header 
+\change_deleted 34634807 1619712593
+column
+\change_inserted 34634807 1619712594
+row
+\change_inserted -712698321 1553618309
+ offset with a second horizontal line.
  This is also the default style of \SpecialChar LyX
 .
 \end_layout
@@ -14590,7 +14597,11 @@ FreeSpacing
 Note that 
 \change_unchanged
 \SpecialChar LyX
- will create protected blanks for the additional blanks when in 
+ will create protected blanks for the additional blanks when
+\change_deleted 34634807 1619626461
+ in
+\change_unchanged
+ 
 \change_inserted -495245474 1550490096
 
 \begin_inset Flex Code
@@ -24778,7 +24789,13 @@ string
 
 ] The counter name as used in \SpecialChar LaTeX
 .
- (E.g., in \SpecialChar LyX
+ (
+\change_inserted 34634807 1619711355
+e
+\change_deleted 34634807 1619711355
+E
+\change_inserted -584632292 1607202682
+.g., in \SpecialChar LyX
 , there is a counter named `theorem', but it is output to \SpecialChar LaTeX
  as `thm'.)
 \change_unchanged
