@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 606
+\lyxformat 608
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -116,6 +116,8 @@ logicalmkup
 \shortcut idx
 \color #008000
 \end_index
+\spellchecker_ignore french calsse
+\spellchecker_ignore french réusltat
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -137,6 +139,7 @@ logicalmkup
 \html_css_as_file 0
 \html_be_strict false
 \docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -244,6 +247,10 @@ Nouvel exemple pour le paragraphe 4.1.1.1 + quelques corrections mineures,
 Mise à jour finale lyx-2.3, 20 août 2019 (JPC)
 \end_layout
 
+\begin_layout Plain Layout
+Mise à jour pour 2.4.0, 25 avril 2021 (JPC)
+\end_layout
+
 \end_inset
 
 
@@ -254,7 +261,7 @@ Mise à jour finale lyx-2.3, 20 août 2019 (JPC)
 \begin_inset Newline newline
 \end_inset
 
-Version 2.3.x
+Version 2.4.x
 \end_layout
 
 \begin_layout Standard
@@ -410,8 +417,8 @@ Les fichiers générés automatiquement
 \begin_layout Standard
 Ces fichiers sont générés au moment de la configuration de \SpecialChar LyX
 .
- Ils définissent différentes valeurs par défaut qui sont évaluées par l'inspecti
-on de votre système.
+ Ils définissent différentes valeurs par défaut qui sont détectées automatiqueme
+nt pensdaévaluées par l'inspection de votre système.
  Comme ils peuvent être réécrits à tout moment, il n'est pas conseillé de
  les modifier.
 \end_layout
@@ -2304,7 +2311,16 @@ options
 status collapsed
 
 \begin_layout Plain Layout
-latex
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+latex=option
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2312,7 +2328,58 @@ latex
  ce convertisseur exécute \SpecialChar LaTeX
  ou une variante de \SpecialChar LaTeX
 , le fichier journal sera
- disponible
+ disponible.
+ 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+option
+\end_layout
+
+\end_inset
+
+ précise quelle forme de \SpecialChar LaTeX
+ sera exécutée (
+\family typewriter
+
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+latex, pdflatex, platex, xetex, luatex
+\end_layout
+
+\end_inset
+
+
+\family default
+).
+ Sans
+\family typewriter
+ 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+option
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+latex
+\end_layout
+
+\end_inset
+
+
+\family default
+ est utilisé.
 \end_layout
 
 \begin_layout Labeling
@@ -2321,12 +2388,22 @@ latex
 status collapsed
 
 \begin_layout Plain Layout
-needaux
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+needaux=option
 \end_layout
 
 \end_inset
 
- la conversion utilise le fichier 
+
+\end_layout
+
+\end_inset
+
+ la conversion utilise le fichier \SpecialChar LaTeX
+ 
 \begin_inset Flex Noun
 status collapsed
 
@@ -2336,7 +2413,68 @@ status collapsed
 
 \end_inset
 
+.
+ 
+\begin_inset Flex Code
+status open
 
+\begin_layout Plain Layout
+option
+\end_layout
+
+\end_inset
+
+ précise quelle forme de \SpecialChar LaTeX
+ sera exécutée pour créer le fichier 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+.aux
+\end_layout
+
+\end_inset
+
+ (
+\family typewriter
+
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+latex, pdflatex, platex, xetex, luatex
+\end_layout
+
+\end_inset
+
+
+\family default
+).
+ Sans
+\family typewriter
+ 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+option
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+latex
+\end_layout
+
+\end_inset
+
+
+\family default
+ est utilisé.
 \end_layout
 
 \begin_layout Labeling
@@ -2361,7 +2499,7 @@ nice
 
  (facile), ce qui en pratique désigne un fichier similaire au résultat d'une
  exportation \SpecialChar LaTeX
-, dans la directive 
+, sans la directive 
 \lang english
 
 \begin_inset Flex Code
@@ -2395,7 +2533,7 @@ xml
 \end_layout
 
 \begin_layout Standard
-Les trois mots-clés suivants ne sont pas vraiment des mots-clés, ils prennent
+Les quatre mots-clés suivants ne sont pas vraiment des mots-clés, ils prennent
  un argument de la forme 
 \begin_inset Flex Noun
 status collapsed
@@ -2407,6 +2545,32 @@ clé=valeur
 \end_inset
 
 :
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+hyperref-driver
+\end_layout
+
+\end_inset
+
+ est le nom du pilote qu'il faut charger pour ce convertisseur avec le paquetage
+ 
+\family sans
+hyperref
+\family default
+, pour ce convertisseur.
+ Le chargement du pilote convenable est nécessaire pour obtenir certaines
+ fonctionnalités spécifiques du PDF.
+ Voir le manuel 
+\family sans
+hyperref
+\family default
+ pour les détails.
 \end_layout
 
 \begin_layout Labeling
@@ -2558,8 +2722,20 @@ index
 \end_layout
 
 \begin_layout Standard
-Aucun de ces trois derniers mots-clés n'est utilisé dans les convertisseurs
- installés par \SpecialChar LyX
+Un pilote 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+hyperref
+\end_layout
+
+\end_inset
+
+ approprié accompagne certains convertisseurs venant avec \SpecialChar LyX
+.
+ Par contre, aucun des trois derniers mots-clés n'est utilisé dans les convertis
+seurs pré-installés par \SpecialChar LyX
 .
 \end_layout
 
@@ -5348,7 +5524,7 @@ Préférences
 \end_layout
 
 \begin_layout Chapter
-Installer de nouvelles classes de document, formats et modèles
+Créer et installer de nouvelles classes de document, formats et modèles
 \begin_inset CommandInset label
 LatexCommand label
 name "chap:classe-texte"
@@ -6586,8 +6762,6 @@ status collapsed
  Interfacer une nouveau fichier de style est assez facile, Interfacer une
  nouvelle classe est plus compliqué: nous allons décrire la première opération
  ici, et la seconde dans le paragraphe suivant.
- Des considérations analogues s'appliquent bien entendu si vous voulez interface
-r une nouvelle DTD DocBook.
 \end_layout
 
 \begin_layout Standard
@@ -7871,30 +8045,7 @@ machin.sty
 \end_inset
 
 .
- Enfin, il est aussi possible de déclarer des classes pour du code DocBook.
- Les déclarations ressemblent en général à :
-\end_layout
-
-\begin_layout LyX-Code
-
-\size small
-#% Do not delete the line below; configure depends on this 
-\end_layout
-
-\begin_layout LyX-Code
-
-\size small
-# 
-\backslash
-DeclareDocBookClass[article]{SGML (DocBook Article)}
-\end_layout
-
-\begin_layout LyX-Code
-
-\size small
-#  
-\backslash
-DeclareCategory{Articles}
+ 
 \end_layout
 
 \begin_layout Standard
@@ -8104,12 +8255,29 @@ La première ligne d'un module doit être rédigée comme suit:
 \begin_layout LyX-Code
 #
 \backslash
-DeclareLyXModule[endnotes.sty]{Endnotes}
+DeclareLyXModule[endnotes.sty]{Endnotes (Basic)}
+\end_layout
+
+\begin_layout LyX-Code
+#
+\backslash
+DeclareCategory{Foot- and Endnotes}
 \end_layout
 
 \begin_layout Standard
-L'argument obligatoire, entre accolades, est le nom du module, tel qu'il
- apparaîtra dans 
+L'argument obligatoire de 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\backslash
+DeclareLyXModule
+\end_layout
+
+\end_inset
+
+, entre accolades, est le nom du module, tel qu'il apparaîtra dans 
 \begin_inset Flex Noun
 status collapsed
 
@@ -8157,11 +8325,27 @@ vers
 \end_inset
 
 .
+ La déclaration 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\backslash
+DeclareCategor
+\end_layout
+
+\end_inset
+
+y n'est pas strictement obligatoire, mais vous devriez l’ajouter, car elle
+ facilite la recherche d'un module.
+ Voyez les catégories de modules existantes et utilisez l'une d'entre elles
+ si cela convient.
 \end_layout
 
 \begin_layout Standard
-La déclaration du module devra être suivi par des lignes descriptives comme
- celles-ci:
+La déclaration et la catégorie du module devront être suivies par des lignes
+ descriptives comme celles-ci:
 \begin_inset Foot
 status collapsed
 
@@ -8536,6 +8720,53 @@ status collapsed
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+AddToCiteEngine <moteur>
+\end_layout
+
+\end_inset
+
+ étend les possibilités d’affichage des références des citations.
+ Voir
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Citation-engine-description"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ pour les détails.
+ Doit être fermé par 
+\begin_inset Quotes cld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+End
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes crd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
 
 \lang english
 \begin_inset Flex Code
@@ -8645,6 +8876,50 @@ EndPreamble
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+BibInToc
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] doit être ajouté avec la valeur 1 (ou 
+\family sans
+true
+\family default
+) si la classe du document ajoute la bibliographie à la table des matières.
+ Ceci évite à la bibliographie d'être insérée deux fois.
+\end_layout
+
+\begin_layout Description
 
 \lang english
 \begin_inset Flex Code
@@ -8653,7 +8928,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-CiteEngine <engine>
+CiteEngine <moteur>
 \end_layout
 
 \end_inset
@@ -8700,6 +8975,19 @@ noprefix "false"
 \end_inset
 
 ).
+ Notez que si vous spécifiez ceci dans un fichier de format ou un module,
+ les définitions de moteurCitation seront écrasées.
+ Voir aussi 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+AddToCiteEngine
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -8766,6 +9054,12 @@ noprefix "false"
 \end_inset
 
 ).
+ Un 
+\family sans
+CiteFormat
+\family default
+ utilisé dans un fichier de format ou un module écrasera la définition de
+ moteurCitation.
 
 \lang english
  
@@ -9146,6 +9440,113 @@ Standard
 .
  Ce sera implicitement le premier style défini si ce paramètre n'est pas
  fixé, mais vous êtes vivement encouragé à utiliser cette directive.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+DocBookRoot
+\end_layout
+
+\end_inset
+
+ 
+\lang french
+[
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+chaîne
+\end_layout
+
+\end_inset
+
+] l'élément racine (en haut du document) à utiliser en exportant des documents
+ en DocBook avec cette classe.
+ La valeur implicite est 
+\begin_inset Quotes cld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+article
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes crd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+DocBookForceAbstract
+\end_layout
+
+\end_inset
+
+ 
+\lang french
+[
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+booléen
+\end_layout
+
+\end_inset
+
+] l'élément racine aura toujours une balise 
+\family typewriter
+<abstract>
+\family default
+ si la valeur est 
+\family typewriter
+
+\begin_inset Quotes cld
+\end_inset
+
+true
+\family default
+
+\begin_inset Quotes crd
+\end_inset
+
+.
+ La valeur implicite est 
+\family typewriter
+
+\begin_inset Quotes cld
+\end_inset
+
+false
+\family default
+
+\begin_inset Quotes crd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -9546,6 +9947,100 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
+InputGlobal
+\end_layout
+
+\end_inset
+
+
+\lang french
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<nom de fichier>
+\end_layout
+
+\end_inset
+
+] est une variante de la directive 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Input
+\end_layout
+
+\end_inset
+
+ qui ne recherche pas de fichiers dans le répertoire utilisateur.
+ Ceci permet de créer un fichier 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+nom.layout
+\end_layout
+
+\end_inset
+
+ ou 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+nom.inc
+\end_layout
+
+\end_inset
+
+ dans le répertoire utilisateur qui peut inclure un fichier global de même
+ nom via 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+InputGlobal nom
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+InputGlobal nom.inc
+\end_layout
+
+\end_inset
+
+, respectivement (avec 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Input
+\end_layout
+
+\end_inset
+
+, le fichier s’inclurait récursivement).
+ De cette façon, vous pouvez modifier les fichiers globaux sans avoir à
+ les copier complètement.
+ 
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 InsetLayout
 \end_layout
 
@@ -9721,6 +10216,57 @@ noprefix "false"
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+ModifyInsetLayout
+\end_layout
+
+\end_inset
+
+
+\lang french
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<type>
+\end_layout
+
+\end_inset
+
+] modifie le format d'un insert.
+ Si le format n'existe pas, cette directive est ignorée.
+ Doit être fermé par 
+\begin_inset Quotes cld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+End
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes crd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -9938,30 +10484,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-docbook
-\end_layout
-
-\end_inset
-
-
-\lang french
-
-\begin_inset Quotes crd
-\end_inset
-
- ou 
-\begin_inset Quotes cld
-\end_inset
-
-
-\lang english
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
 latex
 \end_layout
 
@@ -10019,18 +10541,6 @@ status collapsed
 lat
 \emph default
 ex
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-docbook
 \end_layout
 
 \end_inset
@@ -10168,6 +10678,41 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
+PageSize
+\end_layout
+
+\end_inset
+
+ [
+\lang french
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+custom
+\emph default
+, letter, legal, executive, a0, a1, a2, a3, a4, a5, a6, b0, b1, b2, b3,
+ b4, b5, b6, c0, c1, c2, c3, c4, c5, c6, b0j, b1j, b2j, b3j, b4j, b5j, b6j
+\end_layout
+
+\end_inset
+
+] définit la taille de page implicite.
+ Cette directive est utilisée par certains convertisseurs.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 PageStyle
 \end_layout
 
@@ -10292,6 +10837,57 @@ status collapsed
 
 \lang english
 EndPreamble
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes crd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+ProvideInsetLayout
+\end_layout
+
+\end_inset
+
+ 
+\lang french
+[
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<type>
+\end_layout
+
+\end_inset
+
+] définit le format d'un insert s'il n'existe pas encore.
+ Si le format existe, cette directive est ignorée.
+ Doit être fermé par 
+\begin_inset Quotes cld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+End
 \end_layout
 
 \end_inset
@@ -10830,6 +11426,127 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
+TableStyle
+\end_layout
+
+\end_inset
+
+
+\lang french
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<nom>
+\end_layout
+
+\end_inset
+
+] définit le style de tableau Les styles sui implicite utilisé à la création
+ d'un tableau.
+ Les styles suivants sont disponibles:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Formal_with_Footline
+\end_layout
+
+\end_inset
+
+: style formel (
+\begin_inset Quotes cld
+\end_inset
+
+booktabs
+\begin_inset Quotes crd
+\end_inset
+
+) avec uniquement des lihgnes horizontales, et des lignes heuteet basse
+ épaisses, la première et las dernière lignes étant éventuellment séparées
+ du corps du tableau avec une ligne fine centrée;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Formal_without_Footline
+\end_layout
+
+\end_inset
+
+: identique àu précédent, mais la dernière ligne n'est pas séparée avec
+ une ligne fine centrée;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Simple_Grid
+\end_layout
+
+\end_inset
+
+: lignes de tableau simples;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Grid_with_Head
+\end_layout
+
+\end_inset
+
+: comme 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Simple_Grid
+\end_layout
+
+\end_inset
+
+, mais avec la ligne des titres décalée par une seconde ligne horizontale.
+ Ceci est également le style implicite de \SpecialChar LyX
+;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+No_Borders
+\end_layout
+
+\end_inset
+
+: tableau sans lignes.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 TitleLatexName
 \end_layout
 
@@ -10847,7 +11564,7 @@ TitleLatexName
 status collapsed
 
 \begin_layout Plain Layout
-chaîne=
+string=
 \lang english
 "maketitle"
 \end_layout
@@ -11101,7 +11818,7 @@ FontSize
 \lang french
  [
 \family typewriter
-chaîne="10|11|12"
+string="10|11|12"
 \family default
 ] liste les tailles de police disponibles comme police principale du document,
  séparées par un 
@@ -11131,6 +11848,7 @@ status collapsed
 
 \family default
 .
+ Il est possible de saisir un nombre quelconque.
 \end_layout
 
 \begin_layout Description
@@ -11142,27 +11860,205 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-Header
+FontSizeFormat
 \end_layout
 
 \end_inset
 
  
 \lang french
-fixe le contenu de la ligne écrivant la DTD pour les classes produisant
- du XML, e.g.
- 
-\lang english
-PUBLIC 
-\begin_inset Quotes eld
+[
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+chaîne
+\end_layout
+
 \end_inset
 
--//OASIS//DTD DocBook V4.2//EN
-\begin_inset Quotes erd
+] définit le format de l'option de taille de police.
+ Implicitement:
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$spt
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$s
+\end_layout
+
+\end_inset
+
+ est mis à la place de la taille de police.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+PageSize
+\end_layout
+
+\end_inset
+
+ 
+\lang french
+[
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string="letter|\SpecialChar allowbreak
+legal|\SpecialChar allowbreak
+executive|\SpecialChar allowbreak
+a0|\SpecialChar allowbreak
+a1|\SpecialChar allowbreak
+a2|\SpecialChar allowbreak
+a3|\SpecialChar allowbreak
+a4|\SpecialChar allowbreak
+a5|\SpecialChar allowbreak
+a6|\SpecialChar allowbreak
+b0|\SpecialChar allowbreak
+b1|\SpecialChar allowbreak
+b2|\SpecialChar allowbreak
+b3|\SpecialChar allowbreak
+b4|\SpecialChar allowbreak
+b5|\SpecialChar allowbreak
+b6|\SpecialChar allowbreak
+c0|\SpecialChar allowbreak
+c1|\SpecialChar allowbreak
+c
+2|\SpecialChar allowbreak
+c3|\SpecialChar allowbreak
+c4|\SpecialChar allowbreak
+c5|\SpecialChar allowbreak
+c6|\SpecialChar allowbreak
+b0j|\SpecialChar allowbreak
+b1j|\SpecialChar allowbreak
+b2j|\SpecialChar allowbreak
+b3j|\SpecialChar allowbreak
+b4j|\SpecialChar allowbreak
+b5j|\SpecialChar allowbreak
+b6j"
+\end_layout
+
+\end_inset
+
+] définit la liste des dimensions de page disponibles, séparées par 
+\family typewriter
+
+\begin_inset Quotes cld
+\end_inset
+
+|
+\begin_inset Quotes crd
+\end_inset
+
+
+\family default
+.
+ Actuellement, seules les dimensions proposées sont reconnues.
+ D'autres peuvent être saisies en tant qu'options de classe personnalisées.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+PageSizeFormat
+\end_layout
+
+\end_inset
+
+ 
+\lang french
+[
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] définit le format de l'option de dimension de page.
+ Implicitement:
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$spaper
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$s
+\end_layout
+
+\end_inset
+
+ est mis à la place de la dimension de la page.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+PageStyle
+\end_layout
+
 \end_inset
 
 
 \lang french
+ [
+\family typewriter
+string="empty|plain|headings|fancy"
+\family default
+] liste les mises en page disponibles, séparées par un 
+\family typewriter
+
+\begin_inset Quotes cld
+\end_inset
+
+|
+\begin_inset Quotes crd
+\end_inset
+
+
+\family default
 .
 \end_layout
 
@@ -11184,7 +12080,7 @@ Other
 \lang french
  [
 \family typewriter
-chaîne=""
+string=""
 \family default
 ] introduit certaines options de la classe de document, séparées par une
  virgule, qui seront ajoutées à la partie optionnelle de la commande
@@ -11192,48 +12088,13 @@ chaîne=""
 status collapsed
 
 \begin_layout Plain Layout
- 
+
 \backslash
 documentclass
 \end_layout
 
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Description
-
-\lang english
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-PageStyle
-\end_layout
-
-\end_inset
-
-
-\lang french
- [
-\family typewriter
-chaîne="empty|plain|headings|fancy"
-\family default
-] liste les mises en page disponibles, séparées par un 
-\family typewriter
-
-\begin_inset Quotes cld
-\end_inset
-
-|
-\begin_inset Quotes crd
-\end_inset
-
-
-\family default
 .
 \end_layout
 
@@ -11450,12 +12311,6 @@ int
 
 ] définit l'argument numéro <int> d'une commande ou environnement associé
  au style courant.
- Ceci est utile pour des entités comme les en-têtes de section, et n'a de
- sens qu'avec \SpecialChar LaTeX
-.
- Chaque argument (obligatoire ou facultatif) d'une commande ou d'un environnemen
-t — sauf l'argument obligatoire correspondant au contenu du paragraphe propremen
-t dit — est défini séparément, et le nombre précise l'ordre des arguments.
  La définition doit être close par 
 \lang english
 
@@ -11472,1060 +12327,21 @@ EndArgument
 
 
 \lang french
-.Ainsi une commande avec deux arguments sera spécifiée comme suit: 
-\end_layout
-
-\begin_deeper
-\begin_layout Quote
-
-\family typewriter
-Argument 1
-\end_layout
-
-\begin_layout Quote
-
-\family typewriter
-...
-\end_layout
-
-\begin_layout Quote
-
-\family typewriter
-EndArgument
-\end_layout
-
-\begin_layout Quote
-
-\family typewriter
-Argument 2
-\end_layout
-
-\begin_layout Quote
-
-\family typewriter
-...
-\end_layout
-
-\begin_layout Quote
-
-\family typewriter
-EndArgument
-\end_layout
-
-\begin_layout Standard
-Dans la définition de l'
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Argument
-\end_layout
-
-\end_inset
-
-, les spécifications suivantes sont possibles:
-\end_layout
-
-\begin_layout Itemize
-
-\lang english
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-LabelString
-\end_layout
-
-\end_inset
-
-
-\lang french
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-[chaîne]
-\end_layout
-
-\end_inset
-
- définit la chaîne de caractères qui apparaîtra à la fois dans le menu (pour
- insérer cet argument) et dans le bouton d'insertion d'argument (sauf si
- vous spécifiez également un 
-\lang english
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-MenuString
-\end_layout
-
-\end_inset
-
-)
-\lang french
 .
- Pour le menu, vous pouvez définir un accélérateur en ajoutant le caractère
- désiré à la chaîne, séparé par 
-\begin_inset Quotes cld
-\end_inset
-
-|
-\begin_inset Quotes crd
-\end_inset
-
- (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset Quotes cld
-\end_inset
-
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Éléments personnalisables|é
-\end_layout
-
-\end_inset
-
-
-\begin_inset Quotes crd
-\end_inset
-
-);
-\end_layout
-
-\begin_layout Itemize
-
-\lang english
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-MenuString
-\end_layout
-
-\end_inset
-
-
-\lang french
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-[chaîne]
-\end_layout
-
-\end_inset
-
- définit une chaîne particulière pour le menu.
- Vous pouvez définir un accélérateur en ajoutant le caractère désiré à la
- chaîne, séparé par 
-\begin_inset Quotes cld
-\end_inset
-
-|
-\begin_inset Quotes crd
-\end_inset
-
- (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset Quotes cld
-\end_inset
-
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Éléments personnalisables|é
-\end_layout
-
-\end_inset
-
-
-\begin_inset Quotes crd
-\end_inset
-
-).
- Cette spécification est facultative, si elle n'existe pas, la 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-LabelString
-\end_layout
-
-\end_inset
-
- sera utilisée pour le menu;
-\end_layout
-
-\begin_layout Itemize
-
-\lang english
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Tooltip
-\end_layout
-
-\end_inset
-
-
-\lang french
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-[chaîne]
-\end_layout
-
-\end_inset
-
- définit un texte explicatif qui apparaît dans la bulle d'aide quand le
- curseur passe sur l'insertion d'argument;
-\end_layout
-
-\begin_layout Itemize
-
-\lang english
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Mandatory
-\end_layout
-
-\end_inset
-
-
-\lang french
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-0
-\end_layout
-
-\end_inset
-
-,
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-
-] précise si l’argument est obligatoire (1) ou optionnel (0).
- Les arguments obligatoires ont émis comme une chaîne vide s'ils ne sont
- pas précisés, alors que les arguments optionnels ne sont pas émis du tout.
- Implicitement, les arguments obligatoires sont insérés entre 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-{...}
-\end_layout
-
-\end_inset
-
-, alors que les arguments optionnels sont insérés entre 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-[...]
-\end_layout
-
-\end_inset
-
-;
-\end_layout
-
-\begin_layout Itemize
-
-\lang english
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Requires
-\end_layout
-
-\end_inset
-
-
-\lang french
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-[int=0]
-\end_layout
-
-\end_inset
-
- définit une autre argument (par son numéro d'ordre) dont cet argument demande
- l’émission s'il est lui-même émis.
- Par exemple en \SpecialChar LaTeX
-, les arguments optionnels demandent l'émission d'autres
- arguments optionnels situés avant eux dans la liste (au moins vides), comme
- dans
-\lang english
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-
-\backslash
-command[][argument]{text}
-\end_layout
-
-\end_inset
-
-, 
-\lang french
-ou ceci peut être précisé par la directive 
-\lang english
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Requires 1
-\end_layout
-
-\end_inset
-
- 
-\lang french
-dans l'
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Argument 2
-\end_layout
-
-\end_inset
-
-;
-\end_layout
-
-\begin_layout Itemize
-
-\lang english
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-LeftDelim
-\end_layout
-
-\end_inset
-
-
-\lang french
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-[chaîne]
-\end_layout
-
-\end_inset
-
- définit un délimiteur gauche personnalisé (au lieu de 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
- ou 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-[
-\end_layout
-
-\end_inset
-
-).
- Une rupture de ligne dans la sortie peut être indiqué par 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-<br/>
-\end_layout
-
-\end_inset
-
-;
-\end_layout
-
-\begin_layout Itemize
-
-\lang english
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-RightDelim
-\end_layout
-
-\end_inset
-
-
-\lang french
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-[chaîne]
-\end_layout
-
-\end_inset
-
- définit un délimiteur droit personnalisé (au lieu de 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- ou 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-]
-\end_layout
-
-\end_inset
-
-).
- Une rupture de ligne dans la sortie peut être indiqué par 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-<br/>
-\end_layout
-
-\end_inset
-
-;
-\end_layout
-
-\begin_layout Itemize
-
-\lang english
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-DefaultArg
-\end_layout
-
-\end_inset
-
-
-\lang french
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-[chaîne]
-\end_layout
-
-\end_inset
-
- définit un argument qui sera inséré si et seulement si aucun argument n'est
- saisi par l'utilisateur, c'est-à-dire si aucun insert d'argument n'a été
- spécifié (notez qu'un insert d'argument vide masque le 
-\lang english
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-DefaultArg
-\end_layout
-
-\end_inset
-
-)
-\lang french
-.
- Les arguments multiples doivent être séparés par des virgules;
-\end_layout
-
-\begin_layout Itemize
-
-\lang english
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-PresetArg
-\end_layout
-
-\end_inset
-
-
-\lang french
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-[chaîne]
-\end_layout
-
-\end_inset
-
- définit un argument inséré dans tous les cas (seul ou en plus des chaîne
- saisies par l’utilisateur).
- Les arguments multiples doivent être séparés par des virgules;
-\end_layout
-
-\begin_layout Itemize
-
-\lang english
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Font
-\end_layout
-
-\end_inset
-
- 
-\lang french
-définit la police de caractères utilisée pour le contenu de l'argument,
- voir 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:polices"
-
-\end_inset
-
-;
-\end_layout
-
-\begin_layout Itemize
-
-\lang english
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-LabelFont
-\end_layout
-
-\end_inset
-
-
-\lang french
- définit la police de caractères utilisée pour l'étiquette, voir 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:polices"
-
-\end_inset
-
-;
-\end_layout
-
-\begin_layout Itemize
-
-\lang english
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Decoration
-\end_layout
-
-\end_inset
-
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-\lang english
-Classic
-\emph default
-, Minimalistic, Conglomerate
-\end_layout
-
-\end_inset
-
-]
-\lang french
- précise le style de rendu utilisé pour les cadres d'insertion et les boutons;
-\end_layout
-
-\begin_layout Itemize
-
-\lang english
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-AutoInsert
-\end_layout
-
-\end_inset
-
-
-\lang french
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-[int=0]
-\end_layout
-
-\end_inset
-
- force l'insertion de l’argument lorsque le style concerné est sélectionné
- (si sa valeur est 1).
- Actuellement, un seul argument par style ou format peut être inséré automatique
-ment.
-\end_layout
-
-\begin_layout Itemize
-
-\lang english
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-InsertCotext
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-[int=0]
-\end_layout
-
-\end_inset
-
- 
-\lang french
-si positionné à 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-
-, insère l'argument avec une copie du co-texte, (soit du texte sélectionné,
- soit tout le paragraphe) comme contenu.
-\end_layout
-
-\begin_layout Itemize
-
-\lang english
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-PassThru
-\end_layout
-
-\end_inset
-
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-\lang english
-inherited
-\emph default
-, true, false
-\end_layout
-
-\end_inset
-
-] 
-\lang french
-précise si le contenu de cet argument doit être émis sous forme brute, c'est-à-d
-ire sans interprétation particulière requise par \SpecialChar LaTeX
-.
- Implicitement, l'état 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-PassThru
-\end_layout
-
-\end_inset
-
- est hérité par l'insert ou le paragraphe auquel l'argument est attaché,
- true et false changent le statut pour le seul argument donné.
-\end_layout
-
-\begin_layout Itemize
-
-\lang english
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-PassThruChars
-\end_layout
-
-\end_inset
-
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-string of characters
-\end_layout
-
-\end_inset
-
-]
-\family typewriter
-\lang french
- 
-\family default
-définit des caractères qui doivent être transmis tel quels à la sortie,
- c'est-à-dire sans traitements particuliers que \SpecialChar LaTeX
- pourrait requérir.
- Notez bien que, contrairement à 
-\family sans
-PassThru
-\family default
-, ceci nécessite une définition explicite pour les arguments, ceux-ci n’héritant
- pas 
-\family sans
-PassThruChars
-\family default
- de leur insert ou format parent.
-\end_layout
-
-\begin_layout Itemize
-
-\lang english
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-IsTocCaption
-\end_layout
-
-\end_inset
-
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-\lang english
-0
-\end_layout
-
-\end_inset
-
-,
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-1
-\end_layout
-
-\end_inset
-
-]
-\lang french
- émettra le contenu de l'argument dans l'élément correspondant dans la table
- des matières si positionné à 1.
  Voir 
-\family sans
-AddToToc
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-Implicitement, le texte saisi dans la fenêtre de travail de \SpecialChar LyX
- dans le style
- considéré est le dernier argument de la commande si le 
-\lang english
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-LatexType
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Arguments"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
-
-\lang french
- est 
-\lang english
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Command
-\end_layout
-
-\end_inset
-
-.
+ pour plus d'informations.
  
-\lang french
-Cependant, les arguments préfixés par 
-\lang english
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-post:
 \end_layout
 
-\end_inset
-
-
-\lang french
- sont émis après cet argument de la fenêtre de travail.
- Notez que la numérotation des post-arguments repart de 1, de sorte que
- le premier argument suivant l’argument de la fenêtre de travail est
-\lang english
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-post:1
-\end_layout
-
-\end_inset
-
-
-\lang french
-.
- Les post-arguments sont ignorés dans tout autre 
-\lang english
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-LatexType
-\end_layout
-
-\end_inset
-
-
-\lang french
- que 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Command
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Les arguments de liste 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-item
-\end_layout
-
-\end_inset
-
-s (comme dans 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-item[toto]
-\end_layout
-
-\end_inset
-
-) sont préfixés par 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-item:
-\end_layout
-
-\end_inset
-
- suivi par leur numéro (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Argument item:1
-\end_layout
-
-\end_inset
-
-).
-\end_layout
-
-\end_deeper
 \begin_layout Description
 \begin_inset Flex Code
 status collapsed
@@ -12949,7 +12765,7 @@ EndLabelString
 status collapsed
 
 \begin_layout Plain Layout
-[chaîne=""]
+[string=""]
 \end_layout
 
 \end_inset
@@ -13181,9 +12997,39 @@ FreeSpacing
 \end_inset
 
 .
- Noter que \SpecialChar LyX
- créera les espaces insécables correspondants aux espaces additionnel
-les pour tous les modes autres que le mode \SpecialChar LaTeX
+ \SpecialChar LyX
+ créera les espaces insécables correspondants aux espaces additionnelles
+ si 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Passthru 1
+\end_layout
+
+\end_inset
+
+ n'est pas spécifié.
+ Notez que 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+FreeSpacing
+\end_layout
+
+\end_inset
+
+ implique 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+KeepEmpty
+\end_layout
+
+\end_inset
+
 .
 \end_layout
 
@@ -13536,7 +13382,7 @@ ItemCommand
 status collapsed
 
 \begin_layout Plain Layout
-chaîne="item"
+string="item"
 \end_layout
 
 \end_inset
@@ -13772,7 +13618,7 @@ LabelCounter
 status collapsed
 
 \begin_layout Plain Layout
-[chaîne=""]
+[string=""]
 \end_layout
 
 \end_inset
@@ -14004,7 +13850,7 @@ LabelIndent
 status collapsed
 
 \begin_layout Plain Layout
-[chaîne=""]
+[string=""]
 \end_layout
 
 \end_inset
@@ -14033,7 +13879,7 @@ LabelSep
 status collapsed
 
 \begin_layout Plain Layout
-[chaîne=""]
+[string=""]
 \end_layout
 
 \end_inset
@@ -14065,7 +13911,7 @@ LabelString
 status collapsed
 
 \begin_layout Plain Layout
-[chaîne=""]
+[string=""]
 \end_layout
 
 \end_inset
@@ -14147,7 +13993,7 @@ LabelStringAppendix
 status collapsed
 
 \begin_layout Plain Layout
-[chaîne=""]
+[string=""]
 \end_layout
 
 \end_inset
@@ -15196,7 +15042,7 @@ LeftMargin
 status collapsed
 
 \begin_layout Plain Layout
-[chaîne=""]
+[string=""]
 \end_layout
 
 \end_inset
@@ -15561,6 +15407,159 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
+NeedCProtect
+\end_layout
+
+\end_inset
+
+ 
+\lang french
+[
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] protège si nécessaire les macros qui contiennent ce format avec 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cprotect
+\end_layout
+
+\end_inset
+
+ (cf.
+ le paquetage 
+\family sans
+cprotect
+\family default
+) et par suite autorise du texte verbatim dans les macros
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+NeedMBoxProtect
+\end_layout
+
+\end_inset
+
+ 
+\lang french
+[
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] implique que des commandes spécifiques dans ce style (comme
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cite
+\end_layout
+
+\end_inset
+
+ et 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+ref
+\end_layout
+
+\end_inset
+
+) soient protégées dans une 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+mbox
+\end_layout
+
+\end_inset
+
+.
+ Ceci est particulièrement requis pour les styles qui utilisent les commandes
+ 
+\family sans
+ulem
+\family default
+ ou 
+\family sans
+soul
+\family default
+, qui parcourent leur contenu de manière compliquée.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 Newline
 \end_layout
 
@@ -15883,7 +15882,7 @@ ParIndent
 status collapsed
 
 \begin_layout Plain Layout
-[chaîne=""]
+[string=""]
 \end_layout
 
 \end_inset
@@ -16738,7 +16737,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-StepMasterCounter
+StepParentCounter
 \end_layout
 
 \end_inset
@@ -16770,7 +16769,7 @@ status collapsed
 
 ]
 \lang french
- incrémente me compteur maître d'un compteur donné au début d'une nouvelle
+ incrémente le compteur parent d'un compteur donné au début d'une nouvelle
  séque,ce de formats.
  Ceci n'est utile pour le moment que lorsque 
 \begin_inset Flex Code
@@ -17581,7 +17580,7 @@ AllowedPlacement
 status collapsed
 
 \begin_layout Plain Layout
-chaîne
+string
 \end_layout
 
 \end_inset
@@ -18347,6 +18346,49 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
+Requires
+\end_layout
+
+\end_inset
+
+ 
+\lang french
+[
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] s'utilise comme avec les styles de paragraphes, voir
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Styles-de-paragraphe"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 Style
 \end_layout
 
@@ -18588,7 +18630,7 @@ name "subsec:Flex-insets-and"
 \end_layout
 
 \begin_layout Standard
-Les inserts flexibles sont de trois sortes: 
+Les inserts flexibles sont de deux sortes: 
 \end_layout
 
 \begin_layout Itemize
@@ -18667,26 +18709,6 @@ endnote
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Itemize
-éléments XML 
-\lang english
-(
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Element
-\end_layout
-
-\end_inset
-
-)
-\lang french
-: à utiliser avec les classes DocBook.
 \end_layout
 
 \begin_layout Standard
@@ -19358,14 +19380,32 @@ EndArgument
 .
 
 \lang french
- Voir 
+ Voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Styles-de-paragraphe"
 
 \end_inset
 
- pour les détails.
+ et
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Arguments"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ pour plus d'informations.
 \end_layout
 
 \begin_layout Description
@@ -19818,6 +19858,33 @@ vrai
 \end_inset
 
 .
+\lang english
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+EditExternal
+\end_layout
+
+\end_inset
+
+ 
+\lang french
+[
+\emph on
+0
+\emph default
+,1] permet de modifier le contenu d'un insert via un éditeur externe (en
+ utilisant n'importe quel éditeur défini pour le format d'exportation du
+ document).
 \end_layout
 
 \begin_layout Description
@@ -21215,6 +21282,74 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
+MenuString
+\end_layout
+
+\end_inset
+
+ 
+\lang french
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[chaîne]
+\end_layout
+
+\end_inset
+
+ définit une chaîne de caractères pour le menu.
+ Vous pouvez associer un accélérateur en accolant le caractère voulu à la
+ chaîne séparé par 
+\begin_inset Quotes cld
+\end_inset
+
+|
+\begin_inset Quotes crd
+\end_inset
+
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Mon insert|M
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+).
+ Cette spécification est facultative.
+ Si indéfini, le nom utilisé dans le menu sera celui de l'insert dans la
+ déclaration du type.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 MultiPar
 \end_layout
 
@@ -21384,6 +21519,206 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
+NeedCProtect
+\end_layout
+
+\end_inset
+
+ 
+\lang french
+[
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] protège si nécessaire les macros qui contiennent cet insert avec 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cprotect
+\end_layout
+
+\end_inset
+
+ (cf.
+ le paquetage 
+\family sans
+cprotect
+\family default
+) et par suite autorise du texte verbatim dans les macros.
+ Implicitement faux.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+NeedMBoxProtect
+\end_layout
+
+\end_inset
+
+ 
+\lang french
+[
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] implique que des commandes spécifiques dans cet insert (comme
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cite
+\end_layout
+
+\end_inset
+
+ et 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+ref
+\end_layout
+
+\end_inset
+
+) soient protégées dans une 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+mbox
+\end_layout
+
+\end_inset
+
+.
+ Ceci est particulièrement requis pour les styles qui utilisent les commandes
+ 
+\family sans
+ulem
+\family default
+ ou 
+\family sans
+soul
+\family default
+, qui parcourent leur contenu de manière compliquée.
+ Implicitement faux.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+NewlineCmd
+\end_layout
+
+\end_inset
+
+ 
+\lang french
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[string]
+\end_layout
+
+\end_inset
+
+ définit une commande différente de la commande implicite (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+) pour les ruptures de ligne.
+ La barre inversée initiale ne doit pas être saisie.
+ 
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 NoInsetLayout
 \end_layout
 
@@ -21482,6 +21817,55 @@ InsetLayout
 \end_inset
 
  en conservant la compatibilité.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+ParbreakIgnored
+\end_layout
+
+\end_inset
+
+ 
+\lang french
+[
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] avec la valeur 1, les sauts de paragraphes seront ignorés dans le résultat
+ imprimable.
+ Ceci peut être utile pour les inserts dont le contenu doit être aligné
+ dans la fenêtre \SpecialChar LyX
+, sans que cela soit répercuté dans la sortie.
 \end_layout
 
 \begin_layout Description
@@ -21817,17 +22201,98 @@ status collapsed
 
 \end_inset
 
-] indique si l'insert doit utiliser la police de caractères environnante
- ou bien utiliser la sienne propre.
- Valeur implicite: 
-\begin_inset Quotes cld
+] avec la valeur 1, les changements de police sont réappliqués dans les
+ inserts respectifs (dans la sortie) même si l'insert lui-même est t dans
+ la portée de ces changements de police (e.
+\begin_inset space \thinspace{}
 \end_inset
 
-faux
-\begin_inset Quotes crd
+g., 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textbf{Texte environnant 
+\backslash
+moninsert{
+\backslash
+textbf{contenu}}\SpecialChar ldots
+}
+\end_layout
+
 \end_inset
 
-, utiliser la police de caractères environnante.
+ plutôt que 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textbf{Texte environnant 
+\backslash
+moninsert{contenu}\SpecialChar ldots
+}
+\end_layout
+
+\end_inset
+
+.
+ Utiliser ceci a un sens pour le commandes qui reactualisent les réglages
+ de police de manière interne (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ notes de bas de page).
+ Notez que positionner incorrectement ceci peut conduire à des résultats
+ non désirés (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., avec 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+emph{Texte environnant 
+\backslash
+moninsert{
+\backslash
+emph{contenu}}\SpecialChar ldots
+}
+\end_layout
+
+\end_inset
+
+, le contenu est droit du fait que 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+emph
+\end_layout
+
+\end_inset
+
+ bascule.
+ Implicitement 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+: les changements de police ne sont pas réappliqués dans l'insert.
 \end_layout
 
 \begin_layout Description
@@ -21922,6 +22387,1321 @@ vrai
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Arguments
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Arguments"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+À la fois les styles de paragraphe et les formats d'insert admettent des
+ 
+\emph on
+arguments
+\emph default
+ en plus du contenu principal.
+ Ceci est particulièrement utile pour des éléments comme les en-têtes de
+ section et n'a de sens qu'avec \SpecialChar LaTeX
+.
+ Chaque argument (facultatif ou obligatoire) d'une commande ou d'un environnemen
+t — sauf pour l'argument obligatoire correspondant au contenu — a une définition
+ séparée, où le nombre spécifie l'ordre des arguments.
+ La définition doit se terminer par 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+EndArgument
+\end_layout
+
+\end_inset
+
+.
+ Ainsi une commande avec deux arguments sera spécifiée comme suit: 
+\end_layout
+
+\begin_layout Quote
+
+\family typewriter
+Argument 1
+\end_layout
+
+\begin_layout Quote
+
+\family typewriter
+...
+\end_layout
+
+\begin_layout Quote
+
+\family typewriter
+EndArgument
+\end_layout
+
+\begin_layout Quote
+
+\family typewriter
+Argument 2
+\end_layout
+
+\begin_layout Quote
+
+\family typewriter
+...
+\end_layout
+
+\begin_layout Quote
+
+\family typewriter
+EndArgument
+\end_layout
+
+\begin_layout Standard
+Dans la définition de l'
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Argument
+\end_layout
+
+\end_inset
+
+, les spécifications suivantes sont possibles:
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LabelString
+\end_layout
+
+\end_inset
+
+
+\lang french
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[chaîne]
+\end_layout
+
+\end_inset
+
+ définit la chaîne de caractères qui apparaîtra à la fois dans le menu (pour
+ insérer cet argument) et dans le bouton d'insertion d'argument (sauf si
+ vous spécifiez également un 
+\lang english
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+MenuString
+\end_layout
+
+\end_inset
+
+)
+\lang french
+.
+ Pour le menu, vous pouvez définir un raccourci en ajoutant le caractère
+ désiré à la chaîne, séparé par 
+\begin_inset Quotes cld
+\end_inset
+
+|
+\begin_inset Quotes crd
+\end_inset
+
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Quotes cld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Éléments personnalisables|é
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes crd
+\end_inset
+
+);
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+MenuString
+\end_layout
+
+\end_inset
+
+
+\lang french
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[chaîne]
+\end_layout
+
+\end_inset
+
+ définit une chaîne particulière pour le menu.
+ Vous pouvez définir un raccourci en ajoutant le caractère désiré à la chaîne,
+ séparé par 
+\begin_inset Quotes cld
+\end_inset
+
+|
+\begin_inset Quotes crd
+\end_inset
+
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Quotes cld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Éléments personnalisables|é
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes crd
+\end_inset
+
+).
+ Cette spécification est facultative, si elle n'existe pas, la 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelString
+\end_layout
+
+\end_inset
+
+ sera utilisée pour le menu;
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Tooltip
+\end_layout
+
+\end_inset
+
+
+\lang french
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[chaîne]
+\end_layout
+
+\end_inset
+
+ définit un texte explicatif qui apparaît dans la bulle d'aide quand le
+ curseur passe sur l'insertion d'argument;
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Mandatory
+\end_layout
+
+\end_inset
+
+
+\lang french
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] précise si l’argument est obligatoire (1) ou optionnel (0).
+ Les arguments obligatoires ont émis comme une chaîne vide s'ils ne sont
+ pas précisés, alors que les arguments optionnels ne sont pas émis du tout.
+ Implicitement, les arguments obligatoires sont insérés entre 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+{...}
+\end_layout
+
+\end_inset
+
+, alors que les arguments optionnels sont insérés entre 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[...]
+\end_layout
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\lang english
+NewlineCmd
+\family default
+\lang french
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[string]
+\end_layout
+
+\end_inset
+
+ définit une commande différente de la commande implicite (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+) pour les ruptures de ligne.
+ La barre inversée initiale ne doit pas être saisie.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Requires
+\end_layout
+
+\end_inset
+
+
+\lang french
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[int=0]
+\end_layout
+
+\end_inset
+
+ définit une autre argument (par son numéro d'ordre) dont cet argument demande
+ l’émission s'il est lui-même émis.
+ Par exemple en \SpecialChar LaTeX
+, les arguments optionnels demandent l'émission d'autres
+ arguments optionnels situés avant eux dans la liste (au moins vides), comme
+ dans
+\lang english
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+
+\backslash
+command[][argument]{text}
+\end_layout
+
+\end_inset
+
+, 
+\lang french
+ou ceci peut être précisé par la directive 
+\lang english
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Requires 1
+\end_layout
+
+\end_inset
+
+ 
+\lang french
+dans l'
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Argument 2
+\end_layout
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LeftDelim
+\end_layout
+
+\end_inset
+
+
+\lang french
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[chaîne]
+\end_layout
+
+\end_inset
+
+ définit un délimiteur gauche personnalisé (au lieu de 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+ ou 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+).
+ Une rupture de ligne dans la sortie peut être indiqué par 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<br/>
+\end_layout
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+RightDelim
+\end_layout
+
+\end_inset
+
+
+\lang french
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[chaîne]
+\end_layout
+
+\end_inset
+
+ définit un délimiteur droit personnalisé (au lieu de 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ ou 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+).
+ Une rupture de ligne dans la sortie peut être indiqué par 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<br/>
+\end_layout
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+DefaultArg
+\end_layout
+
+\end_inset
+
+
+\lang french
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[chaîne]
+\end_layout
+
+\end_inset
+
+ définit un argument qui sera inséré si et seulement si aucun argument n'est
+ saisi par l'utilisateur, c'est-à-dire si aucun insert d'argument n'a été
+ spécifié (notez qu'un insert d'argument vide masque le 
+\lang english
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+DefaultArg
+\end_layout
+
+\end_inset
+
+)
+\lang french
+.
+ Les arguments multiples doivent être séparés par des virgules;
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+PresetArg
+\end_layout
+
+\end_inset
+
+
+\lang french
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[chaîne]
+\end_layout
+
+\end_inset
+
+ définit un argument inséré dans tous les cas (seul ou en plus des chaîne
+ saisies par l’utilisateur).
+ Les arguments multiples doivent être séparés par des virgules;
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Font
+\end_layout
+
+\end_inset
+
+ 
+\lang french
+définit la police de caractères utilisée pour le contenu de l'argument,
+ voir 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:polices"
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+FreeSpacing
+\end_layout
+
+\end_inset
+
+
+\lang french
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] similaire à la directive des styles de paragraphe, voir
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Styles-de-paragraphe"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LabelFont
+\end_layout
+
+\end_inset
+
+
+\lang french
+ définit la police de caractères utilisée pour l'étiquette, voir 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:polices"
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Decoration
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+Classic
+\emph default
+, Minimalistic, Conglomerate
+\end_layout
+
+\end_inset
+
+]
+\lang french
+ précise le style de rendu utilisé pour les cadres d'insertion et les boutons;
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+AutoInsert
+\end_layout
+
+\end_inset
+
+
+\lang french
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[int=0]
+\end_layout
+
+\end_inset
+
+ force l'insertion de l’argument lorsque le style concerné est sélectionné
+ (si sa valeur est 1).
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+FreeSpacing
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+1
+\end_layout
+
+\end_inset
+
+] 
+\lang french
+similaire à la directive des styles de paragraphe, voir
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Styles-de-paragraphe"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+InsertCotext
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+[int=0]
+\end_layout
+
+\end_inset
+
+ 
+\lang french
+si positionné à 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+, insère l'argument avec une copie du co-texte, (soit du texte sélectionné,
+ soit tout le paragraphe) comme contenu.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+PassThru
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+inherited
+\emph default
+, true, false
+\end_layout
+
+\end_inset
+
+] 
+\lang french
+précise si le contenu de cet argument doit être émis sous forme brute, c'est-à-d
+ire sans interprétation particulière requise par \SpecialChar LaTeX
+.
+ Implicitement, l'état 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+PassThru
+\end_layout
+
+\end_inset
+
+ est hérité par l'insert ou le paragraphe auquel l'argument est attaché,
+ 
+\family sans
+true
+\family default
+ et 
+\family sans
+false
+\family default
+ changent le statut pour le seul argument donné.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+PassThruChars
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+chaîne de caractères
+\end_layout
+
+\end_inset
+
+]
+\family typewriter
+\lang french
+ 
+\family default
+définit des caractères qui doivent être transmis tel quels à la sortie,
+ c'est-à-dire sans traitements particuliers que \SpecialChar LaTeX
+ pourrait requérir.
+ Notez bien que, contrairement à 
+\family sans
+PassThru
+\family default
+, ceci nécessite une définition explicite pour les arguments, ceux-ci n’héritant
+ pas 
+\family sans
+PassThruChars
+\family default
+ de leur insert ou format parent.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+IsTocCaption
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+1
+\end_layout
+
+\end_inset
+
+]
+\lang french
+ émettra le contenu de l'argument dans l'élément correspondant dans la table
+ des matières si positionné à 1.
+ Voir 
+\family sans
+AddToToc
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Implicitement, le texte saisi dans la fenêtre de travail de \SpecialChar LyX
+ dans le style
+ considéré est le dernier argument de la commande si le 
+\lang english
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LatexType
+\end_layout
+
+\end_inset
+
+
+\lang french
+ est 
+\lang english
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Command
+\end_layout
+
+\end_inset
+
+.
+ 
+\lang french
+Cependant, les arguments préfixés par 
+\lang english
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+post:
+\end_layout
+
+\end_inset
+
+
+\lang french
+ sont émis après cet argument de la fenêtre de travail.
+ Notez que la numérotation des post-arguments repart de 1, de sorte que
+ le premier argument suivant l’argument de la fenêtre de travail est
+\lang english
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+post:1
+\end_layout
+
+\end_inset
+
+
+\lang french
+.
+ Les post-arguments sont ignorés dans tout autre 
+\lang english
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LatexType
+\end_layout
+
+\end_inset
+
+
+\lang french
+ que 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Command
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Les arguments de liste 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+s (comme dans 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+item[toto]
+\end_layout
+
+\end_inset
+
+) sont préfixés par 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+item:
+\end_layout
+
+\end_inset
+
+ suivi par leur numéro (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Argument item:1
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Enfin, il existe un type particulier d'argument doté du préfixe 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+listpreamble:
+\end_layout
+
+\end_inset
+
+.
+ Ce n'est pas vraiment un argument, mais il utilise l’interface des arguments
+ (le préfixe est aussi suivi par un nombre, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Argument listpreamble:1
+\end_layout
+
+\end_inset
+
+).
+ Comme son nom l'indique, il s'applique aux listes comme 
+\family sans
+ListePuces
+\family default
+, 
+\family sans
+Énumération
+\family default
+, 
+\family sans
+Description
+\family default
+, ou 
+\family sans
+Bibliographie
+\family default
+.
+ Son contenu sera positionné au début de la liste, avant le premier 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+, sur une ligne à part (un endroit normalement inaccessible en \SpecialChar LyX
+).
+ De cette façon, les utilisateurs peuvent insérer des redéfinitions (de
+ longueurs, etc.) pour des listes particulières.
+ Implicitement, ces arguments n'ont pas de délimiteur.
 \end_layout
 
 \begin_layout Subsection
@@ -22090,7 +23870,7 @@ LabelString
 status collapsed
 
 \begin_layout Plain Layout
-chaîne
+string
 \end_layout
 
 \end_inset
@@ -22302,14 +24082,14 @@ LabelString
 
 \lang french
  est indéfini, une valeur implicite est construite comme suit: si le compteur
- a un compteur maître 
+ a un compteur parent 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
 \lang english
-master
+parent
 \end_layout
 
 \end_inset
@@ -22339,7 +24119,7 @@ status collapsed
 \lang english
 
 \backslash
-themaster.
+theparent.
 \backslash
 arabic{counter}
 \end_layout
@@ -22384,7 +24164,7 @@ LabelStringAppendix
 status collapsed
 
 \begin_layout Plain Layout
-chaîne
+string
 \end_layout
 
 \end_inset
@@ -22413,6 +24193,48 @@ LabelString
 \end_layout
 
 \begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+LaTeXName
+\end_layout
+
+\end_inset
+
+ 
+\lang french
+[
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+ = 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+] définit le nom du compteur utilisé en \SpecialChar LaTeX
+.
+ (e.g., en \SpecialChar LyX
+, il existe un compteur dénommé `theorem', mais son nom dans l'exportat
+ion \SpecialChar LaTeX
+ est `thm'.)
+\end_layout
+
+\begin_layout Description
 \begin_inset Flex Code
 status collapsed
 
@@ -22429,7 +24251,7 @@ PrettyFormat
 status collapsed
 
 \begin_layout Plain Layout
-chaîne
+string
 \end_layout
 
 \end_inset
@@ -22488,7 +24310,7 @@ Within
 status collapsed
 
 \begin_layout Plain Layout
-chaîne
+string
 \end_layout
 
 \end_inset
@@ -22582,208 +24404,24 @@ Color
  
 \family default
 [
-\begin_inset Flex Code
-status collapsed
+\family typewriter
+chaîne
+\family default
+] voir l'annexe
+\begin_inset space ~
+\end_inset
 
-\begin_layout Plain Layout
-
-\emph on
-none
-\end_layout
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Names-of-colors"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-black
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-white
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-red
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-green
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-blue
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-cyan
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-magenta
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-yellow
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-brown
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-darkgray
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-gray
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-lightgray
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-lime
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-orange
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-olive
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-pink
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-purple
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-teal
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-violet
-\end_layout
-
-\end_inset
-
-]
+ pour les arguments valides.
 \end_layout
 
 \begin_layout Description
@@ -22848,7 +24486,9 @@ Misc
 status collapsed
 
 \begin_layout Plain Layout
-string
+
+\family typewriter
+chaîne
 \end_layout
 
 \end_inset
@@ -23770,6 +25410,29 @@ Biblatex
  Biblatex
 \family default
  pour les détails.
+\end_layout
+
+\begin_layout Standard
+Si vous souhaitez ajouter une commande 
+\family typewriter
+cite
+\family default
+ à un moteur de citation (e.g.
+ ajouter une commande particulière fournie par une classe), vous pouvez
+ utiliser 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+AddToCiteEngine <type de moteur> \SpecialChar ldots
+ End
+\end_layout
+
+\end_inset
+
+.
+ Notez que seules les commandes de citation qui n'existe pas encore sont
+ ajoutées.
 \end_layout
 
 \begin_layout Subsection
@@ -27444,6 +29107,1879 @@ src/FontInfo.cpp
  pour les détails.
 \end_layout
 
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Tags-for-DocBook"
+
+\end_inset
+
+Tags for DocBook output
+\end_layout
+
+\begin_layout Standard
+As with \SpecialChar LaTeX
+ or XHTML, the format of \SpecialChar LyX
+'s DocBook output is also controlled by
+ layout information.
+ In general, \SpecialChar LyX
+ provides sensible defaults; however, much of the styling is
+ lost during the conversion, as DocBook is strictly semantic and does not
+ allow formatting.
+ When possible, information from \SpecialChar LyX
+ will be rendered in 
+\family typewriter
+role
+\family default
+ attributes.
+ 
+\end_layout
+
+\begin_layout Standard
+In many cases, then, you may not have to do anything at all to get acceptable
+ DocBook output for your own environments, custom insets, and so forth.
+ But in some cases you will, and so \SpecialChar LyX
+ provides a number of layout tags that
+ can be used to customize the DocBook that is generated.
+\end_layout
+
+\begin_layout Standard
+Labels are rarely output, as they are redundant in DocBook: this information
+ is carried by the tags themselves, and whether labels appear in the final
+ documents (after processing of DocBook files) is controlled by the stylesheets.
+ However, sometimes, labels are not redundant content, such as definition
+ lists: in this case, the term being defined will be the label.
+ 
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Paragraph-Style-DocBook"
+
+\end_inset
+
+Paragraph styles
+\end_layout
+
+\begin_layout Standard
+The sort of DocBook \SpecialChar LyX
+ outputs for a paragraph depends upon whether we are
+ dealing with a normal paragraph, a command, or an environment, where this
+ is itself determined by the contents of the corresponding 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+Type
+\end_layout
+
+\end_inset
+
+ tag.
+ 
+\end_layout
+
+\begin_layout Standard
+For a command or normal paragraph, the output DocBook has the following
+ form:
+\end_layout
+
+\begin_layout LyX-Code
+<tag attr>
+\end_layout
+
+\begin_layout LyX-Code
+Contents of the paragraph.
+\end_layout
+
+\begin_layout LyX-Code
+</tag>
+\end_layout
+
+\begin_layout Standard
+For an environment that is not some sort of list, the generated DocBook
+ takes this form:
+\end_layout
+
+\begin_layout LyX-Code
+<tag attr>
+\end_layout
+
+\begin_layout LyX-Code
+<itemtag>First paragraph.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+<itemtag>Second paragraph.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+</tag>
+\end_layout
+
+\begin_layout Standard
+For a list, the resulting DocBook takes this form:
+\end_layout
+
+\begin_layout LyX-Code
+<tag attr>
+\end_layout
+
+\begin_layout LyX-Code
+<itemtag attr>First item.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+<itemtag attr>Second item.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+</tag>
+\end_layout
+
+\begin_layout Standard
+The specific tags and roles output for each paragraph type can be controlled
+ by means of the layout tags we are about to describe.
+ Please note that, due to the very nature of DocBook, no sensible defaults
+ really exist, and the values must always be carefully chosen.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Specifies attribute information to be output with the main tag, replacing
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+attr
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ This information can be used in further processing of the DocBook files.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] The tag to be used for this inset, replacing 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+tag
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ The default is the name of the float and always needs to be changed, as
+ DocBook provides no generic tag.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookTagType
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block, paragraph, inline
+\end_layout
+
+\end_inset
+
+] The new-line policy for this tag, see Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-New-line-policy"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for the details.
+ 
+\end_layout
+
+\begin_layout Subsection
+New-line policy
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:DocBook-New-line-policy"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For all tags, there are three possible policies for outputting new lines
+ (given in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBook*TagType
+\end_layout
+
+\end_inset
+
+ attribute): 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+: the opening and closing tags are on their own lines (i.e.
+ a line feed after and before the opening and the closing tags).
+ Typical elements are floats.
+ For instance: 
+\end_layout
+
+\begin_layout LyX-Code
+Content before
+\end_layout
+
+\begin_layout LyX-Code
+<blocktag>
+\end_layout
+
+\begin_layout LyX-Code
+  Contents of the block.
+\end_layout
+
+\begin_layout LyX-Code
+</blocktag>
+\end_layout
+
+\begin_layout LyX-Code
+Content after
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+paragraph
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+: the opening and closing tags are on the same, new line; a line feed is
+ output before the opening tag and after the closing tag.
+ Typical elements are paragraphs and list items.
+ For instance: 
+\end_layout
+
+\begin_layout LyX-Code
+Content before
+\end_layout
+
+\begin_layout LyX-Code
+<paratag>Contents of the paragraph.</paratag>
+\end_layout
+
+\begin_layout LyX-Code
+Content after
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+inline
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+: the opening and closing tags are on the same line as the rest of the content.
+ No line feeds are output.
+ Typical elements are fonts.
+ For instance: 
+\end_layout
+
+\begin_layout LyX-Code
+Content before<inlinetag>Contents of the paragraph.</inlinetag>Content after
+\end_layout
+
+\begin_layout Standard
+The default value is always 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+InsetLayout DocBook
+\end_layout
+
+\begin_layout Standard
+The DocBook output of insets can also be controlled by information in layout
+ files.
+\end_layout
+
+\begin_layout Standard
+The DocBook \SpecialChar LyX
+ outputs for an inset has the following form:
+\end_layout
+
+\begin_layout LyX-Code
+<wrappertag wrapperattr>
+\end_layout
+
+\begin_layout LyX-Code
+  <tag attr>
+\end_layout
+
+\begin_layout LyX-Code
+    <innertag innerattr>
+\end_layout
+
+\begin_layout LyX-Code
+      Contents of the inset.
+\end_layout
+
+\begin_layout LyX-Code
+    </innertag>
+\end_layout
+
+\begin_layout LyX-Code
+  </tag>
+\end_layout
+
+\begin_layout LyX-Code
+</wrappertag>
+\end_layout
+
+\begin_layout Standard
+For an itemising inset, it rather looks like this: 
+\end_layout
+
+\begin_layout LyX-Code
+<wrappertag wrapperattr>
+\end_layout
+
+\begin_layout LyX-Code
+  <tag attr>
+\end_layout
+
+\begin_layout LyX-Code
+    <innertag innerattr>
+\end_layout
+
+\begin_layout LyX-Code
+      <itemwrappertag itemwrapperattr>
+\end_layout
+
+\begin_layout LyX-Code
+        <itemlabeltag itemattr>
+\end_layout
+
+\begin_layout LyX-Code
+          Label of the first item.
+\end_layout
+
+\begin_layout LyX-Code
+        </itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+        <itemtag itemattr>
+\end_layout
+
+\begin_layout LyX-Code
+          <itemtag itemattr>
+\end_layout
+
+\begin_layout LyX-Code
+            Contents of the first item.
+\end_layout
+
+\begin_layout LyX-Code
+          </itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+        </itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+      </itemwrappertag>
+\end_layout
+
+\begin_layout LyX-Code
+      <itemwrappertag itemwrapperattr>
+\end_layout
+
+\begin_layout LyX-Code
+        <itemlabeltag itemattr>
+\end_layout
+
+\begin_layout LyX-Code
+          Label of the second item.
+\end_layout
+
+\begin_layout LyX-Code
+        </itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+        <itemtag itemattr>
+\end_layout
+
+\begin_layout LyX-Code
+          <itemtag itemattr>
+\end_layout
+
+\begin_layout LyX-Code
+            Contents of the second item.
+\end_layout
+
+\begin_layout LyX-Code
+          </itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+        </itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+      </itemwrappertag>
+\end_layout
+
+\begin_layout LyX-Code
+      ...
+\end_layout
+
+\begin_layout LyX-Code
+    </innertag>
+\end_layout
+
+\begin_layout LyX-Code
+  </tag>
+\end_layout
+
+\begin_layout LyX-Code
+</wrappertag>
+\end_layout
+
+\begin_layout Standard
+If the inset permits multiple paragraphs—that is, if 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+MultiPar
+\end_layout
+
+\end_inset
+
+ is true—then the contents of the inset will itself be output as paragraphs
+ formatted according to the styles used for those paragraphs (standard,
+ quote, and the like).
+ The inner tag is optional and, by default, does not appear.
+\end_layout
+
+\begin_layout Standard
+The specific tags and attributes output for each inset can be controlled
+ by means of the following layout tags.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Specifies attribute information to be output with the main tag, replacing
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+attr
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ This information can be used in further processing of the DocBook files.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookInInfo
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+never, always, maybe
+\end_layout
+
+\end_inset
+
+] Specifies whether this tag goes into the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<info>
+\end_layout
+
+\end_inset
+
+ tag at the beginning of the parent layout.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+never
+\end_layout
+
+\end_inset
+
+ indicates that the tag never goes into 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<info>
+\end_layout
+
+\end_inset
+
+ (this is default value, and corresponds to usual content).
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+always
+\end_layout
+
+\end_inset
+
+ indicates that the tag always goes into 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<info>
+\end_layout
+
+\end_inset
+
+ (this corresponds to usual metadata): if there is no 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<info>
+\end_layout
+
+\end_inset
+
+ tag for the parent, one 
+\series bold
+will
+\series default
+ be generated.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+maybe
+\end_layout
+
+\end_inset
+
+ indicates that the tag may go into 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<info>
+\end_layout
+
+\end_inset
+
+ (this is only the case for titles): if there is no 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<info>
+\end_layout
+
+\end_inset
+
+ tag for the parent, 
+\series bold
+none
+\series default
+ will be generated, the corresponding tag will be output directly as content.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Specifies attribute information to be output with the item tag, replacing
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+itemattr
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ This information can be used in further processing of the DocBook files.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemInnerAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Specifies attribute information to be output with the item inner tag,
+ replacing 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+iteminnerattr
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ This information can be used in further processing of the DocBook files.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemInnerTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] The tag to be used for the item inner tag within the inset, replacing
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+iteminnertag
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ The default is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NONE
+\end_layout
+
+\end_inset
+
+, indicating that there is no item inner tag: content is directly output
+ without it for each itemised element.
+ This parameter only makes sense when itemising layouts are used, such as
+ lists.
+ The most likely value is 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+para
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+When a list item is split using a new line, the item inner tag will be repeated
+ for each part of the paragraph, parts being separated by new lines.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemInnerTagType
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block, paragraph, inline
+\end_layout
+
+\end_inset
+
+] The new-line policy for this tag, see Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-New-line-policy"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for the details.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemLabelAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Specifies attribute information to be output with the item label tag,
+ replacing 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+itemlabelattr
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ This information can be used in further processing of the DocBook files.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemLabelTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] The tag to be used for the item label tag within the inset, replacing
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+itemlabeltag
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ This parameter only makes sense when itemising layouts are used with a
+ notion of labels, such as definition lists.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemLabelTagType
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block, paragraph, inline
+\end_layout
+
+\end_inset
+
+] The new-line policy for this tag, see Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-New-line-policy"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for the details.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] The tag to be used for the item tag within the inset, replacing 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+itemtag
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ The default is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NONE
+\end_layout
+
+\end_inset
+
+, indicating that there is no item tag.
+ This parameter only makes sense when itemising layouts are used, such as
+ lists.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemTagType
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block, paragraph, inline
+\end_layout
+
+\end_inset
+
+] The new-line policy for this tag, see Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-New-line-policy"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for the details.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemWrapperAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Specifies attribute information to be output with the item wrapper tag,
+ replacing 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+itemwrapperattr
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ This information can be used in further processing of the DocBook files.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemWrapperTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] The tag to be used for the item wrapper tag within the inset, replacing
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+itemwrappertag
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ The default is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NONE
+\end_layout
+
+\end_inset
+
+, indicating that there is no item wrapper tag: tag and content are directly
+ output without it for each itemised element.
+ This parameter only makes sense when itemising layouts are used, such as
+ lists.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemWrapperTagType
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block, paragraph, inline
+\end_layout
+
+\end_inset
+
+] The new-line policy for this tag, see Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-New-line-policy"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for the details.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookInnerAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Specifies attribute information to be output with the inner tag, replacing
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+innerattr
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ This information can be used in further processing of the DocBook files.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookInnerTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] The tag to be used for the inner tag within the inset, replacing 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+innertag
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ The default is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NONE
+\end_layout
+
+\end_inset
+
+, indicating that there is no inner tag: content is directly output without
+ it.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookInnerTagType
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block, paragraph, inline
+\end_layout
+
+\end_inset
+
+] The new-line policy for this tag, see Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-New-line-policy"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for the details.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookSectionTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Specifies the tag that corresponds to this kind of section.
+ This parameter only makes sense for sectioning elements (part, chapter,
+ section, etc.).
+ The default value is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+section
+\end_layout
+
+\end_inset
+
+, and is only overridden when DocBook uses something else for sectioning
+ (typically, parts and chapters of a book).
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] The tag to be used for this inset, replacing 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+tag
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ The default is the name of the float and always needs to be changed, as
+ DocBook provides no generic inset tag.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookTagType
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block, paragraph, inline
+\end_layout
+
+\end_inset
+
+] The new-line policy for this tag, see Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-New-line-policy"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for the details.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookWrapperAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Specifies attribute information to be output with the outer tag, replacing
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+wrapperattr
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ This information can be used in further processing of the DocBook files.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookWrapperTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] The tag to be used for the wrapper tag around the inset, replacing 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+wrappertag
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ The default is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NONE
+\end_layout
+
+\end_inset
+
+, indicating that there is no wrapper tag: tag and content are directly
+ output without it.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookWrapperTagType
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block, paragraph, inline
+\end_layout
+
+\end_inset
+
+] The new-line policy for this tag, see Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-New-line-policy"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for the details.
+ 
+\end_layout
+
+\begin_layout Subsection
+Float DocBook
+\end_layout
+
+\begin_layout Standard
+The DocBook output for floats too can be controlled by layout information.
+ The output has the following form:
+\end_layout
+
+\begin_layout LyX-Code
+<tag attr>
+\end_layout
+
+\begin_layout LyX-Code
+  Contents of the float as DocBook.
+\end_layout
+
+\begin_layout LyX-Code
+</tag>
+\end_layout
+
+\begin_layout Standard
+The caption, if there is one, is a separate inset and will be output as
+ a title.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Specifies attribute information to be output with the main tag, replacing
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+attr
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ This information can be used in further processing of the DocBook files.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] The tag to be used for this float, replacing 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+tag
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ The default is the name of the float and always needs to be changed, as
+ DocBook provides no generic float tag.
+\end_layout
+
+\begin_layout Subsection
+Bibliography formatting
+\end_layout
+
+\begin_layout Standard
+Included bibliographies cannot be formatted: all fields are always output
+ in the database-like DocBook format (equivalent to a BibTeX file), using
+ the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+biblioentry
+\end_layout
+
+\end_inset
+
+ tag.
+\end_layout
+
+\begin_layout Standard
+When the bibliographic entries are manually inserted into the LyX document
+ as Bibliography Items, the user deals with formatting themself: there is
+ no attempt of parsing what the user wrote, the string is directly used
+ (with the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+bibliomixed
+\end_layout
+
+\end_inset
+
+ tag).
+ 
+\end_layout
+
 \begin_layout Chapter
 Insérer un objet externe
 \begin_inset CommandInset label
@@ -27474,7 +31010,7 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Avertissement: cette partie des la documentation n'a pas été mise à jour
@@ -30828,6 +34364,9 @@ Couleurs statiques
 
 \begin_layout Standard
 Ces couleurs ne peuvent pas être personnalisées.
+ Merci de ne pas utiliser ces couleurs dans les définitions de format, du
+ fait qu'elles fonctionneront mal avec certains thèmes (comme les thèmes
+ sombres).
 \end_layout
 
 \begin_layout Description
@@ -31521,6 +35060,30 @@ tabularline
 tabularonoffline
 \lang french
  ligne on/off de tableau
+\end_layout
+
+\begin_layout Description
+
+\lang english
+textlabel1
+\lang french
+ couleur 1 des étiquettes de format et d'inserts personnalisés
+\end_layout
+
+\begin_layout Description
+
+\lang english
+textlabel2 
+\lang french
+couleur 2 des étiquettes de format et d'inserts personnalisés
+\end_layout
+
+\begin_layout Description
+
+\lang english
+textlabel3 
+\lang french
+couleur 3 des étiquettes de format et d'inserts personnalisés
 \end_layout
 
 \begin_layout Description
