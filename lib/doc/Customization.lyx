@@ -30237,9 +30237,14 @@ MultiPar
 
 \end_inset
 
- is true—then the contents of the inset will itself be output as paragraphs
- formatted according to the styles used for those paragraphs (standard,
- quote, and the like).
+ is true—then the contents of the inset will 
+\change_deleted 34634807 1620029217
+itself
+\change_inserted 34634807 1620029219
+themselves
+\change_inserted -970929547 1515111183
+ be output as paragraphs formatted according to the styles used for those
+ paragraphs (standard, quote, and the like).
  The inner tag is optional and, by default, does not appear.
 \end_layout
 
@@ -31609,8 +31614,11 @@ string
 
 \end_inset
 
-] Specifies attribute information to be output with the outer tag, replacing
- 
+] Specifies attribute information to be output with the outer 
+\change_inserted 34634807 1620057958
+wrapper 
+\change_inserted -970929547 1515110832
+tag, replacing 
 \begin_inset Quotes eld
 \end_inset
 
@@ -31960,10 +31968,21 @@ biblioentry
 \begin_layout Standard
 
 \change_inserted 1075283030 1597700112
-When the bibliographic entries are manually inserted into the LyX document
- as Bibliography Items, the user deals with formatting themself: there is
- no attempt of parsing what the user wrote, the string is directly used
- (with the 
+When the bibliographic entries are manually inserted into the 
+\change_deleted 34634807 1620057319
+LyX
+\change_inserted 34634807 1620057319
+\SpecialChar LyX
+
+\change_inserted 1075283030 1597700112
+ document as Bibliography Items, the user deals with formatting 
+\change_inserted 34634807 1620057261
+him
+\change_deleted 34634807 1620057259
+them
+\change_inserted 1075283030 1597700112
+self: there is no attempt of parsing what the user wrote, the string is
+ directly used (with the 
 \begin_inset Flex Code
 status collapsed
 
