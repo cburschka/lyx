@@ -11443,8 +11443,7 @@ status collapsed
 
 \end_inset
 
-] définit le style de tableau Les styles sui implicite utilisé à la création
- d'un tableau.
+] définit le style de tableau implicite utilisé à la création d'un tableau.
  Les styles suivants sont disponibles:
 \end_layout
 
@@ -11467,8 +11466,8 @@ booktabs
 \begin_inset Quotes crd
 \end_inset
 
-) avec uniquement des lihgnes horizontales, et des lignes heuteet basse
- épaisses, la première et las dernière lignes étant éventuellment séparées
+) avec uniquement des lignes horizontales, et des lignes haute et basse
+ épaisses, la première et las dernière lignes étant éventuellement séparées
  du corps du tableau avec une ligne fine centrée;
 \end_layout
 
@@ -15008,7 +15007,7 @@ chaîne
 \end_inset
 
 ] définit une chaîne de caractères insérée au début du contenu du style.
- Une rupture de ligne dans la sortie peut être indiquée par 
+ Un passage à la ligne dans la sortie peut être indiquée par 
 \begin_inset Flex Code
 status collapsed
 
@@ -16492,7 +16491,7 @@ chaîne
 \end_inset
 
 ] définit une chaîne de caractères insérée à la fin du contenu du style.
- Une rupture de ligne dans la sortie peut être indiquée par 
+ Un passage à la ligne dans la sortie peut être indiquée par 
 \begin_inset Flex Code
 status collapsed
 
@@ -21071,7 +21070,7 @@ chaîne
 \end_inset
 
 ] définit une chaîne de caractères insérée au début du contenu du style.
- Une rupture de ligne dans la sortie peut être indiquée par 
+ Un passage à la ligne dans la sortie peut être indiquée par 
 \begin_inset Flex Code
 status collapsed
 
@@ -22322,7 +22321,7 @@ chaîne
 \end_inset
 
 ] définit une chaîne de caractères insérée à la fin du contenu du style.
- Une rupture de ligne dans la sortie peut être indiquée par 
+ Un passage à la ligne dans la sortie peut être indiquée par 
 \begin_inset Flex Code
 status collapsed
 
@@ -22896,7 +22895,7 @@ status collapsed
 \end_inset
 
 ).
- Une rupture de ligne dans la sortie peut être indiqué par 
+ Un passage à la ligne dans la sortie peut être indiqué par 
 \begin_inset Flex Code
 status collapsed
 
@@ -22956,7 +22955,7 @@ status collapsed
 \end_inset
 
 ).
- Une rupture de ligne dans la sortie peut être indiqué par 
+ Un passage à la ligne dans la sortie peut être indiqué par 
 \begin_inset Flex Code
 status collapsed
 
@@ -29114,42 +29113,49 @@ name "sec:Tags-for-DocBook"
 
 \end_inset
 
-Tags for DocBook output
+Balisage pour l'exportation DocBook
 \end_layout
 
 \begin_layout Standard
-As with \SpecialChar LaTeX
- or XHTML, the format of \SpecialChar LyX
-'s DocBook output is also controlled by
- layout information.
- In general, \SpecialChar LyX
- provides sensible defaults; however, much of the styling is
- lost during the conversion, as DocBook is strictly semantic and does not
- allow formatting.
- When possible, information from \SpecialChar LyX
- will be rendered in 
+Comme pour \SpecialChar LaTeX
+ ou XHTML, le format de l'exportation DocBook de \SpecialChar LyX
+ est contrôlé
+ par les informations de format (
+\emph on
+layout
+\emph default
+).
+ En général, \SpecialChar LyX
+ fournit des données implicites raisonnables; cependant, la
+ plus grande partie du style est perdu pendant la conversion, du fait que
+ DocBook a une sémantique stricte et ne permet pas la mise en forme.
+ Quand c'est possible, l'information provenant de \SpecialChar LyX
+ sera traduite dans les
+ attributs de 
 \family typewriter
 role
 \family default
- attributes.
+.
  
 \end_layout
 
 \begin_layout Standard
-In many cases, then, you may not have to do anything at all to get acceptable
- DocBook output for your own environments, custom insets, and so forth.
- But in some cases you will, and so \SpecialChar LyX
- provides a number of layout tags that
- can be used to customize the DocBook that is generated.
+Dans de nombreux cas, vous pouvez n'avoir rien à faire du tout pour obtenir
+ une exportation DocBook pour vos propres environnements, inserts personnels
+ et autres.
+ Mais dans certains cas, vous devrez, et donc \SpecialChar LyX
+ fournit un certains nombre
+ de balises que vous pourrez utiliser pour personnaliser le document DocBook
+ exporté.
 \end_layout
 
 \begin_layout Standard
-Labels are rarely output, as they are redundant in DocBook: this information
- is carried by the tags themselves, and whether labels appear in the final
- documents (after processing of DocBook files) is controlled by the stylesheets.
- However, sometimes, labels are not redundant content, such as definition
- lists: in this case, the term being defined will be the label.
- 
+Les étiquettes sont rarement exportées, du fait qu'elles sont redondantes
+ en DocBook: l'information est incluse dans les balises elles-mêmes, et
+ l'apparition des étiquettes dans le document final (après traitement des
+ fichiers DocBook) est contrôlé par les feuilles de style.
+ Cependant, les étiquettes peuvent ne pas être redondantes, comme dans les
+ listes de définitions: dans ce cas, le terme défini sera l'étiquette.
 \end_layout
 
 \begin_layout Subsection
@@ -29159,14 +29165,14 @@ name "subsec:Paragraph-Style-DocBook"
 
 \end_inset
 
-Paragraph styles
+Styles de paragraphe
 \end_layout
 
 \begin_layout Standard
-The sort of DocBook \SpecialChar LyX
- outputs for a paragraph depends upon whether we are
- dealing with a normal paragraph, a command, or an environment, where this
- is itself determined by the contents of the corresponding 
+Le type de \SpecialChar LyX
+ DocBook export pour un paragraphe est différent suivant qu'il
+ s'agit d'un paragraphe normal, d'une commande ou d'un environnement, et
+ est lui-même déterminé par le contenu de la balise 
 \begin_inset Flex Code
 status collapsed
 
@@ -29177,13 +29183,13 @@ Type
 
 \end_inset
 
- tag.
+.
  
 \end_layout
 
 \begin_layout Standard
-For a command or normal paragraph, the output DocBook has the following
- form:
+Pour une commande ou un paragraphe normal, l'exportation DocBook est de
+ la forma suivante:
 \end_layout
 
 \begin_layout LyX-Code
@@ -29191,7 +29197,7 @@ For a command or normal paragraph, the output DocBook has the following
 \end_layout
 
 \begin_layout LyX-Code
-Contents of the paragraph.
+Contenu du paragraphe.
 \end_layout
 
 \begin_layout LyX-Code
@@ -29199,8 +29205,8 @@ Contents of the paragraph.
 \end_layout
 
 \begin_layout Standard
-For an environment that is not some sort of list, the generated DocBook
- takes this form:
+Pour un environnement qui n'est pas du type liste, l'exportation DocBook
+ prend cette forme:
 \end_layout
 
 \begin_layout LyX-Code
@@ -29208,11 +29214,11 @@ For an environment that is not some sort of list, the generated DocBook
 \end_layout
 
 \begin_layout LyX-Code
-<itemtag>First paragraph.</itemtag>
+<itemtag>Premier paragraphe.</itemtag>
 \end_layout
 
 \begin_layout LyX-Code
-<itemtag>Second paragraph.</itemtag>
+<itemtag>Second paragraphe.</itemtag>
 \end_layout
 
 \begin_layout LyX-Code
@@ -29220,7 +29226,7 @@ For an environment that is not some sort of list, the generated DocBook
 \end_layout
 
 \begin_layout Standard
-For a list, the resulting DocBook takes this form:
+Pour une liste, le résultat est le suivant:
 \end_layout
 
 \begin_layout LyX-Code
@@ -29228,7 +29234,7 @@ For a list, the resulting DocBook takes this form:
 \end_layout
 
 \begin_layout LyX-Code
-<itemtag attr>First item.</itemtag>
+<itemtag attr>Premier item.</itemtag>
 \end_layout
 
 \begin_layout LyX-Code
@@ -29240,11 +29246,11 @@ For a list, the resulting DocBook takes this form:
 \end_layout
 
 \begin_layout Standard
-The specific tags and roles output for each paragraph type can be controlled
- by means of the layout tags we are about to describe.
- Please note that, due to the very nature of DocBook, no sensible defaults
- really exist, and the values must always be carefully chosen.
- 
+Les balises et rôles émis pour chaque type de paragraphe peuvent être fixés
+ via les balises de format qui vont être décrites ci-après.
+ Veuillez noter que, du fait de la nature même de DocBook, il n'existe pas
+ de valeurs implicites raisonnables, et que les valeurs doivent être toujours
+ soigneusement choisies.
 \end_layout
 
 \begin_layout Description
@@ -29262,32 +29268,23 @@ DocBookAttr
 status collapsed
 
 \begin_layout Plain Layout
-string
+chaîne
 \end_layout
 
 \end_inset
 
-] Specifies attribute information to be output with the main tag, replacing
- 
-\begin_inset Quotes eld
+] spécifie les informations d'attribut à émettre avec la balise principale,
+ en replaçant 
+\begin_inset Quotes cld
 \end_inset
 
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
 attr
-\end_layout
-
+\begin_inset Quotes crd
 \end_inset
 
-
-\begin_inset Quotes erd
-\end_inset
-
- in the example above.
- This information can be used in further processing of the DocBook files.
+ dans l'exemple ci-dessus.
+ Cette information peut être utilisées dans le traitement ultérieur des
+ fichiers DocBook.
  
 \end_layout
 
@@ -29306,13 +29303,13 @@ DocBookTag
 status collapsed
 
 \begin_layout Plain Layout
-string
+chaîne
 \end_layout
 
 \end_inset
 
-] The tag to be used for this inset, replacing 
-\begin_inset Quotes eld
+] définit la balise à utiliser pour cet insert, en remplaçant 
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -29326,12 +29323,12 @@ tag
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
- in the example above.
- The default is the name of the float and always needs to be changed, as
- DocBook provides no generic tag.
+ dans l'exemple ci-dessus.
+ La valeur implicite est le nom du flottant et doit toujours être redéfinie,
+ du fait que DocBook ne propose pas de balise générique.
 \end_layout
 
 \begin_layout Description
@@ -29354,7 +29351,8 @@ block, paragraph, inline
 
 \end_inset
 
-] The new-line policy for this tag, see Section
+] définit la politique de passage à la ligne pour cette balise, voir la
+ section
 \begin_inset space ~
 \end_inset
 
@@ -29368,12 +29366,12 @@ noprefix "false"
 
 \end_inset
 
- for the details.
+ pour les détails.
  
 \end_layout
 
 \begin_layout Subsection
-New-line policy
+Politique de passage à la ligne
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:DocBook-New-line-policy"
@@ -29384,8 +29382,8 @@ name "subsec:DocBook-New-line-policy"
 \end_layout
 
 \begin_layout Standard
-For all tags, there are three possible policies for outputting new lines
- (given in the 
+Pour toutes les balises, il y a trois politiques possibles pour émettre
+ un passage à la ligne (en fonction de l'attribut 
 \begin_inset Flex Code
 status collapsed
 
@@ -29395,11 +29393,11 @@ DocBook*TagType
 
 \end_inset
 
- attribute): 
+): 
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Quotes eld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -29413,17 +29411,17 @@ block
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
-: the opening and closing tags are on their own lines (i.e.
- a line feed after and before the opening and the closing tags).
- Typical elements are floats.
- For instance: 
+: les balises ouvrante et fermante sont sur leur propre ligne (i.e.
+ un saut de ligne avant et après la balise ouvrante et fermante).
+ Les éléments typiques sont les flottants.
+ Par exemple:
 \end_layout
 
 \begin_layout LyX-Code
-Content before
+Contenu avant
 \end_layout
 
 \begin_layout LyX-Code
@@ -29431,7 +29429,7 @@ Content before
 \end_layout
 
 \begin_layout LyX-Code
-  Contents of the block.
+  Contenu du bloc.
 \end_layout
 
 \begin_layout LyX-Code
@@ -29439,11 +29437,11 @@ Content before
 \end_layout
 
 \begin_layout LyX-Code
-Content after
+Contenu après
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Quotes eld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -29457,29 +29455,29 @@ paragraph
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
-: the opening and closing tags are on the same, new line; a line feed is
- output before the opening tag and after the closing tag.
- Typical elements are paragraphs and list items.
- For instance: 
+: les balises ouvrante et fermante sont sur une même nouvelle ligne et un
+ saut de ligne est émis avant la balise ouvrante et après la balise fermante.
+ Les éléments typiques sont les paragraphes et les items de liste.
+ Par exemple:
 \end_layout
 
 \begin_layout LyX-Code
-Content before
+Contenu avant
 \end_layout
 
 \begin_layout LyX-Code
-<paratag>Contents of the paragraph.</paratag>
+<paratag>Contenu du paragraphe.</paratag>
 \end_layout
 
 \begin_layout LyX-Code
-Content after
+Content après
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Quotes eld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -29493,22 +29491,23 @@ inline
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
-: the opening and closing tags are on the same line as the rest of the content.
- No line feeds are output.
- Typical elements are fonts.
- For instance: 
+: les balises ouvrante et fermante sont sur le même ligne que le reste du
+ contenu.
+ Aucun saut de ligne n'est émis.
+ Les éléments typique sont les polices.
+ Par exemple:
 \end_layout
 
 \begin_layout LyX-Code
-Content before<inlinetag>Contents of the paragraph.</inlinetag>Content after
+Contenu avant<inlinetag>Contenu du paragraphe.</inlinetag>Contenu après
 \end_layout
 
 \begin_layout Standard
-The default value is always 
-\begin_inset Quotes eld
+La valeur implicite est toujours 
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -29522,7 +29521,7 @@ block
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -29533,13 +29532,13 @@ InsetLayout DocBook
 \end_layout
 
 \begin_layout Standard
-The DocBook output of insets can also be controlled by information in layout
- files.
+L'exportation DocBook des inserts peut aussi être contrôlée par des informations
+ dans les fichiers de format.
 \end_layout
 
 \begin_layout Standard
-The DocBook \SpecialChar LyX
- outputs for an inset has the following form:
+L'exportation \SpecialChar LyX
+ DocBook pour un insert a la forme suivante:
 \end_layout
 
 \begin_layout LyX-Code
@@ -29555,7 +29554,7 @@ The DocBook \SpecialChar LyX
 \end_layout
 
 \begin_layout LyX-Code
-      Contents of the inset.
+      Contenu de l'insert.
 \end_layout
 
 \begin_layout LyX-Code
@@ -29571,7 +29570,7 @@ The DocBook \SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
-For an itemising inset, it rather looks like this: 
+Pour un insert à éléments, elle ressemble plutôt à ceci:
 \end_layout
 
 \begin_layout LyX-Code
@@ -29595,7 +29594,7 @@ For an itemising inset, it rather looks like this:
 \end_layout
 
 \begin_layout LyX-Code
-          Label of the first item.
+          Étiquette du premier élément.
 \end_layout
 
 \begin_layout LyX-Code
@@ -29611,7 +29610,7 @@ For an itemising inset, it rather looks like this:
 \end_layout
 
 \begin_layout LyX-Code
-            Contents of the first item.
+            Contenu du premier élément.
 \end_layout
 
 \begin_layout LyX-Code
@@ -29635,7 +29634,7 @@ For an itemising inset, it rather looks like this:
 \end_layout
 
 \begin_layout LyX-Code
-          Label of the second item.
+          Étiquette du deuxième élément.
 \end_layout
 
 \begin_layout LyX-Code
@@ -29651,7 +29650,7 @@ For an itemising inset, it rather looks like this:
 \end_layout
 
 \begin_layout LyX-Code
-            Contents of the second item.
+            Contenu du deuxième élément.
 \end_layout
 
 \begin_layout LyX-Code
@@ -29683,7 +29682,7 @@ For an itemising inset, it rather looks like this:
 \end_layout
 
 \begin_layout Standard
-If the inset permits multiple paragraphs—that is, if 
+Si l'insert autorise plusieurs paragraphes — c'est à dire, si 
 \begin_inset Flex Code
 status collapsed
 
@@ -29693,15 +29692,15 @@ MultiPar
 
 \end_inset
 
- is true—then the contents of the inset will itself be output as paragraphs
- formatted according to the styles used for those paragraphs (standard,
- quote, and the like).
- The inner tag is optional and, by default, does not appear.
+ est vrai — alors les contenus de l'insert seront eux-mêmes exportés comme
+ des paragraphes mis en forme en fonction des styles utilisés pour ces paragraph
+es (standard, citation et autres).
+ La balise interne est facultative et implicitement n'apparaît pas.
 \end_layout
 
 \begin_layout Standard
-The specific tags and attributes output for each inset can be controlled
- by means of the following layout tags.
+Les balises et attributs spécifiques pour chaque insert peuvent être contrôlés
+ via les balises de format qui suivent.
 \end_layout
 
 \begin_layout Description
@@ -29719,14 +29718,14 @@ DocBookAttr
 status collapsed
 
 \begin_layout Plain Layout
-string
+chaîne
 \end_layout
 
 \end_inset
 
-] Specifies attribute information to be output with the main tag, replacing
- 
-\begin_inset Quotes eld
+] précise l'information attribut à émettre avec la balise principale, en
+ remplaçant 
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -29740,11 +29739,12 @@ attr
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
- in the example above.
- This information can be used in further processing of the DocBook files.
+ dans l'exemple ci-dessus.
+ Cette information peut être utilisée dans le traitement ultérieur des fichiers
+ DocBook.
  
 \end_layout
 
@@ -29768,7 +29768,7 @@ never, always, maybe
 
 \end_inset
 
-] Specifies whether this tag goes into the 
+] précise si cette balise se retrouve dans la balise 
 \begin_inset Flex Code
 status collapsed
 
@@ -29778,28 +29778,19 @@ status collapsed
 
 \end_inset
 
- tag at the beginning of the parent layout.
- 
+ au commencement du format parent.
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-never
+never 
+\family roman
+indique que ce n'est jamais le cas (c'est la valeur implicite, et elle correspon
+d au contenu habituel).
 \end_layout
 
 \end_inset
 
- indicates that the tag never goes into 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-<info>
-\end_layout
-
-\end_inset
-
- (this is default value, and corresponds to usual content).
  
 \begin_inset Flex Code
 status collapsed
@@ -29810,7 +29801,8 @@ always
 
 \end_inset
 
- indicates that the tag always goes into 
+ indique que c'est toujours le cas (ceci correspond aux métadonnées usuelles):
+ s'il n'y a pas de balise 
 \begin_inset Flex Code
 status collapsed
 
@@ -29820,21 +29812,15 @@ status collapsed
 
 \end_inset
 
- (this corresponds to usual metadata): if there is no 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-<info>
-\end_layout
-
-\end_inset
-
- tag for the parent, one 
+ pour le parent, il en 
 \series bold
-will
+sera
 \series default
- be generated.
+ créée 
+\series bold
+une
+\series default
+.
  
 \begin_inset Flex Code
 status collapsed
@@ -29845,7 +29831,7 @@ maybe
 
 \end_inset
 
- indicates that the tag may go into 
+ indique que la balise pourra peut-être aller dans 
 \begin_inset Flex Code
 status collapsed
 
@@ -29855,7 +29841,7 @@ status collapsed
 
 \end_inset
 
- (this is only the case for titles): if there is no 
+ (ce n'est le cas que pour les titres): s'il n'y a pas de balise 
 \begin_inset Flex Code
 status collapsed
 
@@ -29865,12 +29851,12 @@ status collapsed
 
 \end_inset
 
- tag for the parent, 
+ pour le parent, 
 \series bold
-none
+aucune
 \series default
- will be generated, the corresponding tag will be output directly as content.
- 
+ ne sera créée, la balise correspondante sera exportée directement en tant
+ que contenu.
 \end_layout
 
 \begin_layout Description
@@ -29883,19 +29869,9 @@ DocBookItemAttr
 
 \end_inset
 
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-string
-\end_layout
-
-\end_inset
-
-] Specifies attribute information to be output with the item tag, replacing
- 
-\begin_inset Quotes eld
+ [chaîne] précise l'information attribut à émettre avec la balise élément,
+ en remplaçant 
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -29909,11 +29885,12 @@ itemattr
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
- in the example above.
- This information can be used in further processing of the DocBook files.
+ dans l'exemple ci-dessus.
+ Cette information peut être utilisée dans le traitement ultérieur des fichiers
+ DocBook.
  
 \end_layout
 
@@ -29927,19 +29904,9 @@ DocBookItemInnerAttr
 
 \end_inset
 
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-string
-\end_layout
-
-\end_inset
-
-] Specifies attribute information to be output with the item inner tag,
- replacing 
-\begin_inset Quotes eld
+ [chaîne] précise l'information attribut à émettre avec la balise élément
+ interne, en remplaçant 
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -29953,11 +29920,12 @@ iteminnerattr
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
- in the example above.
- This information can be used in further processing of the DocBook files.
+ dans l'exemple ci-dessus.
+ Cette information peut être utilisée dans le traitement ultérieur des fichiers
+ DocBook.
  
 \end_layout
 
@@ -29976,14 +29944,14 @@ DocBookItemInnerTag
 status collapsed
 
 \begin_layout Plain Layout
-string
+chaîne
 \end_layout
 
 \end_inset
 
-] The tag to be used for the item inner tag within the inset, replacing
- 
-\begin_inset Quotes eld
+] définit la balise à utiliser pour la balise d'élément interne à l'intérieur
+ de l'insert, en remplaçant 
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -29997,11 +29965,11 @@ iteminnertag
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
- in the example above.
- The default is 
+ dans l'exemple ci-dessus.
+ La valeur implicite est 
 \begin_inset Flex Code
 status collapsed
 
@@ -30011,12 +29979,12 @@ NONE
 
 \end_inset
 
-, indicating that there is no item inner tag: content is directly output
- without it for each itemised element.
- This parameter only makes sense when itemising layouts are used, such as
- lists.
- The most likely value is 
-\begin_inset Quotes eld
+, indiquant qu'il n'y a pas de balise interne d'élément: le contenu est
+ directement exporté sans elle pour chaque élément.
+ Ce paramètre n'a de sens que lorsque des formats à éléments sont utilisés,
+ comme les listes.
+ La valeur la plus probable est 
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -30030,16 +29998,16 @@ para
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
 .
 \begin_inset Newline newline
 \end_inset
 
-When a list item is split using a new line, the item inner tag will be repeated
- for each part of the paragraph, parts being separated by new lines.
- 
+Quand un élément de liste est divisé par un saut de ligne, la balise interne
+ d'élément sera répétée pour chaque partie du paragraphe, les parties étant
+ séparées par des retours à la ligne.
 \end_layout
 
 \begin_layout Description
@@ -30062,7 +30030,7 @@ block, paragraph, inline
 
 \end_inset
 
-] The new-line policy for this tag, see Section
+] définit la politique de retour à la ligne pour cette balise, voir la section
 \begin_inset space ~
 \end_inset
 
@@ -30076,7 +30044,7 @@ noprefix "false"
 
 \end_inset
 
- for the details.
+ pour les détails.
  
 \end_layout
 
@@ -30095,14 +30063,14 @@ DocBookItemLabelAttr
 status collapsed
 
 \begin_layout Plain Layout
-string
+chaîne
 \end_layout
 
 \end_inset
 
-] Specifies attribute information to be output with the item label tag,
- replacing 
-\begin_inset Quotes eld
+] précise l'information attribut à émettre avec la balise étiquette d'élément
+ à l'intérieur de l'insert, en remplaçant 
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -30116,11 +30084,12 @@ itemlabelattr
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
- in the example above.
- This information can be used in further processing of the DocBook files.
+ dans l'exemple ci-dessus.
+ Cette information peut être utilisée dans le traitement ultérieur des fichiers
+ DocBook.
  
 \end_layout
 
@@ -30139,14 +30108,14 @@ DocBookItemLabelTag
 status collapsed
 
 \begin_layout Plain Layout
-string
+chaîne
 \end_layout
 
 \end_inset
 
-] The tag to be used for the item label tag within the inset, replacing
- 
-\begin_inset Quotes eld
+] définit la balise à exporter pour la balise étiquette d'élément à l'intérieur
+ de l'insert, en remplaçant 
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -30160,13 +30129,12 @@ itemlabeltag
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
- in the example above.
- This parameter only makes sense when itemising layouts are used with a
- notion of labels, such as definition lists.
- 
+ dans l'exemple ci-dessus.
+ Ce paramètre n'a de sens que lorsque des formats à éléments sont utilisé
+ avec la notion d'étiquette, comme les listes descriptives.
 \end_layout
 
 \begin_layout Description
@@ -30189,7 +30157,7 @@ block, paragraph, inline
 
 \end_inset
 
-] The new-line policy for this tag, see Section
+] définit la politique de retour à la ligne pour cette balise, voir la section
 \begin_inset space ~
 \end_inset
 
@@ -30203,8 +30171,7 @@ noprefix "false"
 
 \end_inset
 
- for the details.
- 
+ pour les détails.
 \end_layout
 
 \begin_layout Description
@@ -30222,13 +30189,14 @@ DocBookItemTag
 status collapsed
 
 \begin_layout Plain Layout
-string
+chaîne
 \end_layout
 
 \end_inset
 
-] The tag to be used for the item tag within the inset, replacing 
-\begin_inset Quotes eld
+] définit la balise à utiliser pour la balise d'élément à l'intérieur de
+ l'insert, en remplaçant 
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -30242,11 +30210,11 @@ itemtag
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
- in the example above.
- The default is 
+ dans l'exemple ci-dessus.
+ La valeur implicite est 
 \begin_inset Flex Code
 status collapsed
 
@@ -30256,10 +30224,9 @@ NONE
 
 \end_inset
 
-, indicating that there is no item tag.
- This parameter only makes sense when itemising layouts are used, such as
- lists.
- 
+, indiquant qu'il n'y a pas de balise élément.
+ Ce paramètre n'a de sens que lorsque des formats à éléments sont utilisés,
+ comme les listes.
 \end_layout
 
 \begin_layout Description
@@ -30282,7 +30249,7 @@ block, paragraph, inline
 
 \end_inset
 
-] The new-line policy for this tag, see Section
+] définit la politique de retour à la ligne pour cette balise, voir la section
 \begin_inset space ~
 \end_inset
 
@@ -30296,8 +30263,7 @@ noprefix "false"
 
 \end_inset
 
- for the details.
- 
+ pour les détails.
 \end_layout
 
 \begin_layout Description
@@ -30315,14 +30281,14 @@ DocBookItemWrapperAttr
 status collapsed
 
 \begin_layout Plain Layout
-string
+chaîne
 \end_layout
 
 \end_inset
 
-] Specifies attribute information to be output with the item wrapper tag,
- replacing 
-\begin_inset Quotes eld
+] précise l'information attribut à émettre avec la balise d'encapsulation
+ d'élément, en remplaçant 
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -30336,11 +30302,12 @@ itemwrapperattr
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
- in the example above.
- This information can be used in further processing of the DocBook files.
+ dans l'exemple ci-dessus.
+ Cette information peut être utilisée dans le traitement ultérieur des fichiers
+ DocBook.
  
 \end_layout
 
@@ -30359,14 +30326,14 @@ DocBookItemWrapperTag
 status collapsed
 
 \begin_layout Plain Layout
-string
+chaîne
 \end_layout
 
 \end_inset
 
-] The tag to be used for the item wrapper tag within the inset, replacing
- 
-\begin_inset Quotes eld
+] définit la valeur à utiliser pour la balise d'encapsulation d'élément
+ à l'intérieur de l'insert, en remplaçant 
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -30380,11 +30347,11 @@ itemwrappertag
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
- in the example above.
- The default is 
+ dans l'exemple ci-dessus.
+ La valeur implicite est 
 \begin_inset Flex Code
 status collapsed
 
@@ -30394,11 +30361,10 @@ NONE
 
 \end_inset
 
-, indicating that there is no item wrapper tag: tag and content are directly
- output without it for each itemised element.
- This parameter only makes sense when itemising layouts are used, such as
- lists.
- 
+, indiquant qu'il n'y a pas de balise d'encapsulation d'élément: balise
+ et contenu sont exportés directement pour chaque élément.
+ Ce paramètre n'a de sens que lorsque des formats à éléments sont utilisés,
+ comme les listes.
 \end_layout
 
 \begin_layout Description
@@ -30421,7 +30387,7 @@ block, paragraph, inline
 
 \end_inset
 
-] The new-line policy for this tag, see Section
+] définit la politique de retour à la ligne pour cette balise, voir la section
 \begin_inset space ~
 \end_inset
 
@@ -30435,8 +30401,7 @@ noprefix "false"
 
 \end_inset
 
- for the details.
- 
+ pour les détails.
 \end_layout
 
 \begin_layout Description
@@ -30454,14 +30419,14 @@ DocBookInnerAttr
 status collapsed
 
 \begin_layout Plain Layout
-string
+chaîne
 \end_layout
 
 \end_inset
 
-] Specifies attribute information to be output with the inner tag, replacing
- 
-\begin_inset Quotes eld
+] précise l'information attribut à émettre avec la balise intérieure, en
+ remplaçant 
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -30475,12 +30440,12 @@ innerattr
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
- in the example above.
- This information can be used in further processing of the DocBook files.
- 
+ dans l'exemple ci-dessus.
+ Cette information peut être utilisée dans le traitement ultérieur des fichiers
+ DocBook.
 \end_layout
 
 \begin_layout Description
@@ -30498,13 +30463,14 @@ DocBookInnerTag
 status collapsed
 
 \begin_layout Plain Layout
-string
+chaîne
 \end_layout
 
 \end_inset
 
-] The tag to be used for the inner tag within the inset, replacing 
-\begin_inset Quotes eld
+] définit la balise à utiliser pour l'exportation de la balise intérieure
+ dans l'insert, en remplaçant 
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -30518,11 +30484,11 @@ innertag
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
- in the example above.
- The default is 
+ dans l'exemple ci-dessus.
+ La valeur implicite est 
 \begin_inset Flex Code
 status collapsed
 
@@ -30532,8 +30498,8 @@ NONE
 
 \end_inset
 
-, indicating that there is no inner tag: content is directly output without
- it.
+, indiquent qu'il n'y a pas de balise intérieure: le contenu est exporté
+ sans.
 \end_layout
 
 \begin_layout Description
@@ -30556,7 +30522,7 @@ block, paragraph, inline
 
 \end_inset
 
-] The new-line policy for this tag, see Section
+] définit la politique de retour à la ligne pour cette balise, voir la section
 \begin_inset space ~
 \end_inset
 
@@ -30570,8 +30536,7 @@ noprefix "false"
 
 \end_inset
 
- for the details.
- 
+ pour les détails.
 \end_layout
 
 \begin_layout Description
@@ -30589,15 +30554,15 @@ DocBookSectionTag
 status collapsed
 
 \begin_layout Plain Layout
-string
+chaîne
 \end_layout
 
 \end_inset
 
-] Specifies the tag that corresponds to this kind of section.
- This parameter only makes sense for sectioning elements (part, chapter,
- section, etc.).
- The default value is 
+] définit la balise qui correspond à ce type de section.
+ Ce paramètre n'a de sens que pour les éléments de sectionnement (partie,
+ chapitre, section, etc.).
+ La valeur implicite est 
 \begin_inset Flex Code
 status collapsed
 
@@ -30607,9 +30572,8 @@ section
 
 \end_inset
 
-, and is only overridden when DocBook uses something else for sectioning
- (typically, parts and chapters of a book).
- 
+, et n'est écrasée que si DocBook utilise quelque chose d'autre pour le
+ sectionnement (typiquement parties et chapitres d'un livre).
 \end_layout
 
 \begin_layout Description
@@ -30627,13 +30591,13 @@ DocBookTag
 status collapsed
 
 \begin_layout Plain Layout
-string
+chaîne
 \end_layout
 
 \end_inset
 
-] The tag to be used for this inset, replacing 
-\begin_inset Quotes eld
+] définit la balise à utiliser pour cet insert, en remplaçant 
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -30647,12 +30611,12 @@ tag
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
- in the example above.
- The default is the name of the float and always needs to be changed, as
- DocBook provides no generic inset tag.
+ dans l'exemple ci-dessus.
+ La valeur implicite est le nom de l'insert et doit toujours être redéfinie,
+ puisque DocBook ne propose pas de balise d'insert générique.
 \end_layout
 
 \begin_layout Description
@@ -30675,7 +30639,7 @@ block, paragraph, inline
 
 \end_inset
 
-] The new-line policy for this tag, see Section
+] définit la politique de retour à la ligne pour cette balise, voir la section
 \begin_inset space ~
 \end_inset
 
@@ -30689,8 +30653,7 @@ noprefix "false"
 
 \end_inset
 
- for the details.
- 
+ pour les détails.
 \end_layout
 
 \begin_layout Description
@@ -30708,14 +30671,14 @@ DocBookWrapperAttr
 status collapsed
 
 \begin_layout Plain Layout
-string
+chaîne
 \end_layout
 
 \end_inset
 
-] Specifies attribute information to be output with the outer tag, replacing
- 
-\begin_inset Quotes eld
+] précise l'information attribut à émettre avec la balise d'encapsulation
+ externe, en remplaçant 
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -30729,12 +30692,12 @@ wrapperattr
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
- in the example above.
- This information can be used in further processing of the DocBook files.
- 
+ dans l'exemple ci-dessus.
+ Cette information peut être utilisée dans le traitement ultérieur des fichiers
+ DocBook.
 \end_layout
 
 \begin_layout Description
@@ -30752,13 +30715,14 @@ DocBookWrapperTag
 status collapsed
 
 \begin_layout Plain Layout
-string
+chaîne
 \end_layout
 
 \end_inset
 
-] The tag to be used for the wrapper tag around the inset, replacing 
-\begin_inset Quotes eld
+] définit la valeur à utiliser pour la balise d'encapsulation de l'insert,
+ en remplaçant 
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -30772,11 +30736,11 @@ wrappertag
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
- in the example above.
- The default is 
+ dans l'exemple ci-dessus.
+ La valeur implicite est 
 \begin_inset Flex Code
 status collapsed
 
@@ -30786,8 +30750,8 @@ NONE
 
 \end_inset
 
-, indicating that there is no wrapper tag: tag and content are directly
- output without it.
+, indiquant qu'il n'y a pas de balise d'encapsulation globale: balise et
+ contenu sont exportés directement sans elle.
 \end_layout
 
 \begin_layout Description
@@ -30810,7 +30774,7 @@ block, paragraph, inline
 
 \end_inset
 
-] The new-line policy for this tag, see Section
+] définit la politique de retour à la ligne pour cette balise, voir la section
 \begin_inset space ~
 \end_inset
 
@@ -30824,17 +30788,17 @@ noprefix "false"
 
 \end_inset
 
- for the details.
- 
+ pour les détails.
 \end_layout
 
 \begin_layout Subsection
-Float DocBook
+Flottants DocBook
 \end_layout
 
 \begin_layout Standard
-The DocBook output for floats too can be controlled by layout information.
- The output has the following form:
+L'exportation DocBook des flottants peut être également contrôlée par les
+ informations de format.
+ L'exportation a la forme suivante:
 \end_layout
 
 \begin_layout LyX-Code
@@ -30842,7 +30806,7 @@ The DocBook output for floats too can be controlled by layout information.
 \end_layout
 
 \begin_layout LyX-Code
-  Contents of the float as DocBook.
+  Contenu du flottant en tant que  DocBook.
 \end_layout
 
 \begin_layout LyX-Code
@@ -30850,9 +30814,8 @@ The DocBook output for floats too can be controlled by layout information.
 \end_layout
 
 \begin_layout Standard
-The caption, if there is one, is a separate inset and will be output as
- a title.
- 
+La légende, s'il y en a une, est un insert à part et sera exportée comme
+ un titre.
 \end_layout
 
 \begin_layout Description
@@ -30870,14 +30833,14 @@ DocBookAttr
 status collapsed
 
 \begin_layout Plain Layout
-string
+chaîne
 \end_layout
 
 \end_inset
 
-] Specifies attribute information to be output with the main tag, replacing
- 
-\begin_inset Quotes eld
+] précise l'information attribut à émettre avec la balise principale, en
+ replaçant 
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -30891,12 +30854,12 @@ attr
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
- in the example above.
- This information can be used in further processing of the DocBook files.
- 
+ dans l'exemple ci-dessus.
+ Cette information peut être utilisée dans le traitement ultérieur des fichiers
+ DocBook.
 \end_layout
 
 \begin_layout Description
@@ -30914,13 +30877,13 @@ DocBookTag
 status collapsed
 
 \begin_layout Plain Layout
-string
+chaîne
 \end_layout
 
 \end_inset
 
-] The tag to be used for this float, replacing 
-\begin_inset Quotes eld
+] définit la balise à utiliser pour le flottant, en remplaçant 
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -30934,22 +30897,22 @@ tag
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
- in the example above.
- The default is the name of the float and always needs to be changed, as
- DocBook provides no generic float tag.
+ dans l'exemple ci-dessus.
+ La valeur implicite est le nom du flottant et doit toujours être redéfinie,
+ du fait que DocBook ne propose pas de balise générique pour les flottants.
 \end_layout
 
 \begin_layout Subsection
-Bibliography formatting
+Mise en forme de la bibliographie
 \end_layout
 
 \begin_layout Standard
-Included bibliographies cannot be formatted: all fields are always output
- in the database-like DocBook format (equivalent to a BibTeX file), using
- the 
+Les bibliographies incluses ne peuvent pas être mises en forme: tous les
+ champs sont toujours exportés dans le format DocBook similaire à une base
+ de données (équivalente à un fichier BibTeX), en utilisant la balise 
 \begin_inset Flex Code
 status collapsed
 
@@ -30959,14 +30922,15 @@ biblioentry
 
 \end_inset
 
- tag.
+.
 \end_layout
 
 \begin_layout Standard
-When the bibliographic entries are manually inserted into the LyX document
- as Bibliography Items, the user deals with formatting themself: there is
- no attempt of parsing what the user wrote, the string is directly used
- (with the 
+Lorsque les entrées bibliographiques sont saisies dans le document \SpecialChar LyX
+ en tant
+ qu'éléments de Bibliographie, l'utilisateur gère la mise en forme lui-même:
+ il n'y a aucune tentative pour décoder ce que l'utilisateur a écrit, la
+ chaîne de caractères est utilisée telle quelle (via la balise 
 \begin_inset Flex Code
 status collapsed
 
@@ -30976,7 +30940,7 @@ bibliomixed
 
 \end_inset
 
- tag).
+).
  
 \end_layout
 
