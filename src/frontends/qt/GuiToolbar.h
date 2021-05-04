@@ -96,6 +96,8 @@ public:
 	~DynamicMenuButton();
 	///
 	static bool isMenuType(std::string const & s);
+	///
+	static void resetIconCache();
 protected:
 	///
 	void initialize() override;
@@ -107,6 +109,12 @@ protected:
 protected Q_SLOTS:
 	///
 	void updateTriggered() override;
+private:
+	/// These icons are needed at each updateTriggered() call, and
+	/// therefore we have to cache them.
+	static QIcon icon_textstyle_apply_;
+	static QIcon icon_undo_;
+	static QIcon icon_paste_;
 };
 
 

@@ -1059,6 +1059,8 @@ void GuiView::constructToolbars()
 	// extracts the toolbars from the backend
 	for (ToolbarInfo const & inf : guiApp->toolbars())
 		d.toolbars_[inf.name] =  new GuiToolbar(inf, *this);
+
+	DynamicMenuButton::resetIconCache();
 }
 
 
@@ -1863,6 +1865,7 @@ void GuiView::updateToolbars()
 
 void GuiView::refillToolbars()
 {
+	DynamicMenuButton::resetIconCache();
 	for (auto const & tb_p : d.toolbars_)
 		tb_p.second->refill();
 }

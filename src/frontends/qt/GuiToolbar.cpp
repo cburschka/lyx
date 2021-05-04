@@ -62,6 +62,11 @@ using namespace lyx::support;
 namespace lyx {
 namespace frontend {
 
+QIcon DynamicMenuButton::icon_textstyle_apply_;
+QIcon DynamicMenuButton::icon_undo_;
+QIcon DynamicMenuButton::icon_paste_;
+
+
 GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiView & owner)
 	: QToolBar(toqstr(tbinfo.gui_name), &owner), visibility_(0),
 	  owner_(owner), command_buffer_(nullptr), tbinfo_(tbinfo), filled_(false),
@@ -349,6 +354,14 @@ bool DynamicMenuButton::isMenuType(string const & s)
 }
 
 
+void DynamicMenuButton::resetIconCache()
+{
+	icon_textstyle_apply_ = getIcon(FuncRequest(LFUN_TEXTSTYLE_APPLY), false);
+	icon_undo_ =  getIcon(FuncRequest(LFUN_UNDO), false);
+	icon_paste_ = getIcon(FuncRequest(LFUN_PASTE), false);
+}
+
+
 void DynamicMenuButton::updateTriggered()
 {
 	QMenu * m = menu();
@@ -390,7 +403,7 @@ void DynamicMenuButton::updateTriggered()
 		m->clear();
 		setPopupMode(QToolButton::MenuButtonPopup);
 		if (!bv) {
-			QToolButton::setIcon(getIcon(FuncRequest(LFUN_TEXTSTYLE_APPLY), false));
+			QToolButton::setIcon(icon_textstyle_apply_);
 			setEnabled(false);
 			return;
 		}
@@ -411,20 +424,20 @@ void DynamicMenuButton::updateTriggered()
 		}
 		// Add item to reset to defaults
 		Action * reset_act = new Action(FuncRequest(LFUN_FONT_DEFAULT, FuncRequest::TOOLBAR),
-						getIcon(FuncRequest(LFUN_UNDO), false),
+						icon_undo_,
 						qt_("&Reset to default"),
 						qt_("Reset all font settings to their defaults"), this);
 		m->addAction(reset_act);
 		if (default_act)
 			QToolButton::setDefaultAction(default_act);
-		QToolButton::setIcon(getIcon(FuncRequest(LFUN_TEXTSTYLE_APPLY), false));
+		QToolButton::setIcon(icon_textstyle_apply_);
 		setEnabled(lyx::getStatus(FuncRequest(LFUN_TEXTSTYLE_APPLY)).enabled()
 			   || lyx::getStatus(FuncRequest(LFUN_FONT_DEFAULT)).enabled());
 	} else if (menutype == "paste") {
 		m->clear();
 		setPopupMode(QToolButton::MenuButtonPopup);
 		Action * default_action = new Action(FuncRequest(LFUN_PASTE),
-						     getIcon(FuncRequest(LFUN_PASTE), false),
+						     icon_paste_,
 						     qt_("Paste"), qt_("Paste"), this);
 		if (!bv) {
 			setEnabled(false);
