@@ -126,6 +126,10 @@ GuiSearchWidget::GuiSearchWidget(QWidget * parent)
 	replacePB->setEnabled(false);
 	replacePrevPB->setEnabled(false);
 	replaceallPB->setEnabled(false);
+
+	// Make this a sub window to prevent focusNextPrevChild (Tab)
+	// switching to the parent (#12170)
+	setWindowFlags(Qt::SubWindow);
 }
 
 
