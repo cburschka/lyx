@@ -3027,6 +3027,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			code = BRANCH_CODE;
 		else if (cmd.argument() == "citation")
 			code = CITE_CODE;
+		else if (cmd.argument() == "counter")
+			code = COUNTER_CODE;
 		else if (cmd.argument() == "ert")
 			code = ERT_CODE;
 		else if (cmd.argument() == "external")
