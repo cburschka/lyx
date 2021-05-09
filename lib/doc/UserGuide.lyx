@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 607
+\lyxformat 608
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -163,6 +163,7 @@ logicalmkup
 \author -131811572 "Yuriy Skalko"
 \author 5863208 "ab"
 \author 5863344 "Enrico Forestieri"
+\author 34634807 "Jean-Pierre"
 \author 244031559 "Yuriy"
 \author 1675569489 "Stephan Witt"
 \end_header
@@ -640,7 +641,7 @@ Template,
 
 \begin_inset Info
 type  "shortcut"
-arg   "buffer-new-template"
+arg   "dialog-show lyxfiles templates"
 \end_inset
 
 
@@ -776,6 +777,16 @@ As
 \end_inset
 
 Template
+\change_inserted 34634807 1620202805
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 34634807 1620202811
+
+\family sans
+Save all
 \change_unchanged
 
 \end_layout
@@ -1764,7 +1775,11 @@ Minimize
 \family default
  button that lets you shrink the widget to only the first row (the search
  widget), hiding replace and options.
- If done so, and 
+ If done so, an
+\change_deleted 34634807 1620400535
+d
+\change_inserted -712698321 1613467875
+ 
 \family sans
 Expand
 \family default

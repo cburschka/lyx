@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 606
+\lyxformat 608
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -170,6 +170,7 @@ logicalmkup
 \html_css_as_file 0
 \html_be_strict false
 \docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -732,7 +733,7 @@ modèle,
 
 \begin_inset Info
 type  "shortcut"
-arg   "buffer-new-template"
+arg   "dialog-show lyxfiles templates"
 \end_inset
 
 
@@ -1465,7 +1466,7 @@ et
 
 remplacer
 \family default
- ouvre la fenêtre
+ ouvre la fenêtre interactive
 \begin_inset Index idx
 status collapsed
 
@@ -1488,14 +1489,52 @@ et
 remplacer
 \family default
 .
- Le texte que vous voulez trouver va dans le champ 
-\family sans
-Rechercher
-\family default
-.
- Une fois que vous avez trouvé un mot ou expression, \SpecialChar LyX
+ Une fois qu'un mot ou expression est trouvé, \SpecialChar LyX
  le sélectionne.
- Appuyer sur le bouton 
+ Vous pouvez toujours sauter cette occurrence du mot et poursuivre la recherche
+ en appuyant sur le bouton 
+\family sans
+Rechercher>
+\family default
+ (ou la touche 
+\family sans
+Entrée
+\family default
+, ou le raccourci 
+\family sans
+F3
+\family default
+).
+ Pour rechercher en arrière, appuyer sur 
+\family sans
+<Rechercher 
+\family default
+(ou
+\family sans
+ Maj+Entréee
+\family default
+ ou le raccourci 
+\family sans
+Maj+F3
+\family default
+).
+ Même si vous fermez la fenêtre interactive, 
+\begin_inset Info
+type  "shortcuts"
+arg   "word-find"
+\end_inset
+
+ et 
+\begin_inset Info
+type  "shortcuts"
+arg   "word-find-backward"
+\end_inset
+
+ continueront la recherche.
+\end_layout
+
+\begin_layout Standard
+Appuyer sur le bouton 
 \family sans
 Remplacer
 \family default
@@ -1507,13 +1546,7 @@ Remplacer
 
 par
 \family default
-.
- Vous pouvez toujours sauter cette occurrence du mot et poursuivre la recherche
- en appuyant sur le bouton 
-\family sans
-Suivant
-\family default
-.
+ et cherche l'occurrence suivante.
  Appuyez sur 
 \family sans
 Remplacer
@@ -1527,7 +1560,11 @@ tout
 \end_layout
 
 \begin_layout Standard
-Vous pouvez cocher la case 
+Par ailleurs, les options suivantes sont disponibles:
+\end_layout
+
+\begin_layout Itemize
+
 \family sans
 Selon
 \begin_inset space ~
@@ -1539,8 +1576,8 @@ la
 
 casse
 \family default
- si vous voulez que la recherche différencie les majuscules des minuscules
- dans le mot recherché.
+ peut être utilisée si vous voulez que la recherche différencie les majuscules
+ des minuscules dans le mot recherché.
  Si le bouton est coché, en recherchant 
 \family typewriter
 
@@ -1563,25 +1600,19 @@ trouvé
 \begin_inset Quotes crd
 \end_inset
 
-
-\family default
-.
+;
 \end_layout
 
-\begin_layout Standard
-Vous pouvez cocher la case 
+\begin_layout Itemize
+
 \family sans
 Mot
 \begin_inset space ~
 \end_inset
 
 Complets
-\begin_inset space ~
-\end_inset
-
-Seulement
 \family default
- si vous voulez forcer \SpecialChar LyX
+ peut être utilisée si vous voulez forcer \SpecialChar LyX
  à ne trouver que des mots complets.
  Par exemple, en recherchant 
 \family typewriter
@@ -1605,10 +1636,59 @@ trouvées
 \begin_inset Quotes crd
 \end_inset
 
+;
+\end_layout
 
+\begin_layout Itemize
+\noindent
+
+\family sans
+Sélection uniquement
 \family default
-.
- \SpecialChar LyX
+ limite rechercher et remplacer, ou remplacer tout, à la sélection courante
+ du curseur;
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\family sans
+Chercher pendant la saisie
+\family default
+ démarre la recherche (vers l'avant) immédiatement , sans la nécessité 'appuyer
+ sur la touche 
+\family sans
+Rechercher>;
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Récursion
+\family default
+ démarre au début/à la fin du document si la fin/le début est atteint sans
+ demander.
+ Si la case n'est pas cochée, une fenêtre de dialogue s'ouvre et demande
+ quoi faire.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing single
+La fenêtre affiche également un bouton 
+\family sans
+Minimiser
+\family default
+ qui vous permet de limiter la fenêtre à la première ligne (la fonction
+ de recherche), en cachant le remplacement et les options.
+ Si cela est fait, le bouton 
+\family sans
+Déployer
+\family default
+ ré-affiche la totalité de la fenêtre.
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
  propose également une version élaborée de 
 \family sans
 Rechercher et Remplacer
@@ -1747,25 +1827,6 @@ annuler l'annulation
 \end_inset
 
 étapes pour minimiser l'occupation de la mémoire.
-\end_layout
-
-\begin_layout Standard
-Notez que si vous annulez tous les changements et arrivez au document tel
- qu'il était sauvegardé, celui-ci conservera malheureusement le statut de
- 
-\begin_inset Quotes cld
-\end_inset
-
-modifié
-\begin_inset Quotes crd
-\end_inset
-
-.
- C'est une conséquence de la limite de 100
-\begin_inset space \thinspace{}
-\end_inset
-
-étapes vue plus haut.
 \end_layout
 
 \begin_layout Standard
@@ -2002,7 +2063,7 @@ TdM
 \end_inset
 
  dans les versions antérieures de \SpecialChar LyX
- , puisque son but était d'afficher la
+, puisque son but était d'afficher la
  table de matières.
  Le plan est cependant devenu beaucoup plus puissant maintenant.
  Dans le menu déroulant situé en haut de la fenêtre du plan, vous pouvez
@@ -2149,7 +2210,8 @@ type  "icon"
 arg   "reload"
 \end_inset
 
- remet le plan à jour (bien que ce ne soit pas normalement nécessaire).
+ remet le plan à jour (fonction utile pendant la saisie si vous avez modifié
+ les sections du document)^.
  À côté se trouvent les boutons qui permettent de modifier la position des
  sections dans le document.
  Avec les boutons 
@@ -2503,7 +2565,7 @@ Entrée
 \begin_layout Standard
 Les options de complétion pour les mathématiques fonctionnent comme les
  options pour le texte.
- L'option spécifique 
+ En plus, l'option spécifique 
 \family sans
 Auto-correction
 \family default
@@ -2533,21 +2595,45 @@ Auto-correction
 autocorrect
 \family default
  qui se trouve dans le répertoire d'installation.
- L'auto-correction peut être activée à tout moment en saisissant le point
- d'exclamation 
+ Notez que l'utilisation de 
+\family sans
+Refaire
+\family default
+ une fois que l'autocorrection a fait son tour de magie laisse la séquence
+ non corrigée.
+ Dans l'exemple ci-dessus, 
+\family sans
+Refaire
+\family default
+ donne 
 \begin_inset Quotes cld
 \end_inset
 
-!
+
+\family sans
+=>
+\family default
+
+\begin_inset Quotes crd
+\end_inset
+
+ et une seconde fois 
+\family sans
+Refaire
+\family default
+ donne 
+\begin_inset Quotes cld
+\end_inset
+
+
+\family sans
+=
+\family default
+
 \begin_inset Quotes crd
 \end_inset
 
 .
- 
-\family sans
-Espace
-\family default
- la désactive.
 \end_layout
 
 \begin_layout Section
@@ -3670,7 +3756,7 @@ Les modules sont pour \SpecialChar LyX
  souvent des mêmes constructions dans différents documents, vous devez envisager
  d'écrire un module dans ce but.
  Quelquefois, cependant, un document présente des besoins très particuliers,
- et il vous faut un insert spécifique ou un style de caractère, mais seulement
+ et il vous faut un insert spécifique ou un style de texte, mais seulement
  pour ce document.
  Vous voulez en fait un élément de format qui ressemble à un préambule \SpecialChar LaTeX
 :
@@ -7752,11 +7838,6 @@ Pour reprendre une énumération, utiliser le style
 Énumeration-reprise
 \family default
 .
- Sa numérotation apparaît en bleu dans \SpecialChar LyX
- pour indiquer qu'il s'agit d'une
- reprise de liste et que la numérotation n'est pas correcte dans la fenêtre
- \SpecialChar LyX
-, mais qu'elle le sera dans la sortie.
 \end_layout
 
 \begin_layout Standard
@@ -9051,12 +9132,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -9069,6 +9152,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9101,6 +9185,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -11808,6 +11893,42 @@ Vous pouvez aussi insérer les types d'espaces suivants:
 \end_layout
 
 \begin_layout Description
+Espace_moyenne voici une ligne avec 
+\begin_inset Formula $\to$
+\end_inset
+
+
+\begin_inset space \medspace{}
+\end_inset
+
+
+\begin_inset Formula $\gets$
+\end_inset
+
+ une espace moyenne entre les flèches;
+\end_layout
+
+\begin_layout Description
+Espace
+\begin_inset space ~
+\end_inset
+
+épaisse voici une ligne avec 
+\begin_inset Formula $\to$
+\end_inset
+
+
+\begin_inset space \thickspace{}
+\end_inset
+
+
+\begin_inset Formula $\gets$
+\end_inset
+
+ une espace épaisse entre les flèches;
+\end_layout
+
+\begin_layout Description
 Espace
 \begin_inset space ~
 \end_inset
@@ -11828,7 +11949,7 @@ négative voici une ligne avec
 \begin_inset Formula $\gets$
 \end_inset
 
- une espace fine négative entre les flèches.
+ une espace fine négative entre les flèches;
 \end_layout
 
 \begin_layout Description
@@ -11836,11 +11957,7 @@ Espace
 \begin_inset space ~
 \end_inset
 
-
-\lang english
-medium
-\lang french
-
+moyenne
 \begin_inset space ~
 \end_inset
 
@@ -11856,11 +11973,7 @@ négative voici une ligne avec
 \begin_inset Formula $\gets$
 \end_inset
 
- une espace 
-\lang english
-medium
-\lang french
- négative entre les flèches.
+ une espace moyenne négative entre les flèches;
 \end_layout
 
 \begin_layout Description
@@ -11868,11 +11981,7 @@ Espace
 \begin_inset space ~
 \end_inset
 
-
-\lang english
-thick
-\lang french
-
+épaisse
 \begin_inset space ~
 \end_inset
 
@@ -11888,11 +11997,7 @@ négative voici une ligne avec
 \begin_inset Formula $\gets$
 \end_inset
 
- une espace 
-\lang english
-thick
-\lang french
- négative entre les flèches.
+ une espace épaisse négative entre les flèches;
 \end_layout
 
 \begin_layout Description
@@ -11924,7 +12029,7 @@ em) voici une ligne avec une
 \begin_inset space \thinspace{}
 \end_inset
 
-em) entre les flèches.
+em) entre les flèches;
 \end_layout
 
 \begin_layout Description
@@ -11956,7 +12061,7 @@ em) voici une ligne avec une
 \begin_inset space \thinspace{}
 \end_inset
 
-em) entre les flèches.
+em) entre les flèches;
 \end_layout
 
 \begin_layout Description
@@ -11992,7 +12097,7 @@ em) voici une ligne avec une
 \begin_inset space \thinspace{}
 \end_inset
 
-em) entre les flèches.
+em) entre les flèches;
 \end_layout
 
 \begin_layout Description
@@ -12000,7 +12105,7 @@ Espace
 \begin_inset space ~
 \end_inset
 
-personnalisé voici une ligne avec une 
+personnalisée voici une ligne avec une 
 \begin_inset Formula $\to$
 \end_inset
 
@@ -12069,7 +12174,7 @@ Largeur des différents espacements horizontaux.
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="10" columns="2">
+<lyxtabular version="3" rows="12" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -12164,6 +12269,66 @@ Fine
 \end_inset
 
 em
+\begin_inset space ~
+\end_inset
+
+=
+\begin_inset space ~
+\end_inset
+
+3
+\begin_inset space \thinspace{}
+\end_inset
+
+mu
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Moyenne
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\begin_inset space \thinspace{}
+\end_inset
+
+mu
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Épaisse
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\begin_inset space \thinspace{}
+\end_inset
+
+mu
 \end_layout
 
 \end_inset
@@ -12183,14 +12348,6 @@ Négative fine
 \begin_inset Text
 
 \begin_layout Plain Layout
--1/6
-\begin_inset space \thinspace{}
-\end_inset
-
-em
-\begin_inset Formula $\thinspace=\thinspace$
-\end_inset
-
 -3
 \begin_inset space \thinspace{}
 \end_inset
@@ -12498,7 +12655,7 @@ Flèche droite:
 \end_layout
 
 \begin_layout Standard
-Accolade vers le haut: 
+Accolade vers le bas (= ouverte vers le bas): 
 \begin_inset space \downbracefill{}
 \end_inset
 
@@ -12510,7 +12667,7 @@ Accolade vers le haut:
 \end_layout
 
 \begin_layout Standard
-Accolade vers le bas: 
+Accolade vers le haut (= ouverte vers le haut): 
 \begin_inset space \upbracefill{}
 \end_inset
 
@@ -12732,7 +12889,7 @@ Moyen
 Grand
 \family default
  sont des tailles \SpecialChar LaTeX
- qui dépendent de la taille de fonte du document.
+ qui dépendent de la taille de police du document.
  
 \family sans
 Implicite
@@ -12763,6 +12920,19 @@ Implicite
 Moyen
 \family default
 .
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Demi interligne
+\family default
+ et 
+\family sans
+Interligne
+\family default
+ valent respectivement la moitié et la totalité de la hauteur de la police
+ courante en incluant l'espacement de ligne.
 \end_layout
 
 \begin_layout Standard
@@ -13227,6 +13397,43 @@ impaire
 \family default
 qui insère un ou deux sauts de pages, pour assurer que la prochaine page
  soit une page de droite, donc de numéro impair.
+\end_layout
+
+\begin_layout Subsubsection
+Suppressiion des sauts de ligne
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Page Breaks ! No Page Break
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Suppression-Saut-Ligne"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pour éviter les sauts de ligne à certains endroits, vous pouvez utiliser
+ 
+\family sans
+Insertion\SpecialChar menuseparator
+Typographie\SpecialChar menuseparator
+Pas de saut de ligne
+\family default
+.
+ Ceci est typiquement approprié pour des paragraphes qui doivent rester
+ ensemble ou quand vous voulez garder la description de tableaux ou de figures
+ à proximité lorsque des flottants ou des boîtes ne conviennent pas.
 \end_layout
 
 \begin_layout Subsection
@@ -13717,15 +13924,15 @@ Pour voir quelles polices sont utilisées dans un document PDF, vous pouvez
 
 \begin_layout Standard
 Plusieurs programmes modernes de typographie et des langages de descriptions
- de pages à balises on commencé à se mettre à spécifier le style des caractères
+ de pages à balises on commencé à se mettre à spécifier le style du texte
  plutôt que des préciser une police précise.
  Par exemple, plutôt que d'avoir à choisir une version italique de la police
  courante, vous allez utiliser du 
-\begin_inset Quotes eld
+\begin_inset Quotes cld
 \end_inset
 
 texte mis en évidence
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
  à la place.
@@ -13963,8 +14170,8 @@ Implicite
 Implicite
 \family default
 , la police pré-sélectionnée par la classe du document est utilisée.
- La police implicite du texte apparaissant dans la fenêtre LyX ressemble
- à la police \SpecialChar TeX
+ Avec l'encodage automatique de police de LyX, cette police est (en fonction
+ de la langue du document), soit la police \SpecialChar TeX
  standard 
 \begin_inset Quotes cld
 \end_inset
@@ -13981,7 +14188,7 @@ Computer Modern
 \family typewriter
 cm
 \family default
-): soit 
+), soit une apparence de celle-ci via la police 
 \begin_inset Quotes cld
 \end_inset
 
@@ -13993,7 +14200,7 @@ cm-super
 \begin_inset Quotes crd
 \end_inset
 
-, soit la police matricielle 
+ ou la police matricielle 
 \begin_inset Quotes cld
 \end_inset
 
@@ -14018,7 +14225,7 @@ Comme les police
 \family typewriter
 ec
 \family default
- est une police matricielles, elle a souvent un aspect 
+ est une police matricielle, elle a souvent un aspect 
 \begin_inset Quotes cld
 \end_inset
 
@@ -14307,28 +14514,17 @@ Paquetages \SpecialChar LaTeX
 
 \end_inset
 
- (voir aussi la section.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:LaTeX-settings"
-
-\end_inset
-
-).
+.
  Normalement vous n'avez pas à changer (ni même à comprendre) ceci.
  À moins de raisons particulières, sélectionnez 
 \family sans
-Implicite
+Automatique
 \family default
 .
 \end_layout
 
 \begin_layout Standard
-Avec certaines polices, la case 
+Avec certaines polices, les cases 
 \family sans
 Utiliser des chiffres à l'ancienne
 \family default
@@ -14363,6 +14559,26 @@ Utiliser de vraies petites capitales
 ; elles ont une meilleure apparence que les petites capitales simulées,
  mais peuvent devoir être achetées à part.
  
+\end_layout
+
+\begin_layout Standard
+Par ailleurs, avec certaines polices, vous pouvez ajouter
+\family sans
+ 
+\family default
+dans le champ 
+\family sans
+Options
+\family default
+ des options supplémentaires séparées par des virgules, options fournies
+ par la paquetage de la police (ou le paquetage 
+\family sans
+fontspec
+\family default
+, si vous utilisez des polices non-\SpecialChar TeX
+).
+ Ceci suppose que vous connaissez bien les paquetages de police \SpecialChar LaTeX
+ appropriées.
 \end_layout
 
 \begin_layout Standard
@@ -14662,7 +14878,7 @@ Modern
 \end_layout
 
 \begin_layout Subsection
-Utiliser différents styles de caractères
+Utiliser différents styles de texte
 \begin_inset Index idx
 status collapsed
 
@@ -14674,10 +14890,10 @@ Styles de caractères
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Dialogues ! Styles de caractères
+Styles de texte
 \end_layout
 
 \end_inset
@@ -14687,9 +14903,19 @@ Dialogues ! Styles de caractères
 
 \begin_layout Standard
 Comme nous l'avons déjà vu, \SpecialChar LyX
- change automatiquement de style de caractère
- pour certains environnements de paragraphes.
- \SpecialChar LyX
+ change automatiquement de style de texte pour
+ certains environnements de paragraphes.
+ Dans cette section, nous allons expliquer comment modifier le style de
+ passages de texte sélectionnés.
+ C'est ici que nous en arrivons au concept de 
+\emph on
+styles de texte
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Implicitement, \SpecialChar LyX
  gère aussi deux styles de caractères, 
 \family sans
 Mise
@@ -14711,8 +14937,141 @@ Nom
 propre
 \family default
 .
- Vous pouvez activer l'un ou l'autre de ces styles, en utilisant soit un
- raccourci clavier, soit les menus, soit encore les bouton de la barre d'outils.
+ Ils sont natifs, i.e.
+ disponibles avec toutes les classes de document.
+ En outre, certaines classes de document et cetains mmodiles proposent des
+ styles de texte personnalisés pour des besoins spécifiques.
+ Nous allons décrire les deux types de styles d'ici peu.
+\end_layout
+
+\begin_layout Standard
+Avant cela, cependant, permettez-nous de dire quelques mots pour expliquer
+ ce que nous entendons par 
+\emph on
+styles de texte
+\emph default
+, par opposition aux 
+\emph on
+propriétés de texte
+\emph default
+.
+ Les traitements de texte traditionnels mettent habituellement l'accent
+ sur ce qui est appelé 
+\emph on
+marquage formel
+\emph default
+: si vous vouliez mettre un mot en évidence, vous le sélectionniez et choisissie
+z e.g.
+ 
+\begin_inset Quotes cld
+\end_inset
+
+style gras
+\begin_inset Quotes crd
+\end_inset
+
+ — vous personnalisiez les 
+\emph on
+propriétés du texte
+\emph default
+.
+ Les traitements de texte modernes, parmi lesquels \SpecialChar LyX
+, promeuvent l'utilisation
+ d'un 
+\emph on
+marquage sémantique (ou logique)
+\emph default
+ à la place (bien que le marquage formel reste possible, voir la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Réglage-fin-avec"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ plutôt que de jouer avec les 
+\emph on
+propriétés du texte
+\emph default
+, elle encouragent l'utilisation de 
+\emph on
+styles de texte
+\emph default
+, définis par leur fonction (e.g.
+ 
+\begin_inset Quotes cld
+\end_inset
+
+mettre en évidence
+\begin_inset Quotes crd
+\end_inset
+
+), et non pas par leur apparence (e.g.
+ 
+\begin_inset Quotes cld
+\end_inset
+
+grasse
+\begin_inset Quotes crd
+\end_inset
+
+).
+ L'approche sémantique présente beaucoup d'avantages.
+ D'abord, l'usage de catégories fonctionnelles vous force à penser à ce
+ que vous êtes en train de marquer, si votre marquage est consistant et
+ systématique, et si ce marquage particulier a un sens.
+ D'un point de vue pratique, il est facile de de modifier l'apparence si
+ le besoin s'en fait sentir.
+ Considérons le cas où vous écrivez une communication et positionnez tous
+ les noms propres en 
+\noun on
+Petites capitales
+\noun default
+ par un marquage formel.
+ Si maintenant l'éditeur requiert que les noms propres soient saisis différemmen
+t (par exemple en police normale ou en capitales), vous devrez changer chacune
+ des occurrences.
+ Avec un marquage sémantique (comme 
+\noun on
+Nom propre
+\noun default
+, voir ci-dessous), il vous suffit de changer la définition de 
+\family sans
+Nom propre
+\family default
+ une fois pour toutes.
+ C'est l'affaire de 10 secondes si vous savez où modifier la définition
+ \SpecialChar LaTeX
+.
+ De plus, le marquage sémantique vous permet de produire différentes versions
+ du document avec des marquages différents.
+\end_layout
+
+\begin_layout Subsubsection
+Styles de texte natifs
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Styles-de-texte-natifs"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vous pouvez activer l'un ou l'autre de ces deux styles, en utilisant soit
+ un raccourci clavier, soit le menu 
+\family sans
+Propriétés du texte
+\family default
+, soit encore les boutons de la barre d'outils.
 \end_layout
 
 \begin_layout Standard
@@ -14724,17 +15083,17 @@ Nom
 
 propre
 \family default
-, 
+, vous avez plusieurs options:
 \end_layout
 
 \begin_layout Itemize
-cliquez sur le bouton 
+cliquer sur le bouton 
 \begin_inset Info
 type  "icon"
 arg   "font-noun"
 \end_inset
 
- de la barre d'outils
+ de la barre d'outils;
 \end_layout
 
 \begin_layout Itemize
@@ -14744,7 +15103,7 @@ type  "shortcut"
 arg   "font-noun"
 \end_inset
 
-
+;
 \end_layout
 
 \begin_layout Standard
