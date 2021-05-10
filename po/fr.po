@@ -363,7 +363,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2021-05-09 11:22+0200\n"
-"PO-Revision-Date: 2021-05-09 11:48+0200\n"
+"PO-Revision-Date: 2021-05-10 09:33+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -1382,7 +1382,7 @@ msgstr "&Exclure de la correction orthographique"
 
 #: src/frontends/qt/ui/CharacterUi.ui:303
 msgid "Semantic Markup"
-msgstr "Balisage logique"
+msgstr "Balisage sémantique"
 
 #: src/frontends/qt/ui/CharacterUi.ui:312
 msgid "Semantic emphasizing (italic by default, but can be adapted)"
@@ -17178,7 +17178,7 @@ msgid ""
 msgstr ""
 "Définition de styles de texte pour mettre en évidence, espacer, rayer, "
 "souligner et mettre en petites capitales du texte en utilisant le paquetage "
-"soul. Contrairement au marquage fourni par la fenêtre de Propriétés du "
+"soul. Contrairement au balisage fourni par la fenêtre de Propriétés du "
 "texte, les mots marqués avec soul se prêtent à la césure."
 
 #: lib/layouts/soul.module:17
@@ -33519,9 +33519,9 @@ msgid ""
 "accelerator markup are stripped."
 msgstr ""
 "Saisir une chaîne de caractères anglophone propice à la traduction, "
-"provenant de l'interface utilisateur de LyX, et incluant les marquages "
+"provenant de l'interface utilisateur de LyX, et incluant les marques "
 "d'accélération (« & » ou « | »). La réponse sera la chaîne traduite dans la "
-"langue courante ; les points finaux et les marquages sont supprimés."
+"langue courante ; les points finaux et les marques sont supprimés."
 
 #: src/frontends/qt/GuiInfo.cpp:204
 msgid ""
