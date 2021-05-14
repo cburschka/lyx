@@ -8973,12 +8973,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8991,6 +8993,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9014,6 +9017,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -14802,7 +14806,13 @@ via
 \change_inserted -712698321 1525596436
 the 
 \family sans
-Text Style
+Text 
+\change_deleted 34634807 1621006132
+Style
+\change_inserted 34634807 1621006135
+Properties
+\change_inserted -712698321 1525596436
+
 \family default
  dialog, 
 \change_unchanged
@@ -14848,7 +14858,13 @@ arg   "font-noun"
 \change_inserted -712698321 1525596318
 use the 
 \family sans
-Text Style
+Text 
+\change_deleted 34634807 1621006154
+Style
+\change_inserted 34634807 1621006157
+Properties
+\change_inserted -712698321 1525596318
+
 \family default
  dialog (
 \begin_inset Info
@@ -14862,7 +14878,9 @@ type  "icon"
 arg   "dialog-show character"
 \end_inset
 
-) as described in section
+) 
+\change_deleted 34634807 1621006237
+as described in section
 \begin_inset space ~
 \end_inset
 
@@ -14874,12 +14892,38 @@ reference "subsec:Fine-Tuning-with-the"
 \end_inset
 
 
+\change_inserted 34634807 1621006263
+under 
+\family sans
+Semantic Markup
+\family default
+.
 \change_unchanged
 
 \end_layout
 
 \begin_layout Standard
-These commands are all toggles.
+Th
+\change_deleted 34634807 1621006284
+ese
+\change_inserted 34634807 1621006284
+is
+\change_unchanged
+ command
+\change_deleted 34634807 1621006286
+s
+\change_unchanged
+ 
+\change_deleted 34634807 1621006290
+are all
+\change_inserted 34634807 1621006291
+is a
+\change_unchanged
+ toggle
+\change_deleted 34634807 1621006296
+s
+\change_unchanged
+.
  That is, if 
 \family sans
 Noun
@@ -14973,21 +15017,42 @@ arg   "font-emph"
 \change_inserted -712698321 1525596340
 use the 
 \family sans
-Text Style
+Text 
+\change_deleted 34634807 1621006353
+Style
+\change_inserted 34634807 1621006356
+Properties
+\change_inserted -712698321 1525596340
+
 \family default
  dialog (
+\change_deleted 34634807 1621007331
+
 \begin_inset Info
 type  "menu"
 arg   "dialog-show character"
 \end_inset
 
+
+\change_inserted 34634807 1621007339
+
+\family sans
+Edit\SpecialChar menuseparator
+Text Properties\SpecialChar menuseparator
+Customize...
+
+\change_inserted -712698321 1525596340
+
+\family default
  or 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show character"
 \end_inset
 
-) as described in section
+) 
+\change_deleted 34634807 1621007331
+as described in section
 \begin_inset space ~
 \end_inset
 
@@ -14999,6 +15064,12 @@ reference "subsec:Fine-Tuning-with-the"
 \end_inset
 
 
+\change_inserted 34634807 1621006374
+under 
+\family sans
+Semantic Markup
+\family default
+.
 \change_unchanged
 
 \end_layout
@@ -15100,17 +15171,28 @@ Text
 
 Style\SpecialChar menuseparator
 Customized
-\change_inserted -712698321 1525598544
+\change_inserted -712698321 1525598549
 
 \family default
 (
+\change_deleted 34634807 1621007260
+
+\family sans
+
 \begin_inset Info
 type  "menu"
 arg   "dialog-show character"
 \end_inset
 
 
+\change_inserted 34634807 1621007283
+Edit\SpecialChar menuseparator
+Text Properties\SpecialChar menuseparator
+Customize...
+
 \change_unchanged
+
+\family default
  
 \change_inserted -712698321 1525598549
 or 
@@ -15124,7 +15206,7 @@ arg   "dialog-show character"
 \end_inset
 
 ).
-\change_inserted -712698321 1525596575
+\change_inserted -712698321 1525598549
 
 \end_layout
 
@@ -15207,6 +15289,10 @@ meanings
 These styles can be found, if available, in the 
 \family sans
 Edit\SpecialChar menuseparator
+
+\change_inserted 34634807 1621006495
+Custom 
+\change_inserted -712698321 1525757806
 Text Styles
 \family default
  menu.
@@ -15421,7 +15507,7 @@ Text
 
 Style\SpecialChar menuseparator
 Customized
-\change_inserted -712698321 1525599762
+\change_deleted 34634807 1621007210
 
 \family default
 
@@ -15431,7 +15517,16 @@ arg   "dialog-show character"
 \end_inset
 
 
+\change_inserted 34634807 1621007233
+
+\family sans
+Edit\SpecialChar menuseparator
+Text Properties\SpecialChar menuseparator
+Customize...
+
 \change_unchanged
+
+\family default
  dialog or press the toolbar button 
 \begin_inset Info
 type  "icon"
@@ -15480,10 +15575,24 @@ eset
 The 
 \change_deleted -712698321 1525599868
 font
+\change_inserted 34634807 1621006625
+
+\family sans
+T
+\change_deleted 34634807 1621006625
+t
 \change_inserted -712698321 1525599869
-text
+ext
 \change_unchanged
- properties, and their options (in addition to 
+ 
+\change_inserted 34634807 1621006629
+P
+\change_deleted 34634807 1621006628
+p
+\change_unchanged
+roperties
+\family default
+, and their options (in addition to 
 \family sans
 No
 \begin_inset space ~
@@ -15861,20 +15970,18 @@ This is the Small caps font shape
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
+\change_deleted 34634807 1621006688
+
 \family sans
 Color
 \family default
  Alters the text color.
- Note that not all DVI
-\change_inserted -712698321 1525599925
- 
+ Note that not all DVI 
 \change_deleted -712698321 1525599925
 -
-\change_unchanged
+\change_deleted 34634807 1621006688
 viewers are able to display colors.
  Besides 
-\change_inserted -712698321 1525599934
-
 \family sans
 (Without)
 \change_deleted -712698321 1525599939
@@ -15883,7 +15990,7 @@ No
 \end_inset
 
 color
-\change_unchanged
+\change_deleted 34634807 1621006688
 
 \family default
 , which means that the document default color set in 
@@ -15903,13 +16010,11 @@ text
  is used, you can 
 \change_deleted -712698321 1525599960
 choose
-\change_inserted -712698321 1525599960
-select
-\change_unchanged
- 
+\change_deleted 34634807 1621006688
+select 
 \change_deleted -712698321 1525599974
 between 
-\change_unchanged
+\change_deleted 34634807 1621006688
 
 \family sans
 Black
@@ -16006,21 +16111,20 @@ Color ! Text
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
+\change_deleted 34634807 1621006878
+
 \family sans
 Language
 \family default
  This is used to mark regions of text as having a different language from
  the language of the document.
- Text marked in this way will be underlined 
-\change_inserted -712698321 1525600006
-in the \SpecialChar LyX
- workarea 
-\change_unchanged
-in blue to indicate the change
+ Text marked in this way will be underlined in the \SpecialChar LyX
+ workarea in blue to
+ indicate the change
 \change_deleted -712698321 1525600002
  (only within \SpecialChar LyX
 )
-\change_unchanged
+\change_deleted 34634807 1621006878
 .
 \begin_inset Newline newline
 \end_inset
@@ -16040,8 +16144,6 @@ reference "sec:Spellchecking"
 \end_inset
 
 ) the German-marked text will be checked according to the German dictionary.
-\change_inserted -712698321 1525677618
-
 \begin_inset Newline newline
 \end_inset
 
@@ -16051,6 +16153,8 @@ Exclude from Spellchecking
 \family default
 .
  Passages marked like this will still be hyphenated correctly.
+\change_inserted -712698321 1525677618
+
 \end_layout
 
 \begin_layout Labeling
@@ -16420,7 +16524,6 @@ arg   "font-size decrease"
 )
 \end_layout
 
-\end_deeper
 \begin_layout Standard
 We warn you 
 \emph on
@@ -16432,6 +16535,140 @@ yet again
  automatically changes the font size for different paragraph environments
  — use those instead.
  This is here for fine-tuning only!
+\change_inserted 34634807 1621006744
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\change_inserted 34634807 1621006776
+Another combo box allows to tweak 
+\family sans
+Decoration
+\family default
+:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted 34634807 1621006733
+
+\family sans
+Color
+\family default
+ Alters the text color.
+ Note that not all DVI viewers are able to display colors.
+ Besides 
+\family sans
+(Without)
+\family default
+, which means that the document default color set in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Color
+\family default
+ for 
+\family sans
+Main
+\begin_inset space ~
+\end_inset
+
+text
+\family default
+ is used, you can select 
+\family sans
+Black
+\family default
+, 
+\family sans
+White
+\family default
+, 
+\family sans
+Red
+\family default
+, 
+\family sans
+Green
+\family default
+, 
+\family sans
+Blue
+\family default
+, 
+\family sans
+Cyan
+\family default
+, 
+\family sans
+Magenta
+\family default
+, 
+\family sans
+Yellow
+\family default
+, 
+\family sans
+Brown
+\family default
+, 
+\family sans
+Darkgray
+\family default
+, 
+\family sans
+Gray
+\family default
+, 
+\family sans
+Lightgray
+\family default
+, 
+\family sans
+Lime
+\family default
+, 
+\family sans
+Orange
+\family default
+, 
+\family sans
+Olive
+\family default
+, 
+\family sans
+Pink
+\family default
+, 
+\family sans
+Purple
+\family default
+, 
+\family sans
+Teal
+\family default
+ and 
+\family sans
+Violet
+\family default
+ text.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1621006733
+Color ! Text
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Labeling
@@ -16758,6 +16995,54 @@ This is used to make text hardly readable.
 \end_deeper
 \begin_layout Standard
 
+\change_inserted 34634807 1621007597
+A drop-down menu allows to change the parameters for the
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted 34634807 1621006898
+
+\family sans
+Language
+\family default
+ This is used to mark regions of text as having a different language from
+ the language of the document.
+ Text marked in this way will be underlined in the \SpecialChar LyX
+ workarea in blue to
+ indicate the change.
+\begin_inset Newline newline
+\end_inset
+
+If you have for example, an extract of German text in a non-German document,
+ \SpecialChar LaTeX
+ respects the German hyphenation rules automatically.
+ When using the spell checking (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Spellchecking"
+
+\end_inset
+
+) the German-marked text will be checked according to the German dictionary.
+\begin_inset Newline newline
+\end_inset
+
+If you do not want text passages to be spellchecked, activate 
+\family sans
+Exclude from Spellchecking
+\family default
+.
+ Passages marked like this will still be hyphenated correctly.
+\end_layout
+
+\begin_layout Standard
+
 \change_inserted -712698321 1525757268
 In addition to all the formal markup described above, the dialog also provides
  you access to the two builtin semantic text styles (see section
@@ -16847,7 +17132,7 @@ Text
 
 Style\SpecialChar menuseparator
 Customized
-\change_inserted -712698321 1525600703
+\change_deleted 34634807 1621007136
 
 \family default
 
@@ -16857,7 +17142,16 @@ arg   "dialog-show character"
 \end_inset
 
 
+\change_inserted 34634807 1621007171
+
+\family sans
+Edit\SpecialChar menuseparator
+Text Properties\SpecialChar menuseparator
+Customize...
+
 \change_unchanged
+
+\family default
  (
 \begin_inset Info
 type  "icon"
