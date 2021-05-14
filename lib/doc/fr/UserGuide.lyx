@@ -14939,7 +14939,7 @@ propre
 .
  Ils sont natifs, i.e.
  disponibles avec toutes les classes de document.
- En outre, certaines classes de document et cetains mmodiles proposent des
+ En outre, certaines classes de document et certains modules proposent des
  styles de texte personnalisés pour des besoins spécifiques.
  Nous allons décrire les deux types de styles d'ici peu.
 \end_layout
@@ -15117,7 +15117,17 @@ type  "menu"
 arg   "dialog-show character"
 \end_inset
 
-) sous la rubrique 
+) ou
+\lang english
+ 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
+\end_inset
+
+
+\lang french
+ sous la rubrique 
 \family sans
 Balisage Sémantique
 \family default
@@ -15180,7 +15190,7 @@ propre
 \end_layout
 
 \begin_layout Standard
-Un style encore plus utilisé est le style de texte 
+Un style de texte encore plus utilisé est le style 
 \family sans
 Mis
 \begin_inset space ~
@@ -15193,7 +15203,7 @@ en
 évidence
 \family default
 .
- Vous pouvez l'activer (ou le désactiver, c'est sont aussi une bascules)
+ Vous pouvez l'activer (ou le désactiver, c'est sont aussi une bascule)
  
 \end_layout
 
@@ -15479,7 +15489,7 @@ e à l'écran leur apparence formelle.
 \end_layout
 
 \begin_layout Subsection
-Réglage fin avec la fenêtre 
+Réglage local avec la fenêtre 
 \family sans
 Propriétés du texte
 \begin_inset CommandInset label
@@ -15525,7 +15535,7 @@ Il y a toujours des occasions où vous avez besoin de réglages fins formels,
 \begin_layout Standard
 S'il existe bien pour ce faire des styles de texte personnalisés proposés
  par une classe de document ou par un module (ce qui, comme indiqué ci-dessus,
- est la meilleure façon xde procéder), il vous arrivera souvent de vouloir
+ est la meilleure façon de procéder), il vous arrivera souvent de vouloir
  modifier rapidement les propriétés de tel ou tel passage du document.
  C'est là que le 
 \emph on
@@ -15580,7 +15590,11 @@ ments de paragraphe à la fois.
 \end_layout
 
 \begin_layout Standard
-Les propriétés de police et les choix possibles (en plus de 
+Les 
+\family sans
+Propriétés des polices
+\family default
+ et les choix possibles (en plus de 
 \family sans
 Inchangé
 \family default
@@ -15804,7 +15818,7 @@ non texte à chasse fixe
 Série
 \family default
  Correspond à l'épaisseur du caractère.
- Choix :
+ Choix possibles:
 \end_layout
 
 \begin_deeper
