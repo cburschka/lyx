@@ -15097,7 +15097,7 @@ arg   "font-noun"
 \end_layout
 
 \begin_layout Itemize
-utilisez le raccourci 
+utiliser le raccourci 
 \begin_inset Info
 type  "shortcut"
 arg   "font-noun"
@@ -15106,8 +15106,26 @@ arg   "font-noun"
 ;
 \end_layout
 
+\begin_layout Itemize
+utiliser la fenêtre de dialogue 
+\family sans
+Propriétés du texte
+\family default
+ (
+\begin_inset Info
+type  "menu"
+arg   "dialog-show character"
+\end_inset
+
+) sous la rubrique 
+\family sans
+Balisage Sémantique
+\family default
+.
+\end_layout
+
 \begin_layout Standard
-Ces commandes sont toutes des bascules.
+Cette commande est une bascule.
  Ce qui fait que si le style 
 \family sans
 Nom
@@ -15116,7 +15134,7 @@ Nom
 
 propre
 \family default
- est déjà activé, elles vont le désactiver.
+ est déjà activé, elle va le désactiver.
 \end_layout
 
 \begin_layout Standard
@@ -15149,7 +15167,20 @@ Matthias
 \end_layout
 
 \begin_layout Standard
-Un style encore plus utilisé est le style de caractère 
+Implicitement, 
+\family sans
+Nom
+\begin_inset space ~
+\end_inset
+
+propre
+\family default
+ affiche le texte en petites capitales, mais cette définition, peut être
+ modifiée.
+\end_layout
+
+\begin_layout Standard
+Un style encore plus utilisé est le style de texte 
 \family sans
 Mis
 \begin_inset space ~
@@ -15162,7 +15193,8 @@ en
 évidence
 \family default
 .
- Vous pouvez l'activer (ou le désactiver, ce sont aussi des bascules) 
+ Vous pouvez l'activer (ou le désactiver, c'est sont aussi une bascules)
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -15172,7 +15204,7 @@ type  "icon"
 arg   "font-emph"
 \end_inset
 
-
+;
 \end_layout
 
 \begin_layout Itemize
@@ -15182,7 +15214,25 @@ type  "shortcut"
 arg   "font-emph"
 \end_inset
 
+;
+\end_layout
 
+\begin_layout Itemize
+en utilisant la fenêtre de dialogue 
+\family sans
+Propriétés du texte
+\family default
+ (
+\begin_inset Info
+type  "menu"
+arg   "dialog-show character"
+\end_inset
+
+) sous la rubrique 
+\family sans
+Balisage Sémantique
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -15200,7 +15250,9 @@ en
 \family default
  est l'équivalent d'une police italique, mais certaines classes de document
  ou certains paquetages \SpecialChar LaTeX
- utilisent une police différente.
+ utilisent une police différente, et vous pouvez
+ le personnaliser vous-même en changeant le définition \SpecialChar LaTeX
+.
 \end_layout
 
 \begin_layout Standard
@@ -15223,19 +15275,26 @@ en
 \begin_layout Quotation
 
 \emph on
-N'abusez pas des styles de caractères!
+N'abusez pas des styles de texte!
 \end_layout
 
 \begin_layout Standard
 En plus d'être un exemple, c'est un conseil.
  Ce que l'on écrit doit ressembler à un dialogue ordinaire.
  Et puisque nous ne passons pas tous notre temps à nous hurler dessus, nous
- devrions aussi éviter la tendance naturelle à abuser des styles de caractères.
+ devrions aussi éviter la tendance naturelle à abuser des styles de texte.
 \end_layout
 
 \begin_layout Standard
-Vous pouvez à tout moment remettre la police au style implicite en utilisant
- le raccourci 
+Au contraire des styles de texte personnalisés, les styles natifs ne sont
+ représentés que par des modifications de police et intégrés dans la fenêtre
+ de 
+\family sans
+Propriétés du texte
+\family default
+.
+ Vous pouvez donc à tout moment remettre la police au style implicite en
+ utilisant le raccourci 
 \begin_inset Info
 type  "shortcut"
 arg   "font-default"
@@ -15268,18 +15327,161 @@ arg   "dialog-show character"
 ).
 \end_layout
 
+\begin_layout Subsubsection
+Styles de texte personnalisés
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Styles-de-texte-personnalisés"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Les styles de texte personnalisés peuvent être fournis par la classe du
+ document, un module (voir la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Modules"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), ou un réglage du format local (voir la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Format-local"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Comme pour les deux style natifs, ils proposent un balisage 
+\emph on
+sémantique
+\emph default
+ pour des fonctions spécifiques.
+ Par exemple, \SpecialChar LyX
+ contient un module de 
+\emph on
+Linguistique
+\emph default
+ qui fournit, entre autres choses, des styles de texte personnalisé pour
+ baliser des niveaux linguistiques: 
+\emph on
+expressions
+\emph default
+, 
+\noun on
+concepts
+\noun default
+ et 
+\begin_inset Quotes cld
+\end_inset
+
+significations
+\begin_inset Quotes crd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Ces styles apparaissent, s'ils sont disponibles, via le menu 
+\family sans
+Édition\SpecialChar menuseparator
+Style de texte personnalisé
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Pour les besoins de la démonstration, nois avons chargé dans le présent
+ document la module optionnel
+\family sans
+ Balisage logique
+\family default
+ qui duplique et étend les deux styles natifs.Dans le cas du style 
+\begin_inset Quotes cld
+\end_inset
+
+mise en évidence
+\begin_inset Quotes crd
+\end_inset
+
+, nous pouvons voir que l'apparence est différente (bien que la typographie
+ finale soit le même): alors que style natif 
+\emph on
+mise en évidence
+\emph default
+ apparaît comme un changement de police normal, le style personnalisé 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+En évidence
+\end_layout
+
+\end_inset
+
+ est affiché comme un insert, avec une étiquette au-dessous identifiant
+ la sémantique associée.
+ C'est ainsi que les styles de texte personnalisés apparaissent.
+ Ainsi, les trois autres style définis par le module sont: 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+Code
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Strong
+status open
+
+\begin_layout Plain Layout
+Fort
+\end_layout
+
+\end_inset
+
+ et 
+\begin_inset Flex Noun
+status open
+
+\begin_layout Plain Layout
+Nom propre
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Notez que les styles de texte personnalisés ne font pas nécessairement apparaîtr
+e à l'écran leur apparence formelle.
+\end_layout
+
 \begin_layout Subsection
 Réglage fin avec la fenêtre 
 \family sans
-Style
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-texte
+Propriétés du texte
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Réglage-fin-avec"
@@ -15310,9 +15512,9 @@ Style de texte
 \end_layout
 
 \begin_layout Standard
-Il y a toujours des occasions où vous avez besoin de réglages fins, donc
- \SpecialChar LyX
- vous permet de créer des styles de caractères personnalisés.
+Il y a toujours des occasions où vous avez besoin de réglages fins formels,
+ donc \SpecialChar LyX
+ vous permet de personnaliser des passages de texte.
  Par exemple, une publication de recherche ou une entreprise peuvent avoir
  une convention de style réclamant une police sans empattement dans certaines
  situations.
@@ -15321,44 +15523,46 @@ Il y a toujours des occasions où vous avez besoin de réglages fins, donc
 \end_layout
 
 \begin_layout Standard
-Avant de dire comment utiliser un style de caractères personnalisé, nous
- voulons de nouveau répéter un avertissement : n'abusez pas des styles de
- caractères.
- Beaucoup de traitements de texte modernes disposent d'un vaste choix de
- polices, vous offrant la puissance d'une presse d'imprimerie.
- Malheureusement, on a tendance à abuser de cette puissance.
- C'est comme utiliser un marteau-pilon pour écraser une mouche.
- Les documents qui abusent des différentes polices et des différentes tailles
- finissent par ne plus ressembler à grand chose.
+S'il existe bien pour ce faire des styles de texte personnalisés proposés
+ par une classe de document ou par un module (ce qui, comme indiqué ci-dessus,
+ est la meilleure façon xde procéder), il vous arrivera souvent de vouloir
+ modifier rapidement les propriétés de tel ou tel passage du document.
+ C'est là que le 
+\emph on
+balisage formel
+\emph default
+ intervient, en dernier ressort.
 \end_layout
 
 \begin_layout Standard
-Assez de récriminations.
+Avant de dire comment modifier les propriétés du texte, nous voulons de
+ nouveau répéter un avertissement : n'abusez pas de cela! 
+\end_layout
+
+\begin_layout Standard
+Les documents qui abusent de différentes polices et tailles de caractères
+ ne sont pas faciles à lire et finissent par ne plus ressembler à grand
+ chose.
 \end_layout
 
 \begin_layout Standard
 Pour utiliser des polices personnalisées, ouvrez la fenêtre 
 \family sans
-Personnalisé
+Personnaliser
 \family default
- en faisant 
+ à partir de 
 \family sans
 Édition\SpecialChar menuseparator
-Style
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-texte\SpecialChar menuseparator
-Personnalisé\SpecialChar ldots
-
+Propriétés du texte
 \family default
-.
- Il y a plusieurs champs dans cette fenêtre, chacun correspondant à une
- propriété de la police que vous pouvez ajuster.
+ (ou appuyer sur le bouton 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
+\end_inset
+
+ de la barre d'outils).Il y a plusieurs menus déroulants dans cette fenêtre,
+ chacun correspondant à une propriété de la police que vous pouvez ajuster.
  Vous pouvez choisir une option pour chacune de ces sept propriétés, ou
  sélectionner 
 \family sans
@@ -15367,26 +15571,22 @@ Inchangé
 , qui laisse cette propriété telle quelle.
  L'élément 
 \family sans
-RàZ (
+Implicite 
 \family default
-Remise à Zéro
-\family sans
-)
-\family default
- remet la propriété à sa valeur implicite dans l'environnement de paragraphe
+remet la propriété à sa valeur implicite dans l'environnement de paragraphe
  concerné.
  Vous pouvez utiliser ceci pour faire une remise à zéro pour plusieurs environne
 ments de paragraphe à la fois.
 \end_layout
 
 \begin_layout Standard
-Les sept propriétés de police et les choix possibles (en plus de 
+Les propriétés de police et les choix possibles (en plus de 
 \family sans
 Inchangé
 \family default
  et 
 \family sans
-RàZ
+Implicite
 \family default
 ) sont:
 \end_layout
@@ -15473,6 +15673,129 @@ arg   "font-typewriter"
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+Les différences entre ces familles sont les suivantes::
+\end_layout
+
+\begin_layout Itemize
+les polices en 
+\family sans
+Romain
+\family default
+ utilisent des caractères avec des empattements.
+ Ce sont de petits appendices à l'extrémité des tracés qui constituent les
+ caractères.
+ L'exemple suivant illustre la différence:
+\begin_inset Newline newline
+\end_inset
+
+Texte Avec Empattements
+\begin_inset Newline newline
+\end_inset
+
+
+\family sans
+Texte sAns Empattements
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+Les empattements facilitent la lecture, ces polices sont donc utilisée implicite
+ment;
+\end_layout
+
+\begin_layout Itemize
+la police 
+\family sans
+Sans empattements
+\family default
+ n'est pas recommandée comme police de base.
+ elle n'est donc utilisée que pour les en-têtes et les textes courts.
+ Nous l'utilisons ici pour mettre en évidence les noms des menus;
+\end_layout
+
+\begin_layout Itemize
+la police à 
+\family sans
+Chasse fixe
+\family default
+ est une poilce 
+\begin_inset Quotes cld
+\end_inset
+
+monospace
+\begin_inset Quotes crd
+\end_inset
+
+, ce qui signifie que tous les caractères ont la mêm largeur: le 
+\begin_inset Quotes cld
+\end_inset
+
+i 
+\begin_inset Quotes cld
+\end_inset
+
+ est aussi large que le 
+\begin_inset Quotes cld
+\end_inset
+
+m
+\begin_inset Quotes crd
+\end_inset
+
+.
+ Voici un exemple
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+non 
+\end_layout
+
+\end_inset
+
+
+\family typewriter
+texte à chasse fixe
+\family default
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Pour en savoir plus sur les fantômes, voir la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Espace-fantôme"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+non texte à chasse fixe
+\end_layout
+
 \end_deeper
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
@@ -15491,15 +15814,10 @@ Série
 \family sans
 Maigre
 \family default
- C'est la série des polices maigres,
+ C'est la série des polices maigres.
+ C'est aussi la série implicite.
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-C'est aussi la série implicite.
-\end_layout
-
-\end_deeper
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
@@ -15508,12 +15826,9 @@ Grasse
 \family default
  
 \series bold
-C'est la série des polices grasses.
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-(raccourci clavier 
+C'est la série des polices grasses
+\series default
+ (raccourci clavier 
 \begin_inset Info
 type  "shortcut"
 arg   "font-bold"
@@ -15522,7 +15837,6 @@ arg   "font-bold"
 )
 \end_layout
 
-\end_deeper
 \end_deeper
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
@@ -15592,157 +15906,6 @@ C'est la forme en petites capitales
 \end_layout
 
 \end_deeper
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-Couleur
-\family default
- vous permet d'ajuster la couleur du texte.
- Notez que tous les visionneuses DVI ne sont pas capables d'afficher ces
- couleurs.
- En plus de 
-\family sans
-Pas
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-couleur
-\family default
-, qui signifie que la couleur implicite du document définie pour la 
-\family sans
-Couleur de police
-\family default
- dans la fenêtre 
-\family sans
-Document\SpecialChar menuseparator
-Paramètres\SpecialChar menuseparator
-Couleurs
-\family default
- est utilisée, vous pouvez choisir entre 
-\family sans
-Noir
-\family default
-, 
-\family sans
-Blanc
-\family default
-, 
-\family sans
-Rouge
-\family default
-, 
-\family sans
-Vert
-\family default
-, 
-\family sans
-Bleu
-\family default
-, 
-\family sans
-Cyan
-\family default
-, 
-\family sans
-Magenta
-\family default
-, 
-\family sans
-Jaune
-\family default
-, 
-\family sans
-Brun
-\family default
-, 
-\family sans
-GrisFoncé
-\family default
-, 
-\family sans
-Gris
-\family default
-, 
-\family sans
-GrisClair
-\family default
-, 
-\family sans
-Citron
-\family default
-, 
-\family sans
-Orange
-\family default
-, 
-\family sans
-Olive
-\family default
-, 
-\family sans
-Rose
-\family default
-, 
-\family sans
-Pourpre
-\family default
-, 
-\family sans
-Turquoise
-\family default
- et 
-\family sans
-Violet
-\family default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Couleur ! Texte
-\end_layout
-
-\end_inset
-
-;
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-Langue
-\family default
- vous pouvez marquer des zones de texte comme étant rédigées dans une langue
- autre que celle du document.
- Le texte ainsi marqué sera souligné en bleu pour rappeler ce changement
- (seulement dans \SpecialChar LyX
-).
-\begin_inset Newline newline
-\end_inset
-
-Si vous avez par exemple un texte en langue allemande dans votre document,
- \SpecialChar LaTeX
- respectera les règles de césure allemandes automatiquement.
- Lors de l'utilisation du correcteur orthographique (voir la section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Correcteur-Orthographique"
-
-\end_inset
-
-), le texte marqué en allemand sera vérifié à l'aide du dictionnaire allemand.
-\end_layout
-
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
@@ -16136,7 +16299,11 @@ arg   "font-size decrease"
 \end_layout
 
 \begin_layout Standard
-Nous vous prévenons encore une fois: ne vous excitez pas avec cette fonction.
+Nous vous prévenons 
+\emph on
+encore une fois
+\emph default
+: ne vous excitez pas avec cette fonction.
  Vous ne devriez presque jamais avoir à changer la taille de la police.
  \SpecialChar LyX
  adapte automatiquement la taille aux différents environnements de paragraphe.
@@ -16148,53 +16315,124 @@ que
 \end_layout
 
 \end_deeper
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
+\begin_layout Standard
+Une seconde combinaison de menus permet de régler les paramètres de 
 \family sans
-Divers
+Décoration
 \family default
- Ici vous pouvez changer quelques autres propriétés des caractères.
- Les choix sont:
+:
 \end_layout
 
-\begin_deeper
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
-En
-\begin_inset space ~
-\end_inset
-
-évidence
+Couleur
 \family default
- 
-\emph on
-du texte mis en valeur.
-
-\emph default
- On peut croire que c'est la même chose qu'
-\shape italic
-Italique
-\shape default
-, mais en fait c'est un peu différent.
- 
+ vous permet d'ajuster la couleur du texte.
+ Notez que tous les visionneuses DVI ne sont pas capables d'afficher ces
+ couleurs.
+ En plus de 
 \family sans
-En
-\begin_inset space ~
+(sans)
+\family default
+, qui signifie que la couleur implicite du document définie pour la 
+\family sans
+Couleur de police
+\family default
+ dans la fenêtre 
+\family sans
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
+Couleurs
+\family default
+ est utilisée, vous pouvez sélectionner 
+\family sans
+Noir
+\family default
+, 
+\family sans
+Blanc
+\family default
+, 
+\family sans
+Rouge
+\family default
+, 
+\family sans
+Vert
+\family default
+, 
+\family sans
+Bleu
+\family default
+, 
+\family sans
+Cyan
+\family default
+, 
+\family sans
+Magenta
+\family default
+, 
+\family sans
+Jaune
+\family default
+, 
+\family sans
+Brun
+\family default
+, 
+\family sans
+GrisFoncé
+\family default
+, 
+\family sans
+Gris
+\family default
+, 
+\family sans
+GrisClair
+\family default
+, 
+\family sans
+Citron
+\family default
+, 
+\family sans
+Orange
+\family default
+, 
+\family sans
+Olive
+\family default
+, 
+\family sans
+Rose
+\family default
+, 
+\family sans
+Pourpre
+\family default
+, 
+\family sans
+Turquoise
+\family default
+ et 
+\family sans
+Violet
+\family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Couleur ! Texte
+\end_layout
+
 \end_inset
 
-évidence 
-\family default
-est un attribut 
-\emph on
-logique.
- 
-\emph default
-Cela signifie que chaque classe de document peut définir sa propre police
- pour le texte mis en évidence.
- Normalement la police utilisée est la police italique;
+;
 \end_layout
 
 \begin_layout Labeling
@@ -16205,7 +16443,7 @@ Souligné
 \family default
  
 \bar under
-du texte souligné
+produit du texte souligné
 \bar default
  (raccourci 
 \begin_inset Info
@@ -16214,18 +16452,50 @@ arg   "font-underline"
 \end_inset
 
 ).
-\begin_inset Newline newline
-\end_inset
-
-Évitez si possible d'utiliser les caractères soulignés! C'est un reste du
- temps des machines à écrire, quand vous ne pouviez pas changer de police.
+ Évitez si possible d'utiliser les caractères soulignés! C'est un reste
+ du temps des machines à écrire, quand vous ne pouviez pas changer de police.
  Nous n'avons plus besoin de faire ressortir du texte en le renforçant avec
  le caractère de soulignement.
  Il n'est inclus dans \SpecialChar LyX
  que parce qu'il l'est aussi dans \SpecialChar LaTeX
 , et que certaines
- personnes peuvent en avoir besoin pour suivre les conventions de style
- de certaines publications;
+ personnes 
+\emph on
+peuvent
+\emph default
+ en avoir besoin pour suivre les conventions de style de certaines publications.
+ Les options sont les suivantes
+\end_layout
+
+\begin_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+(sans) 
+\family default
+ne pas souligner;
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+Souligné
+\begin_inset space ~
+\end_inset
+
+simplement
+\family default
+ 
+\bar under
+ceci est un texte avec un soulignement simple
+\bar default
+ (raccourci 
+\family sans
+Ctrl+U, Alt+C U
+\family default
+)
 \end_layout
 
 \begin_layout Labeling
@@ -16248,12 +16518,7 @@ type  "shortcut"
 arg   "font-underunderline"
 \end_inset
 
-).
-\begin_inset Newline newline
-\end_inset
-
-Si nous avons émis de réserves sur l'usage du soulignement, vous vous doutez
- de ce que nous pensons du soulignement double;
+);
 \end_layout
 
 \begin_layout Labeling
@@ -16281,18 +16546,28 @@ arg   "font-underwave"
 \end_inset
 
 N'utiliser que si la revue insiste absolument, et garder les comprimés contre
- le mal de mer à portée de main;
+ le mal de mer à portée de main.
 \end_layout
 
+\end_deeper
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
-Rayé
+Rayé 
 \family default
- 
+vous permet de rayer des passages de texte de deux façons:
+\end_layout
+
+\begin_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+Barré 
+\family default
 \strikeout on
-ceci est un texte rayé
+voici un texte simplement barré
 \strikeout default
  (raccourci 
 \begin_inset Info
@@ -16313,55 +16588,118 @@ Utilisé fréquemment pour marquer une version ancienne qui a changé depuis;
 \family sans
 Raturé
 \family default
- ceci est un texte raturé
+ 
+\xout on
+ceci est un texte raturé
+\xout default
+
 \begin_inset Newline newline
 \end_inset
 
 Utilisé pour rentre un texte difficilement lisible.
 \end_layout
 
+\end_deeper
+\begin_layout Standard
+Un menu déroulant vous permet d'accéder aux paramètres de:
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
-Nom
-\begin_inset space ~
-\end_inset
-
-Propre
+Langue
 \family default
- 
-\noun on
-du texte avec Nom
+ vous pouvez marquer des zones de texte comme étant rédigées dans une langue
+ autre que celle du document.
+ Le texte ainsi marqué sera souligné en bleu dans le fenêtre \SpecialChar LyX
+ pour rappeler
+ ce changement.
+\begin_inset Newline newline
+\end_inset
+
+Si vous avez par exemple un texte en langue allemande dans votre document,
+ \SpecialChar LaTeX
+ respectera les règles de césure allemandes automatiquement.
+ Lors de l'utilisation du correcteur orthographique (voir la section
 \begin_inset space ~
 \end_inset
 
-Propre.
 
-\noun default
- Comme 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Correcteur-Orthographique"
+
+\end_inset
+
+), le texte marqué en allemand sera vérifié à l'aide du dictionnaire allemand.
+\begin_inset Newline newline
+\end_inset
+
+Si vous ne voulez pas que des passages de texte soient soumis au correcteur
+ orthographique, cochez la case 
 \family sans
-En
-\begin_inset space ~
-\end_inset
-
-évidence
+Exclure de la correction orthographique
 \family default
-, c'est un attribut logique.
- Pour l'instant, il équivaut à 
+ dans la fenêtre 
 \family sans
-Petites
-\begin_inset space ~
-\end_inset
+Édition\SpecialChar menuseparator
+Propriétés du texte\SpecialChar menuseparator
+Personnaliser...
 
-Capitales.
+\family default
+ Les passages ainsi marqués seront toujours césurés correctement.
 \end_layout
 
-\end_deeper
 \begin_layout Standard
-Vous avez donc le choix d'un grand nombre de combinaisons.
- Quand vous avez choisi un nouveau style de caractères avec la fenêtre de
- dialogue 
+En plus de tous les balisages formels décrits ci-dessus, vous avez également
+ accès aux deux styles de texte sémantiques natifs (voir la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Styles-de-texte-natifs"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), sous la rubrique 
+\family sans
+Balisage sémantique
+\family default
+:
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+En évidence
+\family default
+: 
+\emph on
+ceci est un texte en évidence
+\emph default
+;
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Nom propre
+\family default
+: 
+\noun on
+Ceci est un texte Nom propre.
+\end_layout
+
+\begin_layout Standard
+Vous avez donc le choix parmi un grand nombre de combinaisons.
+ Quand vous avez choisi un nouveau style de texte avec la fenêtre de dialogue
+ 
 \family sans
 Édition\SpecialChar menuseparator
 Style
@@ -16385,16 +16723,18 @@ arg   "dialog-show character"
 \family sans
 ,
 \family default
- les paramètres sont mémorisés et vous pouvez les réutiliser en utilisant
- le bouton 
+ les paramètres sont mémorisés temporairement et vous pouvez réutiliser
+ les dernières propriétés utilisée grâce au bouton 
 \begin_inset Info
 type  "icon"
 arg   "textstyle-apply"
 \end_inset
 
  de la barre d'outils.
- Ce bouton applique de nouveau le dernier style de caractère que vous avez
- utilisé, sans avoir à ouvrir la fenêtre de dialogue.
+ Un appui sur le bouton applique de nouveau le dernier style de caractère
+ que vous avez utilisé, un appui sur la flèche descendante ouvre un menu
+ proposant les derniers réglages utilisés (jusqu'à 20), parmi lesquels vous
+ pouvez choisir.
 \end_layout
 
 \begin_layout Standard
@@ -16405,325 +16745,22 @@ type  "shortcut"
 arg   "font-default"
 \end_inset
 
-.
- Si vous ne voulez rebasculer que les caractéristiques que vous venez juste
- de modifier (supposons que vous venez de mettre la forme à 
-\begin_inset Quotes cld
-\end_inset
-
-inclinée
-\begin_inset Quotes crd
-\end_inset
-
- et la série à 
-\begin_inset Quotes cld
-\end_inset
-
-grasse
-\begin_inset Quotes crd
-\end_inset
-
-), activez l'option
+, ou sélectionnez 
 \family sans
- Basculer
-\begin_inset space ~
-\end_inset
-
-tout
+Revenir au réglage implicite
 \family default
- et cliquez sur 
-\family sans
-Appliquer
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-Il est important que vous ayez une petite idée de la différence entre les
- trois principaux types de polices : 
-\family sans
-romaine, sans
-\begin_inset space ~
-\end_inset
-
-empattement
-\family default
-, et 
-\family sans
-chasse
-\begin_inset space ~
-\end_inset
-
-fixe
-\family default
-:
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-chasse
-\begin_inset space ~
-\end_inset
-
-fixe, 
-\family default
-aussi appelée 
-\begin_inset Quotes cld
-\end_inset
-
-Machine
-\begin_inset space ~
-\end_inset
-
-à
-\begin_inset space ~
-\end_inset
-
-écrire
-\begin_inset Quotes crd
-\end_inset
-
- est une police où tous les caractères ont la même largeur, le 
-\begin_inset Quotes cld
-\end_inset
-
-i
-\begin_inset Quotes crd
-\end_inset
-
- prenant autant de place que le 
-\begin_inset Quotes cld
-\end_inset
-
-m
-\begin_inset Quotes crd
-\end_inset
-
-.
- C'est une police très utilisée pour les listings de code sources.
- Voici un exemple:
-\begin_inset Newline newline
-\end_inset
-
-
-\family typewriter
-
-\begin_inset Phantom HPhantom
-status open
-
-\begin_layout Plain Layout
-
-\family typewriter
-no
-\end_layout
-
-\end_inset
-
-texte à chasse fixe
-\family default
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Pour les détails sur les fantômes, voir
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Espace-fantôme"
-
+ dans le menu du bouton de la barre d'outils 
+\begin_inset Info
+type  "icon"
+arg   "textstyle-apply"
 \end_inset
 
 .
 \end_layout
 
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-texte à chasse non fixe;
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-romaine
-\family default
-, des polices qui utilisent des sérifs ou empattements, ces petits 
-\begin_inset Quotes cld
-\end_inset
-
-appendices
-\begin_inset Quotes crd
-\end_inset
-
- que l'on voit à toutes les extrémités des caractères et qui en rendent
- en principe la lecture plus facile et plus rapide.
- C'est ce qui explique que ce soit la police implicite.
- L'exemple suivant montre la différence:
-\begin_inset Newline newline
-\end_inset
-
-texte avec sérifs
-\begin_inset Newline newline
-\end_inset
-
-
-\family sans
-texte sans sérifs
-\family default
-;
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-sans empattement, 
-\family default
-des polices qui n'utilisent pas les sérifs, ce qui fait qu'elles sont plutôt
- utilisées dans les titres et les en-têtes ou pour des textes courts.
- Nous les utilisons dans ce document pour mettre en évidence les noms des
- éléments de menus.
-\end_layout
-
 \begin_layout Standard
-\begin_inset Quotes cld
-\end_inset
-
-Basculer
-\begin_inset Quotes crd
-\end_inset
-
- se rapporte au mécanisme de gestion des propriétés de polices.
- Quand une propriété est marquée 
-\begin_inset Quotes cld
-\end_inset
-
-à basculer
-\begin_inset Quotes crd
-\end_inset
-
- dans le dialogue des styles de caractères, appliquer le style à un texte
- doté de la propriété aura pour effet de la supprimer.
- Si vous appliquez un style doté des propriétés A, B et C à un texte qui
- a les propriétés B, C, F et G, et si B est positionné sur basculer et C
- n'est pas positionné sur basculer, le texte se retrouve doté des propriétés
- A, C, F et G.
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Jamais basculés
-\end_layout
-
-\end_inset
-
- et 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Toujours basculés
-\end_layout
-
-\end_inset
-
- signifient que vous ne contrôlez pas le basculement.
- Pour les propriétés situées à gauche de la fenêtre de dialogue (
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Famille
-\end_layout
-
-\end_inset
-
-, etc.), le basculement dépend de vous.
- Si 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Basculer tout
-\end_layout
-
-\end_inset
-
- est coché, toutes les propriétés peuvent être basculées; implicitement,
- aucune ne l'est.
- Enfin, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-RàZ
-\end_layout
-
-\end_inset
-
- n'est jamais basculé: si vous positionnez 
-\begin_inset Quotes cld
-\end_inset
-
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Série
-\end_layout
-
-\end_inset
-
-
-\begin_inset Quotes crd
-\end_inset
-
- sur 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-RàZ
-\end_layout
-
-\end_inset
-
- et cochez 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Basculer tout
-\end_layout
-
-\end_inset
-
-, puis appliquez le style un texte en gras, le texte reviendra à la série
- implicite (
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Maigre
-\end_layout
-
-\end_inset
-
-), quel que doit le nombre d'applications du style.
-\end_layout
-
-\begin_layout Standard
-Nous conclurons avec toujours le même conseil: n'abusez pas des polices
- de caractères.
+Nous conclurons cette section avec toujours le même conseil: n'abusez pas
+ des polices de caractères.
  Elles peuvent rendre pénible la lecture de votre texte et en aucun cas
  elle ne pourront remplacer un bon style.
 \end_layout

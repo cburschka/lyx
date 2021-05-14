@@ -363,7 +363,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2021-05-09 11:22+0200\n"
-"PO-Revision-Date: 2021-05-10 09:33+0200\n"
+"PO-Revision-Date: 2021-05-14 17:22+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -1359,7 +1359,7 @@ msgstr "Paramètres de langue"
 #: src/frontends/qt/ui/SpellcheckerUi.ui:28
 #: src/frontends/qt/ui/ThesaurusUi.ui:23
 msgid "&Language:"
-msgstr "Lang&ue :"
+msgstr "Lan&gue :"
 
 #: src/frontends/qt/ui/CharacterUi.ui:281 src/frontends/qt/ui/ListingsUi.ui:334
 #: lib/layouts/bicaption.module:16 lib/layouts/europasscv.layout:440
@@ -3132,7 +3132,7 @@ msgstr "Table de caractères étendu&e"
 
 #: src/frontends/qt/ui/ListingsUi.ui:343
 msgid "Lan&guage:"
-msgstr "Lang&ue :"
+msgstr "Lan&gue :"
 
 #: src/frontends/qt/ui/ListingsUi.ui:353
 msgid "Select the programming language"
@@ -32041,7 +32041,7 @@ msgstr "(sans)"
 
 #: src/frontends/qt/GuiCharacter.cpp:87
 msgid "Single[[underlining]]"
-msgstr "Simple"
+msgstr "Simple sopulignement"
 
 #: src/frontends/qt/GuiCharacter.cpp:88
 msgid "Double[[underlining]]"
@@ -32057,11 +32057,11 @@ msgstr "(sans)"
 
 #: src/frontends/qt/GuiCharacter.cpp:100
 msgid "Single[[strikethrough]]"
-msgstr "Simple"
+msgstr "Barré"
 
 #: src/frontends/qt/GuiCharacter.cpp:101
 msgid "With /"
-msgstr "Avec /"
+msgstr "Raturé"
 
 #: src/frontends/qt/GuiCharacter.cpp:191
 msgid "(Without)[[color]]"
@@ -35320,7 +35320,7 @@ msgstr "Changer de langue...|g"
 
 #: src/frontends/qt/Menus.cpp:937
 msgid "Language|L"
-msgstr "Langue|u"
+msgstr "Langue|g"
 
 #: src/frontends/qt/Menus.cpp:939
 msgid "More Languages ...|M"
