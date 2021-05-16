@@ -15546,13 +15546,9 @@ balisage formel
 
 \begin_layout Standard
 Avant de dire comment modifier les propriétés du texte, nous voulons de
- nouveau répéter un avertissement : n'abusez pas de cela! 
-\end_layout
-
-\begin_layout Standard
-Les documents qui abusent de différentes polices et tailles de caractères
- ne sont pas faciles à lire et finissent par ne plus ressembler à grand
- chose.
+ nouveau répéter un avertissement : n'abusez pas de cela! Les documents
+ qui abusent de différentes polices et tailles de caractères ne sont pas
+ faciles à lire et finissent par ne plus ressembler à grand chose.
 \end_layout
 
 \begin_layout Standard
@@ -15571,10 +15567,11 @@ type  "icon"
 arg   "dialog-show character"
 \end_inset
 
- de la barre d'outils).Il y a plusieurs menus déroulants dans cette fenêtre,
- chacun correspondant à une propriété de la police que vous pouvez ajuster.
- Vous pouvez choisir une option pour chacune de ces sept propriétés, ou
- sélectionner 
+ de la barre d'outils).
+ Il y a plusieurs menus déroulants dans cette fenêtre, chacun correspondant
+ à une propriété de la police que vous pouvez ajuster.
+ Vous pouvez choisir une option pour chacune de ces propriétés, ou sélectionner
+ 
 \family sans
 Inchangé
 \family default
@@ -15611,7 +15608,7 @@ Implicite
 \family sans
 Famille
 \family default
- L'aspect général de la police.
+ décrit l'aspect général de la police.
  Les choix possibles sont :
 \end_layout
 
@@ -15622,7 +15619,7 @@ Famille
 \family sans
 Romain
 \family default
- C'est la police romaine implicite.
+ est la police romaine implicite.
  C'est une police avec empattements et c'est aussi la famille implicite
  (raccourci = 
 \begin_inset Info
@@ -15630,7 +15627,7 @@ type  "shortcut"
 arg   "font-roman"
 \end_inset
 
-),
+);
 \end_layout
 
 \begin_layout Labeling
@@ -15645,21 +15642,17 @@ empattement
 \family default
  
 \family sans
-C'est la famille de polices sans empattement.
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
+est la famille de polices sans empattement
+\family default
 (raccourci = 
 \begin_inset Info
 type  "shortcut"
 arg   "font-sans"
 \end_inset
 
-),
+);
 \end_layout
 
-\end_deeper
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
@@ -15672,23 +15665,19 @@ fixe
 \family default
  
 \family typewriter
-C'est la famille de polices à chasse fixe.
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
+est la famille de polices à chasse fixe.
+\family default
 (raccourci = 
 \begin_inset Info
 type  "shortcut"
 arg   "font-typewriter"
 \end_inset
 
-)
+).
 \end_layout
 
-\end_deeper
 \begin_layout Standard
-Les différences entre ces familles sont les suivantes::
+Les différences entre ces familles sont les suivantes:
 \end_layout
 
 \begin_layout Itemize
@@ -15725,7 +15714,7 @@ la police
 Sans empattements
 \family default
  n'est pas recommandée comme police de base.
- elle n'est donc utilisée que pour les en-têtes et les textes courts.
+ Elle n'est donc utilisée que pour les en-têtes et les textes courts.
  Nous l'utilisons ici pour mettre en évidence les noms des menus;
 \end_layout
 
@@ -15734,7 +15723,7 @@ la police à
 \family sans
 Chasse fixe
 \family default
- est une poilce 
+ est une police 
 \begin_inset Quotes cld
 \end_inset
 
@@ -15742,12 +15731,12 @@ monospace
 \begin_inset Quotes crd
 \end_inset
 
-, ce qui signifie que tous les caractères ont la mêm largeur: le 
+, ce qui signifie que tous les caractères ont la même largeur: le 
 \begin_inset Quotes cld
 \end_inset
 
-i 
-\begin_inset Quotes cld
+i
+\begin_inset Quotes crd
 \end_inset
 
  est aussi large que le 
@@ -15817,7 +15806,7 @@ non texte à chasse fixe
 \family sans
 Série
 \family default
- Correspond à l'épaisseur du caractère.
+ correspond à l'épaisseur du caractère.
  Choix possibles:
 \end_layout
 
@@ -15828,7 +15817,7 @@ Série
 \family sans
 Maigre
 \family default
- C'est la série des polices maigres.
+ est la série des polices maigres.
  C'est aussi la série implicite.
 \end_layout
 
@@ -15858,7 +15847,7 @@ arg   "font-bold"
 \family sans
 Forme
 \family default
- Comme son nom l'indique.
+ comme son nom l'indique.
  Choix :
 \end_layout
 
@@ -15926,7 +15915,7 @@ C'est la forme en petites capitales
 \family sans
 Taille
 \family default
- Change la taille de la police.
+ change la taille de la police.
  Pas de valeurs numériques ici : toutes les tailles possibles sont en fait
  proportionnelles à la taille de police implicite.
  Là encore, vous ne donnez pas à \SpecialChar LyX
