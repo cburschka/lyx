@@ -14867,11 +14867,15 @@ Properties
 
 \family default
  dialog (
+\change_unchanged
+
 \begin_inset Info
 type  "menu"
 arg   "dialog-show character"
 \end_inset
 
+
+\change_inserted -712698321 1525596318
  or 
 \begin_inset Info
 type  "icon"
@@ -15026,7 +15030,7 @@ Properties
 
 \family default
  dialog (
-\change_deleted 34634807 1621007331
+\change_unchanged
 
 \begin_inset Info
 type  "menu"
@@ -15034,16 +15038,7 @@ arg   "dialog-show character"
 \end_inset
 
 
-\change_inserted 34634807 1621007339
-
-\family sans
-Edit\SpecialChar menuseparator
-Text Properties\SpecialChar menuseparator
-Customize...
-
 \change_inserted -712698321 1525596340
-
-\family default
  or 
 \begin_inset Info
 type  "icon"
@@ -15175,7 +15170,7 @@ Customized
 
 \family default
 (
-\change_deleted 34634807 1621007260
+\change_unchanged
 
 \family sans
 
@@ -15184,13 +15179,6 @@ type  "menu"
 arg   "dialog-show character"
 \end_inset
 
-
-\change_inserted 34634807 1621007283
-Edit\SpecialChar menuseparator
-Text Properties\SpecialChar menuseparator
-Customize...
-
-\change_unchanged
 
 \family default
  
@@ -15507,7 +15495,7 @@ Text
 
 Style\SpecialChar menuseparator
 Customized
-\change_deleted 34634807 1621007210
+\change_unchanged
 
 \family default
 
@@ -15516,17 +15504,6 @@ type  "menu"
 arg   "dialog-show character"
 \end_inset
 
-
-\change_inserted 34634807 1621007233
-
-\family sans
-Edit\SpecialChar menuseparator
-Text Properties\SpecialChar menuseparator
-Customize...
-
-\change_unchanged
-
-\family default
  dialog or press the toolbar button 
 \begin_inset Info
 type  "icon"
@@ -17056,7 +17033,15 @@ reference "subsec:Builtin-Character-Styles"
 
 \end_inset
 
-):
+)
+\change_inserted 34634807 1621181776
+ under 
+\family sans
+Semantic Markup
+\change_inserted -712698321 1525757268
+
+\family default
+:
 \end_layout
 
 \begin_layout Itemize
@@ -17132,7 +17117,7 @@ Text
 
 Style\SpecialChar menuseparator
 Customized
-\change_deleted 34634807 1621007136
+\change_unchanged
 
 \family default
 
@@ -17141,17 +17126,6 @@ type  "menu"
 arg   "dialog-show character"
 \end_inset
 
-
-\change_inserted 34634807 1621007171
-
-\family sans
-Edit\SpecialChar menuseparator
-Text Properties\SpecialChar menuseparator
-Customize...
-
-\change_unchanged
-
-\family default
  (
 \begin_inset Info
 type  "icon"
