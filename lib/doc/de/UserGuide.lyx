@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 606
+\lyxformat 608
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -162,6 +162,7 @@ logicalmkup
 \html_css_as_file 0
 \html_be_strict false
 \docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -225,7 +226,7 @@ literal "false"
 \begin_inset Newline newline
 \end_inset
 
-Version 2.3.x
+Version 2.4.x
 \begin_inset Note Note
 status collapsed
 
@@ -537,9 +538,10 @@ Sie können Dokumente in \SpecialChar LyX
  bearbeiten ohne \SpecialChar LaTeX
  installiert zu haben, aber sie
  können dann keine PDFs erzeugen.
- Des Weiteren können Sie \SpecialChar LyX
--Dokumente jederzeit als reine Textdatei, als DocBook
- oder XHTML ausgeben.
+ Aber auch ohne \SpecialChar LaTeX
+ können Sie \SpecialChar LyX
+-Dokumente jederzeit als reine Textdatei, als
+ DocBook oder als XHTML ausgeben.
 \end_layout
 
 \begin_layout Standard
@@ -734,7 +736,15 @@ Bis auf ein paar kleine Unterschiede machen sie dasselbe wie bei jeder anderen
  Der Menüpunkt 
 \family sans
 Datei\SpecialChar menuseparator
-Neu von Vorlage
+Neu
+\begin_inset space ~
+\end_inset
+
+von
+\begin_inset space ~
+\end_inset
+
+Vorlage
 \family default
  listet alle verfügbaren Vorlagen auf.
  Mit der Auswahl einer Vorlagendatei werden automatisch verschiedene Layout-Eins
@@ -1262,7 +1272,7 @@ Suchen
 
 Ersetzen
 \family default
- öffnet das Dialogfenster 
+ öffnet das Panel 
 \family sans
 Suchen
 \begin_inset space \space{}
@@ -1275,12 +1285,9 @@ und
 Ersetzen
 \family default
 .
- Den zu suchenden Text tragen Sie im Feld 
-\family sans
-Suchen:
-\family default
- ein.
- Mit der Schaltfläche 
+ Wenn Sie ein Wort oder einen Ausdruck gefunden haben, wählt LyX diesen
+ aus.
+ Wenn Sie auf die Schaltfläche 
 \family sans
 Suchen
 \begin_inset space ~
@@ -1294,7 +1301,7 @@ type  "shortcuts"
 arg   "word-find"
 \end_inset
 
-) wird der Text in Leserichtung gesucht.
+) wird das aktuell ausgewählte Wort übersprungen.
  
 \family sans
 <
@@ -1776,6 +1783,8 @@ Kopieren
 \family default
  übernehmen Sie den markierten Text in den internen Kopierspeicher von \SpecialChar LyX
 .
+ Sie können auch das Kontextmenü verwenden, das durch einen Rechtsklick
+ auf den markierten Text geöffnet wird.
 \end_layout
 
 \begin_layout Itemize
@@ -1865,6 +1874,16 @@ arg   "dialog-toggle toc"
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Itemize
+Sie können in Ihrem Dokument unter 
+\family sans
+Navigieren\SpecialChar menuseparator
+Lesezeichen
+\family default
+ Lesezeichen setzen und über dasselbe Menü zu diesen zurückkehren.
+ Beachten Sie, dass Lesezeichen zwischen Sitzungen gespeichert werden.
 \end_layout
 
 \begin_layout Standard
@@ -2046,7 +2065,8 @@ type  "icon"
 arg   "reload"
 \end_inset
 
- : aktualisiert das Verzeichnis
+ : aktualisiert das Verzeichnis (das ist nützlich beim Bearbeiten, wenn
+ Sie Abschnitte im Dokument geändert haben)
 \end_layout
 
 \begin_layout Standard
@@ -2412,9 +2432,21 @@ autocorrect
 \family default
  zu finden, die sich irgendwo in \SpecialChar LyX
 ’ Installationsordner befindet.
- Die Automatische Korrektur kann jederzeit angeschaltet werden in dem man
- das Ausrufezeichen drückt '!'.
- Durch Drücken der Leertaste wird sie ausgeschaltet.
+ Beachten Sie, dass die Verwendung von 
+\family sans
+Rückgängig
+\family default
+, nachdem die Autokorrektur ihre Arbeit getan hat, die unkorrigierte Sequenz
+ zurücklässt.
+ Im obigen Beispiel führt 
+\family sans
+Rückgängig
+\family default
+ zu "=>", und ein zweites 
+\family sans
+Rückgängig
+\family default
+ ergibt "=".
 \end_layout
 
 \begin_layout Section
@@ -7410,10 +7442,6 @@ Aufzählung
 fortführen
 \family default
 .
- Dessen Nummerierung erscheint in blau in \SpecialChar LyX
- um zu zeigen, das es eine fortgesetzt
-e Liste ist und die Nummerierung in \SpecialChar LyX
- nicht korrekt ist, aber in der Ausgabe.
 \end_layout
 
 \begin_layout Standard
@@ -8736,12 +8764,10 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
-
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
-
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8754,7 +8780,6 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8778,7 +8803,6 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
-
 Dies ist Unformatiert*.
 \end_layout
 
@@ -16111,10 +16135,6 @@ Sie können ihr Dokument nach ASCII über das Menü
 \family sans
 Datei\SpecialChar menuseparator
 Exportieren\SpecialChar menuseparator
-
-\begin_inset Newline newline
-\end_inset
-
 Einfacher
 \begin_inset space ~
 \end_inset
@@ -28398,6 +28418,8 @@ zur
 Marke
 \family default
  setzt den Cursor vor die referenzierte Marke.
+ (Wenn Sie bei gedrückter Strg-Taste auf einen Querverweis klicken, gelangen
+ Sie auch zur entsprechenden Beschriftung).
  Dieser Eintrag wird im Kontextmenü der Marke in 
 \family sans
 Gehe
@@ -28874,19 +28896,108 @@ blue
 \end_layout
 
 \begin_layout Section
-Anhang
+Zähler
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Zähler
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Anhang"
+name "sec:Zähler"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Eine leistungsstarke Funktion von \SpecialChar LaTeX
+ ist die Möglichkeit, Zähler zu verwalten.
+ Meistens wird dies automatisch gehandhabt, aber es gibt Situationen, in
+ denen man Zähler direkt ändern möchte.
+ Dies kann in \SpecialChar LyX
+ mit Hilfe des Zähler-Einfügungen geschehen, der über das
+ Menü "
+\family sans
+Bearbeiten
+\family default
+" zugänglich ist.
+ Damit kann man den Wert eines Zählers setzen, (auf Null) zurücksetzen,
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Beachten Sie, dass der Abschnittszähler bei null beginnt und dann auf eins
+ erhöht wird, wenn der erste Abschnitt erstellt wird.
+ Wenn z.B.
+ der nächste Abschnitt Abschnitt fünf sein soll, müssen Sie den Abschnittszähler
+ auf vier setzen.
+\end_layout
+
+\end_inset
+
+einen Wert zu addieren (oder zu subtrahieren, da der addierte Wert negativ
+ sein kann), einen Wert zu speichern, einen gespeicherten Wert wiederherzustelle
+n oder den Wert zu drucken.
+ Diese Effekte können auch auf \SpecialChar LyX
+ selbst beschränkt werden.
+ Und sie erscheinen in der HTML- und DocBook-Ausgabe, ebenso wie in \SpecialChar LaTeX
+.
+\end_layout
+
+\begin_layout Standard
+Ihnen stehen fünf Befehle zur Verfügung:
+\end_layout
+
+\begin_layout Enumerate
+Zähler setzen: Ermöglicht es Ihnen, einem Zähler einen bestimmten Wert zuzuweise
+n.
+\end_layout
+
+\begin_layout Enumerate
+Zähler erhöhen: Ermöglicht es Ihnen, einen bestimmten Betrag zu einem Zähler
+ zu addieren (oder zu subtrahieren, wenn Sie eine negative Zahl wählen).
+\end_layout
+
+\begin_layout Enumerate
+Zähler auf Null zurücksetzen: Setzt den Wert des Zählers auf 0.
+\end_layout
+
+\begin_layout Enumerate
+Aktuellen Wert des Zählers speichern: Speichert den Wert des Zählers, so
+ dass er später wiederhergestellt werden kann.
+\end_layout
+
+\begin_layout Enumerate
+Auf gespeicherten Zählwert setzen: Stellt den zuvor gespeicherten Wert wieder
+ her.
+\end_layout
+
+\begin_layout Standard
+In diesem Dialog können Sie aus allen Zählern, die in der aktuellen Dokumentenkl
+asse verfügbar sind, denjenigen auswählen, den Sie ändern möchten.
+\end_layout
+
+\begin_layout Section
+Anhänge
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Anhänge"
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Anhang
+Anhänge
 \end_layout
 
 \end_inset
@@ -28895,51 +29006,64 @@ Anhang
 \end_layout
 
 \begin_layout Standard
-Um einen Anhang zu erstellen, fügen Sie zunächst eine neue Überschrift des
- höchsten Abschnitttyps hinzu, also 
+Anhänge werden mit dem Menü 
 \family sans
-Kapitel
-\family default
- oder 
-\family sans
-Abschnitt.
-
-\family default
- Dann stellen Sie den Cursor an den Anfang der Überschrift und wählen 
-\family sans
-Dokument
-\family default
-\SpecialChar menuseparator
-
-\family sans
+Dokument\SpecialChar menuseparator
 Anhang
-\begin_inset space \space{}
+\begin_inset space ~
 \end_inset
 
 hier
-\begin_inset space \space{}
+\begin_inset space ~
 \end_inset
 
 beginnen
 \family default
-.
- \SpecialChar LyX
- fügt eine rote Linie ein, um den Anhang vom übrigen Dokument abzugrenzen.
- Die erste Nummer vor den nun folgenden Überschriften wird in einen Großbuchstab
-en umgeändert.
- Die weitere Nummerierung ist wie gewohnt.
- Auf Anhänge kann natürlich auch verwiesen werden: siehe Anhang
-\begin_inset space \space{}
+ erstellt.
+ Dieses Menü setzt das Dokument ab der aktuellen Cursorposition bis zum
+ Ende als Anhang des Buches.
+ Dieser Teil wird mit einer roten Linie markiert.
+\end_layout
+
+\begin_layout Standard
+Jedes Kapitel (oder Abschnitt) innerhalb des Anhangs wird als Anhang behandelt
+ und mit einem großen lateinischen Buchstaben nummeriert.
+ Die Unterabschnitte des Anhangs werden mit diesem Buchstaben, gefolgt von
+ einem Punkt und der Unterabschnittsnummer, nummeriert.
+ Alle Anhangsabschnitte können wie normale Abschnitte referenziert werden,
+ hier zwei Beispiele:
+\end_layout
+
+\begin_layout Standard
+Anhang
+\begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
-LatexCommand vref
-reference "chap:Der-Einstellungen-Dialog"
+LatexCommand ref
+reference "chap:Die-Benutzeroberfläche"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
-.
+; Anhang
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Dokument-Einstellungen"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -38385,6 +38509,90 @@ Kleinbuchstaben
 \end_layout
 
 \begin_layout Subsection
+Text-Eigenschaften
+\end_layout
+
+\begin_layout Standard
+Dieses Untermenü bietet verschiedene Möglichkeiten, das Aussehen von Textpassage
+n anzupassen.
+ Sie können
+\end_layout
+
+\begin_layout Enumerate
+Texteigenschaften mit Hilfe des Dialogs 
+\family sans
+Texteigenschaften
+\family default
+ anpassen (Rechtsklick und 
+\family sans
+Anpassen...
+\family default
+; dies ist im Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Textstil-Dialog"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ beschrieben)
+\end_layout
+
+\begin_layout Enumerate
+die zuletzt in diesem Dialog vorgenommenen Einstellungen mit 
+\family sans
+Letzte
+\family default
+
+\begin_inset space ~
+\end_inset
+
+
+\family sans
+Einstellungen
+\family default
+
+\begin_inset space ~
+\end_inset
+
+
+\family sans
+anwenden
+\family default
+ übernehmen
+\end_layout
+
+\begin_layout Enumerate
+Groß- und Kleinschreibung des ausgewählten Textes ändern (
+\family sans
+Große
+\family default
+
+\begin_inset space ~
+\end_inset
+
+
+\family sans
+Anfangsbuchstaben
+\family default
+, 
+\family sans
+Großbuchstaben
+\family default
+, 
+\family sans
+Kleinbuchstaben
+\family default
+)
+\end_layout
+
+\begin_layout Subsection
 Spezifische Textstile
 \end_layout
 
@@ -40255,9 +40463,7 @@ arg   "bookmark-goto 2"
 \end_layout
 
 \begin_layout Standard
-Die gespeicherten Lesezeichen sind gültig, bis das Dokument geschlossen
- wird.
- Mit dem Untermenü 
+Mit dem Untermenü 
 \family sans
 Lesezeichen
 \begin_inset space ~
@@ -40411,7 +40617,7 @@ Dieses Menü beginnt den Anhang des Dokuments an der aktuellen Cursorposition,
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Anhang"
+reference "sec:Anhänge"
 
 \end_inset
 
@@ -43607,7 +43813,7 @@ Standardstil
 \family sans
 Tabellenstil
 \family default
- legt fest, welcher Tabellenstil für neu einegfügte Tabellen standardmäßig
+ legt fest, welcher Tabellenstil für neu eingefügte Tabellen standardmäßig
  verwendet wird.
 \end_layout
 
@@ -43661,6 +43867,16 @@ Sprache
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Sprache"
+
+\end_inset
+
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Sprache
+\end_layout
 
 \end_inset
 
@@ -44915,6 +45131,52 @@ reference "subsec:Nummerierung-aendern"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+Sie können eine Zeilennummerierung in der Ausgabedatei anzeigen, indem Sie
+ das Kontrollkästchen am unteren Rand aktivieren.
+ Die Funktionalität wird vom Paket 
+\family sans
+lineno
+\family default
+ behandelt und zusätzliche Optionen dieses Pakets können ebenfalls verwendet
+ werden.
+ Die gebräuchlichsten sind:
+\end_layout
+
+\begin_layout Description
+right Zeilennummern am rechten Rand anzeigen
+\end_layout
+
+\begin_layout Description
+switch Zeilennummern am äußeren Rand anzeigen (links – gerade Seiten, rechts
+ – ungerade Seiten)
+\end_layout
+
+\begin_layout Description
+switch* Zeilennummern am inneren Rand anzeigen
+\end_layout
+
+\begin_layout Description
+modulo Zeilennummern nur bei Vielfachen von fünf Zeilen anzeigen
+\end_layout
+
+\begin_layout Description
+pagewise Nummerierung auf jeder Seite neu starten
+\end_layout
+
+\begin_layout Description
+displaymath
+\lang english
+
+\begin_inset space ~
+\end_inset
+
+
+\lang ngerman
+mathlines Zeilennummern für mathematische Umgebungen anzeigen (beide Optionen
+ erforderlich).
 \end_layout
 
 \begin_layout Section
@@ -48110,49 +48372,6 @@ Einstellungen ! \SpecialChar LaTeX
 \end_inset
 
 
-\end_layout
-
-\begin_layout Description
-LaTeX-Fontkodierung
-\begin_inset space ~
-\end_inset
-
-verwenden Dies ist die Standard-Kodierung der Dokumentschrift.
- 
-\family sans
-T1
-\family default
- ist der Standard und deckt westliche Sprachen und Symbole ab.
- 
-\family sans
-T2A
-\family default
-, 
-\family sans
-T2B
-\family default
-, 
-\family sans
-T2C
-\family default
-, 
-\family sans
-LCY
-\family default
- und 
-\family sans
-X2
-\family default
- werden für Kyrillisch verwendet.
- Kombinationen der Kodierungen wie 
-\family sans
-„T1, T2B
-\family default
-“ sind möglich.
- Die Schriftkodierung wird normalerweise automatisch von den Sprachpaketen
- geladen, die \SpecialChar LyX
- im Hintergund verwendet.
- Man muss die Standard-Kodierung also nicht ändern.
 \end_layout
 
 \begin_layout Description
