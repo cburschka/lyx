@@ -14958,7 +14958,7 @@ propriétés de texte
  Les traitements de texte traditionnels mettent habituellement l'accent
  sur ce qui est appelé 
 \emph on
-marquage formel
+balisage formel
 \emph default
 : si vous vouliez mettre un mot en évidence, vous le sélectionniez et choisissie
 z e.g.
@@ -14979,9 +14979,9 @@ propriétés du texte
 , promeuvent l'utilisation
  d'un 
 \emph on
-marquage sémantique (ou logique)
+balisage sémantique (ou logique)
 \emph default
- à la place (bien que le marquage formel reste possible, voir la section
+ à la place (bien que le balisage formel reste possible, voir la section
 \begin_inset space ~
 \end_inset
 
@@ -15025,8 +15025,8 @@ grasse
 ).
  L'approche sémantique présente beaucoup d'avantages.
  D'abord, l'usage de catégories fonctionnelles vous force à penser à ce
- que vous êtes en train de marquer, si votre marquage est consistant et
- systématique, et si ce marquage particulier a un sens.
+ que vous êtes en train de baliser, si votre balisage est consistant et
+ systématique, et si ce balisage particulier a un sens.
  D'un point de vue pratique, il est facile de de modifier l'apparence si
  le besoin s'en fait sentir.
  Considérons le cas où vous écrivez une communication et positionnez tous
@@ -15034,11 +15034,11 @@ grasse
 \noun on
 Petites capitales
 \noun default
- par un marquage formel.
+ par un balisage formel.
  Si maintenant l'éditeur requiert que les noms propres soient saisis différemmen
 t (par exemple en police normale ou en capitales), vous devrez changer chacune
  des occurrences.
- Avec un marquage sémantique (comme 
+ Avec un balisage sémantique (comme 
 \noun on
 Nom propre
 \noun default
@@ -15050,8 +15050,8 @@ Nom propre
  C'est l'affaire de 10 secondes si vous savez où modifier la définition
  \SpecialChar LaTeX
 .
- De plus, le marquage sémantique vous permet de produire différentes versions
- du document avec des marquages différents.
+ De plus, le balisage sémantique vous permet de produire différentes versions
+ du document avec des balisages différents.
 \end_layout
 
 \begin_layout Subsubsection
