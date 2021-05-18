@@ -7869,11 +7869,7 @@ Adresse
 \family default
  und 
 \family sans
-Adress
-\family default
-e
-\family sans
-
+Adresse
 \begin_inset space \space{}
 \end_inset
 
@@ -7902,11 +7898,7 @@ Adresse
 \family default
 - und 
 \family sans
-Adress
-\family default
-e
-\family sans
-
+Adresse
 \begin_inset space \space{}
 \end_inset
 
@@ -7924,11 +7916,7 @@ Adresse
 \family default
  und 
 \family sans
-Adress
-\family default
-e
-\family sans
-
+Adresse
 \begin_inset space \space{}
 \end_inset
 
@@ -38485,10 +38473,8 @@ reference "subsec:Textstil-Dialog"
 die zuletzt in diesem Dialog ausgewählten Eigenschaften direkt anwenden
  (mittels 
 \family sans
-\lang english
 Letzte Einstellungen anwenden
 \family default
-\lang ngerman
 )
 \end_layout
 
@@ -45146,37 +45132,57 @@ lineno
 \end_layout
 
 \begin_layout Description
-right Zeilennummern am rechten Rand anzeigen
-\end_layout
 
-\begin_layout Description
-switch Zeilennummern am äußeren Rand anzeigen (links – gerade Seiten, rechts
- – ungerade Seiten)
-\end_layout
-
-\begin_layout Description
-switch* Zeilennummern am inneren Rand anzeigen
-\end_layout
-
-\begin_layout Description
-modulo Zeilennummern nur bei Vielfachen von fünf Zeilen anzeigen
-\end_layout
-
-\begin_layout Description
-pagewise Nummerierung auf jeder Seite neu starten
-\end_layout
-
-\begin_layout Description
-displaymath
 \lang english
+right
+\lang ngerman
+ Zeilennummern am rechten Rand anzeigen
+\end_layout
 
+\begin_layout Description
+
+\lang english
+switch
+\lang ngerman
+ Zeilennummern am äußeren Rand anzeigen (links – gerade Seiten, rechts –
+ ungerade Seiten)
+\end_layout
+
+\begin_layout Description
+
+\lang english
+switch
+\lang ngerman
+* Zeilennummern am inneren Rand anzeigen
+\end_layout
+
+\begin_layout Description
+
+\lang english
+modulo
+\lang ngerman
+ Zeilennummern nur bei Vielfachen von fünf Zeilen anzeigen
+\end_layout
+
+\begin_layout Description
+
+\lang english
+pagewise
+\lang ngerman
+ Nummerierung auf jeder Seite neu starten
+\end_layout
+
+\begin_layout Description
+
+\lang english
+displaymath
 \begin_inset space ~
 \end_inset
 
-
+mathlines
 \lang ngerman
-mathlines Zeilennummern für mathematische Umgebungen anzeigen (beide Optionen
- erforderlich).
+ Zeilennummern für mathematische Umgebungen anzeigen (beide Optionen erforderlic
+h).
 \end_layout
 
 \begin_layout Section
