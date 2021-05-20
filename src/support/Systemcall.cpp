@@ -370,6 +370,14 @@ void SystemcallPrivate::startProcess(QString const & cmd, string const & path,
 	cmd_ = cmd;
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
 	// FIXME pass command and arguments separated in the first place
+	/* The versions of startDetached() and start() that accept a
+	 * QStringList object exist since Qt4, but it is only in Qt 5.15
+	 * that splitCommand() was introduced and the plain versions of
+	 * start/startDetached() have been deprecated.
+	 * The cleanest solution would be to have parsecmd() produce a
+	 * QStringList for arguments, instead of transforming the string
+	 * into something that the QProcess splitter accepts.
+	*/
 	QStringList arguments = QProcess::splitCommand(toqstr(latexEnvCmdPrefix(path, lpath)) + cmd_);
 	QString command = (arguments.empty()) ? QString() : arguments.first();
 	if (arguments.size() == 1)
