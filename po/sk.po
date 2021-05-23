@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-05-19 09:47+0200\n"
-"PO-Revision-Date: 2021-05-19 10:15+0000\n"
+"POT-Creation-Date: 2021-05-23 09:44+0200\n"
+"PO-Revision-Date: 2021-05-23 08:19+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -34051,6 +34051,14 @@ msgstr "Dokument nie je nahraný."
 #: src/frontends/qt/GuiView.cpp:2485
 msgid "Select document to open"
 msgstr "Vyberte dokument pre otvorenie"
+
+#: src/frontends/qt/GuiView.cpp:2615
+msgid "LyX Document Backups (*.lyx~)"
+msgstr "Záložné LyX dokumenty (*.lyx~)"
+
+#: src/frontends/qt/GuiView.cpp:2616
+msgid "All Files (*.*)"
+msgstr "Všetky súbory (*.*)"
 
 #: src/frontends/qt/GuiView.cpp:2515
 #, c-format
