@@ -711,7 +711,7 @@ void InsetText::docbook(XMLStream & xs, OutputParams const & rp, XHTMLOptions op
 	// No need for labels that are generated from counters. They should be handled by the external DocBook processor.
 
 	// With respect to XHTML, paragraphs are still allowed here.
-	if (!allowMultiPar())
+	if (runparams.docbook_consider_allow_multi_par && !allowMultiPar())
 		runparams.docbook_make_pars = false;
 	if (il.isPassThru())
 		runparams.pass_thru = true;

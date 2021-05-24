@@ -366,6 +366,9 @@ public:
 	/// Are we already in a paragraph?
 	bool docbook_in_par = false;
 
+	/// Is this element's allowMultiPar useable or not?
+	bool docbook_consider_allow_multi_par = true;
+
 	/// Does the present context even permit paragraphs?
 	bool docbook_make_pars = true;
 

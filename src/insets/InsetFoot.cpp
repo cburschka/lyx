@@ -127,6 +127,8 @@ void InsetFoot::docbook(XMLStream & xs, OutputParams const & runparams) const
 	OutputParams rp = runparams;
 	rp.docbook_force_pars = true;
 	rp.docbook_in_par = false;
+	rp.docbook_consider_allow_multi_par = false;
+	rp.docbook_make_pars = true;
 	InsetText::docbook(xs, rp);
 }
 
