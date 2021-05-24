@@ -2144,12 +2144,23 @@ Buffer::ExportStatus Buffer::writeDocBookSource(odocstream & os,
 		   << "<!-- This DocBook file was created by LyX " << lyx_version
 		   << "\n  See https://www.lyx.org/ for more information -->\n";
 
+		// Prepare the name space declaration for MathML depending on document preferences.
+		string mathmlNamespace;
+		if (params().docbook_mathml_prefix != BufferParams::NoPrefix) {
+            string mathmlPrefix;
+            if (params().docbook_mathml_prefix == BufferParams::MPrefix)
+	            mathmlPrefix = "m";
+            else if (params().docbook_mathml_prefix == BufferParams::MMLPrefix)
+	            mathmlPrefix = "mml";
+			mathmlNamespace = + " xmlns:" + mathmlPrefix + "=\"http://www.w3.org/1998/Math/MathML\"";
+	    }
+
 		// Directly output the root tag, based on the current type of document.
 		string languageCode = params().language->code();
 		string params = "xml:lang=\"" + languageCode + '"'
 						+ " xmlns=\"http://docbook.org/ns/docbook\""
 						+ " xmlns:xlink=\"http://www.w3.org/1999/xlink\""
-						+ " xmlns:m=\"http://www.w3.org/1998/Math/MathML\""
+						+ mathmlNamespace
 						+ " xmlns:xi=\"http://www.w3.org/2001/XInclude\""
 						+ " version=\"5.2\"";
 
