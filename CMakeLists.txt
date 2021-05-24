@@ -1109,7 +1109,7 @@ if(MSVC)
 
 	endif()
 
-	if (NOT Qt5Core_FOUND)
+	if (NOT (Qt5Core_FOUND OR Qt6Core_FOUND))
 		set(CMAKE_CXX_FLAGS_DEBUG      "${CMAKE_CXX_FLAGS_DEBUG} /Zc:wchar_t-")
 		set(CMAKE_CXX_FLAGS_RELEASE    "${CMAKE_CXX_FLAGS_RELEASE} /Zc:wchar_t-")
 		set(CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL} /Zc:wchar_t-")
