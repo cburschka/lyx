@@ -924,8 +924,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(outputModule->tableoutCB, SIGNAL(currentIndexChanged(int)),
 		this, SLOT(change_adaptor()));
+	connect(outputModule->mathmlprefixCB, SIGNAL(currentIndexChanged(int)),
+        this, SLOT(change_adaptor()));
 
-	connect(outputModule->shellescapeCB, SIGNAL(stateChanged(int)),
+    connect(outputModule->shellescapeCB, SIGNAL(stateChanged(int)),
 		this, SLOT(shellescapeChanged()));
 	connect(outputModule->outputsyncCB, SIGNAL(toggled(bool)),
 		this, SLOT(setOutputSync(bool)));
