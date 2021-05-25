@@ -365,11 +365,29 @@ MathMLStream & operator<<(MathMLStream & ms, MTag const & t)
 }
 
 
+MathMLStream & operator<<(MathMLStream & ms, MTagInline const & t)
+{
+	ms.cr();
+	ms.os() << '<' << from_ascii(ms.namespacedTag(t.tag_));
+	if (!t.attr_.empty())
+		ms.os() << " " << from_ascii(t.attr_);
+	ms << ">";
+	return ms;
+}
+
+
 MathMLStream & operator<<(MathMLStream & ms, ETag const & t)
 {
 	ms.cr();
 	if (ms.tab() > 0)
 		--ms.tab();
+	ms.os() << "</" << from_ascii(ms.namespacedTag(t.tag_)) << ">";
+	return ms;
+}
+
+
+MathMLStream & operator<<(MathMLStream & ms, ETagInline const & t)
+{
 	ms.os() << "</" << from_ascii(ms.namespacedTag(t.tag_)) << ">";
 	return ms;
 }

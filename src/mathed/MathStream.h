@@ -319,12 +319,34 @@ public:
 	std::string attr_;
 };
 
+/// Start inline tag.
+class MTagInline {
+public:
+	///
+	MTagInline(char const * const tag, std::string const & attr = std::string())
+	        : tag_(tag), attr_(attr) {}
+	///
+	char const * const tag_;
+	///
+	std::string attr_;
+};
+
 
 /// End tag.
 class ETag {
 public:
 	///
 	explicit ETag(char const * const tag) : tag_(tag) {}
+	///
+	char const * const tag_;
+};
+
+
+/// End inlinetag.
+class ETagInline {
+public:
+	///
+	explicit ETagInline(char const * const tag) : tag_(tag) {}
 	///
 	char const * const tag_;
 };
@@ -416,7 +438,11 @@ MathMLStream & operator<<(MathMLStream &, char_type);
 ///
 MathMLStream & operator<<(MathMLStream &, MTag const &);
 ///
+MathMLStream & operator<<(MathMLStream &, MTagInline const &);
+///
 MathMLStream & operator<<(MathMLStream &, ETag const &);
+///
+MathMLStream & operator<<(MathMLStream &, ETagInline const &);
 ///
 MathMLStream & operator<<(MathMLStream &, CTag const &);
 
