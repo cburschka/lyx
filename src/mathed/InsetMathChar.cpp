@@ -252,9 +252,9 @@ void InsetMathChar::mathmlize(MathMLStream & ms) const
 	}
 
 	if (!entity.empty()) {
-		ms << "<" << from_ascii(ms.namespacedTag("mo")) << ">"
+		ms << MTagInline("mo")
 		   << from_ascii(entity)
-		   << "</" << from_ascii(ms.namespacedTag("mo")) << ">";
+		   << ETagInline("mo");
 		return;
 	}
 
@@ -263,7 +263,9 @@ void InsetMathChar::mathmlize(MathMLStream & ms) const
 			? "mi" : "mo";
 	// we don't use MTag and ETag because we do not want the spacing before the end tag.
 	docstring tag = from_ascii(ms.namespacedTag(type));
-	ms << "<" << tag << ">" << char_type(char_) << "</" << tag << ">";
+	ms << MTagInline(type)
+	   << char_type(char_)
+	   << ETagInline(type);
 }
 
 

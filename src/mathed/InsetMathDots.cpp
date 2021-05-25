@@ -105,7 +105,7 @@ void InsetMathDots::mathmlize(MathMLStream & ms) const
 			ent = "&vellip;";
 		else LASSERT(false, ent = "&hellip;");
 	}
-	ms << MTag("mi") << from_ascii(ent) << ETag("mi");
+	ms << MTagInline("mi") << from_ascii(ent) << ETagInline("mi");
 }
 
 

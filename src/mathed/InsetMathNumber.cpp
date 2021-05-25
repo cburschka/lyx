@@ -70,9 +70,9 @@ void InsetMathNumber::octave(OctaveStream & os) const
 
 void InsetMathNumber::mathmlize(MathMLStream & ms) const
 {
-	ms << "<" << from_ascii(ms.namespacedTag("mn")) << ">"
+	ms << MTagInline("mn")
 	   << str_
-	   << "</" << from_ascii(ms.namespacedTag("mn")) << ">";
+	   << ETagInline("mn");
 }
 
 

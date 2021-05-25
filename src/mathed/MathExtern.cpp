@@ -1591,7 +1591,7 @@ void mathmlize(MathData const & dat, MathMLStream & ms)
 	MathData ar = dat;
 	extractStructure(ar, MATHML);
 	if (ar.empty())
-		ms << "<" << from_ascii(ms.namespacedTag("mrow")) << "/>";
+		ms << CTag("mrow");
 	else if (ar.size() == 1)
 		ms << ar.front();
 	else {

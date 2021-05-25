@@ -109,9 +109,9 @@ void InsetMathBoldSymbol::write(TeXMathStream & os) const
 
 void InsetMathBoldSymbol::mathmlize(MathMLStream & ms) const
 {
-	ms << "<" << from_ascii(ms.namespacedTag("mstyle")) << " mathvariant='bold'>"
+	ms << MTagInline("mstyle", "mathvariant='bold'>")
 	   << cell(0)
-	   << "</" << from_ascii(ms.namespacedTag("mstyle")) << ">";
+	   << ETagInline("mstyle");
 }
 
 

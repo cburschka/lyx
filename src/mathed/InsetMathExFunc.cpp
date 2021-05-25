@@ -124,12 +124,12 @@ void InsetMathExFunc::mathematica(MathematicaStream & os) const
 
 void InsetMathExFunc::mathmlize(MathMLStream & ms) const
 {
-	ms << "<" << from_ascii(ms.namespacedTag("mi")) << ">"
+	ms << MTagInline("mi")
 	   << name_
-       << "</" << from_ascii(ms.namespacedTag("mi")) << ">"
-	   << "<" << from_ascii(ms.namespacedTag("mo")) << ">"
+       << ETagInline("mi")
+	   << MTagInline("mo")
 	   << "&af;"
-	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">"
+	   << ETagInline("mo")
 	   << cell(0);
 }
 
