@@ -2530,8 +2530,15 @@ void InsetMathHull::mathmlize(MathMLStream & ms) const
 	bool const havenumbers = haveNumbers();
 	bool const havetable = havenumbers || nrows() > 1 || ncols() > 1;
 
-	if (havetable)
-		ms << MTag("mtable");
+    if (havetable) {
+        if (getType() == hullSimple)
+            ms << MTag("mtable");
+        else if (getType() >= hullAlign && getType() <= hullXXAlignAt)
+            ms << MTag("mtable", "displaystyle='true' columnalign='right left'");
+        else
+            ms << MTag("mtable", "displaystyle='true'");
+    }
+
 	char const * const celltag = havetable ? "mtd" : "mrow";
 	// FIXME There does not seem to be wide support at the moment
 	// for mlabeledtr, so we have to use just mtr for now.
