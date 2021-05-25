@@ -2436,13 +2436,21 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 	// temporary stream; then, if it is possible without error, then copy it back to the "real" stream. Otherwise,
 	// some incomplete tags might be put into the real stream.
 	try {
-		// First, generate the MathML expression.
+		// First, generate the MathML expression. If there is an error in the generation, this block is not fully
+		// executed, and the formula is not output to the DocBook stream.
 		odocstringstream ostmp;
 		MathMLStream mstmp(ostmp, ms.xmlns(), ms.xmlMode());
 		InsetMathGrid::mathmlize(mstmp);
 
-		// Then, output it (but only if the generation can be done without errors!).
-		ms << MTag("math");
+		// Choose the display style for the formula, to be output as an attribute near the formula root.
+		std::string mathmlAttr;
+		if (getType() == hullSimple)
+			mathmlAttr = "display=\"inline\"";
+		else
+			mathmlAttr = "display=\"block\"";
+
+		// Then, output the formula.
+		ms << MTag("math", mathmlAttr);
 		ms.cr();
 		osmath << ostmp.str(); // osmath is not a XMLStream, so no need for XMLStream::ESCAPE_NONE.
 		ms << ETag("math");
