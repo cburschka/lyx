@@ -142,9 +142,9 @@ void InsetMathExInt::mathmlize(MathMLStream & ms) const
 	sym.mathmlize(ms);
 	ms << ETag("mrow");
 	if (lower)
-		ms << MTag("mrow") << cell(2) << ETag("mrow");
+		ms << cell(2);
 	if (upper)
-		ms << MTag("mrow") << cell(3) << ETag("mrow");
+		ms << cell(3);
 	if (lower && upper)
 		ms << ETag("msubsup");
 	else if (lower)

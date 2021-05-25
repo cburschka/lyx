@@ -209,10 +209,11 @@ void InsetMathSpace::mathmlize(MathMLStream & ms) const
 		l = ss.str() + "px";
 	}
 
-	ms << "<" << from_ascii(ms.namespacedTag("mspace"));
+	std::string attr;
 	if (!l.empty())
-		ms << " width=\"" << from_ascii(l) << "\"";
-	ms << " />";
+		attr = "width=\"" + l + "\"";
+
+	ms << CTag("mspace", attr);
 }
 
 

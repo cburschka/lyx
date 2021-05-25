@@ -624,7 +624,7 @@ void InsetMathScript::mathmlize(MathMLStream & ms) const
 	if (!nuc().empty())
 		ms << nuc();
 	else
-		ms << "<" << from_ascii(ms.namespacedTag("mrow")) << " />";
+		ms << CTag("mrow");
 
 	if (d)
 		ms << MTag("mrow") << down() << ETag("mrow");
