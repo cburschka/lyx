@@ -2440,7 +2440,7 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 		// executed, and the formula is not output to the DocBook stream.
 		odocstringstream ostmp;
 		MathMLStream mstmp(ostmp, ms.xmlns(), ms.xmlMode());
-		InsetMathGrid::mathmlize(mstmp);
+		mathmlize(mstmp);
 
 		// Choose the display style for the formula, to be output as an attribute near the formula root.
 		std::string mathmlAttr;
@@ -2550,7 +2550,7 @@ void InsetMathHull::mathmlize(MathMLStream & ms) const
 			ms << MTag("mtd");
 			docstring const & num = numbers_[row];
 			if (!num.empty())
-				ms << '(' << num << ')';
+				ms << MTagInline("mtext") << '(' << num << ')' << ETagInline("mtext");
 		  ms << ETag("mtd");
 		}
 		if (havetable)
