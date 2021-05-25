@@ -606,31 +606,32 @@ void InsetMathScript::mathmlize(MathMLStream & ms) const
 {
 	bool d = hasDown() && !down().empty();
 	bool u = hasUp() && !up().empty();
-	// FIXME: the MathMLStream should be able to give us this information
-	bool l = has_limits_;
+	// FIXME: the MathMLStream should be able to give us has_limits_
 
+	if (!d && !u)
+		return;
+
+	const char * tag;
 	if (u && d)
-		ms << MTag(l ? "munderover" : "msubsup");
+		tag = has_limits_ ? "munderover" : "msubsup";
 	else if (u)
-		ms << MTag(l ? "mover" : "msup");
+		tag = has_limits_ ? "mover" : "msup";
 	else if (d)
-		ms << MTag(l ? "munder" : "msub");
+		tag = has_limits_ ? "munder" : "msub";
+
+	ms << MTag(tag);
 
 	if (!nuc().empty())
 		ms << nuc();
 	else
 		ms << "<" << from_ascii(ms.namespacedTag("mrow")) << " />";
 
-	if (u && d)
-		ms << MTag("mrow") << down() << ETag("mrow")
-		   << MTag("mrow") << up() << ETag("mrow")
-		   << ETag(l ? "munderover" : "msubsup");
-	else if (u)
-		ms << MTag("mrow") << up() << ETag("mrow")
-		   << ETag(l ? "mover" : "msup");
-	else if (d)
-		ms << MTag("mrow") << down() << ETag("mrow")
-		   << ETag(l ? "munder" : "msub");
+	if (d)
+		ms << MTag("mrow") << down() << ETag("mrow");
+	if (u)
+		ms << MTag("mrow") << up() << ETag("mrow");
+
+	ms << ETag(tag);
 }
 
 
