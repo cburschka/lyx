@@ -521,15 +521,15 @@ void InsetMathFrac::mathmlize(MathMLStream & ms) const
 	case CFRACRIGHT:
 	case AASTEX_CASE:
 		ms << MTag("mfrac")
-		   << MTag("mrow") << cell(0) << ETag("mrow")
-		   << MTag("mrow") << cell(1) << ETag("mrow")
+		   << cell(0)
+		   << cell(1)
 		   << ETag("mfrac");
 		break;
 
 	case NICEFRAC:
 		ms << MTag("mfrac", "bevelled='true'")
-		   << MTag("mrow") << cell(0) << ETag("mrow")
-		   << MTag("mrow") << cell(1) << ETag("mrow")
+		   << cell(0)
+		   << cell(1)
 		   << ETag("mfrac");
 		break;
 
@@ -537,8 +537,8 @@ void InsetMathFrac::mathmlize(MathMLStream & ms) const
 		if (nargs() == 3)
 			ms << cell(2);
 		ms << MTag("mfrac", "bevelled='true'")
-		   << MTag("mrow") << cell(0) << ETag("mrow")
-		   << MTag("mrow") << cell(1) << ETag("mrow")
+		   << cell(0)
+		   << cell(1)
 		   << ETag("mfrac");
 		break;
 

@@ -246,7 +246,7 @@ void InsetMathDecoration::mathmlize(MathMLStream & ms) const
 	char const * const outag = cur->second.over ? "mover" : "munder";
 	std::string decoration = ms.xmlMode() ? cur->second.entity : cur->second.tag;
 	ms << MTag(outag)
-	   << MTag("mrow") << cell(0) << ETag("mrow")
+	   << cell(0)
 	   << "<" << from_ascii(ms.namespacedTag("mo")) << " stretchy=\"true\">"
 	   << from_ascii(decoration)
 	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">"

@@ -617,7 +617,7 @@ void InsetMathScript::mathmlize(MathMLStream & ms) const
 		ms << MTag(l ? "munder" : "msub");
 
 	if (!nuc().empty())
-		ms << MTag("mrow") << nuc() << ETag("mrow");
+		ms << nuc();
 	else
 		ms << "<" << from_ascii(ms.namespacedTag("mrow")) << " />";
 
@@ -626,9 +626,11 @@ void InsetMathScript::mathmlize(MathMLStream & ms) const
 		   << MTag("mrow") << up() << ETag("mrow")
 		   << ETag(l ? "munderover" : "msubsup");
 	else if (u)
-		ms << MTag("mrow") << up() << ETag("mrow") << ETag(l ? "mover" : "msup");
+		ms << MTag("mrow") << up() << ETag("mrow")
+		   << ETag(l ? "mover" : "msup");
 	else if (d)
-		ms << MTag("mrow") << down() << ETag("mrow") << ETag(l ? "munder" : "msub");
+		ms << MTag("mrow") << down() << ETag("mrow")
+		   << ETag(l ? "munder" : "msub");
 }
 
 
