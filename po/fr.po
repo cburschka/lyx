@@ -363,7 +363,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2021-05-09 11:22+0200\n"
-"PO-Revision-Date: 2021-05-14 17:22+0200\n"
+"PO-Revision-Date: 2021-05-26 17:54+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -20340,7 +20340,7 @@ msgstr "Saut de page impaire|u"
 
 #: lib/ui/stdcontext.inc:354 lib/ui/stdmenus.inc:465
 msgid "Ragged Line Break|R"
-msgstr "Passage à la ligne (aligné à gauche)|l"
+msgstr "Passage à la ligne (aligné à la marge)|l"
 
 #: lib/ui/stdcontext.inc:355 lib/ui/stdmenus.inc:466
 msgid "Justified Line Break|J"
@@ -20755,7 +20755,7 @@ msgstr "Documents récents|D"
 
 #: lib/ui/stdmenus.inc:49
 msgid "Open Example...|p"
-msgstr "Ouvrir l'exemple...|p"
+msgstr "Ouvrir un exemple...|p"
 
 #: lib/ui/stdmenus.inc:51
 msgid "Close|C"
@@ -21025,15 +21025,15 @@ msgstr "Appliquer le dernier réglage|q"
 
 #: lib/ui/stdmenus.inc:189
 msgid "Capitalize|p"
-msgstr "Mettre une majuscule|j"
+msgstr "Capitale initiale|j"
 
 #: lib/ui/stdmenus.inc:190
 msgid "Uppercase|U"
-msgstr "Capitale|C"
+msgstr "Capitales|C"
 
 #: lib/ui/stdmenus.inc:191
 msgid "Lowercase|L"
-msgstr "Minuscules|l"
+msgstr "Bas de casse|B"
 
 #: lib/ui/stdmenus.inc:195
 msgid "Dissolve Text Style"
@@ -27475,11 +27475,11 @@ msgstr "Thèses"
 
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
 msgid "Formal with Footline"
-msgstr "Standard  avec ligne de bas de page"
+msgstr "Formel avec bordure (dernière ligne)"
 
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
 msgid "Formal without Footline"
-msgstr "Formel sans ligne de base"
+msgstr "Formel sans bordure (dernière ligne)"
 
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
 msgid "Grid with Head"
@@ -31800,7 +31800,7 @@ msgstr ""
 
 #: src/frontends/qt/GuiBibitem.h:36
 msgid "Bibliography Item Settings"
-msgstr "Paramètres de champs bibliographiques"
+msgstr "Paramètres d'entrée bibliographique"
 
 #: src/frontends/qt/GuiBibtex.cpp:57 src/frontends/qt/GuiBibtex.cpp:344
 msgid "BibTeX Bibliography"
@@ -32376,7 +32376,7 @@ msgstr "Inclus dans le résultat"
 
 #: src/frontends/qt/GuiDocument.cpp:985
 msgid "Unicode (utf8)"
-msgstr "Unicode utf8)"
+msgstr "Unicode (utf8)"
 
 #: src/frontends/qt/GuiDocument.cpp:986
 msgid "Traditional (auto-selected)"
@@ -32749,7 +32749,7 @@ msgstr "&Implicite..."
 
 #: src/frontends/qt/GuiDocument.cpp:2449
 msgid "Direct (No inputenc)"
-msgstr "Direct (pas de inputenc)"
+msgstr "Direct (pas de recours à inputenc)"
 
 #: src/frontends/qt/GuiDocument.cpp:2451
 msgid "Direct (XeTeX/LuaTeX)"
