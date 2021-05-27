@@ -15,6 +15,8 @@
 !define FILES_QT "${FILES_LYX}" # Can choose same as FILES_LYX (if Qt files copied to LYX_INSTALLED folder after compiling) or Qt kit folder
 !define FILES_DEPS "${FILES_LYX}" # Can choose same as FILES_LYX (if dependencies copied to LYX_INSTALLED folder after compiling) or the dependencies folder itself (GNUWIN32 dir)
 
+!define Qt_Version 6 # 5 or 6 (4 is not supported)
+
 !define COPYRIGHT_YEAR 2020
 
 #-------------------------------------------------------------

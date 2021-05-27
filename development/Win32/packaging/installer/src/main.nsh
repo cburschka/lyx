@@ -591,15 +591,20 @@ Section -ProgramFiles
   # Pdfview
   File "${FILES_DEPS}\bin\pdfview.exe"
   # Qt libraries
-  File "${FILES_QT}\bin\Qt5Concurrent.dll"
-  File "${FILES_QT}\bin\Qt5Core.dll"
-  File "${FILES_QT}\bin\Qt5Gui.dll"
-  File "${FILES_QT}\bin\Qt5Network.dll"
-  File "${FILES_QT}\bin\Qt5OpenGL.dll"
-  File "${FILES_QT}\bin\Qt5PrintSupport.dll"
-  File "${FILES_QT}\bin\Qt5Svg.dll"
-  File "${FILES_QT}\bin\Qt5Widgets.dll"
-  File "${FILES_QT}\bin\Qt5WinExtras.dll"
+  File "${FILES_QT}\bin\Qt${Qt_Version}Concurrent.dll"
+  File "${FILES_QT}\bin\Qt${Qt_Version}Core.dll"
+  File "${FILES_QT}\bin\Qt${Qt_Version}Gui.dll"
+  File "${FILES_QT}\bin\Qt${Qt_Version}Network.dll"
+  File "${FILES_QT}\bin\Qt${Qt_Version}OpenGL.dll"
+  File "${FILES_QT}\bin\Qt${Qt_Version}PrintSupport.dll"
+  File "${FILES_QT}\bin\Qt${Qt_Version}Svg.dll"
+  File "${FILES_QT}\bin\Qt${Qt_Version}Widgets.dll"
+  !if ${Qt_Version} = 5
+    File "${FILES_QT}\bin\Qt5WinExtras.dll"
+  !endif
+  !if ${Qt_Version} = 6
+    File "${FILES_DEPS}\bin\Qt6Core5Compat.dll"
+  !endif
 
   # Qt plugin DLLs
   SetOutPath "$INSTDIR\bin\imageformats"
@@ -607,10 +612,12 @@ Section -ProgramFiles
   File "${FILES_QT}\bin\imageformats\qico.dll"
   File "${FILES_QT}\bin\imageformats\qjpeg.dll"
   File "${FILES_QT}\bin\imageformats\qsvg.dll"
-  File "${FILES_QT}\bin\imageformats\qicns.dll"
-  File "${FILES_QT}\bin\imageformats\qtiff.dll"
-  File "${FILES_QT}\bin\imageformats\qwbmp.dll"
-  File "${FILES_QT}\bin\imageformats\qwebp.dll"
+  !if ${Qt_Version} = 5
+    File "${FILES_QT}\bin\imageformats\qicns.dll"
+    File "${FILES_QT}\bin\imageformats\qtiff.dll"
+    File "${FILES_QT}\bin\imageformats\qwbmp.dll"
+    File "${FILES_QT}\bin\imageformats\qwebp.dll"
+  !endif
 
   SetOutPath "$INSTDIR\bin\iconengines"
   File "${FILES_QT}\bin\iconengines\qsvgicon.dll"
