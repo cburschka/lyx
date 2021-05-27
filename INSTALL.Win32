@@ -39,6 +39,8 @@ Compiling with Microsoft Visual C++ (MSVC)
 	Qt 5.12.x is recommended, but 5.9.x or later versions should work as well.
 	The newest Qt is 5.12.6, in the installer you will need to expand that category and mark MSVC 2017 32-bit and/or
 	MSVC 2017 64-bit, depending on which versions of LyX you want to build.
+	Qt6 only delivers prebuild 64 bit binaries. If you install Qt6, you will also need to check
+	"Qt 5 Compatiblity Module"
 	Note, you dont need to Install the "old" 2017 build tools in Visual Studio installer,
 	the 2019 ones are compatible with MSVC 2017 kits installed with Qt.
 	Qt should install in C:\Qt.
@@ -84,10 +86,11 @@ Compiling with Microsoft Visual C++ (MSVC)
 	   Enable LYX_DEPENDENCIES_DOWNLOAD and click Configure.
 	   Pre-compiled dependencies will automatically be downloaded.)
 
-	- Set LYX_USE_QT to QT5.
+	- Set LYX_USE_QT to QT5 or Qt6 depending with which one you want to compile.
 	
 	- set CMAKE_PREFIX_PATH to the path of a Qt-kit
-	  e.g. to C:\Qt\5.12.6\msvc2017_64 or C:\Qt\5.12.6\msvc2017 depending on which platform you have chosen
+	  e.g. to C:\Qt\5.12.6\msvc2017_64 or C:\Qt\5.12.6\msvc2017 or C:\Qt\6.1.0\msvc2019_64
+	  depending on which platform you have chosen
 	  If you cant find this option, simply add a new entry of type "path" manually
 
 	- Disable the LYX_EXTERNAL_DTL option
@@ -128,11 +131,13 @@ Compiling with Microsoft Visual C++ (MSVC)
 	Qt5Svg.dll
 	Qt5Widgets.dll
 	Qt5WinExtras.dll
+	Qt6Core5Compat.dll (if compiling with Qt6)
 	Qt5Cored.dll (if compiling Debug version)
 	Qt5Guid.dll (if compiling Debug version)
 	Qt5Svgd.dll (if compiling Debug version)
 	Qt5Widgetsd.dll (if compiling Debug version)
 	Qt5WinExtrasd.dll (if compiling Debug version)
+	Qt6Core5Compatd.dll (if compiling with Qt6 and debug version)
 	to C:\LyX\build\LYX_INSTALLED\bin
 	
 	- Go to the Qt-kit directory, which you have specified as CMAKE_PREFIX_PATH, enter the plugins folder

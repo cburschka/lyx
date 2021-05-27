@@ -22,6 +22,7 @@ To build the installer do the following:
    Qt5OpenGL.dll"
    Qt5PrintSupport.dll"
   to %%lyxbuild%%\LYX_INSTALLED\bin
+  The files will be named Qt6xxx.dll if compiled with Qt6
 - open the file settings.nsh with a text editor and adapt the settings for your need. A good text editor
   for NSIS development is e.g. Visual Studio Code with the NSIS extension.
 - right-click on the file lyx-standard.nsi and choose "Compile NSIS script"
