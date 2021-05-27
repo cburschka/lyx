@@ -38313,10 +38313,9 @@ Configurer le dictionnaire de synonymes
 
 \begin_layout Standard
 La bibliothèque 
-\emph on
-MyThes/
-\emph default
-OpenOffice
+\family sans
+MyThes/OpenOffice
+\family default
 \emph on
  
 \emph default
@@ -38369,10 +38368,74 @@ Répertoires
 
 \begin_layout Standard
 Si LibreOffice ou OpenOffice et son dictionnaire orthographique (thésaurus)
- est déjà installé sur un système Linux, ces fichiers devraient déjà résider
- sur le système.
- Avec Windows, vous pouvez choisir au moment de l'installation quels dictionnair
-es installer.
+ sont déjà installés, ces fichiers devraient déjà résider sur le système,
+ et vous pouvez faire pointer \SpecialChar LyX
+ (via 
+\family sans
+Outils\SpecialChar menuseparator
+Préférences\SpecialChar menuseparator
+Répertoires\SpecialChar menuseparator
+Dictionnaire des synonymes
+\family default
+) vers le répertoire où ils se trouvent
+\lang english
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Avec Linux, en fonction de votre distribution et de la méthode d'installation
+ des dictionnaires, les localisations typiques sont
+\family typewriter
+ /usr/share/mythes/
+\family default
+, 
+\family typewriter
+/usr/share/myspell/dicts/
+\family default
+, 
+\family typewriter
+/usr/share/ooo/thesaurus/
+\family default
+,
+\family typewriter
+ ~/.config/libreoffice/<version>/user/
+\family default
+ ou similaires.
+ Avec Windows, les dictionnaires peuvent se trouver à 
+\family typewriter
+~
+\backslash
+Program Files
+\backslash
+LibreOffice-<Version>
+\backslash
+share
+\backslash
+extensions 
+\family default
+ou similaire.
+ Avec un Mac, la localisation implicite est
+\family typewriter
+ /Users\SpecialChar breakableslash
+<user name>\SpecialChar breakableslash
+Library\SpecialChar breakableslash
+Application Support\SpecialChar breakableslash
+libreoffice\SpecialChar breakableslash
+<version>\SpecialChar breakableslash
+user
+\family default
+/.
+\end_layout
+
+\end_inset
+
+
+\lang french
+.
+ Avec Windows, vous pouvez choisir au moment de l'installation de \SpecialChar LyX
+ quels
+ dictionnaires installer, qui se trouveraont de facto à la bonne place.
 \end_layout
 
 \begin_layout Standard
@@ -38397,7 +38460,7 @@ https://www.lyx.org/trac/export/HEAD/lyxsvn/dictionaries/trunk/thes/
 \end_inset
 
 Pour installer un dictionnaire, téléchargez les deux fichiers dans le répertoire
- des dictionnaires des synonymes (défini dvia 
+ des dictionnaires des synonymes (défini par 
 \family sans
 Outils\SpecialChar menuseparator
 Préférences\SpecialChar menuseparator
@@ -38411,7 +38474,30 @@ Dictionnaires des synonymes
 \end_layout
 
 \begin_layout Standard
-Par ailleurs, 
+Par ailleurs, vous pouvez aussi installer de nouveaux dictionnaires via
+\family sans
+ LibreOffice/OpenOffice
+\family default
+, ou, sur Linux, avec votre gestionnaire de paquetages (chercher les paquetages
+ 
+\emph on
+mythes-*
+\emph default
+ ou 
+\emph on
+libreoffice-thesaurus-*
+\emph default
+).
+ Si vous faites comme ça, vérifiez que \SpecialChar LyX
+ peut trouver les dictionnaires installés
+, c'est-à-dire que
+\family sans
+ Outils\SpecialChar menuseparator
+Préférences\SpecialChar menuseparator
+Répertoires\SpecialChar menuseparator
+Dictionnaires des synonymes
+\family default
+ pointe bien là où ils sont.
 \end_layout
 
 \begin_layout Subsection
@@ -47629,6 +47715,51 @@ reference "subsec:Profondeur-section"
 .
 \end_layout
 
+\begin_layout Standard
+Vous pouvez imprimer des numéros de ligne dan sle résultat imprimable en
+ cochant la case en bas.
+ Cette fonctionnalité est gérée par le paquertage
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+lineno
+\series default
+ est les options de ce paqutage peuvent être activée.
+ Les plus usuelles sont:
+\end_layout
+
+\begin_layout Description
+right numéros de ligne à la marge droite;
+\end_layout
+
+\begin_layout Description
+switch numéros de ligne dans la marge extérieure (gauche — page paires,
+ droite — pages impaires);
+\end_layout
+
+\begin_layout Description
+switch* numéros de ligne à la marge interne;
+\end_layout
+
+\begin_layout Description
+modulo numéros de ligne multiples de 5;
+\end_layout
+
+\begin_layout Description
+pagewise reprise de la numérotation à chaque page;
+\end_layout
+
+\begin_layout Description
+displaymath,
+\begin_inset space ~
+\end_inset
+
+mathlines numéros de ligne dans les environnements mathématiques (les deux
+ options sont nécessaires).
+\end_layout
+
 \begin_layout Section
 Bibliographie
 \end_layout
@@ -48103,7 +48234,12 @@ Placement des flottants
 \end_layout
 
 \begin_layout Standard
-Les options de placement des flottants sont décrites dans la section 
+Vous pouvez régler ici globalement le placement des flottants et les options
+ d'alignement.
+\end_layout
+
+\begin_layout Standard
+Les détails sont décrits dans la section 
 \emph on
 Placement des flottants
 \emph default
@@ -48272,7 +48408,7 @@ reference "sec:Branches"
 \end_layout
 
 \begin_layout Section
-Formats
+Sortie (résultat imprimable)
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Doc-Formats"
@@ -48359,10 +48495,57 @@ reference "sec:Formats-de-Fichiers"
 
 \end_inset
 
-.
+;
 \end_layout
 
 \begin_layout Description
+Permettre
+\begin_inset space ~
+\end_inset
+
+l'exécution
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+programmes
+\begin_inset space ~
+\end_inset
+
+externes si le case est cochée, \SpecialChar LaTeX
+ est exécuté avec l'ioption 
+\family typewriter
+-shell-escape
+\family default
+, nécessaire pour certains paquetages.
+ Notez que ceci implique un risque de sécurité, ne l'utilisez donc que lorsque
+ c'est vraiment nécessaire et si vous savez ce que vous faites;
+\end_layout
+
+\begin_layout Description
+Options
+\begin_inset space ~
+\end_inset
+
+d'exécution
+\begin_inset space ~
+\end_inset
+
+\SpecialChar LaTeX
+
+\begin_inset space ~
+\end_inset
+
+prpose des réglages pour l'exportation \SpecialChar LaTeX
+:
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
 Synchroniser
 \begin_inset space ~
 \end_inset
@@ -48379,7 +48562,9 @@ résultat
 \begin_inset space ~
 \end_inset
 
-imprimable positionne les réglages pour le menu 
+imprimable
+\family default
+ positionne les réglages pour le menu 
 \family sans
 Navigation\SpecialChar menuseparator
 Recherche
@@ -48388,8 +48573,8 @@ Recherche
 
 directe
 \family default
-.
- Pour les détails, voir la section 
+ et permet de personnaliser la macro utilisée dans ce processus (pour une
+ description détaillées, voir la section 
 \emph on
 Recherche inversée DVI/PDF
 \emph default
@@ -48397,8 +48582,41 @@ Recherche inversée DVI/PDF
 \emph on
 Options avancées
 \emph default
-.
+);
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Mettre les éléments fragiles en dehors des arguments mobiles
+\family default
+ décide si les constructions \SpecialChar LaTeX
+ dénommées 
+\begin_inset Quotes cld
+\end_inset
+
+fragiles
+\begin_inset Quotes crd
+\end_inset
+
+ (comme les étiquettes ou les entrées d'index) sont placées en-dehors des
  
+\begin_inset Quotes cld
+\end_inset
+
+arguments mobiles
+\begin_inset Quotes crd
+\end_inset
+
+ en \SpecialChar LaTeX
+ (comme les sections ou les légendes), même si les inserts correspondants
+ sont dans un tel contexte en \SpecialChar LyX
+.
+ Ce réglage est implicitement actif.
+ Si cela vous convient d'avoir les étiquettes et les entrées d'index dans
+ les macros problématiques, vous pouvez décocher la case.
+ Si vous ne comprenez pas de quoi il est question ici, oubliez-le et laissez
+ la case cochée;
 \end_layout
 
 \begin_layout Description
@@ -49427,6 +49645,43 @@ Déplacements du curseur entre mots à la Mac
 \end_layout
 
 \begin_layout Standard
+
+\family sans
+L'option Conserver les marques de suivi de modifications lors des copier/coller
+\family default
+ n'a de sens que pour les documents 
+\emph on
+qui ne suivent pas
+\emph default
+ les modifications.
+ Dans ce cas, les texte suivi sera copié et collé tel quel (en conservant
+ les marques d'
+\emph on
+addition
+\emph default
+ et de 
+\emph on
+suppression
+\emph default
+) lorsque l'option est active.
+ Sinon, le texte copié sera collé sans marques (i.e comme texte non modifié).
+ Ceci s'applique également à l'encapsulation/dissolution des inserts.
+ Dans un document qui suit 
+\emph on
+effectivement
+\emph default
+ les modifications, le texte collé est toujours marqué comme 
+\begin_inset Quotes cld
+\end_inset
+
+nouveau
+\begin_inset Quotes crd
+\end_inset
+
+ quel que soit l'état de cette option.
+\end_layout
+
+\begin_layout Standard
 L'option 
 \family sans
 Trier les environnements par ordre alphabétique
@@ -49456,6 +49711,38 @@ Math
 .
 \end_layout
 
+\begin_layout Standard
+L'option 
+\family sans
+Rechercher les fichiers cités sur le disque
+\family default
+ permet à \SpecialChar LyX
+ de parcourir votre disque à la recherche des documents cités
+ lorsque vous sélectionnez 
+\family sans
+Essayer d'afficher le contenu de la citation\SpecialChar ldots
+
+\family default
+ dans le menu contextuel d'une citation.
+ Le champ
+\family sans
+ Filtre
+\family default
+ précise les critères de recherche.
+ Voir sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Opening-cited-documents"
+
+\end_inset
+
+ pour les détails.
+\end_layout
+
 \begin_layout Subsubsection
 Plein écran
 \end_layout
@@ -49474,7 +49761,7 @@ Limitation de la largeur du texte
 \begin_layout Subsection
 Raccourcis
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Préférences ! Raccourcis
@@ -49674,7 +49961,11 @@ Modifier un raccourci existant se fait de la même manière.
 \begin_inset Quotes cld
 \end_inset
 
+
+\family sans
 command alternatives
+\family default
+
 \begin_inset Quotes crd
 \end_inset
 
@@ -50013,7 +50304,7 @@ de
 \begin_inset space ~
 \end_inset
 
-travail C'est le répertoire de travail de \SpecialChar LyX
+travail: c'est le répertoire de travail de \SpecialChar LyX
 .
  C'est la valeur implicite pour les opérations 
 \family sans
@@ -50027,7 +50318,7 @@ Enregistrer
 \family sans
 Enregistrer sous
 \family default
-.
+;
 \end_layout
 
 \begin_layout Description
@@ -50039,7 +50330,8 @@ de
 \begin_inset space ~
 \end_inset
 
-documents Ce répertoire sera ouvert quand vous utilisez le menu 
+documents: c'est le répertoire qui contient les modèles qui sont affichés
+ quand vous utilisez le menu 
 \family sans
 Fichier\SpecialChar menuseparator
 Nouveau
@@ -50052,7 +50344,7 @@ avec
 
 Modèle
 \family default
-.
+;
 \end_layout
 
 \begin_layout Description
@@ -50060,14 +50352,15 @@ Fichiers
 \begin_inset space ~
 \end_inset
 
-d'exemple Ce répertoire sera ouvert quand vous utilisez le bouton 
-\family sans
-Exemples
-\family default
- dans le menu 
+d'exemple: c'est le répertoire qui contient les fichiers d'exemples qui
+ sont affichés quand vous ouvrez le menu 
 \family sans
 Fichier\SpecialChar menuseparator
-Ouvrir.
+Ouvrir l'exemple
+\family default
+;
+\family sans
+
 \begin_inset Newline newline
 \end_inset
 
@@ -50114,7 +50407,7 @@ Sauvegarde ! Répertoire
 
 \end_inset
 
- Les copies de sauvegarde seront enregistrées dans ce répertoire.
+: les copies de sauvegarde seront enregistrées dans ce répertoire.
  Si aucun nom de répertoire n'est donné, mais que les sauvegardes sont activées
  comme c'est décrit dans la section
 \begin_inset space ~
@@ -50174,7 +50467,7 @@ serveur
 \end_inset
 
 \SpecialChar LyX
- Ici, vous pouvez entrer le nom d'un tube Unix.
+: vous pouvez entrer ici le nom d'un tube Unix.
  Ce tube est utilisé pour transférer des informations à partir de programmes
  externes vers \SpecialChar LyX
 .
@@ -50272,7 +50565,7 @@ Répertoire
 \begin_inset space ~
 \end_inset
 
-temporaire Les fichiers temporaires sont enregistrés dans ce répertoire.
+temporaire: les fichiers temporaires sont enregistrés dans ce répertoire;
 \end_layout
 
 \begin_layout Description
@@ -50284,10 +50577,10 @@ des
 \begin_inset space ~
 \end_inset
 
-synonymes Répertoire où se trouvent les dictionnaires des synonymes.
+synonymes: répertoire où se trouvent les dictionnaires des synonymes.
  Vous n'avez à le spécifier que si la fonction échoue nativement ou si vous
  voulez utiliser des dictionnaires personnels ou différents des dictionnaires
- standard.
+ standard;
 \end_layout
 
 \begin_layout Description
@@ -50295,8 +50588,8 @@ Dictionnaire
 \begin_inset space ~
 \end_inset
 
-hunspell Répertoire où se trouvent les dictionnaires du correcteur orthographiqu
-e 
+hunspell: répertoire où se trouvent les dictionnaires du correcteur orthographiq
+ue 
 \family typewriter
 Hunspell.
 
@@ -50313,7 +50606,7 @@ Hunspell
 Hunspell
 \family default
  est le seul dictionnaire orthographique disponible et devrait fonctionner
- sans spécification de dictionnaire.
+ sans spécification de dictionnaire;
 \end_layout
 
 \begin_layout Description
@@ -50321,7 +50614,7 @@ Préfixe
 \begin_inset space ~
 \end_inset
 
-PATH Ce champ contient une liste de chemins vers des programmes externes.
+PATH: ce champ contient une liste de chemins vers des programmes externes.
  Quand \SpecialChar LyX
  a besoin d'un programme externe, il cherche dans cette liste pour
  savoir où le trouver sur le système.
@@ -50342,7 +50635,7 @@ OS, la liste des chemins est automatiquement remplie quand \SpecialChar LyX
 
 Linux, la liste des chemins ne devra être modifiée que si vous voulez utiliser
  des programmes externes qui ne se trouvent pas dans le chemin normal de
- votre système ($PATH).
+ votre système ($PATH);
 \end_layout
 
 \begin_layout Description
@@ -50350,7 +50643,7 @@ Préfixe
 \begin_inset space ~
 \end_inset
 
-TEXINPUTS La variable d'environnement TEXINPUTS permet d'utiliser des fichiers
+TEXINPUTS: la variable d'environnement TEXINPUTS permet d'utiliser des fichiers
  externes inclus dans un document \SpecialChar LyX
  par des commandes en code \SpecialChar TeX
 .
@@ -50489,6 +50782,11 @@ literal "false"
 ;
 \end_layout
 
+\begin_layout Subsubsection
+Support des langues \SpecialChar LaTeX
+
+\end_layout
+
 \begin_layout Description
 Paquetage
 \begin_inset space ~
@@ -50585,28 +50883,28 @@ de
 
 début 
 \family default
-permet de définir la commande utilisée pour démarrer le paquetage, quand
- on a besoin d'un paquetage \SpecialChar LaTeX
- spécial pour écrire dans une langue donnée.
- Par exemple, on a besoin de la commande de début 
-\family sans
-
-\backslash
-begin{arabtext} 
-\family default
-pour écrire en arabe avec le paquetage 
+permet de personnaliser la commande utilisée pour changer de langue.
+ Ceci peut être utile si vous souhaitez utiliser une commande différente
+ avec 
 \series bold
-Arab\SpecialChar TeX
-
+babel
 \series default
-, voir 
+ (qui propose plusieurs commandes avec des comportements différents), ou
+ bien si vous utilisez une langue particulière avec des commandes spécifiques,
+ comme ArabTeX 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Arabic"
-literal "true"
+literal "false"
 
 \end_inset
 
+ qui nécessite la commande de début 
+\family sans
+
+\backslash
+begin{arabtext}
+\family default
 .
  La valeur implicite est la commande 
 \series bold
@@ -50618,6 +50916,17 @@ babel
 \backslash
 selectlanguage{$$lang}
 \family default
+ où 
+\family sans
+$$lang
+\family default
+ est un paramètre fictif qui est remplacé par la langue appropriée dans
+ la sortie \SpecialChar LaTeX
+.
+ Notez que ce réglage est ignoré avec 
+\series bold
+polyglossia
+\series default
 ;
 \end_layout
 
@@ -50630,45 +50939,50 @@ de
 \begin_inset space ~
 \end_inset
 
-fin est homologue de 
+fin doit être utilisée si le basculement de la lange activé avec 
 \family sans
 Commande de début
 \family default
+ doit être explicitement terminée, comme avec la commande 
+\series bold
+babel
+\series default
+ alternative 
+\family sans
+
+\backslash
+begin{otherlanguage*}\SpecialChar ldots
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+end{otherlanguage*}
+\family default
 .
- Certains paquetages, n'ont pas besoin de commande de fin puisque la commande
- de début permet d'activer et de désactiver le paquetage.
- C'est le cas pris implicitement;
-\end_layout
-
-\begin_layout Description
-Caractère
-\begin_inset space ~
+\begin_inset Newline newline
 \end_inset
 
-décimal
-\begin_inset space ~
-\end_inset
+Est implicitement vide, puisque 
+\family sans
 
-implicite définit le caractère à utiliser pour les chiffres en tableau (aligneme
-nt sur les décimales);
-\end_layout
+\backslash
+selectlanguage{$$lang}
+\family default
+ n'a pas besoin d'être explicitement fermée (le basculement reste actif
+ jusqu'au 
+\family sans
 
-\begin_layout Description
-Unité
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-longueur
-\begin_inset space ~
-\end_inset
-
-implicite définit l'unité qui est utilisée implicitement pour les longueurs
- dans les fenêtres de dialogue de \SpecialChar LyX
-;
+\backslash
+selectlanguage{$$lang}
+\family default
+ suivant.
+ Notez que ce réglage est ignoré avec 
+\series bold
+polyglossia
+\series default
+; 
 \end_layout
 
 \begin_layout Description
@@ -50684,55 +50998,88 @@ langues
 \begin_inset space ~
 \end_inset
 
-globalement Quand cette case est cochée, les langues utilisées dans le document
- sont ajoutées comme options aux options de classes de document, de sorte
- qu'elles puissent être utilisées par tous les paquetages \SpecialChar LaTeX
-.
- Dans le cas contraire, elles sont utilisées comme option du seul paquetage
- 
-\series bold
-babel
-\series default
-;
+globalement: quand cette case est cochée, les langues utilisées dans le
+ document sont ajoutées aux options de classes de document, plutôt qu'aux
+ options du paquetage de langue.
+ Du fait que les options de classe sont transmises à tous les paquetages
+ \SpecialChar LaTeX
+ chargés, tous les paquetages contenant des instructions relatives à la
+ langue seront informés des langues utilisées; 
 \end_layout
 
 \begin_layout Description
-Début
+Régler
 \begin_inset space ~
 \end_inset
 
-auto quand cette case est cochée, le document commence avec la langue de
- document choisie.
- Quand elle n'est pas cochée, la 
+la
+\begin_inset space \thinspace{}
+\end_inset
+
+langue
+\begin_inset space ~
+\end_inset
+
+du
+\begin_inset space ~
+\end_inset
+
+document
+\begin_inset space ~
+\end_inset
+
+explicitement: quand cette case est cochée, la commande de basculement définie
+ par
+\family sans
+ Commande de début
+\family default
+ est émise au début du document, positionnant ainsi explicitement la langue
+ du document.
+ Ceci garantit que la langue correcte est utilisée dans tous les cas.
+ Ceci peut être utile si vous utilisez une 
 \family sans
 Commande de début
 \family default
- est explicitement mise au début du document dans la sortie \SpecialChar LaTeX
-.
- Cela assure que l'on utilise la bonne langue quand on utilise une autre
- 
-\family sans
-Commande de début
-\family default
- que celle proposée implicitement;
+ non standard ou si un paquetage réinitialise la langue du document.
+ Si la case n'est pas cochée, la langue active au début du document est
+ utilisée (ceci est habituellement la langue du document);
 \end_layout
 
 \begin_layout Description
-Fin
+Terminer
 \begin_inset space ~
 \end_inset
 
-auto homologue de 
+la
+\begin_inset space ~
+\end_inset
+
+langue
+\begin_inset space \thinspace{}
+\end_inset
+
+du
+\begin_inset space ~
+\end_inset
+
+document
+\begin_inset space ~
+\end_inset
+
+explicitement est le contrepartie de Régler la langue du document explicitement
 \family sans
-Début auto.
+.
  
 \family default
-Quand elle n'est pas cochée, la commande 
+Quand la case est cochée, la 
 \family sans
 Commande de fin
 \family default
- est mise à la fin du document dans la sortie \SpecialChar LaTeX
-.
+ est émise à la fin du document.
+\end_layout
+
+\begin_layout Subsubsection
+Réglages de l'éditeur
 \end_layout
 
 \begin_layout Description
@@ -50748,24 +51095,58 @@ langues
 \begin_inset space ~
 \end_inset
 
-étrangères active le soulignement en bleu du texte qui a été déclaré comme
- étant dans une autre langue que celle du document;
+additionnelles active le soulignement en bleu du texte dans une autre langue
+ que celle du document;
 \end_layout
 
 \begin_layout Description
-Supporte
+Se
 \begin_inset space ~
 \end_inset
 
-les
+conformer
 \begin_inset space ~
 \end_inset
 
-langues
+à
 \begin_inset space ~
 \end_inset
 
-écrites
+la
+\begin_inset space ~
+\end_inset
+
+langue
+\begin_inset space ~
+\end_inset
+
+du
+\begin_inset space ~
+\end_inset
+
+clavier
+\begin_inset space ~
+\end_inset
+
+système: si la case est cochée, \SpecialChar LyX
+ basculera la langue de saisie si la corresponda
+nce clavier est basculée par le système d'exploitation.
+ Ceci est très utile si vous effectuez des basculements entre langues avec
+ des écritures différentes (e.g., français et hébreu: dans ce cas, basculer
+ le clavier en hébreu basculera automatiquement la langue de saisie en hébreu,
+ et vice-versa); 
+\end_layout
+
+\begin_layout Description
+Mouvement
+\begin_inset space ~
+\end_inset
+
+du
+\begin_inset space ~
+\end_inset
+
+curseur
 \begin_inset space ~
 \end_inset
 
@@ -50781,30 +51162,107 @@ droite
 \begin_inset space ~
 \end_inset
 
-gauche permet l'utilisation de langues é\SpecialChar softhyphen
-cri\SpecialChar softhyphen
-tes de droite à gauche (RTL pour
+gauche: vous pouvez ici définir comment le mouvement du curseur (avec les
+ flèches) se comporte quand vus écrivez de droite à gaucge=he (e.g; arabe,
+ hébreu ou farsi).
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\family sans
+Logique
+\family default
+ signifie que le curseur suit la logique de la direction du texte, et les
+ directions des flèches sont reliées à la directionnalité de la langue du
+ paragraphe principal.
+ E.g., avec du texte de droite à gauche encapsulé dans un paragraphe de texte
+ de gauche à droite (disons, de l'hébreu dans un paragraphe en français),
+ le curseur commence à droite (c'est-à-dire au 
+\emph on
+commencement
+\emph default
+ du passage encapsulé avec la logique de droite à gauche) quand on vient
+ de la gauche.
+ La signification de la touche est donc basculée pour cette partie: flèche
+ droite dans ce cas particulier signifie toujours 
+\emph on
+avance
+\emph default
+ ans le texte (même si cela veut dire 
+\emph on
+aller vers la gauche
+\emph default
+).
+ Ce réglage peut être utile dans des textes qui mélangent des écritures
+ de gauche à droite et de droite à gauche, puisque le curseur suit alors
+ une 
+\begin_inset Quotes cld
+\end_inset
+
+logique de texte
+\begin_inset Quotes crd
+\end_inset
+
+ cohérente;
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Visuel
+\family default
+ signifie que le déplacement se fait toujours dans la direction de la flèche.
+ Dans ce cas, dans un texte de droite à gauche encapsulé dans un paragraphe
+ de gauche à droite, le curseur commence à gauche (dans la logique du texte:
  
 \emph on
-right to left
+depuis la fin
 \emph default
-), comme l'arabe, l'hébreu ou le farsi;
+) quand il vient de la gauche.
+ La signification visuelle de la touche est conservée dans tous les cas,
+ au prix de la logique du texte.
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Préférences locales
 \end_layout
 
 \begin_layout Description
-Mouvement
+Séparateur
 \begin_inset space ~
 \end_inset
 
-du
+décimal
 \begin_inset space ~
 \end_inset
 
-curseur Quand vous écrivez en RTL, vous pouvez décider si les touches de
- flèches gauche et droite déplacent le curseur visuellement respectivement
- vers la gauche et la droite ou alors logiquement.
- Logiquement signifie que le curseur va vers la gauche quand on appuie sur
- la flèche droite et qu'il se trouve dans une portion de texte RTL.
+implicite définit le séparateur décimal implicite utilisé dans les tableaux
+ (alignement du séparateur décimal).
+ Implicitement, le caractère approprié à la langue courante est sélectionné
+ (e.g.
+ point en anglais, virgule en français), mais vous pouvez aussi définir
+ un caractère particulier (statique) ici;
+\end_layout
+
+\begin_layout Description
+Unité
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+longueur
+\begin_inset space ~
+\end_inset
+
+implicite définit l'unité utilisée implicitement, pour les longueurs dans
+ le menus de \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Subsection
@@ -50946,106 +51404,6 @@ Texte brut.
 \end_layout
 
 \begin_layout Description
-Format
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-la
-\begin_inset space ~
-\end_inset
-
-date
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Date |see
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-Format de la date
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Format de la date
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Préférences ! Format de la date
-\end_layout
-
-\end_inset
-
- Le format de la date peut être un des formats listés ici ou un mélange
- de ceux-ci :
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://man7.org/linux/man-pages/man1/date.1.html
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Par exemple, le format
-\begin_inset Newline newline
-\end_inset
-
-
-\family typewriter
-%d/%m/%y
-\family default
-
-\begin_inset Newline newline
-\end_inset
-
-imprime la date avec le format jour/mois/année.
-\end_layout
-
-\begin_layout Description
 Écraser
 \begin_inset space ~
 \end_inset
@@ -51082,58 +51440,6 @@ Paramètres ! \SpecialChar LaTeX
 \end_inset
 
 
-\end_layout
-
-\begin_layout Description
-Utiliser
-\begin_inset space ~
-\end_inset
-
-l'encodage
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-police
-\begin_inset space ~
-\end_inset
-
-La\SpecialChar TeX
- C'est l'encodage implicite pour la police du document.
- 
-\family sans
-T1
-\family default
- est l'encodage implicite et couvre les langues occidentales et les symboles.
- 
-\family sans
-T2A, T2B, T2C, LCY
-\family default
- et 
-\family sans
-X2
-\family default
- sont pour le cyrillique.
- Des combinaisons d'encodages sont possibles, comme 
-\begin_inset Quotes cld
-\end_inset
-
-
-\family sans
-T1, T2B
-\family default
-
-\begin_inset Quotes crd
-\end_inset
-
-.
- Les encodages de polices sont en principe chargés automatiquement par les
- paquetages linguistiques que \SpecialChar LyX
- mets en place en interne.
- De sorte qu'il n'y a pas de raison de changer l'encodage implicite.
 \end_layout
 
 \begin_layout Description
