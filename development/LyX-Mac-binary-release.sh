@@ -691,7 +691,7 @@ build_lyx() {
 		mkdir -p "${LyxBuildDir}" && cd "${LyxBuildDir}"
 
 		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"
-		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYLDFLAGS}"
+		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYLDFLAGS} -F${QtInstallDir}/lib"
 
 		if [ "$configure_qt_frameworks" = "yes" ]; then
 			export QT_CORE_CFLAGS="-FQtCore"
