@@ -116,9 +116,18 @@ reference "sec:PSTricks"
 
 , only the Postscript or PDF (ps2pdf) output formats will correctly render
  the included images.
- However, the PDF (Xe\SpecialChar TeX
-) output seems to also work, while trying to typeset
- the document with 
+ Starting with TeX Live 2021, you may need to add the flag 
+\family typewriter
+-dALLOWPSTRANSPARENCY
+\family default
+ to the 
+\family typewriter
+ps2pdf
+\family default
+ converter.
+ The PDF (Xe\SpecialChar TeX
+) output seems to also work, while trying to typeset the document
+ with 
 \family typewriter
 pdflatex
 \family default
