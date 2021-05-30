@@ -87,17 +87,24 @@ sub getConverter($$)
   chomp($l);
   my ($from, $to, $cmd, $par);
   ($l, $from) = getNext($l);
-  return undef if ($from !~ /(tex|dvi)$/);
+  return undef if ($from !~ /(ps|tex|dvi)$/);
   ($l, $to) = getNext($l);
   return undef if ($to !~ /^((dvi3?|pdf[23456]?)(log)?)$/);
-  my ($checkfor, $substitute);
+  my ($checkfor, $substitute, $extrapar);
   if ($from =~ /tex/) {
     $checkfor = qr/\s+\-shell\-(escape|restricted)/;
     $substitute = "-shell-escape";
+    $extrapar = qr/^latex/;
+  }
+  elsif ($from =~ /ps$/) {
+    $checkfor = qr/\s+\-dALLOWPSTRANSPARENCY/;
+    $substitute = "-dALLOWPSTRANSPARENCY";
+    $extrapar = qr/hyperref-driver=dvips/;
   }
   else {
     $checkfor = qr/\s+-i\s+dvipdfmx-unsafe.cfg/;
     $substitute = "-i dvipdfmx-unsafe.cfg";
+    $extrapar = qr/^hyperref-driver=dvipdfm/;
   }
   ($l, $cmd) = getNext($l);
   if ($add) {
@@ -112,7 +119,7 @@ sub getConverter($$)
     $cmd =~ s/$checkfor//;
   }
   ($l, $par) = getNext($l);
-  return undef if ($par !~ /^(latex|hyperref-driver=dvipdfm)/);
+  return undef if ($par !~ $extrapar);
   my $key = "\"$from\" \"$to\"";
   if ($add) {
     return([$key, [$cmd, $par]]);
