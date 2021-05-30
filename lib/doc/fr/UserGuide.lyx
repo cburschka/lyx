@@ -308,6 +308,10 @@ Revue finale avant 2.3.7, 1er mars 2021 (JPC)
 Importation dans 2.4, 2 mars 2021 (JPC)
 \end_layout
 
+\begin_layout Plain Layout
+Mise à jour pour 2.4.0, 28 mai 2021 (JPC)
+\end_layout
+
 \end_inset
 
 
@@ -4940,10 +4944,8 @@ Paquetages \SpecialChar LaTeX
 \end_inset
 
  Vous pouvez le changer pour un seul paragraphe dans la fenêtre de dialogue
-\lang english
  
 \family sans
-\lang french
 Édition\SpecialChar menuseparator
 Paramètres
 \begin_inset space ~
@@ -6281,30 +6283,22 @@ ListePuces
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 chaque élément a une puce ou un symbole particulier comme marqueur;
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 \SpecialChar LyX
  utilise le même symbole pour tous les éléments à un niveau de profondeur
  donné.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 le symbole apparaît au début de la ligne;
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-
-\lang english
 les éléments peuvent être de n'importe quelle longueur.
  \SpecialChar LyX
  décale automatiquement la marge de gauche de chaque élément.
@@ -6317,8 +6311,6 @@ ListePuces
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 si vous emboîtez un environnement 
 \family sans
 ListePuces
@@ -6332,15 +6324,11 @@ ListePuces
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 il y a quatre symboles différents pour gérer jusqu'à quatre niveaux d'emboîtemen
 t.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 voyez la section
 \begin_inset space ~
 \end_inset
@@ -6373,8 +6361,6 @@ Nous avons dit que des niveaux différents utilisent comme marqueurs des
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 le marqueur pour le premier niveau de 
 \family sans
 ListePuces
@@ -6384,8 +6370,6 @@ ListePuces
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 NdT: c'est toujours un point noir qui apparaît à l'écran, mais le résultat
  imprimé peut différer en fonction de la langue du document, comme c'est
  le cas en français.
@@ -6400,43 +6384,31 @@ NdT: c'est toujours un point noir qui apparaît à l'écran, mais le résultat
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 pour le deuxième niveau, c'est un tiret,
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 pour le troisième, un astérisque,
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 pour le quatrième, c'est un point centré,
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-
-\lang english
 retour au troisième niveau,
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-
-\lang english
 au deuxième,
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-
-\lang english
 au plus extérieur.
 \end_layout
 
@@ -11756,11 +11728,8 @@ reference "subsec:Abbreviations"
 
  pour examples.
  Cependant, un espacement de fin de phrase après une abréviation suivie
- d'un point n'est pas souhaitable : 
-\lang english
-d
-\lang french
-ans ce cas, on insère l'espacement avec le menu 
+ d'un point n'est pas souhaitable : dans ce cas, on insère l'espacement
+ avec le menu 
 \family sans
 Insertion\SpecialChar menuseparator
 Typographie spéciale\SpecialChar menuseparator
@@ -15124,9 +15093,9 @@ type  "menu"
 arg   "dialog-show character"
 \end_inset
 
-) ou
+) ou 
 \lang english
- 
+
 \begin_inset Info
 type  "icon"
 arg   "dialog-show character"
@@ -18090,11 +18059,7 @@ tiret long
 \begin_inset Text
 
 \begin_layout Plain Layout
-combinaison de touches
-\lang english
- 
-\lang french
-ou 
+combinaison de touches ou 
 \begin_inset Quotes cld
 \end_inset
 
@@ -18747,11 +18712,7 @@ Paramètres
 \end_inset
 
 .
-
-\lang english
  \SpecialChar LaTeX
-
-\lang french
  ne césure pas le texte saisi en police 
 \family sans
 à chasse fixe
@@ -27682,10 +27643,6 @@ Apparier
 \begin_layout Standard
 Si vous décidez après coup de placer des parenthèses (ou une autre structure
  mathématique, comme une racine carrée, ou un autre ornement) autour d'une
- 
-\lang english
-existing
-\lang french
  structure mathématique déjà existante, c'est faisable.
  Sélectionnez la structure en question (en maintenant la touche 
 \family sans
@@ -28557,8 +28514,6 @@ mathbb
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Formula $\mathds{DOUBLES\,\,TRAITS}$
 \end_inset
 
@@ -28643,13 +28598,7 @@ mathcal
 
 \begin_layout Plain Layout
 
-\shape up
-\size normal
 \emph on
-\bar no
-\noun off
-\color none
-\lang english
 \begin_inset Formula $\mathscr{SCRIPT}$
 \end_inset
 
@@ -31297,11 +31246,7 @@ Bibliographie ! Bib\SpecialChar TeX
 \end_layout
 
 \begin_layout Standard
-Pour accéder à une base de données 
-\lang english
-via
-\lang french
- Bib\SpecialChar TeX
+Pour accéder à une base de données via Bib\SpecialChar TeX
 , utilisez le menu 
 \family sans
 Insertion\SpecialChar menuseparator
@@ -37368,9 +37313,15 @@ la recherche de texte et de formules mathématiques est indifféremment autoris�
 \begin_layout Itemize
 la recherche peut être insensible au style, de telle sorte que le texte
  est trouvé quel que soit le contexte ou le style (texte standard, titres
- de section, notes, et même mathématiques), ou il peut être marqué par un
- style, de sorte que, par exemple, un mot appartenant à un titre de section
- ne sera trouvé que dans un titre de section;
+ de section, notes, et même formules mathématiques), ou il peut être marqué
+ par un style, de sorte que, par exemple, un mot appartenant à un titre
+ de section ne sera trouvé que dans un titre de section;
+\end_layout
+
+\begin_layout Itemize
+la recherche peut être restreinte aux seuls environnements mathématiques:
+ ceci est utile pour redéfinir des notations mathématiques sans trouver
+ de texte en dehors de ces environnements;
 \end_layout
 
 \begin_layout Itemize
@@ -37451,7 +37402,7 @@ Entrée
 \family sans
 Entrée 
 \family default
-de manière répétitive la recherche se poursuit vers le bas
+de manière répétitive la recherche se poursuit vers l'avant
 \family sans
 .
 
@@ -37460,7 +37411,7 @@ de manière répétitive la recherche se poursuit vers le bas
 \family sans
 Maj+Entrée
 \family default
- recherche vers le haut.
+ recherche vers l'arrière.
 \end_layout
 
 \begin_layout Standard
@@ -38724,13 +38675,13 @@ arg   "changes-merge"
 \end_layout
 
 \begin_layout Standard
-Quand le suivi des modifications est activé, la barre d'outils de revue
+Quand le suivi des modifications est activé, la barre d'outils de suivi
  est rendue visible:
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Barre d'outils  ! Revue
+Barre d'outils  ! Suivi
 \end_layout
 
 \end_inset
@@ -39423,13 +39374,8 @@ Document\SpecialChar menuseparator
 Paramètres\SpecialChar menuseparator
 Langue
 \family default
- vous permet de choisir la langue, 
-\family roman
-\lang english
-the quote style
-\family default
-\lang french
- et l'encodage des caractères.
+ vous permet de choisir la langue, les styles des guillemets et l'encodage
+ des caractères.
 \end_layout
 
 \begin_layout Standard
@@ -40291,15 +40237,11 @@ PostScript format PostScript en utilisant le programme
 \family typewriter
 dvips
 \family default
-; 
-\lang english
-for possible 
-\family typewriter
+; pour les options 
+\family sans
 dvips
 \family default
- options see
-\lang french
- la section
+, voir la section
 \begin_inset space ~
 \end_inset
 
@@ -41385,11 +41327,8 @@ Vous trouverez plus d'informations dans le manuel de
 \emph on
 Linguistique
 \emph default
- 
-\lang english
-(
+ (
 \family sans
-\lang french
 Aide\SpecialChar menuseparator
 Manuels spécifiques
 \family default
@@ -43145,10 +43084,8 @@ Format de sortie implicite
 \family default
  
 \family sans
-\lang english
 (
 \family default
-\lang french
 voir section
 \begin_inset space ~
 \end_inset
@@ -44387,7 +44324,7 @@ arg   "font-emph"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Mise en évidence, fonction du dialogue 
+Mise en évidence, fonction de la fenêtre de dialogue 
 \lang english
 
 \begin_inset Info
@@ -44620,8 +44557,6 @@ Tableau
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Info
 type  "icon"
 arg   "dynamic-custom-insets"
@@ -44651,8 +44586,8 @@ Inserts personnalisables
 
 \family sans
 \lang english
-Insert\SpecialChar menuseparator
-Custom Insets
+Insertion\SpecialChar menuseparator
+Inserts personnalisables
 \end_layout
 
 \end_inset
@@ -44821,7 +44756,7 @@ La barre d'outils supplémentaire illustrée ci-dessus contient les boutons
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="25" columns="2">
+<lyxtabular version="3" rows="26" columns="2">
 <features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
@@ -44861,7 +44796,7 @@ Implicite
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "layout Enumerate"
+arg   "layout-toggle Enumerate"
 \end_inset
 
 
@@ -44888,7 +44823,7 @@ Liste numérotée
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "layout Itemize"
+arg   "layout-toggle Itemize"
 \end_inset
 
 
@@ -44915,7 +44850,7 @@ Liste à puces
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "layout List"
+arg   "layout-toggle List"
 \end_inset
 
 
@@ -44942,7 +44877,7 @@ Liste
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "layout Description"
+arg   "layout-toggle Description"
 \end_inset
 
 
@@ -45485,6 +45420,37 @@ arg   "math-macro newmacroname newcommand"
 
 \family sans
 Insertion\SpecialChar menuseparator
+Maths\SpecialChar menuseparator
+Macro
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset include"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Insertion\SpecialChar menuseparator
 Fichier\SpecialChar menuseparator
 Sous-document
 \end_layout
@@ -45501,7 +45467,7 @@ Sous-document
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "dialog-show-new-inset include"
+arg   "dialog-show character"
 \end_inset
 
 
@@ -45538,7 +45504,6 @@ Personnalisé
 \begin_layout Plain Layout
 
 \family sans
-\lang english
 \begin_inset Info
 type  "icon"
 arg   "textstyle-apply"
@@ -45555,14 +45520,12 @@ arg   "textstyle-apply"
 \begin_layout Plain Layout
 Mise en forme du texte en utilisant les réglages récents de la fenêtre interacti
 ve 
-\lang english
-
 \begin_inset Info
 type  "menu"
 arg   "dialog-show character"
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -45577,7 +45540,7 @@ arg   "dialog-show character"
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "dialog-show character"
+arg   "layout-paragraph"
 \end_inset
 
 
@@ -45615,7 +45578,7 @@ paragraphe
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "layout-paragraph"
+arg   "thesaurus-entry"
 \end_inset
 
 
@@ -48103,11 +48066,8 @@ Maths
 mathdots est utilisé pour pour les ellipses particulières, voir la section
  
 \emph on
-Ellipses
-\lang english
- 
+Ellipses 
 \emph default
-\lang french
 du manuel 
 \emph on
 Maths
@@ -48165,11 +48125,8 @@ mhchem est utili
 \emph on
 s
 \emph default
-é pour les équations en chimie, voir la section
-\lang english
- 
+é pour les équations en chimie, voir la section 
 \emph on
-\lang french
 Symboles et équations chimiques 
 \emph default
 du manuel 
@@ -48282,11 +48239,7 @@ Police
 Taille
 \family default
  des symboles.
-
-\lang english
- 
-\lang french
-L'environnement liste à puces est décrit section
+ L'environnement liste à puces est décrit section
 \begin_inset space ~
 \end_inset
 
@@ -48916,20 +48869,28 @@ La syntaxe des éléments est la suivante:
 
 \series bold
 Item 
-\begin_inset Quotes erd
+\begin_inset Quotes cld
 \end_inset
 
-nom de menu ou de bouton
-\begin_inset Quotes erd
+Menu
+\begin_inset Quotes crd
+\end_inset
+
+ ou 
+\begin_inset Quotes cld
+\end_inset
+
+Nom de bouton
+\begin_inset Quotes crd
 \end_inset
 
  
-\begin_inset Quotes erd
+\begin_inset Quotes cld
 \end_inset
 
 fonction \SpecialChar LyX
 
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -48974,8 +48935,27 @@ et que de ce fait nous voulions un signet supplémentaire, vous pouvez ajouter
 
 
 \series bold
-Item "Enregistrer Signet 6" "bookmark-save 6"
+Item 
+\lang english
+
+\begin_inset Quotes eld
+\end_inset
+
+Save Bookmark 6
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+bookmark-save 6
+\begin_inset Quotes erd
+\end_inset
+
+
 \series default
+\lang french
 
 \begin_inset VSpace smallskip*
 \end_inset
@@ -48994,15 +48974,8 @@ stdmenus.inc
 \begin_layout Standard
 Avec
 \family sans
- 
-\lang english
-Icon
-\begin_inset space ~
-\end_inset
-
-Set
+ Jeu d'icônes
 \family default
-\lang french
  vous pouvez modifier l'apparence des boutons des barres d'outils.
  Les ensembles d'icônes actuellement disponibles sont comparés ici: 
 \begin_inset CommandInset href
@@ -49103,11 +49076,7 @@ Effacer toutes les informations sur la session
 \end_layout
 
 \begin_layout Subsubsection
-Sauvegarde &
-\lang english
- 
-\lang french
-enregistrement
+Sauvegarde & enregistrement
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Documents de sauvegarde"
@@ -49266,9 +49235,7 @@ arg   "closetab"
 ) à la droite de la barre des onglets pour fermer ceux-ci.
  Sinon, chaque document a son propre bouton de fermeture.
  Indépendamment de cette option, il est toujours possible de fermer un onglet
- par un clic central dans la barre d'onglets
-\lang english
-.
+ par un clic central dans la barre d'onglets.
 \end_layout
 
 \begin_layout Standard
@@ -50147,11 +50114,8 @@ keyboard map
 \emph default
 ).
  Si par exemple, vous avez un clavier tchèque et que vous voulez l'utiliser
- comme un clavier roumain, vous pouvez activer
-\lang english
- 
+ comme un clavier roumain, vous pouvez activer 
 \family sans
-\lang french
 Réaffectation
 \begin_inset space ~
 \end_inset
@@ -51523,11 +51487,7 @@ de
 \begin_inset space ~
 \end_inset
 
-l'index Réglages pour la construction de
-\lang english
- 
-\lang french
-l'index, voir section
+l'index Réglages pour la construction de l'index, voir section
 \begin_inset space ~
 \end_inset
 
@@ -53540,11 +53500,7 @@ literal "false"
 
 \end_inset
 
- du 
-\lang english
-between baselines of two subsequent text lines
-\lang french
-paquetage \SpecialChar LaTeX
+ du paquetage \SpecialChar LaTeX
  
 \series bold
 prettyref
