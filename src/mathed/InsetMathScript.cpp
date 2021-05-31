@@ -398,6 +398,14 @@ bool InsetMathScript::hasLimits(FontInfo const & font) const
 }
 
 
+bool InsetMathScript::hasLimits(MathStyle const & style) const
+{
+	FontInfo font = sane_font;
+	font.setStyle(style);
+	return hasLimits(font);
+}
+
+
 void InsetMathScript::removeScript(bool up)
 {
 	if (nargs() == 2) {
@@ -606,18 +614,18 @@ void InsetMathScript::mathmlize(MathMLStream & ms) const
 {
 	bool d = hasDown() && !down().empty();
 	bool u = hasUp() && !up().empty();
-	// FIXME: the MathMLStream should be able to give us has_limits_
+	bool has_limits = hasLimits(ms.getFontMathStyle());
 
 	if (!d && !u)
 		return;
 
 	const char * tag;
 	if (u && d)
-		tag = has_limits_ ? "munderover" : "msubsup";
+		tag = has_limits ? "munderover" : "msubsup";
 	else if (u)
-		tag = has_limits_ ? "mover" : "msup";
+		tag = has_limits ? "mover" : "msup";
 	else if (d)
-		tag = has_limits_ ? "munder" : "msub";
+		tag = has_limits ? "munder" : "msub";
 
 	ms << MTag(tag);
 

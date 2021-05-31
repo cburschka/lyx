@@ -13,6 +13,7 @@
 #define MATH_MATHMLSTREAM_H
 
 #include "InsetMath.h"
+#include "FontInfo.h"
 
 #include "TexRow.h"
 #include "texstream.h"
@@ -402,6 +403,10 @@ public:
 	std::string namespacedTag(std::string const & tag) const {
 		return (xmlns().empty() ? "" : xmlns() + ":") + tag;
 	}
+	/// Returns the current math style in the stream.
+	const MathStyle & getFontMathStyle() const { return font_math_style_; }
+	/// Returns the current math style in the stream.
+	void setFontMathStyle(const MathStyle style) { font_math_style_ = style; }
 private:
 	///
 	void setTextMode(bool t) { in_text_ = t; }
@@ -419,6 +424,8 @@ private:
 	std::string xmlns_;
 	///
 	bool xml_mode_;
+	/// The only important part of a FontInfo object.
+	MathStyle font_math_style_;
 	///
 	friend class SetMode;
 };

@@ -13,6 +13,7 @@
 #define MATH_SCRIPTINSET_H
 
 #include "InsetMathNest.h"
+#include "FontEnums.h"
 
 
 namespace lyx {
@@ -135,6 +136,8 @@ private:
 	int nker(BufferView const * bv) const;
 	/// do we we have to draw the scripts above/below nucleus?
 	bool hasLimits(FontInfo const &) const;
+	///
+	bool hasLimits(MathStyle const &) const;
 	/// clean up empty cells and return true if a cell has been deleted.
 	bool notifyCursorLeaves(Cursor const & old, Cursor & cur) override;
 

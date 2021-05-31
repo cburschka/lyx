@@ -26,6 +26,7 @@
 #include <algorithm>
 #include <cstring>
 #include <ostream>
+#include <FontInfo.h>
 
 using namespace std;
 
@@ -289,7 +290,12 @@ TeXMathStream & operator<<(TeXMathStream & ws, unsigned int i)
 
 MathMLStream::MathMLStream(odocstream & os, std::string const & xmlns, bool xmlMode)
 	: os_(os), tab_(0), line_(0), in_text_(false), xmlns_(xmlns), xml_mode_(xmlMode)
-{}
+{
+	if (in_text_)
+		font_math_style_ = TEXT_STYLE;
+	else
+		font_math_style_ = DISPLAY_STYLE;
+}
 
 
 void MathMLStream::cr()
