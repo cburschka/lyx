@@ -6180,30 +6180,22 @@ ListePuces
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 chaque élément a une puce ou un symbole particulier comme marqueur;
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 \SpecialChar LyX
  utilise le même symbole pour tous les éléments à un niveau de profondeur
  donné.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 le symbole apparaît au début de la ligne;
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-
-\lang english
 les éléments peuvent être de n'importe quelle longueur.
  \SpecialChar LyX
  décale automatiquement la marge de gauche de chaque élément.
@@ -6216,8 +6208,6 @@ ListePuces
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 si vous emboîtez un environnement 
 \family sans
 ListePuces
@@ -6231,15 +6221,11 @@ ListePuces
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 il y a quatre symboles différents pour gérer jusqu'à quatre niveaux d'emboîtemen
 t.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 voyez la section
 \begin_inset space ~
 \end_inset
@@ -6272,8 +6258,6 @@ Nous avons dit que des niveaux différents utilisent comme marqueurs des
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 le marqueur pour le premier niveau de 
 \family sans
 ListePuces
@@ -6283,8 +6267,6 @@ ListePuces
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 NdT: c'est toujours un point noir qui apparaît à l'écran, mais le résultat
  imprimé peut différer en fonction de la langue du document, comme c'est
  le cas en français.
@@ -6299,43 +6281,31 @@ NdT: c'est toujours un point noir qui apparaît à l'écran, mais le résultat
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 pour le deuxième niveau, c'est un tiret,
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 pour le troisième, un astérisque,
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 pour le quatrième, c'est un point centré,
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-
-\lang english
 retour au troisième niveau,
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-
-\lang english
 au deuxième,
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-
-\lang english
 au plus extérieur.
 \end_layout
 
@@ -11647,11 +11617,8 @@ reference "subsec:Abbreviations"
 
  pour examples.
  Cependant, un espacement de fin de phrase après une abréviation suivie
- d'un point n'est pas souhaitable : 
-\lang english
-d
-\lang french
-ans ce cas, on insère l'espacement avec le menu 
+ d'un point n'est pas souhaitable : dans ce cas, on insère l'espacement
+ avec le menu 
 \family sans
 Insertion\SpecialChar menuseparator
 Typographie spéciale\SpecialChar menuseparator
@@ -17658,11 +17625,7 @@ tiret long
 \begin_inset Text
 
 \begin_layout Plain Layout
-combinaison de touches
-\lang english
- 
-\lang french
-ou 
+combinaison de touches ou 
 \begin_inset Quotes cld
 \end_inset
 
@@ -18308,9 +18271,9 @@ Paramètres
 .
 
 \lang english
- \SpecialChar LaTeX
-
+ 
 \lang french
+\SpecialChar LaTeX
  ne césure pas le texte saisi en police 
 \family sans
 à chasse fixe
@@ -27135,10 +27098,6 @@ Apparier
 \begin_layout Standard
 Si vous décidez après coup de placer des parenthèses (ou une autre structure
  mathématique, comme une racine carrée, ou un autre ornement) autour d'une
- 
-\lang english
-existing
-\lang french
  structure mathématique déjà existante, c'est faisable.
  Sélectionnez la structure en question (en maintenant la touche 
 \family sans
@@ -30522,11 +30481,7 @@ Bibliographie ! Bib\SpecialChar TeX
 \end_layout
 
 \begin_layout Standard
-Pour accéder à une base de données 
-\lang english
-via
-\lang french
- Bib\SpecialChar TeX
+Pour accéder à une base de données via Bib\SpecialChar TeX
 , utilisez le menu 
 \family sans
 Insertion\SpecialChar menuseparator
@@ -39279,15 +39234,11 @@ PostScript format PostScript en utilisant le programme
 \family typewriter
 dvips
 \family default
-; 
-\lang english
-for possible 
+; pour les options 
 \family typewriter
 dvips
 \family default
- options see
-\lang french
- la section
+ voir la section
 \begin_inset space ~
 \end_inset
 
@@ -40256,11 +40207,8 @@ Vous trouverez plus d'informations dans le manuel de
 \emph on
 Linguistique
 \emph default
- 
-\lang english
-(
+ (
 \family sans
-\lang french
 Aide\SpecialChar menuseparator
 Manuels spécifiques
 \family default
@@ -46402,11 +46350,8 @@ Maths
 mathdots est utilisé pour pour les ellipses particulières, voir la section
  
 \emph on
-Ellipses
-\lang english
- 
+Ellipses 
 \emph default
-\lang french
 du manuel 
 \emph on
 Maths
@@ -46464,11 +46409,8 @@ mhchem est utili
 \emph on
 s
 \emph default
-é pour les équations en chimie, voir la section
-\lang english
- 
+é pour les équations en chimie, voir la section 
 \emph on
-\lang french
 Symboles et équations chimiques 
 \emph default
 du manuel 
@@ -46576,11 +46518,7 @@ Police
 Taille
 \family default
  des symboles.
-
-\lang english
- 
-\lang french
-L'environnement liste à puces est décrit section
+ L'environnement liste à puces est décrit section
 \begin_inset space ~
 \end_inset
 
@@ -47315,11 +47253,7 @@ Effacer toutes les informations sur la session
 \end_layout
 
 \begin_layout Subsubsection
-Sauvegarde &
-\lang english
- 
-\lang french
-enregistrement
+Sauvegarde & enregistrement
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Documents de sauvegarde"
@@ -47478,9 +47412,7 @@ arg   "closetab"
 ) à la droite de la barre des onglets pour fermer ceux-ci.
  Sinon, chaque document a son propre bouton de fermeture.
  Indépendamment de cette option, il est toujours possible de fermer un onglet
- par un clic central dans la barre d'onglets
-\lang english
-.
+ par un clic central dans la barre d'onglets.
 \end_layout
 
 \begin_layout Standard
@@ -49647,11 +49579,7 @@ de
 \begin_inset space ~
 \end_inset
 
-l'index Réglages pour la construction de
-\lang english
- 
-\lang french
-l'index, voir section
+l'index Réglages pour la construction de l'index, voir section
 \begin_inset space ~
 \end_inset
 
@@ -51663,11 +51591,7 @@ literal "false"
 
 \end_inset
 
- du 
-\lang english
-between baselines of two subsequent text lines
-\lang french
-paquetage \SpecialChar LaTeX
+ du paquetage \SpecialChar LaTeX
  
 \series bold
 prettyref
