@@ -289,7 +289,7 @@ MathClass InsetMathScript::mathClass() const
 void InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	// we store this, because it is much easier
-	has_limits_ = hasLimits(mi.base.font);
+	has_limits_ = hasLimits(mi.base.font.style());
 
 	// Compute metrics of the available cells
 	Dimension dim0;
@@ -385,24 +385,16 @@ void InsetMathScript::drawT(TextPainter & pain, int x, int y) const
 }
 
 
-bool InsetMathScript::hasLimits(FontInfo const & font) const
+bool InsetMathScript::hasLimits(MathStyle const & style) const
 {
 	if (nuc().empty())
 		return false;
 
 	Limits const lim = nuc().back()->limits() == AUTO_LIMITS
-		? nuc().back()->defaultLimits(font.style() == DISPLAY_STYLE)
+		? nuc().back()->defaultLimits(style == DISPLAY_STYLE)
 		: nuc().back()->limits();
 	LASSERT(lim != AUTO_LIMITS, return false);
 	return lim == LIMITS;
-}
-
-
-bool InsetMathScript::hasLimits(MathStyle const & style) const
-{
-	FontInfo font = sane_font;
-	font.setStyle(style);
-	return hasLimits(font);
 }
 
 
