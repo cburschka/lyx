@@ -1915,12 +1915,10 @@ Ce dernier doit être le nom du fichier tel qu'il serait spécifié dans la
  commande \SpecialChar LaTeX
  
 \series bold
-\lang english
 
 \backslash
 include
 \series default
-\lang french
 .
  Il n'est pertinent que pour l'exportation des fichiers appropriés à une
  telle inclusion.
@@ -1931,21 +1929,15 @@ Les copieurs peuvent être utilisés pour à peu près n'importe quelle opérati
  sur un fichier.
  Par exemple, supposons que vous vouliez que les fichiers pdf soient copiés
  dans un répertoire particulier, 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 /home/you/pdf/
 \end_layout
 
 \end_inset
 
-
-\lang french
 .
  Alors vous pouvez écrire un script comme celui-ci:
 \end_layout
@@ -1987,19 +1979,17 @@ Enregistrez-le dans votre répertoire \SpecialChar LyX
  local ― disons,
 \lang english
  
+\lang french
+
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 /home/you/.lyx/scripts/pdfcopier.sh
 \end_layout
 
 \end_inset
 
-
-\lang french
  ― et rendez le exécutable, si c'est nécessaire sur votre plate-forme.
  Puis, dans 
 \begin_inset Flex Noun
@@ -2034,21 +2024,15 @@ PDF(pdflatex)
 \end_inset
 
  ― ou l'un des autres formats PDF ― et saisissez 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 pdfcopier.sh $$i $$o
 \end_layout
 
 \end_inset
 
-
-\lang french
  dans le champ 
 \begin_inset Flex Noun
 status collapsed
@@ -3430,8 +3414,6 @@ Il arrive quelquefois qu'un message anglophone doive être traduit de différent
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 &New:
 \end_layout
 
@@ -3442,8 +3424,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang german
 Nouvelle
 \end_layout
 
@@ -3465,8 +3445,6 @@ Nouvel
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 gettext
 \end_layout
 
@@ -3478,8 +3456,6 @@ gettext
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 &New:
 \end_layout
 
@@ -3490,8 +3466,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 &New:[[branch]]
 \end_layout
 
@@ -3502,8 +3476,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 &New:[[index]].
 \end_layout
 
@@ -3526,8 +3498,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 gettext
 \end_layout
 
@@ -3540,7 +3510,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \noun on
-\lang german
 Nouvelle branche
 \begin_inset space ~
 \end_inset
@@ -3557,7 +3526,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \noun on
-\lang english
 Nouvel index
 \begin_inset space ~
 \end_inset
@@ -3715,21 +3683,15 @@ reference "fn:NdT-:-Je"
  Ce sera votre fichier de travail.
  Vous pouvez l'utiliser comme fichier d'aide personnel en le mettant dans
  votre répertoire 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 MonRép/doc/xx/
 \end_layout
 
 \end_inset
 
-
-\lang french
 .
 \begin_inset Newline newline
 \end_inset
@@ -6107,8 +6069,6 @@ latex
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 foiltex
 \end_layout
 
@@ -6125,14 +6085,10 @@ foiltex
 \end_inset
 
 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ~:
 \backslash
 Documents and Settings
@@ -6170,8 +6126,6 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 MiK\SpecialChar TeX
 
 \backslash
@@ -6186,7 +6140,6 @@ latex
 
 
 \family sans
-\lang french
 .
 \family default
 
@@ -7141,8 +7094,6 @@ book.cls
 
 \begin_layout LyX-Code
 
-\lang english
-
 \backslash
 LoadClass{book}
 \end_layout
@@ -7182,8 +7133,6 @@ Et enregistrer le fichier comme
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 thesis.layout
 \end_layout
 
@@ -7200,8 +7149,6 @@ thesis.layout
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 
 \backslash
 DeclareLaTeXClass[thesis,book]{thesis}
@@ -7406,30 +7353,20 @@ layout2layout.py
 
 \begin_layout Enumerate
 renommez le fichier 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 myclass.layout
 \end_layout
 
 \end_inset
 
-
-\lang french
  comme 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 myclass.old
 \end_layout
 
@@ -8147,8 +8084,6 @@ Avec les versions de \SpecialChar LyX
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 layout-reload
 \end_layout
 
@@ -8172,8 +8107,6 @@ Attention
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 layout-reload
 \end_layout
 
@@ -8478,8 +8411,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 telmodule
 \end_layout
 
@@ -8490,8 +8421,6 @@ telmodule
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 telmodule.module
 \end_layout
 
@@ -8550,8 +8479,6 @@ En anglais de préférence si le module doit faire l'objet d'une publication
 
 \end_inset
 
-
-\lang english
 :
 \end_layout
 
@@ -8659,14 +8586,10 @@ Ce balisage a été introduit dans \SpecialChar LyX
 
 1.4.0 Les fichiers de format des versions antérieures n'avaient pas de numéro
  de format explicite et sont affectés du 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Format
 \begin_inset space ~
 \end_inset
@@ -8676,8 +8599,6 @@ Format
 
 \end_inset
 
-
-\lang french
 .
  Le numéro de format du présent fichier est le numéro 81.
  mais chaque version de \SpecialChar LyX
@@ -8767,14 +8688,10 @@ End
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 AddToHTMLPreamble
 \end_layout
 
@@ -8782,7 +8699,6 @@ AddToHTMLPreamble
 
 
 \family roman
-\lang french
  
 \family default
 ajoute une information qui sera incluse dans le bloc 
@@ -8833,14 +8749,10 @@ EndPreamble
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 AddToPreamble
 \end_layout
 
@@ -8848,7 +8760,6 @@ AddToPreamble
 
 
 \family roman
-\lang french
  
 \family default
 ajoute une information au préambule du document.
@@ -8920,21 +8831,15 @@ true
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CiteEngine <moteur>
 \end_layout
 
 \end_inset
 
-
-\lang french
  définit le possibilités pour l'affichage des références de citation.
  Voir
 \begin_inset space ~
@@ -8991,14 +8896,10 @@ AddToCiteEngine
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CiteFormat
 \end_layout
 
@@ -9006,7 +8907,6 @@ CiteFormat
 
 
 \family roman
-\lang french
  
 \family default
 définit le style à utiliser pour afficher les informations bibliographiques.
@@ -9027,8 +8927,6 @@ reference "subsec:Description citation"
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 End
 \end_layout
 
@@ -9060,20 +8958,14 @@ CiteFormat
 \family default
  utilisé dans un fichier de format ou un module écrasera la définition de
  moteurCitation.
-
-\lang english
  
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CiteFramework
 \end_layout
 
@@ -9086,7 +8978,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 bibtex
 \end_layout
 
@@ -9097,16 +8988,12 @@ bibtex
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 biblatex
 \end_layout
 
 \end_inset
 
-]
-\lang french
- précise si 
+] précise si 
 \family sans
 Biblatex
 \family default
@@ -9130,14 +9017,10 @@ noprefix "false"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ClassOptions
 \end_layout
 
@@ -9145,7 +9028,6 @@ ClassOptions
 
 
 \family roman
-\lang french
  
 \family default
 décrit diverses options globales comprises par la classe du document.
@@ -9166,8 +9048,6 @@ reference "subsec:Section-ClassOptions"
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 End
 \end_layout
 
@@ -9181,21 +9061,15 @@ End
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Columns
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -9239,14 +9113,10 @@ Paramètres
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Counter
 \end_layout
 
@@ -9254,7 +9124,6 @@ Counter
 
 
 \family roman
-\lang french
  
 \family default
 [
@@ -9278,8 +9147,6 @@ chaîne
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 End
 \end_layout
 
@@ -9304,21 +9171,15 @@ reference "subsec:Compteurs"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 DefaultFont
 \end_layout
 
 \end_inset
 
-
-\lang french
  décrit la police implicite dans le document.
  Voir la 
 \begin_inset CommandInset ref
@@ -9333,14 +9194,10 @@ reference "subsec:polices"
 \end_inset
 
 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 EndFont
 \end_layout
 
@@ -9354,21 +9211,15 @@ EndFont
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 DefaultModule
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -9385,8 +9236,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 .module
 \end_layout
 
@@ -9399,21 +9248,15 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 DefaultStyle
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -9430,8 +9273,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Standard
 \end_layout
 
@@ -9443,22 +9284,16 @@ Standard
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 DocBookRoot
 \end_layout
 
 \end_inset
 
- 
-\lang french
-[
+ [
 \begin_inset Flex Code
 status collapsed
 
@@ -9492,22 +9327,16 @@ article
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 DocBookForceAbstract
 \end_layout
 
 \end_inset
 
- 
-\lang french
-[
+ [
 \begin_inset Flex Code
 status collapsed
 
@@ -9550,21 +9379,15 @@ false
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ExcludesModule
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -9581,8 +9404,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 .module
 \end_layout
 
@@ -9596,8 +9417,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 theorems-sec
 \end_layout
 
@@ -9624,21 +9443,15 @@ reference "subsec:Modules_de_format"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Float
 \end_layout
 
 \end_inset
 
-
-\lang french
  définit un nouveau flottant.
  Voir la 
 \begin_inset CommandInset ref
@@ -9657,8 +9470,6 @@ reference "subsec:Flottants"
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 End
 \end_layout
 
@@ -9672,21 +9483,15 @@ End
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLPreamble
 \end_layout
 
 \end_inset
 
-
-\lang french
  définit l'information qui sera incluse dans le bloc 
 \begin_inset Flex Code
 status collapsed
@@ -9699,57 +9504,39 @@ status collapsed
 
  quand le document est exporté en XHTML.
  Notez bien que ceci écrasera toute déclaration 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLPreamble
 \end_layout
 
 \end_inset
 
-
-\lang french
  ou 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 AddToHTMLPreamble
 \end_layout
 
 \end_inset
 
- 
-\lang french
-antérieure (utiliser
+ antérieure (utiliser
 \begin_inset Newline newline
 \end_inset
 
 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 AddToHTMLPreamble
 \end_layout
 
 \end_inset
 
-
-\lang french
  si vous désirez simplement ajouter du contenu).
  Doit être fermé par 
 \begin_inset Quotes cld
@@ -9760,8 +9547,6 @@ AddToHTMLPreamble
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 End
 \end_layout
 
@@ -9775,21 +9560,15 @@ End
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLTOCSection
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -9803,58 +9582,40 @@ status collapsed
 ] définit le style utilisé pour la table des matières, la bibliographie,
  et similaires, lorsque le document est exporté en HTML.
  Pour les articles, ceci devrait normalement valoir 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Section
 \end_layout
 
 \end_inset
 
-
-\lang french
 ; pour les livres 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Chapter
 \end_layout
 
 \end_inset
 
-
-\lang french
 .
  Sans précisions, \SpecialChar LyX
  essaiera de deviner quel style utiliser.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 IfCounter
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -9876,8 +9637,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 End
 \end_layout
 
@@ -9906,8 +9665,6 @@ reference "subsec:Compteurs"
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Input
 \end_layout
 
@@ -9939,21 +9696,15 @@ stdclass.inc
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InputGlobal
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -10033,14 +9784,10 @@ Input
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InsetLayout
 \end_layout
 
@@ -10048,7 +9795,6 @@ InsetLayout
 
 
 \family roman
-\lang french
  
 \family default
 [
@@ -10074,8 +9820,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 End
 \end_layout
 
@@ -10100,14 +9844,10 @@ reference "subsec:Flex-insets-and"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LeftMargin
 \end_layout
 
@@ -10115,7 +9855,6 @@ LeftMargin
 
 
 \family roman
-\lang french
  
 \family default
 [
@@ -10166,21 +9905,15 @@ longueur
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 MaxCiteNames
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -10219,21 +9952,15 @@ noprefix "false"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ModifyInsetLayout
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -10255,8 +9982,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 End
 \end_layout
 
@@ -10270,21 +9995,15 @@ End
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ModifyStyle
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -10306,8 +10025,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 End
 \end_layout
 
@@ -10321,21 +10038,15 @@ End
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 NoCounter
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -10350,21 +10061,15 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 NoFloat
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -10381,21 +10086,15 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 NoStyle
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -10410,14 +10109,10 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 OutputFormat
 \end_layout
 
@@ -10425,7 +10120,6 @@ OutputFormat
 
 
 \family roman
-\lang french
  
 \family default
 [
@@ -10446,29 +10140,21 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 OutputType
 \end_layout
 
 \end_inset
 
  est 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 literate
 \end_layout
 
 \end_inset
 
-
-\lang french
  et que l'on veut définir un nouvelle sorte de document en programmation
  littéraire.
  La chaîne est redéfinie comme 
@@ -10476,21 +10162,15 @@ literate
 \end_inset
 
 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 latex
 \end_layout
 
 \end_inset
 
-
-\lang french
 
 \begin_inset Quotes crd
 \end_inset
@@ -10500,8 +10180,6 @@ latex
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 OutputType
 \end_layout
 
@@ -10511,14 +10189,10 @@ OutputType
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 OutputType
 \end_layout
 
@@ -10526,10 +10200,8 @@ OutputType
 
 
 \family roman
-\lang french
  
 \family default
-\lang english
 [
 \begin_inset Flex Code
 status collapsed
@@ -10537,7 +10209,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 lat
 \emph default
 ex
@@ -10550,34 +10221,24 @@ ex
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 literate
 \end_layout
 
 \end_inset
 
-
-\lang french
 ] indique quelle sorte de document résultant sera obtenu par cette classe.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PackageOptions
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -10670,22 +10331,16 @@ natbib
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PageSize
 \end_layout
 
 \end_inset
 
  [
-\lang french
-
 \begin_inset Flex Code
 status collapsed
 
@@ -10705,14 +10360,10 @@ custom
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PageStyle
 \end_layout
 
@@ -10727,7 +10378,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 plain
 \end_layout
 
@@ -10740,8 +10390,6 @@ plain
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 empty
 \end_layout
 
@@ -10752,16 +10400,12 @@ empty
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 headings
 \end_layout
 
 \end_inset
 
-]
-\lang french
- fixe la mise en page implicite.
+] fixe la mise en page implicite.
  Peut être changée dans la fenêtre 
 \begin_inset Flex Noun
 status collapsed
@@ -10778,32 +10422,22 @@ Paramètres\SpecialChar ldots
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Preamble
 \end_layout
 
 \end_inset
 
-
-\lang french
  fixe le préambule du document \SpecialChar LaTeX
 .
  Notez bien que ceci remplacera complètement toute autre directive 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Preamble
 \end_layout
 
@@ -10814,15 +10448,11 @@ Preamble
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 AddToPreamble
 \end_layout
 
 \end_inset
 
-
-\lang french
  (utiliser cette dernière directive si vous voulez seulement ajouter des
  éléments au contenu).
  Doit être fermé par 
@@ -10834,8 +10464,6 @@ AddToPreamble
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 EndPreamble
 \end_layout
 
@@ -10849,22 +10477,16 @@ EndPreamble
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ProvideInsetLayout
 \end_layout
 
 \end_inset
 
- 
-\lang french
-[
+ [
 \begin_inset Flex Code
 status collapsed
 
@@ -10885,8 +10507,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 End
 \end_layout
 
@@ -10906,8 +10526,6 @@ End
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Provides
 \end_layout
 
@@ -10956,8 +10574,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\family roman
 chaîne
 \end_layout
 
@@ -10969,8 +10585,6 @@ chaîne
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 amsmath
 \end_layout
 
@@ -10981,8 +10595,6 @@ amsmath
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 makeidx
 \end_layout
 
@@ -10995,8 +10607,6 @@ makeidx
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 url
 \end_layout
 
@@ -11007,8 +10617,6 @@ url
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 boldsymbol
 \end_layout
 
@@ -11031,21 +10639,15 @@ reference "chap:List-of-functions"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ProvidesModule
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -11062,8 +10664,6 @@ chaîne
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 .module
 \end_layout
 
@@ -11076,8 +10676,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 DefaultModule
 \end_layout
 
@@ -11089,21 +10687,15 @@ DefaultModule
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ProvideStyle
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -11125,8 +10717,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 End
 \end_layout
 
@@ -11140,21 +10730,15 @@ End
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Requires
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -11170,8 +10754,6 @@ chaîne
 status collapsed
 
 \begin_layout Plain Layout
-
-\family roman
 chaîne
 \end_layout
 
@@ -11203,21 +10785,15 @@ PackageOptions
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 RightMargin
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -11250,14 +10826,10 @@ MMMMM
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 SecNumDepth
 \end_layout
 
@@ -11265,7 +10837,6 @@ SecNumDepth
 
 
 \family roman
-\lang french
  
 \family default
 [
@@ -11284,8 +10855,6 @@ int=3
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 secnumdepth
 \end_layout
 
@@ -11296,21 +10865,15 @@ secnumdepth
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Sides
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \emph on
 
@@ -11355,21 +10918,15 @@ Paramètres
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Style
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -11392,8 +10949,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 End
 \end_layout
 
@@ -11418,21 +10973,15 @@ reference "subsec:Styles-de-paragraphe"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TableStyle
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -11538,14 +11087,10 @@ No_Borders
 
 \end_deeper
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TitleLatexName
 \end_layout
 
@@ -11553,38 +11098,27 @@ TitleLatexName
 
 
 \family typewriter
-\lang french
  
 \family default
 [
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-string=
-\lang english
-"maketitle"
+string="maketitle"
 \end_layout
 
 \end_inset
 
-
-\lang french
 ] définit nom de la commande ou de l'envi\SpecialChar softhyphen
 ronnement mentionné ci-dessous.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TitleLatexType
 \end_layout
 
@@ -11592,10 +11126,8 @@ TitleLatexType
 
 
 \family typewriter
-\lang french
  
 \family default
-\lang english
 [
 \begin_inset Flex Code
 status collapsed
@@ -11603,7 +11135,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 CommandAfter
 \end_layout
 
@@ -11614,15 +11145,11 @@ CommandAfter
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Environment
 \end_layout
 
 \end_inset
 
-
-\lang french
 ] indique le genre de balisage utilisé pour définir le titre d'un document.
  
 \begin_inset Flex Code
@@ -11730,21 +11257,15 @@ InTitle
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TocDepth
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -11800,21 +11321,15 @@ ClassOptions
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 FontSize
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \family typewriter
 string="10|11|12"
@@ -11851,22 +11366,16 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 FontSizeFormat
 \end_layout
 
 \end_inset
 
- 
-\lang french
-[
+ [
 \begin_inset Flex Code
 status collapsed
 
@@ -11902,22 +11411,16 @@ $$s
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PageSize
 \end_layout
 
 \end_inset
 
- 
-\lang french
-[
+ [
 \begin_inset Flex Code
 status collapsed
 
@@ -11976,22 +11479,16 @@ b6j"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PageSizeFormat
 \end_layout
 
 \end_inset
 
- 
-\lang french
-[
+ [
 \begin_inset Flex Code
 status collapsed
 
@@ -12027,21 +11524,15 @@ $$s
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PageStyle
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \family typewriter
 string="empty|plain|headings|fancy"
@@ -12062,21 +11553,15 @@ string="empty|plain|headings|fancy"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Other
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \family typewriter
 string=""
@@ -12113,21 +11598,15 @@ ClassOptions
 \end_inset
 
 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 End
 \end_layout
 
 \end_inset
 
-
-\lang french
 
 \begin_inset Quotes crd
 \end_inset
@@ -12181,14 +11660,10 @@ dans lequel on peut mettre les commandes suivantes :
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 AddToToc
 \end_layout
 
@@ -12199,16 +11674,12 @@ AddToToc
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 string
 \end_layout
 
 \end_inset
 
-=""]
-\lang french
- paragraphe apparaissant dans la table des matières du type donné.
+=""] paragraphe apparaissant dans la table des matières du type donné.
  Désactivé par une chaîne de caractères vide.
  Voir aussi les directives 
 \family typewriter
@@ -12223,21 +11694,15 @@ IsTocCaption
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Align
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \family typewriter
 \emph on
@@ -12249,21 +11714,15 @@ block
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 AlignPossible
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \family typewriter
 \emph on
@@ -12283,21 +11742,15 @@ liste
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Argument
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -12311,21 +11764,15 @@ int
 ] définit l'argument numéro <int> d'une commande ou environnement associé
  au style courant.
  La définition doit être close par 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 EndArgument
 \end_layout
 
 \end_inset
 
-
-\lang french
 .
  Voir 
 \begin_inset CommandInset ref
@@ -12377,21 +11824,15 @@ IsAutoNestedBy
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 BabelPreamble
 \end_layout
 
 \end_inset
 
-
-\lang french
  noter que cette directive écrasera complètement toute déclaration 
 \begin_inset Flex Code
 status collapsed
@@ -12425,21 +11866,15 @@ reference "subsec:I18n"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 BottomSep
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \family typewriter
 float=0
@@ -12481,21 +11916,15 @@ TopSep
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Category
 \end_layout
 
 \end_inset
 
-
-\lang french
  
 \begin_inset Flex Code
 status collapsed
@@ -12514,41 +11943,29 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CommandDepth
 \end_layout
 
 \end_inset
 
-
-\lang french
  fixe la profondeur d'une commande XML.
  Utilisable uniquement avec les formats XML.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CopyStyle
 \end_layout
 
 \end_inset
 
-
-\lang french
  
 \begin_inset Flex Code
 status collapsed
@@ -12564,21 +11981,15 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 DependsOn
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -12596,8 +12007,6 @@ avant
  celui-ci.
  Ceci permet d'assurer une relation d'ordre entre les morceaux de préambule
  quand les définitions de macros dépendent les unes des autres.
-\lang english
-
 \begin_inset Foot
 status collapsed
 
@@ -12615,21 +12024,15 @@ Noter que, à part cette fonctionnalité, il n'y a aucun moyen de garantir
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 EndLabeltype
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \family typewriter
 \emph on
@@ -12744,21 +12147,15 @@ Static
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 EndLabelString
 \end_layout
 
 \end_inset
 
-
-\lang french
  
 \begin_inset Flex Code
 status collapsed
@@ -12797,21 +12194,15 @@ Static
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Font
 \end_layout
 
 \end_inset
 
-
-\lang french
  fixe la police utilisée à la fois pour le corps du texte 
 \emph on
 et
@@ -12826,57 +12217,39 @@ reference "subsec:polices"
 
 .
  Noter qu'en définissant cette police on définit aussi automatiquement 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelFont
 \end_layout
 
 \end_inset
 
-
-\lang french
  avec la même valeur.
  Il faut donc définir celle-ci d'abord pour fixer 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelFont
 \end_layout
 
 \end_inset
 
-
-\lang french
 .
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ForceLocal
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -12912,22 +12285,16 @@ ForceLocal
  du document.
  De ce fait même les versions de \SpecialChar LyX
  plus anciennes peuvent gérer ce style.
- L'argument de
-\lang english
- 
+ L'argument de 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ForceLocal
 \end_layout
 
 \end_inset
 
-
-\lang french
  est un numéro de version : si le style est lu, et si le numéro de version
  est inférieur au numéro de version du style existant dans la classe de
  document, le nouveau style est ignoré.
@@ -12937,21 +12304,15 @@ ForceLocal
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 FreeSpacing
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -13033,8 +12394,6 @@ KeepEmpty
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
@@ -13044,8 +12403,6 @@ HTML*
 
 \end_inset
 
-
-\lang french
  sont utilisées avec l'exportation XHTML.
  Voir 
 \begin_inset CommandInset ref
@@ -13058,33 +12415,23 @@ reference "subsec:Styles-de-paragraphe-XHTML"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InnerTag
 \end_layout
 
 \end_inset
 
- [[FIXME]]
-\lang french
- (Utilisable uniquement avec les formats XML).
+ [[FIXME]] (Utilisable uniquement avec les formats XML).
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InPreamble
 \end_layout
 
@@ -13092,7 +12439,6 @@ InPreamble
 
 
 \family typewriter
-\lang french
  
 \family default
 [
@@ -13146,28 +12492,20 @@ LateXType
 \end_inset
 
  est 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Command
 \end_layout
 
 \end_inset
 
-
-\lang french
  ou 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Paragraph
 \end_layout
 
@@ -13177,14 +12515,10 @@ Paragraph
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InTitle
 \end_layout
 
@@ -13192,7 +12526,6 @@ InTitle
 
 
 \family typewriter
-\lang french
  
 \family default
 [
@@ -13236,8 +12569,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TitleLatexType
 \end_layout
 
@@ -13248,8 +12579,6 @@ TitleLatexType
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TitleLatexName
 \end_layout
 
@@ -13259,30 +12588,19 @@ TitleLatexName
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 IsAutoNestedBy
 \end_layout
 
 \end_inset
 
- 
-\lang french
-inclut une liste de formats (séparés par une virgule) 
-\lang english
-qui doivent englober celui-ci.
- 
-\lang french
-N'a de sens que pour des formats englobables comme des environnements.
- Doit être terminé par
-\lang english
- 
+ inclut une liste de formats (séparés par une virgule) qui doivent englober
+ celui-ci.
+ N'a de sens que pour des formats englobables comme des environnements.
+ Doit être terminé par 
 \begin_inset Quotes cld
 \end_inset
 
@@ -13296,8 +12614,6 @@ EndIsAutoNestedBy
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 AutoNests
 \end_layout
 
@@ -13307,14 +12623,10 @@ AutoNests
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 IsTocCaption
 \end_layout
 
@@ -13327,7 +12639,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 0
 \end_layout
 
@@ -13342,16 +12653,12 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 1
 \end_layout
 
 \end_inset
 
-]
-\lang french
- si positionné à 1 et 
+] si positionné à 1 et 
 \family sans
 AddToToc
 \family default
@@ -13361,21 +12668,15 @@ AddToToc
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ItemCommand
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -13414,21 +12715,15 @@ item
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ItemSep
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -13472,41 +12767,29 @@ multiplicateur
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ItemTag
 \end_layout
 
 \end_inset
 
- [[FIXME]]
-\lang french
- (Utilisable uniquement avec les formats XML).
+ [[FIXME]] (Utilisable uniquement avec les formats XML).
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 KeepEmpty
 \end_layout
 
 \end_inset
 
- 
-\lang french
-[
+ [
 \begin_inset Flex Code
 status collapsed
 
@@ -13543,14 +12826,10 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelBottomSep
 \end_layout
 
@@ -13558,7 +12837,6 @@ LabelBottomSep
 
 
 \family typewriter
-\lang french
  
 \family default
 [
@@ -13597,21 +12875,15 @@ Centered_Top_Environment
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelCounter
 \end_layout
 
 \end_inset
 
-
-\lang french
  
 \begin_inset Flex Code
 status collapsed
@@ -13625,32 +12897,23 @@ status collapsed
  dénomme le compteur pour la numérotation automatique.
  Pour que le compteur soit associé à votre étiquette, il vous faut le référencer
  dans la directive 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
 \family typewriter
-\lang english
 LabelString
 \end_layout
 
 \end_inset
 
-
-\lang french
 .
- Ceci fonctionnera avec les
-\lang english
- 
+ Ceci fonctionnera avec les 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelType
 \end_layout
 
@@ -13661,8 +12924,6 @@ s,
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Static
 \end_layout
 
@@ -13673,8 +12934,6 @@ Static
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Above
 \end_layout
 
@@ -13685,15 +12944,11 @@ Above
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Centered
 \end_layout
 
 \end_inset
 
-
-\lang french
 , au moins.
 \begin_inset Newline newline
 \end_inset
@@ -13707,8 +12962,6 @@ peut
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Labeltype
 \end_layout
 
@@ -13719,8 +12972,6 @@ Labeltype
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Enumerate
 \end_layout
 
@@ -13802,21 +13053,15 @@ reference "subsec:Compteurs"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelFont
 \end_layout
 
 \end_inset
 
-
-\lang french
  fixe la police utilisée pour le marqueur.
  Voir la 
 \begin_inset CommandInset ref
@@ -13829,21 +13074,15 @@ reference "subsec:polices"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelIndent
 \end_layout
 
 \end_inset
 
-
-\lang french
  
 \begin_inset Flex Code
 status collapsed
@@ -13858,21 +13097,15 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelSep
 \end_layout
 
 \end_inset
 
-
-\lang french
  
 \begin_inset Flex Code
 status collapsed
@@ -13890,21 +13123,15 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelString
 \end_layout
 
 \end_inset
 
-
-\lang french
  
 \begin_inset Flex Code
 status collapsed
@@ -13916,14 +13143,10 @@ status collapsed
 \end_inset
 
  fixe la chaîne utilisée comme marqueur avec le 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelType
 \end_layout
 
@@ -13934,32 +13157,22 @@ LabelType
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Static
 \end_layout
 
 \end_inset
 
-
-\lang french
 .
  Quand 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelCounter
 \end_layout
 
 \end_inset
 
-
-\lang french
  est indiqué, cette chaîne peut contenir les instructions de formatage particuli
 ères décrites dans la 
 \begin_inset CommandInset ref
@@ -13972,21 +13185,15 @@ reference "subsec:Compteurs"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelStringAppendix
 \end_layout
 
 \end_inset
 
-
-\lang french
  
 \begin_inset Flex Code
 status collapsed
@@ -14002,8 +13209,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelString
 \end_layout
 
@@ -14015,8 +13220,6 @@ LabelString
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelString
 \end_layout
 
@@ -14031,8 +13234,6 @@ LabelString
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelStringAppendix
 \end_layout
 
@@ -14042,40 +13243,28 @@ LabelStringAppendix
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelTag
 \end_layout
 
 \end_inset
 
- [FIXME]
-\lang french
- (Utilisable uniquement avec les formats XML).
+ [FIXME] (Utilisable uniquement avec les formats XML).
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Labeltype
 \end_layout
 
 \end_inset
 
-
-\lang ngerman
  [
 \begin_inset Flex Code
 status collapsed
@@ -14083,22 +13272,13 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang ngerman
 No_Label
 \emph default
-, Manual, Static, 
-\lang english
-Above,
-\lang ngerman
-
+, Manual, Static, Above,
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-Centered,
-\lang ngerman
- Sensitive, Enumerate,
+Centered, Sensitive, Enumerate,
 \begin_inset Newline newline
 \end_inset
 
@@ -14107,8 +13287,6 @@ Itemize, Bibliography
 
 \end_inset
 
-
-\lang french
 ]
 \end_layout
 
@@ -14118,8 +13296,6 @@ Itemize, Bibliography
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Manual
 \end_layout
 
@@ -14135,8 +13311,6 @@ Manual
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Static
 \end_layout
 
@@ -14147,8 +13321,6 @@ Static
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelString
 \end_layout
 
@@ -14164,73 +13336,49 @@ en ligne
 \end_inset
 
 , au début du paragraphe.Si le 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LatexType
 \end_layout
 
 \end_inset
 
-
-\lang french
- est
-\lang english
- 
+ est 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Environment
 \end_layout
 
 \end_inset
 
-
-\lang french
 , alors il ne sera affiché que dans le premier paragraphe de toutes séquence
- de paragraphes du même
-\lang english
- 
+ de paragraphes du même 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Style
 \end_layout
 
 \end_inset
 
-
-\lang french
 .
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Above
 \end_layout
 
 \end_inset
 
-
-\lang french
 
 \begin_inset space ~
 \end_inset
@@ -14240,28 +13388,20 @@ et
 \end_inset
 
 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Centered
 \end_layout
 
 \end_inset
 
-
-\lang french
  sont des cas particuliers de 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Static
 \end_layout
 
@@ -14277,8 +13417,6 @@ Static
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Sensitive
 \end_layout
 
@@ -14306,8 +13444,6 @@ Tableau
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Sensitive
 \end_layout
 
@@ -14323,8 +13459,6 @@ Sensitive
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 FloatType N
 \end_layout
 
@@ -14345,22 +13479,16 @@ N
 \end_inset
 
  est la valeur du compteur associé au flottant.
- Au cas où une légende est insérée en dehors d'un flottant, le
-\lang english
- 
+ Au cas où une légende est insérée en dehors d'un flottant, le 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelString
 \end_layout
 
 \end_inset
 
-
-\lang french
  apparaîtra comme 
 \begin_inset Quotes cld
 \end_inset
@@ -14377,19 +13505,14 @@ Inapproprié!
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Enumerate
 \end_layout
 
 \end_inset
 
  produit le type habituel d'étiquettes d'énumération.
- 
-\lang english
-The number type needs to be set in the 
+ The number type needs to be set in the 
 \family sans
-\lang french
 Compteur
 \family default
 , voir 
@@ -14403,27 +13526,17 @@ reference "subsec:Compteurs"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Itemize
 \end_layout
 
 \end_inset
 
-
-\lang french
  produit des symboles pour les différents niveaux.
- 
-\lang english
-The bullet types displayed can be set via
-\lang french
- 
+ The bullet types displayed can be set via 
 \begin_inset Flex Noun
 status collapsed
 
@@ -14439,30 +13552,20 @@ Puces
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Bibliography
 \end_layout
 
 \end_inset
 
-
-\lang french
  ne doit être utilisé qu'avec 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LatexType BibEnvironment
 \end_layout
 
@@ -14473,21 +13576,15 @@ LatexType BibEnvironment
 
 \end_deeper
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LangPreamble
 \end_layout
 
 \end_inset
 
-
-\lang french
  écrasera complètement toute autre directive 
 \begin_inset Flex Code
 status collapsed
@@ -14524,21 +13621,15 @@ reference "subsec:I18n"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LatexName
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -14554,21 +13645,15 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LatexParam
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -14617,29 +13702,22 @@ s \SpecialChar LaTeX
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LatexType
 \end_layout
 
 \end_inset
 
- 
-\lang ngerman
-[
+ [
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
 \emph on
-\lang ngerman
 Paragraph
 \emph default
 , Command, Environment, Item_Environment,
@@ -14651,8 +13729,6 @@ List_Environment, Bib_Environment
 
 \end_inset
 
-
-\lang french
 ] décrit comment traduire l'environnement en \SpecialChar LaTeX
 .
 \begin_inset Foot
@@ -14663,8 +13739,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LatexType
 \end_layout
 
@@ -14876,41 +13950,27 @@ Paramètres de Paragraphe
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Bib_Environment
 \end_layout
 
 \end_inset
 
-
-\lang french
  fonctionne comme 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Environment
 \end_layout
 
 \end_inset
 
-
-\lang french
 , mais ajoute l'argument obligatoire nécessaire (l'étiquette la plus longue)
  à la directive de début de l’environnement bibliographique:
-\lang english
-
 \begin_inset Newline newline
 \end_inset
 
@@ -14920,16 +13980,12 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\lang english
-
 \backslash
 begin{thebibliography}{99}
 \end_layout
 
 \end_inset
 
-
-\lang french
 .
  Cette directive n'est donc nécessaire que pour les environnements bibliographiq
 ues.
@@ -14952,8 +14008,6 @@ En collectant ces derniers éléments, l'exportation \SpecialChar LaTeX
 
 \begin_layout LyX-Code
 
-\lang english
-
 \backslash
 LatexName[LatexParam]{\SpecialChar ldots
 }
@@ -14964,8 +14018,6 @@ ou bien:
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 
 \backslash
 begin{LatexName}[LatexParam] \SpecialChar ldots
@@ -14981,21 +14033,15 @@ en fonction du type \SpecialChar LaTeX
 
 \end_deeper
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LeftDelim
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -15021,21 +14067,15 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LeftMargin
 \end_layout
 
 \end_inset
 
-
-\lang french
  
 \begin_inset Flex Code
 status collapsed
@@ -15048,49 +14088,35 @@ status collapsed
 
  fixe la marge gauche: si vous mettez des styles dans un environnement,
  les 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LeftMargin
 \end_layout
 
 \end_inset
 
-
-\lang french
  ne seront pas ajoutées directement, mais avec un facteur 
 \begin_inset Formula $\frac{4}{\mathrm{profondeur}+4}$
 \end_inset
 
 .
  Notez que ce paramètre sert aussi quand 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Margin
 \end_layout
 
 \end_inset
 
-
-\lang french
  est définie comme 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Manual
 \end_layout
 
@@ -15101,8 +14127,6 @@ Manual
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Dynamic
 \end_layout
 
@@ -15174,14 +14198,10 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Margin
 \end_layout
 
@@ -15194,7 +14214,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 Static
 \emph default
 , Manual, Dynamic, First_Dynamic, Right_Address_Box
@@ -15206,8 +14225,6 @@ Static
 \begin_inset Newline newline
 \end_inset
 
-
-\lang french
 fixe le type de marge à gauche du format.
 \end_layout
 
@@ -15217,8 +14234,6 @@ fixe le type de marge à gauche du format.
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Static
 \end_layout
 
@@ -15232,8 +14247,6 @@ Static
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Manual
 \end_layout
 
@@ -15268,8 +14281,6 @@ Paragraphe
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Dynamic
 \end_layout
 
@@ -15309,8 +14320,6 @@ Dynamic
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 First_Dynamic
 \end_layout
 
@@ -15326,8 +14335,6 @@ First_Dynamic
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Right_Address_Box
 \end_layout
 
@@ -15340,21 +14347,15 @@ e touche la marge de droite.
 
 \end_deeper
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 NeedProtect
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -15398,22 +14399,16 @@ protect
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 NeedCProtect
 \end_layout
 
 \end_inset
 
- 
-\lang french
-[
+ [
 \begin_inset Flex Code
 status collapsed
 
@@ -15460,22 +14455,16 @@ cprotect
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 NeedMBoxProtect
 \end_layout
 
 \end_inset
 
- 
-\lang french
-[
+ [
 \begin_inset Flex Code
 status collapsed
 
@@ -15551,21 +14540,15 @@ soul
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Newline
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -15616,21 +14599,15 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 NextNoIndent
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -15683,21 +14660,15 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ObsoletedBy
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -15713,14 +14684,10 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ParagraphGroup
 \end_layout
 
@@ -15731,8 +14698,6 @@ ParagraphGroup
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 0
 \end_layout
 
@@ -15747,16 +14712,12 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 1
 \end_layout
 
 \end_inset
 
-] 
-\lang french
-détermine si les paragraphes consécutifs du même type sont traités ensemble.
+] détermine si les paragraphes consécutifs du même type sont traités ensemble.
  Ceci a pour effet de déclencher une seule fois pour le groupe l'impression
  du 
 \begin_inset Flex Code
@@ -15803,21 +14764,15 @@ Bib_Environment
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ParbreakIsNewline
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -15861,21 +14816,15 @@ PassThru 1
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ParIndent
 \end_layout
 
 \end_inset
 
-
-\lang french
  
 \begin_inset Flex Code
 status collapsed
@@ -15964,21 +14913,15 @@ Standard
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ParSep
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \family typewriter
 float=0
@@ -15987,21 +14930,15 @@ float=0
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Parskip
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \family typewriter
 float=0
@@ -16111,21 +15048,15 @@ DefaultHeight()
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PassThru
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -16159,21 +15090,15 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang ngerman
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PassThruChars
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -16194,21 +15119,15 @@ indique les caractères isolés qui doivent être passés sous forme brute,
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Preamble
 \end_layout
 
 \end_inset
 
-
-\lang french
  fixe le contenu à inclure dans le préambule \SpecialChar LaTeX
  quand le style est utilisé.
  Utile pour définir des macros, charger des paquetages, etc.
@@ -16222,8 +15141,6 @@ Preamble
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 EndPreamble
 \end_layout
 
@@ -16237,21 +15154,15 @@ EndPreamble
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 RefPrefix
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -16268,21 +15179,15 @@ es de ce type.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Requires
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -16323,21 +15228,15 @@ reference "subsec:Paramètres-généraux-d'une"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ResetArgs
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -16362,51 +15261,36 @@ status collapsed
 
 ] réinitialise les arguments \SpecialChar LaTeX
  de ce style ( tels que définis par la directive
-\lang english
  
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Argument
 \end_layout
 
 \end_inset
 
-)
-\lang french
-.
+).
  Ceci est utile si vous avez dupliqué un style en utilisant 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CopyStyle
 \end_layout
 
 \end_inset
 
-
-\lang french
 , et que vous ne voulez pas hériter de ses arguments (obligatoires et optionnels
 ).
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ResumeCounter
 \end_layout
 
@@ -16419,7 +15303,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 0
 \end_layout
 
@@ -16430,16 +15313,12 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 1
 \end_layout
 
 \end_inset
 
-] 
-\lang french
-redémarre un compteur qui est normalement remis à zéro a chaque nouvelle
+] redémarre un compteur qui est normalement remis à zéro a chaque nouvelle
  séquence de formats.
  Ceci n'est utile pour le moment que lorsque
 \begin_inset Flex Code
@@ -16465,21 +15344,15 @@ Enumerate
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 RightDelim
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -16505,21 +15378,15 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 RightMargin
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -16538,31 +15405,22 @@ LeftMargin
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Spacing
 \end_layout
 
 \end_inset
 
-
-\lang french
- 
-\lang english
-[
+ [
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 single
 \end_layout
 
@@ -16573,8 +15431,6 @@ single
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 onehalf
 \end_layout
 
@@ -16585,8 +15441,6 @@ onehalf
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 double
 \end_layout
 
@@ -16597,11 +15451,7 @@ double
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 other
-\lang french
-
 \begin_inset space ~
 \end_inset
 
@@ -16610,8 +15460,6 @@ other
 
 \end_inset
 
-
-\lang french
 ] définit l'interligne par défaut dans ce style.
  Les paramètres 
 \begin_inset Flex Code
@@ -16682,21 +15530,15 @@ setspace
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Spellcheck
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -16728,14 +15570,10 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 StepParentCounter
 \end_layout
 
@@ -16748,7 +15586,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 0
 \end_layout
 
@@ -16759,16 +15596,12 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 1
 \end_layout
 
 \end_inset
 
-]
-\lang french
- incrémente le compteur parent d'un compteur donné au début d'une nouvelle
+] incrémente le compteur parent d'un compteur donné au début d'une nouvelle
  séque,ce de formats.
  Ceci n'est utile pour le moment que lorsque 
 \begin_inset Flex Code
@@ -16794,21 +15627,15 @@ Enumerate
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TextFont
 \end_layout
 
 \end_inset
 
-
-\lang french
  fixe la police utilisée pour le corps du texte.
  Voir la 
 \begin_inset CommandInset ref
@@ -16821,21 +15648,15 @@ reference "subsec:polices"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TocLevel
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -16851,14 +15672,10 @@ int=3
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ToggleIndent
 \end_layout
 
@@ -16871,9 +15688,6 @@ ToggleIndent
 status collapsed
 
 \begin_layout Plain Layout
-
-\emph on
-\lang english
 default
 \end_layout
 
@@ -16886,8 +15700,6 @@ default
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 always
 \end_layout
 
@@ -16898,17 +15710,13 @@ always
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 never
 \end_layout
 
 \end_inset
 
-]
-\lang french
- détermine si l'indentation de la première ligne de ce paragraphe peut être
- réglée via le menu des réglages de paragraphe.
+] détermine si l'indentation de la première ligne de ce paragraphe peut
+ être réglée via le menu des réglages de paragraphe.
  Si 
 \emph on
 
@@ -16959,21 +15767,15 @@ never
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TopSep
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \family typewriter
 float=0
@@ -17422,8 +16224,6 @@ Un point important à noter est que les traductions sont celles qui sont
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 layouttranslations
 \end_layout
 
@@ -17456,22 +16256,16 @@ BabelPreamble
 , puisque
  les fichiers de format créés par l'utilisateur ne seront pas explorés par
  les fonctions d'internationalisation, sauf si le fichier 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 layouttranslations
 \end_layout
 
 \end_inset
 
- 
-\lang french
-est modifié en conséquence.
+ est modifié en conséquence.
  Ceci dit, tout fichier de format créé dans le but d'être distribué avec
  \SpecialChar LyX
  doit inclure ces directives s'il y a lieu.
@@ -17559,21 +16353,15 @@ il sur les compteurs dans la section suivante.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 AllowedPlacement
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -17677,21 +16465,15 @@ none
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 AllowsSideways
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -17740,21 +16522,15 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 AllowsWide
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -17799,14 +16575,10 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Extension
 \end_layout
 
@@ -17814,7 +16586,6 @@ Extension
 
 
 \family typewriter
-\lang french
  
 \family default
 [
@@ -17834,21 +16605,15 @@ chaîne
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 GuiName
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -17896,21 +16661,15 @@ reference "sec:Tags-for-XHTML"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 IsPredefined
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -17985,21 +16744,15 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ListCommand
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -18051,21 +16804,15 @@ UsesFloatPkg
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ListName
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -18087,21 +16834,15 @@ chaîne
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 NumberWithin
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -18115,21 +16856,15 @@ chaîne
 ] (paramètre facultatif) détermine si les flottants de cette classe seront
  numérotés en suivant un type de section du document.
  Par exemple, si 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 NumberWithin
 \end_layout
 
 \end_inset
 
-
-\lang french
  es 
 \begin_inset Quotes cld
 \end_inset
@@ -18139,8 +16874,6 @@ NumberWithin
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 chapter
 \end_layout
 
@@ -18154,21 +16887,15 @@ chapter
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Placement
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -18296,21 +17023,15 @@ tbp
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 RefPrefix
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -18337,22 +17058,16 @@ OFF
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Requires
 \end_layout
 
 \end_inset
 
- 
-\lang french
-[
+ [
 \begin_inset Flex Code
 status collapsed
 
@@ -18380,21 +17095,15 @@ noprefix "false"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Style
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -18421,21 +17130,15 @@ newfloat
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Type
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -18532,21 +17235,15 @@ type
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 UsesFloatPkg
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -18638,8 +17335,6 @@ styles de caractères (
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CharStyle
 \end_layout
 
@@ -18653,8 +17348,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\lang english
-
 \backslash
 noun
 \end_layout
@@ -18666,8 +17359,6 @@ noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 code
@@ -18684,8 +17375,6 @@ définis par l'utilisateur (
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Custom
 \end_layout
 
@@ -18700,8 +17389,6 @@ s au code \SpecialChar TeX
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 endnote
 \end_layout
 
@@ -18716,8 +17403,6 @@ Les inserts flexibles sont définis en utilisant la directive
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InsetLayout
 \end_layout
 
@@ -18732,8 +17417,6 @@ La directive
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InsetLayout
 \end_layout
 
@@ -18746,8 +17429,6 @@ InsetLayout
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InsetLayout
 \end_layout
 
@@ -18757,11 +17438,7 @@ InsetLayout
  page, les notes en marge, les inserts de note, les inserts de code \SpecialChar TeX
  (ERT),
  les branches, les listings, les index, les boîtes, les tables, les algorithmes,
- les URL et les 
-\lang english
-captions
-\lang french
-, aussi bien que de définir des inserts flexibles.
+ les URL et les captions, aussi bien que de définir des inserts flexibles.
 \end_layout
 
 \begin_layout Standard
@@ -18770,8 +17447,6 @@ La définition d'un
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InsetLayout
 \end_layout
 
@@ -18781,8 +17456,6 @@ InsetLayout
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 InsetLayout <type>
 \end_layout
 
@@ -18817,8 +17490,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Algorithm
 \end_layout
 
@@ -18829,8 +17500,6 @@ Algorithm
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Branch
 \end_layout
 
@@ -18841,8 +17510,6 @@ Branch
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Box
 \end_layout
 
@@ -18853,36 +17520,26 @@ Box
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Box:shaded
 \end_layout
 
 \end_inset
 
 , 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Caption:Standard
 \end_layout
 
 \end_inset
 
-,
-\lang french
- 
+, 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ERT
 \end_layout
 
@@ -18893,8 +17550,6 @@ ERT
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Figure
 \end_layout
 
@@ -18905,8 +17560,6 @@ Figure
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Foot
 \end_layout
 
@@ -18917,8 +17570,6 @@ Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Index
 \end_layout
 
@@ -18929,8 +17580,6 @@ Index
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Info
 \end_layout
 
@@ -18941,8 +17590,6 @@ Info
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Info:menu
 \end_layout
 
@@ -18953,8 +17600,6 @@ Info:menu
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Info:shortcut
 \end_layout
 
@@ -18965,8 +17610,6 @@ Info:shortcut
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Info:shortcuts
 \end_layout
 
@@ -18977,8 +17620,6 @@ Info:shortcuts
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Listings
 \end_layout
 
@@ -18989,8 +17630,6 @@ Listings
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Marginal
 \end_layout
 
@@ -19001,8 +17640,6 @@ Marginal
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Note:Comment
 \end_layout
 
@@ -19013,8 +17650,6 @@ Note:Comment
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Note:Note
 \end_layout
 
@@ -19025,8 +17660,6 @@ Note:Note
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Note:Greyedout
 \end_layout
 
@@ -19037,8 +17670,6 @@ Note:Greyedout
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Table
 \end_layout
 
@@ -19049,8 +17680,6 @@ Table
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 URL
 \end_layout
 
@@ -19105,8 +17734,6 @@ doit
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \SpecialChar LyX
 Type
 \end_layout
@@ -19206,31 +17833,21 @@ nom
 \end_inset
 
  spécifie le nom de la légende tel qu'il apparaît dans le menu.
- Voir la légende standard 
-\lang english
-(
+ Voir la légende standard (
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Caption:Standard
 \end_layout
 
 \end_inset
 
-)
-\lang french
-, les légendes spécifiques des classes KOMA-Script
-\lang english
- (
+), les légendes spécifiques des classes KOMA-Script (
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Caption:Above
 \end_layout
 
@@ -19241,36 +17858,26 @@ Caption:Above
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Caption:Below
 \end_layout
 
 \end_inset
 
-)
-\lang french
- ou le module 
+) ou le module 
 \family sans
 Légendes multilingues
 \family default
- 
-\lang english
-(
+ (
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Caption:Bicaption
 \end_layout
 
 \end_inset
 
-)
-\lang french
- pour des applications.
+) pour des applications.
 \end_layout
 
 \begin_layout Standard
@@ -19279,8 +17886,6 @@ La définition d'un
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InsetLayout
 \end_layout
 
@@ -19290,14 +17895,10 @@ InsetLayout
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 AddToToc
 \end_layout
 
@@ -19308,16 +17909,12 @@ AddToToc
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 string
 \end_layout
 
 \end_inset
 
-=""]
-\lang french
- insert apparaissant dans la table des matières du type donné.
+=""] insert apparaissant dans la table des matières du type donné.
  Désactivé par une chaîne de caractères vide.
  Voir aussi les directives 
 \family typewriter
@@ -19333,14 +17930,10 @@ IsTocCaption
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Argument
 \end_layout
 
@@ -19351,34 +17944,24 @@ Argument
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 int
 \end_layout
 
 \end_inset
 
-]
-\lang french
- définit un numéro d'argument d'une commande ou d'un environnement associé
+] définit un numéro d'argument d'une commande ou d'un environnement associé
  au style courant.
- La définition doit être close par
-\lang english
- 
+ La définition doit être close par 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 EndArgument
 \end_layout
 
 \end_inset
 
 .
-
-\lang french
  Voir
 \begin_inset space ~
 \end_inset
@@ -19408,22 +17991,16 @@ noprefix "false"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 BabelPreamble
 \end_layout
 
 \end_inset
 
-, 
-\lang french
-définit un préambule pour les modifications de commandes de langue; voir
+, définit un préambule pour les modifications de commandes de langue; voir
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -19435,21 +18012,15 @@ reference "subsec:I18n"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 BgColor
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -19461,11 +18032,7 @@ status collapsed
 \end_inset
 
 ] définit la couleur d'arrière-plan de l'insert.
- 
-\lang english
-See
-\lang french
- 
+ See 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Names-of-colors"
@@ -19477,21 +18044,15 @@ reference "chap:Names-of-colors"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ContentAsLabel
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -19532,21 +18093,15 @@ faux
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CopyStyle
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -19574,42 +18129,28 @@ g.
 \end_inset
 
 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-CopyStyle Flex
-\lang french
-:<nom>
+CopyStyle Flex:<nom>
 \end_layout
 
 \end_inset
 
-
-\lang french
 .
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CustomPars
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -19655,28 +18196,20 @@ Paramètres de paragraphe
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Decoration
 \end_layout
 
 \end_inset
 
- 
-\lang french
-peut être 
+ peut être 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Classic
 \end_layout
 
@@ -19687,8 +18220,6 @@ Classic
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Minimalistic
 \end_layout
 
@@ -19699,8 +18230,6 @@ Minimalistic
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Conglomerate
 \end_layout
 
@@ -19713,8 +18242,6 @@ rence du cadre et des boutons de l'insert.
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Classic
 \end_layout
 
@@ -19726,8 +18253,6 @@ Classic
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Minimalistic
 \end_layout
 
@@ -19738,8 +18263,6 @@ Minimalistic
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Conglomerate
 \end_layout
 
@@ -19749,21 +18272,15 @@ Conglomerate
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Display
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -19856,28 +18373,20 @@ vrai
 \begin_inset Quotes crd
 \end_inset
 
-.
-\lang english
-.
+..
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 EditExternal
 \end_layout
 
 \end_inset
 
- 
-\lang french
-[
+ [
 \emph on
 0
 \emph default
@@ -19891,29 +18400,21 @@ EditExternal
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 End
 \end_layout
 
 \end_inset
 
  est requis pour fermer la déclaration d'un 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InsetLayout
 \end_layout
 
 \end_inset
 
-
-\lang french
 .
 \end_layout
 
@@ -19922,8 +18423,6 @@ InsetLayout
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Font
 \end_layout
 
@@ -19951,8 +18450,6 @@ reference "subsec:polices"
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelFont
 \end_layout
 
@@ -19964,8 +18461,6 @@ LabelFont
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelFont
 \end_layout
 
@@ -19975,21 +18470,15 @@ LabelFont
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 FixedWidthPreambleEncoding
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -20055,21 +18544,15 @@ utf8
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ForceLocalFontSwitch
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -20101,14 +18584,11 @@ status collapsed
 \emph on
 local
 \emph default
-\lang english
  (
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 foreignlanguage
@@ -20116,21 +18596,15 @@ foreignlanguage
 
 \end_inset
 
-)
-\lang french
-, à la place d'un commutateur 
+), à la place d'un commutateur 
 \emph on
 global
 \emph default
  (comme 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 selectlanguage
@@ -20138,27 +18612,19 @@ selectlanguage
 
 \end_inset
 
-
-\lang french
 ).
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ForceLTR
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -20207,21 +18673,15 @@ en code \SpecialChar TeX
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ForceOwnlines
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -20255,21 +18715,15 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ForcePlain
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -20301,8 +18755,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PlainLayout
 \end_layout
 
@@ -20322,21 +18774,15 @@ faux
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 FreeSpacing
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -20399,21 +18845,15 @@ reference "sec:Tags-for-XHTML"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InToc
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -20445,13 +18885,10 @@ status collapsed
 \begin_inset Quotes cld
 \end_inset
 
-Plan pour la table des matières complète, indépendamment du réglage de
-\lang english
- 
+Plan pour la table des matières complète, indépendamment du réglage de 
 \family sans
 AddToToc
 \family default
-\lang french
 
 \begin_inset Quotes crd
 \end_inset
@@ -20473,14 +18910,10 @@ faux
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 IsTocCaption
 \end_layout
 
@@ -20493,7 +18926,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 0
 \end_layout
 
@@ -20508,16 +18940,12 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 1
 \end_layout
 
 \end_inset
 
-] 
-\lang french
-si positionné à 1 et 
+] si positionné à 1 et 
 \family sans
 AddToToc
 \family default
@@ -20527,21 +18955,15 @@ AddToToc
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 KeepEmpty
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -20579,21 +19001,15 @@ reference "subsec:Styles-de-paragraphe"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelFont
 \end_layout
 
 \end_inset
 
-
-\lang french
  définit la police utilisée pour le marqueur.
  Voir la 
 \begin_inset CommandInset ref
@@ -20608,8 +19024,6 @@ reference "subsec:polices"
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Font
 \end_layout
 
@@ -20619,21 +19033,15 @@ Font
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelString
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -20651,8 +19059,6 @@ chaîne
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 code \SpecialChar TeX
 
 \end_layout
@@ -20673,21 +19079,15 @@ Branche
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LangPreamble
 \end_layout
 
 \end_inset
 
-
-\lang french
  définit un préambule dépendant de la langue, voir
 \begin_inset space ~
 \end_inset
@@ -20703,21 +19103,15 @@ reference "subsec:I18n"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LatexName
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -20734,21 +19128,15 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LatexParam
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -20764,8 +19152,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LatexName
 \end_layout
 
@@ -20809,14 +19195,10 @@ s \SpecialChar LaTeX
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LatexType
 \end_layout
 
@@ -20827,8 +19209,6 @@ LatexType
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Command, Environment, None
 \end_layout
 
@@ -20839,38 +19219,26 @@ Command, Environment, None
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 , 
 \end_layout
 
 \end_inset
 
-]
-\lang french
- précise comment le style doit être traduit en \SpecialChar LaTeX
-
-\lang english
+] précise comment le style doit être traduit en \SpecialChar LaTeX
 
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LatexType
 \end_layout
 
 \end_inset
 
-
-\lang french
  est peut-être trompeur, puisque ces règles s'appliquent aussi aux classes
  SGML.
  Voir les fichiers de classe SGML pour des exemples spécifiques.
@@ -20883,21 +19251,15 @@ LatexType
 
 \begin_deeper
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 None
 \end_layout
 
 \end_inset
 
-
-\lang french
  signifie 
 \begin_inset Quotes cld
 \end_inset
@@ -20910,30 +19272,20 @@ rien de particulier
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Command
 \end_layout
 
 \end_inset
 
-
-\lang french
  signifie 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 
@@ -20950,30 +19302,20 @@ LatexName
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Environment
 \end_layout
 
 \end_inset
 
-
-\lang french
  signifie 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 begin{
@@ -21002,8 +19344,6 @@ En rassemblant ceci, la sortie \SpecialChar LaTeX
 
 \begin_layout LyX-Code
 
-\lang english
-
 \backslash
 LatexName[LatexParam]{\SpecialChar ldots
 }
@@ -21015,8 +19355,6 @@ soit:
 
 \begin_layout LyX-Code
 
-\lang english
-
 \backslash
 begin{LatexName}[LatexParam] \SpecialChar ldots
  
@@ -21026,14 +19364,10 @@ end{LatexName}
 
 \begin_layout Standard
 suivant le 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LatexType
 \end_layout
 
@@ -21044,21 +19378,15 @@ LatexType
 
 \end_deeper
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LeftDelim
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -21084,28 +19412,20 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LyxType 
 \end_layout
 
 \end_inset
 
-
-\lang french
  peut être 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 charstyle
 \end_layout
 
@@ -21116,8 +19436,6 @@ charstyle
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 custom
 \end_layout
 
@@ -21128,8 +19446,6 @@ custom
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 element
 \end_layout
 
@@ -21140,8 +19456,6 @@ element
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 end
 \end_layout
 
@@ -21273,22 +19587,16 @@ LyxType
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 MenuString
 \end_layout
 
 \end_inset
 
  
-\lang french
-
 \begin_inset Flex Code
 status collapsed
 
@@ -21341,21 +19649,15 @@ Mon insert|M
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 MultiPar
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -21388,8 +19690,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CustomPars
 \end_layout
 
@@ -21400,8 +19700,6 @@ CustomPars
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ForcePlain
 \end_layout
 
@@ -21417,8 +19715,6 @@ après
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 MultiPar
 \end_layout
 
@@ -21437,21 +19733,15 @@ vrai
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 NeedProtect
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -21485,8 +19775,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\lang english
-
 \backslash
 protect
 \end_layout
@@ -21510,22 +19798,16 @@ faux
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 NeedCProtect
 \end_layout
 
 \end_inset
 
- 
-\lang french
-[
+ [
 \begin_inset Flex Code
 status collapsed
 
@@ -21573,22 +19855,16 @@ cprotect
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 NeedMBoxProtect
 \end_layout
 
 \end_inset
 
- 
-\lang french
-[
+ [
 \begin_inset Flex Code
 status collapsed
 
@@ -21665,22 +19941,16 @@ soul
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 NewlineCmd
 \end_layout
 
 \end_inset
 
  
-\lang french
-
 \begin_inset Flex Code
 status collapsed
 
@@ -21710,14 +19980,10 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 NoInsetLayout
 \end_layout
 
@@ -21728,43 +19994,29 @@ NoInsetLayout
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 <layout>
 \end_layout
 
 \end_inset
 
-]
-\lang french
- supprime un 
-\lang english
-
+] supprime un 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InsetLayout
 \end_layout
 
 \end_inset
 
-
-\lang french
  existant.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ObsoletedBy
 \end_layout
 
@@ -21775,16 +20027,12 @@ ObsoletedBy
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 <layout>
 \end_layout
 
 \end_inset
 
-]
-\lang french
- nomme un 
+] nomme un 
 \begin_inset Flex Code
 status collapsed
 
@@ -21819,22 +20067,16 @@ InsetLayout
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ParbreakIgnored
 \end_layout
 
 \end_inset
 
- 
-\lang french
-[
+ [
 \begin_inset Flex Code
 status collapsed
 
@@ -21868,21 +20110,15 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ParbreakIsNewline
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \family typewriter
 \emph on
@@ -21928,21 +20164,15 @@ reference "subsec:Styles-de-paragraphe"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PassThru
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \family typewriter
 \emph on
@@ -21988,21 +20218,15 @@ reference "subsec:Styles-de-paragraphe"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Preamble
 \end_layout
 
 \end_inset
 
-
-\lang french
  fonctionne comme avec les styles de paragraphe, voir 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -22014,21 +20238,15 @@ reference "subsec:Styles-de-paragraphe"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 RefPrefix
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -22045,21 +20263,15 @@ es de ce type.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Requires
 \end_layout
 
 \end_inset
 
-
-\lang french
  
 \begin_inset Flex Code
 status collapsed
@@ -22070,11 +20282,7 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-As with paragraph styles, see 
-\lang french
-
+ As with paragraph styles, see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Styles-de-paragraphe"
@@ -22085,21 +20293,15 @@ reference "subsec:Styles-de-paragraphe"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ResetArgs
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -22139,41 +20341,29 @@ Argument
 
 ).
  Ceci est utile si vous avez dupliqué un style via 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CopyStyle
 \end_layout
 
 \end_inset
 
-, 
-\lang french
-mais que vous ne voulez pas hériter de ses arguments (obligatoires et optionnels
-).
+, mais que vous ne voulez pas hériter de ses arguments (obligatoires et
+ optionnels).
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ResetsFont
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -22295,21 +20485,15 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 RightDelim
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -22335,21 +20519,15 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Spellcheck
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -22479,21 +20657,15 @@ Argument
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelString
 \end_layout
 
 \end_inset
 
-
-\lang french
  
 \begin_inset Flex Code
 status collapsed
@@ -22507,22 +20679,16 @@ status collapsed
  définit la chaîne de caractères qui apparaîtra à la fois dans le menu (pour
  insérer cet argument) et dans le bouton d'insertion d'argument (sauf si
  vous spécifiez également un 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 MenuString
 \end_layout
 
 \end_inset
 
-)
-\lang french
-.
+).
  Pour le menu, vous pouvez définir un raccourci en ajoutant le caractère
  désiré à la chaîne, séparé par 
 \begin_inset Quotes cld
@@ -22562,21 +20728,15 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 MenuString
 \end_layout
 
 \end_inset
 
-
-\lang french
  
 \begin_inset Flex Code
 status collapsed
@@ -22638,21 +20798,15 @@ LabelString
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Tooltip
 \end_layout
 
 \end_inset
 
-
-\lang french
  
 \begin_inset Flex Code
 status collapsed
@@ -22668,21 +20822,15 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Mandatory
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -22738,10 +20886,8 @@ status collapsed
 \begin_layout Itemize
 
 \family sans
-\lang english
 NewlineCmd
 \family default
-\lang french
  
 \begin_inset Flex Code
 status collapsed
@@ -22771,21 +20917,15 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Requires
 \end_layout
 
 \end_inset
 
-
-\lang french
  
 \begin_inset Flex Code
 status collapsed
@@ -22801,15 +20941,11 @@ status collapsed
  Par exemple en \SpecialChar LaTeX
 , les arguments optionnels demandent l'émission d'autres
  arguments optionnels situés avant eux dans la liste (au moins vides), comme
- dans
-\lang english
- 
+ dans 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 command[][argument]{text}
@@ -22817,25 +20953,17 @@ command[][argument]{text}
 
 \end_inset
 
-, 
-\lang french
-ou ceci peut être précisé par la directive 
-\lang english
-
+, ou ceci peut être précisé par la directive 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Requires 1
 \end_layout
 
 \end_inset
 
- 
-\lang french
-dans l'
+ dans l'
 \begin_inset Flex Code
 status collapsed
 
@@ -22849,21 +20977,15 @@ Argument 2
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LeftDelim
 \end_layout
 
 \end_inset
 
-
-\lang french
  
 \begin_inset Flex Code
 status collapsed
@@ -22909,21 +21031,15 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 RightDelim
 \end_layout
 
 \end_inset
 
-
-\lang french
  
 \begin_inset Flex Code
 status collapsed
@@ -22969,21 +21085,15 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 DefaultArg
 \end_layout
 
 \end_inset
 
-
-\lang french
  
 \begin_inset Flex Code
 status collapsed
@@ -22997,41 +21107,29 @@ status collapsed
  définit un argument qui sera inséré si et seulement si aucun argument n'est
  saisi par l'utilisateur, c'est-à-dire si aucun insert d'argument n'a été
  spécifié (notez qu'un insert d'argument vide masque le 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 DefaultArg
 \end_layout
 
 \end_inset
 
-)
-\lang french
-.
+).
  Les arguments multiples doivent être séparés par des virgules;
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PresetArg
 \end_layout
 
 \end_inset
 
-
-\lang french
  
 \begin_inset Flex Code
 status collapsed
@@ -23048,22 +21146,16 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Font
 \end_layout
 
 \end_inset
 
- 
-\lang french
-définit la police de caractères utilisée pour le contenu de l'argument,
+ définit la police de caractères utilisée pour le contenu de l'argument,
  voir 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -23075,21 +21167,15 @@ reference "subsec:polices"
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 FreeSpacing
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -23134,21 +21220,15 @@ noprefix "false"
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelFont
 \end_layout
 
 \end_inset
 
-
-\lang french
  définit la police de caractères utilisée pour l'étiquette, voir 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -23160,14 +21240,10 @@ reference "subsec:polices"
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Decoration
 \end_layout
 
@@ -23180,7 +21256,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 Classic
 \emph default
 , Minimalistic, Conglomerate
@@ -23188,27 +21263,19 @@ Classic
 
 \end_inset
 
-]
-\lang french
- précise le style de rendu utilisé pour les cadres d'insertion et les boutons;
+] précise le style de rendu utilisé pour les cadres d'insertion et les boutons;
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 AutoInsert
 \end_layout
 
 \end_inset
 
-
-\lang french
  
 \begin_inset Flex Code
 status collapsed
@@ -23225,14 +21292,10 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 FreeSpacing
 \end_layout
 
@@ -23245,7 +21308,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 0
 \end_layout
 
@@ -23260,16 +21322,12 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 1
 \end_layout
 
 \end_inset
 
-] 
-\lang french
-similaire à la directive des styles de paragraphe, voir
+] similaire à la directive des styles de paragraphe, voir
 \begin_inset space ~
 \end_inset
 
@@ -23287,14 +21345,10 @@ noprefix "false"
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InsertCotext
 \end_layout
 
@@ -23305,16 +21359,12 @@ InsertCotext
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 [int=0]
 \end_layout
 
 \end_inset
 
- 
-\lang french
-si positionné à 
+ si positionné à 
 \begin_inset Flex Code
 status collapsed
 
@@ -23329,14 +21379,10 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PassThru
 \end_layout
 
@@ -23349,7 +21395,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 inherited
 \emph default
 , true, false
@@ -23357,10 +21402,8 @@ inherited
 
 \end_inset
 
-] 
-\lang french
-précise si le contenu de cet argument doit être émis sous forme brute, c'est-à-d
-ire sans interprétation particulière requise par \SpecialChar LaTeX
+] précise si le contenu de cet argument doit être émis sous forme brute,
+ c'est-à-dire sans interprétation particulière requise par \SpecialChar LaTeX
 .
  Implicitement, l'état 
 \begin_inset Flex Code
@@ -23385,14 +21428,10 @@ false
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PassThruChars
 \end_layout
 
@@ -23410,7 +21449,6 @@ chaîne de caractères
 
 ]
 \family typewriter
-\lang french
  
 \family default
 définit des caractères qui doivent être transmis tel quels à la sortie,
@@ -23429,14 +21467,10 @@ PassThruChars
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 IsTocCaption
 \end_layout
 
@@ -23449,7 +21483,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 0
 \end_layout
 
@@ -23464,17 +21497,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 1
 \end_layout
 
 \end_inset
 
-]
-\lang french
- émettra le contenu de l'argument dans l'élément correspondant dans la table
- des matières si positionné à 1.
+] émettra le contenu de l'argument dans l'élément correspondant dans la
+ table des matières si positionné à 1.
  Voir 
 \family sans
 AddToToc
@@ -23486,89 +21515,59 @@ AddToToc
 Implicitement, le texte saisi dans la fenêtre de travail de \SpecialChar LyX
  dans le style
  considéré est le dernier argument de la commande si le 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LatexType
 \end_layout
 
 \end_inset
 
-
-\lang french
  est 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Command
 \end_layout
 
 \end_inset
 
 .
- 
-\lang french
-Cependant, les arguments préfixés par 
-\lang english
-
+ Cependant, les arguments préfixés par 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 post:
 \end_layout
 
 \end_inset
 
-
-\lang french
  sont émis après cet argument de la fenêtre de travail.
  Notez que la numérotation des post-arguments repart de 1, de sorte que
- le premier argument suivant l’argument de la fenêtre de travail est
-\lang english
- 
+ le premier argument suivant l’argument de la fenêtre de travail est 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 post:1
 \end_layout
 
 \end_inset
 
-
-\lang french
 .
  Les post-arguments sont ignorés dans tout autre 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LatexType
 \end_layout
 
 \end_inset
 
-
-\lang french
  que 
 \begin_inset Flex Code
 status collapsed
@@ -23738,21 +21737,15 @@ figure
 \SpecialChar ldots
 ) dans la classe elle-même.
  Les compteurs standard sont définis dans le fichier 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 stdcounters.inc
 \end_layout
 
 \end_inset
 
-
-\lang french
 .
  Si vous cherchez à savoir comment mettre à jour une classe déjà existante,
  il suffit probablement que vous ajoutiez
@@ -23773,11 +21766,7 @@ Mais si vous voulez définir des compteurs à votre guise, vous pouvez le
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
-Counter
-\lang french
- <nom>
+Counter <nom>
 \end_layout
 
 \begin_layout Standard
@@ -23797,8 +21786,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 End
 \end_layout
 
@@ -23812,14 +21799,10 @@ Les paramètres suivants peuvent également être utilisés:
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InitialValue
 \end_layout
 
@@ -23830,17 +21813,13 @@ InitialValue
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 int=1
 \end_layout
 
 \end_inset
 
-]
-\lang french
- positionne la valeur initiale du compteur, valeur à laquelle il sera réinitiali
-sé quand cela sera nécessaire.
+] positionne la valeur initiale du compteur, valeur à laquelle il sera réinitial
+isé quand cela sera nécessaire.
  Normalement, la valeur désirée est la valeur implicite,
 \begin_inset space ~
 \end_inset
@@ -23849,21 +21828,15 @@ sé quand cela sera nécessaire.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelString
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -23888,8 +21861,6 @@ string
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelStringAppendix
 \end_layout
 
@@ -23906,8 +21877,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\lang english
-
 \backslash
 thecounter
 \end_layout
@@ -23919,8 +21888,6 @@ thecounter
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelString
 \end_layout
 
@@ -23935,8 +21902,6 @@ LabelString
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelStringAppendix
 \end_layout
 
@@ -23947,8 +21912,6 @@ LabelStringAppendix
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 counter
 \end_layout
 
@@ -23965,8 +21928,6 @@ les valeurs du compteur peuvent être exprimées par des macros à la \SpecialCh
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 
@@ -23989,7 +21950,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 numbertype
 \end_layout
 
@@ -24000,8 +21960,6 @@ numbertype
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 arabic
 \end_layout
 
@@ -24013,8 +21971,6 @@ arabic
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 alph
 \end_layout
 
@@ -24026,8 +21982,6 @@ alph
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Alph
 \end_layout
 
@@ -24039,8 +21993,6 @@ Alph
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 roman
 \end_layout
 
@@ -24052,8 +22004,6 @@ roman
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Roman
 \end_layout
 
@@ -24065,29 +22015,21 @@ Roman
 \end_deeper
 \begin_layout Standard
 Si 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelString
 \end_layout
 
 \end_inset
 
-
-\lang french
  est indéfini, une valeur implicite est construite comme suit: si le compteur
  a un compteur parent 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 parent
 \end_layout
 
@@ -24098,8 +22040,6 @@ parent
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Within
 \end_layout
 
@@ -24115,8 +22055,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\lang english
-
 \backslash
 theparent.
 \backslash
@@ -24131,8 +22069,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\lang english
-
 \backslash
 arabic{counter}
 \end_layout
@@ -24143,21 +22079,15 @@ arabic{counter}
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelStringAppendix
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -24181,8 +22111,6 @@ string
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelString
 \end_layout
 
@@ -24192,22 +22120,16 @@ LabelString
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 LaTeXName
 \end_layout
 
 \end_inset
 
- 
-\lang french
-[
+ [
 \begin_inset Flex Code
 status open
 
@@ -24238,8 +22160,6 @@ ion \SpecialChar LaTeX
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PrettyFormat
 \end_layout
 
@@ -24297,8 +22217,6 @@ Section
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Within
 \end_layout
 
@@ -25612,15 +23530,11 @@ Les définitions utilisent un langage simple qui permet
 
 de remplacer les clés Bib\SpecialChar TeX
  par leurs valeurs.
- les clés doivent être encloses entre caractères
-\lang english
- 
+ les clés doivent être encloses entre caractères 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 %
 \end_layout
 
@@ -25631,22 +23545,16 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 %author%
 \end_layout
 
 \end_inset
 
 .
-
-\lang french
  Une définition simple serait par exemple:
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 misc %author%, 
 \begin_inset Quotes eld
 \end_inset
@@ -26168,22 +24076,16 @@ status collapsed
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 %abbrvnames:<nametype>%
 \end_layout
 
 \end_inset
 
-: 
-\lang french
-crée une liste abrégée (avec 
+: crée une liste abrégée (avec 
 \begin_inset Quotes cld
 \end_inset
 
@@ -26205,22 +24107,16 @@ MaxCiteNames
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 %fullnames:<nametype>%
 \end_layout
 
 \end_inset
 
-: 
-\lang french
-crée une liste complète (jamais abréviée avec 
+: crée une liste complète (jamais abréviée avec 
 \begin_inset Quotes cld
 \end_inset
 
@@ -26232,22 +24128,16 @@ et al.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 %forceabbrvnames:<nametype>%
 \end_layout
 
 \end_inset
 
-: 
-\lang french
-crée une liste toujours abrégée (avec 
+: crée une liste toujours abrégée (avec 
 \begin_inset Quotes cld
 \end_inset
 
@@ -26284,22 +24174,16 @@ Miller, John: <texte>, in: Mary Smith, ed.: A volume
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 %abbrvbynames:<nametype>%
 \end_layout
 
 \end_inset
 
-: 
-\lang french
-crée une liste abrégée (avec 
+: crée une liste abrégée (avec 
 \begin_inset Quotes cld
 \end_inset
 
@@ -26321,22 +24205,16 @@ MaxCiteNames
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 %fullbynames:<nametype>%
 \end_layout
 
 \end_inset
 
-: 
-\lang french
-crée une liste complète (jamais abréviée avec 
+: crée une liste complète (jamais abréviée avec 
 \begin_inset Quotes cld
 \end_inset
 
@@ -26348,22 +24226,16 @@ et al.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 %forceabbrvbynames:<nametype>%
 \end_layout
 
 \end_inset
 
-:
-\lang french
- crée une liste toujours abrégée (avec 
+: crée une liste toujours abrégée (avec 
 \begin_inset Quotes cld
 \end_inset
 
@@ -26404,22 +24276,16 @@ status collapsed
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 %abbrvciteauthor%
 \end_layout
 
 \end_inset
 
-: 
-\lang french
-crée une liste abrégée (avec 
+: crée une liste abrégée (avec 
 \begin_inset Quotes cld
 \end_inset
 
@@ -26441,22 +24307,16 @@ MaxCiteNames
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 %fullciteauthor%
 \end_layout
 
 \end_inset
 
-: 
-\lang french
-crée une liste complète (jamais abréviée avec 
+: crée une liste complète (jamais abréviée avec 
 \begin_inset Quotes cld
 \end_inset
 
@@ -26468,22 +24328,16 @@ et al.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 %forceabbrvciteauthor%
 \end_layout
 
 \end_inset
 
-:
-\lang french
- crée une liste toujours abrégée (avec 
+: crée une liste toujours abrégée (avec 
 \begin_inset Quotes cld
 \end_inset
 
@@ -26502,8 +24356,6 @@ MaxCiteNames
 \end_inset
 
 .
-
-\lang english
  .
 \end_layout
 
@@ -26514,79 +24366,55 @@ L'ordre prénom/nom dans les deux premières listes peut être ajusté via ces
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 !firstnameform %surname%, %prename%
 \end_layout
 
 \end_inset
 
- 
-\lang french
-(premier auteur dans les listes de type 1)
+ (premier auteur dans les listes de type 1)
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 !othernameform %surname%, %prename%
 \end_layout
 
 \end_inset
 
-
-\lang french
  (autres auteurs dans les listes de type 1)
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 !firstbynameform %prename% %surname%
 \end_layout
 
 \end_inset
 
- 
-\lang french
-(premier auteur dans les listes de type 2)
+ (premier auteur dans les listes de type 2)
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 !otherbynameform %prename% %surname%
 \end_layout
 
 \end_inset
 
- 
-\lang french
-(autres auteurs dans les listes de type 2)
+ (autres auteurs dans les listes de type 2)
 \end_layout
 
 \begin_layout Standard
@@ -26764,8 +24592,6 @@ souligné
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 _addtobib Add to bibliography only.
 \end_layout
 
@@ -27276,14 +25102,10 @@ s pour la plupart d'entre elles, vous n'aurez donc pas grand-chose à faire
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLAttr
 \end_layout
 
@@ -27299,9 +25121,7 @@ chaîne
 
 \end_inset
 
-]
-\lang french
- précise les informations d'attribut à émettre avec la balise principale.
+] précise les informations d'attribut à émettre avec la balise principale.
  Par exemple 
 \begin_inset Flex Code
 status collapsed
@@ -27371,21 +25191,15 @@ HTMLStyle
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLForceCSS
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -27452,14 +25266,10 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLItem
 \end_layout
 
@@ -27475,9 +25285,7 @@ chaîne
 
 \end_inset
 
-]
-\lang french
- définit la balise utilisée pour les paragraphes ou environnements isolés,
+] définit la balise utilisée pour les paragraphes ou environnements isolés,
  qui remplace 
 \begin_inset Flex Code
 status collapsed
@@ -27503,14 +25311,10 @@ div
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLItemAttr
 \end_layout
 
@@ -27526,9 +25330,7 @@ chaîne
 
 \end_inset
 
-]
-\lang french
- définit les attributs des balises 
+] définit les attributs des balises 
 \begin_inset Flex Code
 status collapsed
 
@@ -27575,14 +25377,10 @@ HTMLStyle
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLLabel
 \end_layout
 
@@ -27598,9 +25396,7 @@ chaîne
 
 \end_inset
 
-] 
-\lang french
-définit la balise utilisée pour les étiquettes de paragraphe et d'élément,
+] définit la balise utilisée pour les étiquettes de paragraphe et d'élément,
  qui remplace 
 \begin_inset Flex Code
 status collapsed
@@ -27670,14 +25466,10 @@ div
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLLabelAttr
 \end_layout
 
@@ -27693,9 +25485,7 @@ chaîne
 
 \end_inset
 
-]
-\lang french
- définit les attributs de la balise 
+] définit les attributs de la balise 
 \begin_inset Flex Code
 status collapsed
 
@@ -27729,21 +25519,15 @@ HTMLStyle
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLLabelFirst
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -27807,21 +25591,15 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLPreamble
 \end_layout
 
 \end_inset
 
-
-\lang french
  définit l'information à émettre dans la section 
 \begin_inset Flex Code
 status collapsed
@@ -27857,21 +25635,15 @@ onclick
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLStyle
 \end_layout
 
 \end_inset
 
-
-\lang french
  définit l'information à émettre dans la section 
 \begin_inset Flex Code
 status collapsed
@@ -27905,33 +25677,23 @@ onclick
 
 .
  Doit être fermé par 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 EndHTMLStyle
 \end_layout
 
 \end_inset
 
-
-\lang french
 .
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLTag
 \end_layout
 
@@ -27947,9 +25709,7 @@ chaîne
 
 \end_inset
 
-]
-\lang french
- définit la balise utilisé pour l'étiquette principale, qui remplace 
+] définit la balise utilisé pour l'étiquette principale, qui remplace 
 \begin_inset Flex Code
 status collapsed
 
@@ -27974,21 +25734,15 @@ div
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLTitle
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -28051,8 +25805,6 @@ title
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
 InsetLayout XHTML
 \end_layout
 
@@ -28098,8 +25850,6 @@ Le résultat XHTML produit par \SpecialChar LyX
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 <tag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -28112,18 +25862,10 @@ value
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
-<labeltag>
-\lang french
-Étiquette
-\lang english
-</labeltag>
+<labeltag>Étiquette</labeltag>
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 <innertag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -28132,16 +25874,10 @@ value
 \begin_inset Quotes erd
 \end_inset
 
->
-\lang french
-Contenu de l'insert.
-\lang english
-</innertag>
+>Contenu de l'insert.</innertag>
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 </tag>
 \end_layout
 
@@ -28180,21 +25916,15 @@ Les balises et attributs spécifiques émis pour chaque insert peuvent être
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLAttr
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -28267,21 +25997,15 @@ souligné
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLForceCSS
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -28348,21 +26072,15 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLInnerAttr
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -28399,21 +26117,15 @@ class=`nominsert_inner'
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLInnerTag
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -28439,21 +26151,15 @@ innertag
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLIsBlock
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -28497,21 +26203,15 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLLabel
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -28541,21 +26241,15 @@ arabic{footnote}
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLPreamble
 \end_layout
 
 \end_inset
 
-
-\lang french
  définit l'information à émettre dans la section 
 \begin_inset Flex Code
 status collapsed
@@ -28591,21 +26285,15 @@ onclick
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLStyle
 \end_layout
 
 \end_inset
 
-
-\lang french
  définit l'information CSS à inclure quand ce style est utilisé.
  Noter que le contenu sera automatiquement enclos dans un bloc 
 \begin_inset Flex Code
@@ -28621,21 +26309,15 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLTag
 \end_layout
 
 \end_inset
 
-
-\lang french
  [
 \begin_inset Flex Code
 status collapsed
@@ -28711,8 +26393,6 @@ Le résultat XHTML pour les flottants peut être contrôlé par les informations
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 <tag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -28725,14 +26405,10 @@ value
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 Contenu du flottant.
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 </tag>
 \end_layout
 
@@ -28744,14 +26420,10 @@ La légende, si elle est présente, est un insert séparé et sera émis en tant
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLAttr
 \end_layout
 
@@ -28767,9 +26439,7 @@ chaîne
 
 \end_inset
 
-] 
-\lang french
-précise les informations d'attribut à émettre avec la balise principale.
+] précise les informations d'attribut à émettre avec la balise principale.
  Par exemple 
 \begin_inset Flex Code
 status collapsed
@@ -28798,11 +26468,7 @@ status collapsed
 \begin_inset Quotes cld
 \end_inset
 
-
-\lang english
 class=`float float-typefloat'
-\lang french
-
 \begin_inset Quotes crd
 \end_inset
 
@@ -28853,27 +26519,17 @@ float-table
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLStyle
 \end_layout
 
 \end_inset
 
- 
-\lang french
-définit l'information CSS à inclure quand ce flottant est utilisé.
-
-\lang english
- 
-\lang french
-Noter que le contenu sera automatiquement enclos dans un bloc 
+ définit l'information CSS à inclure quand ce flottant est utilisé.
+ Noter que le contenu sera automatiquement enclos dans un bloc 
 \begin_inset Flex Code
 status collapsed
 
@@ -28887,14 +26543,10 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLTag
 \end_layout
 
@@ -28910,9 +26562,7 @@ chaîne
 
 \end_inset
 
-] 
-\lang french
-définit la balise utilisé pour l'étiquette principale, qui remplace 
+] définit la balise utilisé pour l'étiquette principale, qui remplace 
 \begin_inset Flex Code
 status collapsed
 
@@ -30956,8 +28606,6 @@ name "chap:Insérer-un-Objet"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Box Shadowbox
 position "t"
 hor_pos "c"
@@ -31639,14 +29287,10 @@ L'en-tête de cadre
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 AutomaticProduction
 \begin_inset space ~
 \end_inset
@@ -31656,22 +29300,16 @@ true|false
 
 \end_inset
 
-
-\lang french
  indique si le fichier représenté par le cadre doit être créé par \SpecialChar LyX
 .
  Cette directive doit apparaître une et une seule fois.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 FileFilter
 \begin_inset space ~
 \end_inset
@@ -31681,9 +29319,7 @@ FileFilter
 
 \end_inset
 
- 
-\lang french
-précise un patron global utilisé dans l'échange dans la spécification des
+ précise un patron global utilisé dans l'échange dans la spécification des
  fichiers pour filtrer les fichiers désignés.
  S'il y a plus d'un suffixe possible (e.g.
  pour tgif, 
@@ -31691,8 +29327,6 @@ précise un patron global utilisé dans l'échange dans la spécification des
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 .obj
 \end_layout
 
@@ -31703,8 +29337,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 .tgo
 \end_layout
 
@@ -31715,8 +29347,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 "*.{obj,tgo}"
 \end_layout
 
@@ -31727,14 +29357,10 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 GuiName
 \begin_inset space ~
 \end_inset
@@ -31744,21 +29370,15 @@ GuiName
 
 \end_inset
 
-
-\lang french
  fixe le texte apparaissant dans le bouton.
  Cette directive doit apparaître une et une seule fois.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HelpText
 \begin_inset space ~
 \end_inset
@@ -31772,8 +29392,6 @@ HelpTextEnd
 
 \end_inset
 
-
-\lang french
  décrit le texte d'aide utilisé dans la fenêtre de dialogue 
 \begin_inset Quotes cld
 \end_inset
@@ -31789,14 +29407,10 @@ Objet externe
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InputFormat
 \begin_inset space ~
 \end_inset
@@ -31806,8 +29420,6 @@ InputFormat
 
 \end_inset
 
-
-\lang french
  indique le format du fichier original.
  Ce doit être le nom d'un format reconnu par \SpecialChar LyX
  (voir
@@ -31831,8 +29443,6 @@ reference "sec:Formats"
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 *
 \end_layout
 
@@ -31849,14 +29459,10 @@ si le cadre peut gérer des fichiers originaux dans plus d'un format.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Template
 \begin_inset space ~
 \end_inset
@@ -31866,21 +29472,15 @@ Template
 
 \end_inset
 
-
-\lang french
  est un nom original pour le cadre.
  Il ne soit pas contenir de macros de substitution (voir ci-après).
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Transform
 \begin_inset space ~
 \end_inset
@@ -31890,8 +29490,6 @@ Rotate|Resize|Clip|Extra
 
 \end_inset
 
-
-\lang french
  spécifie quelles transformations sont reconnues par ce cadre.
  Elle peut apparaître zéro ou plusieurs fois.
  Elle active les options correspondantes dans la fenêtre de dialogue.
@@ -31900,8 +29498,6 @@ Rotate|Resize|Clip|Extra
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Transform
 \end_layout
 
@@ -31912,8 +29508,6 @@ Transform
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TransformCommand
 \end_layout
 
@@ -31924,8 +29518,6 @@ TransformCommand
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TransformOption
 \end_layout
 
@@ -31936,8 +29528,6 @@ TransformOption
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Format
 \end_layout
 
@@ -31953,14 +29543,10 @@ La section Format
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Format
 \begin_inset space ~
 \end_inset
@@ -31970,8 +29556,6 @@ LaTeX|PDFLaTeX|PlainText|DocBook|XHTML
 
 \end_inset
 
-
-\lang french
  décrit le format de document primaire relevant de cette définition de format.
  Tous les cadres n'ont pas de représentation raisonnable dans tous les formats
  de fichier documentaire.
@@ -31980,8 +29564,6 @@ LaTeX|PDFLaTeX|PlainText|DocBook|XHTML
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Format
 \end_layout
 
@@ -31994,49 +29576,29 @@ Format
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Option
 \begin_inset space ~
 \end_inset
 
-<
-\lang french
-nom
-\lang english
->
+<nom>
 \begin_inset space ~
 \end_inset
 
-<
-\lang french
-valeur
-\lang english
->
+<valeur>
 \end_layout
 
 \end_inset
 
-
-\lang french
  définit une macro additionnelle 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-$$<
-\lang french
-nom
-\lang english
->
+$$<nom>
 \end_layout
 
 \end_inset
@@ -32046,8 +29608,6 @@ nom
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Product
 \end_layout
 
@@ -32059,13 +29619,7 @@ Product
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-<
-\lang french
-valeur
-\lang english
->
+<valeur>
 \end_layout
 
 \end_inset
@@ -32076,13 +29630,7 @@ valeur
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-<
-\lang french
-valeur
-\lang english
->
+<valeur>
 \end_layout
 
 \end_inset
@@ -32092,8 +29640,6 @@ valeur
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Product
 \end_layout
 
@@ -32104,13 +29650,7 @@ Product
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-$$<
-\lang french
-nom
-\lang english
->
+$$<nom>
 \end_layout
 
 \end_inset
@@ -32121,14 +29661,10 @@ nom
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Product
 \begin_inset space ~
 \end_inset
@@ -32138,8 +29674,6 @@ Product
 
 \end_inset
 
-
-\lang french
  spécifie le texte inséré dans le document exporté.
  C'est en fait la directive la plus importante et elle peut être assez compliqué
 e.
@@ -32147,29 +29681,19 @@ e.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Preamble
 \begin_inset space ~
 \end_inset
 
-<
-\lang french
-nom
-\lang english
->
+<nom>
 \end_layout
 
 \end_inset
 
-
-\lang french
  spécifie un élément de préambule qui sera inclus dans le préambule \SpecialChar LaTeX
 .
  Il doit être défini par 
@@ -32177,8 +29701,6 @@ nom
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PreambleDef
 \end_layout
 
@@ -32190,8 +29712,6 @@ PreambleDef
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PreambleDefEnd
 \end_layout
 
@@ -32202,14 +29722,10 @@ PreambleDefEnd
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ReferencedFile
 \begin_inset space ~
 \end_inset
@@ -32223,8 +29739,6 @@ ReferencedFile
 
 \end_inset
 
-
-\lang french
  désigne les fichiers créés par la procédure de conversion et requis par
  un format d'exportation particulier.
  Si le nom d'un fichier est relatif, il est interprété relativement au document
@@ -32233,14 +29747,10 @@ ReferencedFile
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Requirement
 \begin_inset space ~
 \end_inset
@@ -32250,8 +29760,6 @@ Requirement
 
 \end_inset
 
-
-\lang french
  désigne le nom d'un paquetage \SpecialChar LaTeX
  requis.
  Le paquetage est inclus via 
@@ -32259,8 +29767,6 @@ Requirement
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 usepackage{}
@@ -32274,14 +29780,10 @@ usepackage{}
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TransformCommand
 \begin_inset space ~
 \end_inset
@@ -32295,8 +29797,6 @@ RotationLatexCommand
 
 \end_inset
 
-
-\lang french
  spécifie que la commande \SpecialChar LaTeX
  native doit être utilisée pour effectuer les
  rotations.
@@ -32304,14 +29804,10 @@ RotationLatexCommand
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TransformCommand
 \begin_inset space ~
 \end_inset
@@ -32325,8 +29821,6 @@ ResizeLatexCommand
 
 \end_inset
 
-
-\lang french
  spécifie que la commande \SpecialChar LaTeX
  native doit être utilisée pour effectuer les
  changements de taille.
@@ -32334,14 +29828,10 @@ ResizeLatexCommand
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TransformOption
 \begin_inset space ~
 \end_inset
@@ -32355,24 +29845,16 @@ RotationLatexOption
 
 \end_inset
 
-
-\lang french
  spécifie que les rotations sont effectuées via un paramètre facultatif.
  Cette directive peut apparaître une fois ou pas du tout.
-
-\lang english
  
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TransformOption
 \begin_inset space ~
 \end_inset
@@ -32386,22 +29868,16 @@ ResizeLatexOption
 
 \end_inset
 
-
-\lang french
  spécifie que les changements de taille sont effectuées via un paramètre
  facultatif.
  Cette directive peut apparaître une fois ou pas du tout
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TransformOption
 \begin_inset space ~
 \end_inset
@@ -32415,23 +29891,15 @@ ClipLatexOption
 
 \end_inset
 
- 
-\lang french
-spécifie que les recadrages sont effectuées via un paramètre facultatif.
- Cette directive peut apparaître une fois ou pas du tout
-\lang english
-.
+ spécifie que les recadrages sont effectuées via un paramètre facultatif.
+ Cette directive peut apparaître une fois ou pas du tout.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TransformOption
 \begin_inset space ~
 \end_inset
@@ -32445,23 +29913,15 @@ ExtraLatexOption
 
 \end_inset
 
-
-\lang french
  spécifie qu'un paramètre supplémentaire facultatif est utilisé.
- Cette directive peut apparaître une fois ou pas du tout
-\lang english
-.
+ Cette directive peut apparaître une fois ou pas du tout.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 UpdateFormat
 \begin_inset space ~
 \end_inset
@@ -32471,8 +29931,6 @@ UpdateFormat
 
 \end_inset
 
-
-\lang french
  spécifie le format de fichier du fichier converti.
  Ce doit être le nom d'un format reconnu par \SpecialChar LyX
  (voir la fenêtre de dialogue
@@ -32481,8 +29939,6 @@ UpdateFormat
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Outils\SpecialChar menuseparator
 Préférences\SpecialChar menuseparator
 Gestion
@@ -32511,34 +29967,24 @@ fichier
  Cette directive doit apparaître une et une seule fois.
  Si le format du fichier résultant est PDF, vous devez spécifier le format
  
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 pdf6
 \end_layout
 
 \end_inset
 
-
-\lang french
 , qui est le format PDF utilisé pour insérer des graphiques.
  Les autres formats PDF définis servent aux exportations du document.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 UpdateResult
 \begin_inset space ~
 \end_inset
@@ -32548,8 +29994,6 @@ UpdateResult
 
 \end_inset
 
-
-\lang french
  spécifie le nom du fichier converti.
  Le nom de fichier doit être absolu.
  Cette directive doit apparaître une et une seule fois.
@@ -32566,8 +30010,6 @@ La configuration du cadre externe peut contenir des définitions additionnelles
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PreambleDef
 \end_layout
 
@@ -32579,8 +30021,6 @@ PreambleDef
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PreambleDefEnd
 \end_layout
 
@@ -32592,8 +30032,6 @@ PreambleDefEnd
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Format
 \end_layout
 
@@ -32625,95 +30063,65 @@ Les macros disponibles sont les suivantes :
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$AbsOrRelPathMaster
 \end_layout
 
 \end_inset
 
-
-\lang french
  est le est le chemin d'accès, absolu ou relatif au document maître \SpecialChar LyX
 .
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$AbsOrRelPathParent
 \end_layout
 
 \end_inset
 
-
-\lang french
  est le est le chemin d'accès, absolu ou relatif au document \SpecialChar LyX
 .
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$AbsPath
 \end_layout
 
 \end_inset
 
-
-\lang french
  est le chemin d'accès absolu.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$Basename
 \end_layout
 
 \end_inset
 
-
-\lang french
  est le nom du fichier sans chemin d'accès et sans suffixe.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-$$Contents
-\lang french
-(
+$$Contents(
 \begin_inset Quotes cld
 \end_inset
 
@@ -32726,8 +30134,6 @@ nom_fichier.ext
 
 \end_inset
 
-
-\lang french
  la macro dépliera le contenu du fichier de nom 
 \begin_inset Flex Code
 status collapsed
@@ -32742,40 +30148,28 @@ nom_fichier.ext
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$Extension
 \end_layout
 
 \end_inset
 
-
-\lang french
  est le suffixe (point inclus).
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$pngOrjpg
 \end_layout
 
 \end_inset
 
-
-\lang french
  sera la chaîne 
 \begin_inset Quotes cld
 \end_inset
@@ -32808,42 +30202,30 @@ Image tramée
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$FName
 \end_layout
 
 \end_inset
 
-
-\lang french
  est le nom du fichier spécifié dans la fenêtre d'objet externe.
  Il est soit absolu, soit relatif au document \SpecialChar LyX
 .
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$FPath
 \end_layout
 
 \end_inset
 
-
-\lang french
  la partie 
 \begin_inset Quotes cld
 \end_inset
@@ -32857,8 +30239,6 @@ chemin d'accès
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$FName
 \end_layout
 
@@ -32869,83 +30249,59 @@ $$FName
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$RelPathMaster
 \end_layout
 
 \end_inset
 
- 
-\lang french
-est le chemin d'accès relatif au document maître \SpecialChar LyX
+ est le chemin d'accès relatif au document maître \SpecialChar LyX
 .
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$RelPathParent
 \end_layout
 
 \end_inset
 
-
-\lang french
  est le chemin d'accès relatif au document \SpecialChar LyX
 .
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$Sysdir
 \end_layout
 
 \end_inset
 
- 
-\lang french
-désigne le chemin absolu du répertoire système.
+ désigne le chemin absolu du répertoire système.
  Typiquement utilisé pour pouvoir trouver les différents scripts auxiliaires
  fournis avec \SpecialChar LyX
 .
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$Tempname
 \end_layout
 
 \end_inset
 
-
-\lang french
  est le nom et le chemin absolu d'un fichier temporaire qui sera automatiquement
  effacé quand le document sera fermé, ou l'objet externe effacé.
 \end_layout
@@ -32957,8 +30313,6 @@ Toutes la macros de chemin contiennent un séparateur de répertoire final,
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$AbsPath$$Basename$$Extension
 \end_layout
 
@@ -32974,8 +30328,6 @@ Les macros ci-dessus sont substituées dans toutes les directives sauf indiqué.
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Product
 \end_layout
 
@@ -32987,8 +30339,6 @@ Product
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Transform
 \end_layout
 
@@ -32999,8 +30349,6 @@ Transform
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TransformCommand
 \end_layout
 
@@ -33010,78 +30358,54 @@ TransformCommand
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$ResizeFront
 \end_layout
 
 \end_inset
 
-
-\lang french
  partie initiale de la commande de changement de taille.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$ResizeBack
 \end_layout
 
 \end_inset
 
-
-\lang french
  partie finale de la commande de changement de taille.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$RotateFront
 \end_layout
 
 \end_inset
 
-
-\lang french
  partie initiale de la commande de rotation.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$RotateBack
 \end_layout
 
 \end_inset
 
-
-\lang french
  partie finale de la commande de rotation.
 \end_layout
 
@@ -33091,23 +30415,17 @@ La valeur de la chaîne de la directive
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Option
 \end_layout
 
 \end_inset
 
  reconnaît également les substitutions suivantes si elles sont autorisées
- par les directives
-\lang english
- 
+ par les directives 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Transform
 \end_layout
 
@@ -33118,8 +30436,6 @@ Transform
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TransformOption
 \end_layout
 
@@ -33129,21 +30445,15 @@ TransformOption
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$Clip
 \end_layout
 
 \end_inset
 
-
-\lang french
  option de recadrage.
 \end_layout
 
@@ -33152,8 +30462,6 @@ $$Clip
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$Extra
 \end_layout
 
@@ -33167,8 +30475,6 @@ $$Extra
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$Resize
 \end_layout
 
@@ -33182,8 +30488,6 @@ $$Resize
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$Rotate
 \end_layout
 
@@ -33238,8 +30542,6 @@ utiliser
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$AbsPath
 \end_layout
 
@@ -33254,8 +30556,6 @@ utiliser
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$AbsOrRelPathMaster
 \end_layout
 
@@ -33271,8 +30571,6 @@ sinon utiliser
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$AbsOrRelPathParent
 \end_layout
 
@@ -33290,8 +30588,6 @@ Des cas spéciaux existent pour lesquels cette règle n'est pas valable, et
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ReferencedFile latex "$$AbsOrRelPathMaster$$Basename.pstex_t"
 \end_layout
 
@@ -33303,8 +30599,6 @@ ReferencedFile latex "$$AbsOrRelPathMaster$$Basename.pstex_t"
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 .pstex_t
 \end_layout
 
@@ -34288,9 +31582,7 @@ Les couleurs énumérées ci-après sont les couleurs standard et celles que
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Color functions
+Fonctions couleurs
 \end_layout
 
 \begin_layout Standard
@@ -34299,27 +31591,15 @@ Les mots-clés suivants ne sont pas des couleurs, mais plutôt des actions
 \end_layout
 
 \begin_layout Description
-
-\lang english
-ignore
-\lang french
- couleur ignorée
+ignore couleur ignorée
 \end_layout
 
 \begin_layout Description
-
-\lang english
-inherit
-\lang french
- couleur héritée
+inherit couleur héritée
 \end_layout
 
 \begin_layout Description
-
-\lang english
-none
-\lang french
- pas de couleur particulière – réinitialisation ou couleur implicite
+none pas de couleur particulière – réinitialisation ou couleur implicite
 \end_layout
 
 \begin_layout Section
@@ -34334,116 +31614,78 @@ Ces couleurs ne peuvent pas être personnalisées.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 black
 \end_layout
 
 \begin_layout Description
-
-\lang english
 white
 \end_layout
 
 \begin_layout Description
-
-\lang english
 blue
 \end_layout
 
 \begin_layout Description
-
-\lang english
 brown
 \end_layout
 
 \begin_layout Description
-
-\lang english
 cyan
 \end_layout
 
 \begin_layout Description
-
-\lang english
 darkgray
 \end_layout
 
 \begin_layout Description
-
-\lang english
 gray
 \end_layout
 
 \begin_layout Description
-
-\lang english
 green
 \end_layout
 
 \begin_layout Description
-
-\lang english
 lightgray
 \end_layout
 
 \begin_layout Description
-
-\lang english
 lime
 \end_layout
 
 \begin_layout Description
-
-\lang english
 magenta
 \end_layout
 
 \begin_layout Description
-
-\lang english
 olive
 \end_layout
 
 \begin_layout Description
-
-\lang english
 orange
 \end_layout
 
 \begin_layout Description
-
-\lang english
 pink
 \end_layout
 
 \begin_layout Description
-
-\lang english
 purple
 \end_layout
 
 \begin_layout Description
-
-\lang english
 red
 \end_layout
 
 \begin_layout Description
-
-\lang english
 teal
 \end_layout
 
 \begin_layout Description
-
-\lang english
 violet
 \end_layout
 
 \begin_layout Description
-
-\lang english
 yellow
 \end_layout
 
@@ -34461,609 +31703,309 @@ Préférences
 \end_layout
 
 \begin_layout Description
-
-\lang english
-added_space
-\lang french
- espace ajoutée
+added_space espace ajoutée
 \end_layout
 
 \begin_layout Description
-
-\lang english
-addedtext
-\lang french
- texte ajouté
+addedtext texte ajouté
 \end_layout
 
 \begin_layout Description
-
-\lang english
-appendix
-\lang french
- marque d'annexe
+appendix marque d'annexe
 \end_layout
 
 \begin_layout Description
-
-\lang english
-background
-\lang french
- fond
+background fond
 \end_layout
 
 \begin_layout Description
-
-\lang english
-bottomarea
-\lang french
- zone du bas
+bottomarea zone du bas
 \end_layout
 
 \begin_layout Description
-
-\lang english
-branchlabel
-\lang french
- étiquette de branche
+branchlabel étiquette de branche
 \end_layout
 
 \begin_layout Description
-
-\lang english
-buttonbg
-\lang french
- fond de bouton d'insert
+buttonbg fond de bouton d'insert
 \end_layout
 
 \begin_layout Description
-
-\lang english
-buttonframe
-\lang french
- bordure de bouton d'insert
+buttonframe bordure de bouton d'insert
 \end_layout
 
 \begin_layout Description
-
-\lang english
-buttonhoverbg
-\lang french
- fond du bouton d'insert (pointé)
+buttonhoverbg fond du bouton d'insert (pointé)
 \end_layout
 
 \begin_layout Description
-
-\lang english
-changebar
-\lang french
- barre de modification
+changebar barre de modification
 \end_layout
 
 \begin_layout Description
-
-\lang english
-changedtextauthor1
-\lang french
- texte modifié auteur 1
+changedtextauthor1 texte modifié auteur 1
 \end_layout
 
 \begin_layout Description
-
-\lang english
-changedtextauthor2
-\lang french
- texte modifié auteur 2
+changedtextauthor2 texte modifié auteur 2
 \end_layout
 
 \begin_layout Description
-
-\lang english
-changedtextauthor3
-\lang french
- texte modifié auteur 3
+changedtextauthor3 texte modifié auteur 3
 \end_layout
 
 \begin_layout Description
-
-\lang english
-changedtextauthor4
-\lang french
- texte modifié auteur 4
+changedtextauthor4 texte modifié auteur 4
 \end_layout
 
 \begin_layout Description
-
-\lang english
-changedtextauthor5
-\lang french
- texte modifié auteur 5
+changedtextauthor5 texte modifié auteur 5
 \end_layout
 
 \begin_layout Description
-
-\lang english
-collapsibletext
-\lang french
- texte d'insert repliable
+collapsibletext texte d'insert repliable
 \end_layout
 
 \begin_layout Description
-
-\lang english
-collapsibleframe
-\lang french
- cadre d'insert repliable
+collapsibleframe cadre d'insert repliable
 \end_layout
 
 \begin_layout Description
-
-\lang english
-command
-\lang french
- insert de commande
+command insert de commande
 \end_layout
 
 \begin_layout Description
-
-\lang english
-commandbg
-\lang french
- fond d'insert de commande
+commandbg fond d'insert de commande
 \end_layout
 
 \begin_layout Description
-
-\lang english
-commandframe
-\lang french
- cadre d'insert de commande
+commandframe cadre d'insert de commande
 \end_layout
 
 \begin_layout Description
-
-\lang english
-comment
-\lang french
- étiquette de commentaire
+comment étiquette de commentaire
 \end_layout
 
 \begin_layout Description
-
-\lang english
-commentbg
-\lang french
- fond de commentaire
+commentbg fond de commentaire
 \end_layout
 
 \begin_layout Description
-
-\lang english
-cursor
-\lang french
- curseur
+cursor curseur
 \end_layout
 
 \begin_layout Description
-
-\lang english
-deletedtext
-\lang french
- texte supprimé
+deletedtext texte supprimé
 \end_layout
 
 \begin_layout Description
-
-\lang english
-deletedtextmodifier
-\lang french
- modificateur de texte supprimé
+deletedtextmodifier modificateur de texte supprimé
 \end_layout
 
 \begin_layout Description
-
-\lang english
-depthbar
-\lang french
- barre de profondeur
+depthbar barre de profondeur
 \end_layout
 
 \begin_layout Description
-
-\lang english
-eolmarker
-\lang french
- marqueur de fin de ligne
+eolmarker marqueur de fin de ligne
 \end_layout
 
 \begin_layout Description
-
-\lang english
-error
-\lang french
- erreur \SpecialChar LaTeX
+error erreur \SpecialChar LaTeX
 
 \end_layout
 
 \begin_layout Description
-
-\lang english
-footlabel
-\lang french
- étiquette de note de bas de page
+footlabel étiquette de note de bas de page
 \end_layout
 
 \begin_layout Description
-
-\lang english
 foreground foreground color
 \end_layout
 
 \begin_layout Description
-
-\lang english
-graphicsbg
-\lang french
- fond graphique
+graphicsbg fond graphique
 \end_layout
 
 \begin_layout Description
-
-\lang english
-greyedoutbg
-\lang french
- fond d'insert grisé
+greyedoutbg fond d'insert grisé
 \end_layout
 
 \begin_layout Description
-
-\lang english
-greyedoutlabel
-\lang french
- étiquette d'insert grisé
+greyedoutlabel étiquette d'insert grisé
 \end_layout
 
 \begin_layout Description
-
-\lang english
-greyedouttext
-\lang french
- texte d'insert grisé
+greyedouttext texte d'insert grisé
 \end_layout
 
 \begin_layout Description
-
-\lang english
-indexlabel
-\lang french
- étiquette d'index
+indexlabel étiquette d'index
 \end_layout
 
 \begin_layout Description
-
-\lang english
-inlinecompletion
-\lang french
- complétion en ligne
+inlinecompletion complétion en ligne
 \end_layout
 
 \begin_layout Description
-
-\lang english
-insetbg
-\lang french
- fond d'insert
+insetbg fond d'insert
 \end_layout
 
 \begin_layout Description
-
-\lang english
-insetframe
-\lang french
- cadre d'insert
+insetframe cadre d'insert
 \end_layout
 
 \begin_layout Description
-
-\lang english
-language
-\lang french
- langue étrangère
+language langue étrangère
 \end_layout
 
 \begin_layout Description
-
-\lang english
-latex
-\lang french
- texte \SpecialChar LaTeX
+latex texte \SpecialChar LaTeX
 
 \end_layout
 
 \begin_layout Description
-
-\lang english
-listingsbg
-\lang french
- fond de listing
+listingsbg fond de listing
 \end_layout
 
 \begin_layout Description
-
-\lang english
-marginlabel
-\lang french
- étiquette de note en marge
+marginlabel étiquette de note en marge
 \end_layout
 
 \begin_layout Description
-
-\lang english
-math
-\lang french
- texte mathématique
+math texte mathématique
 \end_layout
 
 \begin_layout Description
-
-\lang english
-mathbg
-\lang french
- fond mathématique
+mathbg fond mathématique
 \end_layout
 
 \begin_layout Description
-
-\lang english
-mathcorners
-\lang french
- cadre mathématique (non pointé)
+mathcorners cadre mathématique (non pointé)
 \end_layout
 
 \begin_layout Description
-
-\lang english
-mathframe
-\lang french
- cadre mathématique (pointé)
+mathframe cadre mathématique (pointé)
 \end_layout
 
 \begin_layout Description
-
-\lang english
-mathline
-\lang french
- ligne mathématique
+mathline ligne mathématique
 \end_layout
 
 \begin_layout Description
-
-\lang english
-mathmacrobg
-\lang french
- fond de macro mathématique
+mathmacrobg fond de macro mathématique
 \end_layout
 
 \begin_layout Description
-
-\lang english
-mathmacroblend
-\lang french
- macro mathématique désactivée
+mathmacroblend macro mathématique désactivée
 \end_layout
 
 \begin_layout Description
-
-\lang english
-mathmacroframe
-\lang french
- cadre de macro mathématique
+mathmacroframe cadre de macro mathématique
 \end_layout
 
 \begin_layout Description
-
-\lang english
-mathmacrohoverbg
-\lang french
- fond dynamique de macro mathématique
+mathmacrohoverbg fond dynamique de macro mathématique
 \end_layout
 
 \begin_layout Description
-
-\lang english
-mathmacrolabel
-\lang french
- étiquette de macro mathématique
+mathmacrolabel étiquette de macro mathématique
 \end_layout
 
 \begin_layout Description
-
-\lang english
-mathmacronewarg
-\lang french
- macro mathématique : nouveau paramètre
+mathmacronewarg macro mathématique : nouveau paramètre
 \end_layout
 
 \begin_layout Description
-
-\lang english
-mathmacrooldarg
-\lang french
- macro mathématique : ancien paramètre
+mathmacrooldarg macro mathématique : ancien paramètre
 \end_layout
 
 \begin_layout Description
-
-\lang english
-newpage
-\lang french
- saut de page
+newpage saut de page
 \end_layout
 
 \begin_layout Description
-
-\lang english
-nonunique_inlinecompletion
-\lang french
- complétion en ligne (choix multiples)
+nonunique_inlinecompletion complétion en ligne (choix multiples)
 \end_layout
 
 \begin_layout Description
-
-\lang english
-note
-\lang french
- étiquette de note
+note étiquette de note
 \end_layout
 
 \begin_layout Description
-
-\lang english
-notebg
-\lang french
- fond de note 
+notebg fond de note 
 \end_layout
 
 \begin_layout Description
-
-\lang english
-pagebreak
-\lang french
- saut de page / saut de ligne
+pagebreak saut de page / saut de ligne
 \end_layout
 
 \begin_layout Description
-
-\lang english
-paragraphmarker
-\lang french
- marqueur de paragraphe
+paragraphmarker marqueur de paragraphe
 \end_layout
 
 \begin_layout Description
-
-\lang english
-phantomtext
-\lang french
- texte d'insert fantôme
+phantomtext texte d'insert fantôme
 \end_layout
 
 \begin_layout Description
-
-\lang english
-preview
-\lang french
- aperçu
+preview aperçu
 \end_layout
 
 \begin_layout Description
-
-\lang english
-previewframe
-\lang french
- cadre d'aperçu
+previewframe cadre d'aperçu
 \end_layout
 
 \begin_layout Description
-
-\lang english
-regexpframe
-\lang french
- cadre d'expression régulière
+regexpframe cadre d'expression régulière
 \end_layout
 
 \begin_layout Description
-
-\lang english
 scroll color that indicates when a row can be scrolled
 \end_layout
 
 \begin_layout Description
-
-\lang english
-selection
-\lang french
- sélection (fond)
+selection sélection (fond)
 \end_layout
 
 \begin_layout Description
-
-\lang english
-selectiontext
-\lang french
- sélection (texte)
+selectiontext sélection (texte)
 \end_layout
 
 \begin_layout Description
-
-\lang english
-shadedbg
-\lang french
- boîte ombrée
+shadedbg boîte ombrée
 \end_layout
 
 \begin_layout Description
-
-\lang english
-special
-\lang french
- caractère spécial
+special caractère spécial
 \end_layout
 
 \begin_layout Description
-
-\lang english
-tabularline
-\lang french
- ligne de tableau
+tabularline ligne de tableau
 \end_layout
 
 \begin_layout Description
-
-\lang english
-tabularonoffline
-\lang french
- ligne on/off de tableau
+tabularonoffline ligne on/off de tableau
 \end_layout
 
 \begin_layout Description
-
-\lang english
-textlabel1
-\lang french
- couleur 1 des étiquettes de format et d'inserts personnalisés
+textlabel1 couleur 1 des étiquettes de format et d'inserts personnalisés
 \end_layout
 
 \begin_layout Description
-
-\lang english
-textlabel2 
-\lang french
-couleur 2 des étiquettes de format et d'inserts personnalisés
+textlabel2 couleur 2 des étiquettes de format et d'inserts personnalisés
 \end_layout
 
 \begin_layout Description
-
-\lang english
-textlabel3 
-\lang french
-couleur 3 des étiquettes de format et d'inserts personnalisés
+textlabel3 couleur 3 des étiquettes de format et d'inserts personnalisés
 \end_layout
 
 \begin_layout Description
-
-\lang english
-urllabel
-\lang french
- étiquette d'URL
+urllabel étiquette d'URL
 \end_layout
 
 \begin_layout Description
-
-\lang english
-urltext
-\lang french
- texte d'URL
+urltext texte d'URL
 \end_layout
 
 \end_body
