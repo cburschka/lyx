@@ -359,6 +359,12 @@ bool findOne(BufferView * bv, docstring const & searchstr,
 				bv->cursor().setCursor(doc_iterator_end(&bv->buffer()));
 				bv->cursor().backwardPos();
 			}
+			if (auto_wrap) {
+				docstring const msg = forward
+				  ? _("Search reached end of document, continuing from beginning.")
+				  : _("Search reached beginning of document, continuing from end.");
+				bv->message(msg);
+			}
 			bv->clearSelection();
 			if (findOne(bv, searchstr, case_sens, whole, forward,
 				    find_del, false, false, false, false))
