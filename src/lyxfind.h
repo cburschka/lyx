@@ -74,7 +74,7 @@ bool lyxfind(BufferView * bv, FuncRequest const & ev);
 bool findOne(BufferView * bv, docstring const & searchstr,
 	     bool case_sens, bool whole, bool forward,
 	     bool find_del = true, bool check_wrap = false,
-	     bool auto_wrap = false, bool instant = false,
+	     bool const auto_wrap = false, bool instant = false,
 	     bool onlysel = false);
 
 /** Parse the string encoding of the replace request that is found in

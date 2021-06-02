@@ -276,7 +276,7 @@ bool searchAllowed(docstring const & str)
 
 bool findOne(BufferView * bv, docstring const & searchstr,
 	     bool case_sens, bool whole, bool forward,
-	     bool find_del, bool check_wrap, bool auto_wrap,
+	     bool find_del, bool check_wrap, bool const auto_wrap,
 	     bool instant, bool onlysel)
 {
 	// Clean up previous selections with empty searchstr on instant
@@ -338,6 +338,7 @@ bool findOne(BufferView * bv, docstring const & searchstr,
 	}
 	else if (check_wrap) {
 		DocIterator cur_orig(bv->cursor());
+		bool wrap = auto_wrap;
 		if (!auto_wrap) {
 			docstring q;
 			if (forward)
@@ -348,9 +349,9 @@ bool findOne(BufferView * bv, docstring const & searchstr,
 				  "Continue searching from the end?");
 			int wrap_answer = frontend::Alert::prompt(_("Wrap search?"),
 				q, 0, 1, _("&Yes"), _("&No"));
-			auto_wrap = wrap_answer == 0;
+			wrap = wrap_answer == 0;
 		}
-		if (auto_wrap) {
+		if (wrap) {
 			if (forward) {
 				bv->cursor().clear();
 				bv->cursor().push_back(CursorSlice(bv->buffer().inset()));
