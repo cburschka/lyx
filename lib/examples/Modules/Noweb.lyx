@@ -399,7 +399,12 @@ int     last_err_line;
 
 \begin_layout Plain Layout
 
-int     err_line;@ 
+int     err_line;
+\end_layout
+
+\begin_layout Plain Layout
+
+@
 \end_layout
 
 \end_inset
@@ -643,11 +648,17 @@ status open
 
 \begin_layout Plain Layout
 
-\end_layout
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
 
-<<Global variables>>=
+Global variables
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -1066,7 +1077,17 @@ status open
 
 \begin_layout Plain Layout
 
-<<Function bodies>>=
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+Function bodies
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -1478,15 +1499,17 @@ status open
 
 \begin_layout Plain Layout
 
-\end_layout
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
 
+Function bodies
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
-<<Function bodies>>=
+
 \end_layout
 
 \begin_layout Plain Layout
