@@ -153,7 +153,7 @@ About this manual
 \\end_layout
 
 \\begin_layout Standard
-This manual documents the
+This manual documents the 
 \\begin_inset Quotes eld
 \\end_inset
 
@@ -175,7 +175,7 @@ LFUNs are also used in the files that define keyboard shortcuts, menu or
  So if you want to change\\SpecialChar breakableslash
 customize the user interface, you need to deal
  with LFUNs.
- Furthermore, external programs can use LFUNs to communicate with and
+ Furthermore, external programs can use LFUNs to communicate with and 
 \\begin_inset Quotes eld
 \\end_inset
 
@@ -186,7 +186,7 @@ remote-control
  \\SpecialChar LyX
  .
  Finally, you can also issue LFUNs directly via the so called mini-buffer
- which can be opened via
+ which can be opened via 
 \\begin_inset Info
 type  "shortcuts"
 arg   "command-execute"
