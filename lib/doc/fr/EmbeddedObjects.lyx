@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 608
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -164,7 +164,7 @@ varwidth
 \maintain_unincluded_children no
 \language french
 \language_package default
-\inputencoding utf8
+\inputencoding auto-legacy
 \fontencoding auto
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
@@ -173,9 +173,9 @@ varwidth
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -224,8 +224,8 @@ varwidth
 \justification true
 \use_refstyle 0
 \use_minted 0
-\notefontcolor #0000ff
 \use_lineno 0
+\notefontcolor #0000ff
 \index Index
 \shortcut idx
 \color #008000
@@ -241,12 +241,16 @@ varwidth
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -332,6 +336,13 @@ Mise à jour pour 2.2.3, section 2.11.3, 7 janvier 2017 (JPC)
 Mise à jour pour 2.3.0, janvier 2018 (JPC)
 \end_layout
 
+\begin_layout Plain Layout
+
+\family sans
+\size normal
+Mise à jour pour 2.4.0, juin 2021 (JPC)
+\end_layout
+
 \end_inset
 
 
@@ -344,7 +355,7 @@ Mise à jour pour 2.3.0, janvier 2018 (JPC)
 
 
 \family sans
-Version 2.3.x
+Version 2.4.x
 \end_layout
 
 \begin_layout Standard
@@ -911,6 +922,8 @@ reference "sec:Placement-légende"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -954,6 +967,8 @@ Une étoile dans un flottant.
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -1134,12 +1149,16 @@ reference "fig:A-star"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -1182,6 +1201,8 @@ Objet rose
 
 
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -1865,10 +1886,11 @@ Tableau
  et de colonnes que doit avoir le tableau qui va être créé et vous appuyez
  sur un bouton de la souris pour valider votre choix.
  Quand vous utilisez le menu pour créer un tableau, une fenêtre apparaît,
- vous demandant le nombre de lignes et de colonnes.
-\begin_inset Newline newline
-\end_inset
+ vous demandant le nombre de lignes et de colonnes, et vous pouvez sélectionner
+ un style particulier (pour les bordures).
+\end_layout
 
+\begin_layout Standard
 Le tableau a implicitement une bordure au dessus et à gauche de chaque case,
  une à droite de la colonne la plus à droite et une en bas de la rangée
  du bas, qui forment une boîte autour du tableau.
@@ -2043,6 +2065,89 @@ C
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\align block
+Ceci correspond au style de tableau 
+\begin_inset Quotes cld
+\end_inset
+
+
+\family sans
+Grille avec en-tête
+\family default
+
+\begin_inset Quotes crd
+\end_inset
+
+ qui apparaît dans le menu déroulant de sélection du style.
+\end_layout
+
+\begin_layout Standard
+Les autres styles possibles sont:
+\end_layout
+
+\begin_layout Itemize
+une 
+\begin_inset Quotes cld
+\end_inset
+
+
+\family sans
+Simple grille
+\family default
+
+\begin_inset Quotes crd
+\end_inset
+
+ qui ressemble au tableau ci-dessus, mais sans la première ligne séparée
+ par une double bordure;
+\end_layout
+
+\begin_layout Itemize
+un tableau 
+\family sans
+Sans bordures
+\family default
+, sans aucun filet;
+\end_layout
+
+\begin_layout Itemize
+et un 
+\begin_inset Quotes cld
+\end_inset
+
+tableau formel
+\begin_inset Quotes crd
+\end_inset
+
+, souvent utilisé en édition professionnelle avec uniquement des bordures
+ horizontales, celles en haut et en bas de tableau étant plus grasses (voir
+ le 
+\emph on
+Manuel des objets insérés
+\emph default
+, section 
+\emph on
+Tableaux formels
+\emph default
+).
+ Il est aussi possible d'avoir une bordure horizontale au-dessus de la dernière
+ ligne.
+\end_layout
+
+\begin_layout Standard
+Le style implicite utilisé aussi bien dans la fenêtre que via le bouton
+ de la barre d'outils peut être changé via 
+\family sans
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
+Format du texte
+\family default
+.
+ Par conséquent, si le style implicite n'est pas le bon, il vous faut modifier
+ ce réglage.
 \end_layout
 
 \begin_layout Section
@@ -2733,6 +2838,16 @@ ou colonne ?
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
+arg   "tabular-feature set-border-lines"
+\end_inset
+
+ ajoute une bordure autour des cellules sélectionnées
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Info
+type  "icon"
 arg   "tabular-feature set-all-lines"
 \end_inset
 
@@ -2751,6 +2866,17 @@ arg   "tabular-feature unset-all-lines"
  supprime toutes les lignes autour de la cellule ou de la sélection de cellules
  courante - si la cellule courante n'est pas multi-colonnes cela affecte
  aussi la colonne et la ligne courante
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Info
+type  "icon"
+arg   "tabular-feature reset-formal-default"
+\end_inset
+
+ dans un tableau formel, revient au style implicite (bordures horizontales
+ uniquement pour les lignes hautes et basse)
 \end_layout
 
 \begin_layout Labeling
@@ -2958,6 +3084,7 @@ reference "sec:Flottants-Introduction"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -11313,6 +11440,7 @@ Tableau ! Saut de ligne
 \noindent
 \begin_inset Float table
 placement H
+alignment document
 wide false
 sideways false
 status open
@@ -11515,6 +11643,7 @@ reference "tab:Tableau-césure"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -11982,6 +12111,7 @@ Multi-colonnes ! Calculs
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -12188,6 +12318,8 @@ reference "tab:Tableau-multicolonne-imparfait"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -14947,7 +15079,13 @@ formel
 \end_inset
 
 .
- Pour transformer un tableau en tableau formel, utilisez l'option 
+ Pour transformer un tableau en tableau formel, sélectionner le style de
+ tableau 
+\family sans
+Formel\SpecialChar ldots
+
+\family default
+ dans la fenêtre de création de tableau ou utiliser l'option 
 \family sans
 Formel
 \family default
@@ -14967,12 +15105,17 @@ du
 
 tableau
 \family default
-.
+ (si vous cochez en outre l'option
+\family sans
+ Utiliser le style formel implicite
+\family default
+, les bordures seront conformées à des valeurs implicites raisonnables).
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -15488,17 +15631,35 @@ reference "cha:Unités-de-longueur"
 \end_layout
 
 \begin_layout Standard
-On peut aussi créer des lignes qui ne font pas toute la largeur du tableau
- en mettant une ligne pour une cellule multi-colonnes.
- \SpecialChar LyX
- va utiliser en interne la commande 
-\series bold
+Comme avec le tableau
+\begin_inset space ~
+\end_inset
 
-\backslash
-cmidrule
-\series default
- pour créer cette ligne.
- Sa syntaxe complète est :
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Exemple-tableau-booktabs"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, les tableaux formels utilisent souvent des lignes raccourcies pour grouper
+ les colonnes.
+ Ceci peut être fait dans l'onglet des bordures dans la fenêtre de dialogue
+ de tableau.
+ Avec les tableaux formels les bordures haute et basse doivent dépasser
+ légèrement à gauche et à droite.
+ En cliquant sur celles-ci, elles seront ajustées.
+\end_layout
+
+\begin_layout Standard
+Si vous devez ajuster la longueur à l'épaisseur des lignes, vous devez avoir
+ recours au code \SpecialChar TeX
+.
+ La commande appropriée (utilisable aussi pour les lignes intermédiaires)
+ est la suivante:
 \end_layout
 
 \begin_layout Standard
@@ -15506,37 +15667,13 @@ cmidrule
 \series bold
 
 \backslash
-cmidrule[largeur](rognage){colDépart-colFin}
-\end_layout
-
-\begin_layout Standard
-Les options de la commande 
-\series bold
-
-\backslash
-cmidrule
-\series default
- ne sont pas actuellement gérées par \SpecialChar LyX
-, vous devez donc utiliser du code
- \SpecialChar TeX
- pour pouvoir les utiliser.
- On peut créer manuellement des lignes 
-\series bold
-
-\backslash
-mitrales
-\series default
- en insérant la commande en code \SpecialChar TeX
- comme le premier élément de la première
- cellule de la ligne.
- La ligne est alors affichée dans la sortie imprimée au dessus de la ligne
- en question.
+cmidrule[height](rognage){colDépart-colFin}
 \end_layout
 
 \begin_layout Standard
 La valeur 
 \series bold
-largeur
+height
 \series default
  pour l'épaisseur des lignes est de 0.03
 \begin_inset space \thinspace{}
@@ -15591,68 +15728,63 @@ largeurRognage
 \begin_inset space \thinspace{}
 \end_inset
 
-em.
+em (c'est ce qui se produit si vous utilisez le rognage depuis la fenêtre
+ de dialogue).
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
+L'option
+\emph on
+ height
+\emph default
+ de 
+\series bold
 
-Le tableau
+\backslash
+cmidrule
+\series default
+ n'est pas actuellment reconnue par \SpecialChar LyX
+, pas plus que les paramètres de 
+\emph on
+rognage
+\emph default
+.
+ Si vous en avez besoin, vous pouvez insérer manuellment une commande
+\series bold
+ 
+\backslash
+cmidrule
+\series default
+ avec les réglages appropriés en tant que code \SpecialChar TeX
+ comme première saisie dans
+ la première cellute d'une ligne.
+ Cette ligne est ensuite tracée dan sle résultat imprimable au-dessus de
+ la ligne courante.
+ Le tableau
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Exemple-tableau-booktabs"
+reference "tab:Tableau-booktabs-special"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
- a été créé en utilisant les commandes
+ montre ceci dans la sixième ligne).
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-
-\backslash
-cmidrule(r){2-2}
-\backslash
-cmidrule(l){3-4}
-\end_layout
-
-\begin_layout Standard
-au début de la deuxième ligne et
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-cmidrule[2pt](l{10pt}){1-1}
-\end_layout
-
-\begin_layout Standard
-au début de la sixième ligne.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Vous pouvez vouloir des commandes 
+Vous pouvez également vouloir des commandes 
 \series bold
 
 \backslash
 cmidrule
 \series default
-s qui se recouvrent comme pour le tableau
+s qui se recouvrent comme dans le tableau
 \begin_inset space ~
 \end_inset
 
@@ -15663,7 +15795,8 @@ reference "tab:Tableau-booktabs-special"
 
 \end_inset
 
-.
+, bien que ce soit considéré comme une mauvaise pratique (aussi ne l'utilisez
+ que si vous en avez vraiment besoin).
  On obtient ce résultat en utilisant la commande suivante en code \SpecialChar TeX
 
 \end_layout
@@ -15696,10 +15829,6 @@ reference "tab:Tableau-booktabs-special"
 \series bold
 
 \backslash
-cmidrule(r){2-2}
-\backslash
-cmidrule(l){3-4}
-\backslash
 morecmidrules
 \backslash
 cmidrule{2-4}
@@ -15713,8 +15842,6 @@ La commande pour la sixième ligne est
 
 \series bold
 
-\backslash
-midrule
 \backslash
 morecmidrules
 \backslash
@@ -15774,6 +15901,7 @@ Paquetages \SpecialChar LaTeX
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -15788,7 +15916,7 @@ name "tab:Tableau-booktabs-special"
 
 \end_inset
 
-Tableau formel spécial
+Tableau formel spécial (moche)
 \end_layout
 
 \end_inset
@@ -15907,7 +16035,7 @@ cmidrule{2-4}
 
 \end_inset
 
-Epaisseur du capteur en µm
+Épaisseur du capteur en µm
 \end_layout
 
 \end_inset
@@ -16083,7 +16211,7 @@ status collapsed
 
 
 \backslash
-cmidrule{3-4}
+cmidrule[2pt](l{7pt}){3-4}
 \end_layout
 
 \end_inset
@@ -17081,6 +17209,7 @@ Couleur ! Pour les cellules de tableau
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -17736,6 +17865,7 @@ Texte
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -18230,6 +18360,7 @@ rowcolors{1}{white}{lightgray}
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -18409,6 +18540,7 @@ hline]{1}{lightgray}{cyan}
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -18786,6 +18918,7 @@ Si vous voulez plusieurs couleurs, définissez plusieurs formats de colonne.
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -19020,6 +19153,7 @@ arrayrulecolor{black}}
 
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -19185,6 +19319,7 @@ reference "tab:Tableau-avec-filets-colorés"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -19406,6 +19541,8 @@ reference "tab:Table-with-different-hor"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -20034,6 +20171,8 @@ Après cette commande saisir le contenu de la cellule comme d'habitude en
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -20811,6 +20950,7 @@ reference "tab:Tableau-incluant-des"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -21023,6 +21163,7 @@ reference "tab:Tableau-incluant-une"
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -21920,6 +22061,7 @@ reference "tab:Alignement-vertical"
 \noindent
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -21948,6 +22090,8 @@ Alignement vertical d'un texte avec une police de grande taille.
 
 
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -22062,6 +22206,8 @@ Huger
 
 
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -22316,6 +22462,7 @@ Au séparateur décimal
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -22403,6 +22550,7 @@ en-tête
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -22606,6 +22754,8 @@ reference "tab:Tableau-centré-sur-séparateur-2"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -23254,6 +23404,7 @@ pour les cellules de la deuxième colonne.
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -23505,6 +23656,8 @@ arrayrulewidth}{1.5pt}
 
 
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -23789,6 +23942,8 @@ arrayrulewidth 0.4pt}}
 
 
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -24010,6 +24165,8 @@ pour les autres colonnes.
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -24192,6 +24349,7 @@ arydshln
 \begin_layout Standard
 \begin_inset Float table
 placement H
+alignment document
 wide false
 sideways false
 status open
@@ -24822,6 +24980,7 @@ filets interrompus horizontaux en jaune, partiellement
 \begin_layout Standard
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -25913,6 +26072,7 @@ Flottants ! Algorithmes
 \begin_layout Standard
 \begin_inset Float algorithm
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -27398,10 +27558,10 @@ hypcap
 \end_layout
 
 \begin_layout Section
-Placement des flottants
+Réglage des flottants
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Placement-flottants"
+name "sec:Réglage-flottants"
 
 \end_inset
 
@@ -27410,7 +27570,7 @@ name "sec:Placement-flottants"
 status collapsed
 
 \begin_layout Plain Layout
-Flottants ! Placement
+Flottants ! Réglage
 \end_layout
 
 \end_inset
@@ -27419,78 +27579,140 @@ Flottants ! Placement
 \end_layout
 
 \begin_layout Standard
-En faisant un clic droit sur la boîte d'un flottant et 
-\lang english
-clicking on 
+Les réglages pour les folttants peuvent être définis en deux endroits avec
+ \SpecialChar LyX
+: dans 
 \family sans
-Settings
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar ldots
+\SpecialChar menuseparator
+Paramètres de flottant
+\family default
+, vous pouvez positionner quelques options utilisées implicitement par tous
+ les flottants du document (placement dans la page et alignement des contenus),
+ sauf à modifier localement ces réglages pour un flottant particulier.
+\end_layout
+
+\begin_layout Standard
+Ceci peut être fait via un clic droit sur la boîte d'un flottant et un clic
+ sur
+\lang english
+ 
+\family sans
+Paramètres\SpecialChar ldots
+:
 \family default
 \lang french
- on ouvre une fenêtre de dialogue dans laquelle vous pouvez modifier le
- paramètres de placement que \SpecialChar LaTeX
- utilise pour déterminer où placer le flottant.
-\begin_inset Newline newline
-\end_inset
-
-L'option 
+ une fenêtre de dialogue s'ouvre dans laquelle vous pouvez, maintenant seulement
+ pour le flottant concerné, modifier le placement global et les options
+ d'aligenement, et préciser d'autres options qui ne sont disponibles que
+ pour des flottants individuels.
+ Toutes ce soptions, que ce soit pour 
 \family sans
-Plusieurs
-\begin_inset space ~
-\end_inset
-
-colonnes
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar ldots
+\SpecialChar menuseparator
+Paramètres de flottant
 \family default
- n'est utilisée que dans le cas d'un document à plusieurs colonnes: si vous
- l'activez, le flottant va couvrir l'ensemble des colonnes au lieu d'être
- confiné sur une seule colonne.
-\begin_inset Newline newline
-\end_inset
-
-L'option 
+ ou loacelemnt pour
+\lang english
+ 
 \family sans
-Rotation
-\begin_inset space ~
-\end_inset
+Paramètres\SpecialChar ldots
 
-90°
 \family default
- est utilisée pour faire tourner les flottants, voyez la section
-\begin_inset space ~
+\lang french
+ sont céctites ci-après.
+\end_layout
+
+\begin_layout Subsection
+Float Placement
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Float-Placement"
+
 \end_inset
 
 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Flottants-renversés"
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Floats ! Placement
+\end_layout
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
-En désactivant l'option 
+Aussi bien dans 
 \family sans
-Utilise
-\begin_inset space ~
-\end_inset
-
-le
-\begin_inset space ~
-\end_inset
-
-placement
-\begin_inset space ~
-\end_inset
-
-par
-\begin_inset space ~
-\end_inset
-
-défaut
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar ldots
+\SpecialChar menuseparator
+Paramètres de flottant
 \family default
- vous pouvez utiliser une ou plusieurs des options suivantes pour modifier
- le placement du flottant:
+ que dans
+\lang english
+ 
+\family sans
+Paramètres\SpecialChar ldots
+
+\family default
+\lang french
+ pour un flottant particulier, vous pouvez modifier les paramètres de placement
+ que \SpecialChar LaTeX
+ utilise pour déterminer où placer le flottant dans la page, soit pour
+ tous les flottants 
+\family sans
+(Document\SpecialChar menuseparator
+Paramètres\SpecialChar ldots
+\SpecialChar menuseparator
+Paramètres de flottant
+\family default
+), soit pour un flottant particulier
+\family sans
+ (Paramètres\SpecialChar ldots
+).
+
+\family default
+ Ceci est possible avec
+\family sans
+ Paramètres de placement
+\family default
+.
+ Implicitement, ces paramètres sont réglés à 
+\family sans
+Paramètres implicites de la classe
+\family default
+ (signifiant que l'algorithme implicite de placement de la classe du document
+ est utilisé) ou 
+\family sans
+Classe implicite
+\family default
+ dans les
+\family sans
+ Paramètres\SpecialChar ldots
+ 
+\family default
+d'un flottant particulier (signifiant que les réglages de 
+\family sans
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar ldots
+\SpecialChar menuseparator
+Paramètres de flottant
+\family default
+ sont utilisés, qui sont implicitement ceux de la classe).
+ Si vous voulez la changer, sélectionnez
+\family sans
+ Paramètres de placement: Réglable.
+
+\family default
+ Ceci vous permet de sélectionner une ou plusieurs options parmi:
 \end_layout
 
 \begin_layout Description
@@ -27505,6 +27727,23 @@ si
 possible: essaie de placer le flottant à la position où il a été inséré
  dans \SpecialChar LyX
 
+\end_layout
+
+\begin_layout Description
+Ici,
+\begin_inset space ~
+\end_inset
+
+à
+\begin_inset space ~
+\end_inset
+
+tout
+\begin_inset space ~
+\end_inset
+
+prix place le flottant à la position où il a été inséré dans \SpecialChar LyX
+ 
 \end_layout
 
 \begin_layout Description
@@ -28003,6 +28242,115 @@ literal "true"
 .
 \end_layout
 
+\begin_layout Subsection
+Alignement du contenu des flottants
+\end_layout
+
+\begin_layout Standard
+Avec ces options, vous pouvez définir l'alignement du contenu d'un flottant
+ (ou implicitement de tous les flottants, si l'option est sélectionnée depuis
+ 
+\family sans
+Document\SpecialChar menuseparator
+Paramètres
+\family default
+).
+ 
+\family sans
+Valeurs implicites de la classe 
+\family default
+signifie que l'alignement défini dans la classe, ou l'alignement implicite
+ de \SpecialChar LaTeX
+, est utilisé.
+ 
+\family sans
+Document implicite
+\family default
+ (seulement visible dans la fenêtre 
+\family sans
+Paramètres\SpecialChar ldots
+) 
+\family default
+retient le réglage défini dans
+\family sans
+ Document\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
+Paramètres de flottant
+\family default
+.
+ Les trois autres options, 
+\family sans
+À gauche
+\family default
+, 
+\family sans
+Centré
+\family default
+ et 
+\family sans
+À droite
+\family default
+ ont une signification évidente.
+ Si l'une d'entre elles est sélectionnée dans 
+\family sans
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
+Paramètres de flottant
+\family default
+, tous les flottants du document seront réglés implicitement de cette façon
+ (de ce fait il est facile par exemple de centrer tous les flottants).
+ 
+\end_layout
+
+\begin_layout Subsection
+Alignement du contenu des flottants
+\end_layout
+
+\begin_layout Standard
+Ces deux options ne sont visibles que dans le dialogue local de flottant
+ 
+\family sans
+Paramètres\SpecialChar ldots
+
+\family default
+, pas dans 
+\family sans
+Document\SpecialChar menuseparator
+Paramètres.
+\end_layout
+
+\begin_layout Standard
+L'option 
+\family sans
+Plusieurs colonnes
+\family default
+ est utile pour les documents bi-colonnes.
+ Si elle est sélectionnée, la figure s'étendra sur les deux colonnes de
+ la page au lieu d'être restreinte à une seule.
+\end_layout
+
+\begin_layout Standard
+L'option 
+\family sans
+Rotation de 90°
+\family default
+ sert à faire tourner les flottants, voir la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Flottants-renversés"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Section
 Rotation des flottants
 \begin_inset CommandInset label
@@ -28103,6 +28451,8 @@ Note:
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways true
 status open
@@ -28269,6 +28619,8 @@ reference "tab:Deux-sous-tableaux-cote-a-cote"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -28298,6 +28650,8 @@ Deux sous-tableaux placés côte-à-côte.
 
 
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -28392,6 +28746,8 @@ e
 
 
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -28494,6 +28850,8 @@ test
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -28520,6 +28878,8 @@ Deux sous-tableaux placés l'un sur l'autre.
 \begin_layout Plain Layout
 \align center
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -28598,6 +28958,8 @@ test
 \begin_layout Plain Layout
 \align center
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status collapsed
@@ -28780,6 +29142,8 @@ colonne
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -29360,6 +29724,7 @@ Le format de la légende n'est modifié que pour cet exemple.
 \begin_layout Standard
 \begin_inset Float figure
 placement !p
+alignment document
 wide false
 sideways false
 status open
@@ -29420,6 +29785,7 @@ on}
 \begin_layout Standard
 \begin_inset Float table
 placement !p
+alignment document
 wide false
 sideways false
 status open
@@ -29737,6 +30103,8 @@ reference "tab:A-standard-table"
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -29882,6 +30250,8 @@ c & d
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -30786,6 +31156,8 @@ FigBesBeg
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -30858,6 +31230,8 @@ TabBesBeg
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -31136,6 +31510,8 @@ sidecaptionvpos{figure}{c}
 
 
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -31208,6 +31584,8 @@ TabBesBeg[5]
 
 \begin_layout Standard
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -32854,6 +33232,7 @@ usepackage{ftnright}
 \begin_layout Standard
 \begin_inset Float figure
 placement !h
+alignment document
 wide false
 sideways false
 status open
@@ -32922,6 +33301,7 @@ Positionnement standard des notes de bas de page dans un document à deux
 \begin_layout Standard
 \begin_inset Float figure
 placement !h
+alignment document
 wide false
 sideways false
 status open
@@ -33058,6 +33438,8 @@ en code \SpecialChar TeX
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -41350,8 +41732,8 @@ status open
 \series bold
 Note:
 \series default
- Inclure le même document deux fois dans un même document peut poser des
- problèmes avec \SpecialChar LaTeX
+ Inclure le même document deux fois dans un même document avec deux directives
+ différentes peut poser des problèmes avec \SpecialChar LaTeX
 .
 \end_layout
 
@@ -41403,22 +41785,62 @@ incorporé
 \end_inset
 
 ).
- Si on active l'option 
+\end_layout
+
+\begin_layout Standard
+Dans la section
 \family sans
-Assurer la cohérence des compteurs et des références
+ Compteurs globaux & références
+\family default
+, vous pouvez préciser comment sont gérés les numéros de page, les références,
+ les compteurs de section, etc.:
+\end_layout
+
+\begin_layout Itemize
+avec l'option 
+\family sans
+Maintien strict
 \family default
 , \SpecialChar LyX
  va s'assurer que tous les numéros de pages, références etc...
- sont corrects comme si tous le document avait été traité.
+ sont corrects comme si tout le document avait été traité.
  C'est utile si vous voulez que les sous-documents choisis aient exactement
  le même aspect que s'il étaient dans le document complet.
  Pour réaliser cette condition, il faut que \SpecialChar LyX
  traite de façon silencieuse
- la totalité du document.
- Ce qui fait que si vous voulez diminuer les temps de compilation, et que
- les compteurs et autres références n'ont pas à être à tout prix valides,
- vous devez impérativement désactiver cette option.
- 
+ la totalité du document, ce qui peut prendre beaucoup de temps; 
+\end_layout
+
+\begin_layout Itemize
+avec l'option 
+\family sans
+Ne pas maintenir
+\family default
+, \SpecialChar LyX
+ ne compile que le document maître et les documents inclus.
+ De ce fait les compteurs diffèrent de ceux du document complet et les référence
+s à des sous-documents exclus ne seront pas satisfaites.
+ Si vous voulez économiser du temps et si les références n'ont pas besoin
+ d'être satisfaites, utilisez cette option puisque c'est la plus rapide;
+\end_layout
+
+\begin_layout Itemize
+l'option 
+\family sans
+Maintenir au mieux
+\family default
+ se situe entre les deux précédentes.
+ Si elle est sélectionnée, \SpecialChar LyX
+ compilera tout le document lors de la première
+ passe, ce qui positionne les compteurs et les références correctement.
+ Pour les passes suivantes, il ne compilera tout le document que si des
+ modifications sont faites dans les sous-documents exclus.
+ Tans que vous ne modifiez que les fichiers inclus, cette approche est aussi
+ rapide que la seconde, en vous donnant des compteurs et des références
+ approximatives.
+ Elle ne seront approximatives que si les modifications de taille des documents
+ inclus implique également la modification de la pagination des sous-documents
+ exclus, mais cette méthode ne peut s'adapter à ces changements.
 \end_layout
 
 \begin_layout Standard
@@ -41825,7 +42247,7 @@ p
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Placement-flottants"
+reference "sec:Réglage-flottants"
 
 \end_inset
 
@@ -42656,6 +43078,7 @@ décrit les unités utilisées par \SpecialChar LyX
 .
 \begin_inset Float table
 placement h
+alignment document
 wide false
 sideways false
 status open
