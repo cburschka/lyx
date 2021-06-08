@@ -1555,7 +1555,7 @@ void GuiApplication::updateCurrentView(FuncRequest const & cmd, DispatchResult &
 
 	BufferView * bv = current_view_->currentBufferView();
 	if (bv) {
-		if (dr.needBufferUpdate()) {
+		if (dr.needBufferUpdate() || bv->buffer().needUpdate()) {
 			bv->cursor().clearBufferUpdate();
 			bv->buffer().updateBuffer();
 		}
