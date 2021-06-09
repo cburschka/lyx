@@ -80,20 +80,30 @@ public:
 	/// return slope for italic font
 	virtual double italicSlope() const = 0;
 
-	/// return the width of the char in the font
-	virtual int width(char_type c) const = 0;
 	/// return the ascent of the char in the font
 	virtual int ascent(char_type c) const = 0;
 	/// return the descent of the char in the font
 	virtual int descent(char_type c) const = 0;
+	/// return the maximum height of the font
+	inline int maxHeight() const { return maxAscent() + maxDescent(); }
+	/// return the height of the char in the font
+	inline int height(char_type c) const { return ascent(c) + descent(c); }
+
 	/// return the left bearing of the char in the font
 	virtual int lbearing(char_type c) const = 0;
 	/// return the right bearing of the char in the font
 	virtual int rbearing(char_type c) const = 0;
+	/// return the width of the char in the font
+	virtual int width(char_type c) const = 0;
 	/// return the width of the string in the font
 	virtual int width(docstring const & s) const = 0;
 	/// FIXME ??
 	virtual int signedWidth(docstring const & s) const = 0;
+	/// return the inner width of the char in the font
+	inline int center(char_type c) const {
+		return (rbearing(c) - lbearing(c)) / 2;
+	}
+
 	/**
 	 * return the x offset of a position in the string. The
 	 * direction of the string is forced, and the returned value
@@ -138,17 +148,6 @@ public:
 		int & width,
 		int & ascent,
 		int & descent) const = 0;
-
-	/// return the maximum descent of the font
-	inline int maxHeight() const { return maxAscent() + maxDescent(); }
-
-	/// return the descent of the char in the font
-	inline int height(char_type c) const { return ascent(c) + descent(c); }
-
-	/// return the inner width of the char in the font
-	inline int center(char_type c) const {
-		return (rbearing(c) - lbearing(c)) / 2;
-	}
 
 	/// return the number of expanding characters taken into account for
 	/// increased inter-word spacing during justification

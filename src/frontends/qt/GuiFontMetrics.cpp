@@ -153,6 +153,7 @@ int GuiFontMetrics::maxDescent() const
 {
 	// We add 1 as the value returned by QT is different than X
 	// See http://doc.trolltech.com/2.3/qfontmetrics.html#200b74
+	// FIXME: check this
 	return metrics_.descent() + 1;
 }
 
