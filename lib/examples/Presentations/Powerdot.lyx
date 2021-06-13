@@ -220,6 +220,88 @@ Custom
 \begin_layout Enumerate
 
 \series bold
+Converter:
+\series default
+ Depending on your \SpecialChar LaTeX
+ system (e.g., TeX Live >= 2021), you might have to add
+ the option 
+\begin_inset Quotes eld
+\end_inset
+
+-dALLOWPSTRANSPARENCY
+\begin_inset Quotes erd
+\end_inset
+
+ to the ps2pdf converter.
+ For more information on this option, see here: 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://www.ghostscript.com/doc/current/Use.htm
+\end_layout
+
+\end_inset
+
+.
+ To add the option, in LyX go to 
+\family sans
+Tools\SpecialChar menuseparator
+Preferences\SpecialChar ldots
+\SpecialChar menuseparator
+File Handling\SpecialChar menuseparator
+Converters, select 
+\begin_inset Quotes eld
+\end_inset
+
+Postscript ->PDF (ps2pdf)
+\begin_inset Quotes erd
+\end_inset
+
+, and change 
+\begin_inset Quotes eld
+\end_inset
+
+ps2pdf $$i $$o
+\begin_inset Quotes erd
+\end_inset
+
+ to 
+\begin_inset Quotes eld
+\end_inset
+
+ps2pdf 
+\family default
+-dALLOWPSTRANSPARENCY
+\family sans
+ $$i $$o
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Then click 
+\begin_inset Quotes eld
+\end_inset
+
+Modify
+\begin_inset Quotes erd
+\end_inset
+
+ and then 
+\begin_inset Quotes eld
+\end_inset
+
+OK
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
 Appearance:
 \series default
  You can customize the look of the presentation with the class options 
