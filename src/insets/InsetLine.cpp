@@ -140,16 +140,10 @@ void InsetLine::draw(PainterInfo & pi, int x, int y) const
 	Dimension const dim = dimension(*pi.base.bv);
 
 	// get the surrounding text color
-	Color Line_color = pi.base.font.realColor();
+	Color line_color = pi.base.font.realColor();
 
 	// the offset is a vertical one
-	// the horizontal dimension must be corrected with the height because
-	// of left and right border of the painted line for big height.
-	pi.pain.line(x + height_/2 + 1,
-		     y - offset_ - height_/2,
-		     x + dim.wid - height_/2 - 2,
-		     y - offset_ - height_/2,
-		     Line_color, Painter::line_solid, height_);
+	pi.pain.fillRectangle(x, y - offset_ - height_, dim.wid, height_, line_color);
 }
 
 
