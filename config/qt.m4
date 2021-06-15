@@ -80,7 +80,9 @@ AC_DEFUN([QT_FIND_TOOL],
 	fi
 	qt_ext="qt$qt_major"
 
-	if test -n "$qt_cv_bin" ; then
+	if test -n "$qt_cv_libexec" ; then
+		AC_PATH_PROGS($1, [$2], [], $qt_cv_libexec)
+	elif test -n "$qt_cv_bin" ; then
 		AC_PATH_PROGS($1, [$2], [], $qt_cv_bin)
 	elif qtchooser -l 2>/dev/null | grep -q ^$qt_ext\$ >/dev/null ; then
 		AC_PATH_PROG(qtc_path, qtchooser, [], [$PATH])
@@ -404,6 +406,7 @@ AC_DEFUN([QT6_QMAKE_CONFIG],
 	AC_MSG_CHECKING([for Qt6])
 	qtver=`$QT_QMAKE -v | grep -o "Qt version ."`
 	if test "$qtver" = "Qt version 6"; then
+	    qt_cv_libexec=`$QT_QMAKE -query QT_INSTALL_LIBEXECS`
 	    dnl Use a .pro file for getting qmake's variables
 	    lyx_test_qt_dir=`mktemp -d`
 	    lyx_test_qt_pro="$lyx_test_qt_dir/test.pro"
