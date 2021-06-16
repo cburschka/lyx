@@ -361,7 +361,7 @@ case "${QtVersion}" in
 	QtFrameworkVersion="5"
 	;;
 5.12.*)
-	QtLibraries=${QtLibraries:-"QtDbus QtSvg QtXml QtPrintSupport QtMacExtras QtWidgets QtGui QtNetwork QtConcurrent QtCore"}
+	QtLibraries=${QtLibraries:-"QtDBus QtSvg QtXml QtPrintSupport QtMacExtras QtWidgets QtGui QtNetwork QtConcurrent QtCore"}
 	QtFrameworkVersion="5"
 	;;
 5*)
