@@ -794,24 +794,20 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		bool const cur_moved = cursorForward(cur);
 		needsUpdate |= cur_moved;
 
-		if (!cur_moved && oldTopSlice == cur.top()
-			       && cur.boundary() == oldBoundary) {
+		if (!cur_moved && cur.depth() > 1
+		     && oldTopSlice == cur.top() && cur.boundary() == oldBoundary) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_FORWARD);
 
-			// we will probably be moving out the inset, so we should execute
-			// the depm-mechanism, but only when the cursor has a place to
-			// go outside this inset, i.e. in a slice above.
-			if (cur.depth() > 1 && cur.pos() == cur.lastpos()
-				  && cur.pit() == cur.lastpit()) {
-				// The cursor hasn't changed yet. To give the
-				// DEPM the possibility of doing something we must
-				// provide it with two different cursors.
-				Cursor dummy = cur;
-				dummy.pos() = dummy.pit() = 0;
-				if (cur.bv().checkDepm(dummy, cur))
-					cur.forceBufferUpdate();
-			}
+			// we will be moving out the inset, so we should execute
+			// the depm-mechanism.
+			// The cursor hasn't changed yet. To give the DEPM the
+			// possibility of doing something we must provide it with
+			// two different cursors.
+			Cursor dummy = cur;
+			dummy.pos() = dummy.pit() = 0;
+			if (cur.bv().checkDepm(dummy, cur))
+				cur.forceBufferUpdate();
 		}
 		break;
 	}
@@ -823,24 +819,21 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		bool const cur_moved = cursorBackward(cur);
 		needsUpdate |= cur_moved;
 
-		if (!cur_moved && oldTopSlice == cur.top()
-			       && cur.boundary() == oldBoundary) {
+		if (!cur_moved && cur.depth() > 1
+		     && oldTopSlice == cur.top() && cur.boundary() == oldBoundary) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_BACKWARD);
 
-			// we will probably be moving out the inset, so we should execute
-			// the depm-mechanism, but only when the cursor has a place to
-			// go outside this inset, i.e. in a slice above.
-			if (cur.depth() > 1 && cur.pos() == 0 && cur.pit() == 0) {
-				// The cursor hasn't changed yet. To give the
-				// DEPM the possibility of doing something we must
-				// provide it with two different cursors.
-				Cursor dummy = cur;
-				dummy.pos() = cur.lastpos();
-				dummy.pit() = cur.lastpit();
-				if (cur.bv().checkDepm(dummy, cur))
-					cur.forceBufferUpdate();
-			}
+			// we will be moving out the inset, so we should execute
+			// the depm-mechanism.
+			// The cursor hasn't changed yet. To give the DEPM the
+			// possibility of doing something we must provide it with
+			// two different cursors.
+			Cursor dummy = cur;
+			dummy.pos() = cur.lastpos();
+			dummy.pit() = cur.lastpit();
+			if (cur.bv().checkDepm(dummy, cur))
+				cur.forceBufferUpdate();
 		}
 		break;
 	}
@@ -851,8 +844,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			needsUpdate |= cur.selHandle(act == LFUN_CHAR_LEFT_SELECT);
 			bool const cur_moved = cursorVisLeft(cur);
 			needsUpdate |= cur_moved;
-			if (!cur_moved && oldTopSlice == cur.top()
-				       && cur.boundary() == oldBoundary) {
+			if (!cur_moved && cur.depth() > 1
+			     && oldTopSlice == cur.top() && cur.boundary() == oldBoundary) {
 				cur.undispatched();
 				cmd = FuncRequest(LFUN_FINISHED_LEFT);
 			}
@@ -875,8 +868,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			needsUpdate |= cur.selHandle(cmd.action() == LFUN_CHAR_RIGHT_SELECT);
 			bool const cur_moved = cursorVisRight(cur);
 			needsUpdate |= cur_moved;
-			if (!cur_moved && oldTopSlice == cur.top()
-				       && cur.boundary() == oldBoundary) {
+			if (!cur_moved && cur.depth() > 1
+			     && oldTopSlice == cur.top() && cur.boundary() == oldBoundary) {
 				cur.undispatched();
 				cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 			}
@@ -1009,8 +1002,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			needsUpdate |= cur.selHandle(cmd.action() == LFUN_WORD_RIGHT_SELECT);
 			bool const cur_moved = cursorVisRightOneWord(cur);
 			needsUpdate |= cur_moved;
-			if (!cur_moved && oldTopSlice == cur.top()
-				       && cur.boundary() == oldBoundary) {
+			if (!cur_moved && cur.depth() > 1
+			     && oldTopSlice == cur.top() && cur.boundary() == oldBoundary) {
 				cur.undispatched();
 				cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 			}
@@ -1033,24 +1026,20 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		bool const cur_moved = cursorForwardOneWord(cur);
 		needsUpdate |= cur_moved;
 
-		if (!cur_moved && oldTopSlice == cur.top()
-			       && cur.boundary() == oldBoundary) {
+		if (!cur_moved && cur.depth() > 1
+		     && oldTopSlice == cur.top() && cur.boundary() == oldBoundary) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_FORWARD);
 
-			// we will probably be moving out the inset, so we should execute
-			// the depm-mechanism, but only when the cursor has a place to
-			// go outside this inset, i.e. in a slice above.
-			if (cur.depth() > 1 && cur.pos() == cur.lastpos()
-				  && cur.pit() == cur.lastpit()) {
-				// The cursor hasn't changed yet. To give the
-				// DEPM the possibility of doing something we must
-				// provide it with two different cursors.
-				Cursor dummy = cur;
-				dummy.pos() = dummy.pit() = 0;
-				if (cur.bv().checkDepm(dummy, cur))
-					cur.forceBufferUpdate();
-			}
+			// we will be moving out the inset, so we should execute
+			// the depm-mechanism.
+			// The cursor hasn't changed yet. To give the DEPM the
+			// possibility of doing something we must provide it with
+			// two different cursors.
+			Cursor dummy = cur;
+			dummy.pos() = dummy.pit() = 0;
+			if (cur.bv().checkDepm(dummy, cur))
+				cur.forceBufferUpdate();
 		}
 		break;
 	}
@@ -1061,8 +1050,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			needsUpdate |= cur.selHandle(cmd.action() == LFUN_WORD_LEFT_SELECT);
 			bool const cur_moved = cursorVisLeftOneWord(cur);
 			needsUpdate |= cur_moved;
-			if (!cur_moved && oldTopSlice == cur.top()
-				       && cur.boundary() == oldBoundary) {
+			if (!cur_moved && cur.depth() > 1
+			     && oldTopSlice == cur.top() && cur.boundary() == oldBoundary) {
 				cur.undispatched();
 				cmd = FuncRequest(LFUN_FINISHED_LEFT);
 			}
@@ -1085,25 +1074,21 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		bool const cur_moved = cursorBackwardOneWord(cur);
 		needsUpdate |= cur_moved;
 
-		if (!cur_moved && oldTopSlice == cur.top()
-			       && cur.boundary() == oldBoundary) {
+		if (!cur_moved && cur.depth() > 1
+		     && oldTopSlice == cur.top() && cur.boundary() == oldBoundary) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_BACKWARD);
 
-			// we will probably be moving out the inset, so we should execute
-			// the depm-mechanism, but only when the cursor has a place to
-			// go outside this inset, i.e. in a slice above.
-			if (cur.depth() > 1 && cur.pos() == 0
-				  && cur.pit() == 0) {
-				// The cursor hasn't changed yet. To give the
-				// DEPM the possibility of doing something we must
-				// provide it with two different cursors.
-				Cursor dummy = cur;
-				dummy.pos() = cur.lastpos();
-				dummy.pit() = cur.lastpit();
-				if (cur.bv().checkDepm(dummy, cur))
-					cur.forceBufferUpdate();
-			}
+			// we will be moving out the inset, so we should execute
+			// the depm-mechanism.
+			// The cursor hasn't changed yet. To give the DEPM the
+			// possibility of doing something we must provide it with
+			// two different cursors.
+			Cursor dummy = cur;
+			dummy.pos() = cur.lastpos();
+			dummy.pit() = cur.lastpit();
+			if (cur.bv().checkDepm(dummy, cur))
+				cur.forceBufferUpdate();
 		}
 		break;
 	}
