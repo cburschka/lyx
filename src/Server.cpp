@@ -175,7 +175,7 @@ bool LyXComm::pipeServer()
 
 		pipe_[i].overlap.hEvent = event_[i];
 		pipe_[i].iobuf.erase();
-		pipe_[i].handle = CreateNamedPipe(pipename.c_str(),
+		pipe_[i].handle = CreateNamedPipeA(pipename.c_str(),
 				open_mode | FILE_FLAG_OVERLAPPED, PIPE_WAIT,
 				MAX_CLIENTS, PIPE_BUFSIZE, PIPE_BUFSIZE,
 				PIPE_TIMEOUT, NULL);
@@ -489,7 +489,7 @@ bool LyXComm::resetPipe(DWORD index, bool close_handle)
 		CloseHandle(pipe_[index].handle);
 
 		pipe_[index].iobuf.erase();
-		pipe_[index].handle = CreateNamedPipe(name.c_str(),
+		pipe_[index].handle = CreateNamedPipeA(name.c_str(),
 				open_mode | FILE_FLAG_OVERLAPPED, PIPE_WAIT,
 				MAX_CLIENTS, PIPE_BUFSIZE, PIPE_BUFSIZE,
 				PIPE_TIMEOUT, NULL);
@@ -527,7 +527,7 @@ void LyXComm::openConnection()
 	}
 
 	// Check whether the pipe name is being used by some other instance.
-	if (!stopserver_ && WaitNamedPipe(inPipeName().c_str(), 0)) {
+	if (!stopserver_ && WaitNamedPipeA(inPipeName().c_str(), 0)) {
 		// Tell the running instance to load the files
 		if (run_mode == USE_REMOTE && loadFilesInOtherInstance()) {
 			deferred_loading_ = true;
