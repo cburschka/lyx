@@ -19,7 +19,7 @@ else()
 	lyx_const_touched_files(_allinone  mathed_sources)
 	add_library(mathed ${library_type} ${_allinone_files})
 endif()
-set_target_properties(mathed PROPERTIES FOLDER "applications/LyX")
+set_target_properties(mathed PROPERTIES FOLDER "applications/LyX" QT_NO_UNICODE_DEFINES TRUE)
 qt_use_modules(mathed Core)
 
 lyx_add_gcc_pch(mathed)

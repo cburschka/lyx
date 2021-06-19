@@ -78,7 +78,7 @@ else()
 	add_library(support ${library_type} ${_allinone_files} ${support_separate}
 		${support_linkback_sources} ${support_headers} ${dont_merge})
 endif()
-set_target_properties(support PROPERTIES FOLDER "applications/LyX")
+set_target_properties(support PROPERTIES FOLDER "applications/LyX" QT_NO_UNICODE_DEFINES TRUE)
 
 qt_use_modules(support Core Gui)
 

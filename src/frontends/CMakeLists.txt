@@ -20,7 +20,7 @@ else()
 	lyx_const_touched_files(_allinone  frontends_sources)
 	add_library(frontends ${library_type} ${_allinone_files})
 endif()
-set_target_properties(frontends PROPERTIES FOLDER "applications/LyX")
+set_target_properties(frontends PROPERTIES FOLDER "applications/LyX" QT_NO_UNICODE_DEFINES TRUE)
 
 target_link_libraries(frontends ${Lyx_Boost_Libraries})
 

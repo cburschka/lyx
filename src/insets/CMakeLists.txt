@@ -22,7 +22,7 @@ else()
 	lyx_const_touched_files(_allinone  insets_sources)
 	add_library(insets ${library_type} ${_allinone_files})
 endif()
-set_target_properties(insets PROPERTIES FOLDER "applications/LyX")
+set_target_properties(insets PROPERTIES FOLDER "applications/LyX" QT_NO_UNICODE_DEFINES TRUE)
 
 qt_use_modules(insets Gui)
 

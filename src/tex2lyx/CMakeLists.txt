@@ -41,6 +41,7 @@ else()
 endif()
 set_target_properties(${_tex2lyx} PROPERTIES
 	FOLDER "applications/TeX2LyX"
+  QT_NO_UNICODE_DEFINES TRUE
 	INTERPROCEDURAL_OPTIMIZATION ${LYX_IPO_SUPPORTED})
 
 target_link_libraries(${_tex2lyx}

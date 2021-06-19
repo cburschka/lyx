@@ -21,7 +21,7 @@ else()
 	lyx_const_touched_files(_allinone  graphics_sources)
 	add_library(graphics ${library_type} ${_allinone_files})
 endif()
-set_target_properties(graphics PROPERTIES FOLDER "applications/LyX")
+set_target_properties(graphics PROPERTIES FOLDER "applications/LyX" QT_NO_UNICODE_DEFINES TRUE)
 qt_use_modules(graphics Core)
 
 lyx_add_gcc_pch(graphics)

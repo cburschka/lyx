@@ -41,7 +41,7 @@ if(LYX_MERGE_FILES)
 else()
 	add_library(frontend_qt ${library_type} ${frontends_qt_sources} ${frontends_qt_headers} ${ui_files} ${resource_files})
 endif()
-set_target_properties(frontend_qt PROPERTIES FOLDER "applications/LyX")
+set_target_properties(frontend_qt PROPERTIES FOLDER "applications/LyX" QT_NO_UNICODE_DEFINES TRUE)
 
 if(Qt5Core_FOUND AND APPLE)
        qt_use_modules(frontend_qt Core Gui Widgets Concurrent Svg MacExtras)
