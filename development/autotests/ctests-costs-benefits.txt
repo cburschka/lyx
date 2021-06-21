@@ -15,6 +15,10 @@ Below we can try to keep a log of which bugs are found with which ctests. This
 way we can see which tests are the most useful. It is difficult to objectively
 differentiate between minor bugs and important bugs.
 
+The "Benefit" row gives the amount of days in-between when an issue is found
+because of the ctests and when an issue is reported by someone not using the
+ctests.
+
 Examples where convergence tests took time and annoyance to figure out that
 they were actually "false positives" (i.e., no bug that is worth the time or
 complexity to fix):
@@ -52,6 +56,7 @@ Fix    : ffa6a724
 Report : https://www.mail-archive.com/search?l=mid&q=20210529174524.idnmt5w4tvhuvyy6%40tallinn
 Note1  : We are still not sure what to do regarding how to make it more user-friendly
          for users to realize that "-dALLOWPSTRANSPARENCY" is needed for the ps2pdf converter.
+Benefit: 14 days (https://www.lyx.org/trac/ticket/12303)
 
 
 Examples where upstream (e.g., LaTeX packages) bugs were fixed (more quickly)
