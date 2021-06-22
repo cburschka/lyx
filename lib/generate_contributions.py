@@ -1933,12 +1933,12 @@ contributors = [
                  u"vertical spaces"),
 
      contributor(u"Jürgen Spitzmüller",
-                 "juergen.sp () t-online ! de",
+                 "spitz () lyx ! org",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110907530127164",
                  "22 February 2005",
-                 u"Qt frontend, bugfixes. Former stable branch maintainer."),
+                 u"Many bugfixes and features. Former stable branch maintainer."),
 
      contributor(u"John Spray",
                  "jcs116 () york ! ac ! uk",
