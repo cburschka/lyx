@@ -363,7 +363,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2021-05-09 11:22+0200\n"
-"PO-Revision-Date: 2021-06-26 18:05+0200\n"
+"PO-Revision-Date: 2021-06-28 10:31+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -14743,11 +14743,11 @@ msgstr "Référents"
 
 #: lib/layouts/linguistics.module:302 lib/layouts/linguistics.module:449
 msgid "DRS Referents"
-msgstr "Référents DRS"
+msgstr "Référents de DRS"
 
 #: lib/layouts/linguistics.module:303 lib/layouts/linguistics.module:450
 msgid "Add the DRS referents (universe) here"
-msgstr "Ajouter les référents DRS (universels) ici"
+msgstr "Ajouter les référents de DRS (universels) ici"
 
 #: lib/layouts/linguistics.module:310 lib/layouts/linguistics.module:312
 msgid "DRS*"
@@ -14759,11 +14759,11 @@ msgstr "Représentation Structurée du Discours (sans espaces)|u"
 
 #: lib/layouts/linguistics.module:318
 msgid "IfThen-DRS"
-msgstr "DRS-SiAlors"
+msgstr "SiAlors-DRS"
 
 #: lib/layouts/linguistics.module:320 lib/layouts/linguistics.module:321
 msgid "If-Then DRS"
-msgstr "DRS Si-Alors"
+msgstr "Si-Alors de DRS"
 
 #: lib/layouts/linguistics.module:325 lib/layouts/linguistics.module:360
 #: lib/layouts/linguistics.module:404
@@ -14774,7 +14774,7 @@ msgstr "Référents-Alors"
 #: lib/layouts/linguistics.module:361 lib/layouts/linguistics.module:370
 #: lib/layouts/linguistics.module:405 lib/layouts/linguistics.module:414
 msgid "DRS Then-Referents"
-msgstr "DRS Référents-Alors"
+msgstr "Référents-Alors de DRS"
 
 #: lib/layouts/linguistics.module:327 lib/layouts/linguistics.module:362
 #: lib/layouts/linguistics.module:406
@@ -14789,7 +14789,7 @@ msgstr "Conditions-Alors"
 #: lib/layouts/linguistics.module:336 lib/layouts/linguistics.module:371
 #: lib/layouts/linguistics.module:415
 msgid "Add the DRS then-conditions here"
-msgstr "Ajouter les conditions-alors DRS ici"
+msgstr "Ajouter les conditions-alors de DRS ici"
 
 #: lib/layouts/linguistics.module:344
 msgid "Cond-DRS"
@@ -14797,7 +14797,7 @@ msgstr "DRS-Cond"
 
 #: lib/layouts/linguistics.module:346
 msgid "Cond. DRS"
-msgstr "RSD Cond."
+msgstr "DRS Cond."
 
 #: lib/layouts/linguistics.module:347
 msgid "Conditional DRS"
@@ -14809,11 +14809,11 @@ msgstr "Cond."
 
 #: lib/layouts/linguistics.module:352
 msgid "DRS Condition"
-msgstr "Condition DRS"
+msgstr "Condition de DRS"
 
 #: lib/layouts/linguistics.module:353
 msgid "Add the DRS condition here"
-msgstr "Ajouter la condition DRS ici"
+msgstr "Ajouter la condition de la DRS ici"
 
 #: lib/layouts/linguistics.module:379
 msgid "QDRS"
@@ -14821,11 +14821,11 @@ msgstr "QDRS"
 
 #: lib/layouts/linguistics.module:381
 msgid "Dupl. Cond. DRS"
-msgstr "DRS Cond. Duplex"
+msgstr "DRS cond. duplex"
 
 #: lib/layouts/linguistics.module:382
 msgid "Duplex Condition DRS"
-msgstr "Condition DRS duplex"
+msgstr "DRS conditionnelle duplex"
 
 #: lib/layouts/linguistics.module:386
 msgid "Quant."
@@ -14833,19 +14833,19 @@ msgstr "Quant."
 
 #: lib/layouts/linguistics.module:387
 msgid "DRS Quantifier"
-msgstr "Quantifieur DRS"
+msgstr "Quantifieur de DRS"
 
 #: lib/layouts/linguistics.module:388
 msgid "Add the DRS duplex quantifier here"
-msgstr "Ajouter le quantifieur duplex DRS ici"
+msgstr "Ajouter le quantifieur duplex de DRS ici"
 
 #: lib/layouts/linguistics.module:395
 msgid "Quant. Var."
-msgstr "Quant. var."
+msgstr "Var. quant."
 
 #: lib/layouts/linguistics.module:396
 msgid "DRS Quantifier Variable"
-msgstr "Quantifieur variable DRS"
+msgstr "Variable de quantifieur de DRS"
 
 #: lib/layouts/linguistics.module:397
 msgid "Add the DRS duplex quantifier variables here"
@@ -14853,15 +14853,15 @@ msgstr "Ajouter les variables du quantifieur duplex DRS ici"
 
 #: lib/layouts/linguistics.module:424
 msgid "NegDRS"
-msgstr "NegDRS"
+msgstr "DRSNeg"
 
 #: lib/layouts/linguistics.module:426
 msgid "Neg. DRS"
-msgstr "Neg. DRS"
+msgstr "DRS neg."
 
 #: lib/layouts/linguistics.module:427
 msgid "Negated DRS"
-msgstr "Négation DRS"
+msgstr "DRS négative"
 
 #: lib/layouts/linguistics.module:432
 msgid "SDRS"
@@ -14869,7 +14869,7 @@ msgstr "SDRS"
 
 #: lib/layouts/linguistics.module:434
 msgid "Sent. DRS"
-msgstr "Phr. DRS"
+msgstr "Phr. de DRS"
 
 #: lib/layouts/linguistics.module:435
 msgid "DRS with Sentence above"
