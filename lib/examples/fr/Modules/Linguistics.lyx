@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 608
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -187,6 +187,8 @@ End
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -203,7 +205,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Traduction française Jean-Pierre Chrétien, <jeanpierre.chretien@free.fr>,
- novembre 2009, mise à jour février 2016
+ novembre 2009, mises à jour février 2016 et juin 2021.
 \end_layout
 
 \end_inset
@@ -382,11 +384,7 @@ literal "false"
 \emph on
 covington
 \emph default
- est requise pour pouvoir utiliser 
-\emph on
-drs
-\emph default
- avec les fonctionnalités de 
+ est requise pour pouvoir utiliser DRS avec les fonctionnalités de 
 \emph on
 covington
 \emph default
@@ -464,12 +462,16 @@ type  "package"
 arg   "forest"
 \end_inset
 
-.
+;
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-pict2e.sty 
+
+\emph on
+pict2e.sty
+\emph default
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "pict2e"
@@ -482,6 +484,18 @@ literal "false"
 DRS conditionnels doubles
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+installé sur votre système?
+\begin_inset Info
+type  "package"
+arg   "pict2e"
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
 \begin_layout Section
 Exemples numérotés
 \end_layout
@@ -643,71 +657,142 @@ Insertion\SpecialChar menuseparator
 Inserts personnalisables
 \family default
 .
- 
+ La 
 \emph on
-Personnalisé: glose
+Glose interlinéaire (2 lignes)
 \emph default
- (standard) crée une glose constituée de deux lignes (un couple d'éléments)
- et une traduction, 
+ crée une glose constituée de deux lignes (la représentation en langue originale
+ et une glose interlinéaire, c'est-à-dire la traduction mot à mot) plus
+ une traduction libre.
+ La 
 \emph on
-Personnalisé: tri-glose
+Glose interlinéaire (3 lignes)
 \emph default
- est constituée de trois lignes et une traduction (le troisième ligne est
- généralement utilisée pour donner une information morphologique ou phonologique
- relative au couple).
+ contient une glose supplémentaire (cette troisième ligne est généralement
+ utilisée pour donner une information morphologique ou phonologique relative
+ au couple).
  Chaque ligne de la traduction peut s'étendre sur plusieurs lignes dans
  le résultat imprimé, c'est-à-dire que les paragraphes sont automatiquement
  justifiés s'ils excèdent la largeur du texte.
- Noter que la ligne de traduction est obligatoire et doit être précédée
- par la commande 
-\family typewriter
-
-\backslash
-glt
+ La représentation dans la langue originale (première ligne de la glose)
+ est saisie directement dans l'insert de glose, les autres informations
+ dans des sous-inserts spécifiques (
+\family sans
+Glose interlinéaire
 \family default
- qui doit être insérée telle quelle dans l'insert de glose (le mode \SpecialChar TeX
- n'est
- pas nécessaire, et n'est même pas possible en fait).
-\end_layout
+ ou avec la glose sur 3 lignes 
+\family sans
+Glose interlinéaire (Ligne 1)
+\family default
+ et 
+\family sans
+Glose interlinéaire (Ligne 2)
+\family default
+, respectivement, et 
+\family sans
+Traduction de glose
+\family default
+).
+ \SpecialChar LyX
+ insère automatiquement ces sous-inserts quand vous définissez une nouvelle
+ glose.
+ Ils peuvent aussi être insérés manuellement via 
+\family sans
+Insertion\SpecialChar menuseparator
+Traduction de glose
+\family default
+ et 
+\family sans
+Insertion\SpecialChar menuseparator
+Glose interlinéaire.
 
-\begin_layout Standard
-Voici un exemple simple pour une glose standard:
-\end_layout
+\family default
+ Quel que soit l'endroit où vous les insérez, ils sont toujours imprimés
+ dans le bon ordre.
+ Enfin, vous pouvez saisir des options de glose via 
+\family sans
+Insertion\SpecialChar menuseparator
+Options de glose
+\family default
+.
+ Ces options vous permettent de personnaliser l’aspect de la ligne, d'ajuter
+ nes numéros d'exemple ou du texte préliminaire.
+ Veuillez vous référer au manuel de 
+\emph on
+covington
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "covington"
+literal "false"
 
-\begin_layout Standard
-\begin_inset Flex Glosse
-status open
+\end_inset
+
+ pour les détails.
+\begin_inset Foot
+status collapsed
 
 \begin_layout Plain Layout
-C'est     un exemple simple
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Flex GroupGlossedWords
-status open
-
-\begin_layout Plain Layout
-This is
+Notez que les fonctionnalités de glose ont été entièrement réécrites pour
+ \SpecialChar LyX
+ 2.4.
+ Elles utilisent maintenant la nouvelle version améliorée des macros de
+ 
+\emph on
+covington
+\emph default
+ (2.0) .
+ Du fait de ces modifications majeures, les anciennes gloses ne peuvent
+ pas être converties dans le nouveau format.
+ À la place, les anciens inserts sont importés (et enregistrés avec le document
+ dans un 
+\family sans
+Format Local 
+\family default
+).
+ De même, les nouveaux inserts de glose sont convertis en code \SpecialChar TeX
+ si vous
+ exportez vers une version précédente de \SpecialChar LyX
+.
 \end_layout
 
 \end_inset
 
- an example simple
+
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset Argument 1
+\begin_layout Standard
+Voici un exemple simple pour une glose sur deux lignes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Interlinear Gloss (2 Lines)
 status open
 
 \begin_layout Plain Layout
-\begin_inset Quotes els
+C'est    un exemple simple
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+This is an example simple
+\end_layout
+
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:2
+status open
+
+\begin_layout Plain Layout
 This is a simple example
-\begin_inset Quotes ers
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -737,9 +822,11 @@ GrouperMotsGlosés
 \family typewriter
 }
 \family default
+ en mode \SpecialChar TeX
 ).
  Notez également que vous pouvez saisir des espaces pour aligner les gloses
- dans la zone de travail de LyX, ceci n'affectera pas le résultat.
+ dans la zone de travail de \SpecialChar LyX
+, ceci n'affectera pas le résultat.
 \end_layout
 
 \begin_layout Standard
@@ -747,49 +834,84 @@ Nous pouvons aussi créer une glose de trois lignes:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Tri-Glosse
+
+\lang english
+\begin_inset Flex Interlinear Gloss (3 Lines)
 status open
 
 \begin_layout Plain Layout
-C'est      un exemple simple
+
+\lang english
+Hoc est aliud exemplum
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Flex GroupGlossedWords
+
+\lang english
+\begin_inset Argument post:1
 status open
 
 \begin_layout Plain Layout
-Das ist
+
+\lang english
+n.sg.nom 3sg n.sg.nom n.sg.nom
 \end_layout
 
 \end_inset
 
- ein Beispiel einfach
+
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Flex GroupGlossedWords
+
+\lang english
+\begin_inset Argument post:2
 status open
 
 \begin_layout Plain Layout
-This is
+
+\lang english
+This is another  example
 \end_layout
 
 \end_inset
 
- an  example simple
+
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang english
+\begin_inset Argument post:3
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+This is another example
+\end_layout
+
+\end_inset
+
+
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-\begin_inset Quotes els
-\end_inset
 
-This is a simple example
-\begin_inset Quotes ers
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+fsii={
+\backslash
+normalfont
+\backslash
+scshape}
+\end_layout
+
 \end_inset
 
 
@@ -807,8 +929,14 @@ This is a simple example
 
 \begin_layout Standard
 \noindent
-Si vous désirez numéroter les gloses, il vous suffit de mettre l'insert
- de glose dans un paragraphe du style 
+Ici nous avons utilisé les options de glose pour typographier la deuxième
+ ligne en petites capitales.
+\end_layout
+
+\begin_layout Standard
+\noindent
+Si vous désirez numéroter les gloses, soit vous mettez l'insert de glose
+ dans un paragraphe du style 
 \begin_inset Quotes cld
 \end_inset
 
@@ -819,24 +947,51 @@ exemple numéroté
 , comme suit:
 \end_layout
 
-\begin_layout Numbered Example (multiline)
-\begin_inset Flex Tri-Glosse
+\begin_layout Numbered Examples (consecutive)
+
+\lang english
+\begin_inset Flex Interlinear Gloss (3 Lines)
 status open
 
 \begin_layout Plain Layout
+
+\lang english
 Mein Luftkissenfahrzeug ist voller  Aale
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang english
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
 My    skeertuig                   is  vol       palings
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Plain Layout
+
+\lang english
+\begin_inset Argument post:2
+status open
+
+\begin_layout Plain Layout
+
+\lang english
 My    hovercraft                 is 
 \begin_inset Flex GroupGlossedWords
 status open
 
 \begin_layout Plain Layout
+
+\lang english
 full of
 \end_layout
 
@@ -845,19 +1000,126 @@ full of
  eels
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Plain Layout
+
+\lang english
+\begin_inset Argument post:3
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+Do you have matches?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+soit vous utilisez l'option de glose
+\emph on
+ ex
+\emph default
+:
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Flex Interlinear Gloss (3 Lines)
+status open
+
+\begin_layout Plain Layout
+
+\lang english
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-\begin_inset Quotes els
+
+\lang english
+ex
+\end_layout
+
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+Mein Luftkissenfahrzeug ist voller  Aale
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+My    skeertuig                   is  vol       palings
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Argument post:2
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+My    hovercraft                 is 
+\begin_inset Flex GroupGlossedWords
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+full of
+\end_layout
+
+\end_inset
+
+ eels
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Argument post:3
+status open
+
+\begin_layout Plain Layout
+
+\lang english
 Do you have matches?
-\begin_inset Quotes ers
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -879,174 +1141,34 @@ Trucs et astuces
 \end_layout
 
 \begin_layout Standard
-Des sauts de page peuvent apparaître dans des gloses, ce qui est bien entendu
- regrettable.
- Une solution consiste à inclure les gloses dans des boîtes (via 
+Implicitement, des sauts de page peuvent apparaître dans des gloses, ce
+ qui est bien entendu regrettable.
+ Vous pouvez éviter la plupart de ceux-ci en saisissant 
+\emph on
+noglossbreaks
+\emph default
+ dans 
+\family sans
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar ldots
+\SpecialChar menuseparator
+Classe de document\SpecialChar menuseparator
+Options de classe\SpecialChar menuseparator
+Réglable
+\family default
+\lang english
+.
+
+\lang french
+ S'il apparaît encore des sauts de page, vous pouvez inclure les gloses
+ dans des boîtes (via 
 \family sans
 Insertion\SpecialChar menuseparator
 Boîte\SpecialChar menuseparator
 Sans cadre
 \family default
 ).
- Si vous voulez rendre ceci automatique pour toutes les gloses, vous pouvez
- copier le code suivant dans le préambule via 
-\family sans
-Document\SpecialChar menuseparator
-Paramètres\SpecialChar ldots
-\SpecialChar menuseparator
-Préambule
-\family default
-:
-\end_layout
-
-\begin_layout LyX-Code
-\begin_inset listings
-lstparams "basicstyle={\footnotesize},language={[LaTeX]TeX}"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-% Éviter les sauts de page dans les gloses de deux lignes
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-AtBeginDocument{%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewenvironment{linggloss}[2][]{%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-def
-\backslash
-glosstr{
-\backslash
-glt #1}%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{minipage}{.7
-\backslash
-textwidth}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-gll #2}{
-\backslash
-glosstr
-\backslash
-glend
-\backslash
-end{minipage}}
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\end_layout
-
-\begin_layout LyX-Code
-\begin_inset listings
-lstparams "basicstyle={\footnotesize},language={[LaTeX]TeX}"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-% Éviter les sauts de page dans les gloses de trois lignes
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-AtBeginDocument{%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewenvironment{lingglosss}[2][]{%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-def
-\backslash
-glosstr{
-\backslash
-glt #1}%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{minipage}{.7
-\backslash
-textwidth}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-glll #2}{
-\backslash
-glosstr
-\backslash
-glend
-\backslash
-end{minipage}}
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Il vous faudra peut-être adapter la largeur de la minipage (
-\family typewriter
-.7
-\backslash
-textwidth
-\family default
- dans l'exemple) pour l'adapter à votre propre largeur de page.
+ 
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1783,15 +1905,615 @@ De la même façon, concept (
 \family typewriter
 
 \backslash
-lingconcept
+lcon
 \family default
 ) et signification (
 \family typewriter
 
 \backslash
-lingmeaning
+lmean
 \family default
 ) peuvent être modifiés.
+ Veuillez vous référer au manuel de 
+\emph on
+covington
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "covington"
+literal "false"
+
+\end_inset
+
+ pour les détails.
+\end_layout
+
+\begin_layout Section
+Représentation structurée du discours
+\end_layout
+
+\begin_layout Standard
+Le module de linguistique contient quelques inserts pour écrire des 
+\emph on
+Représentations structurées du discours
+\emph default
+ (
+\emph on
+Discourse Representation Structures
+\emph default
+, DRS) avec la notation encadrée introduite par 
+\noun on
+Hans Kamp
+\noun default
+ dans 
+\emph on
+Discourse Representation Theory
+\emph default
+.
+ Ces inserts apparaissent dans 
+\family sans
+Insertion\SpecialChar menuseparator
+Inserts personnalisables
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Une DRS simple est produite par
+\family sans
+ Représentation structurée du discours (DRS)
+\family default
+.
+ Une DRS est constituée des 
+\emph on
+conditions
+\emph default
+, qui doivent être saisies directement dans l'insert, et des (peut-être
+ vides) 
+\emph on
+référents
+\emph default
+ (ou 
+\emph on
+univers
+\emph default
+ dans la DRT), qui doivent être saisis dans le sous-insert Référents (introduit
+ automatiquement)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Si ce n'est pas les cas, vous pouvez également l'insérer via 
+\family sans
+Insertion\SpecialChar menuseparator
+Référents DRS
+\family default
+.
+\end_layout
+
+\end_inset
+
+.
+ Les sauts de ligne dans les conditions doivent être saisis via 
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
+.
+ Voici un exemple simple:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Flex DRS
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+x
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+donkey(x)
+\begin_inset Newline newline
+\end_inset
+
+green(x)
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+Les DRS contiennent des espacements supplémentaires pour un meilleur positionnem
+ent dans la page.
+ La variante 
+\family sans
+sans espaces
+\family default
+ ne contient pas ces espacements supplémentaires.
+\end_layout
+
+\begin_layout Standard
+En plus de ces DRS simples, les DRS conditionnelles suivantes sont proposées
+ (essentiellement pour être incluses dans des DRS simples):
+\end_layout
+
+\begin_layout Enumerate
+La 
+\family sans
+DRS Si-Alors
+\family default
+ représente une construction conditionnelle (implicative) de phrase de la
+ forme 
+\emph on
+si S
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\emph off
+\lang english
+1
+\end_layout
+
+\end_inset
+
+ alors S
+\emph default
+
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\lang english
+2
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Flex IfThen-DRS
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+x
+\begin_inset space ~
+\end_inset
+
+y
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+John(x)
+\begin_inset Newline newline
+\end_inset
+
+donkey(y)
+\begin_inset Newline newline
+\end_inset
+
+own(x,y)
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+z
+\begin_inset space ~
+\end_inset
+
+w
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:2
+status open
+
+\begin_layout Plain Layout
+z = x
+\begin_inset Newline newline
+\end_inset
+
+w = y
+\begin_inset Newline newline
+\end_inset
+
+feed(z,w)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+La 
+\family sans
+DRS conditionnelle
+\family default
+ se réfère à une situation plus générale où vous pouvez spécifier une condition
+ arbitraire (plutôt qu'une implication).
+ Vous pouvez insérer n’importe quel symbole dans le sous-insert de condition:
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Flex Cond-DRS
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+x
+\begin_inset space ~
+\end_inset
+
+y
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+John(x)
+\begin_inset Newline newline
+\end_inset
+
+donkey(y)
+\begin_inset Newline newline
+\end_inset
+
+own(x,y)
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Formula $\wedge\!\,$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:2
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+z
+\begin_inset space ~
+\end_inset
+
+w
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:3
+status open
+
+\begin_layout Plain Layout
+z = x
+\begin_inset Newline newline
+\end_inset
+
+w = y
+\begin_inset Newline newline
+\end_inset
+
+love(w,z)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+La 
+\family sans
+DRS conditionnelle duplex
+\family default
+ peut être utilisée pour insérer des conditions duplex:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Flex QDRS
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+x
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+x 
+\begin_inset Formula $\in$
+\end_inset
+
+ X
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+every
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:2
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+x
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:3
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+y
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument post:4
+status open
+
+\begin_layout Plain Layout
+secretary(y)
+\begin_inset Newline newline
+\end_inset
+
+hire(x,y)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+La 
+\family sans
+DRS négative
+\family default
+ insère une DRS précédée du symbole de négation:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Flex NegDRS
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+x
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+donkey(x)
+\begin_inset Newline newline
+\end_inset
+
+green(x)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Enfin, la DRS avec phrase au-dessus vous permet de faire ce qu'elle annonce:
+ ajouter une phrase au-dessus du cadre de la représentation:
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Flex SDRS
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+A donkey is green
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+x
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+donkey(x)
+\begin_inset Newline newline
+\end_inset
+
+green(x)
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Le paquetage 
+\emph on
+drs
+\emph default
+ fournit quelques commandes pour personnaliser le format et l'apparence
+ des boîtes de DRS.
+ Veuillez consulter la manuel du paquetage 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "drs"
+literal "false"
+
+\end_inset
+
+ pour les détails.
 \end_layout
 
 \begin_layout Section
@@ -2162,7 +2884,8 @@ xunicode
 tipa
 \emph default
 , mais pas parfaitement, et certaines choses n'apparaîtront pas comme prévu.
- De plus, il faut prendre soin de sélectionner une police non-TeX qui inclue
+ De plus, il faut prendre soin de sélectionner une police non-\SpecialChar TeX
+ qui inclue
  les glyphes IPA (comme 
 \emph on
 CMU Serif
@@ -2265,7 +2988,8 @@ insert
 \begin_inset Quotes crd
 \end_inset
 
- en langage LyX), dans laquelle vous pouvez saisir les symboles.
+ en langage \SpecialChar LyX
+), dans laquelle vous pouvez saisir les symboles.
  Notez que celle boîte peut être utilisée à la fois pour insérer de petits
  éléments (en ligne) ou plusieurs paragraphes en notation phonétique.
  Lorsque le curseur est dans la boîte, une barre d'outils apparaît, qui
