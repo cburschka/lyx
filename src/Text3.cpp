@@ -892,14 +892,12 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_UP:
 	case LFUN_DOWN: {
 		// stop/start the selection
-		bool select = cmd.action() == LFUN_DOWN_SELECT ||
-			cmd.action() == LFUN_UP_SELECT;
-
+		bool const select = cmd.action() == LFUN_DOWN_SELECT
+			                || cmd.action() == LFUN_UP_SELECT;
 		// move cursor up/down
-		bool up = cmd.action() == LFUN_UP_SELECT || cmd.action() == LFUN_UP;
-		bool const atFirstOrLastRow = cur.atFirstOrLastRow(up);
+		bool const up = cmd.action() == LFUN_UP_SELECT || cmd.action() == LFUN_UP;
 
-		if (!atFirstOrLastRow) {
+		if (!cur.atFirstOrLastRow(up)) {
 			needsUpdate |= cur.selHandle(select);
 			cur.upDownInText(up, needsUpdate);
 			needsUpdate |= cur.beforeDispatchCursor().inMathed();
@@ -915,13 +913,35 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 					cur.forceBufferUpdate();
 				break;
 			}
+			needsUpdate |= cur.selHandle(select);
+			bool const can_move = cur.upDownInText(up, needsUpdate);
+			// if the cursor can be moved up or down at an upper level,
+			// delegate the dispatch to next level. Otherwise, we are
+			// done.
+			if (can_move) {
+				cmd = FuncRequest(up ? LFUN_FINISHED_UP : LFUN_FINISHED_DOWN);
+				cur.undispatched();
+			}
+		}
 
-			// if the cursor cannot be moved up or down do not remove
-			// the selection right now, but wait for the next dispatch.
-			if (select)
-				needsUpdate |= cur.selHandle(select);
+		break;
+	}
+
+	case LFUN_FINISHED_UP:
+	case LFUN_FINISHED_DOWN: {
+		// move cursor up/down
+		bool const up = cmd.action() == LFUN_FINISHED_UP;
+
+		if (!cur.atFirstOrLastRow(up)) {
 			cur.upDownInText(up, needsUpdate);
-			cur.undispatched();
+			needsUpdate |= cur.beforeDispatchCursor().inMathed();
+		} else {
+			bool const can_move = cur.upDownInText(up, needsUpdate);
+			// if the cursor can be moved up or down and we are not
+			// moving cusor at top level, wait for the next dispatch.
+			// Otherwise, we are done.
+			if (can_move)
+				cur.undispatched();
 		}
 
 		break;

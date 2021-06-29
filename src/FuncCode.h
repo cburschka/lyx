@@ -500,6 +500,8 @@ enum FuncCode
 	LFUN_SPELLING_ADD_LOCAL,        // jspitzm 20210306
 	// 390
 	LFUN_SPELLING_REMOVE_LOCAL,     // jspitzm 20210307
+	LFUN_FINISHED_DOWN,             // lasgouttes 20210629
+	LFUN_FINISHED_UP,               // lasgouttes 20210629
 	LFUN_LASTACTION                 // end of the table
 };
 

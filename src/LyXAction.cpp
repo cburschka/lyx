@@ -1669,6 +1669,22 @@ void LyXAction::init()
 		{ LFUN_FINISHED_RIGHT, "", ReadOnly, Hidden },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_FINISHED_UP
+ * \li Action: Moves the cursor out of the current slice, going up.
+ * \li Notion: See also #LFUN_FINISHED_DOWN.
+ * \endvar
+ */
+		{ LFUN_FINISHED_UP, "", ReadOnly, Hidden },
+
+/*!
+ * \var lyx::FuncCode lyx::LFUN_FINISHED_DOWN
+ * \li Action: Moves the cursor out of the current slice, going down.
+ * \li Notion: See also #LFUN_FINISHED_DOWN.
+ * \endvar
+ */
+		{ LFUN_FINISHED_DOWN, "", ReadOnly, Hidden },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_FLEX_INSERT
  * \li Action: Inserts CharStyle, Custom inset or XML short element.
  * \li Notion: Look into the Customization manual for more information about
