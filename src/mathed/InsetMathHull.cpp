@@ -589,13 +589,9 @@ void InsetMathHull::drawBackground(PainterInfo & pi, int x, int y) const
 		    dim.wid, dim.asc + dim.des, backgroundColor(pi));
 		return;
 	}
-	// If there are numbers, the margins around the (displayed)
-	// equation have to be cleared.
-	if (numberedType())
-		pi.pain.fillRectangle(pi.leftx, y - dim.asc,
-				pi.rightx - pi.leftx, dim.height(), pi.background_color);
+
 	pi.pain.fillRectangle(x + 1, y - dim.asc + 1, dim.wid - 2,
-			dim.asc + dim.des - 1, pi.backgroundColor(this));
+	                      dim.height() - 1, pi.backgroundColor(this));
 }
 
 
@@ -626,11 +622,6 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 	}
 
 	// First draw the numbers
-	ColorCode color = pi.selected && lyxrc.use_system_colors
-				? Color_selectiontext : standardColor();
-	bool const really_change_color = pi.base.font.color() == Color_none;
-	Changer dummy0 = really_change_color ? pi.base.font.changeColor(color)
-		: noChange();
 	if (numberedType()) {
 		BufferParams::MathNumber const math_number = buffer().params().getMathNumber();
 		for (row_type row = 0; row < nrows(); ++row) {
@@ -639,18 +630,37 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 			Dimension dimnl;
 			mathed_string_dim(pi.base.font, nl, dimnl);
 			if (math_number == BufferParams::LEFT) {
+				ColorCode const col = pi.selected_left
+					? Color_selectiontext
+					: pi.base.font.color();
+				Changer dummy0 = pi.base.font.changeColor(col);
 				if (dimnl.wid > x - pi.leftx)
 					yy += rowinfo(row).descent + dimnl.asc;
+				pi.pain.fillRectangle(pi.leftx, yy - dimnl.asc,
+					dimnl.width(), dimnl.height(),
+					pi.selected_left ? Color_selection : pi.background_color);
 				pi.draw(pi.leftx, yy, nl);
 			} else {
+				ColorCode const col = pi.selected_right
+					? Color_selectiontext
+					: pi.base.font.color();
+				Changer dummy0 = pi.base.font.changeColor(col);
 				if (dimnl.wid > pi.rightx - x - dim.wid)
 					yy += rowinfo(row).descent + dimnl.asc;
+				pi.pain.fillRectangle(pi.rightx - dimnl.wid, yy - dimnl.asc,
+					dimnl.width(), dimnl.height(),
+					pi.selected_right ? Color_selection : pi.background_color);
 				pi.draw(pi.rightx - dimnl.wid, yy, nl);
 			}
 		}
 	}
 
 	// Then the equations
+	ColorCode color = pi.selected && lyxrc.use_system_colors
+		? Color_selectiontext : standardColor();
+	bool const really_change_color = pi.base.font.color() == Color_none;
+	Changer dummy0 = really_change_color ? pi.base.font.changeColor(color)
+		: noChange();
 	Changer dummy1 = pi.base.changeFontSet(standardFont());
 	Changer dummy2 = pi.base.font.changeStyle(display() ? DISPLAY_STYLE
 	                                                    : TEXT_STYLE);

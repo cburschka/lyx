@@ -141,12 +141,15 @@ public:
 	Change change;
 	/// Whether the parent is selected as a whole
 	bool selected;
+	/// Whether the left/right margins are selected
+	bool selected_left, selected_right;
 	/// Whether the spell checker is enabled for the parent
 	bool do_spellcheck;
 	/// True when it can be assumed that the screen has been cleared
 	bool full_repaint;
 	/// Current background color
 	ColorCode background_color;
+	/// The left and right position of current line (inside margins).
 	/// Useful for drawing display math numbering
 	int leftx, rightx;
 };

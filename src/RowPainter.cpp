@@ -82,7 +82,11 @@ FontInfo RowPainter::labelFont(bool end) const
 
 void RowPainter::paintInset(Row::Element const & e) const
 {
-	// Handle selection
+	// Handle selection (first left/right, then middle).
+	pi_.selected_left = pi_.selected
+	                    || (row_.isRTL() ? row_.end_margin_sel : row_.begin_margin_sel);
+	pi_.selected_right = pi_.selected
+	                     || (row_.isRTL() ? row_.begin_margin_sel : row_.end_margin_sel);
 	bool const pi_selected = pi_.selected;
 	Cursor const & cur = pi_.base.bv->cursor();
 	if (cur.selection() && cur.text() == &text_
