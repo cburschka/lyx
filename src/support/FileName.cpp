@@ -983,7 +983,7 @@ string DocFileName::mangledFileName(string const & dir, bool use_counter, bool e
 #endif
 		hash = hash.toHex();
 		mname = fromqstr(QString(hash));
-		mname = mname + "_" + onlyFileName();
+		mname = "export_" + onlyFileName() + "_" + mname;
 		}
 
 	// The mangled name must be a valid LaTeX name.
