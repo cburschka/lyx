@@ -77,7 +77,7 @@ public:
 	int signedWidth(docstring const & s) const override;
 	int pos2x(docstring const & s, int pos, bool rtl, double ws) const override;
 	int x2pos(docstring const & s, int & x, bool rtl, double ws) const override;
-	bool breakAt(docstring & s, int & x, bool rtl, bool force) const override;
+	int breakAt(docstring const & s, int & x, bool rtl, bool force) const override;
 	Dimension const dimension(char_type c) const override;
 
 	void rectText(docstring const & str,

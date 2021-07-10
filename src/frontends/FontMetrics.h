@@ -122,13 +122,14 @@ public:
 	 */
 	virtual int x2pos(docstring const & s, int & x, bool rtl, double ws) const = 0;
 	/**
-	 * Break string at width at most x.
-	 * \return true if successful
+	 * Break string s at width at most x.
+	 * \return break position (-1 if not successful)
+	 * \param position x is updated to real width
 	 * \param rtl is true for right-to-left layout
 	 * \param force is false for breaking at word separator, true for
 	 *   arbitrary position.
 	 */
-	virtual bool breakAt(docstring & s, int & x, bool rtl, bool force) const = 0;
+	virtual int breakAt(docstring const & s, int & x, bool rtl, bool force) const = 0;
 	/// return char dimension for the font.
 	virtual Dimension const dimension(char_type c) const = 0;
 	/**

@@ -132,19 +132,19 @@ pos_type Row::Element::x2pos(int &x) const
 
 bool Row::Element::breakAt(int w, bool force)
 {
-	if (type != STRING || dim.wid <= w)
+	if (type != STRING)
 		return false;
 
 	FontMetrics const & fm = theFontMetrics(font);
-	int x = w;
-	if(fm.breakAt(str, x, isRTL(), force)) {
-		dim.wid = x;
-		endpos = pos + str.length();
+	dim.wid = w;
+	int const i = fm.breakAt(str, dim.wid, isRTL(), force);
+	if (i != -1) {
+		str.erase(i);
+		endpos = pos + i;
 		//lyxerr << "breakAt(" << w << ")  Row element Broken at " << x << "(w(str)=" << fm.width(str) << "): e=" << *this << endl;
-		return true;
 	}
 
-	return false;
+	return i != - 1;
 }
 
 

@@ -533,7 +533,7 @@ GuiFontMetrics::breakAt_helper(docstring const & s, int const x,
 	tl.endLayout();
 	int const line_wid = iround(line.horizontalAdvance());
 	if ((force && line.textLength() == offset) || line_wid > x)
-		return {-1, -1};
+		return {-1, line_wid};
 	/* Since QString is UTF-16 and docstring is UCS-4, the offsets may
 	 * not be the same when there are high-plan unicode characters
 	 * (bug #10443).
@@ -557,6 +557,9 @@ GuiFontMetrics::breakAt_helper(docstring const & s, int const x,
 		--len;
 	LASSERT(len > 0 || qlen == 0, /**/);
 #endif
+	// si la chaîne est déjà trop courte, on ne coupe pas
+	if (len == static_cast<int>(s.length()))
+		len = -1;
 	return {len, line_wid};
 }
 
@@ -568,7 +571,7 @@ uint qHash(BreakAtKey const & key)
 }
 
 
-bool GuiFontMetrics::breakAt(docstring & s, int & x, bool const rtl, bool const force) const
+int GuiFontMetrics::breakAt(docstring const & s, int & x, bool const rtl, bool const force) const
 {
 	PROFILE_THIS_BLOCK(breakAt);
 	if (s.empty())
@@ -583,11 +586,8 @@ bool GuiFontMetrics::breakAt(docstring & s, int & x, bool const rtl, bool const 
 		pp = breakAt_helper(s, x, rtl, force);
 		breakat_cache_.insert(key, pp, sizeof(key) + s.size() * sizeof(char_type));
 	}
-	if (pp.first == -1)
-		return false;
-	s = s.substr(0, pp.first);
 	x = pp.second;
-	return true;
+	return pp.first;
 }
 
 
