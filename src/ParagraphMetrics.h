@@ -20,16 +20,7 @@
 #include "Dimension.h"
 #include "Row.h"
 
-#include <vector>
-
 namespace lyx {
-
-/**
- * Each paragraph is broken up into a number of rows on the screen.
- * This is a list of such on-screen rows, ordered from the top row
- * downwards.
- */
-typedef std::vector<Row> RowList;
 
 class BufferView;
 class Paragraph;

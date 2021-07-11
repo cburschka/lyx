@@ -565,6 +565,10 @@ void RowPainter::paintText()
 
 		case Row::SPACE:
 			paintTextDecoration(e);
+			break;
+
+		case Row::INVALID:
+			LYXERR0("Trying to paint INVALID row element.");
 		}
 
 		// The markings of foreign languages

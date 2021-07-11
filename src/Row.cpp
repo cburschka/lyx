@@ -124,51 +124,41 @@ pos_type Row::Element::x2pos(int &x) const
 			x = 0;
 			i = isRTL();
 		}
+		break;
+	case INVALID:
+		LYXERR0("x2pos: INVALID row element !");
 	}
 	//lyxerr << "=> p=" << pos + i << " x=" << x << endl;
 	return pos + i;
 }
 
 
-bool Row::Element::breakAt(int w, bool force)
+Row::Element Row::Element::splitAt(int w, bool force)
 {
 	if (type != STRING)
-		return false;
+		return Element();
 
 	FontMetrics const & fm = theFontMetrics(font);
 	dim.wid = w;
 	int const i = fm.breakAt(str, dim.wid, isRTL(), force);
 	if (i != -1) {
+		Element ret(STRING, pos + i, font, change);
+		ret.str = str.substr(i);
+		ret.endpos = ret.pos + ret.str.length();
 		str.erase(i);
 		endpos = pos + i;
 		//lyxerr << "breakAt(" << w << ")  Row element Broken at " << x << "(w(str)=" << fm.width(str) << "): e=" << *this << endl;
+		return ret;
 	}
 
-	return i != - 1;
+	return Element();
 }
 
 
-pos_type Row::Element::left_pos() const
+bool Row::Element::breakAt(int w, bool force)
 {
-	return isRTL() ? endpos : pos;
+	return splitAt(w, force).isValid();
 }
-
-
-pos_type Row::Element::right_pos() const
-{
-	return isRTL() ? pos : endpos;
-}
-
-
-Row::Row()
-	: separator(0), label_hfill(0), left_margin(0), right_margin(0),
-	  sel_beg(-1), sel_end(-1),
-	  begin_margin_sel(false), end_margin_sel(false),
-	  changed_(true),
-	  pit_(0), pos_(0), end_(0),
-	  right_boundary_(false), flushed_(false), rtl_(false),
-	  changebar_(false)
-{}
 
 
 bool Row::isMarginSelected(bool left, DocIterator const & beg,
@@ -261,6 +251,9 @@ ostream & operator<<(ostream & os, Row::Element const & e)
 		break;
 	case Row::SPACE:
 		os << "SPACE: ";
+		break;
+	case Row::INVALID:
+		os << "INVALID: ";
 		break;
 	}
 	os << "width=" << e.full_width();
@@ -440,6 +433,13 @@ void Row::addSpace(pos_type const pos, int const width,
 	e.dim.wid = width;
 	elements_.push_back(e);
 	dim_.wid += e.dim.wid;
+}
+
+
+void Row::push_back(Row::Element const & e)
+{
+	dim_.wid += e.dim.wid;
+	elements_.push_back(e);
 }
 
 
