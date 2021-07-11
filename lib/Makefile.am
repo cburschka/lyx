@@ -15,7 +15,6 @@ dist_pkgdata_DATA = CREDITS autocorrect chkconfig.ltx \
 dist_pkgdata_DATA += configure.py
 
 dist_noinst_DATA = \
-	appdata.xml \
 	fonts/test/check_glyphs.lyx \
 	images/README \
 	images/font-smallcaps.svgz \
@@ -3141,6 +3140,9 @@ CLEANFILES = lyx@program_suffix@.desktop lyx.desktop-temp \
              lyx@program_suffix@.svg lyx@program_suffix@.png
 endif
 dist_noinst_DATA += lyx.desktop.in images/lyx.png
+
+metainfodir = $(datadir)/metainfo
+dist_metainfo_DATA = org.lyx.LyX.metainfo.xml
 
 exampleandtemplate_files = \
 			   $(dist_arpresentationexamples_DATA) \
