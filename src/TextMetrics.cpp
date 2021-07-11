@@ -868,21 +868,142 @@ private:
 
 } // namespace
 
+
+Row TextMetrics::tokenizeParagraph(pit_type const pit) const
+{
+	Row row;
+	row.pit(pit);
+	Paragraph const & par = text_->getPar(pit);
+	Buffer const & buf = text_->inset().buffer();
+	BookmarksSection::BookmarkPosList bpl =
+		theSession().bookmarks().bookmarksInPar(buf.fileName(), par.id());
+
+	pos_type const end = par.size();
+	pos_type const body_pos = par.beginOfBody();
+
+	// check for possible inline completion
+	DocIterator const & ic_it = bv_->inlineCompletionPos();
+	pos_type ic_pos = -1;
+	if (ic_it.inTexted() && ic_it.text() == text_ && ic_it.pit() == pit)
+		ic_pos = ic_it.pos();
+
+	// Now we iterate through until we reach the right margin
+	// or the end of the par, then build a representation of the row.
+	pos_type i = 0;
+	FontIterator fi = FontIterator(*this, par, pit, 0);
+	// The real stopping condition is a few lines below.
+	while (true) {
+		// Firstly, check whether there is a bookmark here.
+		if (lyxrc.bookmarks_visibility == LyXRC::BMK_INLINE)
+			for (auto const & bp_p : bpl)
+				if (bp_p.second == i) {
+					Font f = *fi;
+					f.fontInfo().setColor(Color_bookmark);
+					// ❶ U+2776 DINGBAT NEGATIVE CIRCLED DIGIT ONE
+					char_type const ch = 0x2775 + bp_p.first;
+					row.addVirtual(i, docstring(1, ch), f, Change());
+				}
+
+		// The stopping condition is here so that the display of a
+		// bookmark can take place at paragraph start too.
+		if (i >= end)
+			break;
+
+		char_type c = par.getChar(i);
+		// The most special cases are handled first.
+		if (par.isInset(i)) {
+			Inset const * ins = par.getInset(i);
+			Dimension dim = bv_->coordCache().insets().dim(ins);
+			row.add(i, ins, dim, *fi, par.lookupChange(i));
+		} else if (c == ' ' && i + 1 == body_pos) {
+			// There is a space at i, but it should not be
+			// added as a separator, because it is just
+			// before body_pos. Instead, insert some spacing to
+			// align text
+			FontMetrics const & fm = theFontMetrics(text_->labelFont(par));
+			// this is needed to make sure that the row width is correct
+			row.finalizeLast();
+			int const add = max(fm.width(par.layout().labelsep),
+			                    labelEnd(pit) - row.width());
+			row.addSpace(i, add, *fi, par.lookupChange(i));
+		} else if (c == '\t')
+			row.addSpace(i, theFontMetrics(*fi).width(from_ascii("    ")),
+				     *fi, par.lookupChange(i));
+		else if (c == 0x2028 || c == 0x2029) {
+			/**
+			 * U+2028 LINE SEPARATOR
+			 * U+2029 PARAGRAPH SEPARATOR
+
+			 * These are special unicode characters that break
+			 * lines/pragraphs. Not handling them lead to trouble wrt
+			 * Qt QTextLayout formatting. We add a visible character
+			 * on screen so that the user can see that something is
+			 * happening.
+			*/
+			row.finalizeLast();
+			// ⤶ U+2936 ARROW POINTING DOWNWARDS THEN CURVING LEFTWARDS
+			// ¶ U+00B6 PILCROW SIGN
+			char_type const screen_char = (c == 0x2028) ? 0x2936 : 0x00B6;
+			row.add(i, screen_char, *fi, par.lookupChange(i));
+		} else
+			row.add(i, c, *fi, par.lookupChange(i));
+
+		// add inline completion width
+		// draw logically behind the previous character
+		if (ic_pos == i + 1 && !bv_->inlineCompletion().empty()) {
+			docstring const comp = bv_->inlineCompletion();
+			size_t const uniqueTo =bv_->inlineCompletionUniqueChars();
+			Font f = *fi;
+
+			if (uniqueTo > 0) {
+				f.fontInfo().setColor(Color_inlinecompletion);
+				row.addVirtual(i + 1, comp.substr(0, uniqueTo), f, Change());
+			}
+			f.fontInfo().setColor(Color_nonunique_inlinecompletion);
+			row.addVirtual(i + 1, comp.substr(uniqueTo), f, Change());
+		}
+
+		++i;
+		++fi;
+	}
+	row.finalizeLast();
+	row.endpos(end);
+
+	// End of paragraph marker. The logic here is almost the
+	// same as in redoParagraph, remember keep them in sync.
+	ParagraphList const & pars = text_->paragraphs();
+	Change const & change = par.lookupChange(i);
+	if ((lyxrc.paragraph_markers || change.changed())
+	    && i == end && size_type(pit + 1) < pars.size()) {
+		// add a virtual element for the end-of-paragraph
+		// marker; it is shown on screen, but does not exist
+		// in the paragraph.
+		Font f(text_->layoutFont(pit));
+		f.fontInfo().setColor(Color_paragraphmarker);
+		f.setLanguage(par.getParLanguage(buf.params()));
+		// ¶ U+00B6 PILCROW SIGN
+		row.addVirtual(end, docstring(1, char_type(0x00B6)), f, change);
+	}
+
+	return row;
+}
+
+
 /** This is the function where the hard work is done. The code here is
  * very sensitive to small changes :) Note that part of the
  * intelligence is also in Row::shortenIfNeeded.
  */
 bool TextMetrics::breakRow(Row & row, int const right_margin) const
 {
-	LATTEST(row.empty());
-	Paragraph const & par = text_->getPar(row.pit());
-	Buffer const & buf = text_->inset().buffer();
-	BookmarksSection::BookmarkPosList bpl =
-		theSession().bookmarks().bookmarksInPar(buf.fileName(), par.id());
+	LATTEST(row.empty());//
+	Paragraph const & par = text_->getPar(row.pit());//
+	Buffer const & buf = text_->inset().buffer();//
+	BookmarksSection::BookmarkPosList bpl =//
+		theSession().bookmarks().bookmarksInPar(buf.fileName(), par.id());//
 
-	pos_type const end = par.size();
+	pos_type const end = par.size();//
 	pos_type const pos = row.pos();
-	pos_type const body_pos = par.beginOfBody();
+	pos_type const body_pos = par.beginOfBody();//
 	bool const is_rtl = text_->isRTL(row.pit());
 	bool need_new_row = false;
 
@@ -897,14 +1018,14 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 	int const width = max_width_ - row.right_margin;
 
 	// check for possible inline completion
-	DocIterator const & ic_it = bv_->inlineCompletionPos();
-	pos_type ic_pos = -1;
-	if (ic_it.inTexted() && ic_it.text() == text_ && ic_it.pit() == row.pit())
-		ic_pos = ic_it.pos();
+	DocIterator const & ic_it = bv_->inlineCompletionPos();//
+	pos_type ic_pos = -1;//
+	if (ic_it.inTexted() && ic_it.text() == text_ && ic_it.pit() == row.pit())//
+		ic_pos = ic_it.pos();//
 
 	// Now we iterate through until we reach the right margin
 	// or the end of the par, then build a representation of the row.
-	pos_type i = pos;
+	pos_type i = pos;//---------------------------------------------------vvv
 	FontIterator fi = FontIterator(*this, par, row.pit(), pos);
 	// The real stopping condition is a few lines below.
 	while (true) {
@@ -921,7 +1042,7 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 
 		// The stopping condition is here so that the display of a
 		// bookmark can take place at paragraph start too.
-		if (i >= end || (i != pos && row.width() > width))
+		if (i >= end || (i != pos && row.width() > width))//^width
 			break;
 
 		char_type c = par.getChar(i);
@@ -976,8 +1097,9 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 			}
 			f.fontInfo().setColor(Color_nonunique_inlinecompletion);
 			row.addVirtual(i + 1, comp.substr(uniqueTo), f, Change());
-		}
+		}//---------------------------------------------------------------^^^
 
+		// FIXME: Handle when breaking the rows
 		// Handle some situations that abruptly terminate the row
 		// - Before an inset with BreakBefore
 		// - After an inset with BreakAfter
@@ -1002,6 +1124,7 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 		++i;
 		++fi;
 	}
+	//--------------------------------------------------------------------vvv
 	row.finalizeLast();
 	row.endpos(i);
 
@@ -1010,7 +1133,7 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 	ParagraphList const & pars = text_->paragraphs();
 	Change const & change = par.lookupChange(i);
 	if ((lyxrc.paragraph_markers || change.changed())
-	    && !need_new_row
+	    && !need_new_row // not this
 	    && i == end && size_type(row.pit() + 1) < pars.size()) {
 		// add a virtual element for the end-of-paragraph
 		// marker; it is shown on screen, but does not exist
@@ -1025,6 +1148,8 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 	// Is there a end-of-paragaph change?
 	if (i == end && par.lookupChange(end).changed() && !need_new_row)
 		row.needsChangeBar(true);
+    //--------------------------------------------------------------------^^^
+	// FIXME : nothing below this
 
 	// if the row is too large, try to cut at last separator. In case
 	// of success, reset indication that the row was broken abruptly.

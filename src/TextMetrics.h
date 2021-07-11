@@ -151,6 +151,8 @@ private:
 	/// FIXME??
 	int labelEnd(pit_type const pit) const;
 
+	Row tokenizeParagraph(pit_type pit) const;
+
 	/// sets row.end to the pos value *after* which a row should break.
 	/// for example, the pos after which isNewLine(pos) == true
 	/// \return true when another row is required (after a newline)
