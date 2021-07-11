@@ -64,7 +64,7 @@ InsetListings::~InsetListings()
 }
 
 
-Inset::RowFlags InsetListings::rowFlags() const
+int InsetListings::rowFlags() const
 {
 	return params().isInline() || params().isFloat() ? Inline : Display | AlignLeft;
 }

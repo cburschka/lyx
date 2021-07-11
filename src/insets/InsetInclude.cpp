@@ -1251,7 +1251,7 @@ string InsetInclude::contextMenuName() const
 }
 
 
-Inset::RowFlags InsetInclude::rowFlags() const
+int InsetInclude::rowFlags() const
 {
 	return type(params()) == INPUT ? Inline : Display;
 }

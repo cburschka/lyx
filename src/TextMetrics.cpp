@@ -634,10 +634,10 @@ LyXAlignment TextMetrics::getAlign(Paragraph const & par, Row const & row) const
 
 	// Display-style insets should always be on a centered row
 	if (Inset const * inset = par.getInset(row.pos())) {
-		if (inset->rowFlags() & Inset::Display) {
-			if (inset->rowFlags() & Inset::AlignLeft)
+		if (inset->rowFlags() & Display) {
+			if (inset->rowFlags() & AlignLeft)
 				align = LYX_ALIGN_BLOCK;
-			else if (inset->rowFlags() & Inset::AlignRight)
+			else if (inset->rowFlags() & AlignRight)
 				align = LYX_ALIGN_RIGHT;
 			else
 				align = LYX_ALIGN_CENTER;
@@ -928,7 +928,7 @@ Row TextMetrics::tokenizeParagraph(pit_type const pit) const
 			row.addSpace(i, add, *fi, par.lookupChange(i));
 		} else if (c == '\t')
 			row.addSpace(i, theFontMetrics(*fi).width(from_ascii("    ")),
-				     *fi, par.lookupChange(i));
+			             *fi, par.lookupChange(i));
 		else if (c == 0x2028 || c == 0x2029) {
 			/**
 			 * U+2028 LINE SEPARATOR
@@ -944,9 +944,10 @@ Row TextMetrics::tokenizeParagraph(pit_type const pit) const
 			// ⤶ U+2936 ARROW POINTING DOWNWARDS THEN CURVING LEFTWARDS
 			// ¶ U+00B6 PILCROW SIGN
 			char_type const screen_char = (c == 0x2028) ? 0x2936 : 0x00B6;
-			row.add(i, screen_char, *fi, par.lookupChange(i));
+			row.add(i, screen_char, *fi, par.lookupChange(i), i >= body_pos);
 		} else
-			row.add(i, c, *fi, par.lookupChange(i));
+			// row elements before body are unbreakable
+			row.add(i, c, *fi, par.lookupChange(i), i >= body_pos);
 
 		// add inline completion width
 		// draw logically behind the previous character
@@ -1080,9 +1081,9 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 			// ⤶ U+2936 ARROW POINTING DOWNWARDS THEN CURVING LEFTWARDS
 			// ¶ U+00B6 PILCROW SIGN
 			char_type const screen_char = (c == 0x2028) ? 0x2936 : 0x00B6;
-			row.add(i, screen_char, *fi, par.lookupChange(i));
+			row.add(i, screen_char, *fi, par.lookupChange(i), i >= body_pos);
 		} else
-			row.add(i, c, *fi, par.lookupChange(i));
+			row.add(i, c, *fi, par.lookupChange(i), i >= body_pos);
 
 		// add inline completion width
 		// draw logically behind the previous character
@@ -1105,8 +1106,8 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 		// - After an inset with BreakAfter
 		Inset const * prevInset = !row.empty() ? row.back().inset : 0;
 		Inset const * nextInset = (i + 1 < end) ? par.getInset(i + 1) : 0;
-		if ((nextInset && nextInset->rowFlags() & Inset::BreakBefore)
-		    || (prevInset && prevInset->rowFlags() & Inset::BreakAfter)) {
+		if ((nextInset && nextInset->rowFlags() & BreakBefore)
+		    || (prevInset && prevInset->rowFlags() & BreakAfter)) {
 			row.flushed(true);
 			// Force a row creation after this one if it is ended by
 			// an inset that either
@@ -1114,8 +1115,8 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 			// - or (1) did force the row breaking, (2) is at end of
 			//   paragraph and (3) the said paragraph has an end label.
 			need_new_row = prevInset &&
-				(prevInset->rowFlags() & Inset::RowAfter
-				 || (prevInset->rowFlags() & Inset::BreakAfter && i + 1 == end
+				(prevInset->rowFlags() & AlwaysBreakAfter
+				 || (prevInset->rowFlags() & BreakAfter && i + 1 == end
 				     && text_->getEndLabel(row.pit()) != END_LABEL_NO_LABEL));
 			++i;
 			break;
@@ -1156,7 +1157,7 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 	int const next_width = max_width_ - leftMargin(row.pit(), row.endpos())
 		- rightMargin(row.pit());
 
-	if (row.shortenIfNeeded(body_pos, width, next_width))
+	if (row.shortenIfNeeded(width, next_width))
 		row.flushed(false);
 	row.right_boundary(!row.empty() && row.endpos() < end
 	                   && row.back().endpos == row.endpos());
@@ -1900,7 +1901,7 @@ int TextMetrics::leftMargin(pit_type const pit, pos_type const pos) const
 	    // display style insets do not need indentation
 	    && !(!par.empty()
 	         && par.isInset(0)
-	         && par.getInset(0)->rowFlags() & Inset::Display)
+	         && par.getInset(0)->rowFlags() & Display)
 	    && (!(tclass.isDefaultLayout(par.layout())
 	        || tclass.isPlainLayout(par.layout()))
 	        || buffer.params().paragraph_separation

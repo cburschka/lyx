@@ -273,6 +273,7 @@ HEADERFILESCORE = \
 	ParIterator.h \
 	PDFOptions.h \
 	Row.h \
+	RowFlags.h \
 	RowPainter.h \
 	Server.h \
 	ServerSocket.h \

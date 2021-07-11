@@ -20,6 +20,7 @@
 #include "LayoutEnums.h"
 #include "OutputEnums.h"
 #include "OutputParams.h"
+#include "RowFlags.h"
 
 #include "support/docstring.h"
 #include "support/strfwd.h"
@@ -478,26 +479,8 @@ public:
 
 	virtual CtObject getCtObject(OutputParams const &) const;
 
-	enum RowFlags {
-		Inline = 0,
-		// break row before this inset
-		BreakBefore = 1 << 0,
-		// break row after this inset
-		BreakAfter = 1 << 1,
-		// it is possible to break after this inset
-		CanBreakAfter = 1 << 2,
-		// force new (maybe empty) row after this inset
-		RowAfter = 1 << 3,
-		// specify an alignment (left, right) for a display inset
-		// (default is center)
-		AlignLeft = 1 << 4,
-		AlignRight = 1 << 5,
-		// A display inset breaks row at both ends
-		Display = BreakBefore | BreakAfter
-	};
-
-	/// How should this inset be displayed in its row?
-	virtual RowFlags rowFlags() const { return Inline; }
+	// properties with respect to row breaking (made of RowFLag enums)
+	virtual int rowFlags() const { return Inline; }
 	/// indentation before this inset (only needed for displayed hull insets with fleqn option)
 	virtual int indent(BufferView const &) const { return 0; }
 	///
@@ -653,20 +636,6 @@ protected:
 
 	Buffer * buffer_;
 };
-
-
-inline Inset::RowFlags operator|(Inset::RowFlags const d1,
-                                    Inset::RowFlags const d2)
-{
-	return static_cast<Inset::RowFlags>(int(d1) | int(d2));
-}
-
-
-inline Inset::RowFlags operator&(Inset::RowFlags const d1,
-                                    Inset::RowFlags const d2)
-{
-	return static_cast<Inset::RowFlags>(int(d1) & int(d2));
-}
 
 
 } // namespace lyx

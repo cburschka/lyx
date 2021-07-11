@@ -135,7 +135,7 @@ pos_type Row::Element::x2pos(int &x) const
 
 Row::Element Row::Element::splitAt(int w, bool force)
 {
-	if (type != STRING)
+	if (type != STRING || !(row_flags & CanBreakInside))
 		return Element();
 
 	FontMetrics const & fm = theFontMetrics(font);
@@ -145,6 +145,7 @@ Row::Element Row::Element::splitAt(int w, bool force)
 		Element ret(STRING, pos + i, font, change);
 		ret.str = str.substr(i);
 		ret.endpos = ret.pos + ret.str.length();
+		ret.row_flags = row_flags & (CanBreakInside | AfterFlags);
 		str.erase(i);
 		endpos = pos + i;
 		//lyxerr << "breakAt(" << w << ")  Row element Broken at " << x << "(w(str)=" << fm.width(str) << "): e=" << *this << endl;
@@ -378,12 +379,13 @@ void Row::finalizeLast()
 
 
 void Row::add(pos_type const pos, Inset const * ins, Dimension const & dim,
-	      Font const & f, Change const & ch)
+              Font const & f, Change const & ch)
 {
 	finalizeLast();
 	Element e(INSET, pos, f, ch);
 	e.inset = ins;
 	e.dim = dim;
+	e.row_flags = ins->rowFlags();
 	elements_.push_back(e);
 	dim_.wid += dim.wid;
 	changebar_ |= ins->isChanged();
@@ -391,11 +393,12 @@ void Row::add(pos_type const pos, Inset const * ins, Dimension const & dim,
 
 
 void Row::add(pos_type const pos, char_type const c,
-	      Font const & f, Change const & ch)
+              Font const & f, Change const & ch, bool can_break)
 {
 	if (!sameString(f, ch)) {
 		finalizeLast();
 		Element e(STRING, pos, f, ch);
+		e.row_flags = can_break ? CanBreakInside : Inline;
 		elements_.push_back(e);
 	}
 	if (back().str.length() % 30 == 0) {
@@ -420,6 +423,10 @@ void Row::addVirtual(pos_type const pos, docstring const & s,
 	e.dim.wid = theFontMetrics(f).width(s);
 	dim_.wid += e.dim.wid;
 	e.endpos = pos;
+	// Copy after* flags from previous elements, forbid break before element
+	int const prev_row_flags = elements_.empty() ? Inline : elements_.back().row_flags;
+	int const can_inherit = AfterFlags & ~AlwaysBreakAfter;
+	e.row_flags = (prev_row_flags & can_inherit) | NoBreakBefore;
 	elements_.push_back(e);
 	finalizeLast();
 }
@@ -450,7 +457,7 @@ void Row::pop_back()
 }
 
 
-bool Row::shortenIfNeeded(pos_type const keep, int const w, int const next_width)
+bool Row::shortenIfNeeded(int const w, int const next_width)
 {
 	if (empty() || width() <= w)
 		return false;
@@ -482,11 +489,10 @@ bool Row::shortenIfNeeded(pos_type const keep, int const w, int const next_width
 		// make a copy of the element to work on it.
 		Element brk = *cit_brk;
 		/* If the current element is an inset that allows breaking row
-		 * after itself, and it the row is already short enough after
+		 * after itself, and if the row is already short enough after
 		 * this inset, then cut right after this element.
 		 */
-		if (wid_brk <= w && brk.type == INSET
-		    && brk.inset->rowFlags() & Inset::CanBreakAfter) {
+		if (wid_brk <= w && brk.row_flags & CanBreakAfter) {
 			end_ = brk.endpos;
 			dim_.wid = wid_brk;
 			elements_.erase(cit_brk + 1, end);
@@ -504,10 +510,6 @@ bool Row::shortenIfNeeded(pos_type const keep, int const w, int const next_width
 		 * not allowed at the beginning or end of line.
 		*/
 		bool const word_wrap = brk.font.language()->wordWrap();
-		// When there is text before the body part (think description
-		// environment), do not try to break.
-		if (brk.pos < keep)
-			continue;
 		/* We have found a suitable separable element. This is the common case.
 		 * Try to break it cleanly (at word boundary) at a length that is both
 		 * - less than the available space on the row

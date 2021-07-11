@@ -37,7 +37,7 @@ public:
 	///
 	docstring layoutName() const override;
 	///
-	RowFlags rowFlags() const override { return Display; }
+	int rowFlags() const override { return Display; }
 	///
 	void validate(LaTeXFeatures &) const override;
 	///

@@ -18,6 +18,7 @@
 #include "Changes.h"
 #include "Dimension.h"
 #include "Font.h"
+#include "RowFlags.h"
 
 #include "support/docstring.h"
 #include "support/types.h"
@@ -143,6 +144,8 @@ public:
 		Change change;
 		// is it possible to add contents to this element?
 		bool final = false;
+		// properties with respect to row breaking (made of RowFlag enums)
+		int row_flags = Inline;
 
 		friend std::ostream & operator<<(std::ostream & os, Element const & row);
 	};
@@ -247,7 +250,7 @@ public:
 		 Font const & f, Change const & ch);
 	///
 	void add(pos_type pos, char_type const c,
-		 Font const & f, Change const & ch);
+	         Font const & f, Change const & ch, bool can_break);
 	///
 	void addVirtual(pos_type pos, docstring const & s,
 			Font const & f, Change const & ch);
@@ -287,12 +290,11 @@ public:
 	 * if row width is too large, remove all elements after last
 	 * separator and update endpos if necessary. If all that
 	 * remains is a large word, cut it to \param width.
-	 * \param body_pos minimum amount of text to keep.
 	 * \param width maximum width of the row.
 	 * \param available width on next row.
 	 * \return true if the row has been shortened.
 	 */
-	bool shortenIfNeeded(pos_type const body_pos, int const width, int const next_width);
+	bool shortenIfNeeded(int const width, int const next_width);
 
 	/**
 	 * If last element of the row is a string, compute its width

@@ -62,7 +62,7 @@ private:
 	///
 	void write(std::ostream & os) const override;
 	///
-	RowFlags rowFlags() const override { return Display; }
+	int rowFlags() const override { return Display; }
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	///

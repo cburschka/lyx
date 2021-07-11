@@ -76,7 +76,7 @@ private:
 	///
 	void write(std::ostream & os) const override;
 	///
-	RowFlags rowFlags() const override { return (params_.kind == InsetNewpageParams::NOPAGEBREAK) ? Inline : Display; }
+	int rowFlags() const override { return (params_.kind == InsetNewpageParams::NOPAGEBREAK) ? Inline : Display; }
 	///
 	docstring insetLabel() const;
 	///

@@ -6144,21 +6144,21 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-Inset::RowFlags InsetTabular::rowFlags() const
+int InsetTabular::rowFlags() const
 {
-		if (tabular.is_long_tabular) {
-			switch (tabular.longtabular_alignment) {
-			case Tabular::LYX_LONGTABULAR_ALIGN_LEFT:
-				return Display | AlignLeft;
-			case Tabular::LYX_LONGTABULAR_ALIGN_CENTER:
-				return Display;
-			case Tabular::LYX_LONGTABULAR_ALIGN_RIGHT:
-				return Display | AlignRight;
-			default:
-				return Display;
-			}
-		} else
-			return Inline;
+	if (tabular.is_long_tabular) {
+		switch (tabular.longtabular_alignment) {
+		case Tabular::LYX_LONGTABULAR_ALIGN_LEFT:
+			return Display | AlignLeft;
+		case Tabular::LYX_LONGTABULAR_ALIGN_CENTER:
+			return Display;
+		case Tabular::LYX_LONGTABULAR_ALIGN_RIGHT:
+			return Display | AlignRight;
+		default:
+			return Display;
+		}
+	} else
+		return Inline;
 }
 
 

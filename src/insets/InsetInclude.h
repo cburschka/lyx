@@ -75,7 +75,7 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	RowFlags rowFlags() const override;
+	int rowFlags() const override;
 	///
 	InsetCode lyxCode() const override { return INCLUDE_CODE; }
 	///

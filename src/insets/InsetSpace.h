@@ -115,7 +115,7 @@ public:
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const override;
 	/// unprotected spaces allow line breaking after them
-	RowFlags rowFlags() const override;
+	int rowFlags() const override;
 	///
 	void metrics(MetricsInfo &, Dimension &) const override;
 	///

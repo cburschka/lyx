@@ -40,7 +40,7 @@ private:
 	///
 	void write(std::ostream & os) const override;
 	///
-	RowFlags rowFlags() const override { return Display; }
+	int rowFlags() const override { return Display; }
 	///
 	bool neverIndent() const override { return true; }
 	///
