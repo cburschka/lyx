@@ -516,43 +516,28 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 		}
 	}
 
-	pos_type first = 0;
-	size_t row_index = 0;
-	bool need_new_row = false;
-	// maximum pixel width of a row
-	do {
-		if (row_index == pm.rows().size())
-			pm.rows().push_back(Row());
-		else
-			pm.rows()[row_index] = Row();
-		Row & row = pm.rows()[row_index];
-		row.pit(pit);
-		row.pos(first);
-		need_new_row = breakRow(row, right_margin);
+	// Transform the paragraph into a single row containing all the elements.
+	Row const bigrow = tokenizeParagraph(pit);
+	// Split the row in several rows fitting in available width
+	pm.rows() = breakParagraph(bigrow);
+
+	/* If there is more than one row, expand the text to the full
+	 * allowable width. This setting here is needed for the
+	 * setRowAlignment() below. We do nothing when tight insets are
+	 * requested.
+	 */
+	if (pm.rows().size() > 1 && !tight_ && dim_.wid < max_width_)
+			dim_.wid = max_width_;
+
+	// Compute height and alignment of the rows.
+	for (Row & row : pm.rows()) {
 		setRowHeight(row);
-		row.changed(true);
-		if ((row_index || row.endpos() < par.size() || row.right_boundary())
-		    && !tight_) {
-			/* If there is more than one row or the row has been
-			 * broken by a display inset or a newline, expand the text
-			 * to the full allowable width. This setting here is
-			 * needed for the setRowAlignment() below.
-			 * We do nothing when tight insets are requested.
-			 */
-			if (dim_.wid < max_width_)
-				dim_.wid = max_width_;
-		}
 		if (align_rows)
 			setRowAlignment(row, max(dim_.wid, row.width()));
-		first = row.endpos();
-		++row_index;
 
 		pm.dim().wid = max(pm.dim().wid, row.width() + row.right_margin);
 		pm.dim().des += row.height();
-	} while (first < par.size() || need_new_row);
-
-	if (row_index < pm.rows().size())
-		pm.rows().resize(row_index);
+	}
 
 	// This type of margin can only be handled at the global paragraph level
 	if (par.layout().margintype == MARGIN_RIGHT_ADDRESS_BOX) {
