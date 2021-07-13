@@ -990,6 +990,79 @@ Row TextMetrics::tokenizeParagraph(pit_type const pit) const
 }
 
 
+namespace {
+
+Row newRow(TextMetrics const & tm, pit_type pit, pos_type pos, bool is_rtl)
+{
+	Row nrow;
+	nrow.pit(pit);
+	nrow.pos(pos);
+	nrow.left_margin = tm.leftMargin(pit, pos);
+	nrow.right_margin = tm.rightMargin(pit);
+	if (is_rtl)
+		swap(nrow.left_margin, nrow.right_margin);
+	// Remember that the row width takes into account the left_margin
+	// but not the right_margin.
+	nrow.dim().wid = nrow.left_margin;
+	return nrow;
+}
+
+}
+
+
+RowList TextMetrics::breakParagraph(Row const & row) const
+{
+	RowList rows;
+	bool const is_rtl = text_->isRTL(row.pit());
+
+	bool need_new_row = true;
+	pos_type pos = 0;
+	int width = 0;
+	Row::const_iterator cit = row.begin();
+	Row::const_iterator const end = row.end();
+	// This is a vector, but we use it like a pile putting and taking
+	// stuff at the back.
+	Row::Elements pile;
+	while (true) {
+		if (need_new_row) {
+			if (!rows.empty())
+				rows.back().endpos(pos);
+			rows.push_back(newRow(*this, row.pit(), pos, is_rtl));
+			// the width available for the row.
+			width = max_width_ - rows.back().right_margin;
+			need_new_row = false;
+		}
+
+		// The stopping condition is here because we may need a new
+		// empty row at the end.
+		if (cit == end && pile.empty())
+			break;
+
+		// Next element to consider is either the top of the temporary
+		// pile, or the place when we were in main row
+		Row::Element elt = pile.empty() ? *cit : pile.back();
+		//LYXERR0("elt=" << elt);
+		Row::Element next_elt = elt.splitAt(width - rows.back().width(),
+		                                    !elt.font.language()->wordWrap());
+		//LYXERR0("next_elt=" << next_elt);
+		// a new element in the row
+		rows.back().push_back(elt);
+		pos = elt.endpos;
+		// Go to next element
+		if (pile.empty())
+			++cit;
+		else
+			pile.pop_back();
+		// Add a new next element on the pile
+		if (next_elt.isValid()) {
+			pile.push_back(next_elt);
+			need_new_row = true;
+		}
+	}
+
+	return rows;
+}
+
 /** This is the function where the hard work is done. The code here is
  * very sensitive to small changes :) Note that part of the
  * intelligence is also in Row::shortenIfNeeded.
@@ -1003,20 +1076,20 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 		theSession().bookmarks().bookmarksInPar(buf.fileName(), par.id());//
 
 	pos_type const end = par.size();//
-	pos_type const pos = row.pos();
+	pos_type const pos = row.pos();//
 	pos_type const body_pos = par.beginOfBody();//
-	bool const is_rtl = text_->isRTL(row.pit());
-	bool need_new_row = false;
+	bool const is_rtl = text_->isRTL(row.pit());//
+	bool need_new_row = false;//
 
-	row.left_margin = leftMargin(row.pit(), pos);
-	row.right_margin = right_margin;
-	if (is_rtl)
-		swap(row.left_margin, row.right_margin);
+	row.left_margin = leftMargin(row.pit(), pos);//
+	row.right_margin = right_margin;//
+	if (is_rtl)//
+		swap(row.left_margin, row.right_margin);//
 	// Remember that the row width takes into account the left_margin
 	// but not the right_margin.
-	row.dim().wid = row.left_margin;
+	row.dim().wid = row.left_margin;//
 	// the width available for the row.
-	int const width = max_width_ - row.right_margin;
+	int const width = max_width_ - row.right_margin;//
 
 	// check for possible inline completion
 	DocIterator const & ic_it = bv_->inlineCompletionPos();//
