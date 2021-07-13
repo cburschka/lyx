@@ -350,8 +350,8 @@ public:
 	/// Appends a potentially abbreviated version of the inset to
 	/// \param str. Intended for use by the TOC.
 	virtual void forOutliner(docstring & str,
-							 size_t const maxlen = TOC_ENTRY_LENGTH,
-							 bool const shorten = true) const;
+	                         size_t const maxlen = TOC_ENTRY_LENGTH,
+	                         bool const shorten = true) const;
 
 	/// Can a cursor be put in there ?
 	/// Forced to false for insets that have hidden contents, like
