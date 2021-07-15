@@ -955,12 +955,15 @@ Row TextMetrics::tokenizeParagraph(pit_type const pit) const
 	row.finalizeLast();
 	row.endpos(end);
 
-	// End of paragraph marker. The logic here is almost the
+	// End of paragraph marker, either if LyXRc requires it, or there
+	// is an end of paragraph change. The logic here is almost the
 	// same as in redoParagraph, remember keep them in sync.
 	ParagraphList const & pars = text_->paragraphs();
-	Change const & change = par.lookupChange(i);
-	if ((lyxrc.paragraph_markers || change.changed())
-	    && i == end && size_type(pit + 1) < pars.size()) {
+	Change const & endchange = par.lookupChange(end);
+	if (endchange.changed())
+		row.needsChangeBar(true);
+	if ((lyxrc.paragraph_markers || endchange.changed())
+	    && size_type(pit + 1) < pars.size()) {
 		// add a virtual element for the end-of-paragraph
 		// marker; it is shown on screen, but does not exist
 		// in the paragraph.
@@ -968,7 +971,7 @@ Row TextMetrics::tokenizeParagraph(pit_type const pit) const
 		f.fontInfo().setColor(Color_paragraphmarker);
 		f.setLanguage(par.getParLanguage(buf.params()));
 		// ¶ U+00B6 PILCROW SIGN
-		row.addVirtual(end, docstring(1, char_type(0x00B6)), f, change);
+		row.addVirtual(end, docstring(1, char_type(0x00B6)), f, endchange);
 	}
 
 	return row;
@@ -995,24 +998,30 @@ Row newRow(TextMetrics const & tm, pit_type pit, pos_type pos, bool is_rtl)
 }
 
 
-RowList TextMetrics::breakParagraph(Row const & row) const
+RowList TextMetrics::breakParagraph(Row const & bigrow) const
 {
 	RowList rows;
-	bool const is_rtl = text_->isRTL(row.pit());
+	bool const is_rtl = text_->isRTL(bigrow.pit());
 
 	bool need_new_row = true;
 	pos_type pos = 0;
 	int width = 0;
-	Row::const_iterator cit = row.begin();
-	Row::const_iterator const end = row.end();
+	Row::const_iterator cit = bigrow.begin();
+	Row::const_iterator const end = bigrow.end();
 	// This is a vector, but we use it like a pile putting and taking
 	// stuff at the back.
 	Row::Elements pile;
 	while (true) {
 		if (need_new_row) {
-			if (!rows.empty())
-				rows.back().endpos(pos);
-			rows.push_back(newRow(*this, row.pit(), pos, is_rtl));
+			if (!rows.empty()) {
+				Row & rb = rows.back();
+				rb.endpos(pos);
+				rb.right_boundary(!rb.empty() && rb.endpos() < bigrow.endpos()
+								   && rb.back().endpos == rb.endpos());
+				// make sure that the RTL elements are in reverse ordering
+				rb.reverseRTL(is_rtl);
+			}
+			rows.push_back(newRow(*this, bigrow.pit(), pos, is_rtl));
 			// the width available for the row.
 			width = max_width_ - rows.back().right_margin;
 			need_new_row = false;
@@ -1043,6 +1052,16 @@ RowList TextMetrics::breakParagraph(Row const & row) const
 			pile.push_back(next_elt);
 			need_new_row = true;
 		}
+	}
+
+	if (!rows.empty()) {
+		Row & rb = rows.back();
+		// Last row in paragraph is flushed
+		rb.flushed(true);
+		rb.endpos(bigrow.endpos());
+		rb.right_boundary(false);
+		// make sure that the RTL elements are in reverse ordering
+		rb.reverseRTL(is_rtl);
 	}
 
 	return rows;
@@ -1217,14 +1236,14 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 
 	if (row.shortenIfNeeded(width, next_width))
 		row.flushed(false);
-	row.right_boundary(!row.empty() && row.endpos() < end
-	                   && row.back().endpos == row.endpos());
+	row.right_boundary(!row.empty() && row.endpos() < end//
+	                   && row.back().endpos == row.endpos());//
 	// Last row in paragraph is flushed
-	if (row.endpos() == end)
-		row.flushed(true);
+	if (row.endpos() == end)//
+		row.flushed(true);//
 
 	// make sure that the RTL elements are in reverse ordering
-	row.reverseRTL(is_rtl);
+	row.reverseRTL(is_rtl);//
 	//LYXERR0("breakrow: row is " << row);
 
 	return need_new_row;
