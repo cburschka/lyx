@@ -268,9 +268,15 @@ while [ $# -gt 0 ]; do
 		aspell_deployment="no"
 		shift
 		;;
+	--with-included-hunspell)
+		LyXConfigureOptions="${LyXConfigureOptions} ${1}"
+		hunspell_deployment="no"
+		shift
+		;;
 	--without-hunspell)
 		LyXConfigureOptions="${LyXConfigureOptions} ${1}"
 		hunspell_deployment="no"
+		hunspell_dictionaries="no"
 		shift
 		;;
 	--only-qt*=*)
@@ -946,12 +952,10 @@ copy_dictionaries() {
 		cp -p -r "${ASpellInstallDir}/lib/aspell-0.60"/* "${ASpellResources}"/data
 		cp -p -r "${ASpellInstallDir}/share/aspell"/* "${ASpellResources}"/dicts
 	fi
-	if [ -d "${HunSpellInstallDir}" -a "yes" = "${hunspell_dictionaries}" ]; then
+	if [ -d "${DictionarySourceDir}" -a "yes" = "${hunspell_dictionaries}" ]; then
 		HunSpellResources="${LyxAppPrefix}/Contents/Resources"
-		if [ -d "${DictionarySourceDir}" ]; then
-			( cd "${DictionarySourceDir}" && find dicts -name .svn -prune -o -type f -print | cpio -pmdv "${HunSpellResources}" )
-			deduplicate "${HunSpellResources}"/dicts
-		fi
+		( cd "${DictionarySourceDir}" && find dicts -name .svn -prune -o -type f -print | cpio -pmdv "${HunSpellResources}" )
+		deduplicate "${HunSpellResources}"/dicts
 	fi
 	if [ -d "${DictionarySourceDir}" -a "yes" = "${thesaurus_deployment}" ]; then
 		MyThesResources="${LyxAppPrefix}/Contents/Resources"
