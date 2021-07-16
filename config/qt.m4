@@ -272,7 +272,7 @@ AC_DEFUN([QT_DO_IT_ALL],
 	QT_FIND_TOOL([QT_RCC], [rcc])
 
 	dnl Safety check
-	mocqtver=`$QT_MOC -v 2>&1 | sed -e 's/.*\([[0-9]]\.[[0-9]]*\.[[0-9]]\).*/\1/'`
+	mocqtver=`$QT_MOC -v 2>&1 | sed -e 's/.*\([[0-9]]\.[[0-9]]*\.[[0-9]]*\).*/\1/'`
 	if test "x$mocqtver" != "x$QTLIB_VERSION"; then
 		LYX_WARNING([The found moc compiler is for Qt $mocqtver but the Qt library version is $QTLIB_VERSION.])
 	fi
