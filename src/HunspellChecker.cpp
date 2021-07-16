@@ -41,8 +41,6 @@ namespace {
 typedef map<std::string, Hunspell *> Spellers;
 typedef map<std::string, PersonalWordList *> LangPersonalWordList;
 
-typedef vector<WordLangTuple> IgnoreList;
-
 docstring remap_result(docstring const & s)
 {
 	// substitute RIGHT SINGLE QUOTATION MARK
@@ -78,7 +76,7 @@ struct HunspellChecker::Private
 	/// the spellers
 	Spellers spellers_;
 	///
-	IgnoreList ignored_;
+	WordLangTable ignored_;
 	///
 	LangPersonalWordList personal_;
 	///
@@ -283,7 +281,7 @@ int HunspellChecker::Private::numDictionaries() const
 
 bool HunspellChecker::Private::isIgnored(WordLangTuple const & wl) const
 {
-	IgnoreList::const_iterator it = ignored_.begin();
+	WordLangTable::const_iterator it = ignored_.begin();
 	for (; it != ignored_.end(); ++it) {
 		if (it->lang()->code() != wl.lang()->code())
 			continue;
@@ -350,7 +348,7 @@ SpellChecker::Result HunspellChecker::check(WordLangTuple const & wl,
 	if (d->isIgnored(wl))
 		return WORD_OK;
 
-	IgnoreList::const_iterator it = docdict.begin();
+	WordLangTable::const_iterator it = docdict.begin();
 	for (; it != docdict.end(); ++it) {
 		if (it->lang()->code() != wl.lang()->code())
 			continue;

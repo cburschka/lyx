@@ -16,6 +16,8 @@
 
 #include "support/docstring.h"
 
+#include <vector>
+
 
 namespace lyx {
 
@@ -49,6 +51,9 @@ private:
 	/// language of word
 	Language const * lang_;
 };
+
+
+typedef std::vector<WordLangTuple> WordLangTable;
 
 
 } // namespace lyx

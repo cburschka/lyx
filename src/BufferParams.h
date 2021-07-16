@@ -337,10 +337,8 @@ public:
 	IndicesList & indiceslist();
 	IndicesList const & indiceslist() const;
 	///
-	typedef std::vector<WordLangTuple> IgnoreList;
-	///
-	IgnoreList & spellignore();
-	IgnoreList const & spellignore() const;
+	WordLangTable & spellignore();
+	WordLangTable const & spellignore() const;
 	bool spellignored(WordLangTuple const & wl) const;
 	/**
 	 * The LyX name of the input encoding for LaTeX. This can be one of

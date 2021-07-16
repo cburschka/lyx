@@ -341,7 +341,7 @@ public:
 
 	AuthorList authorlist;
 	BranchList branchlist;
-	IgnoreList spellignore;
+	WordLangTable spellignore;
 	Bullet temp_bullets[4];
 	Bullet user_defined_bullets[4];
 	IndicesList indiceslist;
@@ -602,16 +602,13 @@ IndicesList const & BufferParams::indiceslist() const
 }
 
 
-typedef std::vector<WordLangTuple> IgnoreList;
-
-
-IgnoreList & BufferParams::spellignore()
+WordLangTable & BufferParams::spellignore()
 {
 	return pimpl_->spellignore;
 }
 
 
-IgnoreList const & BufferParams::spellignore() const
+WordLangTable const & BufferParams::spellignore() const
 {
 	return pimpl_->spellignore;
 }
