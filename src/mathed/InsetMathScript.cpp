@@ -611,7 +611,7 @@ void InsetMathScript::mathmlize(MathMLStream & ms) const
 	if (!d && !u)
 		return;
 
-	const char * tag;
+	const char * tag = nullptr;
 	if (u && d)
 		tag = has_limits ? "munderover" : "msubsup";
 	else if (u)
