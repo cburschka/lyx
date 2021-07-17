@@ -995,6 +995,62 @@ Row newRow(TextMetrics const & tm, pit_type pit, pos_type pos, bool is_rtl)
 	return nrow;
 }
 
+
+/** Helper template flexible_const_iterator<T>
+ * A way to iterate over a const container, but insert fake elements in it.
+ * In the case of a row, we will have to break some elements, which
+ * create new ones. This class allows to abstract this.
+ * Only the required parts are implemented for now.
+ */
+template<class T>
+class flexible_const_iterator {
+	typedef typename T::value_type value_type;
+public:
+
+	//
+	flexible_const_iterator operator++() {
+		if (pile_.empty())
+			++cit_;
+		else
+			pile_.pop_back();
+		return *this;
+	}
+
+	value_type operator*() const { return pile_.empty() ? *cit_ : pile_.back(); }
+
+	void put(value_type const & e) { pile_.push_back(e); }
+
+// This should be private, but declaring the friend functions is too much work
+//private:
+	typename T::const_iterator cit_;
+	// A vector that is used as like a pile to store the elements to
+	// consider before incrementing the underlying iterator.
+	vector<value_type> pile_;
+};
+
+
+template<class T>
+flexible_const_iterator<T> flexible_begin(T const & t)
+{
+	return { t.begin(), vector<typename T::value_type>() };
+}
+
+
+template<class T>
+flexible_const_iterator<T> flexible_end(T const & t)
+{
+	return { t.end(), vector<typename T::value_type>() };
+}
+
+
+// Equality is only possible if respective piles are empty
+template<class T>
+bool operator==(flexible_const_iterator<T> const & t1,
+                flexible_const_iterator<T> const & t2)
+{
+	return t1.cit_ == t2.cit_ && t1.pile_.empty() && t2.pile_.empty();
+}
+
 }
 
 
@@ -1006,11 +1062,8 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 	bool need_new_row = true;
 	pos_type pos = 0;
 	int width = 0;
-	Row::const_iterator cit = bigrow.begin();
-	Row::const_iterator const end = bigrow.end();
-	// This is a vector, but we use it like a pile putting and taking
-	// stuff at the back.
-	Row::Elements pile;
+	flexible_const_iterator<Row> fcit = flexible_begin(bigrow);
+	flexible_const_iterator<Row> const end = flexible_end(bigrow);
 	while (true) {
 		if (need_new_row) {
 			if (!rows.empty()) {
@@ -1029,27 +1082,25 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 
 		// The stopping condition is here because we may need a new
 		// empty row at the end.
-		if (cit == end && pile.empty())
+		if (fcit == end)
 			break;
 
 		// Next element to consider is either the top of the temporary
 		// pile, or the place when we were in main row
-		Row::Element elt = pile.empty() ? *cit : pile.back();
-		//LYXERR0("elt=" << elt);
+		Row::Element elt = *fcit;
 		Row::Element next_elt = elt.splitAt(width - rows.back().width(),
 		                                    !elt.font.language()->wordWrap());
-		//LYXERR0("next_elt=" << next_elt);
 		// a new element in the row
 		rows.back().push_back(elt);
 		pos = elt.endpos;
+
 		// Go to next element
-		if (pile.empty())
-			++cit;
-		else
-			pile.pop_back();
+		++fcit;
+
 		// Add a new next element on the pile
 		if (next_elt.isValid()) {
-			pile.push_back(next_elt);
+			// do as if we inserted this element in the original row
+			fcit.put(next_elt);
 			need_new_row = true;
 		}
 	}

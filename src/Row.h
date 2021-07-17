@@ -150,6 +150,8 @@ public:
 		friend std::ostream & operator<<(std::ostream & os, Element const & row);
 	};
 
+	///
+	typedef Element value_type;
 
 	///
 	Row() {}
