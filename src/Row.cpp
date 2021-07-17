@@ -370,8 +370,7 @@ void Row::finalizeLast()
 	if (elt.change.changed())
 		changebar_ = true;
 
-	if (elt.type == STRING) {
-		dim_.wid -= elt.dim.wid;
+	if (elt.type == STRING && elt.dim.wid == 0) {
 		elt.dim.wid = theFontMetrics(elt.font).width(elt.str);
 		dim_.wid += elt.dim.wid;
 	}
@@ -401,16 +400,8 @@ void Row::add(pos_type const pos, char_type const c,
 		e.row_flags = can_break ? CanBreakInside : Inline;
 		elements_.push_back(e);
 	}
-	if (back().str.length() % 30 == 0) {
-		dim_.wid -= back().dim.wid;
-		back().str += c;
-		back().endpos = pos + 1;
-		back().dim.wid = theFontMetrics(back().font).width(back().str);
-		dim_.wid += back().dim.wid;
-	} else {
-		back().str += c;
-		back().endpos = pos + 1;
-	}
+	back().str += c;
+	back().endpos = pos + 1;
 }
 
 

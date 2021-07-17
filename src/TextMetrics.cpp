@@ -1092,6 +1092,7 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 		                                    !elt.font.language()->wordWrap());
 		// a new element in the row
 		rows.back().push_back(elt);
+		rows.back().finalizeLast();
 		pos = elt.endpos;
 
 		// Go to next element
