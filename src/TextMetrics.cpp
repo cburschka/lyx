@@ -980,22 +980,6 @@ Row TextMetrics::tokenizeParagraph(pit_type const pit) const
 
 namespace {
 
-Row newRow(TextMetrics const & tm, pit_type pit, pos_type pos, bool is_rtl)
-{
-	Row nrow;
-	nrow.pit(pit);
-	nrow.pos(pos);
-	nrow.left_margin = tm.leftMargin(pit, pos);
-	nrow.right_margin = tm.rightMargin(pit);
-	if (is_rtl)
-		swap(nrow.left_margin, nrow.right_margin);
-	// Remember that the row width takes into account the left_margin
-	// but not the right_margin.
-	nrow.dim().wid = nrow.left_margin;
-	return nrow;
-}
-
-
 /** Helper template flexible_const_iterator<T>
  * A way to iterate over a const container, but insert fake elements in it.
  * In the case of a row, we will have to break some elements, which
@@ -1017,6 +1001,8 @@ public:
 	}
 
 	value_type operator*() const { return pile_.empty() ? *cit_ : pile_.back(); }
+
+	value_type const * operator->() const { return pile_.empty() ? &*cit_ : &pile_.back(); }
 
 	void put(value_type const & e) { pile_.push_back(e); }
 
@@ -1051,6 +1037,44 @@ bool operator==(flexible_const_iterator<T> const & t1,
 	return t1.cit_ == t2.cit_ && t1.pile_.empty() && t2.pile_.empty();
 }
 
+Row newRow(TextMetrics const & tm, pit_type pit, pos_type pos, bool is_rtl)
+{
+	Row nrow;
+	nrow.pit(pit);
+	nrow.pos(pos);
+	nrow.left_margin = tm.leftMargin(pit, pos);
+	nrow.right_margin = tm.rightMargin(pit);
+	if (is_rtl)
+		swap(nrow.left_margin, nrow.right_margin);
+	// Remember that the row width takes into account the left_margin
+	// but not the right_margin.
+	nrow.dim().wid = nrow.left_margin;
+	return nrow;
+}
+
+
+void cleanupRow(Row & row, pos_type pos, pos_type real_endpos, bool is_rtl)
+{
+	row.endpos(pos);
+	row.right_boundary(!row.empty() && pos < real_endpos
+	                   && row.back().endpos == pos);
+	// make sure that the RTL elements are in reverse ordering
+	row.reverseRTL(is_rtl);
+}
+
+// Implement the priorities described in RowFlags.h.
+bool needsRowBreak(int f1, int f2)
+{
+	if (f1 & AlwaysBreakAfter /*|| f2 & AlwaysBreakBefore*/)
+		return true;
+	if (f1 & NoBreakAfter || f2 & NoBreakBefore)
+		return false;
+	if (f1 & BreakAfter || f2 & BreakBefore)
+		return true;
+	return false;
+}
+
+
 }
 
 
@@ -1058,6 +1082,7 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 {
 	RowList rows;
 	bool const is_rtl = text_->isRTL(bigrow.pit());
+	bool const end_label = text_->getEndLabel(bigrow.pit()) != END_LABEL_NO_LABEL;
 
 	bool need_new_row = true;
 	pos_type pos = 0;
@@ -1065,15 +1090,21 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 	flexible_const_iterator<Row> fcit = flexible_begin(bigrow);
 	flexible_const_iterator<Row> const end = flexible_end(bigrow);
 	while (true) {
+		bool const has_row = !rows.empty();
+		bool const row_empty = !has_row || rows.back().empty();
+		// The row flags of previous element, if there is one.
+		// Otherwise we use NoBreakAfter to avoid an empty row before
+		// e.g. a displayed equation.
+		int const f1 = row_empty ? NoBreakAfter : rows.back().back().row_flags;
+		// The row flags of next element, if there is one.
+		// Otherwise we use NoBreakBefore (see above), unless the
+		// paragraph has an end label (for which an empty row is OK).
+		int const f2 = (fcit == end) ? (end_label ? Inline : NoBreakBefore)
+		                             : fcit->row_flags;
+		need_new_row |= needsRowBreak(f1, f2);
 		if (need_new_row) {
-			if (!rows.empty()) {
-				Row & rb = rows.back();
-				rb.endpos(pos);
-				rb.right_boundary(!rb.empty() && rb.endpos() < bigrow.endpos()
-								   && rb.back().endpos == rb.endpos());
-				// make sure that the RTL elements are in reverse ordering
-				rb.reverseRTL(is_rtl);
-			}
+			if (!rows.empty())
+				cleanupRow(rows.back(), pos, bigrow.endpos(), is_rtl);
 			rows.push_back(newRow(*this, bigrow.pit(), pos, is_rtl));
 			// the width available for the row.
 			width = max_width_ - rows.back().right_margin;
@@ -1107,13 +1138,9 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 	}
 
 	if (!rows.empty()) {
-		Row & rb = rows.back();
+		cleanupRow(rows.back(), pos, bigrow.endpos(), is_rtl);
 		// Last row in paragraph is flushed
-		rb.flushed(true);
-		rb.endpos(bigrow.endpos());
-		rb.right_boundary(false);
-		// make sure that the RTL elements are in reverse ordering
-		rb.reverseRTL(is_rtl);
+		rows.back().flushed(true);
 	}
 
 	return rows;
@@ -1227,9 +1254,8 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 			}
 			f.fontInfo().setColor(Color_nonunique_inlinecompletion);
 			row.addVirtual(i + 1, comp.substr(uniqueTo), f, Change());
-		}//---------------------------------------------------------------^^^
+		}
 
-		// FIXME: Handle when breaking the rows
 		// Handle some situations that abruptly terminate the row
 		// - Before an inset with BreakBefore
 		// - After an inset with BreakAfter
@@ -1254,7 +1280,6 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 		++i;
 		++fi;
 	}
-	//--------------------------------------------------------------------vvv
 	row.finalizeLast();
 	row.endpos(i);
 
