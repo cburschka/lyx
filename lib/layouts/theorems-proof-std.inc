@@ -17,6 +17,7 @@ Style Proof
 		\providecommand{\proofname}{Proof}
 		\fi
 	EndPreamble
+	EndLabelType          No_Label
 # No LangPreamble or BabelPreamble, since babel knows \proofname already.
 	DocBookTag            para
 	DocBookAttr           role='proof'
