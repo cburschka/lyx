@@ -101,12 +101,6 @@ public:
 		 *   respects the row breaking rules of characters.
 		 */
 		Element splitAt(int w, bool force);
-		/** Break the element if possible, so that its width is less
-		 * than \param w. Returns true on success. When \param force
-		 * is true, the string is cut at any place, otherwise it
-		 * respects the row breaking rules of characters.
-		 */
-		bool breakAt(int w, bool force);
 
 		//
 		bool isRTL() const { return font.isVisibleRightToLeft(); }
@@ -296,7 +290,7 @@ public:
 	 * \param available width on next row.
 	 * \return true if the row has been shortened.
 	 */
-	bool shortenIfNeeded(int const width, int const next_width);
+	Elements shortenIfNeeded(int const width, int const next_width);
 
 	/**
 	 * If last element of the row is a string, compute its width

@@ -491,7 +491,7 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 
 		// If there is an end of paragraph marker, its size should be
 		// substracted to the available width. The logic here is
-		// almost the same as in breakRow, remember keep them in sync.
+		// almost the same as in tokenizeParagraph, remember keep them in sync.
 		int eop = 0;
 		if (e.pos + 1 == par.size()
 		      && (lyxrc.paragraph_markers || par.lookupChange(par.size()).changed())
@@ -1006,6 +1006,11 @@ public:
 
 	void put(value_type const & e) { pile_.push_back(e); }
 
+	// Put a sequence of elements on the pile (in reverse order!)
+	void put(vector<value_type> const & elts) {
+		pile_.insert(pile_.end(), elts.rbegin(), elts.rend());
+	}
+
 // This should be private, but declaring the friend functions is too much work
 //private:
 	typename T::const_iterator cit_;
@@ -1121,19 +1126,40 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 		Row::Element elt = *fcit;
 		Row::Element next_elt = elt.splitAt(width - rows.back().width(),
 		                                    !elt.font.language()->wordWrap());
-		// a new element in the row
-		rows.back().push_back(elt);
-		rows.back().finalizeLast();
-		pos = elt.endpos;
+		if (elt.dim.wid > width - rows.back().width()) {
+			Row & rb = rows.back();
+			rb.push_back(*fcit);
+			// if the row is too large, try to cut at last separator. In case
+			// of success, reset indication that the row was broken abruptly.
+			int const next_width = max_width_ - leftMargin(rb.pit(), rb.endpos())
+				- rightMargin(rb.pit());
 
-		// Go to next element
-		++fcit;
+			Row::Elements next_elts = rb.shortenIfNeeded(width, next_width);
 
-		// Add a new next element on the pile
-		if (next_elt.isValid()) {
-			// do as if we inserted this element in the original row
-			fcit.put(next_elt);
-			need_new_row = true;
+			// Go to next element
+			++fcit;
+
+			// Handle later the elements returned by shortenIfNeeded.
+			if (!next_elts.empty()) {
+				rb.flushed(false);
+				fcit.put(next_elts);
+				need_new_row = true;
+			}
+		} else {
+			// a new element in the row
+			rows.back().push_back(elt);
+			rows.back().finalizeLast();
+			pos = elt.endpos;
+
+			// Go to next element
+			++fcit;
+
+			// Add a new next element on the pile
+			if (next_elt.isValid()) {
+				// do as if we inserted this element in the original row
+				fcit.put(next_elt);
+				need_new_row = true;
+			}
 		}
 	}
 
@@ -1146,185 +1172,6 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 	return rows;
 }
 
-/** This is the function where the hard work is done. The code here is
- * very sensitive to small changes :) Note that part of the
- * intelligence is also in Row::shortenIfNeeded.
- */
-bool TextMetrics::breakRow(Row & row, int const right_margin) const
-{
-	LATTEST(row.empty());//
-	Paragraph const & par = text_->getPar(row.pit());//
-	Buffer const & buf = text_->inset().buffer();//
-	BookmarksSection::BookmarkPosList bpl =//
-		theSession().bookmarks().bookmarksInPar(buf.fileName(), par.id());//
-
-	pos_type const end = par.size();//
-	pos_type const pos = row.pos();//
-	pos_type const body_pos = par.beginOfBody();//
-	bool const is_rtl = text_->isRTL(row.pit());//
-	bool need_new_row = false;//
-
-	row.left_margin = leftMargin(row.pit(), pos);//
-	row.right_margin = right_margin;//
-	if (is_rtl)//
-		swap(row.left_margin, row.right_margin);//
-	// Remember that the row width takes into account the left_margin
-	// but not the right_margin.
-	row.dim().wid = row.left_margin;//
-	// the width available for the row.
-	int const width = max_width_ - row.right_margin;//
-
-	// check for possible inline completion
-	DocIterator const & ic_it = bv_->inlineCompletionPos();//
-	pos_type ic_pos = -1;//
-	if (ic_it.inTexted() && ic_it.text() == text_ && ic_it.pit() == row.pit())//
-		ic_pos = ic_it.pos();//
-
-	// Now we iterate through until we reach the right margin
-	// or the end of the par, then build a representation of the row.
-	pos_type i = pos;//---------------------------------------------------vvv
-	FontIterator fi = FontIterator(*this, par, row.pit(), pos);
-	// The real stopping condition is a few lines below.
-	while (true) {
-		// Firstly, check whether there is a bookmark here.
-		if (lyxrc.bookmarks_visibility == LyXRC::BMK_INLINE)
-			for (auto const & bp_p : bpl)
-				if (bp_p.second == i) {
-					Font f = *fi;
-					f.fontInfo().setColor(Color_bookmark);
-					// ❶ U+2776 DINGBAT NEGATIVE CIRCLED DIGIT ONE
-					char_type const ch = 0x2775 + bp_p.first;
-					row.addVirtual(i, docstring(1, ch), f, Change());
-				}
-
-		// The stopping condition is here so that the display of a
-		// bookmark can take place at paragraph start too.
-		if (i >= end || (i != pos && row.width() > width))//^width
-			break;
-
-		char_type c = par.getChar(i);
-		// The most special cases are handled first.
-		if (par.isInset(i)) {
-			Inset const * ins = par.getInset(i);
-			Dimension dim = bv_->coordCache().insets().dim(ins);
-			row.add(i, ins, dim, *fi, par.lookupChange(i));
-		} else if (c == ' ' && i + 1 == body_pos) {
-			// There is a space at i, but it should not be
-			// added as a separator, because it is just
-			// before body_pos. Instead, insert some spacing to
-			// align text
-			FontMetrics const & fm = theFontMetrics(text_->labelFont(par));
-			// this is needed to make sure that the row width is correct
-			row.finalizeLast();
-			int const add = max(fm.width(par.layout().labelsep),
-			                    labelEnd(row.pit()) - row.width());
-			row.addSpace(i, add, *fi, par.lookupChange(i));
-		} else if (c == '\t')
-			row.addSpace(i, theFontMetrics(*fi).width(from_ascii("    ")),
-				     *fi, par.lookupChange(i));
-		else if (c == 0x2028 || c == 0x2029) {
-			/**
-			 * U+2028 LINE SEPARATOR
-			 * U+2029 PARAGRAPH SEPARATOR
-
-			 * These are special unicode characters that break
-			 * lines/pragraphs. Not handling them lead to trouble wrt
-			 * Qt QTextLayout formatting. We add a visible character
-			 * on screen so that the user can see that something is
-			 * happening.
-			*/
-			row.finalizeLast();
-			// ⤶ U+2936 ARROW POINTING DOWNWARDS THEN CURVING LEFTWARDS
-			// ¶ U+00B6 PILCROW SIGN
-			char_type const screen_char = (c == 0x2028) ? 0x2936 : 0x00B6;
-			row.add(i, screen_char, *fi, par.lookupChange(i), i >= body_pos);
-		} else
-			row.add(i, c, *fi, par.lookupChange(i), i >= body_pos);
-
-		// add inline completion width
-		// draw logically behind the previous character
-		if (ic_pos == i + 1 && !bv_->inlineCompletion().empty()) {
-			docstring const comp = bv_->inlineCompletion();
-			size_t const uniqueTo =bv_->inlineCompletionUniqueChars();
-			Font f = *fi;
-
-			if (uniqueTo > 0) {
-				f.fontInfo().setColor(Color_inlinecompletion);
-				row.addVirtual(i + 1, comp.substr(0, uniqueTo), f, Change());
-			}
-			f.fontInfo().setColor(Color_nonunique_inlinecompletion);
-			row.addVirtual(i + 1, comp.substr(uniqueTo), f, Change());
-		}
-
-		// Handle some situations that abruptly terminate the row
-		// - Before an inset with BreakBefore
-		// - After an inset with BreakAfter
-		Inset const * prevInset = !row.empty() ? row.back().inset : 0;
-		Inset const * nextInset = (i + 1 < end) ? par.getInset(i + 1) : 0;
-		if ((nextInset && nextInset->rowFlags() & BreakBefore)
-		    || (prevInset && prevInset->rowFlags() & BreakAfter)) {
-			row.flushed(true);
-			// Force a row creation after this one if it is ended by
-			// an inset that either
-			// - has row flag RowAfter that enforces that;
-			// - or (1) did force the row breaking, (2) is at end of
-			//   paragraph and (3) the said paragraph has an end label.
-			need_new_row = prevInset &&
-				(prevInset->rowFlags() & AlwaysBreakAfter
-				 || (prevInset->rowFlags() & BreakAfter && i + 1 == end
-				     && text_->getEndLabel(row.pit()) != END_LABEL_NO_LABEL));
-			++i;
-			break;
-		}
-
-		++i;
-		++fi;
-	}
-	row.finalizeLast();
-	row.endpos(i);
-
-	// End of paragraph marker. The logic here is almost the
-	// same as in redoParagraph, remember keep them in sync.
-	ParagraphList const & pars = text_->paragraphs();
-	Change const & change = par.lookupChange(i);
-	if ((lyxrc.paragraph_markers || change.changed())
-	    && !need_new_row // not this
-	    && i == end && size_type(row.pit() + 1) < pars.size()) {
-		// add a virtual element for the end-of-paragraph
-		// marker; it is shown on screen, but does not exist
-		// in the paragraph.
-		Font f(text_->layoutFont(row.pit()));
-		f.fontInfo().setColor(Color_paragraphmarker);
-		f.setLanguage(par.getParLanguage(buf.params()));
-		// ¶ U+00B6 PILCROW SIGN
-		row.addVirtual(end, docstring(1, char_type(0x00B6)), f, change);
-	}
-
-	// Is there a end-of-paragaph change?
-	if (i == end && par.lookupChange(end).changed() && !need_new_row)
-		row.needsChangeBar(true);
-    //--------------------------------------------------------------------^^^
-	// FIXME : nothing below this
-
-	// if the row is too large, try to cut at last separator. In case
-	// of success, reset indication that the row was broken abruptly.
-	int const next_width = max_width_ - leftMargin(row.pit(), row.endpos())
-		- rightMargin(row.pit());
-
-	if (row.shortenIfNeeded(width, next_width))
-		row.flushed(false);
-	row.right_boundary(!row.empty() && row.endpos() < end//
-	                   && row.back().endpos == row.endpos());//
-	// Last row in paragraph is flushed
-	if (row.endpos() == end)//
-		row.flushed(true);//
-
-	// make sure that the RTL elements are in reverse ordering
-	row.reverseRTL(is_rtl);//
-	//LYXERR0("breakrow: row is " << row);
-
-	return need_new_row;
-}
 
 int TextMetrics::parTopSpacing(pit_type const pit) const
 {

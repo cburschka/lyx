@@ -151,14 +151,11 @@ private:
 	/// FIXME??
 	int labelEnd(pit_type const pit) const;
 
+	// Turn paragraph oh index \c pit into a single row
 	Row tokenizeParagraph(pit_type pit) const;
 
+	// Break the row produced by tokenizeParagraph() into a list of rows.
 	RowList breakParagraph(Row const & row) const;
-
-	/// sets row.end to the pos value *after* which a row should break.
-	/// for example, the pos after which isNewLine(pos) == true
-	/// \return true when another row is required (after a newline)
-	bool breakRow(Row & row, int right_margin) const;
 
 	// Expands the alignment of row \param row in paragraph \param par
 	LyXAlignment getAlign(Paragraph const & par, Row const & row) const;

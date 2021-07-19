@@ -156,12 +156,6 @@ Row::Element Row::Element::splitAt(int w, bool force)
 }
 
 
-bool Row::Element::breakAt(int w, bool force)
-{
-	return splitAt(w, force).isValid();
-}
-
-
 bool Row::isMarginSelected(bool left, DocIterator const & beg,
 		DocIterator const & end) const
 {
@@ -448,10 +442,31 @@ void Row::pop_back()
 }
 
 
-bool Row::shortenIfNeeded(int const w, int const next_width)
+namespace {
+
+// Remove stuff after it from elts, and return it.
+// if init is provided, it will be in front of the rest
+Row::Elements splitFrom(Row::Elements & elts, Row::Elements::iterator const & it,
+                        Row::Element const & init = Row::Element())
 {
+	Row::Elements ret;
+	if (init.isValid())
+		ret.push_back(init);
+	ret.insert(ret.end(), it, elts.end());
+	elts.erase(it, elts.end());
+	return ret;
+}
+
+}
+
+
+Row::Elements Row::shortenIfNeeded(int const w, int const next_width)
+{
+	// FIXME: performance: if the last element is a string, we would
+	// like to avoid computing its length.
+	finalizeLast();
 	if (empty() || width() <= w)
-		return false;
+		return Elements();
 
 	Elements::iterator const beg = elements_.begin();
 	Elements::iterator const end = elements_.end();
@@ -467,8 +482,8 @@ bool Row::shortenIfNeeded(int const w, int const next_width)
 
 	if (cit == end) {
 		// This should not happen since the row is too long.
-		LYXERR0("Something is wrong cannot shorten row: " << *this);
-		return false;
+		LYXERR0("Something is wrong, cannot shorten row: " << *this);
+		return Elements();
 	}
 
 	// Iterate backwards over breakable elements and try to break them
@@ -486,8 +501,7 @@ bool Row::shortenIfNeeded(int const w, int const next_width)
 		if (wid_brk <= w && brk.row_flags & CanBreakAfter) {
 			end_ = brk.endpos;
 			dim_.wid = wid_brk;
-			elements_.erase(cit_brk + 1, end);
-			return true;
+			return splitFrom(elements_, cit_brk + 1);
 		}
 		// assume now that the current element is not there
 		wid_brk -= brk.dim.wid;
@@ -507,7 +521,8 @@ bool Row::shortenIfNeeded(int const w, int const next_width)
 		 * - shorter than the natural width of the element, in order to enforce
 		 *   break-up.
 		 */
-		if (brk.breakAt(min(w - wid_brk, brk.dim.wid - 2), !word_wrap)) {
+		Element remainder = brk.splitAt(min(w - wid_brk, brk.dim.wid - 2), !word_wrap);
+		if (remainder.isValid()) {
 			/* if this element originally did not cause a row overflow
 			 * in itself, and the remainder of the row would still be
 			 * too large after breaking, then we will have issues in
@@ -529,14 +544,13 @@ bool Row::shortenIfNeeded(int const w, int const next_width)
 			*cit_brk = brk;
 			dim_.wid = wid_brk + brk.dim.wid;
 			// If there are other elements, they should be removed.
-			elements_.erase(cit_brk + 1, end);
-			return true;
+			return splitFrom(elements_, next(cit_brk, 1), remainder);
 		}
 	}
 
-	if (cit != beg && cit->type == VIRTUAL) {
-		// It is not possible to separate a virtual element from the
-		// previous one.
+	if (cit != beg && cit->row_flags & NoBreakBefore) {
+		// It is not possible to separate this element from the
+		// previous one. (e.g. VIRTUAL)
 		--cit;
 		wid -= cit->dim.wid;
 	}
@@ -546,25 +560,24 @@ bool Row::shortenIfNeeded(int const w, int const next_width)
 		// been added. We can cut right here.
 		end_ = cit->pos;
 		dim_.wid = wid;
-		elements_.erase(cit, end);
-		return true;
+		return splitFrom(elements_, cit);
 	}
 
 	/* If we are here, it means that we have not found a separator to
 	 * shorten the row. Let's try to break it again, but not at word
 	 * boundary this time.
 	 */
-	if (cit->breakAt(w - wid, true)) {
+	Element remainder = cit->splitAt(w - wid, true);
+	if (remainder.isValid()) {
 		end_ = cit->endpos;
 		// See comment above.
 		cit->str = rtrim(cit->str);
 		cit->endpos = cit->pos + cit->str.length();
 		dim_.wid = wid + cit->dim.wid;
 		// If there are other elements, they should be removed.
-		elements_.erase(next(cit, 1), end);
-		return true;
+		return splitFrom(elements_, next(cit, 1), remainder);
 	}
-	return false;
+	return Elements();
 }
 
 
