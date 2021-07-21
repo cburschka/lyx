@@ -493,8 +493,9 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 		// substracted to the available width. The logic here is
 		// almost the same as in breakRow, remember keep them in sync.
 		int eop = 0;
-		if (lyxrc.paragraph_markers && e.pos + 1 == par.size()
-		    && size_type(pit + 1) < text_->paragraphs().size()) {
+		if (e.pos + 1 == par.size()
+		      && (lyxrc.paragraph_markers || par.lookupChange(par.size()).changed())
+		      && size_type(pit + 1) < text_->paragraphs().size()) {
 			Font f(text_->layoutFont(pit));
 			// ¶ U+00B6 PILCROW SIGN
 			eop = theFontMetrics(f).width(char_type(0x00B6));
