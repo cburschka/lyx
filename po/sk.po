@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-05-23 09:44+0200\n"
-"PO-Revision-Date: 2021-05-23 08:19+0000\n"
+"POT-Creation-Date: 2021-07-22 16:55+0200\n"
+"PO-Revision-Date: 2021-07-22 15:02+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -16903,11 +16903,10 @@ msgstr "Pod-rovnice"
 
 #: lib/layouts/subequations.module:6
 msgid ""
-"Provide a straightforward way to segregate subequations in LyX. See the "
-"subequations.lyx example file."
+"Provide a straightforward way to segregate subequations in LyX. See the Math "
+"manual."
 msgstr ""
-"Umožniť priamy spôsob na oddelenie pod-rovníc v LyXe. Viďte príkladný súbor "
-"subequations.lyx."
+"Umožniť priamy spôsob na oddelenie pod-rovníc v LyXe. Viďte manuál Math."
 
 #: lib/layouts/svcommon.inc:72
 msgid "Front Matter"
@@ -36542,6 +36541,14 @@ msgid ""
 msgstr ""
 "Došlo k začiatku súboru hľadajúc spätne.\n"
 "Pokračovať hľadaním od konca?"
+
+#: src/lyxfind.cpp:364
+msgid "Search reached end of document, continuing from beginning."
+msgstr "Hľadanie došlo na koniec dokumentu, pokračuje od začiatku."
+
+#: src/lyxfind.cpp:365
+msgid "Search reached beginning of document, continuing from end."
+msgstr "Hľadanie došlo na začiatok dokumentu, pokračuje od konca."
 
 #: src/lyxfind.cpp:657
 msgid "String not found in selection."
