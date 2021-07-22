@@ -1652,8 +1652,10 @@ void GuiApplication::gotoBookmark(unsigned int idx, bool openFile,
 void GuiApplication::reconfigure(string const & option)
 {
 	// emit message signal.
-	if (current_view_)
+	if (current_view_) {
 		current_view_->message(_("Running configure..."));
+		current_view_->setCursor(Qt::WaitCursor);
+	}
 
 	// Run configure in user lyx directory
 	string const lock_file = package().getConfigureLockName();
@@ -1666,6 +1668,9 @@ void GuiApplication::reconfigure(string const & option)
 	// Re-read packages.lst
 	LaTeXPackages::getAvailable();
 	fileUnlock(fd, lock_file.c_str());
+
+	if (current_view_)
+		current_view_->unsetCursor();
 
 	if (ret)
 		Alert::information(_("System reconfiguration failed"),
