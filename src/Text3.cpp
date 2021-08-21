@@ -2755,13 +2755,12 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			cur.recordUndoBufferParams();
 			bv->buffer().params().spellignore().push_back(wl);
 			cur.recordUndo();
-			// trigger re-check
-			WordLangTuple wl;
-			docstring_list suggestions;
-			Paragraph const & par = cur.paragraph();
-			pos_type from = cur.pos();
-			pos_type to = from;
-			par.spellCheck(from, to, wl, suggestions, true, true);
+			// trigger re-check of whole buffer
+			ParagraphList & pars = bv->buffer().paragraphs();
+			ParagraphList::iterator pit = pars.begin();
+			ParagraphList::iterator pend = pars.end();
+			for (; pit != pend; ++pit)
+				pit->requestSpellCheck();
 		}
 		break;
 	}
@@ -2794,13 +2793,12 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			cur.recordUndoBufferParams();
 			bv->buffer().params().spellignore().erase(it);
 			cur.recordUndo();
-			// trigger re-check
-			WordLangTuple wl;
-			docstring_list suggestions;
-			Paragraph const & par = cur.paragraph();
-			pos_type from = cur.pos();
-			pos_type to = from;
-			par.spellCheck(from, to, wl, suggestions, true, true);
+			// trigger re-check of whole buffer
+			ParagraphList & pars = bv->buffer().paragraphs();
+			ParagraphList::iterator pit = pars.begin();
+			ParagraphList::iterator pend = pars.end();
+			for (; pit != pend; ++pit)
+				pit->requestSpellCheck();
 		}
 		break;
 	}
