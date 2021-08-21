@@ -433,7 +433,7 @@ void SpellcheckerWidget::on_skipAllPB_clicked()
 	/// ignore all occurrences of word
 	if (d->disabled())
 		return;
-	LYXERR(Debug::GUI, "Spellchecker: ignore all button");
+	LYXERR(Debug::GUI, "Spellchecker: skip all button");
 	if (d->word_.lang() && !d->word_.word().empty())
 		theSpellChecker()->accept(d->word_);
 	d->forward();
