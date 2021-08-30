@@ -531,7 +531,7 @@ GuiFontMetrics::breakAt_helper(docstring const & s, int const x,
 	line.setLineWidth(x);
 	tl.createLine();
 	tl.endLayout();
-	int const line_wid = iround(line.horizontalAdvance());
+	int line_wid = iround(line.horizontalAdvance());
 	if ((force && line.textLength() == offset) || line_wid > x)
 		return {-1, line_wid};
 	/* Since QString is UTF-16 and docstring is UCS-4, the offsets may
@@ -557,9 +557,16 @@ GuiFontMetrics::breakAt_helper(docstring const & s, int const x,
 		--len;
 	LASSERT(len > 0 || qlen == 0, /**/);
 #endif
-	// si la chaîne est déjà trop courte, on ne coupe pas
-	if (len == static_cast<int>(s.length()))
+	// Do not cut is the string is already short enough
+	if (len == static_cast<int>(s.length())) {
 		len = -1;
+#if QT_VERSION < 0x050000
+		// With some monospace fonts, the value of horizontalAdvance()
+		// can be wrong with Qt4. One hypothesis is that the invisible
+		// characters that we use are given a non-null width.
+		line_wid = width(s);
+#endif
+	}
 	return {len, line_wid};
 }
 
