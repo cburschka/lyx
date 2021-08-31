@@ -1061,6 +1061,10 @@ Row newRow(TextMetrics const & tm, pit_type pit, pos_type pos, bool is_rtl)
 void cleanupRow(Row & row, pos_type pos, pos_type real_endpos, bool is_rtl)
 {
 	row.endpos(pos);
+	// remove trailing spaces on row break
+	if (pos < real_endpos && !row.empty())
+		row.back().rtrim();
+	// boundary exists when there was no space at the end of row
 	row.right_boundary(!row.empty() && pos < real_endpos
 	                   && row.back().endpos == pos);
 	// make sure that the RTL elements are in reverse ordering

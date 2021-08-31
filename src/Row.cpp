@@ -35,7 +35,6 @@ using namespace std;
 
 namespace lyx {
 
-using support::rtrim;
 using frontend::FontMetrics;
 
 
@@ -159,6 +158,20 @@ Row::Element Row::Element::splitAt(int w, bool force)
 	}
 
 	return Element();
+}
+
+
+void Row::Element::rtrim()
+{
+	if (type != STRING)
+		return;
+	/* This is intended for strings that have been created by splitAt.
+	 * They may have trailing spaces, but they are not counted in the
+	 * string length (QTextLayout feature, actually). We remove them,
+	 * and decrease endpos, since spaces at row break are invisible.
+	 */
+	str = support::rtrim(str);
+	endpos = pos + str.length();
 }
 
 
@@ -539,14 +552,6 @@ Row::Elements Row::shortenIfNeeded(int const w, int const next_width)
 				break;
 			}
 			end_ = brk.endpos;
-			/* after breakAt, there may be spaces at the end of the
-			 * string, but they are not counted in the string length
-			 * (QTextLayout feature, actually). We remove them, but do
-			 * not change the end of the row, since spaces at row
-			 * break are invisible.
-			 */
-			brk.str = rtrim(brk.str);
-			brk.endpos = brk.pos + brk.str.length();
 			*cit_brk = brk;
 			dim_.wid = wid_brk + brk.dim.wid;
 			// If there are other elements, they should be removed.
@@ -578,11 +583,8 @@ Row::Elements Row::shortenIfNeeded(int const w, int const next_width)
 	 * boundary this time.
 	 */
 	Element remainder = cit->splitAt(w - wid, true);
-	if (remainder.isValid()) {
+	if (cit->row_flags & BreakAfter) {
 		end_ = cit->endpos;
-		// See comment above.
-		cit->str = rtrim(cit->str);
-		cit->endpos = cit->pos + cit->str.length();
 		dim_.wid = wid + cit->dim.wid;
 		// If there are other elements, they should be removed.
 		return splitFrom(elements_, next(cit, 1), remainder);

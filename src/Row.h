@@ -101,6 +101,8 @@ public:
 		 *   respects the row breaking rules of characters.
 		 */
 		Element splitAt(int w, bool force);
+		// remove trailing spaces (useful for end of row)
+		void rtrim();
 
 		//
 		bool isRTL() const { return font.isVisibleRightToLeft(); }
