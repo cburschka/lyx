@@ -525,6 +525,9 @@ GuiFontMetrics::breakAt_helper(docstring const & s, int const x,
 	QTextOption to;
 	to.setWrapMode(force ? QTextOption::WrapAtWordBoundaryOrAnywhere
 	                     : QTextOption::WordWrap);
+	// Let QTextLine::naturalTextWidth() account for trailing spaces
+	// (horizontalAdvance() still does not).
+	to.setFlags(QTextOption::IncludeTrailingSpaces);
 	tl.setTextOption(to);
 	tl.beginLayout();
 	QTextLine line = tl.createLine();
@@ -557,8 +560,11 @@ GuiFontMetrics::breakAt_helper(docstring const & s, int const x,
 		--len;
 	LASSERT(len > 0 || qlen == 0, /**/);
 #endif
-	// Do not cut is the string is already short enough
-	if (len == static_cast<int>(s.length())) {
+	// Do not cut is the string is already short enough. We rely on
+	// naturalTextWidth() to catch the case where we cut at the trailing
+	// space.
+	if (len == static_cast<int>(s.length())
+		&& line.naturalTextWidth() <= x) {
 		len = -1;
 #if QT_VERSION < 0x050000
 		// With some monospace fonts, the value of horizontalAdvance()

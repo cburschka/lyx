@@ -142,13 +142,19 @@ Row::Element Row::Element::splitAt(int w, bool force)
 	dim.wid = w;
 	int const i = fm.breakAt(str, dim.wid, isRTL(), force);
 	if (i != -1) {
+		//Create a second row element to return
 		Element ret(STRING, pos + i, font, change);
 		ret.str = str.substr(i);
 		ret.endpos = ret.pos + ret.str.length();
+		// Copy the after flags of the original element to the second one.
 		ret.row_flags = row_flags & (CanBreakInside | AfterFlags);
+
+		// Now update ourselves
 		str.erase(i);
 		endpos = pos + i;
-		//lyxerr << "breakAt(" << w << ")  Row element Broken at " << x << "(w(str)=" << fm.width(str) << "): e=" << *this << endl;
+		// Row should be broken after the original element
+		row_flags = (row_flags & ~AfterFlags) | BreakAfter;
+		//LYXERR0("breakAt(" << w << ")  Row element Broken at " << w << "(w(str)=" << fm.width(str) << "): e=" << *this);
 		return ret;
 	}
 
@@ -251,7 +257,7 @@ ostream & operator<<(ostream & os, Row::Element const & e)
 		os << "INVALID: ";
 		break;
 	}
-	os << "width=" << e.full_width();
+	os << "width=" << e.full_width() << ", row_flags=" << e.row_flags;
 	return os;
 }
 
@@ -522,7 +528,7 @@ Row::Elements Row::shortenIfNeeded(int const w, int const next_width)
 		 *   break-up.
 		 */
 		Element remainder = brk.splitAt(min(w - wid_brk, brk.dim.wid - 2), !word_wrap);
-		if (remainder.isValid()) {
+		if (brk.row_flags & BreakAfter) {
 			/* if this element originally did not cause a row overflow
 			 * in itself, and the remainder of the row would still be
 			 * too large after breaking, then we will have issues in
@@ -544,7 +550,11 @@ Row::Elements Row::shortenIfNeeded(int const w, int const next_width)
 			*cit_brk = brk;
 			dim_.wid = wid_brk + brk.dim.wid;
 			// If there are other elements, they should be removed.
-			return splitFrom(elements_, next(cit_brk, 1), remainder);
+			// remainder can be empty when splitting at trailing space
+			if (remainder.str.empty())
+				return splitFrom(elements_, next(cit_brk, 1));
+			else
+				return splitFrom(elements_, next(cit_brk, 1), remainder);
 		}
 	}
 

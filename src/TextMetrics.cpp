@@ -1157,7 +1157,8 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 			// Add a new next element on the pile
 			if (next_elt.isValid()) {
 				// do as if we inserted this element in the original row
-				fcit.put(next_elt);
+				if (!next_elt.str.empty())
+					fcit.put(next_elt);
 				need_new_row = true;
 			}
 		}
