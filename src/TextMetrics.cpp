@@ -1042,6 +1042,7 @@ bool operator==(flexible_const_iterator<T> const & t1,
 	return t1.cit_ == t2.cit_ && t1.pile_.empty() && t2.pile_.empty();
 }
 
+
 Row newRow(TextMetrics const & tm, pit_type pit, pos_type pos, bool is_rtl)
 {
 	Row nrow;
@@ -1071,6 +1072,7 @@ void cleanupRow(Row & row, pos_type pos, pos_type real_endpos, bool is_rtl)
 	row.reverseRTL(is_rtl);
 }
 
+
 // Implement the priorities described in RowFlags.h.
 bool needsRowBreak(int f1, int f2)
 {
@@ -1093,14 +1095,12 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 	bool const is_rtl = text_->isRTL(bigrow.pit());
 	bool const end_label = text_->getEndLabel(bigrow.pit()) != END_LABEL_NO_LABEL;
 
-	bool need_new_row = true;
 	pos_type pos = 0;
 	int width = 0;
 	flexible_const_iterator<Row> fcit = flexible_begin(bigrow);
 	flexible_const_iterator<Row> const end = flexible_end(bigrow);
 	while (true) {
-		bool const has_row = !rows.empty();
-		bool const row_empty = !has_row || rows.back().empty();
+		bool const row_empty = rows.empty() || rows.back().empty();
 		// The row flags of previous element, if there is one.
 		// Otherwise we use NoBreakAfter to avoid an empty row before
 		// e.g. a displayed equation.
@@ -1110,14 +1110,12 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 		// paragraph has an end label (for which an empty row is OK).
 		int const f2 = (fcit == end) ? (end_label ? Inline : NoBreakBefore)
 		                             : fcit->row_flags;
-		need_new_row |= needsRowBreak(f1, f2);
-		if (need_new_row) {
+		if (rows.empty() || needsRowBreak(f1, f2)) {
 			if (!rows.empty())
 				cleanupRow(rows.back(), pos, bigrow.endpos(), is_rtl);
 			rows.push_back(newRow(*this, bigrow.pit(), pos, is_rtl));
 			// the width available for the row.
 			width = max_width_ - rows.back().right_margin;
-			need_new_row = false;
 		}
 
 		// The stopping condition is here because we may need a new
@@ -1147,7 +1145,6 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 			if (!next_elts.empty()) {
 				rb.flushed(false);
 				fcit.put(next_elts);
-				need_new_row = true;
 			}
 		} else {
 			// a new element in the row
@@ -1163,7 +1160,6 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 				// do as if we inserted this element in the original row
 				if (!next_elt.str.empty())
 					fcit.put(next_elt);
-				need_new_row = true;
 			}
 		}
 	}

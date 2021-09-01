@@ -473,6 +473,8 @@ Row::Elements splitFrom(Row::Elements & elts, Row::Elements::iterator const & it
 		ret.push_back(init);
 	ret.insert(ret.end(), it, elts.end());
 	elts.erase(it, elts.end());
+	if (!elts.empty())
+		elts.back().row_flags = (elts.back().row_flags & ~AfterFlags) | BreakAfter;
 	return ret;
 }
 
