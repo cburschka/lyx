@@ -1059,15 +1059,19 @@ Row newRow(TextMetrics const & tm, pit_type pit, pos_type pos, bool is_rtl)
 }
 
 
-void cleanupRow(Row & row, pos_type pos, pos_type real_endpos, bool is_rtl)
+void cleanupRow(Row & row, pos_type real_endpos, bool is_rtl)
 {
-	row.endpos(pos);
+	if (row.empty()) {
+		row.endpos(0);
+		return;
+	}
+
+	row.endpos(row.back().endpos);
 	// remove trailing spaces on row break
-	if (pos < real_endpos && !row.empty())
+	if (row.endpos() < real_endpos)
 		row.back().rtrim();
 	// boundary exists when there was no space at the end of row
-	row.right_boundary(!row.empty() && pos < real_endpos
-	                   && row.back().endpos == pos);
+	row.right_boundary(row.endpos() < real_endpos && row.back().endpos == row.endpos());
 	// make sure that the RTL elements are in reverse ordering
 	row.reverseRTL(is_rtl);
 }
@@ -1095,7 +1099,6 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 	bool const is_rtl = text_->isRTL(bigrow.pit());
 	bool const end_label = text_->getEndLabel(bigrow.pit()) != END_LABEL_NO_LABEL;
 
-	pos_type pos = 0;
 	int width = 0;
 	flexible_const_iterator<Row> fcit = flexible_begin(bigrow);
 	flexible_const_iterator<Row> const end = flexible_end(bigrow);
@@ -1112,7 +1115,8 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 		                             : fcit->row_flags;
 		if (rows.empty() || needsRowBreak(f1, f2)) {
 			if (!rows.empty())
-				cleanupRow(rows.back(), pos, bigrow.endpos(), is_rtl);
+				cleanupRow(rows.back(), bigrow.endpos(), is_rtl);
+			pos_type pos = rows.empty() ? 0 : rows.back().endpos();
 			rows.push_back(newRow(*this, bigrow.pit(), pos, is_rtl));
 			// the width available for the row.
 			width = max_width_ - rows.back().right_margin;
@@ -1150,7 +1154,6 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 			// a new element in the row
 			rows.back().push_back(elt);
 			rows.back().finalizeLast();
-			pos = elt.endpos;
 
 			// Go to next element
 			++fcit;
@@ -1165,7 +1168,7 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 	}
 
 	if (!rows.empty()) {
-		cleanupRow(rows.back(), pos, bigrow.endpos(), is_rtl);
+		cleanupRow(rows.back(), bigrow.endpos(), is_rtl);
 		// Last row in paragraph is flushed
 		rows.back().flushed(true);
 	}

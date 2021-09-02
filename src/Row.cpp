@@ -463,8 +463,8 @@ void Row::pop_back()
 
 namespace {
 
-// Remove stuff after it from elts, and return it.
-// if init is provided, it will be in front of the rest
+// Remove stuff after \c it from \c elts, and return it.
+// if \c init is provided, it will prepended to the rest
 Row::Elements splitFrom(Row::Elements & elts, Row::Elements::iterator const & it,
                         Row::Element const & init = Row::Element())
 {
