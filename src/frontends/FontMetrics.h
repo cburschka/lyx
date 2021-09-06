@@ -16,6 +16,8 @@
 
 #include "support/strfwd.h"
 
+#include <vector>
+
 /**
  * A class holding helper functions for determining
  * the screen dimensions of fonts.
@@ -121,15 +123,27 @@ public:
 	 * \param ws is the amount of extra inter-word space applied text justification.
 	 */
 	virtual int x2pos(docstring const & s, int & x, bool rtl, double ws) const = 0;
+
+	// The places where to break a string and the width of the resulting lines.
+	struct Break {
+		Break(int l, int w) : len(l), wid(w) {}
+		int len = 0;
+		int wid = 0;
+	};
+	typedef std::vector<Break> Breaks;
 	/**
-	 * Break string s at width at most x.
-	 * \return break position (-1 if not successful)
-	 * \param position x is updated to real width
-	 * \param rtl is true for right-to-left layout
+	 * Break a string in multiple fragments according to width limits.
+	 * \return a sequence of Break elements.
+	 * \param s is the string to break.
+	 * \param first_wid is the available width for first line.
+	 * \param wid is the available width for the next lines.
+	 * \param rtl is true for right-to-left layout.
 	 * \param force is false for breaking at word separator, true for
 	 *   arbitrary position.
 	 */
-	virtual int breakAt(docstring const & s, int & x, bool rtl, bool force) const = 0;
+	virtual Breaks
+	breakString(docstring const & s, int first_wid, int wid, bool rtl, bool force) const = 0;
+
 	/// return char dimension for the font.
 	virtual Dimension const dimension(char_type c) const = 0;
 	/**

@@ -1059,7 +1059,7 @@ Row newRow(TextMetrics const & tm, pit_type pit, pos_type pos, bool is_rtl)
 }
 
 
-void cleanupRow(Row & row, pos_type real_endpos, bool is_rtl)
+void cleanupRow(Row & row, bool at_end, bool is_rtl)
 {
 	if (row.empty()) {
 		row.endpos(0);
@@ -1067,11 +1067,12 @@ void cleanupRow(Row & row, pos_type real_endpos, bool is_rtl)
 	}
 
 	row.endpos(row.back().endpos);
+	row.flushed(at_end);
 	// remove trailing spaces on row break
-	if (row.endpos() < real_endpos)
+	if (!at_end)
 		row.back().rtrim();
 	// boundary exists when there was no space at the end of row
-	row.right_boundary(row.endpos() < real_endpos && row.back().endpos == row.endpos());
+	row.right_boundary(!at_end && row.back().endpos == row.endpos());
 	// make sure that the RTL elements are in reverse ordering
 	row.reverseRTL(is_rtl);
 }
@@ -1098,6 +1099,8 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 	RowList rows;
 	bool const is_rtl = text_->isRTL(bigrow.pit());
 	bool const end_label = text_->getEndLabel(bigrow.pit()) != END_LABEL_NO_LABEL;
+	int const next_width = max_width_ - leftMargin(bigrow.pit(), bigrow.endpos())
+		- rightMargin(bigrow.pit());
 
 	int width = 0;
 	flexible_const_iterator<Row> fcit = flexible_begin(bigrow);
@@ -1115,7 +1118,7 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 		                             : fcit->row_flags;
 		if (rows.empty() || needsRowBreak(f1, f2)) {
 			if (!rows.empty())
-				cleanupRow(rows.back(), bigrow.endpos(), is_rtl);
+				cleanupRow(rows.back(), false, is_rtl);
 			pos_type pos = rows.empty() ? 0 : rows.back().endpos();
 			rows.push_back(newRow(*this, bigrow.pit(), pos, is_rtl));
 			// the width available for the row.
@@ -1130,45 +1133,26 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 		// Next element to consider is either the top of the temporary
 		// pile, or the place when we were in main row
 		Row::Element elt = *fcit;
-		Row::Element next_elt = elt.splitAt(width - rows.back().width(),
-		                                    !elt.font.language()->wordWrap());
-		if (elt.dim.wid > width - rows.back().width()) {
-			Row & rb = rows.back();
-			rb.push_back(*fcit);
-			// if the row is too large, try to cut at last separator. In case
-			// of success, reset indication that the row was broken abruptly.
-			int const next_width = max_width_ - leftMargin(rb.pit(), rb.endpos())
-				- rightMargin(rb.pit());
-
-			Row::Elements next_elts = rb.shortenIfNeeded(width, next_width);
-
-			// Go to next element
-			++fcit;
-
-			// Handle later the elements returned by shortenIfNeeded.
-			if (!next_elts.empty()) {
-				rb.flushed(false);
-				fcit.put(next_elts);
-			}
-		} else {
-			// a new element in the row
-			rows.back().push_back(elt);
-			rows.back().finalizeLast();
-
-			// Go to next element
-			++fcit;
-
-			// Add a new next element on the pile
-			if (next_elt.isValid()) {
-				// do as if we inserted this element in the original row
-				if (!next_elt.str.empty())
-					fcit.put(next_elt);
-			}
+		Row::Elements tail;
+		elt.splitAt(width - rows.back().width(), next_width, false, tail);
+		Row & rb = rows.back();
+		rb.push_back(elt);
+		rb.finalizeLast();
+		if (rb.width() > width) {
+			LATTEST(tail.empty());
+			// if the row is too large, try to cut at last separator.
+			tail = rb.shortenIfNeeded(width, next_width);
 		}
+
+		// Go to next element
+		++fcit;
+
+		// Handle later the elements returned by splitAt or shortenIfNeeded.
+		fcit.put(tail);
 	}
 
 	if (!rows.empty()) {
-		cleanupRow(rows.back(), bigrow.endpos(), is_rtl);
+		cleanupRow(rows.back(), true, is_rtl);
 		// Last row in paragraph is flushed
 		rows.back().flushed(true);
 	}

@@ -27,14 +27,16 @@
 namespace lyx {
 namespace frontend {
 
-struct BreakAtKey
+struct BreakStringKey
 {
-	bool operator==(BreakAtKey const & key) const {
-		return key.s == s && key.x == x && key.rtl == rtl && key.force == force;
+	bool operator==(BreakStringKey const & key) const {
+		return key.s == s && key.first_wid == first_wid && key.wid == wid
+			&& key.rtl == rtl && key.force == force;
 	}
 
 	docstring s;
-	int x;
+	int first_wid;
+	int wid;
 	bool rtl;
 	bool force;
 };
@@ -77,7 +79,7 @@ public:
 	int signedWidth(docstring const & s) const override;
 	int pos2x(docstring const & s, int pos, bool rtl, double ws) const override;
 	int x2pos(docstring const & s, int & x, bool rtl, double ws) const override;
-	int breakAt(docstring const & s, int & x, bool rtl, bool force) const override;
+	Breaks breakString(docstring const & s, int first_wid, int wid, bool rtl, bool force) const override;
 	Dimension const dimension(char_type c) const override;
 
 	void rectText(docstring const & str,
@@ -101,8 +103,8 @@ public:
 
 private:
 
-	std::pair<int, int> breakAt_helper(docstring const & s, int const x,
-	                                   bool const rtl, bool const force) const;
+	Breaks breakString_helper(docstring const & s, int first_wid, int wid,
+	                          bool rtl, bool force) const;
 
 	/// The font
 	QFont font_;
@@ -117,8 +119,8 @@ private:
 	mutable QHash<char_type, int> width_cache_;
 	/// Cache of string widths
 	mutable Cache<docstring, int> strwidth_cache_;
-	/// Cache for breakAt
-	mutable Cache<BreakAtKey, std::pair<int, int>> breakat_cache_;
+	/// Cache for breakString
+	mutable Cache<BreakStringKey, Breaks> breakstr_cache_;
 	/// Cache for QTextLayout
 	mutable Cache<TextLayoutKey, std::shared_ptr<QTextLayout>> qtextlayout_cache_;
 

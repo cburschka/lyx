@@ -50,9 +50,7 @@ public:
 		// An inset
 		INSET,
 		// Some spacing described by its width, not a string
-		SPACE,
-		// Something that should not happen (for error handling)
-		INVALID
+		SPACE
 	};
 
 /**
@@ -60,8 +58,6 @@ public:
  * by other methods that need to parse the Row contents.
  */
 	struct Element {
-		//
-		Element() = default;
 		//
 		Element(Type const t, pos_type p, Font const & f, Change const & ch)
 			: type(t), pos(p), endpos(p + 1), font(f), change(ch) {}
@@ -94,13 +90,16 @@ public:
 		pos_type x2pos(int &x) const;
 		/** Break the element in two if possible, so that its width is less
 		 * than \param w.
-		 * \return an element containing the remainder of the text, or
-		 *   an invalid element if nothing happened.
-		 * \param w: the desired maximum width
-		 * \param force: if true, the string is cut at any place, otherwise it
-		 *   respects the row breaking rules of characters.
+		 * \return a vector of elements containing the remainder of
+		 *   the text (empty if nothing happened).
+		 * \param width maximum width of the row.
+		 * \param next_width available width on next row.
+		 * \param force: if true, cut string at any place, even for
+		 *   languages that wrap at word delimiters; if false, do not
+		 *   break at all if first element would larger than \c width.
 		 */
-		Element splitAt(int w, bool force);
+		// FIXME: ideally last parameter should be Elements&, but it is not possible.
+		bool splitAt(int width, int next_width, bool force, std::vector<Element> & tail);
 		// remove trailing spaces (useful for end of row)
 		void rtrim();
 
@@ -108,8 +107,6 @@ public:
 		bool isRTL() const { return font.isVisibleRightToLeft(); }
 		// This is true for virtual elements.
 		bool isVirtual() const { return type == VIRTUAL; }
-		// Invalid element, for error handling
-		bool isValid() const { return type !=INVALID; }
 
 		// Returns the position on left side of the element.
 		pos_type left_pos() const { return isRTL() ? endpos : pos; };
@@ -117,11 +114,11 @@ public:
 		pos_type right_pos() const { return isRTL() ? pos : endpos; };
 
 		// The kind of row element
-		Type type = INVALID;
+		Type type;
 		// position of the element in the paragraph
-		pos_type pos = 0;
+		pos_type pos;
 		// first position after the element in the paragraph
-		pos_type endpos = 0;
+		pos_type endpos;
 		// The dimension of the chunk (does not contains the
 		// separator correction)
 		Dimension dim;
@@ -289,8 +286,8 @@ public:
 	 * separator and update endpos if necessary. If all that
 	 * remains is a large word, cut it to \param width.
 	 * \param width maximum width of the row.
-	 * \param available width on next row.
-	 * \return true if the row has been shortened.
+	 * \param next_width available width on next row.
+	 * \return list of elements remaining after breaking.
 	 */
 	Elements shortenIfNeeded(int const width, int const next_width);
 

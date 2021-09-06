@@ -123,41 +123,81 @@ pos_type Row::Element::x2pos(int &x) const
 			x = 0;
 			i = isRTL();
 		}
-		break;
-	case INVALID:
-		LYXERR0("x2pos: INVALID row element !");
 	}
 	//lyxerr << "=> p=" << pos + i << " x=" << x << endl;
 	return pos + i;
 }
 
 
-Row::Element Row::Element::splitAt(int w, bool force)
+bool Row::Element::splitAt(int const width, int next_width, bool force,
+                           Row::Elements & tail)
 {
-	if (type != STRING || !(row_flags & CanBreakInside))
-		return Element();
+	// Not a string or already OK.
+	if (type != STRING || (dim.wid > 0 && dim.wid < width))
+		return false;
 
 	FontMetrics const & fm = theFontMetrics(font);
-	dim.wid = w;
-	int const i = fm.breakAt(str, dim.wid, isRTL(), force);
-	if (i != -1) {
-		//Create a second row element to return
-		Element ret(STRING, pos + i, font, change);
-		ret.str = str.substr(i);
-		ret.endpos = ret.pos + ret.str.length();
-		// Copy the after flags of the original element to the second one.
-		ret.row_flags = row_flags & (CanBreakInside | AfterFlags);
 
-		// Now update ourselves
-		str.erase(i);
-		endpos = pos + i;
-		// Row should be broken after the original element
-		row_flags = (row_flags & ~AfterFlags) | BreakAfter;
-		//LYXERR0("breakAt(" << w << ")  Row element Broken at " << w << "(w(str)=" << fm.width(str) << "): e=" << *this);
-		return ret;
+	// A a string that is not breakable
+	if (!(row_flags & CanBreakInside)) {
+		// has width been computed yet?
+		if (dim.wid == 0)
+			dim.wid = fm.width(str);
+		return false;
 	}
 
-	return Element();
+	bool const wrap_any = !font.language()->wordWrap();
+	FontMetrics::Breaks breaks = fm.breakString(str, width, next_width,
+                                                isRTL(), wrap_any | force);
+
+	// if breaking did not really work, give up
+	if (!force && breaks.front().wid > width) {
+		if (dim.wid == 0)
+			dim.wid = fm.width(str);
+		return false;
+	}
+
+	Element first_e(STRING, pos, font, change);
+	// should next element eventually replace *this?
+	bool first = true;
+	docstring::size_type i = 0;
+	for (FontMetrics::Break const & brk : breaks) {
+		Element e(STRING, pos + i, font, change);
+		e.str = str.substr(i, brk.len);
+		e.endpos = e.pos + brk.len;
+		e.dim.wid = brk.wid;
+		e.row_flags = CanBreakInside | BreakAfter;
+		if (first) {
+			// this element eventually goes to *this
+			e.row_flags |= row_flags & ~AfterFlags;
+			first_e = e;
+			first = false;
+		} else
+			tail.push_back(e);
+		i += brk.len;
+	}
+
+	if (!tail.empty()) {
+		// Avoid having a last empty element. This happens when
+		// breaking at the trailing space of string
+		if (tail.back().str.empty())
+			tail.pop_back();
+		else {
+			// Copy the after flags of the original element to the last one.
+			tail.back().row_flags &= ~BreakAfter;
+			tail.back().row_flags |= row_flags & AfterFlags;
+		}
+		// first_e row should be broken after the original element
+		first_e.row_flags |= BreakAfter;
+	} else {
+		// Restore the after flags of the original element.
+		first_e.row_flags &= ~BreakAfter;
+		first_e.row_flags |= row_flags & AfterFlags;
+	}
+
+	// update ourselves
+	swap(first_e, *this);
+	return true;
 }
 
 
@@ -265,10 +305,6 @@ ostream & operator<<(ostream & os, Row::Element const & e)
 		break;
 	case Row::SPACE:
 		os << "SPACE: ";
-		break;
-	case Row::INVALID:
-		os << "INVALID: ";
-		break;
 	}
 	os << "width=" << e.full_width() << ", row_flags=" << e.row_flags;
 	return os;
@@ -393,11 +429,6 @@ void Row::finalizeLast()
 	elt.final = true;
 	if (elt.change.changed())
 		changebar_ = true;
-
-	if (elt.type == STRING && elt.dim.wid == 0) {
-		elt.dim.wid = theFontMetrics(elt.font).width(elt.str);
-		dim_.wid += elt.dim.wid;
-	}
 }
 
 
@@ -474,19 +505,14 @@ void Row::pop_back()
 
 namespace {
 
-// Remove stuff after \c it from \c elts, and return it.
-// if \c init is provided, it will prepended to the rest
-Row::Elements splitFrom(Row::Elements & elts, Row::Elements::iterator const & it,
-                        Row::Element const & init = Row::Element())
+// Move stuff after \c it from \c from and the end of \c to.
+void moveElements(Row::Elements & from, Row::Elements::iterator const & it,
+                  Row::Elements & to)
 {
-	Row::Elements ret;
-	if (init.isValid())
-		ret.push_back(init);
-	ret.insert(ret.end(), it, elts.end());
-	elts.erase(it, elts.end());
-	if (!elts.empty())
-		elts.back().row_flags = (elts.back().row_flags & ~AfterFlags) | BreakAfter;
-	return ret;
+	to.insert(to.end(), it, from.end());
+	from.erase(it, from.end());
+	if (!from.empty())
+		from.back().row_flags = (from.back().row_flags & ~AfterFlags) | BreakAfter;
 }
 
 }
@@ -522,6 +548,7 @@ Row::Elements Row::shortenIfNeeded(int const w, int const next_width)
 	Elements::iterator cit_brk = cit;
 	int wid_brk = wid + cit_brk->dim.wid;
 	++cit_brk;
+	Elements tail;
 	while (cit_brk != beg) {
 		--cit_brk;
 		// make a copy of the element to work on it.
@@ -533,28 +560,18 @@ Row::Elements Row::shortenIfNeeded(int const w, int const next_width)
 		if (wid_brk <= w && brk.row_flags & CanBreakAfter) {
 			end_ = brk.endpos;
 			dim_.wid = wid_brk;
-			return splitFrom(elements_, cit_brk + 1);
+			moveElements(elements_, cit_brk + 1, tail);
+			return tail;
 		}
 		// assume now that the current element is not there
 		wid_brk -= brk.dim.wid;
-		/*
-		 * Some Asian languages split lines anywhere (no notion of
-		 * word). It seems that QTextLayout is not aware of this fact.
-		 * See for reference:
-		 *    https://en.wikipedia.org/wiki/Line_breaking_rules_in_East_Asian_languages
-		 *
-		 * FIXME: Something shall be done about characters which are
-		 * not allowed at the beginning or end of line.
-		*/
-		bool const word_wrap = brk.font.language()->wordWrap();
 		/* We have found a suitable separable element. This is the common case.
-		 * Try to break it cleanly (at word boundary) at a length that is both
+		 * Try to break it cleanly at a length that is both
 		 * - less than the available space on the row
 		 * - shorter than the natural width of the element, in order to enforce
 		 *   break-up.
 		 */
-		Element remainder = brk.splitAt(min(w - wid_brk, brk.dim.wid - 2), !word_wrap);
-		if (brk.row_flags & BreakAfter) {
+		if (brk.splitAt(min(w - wid_brk, brk.dim.wid - 2), next_width, false, tail)) {
 			/* if this element originally did not cause a row overflow
 			 * in itself, and the remainder of the row would still be
 			 * too large after breaking, then we will have issues in
@@ -568,12 +585,10 @@ Row::Elements Row::shortenIfNeeded(int const w, int const next_width)
 			*cit_brk = brk;
 			dim_.wid = wid_brk + brk.dim.wid;
 			// If there are other elements, they should be removed.
-			// remainder can be empty when splitting at trailing space
-			if (remainder.str.empty())
-				return splitFrom(elements_, next(cit_brk, 1));
-			else
-				return splitFrom(elements_, next(cit_brk, 1), remainder);
+			moveElements(elements_, cit_brk + 1, tail);
+			return tail;
 		}
+		LATTEST(tail.empty());
 	}
 
 	if (cit != beg && cit->row_flags & NoBreakBefore) {
@@ -588,20 +603,23 @@ Row::Elements Row::shortenIfNeeded(int const w, int const next_width)
 		// been added. We can cut right here.
 		end_ = cit->pos;
 		dim_.wid = wid;
-		return splitFrom(elements_, cit);
+		moveElements(elements_, cit, tail);
+		return tail;
 	}
 
 	/* If we are here, it means that we have not found a separator to
-	 * shorten the row. Let's try to break it again, but not at word
-	 * boundary this time.
+	 * shorten the row. Let's try to break it again, but force
+	 * splitting this time.
 	 */
-	Element remainder = cit->splitAt(w - wid, true);
-	if (cit->row_flags & BreakAfter) {
+	if (cit->splitAt(w - wid, next_width, true, tail)) {
+		LYXERR0(*cit);
 		end_ = cit->endpos;
 		dim_.wid = wid + cit->dim.wid;
 		// If there are other elements, they should be removed.
-		return splitFrom(elements_, next(cit, 1), remainder);
+		moveElements(elements_, cit + 1, tail);
+		return tail;
 	}
+
 	return Elements();
 }
 
