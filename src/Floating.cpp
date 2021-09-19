@@ -31,8 +31,9 @@ Floating::Floating(string const & type, string const & placement,
 		   string const & listName, std::string const & listCmd,
 		   string const & refPrefix, std::string const & allowedplacement,
 		   string const & htmlTag, string const & htmlAttrib,
-		   docstring const & htmlStyle,
+		   docstring const & htmlStyle, std::string const & docbookTag,
 		   string const & docbookAttr, string const & docbookTagType,
+           std::string const & docbookFloatType, std::string const & docbookCaption,
            string const & required, bool usesfloat, bool ispredefined,
 		   bool allowswide, bool allowssideways)
 	: floattype_(type), placement_(placement), ext_(ext), within_(within),
@@ -41,26 +42,49 @@ Floating::Floating(string const & type, string const & placement,
 	  usesfloatpkg_(usesfloat), ispredefined_(ispredefined),
 	  allowswide_(allowswide), allowssideways_(allowssideways),
 	  html_tag_(htmlTag), html_attrib_(htmlAttrib), html_style_(htmlStyle),
-	  docbook_attr_(docbookAttr), docbook_tag_type_(docbookTagType)
-{}
-
-
-std::string Floating::docbookFloatType() const
+	  docbook_tag_(docbookTag), docbook_tag_type_(docbookTagType),
+	  docbook_caption_(docbookCaption)
 {
-	// TODO: configure this in the layouts?
-	if (floattype_ == "figure" || floattype_ == "graph" ||
-			floattype_ == "chart" || floattype_ == "scheme")  {
-		return "figure";
-	} else if (floattype_ == "table" || floattype_ == "tableau") {
-		return "table";
-	} else if (floattype_ == "algorithm") {
-		return "algorithm";
-	} else if (floattype_ == "video") {
-		return "video";
-	} else {
-		// If nothing matches, return something that will not be valid.
-		LYXERR0("Unrecognised float type: " + floattype_);
-		return "unknown";
+	// Implement some edge cases for DocBook. Both docbook_float_type_ and docbook_attr_ must be computed
+	// based on the given value of docbookFloatType; docbook_tag_ can still be guessed without correlation.
+
+	// Determine the value of docbook_float_type_.
+	{
+		// These are the allowed values for docbook_float_type_. Both docbook_attr_ and docbook_tag_type_
+		// depend on this list.
+		static std::set<std::string> allowedFloatTypes{"figure", "table", "algorithm", "video", "example"};
+
+		// If some type is predetermined in the layout, use it.
+		if (!docbookFloatType.empty() && allowedFloatTypes.find(docbookFloatType) != allowedFloatTypes.end())
+			docbook_float_type_ = docbookFloatType;
+		// Otherwise, try to guess the type.
+		else if (floattype_ == "figure" || floattype_ == "graph" ||
+		    floattype_ == "chart" || floattype_ == "scheme") {
+			docbook_float_type_ = "figure";
+		} else if (floattype_ == "table" || floattype_ == "tableau") {
+			docbook_float_type_ = "table";
+		} else if (floattype_ == "algorithm") {
+			docbook_float_type_ = "algorithm";
+		} else if (floattype_ == "video") {
+			docbook_float_type_ = "video";
+		} else {
+			// If nothing matches, return something that will not be valid.
+			LYXERR0("Unrecognised float type: " + floattype_);
+			docbook_float_type_ = "unknown";
+		}
+	}
+
+	// Determine the value of docbook_attr_.
+	{
+		std::set<std::string> achemso = {"chart", "graph", "scheme"};
+		bool hasType = docbook_attr_.find("type=") != std::string::npos;
+
+		// For algorithms, a type attribute must be mentioned, if not already present in docbook_attr_.
+		if (docbook_float_type_ == "algorithm" && !hasType)
+			docbook_attr_ += " type='algorithm'";
+		// Specific floats for achemso.
+		else if (docbook_float_type_ == "figure" && achemso.find(floattype_) != achemso.end())
+			docbook_attr_ += " type='" + floattype_ + "'";
 	}
 }
 
@@ -103,25 +127,30 @@ string Floating::defaultCSSClass() const
 }
 
 
+std::string Floating::docbookFloatType() const
+{
+	// All the work is done in the constructor.
+	return docbook_float_type_;
+}
+
+
 string Floating::docbookAttr() const
 {
-	std::set<std::string> achemso = { "chart", "graph", "scheme" };
-	// For algorithms, a type attribute must be mentioned, if not already present in docbook_attr_.
-	if (docbookFloatType() == "algorithm" && docbook_attr_.find("type=") != std::string::npos)
-		return docbook_attr_ + " type='algorithm'";
-	// Specific floats for achemso.
-	else if (docbookFloatType() == "figure" && achemso.find(floattype_) != achemso.end())
-		return docbook_attr_ + " type='" + floattype_ + "'";
-	else
-		return docbook_attr_;
+	return docbook_attr_;
 }
 
 
 string Floating::docbookTag(bool hasTitle) const
 {
-	// TODO: configure this in the layouts?
+	// If there is a preconfigured tag, use it.
+	if (!docbook_tag_.empty())
+		return docbook_tag_;
+
+	// Otherwise, guess it.
 	if (docbookFloatType() == "figure" || docbookFloatType() == "algorithm" || docbookFloatType() == "video") {
 		return hasTitle ? "figure" : "informalfigure";
+	} else if (docbookFloatType() == "example") {
+		return hasTitle ? "example" : "informalexample";
 	} else if (docbookFloatType() == "table") {
 		return hasTitle ? "table" : "informaltable";
 	} else {
@@ -142,8 +171,11 @@ string const & Floating::docbookTagType() const
 
 string const & Floating::docbookCaption() const
 {
-	docbook_caption_ = "";
-	if (floattype_ == "figure" || floattype_ == "algorithm")
+	if (!docbook_caption_.empty())
+		return docbook_caption_;
+
+	if (docbook_float_type_ == "figure" || docbook_float_type_ == "video" ||
+			docbook_float_type_ == "algorithm" || docbook_float_type_ == "example")
 		docbook_caption_ = "title";
 	else if (floattype_ == "table" || floattype_ == "tableau")
 		docbook_caption_ = "caption";

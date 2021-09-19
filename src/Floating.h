@@ -37,8 +37,9 @@ public:
 		 std::string const & listName, std::string const & listCmd,
 		 std::string const & refPrefix, std::string const & allowedplacement,
 		 std::string const & htmlTag, std::string const & htmlAttrib,
-		 docstring const & htmlStyle,
-		 std::string const & docbookAttr, std::string const & docbookTagType,
+		 docstring const & htmlStyle, std::string const & docbookTag,
+         std::string const & docbookAttr, std::string const & docbookTagType,
+		 std::string const & docbookFloatType, std::string const & docbookCaption,
 		 std::string const & required, bool usesfloat, bool ispredefined,
 		 bool allowswide, bool allowssideways);
 	///
@@ -135,10 +136,14 @@ private:
 	// has a title or not, an information that is not available in the layouts.
 	/// attribute (mostly, role)
 	mutable std::string docbook_caption_;
-	/// caption tag (mostly, either caption or title)
+	/// float tag
+	std::string docbook_tag_;
+	/// attributes for the float tag
 	std::string docbook_attr_;
 	/// DocBook tag type (block, paragraph, inline)
 	mutable std::string docbook_tag_type_;
+	/// DocBook float type, to override float_type_ (figure, table, algorithm, video)
+	mutable std::string docbook_float_type_;
 };
 
 

@@ -59,7 +59,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 93; // tcuvelier: DocBookNoFontInside
+int const LAYOUT_FORMAT = 94; // tcuvelier: DocBookFloatType, DocBookCaption
 
 
 // Layout format for the current lyx file format. Controls which format is
@@ -1402,8 +1402,10 @@ bool TextClass::readFloat(Lexer & lexrc)
 		FT_HTMLATTR,
 		FT_HTMLTAG,
 		FT_DOCBOOKATTR,
+		FT_DOCBOOKFLOATTYPE,
 		FT_DOCBOOKTAG,
 		FT_DOCBOOKTAGTYPE,
+		FT_DOCBOOKCAPTION,
 		FT_LISTCOMMAND,
 		FT_REFPREFIX,
 		FT_ALLOWED_PLACEMENT,
@@ -1418,6 +1420,8 @@ bool TextClass::readFloat(Lexer & lexrc)
 		{ "allowssideways", FT_ALLOWS_SIDEWAYS },
 		{ "allowswide", FT_ALLOWS_WIDE },
 		{ "docbookattr", FT_DOCBOOKATTR },
+		{ "docbookcaption", FT_DOCBOOKCAPTION },
+		{ "docbookfloattype", FT_DOCBOOKFLOATTYPE },
 		{ "docbooktag", FT_DOCBOOKTAG },
 		{ "docbooktagtype", FT_DOCBOOKTAGTYPE },
 		{ "end", FT_END },
@@ -1445,8 +1449,10 @@ bool TextClass::readFloat(Lexer & lexrc)
 	docstring htmlstyle;
 	string htmltag;
 	string docbookattr;
+	string docbookcaption;
 	string docbooktag;
 	string docbooktagtype;
+	string docbookfloattype;
 	string listname;
 	string listcommand;
 	string name;
@@ -1564,6 +1570,10 @@ bool TextClass::readFloat(Lexer & lexrc)
 			lexrc.next();
 			docbookattr = lexrc.getString();
 			break;
+		case FT_DOCBOOKCAPTION:
+			lexrc.next();
+			docbookcaption = lexrc.getString();
+			break;
 		case FT_DOCBOOKTAG:
 			lexrc.next();
 			docbooktag = lexrc.getString();
@@ -1571,6 +1581,10 @@ bool TextClass::readFloat(Lexer & lexrc)
 		case FT_DOCBOOKTAGTYPE:
 			lexrc.next();
 			docbooktagtype = lexrc.getString();
+			break;
+		case FT_DOCBOOKFLOATTYPE:
+			lexrc.next();
+			docbookfloattype = lexrc.getString();
 			break;
 		case FT_END:
 			getout = true;
@@ -1602,8 +1616,9 @@ bool TextClass::readFloat(Lexer & lexrc)
 		}
 		Floating fl(type, placement, ext, within, style, name,
 			listname, listcommand, refprefix, allowed_placement,
-			htmltag, htmlattr, htmlstyle, docbookattr,
-			docbooktagtype, required, usesfloat, ispredefined,
+			htmltag, htmlattr, htmlstyle, docbooktag, docbookattr,
+			docbooktagtype, docbookfloattype, docbookcaption,
+			required, usesfloat, ispredefined,
 	        allowswide, allowssideways);
 		floatlist_.newFloat(fl);
 		// each float has its own counter
