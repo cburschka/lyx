@@ -1575,6 +1575,9 @@ bool TextClass::readFloat(Lexer & lexrc)
 		case FT_END:
 			getout = true;
 			break;
+		default:
+			LYXERR0("Unhandled value " << le << " in TextClass::readFloat.");
+			break;
 		}
 	}
 
