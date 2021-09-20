@@ -46,4 +46,9 @@ InsetLayout "Flex:LilyPond"
 	    Color             foreground
 	  EndFont
 	EndArgument
+    DocBookNotInPara      true
+    DocBookWrapperTag     mediaobject
+    DocBookTag            textobject
+    DocBookInnerTag       programlisting
+    DocBookInnerAttr      "language='lilypond' role='fragment verbatim staffsize=16 ragged-right relative=2'"
 End

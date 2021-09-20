@@ -343,7 +343,7 @@ void makeParagraph(
 	// We do not really want to wrap that whole thing in a <div>...</div>.
 	bool special_case = false;
 	Inset const *specinset = par->size() == 1 ? par->getInset(0) : nullptr;
-	if (specinset && !specinset->getLayout().htmlisblock()) { // TODO: Convert htmlisblock to a DocBook parameter?
+	if (specinset && !specinset->getLayout().htmlisblock()) { // TODO: Convert htmlisblock to a DocBook parameter? docbooknotinpara should be enough in most cases.
 		Layout const &style = par->layout();
 		FontInfo const first_font = style.labeltype == LABEL_MANUAL ?
 									style.labelfont : style.font;
