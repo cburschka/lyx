@@ -836,7 +836,7 @@ void xml::openTag(XMLStream & xs, const std::string & tag, const docstring & att
 
 void xml::closeTag(XMLStream & xs, const docstring & tag, const std::string & tagtype)
 {
-	if (tag.empty() || tag == "NONE")
+	if (tag.empty() || tag == "NONE" || tag == "IGNORE")
 		return;
 
 	if (tag == "para" || tagtype == "paragraph") // Special case for <para>: always considered as a paragraph.
