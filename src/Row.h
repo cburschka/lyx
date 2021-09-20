@@ -378,6 +378,8 @@ private:
 	bool changebar_ = false;
 };
 
+std::ostream & operator<<(std::ostream & os, Row::Elements const & elts);
+
 
 /**
  * Each paragraph is broken up into a number of rows on the screen.

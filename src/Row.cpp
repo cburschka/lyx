@@ -275,6 +275,17 @@ ostream & operator<<(ostream & os, Row::Element const & e)
 }
 
 
+ostream & operator<<(ostream & os, Row::Elements const & elts)
+{
+	double x = 0;
+	for (Row::Element const & e : elts) {
+		os << "x=" << x << " => " << e << endl;
+		x += e.full_width();
+	}
+	return os;
+}
+
+
 ostream & operator<<(ostream & os, Row const & row)
 {
 	os << " pos: " << row.pos_ << " end: " << row.end_
@@ -286,11 +297,11 @@ ostream & operator<<(ostream & os, Row const & row)
 	   << " separator: " << row.separator
 	   << " label_hfill: " << row.label_hfill
 	   << " row_boundary: " << row.right_boundary() << "\n";
+	// We cannot use the operator above, unfortunately
 	double x = row.left_margin;
-	Row::Elements::const_iterator it = row.elements_.begin();
-	for ( ; it != row.elements_.end() ; ++it) {
-		os << "x=" << x << " => " << *it << endl;
-		x += it->full_width();
+	for (Row::Element const & e : row.elements_) {
+		os << "x=" << x << " => " << e << endl;
+		x += e.full_width();
 	}
 	return os;
 }
