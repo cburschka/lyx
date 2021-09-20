@@ -156,6 +156,12 @@ public:
 	///
 	std::string docbookattr() const { return docbookattr_; }
 	///
+	std::string docbookinnertag() const { return docbookinnertag_; }
+	///
+	std::string docbookinnertagtype() const;
+	///
+	std::string docbookinnerattr() const { return docbookinnerattr_; }
+	///
 	std::string const & docbookininfo() const;
 	///
 	bool docbooksection() const { return docbooksection_; }
@@ -318,6 +324,12 @@ private:
 	mutable std::string docbooktagtype_;
 	///
 	std::string docbookattr_;
+	///
+	std::string docbookinnertag_;
+	///
+	mutable std::string docbookinnertagtype_;
+	///
+	std::string docbookinnerattr_;
 	///
 	mutable std::string docbookininfo_;
 	///

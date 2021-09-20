@@ -686,6 +686,9 @@ void InsetText::docbook(XMLStream & xs, OutputParams const & rp, XHTMLOptions op
 				attrs += from_ascii(" xlink:href=\"") + text_.asString() + from_ascii("\"");
 			xml::openTag(xs, il.docbooktag(), attrs, il.docbooktagtype());
 		}
+
+		if (!il.docbookinnertag().empty() && il.docbookinnertag() != "NONE" && il.docbookinnertag() != "IGNORE")
+			xml::openTag(xs, il.docbookinnertag(), il.docbookinnerattr(), il.docbookinnertagtype());
 	}
 
 	// - Think about the arguments before the paragraph.
@@ -732,6 +735,9 @@ void InsetText::docbook(XMLStream & xs, OutputParams const & rp, XHTMLOptions op
 
 		if (!il.docbookitemwrappertag().empty() && il.docbookitemwrappertag() != "NONE" && il.docbookitemwrappertag() != "IGNORE")
 			xml::closeTag(xs, il.docbookitemwrappertag(), il.docbookitemwrappertagtype());
+
+		if (!il.docbookinnertag().empty() && il.docbookinnertag() != "NONE" && il.docbookinnertag() != "IGNORE")
+			xml::closeTag(xs, il.docbookinnertag(), il.docbookinnertagtype());
 
 		if (!il.docbooktag().empty() && il.docbooktag() != "NONE" && il.docbooktag() != "IGNORE")
 			xml::closeTag(xs, il.docbooktag(), il.docbooktagtype());

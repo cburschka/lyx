@@ -45,6 +45,7 @@ InsetLayout "Flex:LilyPond"
 	  LabelFont
 	    Color             foreground
 	  EndFont
+      DocBookTag          IGNORE
 	EndArgument
     DocBookNotInPara      true
     DocBookWrapperTag     mediaobject

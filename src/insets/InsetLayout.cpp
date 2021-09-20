@@ -107,6 +107,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		IL_DOCBOOKITEMWRAPPERTAG,
 		IL_DOCBOOKITEMWRAPPERTAGTYPE,
 		IL_DOCBOOKITEMWRAPPERATTR,
+		IL_DOCBOOKINNERTAG,
+		IL_DOCBOOKINNERTAGTYPE,
+		IL_DOCBOOKINNERATTR,
         IL_DOCBOOKNOFONTINSIDE,
 		IL_INTOC,
 		IL_ISTOCCAPTION,
@@ -156,6 +159,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		{ "docbookargumentbeforemaintag", IL_DOCBOOKARGUMENTBEFOREMAINTAG },
 		{ "docbookattr", IL_DOCBOOKATTR },
 		{ "docbookininfo", IL_DOCBOOKININFO },
+		{ "docbookinnerattr", IL_DOCBOOKINNERATTR },
+		{ "docbookinnertag", IL_DOCBOOKINNERTAG },
+		{ "docbookinnertagtype", IL_DOCBOOKINNERTAGTYPE },
 		{ "docbookitemattr", IL_DOCBOOKITEMATTR },
 		{ "docbookitemtag", IL_DOCBOOKITEMTAG },
 		{ "docbookitemtagtype", IL_DOCBOOKITEMTAGTYPE },
@@ -521,6 +527,15 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		case IL_DOCBOOKTAGTYPE:
 			lex >> docbooktagtype_;
 			break;
+		case IL_DOCBOOKINNERTAG:
+			lex >> docbookinnertag_;
+			break;
+		case IL_DOCBOOKINNERATTR:
+			lex >> docbookinnerattr_;
+			break;
+		case IL_DOCBOOKINNERTAGTYPE:
+			lex >> docbookinnertagtype_;
+			break;
 		case IL_DOCBOOKININFO:
 			lex >> docbookininfo_;
 			break;
@@ -711,6 +726,14 @@ std::string InsetLayout::docbooktagtype() const
 	if (docbooktagtype_ != "block" && docbooktagtype_ != "paragraph" && docbooktagtype_ != "inline")
 		docbooktagtype_ = "block";
 	return docbooktagtype_;
+}
+
+
+std::string InsetLayout::docbookinnertagtype() const
+{
+	if (docbookinnertagtype_ != "block" && docbookinnertagtype_ != "paragraph" && docbookinnertagtype_ != "inline")
+		docbookinnertagtype_ = "block";
+	return docbookinnertagtype_;
 }
 
 
