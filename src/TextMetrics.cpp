@@ -1050,6 +1050,7 @@ Row newRow(TextMetrics const & tm, pit_type pit, pos_type pos, bool is_rtl)
 	nrow.pos(pos);
 	nrow.left_margin = tm.leftMargin(pit, pos);
 	nrow.right_margin = tm.rightMargin(pit);
+	nrow.setRTL(is_rtl);
 	if (is_rtl)
 		swap(nrow.left_margin, nrow.right_margin);
 	// Remember that the row width takes into account the left_margin
@@ -1059,7 +1060,7 @@ Row newRow(TextMetrics const & tm, pit_type pit, pos_type pos, bool is_rtl)
 }
 
 
-void cleanupRow(Row & row, bool at_end, bool is_rtl)
+void cleanupRow(Row & row, bool at_end)
 {
 	if (row.empty()) {
 		row.endpos(0);
@@ -1074,7 +1075,7 @@ void cleanupRow(Row & row, bool at_end, bool is_rtl)
 	// boundary exists when there was no space at the end of row
 	row.right_boundary(!at_end && row.back().endpos == row.endpos());
 	// make sure that the RTL elements are in reverse ordering
-	row.reverseRTL(is_rtl);
+	row.reverseRTL();
 }
 
 
@@ -1118,7 +1119,7 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 		                             : fcit->row_flags;
 		if (rows.empty() || needsRowBreak(f1, f2)) {
 			if (!rows.empty())
-				cleanupRow(rows.back(), false, is_rtl);
+				cleanupRow(rows.back(), false);
 			pos_type pos = rows.empty() ? 0 : rows.back().endpos();
 			rows.push_back(newRow(*this, bigrow.pit(), pos, is_rtl));
 			// the width available for the row.
@@ -1152,7 +1153,7 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 	}
 
 	if (!rows.empty()) {
-		cleanupRow(rows.back(), true, is_rtl);
+		cleanupRow(rows.back(), true);
 		// Last row in paragraph is flushed
 		rows.back().flushed(true);
 	}

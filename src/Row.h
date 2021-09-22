@@ -301,9 +301,11 @@ public:
 	 * Find sequences of right-to-left elements and reverse them.
 	 * This should be called once the row is completely built.
 	 */
-	void reverseRTL(bool rtl_par);
+	void reverseRTL();
 	///
 	bool isRTL() const { return rtl_; }
+	///
+	void setRTL(bool rtl) { rtl_ = rtl; }
 	///
 	bool needsChangeBar() const { return changebar_; }
 	///

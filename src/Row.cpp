@@ -624,7 +624,7 @@ Row::Elements Row::shortenIfNeeded(int const w, int const next_width)
 }
 
 
-void Row::reverseRTL(bool const rtl_par)
+void Row::reverseRTL()
 {
 	pos_type i = 0;
 	pos_type const end = elements_.size();
@@ -636,14 +636,13 @@ void Row::reverseRTL(bool const rtl_par)
 			++j;
 		// if the direction is not the same as the paragraph
 		// direction, the sequence has to be reverted.
-		if (rtl != rtl_par)
+		if (rtl != rtl_)
 			reverse(elements_.begin() + i, elements_.begin() + j);
 		i = j;
 	}
 	// If the paragraph itself is RTL, reverse everything
-	if (rtl_par)
+	if (rtl_)
 		reverse(elements_.begin(), elements_.end());
-	rtl_ = rtl_par;
 }
 
 Row::const_iterator const
