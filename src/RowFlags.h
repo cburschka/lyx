@@ -32,22 +32,26 @@ enum RowFlags {
 	BreakBefore = 1 << 0,
 	// Avoid breaking row before this element
 	NoBreakBefore = 1 << 1,
+	// flush the row before this element (useful with BreakBefore)
+	FlushBefore = 1 << 2,
 	// force new (maybe empty) row after this element
-	AlwaysBreakAfter = 1 << 2,
+	AlwaysBreakAfter = 1 << 3,
 	// break row after this element if there are more elements
-	BreakAfter = 1 << 3,
+	BreakAfter = 1 << 4,
 	// break row whenever needed after this element
-	CanBreakAfter = 1 << 4,
+	CanBreakAfter = 1 << 5,
 	// Avoid breaking row after this element
-	NoBreakAfter = 1 << 5,
+	NoBreakAfter = 1 << 6,
 	// The contents of the row may be broken in two (e.g. string)
-	CanBreakInside = 1 << 6,
+	CanBreakInside = 1 << 7,
+	// Flush the row that ends with this element
+	Flush = 1 << 8,
 	// specify an alignment (left, right) for a display element
 	// (default is center)
-	AlignLeft = 1 << 7,
-	AlignRight = 1 << 8,
+	AlignLeft = 1 << 9,
+	AlignRight = 1 << 10,
 	// A display element breaks row at both ends
-	Display = BreakBefore | BreakAfter,
+	Display = FlushBefore | BreakBefore | BreakAfter,
 	// Flags that concern breaking after element
 	AfterFlags = AlwaysBreakAfter | BreakAfter | CanBreakAfter | NoBreakAfter
 };
