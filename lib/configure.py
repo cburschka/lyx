@@ -1311,6 +1311,7 @@ def checkConverterEntries():
                     #       even when requested with --pdf. This is a problem if a user
                     #       clicks View PDF after having done a View DVI. To circumvent
                     #       this, use different output folders for eps and pdf outputs.
+                    cmd = cmd.replace('"', '\\"')
                     addToRC(r'\converter lilypond-book latex     "' + cmd + ' --safe --lily-output-dir=ly-eps $$i"                                ""')
                     addToRC(r'\converter lilypond-book pdflatex  "' + cmd + ' --safe --pdf --latex-program=pdflatex --lily-output-dir=ly-pdf $$i" ""')
                     addToRC(r'\converter lilypond-book-ja platex "' + cmd + ' --safe --pdf --latex-program=platex --lily-output-dir=ly-pdf $$i" ""')
