@@ -143,7 +143,7 @@ private:
 	/// DocBook tag type (block, paragraph, inline)
 	mutable std::string docbook_tag_type_;
 	/// DocBook float type, to override float_type_ (figure, table, algorithm, video)
-	mutable std::string docbook_float_type_;
+	std::string docbook_float_type_;
 };
 
 

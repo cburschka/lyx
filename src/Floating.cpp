@@ -85,6 +85,10 @@ Floating::Floating(string const & type, string const & placement,
 		// Specific floats for achemso.
 		else if (docbook_float_type_ == "figure" && achemso.find(floattype_) != achemso.end())
 			docbook_attr_ += " type='" + floattype_ + "'";
+
+		// Finally, merge in the attributes given in argument.
+		if (!docbookAttr.empty())
+			docbook_attr_ += " " + docbookAttr;
 	}
 }
 
