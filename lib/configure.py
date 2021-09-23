@@ -1290,30 +1290,37 @@ def checkConverterEntries():
             logger.info('+  found LilyPond, but could not extract version number.')
     #
     path, lilypond_book = checkProg('a LilyPond book (LaTeX) -> LaTeX converter', ['lilypond-book'])
-    if (lilypond_book):
-        version_string = cmdOutput("lilypond-book --version")
-        match = re.match('(\S+)$', version_string)
-        if match:
-            version_number = match.groups()[0]
-            version = version_number.split('.')
-            if int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 13):
-                # Note: The --lily-output-dir flag is required because lilypond-book
-                #       does not process input again unless the input has changed,
-                #       even if the output format being requested is different. So
-                #       once a .eps file exists, lilypond-book won't create a .pdf
-                #       even when requested with --pdf. This is a problem if a user
-                #       clicks View PDF after having done a View DVI. To circumvent
-                #       this, use different output folders for eps and pdf outputs.
-                addToRC(r'\converter lilypond-book latex    "lilypond-book --safe --lily-output-dir=ly-eps $$i"                                ""')
-                addToRC(r'\converter lilypond-book pdflatex "lilypond-book --safe --pdf --latex-program=pdflatex --lily-output-dir=ly-pdf $$i" ""')
-                addToRC(r'\converter lilypond-book-ja platex "lilypond-book --safe --pdf --latex-program=platex --lily-output-dir=ly-pdf $$i" ""')
-                addToRC(r'\converter lilypond-book xetex    "lilypond-book --safe --pdf --latex-program=xelatex --lily-output-dir=ly-pdf $$i"  ""')
-                addToRC(r'\converter lilypond-book luatex   "lilypond-book --safe --pdf --latex-program=lualatex --lily-output-dir=ly-pdf $$i" ""')
-                addToRC(r'\converter lilypond-book dviluatex "lilypond-book --safe --latex-program=dvilualatex --lily-output-dir=ly-eps $$i" ""')
-                logger.info('+  found LilyPond-book version %s.' % version_number)
-            else:
-                logger.info('+  found LilyPond-book, but version %s is too old.' % version_number)
-        else:
+    if lilypond_book:
+        found_lilypond_book = False
+        # On Windows, the file lilypond-book is not directly callable, it must be passed as argument to python.
+        for cmd in ["lilypond-book", "python \"" + path + "/lilypond-book\""]:
+            version_string = cmdOutput(cmd + " --version")
+            if len(version_string) == 0:
+                continue
+            found_lilypond_book = True
+
+            match = re.match('(\S+)$', version_string)
+            if match:
+                version_number = match.groups()[0]
+                version = version_number.split('.')
+                if int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 13):
+                    # Note: The --lily-output-dir flag is required because lilypond-book
+                    #       does not process input again unless the input has changed,
+                    #       even if the output format being requested is different. So
+                    #       once a .eps file exists, lilypond-book won't create a .pdf
+                    #       even when requested with --pdf. This is a problem if a user
+                    #       clicks View PDF after having done a View DVI. To circumvent
+                    #       this, use different output folders for eps and pdf outputs.
+                    addToRC(r'\converter lilypond-book latex     "' + cmd + ' --safe --lily-output-dir=ly-eps $$i"                                ""')
+                    addToRC(r'\converter lilypond-book pdflatex  "' + cmd + ' --safe --pdf --latex-program=pdflatex --lily-output-dir=ly-pdf $$i" ""')
+                    addToRC(r'\converter lilypond-book-ja platex "' + cmd + ' --safe --pdf --latex-program=platex --lily-output-dir=ly-pdf $$i" ""')
+                    addToRC(r'\converter lilypond-book xetex     "' + cmd + ' --safe --pdf --latex-program=xelatex --lily-output-dir=ly-pdf $$i"  ""')
+                    addToRC(r'\converter lilypond-book luatex    "' + cmd + ' --safe --pdf --latex-program=lualatex --lily-output-dir=ly-pdf $$i" ""')
+                    addToRC(r'\converter lilypond-book dviluatex "' + cmd + ' --safe --latex-program=dvilualatex --lily-output-dir=ly-eps $$i" ""')
+                    logger.info('+  found LilyPond-book version %s.' % version_number)
+                else:
+                    logger.info('+  found LilyPond-book, but version %s is too old.' % version_number)
+        if not found_lilypond_book:
             logger.info('+  found LilyPond-book, but could not extract version number.')
     #
     checkProg('a Noteedit -> LilyPond converter', ['noteedit --export-lilypond $$i'],
