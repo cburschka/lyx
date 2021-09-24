@@ -27,6 +27,32 @@
 namespace lyx {
 namespace frontend {
 
+struct BreakAtKey
+{
+	bool operator==(BreakAtKey const & key) const {
+		return key.s == s && key.x == x && key.rtl == rtl && key.force == force;
+	}
+
+	docstring s;
+	int x;
+	bool rtl;
+	bool force;
+};
+
+static uint qHash(BreakAtKey const &);
+
+struct TextLayoutKey
+{
+	bool operator==(TextLayoutKey const & key) const {
+		return key.s == s && key.rtl == rtl && key.ws == ws;
+	}
+
+	docstring s;
+	bool rtl;
+	double ws;
+};
+
+
 class GuiFontMetrics : public FontMetrics
 {
 public:
@@ -94,9 +120,9 @@ private:
 	/// Cache of string widths
 	mutable Cache<docstring, int> strwidth_cache_;
 	/// Cache for breakAt
-	mutable Cache<docstring, std::pair<int, int>> breakat_cache_;
+	mutable Cache<BreakAtKey, std::pair<int, int>> breakat_cache_;
 	/// Cache for QTextLayout
-	mutable Cache<docstring, std::shared_ptr<QTextLayout>> qtextlayout_cache_;
+	mutable Cache<TextLayoutKey, std::shared_ptr<QTextLayout>> qtextlayout_cache_;
 
 	struct AscendDescend {
 		int ascent;

@@ -56,6 +56,8 @@ public:
 			return *obj;
 		return Val();
 	}
+	// Version that returns a pointer, and nullptr if the object is not present
+	Val * object_ptr(Key const & key) const { return Q::object(key); }
 	/// Synonymous for object, same remark as above.
 	Val operator[](Key const & key) const { return object(key); }
 	/// Everything from QCache except QCache::take.

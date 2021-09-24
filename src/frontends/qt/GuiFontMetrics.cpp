@@ -253,8 +253,8 @@ int GuiFontMetrics::rbearing(char_type c) const
 int GuiFontMetrics::width(docstring const & s) const
 {
 	PROFILE_THIS_BLOCK(width);
-	if (strwidth_cache_.contains(s))
-		return strwidth_cache_[s];
+	if (int * wid_p = strwidth_cache_.object_ptr(s))
+		return *wid_p;
 	PROFILE_CACHE_MISS(width);
 	/* Several problems have to be taken into account:
 	 * * QFontMetrics::width does not returns a wrong value with Qt5 with
@@ -328,14 +328,19 @@ int GuiFontMetrics::signedWidth(docstring const & s) const
 }
 
 
+uint qHash(TextLayoutKey const & key)
+{
+	double params = (2 * key.rtl - 1) * key.ws;
+	return std::qHash(key.s) ^ ::qHash(params);
+}
+
 shared_ptr<QTextLayout const>
 GuiFontMetrics::getTextLayout(docstring const & s, bool const rtl,
                               double const wordspacing) const
 {
 	PROFILE_THIS_BLOCK(getTextLayout);
-	docstring const s_cache =
-		s + (rtl ? "r" : "l") + convert<docstring>(wordspacing);
-	if (auto ptl = qtextlayout_cache_[s_cache])
+	TextLayoutKey key{s, rtl, wordspacing};
+	if (auto ptl = qtextlayout_cache_[key])
 		return ptl;
 	PROFILE_CACHE_MISS(getTextLayout);
 	auto const ptl = make_shared<QTextLayout>();
@@ -368,7 +373,7 @@ GuiFontMetrics::getTextLayout(docstring const & s, bool const rtl,
 	ptl->beginLayout();
 	ptl->createLine();
 	ptl->endLayout();
-	qtextlayout_cache_.insert(s_cache, ptl);
+	qtextlayout_cache_.insert(key, ptl);
 	return ptl;
 }
 
@@ -547,22 +552,27 @@ GuiFontMetrics::breakAt_helper(docstring const & s, int const x,
 }
 
 
+uint qHash(BreakAtKey const & key)
+{
+	int params = key.force + 2 * key.rtl + 4 * key.x;
+	return std::qHash(key.s) ^ ::qHash(params);
+}
+
+
 bool GuiFontMetrics::breakAt(docstring & s, int & x, bool const rtl, bool const force) const
 {
 	PROFILE_THIS_BLOCK(breakAt);
 	if (s.empty())
 		return false;
 
-	docstring const s_cache =
-		s + convert<docstring>(x) + (rtl ? "r" : "l") + (force ? "f" : "w");
+	BreakAtKey key{s, x, rtl, force};
 	pair<int, int> pp;
-
-	if (breakat_cache_.contains(s_cache))
-		pp = breakat_cache_[s_cache];
+	if (auto * pp_ptr = breakat_cache_.object_ptr(key))
+		pp = *pp_ptr;
 	else {
 		PROFILE_CACHE_MISS(breakAt);
 		pp = breakAt_helper(s, x, rtl, force);
-		breakat_cache_.insert(s_cache, pp, s_cache.size() * sizeof(char_type));
+		breakat_cache_.insert(key, pp, sizeof(key) + s.size() * sizeof(char_type));
 	}
 	if (pp.first == -1)
 		return false;
