@@ -39,8 +39,6 @@ struct BreakAtKey
 	bool force;
 };
 
-static uint qHash(BreakAtKey const &);
-
 struct TextLayoutKey
 {
 	bool operator==(TextLayoutKey const & key) const {
