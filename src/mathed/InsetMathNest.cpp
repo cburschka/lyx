@@ -1666,7 +1666,7 @@ void InsetMathNest::lfunMouseRelease(Cursor & cur, FuncRequest & cmd)
 bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 {
         // try auto-correction
-        if (lyxrc.autocorrection_math && cur.pos() != 0
+        if (lyxrc.autocorrection_math && cur.pos() != 0 && !cur.selection()
                   && math_autocorrect(cur, c))
                 return true;
 
