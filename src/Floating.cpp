@@ -42,8 +42,8 @@ Floating::Floating(string const & type, string const & placement,
 	  usesfloatpkg_(usesfloat), ispredefined_(ispredefined),
 	  allowswide_(allowswide), allowssideways_(allowssideways),
 	  html_tag_(htmlTag), html_attrib_(htmlAttrib), html_style_(htmlStyle),
-	  docbook_tag_(docbookTag), docbook_tag_type_(docbookTagType),
-	  docbook_caption_(docbookCaption)
+	  docbook_caption_(docbookCaption), docbook_tag_(docbookTag),
+	  docbook_tag_type_(docbookTagType)
 {
 	// Implement some edge cases for DocBook. Both docbook_float_type_ and docbook_attr_ must be computed
 	// based on the given value of docbookFloatType; docbook_tag_ can still be guessed without correlation.
