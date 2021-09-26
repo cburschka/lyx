@@ -13,6 +13,8 @@
 # This script copies the original DocBook file (directly produced by LyX) to the output DocBook file,
 # potentially applying a post-processing step. For now, the only implemented post-processing step is
 # LilyPond.
+# lilypond_book_command is either directly the binary to call OR the equivalent Python script that is
+# not directly executable.
 # /!\ The original file may be modified by this script!
 
 
@@ -28,6 +30,7 @@ def need_lilypond(file):
 
 
 def copy_docbook(args):
+    print(args)
     if len(args) != 4:
         print('Exactly four arguments are expected, only %s found: %s.' % (len(args), args))
         sys.exit(1)
@@ -37,7 +40,7 @@ def copy_docbook(args):
     in_file = args[2]
     out_file = args[3]
 
-    has_lilypond = lilypond_command != ""
+    has_lilypond = lilypond_command != "" and lilypond_command != "none"
 
     # Apply LilyPond to the original file if available and needed.
     if has_lilypond and need_lilypond(in_file):
@@ -47,11 +50,15 @@ def copy_docbook(args):
         in_lily_file = in_file.replace(".xml", ".lyxml")
         shutil.move(in_file, in_lily_file)
 
-        # Start LilyPond on the copied file.
+        # Start LilyPond on the copied file. First test the binary, then check if adding Python helps.
         command = lilypond_command + ' --format=docbook ' + in_lily_file
+        print(command)
         if os.system(command) != 0:
-            print('Error from LilyPond')
-            sys.exit(1)
+            command = 'python -tt "' + lilypond_command + '" --format=docbook ' + in_lily_file
+            print(command)
+            if os.system(command) != 0:
+                print('Error from LilyPond')
+                sys.exit(1)
 
         # Now, in_file should have the LilyPond-processed contents.
 

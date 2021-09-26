@@ -1015,9 +1015,9 @@ def checkConverterEntries():
         xpath = 'none'
     global java
     if xsltproc != '':
-        addToRC('\\converter docbook5 epub "python $$s/scripts/docbook2epub.py none none \\"' + xsltproc + '\\" ' + xpath + ' $$i $$r $$o" ""')
+        addToRC(r'\converter docbook5 epub "python $$s/scripts/docbook2epub.py none none \"' + xsltproc + r'\" ' + xpath + ' $$i $$r $$o" ""')
     elif java != '':
-        addToRC('\\converter docbook5 epub "python $$s/scripts/docbook2epub.py \\"' + java + '\\" none none ' + xpath + ' $$i $$r $$o" ""')
+        addToRC(r'\converter docbook5 epub "python $$s/scripts/docbook2epub.py \"' + java + r'\" none none ' + xpath + ' $$i $$r $$o" ""')
     #
     checkProg('a MS Word Office Open XML converter -> LaTeX', ['pandoc -s -f docx -o $$o -t latex $$i'],
         rc_entry = [ r'\converter word2      latex      "%%"	""' ])
@@ -1311,13 +1311,24 @@ def checkConverterEntries():
                     #       even when requested with --pdf. This is a problem if a user
                     #       clicks View PDF after having done a View DVI. To circumvent
                     #       this, use different output folders for eps and pdf outputs.
-                    cmd = cmd.replace('"', '\\"')
+                    cmd = cmd.replace('"', r'\"')
                     addToRC(r'\converter lilypond-book latex     "' + cmd + ' --safe --lily-output-dir=ly-eps $$i"                                ""')
                     addToRC(r'\converter lilypond-book pdflatex  "' + cmd + ' --safe --pdf --latex-program=pdflatex --lily-output-dir=ly-pdf $$i" ""')
                     addToRC(r'\converter lilypond-book-ja platex "' + cmd + ' --safe --pdf --latex-program=platex --lily-output-dir=ly-pdf $$i" ""')
                     addToRC(r'\converter lilypond-book xetex     "' + cmd + ' --safe --pdf --latex-program=xelatex --lily-output-dir=ly-pdf $$i"  ""')
                     addToRC(r'\converter lilypond-book luatex    "' + cmd + ' --safe --pdf --latex-program=lualatex --lily-output-dir=ly-pdf $$i" ""')
                     addToRC(r'\converter lilypond-book dviluatex "' + cmd + ' --safe --latex-program=dvilualatex --lily-output-dir=ly-eps $$i" ""')
+
+                    # Also create the entry to apply LilyPond on DocBook files. However,
+                    # command must be passed as argument, and it might already have
+                    # quoted parts. LyX doesn't yet handle double-quoting of commands.
+                    # Hence, pass as argument either cmd (if it's a simple command) or
+                    # the Python file that should be called (typical on Windows).
+                    docbook_lilypond_cmd = cmd
+                    if "python" in docbook_lilypond_cmd:
+                        docbook_lilypond_cmd = '"' + path + '/lilypond-book"'
+                    addToRC(r'\copier docbook5 "python $$s/scripts/docbook_copy.py ' + docbook_lilypond_cmd.replace('"', r'\"') + r' $$i $$o"')
+
                     logger.info('+  found LilyPond-book version %s.' % version_number)
                 else:
                     logger.info('+  found LilyPond-book, but version %s is too old.' % version_number)
