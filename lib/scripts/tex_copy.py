@@ -46,7 +46,6 @@ def main(argv):
         error("%s is no absolute file name.\n%s"\
               % abs_to_file, usage(argv[0]))
     to_dir, rel_to_file = os.path.split(abs_to_file)
-    to_base, to_ext = os.path.splitext(rel_to_file)
 
     # latex file name
     latex_file = argv[3]
