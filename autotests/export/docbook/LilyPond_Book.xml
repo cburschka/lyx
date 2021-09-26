@@ -3,11 +3,13 @@
   See https://www.lyx.org/ for more information -->
 <article xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
 <title>LilyPond-book and LyX</title>
-<mediaobject>
-<textobject>
-<programlisting language='lilypond' role='fragment verbatim staffsize=16 ragged-right relative=2'>
+<programlisting>
+
 \relative c'' {  g a b c}
-</programlisting>
-</textobject>
-</mediaobject>
+</programlisting><mediaobject><imageobject role="latex">
+  <imagedata fileref="ff\lily-3ed27d76.pdf" format="PDF"/>
+</imageobject>
+<imageobject role="html">
+  <imagedata fileref="ff\lily-3ed27d76.png" format="PNG"/>
+</imageobject></mediaobject>
 </article>

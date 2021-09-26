@@ -77,8 +77,14 @@ class DocBookCopier:
         os.unlink(self.in_file)
 
     def postprocess_output_for_lilypond(self):
-        # TODO.
         pass
+        # # Erase the <programlisting> that LilyPond left behind in the XML.
+        # in_file_before = self.in_file + '.tmp'
+        # shutil.move(self.in_file, in_file_before)
+        # with open(in_file_before, 'r', encoding='utf-8') as f_before, open(self.in_file, 'w', encoding='utf-8') as f_after:
+        #     looking_for_end_programlisting = False
+        #     for line in f_before:
+        #         # TODO: find an efficient way to distinguish those left-overs.
 
     def call_lilypond(self):
         # LilyPond requires that its input file has the .lyxml extension (plus bugs in LilyPond).
@@ -125,9 +131,10 @@ class DocBookCopier:
         if failed:
             sys.exit(1)
 
-        # Now, in_file should have the LilyPond-processed contents.
         # LilyPond has a distressing tendency to leave the raw LilyPond code in the new file.
         self.postprocess_output_for_lilypond()
+
+        # Now, in_file should have the clean LilyPond-processed contents.
 
     def copy_lilypond_generated_images(self):
         # LilyPond generates a lot of files in LyX' temporary folder, within the ff folder: source LilyPond files
@@ -135,7 +142,8 @@ class DocBookCopier:
         in_generated_images_folder = os.path.join(self.in_folder, 'ff')
         out_generated_images_folder = os.path.join(self.out_folder, 'ff')
 
-        os.mkdir(out_generated_images_folder)
+        if not os.path.isdir(out_generated_images_folder):
+            os.mkdir(out_generated_images_folder)
 
         for img in os.listdir(in_generated_images_folder):
             if not img.endswith('.png') and not img.endswith('.pdf'):
