@@ -85,6 +85,7 @@ class DocBookCopier:
         #     looking_for_end_programlisting = False
         #     for line in f_before:
         #         # TODO: find an efficient way to distinguish those left-overs.
+        # https://lists.gnu.org/archive/html/bug-lilypond/2021-09/msg00040.html
 
     def call_lilypond(self):
         # LilyPond requires that its input file has the .lyxml extension (plus bugs in LilyPond).
@@ -97,7 +98,8 @@ class DocBookCopier:
             os.environ['PATH'] += os.pathsep + self.lilypond_folder
 
         # Make LilyPond believe it is working from the temporary LyX directory. Otherwise, it tries to find files
-        # starting from LyX's working directory... LilyPond bug.
+        # starting from LyX's working directory... LilyPond bug, most likely.
+        # https://lists.gnu.org/archive/html/bug-lilypond/2021-09/msg00041.html
         os.chdir(self.in_folder)
 
         # Start LilyPond on the copied file. First test the binary, then check if adding Python helps.
