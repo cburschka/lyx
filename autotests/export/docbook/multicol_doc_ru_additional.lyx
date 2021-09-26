@@ -1,0 +1,1507 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 599
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+  \frontmatter
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+ \cleardoublepage
+ \mainmatter
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+
+% for reduces the overfull lines
+\tolerance 1414
+\hbadness 1414
+\emergencystretch 1.5em
+\hfuzz 0.3pt
+
+% Use serif font
+\addtokomafont{disposition}{\rmfamily}
+\addtokomafont{descriptionlabel}{\rmfamily}
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children no
+\language russian
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype true
+\use_dash_ligatures true
+\graphics default
+\default_output_format pdf2
+\output_sync 0
+\bibtex_command default
+\index_command makeindex
+\float_placement class
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Дополнительные возможности LyX"
+\pdf_author "Команда разработки LyX"
+\pdf_subject "Документация LyX - Дополнительные возможности"
+\pdf_keywords "LyX"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\use_lineno 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip halfline
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style russian
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle headings
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\docbook_table_output 0
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Дополнительные возможности \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Chapter
+Введение
+\end_layout
+
+\begin_layout Standard
+Пример:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+\noindent
+
+\series bold
+\size small
+\lang english
+The Adventure of the Empty House
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+by Sir Arthur Conan Doyle
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+It was in the spring of the year 1894 that all London was interested, and
+ the fashionable world dismayed, by the murder of the Honourable Ronald
+ Adair under most unusual and inexplicable circumstances.
+ The public has already learned those particulars of the crime which came
+ out in the police investigation, but a good deal was suppressed upon that
+ occasion, since the case for the prosecution was so overwhelmingly strong
+ that it was not necessary to bring forward all the facts.
+ Only now, at the end of nearly ten years, am I allowed to supply those
+ missing links which make up the whole of that remarkable chain.
+ The crime was of interest in itself, but that interest was as nothing to
+ me compared to the inconceivable sequel, which afforded me the greatest
+ shock and surprise of any event in my adventurous life.
+ Even now, after this long interval, I find myself thrilling as I think
+ of it, and feeling once more that sudden flood of joy, amazement, and increduli
+ty which utterly submerged my mind.
+ Let me say to that public, which has shown some interest in those glimpses
+ which I have occasionally given them of the thoughts and actions of a very
+ remarkable man, that they are not to blame me if I have not shared my knowledge
+ with them, for I should have considered it my first duty to do so, had
+ I not been barred by a positive prohibition from his own lips, which was
+ only withdrawn upon the third of last month.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Пример с 3
+\begin_inset space ~
+\end_inset
+
+колонками:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+3
+\end_layout
+
+\end_inset
+
+
+\lang english
+It can be imagined that my close intimacy with Sherlock Holmes had interested
+ me deeply in crime, and that after his disappearance I never failed to
+ read with care the various problems which came before the public.
+ And I even attempted, more than once, for my own private satisfaction,
+ to employ his methods in their solution, though with indifferent success.
+ There was none, however, which appealed to me like this tragedy of Ronald
+ Adair.
+ As I read the evidence at the inquest, which led up to a verdict of willful
+ murder against some person or persons unknown, I realized more clearly
+ than I had ever done the loss which the community had sustained by the
+ death of Sherlock Holmes.
+ There were points about this strange business which would, I was sure,
+ have specially appealed to him, and the efforts of the police would have
+ been supplemented, or more probably anticipated, by the trained observation
+ and the alert mind of the first criminal agent in Europe.
+ All day, as I drove upon my round, I turned over the case in my mind and
+ found no explanation which appeared to me to be adequate.
+ At the risk of telling a twice-told tale, I will recapitulate the facts
+ as they were known to the public at the conclusion of the inquest.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Можно иметь до 10 колонок, но следует учитывать степень удобства при чтении
+ такого фрагмента документа.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Колонки внутри колонок
+\end_layout
+
+\begin_layout Standard
+Также можно иметь колонки внутри колонок:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\lang english
+The Honourable Ronald Adair was the second son of the Earl of Maynooth,
+ at that time governor of one of the Australian colonies.
+ Adair's mother had returned from Australia to undergo the operation for
+ cataract, and she, her son Ronald, and her daughter Hilda were living together
+ at 427 Park Lane.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\lang english
+The youth moved in the best society
+\begin_inset space ~
+\end_inset
+
+– had, so far as was known, no enemies and no particular vices.
+ He had been engaged to Miss Edith Woodley, of Carstairs, but the engagement
+ had been broken off by mutual consent some months before, and there was
+ no sign that it had left any very profound feeling behind it.
+ For the rest {sic} the man's life moved in a narrow and conventional circle,
+ for his habits were quiet and his nature unemotional.
+ Yet it was upon this easy-going young aristocrat that death came, in most
+ strange and unexpected form, between the hours of ten and eleven-twenty
+ on the night of March 30, 1894.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\lang english
+Ronald Adair was fond of cards
+\begin_inset space ~
+\end_inset
+
+– playing continually, but never for such stakes as would hurt him.
+ He was a member of the Baldwin, the Cavendish, and the Bagatelle card clubs.
+ It was shown that, after dinner on the day of his death, he had played
+ a rubber of whist at the latter club.
+ He had also played there in the afternoon.
+
+\size default
+ 
+\size footnotesize
+The evidence of those who had played with him
+\begin_inset space ~
+\end_inset
+
+– Mr.
+ Murray, Sir John Hardy, and Colonel Moran
+\begin_inset space ~
+\end_inset
+
+– showed that the game was whist, and that there was a fairly equal fall
+ of the cards.
+ Adair might have lost five pounds, but not more.
+ His fortune was a considerable one, and such a loss could not in any way
+ affect him.
+ He had played nearly every day at one club or other, but he was a cautious
+ player, and usually rose a winner.
+ It came out in evidence that, in partnership with Colonel Moran, he had
+ actually won as much as four hundred and twenty pounds in a sitting, some
+ weeks before, from Godfrey Milner and Lord Balmoral.
+ So much for his recent history as it came out at the inquest.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Дополнительные примеры
+\end_layout
+
+\begin_layout Standard
+Примеры в этом разделе демонстрируют некоторые дополнительные особенности
+ организации мульти-колонок.
+\end_layout
+
+\begin_layout Standard
+Дополнительные возможности использования нескольких колонок см.
+ в 
+\begin_inset CommandInset href
+LatexCommand href
+name "документации"
+target "http://mirror.ctan.org/macros/latex/required/tools/multicol.pdf"
+literal "false"
+
+\end_inset
+
+ \SpecialChar LaTeX
+-пакета 
+\series bold
+multicol
+\series default
+.
+\end_layout
+
+\begin_layout Subsubsection
+Введение
+\end_layout
+
+\begin_layout Standard
+Чтобы добавить текст введения для нескольких колонок, установите курсор
+ во вставку с многоколоночностью и используйте меню 
+\family sans
+Вставка\SpecialChar menuseparator
+Введение
+\family default
+.
+ Введите текст введения во вставке.
+\begin_inset Newline newline
+\end_inset
+
+Пример с некоторым текстом введения:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+And the story continues and continues and continues and continues\SpecialChar ldots
+
+\end_layout
+
+\end_inset
+
+
+\size small
+\lang english
+On the evening of the crime, he returned from the club exactly at ten.
+ His mother and sister were out spending the evening with a relation.
+ The servant deposed that she heard him enter the front room on the second
+ floor, generally used as his sitting-room.
+ She had lit a fire there, and as it smoked she had opened the window.
+ No sound was heard from the room until eleven-twenty, the hour of the return
+ of Lady Maynooth and her daughter.
+ Desiring to say good-night, she attempted to enter her son's room.
+ The door was locked on the inside, and no answer could be got to their
+ cries and knocking.
+ Help was obtained, and the door forced.
+ The unfortunate young man was found lying near the table.
+ His head had been horribly mutilated by an expanding revolver bullet, but
+ no weapon of any sort was to be found in the room.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Вы также можете использовать заголовок раздела в качестве введения, если
+ используете команду раздела как 
+\family sans
+Код TeX
+\family default
+.
+ Например, команда
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+subsection{Заголовок}
+\end_layout
+
+\begin_layout Standard
+создает подраздел.
+ В этом примере, введение — это заголовок подраздела:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+subsubsection{
+\end_layout
+
+\end_inset
+
+Этот заголовок подраздела — введение
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\size small
+\lang english
+A minute examination of the circumstances served only to make the case more
+ complex.
+ In the first place, no reason could be given why the young man should have
+ fastened the door upon the inside.
+ There was the possibility that the murderer had done this, and had afterwards
+ escaped by the window.
+ The drop was at least twenty feet, however, and a bed of crocuses in full
+ bloom lay beneath.
+ Neither the flowers nor the earth showed any sign of having been disturbed,
+ nor were there any marks upon the narrow strip of grass which separated
+ the house from the road.
+ Apparently, therefore, it was the young man himself who had fastened the
+ door.
+ But how did he come by his death? No one could have climbed up to the window
+ without leaving traces.
+ Suppose a man had fired through the window, he would indeed be a remarkable
+ shot who could with a revolver inflict so deadly a wound.
+ Again, Park Lane is a frequented thoroughfare; there is a cab stand within
+ a hundred yards of the house.
+ No one had heard a shot.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Если вертикальное пространство меньше, чем 6 строк текста, оставшихся на
+ странице в начале мульти-колонок, разрыв страницы будет вставлен перед
+ этими колонками.
+ В зависимости от количества строк текста введения вы можете изменить размер
+ этого пространства.
+ Это делается путем установки курсора во вставку из нескольких колонок за
+ введением (если таковое имеется) и используя меню 
+\family sans
+Вставка\SpecialChar menuseparator
+Пробел перед разрывом страницы
+\family default
+.
+ Вставьте во вставку требуемую величину промежутка, например, «5cm».
+\begin_inset Newline newline
+\end_inset
+
+В следующем примере вертикальное расстояние установлено на 7 текстовых строк
+ с помощью 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+7
+\backslash
+baselineskip
+\end_layout
+
+\end_inset
+
+ (где команда 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+baselineskip
+\end_layout
+
+\end_inset
+
+ должна быть вставлена как \SpecialChar TeX
+-код):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+7
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+baselineskip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\size small
+\lang english
+On the evening of the crime, he returned from the club exactly at ten.
+ His mother and sister were out spending the evening with a relation.
+ The servant deposed that she heard him enter the front room on the second
+ floor, generally used as his sitting-room.
+ She had lit a fire there, and as it smoked she had opened the window.
+ No sound was heard from the room until eleven-twenty, the hour of the return
+ of Lady Maynooth and her daughter.
+ Desiring to say good-night, she attempted to enter her son's room.
+ The door was locked on the inside, and no answer could be got to their
+ cries and knocking.
+ Help was obtained, and the door forced.
+ The unfortunate young man was found lying near the table.
+ His head had been horribly mutilated by an expanding revolver bullet, but
+ no weapon of any sort was to be found in the room.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Окружающее пространство
+\end_layout
+
+\begin_layout Standard
+Размер пространства до и после нескольких колонок можно изменить с помощью
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+multicolsep
+\end_layout
+
+\end_inset
+
+.
+ Например, команда
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+setlength{
+\backslash
+multicolsep}{3cm}
+\end_layout
+
+\begin_layout Standard
+в \SpecialChar TeX
+-коде меняет значение на 3
+\begin_inset space \thinspace{}
+\end_inset
+
+см.
+ Изменение необходимо сделать до начала колонок.
+ Предустановленное значение — 13
+\begin_inset space \thinspace{}
+\end_inset
+
+pt.
+\end_layout
+
+\begin_layout Standard
+Для этого примера 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+multicolsep
+\end_layout
+
+\end_inset
+
+ устанавливается в 2.5
+\begin_inset space \thinspace{}
+\end_inset
+
+cm:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+multicolsep}{2.5cm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+All day I turned these facts over in my mind, endeavouring to hit upon some
+ theory which could reconcile them all, and to find that line of least resistanc
+e which my poor friend had declared to be the starting-point of every investigat
+ion.
+ I confess that I made little progress.
+ In the evening I strolled across the Park, and found myself about six o'clock
+ at the Oxford Street end of Park Lane.
+ A group of loafers upon the pavements, all staring up at a particular window,
+ directed me to the house which I had come to see.
+ A tall, thin man with coloured glasses, whom I strongly suspected of being
+ a plain-clothes detective, was pointing out some theory of his own, while
+ the others crowded round to listen to what he said.
+ I got as near him as I could, but his observations seemed to me to be absurd,
+ so I withdrew again in some disgust.
+ As I did so I struck against an elderly, deformed man, who had been behind
+ me, and I knocked down several books which he was carrying.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Примечание.
+
+\series default
+ Значения, устанавливаемые с помощью 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+setlength
+\end_layout
+
+\end_inset
+
+, будут использоваться для всех последующих мульти-колонок, пока не будут
+ изменены снова.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+multicolsep}{13pt}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+возврат к значению по умолчанию
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Разрывы колонок
+\end_layout
+
+\begin_layout Standard
+Разрыв колонки можно принудительно выполнить, вставив команду 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+columnbreak{}
+\end_layout
+
+\end_inset
+
+ в \SpecialChar TeX
+-коде в ту позицию в тексте, где колонка должна быть разорвана.
+ Обратите внимание, что в большинстве случаев это приводит к появлению пробелов
+ в тексте.
+\begin_inset Newline newline
+\end_inset
+
+Пример:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+You're surprised to see me, sir,
+\begin_inset Quotes erd
+\end_inset
+
+ said he, in a strange, croaking voice.
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+I acknowledged that I was.
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+Well, I've a conscience, sir, and when I chanced to see you go into this
+ house, as I came hobbling after you, I thought to myself, I'll just step
+ in and see that kind gentleman, and tell him that if I was a bit gruff
+ in my manner there was not any harm meant, and that I am much obliged to
+ him for picking up my books.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+You make too much of a trifle,
+\begin_inset Quotes erd
+\end_inset
+
+ said I.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+May I ask how you knew who I was?
+\begin_inset Quotes erd
+\end_inset
+
+ AFTER THIS SENTENCE THE COLUMN BREAK IS FORCED.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+columnbreak{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+Well, sir, if it isn't too great a liberty, I am a neighbour of yours, for
+ you'll find my little bookshop at the corner of Church Street, and very
+ happy to see you, I am sure.
+ Maybe you collect yourself, sir.
+ Here's 
+\noun on
+British
+\begin_inset space ~
+\end_inset
+
+Birds
+\noun default
+, and 
+\noun on
+Catullus
+\noun default
+, and 
+\noun on
+The Holy War
+\noun default
+
+\begin_inset space ~
+\end_inset
+
+– a bargain, every one of them.
+ With five volumes you could just fill that gap on that second shelf.
+ It looks untidy, does it not, sir?
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Разделение колонок
+\end_layout
+
+\begin_layout Standard
+Ширина колонок рассчитывается автоматически, но вы можете изменить расстояние
+ между ними.
+ Это делается с помощью команды 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+columnsep
+\end_layout
+
+\end_inset
+
+.
+ Ее предопределенное значение — 10
+\begin_inset space \thinspace{}
+\end_inset
+
+pt.
+ Пример установки значения для 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+columnsep
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+columnsep}{3cm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+My observations of No.
+\begin_inset space \space{}
+\end_inset
+
+427 Park Lane did little to clear up the problem in which I was interested.
+ The house was separated from the street by a low wall and railing, the
+ whole not more than five feet high.
+ It was perfectly easy, therefore, for anyone to get into the garden, but
+ the window was entirely inaccessible, since there was no water pipe or
+ anything which could help the most active man to climb it.
+ More puzzled than ever, I retraced my steps to Kensington.
+ I had not been in my study five minutes when the maid entered to say that
+ a person desired to see me.
+ To my astonishment it was none other than my strange old book collector,
+ his sharp, wizened face peering out from a frame of white hair, and his
+ precious volumes, a dozen of them at least, wedged under his right arm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+columnsep}{10pt}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+go back to the default
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Вертикальные линии
+\end_layout
+
+\begin_layout Standard
+Между столбцами помещается линия толщиной, задаваемой 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+columnseprule
+\end_layout
+
+\end_inset
+
+.
+ Если толщина устанавливается в 0
+\begin_inset space \thinspace{}
+\end_inset
+
+pt (это значение по умолчанию), линия не проводится.
+ В следующем примере ширина разделительной линии составляет 2
+\begin_inset space \thinspace{}
+\end_inset
+
+pt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+columnseprule}{2pt}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+You're surprised to see me, sir,
+\begin_inset Quotes erd
+\end_inset
+
+ said he, in a strange, croaking voice.
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+I acknowledged that I was.
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+Well, I've a conscience, sir, and when I chanced to see you go into this
+ house, as I came hobbling after you, I thought to myself, I'll just step
+ in and see that kind gentleman, and tell him that if I was a bit gruff
+ in my manner there was not any harm meant, and that I am much obliged to
+ him for picking up my books.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+You make too much of a trifle,
+\begin_inset Quotes erd
+\end_inset
+
+ said I.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+May I ask how you knew who I was?
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+Well, sir, if it isn't too great a liberty, I am a neighbour of yours, for
+ you'll find my little bookshop at the corner of Church Street, and very
+ happy to see you, I am sure.
+ Maybe you collect yourself, sir.
+ Here's 
+\noun on
+British
+\begin_inset space ~
+\end_inset
+
+Birds
+\noun default
+, and 
+\noun on
+Catullus
+\noun default
+, and 
+\noun on
+The Holy War
+\noun default
+
+\begin_inset space ~
+\end_inset
+
+– a bargain, every one of them.
+ With five volumes you could just fill that gap on that second shelf.
+ It looks untidy, does it not, sir?
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Линию можно вывести в цвете, переопределив 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+columnseprulecolor
+\end_layout
+
+\end_inset
+
+.
+ Это делается путем вставки команды
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+renewcommand{
+\backslash
+columnseprulecolor}{
+\backslash
+color{red}}
+\end_layout
+
+\begin_layout Standard
+как \SpecialChar TeX
+-кода перед вставкой мульти-колонок, для получения дополнительной информации
+ о предварительно определенных и само-определенных цветах см.
+ руководство 
+\shape italic
+Встроенные объекты
+\shape default
+, раздел 
+\shape italic
+Цветные таблицы
+\shape default
+.
+ Чтобы вернуться к цвету по умолчанию, вставьте команду
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+renewcommand{
+\backslash
+columnseprulecolor}{
+\backslash
+normalcolor}
+\end_layout
+
+\begin_layout Standard
+Пример с линией голубого цвета и расстоянием между колонками в 1
+\begin_inset space \thinspace{}
+\end_inset
+
+см:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+columnsep}{1cm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+columnseprulecolor}{
+\backslash
+color{cyan}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+You're surprised to see me, sir,
+\begin_inset Quotes erd
+\end_inset
+
+ said he, in a strange, croaking voice.
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+I acknowledged that I was.
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+Well, I've a conscience, sir, and when I chanced to see you go into this
+ house, as I came hobbling after you, I thought to myself, I'll just step
+ in and see that kind gentleman, and tell him that if I was a bit gruff
+ in my manner there was not any harm meant, and that I am much obliged to
+ him for picking up my books.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+You make too much of a trifle,
+\begin_inset Quotes erd
+\end_inset
+
+ said I.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+May I ask how you knew who I was?
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+Well, sir, if it isn't too great a liberty, I am a neighbour of yours, for
+ you'll find my little bookshop at the corner of Church Street, and very
+ happy to see you, I am sure.
+ Maybe you collect yourself, sir.
+ Here's 
+\noun on
+British
+\begin_inset space ~
+\end_inset
+
+Birds
+\noun default
+, and 
+\noun on
+Catullus
+\noun default
+, and 
+\noun on
+The Holy War
+\noun default
+
+\begin_inset space ~
+\end_inset
+
+– a bargain, every one of them.
+ With five volumes you could just fill that gap on that second shelf.
+ It looks untidy, does it not, sir?
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+columnseprule}{0pt}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+columnseprulecolor}{
+\backslash
+normalcolor}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+восстановление значения по умолчанию
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
