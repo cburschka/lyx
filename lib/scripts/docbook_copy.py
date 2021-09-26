@@ -18,6 +18,7 @@
 # /!\ The original file may be modified by this script!
 
 
+import subprocess
 import os
 import os.path
 import re
@@ -48,17 +49,17 @@ def copy_docbook(args):
     lilypond_folder = os.path.split(lilypond_command)[0] if has_lilypond else ''
 
     # Help debugging.
-    print("Given arguments:")
-    print("LilyPond: " + ("present" if has_lilypond else "not found") + " " + lilypond_command)
-    print("LilyPond path: " + lilypond_folder)
-    print("Input file: " + in_file)
-    print("Output file: " + out_file)
+    print(">> Given arguments:")
+    print(">> LilyPond: " + ("present" if has_lilypond else "not found") + " " + lilypond_command)
+    print(">> LilyPond path: " + lilypond_folder)
+    print(">> Input file: " + in_file)
+    print(">> Output file: " + out_file)
 
     # Apply LilyPond to the original file if available and needed.
     if has_lilypond and need_lilypond(in_file):
         in_lily_file = in_file.replace(".xml", ".lyxml")
-        print("The input file needs a LilyPond pass and LilyPond is available.")
-        print("Rewriting " + in_file + " as " + in_lily_file)
+        print(">> The input file needs a LilyPond pass and LilyPond is available.")
+        print(">> Rewriting " + in_file + " as " + in_lily_file)
 
         # LilyPond requires that its input file has the .lyxml extension. Due to a bug in LilyPond,
         # use " instead of ' to encode XML attributes.
@@ -69,36 +70,40 @@ def copy_docbook(args):
         with open(in_file, 'r', encoding='utf-8') as f, open(in_lily_file, 'w', encoding='utf-8') as f_lily:
             for line in f:
                 if "language='lilypond'" in line:
-                    # print(line)
-                    # print(re.match('<programlisting\\s+language=\'lilypond\'.*?(role=\'(?P<options>.*?)\')?>', line))
                     line = re.sub(
                         '<programlisting\\s+language=\'lilypond\'.*?(role=\'(?P<options>.*?)\')?>',
                         '<programlisting language="lilypond" role="\\g<options>">',
                         line
                     )
-                    # print(line)
                 f_lily.write(line)
         os.unlink(in_file)
-        # shutil.move(in_file, in_lily_file)
 
         # Add LilyPond to the PATH.
         if os.path.isdir(lilypond_folder):
             os.environ['PATH'] += os.pathsep + lilypond_folder
 
         # Start LilyPond on the copied file. First test the binary, then check if adding Python helps.
-        command_raw = lilypond_command + ' --format=docbook ' + in_lily_file
-        command_python = 'python -tt "' + lilypond_command + '" --format=docbook ' + in_lily_file
+        command_raw = [lilypond_command, '--format=docbook', in_lily_file]
+        command_python = ['python', lilypond_command, '--format=docbook', in_lily_file]
 
-        if os.system(command_raw) == 0:
-            print("Success running LilyPond:")
-            print(command_raw)
-        else:
-            if os.system(command_python) == 0:
-                print("Success running LilyPond:")
-                print(command_python)
-            else:
-                print('Error from LilyPond')
-                sys.exit(1)
+        failed = False
+        try:
+            subprocess.check_call(command_raw, stdout=sys.stdout.fileno(), stderr=sys.stdout.fileno())
+            print(">> Success running LilyPond with " + str(command_raw))
+        except (subprocess.CalledProcessError, OSError) as e1:
+            try:
+                subprocess.check_call(command_python, stdout=sys.stdout.fileno(), stderr=sys.stdout.fileno())
+                print(">> Success running LilyPond with " + str(command_python))
+            except (subprocess.CalledProcessError, OSError) as e2:
+                print('>> Error from LilyPond')
+                print('>> Error from trying ' + str(command_raw) + ':')
+                print(e1)
+                print('>> Error from trying ' + str(command_python) + ':')
+                print(e2)
+                failed = True
+
+        if failed:
+            sys.exit(1)
 
         # Now, in_file should have the LilyPond-processed contents.
 
