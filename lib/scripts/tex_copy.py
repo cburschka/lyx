@@ -13,7 +13,7 @@
 # tex_copy.py <from file> <to file> <latex name>
 
 # This script will copy a file <from file> to <to file>.
-# <to file> is no exact copy of <from file>, but any occurence of <basename>
+# <to file> is no exact copy of <from file>, but any occurrence of <basename>
 # where <basename> is <from file> without directory and extension parts is
 # replaced by <latex name> without extension.
 
