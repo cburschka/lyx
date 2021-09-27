@@ -185,7 +185,8 @@ private:
 
 	/// set pen parameters
 	void setQPainterPen(QColor const & col,
-		line_style ls = line_solid, int lw = thin_line);
+		line_style ls = line_solid, int lw = thin_line,
+		Qt::PenJoinStyle js = Qt::BevelJoin);
 
 	// Direction for painting text
 	enum Direction { LtR, RtL, Auto };

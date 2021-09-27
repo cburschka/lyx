@@ -57,7 +57,7 @@ GuiPainter::~GuiPainter()
 
 
 void GuiPainter::setQPainterPen(QColor const & col,
-	Painter::line_style ls, int lw)
+	Painter::line_style ls, int lw, Qt::PenJoinStyle js)
 {
 	if (col == current_color_ && ls == current_ls_ && lw == current_lw_)
 		return;
@@ -78,6 +78,8 @@ void GuiPainter::setQPainterPen(QColor const & col,
 	}
 
 	pen.setWidth(lw);
+
+	pen.setJoinStyle(js);
 
 	setPen(pen);
 }
@@ -210,7 +212,7 @@ void GuiPainter::rectangle(int x, int y, int w, int h,
 	line_style ls,
 	int lw)
 {
-	setQPainterPen(computeColor(col), ls, lw);
+	setQPainterPen(computeColor(col), ls, lw, Qt::MiterJoin);
 	drawRect(x, y, w, h);
 }
 
