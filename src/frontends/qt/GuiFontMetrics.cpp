@@ -57,6 +57,15 @@ using namespace lyx::support;
 #  error "Define at least one of BIDI_USE_OVERRIDE or BIDI_USE_FLAG"
 #endif
 
+
+#if QT_VERSION < 0x050000
+inline uint qHash(double key)
+{
+	return qHash(QByteArray(reinterpret_cast<char const *>(&key), sizeof(key)));
+}
+#endif
+
+
 namespace std {
 
 /*
