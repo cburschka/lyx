@@ -192,6 +192,8 @@ public:
 	///
 	bool docbooknofontinside() const { return docbooknofontinside_; }
 	///
+	bool docbookrenderasimage() const { return docbookrenderasimage_; }
+	///
 	std::set<std::string> required() const { return required_; }
 	///
 	bool isMultiPar() const { return multipar_; }
@@ -360,6 +362,8 @@ private:
 	std::string docbookitemwrapperattr_;
 	///
 	bool docbooknofontinside_ = false;
+	///
+	bool docbookrenderasimage_ = false;
 	///
 	std::set<std::string> required_;
 	///
