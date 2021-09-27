@@ -154,7 +154,6 @@ class DocBookCopier:
             shutil.copyfile(
                 os.path.join(in_generated_images_folder, img),
                 os.path.join(out_generated_images_folder, img),
-                follow_symlinks=False,
             )
 
     def copy(self):
@@ -164,7 +163,7 @@ class DocBookCopier:
             self.call_lilypond()
 
         # Perform the actual copy: both the modified XML file and the generated images, if LilyPond is used.
-        shutil.copyfile(self.in_file, self.out_file, follow_symlinks=False)
+        shutil.copyfile(self.in_file, self.out_file)
         if self.do_lilypond_processing:
             self.copy_lilypond_generated_images()
 
