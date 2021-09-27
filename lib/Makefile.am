@@ -2690,6 +2690,7 @@ dist_scripts_DATA += \
 	scripts/convert_pdf.py \
 	scripts/convertDefault.py \
 	scripts/csv2lyx.py \
+	scripts/docbook_copy.py \
 	scripts/ext_copy.py \
 	scripts/fen2ascii.py \
 	scripts/fig2pdftex.py \
