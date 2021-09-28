@@ -555,7 +555,7 @@ IconInfo iconInfo(FuncRequest const & f, bool unknown, bool rtl)
 	if (unknown)
 		names << "unknown";
 
-	search_mode const mode = theGuiApp()->imageSearchMode();
+	search_mode const mode = theGuiApp() ? theGuiApp()->imageSearchMode() : support::must_exist;
 	// The folders where icons are searched for
 	QStringList imagedirs;
 	imagedirs << "images/ipa/" << "images/";
