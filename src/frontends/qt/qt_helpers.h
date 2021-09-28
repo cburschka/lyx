@@ -191,8 +191,6 @@ QString onlyFileName(QString const & str);
 QString onlyPath(QString const & str);
 QStringList fileFilters(QString const & description);
 
-QString changeExtension(QString const & oldname, QString const & extension);
-
 /// Remove the extension from \p name
 QString removeExtension(QString const & name);
 

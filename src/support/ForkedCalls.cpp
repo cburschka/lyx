@@ -439,12 +439,6 @@ namespace ForkedCallQueue {
 
 /// A process in the queue
 typedef pair<string, ForkedCall::sigPtr> Process;
-/** Add a process to the queue. Processes are forked sequentially
- *  only one is running at a time.
- *  Connect to the returned signal and you'll be informed when
- *  the process has ended.
- */
-ForkedCall::sigPtr add(string const & process);
 
 /// in-progress queue
 static queue<Process> callQueue_;
@@ -459,6 +453,11 @@ void stopCaller();
 ///
 void callback(pid_t, int);
 
+/** Add a process to the queue. Processes are forked sequentially
+ *  only one is running at a time.
+ *  Connect to the returned signal and you'll be informed when
+ *  the process has ended.
+ */
 ForkedCall::sigPtr add(string const & process)
 {
 	ForkedCall::sigPtr ptr;

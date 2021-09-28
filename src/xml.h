@@ -143,6 +143,7 @@ namespace xml {
 docstring escapeChar(char_type c, XMLStream::EscapeSettings e);
 
 /// Escape the given character, if necessary, to an entity.
+/// \param c must be ASCII
 docstring escapeChar(char c, XMLStream::EscapeSettings e);
 
 /// Escape a word instead of a single character
@@ -150,9 +151,6 @@ docstring escapeString(docstring const & raw, XMLStream::EscapeSettings e=XMLStr
 
 /// cleans \param str for use as an attribute by replacing all non-altnum by "_"
 docstring cleanAttr(docstring const & str);
-
-/// \p c must be ASCII
-docstring escapeChar(char c, XMLStream::EscapeSettings e);
 
 /// replaces illegal characters from ID attributes
 docstring cleanID(docstring const &orig);
