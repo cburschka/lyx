@@ -69,9 +69,9 @@ public:
 	explicit Length(std::string const & data);
 
 	///
-	double value() const { return val_; };
+	double value() const { return val_; }
 	///
-	Length::UNIT unit() const { return unit_; };
+	Length::UNIT unit() const { return unit_; }
 	///
 	void value(double val) { val_ = val; }
 	///

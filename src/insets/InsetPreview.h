@@ -69,7 +69,7 @@ public:
 
 	void edit(Cursor & cur, bool front, EntryDirection entry_from) override;
 
-	bool canPaintChange(BufferView const &) const override { return true; };
+	bool canPaintChange(BufferView const &) const override { return true; }
 	//@}
 
 protected:

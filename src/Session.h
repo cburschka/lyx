@@ -361,7 +361,7 @@ class ShellEscapeSection : SessionSection
 {
 public:
 	///
-	explicit ShellEscapeSection() {};
+	explicit ShellEscapeSection() {}
 
 	///
 	void read(std::istream & is) override;

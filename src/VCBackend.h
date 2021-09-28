@@ -154,7 +154,7 @@ public:
 	/// get file from repo, the caller must ensure that it does not exist locally
 	static bool retrieve(support::FileName const & file);
 
-	std::string vcname() const override { return "RCS"; };
+	std::string vcname() const override { return "RCS"; }
 
 	void registrer(std::string const & msg) override;
 
@@ -247,7 +247,7 @@ public:
 	/// get file from repo, the caller must ensure that it does not exist locally
 	static bool retrieve(support::FileName const & file);
 
-	std::string vcname() const override { return "CVS"; };
+	std::string vcname() const override { return "CVS"; }
 
 	void registrer(std::string const & msg) override;
 
@@ -393,7 +393,7 @@ public:
 	/// get file from repo, the caller must ensure that it does not exist locally
 	static bool retrieve(support::FileName const & file);
 
-	std::string vcname() const override { return "SVN"; };
+	std::string vcname() const override { return "SVN"; }
 
 	void registrer(std::string const & msg) override;
 
@@ -504,7 +504,7 @@ public:
 	/// get file from repo, the caller must ensure that it does not exist locally
 	static bool retrieve(support::FileName const & file);
 
-	std::string vcname() const override { return "GIT"; };
+	std::string vcname() const override { return "GIT"; }
 
 	void registrer(std::string const & msg) override;
 

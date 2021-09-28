@@ -94,7 +94,7 @@ public:
 	InsetMathGrid(Buffer * buf, col_type m, row_type n, char valign,
 		docstring const & halign);
 	///
-	marker_type marker(BufferView const *) const override { return marker_type::MARKER2; };
+	marker_type marker(BufferView const *) const override { return marker_type::MARKER2; }
 	///
 	void metrics(MetricsInfo & mi, Dimension &) const override;
 	///

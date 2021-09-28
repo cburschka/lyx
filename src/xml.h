@@ -101,7 +101,7 @@ public:
 	/// Is the last tag that was added to the stream a new line (CR)? This is mostly to known
 	/// whether a new line must be added. Therefore, consider that an empty stream just had a CR,
 	/// that simplifies the logic using this code.
-	bool isLastTagCR() const { return is_last_tag_cr_; };
+	bool isLastTagCR() const { return is_last_tag_cr_; }
 	///
 	void writeError(std::string const &);
 	///

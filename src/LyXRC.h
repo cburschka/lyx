@@ -195,7 +195,7 @@ public:
 	///
 	LyXRC() : user_name(support::user_name()),
 	          user_email(support::user_email()) // always empty
-		{};
+		{}
 
 	/// \param check_format: whether to try to convert the file format,
 	/// if it is not current. this should only be true, really, for the

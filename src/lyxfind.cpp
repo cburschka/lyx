@@ -935,7 +935,7 @@ public:
 	int pos_len;
 	int searched_size;
 	vector <string> result = vector <string>();
-	MatchResult(int len = 0): match_len(len),match_prefix(0),match2end(0), pos(0),leadsize(0),pos_len(-1),searched_size(0) {};
+	MatchResult(int len = 0): match_len(len),match_prefix(0),match2end(0), pos(0),leadsize(0),pos_len(-1),searched_size(0) {}
 };
 
 static MatchResult::range interpretMatch(MatchResult &oldres, MatchResult &newres)
@@ -1248,7 +1248,7 @@ class KeyInfo {
 
 class Border {
  public:
- Border(int l=0, int u=0) : low(l), upper(u) {};
+ Border(int l=0, int u=0) : low(l), upper(u) {}
   int low;
   int upper;
 };
@@ -1920,7 +1920,7 @@ class LatexInfo {
     buildKeys(isPatternString);
     entries_ = vector<KeyInfo>();
     buildEntries(isPatternString);
-  };
+  }
   int getFirstKey() {
     entidx_ = 0;
     if (entries_.empty()) {
@@ -1941,7 +1941,7 @@ class LatexInfo {
         return -1;
     }
     return 0;
-  };
+  }
   int getNextKey() {
     entidx_++;
     if (int(entries_.size()) > entidx_) {
@@ -1950,7 +1950,7 @@ class LatexInfo {
     else {
       return -1;
     }
-  };
+  }
   bool setNextKey(int idx) {
     if ((idx == entidx_) && (entidx_ >= 0)) {
       entidx_--;
@@ -1958,7 +1958,7 @@ class LatexInfo {
     }
     else
       return false;
-  };
+  }
   int find(int start, KeyInfo::KeyType keytype) const {
     if (start < 0)
       return -1;
@@ -1969,20 +1969,20 @@ class LatexInfo {
       tmpIdx++;
     }
     return -1;
-  };
+  }
   int process(ostringstream & os, KeyInfo const & actual);
   int dispatch(ostringstream & os, int previousStart, KeyInfo & actual);
-  // string show(int lastpos) { return interval.show(lastpos);};
-  int nextNotIgnored(int start) { return interval_.nextNotIgnored(start);};
+  // string show(int lastpos) { return interval.show(lastpos);}
+  int nextNotIgnored(int start) { return interval_.nextNotIgnored(start);}
   KeyInfo &getKeyInfo(int keyinfo) {
     static KeyInfo invalidInfo = KeyInfo();
     if ((keyinfo < 0) || ( keyinfo >= int(entries_.size())))
       return invalidInfo;
     else
       return entries_[keyinfo];
-  };
-  void setForDefaultLang(KeyInfo const & defLang) {interval_.setForDefaultLang(defLang);};
-  void addIntervall(int low, int up) { interval_.addIntervall(low, up); };
+  }
+  void setForDefaultLang(KeyInfo const & defLang) {interval_.setForDefaultLang(defLang);}
+  void addIntervall(int low, int up) { interval_.addIntervall(low, up); }
 };
 
 
@@ -2036,7 +2036,7 @@ class MathInfo {
     m.mathSize = m.mathEnd - m.mathStart;
     entries_.push_back(m);
   }
-  bool empty() const { return entries_.empty(); };
+  bool empty() const { return entries_.empty(); }
   size_t getEndPos() const {
     if (entries_.empty() || (actualIdx_ >= entries_.size())) {
       return 0;
@@ -2071,7 +2071,7 @@ class MathInfo {
     }
     return entries_[actualIdx_].mathSize;
   }
-  void incrEntry() { actualIdx_++; };
+  void incrEntry() { actualIdx_++; }
 };
 
 void LatexInfo::buildEntries(bool isPatternString)

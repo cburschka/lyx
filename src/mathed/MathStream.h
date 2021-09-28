@@ -107,7 +107,7 @@ public:
 	/// tell whether to use only ascii chars when producing latex code
 	bool asciiOnly() const { return ascii_; }
 	/// tell whether we are in a MathClass inset
-	void inMathClass(bool mathclass) { mathclass_ = mathclass; };
+	void inMathClass(bool mathclass) { mathclass_ = mathclass; }
 	/// tell whether we are in a MathClass inset
 	bool inMathClass() const { return mathclass_; }
 	/// LaTeX encoding

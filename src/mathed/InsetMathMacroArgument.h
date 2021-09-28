@@ -24,7 +24,7 @@ namespace lyx {
 // A # that failed to parse
 class InsetMathHash : public InsetMath {
 public:
-	explicit InsetMathHash(docstring const & str = docstring()) : str_('#' + str) {};
+	explicit InsetMathHash(docstring const & str = docstring()) : str_('#' + str) {}
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
