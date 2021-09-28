@@ -559,7 +559,7 @@ IconInfo iconInfo(FuncRequest const & f, bool unknown, bool rtl)
 	// The folders where icons are searched for
 	QStringList imagedirs;
 	imagedirs << "images/ipa/" << "images/";
-	// This is used to search for rtl version of icons which have the +rrtl suffix.
+	// This is used to search for rtl version of icons which have the +rtl suffix.
 	QStringList suffixes;
 	if (rtl)
 		suffixes << "+rtl";
