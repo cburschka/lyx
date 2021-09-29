@@ -61,8 +61,9 @@ class DocBookCopier:
     def preprocess_input_for_lilypond(self):
         # LilyPond requires that its input file has the .lyxml extension. Due to a bug in LilyPond,
         # use " instead of ' to encode XML attributes.
-        # https://lists.gnu.org/archive/html/bug-lilypond/2021-09/msg00039.html
+        # Bug report: https://gitlab.com/lilypond/lilypond/-/issues/6185
         # Typical transformation:
+        # Fixed by 2.23.4.
         #     FROM:  language='lilypond' role='fragment verbatim staffsize=16 ragged-right relative=2'
         #     TO:    language="lilypond" role="fragment verbatim staffsize=16 ragged-right relative=2"
         with open(self.in_file, 'r', encoding='utf-8') as f, open(self.in_lily_file, 'w', encoding='utf-8') as f_lily:
@@ -77,15 +78,12 @@ class DocBookCopier:
         os.unlink(self.in_file)
 
     def postprocess_output_for_lilypond(self):
+        # Major problem: LilyPond used to output the LilyPond code outside the image, which is then always displayed
+        # before the image (instead of only the generated image).
+        # Bug report: https://gitlab.com/lilypond/lilypond/-/issues/6186
+        # No more necessary with the new version of LilyPond (2.23.4). No efficient way to decide how to post-process
+        # for previous versions of LilyPond. Basically, it does not make sense to post-process.
         pass
-        # # Erase the <programlisting> that LilyPond left behind in the XML.
-        # in_file_before = self.in_file + '.tmp'
-        # shutil.move(self.in_file, in_file_before)
-        # with open(in_file_before, 'r', encoding='utf-8') as f_before, open(self.in_file, 'w', encoding='utf-8') as f_after:
-        #     looking_for_end_programlisting = False
-        #     for line in f_before:
-        #         # TODO: find an efficient way to distinguish those left-overs.
-        # https://lists.gnu.org/archive/html/bug-lilypond/2021-09/msg00040.html
 
     def call_lilypond(self):
         # LilyPond requires that its input file has the .lyxml extension (plus bugs in LilyPond).
