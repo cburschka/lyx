@@ -96,7 +96,6 @@
 #include <QMenu>
 #include <QMenuBar>
 #include <QMimeData>
-#include <QMovie>
 #include <QPainter>
 #include <QPixmap>
 #include <QPoint>
@@ -612,20 +611,19 @@ GuiView::GuiView(int id)
 	setAcceptDrops(true);
 
 	// add busy indicator to statusbar
-	GuiClickableLabel * busylabel = new GuiClickableLabel(statusBar());
-	statusBar()->addPermanentWidget(busylabel);
 	search_mode mode = theGuiApp()->imageSearchMode();
-	QString fn = toqstr(lyx::libFileSearch("images", "busy", "gif", mode).absFileName());
-	QMovie * busyanim = new QMovie(fn, QByteArray(), busylabel);
-	busylabel->setMovie(busyanim);
-	busyanim->start();
-	busylabel->hide();
+	QString fn = toqstr(lyx::libFileSearch("images", "busy", "svgz", mode).absFileName());
+	PressableSvgWidget * busySVG = new PressableSvgWidget(fn);
+	statusBar()->addPermanentWidget(busySVG);
+	// make busy indicator square with 5px margins
+	busySVG->setMaximumSize(busySVG->height() - 5, busySVG->height() - 5);
+	busySVG->hide();
 
 	connect(&d.processing_thread_watcher_, SIGNAL(started()),
-		busylabel, SLOT(show()));
+		busySVG, SLOT(show()));
 	connect(&d.processing_thread_watcher_, SIGNAL(finished()),
-		busylabel, SLOT(hide()));
-	connect(busylabel, SIGNAL(clicked()), this, SLOT(checkCancelBackground()));
+		busySVG, SLOT(hide()));
+	connect(busySVG, SIGNAL(pressed()), this, SLOT(checkCancelBackground()));
 
 	QFontMetrics const fm(statusBar()->fontMetrics());
 
@@ -5128,6 +5126,14 @@ SEMenu::SEMenu(QWidget * parent)
 	QAction * action = addAction(qt_("Disable Shell Escape"));
 	connect(action, SIGNAL(triggered()),
 		parent, SLOT(disableShellEscape()));
+}
+
+
+void PressableSvgWidget::mousePressEvent(QMouseEvent * event)
+{
+	if (event->button() == Qt::LeftButton) {
+        Q_EMIT pressed();
+    }
 }
 
 } // namespace frontend

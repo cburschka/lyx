@@ -564,7 +564,7 @@ dist_images_DATA1X = \
 	images/buffer-write-as.svgz \
 	images/buffer-write.svgz \
 	images/build-program.svgz \
-	images/busy.gif \
+	images/busy.svgz \
 	images/change-accept.svgz \
 	images/change-next.svgz \
 	images/change-reject.svgz \
