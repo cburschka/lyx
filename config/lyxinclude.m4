@@ -390,8 +390,8 @@ if test x$GXX = xyes; then
       dnl Shut off warning -Wdeprecated-copy, which triggers too much
       dnl note that g++ always accepts -Wno-xxx, even when -Wxxx is an error.
       AC_LANG_PUSH(C++)
-      AX_CHECK_COMPILE_FLAG([-Wno-deprecated-copy],
-	[AM_CXXFLAGS="$AM_CXXFLAGS -Wno-deprecated-copy"], [], [-Werror])
+      AX_CHECK_COMPILE_FLAG([-Wdeprecated-copy],
+	[AM_CXXFLAGS="$AM_CXXFLAGS -Wno-deprecated-copy"])
       AC_LANG_POP(C++)
     fi
   case $gxx_version in
