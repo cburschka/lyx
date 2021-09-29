@@ -23,7 +23,7 @@ namespace{
 
 QPalette::ColorRole role(ColorCode col)
 {
-	switch (ColorCode(col)) {
+	switch (col) {
 	case Color_background:
 	case Color_commentbg:
 	case Color_greyedoutbg:

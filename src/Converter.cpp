@@ -853,7 +853,7 @@ Converters::RetVal Converters::runLaTeX(Buffer const & buffer, string const & co
 
 	// do the LaTeX run(s)
 	string const name = buffer.latexName();
-	LaTeX latex(command, runparams, FileName(makeAbsPath(name)),
+	LaTeX latex(command, runparams, makeAbsPath(name),
 	            buffer.filePath(), buffer.layoutPos(),
 	            buffer.isClone(), buffer.freshStartRequired());
 	TeXErrors terr;

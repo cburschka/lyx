@@ -112,7 +112,7 @@ bool GuiSendTo::isValid()
 {
 	int const line = formatLW->currentRow();
 
-	if (line < 0 || (line > int(formatLW->count())))
+	if (line < 0 || (line > formatLW->count()))
 		return false;
 
 	return (!formatLW->selectedItems().empty()

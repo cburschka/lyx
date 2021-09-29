@@ -101,7 +101,7 @@ GuiMathMatrix::GuiMathMatrix(GuiView & lv)
 
 void GuiMathMatrix::columnsChanged(int)
 {
-	int const nx = int(columnsSB->value());
+	int const nx = columnsSB->value();
 	halignED->setText(QString(nx, 'c'));
 }
 
@@ -159,7 +159,7 @@ void GuiMathMatrix::slotOK()
 		// otherwise create just a standard AMS matrix
 		if (sh.contains('l') || sh.contains('r') || sh.contains('|')) {
 			string const str_ams = fromqstr(
-				QString("%1 %2 %3").arg(int(1)).arg(int(1)).arg(deco_name));
+				QString("%1 %2 %3").arg(1).arg(1).arg(deco_name));
 			dispatch(FuncRequest(LFUN_MATH_AMS_MATRIX, str_ams));
 		} else {
 			string const str_ams = fromqstr(

@@ -795,7 +795,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 	string tmp =
 		onlyFileName(changeExtension(file.absFileName(), ".log"));
 	LYXERR(Debug::LATEX, "Log file: " << tmp);
-	FileName const fn = FileName(makeAbsPath(tmp));
+	FileName const fn = makeAbsPath(tmp);
 	// FIXME we should use an ifdocstream here and a docstring for token
 	// below. The encoding of the log file depends on the _output_ (font)
 	// encoding of the TeX file (T1, TU etc.). See #10728.

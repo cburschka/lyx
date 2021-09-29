@@ -287,7 +287,7 @@ int InsetIPADeco::plaintext(odocstringstream & os,
 			    OutputParams const & runparams, size_t max_length) const
 {
 	odocstringstream ods;
-	int h = (int)(InsetCollapsible::plaintext(ods, runparams, max_length) / 2);
+	int h = InsetCollapsible::plaintext(ods, runparams, max_length) / 2;
 	docstring result = ods.str();
 	docstring const before = result.substr(0, h);
 	docstring const after = result.substr(h, result.size());
@@ -311,7 +311,7 @@ void InsetIPADeco::docbook(XMLStream & xs, OutputParams const & runparams) const
 	// The special combining character must be put in the middle, between the two other characters.
 	// It will not work if there is anything else than two pure characters, so going back to plaintext.
 	odocstringstream ods;
-	int h = (int)(InsetText::plaintext(ods, runparams) / 2);
+	int h = InsetText::plaintext(ods, runparams) / 2;
 	docstring result = ods.str();
 	docstring const before = result.substr(0, h);
 	docstring const after = result.substr(h, result.size());

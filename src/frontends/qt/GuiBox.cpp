@@ -172,7 +172,7 @@ void GuiBox::fillComboColor(QComboBox * combo, bool const is_none)
 	for (; cit != color_codes_.end(); ++cit) {
 		QString const latexname = toqstr(lcolor.getLaTeXName(*cit));
 		QString const guiname = toqstr(translateIfPossible(lcolor.getGUIName(*cit)));
-		color = QColor(guiApp->colorCache().get(*cit, false));
+		color = guiApp->colorCache().get(*cit, false);
 		coloritem.fill(color);
 		combo->addItem(QIcon(coloritem), guiname, latexname);
 	}

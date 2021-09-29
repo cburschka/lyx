@@ -1153,7 +1153,7 @@ void PrefColors::applyRC(LyXRC & rc) const
 void PrefColors::updateRC(LyXRC const & rc)
 {
 	for (size_type i = 0; i < lcolors_.size(); ++i) {
-		QColor color = QColor(guiApp->colorCache().get(lcolors_[i], false));
+		QColor color = guiApp->colorCache().get(lcolors_[i], false);
 		QPixmap coloritem(32, 32);
 		coloritem.fill(color);
 		lyxObjectsLW->item(int(i))->setIcon(QIcon(coloritem));

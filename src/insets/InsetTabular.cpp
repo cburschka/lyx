@@ -617,7 +617,7 @@ DocIterator separatorPos(InsetTableCell const * cell, docstring const & align_d)
 
 InsetTableCell splitCell(InsetTableCell & head, docstring const & align_d, bool & hassep)
 {
-	InsetTableCell tail = InsetTableCell(head);
+	InsetTableCell tail = head;
 	DocIterator const dit = separatorPos(&head, align_d);
 	hassep = static_cast<bool>(dit);
 	if (hassep) {
@@ -839,13 +839,13 @@ void Tabular::appendRow(row_type row)
 
 void Tabular::insertRow(row_type const row, bool copy)
 {
-	row_info.insert(row_info.begin() + row + 1, RowData(row_info[row]));
+	row_info.insert(row_info.begin() + row + 1, row_info[row]);
 	cell_info.insert(cell_info.begin() + row + 1,
 		cell_vector(0, CellData(buffer_)));
 
 	for (col_type c = 0; c < ncols(); ++c) {
 		cell_info[row + 1].insert(cell_info[row + 1].begin() + c,
-			copy ? CellData(cell_info[row][c]) : CellData(buffer_));
+			copy ? cell_info[row][c] : CellData(buffer_));
 		if (cell_info[row][c].multirow == CELL_BEGIN_OF_MULTIROW)
 			cell_info[row + 1][c].multirow = CELL_PART_OF_MULTIROW;
 	}
@@ -1002,11 +1002,11 @@ void Tabular::appendColumn(col_type col)
 void Tabular::insertColumn(col_type const col, bool copy)
 {
 	bool const ct = buffer().params().track_changes;
-	column_info.insert(column_info.begin() + col + 1, ColumnData(column_info[col]));
+	column_info.insert(column_info.begin() + col + 1, column_info[col]);
 
 	for (row_type r = 0; r < nrows(); ++r) {
 		cell_info[r].insert(cell_info[r].begin() + col + 1,
-			copy ? CellData(cell_info[r][col]) : CellData(buffer_));
+			copy ? cell_info[r][col] : CellData(buffer_));
 		if (cell_info[r][col].multicolumn == CELL_BEGIN_OF_MULTICOLUMN)
 			cell_info[r][col + 1].multicolumn = CELL_PART_OF_MULTICOLUMN;
 	}
@@ -4525,7 +4525,7 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			// determine horizontal offset because of decimal align (if necessary)
 			int decimal_width = 0;
 			if (tabular.getAlignment(cell) == LYX_ALIGN_DECIMAL) {
-				InsetTableCell tail = InsetTableCell(*tabular.cellInset(cell));
+				InsetTableCell tail = *tabular.cellInset(cell);
 				tail.setBuffer(tabular.buffer());
 				// we need to set macrocontext position everywhere
 				// otherwise we crash with nested insets (e.g. footnotes)
@@ -4778,7 +4778,7 @@ void InsetTabular::drawCellLines(PainterInfo & pi, int x, int y,
 	Color colour = Color_tabularline;
 	if (tabular.column_info[col].change.changed()
 	    || tabular.row_info[row].change.changed())
-		colour = InsetTableCell(*tabular.cellInset(cell)).paragraphs().front().lookupChange(0).color();
+		colour = tabular.cellInset(cell)->paragraphs().front().lookupChange(0).color();
 
 	// Top
 	bool drawline = tabular.topLine(cell)
@@ -6018,7 +6018,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		}
 		// check if there is already a caption
 		bool have_caption = false;
-		InsetTableCell itc = InsetTableCell(*tabular.cellInset(cur.idx()));
+		InsetTableCell itc = *tabular.cellInset(cur.idx());
 		ParagraphList::const_iterator pit = itc.paragraphs().begin();
 		ParagraphList::const_iterator pend = itc.paragraphs().end();
 		for (; pit != pend; ++pit) {

@@ -1182,7 +1182,7 @@ bool GuiView::prepareAllBuffersForLogout()
 	// We cannot use a for loop as the buffer list cycles.
 	Buffer * b = first;
 	do {
-		if (!saveBufferIfNeeded(const_cast<Buffer &>(*b), false))
+		if (!saveBufferIfNeeded(*b, false))
 			return false;
 		b = theBufferList().next(b);
 	} while (b != first);
@@ -3171,7 +3171,7 @@ bool GuiView::exportBufferAs(Buffer & b, docstring const & iformat)
 		return false;
 
 	// fname is now the new Buffer location.
-	if (FileName(fname).exists()) {
+	if (fname.exists()) {
 		docstring const file = makeDisplayPath(fname.absFileName(), 30);
 		docstring text = bformat(_("The document %1$s already "
 					   "exists.\n\nDo you want to "

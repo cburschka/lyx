@@ -1402,7 +1402,7 @@ docstring const BiblioInfo::getInfo(docstring const & key,
 {
 	BiblioInfo::const_iterator it = find(key);
 	if (it == end())
-		return docstring(_("Bibliography entry not found!"));
+		return _("Bibliography entry not found!");
 	BibTeXInfo const & data = it->second;
 	BibTeXInfoList xrefptrs;
 	for (docstring const & xref : getXRefs(data)) {

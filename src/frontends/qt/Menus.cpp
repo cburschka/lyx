@@ -1302,8 +1302,7 @@ void MenuDefinition::expandToc2(Toc const & toc_list,
 						label += QString::number(++shortcut_count);
 				}
 			}
-			add(MenuItem(MenuItem::Command, label,
-					    FuncRequest(toc_list[i].action())));
+			add(MenuItem(MenuItem::Command, label, toc_list[i].action()));
 			// separator after the menu heading
 			if (toc_list[i].depth() < depth)
 				add(MenuItem(MenuItem::Separator));
@@ -1331,8 +1330,7 @@ void MenuDefinition::expandToc2(Toc const & toc_list,
 				break;
 			}
 			if (new_pos == pos + 1) {
-				add(MenuItem(MenuItem::Command,
-						    label, FuncRequest(toc_list[pos].action())));
+				add(MenuItem(MenuItem::Command, label, toc_list[pos].action()));
 			} else {
 				MenuDefinition sub;
 				sub.expandToc2(toc_list, pos, new_pos, depth + 1, toc_type);

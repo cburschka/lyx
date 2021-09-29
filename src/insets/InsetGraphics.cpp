@@ -742,7 +742,7 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 
 	if (from == to) {
 		// source and destination formats are the same
-		if (!runparams.nice && !FileName(temp_file).hasExtension(ext)) {
+		if (!runparams.nice && !temp_file.hasExtension(ext)) {
 			// The LaTeX compiler will not be able to determine
 			// the file format from the extension, so we must
 			// change it.

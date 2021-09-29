@@ -678,7 +678,7 @@ int InsetMathMacroTemplate::maxArgumentInDefinition() const
 		if (it.nextInset()->lyxCode() != MATH_MACROARG_CODE)
 			continue;
 		InsetMathMacroArgument * arg = static_cast<InsetMathMacroArgument*>(it.nextInset());
-		maxArg = std::max(int(arg->number()), maxArg);
+		maxArg = std::max(arg->number(), maxArg);
 	}
 	return maxArg;
 }

@@ -444,7 +444,7 @@ static void getSize(external::ResizeData & data,
 		data.scale = widgetToDoubleStr(&widthED);
 		data.width = Length();
 	} else {
-		data.width = Length(widgetsToLength(&widthED, &widthUnitCO));
+		data.width = widgetsToLength(&widthED, &widthUnitCO);
 		data.scale = string();
 	}
 	data.height = Length(widgetsToLength(&heightED, &heightUnitCO));

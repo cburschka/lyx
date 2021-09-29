@@ -1029,7 +1029,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		if (encvar.unsafe() ||encvar.guiName().empty()
 		    || utf8_base_encodings.contains(toqstr(encvar.name())))
 			continue;
-		if (std::string(encvar.name()).find("utf8") == 0)
+		if (encvar.name().find("utf8") == 0)
 			encodingmap_utf8.insert(qt_(encvar.guiName()), toqstr(encvar.name()));
 		else
 			encodingmap.insert(qt_(encvar.guiName()), toqstr(encvar.name()));
@@ -5165,7 +5165,7 @@ GuiDocument::modInfoStruct GuiDocument::modInfo(LyXModule const & mod)
 	QString const guiname = toqstr(translateIfPossible(from_utf8(mod.getName())));
 	m.missingreqs = !isModuleAvailable(mod.getID());
 	if (m.missingreqs) {
-		m.name = QString(qt_("%1 (missing req.)")).arg(guiname);
+		m.name = qt_("%1 (missing req.)").arg(guiname);
 	} else
 		m.name = guiname;
 	m.category = mod.category().empty() ? qt_("Miscellaneous")
@@ -5178,7 +5178,7 @@ GuiDocument::modInfoStruct GuiDocument::modInfo(LyXModule const & mod)
 		desc.truncate(pos);
 	m.local = mod.isLocal();
 	QString const mtype = m.local ? qt_("personal module") : qt_("distributed module");
-	QString modulename = QString(qt_("<b>Module name:</b> <i>%1</i> (%2)")).arg(toqstr(m.id)).arg(mtype);
+	QString modulename = qt_("<b>Module name:</b> <i>%1</i> (%2)").arg(toqstr(m.id)).arg(mtype);
 	// Tooltip is the desc followed by the module name and the type
 	m.description = QString("%1%2")
 		.arg(desc.isEmpty() ? QString() : QString("<p>%1</p>").arg(desc),
