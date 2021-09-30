@@ -2694,7 +2694,12 @@ void Paragraph::latex(BufferParams const & bparams,
 				&& getInset(i)
 				&& getInset(i)->allowMultiPar()
 				&& getInset(i)->lyxCode() != ERT_CODE
-				&& getInset(i)->producesOutput();
+				&& (getInset(i)->producesOutput()
+				    // FIXME Something more general?
+				    // Comments do not "produce output" but are still
+				    // part of the TeX source and require font switches
+				    // to be closed (otherwise LaTeX fails).
+				    || getInset(i)->layoutName() == "Note:Comment");
 
 		bool closeLanguage = false;
 		bool lang_switched_at_inset = false;
