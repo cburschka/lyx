@@ -934,7 +934,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 
 void Text::deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool trackChanges)
 {
-	pos_type last_pos = static_cast<pos_type>(pars_[last].size() - 1);
+	pos_type last_pos = pars_[last].size() - 1;
 	deleteEmptyParagraphMechanism(first, last, 0, last_pos, trackChanges);
 }
 

@@ -209,7 +209,7 @@ pit_type Text::outerHook(pit_type par_offset) const
 
 	if (par.getDepth() == 0)
 		return pars_.size();
-	return depthHook(par_offset, depth_type(par.getDepth() - 1));
+	return depthHook(par_offset, par.getDepth() - 1);
 }
 
 
@@ -369,7 +369,7 @@ InsetText const & Text::inset() const
 void Text::readParToken(Paragraph & par, Lexer & lex,
 	string const & token, Font & font, Change & change, ErrorList & errorList)
 {
-	Buffer * buf = const_cast<Buffer *>(&owner_->buffer());
+	Buffer * buf = &owner_->buffer();
 	BufferParams & bp = buf->params();
 
 	if (token[0] != '\\') {

@@ -3990,14 +3990,14 @@ MatchResult findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, Mat
 	      max_match.match_len = actual_match_len;
               maxl = len;
               if (maxl - minl < 4)
-                len = (int)((maxl + minl)/2);
+                len = (maxl + minl)/2;
               else
-                len = (int)(minl + (maxl - minl + 3)/4);
+                len = minl + (maxl - minl + 3)/4;
             }
             else {
               // (actual_match_len < max_match.match_len)
               minl = len + 1;
-              len = (int)((maxl + minl)/2);
+              len = (maxl + minl)/2;
             }
           }
 	  len = minl;

@@ -434,7 +434,7 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 	// environment? I think the answer is: when paragraphs are merged;
 	// when layout is set; when material is pasted.
 	if (par.brokenBiblio()) {
-		Cursor & cur = const_cast<Cursor &>(bv_->cursor());
+		Cursor & cur = bv_->cursor();
 		// In some cases, we do not know how to record undo
 		if (&cur.inset() == &text_->inset())
 			cur.recordUndo(pit, pit);
@@ -700,7 +700,7 @@ void TextMetrics::setRowAlignment(Row & row, int width) const
 	// We don't have to look at the alignment if the row is already
 	// larger then the permitted width as then we force the
 	// LEFT_ALIGN'edness!
-	if (int(row.width()) >= max_width_)
+	if (row.width() >= max_width_)
 		return;
 
 	if (nh == 0) {
@@ -1300,7 +1300,7 @@ pit_type TextMetrics::getPitNearY(int y)
 
 	ParagraphMetrics const & pm = it->second;
 
-	if (y < it->second.position() - int(pm.ascent())) {
+	if (y < it->second.position() - pm.ascent()) {
 		// We are looking for a position that is before the first paragraph in
 		// the cache (which is in priciple off-screen, that is before the
 		// visible part.
@@ -1315,7 +1315,7 @@ pit_type TextMetrics::getPitNearY(int y)
 
 	ParagraphMetrics const & pm_last = par_metrics_[last->first];
 
-	if (y >= last->second.position() + int(pm_last.descent())) {
+	if (y >= last->second.position() + pm_last.descent()) {
 		// We are looking for a position that is after the last paragraph in
 		// the cache (which is in priciple off-screen), that is before the
 		// visible part.
@@ -1334,7 +1334,7 @@ pit_type TextMetrics::getPitNearY(int y)
 
 		ParagraphMetrics const & pm2 = par_metrics_[it->first];
 
-		if (it->first >= pit && int(it->second.position()) - int(pm2.ascent()) <= y) {
+		if (it->first >= pit && it->second.position() - pm2.ascent() <= y) {
 			pit = it->first;
 			yy = it->second.position();
 		}
@@ -1461,7 +1461,7 @@ void TextMetrics::setCursorFromCoordinates(Cursor & cur, int const x, int const 
 	LBUFERR(pm.rows().size());
 	for (; r < int(pm.rows().size()) - 1; ++r) {
 		Row const & row = pm.rows()[r];
-		if (int(yy + row.height()) > y)
+		if (yy + row.height() > y)
 			break;
 		yy += row.height();
 	}

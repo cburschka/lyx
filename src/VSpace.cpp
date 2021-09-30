@@ -263,10 +263,10 @@ int VSpace::inPixels(BufferView const & bv) const
 	// This is how the skips are normally defined by LaTeX.
 	// But there should be some way to change this per document.
 	case SMALLSKIP:
-		return int(default_height / 4);
+		return default_height / 4;
 
 	case MEDSKIP:
-		return int(default_height / 2);
+		return default_height / 2;
 
 	case BIGSKIP:
 		return default_height;
@@ -276,7 +276,7 @@ int VSpace::inPixels(BufferView const & bv) const
 		return 3 * default_height;
 
 	case HALFLINE:
-		return int(default_height / 2);
+		return default_height / 2;
 
 	case FULLLINE:
 		return default_height;

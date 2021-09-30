@@ -1231,8 +1231,8 @@ void GuiWorkArea::Private::resetScreen()
 {
 	if (use_backingstore_) {
 		int const pr = p->pixelRatio();
-		screen_ = QImage(static_cast<int>(pr * p->viewport()->width()),
-		                 static_cast<int>(pr * p->viewport()->height()),
+		screen_ = QImage(pr * p->viewport()->width(),
+		                 pr * p->viewport()->height(),
 		                 QImage::Format_ARGB32_Premultiplied);
 #  if QT_VERSION >= 0x050000
 		screen_.setDevicePixelRatio(pr);
