@@ -2605,7 +2605,7 @@ void Tabular::TeXTopHLine(otexstream & os, row_type row, list<col_type> columns,
 						break;
 				}
 
-				for (col_type j = cstart ; j < c ; ++j)
+				for (col_type j = cstart ; j <= c ; ++j)
 					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
 						++offset;
 				col_type lastcol = (*it1 == *it2) ? c + 1 + offset : columns.size() - c + offset;
@@ -2741,7 +2741,7 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, list<col_type> colum
 						break;
 				}
 
-				for (col_type j = cstart ; j < c ; ++j)
+				for (col_type j = cstart ; j <= c ; ++j)
 					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
 						++offset;
 				col_type lastcol = (*it1 == *it2) ? c + 1 + offset : columns.size() - c + offset;
