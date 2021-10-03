@@ -5556,6 +5556,10 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 		case Tabular::SET_BOTTOM_SPACE:
 		case Tabular::SET_INTERLINE_SPACE:
 			status.clear();
+			if (action == Tabular::DELETE_ROW)
+				status.setEnabled(tabular.nrows() > 1);
+			else if (action == Tabular::DELETE_COLUMN)
+				status.setEnabled(tabular.ncols() > 1);
 			return true;
 
 		case Tabular::SET_TABULAR_WIDTH:
