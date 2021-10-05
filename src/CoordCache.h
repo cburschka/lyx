@@ -16,7 +16,7 @@
 
 #include "Dimension.h"
 
-#include <map>
+#include <unordered_map>
 
 namespace lyx {
 
@@ -153,7 +153,7 @@ private:
 			lyxbreaker(thing, hint, data_.size());
 	}
 
-	typedef std::map<T const *, Geometry> cache_type;
+	typedef std::unordered_map<T const *, Geometry> cache_type;
 	cache_type data_;
 };
 

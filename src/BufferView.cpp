@@ -228,7 +228,7 @@ struct BufferView::Private
 	///
 	CoordCache coord_cache_;
 	///
-	typedef map<MathData const *, MathRow> MathRows;
+	typedef unordered_map<MathData const *, MathRow> MathRows;
 	MathRows math_rows_;
 
 	/// this is used to handle XSelection events in the right manner.
