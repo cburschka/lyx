@@ -86,25 +86,27 @@ namespace lyx {
 namespace frontend {
 
 
-/*
- * Limit (strwidth|breakstr)_cache_ size to 512kB of string data.
- * Limit qtextlayout_cache_ size to 500 elements (we do not know the
- * size of the QTextLayout objects anyway).
- * Note that all these numbers are arbitrary.
- * Also, setting size to 0 is tantamount to disabling the cache.
- */
-int cache_metrics_width_size = 1 << 19;
-int cache_metrics_breakstr_size = 1 << 19;
+namespace {
+// Maximal size/cost for various caches. See QCache documentation to
+// see what cost means.
+
+// Limit strwidth_cache_ total cost to 1MB of string data.
+int const strwidth_cache_max_cost = 1024 * 1024;
+// Limit breakat_cache_ total cost to 10MB of string data.
+// This is useful for documents with very large insets.
+int const breakstr_cache_max_cost = 10 * 1024 * 1024;
 // Qt 5.x already has its own caching of QTextLayout objects
 // but it does not seem to work well on MacOS X.
 #if (QT_VERSION < 0x050000) || defined(Q_OS_MAC)
-int cache_metrics_qtextlayout_size = 500;
+// Limit qtextlayout_cache_ size to 500 elements (we do not know the
+// size of the QTextLayout objects anyway).
+int const qtextlayout_cache_max_size = 500;
 #else
-int cache_metrics_qtextlayout_size = 0;
+// Disable the cache
+int const qtextlayout_cache_max_size = 0;
 #endif
 
 
-namespace {
 /**
  * Convert a UCS4 character into a QChar.
  * This is a hack (it does only make sense for the common part of the UCS4
@@ -128,9 +130,9 @@ inline QChar const ucs4_to_qchar(char_type const ucs4)
 
 GuiFontMetrics::GuiFontMetrics(QFont const & font)
 	: font_(font), metrics_(font, 0),
-	  strwidth_cache_(cache_metrics_width_size),
-	  breakstr_cache_(cache_metrics_breakstr_size),
-	  qtextlayout_cache_(cache_metrics_qtextlayout_size)
+	  strwidth_cache_(strwidth_cache_max_cost),
+	  breakstr_cache_(breakstr_cache_max_cost),
+	  qtextlayout_cache_(qtextlayout_cache_max_size)
 {
 	// Determine italic slope
 	double const defaultSlope = tan(qDegreesToRadians(19.0));
