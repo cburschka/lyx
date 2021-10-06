@@ -26,7 +26,7 @@ class MathData;
 void lyxbreaker(void const * data, const char * hint, int size);
 
 struct Geometry {
-	Point pos;
+	Point pos = {-10000, -10000 };
 	Dimension dim;
 
 	bool covers(int x, int y) const
@@ -75,8 +75,6 @@ public:
 
 	void add(T const * thing, Dimension const & dim)
 	{
-		if (!has(thing))
-			data_[thing].pos = Point(-10000, -10000);
 		data_[thing].dim = dim;
 	}
 
@@ -147,6 +145,7 @@ public:
 private:
 	friend class CoordCache;
 
+#ifdef ENABLE_ASSERTIONS
 	void checkDim(T const * thing, char const * hint) const
 	{
 		if (!hasDim(thing))
@@ -158,6 +157,11 @@ private:
 		if (!has(thing))
 			lyxbreaker(thing, hint, data_.size());
 	}
+#else
+	void checkDim(T const *, char const * const ) const {}
+
+	void check(T const *, char const *) const {}
+#endif
 
 	typedef std::unordered_map<T const *, Geometry> cache_type;
 	cache_type data_;
