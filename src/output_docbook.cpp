@@ -360,11 +360,13 @@ void makeParagraph(
 
 	// Plain layouts must be ignored.
 	special_case |= buf.params().documentClass().isPlainLayout(par->layout()) && !runparams.docbook_force_pars;
+
 	// Equations do not deserve their own paragraph (DocBook allows them outside paragraphs).
 	// Exception: any case that generates an <inlineequation> must still get a paragraph to be valid.
-	special_case |= nInsets == parSize && std::all_of(par->insetList().begin(), par->insetList().end(), [](InsetList::Element inset) {
+	auto isEquationSpecialCase = [](InsetList::Element inset) {
 		return inset.inset && inset.inset->asInsetMath() && inset.inset->asInsetMath()->getType() != hullSimple;
-	});
+	};
+	special_case |= nInsets == parSize && std::all_of(par->insetList().begin(), par->insetList().end(), isEquationSpecialCase);
 
 	// Things that should not get into their own paragraph. (Only valid for DocBook.)
 	static std::set<InsetCode> lyxCodeSpecialCases = {
@@ -419,6 +421,12 @@ void makeParagraph(
 		return false;
 	};
 	special_case |= nInsets == parSize && std::all_of(par->insetList().begin(), par->insetList().end(), isFlexSpecialCase);
+
+	// If the insets should be rendered as images, enter the special case.
+	auto isRenderedAsImageSpecialCase = [](InsetList::Element inset) {
+		return inset.inset && inset.inset->getLayout().docbookrenderasimage();
+	};
+	special_case |= nInsets == parSize && std::all_of(par->insetList().begin(), par->insetList().end(), isRenderedAsImageSpecialCase);
 
 	// Open a paragraph if it is allowed, we are not already within a paragraph, and the insets in the paragraph do
 	// not forbid paragraphs (aka special cases).
