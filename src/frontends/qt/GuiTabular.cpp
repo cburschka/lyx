@@ -91,6 +91,8 @@ GuiTabular::GuiTabular(QWidget * parent)
 		this, SLOT(checkEnabled()));
 	connect(hAlignCO, SIGNAL(activated(int)),
 		this, SLOT(checkEnabled()));
+	connect(decimalPointED, SIGNAL(textEdited(const QString &)),
+		this, SLOT(checkEnabled()));
 	connect(vAlignCO, SIGNAL(activated(int)),
 		this, SLOT(checkEnabled()));
 	connect(multicolumnCB, SIGNAL(clicked()),
