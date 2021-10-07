@@ -93,9 +93,9 @@ public:
 	///
 	docstring insetAsXHTML(XMLStream &, OutputParams const &,
 	                       XHTMLOptions) const;
-	///
+	/// Outputs the inset as DocBook, with the given options regarding outer tags.
 	void docbook(XMLStream &, OutputParams const &, XHTMLOptions opts) const;
-	///
+	/// Outputs the whole inset as DocBook.
 	void docbook(XMLStream &, OutputParams const &) const override;
 	///
 	void validate(LaTeXFeatures & features) const override;
@@ -238,6 +238,10 @@ protected:
 	///
 	void iterateForToc(DocIterator const & cdit, bool output_active,
 					   UpdateType utype, TocBackend & backend) const;
+	/// Outputs an inset that must be first rendered (with the given options regarding outer tags).
+	void docbookRenderAsImage(XMLStream & xs, OutputParams const & rp, XHTMLOptions opts) const;
+	/// Outputs the text of the inset with the correct DocBook tags (with the given options regarding outer tags).
+	void docbookText(XMLStream & xs, OutputParams const & rp, XHTMLOptions opts) const;
 private:
 	/// Open the toc item for paragraph pit. Returns the paragraph index where
 	/// it should end.

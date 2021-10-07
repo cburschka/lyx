@@ -606,7 +606,6 @@ int InsetText::plaintext(odocstringstream & os,
 }
 
 
-
 void InsetText::docbook(XMLStream & xs, OutputParams const & rp) const
 {
 	docbook(xs, rp, WriteEverything);
@@ -615,8 +614,7 @@ void InsetText::docbook(XMLStream & xs, OutputParams const & rp) const
 
 void InsetText::docbook(XMLStream & xs, OutputParams const & rp, XHTMLOptions opts) const
 {
-	// we will always want to output all our paragraphs when we are
-	// called this way.
+	// Always output all the paragraphs.
 	OutputParams runparams = rp;
 	runparams.par_begin = 0;
 	runparams.par_end = text().paragraphs().size();
@@ -628,12 +626,57 @@ void InsetText::docbook(XMLStream & xs, OutputParams const & rp, XHTMLOptions op
 		return;
 	}
 
-	InsetLayout const & il = getLayout();
+	InsetLayout const &il = getLayout();
 
 	// Maybe this is an <info> paragraph that should not be generated at all (i.e. right now, its place is somewhere
 	// else, typically outside the current paragraph).
 	if (!rp.docbook_generate_info && il.docbookininfo() != "never")
 		return;
+
+	// Maybe this inset must be rendered before being output.
+	if (il.docbookrenderasimage()) {
+		docbookRenderAsImage(xs, runparams, opts);
+		return;
+	}
+
+	// If none of the special cases before apply, output the inset.
+	docbookText(xs, runparams, opts);
+}
+
+
+void InsetText::docbookRenderAsImage(XMLStream & xs, OutputParams const & rp, XHTMLOptions opts) const
+{
+	LASSERT(getLayout().docbookrenderasimage(), return);
+
+	// TODO: deal with opts. What exactly is the WriterOuterTag here, for instance?
+	xs << xml::StartTag("mediaobject")
+	   << xml::CR();
+
+	// Output the rendered inset.
+	xs << xml::StartTag("imageobject")
+	   << xml::CR();
+	xs << xml::EndTag("imageobject")
+	   << xml::CR();
+
+	// Output the raw content.
+	xs << xml::StartTag("textobject")
+	   << xml::CR()
+	   << xml::StartTag("programlisting", "language='latex' role='" + getLayout().latexname() + "'");
+	docbookText(xs, rp, opts);
+	xs << xml::EndTag("programlisting")
+	   << xml::CR()
+	   << xml::EndTag("textobject")
+	   << xml::CR();
+
+	xs << xml::EndTag("mediaobject")
+	   << xml::CR();
+}
+
+
+void InsetText::docbookText(XMLStream & xs, OutputParams const & rp, XHTMLOptions opts) const
+{
+	InsetLayout const &il = getLayout();
+	OutputParams runparams = rp;
 
 	// In some cases, the input parameters must be overridden for outer tags.
 	bool writeOuterTag = opts & WriteOuterTag;
@@ -667,7 +710,7 @@ void InsetText::docbook(XMLStream & xs, OutputParams const & rp, XHTMLOptions op
 			if (par.getInset(i) && par.getInset(i)->lyxCode() == ARG_CODE) {
 				InsetArgument const *arg = par.getInset(i)->asInsetArgument();
 				if (arg->docbookargumentaftermaintag())
-                    appendedArguments.insert(par.getInset(i)->asInsetArgument());
+					appendedArguments.insert(par.getInset(i)->asInsetArgument());
 			}
 		}
 	}
