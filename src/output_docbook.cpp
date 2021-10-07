@@ -754,6 +754,8 @@ DocBookDocumentSectioning hasDocumentSectioning(ParagraphList const &paragraphs,
 	bool documentHasSections = false;
 
 	while (bpit < epit) {
+		LASSERT(bpit < paragraphs.size(), return make_tuple(documentHasSections, bpit));
+
 		Layout const &style = paragraphs[bpit].layout();
 		documentHasSections |= isLayoutSectioningOrSimilar(style);
 
