@@ -79,6 +79,34 @@ void InsetPreview::addPreview(DocIterator const & inset_pos,
 }
 
 
+MacroNameSet gatherMacroDefinitions(const Buffer* buffer, const Inset * inset)
+{
+	// Collect macros for this inset.
+	// Not done yet: this function returns a list of macro *definitions*.
+	MacroNameSet macros;
+	buffer->listMacroNames(macros);
+
+	// Look for math insets and collect definitions for the used macros.
+	MacroNameSet defs;
+	DocIterator const dbeg = doc_iterator_begin(buffer, inset);
+	DocIterator dit = dbeg;
+	DocIterator const dend = doc_iterator_end(buffer, inset);
+	if (!dit.nextInset())
+		dit.forwardInset();
+
+	for (; dit != dend; dit.forwardInset()) {
+		InsetMath * im = dit.nextInset()->asInsetMath();
+		InsetMathHull * hull = im ? im->asHullInset() : nullptr;
+		if (!hull)
+			continue;
+		for (idx_type idx = 0; idx < hull->nargs(); ++idx)
+			hull->usedMacros(hull->cell(idx), dbeg, macros, defs);
+	}
+
+	return defs;
+}
+
+
 void InsetPreview::preparePreview(DocIterator const & pos) const
 {
 	odocstringstream str;
@@ -86,29 +114,10 @@ void InsetPreview::preparePreview(DocIterator const & pos) const
 	OutputParams runparams(&pos.buffer()->params().encoding());
 	latex(os, runparams);
 
-	// collect macros at this position
-	MacroNameSet macros;
-	pos.buffer()->listMacroNames(macros);
-
-	// look for math insets and collect definitions for the used macros
-	MacroNameSet defs;
-	DocIterator dit = doc_iterator_begin(pos.buffer(), this);
-	DocIterator const dend = doc_iterator_end(pos.buffer(), this);
-	if (!dit.nextInset())
-		dit.forwardInset();
-	for (; dit != dend; dit.forwardInset()) {
-		InsetMath * im = dit.nextInset()->asInsetMath();
-		InsetMathHull * hull = im ? im->asHullInset() : nullptr;
-		if (!hull)
-			continue;
-		for (idx_type idx = 0; idx < hull->nargs(); ++idx)
-			hull->usedMacros(hull->cell(idx), pos, macros, defs);
-	}
-	MacroNameSet::iterator it = defs.begin();
-	MacroNameSet::iterator end = defs.end();
+	MacroNameSet defs = gatherMacroDefinitions(pos.buffer(), this);
 	docstring macro_preamble;
-	for (; it != end; ++it)
-		macro_preamble.append(*it);
+	for (const auto& def : defs)
+		macro_preamble.append(def);
 
 	docstring const snippet = macro_preamble + str.str();
 	preview_->addPreview(snippet, *pos.buffer());

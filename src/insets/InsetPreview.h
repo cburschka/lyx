@@ -20,6 +20,7 @@
 namespace lyx {
 
 class Dimension;
+class MacroNameSet;
 class RenderPreview;
 
 namespace graphics {
@@ -85,6 +86,10 @@ protected:
 	unique_ptr<RenderPreview> preview_;
 
 };
+
+
+/// gathers the list of macro definitions used in the given inset
+MacroNameSet gatherMacroDefinitions(const Buffer* buffer, const Inset * inset);
 
 
 } // namespace lyx

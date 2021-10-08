@@ -28,8 +28,8 @@ class MathAtom;
 class Paragraph;
 class Text;
 
-DocIterator doc_iterator_begin(Buffer const * buf, Inset const * inset = 0);
-DocIterator doc_iterator_end(Buffer const * buf, Inset const * inset = 0);
+DocIterator doc_iterator_begin(Buffer const * buf, Inset const * inset = nullptr);
+DocIterator doc_iterator_end(Buffer const * buf, Inset const * inset = nullptr);
 
 
 class DocIterator
