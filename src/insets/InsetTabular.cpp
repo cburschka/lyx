@@ -5548,19 +5548,20 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 		case Tabular::SET_SPECIAL_MULTICOLUMN:
 		case Tabular::APPEND_ROW:
 		case Tabular::APPEND_COLUMN:
-		case Tabular::DELETE_ROW:
-		case Tabular::DELETE_COLUMN:
 		case Tabular::COPY_ROW:
 		case Tabular::COPY_COLUMN:
 		case Tabular::SET_TOP_SPACE:
 		case Tabular::SET_BOTTOM_SPACE:
 		case Tabular::SET_INTERLINE_SPACE:
 			status.clear();
-			if (action == Tabular::DELETE_ROW)
-				status.setEnabled(tabular.nrows() > 1);
-			else if (action == Tabular::DELETE_COLUMN)
-				status.setEnabled(tabular.ncols() > 1);
 			return true;
+
+		case Tabular::DELETE_ROW:
+			status.setEnabled(tabular.nrows() > 1);
+			break;
+		case Tabular::DELETE_COLUMN:
+			status.setEnabled(tabular.ncols() > 1);
+			break;
 
 		case Tabular::SET_TABULAR_WIDTH:
 			status.setEnabled(!tabular.rotate
