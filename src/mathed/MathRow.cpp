@@ -322,18 +322,16 @@ void MathRow::draw(PainterInfo & pi, int x, int const y) const
 			// This is hackish: the math inset does not know that space
 			// has been added before and after it; we alter its dimension
 			// while it is drawing, because it relies on this value.
-			Dimension const d = coords.insets().dim(e.inset);
-			Dimension d2 = d;
-			d2.wid -= e.before + e.after;
-			coords.insets().add(e.inset, d2);
+			Geometry & g = coords.insets().geometry(e.inset);
+			g.dim.wid -= e.before + e.after;
 			if (pi.pain.develMode() && !e.inset->isBufferValid())
-				pi.pain.fillRectangle(x + e.before, y - d2.ascent(),
-				                      d2.width(), d2.height(), Color_error);
+				pi.pain.fillRectangle(x + e.before, y - g.dim.ascent(),
+				                      g.dim.width(), g.dim.height(), Color_error);
 			e.inset->draw(pi, x + e.before, y);
-			coords.insets().add(e.inset, x, y);
-			coords.insets().add(e.inset, d);
+			g.pos = {x, y};
+			g.dim.wid += e.before + e.after;
 			drawMarkers(pi, e, x, y);
-			x += d.wid;
+			x += g.dim.wid;
 			break;
 		}
 		case BEGIN:

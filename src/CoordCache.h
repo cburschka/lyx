@@ -80,6 +80,12 @@ public:
 		data_[thing].dim = dim;
 	}
 
+	Geometry & geometry(T const * thing)
+	{
+		check(thing, "geometry");
+		return data_.find(thing)->second;
+	}
+
 	Geometry const & geometry(T const * thing) const
 	{
 		check(thing, "geometry");
