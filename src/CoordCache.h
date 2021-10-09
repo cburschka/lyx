@@ -80,13 +80,13 @@ public:
 
 	Geometry & geometry(T const * thing)
 	{
-		check(thing, "geometry");
+		checkDim(thing, "geometry");
 		return data_.find(thing)->second;
 	}
 
 	Geometry const & geometry(T const * thing) const
 	{
-		check(thing, "geometry");
+		checkDim(thing, "geometry");
 		return data_.find(thing)->second;
 	}
 
