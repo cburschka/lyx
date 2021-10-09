@@ -73,24 +73,24 @@ Color Change::color() const
 	Color color = Color_none;
 	switch (author % 5) {
 		case 0:
-			color = Color_addedtextauthor1;
+			color = Color_changedtext_workarea_author1;
 			break;
 		case 1:
-			color = Color_addedtextauthor2;
+			color = Color_changedtext_workarea_author2;
 			break;
 		case 2:
-			color = Color_addedtextauthor3;
+			color = Color_changedtext_workarea_author3;
 			break;
 		case 3:
-			color = Color_addedtextauthor4;
+			color = Color_changedtext_workarea_author4;
 			break;
 		case 4:
-			color = Color_addedtextauthor5;
+			color = Color_changedtext_workarea_author5;
 			break;
 	}
 
 	if (deleted())
-		color.mergeColor = Color_deletedtextmodifier;
+		color.mergeColor = Color_deletedtext_workarea_modifier;
 
 	return color;
 }

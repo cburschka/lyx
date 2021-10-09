@@ -182,22 +182,22 @@ enum ColorCode {
 	Color_appendix,
 	/// Changebar color
 	Color_changebar,
-	/// Deleted text color
-	Color_deletedtext,
-	/// Added text color
-	Color_addedtext,
-	/// Added text color author 1
-	Color_addedtextauthor1,
-	/// Added text color author 2
-	Color_addedtextauthor2,
-	/// Added text color author 3
-	Color_addedtextauthor3,
-	/// Added text color author 4
-	Color_addedtextauthor4,
-	/// Added text color author 5
-	Color_addedtextauthor5,
-	/// Deleted text modifying color
-	Color_deletedtextmodifier,
+	/// Deleted text color (output)
+	Color_deletedtext_output,
+	/// Added text color (output)
+	Color_addedtext_output,
+	/// Changed text color author 1 (workarea)
+	Color_changedtext_workarea_author1,
+	/// Changed text color author 2 (workarea)
+	Color_changedtext_workarea_author2,
+	/// Changed text color author 3 (workarea)
+	Color_changedtext_workarea_author3,
+	/// Changed text color author 4 (workarea)
+	Color_changedtext_workarea_author4,
+	/// Changed text color author 5 (workarea)
+	Color_changedtext_workarea_author5,
+	/// Deleted text modifying color (workarea)
+	Color_deletedtext_workarea_modifier,
 	/// Table line color
 	Color_tabularline,
 	/// Table line color
