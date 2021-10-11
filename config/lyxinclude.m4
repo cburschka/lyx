@@ -391,7 +391,7 @@ if test x$GXX = xyes; then
       dnl note that g++ always accepts -Wno-xxx, even when -Wxxx is an error.
       AC_LANG_PUSH(C++)
       AX_CHECK_COMPILE_FLAG([-Wdeprecated-copy],
-	[AM_CXXFLAGS="$AM_CXXFLAGS -Wno-deprecated-copy"])
+	[AM_CXXFLAGS="$AM_CXXFLAGS -Wno-deprecated-copy"], [], [-Werror])
       AC_LANG_POP(C++)
     fi
   case $gxx_version in
