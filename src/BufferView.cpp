@@ -1481,6 +1481,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		else {
 			dr.screenUpdate(Update::Force | Update::FitCursor);
 			dr.forceBufferUpdate();
+			resetInlineCompletionPos();
 			if (buffer().params().citeEngine() != engine ||
 			    buffer().params().citeEngineType() != enginetype)
 				buffer().invalidateCiteLabels();
@@ -1501,6 +1502,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		else {
 			dr.screenUpdate(Update::Force | Update::FitCursor);
 			dr.forceBufferUpdate();
+			resetInlineCompletionPos();
 			if (buffer().params().citeEngine() != engine ||
 			    buffer().params().citeEngineType() != enginetype)
 				buffer().invalidateCiteLabels();
