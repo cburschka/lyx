@@ -3340,7 +3340,8 @@ void PrefShortcuts::on_searchLE_textEdited()
 	for (int i = 0; i < matched.size(); ++i)
 		if (!isAlwaysHidden(*matched[i])) {
 			matched[i]->setHidden(false);
-			matched[i]->parent()->setExpanded(true);
+			if (matched[i]->parent())
+				matched[i]->parent()->setExpanded(true);
 		}
 }
 
