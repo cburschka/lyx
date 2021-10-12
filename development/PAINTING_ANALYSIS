@@ -11,7 +11,7 @@ Please keep this file up to date as the code evolves!!!
 Abbreviations:
 bv: BufferView
 pm: ParagraphMetrics
-tm::TextMetrics
+tm: TextMetrics
 
 * Questions / Ideas
 
@@ -75,11 +75,6 @@ a lot the amount of stuff to redraw.
 
 It should not be necessary to access the Paragraph object to draw.
 Adding the static elements to Row is a lot of work, but worth it IMO.
-
-** Create a unique row by paragraph and break it afterwards
-
-This should be a performance gain (only if paragraph breaking still
-shows as expensive after the rest is done)
 
 ** do not add the vertical margin of main text to first/last row
 
