@@ -440,6 +440,7 @@ qtHaveModule(core5compat):	QT += core5compat
 qtHaveModule(concurrent):	QT += concurrent
 qtHaveModule(gui):		QT += gui
 qtHaveModule(svg):		QT += svg
+qtHaveModule(svgwidgets):	QT += svgwidgets
 qtHaveModule(widgets):		QT += widgets
 percent.target = %
 percent.commands = @echo -n "\$(\$(@))\ "
