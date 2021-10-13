@@ -802,7 +802,7 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs,
 	set<pit_type> abstractWithLayout;
 	set<pit_type> abstractNoLayout;
 
-	// Find the first non empty paragraph by mutating bpit.
+	// Find the first nonempty paragraph by mutating bpit.
 	while (bpit < epit) {
 		Paragraph const &par = paragraphs[bpit];
 		if (par.empty() || hasOnlyNotes(par))

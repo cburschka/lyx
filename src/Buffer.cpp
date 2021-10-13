@@ -2106,8 +2106,7 @@ Buffer::ExportStatus Buffer::makeDocBookFile(FileName const & fname,
 	updateBuffer();
 	updateMacroInstances(OutputUpdate);
 
-	ExportStatus const retval =
-		writeDocBookSource(ofs, runparams, output);
+	ExportStatus const retval = writeDocBookSource(ofs, runparams, output);
 	if (retval == ExportKilled)
 		return ExportKilled;
 
@@ -4371,6 +4370,9 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 
 void Buffer::setMathFlavor(OutputParams & op) const
 {
+	// Passes the way to generate formulae to the XHTML output code.
+	// In particular, this function has no impact on the DocBook code, as it
+	// uses another mechanism to handle math flavours.
 	switch (params().html_math_output) {
 	case BufferParams::MathML:
 		op.math_flavor = OutputParams::MathAsMathML;
@@ -4414,7 +4416,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 	Converters converters = theConverters();
 	bool need_nice_file = false;
 	if (find(backs.begin(), backs.end(), format) == backs.end()) {
-		// Get shortest path to format
+		// Get the shortest path to format
 		converters.buildGraph();
 		Graph::EdgePath path;
 		for (string const & sit : backs) {
@@ -4580,7 +4582,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 		result_file = changeExtension(d->exportFileName().absFileName(), ext);
 	else
 		result_file = dest_filename;
-	// We need to copy referenced files (e. g. included graphics
+	// We need to copy referenced files (e.g. included graphics
 	// if format == "dvi") to the result dir.
 	vector<ExportedFile> const extfiles =
 		runparams.exportdata->externalFiles(format);

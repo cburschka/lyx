@@ -123,7 +123,7 @@ graphics::PreviewImage const *
 RenderPreview::getPreviewImage(Buffer const & buffer) const
 {
 	graphics::PreviewLoader const * loader = buffer.loader();
-	LASSERT(loader, return 0);
+	LASSERT(loader, return nullptr);
 	return loader->preview(snippet_);
 }
 
