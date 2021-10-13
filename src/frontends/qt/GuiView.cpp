@@ -1516,7 +1516,7 @@ bool GuiView::event(QEvent * e)
 				menuBar()->hide();
 			if (lyxrc.full_screen_toolbars) {
 				for (auto const & tb_p  : d.toolbars_)
-					if (tb_p.second->isVisibiltyOn() && tb_p.second->isVisible())
+					if (tb_p.second->isVisibilityOn() && tb_p.second->isVisible())
 						tb_p.second->hide();
 			}
 			for (int i = 0; i != d.splitter_->count(); ++i)
@@ -1537,7 +1537,7 @@ bool GuiView::event(QEvent * e)
 				menuBar()->show();
 			if (lyxrc.full_screen_toolbars) {
 				for (auto const & tb_p  : d.toolbars_)
-					if (tb_p.second->isVisibiltyOn() && !tb_p.second->isVisible())
+					if (tb_p.second->isVisibilityOn() && !tb_p.second->isVisible())
 						tb_p.second->show();
 				//updateToolbars();
 			}

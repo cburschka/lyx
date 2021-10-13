@@ -626,7 +626,7 @@ void GuiToolbar::restoreSession()
 }
 
 
-bool GuiToolbar::isVisibiltyOn() const
+bool GuiToolbar::isVisibilityOn() const
 {
 	return visibility_ & Toolbars::ON;
 }
@@ -663,10 +663,10 @@ void GuiToolbar::setState(string const state)
 void GuiToolbar::toggle()
 {
 	if (visibility_ & Toolbars::ALLOWAUTO) {
-		if (!(visibility_ & Toolbars::AUTO) && !isVisibiltyOn()) {
+		if (!(visibility_ & Toolbars::AUTO) && !isVisibilityOn()) {
 			setState("auto");
 		} else {
-			if (isVisibiltyOn())
+			if (isVisibilityOn())
 				setState("off");
 			else
 				setState("on");

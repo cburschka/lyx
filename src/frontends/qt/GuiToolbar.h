@@ -149,7 +149,7 @@ public:
 	bool isRestored() const;
 
 	///
-	bool isVisibiltyOn() const;
+	bool isVisibilityOn() const;
 	int visibility() const { return visibility_; }
 
 	/// Refresh the contents of the bar.
