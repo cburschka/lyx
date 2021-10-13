@@ -10,11 +10,16 @@
 
 #include <config.h>
 
-#include "InsetLayout.h"
 #include "InsetText.h"
+
+#include "mathed/MacroTable.h"
 
 #include "insets/InsetArgument.h"
 #include "insets/InsetLayout.h"
+#include "insets/InsetPreview.h"
+
+#include "graphics/PreviewImage.h"
+#include "graphics/PreviewLoader.h"
 
 #include "buffer_funcs.h"
 #include "Buffer.h"
@@ -26,6 +31,7 @@
 #include "CutAndPaste.h"
 #include "DispatchResult.h"
 #include "ErrorList.h"
+#include "Exporter.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "InsetList.h"
@@ -61,6 +67,7 @@
 #include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/Changer.h"
+#include "support/FileName.h"
 
 #include <algorithm>
 #include <stack>
@@ -71,9 +78,6 @@ using namespace lyx::support;
 
 
 namespace lyx {
-
-using graphics::PreviewLoader;
-
 
 /////////////////////////////////////////////////////////////////////
 
@@ -628,8 +632,9 @@ void InsetText::docbook(XMLStream & xs, OutputParams const & rp, XHTMLOptions op
 
 	InsetLayout const &il = getLayout();
 
-	// Maybe this is an <info> paragraph that should not be generated at all (i.e. right now, its place is somewhere
-	// else, typically outside the current paragraph).
+	// Maybe this is an <info> paragraph that should not be generated
+	// at all (i.e. right now, its place is somewhere else, typically outside
+	// the current paragraph).
 	if (!rp.docbook_generate_info && il.docbookininfo() != "never")
 		return;
 
@@ -648,14 +653,36 @@ void InsetText::docbookRenderAsImage(XMLStream & xs, OutputParams const & rp, XH
 {
 	LASSERT(getLayout().docbookrenderasimage(), return);
 
+	// Generate the LaTeX code to compile in order to get the image.
+	// This code actually does the same as an InsetPreview, but without
+	// an InsetPreview.
+	// Also, the image must be generated before the DocBook output is finished,
+	// unlike a preview that is not immediately required for display.
+	docstring const latex_snippet = insetToLaTeXSnippet(&buffer(), this);
+	std::string const snippet = support::trim(to_utf8(latex_snippet));
+	// TODO: no real support for Unicode. This code is very similar to RenderPreview::addPreview, the same gotcha applies.
+
+	graphics::PreviewLoader* loader = buffer().loader();
+	loader->add(snippet);
+	loader->startLoading(true); // Generate the image and wait until done.
+	graphics::PreviewImage const * img = loader->preview(snippet);
+	LASSERT(img != nullptr, return);
+	support::FileName const & filename = img->filename();
+
+	// Copy the image into the right folder.
+	rp.exportdata->addExternalFile("docbook", filename, filename.onlyFileName());
+
 	// TODO: deal with opts. What exactly is the WriterOuterTag here, for instance?
+	// Start writing the DocBook code for the image.
 	xs << xml::StartTag("mediaobject")
 	   << xml::CR();
 
 	// Output the rendered inset.
 	xs << xml::StartTag("imageobject")
-	   << xml::CR();
-	xs << xml::EndTag("imageobject")
+	   << xml::CR()
+	   << xml::StartTag("imagedata", std::string("fileref='") + filename.onlyFileName() + "'")
+	   << xml::CR()
+	   << xml::EndTag("imageobject")
 	   << xml::CR();
 
 	// Output the raw content.
@@ -944,7 +971,7 @@ void InsetText::appendParagraphs(ParagraphList & plist)
 
 
 void InsetText::addPreview(DocIterator const & text_inset_pos,
-	PreviewLoader & loader) const
+	graphics::PreviewLoader & loader) const
 {
 	ParagraphList::const_iterator pit = paragraphs().begin();
 	ParagraphList::const_iterator pend = paragraphs().end();
