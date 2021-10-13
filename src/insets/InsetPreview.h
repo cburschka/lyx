@@ -90,6 +90,8 @@ protected:
 
 /// gathers the list of macro definitions used in the given inset
 MacroNameSet gatherMacroDefinitions(const Buffer* buffer, const Inset * inset);
+/// returns the LaTeX snippet to compute the preview of the given inset
+docstring insetToLaTeXSnippet(const Buffer* buffer, const Inset * inset);
 
 
 } // namespace lyx

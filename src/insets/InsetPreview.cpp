@@ -107,19 +107,25 @@ MacroNameSet gatherMacroDefinitions(const Buffer* buffer, const Inset * inset)
 }
 
 
-void InsetPreview::preparePreview(DocIterator const & pos) const
+docstring insetToLaTeXSnippet(const Buffer* buffer, const Inset * inset)
 {
 	odocstringstream str;
 	otexstream os(str);
-	OutputParams runparams(&pos.buffer()->params().encoding());
-	latex(os, runparams);
+	OutputParams runparams(&buffer->params().encoding());
+	inset->latex(os, runparams);
 
-	MacroNameSet defs = gatherMacroDefinitions(pos.buffer(), this);
+	MacroNameSet defs = gatherMacroDefinitions(buffer, inset);
 	docstring macro_preamble;
 	for (const auto& def : defs)
 		macro_preamble.append(def);
 
-	docstring const snippet = macro_preamble + str.str();
+	return macro_preamble + str.str();
+}
+
+
+void InsetPreview::preparePreview(DocIterator const & pos) const
+{
+	docstring const snippet = insetToLaTeXSnippet(pos.buffer(), this);
 	preview_->addPreview(snippet, *pos.buffer());
 }
 
