@@ -3443,7 +3443,8 @@ void PrefShortcuts::shortcutOkPressed()
 	if (item) {
 		user_bind_.bind(&k, func);
 		shortcutsTW->sortItems(0, Qt::AscendingOrder);
-		item->parent()->setExpanded(true);
+		if (item->parent())
+			item->parent()->setExpanded(true);
 		shortcutsTW->setCurrentItem(item);
 		shortcutsTW->scrollToItem(item);
 	} else {
