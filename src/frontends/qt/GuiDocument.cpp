@@ -3109,10 +3109,7 @@ void GuiDocument::updateEngineType(string const & items, CiteEngineType const & 
 {
 	engine_types_.clear();
 
-	int nn = 0;
-
 	for (int n = 0; !token(items, '|', n).empty(); ++n) {
-		nn += 1;
 		string style = token(items, '|', n);
 		engine_types_.push_back(style);
 	}
