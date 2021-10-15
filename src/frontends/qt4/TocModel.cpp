@@ -353,7 +353,7 @@ void TocModels::reset(BufferView const * bv)
 	names_->insertColumns(0, 1);
 	// In the outliner, add Tocs from the master document
 	TocBackend const & backend = bv->buffer().masterBuffer()->tocBackend();
-	for (pair<string, shared_ptr<Toc>> const & toc : backend.tocs()) {
+	for (pair<const string, shared_ptr<Toc>> const & toc : backend.tocs()) {
 		QString const type = toqstr(toc.first);
 
 		// First, fill in the toc models.

@@ -272,7 +272,7 @@ void TocBackend::resetOutlinerNames()
 {
 	outliner_names_.clear();
 	// names from this document class
-	for (pair<string, docstring> const & name
+	for (pair<const string, docstring> const & name
 		     : buffer_->params().documentClass().outlinerNames())
 		addName(name.first, translateIfPossible(name.second));
 	// Hardcoded types

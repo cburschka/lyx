@@ -1288,7 +1288,7 @@ void InsetInclude::addToToc(DocIterator const & cpit, bool output_active,
 		//Copy missing outliner names (though the user has been warned against
 		//having different document class and module selection between master
 		//and child).
-		for (pair<string, docstring> const & name
+		for (pair<const string, docstring> const & name
 			     : childbuffer->params().documentClass().outlinerNames())
 			backend.addName(name.first, translateIfPossible(name.second));
 	}

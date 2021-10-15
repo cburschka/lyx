@@ -267,7 +267,7 @@ vector<char_type> Encoding::symbolsList() const
 	// add all encodable characters
 	copy(encodable_.begin(), encodable_.end(), back_inserter(symbols));
 	// now the ones from the unicodesymbols file that are not already there
-	for (pair<char_type, CharInfo> const & elem : unicodesymbols) {
+	for (pair<const char_type, CharInfo> const & elem : unicodesymbols) {
 		if (find(symbols.begin(), symbols.end(), elem.first) == symbols.end())
 			symbols.push_back(elem.first);
 	}
