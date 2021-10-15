@@ -25,18 +25,9 @@ class Paragraph;
 class ParagraphList;
 
 
-class ParIterator : public std::iterator<std::forward_iterator_tag, Paragraph>,
-		    public DocIterator
+class ParIterator : public DocIterator
 {
 public:
-	typedef std::iterator<std::forward_iterator_tag, Paragraph> StdIt;
-
-	typedef StdIt::value_type value_type;
-	typedef StdIt::difference_type difference_type;
-	typedef StdIt::pointer pointer;
-	typedef StdIt::reference reference;
-
-	///
 	///
 	ParIterator(Buffer * buf) : DocIterator(buf) {}
 	///
@@ -87,13 +78,11 @@ ParIterator par_iterator_end(Inset & inset);
 //bool operator!=(ParIterator const & it1, ParIterator const & it2);
 
 
-class ParConstIterator : public std::iterator<std::forward_iterator_tag,
-			 Paragraph>,
-			 public DocIterator
+class ParConstIterator : public DocIterator
 {
 public:
 	///
-	ParConstIterator(Buffer const * buf) 
+	ParConstIterator(Buffer const * buf)
 		: DocIterator(const_cast<Buffer *>(buf)) {}
 	///
 	ParConstIterator(ParConstIterator const & pi)
