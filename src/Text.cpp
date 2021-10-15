@@ -2149,7 +2149,10 @@ docstring Text::currentState(CursorData const & cur, bool devel_mode) const
 		if (!par.empty() && cur.pos() < par.size()) {
 			// Force output of code point, not character
 			size_t const c = par.getChar(cur.pos());
-			os << _(", Char: 0x") << hex << c;
+			if (c == META_INSET)
+				os << ", Char: INSET";
+			else
+				os << _(", Char: 0x") << hex << c;
 		}
 		os << _(", Boundary: ") << cur.boundary();
 //		Row & row = cur.textRow();
