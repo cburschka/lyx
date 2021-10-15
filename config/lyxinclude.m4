@@ -411,11 +411,12 @@ if test x$GXX = xyes; then
   dnl Warnings are for preprocessor too
   if test x$enable_warnings = xyes ; then
       AM_CPPFLAGS="$AM_CPPFLAGS -Wall -Wextra"
-      case $gxx_version in
-	  9.*|10.*|clang-10*)
-	      AM_CXXFLAGS="$AM_CXXFLAGS -Wno-deprecated-copy";;
-	  *);;
-      esac
+      dnl Shut off warning -Wdeprecated-copy, which triggers too much
+      dnl note that g++ always accepts -Wno-xxx, even when -Wxxx is an error.
+      AC_LANG_PUSH(C++)
+      AX_CHECK_COMPILE_FLAG([-Wdeprecated-copy],
+	[AM_CXXFLAGS="$AM_CXXFLAGS -Wno-deprecated-copy"], [], [-Werror])
+      AC_LANG_POP(C++)
     fi
   case $gxx_version in
       2.*|3.*) AC_ERROR([gcc >= 4.6 is required]);;

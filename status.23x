@@ -32,7 +32,7 @@ What's new
   equivalent to hitting the left arrow key (bug 11678).
 
 - Other than directly inserted, now references can also be pasted as insets
-  into an equation, instead of simply as text (bug 11539). 
+  into an equation, instead of simply as text (bug 11539).
 
 - Add support for High DPI screens in Windows and Linux (bug 12060).
 
@@ -156,3 +156,5 @@ What's new
 
 - The WM class of LyX for X Window environment is now the package name, typically
   "lyx" or "lyx[suffix]" (bug 11930).
+
+- Fix warnings with recent compilers (gcc 11, clang+++ >= 10)
