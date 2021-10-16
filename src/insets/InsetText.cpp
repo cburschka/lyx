@@ -72,6 +72,8 @@
 #include <algorithm>
 #include <stack>
 
+#include <QCryptographicHash>
+
 
 using namespace std;
 using namespace lyx::support;
@@ -669,8 +671,28 @@ void InsetText::docbookRenderAsImage(XMLStream & xs, OutputParams const & rp, XH
 	LASSERT(img != nullptr, return);
 	support::FileName const & filename = img->filename();
 
+	// Use a file name that is only determined by the LaTeX code: the name of
+	// the snippet is more or less random (i.e., if the user generates the file
+	// several times, they will have a clutter of preview files).
+	// Hence: use a cryptographic hash of the snippet. If the snippet changes,
+	// the file name will change a lot; two snippets are unlikely to have the
+	// same hash (by design of cryptographic hash functions). Computing a hash
+	// is typically slow, but extremely fast compared to compilation of the
+	// preview and image rendering.
+	QString snippetQ = QString(snippet.c_str());
+#if QT_VERSION >= 0x050000
+	QByteArray hash = QCryptographicHash::hash(snippetQ.toLocal8Bit(), QCryptographicHash::Sha256);
+#else
+	QByteArray hash = QCryptographicHash::hash(snippetQ.toLocal8Bit(), QCryptographicHash::Sha1);
+#endif
+	auto newFileBase = QString(hash.toBase64())
+			.replace("/", "")
+			.replace("+", "")
+			.replace("=", "");
+	std::string newFileName = "lyx_" + newFileBase.toStdString() + "." + filename.extension();
+
 	// Copy the image into the right folder.
-	rp.exportdata->addExternalFile("docbook5", filename, filename.onlyFileName());
+	rp.exportdata->addExternalFile("docbook5", filename, newFileName);
 
 	// TODO: deal with opts. What exactly is the WriterOuterTag here, for instance?
 	// Start writing the DocBook code for the image.
@@ -680,7 +702,7 @@ void InsetText::docbookRenderAsImage(XMLStream & xs, OutputParams const & rp, XH
 	// Output the rendered inset.
 	xs << xml::StartTag("imageobject")
 	   << xml::CR()
-	   << xml::CompTag("imagedata", std::string("fileref='") + filename.onlyFileName() + "'")
+	   << xml::CompTag("imagedata", std::string("fileref='") + newFileName + "'")
 	   << xml::CR()
 	   << xml::EndTag("imageobject")
 	   << xml::CR();
