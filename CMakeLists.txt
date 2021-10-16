@@ -634,14 +634,29 @@ if(NOT MSVC)
 	if(NOT LYX_QUIET)
 		set(CMAKE_VERBOSE_MAKEFILE ON)
 	endif()
-	set(LYX_CXX_FLAGS "-Wall -Wunused-parameter ${LYX_GCC11_MODE}")
-	if(LYX_CXX_FLAGS MATCHES "\\+\\+(14|11|98)")
+	if(LYX_GCC11_MODE MATCHES "\\+\\+([0-9][0-9])")
 	  # Thanks to Brad King <brad.king@kitware.com>
 	  # for the pointer to https://cmake.org/cmake/help/v3.6/variable/CMAKE_CXX_STANDARD.html
 	  # This allows us to use QT5.7 with recent g++ (version >= 4.9) compilers
 	  # and still use our own c++ extension tests
+	  set(std_num ${CMAKE_MATCH_1})
 	  set(CMAKE_CXX_STANDARD ${CMAKE_MATCH_1})
 	  message(STATUS "CMAKE_CXX_STANDARD set to ${CMAKE_CXX_STANDARD}")
+	else()
+	  message(STATUS "Setting CMAKE_CXX_STANDARD 11 as fallback")
+	  set(CMAKE_CXX_STANDARD 11)
+	  set(LYX_GCC11_MODE "--std=c++11")
+	endif()
+	# The following setting with LYX_GCC11_MODE is needed because cmake does not honor
+	# CMAKE_CXX_STANDARD while performing tests like
+	# check_cxx_source_compiles("..." HAVE_DEF_MAKE_UNIQUE)
+	include(CheckCXXCompilerFlag)
+	unset(CHECK_WNODEPRECATEDCOPY_FLAG CACHE)
+	CHECK_CXX_COMPILER_FLAG("-Wdeprecated-copy" CHECK_WNODEPRECATEDCOPY_FLAG)
+	if(${CHECK_WNODEPRECATEDCOPY_FLAG})
+		set(LYX_CXX_FLAGS "-Wall -Wextra -Wno-deprecated-copy ${LYX_GCC11_MODE}${LYX_CXX_FLAGS}")
+	else()
+		set(LYX_CXX_FLAGS "-Wall -Wextra ${LYX_GCC11_MODE}${LYX_CXX_FLAGS}")
 	endif()
 	if(LYX_STDLIB_DEBUG)
 		set(LYX_CXX_FLAGS "${LYX_CXX_FLAGS} -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC")
