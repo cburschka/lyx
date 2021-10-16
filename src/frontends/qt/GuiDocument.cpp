@@ -488,8 +488,7 @@ PreambleModule::PreambleModule(QWidget * parent)
 	connect(editPB, SIGNAL(clicked()), this, SLOT(editExternal()));
 	connect(findLE, SIGNAL(returnPressed()), this, SLOT(findText()));
 	checkFindButton();
-	// https://stackoverflow.com/questions/13027091/how-to-override-tab-width-in-qt
-	const int tabStop = 4;
+	int const tabStop = 4;
 	QFontMetrics metrics(preambleTE->currentFont());
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
 	// horizontalAdvance() is available starting in 5.11.0
@@ -612,6 +611,16 @@ LocalLayout::LocalLayout(QWidget * parent)
 	connect(validatePB, SIGNAL(clicked()), this, SLOT(validatePressed()));
 	connect(convertPB, SIGNAL(clicked()), this, SLOT(convertPressed()));
 	connect(editPB, SIGNAL(clicked()), this, SLOT(editExternal()));
+	// https://stackoverflow.com/questions/13027091/how-to-override-tab-width-in-qt
+	const int tabStop = 4;
+	QFontMetrics metrics(locallayoutTE->currentFont());
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
+	// horizontalAdvance() is available starting in 5.11.0
+	// setTabStopDistance() is available starting in 5.10.0
+	locallayoutTE->setTabStopDistance(tabStop * metrics.horizontalAdvance(' '));
+#else
+	locallayoutTE->setTabStopWidth(tabStop * metrics.width(' '));
+#endif
 }
 
 
