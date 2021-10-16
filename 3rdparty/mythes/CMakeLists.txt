@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.1)
 
 set(VERSION "1.2.5")
 set(SRCDIR ${CMAKE_CURRENT_SOURCE_DIR}/${VERSION})
