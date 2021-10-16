@@ -670,7 +670,7 @@ void InsetText::docbookRenderAsImage(XMLStream & xs, OutputParams const & rp, XH
 	support::FileName const & filename = img->filename();
 
 	// Copy the image into the right folder.
-	rp.exportdata->addExternalFile("docbook", filename, filename.onlyFileName());
+	rp.exportdata->addExternalFile("docbook5", filename, filename.onlyFileName());
 
 	// TODO: deal with opts. What exactly is the WriterOuterTag here, for instance?
 	// Start writing the DocBook code for the image.
