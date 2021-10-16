@@ -454,7 +454,7 @@ EOF2
 		    QT_LDFLAGS="-L`$QT_QMAKE -query QT_INSTALL_LIBS`"
 		    QT_LIB="$qt_guilibs"
 		else
-		    QT_LIB=`echo $qt_guilibs | tr ' ' '\n' | grep -e "^-l" | tr '\n' ' '`
+		    QT_LIB=`echo $qt_guilibs | tr ' ' '\n' | grep -v "^-L" | tr '\n' ' '`
 		fi
 		QTLIB_VERSION=`$QT_QMAKE -v | grep "Qt version" | sed -e 's/.*\([[0-9]]\.[[0-9]]*\.[[0-9]]\).*/\1/'`
 		if test -z "$QT_LIB"; then
