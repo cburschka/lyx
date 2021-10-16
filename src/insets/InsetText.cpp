@@ -680,7 +680,7 @@ void InsetText::docbookRenderAsImage(XMLStream & xs, OutputParams const & rp, XH
 	// Output the rendered inset.
 	xs << xml::StartTag("imageobject")
 	   << xml::CR()
-	   << xml::StartTag("imagedata", std::string("fileref='") + filename.onlyFileName() + "'")
+	   << xml::CompTag("imagedata", std::string("fileref='") + filename.onlyFileName() + "'")
 	   << xml::CR()
 	   << xml::EndTag("imageobject")
 	   << xml::CR();
@@ -695,8 +695,7 @@ void InsetText::docbookRenderAsImage(XMLStream & xs, OutputParams const & rp, XH
 	   << xml::EndTag("textobject")
 	   << xml::CR();
 
-	xs << xml::EndTag("mediaobject")
-	   << xml::CR();
+	xs << xml::EndTag("mediaobject");
 }
 
 
