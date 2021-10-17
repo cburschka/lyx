@@ -31,6 +31,10 @@ include_directories(
 	${QT_INCLUDES}
 	${CMAKE_CURRENT_BINARY_DIR})
 
+if (LYX_USE_QT MATCHES "QT6")
+        include_directories(${Qt6Gui_PRIVATE_INCLUDE_DIRS})
+endif()
+
 if(LYX_MERGE_FILES)
 	lyx_const_touched_files(_allinone frontends_qt_sources)
 	set(depends_moc_uic ${frontends_qt_headers} ${ui_files})
