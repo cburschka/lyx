@@ -3533,17 +3533,17 @@ void GuiDocument::paramsToDialog()
 	string options =
 		split(bp_.bibtex_command, command, ' ');
 
-	int const bpos = biblioModule->bibtexCO->findData(toqstr(command));
-	if (bpos != -1) {
-		biblioModule->bibtexCO->setCurrentIndex(bpos);
-		biblioModule->bibtexOptionsLE->setText(toqstr(options).trimmed());
-	} else {
-		// We reset to default if we do not know the specified compiler
-		// This is for security reasons
-		biblioModule->bibtexCO->setCurrentIndex(
-			biblioModule->bibtexCO->findData(toqstr("default")));
-		biblioModule->bibtexOptionsLE->clear();
+	int bpos = biblioModule->bibtexCO->findData(toqstr(command));
+	if (bpos == -1) {
+		// We add and set the unknown compiler, indicating that it is unavailable
+		// to assure document compilation and for security reasons, a fallback
+		// will be used on document processing stage
+		biblioModule->bibtexCO->addItem(toqstr(bformat(_("%1$s (not available)"),
+							from_utf8(command))), toqstr(command));
+		bpos = biblioModule->bibtexCO->findData(toqstr(command));
 	}
+	biblioModule->bibtexCO->setCurrentIndex(bpos);
+	biblioModule->bibtexOptionsLE->setText(toqstr(options).trimmed());
 	biblioModule->bibtexOptionsLE->setEnabled(
 		biblioModule->bibtexCO->currentIndex() != 0);
 
