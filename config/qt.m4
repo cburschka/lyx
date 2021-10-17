@@ -442,6 +442,7 @@ qtHaveModule(gui):		QT += gui
 qtHaveModule(svg):		QT += svg
 qtHaveModule(svgwidgets):	QT += svgwidgets
 qtHaveModule(widgets):		QT += widgets
+QT += gui-private
 percent.target = %
 percent.commands = @echo -n "\$(\$(@))\ "
 QMAKE_EXTRA_TARGETS += percent
