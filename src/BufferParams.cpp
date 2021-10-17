@@ -3612,11 +3612,71 @@ vector<CitationStyle> BufferParams::citeStyles() const
 }
 
 
-string const BufferParams::bibtexCommand() const
+string const BufferParams::getBibtexCommand(string const cmd, bool const warn) const
+{
+	// split from options
+	string command_in;
+	split(cmd, command_in, ' ');
+
+	// Look if the requested command is available. If so, use that.
+	for (auto const & alts : lyxrc.bibtex_alternatives) {
+		string command_prov;
+		split(alts, command_prov, ' ');
+		if (command_in == command_prov)
+			return cmd;
+	}
+
+	// If not, find the most suitable fallback for the current cite framework,
+	// and warn. Note that we omit options in any such case.
+	string fallback;
+	if (useBiblatex()) {
+		// For Biblatex, we prefer biber (also for Japanese)
+		// and try to fall back to bibtex8
+		if (lyxrc.bibtex_alternatives.find("biber") != lyxrc.bibtex_alternatives.end())
+			fallback = "biber";
+		else if (lyxrc.bibtex_alternatives.find("bibtex8") != lyxrc.bibtex_alternatives.end())
+			fallback = "bibtex8";
+	}
+	// For classic BibTeX and as last resort for biblatex, try bibtex
+	if (fallback.empty()) {
+		if (lyxrc.bibtex_alternatives.find("bibtex") != lyxrc.bibtex_alternatives.end())
+			fallback = "bibtex";
+	}
+
+	if (!warn)
+		return fallback;
+
+	if (fallback.empty()) {
+		frontend::Alert::warning(
+			_("No bibliography processor found!"),
+			support::bformat(
+			  _("The bibliography processor requested by this document "
+			    "(%1$s) is not available and no appropriate "
+			    "alternative has been found. "
+			    "No bibliography and references will be generated.\n"
+			    "Please fix your installation!"),
+			  from_utf8(cmd)));
+	} else {
+		frontend::Alert::warning(
+			_("Requested bibliography processor not found!"),
+			support::bformat(
+			  _("The bibliography processor requested by this document "
+			    "(%1$s) is not available. "
+			    "As a fallback, '%2$s' will be used, options are omitted. "
+			    "This might result in errors or unwanted changes in "
+			    "the bibliography. Please check carefully!\n"
+			    "It is suggested to install the missing processor."),
+			  from_utf8(cmd), from_utf8(fallback)));
+	}
+	return fallback;
+}
+
+
+string const BufferParams::bibtexCommand(bool const warn) const
 {
 	// Return document-specific setting if available
 	if (bibtex_command != "default")
-		return bibtex_command;
+		return getBibtexCommand(bibtex_command, warn);
 
 	// If we have "default" in document settings, consult the prefs
 	// 1. Japanese (uses a specific processor)
@@ -3636,7 +3696,7 @@ string const BufferParams::bibtexCommand() const
 	// 2. All other languages
 	else if (lyxrc.bibtex_command != "automatic")
 		// Return the specified program, if "automatic" is not set
-		return lyxrc.bibtex_command;
+		return getBibtexCommand(lyxrc.bibtex_command, warn);
 
 	// 3. Automatic: find the most suitable for the current cite framework
 	if (useBiblatex()) {

@@ -768,7 +768,7 @@ bool LaTeX::runBibTeX(vector<AuxInfo> const & bibtex_info,
 				it->aux_file.absFileName())));
 		Systemcall one;
 		Systemcall::Starttype const starttype = 
-	        allow_cancel ? Systemcall::WaitLoop : Systemcall::Wait;
+			allow_cancel ? Systemcall::WaitLoop : Systemcall::Wait;
 		exit_code = one.startscript(starttype, tmp, path, lpath, true);
 		if (exit_code) {
 			return result;

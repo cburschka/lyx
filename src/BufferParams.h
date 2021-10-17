@@ -518,7 +518,7 @@ public:
 	std::vector<CitationStyle> citeStyles() const;
 
 	/// Return the actual bibtex command (lyxrc or buffer param)
-	std::string const bibtexCommand() const;
+	std::string const bibtexCommand(bool const warn = false) const;
 
 	/// Are we using biblatex?
 	bool useBiblatex() const;
@@ -651,6 +651,9 @@ private:
 	std::map<std::string, std::string> bib_encodings;
 	/// Split bibliography?
 	bool use_bibtopic;
+	/// Return the actual or an appropriate fallback bibtex command
+	std::string const getBibtexCommand(std::string const cmd,
+					   bool const warn) const;
 	///
 	DocumentClassPtr doc_class_;
 	///

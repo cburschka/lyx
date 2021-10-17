@@ -478,7 +478,7 @@ Converters::RetVal Converters::convert(Buffer const * buffer,
 			 || suffixIs(bp.bufferFormat(), "-ja"))
 			&& bp.encoding().package() == Encoding::japanese;
 		runparams.use_indices = bp.use_indices;
-		runparams.bibtex_command = bp.bibtexCommand();
+		runparams.bibtex_command = bp.bibtexCommand(true);
 		runparams.index_command = (bp.index_command == "default") ?
 			string() : bp.index_command;
 		runparams.document_language = bp.language->lang();
