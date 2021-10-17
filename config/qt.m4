@@ -438,11 +438,10 @@ EOF1
 qtHaveModule(core):		QT += core
 qtHaveModule(core5compat):	QT += core5compat
 qtHaveModule(concurrent):	QT += concurrent
-qtHaveModule(gui):		QT += gui
+qtHaveModule(gui):		QT += gui gui-private
 qtHaveModule(svg):		QT += svg
 qtHaveModule(svgwidgets):	QT += svgwidgets
 qtHaveModule(widgets):		QT += widgets
-QT += gui-private
 percent.target = %
 percent.commands = @echo -n "\$(\$(@))\ "
 QMAKE_EXTRA_TARGETS += percent
