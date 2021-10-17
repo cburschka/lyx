@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-08-21 21:24+0200\n"
-"PO-Revision-Date: 2021-08-21 19:27+0000\n"
+"POT-Creation-Date: 2021-10-17 21:07+0200\n"
+"PO-Revision-Date: 2021-10-17 19:25+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -27838,6 +27838,40 @@ msgstr "Chyba pri čítaní vnútorných informácií pre schému"
 msgid "Read Error"
 msgstr "Chyba pri čítaní"
 
+#: src/BufferParams.cpp:3651
+msgid "No bibliography processor found!"
+msgstr "Nenašiel sa žiadny procesor pre bibliografiu!"
+
+#: src/BufferParams.cpp:3653
+#, c-format
+msgid ""
+"The bibliography processor requested by this document (%1$s) is not "
+"available and no appropriate alternative has been found. No bibliography and "
+"references will be generated.\n"
+"Please fix your installation!"
+msgstr ""
+"Žiadaný procesor pre bibliografiu tohto dokumentu (%1$s) je nedostupný a "
+"alternatíva sa nenašla. Bibliografia a referencie nebudú generované.\n"
+"Opravte prosím vašu inštaláciu!"
+
+#: src/BufferParams.cpp:3661
+msgid "Requested bibliography processor not found!"
+msgstr "Žiadaný procesor pre bibliografiu nenájdený!"
+
+#: src/BufferParams.cpp:3663
+#, c-format
+msgid ""
+"The bibliography processor requested by this document (%1$s) is not "
+"available. As a fallback, '%2$s' will be used, options are omitted. This "
+"might result in errors or unwanted changes in the bibliography. Please check "
+"carefully!\n"
+"It is suggested to install the missing processor."
+msgstr ""
+"Žiadaný procesor pre bibliografiu tohto dokumentu (%1$s) je nedostupný. Ako "
+"náhrada sa bude používať '%2$s' bez volieb. To môže viesť k chybám alebo "
+"nežiadúcim zmenám v bibliografie. Pozorne skontrolujte!\n"
+"Navrhuje sa inštalovať neprítomný procesor."
+
 #: src/BufferView.cpp:178
 msgid "No more insets"
 msgstr "Už nie je viac vložiek"
@@ -32279,6 +32313,11 @@ msgstr "každú podsekciu"
 #: src/frontends/qt/GuiDocument.cpp:3970
 msgid "per child document"
 msgstr "každý podriadený dokument"
+
+#: src/frontends/qt/GuiDocument.cpp:4001
+#, c-format
+msgid "%1$s (not available)"
+msgstr "%1$s (nedostupný)"
 
 #: src/frontends/qt/GuiDocument.cpp:4225
 msgid "[No options predefined]"
