@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-03-28 10:24+0200\n"
-"PO-Revision-Date: 2021-03-29 11:40+0000\n"
+"POT-Creation-Date: 2021-10-18 10:31+0200\n"
+"PO-Revision-Date: 2021-10-18 08:32+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -4911,7 +4911,7 @@ msgstr "Nastavenie bunky"
 
 #: src/frontends/qt4/ui/TabularUi.ui:172
 msgid "Rotate this cell by 90 degrees"
-msgstr "Otočiť túto bunku o 90 stupňov"
+msgstr "Otočiť túto bunku o 90°"
 
 #: src/frontends/qt4/ui/TabularUi.ui:188 src/frontends/qt4/ui/TabularUi.ui:332
 msgid "rotation angle"
@@ -4939,7 +4939,7 @@ msgstr "Vertikálne zarovnanie tabuľky"
 
 #: src/frontends/qt4/ui/TabularUi.ui:316
 msgid "Rotate the table by 90 degrees"
-msgstr "Otočiť tabuľku o 90 stupňov"
+msgstr "Otočiť tabuľku o 90°"
 
 #: src/frontends/qt4/ui/TabularUi.ui:319
 msgid "&Rotate"
@@ -12412,7 +12412,7 @@ msgstr "Uhol"
 
 #: lib/layouts/graphicboxes.module:73
 msgid "Rotation angle in degrees (counterclockwise)"
-msgstr "Točiaci uhol v stupňoch (v protismere hodín)"
+msgstr "Uhol otočenia (v protismere hodín)"
 
 #: lib/layouts/hanging.module:2 lib/layouts/hanging.module:16
 msgid "Hanging"
@@ -19982,11 +19982,11 @@ msgstr "Zarovnať dospodu"
 
 #: lib/ui/stdtoolbars.inc:171
 msgid "Rotate cell by 90 degrees or unset rotation"
-msgstr "Otočiť túto bunku o 90 stupňov alebo vymazať rotáciu"
+msgstr "Otočiť túto bunku o 90° alebo zrušiť rotáciu"
 
 #: lib/ui/stdtoolbars.inc:172
 msgid "Rotate table by 90 degrees or unset rotation"
-msgstr "Otočiť túto tabuĺku o 90 stupňov alebo vymazať rotáciu"
+msgstr "Otočiť túto tabuľku o 90° alebo zrušiť rotáciu"
 
 #: lib/ui/stdtoolbars.inc:173
 msgid "Set multi-column"
@@ -25903,6 +25903,40 @@ msgstr "Chyba pri čítaní vnútorných informácií pre schému"
 msgid "Read Error"
 msgstr "Chyba pri čítaní"
 
+#: src/BufferParams.cpp:3604
+msgid "No bibliography processor found!"
+msgstr "Nenašiel sa žiadny procesor pre bibliografiu!"
+
+#: src/BufferParams.cpp:3606
+#, c-format
+msgid ""
+"The bibliography processor requested by this document (%1$s) is not "
+"available and no appropriate alternative has been found. No bibliography and "
+"references will be generated.\n"
+"Please fix your installation!"
+msgstr ""
+"Žiadaný procesor pre bibliografiu tohto dokumentu (%1$s) je nedostupný a "
+"alternatíva sa nenašla. Bibliografia a referencie nebudú generované.\n"
+"Opravte prosím vašu inštaláciu!"
+
+#: src/BufferParams.cpp:3614
+msgid "Requested bibliography processor not found!"
+msgstr "Žiadaný procesor pre bibliografiu nenájdený!"
+
+#: src/BufferParams.cpp:3616
+#, c-format
+msgid ""
+"The bibliography processor requested by this document (%1$s) is not "
+"available. As a fallback, '%2$s' will be used, options are omitted. This "
+"might result in errors or unwanted changes in the bibliography. Please check "
+"carefully!\n"
+"It is suggested to install the missing processor."
+msgstr ""
+"Žiadaný procesor pre bibliografiu tohto dokumentu (%1$s) je nedostupný. Ako "
+"náhrada sa bude používať '%2$s' bez volieb. To môže viesť k chybám alebo "
+"nežiadúcim zmenám v bibliografie. Pozorne skontrolujte!\n"
+"Navrhuje sa inštalovať neprítomný procesor."
+
 #: src/BufferView.cpp:194
 msgid "No more insets"
 msgstr "Už nie je viac vložiek"
@@ -30013,6 +30047,11 @@ msgstr "každú podsekciu"
 #: src/frontends/qt4/GuiDocument.cpp:3511
 msgid "per child document"
 msgstr "každý podriadený dokument"
+
+#: src/frontends/qt4/GuiDocument.cpp:3541
+#, c-format
+msgid "%1$s (not available)"
+msgstr "%1$s (nedostupný)"
 
 #: src/frontends/qt4/GuiDocument.cpp:3799
 msgid "[No options predefined]"
