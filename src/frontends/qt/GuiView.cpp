@@ -4067,10 +4067,8 @@ void GuiView::dispatchToBufferView(FuncRequest const & cmd, DispatchResult & dr)
 	// Let the current BufferView dispatch its own actions.
 	bv->dispatch(cmd, dr);
 	if (dr.dispatched()) {
-		if (cmd.action() == LFUN_REDO || cmd.action() == LFUN_UNDO) {
-			updateCompletion(bv->cursor(), true, false);
+		if (cmd.action() == LFUN_REDO || cmd.action() == LFUN_UNDO)
 			updateDialog("document", "");
-		}
 		return;
 	}
 
