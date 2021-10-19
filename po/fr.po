@@ -359,8 +359,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-03-29 10:31+0200\n"
-"PO-Revision-Date: 2021-05-17 10:34+0200\n"
+"POT-Creation-Date: 2021-10-18 15:04+0200\n"
+"PO-Revision-Date: 2021-10-19 11:26+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -1079,7 +1079,7 @@ msgstr "Ajouter &tout"
 #: src/buffer_funcs.cpp:78 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:247
 #: src/frontends/qt4/GuiDocument.cpp:2472 src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/GuiPrefs.cpp:3414
+#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/GuiPrefs.cpp:3415
 #: src/frontends/qt4/GuiView.cpp:2500 src/frontends/qt4/GuiView.cpp:2648
 #: src/frontends/qt4/GuiView.cpp:2672 src/frontends/qt4/GuiView.cpp:2686
 #: src/frontends/qt4/GuiView.cpp:2787 src/frontends/qt4/GuiView.cpp:2832
@@ -1133,8 +1133,8 @@ msgstr "&Taille :"
 #: src/frontends/qt4/GuiDocument.cpp:2335
 #: src/frontends/qt4/GuiDocument.cpp:2342
 #: src/frontends/qt4/GuiDocument.cpp:2427
-#: src/frontends/qt4/GuiDocument.cpp:2982
-#: src/frontends/qt4/GuiDocument.cpp:4389 src/frontends/qt4/GuiExternal.cpp:77
+#: src/frontends/qt4/GuiDocument.cpp:2979
+#: src/frontends/qt4/GuiDocument.cpp:4386 src/frontends/qt4/GuiExternal.cpp:77
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiIndices.cpp:58
 #: src/frontends/qt4/GuiListings.cpp:154 src/frontends/qt4/GuiListings.cpp:161
 #: src/frontends/qt4/GuiPrefs.cpp:2547 src/frontends/qt4/GuiPrefs.cpp:2660
@@ -1362,8 +1362,8 @@ msgstr "Restaurer le réglage implicite"
 #: src/frontends/qt4/ui/RefUi.ui:368 src/frontends/qt4/ui/SendtoUi.ui:82
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
 #: src/frontends/qt4/GuiDocument.cpp:2548
-#: src/frontends/qt4/GuiDocument.cpp:2850
-#: src/frontends/qt4/GuiDocument.cpp:4324
+#: src/frontends/qt4/GuiDocument.cpp:2847
+#: src/frontends/qt4/GuiDocument.cpp:4321
 msgid "&Apply"
 msgstr "&Appliquer"
 
@@ -7781,10 +7781,10 @@ msgstr "Autre affiliation :"
 msgid "And"
 msgstr "Et"
 
-#: lib/layouts/aastex.layout:228 src/frontends/qt4/GuiDocument.cpp:2775
-#: src/frontends/qt4/GuiDocument.cpp:2787
-#: src/frontends/qt4/GuiDocument.cpp:2898
-#: src/frontends/qt4/GuiDocument.cpp:2917
+#: lib/layouts/aastex.layout:228 src/frontends/qt4/GuiDocument.cpp:2772
+#: src/frontends/qt4/GuiDocument.cpp:2784
+#: src/frontends/qt4/GuiDocument.cpp:2895
+#: src/frontends/qt4/GuiDocument.cpp:2914
 msgid "and"
 msgstr "et"
 
@@ -12150,7 +12150,7 @@ msgstr "Erreur Fixme"
 #: lib/layouts/fixme.module:82 src/frontends/qt4/GuiCompare.cpp:198
 #: src/frontends/qt4/GuiDocument.cpp:2485
 #: src/frontends/qt4/GuiDocument.cpp:2559
-#: src/frontends/qt4/GuiDocument.cpp:4332
+#: src/frontends/qt4/GuiDocument.cpp:4329
 msgid "Error"
 msgstr "Erreur"
 
@@ -26435,6 +26435,42 @@ msgstr "Erreur de lecture du format interne"
 msgid "Read Error"
 msgstr "Erreur de lecture"
 
+#: src/BufferParams.cpp:3604
+msgid "No bibliography processor found!"
+msgstr "Aucun processeur bibliographique trouvé !"
+
+#: src/BufferParams.cpp:3606
+#, c-format
+msgid ""
+"The bibliography processor requested by this document (%1$s) is not "
+"available and no appropriate alternative has been found. No bibliography and "
+"references will be generated.\n"
+"Please fix your installation!"
+msgstr ""
+"Le processeur bibliographique requis par ce document (%1$s) n'est pas "
+"disponible et aucun processeur alternatif n'a été trouvé. Aucune "
+"bibliographie ni références ne seront créées.\n"
+"Merci de réparer votre installation !"
+
+#: src/BufferParams.cpp:3614
+msgid "Requested bibliography processor not found!"
+msgstr "Processeur bibliographique requis introuvable !"
+
+#: src/BufferParams.cpp:3616
+#, c-format
+msgid ""
+"The bibliography processor requested by this document (%1$s) is not "
+"available. As a fallback, '%2$s' will be used, options are omitted. This "
+"might result in errors or unwanted changes in the bibliography. Please check "
+"carefully!\n"
+"It is suggested to install the missing processor."
+msgstr ""
+"Le processeur bibliographique requis par ce document (%1$s) n'est pas "
+"disponible. En tant qu'alternative, '%2$s'  sera utilisé, sans options. Il "
+"peut en résulter des erreurs ou des modifications non voulues dans la "
+"bibliographie. Vérifiez soigneusement !\n"
+"Vous pourriez installer le processeur manquant."
+
 #: src/BufferView.cpp:194
 msgid "No more insets"
 msgstr "Pas d'autre insert"
@@ -27372,17 +27408,17 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "La copie de %1$s vers %2$s a échoué."
 
 #: src/Font.cpp:60 src/frontends/qt4/GuiCharacter.cpp:149
-#: src/frontends/qt4/GuiDocument.cpp:4389 src/frontends/qt4/GuiListings.cpp:161
+#: src/frontends/qt4/GuiDocument.cpp:4386 src/frontends/qt4/GuiListings.cpp:161
 msgid "Roman"
 msgstr "Romain"
 
 #: src/Font.cpp:60 src/frontends/qt4/GuiCharacter.cpp:150
-#: src/frontends/qt4/GuiDocument.cpp:4389 src/frontends/qt4/GuiListings.cpp:161
+#: src/frontends/qt4/GuiDocument.cpp:4386 src/frontends/qt4/GuiListings.cpp:161
 msgid "Sans Serif"
 msgstr "Sans empattement"
 
 #: src/Font.cpp:60 src/frontends/qt4/GuiCharacter.cpp:151
-#: src/frontends/qt4/GuiDocument.cpp:4389 src/frontends/qt4/GuiListings.cpp:161
+#: src/frontends/qt4/GuiDocument.cpp:4386 src/frontends/qt4/GuiListings.cpp:161
 msgid "Typewriter"
 msgstr "Chasse fixe"
 
@@ -29421,7 +29457,7 @@ msgstr "LyX : %1$s"
 msgid "About %1"
 msgstr "À propos de %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:717 src/frontends/qt4/GuiPrefs.cpp:3522
+#: src/frontends/qt4/GuiApplication.cpp:717 src/frontends/qt4/GuiPrefs.cpp:3524
 msgid "Preferences"
 msgstr "Préférences"
 
@@ -29728,8 +29764,8 @@ msgid "Filename Suffix"
 msgstr "Suffixe du fichier"
 
 #: src/frontends/qt4/GuiBranches.cpp:135 src/frontends/qt4/GuiBranches.cpp:143
-#: src/frontends/qt4/GuiDocument.cpp:2947
-#: src/frontends/qt4/GuiDocument.cpp:4130
+#: src/frontends/qt4/GuiDocument.cpp:2944
+#: src/frontends/qt4/GuiDocument.cpp:4127
 #: src/frontends/qt4/GuiProgressView.cpp:144
 #: src/frontends/qt4/GuiProgressView.cpp:158
 #: src/frontends/qt4/GuiProgressView.cpp:179
@@ -29737,9 +29773,9 @@ msgid "Yes"
 msgstr "Oui"
 
 #: src/frontends/qt4/GuiBranches.cpp:135 src/frontends/qt4/GuiBranches.cpp:143
-#: src/frontends/qt4/GuiDocument.cpp:2946
-#: src/frontends/qt4/GuiDocument.cpp:3508
-#: src/frontends/qt4/GuiDocument.cpp:4129
+#: src/frontends/qt4/GuiDocument.cpp:2943
+#: src/frontends/qt4/GuiDocument.cpp:3505
+#: src/frontends/qt4/GuiDocument.cpp:4126
 #: src/frontends/qt4/GuiProgressView.cpp:110
 #: src/frontends/qt4/GuiProgressView.cpp:143
 #: src/frontends/qt4/GuiProgressView.cpp:179
@@ -30437,10 +30473,10 @@ msgid "&Default..."
 msgstr "&Implicite..."
 
 #: src/frontends/qt4/GuiDocument.cpp:2284
-#: src/frontends/qt4/GuiDocument.cpp:3874
-#: src/frontends/qt4/GuiDocument.cpp:3883
-#: src/frontends/qt4/GuiDocument.cpp:3892
-#: src/frontends/qt4/GuiDocument.cpp:3901
+#: src/frontends/qt4/GuiDocument.cpp:3871
+#: src/frontends/qt4/GuiDocument.cpp:3880
+#: src/frontends/qt4/GuiDocument.cpp:3889
+#: src/frontends/qt4/GuiDocument.cpp:3898
 msgid " (not installed)"
 msgstr " (pas installé)"
 
@@ -30508,14 +30544,14 @@ msgid "LyX Files (*.lyx)"
 msgstr "Documents LyX (*.lyx)"
 
 #: src/frontends/qt4/GuiDocument.cpp:2545
-#: src/frontends/qt4/GuiDocument.cpp:2847
-#: src/frontends/qt4/GuiDocument.cpp:4321
+#: src/frontends/qt4/GuiDocument.cpp:2844
+#: src/frontends/qt4/GuiDocument.cpp:4318
 msgid "Unapplied changes"
 msgstr "Modifications non appliquées"
 
 #: src/frontends/qt4/GuiDocument.cpp:2546
-#: src/frontends/qt4/GuiDocument.cpp:2848
-#: src/frontends/qt4/GuiDocument.cpp:4322
+#: src/frontends/qt4/GuiDocument.cpp:2845
+#: src/frontends/qt4/GuiDocument.cpp:4319
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
@@ -30525,13 +30561,13 @@ msgstr ""
 "action."
 
 #: src/frontends/qt4/GuiDocument.cpp:2548
-#: src/frontends/qt4/GuiDocument.cpp:2850
-#: src/frontends/qt4/GuiDocument.cpp:4324
+#: src/frontends/qt4/GuiDocument.cpp:2847
+#: src/frontends/qt4/GuiDocument.cpp:4321
 msgid "&Dismiss"
 msgstr "Aban&donner"
 
 #: src/frontends/qt4/GuiDocument.cpp:2559
-#: src/frontends/qt4/GuiDocument.cpp:4332
+#: src/frontends/qt4/GuiDocument.cpp:4329
 msgid "Unable to set document class."
 msgstr "Impossible d'appliquer la classe du document."
 
@@ -30547,113 +30583,118 @@ msgstr "Auteur-année"
 msgid "Author-number"
 msgstr "Auteur-numéro"
 
-#: src/frontends/qt4/GuiDocument.cpp:2774
+#: src/frontends/qt4/GuiDocument.cpp:2771
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s et %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:2781
+#: src/frontends/qt4/GuiDocument.cpp:2778
 #, c-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:2786
+#: src/frontends/qt4/GuiDocument.cpp:2783
 #, c-format
 msgid "%1$s, %2$s, and %3$s"
 msgstr "%1$s, %2$s and %3$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:2800
+#: src/frontends/qt4/GuiDocument.cpp:2797
 #, c-format
 msgid "%1$s (unavailable)"
 msgstr "%1$s (indisponible)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2887
+#: src/frontends/qt4/GuiDocument.cpp:2884
 msgid "Module provided by document class."
 msgstr "Module fourni par la classe de document."
 
-#: src/frontends/qt4/GuiDocument.cpp:2894
+#: src/frontends/qt4/GuiDocument.cpp:2891
 #, c-format
 msgid "Category: %1$s."
 msgstr "Categorie : %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:2902
+#: src/frontends/qt4/GuiDocument.cpp:2899
 #, c-format
 msgid "Package(s) required: %1$s."
 msgstr "Paquetage(s) requis : %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:2908
+#: src/frontends/qt4/GuiDocument.cpp:2905
 msgid "or"
 msgstr "ou"
 
-#: src/frontends/qt4/GuiDocument.cpp:2911
+#: src/frontends/qt4/GuiDocument.cpp:2908
 #, c-format
 msgid "Modules required: %1$s."
 msgstr "Modules requis : %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:2920
+#: src/frontends/qt4/GuiDocument.cpp:2917
 #, c-format
 msgid "Modules excluded: %1$s."
 msgstr "Modules exclus : %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:2925
+#: src/frontends/qt4/GuiDocument.cpp:2922
 #, c-format
 msgid "Filename: %1$s.module."
 msgstr "Nom de fichier : %1$s.module."
 
-#: src/frontends/qt4/GuiDocument.cpp:2930
+#: src/frontends/qt4/GuiDocument.cpp:2927
 msgid "WARNING: Some required packages are unavailable!"
 msgstr "AVERTISSEMENT : certains paquetages ne sont pas disponibles !"
 
-#: src/frontends/qt4/GuiDocument.cpp:3510
+#: src/frontends/qt4/GuiDocument.cpp:3507
 msgid "per part"
 msgstr "par partie"
 
-#: src/frontends/qt4/GuiDocument.cpp:3512
+#: src/frontends/qt4/GuiDocument.cpp:3509
 msgid "per chapter"
 msgstr "par chapitre"
 
-#: src/frontends/qt4/GuiDocument.cpp:3514
+#: src/frontends/qt4/GuiDocument.cpp:3511
 msgid "per section"
 msgstr "par section"
 
-#: src/frontends/qt4/GuiDocument.cpp:3516
+#: src/frontends/qt4/GuiDocument.cpp:3513
 msgid "per subsection"
 msgstr "par sous-section"
 
-#: src/frontends/qt4/GuiDocument.cpp:3517
+#: src/frontends/qt4/GuiDocument.cpp:3514
 msgid "per child document"
 msgstr "par sous-document"
 
-#: src/frontends/qt4/GuiDocument.cpp:3805
+#: src/frontends/qt4/GuiDocument.cpp:3541
+#, fuzzy, c-format
+msgid "%1$s (not available)"
+msgstr "%1$s (indisponible)"
+
+#: src/frontends/qt4/GuiDocument.cpp:3802
 msgid "[No options predefined]"
 msgstr "[Aucune option prédéfinie]"
 
-#: src/frontends/qt4/GuiDocument.cpp:4032
+#: src/frontends/qt4/GuiDocument.cpp:4029
 msgid "C&ustomize Hyperref Options"
 msgstr "Personnaliser les options h&yperref"
 
-#: src/frontends/qt4/GuiDocument.cpp:4034
+#: src/frontends/qt4/GuiDocument.cpp:4031
 msgid "&Use Hyperref Support"
 msgstr "&Utiliser le support pour hyperref"
 
-#: src/frontends/qt4/GuiDocument.cpp:4344
+#: src/frontends/qt4/GuiDocument.cpp:4341
 msgid "Can't set layout!"
 msgstr "Impossible d'appliquer le format !"
 
-#: src/frontends/qt4/GuiDocument.cpp:4345
+#: src/frontends/qt4/GuiDocument.cpp:4342
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "Impossible d'appliquer le format pour ID : %1$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:4443
+#: src/frontends/qt4/GuiDocument.cpp:4440
 msgid "Not Found"
 msgstr "Introuvable"
 
-#: src/frontends/qt4/GuiDocument.cpp:4503
+#: src/frontends/qt4/GuiDocument.cpp:4500
 msgid "Assigned master does not include this file"
 msgstr "Le document maître désigné n'inclut pas ce fichier"
 
-#: src/frontends/qt4/GuiDocument.cpp:4504
+#: src/frontends/qt4/GuiDocument.cpp:4501
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -30664,11 +30705,11 @@ msgstr ""
 "%1$s' pour pouvoir utiliser les fonctionnalités\n"
 "« document maître »."
 
-#: src/frontends/qt4/GuiDocument.cpp:4508
+#: src/frontends/qt4/GuiDocument.cpp:4505
 msgid "Could not load master"
 msgstr "Chargement du document maître impossible"
 
-#: src/frontends/qt4/GuiDocument.cpp:4509
+#: src/frontends/qt4/GuiDocument.cpp:4506
 #, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -30677,7 +30718,7 @@ msgstr ""
 "Le document maître  %1$s\n"
 " n'a pas pu être chargé."
 
-#: src/frontends/qt4/GuiDocument.cpp:4646
+#: src/frontends/qt4/GuiDocument.cpp:4643
 msgid "(Module name: %1)"
 msgstr "(Nom de module : %1$s)"
 
@@ -31368,24 +31409,24 @@ msgstr "Système et divers"
 msgid "Res&tore"
 msgstr "&Restaurer"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3376 src/frontends/qt4/GuiPrefs.cpp:3385
-#: src/frontends/qt4/GuiPrefs.cpp:3391 src/frontends/qt4/GuiPrefs.cpp:3454
+#: src/frontends/qt4/GuiPrefs.cpp:3377 src/frontends/qt4/GuiPrefs.cpp:3386
+#: src/frontends/qt4/GuiPrefs.cpp:3392 src/frontends/qt4/GuiPrefs.cpp:3456
 msgid "Failed to create shortcut"
 msgstr "Échec de la création du raccourci"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3377
+#: src/frontends/qt4/GuiPrefs.cpp:3378
 msgid "Unknown or invalid LyX function"
 msgstr "Fonction LyX inconnue ou invalide"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3386
+#: src/frontends/qt4/GuiPrefs.cpp:3387
 msgid "This LyX function is hidden and cannot be bound."
 msgstr "Cette fonction LyX est cachée et ne peut être associée."
 
-#: src/frontends/qt4/GuiPrefs.cpp:3392
+#: src/frontends/qt4/GuiPrefs.cpp:3393
 msgid "Invalid or empty key sequence"
 msgstr "Séquence de touches invalide ou vide"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3407
+#: src/frontends/qt4/GuiPrefs.cpp:3408
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to %2$s.\n"
@@ -31395,43 +31436,43 @@ msgstr ""
 "Êtes-vous sûr de vouloir remplacer cette association par une association à "
 "%3$s ?"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3413
+#: src/frontends/qt4/GuiPrefs.cpp:3414
 msgid "Redefine shortcut?"
 msgstr "Redéfinir le raccourci ?"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3414
+#: src/frontends/qt4/GuiPrefs.cpp:3415
 msgid "&Redefine"
 msgstr "&Redéfinir"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3455
+#: src/frontends/qt4/GuiPrefs.cpp:3457
 msgid "Can not insert shortcut to the list"
 msgstr "Échec de l'insertion du raccourci à la liste"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3486
+#: src/frontends/qt4/GuiPrefs.cpp:3488
 msgid "Identity"
 msgstr "Identité"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3682
+#: src/frontends/qt4/GuiPrefs.cpp:3684
 msgid "Choose bind file"
 msgstr "Choisir un fichier de raccourcis"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3683
+#: src/frontends/qt4/GuiPrefs.cpp:3685
 msgid "LyX bind files (*.bind)"
 msgstr "Fichiers de raccourcis LyX (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3689
+#: src/frontends/qt4/GuiPrefs.cpp:3691
 msgid "Choose UI file"
 msgstr "Choisir un fichier d'interface"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3690
+#: src/frontends/qt4/GuiPrefs.cpp:3692
 msgid "LyX UI files (*.ui)"
 msgstr "Fichiers d'interface LyX (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3696
+#: src/frontends/qt4/GuiPrefs.cpp:3698
 msgid "Choose keyboard map"
 msgstr "Choisir une réaffectation clavier"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3697
+#: src/frontends/qt4/GuiPrefs.cpp:3699
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "Réaffectations clavier LyX (*.kmap)"
 
@@ -34057,15 +34098,15 @@ msgstr "Chaîne remplacée."
 msgid "%1$d strings have been replaced."
 msgstr "%1$d chaînes remplacées."
 
-#: src/lyxfind.cpp:1538
+#: src/lyxfind.cpp:1539
 msgid "Invalid regular expression!"
 msgstr "Expression régulière invalide !"
 
-#: src/lyxfind.cpp:1543
+#: src/lyxfind.cpp:1544
 msgid "Match not found!"
 msgstr "Chaîne de caractères introuvable !"
 
-#: src/lyxfind.cpp:1547
+#: src/lyxfind.cpp:1548
 msgid "Match found!"
 msgstr "Chaîne de caractères reconnue !"
 
@@ -34331,7 +34372,7 @@ msgstr ""
 msgid "Directory not found"
 msgstr "Répertoire introuvable"
 
-#: src/support/Systemcall.cpp:397
+#: src/support/Systemcall.cpp:422
 #, c-format
 msgid ""
 "The command\n"
@@ -34346,15 +34387,15 @@ msgstr ""
 "\n"
 "Voulez-vous  l'interrompre ?"
 
-#: src/support/Systemcall.cpp:399
+#: src/support/Systemcall.cpp:424
 msgid "Stop command?"
 msgstr "Interrompre la commande ?"
 
-#: src/support/Systemcall.cpp:400
+#: src/support/Systemcall.cpp:425
 msgid "&Stop it"
 msgstr "&Interrompre"
 
-#: src/support/Systemcall.cpp:400
+#: src/support/Systemcall.cpp:425
 msgid "Let it &run"
 msgstr "Laisser &tourner"
 
