@@ -344,6 +344,16 @@ cmd_ret const runCommand(std::string const & cmd);
 int fileLock(const char * lock_file);
 void fileUnlock(int fd, const char * lock_file);
 
+/** Return the hex-encoded cryptographic hash of a string.
+ * The hash algorithm is not fixed, but it is determined at compile time.
+ * This function is typically used to create relatively stable file names,
+ * because cryptographic hash functions ensure that very small changes in the
+ * input result in large changes in the output.
+ * There is no limit in the length of the input string: it can be a file name
+ * or the contents of a file, for instance.
+ */
+std::string toHexHash(const std::string & str);
+
 } // namespace support
 } // namespace lyx
 

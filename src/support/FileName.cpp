@@ -22,7 +22,6 @@
 #include "support/Package.h"
 #include "support/qstring_helpers.h"
 
-#include <QCryptographicHash>
 #include <QDateTime>
 #include <QDir>
 #include <QFile>
@@ -974,17 +973,8 @@ string DocFileName::mangledFileName(string const & dir, bool use_counter, bool e
 	// Now the real work. Remove the extension.
 	string mname = support::changeExtension(name, string());
 
-	if (encrypt_path) {
-		QString qname = toqstr(mname);
-#if QT_VERSION >= 0x050000
-		QByteArray hash  = QCryptographicHash::hash(qname.toLocal8Bit(),QCryptographicHash::Sha256);
-#else
-		QByteArray hash  = QCryptographicHash::hash(qname.toLocal8Bit(),QCryptographicHash::Sha1);
-#endif
-		hash = hash.toHex();
-		mname = fromqstr(QString(hash));
-		mname = "export_" + onlyFileName() + "_" + mname;
-		}
+	if (encrypt_path)
+		mname = "export_" + onlyFileName() + "_" + toHexHash(mname);
 
 	// The mangled name must be a valid LaTeX name.
 	// The list of characters to keep is probably over-restrictive,

@@ -62,6 +62,8 @@
 #include <sstream>
 #include <vector>
 
+#include <QCryptographicHash>
+
 #if defined (_WIN32)
 #include <io.h>
 #include <windows.h>
@@ -1309,5 +1311,19 @@ void fileUnlock(int fd, const char * /* lock_file*/)
 #endif
 }
 
-} //namespace support
+
+std::string toHexHash(const std::string & str)
+{
+	// Use the best available hashing algorithm. Qt 5 proposes SHA-2, but Qt 4 is limited to SHA-1.
+#if QT_VERSION >= 0x050000
+	auto hashAlgo = QCryptographicHash::Sha256;
+#else
+	auto hashAlgo = QCryptographicHash::Sha1;
+#endif
+
+	QByteArray hash = QCryptographicHash::hash(toqstr(str).toLocal8Bit(), hashAlgo);
+	return fromqstr(QString(hash.toHex()));
+}
+
+} // namespace support
 } // namespace lyx
