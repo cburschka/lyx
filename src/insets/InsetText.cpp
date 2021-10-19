@@ -63,6 +63,7 @@
 
 #include "support/convert.h"
 #include "support/debug.h"
+#include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
@@ -71,8 +72,6 @@
 
 #include <algorithm>
 #include <stack>
-
-#include <QCryptographicHash>
 
 
 using namespace std;
@@ -679,17 +678,7 @@ void InsetText::docbookRenderAsImage(XMLStream & xs, OutputParams const & rp, XH
 	// same hash (by design of cryptographic hash functions). Computing a hash
 	// is typically slow, but extremely fast compared to compilation of the
 	// preview and image rendering.
-	QString snippetQ = QString(snippet.c_str());
-#if QT_VERSION >= 0x050000
-	QByteArray hash = QCryptographicHash::hash(snippetQ.toLocal8Bit(), QCryptographicHash::Sha256);
-#else
-	QByteArray hash = QCryptographicHash::hash(snippetQ.toLocal8Bit(), QCryptographicHash::Sha1);
-#endif
-	auto newFileBase = QString(hash.toBase64())
-			.replace("/", "")
-			.replace("+", "")
-			.replace("=", "");
-	std::string newFileName = "lyx_" + newFileBase.toStdString() + "." + filename.extension();
+	std::string newFileName = "lyx_" + sanitizeFileName(toHexHash(snippet)) + "." + filename.extension();
 
 	// Copy the image into the right folder.
 	rp.exportdata->addExternalFile("docbook5", filename, newFileName);
