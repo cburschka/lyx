@@ -977,18 +977,7 @@ string DocFileName::mangledFileName(string const & dir, bool use_counter, bool e
 		mname = "export_" + onlyFileName() + "_" + toHexHash(mname);
 
 	// The mangled name must be a valid LaTeX name.
-	// The list of characters to keep is probably over-restrictive,
-	// but it is not really a problem.
-	// Apart from non-ASCII characters, at least the following characters
-	// are forbidden: '/', '.', ' ', and ':'.
-	// On windows it is not possible to create files with '<', '>' or '?'
-	// in the name.
-	static string const keep = "abcdefghijklmnopqrstuvwxyz"
-				   "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-				   "+-0123456789;=";
-	string::size_type pos = 0;
-	while ((pos = mname.find_first_not_of(keep, pos)) != string::npos)
-		mname[pos++] = '_';
+	mname = sanitizeFileName(mname);
 	// Add the extension back on
 	mname = support::changeExtension(mname, getExtension(name));
 

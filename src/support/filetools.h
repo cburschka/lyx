@@ -354,6 +354,10 @@ void fileUnlock(int fd, const char * lock_file);
  */
 std::string toHexHash(const std::string & str);
 
+/// Replace non-ASCII characters to ensure that the string can be used as a
+/// file name on all platforms and as a LaTeX name.
+std::string sanitizeFileName(const std::string & str);
+
 } // namespace support
 } // namespace lyx
 

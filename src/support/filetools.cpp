@@ -1325,5 +1325,26 @@ std::string toHexHash(const std::string & str)
 	return fromqstr(QString(hash.toHex()));
 }
 
+
+std::string sanitizeFileName(const std::string & str)
+{
+	// The list of characters to keep is probably over-restrictive,
+	// but it is not really a problem.
+	// Apart from non-ASCII characters, at least the following characters
+	// are forbidden: '/', '.', ' ', and ':'.
+	// On windows it is not possible to create files with '<', '>' or '?'
+	// in the name.
+	static std::string const keep = "abcdefghijklmnopqrstuvwxyz"
+	                           "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	                           "+-0123456789;=";
+
+	std::string name = str;
+	string::size_type pos = 0;
+	while ((pos = name.find_first_not_of(keep, pos)) != string::npos)
+		name[pos++] = '_';
+
+	return name;
+}
+
 } // namespace support
 } // namespace lyx
