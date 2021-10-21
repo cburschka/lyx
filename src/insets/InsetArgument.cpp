@@ -63,31 +63,30 @@ void InsetArgument::read(Lexer & lex)
 }
 
 
-void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted)
+void InsetArgument::init(Paragraph const & par)
 {
-	bool const insetlayout = !it.paragraph().layout().hasArgs();
+	Inset const & ininset = par.inInset();
+	bool const insetlayout = !par.layout().hasArgs();
 	Layout::LaTeXArgMap const args = insetlayout ?
-		it.inset().getLayout().args() : it.paragraph().layout().args();
+		ininset.getLayout().args() : par.layout().args();
 	pass_thru_context_ = insetlayout ?
-		it.inset().getLayout().isPassThru() : it.paragraph().layout().pass_thru;
+		ininset.getLayout().isPassThru() : par.layout().pass_thru;
 	// Record PassThru status in order to act on changes.
 	bool const former_pass_thru = pass_thru_;
 
 	// Handle pre 2.1 ArgInsets (lyx2lyx cannot classify them)
 	// "999" is the conventional name given to those by lyx2lyx
 	if (name_ == "999") {
-		int const req = insetlayout ? it.inset().getLayout().requiredArgs()
-				      : it.paragraph().layout().requiredArgs();
-		int const opts = insetlayout ? it.inset().getLayout().optArgs()
-				      : it.paragraph().layout().optArgs();
+		int const req = insetlayout ? ininset.getLayout().requiredArgs()
+				      : par.layout().requiredArgs();
+		int const opts = insetlayout ? ininset.getLayout().optArgs()
+				      : par.layout().optArgs();
 		int nr = 0;
 		int ours = 0;
-		InsetList::const_iterator parit = it.paragraph().insetList().begin();
-		InsetList::const_iterator parend = it.paragraph().insetList().end();
-		for (; parit != parend; ++parit) {
-			if (parit->inset->lyxCode() == ARG_CODE) {
+		for (InsetList::Element const & elt : par.insetList()) {
+			if (elt.inset->lyxCode() == ARG_CODE) {
 				++nr;
-				if (parit->inset == this)
+				if (elt.inset == this)
 					ours = nr;
 			}
 		}
@@ -133,8 +132,8 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype, bool 
 			is_toc_caption_ = true;
 			// empty if AddToToc is not set
 			caption_of_toc_ = insetlayout
-				? it.inset().getLayout().tocType()
-				: it.paragraph().layout().tocType();
+				? ininset.getLayout().tocType()
+				: par.layout().tocType();
 		}
 
 		switch ((*lait).second.passthru) {
@@ -157,13 +156,19 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype, bool 
 	if (former_pass_thru != pass_thru_) {
 		// PassThru status changed. We might need to update
 		// the language of the contents
-		Language const * l  = insetlayout
-			? it.inset().buffer().language()
-			: it.buffer()->language();
+		// Language const * l  = insetlayout
+		// 	? it.inset().buffer().language()
+		// 	: it.buffer()->language();
+		Language const * l  = ininset.buffer().language();
 		fixParagraphLanguage(l);
 	}
 
 	setButtonLabel();
+}
+
+void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted)
+{
+	init(it.paragraph());
 	InsetCollapsible::updateBuffer(it, utype, deleted);
 }
 

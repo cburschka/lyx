@@ -51,6 +51,9 @@ public:
 	InsetCode lyxCode() const override { return ARG_CODE; }
 	///
 	docstring layoutName() const override { return from_ascii("Argument"); }
+
+	/// Initialize the members of this inset when inserted in \c par.
+	void init(Paragraph const & par);
 	/// Update the label string of this inset
 	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false) override;
 	///

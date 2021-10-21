@@ -252,7 +252,7 @@ static bool doInsertInset(Cursor & cur, Text * text,
 	cur.recordUndo();
 	if (cmd.action() == LFUN_ARGUMENT_INSERT) {
 		bool cotextinsert = false;
-		InsetArgument const * const ia = static_cast<InsetArgument const *>(inset);
+		InsetArgument * const ia = static_cast<InsetArgument *>(inset);
 		Layout const & lay = cur.paragraph().layout();
 		Layout::LaTeXArgMap args = lay.args();
 		Layout::LaTeXArgMap::const_iterator const lait = args.find(ia->name());
@@ -275,6 +275,7 @@ static bool doInsertInset(Cursor & cur, Text * text,
 			else
 				ds = cur.paragraph().asString();
 			text->insertInset(cur, inset);
+			ia->init(cur.paragraph());
 			if (edit)
 				inset->edit(cur, true);
 			// Now put co-text into inset
@@ -319,6 +320,11 @@ static bool doInsertInset(Cursor & cur, Text * text,
 			? cur.bv().textMetrics(text).displayFont(cur.pit(), cur.pos())
 			: buffer.params().getFont();
 		inset_text->setOuterFont(cur.bv(), font.fontInfo());
+	}
+
+	if (cmd.action() == LFUN_ARGUMENT_INSERT) {
+		InsetArgument * const ia = static_cast<InsetArgument *>(inset);
+		ia->init(cur.paragraph());
 	}
 
 	if (edit)
