@@ -62,7 +62,7 @@ int VCS::doVCCommand(string const & cmd, FileName const & path, bool reportError
 	if (ret && reportError) {
 		docstring rcsmsg;
 		if (prefixIs(cmd, "ci "))
-			rcsmsg = "\n" + _("Perhaps the RCS package is not installed on your system?");
+			rcsmsg = "\n" + _("Perhaps the GNU RCS package is not installed on your system?");
 		frontend::Alert::error(_("Revision control error."),
 			bformat(_("Some problem occurred while running the command:\n"
 				  "'%1$s'.") + rcsmsg,
