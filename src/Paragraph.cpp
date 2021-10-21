@@ -1148,6 +1148,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 		bool const cprotect = textinset
 			? textinset->hasCProtectContent(runparams.moving_arg)
 			  && !textinset->text().isMainText()
+			  && inset->lyxCode() != BRANCH_CODE
 			: false;
 		unsigned int count2 = basefont.latexWriteStartChanges(os, bparams,
 						      rp, running_font,
@@ -2823,6 +2824,7 @@ void Paragraph::latex(BufferParams const & bparams,
 				bool const cprotect = textinset
 					? textinset->hasCProtectContent(runparams.moving_arg)
 					  && !textinset->text().isMainText()
+					  && inInset().lyxCode() != BRANCH_CODE
 					: false;
 				column += current_font.latexWriteStartChanges(ots, bparams,
 									      runparams, basefont, last_font, false,
