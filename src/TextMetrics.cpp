@@ -1202,7 +1202,10 @@ int TextMetrics::parTopSpacing(pit_type const pit) const
 	    && prevpar.getLabelWidthString() == par.getLabelWidthString()) {
 		layoutasc = layout.itemsep * dh;
 	} else if (pit != 0 && layout.topsep > 0)
-		layoutasc = layout.topsep * dh;
+		// combine the separation between different layouts (with same depth)
+		layoutasc = max(0.0,
+			prevpar.getDepth() != par.getDepth() ? layout.topsep
+			: layout.topsep - prevpar.layout().bottomsep) * dh;
 
 	asc += int(layoutasc * 2 / (2 + pars[pit].getDepth()));
 
