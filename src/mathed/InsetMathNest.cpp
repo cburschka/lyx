@@ -780,8 +780,12 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.clearTargetX();
 		cur.macroModeClose();
 		if (!cur.inset().idxNext(cur)) {
-			cur.idx() = firstIdx();
-			cur.pos() = 0;
+			if (cur.lastidx() == 0)
+				cur.popForward();
+			else {
+				cur.idx() = firstIdx();
+				cur.pos() = 0;
+			}
 		}
 		break;
 
@@ -791,8 +795,12 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.clearTargetX();
 		cur.macroModeClose();
 		if (!cur.inset().idxPrev(cur)) {
-			cur.idx() = cur.lastidx();
-			cur.pos() = lyxrc.mac_like_cursor_movement ? cur.lastpos() : 0;
+			if (cur.lastidx() == 0)
+				cur.popBackward();
+			else {
+				cur.idx() = cur.lastidx();
+				cur.pos() = lyxrc.mac_like_cursor_movement ? cur.lastpos() : 0;
+			}
 		}
 		break;
 
