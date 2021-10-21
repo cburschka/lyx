@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-10-21 15:15+0200\n"
+"POT-Creation-Date: 2021-10-21 14:51+0200\n"
 "PO-Revision-Date: 2021-10-21 01:09-0800\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -25886,10 +25886,7 @@ msgid ""
 "references will be generated.\n"
 "Please fix your installation!"
 msgstr ""
-"Generátor bibliografie požadovaný tímto dokumentem (%1$s) není dostupný a "
-"nebyla nalezena ani jeho přiměřená alternativa. Bibliografie ani odkazy "
-"nebudou vygenerovány.\n"
-"Prosíme opravte svoji instalaci!"
+"Generátor bibliografie požadovaný tímto dokumentem (%1$s) není dostupný a nebyla nalezena ani jeho přiměřená alternativa. Bibliografie ani odkazy nebudou vygenerovány.\nProsíme opravte svoji instalaci!"
 
 #: src/BufferParams.cpp:3614
 msgid "Requested bibliography processor not found!"
@@ -25904,11 +25901,7 @@ msgid ""
 "carefully!\n"
 "It is suggested to install the missing processor."
 msgstr ""
-"Generátor bibliografie požadovaný tímto dokumentem (%1$s) není dostupný. "
-"Jako záloha bude použit '%2$s' bez speciálních uživatelských nastavení. To "
-"se může projevit v nečekých změnách v bibliografii, zkontrolujte podrobně "
-"výsledek!\n"
-"Doporučujeme nainstalovat chybějící generátor."
+"Generátor bibliografie požadovaný tímto dokumentem (%1$s) není dostupný. Jako záloha bude použit '%2$s' bez speciálních uživatelských nastavení. To se může projevit v nečekých změnách v bibliografii, zkontrolujte podrobně výsledek!\nDoporučujeme nainstalovat chybějící generátor." 
 
 #: src/BufferView.cpp:194
 msgid "No more insets"
@@ -28279,8 +28272,7 @@ msgid "Nomenclature Entries"
 msgstr "Položky nomenklatury"
 
 #: src/VCBackend.cpp:65
-#, fuzzy
-msgid "Perhaps the RCS package is not installed on your system?"
+msgid "Perhaps the GNU RCS package is not installed on your system?"
 msgstr "Balíček GNU RCS není pravděpodobně nainstalován na vašem systému?"
 
 #: src/VCBackend.cpp:66 src/VCBackend.cpp:877 src/VCBackend.cpp:882
