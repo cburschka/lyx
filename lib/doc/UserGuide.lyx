@@ -35523,8 +35523,18 @@ There are also inverted branch insets, whose content is output just in case
 \emph on
 not
 \emph default
- activated.
- This make it easy to add alternative text for different versions of a document.
+ activated
+\change_inserted 244031559 1635284375
+ (they are marked with ~ before the name)
+\change_unchanged
+.
+ 
+\change_deleted 244031559 1635284383
+This
+\change_inserted 244031559 1635284385
+Such insets
+\change_unchanged
+ make it easy to add alternative text for different versions of a document.
  To control whether a particular inset is inverted, right-click on the inset
  button and choose 
 \family sans

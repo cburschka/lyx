@@ -112,8 +112,10 @@ docstring const InsetBranch::buttonLabel(BufferView const &) const
 	if (inchild && master_selected != child_selected)
 		symb += (child_selected ? tick : cross);
 
+    docstring inv_symb = from_ascii(params_.inverted ? "~" : "");
+
 	if (decoration() == InsetDecoration::MINIMALISTIC)
-		return symb + params_.branch;
+		return symb + inv_symb + params_.branch;
 
 	docstring s;
 	if (inmaster && inchild)
@@ -124,7 +126,7 @@ docstring const InsetBranch::buttonLabel(BufferView const &) const
 		s = _("Branch (master): ");
 	else // !inmaster && !inchild
 		s = _("Branch (undefined): ");
-	s += params_.branch;
+	s += inv_symb + params_.branch;
 
 	return symb + s;
 }
