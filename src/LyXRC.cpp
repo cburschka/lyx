@@ -286,10 +286,6 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 	// format prior to 2.0 and introduction of format tag
 	unsigned int rc_format = 0;
 
-#ifdef USE_MACOSX_PACKAGING
-	open_buffers_in_tabs = appleUserTabbingPreferenceAlways();
-#endif
-
 	while (lexrc.isOK()) {
 		// By using two switches we take advantage of the compiler
 		// telling us if we have missed a LyXRCTags element in
@@ -1064,6 +1060,10 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			break;
 		case RC_OPEN_BUFFERS_IN_TABS:
 			lexrc >> open_buffers_in_tabs;
+#ifdef USE_MACOSX_PACKAGING
+			if (appleUserTabbingPreferenceAlways())
+				open_buffers_in_tabs = true;
+#endif
 			break;
 		case RC_SINGLE_CLOSE_TAB_BUTTON:
 			lexrc >> single_close_tab_button;
