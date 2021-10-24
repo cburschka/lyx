@@ -24,8 +24,10 @@
 * This allows Shift-F3 to be used for word-find-backwards (i.e., find previous)
   on Linux and Windows.
 
-* The shortcut for word-find on OSX is now Cmd-E, as is the Apple standard. The
-  shortcut for word-find-previous is Cmd-G.
+* The shortcut to use the selection for a find on macOS is now Cmd-E, as is the
+  Apple standard.  The shortcut for find the next occurrence of the current
+  find buffer text is Cmd-G.  The shortcut for toggle of font emphasis has been 
+  changed to Cmd-Ctrl-E.
 
 * Continuous spellcheck is now on by default, but only if the user does not have
   an existing preferences file. In that case, the old setting is preserved.
