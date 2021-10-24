@@ -44,6 +44,7 @@ AC_DEFUN([QT_CHECK_COMPILE],
 		qt_cv_libname=
 		for libname in $qt_guilibs \
 		               '-framework QtCore -framework QtConcurrent -framework QtSvg -framework QtWidgets -framework QtMacExtras -framework QtGui'\
+		               '-framework QtCore -framework QtConcurrent -framework QtSvg -framework QtSvgWidgets -framework QtWidgets -framework QtGui'\
 		               '-framework QtCore -framework QtGui'
 		do
 			QT_TRY_LINK($libname)
@@ -366,21 +367,27 @@ AC_DEFUN([QT_DO_MANUAL_CONFIG],
 	QT_CORE_LDFLAGS=
 	if test -n "$qt_cv_includes"; then
 		QT_INCLUDES="-I$qt_cv_includes"
-		for i in Qt QtCore QtGui QtWidgets QtSvg QtConcurrent QtMacExtras; do
+		for i in Qt QtCore QtGui QtWidgets QtSvg QtConcurrent QtSvgWidgets QtCore5Compat QtMacExtras; do
 			QT_INCLUDES="$QT_INCLUDES -I$qt_cv_includes/$i"
+			if test "$lyx_use_packaging" = "macosx" ; then
+				QT_INCLUDES="$QT_INCLUDES -I$qt_cv_libraries/${i}.framework/Headers"
+			fi
 		done
 		QT_CORE_INCLUDES="-I$qt_cv_includes -I$qt_cv_includes/QtCore"
 	fi
 	case "$qt_cv_libraries" in
-	*framework*)
-		QT_LDFLAGS="-F$qt_cv_libraries"
-		QT_CORE_LDFLAGS="-F$qt_cv_libraries"
-		;;
 	"")
 		;;
 	*)
-		QT_LDFLAGS="-L$qt_cv_libraries"
-		QT_CORE_LDFLAGS="-L$qt_cv_libraries"
+		if test "$lyx_use_packaging" = "macosx" ; then
+			QT_INCLUDES="$QT_INCLUDES -F$qt_cv_libraries"
+			QT_CORE_INCLUDES="$QT_CORE_INCLUDES -I$qt_cv_libraries/QtCore.framework/Headers -F$qt_cv_libraries"
+			QT_LDFLAGS="-F$qt_cv_libraries"
+			QT_CORE_LDFLAGS="-F$qt_cv_libraries"
+		else
+			QT_LDFLAGS="-L$qt_cv_libraries"
+			QT_CORE_LDFLAGS="-L$qt_cv_libraries"
+		fi
 		;;
 	esac
 	AC_SUBST(QT_INCLUDES)

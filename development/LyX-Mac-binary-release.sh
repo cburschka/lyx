@@ -374,6 +374,10 @@ case "${QtVersion}" in
 	QtLibraries=${QtLibraries:-"QtSvg QtXml QtPrintSupport QtMacExtras QtWidgets QtGui QtNetwork QtConcurrent QtCore"}
 	QtFrameworkVersion="5"
 	;;
+6*)
+	QtLibraries=${QtLibraries:-"QtCore5Compat QtDBus QtSvg QtXml QtPrintSupport QtSvgWidgets QtWidgets QtGui QtNetwork QtConcurrent QtCore"}
+	QtFrameworkVersion="A"
+	;;
 *)
 	QtLibraries=${QtLibraries:-"QtSvg QtXml QtGui QtNetwork QtCore"}
 	QtFrameworkVersion="4"
@@ -425,16 +429,6 @@ build_qt() {
 		"${QtSourceDir}"/configure ${QtConfigureOptions} ${QTARCHS} -prefix "${QtInstallDir}"
 		make -j1 && make -j1 install
 	)
-	if [ -d "${QtInstallDir}" -a ! -f "${QtInstallDir}"/include/QtCore ]; then
-		cd "${QtInstallDir}" && (
-			mkdir -p include
-			cd include
-			for libnm in ${QtLibraries} ; do
-				test -d ${libnm} -o -L ${libnm} || \
-				( ln -s ../lib/${libnm}.framework/Headers ${libnm} && echo Link to framework ${libnm} )
-			done
-		)
-	fi
 }
 
 case ${QtOnlyPackage:-"no"} in
@@ -697,7 +691,7 @@ build_lyx() {
 		mkdir -p "${LyxBuildDir}" && cd "${LyxBuildDir}"
 
 		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"
-		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYLDFLAGS} -F${QtInstallDir}/lib"
+		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYLDFLAGS}"
 
 		if [ "$configure_qt_frameworks" = "yes" ]; then
 			export QT_CORE_CFLAGS="-FQtCore"
