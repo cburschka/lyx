@@ -359,8 +359,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-10-18 15:04+0200\n"
-"PO-Revision-Date: 2021-10-19 11:26+0200\n"
+"POT-Creation-Date: 2021-10-25 10:40+0200\n"
+"PO-Revision-Date: 2021-10-25 10:41+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -28911,8 +28911,8 @@ msgid "Nomenclature Entries"
 msgstr "Entrées de la liste des symboles"
 
 #: src/VCBackend.cpp:65
-msgid "Perhaps the RCS package is not installed on your system?"
-msgstr "Le paquetage RCS n'est peut-être pas installé sur votre système."
+msgid "Check whether the GNU RCS package is installed on your system."
+msgstr "Vérifier si le paquetage RCS GNU est bien installé sur votre système."
 
 #: src/VCBackend.cpp:66 src/VCBackend.cpp:877 src/VCBackend.cpp:882
 #: src/VCBackend.cpp:931 src/VCBackend.cpp:990 src/VCBackend.cpp:1049
@@ -30661,7 +30661,7 @@ msgid "per child document"
 msgstr "par sous-document"
 
 #: src/frontends/qt4/GuiDocument.cpp:3541
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (not available)"
 msgstr "%1$s (indisponible)"
 
