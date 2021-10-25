@@ -362,8 +362,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-10-19 11:34+0200\n"
-"PO-Revision-Date: 2021-10-19 11:42+0200\n"
+"POT-Creation-Date: 2021-10-25 10:36+0200\n"
+"PO-Revision-Date: 2021-10-25 10:38+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -19927,7 +19927,7 @@ msgid "Copy as Reference|R"
 msgstr "Copier comme référence|C"
 
 #: lib/ui/stdcontext.inc:61 lib/ui/stdcontext.inc:375 lib/ui/stdmenus.inc:108
-#: lib/ui/stdtoolbars.inc:86 src/Text3.cpp:1561
+#: lib/ui/stdtoolbars.inc:86 src/Text3.cpp:1567
 #: src/mathed/InsetMathNest.cpp:555
 msgid "Cut"
 msgstr "Couper"
@@ -19938,7 +19938,7 @@ msgid "Copy"
 msgstr "Copier"
 
 #: lib/ui/stdcontext.inc:63 lib/ui/stdcontext.inc:377 lib/ui/stdmenus.inc:110
-#: lib/ui/stdtoolbars.inc:88 src/Text3.cpp:1506
+#: lib/ui/stdtoolbars.inc:88 src/Text3.cpp:1512
 #: src/frontends/qt/GuiToolbar.cpp:441 src/mathed/InsetMathGrid.cpp:1560
 #: src/mathed/InsetMathNest.cpp:533
 msgid "Paste"
@@ -28308,7 +28308,7 @@ msgid "greyedout inset text"
 msgstr "texte d'insert grisé"
 
 #: src/BufferParams.cpp:1811 src/BufferParams.cpp:2253 src/Encoding.cpp:253
-#: src/Paragraph.cpp:2977 src/frontends/qt/LaTeXHighlighter.cpp:123
+#: src/Paragraph.cpp:2979 src/frontends/qt/LaTeXHighlighter.cpp:123
 #: src/frontends/qt/LaTeXHighlighter.cpp:216
 #: src/insets/InsetCommandParams.cpp:508 src/insets/InsetCommandParams.cpp:516
 #: src/insets/InsetGraphics.cpp:886 src/insets/InsetGraphics.cpp:894
@@ -28319,7 +28319,7 @@ msgid "LyX Warning: "
 msgstr "Avertissement LyX : "
 
 #: src/BufferParams.cpp:1812 src/BufferParams.cpp:2254 src/Encoding.cpp:254
-#: src/Paragraph.cpp:2978 src/insets/InsetCommandParams.cpp:509
+#: src/Paragraph.cpp:2980 src/insets/InsetCommandParams.cpp:509
 #: src/insets/InsetCommandParams.cpp:517 src/insets/InsetGraphics.cpp:887
 #: src/insets/InsetGraphics.cpp:895 src/insets/InsetListings.cpp:299
 #: src/insets/InsetListings.cpp:307 src/mathed/MathExtern.cpp:1441
@@ -30678,15 +30678,15 @@ msgstr "Revenir à la version enregistrée du document ?"
 msgid "&Revert"
 msgstr "&Revenir à la Sauvegarde"
 
-#: src/Paragraph.cpp:2151
+#: src/Paragraph.cpp:2152
 msgid "Senseless with this layout!"
 msgstr "Inapproprié avec ce style !"
 
-#: src/Paragraph.cpp:2205
+#: src/Paragraph.cpp:2206
 msgid "Alignment not permitted"
 msgstr "Alignement non autorisé"
 
-#: src/Paragraph.cpp:2206
+#: src/Paragraph.cpp:2207
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -30803,7 +30803,7 @@ msgstr "Mode éditeur mathématique"
 msgid "No valid math formula"
 msgstr "Pas de formule mathématique valide"
 
-#: src/Text3.cpp:205 src/mathed/InsetMathNest.cpp:1024
+#: src/Text3.cpp:205 src/mathed/InsetMathNest.cpp:1032
 msgid "Already in regular expression mode"
 msgstr "Déjà en mode « expression régulière »"
 
@@ -30811,40 +30811,40 @@ msgstr "Déjà en mode « expression régulière »"
 msgid "Regexp editor mode"
 msgstr "Mode « expression régulière »"
 
-#: src/Text3.cpp:1595
+#: src/Text3.cpp:1601
 msgid "Layout "
 msgstr "Environnement "
 
-#: src/Text3.cpp:1596 src/Text3.cpp:2166
+#: src/Text3.cpp:1602 src/Text3.cpp:2172
 msgid " not known"
 msgstr " inconnu"
 
-#: src/Text3.cpp:2165
+#: src/Text3.cpp:2171
 msgid "Table Style "
 msgstr "Style de tableau "
 
-#: src/Text3.cpp:2358 src/frontends/qt/GuiApplication.cpp:1873
+#: src/Text3.cpp:2364 src/frontends/qt/GuiApplication.cpp:1873
 msgid "Missing argument"
 msgstr "Paramètre manquant"
 
-#: src/Text3.cpp:2527
+#: src/Text3.cpp:2533
 msgid "Invalid argument (number exceeds stack size)!"
 msgstr "Argument invalide (le nombre est supérieur à la taille de la pile) !"
 
-#: src/Text3.cpp:2531
+#: src/Text3.cpp:2537
 msgid "Invalid argument (must be a non-negative number)!"
 msgstr "Argument invalide (nombre non négatif obligatoire)"
 
-#: src/Text3.cpp:2536 src/Text3.cpp:2554
+#: src/Text3.cpp:2542 src/Text3.cpp:2560
 #, c-format
 msgid "Text properties applied: %1$s"
 msgstr "Propriétés du texte appliquées : %1$s"
 
-#: src/Text3.cpp:2713
+#: src/Text3.cpp:2719
 msgid "Path to thesaurus directory not set!"
 msgstr "Chemin d'accès au répertoire du thésaurus non précisé !"
 
-#: src/Text3.cpp:2714
+#: src/Text3.cpp:2720
 msgid ""
 "The path to the thesaurus directory has not been specified.\n"
 "The thesaurus is not functional.\n"
@@ -30856,7 +30856,7 @@ msgstr ""
 "Se référer au Guide de l'utilisateur, section 6.15.1, pour\n"
 "les instructions de réglage."
 
-#: src/Text3.cpp:2848 src/Text3.cpp:2859
+#: src/Text3.cpp:2854 src/Text3.cpp:2865
 msgid "Paragraph layout set"
 msgstr "Style du paragraphe redéfini"
 
@@ -31027,8 +31027,8 @@ msgid "Nomenclature Entries"
 msgstr "Entrées de la liste des symboles"
 
 #: src/VCBackend.cpp:64
-msgid "Perhaps the RCS package is not installed on your system?"
-msgstr "Le paquetage RCS n'est peut-être pas installé sur votre système."
+msgid "Check whether the GNU RCS package is installed on your system."
+msgstr "Vérifiez si le paquetage RCS GNU est installé sur votre système."
 
 #: src/VCBackend.cpp:65 src/VCBackend.cpp:880 src/VCBackend.cpp:885
 #: src/VCBackend.cpp:934 src/VCBackend.cpp:993 src/VCBackend.cpp:1052
@@ -35701,11 +35701,11 @@ msgstr "Espacement horizontal"
 msgid "Horizontal Math Space"
 msgstr "Espacement horizontal mathématique"
 
-#: src/insets/InsetArgument.cpp:153
+#: src/insets/InsetArgument.cpp:152
 msgid "Unknown Argument"
 msgstr "Argument inconnu"
 
-#: src/insets/InsetArgument.cpp:154
+#: src/insets/InsetArgument.cpp:153
 msgid "Argument not known in this Layout. Will be suppressed in the output."
 msgstr "Argument inconnu de ce format. Sera supprimé dans la sortie."
 
@@ -37473,19 +37473,19 @@ msgstr "Macros mathématique : \\%1$s"
 msgid "Invalid macro! \\%1$s"
 msgstr "Macro mathématique invalide ! \\%1$s"
 
-#: src/mathed/InsetMathNest.cpp:1010
+#: src/mathed/InsetMathNest.cpp:1018
 msgid "create new math text environment ($...$)"
 msgstr "créé un nouvel environnement texte math ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1013
+#: src/mathed/InsetMathNest.cpp:1021
 msgid "entered math text mode (textrm)"
 msgstr "entré en mode texte math (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1035
+#: src/mathed/InsetMathNest.cpp:1043
 msgid "Regular expression editor mode"
 msgstr "Mode d'édition « expression régulière »"
 
-#: src/mathed/InsetMathNest.cpp:1934
+#: src/mathed/InsetMathNest.cpp:1942
 #, c-format
 msgid "Cannot apply %1$s here."
 msgstr "Impossible d'appliquer %1$s ici."
