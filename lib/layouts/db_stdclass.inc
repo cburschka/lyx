@@ -5,7 +5,7 @@
 # It is desirable, as far as possible, to have the same look and feel for
 # related layouts in latex and docbook.
 
-Format 93
+Format 95
 
 Columns                 1
 Sides                   1

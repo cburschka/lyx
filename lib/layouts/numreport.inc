@@ -1,7 +1,7 @@
 # Author : André Pönitz
 # This include file contains label definitions for a report-like numbering.
 
-Format 93
+Format 95
 
 Counter chapter
 	GuiName Chapter

@@ -5,7 +5,7 @@
 # Modularized Jan '08 by Richard Kimberly Heck <rikiheck@lyx.org>
 
 # Including the maths stuff
-Format 93
+Format 95
 
 # By default AMS articles & books use leqno option (as SIAM journals).
 Provides leqno 1

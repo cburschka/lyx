@@ -26,7 +26,7 @@
 # - Note
 
 
-Format 93
+Format 95
 
 OutlinerName thm "Definitions & Theorems"
 
