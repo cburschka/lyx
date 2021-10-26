@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2021-03-05 15:06-0500\n"
-"PO-Revision-Date: 2021-03-06 12:45+0200\n"
+"PO-Revision-Date: 2021-10-26 18:20+0300\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -18014,7 +18014,7 @@ msgstr "[Список TODO]"
 
 #: lib/layouts/todonotes.module:48
 msgid "List of TODOs Heading|s"
-msgstr "Список заголовков TODO"
+msgstr "Заголовок списка TODO"
 
 #: lib/layouts/todonotes.module:49
 msgid "Enter a custom header for the List of TODOs here"
@@ -20092,19 +20092,19 @@ msgstr "Отклонить изменение|О"
 
 #: lib/ui/stdcontext.inc:659
 msgid "Promote Section|P"
-msgstr "Выдвинуть раздел|В"
+msgstr "Выдвинуть раздел"
 
 #: lib/ui/stdcontext.inc:660
 msgid "Demote Section|D"
-msgstr "Задвинуть раздел|З"
+msgstr "Задвинуть раздел"
 
 #: lib/ui/stdcontext.inc:662
 msgid "Move Section Down|w"
-msgstr "Переместить раздел вниз|в"
+msgstr "Переместить раздел вниз"
 
 #: lib/ui/stdcontext.inc:664
 msgid "Select Section|S"
-msgstr "Выделить раздел|В"
+msgstr "Выделить раздел"
 
 #: lib/ui/stdcontext.inc:672
 msgid "Wrap by Preview|y"
@@ -33895,7 +33895,7 @@ msgstr "Панель \"%1$s\" не поддерживает состояние \
 #: src/frontends/qt/GuiToolbar.cpp:638 src/insets/InsetBranch.cpp:79
 #: src/insets/InsetBranch.cpp:82
 msgid "off"
-msgstr "выключен"
+msgstr "выкл."
 
 #: src/frontends/qt/GuiToolbar.cpp:645 src/frontends/qt/GuiToolbar.cpp:685
 #, c-format
@@ -35058,12 +35058,12 @@ msgstr "%1$s (%2$s, %3$s)"
 
 #: src/insets/InsetBranch.cpp:70 src/insets/InsetBranch.cpp:72
 msgid "active"
-msgstr "активный"
+msgstr "активна"
 
 #: src/insets/InsetBranch.cpp:70 src/insets/InsetBranch.cpp:72
 #: src/insets/InsetIndex.cpp:659
 msgid "non-active"
-msgstr "не активный"
+msgstr "не активна"
 
 #: src/insets/InsetBranch.cpp:75 src/insets/InsetBranch.cpp:85
 #, c-format
@@ -35078,8 +35078,8 @@ msgid ""
 "Inset Status: %3$s"
 msgstr ""
 "Имя ветки: %1$s\n"
-"Статус ветки: %2$s\n"
-"Статус вставки: %3$s"
+"Состояние ветки: %2$s\n"
+"Состояние вставки: %3$s"
 
 #: src/insets/InsetBranch.cpp:120
 msgid "Branch: "
