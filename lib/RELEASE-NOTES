@@ -220,6 +220,15 @@
 
 !!Caveats when upgrading from earlier versions to 2.4.x
 
+* LyX now uses the parskip package for vertical paragraph separation. Since the
+  output differs from the previous (sub-optimal) approach which applied paragraph
+  separation to sections, lists etc. as well, existing documents
+  are converted to use preamble code that maintains the previous layout.
+  The downside is that the workarea looks as if paragraph indendation rather
+  than paragraph separation was used (output is correct). We encourage you
+  to try if the new layout suits you, remove the respective preamble code
+  and re-set the paragraph separation to use the new layout.
+
 * Autotools monolithic build option for building LyX binaries was removed,
   for compilation speedup use parallel building on multiple cores instead.
 
