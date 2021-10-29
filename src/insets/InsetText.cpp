@@ -664,6 +664,8 @@ void InsetText::docbookRenderAsImage(XMLStream & xs, OutputParams const & rp, XH
 	// TODO: no real support for Unicode. This code is very similar to RenderPreview::addPreview, the same gotcha applies.
 
 	graphics::PreviewLoader* loader = buffer().loader();
+	// This should be OK because we are exporting
+	LASSERT(loader != nullptr, return);
 	loader->add(snippet);
 	loader->startLoading(true); // Generate the image and wait until done.
 	graphics::PreviewImage const * img = loader->preview(snippet);
