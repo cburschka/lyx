@@ -855,8 +855,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 	textLayoutModule->skipLE->setValidator(new LengthValidator(
 		textLayoutModule->skipLE));
 
-	textLayoutModule->indentCO->addItem(qt_("Default"));
-	textLayoutModule->indentCO->addItem(qt_("Custom"));
+	textLayoutModule->indentCO->addItem(qt_("Default"), toqstr("default"));
+	textLayoutModule->indentCO->addItem(qt_("Custom"), toqstr("custom"));
 	textLayoutModule->skipCO->addItem(qt_("Half line height"), VSpace::HALFLINE);
 	textLayoutModule->skipCO->addItem(qt_("Line height"), VSpace::FULLLINE);
 	textLayoutModule->skipCO->addItem(qt_("SmallSkip"), VSpace::SMALLSKIP);
@@ -1535,8 +1535,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 
 
-	mathsModule->MathIndentCO->addItem(qt_("Default"));
-	mathsModule->MathIndentCO->addItem(qt_("Custom"));
+	mathsModule->MathIndentCO->addItem(qt_("Default"), toqstr("default"));
+	mathsModule->MathIndentCO->addItem(qt_("Custom"), toqstr("custom"));
 	mathsModule->MathIndentLE->setValidator(new LengthValidator(
 		mathsModule->MathIndentLE));
 	// initialize the length validator
@@ -2009,7 +2009,7 @@ void GuiDocument::setLSpacing(int item)
 
 void GuiDocument::setIndent(int item)
 {
-	bool const enable = (item == 1);
+	bool const enable = (textLayoutModule->indentCO->itemData(item) == "custom");
 	textLayoutModule->indentLE->setEnabled(enable);
 	textLayoutModule->indentLengthCO->setEnabled(enable);
 	textLayoutModule->skipLE->setEnabled(false);
@@ -2053,7 +2053,7 @@ void GuiDocument::allowMathIndent() {
 		mathsModule->MathIndentLengthCO->setEnabled(false);
 	}
 	if (mathsModule->MathIndentCB->isChecked()
-	    && mathsModule->MathIndentCO->currentIndex() == 1) {
+	    && mathsModule->MathIndentCO->itemData(mathsModule->MathIndentCO->currentIndex()) == "custom") {
 			mathsModule->MathIndentLE->setEnabled(true);
 			mathsModule->MathIndentLengthCO->setEnabled(true);
 	}
@@ -3584,21 +3584,13 @@ void GuiDocument::applyView()
 	bp_.is_math_indent = mathsModule->MathIndentCB->isChecked();
 	if (bp_.is_math_indent) {
 		// if formulas are indented
-		switch (mathsModule->MathIndentCO->currentIndex()) {
-		case 0:
-			bp_.setMathIndent(Length());
-			break;
-		case 1: {
+		if (mathsModule->MathIndentCO->itemData(mathsModule->MathIndentCO->currentIndex()) == "custom") {
 			Length mathindent(widgetsToLength(mathsModule->MathIndentLE,
 			                                  mathsModule->MathIndentLengthCO));
 			bp_.setMathIndent(mathindent);
-			break;
-		}
-		default:
-			// this should never happen
+		} else
+			// default
 			bp_.setMathIndent(Length());
-			break;
-		}
 	}
 	switch (mathsModule->MathNumberingPosCO->currentIndex()) {
 		case 0:
@@ -3657,21 +3649,13 @@ void GuiDocument::applyView()
 	if (textLayoutModule->indentRB->isChecked()) {
 		// if paragraphs are separated by an indentation
 		bp_.paragraph_separation = BufferParams::ParagraphIndentSeparation;
-		switch (textLayoutModule->indentCO->currentIndex()) {
-		case 0:
-			bp_.setParIndent(Length());
-			break;
-		case 1: {
+		if (textLayoutModule->indentCO->itemData(textLayoutModule->indentCO->currentIndex()) == "custom") {
 			Length parindent(widgetsToLength(textLayoutModule->indentLE,
 			                                 textLayoutModule->indentLengthCO));
 			bp_.setParIndent(parindent);
-			break;
-		}
-		default:
-			// this should never happen
+		} else
+			// default
 			bp_.setParIndent(Length());
-			break;
-		}
 	} else {
 		// if paragraphs are separated by a skip
 		bp_.paragraph_separation = BufferParams::ParagraphSkipSeparation;
@@ -4179,15 +4163,15 @@ void GuiDocument::paramsToDialog()
 	if (bp_.paragraph_separation == BufferParams::ParagraphIndentSeparation) {
 		textLayoutModule->indentRB->setChecked(true);
 		string parindent = bp_.getParIndent().asString();
-		int indent = 0;
+		QString indent = toqstr("default");
 		if (!parindent.empty()) {
 			lengthToWidgets(textLayoutModule->indentLE,
 			                textLayoutModule->indentLengthCO,
 			                parindent, default_unit);
-			indent = 1;
+			indent = toqstr("custom");
 		}
-		textLayoutModule->indentCO->setCurrentIndex(indent);
-		setIndent(indent);
+		textLayoutModule->indentCO->setCurrentIndex(textLayoutModule->indentCO->findData(indent));
+		setIndent(textLayoutModule->indentCO->currentIndex());
 	} else {
 		textLayoutModule->skipRB->setChecked(true);
 		VSpace::VSpaceKind skip = bp_.getDefSkip().kind();
@@ -4861,8 +4845,9 @@ bool GuiDocument::isValid()
 			// if we're asking for skips between paragraphs
 			!textLayoutModule->skipRB->isChecked() ||
 			// then either we haven't chosen custom
-			VSpace::VSpaceKind(textLayoutModule->skipCO->itemData(
-						   textLayoutModule->skipCO->currentIndex()).toInt())
+			VSpace::VSpaceKind(
+				textLayoutModule->skipCO->itemData(
+					textLayoutModule->skipCO->currentIndex()).toInt())
 				!= VSpace::LENGTH ||
 			// or else a length has been given
 			!textLayoutModule->skipLE->text().isEmpty()
@@ -4871,7 +4856,8 @@ bool GuiDocument::isValid()
 			// if we're asking for indentation
 			!textLayoutModule->indentRB->isChecked() ||
 			// then either we haven't chosen custom
-			textLayoutModule->indentCO->currentIndex() != 1 ||
+			(textLayoutModule->indentCO->itemData(
+				textLayoutModule->indentCO->currentIndex()) != "custom") ||
 			// or else a length has been given
 			!textLayoutModule->indentLE->text().isEmpty()
 		) &&
@@ -4879,7 +4865,8 @@ bool GuiDocument::isValid()
 			// if we're asking for math indentation
 			!mathsModule->MathIndentCB->isChecked() ||
 			// then either we haven't chosen custom
-			mathsModule->MathIndentCO->currentIndex() != 1 ||
+			(mathsModule->MathIndentCO->itemData(
+				mathsModule->MathIndentCO->currentIndex()) != "custom") ||
 			// or else a length has been given
 			!mathsModule->MathIndentLE->text().isEmpty()
 		);
