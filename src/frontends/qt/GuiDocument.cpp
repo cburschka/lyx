@@ -4861,7 +4861,9 @@ bool GuiDocument::isValid()
 			// if we're asking for skips between paragraphs
 			!textLayoutModule->skipRB->isChecked() ||
 			// then either we haven't chosen custom
-			textLayoutModule->skipCO->currentIndex() != 5 ||
+			VSpace::VSpaceKind(textLayoutModule->skipCO->itemData(
+						   textLayoutModule->skipCO->currentIndex()).toInt())
+				!= VSpace::LENGTH ||
 			// or else a length has been given
 			!textLayoutModule->skipLE->text().isEmpty()
 		) &&
