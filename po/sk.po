@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-10-21 16:34+0200\n"
-"PO-Revision-Date: 2021-10-21 14:36+0000\n"
+"POT-Creation-Date: 2021-10-29 17:36+0200\n"
+"PO-Revision-Date: 2021-10-29 15:44+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -33010,10 +33010,6 @@ msgstr "Žiadny protokolový súbor chýb lyx2lyx sa nenašiel."
 msgid "No version control log file found."
 msgstr "Protokolový súbor správy verzií nenájdený."
 
-#: src/frontends/qt/GuiLyXFiles.cpp:152
-msgid "Preferred &Language:"
-msgstr "&Preferenčný Jazyk:"
-
 #: src/frontends/qt/GuiLyXFiles.cpp:158 src/frontends/qt/GuiLyXFiles.cpp:584
 msgid "New File From Template"
 msgstr "Nový Súbor zo šablóny…|b"
@@ -33049,6 +33045,18 @@ msgid ""
 msgstr ""
 "Tu sú zobrazené všetky dostupné jazyky vybraného súboru.\n"
 "Otvorí sa súbor s vybranou jazykovou verziou."
+
+#: src/frontends/qt/GuiLyXFiles.cpp:334
+msgid "No alternative language versions available for the selected file."
+msgstr "Pre vybraný súbor neexistujú alternatívne jazykové verzie."
+
+#: src/frontends/qt/GuiLyXFiles.cpp:336
+msgid ""
+"If alternative languages are available for a given file,\n"
+"they can be chosen here if a file is selected."
+msgstr ""
+"Keď existujú alternatívne jazykové verzie pre daný súbor,\n"
+"môžu tu byť zvolené ak je súbor vybraný."
 
 #: src/frontends/qt/GuiLyXFiles.cpp:360
 msgid "Select example file"
@@ -37220,6 +37228,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Preferred &Language:"
+#~ msgstr "&Preferenčný Jazyk:"
 
 #~ msgid "Setting debug level to %1$s"
 #~ msgstr "Nastavenie úrovne ladenia na %1$s"
