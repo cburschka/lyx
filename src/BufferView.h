@@ -155,8 +155,8 @@ public:
 	int horizScrollOffset(Text const * text,
 	                      pit_type pit, pos_type pos) const;
 
-	/// reset the scrollbar to reflect current view position.
-	void updateScrollbar();
+	/// reset the scrollbar parameters to reflect current view position.
+	void updateScrollbarParameters();
 	/// return the Scrollbar Parameters.
 	ScrollbarParameters const & scrollbarParameters() const;
 	/// \return Tool tip for the given position.

@@ -583,7 +583,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 }
 
 
-void BufferView::updateScrollbar()
+void BufferView::updateScrollbarParameters()
 {
 	if (height_ == 0 && width_ == 0)
 		return;
@@ -3483,7 +3483,7 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 
 	// The scrollbar needs an update.
 	// FIXME: does it always? see ticket #11947.
-	updateScrollbar();
+	updateScrollbarParameters();
 
 	// Normalize anchor for next time
 	pair<pit_type, ParagraphMetrics const *> firstpm = tm.first();
