@@ -149,7 +149,6 @@ QMap<QString, QString> GuiLyXFiles::getFiles()
 		++i;
 	}
 	setLanguage();
-	languageLA->setText(qt_("Preferred &Language:"));
 	return result;
 }
 
@@ -310,9 +309,6 @@ void GuiLyXFiles::on_filesLW_itemClicked(QTreeWidgetItem * item, int)
 			languageCO->addItem(i.value(), i.key());
 		++i;
 	}
-	languageLA->setText(qt_("File &Language:"));
-	languageCO->setToolTip(qt_("All available languages of the selected file are displayed here.\n"
-				   "The selected language version will be opened."));
 	setLanguage();
 	QString const realpath = getRealPath();
 	filesLW->currentItem()->setData(0, Qt::ToolTipRole, realpath);
@@ -327,8 +323,18 @@ void GuiLyXFiles::on_filesLW_itemClicked(QTreeWidgetItem * item, int)
 void GuiLyXFiles::setLanguage()
 {
 	// Enable language selection only if there is a selection.
-	languageCO->setEnabled(languageCO->count() > 1);
-	languageLA->setEnabled(languageCO->count() > 1);
+	bool const item_selected =  filesLW->currentItem();
+	bool const language_alternatives = languageCO->count() > 1;
+	languageCO->setEnabled(item_selected && language_alternatives);
+	languageLA->setEnabled(item_selected && language_alternatives);
+	if (item_selected && language_alternatives)
+		languageCO->setToolTip(qt_("All available languages of the selected file are displayed here.\n"
+					   "The selected language version will be opened."));
+	else if (item_selected)
+		languageCO->setToolTip(qt_("No alternative language versions available for the selected file."));
+	else
+		languageCO->setToolTip(qt_("If alternative languages are available for a given file,\n"
+					   "they can be chosen here if a file is selected."));
 	// first try last setting
 	if (!savelang_.isEmpty()) {
 		int index = languageCO->findData(savelang_);
