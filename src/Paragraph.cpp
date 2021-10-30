@@ -2339,12 +2339,25 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 			(layout_->toggle_indent != ITOGGLE_NEVER) :
 			(layout_->toggle_indent == ITOGGLE_ALWAYS);
 
-	if (canindent && params_.noindent() && !layout_->pass_thru) {
-		os << "\\noindent ";
-		column += 10;
+	// Paragraphs that only contain insets which are not part of the text sequence
+	// (e.g., floats) should not get \\noindent (this would cause extra white space)
+	bool emptypar = true;
+	if (canindent) {
+		for (pos_type i = 0; i < owner_->size(); ++i) {
+			if (!owner_->isInset(i) || owner_->getInset(i)->isPartOfTextSequence()) {
+				emptypar = false;
+				break;
+			}
+		}
 	}
 
 	LyXAlignment const curAlign = params_.align();
+
+	if (canindent && !emptypar && params_.noindent()
+	    && !layout_->pass_thru && curAlign != LYX_ALIGN_CENTER) {
+		os << "\\noindent ";
+		column += 10;
+	}
 
 	if (curAlign == layout_->align)
 		return column;
