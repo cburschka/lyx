@@ -2352,7 +2352,7 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 	LyXAlignment const curAlign = params_.align();
 
 	// Do not output \\noindent for paragraphs
-	// 1. that cannot have indentation,
+	// 1. that cannot have indentation or are indented always,
 	// 2. that are not part of the immediate text sequence (e.g., contain only floats),
 	// 3. that are PassThru,
 	// 4. that are centered,
