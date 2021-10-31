@@ -2268,6 +2268,16 @@ bool Paragraph::isPassThru() const
 	return inInset().isPassThru() || d->layout_->pass_thru;
 }
 
+
+bool Paragraph::isPartOfTextSequence() const
+{
+	for (pos_type i = 0; i < size(); ++i) {
+		if (!isInset(i) || getInset(i)->isPartOfTextSequence())
+			return true;
+	}
+	return false;
+}
+
 namespace {
 
 // paragraphs inside floats need different alignment tags to avoid
@@ -2339,21 +2349,12 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 			(layout_->toggle_indent != ITOGGLE_NEVER) :
 			(layout_->toggle_indent == ITOGGLE_ALWAYS);
 
-	// Paragraphs that only contain insets which are not part of the text sequence
-	// (e.g., floats) should not get \\noindent (this would cause extra white space)
-	bool emptypar = true;
-	if (canindent) {
-		for (pos_type i = 0; i < owner_->size(); ++i) {
-			if (!owner_->isInset(i) || owner_->getInset(i)->isPartOfTextSequence()) {
-				emptypar = false;
-				break;
-			}
-		}
-	}
-
 	LyXAlignment const curAlign = params_.align();
 
-	if (canindent && !emptypar && params_.noindent()
+	// Do not output \\noindent for paragraphs that are not part of the
+	// immediate text sequence (e.g., contain only floats), that cannot
+	// have indentation, that are PassThru or centered.
+	if (canindent && params_.noindent() && owner_->isPartOfTextSequence()
 	    && !layout_->pass_thru && curAlign != LYX_ALIGN_CENTER) {
 		os << "\\noindent ";
 		column += 10;

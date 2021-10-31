@@ -239,6 +239,8 @@ public:
 	///
 	bool isPassThru() const;
 	///
+	bool isPartOfTextSequence() const;
+	///
 	pos_type size() const;
 	///
 	bool empty() const;
