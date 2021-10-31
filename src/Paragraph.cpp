@@ -2355,14 +2355,23 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 	// 1. that cannot have indentation or are indented always,
 	// 2. that are not part of the immediate text sequence (e.g., contain only floats),
 	// 3. that are PassThru,
-	// 4. that are centered,
-	// 5. or start with a vspace.
-	if (canindent && params_.noindent() && owner_->isPartOfTextSequence()
-	    && !layout_->pass_thru && curAlign != LYX_ALIGN_CENTER
-	    && !owner_->empty()
-	    && (!owner_->isInset(0) || owner_->getInset(0)->lyxCode() != VSPACE_CODE)) {
-		os << "\\noindent" << termcmd;
-		column += 10;
+	// 4. or that are centered.
+	if (canindent && params_.noindent()
+	    && owner_->isPartOfTextSequence()
+	    && !layout_->pass_thru
+	    && curAlign != LYX_ALIGN_CENTER) {
+		if (!owner_->empty()
+		    && (owner_->isInset(0)
+			&& owner_->getInset(0)->lyxCode() == VSPACE_CODE))
+			// If the paragraph starts with a vspace, the \\noindent
+			// needs to come after that (as it leaves vmode).
+			// If the paragraph consists only of the vspace,
+			// \\noindent is not needed at all.
+			runparams.need_noindent = owner_->size() > 1;
+		else {
+			os << "\\noindent" << termcmd;
+			column += 10;
+		}
 	}
 
 	if (curAlign == layout_->align)

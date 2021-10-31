@@ -283,7 +283,7 @@ public:
 
 	/** Whether we are in a table cell.
 	 *  For newline, it matters whether its content is aligned or not.
-         */
+	*/
 	TableCell inTableCell = NO;
 
 	/** Whether we are inside a float or subfloat.
@@ -422,6 +422,9 @@ public:
 
 	/// Explicit output folder, if any is desired
 	std::string export_folder;
+
+	/// A postponed \\noindent (after VSpace)
+	mutable bool need_noindent = false;
 };
 
 

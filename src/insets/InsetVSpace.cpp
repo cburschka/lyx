@@ -209,9 +209,15 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetVSpace::latex(otexstream & os, OutputParams const &) const
+void InsetVSpace::latex(otexstream & os, OutputParams const & rp) const
 {
-	os << from_ascii(space_.asLatexCommand(buffer().params())) << '\n';
+	os << from_ascii(space_.asLatexCommand(buffer().params())) << breakln;
+	if (rp.need_noindent) {
+		// If the paragraph starts with a vspace and has more than that
+		// content, the \\noindent needs to come after that
+		// (as \\noindent leaves vmode).
+		os << "\\noindent" << termcmd;
+	}
 }
 
 
