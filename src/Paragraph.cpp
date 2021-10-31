@@ -2356,7 +2356,7 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 	// have indentation, that are PassThru or centered.
 	if (canindent && params_.noindent() && owner_->isPartOfTextSequence()
 	    && !layout_->pass_thru && curAlign != LYX_ALIGN_CENTER) {
-		os << "\\noindent ";
+		os << "\\noindent" << termcmd;
 		column += 10;
 	}
 
