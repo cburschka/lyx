@@ -288,6 +288,9 @@ private:
 	///
 	TabWorkArea * addTabWorkArea();
 
+	///
+	void scheduleRedrawWorkAreas();
+
 	/// connect to signals in the given BufferView
 	void connectBufferView(BufferView & bv);
 	/// disconnect from signals in the given BufferView

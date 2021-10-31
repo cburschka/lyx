@@ -786,7 +786,7 @@ void GuiView::zoomSliderMoved(int value)
 {
 	DispatchResult dr;
 	dispatch(FuncRequest(LFUN_BUFFER_ZOOM, convert<string>(value)), dr);
-	currentWorkArea()->scheduleRedraw(true);
+	scheduleRedrawWorkAreas();
 	zoom_value_->setText(toqstr(bformat(_("[[ZOOM]]%1$d%"), value)));
 }
 
@@ -802,7 +802,7 @@ void GuiView::zoomInPressed()
 {
 	DispatchResult dr;
 	dispatch(FuncRequest(LFUN_BUFFER_ZOOM_IN), dr);
-	currentWorkArea()->scheduleRedraw(true);
+	scheduleRedrawWorkAreas();
 }
 
 
@@ -810,7 +810,7 @@ void GuiView::zoomOutPressed()
 {
 	DispatchResult dr;
 	dispatch(FuncRequest(LFUN_BUFFER_ZOOM_OUT), dr);
-	currentWorkArea()->scheduleRedraw(true);
+	scheduleRedrawWorkAreas();
 }
 
 
@@ -820,6 +820,17 @@ void GuiView::showZoomContextMenu()
 	if (!menu)
 		return;
 	menu->exec(QCursor::pos());
+}
+
+
+void GuiView::scheduleRedrawWorkAreas()
+{
+	for (int i = 0; i < d.tabWorkAreaCount(); i++) {
+		TabWorkArea* ta = d.tabWorkArea(i);
+		for (int u = 0; u < ta->count(); u++) {
+			ta->workArea(u)->scheduleRedraw(true);
+		}
+	}
 }
 
 
