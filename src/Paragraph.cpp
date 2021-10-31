@@ -2351,11 +2351,16 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 
 	LyXAlignment const curAlign = params_.align();
 
-	// Do not output \\noindent for paragraphs that are not part of the
-	// immediate text sequence (e.g., contain only floats), that cannot
-	// have indentation, that are PassThru or centered.
+	// Do not output \\noindent for paragraphs
+	// 1. that cannot have indentation,
+	// 2. that are not part of the immediate text sequence (e.g., contain only floats),
+	// 3. that are PassThru,
+	// 4. that are centered,
+	// 5. or start with a vspace.
 	if (canindent && params_.noindent() && owner_->isPartOfTextSequence()
-	    && !layout_->pass_thru && curAlign != LYX_ALIGN_CENTER) {
+	    && !layout_->pass_thru && curAlign != LYX_ALIGN_CENTER
+	    && !owner_->empty()
+	    && (!owner_->isInset(0) || owner_->getInset(0)->lyxCode() != VSPACE_CODE)) {
 		os << "\\noindent" << termcmd;
 		column += 10;
 	}
