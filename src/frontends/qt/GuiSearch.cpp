@@ -567,27 +567,26 @@ GuiSearch::GuiSearch(GuiView & parent, Qt::DockWidgetArea area, Qt::WindowFlags 
 
 void GuiSearch::mousePressEvent(QMouseEvent *event)
 {
-    if (isFloating() && event->button() == Qt::LeftButton) {
-        dragPosition = event->globalPos() - frameGeometry().topLeft();
-        event->accept();
-    }
+	if (isFloating() && event->button() == Qt::LeftButton) {
+		dragPosition = event->globalPos() - frameGeometry().topLeft();
+		event->accept();
+	}
 }
 
 
 void GuiSearch::mouseMoveEvent(QMouseEvent *event)
 {
-    if (isFloating() && event->buttons() & Qt::LeftButton) {
-        move(event->globalPos() - dragPosition);
-        event->accept();
-    }
+	if (isFloating() && event->buttons() & Qt::LeftButton) {
+		move(event->globalPos() - dragPosition);
+		event->accept();
+	}
 }
 
 
 void GuiSearch::mouseDoubleClickEvent(QMouseEvent *event)
 {
-    if (event->button() == Qt::LeftButton) {
-        setFloating(!isFloating());
-    }
+	if (event->button() == Qt::LeftButton)
+		setFloating(!isFloating());
 }
 
 
