@@ -532,11 +532,11 @@ void TocWidget::filterContents()
 		activeFilterCO->currentIndex() != 1;
 
 	int size = indices.size();
+	QString const matchstring = filter_ ? filter_->text() : QString();
 	for (int i = 0; i < size; i++) {
 		QModelIndex index = indices[i];
-		bool matches = filter_ &&
-			index.data().toString().contains(
-				filter_->text(), Qt::CaseInsensitive);
+		bool matches = index.data().toString().contains(
+					matchstring, Qt::CaseInsensitive);
 		TocItem const & item =
 			gui_view_.tocModels().currentItem(current_type_, index);
 		matches &= (show_active && item.isOutput()) || (show_inactive && !item.isOutput());

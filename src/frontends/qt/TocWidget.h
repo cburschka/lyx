@@ -120,7 +120,7 @@ private:
 	// Timer for scheduling expensive update operations
 	QTimer * timer_;
 	/// Filter bar
-	FancyLineEdit * filter_;
+	FancyLineEdit * filter_ = nullptr;
 };
 
 } // namespace frontend
