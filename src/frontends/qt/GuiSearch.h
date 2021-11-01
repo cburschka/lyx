@@ -127,8 +127,8 @@ public:
 
 protected:
 	bool wantInitialFocus() const override { return true; }
-    void mouseMoveEvent(QMouseEvent * event) override;
-    void mousePressEvent(QMouseEvent * event) override;
+	void mouseMoveEvent(QMouseEvent * event) override;
+	void mousePressEvent(QMouseEvent * event) override;
 	void mouseDoubleClickEvent(QMouseEvent *event) override;
 
 public Q_SLOTS:
@@ -145,7 +145,7 @@ private:
 	/// The encapsulated widget.
 	GuiSearchWidget * widget_;
 	///
-    QPoint dragPosition;
+	QPoint dragPosition;
 };
 
 } // namespace frontend
