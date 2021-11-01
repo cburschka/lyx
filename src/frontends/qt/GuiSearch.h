@@ -32,7 +32,7 @@ class GuiSearchWidget : public QWidget, public Ui::SearchUi
 	Q_OBJECT
 
 public:
-	GuiSearchWidget(QWidget * parent);
+	GuiSearchWidget(QWidget * parent, GuiView & view);
 	///
 	void saveSession(QSettings & settings, QString const & session_key) const;
 	///
@@ -68,6 +68,8 @@ private:
 	///
 	void showEvent(QShowEvent * e) override;
 	///
+	void hideEvent(QHideEvent * e) override;
+	///
 	void doFind(bool const backwards = false,
 		    bool const instant = false);
 	///
@@ -84,6 +86,8 @@ private:
 	void handleIndicators();
 	///
 	BufferView const * bv_ = nullptr;
+	///
+	GuiView & view_;
 	///
 	bool minimized_ = false;
 	/// contains the search box

@@ -39,6 +39,7 @@
 #include <QPainter>
 #include <QLineEdit>
 #include <QSettings>
+#include <QHideEvent>
 #include <QShowEvent>
 #include "QSizePolicy"
 #if QT_VERSION >= 0x050000
@@ -63,8 +64,8 @@ static void uniqueInsert(QComboBox * box, QString const & text)
 }
 
 
-GuiSearchWidget::GuiSearchWidget(QWidget * parent)
-	:	QWidget(parent)
+GuiSearchWidget::GuiSearchWidget(QWidget * parent, GuiView & view)
+	:	QWidget(parent), view_(view)
 {
 	setupUi(this);
 
@@ -149,6 +150,8 @@ void GuiSearchWidget::keyPressEvent(QKeyEvent * ev)
 	}
 	if (ev->key() == Qt::Key_Escape) {
 		dispatch(FuncRequest(LFUN_DIALOG_HIDE, "findreplace"));
+		view_.setFocus();
+		dispatch(FuncRequest(LFUN_BUFFER_UPDATE));
 		return;
 	}
 
@@ -414,6 +417,15 @@ void GuiSearchWidget::showEvent(QShowEvent * e)
 }
 
 
+void GuiSearchWidget::hideEvent(QHideEvent * e)
+{
+	QWidget::hideEvent(e);
+	view_.setFocus();
+	// update toolbar status
+	dispatch(FuncRequest(LFUN_BUFFER_UPDATE));
+}
+
+
 void GuiSearchWidget::findBufferChanged()
 {
 	docstring search = theClipboard().getFindBuffer();
@@ -554,7 +566,7 @@ void GuiSearchWidget::restoreSession(QString const & session_key)
 
 GuiSearch::GuiSearch(GuiView & parent, Qt::DockWidgetArea area, Qt::WindowFlags flags)
 	: DockView(parent, "findreplace", qt_("Search and Replace"), area, flags),
-	  widget_(new GuiSearchWidget(this))
+	  widget_(new GuiSearchWidget(this, parent))
 {
 	setWidget(widget_);
 	widget_->setBufferView(bufferview());
