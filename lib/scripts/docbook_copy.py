@@ -66,6 +66,17 @@ class DocBookCopier:
         # Fixed by 2.23.4.
         #     FROM:  language='lilypond' role='fragment verbatim staffsize=16 ragged-right relative=2'
         #     TO:    language="lilypond" role="fragment verbatim staffsize=16 ragged-right relative=2"
+
+        # Another problem to fix: the output is in XML, with some characters encoded as XML
+        # entities. For instance, this could be in a LilyPond snippet:
+        #     \new PianoStaff &lt;&lt;
+        # instead of:
+        #     \new PianoStaff <<
+        # (More complete example:
+        # https://lilypond.org/doc/v2.23/Documentation/learning/piano-centered-lyrics.)
+        # This issue must be fixed by LilyPond, as any change in this part would make the XML
+        # file invalid.
+        # Bug report: https://gitlab.com/lilypond/lilypond/-/issues/6204
         with open(self.in_file, 'r', encoding='utf-8') as f, open(self.in_lily_file, 'w', encoding='utf-8') as f_lily:
             for line in f:
                 if "language='lilypond'" in line:
