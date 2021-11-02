@@ -648,7 +648,11 @@ GuiView::GuiView(int id)
 	zoom_slider_->setToolTip(qt_("Workarea zoom level. Drag, use Ctrl-+/- or Shift-Mousewheel to adjust."));
 
 	// Buttons to change zoom stepwise
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
+	QSize s(fm.horizontalAdvance('+'), fm.height());
+#else
 	QSize s(fm.width('+'), fm.height());
+#endif
 	zoom_in_ = new GuiClickableLabel(statusBar());
 	zoom_in_->setText("+");
 	zoom_in_->setFixedSize(s);
