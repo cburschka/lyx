@@ -648,14 +648,15 @@ GuiView::GuiView(int id)
 	zoom_slider_->setToolTip(qt_("Workarea zoom level. Drag, use Ctrl-+/- or Shift-Mousewheel to adjust."));
 
 	// Buttons to change zoom stepwise
-	zoom_in_ = new QPushButton(statusBar());
+	QSize s(fm.width('+'), fm.height());
+	zoom_in_ = new GuiClickableLabel(statusBar());
 	zoom_in_->setText("+");
-	zoom_in_->setFlat(true);
-	zoom_in_->setFixedSize(QSize(fm.height(), fm.height()));
-	zoom_out_ = new QPushButton(statusBar());
+	zoom_in_->setFixedSize(s);
+	zoom_in_->setAlignment(Qt::AlignCenter);
+	zoom_out_ = new GuiClickableLabel(statusBar());
 	zoom_out_->setText(QString(QChar(0x2212)));
-	zoom_out_->setFixedSize(QSize(fm.height(), fm.height()));
-	zoom_out_->setFlat(true);
+	zoom_out_->setFixedSize(s);
+	zoom_out_->setAlignment(Qt::AlignCenter);
 
 	statusBar()->addPermanentWidget(zoom_out_);
 	zoom_out_->setEnabled(currentBufferView());
@@ -670,13 +671,18 @@ GuiView::GuiView(int id)
 	connect(zoom_in_, SIGNAL(clicked()), this, SLOT(zoomInPressed()));
 	connect(zoom_out_, SIGNAL(clicked()), this, SLOT(zoomOutPressed()));
 
+	// QPalette palette = statusBar()->palette();
+
 	zoom_value_ = new QLabel(statusBar());
+	// zoom_value_->setPalette(palette);
+	zoom_value_->setForegroundRole(statusBar()->foregroundRole());
 	zoom_value_->setFixedHeight(fm.height());
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
-	zoom_value_->setMinimumWidth(fm.horizontalAdvance("000%"));
+	zoom_value_->setMinimumWidth(fm.horizontalAdvance("444\%"));
 #else
-	zoom_value_->setMinimumWidth(fm.width("000%"));
+	zoom_value_->setMinimumWidth(fm.width("444\%"));
 #endif
+	zoom_value_->setAlignment(Qt::AlignCenter);
 	zoom_value_->setText(toqstr(bformat(_("[[ZOOM]]%1$d%"), zoom)));
 	statusBar()->addPermanentWidget(zoom_value_);
 	zoom_value_->setEnabled(currentBufferView());

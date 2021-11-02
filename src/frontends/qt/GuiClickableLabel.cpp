@@ -11,6 +11,8 @@
 
 #include "GuiClickableLabel.h"
 
+#include <QStyle>
+
 namespace lyx {
 namespace frontend {
 
@@ -22,8 +24,8 @@ GuiClickableLabel::~GuiClickableLabel()
 {}
 
 void GuiClickableLabel::mouseReleaseEvent(QMouseEvent *) {
-		Q_EMIT clicked();
-	}
+	Q_EMIT clicked();
+}
 
 }
 }

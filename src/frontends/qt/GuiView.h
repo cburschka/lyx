@@ -20,6 +20,7 @@
 #include "support/strfwd.h"
 
 #include <QMainWindow>
+#include <QLabel>
 #include <QMenu>
 #include <QSvgWidget>
 
@@ -27,7 +28,6 @@ class QCloseEvent;
 class QDragEnterEvent;
 class QDropEvent;
 class QPushButton;
-class QLabel;
 class QShowEvent;
 class QSlider;
 
@@ -48,6 +48,7 @@ namespace frontend {
 
 class Dialog;
 class LayoutBox;
+class GuiClickableLabel;
 class GuiToolbar;
 class GuiWorkArea;
 class TabWorkArea;
@@ -510,9 +511,9 @@ private:
 	/// The zoom slider widget
 	QSlider * zoom_slider_;
 	/// Zoom in ("+") Button
-	QPushButton * zoom_in_;
+	GuiClickableLabel * zoom_in_;
 	/// Zoom out ("-") Button
-	QPushButton * zoom_out_;
+	GuiClickableLabel * zoom_out_;
 
 	/// The rate from which the actual zoom value is calculated
 	/// from the default zoom pref
