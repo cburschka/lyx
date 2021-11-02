@@ -690,9 +690,9 @@ GuiView::GuiView(int id)
 	zoom_value_->setText(toqstr(bformat(_("[[ZOOM]]%1$d%"), zoom)));
 	statusBar()->addPermanentWidget(zoom_value_);
 	zoom_value_->setEnabled(currentBufferView());
-	zoom_value_->setContextMenuPolicy(Qt::CustomContextMenu);
 
-	connect(zoom_value_, SIGNAL(customContextMenuRequested(QPoint)),
+	statusBar()->setContextMenuPolicy(Qt::CustomContextMenu);
+	connect(statusBar(), SIGNAL(customContextMenuRequested(QPoint)),
 		this, SLOT(showZoomContextMenu()));
 
 	int const iconheight = max(int(d.normalIconSize), fm.height());
@@ -826,7 +826,7 @@ void GuiView::zoomOutPressed()
 
 void GuiView::showZoomContextMenu()
 {
-	QMenu * menu = guiApp->menus().menu(toqstr("context-zoom"), * this);
+	QMenu * menu = guiApp->menus().menu(toqstr("context-statusbar"), * this);
 	if (!menu)
 		return;
 	menu->exec(QCursor::pos());
@@ -946,6 +946,7 @@ void GuiView::saveLayout() const
 		settings.setValue("geometry", saveGeometry());
 	settings.setValue("layout", saveState(0));
 	settings.setValue("icon_size", toqstr(d.iconSize(iconSize())));
+	settings.setValue("zoom_value_visible", zoom_value_->isVisible());
 	settings.setValue("zoom_slider_visible", zoom_slider_->isVisible());
 }
 
@@ -989,6 +990,8 @@ bool GuiView::restoreLayout()
 
 	//code below is skipped when when ~/.config/LyX is (re)created
 	setIconSize(d.iconSize(settings.value(icon_key).toString()));
+
+	zoom_value_->setVisible(settings.value("zoom_value_visible", true).toBool());
 
 	bool const show_zoom_slider = settings.value("zoom_slider_visible", true).toBool();
 	zoom_slider_->setVisible(show_zoom_slider);
@@ -2352,7 +2355,10 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_UI_TOGGLE:
-		if (cmd.argument() == "zoomslider") {
+		if (cmd.argument() == "zoom") {
+			enable = doc_buffer;
+			flag.setOnOff(zoom_value_ ? zoom_value_->isVisible() : false);
+		} else if (cmd.argument() == "zoomslider") {
 			enable = doc_buffer;
 			flag.setOnOff(zoom_slider_ ? zoom_slider_->isVisible() : false);
 		} else
@@ -4861,6 +4867,8 @@ bool GuiView::lfunUiToggle(string const & ui_component)
 		statusBar()->setVisible(!statusBar()->isVisible());
 	} else if (ui_component == "menubar") {
 		menuBar()->setVisible(!menuBar()->isVisible());
+	} else if (ui_component == "zoom") {
+		zoom_value_->setVisible(!zoom_value_->isVisible());
 	} else if (ui_component == "zoomslider") {
 		zoom_slider_->setVisible(!zoom_slider_->isVisible());
 		zoom_in_->setVisible(zoom_slider_->isVisible());

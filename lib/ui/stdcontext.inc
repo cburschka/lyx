@@ -724,11 +724,12 @@ Menuset
 	End
 
 #
-# Zoom context menu
+# Status bar context menu
 #
-	Menu "context-zoom"
+	Menu "context-statusbar"
 		ZoomOptions
 		Separator
+		Item "Show Zoom|Z" "ui-toggle zoom"
 		Item "Show Zoom Slider|S" "ui-toggle zoomslider"
 	End
 
