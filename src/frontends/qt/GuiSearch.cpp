@@ -151,7 +151,7 @@ void GuiSearchWidget::keyPressEvent(QKeyEvent * ev)
 	if (ev->key() == Qt::Key_Escape) {
 		dispatch(FuncRequest(LFUN_DIALOG_HIDE, "findreplace"));
 		view_.setFocus();
-		dispatch(FuncRequest(LFUN_BUFFER_UPDATE));
+		bv_->buffer().updateBuffer();
 		return;
 	}
 
@@ -417,12 +417,12 @@ void GuiSearchWidget::showEvent(QShowEvent * e)
 }
 
 
-void GuiSearchWidget::hideEvent(QHideEvent * e)
+void GuiSearchWidget::hideEvent(QHideEvent *)
 {
-	QWidget::hideEvent(e);
+	dispatch(FuncRequest(LFUN_DIALOG_HIDE, "findreplace"));
 	view_.setFocus();
 	// update toolbar status
-	dispatch(FuncRequest(LFUN_BUFFER_UPDATE));
+	bv_->buffer().updateBuffer();
 }
 
 
