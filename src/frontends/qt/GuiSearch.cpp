@@ -422,7 +422,8 @@ void GuiSearchWidget::hideEvent(QHideEvent *)
 	dispatch(FuncRequest(LFUN_DIALOG_HIDE, "findreplace"));
 	view_.setFocus();
 	// update toolbar status
-	bv_->buffer().updateBuffer();
+	if (bv_)
+		bv_->buffer().updateBuffer();
 }
 
 
