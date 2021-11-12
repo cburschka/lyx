@@ -206,7 +206,7 @@ void BulletsModule::setupPanel(QListWidget * lw, QString const & panelname,
 		QPixmap pixmap = getPixmap("images/" + toqstr(folder) + "/", toqstr(iconname), "svgz");
 		QIcon icon(pixmap);
 		icon.addPixmap(getSelectedPixmap(pixmap, icon_size), QIcon::Selected);
-		QListWidgetItem * lwi = new QListWidgetItem(icon, QString());
+		QListWidgetItem * lwi = new QListWidgetItem(icon, QString(), 0, i);
 		lwi->setToolTip(toqstr(Bullet::bulletEntry(font, i)));
 		lwi->setSizeHint(icon_size);
 		lw->addItem(lwi);
