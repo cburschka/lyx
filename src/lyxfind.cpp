@@ -1525,6 +1525,7 @@ void static fillMissingUnicodesymbols()
   addAccents("\\textdiv", getutf8(0x00f7));
   addAccents("\\div", getutf8(0x00f7));
   addAccents("\\o", getutf8(0x00f8));
+  addAccents("\\textcrlambda", getutf8(0x019b));
   addAccents("\\j", getutf8(0x0237));
   addAccents("\\textalpha", getutf8(0x03b1));
   addAccents("\\alpha", getutf8(0x03b1));
