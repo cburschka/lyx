@@ -18,6 +18,7 @@
 #include "Cursor.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "Bullet.h"
 #include "Changes.h"
 #include "Language.h"
 #include "Layout.h"
@@ -426,13 +427,26 @@ void RowPainter::paintLabel() const
 	if (str.empty())
 		return;
 
+	// different font for label separation and string
 	Layout const & layout = par_.layout();
 	FontInfo const font = labelFont(false);
 	FontMetrics const & fm = theFontMetrics(font);
-	int const x = row_.isRTL() ? row_.width() + fm.width(layout.labelsep)
-	                           : row_.left_margin - fm.width(layout.labelsep) - fm.width(str);
+	FontInfo lfont = font;
 
-	pi_.pain.text(int(xo_) + x, yo_, str, font);
+	// bullet?
+	if (layout.labeltype == LABEL_ITEMIZE) {
+		// get label font size from document properties
+		lfont.setSize(pi_.base.bv->buffer().params().user_defined_bullet(par_.itemdepth).getFontSize());
+		// realize to avoid assertion
+		lfont.realize(sane_font);
+	}
+
+	FontMetrics const & lfm = theFontMetrics(lfont);
+
+	int const x = row_.isRTL() ? row_.width() + fm.width(layout.labelsep)
+	                           : row_.left_margin - fm.width(layout.labelsep) - lfm.width(str);
+
+	pi_.pain.text(int(xo_) + x, yo_, str, lfont);
 }
 
 

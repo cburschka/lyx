@@ -13,6 +13,8 @@
 #ifndef BULLET_H
 #define BULLET_H
 
+#include "FontEnums.h"
+
 #include "support/docstring.h"
 
 
@@ -42,7 +44,11 @@ public:
 	///
 	int getSize() const;
 	///
+	FontSize getFontSize() const;
+	///
 	docstring const & getText() const;
+	///
+	docstring const & getUnicode() const;
 	///
 	Bullet & operator=(Bullet const &);
 	///
@@ -75,7 +81,13 @@ private:
 	///
 	void generateText() const;
 	///
+	void generateUnicode() const;
+	///
 	static docstring const bulletSize(int);
+	///
+	static FontSize bulletFontSize(int);
+	///
+	static docstring const bulletUnicode(int, int);
 
 	///
 	int font;
@@ -101,6 +113,7 @@ private:
 	    and size settings.
 	*/
 	mutable docstring text;
+	mutable docstring unicode;
 };
 
 

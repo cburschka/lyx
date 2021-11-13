@@ -5157,31 +5157,8 @@ void Buffer::Impl::setLabel(ParIterator & it, UpdateType utype) const
 
 	switch(layout.labeltype) {
 	case LABEL_ITEMIZE: {
-		// At some point of time we should do something more
-		// clever here, like:
-		//   par.params().labelString(
-		//    bp.user_defined_bullet(par.itemdepth).getText());
-		// for now, use a simple hardcoded label
-		docstring itemlabel;
-		switch (par.itemdepth) {
-		case 0:
-			// • U+2022 BULLET
-			itemlabel = char_type(0x2022);
-			break;
-		case 1:
-			// – U+2013 EN DASH
-			itemlabel = char_type(0x2013);
-			break;
-		case 2:
-			// ∗ U+2217 ASTERISK OPERATOR
-			itemlabel = char_type(0x2217);
-			break;
-		case 3:
-			// · U+00B7 MIDDLE DOT
-			itemlabel = char_type(0x00b7);
-			break;
-		}
-		par.params().labelString(itemlabel);
+		par.params().labelString(
+			bp.user_defined_bullet(par.itemdepth).getUnicode());
 		break;
 	}
 

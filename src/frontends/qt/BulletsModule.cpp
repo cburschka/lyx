@@ -174,8 +174,8 @@ QPixmap getSelectedPixmap(QPixmap pixmap, QSize const icon_size)
 void BulletsModule::setupPanel(QListWidget * lw, QString const & panelname,
 	int const font, string const folder)
 {
-	connect(lw, SIGNAL(currentItemChanged(QListWidgetItem*, QListWidgetItem*)),
-		this, SLOT(bulletSelected(QListWidgetItem *, QListWidgetItem*)));
+	connect(lw, SIGNAL(itemClicked(QListWidgetItem *)),
+		this, SLOT(bulletSelected(QListWidgetItem *)));
 
 	// add panelname to combox
 	bulletpaneCO->addItem(panelname);
@@ -250,12 +250,18 @@ void BulletsModule::init()
 }
 
 
-void BulletsModule::bulletSelected(QListWidgetItem * item, QListWidgetItem *)
+void BulletsModule::bulletSelected(QListWidgetItem * item)
 {
+	int const level = levelLW->currentRow();
+
+	// no change
+	if (bullets_[level].getFont() == bulletpaneCO->currentIndex()
+		&& bullets_[level].getCharacter() == item->type())
+		return;
+
 	// unselect previous item
 	selectItem(current_font_, current_char_, false);
 
-	int const level = levelLW->currentRow();
 	bullets_[level].setCharacter(item->type());
 	bullets_[level].setFont(bulletpaneCO->currentIndex());
 	current_font_ = bulletpaneCO->currentIndex();
