@@ -1909,7 +1909,8 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		cur.setCursor(doc_iterator_begin(cur.buffer()));
 		cur.selHandle(false);
 		// Force an immediate computation of metrics because we need it below
-		updateMetrics();
+		if (scrolled)
+			processUpdateFlags(Update::Force);
 
 		d->text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_,
 			true, act == LFUN_SCREEN_UP);
