@@ -130,18 +130,18 @@ private:
 
 /** Helper class to simplify the use of undo groups across several buffers.
  *
- *  The undo group is created when the object is instantiated; it is
- *  then ended as the object goes out of scope or the buffer is reset
- *  (see below)
+ *  The undo group is open when the object is instantiated or when
+ *  the buffer is reset; it is then ended as the object goes out of
+ *  scope (see below)
  */
 class UndoGroupHelper {
 public:
-	// Create a new undo group for buffer \c buf.
+	// Begin a new undo group for buffer \c buf.
 	UndoGroupHelper(Buffer * buf);
-	// End all created undo groups.
+	// End all active undo groups.
 	~UndoGroupHelper();
 
-	// Create an additional undo group for buffer \c buf.
+	// Begin if needed an undo group for buffer \c buf.
 	void resetBuffer(Buffer * buf);
 
 private:
