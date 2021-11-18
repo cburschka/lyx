@@ -2269,6 +2269,12 @@ bool Paragraph::isPassThru() const
 }
 
 
+bool Paragraph::parbreakIsNewline() const
+{
+	return inInset().getLayout().parbreakIsNewline() || d->layout_->parbreak_is_newline;
+}
+
+
 bool Paragraph::isPartOfTextSequence() const
 {
 	for (pos_type i = 0; i < size(); ++i) {
