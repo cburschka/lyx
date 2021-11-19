@@ -34,6 +34,7 @@ public:
 	/** Selection overloaded methods
 	 */
 	//@{
+	bool supported() const override { return selection_supported_; }
 	void haveSelection(bool own) override;
 	docstring const get() const override;
 	void put(docstring const & str) override;

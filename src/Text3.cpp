@@ -3437,6 +3437,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_PRIMARY_SELECTION_PASTE:
+		status.setUnknown(!theSelection().supported());
 		enable = cur.selection() || !theSelection().empty();
 		break;
 

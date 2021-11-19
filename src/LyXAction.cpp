@@ -3417,7 +3417,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_PRIMARY_SELECTION_PASTE
  * \li Action: Pastes the currently selected text.
- * \li Notion: Primary selection mechanism is linux-only thing.
+ * \li Notion: Primary selection mechanism is X11/Wayland-only thing.
  * \li Syntax: primary-selection-paste [<ARG>]
  * \li Params: <ARG>: "paragraph" will cause pasting as one paragraph, i.e. "Join lines".
  * \endvar
