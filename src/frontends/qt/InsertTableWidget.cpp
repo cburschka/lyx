@@ -33,7 +33,7 @@ namespace lyx {
 namespace frontend {
 
 InsertTableWidget::InsertTableWidget(QWidget * parent)
-	: QWidget(parent, Qt::Popup), colwidth_(20), rowheight_(12)
+	: QWidget(parent, Qt::Popup), colwidth_(15), rowheight_(15), minrows_(5), mincols_(5)
 {
 	init();
 	setMouseTracking(true);
@@ -42,8 +42,8 @@ InsertTableWidget::InsertTableWidget(QWidget * parent)
 
 void InsertTableWidget::init()
 {
-	rows_ = 5;
-	cols_ = 5;
+	rows_ = minrows_;
+	cols_ = mincols_;
 	bottom_ = 0;
 	right_ = 0;
 	underMouse_ = false;
@@ -98,13 +98,15 @@ void InsertTableWidget::mouseMoveEvent(QMouseEvent * event)
 	bottom_ = event->y() / rowheight_ + 1;
 #endif
 
-	if (bottom_ == rows_) {
-		++rows_;
+	int const newrows = std::max(minrows_, bottom_ + 1);
+	if (rows_ != newrows) {
+		rows_ = newrows;
 		resetGeometry();
 	}
 
-	if (right_ == cols_) {
-		++cols_;
+	int const newcols = std::max(mincols_, right_ + 1);
+	if (cols_ != newcols) {
+		cols_ = newcols;
 		resetGeometry();
 	}
 
@@ -140,17 +142,20 @@ void InsertTableWidget::mousePressEvent(QMouseEvent * /*event*/)
 
 void InsertTableWidget::paintEvent(QPaintEvent * /*event*/)
 {
-	drawGrid(rows_, cols_, Qt::white);
+	QPalette const palette = this->palette();
+	drawGrid(rows_, cols_, palette.base(), palette.text().color());
 	if (underMouse_)
-		drawGrid(bottom_, right_, Qt::darkBlue);
+		drawGrid(bottom_, right_, palette.highlight(),
+				palette.highlightedText().color());
 }
 
 
-void InsertTableWidget::drawGrid(int const rows, int const cols, Qt::GlobalColor const color)
+void InsertTableWidget::drawGrid(int const rows, int const cols,
+	QBrush const fillBrush, QColor lineColor)
 {
 	QPainter painter(this);
-	painter.setPen(Qt::darkGray);
-	painter.setBrush(color);
+	painter.setPen(lineColor);
+	painter.setBrush(fillBrush);
 
 	for (int r = 0 ; r < rows ; ++r ) {
 		for (int c = 0 ; c < cols ; ++c ) {

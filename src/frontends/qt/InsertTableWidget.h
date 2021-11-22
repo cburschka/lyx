@@ -48,7 +48,7 @@ private:
 	//! initialize parameters to default values
 	void init();
 	//! draw the grid
-	void drawGrid(int rows, int cols, Qt::GlobalColor color);
+	void drawGrid(int rows, int cols, QBrush fillBrush, QColor lineColor);
 
 	//! colwidth in pixels
 	int colwidth_;
@@ -56,8 +56,12 @@ private:
 	int rowheight_;
 	//! total rows
 	int rows_;
+	//! minimum number of rows
+	int minrows_;
 	//! total cols
 	int cols_;
+	//! minimum number of cols
+	int mincols_;
 	//! row of pointer
 	int bottom_;
 	//! column of pointer
