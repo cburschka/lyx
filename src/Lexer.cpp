@@ -14,7 +14,6 @@
 #include <config.h>
 
 #include "Lexer.h"
-#include "Format.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -81,9 +80,6 @@ public:
 	bool inputAvailable();
 	///
 	void pushToken(string const &);
-	/// fb_ is only used to open files, the stream is accessed through is.
-	filebuf fb_;
-
 	/// gz_ is only used to open files, the stream is accessed through is.
 	gz::gzstreambuf gz_;
 
@@ -149,7 +145,7 @@ bool compareTags(LexerKeyword const & a, LexerKeyword const & b)
 
 
 Lexer::Pimpl::Pimpl(LexerKeyword * tab, int num)
-	: is(&fb_), table(tab), no_items(num),
+	: is(&gz_), table(tab), no_items(num),
 	  status(0), lineno(0), commentChar('#')
 {
 	verifyTable();
@@ -235,38 +231,14 @@ void Lexer::Pimpl::popTable()
 
 bool Lexer::Pimpl::setFile(FileName const & filename)
 {
-	// Check the format of the file.
-	if (theFormats().isZippedFile(filename)) {
-		LYXERR(Debug::LYXLEX, "lyxlex: compressed");
-		// The check only outputs a debug message, because it triggers
-		// a bug in compaq cxx 6.2, where is_open() returns 'true' for
-		// a fresh new filebuf.  (JMarc)
 		if (gz_.is_open() || istream::off_type(is.tellg()) > -1)
-			LYXERR(Debug::LYXLEX, "Error in LyXLex::setFile: "
-				"file or stream already set.");
+			LYXERR0("Error in LyXLex::setFile: file or stream already set.");
 		gz_.open(filename.toFilesystemEncoding().c_str(), ios::in);
 		is.rdbuf(&gz_);
 		name = filename.absFileName();
 		lineno = 0;
 		if (!gz_.is_open() || !is.good())
 			return false;
-	} else {
-		LYXERR(Debug::LYXLEX, "lyxlex: UNcompressed");
-
-		// The check only outputs a debug message, because it triggers
-		// a bug in compaq cxx 6.2, where is_open() returns 'true' for
-		// a fresh new filebuf.  (JMarc)
-		if (fb_.is_open() || istream::off_type(is.tellg()) > 0) {
-			LYXERR(Debug::LYXLEX, "Error in Lexer::setFile: "
-				"file or stream already set.");
-		}
-		fb_.open(filename.toSafeFilesystemEncoding().c_str(), ios::in);
-		is.rdbuf(&fb_);
-		name = filename.absFileName();
-		lineno = 0;
-		if (!fb_.is_open() || !is.good())
-			return false;
-	}
 
 	// Skip byte order mark.
 	if (is.peek() == 0xef) {
@@ -284,10 +256,8 @@ bool Lexer::Pimpl::setFile(FileName const & filename)
 
 void Lexer::Pimpl::setStream(istream & i)
 {
-	if (fb_.is_open() || istream::off_type(is.tellg()) > 0) {
-		LYXERR(Debug::LYXLEX, "Error in Lexer::setStream: "
-			"file or stream already set.");
-	}
+	if (gz_.is_open() || istream::off_type(is.tellg()) > 0)
+		LYXERR0("Error in Lexer::setStream: file or stream already set.");
 	is.rdbuf(i.rdbuf());
 	lineno = 0;
 }

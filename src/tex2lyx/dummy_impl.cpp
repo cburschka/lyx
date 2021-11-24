@@ -18,7 +18,6 @@
 
 #include <config.h>
 
-#include "Format.h"
 #include "LaTeXFeatures.h"
 #include "LyXRC.h"
 #include "output_xhtml.h"
@@ -70,23 +69,6 @@ Messages const & getMessages(string const &)
 Messages const & getGuiMessages()
 {
 	return messages_;
-}
-
-
-//
-// Dummy formats support (needed by Lexer)
-//
-
-
-Formats & theFormats()
-{
-	static Formats dummy_formats;
-	return dummy_formats;
-}
-
-bool Formats::isZippedFile(support::FileName const&) const
-{
-	return false;
 }
 
 

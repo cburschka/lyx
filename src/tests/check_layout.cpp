@@ -3,7 +3,6 @@
 #include "../support/debug.h"
 #include "../support/FileName.h"
 #include "../support/filetools.h"
-#include "../Format.h"
 #include "../LayoutFile.h"
 #include "../LaTeXFeatures.h"
 #include "../Lexer.h"
@@ -34,11 +33,6 @@ bool LaTeXFeatures::isAvailable(std::string const &)
 	return false;
 }
 
-Formats formats;
-bool Formats::isZippedFile(support::FileName const &) const
-{
-	return false;
-}
 } // namespace lyx
 
 
