@@ -4858,6 +4858,19 @@ Language * Paragraph::Private::getSpellLanguage(pos_type const from) const
 void Paragraph::requestSpellCheck(pos_type pos)
 {
 	d->requestSpellCheck(pos);
+	if (pos == -1 ) {
+		// Also request spellcheck within (text) insets
+		for (auto const & insets : insetList()) {
+			if (!insets.inset->asInsetText())
+				continue;
+			ParagraphList & inset_pars =
+				insets.inset->asInsetText()->paragraphs();
+			ParagraphList::iterator pit = inset_pars.begin();
+			ParagraphList::iterator pend = inset_pars.end();
+			for (; pit != pend; ++pit)
+				pit->requestSpellCheck();
+		}
+	}
 }
 
 
