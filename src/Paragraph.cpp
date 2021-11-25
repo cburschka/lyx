@@ -4858,7 +4858,7 @@ Language * Paragraph::Private::getSpellLanguage(pos_type const from) const
 void Paragraph::requestSpellCheck(pos_type pos)
 {
 	d->requestSpellCheck(pos);
-	if (pos == -1 ) {
+	if (pos == -1) {
 		// Also request spellcheck within (text) insets
 		for (auto const & insets : insetList()) {
 			if (!insets.inset->asInsetText())
