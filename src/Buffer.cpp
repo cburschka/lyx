@@ -5381,6 +5381,15 @@ int Buffer::spellCheck(DocIterator & from, DocIterator & to,
 }
 
 
+void Buffer::requestSpellcheck()
+{
+	ParagraphList::iterator pit = paragraphs().begin();
+	ParagraphList::iterator pend = paragraphs().end();
+	for (; pit != pend; ++pit)
+		pit->requestSpellCheck();
+}
+
+
 void Buffer::Impl::updateStatistics(DocIterator & from, DocIterator & to, bool skipNoOutput)
 {
 	bool inword = false;

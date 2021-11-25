@@ -2762,11 +2762,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			bv->buffer().params().spellignore().push_back(wl);
 			cur.recordUndo();
 			// trigger re-check of whole buffer
-			ParagraphList & pars = bv->buffer().paragraphs();
-			ParagraphList::iterator pit = pars.begin();
-			ParagraphList::iterator pend = pars.end();
-			for (; pit != pend; ++pit)
-				pit->requestSpellCheck();
+			bv->buffer().requestSpellcheck();
 		}
 		break;
 	}
@@ -2800,11 +2796,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			bv->buffer().params().spellignore().erase(it);
 			cur.recordUndo();
 			// trigger re-check of whole buffer
-			ParagraphList & pars = bv->buffer().paragraphs();
-			ParagraphList::iterator pit = pars.begin();
-			ParagraphList::iterator pend = pars.end();
-			for (; pit != pend; ++pit)
-				pit->requestSpellCheck();
+			bv->buffer().requestSpellcheck();
 		}
 		break;
 	}

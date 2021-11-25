@@ -748,6 +748,8 @@ public:
 	/// \return progress if a new word was found.
 	int spellCheck(DocIterator & from, DocIterator & to,
 		WordLangTuple & word_lang, docstring_list & suggestions) const;
+	/// Marks the whole buffer to be checked (again)
+	void requestSpellcheck();
 	///
 	void checkChildBuffers();
 	///
