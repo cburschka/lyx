@@ -1161,7 +1161,9 @@ char const * simplefeatures[] = {
 	"pict2e",
 	"drs",
 	"environ",
-	"dsfont"
+	"dsfont",
+	"hepparticles",
+	"hepnames"
 };
 
 char const * bibliofeatures[] = {

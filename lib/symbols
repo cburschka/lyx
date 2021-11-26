@@ -1216,3 +1216,738 @@ endif
 #"{\hat{}}
 
 
+# HEP Particles. The code below is extracted from the hepparticles
+# package by Andy Buckley.
+#    https://www.ctan.org/pkg/hepparticles
+# It has been simplified and is only intended for display purposes inside LyX.
+
+
+\def\HepParticle#1#2#3{\mathrm{#1{}_{#2}^{#3}}} hepparticles
+\def\HepAntiParticle#1#2#3{\mathrm{\overline{#1}{}_{#2}^{#3}}} hepparticles
+
+\def\HepGenParticle#1#2#3{\mathit{#1{}_{\kern-3mu#2}^{\kern-1mu#3}}} hepparticles
+\def\HepGenAntiParticle#1#2#3{\mathit{\overline{#1}{}_{\kern-2mu#2}^{#3}}} hepparticles
+
+\def\HepSusyParticle#1#2#3{\mathrm{\widetilde{#1}{}_{#2}^{#3}}} hepparticles
+\def\HepGenSusyParticle#1#2#3{\mathit{\mkern2mu\widetilde{\mkern-2mu#1}{}_{\kern-2.5mu#2}^{\kern-0.5mu#3}}} hepparticles
+\def\HepSusyAntiParticle#1#2#3{\mathrm{\overline{\widetilde{#1}}{}_{#2}^{#3}}} hepparticles
+\def\HepGenSusyAntiParticle#1#2#3{\mathit{\mkern3.5mu\overline{\mkern-3.5mu\mkern2mu\widetilde{\mkern-2mu#1}}{}_{\kern-4mu#2}^{\kern-2mu#3}}} hepparticles
+
+\def\HepResonanceMassTerm#1#2#3{\mathrm{\left(#1\right){}_{#2}^{#3}}} hepparticles
+\def\HepResonanceSpecTerm#1#2#3{\mathrm{#1{}_{#2}^{#3}}} hepparticles
+\def\HepParticleResonance#1#2#3#4{#1\HepResonanceMassTerm#2#3#4} hepparticles
+\def\HepParticleResonanceFormal#1#2#3#4#5#6#7{\HepParticleResonance#1#2#3#4\,\HepResonanceSpecTerm#5#6#7} hepparticles
+\def\HepParticleResonanceFull#1#2#3#4#5#6{\HepParticleResonance{\HepParticle#1#2#3}#4#5#6} hepparticles
+\def\HepParticleResonanceFormalFull#1#2#3#4#5#6#7#8#9{\HepParticleResonanceFormal{\HepParticle#1#2#3}#4#5#6#7#8#9} hepparticles
+\def\HepProcess#1{#1} hepparticles
+
+
+#
+# Particle PEN Names (see hepnames package on CTAN)
+#
+
+## B mesons
+\def\PB{\HepParticle{B}{}{}} hepnames
+\def\PBpm{\HepParticle{B}{}{\pm}} hepnames
+\def\PBmp{\HepParticle{B}{}{\mp}} hepnames
+\def\PBp{\HepParticle{B}{}{+}} hepnames
+\def\PBm{\HepParticle{B}{}{-}} hepnames
+\def\PBz{\HepParticle{B}{}{0}} hepnames
+\def\PBst{\HepParticle{B}{}{\ast}} hepnames
+\def\PdB{\HepParticle{B}{\Pqd}{0}} hepnames
+\def\PuB{\HepParticle{B}{}{+}} hepnames
+\def\PcB{\HepParticle{B}{\Pqc}{+}} hepnames
+\def\PsB{\HepParticle{B}{\Pqs}{0}} hepnames
+\def\PaB{\HepAntiParticle{B}{}{}} hepnames
+\def\PaBz{\HepAntiParticle{B}{}{0}} hepnames
+\def\PadB{\HepAntiParticle{B}{\Pqd}{0}} hepnames
+\def\PauB{\HepParticle{B}{}{-}} hepnames
+\def\PacB{\HepParticle{B}{\Pqc}{-}} hepnames
+\def\PasB{\HepAntiParticle{B}{\Pqs}{0}} hepnames
+
+## Kaons
+\def\PK{\HepParticle{K}{}{}} hepnames
+\def\PKpm{\HepParticle{K}{}{\pm}} hepnames
+\def\PKmp{\HepParticle{K}{}{\mp}} hepnames
+\def\PKm{\HepParticle{K}{}{-}} hepnames
+\def\PKp{\HepParticle{K}{}{+}} hepnames
+\def\PKz{\HepParticle{K}{}{0}} hepnames
+\def\PKzL{\HepParticle{K}{L}{0}} hepnames
+\def\PKzS{\HepParticle{K}{S}{0}} hepnames
+\def\PKst{\HepParticle{K}{}{\ast}} hepnames
+\def\PaK{\HepAntiParticle{K}{}{}} hepnames
+\def\PaKz{\HepAntiParticle{K}{}{0}} hepnames
+\def\PKeiii{\HepParticle{K}{e3}{}} hepnames
+\def\PKgmiii{\HepParticle{K}{\mu3}{}} hepnames
+\def\PKzeiii{\HepParticle{K}{e3}{0}} hepnames
+\def\PKzgmiii{\HepParticle{K}{\mu3}{0}} hepnames
+\def\PKia{\HepParticleResonanceFull{K}{1}{}{1400}{}{}} hepnames
+\def\PKii{\HepParticleResonanceFull{K}{2}{}{1770}{}{}} hepnames
+\def\PKi{\HepParticleResonanceFull{K}{1}{}{1270}{}{}} hepnames
+\def\PKsti{\HepParticleResonance{\PKst}{892}{}{}} hepnames
+\def\PKsta{\HepParticleResonance{\PKst}{1370}{}{}} hepnames
+\def\PKstb{\HepParticleResonance{\PKst}{1680}{}{}} hepnames
+\def\PKstiii{\HepParticleResonanceFull{K}{3}{\ast}{1780}{}{}} hepnames
+\def\PKstii{\HepParticleResonanceFull{K}{2}{\ast}{1430}{}{}} hepnames
+\def\PKstiv{\HepParticleResonanceFull{K}{4}{\ast}{2045}{}{}} hepnames
+\def\PKstz{\HepParticleResonanceFull{K}{0}{\ast}{1430}{}{}} hepnames
+
+## N resonances
+\def\PN{\HepParticle{N}{}{}} hepnames
+\def\PNa{\HepParticleResonanceFormal{\PN}{1440}{}{}{P}{11}{}} hepnames
+\def\PNb{\HepParticleResonanceFormal{\PN}{1520}{}{}{D}{13}{}} hepnames
+\def\PNc{\HepParticleResonanceFormal{\PN}{1535}{}{}{S}{11}{}} hepnames
+\def\PNd{\HepParticleResonanceFormal{\PN}{1650}{}{}{S}{11}{}} hepnames
+\def\PNe{\HepParticleResonanceFormal{\PN}{1675}{}{}{D}{15}{}} hepnames
+\def\PNf{\HepParticleResonanceFormal{\PN}{1680}{}{}{F}{15}{}} hepnames
+\def\PNg{\HepParticleResonanceFormal{\PN}{1700}{}{}{D}{13}{}} hepnames
+\def\PNh{\HepParticleResonanceFormal{\PN}{1710}{}{}{P}{11}{}} hepnames
+\def\PNi{\HepParticleResonanceFormal{\PN}{1720}{}{}{P}{13}{}} hepnames
+\def\PNj{\HepParticleResonanceFormal{\PN}{2190}{}{}{G}{17}{}} hepnames
+\def\PNk{\HepParticleResonanceFormal{\PN}{2220}{}{}{H}{19}{}} hepnames
+\def\PNl{\HepParticleResonanceFormal{\PN}{2250}{}{}{G}{19}{}} hepnames
+\def\PNm{\HepParticleResonanceFormal{\PN}{2600}{}{}{I}{1,11}{}} hepnames
+
+## Bosons
+\def\Pg{\HepParticle{g}{}{}} hepnames
+\def\Pgg{\HepParticle{\gamma}{}{}} hepnames
+\def\Pggx{\HepParticle{\gamma}{}{*}} hepnames
+\def\PW{\HepParticle{W}{}{}} hepnames
+\def\PWpm{\HepParticle{W}{}{\pm}} hepnames
+\def\PWmp{\HepParticle{W}{}{\mp}} hepnames
+\def\PWp{\HepParticle{W}{}{+}} hepnames
+\def\PWm{\HepParticle{W}{}{-}} hepnames
+\def\PWR{\HepParticle{W}{R}{}} hepnames
+\def\PWpr{\HepParticle{W}{}{\prime}} hepnames
+\def\PZ{\HepParticle{Z}{}{}} hepnames
+\def\PZz{\HepParticle{Z}{}{0}} hepnames
+\def\PZpr{\HepParticle{Z}{}{\prime}} hepnames
+\def\PZLR{\HepParticle{Z}{LR}{}} hepnames
+\def\PZgc{\HepParticle{Z}{\chi}{}} hepnames
+\def\PZge{\HepParticle{Z}{\eta}{}} hepnames
+\def\PZgy{\HepParticle{Z}{\psi}{}} hepnames
+\def\PZi{\HepParticle{Z}{1}{}} hepnames
+\def\PAz{\HepParticle{A}{}{\mspace{-2mu}0}} hepnames
+
+## Higgs (inc. SUSY Higgs)
+\def\PH{\HepParticle{H}{}{}} hepnames
+\def\PHz{\HepParticle{H}{}{0}} hepnames
+\def\Ph{\HepParticle{h}{}{}} hepnames
+\def\Phz{\HepParticle{h}{}{0}} hepnames
+\def\PA{\HepParticle{A}{}{}} hepnames
+\def\PHpm{\HepParticle{H}{}{\pm}} hepnames
+\def\PHmp{\HepParticle{H}{}{\mp}} hepnames
+\def\PHp{\HepParticle{H}{}{+}} hepnames
+\def\PHm{\HepParticle{H}{}{-}} hepnames
+
+\def\Pf{\HepGenParticle{f}{}{}} hepnames
+\def\Pfpm{\HepGenParticle{f}{}{\pm}} hepnames
+\def\Pfmp{\HepGenParticle{f}{}{\mp}} hepnames
+\def\Pfp{\HepGenParticle{f}{}{+}} hepnames
+\def\Pfm{\HepGenParticle{f}{}{-}} hepnames
+\def\Paf{\HepGenAntiParticle{f}{}{}} hepnames
+
+## Leptons
+\def\Pl{\HepGenParticle{\ell}{}{}} hepnames
+\def\Plpm{\HepGenParticle{\ell}{}{\pm}} hepnames
+\def\Plmp{\HepGenParticle{\ell}{}{\mp}} hepnames
+\def\Plp{\HepGenParticle{\ell}{}{+}} hepnames
+\def\Plm{\HepGenParticle{\ell}{}{-}} hepnames
+\def\Pal{\HepGenAntiParticle{\ell}{}{}} hepnames
+\def\Pgn{\HepGenParticle{\nu}{}{}} hepnames
+\def\Pgnl{\HepGenParticle{\nu}{\ell}{}} hepnames
+\def\Pagn{\HepGenAntiParticle{\nu}{}{}} hepnames
+\def\Pagnl{\HepGenAntiParticle{\nu}{\ell}{}} hepnames
+\def\Pe{\HepParticle{e}{}{}} hepnames
+\def\Pepm{\HepParticle{e}{}{\pm}} hepnames
+\def\Pemp{\HepParticle{e}{}{\mp}} hepnames
+\def\Pem{\HepParticle{e}{}{-}} hepnames
+\def\Pep{\HepParticle{e}{}{+}} hepnames
+\def\Pgm{\HepParticle{\mu}{}{}} hepnames
+\def\Pgmpm{\HepParticle{\mu}{}{\pm}} hepnames
+\def\Pgmmp{\HepParticle{\mu}{}{\mp}} hepnames
+\def\Pgmm{\HepParticle{\mu}{}{-}} hepnames
+\def\Pgmp{\HepParticle{\mu}{}{+}} hepnames
+\def\Pgt{\HepParticle{\tau}{}{}} hepnames
+\def\Pgtpm{\HepParticle{\tau}{}{\pm}} hepnames
+\def\Pgtmp{\HepParticle{\tau}{}{\mp}} hepnames
+\def\Pgtm{\HepParticle{\tau}{}{-}} hepnames
+\def\Pgtp{\HepParticle{\tau}{}{+}} hepnames
+\def\Pgne{\HepParticle{\nu}{\!e}{}} hepnames
+\def\Pgngm{\HepParticle{\nu}{\!\mu}{}} hepnames
+\def\Pgngt{\HepParticle{\nu}{\!\tau}{}} hepnames
+\def\Pagne{\HepAntiParticle{\nu}{\!e}{}} hepnames
+\def\Pagngm{\HepAntiParticle{\nu}{\!\mu}{}} hepnames
+\def\Pagngt{\HepAntiParticle{\nu}{\!\tau}{}} hepnames
+
+## Quarks
+\def\Pq{\HepGenParticle{q}{}{}} hepnames
+\def\Paq{\HepGenAntiParticle{q}{}{}} hepnames
+\def\Pqd{\HepParticle{d}{}{}} hepnames
+\def\Pqu{\HepParticle{u}{}{}} hepnames
+\def\Pqs{\HepParticle{s}{}{}} hepnames
+\def\Pqc{\HepParticle{c}{}{}} hepnames
+\def\Pqb{\HepParticle{b}{}{}} hepnames
+\def\Pqt{\HepParticle{t}{}{}} hepnames
+\def\Paqd{\HepAntiParticle{d}{}{}} hepnames
+\def\Paqu{\HepAntiParticle{u}{}{}} hepnames
+\def\Paqs{\HepAntiParticle{s}{}{}} hepnames
+\def\Paqc{\HepAntiParticle{c}{}{}} hepnames
+\def\Paqb{\HepAntiParticle{b}{}{}} hepnames
+\def\Paqt{\HepAntiParticle{t}{}{}} hepnames
+
+## Nucleons
+\def\Pp{\HepParticle{p}{}{}} hepnames
+\def\Pn{\HepParticle{n}{}{}} hepnames
+\def\Pap{\HepAntiParticle{p}{}{}} hepnames
+\def\Pan{\HepAntiParticle{n}{}{}} hepnames
+
+## Chi_c mesons
+\def\Pcgc{\HepParticle{\chi}{c}{}} hepnames
+\def\Pcgcii{\HepParticleResonanceFull{\chi}{c2}{}{1P}{}{}} hepnames
+\def\Pcgci{\HepParticleResonanceFull{\chi}{c1}{}{1P}{}{}} hepnames
+\def\Pcgcz{\HepParticleResonanceFull{\chi}{c0}{}{1P}{}{}} hepnames
+
+## f baryons
+\def\Pfia{\HepParticleResonanceFull{f}{1}{}{1390}{}{}} hepnames
+\def\Pfib{\HepParticleResonanceFull{f}{1}{}{1510}{}{}} hepnames
+\def\Pfiia{\HepParticleResonanceFull{f}{2}{}{1720}{}{}} hepnames
+\def\Pfiib{\HepParticleResonanceFull{f}{2}{}{2010}{}{}} hepnames
+\def\Pfiic{\HepParticleResonanceFull{f}{2}{}{2300}{}{}} hepnames
+\def\Pfiid{\HepParticleResonanceFull{f}{2}{}{2340}{}{}} hepnames
+\def\Pfiipr{\HepParticleResonanceFull{f}{2}{\prime}{1525}{}{}} hepnames
+\def\Pfii{\HepParticleResonanceFull{f}{2}{}{1270}{}{}} hepnames
+\def\Pfiv{\HepParticleResonanceFull{f}{4}{}{2050}{}{}} hepnames
+\def\Pfi{\HepParticleResonanceFull{f}{1}{}{1285}{}{}} hepnames
+\def\Pfza{\HepParticleResonanceFull{f}{0}{}{1400}{}{}} hepnames
+\def\Pfzb{\HepParticleResonanceFull{f}{0}{}{1590}{}{}} hepnames
+\def\Pfz{\HepParticleResonanceFull{f}{0}{}{975}{}{}} hepnames
+
+## Delta baryons
+\def\PgD{\HepParticle{\Delta}{}{}} hepnames
+\def\PgDa{\HepParticleResonanceFormal{\PgD}{1232}{}{}{P}{33}{}} hepnames
+\def\PgDb{\HepParticleResonanceFormal{\PgD}{1620}{}{}{S}{31}{}} hepnames
+\def\PgDc{\HepParticleResonanceFormal{\PgD}{1700}{}{}{D}{33}{}} hepnames
+\def\PgDd{\HepParticleResonanceFormal{\PgD}{1900}{}{}{S}{31}{}} hepnames
+\def\PgDe{\HepParticleResonanceFormal{\PgD}{1905}{}{}{F}{35}{}} hepnames
+\def\PgDf{\HepParticleResonanceFormal{\PgD}{1910}{}{}{P}{31}{}} hepnames
+\def\PgDh{\HepParticleResonanceFormal{\PgD}{1920}{}{}{P}{33}{}} hepnames
+\def\PgDi{\HepParticleResonanceFormal{\PgD}{1930}{}{}{D}{35}{}} hepnames
+\def\PgDj{\HepParticleResonanceFormal{\PgD}{1950}{}{}{F}{37}{}} hepnames
+\def\PgDk{\HepParticleResonanceFormal{\PgD}{2420}{}{}{H}{3,11}{}} hepnames
+
+## Lambda baryons
+\def\PgL{\HepParticle{\Lambda}{}{}} hepnames
+\def\PagL{\HepAntiParticle{\Lambda}{}{}} hepnames
+\def\PcgLp{\HepParticle{\Lambda}{\,c}{+}} hepnames
+\def\PbgL{\HepParticle{\Lambda}{b}{}} hepnames
+\def\PgLa{\HepParticleResonanceFormal{\PgL}{1405}{}{}{S}{01}{}} hepnames
+\def\PgLb{\HepParticleResonanceFormal{\PgL}{1520}{}{}{D}{03}{}} hepnames
+\def\PgLc{\HepParticleResonanceFormal{\PgL}{1600}{}{}{P}{01}{}} hepnames
+\def\PgLd{\HepParticleResonanceFormal{\PgL}{1670}{}{}{S}{01}{}} hepnames
+\def\PgLe{\HepParticleResonanceFormal{\PgL}{1690}{}{}{D}{03}{}} hepnames
+\def\PgLf{\HepParticleResonanceFormal{\PgL}{1800}{}{}{S}{01}{}} hepnames
+\def\PgLg{\HepParticleResonanceFormal{\PgL}{1810}{}{}{P}{01}{}} hepnames
+\def\PgLh{\HepParticleResonanceFormal{\PgL}{1820}{}{}{F}{05}{}} hepnames
+\def\PgLi{\HepParticleResonanceFormal{\PgL}{1830}{}{}{D}{05}{}} hepnames
+\def\PgLj{\HepParticleResonanceFormal{\PgL}{1890}{}{}{P}{03}{}} hepnames
+\def\PgLk{\HepParticleResonanceFormal{\PgL}{2100}{}{}{G}{07}{}} hepnames
+\def\PgLl{\HepParticleResonanceFormal{\PgL}{2110}{}{}{F}{05}{}} hepnames
+\def\PgLm{\HepParticleResonanceFormal{\PgL}{2350}{}{}{H}{09}{}} hepnames
+
+## Omega
+\def\PgO{\HepParticle{\Omega}{}{}} hepnames
+\def\PgOpm{\HepParticle{\Omega}{}{\pm}} hepnames
+\def\PgOmp{\HepParticle{\Omega}{}{\mp}} hepnames
+\def\PgOp{\HepParticle{\Omega}{}{+}} hepnames
+\def\PgOm{\HepParticle{\Omega}{}{-}} hepnames
+\def\PgOma{\HepParticleResonanceFull{\Omega}{}{}{2250}{}{-}} hepnames
+\def\PagO{\HepAntiParticle{\Omega}{}{}} hepnames
+\def\PagOp{\HepAntiParticle{\Omega}{}{+}} hepnames
+\def\PagOm{\HepAntiParticle{\Omega}{}{-}} hepnames
+
+## Sigma baryons
+\def\PgS{\HepParticle{\Sigma}{}{}} hepnames
+\def\PgSpm{\HepParticle{\Sigma}{}{\pm}} hepnames
+\def\PgSmp{\HepParticle{\Sigma}{}{\mp}} hepnames
+\def\PgSm{\HepParticle{\Sigma}{}{-}} hepnames
+\def\PgSp{\HepParticle{\Sigma}{}{+}} hepnames
+\def\PgSz{\HepParticle{\Sigma}{}{0}} hepnames
+\def\PcgS{\HepParticle{\Sigma}{c}{}} hepnames
+\def\PagSm{\HepAntiParticle{\Sigma}{}{-}} hepnames
+\def\PagSp{\HepAntiParticle{\Sigma}{}{+}} hepnames
+\def\PagSz{\HepAntiParticle{\Sigma}{}{0}} hepnames
+\def\PacgS{\HepAntiParticle{\Sigma}{c}{}} hepnames
+\def\PgSa{\HepParticleResonanceFormal{\PgS}{1385}{}{}{P}{13}{}} hepnames
+\def\PgSb{\HepParticleResonanceFormal{\PgS}{1660}{}{}{P}{11}{}} hepnames
+\def\PgSc{\HepParticleResonanceFormal{\PgS}{1670}{}{}{D}{13}{}} hepnames
+\def\PgSd{\HepParticleResonanceFormal{\PgS}{1750}{}{}{S}{11}{}} hepnames
+\def\PgSe{\HepParticleResonanceFormal{\PgS}{1775}{}{}{D}{15}{}} hepnames
+\def\PgSf{\HepParticleResonanceFormal{\PgS}{1915}{}{}{F}{15}{}} hepnames
+\def\PgSg{\HepParticleResonanceFormal{\PgS}{1940}{}{}{D}{13}{}} hepnames
+\def\PgSh{\HepParticleResonanceFormal{\PgS}{2030}{}{}{F}{17}{}} hepnames
+\def\PgSi{\HepParticleResonance{\PgS}{2050}{}{}} hepnames
+\def\PcgSi{\HepParticleResonance{\PcgS}{2455}{}{}} hepnames
+
+## Upsilon
+\def\PgU{\HepParticle{\Upsilon}{}{}} hepnames
+\def\PgUi{\HepParticleResonance{\PgU}{1S}{}{}} hepnames
+\def\PgUa{\HepParticleResonance{\PgU}{2S}{}{}} hepnames
+\def\PgUb{\HepParticleResonance{\PgU}{3S}{}{}} hepnames
+\def\PgUc{\HepParticleResonance{\PgU}{4S}{}{}} hepnames
+\def\PgUd{\HepParticleResonance{\PgU}{10860}{}{}} hepnames
+\def\PgUe{\HepParticleResonance{\PgU}{11020}{}{}} hepnames
+
+## Xi
+\def\PgX{\HepParticle{\Xi}{}{}} hepnames
+\def\PgXp{\HepParticle{\Xi}{}{+}} hepnames
+\def\PgXm{\HepParticle{\Xi}{}{-}} hepnames
+\def\PgXz{\HepParticle{\Xi}{}{0}} hepnames
+\def\PgXa{\HepParticleResonanceFormalFull{\Xi}{}{}{1530}{}{}{P}{13}{}} hepnames
+\def\PgXb{\HepParticleResonanceFull{\Xi}{}{}{1690}{}{}} hepnames
+\def\PgXc{\HepParticleResonanceFormalFull{\Xi}{}{}{1820}{}{}{D}{13}{}} hepnames
+\def\PgXd{\HepParticleResonanceFull{\Xi}{}{}{1950}{}{}} hepnames
+\def\PgXe{\HepParticleResonanceFull{\Xi}{}{}{2030}{}{}} hepnames
+\def\PagXp{\HepAntiParticle{\Xi}{}{+}} hepnames
+\def\PagXm{\HepAntiParticle{\Xi}{}{-}} hepnames
+\def\PagXz{\HepAntiParticle{\Xi}{}{0}} hepnames
+\def\PcgXp{\HepParticle{\Xi}{\,c}{+}} hepnames
+\def\PcgXz{\HepParticle{\Xi}{c}{0}} hepnames
+
+## Strange mesons
+\def\Pgf{\HepParticle{\phi}{}{}} hepnames
+\def\Pgfi{\HepParticleResonance{\Pgf}{1020}{}{}} hepnames
+\def\Pgfa{\HepParticleResonance{\Pgf}{1680}{}{}} hepnames
+\def\Pgfiii{\HepParticleResonanceFull{\phi}{3}{}{1850}{}{}} hepnames
+
+## Eta mesons
+\def\Pgh{\HepParticle{\eta}{}{}} hepnames
+\def\Pghpr{\HepParticle{\eta}{}{\prime}} hepnames
+\def\Pcgh{\HepParticle{\eta}{\Pqc}{}} hepnames
+\def\Pgha{\HepParticleResonance{\Pgh}{1295}{}{}} hepnames
+\def\Pghb{\HepParticleResonance{\Pgh}{1440}{}{}} hepnames
+\def\Pghpri{\HepParticleResonance{\Pghpr}{958}{}{}} hepnames
+\def\Pcghi{\HepParticleResonance{\Pcgh}{1S}{}{}} hepnames
+
+## omega mesons
+\def\Pgo{\HepParticle{\omega}{}{}} hepnames
+\def\Pgoi{\HepParticleResonance{\Pgo}{783}{}{}} hepnames
+\def\Pgoa{\HepParticleResonance{\Pgo}{1390}{}{}} hepnames
+\def\Pgob{\HepParticleResonance{\Pgo}{1600}{}{}} hepnames
+\def\Pgoiii{\HepParticleResonance{\Pgo}{3}{}{1670}{}{}} hepnames
+
+## Pions
+\def\Pgp{\HepParticle{\pi}{}{}} hepnames
+\def\Pgppm{\HepParticle{\pi}{}{\pm}} hepnames
+\def\Pgpmp{\HepParticle{\pi}{}{\mp}} hepnames
+\def\Pgpm{\HepParticle{\pi}{}{-}} hepnames
+\def\Pgpp{\HepParticle{\pi}{}{+}} hepnames
+\def\Pgpz{\HepParticle{\pi}{}{0}} hepnames
+\def\Pgpa{\HepParticleResonanceFull{\pi}{}{}{1300}{}{}} hepnames
+\def\Pgpii{\HepParticleResonanceFull{\pi}{2}{}{1670}{}{}} hepnames
+
+## Rho mesons
+\def\Pgr{\HepParticle{\rho}{}{}} hepnames
+\def\Pgrp{\HepParticle{\rho}{}{+}} hepnames
+\def\Pgrm{\HepParticle{\rho}{}{-}} hepnames
+\def\Pgrpm{\HepParticle{\rho}{}{\pm}} hepnames
+\def\Pgrmp{\HepParticle{\rho}{}{\mp}} hepnames
+\def\Pgrz{\HepParticle{\rho}{}{0}} hepnames
+\def\Pgri{\HepParticleResonanceFull{\rho}{}{}{770}{}{}} hepnames
+\def\Pgra{\HepParticleResonanceFull{\rho}{}{}{1450}{}{}} hepnames
+\def\Pgrb{\HepParticleResonanceFull{\rho}{}{}{1700}{}{}} hepnames
+\def\Pgriii{\HepParticleResonanceFull{\rho}{3}{}{1690}{}{}} hepnames
+
+## Psi resonances
+\def\PJgy{\HepParticle{J\mspace{-2mu}/\mspace{-2mu}\psi}{}{}} hepnames
+\def\PJgyi{\HepParticleResonance{\PJgy}{1S}{}{}} hepnames
+\def\Pgy{\HepParticle{\psi}{}{}} hepnames
+\def\Pgyii{\HepParticleResonance{\Pgy}{2S}{}{}} hepnames
+\def\Pgya{\HepParticleResonance{\Pgy}{3770}{}{}} hepnames
+\def\Pgyb{\HepParticleResonance{\Pgy}{4040}{}{}} hepnames
+\def\Pgyc{\HepParticleResonance{\Pgy}{4160}{}{}} hepnames
+\def\Pgyd{\HepParticleResonance{\Pgy}{4415}{}{}} hepnames
+
+## Charmed mesons
+\def\PD{\HepParticle{D}{}{}} hepnames
+\def\PDpm{\HepParticle{D}{}{\pm}} hepnames
+\def\PDmp{\HepParticle{D}{}{\mp}} hepnames
+\def\PDz{\HepParticle{D}{}{0}} hepnames
+\def\PDm{\HepParticle{D}{}{-}} hepnames
+\def\PDp{\HepParticle{D}{}{+}} hepnames
+\def\PDst{\HepParticle{D}{}{\ast}} hepnames
+\def\PaD{\HepAntiParticle{D}{}{}} hepnames
+\def\PaDz{\HepAntiParticle{D}{}{0}} hepnames
+\def\PsD{\HepParticle{D}{s}{}} hepnames
+\def\PsDm{\HepParticle{D}{\,s}{-}} hepnames
+\def\PsDp{\HepParticle{D}{\,s}{+}} hepnames
+\def\PsDpm{\HepParticle{D}{\,s}{\pm}} hepnames
+\def\PsDmp{\HepParticle{D}{\,s}{\mp}} hepnames
+\def\PsDst{\HepParticle{D}{s}{\ast}} hepnames
+\def\PsDipm{\HepParticleResonanceFull{D}{s1}{}{2536}{}{\pm}} hepnames
+\def\PsDimp{\HepParticleResonanceFull{D}{s1}{}{2536}{}{\mp}} hepnames
+\def\PDiz{\HepParticleResonanceFull{D}{1}{}{2420}{}{0}} hepnames
+\def\PDstiiz{\HepParticleResonanceFull{D}{2}{\ast}{2460}{}{0}} hepnames
+\def\PDstpm{\HepParticleResonanceFull{D}{}{\ast}{2010}{}{\pm}} hepnames
+\def\PDstmp{\HepParticleResonanceFull{D}{}{\ast}{2010}{}{\mp}} hepnames
+\def\PDstz{\HepParticleResonanceFull{D}{}{\ast}{2010}{}{0}} hepnames
+
+## Random things
+\def\PEz{\HepParticle{E}{}{0}} hepnames
+\def\PLpm{\HepParticle{L}{}{\mspace{-1mu}\pm}} hepnames
+\def\PLmp{\HepParticle{L}{}{\mspace{-1mu}\mp}} hepnames
+\def\PLz{\HepParticle{L}{}{\mspace{-1mu}0}} hepnames
+\def\Paii{\HepParticleResonanceFull{a}{2}{}{1320}{}{}} hepnames
+\def\Pai{\HepParticleResonanceFull{a}{1}{}{1260}{}{}} hepnames
+\def\Paz{\HepParticleResonanceFull{a}{0}{}{980}{}{}} hepnames
+\def\Pbgcia{\HepParticleResonanceFull{\chi}{b1}{}{2P}{}{}} hepnames
+\def\Pbgciia{\HepParticleResonanceFull{\chi}{b2}{}{2P}{}{}} hepnames
+\def\Pbgcii{\HepParticleResonanceFull{\chi}{b2}{}{1P}{}{}} hepnames
+\def\Pbgci{\HepParticleResonanceFull{\chi}{b1}{}{1P}{}{}} hepnames
+\def\Pbgcza{\HepParticleResonanceFull{\chi}{b0}{}{2P}{}{}} hepnames
+\def\Pbgcz{\HepParticleResonanceFull{\chi}{b0}{}{1P}{}{}} hepnames
+\def\Pbi{\HepParticleResonanceFull{b}{1}{}{1235}{}{}} hepnames
+\def\Phia{\HepParticleResonanceFull{h}{1}{}{1170}{}{}} hepnames
+
+## SUSY particles
+\def\PSH{\HepSusyParticle{H}{}{}} hepnames
+\def\PSHp{\HepSusyParticle{H}{}{+}} hepnames
+\def\PSHm{\HepSusyParticle{H}{}{-}} hepnames
+\def\PSHpm{\HepSusyParticle{H}{}{\pm}} hepnames
+\def\PSHmp{\HepSusyParticle{H}{}{\mp}} hepnames
+\def\PSHz{\HepSusyParticle{H}{}{0}} hepnames
+\def\PSW{\HepSusyParticle{W}{}{}} hepnames
+\def\PSWp{\HepSusyParticle{W}{}{+}} hepnames
+\def\PSWm{\HepSusyParticle{W}{}{-}} hepnames
+\def\PSWpm{\HepSusyParticle{W}{}{\pm}} hepnames
+\def\PSWmp{\HepSusyParticle{W}{}{\mp}} hepnames
+\def\PSZ{\HepSusyParticle{Z}{}{}} hepnames
+\def\PSZz{\HepSusyParticle{Z}{}{0}} hepnames
+\def\PSB{\HepSusyParticle{B}{}{}} hepnames
+\def\PSe{\HepSusyParticle{e}{}{}} hepnames
+\def\PSgg{\HepSusyParticle{\gamma}{}{}} hepnames
+\def\PSgm{\HepSusyParticle{\mu}{}{}} hepnames
+\def\PSgn{\HepSusyParticle{\nu}{}{}} hepnames
+\def\PSgt{\HepSusyParticle{\tau}{}{}} hepnames
+\def\PSgx{\HepSusyParticle{\chi}{}{}} hepnames
+\def\PSgxpm{\HepSusyParticle{\chi}{}{\pm}} hepnames
+\def\PSgxmp{\HepSusyParticle{\chi}{}{\mp}} hepnames
+\def\PSgxz{\HepSusyParticle{\chi}{}{0}} hepnames
+\def\PSgxzi{\HepSusyParticle{\chi}{1}{0}} hepnames
+\def\PSgxzii{\HepSusyParticle{\chi}{2}{0}} hepnames
+\def\PSg{\HepSusyParticle{g}{}{}} hepnames
+\def\PSl{\HepGenSusyParticle{\ell}{}{}} hepnames
+\def\PaSl{\HepGenSusyAntiParticle{\ell}{}{}} hepnames
+\def\PSq{\HepGenSusyParticle{q}{}{}} hepnames
+\def\PaSq{\HepGenSusyAntiParticle{q}{}{}} hepnames
+\def\PSqd{\HepSusyParticle{d}{}{}} hepnames
+\def\PSqu{\HepSusyParticle{u}{}{}} hepnames
+\def\PSqs{\HepSusyParticle{s}{}{}} hepnames
+\def\PSqc{\HepSusyParticle{c}{}{}} hepnames
+\def\PSqb{\HepSusyParticle{b}{}{}} hepnames
+\def\PSqt{\HepSusyParticle{t}{}{}} hepnames
+\def\PaSqd{\HepSusyAntiParticle{d}{}{}} hepnames
+\def\PaSqu{\HepSusyAntiParticle{u}{}{}} hepnames
+\def\PaSqs{\HepSusyAntiParticle{s}{}{}} hepnames
+\def\PaSqc{\HepSusyAntiParticle{c}{}{}} hepnames
+\def\PaSqb{\HepSusyAntiParticle{b}{}{}} hepnames
+\def\PaSqt{\HepSusyAntiParticle{t}{}{}} hepnames
+
+
+#
+# Particle nice names. The code below is extracted from the hepnames
+# package by Andy Buckley.
+#    https://www.ctan.org/pkg/hepnames
+# It has been simplified and is only intended for display purposes inside LyX.
+
+## B mesons
+\def\PBplus{\PBp} hepnames
+\def\PBminus{\PBm} hepnames
+\def\PBzero{\PBz} hepnames
+\def\PBstar{\PBst} hepnames
+\def\PBd{\PdB} hepnames
+\def\PBu{\PuB} hepnames
+\def\PBc{\PcB} hepnames
+\def\PBs{\PsB} hepnames
+\def\APB{\PaB} hepnames
+\def\APBzero{\PaBz} hepnames
+\def\APBd{\PadB} hepnames
+\def\APBu{\PauB} hepnames
+\def\APBc{\PacB} hepnames
+\def\APBs{\PasB} hepnames
+
+## Kaons
+\def\PKplus{\PKp} hepnames
+\def\PKminus{\PKm} hepnames
+\def\PKzero{\PKz} hepnames
+\def\PKshort{\PKzS} hepnames
+\def\PKs{\PKzS} hepnames
+\def\PKlong{\PKzL} hepnames
+\def\PKl{\PKzL} hepnames
+\def\PKstar{\PKst} hepnames
+\def\APK{\PaKz} hepnames
+\def\APKzero{\PaKz} hepnames
+
+## Bosons
+\def\Pphoton{\Pgg} hepnames
+\def\Pgamma{\Pgg} hepnames
+\def\Pphotonx{\Pggx} hepnames
+\def\Pgammastar{\Pggx} hepnames
+\def\Pgluon{\Pg} hepnames
+\def\PWplus{\PWp} hepnames
+\def\PWminus{\PWm} hepnames
+\def\PWprime{\PWpr} hepnames
+\def\PZzero{\PZz} hepnames
+\def\PZprime{\PZpr} hepnames
+\def\Paxion{\PAz} hepnames
+
+## Generic fermions
+\def\Pfermion{\Pf} hepnames
+\def\Pfermionpm{\Pfpm} hepnames
+\def\Pfermionmp{\Pfmp} hepnames
+\def\Pfermionplus{\Pfp} hepnames
+\def\Pfermionminus{\Pfm} hepnames
+\def\APfermion{\Paf} hepnames
+
+## Leptons
+\def\Plepton{\Pl} hepnames
+\def\Pleptonpm{\Plpm} hepnames
+\def\Pleptonmp{\Plmp} hepnames
+\def\Pleptonplus{\Plp} hepnames
+\def\Pleptonminus{\Plm} hepnames
+\def\APlepton{\Pal} hepnames
+\def\Pnu{\Pgn} hepnames
+\def\APnu{\Pagn} hepnames
+\def\Pneutrino{\Pgn} hepnames
+\def\APneutrino{\Pagn} hepnames
+\def\Pnulepton{\Pgnl} hepnames
+\def\APnulepton{\Pagnl} hepnames
+\def\Pelectron{\Pem} hepnames
+\def\APelectron{\Pep} hepnames
+\def\Ppositron{\Pep} hepnames
+\def\APpositron{\Pep} hepnames
+\def\Pmu{\Pgm} hepnames
+\def\Pmupm{\Pgmpm} hepnames
+\def\Pmump{\Pgmmp} hepnames
+\def\Pmuon{\Pgmm} hepnames
+\def\APmuon{\Pgmp} hepnames
+\def\Ptau{\Pgt} hepnames
+\def\Ptaupm{\Pgtpm} hepnames
+\def\Ptaump{\Pgtmp} hepnames
+\def\Ptauon{\Pgtm} hepnames
+\def\APtauon{\Pgtp} hepnames
+\def\Pnue{\Pgne} hepnames
+\def\Pnum{\Pgngm} hepnames
+\def\Pnut{\Pgngt} hepnames
+\def\APnue{\Pagne} hepnames
+\def\APnum{\Pagngm} hepnames
+\def\APnut{\Pagngt} hepnames
+
+## Quarks
+\def\Pquark{\Pq} hepnames
+\def\APquark{\Paq} hepnames
+\def\Pdown{\Pqd} hepnames
+\def\Pup{\Pqu} hepnames
+\def\Pstrange{\Pqs} hepnames
+\def\Pcharm{\Pqc} hepnames
+\def\Pbottom{\Pqb} hepnames
+\def\Pbeauty{\Pqb} hepnames
+\def\Ptop{\Pqt} hepnames
+\def\Ptruth{\Pqt} hepnames
+\def\APdown{\Paqd} hepnames
+\def\APqd{\Paqd} hepnames
+\def\APup{\Paqu} hepnames
+\def\APqu{\Paqu} hepnames
+\def\APstrange{\Paqs} hepnames
+\def\APqs{\Paqs} hepnames
+\def\APcharm{\Paqc} hepnames
+\def\APqc{\Paqc} hepnames
+\def\APbottom{\Paqb} hepnames
+\def\APbeauty{\Paqb} hepnames
+\def\APqb{\Paqb} hepnames
+\def\APtop{\Paqt} hepnames
+\def\APtruth{\Paqt} hepnames
+\def\APqt{\Paqt} hepnames
+
+## Nucleons
+\def\Pproton{\Pp} hepnames
+\def\Pneutron{\Pn} hepnames
+\def\APproton{\Pap} hepnames
+\def\APneutron{\Pan} hepnames
+
+## Chi_c mesons
+\def\Pchic{\Pcgc} hepnames
+
+## Delta baryons
+\def\PDelta{\PgD} hepnames
+
+## Lambda baryons
+\def\PLambda{\PgL} hepnames
+\def\APLambda{\PagL} hepnames
+\def\PLambdac{\PcgLp} hepnames
+\def\PLambdab{\PbgL} hepnames
+
+## Omega
+\def\POmega{\PgO} hepnames
+\def\POmegapm{\PgOpm} hepnames
+\def\POmegamp{\PgOmp} hepnames
+\def\POmegaplus{\PgOp} hepnames
+\def\POmegaminus{\PgOm} hepnames
+\def\APOmega{\PagO} hepnames
+\def\APOmegaplus{\PagOp} hepnames
+\def\APOmegaminus{\PagOm} hepnames
+
+## Sigma baryons
+\def\PSigma{\PgS} hepnames
+\def\PSigmapm{\PgSpm} hepnames
+\def\PSigmamp{\PgSmp} hepnames
+\def\PSigmaminus{\PgSm} hepnames
+\def\PSigmaplus{\PgSp} hepnames
+\def\PSigmazero{\PgSz} hepnames
+\def\PSigmac{\PcgS} hepnames
+\def\APSigmaminus{\PagSm} hepnames
+\def\APSigmaplus{\PagSp} hepnames
+\def\APSigmazero{\PagSz} hepnames
+\def\APSigmac{\PacgS} hepnames
+
+## Upsilon
+\def\PUpsilon{\PgU} hepnames
+\def\PUpsilonOneS{\PgUi} hepnames
+\def\PUpsilonTwoS{\PgUa} hepnames
+\def\PUpsilonThreeS{\PgUb} hepnames
+\def\PUpsilonFourS{\PgUc} hepnames
+
+## Xi
+\def\PXi{\PgX} hepnames
+\def\PXiplus{\PgXp} hepnames
+\def\PXiminus{\PgXm} hepnames
+\def\PXizero{\PgXz} hepnames
+\def\APXiplus{\PagXp} hepnames
+\def\APXiminus{\PagXm} hepnames
+\def\APXizero{\PagXz} hepnames
+\def\PXicplus{\PcgXp} hepnames
+\def\PXiczero{\PcgXz} hepnames
+## others?
+
+## Strange mesons
+\def\Pphi{\Pgf} hepnames
+
+## Eta mesons
+\def\Peta{\Pgh} hepnames
+\def\Petaprime{\Pghpr} hepnames
+\def\Petac{\Pcgh} hepnames
+
+## omega mesons
+\def\Pomega{\Pgo} hepnames
+
+## Pions
+\def\Ppi{\Pgp} hepnames
+\def\Ppipm{\Pgppm} hepnames
+\def\Ppimp{\Pgpmp} hepnames
+\def\Ppiplus{\Pgpp} hepnames
+\def\Ppiminus{\Pgpm} hepnames
+\def\Ppizero{\Pgpz} hepnames
+
+## Rho mesons
+\def\Prho{\Pgr} hepnames
+\def\Prhoplus{\Pgrp} hepnames
+\def\Prhominus{\Pgrm} hepnames
+\def\Prhopm{\Pgrpm} hepnames
+\def\Prhomp{\Pgrmp} hepnames
+\def\Prhozero{\Pgrz} hepnames
+
+## Psi resonances
+\def\PJpsi{\PJgy} hepnames
+\def\PJpsiOneS{\PJgyi} hepnames
+\def\Ppsi{\Pgy} hepnames
+\def\PpsiTwoS{\Pgyii} hepnames
+
+## Charmed mesons
+\def\PDzero{\PDz} hepnames
+\def\PDminus{\PDm} hepnames
+\def\PDplus{\PDp} hepnames
+\def\PDstar{\PDst} hepnames
+\def\APD{\PaD} hepnames
+\def\APDzero{\PaDz} hepnames
+\def\PDs{\PsD} hepnames
+\def\PDsminus{\PsDm} hepnames
+\def\PDsplus{\PsDp} hepnames
+\def\PDspm{\PsDpm} hepnames
+\def\PDsmp{\PsDmp} hepnames
+\def\PDsstar{\PsDst} hepnames
+
+## Higgses (including SUSY sector Higgses)
+\def\PHiggs{\PH} hepnames
+\def\PHiggsheavy{\PH} hepnames
+\def\PHiggslight{\Ph} hepnames
+\def\PHiggsheavyzero{\PHz} hepnames
+\def\PHiggslightzero{\Phz} hepnames
+\def\PHiggsps{\PA} hepnames
+\def\PHiggspszero{\PAz} hepnames
+\def\PHiggsplus{\PHp} hepnames
+\def\PHiggsminus{\PHm} hepnames
+\def\PHiggspm{\PHpm} hepnames
+\def\PHiggsmp{\PHmp} hepnames
+\def\PHiggszero{\PHz} hepnames
+
+## SUSY partners
+\def\PSHiggs{\PSH} hepnames
+\def\PSHiggsino{\PSH} hepnames
+\def\PSHiggsplus{\PSHp} hepnames
+\def\PSHiggsinoplus{\PSHp} hepnames
+\def\PSHiggsminus{\PSHm} hepnames
+\def\PSHiggsinominus{\PSHm} hepnames
+\def\PSHiggspm{\PSHpm} hepnames
+\def\PSHiggsinopm{\PSHpm} hepnames
+\def\PSHiggsmp{\PSHmp} hepnames
+\def\PSHiggsinomp{\PSHmp} hepnames
+\def\PSHiggszero{\PSHz} hepnames
+\def\PSHiggsinozero{\PSHz} hepnames
+\def\PSBino{\PSB} hepnames
+\def\PSWplus{\PSWp} hepnames
+\def\PSWminus{\PSWm} hepnames
+\def\PSWino{\PSW} hepnames
+\def\PSWinopm{\PSWpm} hepnames
+\def\PSWinomp{\PSWmp} hepnames
+\def\PSZzero{\PSZz} hepnames
+\def\PSphoton{\PSgg} hepnames
+\def\PSphotino{\PSgg} hepnames
+\def\Pphotino{\PSgg} hepnames
+\def\PSmu{\PSgm} hepnames
+\def\PSnu{\PSgn} hepnames
+\def\PStau{\PSgt} hepnames
+\def\PSino{\PSgx} hepnames
+\def\PSgaugino{\PSino} hepnames
+\def\PScharginopm{\PSgxpm} hepnames
+\def\PScharginomp{\PSgxmp} hepnames
+\def\PSneutralino{\PSgxz} hepnames
+\def\PSneutralinoOne{\PSgxzi} hepnames
+\def\PSneutralinoTwo{\PSgxzii} hepnames
+\def\PSgluino{\PSg} hepnames
+\def\PSlepton{\PSl} hepnames
+\def\PSslepton{\PSl} hepnames
+\def\Pslepton{\PSl} hepnames
+\def\APSlepton{\PaSl} hepnames
+\def\APslepton{\PaSl} hepnames
+
+## Squarks
+\def\Psquark{\PSq} hepnames
+\def\APSq{\PaSq} hepnames
+\def\APsquark{\PaSq} hepnames
+\def\PSdown{\PSqd} hepnames
+\def\PSup{\PSqu} hepnames
+\def\PSstrange{\PSqs} hepnames
+\def\PScharm{\PSqc} hepnames
+\def\PSbottom{\PSqb} hepnames
+\def\PStop{\PSqt} hepnames
+\def\PASdown{\PaSqd} hepnames
+\def\PASup{\PaSqu} hepnames
+\def\PASstrange{\PaSqs} hepnames
+\def\PAScharm{\PaSqc} hepnames
+\def\PASbottom{\PaSqb} hepnames
+\def\PAStop{\PaSqt} hepnames
+
+## Even less formal names
+\def\eplus{\Pep} hepnames
+\def\eminus{\Pem} hepnames
+
