@@ -1903,10 +1903,16 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 			return true;
 		}
 		if (currentMode() == InsetMath::MATH_MODE && Encodings::isUnicodeTextOnly(c)) {
-			MathAtom at = createInsetMath("text", buf);
-			at.nucleus()->cell(0).push_back(MathAtom(new InsetMathChar(c)));
-			cur.insert(at);
-			cur.posForward();
+			MathAtom const atom(new InsetMathChar(c));
+			if (cur.prevInset() && cur.prevInset()->asInsetMath()->name() == "text") {
+				// reuse existing \text inset
+				cur.prevInset()->asInsetMath()->cell(0).push_back(atom);
+			} else {
+				MathAtom at = createInsetMath("text", buf);
+				at.nucleus()->cell(0).push_back(atom);
+				cur.insert(at);
+				cur.posForward();
+			}
 			return true;
 		}
 	} else {
