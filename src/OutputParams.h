@@ -139,7 +139,26 @@ public:
 	mutable int inulemcmd = 0;
 
 	/** the font at the point where the inset is
-	 */
+	 *
+	 * Note from lasgouttes: I have doubts on the semantics of this
+	 * variable. Until this is sorted out, here are some notes on the
+	 * history of local_font.
+	 *
+	 * A research that excludes test and assignment [*] shows that
+	 * this is only used to remember language, which is a different
+	 * story (and not changed by this patch). The only exception being
+	 * in InsetMathHull::getCtObject and InsetMathNest::latex to
+	 * support change tracking in insets, but I am not 100% sure that
+	 * this is required. And historically [**] local_font used to be
+	 * local_lang; it may be good to return to this simpler variable
+	 * later.
+	 *
+	 *  [*] git grep local_font src|grep -v 'local_font [!=]*='
+	 *
+	 * [**] before afed118a, which improved support for InsetLine;
+	 * however, since 0e7ab29f, InsetLine does not depend on the
+	 * current font anymore.
+	*/
 	Font const * local_font = nullptr;
 
 	/** Document language lyx name

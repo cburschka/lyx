@@ -560,9 +560,9 @@ docstring const lyxgreyedoutDef(bool const rtl, bool const ct, bool const lua, b
 			ods << "  \\if@rl%\n";
 		ods << "    \\everypar{%\n";
 		if (lua)
-			ods << "      \\pardir TRT \\textdir TRT\\textcolor{note_fontcolor}\\ignorespaces%\n";
+			ods << "      \\pardir TRT \\textdir TRT\\normalfont\\normalsize\\textcolor{note_fontcolor}\\ignorespaces%\n";
 		else
-			ods << "      \\textcolor{note_fontcolor}\\beginL\\ignorespaces%\n";
+			ods << "      \\normalfont\\normalsize\\textcolor{note_fontcolor}\\beginL\\ignorespaces%\n";
 		ods << "    }%\n";
 		if (ct)
 			ods << "    \\colorlet{lyxadded}{lyxadded!30}\\colorlet{lyxdeleted}{lyxdeleted!30}%\n";
@@ -573,7 +573,7 @@ docstring const lyxgreyedoutDef(bool const rtl, bool const ct, bool const lua, b
 		ods << "  \\else%\n";
 		if (ct)
 			ods << "    \\colorlet{lyxadded}{lyxadded!30}\\colorlet{lyxdeleted}{lyxdeleted!30}%\n";
-		ods << "    \\textcolor{note_fontcolor}\\bgroup\\ignorespaces%\n"
+		ods << "    \\normalfont\\normalsize\\textcolor{note_fontcolor}\\bgroup\\ignorespaces%\n"
 		    << "    \\BODY\\ignorespacesafterend\\egroup%\n"
 		    << "  \\fi%\n"
 		    << "}\n";
@@ -583,7 +583,7 @@ docstring const lyxgreyedoutDef(bool const rtl, bool const ct, bool const lua, b
 		    << "{";
 		if (ct)
 			ods << "\\colorlet{lyxadded}{lyxadded!30}\\colorlet{lyxdeleted}{lyxdeleted!30}%\n ";
-		ods << "\\textcolor{note_fontcolor}\\bgroup\\ignorespaces}\n"
+		ods << "\\normalfont\\normalsize\\textcolor{note_fontcolor}\\bgroup\\ignorespaces}\n"
 		    << "{\\ignorespacesafterend\\egroup}\n";
 	}
 

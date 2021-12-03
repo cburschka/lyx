@@ -2539,10 +2539,9 @@ void Paragraph::latex(BufferParams const & bparams,
 	pos_type body_pos = beginOfBody();
 	unsigned int column = 0;
 
-	// If we are inside an non inheritFont() inset, the real outerfont is local_font
-	Font const real_outerfont = (!inInset().inheritFont()
-				     && runparams.local_font != nullptr)
-			? Font(runparams.local_font->fontInfo()) : outerfont;
+	// If we are inside an non inheritFont() inset, the outerfont is the default font
+	Font const real_outerfont =
+		inInset().inheritFont() ? outerfont : Font(bparams.documentClass().defaultfont());
 
 	if (body_pos > 0) {
 		// the optional argument is kept in curly brackets in

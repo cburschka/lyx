@@ -180,6 +180,7 @@ InsetLayout Note:Greyedout
 	Requires	      color,lyxgreyedout
 	BgColor               greyedoutbg
 	Font
+	  Size                Normal
 	  Color               greyedouttext
 	EndFont
 	LabelFont
