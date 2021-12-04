@@ -47,6 +47,8 @@ public:
 	///
 	void clear();
 	///
+	bool empty() { return toc_->empty(); }
+	///
 	QAbstractItemModel * model();
 	///
 	QAbstractItemModel const * model() const;

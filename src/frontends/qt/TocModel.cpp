@@ -327,6 +327,11 @@ TocItem const TocModels::currentItem(QString const & type,
 	}
 	LASSERT(index.model() == it.value()->model(), return TocItem());
 
+	if (it.value()->empty()) {
+		LYXERR(Debug::GUI, "TocModels::currentItem(): requested toc is empty!");
+		return TocItem();
+	}
+
 	return it.value()->tocItem(index);
 }
 
