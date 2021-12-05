@@ -686,6 +686,9 @@ AC_DEFUN([LYX_CHECK_MACOS_DEPLOYMENT_TARGET],[
   if test "${macos_deployment_target}" = "auto" ; then
     macos_deployment_target="10.10"
     case "$QTLIB_VERSION" in
+    5.12.*)
+      macos_deployment_target="10.12"
+      ;;
     6.*)
       macos_deployment_target="10.14"
       ;;
