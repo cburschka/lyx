@@ -2537,22 +2537,26 @@ void InsetMathHull::htmlize(HtmlStream & os) const
 // and we simply do not have that in InsetMathGrid.
 void InsetMathHull::mathmlize(MathMLStream & ms) const
 {
-	bool const havenumbers = haveNumbers();
-	bool const havetable = havenumbers || nrows() > 1 || ncols() > 1;
+	bool const havetable = haveNumbers() || nrows() > 1 || ncols() > 1;
 
     if (havetable) {
-        if (getType() == hullSimple)
-            ms << MTag("mtable");
-        else if (getType() >= hullAlign && getType() <= hullXXAlignAt)
-            ms << MTag("mtable", "displaystyle='true' columnalign='right left'");
-        else
-            ms << MTag("mtable", "displaystyle='true'");
+        if (getType() == hullSimple) {
+	        ms << MTag("mtable");
+        } else if (getType() >= hullAlign && getType() <= hullXXAlignAt) {
+            string alignment;
+            for (col_type col = 0; col < ncols(); ++col) {
+                alignment += (col % 2) ? "left " : "right ";
+            }
+            ms << MTag("mtable", "displaystyle='true' columnalign='" + alignment + "'");
+	    } else {
+	        ms << MTag("mtable", "displaystyle='true'");
+        }
     }
 
 	char const * const celltag = havetable ? "mtd" : "mrow";
 	// FIXME There does not seem to be wide support at the moment
 	// for mlabeledtr, so we have to use just mtr for now.
-	// char const * const rowtag = havenumbers ? "mlabeledtr" : "mtr";
+	// char const * const rowtag = haveNumbers() ? "mlabeledtr" : "mtr";
 	char const * const rowtag = "mtr";
 	for (row_type row = 0; row < nrows(); ++row) {
 		if (havetable)
@@ -2563,12 +2567,12 @@ void InsetMathHull::mathmlize(MathMLStream & ms) const
 			   << ETag(celltag);
 		}
 		// fleqn?
-		if (havenumbers) {
+		if (haveNumbers()) {
 			ms << MTag("mtd");
 			docstring const & num = numbers_[row];
 			if (!num.empty())
 				ms << MTagInline("mtext") << '(' << num << ')' << ETagInline("mtext");
-		  ms << ETag("mtd");
+		    ms << ETag("mtd");
 		}
 		if (havetable)
 			ms << ETag(rowtag);
