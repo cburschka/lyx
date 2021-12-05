@@ -170,6 +170,10 @@ InsetLayout Flex:Sidenote
 	  Color			marginlabel
 	  Size			Small
 	EndFont
+    DocBookTag      footnote
+    DocBookAttr     role='sidenote'
+	DocBookItemTag  para
+    DocBookTagType  inline
 	ResetsFont		true
 End
 
@@ -183,6 +187,7 @@ InsetLayout Flex:Marginnote
 	  Shape			Up
 	  Series		Medium
 	EndFont
+    DocBookAttr     role='marginnote'
 	MultiPar		true
 End
 
@@ -201,6 +206,7 @@ InsetLayout Flex:NewThought
 	ResetsFont		true
 	DocBookTag      emphasis
 	DocBookAttr     role='newthought'
+    DocBookTagType  inline
 End
 
 InsetLayout Flex:AllCaps
