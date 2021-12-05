@@ -361,8 +361,8 @@ MathMLStream & operator<<(MathMLStream & ms, char_type c)
 
 MathMLStream & operator<<(MathMLStream & ms, MTag const & t)
 {
-	++ms.tab();
 	ms.cr();
+	++ms.tab();
 	ms.os() << '<' << from_ascii(ms.namespacedTag(t.tag_));
 	if (!t.attr_.empty())
 		ms.os() << " " << from_ascii(t.attr_);
@@ -384,9 +384,9 @@ MathMLStream & operator<<(MathMLStream & ms, MTagInline const & t)
 
 MathMLStream & operator<<(MathMLStream & ms, ETag const & t)
 {
-	ms.cr();
 	if (ms.tab() > 0)
 		--ms.tab();
+	ms.cr();
 	ms.os() << "</" << from_ascii(ms.namespacedTag(t.tag_)) << ">";
 	return ms;
 }
