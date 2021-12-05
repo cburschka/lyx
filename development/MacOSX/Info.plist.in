@@ -41,6 +41,8 @@
 	<string>YES</string>
 	<key>OSAScriptingDefinition</key>
 	<string>LyX.sdef</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>@macos_deployment_target@</string>
 	<key>NSHighResolutionCapable</key>
 	<true/>
 	<key>NSPrincipalClass</key>

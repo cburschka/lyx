@@ -674,6 +674,31 @@ AC_DEFUN([LYX_USE_INCLUDED_MYTHES],[
 ])
 
 
+dnl Usage: LYX_CHECK_MACOS_DEPLOYMENT_TARGET : select the macos deployment target
+dnl                       [default-auto-value])
+dnl  Assign the macosx-version-min value for compiler, linker and Info.plist.
+dnl  Default is dynamic - depends on used Qt library version.
+AC_DEFUN([LYX_CHECK_MACOS_DEPLOYMENT_TARGET],[
+  AC_ARG_WITH(macos-deployment-target,
+    [AS_HELP_STRING([--with-macos-deployment-target], [force the macos deployment target for LyX])],
+    [macos_deployment_target=$withval],
+    [macos_deployment_target=auto])
+  if test "${macos_deployment_target}" = "auto" ; then
+    macos_deployment_target="10.10"
+    case "$QTLIB_VERSION" in
+    6.*)
+      macos_deployment_target="10.14"
+      ;;
+    esac
+  fi
+  AM_CXXFLAGS="-mmacosx-version-min=$macos_deployment_target $AM_CXXFLAGS"
+  AM_LDFLAGS="-mmacosx-version-min=$macos_deployment_target $AM_LDFLAGS"
+  AC_SUBST(macos_deployment_target,"${macos_deployment_target}")
+  AC_MSG_CHECKING([the macos deployment target for LyX])
+  AC_MSG_RESULT([$macos_deployment_target])
+])
+
+
 dnl Usage: LYX_WITH_DIR(dir-name,desc,dir-var-name,default-value,
 dnl                       [default-yes-value])
 dnl  Adds a --with-'dir-name' option (described by 'desc') and puts the

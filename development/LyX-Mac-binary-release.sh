@@ -146,7 +146,6 @@ usage() {
 	echo " --aspell-deployment=yes|no ." default yes
 	echo " --with-qt-frameworks=yes|no." default no
 	echo " --qt-deployment=yes|no ....." default yes
-	echo " --with-macosx-target=TARGET " default 10.4 "(Tiger)"
 	echo " --with-sdkroot=SDKROOT ....." default 10.5 "(Leopard)"
 	echo " --with-arch=ARCH ..........." default ppc,i386
 	echo " --with-build-path=PATH ....." default \${lyx-src-dir}/../lyx-build
@@ -190,8 +189,9 @@ while [ $# -gt 0 ]; do
 		QTDIR=$(echo ${1}|cut -d= -f2)
 		shift
 		;;
-	--with-macosx-target=*)
+	--with-macos-deployment-target=*)
 		MACOSX_DEPLOYMENT_TARGET=$(echo ${1}|cut -d= -f2)
+		LyXConfigureOptions="${LyXConfigureOptions} ${1}"
 		shift
 		;;
 	--with-sdkroot=*)
@@ -690,8 +690,8 @@ build_lyx() {
 		if [ -d "${LyxBuildDir}" ];  then rm -r "${LyxBuildDir}"; fi
 		mkdir -p "${LyxBuildDir}" && cd "${LyxBuildDir}"
 
-		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"
-		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYLDFLAGS}"
+		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch}"
+		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch}"
 
 		if [ "$configure_qt_frameworks" = "yes" ]; then
 			export QT_CORE_CFLAGS="-FQtCore"
