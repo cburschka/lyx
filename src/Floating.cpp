@@ -57,11 +57,11 @@ Floating::Floating(string const & type, string const & placement,
 		// If some type is predetermined in the layout, use it.
 		if (!docbookFloatType.empty() && allowedFloatTypes.find(docbookFloatType) != allowedFloatTypes.end())
 			docbook_float_type_ = docbookFloatType;
-		// Otherwise, try to guess the type.
-		else if (floattype_ == "figure" || floattype_ == "graph" ||
-		    floattype_ == "chart" || floattype_ == "scheme") {
+		// Otherwise, try to guess the DocBook type based on the float type.
+		else if (floattype_ == "figure" || floattype_ == "graph" || floattype_ == "chart" || floattype_ == "scheme" ||
+				floattype_ == "marginfigure") {
 			docbook_float_type_ = "figure";
-		} else if (floattype_ == "table" || floattype_ == "tableau") {
+		} else if (floattype_ == "table" || floattype_ == "tableau" || floattype_ == "margintable") {
 			docbook_float_type_ = "table";
 		} else if (floattype_ == "algorithm") {
 			docbook_float_type_ = "algorithm";
