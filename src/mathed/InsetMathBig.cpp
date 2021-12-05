@@ -137,7 +137,7 @@ void InsetMathBig::normalize(NormalStream & os) const
 
 void InsetMathBig::mathmlize(MathMLStream & ms) const
 {
-	ms << MTagInline("mo", "fence='true' stretchy='true' symmetric='true'>")
+	ms << MTagInline("mo", "fence='true' stretchy='true' symmetric='true'")
 	   << convertDelimToXMLEscape(delim_, ms.xmlMode())
 	   << ETagInline("mo");
 }
