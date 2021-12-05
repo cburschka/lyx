@@ -193,7 +193,9 @@ AC_CHECK_FUNCS(chmod close _close fork getpid _getpid lockf lstat mkfifo open _o
 AC_FUNC_MKDIR
 AC_FUNC_SELECT_ARGTYPES
 
-LYX_CHECK_MACOS_DEPLOYMENT_TARGET
+if test "$lyx_use_packaging" = "macosx" ; then
+  LYX_CHECK_MACOS_DEPLOYMENT_TARGET
+fi
 
 LYX_CHECK_SPELL_ENGINES
 LYX_USE_INCLUDED_MYTHES
