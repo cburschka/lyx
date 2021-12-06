@@ -47,7 +47,7 @@ LyXConfigureOptions="${LyXConfigureOptions} --disable-stdlib-debug"
 AspellConfigureOptions="--enable-warnings --enable-optimization=-O0 --enable-debug --disable-nls --enable-compile-in-filters --disable-pspell-compatibility"
 HunspellConfigureOptions="--with-warnings --disable-nls --disable-static"
 
-QtMajorVersion=qt4
+QtMajorVersion=$(echo "${QtVersion}"|cut -d. -f1)
 QtConfigureOptions="${QtConfigureOptions} -opensource -silent -shared -confirm-license"
 # stupid special case...
 case "${QtVersion}:${QtAPI}" in
@@ -63,7 +63,6 @@ case "${QtVersion}:${QtAPI}" in
 	QtConfigureOptions="${QtConfigureOptions} -fast -no-strip"
 	QtConfigureOptions="${QtConfigureOptions} -no-javascript-jit -no-pkg-config"
 	QtConfigureOptions="${QtConfigureOptions} -nomake examples -nomake demos -nomake docs -nomake tools"
-	QtMajorVersion=qt5
 	;;
 5.6*|5.7*)
 	QtConfigureOptions="${QtConfigureOptions} -no-strip"
@@ -73,7 +72,6 @@ case "${QtVersion}:${QtAPI}" in
 	QtConfigureOptions="${QtConfigureOptions} -skip qtquickcontrols"
 	QtConfigureOptions="${QtConfigureOptions} -skip qttools"
 	QtConfigureOptions="${QtConfigureOptions} -skip qtdeclarative"
-	QtMajorVersion=qt5
 	;;
 5.*)
 	QtConfigureOptions="${QtConfigureOptions} -no-strip"
@@ -82,7 +80,6 @@ case "${QtVersion}:${QtAPI}" in
 	for component in ${QtSkipComponents} ; do
 		QtConfigureOptions="${QtConfigureOptions} -skip ${component}"
 	done
-	QtMajorVersion=qt5
 	;;
 *)
 	QtConfigureOptions="${QtConfigureOptions} -fast -no-exceptions"
@@ -1055,7 +1052,7 @@ build_package() {
 	for arch in ${ARCH_LIST} ; do
 		DMGARCH="${DMGARCH}-${arch}"
 	done
-	QtDmgArchSuffix=${QtMajorVersion}${DMGARCH}${QtAPI}.dmg
+	QtDmgArchSuffix="qt"${QtMajorVersion}${DMGARCH}${QtAPI}.dmg
 
 	test -n "${DMGLocation}" && (
 		make_dmg "${DMGLocation}"
