@@ -694,7 +694,7 @@ AC_DEFUN([LYX_CHECK_MACOS_DEPLOYMENT_TARGET],[
       ;;
     esac
   fi
-  AM_CXXFLAGS="-mmacosx-version-min=$macos_deployment_target $AM_CXXFLAGS"
+  AM_CPPFLAGS="-mmacosx-version-min=$macos_deployment_target $AM_CPPFLAGS"
   AM_LDFLAGS="-mmacosx-version-min=$macos_deployment_target $AM_LDFLAGS"
   AC_SUBST(macos_deployment_target,"${macos_deployment_target}")
   AC_MSG_CHECKING([the macos deployment target for LyX])
