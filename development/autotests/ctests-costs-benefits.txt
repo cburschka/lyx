@@ -66,3 +66,8 @@ Examples where upstream (e.g., LaTeX packages) bugs were fixed (more quickly)
 because of ctests:
 
 Fix    : https://github.com/nrnrnr/noweb/pull/12#event-4892099481
+
+Report : (private message to Jürgen: Message-ID:<20211205192054.zbxij5butj3wdyvf@poole>)
+Fix    : some of the polyglossia commits in the range 1c36dcdc^...bf69288c
+Benefit: Not clear. The regressions were in the development version so they
+         could have easily been caught before release.
