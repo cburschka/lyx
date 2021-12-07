@@ -304,12 +304,8 @@ export/templates/Articles/Hebrew_Article_%28KOMA-Script%29_(dvi3|pdf5)_systemF
 # See comment in unreliableTests
 export/export/latex/languages/uk-babel-date-missing-chars-with-ascii_pdf5_texF
 
-# These fail for perhaps a similar reason, but contrary to the unicodesymbols
-# case the maintainer of the seminar package is not planning to fix the core
-# issue since the package is old. Putting the following as the first line of
-# the LaTeX file is a workaround: \RequirePackage[2020-02-02]{latexrelease}
-export/examples/(fr/|)Presentations/Seminar.*(dvi|pdf|lyx22|lyx23).*
-# These fail for a similar reason and the same workaround works.
+# Putting the following as the first line of the LaTeX file is a workaround:
+# \RequirePackage[2020-02-02]{latexrelease}
 export/templates/Articles/Journal_of_the_Acoustical_Society_of_America_%28JASA%29.*(dvi|pdf|lyx22|lyx23).*
 
 # The new jss.cls (version 3.1) seems to not work with an updated TL20 (for
