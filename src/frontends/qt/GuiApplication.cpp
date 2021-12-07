@@ -2788,7 +2788,7 @@ void GuiApplication::execBatchCommands()
 #if QT_VERSION > 0x040600
 	setAttribute(Qt::AA_MacDontSwapCtrlAndMeta,lyxrc.mac_dontswap_ctrl_meta);
 #endif
-#if QT_VERSION > 0x050100
+#if QT_VERSION >= 0x050000 && QT_VERSION < 0x060000
 	setAttribute(Qt::AA_UseHighDpiPixmaps,true);
 #endif
 	// Create the global default menubar which is shown for the dialogs
