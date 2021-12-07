@@ -35,7 +35,6 @@ using namespace std;
 
 namespace lyx {
 
-using support::rtrim;
 using frontend::FontMetrics;
 
 
@@ -130,45 +129,90 @@ pos_type Row::Element::x2pos(int &x) const
 }
 
 
-bool Row::Element::breakAt(int w, bool force)
+bool Row::Element::splitAt(int const width, int next_width, bool force,
+                           Row::Elements & tail)
 {
-	if (type != STRING || dim.wid <= w)
+	// Not a string or already OK.
+	if (type != STRING || (dim.wid > 0 && dim.wid < width))
 		return false;
 
 	FontMetrics const & fm = theFontMetrics(font);
-	int x = w;
-	if(fm.breakAt(str, x, isRTL(), force)) {
-		dim.wid = x;
-		endpos = pos + str.length();
-		//lyxerr << "breakAt(" << w << ")  Row element Broken at " << x << "(w(str)=" << fm.width(str) << "): e=" << *this << endl;
-		return true;
+
+	// A a string that is not breakable
+	if (!(row_flags & CanBreakInside)) {
+		// has width been computed yet?
+		if (dim.wid == 0)
+			dim.wid = fm.width(str);
+		return false;
 	}
 
-	return false;
+	bool const wrap_any = !font.language()->wordWrap();
+	FontMetrics::Breaks breaks = fm.breakString(str, width, next_width,
+                                                isRTL(), wrap_any | force);
+
+	// if breaking did not really work, give up
+	if (!force && breaks.front().wid > width) {
+		if (dim.wid == 0)
+			dim.wid = fm.width(str);
+		return false;
+	}
+
+	Element first_e(STRING, pos, font, change);
+	// should next element eventually replace *this?
+	bool first = true;
+	docstring::size_type i = 0;
+	for (FontMetrics::Break const & brk : breaks) {
+		Element e(STRING, pos + i, font, change);
+		e.str = str.substr(i, brk.len);
+		e.endpos = e.pos + brk.len;
+		e.dim.wid = brk.wid;
+		e.row_flags = CanBreakInside | BreakAfter;
+		if (first) {
+			// this element eventually goes to *this
+			e.row_flags |= row_flags & ~AfterFlags;
+			first_e = e;
+			first = false;
+		} else
+			tail.push_back(e);
+		i += brk.len;
+	}
+
+	if (!tail.empty()) {
+		// Avoid having a last empty element. This happens when
+		// breaking at the trailing space of string
+		if (tail.back().str.empty())
+			tail.pop_back();
+		else {
+			// Copy the after flags of the original element to the last one.
+			tail.back().row_flags &= ~BreakAfter;
+			tail.back().row_flags |= row_flags & AfterFlags;
+		}
+		// first_e row should be broken after the original element
+		first_e.row_flags |= BreakAfter;
+	} else {
+		// Restore the after flags of the original element.
+		first_e.row_flags &= ~BreakAfter;
+		first_e.row_flags |= row_flags & AfterFlags;
+	}
+
+	// update ourselves
+	swap(first_e, *this);
+	return true;
 }
 
 
-pos_type Row::Element::left_pos() const
+void Row::Element::rtrim()
 {
-	return isRTL() ? endpos : pos;
+	if (type != STRING)
+		return;
+	/* This is intended for strings that have been created by splitAt.
+	 * They may have trailing spaces, but they are not counted in the
+	 * string length (QTextLayout feature, actually). We remove them,
+	 * and decrease endpos, since spaces at row break are invisible.
+	 */
+	str = support::rtrim(str);
+	endpos = pos + str.length();
 }
-
-
-pos_type Row::Element::right_pos() const
-{
-	return isRTL() ? pos : endpos;
-}
-
-
-Row::Row()
-	: separator(0), label_hfill(0), left_margin(0), right_margin(0),
-	  sel_beg(-1), sel_end(-1),
-	  begin_margin_sel(false), end_margin_sel(false),
-	  changed_(true),
-	  pit_(0), pos_(0), end_(0),
-	  right_boundary_(false), flushed_(false), rtl_(false),
-	  changebar_(false)
-{}
 
 
 bool Row::isMarginSelected(bool left, DocIterator const & beg,
@@ -261,9 +305,19 @@ ostream & operator<<(ostream & os, Row::Element const & e)
 		break;
 	case Row::SPACE:
 		os << "SPACE: ";
-		break;
 	}
-	os << "width=" << e.full_width();
+	os << "width=" << e.full_width() << ", row_flags=" << e.row_flags;
+	return os;
+}
+
+
+ostream & operator<<(ostream & os, Row::Elements const & elts)
+{
+	double x = 0;
+	for (Row::Element const & e : elts) {
+		os << "x=" << x << " => " << e << endl;
+		x += e.full_width();
+	}
 	return os;
 }
 
@@ -279,11 +333,11 @@ ostream & operator<<(ostream & os, Row const & row)
 	   << " separator: " << row.separator
 	   << " label_hfill: " << row.label_hfill
 	   << " row_boundary: " << row.right_boundary() << "\n";
+	// We cannot use the operator above, unfortunately
 	double x = row.left_margin;
-	Row::Elements::const_iterator it = row.elements_.begin();
-	for ( ; it != row.elements_.end() ; ++it) {
-		os << "x=" << x << " => " << *it << endl;
-		x += it->full_width();
+	for (Row::Element const & e : row.elements_) {
+		os << "x=" << x << " => " << e << endl;
+		x += e.full_width();
 	}
 	return os;
 }
@@ -375,22 +429,17 @@ void Row::finalizeLast()
 	elt.final = true;
 	if (elt.change.changed())
 		changebar_ = true;
-
-	if (elt.type == STRING) {
-		dim_.wid -= elt.dim.wid;
-		elt.dim.wid = theFontMetrics(elt.font).width(elt.str);
-		dim_.wid += elt.dim.wid;
-	}
 }
 
 
 void Row::add(pos_type const pos, Inset const * ins, Dimension const & dim,
-	      Font const & f, Change const & ch)
+              Font const & f, Change const & ch)
 {
 	finalizeLast();
 	Element e(INSET, pos, f, ch);
 	e.inset = ins;
 	e.dim = dim;
+	e.row_flags = ins->rowFlags();
 	elements_.push_back(e);
 	dim_.wid += dim.wid;
 	changebar_ |= ins->isChanged();
@@ -398,23 +447,16 @@ void Row::add(pos_type const pos, Inset const * ins, Dimension const & dim,
 
 
 void Row::add(pos_type const pos, char_type const c,
-	      Font const & f, Change const & ch)
+              Font const & f, Change const & ch, bool can_break)
 {
 	if (!sameString(f, ch)) {
 		finalizeLast();
 		Element e(STRING, pos, f, ch);
+		e.row_flags = can_break ? CanBreakInside : Inline;
 		elements_.push_back(e);
 	}
-	if (back().str.length() % 30 == 0) {
-		dim_.wid -= back().dim.wid;
-		back().str += c;
-		back().endpos = pos + 1;
-		back().dim.wid = theFontMetrics(back().font).width(back().str);
-		dim_.wid += back().dim.wid;
-	} else {
-		back().str += c;
-		back().endpos = pos + 1;
-	}
+	back().str += c;
+	back().endpos = pos + 1;
 }
 
 
@@ -427,6 +469,10 @@ void Row::addVirtual(pos_type const pos, docstring const & s,
 	e.dim.wid = theFontMetrics(f).width(s);
 	dim_.wid += e.dim.wid;
 	e.endpos = pos;
+	// Copy after* flags from previous elements, forbid break before element
+	int const prev_row_flags = elements_.empty() ? Inline : elements_.back().row_flags;
+	int const can_inherit = AfterFlags & ~AlwaysBreakAfter;
+	e.row_flags = (prev_row_flags & can_inherit) | NoBreakBefore;
 	elements_.push_back(e);
 	finalizeLast();
 }
@@ -443,6 +489,13 @@ void Row::addSpace(pos_type const pos, int const width,
 }
 
 
+void Row::push_back(Row::Element const & e)
+{
+	dim_.wid += e.dim.wid;
+	elements_.push_back(e);
+}
+
+
 void Row::pop_back()
 {
 	dim_.wid -= elements_.back().dim.wid;
@@ -450,10 +503,28 @@ void Row::pop_back()
 }
 
 
-bool Row::shortenIfNeeded(pos_type const keep, int const w, int const next_width)
+namespace {
+
+// Move stuff after \c it from \c from and the end of \c to.
+void moveElements(Row::Elements & from, Row::Elements::iterator const & it,
+                  Row::Elements & to)
 {
+	to.insert(to.end(), it, from.end());
+	from.erase(it, from.end());
+	if (!from.empty())
+		from.back().row_flags = (from.back().row_flags & ~AfterFlags) | BreakAfter;
+}
+
+}
+
+
+Row::Elements Row::shortenIfNeeded(int const w, int const next_width)
+{
+	// FIXME: performance: if the last element is a string, we would
+	// like to avoid computing its length.
+	finalizeLast();
 	if (empty() || width() <= w)
-		return false;
+		return Elements();
 
 	Elements::iterator const beg = elements_.begin();
 	Elements::iterator const end = elements_.end();
@@ -469,52 +540,38 @@ bool Row::shortenIfNeeded(pos_type const keep, int const w, int const next_width
 
 	if (cit == end) {
 		// This should not happen since the row is too long.
-		LYXERR0("Something is wrong cannot shorten row: " << *this);
-		return false;
+		LYXERR0("Something is wrong, cannot shorten row: " << *this);
+		return Elements();
 	}
 
 	// Iterate backwards over breakable elements and try to break them
 	Elements::iterator cit_brk = cit;
 	int wid_brk = wid + cit_brk->dim.wid;
 	++cit_brk;
+	Elements tail;
 	while (cit_brk != beg) {
 		--cit_brk;
 		// make a copy of the element to work on it.
 		Element brk = *cit_brk;
 		/* If the current element is an inset that allows breaking row
-		 * after itself, and it the row is already short enough after
+		 * after itself, and if the row is already short enough after
 		 * this inset, then cut right after this element.
 		 */
-		if (wid_brk <= w && brk.type == INSET
-		    && brk.inset->rowFlags() & Inset::CanBreakAfter) {
+		if (wid_brk <= w && brk.row_flags & CanBreakAfter) {
 			end_ = brk.endpos;
 			dim_.wid = wid_brk;
-			elements_.erase(cit_brk + 1, end);
-			return true;
+			moveElements(elements_, cit_brk + 1, tail);
+			return tail;
 		}
 		// assume now that the current element is not there
 		wid_brk -= brk.dim.wid;
-		/*
-		 * Some Asian languages split lines anywhere (no notion of
-		 * word). It seems that QTextLayout is not aware of this fact.
-		 * See for reference:
-		 *    https://en.wikipedia.org/wiki/Line_breaking_rules_in_East_Asian_languages
-		 *
-		 * FIXME: Something shall be done about characters which are
-		 * not allowed at the beginning or end of line.
-		*/
-		bool const word_wrap = brk.font.language()->wordWrap();
-		// When there is text before the body part (think description
-		// environment), do not try to break.
-		if (brk.pos < keep)
-			continue;
 		/* We have found a suitable separable element. This is the common case.
-		 * Try to break it cleanly (at word boundary) at a length that is both
+		 * Try to break it cleanly at a length that is both
 		 * - less than the available space on the row
 		 * - shorter than the natural width of the element, in order to enforce
 		 *   break-up.
 		 */
-		if (brk.breakAt(min(w - wid_brk, brk.dim.wid - 2), !word_wrap)) {
+		if (brk.splitAt(min(w - wid_brk, brk.dim.wid - 2), next_width, false, tail)) {
 			/* if this element originally did not cause a row overflow
 			 * in itself, and the remainder of the row would still be
 			 * too large after breaking, then we will have issues in
@@ -525,25 +582,18 @@ bool Row::shortenIfNeeded(pos_type const keep, int const w, int const next_width
 				break;
 			}
 			end_ = brk.endpos;
-			/* after breakAt, there may be spaces at the end of the
-			 * string, but they are not counted in the string length
-			 * (QTextLayout feature, actually). We remove them, but do
-			 * not change the end of the row, since spaces at row
-			 * break are invisible.
-			 */
-			brk.str = rtrim(brk.str);
-			brk.endpos = brk.pos + brk.str.length();
 			*cit_brk = brk;
 			dim_.wid = wid_brk + brk.dim.wid;
 			// If there are other elements, they should be removed.
-			elements_.erase(cit_brk + 1, end);
-			return true;
+			moveElements(elements_, cit_brk + 1, tail);
+			return tail;
 		}
+		LATTEST(tail.empty());
 	}
 
-	if (cit != beg && cit->type == VIRTUAL) {
-		// It is not possible to separate a virtual element from the
-		// previous one.
+	if (cit != beg && cit->row_flags & NoBreakBefore) {
+		// It is not possible to separate this element from the
+		// previous one. (e.g. VIRTUAL)
 		--cit;
 		wid -= cit->dim.wid;
 	}
@@ -553,29 +603,28 @@ bool Row::shortenIfNeeded(pos_type const keep, int const w, int const next_width
 		// been added. We can cut right here.
 		end_ = cit->pos;
 		dim_.wid = wid;
-		elements_.erase(cit, end);
-		return true;
+		moveElements(elements_, cit, tail);
+		return tail;
 	}
 
 	/* If we are here, it means that we have not found a separator to
-	 * shorten the row. Let's try to break it again, but not at word
-	 * boundary this time.
+	 * shorten the row. Let's try to break it again, but force
+	 * splitting this time.
 	 */
-	if (cit->breakAt(w - wid, true)) {
+	if (cit->splitAt(w - wid, next_width, true, tail)) {
+		LYXERR0(*cit);
 		end_ = cit->endpos;
-		// See comment above.
-		cit->str = rtrim(cit->str);
-		cit->endpos = cit->pos + cit->str.length();
 		dim_.wid = wid + cit->dim.wid;
 		// If there are other elements, they should be removed.
-		elements_.erase(next(cit, 1), end);
-		return true;
+		moveElements(elements_, cit + 1, tail);
+		return tail;
 	}
-	return false;
+
+	return Elements();
 }
 
 
-void Row::reverseRTL(bool const rtl_par)
+void Row::reverseRTL()
 {
 	pos_type i = 0;
 	pos_type const end = elements_.size();
@@ -587,14 +636,13 @@ void Row::reverseRTL(bool const rtl_par)
 			++j;
 		// if the direction is not the same as the paragraph
 		// direction, the sequence has to be reverted.
-		if (rtl != rtl_par)
+		if (rtl != rtl_)
 			reverse(elements_.begin() + i, elements_.begin() + j);
 		i = j;
 	}
 	// If the paragraph itself is RTL, reverse everything
-	if (rtl_par)
+	if (rtl_)
 		reverse(elements_.begin(), elements_.end());
-	rtl_ = rtl_par;
 }
 
 Row::const_iterator const

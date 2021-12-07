@@ -119,7 +119,7 @@ public:
 	///
 	bool hasSettings() const override;
 	///
-	RowFlags rowFlags() const override { return Display; }
+	int rowFlags() const override { return Display; }
 	//@}
 
 	/// \name Static public methods obligated for InsetCommand derived classes

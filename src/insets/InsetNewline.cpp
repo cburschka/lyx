@@ -39,6 +39,15 @@ InsetNewline::InsetNewline() : Inset(nullptr)
 {}
 
 
+int InsetNewline::rowFlags() const
+{
+	if (params_.kind == InsetNewlineParams::LINEBREAK)
+		return AlwaysBreakAfter;
+	else
+	    return AlwaysBreakAfter | Flush;
+}
+
+
 void InsetNewlineParams::write(ostream & os) const
 {
 	switch (kind) {

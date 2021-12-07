@@ -989,7 +989,7 @@ public:
 	//
 	bool isTable() const override { return true; }
 	///
-	RowFlags rowFlags() const override;
+	int rowFlags() const override;
 	///
 	void latex(otexstream &, OutputParams const &) const override;
 	///

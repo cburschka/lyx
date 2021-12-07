@@ -47,7 +47,7 @@ public:
 	///
 	InsetCode lyxCode() const override { return BIBTEX_CODE; }
 	///
-	RowFlags rowFlags() const override { return Display; }
+	int rowFlags() const override { return Display; }
 	///
 	void latex(otexstream &, OutputParams const &) const override;
 	///

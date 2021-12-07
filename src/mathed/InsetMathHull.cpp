@@ -988,7 +988,7 @@ bool InsetMathHull::outerDisplay() const
 }
 
 
-Inset::RowFlags InsetMathHull::rowFlags() const
+int InsetMathHull::rowFlags() const
 {
 	switch (type_) {
 	case hullUnknown:

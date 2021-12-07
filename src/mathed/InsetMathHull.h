@@ -288,7 +288,7 @@ public:
 	///
 	Inset * editXY(Cursor & cur, int x, int y) override;
 	///
-	RowFlags rowFlags() const override;
+	int rowFlags() const override;
 	/// helper function
 	bool display() const { return rowFlags() & Display; }
 

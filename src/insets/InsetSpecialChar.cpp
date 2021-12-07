@@ -83,7 +83,7 @@ docstring InsetSpecialChar::toolTip(BufferView const &, int, int) const
 }
 
 
-Inset::RowFlags InsetSpecialChar::rowFlags() const
+int InsetSpecialChar::rowFlags() const
 {
 	switch (kind_) {
 	case ALLOWBREAK:

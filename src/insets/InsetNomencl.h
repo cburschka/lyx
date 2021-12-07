@@ -94,7 +94,7 @@ public:
 	///
 	bool hasSettings() const override { return true; }
 	///
-	RowFlags rowFlags() const override { return Display; }
+	int rowFlags() const override { return Display; }
 	///
 	void latex(otexstream &, OutputParams const &) const override;
 	///

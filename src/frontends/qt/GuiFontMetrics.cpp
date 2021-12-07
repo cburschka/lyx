@@ -19,6 +19,7 @@
 
 #include "support/convert.h"
 #include "support/lassert.h"
+#include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/debug.h"
 
@@ -85,25 +86,27 @@ namespace lyx {
 namespace frontend {
 
 
-/*
- * Limit (strwidth|breakat)_cache_ size to 512kB of string data.
- * Limit qtextlayout_cache_ size to 500 elements (we do not know the
- * size of the QTextLayout objects anyway).
- * Note that all these numbers are arbitrary.
- * Also, setting size to 0 is tantamount to disabling the cache.
- */
-int cache_metrics_width_size = 1 << 19;
-int cache_metrics_breakat_size = 1 << 19;
+namespace {
+// Maximal size/cost for various caches. See QCache documentation to
+// see what cost means.
+
+// Limit strwidth_cache_ total cost to 1MB of string data.
+int const strwidth_cache_max_cost = 1024 * 1024;
+// Limit breakat_cache_ total cost to 10MB of string data.
+// This is useful for documents with very large insets.
+int const breakstr_cache_max_cost = 10 * 1024 * 1024;
 // Qt 5.x already has its own caching of QTextLayout objects
 // but it does not seem to work well on MacOS X.
 #if (QT_VERSION < 0x050000) || defined(Q_OS_MAC)
-int cache_metrics_qtextlayout_size = 500;
+// Limit qtextlayout_cache_ size to 500 elements (we do not know the
+// size of the QTextLayout objects anyway).
+int const qtextlayout_cache_max_size = 500;
 #else
-int cache_metrics_qtextlayout_size = 0;
+// Disable the cache
+int const qtextlayout_cache_max_size = 0;
 #endif
 
 
-namespace {
 /**
  * Convert a UCS4 character into a QChar.
  * This is a hack (it does only make sense for the common part of the UCS4
@@ -127,9 +130,9 @@ inline QChar const ucs4_to_qchar(char_type const ucs4)
 
 GuiFontMetrics::GuiFontMetrics(QFont const & font)
 	: font_(font), metrics_(font, 0),
-	  strwidth_cache_(cache_metrics_width_size),
-	  breakat_cache_(cache_metrics_breakat_size),
-	  qtextlayout_cache_(cache_metrics_qtextlayout_size)
+	  strwidth_cache_(strwidth_cache_max_cost),
+	  breakstr_cache_(breakstr_cache_max_cost),
+	  qtextlayout_cache_(qtextlayout_cache_max_size)
 {
 	// Determine italic slope
 	double const defaultSlope = tan(qDegreesToRadians(19.0));
@@ -485,11 +488,13 @@ int GuiFontMetrics::countExpanders(docstring const & str) const
 }
 
 
-pair<int, int>
-GuiFontMetrics::breakAt_helper(docstring const & s, int const x,
-                               bool const rtl, bool const force) const
+namespace {
+
+const int brkStrOffset = 1 + BIDI_OFFSET;
+
+
+QString createBreakableString(docstring const & s, bool rtl, QTextLayout & tl)
 {
-	QTextLayout tl;
 	/* Qt will not break at a leading or trailing space, and we need
 	 * that sometimes, see http://www.lyx.org/trac/ticket/9921.
 	 *
@@ -518,31 +523,23 @@ GuiFontMetrics::breakAt_helper(docstring const & s, int const x,
 		// Left-to-right override: forces to draw text left-to-right
 		qs =  QChar(0x202D) + qs;
 #endif
-	int const offset = 1 + BIDI_OFFSET;
+	return qs;
+}
 
-	tl.setText(qs);
-	tl.setFont(font_);
-	QTextOption to;
-	to.setWrapMode(force ? QTextOption::WrapAtWordBoundaryOrAnywhere
-	                     : QTextOption::WordWrap);
-	tl.setTextOption(to);
-	tl.beginLayout();
-	QTextLine line = tl.createLine();
-	line.setLineWidth(x);
-	tl.createLine();
-	tl.endLayout();
-	int const line_wid = iround(line.horizontalAdvance());
-	if ((force && line.textLength() == offset) || line_wid > x)
-		return {-1, -1};
+
+docstring::size_type brkstr2str_pos(QString brkstr, docstring const & str, int pos)
+{
 	/* Since QString is UTF-16 and docstring is UCS-4, the offsets may
 	 * not be the same when there are high-plan unicode characters
 	 * (bug #10443).
 	 */
-	// The variable `offset' is here to account for the extra leading characters.
+	// The variable `brkStrOffset' is here to account for the extra leading characters.
 	// The ending character zerow_nbsp has to be ignored if the line is complete.
-	int const qlen = line.textLength() - offset - (line.textLength() == qs.length());
+	int const qlen = pos - brkStrOffset - (pos == brkstr.length());
 #if QT_VERSION < 0x040801 || QT_VERSION >= 0x050100
-	int len = qstring_to_ucs4(qs.mid(offset, qlen)).length();
+	auto const len = qstring_to_ucs4(brkstr.mid(brkStrOffset, qlen)).length();
+	// Avoid warning
+	(void)str;
 #else
 	/* Due to QTBUG-25536 in 4.8.1 <= Qt < 5.1.0, the string returned
 	 * by QString::toUcs4 (used by qstring_to_ucs4) may have wrong
@@ -552,42 +549,108 @@ GuiFontMetrics::breakAt_helper(docstring const & s, int const x,
 	 * worthwhile to implement a dichotomy search if this shows up
 	 * under a profiler.
 	 */
-	int len = min(qlen, static_cast<int>(s.length()));
-	while (len >= 0 && toqstr(s.substr(0, len)).length() != qlen)
+	int len = min(qlen, static_cast<int>(str.length()));
+	while (len >= 0 && toqstr(str.substr(0, len)).length() != qlen)
 		--len;
 	LASSERT(len > 0 || qlen == 0, /**/);
 #endif
-	return {len, line_wid};
+	return len;
+}
+
+}
+
+FontMetrics::Breaks
+GuiFontMetrics::breakString_helper(docstring const & s, int first_wid, int wid,
+                                   bool rtl, bool force) const
+{
+	QTextLayout tl;
+	QString qs = createBreakableString(s, rtl, tl);
+	tl.setText(qs);
+	tl.setFont(font_);
+	QTextOption to;
+	/*
+	 * Some Asian languages split lines anywhere (no notion of
+	 * word). It seems that QTextLayout is not aware of this fact.
+	 * See for reference:
+	 *    https://en.wikipedia.org/wiki/Line_breaking_rules_in_East_Asian_languages
+	 *
+	 * FIXME: Something shall be done about characters which are
+	 * not allowed at the beginning or end of line.
+	 */
+	to.setWrapMode(force ? QTextOption::WrapAtWordBoundaryOrAnywhere
+	                     : QTextOption::WordWrap);
+	// Let QTextLine::naturalTextWidth() account for trailing spaces
+	// (horizontalAdvance() still does not).
+	to.setFlags(QTextOption::IncludeTrailingSpaces);
+	tl.setTextOption(to);
+
+	bool first = true;
+	tl.beginLayout();
+	while(true) {
+		QTextLine line = tl.createLine();
+		if (!line.isValid())
+			break;
+		line.setLineWidth(first ? first_wid : wid);
+		tl.createLine();
+		first = false;
+	}
+	tl.endLayout();
+
+	Breaks breaks;
+	int pos = 0;
+	for (int i = 0 ; i < tl.lineCount() ; ++i) {
+		QTextLine const & line = tl.lineAt(i);
+		int const epos = brkstr2str_pos(qs, s, line.textStart() + line.textLength());
+#if QT_VERSION >= 0x050000
+		int const wid = i + 1 < tl.lineCount() ? iround(line.horizontalAdvance())
+		                                       : iround(line.naturalTextWidth());
+#else
+		// With some monospace fonts, the value of horizontalAdvance()
+		// can be wrong with Qt4. One hypothesis is that the invisible
+		// characters that we use are given a non-null width.
+		// FIXME: this is slower than it could be but we'll get rid of Qt4 anyway
+		int const wid = i + 1 < tl.lineCount() ? width(rtrim(s.substr(pos, epos - pos)))
+		                                       : width(s.substr(pos, epos - pos));
+#endif
+		breaks.emplace_back(epos - pos, wid);
+		pos = epos;
+#if 0
+		// FIXME: should it be kept in some form?
+		if ((force && line.textLength() == brkStrOffset) || line_wid > x)
+			return {-1, line_wid};
+#endif
+
+	}
+
+	return breaks;
 }
 
 
-uint qHash(BreakAtKey const & key)
+uint qHash(BreakStringKey const & key)
 {
-	int params = key.force + 2 * key.rtl + 4 * key.x;
+	// assume widths are less than 10000. This fits in 32 bits.
+	uint params = key.force + 2 * key.rtl + 4 * key.first_wid + 10000 * key.wid;
 	return std::qHash(key.s) ^ ::qHash(params);
 }
 
 
-bool GuiFontMetrics::breakAt(docstring & s, int & x, bool const rtl, bool const force) const
+FontMetrics::Breaks GuiFontMetrics::breakString(docstring const & s, int first_wid, int wid,
+                                                bool rtl, bool force) const
 {
-	PROFILE_THIS_BLOCK(breakAt);
+	PROFILE_THIS_BLOCK(breakString);
 	if (s.empty())
-		return false;
+		return Breaks();
 
-	BreakAtKey key{s, x, rtl, force};
-	pair<int, int> pp;
-	if (auto * pp_ptr = breakat_cache_.object_ptr(key))
-		pp = *pp_ptr;
+	BreakStringKey key{s, first_wid, wid, rtl, force};
+	Breaks brks;
+	if (auto * brks_ptr = breakstr_cache_.object_ptr(key))
+		brks = *brks_ptr;
 	else {
-		PROFILE_CACHE_MISS(breakAt);
-		pp = breakAt_helper(s, x, rtl, force);
-		breakat_cache_.insert(key, pp, sizeof(key) + s.size() * sizeof(char_type));
+		PROFILE_CACHE_MISS(breakString);
+		brks = breakString_helper(s, first_wid, wid, rtl, force);
+		breakstr_cache_.insert(key, brks, sizeof(key) + s.size() * sizeof(char_type));
 	}
-	if (pp.first == -1)
-		return false;
-	s = s.substr(0, pp.first);
-	x = pp.second;
-	return true;
+	return brks;
 }
 
 

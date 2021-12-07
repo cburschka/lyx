@@ -65,7 +65,7 @@ public:
 		return docstring();
 	}
 	///
-	RowFlags rowFlags() const override { return BreakAfter; }
+	int rowFlags() const override { return BreakAfter | Flush; }
 private:
 	///
 	InsetCode lyxCode() const override { return SEPARATOR_CODE; }

@@ -32,7 +32,7 @@ public:
 	///
 	InsetCode lyxCode() const override { return FLOAT_LIST_CODE; }
 	///
-	RowFlags rowFlags() const override { return Display; }
+	int rowFlags() const override { return Display; }
 	///
 	void write(std::ostream &) const override;
 	///

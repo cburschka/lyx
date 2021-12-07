@@ -192,7 +192,7 @@ bool InsetSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-Inset::RowFlags InsetSpace::rowFlags() const
+int InsetSpace::rowFlags() const
 {
 	switch (params_.kind) {
 		case InsetSpaceParams::PROTECTED:
