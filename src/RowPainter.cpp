@@ -585,12 +585,16 @@ void RowPainter::paintSelection() const
 	if (!row_.selection())
 		return;
 
-	int const y1 = yo_ - (row_.begin_margin_sel ? row_.ascent()
-	                                            : row_.contents_dim().asc);
-	int const y2 = yo_ + (row_.end_margin_sel ? row_.descent()
-	                                          : row_.contents_dim().des);
+	int const y1 = yo_ - row_.contents_dim().asc;
+	int const y2 = yo_ + row_.contents_dim().des;
 
-	// draw the margins
+	// The top selection
+	if (row_.begin_margin_sel)
+		pi_.pain.fillRectangle(int(xo_), yo_ - row_.ascent(),
+		                       tm_.width(), row_.ascent() - row_.contents_dim().asc,
+		                       Color_selection);
+
+	// The left margin selection
 	if (row_.isRTL() ? row_.end_margin_sel : row_.begin_margin_sel)
 		pi_.pain.fillRectangle(int(xo_), y1, row_.left_margin, y2 - y1,
 		                       Color_selection);
@@ -629,9 +633,15 @@ void RowPainter::paintSelection() const
 		x += e.full_width();
 	}
 
+	// the right margin selection
 	if (row_.isRTL() ? row_.begin_margin_sel : row_.end_margin_sel)
 		pi_.pain.fillRectangle(int(x), y1,
 		                       int(xo_ + tm_.width()) - int(x), y2 - y1,
+		                       Color_selection);
+	// The bottom selection
+	if (row_.end_margin_sel)
+		pi_.pain.fillRectangle(int(xo_), yo_ + row_.contents_dim().des,
+		                       tm_.width(), row_.descent() - row_.contents_dim().des,
 		                       Color_selection);
 }
 
