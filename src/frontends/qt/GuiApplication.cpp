@@ -1109,7 +1109,7 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	QCoreApplication::setOrganizationName(app_name);
 	QCoreApplication::setOrganizationDomain("lyx.org");
 	QCoreApplication::setApplicationName(lyx_package);
-#if QT_VERSION >= 0x050000 && QT_VERSION < 0x060000
+#if QT_VERSION >= 0x050100 && QT_VERSION < 0x060000
 	QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 #endif
 
