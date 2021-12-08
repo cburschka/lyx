@@ -624,12 +624,15 @@ void InsetMathScript::mathmlize(MathMLStream & ms) const
 	if (!nuc().empty())
 		ms << nuc();
 	else
+		// TODO: is this empty <mrow> required?
 		ms << CTag("mrow");
 
+	// No need to wrap these in an <mrow>, as it's done by MathExtern.
+	// More details in https://www.lyx.org/trac/ticket/12221#comment:10.
 	if (d)
-		ms << MTag("mrow") << down() << ETag("mrow");
+		ms << down();
 	if (u)
-		ms << MTag("mrow") << up() << ETag("mrow");
+		ms << up();
 
 	ms << ETag(tag);
 }
