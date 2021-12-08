@@ -122,30 +122,26 @@ static std::map<string, string> latex_to_xml_entities = {
 };
 
 
+docstring map_latex_to(docstring latex, bool xml = false)
+{
+	auto dict = (xml) ? latex_to_xml_entities : latex_to_html_entities;
+
+	auto mapping = dict.find(to_ascii(latex));
+	if (mapping != dict.end()) {
+		return from_ascii(mapping->second);
+	} else {
+		std::string format = (xml) ? "XML" : "HTML";
+		lyxerr << "mathmlize " << format << " conversion for '" << latex << "' not implemented" << endl;
+		LASSERT(false, return from_ascii(dict["xrightarrow"]));
+	}
+}
+
+
 void InsetMathXArrow::mathmlize(MathMLStream & ms) const
 {
-	std::string arrow;
-
-	if (!ms.xmlMode()) { // Use HTML entities.
-		auto mapping = latex_to_html_entities.find(to_ascii(name_));
-		if (mapping != latex_to_html_entities.end()) {
-			arrow = mapping->second;
-		} else {
-			lyxerr << "mathmlize conversion for '" << name_ << "' not implemented" << endl;
-			LASSERT(false, arrow = latex_to_html_entities["xrightarrow"]);
-		}
-	} else { // Use XML entities.
-		auto mapping = latex_to_xml_entities.find(to_ascii(name_));
-		if (mapping != latex_to_xml_entities.end()) {
-			arrow = mapping->second;
-		} else {
-			lyxerr << "mathmlize XML conversion for '" << name_ << "' not implemented" << endl;
-			LASSERT(false, arrow = latex_to_xml_entities["xrightarrow"]);
-		}
-	}
-
+	docstring arrow = map_latex_to(name_, ms.xmlMode());
 	ms << "<" << from_ascii(ms.namespacedTag("munderover")) << " accent='false' accentunder='false'>"
-	   << MTagInline("mo") << from_ascii(arrow) << ETagInline("mo")
+	   << MTagInline("mo") << arrow << ETagInline("mo")
 	   << cell(1) << cell(0)
 	   << "</" << from_ascii(ms.namespacedTag("munderover"))<< ">";
 }
@@ -153,20 +149,11 @@ void InsetMathXArrow::mathmlize(MathMLStream & ms) const
 
 void InsetMathXArrow::htmlize(HtmlStream & os) const
 {
-	string arrow;
-
-	auto mapping = latex_to_html_entities.find(to_ascii(name_));
-	if (mapping != latex_to_html_entities.end()) {
-		arrow = mapping->second;
-	} else {
-		lyxerr << "htmlize conversion for '" << name_ << "' not implemented" << endl;
-		LASSERT(false, arrow = latex_to_html_entities["xrightarrow"]);
-	}
-
+	docstring arrow = map_latex_to(name_);
 	os << MTag("span", "class='xarrow'")
-		 << MTag("span", "class='xatop'") << cell(0) << ETag("span")
-		 << MTag("span", "class='xabottom'") << from_ascii(arrow) << ETag("span")
-		 << ETag("span");
+	   << MTag("span", "class='xatop'") << cell(0) << ETag("span")
+	   << MTag("span", "class='xabottom'") << arrow << ETag("span")
+	   << ETag("span");
 }
 
 
@@ -176,6 +163,7 @@ void InsetMathXArrow::validate(LaTeXFeatures & features) const
 		features.require("amsmath");
 	else
 		features.require("mathtools");
+
 	if (features.runparams().math_flavor == OutputParams::MathAsHTML)
 		// CSS adapted from eLyXer
 		features.addCSSSnippet(
