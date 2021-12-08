@@ -84,84 +84,68 @@ void InsetMathXArrow::normalize(NormalStream & os) const
 }
 
 
+static std::map<string, string> latex_to_html_entities = {
+		{"xleftarrow", "&larr;"},
+		{"xrightarrow", "&rarr;"},
+		{"xhookleftarrow", "&larrhk;"},
+		{"xhookrightarrow", "&rarrhk;"},
+		{"xLeftarrow", "&lArr;"},
+		{"xRightarrow", "&rArr;"},
+		{"xleftrightarrow", "&leftrightarrow;"},
+		{"xLeftrightarrow", "&Leftrightarrow;"},
+		{"xleftharpoondown", "&leftharpoondown;"},
+		{"xleftharpoonup", "&leftharpoonup;"},
+		{"xleftrightharpoons", "&leftrightharpoons;"},
+		{"xrightharpoondown", "&rightharpoondown;"},
+		{"xrightharpoonup", "&rightharpoonup;"},
+		{"xrightleftharpoons", "&rightleftharpoons;"},
+		{"xmapsto", "&mapsto;"},
+};
+
+
+static std::map<string, string> latex_to_xml_entities = {
+		{"xleftarrow", "&#x2190;"},
+		{"xrightarrow", "&#x2192;"},
+		{"xhookleftarrow", "&#x21a9;"},
+		{"xhookrightarrow", "&#x21aa;"},
+		{"xLeftarrow", "&#x21d0;"},
+		{"xRightarrow", "&#x21d2;"},
+		{"xleftrightarrow", "&#x2194;"},
+		{"xLeftrightarrow", "&#x21d4;"},
+		{"xleftharpoondown", "&#x21bd;"},
+		{"xleftharpoonup", "&#x21bc;"},
+		{"xleftrightharpoons", "&#x21cb;"},
+		{"xrightharpoondown", "&#x21c1;"},
+		{"xrightharpoonup", "&#x21c0;"},
+		{"xrightleftharpoons", "&#x21cc;"},
+		{"xmapsto", "&#x21a6;"},
+};
+
+
 void InsetMathXArrow::mathmlize(MathMLStream & ms) const
 {
-	char const * arrow;
+	std::string arrow;
 
 	if (!ms.xmlMode()) { // Use HTML entities.
-		if (name_ == "xleftarrow")
-			arrow = "&larr;";
-		else if (name_ == "xrightarrow")
-			arrow = "&rarr;";
-		else if (name_ == "xhookleftarrow")
-			arrow = "&larrhk;";
-		else if (name_ == "xhookrightarrow")
-			arrow = "&rarrhk;";
-		else if (name_ == "xLeftarrow")
-			arrow = "&lArr;";
-		else if (name_ == "xRightarrow")
-			arrow = "&rArr;";
-		else if (name_ == "xleftrightarrow")
-			arrow = "&leftrightarrow;";
-		else if (name_ == "xLeftrightarrow")
-			arrow = "&Leftrightarrow;";
-		else if (name_ == "xleftharpoondown")
-			arrow = "&leftharpoondown;";
-		else if (name_ == "xleftharpoonup")
-			arrow = "&leftharpoonup;";
-		else if (name_ == "xleftrightharpoons")
-			arrow = "&leftrightharpoons;";
-		else if (name_ == "xrightharpoondown")
-			arrow = "&rightharpoondown;";
-		else if (name_ == "xrightharpoonup")
-			arrow = "&rightharpoonup;";
-		else if (name_ == "xrightleftharpoons")
-			arrow = "&rightleftharpoons;";
-		else if (name_ == "xmapsto")
-			arrow = "&mapsto;";
-		else {
+		auto mapping = latex_to_html_entities.find(to_ascii(name_));
+		if (mapping != latex_to_html_entities.end()) {
+			arrow = mapping->second;
+		} else {
 			lyxerr << "mathmlize conversion for '" << name_ << "' not implemented" << endl;
-			LASSERT(false, arrow = "&rarr;");
+			LASSERT(false, arrow = latex_to_html_entities["xrightarrow"]);
 		}
 	} else { // Use XML entities.
-		if (name_ == "xleftarrow")
-			arrow = "&#x2190;";
-		else if (name_ == "xrightarrow")
-			arrow = "&#x2192;";
-		else if (name_ == "xhookleftarrow")
-			arrow = "&#x21a9;";
-		else if (name_ == "xhookrightarrow")
-			arrow = "&#x21aa;";
-		else if (name_ == "xLeftarrow")
-			arrow = "&#x21d0;";
-		else if (name_ == "xRightarrow")
-			arrow = "&#x21d2;";
-		else if (name_ == "xleftrightarrow")
-			arrow = "&#x2194;";
-		else if (name_ == "xLeftrightarrow")
-			arrow = "&#x21d4;";
-		else if (name_ == "xleftharpoondown")
-			arrow = "&#x21bd;";
-		else if (name_ == "xleftharpoonup")
-			arrow = "&#x21bc;";
-		else if (name_ == "xleftrightharpoons")
-			arrow = "&#x21cb;";
-		else if (name_ == "xrightharpoondown")
-			arrow = "&#x21c1;";
-		else if (name_ == "xrightharpoonup")
-			arrow = "&#x21c0;";
-		else if (name_ == "xrightleftharpoons")
-			arrow = "&#x21cc;";
-		else if (name_ == "xmapsto")
-			arrow = "&#x21a6;";
-		else {
+		auto mapping = latex_to_xml_entities.find(to_ascii(name_));
+		if (mapping != latex_to_xml_entities.end()) {
+			arrow = mapping->second;
+		} else {
 			lyxerr << "mathmlize XML conversion for '" << name_ << "' not implemented" << endl;
-			LASSERT(false, arrow = "&#x2192;");
+			LASSERT(false, arrow = latex_to_xml_entities["xrightarrow"]);
 		}
 	}
 
 	ms << "<" << from_ascii(ms.namespacedTag("munderover")) << " accent='false' accentunder='false'>"
-	   << MTagInline("mo") << arrow << ETagInline("mo")
+	   << MTagInline("mo") << from_ascii(arrow) << ETagInline("mo")
 	   << cell(1) << cell(0)
 	   << "</" << from_ascii(ms.namespacedTag("munderover"))<< ">";
 }
@@ -169,45 +153,19 @@ void InsetMathXArrow::mathmlize(MathMLStream & ms) const
 
 void InsetMathXArrow::htmlize(HtmlStream & os) const
 {
-	char const * arrow;
+	string arrow;
 
-	if (name_ == "xleftarrow")
-		arrow = "&larr;";
-	else if (name_ == "xrightarrow")
-		arrow = "&rarr;";
-	else if (name_ == "xhookleftarrow")
-		arrow = "&larrhk;";
-	else if (name_ == "xhookrightarrow")
-		arrow = "&rarrhk;";
-	else if (name_ == "xLeftarrow")
-		arrow = "&lArr;";
-	else if (name_ == "xRightarrow")
-		arrow = "&rArr;";
-	else if (name_ == "xleftrightarrow")
-		arrow = "&leftrightarrow;";
-	else if (name_ == "xLeftrightarrow")
-		arrow = "&Leftrightarrow;";
-	else if (name_ == "xleftharpoondown")
-		arrow = "&leftharpoondown;";
-	else if (name_ == "xleftharpoonup")
-		arrow = "&leftharpoonup;";
-	else if (name_ == "xleftrightharpoons")
-		arrow = "&leftrightharpoons;";
-	else if (name_ == "xrightharpoondown")
-		arrow = "&rightharpoondown;";
-	else if (name_ == "xrightharpoonup")
-		arrow = "&rightharpoonup;";
-	else if (name_ == "xrightleftharpoons")
-		arrow = "&rightleftharpoons;";
-	else if (name_ == "xmapsto")
-		arrow = "&mapsto;";
-	else {
+	auto mapping = latex_to_html_entities.find(to_ascii(name_));
+	if (mapping != latex_to_html_entities.end()) {
+		arrow = mapping->second;
+	} else {
 		lyxerr << "htmlize conversion for '" << name_ << "' not implemented" << endl;
-		LASSERT(false, arrow = "&rarr;");
+		LASSERT(false, arrow = latex_to_html_entities["xrightarrow"]);
 	}
+
 	os << MTag("span", "class='xarrow'")
 		 << MTag("span", "class='xatop'") << cell(0) << ETag("span")
-		 << MTag("span", "class='xabottom'") << arrow << ETag("span")
+		 << MTag("span", "class='xabottom'") << from_ascii(arrow) << ETag("span")
 		 << ETag("span");
 }
 
