@@ -161,7 +161,8 @@ void InsetMathXArrow::mathmlize(MathMLStream & ms) const
 	}
 
 	ms << "<" << from_ascii(ms.namespacedTag("munderover")) << " accent='false' accentunder='false'>"
-	   << arrow << cell(1) << cell(0)
+	   << MTagInline("mo") << arrow << ETagInline("mo")
+	   << cell(1) << cell(0)
 	   << "</" << from_ascii(ms.namespacedTag("munderover"))<< ">";
 }
 
