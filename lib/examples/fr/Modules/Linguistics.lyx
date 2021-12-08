@@ -36,76 +36,6 @@
 linguistics
 \end_modules
 \maintain_unincluded_children no
-\begin_local_layout
-### Inserted by lyx2lyx (deprecated ling glosses) ###
-InsetLayout Flex:Tri-Glosse
-  LyXType               custom
-  LabelString           "Tri-Gloss (old version)"
-  MenuString            "Tri-Gloss (old version)"
-  LatexType             environment
-  LatexName             lingglosss
-  Decoration            minimalistic
-  LabelFont
-    Size                Small
-  EndFont
-  MultiPar              true
-  CustomPars            false
-  ForcePlain            true
-  ParbreakIsNewline     true
-  FreeSpacing           true
-  InToc                 true
-  Requires              covington
-  Preamble
-          \def\glosstr{}
-          \@ifundefined{lingglosss}{%
-          \newenvironment{lingglosss}[2][]{
-              \def\glosstr{\glt #1}%
-              \glll #2}
-          {\glosstr\glend}}{}
-  EndPreamble
-  ResetsFont            true
-  Argument 1
-          Decoration    conglomerate
-          LabelString   "Translation"
-          MenuString    "Glosse Translation|s"
-          Tooltip       "Add a translation for the glosse"
-  EndArgument
-End
-### Inserted by lyx2lyx (deprecated ling glosses) ###
-InsetLayout Flex:Glosse
-  LyXType               custom
-  LabelString           "Gloss (old version)"
-  MenuString            "Gloss (old version)"
-  LatexType             environment
-  LatexName             linggloss
-  Decoration            minimalistic
-  LabelFont
-    Size                Small
-  EndFont
-  MultiPar              true
-  CustomPars            false
-  ForcePlain            true
-  ParbreakIsNewline     true
-  FreeSpacing           true
-  Requires              covington
-  Preamble
-          \def\glosstr{}
-          \@ifundefined{linggloss}{%
-          \newenvironment{linggloss}[2][]{
-             \def\glosstr{\glt #1}%
-             \gll #2}
-          {\glosstr\glend}}{}
-  EndPreamble
-  InToc                 true
-  ResetsFont            true
-  Argument 1
-          Decoration    conglomerate
-          LabelString   "Translation"
-          MenuString    "Glosse Translation|s"
-          Tooltip       "Add a translation for the glosse"
-  EndArgument
-End
-\end_local_layout
 \language french
 \language_package default
 \inputencoding utf8
@@ -129,6 +59,8 @@ End
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref true
@@ -771,7 +703,7 @@ Voici un exemple simple pour une glose sur deux lignes:
 status open
 
 \begin_layout Plain Layout
-C'est    un exemple simple
+This is a simple example
 \end_layout
 
 \begin_layout Plain Layout
@@ -779,7 +711,7 @@ C'est    un exemple simple
 status open
 
 \begin_layout Plain Layout
-This is an example simple
+Ceci est un exemple simple
 \end_layout
 
 \end_inset
@@ -792,7 +724,7 @@ This is an example simple
 status open
 
 \begin_layout Plain Layout
-This is a simple example
+Ceci est un exemple simple
 \end_layout
 
 \end_inset
@@ -834,26 +766,18 @@ Nous pouvons aussi créer une glose de trois lignes:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Flex Interlinear Gloss (3 Lines)
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 Hoc est aliud exemplum
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Argument post:1
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 n.sg.nom 3sg n.sg.nom n.sg.nom
 \end_layout
 
@@ -863,15 +787,11 @@ n.sg.nom 3sg n.sg.nom n.sg.nom
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Argument post:2
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-This is another  example
+Ceci est autre exemple
 \end_layout
 
 \end_inset
@@ -880,15 +800,11 @@ This is another  example
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Argument post:3
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-This is another example
+Voici un autre exemple
 \end_layout
 
 \end_inset
@@ -898,8 +814,6 @@ This is another example
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -948,27 +862,29 @@ exemple numéroté
 \end_layout
 
 \begin_layout Numbered Examples (consecutive)
-
-\lang english
 \begin_inset Flex Interlinear Gloss (3 Lines)
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-Mein Luftkissenfahrzeug ist voller  Aale
+Mein Luftkissenfahrzeug ist voller      Aale
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Argument post:1
 status open
 
 \begin_layout Plain Layout
+Mon aéroglisseur             est 
+\begin_inset Flex GroupGlossedWords
+status open
 
-\lang english
-My    skeertuig                   is  vol       palings
+\begin_layout Plain Layout
+plein d'
+\end_layout
+
+\end_inset
+
+ anguilles
 \end_layout
 
 \end_inset
@@ -977,21 +893,15 @@ My    skeertuig                   is  vol       palings
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Argument post:2
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 My    hovercraft                 is 
 \begin_inset Flex GroupGlossedWords
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 full of
 \end_layout
 
@@ -1006,15 +916,11 @@ full of
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Argument post:3
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-Do you have matches?
+Vous avez des allumettes?
 \end_layout
 
 \end_inset
@@ -1036,20 +942,14 @@ soit vous utilisez l'option de glose
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Flex Interlinear Gloss (3 Lines)
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 ex
 \end_layout
 
@@ -1059,21 +959,15 @@ ex
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 Mein Luftkissenfahrzeug ist voller  Aale
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Argument post:1
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-My    skeertuig                   is  vol       palings
+Mon aéroglisseur             est plein d'anguilles
 \end_layout
 
 \end_inset
@@ -1082,21 +976,15 @@ My    skeertuig                   is  vol       palings
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Argument post:2
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 My    hovercraft                 is 
 \begin_inset Flex GroupGlossedWords
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 full of
 \end_layout
 
@@ -1111,15 +999,11 @@ full of
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Argument post:3
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-Do you have matches?
+Vous avez des allumettes?
 \end_layout
 
 \end_inset
@@ -2018,8 +1902,6 @@ status open
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 x
 \end_layout
 
@@ -2029,11 +1911,11 @@ x
 \end_layout
 
 \begin_layout Plain Layout
-donkey(x)
+âne(x)
 \begin_inset Newline newline
 \end_inset
 
-green(x)
+vert(x)
 \begin_inset Newline newline
 \end_inset
 
@@ -2109,8 +1991,6 @@ status open
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 x
 \begin_inset space ~
 \end_inset
@@ -2124,15 +2004,15 @@ y
 \end_layout
 
 \begin_layout Plain Layout
-John(x)
+Jean(x)
 \begin_inset Newline newline
 \end_inset
 
-donkey(y)
+âne(y)
 \begin_inset Newline newline
 \end_inset
 
-own(x,y)
+posséder(x,y)
 \end_layout
 
 \begin_layout Plain Layout
@@ -2140,8 +2020,6 @@ own(x,y)
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 z
 \begin_inset space ~
 \end_inset
@@ -2167,7 +2045,7 @@ w = y
 \begin_inset Newline newline
 \end_inset
 
-feed(z,w)
+alimenter(z,w)
 \end_layout
 
 \end_inset
@@ -2202,8 +2080,6 @@ status open
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 x
 \begin_inset space ~
 \end_inset
@@ -2217,15 +2093,15 @@ y
 \end_layout
 
 \begin_layout Plain Layout
-John(x)
+Jean(x)
 \begin_inset Newline newline
 \end_inset
 
-donkey(y)
+âne(y)
 \begin_inset Newline newline
 \end_inset
 
-own(x,y)
+posséder(x,y)
 \end_layout
 
 \begin_layout Plain Layout
@@ -2233,8 +2109,6 @@ own(x,y)
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Formula $\wedge\!\,$
 \end_inset
 
@@ -2251,8 +2125,6 @@ status open
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 z
 \begin_inset space ~
 \end_inset
@@ -2278,7 +2150,7 @@ w = y
 \begin_inset Newline newline
 \end_inset
 
-love(w,z)
+aimer(w,z)
 \end_layout
 
 \end_inset
@@ -2310,8 +2182,6 @@ status open
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 x
 \end_layout
 
@@ -2333,9 +2203,7 @@ x
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-every
+tout
 \end_layout
 
 \end_inset
@@ -2348,8 +2216,6 @@ every
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 x
 \end_layout
 
@@ -2363,8 +2229,6 @@ x
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 y
 \end_layout
 
@@ -2378,11 +2242,11 @@ y
 status open
 
 \begin_layout Plain Layout
-secretary(y)
+secrétaire(y)
 \begin_inset Newline newline
 \end_inset
 
-hire(x,y)
+louer(x,y)
 \end_layout
 
 \end_inset
@@ -2414,8 +2278,6 @@ status open
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 x
 \end_layout
 
@@ -2425,11 +2287,11 @@ x
 \end_layout
 
 \begin_layout Plain Layout
-donkey(x)
+âne(x)
 \begin_inset Newline newline
 \end_inset
 
-green(x)
+vert(x)
 \end_layout
 
 \end_inset
@@ -2456,9 +2318,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-A donkey is green
+Un âne est vert
 \end_layout
 
 \end_inset
@@ -2471,8 +2331,6 @@ A donkey is green
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 x
 \end_layout
 
@@ -2482,11 +2340,11 @@ x
 \end_layout
 
 \begin_layout Plain Layout
-donkey(x)
+âne(x)
 \begin_inset Newline newline
 \end_inset
 
-green(x)
+vert(x)
 \end_layout
 
 \end_inset
