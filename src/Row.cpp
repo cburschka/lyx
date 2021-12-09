@@ -162,6 +162,12 @@ bool Row::Element::splitAt(int const width, int next_width, bool force,
 	bool first = true;
 	docstring::size_type i = 0;
 	for (FontMetrics::Break const & brk : breaks) {
+		/* For some reason breakString can decide to break before the
+		 * first character (normally we use a 0-width nbsp to prevent
+		 * that). Skip leading empty elements, they are never wanted.
+		 */
+		if (first && brk.len == 0 && breaks.size() > 1)
+			continue;
 		Element e(STRING, pos + i, font, change);
 		e.str = str.substr(i, brk.len);
 		e.endpos = e.pos + brk.len;
@@ -612,7 +618,6 @@ Row::Elements Row::shortenIfNeeded(int const w, int const next_width)
 	 * splitting this time.
 	 */
 	if (cit->splitAt(w - wid, next_width, true, tail)) {
-		LYXERR0(*cit);
 		end_ = cit->endpos;
 		dim_.wid = wid + cit->dim.wid;
 		// If there are other elements, they should be removed.
