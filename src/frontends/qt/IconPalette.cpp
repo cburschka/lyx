@@ -54,7 +54,11 @@ void TearOff::mouseReleaseEvent(QMouseEvent * /*event*/)
 }
 
 
+#if QT_VERSION < 0x060000
 void TearOff::enterEvent(QEvent * event)
+#else
+void TearOff::enterEvent(QEnterEvent * event)
+#endif
 {
 	highlighted_ = true;
 	update();

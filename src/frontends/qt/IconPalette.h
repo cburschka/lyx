@@ -30,7 +30,7 @@ public:
 #if QT_VERSION < 0x060000
 	void enterEvent(QEvent *) override;
 #else
-	void enterEvent(QEvent *);
+	void enterEvent(QEnterEvent *) override;
 #endif
 	void leaveEvent(QEvent *) override;
 	void mouseReleaseEvent (QMouseEvent *) override;
