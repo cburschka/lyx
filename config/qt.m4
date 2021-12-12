@@ -44,7 +44,7 @@ AC_DEFUN([QT_CHECK_COMPILE],
 		qt_cv_libname=
 		for libname in $qt_guilibs \
 		               '-framework QtCore -framework QtConcurrent -framework QtSvg -framework QtWidgets -framework QtMacExtras -framework QtGui'\
-		               '-framework QtCore -framework QtConcurrent -framework QtSvg -framework QtSvgWidgets -framework QtWidgets -framework QtGui'\
+		               '-framework QtCore -framework QtConcurrent -framework QtCore5Compat -framework QtSvg -framework QtSvgWidgets -framework QtWidgets -framework QtGui'\
 		               '-framework QtCore -framework QtGui'
 		do
 			QT_TRY_LINK($libname)
