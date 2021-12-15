@@ -585,6 +585,7 @@ Row::Elements Row::shortenIfNeeded(int const w, int const next_width)
 			 */
 			if (wid_brk + cit_brk->dim.wid < w
 			    && dim_.wid - (wid_brk + brk.dim.wid) >= next_width) {
+				tail.clear();
 				break;
 			}
 			end_ = brk.endpos;
