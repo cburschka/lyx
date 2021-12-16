@@ -555,8 +555,8 @@ void GuiSearchWidget::restoreSession(QString const & session_key)
 	act_wholewords_->setChecked(settings.value(session_key + "/words", false).toBool());
 	instantSearchCB->setChecked(settings.value(session_key + "/instant", false).toBool());
 	act_immediate_->setChecked(settings.value(session_key + "/instant", false).toBool());
-	wrapCB->setChecked(settings.value(session_key + "/wrap", false).toBool());
-	act_wrap_->setChecked(settings.value(session_key + "/wrap", false).toBool());
+	wrapCB->setChecked(settings.value(session_key + "/wrap", true).toBool());
+	act_wrap_->setChecked(settings.value(session_key + "/wrap", true).toBool());
 	selectionCB->setChecked(settings.value(session_key + "/selection", false).toBool());
 	act_selection_->setChecked(settings.value(session_key + "/selection", false).toBool());
 	minimized_ = settings.value(session_key + "/minimized", false).toBool();
