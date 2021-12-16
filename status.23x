@@ -44,6 +44,9 @@ What's new
 
 - Fix broken modifier handling for Qt-5.12 on Mac (bug 12247).
 
+- Add new pref variable \draw_strategy to fix some cases where display
+  is blinking (bug 12119).
+
 
 * DOCUMENTATION AND LOCALIZATION
 

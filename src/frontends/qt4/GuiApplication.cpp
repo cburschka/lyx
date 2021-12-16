@@ -2509,6 +2509,26 @@ Menus & GuiApplication::menus()
 }
 
 
+bool GuiApplication::needsBackingStore() const
+{
+	/* Qt on macOS and Wayland does not respect the
+	 * Qt::WA_OpaquePaintEvent attribute and resets the widget backing
+	 * store at each update. Therefore, we use our own backing store
+	 * in these two cases. It is also possible to force the use of the
+	 * backing store for cases like x11 with transparent WM themes.
+	 */
+#if QT_VERSION >= 0x050000
+	return platformName() == "cocoa" || platformName().contains("wayland");
+#else
+#  ifdef Q_OS_MAC
+	return true;
+#  else
+    return false;
+#  endif // Q_OS_MAC
+#endif // QT_VERSION
+}
+
+
 QList<int> GuiApplication::viewIds() const
 {
 	return d->views_.keys();

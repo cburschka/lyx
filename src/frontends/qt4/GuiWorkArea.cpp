@@ -245,20 +245,10 @@ GuiWorkArea::Private::Private(GuiWorkArea * parent)
   dialog_mode_(false), shell_escape_(false), read_only_(false),
   clean_(true), externally_modified_(false), needs_caret_geometry_update_(true)
 {
-/* Qt on macOS and Wayland does not respect the
- * Qt::WA_OpaquePaintEvent attribute and resets the widget backing
- * store at each update. Therefore, we use our own backing store in
- * these two cases. */
-#if QT_VERSION >= 0x050000
-	use_backingstore_ = guiApp->platformName() == "cocoa"
-		|| guiApp->platformName().contains("wayland");
-#else
-#  ifdef Q_OS_MAC
-	use_backingstore_ = true;
-#  else
-	use_backingstore_ = false;
-#  endif
-#endif
+	use_backingstore_ = lyxrc.draw_strategy == LyXRC::DS_BACKINGSTORE
+		|| guiApp->needsBackingStore();
+	LYXERR(Debug::WORKAREA, "Drawing strategy is: "
+	                        << (use_backingstore_ ? "backingstore" : "partial"));
 
 	int const time = QApplication::cursorFlashTime() / 2;
 	if (time > 0) {

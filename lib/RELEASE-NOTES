@@ -1,3 +1,14 @@
+!Important Change in LyX 2.3.7
+
+The following pref variable was added:
+
+* \draw_strategy partial|backingstore: when this is set to
+  "backingstore", the drawing code will force the use of an
+  intermediate surface, instead of just drawing changed regions on
+  screen. Note that "backingstore" is actually always enforced on
+  macOS and Wayland (default: partial).
+
+
 !Important Change in LyX 2.3.1
 
 * A change to how math macros are output can break some documents that use
