@@ -107,6 +107,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\dialogs_iconify_with_main", LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN },
 	{ "\\display_graphics", LyXRC::RC_DISPLAY_GRAPHICS },
 	{ "\\document_path", LyXRC::RC_DOCUMENTPATH },
+	{ "\\draw_strategy", LyXRC::RC_DRAW_STRATEGY },
 	{ "\\editor_alternatives", LyXRC::RC_EDITOR_ALTERNATIVES },
 	{ "\\escape_chars", LyXRC::RC_ESC_CHARS },
 	{ "\\example_path", LyXRC::RC_EXAMPLEPATH },
@@ -1134,6 +1135,19 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			}
 			break;
 
+		case RC_DRAW_STRATEGY:
+			if (lexrc.next()) {
+				string const tmp = lexrc.getString();
+				if (tmp == "partial")
+					draw_strategy = DS_PARTIAL;
+				else if (tmp == "backingstore")
+					draw_strategy = DS_BACKINGSTORE;
+				else {
+					draw_strategy = DS_PARTIAL;
+					LYXERR0("Unrecognized draw strategy " << tmp <<'"');
+				}
+			}
+			break;
 
 		case RC_LAST:
 			break; // this is just a dummy
@@ -2021,10 +2035,28 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
+		// fall through
+	case RC_DRAW_STRATEGY:
+		if (ignore_system_lyxrc ||
+			draw_strategy != system_lyxrc.draw_strategy) {
+			string status;
+			switch (draw_strategy) {
+			case DS_PARTIAL:
+				status = "partial";
+				break;
+			case DS_BACKINGSTORE:
+				status = "backingstore";
+				break;
+			}
+			os << "\\draw_strategy " << status << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+		// fall through
 
 	os << "\n#\n"
-			<< "# COLOR SECTION ###################################\n"
-			<< "#\n\n";
+		<< "# COLOR SECTION ###################################\n"
+		<< "#\n\n";
 
 	// fall through
 	case RC_SET_COLOR:
@@ -2910,6 +2942,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 				package().document_dir() = FileName(lyxrc.document_path);
 		}
 		// fall through
+	case LyXRC::RC_DRAW_STRATEGY:
 	case LyXRC::RC_EDITOR_ALTERNATIVES:
 	case LyXRC::RC_ESC_CHARS:
 	case LyXRC::RC_EXAMPLEPATH:

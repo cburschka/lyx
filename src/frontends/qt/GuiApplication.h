@@ -110,6 +110,9 @@ public:
 	///
 	Menus & menus();
 
+	/// \returns true if painting the workarea requires a backing store.
+	bool needsBackingStore() const;
+
 	/// \name Methods inherited from QApplication class
 	//@{
 	bool notify(QObject * receiver, QEvent * event) override;

@@ -132,13 +132,10 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 GuiWorkArea::Private::Private(GuiWorkArea * parent)
 	: p(parent), completer_(new GuiCompleter(p, p))
 {
-	/* Qt on macOS and Wayland does not respect the
-	 * Qt::WA_OpaquePaintEvent attribute and resets the widget backing
-	 * store at each update. Therefore, we use our own backing store
-	 * in these two cases.
-	 */
-	use_backingstore_ = guiApp->platformName() == "cocoa"
-		|| guiApp->platformName().contains("wayland");
+	use_backingstore_ = lyxrc.draw_strategy == LyXRC::DS_BACKINGSTORE
+		|| guiApp->needsBackingStore();
+	LYXERR(Debug::WORKAREA, "Drawing strategy is: "
+	                        << (use_backingstore_ ? "backingstore" : "partial"));
 
 	int const time = QApplication::cursorFlashTime() / 2;
 	if (time > 0) {

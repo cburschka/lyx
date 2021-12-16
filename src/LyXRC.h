@@ -189,6 +189,7 @@ public:
 		RC_VIEWER_ALTERNATIVES,
 		RC_VISUAL_CURSOR,
 		RC_CLOSE_BUFFER_WITH_LAST_VIEW,
+		RC_DRAW_STRATEGY,
 		RC_LAST
 	};
 
@@ -573,6 +574,17 @@ public:
 
 	///
 	BookmarksVisibility bookmarks_visibility = BMK_NONE;
+
+	enum DrawStrategy {
+		// draw all (not implemented yet)
+		// FS_FULL,
+		// draw only what has changed
+		DS_PARTIAL,
+		// draw in backing store (only what has changed)
+		DS_BACKINGSTORE
+	};
+	///
+	DrawStrategy draw_strategy = DS_PARTIAL;
 };
 
 
