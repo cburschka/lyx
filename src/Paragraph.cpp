@@ -4108,15 +4108,14 @@ bool Paragraph::needsCProtection(bool const fragile) const
 	}
 
 	// now check whether we have insets that need cprotection
-	pos_type size = pos_type(d->text_.size());
-	for (pos_type i = 0; i < size; ++i) {
-		if (!isInset(i))
+	for (auto const & icit : d->insetlist_) {
+		Inset const * ins = icit.inset;
+		if (!ins)
 			continue;
-		Inset const * ins = getInset(i);
 		if (ins->needsCProtection(maintext, fragile))
 			return true;
 		// Now check math environments
-		InsetMath const * im = getInset(i)->asInsetMath();
+		InsetMath const * im = ins->asInsetMath();
 		if (!im || im->cell(0).empty())
 			continue;
 		switch(im->cell(0)[0]->lyxCode()) {
