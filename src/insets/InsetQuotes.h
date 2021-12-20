@@ -200,8 +200,6 @@ private:
 	QuoteLevel level_ = QuoteLevel::Primary;
 	///
 	QuoteStyle global_style_ = QuoteStyle::English;
-	/// Current font encoding
-	std::string fontenc_;
 	/// Code of the contextual language
 	std::string context_lang_;
 	/// Is this in a pass-thru context?

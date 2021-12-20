@@ -639,11 +639,8 @@ InsetQuotes::InsetQuotes(Buffer * buf, char_type c, QuoteLevel level,
 	bool dynamic = false;
 	if (buf) {
 		global_style_ = buf->masterBuffer()->params().quotes_style;
-		fontenc_ = buf->masterBuffer()->params().main_font_encoding();
 		dynamic = buf->masterBuffer()->params().dynamic_quotes;
 		fontspec_ = buf->masterBuffer()->params().useNonTeXFonts;
-	} else {
-		fontenc_ = "OT1";
 	}
 	if (style.empty())
 		style_ = dynamic ? QuoteStyle::Dynamic : global_style_;
@@ -891,7 +888,7 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 		// Use internal commands in headings with hyperref
 		// (ligatures not featured in PDF strings)
 		qstr = quoteparams.getLaTeXQuote(quotechar, "int", rtl_);
-	} else if (fontenc_ == "T1"
+	} else if (runparams.main_fontenc == "T1"
 		   && !runparams.local_font->language()->internalFontEncoding()) {
 		// Quotation marks for T1 font encoding
 		// (using ligatures)
@@ -905,7 +902,7 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 #else
 	} else if ((!runparams.use_babel
 #endif
-		   || (fontenc_ != "T1" && fontenc_ != "OT1"))
+		   || (runparams.main_fontenc != "T1" && runparams.main_fontenc != "OT1"))
 		   || runparams.isFullUnicode()) {
 		// Standard quotation mark macros
 		// These are also used by babel
@@ -1008,7 +1005,6 @@ void InsetQuotes::updateBuffer(ParIterator const & it, UpdateType /* utype*/, bo
 	pass_thru_ = it.paragraph().isPassThru();
 	context_lang_ = font.language()->code();
 	internal_fontenc_ = font.language()->internalFontEncoding();
-	fontenc_ = bp.main_font_encoding();
 	global_style_ = bp.quotes_style;
 	fontspec_ = bp.useNonTeXFonts;
 	rtl_ = font.isRightToLeft();
@@ -1028,7 +1024,8 @@ void InsetQuotes::validate(LaTeXFeatures & features) const
 #else
 	if (!features.useBabel()
 #endif
-	    && !features.runparams().isFullUnicode() && fontenc_ != "T1") {
+	    && !features.runparams().isFullUnicode()
+	    && features.runparams().main_fontenc != "T1") {
 		switch (type) {
 		case 0x201a:
 			features.require("quotesinglbase");
@@ -1065,7 +1062,7 @@ void InsetQuotes::validate(LaTeXFeatures & features) const
 	case 0x0022: {
 		if (features.runparams().isFullUnicode() && fontspec_)
 			features.require("textquotedblp");
-		else if (fontenc_ != "T1" || internal_fontenc_)
+		else if (features.runparams().main_fontenc != "T1" || internal_fontenc_)
 			features.require("textquotedbl");
 		break;
 	}

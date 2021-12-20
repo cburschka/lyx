@@ -1240,7 +1240,7 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 	//       non-standard font encoding. If we are using such a language,
 	//       we do not output special T1 chars.
 	if (!runparams.inIPA && !running_font.language()->internalFontEncoding()
-	    && !runparams.isFullUnicode() && bparams.main_font_encoding() == "T1"
+	    && !runparams.isFullUnicode() && runparams.main_fontenc == "T1"
 	    && latexSpecialT1(c, os, i, column))
 		return;
 	// NOTE: "fontspec" (non-TeX fonts) sets the font encoding to "TU" (untill 2017 "EU1" or "EU2")
@@ -1532,7 +1532,7 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 		if (c == 0x0022) {
 			if (features.runparams().isFullUnicode() && bp.useNonTeXFonts)
 				features.require("textquotedblp");
-			else if (bp.main_font_encoding() != "T1"
+			else if (features.runparams().main_fontenc != "T1"
 				 || ((&owner_->getFontSettings(bp, i))->language()->internalFontEncoding()))
 				features.require("textquotedbl");
 		} else if (ci.textfeature() && contains(ci.textpreamble(), '=')) {
