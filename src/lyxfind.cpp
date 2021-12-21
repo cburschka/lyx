@@ -1585,6 +1585,30 @@ void static fillMissingUnicodesymbols()
   addAccents("\\gimel", getutf8(0x05d2));
   addAccents("\\hebdalet", getutf8(0x05d3));
   addAccents("\\daleth", getutf8(0x05d3));
+  addAccents("\\hebhe", getutf8(0x05d4));
+  addAccents("\\hebvav", getutf8(0x05d5));
+  addAccents("\\hebzayin", getutf8(0x05d6));
+  addAccents("\\hebhet", getutf8(0x05d7));
+  addAccents("\\hebtet", getutf8(0x05d8));
+  addAccents("\\hebyod", getutf8(0x05d9));
+  addAccents("\\hebfinalkaf", getutf8(0x05da));
+  addAccents("\\hebkaf", getutf8(0x05db));
+  addAccents("\\heblamed", getutf8(0x05dc));
+  addAccents("\\hebfinalmem", getutf8(0x05dd));
+  addAccents("\\hebmem", getutf8(0x05de));
+  addAccents("\\hebfinalnun", getutf8(0x05df));
+  addAccents("\\hebnun", getutf8(0x05e0));
+  addAccents("\\hebsamekh", getutf8(0x05e1));
+  addAccents("\\hebayin", getutf8(0x05e2));
+  addAccents("\\hebfinalpe", getutf8(0x05e3));
+  addAccents("\\hebpe", getutf8(0x05e4));
+  addAccents("\\hebfinaltsadi", getutf8(0x05e5));
+  addAccents("\\hebtsadi", getutf8(0x05e6));
+  addAccents("\\hebqof", getutf8(0x05e7));
+  addAccents("\\hebresh", getutf8(0x05e8));
+  addAccents("\\hebshin", getutf8(0x05e9));
+  addAccents("\\hebtav", getutf8(0x05ea));
+
   // Thai characters
   addAccents("\\thaiKoKai", getutf8(0x0e01));
   addAccents("\\thaiKhoKhai", getutf8(0x0e02));
