@@ -774,11 +774,20 @@ void docbookNoSubfigures(XMLStream & xs, OutputParams const & runparams, const I
 		rpNoTitle.docbook_in_table = true;
 
 	// Generate the contents of the float (to check for emptiness).
-	odocstringstream os2;
-	XMLStream xs2(os2);
-	thisFloat->InsetText::docbook(xs2, rpNoTitle);
+	odocstringstream osFloatContent;
+	XMLStream xsFloatContent(osFloatContent);
+	thisFloat->InsetText::docbook(xsFloatContent, rpNoTitle);
+	bool hasFloat = !osFloatContent.str().empty();
+
+	// Do the same for the caption.
+	odocstringstream osCaptionContent;
+	XMLStream xsCaptionContent(osCaptionContent);
+	caption->getCaptionAsDocBook(xsCaptionContent, rpNoLabel);
+	bool hasCaption = !osCaptionContent.str().empty();
 
 	// Organisation: <float> <title if any/> <contents without title/> </float>.
+
+	// - Generate the attributes for the float tag.
 	docstring attr = docstring();
 	if (label)
 		attr += "xml:id=\"" + xml::cleanID(label->screenLabel()) + "\"";
@@ -789,28 +798,29 @@ void docbookNoSubfigures(XMLStream & xs, OutputParams const & runparams, const I
 	}
 
 	// - Open the float tag.
-	xs << xml::StartTag(ftype.docbookTag(caption != nullptr), attr);
+	xs << xml::StartTag(ftype.docbookTag(hasCaption), attr);
 	xs << xml::CR();
 
 	// - Generate the caption.
-	if (caption) {
+	if (hasCaption) {
 		string const &titleTag = ftype.docbookCaption();
 		xs << xml::StartTag(titleTag);
-		caption->getCaptionAsDocBook(xs, rpNoLabel);
+		xs << XMLStream::ESCAPE_NONE << osCaptionContent.str();
 		xs << xml::EndTag(titleTag);
 		xs << xml::CR();
 	}
 
-	// - Output the actual content of the float.
-	if (!os2.str().empty())
-		xs << XMLStream::ESCAPE_NONE << os2.str();
+	// - Output the actual content of the float or some dummy content (to ensure that the output
+	// document is valid).
+	if (hasFloat)
+		xs << XMLStream::ESCAPE_NONE << osFloatContent.str();
 	else if (ftype.docbookFloatType() == "table")
 		docbookGenerateFillerTable(xs, thisFloat->buffer().params().docbook_table_output);
 	else
 		docbookGenerateFillerMedia(xs);
 
 	// - Close the float.
-	xs << xml::EndTag(ftype.docbookTag(caption != nullptr));
+	xs << xml::EndTag(ftype.docbookTag(hasCaption));
 	xs << xml::CR();
 }
 
