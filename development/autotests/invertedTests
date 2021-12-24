@@ -519,6 +519,9 @@ export/templates/Articles/IEEE_Transactions(.*)_docbook5
 # - Bibliography in the middle of the document (potentially fixable, but complicated, because some documents have
 #   several bibliographies, like books with one bibliography per chapter), subsections.
 export/export/docbook/SciPoster_docbook5
+# - A figure within a title does not make sense at all, so it cannot be valid
+#   DocBook under any circumstances.
+export/export/latex/lyxbugs-resolved/cprotect/7779-float-in-par-env_docbook5
 
 Sublabel: docbook poster
 # Posters cannot be properly exported, the LyX documents are too far from
