@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- This DocBook file was created by LyX 2.4.0dev
-  See http://www.lyx.org/ for more information -->
+  See https://www.lyx.org/ for more information -->
 <article xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
 <info>
 <title>I am a title</title>
@@ -12,7 +12,6 @@
 <para>I am an abstract</para>
 <para>I am also an abstract</para>
 </abstract>
-
 </info>
 <para>I am a standard paragraph. </para>
 <section xml:id="sec.Sec-1">
@@ -22,46 +21,95 @@
 <blockquote>
 <para>I am a quote<inlineequation>
 <alt role='tex'>\,with\,a\,formula</alt>
- <m:math>
+<m:math display="inline">
  
+<m:mrow>
  <m:mrow>
-  <m:mrow><m:mspace width="6px" /><m:mi>w</m:mi><m:mi>i</m:mi><m:mi>t</m:mi><m:mi>h</m:mi><m:mspace width="6px" /><m:mi>a</m:mi><m:mspace width="6px" /><m:mi>f</m:mi><m:mi>o</m:mi><m:mi>r</m:mi><m:mi>m</m:mi><m:mi>u</m:mi><m:mi>l</m:mi><m:mi>a</m:mi>
-  </m:mrow>
+  <m:mspace width="6px"/>
+  <m:mi>w</m:mi>
+  <m:mi>i</m:mi>
+  <m:mi>t</m:mi>
+  <m:mi>h</m:mi>
+  <m:mspace width="6px"/>
+  <m:mi>a</m:mi>
+  <m:mspace width="6px"/>
+  <m:mi>f</m:mi>
+  <m:mi>o</m:mi>
+  <m:mi>r</m:mi>
+  <m:mi>m</m:mi>
+  <m:mi>u</m:mi>
+  <m:mi>l</m:mi>
+  <m:mi>a</m:mi>
  </m:mrow>
- </m:math>
+</m:mrow>
+</m:math>
 </inlineequation>. </para>
 </blockquote>
 <para>Now, we're outside quotes.</para>
 <informalequation>
 <alt role='tex'>Formula!</alt>
- <m:math>
+<m:math display="block">
  
+<m:mrow>
  <m:mrow>
-  <m:mrow><m:mi>F</m:mi><m:mi>o</m:mi><m:mi>r</m:mi><m:mi>m</m:mi><m:mi>u</m:mi><m:mi>l</m:mi><m:mi>a</m:mi><m:mo>!</m:mo>
-  </m:mrow>
+  <m:mi>F</m:mi>
+  <m:mi>o</m:mi>
+  <m:mi>r</m:mi>
+  <m:mi>m</m:mi>
+  <m:mi>u</m:mi>
+  <m:mi>l</m:mi>
+  <m:mi>a</m:mi>
+  <m:mo>!</m:mo>
  </m:mrow>
- </m:math>
+</m:mrow>
+</m:math>
 </informalequation>
 <informalequation xml:id="eq.EQ.">
 <alt role='tex'>\text{I am a formula with a ref.}\label{eq:EQ.}</alt>
- <m:math>
+<m:math display="block">
  
- <m:mrow>
-  <m:mstyle mathvariant='normal'>
-   <m:mrow><m:mi>I</m:mi>&#0160;<m:mi>a</m:mi><m:mi>m</m:mi>&#0160;<m:mi>a</m:mi>&#0160;<m:mi>f</m:mi><m:mi>o</m:mi><m:mi>r</m:mi><m:mi>m</m:mi><m:mi>u</m:mi><m:mi>l</m:mi><m:mi>a</m:mi>&#0160;<m:mi>w</m:mi><m:mi>i</m:mi><m:mi>t</m:mi><m:mi>h</m:mi>&#0160;<m:mi>a</m:mi>&#0160;<m:mi>r</m:mi><m:mi>e</m:mi><m:mi>f</m:mi><m:mn>.</m:mn>
-   </m:mrow>
-  </m:mstyle>
- </m:mrow>
- </m:math>
+<m:mtable displaystyle='true'>
+ <m:mtr>
+  <m:mtd>
+   <m:mstyle mathvariant='normal'>
+    <m:mrow>
+     <m:mi>I</m:mi>&#0160;
+     <m:mi>a</m:mi>
+     <m:mi>m</m:mi>&#0160;
+     <m:mi>a</m:mi>&#0160;
+     <m:mi>f</m:mi>
+     <m:mi>o</m:mi>
+     <m:mi>r</m:mi>
+     <m:mi>m</m:mi>
+     <m:mi>u</m:mi>
+     <m:mi>l</m:mi>
+     <m:mi>a</m:mi>&#0160;
+     <m:mi>w</m:mi>
+     <m:mi>i</m:mi>
+     <m:mi>t</m:mi>
+     <m:mi>h</m:mi>&#0160;
+     <m:mi>a</m:mi>&#0160;
+     <m:mi>r</m:mi>
+     <m:mi>e</m:mi>
+     <m:mi>f</m:mi>
+     <m:mn>.</m:mn>
+    </m:mrow>
+   </m:mstyle>
+  </m:mtd>
+  <m:mtd>
+   <m:mtext>(1)</m:mtext>
+  </m:mtd>
+ </m:mtr>
+</m:mtable>
+</m:math>
 </informalequation>
 
 <para>See <xref linkend="sec.Sec-2kqgsdiflhqsdlifgjuzer-povtuizmvnuer-t-vmsrmfli--uh--a--rtpfuo----rtpc.m-ca-rgifzapeu-tvgz" />.</para>
 <para>Also, a formula with an user-defined macro that outputs well in LaTeX but cannot in MathML: <inlineequation>
 <alt role='tex'>\testmacro</alt>
-<mathphrase>MathML export failed. Please report this as a bug.</mathphrase>
+<mathphrase>MathML export failed. Please report this as a bug to the LyX developers: https://www.lyx.org/trac.</mathphrase>
 </inlineequation>. </para>
-<!-- \latexCommandThatShouldBeCommented -->
-<section>
+<!-- \latexCommandThatShouldBeCommented --><section>
 <title>I am the first subsection</title>
 <para>I am the only paragraph of the first subsection. </para>
 </section>
@@ -131,19 +179,33 @@ I am no more code. </para>
 <caption>I am a table caption below the table.</caption>
 <tbody>
 <tr>
-<td align='center' valign='top'>Table 1</td>
-<td align='center' valign='top'>Table 2</td>
-<td align='center' valign='top'>Table 3</td>
+<td align='center' valign='top'>
+<para>Table 1</para>
+</td>
+<td align='center' valign='top'>
+<para>Table 2</para>
+</td>
+<td align='center' valign='top'>
+<para>Table 3</para>
+</td>
 </tr>
 <tr>
-<td align='center' valign='top'>Row 1</td>
+<td align='center' valign='top'>
+<para>Row 1</para>
+</td>
 <td align='center' valign='top'></td>
-<td align='center' valign='top'>Col 3, row 1</td>
+<td align='center' valign='top'>
+<para>Col 3, row 1</para>
+</td>
 </tr>
 <tr>
-<td align='center' valign='top'>Row 2</td>
+<td align='center' valign='top'>
+<para>Row 2</para>
+</td>
 <td align='center' valign='top'></td>
-<td align='center' valign='top'>Col 3, row 2</td>
+<td align='center' valign='top'>
+<para>Col 3, row 2</para>
+</td>
 </tr>
 </tbody>
 </table>
@@ -151,38 +213,66 @@ I am no more code. </para>
 <caption>I am a table caption above the table.</caption>
 <tbody>
 <tr>
-<td align='center' valign='top'>Table 1</td>
-<td align='center' valign='top'>Table 2</td>
-<td align='center' valign='top'>Table 3</td>
+<td align='center' valign='top'>
+<para>Table 1</para>
+</td>
+<td align='center' valign='top'>
+<para>Table 2</para>
+</td>
+<td align='center' valign='top'>
+<para>Table 3</para>
+</td>
 </tr>
 <tr>
-<td align='center' valign='top'>Row 1</td>
+<td align='center' valign='top'>
+<para>Row 1</para>
+</td>
 <td align='center' valign='top'></td>
-<td align='center' valign='top'>Col 3, row 1</td>
+<td align='center' valign='top'>
+<para>Col 3, row 1</para>
+</td>
 </tr>
 <tr>
-<td align='center' valign='top'>Row 2</td>
+<td align='center' valign='top'>
+<para>Row 2</para>
+</td>
 <td align='center' valign='top'></td>
-<td align='center' valign='top'>Col 3, row 2</td>
+<td align='center' valign='top'>
+<para>Col 3, row 2</para>
+</td>
 </tr>
 </tbody>
 </table>
 <informaltable>
 <tbody>
 <tr>
-<td align='center' valign='top'>Table that has no caption 1</td>
-<td align='center' valign='top'>Table that has no caption 2</td>
-<td align='center' valign='top'>Table that has no caption 3</td>
+<td align='center' valign='top'>
+<para>Table that has no caption 1</para>
+</td>
+<td align='center' valign='top'>
+<para>Table that has no caption 2</para>
+</td>
+<td align='center' valign='top'>
+<para>Table that has no caption 3</para>
+</td>
 </tr>
 <tr>
-<td align='center' valign='top'>Row 1</td>
+<td align='center' valign='top'>
+<para>Row 1</para>
+</td>
 <td align='center' valign='top'></td>
-<td align='center' valign='top'>Col 3, row 1</td>
+<td align='center' valign='top'>
+<para>Col 3, row 1</para>
+</td>
 </tr>
 <tr>
-<td align='center' valign='top'>Row 2</td>
+<td align='center' valign='top'>
+<para>Row 2</para>
+</td>
 <td align='center' valign='top'></td>
-<td align='center' valign='top'>Col 3, row 2</td>
+<td align='center' valign='top'>
+<para>Col 3, row 2</para>
+</td>
 </tr>
 </tbody>
 </informaltable>
