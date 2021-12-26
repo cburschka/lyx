@@ -792,7 +792,8 @@ void docbookNoSubfigures(XMLStream & xs, OutputParams const & runparams, const I
 		hasCaption = !osCaptionContent.str().empty();
 	}
 
-	// Organisation: <float> <title if any/> <contents without title/> </float>.
+	// Organisation: <float with xml:id if any> <title if any/> <contents without title nor xml:id/> </float>.
+	// Titles and xml:id are generated with specific insets and must be dealt with using OutputParams.
 
 	// - Generate the attributes for the float tag.
 	docstring attr = docstring();
