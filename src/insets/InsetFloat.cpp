@@ -759,8 +759,7 @@ void docbookGenerateFillerTable(XMLStream & xs, BufferParams::TableOutput format
 
 
 void docbookNoSubfigures(XMLStream & xs, OutputParams const & runparams, const InsetCaption * caption,
-                         const InsetLabel * label, Floating const & ftype, const InsetFloat * thisFloat)
-{
+                         const InsetLabel * label, Floating const & ftype, const InsetFloat * thisFloat) {
 	// Ensure there is no label output, it is supposed to be handled as xml:id.
 	OutputParams rpNoLabel = runparams;
 	if (label)
@@ -775,15 +774,23 @@ void docbookNoSubfigures(XMLStream & xs, OutputParams const & runparams, const I
 
 	// Generate the contents of the float (to check for emptiness).
 	odocstringstream osFloatContent;
-	XMLStream xsFloatContent(osFloatContent);
-	thisFloat->InsetText::docbook(xsFloatContent, rpNoTitle);
-	bool hasFloat = !osFloatContent.str().empty();
+	bool hasFloat = false;
+
+	if (thisFloat) {
+		XMLStream xsFloatContent(osFloatContent);
+		thisFloat->InsetText::docbook(xsFloatContent, rpNoTitle);
+		hasFloat = !osFloatContent.str().empty();
+	}
 
 	// Do the same for the caption.
 	odocstringstream osCaptionContent;
-	XMLStream xsCaptionContent(osCaptionContent);
-	caption->getCaptionAsDocBook(xsCaptionContent, rpNoLabel);
-	bool hasCaption = !osCaptionContent.str().empty();
+	bool hasCaption = false;
+
+	if (caption != nullptr) {
+		XMLStream xsCaptionContent(osCaptionContent);
+		caption->getCaptionAsDocBook(xsCaptionContent, rpNoLabel);
+		hasCaption = !osCaptionContent.str().empty();
+	}
 
 	// Organisation: <float> <title if any/> <contents without title/> </float>.
 
