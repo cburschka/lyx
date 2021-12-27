@@ -729,7 +729,7 @@ Menuset
 	Menu "context-statusbar"
 		ZoomOptions
 		Separator
-		Item "Show Zoom|Z" "ui-toggle zoom"
+		Item "Show Zoom Value|Z" "ui-toggle zoom"
 		Item "Show Zoom Slider|S" "ui-toggle zoomslider"
 	End
 
