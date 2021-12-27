@@ -100,6 +100,8 @@ void InsetMathSubstack::infoize(odocstream & os) const
 void InsetMathSubstack::write(TeXMathStream & os) const
 {
 	MathEnsurer ensurer(os);
+	if (os.fragile())
+		os << "\\protect";
 	os << "\\substack{";
 	bool open = os.startOuterRow();
 	InsetMathGrid::write(os);

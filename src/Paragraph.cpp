@@ -4125,7 +4125,6 @@ bool Paragraph::needsCProtection(bool const fragile) const
 		if (!im || im->cell(0).empty())
 			continue;
 		switch(im->cell(0)[0]->lyxCode()) {
-		case MATH_SUBSTACK_CODE:
 		case MATH_ENV_CODE:
 		case MATH_XYMATRIX_CODE:
 			// these need cprotection
