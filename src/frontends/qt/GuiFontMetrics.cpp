@@ -92,7 +92,7 @@ namespace {
 
 // Limit strwidth_cache_ total cost to 1MB of string data.
 int const strwidth_cache_max_cost = 1024 * 1024;
-// Limit breakat_cache_ total cost to 10MB of string data.
+// Limit breakstr_cache_ total cost to 10MB of string data.
 // This is useful for documents with very large insets.
 int const breakstr_cache_max_cost = 10 * 1024 * 1024;
 // Qt 5.x already has its own caching of QTextLayout objects
