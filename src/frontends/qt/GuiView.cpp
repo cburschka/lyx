@@ -2356,10 +2356,8 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	case LFUN_UI_TOGGLE:
 		if (cmd.argument() == "zoom") {
-			enable = doc_buffer;
 			flag.setOnOff(zoom_value_ ? zoom_value_->isVisible() : false);
 		} else if (cmd.argument() == "zoomslider") {
-			enable = doc_buffer;
 			flag.setOnOff(zoom_slider_ ? zoom_slider_->isVisible() : false);
 		} else
 			flag.setOnOff(isFullScreen());
