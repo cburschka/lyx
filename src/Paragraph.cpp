@@ -4120,17 +4120,6 @@ bool Paragraph::needsCProtection(bool const fragile) const
 			continue;
 		if (ins->needsCProtection(maintext, fragile))
 			return true;
-		// Now check math environments
-		InsetMath const * im = ins->asInsetMath();
-		if (!im || im->cell(0).empty())
-			continue;
-		switch(im->cell(0)[0]->lyxCode()) {
-		case MATH_ENV_CODE:
-			// these need cprotection
-			return true;
-		default:
-			break;
-		}
 	}
 
 	return false;
