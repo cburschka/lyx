@@ -330,6 +330,10 @@ export/.*/el/.*_(dvi3|pdf5)_texF
 # class is not in TeX Live.
 export/templates/Articles/Econometrica_(dvi3|pdf5)_texF
 
+# xymatrix + LuaTeX
+# Error message says pdfTeX is required for xypdf.
+export/export/latex/lyxbugs-resolved/6243-protect-xymatrix-in-caption_pdf5.*
+
 
 # ================================================
 Sublabel: externalissues
