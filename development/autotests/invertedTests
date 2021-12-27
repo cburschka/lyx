@@ -526,6 +526,11 @@ export/export/docbook/SciPoster_docbook5
 # - A figure within a title does not make sense at all, so it cannot be valid
 #   DocBook under any circumstances.
 export/export/latex/lyxbugs-resolved/cprotect/7779-float-in-par-env_docbook5
+# - LilyPond upstream issue:
+#     https://gitlab.com/lilypond/lilypond/-/issues/6187
+#   See also ML discussion:
+#     https://www.mail-archive.com/search?l=mid&q=20211102011304.dmrcr7gjpxxwpd4o%40poole
+export/examples/(|ja/)Modules/LilyPond_Book_docbook5
 
 Sublabel: docbook poster
 # Posters cannot be properly exported, the LyX documents are too far from
