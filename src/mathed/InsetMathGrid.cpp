@@ -772,6 +772,9 @@ docstring InsetMathGrid::eolString(row_type row, bool fragile,
 	if (eol.empty() && row + 1 == nrows() && (nrows() == 1 || !last_eoln))
 		return docstring();
 
+	// FIXME: As of 2018 (with amendment in LaTeX 2021/06),
+	// \\ is a robust command and the following protection
+	// is no longer necessary
 	return (fragile ? "\\protect\\\\" : "\\\\") + eol;
 }
 
