@@ -1063,7 +1063,7 @@ Row newRow(TextMetrics const & tm, pit_type pit, pos_type pos, bool is_rtl)
 void cleanupRow(Row & row, bool at_end)
 {
 	if (row.empty()) {
-		row.endpos(0);
+		row.endpos(row.pos());
 		return;
 	}
 
