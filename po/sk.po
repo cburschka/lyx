@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-11-01 16:40+0100\n"
-"PO-Revision-Date: 2021-11-01 17:11+0000\n"
+"POT-Creation-Date: 2021-12-28 14:01+0100\n"
+"PO-Revision-Date: 2021-12-28 16:33+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3876,6 +3876,19 @@ msgstr ""
 #: src/frontends/qt/ui/PrefDisplayUi.ui:157
 msgid "&Underline change tracking additions"
 msgstr "&Podčiarknuť adície sledovaných zmien"
+
+#: src/frontends/qt/ui/PrefDisplayUi.ui:164
+msgid ""
+"If this is checked, an intermediate surface will be used for painting. This "
+"may be needed in some cases to have proper display, but breaks subpixel "
+"aliasing."
+msgstr ""
+"Keď zaškrtnuté, bude sa používať vnútorná plocha na kresbu. Môže to byť "
+"potrebné pre slušný displej. Ale porúša zarovnávanie pod-pixlov."
+
+#: src/frontends/qt/ui/PrefDisplayUi.ui:167
+msgid "Use &backing store to display text"
+msgstr "Používať zálohové ukladanie na zobrazenie &textu"
 
 #: src/frontends/qt/ui/PrefDocHandlingUi.ui:26
 msgid "Session Handling"
@@ -20157,8 +20170,12 @@ msgid "Giant-sized Icons"
 msgstr "Gigantické ikony"
 
 #: lib/ui/stdcontext.inc:732
+msgid "Show Zoom Value|Z"
+msgstr "Ukáž hodnotu lupy|h"
+
+#: lib/ui/stdcontext.inc:733
 msgid "Show Zoom Slider|S"
-msgstr "Ukáž posuvník lupy|U"
+msgstr "Ukáž posuvník lupy|p"
 
 #: lib/ui/stdmenus.inc:30
 msgid "File|F"
@@ -34818,9 +34835,9 @@ msgstr "Popis (%1$s)"
 msgid "Reset to Default (%1$d%)|R"
 msgstr "Nastaviť na Predvolené (%1$d%)|r"
 
-#: src/frontends/qt/Menus.cpp:1837
+#: src/frontends/qt/Menus.cpp:1835
 msgid "Zoom In|I"
-msgstr "Priblížiť|r"
+msgstr "Priblížiť|i"
 
 #: src/frontends/qt/Menus.cpp:1839
 msgid "Zoom Out|O"
