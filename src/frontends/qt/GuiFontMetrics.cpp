@@ -19,7 +19,6 @@
 
 #include "support/convert.h"
 #include "support/lassert.h"
-#include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/debug.h"
 
@@ -579,9 +578,6 @@ GuiFontMetrics::breakString_helper(docstring const & s, int first_wid, int wid,
 	 */
 	to.setWrapMode(force ? QTextOption::WrapAtWordBoundaryOrAnywhere
 	                     : QTextOption::WordWrap);
-	// Let QTextLine::naturalTextWidth() account for trailing spaces
-	// (horizontalAdvance() still does not).
-	to.setFlags(QTextOption::IncludeTrailingSpaces);
 	tl.setTextOption(to);
 
 	bool first = true;
@@ -600,26 +596,43 @@ GuiFontMetrics::breakString_helper(docstring const & s, int first_wid, int wid,
 	int pos = 0;
 	for (int i = 0 ; i < tl.lineCount() ; ++i) {
 		QTextLine const & line = tl.lineAt(i);
-		int const epos = brkstr2str_pos(qs, s, line.textStart() + line.textLength());
+		int const line_epos = line.textStart() + line.textLength();
+		int const epos = brkstr2str_pos(qs, s, line_epos);
 #if QT_VERSION >= 0x050000
-		int const wid = i + 1 < tl.lineCount() ? iround(line.horizontalAdvance())
-		                                       : iround(line.naturalTextWidth());
+		// This does not take trailing spaces into account, except for the last line.
+		int const wid = iround(line.naturalTextWidth());
+		// If the line is not the last one, trailing space is always omitted.
+		int nspc_wid = wid;
+		// For the last line, compute the width without trailing space
+		if (i + 1 == tl.lineCount()) {
+			// trim_pos points to the last character that is not a space
+			auto trim_pos = s.find_last_not_of(from_ascii(" "));
+			if (trim_pos == docstring::npos)
+				nspc_wid = 0;
+			else if (trim_pos + 1 < s.length()) {
+				int const num_spaces = s.length() - trim_pos - 1;
+				// find the position on the line before trailing
+				// spaces. Remove 1 to account for the ending
+				// non-breaking space of qs.
+				nspc_wid = iround(line.cursorToX(line_epos - num_spaces - 1));
+			}
+		}
 #else
 		// With some monospace fonts, the value of horizontalAdvance()
 		// can be wrong with Qt4. One hypothesis is that the invisible
 		// characters that we use are given a non-null width.
 		// FIXME: this is slower than it could be but we'll get rid of Qt4 anyway
-		int const wid = i + 1 < tl.lineCount() ? width(rtrim(s.substr(pos, epos - pos)))
-		                                       : width(s.substr(pos, epos - pos));
+		docstring const ss = s.substr(pos, epos - pos);
+		int const wid = width(ss);
+		int const nspc_wid = i + 1 < tl.lineCount() ? wid : width(trim(ss));
 #endif
-		breaks.emplace_back(epos - pos, wid);
+		breaks.emplace_back(epos - pos, wid, nspc_wid);
 		pos = epos;
 #if 0
 		// FIXME: should it be kept in some form?
 		if ((force && line.textLength() == brkStrOffset) || line_wid > x)
 			return {-1, line_wid};
 #endif
-
 	}
 
 	return breaks;

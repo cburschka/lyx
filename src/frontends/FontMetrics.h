@@ -126,9 +126,14 @@ public:
 
 	// The places where to break a string and the width of the resulting lines.
 	struct Break {
-		Break(int l, int w) : len(l), wid(w) {}
+		Break(int l, int w, int nsw) : len(l), wid(w), nspc_wid(nsw) {}
+		// Number of characters
 		int len = 0;
+		// text width
 		int wid = 0;
+		// text width when trailing spaces are removed; only makes a
+		// difference for the last break.
+		int nspc_wid = 0;
 	};
 	typedef std::vector<Break> Breaks;
 	/**

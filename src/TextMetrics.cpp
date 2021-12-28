@@ -1069,7 +1069,7 @@ void cleanupRow(Row & row, bool at_end)
 
 	row.endpos(row.back().endpos);
 	// remove trailing spaces on row break
-	if (!at_end)
+	if (!at_end && !row.flushed())
 		row.back().rtrim();
 	// boundary exists when there was no space at the end of row
 	row.right_boundary(!at_end && row.back().endpos == row.endpos());
@@ -1118,9 +1118,9 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 		                             : fcit->row_flags;
 		if (rows.empty() || needsRowBreak(f1, f2)) {
 			if (!rows.empty()) {
-				cleanupRow(rows.back(), false);
 				// Flush row as requested by row flags
 				rows.back().flushed((f1 & Flush) || (f2 & FlushBefore));
+				cleanupRow(rows.back(), false);
 			}
 			pos_type pos = rows.empty() ? 0 : rows.back().endpos();
 			rows.push_back(newRow(*this, bigrow.pit(), pos, is_rtl));
@@ -1155,9 +1155,9 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 	}
 
 	if (!rows.empty()) {
-		cleanupRow(rows.back(), true);
 		// Last row in paragraph is flushed
 		rows.back().flushed(true);
+		cleanupRow(rows.back(), true);
 	}
 
 	return rows;

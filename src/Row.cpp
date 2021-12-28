@@ -172,6 +172,7 @@ bool Row::Element::splitAt(int const width, int next_width, bool force,
 		e.str = str.substr(i, brk.len);
 		e.endpos = e.pos + brk.len;
 		e.dim.wid = brk.wid;
+		e.nspc_wid = brk.nspc_wid;
 		e.row_flags = CanBreakInside | BreakAfter;
 		if (first) {
 			// this element eventually goes to *this
@@ -218,6 +219,7 @@ void Row::Element::rtrim()
 	 */
 	str = support::rtrim(str);
 	endpos = pos + str.length();
+	dim.wid = nspc_wid;
 }
 
 
@@ -338,7 +340,8 @@ ostream & operator<<(ostream & os, Row const & row)
 	   << " descent: " << row.dim_.des
 	   << " separator: " << row.separator
 	   << " label_hfill: " << row.label_hfill
-	   << " row_boundary: " << row.right_boundary() << "\n";
+	   << " right_boundary: " << row.right_boundary()
+	   << " flushed: " << row.flushed() << "\n";
 	// We cannot use the operator above, unfortunately
 	double x = row.left_margin;
 	for (Row::Element const & e : row.elements_) {

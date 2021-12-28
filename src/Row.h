@@ -119,9 +119,11 @@ public:
 		pos_type pos;
 		// first position after the element in the paragraph
 		pos_type endpos;
-		// The dimension of the chunk (does not contains the
+		// The dimension of the chunk (does not contain the
 		// separator correction)
 		Dimension dim;
+		// The width of the element without trailing spaces
+		int nspc_wid = 0;
 
 		// Non-zero only if element is an inset
 		Inset const * inset = nullptr;
