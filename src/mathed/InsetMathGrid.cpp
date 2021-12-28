@@ -1251,8 +1251,8 @@ void InsetMathGrid::write(TeXMathStream & os,
 	// As of 2018 (with amendment in LaTeX 2021/06),
 	// \\ is a robust command and its protection
 	// is no longer necessary
-	bool const fragile = LaTeXFeatures::isAvailable("LaTeX-2021/06/01") ?
-		false : os.fragile();
+	bool const fragile = os.fragile()
+			&& !LaTeXFeatures::isAvailable("LaTeX-2021/06/01");
 	for (row_type row = beg_row; row < end_row; ++row) {
 		os << verboseHLine(rowinfo_[row].lines);
 		// don't write & and empty cells at end of line,
