@@ -207,7 +207,6 @@ public:
 		QStringList titlesegs = htext.split('\n');
 		int wline = 0;
 		int hline = fm.maxHeight();
-		QStringList::const_iterator sit;
 		for (QString const & seg : titlesegs) {
 			if (fm.width(seg) > wline)
 				wline = fm.width(seg);
