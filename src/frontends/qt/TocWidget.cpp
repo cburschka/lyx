@@ -523,8 +523,13 @@ void TocWidget::filterContents()
 
 	QModelIndexList indices = tocTV->model()->match(
 		tocTV->model()->index(0, 0),
-		Qt::DisplayRole, "*", -1,
-		Qt::MatchFlags(Qt::MatchWildcard|Qt::MatchRecursive));
+		Qt::DisplayRole, ".*", -1,
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
+		Qt::MatchFlags(Qt::MatchRegularExpression|Qt::MatchRecursive));
+#else
+		// deprecated in Qt 5.15.
+		Qt::MatchFlags(Qt::MatchRegExp|Qt::MatchRecursive));
+#endif
 
 	bool const show_active =
 		activeFilterCO->currentIndex() != 2;
