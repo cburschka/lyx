@@ -185,8 +185,9 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 		bparams.documentClass().plainLayout() : pit->layout();
 
 	ParagraphList const & paragraphs = text.paragraphs();
+	bool const firstpar = pit == paragraphs.begin();
 	ParagraphList::const_iterator const priorpit =
-		pit == paragraphs.begin() ? pit : prev(pit, 1);
+		firstpar ? pit : prev(pit, 1);
 
 	OutputState * state = getOutputState();
 	bool const use_prev_env_language = state->prev_env_language_ != nullptr
@@ -199,10 +200,13 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 	data.par_language = pit->getParLanguage(bparams);
 	Language const * const doc_language = bparams.language;
 	Language const * const prev_par_language =
-		(pit != paragraphs.begin())
-		? (use_prev_env_language ? state->prev_env_language_
-					 : priorpit->getParLanguage(bparams))
-		: doc_language;
+		// use font at inset or document language in first paragraph
+		firstpar ? (runparams.local_font ?
+				    runparams.local_font->language()
+				  : doc_language)
+			 : (use_prev_env_language ?
+				    state->prev_env_language_
+				  : priorpit->getParLanguage(bparams));
 
 	bool const use_polyglossia = runparams.use_polyglossia;
 	string const par_lang = use_polyglossia ?
@@ -219,11 +223,14 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 					!lang_end_command.empty();
 
 	// For polyglossia, switch language outside of environment, if possible.
+	// However, if we are at the start of an inset, do not close languages
+	// opened outside.
 	if (par_lang != prev_par_lang) {
-		if ((!using_begin_end || langOpenedAtThisLevel(state)) &&
-		    !lang_end_command.empty() &&
-		    prev_par_lang != doc_lang &&
-		    !prev_par_lang.empty()) {
+		if (!firstpar
+		    && (!using_begin_end || langOpenedAtThisLevel(state))
+		    && !lang_end_command.empty()
+		    && prev_par_lang != doc_lang
+		    && !prev_par_lang.empty()) {
 			os << from_ascii(subst(
 				lang_end_command,
 				"$$lang",
@@ -320,10 +327,12 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 
 
 static void finishEnvironment(otexstream & os, OutputParams const & runparams,
-			      TeXEnvironmentData const & data)
+			      TeXEnvironmentData const & data, bool const maintext,
+			      bool const lastpar)
 {
 	OutputState * state = getOutputState();
-	// BufferParams const & bparams = buf.params(); // FIXME: for speedup shortcut below, would require passing of "buf" as argument
+	// BufferParams const & bparams = buf.params();
+	// FIXME: for speedup shortcut below, would require passing of "buf" as argument
 	if (state->open_encoding_ == CJK && data.cjk_nested) {
 		// We need to close the encoding even if it does not change
 		// to do correct environment nesting
@@ -362,6 +371,20 @@ static void finishEnvironment(otexstream & os, OutputParams const & runparams,
 		if (runparams.encoding != data.prev_encoding) {
 			runparams.encoding = data.prev_encoding;
 			os << setEncoding(data.prev_encoding->iconvName());
+		}
+		// If this is the last par of an inset, the language needs
+		// to be closed after the environment
+		if (lastpar && !maintext) {
+			if (using_begin_end && langOpenedAtThisLevel(state)) {
+				if (isLocalSwitch(state)) {
+					os << "}";
+				} else {
+					os << "\\end{"
+					   << openLanguageName(state)
+					   << "}%\n";
+				}
+				popLanguageName();
+			}
 		}
 	}
 
@@ -462,7 +485,8 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 			prepareEnvironment(buf, text, par, os, runparams);
 		// Recursive call to TeXEnvironment!
 		TeXEnvironment(buf, text, runparams, pit, os);
-		finishEnvironment(os, runparams, data);
+		bool const lastpar = size_t(pit + 1) >= paragraphs.size();
+		finishEnvironment(os, runparams, data, text.isMainText(), lastpar);
 	}
 
 	if (pit != runparams.par_end)
@@ -1676,7 +1700,8 @@ void latexParagraphs(Buffer const & buf,
 			output_changes = bparams.output_changes;
 		else
 			output_changes = (runparams.for_searchAdv == OutputParams::SearchWithDeleted);
-		if (size_t(pit + 1) < paragraphs.size()) {
+		bool const lastpar = size_t(pit + 1) >= paragraphs.size();
+		if (!lastpar) {
 			ParagraphList::const_iterator nextpar = paragraphs.iterator_at(pit + 1);
 			Paragraph const & cpar = paragraphs.at(pit);
 			if ((par->layout() != nextpar->layout()
@@ -1703,7 +1728,7 @@ void latexParagraphs(Buffer const & buf,
 			prepareEnvironment(buf, text, par, os, runparams);
 		// pit can be changed in TeXEnvironment.
 		TeXEnvironment(buf, text, runparams, pit, os);
-		finishEnvironment(os, runparams, data);
+		finishEnvironment(os, runparams, data, maintext, lastpar);
 	}
 
 	// FIXME: uncomment the content or remove this block
