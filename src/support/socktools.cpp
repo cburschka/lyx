@@ -111,6 +111,13 @@ int listen(FileName const & name, int queue)
 	// bind() gives the local address 'name' for 'fd', also creating
 	// the socket special file in the filesystem. bind() returns -1
 	// in case of error
+	//
+	// Using Clang and fsanitize suggests there is an issue here but we do
+	// not understand the code enough to change it and we are not aware of
+	// how to trigger a crash or other issue while using LyX, so we leave
+	// it as is. For ML discussion, see here:
+	//   https://www.mail-archive.com/search?l=mid&q=20211227113249.53bf5a63%40admin1-desktop
+	//
 	if ((::bind (fd, reinterpret_cast<sockaddr *>(&addr), SUN_LEN(&addr))) == -1) {
 		LYXERR0("lyx: Could not bind address '" << name.absFileName()
 		       << "' to socket descriptor: " << strerror(errno));
