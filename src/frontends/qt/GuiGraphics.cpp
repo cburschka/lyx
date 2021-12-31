@@ -336,8 +336,8 @@ void GuiGraphics::on_newGroupPB_clicked()
 
 void GuiGraphics::changeBB()
 {
-	bbChanged = true;
-	LYXERR(Debug::GRAPHICS, "[bb_Changed set to true]");
+	bbChanged = isChangedBB();
+	LYXERR(Debug::GRAPHICS, "[bb_Changed set to " << bbChanged << "]");
 	changed();
 }
 
@@ -347,6 +347,10 @@ void GuiGraphics::on_browsePB_clicked()
 	QString const str = browse(filename->text());
 	if (!str.isEmpty()) {
 		filename->setText(str);
+		// read in the bb values of the new file
+		// if there was no explicit custom viewport
+		if (!bbChanged)
+			getBB();
 		changed();
 	}
 }
@@ -355,6 +359,7 @@ void GuiGraphics::on_browsePB_clicked()
 void GuiGraphics::on_getPB_clicked()
 {
 	getBB();
+	bbChanged = false;
 }
 
 
@@ -738,6 +743,37 @@ void GuiGraphics::getBB()
 	lbYunit->setCurrentIndex(0);
 	rtXunit->setCurrentIndex(0);
 	rtYunit->setCurrentIndex(0);
+}
+
+
+bool GuiGraphics::isChangedBB()
+{
+	string const fn = fromqstr(filename->text());
+	if (fn.empty())
+		return false;
+
+	string const bb = readBoundingBox(fn);
+	if (bb.empty())
+		return false;
+
+	// Compare orig bb values with the set ones
+	if (Length(token(bb, ' ', 0) + "bp") !=
+		Length(widgetToDoubleStr(lbX) + fromqstr(lbXunit->currentText())))
+		return true;
+
+	if (Length(token(bb, ' ', 1) + "bp") !=
+		Length(widgetToDoubleStr(lbY) + fromqstr(lbYunit->currentText())))
+		return true;
+
+	if (Length(token(bb, ' ', 2) + "bp") !=
+		Length(widgetToDoubleStr(rtX) + fromqstr(rtXunit->currentText())))
+		return true;
+
+	if (Length(token(bb, ' ', 3) + "bp") !=
+		Length(widgetToDoubleStr(rtY) + fromqstr(rtYunit->currentText())))
+		return true;
+
+	return false;
 }
 
 

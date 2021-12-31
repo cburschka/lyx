@@ -68,6 +68,8 @@ private:
 
 	/// get bounding box from file
 	void getBB();
+	/// does the bounding box differ from the file?
+	bool isChangedBB();
 	/// Browse for a file
 	QString browse(QString const &) const;
 	/// Read the Bounding Box from a eps or ps-file
