@@ -1330,6 +1330,11 @@ def checkConverterEntries():
                     addToRC(r'\copier docbook5 "python $$s/scripts/docbook_copy.py ' + docbook_lilypond_cmd.replace('"', r'\"') + r' $$i $$o"')
 
                     logger.info('+  found LilyPond-book version %s.' % version_number)
+
+                    # early exit on first match, avoid 2nd try with problematic python call
+                    # 1) in case of configure.py called with "python3" hardcoded "python" call is wrong
+                    # 2) in case of lilypond-book being an executable or shell script the python call is useless
+                    break
                 else:
                     logger.info('+  found LilyPond-book, but version %s is too old.' % version_number)
         if not found_lilypond_book:
