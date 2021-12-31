@@ -794,16 +794,17 @@ string GuiGraphics::readBoundingBox(string const & file)
 {
 	FileName const abs_file = support::makeAbsPath(file, fromqstr(bufferFilePath()));
 
-	// try to get it from the file, if possible. Zipped files are
-	// unzipped in the readBB_from_PSFile-Function
+	// With (E)PS files, try to get it from the file, if possible.
+	// Zipped files are unzipped in the readBB_from_PSFile-Function
 	string const bb = graphics::readBB_from_PSFile(abs_file);
 	if (!bb.empty())
 		return bb;
 
-	// we don't, so ask the Graphics Cache if it has loaded the file
+	// With other formats, we try to read the file dimensions
 	int width = 0;
 	int height = 0;
 
+	// First ask the Graphics Cache if it has loaded the file
 	graphics::Cache & gc = graphics::Cache::get();
 	if (gc.inCache(abs_file)) {
 		graphics::Image const * image = gc.item(abs_file)->image();
@@ -811,6 +812,13 @@ string GuiGraphics::readBoundingBox(string const & file)
 		if (image) {
 			width  = image->width();
 			height = image->height();
+		}
+	} else {
+		// If not, construct a QImage and get the values from that
+		QImage image(toqstr(abs_file.absoluteFilePath()));
+		if (!image.isNull()) {
+			width  = image.width();
+			height = image.height();
 		}
 	}
 
