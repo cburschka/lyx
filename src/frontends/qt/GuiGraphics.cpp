@@ -337,6 +337,7 @@ void GuiGraphics::on_newGroupPB_clicked()
 void GuiGraphics::changeBB()
 {
 	bbChanged = isChangedBB();
+	getPB->setEnabled(bbChanged);
 	LYXERR(Debug::GRAPHICS, "[bb_Changed set to " << bbChanged << "]");
 	changed();
 }
