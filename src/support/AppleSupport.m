@@ -42,6 +42,10 @@ void appleCleanupViewMenu() {
 
 
 bool appleUserTabbingPreferenceAlways() {
+#if defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && (__MAC_OS_X_VERSION_MAX_ALLOWED >= 101200)
 	return [NSWindow respondsToSelector:@selector(userTabbingPreference)] &&
 		[NSWindow userTabbingPreference] == NSWindowUserTabbingPreferenceAlways;
+#else
+	return false;
+#endif
 }
