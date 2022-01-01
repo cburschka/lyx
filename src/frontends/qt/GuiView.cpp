@@ -1577,7 +1577,8 @@ bool GuiView::event(QEvent * e)
 			setContentsMargins(0, 0, 0, 0);
 		}
 		return result;
-		}
+	}
+
 	case QEvent::WindowActivate: {
 		GuiView * old_view = guiApp->currentView();
 		if (this == old_view) {
