@@ -24,6 +24,7 @@ void appleCleanupEditMenu() {
 
 void appleCleanupViewMenu() {
 
+#if defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && (__MAC_OS_X_VERSION_MAX_ALLOWED >= 101200)
 	// Remove the "Show Tab Bar" menu item from the "View" menu, if supported
 	// See the Apple developer release notes:
 	// What should an application which already has support for tabbing do?
@@ -35,6 +36,8 @@ void appleCleanupViewMenu() {
 
 	// Remove the "Enter Full Screen" menu item from the "View" menu
 	[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"NSFullScreenMenuItemEverywhere"];
+
+#endif
 }
 
 
