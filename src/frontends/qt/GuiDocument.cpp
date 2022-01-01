@@ -2679,8 +2679,12 @@ void GuiDocument::updateFontlist()
 		fontModule->fontsMathCO->addItem(qt_("Class Default (TeX Fonts)"), QString("auto"));
 		fontModule->fontsMathCO->addItem(unimath, QString("default"));
 
+#if QT_VERSION >= 0x060000
+		const QStringList families(QFontDatabase::families());
+#else
 		QFontDatabase fontdb;
-		QStringList families(fontdb.families());
+		const QStringList families(fontdb.families());
+#endif
 		for (auto const & family : families) {
 			fontModule->fontsRomanCO->addItem(family, family);
 			fontModule->fontsSansCO->addItem(family, family);

@@ -931,8 +931,12 @@ PrefScreenFonts::PrefScreenFonts(GuiPreferences * form)
 		this, SLOT(selectTypewriter(QString)));
 #endif
 
+#if QT_VERSION >= 0x060000
+	const QStringList families(QFontDatabase::families());
+#else
 	QFontDatabase fontdb;
-	QStringList families(fontdb.families());
+	const QStringList families(fontdb.families());
+#endif
 	for (auto const & family : families) {
 		screenRomanCO->addItem(family);
 		screenSansCO->addItem(family);
