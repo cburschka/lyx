@@ -262,8 +262,9 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 
 	for (int i = 0; i != leftLW->count(); ++i) {
 		MathSymbol const & ms = mathSymbol(getDelimiterName(leftLW->item(i)));
-		QListWidgetItem * rwi = left_list_items_[doMatch(ms.unicode)]->clone();
-		right_list_items_[ms.unicode] = rwi;
+		char_type const rdelim = doMatch(ms.unicode);
+		QListWidgetItem * rwi = left_list_items_[rdelim]->clone();
+		right_list_items_[mathSymbol(texName(rdelim)).unicode] = rwi;
 		rightLW->addItem(rwi);
 	}
 
