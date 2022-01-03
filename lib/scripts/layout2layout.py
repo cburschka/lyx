@@ -256,7 +256,7 @@ def error(message):
 
 def trim_bom(line):
     " Remove byte order mark."
-    if line[0:3] == "\357\273\277":
+    if line[0:3] == b"\357\273\277":
         return line[3:]
     else:
         return line
@@ -345,8 +345,8 @@ def convert(lines, end_format):
     # for categories
     re_Declaration = re.compile(b'^#\\s*\\Declare\\w+Class.*$')
     re_ExtractCategory = re.compile(b'^(#\\s*\\Declare\\w+Class(?:\\[[^]]*?\\])?){([^(]+?)\\s+\\(([^)]+?)\\)\\s*}\\s*$')
-    ConvDict = {"article": "Articles", "book" : "Books", "letter" : "Letters", "report": "Reports", \
-                "presentation" : "Presentations", "curriculum vitae" : "Curricula Vitae", "handout" : "Handouts"}
+    ConvDict = {b"article": b"Articles", b"book": b"Books", b"letter": b"Letters", b"report": b"Reports",
+                b"presentation": b"Presentations", b"curriculum vitae": b"Curricula Vitae", b"handout": b"Handouts"}
     # Arguments
     re_OptArgs = re.compile(b'^(\\s*)OptionalArgs(\\s+)(\\d+)\\D*$', re.IGNORECASE)
     re_ReqArgs = re.compile(b'^(\\s*)RequiredArgs(\\s+)(\\d+)\\D*$', re.IGNORECASE)
@@ -485,7 +485,7 @@ def convert(lines, end_format):
                 continue
             col  = match.group(2)
             if col == "collapsable":
-                lines[i] = match.group(1) + "collapsible"
+                lines[i] = match.group(1) + b"collapsible"
             i += 1
             continue
 
@@ -703,7 +703,7 @@ def convert(lines, end_format):
             # Insert the required number of arguments at the end of the style definition
             match = re_End.match(lines[i])
             if match:
-                newarg = ['']
+                newarg = [b'']
                 # First the optionals (this is the required order pre 2.1)
                 if opts > 0:
                     if opts == 1:
@@ -1153,7 +1153,7 @@ def convert(lines, end_format):
             if latextype == b"item_environment" and label.lower() == b"counter_enumi":
                 lines[labeltype_line] = re_LabelType.sub(b'\\1\\2\\3Enumerate', lines[labeltype_line])
                 # Don't add the LabelCounter line later
-                counter = ""
+                counter = b""
 
             # Replace
             #
