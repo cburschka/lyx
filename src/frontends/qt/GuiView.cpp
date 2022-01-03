@@ -1634,7 +1634,6 @@ bool GuiView::event(QEvent * e)
 			QPinchGesture::ChangeFlags changeFlags = pinch->changeFlags();
 			if (changeFlags & QPinchGesture::ScaleFactorChanged) {
 				qreal factor = lyxrc.currentZoom*pinch->scaleFactor();
-				//factor = ceil(factor/20)*20;
 				zoomValueChanged(factor);
 			}
 		}
