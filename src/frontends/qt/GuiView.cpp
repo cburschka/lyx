@@ -110,6 +110,8 @@
 #include <QTimer>
 #include <QUrl>
 #include <QWindowStateChangeEvent>
+#include <QGestureEvent>
+#include <QPinchGesture>
 
 
 // sync with GuiAlert.cpp
@@ -693,6 +695,9 @@ GuiView::GuiView(int id)
 	statusBar()->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(statusBar(), SIGNAL(customContextMenuRequested(QPoint)),
 		this, SLOT(showZoomContextMenu()));
+
+	// enable pinch to zoom
+	grabGesture(Qt::PinchGesture);
 
 	int const iconheight = max(int(d.normalIconSize), fm.height());
 	QSize const iconsize(iconheight, iconheight);
@@ -1618,6 +1623,21 @@ bool GuiView::event(QEvent * e)
 	case QEvent::ApplicationPaletteChange: {
 		// runtime switch from/to dark mode
 		refillToolbars();
+		return QMainWindow::event(e);
+	}
+
+	case QEvent::Gesture: {
+		QGestureEvent *ge = static_cast<QGestureEvent*>(e);
+		QGesture *gp = ge->gesture(Qt::PinchGesture);
+		if (gp) {
+			QPinchGesture *pinch = static_cast<QPinchGesture *>(gp);
+			QPinchGesture::ChangeFlags changeFlags = pinch->changeFlags();
+			if (changeFlags & QPinchGesture::ScaleFactorChanged) {
+				qreal factor = lyxrc.currentZoom*pinch->scaleFactor();
+				//factor = ceil(factor/20)*20;
+				zoomValueChanged(factor);
+			}
+		}
 		return QMainWindow::event(e);
 	}
 
