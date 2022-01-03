@@ -2374,7 +2374,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_UI_TOGGLE:
-		if (cmd.argument() == "zoom") {
+		if (cmd.argument() == "zoomlevel") {
 			flag.setOnOff(zoom_value_ ? zoom_value_->isVisible() : false);
 		} else if (cmd.argument() == "zoomslider") {
 			flag.setOnOff(zoom_slider_ ? zoom_slider_->isVisible() : false);
@@ -4884,7 +4884,7 @@ bool GuiView::lfunUiToggle(string const & ui_component)
 		statusBar()->setVisible(!statusBar()->isVisible());
 	} else if (ui_component == "menubar") {
 		menuBar()->setVisible(!menuBar()->isVisible());
-	} else if (ui_component == "zoom") {
+	} else if (ui_component == "zoomlevel") {
 		zoom_value_->setVisible(!zoom_value_->isVisible());
 	} else if (ui_component == "zoomslider") {
 		zoom_slider_->setVisible(!zoom_slider_->isVisible());
