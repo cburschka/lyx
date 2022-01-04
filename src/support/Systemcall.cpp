@@ -169,7 +169,7 @@ string const parsecmd(string const & incmd, string & infile, string & outfile,
 	bool in_single_quote = false;
 	bool in_double_quote = false;
 	bool escaped = false;
-	string const python_call = "python -tt";
+	string const python_call = os::python();
 	vector<string> outcmd(4);
 	size_t start = 0;
 

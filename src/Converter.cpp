@@ -60,7 +60,7 @@ string const token_orig_path("$$r");
 string const token_orig_from("$$f");
 string const token_encoding("$$e");
 string const token_latex_encoding("$$E");
-
+string const token_python("$${python}");
 
 string const add_options(string const & command, string const & options)
 {
@@ -644,6 +644,7 @@ Converters::RetVal Converters::convert(Buffer const * buffer,
 			command = subst(command, token_orig_path, quoteName(onlyPath(orig_from.absFileName())));
 			command = subst(command, token_orig_from, quoteName(onlyFileName(orig_from.absFileName())));
 			command = subst(command, token_encoding, buffer ? buffer->params().encoding().iconvName() : string());
+			command = subst(command, token_python, os::python());
 
 			if (!conv.parselog().empty())
 				command += " 2> " + quoteName(infile2 + ".out");
@@ -684,11 +685,11 @@ Converters::RetVal Converters::convert(Buffer const * buffer,
 				if (res == Systemcall::KILLED) {
 					frontend::Alert::warning(
 						_("Converter killed"),
-						bformat(_("The following converter was killed by the user.\n %1$s\n"), 
+						bformat(_("The following converter was killed by the user.\n %1$s\n"),
 							from_utf8(command)));
 					return KILLED;
 				}
-				
+
 				if (!real_outfile.empty()) {
 					Mover const & mover = getMover(conv.to());
 					if (!mover.rename(outfile, real_outfile))
@@ -713,7 +714,7 @@ Converters::RetVal Converters::convert(Buffer const * buffer,
 					if (res == Systemcall::KILLED) {
 						frontend::Alert::warning(
 							_("Converter killed"),
-							bformat(_("The following converter was killed by the user.\n %1$s\n"), 
+							bformat(_("The following converter was killed by the user.\n %1$s\n"),
 								from_utf8(command)));
 						return KILLED;
 					}
@@ -728,13 +729,13 @@ Converters::RetVal Converters::convert(Buffer const * buffer,
 						bformat(_("The conversion process was killed while running:\n%1$s"),
 							wrapParas(from_utf8(command))));
 					return KILLED;
-				} 
+				}
 				if (res == Systemcall::TIMEOUT) {
 					Alert::information(_("Process Timed Out"),
 						bformat(_("The conversion process:\n%1$s\ntimed out before completing."),
 							wrapParas(from_utf8(command))));
 					return KILLED;
-				} 
+				}
 				if (conv.to() == "program") {
 					Alert::error(_("Build errors"),
 						_("There were errors during the build process."));

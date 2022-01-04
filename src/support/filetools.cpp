@@ -410,7 +410,7 @@ FileName const imageLibFileSearch(string & dir, string const & name,
 string const commandPrep(string const & command_in)
 {
 	static string const token_scriptpath = "$$s/";
-	string const python_call = "python -tt";
+	string const python_call = os::python();
 
 	string command = command_in;
 	if (prefixIs(command_in, python_call))

@@ -63,6 +63,7 @@ bool SpecialisedMover::do_copy(FileName const & from, FileName const & to,
 	command = subst(command, "$$i", quoteName(from.toFilesystemEncoding()));
 	command = subst(command, "$$o", quoteName(to.toFilesystemEncoding()));
 	command = subst(command, "$$l", quoteName(latex));
+	command = subst(command, "$${python}", os::python());
 
 	Systemcall one;
 	return one.startscript(Systemcall::Wait, command) == 0;

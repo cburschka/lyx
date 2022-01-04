@@ -34,6 +34,7 @@
 #include "support/filetools.h"
 #include "support/ForkedCalls.h"
 #include "support/lstrings.h"
+#include "support/os.h"
 
 #include "support/TempFile.h"
 
@@ -322,7 +323,7 @@ public:
 		string const file_name = os.str();
 		return make_pair(snippet, FileName(file_name));
 	}
-	
+
 private:
 	string const & to_format_;
 	string const & base_;
@@ -678,7 +679,7 @@ void PreviewLoader::Impl::startLoading(bool wait)
 
 	// The conversion command.
 	ostringstream cs;
-	cs << pconverter_->command()
+	cs << subst(pconverter_->command(), "$${python}", os::python())
 	   << " " << quoteName(latexfile.toFilesystemEncoding())
 	   << " --dpi " << font_scaling_factor_;
 

@@ -653,7 +653,7 @@ def checkLatex(dtl_tools):
     if dtl_tools:
         # Windows only: DraftDVI
         addToRC(r'''\converter latex      dvi2       "%s"	"latex,hyperref-driver=dvips"
-\converter dvi2       dvi        "python -tt $$s/scripts/clean_dvi.py $$i $$o"	""''' % LATEX)
+\converter dvi2       dvi        "$${python} $$s/scripts/clean_dvi.py $$i $$o"	""''' % LATEX)
     else:
         addToRC(r'\converter latex      dvi        "%s"	"latex,hyperref-driver=dvips"' % LATEX)
     # no latex
@@ -943,7 +943,7 @@ def checkConverterEntries():
     checkProg('an HTML -> LaTeX converter', ['html2latex $$i', 'gnuhtml2latex',
         'htmltolatex -input $$i -output $$o', 'htmltolatex.jar -input $$i -output $$o'],
         rc_entry = [ r'\converter html       latex      "%%"	""',
-                     r'\converter html       latex      "python -tt $$s/scripts/html2latexwrapper.py %% $$i $$o"	""',
+                     r'\converter html       latex      "$${python} $$s/scripts/html2latexwrapper.py %% $$i $$o"	""',
                      r'\converter html       latex      "%%"	""',
                      r'\converter html       latex      "%%"	""', '' ])
     #
@@ -964,8 +964,8 @@ def checkConverterEntries():
         ['elyxer.py --html --nofooter --unicode --directory $$r $$i $$o', 'elyxer --html --nofooter --unicode --directory $$r $$i $$o'],
         rc_entry = [ r'\converter lyx      word      "%%"	""' ])
     if elyxer.find('elyxer') >= 0:
-      addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py -e html,png,jpg,jpeg,css $$i $$o"''')
-      addToRC(r'''\copier    wordhtml       "python -tt $$s/scripts/ext_copy.py -e html,png,jpg,jpeg,css $$i $$o"''')
+      addToRC(r'''\copier    html       "$${python} $$s/scripts/ext_copy.py -e html,png,jpg,jpeg,css $$i $$o"''')
+      addToRC(r'''\copier    wordhtml       "$${python} $$s/scripts/ext_copy.py -e html,png,jpg,jpeg,css $$i $$o"''')
     else:
       # search for HTML converters other than eLyXer
       # On SuSE the scripts have a .sh suffix, and on debian they are in /usr/share/tex4ht/
@@ -974,17 +974,17 @@ def checkConverterEntries():
           'latex2html -no_subdir -split 0 -show_section_numbers $$i', 'hevea -s $$i'],
           rc_entry = [ r'\converter latex      html       "%%"	"needaux"' ])
       if htmlconv.find('htlatex') >= 0 or htmlconv == 'latex2html':
-        addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
+        addToRC(r'''\copier    html       "$${python} $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
       else:
-        addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py $$i $$o"''')
+        addToRC(r'''\copier    html       "$${python} $$s/scripts/ext_copy.py $$i $$o"''')
       path, htmlconv = checkProg('a LaTeX -> HTML (MS Word) converter', ["htlatex $$i 'html,word' 'symbol/!' '-cvalidate'",
           "htlatex.sh $$i 'html,word' 'symbol/!' '-cvalidate'",
           "/usr/share/tex4ht/htlatex $$i 'html,word' 'symbol/!' '-cvalidate'"],
           rc_entry = [ r'\converter latex      wordhtml   "%%"	"needaux"' ])
       if htmlconv.find('htlatex') >= 0:
-        addToRC(r'''\copier    wordhtml       "python -tt $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
+        addToRC(r'''\copier    wordhtml       "$${python} $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
       else:
-        addToRC(r'''\copier    wordhtml       "python -tt $$s/scripts/ext_copy.py $$i $$o"''')
+        addToRC(r'''\copier    wordhtml       "$${python} $$s/scripts/ext_copy.py $$i $$o"''')
 
 
     # Check if LyXBlogger is installed
@@ -1015,9 +1015,9 @@ def checkConverterEntries():
         xpath = 'none'
     global java
     if xsltproc != '':
-        addToRC(r'\converter docbook5 epub "python $$s/scripts/docbook2epub.py none none \"' + xsltproc + r'\" ' + xpath + ' $$i $$r $$o" ""')
+        addToRC(r'\converter docbook5 epub "$${python} $$s/scripts/docbook2epub.py none none \"' + xsltproc + r'\" ' + xpath + ' $$i $$r $$o" ""')
     elif java != '':
-        addToRC(r'\converter docbook5 epub "python $$s/scripts/docbook2epub.py \"' + java + r'\" none none ' + xpath + ' $$i $$r $$o" ""')
+        addToRC(r'\converter docbook5 epub "$${python} $$s/scripts/docbook2epub.py \"' + java + r'\" none none ' + xpath + ' $$i $$r $$o" ""')
     #
     checkProg('a MS Word Office Open XML converter -> LaTeX', ['pandoc -s -f docx -o $$o -t latex $$i'],
         rc_entry = [ r'\converter word2      latex      "%%"	""' ])
@@ -1089,8 +1089,8 @@ def checkConverterEntries():
     # PDF produced using non-TeX fonts. This does not produce non-unique
     # conversion paths, since a given document either uses TeX fonts or not.
     checkProg('Ghostscript', ["gswin32c", "gswin64c", "gs"],
-        rc_entry = [ r'''\converter pdf2   pdf8       "python -tt $$s/scripts/convert_pdf.py $$i $$o ebook"	""
-\converter pdf4   pdf8       "python -tt $$s/scripts/convert_pdf.py $$i $$o ebook"	""''' ])
+        rc_entry = [ r'''\converter pdf2   pdf8       "$${python} $$s/scripts/convert_pdf.py $$i $$o ebook"	""
+\converter pdf4   pdf8       "$${python} $$s/scripts/convert_pdf.py $$i $$o ebook"	""''' ])
     #
     checkProg('a Beamer info extractor', ['makebeamerinfo -p $$i'],
         rc_entry = [ r'\converter pdf2         beamer.info        "%%"	""' ])
@@ -1116,24 +1116,24 @@ def checkConverterEntries():
 \converter fig        ppm        "fig2dev -L ppm $$i $$o"	""
 \converter fig        svg        "fig2dev -L svg $$i $$o"	""
 \converter fig        png        "fig2dev -L png $$i $$o"	""
-\converter fig        pdftex     "python -tt $$s/scripts/fig2pdftex.py $$i $$o"	""
-\converter fig        pstex      "python -tt $$s/scripts/fig2pstex.py $$i $$o"	""''')
+\converter fig        pdftex     "$${python} $$s/scripts/fig2pdftex.py $$i $$o"	""
+\converter fig        pstex      "$${python} $$s/scripts/fig2pstex.py $$i $$o"	""''')
     #
     if inkscape_stable:
         checkProg('a SVG -> PDFTeX converter', [inkscape_cl],
-            rc_entry = [ r'\converter svg        pdftex     "python -tt $$s/scripts/svg2pdftex.py %% $$p$$i $$p$$o" ""'],
+            rc_entry = [ r'\converter svg        pdftex     "$${python} $$s/scripts/svg2pdftex.py %% $$p$$i $$p$$o" ""'],
             path = [inkscape_path])
         #
         checkProg('a SVG -> PSTeX converter', [inkscape_cl],
-            rc_entry = [ r'\converter svg        pstex     "python -tt $$s/scripts/svg2pstex.py %% $$p$$i $$p$$o" ""'],
+            rc_entry = [ r'\converter svg        pstex     "$${python} $$s/scripts/svg2pstex.py %% $$p$$i $$p$$o" ""'],
             path = [inkscape_path])
     else:
         checkProg('a SVG -> PDFTeX converter', [inkscape_cl],
-            rc_entry = [ r'\converter svg        pdftex     "python -tt $$s/scripts/svg2pdftex.py --unstable %% $$p$$i $$p$$o" ""'],
+            rc_entry = [ r'\converter svg        pdftex     "$${python} $$s/scripts/svg2pdftex.py --unstable %% $$p$$i $$p$$o" ""'],
             path = [inkscape_path])
         #
         checkProg('a SVG -> PSTeX converter', [inkscape_cl],
-            rc_entry = [ r'\converter svg        pstex     "python -tt $$s/scripts/svg2pstex.py --unstable %% $$p$$i $$p$$o" ""'],
+            rc_entry = [ r'\converter svg        pstex     "$${python} $$s/scripts/svg2pstex.py --unstable %% $$p$$i $$p$$o" ""'],
             path = [inkscape_path])
     #
     checkProg('a TIFF -> PS converter', ['tiff2ps $$i > $$o'],
@@ -1248,7 +1248,7 @@ def checkConverterEntries():
     #
     checkProg('Gnuplot', ['gnuplot'],
         rc_entry = [ r'''\Format gnuplot     "gp, gnuplot"    "Gnuplot"     "" "" ""  "vector"	"text/plain"
-\converter gnuplot      pdf6      "python -tt $$s/scripts/gnuplot2pdf.py $$i $$o"    "needauth"''' ])
+\converter gnuplot      pdf6      "$${python} $$s/scripts/gnuplot2pdf.py $$i $$o"    "needauth"''' ])
     #
     # gnumeric/xls/ods to tex
     checkProg('a spreadsheet -> latex converter', ['ssconvert'],
@@ -1260,10 +1260,10 @@ def checkConverterEntries():
 \converter oocalc html_table "ssconvert --export-type=Gnumeric_html:html40frag $$i $$o" ""
 \converter excel  html_table "ssconvert --export-type=Gnumeric_html:html40frag $$i $$o" ""
 \converter excel2 html_table "ssconvert --export-type=Gnumeric_html:html40frag $$i $$o" ""
-\converter gnumeric xhtml_table "python $$s/scripts/spreadsheet_to_docbook.py $$i $$o" ""
-\converter oocalc xhtml_table "python $$s/scripts/spreadsheet_to_docbook.py $$i $$o" ""
-\converter excel  xhtml_table "python $$s/scripts/spreadsheet_to_docbook.py $$i $$o" ""
-\converter excel2 xhtml_table "python $$s/scripts/spreadsheet_to_docbook.py $$i $$o" ""
+\converter gnumeric xhtml_table "$${python} $$s/scripts/spreadsheet_to_docbook.py $$i $$o" ""
+\converter oocalc xhtml_table "$${python} $$s/scripts/spreadsheet_to_docbook.py $$i $$o" ""
+\converter excel  xhtml_table "$${python} $$s/scripts/spreadsheet_to_docbook.py $$i $$o" ""
+\converter excel2 xhtml_table "$${python} $$s/scripts/spreadsheet_to_docbook.py $$i $$o" ""
 '''])
 
     path, lilypond = checkProg('a LilyPond -> EPS/PDF/PNG converter', ['lilypond'])
@@ -1327,7 +1327,7 @@ def checkConverterEntries():
                     docbook_lilypond_cmd = cmd
                     if "python" in docbook_lilypond_cmd:
                         docbook_lilypond_cmd = '"' + path + '/lilypond-book"'
-                    addToRC(r'\copier docbook5 "python $$s/scripts/docbook_copy.py ' + docbook_lilypond_cmd.replace('"', r'\"') + r' $$i $$o"')
+                    addToRC(r'\copier docbook5 "$${python} $$s/scripts/docbook_copy.py ' + docbook_lilypond_cmd.replace('"', r'\"') + r' $$i $$o"')
 
                     logger.info('+  found LilyPond-book version %s.' % version_number)
 
@@ -1345,7 +1345,7 @@ def checkConverterEntries():
     # Currently, lyxpak outputs a gzip compressed tar archive on *nix
     # and a zip archive on Windows.
     # So, we configure the appropriate version according to the platform.
-    cmd = r'\converter lyx %s "python -tt $$s/scripts/lyxpak.py $$r/$$f" ""'
+    cmd = r'\converter lyx %s "$${python} $$s/scripts/lyxpak.py $$r/$$f" ""'
     if os.name == 'nt':
         addToRC(r'\Format lyxzip     zip    "LyX Archive (zip)"     "" "" ""  "document,menu=export"	""')
         addToRC(cmd % "lyxzip")
@@ -1359,24 +1359,24 @@ def checkConverterEntries():
     #
     # Entries that do not need checkProg
     addToRC(r'''
-\converter csv        lyx        "python -tt $$s/scripts/csv2lyx.py $$i $$o"	""
-\converter fen        asciichess "python -tt $$s/scripts/fen2ascii.py $$i $$o"	""
-\converter lyx        lyx13x     "python -tt $$s/lyx2lyx/lyx2lyx -V 1.3 -o $$o $$i"	""
-\converter lyx        lyx14x     "python -tt $$s/lyx2lyx/lyx2lyx -V 1.4 -o $$o $$i"	""
-\converter lyx        lyx15x     "python -tt $$s/lyx2lyx/lyx2lyx -V 1.5 -o $$o $$i"	""
-\converter lyx        lyx16x     "python -tt $$s/lyx2lyx/lyx2lyx -V 1.6 -o $$o $$i"	""
-\converter lyx        lyx20x     "python -tt $$s/lyx2lyx/lyx2lyx -V 2.0 -o $$o $$i"	""
-\converter lyx        lyx21x     "python -tt $$s/lyx2lyx/lyx2lyx -V 2.1 -o $$o $$i"	""
-\converter lyx        lyx22x     "python -tt $$s/lyx2lyx/lyx2lyx -V 2.2 -o $$o $$i"	""
-\converter lyx        lyx23x     "python -tt $$s/lyx2lyx/lyx2lyx -V 2.3 -o $$o $$i"	""
-\converter lyx        clyx       "python -tt $$s/lyx2lyx/lyx2lyx -V 1.4 -o $$o -c big5   $$i"	""
-\converter lyx        jlyx       "python -tt $$s/lyx2lyx/lyx2lyx -V 1.4 -o $$o -c euc_jp $$i"	""
-\converter lyx        klyx       "python -tt $$s/lyx2lyx/lyx2lyx -V 1.4 -o $$o -c euc_kr $$i"	""
-\converter clyx       lyx        "python -tt $$s/lyx2lyx/lyx2lyx -c big5   -o $$o $$i"	""
-\converter jlyx       lyx        "python -tt $$s/lyx2lyx/lyx2lyx -c euc_jp -o $$o $$i"	""
-\converter klyx       lyx        "python -tt $$s/lyx2lyx/lyx2lyx -c euc_kr -o $$o $$i"	""
-\converter lyxpreview png        "python -tt $$s/scripts/lyxpreview2bitmap.py --png"	""
-\converter lyxpreview ppm        "python -tt $$s/scripts/lyxpreview2bitmap.py --ppm"	""
+\converter csv        lyx        "$${python} $$s/scripts/csv2lyx.py $$i $$o"	""
+\converter fen        asciichess "$${python} $$s/scripts/fen2ascii.py $$i $$o"	""
+\converter lyx        lyx13x     "$${python} $$s/lyx2lyx/lyx2lyx -V 1.3 -o $$o $$i"	""
+\converter lyx        lyx14x     "$${python} $$s/lyx2lyx/lyx2lyx -V 1.4 -o $$o $$i"	""
+\converter lyx        lyx15x     "$${python} $$s/lyx2lyx/lyx2lyx -V 1.5 -o $$o $$i"	""
+\converter lyx        lyx16x     "$${python} $$s/lyx2lyx/lyx2lyx -V 1.6 -o $$o $$i"	""
+\converter lyx        lyx20x     "$${python} $$s/lyx2lyx/lyx2lyx -V 2.0 -o $$o $$i"	""
+\converter lyx        lyx21x     "$${python} $$s/lyx2lyx/lyx2lyx -V 2.1 -o $$o $$i"	""
+\converter lyx        lyx22x     "$${python} $$s/lyx2lyx/lyx2lyx -V 2.2 -o $$o $$i"	""
+\converter lyx        lyx23x     "$${python} $$s/lyx2lyx/lyx2lyx -V 2.3 -o $$o $$i"	""
+\converter lyx        clyx       "$${python} $$s/lyx2lyx/lyx2lyx -V 1.4 -o $$o -c big5   $$i"	""
+\converter lyx        jlyx       "$${python} $$s/lyx2lyx/lyx2lyx -V 1.4 -o $$o -c euc_jp $$i"	""
+\converter lyx        klyx       "$${python} $$s/lyx2lyx/lyx2lyx -V 1.4 -o $$o -c euc_kr $$i"	""
+\converter clyx       lyx        "$${python} $$s/lyx2lyx/lyx2lyx -c big5   -o $$o $$i"	""
+\converter jlyx       lyx        "$${python} $$s/lyx2lyx/lyx2lyx -c euc_jp -o $$o $$i"	""
+\converter klyx       lyx        "$${python} $$s/lyx2lyx/lyx2lyx -c euc_kr -o $$o $$i"	""
+\converter lyxpreview png        "$${python} $$s/scripts/lyxpreview2bitmap.py --png"	""
+\converter lyxpreview ppm        "$${python} $$s/scripts/lyxpreview2bitmap.py --ppm"	""
 ''')
 
 
@@ -1410,11 +1410,11 @@ def checkOtherEntries():
     ## FIXME: MAPLE is not used anywhere
     # path, MAPLE = checkProg('Maple', ['maple'])
     # Add the rest of the entries (no checkProg is required)
-    addToRC(r'''\citation_search_view "python -tt $$s/scripts/lyxpaperview.py"''')
-    addToRC(r'''\copier    fig        "python -tt $$s/scripts/fig_copy.py $$i $$o"
-\copier    pstex      "python -tt $$s/scripts/tex_copy.py $$i $$o $$l"
-\copier    pdftex     "python -tt $$s/scripts/tex_copy.py $$i $$o $$l"
-\copier    program    "python -tt $$s/scripts/ext_copy.py $$i $$o"
+    addToRC(r'''\citation_search_view "$${python} $$s/scripts/lyxpaperview.py"''')
+    addToRC(r'''\copier    fig        "$${python} $$s/scripts/fig_copy.py $$i $$o"
+\copier    pstex      "$${python} $$s/scripts/tex_copy.py $$i $$o $$l"
+\copier    pdftex     "$${python} $$s/scripts/tex_copy.py $$i $$o $$l"
+\copier    program    "$${python} $$s/scripts/ext_copy.py $$i $$o"
 ''')
 
 def _checkForClassExtension(x):
