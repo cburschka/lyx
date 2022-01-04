@@ -432,6 +432,7 @@ void Text::toggleFree(Cursor & cur, Font const & font, bool toggleall)
 		cur.clearSelection();
 		cur.top() = resetCursor;
 		cur.resetAnchor();
+		cur.setCurrentFont();
 	}
 }
 
