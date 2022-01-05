@@ -230,6 +230,8 @@ private Q_SLOTS:
 	///
 	void onLocaleChanged();
 	///
+	void onPaletteChanged();
+	///
 	void slotProcessFuncRequestQueue() { processFuncRequestQueue(); }
 	///
 #if (QT_VERSION >= 0x050100)

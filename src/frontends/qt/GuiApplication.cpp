@@ -2322,6 +2322,12 @@ void GuiApplication::onLocaleChanged()
 }
 
 
+void GuiApplication::onPaletteChanged()
+{
+	colorCache().setPalette(palette());
+}
+
+
 void GuiApplication::handleKeyFunc(FuncCode action)
 {
 	char_type c = 0;
@@ -2977,6 +2983,11 @@ bool GuiApplication::event(QEvent * e)
 		e->accept();
 		return true;
 #endif
+	case QEvent::ApplicationPaletteChange: {
+		// runtime switch from/to dark mode
+		onPaletteChanged();
+		return QApplication::event(e);
+	}
 	default:
 		return QApplication::event(e);
 	}
