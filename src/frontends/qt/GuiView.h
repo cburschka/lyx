@@ -526,6 +526,9 @@ private:
 
 	// developer mode
 	bool devel_mode_;
+
+	// initial zoom for pinch gesture
+	int initialZoom_;
 };
 
 
