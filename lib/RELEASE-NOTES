@@ -19,14 +19,14 @@
 * Ctrl-click on a cross-reference will now take you to its label.
 
 * Default shortcuts for saving bookmarks have been changed to Alt-NUM, where
-  NUM is the number of the bookmark. (They were previously Shift-F1, etc.) 
+  NUM is the number of the bookmark. (They were previously Shift-F1, etc.)
 
 * This allows Shift-F3 to be used for word-find-backwards (i.e., find previous)
   on Linux and Windows.
 
 * The shortcut to use the selection for a find on macOS is now Cmd-E, as is the
   Apple standard.  The shortcut for find the next occurrence of the current
-  find buffer text is Cmd-G.  The shortcut for toggle of font emphasis has been 
+  find buffer text is Cmd-G.  The shortcut for toggle of font emphasis has been
   changed to Cmd-Ctrl-E.
 
 * Continuous spellcheck is now on by default, but only if the user does not have
@@ -48,12 +48,12 @@
 
 * Documents that use TeX fonts can only be compiled with XeTeX if the input
   encoding is set to "utf8-plain" or "ascii".
-  
-* DocBook support has been revamped and now targets DocBook 5 (i.e. 
-  only XML, SGML is gone). Some supporting files for the previous 
-  implementation have been removed: all examples (lib/examples), 
-  some layouts (existing documents should still work, but with a 
-  DocBook 5 output instead of DocBook 4 SGML). The dependency on 
+
+* DocBook support has been revamped and now targets DocBook 5 (i.e.
+  only XML, SGML is gone). Some supporting files for the previous
+  implementation have been removed: all examples (lib/examples),
+  some layouts (existing documents should still work, but with a
+  DocBook 5 output instead of DocBook 4 SGML). The dependency on
   sgmltools has been removed, this new support is always enabled.
   Having sgmltools installed or not will not change anything in LyX.
 
@@ -68,6 +68,11 @@
 * \citation_search_view lyxpaperview: determines whether external script "lyxpaperview"
   should be used for looking up citation source.
 
+* \draw_strategy partial|backingstore: when this is set to
+  "backingstore", the drawing code will force the use of an
+  intermediate surface, instead of just drawing changed regions on
+  screen. Note that "backingstore" is actually always enforced on
+  macOS and Wayland (default: partial).
 
 !!!The following pref variables were changed in 2.4:
 
@@ -164,7 +169,7 @@
 
 * The examples and templates directories have been completely re-organized.
   They are now much more structured (by means of layout categories) and thus
-  consist of many new subfolders. 
+  consist of many new subfolders.
 
 
 
@@ -232,7 +237,7 @@
 
 * Several ttf fonts (esint10.ttf, stmary10.ttf, wasy10.ttf) were changed
   to reflect the fact that newer Qt libraries do not support displaying certain
-  codepoints anymore (bug #8493, #10161). 
+  codepoints anymore (bug #8493, #10161).
   Distribution packagers need to repack those font files in case they are
   delivering the fonts as a separated package dependent from core LyX
   in order to display correctly math symbols like \oint.
