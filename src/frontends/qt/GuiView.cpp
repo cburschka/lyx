@@ -1632,11 +1632,15 @@ bool GuiView::event(QEvent * e)
 		if (gp) {
 			QPinchGesture *pinch = static_cast<QPinchGesture *>(gp);
 			QPinchGesture::ChangeFlags changeFlags = pinch->changeFlags();
+			qreal totalScaleFactor = pinch->totalScaleFactor();
+			LYXERR(Debug::GUI, "totalScaleFactor: " << totalScaleFactor);
 			if (pinch->state() == Qt::GestureStarted) {
 				initialZoom_ = lyxrc.currentZoom;
+				LYXERR(Debug::GUI, "initialZoom_: " << initialZoom_);
 			}
 			if (changeFlags & QPinchGesture::ScaleFactorChanged) {
-				qreal factor = initialZoom_ * pinch->totalScaleFactor();
+				qreal factor = initialZoom_ * totalScaleFactor;
+				LYXERR(Debug::GUI, "scaleFactor: " << factor);
 				zoomValueChanged(factor);
 			}
 		}
