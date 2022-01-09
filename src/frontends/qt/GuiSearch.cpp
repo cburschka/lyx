@@ -649,9 +649,10 @@ void GuiSearch::updateTitle()
 		// remove title bar
 		setTitleBarWidget(new QWidget());
 		titleBarWidget()->hide();
-	} else
+	} else if (titleBarWidget()) {
 		// restore title bar
 		setTitleBarWidget(nullptr);
+	}
 }
 
 
