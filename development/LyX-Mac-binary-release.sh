@@ -332,7 +332,7 @@ QtBuildDir=${QtBuildDir:-"${LyxBuildDir}"/${QtBuildSubDir:-"qt-build"}}
 
 DictionarySourceDir=${DICTIONARYDIR:-$(dirname "${LyxSourceDir}")/dictionaries}
 DocumentationDir=$(dirname "${LyxSourceDir}")/Documents
-DmgBackground="${LyxSourceDir}"/development/MacOSX/dmg-background.png
+DmgBackground="${LyxSourceDir}"/development/MacOSX/dmg-background.tiff
 
 if [ -z "${LyXVersion}" ]; then
 	LyXVersion=$(grep AC_INIT "${LyxSourceDir}"/configure.ac | cut -d, -f2 | tr -d " []()")
@@ -959,7 +959,7 @@ set_bundle_display_options() {
 	X_BOUNDS=$2
 	Y_BOUNDS=$3
 	Y_POSITION=$((Y_BOUNDS - 65))
-	Y_BOUNDS=$((Y_BOUNDS + 20))
+	Y_BOUNDS=$((Y_BOUNDS + 50))
 	LYX_X_POSITION=$((X_BOUNDS / 4))
 	LYX_Y_POSITION=$Y_POSITION
 	APP_X_POSITION=$((3 * X_BOUNDS / 4))
@@ -997,10 +997,19 @@ set_bundle_display_options() {
 EOF
 }
 
+# The image was made with with inkscape and tiffutil from dmg-background.svgz
+make_image() {
+	INKSCAPE=/Applications/Inkscape.app/Contents/MacOS/inkscape
+	cd "${LyxSourceDir}"/development/MacOSX
+	${INKSCAPE} --export-type=png -w 560 -o dmg-background.png dmg-background.svgz
+	${INKSCAPE} --export-type=png -w 1120 -o dmg-background@2x.png dmg-background.svgz
+	tiffutil -cathidpicheck dmg-background.png dmg-background@2x.png -out dmg-background.tiff
+}
+
 make_dmg() {
 	cd "${1}"
 
-	BGSIZE=$(file "$DmgBackground" | awk -F , '/PNG/{print $2 }' | tr x ' ')
+	BGSIZE=$(file "$DmgBackground" | awk -F , '/TIFF/{ print $10 $4 ;}/PNG/{ print $2; }'|sed -e 's/width=//' -e 's/height=//' -e 's/x//')
 	BG_W=$(echo ${BGSIZE} | awk '{print $1 }')
 	BG_H=$(echo ${BGSIZE} | awk '{print $2 }')
 
