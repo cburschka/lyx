@@ -19,6 +19,7 @@
 
 #include "support/convert.h"
 #include "support/lassert.h"
+#include "support/lstrings.h" // for breakString_helper with qt4
 #include "support/lyxlib.h"
 #include "support/debug.h"
 
@@ -624,7 +625,7 @@ GuiFontMetrics::breakString_helper(docstring const & s, int first_wid, int wid,
 		// FIXME: this is slower than it could be but we'll get rid of Qt4 anyway
 		docstring const ss = s.substr(pos, epos - pos);
 		int const wid = width(ss);
-		int const nspc_wid = i + 1 < tl.lineCount() ? wid : width(trim(ss));
+		int const nspc_wid = i + 1 < tl.lineCount() ? wid : width(rtrim(ss));
 #endif
 		breaks.emplace_back(epos - pos, wid, nspc_wid);
 		pos = epos;
