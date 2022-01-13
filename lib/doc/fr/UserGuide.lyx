@@ -9104,14 +9104,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -9124,7 +9122,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9157,7 +9154,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -34791,9 +34787,9 @@ Il existe aussi des inserts de branche inversée, dont le contenu est imprimé
 \emph on
 pas
 \emph default
- active.
- Ceci facilite la saisie de texte alternatif pour différentes versions d'un
- document.
+ active (l'inversion est indiquée par une ~ avant le nom).
+ De tels inserts facilitent la saisie de texte alternatif pour différentes
+ versions d'un document.
  Pour sélectionner l'inversion d'un insert donné, faites un clic droit sur
  le bouton d'insert et choisissez 
 \family sans
