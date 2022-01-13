@@ -1328,7 +1328,6 @@ PrefDisplay::PrefDisplay(GuiPreferences * form)
 	connect(previewSizeSB, SIGNAL(valueChanged(double)), this, SIGNAL(changed()));
 	connect(paragraphMarkerCB, SIGNAL(toggled(bool)), this, SIGNAL(changed()));
 	connect(ctAdditionsUnderlinedCB, SIGNAL(toggled(bool)), this, SIGNAL(changed()));
-	connect(ctUseBackingstoreCB, SIGNAL(toggled(bool)), this, SIGNAL(changed()));
 }
 
 
@@ -1356,8 +1355,6 @@ void PrefDisplay::applyRC(LyXRC & rc) const
 	rc.preview_scale_factor = previewSizeSB->value();
 	rc.paragraph_markers = paragraphMarkerCB->isChecked();
 	rc.ct_additions_underlined = ctAdditionsUnderlinedCB->isChecked();
-	rc.draw_strategy = ctUseBackingstoreCB->isChecked()
-		? LyXRC::DS_BACKINGSTORE : LyXRC::DS_PARTIAL;
 
 	// FIXME!! The graphics cache no longer has a changeDisplay method.
 #if 0
@@ -1387,8 +1384,6 @@ void PrefDisplay::updateRC(LyXRC const & rc)
 	previewSizeSB->setValue(rc.preview_scale_factor);
 	paragraphMarkerCB->setChecked(rc.paragraph_markers);
 	ctAdditionsUnderlinedCB->setChecked(rc.ct_additions_underlined);
-	ctUseBackingstoreCB->setChecked(rc.draw_strategy == LyXRC::DS_BACKINGSTORE);
-	ctUseBackingstoreCB->setHidden(guiApp->needsBackingStore());
 	previewSizeSB->setEnabled(
 		rc.display_graphics
 		&& rc.preview != LyXRC::PREVIEW_OFF);
