@@ -2039,9 +2039,9 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		// already cleared because of a full repaint.
 		if (!pi.full_repaint && row.changed()) {
 			LYXERR(Debug::PAINTING, "Clear rect@("
-			       << max(row_x, 0) << ", " << y - row.ascent() << ")="
+			       << x << ", " << y - row.ascent() << ")="
 			       << width() << " x " << row.height());
-			pi.pain.fillRectangle(row_x, y - row.ascent(),
+			pi.pain.fillRectangle(x, y - row.ascent(),
 			                      width(), row.height(), pi.background_color);
 		}
 

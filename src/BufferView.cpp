@@ -3391,15 +3391,12 @@ void BufferView::checkCursorScrollOffset()
 
 	//lyxerr << "cur_x=" << cur_x << ", offset=" << offset << ", row.wid=" << row.width() << ", margin=" << MARGIN << endl;
 
-	if (offset != d->horiz_scroll_offset_)
+	if (offset != d->horiz_scroll_offset_) {
 		LYXERR(Debug::PAINTING, "Horiz. scroll offset changed from "
 		       << d->horiz_scroll_offset_ << " to " << offset);
-
-	if (d->update_strategy_ == NoScreenUpdate
-	    && offset != d->horiz_scroll_offset_) {
-		// FIXME: if one uses SingleParUpdate, then home/end
-		// will not work on long rows. Why?
-		d->update_strategy_ = FullScreenUpdate;
+		row.changed(true);
+		if (d->update_strategy_ == NoScreenUpdate)
+			d->update_strategy_ = SingleParUpdate;
 	}
 
 	d->horiz_scroll_offset_ = offset;
