@@ -250,7 +250,7 @@ public:
 		 Font const & f, Change const & ch);
 	///
 	void add(pos_type pos, char_type const c,
-	         Font const & f, Change const & ch, bool can_break);
+	         Font const & f, Change const & ch);
 	///
 	void addVirtual(pos_type pos, docstring const & s,
 			Font const & f, Change const & ch);

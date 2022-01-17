@@ -460,12 +460,12 @@ void Row::add(pos_type const pos, Inset const * ins, Dimension const & dim,
 
 
 void Row::add(pos_type const pos, char_type const c,
-              Font const & f, Change const & ch, bool can_break)
+              Font const & f, Change const & ch)
 {
 	if (!sameString(f, ch)) {
 		finalizeLast();
 		Element e(STRING, pos, f, ch);
-		e.row_flags = can_break ? CanBreakInside : Inline;
+		e.row_flags = CanBreakInside;
 		elements_.push_back(e);
 	}
 	back().str += c;

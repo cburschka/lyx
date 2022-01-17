@@ -916,10 +916,10 @@ Row TextMetrics::tokenizeParagraph(pit_type const pit) const
 			// ⤶ U+2936 ARROW POINTING DOWNWARDS THEN CURVING LEFTWARDS
 			// ¶ U+00B6 PILCROW SIGN
 			char_type const screen_char = (c == 0x2028) ? 0x2936 : 0x00B6;
-			row.add(i, screen_char, *fi, par.lookupChange(i), i >= body_pos);
+			row.add(i, screen_char, *fi, par.lookupChange(i));
 		} else
 			// row elements before body are unbreakable
-			row.add(i, c, *fi, par.lookupChange(i), i >= body_pos);
+			row.add(i, c, *fi, par.lookupChange(i));
 
 		// add inline completion width
 		// draw logically behind the previous character
