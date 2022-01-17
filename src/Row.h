@@ -50,7 +50,10 @@ public:
 		// An inset
 		INSET,
 		// Some spacing described by its width, not a string
-		SPACE
+		SPACE,
+		// Spacing until the left margin, with a minimal value given
+		// by the initial width
+		MARGINSPACE
 	};
 
 /**
@@ -253,6 +256,8 @@ public:
 			Font const & f, Change const & ch);
 	///
 	void addSpace(pos_type pos, int width, Font const & f, Change const & ch);
+	///
+	void addMarginSpace(pos_type pos, int width, Font const & f, Change const & ch);
 
 	///
 	typedef std::vector<Element> Elements;

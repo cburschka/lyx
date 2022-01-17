@@ -564,6 +564,7 @@ void RowPainter::paintText()
 			break;
 
 		case Row::SPACE:
+		case Row::MARGINSPACE:
 			paintTextDecoration(e);
 		}
 

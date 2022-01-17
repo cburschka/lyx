@@ -114,6 +114,7 @@ pos_type Row::Element::x2pos(int &x) const
 		break;
 	case INSET:
 	case SPACE:
+	case MARGINSPACE:
 		// those elements contain only one position. Round to
 		// the closest side.
 		if (x > (full_width() + 1) / 2) {
@@ -313,6 +314,9 @@ ostream & operator<<(ostream & os, Row::Element const & e)
 		break;
 	case Row::SPACE:
 		os << "SPACE: ";
+		break;
+	case Row::MARGINSPACE:
+		os << "MARGINSPACE: ";
 	}
 	os << "width=" << e.full_width() << ", row_flags=" << e.row_flags;
 	return os;
@@ -493,6 +497,18 @@ void Row::addSpace(pos_type const pos, int const width,
 	finalizeLast();
 	Element e(SPACE, pos, f, ch);
 	e.dim.wid = width;
+	elements_.push_back(e);
+	dim_.wid += e.dim.wid;
+}
+
+
+void Row::addMarginSpace(pos_type const pos, int const width,
+		   Font const & f, Change const & ch)
+{
+	finalizeLast();
+	Element e(MARGINSPACE, pos, f, ch);
+	e.dim.wid = width;
+	e.row_flags = NoBreakBefore;
 	elements_.push_back(e);
 	dim_.wid += e.dim.wid;
 }

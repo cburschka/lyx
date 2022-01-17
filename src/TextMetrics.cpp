@@ -786,15 +786,6 @@ int TextMetrics::labelFill(Row const & row) const
 }
 
 
-int TextMetrics::labelEnd(pit_type const pit) const
-{
-	// labelEnd is only needed if the layout fills a flushleft label.
-	if (text_->getPar(pit).layout().margintype != MARGIN_MANUAL)
-		return 0;
-	// return the beginning of the body
-	return leftMargin(pit);
-}
-
 namespace {
 
 /**
@@ -901,16 +892,12 @@ Row TextMetrics::tokenizeParagraph(pit_type const pit) const
 			Dimension dim = bv_->coordCache().insets().dim(ins);
 			row.add(i, ins, dim, *fi, par.lookupChange(i));
 		} else if (c == ' ' && i + 1 == body_pos) {
-			// There is a space at i, but it should not be
-			// added as a separator, because it is just
-			// before body_pos. Instead, insert some spacing to
-			// align text
+			// This space is an \item separator. Represent it with a
+			// special space element, which dimension will be computed
+			// in breakRow.
 			FontMetrics const & fm = theFontMetrics(text_->labelFont(par));
-			// this is needed to make sure that the row width is correct
-			row.finalizeLast();
-			int const add = max(fm.width(par.layout().labelsep),
-			                    labelEnd(pit) - row.width());
-			row.addSpace(i, add, *fi, par.lookupChange(i));
+			int const wid = fm.width(par.layout().labelsep);
+			row.addMarginSpace(i, wid, *fi, par.lookupChange(i));
 		} else if (c == '\t')
 			row.addSpace(i, theFontMetrics(*fi).width(from_ascii("    ")),
 			             *fi, par.lookupChange(i));
@@ -920,7 +907,7 @@ Row TextMetrics::tokenizeParagraph(pit_type const pit) const
 			 * U+2029 PARAGRAPH SEPARATOR
 
 			 * These are special unicode characters that break
-			 * lines/pragraphs. Not handling them lead to trouble wrt
+			 * lines/pragraphs. Not handling them leads to trouble wrt
 			 * Qt QTextLayout formatting. We add a visible character
 			 * on screen so that the user can see that something is
 			 * happening.
@@ -1139,6 +1126,8 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 		Row::Elements tail;
 		elt.splitAt(width - rows.back().width(), next_width, false, tail);
 		Row & rb = rows.back();
+		if (elt.type == Row::MARGINSPACE)
+			elt.dim.wid = max(elt.dim.wid, leftMargin(bigrow.pit()) - rb.width());
 		rb.push_back(elt);
 		rb.finalizeLast();
 		if (rb.width() > width) {

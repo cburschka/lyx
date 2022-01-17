@@ -148,9 +148,6 @@ private:
 	/// the minimum space a manual label needs on the screen in pixels
 	int labelFill(Row const & row) const;
 
-	/// FIXME??
-	int labelEnd(pit_type const pit) const;
-
 	// Turn paragraph oh index \c pit into a single row
 	Row tokenizeParagraph(pit_type pit) const;
 
