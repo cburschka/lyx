@@ -238,7 +238,8 @@ enum ColorCode {
 	/// Color for regexp frame
 	Color_regexpframe,
 	/// For ignoring updates of a color
-	Color_ignore
+	Color_ignore,
+	Color_max = 500
 };
 
 
