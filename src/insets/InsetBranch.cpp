@@ -136,9 +136,11 @@ ColorCode InsetBranch::backgroundColor(PainterInfo const & pi) const
 {
 	if (params_.branch.empty())
 		return Inset::backgroundColor(pi);
+	string const branch_id = (buffer().masterParams().branchlist().find(params_.branch))
+			? convert<string>(buffer().masterParams().branchlist().id())
+			: convert<string>(buffer().params().branchlist().id());
 	// FIXME UNICODE
-	string const branchcol = "branch" + convert<string>(buffer().params().branchlist().id())
-			+ to_utf8(params_.branch);
+	string const branchcol = "branch" + branch_id + to_utf8(params_.branch);
 	ColorCode c = lcolor.getFromLyXName(branchcol);
 	if (c == Color_none)
 		c = Color_error;
