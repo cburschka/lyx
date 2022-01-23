@@ -537,7 +537,7 @@ void moveElements(Row::Elements & from, Row::Elements::iterator const & it,
 	to.insert(to.end(), it, from.end());
 	from.erase(it, from.end());
 	if (!from.empty())
-		from.back().row_flags = (from.back().row_flags & ~AfterFlags) | BreakAfter;
+		from.back().row_flags = (from.back().row_flags & ~AfterFlags) | AlwaysBreakAfter;
 }
 
 }
@@ -645,7 +645,9 @@ Row::Elements Row::shortenIfNeeded(int const w, int const next_width)
 		return tail;
 	}
 
-	return Elements();
+	// cit == beg; remove all elements after the first one.
+	moveElements(elements_, cit + 1, tail);
+	return tail;
 }
 
 
