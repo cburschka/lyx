@@ -46,7 +46,7 @@ inline flags operator&(flags const f, flags const g)
 
 inline flags operator~(flags const f)
 {
-	return static_cast<flags>(~int(f));
+	return static_cast<flags>(~int(f) & 0x3f);
 }
 
 } // namespace Update
