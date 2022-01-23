@@ -535,7 +535,7 @@ docstring::size_type brkstr2str_pos(QString brkstr, docstring const & str, int p
 	 */
 	// The variable `brkStrOffset' is here to account for the extra leading characters.
 	// The ending character zerow_nbsp has to be ignored if the line is complete.
-	int const qlen = pos - brkStrOffset - (pos == brkstr.length());
+	int const qlen = max(pos - brkStrOffset - (pos == brkstr.length()), 0);
 #if QT_VERSION < 0x040801 || QT_VERSION >= 0x050100
 	auto const len = qstring_to_ucs4(brkstr.mid(brkStrOffset, qlen)).length();
 	// Avoid warning
