@@ -299,8 +299,11 @@ static bool doInsertInset(Cursor & cur, Text * text,
 			 * paragraph and the inset allows setting layout
 			 * FIXME: this does not work as expected when change tracking is on
 			 *   However, we do not really know what to do in this case.
+			 * FIXME: figure out a good test in the environment case (see #12251).
 			 */
-			if (cur.paragraph().empty() && !inset->forcePlainLayout()) {
+			if (cur.paragraph().layout().isCommand()
+			     && cur.paragraph().empty()
+			     && !inset->forcePlainLayout()) {
 				cur.paragraph().setPlainOrDefaultLayout(bparams.documentClass());
 				move_layout = true;
 			}
