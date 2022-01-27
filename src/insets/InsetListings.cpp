@@ -41,6 +41,7 @@
 #include "frontends/alert.h"
 #include "frontends/Application.h"
 
+#include <cstring>
 #include <regex>
 #include <sstream>
 
