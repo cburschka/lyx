@@ -148,6 +148,12 @@ void Converter::readFlags()
 }
 
 
+void Converter::setCommand(std::string const & command)
+{
+	command_ = subst(command, token_python, os::python());
+}
+
+
 Converter const * Converters::getConverter(string const & from,
 					    string const & to) const
 {

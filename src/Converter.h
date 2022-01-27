@@ -58,7 +58,7 @@ public:
 	///
 	std::string const command() const { return command_; }
 	///
-	void setCommand(std::string const & command) { command_ = command; }
+	void setCommand(std::string const & command);
 	///
 	std::string const flags() const { return flags_; }
 	///
@@ -144,7 +144,7 @@ public:
 		FAILURE = 1,
 		KILLED  = 1000
 	};
-	
+
 	///
 	Converter const & get(int i) const { return converterlist_[i]; }
 	///
