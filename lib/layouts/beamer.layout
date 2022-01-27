@@ -18,6 +18,8 @@ Input stdinsets.inc
 
 # Beamer does not work with enumitem.
 # See bug #7047.
+# For upstream (Beamer) feature request:
+#   https://github.com/josephwright/beamer/issues/342
 ExcludesModule enumitem
 
 # General textclass parameters
