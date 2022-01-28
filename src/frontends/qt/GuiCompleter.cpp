@@ -701,6 +701,10 @@ void GuiCompleter::tab()
 		hidePopup();
 		hideInline(cur);
 		updateVisibility(false, false);
+
+		// redraw if needed
+		if (cur.result().screenUpdate())
+			gui_->bufferView().processUpdateFlags(cur.result().screenUpdate());
 		return;
 	}
 	docstring nextchar = completion.substr(prefix.size(), 1);
