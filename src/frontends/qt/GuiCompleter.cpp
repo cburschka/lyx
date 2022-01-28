@@ -655,7 +655,7 @@ void GuiCompleter::activate()
 
 void GuiCompleter::tab()
 {
-	BufferView const & bv = gui_->bufferView();
+	BufferView & bv = gui_->bufferView();
 	Cursor cur = bv.cursor();
 	cur.screenUpdateFlags(Update::None);
 
