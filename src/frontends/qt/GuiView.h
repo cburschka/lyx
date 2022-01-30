@@ -476,11 +476,13 @@ private:
 	bool inOtherView(Buffer & buf);
 	///
 	enum NextOrPrevious {
-		NEXTBUFFER,
-		PREVBUFFER
+		NEXT,
+		PREV
 	};
 	///
 	void gotoNextOrPreviousBuffer(NextOrPrevious np, bool const move);
+	///
+	void gotoNextTabWorkArea(NextOrPrevious np);
 
 	/// Is the dialog currently visible?
 	bool isDialogVisible(std::string const & name) const;

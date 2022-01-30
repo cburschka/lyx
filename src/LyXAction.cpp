@@ -3982,6 +3982,22 @@ void LyXAction::init()
 		{ LFUN_TAB_DELETE, "tab-delete", SingleParUpdate, Edit },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_TAB_GROUP_NEXT
+ * \li Action: Switch to the next tab group.
+ * \li Syntax: tab-group-next
+ * \endvar
+ */
+		{ LFUN_TAB_GROUP_NEXT, "tab-group-next", ReadOnly, Buffer },
+
+/*!
+ * \var lyx::FuncCode lyx::LFUN_TAB_GROUP_PREVIOUS
+ * \li Action: Switch to the previous tab group.
+ * \li Syntax: tab-group-previous
+ * \endvar
+ */
+		{ LFUN_TAB_GROUP_PREVIOUS, "tab-group-previous", ReadOnly, Buffer },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_TAB_GROUP_CLOSE
  * \li Action: Close the current tab group.
  * \li Notion: This only closes the work areas, not the buffers themselves.

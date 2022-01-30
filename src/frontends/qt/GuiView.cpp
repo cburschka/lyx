@@ -2473,6 +2473,11 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 					 d.splitter_->orientation() == Qt::Horizontal);
 		break;
 
+	case LFUN_TAB_GROUP_NEXT:
+	case LFUN_TAB_GROUP_PREVIOUS:
+		enable = (d.splitter_->count() > 1);
+		break;
+
 	case LFUN_TAB_GROUP_CLOSE:
 		enable = d.tabWorkAreaCount() > 1;
 		break;
@@ -3816,7 +3821,7 @@ void GuiView::gotoNextOrPreviousBuffer(NextOrPrevious np, bool const move)
 		for (int i = 0; i < nwa; ++i) {
 			if (&workArea(i)->bufferView().buffer() == curbuf) {
 				int next_index;
-				if (np == NEXTBUFFER)
+				if (np == NEXT)
 					next_index = (i == nwa - 1 ? 0 : i + 1);
 				else
 					next_index = (i == 0 ? nwa - 1 : i - 1);
@@ -3826,6 +3831,23 @@ void GuiView::gotoNextOrPreviousBuffer(NextOrPrevious np, bool const move)
 					setBuffer(&workArea(next_index)->bufferView().buffer());
 				break;
 			}
+		}
+	}
+}
+
+
+void GuiView::gotoNextTabWorkArea(NextOrPrevious np)
+{
+	int count = d.splitter_->count();
+	for (int i = 0; i < count; ++i) {
+		if (d.tabWorkArea(i) == d.currentTabWorkArea()) {
+			int new_index;
+			if (np == NEXT)
+				new_index = (i == count - 1 ? 0 : i + 1);
+			else
+				new_index = (i == 0 ? count - 1 : i - 1);
+			setCurrentWorkArea(d.tabWorkArea(new_index)->currentWorkArea());
+			break;
 		}
 	}
 }
@@ -4493,19 +4515,19 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		}
 
 		case LFUN_BUFFER_NEXT:
-			gotoNextOrPreviousBuffer(NEXTBUFFER, false);
+			gotoNextOrPreviousBuffer(NEXT, false);
 			break;
 
 		case LFUN_BUFFER_MOVE_NEXT:
-			gotoNextOrPreviousBuffer(NEXTBUFFER, true);
+			gotoNextOrPreviousBuffer(NEXT, true);
 			break;
 
 		case LFUN_BUFFER_PREVIOUS:
-			gotoNextOrPreviousBuffer(PREVBUFFER, false);
+			gotoNextOrPreviousBuffer(PREV, false);
 			break;
 
 		case LFUN_BUFFER_MOVE_PREVIOUS:
-			gotoNextOrPreviousBuffer(PREVBUFFER, true);
+			gotoNextOrPreviousBuffer(PREV, true);
 			break;
 
 		case LFUN_BUFFER_CHKTEX:
@@ -4831,6 +4853,15 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			setCurrentWorkArea(wa);
 			break;
 		}
+
+		case LFUN_TAB_GROUP_NEXT:
+			gotoNextTabWorkArea(NEXT);
+			break;
+
+		case LFUN_TAB_GROUP_PREVIOUS:
+			gotoNextTabWorkArea(PREV);
+			break;
+
 		case LFUN_TAB_GROUP_CLOSE:
 			if (TabWorkArea * twa = d.currentTabWorkArea()) {
 				closeTabWorkArea(twa);
