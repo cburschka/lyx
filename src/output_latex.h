@@ -37,6 +37,9 @@ void pushLanguageName(std::string const & lang, bool localswitch = false);
  */
 void popLanguageName();
 
+// Check if we have an empty language stack
+bool languageStackEmpty();
+
 /** Return a reference to the last active language opened with
     polyglossia or when using begin/end commands. If none or when
     using babel with only a begin command, return a reference to

@@ -2805,7 +2805,8 @@ void Paragraph::latex(BufferParams const & bparams,
 			string end_tag = subst(lang_end_command, "$$lang", running_lang);
 			os << from_ascii(end_tag);
 			column += end_tag.length();
-			popLanguageName();
+			if (!languageStackEmpty())
+				popLanguageName();
 		}
 
 		// Switch file encoding if necessary (and allowed)

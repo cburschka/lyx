@@ -631,7 +631,7 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 		bool const using_begin_end =
 			runparams.use_polyglossia ||
 				!lyxrc.language_command_end.empty();
-		if (using_begin_end)
+		if (using_begin_end && !languageStackEmpty())
 			popLanguageName();
 	}
 
