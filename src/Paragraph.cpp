@@ -2894,7 +2894,7 @@ void Paragraph::latex(BufferParams const & bparams,
 				}
 			} else {
 				running_font = current_font;
-				open_font = !langClosed;
+				open_font &= !langClosed;
 			}
 		}
 
