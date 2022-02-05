@@ -10,7 +10,7 @@
 # Full author contact details are available in the file CREDITS
 # or at https://www.lyx.org/Credits
 #
-# Used as wrapper for Getopt::Mixed
+# Used as wrapper for Getopt::Long
 # as
 #    use GetOptions;
 #    ...
@@ -33,9 +33,9 @@ BEGIN {
 }
 
 use warnings;
-use Getopt::Mixed;
+use Getopt::Long;
 
-sub makeOpts();            # Create option spec for Getopt::Mixed::init()
+sub makeLongOpts();        # Create option spec for Getopt::Long::GetOptions();
 sub makeHelp();            # Create help-string to describe options
 
 # Following fields for a parameter can be defined:
@@ -69,15 +69,24 @@ sub handleOptions($)
   $optionsDef{v}->{comment} = "Display recognized params";
   $optionsDef{v}->{Sort} = 1;
 
-  my %options = ("help" => 0);
-  my $opts = &makeOpts();
+  use vars qw(%options);
+  %options = ("help" => 0);
 
-  Getopt::Mixed::init($opts);
-  while( my( $option, $value, $pretty ) = Getopt::Mixed::nextOption()) {
+  {
+    my $roptr = &makeLongOpts();
+    my $p = Getopt::Long::Parser->new;
+    $p->configure("bundling");
+    $p->getoptions(%{$roptr});
+  }
+
+  # Callback routine called by $p->getoptions().
+  sub handleopts($$$)
+  {
+    my ($option, $value, $unknown) = @_;
     if (defined($optionsDef{$option})) {
       my $fieldname = $optionsDef{$option}->{fieldname};
       if (exists($options{$fieldname}) && ($option ne "h")) {
-	print "Option $option already set\n";
+        print "Option $option already set\n";
         if (defined($options{$fieldname})) {
           print "Value \"$value\" would overwrite ";
           if (ref($options{$fieldname}) eq "ARRAY") {
@@ -87,8 +96,8 @@ sub handleOptions($)
             print "\"$options{$fieldname}\"\n";
           }
         }
-	$option = "h";
-	$fieldname = "help";
+        $option = "h";
+        $fieldname = "help";
       }
       if ($option eq "h") {
         print "Syntax: $0 options xxxx ...\n";
@@ -111,7 +120,6 @@ sub handleOptions($)
     }
   }
 
-  Getopt::Mixed::cleanup();
   if (exists($options{verbose})) {
     printf("Found following options:\n    %-16soptvalue\n", "option");
     print "    " . "-" x 32 . "\n";
@@ -139,29 +147,25 @@ sub handleOptions($)
 
 #############################################################
 
-# Create option spec for Getopt::Mixed::init()
-sub makeOpts()
+# Create option spec for Getopt::Long::GetOptions()
+sub makeLongOpts()
 {
-  my $first = 1;
-  my $opts = "";
+  my %opts = ();
   for my $ex (sort keys %optionsDef) {
     my $e = $optionsDef{$ex};
-    if (! $first) {
-      $opts .= " ";
-    }
-    $first = 0;
-    $opts .= $ex;
+    my $type = "";
     if (defined($e->{type})) {
-      my $tp = $e->{type};
-      $opts .= $tp;
+      $type = $e->{type};
     }
+    my $optx = $ex;
     if (defined($e->{alias})) {
       for my $a (@{$e->{alias}}) {
-        $opts .= " $a>$ex";
+        $optx .= "|$a";
       }
     }
+    $opts{"$optx$type"} = \&handleopts;
   }
-  return($opts);
+  return \%opts;        # to be used by Getopt::Long();
 }
 
 sub sortHelp
