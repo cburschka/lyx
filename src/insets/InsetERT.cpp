@@ -133,7 +133,15 @@ void InsetERT::docbook(XMLStream & xs, OutputParams const & runparams) const
 
 	// Output the ERT as a comment with the appropriate escaping if the command is not recognised.
 	if (trim(os.str()) == from_ascii("\\textquotesingle")) {
-	    xs << "'";
+		xs << "'";
+	} else if (trim(os.str()) == from_ascii("\\TeX") || trim(os.str()) == from_ascii("\\TeX{}")) {
+	    xs << "TeX";
+	} else if (trim(os.str()) == from_ascii("\\LaTeX") || trim(os.str()) == from_ascii("\\LaTeX{}")) {
+	    xs << "LaTeX";
+	} else if (trim(os.str()) == from_ascii("\\LaTeXe") || trim(os.str()) == from_ascii("\\LaTeXe{}")) {
+	    xs << "LaTeX2&#x03b5;";
+	} else if (trim(os.str()) == from_ascii("\\LyX") || trim(os.str()) == from_ascii("\\LyX{}")) {
+	    xs << "LyX";
 	} else {
         xs << XMLStream::ESCAPE_NONE << "<!-- ";
         xs << XMLStream::ESCAPE_COMMENTS << os.str();
