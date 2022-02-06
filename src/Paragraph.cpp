@@ -2787,12 +2787,12 @@ void Paragraph::latex(BufferParams const & bparams,
 				column += Changes::latexMarkChange(os, bparams,
 					Change(Change::UNCHANGED), Change(Change::DELETED), rp);
 			}
-			open_font = false;
 			// Has the language been closed in the latexWriteEndChanges() call above?
 			langClosed = running_font.language() != basefont.language()
 					&& running_font.language() != nextfont.language()
 					&& (running_font.language()->encoding()->package() != Encoding::CJK);
 			running_font = basefont;
+			open_font &= !langClosed;
 		}
 
 		// if necessary, close language environment before opening CJK
