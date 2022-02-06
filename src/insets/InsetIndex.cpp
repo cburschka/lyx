@@ -194,16 +194,15 @@ void InsetIndex::docbook(XMLStream & xs, OutputParams const & runparams) const
 	InsetText::latex(ots, runparams);
 	docstring latexString = trim(odss.str());
 
-	// Check whether there are unsupported things.
-	if (latexString.find(from_utf8("@")) != latexString.npos) {
-		docstring error = from_utf8("Unsupported feature: an index entry contains an @. "
+	// Check whether there are unsupported things. @ is supported, but only for sorting, without specific formatting.
+	if (latexString.find(from_utf8("@\\")) != lyx::docstring::npos) {
+		docstring error = from_utf8("Unsupported feature: an index entry contains an @\\. "
 									"Complete entry: \"") + latexString + from_utf8("\"");
 		LYXERR0(error);
 		xs << XMLStream::ESCAPE_NONE << (from_utf8("<!-- Output Error: ") + error + from_utf8(" -->\n"));
-		// TODO: implement @ using the sortas attribute (on primary, secondary, tertiary).
 	}
 
-	// Handle several indices.
+	// Handle several indices (indicated in the inset instead of the raw latexString).
 	docstring indexType = from_utf8("");
 	if (buffer().masterBuffer()->params().use_indices) {
 		indexType += " type=\"" + params_.index + "\"";
@@ -212,14 +211,25 @@ void InsetIndex::docbook(XMLStream & xs, OutputParams const & runparams) const
 	// Split the string into its main constituents: terms, and command (see, see also, range).
 	size_t positionVerticalBar = latexString.find(from_ascii("|")); // What comes before | is (sub)(sub)entries.
 	docstring indexTerms = latexString.substr(0, positionVerticalBar);
-	docstring command = latexString.substr(positionVerticalBar + 1);
+	docstring command;
+	if (positionVerticalBar != lyx::docstring::npos) {
+		command =  latexString.substr(positionVerticalBar + 1);
+	}
+
+	// Handle sorting issues, with @.
+	vector<docstring> sortingElements = getVectorFromString(indexTerms, from_ascii("@"), false);
+	docstring sortAs;
+	if (sortingElements.size() == 2) {
+		sortAs = sortingElements[0];
+		indexTerms = sortingElements[1];
+	}
 
 	// Handle primary, secondary, and tertiary terms (entries, subentries, and subsubentries, for LaTeX).
 	vector<docstring> terms = getVectorFromString(indexTerms, from_ascii("!"), false);
 
-	// Handle ranges. Happily, (| and |) can only be at the end of the string! However, | may be trapped by the
-	bool hasStartRange = latexString.find(from_ascii("|(")) != latexString.npos;
-	bool hasEndRange = latexString.find(from_ascii("|)")) != latexString.npos;
+	// Handle ranges. Happily, (| and |) can only be at the end of the string!
+	bool hasStartRange = latexString.find(from_ascii("|(")) != lyx::docstring::npos;
+	bool hasEndRange = latexString.find(from_ascii("|)")) != lyx::docstring::npos;
 	if (hasStartRange || hasEndRange) {
 		// Remove the ranges from the command if they do not appear at the beginning.
 		size_t index = 0;
@@ -258,7 +268,7 @@ void InsetIndex::docbook(XMLStream & xs, OutputParams const & runparams) const
 		} else {
 			see = list;
 
-			if (see.find(from_ascii(",")) != see.npos) {
+			if (see.find(from_ascii(",")) != std::string::npos) {
 				docstring error = from_utf8("Several index terms found as \"see\"! Only one is acceptable. "
 											"Complete entry: \"") + latexString + from_utf8("\"");
 				LYXERR0(error);
@@ -275,6 +285,12 @@ void InsetIndex::docbook(XMLStream & xs, OutputParams const & runparams) const
 	// If there are such things in the index entry, then this code may miserably fail. For example, for "Peter|(textbf",
 	// no range will be detected.
 	// TODO: Could handle formatting as significance="preferred"?
+	if (!command.empty()) {
+		docstring error = from_utf8("Unsupported feature: an index entry contains a | with an unsupported command, ")
+				          + command + from_utf8(". ") + from_utf8("Complete entry: \"") + latexString + from_utf8("\"");
+		LYXERR0(error);
+		xs << XMLStream::ESCAPE_NONE << (from_utf8("<!-- Output Error: ") + error + from_utf8(" -->\n"));
+	}
 
     // Write all of this down.
 	if (terms.empty() && !hasEndRange) {
@@ -335,7 +351,12 @@ void InsetIndex::docbook(XMLStream & xs, OutputParams const & runparams) const
 		} else {
 			xs << xml::StartTag("indexterm", attrs);
 			if (!terms.empty()) { // hasEndRange has no content.
-				xs << xml::StartTag("primary");
+				docstring attr;
+				if (!sortAs.empty()) {
+					attr = from_utf8("sortas='") + sortAs + from_utf8("'");
+				}
+
+				xs << xml::StartTag("primary", attr);
 				xs << terms[0];
 				xs << xml::EndTag("primary");
 			}
