@@ -1020,11 +1020,19 @@ void outputDocBookInfo(
 			}
 		}
 
-		// Actually output the abstract if there is something to do. Don't count line feeds or spaces in this,
-		// even though they must be properly output if there is some abstract.
+		// Actually output the abstract if there is something to do. Don't count line feeds, spaces, or comments
+		// in this -- even though line feeds and spaces must be properly output if there is some abstract.
 		abstract = os2.str();
 		docstring cleaned = abstract;
 		cleaned.erase(std::remove_if(cleaned.begin(), cleaned.end(), lyx::isSpace), cleaned.end());
+
+		size_t beginComment;
+		size_t endComment;
+		while ((beginComment = cleaned.find(from_ascii("<!--"))) != lyx::docstring::npos) {
+			if ((endComment = cleaned.find(from_ascii("-->"), beginComment)) != lyx::docstring::npos) {
+				cleaned.erase(cleaned.begin() + beginComment, cleaned.begin() + endComment + 3);
+			}
+		}
 
 		// Nothing? Then there is no abstract!
 		if (cleaned.empty())
