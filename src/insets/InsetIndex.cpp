@@ -189,6 +189,8 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 void InsetIndex::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
 	// Get the content of the inset as LaTeX, as some things may be encoded as ERT (like {}).
+	// TODO: if there is an ERT within the index term, its conversion should be tried, in case it becomes useful;
+	//  otherwise, ERTs should become comments. For now, they are just copied as-is, which is barely satisfactory.
 	odocstringstream odss;
 	otexstream ots(odss);
 	InsetText::latex(ots, runparams);
