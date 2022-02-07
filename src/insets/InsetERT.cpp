@@ -30,7 +30,7 @@
 #include "support/TempFile.h"
 
 #include <sstream>
-
+#include <regex>
 #include <iostream>
 
 using namespace std;
@@ -436,26 +436,52 @@ void InsetERT::docbook(XMLStream & xs, OutputParams const & runparams) const
 //		auto lay = getLayout();
 //	}
 
-	// Try to recognise some commands to have a nicer DocBook output. First step: some commands have a direct mapping
-	// to DocBook, mostly because the mapping is simply text or an XML entity.
-	docstring os_trimmed = trim(os.str());
+	// Try to recognise some commands to have a nicer DocBook output.
 	bool output_as_comment = true;
 
-	auto command_raw_translation = raw_latex_encoding_to_unicode_xml.find(os_trimmed);
-	if (command_raw_translation != raw_latex_encoding_to_unicode_xml.end()) {
-		xs << command_raw_translation->second;
-		output_as_comment = false;
-	} else {
-		// If the trimmed ERT ends with {}, try a mapping without it.
-		auto os_braces = os_trimmed.find(from_ascii("{}"));
+	// First step: some commands have a direct mapping to DocBook, mostly because the mapping is simply text or
+	// an XML entity.
+	{
+		docstring os_trimmed = trim(os.str());
 
-		if (os_braces != lyx::docstring::npos) {
-			auto key = os_trimmed.substr(0, os_braces);
-			auto command_braces_translation = raw_latex_encoding_to_unicode_xml.find(key);
+		auto command_raw_translation = raw_latex_encoding_to_unicode_xml.find(os_trimmed);
+		if (command_raw_translation != raw_latex_encoding_to_unicode_xml.end()) {
+			xs << command_raw_translation->second;
+			output_as_comment = false;
+		} else {
+			// If the trimmed ERT ends with {}, try a mapping without it.
+			auto os_braces = os_trimmed.find(from_ascii("{}"));
 
-			if (command_braces_translation != raw_latex_encoding_to_unicode_xml.end()) {
-				xs << command_braces_translation->second;
-				output_as_comment = false;
+			if (os_braces != lyx::docstring::npos) {
+				auto key = os_trimmed.substr(0, os_braces);
+				auto command_braces_translation = raw_latex_encoding_to_unicode_xml.find(key);
+
+				if (command_braces_translation != raw_latex_encoding_to_unicode_xml.end()) {
+					xs << command_braces_translation->second;
+					output_as_comment = false;
+				}
+			}
+		}
+	}
+
+	// Second step: the command \string can be ignored. If that's the only command in the ERT, then done.
+	// There may be several occurrences. (\string is 7 characters long.)
+	if (os.str().length() >= 7) {
+		docstring os_str = os.str();
+
+		while (os_str.length() >= 7) {
+			auto os_text = os_str.find(from_ascii("\\string"));
+
+			if (os_text != lyx::docstring::npos && !std::isalpha(static_cast<int>(os_str[os_text + 7]))) {
+				os_str = os_str.substr(0, os_text) + os_str.substr(os_text + 7, os_str.length());
+
+				if (os_str.find('\\') == std::string::npos) {
+					xs << os_str;
+					output_as_comment = false;
+					break;
+				}
+			} else {
+				break;
 			}
 		}
 	}
