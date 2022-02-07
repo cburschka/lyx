@@ -142,6 +142,10 @@ void InsetERT::docbook(XMLStream & xs, OutputParams const & runparams) const
 	    xs << "LaTeX2&#x03b5;";
 	} else if (trim(os.str()) == from_ascii("\\LyX") || trim(os.str()) == from_ascii("\\LyX{}")) {
 	    xs << "LyX";
+	} else if (trim(os.str()) == from_ascii("\\oe") || trim(os.str()) == from_ascii("\\oe{}")) {
+	    xs << "&#339;";
+	} else if (trim(os.str()) == from_ascii("\\OE") || trim(os.str()) == from_ascii("\\OE{}")) {
+	    xs << "&#338;";
 	} else {
         xs << XMLStream::ESCAPE_NONE << "<!-- ";
         xs << XMLStream::ESCAPE_COMMENTS << os.str();
