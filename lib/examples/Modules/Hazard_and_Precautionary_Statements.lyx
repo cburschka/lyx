@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 608
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -35,9 +35,9 @@ hpstatement
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -84,8 +84,8 @@ hpstatement
 \justification true
 \use_refstyle 1
 \use_minted 0
-\notefontcolor #0000ff
 \use_lineno 0
+\notefontcolor #0000ff
 \index Index
 \shortcut idx
 \color #008000
@@ -101,12 +101,16 @@ hpstatement
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -287,13 +291,13 @@ Some statements allow you to choose between certain alternatives.
 \end_layout
 
 \begin_layout Description
-P210.1 leads to: 
+P250.1 leads to: 
 \begin_inset Flex H-P number
 status open
 
 \begin_layout Plain Layout
 
-P210.1
+P250.1
 \end_layout
 
 \end_inset
@@ -312,13 +316,13 @@ status open
 \end_layout
 
 \begin_layout Description
-P210.2 leads to: 
+P250.2 leads to: 
 \begin_inset Flex H-P number
 status open
 
 \begin_layout Plain Layout
 
-P210.2
+P250.2
 \end_layout
 
 \end_inset
@@ -349,13 +353,13 @@ The alternative number
 \end_layout
 
 \begin_layout Description
-P210.0 leads to: 
+P250.0 leads to: 
 \begin_inset Flex H-P number
 status open
 
 \begin_layout Plain Layout
 
-P210.0
+P250.0
 \end_layout
 
 \end_inset
@@ -401,7 +405,7 @@ In this example the text
 \begin_inset Quotes eld
 \end_inset
 
-sunglasses
+hands
 \begin_inset Quotes erd
 \end_inset
 
@@ -415,7 +419,7 @@ status open
 
 \begin_layout Plain Layout
 
-P280
+P264
 \end_layout
 
 \end_inset
@@ -431,12 +435,12 @@ status open
 
 \begin_layout Plain Layout
 
-sunglasses
+hands
 \end_layout
 
 \end_inset
 
-P280
+P264
 \end_layout
 
 \end_inset
