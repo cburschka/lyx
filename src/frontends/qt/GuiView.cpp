@@ -643,8 +643,7 @@ GuiView::GuiView(int id)
 	zoom_ratio_ = settings.value("zoom_ratio", 1.0).toDouble();
 	// Actual zoom value: default zoom + fractional offset
 	int zoom = (int)(lyxrc.defaultZoom * zoom_ratio_);
-	if (zoom < static_cast<int>(zoom_min_))
-		zoom = zoom_min_;
+	zoom = min(max(zoom, zoom_min_), zoom_max_);
 	zoom_slider_->setValue(zoom);
 	zoom_slider_->setToolTip(qt_("Workarea zoom level. Drag, use Ctrl-+/- or Shift-Mousewheel to adjust."));
 
@@ -982,8 +981,7 @@ bool GuiView::restoreLayout()
 	zoom_ratio_ = settings.value("zoom_ratio", 1.0).toDouble();
 	// Actual zoom value: default zoom + fractional offset
 	int zoom = (int)(lyxrc.defaultZoom * zoom_ratio_);
-	if (zoom < static_cast<int>(zoom_min_))
-		zoom = zoom_min_;
+	zoom = min(max(zoom, zoom_min_), zoom_max_);
 	setCurrentZoom(zoom);
 	devel_mode_ = settings.value("devel_mode", devel_mode_).toBool();
 	settings.beginGroup("views");
@@ -2100,6 +2098,30 @@ void GuiView::resetAutosaveTimers()
 }
 
 
+namespace {
+
+double zoomRatio(FuncRequest const & cmd, double const zr)
+{
+	if (cmd.argument().empty()) {
+		if (cmd.action() == LFUN_BUFFER_ZOOM)
+			return 1.0;
+		else if (cmd.action() == LFUN_BUFFER_ZOOM_IN)
+			return zr + 0.1;
+		else // cmd.action() == LFUN_BUFFER_ZOOM_OUT
+			return zr - 0.1;
+	} else {
+		if (cmd.action() == LFUN_BUFFER_ZOOM)
+			return convert<int>(cmd.argument()) / double(lyxrc.defaultZoom);
+		else if (cmd.action() == LFUN_BUFFER_ZOOM_IN)
+			return zr + convert<int>(cmd.argument()) / 100.0;
+		else // cmd.action() == LFUN_BUFFER_ZOOM_OUT
+			return zr - convert<int>(cmd.argument()) / 100.0;
+	}
+}
+
+}
+
+
 bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 {
 	bool enable = true;
@@ -2479,15 +2501,17 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_BUFFER_ZOOM_OUT:
-	case LFUN_BUFFER_ZOOM_IN: {
-		// only diff between these two is that the default for ZOOM_OUT
-		// is a neg. number
-		bool const neg_zoom =
-			convert<int>(cmd.argument()) < 0 ||
-			(cmd.action() == LFUN_BUFFER_ZOOM_OUT && cmd.argument().empty());
-		if (lyxrc.currentZoom <= zoom_min_ && neg_zoom) {
+	case LFUN_BUFFER_ZOOM_IN:
+	case LFUN_BUFFER_ZOOM: {
+		int const zoom = (int)(lyxrc.defaultZoom * zoomRatio(cmd, zoom_ratio_));
+		if (zoom < zoom_min_) {
 			docstring const msg =
 				bformat(_("Zoom level cannot be less than %1$d%."), zoom_min_);
+			flag.message(msg);
+			enable = false;
+		} else if (zoom > zoom_max_) {
+			docstring const msg =
+				bformat(_("Zoom level cannot be more than %1$d%."), zoom_max_);
 			flag.message(msg);
 			enable = false;
 		} else
@@ -2495,20 +2519,6 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 	}
 
-	case LFUN_BUFFER_ZOOM: {
-		bool const less_than_min_zoom =
-			!cmd.argument().empty() && convert<int>(cmd.argument()) < zoom_min_;
-		if (lyxrc.currentZoom <= zoom_min_ && less_than_min_zoom) {
-			docstring const msg =
-				bformat(_("Zoom level cannot be less than %1$d%."), zoom_min_);
-			flag.message(msg);
-			enable = false;
-		} else if (cmd.argument().empty() && lyxrc.currentZoom == lyxrc.defaultZoom)
-			enable = false;
-		else
-			enable = doc_buffer;
-		break;
-	}
 
 	case LFUN_BUFFER_MOVE_NEXT:
 	case LFUN_BUFFER_MOVE_PREVIOUS:
@@ -4725,26 +4735,11 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		case LFUN_BUFFER_ZOOM_IN:
 		case LFUN_BUFFER_ZOOM_OUT:
 		case LFUN_BUFFER_ZOOM: {
-			if (cmd.argument().empty()) {
-				if (cmd.action() == LFUN_BUFFER_ZOOM)
-					zoom_ratio_ = 1.0;
-				else if (cmd.action() == LFUN_BUFFER_ZOOM_IN)
-					zoom_ratio_ += 0.1;
-				else
-					zoom_ratio_ -= 0.1;
-			} else {
-				if (cmd.action() == LFUN_BUFFER_ZOOM)
-					zoom_ratio_ = convert<int>(cmd.argument()) / double(lyxrc.defaultZoom);
-				else if (cmd.action() == LFUN_BUFFER_ZOOM_IN)
-					zoom_ratio_ += convert<int>(cmd.argument()) / 100.0;
-				else
-					zoom_ratio_ -= convert<int>(cmd.argument()) / 100.0;
-			}
+			zoom_ratio_ = zoomRatio(cmd, zoom_ratio_);
 
 			// Actual zoom value: default zoom + fractional extra value
 			int zoom = (int)(lyxrc.defaultZoom * zoom_ratio_);
-			if (zoom < static_cast<int>(zoom_min_))
-				zoom = zoom_min_;
+			zoom = min(max(zoom, zoom_min_), zoom_max_);
 
 			setCurrentZoom(zoom);
 
