@@ -3,13 +3,13 @@
 #
 # Zdenko Podobný <zdpo@mailbox.sk>, 2003, 2006.
 # Kornel Benko <Kornel.Benko@berlin.de>, 2009.
-# Kornel Benko <kornel@lyx.org>, 2009-2021.
+# Kornel Benko <kornel@lyx.org>, 2009-2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2021-12-29 19:07+0100\n"
-"PO-Revision-Date: 2021-12-29 18:12+0000\n"
+"POT-Creation-Date: 2022-02-08 19:47+0100\n"
+"PO-Revision-Date: 2022-02-08 18:52+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3876,19 +3876,6 @@ msgstr ""
 #: src/frontends/qt/ui/PrefDisplayUi.ui:157
 msgid "&Underline change tracking additions"
 msgstr "&Podčiarknuť adície sledovaných zmien"
-
-#: src/frontends/qt/ui/PrefDisplayUi.ui:164
-msgid ""
-"If this is checked, an intermediate surface will be used for painting. This "
-"may be needed in some cases to have proper display, but breaks subpixel "
-"aliasing."
-msgstr ""
-"Keď zaškrtnuté, bude sa používať vnútorná plocha na kresbu. Môže to byť "
-"potrebné pre slušný displej. Ale porúša zarovnávanie pod-pixlov."
-
-#: src/frontends/qt/ui/PrefDisplayUi.ui:167
-msgid "Use &backing store to display text"
-msgstr "Používať zálohové ukladanie na zobrazenie &textu"
 
 #: src/frontends/qt/ui/PrefDocHandlingUi.ui:26
 msgid "Session Handling"
@@ -34103,9 +34090,13 @@ msgstr "Neplatný argument \"%1$s\" funkcie toolbar-set!"
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Neznáma lišta nástrojov \"%1$s\""
 
-#: src/frontends/qt/GuiView.cpp:2313 src/frontends/qt/GuiView.cpp:2326
+#: src/frontends/qt/GuiView.cpp:2509
 msgid "Zoom level cannot be less than %1$d%."
-msgstr "Stupeň lupy nesmie byť menší ako %1$d%."
+msgstr "Stupeň lupy nesmie byť nižší ako %1$d%."
+
+#: src/frontends/qt/GuiView.cpp:2514
+msgid "Zoom level cannot be more than %1$d%."
+msgstr "Stupeň lupy nesmie byť vyšší ako %1$d%."
 
 #: src/frontends/qt/GuiView.cpp:2455
 msgid "Document not loaded."
@@ -37245,6 +37236,17 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid ""
+#~ "If this is checked, an intermediate surface will be used for painting. "
+#~ "This may be needed in some cases to have proper display, but breaks "
+#~ "subpixel aliasing."
+#~ msgstr ""
+#~ "Keď zaškrtnuté, bude sa používať vnútorná plocha na kresbu. Môže to byť "
+#~ "potrebné pre slušný displej. Ale porúša zarovnávanie pod-pixlov."
+
+#~ msgid "Use &backing store to display text"
+#~ msgstr "Používať zálohové ukladanie na zobrazenie &textu"
 
 #~ msgid "Preferred &Language:"
 #~ msgstr "&Preferenčný Jazyk:"
