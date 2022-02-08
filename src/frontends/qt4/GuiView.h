@@ -478,6 +478,8 @@ private:
 	double zoom_ratio_ = 1.0;
 	/// Minimum zoom percentage
 	static int const zoom_min_ = 10;
+	/// Maximum zoom percentage
+	static int const zoom_max_ = 1000;
 
 	// movability flag of all toolbars
 	bool toolbarsMovable_;

@@ -149,6 +149,7 @@ What's new
 
 - Fix broken modifier handling for Qt-5.12 on Mac (bug 12247).
 
+- Limit zoom value to 1000% to avoid crashes (bug 12452).
 
 
 * INTERNALS
