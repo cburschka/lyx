@@ -14,6 +14,7 @@
 #include "PDFOptions.h"
 
 #include "Encoding.h"
+#include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "OutputParams.h"
 #include "texstream.h"
@@ -105,10 +106,10 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 		opt += runparams.hyperref_driver + ",";
 
 	// Since LyX uses unicode, also set the PDF strings to unicode strings
-	// with the hyperref option "unicode". (With Xe/LuaTeX and pTeX,
-	// unicode=true is the default, with Japanese (platex), the option
-	// leads to errors (even if the input encoding is UTF-8).)
-	if (!runparams.isFullUnicode() && !runparams.use_japanese)
+	// with the hyperref option "unicode". This is only needed with pdflatex.
+	// As of 2021/02/04, unicode=true is default.
+	if (!LaTeXFeatures::isAvailable("hyperref-2021/02/04")
+	     && !runparams.isFullUnicode() && !runparams.use_japanese)
 		opt += "unicode=true,";
 
 	// only use the hyperref settings if hyperref is enabled by the user
@@ -118,7 +119,8 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 		// explicitly given
 		if (pdfusetitle && title.empty() && author.empty())
 			opt += "pdfusetitle,";
-		opt += "\n ";
+		if (!opt.empty())
+			opt += "\n ";
 		opt += "bookmarks=" + convert<string>(bookmarks) + ',';
 		if (bookmarks) {
 			opt += "bookmarksnumbered=" + convert<string>(bookmarksnumbered) + ',';
@@ -127,7 +129,8 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 				opt += "bookmarksopenlevel="
 				+ convert<string>(bookmarksopenlevel) + ',';
 		}
-		opt += "\n ";
+		if (!opt.empty())
+			opt += "\n ";
 		opt += "breaklinks=" + convert<string>(breaklinks) + ',';
 		opt += "pdfborder={0 0 ";
 		opt += (pdfborder ? '0' : '1');
