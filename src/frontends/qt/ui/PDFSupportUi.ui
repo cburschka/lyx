@@ -454,11 +454,11 @@
          <attribute name="title">
           <string>Additional O&amp;ptions</string>
          </attribute>
-         <layout class="QGridLayout" name="gridLayout">
+         <layout class="QGridLayout" name="gridLayout_9">
           <item row="0" column="0">
            <widget class="QGroupBox" name="groupBox_3">
             <property name="toolTip">
-             <string>Document metadata and PDF settings (as specified in LaTeX 06/2022 and later)</string>
+             <string>Additional hyperref options (comma-separated) to be passed via \hypersetup.</string>
             </property>
             <property name="title">
              <string>Hyperse&amp;tup</string>
