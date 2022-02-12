@@ -1722,7 +1722,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(pdfSupportModule->fullscreenCB, SIGNAL(toggled(bool)),
 		this, SLOT(change_adaptor()));
-	connect(pdfSupportModule->optionsLE, SIGNAL(textChanged(QString)),
+	connect(pdfSupportModule->optionsTE, SIGNAL(textChanged()),
+		this, SLOT(change_adaptor()));
+	connect(pdfSupportModule->metadataTE, SIGNAL(textChanged()),
 		this, SLOT(change_adaptor()));
 
 	pdfSupportModule->titleLE->setValidator(new NoNewLineValidator(
@@ -1733,8 +1735,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		pdfSupportModule->subjectLE));
 	pdfSupportModule->keywordsLE->setValidator(new NoNewLineValidator(
 		pdfSupportModule->keywordsLE));
-	pdfSupportModule->optionsLE->setValidator(new NoNewLineValidator(
-		pdfSupportModule->optionsLE));
+	(void) new LaTeXHighlighter(pdfSupportModule->optionsTE->document(), true, true);
+	(void) new LaTeXHighlighter(pdfSupportModule->metadataTE->document(), true, true);
 
 	for (int i = 0; backref_opts[i][0]; ++i)
 		pdfSupportModule->backrefCO->addItem(qt_(backref_opts_gui[i]));
@@ -3911,7 +3913,14 @@ void GuiDocument::applyView()
 	else
 		pdf.pagemode.clear();
 	pdf.quoted_options = pdf.quoted_options_check(
-				fromqstr(pdfSupportModule->optionsLE->text()));
+				fromqstr(pdfSupportModule->optionsTE->toPlainText()));
+#if QT_VERSION < 0x060000
+	bp_.document_metadata = qstring_to_ucs4(pdfSupportModule->metadataTE->toPlainText()
+						.trimmed().replace(QRegExp("\n+"), "\n"));
+#else
+	bp_.document_metadata = qstring_to_ucs4(pdfSupportModule->metadataTE->toPlainText()
+						.trimmed().replace(QRegularExpression("\n+"), "\n"));
+#endif
 
 	// change tracking
 	bp_.track_changes = changesModule->trackChangesCB->isChecked();
@@ -4519,8 +4528,11 @@ void GuiDocument::paramsToDialog()
 	pdfSupportModule->fullscreenCB->setChecked
 		(pdf.pagemode == pdf.pagemode_fullscreen);
 
-	pdfSupportModule->optionsLE->setText(
+	pdfSupportModule->optionsTE->setPlainText(
 		toqstr(pdf.quoted_options));
+
+	pdfSupportModule->metadataTE->setPlainText(
+		toqstr(bp_.document_metadata));
 
 	// change tracking
 	changesModule->trackChangesCB->setChecked(bp_.track_changes);

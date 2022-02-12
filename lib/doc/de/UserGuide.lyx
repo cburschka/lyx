@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 608
+\lyxformat 609
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -8752,10 +8752,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8768,6 +8770,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8791,6 +8794,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -33204,9 +33208,9 @@ Dokument-Einstellungen
 \family sans
 PDF-Eigenschaften
 \family default
- spezielle Optionen für die PDF-Ausgabe eines Dokuments setzen.
- Alle Optionen stammen vom \SpecialChar LaTeX
--Paket 
+ Spezifika für die PDF-Ausgabe eines Dokuments bestimmen.
+ Die meisten Spezifika werden mithilfe des \SpecialChar LaTeX
+-Pakets 
 \series bold
 hyperref
 \series default
@@ -33221,18 +33225,29 @@ status collapsed
 
 \end_inset
 
-.
+ gesetzt, das Sie durch anklicken von 
+\family sans
+Hyperref-Unterstützung verwenden
+\family default
+ zunächst aktivieren müssen (falls das Paket bereits durch die Dokumentklasse
+ oder ein anderes Paket geladen wurde, klicken Sie statt dessen 
+\family sans
+Hyperref-Optionen anpassen
+\family default
+).
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-hyperref
+Hyperref
 \series default
- wird in der DVI- oder PDF-Ausgabe alle Querverweise verlinken, so dass
- ein Leser, der die DVI- oder PDF-Ausgabe auf seinem PC liest, einen Querverweis
- anklicken kann und so zur entsprechenden Stelle gelangt, wie es auch im
- Internet passiert.
+ verlinkt unter anderem alle URLs und Querverweise in der PDF-Ausgabe, so
+ dass Leser:innen eine URL oder einen Querverweis anklicken und so zur entsprech
+enden Webseite oder Stelle im Dokument gelangt können.
+ Weiterhin können Sie etwa PDF-Metadaten (wie Autor:in oder Titel des Dokuments)
+ eingeben oder festlegen, wie ein PDF-Reader die Datei öffnet.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -33259,9 +33274,8 @@ automatisch
 
 eintragen
 \family default
- angekreuzt, versucht \SpecialChar LyX
-, diese Informationen aus dem Titel und dem Autor
- des Dokuments zu gewinnen.
+ angekreuzt, versucht hyperref, diese Informationen aus dem Titel und den
+ Autorangaben des Dokuments zu gewinnen.
  Die Option 
 \family sans
 Im
@@ -33283,12 +33297,12 @@ Auf der Karteikarte
 \family sans
 Hyperlinks
 \family default
- können Sie festlegen, wie die Querverweise aussehen sollen, und ob bibliografis
-che Rückverweise angelegt werden sollen.
-\end_layout
-
-\begin_layout Standard
-Mit die Option 
+ können Sie festlegen, wie Querverweise aussehen sollen, und ob bzw.
+ welche bibliografischen Rückverweise angelegt werden sollen.
+ Rückverweise sind Verweise, die am Ende eines Literatureintrags eingefügt
+ werden und die entweder auf Abschnitte, Seiten oder Folien verlinken, auf
+ denen ein entsprechender Eintrag zitiert wurde.
+ Mit die Option 
 \family sans
 Links am Zeilenende umbrechen
 \family default
@@ -33357,7 +33371,7 @@ grün
 \end_layout
 
 \begin_layout Standard
-die aber im Feld 
+die aber in der Karteikarte 
 \family sans
 Zusätzliche Optionen
 \family default
@@ -33370,7 +33384,7 @@ B.
  in diesem Dokument mit den Optionen
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \series bold
 linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue
@@ -33381,52 +33395,39 @@ getan.
 \end_layout
 
 \begin_layout Standard
-Wenn die Option 
+In der Karteikarte 
 \family sans
-Rückverweise
+Lesezeichen
 \family default
- ausgewählt ist, erscheinen die Hyperlinks im Literaturverzeichnis hinter
- den Einträgen, je nach Einstellung, als Nummer des Abschnitts, der Folie
- oder Seite in/auf der sie referenziert sind.
+ können Sie festlegen, ob eine Navigationsstruktur (die als einklappbare
+ hierarchische Liste von Kapiteln, Abschnitten usw.
+ im PDF-Reader angezeigt wird) angelegt werden soll.
+ Dies erleichtert es Leser:innen, durch die PDF-Ausgabe des Dokuments zu
+ navigieren.
+ Sie können festlegen, ob die Einträge dieser Liste, analog zu den Kapiteln
+ und Abschnitten, nummeriert werden soll oder nicht.
+ Mit 
+\family sans
+Lesezeichen-Strukturbaum öffnen
+\family default
+ können Sie den PDF-Reader instruieren, diese Navigationsstruktur beim öffnen
+ auszuklappen, mit 
+\family sans
+Ebene
+\family default
+ legen Sie fest, bis zu welcher Ebene ausgeklappt werden soll.
+ 2 zum Beispiel öffnet die Lesezeichen aller Abschnitte und Unterabschnitte,
+ während 1 nur Abschnitte ausklappt.
 \end_layout
 
 \begin_layout Standard
 In der Karteikarte 
 \family sans
-Lesezeichen
+Zusätzliche Optionen
 \family default
- können Sie festlegen, ob welche erzeugt und auch nummeriert werden sollen.
- Das erleichtert es Lesern, durch die PDF-Ausgabe des Dokuments zu navigieren.
- Mit 
-\family sans
-Ebene
-\family default
- legen Sie fest, welche Lesezeichen angezeigt werden sollen.
- 2 zum Beispiel zeigt die Lesezeichen aller Abschnitte und Unterabschnitte,
- während 1 nur Abschnitte berücksichtigt.
-\end_layout
-
-\begin_layout Standard
-Auch in diesem Handbuch werden PDF-Eigenschaften benutzt, wie Sie im Dialogfenst
-er 
-\family sans
-Dokument-Einstellungen
-\family default
- sehen können.
- Dort sehen Sie auch, dass 
-\family sans
-Zusätzliche
-\begin_inset space \space{}
-\end_inset
-
-Optionen
-\family default
- benutzt werden.
- Genaueres dazu finden Sie im 
-\series bold
-hyperref
-\series default
--Handbuch 
+ können Sie eine durch Kommata getrennte Liste von weiteren Hyperref-Optionen
+ eingeben, die oben nicht beschrieben sind (eine vollständige Liste und
+ Beschreibung finden Sie im Hyperref-Handbuch 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hyperref"
@@ -33434,7 +33435,63 @@ literal "true"
 
 \end_inset
 
-.
+).
+ Beachten Sie, dass diese Optionen über das Makro 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+hypersetup
+\end_layout
+
+\end_inset
+
+ an Hyperref übergeben werden, nicht in Form von Paket-Optionen.
+ Das ist deshalb wichtig, weil manche Optionen nur in letzterer Form funktionier
+en.
+ Wenn Sie eine von diesen brauchen, können Sie sie mittels
+\end_layout
+
+\begin_layout Quote
+
+\series bold
+PackageOptions hyperref option1,option1
+\end_layout
+
+\begin_layout Standard
+in 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Lokales Format
+\family default
+ übergeben (was aber nur funktioniert, wenn hyperref nicht von Ihrer Dokumentkla
+sse geladen wird).
+\end_layout
+
+\begin_layout Standard
+Das Eingabefeld 
+\family sans
+Metadaten des Dokuments
+\family default
+ erlaubt es Ihnen, PDF-Eigenschaften unabhängig von hyperref festzulegen.
+ Dies greift auf eine Kernfunktion von \SpecialChar LaTeX
+ zurück, die allerdings erst seit
+ der Version 06/2022 verfügbar ist (wenn Sie eine ältere Version haben,
+ werden Eingaben in dieses Feld schlicht ignoriert).
+ Das Eingabefeld erwartet durch Kommata getrennte Schlüssel-Wert-Optionen
+ (wie 
+\series bold
+pdfversion=1.7, lang=de-DE
+\series default
+).
+ Zum Zeitpunkt, als dies hier geschrieben wurde, ist die Liste möglicher
+ Optionen noch klein und schlecht dokumentiert.
+ Es ist aber zu erwarten, dass zukünftig sehr fundamentale PDF-Eigenschaften
+ (wie etwa strukturiertes Tagging für barrierefreie Dokumente oder verschiedene
+ PDF-Standards wie PDF/A) auf diese Weise eingestellt werden können.
 \end_layout
 
 \begin_layout Section

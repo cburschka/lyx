@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 608
+\lyxformat 609
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -8973,12 +8973,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8991,6 +8993,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9014,6 +9017,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -35811,16 +35815,61 @@ PDF properties
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1644655914
 The 
+\change_unchanged
+
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
 PDF Properties
 \family default
- dialog allows you to set up special options for the PDF output of your
- document.
- All these options are provided by the \SpecialChar LaTeX
--package 
+ 
+\change_deleted -712698321 1644655917
+dialog 
+\change_unchanged
+allows you to set up 
+\change_deleted -712698321 1644651900
+special options
+\change_inserted -712698321 1644651929
+specifics
+\change_unchanged
+ 
+\change_deleted -712698321 1644651937
+for
+\change_inserted -712698321 1644651944
+of your document's
+\change_unchanged
+ 
+\change_deleted -712698321 1644655939
+the 
+\change_unchanged
+PDF output
+\change_deleted -712698321 1644651948
+ of your document
+\change_unchanged
+.
+ 
+\change_deleted -712698321 1644651614
+All
+\change_inserted -712698321 1644651616
+Most of
+\change_unchanged
+ these 
+\change_deleted -712698321 1644651959
+options
+\change_inserted -712698321 1644651961
+specifics
+\change_unchanged
+ are provided by the \SpecialChar LaTeX
+
+\change_deleted -712698321 1644651813
+-
+\change_inserted -712698321 1644651814
+ 
+\change_unchanged
+package 
 \series bold
 hyperref
 \series default
@@ -35835,10 +35884,63 @@ status collapsed
 
 \end_inset
 
- which will link all cross-references in the DVI- and PDF-output.
+
+\change_inserted -712698321 1644653717
+ which you need to enable by clicking 
+\family sans
+Use Hyperref Support
+\family default
+ in order to set the PDF properties (if the package is already loaded by
+ your document class or another package, the checkbox you need to click
+ is labeled 
+\family sans
+Customize Hyperref Options
+\family default
+ instead).
+ Among other things, hyperref
+\change_deleted -712698321 1644651887
+ which
+\change_unchanged
+ 
+\change_deleted -712698321 1644653821
+will 
+\change_inserted -712698321 1644653851
+ hyper
+\change_unchanged
+link
+\change_inserted -712698321 1644653826
+s
+\change_unchanged
+ all 
+\change_inserted -712698321 1644653859
+URLs and 
+\change_unchanged
+cross-references in the 
+\change_deleted -712698321 1644653786
+DVI- and 
+\change_unchanged
+PDF
+\change_inserted -712698321 1644653751
+ 
+\change_deleted -712698321 1644653751
+-
+\change_unchanged
+output.
  This means that the reader of your document will be able to click on a
- table of contents entry or on a reference to move to the cross-referenced
- part of the document.
+\change_inserted -712698321 1644653878
+n URL, a
+\change_unchanged
+ table of contents entry or on a reference to 
+\change_inserted -712698321 1644653918
+open a website or to 
+\change_unchanged
+move to the cross-referenced part of the document.
+
+\change_inserted -712698321 1644653971
+ Furthermore, you can set PDF metadata (such as document author and title),
+ or determine how the PDF is being opened by the reader program.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -35847,8 +35949,11 @@ The header information in the dialog tab
 General
 \family default
  is saved together with the PDF as file properties.
- Many programs are able to extract this information, for example, automatically
- to recognize who the author is and what the PDF is about.
+ Many programs are able to extract this information, for example, 
+\change_deleted -712698321 1644656745
+automatically 
+\change_unchanged
+to recognize who the author is and what the PDF is about.
  This is very useful to sort, classify or use PDFs for bibliography issues.
  When the option 
 \family sans
@@ -35862,9 +35967,15 @@ fill
 
 header
 \family default
- is set, \SpecialChar LyX
- tries to extract the header information from your document title
- and author entries.
+ is set, 
+\change_deleted -712698321 1644654039
+\SpecialChar LyX
+
+\change_inserted -712698321 1644654041
+hyperref
+\change_unchanged
+ tries to extract the header information from your document title and author
+ entries.
  The option 
 \family sans
 Load
@@ -35885,12 +35996,51 @@ mode
 \end_layout
 
 \begin_layout Standard
-You can specify in the dialog tab 
+
+\change_deleted -712698321 1644654066
+You can specify i
+\change_inserted -712698321 1644654066
+I
+\change_unchanged
+n the dialog tab 
 \family sans
 Hyperlinks
 \family default
- how the links will look and if links for bibliographical backreferences
- are created.
+ 
+\change_inserted -712698321 1644654103
+you can customize the
+\change_deleted -712698321 1644654105
+how
+\change_inserted -712698321 1644654109
+ look of
+\change_unchanged
+ 
+\change_deleted -712698321 1644654087
+the
+\change_inserted -712698321 1644654087
+such
+\change_unchanged
+ links
+\change_inserted -712698321 1644654147
+, and you can specify
+\change_unchanged
+ 
+\change_inserted -712698321 1644654275
+if and which 
+\change_deleted -712698321 1644654283
+will look and if links for 
+\change_unchanged
+bibliographical backreferences are created
+\change_inserted -712698321 1644654335
+.
+ 
+\family sans
+Backreferences
+\family default
+ are links inserted at the end of bibliographic entries pointing to either
+ sections, pages or slides on which these entries are being cited
+\change_unchanged
+.
  The 
 \family sans
 Break
@@ -35971,21 +36121,47 @@ green
 \end_layout
 
 \begin_layout Standard
-but you can change these in the field 
+but you can change these in the 
+\change_deleted -712698321 1644651692
+field
+\change_inserted -712698321 1644651692
+tab
+\change_unchanged
+ 
 \family sans
-Additional options
+Additional 
+\change_deleted -712698321 1644656056
+o
+\change_inserted -712698321 1644656056
+O
+\change_unchanged
+ptions
 \family default
 .
- For example, in this document they were changed with the additional options:
+ For example, in this document they were changed with the
+\change_inserted -712698321 1644651709
+se
+\change_unchanged
+ additional options
+\change_inserted -712698321 1644651730
+ added to 
+\family sans
+Hypersetup
+\change_unchanged
+
+\family default
+:
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 
 \series bold
 linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1644654422
 If the option 
 \family sans
 Backreferences
@@ -35993,6 +36169,8 @@ Backreferences
  is set, the hyperlinks will appear in the bibliography after the different
  entries, showing, depending on the option selected, the number of the section,
  slide or page where the entry is referenced.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -36000,20 +36178,56 @@ In the dialog tab
 \family sans
 Bookmarks
 \family default
- you can specify if PDF-bookmarks should be created for every section of
- your document to make it easier for readers to navigate through the document.
+ you can specify if PDF
+\change_inserted -712698321 1644654456
+ 
+\change_deleted -712698321 1644654456
+-
+\change_unchanged
+bookmarks 
+\change_inserted -712698321 1644654511
+(shown as a collapsible outline in the PDF reader) 
+\change_unchanged
+should be created for every section of your document to make it easier for
+ readers to navigate through the document.
  You can decide if the bookmarks should be numbered like your document sections
  or not.
- With the 
+ 
+\change_deleted -712698321 1644654607
+With
+\change_inserted -712698321 1644654609
+By checking
+\change_unchanged
+ 
+\change_deleted -712698321 1644654594
+the
+\change_unchanged
+ 
 \family sans
-Open bookmarks
+Open bookmark
+\change_inserted -712698321 1644654550
+ tree
+\change_deleted -712698321 1644654551
+s
+\change_inserted -712698321 1644654802
+ 
 \family default
+you can instruct the PDF reader to uncollapse the outliner when opening
+ the PDF.
+
+\change_unchanged
  
 \family sans
 Level
 \family default
- you can specify what sectioning level should be displayed in the bookmarks
+ 
+\change_inserted -712698321 1644654838
+determines up to which level this uncollapsing is done.
+\change_deleted -712698321 1644654687
+you can specify what sectioning level should be displayed in the bookmarks
  when opening the PDF.
+
+\change_unchanged
  For example level
 \begin_inset space ~
 \end_inset
@@ -36022,10 +36236,106 @@ Level
 \begin_inset space ~
 \end_inset
 
-1 will only display the sections.
+1 will only display the sections
+\change_inserted -712698321 1644654724
+ (collapsing the rest)
+\change_unchanged
+.
+\change_inserted -712698321 1644656154
+
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted -712698321 1644657105
+In the 
+\family sans
+Additional Options
+\family default
+ dialog tab you can insert hyperref options which are not among the ones
+ described above as a comma-separated list (please refer to the hyperref
+ manual 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hyperref"
+literal "true"
+
+\end_inset
+
+ for a full list and documentation of possible options).
+ Note that these options will be passed to hyperref via 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1644656321
+
+\backslash
+hypersetup
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, not via the package options.
+ This will exclude some options that can only be specified via the latter.
+ If you need to use one of those options, you can set them by adding
+\end_layout
+
+\begin_layout Quote
+
+\change_inserted -712698321 1644656496
+
+\series bold
+PackageOptions hyperref option1,option1
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1644656431
+in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Local Layout
+\family default
+ (but only if hyperref is not loaded by your document class).
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1644657160
+The 
+\family sans
+Document Metadata
+\family default
+ input widget allows you to insert PDF properties that are independent of
+ the hyperref package and rely on some (rather new) \SpecialChar LaTeX
+ core features.
+ This requires \SpecialChar LaTeX
+ version 06/2022 at least (with earlier versions, input is
+ simply ignored).
+ The widget expects a comma-separated list of key-value options (such as
+ 
+\series bold
+pdfversion=1.7, lang=de-DE
+\series default
+).
+ At the point of writing this, the list of options is still rather small
+ and not very well documented, but it is expected that in the future, rather
+ fundamental PDF properties (such as structure tagging for accessibility
+ reasons and different PDF standards such as PDF/A) can be set this way.
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -712698321 1644656978
 PDF properties are also used in this document.
  When you look in its document settings, you can see that some additional
  
@@ -36042,6 +36352,8 @@ literal "true"
 \end_inset
 
 .
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section

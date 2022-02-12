@@ -1950,6 +1950,11 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 	   << "\\save_transient_properties " << h_save_transient_properties << "\n"
 	   << "\\origin " << origin << "\n"
 	   << "\\textclass " << h_textclass << "\n";
+	if (!h_doc_metadata.empty()) {
+		os << "\\begin_metadata\n"
+		   << h_doc_metadata
+		   << "\n\\end_metadata\n";
+	}
 	string const raw = subdoc ? empty_string() : h_preamble.str();
 	if (!raw.empty()) {
 		os << "\\begin_preamble\n";
@@ -2790,6 +2795,11 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			}
 			// the remaining options
 			h_options = join(opts, ",");
+			continue;
+		}
+
+		if (t.cs() == "DocumentMetadata") {
+			h_doc_metadata = trimSpaceAndEol(p.getArg('{', '}'));
 			continue;
 		}
 

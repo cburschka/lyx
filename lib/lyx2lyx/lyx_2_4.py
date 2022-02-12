@@ -27,11 +27,12 @@ from datetime import (datetime, date, time)
 # Uncomment only what you need to import, please.
 
 from parser_tools import (count_pars_in_inset, del_complete_lines, del_token,
-    find_end_of_inset, find_end_of_layout, find_token, find_token_backwards,
-    find_token_exact, find_re, get_bool_value, get_containing_inset,
-    get_containing_layout, get_option_value, get_value, get_quoted_value)
+     find_end_of, find_end_of_inset, find_end_of_layout, find_token,
+     find_token_backwards, find_token_exact, find_re, get_bool_value,
+     get_containing_inset, get_containing_layout, get_option_value, get_value,
+     get_quoted_value)
 #    del_value, 
-#    find_complete_lines, find_end_of,
+#    find_complete_lines,
 #    find_re, find_substring,
 #    is_in_inset, set_bool_value
 #    find_tokens, check_token
@@ -4413,6 +4414,19 @@ def revert_docbook_mathml_prefix(document):
             return
         del document.header[i]
 
+def revert_document_metadata(document):
+    """Revert document metadata"""
+    i = 0
+    while True:
+        i = find_token(document.header, "\\begin_metadata", i)
+        if i == -1:
+            return
+        j = find_end_of(document.header, i, "\\begin_metadata", "\\end_metadata")
+        if j == -1:
+            # this should not happen
+            break
+        document.header[i : j + 1] = []
+
 ##
 # Conversion hub
 #
@@ -4482,10 +4496,12 @@ convert = [
            [605, [convert_vcolumns2]],
            [606, [convert_koma_frontispiece]],
            [607, []],
-           [608, []]
+           [608, []],
+           [609, []]
           ]
 
-revert =  [[607, [revert_docbook_mathml_prefix]],
+revert =  [[608, [revert_document_metadata]],
+           [607, [revert_docbook_mathml_prefix]],
            [606, [revert_spellchecker_ignore]],
            [605, [revert_koma_frontispiece]],
            [604, [revert_vcolumns2]],

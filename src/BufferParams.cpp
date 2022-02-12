@@ -807,6 +807,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 				origin.replace(0, sysdirprefix.length() - 1,
 					package().system_support().absFileName());
 		}
+	} else if (token == "\\begin_metadata") {
+		readDocumentMetadata(lex);
 	} else if (token == "\\begin_preamble") {
 		readPreamble(lex);
 	} else if (token == "\\begin_local_layout") {
@@ -1255,6 +1257,15 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 						baseClass()->name()), "layout"))
 	   << '\n';
 
+	// then document metadata
+	if (!document_metadata.empty()) {
+		// remove '\n' from the end of document_metadata
+		docstring const tmpmd = rtrim(document_metadata, "\n");
+		os << "\\begin_metadata\n"
+		   << to_utf8(tmpmd)
+		   << "\n\\end_metadata\n";
+	}
+
 	// then the preamble
 	if (!preamble.empty()) {
 		// remove '\n' from the end of preamble
@@ -1688,6 +1699,56 @@ void BufferParams::validate(LaTeXFeatures & features) const
 bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 			      FileName const & filepath) const
 {
+	// DocumentMetadata must come before anything else
+	if (features.isAvailable("LaTeX-2022/06/01")
+	    && !containsOnly(document_metadata, " \n\t")) {
+		// Check if the user preamble contains uncodable glyphs
+		odocstringstream doc_metadata;
+		docstring uncodable_glyphs;
+		Encoding const * const enc = features.runparams().encoding;
+		if (enc) {
+			for (char_type c : document_metadata) {
+				if (!enc->encodable(c)) {
+					docstring const glyph(1, c);
+					LYXERR0("Uncodable character '"
+						<< glyph
+						<< "' in document metadata!");
+					uncodable_glyphs += glyph;
+					if (features.runparams().dryrun) {
+						doc_metadata << "<" << _("LyX Warning: ")
+						   << _("uncodable character") << " '";
+						doc_metadata.put(c);
+						doc_metadata << "'>";
+					}
+				} else
+					doc_metadata.put(c);
+			}
+		} else
+			doc_metadata << document_metadata;
+
+		// On BUFFER_VIEW|UPDATE, warn user if we found uncodable glyphs
+		if (!features.runparams().dryrun && !uncodable_glyphs.empty()) {
+			frontend::Alert::warning(
+				_("Uncodable character in document metadata"),
+				support::bformat(
+				  _("The metadata of your document contains glyphs "
+				    "that are unknown in the current document encoding "
+				    "(namely %1$s).\nThese glyphs are omitted "
+				    " from the output, which may result in "
+				    "incomplete output."
+				    "\n\nPlease select an appropriate "
+				    "document encoding\n"
+				    "(such as utf8) or change the "
+				    "preamble code accordingly."),
+				  uncodable_glyphs));
+		}
+		if (!doc_metadata.str().empty()) {
+			os << "\\DocumentMetadata{\n"
+			   << doc_metadata.str()
+			   << "}\n";
+		}
+	}
+
 	// http://www.tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf
 	// !! To use the Fix-cm package, load it before \documentclass, and use the command
 	// \RequirePackage to do so, rather than the normal \usepackage
@@ -2878,6 +2939,16 @@ void BufferParams::readPreamble(Lexer & lex)
 			"consistency check failed." << endl;
 
 	preamble = lex.getLongString(from_ascii("\\end_preamble"));
+}
+
+
+void BufferParams::readDocumentMetadata(Lexer & lex)
+{
+	if (lex.getString() != "\\begin_metadata")
+		lyxerr << "Error (BufferParams::readDocumentMetadata):"
+			"consistency check failed." << endl;
+
+	document_metadata = lex.getLongString(from_ascii("\\end_metadata"));
 }
 
 

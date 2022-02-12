@@ -148,6 +148,7 @@ private:
 	int index_number;
 
 	std::ostringstream h_preamble;
+	std::string h_doc_metadata;
 	std::string h_backgroundcolor;
 	std::string h_multibib;
 	std::string h_biblio_style;

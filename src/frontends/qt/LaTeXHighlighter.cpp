@@ -20,8 +20,8 @@ namespace lyx {
 namespace frontend {
 
 
-LaTeXHighlighter::LaTeXHighlighter(QTextDocument * parent, bool at_letter)
-	: QSyntaxHighlighter(parent), at_letter_(at_letter)
+LaTeXHighlighter::LaTeXHighlighter(QTextDocument * parent, bool at_letter, bool keyval)
+	: QSyntaxHighlighter(parent), at_letter_(at_letter), keyval_(keyval)
 {
 	auto blend = [](QColor color1, QColor color2) {
 		int r = 0.5 * (color1.red() + color2.red());
@@ -38,12 +38,32 @@ LaTeXHighlighter::LaTeXHighlighter(QTextDocument * parent, bool at_letter)
 	mathFormat.setForeground(blend(Qt::red, text_color));
 	warningFormat.setForeground(Qt::red);
 	warningFormat.setFontWeight(QFont::Bold);
+	keyFormat.setForeground(blend(Qt::darkRed, text_color));
+	keyFormat.setFontWeight(QFont::Bold);
+	valFormat.setForeground(blend(Qt::darkGreen, text_color));
 }
 
 
 void LaTeXHighlighter::highlightBlock(QString const & text)
 {
 #if QT_VERSION < 0x060000
+	// keyval
+	if (keyval_) {
+		// Highlight key-val options. Used in some option widgets.
+		static const QRegExp exprKeyvalkey("[^=,]+");
+		static const QRegExp exprKeyvalval("[^,]+");
+		int kvindex = exprKeyvalkey.indexIn(text);
+		while (kvindex >= 0) {
+			int length = exprKeyvalkey.matchedLength();
+			setFormat(kvindex, length, keyFormat);
+			int kvvindex = exprKeyvalval.indexIn(text, kvindex + length);
+			if (kvvindex > 0) {
+				length += exprKeyvalval.matchedLength();
+				setFormat(kvvindex, length, valFormat);
+			}
+			kvindex = exprKeyvalkey.indexIn(text, kvindex + length);
+		}
+	}
 	// $ $
 	static const QRegExp exprMath("\\$[^\\$]*\\$");
 	int index = exprMath.indexIn(text);
@@ -129,6 +149,27 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 		index = exprWarning.indexIn(text, index + length);
 	}
 #else
+	// keyval
+	if (keyval_) {
+		// Highlight key-val options. Used in some option widgets.
+		static const QRegularExpression exprKeyvalkey("[^=,]+");
+		static const QRegularExpression exprKeyvalval("[^,]+");
+		QRegularExpressionMatch matchkey = exprKeyvalkey.match(text);
+		int kvindex = matchkey.capturedStart(0);
+		while (kvindex >= 0) {
+			int length = matchkey.capturedLength(0);
+			setFormat(kvindex, length, keyFormat);
+			QRegularExpressionMatch matchval =
+				exprKeyvalval.match(text, kvindex + length);
+			int kvvindex = matchval.capturedStart(0);
+			if (kvvindex > 0) {
+				length += matchval.capturedLength(0);
+				setFormat(kvvindex, length, valFormat);
+			}
+			matchkey = exprKeyvalkey.match(text, kvindex + length);
+			kvindex = matchkey.capturedStart(0);
+		}
+	}
 	// $ $
 	static const QRegularExpression exprMath("\\$[^\\$]*\\$");
 	QRegularExpressionMatch match = exprMath.match(text);

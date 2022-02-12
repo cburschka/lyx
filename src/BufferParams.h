@@ -367,6 +367,8 @@ public:
 	std::string origin;
 	///
 	docstring preamble;
+	/// DocumentMetadata as introduced by LaTeX 2022/06
+	docstring document_metadata;
 	///
 	std::string options;
 	/// use the class options defined in the layout?
@@ -619,6 +621,8 @@ public:
 private:
 	///
 	void readPreamble(Lexer &);
+	///
+	void readDocumentMetadata(Lexer &);
 	///
 	void readLocalLayout(Lexer &, bool);
 	///

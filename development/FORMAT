@@ -7,6 +7,12 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2022-02-11 Jürgen Spitzmüller <spitz@lyx.org> 
+	* Format incremented to 609: \\begin_metadata ... \\end_metadata buffer param.
+	  This takes a list of keyvals for the new \\DocumentMetadata command
+	  (introduced in LaTeX 06/2022) which must be output at the very begin
+	  of the document (before \\documentclass).
+
 2021-03-23 Thibaut Cuvelier <tcuvelier@lyx.org> 
  	* Format incremented to 608: DocBook MathML-namespace prefix with the
  	  \docbook_mathml_prefix buffer parameter (enumerated value:
