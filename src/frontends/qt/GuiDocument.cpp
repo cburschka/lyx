@@ -265,15 +265,15 @@ class ModuleSelectionManager : public GuiSelectionManager
 public:
 	///
 	ModuleSelectionManager(QObject * parent,
-						   QTreeView * availableLVarg,
-						   QTreeView * selectedLVarg,
-						   QPushButton * addPBarg,
-						   QPushButton * delPBarg,
-						   QPushButton * upPBarg,
-						   QPushButton * downPBarg,
-						   QStandardItemModel * availableModelarg,
-						   GuiIdListModel * selectedModelarg,
-	                       GuiDocument const * container)
+			       QTreeView * availableLVarg,
+			       QTreeView * selectedLVarg,
+			       QPushButton * addPBarg,
+			       QPushButton * delPBarg,
+			       QPushButton * upPBarg,
+			       QPushButton * downPBarg,
+			       QStandardItemModel * availableModelarg,
+			       GuiIdListModel * selectedModelarg,
+			       GuiDocument const * container)
 		: GuiSelectionManager(parent, availableLVarg, selectedLVarg, addPBarg, delPBarg,
 							  upPBarg, downPBarg, availableModelarg, selectedModelarg),
 		  container_(container)
@@ -933,9 +933,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(outputModule->tableoutCB, SIGNAL(currentIndexChanged(int)),
 		this, SLOT(change_adaptor()));
 	connect(outputModule->mathmlprefixCB, SIGNAL(currentIndexChanged(int)),
-        this, SLOT(change_adaptor()));
+		this, SLOT(change_adaptor()));
 
-    connect(outputModule->shellescapeCB, SIGNAL(stateChanged(int)),
+	connect(outputModule->shellescapeCB, SIGNAL(stateChanged(int)),
 		this, SLOT(shellescapeChanged()));
 	connect(outputModule->outputsyncCB, SIGNAL(toggled(bool)),
 		this, SLOT(setOutputSync(bool)));
@@ -1331,6 +1331,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(colorModule->delBoxBackgroundTB, SIGNAL(clicked()),
 		this, SLOT(deleteBoxBackgroundColor()));
 
+
 	// change tracking
 	changesModule = new UiWidget<Ui::ChangeTrackingUi>(this);
 	connect(changesModule->trackChangesCB, SIGNAL(clicked()),
@@ -1339,6 +1340,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(outputChangesToggled(bool)));
 	connect(changesModule->changeBarsCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
+
 
 	// numbering
 	numberingModule = new UiWidget<Ui::NumberingUi>(this);
@@ -1762,7 +1764,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		qt_("Input listings parameters below. Enter ? for a list of parameters."));
 
 	for (int i = 0; lst_packages[i][0]; ++i)
-            listingsModule->packageCO->addItem(lst_packages[i]);
+		listingsModule->packageCO->addItem(lst_packages[i]);
 
 
 	// add the panels
