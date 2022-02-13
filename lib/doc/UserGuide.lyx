@@ -8973,14 +8973,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8993,7 +8991,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9017,7 +9014,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -36310,7 +36306,7 @@ Local Layout
 
 \begin_layout Standard
 
-\change_inserted -712698321 1644657160
+\change_inserted -712698321 1644744249
 The 
 \family sans
 Document Metadata
@@ -36328,9 +36324,13 @@ pdfversion=1.7, lang=de-DE
 \series default
 ).
  At the point of writing this, the list of options is still rather small
- and not very well documented, but it is expected that in the future, rather
- fundamental PDF properties (such as structure tagging for accessibility
- reasons and different PDF standards such as PDF/A) can be set this way.
+ and not very well documented (look for a file called 
+\emph on
+documentmetadata-support.pdf
+\emph default
+), but it is expected that in the future, rather fundamental PDF properties
+ (such as structure tagging for accessibility reasons and different PDF
+ standards such as PDF/A) can be set this way.
 \end_layout
 
 \begin_layout Standard
