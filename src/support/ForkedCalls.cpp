@@ -305,6 +305,8 @@ int ForkedCall::generateChild()
 	if (command_.empty())
 		return 1;
 
+	string const prefixed_command = cmd_prefix_ + command_;
+
 #if !defined (_WIN32)
 	// POSIX
 
@@ -312,8 +314,8 @@ int ForkedCall::generateChild()
 	// in a contiguous block of memory. The array contains pointers
 	// to each word.
 	// Don't forget the terminating `\0' character.
-	char const * const c_str = command_.c_str();
-	vector<char> vec(c_str, c_str + command_.size() + 1);
+	char const * const c_str = prefixed_command.c_str();
+	vector<char> vec(c_str, c_str + prefixed_command.size() + 1);
 
 	// Splitting the command up into an array of words means replacing
 	// the whitespace between words with '\0'. Life is complicated
@@ -377,7 +379,7 @@ int ForkedCall::generateChild()
 	if (lyxerr.debugging(Debug::FILES)) {
 		vector<char *>::iterator ait = argv.begin();
 		vector<char *>::iterator const aend = argv.end();
-		lyxerr << "<command>\n\t" << command_
+		lyxerr << "<command>\n\t" << prefixed_command
 		       << "\n\tInterpreted as:\n\n";
 		for (; ait != aend; ++ait)
 			if (*ait)
