@@ -2132,6 +2132,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				// leave this now in order to insert the next one.
 				if (inautoarg) {
 					cur.leaveInset(cur.inset());
+					cur.setCurrentFont();
 					cur.posForward();
 					if (arg.insertonnewline && cur.pos() > 0) {
 						FuncRequest cmd2(LFUN_PARAGRAPH_BREAK);
