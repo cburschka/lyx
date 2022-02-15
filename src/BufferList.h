@@ -100,8 +100,9 @@ public:
 	/// \return a pointer to the buffer with the given number
 	Buffer * getBuffer(unsigned int);
 
-	/// \return a pointer to the buffer whose temppath matches the given path
-	Buffer * getBufferFromTmp(std::string const & path);
+	/// \return a pointer to the buffer whose temppath matches the given \p path
+	///  If optional \p realpath is \c true the lookup is done with real path names
+	Buffer * getBufferFromTmp(std::string const & path, bool realpath = false);
 
 	/** returns a pointer to the buffer that follows argument in
 	 * buffer list. The buffer following the last in list is the
