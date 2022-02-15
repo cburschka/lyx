@@ -161,8 +161,10 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 														   "explained in the User Guide."), spart));
 			}
 			// remove remaining \'s for the sorting part
-			docstring const ppart =
+			docstring ppart =
 					subst(spart_latexed.first, from_ascii("\\"), docstring());
+			// Plain quotes need to be escaped, however (#10649)
+			ppart = subst(ppart, from_ascii("\""), from_ascii("\\\""));
 			os << ppart;
 			os << '@';
 		}
