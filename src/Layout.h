@@ -116,11 +116,11 @@ public:
 		docstring docbooktag;
 		docstring docbooktagtype;
 		docstring docbookattr;
-        /// Whether this argument should be output after the main tag (default: inside). The result if the argument
-        /// should be output both before and after the main tag is undefined.
+		/// Whether this argument should be output after the main tag (default: inside). The result if the argument
+		/// should be output both before and after the main tag is undefined.
 		bool docbookargumentbeforemaintag = false;
-        /// Whether this argument should be output before the main tag (default: inside). The result if the argument
-        /// should be output both before and after the main tag is undefined.
+		/// Whether this argument should be output before the main tag (default: inside). The result if the argument
+		/// should be output both before and after the main tag is undefined.
 		bool docbookargumentaftermaintag = false;
 	};
 	///
