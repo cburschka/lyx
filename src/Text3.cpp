@@ -118,6 +118,11 @@ static void toggleAndShow(Cursor & cur, Text * text,
 						       cur.real_current_font))
 			text->setCursor(cur, cur.pit(), cur.pos(),
 					false, !cur.boundary());
+		if (font.language() != ignore_language)
+			// We need a buffer update if we change the language
+			// (e.g., with info insets or if the selection contains
+			// a par label)
+			cur.forceBufferUpdate();
 	}
 }
 
@@ -2520,10 +2525,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		selectWordWhenUnderCursor(cur, WHOLE_WORD_STRICT);
 		Font font(ignore_font, lang);
 		toggleAndShow(cur, this, font, toggle);
-		// We need a buffer update if we change the language
-		// of an info inset
-		if (cur.insetInSelection(INFO_CODE))
-			cur.forceBufferUpdate();
 		break;
 	}
 
@@ -2558,10 +2559,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			freeFonts.push(make_pair(props, font));
 			toggleall = toggle;
 			toggleAndShow(cur, this, font, toggleall);
-			// We need a buffer update if we change the language
-			// of an info inset
-			if (cur.insetInSelection(INFO_CODE))
-				cur.forceBufferUpdate();
 			cur.message(bformat(_("Text properties applied: %1$s"), props));
 		} else
 			LYXERR0("Invalid argument of textstyle-update");
