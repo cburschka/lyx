@@ -243,7 +243,8 @@ static void ipaChar(Cursor & cur, InsetIPAChar::Kind kind)
 
 
 static bool doInsertInset(Cursor & cur, Text * text,
-	FuncRequest const & cmd, bool edit, bool pastesel)
+			  FuncRequest const & cmd, bool edit,
+			  bool pastesel, bool resetfont = false)
 {
 	Buffer & buffer = cur.bv().buffer();
 	BufferParams const & bparams = buffer.params();
@@ -346,6 +347,13 @@ static bool doInsertInset(Cursor & cur, Text * text,
 	cur.clearSelection(); // bug 393
 	cur.finishUndo();
 	if (inset_text) {
+		if (resetfont) {
+			// Reset of font (not language) is requested.
+			// Used by InsetIndex (#11961).
+			Language const * lang = cur.getFont().language();
+			Font font(bparams.getFont().fontInfo(), lang);
+			cur.paragraph().resetFonts(font);
+		}
 		inset_text->fixParagraphsFont();
 		cur.pos() = 0;
 		cur.pit() = 0;
@@ -2105,16 +2113,19 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INDEX_INSERT:
 	case LFUN_PREVIEW_INSERT:
 	case LFUN_SCRIPT_INSERT:
-	case LFUN_IPA_INSERT:
+	case LFUN_IPA_INSERT: {
+		// Indexes reset font formatting (#11961)
+		bool const resetfont = cmd.action() == LFUN_INDEX_INSERT;
 		// Open the inset, and move the current selection
 		// inside it.
-		doInsertInset(cur, this, cmd, true, true);
+		doInsertInset(cur, this, cmd, true, true, resetfont);
 		cur.posForward();
 		cur.setCurrentFont();
 		// Some insets are numbered, others are shown in the outline pane so
 		// let's update the labels and the toc backend.
 		cur.forceBufferUpdate();
 		break;
+	}
 
 	case LFUN_FLEX_INSERT: {
 		// Open the inset, and move the current selection
