@@ -326,7 +326,7 @@ static bool doInsertInset(Cursor & cur, Text * text,
 	if (inset_text) {
 		Font const & font = inset->inheritFont()
 			? cur.bv().textMetrics(text).displayFont(cur.pit(), cur.pos())
-			: buffer.params().getFont();
+			: bparams.getFont();
 		inset_text->setOuterFont(cur.bv(), font.fontInfo());
 	}
 
