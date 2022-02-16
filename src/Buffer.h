@@ -521,8 +521,8 @@ public:
 	void invalidateCiteLabels() const;
 	///
 	bool citeLabelsValid() const;
-	///
-	void getLabelList(std::vector<docstring> &) const;
+	/// two strings: plain label name and label as gui string
+	void getLabelList(std::vector<std::pair<docstring, docstring>> &) const;
 
 	/// This removes the .aux and .bbl files from the temp dir.
 	void removeBiblioTempFiles() const;

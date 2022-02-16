@@ -55,12 +55,13 @@ class TocItem
 {
 public:
 	/// Default constructor for STL containers.
-	TocItem() : dit_(0), depth_(0), output_(false) {}
+	TocItem() : dit_(0), depth_(0), output_(false), missing_(false) {}
 	///
 	TocItem(DocIterator const & dit,
 		int depth,
 		docstring const & s,
 		bool output_active,
+		bool missing = false,
 		FuncRequest const & action = FuncRequest(LFUN_UNKNOWN_ACTION)
 		);
 	///
@@ -73,6 +74,8 @@ public:
 	void str(docstring const & s) { str_ = s; }
 	///
 	bool isOutput() const { return output_; }
+	///
+	bool isMissing() const { return missing_; }
 	///
 	void setAction(FuncRequest const & a) { action_ = a; }
 
@@ -92,6 +95,8 @@ private:
 	docstring str_;
 	/// Is this item in a note, inactive branch, etc?
 	bool output_;
+	/// Is this item missing, e.g. missing label?
+	bool missing_;
 	/// Custom action
 	FuncRequest action_;
 };

@@ -202,7 +202,7 @@ void GuiRef::refHighlighted(QTreeWidgetItem * sel)
 	bool const cur_item_selected = sel->isSelected();
 
 	if (cur_item_selected)
-		referenceED->setText(sel->text(0));
+		referenceED->setText(sel->data(0, Qt::UserRole).toString());
 
 	if (at_ref_)
 		gotoRef();
@@ -236,7 +236,7 @@ void GuiRef::refSelected(QTreeWidgetItem * sel)
 	bool const cur_item_selected = sel->isSelected();
 
 	if (cur_item_selected)
-		referenceED->setText(sel->text(0));
+		referenceED->setText(sel->data(0, Qt::UserRole).toString());
 	// <enter> or double click, inserts ref and closes dialog
 	slotOK();
 }
@@ -439,13 +439,17 @@ void GuiRef::redoRefs()
 	// the first item inserted
 	QString const oldSelection(referenceED->text());
 
-	QStringList refsStrings;
+	QStringList refsNames;
+	QStringList refsAsStrings;
 	QStringList refsCategories;
-	vector<docstring>::const_iterator iter;
+	vector<std::pair<docstring, docstring>>::const_iterator iter;
 	bool noprefix = false;
 	for (iter = refs_.begin(); iter != refs_.end(); ++iter) {
-		QString const lab = toqstr(*iter);
-		refsStrings.append(lab);
+		// the plain label name
+		QString const lab = toqstr((*iter).first);
+		refsNames.append(lab);
+		// the label as gui string
+		refsAsStrings.append(toqstr((*iter).second));
 		if (groupCB->isChecked()) {
 			if (lab.contains(":")) {
 				QString const pref = lab.split(':')[0];
@@ -470,10 +474,10 @@ void GuiRef::redoRefs()
 					sortingCO->itemData(sortingCO->currentIndex()).toString()
 					: QString();
 	if (sort_method == "nocase")
-		sort(refsStrings.begin(), refsStrings.end(),
+		sort(refsNames.begin(), refsNames.end(),
 			  caseInsensitiveLessThan /*defined above*/);
 	else if (sort_method == "case")
-		sort(refsStrings.begin(), refsStrings.end());
+		sort(refsNames.begin(), refsNames.end());
 
 	if (groupCB->isChecked()) {
 		QList<QTreeWidgetItem *> refsCats;
@@ -481,14 +485,15 @@ void GuiRef::redoRefs()
 			QString const & cat = refsCategories.at(i);
 			QTreeWidgetItem * item = new QTreeWidgetItem(refsTW);
 			item->setText(0, cat);
-			for (int j = 0; j < refsStrings.size(); ++j) {
-				QString const & ref = refsStrings.at(j);
+			for (int j = 0; j < refsNames.size(); ++j) {
+				QString const & ref = refsNames.at(j);
 				if ((ref.startsWith(cat + QString(":")))
 				    || (cat == qt_("<No prefix>")
 				       && (!ref.mid(1).contains(":") || ref.left(1).contains(":")))) {
 						QTreeWidgetItem * child =
 							new QTreeWidgetItem(item);
-						child->setText(0, ref);
+						item->setText(0, refsAsStrings.at(j));
+						item->setData(0, Qt::UserRole, ref);
 						item->addChild(child);
 				}
 			}
@@ -497,9 +502,11 @@ void GuiRef::redoRefs()
 		refsTW->addTopLevelItems(refsCats);
 	} else {
 		QList<QTreeWidgetItem *> refsItems;
-		for (int i = 0; i < refsStrings.size(); ++i) {
+		for (int i = 0; i < refsNames.size(); ++i) {
 			QTreeWidgetItem * item = new QTreeWidgetItem(refsTW);
-			item->setText(0, refsStrings.at(i));
+			QString const & ref = refsNames.at(i);
+			item->setText(0, refsAsStrings.at(i));
+			item->setData(0, Qt::UserRole, ref);
 			refsItems.append(item);
 		}
 		refsTW->addTopLevelItems(refsItems);

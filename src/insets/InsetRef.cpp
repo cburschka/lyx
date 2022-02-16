@@ -537,7 +537,9 @@ void InsetRef::addToToc(DocIterator const & cpit, bool output_active,
 	broken_ = true;
 	setBroken(broken_);
 	shared_ptr<Toc> toc = backend.toc("label");
-	toc->push_back(TocItem(cpit, 0, screenLabel(), output_active));
+	if (TocBackend::findItem(*toc, 0, label) == toc->end())
+		toc->push_back(TocItem(cpit, 0, label, output_active, true));
+	toc->push_back(TocItem(cpit, 1, screenLabel(), output_active));
 	shared_ptr<Toc> toc2 = backend.toc("brokenrefs");
 	toc2->push_back(TocItem(cpit, 0, screenLabel(), output_active));
 }

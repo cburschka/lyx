@@ -43,8 +43,8 @@ namespace lyx {
 ///////////////////////////////////////////////////////////////////////////
 
 TocItem::TocItem(DocIterator const & dit, int d, docstring const & s,
-                 bool output_active, FuncRequest const & action)
-	: dit_(dit), depth_(d), str_(s), output_(output_active),
+                 bool output_active, bool missing, FuncRequest const & action)
+	: dit_(dit), depth_(d), str_(s), output_(output_active), missing_(missing),
 	  action_(action)
 {
 }
@@ -64,6 +64,9 @@ docstring const TocItem::asString() const
 	if (!output_) {
 		prefix += cross;
 		prefix += thin;
+	}
+	if (missing_) {
+		prefix += _("MISSING: ");
 	}
 	return prefix + str_;
 }
