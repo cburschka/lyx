@@ -588,8 +588,8 @@ int LaTeX::runMakeIndex(string const & f, OutputParams const & rp,
 int LaTeX::runMakeIndexNomencl(FileName const & fname,
 		string const & nlo, string const & nls)
 {
-	LYXERR(Debug::LATEX, "Running MakeIndex for nomencl.");
-	message(_("Running MakeIndex for nomencl."));
+	LYXERR(Debug::LATEX, "Running Nocmenclature Processor.");
+	message(_("Running Nocmenclature Processor."));
 	string tmp = lyxrc.nomencl_command + ' ';
 	// onlyFileName() is needed for cygwin
 	tmp += quoteName(onlyFileName(changeExtension(fname.absFileName(), nlo)));
