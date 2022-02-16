@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-02-13 12:47+0100\n"
-"PO-Revision-Date: 2022-02-13 12:46+0000\n"
+"POT-Creation-Date: 2022-02-16 14:35+0100\n"
+"PO-Revision-Date: 2022-02-16 13:40+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -29148,17 +29148,21 @@ msgstr "   voľby: "
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "Čakanie na %1$d spracovanie LaTeX-u"
 
+#: src/LaTeX.cpp:328
+msgid "Running Bibliography Processor."
+msgstr "Spúšťam generáciu bibliografie."
+
+#: src/LaTeX.cpp:389
+msgid "Re-Running Bibliography Processor."
+msgstr "Opakujem generáciu bibliografie."
+
 #: src/LaTeX.cpp:324 src/LaTeX.cpp:461
 msgid "Running Index Processor."
 msgstr "Spúšťam generáciu registra."
 
-#: src/LaTeX.cpp:377 src/LaTeX.cpp:438
-msgid "Running BibTeX."
-msgstr "Spúšťam BibTeX."
-
-#: src/LaTeX.cpp:611
-msgid "Running MakeIndex for nomencl."
-msgstr "Spúšťam makeindex pre nomencl."
+#: src/LaTeX.cpp:592
+msgid "Running Nomenclature Processor."
+msgstr "Spúšťam generáciu nomenklatúry."
 
 #: src/LaTeX.cpp:1115
 msgid "(NOTE: The erroneous command is in the preamble)"
