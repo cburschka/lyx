@@ -149,7 +149,7 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 		// version of the content to get sorting right,
 		// e.g. \index{LyX@\LyX}, \index{text@\textbf{text}}.
 		// We do this on all levels.
-		// We don't do it if the level already contains a '@', thouugh.
+		// We don't do it if the level already contains a '@', though.
 		if (contains(*it, '\\') && !contains(*it, '@')) {
 			// Plaintext might return nothing (e.g. for ERTs).
 			// In that case, we use LaTeX.
