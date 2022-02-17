@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-02-16 14:35+0100\n"
-"PO-Revision-Date: 2022-02-16 13:40+0000\n"
+"POT-Creation-Date: 2022-02-17 12:06+0100\n"
+"PO-Revision-Date: 2022-02-17 11:16+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -29159,6 +29159,18 @@ msgstr "Opakujem generáciu bibliografie."
 #: src/LaTeX.cpp:324 src/LaTeX.cpp:461
 msgid "Running Index Processor."
 msgstr "Spúšťam generáciu registra."
+
+#: src/LaTeX.cpp:438
+msgid "Index Processor Error"
+msgstr "Chyba pri generácii registra"
+
+#: src/LaTeX.cpp:439
+msgid ""
+"The index processor did not run successfully. Please check the output of "
+"View > Messages Pane!"
+msgstr ""
+"Generácia registra nebola úspešná. Skontrolujte prosím výstup dát od "
+"Zobraziť->Ladiace výpisy!"
 
 #: src/LaTeX.cpp:592
 msgid "Running Nomenclature Processor."
