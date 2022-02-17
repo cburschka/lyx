@@ -436,7 +436,8 @@ int LaTeX::run(TeXErrors & terr)
 			iscanres |= INDEX_ERROR;
 			terr.insertError(0,
 					 _("Index Processor Error"),
-					 _("The index processor did not run successfully. Please check the output of View > Messages!"));
+					 _("The index processor did not run successfully. "
+					   "Please check the output of View > Messages Pane!"));
 		}
 		FileName const ilgfile(changeExtension(file.absFileName(), ".ilg"));
 		if (ilgfile.exists())
