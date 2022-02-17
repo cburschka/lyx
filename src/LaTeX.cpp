@@ -432,6 +432,12 @@ int LaTeX::run(TeXErrors & terr)
 				runMakeIndex(onlyFileName(idxfile.absFileName()), runparams);
 		if (ret == Systemcall::KILLED || ret == Systemcall::TIMEOUT)
 			return ret;
+		else if (ret != Systemcall::OK) {
+			iscanres |= INDEX_ERROR;
+			terr.insertError(0,
+					 _("Index Processor Error"),
+					 _("The index processor did not run successfully. Please check the output of View > Messages!"));
+		}
 		FileName const ilgfile(changeExtension(file.absFileName(), ".ilg"));
 		if (ilgfile.exists())
 			iscanres = scanIlgFile(terr);
