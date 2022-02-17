@@ -80,6 +80,8 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 		os << '{';
 	}
 
+	// Get the LaTeX output from InsetText. We need to deconstruct this later
+	// in order to check if we need to generate a sorting key
 	odocstringstream ourlatex;
 	otexstream ots(ourlatex);
 	InsetText::latex(ots, runparams);
@@ -88,27 +90,31 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 		os << ourlatex.str() << "}";
 		return;
 	}
-	// get contents of InsetText as LaTeX and plaintext
+
+	// For the sorting key, we use the plaintext version
 	odocstringstream ourplain;
 	InsetText::plaintext(ourplain, runparams);
-	// FIXME: do Tex/Row correspondence (I don't currently understand what is
-	// being generated from latexstr below)
+
+	// These are the LaTeX and plaintext representations
 	docstring latexstr = ourlatex.str();
 	docstring plainstr = ourplain.str();
 
-	// this will get what follows | if anything does
+	// This will get what follows | if anything does,
+	// the command (e.g., see, textbf) for pagination
+	// formatting
 	docstring cmd;
 
-	// check for the | separator
-	// FIXME This would go wrong on an escaped "|", but
-	// how far do we want to go here?
+	// Check for the | separator to strip the cmd.
+	// This goes wrong on an escaped "|", but as the escape
+	// character can be changed in style files, we cannot
+	// prevent that.
 	size_t pos = latexstr.find(from_ascii("|"));
 	if (pos != docstring::npos) {
-		// put the bit after "|" into cmd...
+		// Put the bit after "|" into cmd...
 		cmd = latexstr.substr(pos + 1);
 		// ...and erase that stuff from latexstr
 		latexstr = latexstr.erase(pos);
-		// ...and similarly from plainstr
+		// ...as well as from plainstr
 		size_t ppos = plainstr.find(from_ascii("|"));
 		if (ppos < plainstr.size())
 			plainstr.erase(ppos);
@@ -116,8 +122,10 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 			LYXERR0("The `|' separator was not found in the plaintext version!");
 	}
 
-	// Separate the entries and subentries, i.e., split on "!"
-	// FIXME This would do the wrong thing with escaped ! characters
+	// Separate the entries and subentries, i.e., split on "!".
+	// This goes wrong on an escaped "!", but as the escape
+	// character can be changed in style files, we cannot
+	// prevent that.
 	std::vector<docstring> const levels =
 			getVectorFromString(latexstr, from_ascii("!"), true);
 	std::vector<docstring> const levels_plain =
@@ -128,19 +136,23 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 	vector<docstring>::const_iterator it2 = levels_plain.begin();
 	bool first = true;
 	for (; it != end; ++it) {
-		// write the separator except the first time
+		// The separator needs to be put back when
+		// writing the levels, except for the first level
 		if (!first)
 			os << '!';
 		else
 			first = false;
 
-		// correctly sort macros and formatted strings
-		// if we do find a command, prepend a plain text
+		// Now here comes the reason for this whole procedure:
+		// We try to correctly sort macros and formatted strings.
+		// If we find a command, prepend a plain text
 		// version of the content to get sorting right,
-		// e.g. \index{LyX@\LyX}, \index{text@\textbf{text}}
-		// Don't do that if the user entered '@' himself, though.
+		// e.g. \index{LyX@\LyX}, \index{text@\textbf{text}}.
+		// We do this on all levels.
+		// We don't do it if the level already contains a '@', thouugh.
 		if (contains(*it, '\\') && !contains(*it, '@')) {
-			// Plaintext might return nothing (e.g. for ERTs)
+			// Plaintext might return nothing (e.g. for ERTs).
+			// In that case, we use LaTeX.
 			docstring const spart =
 					(it2 < levels_plain.end() && !(*it2).empty())
 					? *it2 : *it;
@@ -155,25 +167,28 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 			if (spart != spart_latexed.first && !runparams.dryrun) {
 				// FIXME: warning should be passed to the error dialog
 				frontend::Alert::warning(_("Index sorting failed"),
-										 bformat(_("LyX's automatic index sorting algorithm faced\n"
-														   "problems with the entry '%1$s'.\n"
-														   "Please specify the sorting of this entry manually, as\n"
-														   "explained in the User Guide."), spart));
+							 bformat(_("LyX's automatic index sorting algorithm faced\n"
+								   "problems with the entry '%1$s'.\n"
+								   "Please specify the sorting of this entry manually, as\n"
+								   "explained in the User Guide."), spart));
 			}
-			// remove remaining \'s for the sorting part
-			docstring ppart =
-					subst(spart_latexed.first, from_ascii("\\"), docstring());
-			// Plain quotes need to be escaped, however (#10649)
+			// Remove remaining \'s from the sort key
+			docstring ppart = subst(spart_latexed.first, from_ascii("\\"), docstring());
+			// Plain quotes need to be escaped, however (#10649), as this
+			// is the default escape character
 			ppart = subst(ppart, from_ascii("\""), from_ascii("\\\""));
+
+			// Now insert the sortkey, separated by '@'.
 			os << ppart;
 			os << '@';
 		}
+		// Insert the actual level text
 		docstring const tpart = *it;
 		os << tpart;
 		if (it2 < levels_plain.end())
 			++it2;
 	}
-	// write the bit that followed "|"
+	// At last, re-insert the command, separated by "|"
 	if (!cmd.empty()) {
 		os << "|" << cmd;
 	}
