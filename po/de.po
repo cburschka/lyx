@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-02-16 13:07+0100\n"
-"PO-Revision-Date: 2022-02-16 13:10+0100\n"
+"POT-Creation-Date: 2022-02-17 08:23+0100\n"
+"PO-Revision-Date: 2022-02-17 08:53+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -19649,7 +19649,7 @@ msgid "Copy as Reference|R"
 msgstr "Als Querverweis kopieren|k"
 
 #: lib/ui/stdcontext.inc:61 lib/ui/stdcontext.inc:375 lib/ui/stdmenus.inc:108
-#: lib/ui/stdtoolbars.inc:86 src/Text3.cpp:1576
+#: lib/ui/stdtoolbars.inc:86 src/Text3.cpp:1584
 #: src/mathed/InsetMathNest.cpp:555
 msgid "Cut"
 msgstr "Ausschneiden"
@@ -19660,7 +19660,7 @@ msgid "Copy"
 msgstr "Kopieren"
 
 #: lib/ui/stdcontext.inc:63 lib/ui/stdcontext.inc:377 lib/ui/stdmenus.inc:110
-#: lib/ui/stdtoolbars.inc:88 src/Text3.cpp:1520
+#: lib/ui/stdtoolbars.inc:88 src/Text3.cpp:1528
 #: src/frontends/qt/GuiToolbar.cpp:441 src/mathed/InsetMathGrid.cpp:1565
 #: src/mathed/InsetMathNest.cpp:533
 msgid "Paste"
@@ -27297,7 +27297,7 @@ msgstr ""
 "\\lyxdeleted im LaTeX-Vorspann neu."
 
 #: src/Buffer.cpp:1086 src/BufferParams.cpp:475 src/frontends/qt/GuiLog.cpp:293
-#: src/insets/InsetIndex.cpp:676
+#: src/insets/InsetIndex.cpp:691
 msgid "Index"
 msgstr "Stichwortverzeichnis"
 
@@ -29448,27 +29448,39 @@ msgstr "Literaturverzeichnis-Prozessor wird noch einmal ausgeführt."
 msgid "Running Index Processor."
 msgstr "Indexprozessor wird ausgeführt."
 
-#: src/LaTeX.cpp:592
-msgid "Running MakeIndex for nomencl."
-msgstr "MakeIndex wird für nomencl ausgeführt."
+#: src/LaTeX.cpp:438
+msgid "Index Processor Error"
+msgstr "Indexprozessor-Fehler"
 
-#: src/LaTeX.cpp:1096
+#: src/LaTeX.cpp:439
+msgid ""
+"The index processor did not run successfully. Please check the output of "
+"View > Messages!"
+msgstr ""
+"Der Durchlauf des Index-Prozessors war nicht erfolgreich. Bitte prüfen Sie "
+"die Ausgabe von Ansicht > Statusmeldungen!"
+
+#: src/LaTeX.cpp:598
+msgid "Running Nomenclature Processor."
+msgstr "Nomenklatur-Prozessor wird ausgeführt."
+
+#: src/LaTeX.cpp:1102
 msgid "(NOTE: The erroneous command is in the preamble)"
 msgstr "(ACHTUNG: Der fehlerhafte Befehl befindet sich in der Präambel)"
 
-#: src/LaTeX.cpp:1588 src/LaTeX.cpp:1594 src/LaTeX.cpp:1603
+#: src/LaTeX.cpp:1594 src/LaTeX.cpp:1600 src/LaTeX.cpp:1609
 msgid "BibTeX error: "
 msgstr "BibTeX-Fehler: "
 
-#: src/LaTeX.cpp:1610
+#: src/LaTeX.cpp:1616
 msgid "Biber error: "
 msgstr "Biber-Fehler: "
 
-#: src/LaTeX.cpp:1637
+#: src/LaTeX.cpp:1643
 msgid "Makeindex error: "
 msgstr "Makeindex-Fehler: "
 
-#: src/LaTeX.cpp:1646
+#: src/LaTeX.cpp:1652
 msgid "Xindy error: "
 msgstr "Xindy-Fehler: "
 
@@ -30572,40 +30584,40 @@ msgstr "Bereits im Regexp-Modus"
 msgid "Regexp editor mode"
 msgstr "Regexp-Editor-Modus"
 
-#: src/Text3.cpp:1610
+#: src/Text3.cpp:1618
 msgid "Layout "
 msgstr "Format "
 
-#: src/Text3.cpp:1611 src/Text3.cpp:2182
+#: src/Text3.cpp:1619 src/Text3.cpp:2193
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/Text3.cpp:2181
+#: src/Text3.cpp:2192
 msgid "Table Style "
 msgstr "Tabellenstil"
 
-#: src/Text3.cpp:2374 src/frontends/qt/GuiApplication.cpp:1873
+#: src/Text3.cpp:2385 src/frontends/qt/GuiApplication.cpp:1873
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
-#: src/Text3.cpp:2539
+#: src/Text3.cpp:2550
 msgid "Invalid argument (number exceeds stack size)!"
 msgstr "Ungültiges Argument (Zahl größer als Zwischenspeicher)!"
 
-#: src/Text3.cpp:2543
+#: src/Text3.cpp:2554
 msgid "Invalid argument (must be a non-negative number)!"
 msgstr "Ungültiges Argument (muss eine nicht-negative Zahl sein)!"
 
-#: src/Text3.cpp:2548 src/Text3.cpp:2562
+#: src/Text3.cpp:2559 src/Text3.cpp:2573
 #, c-format
 msgid "Text properties applied: %1$s"
 msgstr "Angewendete Texteigenschaften: %1$s"
 
-#: src/Text3.cpp:2721
+#: src/Text3.cpp:2732
 msgid "Path to thesaurus directory not set!"
 msgstr "Pfad zum Thesaurus-Wörterbuch nicht festlegt!"
 
-#: src/Text3.cpp:2722
+#: src/Text3.cpp:2733
 msgid ""
 "The path to the thesaurus directory has not been specified.\n"
 "The thesaurus is not functional.\n"
@@ -30617,7 +30629,7 @@ msgstr ""
 "Im Benutzerhandbuch, Abschnitt 6.15.11, finden Sie Hinweise,\n"
 "um den Thesaurus einzurichten."
 
-#: src/Text3.cpp:2848 src/Text3.cpp:2859
+#: src/Text3.cpp:2859 src/Text3.cpp:2870
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
@@ -30741,8 +30753,8 @@ msgstr ""
 msgid "Error reading cite engine %1$s\n"
 msgstr "Fehler beim Lesen der Zitierformatdatei %1$s\n"
 
-#: src/TocBackend.cpp:270 src/insets/InsetIndex.cpp:502
-#: src/insets/InsetIndex.cpp:523
+#: src/TocBackend.cpp:270 src/insets/InsetIndex.cpp:517
+#: src/insets/InsetIndex.cpp:538
 msgid "unknown type!"
 msgstr "unbekannter Typ!"
 
@@ -35643,7 +35655,7 @@ msgid "active"
 msgstr "aktiv"
 
 #: src/insets/InsetBranch.cpp:70 src/insets/InsetBranch.cpp:72
-#: src/insets/InsetIndex.cpp:684
+#: src/insets/InsetIndex.cpp:699
 msgid "non-active"
 msgstr "inaktiv"
 
@@ -36134,11 +36146,11 @@ msgstr ""
 msgid "MISSING: "
 msgstr "NICHT VORHANDEN:"
 
-#: src/insets/InsetIndex.cpp:157
+#: src/insets/InsetIndex.cpp:169
 msgid "Index sorting failed"
 msgstr "Indexsortierung fehlgeschlagen"
 
-#: src/insets/InsetIndex.cpp:158
+#: src/insets/InsetIndex.cpp:170
 #, c-format
 msgid ""
 "LyX's automatic index sorting algorithm faced\n"
@@ -36151,19 +36163,19 @@ msgstr ""
 "Bitte legen Sie die Sortierung manuell fest. Hinweise\n"
 "zum Vorgehen finden Sie im Benutzerhandbuch."
 
-#: src/insets/InsetIndex.cpp:495
+#: src/insets/InsetIndex.cpp:510
 msgid "Index Entry"
 msgstr "Stichwort"
 
-#: src/insets/InsetIndex.cpp:681
+#: src/insets/InsetIndex.cpp:696
 msgid "Unknown index type!"
 msgstr "Unbekannter Index-Typ!"
 
-#: src/insets/InsetIndex.cpp:682
+#: src/insets/InsetIndex.cpp:697
 msgid "All indexes"
 msgstr "Alle Indexe"
 
-#: src/insets/InsetIndex.cpp:686
+#: src/insets/InsetIndex.cpp:701
 msgid "subindex"
 msgstr "Unterindex"
 
@@ -37751,6 +37763,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "Running MakeIndex for nomencl."
+#~ msgstr "MakeIndex wird für nomencl ausgeführt."
 
 #~ msgid "Running BibTeX."
 #~ msgstr "BibTeX wird ausgeführt."
