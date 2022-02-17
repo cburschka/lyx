@@ -19,6 +19,9 @@ The "Benefit" row gives the amount of days in-between when an issue is found
 because of the ctests and when an issue is reported by someone not using the
 ctests.
 
+The "ctest" row gives a ctest pattern for the tests that were affected by the
+regression.
+
 Examples where convergence tests took time and annoyance to figure out that
 they were actually "false positives" (i.e., no bug that is worth the time or
 complexity to fix):
@@ -80,3 +83,10 @@ Benefit: Not clear. The regressions were in the development version so they
 
 Report : https://www.mail-archive.com/search?l=mid&q=20211207200100.o27ojaftehrjfcza%40poole
 Fix    : 2eaf30c5
+
+
+Report : (private message to Jürgen: LyXMessage-ID:<20220216020703.la2fd5gu7yz7y7dc@gary>)
+Fix    : https://github.com/reutenauer/polyglossia/commit/c7489ebaf8c66a7e4fe2529de7068ebb79c68812
+Benefit: Not clear. The regressions were in the development version so they
+         could have easily been caught before release.
+ctests : export/export/lyx2lyx/revert-languages-polyglossia-primary_lyx22
