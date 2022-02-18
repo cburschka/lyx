@@ -62,52 +62,62 @@ class CharInfo {
 public:
 	CharInfo() : flags_(0) {}
 	CharInfo(
-		docstring const & textcommand, docstring const & mathcommand,
-		std::string const & textpreamble, std::string const & mathpreamble,
-		std::string const & tipashortcut, unsigned int flags);
+		docstring const & text_command, docstring const & math_command,
+		std::string const & text_preamble, std::string const & math_preamble,
+		std::string const & tipa_shortcut, unsigned int flags);
+	CharInfo(
+		std::vector<docstring> const & text_commands, std::vector<docstring> const & math_commands,
+		std::string const & text_preamble, std::string const & math_preamble,
+		std::string const & tipa_shortcut, unsigned int flags);
 	// we assume that at least one command is nonempty when using unicodesymbols
-	bool isUnicodeSymbol() const { return !textcommand_.empty() || !mathcommand_.empty(); }
+	bool isUnicodeSymbol() const { return !text_commands_.empty() || !math_commands_.empty(); }
 	/// LaTeX command (text mode) for this character
-	docstring const textcommand() const { return textcommand_; }
+	docstring textCommand() const { return text_commands_[0]; }
+	/// All known LaTeX commands (text mode) for this character
+	std::vector<docstring> textCommands() const { return text_commands_; }
 	/// LaTeX command (math mode) for this character
-	docstring mathcommand() const { return mathcommand_; }
+	docstring mathCommand() const { return math_commands_[0]; }
+	/// All known LaTeX commands (math mode) for this character
+	std::vector<docstring> mathCommands() const { return math_commands_; }
 	/// Needed LaTeX preamble (or feature) for text mode
-	std::string textpreamble() const { return textpreamble_; }
+	std::string textPreamble() const { return text_preamble_; }
 	/// Needed LaTeX preamble (or feature) for math mode
-	std::string mathpreamble() const { return mathpreamble_; }
+	std::string mathPreamble() const { return math_preamble_; }
 	/// Is this a combining character?
 	bool combining() const { return flags_ & CharInfoCombining; }
-	/// Is \c textpreamble a feature known by LaTeXFeatures, or a raw LaTeX
+	/// Is \c textPreamble a feature known by LaTeXFeatures, or a raw LaTeX
 	/// command?
-	bool textfeature() const { return flags_ & CharInfoTextFeature; }
-	/// Is \c mathpreamble a feature known by LaTeXFeatures, or a raw LaTeX
+	bool textFeature() const { return flags_ & CharInfoTextFeature; }
+	/// Is \c mathPreamble a feature known by LaTeXFeatures, or a raw LaTeX
 	/// command?
-	bool mathfeature() const { return flags_ & CharInfoMathFeature; }
+	bool mathFeature() const { return flags_ & CharInfoMathFeature; }
 	/// Always force the LaTeX command, even if the encoding contains
 	/// this character?
 	bool force() const { return flags_ & CharInfoForce; }
 	/// Force the LaTeX command for some encodings?
-	bool forceselected() const { return flags_ & CharInfoForceSelected; }
+	bool forceSelected() const { return flags_ & CharInfoForceSelected; }
 	/// Disable LaTeX command => char_type conversion for this deprecated symbol?
 	bool deprecated() const { return flags_ & CharInfoDeprecated; }
 	/// TIPA shortcut
-	std::string const tipashortcut() const { return tipashortcut_; }
-	/// \c textcommand needs no termination (such as {} or space).
-	bool textnotermination() const { return flags_ & CharInfoTextNoTermination; }
-	/// \c mathcommand needs no termination (such as {} or space).
-	bool mathnotermination() const { return flags_ & CharInfoMathNoTermination; }
+	std::string const tipaShortcut() const { return tipa_shortcut_; }
+	/// \c textCommand needs no termination (such as {} or space).
+	bool textNoTermination() const { return flags_ & CharInfoTextNoTermination; }
+	/// \c mathCommand needs no termination (such as {} or space).
+	bool mathNoTermination() const { return flags_ & CharInfoMathNoTermination; }
 	///
 private:
-	/// LaTeX command (text mode) for this character
-	trivdocstring textcommand_;
-	/// LaTeX command (math mode) for this character
-	trivdocstring mathcommand_;
+	/// LaTeX commands (text mode) for this character. The first one is the default, the others
+	/// are only present for compatibility other ways users may encode the character
+	std::vector<trivdocstring> text_commands_;
+	/// LaTeX command (math mode) for this character. The first one is the default, the others
+	//	/// are only present for compatibility other ways users may encode the character
+	std::vector<trivdocstring> math_commands_;
 	/// Needed LaTeX preamble (or feature) for text mode
-	trivstring textpreamble_;
+	trivstring text_preamble_;
 	/// Needed LaTeX preamble (or feature) for math mode
-	trivstring mathpreamble_;
+	trivstring math_preamble_;
 	/// TIPA shortcut
-	trivstring tipashortcut_;
+	trivstring tipa_shortcut_;
 	/// feature flags
 	unsigned int flags_;
 };
@@ -288,7 +298,7 @@ public:
 	/**
 	 * Do we have to wrap in \text this character when in mathmode?
 	 * This is true if \p c is not ascii and the "mathalpha" flag is not
-	 * set and a mathcommand is not defined in the unicodesymbols file.
+	 * set and a mathCommand is not defined in the unicodesymbols file.
 	 */
 	static bool isUnicodeTextOnly(char_type c);
 	/**

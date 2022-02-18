@@ -1535,9 +1535,9 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 			else if (features.runparams().main_fontenc != "T1"
 				 || ((&owner_->getFontSettings(bp, i))->language()->internalFontEncoding()))
 				features.require("textquotedbl");
-		} else if (ci.textfeature() && contains(ci.textpreamble(), '=')) {
+		} else if (ci.textFeature() && contains(ci.textPreamble(), '=')) {
 			// features that depend on the font or input encoding
-			string feats = ci.textpreamble();
+			string feats = ci.textPreamble();
 			string fontenc = (&owner_->getFontSettings(bp, i))->language()->fontenc(bp);
 			if (fontenc.empty())
 				fontenc = features.runparams().main_fontenc;

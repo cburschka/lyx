@@ -75,12 +75,23 @@ const char * EncodingException::what() const noexcept
 
 
 CharInfo::CharInfo(
-	docstring const & textcommand, docstring const & mathcommand,
-	std::string const & textpreamble, std::string const & mathpreamble,
-	std::string const & tipashortcut, unsigned int flags)
-	: textcommand_(textcommand), mathcommand_(mathcommand),
-	  textpreamble_(textpreamble), mathpreamble_(mathpreamble),
-	  tipashortcut_(tipashortcut), flags_(flags)
+		docstring const & text_command, docstring const & math_command,
+		std::string const & text_preamble, std::string const & math_preamble,
+		std::string const & tipa_shortcut, unsigned int flags)
+	: text_commands_({text_command}), math_commands_({math_command}),
+	  text_preamble_(text_preamble), math_preamble_(math_preamble),
+	  tipa_shortcut_(tipa_shortcut), flags_(flags)
+{
+}
+
+
+CharInfo::CharInfo(
+		std::vector<docstring> const & text_commands, std::vector<docstring> const & math_commands,
+		std::string const & text_preamble, std::string const & math_preamble,
+		std::string const & tipa_shortcut, unsigned int flags)
+	: text_commands_(text_commands), math_commands_(math_commands),
+	  text_preamble_(text_preamble), math_preamble_(math_preamble),
+	  tipa_shortcut_(tipa_shortcut), flags_(flags)
 {
 }
 
@@ -216,11 +227,11 @@ pair<docstring, bool> Encoding::latexChar(char_type c) const
 	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
 	if (it == unicodesymbols.end())
 		throw EncodingException(c);
-	// at least one of mathcommand and textcommand is nonempty
-	if (it->second.textcommand().empty())
+	// at least one of mathCommand and textCommand is nonempty
+	if (it->second.textCommand().empty())
 		return make_pair(
-			"\\ensuremath{" + it->second.mathcommand() + '}', false);
-	return make_pair(it->second.textcommand(), !it->second.textnotermination());
+				"\\ensuremath{" + it->second.mathCommand() + '}', false);
+	return make_pair(it->second.textCommand(), !it->second.textNoTermination());
 }
 
 
@@ -302,17 +313,17 @@ bool Encodings::latexMathChar(char_type c, bool mathmode,
 			addMathSym(c);
 		return false;
 	}
-	// at least one of mathcommand and textcommand is nonempty
-	bool use_math = (mathmode && !it->second.mathcommand().empty()) ||
-			(!mathmode && it->second.textcommand().empty());
+	// at least one of mathCommand and textCommand is nonempty
+	bool use_math = (mathmode && !it->second.mathCommand().empty()) ||
+	                (!mathmode && it->second.textCommand().empty());
 	if (use_math) {
-		command = it->second.mathcommand();
-		needsTermination = !it->second.mathnotermination();
+		command = it->second.mathCommand();
+		needsTermination = !it->second.mathNoTermination();
 		addMathCmd(c);
 	} else {
 		if (!encoding || command.empty()) {
-			command = it->second.textcommand();
-			needsTermination = !it->second.textnotermination();
+			command = it->second.textCommand();
+			needsTermination = !it->second.textNoTermination();
 		}
 		if (mathmode)
 			addMathSym(c);
@@ -331,23 +342,31 @@ char_type Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 	for (combining = false; it != end; ++it) {
 		if (it->second.deprecated())
 			continue;
-		docstring const math = it->second.mathcommand();
-		docstring const text = it->second.textcommand();
-		if ((cmdtype & MATH_CMD) && math == cmd) {
-			combining = it->second.combining();
-			needsTermination = !it->second.mathnotermination();
-			if (req && it->second.mathfeature() &&
-			    !it->second.mathpreamble().empty())
-				req->insert(it->second.mathpreamble());
-			return it->first;
+
+		if (cmdtype & MATH_CMD) {
+			for (const docstring& math : it->second.mathCommands()) {
+				if ((cmdtype & MATH_CMD) && math == cmd) {
+					combining = it->second.combining();
+					needsTermination = !it->second.mathNoTermination();
+					if (req && it->second.mathFeature() &&
+					    !it->second.mathPreamble().empty())
+						req->insert(it->second.mathPreamble());
+					return it->first;
+				}
+			}
 		}
-		if ((cmdtype & TEXT_CMD) && text == cmd) {
-			combining = it->second.combining();
-			needsTermination = !it->second.textnotermination();
-			if (req && it->second.textfeature() &&
-			    !it->second.textpreamble().empty())
-				req->insert(it->second.textpreamble());
-			return it->first;
+
+		if (cmdtype & TEXT_CMD) {
+			for (const docstring& text : it->second.textCommands()) {
+				if (text == cmd) {
+					combining = it->second.combining();
+					needsTermination = !it->second.textNoTermination();
+					if (req && it->second.textFeature() &&
+					    !it->second.textPreamble().empty())
+						req->insert(it->second.textPreamble());
+					return it->first;
+				}
+			}
 		}
 	}
 	needsTermination = false;
@@ -418,9 +437,9 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 		for (; it != uniend; ++it) {
 			if (it->second.deprecated())
 				continue;
-			docstring const math = mathmode ? it->second.mathcommand()
+			docstring const math = mathmode ? it->second.mathCommand()
 							: docstring();
-			docstring const text = textmode ? it->second.textcommand()
+			docstring const text = textmode ? it->second.textCommand()
 							: docstring();
 			if (!combcmd.empty() && it->second.combining() &&
 			    (math == combcmd || text == combcmd))
@@ -496,16 +515,16 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 				i = j + 1;
 				unicmd_size = cur_size;
 				if (math == tmp)
-					needsTermination = !it->second.mathnotermination();
+					needsTermination = !it->second.mathNoTermination();
 				else
-					needsTermination = !it->second.textnotermination();
+					needsTermination = !it->second.textNoTermination();
 				if (req) {
-					if (math == tmp && it->second.mathfeature() &&
-					    !it->second.mathpreamble().empty())
-						req->insert(it->second.mathpreamble());
-					if (text == tmp && it->second.textfeature() &&
-					    !it->second.textpreamble().empty())
-						req->insert(it->second.textpreamble());
+					if (math == tmp && it->second.mathFeature() &&
+					    !it->second.mathPreamble().empty())
+						req->insert(it->second.mathPreamble());
+					if (text == tmp && it->second.textFeature() &&
+					    !it->second.textPreamble().empty())
+						req->insert(it->second.textPreamble());
 				}
 			}
 		}
@@ -584,7 +603,7 @@ string const Encodings::TIPAShortcut(char_type c)
 {
 	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
 	if (it != unicodesymbols.end())
-		return it->second.tipashortcut();
+		return it->second.tipaShortcut();
 	return string();
 }
 
@@ -595,11 +614,11 @@ string const Encodings::isKnownScriptChar(char_type const c)
 
 	if (it == unicodesymbols.end())
 		return string();
-	// FIXME: parse complex textpreamble (may be list or alternatives,
+	// FIXME: parse complex textPreamble (may be list or alternatives,
 	// 		  e.g., "subscript,textgreek" or "textcomp|textgreek")
-	if (it->second.textpreamble() == "textgreek"
-		|| it->second.textpreamble() == "textcyrillic")
-		return it->second.textpreamble();
+	if (it->second.textPreamble() == "textgreek"
+		|| it->second.textPreamble() == "textcyrillic")
+		return it->second.textPreamble();
 	return string();
 }
 
@@ -627,7 +646,7 @@ bool Encodings::isUnicodeTextOnly(char_type c)
 		return false;
 
 	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
-	return it == unicodesymbols.end() || it->second.mathcommand().empty();
+	return it == unicodesymbols.end() || it->second.mathCommand().empty();
 }
 
 
@@ -754,7 +773,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 			} else if (flag == "notermination=none") {
 				flags &= ~CharInfoTextNoTermination;
 				flags &= ~CharInfoMathNoTermination;
-			} else if (contains(flag, "tipashortcut=")) {
+			} else if (contains(flag, "tipaShortcut=")) {
 				tipashortcut = split(flag, '=');
 			} else if (flag == "deprecated") {
 				flags |= CharInfoDeprecated;
@@ -765,7 +784,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 				       << "'." << endl;
 			}
 		}
-		// mathcommand and mathpreamble have been added for 1.6.0.
+		// mathCommand and mathPreamble have been added for 1.6.0.
 		// make them optional so that old files still work.
 		int const lineno = symbolslex.lineNumber();
 		bool breakout = false;
@@ -773,7 +792,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 		string mathpreamble;
 		if (symbolslex.next(true)) {
 			if (symbolslex.lineNumber() != lineno) {
-				// line in old format without mathcommand and mathpreamble
+				// line in old format without mathCommand and mathPreamble
 				getNextToken = false;
 			} else {
 				mathcommand = symbolslex.getDocString();
@@ -781,10 +800,10 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 					flags |= CharInfoMathNoTermination;
 				if (symbolslex.next(true)) {
 					if (symbolslex.lineNumber() != lineno) {
-						// line in new format with mathcommand only
+						// line in new format with mathCommand only
 						getNextToken = false;
 					} else {
-						// line in new format with mathcommand and mathpreamble
+						// line in new format with mathCommand and mathPreamble
 						mathpreamble = symbolslex.getString();
 					}
 				} else
@@ -810,12 +829,12 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 			textpreamble, mathpreamble,
 			tipashortcut, flags);
 		LYXERR(Debug::INFO, "Read unicode symbol " << symbol << " '"
-			   << to_utf8(info.textcommand()) << "' '" << info.textpreamble()
-			   << " '" << info.textfeature() << ' ' << info.textnotermination()
-			   << ' ' << to_utf8(info.mathcommand()) << "' '" << info.mathpreamble()
-			   << "' " << info.mathfeature() << ' ' << info.mathnotermination()
+		                                           << to_utf8(info.textCommand()) << "' '" << info.textPreamble()
+		                                           << " '" << info.textFeature() << ' ' << info.textNoTermination()
+		                                           << ' ' << to_utf8(info.mathCommand()) << "' '" << info.mathPreamble()
+		                                           << "' " << info.mathFeature() << ' ' << info.mathNoTermination()
 			   << ' ' << info.combining() << ' ' << info.force()
-			   << ' ' << info.forceselected());
+			   << ' ' << info.forceSelected());
 
 		// we assume that at least one command is nonempty when using unicodesymbols
 		if (info.isUnicodeSymbol()) {
