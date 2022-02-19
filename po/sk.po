@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-02-17 12:06+0100\n"
-"PO-Revision-Date: 2022-02-17 11:16+0000\n"
+"POT-Creation-Date: 2022-02-19 14:36+0100\n"
+"PO-Revision-Date: 2022-02-19 14:53+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -304,6 +304,14 @@ msgstr "Pridať BibTeX databázu z vášho lokálneho adresára"
 #: src/frontends/qt/ui/BibtexUi.ui:78
 msgid "Add &Local..."
 msgstr "&Pridať lokálnu…"
+
+#: src/frontends/qt/ui/BibtexUi.ui:91
+msgid "Inherit bibliography databases from the master document"
+msgstr "Databázy prevziať od hlavného dokumentu"
+
+#: src/frontends/qt/ui/BibtexUi.ui:94
+msgid "&Inherit from Master"
+msgstr "&Zdediť od hlavného dokumentu"
 
 #: src/frontends/qt/ui/BibtexUi.ui:91
 msgid "Remove the selected database"
@@ -1230,7 +1238,7 @@ msgstr "&Bývalí dokument:"
 
 #: src/frontends/qt/ui/CompareUi.ui:51
 msgid "Specify the original version of the document here (comparison source)"
-msgstr "Špecifikujte originálnu verziu dokumenta tu (zdroj porovnania)"
+msgstr "Špecifikujte originálnu verziu dokumentu tu (zdroj porovnania)"
 
 #: src/frontends/qt/ui/CompareUi.ui:61 src/frontends/qt/ui/PrefUi.ui:61
 msgid "Bro&wse..."
@@ -1242,7 +1250,7 @@ msgstr "&Nový dokument:"
 
 #: src/frontends/qt/ui/CompareUi.ui:87
 msgid "Specify the modified version of the document here (comparison target)"
-msgstr "Špecifikujte modifikovanú verziu dokumenta tu (cieľ porovnania)"
+msgstr "Špecifikujte modifikovanú verziu dokumentu tu (cieľ porovnania)"
 
 #: src/frontends/qt/ui/CompareUi.ui:97 src/frontends/qt/ui/ExternalUi.ui:89
 #: src/frontends/qt/ui/GraphicsUi.ui:75 src/frontends/qt/ui/IncludeUi.ui:28
@@ -1257,7 +1265,7 @@ msgstr "Vyberte dokument z ktorého chcete nastavenia kopírovať"
 
 #: src/frontends/qt/GuiDocument.cpp:789 src/frontends/qt/ui/CompareUi.ui:120
 msgid "Document Settings"
-msgstr "Nastavenia dokumenta"
+msgstr "Nastavenia dokumentu"
 
 #: src/frontends/qt/ui/CompareUi.ui:129
 msgid "O&ld Document"
@@ -1331,7 +1339,7 @@ msgstr "&Prehodiť && obrátiť"
 
 #: src/frontends/qt/ui/DocumentUi.ui:93
 msgid "Reset to the default settings for the document class"
-msgstr "Nastaviť na štandardné nastavenie triedy dokumenta"
+msgstr "Nastaviť na štandardné nastavenie triedy dokumentu"
 
 #: src/frontends/qt/ui/DocumentUi.ui:96
 msgid "Use Class Defaults"
@@ -1343,7 +1351,7 @@ msgstr "Uložiť nastavenia ako štandardné nastavenia pre nové LyX dokumenty"
 
 #: src/frontends/qt/ui/DocumentUi.ui:112
 msgid "Save as Document Defaults"
-msgstr "Uložiť ako štandardné nastavenia dokumenta"
+msgstr "Uložiť ako štandardné nastavenia dokumentu"
 
 #: src/frontends/qt/ui/ERTUi.ui:38 src/frontends/qt/GuiPrefs.cpp:1297
 msgid "Display"
@@ -1645,7 +1653,7 @@ msgid ""
 "document"
 msgstr ""
 "Aktuálny dokument a všetky súvisiace dokumenty patriace k tomu istému "
-"hlavnému dokumenta"
+"hlavnému dokumentu"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:319
 msgid "&Master document"
@@ -1716,11 +1724,11 @@ msgid ""
 "Settings."
 msgstr ""
 "Použiť štandardné zarovnanie pre plávajúce objekty, ako je určené v "
-"nastaveniach dokumenta."
+"nastaveniach dokumentu."
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:97
 msgid "D&ocument Default"
-msgstr "Štan&dardné nastavenia dokumenta"
+msgstr "Štan&dardné nastavenia dokumentu"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:104
 msgid "Left-align float contents"
@@ -2466,7 +2474,7 @@ msgstr "O&kamžite použiť"
 
 #: src/frontends/qt/ui/LaTeXUi.ui:20
 msgid "Document &Class"
-msgstr "&Trieda dokumenta"
+msgstr "&Trieda dokumentu"
 
 #: src/frontends/qt/ui/LaTeXUi.ui:48
 msgid "Click to select a local document class definition file"
@@ -2506,7 +2514,7 @@ msgstr "Ovládač &grafik:"
 
 #: src/frontends/qt/ui/LaTeXUi.ui:136
 msgid "Select if the current document is included to a master file"
-msgstr "Vyberte keď je súčasný dokument vložený do hlavného dokumenta"
+msgstr "Vyberte keď je súčasný dokument vložený do hlavného dokumentu"
 
 #: src/frontends/qt/ui/LaTeXUi.ui:142
 msgid "Select de&fault master document"
@@ -2518,7 +2526,7 @@ msgstr "&Hlavný dokument:"
 
 #: src/frontends/qt/ui/LaTeXUi.ui:177
 msgid "Enter the name of the default master document"
-msgstr "Udajte meno implicitného hlavného dokumenta"
+msgstr "Udajte meno implicitného hlavného dokumentu"
 
 #: src/frontends/qt/ui/LaTeXUi.ui:196
 msgid "&Suppress default date on front page"
@@ -2925,7 +2933,7 @@ msgstr "&Separácia stĺpcov:"
 
 #: src/frontends/qt/ui/MasterChildUi.ui:20
 msgid "Master Document Output"
-msgstr "Výstup hlavného dokumenta"
+msgstr "Výstup hlavného dokumentu"
 
 #: src/frontends/qt/ui/MasterChildUi.ui:29
 msgid "Include all subdocuments in the output"
@@ -2963,7 +2971,7 @@ msgid ""
 "counter values and references."
 msgstr ""
 "Čítače a referencie vylúčených dokumentov budú ignorované, čiže čítače vo "
-"výstupe nebudú súhlasiť s výstupom celého dokumenta.<br>Toto je "
+"výstupe nebudú súhlasiť s výstupom celého dokumentu.<br>Toto je "
 "najrýchlejšia metóda. Použite ju keď nepotrebujete presné hodnoty čítačov a "
 "referencií."
 
@@ -3165,7 +3173,7 @@ msgstr "&Zosivelé"
 
 #: src/frontends/qt/ui/NumberingUi.ui:37
 msgid "Add line numbers to the document"
-msgstr "Pridať očíslenie riadkov do dokumenta"
+msgstr "Pridať očíslenie riadkov do dokumentu"
 
 #: src/frontends/qt/ui/NumberingUi.ui:40
 msgid "L&ine numbering"
@@ -3248,7 +3256,7 @@ msgid ""
 msgstr ""
 "Uloží všetky parametre do LyX súboru, včetne aj také ktoré sa často "
 "prepínajú alebo sú zvláštne ohľadom na používateľa (také ako napr. výstup "
-"sledovaných zmien, alebo cesta adresára dokumenta). Vypnutie tejto voľby je "
+"sledovaných zmien, alebo cesta adresára dokumentu). Vypnutie tejto voľby je "
 "vhodnejšie ako pre spoluprácu tak i pri používaniu správe verzií."
 
 #: src/frontends/qt/ui/OutputUi.ui:99
@@ -3470,11 +3478,11 @@ msgstr "&Nastavenia pre hyperref"
 msgid ""
 "Document metadata and PDF settings (as specified in LaTeX 06/2022 and later)"
 msgstr ""
-"Metaúdaje dokumenta a PDS nastavenia (ako určené v LaTeX 06/2022 a neskôr)"
+"Metaúdaje dokumentu a PDS nastavenia (ako určené v LaTeX 06/2022 a neskôr)"
 
 #: src/frontends/qt/ui/PDFSupportUi.ui:490
 msgid "Document &Metadata"
-msgstr "&Metaúdaje dokumenta"
+msgstr "&Metaúdaje dokumentu"
 
 #: src/frontends/qt/ui/PageLayoutUi.ui:20
 msgid "Paper Format"
@@ -3954,7 +3962,7 @@ msgid ""
 "document. This allows moving the document elsewhere and still finding the "
 "included files."
 msgstr ""
-"Keď zaškrtnuté, adresár dokumenta sa zapíše do dokumenta. Dovolí sa tým "
+"Keď zaškrtnuté, adresár dokumentu sa zapíše do dokumentu. Dovolí sa tým "
 "presunúť dokument niekde inde a predsa nájsť vložené súbory."
 
 #: src/frontends/qt/ui/PrefDocHandlingUi.ui:158
@@ -4011,7 +4019,7 @@ msgstr "Editácia"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:51
 msgid "Scroll &below end of document"
-msgstr "Rolovať až pod &koniec dokumenta"
+msgstr "Rolovať až pod &koniec dokumentu"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:72
 msgid "Edit Math Macros inline with a box around"
@@ -4134,7 +4142,7 @@ msgstr "O&dstrániť"
 
 #: src/frontends/qt/ui/PrefFileformatsUi.ui:73
 msgid "&Document format"
-msgstr "Form&át dokumenta"
+msgstr "Form&át dokumentu"
 
 #: src/frontends/qt/ui/PrefFileformatsUi.ui:80
 msgid "Check this to show the current format in the File > Export menu"
@@ -4389,7 +4397,7 @@ msgid ""
 "the language package), so that other packages are also informed about the "
 "used languages."
 msgstr ""
-"Zaškrtnite na nastavenie jazyka globálne (k triede dokumenta), nie lokálne "
+"Zaškrtnite na nastavenie jazyka globálne (k triede dokumentu), nie lokálne "
 "(k jazykovému balíku), tak aby aj iné balíky dostali informáciu o použitých "
 "jazykov."
 
@@ -4402,24 +4410,24 @@ msgid ""
 "If checked, the document language is explicitly set by a language switch "
 "command"
 msgstr ""
-" Keď zaškrtnuté, jazyk dokumenta je explicitne nastavený prepínajúcim "
+" Keď zaškrtnuté, jazyk dokumentu je explicitne nastavený prepínajúcim "
 "príkazom jazyka"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:154
 msgid "Set document language e&xplicitly"
-msgstr "Ex&plicitne nastaviť jazyk dokumenta"
+msgstr "Ex&plicitne nastaviť jazyk dokumentu"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:161
 msgid ""
 "If checked, the document language is explicitly closed by a language switch "
 "command"
 msgstr ""
-"Keď zaškrtnuté, jazyk dokumenta je explicitne zavretý prepínajúcim príkazom "
+"Keď zaškrtnuté, jazyk dokumentu je explicitne zavretý prepínajúcim príkazom "
 "jazyka"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:164
 msgid "&Unset document language explicitly"
-msgstr "E&xplicitne deaktivovať jazyk dokumenta"
+msgstr "E&xplicitne deaktivovať jazyk dokumentu"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:177
 msgid "Editor Settings"
@@ -4430,7 +4438,7 @@ msgid ""
 "Check to highlight additional languages (to the document language) visually "
 "in the work area"
 msgstr ""
-"Zaškrtnite na vyzdvihnutie dodatočných jazykov (ku jazyku dokumenta) "
+"Zaškrtnite na vyzdvihnutie dodatočných jazykov (ku jazyku dokumentu) "
 "viditeľné na pracovnej ploche"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:192
@@ -4595,7 +4603,7 @@ msgstr "Zvoliť štandardné voľby pri zmene triedy"
 
 #: src/frontends/qt/ui/PrefLatexUi.ui:323
 msgid "R&eset class options when document class changes"
-msgstr "&Nastaviť triedne voľby pri zmene triedy dokumenta"
+msgstr "&Nastaviť triedne voľby pri zmene triedy dokumentu"
 
 #: src/frontends/qt/ui/PrefOutputUi.ui:20
 msgid "Forward Search"
@@ -5372,7 +5380,7 @@ msgid ""
 "Available categories depend on the document encoding. Select UTF-8 for the "
 "full range."
 msgstr ""
-"Dostupné kategórie závisia na zvolenom kódovaní dokumenta. Vyberte UTF-8 pre "
+"Dostupné kategórie závisia na zvolenom kódovaní dokumentu. Vyberte UTF-8 pre "
 "plný rozsah."
 
 #: src/frontends/qt/ui/SymbolsUi.ui:43
@@ -6019,7 +6027,7 @@ msgstr "Ukazovať zdroj tak, ako ho hlavný dokument dostane"
 
 #: src/frontends/qt/ui/ViewSourceUi.ui:133
 msgid "Master's perspective"
-msgstr "Perspektíva hlavného dokumenta"
+msgstr "Perspektíva hlavného dokumentu"
 
 #: src/frontends/qt/ui/ViewSourceUi.ui:147
 msgid "Current Paragraph"
@@ -7616,8 +7624,8 @@ msgid ""
 msgstr ""
 "Poskytuje dva nové štýly: 1. Štýl 'V preambule' ktorý položí všetko do neho "
 "zadané do preambuly. Keď si to niekto želá, dá sa použiť aj na inklúziu kódu "
-"preambuly do tela LyXového dokumenta. 2. Štýl 'V titule' položí svoj obsah "
-"do tela LaTeXového dokumenta, ale pred vydaním \\maketitle. Je to vhodné pre "
+"preambuly do tela LyXového dokumentu. 2. Štýl 'V titule' položí svoj obsah "
+"do tela LaTeXového dokumentu, ale pred vydaním \\maketitle. Je to vhodné pre "
 "tvorbu vetiev a poznámok v titulnom materiáli. (Vložením do 'Štandardné "
 "rozloženie' signalizujete LyXu vložiť \\maketitle do výstupu, čo by mohlo "
 "byť predčasné.)"
@@ -10399,7 +10407,7 @@ msgstr "Krátky titul v hlavnom jazyku"
 
 #: lib/layouts/bicaption.module:46
 msgid "Short title for the main(document) language"
-msgstr "Krátky titul v hlavnom jazyku dokumenta"
+msgstr "Krátky titul v hlavnom jazyku dokumentu"
 
 #: lib/layouts/bicaption.module:50
 msgid "Main Language Text"
@@ -10407,7 +10415,7 @@ msgstr "Text v hlavnom jazyku"
 
 #: lib/layouts/bicaption.module:51
 msgid "Text in the main(document) language"
-msgstr "Text v hlavnom jazyku dokumenta"
+msgstr "Text v hlavnom jazyku dokumentu"
 
 #: lib/layouts/bicaption.module:54
 msgid "Second Language Short Title"
@@ -12435,7 +12443,7 @@ msgstr ""
 "FIXMEs'. Vysvetlivky sú upraviteľné v LaTeXovej preambule. Viďte "
 "dokumentáciu FiXme. NOTA: Štandardne sú poznámky viditeľné len v režime "
 "'draft' (keď voľbu 'draft' vložíte pomocou Dokument -> Nastavenia… -> Trieda "
-"dokumenta -> Nastavenie triedy -> Vlastné). Chcete to vidieť vždy, vložte "
+"dokumentu -> Nastavenie triedy -> Vlastné). Chcete to vidieť vždy, vložte "
 "\\fxsetup{draft} do Dokument -> Preambula LaTeX-u. POZOR: pre niektoré "
 "vlastnosti potrebujete balík 'FiXme' verziu 4 alebo vzostupnú."
 
@@ -13933,11 +13941,11 @@ msgstr "S/R výraz"
 
 #: lib/layouts/landscape.module:2
 msgid "Landscape Document Parts"
-msgstr "Časti dokumenta vo formáte na šírku"
+msgstr "Časti dokumentu vo formáte na šírku"
 
 #: lib/layouts/landscape.module:6
 msgid "Output parts of the document in landscape mode."
-msgstr "Vytlačiť čiastky z dokumenta na šírku."
+msgstr "Vytlačiť čiastky z dokumentu na šírku."
 
 #: lib/layouts/landscape.module:11 lib/layouts/landscape.module:16
 msgid "Landscape"
@@ -17400,7 +17408,7 @@ msgstr ""
 "rozšírenia AMS, má tu každý poskytnutý typ teorémou svoje vlastné číslovanie "
 "(čiže veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma 2, …, oproti veta "
 "1, veta 2, lemma 3, tvrdenie 4…). Číslovanie je postupne bez ohľadu na "
-"štruktúru dokumenta. To sa dá zmeniť voľbou jedného z 'Teorémy (Číslované "
+"štruktúru dokumentu. To sa dá zmeniť voľbou jedného z 'Teorémy (Číslované "
 "podľa …)' modulu."
 
 #: lib/layouts/theorems-ams-chap-bytype.module:2
@@ -17757,7 +17765,7 @@ msgid ""
 msgstr ""
 "Definuje prostredie mat. viet a dôkazov používajúce rozšírenie AMS. K "
 "dispozícii sú číslované a ne-číslované typy. Implicitne sú vety číslované "
-"postupne bez ohľadu na štruktúru dokumenta. To sa dá zmeniť voľbou jedného z "
+"postupne bez ohľadu na štruktúru dokumentu. To sa dá zmeniť voľbou jedného z "
 "'Teorémy (Číslované podľa …)' modulu."
 
 #: lib/layouts/theorems-bytype.module:2
@@ -17778,7 +17786,7 @@ msgstr ""
 "jednoduchému modulu teorémou, má tu každý poskytnutý typ teorémou svoje "
 "vlastné číslovanie (čiže veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma "
 "2, …, oproti veta 1, veta 2, lemma 3, tvrdenie 4, …). Číslovanie je "
-"usporiadané bez ohľadu na štruktúru dokumenta. To sa dá zmeniť voľbou "
+"usporiadané bez ohľadu na štruktúru dokumentu. To sa dá zmeniť voľbou "
 "jedného z 'Teorémy (Číslované podľa …)' modulu."
 
 #: lib/layouts/theorems-case.inc:12
@@ -17967,7 +17975,7 @@ msgid ""
 msgstr ""
 "Definuje niektoré prostredia mat. viet pre použitie v triedach neodvodených "
 "od AMS. Implicitne sú vety číslované postupne bez ohľadu na štruktúru "
-"dokumenta. To sa dá zmeniť voľbou jedného z 'Teorémy (Číslované podľa …)' "
+"dokumentu. To sa dá zmeniť voľbou jedného z 'Teorémy (Číslované podľa …)' "
 "modulu."
 
 #: lib/layouts/theorems-without-preamble.inc:47
@@ -18025,9 +18033,9 @@ msgid ""
 "provides a paragraph style. Passing 'final' as document class option "
 "suppresses the output of TODO notes."
 msgstr ""
-"Poskytuje vlastné vložky na vklad TODO prvkov do vášho dokumenta (používajúc "
+"Poskytuje vlastné vložky na vklad TODO prvkov do vášho dokumentu (používajúc "
 "balík todonotes). Pre generáciu 'Zoznam TODOs' poskytuje tento modul štýl "
-"odstavca. Nastaviť 'final' ako voľbu dokumenta potlačí výstup 'TODO' "
+"odstavca. Nastaviť 'final' ako voľbu dokumentu potlačí výstup 'TODO' "
 "poznámok."
 
 #: lib/layouts/todonotes.module:15 lib/layouts/todonotes.module:120
@@ -26048,7 +26056,7 @@ msgstr ""
 "pozície, ktorú chcete zobraziť.\n"
 "Uistite sa, že má príponu '.fen'\n"
 "a nezabudnite dať relatívnu cestu\n"
-"k súboru do dokumenta LyX-a.\n"
+"k súboru do dokumentu LyX-a.\n"
 "Vnútri XBoard-u, použite 'Edit -> Edit Position'\n"
 "pre obecnú editáciu šachovnice.\n"
 "Možno chcete aj použiť voľbu\n"
@@ -26207,7 +26215,7 @@ msgstr ""
 "LyX sa pokúsi držať vektorové vlastnosti obrázku pre konečný výstup.\n"
 "Všimnite si že existujú špecializované šablóny pre Xfig obrázky a Dia "
 "diagramy.\n"
-"Špecializované šablóny dovoľujú automaticky použiť font dokumenta v\n"
+"Špecializované šablóny dovoľujú automaticky použiť font dokumentu v\n"
 "obrázkoch, čo nie je možné so všeobecnou šablónou.\n"
 
 #: lib/xtemplates/xfig.xtemplate:33
@@ -27017,7 +27025,7 @@ msgstr "Neznámy token: %1$s %2$s\n"
 
 #: src/Buffer.cpp:1003 src/Buffer.cpp:1009 src/Buffer.cpp:1033
 msgid "Document header error"
-msgstr "Chyba v hlavičke dokumenta"
+msgstr "Chyba v hlavičke dokumentu"
 
 #: src/Buffer.cpp:1007
 msgid "\\begin_header is missing"
@@ -27059,7 +27067,7 @@ msgstr "Nemôžem otvoriť súbor `%1$s'."
 
 #: src/Buffer.cpp:1221 src/Buffer.cpp:1295
 msgid "Document format failure"
-msgstr "Chybný formát dokumenta"
+msgstr "Chybný formát dokumentu"
 
 #: src/Buffer.cpp:1221
 #, c-format
@@ -27244,9 +27252,9 @@ msgid ""
 "contexts.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
-"Niektoré znaky vášho dokumenta sú nereprezentovateľné v niektorých "
+"Niektoré znaky vášho dokumentu sú nereprezentovateľné v niektorých "
 "špecifických verbatim kontextoch.\n"
-"Pomôcť by mohla zmena kódovania dokumenta na utf8."
+"Pomôcť by mohla zmena kódovania dokumentu na utf8."
 
 #: src/Buffer.cpp:1788
 #, c-format
@@ -27259,9 +27267,9 @@ msgid ""
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
-"Niektoré znaky vášho dokumenta sú pravdepodobne nereprezentovateľné vo "
+"Niektoré znaky vášho dokumentu sú pravdepodobne nereprezentovateľné vo "
 "zvolenom kódovaní.\n"
-"Pomôcť by mohla zmena kódovania dokumenta na utf8."
+"Pomôcť by mohla zmena kódovania dokumentu na utf8."
 
 #: src/Buffer.cpp:1799
 msgid "iconv conversion failed"
@@ -27288,15 +27296,15 @@ msgid ""
 "In case of problems, choose an appropriate document encoding\n"
 "(such as utf8) or change the file path name."
 msgstr ""
-"Cesta vášho dokumenta\n"
+"Cesta vášho dokumentu\n"
 "(%1$s)\n"
 "obsahuje glyfy neznáme v kódovaní\n"
-"aktuálneho dokumenta (menovite %2$s).\n"
+"aktuálneho dokumentu (menovite %2$s).\n"
 "Na úplný výsledok zaistite aby TEXINPUTS obsahovala cestu ku adresáru "
-"dokumenta alebo použite relatívne cesty (čiže cesty začínajúce s './' alebo "
+"dokumentu alebo použite relatívne cesty (čiže cesty začínajúce s './' alebo "
 "s '../') v preambule alebo v ERT. \n"
 "\n"
-"V prípade problémov vyberte vhodné kódovanie dokumenta\n"
+"V prípade problémov vyberte vhodné kódovanie dokumentu\n"
 "(ako napr. utf8) alebo zmeňte meno cesty."
 
 #: src/Buffer.cpp:2009
@@ -27356,7 +27364,7 @@ msgstr "Žiadne informácie pre export formátu: %1$s"
 msgid "Error exporting to format: %1$s."
 msgstr "Chyba pri exporte na formát: %1$s."
 
-#: src/Buffer.cpp:2831
+#: src/Buffer.cpp:2842
 msgid "Error generating literate programming code."
 msgstr "Chyba pri generovaní kódu dokumentačného programovania."
 
@@ -27443,7 +27451,7 @@ msgstr "Prostý text nemá preambulu."
 
 #: src/Buffer.cpp:4305
 msgid "Autosaving current document..."
-msgstr "Automatické ukladanie súčasného dokumenta…"
+msgstr "Automatické ukladanie súčasného dokumentu…"
 
 #: src/Buffer.cpp:4419
 #, c-format
@@ -27471,14 +27479,14 @@ msgid ""
 "contains spaces, but your TeX installation does not allow them. You should "
 "save the file to a directory whose name does not contain spaces."
 msgstr ""
-"Cesta do adresára dokumenta\n"
+"Cesta do adresára dokumentu\n"
 "%1$s\n"
 "obsahuje medzery, ale vaša inštalácia TeXu to nepovoľuje. Súbor by ste mali "
 "uložiť do adresára ktorého meno neobsahuje medzery."
 
 #: src/Buffer.cpp:4594 src/Buffer.cpp:4624 src/frontends/qt/GuiView.cpp:875
 msgid "Document export cancelled."
-msgstr "Exportovanie dokumenta bolo zrušené."
+msgstr "Exportovanie dokumentu bolo zrušené."
 
 #: src/Buffer.cpp:4616
 #, c-format
@@ -27497,7 +27505,7 @@ msgid ""
 "\n"
 "Recover emergency save?"
 msgstr ""
-"Existuje havarijná kópia dokumenta %1$s.\n"
+"Existuje havarijná kópia dokumentu %1$s.\n"
 "\n"
 "Získať havarijnú kópiu späť?"
 
@@ -27524,7 +27532,7 @@ msgid ""
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
 "Havarijný súbor úspešne načítaný, ale originálny súbor %1$s je označený len "
-"na čítanie. Zaistite prosím uloženie dokumenta ako iný súbor."
+"na čítanie. Zaistite prosím uloženie dokumentu ako iný súbor."
 
 #: src/Buffer.cpp:4714
 msgid "Document was successfully recovered."
@@ -27597,7 +27605,7 @@ msgid ""
 "\n"
 "Load the backup instead?"
 msgstr ""
-"Záloha dokumenta %1$s je novšia.\n"
+"Záloha dokumentu %1$s je novšia.\n"
 "\n"
 "Nahrať radšej zálohu ?"
 
@@ -27620,7 +27628,7 @@ msgid ""
 "read-only. Please make sure to save the document as a different file."
 msgstr ""
 "Zálohový súbor úspešne načítaný, ale originálny súbor %1$s je označený len "
-"na čítanie. Zaistite prosím uloženie dokumenta ako iný súbor."
+"na čítanie. Zaistite prosím uloženie dokumentu ako iný súbor."
 
 #: src/Buffer.cpp:5195 src/insets/InsetCaption.cpp:408
 msgid "Senseless!!! "
@@ -27729,7 +27737,7 @@ msgid ""
 "See section 3.1.2.2 (Class Availability) of the\n"
 "User's Guide for more information."
 msgstr ""
-"Vybraná trieda dokumenta\n"
+"Vybraná trieda dokumentu\n"
 "\t%1$s\n"
 "požaduje nedostupné externé súbory.\n"
 "Dokumentová trieda sa stále dá používať, ale LyX\n"
@@ -27741,7 +27749,7 @@ msgstr ""
 
 #: src/BufferParams.cpp:793
 msgid "Document class not available"
-msgstr "Nedostupná trieda dokumenta"
+msgstr "Nedostupná trieda dokumentu"
 
 #: src/BufferParams.cpp:1059 src/Color.cpp:281
 #: src/frontends/qt/GuiDocument.cpp:3527
@@ -27769,7 +27777,7 @@ msgstr "Nekódovateľný znak"
 
 #: src/BufferParams.cpp:1732
 msgid "Uncodable character in document metadata"
-msgstr "Nekódovateľný znak v metaúdajoch dokumenta"
+msgstr "Nekódovateľný znak v metaúdajoch dokumentu"
 
 #: src/BufferParams.cpp:1734
 #, c-format
@@ -27782,12 +27790,12 @@ msgid ""
 "Please select an appropriate document encoding\n"
 "(such as utf8) or change the preamble code accordingly."
 msgstr ""
-"Metaúdaje vášho dokumenta obsahuje glyfy, ktoré sú neznáme v kódovaní "
-"aktuálneho dokumenta (menovite %1$s).\n"
+"Metaúdaje vášho dokumentu obsahuje glyfy, ktoré sú neznáme v kódovaní "
+"aktuálneho dokumentu (menovite %1$s).\n"
 "Tieto glyfy budú pri exporte do LaTeX-u vynechané, čo môže končiť neúplnom "
 "výstupe.\n"
 "\n"
-"Vyberte vhodné kódovanie dokumenta (napr. utf8)\n"
+"Vyberte vhodné kódovanie dokumentu (napr. utf8)\n"
 "alebo zmeňte primerane preambulu."
 
 #: src/BufferParams.cpp:1775
@@ -27805,11 +27813,11 @@ msgid ""
 "Please select an appropriate document encoding\n"
 "(such as utf8) or change the class options accordingly."
 msgstr ""
-"Voľby triedy vášho dokumenta obsahujú glyfy, ktoré sú neznáme v kódovaní "
-"aktuálneho dokumenta (menovite %1$s).\n"
+"Voľby triedy vášho dokumentu obsahujú glyfy, ktoré sú neznáme v kódovaní "
+"aktuálneho dokumentu (menovite %1$s).\n"
 "Tieto glyfy budú vo výstupe vynechané, čo môže končiť v neúplnom výstupe.\n"
 "\n"
-"Vyberte vhodné kódovanie dokumenta (napr. utf8)\n"
+"Vyberte vhodné kódovanie dokumentu (napr. utf8)\n"
 "alebo zmeňte primerane triedne voľby."
 
 #: src/BufferParams.cpp:2217
@@ -27827,12 +27835,12 @@ msgid ""
 "Please select an appropriate document encoding\n"
 "(such as utf8) or change the preamble code accordingly."
 msgstr ""
-"Preambula vášho dokumenta obsahuje glyfy, ktoré sú neznáme v kódovaní "
-"aktuálneho dokumenta (menovite %1$s).\n"
+"Preambula vášho dokumentu obsahuje glyfy, ktoré sú neznáme v kódovaní "
+"aktuálneho dokumentu (menovite %1$s).\n"
 "Tieto glyfy budú pri exporte do LaTeX-u vynechané, čo môže končiť neúplnom "
 "výstupe.\n"
 "\n"
-"Vyberte vhodné kódovanie dokumenta (napr. utf8)\n"
+"Vyberte vhodné kódovanie dokumentu (napr. utf8)\n"
 "alebo zmeňte primerane preambulu."
 
 #: src/BufferParams.cpp:2534
@@ -27852,7 +27860,7 @@ msgstr ""
 
 #: src/BufferParams.cpp:2652
 msgid "Document class not found"
-msgstr "Nenájdená trieda dokumenta"
+msgstr "Nenájdená trieda dokumentu"
 
 #: src/BufferParams.cpp:2547
 #, c-format
@@ -27893,7 +27901,7 @@ msgid ""
 "references will be generated.\n"
 "Please fix your installation!"
 msgstr ""
-"Žiadaný procesor pre bibliografiu tohto dokumenta (%1$s) je nedostupný a "
+"Žiadaný procesor pre bibliografiu tohto dokumentu (%1$s) je nedostupný a "
 "alternatíva sa nenašla. Bibliografia a referencie nebudú generované.\n"
 "Opravte prosím vašu inštaláciu!"
 
@@ -27910,7 +27918,7 @@ msgid ""
 "carefully!\n"
 "It is suggested to install the missing processor."
 msgstr ""
-"Žiadaný procesor pre bibliografiu tohto dokumenta (%1$s) je nedostupný. Ako "
+"Žiadaný procesor pre bibliografiu tohto dokumentu (%1$s) je nedostupný. Ako "
 "náhrada sa bude používať '%2$s' bez volieb. To môže viesť k chybám alebo "
 "nežiadúcim zmenám v bibliografie. Pozorne skontrolujte!\n"
 "Navrhuje sa inštalovať neprítomný procesor."
@@ -27937,7 +27945,7 @@ msgstr "Dokument bol externe upravený"
 
 #: src/BufferView.cpp:1148
 msgid "This portion of the document is deleted."
-msgstr "Táto časť dokumenta je vymazaná."
+msgstr "Táto časť dokumentu je vymazaná."
 
 #: src/BufferView.cpp:1153 src/BufferView.cpp:2212
 #: src/frontends/qt/GuiView.cpp:4104 src/frontends/qt/GuiView.cpp:4192
@@ -27947,7 +27955,7 @@ msgstr "Očakáva sa absolútna cesta súboru."
 #: src/BufferView.cpp:1422 src/BufferView.cpp:1454
 #, c-format
 msgid "The document class `%1$s' could not be loaded."
-msgstr "Nepodarilo sa nahrať triedu dokumenta `%1$s'."
+msgstr "Nepodarilo sa nahrať triedu dokumentu `%1$s'."
 
 #: src/BufferView.cpp:1441
 msgid "No further undo information"
@@ -28118,7 +28126,7 @@ msgstr ""
 "ktoré sa v aktuálnom kódovaní %2$s nedajú reprezentovať.\n"
 "Príslušné glyfy budú pri exporte do LaTeX-u vynechané.\n"
 "\n"
-"Vyberte vhodné kódovanie dokumenta (napr. utf8)\n"
+"Vyberte vhodné kódovanie dokumentu (napr. utf8)\n"
 "alebo zmeňte písanie iniciál autora."
 
 #: src/Changes.cpp:405
@@ -28141,7 +28149,7 @@ msgstr ""
 "ktoré sa v aktuálnom kódovaní %2$s nedajú reprezentovať.\n"
 "Príslušné glyfy budú pri exporte do LaTeX-u vynechané.\n"
 "\n"
-"Vyberte vhodné kódovanie dokumenta (napr. utf8)\n"
+"Vyberte vhodné kódovanie dokumentu (napr. utf8)\n"
 "alebo zmeňte písanie mena autora."
 
 #: src/Chktex.cpp:65
@@ -28634,7 +28642,7 @@ msgid ""
 "them only if you trust the origin/sender of the LyX document!</b></p>"
 msgstr ""
 "<p>Chcete aby LaTeX backendy umožňovali spúšťať externé príkazy?</"
-"p><p><b>Povoľte len keď dôverujete pôvodu/odosielateľovi tohto LyX dokumenta!"
+"p><p><b>Povoľte len keď dôverujete pôvodu/odosielateľovi tohto LyX dokumentu!"
 "</b></p> "
 
 #: src/Converter.cpp:369
@@ -28643,7 +28651,7 @@ msgid ""
 "origin/sender of the LyX document!</b></p>"
 msgstr ""
 "<p>Chcete tento konvertor spustiť?</p><p><b>Spustite len keď dôverujete "
-"pôvodu/odosielateľovi tohto LyX dokumenta!</b></p> "
+"pôvodu/odosielateľovi tohto LyX dokumentu!</b></p> "
 
 #: src/Converter.cpp:367
 msgid "Do &not allow"
@@ -28882,7 +28890,7 @@ msgid ""
 "Do you want to add it to the document's branch list?"
 msgstr ""
 "Vlepená vetva %1$s nie je definovaná.\n"
-"Chcete ju uložiť do zoznamu vetiev tohto dokumenta?"
+"Chcete ju uložiť do zoznamu vetiev tohto dokumentu?"
 
 #: src/CutAndPaste.cpp:440
 msgid "Unknown branch"
@@ -29546,7 +29554,7 @@ msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr ""
-"Nastavenie alternatívneho jazyka. Implicitne sa použije jazyk dokumenta."
+"Nastavenie alternatívneho jazyka. Implicitne sa použije jazyk dokumentu."
 
 #: src/LyXRC.cpp:3046
 msgid ""
@@ -29641,7 +29649,7 @@ msgid ""
 "document. Set to true if you prefer to scroll the bottom of the document to "
 "the top of the screen"
 msgstr ""
-"LyX normálne nepovoľuje skrolovať pod koniec dokumenta. Nastavte túto voľbu, "
+"LyX normálne nepovoľuje skrolovať pod koniec dokumentu. Nastavte túto voľbu, "
 "ak preferujete skrolovať koniec až na vrchol obrazovky"
 
 #: src/LyXRC.cpp:3111
@@ -29750,12 +29758,12 @@ msgstr ""
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
-msgstr "Vyberte, ak je príkaz pre zmenu jazyku potrebný na začiatku dokumenta."
+msgstr "Vyberte, ak je príkaz pre zmenu jazyku potrebný na začiatku dokumentu."
 
 #: src/LyXRC.cpp:3259
 msgid ""
 "Select if a language switching command is needed at the end of the document."
-msgstr "Vyberte, ak je príkaz pre zmenu jazyku potrebný na konci dokumenta."
+msgstr "Vyberte, ak je príkaz pre zmenu jazyku potrebný na konci dokumentu."
 
 #: src/LyXRC.cpp:3263
 msgid ""
@@ -29763,12 +29771,12 @@ msgid ""
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
 "name of the second language."
 msgstr ""
-"LaTeX príkaz pre zmenu z jazyka dokumenta do iného jazyka. Napr. "
+"LaTeX príkaz pre zmenu z jazyka dokumentu do iného jazyka. Napr. "
 "\\selectlanguage{$$lang}, kde $$lang je nahradené názvom druhého jazyka."
 
 #: src/LyXRC.cpp:3267
 msgid "The LaTeX command for changing back to the language of the document."
-msgstr "LaTeX-ov príkaz pre návrat k pôvodnému jazyku dokumenta."
+msgstr "LaTeX-ov príkaz pre návrat k pôvodnému jazyku dokumentu."
 
 #: src/LyXRC.cpp:3199
 msgid "The LaTeX command for local changing of the language."
@@ -29794,7 +29802,7 @@ msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
 msgstr ""
-"Zrušte výber ak nechcete použiť babel, ak jazyk dokumenta je prednastavený "
+"Zrušte výber ak nechcete použiť babel, ak jazyk dokumentu je prednastavený "
 "jazyk."
 
 #: src/LyXRC.cpp:3215
@@ -29814,7 +29822,7 @@ msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
 msgstr ""
-"Vyberte pre kontrolu vyzdvihnutia slov ktoré nie sú v jazyku dokumenta."
+"Vyberte pre kontrolu vyzdvihnutia slov ktoré nie sú v jazyku dokumentu."
 
 #: src/LyXRC.cpp:3235
 msgid "The scrolling speed of the mouse wheel."
@@ -29914,7 +29922,7 @@ msgid ""
 "the document (yes), hide it (no), or ask the user (ask)."
 msgstr ""
 "Definuje čo by sa malo robiť pri zavieraní posledného náhľadu otvoreného "
-"dokumenta. LyX by mal zavrieť dokument(yes), skryť ho(no), alebo pýtať sa čo "
+"dokumentu. LyX by mal zavrieť dokument(yes), skryť ho(no), alebo pýtať sa čo "
 "zrobiť(ask)."
 
 #: src/LyXRC.cpp:3322
@@ -29997,7 +30005,7 @@ msgid ""
 msgstr ""
 "Určite adresári, ktoré by mali byť pridané do premennej TEXINPUTS pred "
 "ostatnými adresármi.\n"
-"'.' reprezentuje aktuálny adresár dokumenta. Použite miestny formát pre daný "
+"'.' reprezentuje aktuálny adresár dokumentu. Použite miestny formát pre daný "
 "operačný systém."
 
 #: src/LyXRC.cpp:3390
@@ -30082,14 +30090,14 @@ msgid ""
 "\n"
 "Do you want to revert to the older version?"
 msgstr ""
-"Návrat k uloženej verzii dokumenta %1$s znamená stratu všetkých súčasných "
+"Návrat k uloženej verzii dokumentu %1$s znamená stratu všetkých súčasných "
 "zmien.\n"
 "\n"
 "Chcete prejsť späť k staršej uloženej verzii ?"
 
 #: src/LyXVC.cpp:309
 msgid "Revert to stored version of document?"
-msgstr "Vrátiť sa k uloženej verzii dokumenta?"
+msgstr "Vrátiť sa k uloženej verzii dokumentu?"
 
 #: src/LyXVC.cpp:310 src/frontends/qt/GuiView.cpp:4241
 msgid "&Revert"
@@ -30749,7 +30757,7 @@ msgid ""
 "%1$s\n"
 "could not be read."
 msgstr ""
-"Požadovaná šablóna dokumenta\n"
+"Požadovaná šablóna dokumentu\n"
 "%1$s\n"
 "sa nedá čítať."
 
@@ -30887,7 +30895,7 @@ msgstr "Triedny štandard"
 
 #: src/frontends/qt/FloatPlacement.cpp:184
 msgid "Document Default"
-msgstr "Štandardné nastavenia dokumenta"
+msgstr "Štandardné nastavenia dokumentu"
 
 #: src/frontends/qt/FloatPlacement.h:38 src/frontends/qt/GuiDocument.cpp:1775
 msgid "Float Settings"
@@ -31146,11 +31154,11 @@ msgstr "\"%1$s\" uplatnené pre %2$d dokument(y)"
 #: src/frontends/qt/GuiApplication.cpp:2230
 #, c-format
 msgid "Document defaults saved in %1$s"
-msgstr "Štandardy dokumenta uložené v %1$s"
+msgstr "Štandardy dokumentu uložené v %1$s"
 
 #: src/frontends/qt/GuiApplication.cpp:2234
 msgid "Unable to save document defaults"
-msgstr "Nedajú sa uložiť štandardné definície dokumenta"
+msgstr "Nedajú sa uložiť štandardné definície dokumentu"
 
 #: src/frontends/qt/GuiApplication.cpp:2417
 #: src/frontends/qt/GuiApplication.cpp:2432
@@ -31273,9 +31281,9 @@ msgstr ""
 "texmf-strome. Na tomto mieste by mala ležať aj vaša vlastná databáza keď ju "
 "chcete použiť. "
 
-#: src/frontends/qt/GuiBibtex.cpp:136 src/frontends/qt/GuiBibtex.cpp:303
+#: src/frontends/qt/GuiBibtex.cpp:139 src/frontends/qt/GuiBibtex.cpp:350
 msgid "Document Encoding"
-msgstr "Kódovanie dokumenta"
+msgstr "Kódovanie dokumentu"
 
 #: src/frontends/qt/GuiBibtex.cpp:274
 msgid "Database"
@@ -31835,7 +31843,7 @@ msgstr "Použiť kódovanie ako pôvodne špecificky odkázané jazykom."
 
 #: src/frontends/qt/GuiDocument.cpp:1003
 msgid "Select a custom, document-wide encoding."
-msgstr "Vyberte vlastné kódovanie tohto dokumenta."
+msgstr "Vyberte vlastné kódovanie tohto dokumentu."
 
 #: src/frontends/qt/GuiDocument.cpp:1002
 msgid "Standard Unicode support by the ``inputenc'' package."
@@ -32108,7 +32116,7 @@ msgstr ""
 
 #: src/frontends/qt/GuiDocument.cpp:1773
 msgid "Document Class"
-msgstr "Trieda dokumenta"
+msgstr "Trieda dokumentu"
 
 #: src/frontends/qt/GuiDocument.cpp:1762
 msgid "Local Layout"
@@ -32230,7 +32238,7 @@ msgstr ""
 "Súbor schémy, ktorý ste zvolili je lokálnym\n"
 "súborom, a nie je ani v systémovom ani v užívateľskom adresáre.\n"
 "Váš dokument bude mať problémy kým súbor schémy\n"
-"nedržíte v adresáre dokumenta."
+"nedržíte v adresáre dokumentu."
 
 #: src/frontends/qt/GuiDocument.cpp:2834
 msgid "&Set Layout"
@@ -32314,7 +32322,7 @@ msgstr "%1$s (nedostupný)"
 
 #: src/frontends/qt/GuiDocument.cpp:3276
 msgid "Module provided by document class."
-msgstr "Modul poskytnutý triedou dokumenta."
+msgstr "Modul poskytnutý triedou dokumentu."
 
 #: src/frontends/qt/GuiDocument.cpp:3269
 #, c-format
@@ -32414,8 +32422,8 @@ msgid ""
 "'%1$s' in order to use the master document\n"
 "feature."
 msgstr ""
-"Musíte zahrnúť tento súbor do dokumenta\n"
-"'%1$s' keď chcete používať vlastnosti hlavného dokumenta."
+"Musíte zahrnúť tento súbor do dokumentu\n"
+"'%1$s' keď chcete používať vlastnosti hlavného dokumentu."
 
 #: src/frontends/qt/GuiDocument.cpp:5009
 msgid "Could not load master"
@@ -32757,7 +32765,7 @@ msgstr "Čas (Pevný)"
 
 #: src/frontends/qt/GuiInfo.cpp:76
 msgid "Document Information"
-msgstr "Informácie dokumenta"
+msgstr "Informácie dokumentu"
 
 #: src/frontends/qt/GuiInfo.cpp:77
 msgid "Version Control Information"
@@ -33416,7 +33424,7 @@ msgstr "Oxygen"
 
 #: src/frontends/qt/GuiPrefs.cpp:2682
 msgid "Document Handling"
-msgstr "Ovládanie dokumenta"
+msgstr "Ovládanie dokumentu"
 
 #: src/frontends/qt/GuiPrefs.cpp:2740
 msgid "Control"
@@ -33629,7 +33637,7 @@ msgstr "Kontrola pravopisu vo výbere skončila, nenašli sa žiadne chyby."
 msgid ""
 "We reached the end of the document, would you like to continue from the "
 "beginning?"
-msgstr "Došli sme na koniec dokumenta, chcete pokračovať od začiatku?"
+msgstr "Došli sme na koniec dokumentu, chcete pokračovať od začiatku?"
 
 #: src/frontends/qt/GuiSpellchecker.cpp:560
 msgid "Spell checker has no dictionaries."
@@ -34269,7 +34277,7 @@ msgid ""
 "Do you want to create it?"
 msgstr ""
 "Navrhuje sa uložiť šablónu do pod-adresára\n"
-"vhodné pre jazyk dokumenta (%1$s).\n"
+"vhodné pre jazyk dokumentu (%1$s).\n"
 "Tento pod-adresár ešte neexistuje.\n"
 "Chcete ho vytvoriť?"
 
@@ -34406,7 +34414,7 @@ msgid ""
 "To remove this question, set your preference in:\n"
 "  Tools->Preferences->Look&Feel->UserInterface\n"
 msgstr ""
-"Posledný náhľad dokumenta %1$s sa zaviera.\n"
+"Posledný náhľad dokumentu %1$s sa zaviera.\n"
 "Chcete ho zavrieť alebo len skryť?\n"
 "\n"
 "Skryté dokumenty možno zase vidieť cez\n"
@@ -34550,7 +34558,7 @@ msgstr "Chyba pri exporte"
 
 #: src/frontends/qt/GuiView.cpp:4088
 msgid "Error cloning the Buffer."
-msgstr "Chyba pri klonovaní pamäte dokumenta."
+msgstr "Chyba pri klonovaní pamäte dokumentu."
 
 #: src/frontends/qt/GuiView.cpp:4044 src/frontends/qt/GuiView.cpp:4064
 msgid "Exporting ..."
@@ -34579,7 +34587,7 @@ msgid ""
 "on disk of the document %1$s?"
 msgstr ""
 "Bude to strata aktuálnej verzie. Naozaj sa chcete vrátiť ku uloženej verzii "
-"dokumenta %1$s?"
+"dokumentu %1$s?"
 
 #: src/frontends/qt/GuiView.cpp:4431
 #, c-format
@@ -34588,7 +34596,7 @@ msgid ""
 "version of the document %1$s?"
 msgstr ""
 "Všetky zmeny sa stratia. Naozaj sa chcete vrátiť ku pôvodnej verzii "
-"dokumenta %1$s ?"
+"dokumentu %1$s ?"
 
 #: src/frontends/qt/GuiView.cpp:4239
 msgid "Revert to saved document?"
@@ -34791,7 +34799,7 @@ msgstr "(Niet vlastných definovaných vložiek)"
 
 #: src/frontends/qt/Menus.cpp:1355
 msgid "(No Document Open)"
-msgstr "(Bez otvoreného dokumenta)"
+msgstr "(Bez otvoreného dokumentu)"
 
 #: src/frontends/qt/Menus.cpp:1348
 msgid "Master Document"
@@ -34915,7 +34923,7 @@ msgstr "nemenné"
 #: src/frontends/qt/Menus.cpp:1965
 #, c-format
 msgid "Reset to document default (%1$s, %2$s)|o"
-msgstr "Nastaviť na štandard dokumenta (%1$s, %2$s)|o"
+msgstr "Nastaviť na štandard dokumentu (%1$s, %2$s)|o"
 
 #: src/frontends/qt/Menus.cpp:1913
 #, c-format
@@ -36654,11 +36662,11 @@ msgstr ""
 
 #: src/lyxfind.cpp:364
 msgid "Search reached end of document, continuing from beginning."
-msgstr "Hľadanie došlo na koniec dokumenta, pokračuje od začiatku."
+msgstr "Hľadanie došlo na koniec dokumentu, pokračuje od začiatku."
 
 #: src/lyxfind.cpp:365
 msgid "Search reached beginning of document, continuing from end."
-msgstr "Hľadanie došlo na začiatok dokumenta, pokračuje od konca."
+msgstr "Hľadanie došlo na začiatok dokumentu, pokračuje od konca."
 
 #: src/lyxfind.cpp:657
 msgid "String not found in selection."
@@ -37190,7 +37198,7 @@ msgstr ""
 
 #: src/support/lassert.cpp:84
 msgid "Buffer Error!"
-msgstr "Chyba v pamäti dokumenta!"
+msgstr "Chyba v pamäti dokumentu!"
 
 #: src/support/lassert.cpp:91
 msgid ""
