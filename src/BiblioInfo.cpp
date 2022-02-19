@@ -277,8 +277,14 @@ vector<docstring> const getAuthors(docstring const & author)
 	// in author names, but can happen (consider cases such as "C \& A Corp.").
 	docstring iname = subst(author, from_ascii("&"), from_ascii("$$amp!"));
 	// Then, we temporarily make all " and " strings to ampersands in order
-	// to handle them later on a per-char level.
-	iname = subst(iname, from_ascii(" and "), from_ascii(" & "));
+	// to handle them later on a per-char level. Note that arbitrary casing
+	// ("And", "AND", "aNd", ...) is allowed in bibtex (#10465).
+	static regex const and_reg("(.* )([aA][nN][dD])( .*)");
+	smatch sub;
+	string res = to_utf8(iname);
+	while (regex_match(res, sub, and_reg))
+		res = sub.str(1) + "&" + sub.str(3);
+	iname = from_utf8(res);
 	// Now we traverse through the string and replace the "&" by the proper
 	// output in- and outside groups
 	docstring name;
