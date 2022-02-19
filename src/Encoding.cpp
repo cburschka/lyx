@@ -381,6 +381,30 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 	rem = empty_docstring();
 	bool const mathmode = cmdtype & MATH_CMD;
 	bool const textmode = cmdtype & TEXT_CMD;
+
+	// Easy case: the command is a complete entry of unicodesymbols.
+	for (const auto & unicodeSymbol : unicodesymbols) {
+		if (mathmode) {
+			for (const auto & command : unicodeSymbol.second.mathCommands()) {
+				if (command == cmd) {
+					docstring value;
+					value += unicodeSymbol.first;
+					return value;
+				}
+			}
+		}
+		if (textmode) {
+			for (const auto & command : unicodeSymbol.second.textCommands()) {
+				if (command == cmd) {
+					docstring value;
+					value += unicodeSymbol.first;
+					return value;
+				}
+			}
+		}
+	}
+
+	// Otherwise, try to map as many commands as possible, matching prefixes of the command.
 	docstring symbols;
 	size_t const cmdend = cmd.size();
 	size_t prefix = 0;
