@@ -34,6 +34,7 @@
 #include "insets/InsetBibtex.h"
 
 #include "support/debug.h"
+#include "support/docstring_list.h"
 #include "support/ExceptionMessage.h"
 #include "support/FileName.h"
 #include "support/filetools.h" // changeExtension
@@ -88,6 +89,8 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(browseBibPB, SIGNAL(clicked()),
 		this, SLOT(browseBibPressed()));
+	connect(inheritPB, SIGNAL(clicked()),
+		this, SLOT(inheritPressed()));
 
 	selected_model_.insertColumns(0, 1);
 	selectionManager = new GuiSelectionManager(this, availableLV, selectedLV,
@@ -178,6 +181,7 @@ void GuiBibtex::setButtons()
 	int const srows = selectedLV->model()->rowCount();
 	buttonBox->button(QDialogButtonBox::Apply)->setEnabled(srows > 0);
 	buttonBox->button(QDialogButtonBox::Ok)->setEnabled(srows > 0);
+	inheritPB->setEnabled(hasInherits());
 }
 
 
@@ -236,6 +240,49 @@ void GuiBibtex::browseBibPressed()
 		selected_bibs_.append(f);
 		setSelectedBibs(selected_bibs_);
 		changed();
+	}
+}
+
+
+bool GuiBibtex::hasInherits()
+{
+	if (!buffer().parent())
+		return false;
+
+	docstring_list const mbibs = buffer().masterBuffer()->getBibfiles();
+	if (mbibs.empty())
+		return false;
+
+	for (auto const & f : mbibs) {
+		if (!selected_bibs_.contains(toqstr(f)))
+			return true;
+	}
+	return false;
+}
+
+
+void GuiBibtex::inheritPressed()
+{
+	docstring_list const mbibs = buffer().masterBuffer()->getBibfiles();
+	bool chng = false;
+	vector<docstring> nfe;
+	for (auto const & f : mbibs) {
+		if (!selected_bibs_.contains(toqstr(f))) {
+			selected_bibs_.append(toqstr(f));
+			setSelectedBibs(selected_bibs_);
+			string enc;
+			if (usingBiblatex()) {
+				string const bfe = buffer().masterParams().bibFileEncoding(to_utf8(f));
+				if (!bfe.empty())
+					nfe.push_back(f + " " + from_utf8(bfe));
+			}
+			chng = true;
+		}
+	}
+	if (chng) {
+		if (!nfe.empty())
+			setFileEncodings(nfe);
+		change_adaptor();
 	}
 }
 
@@ -350,6 +397,8 @@ void GuiBibtex::updateContents()
 
 	bibtocCB->setChecked((bibtotoc() && !bibtopic) || hasbibintoc);
 	bibtocCB->setEnabled(!bibtopic && !hasbibintoc);
+
+	inheritPB->setEnabled(hasInherits());
 
 	btPrintCO->clear();
 	btPrintCO->addItem(qt_("all cited references"), toqstr("btPrintCited"));

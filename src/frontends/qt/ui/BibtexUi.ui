@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>523</width>
-    <height>617</height>
+    <width>542</width>
+    <height>702</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -82,6 +82,16 @@
           </property>
           <property name="default">
            <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="inheritPB">
+          <property name="toolTip">
+           <string>Inherit bibliography databases from the master document</string>
+          </property>
+          <property name="text">
+           <string>&amp;Inherit from Master</string>
           </property>
          </widget>
         </item>

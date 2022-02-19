@@ -784,6 +784,10 @@ public:
 	void registerBibfiles(docstring_list const & bf) const;
 	///
 	support::FileName getBibfilePath(docstring const & bibid) const;
+	/// Return the list with all bibfiles in use (including bibfiles
+	/// of loaded child documents).
+	docstring_list const &
+		getBibfiles(UpdateScope scope = UpdateMaster) const;
 
 	/// routines for dealing with possible self-inclusion
 	void pushIncludedBuffer(Buffer const * buf) const;
@@ -807,10 +811,6 @@ private:
 	/// last time we loaded the cache. Note that this does NOT update the
 	/// cached information.
 	void checkIfBibInfoCacheIsValid() const;
-	/// Return the list with all bibfiles in use (including bibfiles
-	/// of loaded child documents).
-	docstring_list const &
-		getBibfiles(UpdateScope scope = UpdateMaster) const;
 	///
 	void collectChildren(ListOfBuffers & children, bool grand_children) const;
 

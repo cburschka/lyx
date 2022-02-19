@@ -40,6 +40,7 @@ private Q_SLOTS:
 	void on_buttonBox_accepted();
 	void browseBstPressed();
 	void browseBibPressed();
+	void inheritPressed();
 	void on_editPB_clicked();
 	void databaseChanged();
 	void rescanClicked();
@@ -99,6 +100,8 @@ private:
 	void dispatchParams() override;
 	///
 	bool isBufferDependent() const override { return true; }
+	/// Is his a child which can inherit bibs from its master?
+	bool hasInherits();
 
 private:
 	///
