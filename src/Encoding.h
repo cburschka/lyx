@@ -69,6 +69,11 @@ public:
 		std::vector<docstring> const & text_commands, std::vector<docstring> const & math_commands,
 		std::string const & text_preamble, std::string const & math_preamble,
 		std::string const & tipa_shortcut, unsigned int flags);
+	// Add a new text command for this symbol.
+	void addTextCommand(const docstring& newTextCommand) { text_commands_.emplace_back(newTextCommand); }
+	// Add a new math command for this symbol.
+	void addMathCommand(const docstring& newMathCommand) { math_commands_.emplace_back(newMathCommand); }
+
 	// we assume that at least one command is nonempty when using unicodesymbols
 	bool isUnicodeSymbol() const { return !text_commands_.empty() || !math_commands_.empty(); }
 	/// LaTeX command (text mode) for this character

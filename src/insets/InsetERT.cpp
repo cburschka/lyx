@@ -158,6 +158,8 @@ void InsetERT::docbook(XMLStream & xs, OutputParams const & runparams) const
 			os_trimmed.insert(4, from_ascii("}"));
 		}
 
+		std::cout << to_utf8(os_trimmed) << std::endl;
+
 		// Look into the global table of Unicode characters if there is a match.
 		bool termination;
 		docstring rem;

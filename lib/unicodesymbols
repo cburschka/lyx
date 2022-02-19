@@ -60,6 +60,7 @@
 #
 0x00a0 "~"                        "" "force=cp862;cp1255;cp1256;koi8-u;iso8859-6;iso8859-7;utf8-platex,notermination=both" "~" "" # NO-BREAK SPACE
 0x00a1 "\\textexclamdown"         "" "force=cp862;cp1255;euc-jp;euc-jp-platex;euc-kr;utf8-platex" # INVERTED EXCLAMATION MARK
+0x00a1 "!`" ""
 0x00a2 "\\textcent"               "textcomp" "force=cp862;cp1255;cp1256;euc-jp;euc-jp-platex;jis;shift-jis-platex" #"\\mathcent" "txfonts|pxfonts" # CENT SIGN
 0x00a3 "\\pounds"                 "" "force=cp862;cp1255;cp1256;iso8859-7;euc-jp;euc-jp-platex;jis;shift-jis-platex" "\\pounds" "" # £ POUND SIGN
 0x00a4 "\\textcurrency"           "textcomp" "force=cp1256;euc-cn;euc-jp;euc-jp-platex;euc-kr;gbk;iso8859-6;utf8-platex" # CURRENCY SYMBOL
@@ -90,6 +91,7 @@
 0x00bd "\\textonehalf"            "textcomp" "force=cp862;cp1255;cp1256;iso8859-7;euc-kr" "\\sfrac{1}{2}" "xfrac" # 1/2 FRACTION
 0x00be "\\textthreequarters"      "textcomp" "force=cp1255;cp1256;euc-kr" "\\sfrac{3}{4}" "xfrac" # 3/4 FRACTION
 0x00bf "\\textquestiondown"       "" "force=cp862;cp1255;euc-jp;euc-kr" # INVERTED QUESTION MARK
+0x00bf "?`" ""
 0x00c0 "\\`{A}"                   "" "mathalpha,force=euc-jp" "\\grave{A}" # LATIN CAPITAL LETTER A WITH GRAVE
 0x00c1 "\\'{A}"                   "" "mathalpha,force=euc-jp" "\\acute{A}" # LATIN CAPITAL LETTER A WITH ACUTE
 0x00c2 "\\^{A}"                   "" "mathalpha,force=euc-jp" "\\hat{A}" # LATIN CAPITAL LETTER A WITH CIRCUMFLEX

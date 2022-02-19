@@ -50,7 +50,7 @@ CharInfoMap unicodesymbols;
 typedef set<char_type> CharSet;
 typedef map<string, CharSet> CharSetMap;
 CharSet forced;
-CharSetMap forcedselected;
+CharSetMap forcedSelected;
 
 typedef set<char_type> MathAlphaSet;
 MathAlphaSet mathalpha;
@@ -99,7 +99,7 @@ CharInfo::CharInfo(
 Encoding::Encoding(string const & n, string const & l, string const & g,
 		   string const & i, bool f, bool u, Encoding::Package p)
 	: name_(n), latexName_(l), guiName_(g), iconvName_(i), fixedwidth_(f),
-	  unsafe_(u), forced_(&forcedselected[n]), package_(p)
+	  unsafe_(u), forced_(&forcedSelected[n]), package_(p)
 {
 	if (n == "ascii") {
 		// ASCII can encode 128 code points and nothing else
@@ -705,20 +705,20 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 {
 	// We must read the symbolsfile first, because the Encoding
 	// constructor depends on it.
-	CharSetMap forcednotselected;
-	Lexer symbolslex;
-	symbolslex.setFile(symbolsfile);
+	CharSetMap forcedNotSelected;
+	Lexer symbolsLex;
+	symbolsLex.setFile(symbolsfile);
 	bool getNextToken = true;
-	while (symbolslex.isOK()) {
+	while (symbolsLex.isOK()) {
 		char_type symbol;
 
 		if (getNextToken) {
-			if (!symbolslex.next(true))
+			if (!symbolsLex.next(true))
 				break;
 		} else
 			getNextToken = true;
 
-		istringstream is(symbolslex.getString());
+		istringstream is(symbolsLex.getString());
 		// reading symbol directly does not work if
 		// char_type == wchar_t.
 		uint32_t tmp;
@@ -726,20 +726,38 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 			break;
 		symbol = tmp;
 
-		if (!symbolslex.next(true))
-			break;
-		docstring textcommand = symbolslex.getDocString();
-		if (!symbolslex.next(true))
-			break;
-		string textpreamble = symbolslex.getString();
-		if (!symbolslex.next(true))
-			break;
-		string sflags = symbolslex.getString();
+		// Special case: more than one entry for one character (to add other LaTeX commands).
+		if (unicodesymbols.contains(symbol)) {
+			if (!symbolsLex.next(true))
+				break;
+			docstring textCommand = symbolsLex.getDocString();
+			if (!symbolsLex.next(true))
+				break;
+			string mathCommand = symbolsLex.getString();
 
-		string tipashortcut;
+			if (!textCommand.empty())
+				unicodesymbols.at(symbol).addTextCommand(textCommand);
+			if (!mathCommand.empty())
+				unicodesymbols.at(symbol).addMathCommand(textCommand);
+
+			continue;
+		}
+
+		// If the symbol is not the same as the previous entry, consider it is a totally new symbol.
+		if (!symbolsLex.next(true))
+			break;
+		docstring textCommand = symbolsLex.getDocString();
+		if (!symbolsLex.next(true))
+			break;
+		string textPreamble = symbolsLex.getString();
+		if (!symbolsLex.next(true))
+			break;
+		string sflags = symbolsLex.getString();
+
+		string tipaShortcut;
 		int flags = 0;
 
-		if (suffixIs(textcommand, '}'))
+		if (suffixIs(textCommand, '}'))
 			flags |= CharInfoTextNoTermination;
 		while (!sflags.empty()) {
 			string flag;
@@ -753,13 +771,13 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 				vector<string> encs =
 					getVectorFromString(flag.substr(6), ";");
 				for (auto const & enc : encs)
-					forcedselected[enc].insert(symbol);
+					forcedSelected[enc].insert(symbol);
 				flags |= CharInfoForceSelected;
 			} else if (prefixIs(flag, "force!=")) {
 				vector<string> encs =
 					getVectorFromString(flag.substr(7), ";");
 				for (auto const & enc : encs)
-					forcednotselected[enc].insert(symbol);
+					forcedNotSelected[enc].insert(symbol);
 				flags |= CharInfoForceSelected;
 			} else if (flag == "mathalpha") {
 				mathalpha.insert(symbol);
@@ -773,8 +791,8 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 			} else if (flag == "notermination=none") {
 				flags &= ~CharInfoTextNoTermination;
 				flags &= ~CharInfoMathNoTermination;
-			} else if (contains(flag, "tipaShortcut=")) {
-				tipashortcut = split(flag, '=');
+			} else if (contains(flag, "tipashortcut=")) {
+				tipaShortcut = split(flag, '=');
 			} else if (flag == "deprecated") {
 				flags |= CharInfoDeprecated;
 			} else {
@@ -786,25 +804,25 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 		}
 		// mathCommand and mathPreamble have been added for 1.6.0.
 		// make them optional so that old files still work.
-		int const lineno = symbolslex.lineNumber();
+		int const lineNo = symbolsLex.lineNumber();
 		bool breakout = false;
-		docstring mathcommand;
-		string mathpreamble;
-		if (symbolslex.next(true)) {
-			if (symbolslex.lineNumber() != lineno) {
+		docstring mathCommand;
+		string mathPreamble;
+		if (symbolsLex.next(true)) {
+			if (symbolsLex.lineNumber() != lineNo) {
 				// line in old format without mathCommand and mathPreamble
 				getNextToken = false;
 			} else {
-				mathcommand = symbolslex.getDocString();
-				if (suffixIs(mathcommand, '}'))
+				mathCommand = symbolsLex.getDocString();
+				if (suffixIs(mathCommand, '}'))
 					flags |= CharInfoMathNoTermination;
-				if (symbolslex.next(true)) {
-					if (symbolslex.lineNumber() != lineno) {
+				if (symbolsLex.next(true)) {
+					if (symbolsLex.lineNumber() != lineNo) {
 						// line in new format with mathCommand only
 						getNextToken = false;
 					} else {
 						// line in new format with mathCommand and mathPreamble
-						mathpreamble = symbolslex.getString();
+						mathPreamble = symbolsLex.getString();
 					}
 				} else
 					breakout = true;
@@ -814,20 +832,20 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 		}
 
 		// backward compatibility
-		if (mathpreamble == "esintoramsmath")
-			mathpreamble = "esint|amsmath";
+		if (mathPreamble == "esintoramsmath")
+			mathPreamble = "esint|amsmath";
 
-		if (!textpreamble.empty())
-			if (textpreamble[0] != '\\')
+		if (!textPreamble.empty())
+			if (textPreamble[0] != '\\')
 				flags |= CharInfoTextFeature;
-		if (!mathpreamble.empty())
-			if (mathpreamble[0] != '\\')
+		if (!mathPreamble.empty())
+			if (mathPreamble[0] != '\\')
 				flags |= CharInfoMathFeature;
 
 		CharInfo info = CharInfo(
-			textcommand, mathcommand,
-			textpreamble, mathpreamble,
-			tipashortcut, flags);
+				textCommand, mathCommand,
+				textPreamble, mathPreamble,
+				tipaShortcut, flags);
 		LYXERR(Debug::INFO, "Read unicode symbol " << symbol << " '"
 		                                           << to_utf8(info.textCommand()) << "' '" << info.textPreamble()
 		                                           << " '" << info.textFeature() << ' ' << info.textNoTermination()
@@ -851,12 +869,12 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 		et_end
 	};
 
-	LexerKeyword encodingtags[] = {
+	LexerKeyword encodingTags[] = {
 		{ "encoding", et_encoding },
 		{ "end", et_end }
 	};
 
-	Lexer lex(encodingtags);
+	Lexer lex(encodingTags);
 	lex.setFile(encfile);
 	lex.setContext("Encodings::read");
 	while (lex.isOK()) {
@@ -866,21 +884,21 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 			lex.next();
 			string const name = lex.getString();
 			lex.next();
-			string const latexname = lex.getString();
+			string const latexName = lex.getString();
 			lex.next();
-			string const guiname = lex.getString();
+			string const guiName = lex.getString();
 			lex.next();
-			string const iconvname = lex.getString();
+			string const iconvName = lex.getString();
 			lex.next();
 			string const width = lex.getString();
-			bool fixedwidth = false;
+			bool fixedWidth = false;
 			bool unsafe = false;
 			if (width == "fixed")
-				fixedwidth = true;
+				fixedWidth = true;
 			else if (width == "variable")
-				fixedwidth = false;
+				fixedWidth = false;
 			else if (width == "variableunsafe") {
-				fixedwidth = false;
+				fixedWidth = false;
 				unsafe = true;
 			}
 			else
@@ -901,9 +919,9 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 				lex.printError("Unknown package");
 
 			LYXERR(Debug::INFO, "Reading encoding " << name);
-			encodinglist[name] = Encoding(name, latexname,
-				guiname, iconvname, fixedwidth, unsafe,
-				package);
+			encodinglist[name] = Encoding(name, latexName,
+			                              guiName, iconvName, fixedWidth, unsafe,
+			                              package);
 
 			if (lex.lex() != et_end)
 				lex.printError("Missing end");
@@ -920,9 +938,9 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 		}
 	}
 
-	// Move all information from forcednotselected to forcedselected
-	for (CharSetMap::const_iterator it1 = forcednotselected.begin(); it1 != forcednotselected.end(); ++it1) {
-		for (CharSetMap::iterator it2 = forcedselected.begin(); it2 != forcedselected.end(); ++it2) {
+	// Move all information from forcedNotSelected to forcedSelected
+	for (CharSetMap::const_iterator it1 = forcedNotSelected.begin(); it1 != forcedNotSelected.end(); ++it1) {
+		for (CharSetMap::iterator it2 = forcedSelected.begin(); it2 != forcedSelected.end(); ++it2) {
 			if (it2->first != it1->first)
 				it2->second.insert(it1->second.begin(), it1->second.end());
 		}
