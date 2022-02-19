@@ -63,12 +63,14 @@
 0x00a1 "!`" ""
 0x00a2 "\\textcent"               "textcomp" "force=cp862;cp1255;cp1256;euc-jp;euc-jp-platex;jis;shift-jis-platex" #"\\mathcent" "txfonts|pxfonts" # CENT SIGN
 0x00a3 "\\pounds"                 "" "force=cp862;cp1255;cp1256;iso8859-7;euc-jp;euc-jp-platex;jis;shift-jis-platex" "\\pounds" "" # £ POUND SIGN
+0x00a3 "\\textsterling" ""
 0x00a4 "\\textcurrency"           "textcomp" "force=cp1256;euc-cn;euc-jp;euc-jp-platex;euc-kr;gbk;iso8859-6;utf8-platex" # CURRENCY SYMBOL
 0x00a5 "\\textyen"                "textcomp" "force=cp862;cp1255;cp1256;euc-jp;euc-jp-platex;jis;shift-jis-platex" "\\yen" "amssymb" # YEN SIGN
 0x00a6 "\\textbrokenbar"          "textcomp" "force=cp1255;cp1256;iso8859-7;euc-jp;euc-jp-platex;utf8-platex" # BROKEN BAR
 0x00a7 "\\textsection"            "textcomp" "force=cp1255;cp1256;iso8859-7;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis;shift-jis-platex" "\\mathsection" "" # SECTION SIGN
 0x00a8 "\\textasciidieresis"      "textcomp" "force=cp1255;cp1256;iso8859-7;euc-cn;euc-jp;euc-kr;gbk;jis;shift-jis-platex" # DIAERESIS
 0x00a9 "\\textcopyright"          "textcomp" "force=cp1255;cp1256;koi8-u;iso8859-7;euc-jp;euc-jp-platex;utf8-platex" # COPYRIGHT SIGN
+Ox00a9 "\\copyright" ""
 0x00aa "\\textordfeminine"        "textcomp" "force=cp862;euc-jp;euc-jp-platex;euc-kr;utf8-platex" # FEMININE ORDINAL INDICATOR
 0x00ab "\\guillemotleft"          "" "force=armscii8;cp862;cp1255;cp1256;iso8859-7;utf8-platex" # LEFT-POINTING DOUBLE ANGLE QUOTATION MARK
 0x00ac "\\textlnot"               "textcomp" "force!=utf8;utf8-cjk" "\\neg" "" # ¬ NOT SIGN
@@ -1915,12 +1917,15 @@
 0x201e "\\quotedblbase"           "" "force=cp1256;iso8859-13" # DOUBLE LOW-9 QUOTATION MARK
 #0x201f ""                         "" "" # DOUBLE HIGH-REVERSED-9 QUOTATION MARK
 0x2020 "\\dag"                    "" "force=cp1256;euc-jp;euc-kr;jis" "\\dagger" "" # DAGGER
+0x2020 "\\textdagger" ""
 0x2021 "\\ddag"                   "" "force=cp1256;euc-jp;euc-kr;jis" "\\ddagger" "" # DOUBLE DAGGER
+0x2021 "\\textdaggerdbl"
 0x2022 "\\textbullet"             "textcomp" "force=cp1256" "\\bullet" "" # BULLET
 0x2023 "\\textifsymbol[ifgeo]{116}" "ifsym" "force=utf8;utf8x;utf8-cjk" # TRIANGULAR BULLET # ≈ 0x25b8
 0x2024 "."                        "" "notermination=text,force=utf8;utf8-cjk;utf8x" "" "" # ONE DOT LEADER # ≈ FULL STOP
 0x2025 ".\\,."                    "" "notermination=text,force=utf8;utf8-cjk;utf8x;euc-jp;euc-kr;euc-tw;gbk;jis" "" "" # TWO DOT LEADER
 0x2026 "\\dots"                   "" "force=armscii8;cp1256;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\ldots" "" # HORIZONTAL ELLIPSIS
+0X2026 "\\textellipsis" ""
 #0x2027 ""                        "" "notermination=text" "" "" # HYPHENATION POINT (visible symbol used to indicate correct positions for word breaking, looks like but is not 0x00b7 middle dot)
 0x2028 "\\\\"                     "" "force=utf8;utf8-cjk" "" "" # LINE SEPARATOR
 0x2029 "\\par"                    "" "force=utf8;utf8-cjk" "" "" # PARAGRAPH SEPARATOR
