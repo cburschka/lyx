@@ -20,6 +20,12 @@ extern "C" {
 
 	// query the system preferences for users tabbing preference
 	bool appleUserTabbingPreferenceAlways();
+
+	// Query the Standard User Defaults for float values of
+	// NSTextInsertionPointBlinkPeriodOn resp. NSTextInsertionPointBlinkPeriodOff
+	// and return the integer part of it - return -1 in case of unset value
+	int NSTextInsertionPointBlinkPeriodOn();
+	int NSTextInsertionPointBlinkPeriodOff();
 #ifdef __cplusplus
 }
 #endif

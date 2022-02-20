@@ -197,6 +197,20 @@ frontend::Application * createApplication(int & argc, char * argv[])
 #endif
 
 
+#if defined(Q_OS_MAC)
+	int const cursor_time_on = NSTextInsertionPointBlinkPeriodOn();
+	int const cursor_time_off = NSTextInsertionPointBlinkPeriodOff();
+	if (cursor_time_on > 0 && cursor_time_off > 0) {
+		QApplication::setCursorFlashTime(cursor_time_on + cursor_time_off);
+	} else if (cursor_time_on <= 0 && cursor_time_off > 0) {
+		// Off is set and On is undefined of zero
+		QApplication::setCursorFlashTime(0);
+	} else if (cursor_time_off <= 0 && cursor_time_on > 0) {
+		// On is set and Off is undefined of zero
+		QApplication::setCursorFlashTime(0);
+	}
+#endif
+
 // Setup high DPI handling. This is a bit complicated, but will be default in Qt6.
 // macOS does it by itself.
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) && !defined(Q_OS_MAC)

@@ -49,3 +49,19 @@ bool appleUserTabbingPreferenceAlways() {
 	return false;
 #endif
 }
+
+
+int NSTextInsertionPointBlinkPeriodOn() {
+	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+
+	return [prefs objectForKey:@"NSTextInsertionPointBlinkPeriodOn"] == nil ?
+		-1 : [prefs floatForKey:@"NSTextInsertionPointBlinkPeriodOn"];
+}
+
+
+int NSTextInsertionPointBlinkPeriodOff() {
+	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+
+	return [prefs objectForKey:@"NSTextInsertionPointBlinkPeriodOff"] == nil ?
+			-1 : [prefs floatForKey:@"NSTextInsertionPointBlinkPeriodOff"];
+}
