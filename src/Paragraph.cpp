@@ -2367,8 +2367,8 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 	    && !layout_->pass_thru
 	    && curAlign != LYX_ALIGN_CENTER) {
 		if (!owner_->empty()
-		    && (owner_->isInset(0)
-			&& owner_->getInset(0)->lyxCode() == VSPACE_CODE))
+		    && owner_->getInset(0)
+		    && owner_->getInset(0)->lyxCode() == VSPACE_CODE)
 			// If the paragraph starts with a vspace, the \\noindent
 			// needs to come after that (as it leaves vmode).
 			// If the paragraph consists only of the vspace,
