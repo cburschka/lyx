@@ -374,6 +374,9 @@ void Undo::Private::recordUndo(UndoKind kind,
 	LASSERT(first_pit <= cell.lastpit(), return);
 	LASSERT(last_pit <= cell.lastpit(), return);
 
+	if (buffer_.isReadonly())
+		return;
+
 	doRecordUndo(kind, cell, first_pit, last_pit, cur,
 		undostack_);
 
@@ -408,6 +411,9 @@ void Undo::Private::doRecordUndoBufferParams(CursorData const & cur_before,
 
 void Undo::Private::recordUndoBufferParams(CursorData const & cur)
 {
+	if (buffer_.isReadonly())
+		return;
+
 	doRecordUndoBufferParams(cur, undostack_);
 
 	// next time we'll try again to combine entries if possible
@@ -517,6 +523,9 @@ void Undo::Private::doUndoRedoAction(CursorData & cur, UndoElementStack & stack,
 
 bool Undo::Private::undoRedoAction(CursorData & cur, bool isUndoOperation)
 {
+	if (buffer_.isReadonly())
+		return false;
+
 	undo_finished_ = true;
 
 	UndoElementStack & stack = isUndoOperation ?  undostack_ : redostack_;
