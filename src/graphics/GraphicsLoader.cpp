@@ -400,7 +400,7 @@ void Loader::Impl::resetFile(FileName const & file)
 	// new file.
 	bool continue_monitoring = false;
 
-	if (!old_file.empty()) {
+	if (cached_item_ && !old_file.empty()) {
 		continue_monitoring = cached_item_->monitoring();
 		// cached_item_ is going to be reset, so the connected
 		// signal needs to be disconnected.
