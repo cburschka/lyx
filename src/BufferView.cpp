@@ -2066,14 +2066,14 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		// an arbitrary number to limit number of iterations
 		const int max_iter = 100000;
 		int iterations = 0;
-		Cursor & curs = d->cursor_;
-		Cursor const savecur = curs;
-		curs.reset();
-		if (!curs.nextInset())
-			curs.forwardInset();
-		curs.beginUndoGroup();
-		while(curs && iterations < max_iter) {
-			Inset * const ins = curs.nextInset();
+		Cursor & bvcur = d->cursor_;
+		Cursor const savecur = bvcur;
+		bvcur.reset();
+		if (!bvcur.nextInset())
+			bvcur.forwardInset();
+		bvcur.beginUndoGroup();
+		while(bvcur && iterations < max_iter) {
+			Inset * const ins = bvcur.nextInset();
 			if (!ins)
 				break;
 			docstring insname = ins->layoutName();
@@ -2081,7 +2081,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				if (insname == name || name == from_utf8("*")) {
 					lyx::dispatch(fr, dr);
 					// we do not want to remember selection here
-					curs.clearSelection();
+					bvcur.clearSelection();
 					++iterations;
 					break;
 				}
@@ -2091,11 +2091,11 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				insname = insname.substr(0, i);
 			}
 			// if we did not delete the inset, skip it
-			if (!curs.nextInset() || curs.nextInset() == ins)
-				curs.forwardInset();
+			if (!bvcur.nextInset() || bvcur.nextInset() == ins)
+				bvcur.forwardInset();
 		}
-		curs = savecur;
-		curs.fixIfBroken();
+		bvcur = savecur;
+		bvcur.fixIfBroken();
 		/** This is a dummy undo record only to remember the cursor
 		 * that has just been set; this will be used on a redo action
 		 * (see ticket #10097)
@@ -2103,8 +2103,8 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		 * FIXME: a better fix would be to have a way to set the
 		 * cursor value directly, but I am not sure it is worth it.
 		 */
-		curs.recordUndo();
-		curs.endUndoGroup();
+		bvcur.recordUndo();
+		bvcur.endUndoGroup();
 		dr.screenUpdate(Update::Force);
 		dr.forceBufferUpdate();
 
