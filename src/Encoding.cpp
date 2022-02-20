@@ -727,7 +727,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 		symbol = tmp;
 
 		// Special case: more than one entry for one character (to add other LaTeX commands).
-		if (unicodesymbols.contains(symbol)) {
+		if (unicodesymbols.find(symbol) != unicodesymbols.end()) {
 			if (!symbolsLex.next(true))
 				break;
 			docstring textCommand = symbolsLex.getDocString();
