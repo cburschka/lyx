@@ -2081,6 +2081,8 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				if (insname == name || name == from_utf8("*")) {
 					curs.recordUndo();
 					lyx::dispatch(fr, dr);
+					// we do not want to remember selection here
+					curs.clearSelection();
 					++iterations;
 					break;
 				}
