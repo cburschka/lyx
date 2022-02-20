@@ -30,13 +30,13 @@ public:
 	///
 	std::string type;
 	///
-	int lines;
+	int lines = 0;
 	///
-	std::string placement;
+	std::string placement = "o";
 	///
-	Length overhang;
+	Length overhang = Length(0, Length::PCW);
 	///
-	Length width;
+	Length width = Length(50, Length::PCW);
 };
 
 

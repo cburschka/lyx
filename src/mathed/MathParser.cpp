@@ -1369,7 +1369,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			// otherwise parse it as an user macro
 			MathData count;
 			parse(count, FLAG_ITEM, mode);
-			int cols;
+			int cols = 0;
 			// limit arbitrarily to 100 columns
 			if (extractNumber(count, cols) && cols > 0 && cols < 100) {
 				// resize the table if necessary

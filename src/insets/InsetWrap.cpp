@@ -47,10 +47,6 @@ InsetWrap::InsetWrap(Buffer * buf, string const & type)
 	: InsetCaptionable(buf)
 {
 	setCaptionType(type);
-	params_.lines = 0;
-	params_.placement = "o";
-	params_.overhang = Length(0, Length::PCW);
-	params_.width = Length(50, Length::PCW);
 }
 
 
