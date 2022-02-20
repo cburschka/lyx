@@ -819,12 +819,15 @@ void docbookNoSubfigures(XMLStream & xs, OutputParams const & runparams, const I
 	}
 
 	// - Output the actual content of the float or some dummy content (to ensure that the output
-	// document is valid).
+	// document is valid). Use HTML tables by default, unless an InsetFloat is given.
 	if (hasFloat)
 		xs << XMLStream::ESCAPE_NONE << osFloatContent.str();
-	else if (ftype.docbookFloatType() == "table")
-		docbookGenerateFillerTable(xs, thisFloat->buffer().params().docbook_table_output);
-	else
+	else if (ftype.docbookFloatType() == "table") {
+		BufferParams::TableOutput tableFormat = BufferParams::HTMLTable;
+		if (thisFloat)
+			tableFormat = thisFloat->buffer().params().docbook_table_output;
+		docbookGenerateFillerTable(xs, tableFormat);
+	} else
 		docbookGenerateFillerMedia(xs);
 
 	// - Close the float.
