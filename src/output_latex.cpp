@@ -933,10 +933,12 @@ void TeXOnePar(Buffer const & buf,
 			break;
 		}
 	}
+	bool const have_prior_nptpar =
+			prior_nontitle_par && !prior_nontitle_par->isPassThru();
 	Language const * const prev_language =
 		runparams_in.for_searchAdv != OutputParams::NoSearch
 			? languages.getLanguage("ignore")
-			: (prior_nontitle_par && !prior_nontitle_par->isPassThru())
+			: (have_prior_nptpar)
 				? (use_prev_env_language 
 					? state->prev_env_language_
 					: prior_nontitle_par->getParLanguage(bparams))
@@ -982,7 +984,9 @@ void TeXOnePar(Buffer const & buf,
 		use_polyglossia
 		&& runparams.local_font != nullptr
 		&& outer_language->rightToLeft()
-		&& !par_language->rightToLeft();
+		&& !par_language->rightToLeft()
+		&& !(have_prior_nptpar
+		     && (prev_language->rightToLeft() != par_language->rightToLeft()));
 	bool const localswitch =
 			(runparams_in.for_searchAdv != OutputParams::NoSearch
 			|| text.inset().forceLocalFontSwitch()
