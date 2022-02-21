@@ -1513,6 +1513,8 @@ void static fillMissingUnicodesymbols()
   addAccents("\\yen", getutf8(0x00a5));
   addAccents("\\textsection", getutf8(0x00a7));
   addAccents("\\mathsection", getutf8(0x00a7));
+  addAccents("\\textcopyright", getutf8(0x00a9));
+  addAccents("\\copyright", getutf8(0x00a9));
   addAccents("\\textlnot", getutf8(0x00ac));
   addAccents("\\neg", getutf8(0x00ac));
   addAccents("\\textregistered", getutf8(0x00ae));
@@ -1532,8 +1534,6 @@ void static fillMissingUnicodesymbols()
   addAccents("\\o", getutf8(0x00f8));
   addAccents("\\textcrlambda", getutf8(0x019b));
   addAccents("\\j", getutf8(0x0237));
-  addAccents("\\textepsilon", getutf8(0x025b));
-  addAccents("\\varepsilon", getutf8(0x025b));
   addAccents("\\textGamma", getutf8(0x0393));
   addAccents("\\Gamma", getutf8(0x0393));
   addAccents("\\textDelta", getutf8(0x0394));
