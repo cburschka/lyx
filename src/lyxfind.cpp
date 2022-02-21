@@ -1507,12 +1507,16 @@ static void addAccents(string latex_in, string unicode_out)
 
 void static fillMissingUnicodesymbols()
 {
+  addAccents("\\pounds", getutf8(0x00a3));
+  addAccents("\\textsterling", getutf8(0x00a3));
   addAccents("\\textyen", getutf8(0x00a5));
   addAccents("\\yen", getutf8(0x00a5));
   addAccents("\\textsection", getutf8(0x00a7));
   addAccents("\\mathsection", getutf8(0x00a7));
   addAccents("\\textlnot", getutf8(0x00ac));
   addAccents("\\neg", getutf8(0x00ac));
+  addAccents("\\textregistered", getutf8(0x00ae));
+  addAccents("\\circledR", getutf8(0x00ae));
   addAccents("\\textpm", getutf8(0x00b1));
   addAccents("\\pm", getutf8(0x00b1));
   addAccents("\\textparagraph", getutf8(0x00b6));
@@ -1520,6 +1524,7 @@ void static fillMissingUnicodesymbols()
   addAccents("\\textperiodcentered", getutf8(0x00b7));
   addAccents("\\texttimes", getutf8(0x00d7));
   addAccents("\\times", getutf8(0x00d7));
+  addAccents("\\O", getutf8(0x00d8));
   addAccents("\\dh", getutf8(0x00f0));
   addAccents("\\eth", getutf8(0x00f0));
   addAccents("\\textdiv", getutf8(0x00f7));
@@ -1527,6 +1532,30 @@ void static fillMissingUnicodesymbols()
   addAccents("\\o", getutf8(0x00f8));
   addAccents("\\textcrlambda", getutf8(0x019b));
   addAccents("\\j", getutf8(0x0237));
+  addAccents("\\textepsilon", getutf8(0x025b));
+  addAccents("\\varepsilon", getutf8(0x025b));
+  addAccents("\\textGamma", getutf8(0x0393));
+  addAccents("\\Gamma", getutf8(0x0393));
+  addAccents("\\textDelta", getutf8(0x0394));
+  addAccents("\\Delta", getutf8(0x0394));
+  addAccents("\\textTheta", getutf8(0x0398));
+  addAccents("\\Theta", getutf8(0x0398));
+  addAccents("\\textLambda", getutf8(0x039b));
+  addAccents("\\Lambda", getutf8(0x039b));
+  addAccents("\\textXi", getutf8(0x039e));
+  addAccents("\\Xi", getutf8(0x039e));
+  addAccents("\\textPi", getutf8(0x03a0));
+  addAccents("\\Pi", getutf8(0x03a0));
+  addAccents("\\textSigma", getutf8(0x03a3));
+  addAccents("\\Sigma", getutf8(0x03a3));
+  addAccents("\\textUpsilon", getutf8(0x03a5));
+  addAccents("\\Upsilon", getutf8(0x03a5));
+  addAccents("\\textPhi", getutf8(0x03a6));
+  addAccents("\\Phi", getutf8(0x03a6));
+  addAccents("\\textPsi", getutf8(0x03a8));
+  addAccents("\\Psi", getutf8(0x03a8));
+  addAccents("\\textOmega", getutf8(0x03a9));
+  addAccents("\\Omega", getutf8(0x03a9));
   addAccents("\\textalpha", getutf8(0x03b1));
   addAccents("\\alpha", getutf8(0x03b1));
   addAccents("\\textbeta", getutf8(0x03b2));
@@ -1696,19 +1725,24 @@ void static fillMissingUnicodesymbols()
   addAccents("\\thainine", getutf8(0x0e59));
   addAccents("\\thaiAngkhankhu", getutf8(0x0e5a));
   addAccents("\\thaiKhomut", getutf8(0x0e5b));
-
   addAccents("\\dag", getutf8(0x2020));
   addAccents("\\dagger", getutf8(0x2020));
+  addAccents("\\textdagger", getutf8(0x2020));
   addAccents("\\ddag", getutf8(0x2021));
   addAccents("\\ddagger", getutf8(0x2021));
   addAccents("\\textbullet", getutf8(0x2022));
   addAccents("\\bullet", getutf8(0x2022));
   addAccents("\\dots", getutf8(0x2026));
   addAccents("\\ldots", getutf8(0x2026));
+  addAccents("\\textellipsis", getutf8(0x2026));
   addAccents("\\textasciiacute", getutf8(0x2032));
   addAccents("\\prime", getutf8(0x2032));
+  addAccents("\\textacutedbl", getutf8(0x2033));
+  addAccents("\\dprime", getutf8(0x2033));
   addAccents("\\textasciigrave", getutf8(0x2035));
   addAccents("\\backprime", getutf8(0x2035));
+  addAccents("\\textsubcircum{ }", getutf8(0x2038));
+  addAccents("\\caretinsert", getutf8(0x2038));
   addAccents("\\textasteriskcentered", getutf8(0x204e));
   addAccents("\\ast", getutf8(0x204e));
   addAccents("\\textmho", getutf8(0x2127));
@@ -1729,6 +1763,14 @@ void static fillMissingUnicodesymbols()
   addAccents("\\surd", getutf8(0x221a));
   addAccents("\\textbigcircle", getutf8(0x25ef));
   addAccents("\\bigcirc", getutf8(0x25ef));
+  addAccents("\\FiveStar", getutf8(0x2605));
+  addAccents("\\bigstar", getutf8(0x2605));
+  addAccents("\\FiveStarOpen", getutf8(0x2606));
+  addAccents("\\bigwhitestar", getutf8(0x2606));
+  addAccents("\\Checkmark", getutf8(0x2713));
+  addAccents("\\checkmark", getutf8(0x2713));
+  addAccents("\\CrossMaltese", getutf8(0x2720));
+  addAccents("\\maltese", getutf8(0x2720));
   addAccents("\\textlangle", getutf8(0x27e8));
   addAccents("\\langle", getutf8(0x27e8));
   addAccents("\\textrangle", getutf8(0x27e9));
