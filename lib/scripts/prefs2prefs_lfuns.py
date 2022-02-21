@@ -221,6 +221,27 @@ def remove_date_insert(line):
 	return simple_remove(line, "date-insert")
 
 
+re_delete_force = re.compile(r"((char|word)-delete-(for|back)ward)(\s+force)?")
+def delete_force(line):
+	# we change as follows:
+	# char-delete-forward -> char-delete-forward confirm
+	# but:
+	# char-delete-forward force -> char-delete-forward
+	#
+	def change(match):
+		if match.group(4):
+			return match.group(1)
+		else:
+			return match.group(1) + " confirm"
+
+	result = re_delete_force.subn(change, line)
+	if result[1]:
+		return (True, result[0])
+	else:
+		return no_match
+
+
+
 #
 ###########################################################
 
@@ -258,6 +279,7 @@ conversions = [
 		info_rename_vcstime,
 		info_rename_vcsrevision,
 		info_rename_vcstreerevision,
-		remove_date_insert
+		remove_date_insert,
+                delete_force
 	]]
 ]

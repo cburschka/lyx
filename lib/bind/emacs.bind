@@ -31,7 +31,7 @@ Format 5
 \bind "C-a"			"line-begin"
 \bind "C-b"			"char-backward"
 #bind "C-c"			"------" // used as users prefix
-\bind "C-d"			"char-delete-forward"
+\bind "C-d"			"char-delete-forward confirm"
 \bind "C-e"			"line-end"
 \bind "C-f"			"char-forward"
 \bind "C-g"			"cancel"
@@ -225,9 +225,9 @@ Format 5
 # Edit group
 #
 
-\bind "C-Delete"		"word-delete-forward"
-\bind "M-d"			"word-delete-forward"
-\bind "C-BackSpace"		"word-delete-backward"
+\bind "C-Delete"		"word-delete-forward confirm"
+\bind "M-d"			"word-delete-forward confirm"
+\bind "C-BackSpace"		"word-delete-backward confirm"
 \bind "M-Return"		"paragraph-break inverse"
 \bind "C-Return"		"newline-insert newline"
 \bind "C-S-Return"		"newline-insert linebreak"

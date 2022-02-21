@@ -750,7 +750,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (cur.selection())
 			cutSelection(cur, false);
 		else
-			deleteWordForward(cur, cmd.getArg(0) == "force");
+			deleteWordForward(cur, cmd.getArg(0) != "confirm");
 		finishChange(cur, false);
 		break;
 
@@ -758,7 +758,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (cur.selection())
 			cutSelection(cur, false);
 		else
-			deleteWordBackward(cur, cmd.getArg(0) == "force");
+			deleteWordBackward(cur, cmd.getArg(0) != "confirm");
 		finishChange(cur, false);
 		break;
 
@@ -1225,7 +1225,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			if (cur.pos() == cur.paragraph().size())
 				// Par boundary, force full-screen update
 				singleParUpdate = false;
-			else if (cmd.getArg(0) != "force" && cur.confirmDeletion()) {
+			else if (cmd.getArg(0) == "confirm" && cur.confirmDeletion()) {
 				cur.resetAnchor();
 				cur.selection(true);
 				cur.posForward();
@@ -1250,7 +1250,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				// Par boundary, full-screen update
 				if (par_boundary)
 					singleParUpdate = false;
-				else if (cmd.getArg(0) != "force" && cur.confirmDeletion(true)) {
+				else if (cmd.getArg(0) == "confirm" && cur.confirmDeletion(true)) {
 					cur.resetAnchor();
 					cur.selection(true);
 					cur.posBackward();

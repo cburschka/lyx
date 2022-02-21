@@ -53,13 +53,13 @@ Format 5
 #  +: "Control-B"                    # Move one character backward
 \bind "M-b"                          "char-backward"
 #  +: "Control-D"                    # Delete the character in front of the cursor
-\bind "M-d"                          "char-delete-forward"
+\bind "M-d"                          "char-delete-forward confirm"
 #  +: "Control-E"                    # Move to end of line/paragraph
 \bind "M-e"                          "line-end"
 #  +: "Control-F"                    # Move one character forward
 \bind "M-f"                          "char-forward"
 #  +: "Control-H"                    # Delete the character behind the cursor
-\bind "M-h"                          "char-delete-backward"
+\bind "M-h"                          "char-delete-backward confirm"
 #  -: "Control-K"                    # Delete from the character in front of the cursor to the end of the line/paragraph
 # used by menu.bind - keymap
 #  +: "Control-L"                    # Center the cursor/selection in the visible area
@@ -83,7 +83,7 @@ Format 5
 \bind "M-S-BackTab"                  "buffer-previous"
 \bind "A-S-BackTab"                  "buffer-previous"
 #  +: "fn-Delete"                    # Forward Delete (on portable Macs' built-in keyboard)
-\bind "Delete"                       "char-delete-forward"
+\bind "Delete"                       "char-delete-forward confirm"
 #  ?: "Control-F1"                   # Toggle full keyboard access on or off
 #  +: "Control-F2"                   # Move focus to the menu bar
 #  +: "Control-F3"                   # Move focus to the Dock
@@ -348,8 +348,8 @@ Format 5
 # Additional Edit group
 #
 
-\bind "A-Delete"                     "word-delete-forward"
-\bind "A-BackSpace"                  "word-delete-backward"
+\bind "A-Delete"                     "word-delete-forward confirm"
+\bind "A-BackSpace"                  "word-delete-backward confirm"
 \bind "M-Return"                     "paragraph-break inverse"
 \bind "C-Return"                     "newline-insert newline"
 \bind "C-S-Return"                   "newline-insert linebreak"

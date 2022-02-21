@@ -152,4 +152,4 @@ Format 5
 #
 
 \unbind "M-u" "word-upcase partial"
-\unbind "M-d" "word-delete-forward"
+\unbind "M-d" "word-delete-forward confirm"

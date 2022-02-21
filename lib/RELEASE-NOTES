@@ -178,6 +178,16 @@
 
 * branch-sync-all: Open/close all insets of selected branch (depending on its activation status).
 
+* word-delete-forward, word-delete-backward, char-delete-forward,
+  char-delete-backward
+
+  The 2.4 behavior of these functions is almost equivalent to the
+  pre-2.3 behavior: without argument, it just deletes the
+  next/previous element; with the "confirm" argument however, big
+  insets are selected on the first call and deleted only on the
+  second. This new behavior allow scripts to work intuitively and
+  require the argument only for interactive use.
+
 
 !!!The following LyX functions have been removed in 2.4:
 
