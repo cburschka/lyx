@@ -1942,12 +1942,12 @@
 0x2030 "\\textperthousand"        "textcomp" "force=cp1256;euc-cn;euc-jp;euc-kr;gbk;jis" # PER MILLE SIGN
 0x2031 "\\textpertenthousand"     "textcomp" "" # PER TEN THOUSAND SIGN
 0x2032 "\\textasciiacute"         "textcomp" "force=utf8;utf8-cjk;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\prime" "" # PRIME
-0x2033 "\\textacutedbl"           "textcomp" "force=utf8;utf8-cjk;euc-cn;euc-jp;euc-kr;gbk;jis" # DOUBLE PRIME
+0x2033 "\\textacutedbl"           "textcomp" "force=utf8;utf8-cjk;euc-cn;euc-jp;euc-kr;gbk;jis" "\\dprime" "" # DOUBLE PRIME
 #0x2034 ""                         "" "" # TRIPLE PRIME
 0x2035 "\\textasciigrave"         "textcomp" "force=utf8;utf8x;utf8-cjk;euc-tw;gbk;jis" "\\backprime" "amssymb" # REVERSED PRIME
 0x2036 "\\textgravedbl"           "textcomp" "force=utf8;utf8x;utf8-cjk" # REVERSED DOUBLE PRIME
 #0x2037 ""                         "" "" # REVERSED TRIPLE PRIME
-0x2038 "\\textsubcircum{ }"       "tipa" "force=utf8;utf8x;utf8-cjk" "" "" # CARET
+0x2038 "\\textsubcircum{ }"       "tipa" "force=utf8;utf8x;utf8-cjk" "\\caretinsert" "" # CARET
 0x2039 "\\guilsinglleft"          "" "force=cp1256" # SINGLE LEFT-POINTING ANGLE QUOTATION MARK
 0x203a "\\guilsinglright"         "" "force=cp1256" # SINGLE RIGHT-POINTING ANGLE QUOTATION MARK
 0x203b "\\textreferencemark"      "textcomp" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" # REFERENCE MARK
@@ -3000,7 +3000,7 @@
 0x25b5 "\\textifsymbol[ifgeo]{65}" "ifsym" "force" "\\vartriangle" "amssymb" # WHITE UP-POINTING SMALL TRIANGLE
 0x25b6 "\\textifsymbol[ifgeo]{100}" "ifsym" "force" "\\RHD" "wasysym" # BLACK RIGHT-POINTING TRIANGLE
 0x25b7 "\\textifsymbol[ifgeo]{52}" "ifsym" "force" "\\rhd" "amssymb" # WHITE RIGHT-POINTING TRIANGLE
-0x25b8 "\\textifsymbol[ifgeo]{116}" "ifsym" "force" # BLACK RIGHT-POINTING SMALL TRIANGLE
+0x25b8 "\\textifsymbol[ifgeo]{116}" "ifsym" "force" "\\smallblacktriangleright" "" # BLACK RIGHT-POINTING SMALL TRIANGLE
 0x25b9 "\\textifsymbol[ifgeo]{68}" "ifsym" "force" # WHITE RIGHT-POINTING SMALL TRIANGLE
 0x25ba "\\RIGHTarrow"             "wasysym" "force" # BLACK RIGHT-POINTING POINTER
 #0x25bb "\\textwide{\\textifsymbol[ifgeo]{68}}" "ifsym" "force" "" "" # WHITE RIGHT-POINTING POINTER # textwide should print wide version but actually prints narrow one!
@@ -3078,7 +3078,7 @@
 #0x2603 ""                         "" "" "" "" # SNOWMAN
 #0x2604 ""                         "" "" "" "" # COMET
 0x2605 "\\FiveStar"               "bbding" "force" "\\bigstar" "amssymb" # BLACK STAR
-0x2606 "\\FiveStarOpen"           "bbding" "force" # WHITE STAR
+0x2606 "\\FiveStarOpen"           "bbding" "force" "\\bigwhitestar" "" # WHITE STAR
 #0x2607 ""                         "" "" "" "" # LIGHTNING
 #0x2608 ""                         "" "" "" "" # THUNDERSTORM
 0x2609 "\\astrosun"               "wasysym" "force" "" "" # SUN
