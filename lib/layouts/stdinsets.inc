@@ -48,7 +48,7 @@ InsetLayout Marginal
 End
 
 InsetLayout Foot
-	LabelString           foot
+	LabelString           Foot
 	LatexType             Command
 	LatexName             footnote
 	Counter               footnote
