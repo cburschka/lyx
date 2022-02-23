@@ -1816,8 +1816,8 @@ static void buildAccentsMap()
   accents["backslash LaTeXe"]        = getutf8(0xf0013);
   accents["backslash lyxarrow"]      = getutf8(0xf0020);
   accents["ddot{\\imath}"] = "ï";
-  buildaccent("ddot", "aAeEhHiIioOtuUwWxXyY",
-                      "äÄëËḧḦïÏïöÖẗüÜẅẄẍẌÿŸ");	// umlaut
+  buildaccent("ddot", "aAeEhHiIoOtuUwWxXyY",
+                      "äÄëËḧḦïÏöÖẗüÜẅẄẍẌÿŸ");	// umlaut
   buildaccent("dot|.", "aAbBcCdDeEfFGghHIimMnNoOpPrRsStTwWxXyYzZ",
                        "ȧȦḃḂċĊḋḊėĖḟḞĠġḣḢİİṁṀṅṄȯȮṗṖṙṘṡṠṫṪẇẆẋẊẏẎżŻ");	// dot{i} can only happen if ignoring case, but there is no lowercase of 'İ'
   accents["acute{\\imath}"] = "í";
@@ -1862,8 +1862,8 @@ static void buildAccentsMap()
   accents["textdoublegrave{\\i}"] = "ȉ";
   buildaccent("dgrave|textdoublegrave", "AaEeIiOoRrUu",
                                         "ȀȁȄȅȈȉȌȍȐȑȔȕ"); // double grave
-  accents["rcap{\\imath}"] = "ȉ";
-  accents["textroundcap{\\i}"] = "ȉ";
+  accents["rcap{\\imath}"] = "ȋ";
+  accents["textroundcap{\\i}"] = "ȋ";
   buildaccent("rcap|textroundcap", "AaEeIiOoRrUu",
                                    "ȂȃȆȇȊȋȎȏȒȓȖȗ"); // inverted breve
   buildaccent("slashed", "oO",
