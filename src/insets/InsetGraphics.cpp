@@ -61,6 +61,7 @@ TODO
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "InsetIterator.h"
+#include "LaTeX.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
@@ -821,7 +822,19 @@ void InsetGraphics::latex(otexstream & os,
 	bool const file_exists = !params().filename.empty()
 			&& params().filename.isReadableFile();
 	string message;
-	if (!file_exists) {
+	// PDFLaTeX and Xe/LuaTeX fall back to draft themselves
+	// and error about it. For DVI/PS, we do something similar here.
+	if (!file_exists && runparams.flavor == Flavor::LaTeX) {
+		TeXErrors terr;
+		ErrorList & errorList = buffer().errorList("Export");
+		docstring const s = params().filename.empty() ?
+					_("Graphic not specified. Falling back to `draft' mode.")
+				      : bformat(_("Graphic `%1$s' was not found. Falling back to `draft' mode."),
+						params().filename.absoluteFilePath());
+		Paragraph const & par = buffer().paragraphs().front();
+		errorList.push_back(ErrorItem(_("Graphic not found!"), s,
+					      {par.id(), 0}, {par.id(), -1}));
+		buffer().bufferErrors(terr, errorList);
 		if (params().bbox.empty())
 		    message = "bb = 0 0 200 100";
 		if (!params().draft) {
@@ -832,11 +845,11 @@ void InsetGraphics::latex(otexstream & os,
 		if (!message.empty())
 			message += ", ";
 		message += "type=eps";
+		// If no existing file "filename" was found LaTeX
+		// draws only a rectangle with the above bb and the
+		// not found filename in it.
+		LYXERR(Debug::GRAPHICS, "\tMessage = \"" << message << '\"');
 	}
-	// If no existing file "filename" was found LaTeX
-	// draws only a rectangle with the above bb and the
-	// not found filename in it.
-	LYXERR(Debug::GRAPHICS, "\tMessage = \"" << message << '\"');
 
 	// These variables collect all the latex code that should be before and
 	// after the actual includegraphics command.
