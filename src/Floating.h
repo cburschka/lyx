@@ -38,7 +38,7 @@ public:
 		 std::string const & refPrefix, std::string const & allowedplacement,
 		 std::string const & htmlTag, std::string const & htmlAttrib,
 		 docstring const & htmlStyle, std::string const & docbookTag,
-         std::string const & docbookAttr, std::string const & docbookTagType,
+		 std::string const & docbookAttr, std::string const & docbookTagType,
 		 std::string const & docbookFloatType, std::string const & docbookCaption,
 		 std::string const & required, bool usesfloat, bool ispredefined,
 		 bool allowswide, bool allowssideways);
