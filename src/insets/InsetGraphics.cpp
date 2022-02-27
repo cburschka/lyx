@@ -824,7 +824,8 @@ void InsetGraphics::latex(otexstream & os,
 	string message;
 	// PDFLaTeX and Xe/LuaTeX fall back to draft themselves
 	// and error about it. For DVI/PS, we do something similar here.
-	if (!file_exists && runparams.flavor == Flavor::LaTeX) {
+	// We also don't do such tricks when simply exporting a LaTeX file.
+	if (!file_exists && !runparams.nice && runparams.flavor == Flavor::LaTeX) {
 		TeXErrors terr;
 		ErrorList & errorList = buffer().errorList("Export");
 		docstring const s = params().filename.empty() ?
