@@ -55,7 +55,7 @@ namespace Debug {
 		///
 		KBMAP      = (1u << 6),   // 64
 		///
-		LATEX      = (1u << 7),   // 128
+		OUTFILE      = (1u << 7),   // 128
 		///
 		MATHED     = (1u << 8),   // 256 // Alejandro, please use this.
 		///

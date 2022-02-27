@@ -1739,7 +1739,7 @@ Buffer::ExportStatus Buffer::makeLaTeXFile(FileName const & fname,
 	OutputParams runparams = runparams_in;
 
 	string const encoding = runparams.encoding->iconvName();
-	LYXERR(Debug::LATEX, "makeLaTeXFile encoding: " << encoding << ", fname=" << fname.realPath());
+	LYXERR(Debug::OUTFILE, "makeLaTeXFile encoding: " << encoding << ", fname=" << fname.realPath());
 
 	ofdocstream ofs;
 	try { ofs.reset(encoding); }
@@ -1851,7 +1851,7 @@ Buffer::ExportStatus Buffer::writeLaTeXSource(otexstream & os,
 	BufferEncodings::initUnicodeMath(*this);
 
 	// validate the buffer.
-	LYXERR(Debug::LATEX, "  Validating buffer...");
+	LYXERR(Debug::OUTFILE, "  Validating buffer...");
 	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
 	// This is only set once per document (in master)
@@ -1860,7 +1860,7 @@ Buffer::ExportStatus Buffer::writeLaTeXSource(otexstream & os,
 		runparams.use_hyperref = features.isRequired("hyperref");
 		runparams.use_CJK = features.mustProvide("CJK");
 	}
-	LYXERR(Debug::LATEX, "  Buffer validation done.");
+	LYXERR(Debug::OUTFILE, "  Buffer validation done.");
 
 	bool const output_preamble =
 		output == FullSource || output == OnlyPreamble;
@@ -2079,9 +2079,9 @@ Buffer::ExportStatus Buffer::writeLaTeXSource(otexstream & os,
 
 	if (output_preamble) {
 		os << "\\end{document}\n";
-		LYXERR(Debug::LATEX, "makeLaTeXFile...done");
+		LYXERR(Debug::OUTFILE, "makeLaTeXFile...done");
 	} else {
-		LYXERR(Debug::LATEX, "LaTeXFile for inclusion made.");
+		LYXERR(Debug::OUTFILE, "LaTeXFile for inclusion made.");
 	}
 	runparams_in.encoding = runparams.encoding;
 
@@ -2095,7 +2095,7 @@ Buffer::ExportStatus Buffer::makeDocBookFile(FileName const & fname,
 			      OutputParams const & runparams,
 			      OutputWhat output) const
 {
-	LYXERR(Debug::LATEX, "makeDocBookFile...");
+	LYXERR(Debug::OUTFILE, "makeDocBookFile...");
 
 	ofdocstream ofs;
 	if (!openFileWrite(ofs, fname))
@@ -2185,7 +2185,7 @@ Buffer::ExportStatus Buffer::writeDocBookSource(odocstream & os,
 Buffer::ExportStatus Buffer::makeLyXHTMLFile(FileName const & fname,
 			      OutputParams const & runparams) const
 {
-	LYXERR(Debug::LATEX, "makeLyXHTMLFile...");
+	LYXERR(Debug::OUTFILE, "makeLyXHTMLFile...");
 
 	ofdocstream ofs;
 	if (!openFileWrite(ofs, fname))
@@ -2383,7 +2383,7 @@ void Buffer::validate(LaTeXFeatures & features) const
 	for (Paragraph const & p : paragraphs())
 		p.validate(features);
 
-	if (lyxerr.debugging(Debug::LATEX)) {
+	if (lyxerr.debugging(Debug::OUTFILE)) {
 		features.showStruct();
 	}
 }

@@ -3998,7 +3998,7 @@ bool GuiView::goToFileRow(string const & argument)
 	setBuffer(buf);
 	bool success = documentBufferView()->setCursorFromRow(row);
 	if (!success) {
-		LYXERR(Debug::LATEX,
+		LYXERR(Debug::OUTFILE,
 		       "setCursorFromRow: invalid position for row " << row);
 		frontend::Alert::error(_("Inverse Search Failed"),
 		                       _("Invalid position requested by inverse search.\n"

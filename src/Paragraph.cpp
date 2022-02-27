@@ -2510,7 +2510,7 @@ void Paragraph::latex(BufferParams const & bparams,
 	OutputParams const & runparams,
 	int start_pos, int end_pos, bool force) const
 {
-	LYXERR(Debug::LATEX, "Paragraph::latex...     " << this);
+	LYXERR(Debug::OUTFILE, "Paragraph::latex...     " << this);
 
 	// FIXME This check should not be needed. Perhaps issue an
 	// error if it triggers.
@@ -3127,7 +3127,7 @@ void Paragraph::latex(BufferParams const & bparams,
 		os << setEncoding(prev_encoding->iconvName());
 	}
 
-	LYXERR(Debug::LATEX, "Paragraph::latex... done " << this);
+	LYXERR(Debug::OUTFILE, "Paragraph::latex... done " << this);
 }
 
 

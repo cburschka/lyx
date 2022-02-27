@@ -166,7 +166,7 @@ bool FontTag::operator==(StartTag const & tag) const
 
 void XMLStream::writeError(std::string const &s)
 {
-	LYXERR0(s);
+	LYXERR(Debug::OUTFILE, s);
 	*this << ESCAPE_NONE << from_utf8("<!-- Output Error: " + s + " -->");
 	*this << xml::CR();
 }
@@ -174,7 +174,7 @@ void XMLStream::writeError(std::string const &s)
 
 void XMLStream::writeError(docstring const &s)
 {
-	LYXERR0(s);
+	LYXERR(Debug::OUTFILE, s);
 	*this << ESCAPE_NONE << from_utf8("<!-- Output Error: ");
 	*this << s;
 	*this << ESCAPE_NONE << from_utf8(" -->");
@@ -686,9 +686,9 @@ void xml::openTag(odocstream & os, string const & name, string const & attribute
     string param = subst(attribute, "<", "\"");
     param = subst(param, ">", "\"");
 
-    // Note: we ignore the name if it empty or if it is a comment "<!-- -->" or
+    // Note: we ignore the name if it is empty or if it is a comment "<!-- -->" or
     // if the name is *dummy*.
-    // We ignore dummy because dummy is not a valid docbook element and it is
+    // We ignore dummy because dummy is not a valid DocBook element and it is
     // the internal name given to single paragraphs in the latex output.
     // This allow us to simplify the code a lot and is a reasonable compromise.
     if (!name.empty() && name != "!-- --" && name != "dummy") {

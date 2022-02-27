@@ -251,7 +251,7 @@ TexRow::getEntriesFromRow(int const row) const
 	//        correspond to no output by delaying their addition, at the level
 	//        of otexrowstream, until a character is actually output.
 	//
-	LYXERR(Debug::LATEX, "getEntriesFromRow: row " << row << " requested");
+	LYXERR(Debug::OUTFILE, "getEntriesFromRow: row " << row << " requested");
 
 	// check bounds for row - 1, our target index
 	if (row <= 0)
@@ -360,7 +360,7 @@ FuncRequest TexRow::goToFuncFromRow(int const row) const
 {
 	TextEntry start, end;
 	tie(start,end) = getEntriesFromRow(row);
-	LYXERR(Debug::LATEX,
+	LYXERR(Debug::OUTFILE,
 	       "goToFuncFromRow: for row " << row << ", TexRow has found "
 	       "start (id=" << start.id << ",pos=" << start.pos << "), "
 	       "end (id=" << end.id << ",pos=" << end.pos << ")");

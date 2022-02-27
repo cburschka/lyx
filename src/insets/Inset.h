@@ -335,7 +335,7 @@ public:
 	/// output, add PLAINTEXT_NEWLINE to the number of chars in the last line
 	virtual int plaintext(odocstringstream &, OutputParams const &,
 	                      size_t max_length = INT_MAX) const = 0;
-	/// docbook output
+	/// DocBook output
 	virtual void docbook(XMLStream &, OutputParams const &) const;
 	/// XHTML output
 	/// the inset is expected to write XHTML to the XMLStream

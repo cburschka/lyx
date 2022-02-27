@@ -194,7 +194,7 @@ public:
 	/// Can we drop the standard paragraph wrapper?
 	bool emptyTag() const;
 
-	/// Get the id of the paragraph, usefull for docbook
+	/// Get the id of the paragraph, useful for DocBook
 	std::string getID(Buffer const & buf, OutputParams const & runparams) const;
 
 	/// Output the first word of a paragraph, return the position where it left.

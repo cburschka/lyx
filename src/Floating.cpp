@@ -69,7 +69,7 @@ Floating::Floating(string const & type, string const & placement,
 			docbook_float_type_ = "video";
 		} else {
 			// If nothing matches, return something that will not be valid.
-			LYXERR0("Float type '" + floattype_ + "' unknown to DocBook!");
+			LYXERR(Debug::OUTFILE, "Float type '" + floattype_ + "' unknown to DocBook!");
 			docbook_float_type_ = "unknown";
 		}
 	}
@@ -159,7 +159,7 @@ string Floating::docbookTag(bool hasTitle) const
 		return hasTitle ? "table" : "informaltable";
 	} else {
 		// If nothing matches, return something that will not be valid.
-		LYXERR0("Float type '" + floattype() + "' unknown to DocBook!");
+		LYXERR(Debug::OUTFILE, "Float type '" + floattype() + "' unknown to DocBook!");
 		return "float";
 	}
 }

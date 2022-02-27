@@ -1207,8 +1207,8 @@ FileName const findtexfile(string const & fil, string const & /*format*/,
 
 	cmd_ret const c = runCommand(kpsecmd);
 
-	LYXERR(Debug::LATEX, "kpse status = " << c.valid << '\n'
-		 << "kpse result = `" << rtrim(c.result, "\n\r") << '\'');
+	LYXERR(Debug::OUTFILE, "kpse status = " << c.valid << '\n'
+	                                        << "kpse result = `" << rtrim(c.result, "\n\r") << '\'');
 	if (c.valid)
 		return FileName(rtrim(to_utf8(from_filesystem8bit(c.result)), "\n\r"));
 	else

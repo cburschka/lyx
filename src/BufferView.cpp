@@ -2621,7 +2621,7 @@ bool BufferView::setCursorFromRow(int row)
 {
 	TexRow::TextEntry start, end;
 	tie(start,end) = buffer_.texrow().getEntriesFromRow(row);
-	LYXERR(Debug::LATEX,
+	LYXERR(Debug::OUTFILE,
 	       "setCursorFromRow: for row " << row << ", TexRow has found "
 	       "start (id=" << start.id << ",pos=" << start.pos << "), "
 	       "end (id=" << end.id << ",pos=" << end.pos << ")");

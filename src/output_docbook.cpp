@@ -826,7 +826,7 @@ DocBookInfoTag getParagraphsWithInfo(ParagraphList const &paragraphs,
 		// There should never be any section here, except for the first paragraph (a title can be part of <info>).
 		// (Just a sanity check: if this fails, this function could end up processing the whole document.)
 		if (cpit != bpit && isLayoutSectioningOrSimilar(par.layout())) {
-			LYXERR0("Assertion failed: section found in potential <info> paragraphs.");
+			LYXERR(Debug::OUTFILE, "Assertion failed: section found in potential <info> paragraphs.");
 			break;
 		}
 

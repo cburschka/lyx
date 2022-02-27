@@ -409,7 +409,7 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 {
 	ParagraphList const & paragraphs = text.paragraphs();
 	ParagraphList::const_iterator ipar = paragraphs.iterator_at(pit);
-	LYXERR(Debug::LATEX, "TeXEnvironment for paragraph " << pit);
+	LYXERR(Debug::OUTFILE, "TeXEnvironment for paragraph " << pit);
 
 	Layout const & current_layout = ipar->layout();
 	depth_type const current_depth = ipar->params().depth();
@@ -490,7 +490,7 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 	}
 
 	if (pit != runparams.par_end)
-		LYXERR(Debug::LATEX, "TeXEnvironment for paragraph " << par_begin << " done.");
+		LYXERR(Debug::OUTFILE, "TeXEnvironment for paragraph " << par_begin << " done.");
 }
 
 
@@ -800,8 +800,8 @@ void TeXOnePar(Buffer const & buf,
 	    && !par.empty() && par.isDeleted(0, par.size()) && !bparams.output_changes)
 		return;
 
-	LYXERR(Debug::LATEX, "TeXOnePar for paragraph " << pit << " ptr " << &par << " '"
-		<< everypar << "'");
+	LYXERR(Debug::OUTFILE, "TeXOnePar for paragraph " << pit << " ptr " << &par << " '"
+	                                                  << everypar << "'");
 
 	OutputParams runparams = runparams_in;
 	runparams.isLastPar = (pit == pit_type(paragraphs.size() - 1));
@@ -1555,8 +1555,8 @@ void TeXOnePar(Buffer const & buf,
 	if (intitle_command)
 		state->nest_level_ -= 1;
 
-	LYXERR(Debug::LATEX, "TeXOnePar for paragraph " << pit << " done; ptr "
-		<< &par << " next " << nextpar);
+	LYXERR(Debug::OUTFILE, "TeXOnePar for paragraph " << pit << " done; ptr "
+	                                                  << &par << " next " << nextpar);
 
 	return;
 }
@@ -1863,7 +1863,7 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 	// but it is the best we can do.
 
 	// change encoding
-	LYXERR(Debug::LATEX, "Changing LaTeX encoding from "
+	LYXERR(Debug::OUTFILE, "Changing LaTeX encoding from "
 		   << oldEnc.name() << " to " << newEnc.name());
 	os << setEncoding(newEnc.iconvName());
 	if (bparams.inputenc == "auto-legacy-plain")

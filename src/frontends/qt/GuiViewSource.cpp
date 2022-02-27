@@ -199,7 +199,7 @@ void ViewSourceWidget::updateView(BufferView const * bv)
 	if (guiApp->currentView()->develMode()) {
 		// output tex<->row correspondences in the source panel if the "-dbg latex"
 		// option is given.
-		if (texrow_ && lyx::lyxerr.debugging(Debug::LATEX)) {
+		if (texrow_ && lyx::lyxerr.debugging(Debug::OUTFILE)) {
 			QStringList list = qcontent.split(QChar('\n'));
 			docstring_list dlist;
 			for (QStringList::const_iterator it = list.begin(); it != list.end(); ++it)

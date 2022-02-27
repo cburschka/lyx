@@ -624,7 +624,7 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	   << from_utf8(changeExtension(buffer_.latexName(), ""))
 	   << "}\n";
 
-	LYXERR(Debug::LATEX, "Format = " << buffer_.params().getDefaultOutputFormat());
+	LYXERR(Debug::OUTFILE, "Format = " << buffer_.params().getDefaultOutputFormat());
 	string latexparam = "";
 	bool docformat = !buffer_.params().default_output_format.empty()
 			&& buffer_.params().default_output_format != "default";
@@ -810,7 +810,7 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 void PreviewLoader::Impl::dumpPreamble(otexstream & os, Flavor flavor) const
 {
 	// Dump the preamble only.
-	LYXERR(Debug::LATEX, "dumpPreamble, flavor == " << static_cast<int>(flavor));
+	LYXERR(Debug::OUTFILE, "dumpPreamble, flavor == " << static_cast<int>(flavor));
 	OutputParams runparams(&buffer_.params().encoding());
 	runparams.flavor = flavor;
 	runparams.nice = true;

@@ -618,9 +618,9 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 	FileName const writefile(makeAbsPath(mangled, runparams.for_preview ?
 						 buffer().temppath() : masterBuffer->temppath()));
 
-	LYXERR(Debug::LATEX, "incfile:" << incfile);
-	LYXERR(Debug::LATEX, "exportfile:" << exportfile);
-	LYXERR(Debug::LATEX, "writefile:" << writefile);
+	LYXERR(Debug::OUTFILE, "incfile:" << incfile);
+	LYXERR(Debug::OUTFILE, "exportfile:" << exportfile);
+	LYXERR(Debug::OUTFILE, "writefile:" << writefile);
 
 	string const tex_format = flavor2format(runparams.flavor);
 
@@ -783,7 +783,7 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		if (checksum_in != checksum_out) {
 			if (!included_file.copyTo(writefile)) {
 				// FIXME UNICODE
-				LYXERR(Debug::LATEX,
+				LYXERR(Debug::OUTFILE,
 					to_utf8(bformat(_("Could not copy the file\n%1$s\n"
 									"into the temporary directory."),
 							 from_utf8(included_file.absFileName()))));

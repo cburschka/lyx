@@ -758,34 +758,34 @@ void Font::validate(LaTeXFeatures & features) const
 	Language const * doc_language = bparams.language;
 
 	if (bits_.noun() == FONT_ON) {
-		LYXERR(Debug::LATEX, "font.noun: " << bits_.noun());
+		LYXERR(Debug::OUTFILE, "font.noun: " << bits_.noun());
 		features.require("noun");
-		LYXERR(Debug::LATEX, "Noun enabled. Font: " << to_utf8(stateText()));
+		LYXERR(Debug::OUTFILE, "Noun enabled. Font: " << to_utf8(stateText()));
 	}
 	if (bits_.underbar() == FONT_ON) {
-		LYXERR(Debug::LATEX, "font.underline: " << bits_.underbar());
+		LYXERR(Debug::OUTFILE, "font.underline: " << bits_.underbar());
 		features.require("ulem");
-		LYXERR(Debug::LATEX, "Underline enabled. Font: " << to_utf8(stateText()));
+		LYXERR(Debug::OUTFILE, "Underline enabled. Font: " << to_utf8(stateText()));
 	}
 	if (bits_.strikeout() == FONT_ON) {
-		LYXERR(Debug::LATEX, "font.strikeout: " << bits_.strikeout());
+		LYXERR(Debug::OUTFILE, "font.strikeout: " << bits_.strikeout());
 		features.require("ulem");
-		LYXERR(Debug::LATEX, "Strike out enabled. Font: " << to_utf8(stateText()));
+		LYXERR(Debug::OUTFILE, "Strike out enabled. Font: " << to_utf8(stateText()));
 	}
 	if (bits_.xout() == FONT_ON) {
-		LYXERR(Debug::LATEX, "font.xout: " << bits_.xout());
+		LYXERR(Debug::OUTFILE, "font.xout: " << bits_.xout());
 		features.require("ulem");
-		LYXERR(Debug::LATEX, "Cross out enabled. Font: " << to_utf8(stateText()));
+		LYXERR(Debug::OUTFILE, "Cross out enabled. Font: " << to_utf8(stateText()));
 	}
 	if (bits_.uuline() == FONT_ON) {
-		LYXERR(Debug::LATEX, "font.uuline: " << bits_.uuline());
+		LYXERR(Debug::OUTFILE, "font.uuline: " << bits_.uuline());
 		features.require("ulem");
-		LYXERR(Debug::LATEX, "Double underline enabled. Font: " << to_utf8(stateText()));
+		LYXERR(Debug::OUTFILE, "Double underline enabled. Font: " << to_utf8(stateText()));
 	}
 	if (bits_.uwave() == FONT_ON) {
-		LYXERR(Debug::LATEX, "font.uwave: " << bits_.uwave());
+		LYXERR(Debug::OUTFILE, "font.uwave: " << bits_.uwave());
 		features.require("ulem");
-		LYXERR(Debug::LATEX, "Wavy underline enabled. Font: " << to_utf8(stateText()));
+		LYXERR(Debug::OUTFILE, "Wavy underline enabled. Font: " << to_utf8(stateText()));
 	}
 	switch (bits_.color()) {
 		case Color_none:
@@ -811,7 +811,7 @@ void Font::validate(LaTeXFeatures & features) const
 			break;
 		default:
 			features.require("color");
-			LYXERR(Debug::LATEX, "Color enabled. Font: " << to_utf8(stateText()));
+			LYXERR(Debug::OUTFILE, "Color enabled. Font: " << to_utf8(stateText()));
 	}
 
 	// FIXME: Do something for background and soul package?
@@ -823,7 +823,7 @@ void Font::validate(LaTeXFeatures & features) const
 	    && lang_ != latex_language)
 	{
 		features.useLanguage(lang_);
-		LYXERR(Debug::LATEX, "Found language " << lang_->lang());
+		LYXERR(Debug::OUTFILE, "Found language " << lang_->lang());
 	}
 }
 
