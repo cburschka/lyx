@@ -811,7 +811,7 @@
 0x038f "\\'\\textOmega"     "textgreek" "force=euc-jp" # GREEK CAPITAL LETTER OMEGA WITH TONOS
 0x0390 "\\\"'\\textiota"    "textgreek" "force=euc-jp" # GREEK SMALL LETTER IOTA WITH DIALYTIKA AND TONOS
 0x0390 "\\'\"\\textiota" ""
-0x0390 "\\'\\"\\textiota" ""
+0x0390 "\\'\\\"\\textiota" ""
 0x0391 "\\textAlpha"        "textgreek" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" # GREEK CAPITAL LETTER ALPHA
 0x0392 "\\textBeta"         "textgreek" "force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" # GREEK CAPITAL LETTER BETA
 0x0393 "\\textGamma"        "textgreek" "force=cp437;cp437de;cp862;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\Gamma" "" # GREEK CAPITAL LETTER GAMMA
@@ -844,7 +844,7 @@
 0x03af "\\'\\textiota"      "textgreek" "force=euc-jp" # GREEK SMALL LETTER IOTA WITH TONOS
 0x03b0 "\\\"'\\textupsilon" "textgreek" "force=euc-jp" # GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND TONOS
 0x03b0 "\\'\"\\textupsilon" ""
-0x03b0 "\\'\\"\\textupsilon" ""
+0x03b0 "\\'\\\"\\textupsilon" ""
 0x03b1 "\\textalpha"        "textgreek" "mathalpha,force=cp437;cp437de;cp862;cp865;euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\alpha" "" # GREEK SMALL LETTER ALPHA
 0x03b2 "\\textbeta"         "textgreek" "mathalpha,force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis,tipashortcut=B" "\\beta" "" # GREEK SMALL LETTER BETA
 0x03b3 "\\textgamma"        "textgreek" "mathalpha,force=euc-cn;euc-jp;euc-kr;euc-tw;gbk;jis" "\\gamma" "" # GREEK SMALL LETTER GAMMA
@@ -1923,7 +1923,7 @@
 0x2020 "\\dag"                    "" "force=cp1256;euc-jp;euc-kr;jis" "\\dagger" "" # DAGGER
 0x2020 "\\textdagger" ""
 0x2021 "\\ddag"                   "" "force=cp1256;euc-jp;euc-kr;jis" "\\ddagger" "" # DOUBLE DAGGER
-0x2021 "\\textdaggerdbl"
+0x2021 "\\textdaggerdbl" ""
 0x2022 "\\textbullet"             "textcomp" "force=cp1256" "\\bullet" "" # BULLET
 0x2023 "\\textifsymbol[ifgeo]{116}" "ifsym" "force=utf8;utf8x;utf8-cjk" # TRIANGULAR BULLET # ≈ 0x25b8
 0x2024 "."                        "" "notermination=text,force=utf8;utf8-cjk;utf8x" "" "" # ONE DOT LEADER # ≈ FULL STOP
