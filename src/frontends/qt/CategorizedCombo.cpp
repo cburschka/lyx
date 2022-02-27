@@ -370,6 +370,7 @@ void CategorizedCombo::Private::countCategories()
 
 void CategorizedCombo::showPopup()
 {
+	lastCurrentIndex_ = currentIndex();
 	bool enabled = view()->updatesEnabled();
 	view()->setUpdatesEnabled(false);
 
@@ -400,6 +401,7 @@ bool CategorizedCombo::eventFilter(QObject * o, QEvent * e)
 	case Qt::Key_Escape:
 		if (!modified && !d->filter_.isEmpty()) {
 			d->resetFilter();
+			setCurrentIndex(lastCurrentIndex_);
 			return true;
 		}
 		break;

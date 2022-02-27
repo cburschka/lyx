@@ -60,6 +60,7 @@ private:
 	friend class LayoutItemDelegate;
 	class Private;
 	Private * const d;
+	int lastCurrentIndex_;
 };
 
 } // namespace frontend

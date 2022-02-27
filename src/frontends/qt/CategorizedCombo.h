@@ -74,6 +74,8 @@ private:
 	struct Private;
 	///
 	Private * const d;
+	///
+	int lastCurrentIndex_;
 };
 
 

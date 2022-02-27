@@ -401,6 +401,7 @@ void LayoutBox::Private::countCategories()
 
 void LayoutBox::showPopup()
 {
+	lastCurrentIndex_ = currentIndex();
 	d->owner_.message(_("Enter characters to filter the layout list."));
 
 	bool enabled = view()->updatesEnabled();
@@ -425,6 +426,7 @@ bool LayoutBox::eventFilter(QObject * o, QEvent * e)
 	case Qt::Key_Escape:
 		if (!modified && !d->filter_.isEmpty()) {
 			d->resetFilter();
+			setCurrentIndex(lastCurrentIndex_);
 			return true;
 		}
 		break;
