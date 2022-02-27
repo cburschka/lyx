@@ -98,9 +98,9 @@ Debug::Type Debug::value(int idx)
 
 string const Debug::description(Debug::Type val)
 {
-	for (int i = 0 ; i < numErrorTags ; ++i) {
-		if (errorTags[i].level == val)
-			return errorTags[i].desc;
+	for (const auto & errorTag : errorTags) {
+		if (errorTag.level == val)
+			return errorTag.desc;
 	}
 	return "unknown level";
 }
@@ -108,9 +108,9 @@ string const Debug::description(Debug::Type val)
 
 string const Debug::name(Debug::Type val)
 {
-	for (int i = 0 ; i < numErrorTags ; ++i) {
-		if (errorTags[i].level == val)
-			return errorTags[i].name;
+	for (const auto & errorTag : errorTags) {
+		if (errorTag.level == val)
+			return errorTag.name;
 	}
 	return "unknown level";
 }
