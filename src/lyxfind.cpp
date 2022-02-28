@@ -1730,6 +1730,7 @@ void static fillMissingUnicodesymbols()
   addAccents("\\textdagger", getutf8(0x2020));
   addAccents("\\ddag", getutf8(0x2021));
   addAccents("\\ddagger", getutf8(0x2021));
+  addAccents("\\textdaggerdbl", getutf8(0x2021));
   addAccents("\\textbullet", getutf8(0x2022));
   addAccents("\\bullet", getutf8(0x2022));
   addAccents("\\dots", getutf8(0x2026));
