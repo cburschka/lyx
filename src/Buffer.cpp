@@ -2132,7 +2132,7 @@ Buffer::ExportStatus Buffer::writeDocBookSource(odocstream & os,
 	bool const output_preamble =
 		output == FullSource || output == OnlyPreamble;
 	bool const output_body =
-	  output == FullSource || output == OnlyBody || output == IncludedFile;
+		output == FullSource || output == OnlyBody || output == IncludedFile;
 
 	if (output_preamble) {
 		// XML preamble, no doctype needed.
@@ -2146,13 +2146,13 @@ Buffer::ExportStatus Buffer::writeDocBookSource(odocstream & os,
 		// Prepare the name space declaration for MathML depending on document preferences.
 		string mathmlNamespace;
 		if (params().docbook_mathml_prefix != BufferParams::NoPrefix) {
-            string mathmlPrefix;
-            if (params().docbook_mathml_prefix == BufferParams::MPrefix)
-	            mathmlPrefix = "m";
-            else if (params().docbook_mathml_prefix == BufferParams::MMLPrefix)
-	            mathmlPrefix = "mml";
+			string mathmlPrefix;
+			if (params().docbook_mathml_prefix == BufferParams::MPrefix)
+				mathmlPrefix = "m";
+			else if (params().docbook_mathml_prefix == BufferParams::MMLPrefix)
+				mathmlPrefix = "mml";
 			mathmlNamespace = + " xmlns:" + mathmlPrefix + "=\"http://www.w3.org/1998/Math/MathML\"";
-	    }
+		}
 
 		// Directly output the root tag, based on the current type of document.
 		string languageCode = params().language->code();
