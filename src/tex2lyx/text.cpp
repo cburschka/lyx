@@ -668,7 +668,7 @@ pair<bool, docstring> convert_unicodesymbols(docstring s)
 		bool termination;
 		docstring rem;
 		set<string> req;
-		docstring parsed = normalize_c(encodings.fromLaTeXCommand(s,
+		docstring parsed = normalize_c(Encodings::fromLaTeXCommand(s,
 				Encodings::TEXT_CMD, termination, rem, &req));
 		set<string>::const_iterator it = req.begin();
 		set<string>::const_iterator en = req.end();
