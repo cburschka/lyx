@@ -390,6 +390,9 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 					docstring value;
 					value += unicodeSymbol.first;
 					needsTermination = !unicodeSymbol.second.mathNoTermination();
+					if (req && unicodeSymbol.second.mathFeature()
+						&& !unicodeSymbol.second.mathPreamble().empty())
+							req->insert(unicodeSymbol.second.mathPreamble());
 					return value;
 				}
 			}
@@ -400,6 +403,9 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 					docstring value;
 					value += unicodeSymbol.first;
 					needsTermination = !unicodeSymbol.second.textNoTermination();
+					if (req && unicodeSymbol.second.textFeature()
+						&& !unicodeSymbol.second.textPreamble().empty())
+						req->insert(unicodeSymbol.second.textPreamble());
 					return value;
 				}
 			}
