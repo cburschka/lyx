@@ -389,6 +389,7 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 				if (command == cmd) {
 					docstring value;
 					value += unicodeSymbol.first;
+					needsTermination = !unicodeSymbol.second.mathNoTermination();
 					return value;
 				}
 			}
@@ -398,6 +399,7 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 				if (command == cmd) {
 					docstring value;
 					value += unicodeSymbol.first;
+					needsTermination = !unicodeSymbol.second.textNoTermination();
 					return value;
 				}
 			}
