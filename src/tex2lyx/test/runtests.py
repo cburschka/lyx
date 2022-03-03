@@ -127,8 +127,8 @@ def main(argv):
                 else:
                     t1 = time.ctime(os.path.getmtime(lyxfile1))
                     t2 = time.ctime(os.path.getmtime(lyxfile2))
-                    f1 = open(lyxfile1, 'r')
-                    f2 = open(lyxfile2, 'r')
+                    f1 = open(lyxfile1, 'r', encoding="utf8")
+                    f2 = open(lyxfile2, 'r', encoding="utf8")
                     lines1 = f1.readlines()
                     i1 = 0
                     for linex in lines1:
