@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 608
+\lyxformat 609
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -7770,7 +7770,11 @@ Syntax search-ignore <type> <value>
 
 \begin_layout Description
 Params <type>: language|color|sectioning|font|series|shape|family|markup|underli
-ne|strike|deleted<value>: true|false
+ne|strike|deleted
+\begin_inset Newline newline
+\end_inset
+
+<value>: true|false
 \end_layout
 
 \begin_layout Subsection*
