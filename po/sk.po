@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-02-19 14:36+0100\n"
-"PO-Revision-Date: 2022-02-19 14:53+0000\n"
+"POT-Creation-Date: 2022-03-03 10:04+0100\n"
+"PO-Revision-Date: 2022-03-04 16:38+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -16845,10 +16845,6 @@ msgstr "Výpisy"
 #: lib/layouts/stdinsets.inc:19
 msgid "Margin"
 msgstr "Okraj"
-
-#: lib/layouts/stdinsets.inc:51
-msgid "foot"
-msgstr "päta"
 
 #: lib/layouts/stdinsets.inc:177
 msgid "Greyedout"
@@ -35491,6 +35487,20 @@ msgstr ""
 msgid "No conversion of %1$s is needed after all"
 msgstr "Konverziu %1$s netreba"
 
+#: src/insets/InsetGraphics.cpp:832
+msgid "Graphic not specified. Falling back to `draft' mode."
+msgstr "Grafika nie je špecifikovaná. Padám naspäť na `predbežný' spôsob."
+
+#: src/insets/InsetGraphics.cpp:833
+#, c-format
+msgid "Graphic `%1$s' was not found. Falling back to `draft' mode."
+msgstr ""
+"Grafika `%1$s' nie je špecifikovaná. Padám naspäť na `predbežný' spôsob."
+
+#: src/insets/InsetGraphics.cpp:836
+msgid "Graphic not found!"
+msgstr "Grafika nenájdená!"
+
 #: src/insets/InsetGraphics.cpp:906
 #, c-format
 msgid ""
@@ -37058,9 +37068,9 @@ msgstr "Čítanie konfiguračných súborov"
 msgid "Custom keyboard definition"
 msgstr "Vlastná definícia klávesnice"
 
-#: src/support/debug.cpp:50
-msgid "LaTeX generation/execution"
-msgstr "Spúšťanie/generovanie LaTeX-u"
+#: src/support/debug.cpp:50 src/support/debug.cpp:51
+msgid "Output source file generation/processing"
+msgstr "Spúšťanie/generovanie výstupného súboru"
 
 #: src/support/debug.cpp:51
 msgid "Math editor"
