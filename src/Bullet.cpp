@@ -123,7 +123,6 @@ int Bullet::getSize() const
 
 FontSize Bullet::getFontSize() const
 {
-
 	if (size >= 0)
 		return bulletFontSize(size);
 	else
