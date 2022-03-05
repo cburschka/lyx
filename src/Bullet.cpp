@@ -54,7 +54,7 @@ Bullet::Bullet(int f, int c, int s)
 
 
 Bullet::Bullet(docstring const & t)
-	: font(MIN), character(MIN), size(MIN), user_text(1), text(t), unicode(t)
+	: font(MIN), character(MIN), size(MIN), user_text(1), text(t), label(t)
 {
 	testInvariant();
 }
@@ -98,7 +98,7 @@ void Bullet::setText(docstring const & t)
 	font = character = size = MIN;
 	user_text = 1;
 	text = t;
-	unicode = t;
+	label = t;
 	testInvariant();
 }
 
@@ -139,7 +139,7 @@ Bullet & Bullet::operator=(Bullet const & b)
 	size = b.size;
 	user_text = b.user_text;
 	text = b.text;
-	unicode = b.unicode;
+	label = b.label;
 	this->testInvariant();
 	return *this;
 }
@@ -153,11 +153,11 @@ docstring const & Bullet::getText() const
 }
 
 
-docstring const & Bullet::getUnicode() const
+docstring const & Bullet::getLabel() const
 {
 	if (user_text == 0)
 		generateText();
-	return unicode;
+	return label;
 }
 
 
@@ -196,7 +196,7 @@ void Bullet::generateText() const
 
 	if ((font >= 0) && (character >= 0)) {
 		text = bulletEntry(font, character);
-		unicode = bulletUnicode(font, character);
+		label = bulletLabel(font, character);
 		if (size >= 0)
 			text = bulletSize(size) + text;
 		user_text = -1;
@@ -379,7 +379,7 @@ FontSize Bullet::bulletFontSize(int s)
 }
 
 
-docstring const Bullet::bulletUnicode(int f, int c)
+docstring const Bullet::bulletLabel(int f, int c)
 {
 	// see comment at bulletEntry
 	static int UnicodeBulletPanel0[CHARMAX] = {

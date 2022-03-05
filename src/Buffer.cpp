@@ -5158,7 +5158,7 @@ void Buffer::Impl::setLabel(ParIterator & it, UpdateType utype) const
 	switch(layout.labeltype) {
 	case LABEL_ITEMIZE: {
 		par.params().labelString(
-			bp.user_defined_bullet(par.itemdepth).getUnicode());
+			bp.user_defined_bullet(par.itemdepth).getLabel());
 		break;
 	}
 

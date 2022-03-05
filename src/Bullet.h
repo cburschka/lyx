@@ -45,10 +45,10 @@ public:
 	int getSize() const;
 	///
 	FontSize getFontSize() const;
-	///
+	/// The text to be output
 	docstring const & getText() const;
-	///
-	docstring const & getUnicode() const;
+	/// The label displayed in the workarea
+	docstring const & getLabel() const;
 	///
 	Bullet & operator=(Bullet const &);
 	///
@@ -85,7 +85,7 @@ private:
 	///
 	static FontSize bulletFontSize(int);
 	///
-	static docstring const bulletUnicode(int, int);
+	static docstring const bulletLabel(int, int);
 
 	///
 	int font;
@@ -111,7 +111,7 @@ private:
 	    and size settings.
 	*/
 	mutable docstring text;
-	mutable docstring unicode;
+	mutable docstring label;
 };
 
 
