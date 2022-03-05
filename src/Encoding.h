@@ -79,11 +79,11 @@ public:
 	/// LaTeX command (text mode) for this character
 	docstring textCommand() const { return text_commands_[0]; }
 	/// All known LaTeX commands (text mode) for this character
-	std::vector<docstring> textCommands() const { return text_commands_; }
+	const std::vector<docstring>& textCommands() const { return text_commands_; }
 	/// LaTeX command (math mode) for this character
 	docstring mathCommand() const { return math_commands_[0]; }
 	/// All known LaTeX commands (math mode) for this character
-	std::vector<docstring> mathCommands() const { return math_commands_; }
+	const std::vector<docstring>& mathCommands() const { return math_commands_; }
 	/// Needed LaTeX preamble (or feature) for text mode
 	std::string textPreamble() const { return text_preamble_; }
 	/// Needed LaTeX preamble (or feature) for math mode
