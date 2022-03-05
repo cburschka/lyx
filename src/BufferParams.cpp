@@ -633,29 +633,45 @@ bool BufferParams::spellignored(WordLangTuple const & wl) const
 
 Bullet & BufferParams::temp_bullet(lyx::size_type const index)
 {
-	LASSERT(index < 4, return pimpl_->temp_bullets[0]);
-	return pimpl_->temp_bullets[index];
+	if (index < 4)
+		return pimpl_->temp_bullets[index];
+	// Fallback bullet if we are too deeply nested
+	docstring const fb = from_ascii("?") + convert<docstring>(index + 1);
+	Bullet const & res = Bullet(fb);
+	return const_cast<Bullet&>(res);
 }
 
 
 Bullet const & BufferParams::temp_bullet(lyx::size_type const index) const
 {
-	LASSERT(index < 4, return pimpl_->temp_bullets[0]);
-	return pimpl_->temp_bullets[index];
+	if (index < 4)
+		return pimpl_->temp_bullets[index];
+	// Fallback bullet if we are too deeply nested
+	docstring const fb = from_ascii("?") + convert<docstring>(index + 1);
+	Bullet const & res = Bullet(fb);
+	return res;
 }
 
 
 Bullet & BufferParams::user_defined_bullet(lyx::size_type const index)
 {
-	LASSERT(index < 4, return pimpl_->temp_bullets[0]);
-	return pimpl_->user_defined_bullets[index];
+	if (index < 4)
+		return pimpl_->user_defined_bullets[index];
+	// Fallback bullet if we are too deeply nested
+	docstring const fb = from_ascii("?") + convert<docstring>(index + 1);
+	Bullet const & res = Bullet(fb);
+	return const_cast<Bullet&>(res);
 }
 
 
 Bullet const & BufferParams::user_defined_bullet(lyx::size_type const index) const
 {
-	LASSERT(index < 4, return pimpl_->temp_bullets[0]);
-	return pimpl_->user_defined_bullets[index];
+	if (index < 4)
+		return pimpl_->user_defined_bullets[index];
+	// Fallback bullet if we are too deeply nested
+	docstring const fb = from_ascii("?") + convert<docstring>(index + 1);
+	Bullet const & res = Bullet(fb);
+	return res;
 }
 
 
