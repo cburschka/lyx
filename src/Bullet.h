@@ -81,8 +81,6 @@ private:
 	///
 	void generateText() const;
 	///
-	void generateUnicode() const;
-	///
 	static docstring const bulletSize(int);
 	///
 	static FontSize bulletFontSize(int);
