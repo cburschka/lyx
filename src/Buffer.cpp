@@ -5158,7 +5158,10 @@ void Buffer::Impl::setLabel(ParIterator & it, UpdateType utype) const
 	switch(layout.labeltype) {
 	case LABEL_ITEMIZE: {
 		par.params().labelString(
-			bp.user_defined_bullet(par.itemdepth).getLabel());
+			(par.itemdepth < 4)
+					? bp.user_defined_bullet(par.itemdepth).getLabel()
+					  // Display fallback for too deeply nested items
+					: bformat(from_ascii("[?%1$d]"), int(par.itemdepth + 1)));
 		break;
 	}
 

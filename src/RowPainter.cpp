@@ -434,7 +434,7 @@ void RowPainter::paintLabel() const
 	FontInfo lfont = font;
 
 	// bullet?
-	if (layout.labeltype == LABEL_ITEMIZE) {
+	if (layout.labeltype == LABEL_ITEMIZE && par_.itemdepth < 4) {
 		// get label font size from document properties
 		lfont.setSize(pi_.base.bv->buffer().params().user_defined_bullet(par_.itemdepth).getFontSize());
 		// realize to avoid assertion
