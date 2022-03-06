@@ -113,10 +113,10 @@ public:
 private:
 	/// LaTeX commands (text mode) for this character. The first one is the default, the others
 	/// are only present for compatibility other ways users may encode the character
-	std::vector<trivdocstring> text_commands_;
+	std::vector<docstring> text_commands_;
 	/// LaTeX command (math mode) for this character. The first one is the default, the others
 	//	/// are only present for compatibility other ways users may encode the character
-	std::vector<trivdocstring> math_commands_;
+	std::vector<docstring> math_commands_;
 	/// Needed LaTeX preamble (or feature) for text mode
 	trivstring text_preamble_;
 	/// Needed LaTeX preamble (or feature) for math mode
