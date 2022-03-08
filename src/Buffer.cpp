@@ -4935,6 +4935,10 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 {
 	LBUFERR(!text().paragraphs().empty());
 
+	// This can be called when loading a file, so that there be no
+	// open undo group.
+	UndoGroupHelper ugh(const_cast<Buffer *>(this));
+
 	// Use the master text class also for child documents
 	Buffer const * const master = masterBuffer();
 	DocumentClass const & textclass = master->params().documentClass();
