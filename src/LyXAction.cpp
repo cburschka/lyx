@@ -3508,7 +3508,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_SEARCH_IGNORE
  * \li Action: Enables/disables searching for features in findadv
  * \li Syntax: search-ignore <type> <value>
- * \li Params: <type>: language|color|sectioning|font|series|shape|family|markup|underline|strike|deleted
+ * \li Params: <type>: language|color|sectioning|font|series|shape|family|markup|underline|strike|deleted\n
  * \li Params: <value>: true|false
  * \endvar
  */
