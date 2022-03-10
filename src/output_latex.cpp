@@ -465,7 +465,7 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 		if (runparams.for_searchAdv == OutputParams::NoSearch)
 			output_changes = buf.params().output_changes;
 		else
-			output_changes = (runparams.for_searchAdv == OutputParams::SearchWithDeleted);
+			output_changes = ((runparams.for_searchAdv & OutputParams::SearchWithDeleted) != 0);
 		if (size_t(pit + 1) < paragraphs.size()) {
 			ParagraphList::const_iterator nextpar = paragraphs.iterator_at(pit + 1);
 			Paragraph const & cpar = paragraphs.at(pit);
@@ -796,7 +796,7 @@ void TeXOnePar(Buffer const & buf,
 
 	// Do not output empty commands if the whole paragraph has
 	// been deleted with ct and changes are not output.
-	if ((runparams_in.for_searchAdv != OutputParams::SearchWithDeleted) && style.latextype != LATEX_ENVIRONMENT
+	if (((runparams_in.for_searchAdv & OutputParams::SearchWithDeleted) == 0) && style.latextype != LATEX_ENVIRONMENT
 	    && !par.empty() && par.isDeleted(0, par.size()) && !bparams.output_changes)
 		return;
 
@@ -1711,7 +1711,7 @@ void latexParagraphs(Buffer const & buf,
 		if (runparams.for_searchAdv == OutputParams::NoSearch)
 			output_changes = bparams.output_changes;
 		else
-			output_changes = (runparams.for_searchAdv == OutputParams::SearchWithDeleted);
+			output_changes = ((runparams.for_searchAdv & OutputParams::SearchWithDeleted) != 0);
 		bool const lastpar = size_t(pit + 1) >= paragraphs.size();
 		if (!lastpar) {
 			ParagraphList::const_iterator nextpar = paragraphs.iterator_at(pit + 1);

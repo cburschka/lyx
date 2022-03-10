@@ -314,7 +314,7 @@ bool InsetBranch::producesOutput() const
 
 void InsetBranch::latex(otexstream & os, OutputParams const & runparams) const
 {
-	if (producesOutput()) {
+	if (producesOutput() || ((runparams.for_searchAdv & OutputParams::SearchNonOutput) != 0)) {
 		OutputParams rp = runparams;
 		rp.inbranch = true;
 		InsetText::latex(os, rp);
@@ -328,7 +328,7 @@ void InsetBranch::latex(otexstream & os, OutputParams const & runparams) const
 int InsetBranch::plaintext(odocstringstream & os,
 			   OutputParams const & runparams, size_t max_length) const
 {
-	if (!producesOutput())
+	if (!producesOutput() && ((runparams.for_searchAdv & OutputParams::SearchNonOutput) == 0))
 		return 0;
 
 	int len = InsetText::plaintext(os, runparams, max_length);

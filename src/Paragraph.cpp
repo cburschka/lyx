@@ -2643,7 +2643,7 @@ void Paragraph::latex(BufferParams const & bparams,
 		if (runparams.for_searchAdv == OutputParams::NoSearch)
 			output_changes = bparams.output_changes;
 		else
-			output_changes = (runparams.for_searchAdv == OutputParams::SearchWithDeleted);
+			output_changes = ((runparams.for_searchAdv & OutputParams::SearchWithDeleted) != 0);
 		if (c == META_INSET
 		    && i >= start_pos && (end_pos == -1 || i < end_pos)) {
 			if (isDeleted(i))

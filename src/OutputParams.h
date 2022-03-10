@@ -426,12 +426,13 @@ public:
 
 	/// Are we generating this material for use by advanced search?
 	enum Search {
-		NoSearch,
-		SearchWithDeleted,
-		SearchWithoutDeleted
+		NoSearch = 0,
+		SearchWithDeleted = 1,
+		SearchWithoutDeleted = 2,
+		SearchNonOutput = 8
 	};
 		
-	enum Search for_searchAdv = NoSearch;
+	int for_searchAdv = NoSearch;
 
 	/// Are we generating this material for instant preview?
 	bool for_preview = false;

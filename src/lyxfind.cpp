@@ -106,6 +106,8 @@ class IgnoreFormats {
 	///
 	void setIgnoreDeleted(bool value);
 	///
+	bool getNonContent() const { return searchNonContent_; }
+	///
 	void setIgnoreFormat(string const & type, bool value, bool fromUser = true);
 
 private:
@@ -132,6 +134,8 @@ private:
 	bool userSelectedIgnoreLanguage_ = false;
 	///
 	bool ignoreDeleted_ = true;
+	///
+	bool searchNonContent_ = true;
 };
 
 void IgnoreFormats::setIgnoreFormat(string const & type, bool value, bool fromUser)
@@ -176,6 +180,9 @@ void IgnoreFormats::setIgnoreFormat(string const & type, bool value, bool fromUs
 	}
 	else if (type == "deleted") {
 		ignoreDeleted_ = value;
+	}
+	else if (type == "non-output-content") {
+		searchNonContent_ = !value;
 	}
 }
 
@@ -1059,6 +1066,9 @@ static docstring buffer_to_latex(Buffer & buffer)
 		runparams.for_searchAdv = OutputParams::SearchWithoutDeleted;
 	else
 		runparams.for_searchAdv = OutputParams::SearchWithDeleted;
+	if (ignoreFormats.getNonContent()) {
+		runparams.for_searchAdv |= OutputParams::SearchNonOutput;
+	}
 	pit_type const endpit = buffer.paragraphs().size();
 	for (pit_type pit = 0; pit != endpit; ++pit) {
 		TeXOnePar(buffer, buffer.text(), pit, os, runparams);
@@ -1087,6 +1097,9 @@ static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions co
 		}
 		else {
 			runparams.for_searchAdv = OutputParams::SearchWithDeleted;
+		}
+		if (ignoreFormats.getNonContent()) {
+			runparams.for_searchAdv |= OutputParams::SearchNonOutput;
 		}
 		for (pos_type pit = pos_type(0); pit < (pos_type)buffer.paragraphs().size(); ++pit) {
 			Paragraph const & par = buffer.paragraphs().at(pit);
@@ -3829,6 +3842,9 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 		else {
 			runparams.for_searchAdv = OutputParams::SearchWithDeleted;
 		}
+		if (ignoreFormats.getNonContent()) {
+			runparams.for_searchAdv |= OutputParams::SearchNonOutput;
+		}
 		LYXERR(Debug::FIND, "Stringifying with cur: "
 		       << cur << ", from pos: " << cur.pos() << ", end: " << end);
 		return par.asString(cur.pos(), end,
@@ -3852,7 +3868,6 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 	LYXERR(Debug::FIND, "Don't know how to stringify from here: " << cur);
 	return docstring();
 }
-
 
 /** Computes the LaTeX export of buf starting from cur and ending len positions
  * after cur, if len is positive, or at the paragraph or innermost inset end
@@ -3881,6 +3896,9 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 	}
 	else {
 		runparams.for_searchAdv = OutputParams::SearchWithDeleted;
+	}
+	if (ignoreFormats.getNonContent()) {
+		runparams.for_searchAdv |= OutputParams::SearchNonOutput;
 	}
 
 	if (cur.inTexted()) {
