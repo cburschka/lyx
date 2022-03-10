@@ -1226,10 +1226,10 @@ void InsetInfo::build()
 }
 
 
-void InsetInfo::latex(otexstream & os, OutputParams const & runparams) const
+void InsetInfo::validate(LaTeXFeatures & features) const
 {
 	const_cast<InsetInfo *>(this)->build();
-	InsetCollapsible::latex(os, runparams);
+	InsetCollapsible::validate(features);
 }
 
 

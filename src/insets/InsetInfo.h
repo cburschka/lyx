@@ -217,7 +217,7 @@ public:
 	/// should paragraph indentation be omitted in any case?
 	bool neverIndent() const override { return true; }
 	///
-	void latex(otexstream &, OutputParams const &) const override;
+	void validate(LaTeXFeatures & features) const override;
 	///
 	InsetInfoParams params() const { return params_; }
 
