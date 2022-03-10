@@ -622,6 +622,7 @@ InsetLayout Info
 	EndHTMLStyle
 	HTMLTag               span
 	MultiPar              false
+	SpellCheck	      false
 End
 
 InsetLayout Info:menu

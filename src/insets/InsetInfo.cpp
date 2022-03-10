@@ -38,6 +38,7 @@
 
 #include "frontends/Application.h"
 
+#include "support/Changer.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -778,6 +779,12 @@ void InsetInfo::metrics(MetricsInfo & mi, Dimension & dim) const
 	InsetCollapsible::metrics(mi, dim);
 }
 
+
+void InsetInfo::draw(PainterInfo & pi, int x, int y) const
+{
+	Changer chg = changeVar(lyxrc.mark_foreign_language, false);
+	InsetCollapsible::draw(pi, x, y);
+}
 
 void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted)
 

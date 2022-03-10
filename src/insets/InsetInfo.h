@@ -203,7 +203,11 @@ public:
 	void setInfo(std::string const & info);
 	///
 	void updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted = false) override;
+	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
+	///
+	void draw(PainterInfo & pi, int x, int y) const override;
+
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const override;
 	///
