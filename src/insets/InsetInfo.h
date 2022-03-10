@@ -203,6 +203,7 @@ public:
 	void setInfo(std::string const & info);
 	///
 	void updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted = false) override;
+	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const override;
 	///
@@ -211,6 +212,8 @@ public:
 	std::string contextMenuName() const override;
 	/// should paragraph indentation be omitted in any case?
 	bool neverIndent() const override { return true; }
+	///
+	void latex(otexstream &, OutputParams const &) const override;
 	///
 	InsetInfoParams params() const { return params_; }
 
@@ -225,6 +228,8 @@ private:
 	void setText(docstring const & str, Language const *);
 	// make sure that the other version of setText is still available.
 	using InsetCollapsible::setText;
+	/// Compute the information
+	void build();
 	///
 	bool initialized_;
 	///

@@ -772,7 +772,31 @@ bool InsetInfo::forceLocalFontSwitch() const
 }
 
 
-void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted) {
+void InsetInfo::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	const_cast<InsetInfo *>(this)->build();
+	InsetCollapsible::metrics(mi, dim);
+}
+
+
+void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted)
+
+{
+	// If the Buffer is a clone, then we neither need nor want to do any
+	// of what follows. We want, rather, just to inherit how things were
+	// in the original Buffer. This is especially important for VCS.
+	// Otherwise, we could in principle have different settings here
+	// than in the Buffer we were exporting.
+	if (buffer().isClone())
+		return;
+	BufferParams const & bp = buffer().params();
+	params_.lang = it.paragraph().getFontSettings(bp, it.pos()).language();
+	InsetCollapsible::updateBuffer(it, utype, deleted);
+}
+
+
+void InsetInfo::build()
+{
 	// If the Buffer is a clone, then we neither need nor want to do any
 	// of what follows. We want, rather, just to inherit how things were
 	// in the original Buffer. This is especially important for VCS.
@@ -781,8 +805,6 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype, bool cons
 	if (buffer().isClone())
 		return;
 
-	BufferParams const & bp = buffer().params();
-	params_.lang = it.paragraph().getFontSettings(bp, it.pos()).language();
 	Language const * tryguilang = languages.getFromCode(Messages::guiLanguage());
 	// Some info insets use the language of the GUI (if available)
 	Language const * guilang = tryguilang ? tryguilang : params_.lang;
@@ -1106,7 +1128,7 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype, bool cons
 		else if (params_.name == "path")
 			setText(from_utf8(os::latex_path(buffer().filePath())), params_.lang);
 		else if (params_.name == "class")
-			setText(from_utf8(bp.documentClass().name()), params_.lang);
+			setText(from_utf8(buffer().params().documentClass().name()), params_.lang);
 		break;
 	}
 	case InsetInfoParams::VCS_INFO: {
@@ -1194,7 +1216,13 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype, bool cons
 
 	// Just to do something with that string
 	LYXERR(Debug::INFO, "info inset text: " << gui);
-	InsetCollapsible::updateBuffer(it, utype, deleted);
+}
+
+
+void InsetInfo::latex(otexstream & os, OutputParams const & runparams) const
+{
+	const_cast<InsetInfo *>(this)->build();
+	InsetCollapsible::latex(os, runparams);
 }
 
 
