@@ -164,9 +164,9 @@ ToolbarSet
 		Item "Toggle bottom line" "tabular-feature toggle-line-bottom"
 		Item "Toggle left line" "tabular-feature toggle-line-left"
 		Item "Toggle right line" "tabular-feature toggle-line-right"
-		Item "Set border lines" "tabular-feature set-border-lines"
-		Item "Set all lines" "tabular-feature set-all-lines"
-		Item "Set inner lines" "tabular-feature set-inner-lines"
+		Item "Toggle border lines" "tabular-feature toggle-border-lines"
+		Item "Toggle inner lines" "tabular-feature toggle-inner-lines"
+		Item "Toggle all lines" "tabular-feature toggle-all-lines"
 		Item "Unset all lines" "tabular-feature unset-all-lines"
 		Item "Reset formal default lines" "tabular-feature reset-formal-default"
 		Separator

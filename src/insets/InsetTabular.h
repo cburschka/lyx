@@ -341,6 +341,12 @@ public:
 		///
 		SET_INNER_LINES,
 		///
+		TOGGLE_INNER_LINES,
+		///
+		TOGGLE_BORDER_LINES,
+		///
+		TOGGLE_ALL_LINES,
+		///
 		LAST_ACTION
 	};
 	///
@@ -445,6 +451,18 @@ public:
 	/// If \p ignore_bt is true, we return the state as if booktabs was
 	/// not used
 	bool rightLine(idx_type cell, bool const ignore_bt = false) const;
+	/// Returns true if there is an outside border around the selection
+	bool outsideBorders(row_type sel_row_start, row_type sel_row_end,
+						col_type sel_col_start, col_type sel_col_end) const;
+	/// Returns true if there are inside lines in the selection
+	bool innerBorders(row_type sel_row_start, row_type sel_row_end,
+					  col_type sel_col_start, col_type sel_col_end) const;
+	/// Sets the grid lines in the selection
+	/// if \p setLinesInnerOnly is true, outside borders are excluded
+	/// if \p setLines is true the lines are set otherwise they are unset
+	void setLines(row_type const sel_row_start, row_type const sel_row_end,
+				  col_type const sel_col_start, col_type const sel_col_end,
+				  bool setLinesInnerOnly, bool setLines);
 	/// Returns whether the top line is trimmed left and/or right
 	std::pair<bool, bool> topLineTrim(idx_type const cell) const;
 	/// Returns whether the bottom line is trimmed left and/or right

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 608
+\lyxformat 609
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -250,6 +250,7 @@ varwidth
 \html_be_strict false
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\author -1382599118 "Daniel"
 \author -712698321 "Jürgen Spitzmüller"
 \author 630872221 "Jean-Pierre Chrétien" jeanpierre.chretien@free.fr
 \end_header
@@ -2646,7 +2647,29 @@ type  "icon"
 arg   "tabular-feature toggle-line-top"
 \end_inset
 
- adds a line at the top of the current cell / row or of a selection
+ 
+\change_deleted -1382599118 1647157945
+adds
+\change_inserted -1382599118 1647157946
+toggles
+\change_unchanged
+ a line at the top of
+\change_inserted -1382599118 1647158116
+ every cell for
+\change_unchanged
+ the current
+\change_inserted -1382599118 1647157889
+ly
+\change_deleted -1382599118 1647157917
+ cell / row or of a
+\change_unchanged
+ select
+\change_deleted -1382599118 1647157923
+ion
+\change_inserted -1382599118 1647157925
+ed cells
+\change_unchanged
+
 \end_layout
 
 \begin_layout Labeling
@@ -2656,7 +2679,29 @@ type  "icon"
 arg   "tabular-feature toggle-line-bottom"
 \end_inset
 
- adds a line at the bottom of the current cell / row or of a selection
+ 
+\change_deleted -1382599118 1647157963
+adds
+\change_inserted -1382599118 1647157964
+toggles
+\change_unchanged
+ a line at the bottom of 
+\change_inserted -1382599118 1647158114
+every cell for 
+\change_unchanged
+the current
+\change_inserted -1382599118 1647157991
+ly
+\change_deleted -1382599118 1647158003
+ cell / row or of a
+\change_unchanged
+ select
+\change_deleted -1382599118 1647158007
+ion
+\change_inserted -1382599118 1647158009
+ed cells
+\change_unchanged
+
 \end_layout
 
 \begin_layout Labeling
@@ -2666,7 +2711,29 @@ type  "icon"
 arg   "tabular-feature toggle-line-left"
 \end_inset
 
- adds a line at the left side of the current cell / row or of a selection
+ 
+\change_deleted -1382599118 1647157971
+adds
+\change_inserted -1382599118 1647157972
+toggles
+\change_unchanged
+ a line at the left side of 
+\change_inserted -1382599118 1647158111
+every cell for 
+\change_unchanged
+the current
+\change_inserted -1382599118 1647158027
+ly
+\change_deleted -1382599118 1647158069
+ cell / row or of a
+\change_unchanged
+ select
+\change_deleted -1382599118 1647158043
+ion
+\change_inserted -1382599118 1647158044
+ed cells
+\change_unchanged
+
 \end_layout
 
 \begin_layout Labeling
@@ -2676,7 +2743,27 @@ type  "icon"
 arg   "tabular-feature toggle-line-right"
 \end_inset
 
- adds a line at the right side of the current cell / row or of a selection
+ 
+\change_deleted -1382599118 1647157974
+adds
+\change_inserted -1382599118 1647157975
+toggles
+\change_unchanged
+ a line at the right side of 
+\change_inserted -1382599118 1647158109
+every cell for 
+\change_unchanged
+the current
+\change_inserted -1382599118 1647158061
+ly
+\change_deleted -1382599118 1647158072
+ cell / row or of a
+\change_unchanged
+ select
+\change_deleted -1382599118 1647158078
+ion
+\change_inserted -1382599118 1647158082
+ed cells
 \change_inserted -712698321 1554289731
 
 \end_layout
@@ -2687,10 +2774,30 @@ arg   "tabular-feature toggle-line-right"
 \change_inserted -712698321 1554289910
 \begin_inset Info
 type  "icon"
-arg   "tabular-feature set-border-lines"
+arg   "tabular-feature toggle-border-lines"
 \end_inset
 
- adds a border around the currently selected cells
+ 
+\change_deleted -1382599118 1647157966
+adds
+\change_inserted -1382599118 1647157967
+toggles
+\change_inserted -712698321 1554289910
+ a border around the currently selected cells
+\change_inserted -1382599118 1647040213
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted -1382599118 1647158092
+\begin_inset Info
+type  "icon"
+arg   "tabular-feature toggle-inner-lines"
+\end_inset
+
+ toggles inner lines for the currently selected cells
 \change_unchanged
 
 \end_layout
@@ -2699,7 +2806,7 @@ arg   "tabular-feature set-border-lines"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "tabular-feature set-all-lines"
+arg   "tabular-feature toggle-all-lines"
 \end_inset
 
  adds lines around the current or selected cells - if the current cell is

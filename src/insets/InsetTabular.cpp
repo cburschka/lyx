@@ -164,6 +164,7 @@ TabularFeature tabularFeature[] =
 	{ Tabular::UNSET_MULTIROW, "unset-multirow", false },
 	{ Tabular::SET_MROFFSET, "set-mroffset", true },
 	{ Tabular::SET_ALL_LINES, "set-all-lines", false },
+	{ Tabular::TOGGLE_ALL_LINES, "toggle-all-lines", false },
 	{ Tabular::RESET_FORMAL_DEFAULT, "reset-formal-default", false },
 	{ Tabular::UNSET_ALL_LINES, "unset-all-lines", false },
 	{ Tabular::TOGGLE_LONGTABULAR, "toggle-longtabular", false },
@@ -201,6 +202,7 @@ TabularFeature tabularFeature[] =
 	{ Tabular::SET_BOTTOM_SPACE, "set-bottom-space", true },
 	{ Tabular::SET_INTERLINE_SPACE, "set-interline-space", true },
 	{ Tabular::SET_BORDER_LINES, "set-border-lines", false },
+	{ Tabular::TOGGLE_BORDER_LINES, "toggle-border-lines", false },
 	{ Tabular::TABULAR_VALIGN_TOP, "tabular-valign-top", false},
 	{ Tabular::TABULAR_VALIGN_MIDDLE, "tabular-valign-middle", false},
 	{ Tabular::TABULAR_VALIGN_BOTTOM, "tabular-valign-bottom", false},
@@ -210,6 +212,7 @@ TabularFeature tabularFeature[] =
 	{ Tabular::SET_DECIMAL_POINT, "set-decimal-point", true },
 	{ Tabular::SET_TABULAR_WIDTH, "set-tabular-width", true },
 	{ Tabular::SET_INNER_LINES, "set-inner-lines", false },
+	{ Tabular::TOGGLE_INNER_LINES, "toggle-inner-lines", false },
 	{ Tabular::LAST_ACTION, "", false }
 };
 
@@ -1118,6 +1121,76 @@ bool Tabular::rightLine(idx_type cell, bool const ignore_bt) const
 	if (use_booktabs && !ignore_bt)
 		return false;
 	return cellInfo(cell).right_line;
+}
+
+
+bool Tabular::outsideBorders(
+	row_type const sel_row_start, row_type const sel_row_end,
+	col_type const sel_col_start, col_type const sel_col_end) const
+{
+	if (!use_booktabs)
+		for (row_type r = sel_row_start; r <= sel_row_end; ++r) {
+			if (!leftLine(cellIndex(r, sel_col_start))
+				|| !rightLine(cellIndex(r, sel_col_end)))
+				return false;
+		}
+	for (col_type c = sel_col_start; c <= sel_col_end; ++c) {
+		if (!topLine(cellIndex(sel_row_start, c))
+			|| !bottomLine(cellIndex(sel_row_end, c)))
+			return false;
+	}
+	return true;
+}
+
+
+bool Tabular::innerBorders(
+	row_type const sel_row_start, row_type const sel_row_end,
+	col_type const sel_col_start, col_type const sel_col_end) const
+{
+	// Single cell has no inner borders
+	if (sel_row_start == sel_row_end && sel_col_start == sel_col_end)
+		return false;
+	for (row_type r = sel_row_start; r <= sel_row_end; ++r)
+		for (col_type c = sel_col_start; c <= sel_col_end; ++c) {
+			idx_type const cell = cellIndex(r, c);
+			if ((r != sel_row_start && !topLine(cell)
+					&& cell_info[r][c].multirow != CELL_PART_OF_MULTIROW)
+				|| (!use_booktabs
+					&& c != sel_col_start && !leftLine(cell)
+					&& cell_info[r][c].multicolumn != CELL_PART_OF_MULTICOLUMN))
+				return false;
+		}
+	return true;
+}
+
+
+void Tabular::setLines(
+	row_type const sel_row_start, row_type const sel_row_end,
+	col_type const sel_col_start, col_type const sel_col_end,
+	bool setLinesInnerOnly, bool setLines)
+{
+	for (row_type r = sel_row_start; r <= sel_row_end; ++r)
+		for (col_type c = sel_col_start; c <= sel_col_end; ++c) {
+			idx_type const cell = cellIndex(r, c);
+			if (!(setLinesInnerOnly && r == sel_row_start)
+				// for multirows, cell is taken care of at beginning
+				&& cell_info[r][c].multirow != CELL_PART_OF_MULTIROW)
+				setTopLine(cell, setLines);
+			if (!(setLinesInnerOnly && r == sel_row_end)
+				&&  (r == sel_row_end || (!setLines
+					// for multirows, cell is taken care of at the last part
+					&& cell_info[r + 1][c].multirow != CELL_PART_OF_MULTIROW)))
+				setBottomLine(cell, setLines);
+			if (!(setLinesInnerOnly && c == sel_col_start)
+				// for multicolumns, cell is taken care of at beginning
+				&& cell_info[r][c].multicolumn != CELL_PART_OF_MULTICOLUMN)
+				setLeftLine(cell, setLines);
+			if (!(setLinesInnerOnly && c == sel_col_end)
+				&& (c == sel_col_end || (!setLines
+					// for multicolumns, cell is taken care of at the last part
+					&& cell_info[r][c + 1].multicolumn != CELL_PART_OF_MULTICOLUMN)))
+				setRightLine(cell, setLines);
+		}
 }
 
 
@@ -5657,9 +5730,28 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 			status.setOnOff(tabular.isMultiRow(cur.idx()));
 			break;
 
+		case Tabular::TOGGLE_INNER_LINES:
+			status.setOnOff(tabular.innerBorders(sel_row_start, sel_row_end,
+												 sel_col_start, sel_col_end));
+			status.setEnabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
+			break;
+		case Tabular::TOGGLE_ALL_LINES:
+			status.setOnOff(tabular.innerBorders(sel_row_start, sel_row_end,
+												 sel_col_start, sel_col_end)
+						&& tabular.outsideBorders(sel_row_start, sel_row_end,
+												  sel_col_start, sel_col_end));
+			status.setEnabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
+			break;
 		case Tabular::SET_ALL_LINES:
 		case Tabular::UNSET_ALL_LINES:
 		case Tabular::SET_INNER_LINES:
+			status.setEnabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
+			break;
+
+		case Tabular::TOGGLE_BORDER_LINES:
+			status.setOnOff(tabular.outsideBorders(sel_row_start, sel_row_end,
+												   sel_col_start, sel_col_end));
+			// fall through
 		case Tabular::SET_BORDER_LINES:
 			status.setEnabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
 			break;
@@ -6511,7 +6603,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	row_type sel_row_start;
 	row_type sel_row_end;
 	bool setLines = false;
-	bool setLinesInnerOnly = false;
+	bool toggle = false;
 	LyXAlignment setAlign = LYX_ALIGN_LEFT;
 	Tabular::VAlignment setVAlign = Tabular::LYX_VALIGN_TOP;
 
@@ -6935,27 +7027,36 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		break;
 	}
 
+	case Tabular::TOGGLE_INNER_LINES:
+		toggle = true;
+		// fall through
 	case Tabular::SET_INNER_LINES:
-		setLinesInnerOnly = true;
+		if (toggle)
+			setLines = !tabular.innerBorders(sel_row_start, sel_row_end,
+										     sel_col_start, sel_col_end);
+		else
+			setLines = true;
+		tabular.setLines(sel_row_start, sel_row_end,
+						 sel_col_start, sel_col_end,
+						 true, setLines);
+		break;
+
+	case Tabular::TOGGLE_ALL_LINES:
+		toggle = true;
 		// fall through
 	case Tabular::SET_ALL_LINES:
-		setLines = true;
+		if (toggle)
+			setLines = !tabular.innerBorders(sel_row_start, sel_row_end,
+										     sel_col_start, sel_col_end)
+					|| !tabular.outsideBorders(sel_row_start, sel_row_end,
+										       sel_col_start, sel_col_end);
+		else
+			setLines = true;
 		// fall through
 	case Tabular::UNSET_ALL_LINES:
-		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
-			for (col_type c = sel_col_start; c <= sel_col_end; ++c) {
-				idx_type const cell = tabular.cellIndex(r, c);
-				if (!setLinesInnerOnly || r != sel_row_start)
-					tabular.setTopLine(cell, setLines);
-				if ((!setLinesInnerOnly || r != sel_row_end)
-				    && (!setLines || r == sel_row_end))
-					tabular.setBottomLine(cell, setLines);
-				if ((!setLinesInnerOnly || c != sel_col_end)
-				    && (!setLines || c == sel_col_end))
-					tabular.setRightLine(cell, setLines);
-				if ((!setLinesInnerOnly || c != sel_col_start))
-					tabular.setLeftLine(cell, setLines);
-			}
+		tabular.setLines(sel_row_start, sel_row_end,
+						 sel_col_start, sel_col_end,
+						 false, setLines);
 		break;
 
 	case Tabular::RESET_FORMAL_DEFAULT:
@@ -6969,16 +7070,24 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		}
 		break;
 
-	case Tabular::SET_BORDER_LINES:
+	case Tabular::TOGGLE_BORDER_LINES:
+		toggle = true;
+		// fall through
+	case Tabular::SET_BORDER_LINES: {
+		bool const border = toggle &&
+				tabular.outsideBorders(sel_row_start, sel_row_end,
+									   sel_col_start, sel_col_end)
+				? false : true;
 		for (row_type r = sel_row_start; r <= sel_row_end; ++r) {
-			tabular.setLeftLine(tabular.cellIndex(r, sel_col_start), true);
-			tabular.setRightLine(tabular.cellIndex(r, sel_col_end), true);
+			tabular.setLeftLine(tabular.cellIndex(r, sel_col_start), border);
+			tabular.setRightLine(tabular.cellIndex(r, sel_col_end), border);
 		}
 		for (col_type c = sel_col_start; c <= sel_col_end; ++c) {
-			tabular.setTopLine(tabular.cellIndex(sel_row_start, c), true);
-			tabular.setBottomLine(tabular.cellIndex(sel_row_end, c), true);
+			tabular.setTopLine(tabular.cellIndex(sel_row_start, c), border);
+			tabular.setBottomLine(tabular.cellIndex(sel_row_end, c), border);
 		}
 		break;
+	}
 
 	case Tabular::TOGGLE_LONGTABULAR:
 		if (tabular.is_long_tabular)
