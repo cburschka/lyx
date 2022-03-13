@@ -118,7 +118,7 @@ GuiBox::GuiBox(QWidget * parent) : InsetParamsWidget(parent)
 	connect(widthED, SIGNAL(textChanged(QString)), this, SIGNAL(changed()));
 	connect(widthUnitsLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SIGNAL(changed()));
-	connect(valignCO, SIGNAL(highlighted(QString)), this, SIGNAL(changed()));
+	connect(valignCO, SIGNAL(activated(int)), this, SIGNAL(changed()));
 	connect(heightED, SIGNAL(textChanged(QString)), this, SIGNAL(changed()));
 	connect(heightUnitsLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SIGNAL(changed()));
