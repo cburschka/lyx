@@ -830,16 +830,21 @@ string string2regex(string in)
 	return temp2;
 }
 
+static void buildAccentsMap();
+
 string correctRegex(string t, bool withformat)
 {
 	/* Convert \backslash => \
 	 * and \{, \}, \[, \] => {, }, [, ]
 	 */
 	string s("");
-	regex wordre("(\\\\)*(\\\\((backslash|mathcircumflex) ?|[\\[\\]\\{\\}]))");
+	regex wordre("(\\\\)*(\\\\((backslash|mathcircumflex|textquoteleft) ?|[\\[\\]\\{\\}]))");
 	size_t lastpos = 0;
 	smatch sub;
 	bool backslashed = false;
+	if (accents.empty())
+		buildAccentsMap();
+
 	for (sregex_iterator it(t.begin(), t.end(), wordre), end; it != end; ++it) {
 		sub = *it;
 		string replace;
@@ -861,6 +866,8 @@ string correctRegex(string t, bool withformat)
 			}
 			else if (sub.str(4) == "mathcircumflex")
 				replace = "^";
+			else if (sub.str(4) == "textquoteleft")
+				replace = accents["textquoteleft"];
 			else if (backslashed) {
 				backslashed = false;
 				if (withformat && (sub.str(3) == "{"))
