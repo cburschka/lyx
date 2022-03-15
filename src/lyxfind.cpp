@@ -1547,6 +1547,7 @@ void static fillMissingUnicodesymbols()
   addAccents("\\o", getutf8(0x00f8));
   addAccents("\\textcrlambda", getutf8(0x019b));
   addAccents("\\j", getutf8(0x0237));
+  addAccents("\\textquoteleft", getutf8(0x02bb));
   addAccents("\\textGamma", getutf8(0x0393));
   addAccents("\\Gamma", getutf8(0x0393));
   addAccents("\\textDelta", getutf8(0x0394));
@@ -1896,7 +1897,7 @@ void Intervall::removeAccents()
     buildAccentsMap();
   static regex const accre("\\\\(([\\S]|grave|breve|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot|ogonek|"
          "cedilla|subring|textsubring|subhat|textsubcircum|subtilde|textsubtilde|dgrave|textdoublegrave|rcap|textroundcap|slashed)\\{[^\\{\\}]+\\}"
-      "|((i|imath|jmath|cdot|[a-z]+space)|((backslash )?([lL]y[xX]|[tT]e[xX]|[lL]a[tT]e[xX]e?|lyxarrow))|(brace|guillemot)(left|right)|textasciicircum|mathcircumflex|sim)(?![a-zA-Z]))");
+      "|((i|imath|jmath|cdot|[a-z]+space)|((backslash )?([lL]y[xX]|[tT]e[xX]|[lL]a[tT]e[xX]e?|lyxarrow))|(textquote|brace|guillemot)(left|right)|textasciicircum|mathcircumflex|sim)(?![a-zA-Z]))");
   smatch sub;
   for (sregex_iterator itacc(par.begin(), par.end(), accre), end; itacc != end; ++itacc) {
     sub = *itacc;
