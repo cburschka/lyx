@@ -838,7 +838,7 @@ string correctRegex(string t, bool withformat)
 	 * and \{, \}, \[, \] => {, }, [, ]
 	 */
 	string s("");
-	regex wordre("(\\\\)*(\\\\((backslash|mathcircumflex|textquoteleft) ?|[\\[\\]\\{\\}]))");
+	regex wordre("(\\\\)*(\\\\(([a-z]+) ?|[\\[\\]\\{\\}]))");
 	size_t lastpos = 0;
 	smatch sub;
 	bool backslashed = false;
@@ -866,8 +866,6 @@ string correctRegex(string t, bool withformat)
 			}
 			else if (sub.str(4) == "mathcircumflex")
 				replace = "^";
-			else if (sub.str(4) == "textquoteleft")
-				replace = accents["textquoteleft"];
 			else if (backslashed) {
 				backslashed = false;
 				if (withformat && (sub.str(3) == "{"))
@@ -879,8 +877,15 @@ string correctRegex(string t, bool withformat)
 					LASSERT(1, /**/);
 				}
 			}
-			else
-				replace = sub.str(3);
+			else {
+				AccentsIterator it_ac = accents.find(sub.str(4));
+				if (it_ac == accents.end()) {
+					replace = sub.str(3);
+				}
+				else {
+					replace = it_ac->second;
+				}
+			}
 		}
 		if (lastpos < (size_t) sub.position(2))
 			s += t.substr(lastpos, sub.position(2) - lastpos);
@@ -1554,6 +1559,8 @@ void static fillMissingUnicodesymbols()
   addAccents("\\o", getutf8(0x00f8));
   addAccents("\\textcrlambda", getutf8(0x019b));
   addAccents("\\j", getutf8(0x0237));
+  addAccents("\\textrevepsilon", getutf8(0x025c));
+  addAccents("\\textbaru", getutf8(0x0289));
   addAccents("\\textquoteleft", getutf8(0x02bb));
   addAccents("\\textGamma", getutf8(0x0393));
   addAccents("\\Gamma", getutf8(0x0393));
