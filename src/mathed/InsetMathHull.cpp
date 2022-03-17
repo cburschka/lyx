@@ -2254,7 +2254,10 @@ void InsetMathHull::handleFont2(Cursor & cur, docstring const & arg)
 
 void InsetMathHull::edit(Cursor & cur, bool front, EntryDirection entry_from)
 {
-	InsetMathNest::edit(cur, front, entry_from);
+	cur.push(*this);
+	bool enter_front = (entry_from == Inset::ENTRY_DIRECTION_LEFT ||
+		(entry_from == Inset::ENTRY_DIRECTION_IGNORE && front));
+	enter_front ? idxFirst(cur) : idxLast(cur);
 	// The inset formula dimension is not necessarily the same as the
 	// one of the instant preview image, so we have to indicate to the
 	// BufferView that a metrics update is needed.
