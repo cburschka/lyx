@@ -362,8 +362,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-02-20 10:02+0100\n"
-"PO-Revision-Date: 2022-02-20 10:06+0100\n"
+"POT-Creation-Date: 2022-03-17 18:13+0100\n"
+"PO-Revision-Date: 2022-03-17 18:23+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -3970,10 +3970,10 @@ msgstr "Double"
 #: src/frontends/qt/GuiHSpace.cpp:57 src/frontends/qt/GuiPrefs.cpp:816
 #: src/frontends/qt/GuiPrefs.cpp:844 src/frontends/qt/GuiPrefs.cpp:871
 #: src/frontends/qt/GuiPrefs.cpp:2329 src/frontends/qt/GuiPrefs.cpp:2352
-#: src/frontends/qt/GuiPrintNomencl.cpp:51 src/insets/InsetInfo.cpp:236
-#: src/insets/InsetInfo.cpp:246 src/insets/InsetInfo.cpp:250
-#: src/insets/InsetInfo.cpp:259 src/insets/InsetInfo.cpp:321
-#: src/insets/InsetInfo.cpp:343
+#: src/frontends/qt/GuiPrintNomencl.cpp:51 src/insets/InsetInfo.cpp:237
+#: src/insets/InsetInfo.cpp:247 src/insets/InsetInfo.cpp:251
+#: src/insets/InsetInfo.cpp:260 src/insets/InsetInfo.cpp:322
+#: src/insets/InsetInfo.cpp:344
 msgid "Custom"
 msgstr "Réglable"
 
@@ -4751,7 +4751,7 @@ msgstr "Ac&tiver"
 msgid "Ctrl"
 msgstr "Ctrl"
 
-#: src/frontends/qt/ui/PrefInputUi.ui:249 src/insets/InsetInfo.cpp:863
+#: src/frontends/qt/ui/PrefInputUi.ui:249 src/insets/InsetInfo.cpp:892
 msgid "Shift"
 msgstr "Maj"
 
@@ -6662,7 +6662,7 @@ msgid "Footnote"
 msgstr "Note de bas de page"
 
 #: lib/citeengines/biblatex-natbib.citeengine:144
-#: lib/citeengines/biblatex.citeengine:134
+#: lib/citeengines/biblatex.citeengine:134 lib/layouts/stdinsets.inc:51
 msgid "Foot"
 msgstr "Bas de page"
 
@@ -7702,7 +7702,7 @@ msgstr "Transactions IEEE"
 #: lib/layouts/scrlttr2.layout:19 lib/layouts/siamltex.layout:37
 #: lib/layouts/sigplanconf.layout:41 lib/layouts/simplecv.layout:18
 #: lib/layouts/slides.layout:61 lib/layouts/stdclass.inc:28
-#: lib/layouts/stdinsets.inc:688 lib/layouts/stdletter.inc:12
+#: lib/layouts/stdinsets.inc:689 lib/layouts/stdletter.inc:12
 #: lib/layouts/svcommon.inc:26 lib/layouts/tufte-book.layout:35
 #: src/insets/InsetRef.cpp:599
 msgid "Standard"
@@ -7775,7 +7775,7 @@ msgstr "minuscules"
 #: lib/layouts/siamltex.layout:222 lib/layouts/sigplanconf.layout:150
 #: lib/layouts/stdtitle.inc:37 lib/layouts/svcommon.inc:370
 #: lib/layouts/svmult.layout:89 lib/layouts/svprobth.layout:93
-#: lib/layouts/tufte-book.layout:55 src/insets/InsetInfo.cpp:283
+#: lib/layouts/tufte-book.layout:55 src/insets/InsetInfo.cpp:284
 msgid "Author"
 msgstr "Auteur"
 
@@ -8337,7 +8337,7 @@ msgstr "SousSousSection"
 #: lib/layouts/scrclass.inc:240 lib/layouts/scrlettr.layout:203
 #: lib/layouts/scrlttr2.layout:322 lib/layouts/siamltex.layout:246
 #: lib/layouts/stdtitle.inc:62 lib/layouts/svcommon.inc:406
-#: lib/layouts/tufte-book.layout:60 src/insets/InsetInfo.cpp:284
+#: lib/layouts/tufte-book.layout:60 src/insets/InsetInfo.cpp:285
 msgid "Date"
 msgstr "Date"
 
@@ -8784,7 +8784,7 @@ msgstr "American Chemical Society (ACS)"
 #: lib/layouts/scrclass.inc:142 lib/layouts/scrclass.inc:155
 #: lib/layouts/scrclass.inc:168 lib/layouts/scrclass.inc:324
 #: lib/layouts/scrclass.inc:349 lib/layouts/siamltex.layout:206
-#: lib/layouts/simplecv.layout:52 lib/layouts/stdinsets.inc:695
+#: lib/layouts/simplecv.layout:52 lib/layouts/stdinsets.inc:696
 #: lib/layouts/stdsections.inc:32 lib/layouts/stdsections.inc:76
 #: lib/layouts/stdsections.inc:117 lib/layouts/tufte-book.layout:98
 #: lib/layouts/tufte-book.layout:129 lib/layouts/tufte-handout.layout:40
@@ -9780,7 +9780,7 @@ msgstr "Section-spéciale*"
 
 #: lib/layouts/amsart.layout:98 lib/layouts/beamer.layout:336
 #: lib/layouts/beamer.layout:398 lib/layouts/beamer.layout:460
-#: lib/layouts/memoir.layout:248 lib/layouts/stdinsets.inc:713
+#: lib/layouts/memoir.layout:248 lib/layouts/stdinsets.inc:714
 #: lib/layouts/stdstarsections.inc:15 lib/layouts/stdstarsections.inc:30
 #: lib/layouts/stdstarsections.inc:45 lib/layouts/stdstarsections.inc:60
 #: lib/layouts/stdstarsections.inc:75 lib/layouts/stdstarsections.inc:90
@@ -10000,13 +10000,13 @@ msgid "Centered"
 msgstr "Centré"
 
 #: lib/layouts/apa.layout:285 lib/layouts/apax.inc:384
-#: lib/layouts/stdinsets.inc:689 src/insets/InsetCaption.cpp:436
+#: lib/layouts/stdinsets.inc:690 src/insets/InsetCaption.cpp:436
 msgid "standard"
 msgstr "standard"
 
 #: lib/layouts/apa.layout:292 lib/layouts/apax.inc:391
 #: lib/layouts/scrclass.inc:325 lib/layouts/scrclass.inc:350
-#: lib/layouts/stdinsets.inc:696
+#: lib/layouts/stdinsets.inc:697
 msgid "The caption as it appears in the list of figures/tables"
 msgstr "La légende telle qu'elle apparaîtra dans la liste des figures/tableaux"
 
@@ -17384,10 +17384,6 @@ msgstr "Listings"
 msgid "Margin"
 msgstr "Marge"
 
-#: lib/layouts/stdinsets.inc:51
-msgid "foot"
-msgstr "bas"
-
 #: lib/layouts/stdinsets.inc:177
 msgid "Greyedout"
 msgstr "Grisée"
@@ -17418,23 +17414,23 @@ msgstr "Idx"
 msgid "Argument"
 msgstr "Argument"
 
-#: lib/layouts/stdinsets.inc:715
+#: lib/layouts/stdinsets.inc:716
 msgid "unlabelled"
 msgstr "sans étiquette"
 
-#: lib/layouts/stdinsets.inc:722
+#: lib/layouts/stdinsets.inc:723
 msgid "Preview"
 msgstr "Aperçu"
 
-#: lib/layouts/stdinsets.inc:756 lib/layouts/stdinsets.inc:764
+#: lib/layouts/stdinsets.inc:757 lib/layouts/stdinsets.inc:765
 msgid "see equation[[nomencl]]"
 msgstr "voir équation"
 
-#: lib/layouts/stdinsets.inc:757 lib/layouts/stdinsets.inc:765
+#: lib/layouts/stdinsets.inc:758 lib/layouts/stdinsets.inc:766
 msgid "page[[nomencl]]"
 msgstr "page"
 
-#: lib/layouts/stdinsets.inc:758 lib/layouts/stdinsets.inc:766
+#: lib/layouts/stdinsets.inc:759 lib/layouts/stdinsets.inc:767
 msgid "Nomenclature[[output]]"
 msgstr "Liste des symboles"
 
@@ -19963,7 +19959,7 @@ msgid "Cut"
 msgstr "Couper"
 
 #: lib/ui/stdcontext.inc:62 lib/ui/stdcontext.inc:376 lib/ui/stdmenus.inc:109
-#: lib/ui/stdtoolbars.inc:87 src/BufferView.cpp:2269
+#: lib/ui/stdtoolbars.inc:87 src/BufferView.cpp:2270
 msgid "Copy"
 msgstr "Copier"
 
@@ -22149,16 +22145,16 @@ msgid "Toggle right line"
 msgstr "(Dés)Activer la bordure droite"
 
 #: lib/ui/stdtoolbars.inc:167
-msgid "Set border lines"
-msgstr "Mettre les bordures"
+msgid "Toggle border lines"
+msgstr "(Dés)activer les bordures"
 
 #: lib/ui/stdtoolbars.inc:168
-msgid "Set all lines"
-msgstr "Mettre toutes les bordures"
+msgid "Toggle inner lines"
+msgstr "(Dés)activer les filets intérieurs"
 
 #: lib/ui/stdtoolbars.inc:169
-msgid "Set inner lines"
-msgstr "Mettre les bordures"
+msgid "Toggle all lines"
+msgstr "(Dés)activer tous le filets"
 
 #: lib/ui/stdtoolbars.inc:170
 msgid "Unset all lines"
@@ -27846,7 +27842,7 @@ msgstr "échec conversion iconv"
 msgid "conversion failed"
 msgstr "échec conversion"
 
-#: src/Buffer.cpp:1917 src/insets/InsetGraphics.cpp:905
+#: src/Buffer.cpp:1917 src/insets/InsetGraphics.cpp:919
 msgid "Uncodable character in file path"
 msgstr "Caractère incodable dans le chemin d'accès au fichier"
 
@@ -27953,13 +27949,13 @@ msgid "Error viewing the output file."
 msgstr "Erreur lors de l'affichage du fichier imprimable."
 
 #: src/Buffer.cpp:3370 src/frontends/qt/GuiView.cpp:2706
-#: src/frontends/qt/Validator.cpp:241 src/insets/ExternalSupport.cpp:394
-#: src/insets/InsetGraphics.cpp:692 src/insets/InsetInclude.cpp:606
+#: src/frontends/qt/Validator.cpp:245 src/insets/ExternalSupport.cpp:394
+#: src/insets/InsetGraphics.cpp:693 src/insets/InsetInclude.cpp:606
 msgid "Invalid filename"
 msgstr "Nom de fichier invalide"
 
 #: src/Buffer.cpp:3371 src/insets/ExternalSupport.cpp:395
-#: src/insets/InsetGraphics.cpp:693 src/insets/InsetInclude.cpp:607
+#: src/insets/InsetGraphics.cpp:694 src/insets/InsetInclude.cpp:607
 msgid ""
 "The following filename will cause troubles when running the exported file "
 "through LaTeX: "
@@ -27968,12 +27964,12 @@ msgstr ""
 "exporté sera traité avec LaTeX : "
 
 #: src/Buffer.cpp:3376 src/insets/ExternalSupport.cpp:400
-#: src/insets/InsetGraphics.cpp:700 src/insets/InsetInclude.cpp:611
+#: src/insets/InsetGraphics.cpp:701 src/insets/InsetInclude.cpp:611
 msgid "Problematic filename for DVI"
 msgstr "Nom de fichier problématique pour DVI"
 
 #: src/Buffer.cpp:3377 src/insets/ExternalSupport.cpp:401
-#: src/insets/InsetGraphics.cpp:701 src/insets/InsetInclude.cpp:612
+#: src/insets/InsetGraphics.cpp:702 src/insets/InsetInclude.cpp:612
 msgid ""
 "The following filename can cause troubles when running the exported file "
 "through LaTeX and opening the resulting DVI: "
@@ -28205,16 +28201,16 @@ msgstr ""
 "original %1$s est en lecture seule. Il faudra sauvegarder le document sous "
 "un autre nom."
 
-#: src/Buffer.cpp:5206 src/insets/InsetCaption.cpp:404
+#: src/Buffer.cpp:5213 src/insets/InsetCaption.cpp:404
 msgid "Senseless!!! "
 msgstr "Inapproprié !!! "
 
-#: src/Buffer.cpp:5470
+#: src/Buffer.cpp:5477
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Document %1$s rechargé."
 
-#: src/Buffer.cpp:5473
+#: src/Buffer.cpp:5480
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Impossible de recharger le document %1$s."
@@ -28338,7 +28334,7 @@ msgstr "texte d'insert grisé"
 #: src/frontends/qt/LaTeXHighlighter.cpp:143
 #: src/frontends/qt/LaTeXHighlighter.cpp:257
 #: src/insets/InsetCommandParams.cpp:508 src/insets/InsetCommandParams.cpp:516
-#: src/insets/InsetGraphics.cpp:886 src/insets/InsetGraphics.cpp:894
+#: src/insets/InsetGraphics.cpp:900 src/insets/InsetGraphics.cpp:908
 #: src/insets/InsetListings.cpp:299 src/insets/InsetListings.cpp:307
 #: src/insets/InsetListings.cpp:332 src/mathed/MathExtern.cpp:1440
 #: src/mathed/MathExtern.cpp:1514
@@ -28348,7 +28344,7 @@ msgstr "Avertissement LyX : "
 #: src/BufferParams.cpp:1719 src/BufferParams.cpp:1873
 #: src/BufferParams.cpp:2316 src/Encoding.cpp:265 src/Paragraph.cpp:3015
 #: src/insets/InsetCommandParams.cpp:509 src/insets/InsetCommandParams.cpp:517
-#: src/insets/InsetGraphics.cpp:887 src/insets/InsetGraphics.cpp:895
+#: src/insets/InsetGraphics.cpp:901 src/insets/InsetGraphics.cpp:909
 #: src/insets/InsetListings.cpp:300 src/insets/InsetListings.cpp:308
 #: src/mathed/MathExtern.cpp:1441 src/mathed/MathExtern.cpp:1515
 msgid "uncodable character"
@@ -28529,7 +28525,7 @@ msgstr "Le document a été modifié par une application externe"
 msgid "This portion of the document is deleted."
 msgstr "Cette portion du document est supprimée."
 
-#: src/BufferView.cpp:1191 src/BufferView.cpp:2254
+#: src/BufferView.cpp:1191 src/BufferView.cpp:2255
 #: src/frontends/qt/GuiView.cpp:4296 src/frontends/qt/GuiView.cpp:4384
 msgid "Absolute filename expected."
 msgstr "Chemin absolu requis."
@@ -28606,7 +28602,7 @@ msgstr "Un caractère (espaces exclus)"
 msgid "Statistics"
 msgstr "Statistiques"
 
-#: src/BufferView.cpp:2112
+#: src/BufferView.cpp:2113
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
@@ -28614,35 +28610,35 @@ msgstr ""
 "Interruption de « inset-forall » du fait d'un nombre d'actions supérieur à "
 "%1$d"
 
-#: src/BufferView.cpp:2114
+#: src/BufferView.cpp:2115
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "\"%1$s\" appliqué à %2$d inserts"
 
-#: src/BufferView.cpp:2122
+#: src/BufferView.cpp:2123
 msgid "Branch name"
 msgstr "Nom de la branche"
 
-#: src/BufferView.cpp:2129 src/frontends/qt/GuiBranches.cpp:225
+#: src/BufferView.cpp:2130 src/frontends/qt/GuiBranches.cpp:225
 msgid "Branch already exists"
 msgstr "La branche existe déjà"
 
-#: src/BufferView.cpp:3056
+#: src/BufferView.cpp:3057
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Insertion du document %1$s..."
 
-#: src/BufferView.cpp:3072
+#: src/BufferView.cpp:3073
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Document %1$s inséré."
 
-#: src/BufferView.cpp:3074
+#: src/BufferView.cpp:3075
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Impossible d'insérer le document %1$s"
 
-#: src/BufferView.cpp:3569
+#: src/BufferView.cpp:3570
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -28653,11 +28649,11 @@ msgstr ""
 "%1$s\n"
 "à cause de l'erreur : %2$s"
 
-#: src/BufferView.cpp:3571
+#: src/BufferView.cpp:3572
 msgid "Could not read file"
 msgstr "Lecture du fichier impossible"
 
-#: src/BufferView.cpp:3578
+#: src/BufferView.cpp:3579
 #, c-format
 msgid ""
 "%1$s\n"
@@ -28666,17 +28662,17 @@ msgstr ""
 "%1$s\n"
 "est illisible."
 
-#: src/BufferView.cpp:3579 src/frontends/qt/qt_helpers.cpp:311
-#: src/frontends/qt/qt_helpers.cpp:314 src/frontends/qt/qt_helpers.cpp:320
+#: src/BufferView.cpp:3580 src/frontends/qt/qt_helpers.cpp:322
+#: src/frontends/qt/qt_helpers.cpp:325 src/frontends/qt/qt_helpers.cpp:331
 #: src/output.cpp:39
 msgid "Could not open file"
 msgstr "Ouverture du fichier impossible"
 
-#: src/BufferView.cpp:3586
+#: src/BufferView.cpp:3587
 msgid "Reading not UTF-8 encoded file"
 msgstr "Lecture d'un fichier non encodé en UTF-8"
 
-#: src/BufferView.cpp:3587
+#: src/BufferView.cpp:3588
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -30765,11 +30761,11 @@ msgstr ""
 msgid "Unknown Inset"
 msgstr "Insert inconnu"
 
-#: src/Text.cpp:554 src/insets/InsetTabular.cpp:473
+#: src/Text.cpp:554 src/insets/InsetTabular.cpp:476
 msgid "Change tracking author index missing"
 msgstr "Index d'auteur de suivi des modifications manquant"
 
-#: src/Text.cpp:555 src/insets/InsetTabular.cpp:474
+#: src/Text.cpp:555 src/insets/InsetTabular.cpp:477
 #, c-format
 msgid ""
 "A change tracking author information for index %1$d is missing. This can "
@@ -30889,7 +30885,7 @@ msgstr " inconnu"
 msgid "Table Style "
 msgstr "Style de tableau "
 
-#: src/Text3.cpp:2385 src/frontends/qt/GuiApplication.cpp:1873
+#: src/Text3.cpp:2385 src/frontends/qt/GuiApplication.cpp:1887
 msgid "Missing argument"
 msgstr "Paramètre manquant"
 
@@ -31298,15 +31294,15 @@ msgstr ""
 
 #: src/VCBackend.cpp:1522 src/VCBackend.cpp:1526
 #: src/frontends/qt/FindAndReplace.cpp:381 src/frontends/qt/GuiPrefs.cpp:1895
-#: src/lyxfind.cpp:303 src/lyxfind.cpp:330 src/lyxfind.cpp:351
-#: src/lyxfind.cpp:694 src/lyxfind.cpp:722
+#: src/lyxfind.cpp:310 src/lyxfind.cpp:337 src/lyxfind.cpp:358
+#: src/lyxfind.cpp:701 src/lyxfind.cpp:729
 msgid "&Yes"
 msgstr "&Oui"
 
 #: src/VCBackend.cpp:1522 src/VCBackend.cpp:1526
 #: src/frontends/qt/FindAndReplace.cpp:381 src/frontends/qt/GuiPrefs.cpp:1895
-#: src/lyxfind.cpp:303 src/lyxfind.cpp:330 src/lyxfind.cpp:351
-#: src/lyxfind.cpp:694 src/lyxfind.cpp:722
+#: src/lyxfind.cpp:310 src/lyxfind.cpp:337 src/lyxfind.cpp:358
+#: src/lyxfind.cpp:701 src/lyxfind.cpp:729
 msgid "&No"
 msgstr "&Non"
 
@@ -31439,7 +31435,7 @@ msgid "Dings 4"
 msgstr "Dings 4"
 
 #: src/frontends/qt/ButtonController.cpp:222
-#: src/frontends/qt/GuiApplication.cpp:1997 src/frontends/qt/GuiCompare.cpp:193
+#: src/frontends/qt/GuiApplication.cpp:2011 src/frontends/qt/GuiCompare.cpp:193
 #: src/frontends/qt/GuiSymbols.cpp:346
 msgid "Cancel"
 msgstr "Annuler"
@@ -31511,8 +31507,8 @@ msgstr "Recherche avancée en cours (appuyer sur ESC pour annuler) . . ."
 msgid "Advanced search cancelled by user"
 msgstr "Recherche avancée annulée par l'utilisateur"
 
-#: src/frontends/qt/FindAndReplace.cpp:380 src/lyxfind.cpp:350
-#: src/lyxfind.cpp:693 src/lyxfind.cpp:721
+#: src/frontends/qt/FindAndReplace.cpp:380 src/lyxfind.cpp:357
+#: src/lyxfind.cpp:700 src/lyxfind.cpp:728
 msgid "Wrap search?"
 msgstr "Recherche récursive ?"
 
@@ -31663,89 +31659,89 @@ msgstr "Python détecté : %1$s"
 msgid "About LyX"
 msgstr "À propos de LyX"
 
-#: src/frontends/qt/GuiApplication.cpp:736
+#: src/frontends/qt/GuiApplication.cpp:750
 msgid "About %1"
 msgstr "À propos de %1"
 
-#: src/frontends/qt/GuiApplication.cpp:737 src/frontends/qt/GuiPrefs.cpp:3528
+#: src/frontends/qt/GuiApplication.cpp:751 src/frontends/qt/GuiPrefs.cpp:3528
 msgid "Preferences"
 msgstr "Préférences"
 
-#: src/frontends/qt/GuiApplication.cpp:738
+#: src/frontends/qt/GuiApplication.cpp:752
 msgid "Reconfigure"
 msgstr "Reconfigurer"
 
-#: src/frontends/qt/GuiApplication.cpp:739
+#: src/frontends/qt/GuiApplication.cpp:753
 msgid "Restore Defaults"
 msgstr "Restaurer le réglage implicite"
 
-#: src/frontends/qt/GuiApplication.cpp:740
+#: src/frontends/qt/GuiApplication.cpp:754
 msgid "Quit %1"
 msgstr "Quitter %1"
 
-#: src/frontends/qt/GuiApplication.cpp:741 src/frontends/qt/GuiInclude.cpp:318
+#: src/frontends/qt/GuiApplication.cpp:755 src/frontends/qt/GuiInclude.cpp:318
 #: src/frontends/qt/GuiInclude.cpp:328 src/frontends/qt/GuiInclude.cpp:333
 msgid "&OK"
 msgstr "&OK"
 
-#: src/frontends/qt/GuiApplication.cpp:743
+#: src/frontends/qt/GuiApplication.cpp:757
 msgid "Apply"
 msgstr "Appliquer"
 
-#: src/frontends/qt/GuiApplication.cpp:744
+#: src/frontends/qt/GuiApplication.cpp:758
 msgid "Reset"
 msgstr "RàZ"
 
-#: src/frontends/qt/GuiApplication.cpp:745
+#: src/frontends/qt/GuiApplication.cpp:759
 msgid "Open"
 msgstr "Ouvir"
 
-#: src/frontends/qt/GuiApplication.cpp:1270
+#: src/frontends/qt/GuiApplication.cpp:1284
 msgid "Nothing to do"
 msgstr "Rien à faire"
 
-#: src/frontends/qt/GuiApplication.cpp:1276
+#: src/frontends/qt/GuiApplication.cpp:1290
 msgid "Unknown action"
 msgstr "Action inconnue"
 
-#: src/frontends/qt/GuiApplication.cpp:1320
+#: src/frontends/qt/GuiApplication.cpp:1334
 msgid "Command not handled"
 msgstr "Commande non gérée"
 
-#: src/frontends/qt/GuiApplication.cpp:1326
+#: src/frontends/qt/GuiApplication.cpp:1340
 msgid "Command disabled"
 msgstr "Commande désactivée"
 
-#: src/frontends/qt/GuiApplication.cpp:1434
+#: src/frontends/qt/GuiApplication.cpp:1448
 #, c-format
 msgid "Bad debug value `%1$s'."
 msgstr "Valeur de débogage incorrecte « %1$s »."
 
-#: src/frontends/qt/GuiApplication.cpp:1463 src/frontends/qt/GuiView.cpp:2214
+#: src/frontends/qt/GuiApplication.cpp:1477 src/frontends/qt/GuiView.cpp:2214
 msgid "Command not allowed without a buffer open"
 msgstr "Commande non autorisée si aucun tampon n'est ouvert"
 
-#: src/frontends/qt/GuiApplication.cpp:1470
+#: src/frontends/qt/GuiApplication.cpp:1484
 msgid "the <LFUN-COMMAND> argument of buffer-forall is not valid"
 msgstr "l'argument <LFUN-COMMAND> de buffer-forall est invalide"
 
-#: src/frontends/qt/GuiApplication.cpp:1547
+#: src/frontends/qt/GuiApplication.cpp:1561
 msgid "Wrong focus!"
 msgstr "Mauvaise cible !"
 
-#: src/frontends/qt/GuiApplication.cpp:1681
+#: src/frontends/qt/GuiApplication.cpp:1695
 msgid "Running configure..."
 msgstr "Lancement de configure..."
 
-#: src/frontends/qt/GuiApplication.cpp:1691
+#: src/frontends/qt/GuiApplication.cpp:1705
 msgid "Reloading configuration..."
 msgstr "Rechargement de la configuration..."
 
-#: src/frontends/qt/GuiApplication.cpp:1701
+#: src/frontends/qt/GuiApplication.cpp:1715
 msgid "System reconfiguration failed"
 msgstr "Échec de la reconfiguration"
 
-#: src/frontends/qt/GuiApplication.cpp:1702
+#: src/frontends/qt/GuiApplication.cpp:1716
 msgid ""
 "The system reconfiguration has failed.\n"
 "Default textclass is used but LyX may\n"
@@ -31757,11 +31753,11 @@ msgstr ""
 "ne pourra peut-être pas fonctionner correctement.\n"
 "Merci de reconfigurer de nouveau si c'est le cas."
 
-#: src/frontends/qt/GuiApplication.cpp:1707
+#: src/frontends/qt/GuiApplication.cpp:1721
 msgid "System reconfigured"
 msgstr "Système reconfiguré"
 
-#: src/frontends/qt/GuiApplication.cpp:1708
+#: src/frontends/qt/GuiApplication.cpp:1722
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -31771,59 +31767,59 @@ msgstr ""
 "Il faut redémarrer LyX pour utiliser\n"
 "les classes de document mises à jour."
 
-#: src/frontends/qt/GuiApplication.cpp:1789
+#: src/frontends/qt/GuiApplication.cpp:1803
 msgid "Exiting."
 msgstr "Quitte."
 
-#: src/frontends/qt/GuiApplication.cpp:1885
+#: src/frontends/qt/GuiApplication.cpp:1899
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Ouverture du fichier d'aide %1$s..."
 
-#: src/frontends/qt/GuiApplication.cpp:1905
+#: src/frontends/qt/GuiApplication.cpp:1919
 msgid "Wrong argument. Must be 'examples' or 'templates'."
 msgstr "Argument incorrect . Doit être 'examples' ou 'templates'."
 
-#: src/frontends/qt/GuiApplication.cpp:1919
+#: src/frontends/qt/GuiApplication.cpp:1933
 msgid "Syntax: set-color <lyx_name> <x11_name> <x11_darkname>"
 msgstr "Syntaxe : set-color <nom_lyx> <nom_x11> <nom-inversé_x11"
 
-#: src/frontends/qt/GuiApplication.cpp:1939
+#: src/frontends/qt/GuiApplication.cpp:1953
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color « %1$s » a échoué - la couleur n'est pas définie ou ne peut pas "
 "être redéfinie"
 
-#: src/frontends/qt/GuiApplication.cpp:2044
+#: src/frontends/qt/GuiApplication.cpp:2058
 #, c-format
 msgid "Cannot iterate more than %1$d times"
 msgstr "Impossible d'itérer plus de %1$d fois"
 
-#: src/frontends/qt/GuiApplication.cpp:2144
+#: src/frontends/qt/GuiApplication.cpp:2158
 #, c-format
 msgid "Applied \"%1$s\" to %2$d buffer(s)"
 msgstr "\"%1$s\" appliqué à %2$d tampon(s)"
 
-#: src/frontends/qt/GuiApplication.cpp:2230
+#: src/frontends/qt/GuiApplication.cpp:2244
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Les valeurs implicites du document ont été enregistrées dans %1$s"
 
-#: src/frontends/qt/GuiApplication.cpp:2234
+#: src/frontends/qt/GuiApplication.cpp:2248
 msgid "Unable to save document defaults"
 msgstr "Impossible d'enregistrer les valeurs implicites du document"
 
-#: src/frontends/qt/GuiApplication.cpp:2474
-#: src/frontends/qt/GuiApplication.cpp:2489
+#: src/frontends/qt/GuiApplication.cpp:2488
+#: src/frontends/qt/GuiApplication.cpp:2503
 msgid "Unknown function."
 msgstr "Fonction inconnue."
 
-#: src/frontends/qt/GuiApplication.cpp:3024
+#: src/frontends/qt/GuiApplication.cpp:3038
 msgid "The current document was closed."
 msgstr "Le document courant était fermé."
 
-#: src/frontends/qt/GuiApplication.cpp:3034
+#: src/frontends/qt/GuiApplication.cpp:3048
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -31835,12 +31831,12 @@ msgstr ""
 "\n"
 "Exception : "
 
-#: src/frontends/qt/GuiApplication.cpp:3038
-#: src/frontends/qt/GuiApplication.cpp:3044
+#: src/frontends/qt/GuiApplication.cpp:3052
+#: src/frontends/qt/GuiApplication.cpp:3058
 msgid "Software exception Detected"
 msgstr "Détection d'une exception logicielle"
 
-#: src/frontends/qt/GuiApplication.cpp:3042
+#: src/frontends/qt/GuiApplication.cpp:3056
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -31848,12 +31844,12 @@ msgstr ""
 "LyX a reçu une exception vraiment sérieuse, il va maintenant essayer "
 "d'enregistrer tous les documents en cours de modification avant de quitter."
 
-#: src/frontends/qt/GuiApplication.cpp:3348
-#: src/frontends/qt/GuiApplication.cpp:3360
+#: src/frontends/qt/GuiApplication.cpp:3362
+#: src/frontends/qt/GuiApplication.cpp:3374
 msgid "Could not find UI definition file"
 msgstr "Fichier descriptif d'interface utilisateur introuvable"
 
-#: src/frontends/qt/GuiApplication.cpp:3349
+#: src/frontends/qt/GuiApplication.cpp:3363
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -31864,11 +31860,11 @@ msgstr ""
 "%1$s.\n"
 "Veuillez vérifier votre installation."
 
-#: src/frontends/qt/GuiApplication.cpp:3355
+#: src/frontends/qt/GuiApplication.cpp:3369
 msgid "Could not find default UI file"
 msgstr "Fichier interface utilisateur implicite introuvable"
 
-#: src/frontends/qt/GuiApplication.cpp:3356
+#: src/frontends/qt/GuiApplication.cpp:3370
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -31876,7 +31872,7 @@ msgstr ""
 "LyX n'a pu trouver le fichier interface utilisateur implicite !\n"
 "Veuillez vérifier votre installation."
 
-#: src/frontends/qt/GuiApplication.cpp:3361
+#: src/frontends/qt/GuiApplication.cpp:3375
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -35702,11 +35698,11 @@ msgstr "Mettre à jour %1$s"
 msgid "View %1$s"
 msgstr "Visionner %1$s"
 
-#: src/frontends/qt/Validator.cpp:214
+#: src/frontends/qt/Validator.cpp:218
 msgid "space"
 msgstr "espace"
 
-#: src/frontends/qt/Validator.cpp:242
+#: src/frontends/qt/Validator.cpp:246
 msgid ""
 "LyX does not provide LaTeX support for file names containing any of these "
 "characters:\n"
@@ -35714,48 +35710,48 @@ msgstr ""
 "LyX ne fournit pas de support LaTeX pour les noms de fichier contenant l'un "
 "de ces caractères :\n"
 
-#: src/frontends/qt/qt_helpers.cpp:280
+#: src/frontends/qt/qt_helpers.cpp:291
 msgid "Invalid URL"
 msgstr "URL invalide"
 
-#: src/frontends/qt/qt_helpers.cpp:281
+#: src/frontends/qt/qt_helpers.cpp:292
 #, c-format
 msgid "The URL `%1$s' could not be resolved."
 msgstr "L'URL « %1$s » n'a pas pu être résolu."
 
-#: src/frontends/qt/qt_helpers.cpp:287
+#: src/frontends/qt/qt_helpers.cpp:298
 msgid "URL could not be accessed"
 msgstr "URL inaccessible"
 
-#: src/frontends/qt/qt_helpers.cpp:288
+#: src/frontends/qt/qt_helpers.cpp:299
 #, c-format
 msgid "The URL `%1$s' could not be opened although it exists!"
 msgstr "L'URL `%1$s' n'a pu être ouvert bien qu'il existe !"
 
-#: src/frontends/qt/qt_helpers.cpp:312
+#: src/frontends/qt/qt_helpers.cpp:323
 msgid "The lyxpaperview script failed."
 msgstr "Le script lyxpaperview a échoué."
 
-#: src/frontends/qt/qt_helpers.cpp:315
+#: src/frontends/qt/qt_helpers.cpp:326
 #, c-format
 msgid "No file was found using the pattern `%1$s'."
 msgstr "Aucun fichier trouvé via le filtre `%1$s'."
 
-#: src/frontends/qt/qt_helpers.cpp:321
+#: src/frontends/qt/qt_helpers.cpp:332
 #, c-format
 msgid "The target `%1$s' could not be resolved."
 msgstr "La ccible « %1$s » n'a pas pu être résolue."
 
-#: src/frontends/qt/qt_helpers.cpp:357
+#: src/frontends/qt/qt_helpers.cpp:368
 msgid "Could not update TeX information"
 msgstr "Impossible de mettre à jour l'information TeX"
 
-#: src/frontends/qt/qt_helpers.cpp:358
+#: src/frontends/qt/qt_helpers.cpp:369
 #, c-format
 msgid "The script `%1$s' failed."
 msgstr "Le script `%1$s' a échoué."
 
-#: src/frontends/qt/qt_helpers.cpp:606
+#: src/frontends/qt/qt_helpers.cpp:617
 msgid "All Files "
 msgstr "Tous les fichiers "
 
@@ -36148,15 +36144,15 @@ msgstr "ERREUR : type de flottant non existant : %1$s"
 msgid "float"
 msgstr "flottant"
 
-#: src/insets/InsetFloat.cpp:911
+#: src/insets/InsetFloat.cpp:914
 msgid "Float: "
 msgstr "Flottant : "
 
-#: src/insets/InsetFloat.cpp:914
+#: src/insets/InsetFloat.cpp:917
 msgid "Subfloat: "
 msgstr "Sous-flottant : "
 
-#: src/insets/InsetFloat.cpp:924
+#: src/insets/InsetFloat.cpp:927
 msgid " (sideways)"
 msgstr " (couché)"
 
@@ -36173,7 +36169,7 @@ msgstr "LyX ne peut créer une liste de  %1$s"
 msgid "footnote"
 msgstr "note de bas de page"
 
-#: src/insets/InsetGraphics.cpp:562 src/insets/InsetInclude.cpp:787
+#: src/insets/InsetGraphics.cpp:563 src/insets/InsetInclude.cpp:787
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -36184,12 +36180,25 @@ msgstr ""
 "%1$s\n"
 "dans le répertoire temporaire."
 
-#: src/insets/InsetGraphics.cpp:778 src/insets/InsetGraphics.cpp:1015
+#: src/insets/InsetGraphics.cpp:779 src/insets/InsetGraphics.cpp:1029
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Aucune conversion de %1$s n'est nécessaire"
 
-#: src/insets/InsetGraphics.cpp:906
+#: src/insets/InsetGraphics.cpp:832
+msgid "Graphic not specified. Falling back to `draft' mode."
+msgstr "Graphique non spécifié. Passage en mode « brouillon »."
+
+#: src/insets/InsetGraphics.cpp:833
+#, c-format
+msgid "Graphic `%1$s' was not found. Falling back to `draft' mode."
+msgstr "Graphique %1$s introuvable. Passage en mode « brouillon »."
+
+#: src/insets/InsetGraphics.cpp:836
+msgid "Graphic not found!"
+msgstr "Graphique introuvable !"
+
+#: src/insets/InsetGraphics.cpp:920
 #, c-format
 msgid ""
 "The following characters in one of the graphic paths are\n"
@@ -36200,7 +36209,7 @@ msgstr ""
 "pas représentables dans l'encodage courant et on été omis : %1$s.\n"
 "Vous devez adapter l'encodage ou le chemin."
 
-#: src/insets/InsetGraphics.cpp:931
+#: src/insets/InsetGraphics.cpp:945
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Fichier graphique : %1$s"
@@ -36430,277 +36439,277 @@ msgstr "Tous les index"
 msgid "subindex"
 msgstr "sous-index"
 
-#: src/insets/InsetInfo.cpp:194
+#: src/insets/InsetInfo.cpp:195
 msgid "No long date format (language unknown)!"
 msgstr "Aucun format long pour la date (langue inconnue)"
 
-#: src/insets/InsetInfo.cpp:197
+#: src/insets/InsetInfo.cpp:198
 msgid "No medium date format (language unknown)!"
 msgstr "Aucun format intermédiaire pour la date (langue inconnue)"
 
-#: src/insets/InsetInfo.cpp:200
+#: src/insets/InsetInfo.cpp:201
 msgid "No short date format (language unknown)!"
 msgstr "Aucun format court pour la date (langue inconnue)"
 
-#: src/insets/InsetInfo.cpp:229
+#: src/insets/InsetInfo.cpp:230
 msgid "Please select a valid type!"
 msgstr "Veuillez sélectionner un format valide !"
 
-#: src/insets/InsetInfo.cpp:269
+#: src/insets/InsetInfo.cpp:270
 msgid "File name (with extension)"
 msgstr "Nom du fichier (avec suffixe)"
 
-#: src/insets/InsetInfo.cpp:270
+#: src/insets/InsetInfo.cpp:271
 msgid "File name (without extension)"
 msgstr "Nom du fichier (sans suffixe)"
 
-#: src/insets/InsetInfo.cpp:271
+#: src/insets/InsetInfo.cpp:272
 msgid "File path"
 msgstr "Chemin d'accès au fichier"
 
-#: src/insets/InsetInfo.cpp:272
+#: src/insets/InsetInfo.cpp:273
 msgid "Used text class"
 msgstr "Classe de texte utilisée"
 
-#: src/insets/InsetInfo.cpp:277 src/insets/InsetInfo.cpp:1116
+#: src/insets/InsetInfo.cpp:278 src/insets/InsetInfo.cpp:1145
 msgid "No version control!"
 msgstr "Pas de contrôle de version !"
 
-#: src/insets/InsetInfo.cpp:280
+#: src/insets/InsetInfo.cpp:281
 msgid "Revision[[Version Control]]"
 msgstr "Révision"
 
-#: src/insets/InsetInfo.cpp:281
+#: src/insets/InsetInfo.cpp:282
 msgid "Abbreviated revision[[Version Control]]"
 msgstr "Révision abrégée"
 
-#: src/insets/InsetInfo.cpp:282
+#: src/insets/InsetInfo.cpp:283
 msgid "Tree revision"
 msgstr "Révision de l'arborescence"
 
-#: src/insets/InsetInfo.cpp:285
+#: src/insets/InsetInfo.cpp:286
 msgid "Time[[of day]]"
 msgstr "Heure"
 
-#: src/insets/InsetInfo.cpp:290
+#: src/insets/InsetInfo.cpp:291
 msgid "LyX version"
 msgstr "Version de LyX"
 
-#: src/insets/InsetInfo.cpp:291
+#: src/insets/InsetInfo.cpp:292
 msgid "LyX layout format"
 msgstr "Format LyX"
 
-#: src/insets/InsetInfo.cpp:494
+#: src/insets/InsetInfo.cpp:495
 msgid "Invalid information inset"
 msgstr "Insert d'information invalide"
 
-#: src/insets/InsetInfo.cpp:497
+#: src/insets/InsetInfo.cpp:498
 #, c-format
 msgid "The keybard shortcut for the function '%1$s'"
 msgstr "Raccourci clavier pour la fonction « %1$s »"
 
-#: src/insets/InsetInfo.cpp:501
+#: src/insets/InsetInfo.cpp:502
 #, c-format
 msgid "The keybard shortcuts for the function '%1$s'"
 msgstr "Raccourcis clavier pour la fonction « %1$s »"
 
-#: src/insets/InsetInfo.cpp:505
+#: src/insets/InsetInfo.cpp:506
 #, c-format
 msgid "The menu location for the function '%1$s'"
 msgstr "Emplacement du menu pour la fonction « %1$s »"
 
-#: src/insets/InsetInfo.cpp:509
+#: src/insets/InsetInfo.cpp:510
 #, c-format
 msgid "The localization for the string '%1$s'"
 msgstr "Traduction pour la chaîne « %1$s »"
 
-#: src/insets/InsetInfo.cpp:513
+#: src/insets/InsetInfo.cpp:514
 #, c-format
 msgid "The toolbar icon for the function '%1$s'"
 msgstr "Icône de barre d'outils pour la fonction « %1$s »"
 
-#: src/insets/InsetInfo.cpp:517
+#: src/insets/InsetInfo.cpp:518
 #, c-format
 msgid "The preference setting for the preference key '%1$s'"
 msgstr "Réglage de préférence pour la clé « %1$s »"
 
-#: src/insets/InsetInfo.cpp:521
+#: src/insets/InsetInfo.cpp:522
 #, c-format
 msgid "Availability of the LaTeX package '%1$s'"
 msgstr "Disponibilité du paquetage LaTeX « %1$s »"
 
-#: src/insets/InsetInfo.cpp:525
+#: src/insets/InsetInfo.cpp:526
 #, c-format
 msgid "Availability of the LaTeX class '%1$s'"
 msgstr "Disponibilité de la classe LaTeX « %1$s »"
 
-#: src/insets/InsetInfo.cpp:530
+#: src/insets/InsetInfo.cpp:531
 msgid "The name of this file (incl. extension)"
 msgstr "Nom de ce fichier (suffixe inclus)"
 
-#: src/insets/InsetInfo.cpp:532
+#: src/insets/InsetInfo.cpp:533
 msgid "The name of this file (without extension)"
 msgstr "Nom de ce fichier (sans suffixe)"
 
-#: src/insets/InsetInfo.cpp:534
+#: src/insets/InsetInfo.cpp:535
 msgid "The path where this file is saved"
 msgstr "Chemin d'accès au fichier enregistré"
 
-#: src/insets/InsetInfo.cpp:536
+#: src/insets/InsetInfo.cpp:537
 msgid "The class this document uses"
 msgstr "Classe utilisée par ce document"
 
-#: src/insets/InsetInfo.cpp:540
+#: src/insets/InsetInfo.cpp:541
 msgid "Version control revision"
 msgstr "Révision du contrôle de version"
 
-#: src/insets/InsetInfo.cpp:542
+#: src/insets/InsetInfo.cpp:543
 msgid "Version control abbreviated revision"
 msgstr "Révision abrégée du contrôle de version"
 
-#: src/insets/InsetInfo.cpp:544
+#: src/insets/InsetInfo.cpp:545
 msgid "Version control tree revision"
 msgstr "Révision de l'arborescence du contrôle de version"
 
-#: src/insets/InsetInfo.cpp:546
+#: src/insets/InsetInfo.cpp:547
 msgid "Version control author"
 msgstr "Auteur du contrôle de version"
 
-#: src/insets/InsetInfo.cpp:548
+#: src/insets/InsetInfo.cpp:549
 msgid "Version control date"
 msgstr "Date du contrôle de version"
 
-#: src/insets/InsetInfo.cpp:550
+#: src/insets/InsetInfo.cpp:551
 msgid "Version control time"
 msgstr "Heure du contrôle de version"
 
-#: src/insets/InsetInfo.cpp:554
+#: src/insets/InsetInfo.cpp:555
 msgid "The current LyX version"
 msgstr "Version courante de LyX"
 
-#: src/insets/InsetInfo.cpp:556
+#: src/insets/InsetInfo.cpp:557
 msgid "The current LyX layout format"
 msgstr "Format LyX courant"
 
-#: src/insets/InsetInfo.cpp:559
+#: src/insets/InsetInfo.cpp:560
 msgid "The current date"
 msgstr "Date courante"
 
-#: src/insets/InsetInfo.cpp:562
+#: src/insets/InsetInfo.cpp:563
 msgid "The date of last save"
 msgstr "Date de la dernière sauvegarde"
 
-#: src/insets/InsetInfo.cpp:565
+#: src/insets/InsetInfo.cpp:566
 msgid "A static date"
 msgstr "Date statique"
 
-#: src/insets/InsetInfo.cpp:568
+#: src/insets/InsetInfo.cpp:569
 msgid "The current time"
 msgstr "Heure courante"
 
-#: src/insets/InsetInfo.cpp:571
+#: src/insets/InsetInfo.cpp:572
 msgid "The time of last save"
 msgstr "Heure de la dernière sauvegarde"
 
-#: src/insets/InsetInfo.cpp:574
+#: src/insets/InsetInfo.cpp:575
 msgid "A static time"
 msgstr "Heure statique"
 
-#: src/insets/InsetInfo.cpp:601
+#: src/insets/InsetInfo.cpp:602
 msgid "Missing \\end_inset at this point."
 msgstr "Il manque un \\end_inset à cet endroit."
 
-#: src/insets/InsetInfo.cpp:795
+#: src/insets/InsetInfo.cpp:824
 msgid "Unknown Info!"
 msgstr "Information inconnue !"
 
-#: src/insets/InsetInfo.cpp:804 src/insets/InsetInfo.cpp:991
+#: src/insets/InsetInfo.cpp:833 src/insets/InsetInfo.cpp:1020
 #, c-format
 msgid "Unknown action %1$s"
 msgstr "Action inconnue %1$s"
 
-#: src/insets/InsetInfo.cpp:810 src/insets/InsetInfo.cpp:920
-#: src/insets/InsetInfo.cpp:929 src/insets/InsetInfo.cpp:937
+#: src/insets/InsetInfo.cpp:839 src/insets/InsetInfo.cpp:949
+#: src/insets/InsetInfo.cpp:958 src/insets/InsetInfo.cpp:966
 msgid "undefined"
 msgstr "indéfini"
 
-#: src/insets/InsetInfo.cpp:833 src/insets/InsetInfo.cpp:883
+#: src/insets/InsetInfo.cpp:862 src/insets/InsetInfo.cpp:912
 msgid "Return[[Key]]"
 msgstr "Entrée"
 
-#: src/insets/InsetInfo.cpp:838
+#: src/insets/InsetInfo.cpp:867
 msgid "Tab[[Key]]"
 msgstr "Tab"
 
-#: src/insets/InsetInfo.cpp:843
+#: src/insets/InsetInfo.cpp:872
 msgid "PgUp"
 msgstr "Pg.Préc"
 
-#: src/insets/InsetInfo.cpp:848
+#: src/insets/InsetInfo.cpp:877
 msgid "PgDown"
 msgstr "PgSuiv"
 
-#: src/insets/InsetInfo.cpp:853
+#: src/insets/InsetInfo.cpp:882
 msgid "Backtab"
 msgstr "Ret.Arr"
 
-#: src/insets/InsetInfo.cpp:858
+#: src/insets/InsetInfo.cpp:887
 msgid "Tab"
 msgstr "Tab"
 
-#: src/insets/InsetInfo.cpp:868
+#: src/insets/InsetInfo.cpp:897
 msgid "CapsLock"
 msgstr "Verr.Maj"
 
-#: src/insets/InsetInfo.cpp:873
+#: src/insets/InsetInfo.cpp:902
 msgid "Control[[Key]]"
 msgstr "Control[[Key]]"
 
-#: src/insets/InsetInfo.cpp:878
+#: src/insets/InsetInfo.cpp:907
 msgid "Command[[Key]]"
 msgstr "Commande"
 
-#: src/insets/InsetInfo.cpp:888
+#: src/insets/InsetInfo.cpp:917
 msgid "Option[[Key]]"
 msgstr "Option"
 
-#: src/insets/InsetInfo.cpp:893
+#: src/insets/InsetInfo.cpp:922
 msgid "Delete[[Key]]"
 msgstr "Suppr"
 
-#: src/insets/InsetInfo.cpp:898
+#: src/insets/InsetInfo.cpp:927
 msgid "Fn+Del"
 msgstr "Fn+Suppr"
 
-#: src/insets/InsetInfo.cpp:903
+#: src/insets/InsetInfo.cpp:932
 msgid "Esc"
 msgstr "Esc"
 
-#: src/insets/InsetInfo.cpp:947
+#: src/insets/InsetInfo.cpp:976
 msgid "not set"
 msgstr "non réglé"
 
-#: src/insets/InsetInfo.cpp:959 src/insets/InsetInfo.cpp:976
+#: src/insets/InsetInfo.cpp:988 src/insets/InsetInfo.cpp:1005
 msgid "yes"
 msgstr "oui"
 
-#: src/insets/InsetInfo.cpp:962 src/insets/InsetInfo.cpp:979
+#: src/insets/InsetInfo.cpp:991 src/insets/InsetInfo.cpp:1008
 msgid "no"
 msgstr "non"
 
-#: src/insets/InsetInfo.cpp:1002
+#: src/insets/InsetInfo.cpp:1031
 #, c-format
 msgid "Can't determine menu entry for action %1$s in batch mode"
 msgstr ""
 "Impossible de déterminer l'entrée de menu pour l'action %1$s en mode "
 "traitement par lot"
 
-#: src/insets/InsetInfo.cpp:1010
+#: src/insets/InsetInfo.cpp:1039
 #, c-format
 msgid "No menu entry for action %1$s"
 msgstr "Pas d'entré de menu pour l'action %1$s"
 
-#: src/insets/InsetInfo.cpp:1135
+#: src/insets/InsetInfo.cpp:1164
 #, c-format
 msgid "%1$s[[vcs data]] unknown"
 msgstr "%1$s inconnu"
@@ -37229,11 +37238,11 @@ msgstr "Espace horizontal insécable (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Type de TDM inconnu"
 
-#: src/insets/InsetTabular.cpp:464
+#: src/insets/InsetTabular.cpp:467
 msgid "Change tracking data incomplete"
 msgstr "Date de suivi des modifications incomplète"
 
-#: src/insets/InsetTabular.cpp:465
+#: src/insets/InsetTabular.cpp:468
 msgid ""
 "Change tracking information for tabular row/column is incomplete. I will "
 "ignore this."
@@ -37241,15 +37250,15 @@ msgstr ""
 "L'information de suivi de modifications pour les lignes/colonnes de tableau "
 "est incomplète. Elle sera ignorée."
 
-#: src/insets/InsetTabular.cpp:5607
+#: src/insets/InsetTabular.cpp:5680
 msgid "Column movement not supported with multi-columns."
 msgstr "Déplacement de colonne non implanté pour les colonnes multiples."
 
-#: src/insets/InsetTabular.cpp:5625
+#: src/insets/InsetTabular.cpp:5698
 msgid "Row movement not supported with multi-rows."
 msgstr "Déplacement de ligne non implanté pour les lignes multiples."
 
-#: src/insets/InsetTabular.cpp:6127
+#: src/insets/InsetTabular.cpp:6219
 msgid "Selection size should match clipboard content."
 msgstr ""
 "La taille de la sélection doit correspondre au contenu du presse-papier."
@@ -37258,11 +37267,11 @@ msgstr ""
 msgid "[contains tracked changes]"
 msgstr "[contient les modifications suivies]"
 
-#: src/insets/InsetWrap.cpp:68
+#: src/insets/InsetWrap.cpp:64
 msgid "Wrap: "
 msgstr "Enrober : "
 
-#: src/insets/InsetWrap.cpp:201
+#: src/insets/InsetWrap.cpp:197
 msgid "wrap"
 msgstr "enrober"
 
@@ -37322,15 +37331,15 @@ msgstr "Aperçu prêt"
 msgid "Preview failed"
 msgstr "Échec de l'aperçu"
 
-#: src/lyxfind.cpp:268
+#: src/lyxfind.cpp:275
 msgid "Search error"
 msgstr "Erreur de recherche"
 
-#: src/lyxfind.cpp:268
+#: src/lyxfind.cpp:275
 msgid "Search string is empty"
 msgstr "La chaîne de caractères à chercher est vide"
 
-#: src/lyxfind.cpp:300
+#: src/lyxfind.cpp:307
 msgid ""
 "The search string matches the selection, and search is limited to "
 "selection.\n"
@@ -37340,11 +37349,11 @@ msgstr ""
 "à la sélection.\n"
 "Continuer à chercher en dehors?"
 
-#: src/lyxfind.cpp:302 src/lyxfind.cpp:329
+#: src/lyxfind.cpp:309 src/lyxfind.cpp:336
 msgid "Search outside selection?"
 msgstr "Rechercher en-dehors de la sélection ?"
 
-#: src/lyxfind.cpp:327
+#: src/lyxfind.cpp:334
 msgid ""
 "The search string was not found within the selection.\n"
 "Continue search outside?"
@@ -37352,7 +37361,7 @@ msgstr ""
 "La chaîne recherchée n'a pas été trouvée dans la sélection.\n"
 "Continuer à chercher en-dehors ?"
 
-#: src/lyxfind.cpp:345 src/lyxfind.cpp:691
+#: src/lyxfind.cpp:352 src/lyxfind.cpp:698
 msgid ""
 "End of file reached while searching forward.\n"
 "Continue searching from the beginning?"
@@ -37360,7 +37369,7 @@ msgstr ""
 "Fin du fichier atteinte lors de la recherche en avant.\n"
 "Continuer la recherche depuis le début ?"
 
-#: src/lyxfind.cpp:348 src/lyxfind.cpp:719
+#: src/lyxfind.cpp:355 src/lyxfind.cpp:726
 msgid ""
 "Beginning of file reached while searching backward.\n"
 "Continue searching from the end?"
@@ -37368,63 +37377,63 @@ msgstr ""
 "Début du fichier atteint lors de la recherche en arrière.\n"
 "Continuer la recherche depuis la fin ?"
 
-#: src/lyxfind.cpp:364
+#: src/lyxfind.cpp:371
 msgid "Search reached end of document, continuing from beginning."
 msgstr "Fin du document atteinte, la recherche continue à partir du début."
 
-#: src/lyxfind.cpp:365
+#: src/lyxfind.cpp:372
 msgid "Search reached beginning of document, continuing from end."
 msgstr ""
 "La recherche a atteint le début du document, elle continue depuis la fin."
 
-#: src/lyxfind.cpp:664
+#: src/lyxfind.cpp:671
 msgid "String not found in selection."
 msgstr "Chaîne de caractères introuvable dans le sélection."
 
-#: src/lyxfind.cpp:666
+#: src/lyxfind.cpp:673
 msgid "String not found."
 msgstr "Chaîne de caractères introuvable."
 
-#: src/lyxfind.cpp:669
+#: src/lyxfind.cpp:676
 msgid "String found."
 msgstr "Chaîne de caractères trouvée."
 
-#: src/lyxfind.cpp:671
+#: src/lyxfind.cpp:678
 msgid "String has been replaced."
 msgstr "Chaîne remplacée."
 
-#: src/lyxfind.cpp:674
+#: src/lyxfind.cpp:681
 #, c-format
 msgid "%1$d strings have been replaced in the selection."
 msgstr "%1$d chaînes remplacées dans le sélection."
 
-#: src/lyxfind.cpp:675
+#: src/lyxfind.cpp:682
 #, c-format
 msgid "%1$d strings have been replaced."
 msgstr "%1$d chaînes remplacées."
 
-#: src/lyxfind.cpp:4508
+#: src/lyxfind.cpp:4584
 msgid "One match has been replaced."
 msgstr "Une correspondance a été remplacée."
 
-#: src/lyxfind.cpp:4511
+#: src/lyxfind.cpp:4587
 msgid "Two matches have been replaced."
 msgstr "Deux correspondances ont été remplacées."
 
-#: src/lyxfind.cpp:4514
+#: src/lyxfind.cpp:4590
 #, c-format
 msgid "%1$d matches have been replaced."
 msgstr "%1$d correspondances ont été remplacées."
 
-#: src/lyxfind.cpp:4520
+#: src/lyxfind.cpp:4596
 msgid "Match not found."
 msgstr "Chaîne de caractères introuvable."
 
-#: src/lyxfind.cpp:4526
+#: src/lyxfind.cpp:4602
 msgid "Match has been replaced."
 msgstr "Chaîne de caractères remplacée."
 
-#: src/lyxfind.cpp:4528
+#: src/lyxfind.cpp:4604
 msgid "Match found."
 msgstr "Chaîne de caractères reconnue."
 
@@ -37623,11 +37632,11 @@ msgstr ""
 "Impossible d'ouvrir le document\n"
 "%1$s."
 
-#: src/output_latex.cpp:1658
+#: src/output_latex.cpp:1662
 msgid "Error in latexParagraphs"
 msgstr "Erreur dans latexParagraphs"
 
-#: src/output_latex.cpp:1659
+#: src/output_latex.cpp:1663
 #, c-format
 msgid ""
 "You are using at least one layout (%1$s) intended for the title, after using "
@@ -37773,111 +37782,111 @@ msgstr "Lecture des fichiers de configuration"
 msgid "Custom keyboard definition"
 msgstr "Définition d'un clavier personnalisé"
 
-#: src/support/debug.cpp:50
-msgid "LaTeX generation/execution"
-msgstr "Generation/Exécution de LaTeX"
+#: src/support/debug.cpp:50 src/support/debug.cpp:51
+msgid "Output source file generation/processing"
+msgstr "Génération/traitement du fichier source exporté."
 
-#: src/support/debug.cpp:51
+#: src/support/debug.cpp:52
 msgid "Math editor"
 msgstr "Éditeur mathématique"
 
-#: src/support/debug.cpp:52
+#: src/support/debug.cpp:53
 msgid "Font handling"
 msgstr "Gestion des polices"
 
-#: src/support/debug.cpp:53
+#: src/support/debug.cpp:54
 msgid "Textclass files reading"
 msgstr "Lecture des fichiers de classe"
 
-#: src/support/debug.cpp:54
+#: src/support/debug.cpp:55
 msgid "Version control"
 msgstr "Contrôle de version"
 
-#: src/support/debug.cpp:55
+#: src/support/debug.cpp:56
 msgid "External control interface"
 msgstr "Interface de contrôle externe"
 
-#: src/support/debug.cpp:56
+#: src/support/debug.cpp:57
 msgid "Undo/Redo mechanism"
 msgstr "Mécanisme défaire/refaire"
 
-#: src/support/debug.cpp:57
+#: src/support/debug.cpp:58
 msgid "User commands"
 msgstr "Commandes utilisateur"
 
-#: src/support/debug.cpp:58
+#: src/support/debug.cpp:59
 msgid "The LyX Lexer"
 msgstr "Le lexeur LyX"
 
-#: src/support/debug.cpp:59
+#: src/support/debug.cpp:60
 msgid "Dependency information"
 msgstr "Information sur les dépendances"
 
-#: src/support/debug.cpp:60
+#: src/support/debug.cpp:61
 msgid "LyX Insets"
 msgstr "Inserts LyX"
 
-#: src/support/debug.cpp:61
+#: src/support/debug.cpp:62
 msgid "Files used by LyX"
 msgstr "Fichiers utilisés par LyX"
 
-#: src/support/debug.cpp:62
+#: src/support/debug.cpp:63
 msgid "Workarea events"
 msgstr "Événements de la zone de travail"
 
-#: src/support/debug.cpp:63
+#: src/support/debug.cpp:64
 msgid "Clipboard handling"
 msgstr "Gestion du presse-papier"
 
-#: src/support/debug.cpp:64
+#: src/support/debug.cpp:65
 msgid "Graphics conversion and loading"
 msgstr "Conversion et chargement du graphique"
 
-#: src/support/debug.cpp:65
+#: src/support/debug.cpp:66
 msgid "Change tracking"
 msgstr "Suivi des modifications"
 
-#: src/support/debug.cpp:66
+#: src/support/debug.cpp:67
 msgid "External template/inset messages"
 msgstr "Messages de cadre/insert externe"
 
-#: src/support/debug.cpp:67
+#: src/support/debug.cpp:68
 msgid "RowPainter profiling"
 msgstr "Profilage de RowPainter"
 
-#: src/support/debug.cpp:68
+#: src/support/debug.cpp:69
 msgid "Scrolling debugging"
 msgstr "Déverminage déroulant"
 
-#: src/support/debug.cpp:69
+#: src/support/debug.cpp:70
 msgid "Math macros"
 msgstr "Macros mathématiques"
 
-#: src/support/debug.cpp:70
+#: src/support/debug.cpp:71
 msgid "RTL/Bidi"
 msgstr "RTL/Bidi"
 
-#: src/support/debug.cpp:71
+#: src/support/debug.cpp:72
 msgid "Locale/Internationalisation"
 msgstr "Locale/internationalisation"
 
-#: src/support/debug.cpp:72
+#: src/support/debug.cpp:73
 msgid "Selection copy/paste mechanism"
 msgstr "Mécanisme de sélection copier/coller"
 
-#: src/support/debug.cpp:73
+#: src/support/debug.cpp:74
 msgid "Find and replace mechanism"
 msgstr "Rechercher et remplacer"
 
-#: src/support/debug.cpp:74
+#: src/support/debug.cpp:75
 msgid "Developers' general debug messages"
 msgstr "Messages de débogage généraux pour les développeurs"
 
-#: src/support/debug.cpp:75 src/support/debug.cpp:76
+#: src/support/debug.cpp:76 src/support/debug.cpp:77
 msgid "All debugging messages"
 msgstr "Tous les messages de débogage"
 
-#: src/support/debug.cpp:183
+#: src/support/debug.cpp:184
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Débogage de '%1$s' (%2$s)"
@@ -38014,6 +38023,15 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Utilisateur inconnu"
+
+#~ msgid "foot"
+#~ msgstr "bas"
+
+#~ msgid "Set all lines"
+#~ msgstr "Mettre toutes les bordures"
+
+#~ msgid "LaTeX generation/execution"
+#~ msgstr "Generation/Exécution de LaTeX"
 
 #~ msgid "Running BibTeX."
 #~ msgstr "Exécution de BibTeX."
