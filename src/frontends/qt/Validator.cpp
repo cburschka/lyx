@@ -60,7 +60,7 @@ QValidator::State LengthValidator::validate(QString & qtext, int &) const
 		// A plausible intermediate value, see #12508
 		return QValidator::Intermediate;
 
-	if (ok && positive_ && d <=0)
+	if (ok && positive_ && d < 0)
 		return QValidator::Invalid;
 
 	if (qtext.isEmpty() || (ok && !dp))
