@@ -38,7 +38,8 @@ public:
 	enum OutputType {
 		wsDefault,
 		wsDryrun,
-		wsPreview
+		wsPreview,
+		wsSearchAdv
 	};
 	///
 	enum UlemCmdType {

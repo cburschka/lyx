@@ -358,8 +358,14 @@ void InsetMathNest::normalize(NormalStream & os) const
 
 void InsetMathNest::latex(otexstream & os, OutputParams const & runparams) const
 {
-	TeXMathStream wi(os, runparams.moving_arg, true,
-	                 runparams.dryrun ? TeXMathStream::wsDryrun : TeXMathStream::wsDefault,
+	TeXMathStream::OutputType ot;
+	if (runparams.for_searchAdv != OutputParams::NoSearch)
+		ot = TeXMathStream::wsSearchAdv;
+	else if (runparams.dryrun)
+		ot = TeXMathStream::wsDryrun;
+	else
+		ot = TeXMathStream::wsDefault;
+	TeXMathStream wi(os, runparams.moving_arg, true, ot,
 	                 runparams.encoding);
 	wi.strikeoutMath(runparams.inDeletedInset);
 	if (runparams.inulemcmd) {

@@ -2357,12 +2357,19 @@ int InsetMathHull::plaintext(odocstringstream & os,
 	odocstringstream oss;
 	otexrowstream ots(oss);
 	Encoding const * const enc = encodings.fromLyXName("utf8");
-	TeXMathStream wi(ots, false, true, TeXMathStream::wsDefault, enc);
 
+	TeXMathStream::OutputType ot;
+	if (op.for_searchAdv == OutputParams::NoSearch)
+		ot = TeXMathStream::wsDefault;
+	else
+		ot = TeXMathStream::wsSearchAdv;
 	// Fix Bug #6139
-	if (type_ == hullRegexp)
+	if (type_ == hullRegexp) {
+		TeXMathStream wi(ots, false, true, ot, enc);
 		write(wi);
+	}
 	else {
+		TeXMathStream wi(ots, false, true, ot, enc);
 		for (row_type r = 0; r < nrows(); ++r) {
 			for (col_type c = 0; c < ncols(); ++c)
 				wi << (c == 0 ? "" : "\t") << cell(index(r, c));

@@ -1425,6 +1425,10 @@ void writeString(docstring const & s, TeXMathStream & os)
 		os << (os.asciiOnly() ? escape(s) : s);
 		return;
 	}
+	else if (os.output() == TeXMathStream::wsSearchAdv) {
+		os << s;
+		return;
+	}
 
 	if (os.lockedMode()) {
 		bool space;
