@@ -3400,9 +3400,9 @@ void MatchStringAdv::CreateRegexp(FindAndReplaceOptions const & opt, string rege
 				balanced--;
 				if (balanced < 0)
 					break;
-				}
-				skip = 1;
 			}
+			skip = 1;
+		}
 		if (balanced != 0) {
 			regexIsValid = false;
 			regexError = "Unbalanced curly brackets in regexp \"" + regexp_str + "\"";
