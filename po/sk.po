@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-03-13 23:17+0100\n"
-"PO-Revision-Date: 2022-03-13 22:21+0000\n"
+"POT-Creation-Date: 2022-03-22 11:42+0100\n"
+"PO-Revision-Date: 2022-03-24 10:17+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1583,7 +1583,7 @@ msgstr "Shift+Enter hľadať naspäť priamo"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:140
 msgid "Search &backwards"
-msgstr "Hľada&ť naspäť"
+msgstr "spätné v&yhľadávanie"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:150
 msgid "Restrict search to whole words only"
@@ -1600,7 +1600,7 @@ msgstr "Dbať aj na veľkosť písmen"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:163
 msgid "Case &sensitive"
-msgstr "&A≠a"
+msgstr "Ro&zlíš veľké/malé"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:205
 #: src/frontends/qt/FindAndReplace.cpp:648
@@ -2889,7 +2889,7 @@ msgstr "Filtrovať aj podľa veľkosti písmen"
 
 #: src/frontends/qt/ui/LyXFilesUi.ui:75 src/frontends/qt/ui/RefUi.ui:71
 msgid "Case Sensiti&ve"
-msgstr "&A≠a"
+msgstr "Ro&zlíš veľké/malé"
 
 #: src/frontends/qt/ui/LyXFilesUi.ui:110
 msgid "The available language(s) of the selected file will be displayed here"
@@ -5198,9 +5198,9 @@ msgstr "Nájdi ďalší výskyt (Enter)"
 msgid "Treat uppercase/lowercase writing as distinct"
 msgstr "Veľkosť písmen je jednoznačná"
 
-#: src/frontends/qt/ui/SearchUi.ui:207 src/frontends/qt/GuiSearch.cpp:99
+#: src/frontends/qt/GuiSearch.cpp:100 src/frontends/qt/ui/SearchUi.ui:231
 msgid "&Case sensitive[[search]]"
-msgstr "&A≠a"
+msgstr "R&ozlíš veľké/malé"
 
 #: src/frontends/qt/ui/SearchUi.ui:214
 msgid "Match whole words only"
@@ -31550,7 +31550,7 @@ msgstr "Re&gulárny výraz"
 
 #: src/frontends/qt/GuiCitation.cpp:110
 msgid "Case se&nsitive"
-msgstr "&A≠a"
+msgstr "Ro&zlíš veľké/malé"
 
 #: src/frontends/qt/GuiCitation.cpp:112
 msgid "Search as you &type"
