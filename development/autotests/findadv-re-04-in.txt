@@ -28,13 +28,13 @@ CO: >> findadv-re-04.ctrl
 CN: Part 2
 CP: Init key
 TestBegin test.lyx -dbg key,find >> findadv-re-04.loga.txt 2>&1
-CN: Case insensitive, format not ignored [a-z]*
+CN: Case insensitive, format not ignored [a-z]+
 KK: \CF
 # Uncheck ignore format (depends on IT language)
 KK: \At\Ai\Ah
 KK: \CF
 KK: \Ce
-KK: \C\[F20]\\b[a-z]*\\b\[Return]\[Return]\[Return]
+KK: \C\[F20]\\b[a-z]+\\b\[Return]\[Return]\[Return]
 Cr: ^.*Putting 
 CP: Putting selection at .*idx: 0 par: 0 pos: 16\n with len: 3
 Cr: ^.*Putting 
@@ -47,12 +47,12 @@ CN: Part 3
 CP: Init key
 TestBegin test.lyx -dbg key,find >> findadv-re-04.loga.txt 2>&1
 
-CN: Case sensitive, format not ignored [a-z]*
+CN: Case sensitive, format not ignored [a-z]+
 KK: \CF
 KK: \At\Ai\Ah
 KK: \CF
 KK: \Ce
-KK: \Az\[Tab]\C\[F20][a-z]+\[Return]\[Return]\[Return]\[Return]
+KK: \Az\[Tab]\[Tab]\C\[F20][a-z]+\[Return]\[Return]\[Return]\[Return]
 Cr: ^.*Putting
 CP: Putting selection at .*idx: 0 par: 0 pos: 17\n with len: 2
 Cr: ^.*Putting
@@ -74,7 +74,7 @@ KK: \CF
 KK: \At\Ai\Ah
 KK: \CF
 KK: \Ce
-KK: \Az\[Tab]\C\[F20][A-Z]+\[Return]\[Return]\[Return]
+KK: \Az\[Tab]\[Tab]\C\[F20][A-Z]+\[Return]\[Return]\[Return]
 Cr: ^.*Putting
 CP: Putting selection at .*idx: 0 par: 0 pos: 16\n with len: 1
 Cr: ^.*Putting
