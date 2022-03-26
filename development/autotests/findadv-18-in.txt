@@ -2,7 +2,7 @@
 UseShortcut "C-F20" "regexp-mode"
 PrepareShortcuts
 
-Lang it_IT.utf8
+Lang sk_SK.utf8
 CO: findadv-18.ctrl
 TestBegin test.lyx -dbg key,find > findadv-18.loga.txt 2>&1
 KK: a b c\C\[Home]

@@ -29,7 +29,7 @@ KK: [\\w]* a
 # select whole words
 KK: \Ae
 # search next
-KK: \Al
+KK: \A>
 # The following Escape is too fast
 Sleep 1
 KK: \[Escape]

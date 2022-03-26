@@ -1,6 +1,6 @@
 # Finding consecutive macros in math mode
 #
-Lang it_IT.utf8
+Lang sk_SK.utf8
 CO: findadv-17.ctrl
 TestBegin test.lyx -dbg key,find > findadv-17.loga.txt 2>&1
 CN: Part 1
@@ -17,7 +17,7 @@ CP: Key (queried) [action=buffer-begin][Ctrl+Home]
 KK: \CF
 KK: \[Delete]
 # Uncheck ignore format
-KK: \Az\Ag\Ae
+KK: \At\Ai\Ah
 KK: \CF
 KK: \Cm\\beta\\alpha \[Return]
 CP: Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 1\n with len: 2
