@@ -917,7 +917,7 @@ string escape_for_regex(string s, bool withformat)
 			if (lastpos == s.size())
 				break;
 		}
-		size_t end_pos = s.find("\\endregexp{", regex_pos + 8);
+		size_t end_pos = s.find("\\endregexp", regex_pos + 8);
 		result += correctRegex(s.substr(regex_pos + 8, end_pos -(regex_pos + 8)), withformat);
 		lastpos = end_pos + 13;
 	}
@@ -1089,6 +1089,42 @@ static docstring buffer_to_latex(Buffer & buffer)
 	return ods.str();
 }
 
+static string latexNamesToUtf8(docstring strIn)
+{
+	string addtmp = to_utf8(strIn);
+	static regex const rmAcc("(\\\\)*(\\\\([a-z]+) ?)");
+	size_t lastpos = 0;
+	smatch sub;
+	string replace;
+	string add("");
+	if (accents.empty())
+		buildAccentsMap();
+	for (sregex_iterator it_add(addtmp.begin(), addtmp.end(), rmAcc), end; it_add != end; ++it_add) {
+		sub = *it_add;
+		if ((sub.position(2) - sub.position(0)) % 3 == 1) {
+			continue;
+		}
+		else {
+			string key = sub.str(3);
+			AccentsIterator it_ac = accents.find(key);
+			if (it_ac == accents.end()) {
+				replace = sub.str(2);
+			}
+			else {
+				replace = it_ac->second;
+			}
+		}
+		if (lastpos < (size_t) sub.position(2))
+			add += addtmp.substr(lastpos, sub.position(2) - lastpos);
+		add += replace;
+		lastpos = sub.position(2) + sub.length(2);
+	}
+	if (lastpos == 0)
+		add = addtmp;
+	LYXERR(Debug::FIND, "Adding to search string: '"
+			<< add << "'");
+	return add;
+}
 
 static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions const & opt)
 {
@@ -1113,19 +1149,17 @@ static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions co
 		if (ignoreFormats.getNonContent()) {
 			runparams.for_searchAdv |= OutputParams::SearchNonOutput;
 		}
+		string t("");
 		for (pos_type pit = pos_type(0); pit < (pos_type)buffer.paragraphs().size(); ++pit) {
 			Paragraph const & par = buffer.paragraphs().at(pit);
+			string add = latexNamesToUtf8(par.asString(pos_type(0), par.size(),
+								option,
+								&runparams));
 			LYXERR(Debug::FIND, "Adding to search string: '"
-			       << par.asString(pos_type(0), par.size(),
-					       option,
-					       &runparams)
-			       << "'");
-			str += par.asString(pos_type(0), par.size(),
-					    option,
-					    &runparams);
+				<< add << "'");
+			t += add;
 		}
 		// Even in ignore-format we have to remove "\text{}, \lyxmathsym{}" parts
-		string t = to_utf8(str);
 		while (regex_replace(t, t, "\\\\(text|lyxmathsym|ensuremath)\\{([^\\}]*)\\}", "$2"));
 		str = from_utf8(t);
 	}
@@ -1911,7 +1945,7 @@ void Intervall::removeAccents()
     buildAccentsMap();
   static regex const accre("\\\\(([\\S]|grave|breve|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot|ogonek|"
          "cedilla|subring|textsubring|subhat|textsubcircum|subtilde|textsubtilde|dgrave|textdoublegrave|rcap|textroundcap|slashed)\\{[^\\{\\}]+\\}"
-      "|((i|imath|jmath|cdot|[a-z]+space)|((backslash )?([lL]y[xX]|[tT]e[xX]|[lL]a[tT]e[xX]e?|lyxarrow))|(textquote|brace|guillemot)(left|right)|textasciicircum|mathcircumflex|sim)(?![a-zA-Z]))");
+      "|((i|imath|jmath|cdot|[a-z]+(space)?)|((backslash )?([lL]y[xX]|[tT]e[xX]|[lL]a[tT]e[xX]e?|lyxarrow))|(textquote|brace|guillemot)(left|right)|textasciicircum|mathcircumflex|sim)(?![a-zA-Z]))");
   smatch sub;
   for (sregex_iterator itacc(par.begin(), par.end(), accre), end; itacc != end; ++itacc) {
     sub = *itacc;
@@ -3862,10 +3896,10 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 			runparams.for_searchAdv |= OutputParams::SearchNonOutput;
 		}
 		LYXERR(Debug::FIND, "Stringifying with cur: "
-		       << cur << ", from pos: " << cur.pos() << ", end: " << end);
-		return par.asString(cur.pos(), end,
-			option,
-			&runparams);
+			<< cur << ", from pos: " << cur.pos() << ", end: " << end);
+		return from_utf8(latexNamesToUtf8(par.asString(cur.pos(), end,
+								option,
+								&runparams)));
 	} else if (cur.inMathed()) {
 		CursorSlice cs = cur.top();
 		MathData md = cs.cell();
@@ -3874,10 +3908,9 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 			 ? md.end()
 			 : md.begin() + cs.pos() + len );
 		MathData md2;
-		for (MathData::const_iterator it = md.begin() + cs.pos();
-		     it != it_end; ++it)
+		for (MathData::const_iterator it = md.begin() + cs.pos(); it != it_end; ++it)
 			md2.push_back(*it);
-		docstring s = asString(md2);
+		docstring s = from_utf8(latexNamesToUtf8(asString(md2)));
 		LYXERR(Debug::FIND, "Stringified math: '" << s << "'");
 		return s;
 	}
