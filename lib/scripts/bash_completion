@@ -1,7 +1,7 @@
 # lyx(1) completion 
 # Copyleft 2010 Cengiz Gunay <cengique@users.sf.net>
 
-have lyx &&
+_have lyx &&
 _lyx()
 {
         local cur g last
@@ -65,5 +65,4 @@ _lyx()
 	# turn it off if necessary
 	test $g -eq 0 && shopt -u extglob
 
-}
-[ "${have:-}" ] && complete -F _lyx $filenames lyx
+} && complete -F _lyx $filenames lyx
