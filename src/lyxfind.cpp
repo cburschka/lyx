@@ -838,7 +838,7 @@ string correctRegex(string t, bool withformat)
 	 * and \{, \}, \[, \] => {, }, [, ]
 	 */
 	string s("");
-	regex wordre("(\\\\)*(\\\\(([a-z]+) ?|[\\[\\]\\{\\}]))");
+	regex wordre("(\\\\)*(\\\\(([A-Za-z]+)( |\\{\\})?|[\\[\\]\\{\\}]))");
 	size_t lastpos = 0;
 	smatch sub;
 	bool backslashed = false;
@@ -880,7 +880,7 @@ string correctRegex(string t, bool withformat)
 			else {
 				AccentsIterator it_ac = accents.find(sub.str(4));
 				if (it_ac == accents.end()) {
-					replace = sub.str(3);
+					replace = sub.str(2);
 				}
 				else {
 					replace = it_ac->second;
@@ -1092,7 +1092,7 @@ static docstring buffer_to_latex(Buffer & buffer)
 static string latexNamesToUtf8(docstring strIn)
 {
 	string addtmp = to_utf8(strIn);
-	static regex const rmAcc("(\\\\)*(\\\\([a-z]+) ?)");
+	static regex const rmAcc("(\\\\)*(\\\\([A-Za-z]+)( |\\{\\})?)");
 	size_t lastpos = 0;
 	smatch sub;
 	string replace;
@@ -1943,9 +1943,15 @@ void Intervall::removeAccents()
 {
   if (accents.empty())
     buildAccentsMap();
-  static regex const accre("\\\\(([\\S]|grave|breve|ddot|dot|acute|dacute|mathring|check|hat|bar|tilde|subdot|ogonek|"
-         "cedilla|subring|textsubring|subhat|textsubcircum|subtilde|textsubtilde|dgrave|textdoublegrave|rcap|textroundcap|slashed)\\{[^\\{\\}]+\\}"
-      "|((i|imath|jmath|cdot|[a-z]+(space)?)|((backslash )?([lL]y[xX]|[tT]e[xX]|[lL]a[tT]e[xX]e?|lyxarrow))|(textquote|brace|guillemot)(left|right)|textasciicircum|mathcircumflex|sim)(?![a-zA-Z]))");
+  static regex const accre("\\\\("
+      "([\\S]|[a-z]+)\\{[^\\{\\}]+\\}"
+      "|("
+	"(i|imath|jmath|cdot|[a-z]+(space)?)"
+	"|((backslash )?([lL]y[xX]|[tT]e[xX]|[lL]a[tT]e[xX]e?|lyxarrow))"
+	"|(textquote|brace|guillemot)(left|right)"
+	"|textasciicircum|mathcircumflex|sim|[A-Za-z]+"
+      ")"
+      "(?![a-zA-Z]))");
   smatch sub;
   for (sregex_iterator itacc(par.begin(), par.end(), accre), end; itacc != end; ++itacc) {
     sub = *itacc;
