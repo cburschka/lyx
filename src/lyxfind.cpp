@@ -1094,7 +1094,7 @@ static string latexNamesToUtf8(docstring strIn)
 	string addtmp = to_utf8(strIn);
 	static regex const rmAcc("(\\\\)*("
 					 "\\\\([A-Za-z]+\\{.\\})"	// e.g. "ddot{A}" == sub.str(3)
-					"|\\\\([A-Za-z]+)( |\\{\\})?"	// e.g. "LyX", "LyX{}", "LyX " == sub.str(5)
+					"|\\\\([A-Za-z]+)( |\\{\\})?"	// e.g. "LyX", "LyX{}", "LyX " == sub.str(4)
 					")"
 				);
 	size_t lastpos = 0;
@@ -1113,7 +1113,7 @@ static string latexNamesToUtf8(docstring strIn)
 			if (sub.length(3) > 0)
 				key = sub.str(3);
 			else
-				key = sub.str(5);
+				key = sub.str(4);
 			AccentsIterator it_ac = accents.find(key);
 			if (it_ac == accents.end()) {
 				replace = sub.str(2);
@@ -1129,6 +1129,8 @@ static string latexNamesToUtf8(docstring strIn)
 	}
 	if (lastpos == 0)
 		add = addtmp;
+	else
+		add += addtmp.substr(lastpos, addtmp.length() - lastpos);
 	LYXERR(Debug::FIND, "Adding to search string: '"
 			<< add << "'");
 	return add;
