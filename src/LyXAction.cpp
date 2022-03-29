@@ -642,7 +642,7 @@ void LyXAction::init()
                visible in any window.
  * \li Syntax: buffer-forall <LFUN-COMMAND>
  * \li Params: <LFUN-COMMAND>: The command to be applied to the buffers.
- * \li Sample: Close all Notes in buffers: \n
+ * \li Sample: Close all Notes in all buffers: \n
                buffer-forall inset-forall Note inset-toggle close \n
                Toggle change tracking on buffers: \n
                buffer-forall changes-track \n
@@ -2179,8 +2179,10 @@ void LyXAction::init()
                yellow note insets.
  * \li Sample: Remove all index insets: \n
                    inset-forall Index char-delete-forward force \n
-               Close all Notes (also works for a particular branch, for example): \n
+               Close all Notes: \n
                    inset-forall Note inset-toggle close \n
+               Open all branch insets of branch "myBranch": \n
+                   inset-forall Branch:myBranch inset-toggle open \n
                Transform all yellow notes to comments \n
                    inset-forall Note:Note inset-modify note Note Comment \n
                Try to put LyX in an infinite loop if there is at least a Note: \n
