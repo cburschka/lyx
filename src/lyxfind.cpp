@@ -1092,7 +1092,11 @@ static docstring buffer_to_latex(Buffer & buffer)
 static string latexNamesToUtf8(docstring strIn)
 {
 	string addtmp = to_utf8(strIn);
-	static regex const rmAcc("(\\\\)*(\\\\([A-Za-z]+)( |\\{\\})?)");
+	static regex const rmAcc("(\\\\)*("
+					 "\\\\([A-Za-z]+\\{.\\})"	// e.g. "ddot{A}" == sub.str(3)
+					"|\\\\([A-Za-z]+)( |\\{\\})?"	// e.g. "LyX", "LyX{}", "LyX " == sub.str(5)
+					")"
+				);
 	size_t lastpos = 0;
 	smatch sub;
 	string replace;
@@ -1101,11 +1105,15 @@ static string latexNamesToUtf8(docstring strIn)
 		buildAccentsMap();
 	for (sregex_iterator it_add(addtmp.begin(), addtmp.end(), rmAcc), end; it_add != end; ++it_add) {
 		sub = *it_add;
-		if ((sub.position(2) - sub.position(0)) % 3 == 1) {
+		if ((sub.position(2) - sub.position(0)) % 2 == 1) {
 			continue;
 		}
 		else {
-			string key = sub.str(3);
+			string key;
+			if (sub.length(3) > 0)
+				key = sub.str(3);
+			else
+				key = sub.str(5);
 			AccentsIterator it_ac = accents.find(key);
 			if (it_ac == accents.end()) {
 				replace = sub.str(2);
