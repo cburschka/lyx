@@ -854,7 +854,7 @@ string correctRegex(string t, bool withformat)
 		else {
 			if (sub.str(4) == "backslash") {
 				replace = "\\";
-				if (withformat) {
+				{
 					// transforms '\backslash \{' into '\{'
 					// and '\{' into '{'
 					string next = t.substr(sub.position(2) + sub.str(2).length(), 2);
@@ -868,13 +868,25 @@ string correctRegex(string t, bool withformat)
 				replace = "^";
 			else if (backslashed) {
 				backslashed = false;
-				if (withformat && (sub.str(3) == "{"))
-					replace = accents["braceleft"];
-				else if (withformat && (sub.str(3) == "}"))
-					replace = accents["braceright"];
+				if (withformat) {
+					if (sub.str(3) == "{")
+						replace = accents["braceleft"];
+					else if (sub.str(3) == "}")
+						replace = accents["braceright"];
+					else {
+						// else part should not exist
+						LASSERT(1, /**/);
+					}
+				}
 				else {
-					// else part should not exist
-					LASSERT(1, /**/);
+					if (sub.str(3) == "{")
+						replace = "\\{";
+					else if (sub.str(3) == "}")
+						replace = "\\}";
+					else {
+						// else part should not exist
+						LASSERT(1, /**/);
+					}
 				}
 			}
 			else {
@@ -1129,7 +1141,7 @@ static string latexNamesToUtf8(docstring strIn)
 	}
 	if (lastpos == 0)
 		add = addtmp;
-	else
+	else if (addtmp.length() > lastpos)
 		add += addtmp.substr(lastpos, addtmp.length() - lastpos);
 	LYXERR(Debug::FIND, "Adding to search string: '"
 			<< add << "'");
@@ -1954,12 +1966,10 @@ void Intervall::removeAccents()
   if (accents.empty())
     buildAccentsMap();
   static regex const accre("\\\\("
-      "([\\S]|[a-z]+)\\{[^\\{\\}]+\\}"
+      "([\\S]|[A-Za-z]+)\\{[^\\{\\}]+\\}"
       "|("
-	"(i|imath|jmath|cdot|[a-z]+(space)?)"
-	"|((backslash )?([lL]y[xX]|[tT]e[xX]|[lL]a[tT]e[xX]e?|lyxarrow))"
-	"|(textquote|brace|guillemot)(left|right)"
-	"|textasciicircum|mathcircumflex|sim|[A-Za-z]+"
+	 "(backslash ([lL]y[xX]|[tT]e[xX]|[lL]a[tT]e[xX]e?|lyxarrow))"
+	"|[A-Za-z]+"
       ")"
       "(?![a-zA-Z]))");
   smatch sub;
