@@ -838,13 +838,14 @@ string correctRegex(string t, bool withformat)
 	 * and \{, \}, \[, \] => {, }, [, ]
 	 */
 	string s("");
-	regex wordre("(\\\\)*(\\\\(([A-Za-z]+)( |\\{\\})?|[\\[\\]\\{\\}]))");
+	regex wordre("(\\\\)*(\\\\(([A-Za-z]+|[\\{\\}])( |\\{\\})?|[\\[\\]\\{\\}]))");
 	size_t lastpos = 0;
 	smatch sub;
 	bool backslashed = false;
 	if (accents.empty())
 		buildAccentsMap();
 
+	//LYXERR0("correctRegex input '" << t << "'");
 	for (sregex_iterator it(t.begin(), t.end(), wordre), end; it != end; ++it) {
 		sub = *it;
 		string replace;
@@ -856,7 +857,6 @@ string correctRegex(string t, bool withformat)
 				replace = "\\";
 				{
 					// transforms '\backslash \{' into '\{'
-					// and '\{' into '{'
 					string next = t.substr(sub.position(2) + sub.str(2).length(), 2);
 					if ((next == "\\{") || (next == "\\}")) {
 						replace = "";
@@ -889,6 +889,10 @@ string correctRegex(string t, bool withformat)
 					}
 				}
 			}
+			else if (sub.str(4) == "{") // transforms '\{' into '{'
+				replace = "{";
+			else if (sub.str(4) == "}")
+                                replace = "}";
 			else {
 				AccentsIterator it_ac = accents.find(sub.str(4));
 				if (it_ac == accents.end()) {
@@ -908,6 +912,7 @@ string correctRegex(string t, bool withformat)
 		return t;
 	else if (lastpos < t.length())
 		s += t.substr(lastpos, t.length() - lastpos);
+	//LYXERR0("correctRegex output '" << s << "'");
 	return s;
 }
 
