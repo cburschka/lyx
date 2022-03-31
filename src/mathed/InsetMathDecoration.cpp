@@ -210,14 +210,14 @@ namespace {
 		t["grave"] = Attributes(true, "&grave;", "&#x0060;");
 		t["hat"] = Attributes(true, "&circ;", "&#x02C6;");
 		t["mathring"] = Attributes(true, "&ring;", "&#x02DA;");
-		t["overbrace"] = Attributes(true, "&OverBrace;", "&#xFE37;");
+		t["overbrace"] = Attributes(true, "&OverBrace;", "&#x23DE;");
 		t["overleftarrow"] = Attributes(true, "&xlarr;", "&#x27F5;");
 		t["overleftrightarrow"] = Attributes(true, "&xharr;", "&#x27F7;");
 		t["overline"] = Attributes(true, "&macr;", "&#x00AF;");
 		t["overrightarrow"] = Attributes(true, "&xrarr;", "&#x27F6;");
 		t["tilde"] = Attributes(true, "&tilde;", "&#x02DC;");
 		t["underbar"] = Attributes(false, "&UnderBar;", "&#x0332;");
-		t["underbrace"] = Attributes(false, "&UnderBrace;", "&#xFE38;");
+		t["underbrace"] = Attributes(false, "&UnderBrace;", "&#x23DF;");
 		t["underleftarrow"] = Attributes(false, "&xlarr;", "&#x27F5;");
 		t["underleftrightarrow"] = Attributes(false, "&xharr;", "&#x27F7;");
 		// this is the macron, again, but it works
