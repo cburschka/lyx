@@ -34,8 +34,14 @@ _lyx()
 	fi
 
 	case "$last" in
-	--export|-e)
-		_filedir '+(pdf[1234]|PDF[1234]|pdf|PDF|ps|PS|xhtml|XHTML)';;
+		# check for export fmt. Short list presented
+	--export|-e|-E|--export-to)
+		COMPREPLY=( $(compgen -W 'latex pdflatex luatex xetex xhtml' -- $cur) );;
+	--import|-i)
+		# check for import format. Short list presented
+		# (-i | --import) requireas a second input _filedir 
+		# must point to *tex | *text | *xhtml depending on choice
+		COMPREPLY=( $(compgen -W 'latex text luatex xetex xhtml' -- $cur) );;
 	-dbg)
 		# check for multiple debug commands
 		if [[ $cur == *,* ]]; then #
@@ -46,6 +52,34 @@ _lyx()
 		fi;;
 	--force-overwrite|-f)
 		COMPREPLY=( $( compgen -W 'all main none' -- $cur ) );;
+
+	latex|xetex|luatex|text|xhtml)
+		# we need to know if previous token was -i or -E
+		if [[ $COMP_CWORD > 2 ]]; then
+			prev=${COMP_WORDS[$(($COMP_CWORD - 2))]}
+		else
+			prev=''
+		fi
+		if (test $prev=="-i")|(test $prev=="-E"); then
+			case $last in
+				text)
+					_filedir '@(txt)' ;;
+				latex|luatex|xetex)
+					_filedir '@(tex)' ;;
+				xhtml)
+					_filedir '@(xhtml)' ;;
+			esac
+		fi;;
+	pdflatex)
+		# we need to know if previous token was -E
+		if [[ $COMP_CWORD > 2 ]]; then
+			prev=${COMP_WORDS[$(($COMP_CWORD - 2))]}
+		else
+			prev=''
+		fi
+		if test $prev == "-E"; then
+					_filedir '@(pdf)' 
+		fi;;
 	*)
           case "$cur" in
           -*)
@@ -58,7 +92,7 @@ _lyx()
 	  
           *)
 		# LyX files
-                _filedir '@(lyx)' 
+		_filedir '@(lyx)' 
           esac
 	esac
 
@@ -66,3 +100,4 @@ _lyx()
 	test $g -eq 0 && shopt -u extglob
 
 } && complete -F _lyx $filenames lyx
+
