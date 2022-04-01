@@ -3654,6 +3654,77 @@ std::string Tabular::getHAlignAsXmlAttribute(idx_type cell, bool is_xhtml) const
 	}
 }
 
+Tabular::XmlRowWiseBorders Tabular::computeXmlBorders(row_type row) const
+{
+	Tabular::XmlRowWiseBorders borders;
+
+	// Determine whether borders are required.
+	for (col_type c = 0; c < ncols(); ++c) {
+		if (row < nrows() - 1) {
+			if (!bottomLine(cellIndex(row, c))
+			    || !topLine(cellIndex(row + 1, c))) {
+				borders.completeBorder = false;
+			}
+			if (!bottomLine(cellIndex(row, c))
+			    && !topLine(cellIndex(row + 1, c))) {
+				borders.completeBorderBelow = false;
+			}
+		} else if (row == nrows() - 1 && !bottomLine(cellIndex(row, c))) {
+			borders.completeBorderBelow = false;
+		}
+
+		if ((row > 0 && !bottomLine(cellIndex(row - 1, c)) && !topLine(cellIndex(row, c))) ||
+		    (row == 0 && !topLine(cellIndex(row, c)))) {
+			borders.completeBorderAbove = false;
+		}
+	}
+
+	// Size of booktabs borders.
+	if (use_booktabs) {
+		if (borders.completeBorderAbove)
+			borders.borderTopWidth = row == 0 ? 2 : 1.5;
+		if (borders.completeBorderBelow) {
+			borders.borderBottomWidth = row == nrows() - 1 ? 2 : 1.5;
+			borders.borderBottomWidthComplete = 3 * borders.borderBottomWidth;
+		}
+	}
+
+	return borders;
+}
+
+
+std::vector<std::string> Tabular::computeCssStylePerCell(row_type row, col_type col, idx_type cell) const
+{
+	std::vector<std::string> styles;
+
+	// Fixed width.
+	Length const col_width = column_info[col].p_width;
+	if (!col_width.zero())
+		styles.emplace_back("width: " + col_width.asHTMLString());
+
+	// Borders and booktabs.
+	const Tabular::XmlRowWiseBorders borders = computeXmlBorders(row);
+
+	if (bottomLine(cell)) {
+		if (row < nrows() - 1 && borders.completeBorder)
+			styles.emplace_back("border-bottom: " + to_string(borders.borderBottomWidthComplete) + "px double");
+		else
+			styles.emplace_back("border-bottom: " + to_string(borders.borderBottomWidth) + "px solid");
+	}
+	if (rightLine(cell)) {
+		if (col < ncols() - 1 && leftLine(cell + 1))
+			styles.emplace_back("border-right: 3px double");
+		else
+			styles.emplace_back("border-right: 1px solid");
+	}
+	if (leftLine(cell))
+		styles.emplace_back("border-left: 1px solid");
+	if (topLine(cell))
+		styles.emplace_back("border-top: " + to_string(borders.borderTopWidth) + "px solid");
+
+	return styles;
+}
+
 
 docstring Tabular::xmlRow(XMLStream & xs, row_type row, OutputParams const & runparams,
 	bool header, bool is_xhtml, BufferParams::TableOutput docbook_table_output) const
@@ -3663,22 +3734,26 @@ docstring Tabular::xmlRow(XMLStream & xs, row_type row, OutputParams const & run
 
 	std::string const row_tag = is_xhtml_table ? "tr" : "row";
 	std::string const cell_tag = is_xhtml_table ? (header ? "th" : "td") : "entry";
+	Tabular::XmlRowWiseBorders const borders = computeXmlBorders(row);
 	idx_type cell = getFirstCellInRow(row);
 
 	xs << xml::StartTag(row_tag);
 	xs << xml::CR();
-	for (col_type c = 0; c < ncols(); ++c) {
+	for (col_type c = 0; c < ncols(); ++c, ++cell) {
 		if (isPartOfMultiColumn(row, c) || isPartOfMultiRow(row, c))
 			continue;
 
 		stringstream attr;
 
 		if (is_xhtml_table) {
-			Length const cwidth = column_info[c].p_width;
-			if (!cwidth.zero()) {
-				string const hwidth = cwidth.asHTMLString();
-				attr << "style='width: " << hwidth << ";' ";
-			}
+			const std::vector<std::string> styles = computeCssStylePerCell(row, c, cell);
+			attr << "style='" ;
+	        for (auto it = styles.begin(); it != styles.end(); ++it) {
+				attr << *it;
+				if (it != styles.end() - 1)
+					attr << "; ";
+	        }
+			attr << "' ";
 		}
 
 		attr << getHAlignAsXmlAttribute(cell, false) << " " << getVAlignAsXmlAttribute(cell);
@@ -3707,7 +3782,6 @@ docstring Tabular::xmlRow(XMLStream & xs, row_type row, OutputParams const & run
 		}
 		xs << xml::EndTag(cell_tag);
 		xs << xml::CR();
-		++cell;
 	}
 	xs << xml::EndTag(row_tag);
 	xs << xml::CR();

@@ -776,7 +776,6 @@ InsetLayout Tabular
 			display: inline-block;
 		}
 		td {
-			border: 1px solid black;
 			padding: 0.5ex;
 		}
 	EndHTMLStyle

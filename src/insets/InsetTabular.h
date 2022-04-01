@@ -850,6 +850,24 @@ public:
 	///
 	typedef std::vector<ColumnData> column_vector;
 
+private:
+	// Determines the style of borders, per row.
+	class XmlRowWiseBorders {
+	public:
+		// Whether to draw double bottom line.
+		bool completeBorder = true;
+
+		// Whether to draw booktabs' thicker lines.
+		bool completeBorderAbove = true;
+		bool completeBorderBelow = true;
+
+		// Size of the borders.
+		double borderBottomWidth = 1.0;
+		double borderBottomWidthComplete = 3.0;
+		double borderTopWidth = 1.0;
+	};
+
+public:
 	///
 	idx_type numberofcells;
 	///
@@ -939,6 +957,8 @@ public:
 	docstring xmlRow(XMLStream & xs, row_type row, OutputParams const &,
 	                 bool header = false, bool is_xhtml = true,
 					 BufferParams::TableOutput docbook_table_output = BufferParams::TableOutput::HTMLTable) const;
+	XmlRowWiseBorders computeXmlBorders(row_type row) const;
+	std::vector<std::string> computeCssStylePerCell(row_type row, col_type col, idx_type cell) const;
 
 	/// Transforms the vertical alignment of the given cell as a prebaked XML attribute (for HTML and CALS).
 	std::string getHAlignAsXmlAttribute(idx_type cell, bool is_xhtml = true) const;
