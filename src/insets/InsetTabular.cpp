@@ -3612,13 +3612,6 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 }
 
 
-void Tabular::docbookRow(XMLStream & xs, row_type row,
-		   OutputParams const & runparams, bool header) const
-{
-	docbookRow(xs, row, runparams, header, buffer().params().docbook_table_output);
-}
-
-
 std::string Tabular::getVAlignAsXmlAttribute(idx_type cell) const
 {
 	switch (getVAlignment(cell)) {
@@ -3662,10 +3655,13 @@ std::string Tabular::getHAlignAsXmlAttribute(idx_type cell, bool is_xhtml) const
 }
 
 
-void Tabular::docbookRow(XMLStream & xs, row_type row, OutputParams const & runparams, bool header, BufferParams::TableOutput docbook_table_output) const
+docstring Tabular::xmlRow(XMLStream & xs, row_type row, OutputParams const & runparams,
+	bool header, bool is_xhtml, BufferParams::TableOutput docbook_table_output) const
 {
-	std::string const row_tag = (docbook_table_output == BufferParams::TableOutput::HTMLTable) ? "tr" : "row";
-	std::string const cell_tag = (docbook_table_output == BufferParams::TableOutput::HTMLTable) ? (header ? "th" : "td") : "entry";
+	docstring ret;
+
+	std::string const row_tag = (is_xhtml || docbook_table_output == BufferParams::TableOutput::HTMLTable) ? "tr" : "row";
+	std::string const cell_tag = (is_xhtml || docbook_table_output == BufferParams::TableOutput::HTMLTable) ? (header ? "th" : "td") : "entry";
 	idx_type cell = getFirstCellInRow(row);
 
 	xs << xml::StartTag(row_tag);
@@ -3676,7 +3672,7 @@ void Tabular::docbookRow(XMLStream & xs, row_type row, OutputParams const & runp
 
 		stringstream attr;
 
-		if (docbook_table_output == BufferParams::TableOutput::HTMLTable) {
+		if (is_xhtml || docbook_table_output == BufferParams::TableOutput::HTMLTable) {
 			Length const cwidth = column_info[c].p_width;
 			if (!cwidth.zero()) {
 				string const hwidth = cwidth.asHTMLString();
@@ -3690,24 +3686,32 @@ void Tabular::docbookRow(XMLStream & xs, row_type row, OutputParams const & runp
 			attr << " colspan='" << columnSpan(cell) << "'";
 		else if (isMultiRow(cell))
 			attr << " rowspan='" << rowSpan(cell) << "'";
-		else if (docbook_table_output == BufferParams::TableOutput::CALSTable)
+		else if (!is_xhtml && docbook_table_output == BufferParams::TableOutput::CALSTable)
 			attr << " colname='c" << (c + 1) << "'"; // CALS column numbering starts at 1.
 
 		// All cases where there should be a line *below* this row.
-		if (docbook_table_output == BufferParams::TableOutput::CALSTable && row_info[row].bottom_space_default)
+		if (!is_xhtml && docbook_table_output == BufferParams::TableOutput::CALSTable && row_info[row].bottom_space_default)
 			attr << " rowsep='1'";
 
-		OutputParams rp = runparams;
-		rp.docbook_in_par = false;
-		rp.docbook_force_pars = true;
+		// Render the cell as either XHTML or DocBook.
 		xs << xml::StartTag(cell_tag, attr.str(), true);
-		cellInset(cell)->docbook(xs, rp);
+		if (is_xhtml) {
+			ret += cellInset(cell)->xhtml(xs, runparams);
+		} else {
+			// DocBook: no return value for this function.
+			OutputParams rp = runparams;
+			rp.docbook_in_par = false;
+			rp.docbook_force_pars = true;
+			cellInset(cell)->docbook(xs, rp);
+		}
 		xs << xml::EndTag(cell_tag);
 		xs << xml::CR();
 		++cell;
 	}
 	xs << xml::EndTag(row_tag);
 	xs << xml::CR();
+
+	return ret;
 }
 
 
@@ -3730,7 +3734,7 @@ void Tabular::docbook(XMLStream & xs, OutputParams const & runparams) const
 		xs << xml::StartTag(tag);
 		for (row_type r = 0; r < nrows(); ++r)
 			if (row_info[r].caption)
-				docbookRow(xs, r, runparams);
+				xmlRow(xs, r, runparams, false, false, buffer().params().docbook_table_output);
 		xs << xml::EndTag(tag);
 		xs << xml::CR();
 	}
@@ -3764,7 +3768,7 @@ void Tabular::docbook(XMLStream & xs, OutputParams const & runparams) const
 			if (((havefirsthead && row_info[r].endfirsthead) ||
 			     (havehead && row_info[r].endhead)) &&
 			    !row_info[r].caption) {
-				docbookRow(xs, r, runparams, true);
+				xmlRow(xs, r, runparams, true, false, buffer().params().docbook_table_output);
 			}
 		}
 		xs << xml::EndTag("thead");
@@ -3782,7 +3786,7 @@ void Tabular::docbook(XMLStream & xs, OutputParams const & runparams) const
 			if (((havelastfoot && row_info[r].endlastfoot) ||
 			     (havefoot && row_info[r].endfoot)) &&
 			    !row_info[r].caption) {
-				docbookRow(xs, r, runparams); // TODO: HTML vs CALS
+				xmlRow(xs, r, runparams, false, false, buffer().params().docbook_table_output);
 			}
 		}
 		xs << xml::EndTag("tfoot");
@@ -3795,7 +3799,7 @@ void Tabular::docbook(XMLStream & xs, OutputParams const & runparams) const
 	xs << xml::CR();
 	for (row_type r = 0; r < nrows(); ++r)
 		if (isValidRow(r))
-			docbookRow(xs, r, runparams);
+			xmlRow(xs, r, runparams, false, false, buffer().params().docbook_table_output);
 	xs << xml::EndTag("tbody");
 	xs << xml::CR();
 
@@ -3804,43 +3808,6 @@ void Tabular::docbook(XMLStream & xs, OutputParams const & runparams) const
 		xs << xml::EndTag("informaltable");
 		xs << xml::CR();
 	}
-}
-
-
-docstring Tabular::xhtmlRow(XMLStream & xs, row_type row,
-			   OutputParams const & runparams, bool header) const
-{
-	docstring ret;
-	string const celltag = header ? "th" : "td";
-	idx_type cell = getFirstCellInRow(row);
-
-	xs << xml::StartTag("tr");
-	for (col_type c = 0; c < ncols(); ++c) {
-		if (isPartOfMultiColumn(row, c) || isPartOfMultiRow(row, c))
-			continue;
-
-		stringstream attr;
-
-		Length const cwidth = column_info[c].p_width;
-		if (!cwidth.zero()) {
-			string const hwidth = cwidth.asHTMLString();
-			attr << "style=\"width: " << hwidth << ";\" ";
-		}
-
-		attr << getHAlignAsXmlAttribute(cell, true) << " " << getVAlignAsXmlAttribute(cell);
-
-		if (isMultiColumn(cell))
-			attr << " colspan='" << columnSpan(cell) << "'";
-		else if (isMultiRow(cell))
-			attr << " rowspan='" << rowSpan(cell) << "'";
-
-		xs << xml::StartTag(celltag, attr.str(), true) << xml::CR();
-		ret += cellInset(cell)->xhtml(xs, runparams);
-		xs << xml::EndTag(celltag) << xml::CR();
-		++cell;
-	}
-	xs << xml::EndTag("tr");
-	return ret;
 }
 
 
@@ -3870,7 +3837,7 @@ docstring Tabular::xhtml(XMLStream & xs, OutputParams const & runparams) const
 			xs << xml::CR();
 			for (row_type r = 0; r < nrows(); ++r)
 				if (row_info[r].caption)
-					ret += xhtmlRow(xs, r, runparams);
+					ret += xmlRow(xs, r, runparams);
 			xs << xml::EndTag("div");
 			xs << xml::CR();
 		}
@@ -3892,7 +3859,7 @@ docstring Tabular::xhtml(XMLStream & xs, OutputParams const & runparams) const
 			if (((havefirsthead && row_info[r].endfirsthead) ||
 			     (havehead && row_info[r].endhead)) &&
 			    !row_info[r].caption) {
-				ret += xhtmlRow(xs, r, runparams, true);
+				ret += xmlRow(xs, r, runparams, true);
 			}
 		}
 		xs << xml::EndTag("thead");
@@ -3908,7 +3875,7 @@ docstring Tabular::xhtml(XMLStream & xs, OutputParams const & runparams) const
 			if (((havelastfoot && row_info[r].endlastfoot) ||
 			     (havefoot && row_info[r].endfoot)) &&
 			    !row_info[r].caption) {
-				ret += xhtmlRow(xs, r, runparams);
+				ret += xmlRow(xs, r, runparams);
 			}
 		}
 		xs << xml::EndTag("tfoot");
@@ -3918,7 +3885,7 @@ docstring Tabular::xhtml(XMLStream & xs, OutputParams const & runparams) const
 	xs << xml::StartTag("tbody") << xml::CR();
 	for (row_type r = 0; r < nrows(); ++r)
 		if (isValidRow(r))
-			ret += xhtmlRow(xs, r, runparams);
+			ret += xmlRow(xs, r, runparams);
 	xs << xml::EndTag("tbody");
 	xs << xml::CR();
 	xs << xml::EndTag("table");

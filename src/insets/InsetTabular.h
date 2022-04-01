@@ -935,14 +935,10 @@ public:
 				idx_type cell, row_type row, col_type column,
 				std::vector<unsigned int> const &,
 				bool onlydata, size_t max_length) const;
-	/// auxiliary function for DocBook
-	void docbookRow(XMLStream &, row_type, OutputParams const &,
-					bool header = false) const;
-	void docbookRow(XMLStream &, row_type, OutputParams const &,
-					bool header, BufferParams::TableOutput docbook_table_output) const;
 	///
-	docstring xhtmlRow(XMLStream & xs, row_type, OutputParams const &,
-	                   bool header = false) const;
+	docstring xmlRow(XMLStream & xs, row_type row, OutputParams const &,
+	                 bool header = false, bool is_xhtml = true,
+					 BufferParams::TableOutput docbook_table_output = BufferParams::TableOutput::HTMLTable) const;
 
 	/// Transforms the vertical alignment of the given cell as a prebaked XML attribute (for HTML and CALS).
 	std::string getHAlignAsXmlAttribute(idx_type cell, bool is_xhtml = true) const;
