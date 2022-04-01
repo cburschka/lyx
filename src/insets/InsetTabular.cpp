@@ -3659,9 +3659,10 @@ docstring Tabular::xmlRow(XMLStream & xs, row_type row, OutputParams const & run
 	bool header, bool is_xhtml, BufferParams::TableOutput docbook_table_output) const
 {
 	docstring ret;
+	const bool is_xhtml_table = is_xhtml || docbook_table_output == BufferParams::TableOutput::HTMLTable;
 
-	std::string const row_tag = (is_xhtml || docbook_table_output == BufferParams::TableOutput::HTMLTable) ? "tr" : "row";
-	std::string const cell_tag = (is_xhtml || docbook_table_output == BufferParams::TableOutput::HTMLTable) ? (header ? "th" : "td") : "entry";
+	std::string const row_tag = is_xhtml_table ? "tr" : "row";
+	std::string const cell_tag = is_xhtml_table ? (header ? "th" : "td") : "entry";
 	idx_type cell = getFirstCellInRow(row);
 
 	xs << xml::StartTag(row_tag);
@@ -3672,7 +3673,7 @@ docstring Tabular::xmlRow(XMLStream & xs, row_type row, OutputParams const & run
 
 		stringstream attr;
 
-		if (is_xhtml || docbook_table_output == BufferParams::TableOutput::HTMLTable) {
+		if (is_xhtml_table) {
 			Length const cwidth = column_info[c].p_width;
 			if (!cwidth.zero()) {
 				string const hwidth = cwidth.asHTMLString();
