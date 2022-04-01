@@ -946,6 +946,9 @@ public:
 	docstring xhtmlRow(XMLStream & xs, row_type, OutputParams const &,
 	                   bool header = false) const;
 
+	/// Transforms the vertical alignment of the given cell as a prebaked XML attribute (for HTML and CALS).
+	std::string getVAlignAsXmlAttribute(idx_type cell) const;
+
 	/// change associated Buffer
 	void setBuffer(Buffer & buffer);
 	/// retrieve associated Buffer

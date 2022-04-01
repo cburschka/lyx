@@ -3626,6 +3626,19 @@ void Tabular::docbookRow(XMLStream & xs, row_type row,
 }
 
 
+std::string Tabular::getVAlignAsXmlAttribute(idx_type cell) const
+{
+	switch (getVAlignment(cell)) {
+	case LYX_VALIGN_TOP:
+		return "valign='top'";
+	case LYX_VALIGN_BOTTOM:
+		return "valign='bottom'";
+	case LYX_VALIGN_MIDDLE:
+		return "valign='middle'";
+	}
+}
+
+
 void Tabular::docbookRowAsHTML(XMLStream & xs, row_type row,
 		   OutputParams const & runparams, bool header) const
 {
@@ -3666,19 +3679,7 @@ void Tabular::docbookRowAsHTML(XMLStream & xs, row_type row,
 			attr << "center";
 			break;
 		}
-		attr << "'";
-		attr << " valign='";
-		switch (getVAlignment(cell)) {
-		case LYX_VALIGN_TOP:
-			attr << "top";
-			break;
-		case LYX_VALIGN_BOTTOM:
-			attr << "bottom";
-			break;
-		case LYX_VALIGN_MIDDLE:
-			attr << "middle";
-		}
-		attr << "'";
+		attr << "' " << getVAlignAsXmlAttribute(cell);
 
 		if (isMultiColumn(cell))
 			attr << " colspan='" << columnSpan(cell) << "'";
@@ -3733,19 +3734,7 @@ void Tabular::docbookRowAsCALS(XMLStream & xs, row_type row,
 			attr << "center";
 			break;
 		}
-		attr << "'";
-		attr << " valign='";
-		switch (getVAlignment(cell)) {
-		case LYX_VALIGN_TOP:
-			attr << "top";
-			break;
-		case LYX_VALIGN_BOTTOM:
-			attr << "bottom";
-			break;
-		case LYX_VALIGN_MIDDLE:
-			attr << "middle";
-		}
-		attr << "'";
+		attr << "' " << getVAlignAsXmlAttribute(cell);
 
 		if (isMultiColumn(cell))
 			attr << " colspan='" << columnSpan(cell) << "'";
@@ -3897,19 +3886,7 @@ docstring Tabular::xhtmlRow(XMLStream & xs, row_type row,
 			attr << "center";
 			break;
 		}
-		attr << "'";
-		attr << " valign='";
-		switch (getVAlignment(cell)) {
-		case LYX_VALIGN_TOP:
-			attr << "top";
-			break;
-		case LYX_VALIGN_BOTTOM:
-			attr << "bottom";
-			break;
-		case LYX_VALIGN_MIDDLE:
-			attr << "middle";
-		}
-		attr << "'";
+		attr << "' " << getVAlignAsXmlAttribute(cell);
 
 		if (isMultiColumn(cell))
 			attr << " colspan='" << columnSpan(cell) << "'";
