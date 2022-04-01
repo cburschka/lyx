@@ -1037,7 +1037,7 @@ private:
 	 ** @todo Normalization should also expand macros, if the corresponding
 	 ** search option was checked.
 	 **/
-	string normalize(docstring const & s) const;
+	string normalize(docstring const & s, bool ignore_fomat) const;
 	// normalized string to search
 	string par_as_string;
 	// regular expression to use for searching
@@ -3029,7 +3029,7 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
       // Remove the key with all parameters and following spaces
       size_t pos;
       size_t start;
-      if (interval_.par[actual._dataEnd-1] == ' ')
+      if (interval_.par[actual._dataEnd-1] == ' ' || interval_.par[actual._dataEnd-1] == '}')
         start = actual._dataEnd;
       else
         start = actual._dataEnd+1;
@@ -3536,7 +3536,7 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 		previous_single_replace = true;
 	}
 	// When using regexp, braces are hacked already by escape_for_regex()
-	par_as_string = normalize(ds);
+	par_as_string = normalize(ds, opt.ignoreformat);
 	open_braces = 0;
 	close_wildcards = 0;
 
@@ -3660,7 +3660,7 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 
 	docstring docstr = stringifyFromForSearch(opt, cur, len);
 	string str;
-	str = normalize(docstr);
+	str = normalize(docstr, opt.ignoreformat);
 	if (!opt.ignoreformat) {
 		str = correctlanguagesetting(str, false, !opt.ignoreformat);
 		// remove closing '}' and '\n' to allow for use of '$' in regex
@@ -3854,16 +3854,22 @@ static bool simple_replace(string &t, string from, string to)
 }
 #endif
 
-string MatchStringAdv::normalize(docstring const & s) const
+string MatchStringAdv::normalize(docstring const & s, bool ignore_format) const
 {
 	string t;
 	t = lyx::to_utf8(s);
 	// Remove \n at begin
 	while (!t.empty() && t[0] == '\n')
 		t = t.substr(1);
-	// Remove \n at end
-	while (!t.empty() && t[t.size() - 1] == '\n')
-		t = t.substr(0, t.size() - 1);
+	// Remove [%]*\n at end
+	while (!t.empty() && t[t.size() - 1] == '\n') {
+		int count = 1;
+		if (!ignore_format) {
+			while ((t.size() > 1 + count) && (t[t.size() - 1 - count] == '%'))
+				count++;
+		}
+		t = t.substr(0, t.size() - count);
+	}
 	size_t pos;
 	// Handle all other '\n'
 	while ((pos = t.find("\n")) != string::npos) {
@@ -3876,13 +3882,24 @@ string MatchStringAdv::normalize(docstring const & s) const
 				t.replace(pos-2, 3, "");
 			}
 		}
-		else if (!isAlnumASCII(t[pos+1]) || !isAlnumASCII(t[pos-1])) {
-			// '\n' adjacent to non-alpha-numerics, discard
-			t.replace(pos, 1, "");
-		}
 		else {
-			// Replace all other \n with spaces
-			t.replace(pos, 1, " ");
+			if (!isAlnumASCII(t[pos+1]) || !isAlnumASCII(t[pos-1])) {
+				// '\n' adjacent to non-alpha-numerics, discard
+				t.replace(pos, 1, "");
+			}
+			else {
+				// Replace all other \n with spaces
+				t.replace(pos, 1, " ");
+			}
+			if (!ignore_format) {
+				int count = 0;
+				while ((pos > count + 1) && (t[pos - 1 -count] == '%')) {
+					count++;
+				}
+				if (count > 0) {
+					t.replace(pos - count, count, "");
+				}
+			}
 		}
 	}
 	// Remove stale empty \emph{}, \textbf{} and similar blocks from latexify
