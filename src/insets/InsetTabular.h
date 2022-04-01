@@ -24,6 +24,7 @@
 #ifndef INSET_TABULAR_H
 #define INSET_TABULAR_H
 
+#include "BufferParams.h"
 #include "Changes.h"
 #include "InsetText.h"
 
@@ -937,11 +938,8 @@ public:
 	/// auxiliary function for DocBook
 	void docbookRow(XMLStream &, row_type, OutputParams const &,
 					bool header = false) const;
-	/// auxiliary function for DocBook: export this row as HTML
-	void docbookRowAsHTML(XMLStream &, row_type, OutputParams const &,
-					bool header) const;
-	/// auxiliary function for DocBook: export this row as CALS
-	void docbookRowAsCALS(XMLStream &, row_type, OutputParams const &) const;
+	void docbookRow(XMLStream &, row_type, OutputParams const &,
+					bool header, BufferParams::TableOutput docbook_table_output) const;
 	///
 	docstring xhtmlRow(XMLStream & xs, row_type, OutputParams const &,
 	                   bool header = false) const;

@@ -3615,14 +3615,7 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 void Tabular::docbookRow(XMLStream & xs, row_type row,
 		   OutputParams const & runparams, bool header) const
 {
-	switch (buffer().params().docbook_table_output) {
-	case BufferParams::HTMLTable:
-		docbookRowAsHTML(xs, row, runparams, header);
-		break;
-	case BufferParams::CALSTable:
-		docbookRowAsCALS(xs, row, runparams);
-		break;
-	}
+	docbookRow(xs, row, runparams, header, buffer().params().docbook_table_output);
 }
 
 
@@ -3635,6 +3628,9 @@ std::string Tabular::getVAlignAsXmlAttribute(idx_type cell) const
 		return "valign='bottom'";
 	case LYX_VALIGN_MIDDLE:
 		return "valign='middle'";
+	default:
+		// This case only silences a compiler warning, as all the cases are covered above.
+		return "";
 	}
 }
 
@@ -3666,13 +3662,13 @@ std::string Tabular::getHAlignAsXmlAttribute(idx_type cell, bool is_xhtml) const
 }
 
 
-void Tabular::docbookRowAsHTML(XMLStream & xs, row_type row,
-		   OutputParams const & runparams, bool header) const
+void Tabular::docbookRow(XMLStream & xs, row_type row, OutputParams const & runparams, bool header, BufferParams::TableOutput docbook_table_output) const
 {
-	string const celltag = header ? "th" : "td";
+	std::string const row_tag = (docbook_table_output == BufferParams::TableOutput::HTMLTable) ? "tr" : "row";
+	std::string const cell_tag = (docbook_table_output == BufferParams::TableOutput::HTMLTable) ? (header ? "th" : "td") : "entry";
 	idx_type cell = getFirstCellInRow(row);
 
-	xs << xml::StartTag("tr");
+	xs << xml::StartTag(row_tag);
 	xs << xml::CR();
 	for (col_type c = 0; c < ncols(); ++c) {
 		if (isPartOfMultiColumn(row, c) || isPartOfMultiRow(row, c))
@@ -3680,10 +3676,12 @@ void Tabular::docbookRowAsHTML(XMLStream & xs, row_type row,
 
 		stringstream attr;
 
-		Length const cwidth = column_info[c].p_width;
-		if (!cwidth.zero()) {
-			string const hwidth = cwidth.asHTMLString();
-			attr << "style=\"width: " << hwidth << ";\" ";
+		if (docbook_table_output == BufferParams::TableOutput::HTMLTable) {
+			Length const cwidth = column_info[c].p_width;
+			if (!cwidth.zero()) {
+				string const hwidth = cwidth.asHTMLString();
+				attr << "style='width: " << hwidth << ";' ";
+			}
 		}
 
 		attr << getHAlignAsXmlAttribute(cell, false) << " " << getVAlignAsXmlAttribute(cell);
@@ -3692,54 +3690,23 @@ void Tabular::docbookRowAsHTML(XMLStream & xs, row_type row,
 			attr << " colspan='" << columnSpan(cell) << "'";
 		else if (isMultiRow(cell))
 			attr << " rowspan='" << rowSpan(cell) << "'";
+		else if (docbook_table_output == BufferParams::TableOutput::CALSTable)
+			attr << " colname='c" << (c + 1) << "'"; // CALS column numbering starts at 1.
+
+		// All cases where there should be a line *below* this row.
+		if (docbook_table_output == BufferParams::TableOutput::CALSTable && row_info[row].bottom_space_default)
+			attr << " rowsep='1'";
 
 		OutputParams rp = runparams;
 		rp.docbook_in_par = false;
 		rp.docbook_force_pars = true;
-		xs << xml::StartTag(celltag, attr.str(), true);
+		xs << xml::StartTag(cell_tag, attr.str(), true);
 		cellInset(cell)->docbook(xs, rp);
-		xs << xml::EndTag(celltag);
+		xs << xml::EndTag(cell_tag);
 		xs << xml::CR();
 		++cell;
 	}
-	xs << xml::EndTag("tr");
-	xs << xml::CR();
-}
-
-
-void Tabular::docbookRowAsCALS(XMLStream & xs, row_type row,
-                                OutputParams const & runparams) const
-{
-	idx_type cell = getFirstCellInRow(row);
-
-	xs << xml::StartTag("row");
-	xs << xml::CR();
-	for (col_type c = 0; c < ncols(); ++c) {
-		if (isPartOfMultiColumn(row, c) || isPartOfMultiRow(row, c))
-			continue;
-
-		stringstream attr;
-
-		attr << getHAlignAsXmlAttribute(cell, false) << " " << getVAlignAsXmlAttribute(cell);
-
-		if (isMultiColumn(cell))
-			attr << " colspan='" << columnSpan(cell) << "'";
-		else if (isMultiRow(cell))
-			attr << " rowspan='" << rowSpan(cell) << "'";
-		else
-			attr << " colname='c" << (c + 1) << "'"; // Column numbering starts at 1.
-
-		// All cases where there should be a line *below* this row.
-		if (row_info[row].bottom_space_default)
-			attr << " rowsep='1'";
-
-		xs << xml::StartTag("entry", attr.str(), true);
-		cellInset(cell)->docbook(xs, runparams);
-		xs << xml::EndTag("entry");
-		xs << xml::CR();
-		++cell;
-	}
-	xs << xml::EndTag("row");
+	xs << xml::EndTag(row_tag);
 	xs << xml::CR();
 }
 
