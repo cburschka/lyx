@@ -1915,7 +1915,15 @@ contributors = [
                  "m=151306079714476",
                  "12 December 2017",
                  u"Russian localization and documentation, bug reports and fixes, updating of code"),
-     
+
+     contributor(u"Hernán Gustavo Solari",
+                 "hgsolari () gmail ! com",
+                 "GPL",
+                 "Re: Bug#1008257: lyx: bash-completion not working",
+                 "m=164864464510820",
+                 "30 March 2022",
+                 u"bash-completion fixes"),
+
      contributor(u"Giovanni Sora",
                  "g.sora () tiscali ! it",
                  "GPL",
