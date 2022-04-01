@@ -3639,6 +3639,33 @@ std::string Tabular::getVAlignAsXmlAttribute(idx_type cell) const
 }
 
 
+std::string Tabular::getHAlignAsXmlAttribute(idx_type cell, bool is_xhtml) const
+{
+	// TODO: the Boolean flag isn't really clean; switch to an enum at some point.
+	switch (getAlignment(cell)) {
+	case LYX_ALIGN_LEFT:
+		return "align='left'";
+	case LYX_ALIGN_RIGHT:
+		return "align='right'";
+
+	default:
+		// HTML only supports left, right, and center.
+		if (is_xhtml)
+			return "align='center'";
+
+		// DocBook also has justify and decimal.
+		if (getAlignment(cell) == LYX_ALIGN_BLOCK) {
+			return "align='justify'";
+		} else if (getAlignment(cell) == LYX_ALIGN_DECIMAL) {
+			Language const *tlang = buffer().paragraphs().front().getParLanguage(buffer().params());
+			return "align='char' char='" + to_utf8(tlang->decimalSeparator()) + "'";
+		} else {
+			return "align='center'";
+		}
+	}
+}
+
+
 void Tabular::docbookRowAsHTML(XMLStream & xs, row_type row,
 		   OutputParams const & runparams, bool header) const
 {
@@ -3659,27 +3686,7 @@ void Tabular::docbookRowAsHTML(XMLStream & xs, row_type row,
 			attr << "style=\"width: " << hwidth << ";\" ";
 		}
 
-		attr << "align='";
-		switch (getAlignment(cell)) {
-		case LYX_ALIGN_BLOCK:
-			attr << "justify";
-			break;
-		case LYX_ALIGN_DECIMAL: {
-			Language const *tlang = buffer().paragraphs().front().getParLanguage(buffer().params());
-			attr << "char' char='" << to_utf8(tlang->decimalSeparator());
-		}
-			break;
-		case LYX_ALIGN_LEFT:
-			attr << "left";
-			break;
-		case LYX_ALIGN_RIGHT:
-			attr << "right";
-			break;
-		default:
-			attr << "center";
-			break;
-		}
-		attr << "' " << getVAlignAsXmlAttribute(cell);
+		attr << getHAlignAsXmlAttribute(cell, false) << " " << getVAlignAsXmlAttribute(cell);
 
 		if (isMultiColumn(cell))
 			attr << " colspan='" << columnSpan(cell) << "'";
@@ -3713,28 +3720,7 @@ void Tabular::docbookRowAsCALS(XMLStream & xs, row_type row,
 
 		stringstream attr;
 
-		attr << "align='";
-		switch (getAlignment(cell)) {
-		case LYX_ALIGN_BLOCK:
-			attr << "justify";
-			break;
-		case LYX_ALIGN_DECIMAL: {
-			Language const *tlang = buffer().paragraphs().front().getParLanguage(buffer().params());
-			attr << "char' char='" << to_utf8(tlang->decimalSeparator());
-		}
-			break;
-		case LYX_ALIGN_LEFT:
-			attr << "left";
-			break;
-		case LYX_ALIGN_RIGHT:
-			attr << "right";
-			break;
-
-		default:
-			attr << "center";
-			break;
-		}
-		attr << "' " << getVAlignAsXmlAttribute(cell);
+		attr << getHAlignAsXmlAttribute(cell, false) << " " << getVAlignAsXmlAttribute(cell);
 
 		if (isMultiColumn(cell))
 			attr << " colspan='" << columnSpan(cell) << "'";
@@ -3874,19 +3860,7 @@ docstring Tabular::xhtmlRow(XMLStream & xs, row_type row,
 			attr << "style=\"width: " << hwidth << ";\" ";
 		}
 
-		attr << "align='";
-		switch (getAlignment(cell)) {
-		case LYX_ALIGN_LEFT:
-			attr << "left";
-			break;
-		case LYX_ALIGN_RIGHT:
-			attr << "right";
-			break;
-		default:
-			attr << "center";
-			break;
-		}
-		attr << "' " << getVAlignAsXmlAttribute(cell);
+		attr << getHAlignAsXmlAttribute(cell, true) << " " << getVAlignAsXmlAttribute(cell);
 
 		if (isMultiColumn(cell))
 			attr << " colspan='" << columnSpan(cell) << "'";
