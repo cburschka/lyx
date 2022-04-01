@@ -192,7 +192,7 @@ IgnoreFormats ignoreFormats;
 
 void setIgnoreFormat(string const & type, bool value, bool fromUser)
 {
-  ignoreFormats.setIgnoreFormat(type, value, fromUser);
+	ignoreFormats.setIgnoreFormat(type, value, fromUser);
 }
 
 
