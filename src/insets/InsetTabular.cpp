@@ -3717,8 +3717,6 @@ docstring Tabular::xmlRow(XMLStream & xs, row_type row, OutputParams const & run
 
 void Tabular::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
-	docstring ret;
-
 	// Some tables are inline. Likely limitation: cannot output a table within a table; is that really a limitation?
 	if (!runparams.docbook_in_table) { // Check on the *outer* set of parameters, so that the table can be closed
 		// properly at the end of this function.
