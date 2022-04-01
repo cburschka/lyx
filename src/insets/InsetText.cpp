@@ -485,6 +485,13 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 	// environment. Standard collapsible insets should not
 	// redefine this, non-standard ones may call this.
 	InsetLayout const & il = getLayout();
+	if (runparams.for_searchAdv != OutputParams::NoSearch &&
+	    (runparams.for_searchAdv & OutputParams::SearchNonOutput) == 0 &&
+	    !il.latexname().empty() &&
+	    il.latextype() == InsetLaTeXType::ENVIRONMENT &&
+	    il.latexname() == "comment")
+		return;
+
 	if (il.forceOwnlines())
 		os << breakln;
 	bool needendgroup = false;
