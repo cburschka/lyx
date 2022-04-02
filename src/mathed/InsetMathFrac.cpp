@@ -543,17 +543,20 @@ void InsetMathFrac::mathmlize(MathMLStream & ms) const
 		break;
 
 	case UNIT:
-		// FIXME This is not right, because we still output mi, etc,
-		// when we output the cell. So we need to prevent that somehow.
-		if (nargs() == 2)
-			ms << cell(0)
-			   << MTag("mstyle mathvariant='normal'") 
-			   << cell(1) 
-			   << ETag("mstyle");
-		else
-			ms << MTag("mstyle mathvariant='normal'")
-			   << cell(0)
-			   << ETag("mstyle");
+		if (nargs() == 2) {
+			ms << MTag("mrow");
+			ms << cell(0);
+			SetMode textmode(ms, true);
+			ms << MTagInline("mstyle mathvariant='normal'");
+			ms << cell(1);
+			ms << ETagInline("mstyle");
+			ms << ETag("mrow");
+		} else {
+			SetMode textmode(ms, true);
+			ms << MTag("mstyle mathvariant='normal'");
+			ms << cell(0);
+			ms << ETag("mstyle");
+		}
 	}
 }
 
