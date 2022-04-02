@@ -207,6 +207,7 @@ bool InsetNote::isMacroScope() const
 void InsetNote::latex(otexstream & os, OutputParams const & runparams_in) const
 {
 	if (params_.type != InsetNoteParams::Greyedout
+	    && runparams_in.for_searchAdv != OutputParams::NoSearch
 	    && (runparams_in.for_searchAdv & OutputParams::SearchNonOutput) == 0)
 		return;
 
