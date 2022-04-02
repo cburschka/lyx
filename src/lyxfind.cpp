@@ -3863,7 +3863,7 @@ string MatchStringAdv::normalize(docstring const & s, bool ignore_format) const
 		t = t.substr(1);
 	// Remove [%]*\n at end
 	while (!t.empty() && t[t.size() - 1] == '\n') {
-		int count = 1;
+		size_t count = 1;
 		if (!ignore_format) {
 			while ((t.size() > 1 + count) && (t[t.size() - 1 - count] == '%'))
 				count++;
@@ -3892,7 +3892,7 @@ string MatchStringAdv::normalize(docstring const & s, bool ignore_format) const
 				t.replace(pos, 1, " ");
 			}
 			if (!ignore_format) {
-				int count = 0;
+				size_t count = 0;
 				while ((pos > count + 1) && (t[pos - 1 -count] == '%')) {
 					count++;
 				}
