@@ -3738,7 +3738,17 @@ docstring Tabular::xmlRow(XMLStream & xs, row_type row, OutputParams const & run
 	Tabular::XmlRowWiseBorders const borders = computeXmlBorders(row);
 	idx_type cell = getFirstCellInRow(row);
 
-	xs << xml::StartTag(row_tag);
+	std::string row_attr;
+	bool cals_row_has_rowsep = false; // TODO: is this required? Is it possible that only a/several cells request a row separator, but not the complete row?
+	// CALS only: all cases where there should be a line *below* this row.
+	if (is_cals_table && (row_info[row].bottom_space_default || bottomLine(cell))) {
+		if (borders.completeBorderBelow) {
+			row_attr = "rowsep='1'";
+			cals_row_has_rowsep = true;
+		}
+	}
+
+	xs << xml::StartTag(row_tag, row_attr);
 	xs << xml::CR();
 	for (col_type c = 0; c < ncols(); ++c, ++cell) {
 		if (isPartOfMultiColumn(row, c) || isPartOfMultiRow(row, c))
@@ -3757,22 +3767,25 @@ docstring Tabular::xmlRow(XMLStream & xs, row_type row, OutputParams const & run
 			attr << "' ";
 		}
 
-		attr << getHAlignAsXmlAttribute(cell, false) << " " << getVAlignAsXmlAttribute(cell);
+		if (is_cals_table) {
+			if (!cals_row_has_rowsep && bottomLine(cell))
+				attr << "rowsep='1' ";
+		}
 
-		attr << getHAlignAsXmlAttribute(cell, false) << " " << getVAlignAsXmlAttribute(cell) << " ";
+		attr << getHAlignAsXmlAttribute(cell, false) << " " << getVAlignAsXmlAttribute(cell);
 
 		if (is_xhtml_table) {
 			if (isMultiColumn(cell))
-				attr << "colspan='" << columnSpan(cell) << "'";
+				attr << " colspan='" << columnSpan(cell) << "'";
 			else if (isMultiRow(cell))
-				attr << "rowspan='" << rowSpan(cell) << "'";
+				attr << " rowspan='" << rowSpan(cell) << "'";
 		} else if (is_cals_table) {
 			if (isMultiColumn(cell))
-				attr << "namest='c" << c << " nameend='c" << (c + columnSpan(cell)) << "'";
+				attr << " namest='c" << c << " nameend='c" << (c + columnSpan(cell)) << "'";
 			else if (isMultiRow(cell))
-				attr << "morerows='" << rowSpan(cell) << "'";
-			else if (!is_xhtml && docbook_table_output == BufferParams::TableOutput::CALSTable)
-				attr << "colname='c" << (c + 1) << "'"; // CALS column numbering starts at 1.
+				attr << " morerows='" << rowSpan(cell) << "'";
+			else
+				attr << " colname='c" << (c + 1) << "'"; // CALS column numbering starts at 1.
 		}
 
 		// Render the cell as either XHTML or DocBook.
@@ -3808,13 +3821,13 @@ void Tabular::docbook(XMLStream & xs, OutputParams const & runparams) const
 	// "Formal" tables have a title and use the tag <table>; the distinction with <informaltable> is done outside.
 	// HTML has the caption first with titles forbidden, and CALS has a title first.
 	if (haveLTCaption()) {
-		std::string tag = ((buffer().params().docbook_table_output) == BufferParams::HTMLTable) ? "caption" : "title";
+		std::string caption_tag = ((buffer().params().docbook_table_output) == BufferParams::HTMLTable) ? "caption" : "title";
 
-		xs << xml::StartTag(tag);
+		xs << xml::StartTag(caption_tag);
 		for (row_type r = 0; r < nrows(); ++r)
 			if (row_info[r].caption)
 				xmlRow(xs, r, runparams, false, false, buffer().params().docbook_table_output);
-		xs << xml::EndTag(tag);
+		xs << xml::EndTag(caption_tag);
 		xs << xml::CR();
 	}
 
