@@ -3809,6 +3809,66 @@ docstring Tabular::xmlRow(XMLStream & xs, row_type row, OutputParams const & run
 }
 
 
+void Tabular::xmlHeader(XMLStream & xs, OutputParams const & runparams) const
+{
+	// Output the header of the table. For both HTML and CALS, this is surrounded by a thead.
+	bool const have_first_head = haveLTFirstHead(false);
+	// if we have a first head, then we are going to ignore the
+	// headers for the additional pages, since there aren't any
+	// in HTML or DocBook.
+	bool const have_head = !have_first_head && haveLTHead(false);
+
+	if (have_head || have_first_head) {
+		xs << xml::StartTag("thead") << xml::CR();
+		for (row_type r = 0; r < nrows(); ++r) {
+			if (((have_first_head && row_info[r].endfirsthead) ||
+			     (have_head && row_info[r].endhead)) &&
+			    !row_info[r].caption) {
+				xmlRow(xs, r, runparams, true, false, buffer().params().docbook_table_output);
+			}
+		}
+		xs << xml::EndTag("thead");
+		xs << xml::CR();
+	}
+}
+
+
+void Tabular::xmlFooter(XMLStream & xs, OutputParams const & runparams) const
+{
+	// Output the footer of the table. For both HTML and CALS, this is surrounded by a tfoot and output just after
+	// the header (and before the body).
+	bool const have_last_foot = haveLTLastFoot(false);
+	bool const have_foot = !have_last_foot && haveLTFoot(false);
+
+	if (have_foot || have_last_foot) {
+		xs << xml::StartTag("tfoot") << xml::CR();
+		for (row_type r = 0; r < nrows(); ++r) {
+			if (((have_last_foot && row_info[r].endlastfoot) ||
+			     (have_foot && row_info[r].endfoot)) &&
+			    !row_info[r].caption) {
+				xmlRow(xs, r, runparams, false, false, buffer().params().docbook_table_output);
+			}
+		}
+		xs << xml::EndTag("tfoot");
+		xs << xml::CR();
+	}
+}
+
+
+void Tabular::xmlBody(XMLStream & xs, OutputParams const & runparams) const
+{
+	// Output the main part of the table. The tbody container is mandatory for CALS, but optional for HTML (only if
+	// there is no header and no footer). It never hurts to have it, though.
+	xs << xml::StartTag("tbody");
+	xs << xml::CR();
+	for (row_type r = 0; r < nrows(); ++r)
+		if (isValidRow(r))
+			xmlRow(xs, r, runparams, false, false, buffer().params().docbook_table_output);
+	xs << xml::EndTag("tbody");
+	xs << xml::CR();
+}
+
+
 void Tabular::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
 	// Some tables are inline. Likely limitation: cannot output a table within a table; is that really a limitation?
@@ -3848,52 +3908,9 @@ void Tabular::docbook(XMLStream & xs, OutputParams const & runparams) const
 		}
 	}
 
-	// Output the header of the table. For both HTML and CALS, this is surrounded by a thead.
-	bool const havefirsthead = haveLTFirstHead(false);
-	// if we have a first head, then we are going to ignore the
-	// headers for the additional pages, since there aren't any
-	// in DocBook. this test accomplishes that.
-	bool const havehead = !havefirsthead && haveLTHead(false);
-	if (havehead || havefirsthead) {
-		xs << xml::StartTag("thead") << xml::CR();
-		for (row_type r = 0; r < nrows(); ++r) {
-			if (((havefirsthead && row_info[r].endfirsthead) ||
-			     (havehead && row_info[r].endhead)) &&
-			    !row_info[r].caption) {
-				xmlRow(xs, r, runparams, true, false, buffer().params().docbook_table_output);
-			}
-		}
-		xs << xml::EndTag("thead");
-		xs << xml::CR();
-	}
-
-	// Output the footer of the table. For both HTML and CALS, this is surrounded by a tfoot and output just after
-	// the header (and before the body).
-	bool const havelastfoot = haveLTLastFoot(false);
-	// as before.
-	bool const havefoot = !havelastfoot && haveLTFoot(false);
-	if (havefoot || havelastfoot) {
-		xs << xml::StartTag("tfoot") << xml::CR();
-		for (row_type r = 0; r < nrows(); ++r) {
-			if (((havelastfoot && row_info[r].endlastfoot) ||
-			     (havefoot && row_info[r].endfoot)) &&
-			    !row_info[r].caption) {
-				xmlRow(xs, r, runparams, false, false, buffer().params().docbook_table_output);
-			}
-		}
-		xs << xml::EndTag("tfoot");
-		xs << xml::CR();
-	}
-
-	// Output the main part of the table. The tbody container is mandatory for CALS, but optional for HTML (only if
-	// there is no header and no footer). It never hurts to have it, though.
-	xs << xml::StartTag("tbody");
-	xs << xml::CR();
-	for (row_type r = 0; r < nrows(); ++r)
-		if (isValidRow(r))
-			xmlRow(xs, r, runparams, false, false, buffer().params().docbook_table_output);
-	xs << xml::EndTag("tbody");
-	xs << xml::CR();
+	xmlHeader(xs, runparams);
+	xmlFooter(xs, runparams);
+	xmlBody(xs, runparams);
 
 	// If this method started the table tag, also make it close it.
 	if (!runparams.docbook_in_table) {
@@ -3938,48 +3955,10 @@ docstring Tabular::xhtml(XMLStream & xs, OutputParams const & runparams) const
 	xs << xml::StartTag("table");
 	xs << xml::CR();
 
-	// output header info
-	bool const havefirsthead = haveLTFirstHead(false);
-	// if we have a first head, then we are going to ignore the
-	// headers for the additional pages, since there aren't any
-	// in XHTML. this test accomplishes that.
-	bool const havehead = !havefirsthead && haveLTHead(false);
-	if (havehead || havefirsthead) {
-		xs << xml::StartTag("thead");
-		xs << xml::CR();
-		for (row_type r = 0; r < nrows(); ++r) {
-			if (((havefirsthead && row_info[r].endfirsthead) ||
-			     (havehead && row_info[r].endhead)) &&
-			    !row_info[r].caption) {
-				ret += xmlRow(xs, r, runparams, true);
-			}
-		}
-		xs << xml::EndTag("thead");
-		xs << xml::CR();
-	}
-	// output footer info
-	bool const havelastfoot = haveLTLastFoot(false);
-	// as before.
-	bool const havefoot = !havelastfoot && haveLTFoot(false);
-	if (havefoot || havelastfoot) {
-		xs << xml::StartTag("tfoot") << xml::CR();
-		for (row_type r = 0; r < nrows(); ++r) {
-			if (((havelastfoot && row_info[r].endlastfoot) ||
-			     (havefoot && row_info[r].endfoot)) &&
-			    !row_info[r].caption) {
-				ret += xmlRow(xs, r, runparams);
-			}
-		}
-		xs << xml::EndTag("tfoot");
-		xs << xml::CR();
-	}
+	xmlHeader(xs, runparams);
+	xmlFooter(xs, runparams);
+	xmlBody(xs, runparams);
 
-	xs << xml::StartTag("tbody") << xml::CR();
-	for (row_type r = 0; r < nrows(); ++r)
-		if (isValidRow(r))
-			ret += xmlRow(xs, r, runparams);
-	xs << xml::EndTag("tbody");
-	xs << xml::CR();
 	xs << xml::EndTag("table");
 	xs << xml::CR();
 	if (is_long_tabular) {

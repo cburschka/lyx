@@ -957,6 +957,9 @@ public:
 	docstring xmlRow(XMLStream & xs, row_type row, OutputParams const &,
 	                 bool header = false, bool is_xhtml = true,
 					 BufferParams::TableOutput docbook_table_output = BufferParams::TableOutput::HTMLTable) const;
+	void xmlHeader(XMLStream & xs, OutputParams const &) const;
+	void xmlFooter(XMLStream & xs, OutputParams const &) const;
+	void xmlBody(XMLStream & xs, OutputParams const &) const;
 	XmlRowWiseBorders computeXmlBorders(row_type row) const;
 	std::vector<std::string> computeCssStylePerCell(row_type row, col_type col, idx_type cell) const;
 
