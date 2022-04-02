@@ -206,8 +206,18 @@ bool InsetNote::isMacroScope() const
 
 void InsetNote::latex(otexstream & os, OutputParams const & runparams_in) const
 {
-	if (params_.type == InsetNoteParams::Note)
+	if (params_.type != InsetNoteParams::Greyedout
+	    && (runparams_in.for_searchAdv & OutputParams::SearchNonOutput) == 0)
 		return;
+
+	if (params_.type == InsetNoteParams::Note) {
+		if ((runparams_in.for_searchAdv & OutputParams::SearchNonOutput) != 0) {
+			OutputParams runparams(runparams_in);
+			InsetCollapsible::latex(os, runparams);
+			runparams_in.encoding = runparams.encoding;
+		}
+		return;
+	}
 
 	OutputParams runparams(runparams_in);
 	if (params_.type == InsetNoteParams::Comment) {
