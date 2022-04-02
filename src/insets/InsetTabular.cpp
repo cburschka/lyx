@@ -3731,6 +3731,7 @@ docstring Tabular::xmlRow(XMLStream & xs, row_type row, OutputParams const & run
 {
 	docstring ret;
 	const bool is_xhtml_table = is_xhtml || docbook_table_output == BufferParams::TableOutput::HTMLTable;
+	const bool is_cals_table = !is_xhtml && docbook_table_output == BufferParams::TableOutput::CALSTable;
 
 	std::string const row_tag = is_xhtml_table ? "tr" : "row";
 	std::string const cell_tag = is_xhtml_table ? (header ? "th" : "td") : "entry";
@@ -3758,16 +3759,21 @@ docstring Tabular::xmlRow(XMLStream & xs, row_type row, OutputParams const & run
 
 		attr << getHAlignAsXmlAttribute(cell, false) << " " << getVAlignAsXmlAttribute(cell);
 
-		if (isMultiColumn(cell))
-			attr << " colspan='" << columnSpan(cell) << "'";
-		else if (isMultiRow(cell))
-			attr << " rowspan='" << rowSpan(cell) << "'";
-		else if (!is_xhtml && docbook_table_output == BufferParams::TableOutput::CALSTable)
-			attr << " colname='c" << (c + 1) << "'"; // CALS column numbering starts at 1.
+		attr << getHAlignAsXmlAttribute(cell, false) << " " << getVAlignAsXmlAttribute(cell) << " ";
 
-		// All cases where there should be a line *below* this row.
-		if (!is_xhtml && docbook_table_output == BufferParams::TableOutput::CALSTable && row_info[row].bottom_space_default)
-			attr << " rowsep='1'";
+		if (is_xhtml_table) {
+			if (isMultiColumn(cell))
+				attr << "colspan='" << columnSpan(cell) << "'";
+			else if (isMultiRow(cell))
+				attr << "rowspan='" << rowSpan(cell) << "'";
+		} else if (is_cals_table) {
+			if (isMultiColumn(cell))
+				attr << "namest='c" << c << " nameend='c" << (c + columnSpan(cell)) << "'";
+			else if (isMultiRow(cell))
+				attr << "morerows='" << rowSpan(cell) << "'";
+			else if (!is_xhtml && docbook_table_output == BufferParams::TableOutput::CALSTable)
+				attr << "colname='c" << (c + 1) << "'"; // CALS column numbering starts at 1.
+		}
 
 		// Render the cell as either XHTML or DocBook.
 		xs << xml::StartTag(cell_tag, attr.str(), true);
