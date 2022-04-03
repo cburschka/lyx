@@ -2740,7 +2740,7 @@ void LatexInfo::buildKeys(bool isPatternString)
   makeKey("trianglerightpar|hexagonpar|starpar",   KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   makeKey("triangleuppar|triangledownpar|droppar", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   makeKey("triangleleftpar|shapepar|dropuppar",    KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
-  makeKey("hphantom|vphantom|footnote|shortcut|include|includegraphics",     KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
+  makeKey("hphantom|vphantom|note|footnote|shortcut|include|includegraphics",     KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
   makeKey("parbox", KeyInfo(KeyInfo::doRemove, 1, true), isPatternString);
   // like ('tiny{}' or '\tiny ' ... )
   makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, false), isPatternString);
@@ -3322,10 +3322,7 @@ string splitOnKnownMacros(string par, bool isPatternString)
       (void) li.process(os, firstKey);
     }
     s = os.str();
-    if (s.empty()) {
-      // return string definitelly impossible to match
-      s = "\\foreignlanguage{ignore}{ }";
-    }
+    // return string definitelly impossible to match, but should be known
   }
   else
     s = par;                            /* no known macros found */
@@ -3439,6 +3436,11 @@ static bool previous_single_replace = true;
 
 void MatchStringAdv::CreateRegexp(FindAndReplaceOptions const & opt, string regexp_str, string regexp2_str, string par_as_string)
 {
+	if (regexp_str.empty() || regexp2_str.empty()) {
+		regexIsValid = false;
+		regexError = "Invalid empty regex";
+		return;
+	}
 #if QTSEARCH
 	// Handle \w properly
 	QRegularExpression::PatternOptions popts = QRegularExpression::UseUnicodePropertiesOption | QRegularExpression::MultilineOption;
@@ -3526,6 +3528,10 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 {
 	Buffer & find_buf = *theBufferList().getBuffer(FileName(to_utf8(opt.find_buf_name)), true);
 	docstring const & ds = stringifySearchBuffer(find_buf, opt);
+	if (ds.empty() ) {
+		CreateRegexp(opt, "", "", "");
+		return;
+	}
 	use_regexp = lyx::to_utf8(ds).find("\\regexp{") != std::string::npos;
 	if (opt.replace_all && previous_single_replace) {
 		previous_single_replace = false;
@@ -3543,6 +3549,10 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 	size_t lead_size = 0;
 	// correct the language settings
 	par_as_string = correctlanguagesetting(par_as_string, true, !opt.ignoreformat, &buf);
+	if (par_as_string.empty()) {
+		CreateRegexp(opt, "", "", "");
+		return;
+	}
 	opt.matchAtStart = false;
 	if (!use_regexp) {
 		identifyClosing(par_as_string); // Removes math closings ($, ], ...) at end of string
