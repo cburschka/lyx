@@ -251,7 +251,8 @@ void InsetNote::latex(otexstream & os, OutputParams const & runparams_in) const
 int InsetNote::plaintext(odocstringstream & os,
 			 OutputParams const & runparams_in, size_t max_length) const
 {
-	if (params_.type == InsetNoteParams::Note)
+	if (params_.type == InsetNoteParams::Note
+	    && (runparams_in.for_searchAdv & OutputParams::SearchNonOutput) == 0)
 		return 0;
 
 	OutputParams runparams(runparams_in);
@@ -260,9 +261,11 @@ int InsetNote::plaintext(odocstringstream & os,
 		// Ignore files that are exported inside a comment
 		runparams.exportdata.reset(new ExportData);
 	}
-	os << '[' << buffer().B_("note") << ":\n";
+	if ((runparams_in.for_searchAdv & OutputParams::SearchNonOutput) == 0)
+		os << '[' << buffer().B_("note") << ":\n";
 	InsetText::plaintext(os, runparams, max_length);
-	os << "\n]";
+	if ((runparams_in.for_searchAdv & OutputParams::SearchNonOutput) == 0)
+		os << "\n]";
 
 	return PLAINTEXT_NEWLINE + 1; // one char on a separate line
 }
