@@ -3436,12 +3436,12 @@ static bool previous_single_replace = true;
 
 void MatchStringAdv::CreateRegexp(FindAndReplaceOptions const & opt, string regexp_str, string regexp2_str, string par_as_string)
 {
+#if QTSEARCH
 	if (regexp_str.empty() || regexp2_str.empty()) {
 		regexIsValid = false;
 		regexError = "Invalid empty regex";
 		return;
 	}
-#if QTSEARCH
 	// Handle \w properly
 	QRegularExpression::PatternOptions popts = QRegularExpression::UseUnicodePropertiesOption | QRegularExpression::MultilineOption;
 	if (! opt.casesensitive) {
