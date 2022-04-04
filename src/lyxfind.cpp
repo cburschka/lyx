@@ -892,7 +892,7 @@ string correctRegex(string t, bool withformat)
 			else if (sub.str(4) == "{") // transforms '\{' into '{'
 				replace = "{";
 			else if (sub.str(4) == "}")
-                                replace = "}";
+				replace = "}";
 			else {
 				AccentsIterator it_ac = accents.find(sub.str(4));
 				if (it_ac == accents.end()) {
@@ -961,8 +961,8 @@ public:
 	enum range {
 		newIsTooFar,
 		newIsBetter,
-                newIsInvalid
-        };
+		newIsInvalid
+	};
 	int match_len;
 	int match_prefix;
 	int match2end;
@@ -976,16 +976,16 @@ public:
 
 static MatchResult::range interpretMatch(MatchResult &oldres, MatchResult &newres)
 {
-  if (newres.match2end < oldres.match2end)
-    return MatchResult::newIsTooFar;
-  if (newres.match_len < oldres.match_len)
-    return MatchResult::newIsTooFar;
+	if (newres.match2end < oldres.match2end)
+		return MatchResult::newIsTooFar;
+	if (newres.match_len < oldres.match_len)
+		return MatchResult::newIsTooFar;
 
-  if (newres.match_len == oldres.match_len) {
-    if (newres.match2end == oldres.match2end)
-      return MatchResult::newIsBetter;
-  }
-  return MatchResult::newIsInvalid;
+	if (newres.match_len == oldres.match_len) {
+		if (newres.match2end == oldres.match2end)
+			return MatchResult::newIsBetter;
+	}
+	return MatchResult::newIsInvalid;
 }
 
 /** The class performing a match between a position in the document and the FindAdvOptions.
@@ -1071,13 +1071,12 @@ vector <string> MatchStringAdv::matches = vector <string>(10);
 
 void MatchStringAdv::FillResults(MatchResult &found_mr)
 {
-  if (found_mr.match_len > 0) {
-    valid_matches = found_mr.result.size();
-    for (size_t i = 0; i < found_mr.result.size(); i++)
-      matches[i] = found_mr.result[i];
-  }
-  else
-    valid_matches = 0;
+	if (found_mr.match_len > 0) {
+		valid_matches = found_mr.result.size();
+		for (size_t i = 0; i < found_mr.result.size(); i++)
+			matches[i] = found_mr.result[i];
+	} else
+		valid_matches = 0;
 }
 
 static docstring buffer_to_latex(Buffer & buffer)
@@ -1202,12 +1201,12 @@ static size_t identifyLeading(string const & s)
 	// Kornel: Added textsl, textsf, textit, texttt and noun
 	// + allow to search for colored text too
 	while (regex_replace(t, t, "^\\\\(("
-	                     "(author|title|subtitle|subject|publishers|dedication|uppertitleback|lowertitleback|extratitle|"
-	                       "lyxaddress|lyxrightaddress|"
-	                       "footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge|"
-	                       "emph|noun|minisec|text(bf|md|sl|sf|it|tt))|"
-	                     "((textcolor|foreignlanguage|latexenvironment)\\{[a-z]+\\*?\\})|"
-	                     "(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part|chapter)\\*?)\\{", "")
+			     "(author|title|subtitle|subject|publishers|dedication|uppertitleback|lowertitleback|extratitle|"
+			     "lyxaddress|lyxrightaddress|"
+			     "footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge|"
+			     "emph|noun|minisec|text(bf|md|sl|sf|it|tt))|"
+			     "((textcolor|foreignlanguage|latexenvironment)\\{[a-z]+\\*?\\})|"
+			     "(u|uu)line|(s|x)out|uwave)|((sub)?(((sub)?section)|paragraph)|part|chapter)\\*?)\\{", "")
 	       || regex_replace(t, t, "^\\$", "")
 	       || regex_replace(t, t, "^\\\\\\[", "")
 	       || regex_replace(t, t, "^ ?\\\\item\\{[a-z]+\\}", "")
@@ -1271,169 +1270,170 @@ static Features identifyFeatures(string const & s)
  * defines values features of a key "\\[a-z]+{"
  */
 class KeyInfo {
- public:
-  enum KeyType {
-    /* Char type with content discarded
-     * like \hspace{1cm} */
-    noContent,
-    /* Char, like \backslash */
-    isChar,
-    /* replace starting backslash with '#' */
-    isText,
-    /* \part, \section*, ... */
-    isSectioning,
-    /* title, author etc */
-    isTitle,
-    /* \foreignlanguage{ngerman}, ... */
-    isMain,
-    /* inside \code{}
-     * to discard language in content */
-    noMain,
-    isRegex,
-    /* \begin{eqnarray}...\end{eqnarray}, ... $...$ */
-    isMath,
-    /* fonts, colors, markups, ... */
-    isStandard,
-    /* footnotesize, ... large, ...
-     * Ignore all of them */
-    isSize,
-    invalid,
-    /* inputencoding, ...
-     * Discard also content, because they do not help in search */
-    doRemove,
-    /* twocolumns, ...
-     * like remove, but also all arguments */
-    removeWithArg,
-    /* item, listitem */
-    isList,
-    /* tex, latex, ... like isChar */
-    isIgnored,
-    /* like \lettrine[lines=5]{}{} */
-    cleanToStart,
-    // like isStandard, but always remove head
-    headRemove,
-    /* End of arguments marker for lettrine,
-     * so that they can be ignored */
-    endArguments
-  };
- KeyInfo() = default;
- KeyInfo(KeyType type, int parcount, bool disable)
-   : keytype(type),
-    parenthesiscount(parcount),
-    disabled(disable) {}
-  KeyType keytype = invalid;
-  string head;
-  int _tokensize = -1;
-  int _tokenstart = -1;
-  int _dataStart = -1;
-  int _dataEnd = -1;
-  int parenthesiscount = 1;
-  bool disabled = false;
-  bool used = false;                    /* by pattern */
+public:
+	enum KeyType {
+		/* Char type with content discarded
+		 * like \hspace{1cm} */
+		noContent,
+		/* Char, like \backslash */
+		isChar,
+		/* replace starting backslash with '#' */
+		isText,
+		/* \part, \section*, ... */
+		isSectioning,
+		/* title, author etc */
+		isTitle,
+		/* \foreignlanguage{ngerman}, ... */
+		isMain,
+		/* inside \code{}
+		 * to discard language in content */
+		noMain,
+		isRegex,
+		/* \begin{eqnarray}...\end{eqnarray}, ... $...$ */
+		isMath,
+		/* fonts, colors, markups, ... */
+		isStandard,
+		/* footnotesize, ... large, ...
+		 * Ignore all of them */
+		isSize,
+		invalid,
+		/* inputencoding, ...
+		 * Discard also content, because they do not help in search */
+		doRemove,
+		/* twocolumns, ...
+		 * like remove, but also all arguments */
+		removeWithArg,
+		/* item, listitem */
+		isList,
+		/* tex, latex, ... like isChar */
+		isIgnored,
+		/* like \lettrine[lines=5]{}{} */
+		cleanToStart,
+		// like isStandard, but always remove head
+		headRemove,
+		/* End of arguments marker for lettrine,
+		 * so that they can be ignored */
+		endArguments
+	};
+	KeyInfo() = default;
+	KeyInfo(KeyType type, int parcount, bool disable)
+		: keytype(type),
+		  parenthesiscount(parcount),
+		  disabled(disable) {}
+	KeyType keytype = invalid;
+	string head;
+	int _tokensize = -1;
+	int _tokenstart = -1;
+	int _dataStart = -1;
+	int _dataEnd = -1;
+	int parenthesiscount = 1;
+	bool disabled = false;
+	bool used = false; /* by pattern */
 };
 
 class Border {
- public:
- Border(int l=0, int u=0) : low(l), upper(u) {}
-  int low;
-  int upper;
+public:
+	Border(int l=0, int u=0) : low(l), upper(u) {}
+	int low;
+	int upper;
 };
 
 #define MAXOPENED 30
 class Intervall {
-  bool isPatternString_;
+	bool isPatternString_;
 public:
-  explicit Intervall(bool isPattern, string const & p) :
-        isPatternString_(isPattern), par(p), ignoreidx(-1), actualdeptindex(0),
-        hasTitle(false), langcount(0)
-  {
-    depts[0] = 0;
-    closes[0] = 0;
-  }
+	explicit Intervall(bool isPattern, string const & p)
+		: isPatternString_(isPattern), par(p), ignoreidx(-1),
+		  actualdeptindex(0), hasTitle(false), langcount(0)
+	{
+		depts[0] = 0;
+		closes[0] = 0;
+	}
 
-  string par;
-  int ignoreidx;
-  static vector<Border> borders;
-  int depts[MAXOPENED];
-  int closes[MAXOPENED];
-  int actualdeptindex;
-  int previousNotIgnored(int) const;
-  int nextNotIgnored(int) const;
-  void handleOpenP(int i);
-  void handleCloseP(int i, bool closingAllowed);
-  void resetOpenedP(int openPos);
-  void addIntervall(int upper);
-  void addIntervall(int low, int upper); /* if explicit */
-  void removeAccents();
-  void setForDefaultLang(KeyInfo const & defLang) const;
-  int findclosing(int start, int end, char up, char down, int repeat);
-  void handleParentheses(int lastpos, bool closingAllowed);
-  bool hasTitle;
-  int langcount;	// Number of disabled language specs up to current position in actual interval
-  int isOpeningPar(int pos) const;
-  string titleValue;
-  void output(ostringstream &os, int lastpos);
-  // string show(int lastpos);
+	string par;
+	int ignoreidx;
+	static vector<Border> borders;
+	int depts[MAXOPENED];
+	int closes[MAXOPENED];
+	int actualdeptindex;
+	int previousNotIgnored(int) const;
+	int nextNotIgnored(int) const;
+	void handleOpenP(int i);
+	void handleCloseP(int i, bool closingAllowed);
+	void resetOpenedP(int openPos);
+	void addIntervall(int upper);
+	void addIntervall(int low, int upper); /* if explicit */
+	void removeAccents();
+	void setForDefaultLang(KeyInfo const & defLang) const;
+	int findclosing(int start, int end, char up, char down, int repeat);
+	void handleParentheses(int lastpos, bool closingAllowed);
+	bool hasTitle;
+	// Number of disabled language specs up
+	// to current position in actual interval
+	int langcount;
+	int isOpeningPar(int pos) const;
+	string titleValue;
+	void output(ostringstream &os, int lastpos);
+	// string show(int lastpos);
 };
 
 vector<Border> Intervall::borders = vector<Border>(30);
 
 int Intervall::isOpeningPar(int pos) const
 {
-  if ((pos < 0) || (size_t(pos) >= par.size()))
-    return 0;
-  if (par[pos] != '{')
-    return 0;
-  if (size_t(pos) + 2 >= par.size())
-    return 1;
-  if (par[pos+2] != '}')
-    return 1;
-  if (par[pos+1] == '[' || par[pos+1] == ']')
-    return 3;
-  return 1;
+	if ((pos < 0) || (size_t(pos) >= par.size()))
+		return 0;
+	if (par[pos] != '{')
+		return 0;
+	if (size_t(pos) + 2 >= par.size())
+		return 1;
+	if (par[pos+2] != '}')
+		return 1;
+	if (par[pos+1] == '[' || par[pos+1] == ']')
+		return 3;
+	return 1;
 }
 
 void Intervall::setForDefaultLang(KeyInfo const & defLang) const
 {
-  // Enable the use of first token again
-  if (ignoreidx >= 0) {
-    int value = defLang._tokenstart + defLang._tokensize;
-    int borderidx = 0;
-    if (hasTitle) {
-      borderidx = 1;
-    }
-    if (value > 0) {
-      if (borders[borderidx].low < value)
-        borders[borderidx].low = value;
-      if (borders[borderidx].upper < value)
-        borders[borderidx].upper = value;
-    }
-  }
+	// Enable the use of first token again
+	if (ignoreidx >= 0) {
+		int value = defLang._tokenstart + defLang._tokensize;
+		int borderidx = 0;
+		if (hasTitle)
+			borderidx = 1;
+		if (value > 0) {
+			if (borders[borderidx].low < value)
+				borders[borderidx].low = value;
+			if (borders[borderidx].upper < value)
+				borders[borderidx].upper = value;
+		}
+	}
 }
 
 static void checkDepthIndex(int val)
 {
-  static int maxdepthidx = MAXOPENED-2;
-  static int lastmaxdepth = 0;
-  if (val > lastmaxdepth) {
-    LYXERR(Debug::INFO, "Depth reached " << val);
-    lastmaxdepth = val;
-  }
-  if (val > maxdepthidx) {
-    maxdepthidx = val;
-    LYXERR(Debug::INFO, "maxdepthidx now " << val);
-  }
+	static int maxdepthidx = MAXOPENED-2;
+	static int lastmaxdepth = 0;
+	if (val > lastmaxdepth) {
+		LYXERR(Debug::INFO, "Depth reached " << val);
+		lastmaxdepth = val;
+	}
+	if (val > maxdepthidx) {
+		maxdepthidx = val;
+		LYXERR(Debug::INFO, "maxdepthidx now " << val);
+	}
 }
 
 #if 0
 // Not needed, because borders are now dynamically expanded
 static void checkIgnoreIdx(int val)
 {
-  static int lastmaxignore = -1;
-  if ((lastmaxignore < val) && (size_t(val+1) >= borders.size())) {
-    LYXERR(Debug::INFO, "IgnoreIdx reached " << val);
-    lastmaxignore = val;
-  }
+	static int lastmaxignore = -1;
+	if ((lastmaxignore < val) && (size_t(val+1) >= borders.size())) {
+		LYXERR(Debug::INFO, "IgnoreIdx reached " << val);
+		lastmaxignore = val;
+	}
 }
 #endif
 
@@ -1443,114 +1443,114 @@ static void checkIgnoreIdx(int val)
  */
 void Intervall::addIntervall(int low, int upper)
 {
-  int idx;
-  if (low == upper) return;
-  for (idx = ignoreidx+1; idx > 0; --idx) {
-    if (low > borders[idx-1].upper) {
-      break;
-    }
-  }
-  Border br(low, upper);
-  if (idx > ignoreidx) {
-    if (borders.size() <= size_t(idx)) {
-      borders.push_back(br);
-    }
-    else {
-      borders[idx] = br;
-    }
-    ignoreidx = idx;
-    // checkIgnoreIdx(ignoreidx);
-    return;
-  }
-  else {
-    // Expand only if one of the new bound is inside the interwall
-    // We know here that br.low > borders[idx-1].upper
-    if (br.upper < borders[idx].low) {
-      // We have to insert at this pos
-      if (size_t(ignoreidx+1) >= borders.size()) {
-        borders.push_back(borders[ignoreidx]);
-      }
-      else {
-        borders[ignoreidx+1] = borders[ignoreidx];
-      }
-      for (int i = ignoreidx; i > idx; --i) {
-        borders[i] = borders[i-1];
-      }
-      borders[idx] = br;
-      ignoreidx += 1;
-      // checkIgnoreIdx(ignoreidx);
-      return;
-    }
-    // Here we know, that we are overlapping
-    if (br.low > borders[idx].low)
-      br.low = borders[idx].low;
-    // check what has to be concatenated
-    int count = 0;
-    for (int i = idx; i <= ignoreidx; i++) {
-      if (br.upper >= borders[i].low) {
-        count++;
-        if (br.upper < borders[i].upper)
-          br.upper = borders[i].upper;
-      }
-      else {
-        break;
-      }
-    }
-    // count should be >= 1 here
-    borders[idx] = br;
-    if (count > 1) {
-      for (int i = idx + count; i <= ignoreidx; i++) {
-        borders[i-count+1] = borders[i];
-      }
-      ignoreidx -= count - 1;
-      return;
-    }
-  }
+	int idx;
+	if (low == upper) return;
+	for (idx = ignoreidx+1; idx > 0; --idx) {
+		if (low > borders[idx-1].upper) {
+			break;
+		}
+	}
+	Border br(low, upper);
+	if (idx > ignoreidx) {
+		if (borders.size() <= size_t(idx)) {
+			borders.push_back(br);
+		}
+		else {
+			borders[idx] = br;
+		}
+		ignoreidx = idx;
+		// checkIgnoreIdx(ignoreidx);
+		return;
+	}
+	else {
+		// Expand only if one of the new bound is inside the interwall
+		// We know here that br.low > borders[idx-1].upper
+		if (br.upper < borders[idx].low) {
+			// We have to insert at this pos
+			if (size_t(ignoreidx+1) >= borders.size()) {
+				borders.push_back(borders[ignoreidx]);
+			}
+			else {
+				borders[ignoreidx+1] = borders[ignoreidx];
+			}
+			for (int i = ignoreidx; i > idx; --i) {
+				borders[i] = borders[i-1];
+			}
+			borders[idx] = br;
+			ignoreidx += 1;
+			// checkIgnoreIdx(ignoreidx);
+			return;
+		}
+		// Here we know, that we are overlapping
+		if (br.low > borders[idx].low)
+			br.low = borders[idx].low;
+		// check what has to be concatenated
+		int count = 0;
+		for (int i = idx; i <= ignoreidx; i++) {
+			if (br.upper >= borders[i].low) {
+				count++;
+				if (br.upper < borders[i].upper)
+					br.upper = borders[i].upper;
+			}
+			else {
+				break;
+			}
+		}
+		// count should be >= 1 here
+		borders[idx] = br;
+		if (count > 1) {
+			for (int i = idx + count; i <= ignoreidx; i++) {
+				borders[i-count+1] = borders[i];
+			}
+			ignoreidx -= count - 1;
+			return;
+		}
+	}
 }
 
 static void buildaccent(string n, string param, string values)
 {
-  stringstream s(n);
-  string name;
-  const char delim = '|';
-  while (getline(s, name, delim)) {
-    size_t start = 0;
-    for (char c : param) {
-      string key = name + "{" + c + "}";
-      // get the corresponding utf8-value
-      if ((values[start] & 0xc0) != 0xc0) {
-        // should not happen, utf8 encoding starts at least with 11xxxxxx
-        // but value for '\dot{i}' is 'i', which is ascii
-        if ((values[start] & 0x80) == 0) {
-          // is ascii
-          accents[key] = values.substr(start, 1);
-          // LYXERR(Debug::INFO, "" << key << "=" << accents[key]);
-        }
-        start++;
-        continue;
-      }
-      for (int j = 1; ;j++) {
-        if (start + j >= values.size()) {
-          accents[key] = values.substr(start, j);
-          start = values.size() - 1;
-          break;
-        }
-        else if ((values[start+j] & 0xc0) != 0x80) {
-          // This is the first byte of following utf8 char
-          accents[key] = values.substr(start, j);
-          start += j;
-          // LYXERR(Debug::INFO, "" << key << "=" << accents[key]);
-          break;
-        }
-      }
-    }
-  }
+	stringstream s(n);
+	string name;
+	const char delim = '|';
+	while (getline(s, name, delim)) {
+		size_t start = 0;
+		for (char c : param) {
+			string key = name + "{" + c + "}";
+			// get the corresponding utf8-value
+			if ((values[start] & 0xc0) != 0xc0) {
+				// should not happen, utf8 encoding starts at least with 11xxxxxx
+				// but value for '\dot{i}' is 'i', which is ascii
+				if ((values[start] & 0x80) == 0) {
+					// is ascii
+					accents[key] = values.substr(start, 1);
+					// LYXERR(Debug::INFO, "" << key << "=" << accents[key]);
+				}
+				start++;
+				continue;
+			}
+			for (int j = 1; ;j++) {
+				if (start + j >= values.size()) {
+					accents[key] = values.substr(start, j);
+					start = values.size() - 1;
+					break;
+				}
+				else if ((values[start+j] & 0xc0) != 0x80) {
+					// This is the first byte of following utf8 char
+					accents[key] = values.substr(start, j);
+					start += j;
+					// LYXERR(Debug::INFO, "" << key << "=" << accents[key]);
+					break;
+				}
+			}
+		}
+	}
 }
 
 // Helper function
 static string getutf8(unsigned uchar)
 {
-	#define maxc 5
+#define maxc 5
 	string ret = string();
 	char c[maxc] = {0};
 	if (uchar <= 0x7f) {
@@ -1581,385 +1581,385 @@ static string getutf8(unsigned uchar)
 
 static void addAccents(string latex_in, string unicode_out)
 {
-  latex_in = latex_in.substr(1);
-  AccentsIterator it_ac = accents.find(latex_in);
-  if (it_ac == accents.end()) {
-    accents[latex_in] = unicode_out;
-  }
-  else {
-    LYXERR0("Key " << latex_in  << " already set");
-  }
+	latex_in = latex_in.substr(1);
+	AccentsIterator it_ac = accents.find(latex_in);
+	if (it_ac == accents.end()) {
+		accents[latex_in] = unicode_out;
+	}
+	else {
+		LYXERR0("Key " << latex_in  << " already set");
+	}
 }
 
 void static fillMissingUnicodesymbols()
 {
-  addAccents("\\pounds", getutf8(0x00a3));
-  addAccents("\\textsterling", getutf8(0x00a3));
-  addAccents("\\textyen", getutf8(0x00a5));
-  addAccents("\\yen", getutf8(0x00a5));
-  addAccents("\\textsection", getutf8(0x00a7));
-  addAccents("\\mathsection", getutf8(0x00a7));
-  addAccents("\\textcopyright", getutf8(0x00a9));
-  addAccents("\\copyright", getutf8(0x00a9));
-  addAccents("\\textlnot", getutf8(0x00ac));
-  addAccents("\\neg", getutf8(0x00ac));
-  addAccents("\\textregistered", getutf8(0x00ae));
-  addAccents("\\circledR", getutf8(0x00ae));
-  addAccents("\\textpm", getutf8(0x00b1));
-  addAccents("\\pm", getutf8(0x00b1));
-  addAccents("\\textparagraph", getutf8(0x00b6));
-  addAccents("\\mathparagraph", getutf8(0x00b6));
-  addAccents("\\textperiodcentered", getutf8(0x00b7));
-  addAccents("\\texttimes", getutf8(0x00d7));
-  addAccents("\\times", getutf8(0x00d7));
-  addAccents("\\O", getutf8(0x00d8));
-  addAccents("\\dh", getutf8(0x00f0));
-  addAccents("\\eth", getutf8(0x00f0));
-  addAccents("\\textdiv", getutf8(0x00f7));
-  addAccents("\\div", getutf8(0x00f7));
-  addAccents("\\o", getutf8(0x00f8));
-  addAccents("\\textcrlambda", getutf8(0x019b));
-  addAccents("\\j", getutf8(0x0237));
-  addAccents("\\textrevepsilon", getutf8(0x025c));
-  addAccents("\\textbaru", getutf8(0x0289));
-  addAccents("\\textquoteleft", getutf8(0x02bb));
-  addAccents("\\textGamma", getutf8(0x0393));
-  addAccents("\\Gamma", getutf8(0x0393));
-  addAccents("\\textDelta", getutf8(0x0394));
-  addAccents("\\Delta", getutf8(0x0394));
-  addAccents("\\textTheta", getutf8(0x0398));
-  addAccents("\\Theta", getutf8(0x0398));
-  addAccents("\\textLambda", getutf8(0x039b));
-  addAccents("\\Lambda", getutf8(0x039b));
-  addAccents("\\textXi", getutf8(0x039e));
-  addAccents("\\Xi", getutf8(0x039e));
-  addAccents("\\textPi", getutf8(0x03a0));
-  addAccents("\\Pi", getutf8(0x03a0));
-  addAccents("\\textSigma", getutf8(0x03a3));
-  addAccents("\\Sigma", getutf8(0x03a3));
-  addAccents("\\textUpsilon", getutf8(0x03a5));
-  addAccents("\\Upsilon", getutf8(0x03a5));
-  addAccents("\\textPhi", getutf8(0x03a6));
-  addAccents("\\Phi", getutf8(0x03a6));
-  addAccents("\\textPsi", getutf8(0x03a8));
-  addAccents("\\Psi", getutf8(0x03a8));
-  addAccents("\\textOmega", getutf8(0x03a9));
-  addAccents("\\Omega", getutf8(0x03a9));
-  addAccents("\\textalpha", getutf8(0x03b1));
-  addAccents("\\alpha", getutf8(0x03b1));
-  addAccents("\\textbeta", getutf8(0x03b2));
-  addAccents("\\beta", getutf8(0x03b2));
-  addAccents("\\textgamma", getutf8(0x03b3));
-  addAccents("\\gamma", getutf8(0x03b3));
-  addAccents("\\textdelta", getutf8(0x03b4));
-  addAccents("\\delta", getutf8(0x03b4));
-  addAccents("\\textepsilon", getutf8(0x03b5));
-  addAccents("\\varepsilon", getutf8(0x03b5));
-  addAccents("\\textzeta", getutf8(0x03b6));
-  addAccents("\\zeta", getutf8(0x03b6));
-  addAccents("\\texteta", getutf8(0x03b7));
-  addAccents("\\eta", getutf8(0x03b7));
-  addAccents("\\texttheta", getutf8(0x03b8));
-  addAccents("\\theta", getutf8(0x03b8));
-  addAccents("\\textiota", getutf8(0x03b9));
-  addAccents("\\iota", getutf8(0x03b9));
-  addAccents("\\textkappa", getutf8(0x03ba));
-  addAccents("\\kappa", getutf8(0x03ba));
-  addAccents("\\textlambda", getutf8(0x03bb));
-  addAccents("\\lambda", getutf8(0x03bb));
-  addAccents("\\textmu", getutf8(0x03bc));
-  addAccents("\\mu", getutf8(0x03bc));
-  addAccents("\\textnu", getutf8(0x03bd));
-  addAccents("\\nu", getutf8(0x03bd));
-  addAccents("\\textxi", getutf8(0x03be));
-  addAccents("\\xi", getutf8(0x03be));
-  addAccents("\\textpi", getutf8(0x03c0));
-  addAccents("\\pi", getutf8(0x03c0));
-  addAccents("\\textrho", getutf8(0x03c1));
-  addAccents("\\rho", getutf8(0x03c1));
-  addAccents("\\textfinalsigma", getutf8(0x03c2));
-  addAccents("\\varsigma", getutf8(0x03c2));
-  addAccents("\\textsigma", getutf8(0x03c3));
-  addAccents("\\sigma", getutf8(0x03c3));
-  addAccents("\\texttau", getutf8(0x03c4));
-  addAccents("\\tau", getutf8(0x03c4));
-  addAccents("\\textupsilon", getutf8(0x03c5));
-  addAccents("\\upsilon", getutf8(0x03c5));
-  addAccents("\\textphi", getutf8(0x03c6));
-  addAccents("\\varphi", getutf8(0x03c6));
-  addAccents("\\textchi", getutf8(0x03c7));
-  addAccents("\\chi", getutf8(0x03c7));
-  addAccents("\\textpsi", getutf8(0x03c8));
-  addAccents("\\psi", getutf8(0x03c8));
-  addAccents("\\textomega", getutf8(0x03c9));
-  addAccents("\\omega", getutf8(0x03c9));
-  addAccents("\\textdigamma", getutf8(0x03dd));
-  addAccents("\\digamma", getutf8(0x03dd));
-  addAccents("\\hebalef", getutf8(0x05d0));
-  addAccents("\\aleph", getutf8(0x05d0));
-  addAccents("\\hebbet", getutf8(0x05d1));
-  addAccents("\\beth", getutf8(0x05d1));
-  addAccents("\\hebgimel", getutf8(0x05d2));
-  addAccents("\\gimel", getutf8(0x05d2));
-  addAccents("\\hebdalet", getutf8(0x05d3));
-  addAccents("\\daleth", getutf8(0x05d3));
-  addAccents("\\hebhe", getutf8(0x05d4));
-  addAccents("\\hebvav", getutf8(0x05d5));
-  addAccents("\\hebzayin", getutf8(0x05d6));
-  addAccents("\\hebhet", getutf8(0x05d7));
-  addAccents("\\hebtet", getutf8(0x05d8));
-  addAccents("\\hebyod", getutf8(0x05d9));
-  addAccents("\\hebfinalkaf", getutf8(0x05da));
-  addAccents("\\hebkaf", getutf8(0x05db));
-  addAccents("\\heblamed", getutf8(0x05dc));
-  addAccents("\\hebfinalmem", getutf8(0x05dd));
-  addAccents("\\hebmem", getutf8(0x05de));
-  addAccents("\\hebfinalnun", getutf8(0x05df));
-  addAccents("\\hebnun", getutf8(0x05e0));
-  addAccents("\\hebsamekh", getutf8(0x05e1));
-  addAccents("\\hebayin", getutf8(0x05e2));
-  addAccents("\\hebfinalpe", getutf8(0x05e3));
-  addAccents("\\hebpe", getutf8(0x05e4));
-  addAccents("\\hebfinaltsadi", getutf8(0x05e5));
-  addAccents("\\hebtsadi", getutf8(0x05e6));
-  addAccents("\\hebqof", getutf8(0x05e7));
-  addAccents("\\hebresh", getutf8(0x05e8));
-  addAccents("\\hebshin", getutf8(0x05e9));
-  addAccents("\\hebtav", getutf8(0x05ea));
+	addAccents("\\pounds", getutf8(0x00a3));
+	addAccents("\\textsterling", getutf8(0x00a3));
+	addAccents("\\textyen", getutf8(0x00a5));
+	addAccents("\\yen", getutf8(0x00a5));
+	addAccents("\\textsection", getutf8(0x00a7));
+	addAccents("\\mathsection", getutf8(0x00a7));
+	addAccents("\\textcopyright", getutf8(0x00a9));
+	addAccents("\\copyright", getutf8(0x00a9));
+	addAccents("\\textlnot", getutf8(0x00ac));
+	addAccents("\\neg", getutf8(0x00ac));
+	addAccents("\\textregistered", getutf8(0x00ae));
+	addAccents("\\circledR", getutf8(0x00ae));
+	addAccents("\\textpm", getutf8(0x00b1));
+	addAccents("\\pm", getutf8(0x00b1));
+	addAccents("\\textparagraph", getutf8(0x00b6));
+	addAccents("\\mathparagraph", getutf8(0x00b6));
+	addAccents("\\textperiodcentered", getutf8(0x00b7));
+	addAccents("\\texttimes", getutf8(0x00d7));
+	addAccents("\\times", getutf8(0x00d7));
+	addAccents("\\O", getutf8(0x00d8));
+	addAccents("\\dh", getutf8(0x00f0));
+	addAccents("\\eth", getutf8(0x00f0));
+	addAccents("\\textdiv", getutf8(0x00f7));
+	addAccents("\\div", getutf8(0x00f7));
+	addAccents("\\o", getutf8(0x00f8));
+	addAccents("\\textcrlambda", getutf8(0x019b));
+	addAccents("\\j", getutf8(0x0237));
+	addAccents("\\textrevepsilon", getutf8(0x025c));
+	addAccents("\\textbaru", getutf8(0x0289));
+	addAccents("\\textquoteleft", getutf8(0x02bb));
+	addAccents("\\textGamma", getutf8(0x0393));
+	addAccents("\\Gamma", getutf8(0x0393));
+	addAccents("\\textDelta", getutf8(0x0394));
+	addAccents("\\Delta", getutf8(0x0394));
+	addAccents("\\textTheta", getutf8(0x0398));
+	addAccents("\\Theta", getutf8(0x0398));
+	addAccents("\\textLambda", getutf8(0x039b));
+	addAccents("\\Lambda", getutf8(0x039b));
+	addAccents("\\textXi", getutf8(0x039e));
+	addAccents("\\Xi", getutf8(0x039e));
+	addAccents("\\textPi", getutf8(0x03a0));
+	addAccents("\\Pi", getutf8(0x03a0));
+	addAccents("\\textSigma", getutf8(0x03a3));
+	addAccents("\\Sigma", getutf8(0x03a3));
+	addAccents("\\textUpsilon", getutf8(0x03a5));
+	addAccents("\\Upsilon", getutf8(0x03a5));
+	addAccents("\\textPhi", getutf8(0x03a6));
+	addAccents("\\Phi", getutf8(0x03a6));
+	addAccents("\\textPsi", getutf8(0x03a8));
+	addAccents("\\Psi", getutf8(0x03a8));
+	addAccents("\\textOmega", getutf8(0x03a9));
+	addAccents("\\Omega", getutf8(0x03a9));
+	addAccents("\\textalpha", getutf8(0x03b1));
+	addAccents("\\alpha", getutf8(0x03b1));
+	addAccents("\\textbeta", getutf8(0x03b2));
+	addAccents("\\beta", getutf8(0x03b2));
+	addAccents("\\textgamma", getutf8(0x03b3));
+	addAccents("\\gamma", getutf8(0x03b3));
+	addAccents("\\textdelta", getutf8(0x03b4));
+	addAccents("\\delta", getutf8(0x03b4));
+	addAccents("\\textepsilon", getutf8(0x03b5));
+	addAccents("\\varepsilon", getutf8(0x03b5));
+	addAccents("\\textzeta", getutf8(0x03b6));
+	addAccents("\\zeta", getutf8(0x03b6));
+	addAccents("\\texteta", getutf8(0x03b7));
+	addAccents("\\eta", getutf8(0x03b7));
+	addAccents("\\texttheta", getutf8(0x03b8));
+	addAccents("\\theta", getutf8(0x03b8));
+	addAccents("\\textiota", getutf8(0x03b9));
+	addAccents("\\iota", getutf8(0x03b9));
+	addAccents("\\textkappa", getutf8(0x03ba));
+	addAccents("\\kappa", getutf8(0x03ba));
+	addAccents("\\textlambda", getutf8(0x03bb));
+	addAccents("\\lambda", getutf8(0x03bb));
+	addAccents("\\textmu", getutf8(0x03bc));
+	addAccents("\\mu", getutf8(0x03bc));
+	addAccents("\\textnu", getutf8(0x03bd));
+	addAccents("\\nu", getutf8(0x03bd));
+	addAccents("\\textxi", getutf8(0x03be));
+	addAccents("\\xi", getutf8(0x03be));
+	addAccents("\\textpi", getutf8(0x03c0));
+	addAccents("\\pi", getutf8(0x03c0));
+	addAccents("\\textrho", getutf8(0x03c1));
+	addAccents("\\rho", getutf8(0x03c1));
+	addAccents("\\textfinalsigma", getutf8(0x03c2));
+	addAccents("\\varsigma", getutf8(0x03c2));
+	addAccents("\\textsigma", getutf8(0x03c3));
+	addAccents("\\sigma", getutf8(0x03c3));
+	addAccents("\\texttau", getutf8(0x03c4));
+	addAccents("\\tau", getutf8(0x03c4));
+	addAccents("\\textupsilon", getutf8(0x03c5));
+	addAccents("\\upsilon", getutf8(0x03c5));
+	addAccents("\\textphi", getutf8(0x03c6));
+	addAccents("\\varphi", getutf8(0x03c6));
+	addAccents("\\textchi", getutf8(0x03c7));
+	addAccents("\\chi", getutf8(0x03c7));
+	addAccents("\\textpsi", getutf8(0x03c8));
+	addAccents("\\psi", getutf8(0x03c8));
+	addAccents("\\textomega", getutf8(0x03c9));
+	addAccents("\\omega", getutf8(0x03c9));
+	addAccents("\\textdigamma", getutf8(0x03dd));
+	addAccents("\\digamma", getutf8(0x03dd));
+	addAccents("\\hebalef", getutf8(0x05d0));
+	addAccents("\\aleph", getutf8(0x05d0));
+	addAccents("\\hebbet", getutf8(0x05d1));
+	addAccents("\\beth", getutf8(0x05d1));
+	addAccents("\\hebgimel", getutf8(0x05d2));
+	addAccents("\\gimel", getutf8(0x05d2));
+	addAccents("\\hebdalet", getutf8(0x05d3));
+	addAccents("\\daleth", getutf8(0x05d3));
+	addAccents("\\hebhe", getutf8(0x05d4));
+	addAccents("\\hebvav", getutf8(0x05d5));
+	addAccents("\\hebzayin", getutf8(0x05d6));
+	addAccents("\\hebhet", getutf8(0x05d7));
+	addAccents("\\hebtet", getutf8(0x05d8));
+	addAccents("\\hebyod", getutf8(0x05d9));
+	addAccents("\\hebfinalkaf", getutf8(0x05da));
+	addAccents("\\hebkaf", getutf8(0x05db));
+	addAccents("\\heblamed", getutf8(0x05dc));
+	addAccents("\\hebfinalmem", getutf8(0x05dd));
+	addAccents("\\hebmem", getutf8(0x05de));
+	addAccents("\\hebfinalnun", getutf8(0x05df));
+	addAccents("\\hebnun", getutf8(0x05e0));
+	addAccents("\\hebsamekh", getutf8(0x05e1));
+	addAccents("\\hebayin", getutf8(0x05e2));
+	addAccents("\\hebfinalpe", getutf8(0x05e3));
+	addAccents("\\hebpe", getutf8(0x05e4));
+	addAccents("\\hebfinaltsadi", getutf8(0x05e5));
+	addAccents("\\hebtsadi", getutf8(0x05e6));
+	addAccents("\\hebqof", getutf8(0x05e7));
+	addAccents("\\hebresh", getutf8(0x05e8));
+	addAccents("\\hebshin", getutf8(0x05e9));
+	addAccents("\\hebtav", getutf8(0x05ea));
 
-  // Thai characters
-  addAccents("\\thaiKoKai", getutf8(0x0e01));
-  addAccents("\\thaiKhoKhai", getutf8(0x0e02));
-  addAccents("\\thaiKhoKhuat", getutf8(0x0e03));
-  addAccents("\\thaiKhoKhwai", getutf8(0x0e04));
-  addAccents("\\thaiKhoKhon", getutf8(0x0e05));
-  addAccents("\\thaiKhoRakhang", getutf8(0x0e06));
-  addAccents("\\thaiNgoNgu", getutf8(0x0e07));
-  addAccents("\\thaiChoChan", getutf8(0x0e08));
-  addAccents("\\thaiChoChing", getutf8(0x0e09));
-  addAccents("\\thaiChoChang", getutf8(0x0e0a));
-  addAccents("\\thaiSoSo", getutf8(0x0e0b));
-  addAccents("\\thaiChoChoe", getutf8(0x0e0c));
-  addAccents("\\thaiYoYing", getutf8(0x0e0d));
-  addAccents("\\thaiDoChada", getutf8(0x0e0e));
-  addAccents("\\thaiToPatak", getutf8(0x0e0f));
-  addAccents("\\thaiThoThan", getutf8(0x0e10));
-  addAccents("\\thaiThoNangmontho", getutf8(0x0e11));
-  addAccents("\\thaiThoPhuthao", getutf8(0x0e12));
-  addAccents("\\thaiNoNen", getutf8(0x0e13));
-  addAccents("\\thaiDoDek", getutf8(0x0e14));
-  addAccents("\\thaiToTao", getutf8(0x0e15));
-  addAccents("\\thaiThoThung", getutf8(0x0e16));
-  addAccents("\\thaiThoThahan", getutf8(0x0e17));
-  addAccents("\\thaiThoThong", getutf8(0x0e18));
-  addAccents("\\thaiNoNu", getutf8(0x0e19));
-  addAccents("\\thaiBoBaimai", getutf8(0x0e1a));
-  addAccents("\\thaiPoPla", getutf8(0x0e1b));
-  addAccents("\\thaiPhoPhung", getutf8(0x0e1c));
-  addAccents("\\thaiFoFa", getutf8(0x0e1d));
-  addAccents("\\thaiPhoPhan", getutf8(0x0e1e));
-  addAccents("\\thaiFoFan", getutf8(0x0e1f));
-  addAccents("\\thaiPhoSamphao", getutf8(0x0e20));
-  addAccents("\\thaiMoMa", getutf8(0x0e21));
-  addAccents("\\thaiYoYak", getutf8(0x0e22));
-  addAccents("\\thaiRoRua", getutf8(0x0e23));
-  addAccents("\\thaiRu", getutf8(0x0e24));
-  addAccents("\\thaiLoLing", getutf8(0x0e25));
-  addAccents("\\thaiLu", getutf8(0x0e26));
-  addAccents("\\thaiWoWaen", getutf8(0x0e27));
-  addAccents("\\thaiSoSala", getutf8(0x0e28));
-  addAccents("\\thaiSoRusi", getutf8(0x0e29));
-  addAccents("\\thaiSoSua", getutf8(0x0e2a));
-  addAccents("\\thaiHoHip", getutf8(0x0e2b));
-  addAccents("\\thaiLoChula", getutf8(0x0e2c));
-  addAccents("\\thaiOAng", getutf8(0x0e2d));
-  addAccents("\\thaiHoNokhuk", getutf8(0x0e2e));
-  addAccents("\\thaiPaiyannoi", getutf8(0x0e2f));
-  addAccents("\\thaiSaraA", getutf8(0x0e30));
-  addAccents("\\thaiMaiHanakat", getutf8(0x0e31));
-  addAccents("\\thaiSaraAa", getutf8(0x0e32));
-  addAccents("\\thaiSaraAm", getutf8(0x0e33));
-  addAccents("\\thaiSaraI", getutf8(0x0e34));
-  addAccents("\\thaiSaraIi", getutf8(0x0e35));
-  addAccents("\\thaiSaraUe", getutf8(0x0e36));
-  addAccents("\\thaiSaraUee", getutf8(0x0e37));
-  addAccents("\\thaiSaraU", getutf8(0x0e38));
-  addAccents("\\thaiSaraUu", getutf8(0x0e39));
-  addAccents("\\thaiPhinthu", getutf8(0x0e3a));
-  addAccents("\\thaiSaraE", getutf8(0x0e40));
-  addAccents("\\thaiSaraAe", getutf8(0x0e41));
-  addAccents("\\thaiSaraO", getutf8(0x0e42));
-  addAccents("\\thaiSaraAiMaimuan", getutf8(0x0e43));
-  addAccents("\\thaiSaraAiMaimalai", getutf8(0x0e44));
-  addAccents("\\thaiLakkhangyao", getutf8(0x0e45));
-  addAccents("\\thaiMaiyamok", getutf8(0x0e46));
-  addAccents("\\thaiMaitaikhu", getutf8(0x0e47));
-  addAccents("\\thaiMaiEk", getutf8(0x0e48));
-  addAccents("\\thaiMaiTho", getutf8(0x0e49));
-  addAccents("\\thaiMaiTri", getutf8(0x0e4a));
-  addAccents("\\thaiMaiChattawa", getutf8(0x0e4b));
-  addAccents("\\thaiThanthakhat", getutf8(0x0e4c));
-  addAccents("\\thaiNikhahit", getutf8(0x0e4d));
-  addAccents("\\thaiYamakkan", getutf8(0x0e4e));
-  addAccents("\\thaiFongman", getutf8(0x0e4f));
-  addAccents("\\thaizero", getutf8(0x0e50));
-  addAccents("\\thaione", getutf8(0x0e51));
-  addAccents("\\thaitwo", getutf8(0x0e52));
-  addAccents("\\thaithree", getutf8(0x0e53));
-  addAccents("\\thaifour", getutf8(0x0e54));
-  addAccents("\\thaifive", getutf8(0x0e55));
-  addAccents("\\thaisix", getutf8(0x0e56));
-  addAccents("\\thaiseven", getutf8(0x0e57));
-  addAccents("\\thaieight", getutf8(0x0e58));
-  addAccents("\\thainine", getutf8(0x0e59));
-  addAccents("\\thaiAngkhankhu", getutf8(0x0e5a));
-  addAccents("\\thaiKhomut", getutf8(0x0e5b));
-  addAccents("\\dag", getutf8(0x2020));
-  addAccents("\\dagger", getutf8(0x2020));
-  addAccents("\\textdagger", getutf8(0x2020));
-  addAccents("\\ddag", getutf8(0x2021));
-  addAccents("\\ddagger", getutf8(0x2021));
-  addAccents("\\textdaggerdbl", getutf8(0x2021));
-  addAccents("\\textbullet", getutf8(0x2022));
-  addAccents("\\bullet", getutf8(0x2022));
-  addAccents("\\dots", getutf8(0x2026));
-  addAccents("\\ldots", getutf8(0x2026));
-  addAccents("\\textellipsis", getutf8(0x2026));
-  addAccents("\\textasciiacute", getutf8(0x2032));
-  addAccents("\\prime", getutf8(0x2032));
-  addAccents("\\textacutedbl", getutf8(0x2033));
-  addAccents("\\dprime", getutf8(0x2033));
-  addAccents("\\textasciigrave", getutf8(0x2035));
-  addAccents("\\backprime", getutf8(0x2035));
-  addAccents("\\textsubcircum{ }", getutf8(0x2038));
-  addAccents("\\caretinsert", getutf8(0x2038));
-  addAccents("\\textasteriskcentered", getutf8(0x204e));
-  addAccents("\\ast", getutf8(0x204e));
-  addAccents("\\textmho", getutf8(0x2127));
-  addAccents("\\mho", getutf8(0x2127));
-  addAccents("\\textleftarrow", getutf8(0x2190));
-  addAccents("\\leftarrow", getutf8(0x2190));
-  addAccents("\\textuparrow", getutf8(0x2191));
-  addAccents("\\uparrow", getutf8(0x2191));
-  addAccents("\\textrightarrow", getutf8(0x2192));
-  addAccents("\\rightarrow", getutf8(0x2192));
-  addAccents("\\textdownarrow", getutf8(0x2193));
-  addAccents("\\downarrow", getutf8(0x2193));
-  addAccents("\\textglobrise", getutf8(0x2197));
-  addAccents("\\nearrow", getutf8(0x2197));
-  addAccents("\\textglobfall", getutf8(0x2198));
-  addAccents("\\searrow", getutf8(0x2198));
-  addAccents("\\textsurd", getutf8(0x221a));
-  addAccents("\\surd", getutf8(0x221a));
-  addAccents("\\textbigcircle", getutf8(0x25ef));
-  addAccents("\\bigcirc", getutf8(0x25ef));
-  addAccents("\\FiveStar", getutf8(0x2605));
-  addAccents("\\bigstar", getutf8(0x2605));
-  addAccents("\\FiveStarOpen", getutf8(0x2606));
-  addAccents("\\bigwhitestar", getutf8(0x2606));
-  addAccents("\\Checkmark", getutf8(0x2713));
-  addAccents("\\checkmark", getutf8(0x2713));
-  addAccents("\\CrossMaltese", getutf8(0x2720));
-  addAccents("\\maltese", getutf8(0x2720));
-  addAccents("\\textlangle", getutf8(0x27e8));
-  addAccents("\\langle", getutf8(0x27e8));
-  addAccents("\\textrangle", getutf8(0x27e9));
-  addAccents("\\rangle", getutf8(0x27e9));
+	// Thai characters
+	addAccents("\\thaiKoKai", getutf8(0x0e01));
+	addAccents("\\thaiKhoKhai", getutf8(0x0e02));
+	addAccents("\\thaiKhoKhuat", getutf8(0x0e03));
+	addAccents("\\thaiKhoKhwai", getutf8(0x0e04));
+	addAccents("\\thaiKhoKhon", getutf8(0x0e05));
+	addAccents("\\thaiKhoRakhang", getutf8(0x0e06));
+	addAccents("\\thaiNgoNgu", getutf8(0x0e07));
+	addAccents("\\thaiChoChan", getutf8(0x0e08));
+	addAccents("\\thaiChoChing", getutf8(0x0e09));
+	addAccents("\\thaiChoChang", getutf8(0x0e0a));
+	addAccents("\\thaiSoSo", getutf8(0x0e0b));
+	addAccents("\\thaiChoChoe", getutf8(0x0e0c));
+	addAccents("\\thaiYoYing", getutf8(0x0e0d));
+	addAccents("\\thaiDoChada", getutf8(0x0e0e));
+	addAccents("\\thaiToPatak", getutf8(0x0e0f));
+	addAccents("\\thaiThoThan", getutf8(0x0e10));
+	addAccents("\\thaiThoNangmontho", getutf8(0x0e11));
+	addAccents("\\thaiThoPhuthao", getutf8(0x0e12));
+	addAccents("\\thaiNoNen", getutf8(0x0e13));
+	addAccents("\\thaiDoDek", getutf8(0x0e14));
+	addAccents("\\thaiToTao", getutf8(0x0e15));
+	addAccents("\\thaiThoThung", getutf8(0x0e16));
+	addAccents("\\thaiThoThahan", getutf8(0x0e17));
+	addAccents("\\thaiThoThong", getutf8(0x0e18));
+	addAccents("\\thaiNoNu", getutf8(0x0e19));
+	addAccents("\\thaiBoBaimai", getutf8(0x0e1a));
+	addAccents("\\thaiPoPla", getutf8(0x0e1b));
+	addAccents("\\thaiPhoPhung", getutf8(0x0e1c));
+	addAccents("\\thaiFoFa", getutf8(0x0e1d));
+	addAccents("\\thaiPhoPhan", getutf8(0x0e1e));
+	addAccents("\\thaiFoFan", getutf8(0x0e1f));
+	addAccents("\\thaiPhoSamphao", getutf8(0x0e20));
+	addAccents("\\thaiMoMa", getutf8(0x0e21));
+	addAccents("\\thaiYoYak", getutf8(0x0e22));
+	addAccents("\\thaiRoRua", getutf8(0x0e23));
+	addAccents("\\thaiRu", getutf8(0x0e24));
+	addAccents("\\thaiLoLing", getutf8(0x0e25));
+	addAccents("\\thaiLu", getutf8(0x0e26));
+	addAccents("\\thaiWoWaen", getutf8(0x0e27));
+	addAccents("\\thaiSoSala", getutf8(0x0e28));
+	addAccents("\\thaiSoRusi", getutf8(0x0e29));
+	addAccents("\\thaiSoSua", getutf8(0x0e2a));
+	addAccents("\\thaiHoHip", getutf8(0x0e2b));
+	addAccents("\\thaiLoChula", getutf8(0x0e2c));
+	addAccents("\\thaiOAng", getutf8(0x0e2d));
+	addAccents("\\thaiHoNokhuk", getutf8(0x0e2e));
+	addAccents("\\thaiPaiyannoi", getutf8(0x0e2f));
+	addAccents("\\thaiSaraA", getutf8(0x0e30));
+	addAccents("\\thaiMaiHanakat", getutf8(0x0e31));
+	addAccents("\\thaiSaraAa", getutf8(0x0e32));
+	addAccents("\\thaiSaraAm", getutf8(0x0e33));
+	addAccents("\\thaiSaraI", getutf8(0x0e34));
+	addAccents("\\thaiSaraIi", getutf8(0x0e35));
+	addAccents("\\thaiSaraUe", getutf8(0x0e36));
+	addAccents("\\thaiSaraUee", getutf8(0x0e37));
+	addAccents("\\thaiSaraU", getutf8(0x0e38));
+	addAccents("\\thaiSaraUu", getutf8(0x0e39));
+	addAccents("\\thaiPhinthu", getutf8(0x0e3a));
+	addAccents("\\thaiSaraE", getutf8(0x0e40));
+	addAccents("\\thaiSaraAe", getutf8(0x0e41));
+	addAccents("\\thaiSaraO", getutf8(0x0e42));
+	addAccents("\\thaiSaraAiMaimuan", getutf8(0x0e43));
+	addAccents("\\thaiSaraAiMaimalai", getutf8(0x0e44));
+	addAccents("\\thaiLakkhangyao", getutf8(0x0e45));
+	addAccents("\\thaiMaiyamok", getutf8(0x0e46));
+	addAccents("\\thaiMaitaikhu", getutf8(0x0e47));
+	addAccents("\\thaiMaiEk", getutf8(0x0e48));
+	addAccents("\\thaiMaiTho", getutf8(0x0e49));
+	addAccents("\\thaiMaiTri", getutf8(0x0e4a));
+	addAccents("\\thaiMaiChattawa", getutf8(0x0e4b));
+	addAccents("\\thaiThanthakhat", getutf8(0x0e4c));
+	addAccents("\\thaiNikhahit", getutf8(0x0e4d));
+	addAccents("\\thaiYamakkan", getutf8(0x0e4e));
+	addAccents("\\thaiFongman", getutf8(0x0e4f));
+	addAccents("\\thaizero", getutf8(0x0e50));
+	addAccents("\\thaione", getutf8(0x0e51));
+	addAccents("\\thaitwo", getutf8(0x0e52));
+	addAccents("\\thaithree", getutf8(0x0e53));
+	addAccents("\\thaifour", getutf8(0x0e54));
+	addAccents("\\thaifive", getutf8(0x0e55));
+	addAccents("\\thaisix", getutf8(0x0e56));
+	addAccents("\\thaiseven", getutf8(0x0e57));
+	addAccents("\\thaieight", getutf8(0x0e58));
+	addAccents("\\thainine", getutf8(0x0e59));
+	addAccents("\\thaiAngkhankhu", getutf8(0x0e5a));
+	addAccents("\\thaiKhomut", getutf8(0x0e5b));
+	addAccents("\\dag", getutf8(0x2020));
+	addAccents("\\dagger", getutf8(0x2020));
+	addAccents("\\textdagger", getutf8(0x2020));
+	addAccents("\\ddag", getutf8(0x2021));
+	addAccents("\\ddagger", getutf8(0x2021));
+	addAccents("\\textdaggerdbl", getutf8(0x2021));
+	addAccents("\\textbullet", getutf8(0x2022));
+	addAccents("\\bullet", getutf8(0x2022));
+	addAccents("\\dots", getutf8(0x2026));
+	addAccents("\\ldots", getutf8(0x2026));
+	addAccents("\\textellipsis", getutf8(0x2026));
+	addAccents("\\textasciiacute", getutf8(0x2032));
+	addAccents("\\prime", getutf8(0x2032));
+	addAccents("\\textacutedbl", getutf8(0x2033));
+	addAccents("\\dprime", getutf8(0x2033));
+	addAccents("\\textasciigrave", getutf8(0x2035));
+	addAccents("\\backprime", getutf8(0x2035));
+	addAccents("\\textsubcircum{ }", getutf8(0x2038));
+	addAccents("\\caretinsert", getutf8(0x2038));
+	addAccents("\\textasteriskcentered", getutf8(0x204e));
+	addAccents("\\ast", getutf8(0x204e));
+	addAccents("\\textmho", getutf8(0x2127));
+	addAccents("\\mho", getutf8(0x2127));
+	addAccents("\\textleftarrow", getutf8(0x2190));
+	addAccents("\\leftarrow", getutf8(0x2190));
+	addAccents("\\textuparrow", getutf8(0x2191));
+	addAccents("\\uparrow", getutf8(0x2191));
+	addAccents("\\textrightarrow", getutf8(0x2192));
+	addAccents("\\rightarrow", getutf8(0x2192));
+	addAccents("\\textdownarrow", getutf8(0x2193));
+	addAccents("\\downarrow", getutf8(0x2193));
+	addAccents("\\textglobrise", getutf8(0x2197));
+	addAccents("\\nearrow", getutf8(0x2197));
+	addAccents("\\textglobfall", getutf8(0x2198));
+	addAccents("\\searrow", getutf8(0x2198));
+	addAccents("\\textsurd", getutf8(0x221a));
+	addAccents("\\surd", getutf8(0x221a));
+	addAccents("\\textbigcircle", getutf8(0x25ef));
+	addAccents("\\bigcirc", getutf8(0x25ef));
+	addAccents("\\FiveStar", getutf8(0x2605));
+	addAccents("\\bigstar", getutf8(0x2605));
+	addAccents("\\FiveStarOpen", getutf8(0x2606));
+	addAccents("\\bigwhitestar", getutf8(0x2606));
+	addAccents("\\Checkmark", getutf8(0x2713));
+	addAccents("\\checkmark", getutf8(0x2713));
+	addAccents("\\CrossMaltese", getutf8(0x2720));
+	addAccents("\\maltese", getutf8(0x2720));
+	addAccents("\\textlangle", getutf8(0x27e8));
+	addAccents("\\langle", getutf8(0x27e8));
+	addAccents("\\textrangle", getutf8(0x27e9));
+	addAccents("\\rangle", getutf8(0x27e9));
 }
 
 static void buildAccentsMap()
 {
-  accents["imath"] = "ı";
-  accents["i"] = "ı";
-  accents["jmath"] = "ȷ";
-  accents["cdot"] = "·";
-  accents["textasciicircum"] = "^";
-  accents["mathcircumflex"] = "^";
-  accents["sim"] = "~";
-  accents["guillemotright"] = "»";
-  accents["guillemotleft"] = "«";
-  accents["hairspace"]     = getutf8(0xf0000);	// select from free unicode plane 15
-  accents["thinspace"]     = getutf8(0xf0002);	// and used _only_ by findadv
-  accents["negthinspace"]  = getutf8(0xf0003);	// to omit backslashed latex macros
-  accents["medspace"]      = getutf8(0xf0004);	// See https://en.wikipedia.org/wiki/Private_Use_Areas
-  accents["negmedspace"]   = getutf8(0xf0005);
-  accents["thickspace"]    = getutf8(0xf0006);
-  accents["negthickspace"] = getutf8(0xf0007);
-  accents["lyx"]           = getutf8(0xf0010);	// Used logos
-  accents["LyX"]           = getutf8(0xf0010);
-  accents["tex"]           = getutf8(0xf0011);
-  accents["TeX"]           = getutf8(0xf0011);
-  accents["latex"]         = getutf8(0xf0012);
-  accents["LaTeX"]         = getutf8(0xf0012);
-  accents["latexe"]        = getutf8(0xf0013);
-  accents["LaTeXe"]        = getutf8(0xf0013);
-  accents["lyxarrow"]      = getutf8(0xf0020);
-  accents["braceleft"]     = getutf8(0xf0030);
-  accents["braceright"]    = getutf8(0xf0031);
-  accents["backslash lyx"]           = getutf8(0xf0010);	// Used logos inserted with starting \backslash
-  accents["backslash LyX"]           = getutf8(0xf0010);
-  accents["backslash tex"]           = getutf8(0xf0011);
-  accents["backslash TeX"]           = getutf8(0xf0011);
-  accents["backslash latex"]         = getutf8(0xf0012);
-  accents["backslash LaTeX"]         = getutf8(0xf0012);
-  accents["backslash latexe"]        = getutf8(0xf0013);
-  accents["backslash LaTeXe"]        = getutf8(0xf0013);
-  accents["backslash lyxarrow"]      = getutf8(0xf0020);
-  accents["ddot{\\imath}"] = "ï";
-  buildaccent("ddot", "aAeEhHiIoOtuUwWxXyY",
-                      "äÄëËḧḦïÏöÖẗüÜẅẄẍẌÿŸ");	// umlaut
-  buildaccent("dot|.", "aAbBcCdDeEfFGghHIimMnNoOpPrRsStTwWxXyYzZ",
-                       "ȧȦḃḂċĊḋḊėĖḟḞĠġḣḢİİṁṀṅṄȯȮṗṖṙṘṡṠṫṪẇẆẋẊẏẎżŻ");	// dot{i} can only happen if ignoring case, but there is no lowercase of 'İ'
-  accents["acute{\\imath}"] = "í";
-  buildaccent("acute", "aAcCeEgGkKlLmMoOnNpPrRsSuUwWyYzZiI",
-                       "áÁćĆéÉǵǴḱḰĺĹḿḾóÓńŃṕṔŕŔśŚúÚẃẂýÝźŹíÍ");
-  buildaccent("dacute|H|h", "oOuU", "őŐűŰ");	// double acute
-  buildaccent("mathring|r", "aAuUwy",
-                            "åÅůŮẘẙ");	// ring
-  accents["check{\\imath}"] = "ǐ";
-  accents["check{\\jmath}"] = "ǰ";
-  buildaccent("check|v", "cCdDaAeEiIoOuUgGkKhHlLnNrRsSTtzZ",
-                         "čČďĎǎǍěĚǐǏǒǑǔǓǧǦǩǨȟȞľĽňŇřŘšŠŤťžŽ");	// caron
-  accents["hat{\\imath}"] = "î";
-  accents["hat{\\jmath}"] = "ĵ";
-  buildaccent("hat|^", "aAcCeEgGhHiIjJoOsSuUwWyYzZ",
-                       "âÂĉĈêÊĝĜĥĤîÎĵĴôÔŝŜûÛŵŴŷŶẑẐ");	// circ
-  accents["bar{\\imath}"] = "ī";
-  buildaccent("bar|=", "aAeEiIoOuUyY",
-                       "āĀēĒīĪōŌūŪȳȲ");	// macron
-  accents["tilde{\\imath}"] = "ĩ";
-  buildaccent("tilde", "aAeEiInNoOuUvVyY",
-                       "ãÃẽẼĩĨñÑõÕũŨṽṼỹỸ");	// tilde
-  accents["breve{\\imath}"] = "ĭ";
-  buildaccent("breve|u", "aAeEgGiIoOuU",
-                         "ăĂĕĔğĞĭĬŏŎŭŬ");	// breve
-  accents["grave{\\imath}"] = "ì";
-  buildaccent("grave|`", "aAeEiIoOuUnNwWyY",
-                         "àÀèÈìÌòÒùÙǹǸẁẀỳỲ");	// grave
-  buildaccent("subdot|d", "BbDdHhKkLlMmNnRrSsTtVvWwZzAaEeIiOoUuYy",
-                          "ḄḅḌḍḤḥḲḳḶḷṂṃṆṇṚṛṢṣṬṭṾṿẈẉẒẓẠạẸẹỊịỌọỤụỴỵ");	// dot below
-  buildaccent("ogonek|k", "AaEeIiUuOo",
-                          "ĄąĘęĮįŲųǪǫ");	// ogonek
-  buildaccent("cedilla|c", "CcGgKkLlNnRrSsTtEeDdHh",
-                           "ÇçĢģĶķĻļŅņŖŗŞşŢţȨȩḐḑḨḩ");	// cedilla
-  buildaccent("subring|textsubring", "Aa",
-                                     "Ḁḁ");	// subring
-  buildaccent("subhat|textsubcircum", "DdEeLlNnTtUu",
-                                      "ḒḓḘḙḼḽṊṋṰṱṶṷ");	// subcircum
-  buildaccent("subtilde|textsubtilde", "EeIiUu",
-                                       "ḚḛḬḭṴṵ");	// subtilde
-  accents["dgrave{\\imath}"] = "ȉ";
-  accents["textdoublegrave{\\i}"] = "ȉ";
-  buildaccent("dgrave|textdoublegrave", "AaEeIiOoRrUu",
-                                        "ȀȁȄȅȈȉȌȍȐȑȔȕ"); // double grave
-  accents["rcap{\\imath}"] = "ȋ";
-  accents["textroundcap{\\i}"] = "ȋ";
-  buildaccent("rcap|textroundcap", "AaEeIiOoRrUu",
-                                   "ȂȃȆȇȊȋȎȏȒȓȖȗ"); // inverted breve
-  buildaccent("slashed", "oO",
-                         "øØ"); // slashed
-  fillMissingUnicodesymbols(); // Add some still not handled entries contained in 'unicodesynbols'
-  // LYXERR0("Number of accents " << accents.size());
+	accents["imath"] = "ı";
+	accents["i"] = "ı";
+	accents["jmath"] = "ȷ";
+	accents["cdot"] = "·";
+	accents["textasciicircum"] = "^";
+	accents["mathcircumflex"] = "^";
+	accents["sim"] = "~";
+	accents["guillemotright"] = "»";
+	accents["guillemotleft"] = "«";
+	accents["hairspace"]     = getutf8(0xf0000);	// select from free unicode plane 15
+	accents["thinspace"]     = getutf8(0xf0002);	// and used _only_ by findadv
+	accents["negthinspace"]  = getutf8(0xf0003);	// to omit backslashed latex macros
+	accents["medspace"]      = getutf8(0xf0004);	// See https://en.wikipedia.org/wiki/Private_Use_Areas
+	accents["negmedspace"]   = getutf8(0xf0005);
+	accents["thickspace"]    = getutf8(0xf0006);
+	accents["negthickspace"] = getutf8(0xf0007);
+	accents["lyx"]           = getutf8(0xf0010);	// Used logos
+	accents["LyX"]           = getutf8(0xf0010);
+	accents["tex"]           = getutf8(0xf0011);
+	accents["TeX"]           = getutf8(0xf0011);
+	accents["latex"]         = getutf8(0xf0012);
+	accents["LaTeX"]         = getutf8(0xf0012);
+	accents["latexe"]        = getutf8(0xf0013);
+	accents["LaTeXe"]        = getutf8(0xf0013);
+	accents["lyxarrow"]      = getutf8(0xf0020);
+	accents["braceleft"]     = getutf8(0xf0030);
+	accents["braceright"]    = getutf8(0xf0031);
+	accents["backslash lyx"]           = getutf8(0xf0010);	// Used logos inserted with starting \backslash
+	accents["backslash LyX"]           = getutf8(0xf0010);
+	accents["backslash tex"]           = getutf8(0xf0011);
+	accents["backslash TeX"]           = getutf8(0xf0011);
+	accents["backslash latex"]         = getutf8(0xf0012);
+	accents["backslash LaTeX"]         = getutf8(0xf0012);
+	accents["backslash latexe"]        = getutf8(0xf0013);
+	accents["backslash LaTeXe"]        = getutf8(0xf0013);
+	accents["backslash lyxarrow"]      = getutf8(0xf0020);
+	accents["ddot{\\imath}"] = "ï";
+	buildaccent("ddot", "aAeEhHiIoOtuUwWxXyY",
+		    "äÄëËḧḦïÏöÖẗüÜẅẄẍẌÿŸ");	// umlaut
+	buildaccent("dot|.", "aAbBcCdDeEfFGghHIimMnNoOpPrRsStTwWxXyYzZ",
+		    "ȧȦḃḂċĊḋḊėĖḟḞĠġḣḢİİṁṀṅṄȯȮṗṖṙṘṡṠṫṪẇẆẋẊẏẎżŻ");	// dot{i} can only happen if ignoring case, but there is no lowercase of 'İ'
+	accents["acute{\\imath}"] = "í";
+	buildaccent("acute", "aAcCeEgGkKlLmMoOnNpPrRsSuUwWyYzZiI",
+		    "áÁćĆéÉǵǴḱḰĺĹḿḾóÓńŃṕṔŕŔśŚúÚẃẂýÝźŹíÍ");
+	buildaccent("dacute|H|h", "oOuU", "őŐűŰ");	// double acute
+	buildaccent("mathring|r", "aAuUwy",
+		    "åÅůŮẘẙ");	// ring
+	accents["check{\\imath}"] = "ǐ";
+	accents["check{\\jmath}"] = "ǰ";
+	buildaccent("check|v", "cCdDaAeEiIoOuUgGkKhHlLnNrRsSTtzZ",
+		    "čČďĎǎǍěĚǐǏǒǑǔǓǧǦǩǨȟȞľĽňŇřŘšŠŤťžŽ");	// caron
+	accents["hat{\\imath}"] = "î";
+	accents["hat{\\jmath}"] = "ĵ";
+	buildaccent("hat|^", "aAcCeEgGhHiIjJoOsSuUwWyYzZ",
+		    "âÂĉĈêÊĝĜĥĤîÎĵĴôÔŝŜûÛŵŴŷŶẑẐ");	// circ
+	accents["bar{\\imath}"] = "ī";
+	buildaccent("bar|=", "aAeEiIoOuUyY",
+		    "āĀēĒīĪōŌūŪȳȲ");	// macron
+	accents["tilde{\\imath}"] = "ĩ";
+	buildaccent("tilde", "aAeEiInNoOuUvVyY",
+		    "ãÃẽẼĩĨñÑõÕũŨṽṼỹỸ");	// tilde
+	accents["breve{\\imath}"] = "ĭ";
+	buildaccent("breve|u", "aAeEgGiIoOuU",
+		    "ăĂĕĔğĞĭĬŏŎŭŬ");	// breve
+	accents["grave{\\imath}"] = "ì";
+	buildaccent("grave|`", "aAeEiIoOuUnNwWyY",
+		    "àÀèÈìÌòÒùÙǹǸẁẀỳỲ");	// grave
+	buildaccent("subdot|d", "BbDdHhKkLlMmNnRrSsTtVvWwZzAaEeIiOoUuYy",
+		    "ḄḅḌḍḤḥḲḳḶḷṂṃṆṇṚṛṢṣṬṭṾṿẈẉẒẓẠạẸẹỊịỌọỤụỴỵ");	// dot below
+	buildaccent("ogonek|k", "AaEeIiUuOo",
+		    "ĄąĘęĮįŲųǪǫ");	// ogonek
+	buildaccent("cedilla|c", "CcGgKkLlNnRrSsTtEeDdHh",
+		    "ÇçĢģĶķĻļŅņŖŗŞşŢţȨȩḐḑḨḩ");	// cedilla
+	buildaccent("subring|textsubring", "Aa",
+		    "Ḁḁ");	// subring
+	buildaccent("subhat|textsubcircum", "DdEeLlNnTtUu",
+		    "ḒḓḘḙḼḽṊṋṰṱṶṷ");	// subcircum
+	buildaccent("subtilde|textsubtilde", "EeIiUu",
+		    "ḚḛḬḭṴṵ");	// subtilde
+	accents["dgrave{\\imath}"] = "ȉ";
+	accents["textdoublegrave{\\i}"] = "ȉ";
+	buildaccent("dgrave|textdoublegrave", "AaEeIiOoRrUu",
+		    "ȀȁȄȅȈȉȌȍȐȑȔȕ"); // double grave
+	accents["rcap{\\imath}"] = "ȋ";
+	accents["textroundcap{\\i}"] = "ȋ";
+	buildaccent("rcap|textroundcap", "AaEeIiOoRrUu",
+		    "ȂȃȆȇȊȋȎȏȒȓȖȗ"); // inverted breve
+	buildaccent("slashed", "oO",
+		    "øØ"); // slashed
+	fillMissingUnicodesymbols(); // Add some still not handled entries contained in 'unicodesynbols'
+	// LYXERR0("Number of accents " << accents.size());
 }
 
 /*
@@ -1968,94 +1968,94 @@ static void buildAccentsMap()
  */
 void Intervall::removeAccents()
 {
-  if (accents.empty())
-    buildAccentsMap();
-  static regex const accre("\\\\("
-      "([\\S]|[A-Za-z]+)\\{[^\\{\\}]+\\}"
-      "|("
-	 "(backslash ([lL]y[xX]|[tT]e[xX]|[lL]a[tT]e[xX]e?|lyxarrow))"
-	"|[A-Za-z]+"
-      ")"
-      "(?![a-zA-Z]))");
-  smatch sub;
-  for (sregex_iterator itacc(par.begin(), par.end(), accre), end; itacc != end; ++itacc) {
-    sub = *itacc;
-    string key = sub.str(1);
-    AccentsIterator it_ac = accents.find(key);
-    if (it_ac != accents.end()) {
-      string val = it_ac->second;
-      size_t pos = sub.position(size_t(0));
-      for (size_t i = 0; i < val.size(); i++) {
-        par[pos+i] = val[i];
-      }
-      // Remove possibly following space too
-      if (par[pos+sub.str(0).size()] == ' ')
-        addIntervall(pos+val.size(), pos + sub.str(0).size()+1);
-      else
-        addIntervall(pos+val.size(), pos + sub.str(0).size());
-      for (size_t i = pos+val.size(); i < pos + sub.str(0).size(); i++) {
-        // remove traces of any remaining chars
-        par[i] = ' ';
-      }
-    }
-    else {
-      LYXERR(Debug::INFO, "Not added accent for \"" << key << "\"");
-    }
-  }
+	if (accents.empty())
+		buildAccentsMap();
+	static regex const accre("\\\\("
+				 "([\\S]|[A-Za-z]+)\\{[^\\{\\}]+\\}"
+				 "|("
+				 "(backslash ([lL]y[xX]|[tT]e[xX]|[lL]a[tT]e[xX]e?|lyxarrow))"
+				 "|[A-Za-z]+"
+				 ")"
+				 "(?![a-zA-Z]))");
+	smatch sub;
+	for (sregex_iterator itacc(par.begin(), par.end(), accre), end; itacc != end; ++itacc) {
+		sub = *itacc;
+		string key = sub.str(1);
+		AccentsIterator it_ac = accents.find(key);
+		if (it_ac != accents.end()) {
+			string val = it_ac->second;
+			size_t pos = sub.position(size_t(0));
+			for (size_t i = 0; i < val.size(); i++) {
+				par[pos+i] = val[i];
+			}
+			// Remove possibly following space too
+			if (par[pos+sub.str(0).size()] == ' ')
+				addIntervall(pos+val.size(), pos + sub.str(0).size()+1);
+			else
+				addIntervall(pos+val.size(), pos + sub.str(0).size());
+			for (size_t i = pos+val.size(); i < pos + sub.str(0).size(); i++) {
+				// remove traces of any remaining chars
+				par[i] = ' ';
+			}
+		}
+		else {
+			LYXERR(Debug::INFO, "Not added accent for \"" << key << "\"");
+		}
+	}
 }
 
 void Intervall::handleOpenP(int i)
 {
-  actualdeptindex++;
-  depts[actualdeptindex] = i+1;
-  closes[actualdeptindex] = -1;
-  checkDepthIndex(actualdeptindex);
+	actualdeptindex++;
+	depts[actualdeptindex] = i+1;
+	closes[actualdeptindex] = -1;
+	checkDepthIndex(actualdeptindex);
 }
 
 void Intervall::handleCloseP(int i, bool closingAllowed)
 {
-  if (actualdeptindex <= 0) {
-    if (! closingAllowed)
-      LYXERR(Debug::FIND, "Bad closing parenthesis in latex");  /* should not happen, but the latex input may be wrong */
-    // if we are at the very end
-    addIntervall(i, i+1);
-  }
-  else {
-    closes[actualdeptindex] = i+1;
-    actualdeptindex--;
-  }
+	if (actualdeptindex <= 0) {
+		if (! closingAllowed)
+			LYXERR(Debug::FIND, "Bad closing parenthesis in latex");  /* should not happen, but the latex input may be wrong */
+		// if we are at the very end
+		addIntervall(i, i+1);
+	}
+	else {
+		closes[actualdeptindex] = i+1;
+		actualdeptindex--;
+	}
 }
 
 void Intervall::resetOpenedP(int openPos)
 {
-  // Used as initializer for foreignlanguage entry
-  actualdeptindex = 1;
-  depts[1] = openPos+1;
-  closes[1] = -1;
+	// Used as initializer for foreignlanguage entry
+	actualdeptindex = 1;
+	depts[1] = openPos+1;
+	closes[1] = -1;
 }
 
 int Intervall::previousNotIgnored(int start) const
 {
-    int idx = 0;                          /* int intervalls */
-    for (idx = ignoreidx; idx >= 0; --idx) {
-      if (start > borders[idx].upper)
-        return start;
-      if (start >= borders[idx].low)
-        start = borders[idx].low-1;
-    }
-    return start;
+	int idx = 0;                          /* int intervalls */
+	for (idx = ignoreidx; idx >= 0; --idx) {
+		if (start > borders[idx].upper)
+			return start;
+		if (start >= borders[idx].low)
+			start = borders[idx].low-1;
+	}
+	return start;
 }
 
 int Intervall::nextNotIgnored(int start) const
 {
-    int idx = 0;                          /* int intervalls */
-    for (idx = 0; idx <= ignoreidx; idx++) {
-      if (start < borders[idx].low)
-        return start;
-      if (start < borders[idx].upper)
-        start = borders[idx].upper;
-    }
-    return start;
+	int idx = 0;                          /* int intervalls */
+	for (idx = 0; idx <= ignoreidx; idx++) {
+		if (start < borders[idx].low)
+			return start;
+		if (start < borders[idx].upper)
+			start = borders[idx].upper;
+	}
+	return start;
 }
 
 typedef unordered_map<string, KeyInfo> KeysMap;
@@ -2064,713 +2064,713 @@ typedef vector< KeyInfo> Entries;
 static KeysMap keys = unordered_map<string, KeyInfo>();
 
 class LatexInfo {
- private:
-  int entidx_;
-  Entries entries_;
-  Intervall interval_;
-  void buildKeys(bool);
-  void buildEntries(bool);
-  void makeKey(const string &, KeyInfo, bool isPatternString);
-  void processRegion(int start, int region_end); /*  remove {} parts */
-  void removeHead(KeyInfo const &, int count=0);
+private:
+	int entidx_;
+	Entries entries_;
+	Intervall interval_;
+	void buildKeys(bool);
+	void buildEntries(bool);
+	void makeKey(const string &, KeyInfo, bool isPatternString);
+	void processRegion(int start, int region_end); /*  remove {} parts */
+	void removeHead(KeyInfo const &, int count=0);
 
- public:
- LatexInfo(string const & par, bool isPatternString)
-         : entidx_(-1), interval_(isPatternString, par)
-  {
-    buildKeys(isPatternString);
-    entries_ = vector<KeyInfo>();
-    buildEntries(isPatternString);
-  }
-  int getFirstKey() {
-    entidx_ = 0;
-    if (entries_.empty()) {
-      return -1;
-    }
-    if (entries_[0].keytype == KeyInfo::isTitle) {
-      interval_.hasTitle = true;
-      if (! entries_[0].disabled) {
-        interval_.titleValue = entries_[0].head;
-      }
-      else {
-        interval_.titleValue = "";
-      }
-      removeHead(entries_[0]);
-      if (entries_.size() > 1)
-        return 1;
-      else
-        return -1;
-    }
-    return 0;
-  }
-  int getNextKey() {
-    entidx_++;
-    if (int(entries_.size()) > entidx_) {
-      return entidx_;
-    }
-    else {
-      return -1;
-    }
-  }
-  bool setNextKey(int idx) {
-    if ((idx == entidx_) && (entidx_ >= 0)) {
-      entidx_--;
-      return true;
-    }
-    else
-      return false;
-  }
-  int find(int start, KeyInfo::KeyType keytype) const {
-    if (start < 0)
-      return -1;
-    int tmpIdx = start;
-    while (tmpIdx < int(entries_.size())) {
-      if (entries_[tmpIdx].keytype == keytype)
-        return tmpIdx;
-      tmpIdx++;
-    }
-    return -1;
-  }
-  int process(ostringstream & os, KeyInfo const & actual);
-  int dispatch(ostringstream & os, int previousStart, KeyInfo & actual);
-  // string show(int lastpos) { return interval.show(lastpos);}
-  int nextNotIgnored(int start) { return interval_.nextNotIgnored(start);}
-  KeyInfo &getKeyInfo(int keyinfo) {
-    static KeyInfo invalidInfo = KeyInfo();
-    if ((keyinfo < 0) || ( keyinfo >= int(entries_.size())))
-      return invalidInfo;
-    else
-      return entries_[keyinfo];
-  }
-  void setForDefaultLang(KeyInfo const & defLang) {interval_.setForDefaultLang(defLang);}
-  void addIntervall(int low, int up) { interval_.addIntervall(low, up); }
+public:
+	LatexInfo(string const & par, bool isPatternString)
+		: entidx_(-1), interval_(isPatternString, par)
+	{
+		buildKeys(isPatternString);
+		entries_ = vector<KeyInfo>();
+		buildEntries(isPatternString);
+	}
+	int getFirstKey() {
+		entidx_ = 0;
+		if (entries_.empty()) {
+			return -1;
+		}
+		if (entries_[0].keytype == KeyInfo::isTitle) {
+			interval_.hasTitle = true;
+			if (! entries_[0].disabled) {
+				interval_.titleValue = entries_[0].head;
+			}
+			else {
+				interval_.titleValue = "";
+			}
+			removeHead(entries_[0]);
+			if (entries_.size() > 1)
+				return 1;
+			else
+				return -1;
+		}
+		return 0;
+	}
+	int getNextKey() {
+		entidx_++;
+		if (int(entries_.size()) > entidx_) {
+			return entidx_;
+		}
+		else {
+			return -1;
+		}
+	}
+	bool setNextKey(int idx) {
+		if ((idx == entidx_) && (entidx_ >= 0)) {
+			entidx_--;
+			return true;
+		}
+		else
+			return false;
+	}
+	int find(int start, KeyInfo::KeyType keytype) const {
+		if (start < 0)
+			return -1;
+		int tmpIdx = start;
+		while (tmpIdx < int(entries_.size())) {
+			if (entries_[tmpIdx].keytype == keytype)
+				return tmpIdx;
+			tmpIdx++;
+		}
+		return -1;
+	}
+	int process(ostringstream & os, KeyInfo const & actual);
+	int dispatch(ostringstream & os, int previousStart, KeyInfo & actual);
+	// string show(int lastpos) { return interval.show(lastpos);}
+	int nextNotIgnored(int start) { return interval_.nextNotIgnored(start);}
+	KeyInfo &getKeyInfo(int keyinfo) {
+		static KeyInfo invalidInfo = KeyInfo();
+		if ((keyinfo < 0) || ( keyinfo >= int(entries_.size())))
+			return invalidInfo;
+		else
+			return entries_[keyinfo];
+	}
+	void setForDefaultLang(KeyInfo const & defLang) {interval_.setForDefaultLang(defLang);}
+	void addIntervall(int low, int up) { interval_.addIntervall(low, up); }
 };
 
 
 int Intervall::findclosing(int start, int end, char up = '{', char down = '}', int repeat = 1)
 {
-  int skip = 0;
-  int depth = 0;
-  for (int i = start; i < end; i += 1 + skip) {
-    char c;
-    c = par[i];
-    skip = 0;
-    if (c == '\\') skip = 1;
-    else if (c == up) {
-      depth++;
-    }
-    else if (c == down) {
-      if (depth == 0) {
-        repeat--;
-        if ((repeat <= 0) || (par[i+1] != up))
-          return i;
-      }
-      --depth;
-    }
-  }
-  return end;
+	int skip = 0;
+	int depth = 0;
+	for (int i = start; i < end; i += 1 + skip) {
+		char c;
+		c = par[i];
+		skip = 0;
+		if (c == '\\') skip = 1;
+		else if (c == up) {
+			depth++;
+		}
+		else if (c == down) {
+			if (depth == 0) {
+				repeat--;
+				if ((repeat <= 0) || (par[i+1] != up))
+					return i;
+			}
+			--depth;
+		}
+	}
+	return end;
 }
 
 class MathInfo {
-  class MathEntry {
-  public:
-    string wait;
-    size_t mathEnd;
-    size_t mathpostfixsize;
-    size_t mathStart;
-    size_t mathprefixsize;
-    size_t mathSize;
-  };
-  size_t actualIdx_;
-  vector<MathEntry> entries_;
- public:
-  MathInfo() {
-    actualIdx_ = 0;
-  }
-  void insert(string const & wait, size_t start, size_t prefixsize, size_t end, size_t postfixsize) {
-    MathEntry m = MathEntry();
-    m.wait = wait;
-    m.mathStart = start;
-    m.mathprefixsize = prefixsize;
-    m.mathEnd = end + postfixsize;
-    m.mathpostfixsize = postfixsize;
-    m.mathSize = m.mathEnd - m.mathStart;
-    entries_.push_back(m);
-  }
-  bool empty() const { return entries_.empty(); }
-  size_t getEndPos() const {
-    if (entries_.empty() || (actualIdx_ >= entries_.size())) {
-      return 0;
-    }
-    return entries_[actualIdx_].mathEnd;
-  }
-  size_t getStartPos() const {
-    if (entries_.empty() || (actualIdx_ >= entries_.size())) {
-      return 100000;                    /*  definitely enough? */
-    }
-    return entries_[actualIdx_].mathStart;
-  }
-  size_t getPrefixSize() const {
-    if (entries_.empty() || (actualIdx_ >= entries_.size())) {
-      return 0;
-    }
-    return entries_[actualIdx_].mathprefixsize;
-  }
-  size_t getPostfixSize() const {
-    if (entries_.empty() || (actualIdx_ >= entries_.size())) {
-      return 0;
-    }
-    return entries_[actualIdx_].mathpostfixsize;
-  }
-  size_t getFirstPos() {
-    actualIdx_ = 0;
-    return getStartPos();
-  }
-  size_t getSize() const {
-    if (entries_.empty() || (actualIdx_ >= entries_.size())) {
-      return size_t(0);
-    }
-    return entries_[actualIdx_].mathSize;
-  }
-  void incrEntry() { actualIdx_++; }
+	class MathEntry {
+	public:
+		string wait;
+		size_t mathEnd;
+		size_t mathpostfixsize;
+		size_t mathStart;
+		size_t mathprefixsize;
+		size_t mathSize;
+	};
+	size_t actualIdx_;
+	vector<MathEntry> entries_;
+public:
+	MathInfo() {
+		actualIdx_ = 0;
+	}
+	void insert(string const & wait, size_t start, size_t prefixsize, size_t end, size_t postfixsize) {
+		MathEntry m = MathEntry();
+		m.wait = wait;
+		m.mathStart = start;
+		m.mathprefixsize = prefixsize;
+		m.mathEnd = end + postfixsize;
+		m.mathpostfixsize = postfixsize;
+		m.mathSize = m.mathEnd - m.mathStart;
+		entries_.push_back(m);
+	}
+	bool empty() const { return entries_.empty(); }
+	size_t getEndPos() const {
+		if (entries_.empty() || (actualIdx_ >= entries_.size())) {
+			return 0;
+		}
+		return entries_[actualIdx_].mathEnd;
+	}
+	size_t getStartPos() const {
+		if (entries_.empty() || (actualIdx_ >= entries_.size())) {
+			return 100000;                    /*  definitely enough? */
+		}
+		return entries_[actualIdx_].mathStart;
+	}
+	size_t getPrefixSize() const {
+		if (entries_.empty() || (actualIdx_ >= entries_.size())) {
+			return 0;
+		}
+		return entries_[actualIdx_].mathprefixsize;
+	}
+	size_t getPostfixSize() const {
+		if (entries_.empty() || (actualIdx_ >= entries_.size())) {
+			return 0;
+		}
+		return entries_[actualIdx_].mathpostfixsize;
+	}
+	size_t getFirstPos() {
+		actualIdx_ = 0;
+		return getStartPos();
+	}
+	size_t getSize() const {
+		if (entries_.empty() || (actualIdx_ >= entries_.size())) {
+			return size_t(0);
+		}
+		return entries_[actualIdx_].mathSize;
+	}
+	void incrEntry() { actualIdx_++; }
 };
 
 void LatexInfo::buildEntries(bool isPatternString)
 {
-  static regex const rmath("(\\\\)*(\\$|\\\\\\[|\\\\\\]|\\\\(begin|end)\\{((eqnarray|equation|flalign|gather|multline|align|x?x?alignat)\\*?\\})(\\{[0-9]+\\})?)");
-  static regex const rkeys("(\\\\)*(\\$|\\\\\\[|\\\\\\]|\\\\((([a-zA-Z]+\\*?)(\\{([a-z]+\\*?)\\}|=[0-9]+[a-z]+)?)))");
-  static bool disableLanguageOverride = false;
-  smatch sub, submath;
-  bool evaluatingRegexp = false;
-  MathInfo mi;
-  bool evaluatingMath = false;
-  bool evaluatingCode = false;
-  size_t codeEnd = 0;
-  bool evaluatingOptional = false;
-  size_t optionalEnd = 0;
-  int codeStart = -1;
-  KeyInfo found;
-  bool math_end_waiting = false;
-  size_t math_pos = 10000;
-  size_t math_prefix_size = 1;
-  string math_end;
-  static vector<string> usedText = vector<string>();
-  static bool removeMathHull = false;
+	static regex const rmath("(\\\\)*(\\$|\\\\\\[|\\\\\\]|\\\\(begin|end)\\{((eqnarray|equation|flalign|gather|multline|align|x?x?alignat)\\*?\\})(\\{[0-9]+\\})?)");
+	static regex const rkeys("(\\\\)*(\\$|\\\\\\[|\\\\\\]|\\\\((([a-zA-Z]+\\*?)(\\{([a-z]+\\*?)\\}|=[0-9]+[a-z]+)?)))");
+	static bool disableLanguageOverride = false;
+	smatch sub, submath;
+	bool evaluatingRegexp = false;
+	MathInfo mi;
+	bool evaluatingMath = false;
+	bool evaluatingCode = false;
+	size_t codeEnd = 0;
+	bool evaluatingOptional = false;
+	size_t optionalEnd = 0;
+	int codeStart = -1;
+	KeyInfo found;
+	bool math_end_waiting = false;
+	size_t math_pos = 10000;
+	size_t math_prefix_size = 1;
+	string math_end;
+	static vector<string> usedText = vector<string>();
+	static bool removeMathHull = false;
 
-  interval_.removeAccents();
+	interval_.removeAccents();
 
-  for (sregex_iterator itmath(interval_.par.begin(), interval_.par.end(), rmath), end; itmath != end; ++itmath) {
-    submath = *itmath;
-    if ((submath.position(2) - submath.position(0)) %2 == 1) {
-      // prefixed by odd count of '\\'
-      continue;
-    }
-    if (math_end_waiting) {
-      size_t pos = submath.position(size_t(2));
-      if ((math_end == "$") &&
-          (submath.str(2) == "$")) {
-        mi.insert("$", math_pos, 1, pos, 1);
-        math_end_waiting = false;
-      }
-      else if ((math_end == "\\]") &&
-               (submath.str(2) == "\\]")) {
-        mi.insert("\\]", math_pos, 2, pos, 2);
-        math_end_waiting = false;
-      }
-      else if ((submath.str(3).compare("end") == 0) &&
-          (submath.str(5).compare(math_end) == 0)) {
-        mi.insert(math_end, math_pos, math_prefix_size, pos, submath.str(2).length());
-        math_end_waiting = false;
-      }
-      else
-        continue;
-    }
-    else {
-      if (submath.str(3).compare("begin") == 0) {
-        math_end_waiting = true;
-        math_end = submath.str(5);
-        math_pos = submath.position(size_t(2));
-        math_prefix_size = submath.str(2).length();
-      }
-      else if (submath.str(2).compare("\\[") == 0) {
-        math_end_waiting = true;
-        math_end = "\\]";
-        math_pos = submath.position(size_t(2));
-      }
-      else if (submath.str(2) == "$") {
-        size_t pos = submath.position(size_t(2));
-        math_end_waiting = true;
-        math_end = "$";
-        math_pos = pos;
-      }
-    }
-  }
-  // Ignore language if there is math somewhere in pattern-string
-  if (isPatternString) {
-    for (auto s: usedText) {
-      // Remove entries created in previous search runs
-      keys.erase(s);
-    }
-    usedText = vector<string>();
-    if (! mi.empty()) {
-      // Disable language
-      keys["foreignlanguage"].disabled = true;
-      disableLanguageOverride = true;
-      removeMathHull = false;
-    }
-    else {
-      removeMathHull = true;	// used later if not isPatternString
-      disableLanguageOverride = false;
-    }
-  }
-  else {
-    if (disableLanguageOverride) {
-      keys["foreignlanguage"].disabled = true;
-    }
-  }
-  math_pos = mi.getFirstPos();
-  for (sregex_iterator it(interval_.par.begin(), interval_.par.end(), rkeys), end; it != end; ++it) {
-    sub = *it;
-    if ((sub.position(2) - sub.position(0)) %2 == 1) {
-      // prefixed by odd count of '\\'
-      continue;
-    }
-    string key = sub.str(5);
-    if (key == "") {
-      if (sub.str(2)[0] == '\\')
-        key = sub.str(2)[1];
-      else {
-        key = sub.str(2);
-      }
-    }
-    KeysIterator it_key = keys.find(key);
-    if (it_key != keys.end()) {
-      if (it_key->second.keytype == KeyInfo::headRemove) {
-        KeyInfo found1 = it_key->second;
-        found1.disabled = true;
-        found1.head = "\\" + key + "{";
-        found1._tokenstart = sub.position(size_t(2));
-        found1._tokensize = found1.head.length();
-        found1._dataStart = found1._tokenstart + found1.head.length();
-        int endpos = interval_.findclosing(found1._dataStart, interval_.par.length(), '{', '}', 1);
-        found1._dataEnd = endpos;
-        removeHead(found1);
-        continue;
-      }
-    }
-    if (evaluatingRegexp) {
-      if (sub.str(3).compare("endregexp") == 0) {
-        evaluatingRegexp = false;
-        // found._tokenstart already set
-        found._dataEnd = sub.position(size_t(2)) + 13;
-        found._dataStart = found._dataEnd;
-        found._tokensize = found._dataEnd - found._tokenstart;
-        found.parenthesiscount = 0;
-        found.head = interval_.par.substr(found._tokenstart, found._tokensize);
-      }
-      else {
-        continue;
-      }
-    }
-    else {
-      if (evaluatingMath) {
-        if (size_t(sub.position(size_t(2))) < mi.getEndPos())
-          continue;
-        evaluatingMath = false;
-        mi.incrEntry();
-        math_pos = mi.getStartPos();
-      }
-      if (it_key == keys.end()) {
-        found = KeyInfo(KeyInfo::isStandard, 0, true);
-        LYXERR(Debug::INFO, "Undefined key " << key << " ==> will be used as text");
-        found = KeyInfo(KeyInfo::isText, 0, false);
-        if (isPatternString) {
-          found.keytype = KeyInfo::isChar;
-          found.disabled = false;
-          found.used = true;
-        }
-        keys[key] = found;
-        usedText.push_back(key);
-      }
-      else
-        found = keys[key];
-      if (key.compare("regexp") == 0) {
-        evaluatingRegexp = true;
-        found._tokenstart = sub.position(size_t(2));
-        found._tokensize = 0;
-        continue;
-      }
-    }
-    // Handle the other params of key
-    if (found.keytype == KeyInfo::isIgnored)
-      continue;
-    else if (found.keytype == KeyInfo::isMath) {
-      if (size_t(sub.position(size_t(2))) == math_pos) {
-        found = keys[key];
-        found._tokenstart = sub.position(size_t(2));
-        found._tokensize = mi.getSize();
-        found._dataEnd = found._tokenstart + found._tokensize;
-        found._dataStart = found._dataEnd;
-        found.parenthesiscount = 0;
-        found.head = interval_.par.substr(found._tokenstart, found._tokensize);
-	if (removeMathHull) {
-	  interval_.addIntervall(found._tokenstart, found._tokenstart + mi.getPrefixSize());
-	  interval_.addIntervall(found._dataEnd - mi.getPostfixSize(), found._dataEnd);
+	for (sregex_iterator itmath(interval_.par.begin(), interval_.par.end(), rmath), end; itmath != end; ++itmath) {
+		submath = *itmath;
+		if ((submath.position(2) - submath.position(0)) %2 == 1) {
+			// prefixed by odd count of '\\'
+			continue;
+		}
+		if (math_end_waiting) {
+			size_t pos = submath.position(size_t(2));
+			if ((math_end == "$") &&
+					(submath.str(2) == "$")) {
+				mi.insert("$", math_pos, 1, pos, 1);
+				math_end_waiting = false;
+			}
+			else if ((math_end == "\\]") &&
+				 (submath.str(2) == "\\]")) {
+				mi.insert("\\]", math_pos, 2, pos, 2);
+				math_end_waiting = false;
+			}
+			else if ((submath.str(3).compare("end") == 0) &&
+				 (submath.str(5).compare(math_end) == 0)) {
+				mi.insert(math_end, math_pos, math_prefix_size, pos, submath.str(2).length());
+				math_end_waiting = false;
+			}
+			else
+				continue;
+		}
+		else {
+			if (submath.str(3).compare("begin") == 0) {
+				math_end_waiting = true;
+				math_end = submath.str(5);
+				math_pos = submath.position(size_t(2));
+				math_prefix_size = submath.str(2).length();
+			}
+			else if (submath.str(2).compare("\\[") == 0) {
+				math_end_waiting = true;
+				math_end = "\\]";
+				math_pos = submath.position(size_t(2));
+			}
+			else if (submath.str(2) == "$") {
+				size_t pos = submath.position(size_t(2));
+				math_end_waiting = true;
+				math_end = "$";
+				math_pos = pos;
+			}
+		}
+	}
+	// Ignore language if there is math somewhere in pattern-string
+	if (isPatternString) {
+		for (auto s: usedText) {
+			// Remove entries created in previous search runs
+			keys.erase(s);
+		}
+		usedText = vector<string>();
+		if (! mi.empty()) {
+			// Disable language
+			keys["foreignlanguage"].disabled = true;
+			disableLanguageOverride = true;
+			removeMathHull = false;
+		}
+		else {
+			removeMathHull = true;	// used later if not isPatternString
+			disableLanguageOverride = false;
+		}
 	}
 	else {
-	  // Treate all math constructs as simple math
-	  interval_.par[found._tokenstart] = '$';
-	  interval_.par[found._dataEnd - mi.getPostfixSize()] = '$';
-	  interval_.addIntervall(found._tokenstart + 1, found._tokenstart + mi.getPrefixSize());
-	  interval_.addIntervall(found._dataEnd - mi.getPostfixSize() + 1, found._dataEnd);
+		if (disableLanguageOverride) {
+			keys["foreignlanguage"].disabled = true;
+		}
 	}
-        evaluatingMath = true;
-      }
-      else {
-        // begin|end of unknown env, discard
-        // First handle tables
-        // longtable|tabular
-        bool discardComment;
-        found = keys[key];
-        found.keytype = KeyInfo::doRemove;
-        if ((sub.str(7).compare("longtable") == 0) ||
-            (sub.str(7).compare("tabular") == 0)) {
-          discardComment = true;        /* '%' */
-        }
-        else {
-          discardComment = false;
-          static regex const removeArgs("^(multicols|multipar|sectionbox|subsectionbox|tcolorbox)$");
-          smatch sub2;
-          string token = sub.str(7);
-          if (regex_match(token, sub2, removeArgs)) {
-            found.keytype = KeyInfo::removeWithArg;
-          }
-        }
-        // discard spaces before pos(2)
-        int pos = sub.position(size_t(2));
-        int count;
-        for (count = 0; pos - count > 0; count++) {
-          char c = interval_.par[pos-count-1];
-          if (discardComment) {
-            if ((c != ' ') && (c != '%'))
-              break;
-          }
-          else if (c != ' ')
-            break;
-        }
-        found._tokenstart = pos - count;
-        if (sub.str(3).compare(0, 5, "begin") == 0) {
-          size_t pos1 = pos + sub.str(2).length();
-          if (sub.str(7).compare("cjk") == 0) {
-            pos1 = interval_.findclosing(pos1+1, interval_.par.length()) + 1;
-            if ((interval_.par[pos1] == '{') && (interval_.par[pos1+1] == '}'))
-              pos1 += 2;
-            found.keytype = KeyInfo::isMain;
-            found._dataStart = pos1;
-            found._dataEnd = interval_.par.length();
-            found.disabled = keys["foreignlanguage"].disabled;
-            found.used = keys["foreignlanguage"].used;
-            found._tokensize = pos1 - found._tokenstart;
-            found.head = interval_.par.substr(found._tokenstart, found._tokensize);
-          }
-          else {
-            // Swallow possible optional params
-            while (interval_.par[pos1] == '[') {
-              pos1 = interval_.findclosing(pos1+1, interval_.par.length(), '[', ']')+1;
-            }
-            // Swallow also the eventual parameter
-            if (interval_.par[pos1] == '{') {
-              found._dataEnd = interval_.findclosing(pos1+1, interval_.par.length()) + 1;
-            }
-            else {
-              found._dataEnd = pos1;
-            }
-            found._dataStart = found._dataEnd;
-            found._tokensize = count + found._dataEnd - pos;
-            found.parenthesiscount = 0;
-            found.head = interval_.par.substr(found._tokenstart, found._tokensize);
-            found.disabled = true;
-          }
-        }
-        else {
-          // Handle "\end{...}"
-          found._dataStart = pos + sub.str(2).length();
-          found._dataEnd = found._dataStart;
-          found._tokensize = count + found._dataEnd - pos;
-          found.parenthesiscount = 0;
-          found.head = interval_.par.substr(found._tokenstart, found._tokensize);
-          found.disabled = true;
-        }
-      }
-    }
-    else if (found.keytype != KeyInfo::isRegex) {
-      found._tokenstart = sub.position(size_t(2));
-      if (found.parenthesiscount == 0) {
-        // Probably to be discarded
-        size_t following_pos = sub.position(size_t(2)) + sub.str(5).length() + 1;
-        char following = interval_.par[following_pos];
-        if (following == ' ')
-          found.head = "\\" + sub.str(5) + " ";
-        else if (following == '=') {
-          // like \uldepth=1000pt
-          found.head = sub.str(2);
-        }
-        else
-          found.head = "\\" + key;
-        found._tokensize = found.head.length();
-        found._dataEnd = found._tokenstart + found._tokensize;
-        found._dataStart = found._dataEnd;
-      }
-      else {
-        int params = found._tokenstart + key.length() + 1;
-        if (evaluatingOptional) {
-          if (size_t(found._tokenstart) > optionalEnd) {
-            evaluatingOptional = false;
-          }
-          else {
-            found.disabled = true;
-          }
-        }
-        int optend = params;
-        while (interval_.par[optend] == '[') {
-          // discard optional parameters
-          optend = interval_.findclosing(optend+1, interval_.par.length(), '[', ']') + 1;
-        }
-        if (optend > params) {
-          key += interval_.par.substr(params, optend-params);
-          evaluatingOptional = true;
-          optionalEnd = optend;
-          if (found.keytype == KeyInfo::isSectioning) {
-            // Remove optional values (but still keep in header)
-            interval_.addIntervall(params, optend);
-          }
-        }
-        string token = sub.str(7);
-        int closings;
-        if (interval_.par[optend] != '{') {
-          closings = 0;
-          found.parenthesiscount = 0;
-          found.head = "\\" + key;
-        }
-        else
-          closings = found.parenthesiscount;
-        if (found.parenthesiscount == 1) {
-          found.head = "\\" + key + "{";
-        }
-        else if (found.parenthesiscount > 1) {
-          if (token != "") {
-            found.head = sub.str(2) + "{";
-            closings = found.parenthesiscount - 1;
-          }
-          else {
-            found.head = "\\" + key + "{";
-          }
-        }
-        found._tokensize = found.head.length();
-        found._dataStart = found._tokenstart + found.head.length();
-        if (found.keytype == KeyInfo::doRemove) {
-          if (closings > 0) {
-            size_t endpar = 2 + interval_.findclosing(found._dataStart, interval_.par.length(), '{', '}', closings);
-            if (endpar >= interval_.par.length())
-              found._dataStart = interval_.par.length();
-            else
-              found._dataStart = endpar;
-            found._tokensize = found._dataStart - found._tokenstart;
-          }
-          else {
-            found._dataStart = found._tokenstart + found._tokensize;
-          }
-          closings = 0;
-        }
-        if (interval_.par.substr(found._dataStart, 15).compare("\\endarguments{}") == 0) {
-          found._dataStart += 15;
-        }
-        size_t endpos;
-        if (closings < 1)
-          endpos = found._dataStart - 1;
-        else
-          endpos = interval_.findclosing(found._dataStart, interval_.par.length(), '{', '}', closings);
-        if (found.keytype == KeyInfo::isList) {
-          // Check if it really is list env
-          static regex const listre("^([a-z]+)$");
-          smatch sub2;
-          if (!regex_match(token, sub2, listre)) {
-            // Change the key of this entry. It is not in a list/item environment
-            found.keytype = KeyInfo::endArguments;
-          }
-        }
-        if (found.keytype == KeyInfo::noMain) {
-          evaluatingCode = true;
-          codeEnd = endpos;
-          codeStart = found._dataStart;
-        }
-        else if (evaluatingCode) {
-          if (size_t(found._dataStart) > codeEnd)
-            evaluatingCode = false;
-          else if (found.keytype == KeyInfo::isMain) {
-            // Disable this key, treate it as standard
-            found.keytype = KeyInfo::isStandard;
-            found.disabled = true;
-            if ((codeEnd +1 >= interval_.par.length()) &&
-                (found._tokenstart == codeStart)) {
-              // trickery, because the code inset starts
-              // with \selectlanguage ...
-              codeEnd = endpos;
-              if (entries_.size() > 1) {
-                entries_[entries_.size()-1]._dataEnd = codeEnd;
-              }
-            }
-          }
-        }
-        if ((endpos == interval_.par.length()) &&
-            (found.keytype == KeyInfo::doRemove)) {
-          // Missing closing => error in latex-input?
-          // therefore do not delete remaining data
-          found._dataStart -= 1;
-          found._dataEnd = found._dataStart;
-        }
-        else
-          found._dataEnd = endpos;
-      }
-      if (isPatternString) {
-        keys[key].used = true;
-      }
-    }
-    entries_.push_back(found);
-  }
+	math_pos = mi.getFirstPos();
+	for (sregex_iterator it(interval_.par.begin(), interval_.par.end(), rkeys), end; it != end; ++it) {
+		sub = *it;
+		if ((sub.position(2) - sub.position(0)) %2 == 1) {
+			// prefixed by odd count of '\\'
+			continue;
+		}
+		string key = sub.str(5);
+		if (key == "") {
+			if (sub.str(2)[0] == '\\')
+				key = sub.str(2)[1];
+			else {
+				key = sub.str(2);
+			}
+		}
+		KeysIterator it_key = keys.find(key);
+		if (it_key != keys.end()) {
+			if (it_key->second.keytype == KeyInfo::headRemove) {
+				KeyInfo found1 = it_key->second;
+				found1.disabled = true;
+				found1.head = "\\" + key + "{";
+				found1._tokenstart = sub.position(size_t(2));
+				found1._tokensize = found1.head.length();
+				found1._dataStart = found1._tokenstart + found1.head.length();
+				int endpos = interval_.findclosing(found1._dataStart, interval_.par.length(), '{', '}', 1);
+				found1._dataEnd = endpos;
+				removeHead(found1);
+				continue;
+			}
+		}
+		if (evaluatingRegexp) {
+			if (sub.str(3).compare("endregexp") == 0) {
+				evaluatingRegexp = false;
+				// found._tokenstart already set
+				found._dataEnd = sub.position(size_t(2)) + 13;
+				found._dataStart = found._dataEnd;
+				found._tokensize = found._dataEnd - found._tokenstart;
+				found.parenthesiscount = 0;
+				found.head = interval_.par.substr(found._tokenstart, found._tokensize);
+			}
+			else {
+				continue;
+			}
+		}
+		else {
+			if (evaluatingMath) {
+				if (size_t(sub.position(size_t(2))) < mi.getEndPos())
+					continue;
+				evaluatingMath = false;
+				mi.incrEntry();
+				math_pos = mi.getStartPos();
+			}
+			if (it_key == keys.end()) {
+				found = KeyInfo(KeyInfo::isStandard, 0, true);
+				LYXERR(Debug::INFO, "Undefined key " << key << " ==> will be used as text");
+				found = KeyInfo(KeyInfo::isText, 0, false);
+				if (isPatternString) {
+					found.keytype = KeyInfo::isChar;
+					found.disabled = false;
+					found.used = true;
+				}
+				keys[key] = found;
+				usedText.push_back(key);
+			}
+			else
+				found = keys[key];
+			if (key.compare("regexp") == 0) {
+				evaluatingRegexp = true;
+				found._tokenstart = sub.position(size_t(2));
+				found._tokensize = 0;
+				continue;
+			}
+		}
+		// Handle the other params of key
+		if (found.keytype == KeyInfo::isIgnored)
+			continue;
+		else if (found.keytype == KeyInfo::isMath) {
+			if (size_t(sub.position(size_t(2))) == math_pos) {
+				found = keys[key];
+				found._tokenstart = sub.position(size_t(2));
+				found._tokensize = mi.getSize();
+				found._dataEnd = found._tokenstart + found._tokensize;
+				found._dataStart = found._dataEnd;
+				found.parenthesiscount = 0;
+				found.head = interval_.par.substr(found._tokenstart, found._tokensize);
+				if (removeMathHull) {
+					interval_.addIntervall(found._tokenstart, found._tokenstart + mi.getPrefixSize());
+					interval_.addIntervall(found._dataEnd - mi.getPostfixSize(), found._dataEnd);
+				}
+				else {
+					// Treate all math constructs as simple math
+					interval_.par[found._tokenstart] = '$';
+					interval_.par[found._dataEnd - mi.getPostfixSize()] = '$';
+					interval_.addIntervall(found._tokenstart + 1, found._tokenstart + mi.getPrefixSize());
+					interval_.addIntervall(found._dataEnd - mi.getPostfixSize() + 1, found._dataEnd);
+				}
+				evaluatingMath = true;
+			}
+			else {
+				// begin|end of unknown env, discard
+				// First handle tables
+				// longtable|tabular
+				bool discardComment;
+				found = keys[key];
+				found.keytype = KeyInfo::doRemove;
+				if ((sub.str(7).compare("longtable") == 0) ||
+						(sub.str(7).compare("tabular") == 0)) {
+					discardComment = true;        /* '%' */
+				}
+				else {
+					discardComment = false;
+					static regex const removeArgs("^(multicols|multipar|sectionbox|subsectionbox|tcolorbox)$");
+					smatch sub2;
+					string token = sub.str(7);
+					if (regex_match(token, sub2, removeArgs)) {
+						found.keytype = KeyInfo::removeWithArg;
+					}
+				}
+				// discard spaces before pos(2)
+				int pos = sub.position(size_t(2));
+				int count;
+				for (count = 0; pos - count > 0; count++) {
+					char c = interval_.par[pos-count-1];
+					if (discardComment) {
+						if ((c != ' ') && (c != '%'))
+							break;
+					}
+					else if (c != ' ')
+						break;
+				}
+				found._tokenstart = pos - count;
+				if (sub.str(3).compare(0, 5, "begin") == 0) {
+					size_t pos1 = pos + sub.str(2).length();
+					if (sub.str(7).compare("cjk") == 0) {
+						pos1 = interval_.findclosing(pos1+1, interval_.par.length()) + 1;
+						if ((interval_.par[pos1] == '{') && (interval_.par[pos1+1] == '}'))
+							pos1 += 2;
+						found.keytype = KeyInfo::isMain;
+						found._dataStart = pos1;
+						found._dataEnd = interval_.par.length();
+						found.disabled = keys["foreignlanguage"].disabled;
+						found.used = keys["foreignlanguage"].used;
+						found._tokensize = pos1 - found._tokenstart;
+						found.head = interval_.par.substr(found._tokenstart, found._tokensize);
+					}
+					else {
+						// Swallow possible optional params
+						while (interval_.par[pos1] == '[') {
+							pos1 = interval_.findclosing(pos1+1, interval_.par.length(), '[', ']')+1;
+						}
+						// Swallow also the eventual parameter
+						if (interval_.par[pos1] == '{') {
+							found._dataEnd = interval_.findclosing(pos1+1, interval_.par.length()) + 1;
+						}
+						else {
+							found._dataEnd = pos1;
+						}
+						found._dataStart = found._dataEnd;
+						found._tokensize = count + found._dataEnd - pos;
+						found.parenthesiscount = 0;
+						found.head = interval_.par.substr(found._tokenstart, found._tokensize);
+						found.disabled = true;
+					}
+				}
+				else {
+					// Handle "\end{...}"
+					found._dataStart = pos + sub.str(2).length();
+					found._dataEnd = found._dataStart;
+					found._tokensize = count + found._dataEnd - pos;
+					found.parenthesiscount = 0;
+					found.head = interval_.par.substr(found._tokenstart, found._tokensize);
+					found.disabled = true;
+				}
+			}
+		}
+		else if (found.keytype != KeyInfo::isRegex) {
+			found._tokenstart = sub.position(size_t(2));
+			if (found.parenthesiscount == 0) {
+				// Probably to be discarded
+				size_t following_pos = sub.position(size_t(2)) + sub.str(5).length() + 1;
+				char following = interval_.par[following_pos];
+				if (following == ' ')
+					found.head = "\\" + sub.str(5) + " ";
+				else if (following == '=') {
+					// like \uldepth=1000pt
+					found.head = sub.str(2);
+				}
+				else
+					found.head = "\\" + key;
+				found._tokensize = found.head.length();
+				found._dataEnd = found._tokenstart + found._tokensize;
+				found._dataStart = found._dataEnd;
+			}
+			else {
+				int params = found._tokenstart + key.length() + 1;
+				if (evaluatingOptional) {
+					if (size_t(found._tokenstart) > optionalEnd) {
+						evaluatingOptional = false;
+					}
+					else {
+						found.disabled = true;
+					}
+				}
+				int optend = params;
+				while (interval_.par[optend] == '[') {
+					// discard optional parameters
+					optend = interval_.findclosing(optend+1, interval_.par.length(), '[', ']') + 1;
+				}
+				if (optend > params) {
+					key += interval_.par.substr(params, optend-params);
+					evaluatingOptional = true;
+					optionalEnd = optend;
+					if (found.keytype == KeyInfo::isSectioning) {
+						// Remove optional values (but still keep in header)
+						interval_.addIntervall(params, optend);
+					}
+				}
+				string token = sub.str(7);
+				int closings;
+				if (interval_.par[optend] != '{') {
+					closings = 0;
+					found.parenthesiscount = 0;
+					found.head = "\\" + key;
+				}
+				else
+					closings = found.parenthesiscount;
+				if (found.parenthesiscount == 1) {
+					found.head = "\\" + key + "{";
+				}
+				else if (found.parenthesiscount > 1) {
+					if (token != "") {
+						found.head = sub.str(2) + "{";
+						closings = found.parenthesiscount - 1;
+					}
+					else {
+						found.head = "\\" + key + "{";
+					}
+				}
+				found._tokensize = found.head.length();
+				found._dataStart = found._tokenstart + found.head.length();
+				if (found.keytype == KeyInfo::doRemove) {
+					if (closings > 0) {
+						size_t endpar = 2 + interval_.findclosing(found._dataStart, interval_.par.length(), '{', '}', closings);
+						if (endpar >= interval_.par.length())
+							found._dataStart = interval_.par.length();
+						else
+							found._dataStart = endpar;
+						found._tokensize = found._dataStart - found._tokenstart;
+					}
+					else {
+						found._dataStart = found._tokenstart + found._tokensize;
+					}
+					closings = 0;
+				}
+				if (interval_.par.substr(found._dataStart, 15).compare("\\endarguments{}") == 0) {
+					found._dataStart += 15;
+				}
+				size_t endpos;
+				if (closings < 1)
+					endpos = found._dataStart - 1;
+				else
+					endpos = interval_.findclosing(found._dataStart, interval_.par.length(), '{', '}', closings);
+				if (found.keytype == KeyInfo::isList) {
+					// Check if it really is list env
+					static regex const listre("^([a-z]+)$");
+					smatch sub2;
+					if (!regex_match(token, sub2, listre)) {
+						// Change the key of this entry. It is not in a list/item environment
+						found.keytype = KeyInfo::endArguments;
+					}
+				}
+				if (found.keytype == KeyInfo::noMain) {
+					evaluatingCode = true;
+					codeEnd = endpos;
+					codeStart = found._dataStart;
+				}
+				else if (evaluatingCode) {
+					if (size_t(found._dataStart) > codeEnd)
+						evaluatingCode = false;
+					else if (found.keytype == KeyInfo::isMain) {
+						// Disable this key, treate it as standard
+						found.keytype = KeyInfo::isStandard;
+						found.disabled = true;
+						if ((codeEnd +1 >= interval_.par.length()) &&
+								(found._tokenstart == codeStart)) {
+							// trickery, because the code inset starts
+							// with \selectlanguage ...
+							codeEnd = endpos;
+							if (entries_.size() > 1) {
+								entries_[entries_.size()-1]._dataEnd = codeEnd;
+							}
+						}
+					}
+				}
+				if ((endpos == interval_.par.length()) &&
+						(found.keytype == KeyInfo::doRemove)) {
+					// Missing closing => error in latex-input?
+					// therefore do not delete remaining data
+					found._dataStart -= 1;
+					found._dataEnd = found._dataStart;
+				}
+				else
+					found._dataEnd = endpos;
+			}
+			if (isPatternString) {
+				keys[key].used = true;
+			}
+		}
+		entries_.push_back(found);
+	}
 }
 
 void LatexInfo::makeKey(const string &keysstring, KeyInfo keyI, bool isPatternString)
 {
-  stringstream s(keysstring);
-  string key;
-  const char delim = '|';
-  while (getline(s, key, delim)) {
-    KeyInfo keyII(keyI);
-    if (isPatternString) {
-      keyII.used = false;
-    }
-    else if ( !keys[key].used)
-      keyII.disabled = true;
-    keys[key] = keyII;
-  }
+	stringstream s(keysstring);
+	string key;
+	const char delim = '|';
+	while (getline(s, key, delim)) {
+		KeyInfo keyII(keyI);
+		if (isPatternString) {
+			keyII.used = false;
+		}
+		else if ( !keys[key].used)
+			keyII.disabled = true;
+		keys[key] = keyII;
+	}
 }
 
 void LatexInfo::buildKeys(bool isPatternString)
 {
 
-  static bool keysBuilt = false;
-  if (keysBuilt && !isPatternString) return;
+	static bool keysBuilt = false;
+	if (keysBuilt && !isPatternString) return;
 
-  // Keys to ignore in any case
-  makeKey("text|textcyrillic|lyxmathsym|ensuremath", KeyInfo(KeyInfo::headRemove, 1, true), true);
-  // Known standard keys with 1 parameter.
-  // Split is done, if not at start of region
-  makeKey("textsf|textss|texttt", KeyInfo(KeyInfo::isStandard, 1, ignoreFormats.getFamily()), isPatternString);
-  makeKey("textbf",               KeyInfo(KeyInfo::isStandard, 1, ignoreFormats.getSeries()), isPatternString);
-  makeKey("textit|textsc|textsl", KeyInfo(KeyInfo::isStandard, 1, ignoreFormats.getShape()), isPatternString);
-  makeKey("uuline|uline|uwave",   KeyInfo(KeyInfo::isStandard, 1, ignoreFormats.getUnderline()), isPatternString);
-  makeKey("emph|noun",            KeyInfo(KeyInfo::isStandard, 1, ignoreFormats.getMarkUp()), isPatternString);
-  makeKey("sout|xout",            KeyInfo(KeyInfo::isStandard, 1, ignoreFormats.getStrikeOut()), isPatternString);
+	// Keys to ignore in any case
+	makeKey("text|textcyrillic|lyxmathsym|ensuremath", KeyInfo(KeyInfo::headRemove, 1, true), true);
+	// Known standard keys with 1 parameter.
+	// Split is done, if not at start of region
+	makeKey("textsf|textss|texttt", KeyInfo(KeyInfo::isStandard, 1, ignoreFormats.getFamily()), isPatternString);
+	makeKey("textbf",               KeyInfo(KeyInfo::isStandard, 1, ignoreFormats.getSeries()), isPatternString);
+	makeKey("textit|textsc|textsl", KeyInfo(KeyInfo::isStandard, 1, ignoreFormats.getShape()), isPatternString);
+	makeKey("uuline|uline|uwave",   KeyInfo(KeyInfo::isStandard, 1, ignoreFormats.getUnderline()), isPatternString);
+	makeKey("emph|noun",            KeyInfo(KeyInfo::isStandard, 1, ignoreFormats.getMarkUp()), isPatternString);
+	makeKey("sout|xout",            KeyInfo(KeyInfo::isStandard, 1, ignoreFormats.getStrikeOut()), isPatternString);
 
-  makeKey("section|subsection|subsubsection|paragraph|subparagraph|minisec",
-          KeyInfo(KeyInfo::isSectioning, 1, ignoreFormats.getSectioning()), isPatternString);
-  makeKey("section*|subsection*|subsubsection*|paragraph*",
-          KeyInfo(KeyInfo::isSectioning, 1, ignoreFormats.getSectioning()), isPatternString);
-  makeKey("part|part*|chapter|chapter*", KeyInfo(KeyInfo::isSectioning, 1, ignoreFormats.getSectioning()), isPatternString);
-  makeKey("title|subtitle|author|subject|publishers|dedication|uppertitleback|lowertitleback|extratitle|lyxaddress|lyxrightaddress", KeyInfo(KeyInfo::isTitle, 1, ignoreFormats.getFrontMatter()), isPatternString);
-  // Regex
-  makeKey("regexp", KeyInfo(KeyInfo::isRegex, 1, false), isPatternString);
+	makeKey("section|subsection|subsubsection|paragraph|subparagraph|minisec",
+		KeyInfo(KeyInfo::isSectioning, 1, ignoreFormats.getSectioning()), isPatternString);
+	makeKey("section*|subsection*|subsubsection*|paragraph*",
+		KeyInfo(KeyInfo::isSectioning, 1, ignoreFormats.getSectioning()), isPatternString);
+	makeKey("part|part*|chapter|chapter*", KeyInfo(KeyInfo::isSectioning, 1, ignoreFormats.getSectioning()), isPatternString);
+	makeKey("title|subtitle|author|subject|publishers|dedication|uppertitleback|lowertitleback|extratitle|lyxaddress|lyxrightaddress", KeyInfo(KeyInfo::isTitle, 1, ignoreFormats.getFrontMatter()), isPatternString);
+	// Regex
+	makeKey("regexp", KeyInfo(KeyInfo::isRegex, 1, false), isPatternString);
 
-  // Split is done, if not at start of region
-  makeKey("textcolor", KeyInfo(KeyInfo::isStandard, 2, ignoreFormats.getColor()), isPatternString);
-  makeKey("latexenvironment", KeyInfo(KeyInfo::isStandard, 2, false), isPatternString);
+	// Split is done, if not at start of region
+	makeKey("textcolor", KeyInfo(KeyInfo::isStandard, 2, ignoreFormats.getColor()), isPatternString);
+	makeKey("latexenvironment", KeyInfo(KeyInfo::isStandard, 2, false), isPatternString);
 
-  // Split is done always.
-  makeKey("foreignlanguage", KeyInfo(KeyInfo::isMain, 2, ignoreFormats.getLanguage()), isPatternString);
+	// Split is done always.
+	makeKey("foreignlanguage", KeyInfo(KeyInfo::isMain, 2, ignoreFormats.getLanguage()), isPatternString);
 
-  // Known charaters
-  // No split
-  makeKey("backslash|textbackslash|slash",  KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
-  makeKey("textasciicircum|textasciitilde", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
-  makeKey("textasciiacute|texemdash",       KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
-  makeKey("dots|ldots",                     KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
-  // Spaces
-  makeKey("quad|qquad|hfill|dotfill",               KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
-  makeKey("textvisiblespace|nobreakspace",          KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
-  makeKey("negthickspace|negmedspace|negthinspace", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
-  makeKey("thickspace|medspace|thinspace",          KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
-  // Skip
-  // makeKey("enskip|smallskip|medskip|bigskip|vfill", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
-  // Custom space/skip, remove the content (== length value)
-  makeKey("vspace|vspace*|hspace|hspace*|mspace", KeyInfo(KeyInfo::noContent, 1, false), isPatternString);
-  // Found in fr/UserGuide.lyx
-  makeKey("og|fg", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
-  // quotes
-  makeKey("textquotedbl|quotesinglbase|lyxarrow", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
-  makeKey("textquotedblleft|textquotedblright", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
-  // Known macros to remove (including their parameter)
-  // No split
-  makeKey("input|inputencoding|label|ref|index|bibitem", KeyInfo(KeyInfo::doRemove, 1, false), isPatternString);
-  makeKey("addtocounter|setlength",                 KeyInfo(KeyInfo::noContent, 2, true), isPatternString);
-  // handle like standard keys with 1 parameter.
-  makeKey("url|href|vref|thanks", KeyInfo(KeyInfo::isStandard, 1, false), isPatternString);
+	// Known charaters
+	// No split
+	makeKey("backslash|textbackslash|slash",  KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+	makeKey("textasciicircum|textasciitilde", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+	makeKey("textasciiacute|texemdash",       KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+	makeKey("dots|ldots",                     KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+	// Spaces
+	makeKey("quad|qquad|hfill|dotfill",               KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+	makeKey("textvisiblespace|nobreakspace",          KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+	makeKey("negthickspace|negmedspace|negthinspace", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+	makeKey("thickspace|medspace|thinspace",          KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+	// Skip
+	// makeKey("enskip|smallskip|medskip|bigskip|vfill", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+	// Custom space/skip, remove the content (== length value)
+	makeKey("vspace|vspace*|hspace|hspace*|mspace", KeyInfo(KeyInfo::noContent, 1, false), isPatternString);
+	// Found in fr/UserGuide.lyx
+	makeKey("og|fg", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+	// quotes
+	makeKey("textquotedbl|quotesinglbase|lyxarrow", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+	makeKey("textquotedblleft|textquotedblright", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+	// Known macros to remove (including their parameter)
+	// No split
+	makeKey("input|inputencoding|label|ref|index|bibitem", KeyInfo(KeyInfo::doRemove, 1, false), isPatternString);
+	makeKey("addtocounter|setlength",                 KeyInfo(KeyInfo::noContent, 2, true), isPatternString);
+	// handle like standard keys with 1 parameter.
+	makeKey("url|href|vref|thanks", KeyInfo(KeyInfo::isStandard, 1, false), isPatternString);
 
-  // Ignore deleted text
-  makeKey("lyxdeleted", KeyInfo(KeyInfo::doRemove, 3, false), isPatternString);
-  // but preserve added text
-  makeKey("lyxadded", KeyInfo(KeyInfo::doRemove, 2, false), isPatternString);
+	// Ignore deleted text
+	makeKey("lyxdeleted", KeyInfo(KeyInfo::doRemove, 3, false), isPatternString);
+	// but preserve added text
+	makeKey("lyxadded", KeyInfo(KeyInfo::doRemove, 2, false), isPatternString);
 
-  // Macros to remove, but let the parameter survive
-  // No split
-  makeKey("menuitem|textmd|textrm", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
+	// Macros to remove, but let the parameter survive
+	// No split
+	makeKey("menuitem|textmd|textrm", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
 
-  // Remove language spec from content of these insets
-  makeKey("code", KeyInfo(KeyInfo::noMain, 1, false), isPatternString);
+	// Remove language spec from content of these insets
+	makeKey("code", KeyInfo(KeyInfo::noMain, 1, false), isPatternString);
 
-  // Same effect as previous, parameter will survive (because there is no one anyway)
-  // No split
-  makeKey("noindent|textcompwordmark|maketitle", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
-  // Remove table decorations
-  makeKey("hline|tabularnewline|toprule|bottomrule|midrule", KeyInfo(KeyInfo::doRemove, 0, true), isPatternString);
-  // Discard shape-header.
-  // For footnote or shortcut too, because of lang settings
-  // and wrong handling if used 'KeyInfo::noMain'
-  makeKey("circlepar|diamondpar|heartpar|nutpar",  KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
-  makeKey("trianglerightpar|hexagonpar|starpar",   KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
-  makeKey("triangleuppar|triangledownpar|droppar", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
-  makeKey("triangleleftpar|shapepar|dropuppar",    KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
-  makeKey("hphantom|vphantom|note|footnote|shortcut|include|includegraphics",     KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
-  makeKey("parbox", KeyInfo(KeyInfo::doRemove, 1, true), isPatternString);
-  // like ('tiny{}' or '\tiny ' ... )
-  makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, false), isPatternString);
+	// Same effect as previous, parameter will survive (because there is no one anyway)
+	// No split
+	makeKey("noindent|textcompwordmark|maketitle", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
+	// Remove table decorations
+	makeKey("hline|tabularnewline|toprule|bottomrule|midrule", KeyInfo(KeyInfo::doRemove, 0, true), isPatternString);
+	// Discard shape-header.
+	// For footnote or shortcut too, because of lang settings
+	// and wrong handling if used 'KeyInfo::noMain'
+	makeKey("circlepar|diamondpar|heartpar|nutpar",  KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
+	makeKey("trianglerightpar|hexagonpar|starpar",   KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
+	makeKey("triangleuppar|triangledownpar|droppar", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
+	makeKey("triangleleftpar|shapepar|dropuppar",    KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
+	makeKey("hphantom|vphantom|note|footnote|shortcut|include|includegraphics",     KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
+	makeKey("parbox", KeyInfo(KeyInfo::doRemove, 1, true), isPatternString);
+	// like ('tiny{}' or '\tiny ' ... )
+	makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, false), isPatternString);
 
-  // Survives, like known character
-  // makeKey("lyx|LyX|latex|LaTeX|latexe|LaTeXe|tex|TeX", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
-  makeKey("tableofcontents", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
-  makeKey("item|listitem", KeyInfo(KeyInfo::isList, 1, false), isPatternString);
+	// Survives, like known character
+	// makeKey("lyx|LyX|latex|LaTeX|latexe|LaTeXe|tex|TeX", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+	makeKey("tableofcontents", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
+	makeKey("item|listitem", KeyInfo(KeyInfo::isList, 1, false), isPatternString);
 
-  makeKey("begin|end", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
-  makeKey("[|]", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
-  makeKey("$", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
+	makeKey("begin|end", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
+	makeKey("[|]", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
+	makeKey("$", KeyInfo(KeyInfo::isMath, 1, false), isPatternString);
 
-  makeKey("par|uldepth|ULdepth|protect|nobreakdash|medskip|relax", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
-  // Remove RTL/LTR marker
-  makeKey("l|r|textlr|textfr|textar|beginl|endl", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
-  makeKey("lettrine", KeyInfo(KeyInfo::cleanToStart, 0, true), isPatternString);
-  makeKey("lyxslide", KeyInfo(KeyInfo::isSectioning, 1, true), isPatternString);
-  makeKey("endarguments", KeyInfo(KeyInfo::endArguments, 0, true), isPatternString);
-  makeKey("twocolumn", KeyInfo(KeyInfo::removeWithArg, 2, true), isPatternString);
-  makeKey("tnotetext|ead|fntext|cortext|address", KeyInfo(KeyInfo::removeWithArg, 0, true), isPatternString);
-  makeKey("lyxend", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
-  if (isPatternString) {
-    // Allow the first searched string to rebuild the keys too
-    keysBuilt = false;
-  }
-  else {
-    // no need to rebuild again
-    keysBuilt = true;
-  }
+	makeKey("par|uldepth|ULdepth|protect|nobreakdash|medskip|relax", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
+	// Remove RTL/LTR marker
+	makeKey("l|r|textlr|textfr|textar|beginl|endl", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
+	makeKey("lettrine", KeyInfo(KeyInfo::cleanToStart, 0, true), isPatternString);
+	makeKey("lyxslide", KeyInfo(KeyInfo::isSectioning, 1, true), isPatternString);
+	makeKey("endarguments", KeyInfo(KeyInfo::endArguments, 0, true), isPatternString);
+	makeKey("twocolumn", KeyInfo(KeyInfo::removeWithArg, 2, true), isPatternString);
+	makeKey("tnotetext|ead|fntext|cortext|address", KeyInfo(KeyInfo::removeWithArg, 0, true), isPatternString);
+	makeKey("lyxend", KeyInfo(KeyInfo::isStandard, 0, true), isPatternString);
+	if (isPatternString) {
+		// Allow the first searched string to rebuild the keys too
+		keysBuilt = false;
+	}
+	else {
+		// no need to rebuild again
+		keysBuilt = true;
+	}
 }
 
 /*
@@ -2779,555 +2779,555 @@ void LatexInfo::buildKeys(bool isPatternString)
  */
 void Intervall::handleParentheses(int lastpos, bool closingAllowed)
 {
-  int skip = 0;
-  for (int i = depts[actualdeptindex]; i < lastpos; i+= 1 + skip) {
-    char c;
-    c = par[i];
-    skip = 0;
-    if (c == '\\') skip = 1;
-    else if (c == '{') {
-      handleOpenP(i);
-    }
-    else if (c == '}') {
-      handleCloseP(i, closingAllowed);
-    }
-  }
+	int skip = 0;
+	for (int i = depts[actualdeptindex]; i < lastpos; i+= 1 + skip) {
+		char c;
+		c = par[i];
+		skip = 0;
+		if (c == '\\') skip = 1;
+		else if (c == '{') {
+			handleOpenP(i);
+		}
+		else if (c == '}') {
+			handleCloseP(i, closingAllowed);
+		}
+	}
 }
 
 #if (0)
 string Intervall::show(int lastpos)
 {
-  int idx = 0;                          /* int intervalls */
-  string s;
-  int i = 0;
-  for (idx = 0; idx <= ignoreidx; idx++) {
-    while (i < lastpos) {
-      int printsize;
-      if (i <= borders[idx].low) {
-        if (borders[idx].low > lastpos)
-          printsize = lastpos - i;
-        else
-          printsize = borders[idx].low - i;
-        s += par.substr(i, printsize);
-        i += printsize;
-        if (i >= borders[idx].low)
-          i = borders[idx].upper;
-      }
-      else {
-        i = borders[idx].upper;
-        break;
-      }
-    }
-  }
-  if (lastpos > i) {
-    s += par.substr(i, lastpos-i);
-  }
-  return s;
+	int idx = 0;                          /* int intervalls */
+	string s;
+	int i = 0;
+	for (idx = 0; idx <= ignoreidx; idx++) {
+		while (i < lastpos) {
+			int printsize;
+			if (i <= borders[idx].low) {
+				if (borders[idx].low > lastpos)
+					printsize = lastpos - i;
+				else
+					printsize = borders[idx].low - i;
+				s += par.substr(i, printsize);
+				i += printsize;
+				if (i >= borders[idx].low)
+					i = borders[idx].upper;
+			}
+			else {
+				i = borders[idx].upper;
+				break;
+			}
+		}
+	}
+	if (lastpos > i) {
+		s += par.substr(i, lastpos-i);
+	}
+	return s;
 }
 #endif
 
 void Intervall::output(ostringstream &os, int lastpos)
 {
-  // get number of chars to output
-  int idx = 0;                          /* int intervalls */
-  int i = 0;
-  int printed = 0;
-  string startTitle = titleValue;
-  for (idx = 0; idx <= ignoreidx; idx++) {
-    if (i < lastpos) {
-      if (i <= borders[idx].low) {
-        int printsize;
-        if (borders[idx].low > lastpos)
-          printsize = lastpos - i;
-        else
-          printsize = borders[idx].low - i;
-        if (printsize > 0) {
-          os << startTitle << par.substr(i, printsize);
-          i += printsize;
-          printed += printsize;
-          startTitle = "";
-        }
-        handleParentheses(i, false);
-        if (i >= borders[idx].low)
-          i = borders[idx].upper;
-      }
-      else {
-        i = borders[idx].upper;
-      }
-    }
-    else
-      break;
-  }
-  if (lastpos > i) {
-    os << startTitle << par.substr(i, lastpos-i);
-    printed += lastpos-i;
-  }
-  handleParentheses(lastpos, false);
-  int startindex;
-  if (keys["foreignlanguage"].disabled)
-    startindex = actualdeptindex-langcount;
-  else
-    startindex = actualdeptindex;
-  for (int i = startindex; i > 0; --i) {
-    os << "}";
-  }
-  if (hasTitle && (printed > 0))
-    os << "}";
-  if (! isPatternString_)
-    os << "\n";
-  handleParentheses(lastpos, true); /* extra closings '}' allowed here */
+	// get number of chars to output
+	int idx = 0;                          /* int intervalls */
+	int i = 0;
+	int printed = 0;
+	string startTitle = titleValue;
+	for (idx = 0; idx <= ignoreidx; idx++) {
+		if (i < lastpos) {
+			if (i <= borders[idx].low) {
+				int printsize;
+				if (borders[idx].low > lastpos)
+					printsize = lastpos - i;
+				else
+					printsize = borders[idx].low - i;
+				if (printsize > 0) {
+					os << startTitle << par.substr(i, printsize);
+					i += printsize;
+					printed += printsize;
+					startTitle = "";
+				}
+				handleParentheses(i, false);
+				if (i >= borders[idx].low)
+					i = borders[idx].upper;
+			}
+			else {
+				i = borders[idx].upper;
+			}
+		}
+		else
+			break;
+	}
+	if (lastpos > i) {
+		os << startTitle << par.substr(i, lastpos-i);
+		printed += lastpos-i;
+	}
+	handleParentheses(lastpos, false);
+	int startindex;
+	if (keys["foreignlanguage"].disabled)
+		startindex = actualdeptindex-langcount;
+	else
+		startindex = actualdeptindex;
+	for (int i = startindex; i > 0; --i) {
+		os << "}";
+	}
+	if (hasTitle && (printed > 0))
+		os << "}";
+	if (! isPatternString_)
+		os << "\n";
+	handleParentheses(lastpos, true); /* extra closings '}' allowed here */
 }
 
 void LatexInfo::processRegion(int start, int region_end)
 {
-  while (start < region_end) {          /* Let {[} and {]} survive */
-    int cnt = interval_.isOpeningPar(start);
-    if (cnt == 1) {
-      // Closing is allowed past the region
-      int closing = interval_.findclosing(start+1, interval_.par.length());
-      interval_.addIntervall(start, start+1);
-      interval_.addIntervall(closing, closing+1);
-    }
-    else if (cnt == 3)
-      start += 2;
-    start = interval_.nextNotIgnored(start+1);
-  }
+	while (start < region_end) {          /* Let {[} and {]} survive */
+		int cnt = interval_.isOpeningPar(start);
+		if (cnt == 1) {
+			// Closing is allowed past the region
+			int closing = interval_.findclosing(start+1, interval_.par.length());
+			interval_.addIntervall(start, start+1);
+			interval_.addIntervall(closing, closing+1);
+		}
+		else if (cnt == 3)
+			start += 2;
+		start = interval_.nextNotIgnored(start+1);
+	}
 }
 
 void LatexInfo::removeHead(KeyInfo const & actual, int count)
 {
-  if (actual.parenthesiscount == 0) {
-    // "{\tiny{} ...}" ==> "{{} ...}"
-    interval_.addIntervall(actual._tokenstart-count, actual._tokenstart + actual._tokensize);
-  }
-  else {
-    // Remove header hull, that is "\url{abcd}" ==> "abcd"
-    interval_.addIntervall(actual._tokenstart - count, actual._dataStart);
-    interval_.addIntervall(actual._dataEnd, actual._dataEnd+1);
-  }
+	if (actual.parenthesiscount == 0) {
+		// "{\tiny{} ...}" ==> "{{} ...}"
+		interval_.addIntervall(actual._tokenstart-count, actual._tokenstart + actual._tokensize);
+	}
+	else {
+		// Remove header hull, that is "\url{abcd}" ==> "abcd"
+		interval_.addIntervall(actual._tokenstart - count, actual._dataStart);
+		interval_.addIntervall(actual._dataEnd, actual._dataEnd+1);
+	}
 }
 
 int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
 {
-  int nextKeyIdx = 0;
-  switch (actual.keytype)
-  {
-    case KeyInfo::isTitle: {
-      removeHead(actual);
-      nextKeyIdx = getNextKey();
-      break;
-    }
-    case KeyInfo::cleanToStart: {
-      actual._dataEnd = actual._dataStart;
-      nextKeyIdx = getNextKey();
-      // Search for end of arguments
-      int tmpIdx = find(nextKeyIdx, KeyInfo::endArguments);
-      if (tmpIdx > 0) {
-        for (int i = nextKeyIdx; i <= tmpIdx; i++) {
-          entries_[i].disabled = true;
-        }
-        actual._dataEnd = entries_[tmpIdx]._dataEnd;
-      }
-      while (interval_.par[actual._dataEnd] == ' ')
-        actual._dataEnd++;
-      interval_.addIntervall(0, actual._dataEnd+1);
-      interval_.actualdeptindex = 0;
-      interval_.depts[0] = actual._dataEnd+1;
-      interval_.closes[0] = -1;
-      break;
-    }
-    case KeyInfo::isText:
-      interval_.par[actual._tokenstart] = '#';
-      //interval_.addIntervall(actual._tokenstart, actual._tokenstart+1);
-      nextKeyIdx = getNextKey();
-      break;
-    case KeyInfo::noContent: {          /* char like "\hspace{2cm}" */
-      if (actual.disabled)
-        interval_.addIntervall(actual._tokenstart, actual._dataEnd);
-      else
-        interval_.addIntervall(actual._dataStart, actual._dataEnd);
-    }
-      // fall through
-    case KeyInfo::isChar: {
-      nextKeyIdx = getNextKey();
-      break;
-    }
-    case KeyInfo::isSize: {
-      if (actual.disabled || (interval_.par[actual._dataStart] != '{') || (interval_.par[actual._dataStart-1] == ' ')) {
-        if (actual.parenthesiscount == 0)
-          interval_.addIntervall(actual._tokenstart, actual._dataEnd);
-        else {
-          interval_.addIntervall(actual._tokenstart, actual._dataEnd+1);
-        }
-        nextKeyIdx = getNextKey();
-      } else {
-        // Here _dataStart points to '{', so correct it
-        actual._dataStart += 1;
-        actual._tokensize += 1;
-        actual.parenthesiscount = 1;
-        if (interval_.par[actual._dataStart] == '}') {
-          // Determine the end if used like '{\tiny{}...}'
-          actual._dataEnd = interval_.findclosing(actual._dataStart+1, interval_.par.length()) + 1;
-          interval_.addIntervall(actual._dataStart, actual._dataStart+1);
-        }
-        else {
-          // Determine the end if used like '\tiny{...}'
-          actual._dataEnd = interval_.findclosing(actual._dataStart, interval_.par.length()) + 1;
-        }
-        // Split on this key if not at start
-        int start = interval_.nextNotIgnored(previousStart);
-        if (start < actual._tokenstart) {
-          interval_.output(os, actual._tokenstart);
-          interval_.addIntervall(start, actual._tokenstart);
-        }
-        // discard entry if at end of actual
-        nextKeyIdx = process(os, actual);
-      }
-      break;
-    }
-    case KeyInfo::endArguments: {
-      // Remove trailing '{}' too
-      actual._dataStart += 1;
-      actual._dataEnd += 1;
-      interval_.addIntervall(actual._tokenstart, actual._dataEnd+1);
-      nextKeyIdx = getNextKey();
-      break;
-    }
-    case KeyInfo::noMain:
-      // fall through
-    case KeyInfo::isStandard: {
-      if (actual.disabled) {
-        removeHead(actual);
-        processRegion(actual._dataStart, actual._dataStart+1);
-        nextKeyIdx = getNextKey();
-      } else {
-        // Split on this key if not at datastart of calling entry
-        int start = interval_.nextNotIgnored(previousStart);
-        if (start < actual._tokenstart) {
-          interval_.output(os, actual._tokenstart);
-          interval_.addIntervall(start, actual._tokenstart);
-        }
-        // discard entry if at end of actual
-        nextKeyIdx = process(os, actual);
-      }
-      break;
-    }
-    case KeyInfo::removeWithArg: {
-      nextKeyIdx = getNextKey();
-      // Search for end of arguments
-      int tmpIdx = find(nextKeyIdx, KeyInfo::endArguments);
-      if (tmpIdx > 0) {
-        for (int i = nextKeyIdx; i <= tmpIdx; i++) {
-          entries_[i].disabled = true;
-        }
-        actual._dataEnd = entries_[tmpIdx]._dataEnd;
-      }
-      interval_.addIntervall(actual._tokenstart, actual._dataEnd+1);
-      break;
-    }
-    case KeyInfo::doRemove: {
-      // Remove the key with all parameters and following spaces
-      size_t pos;
-      size_t start;
-      if (interval_.par[actual._dataEnd-1] == ' ' || interval_.par[actual._dataEnd-1] == '}')
-        start = actual._dataEnd;
-      else
-        start = actual._dataEnd+1;
-      for (pos = start; pos < interval_.par.length(); pos++) {
-        if ((interval_.par[pos] != ' ') && (interval_.par[pos] != '%'))
-          break;
-      }
-      // Remove also enclosing parentheses [] and {}
-      int numpars = 0;
-      int spaces = 0;
-      while (actual._tokenstart > numpars) {
-        if (pos+numpars >= interval_.par.size())
-          break;
-        else if (interval_.par[pos+numpars] == ']' && interval_.par[actual._tokenstart-numpars-1] == '[')
-          numpars++;
-        else if (interval_.par[pos+numpars] == '}' && interval_.par[actual._tokenstart-numpars-1] == '{')
-          numpars++;
-        else
-          break;
-      }
-      if (numpars > 0) {
-        if (interval_.par[pos+numpars] == ' ')
-          spaces++;
-      }
+	int nextKeyIdx = 0;
+	switch (actual.keytype)
+	{
+	case KeyInfo::isTitle: {
+		removeHead(actual);
+		nextKeyIdx = getNextKey();
+		break;
+	}
+	case KeyInfo::cleanToStart: {
+		actual._dataEnd = actual._dataStart;
+		nextKeyIdx = getNextKey();
+		// Search for end of arguments
+		int tmpIdx = find(nextKeyIdx, KeyInfo::endArguments);
+		if (tmpIdx > 0) {
+			for (int i = nextKeyIdx; i <= tmpIdx; i++) {
+				entries_[i].disabled = true;
+			}
+			actual._dataEnd = entries_[tmpIdx]._dataEnd;
+		}
+		while (interval_.par[actual._dataEnd] == ' ')
+			actual._dataEnd++;
+		interval_.addIntervall(0, actual._dataEnd+1);
+		interval_.actualdeptindex = 0;
+		interval_.depts[0] = actual._dataEnd+1;
+		interval_.closes[0] = -1;
+		break;
+	}
+	case KeyInfo::isText:
+		interval_.par[actual._tokenstart] = '#';
+		//interval_.addIntervall(actual._tokenstart, actual._tokenstart+1);
+		nextKeyIdx = getNextKey();
+		break;
+	case KeyInfo::noContent: {          /* char like "\hspace{2cm}" */
+		if (actual.disabled)
+			interval_.addIntervall(actual._tokenstart, actual._dataEnd);
+		else
+			interval_.addIntervall(actual._dataStart, actual._dataEnd);
+	}
+		// fall through
+	case KeyInfo::isChar: {
+		nextKeyIdx = getNextKey();
+		break;
+	}
+	case KeyInfo::isSize: {
+		if (actual.disabled || (interval_.par[actual._dataStart] != '{') || (interval_.par[actual._dataStart-1] == ' ')) {
+			if (actual.parenthesiscount == 0)
+				interval_.addIntervall(actual._tokenstart, actual._dataEnd);
+			else {
+				interval_.addIntervall(actual._tokenstart, actual._dataEnd+1);
+			}
+			nextKeyIdx = getNextKey();
+		} else {
+			// Here _dataStart points to '{', so correct it
+			actual._dataStart += 1;
+			actual._tokensize += 1;
+			actual.parenthesiscount = 1;
+			if (interval_.par[actual._dataStart] == '}') {
+				// Determine the end if used like '{\tiny{}...}'
+				actual._dataEnd = interval_.findclosing(actual._dataStart+1, interval_.par.length()) + 1;
+				interval_.addIntervall(actual._dataStart, actual._dataStart+1);
+			}
+			else {
+				// Determine the end if used like '\tiny{...}'
+				actual._dataEnd = interval_.findclosing(actual._dataStart, interval_.par.length()) + 1;
+			}
+			// Split on this key if not at start
+			int start = interval_.nextNotIgnored(previousStart);
+			if (start < actual._tokenstart) {
+				interval_.output(os, actual._tokenstart);
+				interval_.addIntervall(start, actual._tokenstart);
+			}
+			// discard entry if at end of actual
+			nextKeyIdx = process(os, actual);
+		}
+		break;
+	}
+	case KeyInfo::endArguments: {
+		// Remove trailing '{}' too
+		actual._dataStart += 1;
+		actual._dataEnd += 1;
+		interval_.addIntervall(actual._tokenstart, actual._dataEnd+1);
+		nextKeyIdx = getNextKey();
+		break;
+	}
+	case KeyInfo::noMain:
+		// fall through
+	case KeyInfo::isStandard: {
+		if (actual.disabled) {
+			removeHead(actual);
+			processRegion(actual._dataStart, actual._dataStart+1);
+			nextKeyIdx = getNextKey();
+		} else {
+			// Split on this key if not at datastart of calling entry
+			int start = interval_.nextNotIgnored(previousStart);
+			if (start < actual._tokenstart) {
+				interval_.output(os, actual._tokenstart);
+				interval_.addIntervall(start, actual._tokenstart);
+			}
+			// discard entry if at end of actual
+			nextKeyIdx = process(os, actual);
+		}
+		break;
+	}
+	case KeyInfo::removeWithArg: {
+		nextKeyIdx = getNextKey();
+		// Search for end of arguments
+		int tmpIdx = find(nextKeyIdx, KeyInfo::endArguments);
+		if (tmpIdx > 0) {
+			for (int i = nextKeyIdx; i <= tmpIdx; i++) {
+				entries_[i].disabled = true;
+			}
+			actual._dataEnd = entries_[tmpIdx]._dataEnd;
+		}
+		interval_.addIntervall(actual._tokenstart, actual._dataEnd+1);
+		break;
+	}
+	case KeyInfo::doRemove: {
+		// Remove the key with all parameters and following spaces
+		size_t pos;
+		size_t start;
+		if (interval_.par[actual._dataEnd-1] == ' ' || interval_.par[actual._dataEnd-1] == '}')
+			start = actual._dataEnd;
+		else
+			start = actual._dataEnd+1;
+		for (pos = start; pos < interval_.par.length(); pos++) {
+			if ((interval_.par[pos] != ' ') && (interval_.par[pos] != '%'))
+				break;
+		}
+		// Remove also enclosing parentheses [] and {}
+		int numpars = 0;
+		int spaces = 0;
+		while (actual._tokenstart > numpars) {
+			if (pos+numpars >= interval_.par.size())
+				break;
+			else if (interval_.par[pos+numpars] == ']' && interval_.par[actual._tokenstart-numpars-1] == '[')
+				numpars++;
+			else if (interval_.par[pos+numpars] == '}' && interval_.par[actual._tokenstart-numpars-1] == '{')
+				numpars++;
+			else
+				break;
+		}
+		if (numpars > 0) {
+			if (interval_.par[pos+numpars] == ' ')
+				spaces++;
+		}
 
-      interval_.addIntervall(actual._tokenstart-numpars, pos+numpars+spaces);
-      nextKeyIdx = getNextKey();
-      break;
-    }
-    case KeyInfo::isList: {
-      // Discard space before _tokenstart
-      int count;
-      for (count = 0; count < actual._tokenstart; count++) {
-        if (interval_.par[actual._tokenstart-count-1] != ' ')
-          break;
-      }
-      nextKeyIdx = getNextKey();
-      int tmpIdx = find(nextKeyIdx, KeyInfo::endArguments);
-      if (tmpIdx > 0) {
-        // Special case: \item is not a list, but a command (like in Style Author_Biography in maa-monthly.layout)
-        // with arguments
-        // How else can we catch this one?
-        for (int i = nextKeyIdx; i <= tmpIdx; i++) {
-          entries_[i].disabled = true;
-        }
-        actual._dataEnd = entries_[tmpIdx]._dataEnd;
-      }
-      else if (nextKeyIdx > 0) {
-        // Ignore any lang entries inside data region
-        for (int i = nextKeyIdx; i < int(entries_.size()) && entries_[i]._tokenstart < actual._dataEnd; i++) {
-          if (entries_[i].keytype == KeyInfo::isMain)
-            entries_[i].disabled = true;
-        }
-      }
-      if (actual.disabled) {
-        interval_.addIntervall(actual._tokenstart-count, actual._dataEnd+1);
-      }
-      else {
-        interval_.addIntervall(actual._tokenstart-count, actual._tokenstart);
-      }
-      if (interval_.par[actual._dataEnd+1] == '[') {
-        int posdown = interval_.findclosing(actual._dataEnd+2, interval_.par.length(), '[', ']');
-        if ((interval_.par[actual._dataEnd+2] == '{') &&
-            (interval_.par[posdown-1] == '}')) {
-          interval_.addIntervall(actual._dataEnd+1,actual._dataEnd+3);
-          interval_.addIntervall(posdown-1, posdown+1);
-        }
-        else {
-          interval_.addIntervall(actual._dataEnd+1, actual._dataEnd+2);
-          interval_.addIntervall(posdown, posdown+1);
-        }
-        int blk = interval_.nextNotIgnored(actual._dataEnd+1);
-        if (blk > posdown) {
-          // Discard at most 1 space after empty item
-          int count;
-          for (count = 0; count < 1; count++) {
-            if (interval_.par[blk+count] != ' ')
-              break;
-          }
-          if (count > 0)
-            interval_.addIntervall(blk, blk+count);
-        }
-      }
-      break;
-    }
-    case KeyInfo::isSectioning: {
-      // Discard spaces before _tokenstart
-      int count;
-      int val = actual._tokenstart;
-      for (count = 0; count < actual._tokenstart;) {
-        val = interval_.previousNotIgnored(val-1);
-        if (val < 0 || interval_.par[val] != ' ')
-          break;
-        else {
-          count = actual._tokenstart - val;
-        }
-      }
-      if (actual.disabled) {
-        removeHead(actual, count);
-        nextKeyIdx = getNextKey();
-      } else {
-        interval_.addIntervall(actual._tokenstart-count, actual._tokenstart);
-        nextKeyIdx = process(os, actual);
-      }
-      break;
-    }
-    case KeyInfo::isMath: {
-      // Same as regex, use the content unchanged
-      nextKeyIdx = getNextKey();
-      break;
-    }
-    case KeyInfo::isRegex: {
-      // DO NOT SPLIT ON REGEX
-      // Do not disable
-      nextKeyIdx = getNextKey();
-      break;
-    }
-    case KeyInfo::isIgnored: {
-      // Treat like a character for now
-      nextKeyIdx = getNextKey();
-      break;
-    }
-    case KeyInfo::isMain: {
-      if (interval_.par.substr(actual._dataStart, 2) == "% ")
-        interval_.addIntervall(actual._dataStart, actual._dataStart+2);
-      if (actual._tokenstart > 0) {
-        int prev = interval_.previousNotIgnored(actual._tokenstart - 1);
-        if ((prev >= 0) && interval_.par[prev] == '%')
-          interval_.addIntervall(prev, prev+1);
-      }
-      if (actual.disabled) {
-        removeHead(actual);
-        interval_.langcount++;
-        if ((interval_.par.substr(actual._dataStart, 3) == " \\[") ||
-            (interval_.par.substr(actual._dataStart, 8) == " \\begin{")) {
-          // Discard also the space before math-equation
-          interval_.addIntervall(actual._dataStart, actual._dataStart+1);
-        }
-        nextKeyIdx = getNextKey();
-        // interval.resetOpenedP(actual._dataStart-1);
-      }
-      else {
-        if (actual._tokenstart < 26) {
-          // for the first (and maybe dummy) language
-          interval_.setForDefaultLang(actual);
-        }
-        interval_.resetOpenedP(actual._dataStart-1);
-      }
-      break;
-    }
-    case KeyInfo::invalid:
-    case KeyInfo::headRemove:
-      // These two cases cannot happen, already handled
-      // fall through
-    default: {
-      // LYXERR(Debug::INFO, "Unhandled keytype");
-      nextKeyIdx = getNextKey();
-      break;
-    }
-  }
-  return nextKeyIdx;
+		interval_.addIntervall(actual._tokenstart-numpars, pos+numpars+spaces);
+		nextKeyIdx = getNextKey();
+		break;
+	}
+	case KeyInfo::isList: {
+		// Discard space before _tokenstart
+		int count;
+		for (count = 0; count < actual._tokenstart; count++) {
+			if (interval_.par[actual._tokenstart-count-1] != ' ')
+				break;
+		}
+		nextKeyIdx = getNextKey();
+		int tmpIdx = find(nextKeyIdx, KeyInfo::endArguments);
+		if (tmpIdx > 0) {
+			// Special case: \item is not a list, but a command (like in Style Author_Biography in maa-monthly.layout)
+			// with arguments
+			// How else can we catch this one?
+			for (int i = nextKeyIdx; i <= tmpIdx; i++) {
+				entries_[i].disabled = true;
+			}
+			actual._dataEnd = entries_[tmpIdx]._dataEnd;
+		}
+		else if (nextKeyIdx > 0) {
+			// Ignore any lang entries inside data region
+			for (int i = nextKeyIdx; i < int(entries_.size()) && entries_[i]._tokenstart < actual._dataEnd; i++) {
+				if (entries_[i].keytype == KeyInfo::isMain)
+					entries_[i].disabled = true;
+			}
+		}
+		if (actual.disabled) {
+			interval_.addIntervall(actual._tokenstart-count, actual._dataEnd+1);
+		}
+		else {
+			interval_.addIntervall(actual._tokenstart-count, actual._tokenstart);
+		}
+		if (interval_.par[actual._dataEnd+1] == '[') {
+			int posdown = interval_.findclosing(actual._dataEnd+2, interval_.par.length(), '[', ']');
+			if ((interval_.par[actual._dataEnd+2] == '{') &&
+					(interval_.par[posdown-1] == '}')) {
+				interval_.addIntervall(actual._dataEnd+1,actual._dataEnd+3);
+				interval_.addIntervall(posdown-1, posdown+1);
+			}
+			else {
+				interval_.addIntervall(actual._dataEnd+1, actual._dataEnd+2);
+				interval_.addIntervall(posdown, posdown+1);
+			}
+			int blk = interval_.nextNotIgnored(actual._dataEnd+1);
+			if (blk > posdown) {
+				// Discard at most 1 space after empty item
+				int count;
+				for (count = 0; count < 1; count++) {
+					if (interval_.par[blk+count] != ' ')
+						break;
+				}
+				if (count > 0)
+					interval_.addIntervall(blk, blk+count);
+			}
+		}
+		break;
+	}
+	case KeyInfo::isSectioning: {
+		// Discard spaces before _tokenstart
+		int count;
+		int val = actual._tokenstart;
+		for (count = 0; count < actual._tokenstart;) {
+			val = interval_.previousNotIgnored(val-1);
+			if (val < 0 || interval_.par[val] != ' ')
+				break;
+			else {
+				count = actual._tokenstart - val;
+			}
+		}
+		if (actual.disabled) {
+			removeHead(actual, count);
+			nextKeyIdx = getNextKey();
+		} else {
+			interval_.addIntervall(actual._tokenstart-count, actual._tokenstart);
+			nextKeyIdx = process(os, actual);
+		}
+		break;
+	}
+	case KeyInfo::isMath: {
+		// Same as regex, use the content unchanged
+		nextKeyIdx = getNextKey();
+		break;
+	}
+	case KeyInfo::isRegex: {
+		// DO NOT SPLIT ON REGEX
+		// Do not disable
+		nextKeyIdx = getNextKey();
+		break;
+	}
+	case KeyInfo::isIgnored: {
+		// Treat like a character for now
+		nextKeyIdx = getNextKey();
+		break;
+	}
+	case KeyInfo::isMain: {
+		if (interval_.par.substr(actual._dataStart, 2) == "% ")
+			interval_.addIntervall(actual._dataStart, actual._dataStart+2);
+		if (actual._tokenstart > 0) {
+			int prev = interval_.previousNotIgnored(actual._tokenstart - 1);
+			if ((prev >= 0) && interval_.par[prev] == '%')
+				interval_.addIntervall(prev, prev+1);
+		}
+		if (actual.disabled) {
+			removeHead(actual);
+			interval_.langcount++;
+			if ((interval_.par.substr(actual._dataStart, 3) == " \\[") ||
+					(interval_.par.substr(actual._dataStart, 8) == " \\begin{")) {
+				// Discard also the space before math-equation
+				interval_.addIntervall(actual._dataStart, actual._dataStart+1);
+			}
+			nextKeyIdx = getNextKey();
+			// interval.resetOpenedP(actual._dataStart-1);
+		}
+		else {
+			if (actual._tokenstart < 26) {
+				// for the first (and maybe dummy) language
+				interval_.setForDefaultLang(actual);
+			}
+			interval_.resetOpenedP(actual._dataStart-1);
+		}
+		break;
+	}
+	case KeyInfo::invalid:
+	case KeyInfo::headRemove:
+		// These two cases cannot happen, already handled
+		// fall through
+	default: {
+		// LYXERR(Debug::INFO, "Unhandled keytype");
+		nextKeyIdx = getNextKey();
+		break;
+	}
+	}
+	return nextKeyIdx;
 }
 
 int LatexInfo::process(ostringstream & os, KeyInfo const & actual )
 {
-  int end = interval_.nextNotIgnored(actual._dataEnd);
-  int oldStart = actual._dataStart;
-  int nextKeyIdx = getNextKey();
-  while (true) {
-    if ((nextKeyIdx < 0) ||
-        (entries_[nextKeyIdx]._tokenstart >= actual._dataEnd) ||
-        (entries_[nextKeyIdx].keytype == KeyInfo::invalid)) {
-      if (oldStart <= end) {
-        processRegion(oldStart, end);
-        oldStart = end+1;
-      }
-      break;
-    }
-    KeyInfo &nextKey = getKeyInfo(nextKeyIdx);
+	int end = interval_.nextNotIgnored(actual._dataEnd);
+	int oldStart = actual._dataStart;
+	int nextKeyIdx = getNextKey();
+	while (true) {
+		if ((nextKeyIdx < 0) ||
+				(entries_[nextKeyIdx]._tokenstart >= actual._dataEnd) ||
+				(entries_[nextKeyIdx].keytype == KeyInfo::invalid)) {
+			if (oldStart <= end) {
+				processRegion(oldStart, end);
+				oldStart = end+1;
+			}
+			break;
+		}
+		KeyInfo &nextKey = getKeyInfo(nextKeyIdx);
 
-    if ((nextKey.keytype == KeyInfo::isMain) && !nextKey.disabled) {
-      (void) dispatch(os, actual._dataStart, nextKey);
-      end = nextKey._tokenstart;
-      break;
-    }
-    processRegion(oldStart, nextKey._tokenstart);
-    nextKeyIdx = dispatch(os, actual._dataStart, nextKey);
+		if ((nextKey.keytype == KeyInfo::isMain) && !nextKey.disabled) {
+			(void) dispatch(os, actual._dataStart, nextKey);
+			end = nextKey._tokenstart;
+			break;
+		}
+		processRegion(oldStart, nextKey._tokenstart);
+		nextKeyIdx = dispatch(os, actual._dataStart, nextKey);
 
-    oldStart = nextKey._dataEnd+1;
-  }
-  // now nextKey is either invalid or is outside of actual._dataEnd
-  // output the remaining and discard myself
-  if (oldStart <= end) {
-    processRegion(oldStart, end);
-  }
-  if (interval_.par.size() > (size_t) end && interval_.par[end] == '}') {
-    end += 1;
-    // This is the normal case.
-    // But if using the firstlanguage, the closing may be missing
-  }
-  // get minimum of 'end' and  'actual._dataEnd' in case that the nextKey.keytype was 'KeyInfo::isMain'
-  int output_end;
-  if (actual._dataEnd < end)
-    output_end = interval_.nextNotIgnored(actual._dataEnd);
-  else if (interval_.par.size() > (size_t) end)
-    output_end = interval_.nextNotIgnored(end);
-  else
-    output_end = interval_.par.size();
-  if ((actual.keytype == KeyInfo::isMain) && actual.disabled) {
-    interval_.addIntervall(actual._tokenstart, actual._tokenstart+actual._tokensize);
-  }
-  // Remove possible empty data
-  int dstart = interval_.nextNotIgnored(actual._dataStart);
-  while (interval_.isOpeningPar(dstart) == 1) {
-    interval_.addIntervall(dstart, dstart+1);
-    int dend = interval_.findclosing(dstart+1, output_end);
-    interval_.addIntervall(dend, dend+1);
-    dstart = interval_.nextNotIgnored(dstart+1);
-  }
-  if (dstart < output_end)
-    interval_.output(os, output_end);
-  if (nextKeyIdx < 0)
-    interval_.addIntervall(0, end);
-  else
-    interval_.addIntervall(actual._tokenstart, end);
-  return nextKeyIdx;
+		oldStart = nextKey._dataEnd+1;
+	}
+	// now nextKey is either invalid or is outside of actual._dataEnd
+	// output the remaining and discard myself
+	if (oldStart <= end) {
+		processRegion(oldStart, end);
+	}
+	if (interval_.par.size() > (size_t) end && interval_.par[end] == '}') {
+		end += 1;
+		// This is the normal case.
+		// But if using the firstlanguage, the closing may be missing
+	}
+	// get minimum of 'end' and  'actual._dataEnd' in case that the nextKey.keytype was 'KeyInfo::isMain'
+	int output_end;
+	if (actual._dataEnd < end)
+		output_end = interval_.nextNotIgnored(actual._dataEnd);
+	else if (interval_.par.size() > (size_t) end)
+		output_end = interval_.nextNotIgnored(end);
+	else
+		output_end = interval_.par.size();
+	if ((actual.keytype == KeyInfo::isMain) && actual.disabled) {
+		interval_.addIntervall(actual._tokenstart, actual._tokenstart+actual._tokensize);
+	}
+	// Remove possible empty data
+	int dstart = interval_.nextNotIgnored(actual._dataStart);
+	while (interval_.isOpeningPar(dstart) == 1) {
+		interval_.addIntervall(dstart, dstart+1);
+		int dend = interval_.findclosing(dstart+1, output_end);
+		interval_.addIntervall(dend, dend+1);
+		dstart = interval_.nextNotIgnored(dstart+1);
+	}
+	if (dstart < output_end)
+		interval_.output(os, output_end);
+	if (nextKeyIdx < 0)
+		interval_.addIntervall(0, end);
+	else
+		interval_.addIntervall(actual._tokenstart, end);
+	return nextKeyIdx;
 }
 
 string splitOnKnownMacros(string par, bool isPatternString)
 {
-  ostringstream os;
-  LatexInfo li(par, isPatternString);
-  // LYXERR(Debug::INFO, "Berfore split: " << par);
-  KeyInfo DummyKey = KeyInfo(KeyInfo::KeyType::isMain, 2, true);
-  DummyKey.head = "";
-  DummyKey._tokensize = 0;
-  DummyKey._dataStart = 0;
-  DummyKey._dataEnd = par.length();
-  DummyKey.disabled = true;
-  int firstkeyIdx = li.getFirstKey();
-  string s;
-  if (firstkeyIdx >= 0) {
-    KeyInfo firstKey = li.getKeyInfo(firstkeyIdx);
-    DummyKey._tokenstart = firstKey._tokenstart;
-    int nextkeyIdx;
-    if ((firstKey.keytype != KeyInfo::isMain) || firstKey.disabled) {
-      // Use dummy firstKey
-      firstKey = DummyKey;
-      (void) li.setNextKey(firstkeyIdx);
-    }
-    else {
-      if (par.substr(firstKey._dataStart, 2) == "% ")
-        li.addIntervall(firstKey._dataStart, firstKey._dataStart+2);
-    }
-    nextkeyIdx = li.process(os, firstKey);
-    while (nextkeyIdx >= 0) {
-      // Check for a possible gap between the last
-      // entry and this one
-      int datastart = li.nextNotIgnored(firstKey._dataStart);
-      KeyInfo &nextKey = li.getKeyInfo(nextkeyIdx);
-      if ((nextKey._tokenstart > datastart)) {
-        // Handle the gap
-        firstKey._dataStart = datastart;
-        firstKey._dataEnd = par.length();
-        (void) li.setNextKey(nextkeyIdx);
-        // Fake the last opened parenthesis
-        li.setForDefaultLang(firstKey);
-        nextkeyIdx = li.process(os, firstKey);
-      }
-      else {
-        if (nextKey.keytype != KeyInfo::isMain) {
-          firstKey._dataStart = datastart;
-          firstKey._dataEnd = nextKey._dataEnd+1;
-          (void) li.setNextKey(nextkeyIdx);
-          li.setForDefaultLang(firstKey);
-          nextkeyIdx = li.process(os, firstKey);
-        }
-        else {
-          nextkeyIdx = li.process(os, nextKey);
-        }
-      }
-    }
-    // Handle the remaining
-    firstKey._dataStart = li.nextNotIgnored(firstKey._dataStart);
-    firstKey._dataEnd = par.length();
-    // Check if ! empty
-    if ((firstKey._dataStart < firstKey._dataEnd) &&
-        (par[firstKey._dataStart] != '}')) {
-      li.setForDefaultLang(firstKey);
-      (void) li.process(os, firstKey);
-    }
-    s = os.str();
-    // return string definitelly impossible to match, but should be known
-  }
-  else
-    s = par;                            /* no known macros found */
-  // LYXERR(Debug::INFO, "After split: " << s);
-  return s;
+	ostringstream os;
+	LatexInfo li(par, isPatternString);
+	// LYXERR(Debug::INFO, "Berfore split: " << par);
+	KeyInfo DummyKey = KeyInfo(KeyInfo::KeyType::isMain, 2, true);
+	DummyKey.head = "";
+	DummyKey._tokensize = 0;
+	DummyKey._dataStart = 0;
+	DummyKey._dataEnd = par.length();
+	DummyKey.disabled = true;
+	int firstkeyIdx = li.getFirstKey();
+	string s;
+	if (firstkeyIdx >= 0) {
+		KeyInfo firstKey = li.getKeyInfo(firstkeyIdx);
+		DummyKey._tokenstart = firstKey._tokenstart;
+		int nextkeyIdx;
+		if ((firstKey.keytype != KeyInfo::isMain) || firstKey.disabled) {
+			// Use dummy firstKey
+			firstKey = DummyKey;
+			(void) li.setNextKey(firstkeyIdx);
+		}
+		else {
+			if (par.substr(firstKey._dataStart, 2) == "% ")
+				li.addIntervall(firstKey._dataStart, firstKey._dataStart+2);
+		}
+		nextkeyIdx = li.process(os, firstKey);
+		while (nextkeyIdx >= 0) {
+			// Check for a possible gap between the last
+			// entry and this one
+			int datastart = li.nextNotIgnored(firstKey._dataStart);
+			KeyInfo &nextKey = li.getKeyInfo(nextkeyIdx);
+			if ((nextKey._tokenstart > datastart)) {
+				// Handle the gap
+				firstKey._dataStart = datastart;
+				firstKey._dataEnd = par.length();
+				(void) li.setNextKey(nextkeyIdx);
+				// Fake the last opened parenthesis
+				li.setForDefaultLang(firstKey);
+				nextkeyIdx = li.process(os, firstKey);
+			}
+			else {
+				if (nextKey.keytype != KeyInfo::isMain) {
+					firstKey._dataStart = datastart;
+					firstKey._dataEnd = nextKey._dataEnd+1;
+					(void) li.setNextKey(nextkeyIdx);
+					li.setForDefaultLang(firstKey);
+					nextkeyIdx = li.process(os, firstKey);
+				}
+				else {
+					nextkeyIdx = li.process(os, nextKey);
+				}
+			}
+		}
+		// Handle the remaining
+		firstKey._dataStart = li.nextNotIgnored(firstKey._dataStart);
+		firstKey._dataEnd = par.length();
+		// Check if ! empty
+		if ((firstKey._dataStart < firstKey._dataEnd) &&
+				(par[firstKey._dataStart] != '}')) {
+			li.setForDefaultLang(firstKey);
+			(void) li.process(os, firstKey);
+		}
+		s = os.str();
+		// return string definitelly impossible to match, but should be known
+	}
+	else
+		s = par;                            /* no known macros found */
+	// LYXERR(Debug::INFO, "After split: " << s);
+	return s;
 }
 
 /*
@@ -3520,7 +3520,7 @@ static void modifyRegexForMatchWord(string &t)
 	}
 	else if (lastpos < t.length())
 		s += t.substr(lastpos, t.length() - lastpos);
-      t = "\\b" + s + "\\b";
+	t = "\\b" + s + "\\b";
 }
 
 MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
@@ -3665,7 +3665,7 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 
 	mres.searched_size = len;
 	if (at_begin &&
-		(opt.restr == FindAndReplaceOptions::R_ONLY_MATHS && !cur.inMathed()) )
+			(opt.restr == FindAndReplaceOptions::R_ONLY_MATHS && !cur.inMathed()) )
 		return mres;
 
 	docstring docstr = stringifyFromForSearch(opt, cur, len);
@@ -3796,23 +3796,23 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		mres.pos = m[2].first - m[0].first;;
 #endif
 		if (mres.match2end < 0)
-		  mres.match_len = 0;
+			mres.match_len = 0;
 		mres.leadsize = leadingsize;
 #if QTSEARCH
 		if (mres.match_len > 0) {
-		  string a0 = match.captured(0).mid(mres.pos + mres.match_prefix, mres.match_len).toStdString();
-		  mres.result.push_back(a0);
-		  for (int i = 3; i <= match.lastCapturedIndex(); i++) {
-		    mres.result.push_back(match.captured(i).toStdString());
-		  }
+			string a0 = match.captured(0).mid(mres.pos + mres.match_prefix, mres.match_len).toStdString();
+			mres.result.push_back(a0);
+			for (int i = 3; i <= match.lastCapturedIndex(); i++) {
+				mres.result.push_back(match.captured(i).toStdString());
+			}
 		}
 #else
 		if (mres.match_len > 0) {
-		  string a0 = m[0].str().substr(mres.pos + mres.match_prefix, mres.match_len);
-		  mres.result.push_back(a0);
-		  for (size_t i = 3; i < m.size(); i++) {
-		    mres.result.push_back(m[i]);
-		  }
+			string a0 = m[0].str().substr(mres.pos + mres.match_prefix, mres.match_len);
+			mres.result.push_back(a0);
+			for (size_t i = 3; i < m.size(); i++) {
+				mres.result.push_back(m[i]);
+			}
 		}
 #endif
 		return mres;
@@ -3842,25 +3842,25 @@ MatchResult MatchStringAdv::operator()(DocIterator const & cur, int len, bool at
 #if 0
 static bool simple_replace(string &t, string from, string to)
 {
-  regex repl("(\\\\)*(" + from + ")");
-  string s("");
-  size_t lastpos = 0;
-  smatch sub;
-  for (sregex_iterator it(t.begin(), t.end(), repl), end; it != end; ++it) {
-    sub = *it;
-    if ((sub.position(2) - sub.position(0)) % 2 == 1)
-      continue;
-    if (lastpos < (size_t) sub.position(2))
-      s += t.substr(lastpos, sub.position(2) - lastpos);
-    s += to;
-    lastpos = sub.position(2) + sub.length(2);
-  }
-  if (lastpos == 0)
-    return false;
-  else if (lastpos < t.length())
-    s += t.substr(lastpos, t.length() - lastpos);
-  t = s;
-  return true;
+	regex repl("(\\\\)*(" + from + ")");
+	string s("");
+	size_t lastpos = 0;
+	smatch sub;
+	for (sregex_iterator it(t.begin(), t.end(), repl), end; it != end; ++it) {
+		sub = *it;
+		if ((sub.position(2) - sub.position(0)) % 2 == 1)
+			continue;
+		if (lastpos < (size_t) sub.position(2))
+			s += t.substr(lastpos, sub.position(2) - lastpos);
+		s += to;
+		lastpos = sub.position(2) + sub.length(2);
+	}
+	if (lastpos == 0)
+		return false;
+	else if (lastpos < t.length())
+		s += t.substr(lastpos, t.length() - lastpos);
+	t = s;
+	return true;
 }
 #endif
 
@@ -3934,7 +3934,7 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 		// TODO what about searching beyond/across paragraph breaks ?
 		// TODO Try adding a AS_STR_INSERTS as last arg
 		pos_type end = ( len == -1 || cur.pos() + len > int(par.size()) ) ?
-			int(par.size()) : cur.pos() + len;
+					int(par.size()) : cur.pos() + len;
 		// OutputParams runparams(&cur.buffer()->params().encoding());
 		OutputParams runparams(encodings.fromLyXName("utf8"));
 		runparams.nice = true;
@@ -3954,17 +3954,17 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 			runparams.for_searchAdv |= OutputParams::SearchNonOutput;
 		}
 		LYXERR(Debug::FIND, "Stringifying with cur: "
-			<< cur << ", from pos: " << cur.pos() << ", end: " << end);
+		       << cur << ", from pos: " << cur.pos() << ", end: " << end);
 		return from_utf8(latexNamesToUtf8(par.asString(cur.pos(), end,
-								option,
-								&runparams)));
+							       option,
+							       &runparams)));
 	} else if (cur.inMathed()) {
 		CursorSlice cs = cur.top();
 		MathData md = cs.cell();
 		MathData::const_iterator it_end =
-			(( len == -1 || cs.pos() + len > int(md.size()))
-			 ? md.end()
-			 : md.begin() + cs.pos() + len );
+				(( len == -1 || cs.pos() + len > int(md.size()))
+				 ? md.end()
+				 : md.begin() + cs.pos() + len );
 		MathData md2;
 		for (MathData::const_iterator it = md.begin() + cs.pos(); it != it_end; ++it)
 			md2.push_back(*it);
@@ -4032,9 +4032,9 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 		CursorSlice const & cs = cur.top();
 		MathData md = cs.cell();
 		MathData::const_iterator it_end =
-			((len == -1 || cs.pos() + len > int(md.size()))
-			 ? md.end()
-			 : md.begin() + cs.pos() + len);
+				((len == -1 || cs.pos() + len > int(md.size()))
+				 ? md.end()
+				 : md.begin() + cs.pos() + len);
 		MathData md2;
 		for (MathData::const_iterator it = md.begin() + cs.pos();
 		     it != it_end; ++it)
@@ -4088,9 +4088,9 @@ static void displayMResult(MatchResult &mres, string from, DocIterator & cur)
 	for (size_t i = 0; i < mres.result.size(); i++)
 		LYXERR0( "Match " << i << " = \"" << mres.result[i] << "\"");
 }
-	#define displayMres(s, txt, cur) displayMResult(s, txt, cur);
+#define displayMres(s, txt, cur) displayMResult(s, txt, cur);
 #else
-	#define displayMres(s, txt, cur)
+#define displayMres(s, txt, cur)
 #endif
 
 /** Finalize an advanced find operation, advancing the cursor to the innermost
@@ -4159,85 +4159,85 @@ MatchResult findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, Mat
 	// Compute the match length
 	int len = 1;
 	if (cur.pos() + len > cur.lastpos())
-	  return fail;
+		return fail;
 
 	LASSERT(match.use_regexp, /**/);
 	{
-          int minl = 1;
-          int maxl = cur.lastpos() - cur.pos();
-          // Greedy behaviour while matching regexps
-          while (maxl > minl) {
-            MatchResult mres2;
-            mres2 = match(cur, len, at_begin);
-            displayMres(mres2, "Finalize loop", cur);
-            int actual_match_len = mres2.match_len;
-            if (actual_match_len >= max_match.match_len) {
-              // actual_match_len > max_match _can_ happen,
-              // if the search area splits
-              // some following word so that the regex
-              // (e.g. 'r.*r\b' matches 'r' from the middle of the
-              // splitted word)
-              // This means, the len value is too big
-	      actual_match_len = max_match.match_len;
-	      max_match = mres2;
-	      max_match.match_len = actual_match_len;
-              maxl = len;
-              if (maxl - minl < 4)
-                len = (maxl + minl)/2;
-              else
-                len = minl + (maxl - minl + 3)/4;
-            }
-            else {
-              // (actual_match_len < max_match.match_len)
-              minl = len + 1;
-              len = (maxl + minl)/2;
-            }
-          }
-	  len = minl;
-          old_cur = cur;
-          // Search for real start of matched characters
-          while (len > 1) {
-            MatchResult actual_match;
-            do {
-              cur.forwardPos();
-            } while (cur.depth() > old_cur.depth()); /* Skip inner insets */
-            if (cur.depth() < old_cur.depth()) {
-              // Outer inset?
-              LYXERR(Debug::INFO, "cur.depth() < old_cur.depth(), this should never happen");
-              break;
-            }
-            if (cur.pos() != old_cur.pos()) {
-              // OK, forwarded 1 pos in actual inset
-              actual_match = match(cur, len-1, at_begin);
-              if (actual_match.match_len == max_match.match_len) {
-                // Ha, got it! The shorter selection has the same match length
-                len--;
-                old_cur = cur;
-		max_match = actual_match;
-              }
-              else {
-                // OK, the shorter selection matches less chars, revert to previous value
-                cur = old_cur;
-                break;
-              }
-            }
-            else {
-              LYXERR(Debug::INFO, "cur.pos() == old_cur.pos(), this should never happen");
-              actual_match = match(cur, len, at_begin);
-              if (actual_match.match_len == max_match.match_len) {
-                old_cur = cur;
-                max_match = actual_match;
-              }
-            }
-          }
-          if (len == 0)
-            return fail;
-          else {
-            max_match.pos_len = len;
-	    displayMres(max_match, "SEARCH RESULT", cur)
-            return max_match;
-          }
-        }
+		int minl = 1;
+		int maxl = cur.lastpos() - cur.pos();
+		// Greedy behaviour while matching regexps
+		while (maxl > minl) {
+			MatchResult mres2;
+			mres2 = match(cur, len, at_begin);
+			displayMres(mres2, "Finalize loop", cur);
+			int actual_match_len = mres2.match_len;
+			if (actual_match_len >= max_match.match_len) {
+				// actual_match_len > max_match _can_ happen,
+				// if the search area splits
+				// some following word so that the regex
+				// (e.g. 'r.*r\b' matches 'r' from the middle of the
+				// splitted word)
+				// This means, the len value is too big
+				actual_match_len = max_match.match_len;
+				max_match = mres2;
+				max_match.match_len = actual_match_len;
+				maxl = len;
+				if (maxl - minl < 4)
+					len = (maxl + minl)/2;
+				else
+					len = minl + (maxl - minl + 3)/4;
+			}
+			else {
+				// (actual_match_len < max_match.match_len)
+				minl = len + 1;
+				len = (maxl + minl)/2;
+			}
+		}
+		len = minl;
+		old_cur = cur;
+		// Search for real start of matched characters
+		while (len > 1) {
+			MatchResult actual_match;
+			do {
+				cur.forwardPos();
+			} while (cur.depth() > old_cur.depth()); /* Skip inner insets */
+			if (cur.depth() < old_cur.depth()) {
+				// Outer inset?
+				LYXERR(Debug::INFO, "cur.depth() < old_cur.depth(), this should never happen");
+				break;
+			}
+			if (cur.pos() != old_cur.pos()) {
+				// OK, forwarded 1 pos in actual inset
+				actual_match = match(cur, len-1, at_begin);
+				if (actual_match.match_len == max_match.match_len) {
+					// Ha, got it! The shorter selection has the same match length
+					len--;
+					old_cur = cur;
+					max_match = actual_match;
+				}
+				else {
+					// OK, the shorter selection matches less chars, revert to previous value
+					cur = old_cur;
+					break;
+				}
+			}
+			else {
+				LYXERR(Debug::INFO, "cur.pos() == old_cur.pos(), this should never happen");
+				actual_match = match(cur, len, at_begin);
+				if (actual_match.match_len == max_match.match_len) {
+					old_cur = cur;
+					max_match = actual_match;
+				}
+			}
+		}
+		if (len == 0)
+			return fail;
+		else {
+			max_match.pos_len = len;
+			displayMres(max_match, "SEARCH RESULT", cur)
+					return max_match;
+		}
+	}
 }
 
 /// Finds forward
@@ -4256,7 +4256,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 		if (repeat)
 			msg = "Repeated";
 		displayMres(mres, msg + " findForwardAdv", cur)
-		int match_len = mres.match_len;
+				int match_len = mres.match_len;
 		if ((mres.pos > 100000) || (mres.match2end > 100000) || (match_len > 100000)) {
 			LYXERR(Debug::INFO, "BIG LENGTHS: " << mres.pos << ", " << match_len << ", " << mres.match2end);
 			match_len = 0;
@@ -4291,7 +4291,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 				cur.pos() = cur.pos() + increment;
 				MatchResult mres2 = match(cur, -1, false);
 				displayMres(mres2, "findForwardAdv loop", cur)
-				switch (interpretMatch(mres, mres2)) {
+						switch (interpretMatch(mres, mres2)) {
 					case MatchResult::newIsTooFar:
 						// behind the expected match
 						firstInvalid = increment;
@@ -4316,12 +4316,12 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 						firstInvalid--;
 						increment = increment*3/4;
 						cur = old_cur;
-					break;
+						break;
 				}
 			}
 			if (mres.match_len > 0) {
 				if (mres.match_prefix + mres.pos - mres.leadsize > 0) {
-					// The match seems to indicate some deeper level 
+					// The match seems to indicate some deeper level
 					repeat = true;
 					orig_cur = cur;
 					orig_mres = mres;
@@ -4439,7 +4439,7 @@ docstring stringifyFromForSearch(FindAndReplaceOptions const & opt,
 				 DocIterator const & cur, int len)
 {
 	if (cur.pos() < 0 || cur.pos() > cur.lastpos())
-	        return docstring();
+		return docstring();
 	if (!opt.ignoreformat)
 		return latexifyFromCursor(cur, len);
 	else
@@ -4448,10 +4448,10 @@ docstring stringifyFromForSearch(FindAndReplaceOptions const & opt,
 
 
 FindAndReplaceOptions::FindAndReplaceOptions(
-	docstring const & _find_buf_name, bool _casesensitive,
-	bool _matchword, bool _forward, bool _expandmacros, bool _ignoreformat,
-	docstring const & _repl_buf_name, bool _keep_case,
-	SearchScope _scope, SearchRestriction _restr, bool _replace_all)
+		docstring const & _find_buf_name, bool _casesensitive,
+		bool _matchword, bool _forward, bool _expandmacros, bool _ignoreformat,
+		docstring const & _repl_buf_name, bool _keep_case,
+		SearchScope _scope, SearchRestriction _restr, bool _replace_all)
 	: find_buf_name(_find_buf_name), casesensitive(_casesensitive), matchword(_matchword),
 	  forward(_forward), expandmacros(_expandmacros), ignoreformat(_ignoreformat),
 	  repl_buf_name(_repl_buf_name), keep_case(_keep_case), scope(_scope), restr(_restr), replace_all(_replace_all)
@@ -4516,30 +4516,30 @@ static void changeFirstCase(Buffer & buffer, TextCase first_case, TextCase other
 
 static bool replaceMatches(string &t, int maxmatchnum, vector <string> const & replacements)
 {
-  // Should replace the string "$" + std::to_string(matchnum) with replacement
-  // if the char '$' is not prefixed with odd number of char '\\'
-  static regex const rematch("(\\\\)*(\\$\\$([0-9]))");
-  string s;
-  size_t lastpos = 0;
-  smatch sub;
-  for (sregex_iterator it(t.begin(), t.end(), rematch), end; it != end; ++it) {
-    sub = *it;
-    if ((sub.position(2) - sub.position(0)) % 2 == 1)
-      continue;
-    int num = stoi(sub.str(3), nullptr, 10);
-    if (num >= maxmatchnum)
-      continue;
-    if (lastpos < (size_t) sub.position(2))
-      s += t.substr(lastpos, sub.position(2) - lastpos);
-    s += replacements[num];
-    lastpos = sub.position(2) + sub.length(2);
-  }
-  if (lastpos == 0)
-    return false;
-  else if (lastpos < t.length())
-    s += t.substr(lastpos, t.length() - lastpos);
-  t = s;
-  return true;
+	// Should replace the string "$" + std::to_string(matchnum) with replacement
+	// if the char '$' is not prefixed with odd number of char '\\'
+	static regex const rematch("(\\\\)*(\\$\\$([0-9]))");
+	string s;
+	size_t lastpos = 0;
+	smatch sub;
+	for (sregex_iterator it(t.begin(), t.end(), rematch), end; it != end; ++it) {
+		sub = *it;
+		if ((sub.position(2) - sub.position(0)) % 2 == 1)
+			continue;
+		int num = stoi(sub.str(3), nullptr, 10);
+		if (num >= maxmatchnum)
+			continue;
+		if (lastpos < (size_t) sub.position(2))
+			s += t.substr(lastpos, sub.position(2) - lastpos);
+		s += replacements[num];
+		lastpos = sub.position(2) + sub.length(2);
+	}
+	if (lastpos == 0)
+		return false;
+	else if (lastpos < t.length())
+		s += t.substr(lastpos, t.length() - lastpos);
+	t = s;
+	return true;
 }
 
 ///
@@ -4547,15 +4547,15 @@ static int findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, Ma
 {
 	Cursor & cur = bv->cursor();
 	if (opt.repl_buf_name.empty()
-	    || theBufferList().getBuffer(FileName(to_utf8(opt.repl_buf_name)), true) == 0
-	    || theBufferList().getBuffer(FileName(to_utf8(opt.find_buf_name)), true) == 0)
+			|| theBufferList().getBuffer(FileName(to_utf8(opt.repl_buf_name)), true) == 0
+			|| theBufferList().getBuffer(FileName(to_utf8(opt.find_buf_name)), true) == 0)
 		return 0;
 
 	DocIterator sel_beg = cur.selectionBegin();
 	DocIterator sel_end = cur.selectionEnd();
 	if (&sel_beg.inset() != &sel_end.inset()
-	    || sel_beg.pit() != sel_end.pit()
-	    || sel_beg.idx() != sel_end.idx())
+			|| sel_beg.pit() != sel_end.pit()
+			|| sel_beg.idx() != sel_end.idx())
 		return 0;
 	int sel_len = sel_end.pos() - sel_beg.pos();
 	LYXERR(Debug::FIND, "sel_beg: " << sel_beg << ", sel_end: " << sel_end
@@ -4590,8 +4590,8 @@ static int findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, Ma
 	cap::cutSelection(cur, false);
 	if (cur.inTexted()) {
 		repl_buffer.changeLanguage(
-			repl_buffer.language(),
-			cur.getFont().language());
+					repl_buffer.language(),
+					cur.getFont().language());
 		LYXERR(Debug::FIND, "Replacing by pasteParagraphList()ing repl_buffer");
 		LYXERR(Debug::FIND, "Before pasteParagraphList() cur=" << cur << endl);
 		cap::pasteParagraphList(cur, repl_buffer.paragraphs(),
@@ -4672,15 +4672,15 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions & opt)
 		if (num_replaced > 0) {
 			switch (num_replaced)
 			{
-				case 1:
-					bv->message(_("One match has been replaced."));
-					break;
-				case 2:
-					bv->message(_("Two matches have been replaced."));
-					break;
-				default:
-					bv->message(bformat(_("%1$d matches have been replaced."), num_replaced));
-					break;
+			case 1:
+				bv->message(_("One match has been replaced."));
+				break;
+			case 2:
+				bv->message(_("Two matches have been replaced."));
+				break;
+			default:
+				bv->message(bformat(_("%1$d matches have been replaced."), num_replaced));
+				break;
 			}
 			num_replaced = 0;
 		}
