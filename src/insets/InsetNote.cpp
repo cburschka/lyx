@@ -251,12 +251,16 @@ void InsetNote::latex(otexstream & os, OutputParams const & runparams_in) const
 int InsetNote::plaintext(odocstringstream & os,
 			 OutputParams const & runparams_in, size_t max_length) const
 {
-	if (params_.type == InsetNoteParams::Note
-	    && (runparams_in.for_searchAdv & OutputParams::SearchNonOutput) == 0)
-		return 0;
+	if ((runparams_in.for_searchAdv & OutputParams::SearchNonOutput) == 0) {
+		if (params_.type == InsetNoteParams::Note)
+			return 0;
+		else if (params_.type == InsetNoteParams::Comment
+		    && (runparams_in.for_searchAdv != OutputParams::NoSearch))
+			return 0;
+	}
 
 	OutputParams runparams(runparams_in);
-	if (params_.type == InsetNoteParams::Comment) {
+	if (params_.type != InsetNoteParams::Greyedout) {
 		runparams.inComment = true;
 		// Ignore files that are exported inside a comment
 		runparams.exportdata.reset(new ExportData);
