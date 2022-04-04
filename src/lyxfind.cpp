@@ -1060,7 +1060,7 @@ private:
 	int close_wildcards;
 public:
 	// Are we searching with regular expressions ?
-	bool use_regexp;
+	bool use_regexp = false;
 	static int valid_matches;
 	static vector <string> matches;
 	void FillResults(MatchResult &found_mr);
