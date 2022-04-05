@@ -359,8 +359,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-02-14 11:12+0100\n"
-"PO-Revision-Date: 2022-02-14 11:17+0100\n"
+"POT-Creation-Date: 2022-03-17 18:28+0100\n"
+"PO-Revision-Date: 2022-04-05 09:14+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -1085,8 +1085,8 @@ msgstr "Ajouter &tout"
 #: src/frontends/qt4/GuiView.cpp:2787 src/frontends/qt4/GuiView.cpp:2832
 #: src/frontends/qt4/GuiView.cpp:2887 src/frontends/qt4/GuiView.cpp:3124
 #: src/frontends/qt4/GuiView.cpp:3138 src/frontends/qt4/GuiView.cpp:3240
-#: src/frontends/qt4/GuiView.cpp:3268 src/frontends/qt4/GuiView.cpp:3957
-#: src/frontends/qt4/GuiView.cpp:3964 src/insets/InsetBibtex.cpp:160
+#: src/frontends/qt4/GuiView.cpp:3268 src/frontends/qt4/GuiView.cpp:3951
+#: src/frontends/qt4/GuiView.cpp:3958 src/insets/InsetBibtex.cpp:160
 msgid "&Cancel"
 msgstr "&Annuler"
 
@@ -5899,7 +5899,7 @@ msgid "Body Only"
 msgstr "Seulement le corps"
 
 #: src/frontends/qt4/ui/WorkAreaUi.ui:82 src/frontends/qt4/GuiView.cpp:3268
-#: src/frontends/qt4/GuiView.cpp:3957
+#: src/frontends/qt4/GuiView.cpp:3951
 msgid "&Reload"
 msgstr "&Recharger"
 
@@ -7664,7 +7664,6 @@ msgid "E-Mail"
 msgstr "E-mail"
 
 #: lib/layouts/aapaper.inc:54
-#, fuzzy
 msgid "email:"
 msgstr "E-mail :"
 
@@ -26497,7 +26496,7 @@ msgid "This portion of the document is deleted."
 msgstr "Cette portion du document est supprimée."
 
 #: src/BufferView.cpp:1114 src/BufferView.cpp:2154
-#: src/frontends/qt4/GuiView.cpp:3835 src/frontends/qt4/GuiView.cpp:3918
+#: src/frontends/qt4/GuiView.cpp:3829 src/frontends/qt4/GuiView.cpp:3912
 msgid "Absolute filename expected."
 msgstr "Chemin absolu requis."
 
@@ -27513,7 +27512,7 @@ msgstr "Numéro %1$s"
 msgid "Cannot view file"
 msgstr "Visionnement du fichier impossible"
 
-#: src/Format.cpp:669 src/Format.cpp:761 src/frontends/qt4/GuiView.cpp:3535
+#: src/Format.cpp:669 src/Format.cpp:761 src/frontends/qt4/GuiView.cpp:3529
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Fichier inexistant : %1$s"
@@ -28574,7 +28573,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Revenir à la version enregistrée du document ?"
 
-#: src/LyXVC.cpp:304 src/frontends/qt4/GuiView.cpp:3964
+#: src/LyXVC.cpp:304 src/frontends/qt4/GuiView.cpp:3958
 msgid "&Revert"
 msgstr "&Revenir à la Sauvegarde"
 
@@ -29172,7 +29171,7 @@ msgstr ""
 "Le document %1$s est déjà chargé et a été modifié.\n"
 "Voulez-vous revenir à la version enregistrée et ignorer vos modifications ?"
 
-#: src/buffer_funcs.cpp:77 src/frontends/qt4/GuiView.cpp:3955
+#: src/buffer_funcs.cpp:77 src/frontends/qt4/GuiView.cpp:3949
 msgid "Reload saved document?"
 msgstr "Revenir à la sauvegarde ?"
 
@@ -30043,7 +30042,7 @@ msgstr "Choisir le nom de fichier sous lequel enregistrer le graphique collé"
 #: src/frontends/qt4/GuiClipboard.cpp:215 src/frontends/qt4/GuiView.cpp:2315
 #: src/frontends/qt4/GuiView.cpp:2458 src/frontends/qt4/GuiView.cpp:2474
 #: src/frontends/qt4/GuiView.cpp:2486 src/frontends/qt4/GuiView.cpp:2503
-#: src/frontends/qt4/GuiView.cpp:2587 src/frontends/qt4/GuiView.cpp:3930
+#: src/frontends/qt4/GuiView.cpp:2587 src/frontends/qt4/GuiView.cpp:3924
 msgid "Canceled."
 msgstr "Annulé."
 
@@ -32353,16 +32352,16 @@ msgstr "Répertoire inaccessible."
 msgid "Opening child document %1$s..."
 msgstr "Ouverture du sous-document %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:3542
+#: src/frontends/qt4/GuiView.cpp:3536
 #, c-format
 msgid "No buffer for file: %1$s."
 msgstr "Pas de tampon pour le fichier : %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:3552
+#: src/frontends/qt4/GuiView.cpp:3546
 msgid "Inverse Search Failed"
 msgstr "Échec de la recherche inversée"
 
-#: src/frontends/qt4/GuiView.cpp:3553
+#: src/frontends/qt4/GuiView.cpp:3547
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You may need to update the viewed document."
@@ -32370,35 +32369,35 @@ msgstr ""
 "Position requise par la recherche inversée invalide.\n"
 "Vous devriez peut-être mettre à jour le document dans la visionneuse."
 
-#: src/frontends/qt4/GuiView.cpp:3627
+#: src/frontends/qt4/GuiView.cpp:3621
 msgid "Export Error"
 msgstr "Exporter l'erreur"
 
-#: src/frontends/qt4/GuiView.cpp:3628
+#: src/frontends/qt4/GuiView.cpp:3622
 msgid "Error cloning the Buffer."
 msgstr "Erreur lors du clonage du tampon."
 
-#: src/frontends/qt4/GuiView.cpp:3779 src/frontends/qt4/GuiView.cpp:3799
+#: src/frontends/qt4/GuiView.cpp:3773 src/frontends/qt4/GuiView.cpp:3793
 msgid "Exporting ..."
 msgstr "Exportation en cours..."
 
-#: src/frontends/qt4/GuiView.cpp:3808
+#: src/frontends/qt4/GuiView.cpp:3802
 msgid "Previewing ..."
 msgstr "Visionnement en cours..."
 
-#: src/frontends/qt4/GuiView.cpp:3842
+#: src/frontends/qt4/GuiView.cpp:3836
 msgid "Document not loaded"
 msgstr "Le document n'a pas été chargé"
 
-#: src/frontends/qt4/GuiView.cpp:3924
+#: src/frontends/qt4/GuiView.cpp:3918
 msgid "Select file to insert"
 msgstr "Choisir le fichier à insérer"
 
-#: src/frontends/qt4/GuiView.cpp:3927
+#: src/frontends/qt4/GuiView.cpp:3921
 msgid "All Files (*)"
 msgstr "Tous les fichiers (*)"
 
-#: src/frontends/qt4/GuiView.cpp:3952
+#: src/frontends/qt4/GuiView.cpp:3946
 #, c-format
 msgid ""
 "The current version will be lost. Are you sure you want to load the version "
@@ -32407,7 +32406,7 @@ msgstr ""
 "La version actuelle sera perdue. Êtes-vous sûr de vouloir revenir à la "
 "dernière version enregistrée du document %1$s ?"
 
-#: src/frontends/qt4/GuiView.cpp:3959
+#: src/frontends/qt4/GuiView.cpp:3953
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -32416,57 +32415,57 @@ msgstr ""
 "Toutes les modifications seront perdues. Êtes-vous sûr de vouloir revenir à "
 "la dernière version enregistrée du document %1$s ?"
 
-#: src/frontends/qt4/GuiView.cpp:3962
+#: src/frontends/qt4/GuiView.cpp:3956
 msgid "Revert to saved document?"
 msgstr "Revenir à la sauvegarde du document ?"
 
-#: src/frontends/qt4/GuiView.cpp:3990
+#: src/frontends/qt4/GuiView.cpp:3984
 msgid "Saving all documents..."
 msgstr "Enregistrement de tous les documents..."
 
-#: src/frontends/qt4/GuiView.cpp:4000
+#: src/frontends/qt4/GuiView.cpp:3994
 msgid "All documents saved."
 msgstr "Tous les documents sont enregistrés."
 
-#: src/frontends/qt4/GuiView.cpp:4020
+#: src/frontends/qt4/GuiView.cpp:4014
 msgid "Developer mode is now enabled."
 msgstr "Le mode « développeur » est maintenant actif."
 
-#: src/frontends/qt4/GuiView.cpp:4022
+#: src/frontends/qt4/GuiView.cpp:4016
 msgid "Developer mode is now disabled."
 msgstr "Le mode « développeur » est maintenant inactif."
 
-#: src/frontends/qt4/GuiView.cpp:4046
+#: src/frontends/qt4/GuiView.cpp:4040
 msgid "Toolbars unlocked."
 msgstr "Barres d'outils déverrouillées."
 
-#: src/frontends/qt4/GuiView.cpp:4048
+#: src/frontends/qt4/GuiView.cpp:4042
 msgid "Toolbars locked."
 msgstr "Barres d'outils verrouillées."
 
-#: src/frontends/qt4/GuiView.cpp:4061
+#: src/frontends/qt4/GuiView.cpp:4055
 #, c-format
 msgid "Icon size set to %1$dx%2$d."
 msgstr "Taille d'icône réglée à %1$dx%2$d."
 
-#: src/frontends/qt4/GuiView.cpp:4151
+#: src/frontends/qt4/GuiView.cpp:4145
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s : commande inconnue !"
 
-#: src/frontends/qt4/GuiView.cpp:4255
+#: src/frontends/qt4/GuiView.cpp:4249
 msgid "Zoom level is now %1$d% (default value: %2$d%)"
 msgstr "Le niveau de zoom est maintenant %1$d% (valeur implicite : %2$d%)"
 
-#: src/frontends/qt4/GuiView.cpp:4311
+#: src/frontends/qt4/GuiView.cpp:4305
 msgid "Please, preview the document first."
 msgstr "Merci d'afficher d'abord un aperçu du document."
 
-#: src/frontends/qt4/GuiView.cpp:4327
+#: src/frontends/qt4/GuiView.cpp:4321
 msgid "Couldn't proceed."
 msgstr "Impossible de poursuivre."
 
-#: src/frontends/qt4/GuiView.cpp:4817
+#: src/frontends/qt4/GuiView.cpp:4811
 msgid "Disable Shell Escape"
 msgstr "Désactiver shell escape"
 
