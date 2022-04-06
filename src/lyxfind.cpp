@@ -909,9 +909,16 @@ string correctRegex(string t, bool withformat)
 		lastpos = sub.position(2) + sub.length(2);
 	}
 	if (lastpos == 0)
-		return t;
+		s = t;
 	else if (lastpos < t.length())
 		s += t.substr(lastpos, t.length() - lastpos);
+	// Handle quotes in regex
+	// substitute all '„', '“' with '"'
+	// and all '‚', '‘' with "\'"
+	static std::regex plainquotes { R"(„|“)" };
+	static std::regex innerquotes { R"(‚|‘)" };
+	t = std::regex_replace(s, plainquotes, R"(")");
+	s = std::regex_replace(t, innerquotes, R"(')");
 	//LYXERR0("correctRegex output '" << s << "'");
 	return s;
 }

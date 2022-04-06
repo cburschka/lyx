@@ -942,11 +942,20 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 
 
 int InsetQuotes::plaintext(odocstringstream & os,
-        OutputParams const &, size_t) const
+        OutputParams const & op, size_t) const
 {
-	docstring const str = displayString();
-	os << str;
-	return str.size();
+	if (op.for_searchAdv == OutputParams::NoSearch) {
+		docstring const str = displayString();
+		os << str;
+		return str.size();
+	}
+	else {
+		if (level_ == QuoteLevel::Primary)
+			os << from_ascii("\"");
+		else
+			os << from_ascii("'");
+		return 1;
+	}
 }
 
 
