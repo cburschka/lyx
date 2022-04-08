@@ -913,10 +913,10 @@ string correctRegex(string t, bool withformat)
 	else if (lastpos < t.length())
 		s += t.substr(lastpos, t.length() - lastpos);
 	// Handle quotes in regex
-	// substitute all '„', '“' with '"'
-	// and all '‚', '‘' with "\'"
-	static std::regex plainquotes { R"(„|“)" };
-	static std::regex innerquotes { R"(‚|‘)" };
+	// substitute all '„', '“', '»', '«' with '"'
+	// and all '‚', '‘', '›', '‹' with "\'"
+	static std::regex plainquotes { R"(„|“|»|«)" };
+	static std::regex innerquotes { R"(‚|‘|›|‹)" };
 	t = std::regex_replace(s, plainquotes, R"(")");
 	s = std::regex_replace(t, innerquotes, R"(')");
 	//LYXERR0("correctRegex output '" << s << "'");

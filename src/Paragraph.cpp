@@ -4560,6 +4560,23 @@ void Paragraph::changeCase(BufferParams const & bparams, pos_type pos,
 	}
 }
 
+static char_type matchquote(char_type in)
+{
+	switch (in) {
+		case 0x2018:
+		case 0x201a:
+		case 0x203a:
+		case 0x2039:
+			return '\'';	// ‘ ‚ › ‹
+		case 0x00bb:
+		case 0x00ab:
+		case 0x201e:
+		case 0x201c:
+			return '"';	// » « „ “
+		default:
+			return in;
+	}
+}
 
 int Paragraph::find(docstring const & str, bool cs, bool mw,
 		pos_type start_pos, bool del) const
@@ -4590,8 +4607,9 @@ int Paragraph::find(docstring const & str, bool cs, bool mw,
 			if (!insetstring.empty()) {
 				int const insetstringsize = insetstring.length();
 				for (int j = 0; j < insetstringsize && pos < parsize; ++i, ++j) {
-					if ((cs && str[i] != insetstring[j])
-					    || (!cs && uppercase(str[i]) != uppercase(insetstring[j]))) {
+					char_type ij = matchquote(insetstring[j]);
+					if ((cs && str[i] != ij)
+					    || (!cs && uppercase(str[i]) != uppercase(ij))) {
 						nonmatch = true;
 						break;
 					}
@@ -4601,9 +4619,10 @@ int Paragraph::find(docstring const & str, bool cs, bool mw,
 		}
 		if (nonmatch || i == strsize)
 			break;
-		if (cs && str[i] != d->text_[pos])
+		char_type dp = matchquote(d->text_[pos]);
+		if (cs && str[i] != dp)
 			break;
-		if (!cs && uppercase(str[i]) != uppercase(d->text_[pos]))
+		if (!cs && uppercase(str[i]) != uppercase(dp))
 			break;
 	}
 
