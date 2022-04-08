@@ -42,19 +42,11 @@ using frontend::FontMetrics;
 static double const MAX_SPACE_STRETCH = 1.5; //em
 
 
-int Row::Element::countSeparators() const
-{
-	if (type != STRING)
-		return 0;
-	return count(str.begin(), str.end(), ' ');
-}
-
-
 int Row::Element::countExpanders() const
 {
 	if (type != STRING)
 		return 0;
-	return theFontMetrics(font).countExpanders(str);
+	return support::countExpanders(str);
 }
 
 
@@ -382,16 +374,6 @@ int Row::right_x() const
 			break;
 	}
 	return support::iround(x);
-}
-
-
-int Row::countSeparators() const
-{
-	int n = 0;
-	const_iterator const end = elements_.end();
-	for (const_iterator cit = elements_.begin() ; cit != end ; ++cit)
-		n += cit->countSeparators();
-	return n;
 }
 
 

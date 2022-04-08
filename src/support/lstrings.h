@@ -368,6 +368,11 @@ docstring to_percent_encoding(docstring const & in, docstring const & ex = docst
 /// Returns a string decoded from an URI/URL-style percent-encoded string \p in.
 std::string from_percent_encoding(std::string const & in);
 
+/// returns the number of expanding characters taken into account for
+/// increased inter-word spacing during justification
+int countExpanders(docstring const & str);
+
+
 docstring bformat(docstring const & fmt, int arg1);
 docstring bformat(docstring const & fmt, long arg1);
 #ifdef HAVE_LONG_LONG_INT

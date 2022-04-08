@@ -1495,6 +1495,27 @@ string from_percent_encoding(string const & in)
 }
 
 
+int countExpanders(docstring const & str)
+{
+	// Numbers of characters that are expanded by inter-word spacing.  These
+	// characters are spaces, except for characters 09-0D which are treated
+	// specially.  (From a combination of testing with the notepad found in qt's
+	// examples, and reading the source code.)  In addition, consecutive spaces
+	// only count as one expander.
+	bool wasspace = false;
+	int nexp = 0;
+	for (char_type c : str)
+		if (c > 0x0d && isSpace(c)) {
+			if (!wasspace) {
+				++nexp;
+				wasspace = true;
+			}
+		} else
+			wasspace = false;
+	return nexp;
+}
+
+
 docstring bformat(docstring const & fmt, int arg1)
 {
 	LATTEST(contains(fmt, from_ascii("%1$d")));

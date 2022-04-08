@@ -26,6 +26,7 @@
 #include "support/debug.h"
 #include "support/lassert.h"
 #include "support/lyxlib.h"
+#include "support/lstrings.h"
 
 #include <algorithm>
 
@@ -329,7 +330,7 @@ void GuiPainter::text(int x, int y, docstring const & s,
 	if (tw == 0.0)
 		// Take into account space stretching (word spacing)
 		textwidth = fm.width(s) +
-			static_cast<int>(fm.countExpanders(s) * wordspacing);
+			static_cast<int>(countExpanders(s) * wordspacing);
 	else
 		textwidth = static_cast<int>(tw);
 

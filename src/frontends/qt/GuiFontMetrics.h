@@ -92,7 +92,6 @@ public:
 		int & ascent,
 		int & descent) const override;
 
-	int countExpanders(docstring const & str) const override;
 	///
 	int width(QString const & str) const;
 

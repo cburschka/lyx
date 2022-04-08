@@ -66,9 +66,6 @@ public:
 			: type(t), pos(p), endpos(p + 1), font(f), change(ch) {}
 
 
-		// Return the number of separator in the element (only STRING type)
-		int countSeparators() const;
-
 		// Return total width of element, including separator overhead
 		// FIXME: Cache this value or the number of expanders?
 		double full_width() const { return dim.wid + extra * countExpanders(); }
@@ -238,8 +235,6 @@ public:
 	/// The offset of the right-most cursor position on the row
 	int right_x() const;
 
-	// Return the number of separators in the row
-	int countSeparators() const;
 	// Set the extra spacing for every expanding character in STRING-type
 	// elements.  \param w is the total amount of extra width for the row to be
 	// distributed among expanders.  \return false if the justification fails.

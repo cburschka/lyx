@@ -168,10 +168,6 @@ public:
 		int & width,
 		int & ascent,
 		int & descent) const = 0;
-
-	/// return the number of expanding characters taken into account for
-	/// increased inter-word spacing during justification
-	virtual int countExpanders(docstring const & str) const = 0;
 };
 
 
