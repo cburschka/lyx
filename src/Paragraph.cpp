@@ -4563,16 +4563,24 @@ void Paragraph::changeCase(BufferParams const & bparams, pos_type pos,
 static char_type matchquote(char_type in)
 {
 	switch (in) {
-		case 0x2018:
-		case 0x201a:
-		case 0x203a:
-		case 0x2039:
-			return '\'';	// ‘ ‚ › ‹
-		case 0x00bb:
-		case 0x00ab:
-		case 0x201e:
-		case 0x201c:
-			return '"';	// » « „ “
+		case 0x2018:	// Left Single Quotation Mark
+		case 0x2019:	// Right Single Quotation Mark
+		case 0x201a:	// Single Low-9 Quotation Mark
+		case 0x201b:	// Single High-Reversed-9 Quotation Mark 
+		case 0x2039:	// Single Left-Pointing Angle Quotation Mark
+		case 0x203a:	// Single Right-Pointing Angle Quotation Mark
+			return '\'';
+		case 0x00bb:	// Right-Pointing Double Angle Quotation Mark
+		case 0x00ab:	// Left-Pointing Double Angle Quotation Mark
+		case 0x201e:	// Double Low-9 Quotation Mark 
+		case 0x201c:	// Left Double Quotation Mark 
+		case 0x201d:	// Right Double Quotation Mark 
+		case 0x201f:	// Double High-Reversed-9 Quotation Mark 
+		case 0x2e42:	// Double Low-Reversed-9 Quotation Mark
+		case 0x301e:	// Double Prime Quotation Mark
+		case 0x301d:	// Reversed Double Prime Quotation Mark
+		case 0x301f:	// Low Double Prime Quotation Mark
+			return '"';
 		default:
 			return in;
 	}
