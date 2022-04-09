@@ -4610,7 +4610,14 @@ int Paragraph::find(docstring const & str, bool cs, bool mw,
 			if (!inset->isLetter() && !inset->isChar())
 				break;
 			odocstringstream os;
-			inset->toString(os);
+			if (inset->lyxCode() == lyx::QUOTE_CODE) {
+				OutputParams op(0);
+				op.for_searchAdv = OutputParams::SearchQuick;
+				inset->plaintext(os, op);
+			}
+			else {
+				inset->toString(os);
+			}
 			docstring const insetstring = os.str();
 			if (!insetstring.empty()) {
 				int const insetstringsize = insetstring.length();

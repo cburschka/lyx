@@ -429,6 +429,7 @@ public:
 		NoSearch = 0,
 		SearchWithDeleted = 1,
 		SearchWithoutDeleted = 2,
+		SearchQuick = 4,
 		SearchNonOutput = 8
 	};
 		
