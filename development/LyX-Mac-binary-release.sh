@@ -284,9 +284,9 @@ while [ $# -gt 0 ]; do
 		LyxOnlyPackage=$(echo ${1}|cut -d= -f2)
 		shift
 		;;
-	--enable-cxx11)
+	--enable-cxx11|--enable-cxx-mode=*)
 		LyXConfigureOptions="${LyXConfigureOptions} ${1}"
-		EnableCXX11="--enable-cxx11"
+		EnableCXXMode="${1}"
 		shift
 		;;
 	--*)
@@ -374,6 +374,12 @@ case "${QtVersion}" in
 6*)
 	QtLibraries=${QtLibraries:-"QtCore5Compat QtDBus QtSvg QtXml QtPrintSupport QtSvgWidgets QtWidgets QtGui QtNetwork QtConcurrent QtCore"}
 	QtFrameworkVersion="A"
+	case "${EnableCXXMode}" in
+	--enable-cxx11|--enable-cxx-mode=11)
+		echo Warning: Adjust cxx standard "${EnableCXXMode}" for Qt 6. C++17 or better is required.
+		EnableCXXMode="--enable-cxx-mode=17"
+		;;
+	esac
 	;;
 *)
 	QtLibraries=${QtLibraries:-"QtSvg QtXml QtGui QtNetwork QtCore"}
@@ -411,6 +417,19 @@ case $SDKs in
 esac
 MYCFLAGS="-mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET}"
 MYLDFLAGS="-mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET}"
+
+case "${EnableCXXMode}" in
+--enable-cxx11|--enable-cxx-mode=11)
+	export CC=cc
+	export CXX="c++ -stdlib=libc++"
+	export CXXFLAGS=-std=c++11
+	;;
+--enable-cxx-mode=17)
+	export CC=cc
+	export CXX="c++ -stdlib=libc++"
+	export CXXFLAGS=-std=c++17
+	;;
+esac
 
 build_qt() {
 	echo Build Qt library ${QtSourceDir}
@@ -640,14 +659,6 @@ build_lyx() {
 		find "${LyxAppPrefix}" -type d -exec chmod u+w '{}' \;
 		rm -rf "${LyxAppPrefix}"
 	fi
-
-	case "${EnableCXX11}" in
-	"--enable-cxx11")
-		export CC=cc
-		export CXX="c++ -stdlib=libc++"
-		export CXXFLAGS=-std=c++11
-		;;
-	esac
 
 	# -------------------------------------
 	# Automate configure check
