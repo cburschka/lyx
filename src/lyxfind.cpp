@@ -1098,11 +1098,11 @@ static docstring buffer_to_latex(Buffer & buffer)
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
 	if (ignoreFormats.getDeleted())
-		runparams.for_searchAdv = OutputParams::SearchWithoutDeleted;
+		runparams.for_search = OutputParams::SearchWithoutDeleted;
 	else
-		runparams.for_searchAdv = OutputParams::SearchWithDeleted;
+		runparams.for_search = OutputParams::SearchWithDeleted;
 	if (ignoreFormats.getNonContent()) {
-		runparams.for_searchAdv |= OutputParams::SearchNonOutput;
+		runparams.for_search |= OutputParams::SearchNonOutput;
 	}
 	pit_type const endpit = buffer.paragraphs().size();
 	for (pit_type pit = 0; pit != endpit; ++pit) {
@@ -1174,13 +1174,13 @@ static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions co
 		int option = AS_STR_INSETS |AS_STR_PLAINTEXT;
 		if (ignoreFormats.getDeleted()) {
 			option |= AS_STR_SKIPDELETE;
-			runparams.for_searchAdv = OutputParams::SearchWithoutDeleted;
+			runparams.for_search = OutputParams::SearchWithoutDeleted;
 		}
 		else {
-			runparams.for_searchAdv = OutputParams::SearchWithDeleted;
+			runparams.for_search = OutputParams::SearchWithDeleted;
 		}
 		if (ignoreFormats.getNonContent()) {
-			runparams.for_searchAdv |= OutputParams::SearchNonOutput;
+			runparams.for_search |= OutputParams::SearchNonOutput;
 		}
 		string t("");
 		for (pos_type pit = pos_type(0); pit < (pos_type)buffer.paragraphs().size(); ++pit) {
@@ -3952,13 +3952,13 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 		int option = AS_STR_INSETS | AS_STR_PLAINTEXT;
 		if (ignoreFormats.getDeleted()) {
 			option |= AS_STR_SKIPDELETE;
-			runparams.for_searchAdv = OutputParams::SearchWithoutDeleted;
+			runparams.for_search = OutputParams::SearchWithoutDeleted;
 		}
 		else {
-			runparams.for_searchAdv = OutputParams::SearchWithDeleted;
+			runparams.for_search = OutputParams::SearchWithDeleted;
 		}
 		if (ignoreFormats.getNonContent()) {
-			runparams.for_searchAdv |= OutputParams::SearchNonOutput;
+			runparams.for_search |= OutputParams::SearchNonOutput;
 		}
 		LYXERR(Debug::FIND, "Stringifying with cur: "
 		       << cur << ", from pos: " << cur.pos() << ", end: " << end);
@@ -4006,13 +4006,13 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
 	if (ignoreFormats.getDeleted()) {
-		runparams.for_searchAdv = OutputParams::SearchWithoutDeleted;
+		runparams.for_search = OutputParams::SearchWithoutDeleted;
 	}
 	else {
-		runparams.for_searchAdv = OutputParams::SearchWithDeleted;
+		runparams.for_search = OutputParams::SearchWithDeleted;
 	}
 	if (ignoreFormats.getNonContent()) {
-		runparams.for_searchAdv |= OutputParams::SearchNonOutput;
+		runparams.for_search |= OutputParams::SearchNonOutput;
 	}
 
 	if (cur.inTexted()) {

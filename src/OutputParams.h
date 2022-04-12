@@ -433,7 +433,7 @@ public:
 		SearchNonOutput = 8
 	};
 		
-	int for_searchAdv = NoSearch;
+	int for_search = NoSearch;
 
 	/// Are we generating this material for instant preview?
 	bool for_preview = false;

@@ -2359,7 +2359,7 @@ int InsetMathHull::plaintext(odocstringstream & os,
 	Encoding const * const enc = encodings.fromLyXName("utf8");
 
 	TeXMathStream::OutputType ot;
-	if (op.for_searchAdv == OutputParams::NoSearch)
+	if (op.for_search == OutputParams::NoSearch)
 		ot = TeXMathStream::wsDefault;
 	else
 		ot = TeXMathStream::wsSearchAdv;

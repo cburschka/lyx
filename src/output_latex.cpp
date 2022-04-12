@@ -462,10 +462,10 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 		// Do not output empty environments if the whole paragraph has
 		// been deleted with ct and changes are not output.
 		bool output_changes;
-		if (runparams.for_searchAdv == OutputParams::NoSearch)
+		if (runparams.for_search == OutputParams::NoSearch)
 			output_changes = buf.params().output_changes;
 		else
-			output_changes = ((runparams.for_searchAdv & OutputParams::SearchWithDeleted) != 0);
+			output_changes = ((runparams.for_search & OutputParams::SearchWithDeleted) != 0);
 		if (size_t(pit + 1) < paragraphs.size()) {
 			ParagraphList::const_iterator nextpar = paragraphs.iterator_at(pit + 1);
 			Paragraph const & cpar = paragraphs.at(pit);
@@ -578,7 +578,7 @@ void getArgInsets(otexstream & os, OutputParams const & runparams, Layout::LaTeX
 			}
 		}
 	}
-	if ((runparams.for_searchAdv != OutputParams::NoSearch) && argnr > 1) {
+	if ((runparams.for_search != OutputParams::NoSearch) && argnr > 1) {
 		// Mark end of arguments for findadv() only
 		os << "\\endarguments{}";
 	}
@@ -746,7 +746,7 @@ void parStartCommand(Paragraph const & par, otexstream & os,
 		break;
 	case LATEX_ITEM_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
-		if (runparams.for_searchAdv != OutputParams::NoSearch) {
+		if (runparams.for_search != OutputParams::NoSearch) {
 			os << "\\" + style.itemcommand() << "{" << style.latexname() << "}";
 		}
 		else {
@@ -758,7 +758,7 @@ void parStartCommand(Paragraph const & par, otexstream & os,
 		}
 		break;
 	case LATEX_ENVIRONMENT:
-		if (runparams.for_searchAdv != OutputParams::NoSearch) {
+		if (runparams.for_search != OutputParams::NoSearch) {
 			os << "\\latexenvironment{" << style.latexname() << "}{";
 		}
 		break;
@@ -796,7 +796,7 @@ void TeXOnePar(Buffer const & buf,
 
 	// Do not output empty commands if the whole paragraph has
 	// been deleted with ct and changes are not output.
-	if (((runparams_in.for_searchAdv & OutputParams::SearchWithDeleted) == 0) && style.latextype != LATEX_ENVIRONMENT
+	if (((runparams_in.for_search & OutputParams::SearchWithDeleted) == 0) && style.latextype != LATEX_ENVIRONMENT
 	    && !par.empty() && par.isDeleted(0, par.size()) && !bparams.output_changes)
 		return;
 
@@ -936,7 +936,7 @@ void TeXOnePar(Buffer const & buf,
 	bool const have_prior_nptpar =
 			prior_nontitle_par && !prior_nontitle_par->isPassThru();
 	Language const * const prev_language =
-		runparams_in.for_searchAdv != OutputParams::NoSearch
+		runparams_in.for_search != OutputParams::NoSearch
 			? languages.getLanguage("ignore")
 			: (have_prior_nptpar)
 				? (use_prev_env_language 
@@ -988,7 +988,7 @@ void TeXOnePar(Buffer const & buf,
 		&& !(have_prior_nptpar
 		     && (prev_language->rightToLeft() != par_language->rightToLeft()));
 	bool const localswitch =
-			(runparams_in.for_searchAdv != OutputParams::NoSearch
+			(runparams_in.for_search != OutputParams::NoSearch
 			|| text.inset().forceLocalFontSwitch()
 			|| (using_begin_end && text.inset().forcePlainLayout())
 			|| in_polyglossia_rtl_env)
@@ -1003,7 +1003,7 @@ void TeXOnePar(Buffer const & buf,
 	bool const localswitch_needed = localswitch && par_lang != outer_lang;
 
 	// localswitches need to be closed and reopened at each par
-	if ((runparams_in.for_searchAdv != OutputParams::NoSearch) || ((par_lang != prev_lang || localswitch_needed)
+	if ((runparams_in.for_search != OutputParams::NoSearch) || ((par_lang != prev_lang || localswitch_needed)
 	     // check if we already put language command in TeXEnvironment()
 	     && !(style.isEnvironment()
 		  && (pit == 0 || (priorpar->layout() != par.layout()
@@ -1071,7 +1071,7 @@ void TeXOnePar(Buffer const & buf,
 			// With CJK, the CJK tag has to be closed first (see below)
 			if ((runparams.encoding->package() != Encoding::CJK
 				 || bparams.useNonTeXFonts
-				 || (runparams.for_searchAdv != OutputParams::NoSearch))
+				 || (runparams.for_search != OutputParams::NoSearch))
 			    && (par_lang != openLanguageName(state) || localswitch || intitle_command)
 			    && !par_lang.empty()) {
 				string bc = use_polyglossia ?
@@ -1312,7 +1312,7 @@ void TeXOnePar(Buffer const & buf,
 		// when the paragraph uses CJK, the language has to be closed earlier
 		if ((font.language()->encoding()->package() != Encoding::CJK)
 			|| bparams.useNonTeXFonts
-			|| (runparams_in.for_searchAdv != OutputParams::NoSearch)) {
+			|| (runparams_in.for_search != OutputParams::NoSearch)) {
 			if (lang_end_command.empty()) {
 				// If this is a child, we should restore the
 				// master language after the last paragraph.
@@ -1708,10 +1708,10 @@ void latexParagraphs(Buffer const & buf,
 		// Do not output empty environments if the whole paragraph has
 		// been deleted with ct and changes are not output.
 		bool output_changes;
-		if (runparams.for_searchAdv == OutputParams::NoSearch)
+		if (runparams.for_search == OutputParams::NoSearch)
 			output_changes = bparams.output_changes;
 		else
-			output_changes = ((runparams.for_searchAdv & OutputParams::SearchWithDeleted) != 0);
+			output_changes = ((runparams.for_search & OutputParams::SearchWithDeleted) != 0);
 		bool const lastpar = size_t(pit + 1) >= paragraphs.size();
 		if (!lastpar) {
 			ParagraphList::const_iterator nextpar = paragraphs.iterator_at(pit + 1);
@@ -1854,7 +1854,7 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 		|| oldEnc.package() == Encoding::japanese
 		|| oldEnc.package() == Encoding::none
 		|| newEnc.package() == Encoding::none
-		|| (runparams.for_searchAdv != OutputParams::NoSearch))
+		|| (runparams.for_search != OutputParams::NoSearch))
 		return make_pair(false, 0);
 	// FIXME We ignore encoding switches from/to encodings that do
 	// neither support the inputenc package nor the CJK package here.
