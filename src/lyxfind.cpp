@@ -3878,14 +3878,9 @@ string MatchStringAdv::normalize(docstring const & s, bool ignore_format) const
 	// Remove \n at begin
 	while (!t.empty() && t[0] == '\n')
 		t = t.substr(1);
-	// Remove [%]*\n at end
+	// Remove \n* at end
 	while (!t.empty() && t[t.size() - 1] == '\n') {
-		size_t count = 1;
-		if (!ignore_format) {
-			while ((t.size() > 1 + count) && (t[t.size() - 1 - count] == '%'))
-				count++;
-		}
-		t = t.substr(0, t.size() - count);
+		t = t.substr(0, t.size() - 1);
 	}
 	size_t pos;
 	// Handle all other '\n'
