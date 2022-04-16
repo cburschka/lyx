@@ -454,7 +454,7 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_BRANCH_SYNC_ALL
- * \li Action: Open/close all insets of selected branch (depending on its selection status).
+ * \li Action: Open/close all insets of selected branch (depending on its activation status).
  * \li Syntax: branch-sync-all
  * \li Origin: sanda, 15 April 2022
  * \endvar
