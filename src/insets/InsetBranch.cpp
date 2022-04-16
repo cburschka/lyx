@@ -224,9 +224,12 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_BRANCH_ADD:
 		lyx::dispatch(FuncRequest(LFUN_BRANCH_ADD, params_.branch));
 		break;
+	case LFUN_BRANCH_SYNC_ALL:
+		lyx::dispatch(FuncRequest(LFUN_INSET_FORALL, "Branch:" + params_.branch + " inset-toggle assign"));
+		break;
 	case LFUN_INSET_TOGGLE:
 		if (cmd.argument() == "assign")
-			setStatus(cur, isBranchSelected() ? Open : Collapsed);
+			setStatus(cur, (isBranchSelected(true) != params_.inverted) ? Open : Collapsed);
 		else
 			InsetCollapsible::doDispatch(cur, cmd);
 		break;
@@ -274,6 +277,10 @@ bool InsetBranch::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_BRANCH_MASTER_DEACTIVATE:
 		flag.setEnabled(buffer().parent() && isBranchSelected());
+		break;
+
+	case LFUN_BRANCH_SYNC_ALL:
+		flag.setEnabled(known_branch);
 		break;
 
 	case LFUN_INSET_TOGGLE:

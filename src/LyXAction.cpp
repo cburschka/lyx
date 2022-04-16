@@ -453,6 +453,15 @@ void LyXAction::init()
 		{ LFUN_BRANCH_INSERT, "branch-insert", Noop, Edit },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_BRANCH_SYNC_ALL
+ * \li Action: Open/close all insets of selected branch (depending on its selection status).
+ * \li Syntax: branch-toggle-all
+ * \li Origin: sanda, 15 April 2022
+ * \endvar
+ */
+		{ LFUN_BRANCH_SYNC_ALL, "branch-sync-all", AtPoint, Buffer },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_BRANCH_INVERT
  * \li Action: Toggles inversion status of branch inset.
  * \li Syntax: branch-invert
