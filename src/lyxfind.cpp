@@ -838,7 +838,7 @@ string correctRegex(string t, bool withformat)
 	 * and \{, \}, \[, \] => {, }, [, ]
 	 */
 	string s("");
-	regex wordre("(\\\\)*(\\\\(([A-Za-z]+|[\\{\\}])( |\\{\\})?|[\\[\\]\\{\\}]))");
+	regex wordre("(\\\\)*(\\\\(([A-Za-z]+|[\\{\\}%])( |\\{\\})?|[\\[\\]\\{\\}]))");
 	size_t lastpos = 0;
 	smatch sub;
 	bool backslashed = false;
@@ -893,6 +893,8 @@ string correctRegex(string t, bool withformat)
 				replace = "{";
 			else if (sub.str(4) == "}")
 				replace = "}";
+			else if (sub.str(4) == "%")
+				replace = "%";
 			else {
 				AccentsIterator it_ac = accents.find(sub.str(4));
 				if (it_ac == accents.end()) {
