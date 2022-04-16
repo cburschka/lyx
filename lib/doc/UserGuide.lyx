@@ -8973,12 +8973,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8991,6 +8993,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9014,6 +9017,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -35518,8 +35522,19 @@ Exam-Question-Answer.pdf
 \end_layout
 
 \begin_layout Standard
-There are also inverted branch insets, whose content is output just in case
- the branch is 
+
+\change_inserted 5863208 1650147989
+It is also possible to 
+\change_deleted 5863208 1650147965
+There are also 
+\change_unchanged
+invert
+\change_deleted 5863208 1650147967
+ed
+\change_inserted 5863208 1650147977
+ just some
+\change_unchanged
+ branch insets, whose content is output just in case the branch is 
 \emph on
 not
 \emph default
@@ -35787,6 +35802,23 @@ Customization
 Flex insets and InsetLayout
 \emph default
 ).
+\change_inserted 5863208 1650148012
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1650148601
+In case one extensively needs syncing activation branch status with open/close
+ status of all branch insets in the document we provide 
+\family typewriter
+branch-sync-all
+\family default
+ \SpecialChar LyX
+ function, which can be bound to keyboard shortcut or added to user-defined
+ context menu of branch inset.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
