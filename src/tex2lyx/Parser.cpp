@@ -486,7 +486,40 @@ bool Parser::hasOpt(string const & l)
 }
 
 
-Parser::Arg Parser::getFullArg(char left, char right, bool allow_escaping)
+bool Parser::hasIdxMacros(string const & c, string const & e)
+{
+	// Check for index entry separator (! or @),
+	// consider escaping via "
+	// \p e marks a terminating delimiter¸
+
+	// remember current position
+	unsigned int oldpos = pos_;
+	// skip spaces and comments
+	bool retval = false;
+	while (good()) {
+		get_token();
+		if (isParagraph()) {
+			putback();
+			break;
+		}
+		if (curr_token().cat() == catEnd)
+			break;
+		if (!e.empty() && curr_token().asInput() == e
+		    && prev_token().asInput() != "\"")
+			break;
+		if (curr_token().asInput() == c
+		    && prev_token().asInput() != "\"") {
+			retval = true;
+			break;
+		}
+		continue;
+	}
+	pos_ = oldpos;
+	return retval;
+}
+
+
+Parser::Arg Parser::getFullArg(char left, char right, bool allow_escaping, char e)
 {
 	skip_spaces(true);
 
@@ -495,25 +528,28 @@ Parser::Arg Parser::getFullArg(char left, char right, bool allow_escaping)
 	if (! good())
 		return make_pair(false, string());
 
-	int group_level = 0;
+	int group_level = (left == '{') ? 1 : 0;
 	string result;
 	Token t = get_token();
 
-	if (t.cat() == catComment || t.cat() == catEscape ||
-	    t.character() != left) {
+	if (left != char()
+	    && (t.cat() == catComment || t.cat() == catEscape
+		|| t.character() != left)) {
 		putback();
 		return make_pair(false, string());
 	} else {
 		while (good()) {
 			t = get_token();
 			// honor grouping
-			if (left != '{' && t.cat() == catBegin) {
+			if (t.cat() == catBegin) {
 				++group_level;
-				continue;
+				if (left != '{')
+					continue;
 			}
-			if (left != '{' && t.cat() == catEnd) {
+			if (group_level > 0 && t.cat() == catEnd) {
 				--group_level;
-				continue;
+				if (left != '{')
+					continue;
 			}
 			// Ignore comments
 			if (t.cat() == catComment) {
@@ -523,6 +559,10 @@ Parser::Arg Parser::getFullArg(char left, char right, bool allow_escaping)
 			}
 			if (allow_escaping) {
 				if (t.cat() != catEscape && t.character() == right
+				    && group_level == 0)
+					break;
+			} else if (e != char()) {
+				if (prev_token().character() != e && t.character() == right
 				    && group_level == 0)
 					break;
 			} else {
@@ -540,9 +580,9 @@ Parser::Arg Parser::getFullArg(char left, char right, bool allow_escaping)
 }
 
 
-string Parser::getArg(char left, char right, bool allow_escaping)
+string Parser::getArg(char left, char right, bool allow_escaping, char e)
 {
-	return getFullArg(left, right, allow_escaping).second;
+	return getFullArg(left, right, allow_escaping, e).second;
 }
 
 

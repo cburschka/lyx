@@ -34,6 +34,7 @@
 #include "insets/InsetHyperlink.h"
 #include "insets/InsetInclude.h"
 #include "insets/InsetIndex.h"
+#include "insets/InsetIndexMacro.cpp"
 #include "insets/InsetInfo.h"
 #include "insets/InsetIPA.h"
 #include "insets/InsetIPAMacro.h"
@@ -157,6 +158,16 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 				return nullptr;
 			}
 			return new InsetIPADeco(buf, arg2);
+		}
+
+		case LFUN_INDEXMACRO_INSERT: {
+			string const arg = cmd.getArg(0);
+			if (arg != "see" && arg != "seealso"
+			    && arg != "subindex" && arg != "sortkey") {
+				LYXERR0("LFUN_IPAMACRO_INSERT: wrong argument");
+				return nullptr;
+			}
+			return new InsetIndexMacro(buf, arg);
 		}
 
 		case LFUN_ERT_INSERT:
@@ -667,6 +678,9 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 			inset.reset(new InsetCaption(buf, s));
 		} else if (tmptok == "Index") {
 			inset.reset(new InsetIndex(buf, InsetIndexParams()));
+		} else if (tmptok == "IndexMacro") {
+			string s = lex.getString();
+			inset.reset(new InsetIndexMacro(buf, s));
 		} else if (tmptok == "FloatList") {
 			inset.reset(new InsetFloatList(buf));
 		} else if (tmptok == "Info") {

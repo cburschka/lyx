@@ -1040,6 +1040,10 @@ bool InsetText::insetAllowed(InsetCode code) const
 	case QUOTE_CODE:
 	case COUNTER_CODE:
 		return true;
+	// These are only allowed in index insets
+	case INDEXMACRO_CODE:
+	case INDEXMACRO_SORTKEY_CODE:
+		return false;
 	default:
 		return !isPassThru();
 	}

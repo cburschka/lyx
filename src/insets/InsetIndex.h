@@ -21,15 +21,24 @@ namespace lyx {
 
 class InsetIndexParams {
 public:
+	enum PageRange {
+		None,
+		Start,
+		End
+	};
 	///
 	explicit InsetIndexParams(docstring const & b = docstring())
-		: index(b) {}
+		: index(b), range(None), pagefmt("default") {}
 	///
 	void write(std::ostream & os) const;
 	///
 	void read(Lexer & lex);
 	///
 	docstring index;
+	///
+	PageRange range;
+	///
+	std::string pagefmt;
 };
 
 
@@ -63,6 +72,9 @@ private:
 	///
 	void latex(otexstream &, OutputParams const &) const override;
 	///
+	void processLatexSorting(otexstream &, OutputParams const &,
+				 docstring const, docstring const) const;
+	///
 	bool showInsetDialog(BufferView *) const override;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const override;
@@ -80,11 +92,27 @@ private:
 	/// Updates needed features for this inset.
 	void validate(LaTeXFeatures & features) const override;
 	///
+	void getSortkey(otexstream &, OutputParams const &) const;
+	///
+	void getSubentries(otexstream &, OutputParams const &) const;
+	///
+	void getSeeRefs(otexstream &, OutputParams const &) const;
+	///
+	bool hasSeeRef() const;
+	///
+	bool hasSortKey() const;
+	///
+	bool macrosPossible(std::string const type) const;
+	///
 	std::string contextMenuName() const override;
+	///
+	std::string contextMenu(BufferView const &, int, int) const override;
 	///
 	Inset * clone() const override { return new InsetIndex(*this); }
 	/// Is the content of this inset part of the immediate text sequence?
 	bool isPartOfTextSequence() const override { return false; }
+	///
+	bool insetAllowed(InsetCode code) const override;
 
 	///
 	friend class InsetIndexParams;

@@ -431,6 +431,36 @@ InsetLayout Index
 	PassThruChars         @|!
 End
 
+InsetLayout IndexMacro:see
+	LabelString           See
+	Decoration            classic
+	Font
+	  Size                Small
+	EndFont
+	LabelFont
+	  Color               indexlabel
+	  Size                Small
+	EndFont
+	MultiPar              false
+	CustomPars            false
+	ForcePlain            true
+End
+
+InsetLayout IndexMacro:seealso
+	CopyStyle             IndexMacro:see
+	LabelString           "See also"
+End
+
+InsetLayout IndexMacro:sortkey
+	CopyStyle             IndexMacro:see
+	LabelString           "Sort as"
+End
+
+InsetLayout IndexMacro:subindex
+	CopyStyle             IndexMacro:see
+	LabelString           "Subindex"
+End
+
 InsetLayout Box
 	LabelFont
 	  Color               foreground

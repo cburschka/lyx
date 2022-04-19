@@ -31,6 +31,7 @@ public:
 
 private Q_SLOTS:
 	void change_adaptor();
+	void pageFormatChanged(int);
 
 private:
 	///  Apply changes

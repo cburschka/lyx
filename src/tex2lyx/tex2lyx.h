@@ -48,7 +48,8 @@ extern std::string rgbcolor2code(std::string const & name);
 std::string translate_len(std::string const &);
 
 void parse_text(Parser & p, std::ostream & os, unsigned flags, bool outer,
-		Context & context, std::string const & rdelim = "");
+		Context & context, std::string const & rdelim = "",
+		std::string const & rdelimesc = "");
 void check_comment_bib(std::ostream & os, Context & context);
 
 void fix_child_filename(std::string & name);
@@ -68,7 +69,8 @@ std::string find_file(std::string const & name, std::string const & path,
 void parse_text_in_inset(Parser & p, std::ostream & os, unsigned flags,
                          bool outer, Context & context,
                          InsetLayout const * layout = nullptr,
-                         std::string const & rdelim = "");
+                         std::string const & rdelim = "",
+			 std::string const & rdelimesc = "");
 
 /// Guess document language from \p p if CJK is used.
 /// \p lang is used for all non-CJK contents.

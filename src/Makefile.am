@@ -565,6 +565,7 @@ SOURCEFILESINSETS = \
 	insets/InsetHyperlink.cpp \
 	insets/InsetInclude.cpp \
 	insets/InsetIndex.cpp \
+	insets/InsetIndexMacro.cpp \
 	insets/InsetInfo.cpp \
 	insets/InsetIPA.cpp \
 	insets/InsetIPAMacro.cpp \

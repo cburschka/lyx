@@ -239,6 +239,10 @@ enum InsetCode {
 	///
 	COUNTER_CODE,
 	///
+	INDEXMACRO_CODE, // 110
+	///
+	INDEXMACRO_SORTKEY_CODE,
+	///
 	INSET_CODE_SIZE
 };
 

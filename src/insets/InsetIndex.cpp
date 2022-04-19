@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "InsetIndex.h"
+#include "InsetIndexMacro.h"
 
 #include "Buffer.h"
 #include "BufferParams.h"
@@ -19,10 +20,13 @@
 #include "Cursor.h"
 #include "DispatchResult.h"
 #include "Encoding.h"
+#include "ErrorList.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "IndicesList.h"
+#include "InsetList.h"
 #include "Language.h"
+#include "LaTeX.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "output_latex.h"
@@ -37,6 +41,7 @@
 #include "support/FileName.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/Translator.h"
 
 #include "frontends/alert.h"
 
@@ -51,6 +56,62 @@ using namespace lyx::support;
 
 namespace lyx {
 
+namespace {
+
+typedef Translator<string, InsetIndexParams::PageRange> PageRangeTranslator;
+typedef Translator<docstring, InsetIndexParams::PageRange> PageRangeTranslatorLoc;
+
+PageRangeTranslator const init_insetindexpagerangetranslator()
+{
+	PageRangeTranslator translator("none", InsetIndexParams::None);
+	translator.addPair("start", InsetIndexParams::Start);
+	translator.addPair("end", InsetIndexParams::End);
+	return translator;
+}
+
+PageRangeTranslator const init_insetindexpagerangetranslator_latex()
+{
+	PageRangeTranslator translator("", InsetIndexParams::None);
+	translator.addPair("(", InsetIndexParams::Start);
+	translator.addPair(")", InsetIndexParams::End);
+	return translator;
+}
+
+
+PageRangeTranslatorLoc const init_insetindexpagerangetranslator_loc()
+{
+	PageRangeTranslatorLoc translator(docstring(), InsetIndexParams::None);
+	translator.addPair(_("Starts page range"), InsetIndexParams::Start);
+	translator.addPair(_("Ends page range"), InsetIndexParams::End);
+	return translator;
+}
+
+
+PageRangeTranslator const & insetindexpagerangetranslator()
+{
+	static PageRangeTranslator const prtranslator =
+			init_insetindexpagerangetranslator();
+	return prtranslator;
+}
+
+
+PageRangeTranslatorLoc const & insetindexpagerangetranslator_loc()
+{
+	static PageRangeTranslatorLoc const translator =
+			init_insetindexpagerangetranslator_loc();
+	return translator;
+}
+
+
+PageRangeTranslator const & insetindexpagerangetranslator_latex()
+{
+	static PageRangeTranslator const lttranslator =
+			init_insetindexpagerangetranslator_latex();
+	return lttranslator;
+}
+
+} // namespace anon
+
 /////////////////////////////////////////////////////////////////////
 //
 // InsetIndex
@@ -59,7 +120,7 @@ namespace lyx {
 
 
 InsetIndex::InsetIndex(Buffer * buf, InsetIndexParams const & params)
-        : InsetCollapsible(buf), params_(params)
+	: InsetCollapsible(buf), params_(params)
 {}
 
 
@@ -91,106 +152,108 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 		return;
 	}
 
-	// For the sorting key, we use the plaintext version
-	odocstringstream ourplain;
-	InsetText::plaintext(ourplain, runparams);
-
-	// These are the LaTeX and plaintext representations
-	docstring latexstr = ourlatex.str();
-	docstring plainstr = ourplain.str();
-
-	// This will get what follows | if anything does,
-	// the command (e.g., see, textbf) for pagination
-	// formatting
-	docstring cmd;
-
-	// Check for the | separator to strip the cmd.
-	// This goes wrong on an escaped "|", but as the escape
-	// character can be changed in style files, we cannot
-	// prevent that.
-	size_t pos = latexstr.find(from_ascii("|"));
-	if (pos != docstring::npos) {
-		// Put the bit after "|" into cmd...
-		cmd = latexstr.substr(pos + 1);
-		// ...and erase that stuff from latexstr
-		latexstr = latexstr.erase(pos);
-		// ...as well as from plainstr
-		size_t ppos = plainstr.find(from_ascii("|"));
-		if (ppos < plainstr.size())
-			plainstr.erase(ppos);
-		else
-			LYXERR0("The `|' separator was not found in the plaintext version!");
-	}
-
-	// Separate the entries and subentries, i.e., split on "!".
-	// This goes wrong on an escaped "!", but as the escape
-	// character can be changed in style files, we cannot
-	// prevent that.
-	std::vector<docstring> const levels =
-			getVectorFromString(latexstr, from_ascii("!"), true);
-	std::vector<docstring> const levels_plain =
-			getVectorFromString(plainstr, from_ascii("!"), true);
-
-	vector<docstring>::const_iterator it = levels.begin();
-	vector<docstring>::const_iterator end = levels.end();
-	vector<docstring>::const_iterator it2 = levels_plain.begin();
-	bool first = true;
-	for (; it != end; ++it) {
-		// The separator needs to be put back when
-		// writing the levels, except for the first level
-		if (!first)
-			os << '!';
-		else
-			first = false;
-
-		// Now here comes the reason for this whole procedure:
-		// We try to correctly sort macros and formatted strings.
-		// If we find a command, prepend a plain text
-		// version of the content to get sorting right,
-		// e.g. \index{LyX@\LyX}, \index{text@\textbf{text}}.
-		// We do this on all levels.
-		// We don't do it if the level already contains a '@', though.
-		if (contains(*it, '\\') && !contains(*it, '@')) {
-			// Plaintext might return nothing (e.g. for ERTs).
-			// In that case, we use LaTeX.
-			docstring const spart =
-					(it2 < levels_plain.end() && !(*it2).empty())
-					? *it2 : *it;
-			// Now we need to validate that all characters in
-			// the sorting part are representable in the current
-			// encoding. If not try the LaTeX macro which might
-			// or might not be a good choice, and issue a warning.
-			pair<docstring, docstring> spart_latexed =
-					runparams.encoding->latexString(spart, runparams.dryrun);
-			if (!spart_latexed.second.empty())
-				LYXERR0("Uncodable character in index entry. Sorting might be wrong!");
-			if (spart != spart_latexed.first && !runparams.dryrun) {
-				// FIXME: warning should be passed to the error dialog
-				frontend::Alert::warning(_("Index sorting failed"),
-							 bformat(_("LyX's automatic index sorting algorithm faced\n"
-								   "problems with the entry '%1$s'.\n"
-								   "Please specify the sorting of this entry manually, as\n"
-								   "explained in the User Guide."), spart));
-			}
-			// Remove remaining \'s from the sort key
-			docstring ppart = subst(spart_latexed.first, from_ascii("\\"), docstring());
-			// Plain quotes need to be escaped, however (#10649), as this
-			// is the default escape character
-			ppart = subst(ppart, from_ascii("\""), from_ascii("\\\""));
-
-			// Now insert the sortkey, separated by '@'.
-			os << ppart;
-			os << '@';
+	if (hasSortKey()) {
+		getSortkey(os, runparams);
+		os << "@";
+		os << ourlatex.str();
+		getSubentries(os, runparams);
+		if (hasSeeRef()) {
+			os << "|";
+			os << insetindexpagerangetranslator_latex().find(params_.range);
+			getSeeRefs(os, runparams);
 		}
-		// Insert the actual level text
-		docstring const tpart = *it;
-		os << tpart;
-		if (it2 < levels_plain.end())
-			++it2;
-	}
-	// At last, re-insert the command, separated by "|"
-	if (!cmd.empty()) {
-		os << "|" << cmd;
+	} else {
+		// We check whether we need a sort key.
+		// If so, we use the plaintext version
+		odocstringstream ourplain;
+		InsetText::plaintext(ourplain, runparams);
+
+		// These are the LaTeX and plaintext representations
+		docstring latexstr = ourlatex.str();
+		docstring plainstr = ourplain.str();
+	
+		// This will get what follows | if anything does,
+		// the command (e.g., see, textbf) for pagination
+		// formatting
+		docstring cmd;
+
+		if (hasSeeRef()) {
+			odocstringstream seeref;
+			otexstream otsee(seeref);
+			getSeeRefs(otsee, runparams);
+			cmd = seeref.str();
+		} else if (!params_.pagefmt.empty() && params_.pagefmt != "default") {
+			cmd = from_utf8(params_.pagefmt);
+		} else {
+			// Check for the | separator to strip the cmd.
+			// This goes wrong on an escaped "|", but as the escape
+			// character can be changed in style files, we cannot
+			// prevent that.
+			size_t pos = latexstr.find(from_ascii("|"));
+			if (pos != docstring::npos) {
+				// Put the bit after "|" into cmd...
+				cmd = latexstr.substr(pos + 1);
+				// ...and erase that stuff from latexstr
+				latexstr = latexstr.erase(pos);
+				// ...as well as from plainstr
+				size_t ppos = plainstr.find(from_ascii("|"));
+				if (ppos < plainstr.size())
+					plainstr.erase(ppos);
+				else
+					LYXERR0("The `|' separator was not found in the plaintext version!");
+			}
+		}
+
+		odocstringstream subentries;
+		otexstream otsub(subentries);
+		getSubentries(otsub, runparams);
+		if (subentries.str().empty()) {
+			// Separate the entries and subentries, i.e., split on "!".
+			// This goes wrong on an escaped "!", but as the escape
+			// character can be changed in style files, we cannot
+			// prevent that.
+			std::vector<docstring> const levels =
+					getVectorFromString(latexstr, from_ascii("!"), true);
+			std::vector<docstring> const levels_plain =
+					getVectorFromString(plainstr, from_ascii("!"), true);
+		
+			vector<docstring>::const_iterator it = levels.begin();
+			vector<docstring>::const_iterator end = levels.end();
+			vector<docstring>::const_iterator it2 = levels_plain.begin();
+			bool first = true;
+			for (; it != end; ++it) {
+				// The separator needs to be put back when
+				// writing the levels, except for the first level
+				if (!first)
+					os << '!';
+				else
+					first = false;
+		
+				// Now here comes the reason for this whole procedure:
+				// We try to correctly sort macros and formatted strings.
+				// If we find a command, prepend a plain text
+				// version of the content to get sorting right,
+				// e.g. \index{LyX@\LyX}, \index{text@\textbf{text}}.
+				// We do this on all levels.
+				// We don't do it if the level already contains a '@', though.
+				// Plaintext might return nothing (e.g. for ERTs).
+				// In that case, we use LaTeX.
+				docstring const spart = (levels_plain.empty() || (*it2).empty()) ? *it : *it2;
+				processLatexSorting(os, runparams, *it, spart);
+				if (it2 < levels_plain.end())
+					++it2;
+			}
+		} else {
+			processLatexSorting(os, runparams, latexstr, plainstr);
+			os << subentries.str();
+		}
+
+		// At last, re-insert the command, separated by "|"
+		if (!cmd.empty()) {
+			os << "|"
+			   << insetindexpagerangetranslator_latex().find(params_.range)
+			   << cmd;
+		}
 	}
 	os << '}';
 
@@ -200,6 +263,45 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 		runparams_in.post_macro += os.str();
 	else
 		ios << os.release();
+}
+
+
+void InsetIndex::processLatexSorting(otexstream & os, OutputParams const & runparams,
+				docstring const latex, docstring const spart) const
+{
+	if (contains(latex, '\\') && !contains(latex, '@')) {
+		// Now we need to validate that all characters in
+		// the sorting part are representable in the current
+		// encoding. If not try the LaTeX macro which might
+		// or might not be a good choice, and issue a warning.
+		pair<docstring, docstring> spart_latexed =
+				runparams.encoding->latexString(spart, runparams.dryrun);
+		if (!spart_latexed.second.empty())
+			LYXERR0("Uncodable character in index entry. Sorting might be wrong!");
+		if (spart != spart_latexed.first && !runparams.dryrun) {
+			TeXErrors terr;
+			ErrorList & errorList = buffer().errorList("Export");
+			docstring const s = bformat(_("LyX's automatic index sorting algorithm faced "
+						      "problems with the entry '%1$s'.\n"
+						      "Please specify the sorting of this entry manually, as "
+						      "explained in the User Guide."), spart);
+			Paragraph const & par = buffer().paragraphs().front();
+			errorList.push_back(ErrorItem(_("Index sorting failed"), s,
+						      {par.id(), 0}, {par.id(), -1}));
+			buffer().bufferErrors(terr, errorList);
+		}
+		// Remove remaining \'s from the sort key
+		docstring ppart = subst(spart_latexed.first, from_ascii("\\"), docstring());
+		// Plain quotes need to be escaped, however (#10649), as this
+		// is the default escape character
+		ppart = subst(ppart, from_ascii("\""), from_ascii("\\\""));
+
+		// Now insert the sortkey, separated by '@'.
+		os << ppart;
+		os << '@';
+	}
+	// Insert the actual level text
+	os << latex;
 }
 
 
@@ -445,6 +547,8 @@ void InsetIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetIndex::string2params(to_utf8(cmd.argument()), params);
 		cur.recordUndoInset(this);
 		params_.index = params.index;
+		params_.range = params.range;
+		params_.pagefmt = params.pagefmt;
 		// what we really want here is a TOC update, but that means
 		// a full buffer update
 		cur.forceBufferUpdate();
@@ -485,10 +589,132 @@ bool InsetIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 		flag.setEnabled(realbuffer.params().use_indices);
 		return true;
 	}
+	
+	case LFUN_INDEXMACRO_INSERT:
+		return macrosPossible(cmd.getArg(0));
 
 	default:
 		return InsetCollapsible::getStatus(cur, cmd, flag);
 	}
+}
+
+
+void InsetIndex::getSortkey(otexstream & os, OutputParams const & runparams) const
+{
+	Paragraph const & par = paragraphs().front();
+	InsetList::const_iterator it = par.insetList().begin();
+	for (; it != par.insetList().end(); ++it) {
+		Inset & inset = *it->inset;
+		if (inset.lyxCode() == INDEXMACRO_SORTKEY_CODE) {
+			InsetIndexMacro const & iim =
+				static_cast<InsetIndexMacro const &>(inset);
+			iim.getLatex(os, runparams);
+			return;
+		}
+	}
+}
+
+
+void InsetIndex::getSubentries(otexstream & os, OutputParams const & runparams) const
+{
+	Paragraph const & par = paragraphs().front();
+	InsetList::const_iterator it = par.insetList().begin();
+	int i = 0;
+	for (; it != par.insetList().end(); ++it) {
+		Inset & inset = *it->inset;
+		if (inset.lyxCode() == INDEXMACRO_CODE) {
+			InsetIndexMacro const & iim =
+				static_cast<InsetIndexMacro const &>(inset);
+			if (iim.params().type == InsetIndexMacroParams::Subindex) {
+				++i;
+				if (i > 2)
+					return;
+				os << "!";
+				iim.getLatex(os, runparams);
+			}
+		}
+	}
+}
+
+
+void InsetIndex::getSeeRefs(otexstream & os, OutputParams const & runparams) const
+{
+	Paragraph const & par = paragraphs().front();
+	InsetList::const_iterator it = par.insetList().begin();
+	for (; it != par.insetList().end(); ++it) {
+		Inset & inset = *it->inset;
+		if (inset.lyxCode() == INDEXMACRO_CODE) {
+			InsetIndexMacro const & iim =
+				static_cast<InsetIndexMacro const &>(inset);
+			if (iim.params().type == InsetIndexMacroParams::See
+			    || iim.params().type == InsetIndexMacroParams::Seealso) {
+				iim.getLatex(os, runparams);
+				return;
+			}
+		}
+	}
+}
+
+
+bool InsetIndex::hasSeeRef() const
+{
+	Paragraph const & par = paragraphs().front();
+	InsetList::const_iterator it = par.insetList().begin();
+	for (; it != par.insetList().end(); ++it) {
+		Inset & inset = *it->inset;
+		if (inset.lyxCode() == INDEXMACRO_CODE) {
+			InsetIndexMacro const & iim =
+				static_cast<InsetIndexMacro const &>(inset);
+			if (iim.params().type == InsetIndexMacroParams::See
+			    || iim.params().type == InsetIndexMacroParams::Seealso)
+				return true;
+		}
+	}
+	return false;
+}
+
+
+bool InsetIndex::hasSortKey() const
+{
+	Paragraph const & par = paragraphs().front();
+	InsetList::const_iterator it = par.insetList().begin();
+	for (; it != par.insetList().end(); ++it) {
+		Inset & inset = *it->inset;
+		if (inset.lyxCode() == INDEXMACRO_SORTKEY_CODE)
+			return true;
+	}
+	return false;
+}
+
+
+bool InsetIndex::macrosPossible(string const type) const
+{
+	if (type != "see" && type != "seealso"
+	    && type != "sortkey" && type != "subindex")
+		return false;
+
+	Paragraph const & par = paragraphs().front();
+	InsetList::const_iterator it = par.insetList().begin();
+	int subidxs = 0;
+	for (; it != par.insetList().end(); ++it) {
+		Inset & inset = *it->inset;
+		if (type == "sortkey" && inset.lyxCode() == INDEXMACRO_SORTKEY_CODE)
+			return false;
+		if (inset.lyxCode() == INDEXMACRO_CODE) {
+			InsetIndexMacro const & iim = static_cast<InsetIndexMacro const &>(inset);
+			if ((type == "see" || type == "seealso")
+			     && (iim.params().type == InsetIndexMacroParams::See
+				 || iim.params().type == InsetIndexMacroParams::Seealso))
+				return false;
+			if (type == "subindex"
+			     && iim.params().type == InsetIndexMacroParams::Subindex) {
+				++subidxs;
+				if (subidxs > 1)
+					return false;
+			}
+		}
+	}
+	return true;
 }
 
 
@@ -520,7 +746,21 @@ docstring InsetIndex::toolTip(BufferView const &, int, int) const
 		tip += ")";
 	}
 	tip += ": ";
-	return toolTipText(tip);
+	docstring res = toolTipText(tip);
+	if (!insetindexpagerangetranslator_loc().find(params_.range).empty())
+		res += "\n" + insetindexpagerangetranslator_loc().find(params_.range);
+	if (!params_.pagefmt.empty() && params_.pagefmt != "default") {
+		res += "\n" + _("Pagination format:") + " ";
+		if (params_.pagefmt == "textbf")
+			res += _("bold");
+		else if (params_.pagefmt == "textit")
+			res += _("italic");
+		else if (params_.pagefmt == "emph")
+			res += _("emphasized");
+		else
+			res += from_utf8(params_.pagefmt);
+	}
+	return res;
 }
 
 
@@ -541,9 +781,14 @@ docstring const InsetIndex::buttonLabel(BufferView const & bv) const
 		label += ")";
 	}
 
+	docstring res;
 	if (!il.contentaslabel() || geometry(bv) != ButtonOnly)
-		return label;
-	return getNewLabel(label);
+		res = label;
+	else
+		res = getNewLabel(label);
+	if (!insetindexpagerangetranslator_latex().find(params_.range).empty())
+		res += " " + from_ascii(insetindexpagerangetranslator_latex().find(params_.range));
+	return res;
 }
 
 
@@ -621,12 +866,33 @@ string InsetIndex::contextMenuName() const
 }
 
 
-bool InsetIndex::hasSettings() const
+string InsetIndex::contextMenu(BufferView const & bv, int x, int y) const
 {
-	return buffer().masterBuffer()->params().use_indices;
+	// We override the implementation of InsetCollapsible,
+	// because we have eytra entries.
+	string owncm = "context-edit-index;";
+	return owncm + InsetCollapsible::contextMenu(bv, x, y);
 }
 
 
+bool InsetIndex::hasSettings() const
+{
+	return true;
+}
+
+
+bool InsetIndex::insetAllowed(InsetCode code) const
+{
+	switch (code) {
+	case INDEXMACRO_CODE:
+	case INDEXMACRO_SORTKEY_CODE:
+		return true;
+	case INDEX_CODE:
+		return false;
+	default:
+		return InsetCollapsible::insetAllowed(code);
+	}
+}
 
 
 /////////////////////////////////////////////////////////////////////
@@ -644,6 +910,12 @@ void InsetIndexParams::write(ostream & os) const
 	else
 		os << "idx";
 	os << '\n';
+	os << "range "
+	   << insetindexpagerangetranslator().find(range)
+	   << '\n';
+	os << "pageformat "
+	   << pagefmt
+	   << '\n';
 }
 
 
@@ -653,6 +925,16 @@ void InsetIndexParams::read(Lexer & lex)
 		index = lex.getDocString();
 	else
 		index = from_ascii("idx");
+	if (lex.checkFor("range")) {
+		string st = lex.getString();
+		if (lex.eatLine()) {
+			st = lex.getString();
+			range = insetindexpagerangetranslator().find(lex.getString());
+		}
+	}
+	if (lex.checkFor("pageformat") && lex.eatLine()) {
+		pagefmt = lex.getString();
+	}
 }
 
 

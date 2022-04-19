@@ -503,6 +503,8 @@ enum FuncCode
 	LFUN_FINISHED_DOWN,             // lasgouttes 20210629
 	LFUN_FINISHED_UP,               // lasgouttes 20210629
 	LFUN_BRANCH_SYNC_ALL,           // sanda 20220415
+	LFUN_INDEXMACRO_INSERT,         // spitz 20220220
+	// 395
 	LFUN_LASTACTION                 // end of the table
 };
 
