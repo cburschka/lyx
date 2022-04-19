@@ -322,6 +322,7 @@ DocIterator CursorData::selectionEnd() const
 	if (di.depth() > depth()) {
 		di.resize(depth());
 		++di.pos();
+		di.boundary(true);
 	}
 	return di;
 }
