@@ -3420,24 +3420,23 @@ static string correctlanguagesetting(string par, bool isPatternString, bool with
 
 
 // Remove trailing closure of math, macros and environments, so to catch parts of them.
-static int identifyClosing(string & t)
+static void identifyClosing(string & t, bool ignoreformat)
 {
-	int open_braces = 0;
 	do {
 		LYXERR(Debug::FINDVERBOSE, "identifyClosing(): t now is '" << t << "'");
 		if (regex_replace(t, t, "(.*[^\\\\])\\$$", "$1"))
 			continue;
 		if (regex_replace(t, t, "(.*[^\\\\])\\\\\\]$", "$1"))
 			continue;
-		if (regex_replace(t, t, "(.*[^\\\\])\\\\end\\{[a-zA-Z_]*\\*?\\}$", "$1"))
+		if (regex_replace(t, t, "(.*[^\\\\])\\\\end\\{[a-zA-Z_]+\\*?\\}$", "$1"))
 			continue;
-		if (regex_replace(t, t, "(.*[^\\\\])\\}$", "$1")) {
-			++open_braces;
-			continue;
+		if (! ignoreformat) {
+			if (regex_replace(t, t, "(.*[^\\\\])\\}$", "$1"))
+				continue;
 		}
 		break;
 	} while (true);
-	return open_braces;
+	return;
 }
 
 static int num_replaced = 0;
@@ -3564,7 +3563,7 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 	}
 	opt.matchAtStart = false;
 	if (!use_regexp) {
-		identifyClosing(par_as_string); // Removes math closings ($, ], ...) at end of string
+		identifyClosing(par_as_string, opt.ignoreformat); // Removes math closings ($, ], ...) at end of string
 		if (opt.ignoreformat) {
 			lead_size = 0;
 		}
