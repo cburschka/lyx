@@ -115,9 +115,9 @@ bool FindAndReplaceWidget::eventFilter(QObject * obj, QEvent * event)
 	case Qt::Key_Tab:
 		if (e->modifiers() == Qt::NoModifier) {
 			if (obj == find_work_area_){
-				LYXERR(Debug::FIND, "Focusing replace WA");
+				LYXERR(Debug::FINDVERBOSE, "Focusing replace WA");
 				replace_work_area_->setFocus();
-				LYXERR(Debug::FIND, "Selecting entire replace buffer");
+				LYXERR(Debug::FINDVERBOSE, "Selecting entire replace buffer");
 				dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
 				dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
 				return true;
@@ -127,9 +127,9 @@ bool FindAndReplaceWidget::eventFilter(QObject * obj, QEvent * event)
 
 	case Qt::Key_Backtab:
 		if (obj == replace_work_area_) {
-			LYXERR(Debug::FIND, "Focusing find WA");
+			LYXERR(Debug::FINDVERBOSE, "Focusing find WA");
 			find_work_area_->setFocus();
-			LYXERR(Debug::FIND, "Selecting entire find buffer");
+			LYXERR(Debug::FINDVERBOSE, "Selecting entire find buffer");
 			dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
 			dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
 			return true;
@@ -172,7 +172,7 @@ static vector<string> const & allManualsFiles()
 static bool nextDocumentBuffer(Buffer * & buf)
 {
 	ListOfBuffers const children = buf->allRelatives();
-	LYXERR(Debug::FIND, "children.size()=" << children.size());
+	LYXERR(Debug::FINDVERBOSE, "children.size()=" << children.size());
 	ListOfBuffers::const_iterator it =
 		find(children.begin(), children.end(), buf);
 	LASSERT(it != children.end(), return false);
@@ -193,7 +193,7 @@ static bool nextDocumentBuffer(Buffer * & buf)
 static bool prevDocumentBuffer(Buffer * & buf)
 {
 	ListOfBuffers const children = buf->allRelatives();
-	LYXERR(Debug::FIND, "children.size()=" << children.size());
+	LYXERR(Debug::FINDVERBOSE, "children.size()=" << children.size());
 	ListOfBuffers::const_iterator it =
 		find(children.begin(), children.end(), buf);
 	LASSERT(it != children.end(), return false)
@@ -344,9 +344,9 @@ bool FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt, bool
 	UndoGroupHelper helper(buf);
 
 	do {
-		LYXERR(Debug::FIND, "Dispatching LFUN_WORD_FINDADV");
+		LYXERR(Debug::FINDVERBOSE, "Dispatching LFUN_WORD_FINDADV");
 		dispatch(cmd);
-		LYXERR(Debug::FIND, "dispatched");
+		LYXERR(Debug::FINDVERBOSE, "dispatched");
 		if (bv->cursor().result().dispatched()) {
 			// New match found and selected (old selection replaced if needed)
 			if (replace_all)
@@ -398,7 +398,7 @@ bool FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt, bool
 			//lyx::dispatch(FuncRequest(LFUN_BUFFER_END));
 			bv->cursor().setCursor(doc_iterator_end(buf));
 			bv->cursor().backwardPos();
-			LYXERR(Debug::FIND, "findBackAdv5: cur: "
+			LYXERR(Debug::FINDVERBOSE, "findBackAdv5: cur: "
 				<< bv->cursor());
 		}
 		bv->clearSelection();
@@ -454,7 +454,7 @@ bool FindAndReplaceWidget::findAndReplace(
 			? FindAndReplaceOptions::R_ONLY_MATHS
 			: FindAndReplaceOptions::R_EVERYTHING;
 
-	LYXERR(Debug::FIND, "FindAndReplaceOptions: "
+	LYXERR(Debug::FINDVERBOSE, "FindAndReplaceOptions: "
 	       << "find_buf_name=" << find_buf_name
 	       << ", casesensitiv=" << casesensitive
 	       << ", matchword=" << matchword
@@ -556,7 +556,7 @@ void FindAndReplaceWidget::showEvent(QShowEvent * /* ev */)
 	replace_work_area_->installEventFilter(this);
 
 	view_.setCurrentWorkArea(find_work_area_);
-	LYXERR(Debug::FIND, "Selecting entire find buffer");
+	LYXERR(Debug::FINDVERBOSE, "Selecting entire find buffer");
 	dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
 	dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
 }
