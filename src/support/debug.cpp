@@ -71,7 +71,8 @@ DebugErrorItem errorTags[] = {
 	{ Debug::RTL,       "rtl",       N_("RTL/Bidi")},
 	{ Debug::LOCALE,    "locale",    N_("Locale/Internationalisation")},
 	{ Debug::SELECTION, "selection", N_("Selection copy/paste mechanism")},
-	{ Debug::FIND,      "find",      N_("Find and replace mechanism")},
+	{ Debug::FIND,      "find",      N_("Find and replace mechanism, terse version")},
+	{ Debug::FINDVERBOSE,"findverbose", N_("Find and replace mechanism, verbose version")},
 	{ Debug::DEBUG,     "debug",     N_("Developers' general debug messages")},
 	{ Debug::ANY,       "any",       N_("All debugging messages")},
 	{ Debug::ANY,       "all",       N_("All debugging messages")}
@@ -193,7 +194,7 @@ void Debug::showLevel(ostream & os, Debug::Type level)
 void Debug::showTags(ostream & os)
 {
 	for (DebugErrorItem const & item : errorTags)
-		os << setw(10) << static_cast<unsigned int>(item.level)
+		os << setw(12) << static_cast<Debug::base_type>(item.level)
 		   << setw(13) << item.name
 		   << "  " << to_utf8(_(item.desc)) << '\n';
 	os.flush();
@@ -212,7 +213,7 @@ void LyXErr::enable()
 }
 
 
-bool LyXErr::debugging(Debug::Type t) const
+bool LyXErr::debugging(Debug::base_type t) const
 {
 	return (dt_ & t);
 }

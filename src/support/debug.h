@@ -37,7 +37,8 @@ namespace lyx {
 ///  This is all the different debug levels that we have.
 namespace Debug {
 	///
-	enum Type {
+	typedef uint64_t base_type;
+	enum Type : base_type {
 		///
 		NONE = 0,
 		///
@@ -103,9 +104,11 @@ namespace Debug {
 		/// Find and Replace
 		FIND       = (1u << 30),
 		///
-		DEBUG      = (1u << 31),
+		FINDVERBOSE= (1u << 31),
 		///
-		ANY = 0xffffffff
+		DEBUG      = (1L << 32),
+		///
+		ANY = 0x1ffffffff
 	};
 
 	/// Return number of levels
@@ -179,7 +182,7 @@ public:
 	/// Returns the current debug level
 	Debug::Type level() const { return dt_; }
 	/// Returns true if t is part of the current debug level
-	bool debugging(Debug::Type t = Debug::ANY) const;
+	bool debugging(Debug::base_type t = Debug::ANY) const;
 
 	///
 	static char const * stripName(char const *);

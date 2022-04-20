@@ -362,8 +362,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-03-17 18:13+0100\n"
-"PO-Revision-Date: 2022-03-17 18:23+0100\n"
+"POT-Creation-Date: 2022-04-19 18:17+0200\n"
+"PO-Revision-Date: 2022-04-19 18:20+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -17388,8 +17388,8 @@ msgstr "Marge"
 msgid "Greyedout"
 msgstr "Grisée"
 
-#: lib/layouts/stdinsets.inc:208 src/insets/InsetERT.cpp:253
-#: src/insets/InsetERT.cpp:254
+#: lib/layouts/stdinsets.inc:208 src/insets/InsetERT.cpp:251
+#: src/insets/InsetERT.cpp:252
 msgid "ERT"
 msgstr "TeX"
 
@@ -19954,7 +19954,7 @@ msgstr "Copier comme référence|C"
 
 #: lib/ui/stdcontext.inc:61 lib/ui/stdcontext.inc:375 lib/ui/stdmenus.inc:108
 #: lib/ui/stdtoolbars.inc:86 src/Text3.cpp:1584
-#: src/mathed/InsetMathNest.cpp:555
+#: src/mathed/InsetMathNest.cpp:561
 msgid "Cut"
 msgstr "Couper"
 
@@ -19966,7 +19966,7 @@ msgstr "Copier"
 #: lib/ui/stdcontext.inc:63 lib/ui/stdcontext.inc:377 lib/ui/stdmenus.inc:110
 #: lib/ui/stdtoolbars.inc:88 src/Text3.cpp:1528
 #: src/frontends/qt/GuiToolbar.cpp:441 src/mathed/InsetMathGrid.cpp:1565
-#: src/mathed/InsetMathNest.cpp:533
+#: src/mathed/InsetMathNest.cpp:539
 msgid "Paste"
 msgstr "Coller"
 
@@ -28336,8 +28336,8 @@ msgstr "texte d'insert grisé"
 #: src/insets/InsetCommandParams.cpp:508 src/insets/InsetCommandParams.cpp:516
 #: src/insets/InsetGraphics.cpp:900 src/insets/InsetGraphics.cpp:908
 #: src/insets/InsetListings.cpp:299 src/insets/InsetListings.cpp:307
-#: src/insets/InsetListings.cpp:332 src/mathed/MathExtern.cpp:1440
-#: src/mathed/MathExtern.cpp:1514
+#: src/insets/InsetListings.cpp:332 src/mathed/MathExtern.cpp:1444
+#: src/mathed/MathExtern.cpp:1518
 msgid "LyX Warning: "
 msgstr "Avertissement LyX : "
 
@@ -28346,7 +28346,7 @@ msgstr "Avertissement LyX : "
 #: src/insets/InsetCommandParams.cpp:509 src/insets/InsetCommandParams.cpp:517
 #: src/insets/InsetGraphics.cpp:901 src/insets/InsetGraphics.cpp:909
 #: src/insets/InsetListings.cpp:300 src/insets/InsetListings.cpp:308
-#: src/mathed/MathExtern.cpp:1441 src/mathed/MathExtern.cpp:1515
+#: src/mathed/MathExtern.cpp:1445 src/mathed/MathExtern.cpp:1519
 msgid "uncodable character"
 msgstr "caractère incodable"
 
@@ -29440,15 +29440,15 @@ msgstr "La sortie est vide"
 msgid "No output file was generated."
 msgstr "Aucun fichier imprimable créé."
 
-#: src/Cursor.cpp:416 src/Text.cpp:2141
+#: src/Cursor.cpp:417 src/Text.cpp:2141
 msgid ", Inset: "
 msgstr ", insert : "
 
-#: src/Cursor.cpp:417 src/Text.cpp:2143
+#: src/Cursor.cpp:418 src/Text.cpp:2143
 msgid ", Cell: "
 msgstr ", cellule : "
 
-#: src/Cursor.cpp:418 src/Text.cpp:2146
+#: src/Cursor.cpp:419 src/Text.cpp:2146
 msgid ", Position: "
 msgstr ", position : "
 
@@ -30865,7 +30865,7 @@ msgstr "Mode éditeur mathématique"
 msgid "No valid math formula"
 msgstr "Pas de formule mathématique valide"
 
-#: src/Text3.cpp:210 src/mathed/InsetMathNest.cpp:1032
+#: src/Text3.cpp:210 src/mathed/InsetMathNest.cpp:1038
 msgid "Already in regular expression mode"
 msgstr "Déjà en mode « expression régulière »"
 
@@ -37072,7 +37072,7 @@ msgstr "Description : "
 msgid "Sorting: "
 msgstr "Tri : "
 
-#: src/insets/InsetNote.cpp:252
+#: src/insets/InsetNote.cpp:269
 msgid "note"
 msgstr "note"
 
@@ -37250,20 +37250,20 @@ msgstr ""
 "L'information de suivi de modifications pour les lignes/colonnes de tableau "
 "est incomplète. Elle sera ignorée."
 
-#: src/insets/InsetTabular.cpp:5680
+#: src/insets/InsetTabular.cpp:5636
 msgid "Column movement not supported with multi-columns."
 msgstr "Déplacement de colonne non implanté pour les colonnes multiples."
 
-#: src/insets/InsetTabular.cpp:5698
+#: src/insets/InsetTabular.cpp:5654
 msgid "Row movement not supported with multi-rows."
 msgstr "Déplacement de ligne non implanté pour les lignes multiples."
 
-#: src/insets/InsetTabular.cpp:6219
+#: src/insets/InsetTabular.cpp:6175
 msgid "Selection size should match clipboard content."
 msgstr ""
 "La taille de la sélection doit correspondre au contenu du presse-papier."
 
-#: src/insets/InsetText.cpp:1380
+#: src/insets/InsetText.cpp:1381
 msgid "[contains tracked changes]"
 msgstr "[contient les modifications suivies]"
 
@@ -37412,28 +37412,28 @@ msgstr "%1$d chaînes remplacées dans le sélection."
 msgid "%1$d strings have been replaced."
 msgstr "%1$d chaînes remplacées."
 
-#: src/lyxfind.cpp:4584
+#: src/lyxfind.cpp:4680
 msgid "One match has been replaced."
 msgstr "Une correspondance a été remplacée."
 
-#: src/lyxfind.cpp:4587
+#: src/lyxfind.cpp:4683
 msgid "Two matches have been replaced."
 msgstr "Deux correspondances ont été remplacées."
 
-#: src/lyxfind.cpp:4590
+#: src/lyxfind.cpp:4686
 #, c-format
 msgid "%1$d matches have been replaced."
 msgstr "%1$d correspondances ont été remplacées."
 
-#: src/lyxfind.cpp:4596
+#: src/lyxfind.cpp:4692
 msgid "Match not found."
 msgstr "Chaîne de caractères introuvable."
 
-#: src/lyxfind.cpp:4602
+#: src/lyxfind.cpp:4698
 msgid "Match has been replaced."
 msgstr "Chaîne de caractères remplacée."
 
-#: src/lyxfind.cpp:4604
+#: src/lyxfind.cpp:4700
 msgid "Match found."
 msgstr "Chaîne de caractères reconnue."
 
@@ -37556,19 +37556,19 @@ msgstr "Macros mathématique : \\%1$s"
 msgid "Invalid macro! \\%1$s"
 msgstr "Macro mathématique invalide ! \\%1$s"
 
-#: src/mathed/InsetMathNest.cpp:1018
+#: src/mathed/InsetMathNest.cpp:1024
 msgid "create new math text environment ($...$)"
 msgstr "créé un nouvel environnement texte math ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1021
+#: src/mathed/InsetMathNest.cpp:1027
 msgid "entered math text mode (textrm)"
 msgstr "entré en mode texte math (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1043
+#: src/mathed/InsetMathNest.cpp:1049
 msgid "Regular expression editor mode"
 msgstr "Mode d'édition « expression régulière »"
 
-#: src/mathed/InsetMathNest.cpp:1948
+#: src/mathed/InsetMathNest.cpp:1954
 #, c-format
 msgid "Cannot apply %1$s here."
 msgstr "Impossible d'appliquer %1$s ici."
@@ -37875,18 +37875,22 @@ msgid "Selection copy/paste mechanism"
 msgstr "Mécanisme de sélection copier/coller"
 
 #: src/support/debug.cpp:74
-msgid "Find and replace mechanism"
-msgstr "Rechercher et remplacer"
+msgid "Find and replace mechanism, terse version"
+msgstr "Rechercher et remplacer, version laconique du moteur"
 
 #: src/support/debug.cpp:75
+msgid "Find and replace mechanism, verbose version"
+msgstr "Rechercher et remplacer, version bavarde du moteur"
+
+#: src/support/debug.cpp:76
 msgid "Developers' general debug messages"
 msgstr "Messages de débogage généraux pour les développeurs"
 
-#: src/support/debug.cpp:76 src/support/debug.cpp:77
+#: src/support/debug.cpp:77 src/support/debug.cpp:78
 msgid "All debugging messages"
 msgstr "Tous les messages de débogage"
 
-#: src/support/debug.cpp:184
+#: src/support/debug.cpp:185
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Débogage de '%1$s' (%2$s)"

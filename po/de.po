@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-04-14 10:20+0200\n"
-"PO-Revision-Date: 2022-04-14 10:26+0200\n"
+"POT-Creation-Date: 2022-04-20 08:01+0200\n"
+"PO-Revision-Date: 2022-04-20 08:03+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -29131,15 +29131,15 @@ msgstr "Die Ausgabe ist leer"
 msgid "No output file was generated."
 msgstr "Es wurde keine Ausgabedatei erzeugt."
 
-#: src/Cursor.cpp:416 src/Text.cpp:2141
+#: src/Cursor.cpp:417 src/Text.cpp:2141
 msgid ", Inset: "
 msgstr ", Einfügung: "
 
-#: src/Cursor.cpp:417 src/Text.cpp:2143
+#: src/Cursor.cpp:418 src/Text.cpp:2143
 msgid ", Cell: "
 msgstr ", Zelle: "
 
-#: src/Cursor.cpp:418 src/Text.cpp:2146
+#: src/Cursor.cpp:419 src/Text.cpp:2146
 msgid ", Position: "
 msgstr ", Position: "
 
@@ -37170,28 +37170,28 @@ msgstr "%1$d Zeichenketten wurden in der Auswahl ersetzt."
 msgid "%1$d strings have been replaced."
 msgstr "%1$d Zeichenketten wurden ersetzt."
 
-#: src/lyxfind.cpp:4683
+#: src/lyxfind.cpp:4679
 msgid "One match has been replaced."
 msgstr "Ein Treffer wurde ersetzt."
 
-#: src/lyxfind.cpp:4686
+#: src/lyxfind.cpp:4682
 msgid "Two matches have been replaced."
 msgstr "Zwei Treffer wurden ersetzt."
 
-#: src/lyxfind.cpp:4689
+#: src/lyxfind.cpp:4685
 #, c-format
 msgid "%1$d matches have been replaced."
 msgstr "%1$d Treffer wurden ersetzt."
 
-#: src/lyxfind.cpp:4695
+#: src/lyxfind.cpp:4691
 msgid "Match not found."
 msgstr "Die Zeichenkette wurde nicht gefunden!"
 
-#: src/lyxfind.cpp:4701
+#: src/lyxfind.cpp:4697
 msgid "Match has been replaced."
 msgstr "Die Zeichenkette wurde ersetzt."
 
-#: src/lyxfind.cpp:4703
+#: src/lyxfind.cpp:4699
 msgid "Match found."
 msgstr "Die Zeichenkette wurde gefunden!"
 
@@ -37632,18 +37632,22 @@ msgid "Selection copy/paste mechanism"
 msgstr "Auswahl kopieren/einfügen Mechanismus"
 
 #: src/support/debug.cpp:74
-msgid "Find and replace mechanism"
-msgstr "Mechanismus für Suchen und Ersetzen"
+msgid "Find and replace mechanism, terse version"
+msgstr "Mechanismus für Suchen und Ersetzen (knapp)"
 
 #: src/support/debug.cpp:75
+msgid "Find and replace mechanism, verbose version"
+msgstr "Mechanismus für Suchen und Ersetzen (ausführlich)"
+
+#: src/support/debug.cpp:76
 msgid "Developers' general debug messages"
 msgstr "Allgemeine Testmeldungen der Entwickler"
 
-#: src/support/debug.cpp:76 src/support/debug.cpp:77
+#: src/support/debug.cpp:77 src/support/debug.cpp:78
 msgid "All debugging messages"
 msgstr "Alle Testmeldungen"
 
-#: src/support/debug.cpp:184
+#: src/support/debug.cpp:185
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Testen von ,%1$s` (%2$s)"
