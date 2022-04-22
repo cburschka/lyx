@@ -307,6 +307,11 @@ void InsetIndex::processLatexSorting(otexstream & os, OutputParams const & runpa
 
 void InsetIndex::docbook(XMLStream & xs, OutputParams const & runparams) const
 {
+	// Two ways of processing this inset are implemented:
+	// - the legacy one, based on parsing the raw LaTeX (before LyX 2.4) -- unlikely to be deprecated
+	// - the modern one, based on precise insets for indexing features
+	// Like the LaTeX implementation, consider the user chooses either of those options.
+
 	// Get the content of the inset as LaTeX, as some things may be encoded as ERT (like {}).
 	// TODO: if there is an ERT within the index term, its conversion should be tried, in case it becomes useful;
 	//  otherwise, ERTs should become comments. For now, they are just copied as-is, which is barely satisfactory.
@@ -334,24 +339,42 @@ void InsetIndex::docbook(XMLStream & xs, OutputParams const & runparams) const
 	docstring indexTerms = latexString.substr(0, positionVerticalBar);
 	docstring command;
 	if (positionVerticalBar != lyx::docstring::npos) {
-		command =  latexString.substr(positionVerticalBar + 1);
+		command = latexString.substr(positionVerticalBar + 1);
 	}
 
 	// Handle sorting issues, with @.
-	vector<docstring> sortingElements = getVectorFromString(indexTerms, from_ascii("@"), false);
 	docstring sortAs;
-	if (sortingElements.size() == 2) {
-		sortAs = sortingElements[0];
-		indexTerms = sortingElements[1];
+	if (hasSortKey()) {
+		sortAs = getSortkeyAsText(runparams);
+		// indexTerms may contain a sort key if the user has both the inset and the manual key.
+	} else {
+		vector<docstring> sortingElements = getVectorFromString(indexTerms, from_ascii("@"), false);
+		if (sortingElements.size() == 2) {
+			sortAs = sortingElements[0];
+			indexTerms = sortingElements[1];
+		}
 	}
 
 	// Handle primary, secondary, and tertiary terms (entries, subentries, and subsubentries, for LaTeX).
-	vector<docstring> terms = getVectorFromString(indexTerms, from_ascii("!"), false);
+	vector<docstring> terms;
+	if (const vector<docstring> potential_terms = getSubentriesAsText(runparams); !potential_terms.empty()) {
+		terms = potential_terms;
+		// The main term is not present in the vector, as it's not a subentry. The main index term is inserted raw in
+		// the index inset. Considering that the user either uses the new or the legacy mechanism, the main term is the
+		// full string within this inset (i.e. without the subinsets).
+		terms.insert(terms.begin(), latexString);
+	} else {
+		terms = getVectorFromString(indexTerms, from_ascii("!"), false);
+	}
 
-	// Handle ranges. Happily, (| and |) can only be at the end of the string!
-	bool hasStartRange = latexString.find(from_ascii("|(")) != lyx::docstring::npos;
-	bool hasEndRange = latexString.find(from_ascii("|)")) != lyx::docstring::npos;
-	if (hasStartRange || hasEndRange) {
+	// Handle ranges. Happily, in the raw LaTeX mode, (| and |) can only be at the end of the string!
+	bool hasInsetRange = params_.range != InsetIndexParams::PageRange::None;
+	bool hasStartRange = params_.range == InsetIndexParams::PageRange::Start ||
+			latexString.find(from_ascii("|(")) != lyx::docstring::npos;
+	bool hasEndRange = params_.range == InsetIndexParams::PageRange::End ||
+			latexString.find(from_ascii("|)")) != lyx::docstring::npos;
+
+	if (hasInsetRange) {
 		// Remove the ranges from the command if they do not appear at the beginning.
 		size_t index = 0;
 		while ((index = command.find(from_utf8("|("), index)) != std::string::npos)
@@ -367,9 +390,10 @@ void InsetIndex::docbook(XMLStream & xs, OutputParams const & runparams) const
 
 	// Handle see and seealso. As "see" is a prefix of "seealso", the order of the comparisons is important.
 	// Both commands are mutually exclusive!
-	docstring see = from_utf8("");
-	vector<docstring> seeAlsoes;
-	if (command.substr(0, 3) == "see") {
+	docstring see = getSeeAsText(runparams);
+	vector<docstring> seeAlsoes = getSeeAlsoesAsText(runparams);
+
+	if (see.empty() && seeAlsoes.empty() && command.substr(0, 3) == "see") {
 		// Unescape brackets.
 		size_t index = 0;
 		while ((index = command.find(from_utf8("\\{"), index)) != std::string::npos)
@@ -615,6 +639,24 @@ void InsetIndex::getSortkey(otexstream & os, OutputParams const & runparams) con
 }
 
 
+docstring InsetIndex::getSortkeyAsText(OutputParams const & runparams) const
+{
+	Paragraph const & par = paragraphs().front();
+	InsetList::const_iterator it = par.insetList().begin();
+	for (; it != par.insetList().end(); ++it) {
+		Inset & inset = *it->inset;
+		if (inset.lyxCode() == INDEXMACRO_SORTKEY_CODE) {
+			otexstringstream os;
+			InsetIndexMacro const & iim =
+				static_cast<InsetIndexMacro const &>(inset);
+			iim.getLatex(os, runparams);
+			return os.str();
+		}
+	}
+	return from_ascii("");
+}
+
+
 void InsetIndex::getSubentries(otexstream & os, OutputParams const & runparams) const
 {
 	Paragraph const & par = paragraphs().front();
@@ -637,6 +679,34 @@ void InsetIndex::getSubentries(otexstream & os, OutputParams const & runparams) 
 }
 
 
+std::vector<docstring> InsetIndex::getSubentriesAsText(OutputParams const & runparams) const
+{
+	std::vector<docstring> subentries;
+
+	Paragraph const & par = paragraphs().front();
+	InsetList::const_iterator it = par.insetList().begin();
+	int i = 0;
+	for (; it != par.insetList().end(); ++it) {
+		Inset & inset = *it->inset;
+		if (inset.lyxCode() == INDEXMACRO_CODE) {
+			InsetIndexMacro const & iim =
+				static_cast<InsetIndexMacro const &>(inset);
+			if (iim.params().type == InsetIndexMacroParams::Subindex) {
+				++i;
+				if (i > 2)
+					break;
+
+				otexstringstream os;
+				iim.getLatex(os, runparams);
+				subentries.emplace_back(os.str());
+			}
+		}
+	}
+
+	return subentries;
+}
+
+
 void InsetIndex::getSeeRefs(otexstream & os, OutputParams const & runparams) const
 {
 	Paragraph const & par = paragraphs().front();
@@ -653,6 +723,49 @@ void InsetIndex::getSeeRefs(otexstream & os, OutputParams const & runparams) con
 			}
 		}
 	}
+}
+
+
+docstring InsetIndex::getSeeAsText(OutputParams const & runparams) const
+{
+	Paragraph const & par = paragraphs().front();
+	InsetList::const_iterator it = par.insetList().begin();
+	for (; it != par.insetList().end(); ++it) {
+		Inset & inset = *it->inset;
+		if (inset.lyxCode() == INDEXMACRO_CODE) {
+			InsetIndexMacro const & iim =
+				static_cast<InsetIndexMacro const &>(inset);
+			if (iim.params().type == InsetIndexMacroParams::See) {
+				otexstringstream os;
+				iim.getLatex(os, runparams);
+				return os.str();
+			}
+		}
+	}
+	return from_ascii("");
+}
+
+
+std::vector<docstring> InsetIndex::getSeeAlsoesAsText(OutputParams const & runparams) const
+{
+	std::vector<docstring> seeAlsoes;
+
+	Paragraph const & par = paragraphs().front();
+	InsetList::const_iterator it = par.insetList().begin();
+	for (; it != par.insetList().end(); ++it) {
+		Inset & inset = *it->inset;
+		if (inset.lyxCode() == INDEXMACRO_CODE) {
+			InsetIndexMacro const & iim =
+				static_cast<InsetIndexMacro const &>(inset);
+			if (iim.params().type == InsetIndexMacroParams::Seealso) {
+				otexstringstream os;
+				iim.getLatex(os, runparams);
+				seeAlsoes.emplace_back(os.str());
+			}
+		}
+	}
+
+	return seeAlsoes;
 }
 
 

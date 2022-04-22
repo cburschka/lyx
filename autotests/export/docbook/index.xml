@@ -3,5 +3,7 @@
   See https://www.lyx.org/ for more information -->
 <article xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
 <title>Index tests</title>
+<para><indexterm><primary>Primary</primary><secondary>Secondary</secondary></indexterm></para>
+<para>Text<indexterm><primary>Text</primary></indexterm><indexterm><primary sortas='SortedAs'>Text</primary></indexterm><indexterm><primary>Primary</primary><secondary>Secondary</secondary></indexterm><indexterm><primary sortas='SortedPrimary'>Primary</primary><secondary>Secondary</secondary></indexterm><indexterm><primary>Primary</primary><secondary>Secondary</secondary><tertiary>Tertiary</tertiary></indexterm>.</para>
 <para>Text<indexterm><primary>Text</primary></indexterm><indexterm><primary sortas='SortedAs'>Text</primary></indexterm><indexterm><primary>Primary</primary><secondary>Secondary</secondary></indexterm><indexterm><primary sortas='SortedPrimary'>Primary</primary><secondary>Secondary</secondary></indexterm><indexterm><primary>Primary</primary><secondary>Secondary</secondary><tertiary>Tertiary</tertiary></indexterm>.</para>
 </article>

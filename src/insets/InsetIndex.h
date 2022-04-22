@@ -94,9 +94,17 @@ private:
 	///
 	void getSortkey(otexstream &, OutputParams const &) const;
 	///
+	docstring getSortkeyAsText(OutputParams const &) const;
+	///
 	void getSubentries(otexstream &, OutputParams const &) const;
 	///
+	std::vector<docstring> getSubentriesAsText(OutputParams const &) const;
+	///
 	void getSeeRefs(otexstream &, OutputParams const &) const;
+	///
+	docstring getSeeAsText(OutputParams const & runparams) const;
+	///
+	std::vector<docstring> getSeeAlsoesAsText(OutputParams const & runparams) const;
 	///
 	bool hasSeeRef() const;
 	///

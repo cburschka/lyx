@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 608
+\lyxformat 609
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -90,8 +90,35 @@ Index tests
 \end_layout
 
 \begin_layout Standard
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Primary
+\begin_inset IndexMacro subindex
+status open
+
+\begin_layout Plain Layout
+Secondary
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Text
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -102,6 +129,8 @@ Text
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -112,6 +141,8 @@ SortedAs@Text
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -122,6 +153,8 @@ Primary!Secondary
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -132,10 +165,134 @@ SortedPrimary@Primary!Secondary
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
 Primary!Secondary!Tertiary
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Text
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Text
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+SortedAs
+\end_layout
+
+\end_inset
+
+Text
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Primary
+\begin_inset IndexMacro subindex
+status open
+
+\begin_layout Plain Layout
+Secondary
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+SortedPrimary
+\end_layout
+
+\end_inset
+
+Primary
+\begin_inset IndexMacro subindex
+status open
+
+\begin_layout Plain Layout
+Secondary
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Primary
+\begin_inset IndexMacro subindex
+status open
+
+\begin_layout Plain Layout
+Secondary
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subindex
+status open
+
+\begin_layout Plain Layout
+Tertiary
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
