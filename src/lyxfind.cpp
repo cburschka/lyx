@@ -1108,7 +1108,7 @@ static docstring buffer_to_latex(Buffer & buffer)
 	}
 	pit_type const endpit = buffer.paragraphs().size();
 	for (pit_type pit = 0; pit != endpit; ++pit) {
-		TeXOnePar(buffer, buffer.text(), pit, os, runparams);
+		TeXOnePar(buffer, buffer.text(), pit, os, runparams, string(), -1, -1, true);
 		LYXERR(Debug::FINDVERBOSE, "searchString up to here: " << ods.str());
 	}
 	return ods.str();
@@ -4019,7 +4019,7 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 		if (len != -1 && endpos > cur.pos() + len)
 			endpos = cur.pos() + len;
 		TeXOnePar(buf, *cur.innerText(), cur.pit(), os, runparams,
-			  string(), cur.pos(), endpos);
+			  string(), cur.pos(), endpos, true);
 		LYXERR(Debug::FIND, "Latexified text from pos(" << cur.pos() << ") len(" << len << "): " << ods.str());
 		return(ods.str());
 	} else if (cur.inMathed()) {
@@ -4612,7 +4612,7 @@ static int findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, Ma
 		runparams.flavor = Flavor::XeTeX;
 		runparams.linelen = 8000; //lyxrc.plaintext_linelen;
 		runparams.dryrun = true;
-		TeXOnePar(repl_buffer, repl_buffer.text(), 0, os, runparams);
+		TeXOnePar(repl_buffer, repl_buffer.text(), 0, os, runparams, string(), -1, -1, true);
 		//repl_buffer.getSourceCode(ods, 0, repl_buffer.paragraphs().size(), false);
 		docstring repl_latex = ods.str();
 		LYXERR(Debug::FINDVERBOSE, "Latexified replace_buffer: '" << repl_latex << "'");
