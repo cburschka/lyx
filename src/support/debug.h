@@ -130,8 +130,13 @@ namespace Debug {
 	/// Return description of level
 	std::string const description(Type val);
 
-	/// Return name of level
+	/// Return name of level from value. In case of aliases,
+	/// this returns the first entry found
 	std::string const name(Type val);
+
+	/// Return name of level from index, in case of aliases
+	/// this is unambiguous
+	std::string const realName(int i);
 
 	/// Display the tags and descriptions of the current debug level
 	void showLevel(std::ostream & os, Type level);

@@ -118,6 +118,14 @@ string const Debug::name(Debug::Type val)
 }
 
 
+string const Debug::realName(int idx)
+{
+	if (idx < numErrorTags)
+		return errorTags[idx].name;
+	return "unknown index";
+}
+
+
 Debug::Type Debug::value(string const & val)
 {
 	Type l = Debug::NONE;

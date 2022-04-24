@@ -89,7 +89,7 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 	DebugVector dmap;
 	for (int i = 0 ; i < level_count; i++) {
 		Debug::Type const level = Debug::value(i);
-		string const dbgname = Debug::name(level);
+		string const dbgname = Debug::realName(i);
 		// ignore these
 		if (dbgname == "any" || dbgname == "all"
 		    || dbgname == "none" || dbgname == "latex")
