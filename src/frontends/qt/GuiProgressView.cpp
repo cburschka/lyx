@@ -85,13 +85,17 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 	widget_->debugMessagesTW->setEnabled(false);
 	widget_->debugNoneRB->setChecked(true);
 
-	// ignore Debug::NONE and Debug::ANY
-	int const level_count = Debug::levelCount() - 1;
+	int const level_count = Debug::levelCount();
 	DebugVector dmap;
-	for (int i = 1 ; i < level_count; i++) {
+	for (int i = 0 ; i < level_count; i++) {
 		Debug::Type const level = Debug::value(i);
+		string const dbgname = Debug::name(level);
+		// ignore these
+		if (dbgname == "any" || dbgname == "all"
+		    || dbgname == "none" || dbgname == "latex")
+			continue;
 		QString const desc =
-			toqstr(from_ascii(Debug::name(level) + " - "))
+			toqstr(from_ascii(dbgname + " - "))
 			+ qt_(Debug::description(level));
 		dmap.push_back(DebugMap(level, desc));
 	}
