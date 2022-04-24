@@ -51,7 +51,7 @@ GuiProgressView::~GuiProgressView()
 
 
 namespace{
-typedef pair<unsigned long long, QString> DebugMap;
+typedef pair<Debug::base_type, QString> DebugMap;
 typedef vector<DebugMap> DebugVector;
 
 bool DebugSorter(DebugMap const & a, DebugMap const & b)
@@ -152,7 +152,7 @@ void GuiProgressView::debugMessageActivated(QTreeWidgetItem * item, int)
 
 void GuiProgressView::levelChanged()
 {
-	unsigned long long level = Debug::NONE;
+	Debug::base_type level = Debug::NONE;
 	QTreeWidgetItemIterator it(widget_->debugMessagesTW);
 	while (*it) {
 		if ((*it)->text(1) == qt_("Yes")) {
