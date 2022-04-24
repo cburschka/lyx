@@ -129,7 +129,7 @@ Debug::Type Debug::value(string const & val)
 			break;
 		// Is it a number?
 		if (isStrInt(tmp))
-			l |= static_cast<Type>(convert<int>(tmp));
+			l |= static_cast<Type>(convert<unsigned long long>(tmp));
 		else
 			// Search for an explicit name
 			for (DebugErrorItem const & item : errorTags)

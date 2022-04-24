@@ -51,7 +51,7 @@ GuiProgressView::~GuiProgressView()
 
 
 namespace{
-typedef pair<int, QString> DebugMap;
+typedef pair<unsigned long long, QString> DebugMap;
 typedef vector<DebugMap> DebugVector;
 
 bool DebugSorter(DebugMap const & a, DebugMap const & b)
@@ -106,7 +106,7 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 	for (; dit != den; ++dit) {
 		QTreeWidgetItem * item = new QTreeWidgetItem(widget_->debugMessagesTW);
 		item->setText(0, dit->second);
-		item->setData(0, Qt::UserRole, int(dit->first));
+		item->setData(0, Qt::UserRole, dit->first);
 		item->setText(1, qt_("No"));
 	}
 	widget_->debugMessagesTW->resizeColumnToContents(0);
@@ -152,11 +152,12 @@ void GuiProgressView::debugMessageActivated(QTreeWidgetItem * item, int)
 
 void GuiProgressView::levelChanged()
 {
-	unsigned int level = Debug::NONE;
+	unsigned long long level = Debug::NONE;
 	QTreeWidgetItemIterator it(widget_->debugMessagesTW);
 	while (*it) {
-		if ((*it)->text(1) == qt_("Yes"))
-			level |= (*it)->data(0, Qt::UserRole).toInt();
+		if ((*it)->text(1) == qt_("Yes")) {
+			level |= (*it)->data(0, Qt::UserRole).toULongLong();
+		}
 		++it;
 	}
 	dispatch(FuncRequest(LFUN_DEBUG_LEVEL_SET, convert<string>(level)));
