@@ -362,8 +362,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-04-19 18:17+0200\n"
-"PO-Revision-Date: 2022-04-19 18:20+0200\n"
+"POT-Creation-Date: 2022-04-24 17:20+0200\n"
+"PO-Revision-Date: 2022-04-24 17:23+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -32069,18 +32069,18 @@ msgstr "Suffixe du fichier"
 
 #: src/frontends/qt/GuiBranches.cpp:135 src/frontends/qt/GuiBranches.cpp:149
 #: src/frontends/qt/GuiDocument.cpp:3339 src/frontends/qt/GuiDocument.cpp:4644
-#: src/frontends/qt/GuiProgressView.cpp:144
-#: src/frontends/qt/GuiProgressView.cpp:158
-#: src/frontends/qt/GuiProgressView.cpp:179
+#: src/frontends/qt/GuiProgressView.cpp:148
+#: src/frontends/qt/GuiProgressView.cpp:162
+#: src/frontends/qt/GuiProgressView.cpp:184
 msgid "Yes"
 msgstr "Oui"
 
 #: src/frontends/qt/GuiBranches.cpp:135 src/frontends/qt/GuiBranches.cpp:149
 #: src/frontends/qt/GuiDocument.cpp:3338 src/frontends/qt/GuiDocument.cpp:3972
 #: src/frontends/qt/GuiDocument.cpp:4643
-#: src/frontends/qt/GuiProgressView.cpp:110
-#: src/frontends/qt/GuiProgressView.cpp:143
-#: src/frontends/qt/GuiProgressView.cpp:179
+#: src/frontends/qt/GuiProgressView.cpp:114
+#: src/frontends/qt/GuiProgressView.cpp:147
+#: src/frontends/qt/GuiProgressView.cpp:184
 msgid "No"
 msgstr "Non"
 
@@ -34212,11 +34212,11 @@ msgstr "<Tous les index>"
 msgid "Progress/Debug Messages"
 msgstr "Messages de progression ou d'analyse"
 
-#: src/frontends/qt/GuiProgressView.cpp:101
+#: src/frontends/qt/GuiProgressView.cpp:105
 msgid "Debug Level"
 msgstr "Niveau d'analyse"
 
-#: src/frontends/qt/GuiProgressView.cpp:102
+#: src/frontends/qt/GuiProgressView.cpp:106
 msgid "Set"
 msgstr "Fixer"
 
@@ -37412,28 +37412,28 @@ msgstr "%1$d chaînes remplacées dans le sélection."
 msgid "%1$d strings have been replaced."
 msgstr "%1$d chaînes remplacées."
 
-#: src/lyxfind.cpp:4680
+#: src/lyxfind.cpp:4679
 msgid "One match has been replaced."
 msgstr "Une correspondance a été remplacée."
 
-#: src/lyxfind.cpp:4683
+#: src/lyxfind.cpp:4682
 msgid "Two matches have been replaced."
 msgstr "Deux correspondances ont été remplacées."
 
-#: src/lyxfind.cpp:4686
+#: src/lyxfind.cpp:4685
 #, c-format
 msgid "%1$d matches have been replaced."
 msgstr "%1$d correspondances ont été remplacées."
 
-#: src/lyxfind.cpp:4692
+#: src/lyxfind.cpp:4691
 msgid "Match not found."
 msgstr "Chaîne de caractères introuvable."
 
-#: src/lyxfind.cpp:4698
+#: src/lyxfind.cpp:4697
 msgid "Match has been replaced."
 msgstr "Chaîne de caractères remplacée."
 
-#: src/lyxfind.cpp:4700
+#: src/lyxfind.cpp:4699
 msgid "Match found."
 msgstr "Chaîne de caractères reconnue."
 
@@ -37782,9 +37782,14 @@ msgstr "Lecture des fichiers de configuration"
 msgid "Custom keyboard definition"
 msgstr "Définition d'un clavier personnalisé"
 
-#: src/support/debug.cpp:50 src/support/debug.cpp:51
+#: src/support/debug.cpp:50
 msgid "Output source file generation/processing"
 msgstr "Génération/traitement du fichier source exporté."
+
+#: src/support/debug.cpp:51
+msgid "Output source file generation/processing (alias to 'outfile')"
+msgstr ""
+"Génération/traitement du fichier source exporté (alias de « outfile »)."
 
 #: src/support/debug.cpp:52
 msgid "Math editor"
@@ -37886,11 +37891,15 @@ msgstr "Rechercher et remplacer, version bavarde du moteur"
 msgid "Developers' general debug messages"
 msgstr "Messages de débogage généraux pour les développeurs"
 
-#: src/support/debug.cpp:77 src/support/debug.cpp:78
+#: src/support/debug.cpp:77
 msgid "All debugging messages"
 msgstr "Tous les messages de débogage"
 
-#: src/support/debug.cpp:185
+#: src/support/debug.cpp:78
+msgid "All debugging messages (alias to 'all')"
+msgstr "Tous les messages de débogage (alias de « all »)."
+
+#: src/support/debug.cpp:193
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Débogage de '%1$s' (%2$s)"
