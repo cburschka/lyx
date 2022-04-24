@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-04-19 16:14+0200\n"
-"PO-Revision-Date: 2022-04-19 14:15+0000\n"
+"POT-Creation-Date: 2022-04-24 17:25+0200\n"
+"PO-Revision-Date: 2022-04-24 15:29+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -37073,6 +37073,10 @@ msgid "Output source file generation/processing"
 msgstr "Spúšťanie/generovanie výstupného súboru"
 
 #: src/support/debug.cpp:51
+msgid "Output source file generation/processing (alias to 'outfile')"
+msgstr "Spúšťanie/generovanie výstupného súboru (iné meno pre 'outfile')"
+
+#: src/support/debug.cpp:51
 msgid "Math editor"
 msgstr "Editor matematiky"
 
@@ -37175,6 +37179,10 @@ msgstr "Všeobecné ladiace hlásenia pre vývojárov"
 #: src/support/debug.cpp:75
 msgid "All debugging messages"
 msgstr "Všetky ladiace hlásenia"
+
+#: src/support/debug.cpp:78
+msgid "All debugging messages (alias to 'all')"
+msgstr "Všetky ladiace hlásenia (iné meno pre 'all')"
 
 #: src/support/debug.cpp:154
 #, c-format
