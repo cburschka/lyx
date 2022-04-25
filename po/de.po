@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-04-20 08:01+0200\n"
-"PO-Revision-Date: 2022-04-20 08:03+0200\n"
+"POT-Creation-Date: 2022-04-24 16:54+0200\n"
+"PO-Revision-Date: 2022-04-24 17:05+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -31806,18 +31806,18 @@ msgstr "Erweitere Dateinamen"
 
 #: src/frontends/qt/GuiBranches.cpp:135 src/frontends/qt/GuiBranches.cpp:149
 #: src/frontends/qt/GuiDocument.cpp:3339 src/frontends/qt/GuiDocument.cpp:4644
-#: src/frontends/qt/GuiProgressView.cpp:144
-#: src/frontends/qt/GuiProgressView.cpp:158
-#: src/frontends/qt/GuiProgressView.cpp:179
+#: src/frontends/qt/GuiProgressView.cpp:148
+#: src/frontends/qt/GuiProgressView.cpp:162
+#: src/frontends/qt/GuiProgressView.cpp:184
 msgid "Yes"
 msgstr "Ja"
 
 #: src/frontends/qt/GuiBranches.cpp:135 src/frontends/qt/GuiBranches.cpp:149
 #: src/frontends/qt/GuiDocument.cpp:3338 src/frontends/qt/GuiDocument.cpp:3972
 #: src/frontends/qt/GuiDocument.cpp:4643
-#: src/frontends/qt/GuiProgressView.cpp:110
-#: src/frontends/qt/GuiProgressView.cpp:143
-#: src/frontends/qt/GuiProgressView.cpp:179
+#: src/frontends/qt/GuiProgressView.cpp:114
+#: src/frontends/qt/GuiProgressView.cpp:147
+#: src/frontends/qt/GuiProgressView.cpp:184
 msgid "No"
 msgstr "Nein"
 
@@ -33955,11 +33955,11 @@ msgstr "<Alle Indexe>"
 msgid "Progress/Debug Messages"
 msgstr "Fortschritts-/Testmeldungen"
 
-#: src/frontends/qt/GuiProgressView.cpp:101
+#: src/frontends/qt/GuiProgressView.cpp:105
 msgid "Debug Level"
 msgstr "Testebene"
 
-#: src/frontends/qt/GuiProgressView.cpp:102
+#: src/frontends/qt/GuiProgressView.cpp:106
 msgid "Set"
 msgstr "Aktiv"
 
@@ -37539,9 +37539,13 @@ msgstr "Lesen der Konfigurationsdateien"
 msgid "Custom keyboard definition"
 msgstr "Eigene Tastaturdefinition"
 
-#: src/support/debug.cpp:50 src/support/debug.cpp:51
+#: src/support/debug.cpp:50
 msgid "Output source file generation/processing"
 msgstr "Erzeugung/Verarbeitung der Ausgabequelldatei"
+
+#: src/support/debug.cpp:51
+msgid "Output source file generation/processing (alias to 'outfile')"
+msgstr "Erzeugung/Verarbeitung der Ausgabequelldatei (Alias für 'outfile')"
 
 #: src/support/debug.cpp:52
 msgid "Math editor"
@@ -37643,11 +37647,15 @@ msgstr "Mechanismus für Suchen und Ersetzen (ausführlich)"
 msgid "Developers' general debug messages"
 msgstr "Allgemeine Testmeldungen der Entwickler"
 
-#: src/support/debug.cpp:77 src/support/debug.cpp:78
+#: src/support/debug.cpp:77
 msgid "All debugging messages"
 msgstr "Alle Testmeldungen"
 
-#: src/support/debug.cpp:185
+#: src/support/debug.cpp:78
+msgid "All debugging messages (alias to 'all')"
+msgstr "Alle Testmeldungen (alias für 'all')"
+
+#: src/support/debug.cpp:193
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Testen von ,%1$s` (%2$s)"

@@ -48,7 +48,7 @@ DebugErrorItem errorTags[] = {
 	{ Debug::LYXRC,     "lyxrc",     N_("Configuration files reading")},
 	{ Debug::KBMAP,     "kbmap",     N_("Custom keyboard definition")},
 	{ Debug::OUTFILE,   "outfile",   N_("Output source file generation/processing")},
-	{ Debug::OUTFILE,   "latex",     N_("Output source file generation/processing")},
+	{ Debug::OUTFILE,   "latex",     N_("Output source file generation/processing (alias to 'outfile')")},
 	{ Debug::MATHED,    "mathed",    N_("Math editor")},
 	{ Debug::FONT,      "font",      N_("Font handling")},
 	{ Debug::TCLASS,    "tclass",    N_("Textclass files reading")},
@@ -75,7 +75,7 @@ DebugErrorItem errorTags[] = {
 	{ Debug::FINDVERBOSE,"findverbose", N_("Find and replace mechanism, verbose version")},
 	{ Debug::DEBUG,     "debug",     N_("Developers' general debug messages")},
 	{ Debug::ANY,       "any",       N_("All debugging messages")},
-	{ Debug::ANY,       "all",       N_("All debugging messages")}
+	{ Debug::ANY,       "all",       N_("All debugging messages (alias to 'all')")}
 };
 
 
@@ -118,6 +118,14 @@ string const Debug::name(Debug::Type val)
 }
 
 
+string const Debug::realName(int idx)
+{
+	if (idx < numErrorTags)
+		return errorTags[idx].name;
+	return "unknown index";
+}
+
+
 Debug::Type Debug::value(string const & val)
 {
 	Type l = Debug::NONE;
@@ -129,7 +137,7 @@ Debug::Type Debug::value(string const & val)
 			break;
 		// Is it a number?
 		if (isStrInt(tmp))
-			l |= static_cast<Type>(convert<int>(tmp));
+			l |= static_cast<Type>(convert<unsigned long long>(tmp));
 		else
 			// Search for an explicit name
 			for (DebugErrorItem const & item : errorTags)

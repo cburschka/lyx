@@ -51,7 +51,7 @@ GuiProgressView::~GuiProgressView()
 
 
 namespace{
-typedef pair<int, QString> DebugMap;
+typedef pair<Debug::base_type, QString> DebugMap;
 typedef vector<DebugMap> DebugVector;
 
 bool DebugSorter(DebugMap const & a, DebugMap const & b)
@@ -85,13 +85,17 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 	widget_->debugMessagesTW->setEnabled(false);
 	widget_->debugNoneRB->setChecked(true);
 
-	// ignore Debug::NONE and Debug::ANY
-	int const level_count = Debug::levelCount() - 1;
+	int const level_count = Debug::levelCount();
 	DebugVector dmap;
-	for (int i = 1 ; i < level_count; i++) {
+	for (int i = 0 ; i < level_count; i++) {
 		Debug::Type const level = Debug::value(i);
+		string const dbgname = Debug::realName(i);
+		// ignore these
+		if (dbgname == "any" || dbgname == "all"
+		    || dbgname == "none" || dbgname == "latex")
+			continue;
 		QString const desc =
-			toqstr(from_ascii(Debug::name(level) + " - "))
+			toqstr(from_ascii(dbgname + " - "))
 			+ qt_(Debug::description(level));
 		dmap.push_back(DebugMap(level, desc));
 	}
@@ -106,7 +110,7 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 	for (; dit != den; ++dit) {
 		QTreeWidgetItem * item = new QTreeWidgetItem(widget_->debugMessagesTW);
 		item->setText(0, dit->second);
-		item->setData(0, Qt::UserRole, int(dit->first));
+		item->setData(0, Qt::UserRole, dit->first);
 		item->setText(1, qt_("No"));
 	}
 	widget_->debugMessagesTW->resizeColumnToContents(0);
@@ -152,11 +156,12 @@ void GuiProgressView::debugMessageActivated(QTreeWidgetItem * item, int)
 
 void GuiProgressView::levelChanged()
 {
-	unsigned int level = Debug::NONE;
+	Debug::base_type level = Debug::NONE;
 	QTreeWidgetItemIterator it(widget_->debugMessagesTW);
 	while (*it) {
-		if ((*it)->text(1) == qt_("Yes"))
-			level |= (*it)->data(0, Qt::UserRole).toInt();
+		if ((*it)->text(1) == qt_("Yes")) {
+			level |= (*it)->data(0, Qt::UserRole).toULongLong();
+		}
 		++it;
 	}
 	dispatch(FuncRequest(LFUN_DEBUG_LEVEL_SET, convert<string>(level)));

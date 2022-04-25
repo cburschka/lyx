@@ -32,12 +32,15 @@ typedef basic_streambuf<char, char_traits<char> > streambuf;
 #endif
 
 
+// Make sure at compile time that sizeof(unsigned long long) >= 8
+typedef char p__LINE__[ (sizeof(unsigned long long) > 7) ? 1 : -1];
+
 namespace lyx {
 
 ///  This is all the different debug levels that we have.
 namespace Debug {
 	///
-	typedef uint64_t base_type;
+	typedef unsigned long long base_type;
 	enum Type : base_type {
 		///
 		NONE = 0,
@@ -106,7 +109,7 @@ namespace Debug {
 		///
 		FINDVERBOSE= (1u << 31),
 		///
-		DEBUG      = (1L << 32),
+		DEBUG      = (1ULL << 32),
 		///
 		ANY = 0x1ffffffff
 	};
@@ -127,8 +130,13 @@ namespace Debug {
 	/// Return description of level
 	std::string const description(Type val);
 
-	/// Return name of level
+	/// Return name of level from value. In case of aliases,
+	/// this returns the first entry found
 	std::string const name(Type val);
+
+	/// Return name of level from index, in case of aliases
+	/// this is unambiguous
+	std::string const realName(int i);
 
 	/// Display the tags and descriptions of the current debug level
 	void showLevel(std::ostream & os, Type level);
