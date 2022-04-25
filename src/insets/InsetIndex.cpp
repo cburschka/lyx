@@ -1241,6 +1241,7 @@ struct IndexEntry
 {
 	IndexEntry() = default;
 
+	/// Builds an entry for the index with the given LaTeX index entry `s` and a pointer to the index inset `d`.
 	IndexEntry(docstring const & s, DocIterator const & d, bool for_output = false)
 			: dit_(d)
 	{
@@ -1250,6 +1251,7 @@ struct IndexEntry
 		parseItem(subsub_, for_output);
 	}
 
+	/// Comparison between two entries only based on their LaTeX representation.
 	bool equal(IndexEntry const & rhs) const
 	{
 		return main_ == rhs.main_ && sub_ == rhs.sub_ && subsub_ == rhs.subsub_;
