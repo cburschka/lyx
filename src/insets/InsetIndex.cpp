@@ -769,51 +769,47 @@ std::vector<docstring> InsetIndex::getSeeAlsoesAsText(OutputParams const & runpa
 }
 
 
-bool InsetIndex::hasSubentries() const
+namespace {
+
+bool hasInsetWithCode(const InsetIndex * const inset_index, const InsetCode code,
+					  const std::set<InsetIndexMacroParams::Type> types = {})
 {
-	Paragraph const & par = paragraphs().front();
+	Paragraph const & par = inset_index->paragraphs().front();
 	InsetList::const_iterator it = par.insetList().begin();
 	for (; it != par.insetList().end(); ++it) {
 		Inset & inset = *it->inset;
-		if (inset.lyxCode() == INDEXMACRO_CODE) {
+		if (inset.lyxCode() == code) {
+			if (types.empty())
+				return true;
+
+			LASSERT(code == INDEXMACRO_CODE, return false);
 			InsetIndexMacro const & iim =
-				static_cast<InsetIndexMacro const &>(inset);
-			if (iim.params().type == InsetIndexMacroParams::Subindex)
+					static_cast<InsetIndexMacro const &>(inset);
+			if (types.find(iim.params().type) != types.end())
 				return true;
 		}
 	}
 	return false;
+}
+
+} // namespace
+
+
+bool InsetIndex::hasSubentries() const
+{
+	return hasInsetWithCode(this, INDEXMACRO_CODE, {InsetIndexMacroParams::Subindex});
 }
 
 
 bool InsetIndex::hasSeeRef() const
 {
-	Paragraph const & par = paragraphs().front();
-	InsetList::const_iterator it = par.insetList().begin();
-	for (; it != par.insetList().end(); ++it) {
-		Inset & inset = *it->inset;
-		if (inset.lyxCode() == INDEXMACRO_CODE) {
-			InsetIndexMacro const & iim =
-				static_cast<InsetIndexMacro const &>(inset);
-			if (iim.params().type == InsetIndexMacroParams::See
-			    || iim.params().type == InsetIndexMacroParams::Seealso)
-				return true;
-		}
-	}
-	return false;
+	return hasInsetWithCode(this, INDEXMACRO_CODE, {InsetIndexMacroParams::See, InsetIndexMacroParams::Seealso});
 }
 
 
 bool InsetIndex::hasSortKey() const
 {
-	Paragraph const & par = paragraphs().front();
-	InsetList::const_iterator it = par.insetList().begin();
-	for (; it != par.insetList().end(); ++it) {
-		Inset & inset = *it->inset;
-		if (inset.lyxCode() == INDEXMACRO_SORTKEY_CODE)
-			return true;
-	}
-	return false;
+	return hasInsetWithCode(this, INDEXMACRO_SORTKEY_CODE);
 }
 
 
