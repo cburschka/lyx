@@ -1237,88 +1237,113 @@ bool InsetPrintIndex::hasSettings() const
 
 
 namespace {
-
-void parseItem(docstring & s, bool for_output)
-{
-	// this does not yet check for escaped things
-	size_type loc = s.find(from_ascii("@"));
-	if (loc != string::npos) {
-		if (for_output)
-			s.erase(0, loc + 1);
-		else
-			s.erase(loc);
-	}
-	loc = s.find(from_ascii("|"));
-	if (loc != string::npos)
-		s.erase(loc);
-}
-
-
-void extractSubentries(docstring const & entry, docstring & main,
-		docstring & sub1, docstring & sub2)
-{
-	if (entry.empty())
-		return;
-	size_type const loc = entry.find(from_ascii(" ! "));
-	if (loc == string::npos)
-		main = entry;
-	else {
-		main = trim(entry.substr(0, loc));
-		size_t const locend = loc + 3;
-		size_type const loc2 = entry.find(from_ascii(" ! "), locend);
-		if (loc2 == string::npos) {
-			sub1 = trim(entry.substr(locend));
-		} else {
-			sub1 = trim(entry.substr(locend, loc2 - locend));
-			sub2 = trim(entry.substr(loc2 + 3));
-		}
-	}
-}
-
-
 struct IndexEntry
 {
-	IndexEntry()
-	{}
+	IndexEntry() = default;
 
-	IndexEntry(docstring const & s, DocIterator const & d)
-			: dit(d)
+	IndexEntry(docstring const & s, DocIterator const & d, bool for_output = false)
+			: dit_(d)
 	{
-		extractSubentries(s, main, sub, subsub);
-		parseItem(main, false);
-		parseItem(sub, false);
-		parseItem(subsub, false);
+		extractSubentries(s);
+		parseItem(main_, for_output);
+		parseItem(sub_, for_output);
+		parseItem(subsub_, for_output);
 	}
 
 	bool equal(IndexEntry const & rhs) const
 	{
-		return main == rhs.main && sub == rhs.sub && subsub == rhs.subsub;
+		return main_ == rhs.main_ && sub_ == rhs.sub_ && subsub_ == rhs.subsub_;
 	}
 
 	bool same_sub(IndexEntry const & rhs) const
 	{
-		return main == rhs.main && sub == rhs.sub;
+		return main_ == rhs.main_ && sub_ == rhs.sub_;
 	}
 
 	bool same_main(IndexEntry const & rhs) const
 	{
-		return main == rhs.main;
+		return main_ == rhs.main_;
 	}
 
-	docstring main;
-	docstring sub;
-	docstring subsub;
-	DocIterator dit;
+	const Paragraph & innerParagraph() const
+	{
+		return dit_.innerParagraph();
+	}
+
+	const docstring & main() const
+	{
+		return main_;
+	}
+
+	const docstring & sub() const
+	{
+		return sub_;
+	}
+
+	const docstring & subsub() const
+	{
+		return subsub_;
+	}
+
+	const DocIterator & dit() const
+	{
+		return dit_;
+	}
+
+
+private:
+	void parseItem(docstring & s, bool for_output)
+	{
+		// this does not yet check for escaped things
+		size_type loc = s.find(from_ascii("@"));
+		if (loc != string::npos) {
+			if (for_output)
+				s.erase(0, loc + 1);
+			else
+				s.erase(loc);
+		}
+		loc = s.find(from_ascii("|"));
+		if (loc != string::npos)
+			s.erase(loc);
+	}
+
+	void extractSubentries(docstring const & entry)
+	{
+		if (entry.empty())
+			return;
+		size_type const loc = entry.find(from_ascii(" ! "));
+		if (loc == string::npos)
+			main_ = entry;
+		else {
+			main_ = trim(entry.substr(0, loc));
+			size_t const locend = loc + 3;
+			size_type const loc2 = entry.find(from_ascii(" ! "), locend);
+			if (loc2 == string::npos) {
+				sub_ = trim(entry.substr(locend));
+			} else {
+				sub_ = trim(entry.substr(locend, loc2 - locend));
+				subsub_ = trim(entry.substr(loc2 + 3));
+			}
+		}
+	}
+
+private:
+	docstring main_;
+	docstring sub_;
+	docstring subsub_;
+	DocIterator dit_;
+
+	friend bool operator<(IndexEntry const & lhs, IndexEntry const & rhs);
 };
 
 bool operator<(IndexEntry const & lhs, IndexEntry const & rhs)
 {
-	int comp = compare_no_case(lhs.main, rhs.main);
+	int comp = compare_no_case(lhs.main_, rhs.main_);
 	if (comp == 0)
-		comp = compare_no_case(lhs.sub, rhs.sub);
+		comp = compare_no_case(lhs.sub_, rhs.sub_);
 	if (comp == 0)
-		comp = compare_no_case(lhs.subsub, rhs.subsub);
-	return (comp < 0);
+		comp = compare_no_case(lhs.subsub_, rhs.subsub_);
+	return comp < 0;
 }
 
 } // namespace
@@ -1384,7 +1409,7 @@ docstring InsetPrintIndex::xhtml(XMLStream &, OutputParams const & op) const
 	IndexEntry last;
 	int entry_number = -1;
 	for (; eit != een; ++eit) {
-		Paragraph const & par = eit->dit.innerParagraph();
+		Paragraph const & par = eit->innerParagraph();
 		if (entry_number == -1 || !eit->equal(last)) {
 			if (entry_number != -1) {
 				// not the first time through the loop, so
@@ -1434,21 +1459,15 @@ docstring InsetPrintIndex::xhtml(XMLStream &, OutputParams const & op) const
 			ours.for_toc = true;
 			par.simpleLyXHTMLOnePar(buffer(), entstream, ours, dummy);
 
-			// these will contain XHTML versions of the main entry, etc
+			// these will contain XHTML versions of the main entry, etc.
 			// remember that everything will already have been escaped,
 			// so we'll need to use NextRaw() during output.
-			docstring main;
-			docstring sub;
-			docstring subsub;
-			extractSubentries(ent.str(), main, sub, subsub);
-			parseItem(main, true);
-			parseItem(sub, true);
-			parseItem(subsub, true);
+			IndexEntry xhtml_entry = IndexEntry(ent.str(), eit->dit(), true);
 
 			if (level == 3) {
 				// another subsubentry
 				xs << xml::StartTag("li", "class='subsubentry'")
-				   << XMLStream::ESCAPE_NONE << subsub;
+				   << XMLStream::ESCAPE_NONE << xhtml_entry.subsub();
 			} else if (level == 2) {
 				// there are two ways we can be here:
 				// (i) we can actually be inside a sub-entry already and be about
@@ -1460,15 +1479,15 @@ docstring InsetPrintIndex::xhtml(XMLStream &, OutputParams const & op) const
 				// only in the latter case do we need to output the new sub-entry.
 				// note that in this case, too, though, the sub-entry might already
 				// have a sub-sub-entry.
-				if (eit->sub != last.sub)
+				if (eit->sub() != last.sub())
 					xs << xml::StartTag("li", "class='subentry'")
-					   << XMLStream::ESCAPE_NONE << sub;
-				if (!subsub.empty()) {
+					   << XMLStream::ESCAPE_NONE << xhtml_entry.sub();
+				if (!xhtml_entry.subsub().empty()) {
 					// it's actually a subsubentry, so we need to start that list
 					xs << xml::CR()
 					   << xml::StartTag("ul", "class='subsubentry'")
 					   << xml::StartTag("li", "class='subsubentry'")
-					   << XMLStream::ESCAPE_NONE << subsub;
+					   << XMLStream::ESCAPE_NONE << xhtml_entry.subsub();
 					level = 3;
 				}
 			} else {
@@ -1482,21 +1501,21 @@ docstring InsetPrintIndex::xhtml(XMLStream &, OutputParams const & op) const
 				// only in the latter case do we need to output the new main entry.
 				// note that in this case, too, though, the main entry might already
 				// have a sub-entry, or even a sub-sub-entry.
-				if (eit->main != last.main)
-					xs << xml::StartTag("li", "class='main'") << main;
-				if (!sub.empty()) {
+				if (eit->main() != last.main())
+					xs << xml::StartTag("li", "class='main'") << xhtml_entry.main();
+				if (!xhtml_entry.sub().empty()) {
 					// there's a sub-entry, too
 					xs << xml::CR()
 					   << xml::StartTag("ul", "class='subentry'")
 					   << xml::StartTag("li", "class='subentry'")
-					   << XMLStream::ESCAPE_NONE << sub;
+					   << XMLStream::ESCAPE_NONE << xhtml_entry.sub();
 					level = 2;
-					if (!subsub.empty()) {
+					if (!xhtml_entry.subsub().empty()) {
 						// and a sub-sub-entry
 						xs << xml::CR()
 						   << xml::StartTag("ul", "class='subsubentry'")
 						   << xml::StartTag("li", "class='subsubentry'")
-						   << XMLStream::ESCAPE_NONE << subsub;
+						   << XMLStream::ESCAPE_NONE << xhtml_entry.subsub();
 						level = 3;
 					}
 				}
