@@ -19,6 +19,8 @@
 
 namespace lyx {
 
+class IndexEntry;
+
 class InsetIndexParams {
 public:
 	enum PageRange {
@@ -100,6 +102,8 @@ private:
 	///
 	std::vector<docstring> getSubentriesAsText(OutputParams const &) const;
 	///
+	docstring getMainSubentryAsText(OutputParams const & runparams) const;
+	///
 	void getSeeRefs(otexstream &, OutputParams const &) const;
 	///
 	docstring getSeeAsText(OutputParams const & runparams) const;
@@ -126,6 +130,8 @@ private:
 
 	///
 	friend class InsetIndexParams;
+	///
+	friend class IndexEntry;
 	///
 	InsetIndexParams params_;
 };

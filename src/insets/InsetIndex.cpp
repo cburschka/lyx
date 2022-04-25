@@ -47,7 +47,7 @@
 
 #include <algorithm>
 #include <set>
-#include <ostream>
+#include <iostream>
 
 #include <QThreadStorage>
 
@@ -707,6 +707,14 @@ std::vector<docstring> InsetIndex::getSubentriesAsText(OutputParams const & runp
 }
 
 
+docstring InsetIndex::getMainSubentryAsText(OutputParams const & runparams) const
+{
+	otexstringstream os;
+	InsetText::latex(os, runparams);
+	return os.str();
+}
+
+
 void InsetIndex::getSeeRefs(otexstream & os, OutputParams const & runparams) const
 {
 	Paragraph const & par = paragraphs().front();
@@ -1249,60 +1257,31 @@ bool InsetPrintIndex::hasSettings() const
 }
 
 
-namespace {
-struct IndexEntry
+class IndexEntry
 {
-	IndexEntry() = default;
-
-	/// Builds an entry for the index with the given LaTeX index entry `s` and a pointer to the index inset `d`.
-	IndexEntry(docstring const & s, DocIterator const & d, bool for_output = false)
-			: dit_(d), output_error_{}
+public:
+	/// Builds an entry for the index.
+	IndexEntry(const InsetIndex * inset, OutputParams const * runparams) : inset_(inset), runparams_(runparams)
 	{
-		extractSubentries(s);
-		parseItem(main_, for_output);
-		parseItem(sub_, for_output);
-		parseItem(subsub_, for_output);
-	}
+		LASSERT(runparams, return);
 
-	/// Comparison between two entries only based on their LaTeX representation.
-	bool equal(IndexEntry const & rhs) const
-	{
-		return main_ == rhs.main_ && sub_ == rhs.sub_ && subsub_ == rhs.subsub_;
-	}
+		// Convert the inset as text. The resulting text usually only contains an XHTML anchor (<a id='...'/>) and text.
+		odocstringstream entry;
+		OutputParams ours = *runparams;
+		ours.for_toc = false;
+		inset_->plaintext(entry, ours);
+		entry_ = entry.str();
 
-	bool same_sub(IndexEntry const & rhs) const
-	{
-		return main_ == rhs.main_ && sub_ == rhs.sub_;
-	}
+		// Determine in which index this entry belongs to.
+		if (inset_->buffer().masterBuffer()->params().use_indices) {
+			index_ = inset_->params_.index;
+		}
 
-	bool same_main(IndexEntry const & rhs) const
-	{
-		return main_ == rhs.main_;
-	}
-
-	const Paragraph & innerParagraph() const
-	{
-		return dit_.innerParagraph();
-	}
-
-	const docstring & main() const
-	{
-		return main_;
-	}
-
-	const docstring & sub() const
-	{
-		return sub_;
-	}
-
-	const docstring & subsub() const
-	{
-		return subsub_;
-	}
-
-	const DocIterator & dit() const
-	{
-		return dit_;
+		// Attempt parsing the inset.
+		if (isModern())
+			parseAsModern();
+		else
+			parseAsLegacy();
 	}
 
 	/// When parsing this entry, some errors may be found; they are reported as a single string.
@@ -1312,78 +1291,373 @@ struct IndexEntry
 		return output_error_;
 	}
 
-
-private:
-	void checkForUnsupportedFeatures(docstring const & entry)
+	void output_error(XMLStream xs) const
 	{
-		if (entry.find(from_utf8("@\\")) != lyx::docstring::npos) {
-			output_error_ = from_utf8("Unsupported feature: an index entry contains an @\\. "
-									  "Complete entry: \"") + entry + from_utf8("\"");
-		}
+		LYXERR0(output_error());
+		xs << XMLStream::ESCAPE_NONE << (from_utf8("<!-- Output Error: ") + output_error() + from_utf8(" -->\n"));
 	}
 
-	/// Splits the LaTeX entry into subentries.
-	void extractSubentries(docstring const & entry)
+
+private:
+	bool isModern()
 	{
-		if (entry.empty())
-			return;
+		std::cout << to_utf8(entry_) << std::endl;
 
-		size_type const loc_first_bang = entry.find(from_ascii("!"));
-		if (loc_first_bang == string::npos) {
-			// No subentry.
-			main_ = entry;
-		} else {
-			main_ = trim(entry.substr(0, loc_first_bang));
-			size_t const loc_after_first_bang = loc_first_bang + 1;
+		// If a modern parameter is present, this is definitely a modern index inset. Similarly, if it contains the
+		// usual LaTeX symbols (!|@), then it is definitely a legacy index inset. Otherwise, if it has features of
+		// neither, it is both: consider this is a modern inset, to trigger the least complex code. Mixing both types
+		// is not allowed (i.e. behaviour is undefined).
+		const bool is_definitely_modern = inset_->hasSortKey() || inset_->hasSeeRef() || inset_->hasSubentries()
+		                            || inset_->params_.range != InsetIndexParams::PageRange::None;
+		const bool is_definitely_legacy = entry_.find('@') != std::string::npos
+				|| entry_.find('|') != std::string::npos || entry_.find('!') != std::string::npos;
 
-			size_type const loc_second_bang = entry.find(from_ascii("!"), loc_after_first_bang);
-			if (loc_second_bang == string::npos) {
-				// Only a subentry, no subsubentry.
-				sub_ = trim(entry.substr(loc_after_first_bang));
+		if (is_definitely_legacy && is_definitely_modern)
+			output_error_ += from_utf8("Mix of index properties and raw LaTeX index commands is unsupported. ");
+
+		// Truth table:
+		// - is_definitely_modern == true:
+		//   - is_definitely_legacy == true: error (return whatever)
+		//   - is_definitely_legacy == false: return modern
+		// - is_definitely_modern == false:
+		//   - is_definitely_legacy == true: return legacy
+		//   - is_definitely_legacy == false: return modern
+		return !is_definitely_legacy;
+	}
+
+	void parseAsModern()
+	{
+		LASSERT(runparams_, return);
+
+		if (inset_->hasSortKey()) {
+			sort_as_ = inset_->getSortkeyAsText(*runparams_);
+		}
+
+		terms_ = inset_->getSubentriesAsText(*runparams_);
+		// The main term is not present in the vector, as it's not a subentry. The main index term is inserted raw in
+		// the index inset. Considering that the user either uses the new or the legacy mechanism, the main term is the
+		// full string within this inset (i.e. without the subinsets).
+		terms_.insert(terms_.begin(), inset_->getMainSubentryAsText(*runparams_));
+
+		has_start_range_ = inset_->params_.range == InsetIndexParams::PageRange::Start;
+		has_end_range_ = inset_->params_.range == InsetIndexParams::PageRange::End;
+
+		see_ = inset_->getSeeAsText(*runparams_);
+		see_alsoes_ = inset_->getSeeAlsoesAsText(*runparams_);
+	}
+
+	void parseAsLegacy() {
+		// Determine if some features are known not to be supported. For now, this is only formatting like
+		// \index{alpha@\textbf{alpha}} or \index{alpha@$\alpha$}.
+		// @ is supported, but only for sorting, without specific formatting.
+		if (entry_.find(from_utf8("@\\")) != lyx::docstring::npos) {
+			output_error_ += from_utf8("Unsupported feature: an index entry contains an @\\. "
+			                           "Complete entry: \"") + entry_ + from_utf8("\". ");
+		}
+		if (entry_.find(from_utf8("@$")) != lyx::docstring::npos) {
+			output_error_ += from_utf8("Unsupported feature: an index entry contains an @$. "
+			                           "Complete entry: \"") + entry_ + from_utf8("\". ");
+		}
+
+		// Split the string into its main constituents: terms, and command (see, see also, range).
+		size_t positionVerticalBar = entry_.find(from_ascii("|")); // What comes before | is (sub)(sub)entries.
+		docstring indexTerms = entry_.substr(0, positionVerticalBar);
+		docstring command;
+		if (positionVerticalBar != lyx::docstring::npos) {
+			command = entry_.substr(positionVerticalBar + 1);
+		}
+
+		// Handle sorting issues, with @.
+		vector<docstring> sortingElements = getVectorFromString(indexTerms, from_ascii("@"), false);
+		if (sortingElements.size() == 2) {
+			sort_as_ = sortingElements[0];
+			indexTerms = sortingElements[1];
+		}
+
+		// Handle entries, subentries, and subsubentries.
+		terms_ = getVectorFromString(indexTerms, from_ascii("!"), false);
+
+		// Handle ranges. Happily, (| and |) can only be at the end of the string!
+		has_start_range_ = entry_.find(from_ascii("|(")) != lyx::docstring::npos;
+		has_end_range_ = entry_.find(from_ascii("|)")) != lyx::docstring::npos;
+
+		// - Remove the ranges from the command if they do not appear at the beginning.
+		size_t range_index = 0;
+		while ((range_index = command.find(from_utf8("|("), range_index)) != std::string::npos)
+			command.erase(range_index, 1);
+		range_index = 0;
+		while ((range_index = command.find(from_utf8("|)"), range_index)) != std::string::npos)
+			command.erase(range_index, 1);
+
+		// - Remove the ranges when they are the only vertical bar in the complete string.
+		if (command[0] == '(' || command[0] == ')')
+			command.erase(0, 1);
+
+		// Handle see and seealso. As "see" is a prefix of "seealso", the order of the comparisons is important.
+		// Both commands are mutually exclusive!
+		if (command.substr(0, 3) == "see") {
+			// Unescape brackets.
+			size_t index_argument_begin = 0;
+			while ((index_argument_begin = command.find(from_utf8("\\{"), index_argument_begin)) != std::string::npos)
+				command.erase(index_argument_begin, 1);
+			size_t index_argument_end = 0;
+			while ((index_argument_end = command.find(from_utf8("\\}"), index_argument_end)) != std::string::npos)
+				command.erase(index_argument_end, 1);
+
+			// Retrieve the part between brackets, and remove the complete seealso.
+			size_t position_opening_bracket = command.find(from_ascii("{"));
+			size_t position_closing_bracket = command.find(from_ascii("}"));
+			docstring argument = command.substr(position_opening_bracket + 1,
+												position_closing_bracket - position_opening_bracket - 1);
+
+			// Parse the argument of referenced entries (or a single one for see).
+			if (command.substr(0, 7) == "seealso") {
+				see_alsoes_ = getVectorFromString(argument, from_ascii(","), false);
 			} else {
-				// Subsubentry.
-				sub_ = trim(entry.substr(loc_after_first_bang, loc_second_bang - loc_after_first_bang));
-				subsub_ = trim(entry.substr(loc_second_bang + 1));
+				see_ = argument;
+
+				if (see_.find(from_ascii(",")) != std::string::npos) {
+					output_error_ += from_utf8("Several index_argument_end terms found as \"see\"! Only one is "
+					                           "acceptable. Complete entry: \"") + entry_ + from_utf8("\". ");
+				}
 			}
+
+			// Remove the complete see/seealso from the commands, in case there is something else to parse.
+			command = command.substr(position_closing_bracket + 1);
+		}
+
+		// Some parts of the strings are not parsed, as they do not have anything matching in DocBook or XHTML:
+		// things like formatting the entry or the page number, other strings for sorting.
+		// https://wiki.lyx.org/Tips/Indexing
+		// If there are such things in the index entry, then this code may miserably fail. For example, for
+		// "Peter|(textbf", no range will be detected.
+		if (!command.empty()) {
+			output_error_ += from_utf8("Unsupported feature: an index entry contains a | with an unsupported command, ")
+			                 + command + from_utf8(". Complete entry: \"") + entry_ + from_utf8("\". ");
 		}
 	}
 
-	void parseItem(docstring & s, bool for_output)
-	{
-		// this does not yet check for escaped things
-		size_type loc = s.find(from_ascii("@"));
-		if (loc != string::npos) {
-			if (for_output)
-				s.erase(0, loc + 1);
-			else
-				s.erase(loc);
-		}
-		loc = s.find(from_ascii("|"));
-		if (loc != string::npos)
-			s.erase(loc);
+public:
+	int level() const {
+		return terms_.size();
+	}
+
+	const std::vector<docstring>& terms() const {
+		return terms_;
+	}
+
+	std::vector<docstring>& terms() {
+		return terms_;
+	}
+
+	const InsetIndex* inset() const {
+		return inset_;
 	}
 
 private:
-	docstring output_error_;
-	docstring main_;
-	docstring sub_;
-	docstring subsub_;
-	DocIterator dit_;
+	// Input inset. These should only be used when parsing the inset (either parseAsModern or parseAsLegacy, called in
+	// the constructor).
+	const InsetIndex * inset_;
+	OutputParams const * runparams_;
+	docstring entry_;
+	docstring index_; // Useful when there are multiple indices in the same document.
 
+	// Errors, concatenated as a single string, available as soon as parsing is done, const afterwards (i.e. once
+	// constructor is done).
+	docstring output_error_;
+
+	// Parsed index entry.
+	std::vector<docstring> terms_; // Up to three entries, in general.
+	docstring sort_as_;
+	docstring command_;
+	bool has_start_range_;
+	bool has_end_range_;
+	docstring see_;
+	vector<docstring> see_alsoes_;
+
+	// Operators used for sorting entries (alphabetical order).
 	friend bool operator<(IndexEntry const & lhs, IndexEntry const & rhs);
 };
 
 bool operator<(IndexEntry const & lhs, IndexEntry const & rhs)
 {
-	int comp = compare_no_case(lhs.main_, rhs.main_);
-	if (comp == 0)
-		comp = compare_no_case(lhs.sub_, rhs.sub_);
-	if (comp == 0)
-		comp = compare_no_case(lhs.subsub_, rhs.subsub_);
-	return comp < 0;
+	if (lhs.terms_.empty())
+		return false;
+
+	for (int i = 0; i < min(rhs.terms_.size(), lhs.terms_.size()); ++i) {
+		int comp = compare_no_case(lhs.terms_[i], rhs.terms_[i]);
+		if (comp != 0)
+			return comp < 0;
+	}
+	return false;
 }
 
-} // namespace
+
+namespace {
+std::string generateCssClassAtDepth(unsigned depth) {
+	std::string css_class = "entry";
+
+	while (depth > 0) {
+		depth -= 1;
+		css_class.insert(0, "sub");
+	}
+
+	return css_class;
+}
+
+struct IndexNode {
+	std::vector<IndexEntry> entries;
+	std::vector<IndexNode*> children;
+};
+
+docstring termAtLevel(const IndexNode* node, unsigned depth)
+{
+	// The typical entry has a depth of 1 to 3: the call stack would then be at most 4 (due to the root node). This
+	// function could be made constant time by copying the term in each node, but that would make data duplication that
+	// may fall out of sync; the performance benefit would probably be negligible.
+	if (!node->entries.empty()) {
+		LASSERT(node->entries.begin()->terms().size() >= depth + 1, return from_ascii(""));
+		return node->entries.begin()->terms()[depth];
+	}
+
+	if (!node->children.empty()) {
+		return termAtLevel(*node->children.begin(), depth);
+	}
+
+	LASSERT(false, return from_ascii(""));
+}
+
+void insertIntoNode(const IndexEntry& entry, IndexNode* node, unsigned depth = 0)
+{
+	// depth == 0 is for the root, not yet the index, hence the increase when going to vector size.
+	for (IndexNode* child : node->children) {
+		if (entry.terms()[depth] == termAtLevel(child, depth)) {
+			if (depth + 1 == entry.terms().size()) { // == child.entries.begin()->terms().size()
+				// All term entries match: it's an entry.
+				child->entries.emplace_back(entry);
+				return;
+			} else {
+				insertIntoNode(entry, child, depth + 1);
+				return;
+			}
+		}
+	}
+
+	// Out of the loop: no matching child found, create a new (possibly nested) child for this entry. Due to the
+	// possibility of nestedness, only insert the current entry when the right level is reached. This is needed if the
+	// first entry for a word has several levels that never appeared.
+	// In particular, this case is called for the first entry.
+	IndexNode* new_node = node;
+	do {
+		new_node->children.emplace_back(new IndexNode{{}, {}});
+		new_node = new_node->children.back();
+		depth += 1;
+	} while (depth + 1 <= entry.terms().size()); // depth == 0: root node, no text associated.
+	new_node->entries.emplace_back(entry);
+}
+
+IndexNode* buildIndexTree(vector<IndexEntry>& entries)
+{
+	// Sort the entries, first on the main entry, then the subentry, then the subsubentry,
+	// thanks to the implementation of operator<.
+	// If this operation is not performed, the algorithm below is no more correct (and ensuring that it works with
+	// unsorted entries would make its complexity blow up).
+	stable_sort(entries.begin(), entries.end());
+
+	// Cook the index into a nice tree data structure: entries at a given level in the index as a node, with subentries
+	// as children.
+	auto* index_root = new IndexNode{{}, {}};
+	for (const IndexEntry& entry : entries) {
+		insertIntoNode(entry, index_root);
+	}
+
+	return index_root;
+}
+
+void outputIndexPage(XMLStream & xs, const IndexNode* root_node, unsigned depth = 0)
+{
+	LASSERT(root_node->entries.size() + root_node->children.size() > 0, return);
+
+	xs << xml::StartTag("li", "class='" + generateCssClassAtDepth(depth) + "'");
+	xs << xml::CR();
+	xs << XMLStream::ESCAPE_NONE << termAtLevel(root_node, depth);
+	// By tree assumption, all the entries at this node have the same set of terms.
+
+	if (!root_node->entries.empty()) {
+		xs << XMLStream::ESCAPE_NONE << " &#8212; ";
+		unsigned entry_number = 1;
+
+		for (unsigned i = 0; i < root_node->entries.size(); ++i) {
+			const IndexEntry &entry = root_node->entries[i];
+
+			std::string const link_attr = "href='#" + entry.inset()->paragraphs()[0].magicLabel() + "'";
+			xs << xml::StartTag("a", link_attr);
+			xs << from_ascii(std::to_string(entry_number));
+			xs << xml::EndTag("a");
+
+			if (i < root_node->entries.size() - 1) {
+				xs << ", ";
+			}
+			entry_number += 1;
+		}
+	}
+
+	if (!root_node->entries.empty() && !root_node->children.empty()) {
+		xs << xml::CR();
+	}
+
+	if (!root_node->children.empty()) {
+		xs << xml::StartTag("ul", "class='" + generateCssClassAtDepth(depth) + "'");
+		xs << xml::CR();
+
+		for (const IndexNode* child : root_node->children) {
+			outputIndexPage(xs, child, depth + 1);
+		}
+
+		xs << xml::EndTag("ul");
+		xs << xml::CR();
+	}
+
+	xs << xml::EndTag("li");
+	xs << xml::CR();
+}
+
+// Only useful for debugging.
+void printTree(const IndexNode* root_node, unsigned depth = 0)
+{
+	static const std::string pattern = "    ";
+	std::string prefix;
+	for (unsigned i = 0; i < depth; ++i) {
+		prefix += pattern;
+	}
+	const std::string prefix_long = prefix + pattern + pattern;
+
+	docstring term_at_level;
+	if (depth == 0) {
+		// The root has no term.
+		std::cout << "<ROOT>" << std::endl;
+	} else {
+		LASSERT(depth - 1 <= 10, return); // Check for overflows.
+		term_at_level = termAtLevel(root_node, depth - 1);
+		std::cout << prefix << to_utf8(term_at_level) << " (x " << std::to_string(root_node->entries.size()) << ")"
+		          << std::endl;
+	}
+
+	for (const IndexEntry& entry : root_node->entries) {
+		if (entry.terms().size() != depth) {
+			std::cout << prefix_long << "ERROR: an entry doesn't have the same number of terms" << std::endl;
+		}
+		if (depth > 0 && entry.terms()[depth - 1] != term_at_level) {
+			std::cout << prefix_long << "ERROR: an entry doesn't have the right term at depth " << std::to_string(depth)
+				<< std::endl;
+		}
+	}
+
+	for (const IndexNode* node : root_node->children) {
+		printTree(node, depth + 1);
+	}
+}
+}
 
 
 docstring InsetPrintIndex::xhtml(XMLStream &, OutputParams const & op) const
@@ -1404,22 +1678,22 @@ docstring InsetPrintIndex::xhtml(XMLStream &, OutputParams const & op) const
 		return docstring();
 
 	// Collect the index entries in a form we can use them.
-	Toc::const_iterator it = toc->begin();
-	Toc::const_iterator const en = toc->end();
 	vector<IndexEntry> entries;
-	for (; it != en; ++it)
-		if (it->isOutput())
-			entries.push_back(IndexEntry(it->str(), it->dit()));
+	for (const TocItem& item : *toc) {
+		if (item.isOutput())
+			entries.emplace_back(IndexEntry{static_cast<const InsetIndex*>(&(item.dit().inset())), &op});
+	}
 
+	// If all the index entries are in notes or not displayed, get out sooner.
 	if (entries.empty())
-		// not very likely that all the index entries are in notes or
-		// whatever, but....
 		return docstring();
 
-	// Sort the entries, first on the main entry, then the subentry, then the subsubentry,
-	// thanks to the implementation of operator<.
-	stable_sort(entries.begin(), entries.end());
+	const IndexNode* index_root = buildIndexTree(entries);
+#if 0
+	printTree(index_root);
+#endif
 
+	// Start generating the XHTML index.
 	Layout const & lay = bp.documentClass().htmlTOCLayout();
 	string const & tocclass = lay.defaultCSSClass();
 	string const tocattr = "class='index " + tocclass + "'";
@@ -1431,148 +1705,23 @@ docstring InsetPrintIndex::xhtml(XMLStream &, OutputParams const & op) const
 	XMLStream xs(ods);
 
 	xs << xml::StartTag("div", tocattr);
-	xs << xml::StartTag(lay.htmltag(), lay.htmlattr())
-		 << translateIfPossible(from_ascii("Index"),
-	                          op.local_font->language()->lang())
-		 << xml::EndTag(lay.htmltag());
+	xs << xml::CR();
+	xs << xml::StartTag(lay.htmltag(), lay.htmlattr());
+	xs << translateIfPossible(from_ascii("Index"), op.local_font->language()->lang());
+	xs << xml::EndTag(lay.htmltag());
+	xs << xml::CR();
 	xs << xml::StartTag("ul", "class='main'");
-	Font const dummy;
+	xs << xml::CR();
 
-	vector<IndexEntry>::const_iterator eit = entries.begin();
-	vector<IndexEntry>::const_iterator const een = entries.end();
-	// tracks whether we are already inside a main entry (1),
-	// a sub-entry (2), or a sub-sub-entry (3). see below for the
-	// details.
-	int level = 1;
-	// the last one we saw
-	IndexEntry last;
-	int entry_number = -1;
-	for (; eit != een; ++eit) {
-		Paragraph const & par = eit->innerParagraph();
-		if (entry_number == -1 || !eit->equal(last)) {
-			if (entry_number != -1) {
-				// not the first time through the loop, so
-				// close last entry or entries, depending.
-				if (level == 3) {
-					// close this sub-sub-entry
-					xs << xml::EndTag("li") << xml::CR();
-					// is this another sub-sub-entry within the same sub-entry?
-					if (!eit->same_sub(last)) {
-						// close this level
-						xs << xml::EndTag("ul") << xml::CR();
-						level = 2;
-					}
-				}
-				// the point of the second test here is that we might get
-				// here two ways: (i) by falling through from above; (ii) because,
-				// though the sub-entry hasn't changed, the sub-sub-entry has,
-				// which means that it is the first sub-sub-entry within this
-				// sub-entry. In that case, we do not want to close anything.
-				if (level == 2 && !eit->same_sub(last)) {
-					// close sub-entry
-					xs << xml::EndTag("li") << xml::CR();
-					// is this another sub-entry with the same main entry?
-					if (!eit->same_main(last)) {
-						// close this level
-						xs << xml::EndTag("ul") << xml::CR();
-						level = 1;
-					}
-				}
-				// again, we can get here two ways: from above, or because we have
-				// found the first sub-entry. in the latter case, we do not want to
-				// close the entry.
-				if (level == 1 && !eit->same_main(last)) {
-					// close entry
-					xs << xml::EndTag("li") << xml::CR();
-				}
-			}
-
-			// we'll be starting new entries
-			entry_number = 0;
-
-			// We need to use our own stream, since we will have to
-			// modify what we get back.
-			odocstringstream ent;
-			XMLStream entstream(ent);
-			OutputParams ours = op;
-			ours.for_toc = true;
-			par.simpleLyXHTMLOnePar(buffer(), entstream, ours, dummy);
-
-			// these will contain XHTML versions of the main entry, etc.
-			// remember that everything will already have been escaped,
-			// so we'll need to use NextRaw() during output.
-			IndexEntry xhtml_entry = IndexEntry(ent.str(), eit->dit(), true);
-
-			if (level == 3) {
-				// another subsubentry
-				xs << xml::StartTag("li", "class='subsubentry'")
-				   << XMLStream::ESCAPE_NONE << xhtml_entry.subsub();
-			} else if (level == 2) {
-				// there are two ways we can be here:
-				// (i) we can actually be inside a sub-entry already and be about
-				//     to output the first sub-sub-entry. in this case, our sub
-				//     and the last sub will be the same.
-				// (ii) we can just have closed a sub-entry, possibly after also
-				//     closing a list of sub-sub-entries. here our sub and the last
-				//     sub are different.
-				// only in the latter case do we need to output the new sub-entry.
-				// note that in this case, too, though, the sub-entry might already
-				// have a sub-sub-entry.
-				if (eit->sub() != last.sub())
-					xs << xml::StartTag("li", "class='subentry'")
-					   << XMLStream::ESCAPE_NONE << xhtml_entry.sub();
-				if (!xhtml_entry.subsub().empty()) {
-					// it's actually a subsubentry, so we need to start that list
-					xs << xml::CR()
-					   << xml::StartTag("ul", "class='subsubentry'")
-					   << xml::StartTag("li", "class='subsubentry'")
-					   << XMLStream::ESCAPE_NONE << xhtml_entry.subsub();
-					level = 3;
-				}
-			} else {
-				// there are also two ways we can be here:
-				// (i) we can actually be inside an entry already and be about
-				//     to output the first sub-entry. in this case, our main
-				//     and the last main will be the same.
-				// (ii) we can just have closed an entry, possibly after also
-				//     closing a list of sub-entries. here our main and the last
-				//     main are different.
-				// only in the latter case do we need to output the new main entry.
-				// note that in this case, too, though, the main entry might already
-				// have a sub-entry, or even a sub-sub-entry.
-				if (eit->main() != last.main())
-					xs << xml::StartTag("li", "class='main'") << xhtml_entry.main();
-				if (!xhtml_entry.sub().empty()) {
-					// there's a sub-entry, too
-					xs << xml::CR()
-					   << xml::StartTag("ul", "class='subentry'")
-					   << xml::StartTag("li", "class='subentry'")
-					   << XMLStream::ESCAPE_NONE << xhtml_entry.sub();
-					level = 2;
-					if (!xhtml_entry.subsub().empty()) {
-						// and a sub-sub-entry
-						xs << xml::CR()
-						   << xml::StartTag("ul", "class='subsubentry'")
-						   << xml::StartTag("li", "class='subsubentry'")
-						   << XMLStream::ESCAPE_NONE << xhtml_entry.subsub();
-						level = 3;
-					}
-				}
-			}
-		}
-		// finally, then, we can output the index link itself
-		string const parattr = "href='#" + par.magicLabel() + "'";
-		xs << (entry_number == 0 ? ":" : ",");
-		xs << " " << xml::StartTag("a", parattr)
-		   << ++entry_number << xml::EndTag("a");
-		last = *eit;
+	LASSERT(index_root->entries.empty(), return docstring()); // No index entry should have zero terms.
+	for (const IndexNode* node : index_root->children) {
+		outputIndexPage(xs, node);
 	}
-	// now we have to close all the open levels
-	while (level > 0) {
-		xs << xml::EndTag("li") << xml::EndTag("ul") << xml::CR();
-		--level;
-	}
-	xs << xml::EndTag("div") << xml::CR();
+
+	xs << xml::EndTag("ul");
+	xs << xml::CR();
+	xs << xml::EndTag("div");
+
 	return ods.str();
 }
 
