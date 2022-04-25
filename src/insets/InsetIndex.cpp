@@ -1243,7 +1243,7 @@ struct IndexEntry
 
 	/// Builds an entry for the index with the given LaTeX index entry `s` and a pointer to the index inset `d`.
 	IndexEntry(docstring const & s, DocIterator const & d, bool for_output = false)
-			: dit_(d)
+			: dit_(d), output_error_{}
 	{
 		extractSubentries(s);
 		parseItem(main_, for_output);
@@ -1292,8 +1292,49 @@ struct IndexEntry
 		return dit_;
 	}
 
+	/// When parsing this entry, some errors may be found; they are reported as a single string.
+	// It is up to the caller to send this string to LYXERR and the output file, as needed.
+	const docstring & output_error() const
+	{
+		return output_error_;
+	}
+
 
 private:
+	void checkForUnsupportedFeatures(docstring const & entry)
+	{
+		if (entry.find(from_utf8("@\\")) != lyx::docstring::npos) {
+			output_error_ = from_utf8("Unsupported feature: an index entry contains an @\\. "
+									  "Complete entry: \"") + entry + from_utf8("\"");
+		}
+	}
+
+	/// Splits the LaTeX entry into subentries.
+	void extractSubentries(docstring const & entry)
+	{
+		if (entry.empty())
+			return;
+
+		size_type const loc_first_bang = entry.find(from_ascii("!"));
+		if (loc_first_bang == string::npos) {
+			// No subentry.
+			main_ = entry;
+		} else {
+			main_ = trim(entry.substr(0, loc_first_bang));
+			size_t const loc_after_first_bang = loc_first_bang + 1;
+
+			size_type const loc_second_bang = entry.find(from_ascii("!"), loc_after_first_bang);
+			if (loc_second_bang == string::npos) {
+				// Only a subentry, no subsubentry.
+				sub_ = trim(entry.substr(loc_after_first_bang));
+			} else {
+				// Subsubentry.
+				sub_ = trim(entry.substr(loc_after_first_bang, loc_second_bang - loc_after_first_bang));
+				subsub_ = trim(entry.substr(loc_second_bang + 1));
+			}
+		}
+	}
+
 	void parseItem(docstring & s, bool for_output)
 	{
 		// this does not yet check for escaped things
@@ -1309,27 +1350,8 @@ private:
 			s.erase(loc);
 	}
 
-	void extractSubentries(docstring const & entry)
-	{
-		if (entry.empty())
-			return;
-		size_type const loc = entry.find(from_ascii(" ! "));
-		if (loc == string::npos)
-			main_ = entry;
-		else {
-			main_ = trim(entry.substr(0, loc));
-			size_t const locend = loc + 3;
-			size_type const loc2 = entry.find(from_ascii(" ! "), locend);
-			if (loc2 == string::npos) {
-				sub_ = trim(entry.substr(locend));
-			} else {
-				sub_ = trim(entry.substr(locend, loc2 - locend));
-				subsub_ = trim(entry.substr(loc2 + 3));
-			}
-		}
-	}
-
 private:
+	docstring output_error_;
 	docstring main_;
 	docstring sub_;
 	docstring subsub_;
