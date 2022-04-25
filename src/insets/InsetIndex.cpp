@@ -1379,6 +1379,8 @@ docstring InsetPrintIndex::xhtml(XMLStream &, OutputParams const & op) const
 		// whatever, but....
 		return docstring();
 
+	// Sort the entries, first on the main entry, then the subentry, then the subsubentry,
+	// thanks to the implementation of operator<.
 	stable_sort(entries.begin(), entries.end());
 
 	Layout const & lay = bp.documentClass().htmlTOCLayout();
