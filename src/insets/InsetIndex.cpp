@@ -769,6 +769,23 @@ std::vector<docstring> InsetIndex::getSeeAlsoesAsText(OutputParams const & runpa
 }
 
 
+bool InsetIndex::hasSubentries() const
+{
+	Paragraph const & par = paragraphs().front();
+	InsetList::const_iterator it = par.insetList().begin();
+	for (; it != par.insetList().end(); ++it) {
+		Inset & inset = *it->inset;
+		if (inset.lyxCode() == INDEXMACRO_CODE) {
+			InsetIndexMacro const & iim =
+				static_cast<InsetIndexMacro const &>(inset);
+			if (iim.params().type == InsetIndexMacroParams::Subindex)
+				return true;
+		}
+	}
+	return false;
+}
+
+
 bool InsetIndex::hasSeeRef() const
 {
 	Paragraph const & par = paragraphs().front();

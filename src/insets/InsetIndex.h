@@ -106,6 +106,8 @@ private:
 	///
 	std::vector<docstring> getSeeAlsoesAsText(OutputParams const & runparams) const;
 	///
+	bool hasSubentries() const;
+	///
 	bool hasSeeRef() const;
 	///
 	bool hasSortKey() const;
