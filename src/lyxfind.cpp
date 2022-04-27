@@ -1088,6 +1088,15 @@ void MatchStringAdv::FillResults(MatchResult &found_mr)
 		valid_matches = 0;
 }
 
+static void setFindParams(OutputParams &runparams)
+{
+	runparams.flavor = Flavor::XeTeX;
+	runparams.use_polyglossia = true;
+	runparams.linelen = 10000; //lyxrc.plaintext_linelen;
+	// No side effect of file copying and image conversion
+	runparams.dryrun = true;
+}
+
 static docstring buffer_to_latex(Buffer & buffer)
 {
 	//OutputParams runparams(&buffer.params().encoding());
@@ -1095,10 +1104,7 @@ static docstring buffer_to_latex(Buffer & buffer)
 	odocstringstream ods;
 	otexstream os(ods);
 	runparams.nice = true;
-	runparams.flavor = Flavor::XeTeX;
-	runparams.linelen = 10000; //lyxrc.plaintext_linelen;
-	// No side effect of file copying and image conversion
-	runparams.dryrun = true;
+	setFindParams(runparams);
 	if (ignoreFormats.getDeleted())
 		runparams.for_search = OutputParams::SearchWithoutDeleted;
 	else
@@ -1170,9 +1176,7 @@ static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions co
 		// OutputParams runparams(&buffer.params().encoding());
 		OutputParams runparams(encodings.fromLyXName("utf8"));
 		runparams.nice = true;
-		runparams.flavor = Flavor::XeTeX;
-		runparams.linelen = 10000; //lyxrc.plaintext_linelen;
-		runparams.dryrun = true;
+		setFindParams(runparams);
 		int option = AS_STR_INSETS |AS_STR_PLAINTEXT;
 		if (ignoreFormats.getDeleted()) {
 			option |= AS_STR_SKIPDELETE;
@@ -2750,6 +2754,7 @@ void LatexInfo::buildKeys(bool isPatternString)
 	makeKey("triangleuppar|triangledownpar|droppar", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
 	makeKey("triangleleftpar|shapepar|dropuppar",    KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
 	makeKey("hphantom|vphantom|note|footnote|shortcut|include|includegraphics",     KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
+	makeKey("textgreek|textcyrillic", KeyInfo(KeyInfo::isStandard, 1, true), false);
 	makeKey("parbox", KeyInfo(KeyInfo::doRemove, 1, true), isPatternString);
 	// like ('tiny{}' or '\tiny ' ... )
 	makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, false), isPatternString);
@@ -3941,10 +3946,7 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 		// OutputParams runparams(&cur.buffer()->params().encoding());
 		OutputParams runparams(encodings.fromLyXName("utf8"));
 		runparams.nice = true;
-		runparams.flavor = Flavor::XeTeX;
-		runparams.linelen = 10000; //lyxrc.plaintext_linelen;
-		// No side effect of file copying and image conversion
-		runparams.dryrun = true;
+		setFindParams(runparams);
 		int option = AS_STR_INSETS | AS_STR_PLAINTEXT;
 		if (ignoreFormats.getDeleted()) {
 			option |= AS_STR_SKIPDELETE;
@@ -3999,10 +4001,7 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 	//OutputParams runparams(&buf.params().encoding());
 	OutputParams runparams(encodings.fromLyXName("utf8"));
 	runparams.nice = false;
-	runparams.flavor = Flavor::XeTeX;
-	runparams.linelen = 8000; //lyxrc.plaintext_linelen;
-	// No side effect of file copying and image conversion
-	runparams.dryrun = true;
+	setFindParams(runparams);
 	if (ignoreFormats.getDeleted()) {
 		runparams.for_search = OutputParams::SearchWithoutDeleted;
 	}
@@ -4609,9 +4608,7 @@ static int findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, Ma
 		// OutputParams runparams(&repl_buffer.params().encoding());
 		OutputParams runparams(encodings.fromLyXName("utf8"));
 		runparams.nice = false;
-		runparams.flavor = Flavor::XeTeX;
-		runparams.linelen = 8000; //lyxrc.plaintext_linelen;
-		runparams.dryrun = true;
+		setFindParams(runparams);
 		TeXOnePar(repl_buffer, repl_buffer.text(), 0, os, runparams, string(), -1, -1, true);
 		//repl_buffer.getSourceCode(ods, 0, repl_buffer.paragraphs().size(), false);
 		docstring repl_latex = ods.str();
