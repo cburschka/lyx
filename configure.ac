@@ -1,10 +1,10 @@
 dnl Process with autoconf to generate configure script   -*- sh -*-
 
-AC_INIT(LyX,2.3.7dev,[lyx-devel@lists.lyx.org],[lyx])
+AC_INIT([LyX],[2.3.7dev],[lyx-devel@lists.lyx.org],[lyx])
 AC_PRESERVE_HELP_ORDER
 # Use ISO format only. The frontend needs to parse this
 AC_SUBST(LYX_DATE, ["2020-11-30"])
-AC_PREREQ(2.65)
+AC_PREREQ([2.65])
 AC_CONFIG_SRCDIR(src/main.cpp)
 AC_CONFIG_HEADERS([config.h])
 
@@ -31,14 +31,13 @@ AM_SILENT_RULES([yes])
 # file names only up to 99 characters. tar-ustar selects the ustar format defined
 # by POSIX 1003.1-1988. This format is believed to be old enough to be portable.
 save_PACKAGE=$PACKAGE
-AM_INIT_AUTOMAKE([foreign dist-bzip2 no-define 1.8 tar-ustar subdir-objects])
+AM_INIT_AUTOMAKE([foreign dist-bzip2 no-define 1.14 tar-ustar subdir-objects])
 PACKAGE=$save_PACKAGE
 
 # Allow to build some parts of the code as one big chunk
 m4_define([ALLPARTS],[boost,client,insets,mathed,core,tex2lyx,frontend_qt])
 AC_ARG_ENABLE(monolithic-build,
-  AC_HELP_STRING([--enable-monolithic-build@<:@=LIST@:>@],
-		[Use monolithic build for modules in LIST (default: ALLPARTS)]),
+  AS_HELP_STRING([--enable-monolithic-build@<:@=LIST@:>@],[Use monolithic build for modules in LIST (default: ALLPARTS)]),
   [test "$enable_monolithic_build" = yes && enable_monolithic_build="ALLPARTS"
    test "$enable_monolithic_build" = no && enable_monolithic_build=
    IFS="${IFS=	}"; ac_save_ifs="$IFS"; IFS=" ,"
@@ -132,9 +131,8 @@ AC_CHECK_SIZEOF(wchar_t)
 
 # Taken from gettext, needed for libiconv
 AC_CACHE_CHECK([for wchar_t], [gt_cv_c_wchar_t],
-   [AC_TRY_COMPILE([#include <stddef.h>
-      wchar_t foo = (wchar_t)'\0';], ,
-      [gt_cv_c_wchar_t=yes], [gt_cv_c_wchar_t=no])])
+   [AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <stddef.h>
+      wchar_t foo = (wchar_t)'\0';]], [[]])],[gt_cv_c_wchar_t=yes],[gt_cv_c_wchar_t=no])])
 if test $gt_cv_c_wchar_t = yes; then
   AC_DEFINE([HAVE_WCHAR_T], [1], [Define if you have the 'wchar_t' type.])
   HAVE_WCHAR_T=1
@@ -240,7 +238,7 @@ esac
 if test "x$lyx_win_res" = "xtrue"; then
     AC_CHECK_TOOL(RC, windres,)
     if test -z "$RC"; then
-      AC_ERROR([Could not find a resource compiler])
+      AC_MSG_ERROR(Could not find a resource compiler)
     fi
 fi
 AM_CONDITIONAL(LYX_WIN_RESOURCE, $lyx_win_res)

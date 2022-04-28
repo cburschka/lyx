@@ -3,7 +3,7 @@
 AC_DEFUN([CHECK_WITH_ASPELL],
 [
 	lyx_use_aspell=true
-	AC_ARG_WITH(aspell, AC_HELP_STRING([--without-aspell],[do not check for ASpell library]))
+	AC_ARG_WITH(aspell, AS_HELP_STRING([--without-aspell],[do not check for ASpell library]))
 	test "$with_aspell" = "no" && lyx_use_aspell=false
 
 	if $lyx_use_aspell ; then
@@ -29,19 +29,16 @@ AC_DEFUN([LYX_HAVE_ENCHANT2],
   save_CXXFLAGS=$CXXFLAGS
   CXXFLAGS="$ENCHANT_CFLAGS $AM_CXXFLAGS $CXXFLAGS"
 
-  AC_TRY_COMPILE([#include <enchant++.h>],
-      [enchant::Broker broker;],
-      [AC_MSG_RESULT(yes)
+  AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <enchant++.h>]], [[enchant::Broker broker;]])],[AC_MSG_RESULT(yes)
        AC_DEFINE(HAVE_ENCHANT2, 1, [Define to 1 if enchant 2.x is detected])
-      ],
-      [AC_MSG_RESULT(no)])
+      ],[AC_MSG_RESULT(no)])
   CXXFLAGS=$save_CXXFLAGS
 ])
 
 AC_DEFUN([CHECK_WITH_ENCHANT],
 [
 	lyx_use_enchant=true
-	AC_ARG_WITH(enchant, AC_HELP_STRING([--without-enchant],[do not check for Enchant library]))
+	AC_ARG_WITH(enchant, AS_HELP_STRING([--without-enchant],[do not check for Enchant library]))
 	test "$with_enchant" = "no" && lyx_use_enchant=false
 
 	if $lyx_use_enchant; then
@@ -67,14 +64,11 @@ AC_DEFUN([LYX_HAVE_HUNSPELL_CXXABI],
   CXXFLAGS="$ENCHANT_CFLAGS $AM_CXXFLAGS $CXXFLAGS"
 
 # in the C++ ABI, stem() returns a vector, in the C ABI, it returns an int
-  AC_TRY_COMPILE([#include <hunspell/hunspell.hxx>],
-      [Hunspell sp("foo", "bar");
-       int i = sp.stem("test").size();],
-      [AC_MSG_RESULT(yes)
+  AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <hunspell/hunspell.hxx>]], [[Hunspell sp("foo", "bar");
+       int i = sp.stem("test").size();]])],[AC_MSG_RESULT(yes)
        AC_DEFINE(HAVE_HUNSPELL_CXXABI, 1, [Define to 1 if hunspell C++ (rather than C) ABI is detected])
        have_hunspell_cxx_abi=yes
-      ],
-      [AC_MSG_RESULT(no)])
+      ],[AC_MSG_RESULT(no)])
   CXXFLAGS=$save_CXXFLAGS
 ])
 
@@ -82,7 +76,7 @@ AC_DEFUN([LYX_HAVE_HUNSPELL_CXXABI],
 AC_DEFUN([CHECK_WITH_HUNSPELL],
 [
 	lyx_use_hunspell=true
-	AC_ARG_WITH(hunspell, AC_HELP_STRING([--without-hunspell],[do not check for Hunspell library]))
+	AC_ARG_WITH(hunspell, AS_HELP_STRING([--without-hunspell],[do not check for Hunspell library]))
 	test "$with_hunspell" = "no" && lyx_use_hunspell=false
 
 	if $lyx_use_hunspell ; then
@@ -113,7 +107,7 @@ dnl        be used.
 AC_DEFUN([LYX_USE_INCLUDED_HUNSPELL],[
 	AC_MSG_CHECKING([whether to use included hunspell library])
 	AC_ARG_WITH(included-hunspell,
-		[AC_HELP_STRING([--with-included-hunspell], [use the hunspell lib supplied with LyX instead of the system one])],
+		[AS_HELP_STRING([--with-included-hunspell],[use the hunspell lib supplied with LyX instead of the system one])],
 		[lyx_cv_with_included_hunspell=$withval],
 		[lyx_cv_with_included_hunspell=no])
 	AM_CONDITIONAL(USE_INCLUDED_HUNSPELL, test x$lyx_cv_with_included_hunspell = xyes)
