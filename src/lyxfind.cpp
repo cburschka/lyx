@@ -1091,7 +1091,7 @@ void MatchStringAdv::FillResults(MatchResult &found_mr)
 static void setFindParams(OutputParams &runparams)
 {
 	runparams.flavor = Flavor::XeTeX;
-	runparams.use_polyglossia = true;
+	//runparams.use_polyglossia = true;
 	runparams.linelen = 10000; //lyxrc.plaintext_linelen;
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
@@ -1226,7 +1226,7 @@ static size_t identifyLeading(string const & s)
 	       || regex_replace(t, t, "^\\\\begin\\{[a-zA-Z_]*\\*?\\}", ""))
 	       ;
 	LYXERR(Debug::FINDVERBOSE, "  after removing leading $, \\[ , \\emph{, \\textbf{, etc.: '" << t << "'");
-	return s.find(t);
+	return s.size() - t.size();
 }
 
 /*
