@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>374</width>
-    <height>380</height>
+    <height>664</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -263,7 +263,7 @@
    <attribute name="title">
     <string>Settin&amp;gs</string>
    </attribute>
-   <layout class="QVBoxLayout" name="dynamicLayoutAdvanced_" stretch="0,0,1">
+   <layout class="QVBoxLayout" name="dynamicLayoutAdvanced_" stretch="0,0,0,1">
     <item>
      <widget class="QGroupBox" name="groupBox_2">
       <property name="enabled">
@@ -365,32 +365,6 @@
        <enum>QLayout::SetMinimumSize</enum>
       </property>
       <item row="3" column="0">
-       <widget class="QCheckBox" name="OnlyMaths">
-        <property name="toolTip">
-         <string>Restrict search to math environments only</string>
-        </property>
-        <property name="text">
-         <string>Search on&amp;ly in maths</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QCheckBox" name="ignoreFormatCB">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="toolTip">
-         <string>If unchecked, the search will be limited to occurrences of the selected text and paragraph style</string>
-        </property>
-        <property name="text">
-         <string>I&amp;gnore format</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
        <widget class="QCheckBox" name="expandMacrosCB">
         <property name="enabled">
          <bool>false</bool>
@@ -401,6 +375,16 @@
        </widget>
       </item>
       <item row="2" column="0">
+       <widget class="QCheckBox" name="OnlyMaths">
+        <property name="toolTip">
+         <string>Restrict search to math environments only</string>
+        </property>
+        <property name="text">
+         <string>Search on&amp;ly in maths</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
        <widget class="QCheckBox" name="keepCaseCB">
         <property name="toolTip">
          <string>Keep the case of the replacement's first letter as in each matching text first letter</string>
@@ -423,7 +407,126 @@
         </property>
        </spacer>
       </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="ignoreNonOutputCB">
+        <property name="toolTip">
+         <string>Do not search in content that is not output (e.g., notes)</string>
+        </property>
+        <property name="text">
+         <string>Ignore &amp;non-output content</string>
+        </property>
+       </widget>
+      </item>
      </layout>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="adhereFormatGB">
+      <property name="toolTip">
+       <string>If the search string is formatted in a non-default way, only find strings formatted like the search string in the checked respects</string>
+      </property>
+      <property name="title">
+       <string>Ad&amp;here to search string formatting of</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="2" column="1">
+        <widget class="QCheckBox" name="adhereStrikeCB">
+         <property name="text">
+          <string>Strike-through</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QCheckBox" name="adhereFSeriesCB">
+         <property name="text">
+          <string>Font series</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="adhereColorCB">
+         <property name="text">
+          <string>Font color</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QCheckBox" name="adhereMarkupCB">
+         <property name="text">
+          <string>Emph/noun</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QPushButton" name="deselectAllPB">
+         <property name="text">
+          <string>Deselect all</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QCheckBox" name="adhereFFamilyCB">
+         <property name="text">
+          <string>Font family</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QCheckBox" name="adhereLanguageCB">
+         <property name="text">
+          <string>Language</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QCheckBox" name="adhereSectioningCB">
+         <property name="text">
+          <string>Sectioning markup</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QCheckBox" name="adhereDeletedCB">
+         <property name="text">
+          <string>Deletion (change)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QCheckBox" name="adhereUnderlineCB">
+         <property name="text">
+          <string>Underlining</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QCheckBox" name="adhereFShapeCB">
+         <property name="text">
+          <string>Font shape</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QPushButton" name="selectAllPB">
+         <property name="text">
+          <string>Select all</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QCheckBox" name="adhereFSizeCB">
+         <property name="text">
+          <string>Font size</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </item>
     <item>
      <spacer name="verticalSpacer_2">

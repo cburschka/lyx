@@ -421,7 +421,7 @@ bool FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt, bool
 /// Return true if a match was found
 bool FindAndReplaceWidget::findAndReplace(
 	bool casesensitive, bool matchword, bool backwards,
-	bool expandmacros, bool ignoreformat, bool replace,
+	bool expandmacros, bool adhereformat, bool replace,
 	bool keep_case, bool replace_all)
 {
 	Buffer & find_buf = find_work_area_->bufferView().buffer();
@@ -460,16 +460,56 @@ bool FindAndReplaceWidget::findAndReplace(
 	       << ", matchword=" << matchword
 	       << ", backwards=" << backwards
 	       << ", expandmacros=" << expandmacros
-	       << ", ignoreformat=" << ignoreformat
+	       << ", adhereformat=" << adhereformat
 	       << ", repl_buf_name" << repl_buf_name
 	       << ", keep_case=" << keep_case
 	       << ", scope=" << scope
 	       << ", restr=" << restr);
 
 	FindAndReplaceOptions opt(find_buf_name, casesensitive, matchword,
-				  !backwards, expandmacros, ignoreformat,
+				  !backwards, expandmacros, !adhereformat,
 				  repl_buf_name, keep_case, scope, restr);
+	
+	if (adhereformat) {
+		// Formats to adhere
+		lyx::dispatch(FuncRequest(LFUN_SEARCH_IGNORE, checkState("language",
+					  !adhereLanguageCB->isChecked())));
+		lyx::dispatch(FuncRequest(LFUN_SEARCH_IGNORE, checkState("color",
+					  !adhereColorCB->isChecked())));
+		lyx::dispatch(FuncRequest(LFUN_SEARCH_IGNORE, checkState("family",
+					  !adhereFFamilyCB->isChecked())));
+		lyx::dispatch(FuncRequest(LFUN_SEARCH_IGNORE, checkState("series",
+					  !adhereFSeriesCB->isChecked())));
+		lyx::dispatch(FuncRequest(LFUN_SEARCH_IGNORE, checkState("shape",
+					  !adhereFShapeCB->isChecked())));
+		lyx::dispatch(FuncRequest(LFUN_SEARCH_IGNORE, checkState("size",
+					  !adhereFSizeCB->isChecked())));
+		lyx::dispatch(FuncRequest(LFUN_SEARCH_IGNORE, checkState("markup",
+					  !adhereMarkupCB->isChecked())));
+		lyx::dispatch(FuncRequest(LFUN_SEARCH_IGNORE, checkState("underline",
+					  !adhereUnderlineCB->isChecked())));
+		lyx::dispatch(FuncRequest(LFUN_SEARCH_IGNORE, checkState("strike",
+					  !adhereStrikeCB->isChecked())));
+		lyx::dispatch(FuncRequest(LFUN_SEARCH_IGNORE, checkState("deleted",
+					  !adhereDeletedCB->isChecked())));
+		lyx::dispatch(FuncRequest(LFUN_SEARCH_IGNORE, checkState("sectioning",
+					  !adhereSectioningCB->isChecked())));
+	}
+	lyx::dispatch(FuncRequest(LFUN_SEARCH_IGNORE, checkState("non-output-content",
+				  ignoreNonOutputCB->isChecked())));
+	
 	return findAndReplaceScope(opt, replace_all);
+}
+
+
+docstring const FindAndReplaceWidget::checkState(string const s, bool const b)
+{
+	docstring res = from_ascii(s) + from_ascii(" ");
+	if (b)
+		res += from_ascii("true");
+	else
+		res += from_ascii("false");
+	return res;
 }
 
 
@@ -492,7 +532,7 @@ bool FindAndReplaceWidget::findAndReplace(bool backwards, bool replace, bool rep
 		wordsCB->isChecked(),
 		backwards,
 		expandMacrosCB->isChecked(),
-		ignoreFormatCB->isChecked(),
+		adhereFormatGB->isChecked(),
 		replace,
 		keepCaseCB->isChecked(),
 		replace_all);
@@ -529,6 +569,34 @@ void FindAndReplaceWidget::on_replaceallPB_clicked()
 void FindAndReplaceWidget::on_searchbackCB_clicked()
 {
 	updateButtons();
+}
+
+
+void FindAndReplaceWidget::setFormatIgnores(bool const b)
+{
+	adhereLanguageCB->setChecked(b);
+	adhereColorCB->setChecked(b);
+	adhereFFamilyCB->setChecked(b);
+	adhereFSeriesCB->setChecked(b);
+	adhereFShapeCB->setChecked(b);
+	adhereFSizeCB->setChecked(b);
+	adhereMarkupCB->setChecked(b);
+	adhereUnderlineCB->setChecked(b);
+	adhereStrikeCB->setChecked(b);
+	adhereDeletedCB->setChecked(b);
+	adhereSectioningCB->setChecked(b);
+}
+
+
+void FindAndReplaceWidget::on_selectAllPB_clicked()
+{
+	setFormatIgnores(true);
+}
+
+
+void FindAndReplaceWidget::on_deselectAllPB_clicked()
+{
+	setFormatIgnores(false);
 }
 
 
@@ -584,8 +652,9 @@ void FindAndReplace::updateView()
 
 
 FindAndReplace::FindAndReplace(GuiView & parent,
-		Qt::DockWidgetArea area, Qt::WindowFlags flags)
-	: DockView(parent, "findreplaceadv", qt_("Advanced Find and Replace"),
+			       Qt::DockWidgetArea area,
+			       Qt::WindowFlags flags)
+    : DockView(parent, "findreplaceadv", qt_("Advanced Find and Replace"),
 		   area, flags)
 {
 	widget_ = new FindAndReplaceWidget(parent);
