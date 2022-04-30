@@ -88,6 +88,8 @@ class IgnoreFormats {
 	///
 	bool getShape() const { return ignoreShape_; }
 	///
+	bool getSize() const { return ignoreSize_; }
+	///
 	bool getUnderline() const { return ignoreUnderline_; }
 	///
 	bool getMarkUp() const { return ignoreMarkUp_; }
@@ -117,6 +119,8 @@ private:
 	bool ignoreSeries_ = false;
 	///
 	bool ignoreShape_ = false;
+	///
+	bool ignoreSize_ = true;
 	///
 	bool ignoreUnderline_ = false;
 	///
@@ -165,6 +169,9 @@ void IgnoreFormats::setIgnoreFormat(string const & type, bool value, bool fromUs
 	}
 	else if (type == "shape") {
 		ignoreShape_ = value;
+	}
+	else if (type == "size") {
+		ignoreSize_ = value;
 	}
 	else if (type == "family") {
 		ignoreFamily_ = value;
@@ -2757,7 +2764,7 @@ void LatexInfo::buildKeys(bool isPatternString)
 	makeKey("textgreek|textcyrillic", KeyInfo(KeyInfo::isStandard, 1, true), false);
 	makeKey("parbox", KeyInfo(KeyInfo::doRemove, 1, true), isPatternString);
 	// like ('tiny{}' or '\tiny ' ... )
-	makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, false), isPatternString);
+	makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, ignoreFormats.getSize()), isPatternString);
 
 	// Survives, like known character
 	// makeKey("lyx|LyX|latex|LaTeX|latexe|LaTeXe|tex|TeX", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
