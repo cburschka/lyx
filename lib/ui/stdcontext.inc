@@ -414,7 +414,7 @@ Menuset
 	Menu "context-edit-regexp"
 		Item "Anything|A" "command-sequence regexp-mode; self-insert .*"
 		Item "Anything Non-Empty|o" "command-sequence regexp-mode; self-insert .+"
-		Item "Any Word|W" "command-sequence regexp-mode; self-insert [a-z]+"
+		Item "Any Word|W" "command-sequence regexp-mode; self-insert \w+"
 		Item "Any Number|N" "command-sequence regexp-mode; self-insert [0-9]+"
 		Item "User Defined|U" "regexp-mode"
 	End
