@@ -3934,7 +3934,7 @@ string MatchStringAdv::normalize(docstring const & s, bool ignore_format) const
 	while (regex_replace(t, t, "\\\\(emph|noun|text(bf|sl|sf|it|tt)|(u|uu)line|(s|x)out|uwave)(\\{(\\{\\})?\\})+", ""))
 		LYXERR(Debug::FINDVERBOSE, "  further removing stale empty \\emph{}, \\textbf{} macros from: " << t);
 	while (regex_replace(t, t, "\\\\((sub)?(((sub)?section)|paragraph)|part)\\*?(\\{(\\{\\})?\\})+", ""))
-		LYXERR(Debug::FINDVERBOSE, "  further removing stale empty \\emph{}, \\textbf{} macros from: " << t);
+		LYXERR(Debug::FINDVERBOSE, "  further removing stale empty \\section{}, \\part{}, \\paragraph{} macros from: " << t);
 	while (regex_replace(t, t, "\\\\(foreignlanguage|textcolor|item)\\{[a-z]+\\}(\\{(\\{\\})?\\})+", ""));
 
 	return t;
@@ -3970,7 +3970,7 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 		docstring res = from_utf8(latexNamesToUtf8(par.asString(cur.pos(), end,
 								        option,
 								        &runparams)));
-		LYXERR(Debug::FIND, "Stringified text from pos(" << cur.pos() << ") len(" << len << "): " << res);
+		LYXERR(Debug::FINDVERBOSE|Debug::FIND, "Stringified text from pos(" << cur.pos() << ") len(" << len << "): " << res);
 		return res;
 	} else if (cur.inMathed()) {
 		CursorSlice cs = cur.top();
@@ -4026,7 +4026,7 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 			endpos = cur.pos() + len;
 		TeXOnePar(buf, *cur.innerText(), cur.pit(), os, runparams,
 			  string(), cur.pos(), endpos, true);
-		LYXERR(Debug::FIND, "Latexified text from pos(" << cur.pos() << ") len(" << len << "): " << ods.str());
+		LYXERR(Debug::FINDVERBOSE|Debug::FIND, "Latexified text from pos(" << cur.pos() << ") len(" << len << "): " << ods.str());
 		return(ods.str());
 	} else if (cur.inMathed()) {
 		// Retrieve the math environment type, and add '$' or '$[' or others (\begin{equation}) accordingly
