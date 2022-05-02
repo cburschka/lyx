@@ -362,8 +362,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-04-24 17:20+0200\n"
-"PO-Revision-Date: 2022-04-24 17:23+0200\n"
+"POT-Creation-Date: 2022-05-01 18:14+0200\n"
+"PO-Revision-Date: 2022-05-02 11:14+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -1306,6 +1306,7 @@ msgid "Font Properties"
 msgstr "Propriétés des polices"
 
 #: src/frontends/qt/ui/CharacterUi.ui:36 src/frontends/qt/ui/CharacterUi.ui:55
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:475
 msgid "Font family"
 msgstr "Famille de police"
 
@@ -1314,6 +1315,7 @@ msgid "Fa&mily:"
 msgstr "&Famille :"
 
 #: src/frontends/qt/ui/CharacterUi.ui:62 src/frontends/qt/ui/CharacterUi.ui:81
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:447
 msgid "Font series"
 msgstr "Série de police"
 
@@ -1322,6 +1324,7 @@ msgid "&Series:"
 msgstr "&Série :"
 
 #: src/frontends/qt/ui/CharacterUi.ui:88 src/frontends/qt/ui/CharacterUi.ui:107
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:510
 msgid "Font shape"
 msgstr "Forme de police"
 
@@ -1331,11 +1334,13 @@ msgstr "F&orme :"
 
 #: src/frontends/qt/ui/CharacterUi.ui:114
 #: src/frontends/qt/ui/CharacterUi.ui:133
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:524
 msgid "Font size"
 msgstr "Taille de police"
 
 #: src/frontends/qt/ui/CharacterUi.ui:159
 #: src/frontends/qt/ui/CharacterUi.ui:178
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:454
 msgid "Font color"
 msgstr "Couleur de police"
 
@@ -1369,12 +1374,14 @@ msgstr "Paramètres de langue"
 msgid "&Language:"
 msgstr "Lan&gue :"
 
-#: src/frontends/qt/ui/CharacterUi.ui:281 src/frontends/qt/ui/ListingsUi.ui:334
-#: lib/layouts/bicaption.module:16 lib/layouts/europasscv.layout:440
-#: lib/layouts/europasscv.layout:475 lib/layouts/europasscv.layout:482
-#: lib/layouts/europecv.layout:321 lib/layouts/europecv.layout:327
-#: lib/layouts/moderncv.layout:580 src/frontends/qt/GuiDocument.cpp:1781
-#: src/frontends/qt/GuiPrefs.cpp:2430 src/frontends/qt/Menus.cpp:938
+#: src/frontends/qt/ui/CharacterUi.ui:281
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:482
+#: src/frontends/qt/ui/ListingsUi.ui:334 lib/layouts/bicaption.module:16
+#: lib/layouts/europasscv.layout:440 lib/layouts/europasscv.layout:475
+#: lib/layouts/europasscv.layout:482 lib/layouts/europecv.layout:321
+#: lib/layouts/europecv.layout:327 lib/layouts/moderncv.layout:580
+#: src/frontends/qt/GuiDocument.cpp:1781 src/frontends/qt/GuiPrefs.cpp:2430
+#: src/frontends/qt/Menus.cpp:938
 msgid "Language"
 msgstr "Langue"
 
@@ -1980,24 +1987,24 @@ msgid "Case &sensitive"
 msgstr "Selon la &casse"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:205
-#: src/frontends/qt/FindAndReplace.cpp:648
+#: src/frontends/qt/FindAndReplace.cpp:717
 msgid "Find next occurrence (Enter, backwards: Shift+Enter)"
 msgstr "Rechercher l'occurrence suivante (Entrée, vers l'arrière : Maj+Entrée)"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:208
-#: src/frontends/qt/ui/SearchUi.ui:190 src/frontends/qt/FindAndReplace.cpp:647
+#: src/frontends/qt/ui/SearchUi.ui:190 src/frontends/qt/FindAndReplace.cpp:716
 msgid "Find &>"
 msgstr "Rechercher &>"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:221
-#: src/frontends/qt/FindAndReplace.cpp:650
+#: src/frontends/qt/FindAndReplace.cpp:719
 msgid "Replace and find next occurrence (Enter, backwards: Shift+Enter)"
 msgstr ""
 "Remplacer et rechercher l'occurrence suivante (Entrée, vers l'arrière : Maj"
 "+Entrée)"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:224
-#: src/frontends/qt/FindAndReplace.cpp:649
+#: src/frontends/qt/FindAndReplace.cpp:718
 msgid "Rep&lace >"
 msgstr "&Remplacer >"
 
@@ -2050,31 +2057,19 @@ msgstr "Document &ouverts"
 msgid "&All manuals"
 msgstr "Tous les man&uels"
 
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:370
-msgid "Restrict search to math environments only"
-msgstr "Restreindre la recherche aux seuls environnements mathématiques"
-
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:373
-msgid "Search on&ly in maths"
-msgstr "Rechercher uniquement dans les formules mat&hématiques"
-
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:383
-msgid ""
-"If unchecked, the search will be limited to occurrences of the selected text "
-"and paragraph style"
-msgstr ""
-"Case non cochée, la recherche sera limitée aux occurrences du texte "
-"sélectionné et du style de paragraphe"
-
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:386
-msgid "I&gnore format"
-msgstr "Ignorer le &format"
-
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:399
 msgid "E&xpand macros"
 msgstr "&Déployer les macros"
 
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:406
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:380
+msgid "Restrict search to math environments only"
+msgstr "Restreindre la recherche aux seuls environnements mathématiques"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:383
+msgid "Search on&ly in maths"
+msgstr "Rechercher uniquement dans les formules mat&hématiques"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:390
 msgid ""
 "Keep the case of the replacement's first letter as in each matching text "
 "first letter"
@@ -2082,9 +2077,60 @@ msgstr ""
 "Conserver la casse de la première lettre du remplacement telle quelle dans "
 "chaque chaîne correspondante"
 
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:409
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:393
 msgid "&Preserve first case on replace"
 msgstr "&Préserver la casse du premier caractère lors du remplacement"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:413
+msgid "Do not search in content that is not output (e.g., notes)"
+msgstr "Ne pas rechercher dans les contenus non exportables (e.g., les notes)"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:416
+msgid "Ignore &non-output content"
+msgstr "Ignorer les &éléments non exportables"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:425
+msgid ""
+"If the search string is formatted in a non-default way, only find strings "
+"formatted like the search string in the checked respects"
+msgstr ""
+"Si la chaîne à rechercher est mise ne forme d'une manière non implicite, "
+"trouver seulement les chaînes mises en forme comme la chaîne à rechercher "
+"pour le rubriques cochées"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:428
+msgid "Ad&here to search string formatting of"
+msgstr "&Appliquer la mise en forme de la chaîne recherchée pour"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:440
+msgid "Strike-through"
+msgstr "Rayé"
+
+# à revoir, accord avec les autres mots incertain
+# Pas nécessaire (JPC)
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:461
+msgid "Emph/noun"
+msgstr "En évidence/nom propre"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:468
+msgid "Deselect all"
+msgstr "Tout désélectionner"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:489
+msgid "Sectioning markup"
+msgstr "Balisage de sectionnement"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:496
+msgid "Deletion (change)"
+msgstr "Suppression (modifié)"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:503
+msgid "Underlining"
+msgstr "Souligné"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:517
+msgid "Select all"
+msgstr "Tout sélectionner"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:14
 #: src/frontends/qt/ui/OutputUi.ui:14 src/frontends/qt/ui/PDFSupportUi.ui:14
@@ -5618,7 +5664,7 @@ msgstr "Sans préfixe"
 msgid "Find previous occurrence (Shift+Enter)"
 msgstr "Rechercher l'occurrence précédente (Maj+Entrée)"
 
-#: src/frontends/qt/ui/SearchUi.ui:55 src/frontends/qt/FindAndReplace.cpp:642
+#: src/frontends/qt/ui/SearchUi.ui:55 src/frontends/qt/FindAndReplace.cpp:711
 msgid "&< Find"
 msgstr "&< Rechercher"
 
@@ -31294,15 +31340,15 @@ msgstr ""
 
 #: src/VCBackend.cpp:1522 src/VCBackend.cpp:1526
 #: src/frontends/qt/FindAndReplace.cpp:381 src/frontends/qt/GuiPrefs.cpp:1895
-#: src/lyxfind.cpp:310 src/lyxfind.cpp:337 src/lyxfind.cpp:358
-#: src/lyxfind.cpp:701 src/lyxfind.cpp:729
+#: src/lyxfind.cpp:317 src/lyxfind.cpp:344 src/lyxfind.cpp:365
+#: src/lyxfind.cpp:708 src/lyxfind.cpp:736
 msgid "&Yes"
 msgstr "&Oui"
 
 #: src/VCBackend.cpp:1522 src/VCBackend.cpp:1526
 #: src/frontends/qt/FindAndReplace.cpp:381 src/frontends/qt/GuiPrefs.cpp:1895
-#: src/lyxfind.cpp:310 src/lyxfind.cpp:337 src/lyxfind.cpp:358
-#: src/lyxfind.cpp:701 src/lyxfind.cpp:729
+#: src/lyxfind.cpp:317 src/lyxfind.cpp:344 src/lyxfind.cpp:365
+#: src/lyxfind.cpp:708 src/lyxfind.cpp:736
 msgid "&No"
 msgstr "&Non"
 
@@ -31507,8 +31553,8 @@ msgstr "Recherche avancée en cours (appuyer sur ESC pour annuler) . . ."
 msgid "Advanced search cancelled by user"
 msgstr "Recherche avancée annulée par l'utilisateur"
 
-#: src/frontends/qt/FindAndReplace.cpp:380 src/lyxfind.cpp:357
-#: src/lyxfind.cpp:700 src/lyxfind.cpp:728
+#: src/frontends/qt/FindAndReplace.cpp:380 src/lyxfind.cpp:364
+#: src/lyxfind.cpp:707 src/lyxfind.cpp:735
 msgid "Wrap search?"
 msgstr "Recherche récursive ?"
 
@@ -31516,23 +31562,23 @@ msgstr "Recherche récursive ?"
 msgid "Nothing to search"
 msgstr "Rien à rechercher"
 
-#: src/frontends/qt/FindAndReplace.cpp:479
+#: src/frontends/qt/FindAndReplace.cpp:519
 msgid "No open document(s) in which to search"
 msgstr "Aucun document ouvert dans lequel rechercher"
 
-#: src/frontends/qt/FindAndReplace.cpp:588
+#: src/frontends/qt/FindAndReplace.cpp:657
 msgid "Advanced Find and Replace"
 msgstr "Rechercher et remplacer (élaboré)"
 
-#: src/frontends/qt/FindAndReplace.cpp:643
+#: src/frontends/qt/FindAndReplace.cpp:712
 msgid "Find previous occurrence (Shift+Enter, forwards: Enter)"
 msgstr "Trouver l’occurrence précédente (Maj+Entrée, vers l'avant : Entrée)"
 
-#: src/frontends/qt/FindAndReplace.cpp:644
+#: src/frontends/qt/FindAndReplace.cpp:713
 msgid "< Rep&lace"
 msgstr "< &Remplacer"
 
-#: src/frontends/qt/FindAndReplace.cpp:645
+#: src/frontends/qt/FindAndReplace.cpp:714
 msgid "Replace and find previous occurrence (Shift+Enter, forwards: Enter)"
 msgstr ""
 "Remplacer et rechercher l'occurrence précédente (Maj+Entrée, vers l'avant : "
@@ -37331,15 +37377,15 @@ msgstr "Aperçu prêt"
 msgid "Preview failed"
 msgstr "Échec de l'aperçu"
 
-#: src/lyxfind.cpp:275
+#: src/lyxfind.cpp:282
 msgid "Search error"
 msgstr "Erreur de recherche"
 
-#: src/lyxfind.cpp:275
+#: src/lyxfind.cpp:282
 msgid "Search string is empty"
 msgstr "La chaîne de caractères à chercher est vide"
 
-#: src/lyxfind.cpp:307
+#: src/lyxfind.cpp:314
 msgid ""
 "The search string matches the selection, and search is limited to "
 "selection.\n"
@@ -37349,11 +37395,11 @@ msgstr ""
 "à la sélection.\n"
 "Continuer à chercher en dehors?"
 
-#: src/lyxfind.cpp:309 src/lyxfind.cpp:336
+#: src/lyxfind.cpp:316 src/lyxfind.cpp:343
 msgid "Search outside selection?"
 msgstr "Rechercher en-dehors de la sélection ?"
 
-#: src/lyxfind.cpp:334
+#: src/lyxfind.cpp:341
 msgid ""
 "The search string was not found within the selection.\n"
 "Continue search outside?"
@@ -37361,7 +37407,7 @@ msgstr ""
 "La chaîne recherchée n'a pas été trouvée dans la sélection.\n"
 "Continuer à chercher en-dehors ?"
 
-#: src/lyxfind.cpp:352 src/lyxfind.cpp:698
+#: src/lyxfind.cpp:359 src/lyxfind.cpp:705
 msgid ""
 "End of file reached while searching forward.\n"
 "Continue searching from the beginning?"
@@ -37369,7 +37415,7 @@ msgstr ""
 "Fin du fichier atteinte lors de la recherche en avant.\n"
 "Continuer la recherche depuis le début ?"
 
-#: src/lyxfind.cpp:355 src/lyxfind.cpp:726
+#: src/lyxfind.cpp:362 src/lyxfind.cpp:733
 msgid ""
 "Beginning of file reached while searching backward.\n"
 "Continue searching from the end?"
@@ -37377,63 +37423,63 @@ msgstr ""
 "Début du fichier atteint lors de la recherche en arrière.\n"
 "Continuer la recherche depuis la fin ?"
 
-#: src/lyxfind.cpp:371
+#: src/lyxfind.cpp:378
 msgid "Search reached end of document, continuing from beginning."
 msgstr "Fin du document atteinte, la recherche continue à partir du début."
 
-#: src/lyxfind.cpp:372
+#: src/lyxfind.cpp:379
 msgid "Search reached beginning of document, continuing from end."
 msgstr ""
 "La recherche a atteint le début du document, elle continue depuis la fin."
 
-#: src/lyxfind.cpp:671
+#: src/lyxfind.cpp:678
 msgid "String not found in selection."
 msgstr "Chaîne de caractères introuvable dans le sélection."
 
-#: src/lyxfind.cpp:673
+#: src/lyxfind.cpp:680
 msgid "String not found."
 msgstr "Chaîne de caractères introuvable."
 
-#: src/lyxfind.cpp:676
+#: src/lyxfind.cpp:683
 msgid "String found."
 msgstr "Chaîne de caractères trouvée."
 
-#: src/lyxfind.cpp:678
+#: src/lyxfind.cpp:685
 msgid "String has been replaced."
 msgstr "Chaîne remplacée."
 
-#: src/lyxfind.cpp:681
+#: src/lyxfind.cpp:688
 #, c-format
 msgid "%1$d strings have been replaced in the selection."
 msgstr "%1$d chaînes remplacées dans le sélection."
 
-#: src/lyxfind.cpp:682
+#: src/lyxfind.cpp:689
 #, c-format
 msgid "%1$d strings have been replaced."
 msgstr "%1$d chaînes remplacées."
 
-#: src/lyxfind.cpp:4679
+#: src/lyxfind.cpp:4683
 msgid "One match has been replaced."
 msgstr "Une correspondance a été remplacée."
 
-#: src/lyxfind.cpp:4682
+#: src/lyxfind.cpp:4686
 msgid "Two matches have been replaced."
 msgstr "Deux correspondances ont été remplacées."
 
-#: src/lyxfind.cpp:4685
+#: src/lyxfind.cpp:4689
 #, c-format
 msgid "%1$d matches have been replaced."
 msgstr "%1$d correspondances ont été remplacées."
 
-#: src/lyxfind.cpp:4691
+#: src/lyxfind.cpp:4695
 msgid "Match not found."
 msgstr "Chaîne de caractères introuvable."
 
-#: src/lyxfind.cpp:4697
+#: src/lyxfind.cpp:4701
 msgid "Match has been replaced."
 msgstr "Chaîne de caractères remplacée."
 
-#: src/lyxfind.cpp:4699
+#: src/lyxfind.cpp:4703
 msgid "Match found."
 msgstr "Chaîne de caractères reconnue."
 
@@ -38036,6 +38082,16 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Utilisateur inconnu"
+
+#~ msgid ""
+#~ "If unchecked, the search will be limited to occurrences of the selected "
+#~ "text and paragraph style"
+#~ msgstr ""
+#~ "Case non cochée, la recherche sera limitée aux occurrences du texte "
+#~ "sélectionné et du style de paragraphe"
+
+#~ msgid "I&gnore format"
+#~ msgstr "Ignorer le &format"
 
 #~ msgid "foot"
 #~ msgstr "bas"
@@ -39276,9 +39332,6 @@ msgstr "Utilisateur inconnu"
 
 #~ msgid " (version control)"
 #~ msgstr " (contrôle de version)"
-
-#~ msgid " (changed)"
-#~ msgstr " (modifié)"
 
 #~ msgid " (read only)"
 #~ msgstr " (en lecture seule)"
