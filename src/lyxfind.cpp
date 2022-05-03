@@ -2736,9 +2736,14 @@ void LatexInfo::buildKeys(bool isPatternString)
 	// handle like standard keys with 1 parameter.
 	makeKey("url|href|vref|thanks", KeyInfo(KeyInfo::isStandard, 1, false), isPatternString);
 
-	// Ignore deleted text
-	makeKey("lyxdeleted", KeyInfo(KeyInfo::doRemove, 3, false), isPatternString);
-	// but preserve added text
+	if (ignoreFormats.getDeleted()) {
+		// Ignore deleted text
+		makeKey("lyxdeleted", KeyInfo(KeyInfo::doRemove, 3, false), isPatternString);
+	}
+	else {
+		// but preserve added text
+		makeKey("lyxdeleted", KeyInfo(KeyInfo::doRemove, 2, false), isPatternString);
+	}
 	makeKey("lyxadded", KeyInfo(KeyInfo::doRemove, 2, false), isPatternString);
 
 	// Macros to remove, but let the parameter survive
@@ -3133,6 +3138,28 @@ int LatexInfo::dispatch(ostringstream &os, int previousStart, KeyInfo &actual)
 				if (count > 0)
 					interval_.addIntervall(blk, blk+count);
 			}
+			bool blank_found = false;
+			// Removing invalid space between
+			// "item{description}[{...}]"
+			// and
+			// "\foreignlanguage{..}"
+			if (interval_.par[posdown+1] == ' ') {
+				if (posdown == interval_.par.size() -2)
+					blank_found = true;
+				else if (nextKeyIdx > 0) {
+					for (int i = nextKeyIdx; i < int(entries_.size()); i++) {
+						if (entries_[i]._tokenstart <= posdown)
+							continue;
+						if ((entries_[i].keytype == KeyInfo::isMain)
+							&& (entries_[i]._tokenstart == posdown +2)) {
+							blank_found = true;
+						}
+						break;
+					}
+				}
+			}
+			if (blank_found)
+				interval_.addIntervall(posdown+1, posdown+2);
 		}
 		break;
 	}
