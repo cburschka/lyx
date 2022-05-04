@@ -1213,22 +1213,31 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 	    || contains(style.pass_thru_chars, c)
 	    || contains(runparams.pass_thru_chars, c)) {
 		if (runparams.for_search != OutputParams::NoSearch) {
-			if (c == '\\')
+			switch (c) {
+			case '\\':
 				os << "\\\\";
-			else if (c == '{')
+				return;
+			case '{':
 				os << "\\braceleft ";
-			else if (c == '}')
+				return;
+			case '}':
 				os << "\\braceright ";
-			else if (c != '\0')
+				return;
+			case ' ':
+			case '\0':
+				break;
+			default:
 				os.put(c);
+				return;
+			}
 		}
 		else if (c != '\0') {
 			Encoding const * const enc = runparams.encoding;
 			if (enc && !enc->encodable(c))
 				throw EncodingException(c);
 			os.put(c);
+			return;
 		}
-		return;
 	}
 
 	// TIPA uses its own T3 encoding
