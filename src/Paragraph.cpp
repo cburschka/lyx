@@ -2619,7 +2619,7 @@ void Paragraph::latex(BufferParams const & bparams,
 						runparams);
 				runningChange = Change(Change::UNCHANGED);
 
-				os << (isEnvSeparator(i) ? "}]~" : "}] ");
+				os << ((isEnvSeparator(i) && (runparams.for_search == OutputParams::NoSearch)) ? "}]~" : "}] ");
 				column +=3;
 			}
 			// For InTitle commands, we have already opened a group

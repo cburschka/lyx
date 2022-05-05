@@ -2826,6 +2826,8 @@ string Intervall::show(int lastpos)
 	int idx = 0;                          /* int intervalls */
 	string s;
 	int i = 0;
+	if ((unsigned) lastpos > par.size())
+		lastpos = par.size();
 	for (idx = 0; idx <= ignoreidx; idx++) {
 		while (i < lastpos) {
 			int printsize;
@@ -3710,7 +3712,7 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		mres.match_len = -1;
 		return mres;
 	}
-	LYXERR(Debug::FINDVERBOSE, "After normalization: Matching against:\n'" << str << "'");
+	LYXERR(Debug::FINDVERBOSE|Debug::FIND, "After normalization: Matching against:\n'" << str << "'");
 
 	LASSERT(use_regexp, /**/);
 	{
