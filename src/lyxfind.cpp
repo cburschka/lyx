@@ -814,8 +814,39 @@ typedef vector<pair<string, string> > Escapes;
 
 string string2regex(string in)
 {
-	static std::regex specialChars { R"([-[\]{}()*+?.,\^$|#\s\$\\])" };
-	string temp = std::regex_replace(in, specialChars,  R"(\$&)" );
+	static std::regex specialChars { R"([-[\]{}()*+?.,\^$|#\$\\])" };
+	string tempx = std::regex_replace(in, specialChars,  R"(\$&)" );
+	// Special handling for ' '
+	string temp("");
+	int blanks = 0;
+	for (unsigned i = 0; i < tempx.size(); i++) {
+		if (tempx[i] == ' ' || tempx[i] == '~' ) {
+			// normal blanks
+			blanks++;
+		}
+		else if ((tempx[i] == '\302' && tempx[i+1] == '\240')
+			|| (tempx[i] == '\342' && tempx[i+1] == '\200')) {
+			// protected space
+			// thin space
+			blanks++;
+			i++;
+		}
+		else if (tempx[i] == '\\' && tempx[i+1] == '\\' && tempx[i+2] == ' ') {
+			blanks++;
+			i += 2;
+		}
+		else {
+			if (blanks > 0) {
+				temp += "\\s+";
+			}
+			temp += tempx[i];
+			blanks = 0;
+		}
+	}
+	if (blanks > 0) {
+		temp += "\\s+";
+	}
+
 	string temp2("");
 	size_t lastpos = 0;
 	size_t fl_pos = 0;
@@ -3374,10 +3405,12 @@ static string correctlanguagesetting(string par, bool isPatternString, bool with
 	while ((parlen > 0) && (par[parlen-1] == '\n')) {
 		parlen--;
 	}
+#if 0
 	if (isPatternString && (parlen > 0) && (par[parlen-1] == '~')) {
 		// Happens to be there in case of description or labeling environment
 		parlen--;
 	}
+#endif
 	string result;
 	if (withformat) {
 		// Split the latex input into pieces which
