@@ -579,7 +579,10 @@ void InsetSpace::latex(otexstream & os, OutputParams const & runparams) const
 {
 	switch (params_.kind) {
 	case InsetSpaceParams::NORMAL:
-		os << (runparams.free_spacing && (runparams.for_search == OutputParams::NoSearch) ? " " : "\\ ");
+		if (runparams.for_search != OutputParams::NoSearch)
+			os << "~";
+		else
+			os << (runparams.free_spacing ? " " : "\\ ");
 		break;
 	case InsetSpaceParams::PROTECTED:
 		if (runparams.local_font &&

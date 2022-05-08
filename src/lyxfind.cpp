@@ -831,10 +831,6 @@ string string2regex(string in)
 			blanks++;
 			i++;
 		}
-		else if (tempx[i] == '\\' && tempx[i+1] == '\\' && tempx[i+2] == ' ') {
-			blanks++;
-			i += 2;
-		}
 		else {
 			if (blanks > 0) {
 				temp += "\\s+";
@@ -3740,6 +3736,9 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		if (lng != str.size()) {
 			str = str.substr(0, lng);
 		}
+		// Replace occurences of '~' to ' '
+		static std::regex specialChars { R"(~)" };
+		str = std::regex_replace(str, specialChars,  R"( )" );
 	}
 	if (str.empty()) {
 		mres.match_len = -1;
@@ -3808,7 +3807,7 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 			while (mres.match_len > 0) {
 				QChar c = qstr.at(matchend - 1);
 				if ((c == '\n') || (c == '}') || (c == '{')) {
-					mres.match_len--;
+					// mres.match_len--;
 					matchend--;
 				}
 				else
@@ -3837,7 +3836,7 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 			while (mres.match_len > 0) {
 				char c = str.at(matchend - 1);
 				if ((c == '\n') || (c == '}') || (c == '{')) {
-					mres.match_len--;
+					// mres.match_len--;
 					matchend--;
 				}
 				else
