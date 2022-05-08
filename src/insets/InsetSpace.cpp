@@ -679,7 +679,7 @@ void InsetSpace::latex(otexstream & os, OutputParams const & runparams) const
 
 
 int InsetSpace::plaintext(odocstringstream & os,
-        OutputParams const &, size_t) const
+        OutputParams const &runparams, size_t) const
 {
 	switch (params_.kind) {
 	case InsetSpaceParams::HFILL:
@@ -737,7 +737,11 @@ int InsetSpace::plaintext(odocstringstream & os,
 		return 1;
 	case InsetSpaceParams::PROTECTED:
 	case InsetSpaceParams::CUSTOM_PROTECTED:
-		os.put(0x00a0);
+		if (runparams.for_search == OutputParams::NoSearch)
+			os.put(0x00a0);
+		else {
+			os.put(' ');
+		}
 		return 1;
 	case InsetSpaceParams::NEGTHIN:
 	case InsetSpaceParams::NEGMEDIUM:

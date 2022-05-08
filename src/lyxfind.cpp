@@ -833,14 +833,20 @@ string string2regex(string in)
 		}
 		else {
 			if (blanks > 0) {
-				temp += "\\s+";
+				if (blanks > 1)
+					temp += "\\s+";
+				else
+					temp += "\\s";
 			}
 			temp += tempx[i];
 			blanks = 0;
 		}
 	}
 	if (blanks > 0) {
-		temp += "\\s+";
+		if (blanks > 1)
+			temp += "\\s+";
+		else
+			temp += "\\s";
 	}
 
 	string temp2("");
@@ -1161,7 +1167,7 @@ static docstring buffer_to_latex(Buffer & buffer)
 	return ods.str();
 }
 
-static string latexNamesToUtf8(docstring strIn)
+static string latexNamesToUtf8(docstring strIn, bool withformat)
 {
 	string addtmp = to_utf8(strIn);
 	static regex const rmAcc("(\\\\)*("
@@ -1203,6 +1209,10 @@ static string latexNamesToUtf8(docstring strIn)
 		add = addtmp;
 	else if (addtmp.length() > lastpos)
 		add += addtmp.substr(lastpos, addtmp.length() - lastpos);
+	if (!withformat) {
+		static std::regex repltilde { R"(~)" };
+		add = std::regex_replace(add, repltilde, accents["lyxtilde"]);
+	}
 	LYXERR(Debug::FINDVERBOSE, "Adding to search string: '"
 			<< add << "'");
 	return add;
@@ -1234,7 +1244,7 @@ static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions co
 			Paragraph const & par = buffer.paragraphs().at(pit);
 			string add = latexNamesToUtf8(par.asString(pos_type(0), par.size(),
 								option,
-								&runparams));
+								&runparams), !opt.ignoreformat);
 			LYXERR(Debug::FINDVERBOSE, "Adding to search string: '"
 				<< add << "'");
 			t += add;
@@ -1929,7 +1939,6 @@ static void buildAccentsMap()
 	accents["cdot"] = "·";
 	accents["textasciicircum"] = "^";
 	accents["mathcircumflex"] = "^";
-	accents["sim"] = "~";
 	accents["guillemotright"] = "»";
 	accents["guillemotleft"] = "«";
 	accents["hairspace"]     = getutf8(0xf0000);	// select from free unicode plane 15
@@ -1950,6 +1959,8 @@ static void buildAccentsMap()
 	accents["lyxarrow"]      = getutf8(0xf0020);
 	accents["braceleft"]     = getutf8(0xf0030);
 	accents["braceright"]    = getutf8(0xf0031);
+	accents["lyxtilde"]      = getutf8(0xf0032);
+	accents["sim"]           = getutf8(0xf0032);
 	accents["backslash lyx"]           = getutf8(0xf0010);	// Used logos inserted with starting \backslash
 	accents["backslash LyX"]           = getutf8(0xf0010);
 	accents["backslash tex"]           = getutf8(0xf0011);
@@ -4015,7 +4026,7 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 		       << cur << ", from pos: " << cur.pos() << ", end: " << end);
 		docstring res = from_utf8(latexNamesToUtf8(par.asString(cur.pos(), end,
 								        option,
-								        &runparams)));
+								        &runparams), false));
 		LYXERR(Debug::FINDVERBOSE|Debug::FIND, "Stringified text from pos(" << cur.pos() << ") len(" << len << "): " << res);
 		return res;
 	} else if (cur.inMathed()) {
@@ -4028,7 +4039,7 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 		MathData md2;
 		for (MathData::const_iterator it = md.begin() + cs.pos(); it != it_end; ++it)
 			md2.push_back(*it);
-		docstring res = from_utf8(latexNamesToUtf8(asString(md2)));
+		docstring res = from_utf8(latexNamesToUtf8(asString(md2), false));
 		LYXERR(Debug::FINDVERBOSE|Debug::FIND, "Stringified math from pos(" << cur.pos() << ") len(" << len << "): " << res);
 		return res;
 	}

@@ -1223,6 +1223,9 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 			case '}':
 				os << "\\braceright ";
 				return;
+			case '~':
+				os << "\\lyxtilde ";
+				return;
 			case ' ':
 			case '\0':
 				break;
