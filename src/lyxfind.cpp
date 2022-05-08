@@ -872,7 +872,8 @@ string correctRegex(string t, bool withformat)
 	 * and \{, \}, \[, \] => {, }, [, ]
 	 */
 	string s("");
-	regex wordre("(\\\\)*(\\\\(([A-Za-z]+|[\\{\\}%])( |\\{\\})?|[\\[\\]\\{\\}]))");
+	static std::regex wordre("(\\\\)*(\\\\(( |[A-Za-z]+|[\\{\\}%])( |\\{\\})?|[\\[\\]\\{\\}]))");
+	static std::regex protectedSpace { R"(~)" };
 	size_t lastpos = 0;
 	smatch sub;
 	bool backslashed = false;
@@ -892,7 +893,7 @@ string correctRegex(string t, bool withformat)
 				{
 					// transforms '\backslash \{' into '\{'
 					string next = t.substr(sub.position(2) + sub.str(2).length(), 2);
-					if ((next == "\\{") || (next == "\\}")) {
+					if ((next == "\\{") || (next == "\\}") || (next == "\\ ")) {
 						replace = "";
 						backslashed = true;
 					}
@@ -907,6 +908,8 @@ string correctRegex(string t, bool withformat)
 						replace = accents["braceleft"];
 					else if (sub.str(3) == "}")
 						replace = accents["braceright"];
+					else if (sub.str(3) == " ")
+						replace = "\\ ";
 					else {
 						// else part should not exist
 						LASSERT(0, /**/);
@@ -917,6 +920,8 @@ string correctRegex(string t, bool withformat)
 						replace = "\\{";
 					else if (sub.str(3) == "}")
 						replace = "\\}";
+					else if (sub.str(3) == " ")
+						replace = "\\ ";
 					else {
 						// else part should not exist
 						LASSERT(0, /**/);
@@ -929,6 +934,8 @@ string correctRegex(string t, bool withformat)
 				replace = "}";
 			else if (sub.str(4) == "%")
 				replace = "%";
+			else if (sub.str(4) == " ")
+				replace = " ";
 			else {
 				AccentsIterator it_ac = accents.find(sub.str(4));
 				if (it_ac == accents.end()) {
@@ -940,14 +947,14 @@ string correctRegex(string t, bool withformat)
 			}
 		}
 		if (lastpos < (size_t) sub.position(2))
-			s += t.substr(lastpos, sub.position(2) - lastpos);
+			s += std::regex_replace(t.substr(lastpos, sub.position(2) - lastpos), protectedSpace, R"( )");
 		s += replace;
 		lastpos = sub.position(2) + sub.length(2);
 	}
 	if (lastpos == 0)
-		s = t;
+		s = std::regex_replace(t, protectedSpace, R"( )");
 	else if (lastpos < t.length())
-		s += t.substr(lastpos, t.length() - lastpos);
+		s += std::regex_replace(t.substr(lastpos, t.length() - lastpos), protectedSpace, R"( )");
 	// Handle quotes in regex
 	// substitute all '„', '“', '»', '«' with '"'
 	// and all '‚', '‘', '›', '‹' with "\'"
