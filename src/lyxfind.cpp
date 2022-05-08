@@ -3804,10 +3804,10 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		int matchend = match.capturedEnd(0);
 		size_t strsize = qstr.size();
 		if (!opt.ignoreformat) {
-			while (mres.match_len > 0) {
+			while (mres.match_len > 1) {
 				QChar c = qstr.at(matchend - 1);
 				if ((c == '\n') || (c == '}') || (c == '{')) {
-					// mres.match_len--;
+					mres.match_len--;
 					matchend--;
 				}
 				else
@@ -3833,10 +3833,10 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		int matchend = strend;
 		size_t strsize = str.size();
 		if (!opt.ignoreformat) {
-			while (mres.match_len > 0) {
+			while (mres.match_len > 1) {
 				char c = str.at(matchend - 1);
 				if ((c == '\n') || (c == '}') || (c == '{')) {
-					// mres.match_len--;
+					mres.match_len--;
 					matchend--;
 				}
 				else
