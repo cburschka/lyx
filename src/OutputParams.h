@@ -433,7 +433,12 @@ public:
 		SearchNonOutput = 8
 	};
 		
-	int for_search = NoSearch;
+	inline bool find_effective(void) const { return (for_search != OutputParams::NoSearch); }
+	inline bool find_with_non_output() const { return ((for_search & OutputParams::SearchNonOutput) != 0); }
+	inline bool find_with_deleted() const { return ((for_search & OutputParams::SearchWithDeleted) != 0); }
+	inline void find_set_feature(enum Search set_) { for_search = set_; }
+	inline void find_add_feature(enum Search add_) { for_search |= add_; }
+	inline void find_clean_features(void) { for_search = OutputParams::NoSearch; }
 
 	/// Are we generating this material for instant preview?
 	bool for_preview = false;
@@ -446,6 +451,8 @@ public:
 
 	/// A postponed \\noindent (after VSpace)
 	mutable bool need_noindent = false;
+private:
+	int for_search = NoSearch;
 };
 
 

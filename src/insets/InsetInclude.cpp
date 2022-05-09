@@ -1006,14 +1006,14 @@ int InsetInclude::plaintext(odocstringstream & os,
 {
 	// just write the filename if we're making a tooltip or toc entry,
 	// or are generating this for advanced search
-	if (op.for_tooltip || op.for_toc || op.for_search != OutputParams::NoSearch) {
+	if (op.for_tooltip || op.for_toc || op.find_effective()) {
 		os << '[' << screenLabel() << '\n'
 		   << ltrim(getParam("filename")) << "\n]";
 		return PLAINTEXT_NEWLINE + 1; // one char on a separate line
 	}
 
 	if (isVerbatim(params()) || isListings(params())) {
-		if (op.for_search != OutputParams::NoSearch) {
+		if (op.find_effective()) {
 			os << '[' << screenLabel() << ']';
 		}
 		else {

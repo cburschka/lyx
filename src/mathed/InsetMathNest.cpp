@@ -359,7 +359,7 @@ void InsetMathNest::normalize(NormalStream & os) const
 void InsetMathNest::latex(otexstream & os, OutputParams const & runparams) const
 {
 	TeXMathStream::OutputType ot;
-	if (runparams.for_search != OutputParams::NoSearch)
+	if (runparams.find_effective())
 		ot = TeXMathStream::wsSearchAdv;
 	else if (runparams.dryrun)
 		ot = TeXMathStream::wsDryrun;

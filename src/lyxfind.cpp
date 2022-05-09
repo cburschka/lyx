@@ -812,6 +812,17 @@ namespace {
 
 typedef vector<pair<string, string> > Escapes;
 
+static string getRegexSpaceCount(int count)
+{
+	if (count > 0) {
+		if (count > 1)
+			return "\\s{" + std::to_string(count) + "}";
+		else
+			return "\\s";
+	}
+	return "";
+}
+
 string string2regex(string in)
 {
 	static std::regex specialChars { R"([-[\]{}()*+?.,\^$|#\$\\])" };
@@ -833,20 +844,14 @@ string string2regex(string in)
 		}
 		else {
 			if (blanks > 0) {
-				if (blanks > 1)
-					temp += "\\s+";
-				else
-					temp += "\\s";
+				temp += getRegexSpaceCount(blanks);
 			}
 			temp += tempx[i];
 			blanks = 0;
 		}
 	}
 	if (blanks > 0) {
-		if (blanks > 1)
-			temp += "\\s+";
-		else
-			temp += "\\s";
+		temp += getRegexSpaceCount(blanks);
 	}
 
 	string temp2("");
@@ -1153,11 +1158,11 @@ static docstring buffer_to_latex(Buffer & buffer)
 	runparams.nice = true;
 	setFindParams(runparams);
 	if (ignoreFormats.getDeleted())
-		runparams.for_search = OutputParams::SearchWithoutDeleted;
+		runparams.find_set_feature(OutputParams::SearchWithoutDeleted);
 	else
-		runparams.for_search = OutputParams::SearchWithDeleted;
+		runparams.find_set_feature(OutputParams::SearchWithDeleted);
 	if (ignoreFormats.getNonContent()) {
-		runparams.for_search |= OutputParams::SearchNonOutput;
+		runparams.find_add_feature(OutputParams::SearchNonOutput);
 	}
 	pit_type const endpit = buffer.paragraphs().size();
 	for (pit_type pit = 0; pit != endpit; ++pit) {
@@ -1231,13 +1236,13 @@ static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions co
 		int option = AS_STR_INSETS |AS_STR_PLAINTEXT;
 		if (ignoreFormats.getDeleted()) {
 			option |= AS_STR_SKIPDELETE;
-			runparams.for_search = OutputParams::SearchWithoutDeleted;
+			runparams.find_set_feature(OutputParams::SearchWithoutDeleted);
 		}
 		else {
-			runparams.for_search = OutputParams::SearchWithDeleted;
+			runparams.find_set_feature(OutputParams::SearchWithDeleted);
 		}
 		if (ignoreFormats.getNonContent()) {
-			runparams.for_search |= OutputParams::SearchNonOutput;
+			runparams.find_add_feature(OutputParams::SearchNonOutput);
 		}
 		string t("");
 		for (pos_type pit = pos_type(0); pit < (pos_type)buffer.paragraphs().size(); ++pit) {
@@ -4014,13 +4019,13 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 		int option = AS_STR_INSETS | AS_STR_PLAINTEXT;
 		if (ignoreFormats.getDeleted()) {
 			option |= AS_STR_SKIPDELETE;
-			runparams.for_search = OutputParams::SearchWithoutDeleted;
+			runparams.find_set_feature(OutputParams::SearchWithoutDeleted);
 		}
 		else {
-			runparams.for_search = OutputParams::SearchWithDeleted;
+			runparams.find_set_feature(OutputParams::SearchWithDeleted);
 		}
 		if (ignoreFormats.getNonContent()) {
-			runparams.for_search |= OutputParams::SearchNonOutput;
+			runparams.find_add_feature(OutputParams::SearchNonOutput);
 		}
 		LYXERR(Debug::FINDVERBOSE, "Stringifying with cur: "
 		       << cur << ", from pos: " << cur.pos() << ", end: " << end);
@@ -4067,13 +4072,13 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 	runparams.nice = false;
 	setFindParams(runparams);
 	if (ignoreFormats.getDeleted()) {
-		runparams.for_search = OutputParams::SearchWithoutDeleted;
+		runparams.find_set_feature(OutputParams::SearchWithoutDeleted);
 	}
 	else {
-		runparams.for_search = OutputParams::SearchWithDeleted;
+		runparams.find_set_feature(OutputParams::SearchWithDeleted);
 	}
 	if (ignoreFormats.getNonContent()) {
-		runparams.for_search |= OutputParams::SearchNonOutput;
+		runparams.find_add_feature(OutputParams::SearchNonOutput);
 	}
 
 	if (cur.inTexted()) {

@@ -1209,10 +1209,10 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 {
 	char_type const c = owner_->getUChar(bparams, runparams, i);
 
-	if (style.pass_thru || runparams.pass_thru || (runparams.for_search != OutputParams::NoSearch)
+	if (style.pass_thru || runparams.pass_thru || runparams.find_effective()
 	    || contains(style.pass_thru_chars, c)
 	    || contains(runparams.pass_thru_chars, c)) {
-		if (runparams.for_search != OutputParams::NoSearch) {
+		if (runparams.find_effective()) {
 			switch (c) {
 			case '\\':
 				os << "\\\\";
@@ -2622,7 +2622,7 @@ void Paragraph::latex(BufferParams const & bparams,
 						runparams);
 				runningChange = Change(Change::UNCHANGED);
 
-				os << ((isEnvSeparator(i) && (runparams.for_search == OutputParams::NoSearch)) ? "}]~" : "}] ");
+				os << ((isEnvSeparator(i) && !runparams.find_effective()) ? "}]~" : "}] ");
 				column +=3;
 			}
 			// For InTitle commands, we have already opened a group
@@ -2652,10 +2652,10 @@ void Paragraph::latex(BufferParams const & bparams,
 
 		// Check whether a display math inset follows
 		bool output_changes;
-		if (runparams.for_search == OutputParams::NoSearch)
+		if (!runparams.find_effective())
 			output_changes = bparams.output_changes;
 		else
-			output_changes = ((runparams.for_search & OutputParams::SearchWithDeleted) != 0);
+			output_changes = runparams.find_with_deleted();
 		if (c == META_INSET
 		    && i >= start_pos && (end_pos == -1 || i < end_pos)) {
 			if (isDeleted(i))
@@ -4598,7 +4598,7 @@ int Paragraph::find(docstring const & str, bool cs, bool mw,
 			odocstringstream os;
 			if (inset->lyxCode() == lyx::QUOTE_CODE) {
 				OutputParams op(0);
-				op.for_search = OutputParams::SearchQuick;
+				op.find_set_feature(OutputParams::SearchQuick);
 				inset->plaintext(os, op);
 			}
 			else {

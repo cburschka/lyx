@@ -336,7 +336,7 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 	p.reduce(prev.bits_);
 
 	if (f.size() != INHERIT_SIZE) {
-		if (runparams.for_search == OutputParams::NoSearch) {
+		if (!runparams.find_effective()) {
 			os << '{';
 			++count;
 			os << '\\'
