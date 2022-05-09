@@ -3575,8 +3575,10 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		docstring const req_layout = ignoreautonests ? from_utf8(cmd.getArg(0)) : cmd.argument();
 		docstring const layout = resolveLayout(req_layout, cur);
 
-		enable = !owner_->forcePlainLayout() && !layout.empty();
-		status.setOnOff(!owner_->forcePlainLayout() && isAlreadyLayout(layout, cur));
+		// FIXME: make this work in multicell selection case
+		enable = !owner_->forcePlainLayout() && !layout.empty() && !cur.selIsMultiCell();
+		status.setOnOff(!owner_->forcePlainLayout() && !cur.selIsMultiCell()
+		                && isAlreadyLayout(layout, cur));
 		break;
 	}
 
