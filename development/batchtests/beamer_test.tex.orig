@@ -12,10 +12,10 @@
 \usepackage{url}
 \ifx\hypersetup\undefined
   \AtBeginDocument{%
-    \hypersetup{unicode=true}
+    \hypersetup{}
   }
 \else
-  \hypersetup{unicode=true}
+  \hypersetup{}
 \fi
 
 \makeatletter
