@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-04-30 17:39+0200\n"
-"PO-Revision-Date: 2022-04-30 17:50+0200\n"
+"POT-Creation-Date: 2022-05-10 13:31+0200\n"
+"PO-Revision-Date: 2022-05-10 13:47+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -1798,8 +1798,8 @@ msgid "Restrict search to math environments only"
 msgstr "Suche auf die Mathe-Umgebung beschränken"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:383
-msgid "Search on&ly in maths"
-msgstr "Nur im Ma&the-Umfeld"
+msgid "Search onl&y in maths"
+msgstr "Nu&r im Mathe-Umfeld"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:390
 msgid ""
@@ -1832,7 +1832,7 @@ msgstr ""
 "Aspekten, die hier ausgewählt sind, wie der Sucheintrag formatiert sind."
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:428
-msgid "Ad&here to search string formatting of"
+msgid "Adhe&re to search string formatting of"
 msgstr "Sucheintrags&formatierung beachten bzgl."
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:440
@@ -1844,8 +1844,8 @@ msgid "Emph/noun"
 msgstr "Hervorh./Eigenname"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:468
-msgid "Deselect all"
-msgstr "Alles auswählen"
+msgid "Dese&lect all"
+msgstr "Alles deakti&vieren"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:489
 msgid "Sectioning markup"
@@ -1860,8 +1860,8 @@ msgid "Underlining"
 msgstr "Unterstreichung"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:517
-msgid "Select all"
-msgstr "Alles auswählen"
+msgid "&Select all"
+msgstr "Alles ausw&ählen"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:14
 #: src/frontends/qt/ui/OutputUi.ui:14 src/frontends/qt/ui/PDFSupportUi.ui:14
@@ -28068,7 +28068,7 @@ msgid "greyedout inset text"
 msgstr "Grauschrift-Einfügungstext"
 
 #: src/BufferParams.cpp:1718 src/BufferParams.cpp:1872
-#: src/BufferParams.cpp:2315 src/Encoding.cpp:264 src/Paragraph.cpp:3014
+#: src/BufferParams.cpp:2315 src/Encoding.cpp:264 src/Paragraph.cpp:3026
 #: src/frontends/qt/LaTeXHighlighter.cpp:143
 #: src/frontends/qt/LaTeXHighlighter.cpp:257
 #: src/insets/InsetCommandParams.cpp:508 src/insets/InsetCommandParams.cpp:516
@@ -28080,7 +28080,7 @@ msgid "LyX Warning: "
 msgstr "LyX-Warnung: "
 
 #: src/BufferParams.cpp:1719 src/BufferParams.cpp:1873
-#: src/BufferParams.cpp:2316 src/Encoding.cpp:265 src/Paragraph.cpp:3015
+#: src/BufferParams.cpp:2316 src/Encoding.cpp:265 src/Paragraph.cpp:3027
 #: src/insets/InsetCommandParams.cpp:509 src/insets/InsetCommandParams.cpp:517
 #: src/insets/InsetGraphics.cpp:901 src/insets/InsetGraphics.cpp:909
 #: src/insets/InsetListings.cpp:300 src/insets/InsetListings.cpp:308
@@ -30500,15 +30500,15 @@ msgstr "Zur gespeicherten Version des Dokuments zurückkehren?"
 msgid "&Revert"
 msgstr "&Wiederherstellen"
 
-#: src/Paragraph.cpp:2152
+#: src/Paragraph.cpp:2164
 msgid "Senseless with this layout!"
 msgstr "Für dieses Format nicht relevant!"
 
-#: src/Paragraph.cpp:2206
+#: src/Paragraph.cpp:2218
 msgid "Alignment not permitted"
 msgstr "Ausrichtung nicht erlaubt"
 
-#: src/Paragraph.cpp:2207
+#: src/Paragraph.cpp:2219
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -30613,7 +30613,7 @@ msgstr ", Zeichen: 0x"
 msgid ", Boundary: "
 msgstr ", Grenze: "
 
-#: src/Text2.cpp:406
+#: src/Text2.cpp:407
 msgid "No font change defined."
 msgstr "Keine Schriftänderung definiert."
 
@@ -30637,36 +30637,36 @@ msgstr "Regexp-Editor-Modus"
 msgid "Layout "
 msgstr "Format "
 
-#: src/Text3.cpp:1619 src/Text3.cpp:2193
+#: src/Text3.cpp:1619 src/Text3.cpp:2203
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/Text3.cpp:2192
+#: src/Text3.cpp:2202
 msgid "Table Style "
 msgstr "Tabellenstil"
 
-#: src/Text3.cpp:2385 src/frontends/qt/GuiApplication.cpp:1887
+#: src/Text3.cpp:2395 src/frontends/qt/GuiApplication.cpp:1887
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
-#: src/Text3.cpp:2550
+#: src/Text3.cpp:2560
 msgid "Invalid argument (number exceeds stack size)!"
 msgstr "Ungültiges Argument (Zahl größer als Zwischenspeicher)!"
 
-#: src/Text3.cpp:2554
+#: src/Text3.cpp:2564
 msgid "Invalid argument (must be a non-negative number)!"
 msgstr "Ungültiges Argument (muss eine nicht-negative Zahl sein)!"
 
-#: src/Text3.cpp:2559 src/Text3.cpp:2573
+#: src/Text3.cpp:2569 src/Text3.cpp:2583
 #, c-format
 msgid "Text properties applied: %1$s"
 msgstr "Angewendete Texteigenschaften: %1$s"
 
-#: src/Text3.cpp:2732
+#: src/Text3.cpp:2742
 msgid "Path to thesaurus directory not set!"
 msgstr "Pfad zum Thesaurus-Wörterbuch nicht festlegt!"
 
-#: src/Text3.cpp:2733
+#: src/Text3.cpp:2743
 msgid ""
 "The path to the thesaurus directory has not been specified.\n"
 "The thesaurus is not functional.\n"
@@ -30678,7 +30678,7 @@ msgstr ""
 "Im Benutzerhandbuch, Abschnitt 6.15.11, finden Sie Hinweise,\n"
 "um den Thesaurus einzurichten."
 
-#: src/Text3.cpp:2859 src/Text3.cpp:2870
+#: src/Text3.cpp:2869 src/Text3.cpp:2880
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
@@ -37215,28 +37215,28 @@ msgstr "%1$d Zeichenketten wurden in der Auswahl ersetzt."
 msgid "%1$d strings have been replaced."
 msgstr "%1$d Zeichenketten wurden ersetzt."
 
-#: src/lyxfind.cpp:4683
+#: src/lyxfind.cpp:4745
 msgid "One match has been replaced."
 msgstr "Ein Treffer wurde ersetzt."
 
-#: src/lyxfind.cpp:4686
+#: src/lyxfind.cpp:4748
 msgid "Two matches have been replaced."
 msgstr "Zwei Treffer wurden ersetzt."
 
-#: src/lyxfind.cpp:4689
+#: src/lyxfind.cpp:4751
 #, c-format
 msgid "%1$d matches have been replaced."
 msgstr "%1$d Treffer wurden ersetzt."
 
-#: src/lyxfind.cpp:4695
+#: src/lyxfind.cpp:4757
 msgid "Match not found."
 msgstr "Die Zeichenkette wurde nicht gefunden!"
 
-#: src/lyxfind.cpp:4701
+#: src/lyxfind.cpp:4763
 msgid "Match has been replaced."
 msgstr "Die Zeichenkette wurde ersetzt."
 
-#: src/lyxfind.cpp:4703
+#: src/lyxfind.cpp:4765
 msgid "Match found."
 msgstr "Die Zeichenkette wurde gefunden!"
 
