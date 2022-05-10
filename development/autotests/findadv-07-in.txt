@@ -27,7 +27,7 @@ KK: foo bar\C\[Home]
 KK: \Axbuffer-write\[Return]
 KK: \Axdialog-show findreplaceadv\[Return]
 # Uncheck ignore format
-KK: \At\Ai\Ah
+KK: \At\Ar\Ak\Ah
 KK: \CF
 KK: \C\[F30]
 Sleep 1
@@ -40,7 +40,7 @@ KK: \[Escape]\C\[Home]
 KK: \CF
 KK: \[Delete]
 # Uncheck ignore format
-#KK: \At\Ai\Ah
+#KK: \At\Ar\Ak\Ah
 #KK: \CF
 KK: \C\[F30]
 Sleep 1

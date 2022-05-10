@@ -20,7 +20,7 @@ TestBegin test.lyx -dbg key,find >> findadv-re-02.loga.txt 2>&1
 CN: Part 2
 KK: \CF
 # Uncheck ignore format
-KK: \At\Ai\Ah
+KK: \At\Ar\Ak\Ah
 KK: \CF
 KK: \C\[F20]\\\\\[Return]
 CP: Putting selection at .*idx: 0 par: 0 pos: 0\n with len: 1
@@ -43,7 +43,7 @@ TestBegin test.lyx -dbg key,find >> findadv-re-02.loga.txt 2>&1
 CN: Part 4
 KK: \CF
 # Uncheck ignore format
-KK: \At\Ai\Ah
+KK: \At\Ar\Ak\Ah
 KK: \CF
 KK: \C\[F20]%\[Return]
 CP: Putting selection at .*idx: 0 par: 0 pos: 7\n with len: 1
@@ -66,7 +66,7 @@ TestBegin test.lyx -dbg key,find >> findadv-re-02.loga.txt 2>&1
 CN: Part 6
 KK: \CF
 # Uncheck ignore format
-KK: \At\Ai\Ah
+KK: \At\Ar\Ak\Ah
 KK: \CF
 KK: \C\[F20]\\^\[Return]
 CP: Putting selection at .*idx: 0 par: 0 pos: 8\n with len: 1

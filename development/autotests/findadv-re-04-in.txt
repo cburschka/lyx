@@ -14,7 +14,7 @@ KK: \C\[Home]
 KK: \Cs
 KK: \CF
 # Uncheck ignore format (depends on IT language)
-KK: \At\Ai\Ah
+KK: \At\Ar\Ak\Ah
 KK: \CF
 KK: \Ce
 CN: Case insensitive, format not ignored .*
@@ -31,7 +31,7 @@ TestBegin test.lyx -dbg key,find >> findadv-re-04.loga.txt 2>&1
 CN: Case insensitive, format not ignored [a-z]+
 KK: \CF
 # Uncheck ignore format (depends on IT language)
-KK: \At\Ai\Ah
+KK: \At\Ar\Ak\Ah
 KK: \CF
 KK: \Ce
 KK: \C\[F20]\\b[a-z]+\\b\[Return]\[Return]\[Return]
@@ -49,7 +49,7 @@ TestBegin test.lyx -dbg key,find >> findadv-re-04.loga.txt 2>&1
 
 CN: Case sensitive, format not ignored [a-z]+
 KK: \CF
-KK: \At\Ai\Ah
+KK: \At\Ar\Ak\Ah
 KK: \CF
 KK: \Ce
 KK: \Az\[Tab]\[Tab]\C\[F20][a-z]+\[Return]\[Return]\[Return]\[Return]
@@ -71,7 +71,7 @@ TestBegin test.lyx -dbg key,find >> findadv-re-04.loga.txt 2>&1
 
 CN: Case sensitive, format not ignored [A-Z]+
 KK: \CF
-KK: \At\Ai\Ah
+KK: \At\Ar\Ak\Ah
 KK: \CF
 KK: \Ce
 KK: \Az\[Tab]\[Tab]\C\[F20][A-Z]+\[Return]\[Return]\[Return]
