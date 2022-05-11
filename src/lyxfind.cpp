@@ -3962,10 +3962,11 @@ string MatchStringAdv::normalize(docstring const & s, bool ignore_format) const
 	while ((pos = t.find("\n")) != string::npos) {
 		if (pos > 1 && t[pos-1] == '\\' && t[pos-2] == '\\' ) {
 			// Handle '\\\n'
-			if (isAlnumASCII(t[pos+1])) {
+			if (isPrintableNonspace(t[pos+1]) && ((pos < 3) || isPrintableNonspace(t[pos-3]))) {
 				t.replace(pos-2, 3, " ");
 			}
 			else {
+				// Already a space there
 				t.replace(pos-2, 3, "");
 			}
 		}
