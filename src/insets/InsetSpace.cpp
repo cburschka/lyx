@@ -585,25 +585,30 @@ void InsetSpace::latex(otexstream & os, OutputParams const & runparams) const
 			os << (runparams.free_spacing ? " " : "\\ ");
 		break;
 	case InsetSpaceParams::PROTECTED:
-		if (runparams.local_font &&
+		if (runparams.find_effective())
+			os.put(0xa0);
+		else if (runparams.local_font &&
 		    runparams.local_font->language()->lang() == "polutonikogreek")
 			// in babel's polutonikogreek, ~ is active
-			os << (runparams.free_spacing && !runparams.find_effective() ? " " : "\\nobreakspace{}");
+			os << (runparams.free_spacing ? " " : "\\nobreakspace{}");
 		else
-			os << (runparams.free_spacing && !runparams.find_effective() ? ' ' : '~');
+			os << (runparams.free_spacing ? ' ' : '~');
 		break;
 	case InsetSpaceParams::VISIBLE:
-		os << (runparams.free_spacing && !runparams.find_effective() ? " " : "\\textvisiblespace{}");
+		if (runparams.find_effective())
+			os.put(0x2423);
+		else
+			os << (runparams.free_spacing ? " " : "\\textvisiblespace{}");
 		break;
 	case InsetSpaceParams::THIN:
 		if (runparams.find_effective())
-			os << "\\thinspace{}";
+			os.put(0x2009);
 		else
 			os << (runparams.free_spacing ? " " : "\\,");
 		break;
 	case InsetSpaceParams::MEDIUM:
 		if (runparams.find_effective())
-			os << "\\medspace{}";
+			os.put(0x2005);
 		else if (params_.math)
 			os << (runparams.free_spacing ? " " : "\\:");
 		else
@@ -611,23 +616,37 @@ void InsetSpace::latex(otexstream & os, OutputParams const & runparams) const
 		break;
 	case InsetSpaceParams::THICK:
 		if (runparams.find_effective())
-			os << "\\thickspace{}";
+			os.put(0x2004);
 		else if (params_.math)
 			os << (runparams.free_spacing ? " " : "\\;");
 		else
 			os << (runparams.free_spacing ? " " : "\\thickspace{}");
 		break;
 	case InsetSpaceParams::QUAD:
-		os << (runparams.free_spacing && runparams.find_effective() ? " " : "\\quad{}");
+		if (runparams.find_effective())
+			os.put(0x2003);
+		else
+			os << (runparams.free_spacing ? " " : "\\quad{}");
 		break;
 	case InsetSpaceParams::QQUAD:
-		os << (runparams.free_spacing && runparams.find_effective() ? " " : "\\qquad{}");
+		if (runparams.find_effective()) {
+			os.put(0x2003);
+			os.put(0x2003);
+		}
+		else
+			os << (runparams.free_spacing ? " " : "\\qquad{}");
 		break;
 	case InsetSpaceParams::ENSPACE:
-		os << (runparams.free_spacing && runparams.find_effective() ? " " : "\\enspace{}");
+		if (runparams.find_effective())
+			os.put(0x2002);
+		else
+			os << (runparams.free_spacing ? " " : "\\enspace{}");
 		break;
 	case InsetSpaceParams::ENSKIP:
-		os << (runparams.free_spacing && runparams.find_effective() ? " " : "\\enskip{}");
+		if (runparams.find_effective())
+			os.put(0x2002);
+		else
+			os << (runparams.free_spacing ? " " : "\\enskip{}");
 		break;
 	case InsetSpaceParams::NEGTHIN:
 		os << (runparams.free_spacing && runparams.find_effective() ? " " : "\\negthinspace{}");
@@ -663,13 +682,17 @@ void InsetSpace::latex(otexstream & os, OutputParams const & runparams) const
 		os << (runparams.free_spacing && runparams.find_effective() ? " " : "\\downbracefill{}");
 		break;
 	case InsetSpaceParams::CUSTOM:
-		if (runparams.free_spacing)
+		if (runparams.find_effective())
+			os.put(0x00a0);
+		else if (runparams.free_spacing)
 			os << " ";
 		else
 			os << "\\hspace{" << from_ascii(params_.length.asLatexString()) << "}";
 		break;
 	case InsetSpaceParams::CUSTOM_PROTECTED:
-		if (runparams.free_spacing)
+		if (runparams.find_effective())
+			os.put(0x00a0);
+		else if (runparams.free_spacing)
 			os << " ";
 		else
 			os << "\\hspace*{" << from_ascii(params_.length.asLatexString()) << "}";
@@ -679,7 +702,7 @@ void InsetSpace::latex(otexstream & os, OutputParams const & runparams) const
 
 
 int InsetSpace::plaintext(odocstringstream & os,
-        OutputParams const &runparams, size_t) const
+        OutputParams const &, size_t) const
 {
 	switch (params_.kind) {
 	case InsetSpaceParams::HFILL:
@@ -737,10 +760,7 @@ int InsetSpace::plaintext(odocstringstream & os,
 		return 1;
 	case InsetSpaceParams::PROTECTED:
 	case InsetSpaceParams::CUSTOM_PROTECTED:
-		if (runparams.find_effective())
-			os.put(' ');
-		else
-			os.put(0x00a0);
+		os.put(0x00a0);
 		return 1;
 	case InsetSpaceParams::NEGTHIN:
 	case InsetSpaceParams::NEGMEDIUM:
