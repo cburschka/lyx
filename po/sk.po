@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-05-10 13:53+0200\n"
-"PO-Revision-Date: 2022-05-10 12:30+0000\n"
+"POT-Creation-Date: 2022-05-11 18:56+0200\n"
+"PO-Revision-Date: 2022-05-11 16:59+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -4123,6 +4123,14 @@ msgstr ""
 #: src/frontends/qt/ui/PrefEditUi.ui:170
 msgid "Cursor width (&pixels):"
 msgstr "Šírka kurzoru (pi&xel):"
+
+#: src/frontends/qt/ui/PrefEditUi.ui:177
+msgid ""
+"Configure the width of the text cursor.  \"Auto\" means that zoom-controlled "
+"width is used."
+msgstr ""
+"Konfigurovanie šírky textového kurzoru. \"Auto\" znamená že šírka je "
+"kontrolovaná lupou."
 
 #: src/frontends/qt/ui/PrefEditUi.ui:198
 msgid "Skip trailing non-word characters"
