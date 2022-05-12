@@ -1435,6 +1435,7 @@ public:
 	void removeAccents();
 	void setForDefaultLang(KeyInfo const & defLang) const;
 	int findclosing(int start, int end, char up, char down, int repeat);
+	void removeInvalidClosings(void);
 	void handleParentheses(int lastpos, bool closingAllowed);
 	bool hasTitle;
 	// Number of disabled language specs up
@@ -2241,6 +2242,27 @@ int Intervall::findclosing(int start, int end, char up = '{', char down = '}', i
 	return end;
 }
 
+void Intervall::removeInvalidClosings(void)
+{
+	// this can happen, if there are deleted parts
+	int skip = 0;
+	int depth = 0;
+	for (unsigned i = 0; i < par.size(); i += 1 + skip) {
+		char c = par[i];
+		skip = 0;
+		if (c == '\\') skip = 1;
+		else if (c == '{')
+			depth++;
+		else if (c == '}') {
+			if (depth == 0) {
+				addIntervall(i, i+1);
+				LYXERR(Debug::FINDVERBOSE, "removed invalid closing '}' at " << i);
+			}
+			else
+				--depth;
+		}
+	}
+}
 class MathInfo {
 	class MathEntry {
 	public:
@@ -2328,6 +2350,7 @@ void LatexInfo::buildEntries(bool isPatternString)
 	static bool removeMathHull = false;
 
 	interval_.removeAccents();
+	interval_.removeInvalidClosings();
 
 	for (sregex_iterator itmath(interval_.par.begin(), interval_.par.end(), rmath), end; itmath != end; ++itmath) {
 		submath = *itmath;
