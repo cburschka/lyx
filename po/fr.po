@@ -362,8 +362,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-05-10 14:08+0200\n"
-"PO-Revision-Date: 2022-05-10 14:09+0200\n"
+"POT-Creation-Date: 2022-05-12 14:41+0200\n"
+"PO-Revision-Date: 2022-05-12 14:43+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -4552,59 +4552,65 @@ msgstr ""
 "Définir un patron de recherche (voir le Manuel de l’utilisateur pour la "
 "syntaxe)"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:167 src/LyXRC.cpp:3175
-msgid ""
-"Configure the width of the text cursor. Automatic zoom-controlled cursor "
-"width used when set to 0."
-msgstr ""
-"Configurer le largeur du curseur de texte. Si la valeur vaut 0, une largeur "
-"de curseur avec zoom automatique est utilisée."
-
-#: src/frontends/qt/ui/PrefEditUi.ui:170
+#: src/frontends/qt/ui/PrefEditUi.ui:167
 msgid "Cursor width (&pixels):"
 msgstr "Largeur du curseur (&pixels) :"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:198
+#: src/frontends/qt/ui/PrefEditUi.ui:177
+msgid ""
+"Configure the width of the text cursor.  \"Auto\" means that zoom-controlled "
+"width is used."
+msgstr ""
+"Configurer le largeur du curseur de texte. Si la valeur vaut « Auto », le "
+"zoom automatique fixe la largeur du curseur. "
+
+#: src/frontends/qt/ui/PrefEditUi.ui:180
+#: lib/citeengines/biblatex-natbib.citeengine:148
+#: lib/citeengines/biblatex.citeengine:138
+msgid "Auto"
+msgstr "Auto"
+
+#: src/frontends/qt/ui/PrefEditUi.ui:201
 msgid "Skip trailing non-word characters"
 msgstr "Sauter les caractères finaux non alphanumériques"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:201
+#: src/frontends/qt/ui/PrefEditUi.ui:204
 msgid "Use M&ac-style cursor movement"
 msgstr "Utiliser les déplacements de curseur à la M&ac"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:208
+#: src/frontends/qt/ui/PrefEditUi.ui:211
 msgid "&Group environments by their category"
 msgstr "Re&grouper les environnements par catégorie"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:218
+#: src/frontends/qt/ui/PrefEditUi.ui:221
 msgid "Fullscreen"
 msgstr "Plein écran"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:230
+#: src/frontends/qt/ui/PrefEditUi.ui:233
 msgid "Hide &menubar"
 msgstr "Cacher la barre des &menus"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:237
+#: src/frontends/qt/ui/PrefEditUi.ui:240
 msgid "Hide scr&ollbar"
 msgstr "Cacher l'&ascenseur"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:260
+#: src/frontends/qt/ui/PrefEditUi.ui:263
 msgid "Hide sta&tusbar"
 msgstr "Cacher la barre d'&état"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:267
+#: src/frontends/qt/ui/PrefEditUi.ui:270
 msgid "H&ide tabbar"
 msgstr "Cacher la barre des &onglets"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:305
+#: src/frontends/qt/ui/PrefEditUi.ui:308
 msgid "&Limit text width"
 msgstr "&Limitation de la largeur du texte"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:328
+#: src/frontends/qt/ui/PrefEditUi.ui:331
 msgid "Screen used (pi&xels):"
 msgstr "Écran &utilisé (pixels) :"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:375
+#: src/frontends/qt/ui/PrefEditUi.ui:378
 msgid "&Hide toolbars"
 msgstr "Cacher les palettes d'&outils"
 
@@ -6727,11 +6733,6 @@ msgstr "Entrée bibliographique complète."
 #: lib/citeengines/biblatex.citeengine:137
 msgid "Autocite"
 msgstr "Autocite"
-
-#: lib/citeengines/biblatex-natbib.citeengine:148
-#: lib/citeengines/biblatex.citeengine:138
-msgid "Auto"
-msgstr "Auto"
 
 #: lib/citeengines/biblatex-natbib.citeengine:150
 #: lib/citeengines/biblatex.citeengine:142
@@ -30296,6 +30297,14 @@ msgstr ""
 "déplacez avec la barre de défilement. Cochez si vous préférez avoir toujours "
 "le curseur à l'écran."
 
+#: src/LyXRC.cpp:3175
+msgid ""
+"Configure the width of the text cursor. Automatic zoom-controlled cursor "
+"width used when set to 0."
+msgstr ""
+"Configurer le largeur du curseur de texte. Si la valeur vaut 0, une largeur "
+"de curseur avec zoom automatique est utilisée."
+
 #: src/LyXRC.cpp:3179
 msgid ""
 "LyX normally doesn't allow the user to scroll further than the bottom of the "
@@ -37458,28 +37467,28 @@ msgstr "%1$d chaînes remplacées dans le sélection."
 msgid "%1$d strings have been replaced."
 msgstr "%1$d chaînes remplacées."
 
-#: src/lyxfind.cpp:4745
+#: src/lyxfind.cpp:4769
 msgid "One match has been replaced."
 msgstr "Une correspondance a été remplacée."
 
-#: src/lyxfind.cpp:4748
+#: src/lyxfind.cpp:4772
 msgid "Two matches have been replaced."
 msgstr "Deux correspondances ont été remplacées."
 
-#: src/lyxfind.cpp:4751
+#: src/lyxfind.cpp:4775
 #, c-format
 msgid "%1$d matches have been replaced."
 msgstr "%1$d correspondances ont été remplacées."
 
-#: src/lyxfind.cpp:4757
+#: src/lyxfind.cpp:4781
 msgid "Match not found."
 msgstr "Chaîne de caractères introuvable."
 
-#: src/lyxfind.cpp:4763
+#: src/lyxfind.cpp:4787
 msgid "Match has been replaced."
 msgstr "Chaîne de caractères remplacée."
 
-#: src/lyxfind.cpp:4765
+#: src/lyxfind.cpp:4789
 msgid "Match found."
 msgstr "Chaîne de caractères reconnue."
 
