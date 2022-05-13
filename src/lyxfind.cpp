@@ -1967,6 +1967,7 @@ static void buildAccentsMap()
 	accents["braceright"]    = getutf8(0xf0031);
 	accents["lyxtilde"]      = getutf8(0xf0032);
 	accents["sim"]           = getutf8(0xf0032);
+	accents["lyxdollar"]     = getutf8(0xf0033);
 	accents["backslash lyx"]           = getutf8(0xf0010);	// Used logos inserted with starting \backslash
 	accents["backslash LyX"]           = getutf8(0xf0010);
 	accents["backslash tex"]           = getutf8(0xf0011);
@@ -3969,8 +3970,74 @@ static bool simple_replace(string &t, string from, string to)
 }
 #endif
 
-string MatchStringAdv::normalize(docstring const & s, bool ignore_format) const
+#if 1
+static string convertLF2Space(docstring const &s, bool ignore_format)
 {
+	// Using original docstring to handle '\n'
+
+	if (s.size() == 0) return "";
+	stringstream t;
+	size_t pos;
+	size_t start = 0;
+	size_t end = s.size() - 1;
+	while (s[start] == '\n' && start <= end)
+		start++;
+	while (end >= start && s[end] == '\n')
+		end--;
+	if (start >= end + 1)
+		return "";
+	do {
+		bool dospace = true;
+		int skip = -1;
+		pos = s.find('\n', start);
+		if (pos >= end) {
+			t << lyx::to_utf8(s.substr(start, end + 1 - start));
+			break;
+		}
+		if ((pos > start+2) &&
+		     s[pos-1] == '\\' &&
+		     s[pos-2] == '\\') {
+			if (s[pos-1] == '\\' && s[pos-2] == '\\') {
+				skip = 2;
+				if ((pos > start+3) &&
+				    (s[pos+1] == '~' || isSpace(s[pos+1]) ||
+				     s[pos-3] == '~' || isSpace(s[pos-3]))) {
+					// discard '\n'
+					dospace = false;
+				}
+			}
+			else if (s[pos-1] == '\\' && s[pos-2] == '\\')
+				skip = 2;
+		}
+		else if (!ignore_format && (pos > start) &&
+		     s[pos-1] == '%') {
+			skip = 1;
+			while ((pos > start+skip) && (s[pos-1-skip] == '%'))
+				skip++;
+			if ((pos > start+skip) &&
+			    (s[pos+1] == '~' || isSpace(s[pos+1]) ||
+			     s[pos-1-skip] == '~' || isSpace(s[pos-1-skip]))) {
+				// discard '%%%%%\n'
+				dospace = false;
+			}
+		}
+		else {
+			dospace = true;
+			skip = 0;
+		}
+		t << lyx::to_utf8(s.substr(start, pos-skip-start));
+		if (dospace)
+			t << ' ';
+		start = pos+1;
+	} while (start <= end);
+	return(t.str());
+}
+
+#else
+static string convertLF2Space(docstring const & s, bool ignore_format)
+{
+	// Using utf8-converted string to handle '\n'
+
 	string t;
 	t = lyx::to_utf8(s);
 	// Remove \n at begin
@@ -4002,17 +4069,26 @@ string MatchStringAdv::normalize(docstring const & s, bool ignore_format) const
 				// Replace all other \n with spaces
 				t.replace(pos, 1, " ");
 			}
-			if (!ignore_format) {
-				size_t count = 0;
-				while ((pos > count + 1) && (t[pos - 1 -count] == '%')) {
-					count++;
-				}
-				if (count > 0) {
-					t.replace(pos - count, count, "");
-				}
+		}
+		if (!ignore_format) {
+			size_t count = 0;
+			while ((pos > count + 1) && (t[pos - 1 -count] == '%')) {
+				count++;
+			}
+			if (count > 0) {
+				t.replace(pos - count, count, "");
 			}
 		}
 	}
+	return(t);
+
+}
+#endif
+
+string MatchStringAdv::normalize(docstring const & s, bool ignore_format) const
+{
+	string t = convertLF2Space(s, ignore_format);
+
 	// Remove stale empty \emph{}, \textbf{} and similar blocks from latexify
 	// Kornel: Added textsl, textsf, textit, texttt and noun
 	// + allow to seach for colored text too
@@ -4025,7 +4101,6 @@ string MatchStringAdv::normalize(docstring const & s, bool ignore_format) const
 
 	return t;
 }
-
 
 docstring stringifyFromCursor(DocIterator const & cur, int len)
 {
