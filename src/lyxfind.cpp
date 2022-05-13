@@ -892,6 +892,7 @@ string correctRegex(string t, bool withformat)
 		buildAccentsMap();
 
 	//LYXERR0("correctRegex input '" << t << "'");
+	int skip = 0;
 	for (sregex_iterator it(t.begin(), t.end(), wordre), end; it != end; ++it) {
 		sub = *it;
 		string replace;
@@ -907,6 +908,10 @@ string correctRegex(string t, bool withformat)
 					if ((next == "\\{") || (next == "\\}") || (next == "\\ ")) {
 						replace = "";
 						backslashed = true;
+					}
+					else if (withformat && next[0] == '$') {
+						replace = accents["lyxdollar"];
+						skip = 1;	// Skip following '$'
 					}
 				}
 			}
@@ -960,7 +965,8 @@ string correctRegex(string t, bool withformat)
 		if (lastpos < (size_t) sub.position(2))
 			s += std::regex_replace(t.substr(lastpos, sub.position(2) - lastpos), protectedSpace, R"( )");
 		s += replace;
-		lastpos = sub.position(2) + sub.length(2);
+		lastpos = sub.position(2) + sub.length(2) + skip;
+		skip = 0;
 	}
 	if (lastpos == 0)
 		s = std::regex_replace(t, protectedSpace, R"( )");
@@ -4069,14 +4075,14 @@ static string convertLF2Space(docstring const & s, bool ignore_format)
 				// Replace all other \n with spaces
 				t.replace(pos, 1, " ");
 			}
-		}
-		if (!ignore_format) {
-			size_t count = 0;
-			while ((pos > count + 1) && (t[pos - 1 -count] == '%')) {
-				count++;
-			}
-			if (count > 0) {
-				t.replace(pos - count, count, "");
+			if (!ignore_format) {
+				size_t count = 0;
+				while ((pos > count + 1) && (t[pos - 1 -count] == '%')) {
+					count++;
+				}
+				if (count > 0) {
+					t.replace(pos - count, count, "");
+				}
 			}
 		}
 	}
