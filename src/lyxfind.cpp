@@ -4014,16 +4014,21 @@ static string convertLF2Space(docstring const &s, bool ignore_format)
 					dospace = false;
 				}
 			}
-			else if ((pos > start) &&
-			     s[pos-1] == '%') {
-				skip = 1;
-				while ((pos > start+skip) && (s[pos-1-skip] == '%'))
-					skip++;
-				if ((pos > start+skip) &&
-				    (s[pos+1] == '~' || isSpace(s[pos+1]) ||
-				     s[pos-1-skip] == '~' || isSpace(s[pos-1-skip]))) {
-					// discard '%%%%%\n'
+			else if (pos > start) {
+				if (s[pos-1] == '%') {
+					skip = 1;
+					while ((pos > start+skip) && (s[pos-1-skip] == '%'))
+						skip++;
+					if ((pos > start+skip) &&
+					    (s[pos+1] == '~' || isSpace(s[pos+1]) ||
+					     s[pos-1-skip] == '~' || isSpace(s[pos-1-skip]))) {
+						// discard '%%%%%\n'
+						dospace = false;
+					}
+				}
+				else if (!isAlnumASCII(s[pos+1]) || !isAlnumASCII(s[pos-1])) {
 					dospace = false;
+					skip = 0;	// remove the '\n' only
 				}
 			}
 		}
