@@ -207,12 +207,12 @@ bool InsetNote::isMacroScope() const
 void InsetNote::latex(otexstream & os, OutputParams const & runparams_in) const
 {
 	if (params_.type != InsetNoteParams::Greyedout
-	    && runparams_in.for_search != OutputParams::NoSearch
-	    && (runparams_in.for_search & OutputParams::SearchNonOutput) == 0)
+	    && runparams_in.find_effective()
+	    && !runparams_in.find_with_non_output())
 		return;
 
 	if (params_.type == InsetNoteParams::Note) {
-		if ((runparams_in.for_search & OutputParams::SearchNonOutput) != 0) {
+		if (runparams_in.find_with_non_output()) {
 			OutputParams runparams(runparams_in);
 			InsetCollapsible::latex(os, runparams);
 			runparams_in.encoding = runparams.encoding;
@@ -251,11 +251,11 @@ void InsetNote::latex(otexstream & os, OutputParams const & runparams_in) const
 int InsetNote::plaintext(odocstringstream & os,
 			 OutputParams const & runparams_in, size_t max_length) const
 {
-	if ((runparams_in.for_search & OutputParams::SearchNonOutput) == 0) {
+	if (!runparams_in.find_with_non_output()) {
 		if (params_.type == InsetNoteParams::Note)
 			return 0;
 		else if (params_.type == InsetNoteParams::Comment
-		    && (runparams_in.for_search != OutputParams::NoSearch))
+		    && runparams_in.find_effective())
 			return 0;
 	}
 
@@ -265,10 +265,10 @@ int InsetNote::plaintext(odocstringstream & os,
 		// Ignore files that are exported inside a comment
 		runparams.exportdata.reset(new ExportData);
 	}
-	if ((runparams_in.for_search & OutputParams::SearchNonOutput) == 0)
+	if (!runparams_in.find_with_non_output())
 		os << '[' << buffer().B_("note") << ":\n";
 	InsetText::plaintext(os, runparams, max_length);
-	if ((runparams_in.for_search & OutputParams::SearchNonOutput) == 0)
+	if (!runparams_in.find_with_non_output())
 		os << "\n]";
 
 	return PLAINTEXT_NEWLINE + 1; // one char on a separate line

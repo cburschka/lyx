@@ -231,10 +231,10 @@ AC_DEFUN([QT_DO_IT_ALL],
 	CPPFLAGS="$save_CPPFLAGS $QT_CORE_INCLUDES"
 	AC_CHECK_HEADER(QtGui/qtgui-config.h,
 	  [lyx_qt5_config=QtGui/qtgui-config.h],
-	  [lyx_qt5_config=qconfig.h],[-])
+	  [lyx_qt5_config=qconfig.h])
 	AC_CHECK_HEADER(QtGui/private/qtgui-config_p.h,
 	  [lyx_qt6_config=QtGui/private/qtgui-config_p.h],
-	  [lyx_qt6_config=qconfig.h],[-])
+	  [lyx_qt6_config=qconfig.h])
 	AC_MSG_CHECKING([whether Qt uses the X Window system])
 	if test x$USE_QT6 = xyes ; then
 	  dnl FIXME: Check whether defining QPA_XCB makes sense with Qt6

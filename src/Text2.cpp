@@ -162,6 +162,7 @@ void Text::setInsetFont(BufferView const & bv, pit_type pit,
 void Text::setLayout(pit_type start, pit_type end,
 		     docstring const & layout)
 {
+	// FIXME: make this work in multicell selection case
 	LASSERT(start != end, return);
 
 	Buffer const & buffer = owner_->buffer();

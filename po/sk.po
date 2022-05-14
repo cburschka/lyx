@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-04-24 17:25+0200\n"
-"PO-Revision-Date: 2022-04-24 15:29+0000\n"
+"POT-Creation-Date: 2022-05-11 18:56+0200\n"
+"PO-Revision-Date: 2022-05-11 16:59+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -980,7 +980,7 @@ msgstr "&Farba:"
 
 #: src/frontends/qt/ui/CharacterUi.ui:185
 msgid "U&nderlining:"
-msgstr "Po&dčiarnutie:"
+msgstr "Po&dčiarknutie:"
 
 #: src/frontends/qt/ui/CharacterUi.ui:201
 msgid "Underlining of text"
@@ -1675,25 +1675,13 @@ msgstr "Vš&etky príručky"
 msgid "Restrict search to math environments only"
 msgstr "Obmedziť hľadanie na mat. prostredia"
 
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:373
-msgid "Search on&ly in maths"
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:383
+msgid "Search onl&y in maths"
 msgstr "Prehľadať len mat. vzork&y"
 
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:383
-msgid ""
-"If unchecked, the search will be limited to occurrences of the selected text "
-"and paragraph style"
-msgstr ""
-"Keď nezaškrtnuté, hľadanie je ohraničené len na výskyty v označenom texte a "
-"v štýle odstavca"
-
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:386
-msgid "I&gnore format"
-msgstr "&Ignorovať formát"
-
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:399
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:373
 msgid "E&xpand macros"
-msgstr "&Rozvinúť makrá"
+msgstr "Rozvinúť &makrá"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:406
 msgid ""
@@ -1704,6 +1692,54 @@ msgstr "Udržovať veľkosť prvých písiem v slove tak, ako v nájdenom texte"
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:409
 msgid "&Preserve first case on replace"
 msgstr "&Zachovať veľkosť prvých písiem"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:413
+msgid "Do not search in content that is not output (e.g., notes)"
+msgstr "Nehľadať v častiach dokumentu ktoré nebudú vo výstupe (napr. poznámky)"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:416
+msgid "Ignore &non-output content"
+msgstr "&Ignorovať prvky bez výstupu"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:425
+msgid ""
+"If the search string is formatted in a non-default way, only find strings "
+"formatted like the search string in the checked respects"
+msgstr ""
+"Reťazec formátovaný na ne-štandardný spôsob nájde reťazce s príznačne "
+"zaškrtnutými vlastnosťami"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:428
+msgid "Adhe&re to search string formatting of"
+msgstr "D&ržať hľadaný reťazec s vlastnosťou pre"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:440
+msgid "Strike-through"
+msgstr "preškrtanie"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:461
+msgid "Emph/noun"
+msgstr "dôraz/meno"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:468
+msgid "Dese&lect all"
+msgstr "Vypnú&ť všetko"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:489
+msgid "Sectioning markup"
+msgstr "značkovanie členenia"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:496
+msgid "Deletion (change)"
+msgstr "vymazanie (zmena)"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:503
+msgid "Underlining"
+msgstr "podčiarknutie"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:517
+msgid "&Select all"
+msgstr "Vybrať všet&ko"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:14
 #: src/frontends/qt/ui/OutputUi.ui:14 src/frontends/qt/ui/PDFSupportUi.ui:14
@@ -4087,6 +4123,14 @@ msgstr ""
 #: src/frontends/qt/ui/PrefEditUi.ui:170
 msgid "Cursor width (&pixels):"
 msgstr "Šírka kurzoru (pi&xel):"
+
+#: src/frontends/qt/ui/PrefEditUi.ui:177
+msgid ""
+"Configure the width of the text cursor.  \"Auto\" means that zoom-controlled "
+"width is used."
+msgstr ""
+"Konfigurovanie šírky textového kurzoru. \"Auto\" znamená že šírka je "
+"kontrolovaná lupou."
 
 #: src/frontends/qt/ui/PrefEditUi.ui:198
 msgid "Skip trailing non-word characters"
@@ -37322,6 +37366,16 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "I&gnore formatting"
+#~ msgstr "&Ignorovať formát"
+
+#~ msgid ""
+#~ "If unchecked, the search will be limited to occurrences of the selected "
+#~ "text and paragraph style"
+#~ msgstr ""
+#~ "Keď nezaškrtnuté, hľadanie je ohraničené len na výskyty v označenom texte "
+#~ "a v štýle odstavca"
+
 #~ msgid "Find and replace mechanism"
 #~ msgstr "Mechanizmus hľadať a nahradiť"
 
@@ -42762,3 +42816,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Set inner lines"
 #~ msgstr "Nastaviť vnútorné čiary"
+
+#~ msgid "I&gnore format"
+#~ msgstr "&Ignorovať formát"

@@ -851,7 +851,7 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 	docstring qstr;
 
 	// In pass-thru context, we output plain quotes
-	if (runparams.pass_thru || runparams.for_search != OutputParams::NoSearch)
+	if (runparams.pass_thru || runparams.find_effective())
 		qstr = (level_ == QuoteLevel::Primary) ? from_ascii("\"") : from_ascii("'");
 	else if (style == QuoteStyle::Plain && fontspec_) {
 		// For XeTeX and LuaTeX,we need to disable mapping to get straight
@@ -944,7 +944,7 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 int InsetQuotes::plaintext(odocstringstream & os,
         OutputParams const & op, size_t) const
 {
-	if (op.for_search == OutputParams::NoSearch) {
+	if (!op.find_effective()) {
 		docstring const str = displayString();
 		os << str;
 		return str.size();

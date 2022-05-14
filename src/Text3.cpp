@@ -1875,8 +1875,18 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				bvcur.resetAnchor();
 			if (!bv->mouseSetCursor(cur, cmd.modifier() == ShiftModifier))
 				cur.screenUpdateFlags(Update::SinglePar | Update::FitCursor);
-			if (bvcur.wordSelection())
-				selectWord(bvcur, WHOLE_WORD);
+			// FIXME: move this to mouseSetCursor?
+			if (bvcur.wordSelection() && bvcur.inTexted()) {
+				// select word around new position
+				Cursor c = bvcur;
+				c.selection(false);
+				c.text()->selectWord(c, WHOLE_WORD);
+				// use the correct word boundary, depending on selection direction
+				if (bvcur.top() > bvcur.normalAnchor())
+					bvcur.pos() = c.selEnd().pos();
+				else
+					bvcur.pos() = c.selBegin().pos();
+			}
 			break;
 
 		case mouse_button::button2:
@@ -3575,8 +3585,10 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		docstring const req_layout = ignoreautonests ? from_utf8(cmd.getArg(0)) : cmd.argument();
 		docstring const layout = resolveLayout(req_layout, cur);
 
-		enable = !owner_->forcePlainLayout() && !layout.empty();
-		status.setOnOff(!owner_->forcePlainLayout() && isAlreadyLayout(layout, cur));
+		// FIXME: make this work in multicell selection case
+		enable = !owner_->forcePlainLayout() && !layout.empty() && !cur.selIsMultiCell();
+		status.setOnOff(!owner_->forcePlainLayout() && !cur.selIsMultiCell()
+		                && isAlreadyLayout(layout, cur));
 		break;
 	}
 

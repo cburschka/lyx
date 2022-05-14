@@ -336,11 +336,18 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 	p.reduce(prev.bits_);
 
 	if (f.size() != INHERIT_SIZE) {
-		os << '{';
-		++count;
-		os << '\\'
-		   << LaTeXSizeSwitchNames[f.size()] << termcmd;
-		count += strlen(LaTeXSizeSwitchNames[f.size()]) + 1;
+		if (!runparams.find_effective()) {
+			os << '{';
+			++count;
+			os << '\\'
+			   << LaTeXSizeSwitchNames[f.size()] << termcmd;
+			count += strlen(LaTeXSizeSwitchNames[f.size()]) + 1;
+		}
+		else {
+			os << '\\'
+			   << LaTeXSizeSwitchNames[f.size()] << '{';
+			count += strlen(LaTeXSizeSwitchNames[f.size()]) + 2;
+		}
 	}
 	if (f.family() != INHERIT_FAMILY) {
 		if (non_inherit_inset) {

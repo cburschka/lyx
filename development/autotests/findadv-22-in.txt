@@ -5,7 +5,7 @@ PrepareShortcuts
 #
 Lang sk_SK.utf8
 CO: findadv-22.ctrl
-TestBegin test.lyx -dbg key,find >findadv-22.loga.txt 2>&1
+TestBegin test.lyx -dbg key,findverbose >findadv-22.loga.txt 2>&1
 CN: Part 1
 KK: \Cm
 KK: I_t\\wedge s
@@ -19,7 +19,7 @@ CP: Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 0\n.*idx: 
 CN: Part 2
 KK: \[Escape]\C\[Home]
 KK: \CF
-KK: \At\Ai\Ah
+KK: \At\Ar\Ak\Ah
 KK: \CF
 KK: \[Return]
 CP: Identified Features

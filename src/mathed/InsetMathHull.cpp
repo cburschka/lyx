@@ -2359,10 +2359,10 @@ int InsetMathHull::plaintext(odocstringstream & os,
 	Encoding const * const enc = encodings.fromLyXName("utf8");
 
 	TeXMathStream::OutputType ot;
-	if (op.for_search == OutputParams::NoSearch)
-		ot = TeXMathStream::wsDefault;
-	else
+	if (op.find_effective())
 		ot = TeXMathStream::wsSearchAdv;
+	else
+		ot = TeXMathStream::wsDefault;
 	// Fix Bug #6139
 	if (type_ == hullRegexp) {
 		TeXMathStream wi(ots, false, true, ot, enc);

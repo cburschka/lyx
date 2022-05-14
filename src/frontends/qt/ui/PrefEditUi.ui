@@ -163,9 +163,6 @@
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QLabel" name="label_3">
-          <property name="toolTip">
-           <string>Configure the width of the text cursor. Automatic zoom-controlled cursor width used when set to 0.</string>
-          </property>
           <property name="text">
            <string>Cursor width (&amp;pixels):</string>
           </property>
@@ -176,6 +173,12 @@
         </item>
         <item>
          <widget class="QSpinBox" name="cursorWidthSB">
+          <property name="toolTip">
+           <string>Configure the width of the text cursor.  &quot;Auto&quot; means that zoom-controlled width is used.</string>
+          </property>
+          <property name="specialValueText">
+           <string>Auto</string>
+          </property>
           <property name="minimum">
            <number>0</number>
           </property>

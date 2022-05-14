@@ -88,6 +88,8 @@ class IgnoreFormats {
 	///
 	bool getShape() const { return ignoreShape_; }
 	///
+	bool getSize() const { return ignoreSize_; }
+	///
 	bool getUnderline() const { return ignoreUnderline_; }
 	///
 	bool getMarkUp() const { return ignoreMarkUp_; }
@@ -117,6 +119,8 @@ private:
 	bool ignoreSeries_ = false;
 	///
 	bool ignoreShape_ = false;
+	///
+	bool ignoreSize_ = true;
 	///
 	bool ignoreUnderline_ = false;
 	///
@@ -165,6 +169,9 @@ void IgnoreFormats::setIgnoreFormat(string const & type, bool value, bool fromUs
 	}
 	else if (type == "shape") {
 		ignoreShape_ = value;
+	}
+	else if (type == "size") {
+		ignoreSize_ = value;
 	}
 	else if (type == "family") {
 		ignoreFamily_ = value;
@@ -805,10 +812,48 @@ namespace {
 
 typedef vector<pair<string, string> > Escapes;
 
+static string getRegexSpaceCount(int count)
+{
+	if (count > 0) {
+		if (count > 1)
+			return "\\s{" + std::to_string(count) + "}";
+		else
+			return "\\s";
+	}
+	return "";
+}
+
 string string2regex(string in)
 {
-	static std::regex specialChars { R"([-[\]{}()*+?.,\^$|#\s\$\\])" };
-	string temp = std::regex_replace(in, specialChars,  R"(\$&)" );
+	static std::regex specialChars { R"([-[\]{}()*+?.,\^$|#\$\\])" };
+	string tempx = std::regex_replace(in, specialChars,  R"(\$&)" );
+	// Special handling for ' '
+	string temp("");
+	int blanks = 0;
+	for (unsigned i = 0; i < tempx.size(); i++) {
+		if (tempx[i] == ' ' || tempx[i] == '~' ) {
+			// normal blanks
+			blanks++;
+		}
+		else if ((tempx[i] == '\302' && tempx[i+1] == '\240')
+			|| (tempx[i] == '\342' && tempx[i+1] == '\200')) {
+			// protected space
+			// thin space
+			blanks++;
+			i++;
+		}
+		else {
+			if (blanks > 0) {
+				temp += getRegexSpaceCount(blanks);
+			}
+			temp += tempx[i];
+			blanks = 0;
+		}
+	}
+	if (blanks > 0) {
+		temp += getRegexSpaceCount(blanks);
+	}
+
 	string temp2("");
 	size_t lastpos = 0;
 	size_t fl_pos = 0;
@@ -838,7 +883,8 @@ string correctRegex(string t, bool withformat)
 	 * and \{, \}, \[, \] => {, }, [, ]
 	 */
 	string s("");
-	regex wordre("(\\\\)*(\\\\(([A-Za-z]+|[\\{\\}%])( |\\{\\})?|[\\[\\]\\{\\}]))");
+	static std::regex wordre("(\\\\)*(\\\\(( |[A-Za-z]+|[\\{\\}%])( |\\{\\})?|[\\[\\]\\{\\}]))");
+	static std::regex protectedSpace { R"(~)" };
 	size_t lastpos = 0;
 	smatch sub;
 	bool backslashed = false;
@@ -846,6 +892,7 @@ string correctRegex(string t, bool withformat)
 		buildAccentsMap();
 
 	//LYXERR0("correctRegex input '" << t << "'");
+	int skip = 0;
 	for (sregex_iterator it(t.begin(), t.end(), wordre), end; it != end; ++it) {
 		sub = *it;
 		string replace;
@@ -858,9 +905,13 @@ string correctRegex(string t, bool withformat)
 				{
 					// transforms '\backslash \{' into '\{'
 					string next = t.substr(sub.position(2) + sub.str(2).length(), 2);
-					if ((next == "\\{") || (next == "\\}")) {
+					if ((next == "\\{") || (next == "\\}") || (next == "\\ ")) {
 						replace = "";
 						backslashed = true;
+					}
+					else if (withformat && next[0] == '$') {
+						replace = accents["lyxdollar"];
+						skip = 1;	// Skip following '$'
 					}
 				}
 			}
@@ -873,6 +924,8 @@ string correctRegex(string t, bool withformat)
 						replace = accents["braceleft"];
 					else if (sub.str(3) == "}")
 						replace = accents["braceright"];
+					else if (sub.str(3) == " ")
+						replace = "\\ ";
 					else {
 						// else part should not exist
 						LASSERT(0, /**/);
@@ -883,6 +936,8 @@ string correctRegex(string t, bool withformat)
 						replace = "\\{";
 					else if (sub.str(3) == "}")
 						replace = "\\}";
+					else if (sub.str(3) == " ")
+						replace = "\\ ";
 					else {
 						// else part should not exist
 						LASSERT(0, /**/);
@@ -895,6 +950,8 @@ string correctRegex(string t, bool withformat)
 				replace = "}";
 			else if (sub.str(4) == "%")
 				replace = "%";
+			else if (sub.str(4) == " ")
+				replace = " ";
 			else {
 				AccentsIterator it_ac = accents.find(sub.str(4));
 				if (it_ac == accents.end()) {
@@ -906,14 +963,15 @@ string correctRegex(string t, bool withformat)
 			}
 		}
 		if (lastpos < (size_t) sub.position(2))
-			s += t.substr(lastpos, sub.position(2) - lastpos);
+			s += std::regex_replace(t.substr(lastpos, sub.position(2) - lastpos), protectedSpace, R"( )");
 		s += replace;
-		lastpos = sub.position(2) + sub.length(2);
+		lastpos = sub.position(2) + sub.length(2) + skip;
+		skip = 0;
 	}
 	if (lastpos == 0)
-		s = t;
+		s = std::regex_replace(t, protectedSpace, R"( )");
 	else if (lastpos < t.length())
-		s += t.substr(lastpos, t.length() - lastpos);
+		s += std::regex_replace(t.substr(lastpos, t.length() - lastpos), protectedSpace, R"( )");
 	// Handle quotes in regex
 	// substitute all '„', '“', '»', '«' with '"'
 	// and all '‚', '‘', '›', '‹' with "\'"
@@ -1088,6 +1146,15 @@ void MatchStringAdv::FillResults(MatchResult &found_mr)
 		valid_matches = 0;
 }
 
+static void setFindParams(OutputParams &runparams)
+{
+	runparams.flavor = Flavor::XeTeX;
+	//runparams.use_polyglossia = true;
+	runparams.linelen = 10000; //lyxrc.plaintext_linelen;
+	// No side effect of file copying and image conversion
+	runparams.dryrun = true;
+}
+
 static docstring buffer_to_latex(Buffer & buffer)
 {
 	//OutputParams runparams(&buffer.params().encoding());
@@ -1095,16 +1162,13 @@ static docstring buffer_to_latex(Buffer & buffer)
 	odocstringstream ods;
 	otexstream os(ods);
 	runparams.nice = true;
-	runparams.flavor = Flavor::XeTeX;
-	runparams.linelen = 10000; //lyxrc.plaintext_linelen;
-	// No side effect of file copying and image conversion
-	runparams.dryrun = true;
+	setFindParams(runparams);
 	if (ignoreFormats.getDeleted())
-		runparams.for_search = OutputParams::SearchWithoutDeleted;
+		runparams.find_set_feature(OutputParams::SearchWithoutDeleted);
 	else
-		runparams.for_search = OutputParams::SearchWithDeleted;
+		runparams.find_set_feature(OutputParams::SearchWithDeleted);
 	if (ignoreFormats.getNonContent()) {
-		runparams.for_search |= OutputParams::SearchNonOutput;
+		runparams.find_add_feature(OutputParams::SearchNonOutput);
 	}
 	pit_type const endpit = buffer.paragraphs().size();
 	for (pit_type pit = 0; pit != endpit; ++pit) {
@@ -1114,7 +1178,7 @@ static docstring buffer_to_latex(Buffer & buffer)
 	return ods.str();
 }
 
-static string latexNamesToUtf8(docstring strIn)
+static string latexNamesToUtf8(docstring strIn, bool withformat)
 {
 	string addtmp = to_utf8(strIn);
 	static regex const rmAcc("(\\\\)*("
@@ -1156,6 +1220,10 @@ static string latexNamesToUtf8(docstring strIn)
 		add = addtmp;
 	else if (addtmp.length() > lastpos)
 		add += addtmp.substr(lastpos, addtmp.length() - lastpos);
+	if (!withformat) {
+		static std::regex repltilde { R"(~)" };
+		add = std::regex_replace(add, repltilde, accents["lyxtilde"]);
+	}
 	LYXERR(Debug::FINDVERBOSE, "Adding to search string: '"
 			<< add << "'");
 	return add;
@@ -1170,26 +1238,24 @@ static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions co
 		// OutputParams runparams(&buffer.params().encoding());
 		OutputParams runparams(encodings.fromLyXName("utf8"));
 		runparams.nice = true;
-		runparams.flavor = Flavor::XeTeX;
-		runparams.linelen = 10000; //lyxrc.plaintext_linelen;
-		runparams.dryrun = true;
+		setFindParams(runparams);
 		int option = AS_STR_INSETS |AS_STR_PLAINTEXT;
 		if (ignoreFormats.getDeleted()) {
 			option |= AS_STR_SKIPDELETE;
-			runparams.for_search = OutputParams::SearchWithoutDeleted;
+			runparams.find_set_feature(OutputParams::SearchWithoutDeleted);
 		}
 		else {
-			runparams.for_search = OutputParams::SearchWithDeleted;
+			runparams.find_set_feature(OutputParams::SearchWithDeleted);
 		}
 		if (ignoreFormats.getNonContent()) {
-			runparams.for_search |= OutputParams::SearchNonOutput;
+			runparams.find_add_feature(OutputParams::SearchNonOutput);
 		}
 		string t("");
 		for (pos_type pit = pos_type(0); pit < (pos_type)buffer.paragraphs().size(); ++pit) {
 			Paragraph const & par = buffer.paragraphs().at(pit);
 			string add = latexNamesToUtf8(par.asString(pos_type(0), par.size(),
 								option,
-								&runparams));
+								&runparams), !opt.ignoreformat);
 			LYXERR(Debug::FINDVERBOSE, "Adding to search string: '"
 				<< add << "'");
 			t += add;
@@ -1222,7 +1288,7 @@ static size_t identifyLeading(string const & s)
 	       || regex_replace(t, t, "^\\\\begin\\{[a-zA-Z_]*\\*?\\}", ""))
 	       ;
 	LYXERR(Debug::FINDVERBOSE, "  after removing leading $, \\[ , \\emph{, \\textbf{, etc.: '" << t << "'");
-	return s.find(t);
+	return s.size() - t.size();
 }
 
 /*
@@ -1375,6 +1441,7 @@ public:
 	void removeAccents();
 	void setForDefaultLang(KeyInfo const & defLang) const;
 	int findclosing(int start, int end, char up, char down, int repeat);
+	void removeInvalidClosings(void);
 	void handleParentheses(int lastpos, bool closingAllowed);
 	bool hasTitle;
 	// Number of disabled language specs up
@@ -1884,7 +1951,6 @@ static void buildAccentsMap()
 	accents["cdot"] = "·";
 	accents["textasciicircum"] = "^";
 	accents["mathcircumflex"] = "^";
-	accents["sim"] = "~";
 	accents["guillemotright"] = "»";
 	accents["guillemotleft"] = "«";
 	accents["hairspace"]     = getutf8(0xf0000);	// select from free unicode plane 15
@@ -1905,6 +1971,9 @@ static void buildAccentsMap()
 	accents["lyxarrow"]      = getutf8(0xf0020);
 	accents["braceleft"]     = getutf8(0xf0030);
 	accents["braceright"]    = getutf8(0xf0031);
+	accents["lyxtilde"]      = getutf8(0xf0032);
+	accents["sim"]           = getutf8(0xf0032);
+	accents["lyxdollar"]     = getutf8(0xf0033);
 	accents["backslash lyx"]           = getutf8(0xf0010);	// Used logos inserted with starting \backslash
 	accents["backslash LyX"]           = getutf8(0xf0010);
 	accents["backslash tex"]           = getutf8(0xf0011);
@@ -2180,6 +2249,27 @@ int Intervall::findclosing(int start, int end, char up = '{', char down = '}', i
 	return end;
 }
 
+void Intervall::removeInvalidClosings(void)
+{
+	// this can happen, if there are deleted parts
+	int skip = 0;
+	int depth = 0;
+	for (unsigned i = 0; i < par.size(); i += 1 + skip) {
+		char c = par[i];
+		skip = 0;
+		if (c == '\\') skip = 1;
+		else if (c == '{')
+			depth++;
+		else if (c == '}') {
+			if (depth == 0) {
+				addIntervall(i, i+1);
+				LYXERR(Debug::FINDVERBOSE, "removed invalid closing '}' at " << i);
+			}
+			else
+				--depth;
+		}
+	}
+}
 class MathInfo {
 	class MathEntry {
 	public:
@@ -2267,6 +2357,7 @@ void LatexInfo::buildEntries(bool isPatternString)
 	static bool removeMathHull = false;
 
 	interval_.removeAccents();
+	interval_.removeInvalidClosings();
 
 	for (sregex_iterator itmath(interval_.par.begin(), interval_.par.end(), rmath), end; itmath != end; ++itmath) {
 		submath = *itmath;
@@ -2725,9 +2816,14 @@ void LatexInfo::buildKeys(bool isPatternString)
 	// handle like standard keys with 1 parameter.
 	makeKey("url|href|vref|thanks", KeyInfo(KeyInfo::isStandard, 1, false), isPatternString);
 
-	// Ignore deleted text
-	makeKey("lyxdeleted", KeyInfo(KeyInfo::doRemove, 3, false), isPatternString);
-	// but preserve added text
+	if (ignoreFormats.getDeleted()) {
+		// Ignore deleted text
+		makeKey("lyxdeleted", KeyInfo(KeyInfo::doRemove, 3, false), isPatternString);
+	}
+	else {
+		// but preserve added text
+		makeKey("lyxdeleted", KeyInfo(KeyInfo::doRemove, 2, false), isPatternString);
+	}
 	makeKey("lyxadded", KeyInfo(KeyInfo::doRemove, 2, false), isPatternString);
 
 	// Macros to remove, but let the parameter survive
@@ -2750,9 +2846,10 @@ void LatexInfo::buildKeys(bool isPatternString)
 	makeKey("triangleuppar|triangledownpar|droppar", KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
 	makeKey("triangleleftpar|shapepar|dropuppar",    KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
 	makeKey("hphantom|vphantom|note|footnote|shortcut|include|includegraphics",     KeyInfo(KeyInfo::isStandard, 1, true), isPatternString);
+	makeKey("textgreek|textcyrillic", KeyInfo(KeyInfo::isStandard, 1, true), false);
 	makeKey("parbox", KeyInfo(KeyInfo::doRemove, 1, true), isPatternString);
 	// like ('tiny{}' or '\tiny ' ... )
-	makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, false), isPatternString);
+	makeKey("footnotesize|tiny|scriptsize|small|large|Large|LARGE|huge|Huge", KeyInfo(KeyInfo::isSize, 0, ignoreFormats.getSize()), isPatternString);
 
 	// Survives, like known character
 	// makeKey("lyx|LyX|latex|LaTeX|latexe|LaTeXe|tex|TeX", KeyInfo(KeyInfo::isChar, 0, false), isPatternString);
@@ -2809,6 +2906,8 @@ string Intervall::show(int lastpos)
 	int idx = 0;                          /* int intervalls */
 	string s;
 	int i = 0;
+	if ((unsigned) lastpos > par.size())
+		lastpos = par.size();
 	for (idx = 0; idx <= ignoreidx; idx++) {
 		while (i < lastpos) {
 			int printsize;
@@ -3355,10 +3454,12 @@ static string correctlanguagesetting(string par, bool isPatternString, bool with
 	while ((parlen > 0) && (par[parlen-1] == '\n')) {
 		parlen--;
 	}
+#if 0
 	if (isPatternString && (parlen > 0) && (par[parlen-1] == '~')) {
 		// Happens to be there in case of description or labeling environment
 		parlen--;
 	}
+#endif
 	string result;
 	if (withformat) {
 		// Split the latex input into pieces which
@@ -3688,12 +3789,15 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		if (lng != str.size()) {
 			str = str.substr(0, lng);
 		}
+		// Replace occurences of '~' to ' '
+		static std::regex specialChars { R"(~)" };
+		str = std::regex_replace(str, specialChars,  R"( )" );
 	}
 	if (str.empty()) {
 		mres.match_len = -1;
 		return mres;
 	}
-	LYXERR(Debug::FINDVERBOSE, "After normalization: Matching against:\n'" << str << "'");
+	LYXERR(Debug::FINDVERBOSE|Debug::FIND, "After normalization: Matching against:\n'" << str << "'");
 
 	LASSERT(use_regexp, /**/);
 	{
@@ -3753,7 +3857,7 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		int matchend = match.capturedEnd(0);
 		size_t strsize = qstr.size();
 		if (!opt.ignoreformat) {
-			while (mres.match_len > 0) {
+			while (mres.match_len > 1) {
 				QChar c = qstr.at(matchend - 1);
 				if ((c == '\n') || (c == '}') || (c == '{')) {
 					mres.match_len--;
@@ -3782,7 +3886,7 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 		int matchend = strend;
 		size_t strsize = str.size();
 		if (!opt.ignoreformat) {
-			while (mres.match_len > 0) {
+			while (mres.match_len > 1) {
 				char c = str.at(matchend - 1);
 				if ((c == '\n') || (c == '}') || (c == '{')) {
 					mres.match_len--;
@@ -3872,8 +3976,79 @@ static bool simple_replace(string &t, string from, string to)
 }
 #endif
 
-string MatchStringAdv::normalize(docstring const & s, bool ignore_format) const
+#if 1
+static string convertLF2Space(docstring const &s, bool ignore_format)
 {
+	// Using original docstring to handle '\n'
+
+	if (s.size() == 0) return "";
+	stringstream t;
+	size_t pos;
+	size_t start = 0;
+	size_t end = s.size() - 1;
+	if (!ignore_format) {
+		while (s[start] == '\n' && start <= end)
+			start++;
+		while (end >= start && s[end] == '\n')
+			end--;
+		if (start >= end + 1)
+			return "";
+	}
+	do {
+		bool dospace = true;
+		int skip = -1;
+		pos = s.find('\n', start);
+		if (pos >= end) {
+			t << lyx::to_utf8(s.substr(start, end + 1 - start));
+			break;
+		}
+		if (!ignore_format) {
+			if ((pos > start + 1) &&
+			     s[pos-1] == '\\' &&
+			     s[pos-2] == '\\') {
+				skip = 2;
+				if ((pos > start + 2) &&
+				    (s[pos+1] == '~' || isSpace(s[pos+1]) ||
+				     s[pos-3] == '~' || isSpace(s[pos-3]))) {
+					// discard '\n'
+					dospace = false;
+				}
+			}
+			else if (pos > start) {
+				if (s[pos-1] == '%') {
+					skip = 1;
+					while ((pos > start+skip) && (s[pos-1-skip] == '%'))
+						skip++;
+					if ((pos > start+skip) &&
+					    (s[pos+1] == '~' || isSpace(s[pos+1]) ||
+					     s[pos-1-skip] == '~' || isSpace(s[pos-1-skip]))) {
+						// discard '%%%%%\n'
+						dospace = false;
+					}
+				}
+				else if (!isAlnumASCII(s[pos+1]) || !isAlnumASCII(s[pos-1])) {
+					dospace = false;
+					skip = 0;	// remove the '\n' only
+				}
+			}
+		}
+		else {
+			dospace = true;
+			skip = 0;
+		}
+		t << lyx::to_utf8(s.substr(start, pos-skip-start));
+		if (dospace)
+			t << ' ';
+		start = pos+1;
+	} while (start <= end);
+	return(t.str());
+}
+
+#else
+static string convertLF2Space(docstring const & s, bool ignore_format)
+{
+	// Using utf8-converted string to handle '\n'
+
 	string t;
 	t = lyx::to_utf8(s);
 	// Remove \n at begin
@@ -3888,10 +4063,11 @@ string MatchStringAdv::normalize(docstring const & s, bool ignore_format) const
 	while ((pos = t.find("\n")) != string::npos) {
 		if (pos > 1 && t[pos-1] == '\\' && t[pos-2] == '\\' ) {
 			// Handle '\\\n'
-			if (isAlnumASCII(t[pos+1])) {
+			if (isPrintableNonspace(t[pos+1]) && ((pos < 3) || isPrintableNonspace(t[pos-3]))) {
 				t.replace(pos-2, 3, " ");
 			}
 			else {
+				// Already a space there
 				t.replace(pos-2, 3, "");
 			}
 		}
@@ -3915,19 +4091,29 @@ string MatchStringAdv::normalize(docstring const & s, bool ignore_format) const
 			}
 		}
 	}
-	// Remove stale empty \emph{}, \textbf{} and similar blocks from latexify
-	// Kornel: Added textsl, textsf, textit, texttt and noun
-	// + allow to seach for colored text too
-	LYXERR(Debug::FINDVERBOSE, "Removing stale empty macros from: " << t);
-	while (regex_replace(t, t, "\\\\(emph|noun|text(bf|sl|sf|it|tt)|(u|uu)line|(s|x)out|uwave)(\\{(\\{\\})?\\})+", ""))
-		LYXERR(Debug::FINDVERBOSE, "  further removing stale empty \\emph{}, \\textbf{} macros from: " << t);
-	while (regex_replace(t, t, "\\\\((sub)?(((sub)?section)|paragraph)|part)\\*?(\\{(\\{\\})?\\})+", ""))
-		LYXERR(Debug::FINDVERBOSE, "  further removing stale empty \\emph{}, \\textbf{} macros from: " << t);
-	while (regex_replace(t, t, "\\\\(foreignlanguage|textcolor|item)\\{[a-z]+\\}(\\{(\\{\\})?\\})+", ""));
+	return(t);
 
+}
+#endif
+
+string MatchStringAdv::normalize(docstring const & s, bool ignore_format) const
+{
+	string t = convertLF2Space(s, ignore_format);
+
+	// The following replaces are not appropriate in non-format-search mode
+	if (!ignore_format) {
+		// Remove stale empty \emph{}, \textbf{} and similar blocks from latexify
+		// Kornel: Added textsl, textsf, textit, texttt and noun
+		// + allow to seach for colored text too
+		LYXERR(Debug::FINDVERBOSE, "Removing stale empty macros from: " << t);
+		while (regex_replace(t, t, "\\\\(emph|noun|text(bf|sl|sf|it|tt)|(u|uu)line|(s|x)out|uwave)(\\{(\\{\\})?\\})+", ""))
+			LYXERR(Debug::FINDVERBOSE, "  further removing stale empty \\emph{}, \\textbf{} macros from: " << t);
+		while (regex_replace(t, t, "\\\\((sub)?(((sub)?section)|paragraph)|part)\\*?(\\{(\\{\\})?\\})+", ""))
+			LYXERR(Debug::FINDVERBOSE, "  further removing stale empty \\section{}, \\part{}, \\paragraph{} macros from: " << t);
+		while (regex_replace(t, t, "\\\\(foreignlanguage|textcolor|item)\\{[a-z]+\\}(\\{(\\{\\})?\\})+", ""));
+	}
 	return t;
 }
-
 
 docstring stringifyFromCursor(DocIterator const & cur, int len)
 {
@@ -3941,27 +4127,24 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 		// OutputParams runparams(&cur.buffer()->params().encoding());
 		OutputParams runparams(encodings.fromLyXName("utf8"));
 		runparams.nice = true;
-		runparams.flavor = Flavor::XeTeX;
-		runparams.linelen = 10000; //lyxrc.plaintext_linelen;
-		// No side effect of file copying and image conversion
-		runparams.dryrun = true;
+		setFindParams(runparams);
 		int option = AS_STR_INSETS | AS_STR_PLAINTEXT;
 		if (ignoreFormats.getDeleted()) {
 			option |= AS_STR_SKIPDELETE;
-			runparams.for_search = OutputParams::SearchWithoutDeleted;
+			runparams.find_set_feature(OutputParams::SearchWithoutDeleted);
 		}
 		else {
-			runparams.for_search = OutputParams::SearchWithDeleted;
+			runparams.find_set_feature(OutputParams::SearchWithDeleted);
 		}
 		if (ignoreFormats.getNonContent()) {
-			runparams.for_search |= OutputParams::SearchNonOutput;
+			runparams.find_add_feature(OutputParams::SearchNonOutput);
 		}
 		LYXERR(Debug::FINDVERBOSE, "Stringifying with cur: "
 		       << cur << ", from pos: " << cur.pos() << ", end: " << end);
 		docstring res = from_utf8(latexNamesToUtf8(par.asString(cur.pos(), end,
 								        option,
-								        &runparams)));
-		LYXERR(Debug::FIND, "Stringified text from pos(" << cur.pos() << ") len(" << len << "): " << res);
+								        &runparams), false));
+		LYXERR(Debug::FINDVERBOSE|Debug::FIND, "Stringified text from pos(" << cur.pos() << ") len(" << len << "): " << res);
 		return res;
 	} else if (cur.inMathed()) {
 		CursorSlice cs = cur.top();
@@ -3973,7 +4156,7 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 		MathData md2;
 		for (MathData::const_iterator it = md.begin() + cs.pos(); it != it_end; ++it)
 			md2.push_back(*it);
-		docstring res = from_utf8(latexNamesToUtf8(asString(md2)));
+		docstring res = from_utf8(latexNamesToUtf8(asString(md2), false));
 		LYXERR(Debug::FINDVERBOSE|Debug::FIND, "Stringified math from pos(" << cur.pos() << ") len(" << len << "): " << res);
 		return res;
 	}
@@ -3999,18 +4182,15 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 	//OutputParams runparams(&buf.params().encoding());
 	OutputParams runparams(encodings.fromLyXName("utf8"));
 	runparams.nice = false;
-	runparams.flavor = Flavor::XeTeX;
-	runparams.linelen = 8000; //lyxrc.plaintext_linelen;
-	// No side effect of file copying and image conversion
-	runparams.dryrun = true;
+	setFindParams(runparams);
 	if (ignoreFormats.getDeleted()) {
-		runparams.for_search = OutputParams::SearchWithoutDeleted;
+		runparams.find_set_feature(OutputParams::SearchWithoutDeleted);
 	}
 	else {
-		runparams.for_search = OutputParams::SearchWithDeleted;
+		runparams.find_set_feature(OutputParams::SearchWithDeleted);
 	}
 	if (ignoreFormats.getNonContent()) {
-		runparams.for_search |= OutputParams::SearchNonOutput;
+		runparams.find_add_feature(OutputParams::SearchNonOutput);
 	}
 
 	if (cur.inTexted()) {
@@ -4020,7 +4200,7 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 			endpos = cur.pos() + len;
 		TeXOnePar(buf, *cur.innerText(), cur.pit(), os, runparams,
 			  string(), cur.pos(), endpos, true);
-		LYXERR(Debug::FIND, "Latexified text from pos(" << cur.pos() << ") len(" << len << "): " << ods.str());
+		LYXERR(Debug::FINDVERBOSE|Debug::FIND, "Latexified text from pos(" << cur.pos() << ") len(" << len << "): " << ods.str());
 		return(ods.str());
 	} else if (cur.inMathed()) {
 		// Retrieve the math environment type, and add '$' or '$[' or others (\begin{equation}) accordingly
@@ -4609,9 +4789,7 @@ static int findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, Ma
 		// OutputParams runparams(&repl_buffer.params().encoding());
 		OutputParams runparams(encodings.fromLyXName("utf8"));
 		runparams.nice = false;
-		runparams.flavor = Flavor::XeTeX;
-		runparams.linelen = 8000; //lyxrc.plaintext_linelen;
-		runparams.dryrun = true;
+		setFindParams(runparams);
 		TeXOnePar(repl_buffer, repl_buffer.text(), 0, os, runparams, string(), -1, -1, true);
 		//repl_buffer.getSourceCode(ods, 0, repl_buffer.paragraphs().size(), false);
 		docstring repl_latex = ods.str();

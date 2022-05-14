@@ -579,94 +579,120 @@ void InsetSpace::latex(otexstream & os, OutputParams const & runparams) const
 {
 	switch (params_.kind) {
 	case InsetSpaceParams::NORMAL:
-		os << (runparams.free_spacing && (runparams.for_search == OutputParams::NoSearch) ? " " : "\\ ");
+		if (runparams.find_effective())
+			os << "~";
+		else
+			os << (runparams.free_spacing ? " " : "\\ ");
 		break;
 	case InsetSpaceParams::PROTECTED:
-		if (runparams.local_font &&
+		if (runparams.find_effective())
+			os.put(0xa0);
+		else if (runparams.local_font &&
 		    runparams.local_font->language()->lang() == "polutonikogreek")
 			// in babel's polutonikogreek, ~ is active
-			os << (runparams.free_spacing && (runparams.for_search == OutputParams::NoSearch) ? " " : "\\nobreakspace{}");
+			os << (runparams.free_spacing ? " " : "\\nobreakspace{}");
 		else
-			os << (runparams.free_spacing && (runparams.for_search == OutputParams::NoSearch) ? ' ' : '~');
+			os << (runparams.free_spacing ? ' ' : '~');
 		break;
 	case InsetSpaceParams::VISIBLE:
-		os << (runparams.free_spacing && (runparams.for_search == OutputParams::NoSearch) ? " " : "\\textvisiblespace{}");
+		if (runparams.find_effective())
+			os.put(0x2423);
+		else
+			os << (runparams.free_spacing ? " " : "\\textvisiblespace{}");
 		break;
 	case InsetSpaceParams::THIN:
-		if (runparams.for_search != OutputParams::NoSearch)
-			os << "\\thinspace{}";
+		if (runparams.find_effective())
+			os.put(0x2009);
 		else
 			os << (runparams.free_spacing ? " " : "\\,");
 		break;
 	case InsetSpaceParams::MEDIUM:
-		if (runparams.for_search != OutputParams::NoSearch)
-			os << "\\medspace{}";
+		if (runparams.find_effective())
+			os.put(0x2005);
 		else if (params_.math)
 			os << (runparams.free_spacing ? " " : "\\:");
 		else
 			os << (runparams.free_spacing ? " " : "\\medspace{}");
 		break;
 	case InsetSpaceParams::THICK:
-		if (runparams.for_search != OutputParams::NoSearch)
-			os << "\\thickspace{}";
+		if (runparams.find_effective())
+			os.put(0x2004);
 		else if (params_.math)
 			os << (runparams.free_spacing ? " " : "\\;");
 		else
 			os << (runparams.free_spacing ? " " : "\\thickspace{}");
 		break;
 	case InsetSpaceParams::QUAD:
-		os << (runparams.free_spacing && (runparams.for_search != OutputParams::NoSearch) ? " " : "\\quad{}");
+		if (runparams.find_effective())
+			os.put(0x2003);
+		else
+			os << (runparams.free_spacing ? " " : "\\quad{}");
 		break;
 	case InsetSpaceParams::QQUAD:
-		os << (runparams.free_spacing && (runparams.for_search != OutputParams::NoSearch) ? " " : "\\qquad{}");
+		if (runparams.find_effective()) {
+			os.put(0x2003);
+			os.put(0x2003);
+		}
+		else
+			os << (runparams.free_spacing ? " " : "\\qquad{}");
 		break;
 	case InsetSpaceParams::ENSPACE:
-		os << (runparams.free_spacing && (runparams.for_search != OutputParams::NoSearch) ? " " : "\\enspace{}");
+		if (runparams.find_effective())
+			os.put(0x2002);
+		else
+			os << (runparams.free_spacing ? " " : "\\enspace{}");
 		break;
 	case InsetSpaceParams::ENSKIP:
-		os << (runparams.free_spacing && (runparams.for_search != OutputParams::NoSearch) ? " " : "\\enskip{}");
+		if (runparams.find_effective())
+			os.put(0x2002);
+		else
+			os << (runparams.free_spacing ? " " : "\\enskip{}");
 		break;
 	case InsetSpaceParams::NEGTHIN:
-		os << (runparams.free_spacing && (runparams.for_search != OutputParams::NoSearch) ? " " : "\\negthinspace{}");
+		os << (runparams.free_spacing && runparams.find_effective() ? " " : "\\negthinspace{}");
 		break;
 	case InsetSpaceParams::NEGMEDIUM:
-		os << (runparams.free_spacing && (runparams.for_search != OutputParams::NoSearch) ? " " : "\\negmedspace{}");
+		os << (runparams.free_spacing && runparams.find_effective() ? " " : "\\negmedspace{}");
 		break;
 	case InsetSpaceParams::NEGTHICK:
-		os << (runparams.free_spacing && (runparams.for_search != OutputParams::NoSearch) ? " " : "\\negthickspace{}");
+		os << (runparams.free_spacing && runparams.find_effective() ? " " : "\\negthickspace{}");
 		break;
 	case InsetSpaceParams::HFILL:
-		os << (runparams.free_spacing && (runparams.for_search != OutputParams::NoSearch) ? " " : "\\hfill{}");
+		os << (runparams.free_spacing && runparams.find_effective() ? " " : "\\hfill{}");
 		break;
 	case InsetSpaceParams::HFILL_PROTECTED:
-		os << (runparams.free_spacing && (runparams.for_search != OutputParams::NoSearch) ? " " : "\\hspace*{\\fill}");
+		os << (runparams.free_spacing && runparams.find_effective() ? " " : "\\hspace*{\\fill}");
 		break;
 	case InsetSpaceParams::DOTFILL:
-		os << (runparams.free_spacing && (runparams.for_search != OutputParams::NoSearch) ? " " : "\\dotfill{}");
+		os << (runparams.free_spacing && runparams.find_effective() ? " " : "\\dotfill{}");
 		break;
 	case InsetSpaceParams::HRULEFILL:
-		os << (runparams.free_spacing && (runparams.for_search != OutputParams::NoSearch) ? " " : "\\hrulefill{}");
+		os << (runparams.free_spacing && runparams.find_effective() ? " " : "\\hrulefill{}");
 		break;
 	case InsetSpaceParams::LEFTARROWFILL:
-		os << (runparams.free_spacing && (runparams.for_search != OutputParams::NoSearch) ? " " : "\\leftarrowfill{}");
+		os << (runparams.free_spacing && runparams.find_effective() ? " " : "\\leftarrowfill{}");
 		break;
 	case InsetSpaceParams::RIGHTARROWFILL:
-		os << (runparams.free_spacing && (runparams.for_search != OutputParams::NoSearch) ? " " : "\\rightarrowfill{}");
+		os << (runparams.free_spacing && runparams.find_effective() ? " " : "\\rightarrowfill{}");
 		break;
 	case InsetSpaceParams::UPBRACEFILL:
-		os << (runparams.free_spacing && (runparams.for_search != OutputParams::NoSearch) ? " " : "\\upbracefill{}");
+		os << (runparams.free_spacing && runparams.find_effective() ? " " : "\\upbracefill{}");
 		break;
 	case InsetSpaceParams::DOWNBRACEFILL:
-		os << (runparams.free_spacing && (runparams.for_search != OutputParams::NoSearch) ? " " : "\\downbracefill{}");
+		os << (runparams.free_spacing && runparams.find_effective() ? " " : "\\downbracefill{}");
 		break;
 	case InsetSpaceParams::CUSTOM:
-		if (runparams.free_spacing)
+		if (runparams.find_effective())
+			os.put(0x00a0);
+		else if (runparams.free_spacing)
 			os << " ";
 		else
 			os << "\\hspace{" << from_ascii(params_.length.asLatexString()) << "}";
 		break;
 	case InsetSpaceParams::CUSTOM_PROTECTED:
-		if (runparams.free_spacing)
+		if (runparams.find_effective())
+			os.put(0x00a0);
+		else if (runparams.free_spacing)
 			os << " ";
 		else
 			os << "\\hspace*{" << from_ascii(params_.length.asLatexString()) << "}";

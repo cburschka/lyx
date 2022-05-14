@@ -16,6 +16,7 @@
 // This is needed so that ui_FindAndReplaceUi.h can find qt_()
 #include "qt_helpers.h"
 #include "ui_FindAndReplaceUi.h"
+#include "support/docstring.h"
 
 #include <string>
 
@@ -65,12 +66,18 @@ private:
 	void virtual hideEvent(QHideEvent *ev) override;
 
 	void hideDialog();
+	
+	void setFormatIgnores(bool const b);
+	
+	docstring const checkState(std::string const s, bool const b);
 
 protected Q_SLOTS:
 	void on_findNextPB_clicked();
 	void on_replacePB_clicked();
 	void on_replaceallPB_clicked();
 	void on_searchbackCB_clicked();
+	void on_selectAllPB_clicked();
+	void on_deselectAllPB_clicked();
 };
 
 

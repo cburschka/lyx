@@ -165,6 +165,7 @@ logicalmkup
 \author 5863344 "Enrico Forestieri"
 \author 244031559 "Yuriy"
 \author 630872221 "Jean-Pierre Chrétien" jeanpierre.chretien@free.fr
+\author 1549938239 "Kornel Benko"
 \author 1675569489 "Stephan Witt"
 \end_header
 
@@ -8973,14 +8974,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8993,7 +8992,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9017,7 +9015,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -38775,7 +38772,7 @@ R
 .
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Advanced usage
 \end_layout
 
@@ -38863,12 +38860,25 @@ Find
 \end_layout
 
 \begin_layout Enumerate
-Searching for all text with a given style: for example, after unchecking
- the 
+Searching for all text with a given style: for example, after 
+\change_deleted 1549938239 1651390777
+un
+\change_unchanged
+checking the 
+\change_inserted 1549938239 1651390710
+
 \family sans
+'Adhere to search string formatting of'
+\change_deleted 1549938239 1651390724
 Ignore format
+\change_unchanged
+
 \family default
- option from the 
+ 
+\change_inserted 1549938239 1651390961
+and the 'Select all' 
+\change_unchanged
+option from the 
 \family sans
 Settings
 \family default
@@ -38888,8 +38898,109 @@ Settings
 
  regular expression in a bullet or enumerated list or a section heading,
  you can find all bullet or enumerated lists or section headings.
+
+\change_inserted 1549938239 1651391772
+ The meaning of the specific style options (if checked) is as follows:
 \end_layout
 
+\begin_deeper
+\begin_layout Description
+
+\change_inserted 1549938239 1651391862
+Language Allows searching for text in specific language
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1549938239 1651392163
+Font
+\begin_inset space ~
+\end_inset
+
+color colored text like cyan, yellow, etc
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1549938239 1651392038
+Font
+\begin_inset space ~
+\end_inset
+
+family Roman, Sans serif, Typewriter
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1549938239 1651392204
+Font
+\begin_inset space ~
+\end_inset
+
+series e.g.
+ Bold
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1549938239 1651392249
+Font
+\begin_inset space ~
+\end_inset
+
+shape e.g.
+ upright, italic, ...
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1549938239 1651392299
+Font
+\begin_inset space ~
+\end_inset
+
+size e.g.
+ Large, Tiny, ...
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1549938239 1651392343
+Emph/noun Semantic Markup: Emphasized, Noun
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1549938239 1651392414
+Underlining e.g.
+ Single, Double, Wawy
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1549938239 1651392503
+Strike-through Single, With '/'
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1549938239 1651392776
+Deletion searches also in deleted parts (in case of 'Track Changes' enabled)
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1549938239 1651392891
+Sectioning
+\begin_inset space ~
+\end_inset
+
+markup e.g.
+ title, part, chapter, section, ...
+ 
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 Finally, references to (sub)expressions in regexp may be used as usual:
  Enclosing parts of the expression within round braces 
@@ -38909,9 +39020,25 @@ Finally, references to (sub)expressions in regexp may be used as usual:
 \begin_inset Newline newline
 \end_inset
 
+
+\change_inserted 1549938239 1651393222
+
+\backslash
+b(
+\backslash
+w+)
+\backslash
+s
+\backslash
+1
+\backslash
+b
+\change_deleted 1549938239 1651393089
 [[:space:]]([[:alpha:]]+)[[:space:]]
 \backslash
 1[[:space:]]
+\change_unchanged
+
 \begin_inset Newline newline
 \end_inset
 
@@ -38919,7 +39046,11 @@ in order to find word repetitions, if there are any.
 \end_layout
 
 \begin_layout Standard
-The usage of back references in the replaced text is not (yet) implemented.
+The usage of back references in the replaced text is not (yet) 
+\change_inserted 1549938239 1651393403
+fully 
+\change_unchanged
+implemented.
 \end_layout
 
 \begin_layout Standard
