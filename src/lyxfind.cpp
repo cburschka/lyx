@@ -3986,12 +3986,14 @@ static string convertLF2Space(docstring const &s, bool ignore_format)
 	size_t pos;
 	size_t start = 0;
 	size_t end = s.size() - 1;
-	while (s[start] == '\n' && start <= end)
-		start++;
-	while (end >= start && s[end] == '\n')
-		end--;
-	if (start >= end + 1)
-		return "";
+	if (!ignore_format) {
+		while (s[start] == '\n' && start <= end)
+			start++;
+		while (end >= start && s[end] == '\n')
+			end--;
+		if (start >= end + 1)
+			return "";
+	}
 	do {
 		bool dospace = true;
 		int skip = -1;
