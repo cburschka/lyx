@@ -31,8 +31,8 @@ CP: Key (queried) [action=buffer-begin][Ctrl+Home]
 KK: \[Escape]\C\[Home]
 KK: \Axdialog-show findreplaceadv\[Return]
 KK: \[Delete]
-# Uncheck ignore format
-#KK: \At\Ar\Ak\Ah
+# Check ignore format
+KK: \At\Ar\Ať\Ah
 #KK: \CF
 KK: \C\[F29]
 KK: foo\[Return]\[Return]\[Return]
