@@ -4093,16 +4093,18 @@ string MatchStringAdv::normalize(docstring const & s, bool ignore_format) const
 {
 	string t = convertLF2Space(s, ignore_format);
 
-	// Remove stale empty \emph{}, \textbf{} and similar blocks from latexify
-	// Kornel: Added textsl, textsf, textit, texttt and noun
-	// + allow to seach for colored text too
-	LYXERR(Debug::FINDVERBOSE, "Removing stale empty macros from: " << t);
-	while (regex_replace(t, t, "\\\\(emph|noun|text(bf|sl|sf|it|tt)|(u|uu)line|(s|x)out|uwave)(\\{(\\{\\})?\\})+", ""))
-		LYXERR(Debug::FINDVERBOSE, "  further removing stale empty \\emph{}, \\textbf{} macros from: " << t);
-	while (regex_replace(t, t, "\\\\((sub)?(((sub)?section)|paragraph)|part)\\*?(\\{(\\{\\})?\\})+", ""))
-		LYXERR(Debug::FINDVERBOSE, "  further removing stale empty \\section{}, \\part{}, \\paragraph{} macros from: " << t);
-	while (regex_replace(t, t, "\\\\(foreignlanguage|textcolor|item)\\{[a-z]+\\}(\\{(\\{\\})?\\})+", ""));
-
+	// The following replaces are not appropriate in non-format-search mode
+	if (!ignore_format) {
+		// Remove stale empty \emph{}, \textbf{} and similar blocks from latexify
+		// Kornel: Added textsl, textsf, textit, texttt and noun
+		// + allow to seach for colored text too
+		LYXERR(Debug::FINDVERBOSE, "Removing stale empty macros from: " << t);
+		while (regex_replace(t, t, "\\\\(emph|noun|text(bf|sl|sf|it|tt)|(u|uu)line|(s|x)out|uwave)(\\{(\\{\\})?\\})+", ""))
+			LYXERR(Debug::FINDVERBOSE, "  further removing stale empty \\emph{}, \\textbf{} macros from: " << t);
+		while (regex_replace(t, t, "\\\\((sub)?(((sub)?section)|paragraph)|part)\\*?(\\{(\\{\\})?\\})+", ""))
+			LYXERR(Debug::FINDVERBOSE, "  further removing stale empty \\section{}, \\part{}, \\paragraph{} macros from: " << t);
+		while (regex_replace(t, t, "\\\\(foreignlanguage|textcolor|item)\\{[a-z]+\\}(\\{(\\{\\})?\\})+", ""));
+	}
 	return t;
 }
 
