@@ -4000,31 +4000,29 @@ static string convertLF2Space(docstring const &s, bool ignore_format)
 			t << lyx::to_utf8(s.substr(start, end + 1 - start));
 			break;
 		}
-		if ((pos > start+2) &&
-		     s[pos-1] == '\\' &&
-		     s[pos-2] == '\\') {
-			if (s[pos-1] == '\\' && s[pos-2] == '\\') {
+		if (!ignore_format) {
+			if ((pos > start + 1) &&
+			     s[pos-1] == '\\' &&
+			     s[pos-2] == '\\') {
 				skip = 2;
-				if ((pos > start+3) &&
+				if ((pos > start + 2) &&
 				    (s[pos+1] == '~' || isSpace(s[pos+1]) ||
 				     s[pos-3] == '~' || isSpace(s[pos-3]))) {
 					// discard '\n'
 					dospace = false;
 				}
 			}
-			else if (s[pos-1] == '\\' && s[pos-2] == '\\')
-				skip = 2;
-		}
-		else if (!ignore_format && (pos > start) &&
-		     s[pos-1] == '%') {
-			skip = 1;
-			while ((pos > start+skip) && (s[pos-1-skip] == '%'))
-				skip++;
-			if ((pos > start+skip) &&
-			    (s[pos+1] == '~' || isSpace(s[pos+1]) ||
-			     s[pos-1-skip] == '~' || isSpace(s[pos-1-skip]))) {
-				// discard '%%%%%\n'
-				dospace = false;
+			else if ((pos > start) &&
+			     s[pos-1] == '%') {
+				skip = 1;
+				while ((pos > start+skip) && (s[pos-1-skip] == '%'))
+					skip++;
+				if ((pos > start+skip) &&
+				    (s[pos+1] == '~' || isSpace(s[pos+1]) ||
+				     s[pos-1-skip] == '~' || isSpace(s[pos-1-skip]))) {
+					// discard '%%%%%\n'
+					dospace = false;
+				}
 			}
 		}
 		else {
