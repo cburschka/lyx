@@ -33,6 +33,9 @@ public:
 	/// Initialize with the name of a key. F. ex. "space" or "a"
 	void init(std::string const & symbolname);
 
+	/// Initialize with some platform specific sym value
+	void init(int key);
+
 	/// Is this a valid key?
 	bool isOK() const;
 
