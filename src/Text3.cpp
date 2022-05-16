@@ -1875,17 +1875,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			if (!bv->mouseSetCursor(cur, cmd.modifier() == ShiftModifier))
 				cur.screenUpdateFlags(Update::SinglePar | Update::FitCursor);
 			// FIXME: move this to mouseSetCursor?
-			if (bvcur.wordSelection() && bvcur.inTexted()) {
-				// select word around new position
-				Cursor c = bvcur;
-				c.selection(false);
-				c.text()->selectWord(c, WHOLE_WORD);
-				// use the correct word boundary, depending on selection direction
-				if (bvcur.top() > bvcur.normalAnchor())
-					bvcur.pos() = c.selEnd().pos();
-				else
-					bvcur.pos() = c.selBegin().pos();
-			}
+			if (bvcur.wordSelection() && bvcur.inTexted())
+				expandWordSel(bvcur);
 			break;
 
 		case mouse_button::button2:
@@ -1953,6 +1944,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// We continue with our existing selection or start a new one, so don't
 		// reset the anchor.
 		bvcur.setCursor(cur);
+		if (bvcur.wordSelection() && bvcur.inTexted())
+			expandWordSel(bvcur);
 		bvcur.selection(true);
 		bvcur.setCurrentFont();
 		if (cur.top() == old) {

@@ -171,6 +171,8 @@ public:
 	void getWord(CursorSlice & from, CursorSlice & to, word_location const) const;
 	/// just selects the word the cursor is in
 	void selectWord(Cursor & cur, word_location loc);
+	/// expands the selection to the word the cursor is in
+	void expandWordSel(Cursor & cur);
 	/// select all text
 	void selectAll(Cursor & cur);
 

@@ -5043,7 +5043,9 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			if (bvcur.selIsMultiCell()) {
 				bvcur.pit() = bvcur.lastpit();
 				bvcur.pos() = bvcur.lastpos();
-			}
+			} else
+				// Let InsetTableCell do it
+				cell(cur.idx())->dispatch(cur, cmd);
 		}
 		break;
 

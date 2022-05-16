@@ -1369,6 +1369,20 @@ void Text::selectWord(Cursor & cur, word_location loc)
 }
 
 
+void Text::expandWordSel(Cursor & cur)
+{
+	// get selection of word around cur
+	Cursor c = cur;
+	c.selection(false);
+	c.text()->selectWord(c, WHOLE_WORD);
+	// use the correct word boundary, depending on selection direction
+	if (cur.top() > cur.normalAnchor())
+		cur.pos() = c.selEnd().pos();
+	else
+		cur.pos() = c.selBegin().pos();
+}
+
+
 void Text::selectAll(Cursor & cur)
 {
 	LBUFERR(this == cur.text());
