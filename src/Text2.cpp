@@ -428,7 +428,10 @@ void Text::toggleFree(Cursor & cur, Font const & font, bool toggleall)
 		cur.resetAnchor();
 	}
 
-	cur.setCurrentFont();
+	// if there was no selection at all, the point was to change cursor font.
+	// Otherwise, we want to reset it to local text font.
+	if (cur.selection() || implicitSelection)
+		cur.setCurrentFont();
 }
 
 
