@@ -567,7 +567,6 @@ GuiFontMetrics::breakString_helper(docstring const & s, int first_wid, int wid,
 		if (!line.isValid())
 			break;
 		line.setLineWidth(first ? first_wid : wid);
-		tl.createLine();
 		first = false;
 	}
 	tl.endLayout();
