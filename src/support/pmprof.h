@@ -117,30 +117,37 @@
 #include <iostream>
 
 
-//#if defined(__GNUG__) && defined(_GLIBCXX_DEBUG)
-//#error Profiling is not usable when run-time debugging is in effect
-//#endif
+#if defined(__GNUG__) && defined(_GLIBCXX_DEBUG)
+#error Profiling is not usable when run-time debugging is in effect
+#endif
+
+namespace _pmprof {
+
+using namespace std;
+using namespace chrono;
 
 namespace {
 
-void dumpTime(std::chrono::duration<double> value)
+void dump_time(system_clock::duration value)
 {
-	double const val = value.count();
-	std::cerr << std::fixed << std::setprecision(2);
-	if (val >= 1.0)
-	 	std::cerr << val << " s";
-	else if (val >= 0.001)
-		std::cerr << val * 1000 << " ms";
+	auto musec = duration_cast<microseconds>(value).count();
+	cerr << fixed << setprecision(2);
+	if (musec >= 1000000)
+		cerr << musec / 1000000.0 << " s";
+	else if (musec >= 1000)
+		cerr << musec / 1000.0 << " ms";
 	else
-	 	std::cerr << val * 1000000 << " us";
+		cerr << musec << " us";
 }
 
-void dump(std::chrono::duration<double> total, unsigned long long count) {
-	dumpTime(total / count);
-	std::cerr << ", count=" << count
-			  << ", total=";
-	dumpTime(total);
-	std::cerr << std::endl;
+void dump(system_clock::duration total, unsigned long long count) {
+	if (count > 0) {
+		dump_time(total / count);
+		cerr << ", count=" << count << ", total=";
+		dump_time(total);
+	} else
+		std::cerr << "no data";
+	cerr << endl;
 }
 
 } // namespace
@@ -150,30 +157,29 @@ void dump(std::chrono::duration<double> total, unsigned long long count) {
  * variable, so that its destructor will be executed when the program
  * ends.
  */
-
-
-class PMProfStat {
+class stat {
 public:
-	PMProfStat(char const * name) : name_(name), count_(0), miss_count_(0) {}
+	stat(char const * name) : name_(name) {}
 
-	~PMProfStat() {
-		if (count_>0) {
+	~stat() {
+		if (count_ + miss_count_ > 0) {
 			if (miss_count_ == 0) {
-				std::cerr << "#pmprof# " << name_ << ": ";
+				cerr << "#pmprof# " << name_ << ": ";
 				dump(dur_, count_);
 			}
 			else {
-				std::cerr << "#pmprof# " << name_ << ": ";
+				cerr << "#pmprof# " << name_ << ": ";
 				dump(dur_ + miss_dur_, count_ + miss_count_);
-				std::cerr << "   hit: " << 100 * count_ / (count_ + miss_count_) << "%, ";
+				cerr << "   hit: " << 100 * count_ / (count_ + miss_count_) << "%, ";
 				dump(dur_, count_);
-				std::cerr << "  miss: " << 100 * miss_count_ / (count_ + miss_count_) << "%, ";
+				cerr << "  miss: " << 100 * miss_count_ / (count_ + miss_count_) << "%, ";
 				dump(miss_dur_, miss_count_);
 			}
-		}
+		} else
+			std::cerr << "#pmprof# " << name_ << ": no data" << std::endl;
 	}
 
-	void add(std::chrono::duration<double> d, const bool hit) {
+	void add(system_clock::duration d, const bool hit) {
 		if (hit) {
 			dur_ += d;
 			count_++;
@@ -185,41 +191,42 @@ public:
 
 private:
 	char const * name_;
-	std::chrono::duration<double> dur_, miss_dur_;
-	unsigned long long count_, miss_count_;
+	system_clock::duration dur_, miss_dur_;
+	unsigned long long count_ = 0, miss_count_ = 0;
 };
 
 
 /* Helper class which gathers data at the end of the scope. One
  * instance of this one should be created at each execution of the
  * block. At the end of the block, it sends statistics to the static
- * PMProfStat object.
+ * stat object.
  */
-class PMProfInstance {
+class instance {
 public:
-	PMProfInstance(PMProfStat * stat) : hit(true), stat_(stat)
+	instance(stat * stat) : hit(true), stat_(stat)
 	{
-		before_ = std::chrono::system_clock::now();
+		before_ = system_clock::now();
 	}
 
-	~PMProfInstance() {
-		stat_->add(std::chrono::system_clock::now() - before_, hit);
+	~instance() {
+		stat_->add(system_clock::now() - before_, hit);
 	}
 
 	bool hit;
 
 private:
-	std::chrono::system_clock::time_point before_;
-	PMProfStat * stat_;
+	system_clock::time_point before_;
+	stat * stat_;
 };
 
+}
 
 #define PROFILE_THIS_BLOCK(a) \
-	static PMProfStat PMPS_##a(#a);\
-	PMProfInstance PMPI_##a(&PMPS_##a);
+	static _pmprof::stat _pmps_##a(#a);	\
+	_pmprof::instance _pmpi_##a(&_pmps_##a);
 
 #define PROFILE_CACHE_MISS(a) \
-	PMPI_##a.hit = false;
+	_pmpi_##a.hit = false;
 
 #endif // !defined(DISABLE_PMPROF)
 
