@@ -2049,7 +2049,8 @@ void Intervall::removeAccents()
 	if (accents.empty())
 		buildAccentsMap();
 	static regex const accre("\\\\("
-				 "([\\S]|[A-Za-z]+)\\{[^\\{\\}]+\\}"
+				 "([\\S]|[A-Za-z]+)\\{[^\\\\\\{\\}]+\\}"
+				 "|([\\S]|[A-Za-z]+)\\{\\\\[ij](math)?\\}"
 				 "|("
 				 "(backslash ([lL]y[xX]|[tT]e[xX]|[lL]a[tT]e[xX]e?|lyxarrow))"
 				 "|[A-Za-z]+"
@@ -3641,7 +3642,7 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 		CreateRegexp(opt, "", "", "");
 		return;
 	}
-	use_regexp = lyx::to_utf8(ds).find("\\regexp{") != std::string::npos;
+	use_regexp = ds.find(from_utf8("\\regexp{")) != std::string::npos;
 	if (opt.replace_all && previous_single_replace) {
 		previous_single_replace = false;
 		num_replaced = 0;
@@ -3730,7 +3731,7 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 					break;
 			}
 			if (lng < par_as_string.size())
-				par_as_string = par_as_string.substr(0,lng);
+				par_as_string.resize(lng);
 		}
 		LYXERR(Debug::FINDVERBOSE, "par_as_string after correctRegex is '" << par_as_string << "'");
 		if ((lng > 0) && (par_as_string[0] == '^')) {
@@ -4010,7 +4011,7 @@ static string convertLF2Space(docstring const &s, bool ignore_format)
 				if ((pos > start + 2) &&
 				    (s[pos+1] == '~' || isSpace(s[pos+1]) ||
 				     s[pos-3] == '~' || isSpace(s[pos-3]))) {
-					// discard '\n'
+					// discard "\\\\\n", do not replace with space
 					dospace = false;
 				}
 			}
