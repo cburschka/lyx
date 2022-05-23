@@ -3805,6 +3805,7 @@ void BufferParams::copyForAdvFR(const BufferParams & bp)
 {
 	string const & lang = bp.language->lang();
 	setLanguage(lang);
+	quotes_style = bp.quotes_style;
 	layout_modules_ = bp.layout_modules_;
 	string const & doc_class = bp.documentClass().name();
 	setBaseClass(doc_class);
