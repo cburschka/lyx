@@ -1428,8 +1428,8 @@ public:
 	string par;
 	int ignoreidx;
 	static vector<Border> borders;
-	int depts[MAXOPENED];
-	int closes[MAXOPENED];
+	static vector<int> depts;
+	static vector<int> closes;
 	int actualdeptindex;
 	int previousNotIgnored(int) const;
 	int nextNotIgnored(int) const;
@@ -1454,6 +1454,8 @@ public:
 };
 
 vector<Border> Intervall::borders = vector<Border>(30);
+vector<int> Intervall::depts = vector<int>(30);
+vector<int> Intervall::closes = vector<int>(30);
 
 int Intervall::isOpeningPar(int pos) const
 {
@@ -1487,6 +1489,8 @@ void Intervall::setForDefaultLang(KeyInfo const & defLang) const
 	}
 }
 
+#if 0
+// Not needed, because dpts and closes are now dynamically expanded
 static void checkDepthIndex(int val)
 {
 	static int maxdepthidx = MAXOPENED-2;
@@ -1500,6 +1504,7 @@ static void checkDepthIndex(int val)
 		LYXERR(Debug::INFO, "maxdepthidx now " << val);
 	}
 }
+#endif
 
 #if 0
 // Not needed, because borders are now dynamically expanded
@@ -2086,9 +2091,13 @@ void Intervall::removeAccents()
 void Intervall::handleOpenP(int i)
 {
 	actualdeptindex++;
+	if ((size_t) actualdeptindex >= depts.size()) {
+		depts.resize(actualdeptindex + 30);
+		closes.resize(actualdeptindex + 30);
+	}
 	depts[actualdeptindex] = i+1;
 	closes[actualdeptindex] = -1;
-	checkDepthIndex(actualdeptindex);
+	// checkDepthIndex(actualdeptindex);
 }
 
 void Intervall::handleCloseP(int i, bool closingAllowed)
@@ -2764,7 +2773,8 @@ void LatexInfo::buildKeys(bool isPatternString)
 	if (keysBuilt && !isPatternString) return;
 
 	// Keys to ignore in any case
-	makeKey("text|textcyrillic|lyxmathsym|ensuremath", KeyInfo(KeyInfo::headRemove, 1, true), true);
+	makeKey("text|lyxmathsym|ensuremath", KeyInfo(KeyInfo::headRemove, 1, true), true);
+	makeKey("nonumber|notag", KeyInfo(KeyInfo::headRemove, 0, true), true);
 	// Known standard keys with 1 parameter.
 	// Split is done, if not at start of region
 	makeKey("textsf|textss|texttt", KeyInfo(KeyInfo::isStandard, 1, ignoreFormats.getFamily()), isPatternString);
@@ -3774,9 +3784,6 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 	MatchResult mres;
 
 	mres.searched_size = len;
-	if (at_begin &&
-			(opt.restr == FindAndReplaceOptions::R_ONLY_MATHS && !cur.inMathed()) )
-		return mres;
 
 	docstring docstr = stringifyFromForSearch(opt, cur, len);
 	string str;
@@ -4338,7 +4345,10 @@ MatchResult findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, Mat
 		displayMres(mres, "Start with negative match", cur);
 		max_match = mres;
 	}
-	if (max_match.match_len <= 0) return fail;
+	// Only now we are really at_begin
+	if ((max_match.match_len <= 0) ||
+	    (match.opt.restr == FindAndReplaceOptions::R_ONLY_MATHS && !cur.inMathed()))
+		return fail;
 	LYXERR(Debug::FINDVERBOSE, "Ok");
 
 	// Compute the match length
