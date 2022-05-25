@@ -1066,13 +1066,19 @@ public:
 	 ** constructor as opt.search, under the opt.* options settings.
 	 **
 	 ** @param at_begin
-	 ** 	If set, then match is searched only against beginning of text starting at cur.
-	 ** 	If unset, then match is searched anywhere in text starting at cur.
+	 ** 	If set to MatchStringAdv::MatchFromStart,
+	 ** 	  then match is searched only against beginning of text starting at cur.
+	 ** 	Otherwise the match is searched anywhere in text starting at cur.
 	 **
 	 ** @return
 	 ** The length of the matching text, or zero if no match was found.
 	 **/
-	MatchResult operator()(DocIterator const & cur, int len = -1, bool at_begin = true) const;
+	enum matchType {
+		MatchAnyPlace,
+		MatchFromStart
+	};
+	string matchTypeAsString(matchType const x) const { return (x == MatchFromStart ? "MatchFromStart" : "MatchAnyPlace"); }
+	MatchResult operator()(DocIterator const & cur, int len, matchType at_begin) const;
 #if QTSEARCH
 	bool regexIsValid;
 	string regexError;
@@ -1088,7 +1094,7 @@ public:
 
 private:
 	/// Auxiliary find method (does not account for opt.matchword)
-	MatchResult findAux(DocIterator const & cur, int len = -1, bool at_begin = true) const;
+	MatchResult findAux(DocIterator const & cur, int len, matchType at_begin) const;
 	void CreateRegexp(FindAndReplaceOptions const & opt, string regexp_str, string regexp2_str, string par_as_string = "");
 
 	/** Normalize a stringified or latexified LyX paragraph.
@@ -3779,7 +3785,7 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 	}
 }
 
-MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) const
+MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, MatchStringAdv::matchType at_begin) const
 {
 	MatchResult mres;
 
@@ -3810,12 +3816,12 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 	LASSERT(use_regexp, /**/);
 	{
 		// use_regexp always true
-		LYXERR(Debug::FINDVERBOSE, "Searching in regexp mode: at_begin=" << at_begin);
+		LYXERR(Debug::FINDVERBOSE, "Searching in regexp mode: at_begin=" << matchTypeAsString(at_begin));
 #if QTSEARCH
 		QString qstr = QString::fromStdString(str);
 		QRegularExpression const *p_regexp;
 		QRegularExpression::MatchType flags = QRegularExpression::NormalMatch;
-		if (at_begin) {
+		if (at_begin == MatchStringAdv::MatchFromStart) {
 			p_regexp = &regexp;
 		} else {
 			p_regexp = &regexp2;
@@ -3826,7 +3832,7 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 #else
 		regex const *p_regexp;
 		regex_constants::match_flag_type flags;
-		if (at_begin) {
+		if (at_begin == MatchStringAdv::MatchFromStart) {
 			flags = regex_constants::match_continuous;
 			p_regexp = &regexp;
 		} else {
@@ -3940,12 +3946,12 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 }
 
 
-MatchResult MatchStringAdv::operator()(DocIterator const & cur, int len, bool at_begin) const
+MatchResult MatchStringAdv::operator()(DocIterator const & cur, int len, MatchStringAdv::matchType at_begin) const
 {
 	MatchResult mres = findAux(cur, len, at_begin);
 	int res = mres.match_len;
 	LYXERR(Debug::FINDVERBOSE,
-	       "res=" << res << ", at_begin=" << at_begin
+	       "res=" << res << ", at_begin=" << matchTypeAsString(at_begin)
 	       << ", matchAtStart=" << opt.matchAtStart
 	       << ", inTexted=" << cur.inTexted());
 	if (opt.matchAtStart) {
@@ -4303,13 +4309,13 @@ MatchResult findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, Mat
 	// either one sees "http://www.bla.bla" or nothing
 	// so the search for "www" gives prefix_len = 7 (== sizeof("http://")
 	// and although we search for only 3 chars, we find the whole hyperlink inset
-	bool at_begin = (expected.match_prefix == 0);
+	MatchStringAdv::matchType at_begin = (expected.match_prefix == 0) ? MatchStringAdv::MatchFromStart : MatchStringAdv::MatchAnyPlace;
 	if (!match.opt.forward && match.opt.ignoreformat) {
 		if (expected.pos > 0)
 			return fail;
 	}
-	LASSERT(at_begin, /**/);
-	if (expected.match_len > 0 && at_begin) {
+	LASSERT(at_begin == MatchStringAdv::MatchFromStart, /**/);
+	if (expected.match_len > 0 && at_begin == MatchStringAdv::MatchFromStart) {
 		// Search for deepest match
 		old_cur = cur;
 		max_match = expected;
@@ -4341,7 +4347,7 @@ MatchResult findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, Mat
 	}
 	else {
 		// (expected.match_len <= 0)
-		mres = match(cur);      /* match valid only if not searching whole words */
+		mres = match(cur, -1, MatchStringAdv::MatchFromStart);      /* match valid only if not searching whole words */
 		displayMres(mres, "Start with negative match", cur);
 		max_match = mres;
 	}
@@ -4446,7 +4452,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 	while (!theApp()->longOperationCancelled() && cur) {
 		//(void) findAdvForwardInnermost(cur);
 		LYXERR(Debug::FINDVERBOSE, "findForwardAdv() cur: " << cur);
-		MatchResult mres = match(cur, -1, false);
+		MatchResult mres = match(cur, -1, MatchStringAdv::MatchAnyPlace);
 		string msg = "Starting";
 		if (repeat)
 			msg = "Repeated";
@@ -4484,7 +4490,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 					continue;
 				}
 				cur.pos() = cur.pos() + increment;
-				MatchResult mres2 = match(cur, -1, false);
+				MatchResult mres2 = match(cur, -1, MatchStringAdv::MatchAnyPlace);
 				displayMres(mres2, "findForwardAdv loop", cur)
 						switch (interpretMatch(mres, mres2)) {
 					case MatchResult::newIsTooFar:
@@ -4560,7 +4566,7 @@ MatchResult findMostBackwards(DocIterator & cur, MatchStringAdv const & match, M
 		LYXERR(Debug::FINDVERBOSE, "findMostBackwards(): cur=" << cur);
 		DocIterator new_cur = cur;
 		new_cur.backwardPos();
-		if (new_cur == cur || &new_cur.inset() != &inset || !match(new_cur).match_len)
+		if (new_cur == cur || &new_cur.inset() != &inset || !match(new_cur, -1, MatchStringAdv::MatchFromStart).match_len)
 			break;
 		MatchResult new_mr = findAdvFinalize(new_cur, match, expected);
 		if (new_mr.match_len == mr.match_len)
@@ -4586,7 +4592,7 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match)
 	bool pit_changed = false;
 	do {
 		cur.pos() = 0;
-		MatchResult found_match = match(cur, -1, false);
+		MatchResult found_match = match(cur, -1, MatchStringAdv::MatchAnyPlace);
 
 		if (found_match.match_len > 0) {
 			if (pit_changed)
@@ -4596,7 +4602,7 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match)
 			LYXERR(Debug::FINDVERBOSE, "findBackAdv2: cur: " << cur);
 			DocIterator cur_prev_iter;
 			do {
-				found_match = match(cur);
+				found_match = match(cur, -1, MatchStringAdv::MatchFromStart);
 				LYXERR(Debug::FINDVERBOSE, "findBackAdv3: found_match="
 				       << (found_match.match_len > 0) << ", cur: " << cur);
 				if (found_match.match_len > 0) {
@@ -4758,7 +4764,7 @@ static int findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, Ma
 		return 0;
 	LASSERT(sel_len > 0, return 0);
 
-	if (!matchAdv(sel_beg, sel_len).match_len)
+	if (!matchAdv(sel_beg, sel_len, MatchStringAdv::MatchFromStart).match_len)
 		return 0;
 
 	// Build a copy of the replace buffer, adapted to the KeepCase option
