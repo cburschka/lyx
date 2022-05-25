@@ -4566,7 +4566,8 @@ MatchResult findMostBackwards(DocIterator & cur, MatchStringAdv const & match, M
 		LYXERR(Debug::FINDVERBOSE, "findMostBackwards(): cur=" << cur);
 		DocIterator new_cur = cur;
 		new_cur.backwardPos();
-		if (new_cur == cur || &new_cur.inset() != &inset || !match(new_cur, -1, MatchStringAdv::MatchFromStart).match_len)
+		if (new_cur == cur || &new_cur.inset() != &inset
+		    || match(new_cur, -1, MatchStringAdv::MatchFromStart).match_len <= 0)
 			break;
 		MatchResult new_mr = findAdvFinalize(new_cur, match, expected);
 		if (new_mr.match_len == mr.match_len)
@@ -4764,7 +4765,7 @@ static int findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, Ma
 		return 0;
 	LASSERT(sel_len > 0, return 0);
 
-	if (!matchAdv(sel_beg, sel_len, MatchStringAdv::MatchFromStart).match_len)
+	if (matchAdv(sel_beg, sel_len, MatchStringAdv::MatchFromStart).match_len <= 0)
 		return 0;
 
 	// Build a copy of the replace buffer, adapted to the KeepCase option
