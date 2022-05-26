@@ -3774,7 +3774,7 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 			}
 			if (opt.matchword) {
 				modifyRegexForMatchWord(par_as_string);
-				opt.matchword = false;
+				// opt.matchword = false;
 			}
 			regexp_str = "(" + lead_as_regexp + ")()" + par_as_string;
 			regexp2_str = "(" + lead_as_regexp + ")(.*?)" + par_as_string;
@@ -3949,20 +3949,17 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, MatchStrin
 MatchResult MatchStringAdv::operator()(DocIterator const & cur, int len, MatchStringAdv::matchType at_begin) const
 {
 	MatchResult mres = findAux(cur, len, at_begin);
-	int res = mres.match_len;
 	LYXERR(Debug::FINDVERBOSE,
-	       "res=" << res << ", at_begin=" << matchTypeAsString(at_begin)
+	       "res=" << mres.match_len << ", at_begin=" << matchTypeAsString(at_begin)
 	       << ", matchAtStart=" << opt.matchAtStart
 	       << ", inTexted=" << cur.inTexted());
-	if (opt.matchAtStart) {
-		if (cur.pos() != 0)
-			mres.match_len = 0;
-		else if (mres.match_prefix > 0)
-			mres.match_len = 0;
-		return mres;
+	if (mres.match_len > 0) {
+		if (opt.matchAtStart) {
+			if (cur.pos() > 0 || mres.match_prefix > 0)
+				mres.match_len = 0;
+		}
 	}
-	else
-		return mres;
+	return mres;
 }
 
 #if 0
@@ -4513,7 +4510,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 					default:
 						// Todo@
 						// Handle not like MatchResult::newIsTooFar
-						LYXERR0( "Probably too far: Increment = " << increment << " match_prefix = " << mres.match_prefix);
+						LYXERR(Debug::FINDVERBOSE, "Probably too far: Increment = " << increment << " match_prefix = " << mres.match_prefix);
 						firstInvalid--;
 						increment = increment*3/4;
 						cur = old_cur;
@@ -4858,8 +4855,21 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions & opt)
 			bv->putSelectionAt(bv->cursor().selectionBegin(), length, !opt.forward);
 		num_replaced += findAdvReplace(bv, opt, matchAdv);
 		cur = bv->cursor();
-		if (opt.forward)
+		if (opt.forward) {
+			if (opt.matchword) {  // Skip word-characters if we are in the mid of a word
+				Paragraph const & par = cur.paragraph();
+				if ((cur.pos() > 0) && !par.isWordSeparator(cur.pos() -1, true)) {
+					while (cur.pos() < par.size()) {
+						if (par.isWordSeparator(cur.pos(), true))
+							break;
+						else
+							cur.forwardPos();
+					}
+				}
+				opt.matchword = false;
+			}
 			pos_len = findForwardAdv(cur, matchAdv);
+		}
 		else
 			pos_len = findBackwardsAdv(cur, matchAdv);
 	} catch (exception & ex) {
