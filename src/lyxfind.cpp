@@ -4857,15 +4857,20 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions & opt)
 		num_replaced += findAdvReplace(bv, opt, matchAdv);
 		cur = bv->cursor();
 		if (opt.forward) {
-			if (opt.matchword) {  // Skip word-characters if we are in the mid of a word
-				Paragraph const & par = cur.paragraph();
-				if ((cur.pos() > 0) && !par.isWordSeparator(cur.pos() -1, true)) {
-					while (cur.pos() < par.size()) {
-						if (par.isWordSeparator(cur.pos(), true))
-							break;
-						else
-							cur.forwardPos();
+			if (opt.matchword && cur.pos() > 0) {  // Skip word-characters if we are in the mid of a word
+				if (cur.inTexted()) {
+					Paragraph const & par = cur.paragraph();
+					if ((cur.pos() > 0) && !par.isWordSeparator(cur.pos() -1, true)) {
+						class Text *t = cur.text();
+						CursorSlice to;
+						CursorSlice from = cur.top();
+						t->getWord(from, to, WHOLE_WORD);
+						cur.pos() = to.pos();
+						cur.pit() = to.pit();
 					}
+				}
+				else if (cur.inMathed()) {
+					cur.pos() = cur.lastpos();
 				}
 				opt.matchword = false;
 			}
