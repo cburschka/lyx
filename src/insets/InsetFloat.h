@@ -111,6 +111,8 @@ private:
 	///
 	bool hasSubCaptions(ParIterator const & it) const override;
 	///
+	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false) override;
+	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	///
 	Inset * clone() const override { return new InsetFloat(*this); }
