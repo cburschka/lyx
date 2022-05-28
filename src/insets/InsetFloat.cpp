@@ -881,7 +881,7 @@ bool InsetFloat::insetAllowed(InsetCode code) const
 
 void InsetFloat::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted)
 {
-	InsetCaptionable::updateBuffer(it, utype);
+	InsetCaptionable::updateBuffer(it, utype, deleted);
 	bool const subflt = (it.innerInsetOfType(FLOAT_CODE)
 			     || it.innerInsetOfType(WRAP_CODE));
 	setSubfloat(subflt);
