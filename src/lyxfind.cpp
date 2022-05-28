@@ -4831,6 +4831,10 @@ static int findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, Ma
 	return 1;
 }
 
+static bool isWordChar(char_type c)
+{
+	return isLetterChar(c) || isDigitASCII(c);
+}
 
 /// Perform a FindAdv operation.
 bool findAdv(BufferView * bv, FindAndReplaceOptions & opt)
@@ -4860,7 +4864,7 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions & opt)
 			if (opt.matchword && cur.pos() > 0) {  // Skip word-characters if we are in the mid of a word
 				if (cur.inTexted()) {
 					Paragraph const & par = cur.paragraph();
-					if ((cur.pos() > 0) && !par.isWordSeparator(cur.pos() -1, true)) {
+					if (!par.isWordSeparator(cur.pos() -1, true)) {
 						class Text *t = cur.text();
 						CursorSlice to;
 						CursorSlice from = cur.top();
@@ -4870,7 +4874,37 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions & opt)
 					}
 				}
 				else if (cur.inMathed()) {
-					cur.pos() = cur.lastpos();
+					// Check if 'cur.pos()-1' and 'cur.pos()' both point to a letter,
+					// I am not sure, we should consider the selection
+					bool sel = bv->cursor().selection();
+					if (!sel && cur.pos() < cur.lastpos()) {
+						CursorSlice const & cs = cur.top();
+						MathData md = cs.cell();
+						int len = -1;
+						MathData::const_iterator it_end = md.end();
+						MathData md2;
+						// Start the check with one character before actual cursor position
+						for (MathData::const_iterator it = md.begin() + cs.pos() - 1;
+						    it != it_end; ++it)
+							md2.push_back(*it);
+						docstring inp = asString(md2);
+						LYXERR0("Got \"" << inp << "\"");
+						char_type prev = inp[0];
+						for (len = 0; (unsigned) len < inp.size() && len + cur.pos() <= cur.lastpos(); len++) {
+							char_type c = inp[len];
+							if (isLetterChar(c))
+								continue;
+							if (isDigitASCII(c))
+								continue;
+							break;
+						}
+						// len == 0 means previous char was a word separator
+						// len == 1       search starts with a word separator
+						// len == 2 ...   we have to skip len -1 chars
+						if (len > 1)
+							cur.pos() = cur.pos() + len - 1;
+					}
+	
 				}
 				opt.matchword = false;
 			}
