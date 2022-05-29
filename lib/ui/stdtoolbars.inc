@@ -28,7 +28,7 @@
 #
 # Toolbar "name" "GUI Name"
 #
-# Only seven commands are allowed inside the Toolbar and End
+# Only eight commands are allowed inside the Toolbar and End
 # directives:
 #   Item "The tooltip" "<action> [<parameter>]" adds an icon to the toolbar performing
 #          "<action> <parameter>"
@@ -37,9 +37,9 @@
 #      Item Emphasized set-emph
 #
 #   BidiItem is like Item, but an alternative icon (with name ending
-#   with "+rtl") will be used <hen the paragraph has a right-to-left
-#   layout. If this alternative icon does not exist, the LtR icon will
-#   be mirrored instead.
+#     with "+rtl") will be used <hen the paragraph has a right-to-left
+#     layout. If this alternative icon does not exist, the LtR icon will
+#     be mirrored instead.
 #
 #   Layouts adds the layouts combo-box to the toolbar
 #
@@ -48,23 +48,26 @@
 #   Minibuffer adds the command buffer (only one may exist)
 #
 #   TableInsert "The tooltip" adds a special widget for quick
-#   insertion of tables
+#     insertion of tables
 #
 #   PopupMenu "name" "The tooltip"
 #
-#   ... inserts a button with a popup menu derived from Toolbar "name"
+#     ... inserts a button with a popup menu derived from Toolbar "name"
 #
 #   IconPalette "name" "The tooltip"
 #
-#   ... inserts a button with a popup iconpalette derived from Toolbar "name"
+#     ... inserts a button with a popup icon palette derived from Toolbar "name"
 #
 #
-# The icons are found in the lib/images/ direcory under the name
+# The icons are found in the lib/images/ directory under the name
 # action.png or action_parameter.png, except for math-insert, which
 # is e.g. lib/image/math/sum.png. Note that some characters are
 # replaced (e.g. ')' -> rbracket).
 #
-#  All other lyx commands will get a "unknown" icon.
+# Note that the lib/images/icon.aliases file can be used to specify
+# fallback icons for some functions.
+#
+#  All other LyX commands will get a "unknown" icon.
 #
 # This is the default toolbar:
 

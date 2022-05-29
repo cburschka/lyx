@@ -8,7 +8,7 @@ EXTRA_DIST = examples/CMakeLists.txt scripts/CMakeLists.txt examples/README.new_
 
 dist_pkgdata_DATA = CREDITS autocorrect chkconfig.ltx \
 	encodings layouttranslations languages latexfonts RELEASE-NOTES \
-	symbols syntax.default unicodesymbols
+	symbols syntax.default unicodesymbols images/icon.aliases
 
 # We use DATA now instead of PYTHON because automake 1.11.2 complains.
 # Note that we "chmod 755" manually this file in install-data-hook.
