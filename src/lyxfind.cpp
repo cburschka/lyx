@@ -4833,7 +4833,7 @@ static int findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, Ma
 
 static bool isWordChar(char_type c)
 {
-	return isLetterChar(c) || isDigitASCII(c);
+	return isLetterChar(c) || isNumberChar(c);
 }
 
 /// Perform a FindAdv operation.
@@ -4888,15 +4888,9 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions & opt)
 						    it != it_end; ++it)
 							md2.push_back(*it);
 						docstring inp = asString(md2);
-						LYXERR0("Got \"" << inp << "\"");
-						char_type prev = inp[0];
 						for (len = 0; (unsigned) len < inp.size() && len + cur.pos() <= cur.lastpos(); len++) {
-							char_type c = inp[len];
-							if (isLetterChar(c))
-								continue;
-							if (isDigitASCII(c))
-								continue;
-							break;
+							if (!isWordChar(inp[len]))
+								break;
 						}
 						// len == 0 means previous char was a word separator
 						// len == 1       search starts with a word separator

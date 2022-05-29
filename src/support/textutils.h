@@ -55,6 +55,9 @@ bool isEuropeanNumberTerminator(char_type c);
 /// return whether \p c is a digit in the ASCII range
 bool isDigitASCII(char_type c);
 
+/// return whether \p c is a digit (not just 0-9)
+bool isNumberChar(char_type c);
+
 /// return whether \p c is alpha or a digit in the ASCII range
 bool isAlnumASCII(char_type c);
 
