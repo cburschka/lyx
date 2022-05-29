@@ -191,6 +191,9 @@ bool isDigitASCII(char_type c)
 
 bool isNumberChar(char_type c)
 {
+	if (c > ucs4_max)
+		// outside the UCS4 range
+		return false;
 	return ucs4_to_qchar(c).isNumber();
 }
 
