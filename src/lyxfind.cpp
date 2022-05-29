@@ -4864,14 +4864,17 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions & opt)
 			if (opt.matchword && cur.pos() > 0) {  // Skip word-characters if we are in the mid of a word
 				if (cur.inTexted()) {
 					Paragraph const & par = cur.paragraph();
-					if (!par.isWordSeparator(cur.pos() -1, true)) {
-						class Text *t = cur.text();
-						CursorSlice to;
-						CursorSlice from = cur.top();
-						t->getWord(from, to, WHOLE_WORD);
-						cur.pos() = to.pos();
-						cur.pit() = to.pit();
+					int len_limit, new_pos;
+					if (cur.lastpos() < par.size())
+						len_limit = cur.lastpos();
+					else
+						len_limit = par.size();
+					for (new_pos = cur.pos() - 1; new_pos < len_limit; new_pos++) {
+						if (!isWordChar(par.getChar(new_pos)))
+							break;
 					}
+					if (new_pos > cur.pos())
+						cur.pos() = new_pos;
 				}
 				else if (cur.inMathed()) {
 					// Check if 'cur.pos()-1' and 'cur.pos()' both point to a letter,
@@ -4898,7 +4901,6 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions & opt)
 						if (len > 1)
 							cur.pos() = cur.pos() + len - 1;
 					}
-	
 				}
 				opt.matchword = false;
 			}
