@@ -89,14 +89,16 @@ public:
 		*/
 		pos_type x2pos(int &x) const;
 		/** Break the element in two if possible, so that its width is less
-		 * than \param w.
-		 * \return a vector of elements containing the remainder of
-		 *   the text (empty if nothing happened).
-		 * \param width maximum width of the row.
-		 * \param next_width available width on next row.
+		 * than the required values.
+		 * \return true if something has been done ; false if this is
+		 * not needed or not possible.
+		 * \param width: maximum width of the row.
+		 * \param next_width: available width on next rows.
 		 * \param force: if true, cut string at any place, even for
 		 *   languages that wrap at word delimiters; if false, do not
 		 *   break at all if first element would larger than \c width.
+		 * \param tail: a vector of elements where the remainder of
+		 *   the text will be appended (empty if nothing happened).
 		 */
 		// FIXME: ideally last parameter should be Elements&, but it is not possible.
 		bool splitAt(int width, int next_width, bool force, std::vector<Element> & tail);
