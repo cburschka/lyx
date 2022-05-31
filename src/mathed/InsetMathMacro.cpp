@@ -967,23 +967,28 @@ void InsetMathMacro::validate(LaTeXFeatures & features) const
 			features.require(data->required());
 	}
 
-	if (name() == "binom")
-		features.require("binom");
-
-	// validate the cells and the definition
-	if (displayMode() == DISPLAY_NORMAL) {
-		// Don't update requirements if the macro comes from
-		// the symbols file and has not been redefined.
-		MathWordList const & words = mathedWordList();
-		MathWordList::const_iterator it = words.find(name());
-		MacroNameSet macros;
-		buffer().listMacroNames(macros);
-		if (it == words.end() || it->second.inset != "macro"
-		    || macros.find(name()) != macros.end()) {
-			d->definition_.validate(features);
+	// Validate the cells and the definition.
+	// However, don't validate the definition if the macro is
+	// from the symbols file and has not been redefined, because
+	// in this case the definition is only used for screen display.
+	MathWordList const & words = mathedWordList();
+	MathWordList::const_iterator it = words.find(name());
+	MacroNameSet macros;
+	buffer().listMacroNames(macros);
+	if (it == words.end() || it->second.inset != "macro"
+	    || macros.find(name()) != macros.end()) {
+		if (displayMode() == DISPLAY_NORMAL) {
+				d->definition_.validate(features);
+		} else if (displayMode() == DISPLAY_INIT) {
+			MathData ar(const_cast<Buffer *>(&buffer()));
+			MacroData const * data = buffer().getMacro(name());
+			if (data) {
+				asArray(data->definition(), ar);
+				ar.validate(features);
+			}
 		}
-		InsetMathNest::validate(features);
 	}
+	InsetMathNest::validate(features);
 }
 
 
