@@ -97,3 +97,8 @@ Fix    : https://github.com/reutenauer/polyglossia/commit/c7489ebaf8c66a7e4fe252
 Benefit: Not clear. The regressions were in the development version so they
          could have easily been caught before release.
 ctests : export/export/lyx2lyx/revert-languages-polyglossia-primary_lyx22
+
+
+Report : https://github.com/latex3/latex2e/issues/836
+Fix    : none yet, but confirmed as a bug.
+ctests : doc/EmbeddedObjects
