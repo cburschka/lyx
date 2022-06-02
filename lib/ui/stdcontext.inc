@@ -309,13 +309,13 @@ Menuset
 # InsetVSpace context menu
 #
 	Menu "context-vspace"
-		Item "DefSkip|D" "inset-modify vspace defskip"
-		Item "SmallSkip|S" "inset-modify vspace smallskip"
-		Item "MedSkip|M" "inset-modify vspace medskip"
-		Item "BigSkip|B" "inset-modify vspace bigskip"
+		Item "Default Skip|D" "inset-modify vspace defskip"
+		Item "Small Skip|S" "inset-modify vspace smallskip"
+		Item "Medium Skip|M" "inset-modify vspace medskip"
+		Item "Big Skip|B" "inset-modify vspace bigskip"
 		Item "Half line height|H" "inset-modify vspace halfline"
 		Item "Line height|L" "inset-modify vspace fullline"
-		Item "VFill|F" "inset-modify vspace vfill"
+		Item "Vertical Fill|F" "inset-modify vspace vfill"
 		Item "Custom|C" "command-sequence inset-modify vspace custom; inset-settings"
 		Separator
 		Item "Settings...|e" "inset-settings"

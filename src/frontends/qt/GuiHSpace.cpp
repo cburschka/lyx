@@ -42,13 +42,13 @@ GuiHSpace::GuiHSpace(bool math_mode, QWidget * parent)
 
 	spacingCO->clear();
 	spacingCO->addItem(qt_("Interword Space"), "normal");
-	spacingCO->addItem(qt_("Thin Space"), "thinspace");
-	spacingCO->addItem(qt_("Medium Space"), "medspace");
-	spacingCO->addItem(qt_("Thick Space"), "thickspace");
-	spacingCO->addItem(qt_("Negative Thin Space"), "negthinspace");
-	spacingCO->addItem(qt_("Negative Medium Space"), "negmedspace");
-	spacingCO->addItem(qt_("Negative Thick Space"), "negthickspace");
-	spacingCO->addItem(qt_("Half Quad (0.5 em)"), "halfquad");
+	spacingCO->addItem(qt_("Thin Space (1/6 em)"), "thinspace");
+	spacingCO->addItem(qt_("Medium Space (2/9 em)"), "medspace");
+	spacingCO->addItem(qt_("Thick Space (5/18 em)"), "thickspace");
+	spacingCO->addItem(qt_("Negative Thin Space (−1/6 em)"), "negthinspace");
+	spacingCO->addItem(qt_("Negative Medium Space (−2/9 em)"), "negmedspace");
+	spacingCO->addItem(qt_("Negative Thick Space (−5/18 em)"), "negthickspace");
+	spacingCO->addItem(qt_("Half Quad (1/2 em)"), "halfquad");
 	spacingCO->addItem(qt_("Quad (1 em)"), "quad");
 	spacingCO->addItem(qt_("Double Quad (2 em)"), "qquad");
 	spacingCO->addItem(qt_("Horizontal Fill"), "hfill");
