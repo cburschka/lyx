@@ -1111,7 +1111,7 @@ private:
 	 ** @todo Normalization should also expand macros, if the corresponding
 	 ** search option was checked.
 	 **/
-	string normalize(docstring const & s, bool ignore_fomat) const;
+	string convertLF2Space(docstring const & s, bool ignore_fomat) const;
 	// normalized string to search
 	string par_as_string;
 	// regular expression to use for searching
@@ -3669,7 +3669,7 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 		previous_single_replace = true;
 	}
 	// When using regexp, braces are hacked already by escape_for_regex()
-	par_as_string = normalize(ds, opt.ignoreformat);
+	par_as_string = convertLF2Space(ds, opt.ignoreformat);
 	open_braces = 0;
 	close_wildcards = 0;
 
@@ -3794,7 +3794,7 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, MatchStrin
 
 	docstring docstr = stringifyFromForSearch(opt, cur, len);
 	string str;
-	str = normalize(docstr, opt.ignoreformat);
+	str = convertLF2Space(docstr, opt.ignoreformat);
 	if (!opt.ignoreformat) {
 		str = correctlanguagesetting(str, false, !opt.ignoreformat);
 		// remove closing '}' and '\n' to allow for use of '$' in regex
@@ -3988,8 +3988,7 @@ static bool simple_replace(string &t, string from, string to)
 }
 #endif
 
-#if 1
-static string convertLF2Space(docstring const &s, bool ignore_format)
+string MatchStringAdv::convertLF2Space(docstring const &s, bool ignore_format) const
 {
 	// Using original docstring to handle '\n'
 
@@ -4054,77 +4053,6 @@ static string convertLF2Space(docstring const &s, bool ignore_format)
 		start = pos+1;
 	} while (start <= end);
 	return(t.str());
-}
-
-#else
-static string convertLF2Space(docstring const & s, bool ignore_format)
-{
-	// Using utf8-converted string to handle '\n'
-
-	string t;
-	t = lyx::to_utf8(s);
-	// Remove \n at begin
-	while (!t.empty() && t[0] == '\n')
-		t = t.substr(1);
-	// Remove \n* at end
-	while (!t.empty() && t[t.size() - 1] == '\n') {
-		t = t.substr(0, t.size() - 1);
-	}
-	size_t pos;
-	// Handle all other '\n'
-	while ((pos = t.find("\n")) != string::npos) {
-		if (pos > 1 && t[pos-1] == '\\' && t[pos-2] == '\\' ) {
-			// Handle '\\\n'
-			if (isPrintableNonspace(t[pos+1]) && ((pos < 3) || isPrintableNonspace(t[pos-3]))) {
-				t.replace(pos-2, 3, " ");
-			}
-			else {
-				// Already a space there
-				t.replace(pos-2, 3, "");
-			}
-		}
-		else {
-			if (!isAlnumASCII(t[pos+1]) || !isAlnumASCII(t[pos-1])) {
-				// '\n' adjacent to non-alpha-numerics, discard
-				t.replace(pos, 1, "");
-			}
-			else {
-				// Replace all other \n with spaces
-				t.replace(pos, 1, " ");
-			}
-			if (!ignore_format) {
-				size_t count = 0;
-				while ((pos > count + 1) && (t[pos - 1 -count] == '%')) {
-					count++;
-				}
-				if (count > 0) {
-					t.replace(pos - count, count, "");
-				}
-			}
-		}
-	}
-	return(t);
-
-}
-#endif
-
-string MatchStringAdv::normalize(docstring const & s, bool ignore_format) const
-{
-	string t = convertLF2Space(s, ignore_format);
-
-	// The following replaces are not appropriate in non-format-search mode
-	if (!ignore_format) {
-		// Remove stale empty \emph{}, \textbf{} and similar blocks from latexify
-		// Kornel: Added textsl, textsf, textit, texttt and noun
-		// + allow to seach for colored text too
-		LYXERR(Debug::FINDVERBOSE, "Removing stale empty macros from: " << t);
-		while (regex_replace(t, t, "\\\\(emph|noun|text(bf|sl|sf|it|tt)|(u|uu)line|(s|x)out|uwave)(\\{(\\{\\})?\\})+", ""))
-			LYXERR(Debug::FINDVERBOSE, "  further removing stale empty \\emph{}, \\textbf{} macros from: " << t);
-		while (regex_replace(t, t, "\\\\((sub)?(((sub)?section)|paragraph)|part)\\*?(\\{(\\{\\})?\\})+", ""))
-			LYXERR(Debug::FINDVERBOSE, "  further removing stale empty \\section{}, \\part{}, \\paragraph{} macros from: " << t);
-		while (regex_replace(t, t, "\\\\(foreignlanguage|textcolor|item)\\{[a-z]+\\}(\\{(\\{\\})?\\})+", ""));
-	}
-	return t;
 }
 
 docstring stringifyFromCursor(DocIterator const & cur, int len)
