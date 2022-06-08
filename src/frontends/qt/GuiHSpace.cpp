@@ -41,7 +41,7 @@ GuiHSpace::GuiHSpace(bool math_mode, QWidget * parent)
 	setupUi(this);
 
 	spacingCO->clear();
-	spacingCO->addItem(qt_("Interword Space"), "normal");
+	spacingCO->addItem(qt_("Normal Space"), "normal");
 	spacingCO->addItem(qt_("Thin Space (1/6 em)"), "thinspace");
 	spacingCO->addItem(qt_("Medium Space (2/9 em)"), "medspace");
 	spacingCO->addItem(qt_("Thick Space (5/18 em)"), "thickspace");
@@ -112,6 +112,10 @@ void GuiHSpace::enableWidgets() const
 		|| (selection == "hfill" && no_pattern) || custom;
 	keepCB->setEnabled(enable_keep);
 	keepL->setEnabled(enable_keep);
+	// When Non-Breaking is disabled indicate that this is a non-breaking state
+	// by enabling the check-box
+	if (!enable_keep)
+		keepCB->setCheckState(Qt::Checked);
 }
 
 

@@ -252,6 +252,7 @@ varwidth
 \docbook_mathml_prefix 1
 \author -1382599118 "Daniel"
 \author -712698321 "Jürgen Spitzmüller"
+\author 177693 "x"
 \author 630872221 "Jean-Pierre Chrétien" jeanpierre.chretien@free.fr
 \end_header
 
@@ -26539,8 +26540,14 @@ arg   "dialog-show-new-inset ref"
 \end_layout
 
 \begin_layout Standard
-It is recommended that you use a protected space between the cross-reference
- name and its number to avoid line breaks between them.
+It is recommended that you use a 
+\change_deleted 177693 1654669168
+protected
+\change_inserted 177693 1654669170
+non-breaking
+\change_unchanged
+ space between the cross-reference name and its number to avoid line breaks
+ between them.
  If a cross-reference refers to a non-existing label, you will see two question
  marks in the output instead of the reference.
 \end_layout
@@ -29608,7 +29615,13 @@ thefigure
 \begin_inset Quotes erd
 \end_inset
 
- creates a protected space.
+ creates a 
+\change_deleted 177693 1654669177
+protected
+\change_inserted 177693 1654669179
+non-breaking
+\change_unchanged
+ space.
 \end_layout
 
 \begin_layout Standard

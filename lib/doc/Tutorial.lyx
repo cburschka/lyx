@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 609
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,9 +21,9 @@ logicalmkup
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -88,14 +88,19 @@ logicalmkup
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
+\tablestyle default
 \tracking_changes true
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \author -712698321 "Jürgen Spitzmüller"
 \author -131811572 "Yuriy Skalko"
+\author 177693 "x"
 \end_header
 
 \begin_body
@@ -1630,11 +1635,25 @@ Return
 item
 \emph default
 , one way is to use the 
+\change_deleted 177693 1654668928
+
 \family sans
 Protected
+\change_inserted 177693 1654668930
+Non-Breaking
+\change_deleted 177693 1654668945
+
 \begin_inset space ~
 \end_inset
 
+
+\change_inserted 177693 1654668949
+Normal
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
 Break
 \family default
 , which you get by typing 
@@ -1773,11 +1792,25 @@ List
 ) from the rest of the paragraph.
  If you want to have more than one word in the definition, then separate
  the words with 
+\change_deleted 177693 1654668936
+
 \family sans
 Protected
+\change_inserted 177693 1654668939
+Non-Breaking
+\change_unchanged
+
 \begin_inset space ~
 \end_inset
 
+
+\change_inserted 177693 1654668953
+Normal
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
 Space
 \family default
 s.

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 606
+\lyxformat 609
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -232,7 +232,9 @@ subequations
 \html_css_as_file 0
 \html_be_strict false
 \docbook_table_output 0
+\docbook_mathml_prefix 1
 \author -563046850 "Jean-Marc LASGOUTTES"
+\author 177693 "x"
 \author 5863208 "ab"
 \author 47243155 "Jean-Marc"
 \author 232239728 "Owner"
@@ -1028,11 +1030,23 @@ always
  be behind the command to end it.
  This space doesn't appear in the output.
  When the space should appear in the output, the space must be followed
- by a protected space in normal text.
+ by a 
+\change_deleted 177693 1654668848
+protected
+\change_inserted 177693 1654668851
+non-breaking
+\change_unchanged
+ space in normal text.
 \end_layout
 
 \begin_layout Standard
-A protected space is inserted with
+A 
+\change_deleted 177693 1654668857
+protected
+\change_inserted 177693 1654668860
+non-breaking
+\change_unchanged
+ space is inserted with
 \change_inserted 232239728 1610908934
  
 \change_deleted 5863208 1612729787
@@ -1060,7 +1074,13 @@ or with the menu selection
 \change_inserted 232239728 1610908897
 Insert\SpecialChar menuseparator
 Formatting\SpecialChar menuseparator
-Protected Space
+
+\change_deleted 177693 1654668863
+Protected
+\change_inserted 177693 1654668975
+Non-Breaking Normal
+\change_inserted 232239728 1610908897
+ Space
 \family default
  or 
 \change_inserted 5863208 1612729638
@@ -11215,7 +11235,13 @@ Space ! horizontal ! predefined
 
 \begin_layout Standard
 Sometimes it is necessary to insert horizontal space into a formula.
- This is done by inserting a protected space (shortcut 
+ This is done by inserting a 
+\change_deleted 177693 1654668870
+protected
+\change_inserted 177693 1654668872
+non-breaking
+\change_unchanged
+ space (shortcut 
 \change_inserted 5863208 1612729962
 
 \begin_inset Info
@@ -11812,7 +11838,13 @@ Number of
 \family sans
 Space
 \family default
- keystrokes after inserting the protected space
+ keystrokes after inserting the 
+\change_deleted 177693 1654668881
+protected
+\change_inserted 177693 1654668883
+non-breaking
+\change_unchanged
+ space
 \end_layout
 
 \end_inset

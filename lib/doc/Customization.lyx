@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 608
+\lyxformat 609
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -141,6 +141,7 @@ logicalmkup
 \author -712698321 "Jürgen Spitzmüller"
 \author -584632292 "Richard Kimberly Heck"
 \author -495245474 "Jean-Marc Lasgouttes"
+\author 177693 "x"
 \author 5863208 "ab"
 \author 34634807 "Jean-Pierre"
 \author 232239728 "Owner"
@@ -14597,7 +14598,19 @@ FreeSpacing
 Note that 
 \change_unchanged
 \SpecialChar LyX
- will create protected blanks for the additional blanks when
+ will create 
+\change_deleted 177693 1654669077
+protected
+\change_inserted 177693 1654669079
+non-breaking
+\change_unchanged
+ 
+\change_deleted 177693 1654669082
+blanks
+\change_inserted 177693 1654669082
+spaces
+\change_unchanged
+ for the additional blanks when
 \change_deleted 34634807 1619626461
  in
 \change_unchanged
@@ -15544,7 +15557,13 @@ Manual
 \end_inset
 
  means the label is the very first word (up to the first real blank).
- Use protected spaces if you want more than one word as the label.
+ Use 
+\change_deleted 177693 1654669087
+protected
+\change_inserted 177693 1654669089
+non-breaking
+\change_unchanged
+ spaces if you want more than one word as the label.
  
 \end_layout
 
