@@ -16,10 +16,9 @@
 
 namespace lyx {
 
-/* The list of possible flags, that can be combined.
- * Some flags that should logically be here (e.g.,
- * CanBreakBefore), do not exist. This is because the need has not
- * been identitfied yet.
+/* The list of possible flags, that can be combined. Some flags that
+ * should logically be here (e.g., AlwaysBreakBefore), do not exist.
+ * This is because the need has not been identitfied yet.
  *
  * Priorities when before/after disagree:
  *      AlwaysBreak* > NoBreak* > Break* or CanBreak*.
@@ -30,26 +29,28 @@ enum RowFlags {
 	Inline = 0,
 	// break row before this element if the row is not empty
 	BreakBefore = 1 << 0,
+	// break row whenever needed before this element
+	CanBreakBefore = 1 << 1,
 	// Avoid breaking row before this element
-	NoBreakBefore = 1 << 1,
+	NoBreakBefore = 1 << 2,
 	// flush the row before this element (useful with BreakBefore)
-	FlushBefore = 1 << 2,
+	FlushBefore = 1 << 3,
 	// force new (maybe empty) row after this element
-	AlwaysBreakAfter = 1 << 3,
+	AlwaysBreakAfter = 1 << 4,
 	// break row after this element if there are more elements
-	BreakAfter = 1 << 4,
+	BreakAfter = 1 << 5,
 	// break row whenever needed after this element
-	CanBreakAfter = 1 << 5,
+	CanBreakAfter = 1 << 6,
 	// Avoid breaking row after this element
-	NoBreakAfter = 1 << 6,
+	NoBreakAfter = 1 << 7,
 	// The contents of the row may be broken in two (e.g. string)
-	CanBreakInside = 1 << 7,
+	CanBreakInside = 1 << 8,
 	// Flush the row that ends with this element
-	Flush = 1 << 8,
+	Flush = 1 << 9,
 	// specify an alignment (left, right) for a display element
 	// (default is center)
-	AlignLeft = 1 << 9,
-	AlignRight = 1 << 10,
+	AlignLeft = 1 << 10,
+	AlignRight = 1 << 11,
 	// A display element breaks row at both ends
 	Display = FlushBefore | BreakBefore | BreakAfter,
 	// Flags that concern breaking after element
