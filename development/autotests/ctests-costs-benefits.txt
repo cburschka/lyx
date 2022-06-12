@@ -100,5 +100,11 @@ ctests : export/export/lyx2lyx/revert-languages-polyglossia-primary_lyx22
 
 
 Report : https://github.com/latex3/latex2e/issues/836
-Fix    : none yet, but confirmed as a bug.
+Fix    : https://github.com/latex3/latex2e/commit/878a4715df024fc3425d2bfd5d3d138b9395c178
 ctests : doc/EmbeddedObjects
+
+
+Report : https://github.com/gsilano/EuropeCV/issues/29
+Fix    : none yet
+ctests : Modern_CV
+

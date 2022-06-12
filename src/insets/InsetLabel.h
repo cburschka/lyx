@@ -29,6 +29,8 @@ public:
 	docstring const & counterValue() const { return counter_value_; }
 	///
 	docstring const & prettyCounter() const { return pretty_counter_; }
+	///
+	int rowFlags() const override { return CanBreakBefore | CanBreakAfter; }
 	/// Updates only the label string, doesn't handle undo nor references.
 	void updateLabel(docstring const & new_label, bool const active = true);
 	/// Updates the label and the references to it.
