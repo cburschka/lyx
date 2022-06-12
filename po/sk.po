@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-05-11 18:56+0200\n"
-"PO-Revision-Date: 2022-05-11 16:59+0000\n"
+"POT-Creation-Date: 2022-06-12 15:45+0200\n"
+"PO-Revision-Date: 2022-06-12 13:47+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1267,6 +1267,18 @@ msgstr "Vyberte dokument z ktorého chcete nastavenia kopírovať"
 msgid "Document Settings"
 msgstr "Nastavenia dokumentu"
 
+#: src/frontends/qt/GuiDocument.cpp:870
+msgid "Small Skip"
+msgstr "Malá medzera(SmallSkip)"
+
+#: src/frontends/qt/GuiDocument.cpp:871
+msgid "Medium Skip"
+msgstr "Stredná medzera"
+
+#: src/frontends/qt/GuiDocument.cpp:872
+msgid "Big Skip"
+msgstr "Veľká medzera(BigSkip)"
+
 #: src/frontends/qt/ui/CompareUi.ui:129
 msgid "O&ld Document"
 msgstr "Bý&valí dokument"
@@ -2230,6 +2242,14 @@ msgstr "Vlastná hodnota. Potrebuje typ rozstupu \"Vlastný\"."
 #: src/frontends/qt/ui/HSpaceUi.ui:110
 msgid "&Fill Pattern:"
 msgstr "Vzor Vý&plne:"
+
+#: src/frontends/qt/ui/HSpaceUi.ui:118
+msgid "&Non-Breaking:"
+msgstr "&Nerozbitný:"
+
+#: src/frontends/qt/ui/HSpaceUi.ui:128
+msgid "Prevent automatic line break at the space"
+msgstr "Zabrániť automatickému zlomu riadku na medzere"
 
 #: src/frontends/qt/ui/HSpaceUi.ui:123 src/frontends/qt/ui/VSpaceUi.ui:46
 msgid "&Protect:"
@@ -6026,22 +6046,6 @@ msgstr "Toto varovanie odteraz už &nezobrazovať!"
 msgid "Insert the spacing even after a page break"
 msgstr "Vložiť rozstup i za zalomením stránky"
 
-#: src/frontends/qt/ui/VSpaceUi.ui:83
-msgid "DefSkip"
-msgstr "Štandardná medzera(DefSkip)"
-
-#: src/frontends/qt/ui/VSpaceUi.ui:88 src/frontends/qt/GuiDocument.cpp:862
-msgid "SmallSkip"
-msgstr "Malá medzera(SmallSkip)"
-
-#: src/frontends/qt/ui/VSpaceUi.ui:93 src/frontends/qt/GuiDocument.cpp:863
-msgid "MedSkip"
-msgstr "Stredná medzera(MedSkip)"
-
-#: src/frontends/qt/ui/VSpaceUi.ui:98 src/frontends/qt/GuiDocument.cpp:864
-msgid "BigSkip"
-msgstr "Veľká medzera(BigSkip)"
-
 #: src/frontends/qt/ui/VSpaceUi.ui:103 src/VSpace.cpp:201
 #: src/frontends/qt/GuiDocument.cpp:860
 msgid "Half line height"
@@ -6051,11 +6055,6 @@ msgstr "Polovičná výška riadku"
 #: src/frontends/qt/GuiDocument.cpp:861
 msgid "Line height"
 msgstr "Výška riadku"
-
-# Výplň
-#: src/frontends/qt/ui/VSpaceUi.ui:113
-msgid "VFill"
-msgstr "Variabilná medzera"
 
 #: src/frontends/qt/ui/ViewSourceUi.ui:91
 msgid "F&ormat:"
@@ -19690,17 +19689,60 @@ msgstr "Horizontálny fantóm|H"
 msgid "Vertical Phantom|V"
 msgstr "Vertikálny fantóm|ó"
 
-#: lib/ui/stdcontext.inc:244 lib/ui/stdmenus.inc:455
-msgid "Interword Space|w"
-msgstr "Medzi-slovná medzera|e"
+#: lib/ui/stdcontext.inc:264 lib/ui/stdmenus.inc:454
+msgid "Normal Space|w"
+msgstr "Normálna medzera|m"
 
-#: lib/ui/stdcontext.inc:245
-msgid "Protected Space|o"
-msgstr "Chránená medzera|C"
+#: lib/ui/stdcontext.inc:265
+msgid "Non-Breaking Normal Space|o"
+msgstr "Nerozbitná normálna medzera|e"
 
 #: lib/ui/stdcontext.inc:246
 msgid "Visible Space|a"
 msgstr "Viditeľná medzera|a"
+
+#: lib/ui/stdcontext.inc:267
+msgid "Non-Breaking Thin Space (1/6 em)|T"
+msgstr "Nerozbitná úzka medzera (1/6 em)|ú"
+
+#: lib/ui/stdcontext.inc:268
+msgid "Non-Breaking Medium Space (3/9 em)|M"
+msgstr "Nerozbitná stredná medzera (3/9 em)|b"
+
+#: lib/ui/stdcontext.inc:269
+msgid "Non-Breaking Thick Space (5/18 em)|i"
+msgstr "Nerozbitná tučná medzera (5/18 em)|t"
+
+#: lib/ui/stdcontext.inc:270
+msgid "Non-Breaking Negative Thin Space (-1/6 em)|N"
+msgstr "Nerozbitná záporná úzka medzera (−1/6 em)|z"
+
+#: lib/ui/stdcontext.inc:271
+msgid "Non-Breaking Negative Medium Space (-2/9 em)|v"
+msgstr "Nerozbitná záporná stredná medzera (-2/9 em)|o"
+
+#: lib/ui/stdcontext.inc:272
+msgid "Non-Breaking Negative Thick Space (-5/18 em)|h"
+msgstr "Nerozbitná záporná tučná medzera (-5/18 em)|č"
+
+#: lib/ui/stdcontext.inc:273
+msgid "Half Quad Space (1/2 em)|k"
+msgstr "Polovica štvorčeka (1/2 em)|i"
+
+# Chránená pološiroká medzera (Enspace)|k"
+#: lib/ui/stdcontext.inc:274
+msgid "Non-Breaking Half Quad Space (1/2 em)|E"
+msgstr "Nerozbitná polovica štvorčeka (1/2 em)|k"
+
+# Široká medzera|Š
+#: lib/ui/stdcontext.inc:275
+msgid "Quad Space (1 em)|Q"
+msgstr "Štvorček (1 em)|Š"
+
+# Dvojitá široká medzera|D
+#: lib/ui/stdcontext.inc:276
+msgid "Double Quad Space (2 em)|u"
+msgstr "Dva štvorčeky (2 em)|D"
 
 #: lib/ui/stdcontext.inc:247 lib/ui/stdcontext.inc:274 lib/ui/stdmenus.inc:456
 msgid "Thin Space|T"
@@ -19726,73 +19768,72 @@ msgstr "Záporná stredná medzera|o"
 msgid "Negative Thick Space|h"
 msgstr "Záporná tučná medzera|u"
 
-#: lib/ui/stdcontext.inc:253 lib/ui/stdcontext.inc:280
+# Pološiroká medzera (Enskip)|i
+#: lib/ui/stdcontext.inc:273 lib/ui/stdcontext.inc:300
 msgid "Half Quad Space (Enskip)|k"
-msgstr "Polovička Quad medzery (Enskip)|i"
+msgstr "Polovica štvorčeka (Enskip)|i"
 
-#: lib/ui/stdcontext.inc:254
-msgid "Protected Half Quad Space (Enspace)|E"
-msgstr "Chránená polovička Quad medzery (Enspace)|E"
-
-#: lib/ui/stdcontext.inc:255 lib/ui/stdcontext.inc:281
+# Široká medzera|Š
+#: lib/ui/stdcontext.inc:275 lib/ui/stdcontext.inc:301
 msgid "Quad Space|Q"
-msgstr "Quad medzera|Q"
+msgstr "Štvorček (1 em)|Š"
 
-#: lib/ui/stdcontext.inc:256 lib/ui/stdcontext.inc:282
+# Dvojitá široká medzera|D
+#: lib/ui/stdcontext.inc:276 lib/ui/stdcontext.inc:302
 msgid "Double Quad Space|u"
-msgstr "Dvojnásobná Quad medzera|D"
+msgstr "Dva štvorčeky (2 em)|D"
 
-#: lib/ui/stdcontext.inc:257
+#: lib/ui/stdcontext.inc:277
 msgid "Horizontal Fill|F"
-msgstr "Variabilná horizontálna medzera|h"
+msgstr "Horizontálna výplň|h"
 
-#: lib/ui/stdcontext.inc:258
-msgid "Protected Horizontal Fill|z"
-msgstr "Chránená horizontálna medzera|á"
+#: lib/ui/stdcontext.inc:278
+msgid "Non-Breaking Horizontal Fill|z"
+msgstr "Nerozbitná horizontálna výplň|á"
 
-#: lib/ui/stdcontext.inc:259
+#: lib/ui/stdcontext.inc:279
 msgid "Horizontal Fill (Dots)|D"
-msgstr "Variabilná horizontálna medzera(Bodky)|y"
+msgstr "Horizontálna výplň (Bodky)|y"
 
-#: lib/ui/stdcontext.inc:260
+#: lib/ui/stdcontext.inc:280
 msgid "Horizontal Fill (Rule)|R"
-msgstr "Variabilná horizontálna medzera (Línia)|í"
+msgstr "Horizontálna výplň (Línia)|í"
 
-#: lib/ui/stdcontext.inc:261
+#: lib/ui/stdcontext.inc:281
 msgid "Horizontal Fill (Left Arrow)|L"
-msgstr "Variabilná horizontálna medzera(Šípka doľava)|ľ"
+msgstr "Horizontálna výplň (Šípka doľava)|ľ"
 
-#: lib/ui/stdcontext.inc:262
+#: lib/ui/stdcontext.inc:282
 msgid "Horizontal Fill (Right Arrow)|g"
-msgstr "Variabilná horizontálna medzera(Šípka doprava)|p"
+msgstr "Horizontálna výplň (Šípka doprava)|p"
 
-#: lib/ui/stdcontext.inc:263
+#: lib/ui/stdcontext.inc:283
 msgid "Horizontal Fill (Up Brace)|p"
-msgstr "Variabilná horizontálna medzera(Svorka nahor)|r"
+msgstr "Horizontálna výplň (Svorka nahor)|r"
 
-#: lib/ui/stdcontext.inc:264
+#: lib/ui/stdcontext.inc:284
 msgid "Horizontal Fill (Down Brace)|B"
-msgstr "Variabilná horizontálna medzera(Svorka nadol)|l"
+msgstr "Horizontálna výplň (Svorka nadol)|l"
 
 #: lib/ui/stdcontext.inc:265 lib/ui/stdcontext.inc:283
 msgid "Custom Length|C"
 msgstr "Vlastná dĺžka|V"
 
-#: lib/ui/stdcontext.inc:292
-msgid "DefSkip|D"
-msgstr "Štandardná medzera(DefSkip)|t"
+#: lib/ui/stdcontext.inc:312
+msgid "Default Skip|D"
+msgstr "Štandardné riadkovanie|t"
 
-#: lib/ui/stdcontext.inc:293
-msgid "SmallSkip|S"
-msgstr "Malá medzera(SmallSkip)|M"
+#: lib/ui/stdcontext.inc:313
+msgid "Small Skip|S"
+msgstr "Malá medzera|M"
 
-#: lib/ui/stdcontext.inc:294
-msgid "MedSkip|M"
-msgstr "Stredná medzera(MedSkip)|S"
+#: lib/ui/stdcontext.inc:314
+msgid "Medium Skip|M"
+msgstr "Stredná medzera|S"
 
-#: lib/ui/stdcontext.inc:295
-msgid "BigSkip|B"
-msgstr "Veľká medzera(BigSkip)|e"
+#: lib/ui/stdcontext.inc:315
+msgid "Big Skip|B"
+msgstr "Veľká medzera|e"
 
 #: lib/ui/stdcontext.inc:296
 msgid "Half line height|H"
@@ -19802,10 +19843,9 @@ msgstr "Polovičná výška riadku|P"
 msgid "Line height|L"
 msgstr "Výška riadku|š"
 
-# Výplň
-#: lib/ui/stdcontext.inc:298
-msgid "VFill|F"
-msgstr "Variabilná medzera|r"
+#: lib/ui/stdcontext.inc:318
+msgid "Vertical Fill|F"
+msgstr "Vertikálna výplň|r"
 
 #: lib/ui/stdcontext.inc:299
 msgid "Custom|C"
@@ -20933,8 +20973,8 @@ msgid "Inner Quotation Mark|n"
 msgstr "Vnútorná úvodzovka|n"
 
 #: lib/ui/stdmenus.inc:418
-msgid "Protected Hyphen|y"
-msgstr "Chránený spojovník|C"
+msgid "Non-Breaking Hyphen|y"
+msgstr "Nerozbitný spojovník|b"
 
 #: lib/ui/stdmenus.inc:419
 msgid "Breakable Slash|a"
@@ -21024,9 +21064,13 @@ msgstr "Horný index|H"
 msgid "Subscript|u"
 msgstr "Dolný index|D"
 
-#: lib/ui/stdmenus.inc:454
-msgid "Protected Space|P"
-msgstr "Chránená medzera|m"
+#: lib/ui/stdmenus.inc:455
+msgid "Non-breaking Normal Space|P"
+msgstr "Nerozbitná normálna medzera|t"
+
+#: lib/ui/stdmenus.inc:456
+msgid "Non-breaking Thin Space|T"
+msgstr "Nerozbitná úzka medzera|e"
 
 #: lib/ui/stdmenus.inc:457
 msgid "Horizontal Space...|o"
@@ -22208,7 +22252,7 @@ msgstr "Kvadratická medzera\t\\quad"
 
 #: lib/ui/stdtoolbars.inc:396
 msgid "Double quadratin space\t\\qquad"
-msgstr "Dvojitá kvadratická\t\\qquad"
+msgstr "Dvojitá kvadratická medzera\t\\qquad"
 
 #: lib/ui/stdtoolbars.inc:397
 msgid "Negative space\t\\!"
@@ -30713,9 +30757,9 @@ msgstr "Blokovanie súborov aktívne."
 msgid "Do not forget to commit the locking property into the repository."
 msgstr "Nezabudnite zapísať blokovaciu vlastnosť do repozitára."
 
-#: src/VSpace.cpp:189
+#: src/VSpace.cpp:189 src/frontends/qt/ui/VSpaceUi.ui:83
 msgid "Default skip"
-msgstr "Štd. riadkovanie"
+msgstr "Štandardné riadkovanie"
 
 #: src/VSpace.cpp:192
 msgid "Small skip"
@@ -30729,9 +30773,9 @@ msgstr "Stredná"
 msgid "Big skip"
 msgstr "Veľká"
 
-#: src/VSpace.cpp:207
+#: src/VSpace.cpp:207 src/frontends/qt/ui/VSpaceUi.ui:113
 msgid "Vertical fill"
-msgstr "Variabilné"
+msgstr "Vertikálna výplň"
 
 #: src/VSpace.cpp:214
 msgid "protected"
@@ -32670,61 +32714,61 @@ msgid "&Clipart"
 msgstr "&Grafika"
 
 #: src/frontends/qt/GuiHSpace.cpp:44 src/insets/InsetSpace.cpp:68
-msgid "Interword Space"
-msgstr "Medzi-slovná medzera"
+msgid "Normal Space"
+msgstr "Normálna medzera"
 
-#: src/frontends/qt/GuiHSpace.cpp:45 src/insets/InsetSpace.cpp:77
-msgid "Thin Space"
-msgstr "Úzka medzera"
+#: src/frontends/qt/GuiHSpace.cpp:45
+msgid "Thin Space (1/6 em)"
+msgstr "Úzka medzera (1/6 em)"
 
-#: src/frontends/qt/GuiHSpace.cpp:46 src/insets/InsetSpace.cpp:80
-msgid "Medium Space"
-msgstr "Stredná medzera"
+#: src/frontends/qt/GuiHSpace.cpp:46
+msgid "Medium Space (2/9 em)"
+msgstr "Stredná medzera (2/9 em)"
 
-#: src/frontends/qt/GuiHSpace.cpp:47 src/insets/InsetSpace.cpp:83
-msgid "Thick Space"
-msgstr "Tučná medzera"
+#: src/frontends/qt/GuiHSpace.cpp:47
+msgid "Thick Space (5/18 em)"
+msgstr "Tučná medzera (5/18 em)"
 
-#: src/frontends/qt/GuiHSpace.cpp:48 src/insets/InsetSpace.cpp:98
-msgid "Negative Thin Space"
-msgstr "Záporná úzka medzera"
+#: src/frontends/qt/GuiHSpace.cpp:48
+msgid "Negative Thin Space (−1/6 em)"
+msgstr "Záporná úzka medzera (−1/6 em)"
 
-#: src/frontends/qt/GuiHSpace.cpp:49 src/insets/InsetSpace.cpp:101
-msgid "Negative Medium Space"
-msgstr "Záporná stredná medzera"
+#: src/frontends/qt/GuiHSpace.cpp:49
+msgid "Negative Medium Space (−2/9 em)"
+msgstr "Záporná stredná medzera (−2/9 em)"
 
-#: src/frontends/qt/GuiHSpace.cpp:50 src/insets/InsetSpace.cpp:104
-msgid "Negative Thick Space"
-msgstr "Záporná tučná medzera"
+#: src/frontends/qt/GuiHSpace.cpp:50
+msgid "Negative Thick Space (−5/18 em)"
+msgstr "Záporná tučná medzera (−5/18 em)"
 
 #: src/frontends/qt/GuiHSpace.cpp:51
-msgid "Half Quad (0.5 em)"
-msgstr "0.5 em"
+msgid "Half Quad (1/2 em)"
+msgstr "Pološiroká medzera (1/2 em)"
 
 #: src/frontends/qt/GuiHSpace.cpp:52
 msgid "Quad (1 em)"
-msgstr "1 em"
+msgstr "Široká medzera (1 em)"
 
 #: src/frontends/qt/GuiHSpace.cpp:53
 msgid "Double Quad (2 em)"
-msgstr "Dvojité Quad (2 em)"
+msgstr "Dvojitá široká medzera (2 em)"
 
 #: src/frontends/qt/GuiHSpace.cpp:54 src/insets/InsetSpace.cpp:107
 msgid "Horizontal Fill"
-msgstr "Variabilná horizontálna medzera"
+msgstr "Horizontálna výplň"
 
 #: src/frontends/qt/GuiHSpace.cpp:56 src/insets/InsetSpace.cpp:74
 msgid "Visible Space"
 msgstr "Viditeľná medzera"
 
-#: src/frontends/qt/GuiHSpace.cpp:208
+#: src/frontends/qt/GuiHSpace.cpp:213
 msgid ""
 "Insert the spacing even after a line break.\n"
 "Note that a protected Half Quad will be turned into\n"
 "a vertical space if used at the beginning of a paragraph!"
 msgstr ""
 "Vložiť rozstup i za koniec riadku.\n"
-"Pozn. - chránená polovičná Quad medzera sa zmení na\n"
+"Pozn. - chránená pološiroká medzera sa zmení na\n"
 "vertikálnu medzeru, keď bude použitá na začiatku odstavca!"
 
 #: src/frontends/qt/GuiHSpace.h:39
@@ -36516,52 +36560,80 @@ msgid "superscript"
 msgstr "horný index"
 
 #: src/insets/InsetSpace.cpp:71
-msgid "Protected Space"
-msgstr "Chránená medzera"
+msgid "Non-Breaking Normal Space"
+msgstr "Nerozbitná normálna medzera"
+
+#: src/insets/InsetSpace.cpp:74
+msgid "Non-Breaking Visible Normal Space"
+msgstr "Nerozbitná viditeľná normálna medzera"
+
+#: src/insets/InsetSpace.cpp:77
+msgid "Non-Breaking Thin Space (1/6 em)"
+msgstr "Nerozbitná úzka medzera (1/6 em)"
+
+#: src/insets/InsetSpace.cpp:80
+msgid "Non-Breaking Medium Space (2/9 em)"
+msgstr "Nerozbitná stredná medzera (2/9 em)"
+
+#: src/insets/InsetSpace.cpp:83
+msgid "Non-Breaking Thick Space (5/18 em)"
+msgstr "Nerozbitná tučná medzera (5/18 em)"
 
 #: src/insets/InsetSpace.cpp:86
-msgid "Quad Space"
-msgstr "Quad medzera"
+msgid "Quad Space (1 em)"
+msgstr "Štvorček (1 em)"
 
 #: src/insets/InsetSpace.cpp:89
-msgid "Double Quad Space"
-msgstr "Dvojnásobná Quad medzera"
+msgid "Double Quad Space (2 em)"
+msgstr "Dva štvorčeky (2 em)"
 
 #: src/insets/InsetSpace.cpp:92
-msgid "Enspace"
-msgstr "En-medzera (Enspace)"
+msgid "Non-Breaking Half Quad Space (1/2 em)"
+msgstr "Nerozbitná polovica štvorčeka (1/2 em)"
 
 #: src/insets/InsetSpace.cpp:95
-msgid "Enskip"
-msgstr "En-medzera (Enskip)"
+msgid "Half Quad Space (1/2 em)"
+msgstr "Polovica štvorčeka (1/2 em)"
+
+#: src/insets/InsetSpace.cpp:98
+msgid "Non-Breaking Negative Thin Space (-1/6 em)"
+msgstr "Nerozbitná záporná úzka medzera (-1/6 em)"
+
+#: src/insets/InsetSpace.cpp:101
+msgid "Non-Breaking Negative Medium Space (-2/9 em)"
+msgstr "Nerozbitná záporná stredná medzera (-2/9 em)"
+
+#: src/insets/InsetSpace.cpp:104
+msgid "Non-Breaking Negative Thick Space (-5/18 em)"
+msgstr "Nerozbitná záporná tučná medzera (-5/18 em)"
 
 #: src/insets/InsetSpace.cpp:110
-msgid "Protected Horizontal Fill"
-msgstr "Chránená variabilná horizontálna medzera"
+msgid "Non-Breaking Horizontal Fill"
+msgstr "Nerozbitná horizontálna výplň"
 
 #: src/insets/InsetSpace.cpp:113
-msgid "Horizontal Fill (Dots)"
-msgstr "Variabilná horizontálna medzera(Bodky)"
+msgid "Non-Breaking Horizontal Fill (Dots)"
+msgstr "Nerozbitná horizontálna výplň (Bodky)"
 
 #: src/insets/InsetSpace.cpp:116
-msgid "Horizontal Fill (Rule)"
-msgstr "Variabilná horizontálna medzera (línia)"
+msgid "Non-Breaking Horizontal Fill (Rule)"
+msgstr "Nerozbitná horizontálna výplň (línia)"
 
 #: src/insets/InsetSpace.cpp:119
-msgid "Horizontal Fill (Left Arrow)"
-msgstr "Variabilná horizontálna medzera(šípka doľava)"
+msgid "Non-Breaking Horizontal Fill (Left Arrow)"
+msgstr "Nerozbitná horizontálna výplň (šípka doľava)"
 
 #: src/insets/InsetSpace.cpp:122
-msgid "Horizontal Fill (Right Arrow)"
-msgstr "Variabilná horizontálna medzera(šípka doprava)"
+msgid "Non-Breaking Horizontal Fill (Right Arrow)"
+msgstr "Nerozbitná horizontálna výplň (šípka doprava)"
 
 #: src/insets/InsetSpace.cpp:125
-msgid "Horizontal Fill (Up Brace)"
-msgstr "Variabilná horizontálna medzera(svorka nahor)"
+msgid "Non-Breaking Horizontal Fill (Up Brace)"
+msgstr "Nerozbitná horizontálna výplň (svorka nahor)"
 
 #: src/insets/InsetSpace.cpp:128
-msgid "Horizontal Fill (Down Brace)"
-msgstr "Variabilná horizontálna medzera(svorka nadol)"
+msgid "Non-Breaking Horizontal Fill (Down Brace)"
+msgstr "Nerozbitná horizontálna výplň (svorka nadol)"
 
 #: src/insets/InsetSpace.cpp:132
 #, c-format
@@ -36570,8 +36642,8 @@ msgstr "Horizontálna medzera (%1$s)"
 
 #: src/insets/InsetSpace.cpp:137
 #, c-format
-msgid "Protected Horizontal Space (%1$s)"
-msgstr "Chránená horizontálna medzera (%1$s)"
+msgid "Non-Breaking Horizontal Space (%1$s)"
+msgstr "Nerozbitná horizontálna medzera (%1$s)"
 
 #: src/insets/InsetTOC.cpp:78
 msgid "Unknown TOC type"
@@ -37365,6 +37437,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "MedSkip"
+#~ msgstr "Stredná medzera(MedSkip)"
+
+#~ msgid "MedSkip|M"
+#~ msgstr "Stredná medzera(MedSkip)|S"
 
 #~ msgid "I&gnore formatting"
 #~ msgstr "&Ignorovať formát"
