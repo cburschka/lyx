@@ -266,7 +266,7 @@ Menuset
 		Item "Visible Space|a" "inset-modify space \textvisiblespace{}"
 		Item "Non-Breaking Thin Space (1/6 em)|T" "inset-modify space \thinspace{}"
 		Item "Non-Breaking Medium Space (3/9 em)|M" "inset-modify space \medspace{}"
-		Item "Non-Breaking Thick Space (5/18 em Non-Breaking )|i" "inset-modify space \thickspace{}"
+		Item "Non-Breaking Thick Space (5/18 em)|i" "inset-modify space \thickspace{}"
 		Item "Non-Breaking Negative Thin Space (-1/6 em)|N" "inset-modify space \negthinspace{}"
 		Item "Non-Breaking Negative Medium Space (-2/9 em)|v" "inset-modify space \negmedspace{}"
 		Item "Non-Breaking Negative Thick Space (-5/18 em)|h" "inset-modify space \negthickspace{}"
