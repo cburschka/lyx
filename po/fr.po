@@ -362,8 +362,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-06-04 11:21+0200\n"
-"PO-Revision-Date: 2022-06-04 11:25+0200\n"
+"POT-Creation-Date: 2022-06-13 09:09+0200\n"
+"PO-Revision-Date: 2022-06-13 09:46+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -839,7 +839,7 @@ msgstr "Boîte &Intérieure :"
 msgid "Inner box type"
 msgstr "Type de boîte intérieure"
 
-#: src/frontends/qt/ui/BoxUi.ui:91 src/frontends/qt/ui/HSpaceUi.ui:32
+#: src/frontends/qt/ui/BoxUi.ui:91 src/frontends/qt/ui/HSpaceUi.ui:27
 #: src/frontends/qt/ui/ListingsUi.ui:105 src/frontends/qt/ui/TabularUi.ui:1200
 #: src/frontends/qt/ui/TabularUi.ui:1219 src/frontends/qt/ui/TabularUi.ui:1267
 #: src/frontends/qt/GuiBox.cpp:420 src/frontends/qt/GuiBox.cpp:630
@@ -2572,61 +2572,61 @@ msgstr "Mode brouillon"
 msgid "&Draft mode"
 msgstr "Mode &brouillon"
 
-#: src/frontends/qt/ui/HSpaceUi.ui:28
+#: src/frontends/qt/ui/HSpaceUi.ui:23
 msgid "Select a fill pattern style for HFills"
 msgstr "Sélectionner un modèle pour le remplissage horizontal"
 
-#: src/frontends/qt/ui/HSpaceUi.ui:37
+#: src/frontends/qt/ui/HSpaceUi.ui:32
 msgid "..............."
 msgstr "..............."
 
-#: src/frontends/qt/ui/HSpaceUi.ui:42
+#: src/frontends/qt/ui/HSpaceUi.ui:37
 msgid "________"
 msgstr "________"
 
-#: src/frontends/qt/ui/HSpaceUi.ui:47
+#: src/frontends/qt/ui/HSpaceUi.ui:42
 msgid "<-----------"
 msgstr "<-----------"
 
-#: src/frontends/qt/ui/HSpaceUi.ui:52
+#: src/frontends/qt/ui/HSpaceUi.ui:47
 msgid "----------->"
 msgstr "----------->"
 
-#: src/frontends/qt/ui/HSpaceUi.ui:57
+#: src/frontends/qt/ui/HSpaceUi.ui:52
 msgid "\\-----v-----/"
 msgstr "\\-----v-----/"
 
-#: src/frontends/qt/ui/HSpaceUi.ui:62
+#: src/frontends/qt/ui/HSpaceUi.ui:57
 msgid "/-----^-----\\"
 msgstr "/-----^-----\\"
 
-#: src/frontends/qt/ui/HSpaceUi.ui:70 src/frontends/qt/ui/VSpaceUi.ui:23
+#: src/frontends/qt/ui/HSpaceUi.ui:65 src/frontends/qt/ui/VSpaceUi.ui:23
 msgid "&Spacing:"
 msgstr "&Interligne :"
 
-#: src/frontends/qt/ui/HSpaceUi.ui:80 src/frontends/qt/ui/VSpaceUi.ui:79
+#: src/frontends/qt/ui/HSpaceUi.ui:75 src/frontends/qt/ui/VSpaceUi.ui:79
 msgid "Supported spacing types"
 msgstr "Types d'espacement supportés"
 
-#: src/frontends/qt/ui/HSpaceUi.ui:87 src/frontends/qt/ui/VSpaceUi.ui:69
+#: src/frontends/qt/ui/HSpaceUi.ui:82 src/frontends/qt/ui/VSpaceUi.ui:69
 msgid "&Value:"
 msgstr "&Valeur :"
 
-#: src/frontends/qt/ui/HSpaceUi.ui:100 src/frontends/qt/ui/VSpaceUi.ui:62
+#: src/frontends/qt/ui/HSpaceUi.ui:95 src/frontends/qt/ui/VSpaceUi.ui:62
 msgid "Custom value. Needs spacing type \"Custom\"."
 msgstr "Valeur réglable. Nécessite un espacement de type « réglable »."
 
-#: src/frontends/qt/ui/HSpaceUi.ui:110
+#: src/frontends/qt/ui/HSpaceUi.ui:105
 msgid "&Fill Pattern:"
 msgstr "&Modèle de remplissage :"
 
-#: src/frontends/qt/ui/HSpaceUi.ui:123 src/frontends/qt/ui/VSpaceUi.ui:46
-msgid "&Protect:"
-msgstr "&Protégé :"
+#: src/frontends/qt/ui/HSpaceUi.ui:118
+msgid "&Non-Breaking:"
+msgstr "&Insécable :"
 
-#: src/frontends/qt/ui/HSpaceUi.ui:133 src/frontends/qt/GuiHSpace.cpp:217
-msgid "Insert the spacing even after a line break"
-msgstr "Insérer l'espacement même après un saut de page"
+#: src/frontends/qt/ui/HSpaceUi.ui:128
+msgid "Prevent automatic line break at the space"
+msgstr "Évite la césure automatique à l'espace"
 
 #: src/frontends/qt/ui/HyperlinkUi.ui:24 src/frontends/qt/ui/HyperlinkUi.ui:61
 #: lib/layouts/acmart.layout:694 lib/layouts/acmart.layout:712
@@ -6515,6 +6515,10 @@ msgstr "&Ne pas afficher cet avertissement à l'avenir !"
 #: src/frontends/qt/ui/VSpaceUi.ui:33
 msgid "Insert the spacing even after a page break"
 msgstr "Conserver l'espacement même après un saut de page"
+
+#: src/frontends/qt/ui/VSpaceUi.ui:46
+msgid "&Protect:"
+msgstr "&Protégé :"
 
 #: src/frontends/qt/ui/VSpaceUi.ui:83 src/VSpace.cpp:189
 msgid "Default skip"
@@ -20243,93 +20247,129 @@ msgstr "Fantôme horizontal|z"
 msgid "Vertical Phantom|V"
 msgstr "Fantôme vertical|c"
 
-#: lib/ui/stdcontext.inc:264 lib/ui/stdmenus.inc:455
-msgid "Interword Space|w"
-msgstr "Espace entre mots|t"
+#: lib/ui/stdcontext.inc:264 lib/ui/stdmenus.inc:454
+msgid "Normal Space|w"
+msgstr "Espace normale|m"
 
 #: lib/ui/stdcontext.inc:265
-msgid "Protected Space|o"
-msgstr "Espace insécable|E"
+msgid "Non-Breaking Normal Space|o"
+msgstr "Espace normale insécable|o"
 
 #: lib/ui/stdcontext.inc:266
 msgid "Visible Space|a"
-msgstr "Espace visible|v"
+msgstr "Espace visible|i"
 
-#: lib/ui/stdcontext.inc:267 lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:456
-msgid "Thin Space|T"
-msgstr "Espace fine|f"
+#: lib/ui/stdcontext.inc:267
+msgid "Non-Breaking Thin Space (1/6 em)|T"
+msgstr "Espace fine insécable (1/6 em)|f"
 
-#: lib/ui/stdcontext.inc:268 lib/ui/stdcontext.inc:295
-msgid "Medium Space|M"
-msgstr "Espace moyenne|m"
+#: lib/ui/stdcontext.inc:268
+msgid "Non-Breaking Medium Space (3/9 em)|M"
+msgstr "Espace moyenne insécable (2/9 em)|y"
 
-#: lib/ui/stdcontext.inc:269 lib/ui/stdcontext.inc:296
-msgid "Thick Space|i"
-msgstr "Espace large|l"
+#: lib/ui/stdcontext.inc:269
+msgid "Non-Breaking Thick Space (5/18 em)|i"
+msgstr "Espace large insécable(5/18 em)|l"
 
-#: lib/ui/stdcontext.inc:270 lib/ui/stdcontext.inc:297
-msgid "Negative Thin Space|N"
-msgstr "Espace fine négative|v"
+#: lib/ui/stdcontext.inc:270
+msgid "Non-Breaking Negative Thin Space (-1/6 em)|N"
+msgstr "Espace fine négative insécable (−1/6 em)|n"
 
-#: lib/ui/stdcontext.inc:271 lib/ui/stdcontext.inc:298
-msgid "Negative Medium Space|v"
-msgstr "Espace moyenne négative|n"
+#: lib/ui/stdcontext.inc:271
+msgid "Non-Breaking Negative Medium Space (-2/9 em)|v"
+msgstr "Espace moyenne négative insécable (−2/9 em)|v"
 
-#: lib/ui/stdcontext.inc:272 lib/ui/stdcontext.inc:299
-msgid "Negative Thick Space|h"
-msgstr "Espace large négative|g"
+#: lib/ui/stdcontext.inc:272
+msgid "Non-Breaking Negative Thick Space (-5/18 em)|h"
+msgstr "Espace large négative insécable (−5/18 em)a"
 
-#: lib/ui/stdcontext.inc:273 lib/ui/stdcontext.inc:300
-msgid "Half Quad Space (Enskip)|k"
-msgstr "Saut demi-cadratin (saut de dimension n)|S"
+#: lib/ui/stdcontext.inc:273
+msgid "Half Quad Space (1/2 em)|k"
+msgstr "Demi-cadratin (1/2 em)|D"
 
 #: lib/ui/stdcontext.inc:274
-msgid "Protected Half Quad Space (Enspace)|E"
-msgstr "Espace insécable demi-cadratin (espace-n)|n"
+msgid "Non-Breaking Half Quad Space (1/2 em)|E"
+msgstr "Espace insécable demi-cadratin (1/2 em)|r"
 
-#: lib/ui/stdcontext.inc:275 lib/ui/stdcontext.inc:301
-msgid "Quad Space|Q"
+#: lib/ui/stdcontext.inc:275
+msgid "Quad Space (1 em)|Q"
 msgstr "Espace cadratin|c"
 
-#: lib/ui/stdcontext.inc:276 lib/ui/stdcontext.inc:302
-msgid "Double Quad Space|u"
-msgstr "Espace double cadratin|u"
+#: lib/ui/stdcontext.inc:276
+msgid "Double Quad Space (2 em)|u"
+msgstr "Espace double cadratin (2em)|u"
 
 #: lib/ui/stdcontext.inc:277
 msgid "Horizontal Fill|F"
 msgstr "Ressort horizontal|t"
 
 #: lib/ui/stdcontext.inc:278
-msgid "Protected Horizontal Fill|z"
-msgstr "Remplissage horizontal insécable|z"
+msgid "Non-Breaking Horizontal Fill|z"
+msgstr "Ressort horizontal insécable|z"
 
 #: lib/ui/stdcontext.inc:279
 msgid "Horizontal Fill (Dots)|D"
-msgstr "Remplissage horizontal (points)|p"
+msgstr "Ressort horizontal (points)|p"
 
 #: lib/ui/stdcontext.inc:280
 msgid "Horizontal Fill (Rule)|R"
-msgstr "Remplissage horizontal (filet)|l"
+msgstr "Ressort horizontal (filet)|e"
 
 #: lib/ui/stdcontext.inc:281
 msgid "Horizontal Fill (Left Arrow)|L"
-msgstr "Remplissage horizontal (flèche gauche)|g"
+msgstr "Ressort horizontal (flèche gauche)|g"
 
 #: lib/ui/stdcontext.inc:282
 msgid "Horizontal Fill (Right Arrow)|g"
-msgstr "Remplissage horizontal (flèche droite)|d"
+msgstr "Ressort horizontal (flèche droite)|è"
 
 #: lib/ui/stdcontext.inc:283
 msgid "Horizontal Fill (Up Brace)|p"
-msgstr "Remplissage horizontal (accolade vers le haut)|h"
+msgstr "Ressort horizontal (accolade vers le haut)|h"
 
 #: lib/ui/stdcontext.inc:284
 msgid "Horizontal Fill (Down Brace)|B"
-msgstr "Remplissage horizontal (accolade vers le bas)|b"
+msgstr "Ressort horizontal (accolade vers le bas)|b"
 
 #: lib/ui/stdcontext.inc:285 lib/ui/stdcontext.inc:303
 msgid "Custom Length|C"
 msgstr "Dimension réglable|a"
+
+#: lib/ui/stdcontext.inc:294
+msgid "Thin Space|T"
+msgstr "Espace fine|f"
+
+#: lib/ui/stdcontext.inc:295
+msgid "Medium Space|M"
+msgstr "Espace moyenne|m"
+
+#: lib/ui/stdcontext.inc:296
+msgid "Thick Space|i"
+msgstr "Espace large|l"
+
+#: lib/ui/stdcontext.inc:297
+msgid "Negative Thin Space|N"
+msgstr "Espace fine négative|v"
+
+#: lib/ui/stdcontext.inc:298
+msgid "Negative Medium Space|v"
+msgstr "Espace moyenne négative|n"
+
+#: lib/ui/stdcontext.inc:299
+msgid "Negative Thick Space|h"
+msgstr "Espace large négative|g"
+
+#: lib/ui/stdcontext.inc:300
+msgid "Half Quad Space (Enskip)|k"
+msgstr "Saut demi-cadratin (saut de dimension n)|S"
+
+#: lib/ui/stdcontext.inc:301
+msgid "Quad Space|Q"
+msgstr "Espace cadratin|c"
+
+#: lib/ui/stdcontext.inc:302
+msgid "Double Quad Space|u"
+msgstr "Espace double cadratin|u"
 
 #: lib/ui/stdcontext.inc:312
 msgid "Default Skip|D"
@@ -21493,8 +21533,8 @@ msgid "Inner Quotation Mark|n"
 msgstr "Guillemet interne|i"
 
 #: lib/ui/stdmenus.inc:418
-msgid "Protected Hyphen|y"
-msgstr "Césure protégée|r"
+msgid "Non-Breaking Hyphen|y"
+msgstr "Tiret insécable|i"
 
 #: lib/ui/stdmenus.inc:419
 msgid "Breakable Slash|a"
@@ -21584,9 +21624,13 @@ msgstr "Exposant|x"
 msgid "Subscript|u"
 msgstr "Indice|I"
 
-#: lib/ui/stdmenus.inc:454
-msgid "Protected Space|P"
-msgstr "Espace insécable|E"
+#: lib/ui/stdmenus.inc:455
+msgid "Non-breaking Normal Space|P"
+msgstr "Espace normale insécable|o"
+
+#: lib/ui/stdmenus.inc:456
+msgid "Non-breaking Thin Space|T"
+msgstr "Espace fine insécable|é"
 
 #: lib/ui/stdmenus.inc:457
 msgid "Horizontal Space...|o"
@@ -33346,8 +33390,8 @@ msgid "&Clipart"
 msgstr "&Clipart"
 
 #: src/frontends/qt/GuiHSpace.cpp:44 src/insets/InsetSpace.cpp:68
-msgid "Interword Space"
-msgstr "Espace entre mots"
+msgid "Normal Space"
+msgstr "Espace normale"
 
 #: src/frontends/qt/GuiHSpace.cpp:45
 msgid "Thin Space (1/6 em)"
@@ -33389,11 +33433,11 @@ msgstr "Double cadratin (2 em)"
 msgid "Horizontal Fill"
 msgstr "Ressort horizontal"
 
-#: src/frontends/qt/GuiHSpace.cpp:56 src/insets/InsetSpace.cpp:74
+#: src/frontends/qt/GuiHSpace.cpp:56
 msgid "Visible Space"
 msgstr "Espace visible"
 
-#: src/frontends/qt/GuiHSpace.cpp:213
+#: src/frontends/qt/GuiHSpace.cpp:217
 msgid ""
 "Insert the spacing even after a line break.\n"
 "Note that a protected Half Quad will be turned into\n"
@@ -33402,6 +33446,10 @@ msgstr ""
 "Insérer l'espace même après un saut de ligne.\n"
 "Notez qu'un espace insécable demi-cadratin apparaîtra comme un espacement "
 "vertical s'il est utilisé au début d'un paragraphe !"
+
+#: src/frontends/qt/GuiHSpace.cpp:221
+msgid "Insert the spacing even after a line break"
+msgstr "Insérer l'espacement même après un saut de page"
 
 #: src/frontends/qt/GuiHSpace.h:39
 msgid "Horizontal Space Settings"
@@ -37224,76 +37272,80 @@ msgid "superscript"
 msgstr "exposant"
 
 #: src/insets/InsetSpace.cpp:71
-msgid "Protected Space"
-msgstr "Espace insécable"
+msgid "Non-Breaking Normal Space"
+msgstr "Espace normale insécable"
+
+#: src/insets/InsetSpace.cpp:74
+msgid "Non-Breaking Visible Normal Space"
+msgstr "Espace normale insécable visible"
 
 #: src/insets/InsetSpace.cpp:77
-msgid "Thin Space"
-msgstr "Espace fine"
+msgid "Non-Breaking Thin Space (1/6 em)"
+msgstr "Espace fine insécable (1/6 em)"
 
 #: src/insets/InsetSpace.cpp:80
-msgid "Medium Space"
-msgstr "Espace moyenne"
+msgid "Non-Breaking Medium Space (2/9 em)"
+msgstr "Espace moyenne insécable (2/9 em)"
 
 #: src/insets/InsetSpace.cpp:83
-msgid "Thick Space"
-msgstr "Espace large"
+msgid "Non-Breaking Thick Space (5/18 em)"
+msgstr "Espace large insécable (5/18 em)"
 
 #: src/insets/InsetSpace.cpp:86
-msgid "Quad Space"
-msgstr "Espace cadratin"
+msgid "Quad Space (1 em)"
+msgstr "Cadratin (1 em)"
 
 #: src/insets/InsetSpace.cpp:89
-msgid "Double Quad Space"
-msgstr "Espace double cadratin"
+msgid "Double Quad Space (2 em)"
+msgstr "Double cadratin (2 em)"
 
 #: src/insets/InsetSpace.cpp:92
-msgid "Enspace"
-msgstr "Espace de largeur en"
+msgid "Non-Breaking Half Quad Space (1/2 em)"
+msgstr "Demi-cadratin insécable (1/2 em)"
 
 #: src/insets/InsetSpace.cpp:95
-msgid "Enskip"
-msgstr "Saut de hauteur en"
+msgid "Half Quad Space (1/2 em)"
+msgstr "Demi-cadratin (1/2 em)"
 
 #: src/insets/InsetSpace.cpp:98
-msgid "Negative Thin Space"
-msgstr "Espace fine négative"
+msgid "Non-Breaking Negative Thin Space (-1/6 em)"
+msgstr "Espace fine négative insécable (−1/6 em)"
 
 #: src/insets/InsetSpace.cpp:101
-msgid "Negative Medium Space"
-msgstr "Espace moyenne négative"
+msgid "Non-Breaking Negative Medium Space (-2/9 em)"
+msgstr "Espace moyenne négative insécable (−2/9 em)"
 
 #: src/insets/InsetSpace.cpp:104
-msgid "Negative Thick Space"
-msgstr "Espace large négative"
+msgid "Non-Breaking Negative Thick Space (-5/18 em)"
+msgstr "Espace large négative insécable (−5/18 em)"
 
 #: src/insets/InsetSpace.cpp:110
-msgid "Protected Horizontal Fill"
-msgstr "Remplissage horizontal insécable"
+msgid "Non-Breaking Horizontal Fill"
+msgstr "Ressort horizontal insécable"
 
 #: src/insets/InsetSpace.cpp:113
-msgid "Horizontal Fill (Dots)"
-msgstr "Remplissage horizontal (points)"
+msgid "Non-Breaking Horizontal Fill (Dots)"
+msgstr "Ressort horizontal insécable (points)"
 
 #: src/insets/InsetSpace.cpp:116
-msgid "Horizontal Fill (Rule)"
-msgstr "Remplissage horizontal (filet)"
+msgid "Non-Breaking Horizontal Fill (Rule)"
+msgstr "Ressort horizontal insécable (filet)"
 
 #: src/insets/InsetSpace.cpp:119
-msgid "Horizontal Fill (Left Arrow)"
-msgstr "Remplissage horizontal (flèche gauche)"
+msgid "Non-Breaking Horizontal Fill (Left Arrow)"
+msgstr "Ressort horizontal insécable (flèche gauche)"
 
 #: src/insets/InsetSpace.cpp:122
-msgid "Horizontal Fill (Right Arrow)"
-msgstr "Remplissage horizontal (flèche droite)"
+msgid "Non-Breaking Horizontal Fill (Right Arrow)"
+msgstr "Ressort horizontal insécable (flèche droite)"
 
 #: src/insets/InsetSpace.cpp:125
-msgid "Horizontal Fill (Up Brace)"
-msgstr "Remplissage horizontal (accolade vers le haut)"
+msgid "Non-Breaking Horizontal Fill (Up Brace)"
+msgstr "Ressort horizontal insécable (accolade vers le haut)"
 
 #: src/insets/InsetSpace.cpp:128
-msgid "Horizontal Fill (Down Brace)"
-msgstr "Remplissage horizontal (accolade vers le bas)"
+msgid "Non-Breaking Horizontal Fill (Down Brace)"
+msgstr "Ressort horizontal insécable (accolade vers le bas)"
 
 #: src/insets/InsetSpace.cpp:132
 #, c-format
@@ -37302,8 +37354,8 @@ msgstr "Espace horizontale (%1$s)"
 
 #: src/insets/InsetSpace.cpp:137
 #, c-format
-msgid "Protected Horizontal Space (%1$s)"
-msgstr "Espace horizontal insécable (%1$s)"
+msgid "Non-Breaking Horizontal Space (%1$s)"
+msgstr "Espace horizontale insécable (%1$s)"
 
 #: src/insets/InsetTOC.cpp:78
 msgid "Unknown TOC type"
@@ -37483,28 +37535,28 @@ msgstr "%1$d chaînes remplacées dans le sélection."
 msgid "%1$d strings have been replaced."
 msgstr "%1$d chaînes remplacées."
 
-#: src/lyxfind.cpp:4921
+#: src/lyxfind.cpp:4849
 msgid "One match has been replaced."
 msgstr "Une correspondance a été remplacée."
 
-#: src/lyxfind.cpp:4924
+#: src/lyxfind.cpp:4852
 msgid "Two matches have been replaced."
 msgstr "Deux correspondances ont été remplacées."
 
-#: src/lyxfind.cpp:4927
+#: src/lyxfind.cpp:4855
 #, c-format
 msgid "%1$d matches have been replaced."
 msgstr "%1$d correspondances ont été remplacées."
 
-#: src/lyxfind.cpp:4933
+#: src/lyxfind.cpp:4861
 msgid "Match not found."
 msgstr "Chaîne de caractères introuvable."
 
-#: src/lyxfind.cpp:4939
+#: src/lyxfind.cpp:4867
 msgid "Match has been replaced."
 msgstr "Chaîne de caractères remplacée."
 
-#: src/lyxfind.cpp:4941
+#: src/lyxfind.cpp:4869
 msgid "Match found."
 msgstr "Chaîne de caractères reconnue."
 
@@ -38107,6 +38159,61 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Utilisateur inconnu"
+
+#~ msgid "Interword Space|w"
+#~ msgstr "Espace entre mots|t"
+
+#~ msgid "Protected Space|o"
+#~ msgstr "Espace insécable|E"
+
+#~ msgid "Protected Hyphen|y"
+#~ msgstr "Césure protégée|r"
+
+#~ msgid "Protected Space|P"
+#~ msgstr "Espace insécable|E"
+
+#~ msgid "Interword Space"
+#~ msgstr "Espace entre mots"
+
+#~ msgid "Protected Space"
+#~ msgstr "Espace insécable"
+
+#~ msgid "Thin Space"
+#~ msgstr "Espace fine"
+
+#~ msgid "Medium Space"
+#~ msgstr "Espace moyenne"
+
+#~ msgid "Thick Space"
+#~ msgstr "Espace large"
+
+#~ msgid "Quad Space"
+#~ msgstr "Espace cadratin"
+
+#~ msgid "Double Quad Space"
+#~ msgstr "Espace double cadratin"
+
+#~ msgid "Enspace"
+#~ msgstr "Espace de largeur en"
+
+#~ msgid "Enskip"
+#~ msgstr "Saut de hauteur en"
+
+#~ msgid "Negative Thin Space"
+#~ msgstr "Espace fine négative"
+
+#~ msgid "Negative Medium Space"
+#~ msgstr "Espace moyenne négative"
+
+#~ msgid "Negative Thick Space"
+#~ msgstr "Espace large négative"
+
+#~ msgid "Protected Horizontal Fill"
+#~ msgstr "Remplissage horizontal insécable"
+
+#, c-format
+#~ msgid "Protected Horizontal Space (%1$s)"
+#~ msgstr "Espace horizontal insécable (%1$s)"
 
 #~ msgid "DefSkip"
 #~ msgstr "Implicite"

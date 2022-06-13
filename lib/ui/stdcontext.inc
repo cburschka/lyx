@@ -261,7 +261,7 @@ Menuset
 # InsetSpace context menu
 #
 	Menu "context-space"
-		Item "Normal Space|w" "inset-modify space \space{}"
+		Item "Normal Space|e" "inset-modify space \space{}"
 		Item "Non-Breaking Normal Space|o" "inset-modify space ~"
 		Item "Visible Space|a" "inset-modify space \textvisiblespace{}"
 		Item "Non-Breaking Thin Space (1/6 em)|T" "inset-modify space \thinspace{}"
@@ -270,8 +270,8 @@ Menuset
 		Item "Non-Breaking Negative Thin Space (-1/6 em)|N" "inset-modify space \negthinspace{}"
 		Item "Non-Breaking Negative Medium Space (-2/9 em)|v" "inset-modify space \negmedspace{}"
 		Item "Non-Breaking Negative Thick Space (-5/18 em)|h" "inset-modify space \negthickspace{}"
-		Item "Half Quad Space (1/2 em)|k" "inset-modify space \enskip{}"
-		Item "Non-Breaking Half Quad Space (1/2 em)|E" "inset-modify space \enspace{}"
+		Item "Half Quad Space (1/2 em)|S" "inset-modify space \enskip{}"
+		Item "Non-Breaking Half Quad Space (1/2 em)|k" "inset-modify space \enspace{}"
 		Item "Quad Space (1 em)|Q" "inset-modify space \quad{}"
 		Item "Double Quad Space (2 em)|u" "inset-modify space \qquad{}"
 		Item "Horizontal Fill|F" "inset-modify space \hfill{}"
