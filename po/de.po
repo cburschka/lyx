@@ -94,16 +94,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-06-12 14:17+0200\n"
-"PO-Revision-Date: 2022-06-12 14:19+0200\n"
+"POT-Creation-Date: 2022-06-13 16:09+0200\n"
+"PO-Revision-Date: 2022-06-13 16:10+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
-"Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
+"Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 42.0\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Gtranslator 3.32.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: src/frontends/qt/ui/AboutUi.ui:27
 msgid "Version"
@@ -1038,6 +1038,7 @@ msgstr "Schrifteigenschaften"
 
 #: src/frontends/qt/ui/CharacterUi.ui:36 src/frontends/qt/ui/CharacterUi.ui:55
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:475
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:463
 msgid "Font family"
 msgstr "Schriftfamilie"
 
@@ -1047,6 +1048,7 @@ msgstr "&Familie:"
 
 #: src/frontends/qt/ui/CharacterUi.ui:62 src/frontends/qt/ui/CharacterUi.ui:81
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:447
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:435
 msgid "Font series"
 msgstr "Strichstärke"
 
@@ -1056,6 +1058,7 @@ msgstr "S&trichstärke:"
 
 #: src/frontends/qt/ui/CharacterUi.ui:88 src/frontends/qt/ui/CharacterUi.ui:107
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:510
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:470
 msgid "Font shape"
 msgstr "Schriftschnitt"
 
@@ -1072,6 +1075,7 @@ msgstr "Schriftgrad"
 #: src/frontends/qt/ui/CharacterUi.ui:159
 #: src/frontends/qt/ui/CharacterUi.ui:178
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:454
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:414
 msgid "Font color"
 msgstr "Schriftfarbe"
 
@@ -1107,6 +1111,7 @@ msgstr "S&prache:"
 
 #: src/frontends/qt/ui/CharacterUi.ui:281
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:482
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:449
 #: src/frontends/qt/ui/ListingsUi.ui:334 lib/layouts/bicaption.module:16
 #: lib/layouts/europasscv.layout:440 lib/layouts/europasscv.layout:475
 #: lib/layouts/europasscv.layout:482 lib/layouts/europecv.layout:321
@@ -1679,58 +1684,71 @@ msgid "y"
 msgstr "y"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:14
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:14
 msgid "TabWidget"
 msgstr "TabWidget"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:21
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:21
 msgid "Sear&ch"
 msgstr "Su&che"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:55
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:39
 msgid "Search fo&r:"
 msgstr "S&uchen nach:"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:92
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:76
 msgid "Replace &with:"
 msgstr "Er&setzen durch:"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:137
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:121
 msgid "Shift+Enter search backwards directly"
 msgstr "Drücken Sie Shift+Enter, um direkt rückwärts zu suchen."
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:140
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:124
 msgid "Search &backwards"
 msgstr "&Rückwärts suchen"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:150
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:134
 msgid "Restrict search to whole words only"
 msgstr "Suche auf vollständige Wörter beschränken"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:153
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:137
 #: src/frontends/qt/ui/SearchUi.ui:241 src/frontends/qt/GuiSearch.cpp:102
 msgid "Wh&ole words"
 msgstr "Gan&ze Wörter"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:160
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:144
 msgid "Perform a case-sensitive search"
 msgstr "Suche unter Beachtung der Groß-/Kleinschreibung"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:163
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:147
 msgid "Case &sensitive"
 msgstr "&Groß-/Kleinschreibung beachten"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:205
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:189
 #: src/frontends/qt/FindAndReplace.cpp:717
 msgid "Find next occurrence (Enter, backwards: Shift+Enter)"
 msgstr ""
 "Suche nächsten Treffer (Eingabetaste; rückwärts: Umschalt+Eingabetaste)"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:208
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:192
 #: src/frontends/qt/ui/SearchUi.ui:190 src/frontends/qt/FindAndReplace.cpp:716
 msgid "Find &>"
 msgstr "Suchen &>"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:221
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:205
 #: src/frontends/qt/FindAndReplace.cpp:719
 msgid "Replace and find next occurrence (Enter, backwards: Shift+Enter)"
 msgstr ""
@@ -1738,62 +1756,76 @@ msgstr ""
 "+Eingabetaste)"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:224
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:208
 #: src/frontends/qt/FindAndReplace.cpp:718
 msgid "Rep&lace >"
 msgstr "Erse&tzen >"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:234
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:218
 msgid "Replace all occurrences at once"
 msgstr "Alle Vorkommen auf einmal ersetzen"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:237
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:221
 #: src/frontends/qt/ui/SearchUi.ui:68
 msgid "Replace &All"
 msgstr "&Alle ersetzen"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:264
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:247
 msgid "Settin&gs"
 msgstr "Einste&llungen"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:279
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:262
 msgid "The scope to which the search horizon is restricted"
 msgstr "Der Bereich, auf den die Suche sich erstreckt"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:285
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:268
 msgid "Scope"
 msgstr "Bereich"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:297
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:280
 msgid "C&urrent document"
 msgstr "Aktuelles Dok&ument"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:316
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:299
 msgid ""
 "Current document and all related documents belonging to the same master "
 "document"
 msgstr "Alle Dokumente, die zum selben Hauptdokument wie das aktuelle gehören"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:319
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:302
 msgid "&Master document"
 msgstr "Hau&ptdokument"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:329
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:312
 msgid "All open documents"
 msgstr "Alle geöffneten Dokumente"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:332
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:315
 msgid "&Open documents"
 msgstr "&Geöffnete Dokumente"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:342
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:325
 msgid "&All manuals"
 msgstr "&Alle LyX-Handbücher"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:373
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:356
 msgid "E&xpand macros"
 msgstr "Mak&ros ausklappen"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:380
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:363
 msgid "Restrict search to math environments only"
 msgstr "Suche auf die Mathe-Umgebung beschränken"
 
@@ -1802,6 +1834,7 @@ msgid "Search onl&y in maths"
 msgstr "Nu&r im Mathe-Umfeld"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:390
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:386
 msgid ""
 "Keep the case of the replacement's first letter as in each matching text "
 "first letter"
@@ -1810,6 +1843,7 @@ msgstr ""
 "beibehalten"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:393
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:389
 msgid "&Preserve first case on replace"
 msgstr "Groß-/&Kleinschreibung bewahren"
 
@@ -1836,10 +1870,12 @@ msgid "Adhe&re to search string formatting of"
 msgstr "Sucheintrags&formatierung beachten bzgl."
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:440
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:428
 msgid "Strike-through"
 msgstr "Durchstreichung"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:461
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:421
 msgid "Emph/noun"
 msgstr "Hervorh./Eigenname"
 
@@ -1848,20 +1884,39 @@ msgid "Dese&lect all"
 msgstr "Alles deakti&vieren"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:489
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:456
 msgid "Sectioning markup"
 msgstr "Überschriftenformat"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:496
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:442
 msgid "Deletion (change)"
 msgstr "Löschung (Änderungen)"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:503
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:407
 msgid "Underlining"
 msgstr "Unterstreichung"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:517
 msgid "&Select all"
 msgstr "Alles ausw&ählen"
+
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:366
+msgid "Search on&ly in maths"
+msgstr "Nu&r im Mathe-Umfeld"
+
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:398
+msgid "I&gnore formatting"
+msgstr "Ignoriere For&mat"
+
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:477
+msgid "Select all"
+msgstr "Alles ausw&ählen"
+
+#: src/frontends/qt/ui/FindAndReplaceUi2.ui:484
+msgid "Deselect all"
+msgstr "Alles deakti&vieren"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:14
 #: src/frontends/qt/ui/OutputUi.ui:14 src/frontends/qt/ui/PDFSupportUi.ui:14
@@ -2802,7 +2857,7 @@ msgstr "&Paket zur Code-Hervorhebung:"
 #: src/frontends/qt/ui/ListingsUi.ui:14 lib/layouts/numreport.inc:37
 #: lib/layouts/stdcounters.inc:77 lib/layouts/stdinsets.inc:338
 #: lib/layouts/stdinsets.inc:344 lib/layouts/stdinsets.inc:393
-#: lib/layouts/stdinsets.inc:399 src/insets/InsetCaption.cpp:410
+#: lib/layouts/stdinsets.inc:399 src/insets/InsetCaption.cpp:423
 #: src/insets/InsetListings.cpp:612 src/insets/InsetListings.cpp:613
 msgid "Listing"
 msgstr "Listing"
@@ -9778,7 +9833,7 @@ msgid "Centered"
 msgstr "Zentriert"
 
 #: lib/layouts/apa.layout:285 lib/layouts/apax.inc:384
-#: lib/layouts/stdinsets.inc:690 src/insets/InsetCaption.cpp:436
+#: lib/layouts/stdinsets.inc:690 src/insets/InsetCaption.cpp:449
 msgid "standard"
 msgstr "Standard"
 
@@ -17206,6 +17261,34 @@ msgstr "Kapitel \\thechapter"
 msgid "Appendix \\thechapter"
 msgstr "Anhang \\thechapter"
 
+#: lib/layouts/stdspecialchars.inc:8 lib/ui/stdmenus.inc:463
+msgid "Ligature Break|k"
+msgstr "Ligaturtrenner|r"
+
+#: lib/layouts/stdspecialchars.inc:17 lib/ui/stdmenus.inc:415
+msgid "End of Sentence|E"
+msgstr "Satzendepunkt|S"
+
+#: lib/layouts/stdspecialchars.inc:26 lib/ui/stdmenus.inc:414
+msgid "Ellipsis|i"
+msgstr "Fortsetzungspunkte|F"
+
+#: lib/layouts/stdspecialchars.inc:36 lib/ui/stdmenus.inc:421
+msgid "Menu Separator|M"
+msgstr "Menütrenner|M"
+
+#: lib/layouts/stdspecialchars.inc:49 lib/ui/stdmenus.inc:462
+msgid "Hyphenation Point|H"
+msgstr "Trennmöglichkeit|ö"
+
+#: lib/layouts/stdspecialchars.inc:56 lib/ui/stdmenus.inc:419
+msgid "Breakable Slash|a"
+msgstr "Umbruchfähiger Schrägstrich|ä"
+
+#: lib/layouts/stdspecialchars.inc:65
+msgid "Protected Hyphen|y"
+msgstr "Geschützter Trennstrich|T"
+
 #: lib/layouts/stdstarsections.inc:103
 msgid "Subparagraph*"
 msgstr "Unterparagraph*"
@@ -19945,8 +20028,8 @@ msgstr "Horizontales Phantom|H"
 msgid "Vertical Phantom|V"
 msgstr "Vertikales Phantom|V"
 
-#: lib/ui/stdcontext.inc:264 lib/ui/stdmenus.inc:454
-msgid "Normal Space|w"
+#: lib/ui/stdcontext.inc:264
+msgid "Normal Space|e"
 msgstr "Normales Leerzeichen|N"
 
 #: lib/ui/stdcontext.inc:265
@@ -19982,11 +20065,11 @@ msgid "Non-Breaking Negative Thick Space (-5/18 em)|h"
 msgstr "Geschützter negativer großer Abstand (-5/18 em)|ß"
 
 #: lib/ui/stdcontext.inc:273
-msgid "Half Quad Space (1/2 em)|k"
+msgid "Half Quad Space (1/2 em)|S"
 msgstr "Halbgeviert-Abstand (Enskip, 1/2 em)|k"
 
 #: lib/ui/stdcontext.inc:274
-msgid "Non-Breaking Half Quad Space (1/2 em)|E"
+msgid "Non-Breaking Half Quad Space (1/2 em)|k"
 msgstr "Geschützter Halbgeviert-Abstand (Enspace, 1/2 em)|ü"
 
 #: lib/ui/stdcontext.inc:275
@@ -21206,14 +21289,6 @@ msgstr "Eingebettete Vorschau|i"
 msgid "Symbols...|b"
 msgstr "Symbole...|b"
 
-#: lib/ui/stdmenus.inc:414
-msgid "Ellipsis|i"
-msgstr "Fortsetzungspunkte|F"
-
-#: lib/ui/stdmenus.inc:415
-msgid "End of Sentence|E"
-msgstr "Satzendepunkt|S"
-
 #: lib/ui/stdmenus.inc:416
 msgid "Plain Quotation Mark|Q"
 msgstr "Nicht-typographisches Anführungszeichen|N"
@@ -21226,17 +21301,9 @@ msgstr "Inneres Anführungszeichen|I"
 msgid "Non-Breaking Hyphen|y"
 msgstr "Geschützter Trennstrich|T"
 
-#: lib/ui/stdmenus.inc:419
-msgid "Breakable Slash|a"
-msgstr "Umbruchfähiger Schrägstrich|ä"
-
 #: lib/ui/stdmenus.inc:420
 msgid "Visible Space|V"
 msgstr "Sichtbares Leerzeichen|L"
-
-#: lib/ui/stdmenus.inc:421
-msgid "Menu Separator|M"
-msgstr "Menütrenner|M"
 
 #: lib/ui/stdmenus.inc:422
 msgid "Phonetic Symbols|P"
@@ -21314,6 +21381,10 @@ msgstr "Hochgestellt|H"
 msgid "Subscript|u"
 msgstr "Tiefgestellt|T"
 
+#: lib/ui/stdmenus.inc:454
+msgid "Normal Space|w"
+msgstr "Normales Leerzeichen|N"
+
 #: lib/ui/stdmenus.inc:455
 msgid "Non-breaking Normal Space|P"
 msgstr "Geschütztes Leerzeichen|G"
@@ -21337,14 +21408,6 @@ msgstr "Vertikaler Abstand...|V"
 #: lib/ui/stdmenus.inc:460
 msgid "Phantom|m"
 msgstr "Phantom|m"
-
-#: lib/ui/stdmenus.inc:462
-msgid "Hyphenation Point|H"
-msgstr "Trennmöglichkeit|ö"
-
-#: lib/ui/stdmenus.inc:463
-msgid "Ligature Break|k"
-msgstr "Ligaturtrenner|r"
 
 #: lib/ui/stdmenus.inc:464
 msgid "Optional Line Break|B"
@@ -27048,12 +27111,12 @@ msgid "LyX Archive (tar.gz)"
 msgstr "LyX-Archiv (tar.gz)"
 
 #: lib/examples/Articles:0
-msgid "Game 1"
-msgstr "Spiel 1"
-
-#: lib/examples/Articles:0
 msgid "Game 2"
 msgstr "Spiel 2"
+
+#: lib/examples/Articles:0
+msgid "Game 1"
+msgstr "Spiel 1"
 
 #: lib/examples/Articles:0
 msgid "Example (LyXified)"
@@ -27073,32 +27136,32 @@ msgid "External Material"
 msgstr "Externes Material"
 
 #: lib/examples/Articles:0
-msgid "Feynman Diagrams"
-msgstr "Feynman-Diagramme"
-
-#: lib/examples/Articles:0
 msgid "Instant Preview"
 msgstr "Eingebettete Vorschau"
-
-#: lib/examples/Articles:0
-msgid "Itemize Bullets"
-msgstr "Auflistungszeichen"
-
-#: lib/examples/Articles:0
-msgid "Minted File Listing"
-msgstr "Minted-Programmlistings (Dateien)"
-
-#: lib/examples/Articles:0
-msgid "Minted Listings"
-msgstr "Minted-Programmlistings"
 
 #: lib/examples/Articles:0
 msgid "XY-Figure"
 msgstr "XY-Figure"
 
 #: lib/examples/Articles:0
+msgid "Minted File Listing"
+msgstr "Minted-Programmlistings (Dateien)"
+
+#: lib/examples/Articles:0
+msgid "Feynman Diagrams"
+msgstr "Feynman-Diagramme"
+
+#: lib/examples/Articles:0
+msgid "Itemize Bullets"
+msgstr "Auflistungszeichen"
+
+#: lib/examples/Articles:0
 msgid "XY-Pic"
 msgstr "XY-Pic"
+
+#: lib/examples/Articles:0
+msgid "Minted Listings"
+msgstr "Minted-Programmlistings"
 
 #: lib/examples/Articles:0
 msgid "Graphics and Insets"
@@ -27109,44 +27172,40 @@ msgid "Serial Letter 1"
 msgstr "Serienbrief 1"
 
 #: lib/examples/Articles:0
-msgid "Serial Letter 2"
-msgstr "Serienbrief 2"
-
-#: lib/examples/Articles:0
 msgid "Serial Letter 3"
 msgstr "Serienbrief 3"
+
+#: lib/examples/Articles:0
+msgid "Serial Letter 2"
+msgstr "Serienbrief 2"
 
 #: lib/examples/Articles:0
 msgid "Localization Test"
 msgstr "Übersetzungstest"
 
 #: lib/examples/Articles:0
-msgid "Hazard and Precautionary Statements"
-msgstr "H- und P-Sätze"
+msgid "Multilingual Captions"
+msgstr "Mehrsprachige Legenden"
 
 #: lib/examples/Articles:0
 msgid "LilyPond Book"
 msgstr "LilyPond-Buch"
 
 #: lib/examples/Articles:0
-msgid "Multilingual Captions"
-msgstr "Mehrsprachige Legenden"
+msgid "Noweb Listerrors"
+msgstr "Noweb-Fehlerbericht"
 
 #: lib/examples/Articles:0
 msgid "Noweb2LyX"
 msgstr "Noweb2LyX"
 
 #: lib/examples/Articles:0
-msgid "Noweb Listerrors"
-msgstr "Noweb-Fehlerbericht"
+msgid "Hazard and Precautionary Statements"
+msgstr "H- und P-Sätze"
 
 #: lib/examples/Articles:0 src/frontends/qt/GuiDocument.cpp:1775
 msgid "Modules"
 msgstr "Module"
-
-#: lib/examples/Articles:0
-msgid "Beamer (Complex)"
-msgstr "Beamer (komplex)"
 
 #: lib/examples/Articles:0
 msgid "Foils"
@@ -27155,6 +27214,10 @@ msgstr "Foils"
 #: lib/examples/Articles:0
 msgid "Foils Landslide"
 msgstr "Foils (Querformat)"
+
+#: lib/examples/Articles:0
+msgid "Beamer (Complex)"
+msgstr "Beamer (komplex)"
 
 #: lib/examples/Articles:0
 msgid "Welcome"
@@ -27169,14 +27232,6 @@ msgid "Multilingual Typesetting with platex"
 msgstr "Mehrsprachige Dokumente mit platex"
 
 #: lib/examples/Articles:0
-msgid "Hebrew Article (KOMA-Script)"
-msgstr "Hebräischer Aufsatz (KOMA-Script)"
-
-#: lib/examples/Articles:0
-msgid "IEEE Transactions Conference"
-msgstr "IEEE Transactions Conference"
-
-#: lib/examples/Articles:0
 msgid "IEEE Transactions Journal"
 msgstr "IEEE Transactions Journal"
 
@@ -27185,32 +27240,72 @@ msgid "Mathematical Monthly"
 msgstr "Mathematical Monthly"
 
 #: lib/examples/Articles:0
+msgid "Hebrew Article (KOMA-Script)"
+msgstr "Hebräischer Aufsatz (KOMA-Script)"
+
+#: lib/examples/Articles:0
 msgid "Springers Global Journal Template (V. 3)"
 msgstr "Springers globale Vorlage für Zeitschriften (V. 3)"
 
 #: lib/examples/Articles:0
-msgid "00 Main File"
-msgstr "00 Hauptdatei"
+msgid "IEEE Transactions Conference"
+msgstr "IEEE Transactions Conference"
 
 #: lib/examples/Articles:0
 msgid "01 Dedication"
 msgstr "01 Widmung"
 
 #: lib/examples/Articles:0
+msgid "00 Main File"
+msgstr "00 Hauptdatei"
+
+#: lib/examples/Articles:0
+msgid "08 Appendix"
+msgstr "08 Anhang"
+
+#: lib/examples/Articles:0
 msgid "02 Foreword"
 msgstr "02 Vorwort"
+
+#: lib/examples/Articles:0
+msgid "07 Chapter"
+msgstr "07 Kapitel"
+
+#: lib/examples/Articles:0
+msgid "11 References"
+msgstr "11 Literaturverzeichnis"
 
 #: lib/examples/Articles:0
 msgid "03 Preface"
 msgstr "03 Vorwort"
 
 #: lib/examples/Articles:0
+msgid "05 Acronym"
+msgstr "05 Akronyme"
+
+#: lib/examples/Articles:0
+msgid "09 Glossary"
+msgstr "09 Glossar"
+
+#: lib/examples/Articles:0
+msgid "06 Part"
+msgstr "06 Teil"
+
+#: lib/examples/Articles:0
+msgid "10 Solutions"
+msgstr "10 Lösungen"
+
+#: lib/examples/Articles:0
 msgid "04 Acknowledgements"
 msgstr "04 Danksagungen"
 
 #: lib/examples/Articles:0
-msgid "05 Contributor List"
-msgstr "05 Liste der Mitwirkenden"
+msgid "10 Glossary"
+msgstr "10 Glossar"
+
+#: lib/examples/Articles:0
+msgid "08 Author"
+msgstr "08 Autor"
 
 #: lib/examples/Articles:0
 msgid "06 Acronym"
@@ -27221,52 +27316,24 @@ msgid "07 Part"
 msgstr "07 Teil"
 
 #: lib/examples/Articles:0
-msgid "08 Author"
-msgstr "08 Autor"
-
-#: lib/examples/Articles:0
 msgid "09 Appendix"
 msgstr "09 Anhang"
 
 #: lib/examples/Articles:0
-msgid "10 Glossary"
-msgstr "10 Glossar"
+msgid "05 Contributor List"
+msgstr "05 Liste der Mitwirkenden"
 
 #: lib/examples/Articles:0
-msgid "11 References"
-msgstr "11 Literaturverzeichnis"
-
-#: lib/examples/Articles:0
-msgid "05 Acronym"
-msgstr "05 Akronyme"
-
-#: lib/examples/Articles:0
-msgid "06 Part"
-msgstr "06 Teil"
-
-#: lib/examples/Articles:0
-msgid "07 Chapter"
-msgstr "07 Kapitel"
-
-#: lib/examples/Articles:0
-msgid "08 Appendix"
-msgstr "08 Anhang"
-
-#: lib/examples/Articles:0
-msgid "09 Glossary"
-msgstr "09 Glossar"
-
-#: lib/examples/Articles:0
-msgid "10 Solutions"
-msgstr "10 Lösungen"
+msgid "Simple"
+msgstr "Schlicht"
 
 #: lib/examples/Articles:0
 msgid "Colored"
 msgstr "Farbig"
 
 #: lib/examples/Articles:0
-msgid "Simple"
-msgstr "Schlicht"
+msgid "Main File"
+msgstr "Hauptdatei"
 
 #: lib/examples/Articles:0
 msgid "Chapter 1"
@@ -27275,10 +27342,6 @@ msgstr "Kapitel 1"
 #: lib/examples/Articles:0
 msgid "Chapter 2"
 msgstr "Kapitel 2"
-
-#: lib/examples/Articles:0
-msgid "Main File"
-msgstr "Hauptdatei"
 
 #: lib/examples/Articles:0
 msgid "PhD Thesis"
@@ -27985,7 +28048,7 @@ msgstr ""
 "%1$s ist schreibgeschützt.\n"
 "Bitte speichern Sie die Datei unter einem neuen Namen."
 
-#: src/Buffer.cpp:5213 src/insets/InsetCaption.cpp:404
+#: src/Buffer.cpp:5213
 msgid "Senseless!!! "
 msgstr "Sinnlos!!! "
 
@@ -33516,19 +33579,19 @@ msgstr "&Fixe Uhrzeit:"
 msgid "Field Settings"
 msgstr "Textfeld-Einstellungen"
 
-#: src/frontends/qt/GuiKeySymbol.cpp:826
+#: src/frontends/qt/GuiKeySymbol.cpp:834
 msgid "Shift-"
 msgstr "Shift-"
 
-#: src/frontends/qt/GuiKeySymbol.cpp:827
+#: src/frontends/qt/GuiKeySymbol.cpp:835
 msgid "Control-"
 msgstr "Kontroll-"
 
-#: src/frontends/qt/GuiKeySymbol.cpp:828
+#: src/frontends/qt/GuiKeySymbol.cpp:836
 msgid "Option-"
 msgstr "Option-"
 
-#: src/frontends/qt/GuiKeySymbol.cpp:829
+#: src/frontends/qt/GuiKeySymbol.cpp:837
 msgid "Command-"
 msgstr "Befehl-"
 
@@ -35201,27 +35264,27 @@ msgstr "Quelltext-Vorschau"
 msgid "%1[[preview format name]] Preview"
 msgstr "%1-Vorschau"
 
-#: src/frontends/qt/GuiWorkArea.cpp:1527
+#: src/frontends/qt/GuiWorkArea.cpp:1541
 msgid "Close File"
 msgstr "Datei schließen"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2069
+#: src/frontends/qt/GuiWorkArea.cpp:2083
 msgid "%1 (read only)"
 msgstr "%1 (schreibgeschützt)"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2077
+#: src/frontends/qt/GuiWorkArea.cpp:2091
 msgid "%1 (modified externally)"
 msgstr "%1 (extern bearbeitet)"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2100
+#: src/frontends/qt/GuiWorkArea.cpp:2114
 msgid "Hide tab"
 msgstr "Unterfenster verstecken"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2106
+#: src/frontends/qt/GuiWorkArea.cpp:2120
 msgid "Close tab"
 msgstr "Unterfenster schließen"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2145
+#: src/frontends/qt/GuiWorkArea.cpp:2159
 msgid "<b>The file %1 changed on disk.</b>"
 msgstr "<b>Die Datei %1 wurde auf der Festplatte verändert.</b>"
 
@@ -35806,12 +35869,27 @@ msgstr ""
 "Der Status des Zweigs '%1$s' wurde im Hauptdokument geändert. Bitte denken "
 "Sie daran, das Hauptdokument zu speichern."
 
-#: src/insets/InsetCaption.cpp:419
+#: src/insets/InsetCaption.cpp:333
+msgid ""
+"Standard captions are not allowed outside floats. You will get a LaTeX "
+"error.\n"
+"For captions outside floats, you can use the 'nonfloat' LaTeX package."
+msgstr ""
+"Legenden sind normalerweise nur innerhalb von Gleitobjekten zugelassen. Sie "
+"werden eine LaTeX-Fehlermeldung bekommen.\n"
+"Wenn Sie Legenden außerhalb von Gleitobjekten verwenden wollen, können Sie "
+"das LaTeX-Paket 'nonfloat' verwenden."
+
+#: src/insets/InsetCaption.cpp:416
+msgid "Orphaned caption:"
+msgstr "Verwaiste Legende:"
+
+#: src/insets/InsetCaption.cpp:432
 #, c-format
 msgid "Sub-%1$s"
 msgstr "Unter-%1$s"
 
-#: src/insets/InsetCaption.cpp:443
+#: src/insets/InsetCaption.cpp:456
 #, c-format
 msgid "%1$s %2$s: [[Caption label (ex. Figure 1: )]]"
 msgstr "%1$s %2$s: "
@@ -37942,9 +38020,6 @@ msgstr "Unbekannter Benutzer"
 #~ msgid "VFill|F"
 #~ msgstr "Variabler vertik. Abstand|V"
 
-#~ msgid "Protected Hyphen|y"
-#~ msgstr "Geschützter Trennstrich|T"
-
 #~ msgid "Protected Space|P"
 #~ msgstr "Geschütztes Leerzeichen|G"
 
@@ -37969,7 +38044,6 @@ msgstr "Unbekannter Benutzer"
 #~ msgid "Protected Horizontal Fill"
 #~ msgstr "Geschützter variabler horiz. Abstand"
 
-#, c-format
 #~ msgid "Protected Horizontal Space (%1$s)"
 #~ msgstr "Geschützter horizontaler Abstand (%1$s)"
 
@@ -37979,9 +38053,6 @@ msgstr "Unbekannter Benutzer"
 #~ msgstr ""
 #~ "Wenn Sie dies deaktivieren, wird die Suche nur auf Vorkommen beschränkt, "
 #~ "die die den ausgewählten Text- und Absatzstil verwenden."
-
-#~ msgid "I&gnore format"
-#~ msgstr "Ignoriere For&mat"
 
 #~ msgid "foot"
 #~ msgstr "Fußnote"
@@ -38004,7 +38075,6 @@ msgstr "Unbekannter Benutzer"
 #~ msgid "Preferred &Language:"
 #~ msgstr "Bevorzugte S&prache:"
 
-#, c-format
 #~ msgid "Setting debug level to %1$s"
 #~ msgstr "Festlegen des Test-Levels auf %1$s"
 
