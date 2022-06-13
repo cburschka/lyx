@@ -85,6 +85,8 @@ private:
 	void addToToc(DocIterator const & di, bool output_active, UpdateType utype,
 	              TocBackend & backend) const override;
 	///
+	docstring toolTip(BufferView const & bv, int x, int y) const override;
+	///
 	bool forcePlainLayout(idx_type = 0) const override { return true; }
 	/// Captions don't accept alignment, spacing, etc.
 	bool allowParagraphCustomization(idx_type = 0) const override { return false; }
@@ -103,6 +105,8 @@ private:
 	bool is_subfloat_ = false;
 	///
 	bool is_deleted_ = false;
+	///
+	bool non_float_ = false;
 	///
 	std::string type_;
 };
