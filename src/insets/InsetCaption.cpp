@@ -331,8 +331,7 @@ docstring InsetCaption::toolTip(BufferView const & bv, int x, int y) const
 {
 	if (non_float_)
 		return _("Standard captions are not allowed outside floats. You will get a LaTeX error.\n"
-			 "For captions outside floats, please use the module 'Non-Floating Figures and Tables' "
-			 "from Document > Settings > Modules.");
+			 "For captions outside floats, you can use the 'nonfloat' LaTeX package.");
 	return InsetText::toolTip(bv, x, y);
 }
 
