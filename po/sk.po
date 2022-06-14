@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-06-12 15:45+0200\n"
-"PO-Revision-Date: 2022-06-12 13:47+0000\n"
+"POT-Creation-Date: 2022-06-14 17:49+0200\n"
+"PO-Revision-Date: 2022-06-14 16:04+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -19689,8 +19689,8 @@ msgstr "Horizontálny fantóm|H"
 msgid "Vertical Phantom|V"
 msgstr "Vertikálny fantóm|ó"
 
-#: lib/ui/stdcontext.inc:264 lib/ui/stdmenus.inc:454
-msgid "Normal Space|w"
+#: lib/ui/stdcontext.inc:264
+msgid "Normal Space|e"
 msgstr "Normálna medzera|m"
 
 #: lib/ui/stdcontext.inc:265
@@ -19726,12 +19726,12 @@ msgid "Non-Breaking Negative Thick Space (-5/18 em)|h"
 msgstr "Nerozbitná záporná tučná medzera (-5/18 em)|č"
 
 #: lib/ui/stdcontext.inc:273
-msgid "Half Quad Space (1/2 em)|k"
+msgid "Half Quad Space (1/2 em)|l"
 msgstr "Polovica štvorčeka (1/2 em)|i"
 
 # Chránená pološiroká medzera (Enspace)|k"
 #: lib/ui/stdcontext.inc:274
-msgid "Non-Breaking Half Quad Space (1/2 em)|E"
+msgid "Non-Breaking Half Quad Space (1/2 em)|k"
 msgstr "Nerozbitná polovica štvorčeka (1/2 em)|k"
 
 # Široká medzera|Š
@@ -19800,7 +19800,7 @@ msgid "Horizontal Fill (Rule)|R"
 msgstr "Horizontálna výplň (Línia)|í"
 
 #: lib/ui/stdcontext.inc:281
-msgid "Horizontal Fill (Left Arrow)|L"
+msgid "Horizontal Fill (Left Arrow)|w"
 msgstr "Horizontálna výplň (Šípka doľava)|ľ"
 
 #: lib/ui/stdcontext.inc:282
@@ -21065,7 +21065,7 @@ msgid "Subscript|u"
 msgstr "Dolný index|D"
 
 #: lib/ui/stdmenus.inc:455
-msgid "Non-breaking Normal Space|P"
+msgid "Non-breaking Normal Space|p"
 msgstr "Nerozbitná normálna medzera|t"
 
 #: lib/ui/stdmenus.inc:456
@@ -32743,15 +32743,15 @@ msgstr "Záporná tučná medzera (−5/18 em)"
 
 #: src/frontends/qt/GuiHSpace.cpp:51
 msgid "Half Quad (1/2 em)"
-msgstr "Pološiroká medzera (1/2 em)"
+msgstr "Polovica štvorčeka (1/2 em)"
 
 #: src/frontends/qt/GuiHSpace.cpp:52
 msgid "Quad (1 em)"
-msgstr "Široká medzera (1 em)"
+msgstr "Štvorček (1 em)"
 
 #: src/frontends/qt/GuiHSpace.cpp:53
 msgid "Double Quad (2 em)"
-msgstr "Dvojitá široká medzera (2 em)"
+msgstr "Dva štvorčeky (2 em)"
 
 #: src/frontends/qt/GuiHSpace.cpp:54 src/insets/InsetSpace.cpp:107
 msgid "Horizontal Fill"
@@ -32761,14 +32761,14 @@ msgstr "Horizontálna výplň"
 msgid "Visible Space"
 msgstr "Viditeľná medzera"
 
-#: src/frontends/qt/GuiHSpace.cpp:213
+#: src/frontends/qt/GuiHSpace.cpp:217
 msgid ""
 "Insert the spacing even after a line break.\n"
 "Note that a protected Half Quad will be turned into\n"
 "a vertical space if used at the beginning of a paragraph!"
 msgstr ""
 "Vložiť rozstup i za koniec riadku.\n"
-"Pozn. - chránená pološiroká medzera sa zmení na\n"
+"Pozn. - chránená polovica štvorčeka sa zmení na\n"
 "vertikálnu medzeru, keď bude použitá na začiatku odstavca!"
 
 #: src/frontends/qt/GuiHSpace.h:39
@@ -35348,6 +35348,20 @@ msgid ""
 msgstr ""
 "Štatus vetvy '%1$s v hlavnom dokumente sa zmenil. Zaistite uloženie hlavného "
 "dokument."
+
+#: src/insets/InsetCaption.cpp:333
+msgid ""
+"Standard captions are not allowed outside floats. You will get a LaTeX "
+"error.\n"
+"For captions outside floats, you can use the 'nonfloat' LaTeX package."
+msgstr ""
+"Štandardný popis sa mimo plávajúceho objektu nepripúšťa. LaTeX to dá ako "
+"chybu.\n"
+"Pre popisy mimo plávajúcich objektov sa môže použiť LaTeX-balík 'nonfloat'."
+
+#: src/insets/InsetCaption.cpp:416
+msgid "Orphaned caption:"
+msgstr "Osirelý popis:"
 
 #: src/insets/InsetCaption.cpp:423
 #, c-format
