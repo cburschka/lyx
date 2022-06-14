@@ -362,8 +362,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-06-13 09:09+0200\n"
-"PO-Revision-Date: 2022-06-13 09:46+0200\n"
+"POT-Creation-Date: 2022-06-13 18:39+0200\n"
+"PO-Revision-Date: 2022-06-14 15:37+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -3062,7 +3062,7 @@ msgstr "&Paquetage d'accentuation de la syntaxe :"
 #: src/frontends/qt/ui/ListingsUi.ui:14 lib/layouts/numreport.inc:37
 #: lib/layouts/stdcounters.inc:77 lib/layouts/stdinsets.inc:338
 #: lib/layouts/stdinsets.inc:344 lib/layouts/stdinsets.inc:393
-#: lib/layouts/stdinsets.inc:399 src/insets/InsetCaption.cpp:410
+#: lib/layouts/stdinsets.inc:399 src/insets/InsetCaption.cpp:423
 #: src/insets/InsetListings.cpp:612 src/insets/InsetListings.cpp:613
 msgid "Listing"
 msgstr "Listing"
@@ -10051,7 +10051,7 @@ msgid "Centered"
 msgstr "Centré"
 
 #: lib/layouts/apa.layout:285 lib/layouts/apax.inc:384
-#: lib/layouts/stdinsets.inc:690 src/insets/InsetCaption.cpp:436
+#: lib/layouts/stdinsets.inc:690 src/insets/InsetCaption.cpp:449
 msgid "standard"
 msgstr "standard"
 
@@ -20248,8 +20248,8 @@ msgid "Vertical Phantom|V"
 msgstr "Fantôme vertical|c"
 
 #: lib/ui/stdcontext.inc:264 lib/ui/stdmenus.inc:454
-msgid "Normal Space|w"
-msgstr "Espace normale|m"
+msgid "Normal Space|e"
+msgstr "Espace normale|e"
 
 #: lib/ui/stdcontext.inc:265
 msgid "Non-Breaking Normal Space|o"
@@ -20269,7 +20269,7 @@ msgstr "Espace moyenne insécable (2/9 em)|y"
 
 #: lib/ui/stdcontext.inc:269
 msgid "Non-Breaking Thick Space (5/18 em)|i"
-msgstr "Espace large insécable(5/18 em)|l"
+msgstr "Espace large insécable (5/18 em)|l"
 
 #: lib/ui/stdcontext.inc:270
 msgid "Non-Breaking Negative Thin Space (-1/6 em)|N"
@@ -20281,14 +20281,14 @@ msgstr "Espace moyenne négative insécable (−2/9 em)|v"
 
 #: lib/ui/stdcontext.inc:272
 msgid "Non-Breaking Negative Thick Space (-5/18 em)|h"
-msgstr "Espace large négative insécable (−5/18 em)a"
+msgstr "Espace large négative insécable (−5/18 em)|a"
 
 #: lib/ui/stdcontext.inc:273
-msgid "Half Quad Space (1/2 em)|k"
+msgid "Half Quad Space (1/2 em)|l"
 msgstr "Demi-cadratin (1/2 em)|D"
 
 #: lib/ui/stdcontext.inc:274
-msgid "Non-Breaking Half Quad Space (1/2 em)|E"
+msgid "Non-Breaking Half Quad Space (1/2 em)|k"
 msgstr "Espace insécable demi-cadratin (1/2 em)|r"
 
 #: lib/ui/stdcontext.inc:275
@@ -20313,10 +20313,10 @@ msgstr "Ressort horizontal (points)|p"
 
 #: lib/ui/stdcontext.inc:280
 msgid "Horizontal Fill (Rule)|R"
-msgstr "Ressort horizontal (filet)|e"
+msgstr "Ressort horizontal (filet)|h"
 
 #: lib/ui/stdcontext.inc:281
-msgid "Horizontal Fill (Left Arrow)|L"
+msgid "Horizontal Fill (Left Arrow)|w"
 msgstr "Ressort horizontal (flèche gauche)|g"
 
 #: lib/ui/stdcontext.inc:282
@@ -20325,7 +20325,7 @@ msgstr "Ressort horizontal (flèche droite)|è"
 
 #: lib/ui/stdcontext.inc:283
 msgid "Horizontal Fill (Up Brace)|p"
-msgstr "Ressort horizontal (accolade vers le haut)|h"
+msgstr "Ressort horizontal (accolade vers le haut)|v"
 
 #: lib/ui/stdcontext.inc:284
 msgid "Horizontal Fill (Down Brace)|B"
@@ -20333,7 +20333,7 @@ msgstr "Ressort horizontal (accolade vers le bas)|b"
 
 #: lib/ui/stdcontext.inc:285 lib/ui/stdcontext.inc:303
 msgid "Custom Length|C"
-msgstr "Dimension réglable|a"
+msgstr "Dimension réglable|s"
 
 #: lib/ui/stdcontext.inc:294
 msgid "Thin Space|T"
@@ -21534,7 +21534,7 @@ msgstr "Guillemet interne|i"
 
 #: lib/ui/stdmenus.inc:418
 msgid "Non-Breaking Hyphen|y"
-msgstr "Tiret insécable|i"
+msgstr "Tiret insécable|r"
 
 #: lib/ui/stdmenus.inc:419
 msgid "Breakable Slash|a"
@@ -21625,12 +21625,12 @@ msgid "Subscript|u"
 msgstr "Indice|I"
 
 #: lib/ui/stdmenus.inc:455
-msgid "Non-breaking Normal Space|P"
-msgstr "Espace normale insécable|o"
+msgid "Non-breaking Normal Space|p"
+msgstr "Espace normale insécable|n"
 
 #: lib/ui/stdmenus.inc:456
 msgid "Non-breaking Thin Space|T"
-msgstr "Espace fine insécable|é"
+msgstr "Espace fine insécable|f"
 
 #: lib/ui/stdmenus.inc:457
 msgid "Horizontal Space...|o"
@@ -28292,7 +28292,7 @@ msgstr ""
 "original %1$s est en lecture seule. Il faudra sauvegarder le document sous "
 "un autre nom."
 
-#: src/Buffer.cpp:5213 src/insets/InsetCaption.cpp:404
+#: src/Buffer.cpp:5213
 msgid "Senseless!!! "
 msgstr "Inapproprié !!! "
 
@@ -33773,19 +33773,19 @@ msgstr "Temps fixé :"
 msgid "Field Settings"
 msgstr "Paramètres du champ"
 
-#: src/frontends/qt/GuiKeySymbol.cpp:826
+#: src/frontends/qt/GuiKeySymbol.cpp:834
 msgid "Shift-"
 msgstr "Maj-"
 
-#: src/frontends/qt/GuiKeySymbol.cpp:827
+#: src/frontends/qt/GuiKeySymbol.cpp:835
 msgid "Control-"
 msgstr "Control-"
 
-#: src/frontends/qt/GuiKeySymbol.cpp:828
+#: src/frontends/qt/GuiKeySymbol.cpp:836
 msgid "Option-"
 msgstr "Option-"
 
-#: src/frontends/qt/GuiKeySymbol.cpp:829
+#: src/frontends/qt/GuiKeySymbol.cpp:837
 msgid "Command-"
 msgstr "Command-"
 
@@ -35452,27 +35452,27 @@ msgstr "Aperçu de code"
 msgid "%1[[preview format name]] Preview"
 msgstr "%1, aperçu"
 
-#: src/frontends/qt/GuiWorkArea.cpp:1527
+#: src/frontends/qt/GuiWorkArea.cpp:1541
 msgid "Close File"
 msgstr "Fermer le fichier"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2069
+#: src/frontends/qt/GuiWorkArea.cpp:2083
 msgid "%1 (read only)"
 msgstr "%1 (en lecture seule)"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2077
+#: src/frontends/qt/GuiWorkArea.cpp:2091
 msgid "%1 (modified externally)"
 msgstr "%1 (modifié par une application externe)"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2100
+#: src/frontends/qt/GuiWorkArea.cpp:2114
 msgid "Hide tab"
 msgstr "Cacher l'onglet"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2106
+#: src/frontends/qt/GuiWorkArea.cpp:2120
 msgid "Close tab"
 msgstr "Fermer l'onglet"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2145
+#: src/frontends/qt/GuiWorkArea.cpp:2159
 msgid "<b>The file %1 changed on disk.</b>"
 msgstr "<b>Le fichier %1 a changé sur le disque.</b>"
 
@@ -36054,12 +36054,27 @@ msgstr ""
 "L'état de la branche « %1$s » a été changé dans le document maître. Prenez "
 "soin de sauvegarder ce document maître."
 
-#: src/insets/InsetCaption.cpp:419
+#: src/insets/InsetCaption.cpp:333
+msgid ""
+"Standard captions are not allowed outside floats. You will get a LaTeX "
+"error.\n"
+"For captions outside floats, you can use the 'nonfloat' LaTeX package."
+msgstr ""
+"Les légendes usuelles ne sont pas admises hors des flottants. Vous aurez une "
+"erreur LaTeX.\n"
+"Pour insérer des légendes hors des flottants, vous pouvez utiliser le "
+"paquetage LaTeX « nonfloat »."
+
+#: src/insets/InsetCaption.cpp:416
+msgid "Orphaned caption:"
+msgstr "Légende oprpheline"
+
+#: src/insets/InsetCaption.cpp:432
 #, c-format
 msgid "Sub-%1$s"
 msgstr "Sous-%1$s"
 
-#: src/insets/InsetCaption.cpp:443
+#: src/insets/InsetCaption.cpp:456
 #, c-format
 msgid "%1$s %2$s: [[Caption label (ex. Figure 1: )]]"
 msgstr "%1$s %2$s :"
@@ -38159,6 +38174,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Utilisateur inconnu"
+
+#~ msgid "Normal Space|w"
+#~ msgstr "Espace normale|m"
 
 #~ msgid "Interword Space|w"
 #~ msgstr "Espace entre mots|t"

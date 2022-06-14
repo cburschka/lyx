@@ -451,8 +451,8 @@ Menuset
 		Item "Superscript|S" "script-insert superscript"
 		Item "Subscript|u" "script-insert subscript"
 		Separator
-		Item "Normal Space|w" "space-insert normal"
-		Item "Non-breaking Normal Space|P" "space-insert protected"
+		Item "Normal Space|e" "space-insert normal"
+		Item "Non-breaking Normal Space|p" "space-insert protected"
 		Item "Non-breaking Thin Space|T" "space-insert thin"
 		Item "Horizontal Space...|o" "command-alternatives dialog-show-new-inset space;dialog-show-new-inset mathspace"
 		Item "Horizontal Line...|L" "dialog-show-new-inset line"
