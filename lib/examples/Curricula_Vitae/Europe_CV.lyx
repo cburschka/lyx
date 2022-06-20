@@ -18,7 +18,7 @@
 \maintain_unincluded_children no
 \language english
 \language_package default
-\inputencoding utf8x
+\inputencoding utf8
 \fontencoding auto
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -39,6 +39,8 @@
 \output_sync 0
 \bibtex_command bibtex
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize 10
 \spacing single
 \use_hyperref false
