@@ -49,7 +49,7 @@ AC_MSG_CHECKING([for version suffix])
 dnl We need the literal double quotes in the rpm spec file
 RPM_VERSION_SUFFIX='""'
 AC_ARG_WITH(version-suffix,
-  [AS_HELP_STRING([--with-version-suffix@<:@=STR@:>@],[install lyx files as lyxSTR (default STR: -AC_PACKAGE_VERSION)])],
+  [AS_HELP_STRING([--with-version-suffix@<:@=STR@:>@], install lyx files as lyxSTR (default STR: -AC_PACKAGE_VERSION))],
   [if test "x$withval" = "xyes";
    then
      withval="-"AC_PACKAGE_VERSION

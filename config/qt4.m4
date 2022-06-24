@@ -179,7 +179,7 @@ AC_DEFUN([QT_DO_IT_ALL],
 	CPPFLAGS="$save_CPPFLAGS $QT_CORE_INCLUDES"
 	AC_CHECK_HEADER(QtGui/qtgui-config.h,
 	  [lyx_qt5_config=QtGui/qtgui-config.h],
-	  [lyx_qt5_config=qconfig.h],[-])
+	  [lyx_qt5_config=qconfig.h])
 	AC_MSG_CHECKING([whether Qt uses the X Window system])
 	if test x$USE_QT5 = xyes ; then
 	  AC_EGREP_CPP(xcb,
