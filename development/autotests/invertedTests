@@ -325,6 +325,11 @@ export/export/latex/unicodesymbols/008-greek-and-coptic_utf8x_pdf2
 # https://github.com/latex3/latex2e/issues/836#issuecomment-1160073486
 export/templates/Obsolete/.*American_Geophysical_Union.*_(lyx22|lyx23|pdf|dvi).*
 
+export/templates/Obsolete/.*American_Geophysical_Union.*_(lyx22|lyx23|pdf|dvi).*
+
+# Fails starting with microtype version v3.0e
+# https://github.com/schlcht/microtype/issues/21
+export/templates/Articles/Hebrew_Article_.*(dvi|pdf|pdf2|pdf3)
 
 # ================================================
 Sublabel: externalissues
