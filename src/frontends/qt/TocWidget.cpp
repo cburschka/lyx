@@ -366,7 +366,7 @@ void TocWidget::outline(FuncCode func_code)
 
 	//if another window is active, this attempt will fail,
 	//but it will work at least for the second attempt
-	gui_view_.activateWindow(); 
+	gui_view_.activateWindow();
 
 	enableControls(false);
 	goTo(list[0]);

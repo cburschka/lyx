@@ -419,17 +419,17 @@ private:
 	/**
 	 * Write a buffer to a new file name and rename the buffer
 	 * according to the new file name.
-	 * 
+	 *
 	 * This function is e.g. used by menu callbacks and
 	 * LFUN_BUFFER_WRITE_AS.
-	 * 
+	 *
 	 * If 'newname' is empty, the user is asked via a
 	 * dialog for the buffer's new name and location.
-	 * 
+	 *
 	 * If 'newname' is non-empty and has an absolute path, that is used.
 	 * Otherwise the base directory of the buffer is used as the base
 	 * for any relative path in 'newname'.
-	 * 
+	 *
 	 * \p kind controls what is done besides the pure renaming:
 	 * LV_WRITE_AS  => The buffer is written without version control actions.
 	 * LV_VC_RENAME => The file is renamed in version control.

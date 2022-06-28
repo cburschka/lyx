@@ -66,9 +66,9 @@ private:
 	void virtual hideEvent(QHideEvent *ev) override;
 
 	void hideDialog();
-	
+
 	void setFormatIgnores(bool const b);
-	
+
 	docstring const checkState(std::string const s, bool const b);
 
 protected Q_SLOTS:
