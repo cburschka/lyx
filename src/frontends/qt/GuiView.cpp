@@ -18,6 +18,7 @@
 #include "DialogFactory.h"
 #include "DispatchResult.h"
 #include "FileDialog.h"
+#include "FindAndReplace.h"
 #include "FontLoader.h"
 #include "GuiApplication.h"
 #include "GuiClickableLabel.h"
@@ -1864,6 +1865,17 @@ void GuiView::removeWorkArea(GuiWorkArea * wa)
 			setCurrentWorkArea(nullptr);
 		}
 	}
+}
+
+
+bool GuiView::hasVisibleWorkArea(GuiWorkArea * wa) const
+{
+	for (int i = 0; i < d.splitter_->count(); ++i)
+		if (d.tabWorkArea(i)->currentWorkArea() == wa)
+			return true;
+
+	FindAndReplace * fr = static_cast<FindAndReplace*>(find("findreplaceadv", false));
+	return fr->isVisible() && fr->hasWorkArea(wa);
 }
 
 
@@ -5034,7 +5046,7 @@ void GuiView::flatGroupBoxes(const QObject * widget, bool flag)
 }
 
 
-Dialog * GuiView::findOrBuild(string const & name, bool hide_it)
+Dialog * GuiView::find(string const & name, bool hide_it) const
 {
 	if (!isValidName(name))
 		return nullptr;
@@ -5046,8 +5058,17 @@ Dialog * GuiView::findOrBuild(string const & name, bool hide_it)
 			it->second->hideView();
 		return it->second.get();
 	}
+	return nullptr;
+}
 
-	Dialog * dialog = build(name);
+
+Dialog * GuiView::findOrBuild(string const & name, bool hide_it)
+{
+	Dialog * dialog = find(name, hide_it);
+	if (dialog != nullptr)
+		return dialog;
+
+	dialog = build(name);
 	d.dialogs_[name].reset(dialog);
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
 	// Force a uniform style for group boxes

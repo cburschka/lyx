@@ -721,6 +721,11 @@ void FindAndReplaceWidget::updateButtons()
 }
 
 
+bool FindAndReplaceWidget::hasWorkArea(GuiWorkArea * wa) const
+{
+	return wa == find_work_area_ || wa == replace_work_area_;
+}
+
 } // namespace frontend
 } // namespace lyx
 

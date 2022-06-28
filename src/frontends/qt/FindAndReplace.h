@@ -36,6 +36,9 @@ public:
 	void updateGUI();
 	void updateButtons();
 
+	// return true if \c wa is one if the adv. F&R workareas
+	bool hasWorkArea(GuiWorkArea * wa) const;
+
 public Q_SLOTS:
 	///
 	void dockLocationChanged(Qt::DockWidgetArea area);
@@ -97,6 +100,7 @@ public:
 	void dispatchParams() override {}
 	bool isBufferDependent() const override { return false; }
 	bool canApplyToReadOnly() const override { return true; }
+	bool hasWorkArea(GuiWorkArea * wa) const { return widget_->hasWorkArea(wa); }
 	void selectAll();
 
 	/// update

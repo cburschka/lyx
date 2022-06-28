@@ -380,7 +380,22 @@ void TocWidget::sendDispatch(FuncRequest fr)
 {
 
 	fr.setViewOrigin(&gui_view_);
+	GuiWorkArea * old_wa = gui_view_.currentWorkArea();
+	GuiWorkArea * doc_wa = gui_view_.currentMainWorkArea();
+	/* The ToC command should be dispatched to the document work area,
+	 * not the Adv. Find&Replace (which is the only other know
+	 * possibility.
+	 */
+	if (doc_wa != nullptr && doc_wa != old_wa)
+		gui_view_.setCurrentWorkArea(doc_wa);
 	DispatchResult const & dr = dispatch(fr);
+	/* If the current workarea has not explicitely changed, and the
+	 * original one is still visible, let's reset it.
+	 */
+	if (gui_view_.currentWorkArea() == doc_wa
+	     && gui_view_.hasVisibleWorkArea(old_wa)
+	     && doc_wa != old_wa)
+		gui_view_.setCurrentWorkArea(old_wa);
 	if (dr.error())
 		gui_view_.message(dr.message());
 }

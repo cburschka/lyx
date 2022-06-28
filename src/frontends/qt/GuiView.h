@@ -206,6 +206,8 @@ public:
 	void setCurrentWorkArea(GuiWorkArea * work_area);
 	///
 	void removeWorkArea(GuiWorkArea * work_area);
+	/// return true if \c wa is one of the visibles workareas of this view
+	bool hasVisibleWorkArea(GuiWorkArea * wa) const;
 	/// return the current WorkArea (the one that has the focus).
 	GuiWorkArea const * currentWorkArea() const;
 	/// return the current WorkArea (the one that has the focus).
@@ -471,6 +473,8 @@ private:
 
 	/// Is the dialog currently visible?
 	bool isDialogVisible(std::string const & name) const;
+	///
+	Dialog * find(std::string const & name, bool hide_it) const;
 	///
 	Dialog * findOrBuild(std::string const & name, bool hide_it);
 	///
