@@ -1275,13 +1275,16 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.undispatched();
 		break;
 	}
-	case LFUN_INSET_DISSOLVE:
-		if (!asHullInset()) {
+	case LFUN_INSET_DISSOLVE: {
+		bool const enabled = cur.inMathed()
+			&& (&cur.inset() != this || cur[cur.depth() - 1].inset().inMathed());
+		if (enabled) {
 			cur.recordUndoInset();
+			// FIXME: this loses data
 			cur.pullArg();
 		}
 		break;
-
+	}
 	case LFUN_MATH_LIMITS: {
 		InsetMath * in = 0;
 		if (cur.pos() < cur.lastpos() && cur.nextMath().allowsLimitsChange())
@@ -1497,10 +1500,13 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	}
 
-	case LFUN_INSET_DISSOLVE:
-		flag.setEnabled(!asHullInset());
+	case LFUN_INSET_DISSOLVE: {
+		// Do not dissolve a math inset which is in text
+		bool const enabled = cur.inMathed()
+			&& (&cur.inset() != this || cur[cur.depth() - 1].inset().inMathed());
+		flag.setEnabled(enabled);
 		break;
-
+	}
 	case LFUN_PASTE: {
 		docstring const & name = cmd.argument();
 		if (name == "html" || name == "latex")
