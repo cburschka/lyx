@@ -33,7 +33,7 @@ class FindAndReplaceWidget : public QTabWidget, public Ui::FindAndReplaceUi
 public:
 	FindAndReplaceWidget(GuiView & view);
 	bool initialiseParams(std::string const & params);
-	void updateGUI();
+	void updateWorkAreas();
 	void updateButtons();
 
 	// return true if \c wa is one if the adv. F&R workareas
