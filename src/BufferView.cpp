@@ -1089,8 +1089,6 @@ void BufferView::makeDocumentClass()
 
 void BufferView::updateDocumentClass(DocumentClassConstPtr olddc)
 {
-	message(_("Converting document to new document class..."));
-
 	StableDocIterator backcur(d->cursor_);
 	ErrorList & el = buffer_.errorList("Class Switch");
 	cap::switchBetweenClasses(
