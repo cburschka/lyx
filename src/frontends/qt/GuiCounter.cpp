@@ -143,10 +143,8 @@ bool GuiCounter::checkWidgets(bool readonly) const
 	counterCB->setEnabled(!readonly);
 	actionCB->setEnabled(!readonly);
 	valueSB->setEnabled(!readonly && (cmdIsSet || cmdIsAddTo));
-	if (cmdIsAddTo)
-		valueSB->setRange(-10000, 10000);
-	else
-		valueSB->setRange(0, 10000);
+	// enumi, for example, can be negative.
+	valueSB->setRange(-10000, 10000);
 
 	return InsetParamsWidget::checkWidgets() && !readonly &&
 			!counterCB->currentText().isEmpty() &&
