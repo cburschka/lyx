@@ -20,8 +20,8 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/lassert.h"
-#include "support/lstrings.h" // for breakString_helper with qt4
 #include "support/lyxlib.h"
+#include "support/textutils.h"
 
 #define DISABLE_PMPROF
 #include "support/pmprof.h"
@@ -411,7 +411,13 @@ TextLayoutHelper::TextLayoutHelper(docstring const & s, bool isrtl, bool naked)
 #endif
 
 	// Now translate the string character-by-character.
+	bool was_space = false;
 	for (char_type const c : s) {
+		// insert a word joiner character between consecutive spaces
+		bool const is_space = isSpace(c);
+		if (!naked && is_space && was_space)
+			qstr += word_joiner;
+		was_space = is_space;
 		// Remember the QString index at this point
 		pos2qpos_.push_back(qstr.size());
 		// Performance: UTF-16 characters are easier
@@ -599,27 +605,19 @@ GuiFontMetrics::breakString_helper(docstring const & s, int first_wid, int wid,
 		// If the line is not the last one, trailing space is always omitted.
 		int nspc_wid = wid;
 		// For the last line, compute the width without trailing space
-		if (i + 1 == tl.lineCount()) {
-			// trim_pos points to the last character that is not a space
-			auto trim_pos = s.find_last_not_of(from_ascii(" "));
-			if (trim_pos == docstring::npos)
-				nspc_wid = 0;
-			else if (trim_pos + 1 < s.length()) {
-				int const num_spaces = s.length() - trim_pos - 1;
-				// find the position on the line before trailing
-				// spaces. Remove 1 to account for the ending
-				// non-breaking space of qs.
-				nspc_wid = iround(line.cursorToX(line_epos - num_spaces - 1));
-			}
-		}
+		if (i + 1 == tl.lineCount() && !s.empty() && isSpace(s.back())
+		    && line.textStart() <= tlh.pos2qpos(s.size() - 1))
+			nspc_wid = iround(line.cursorToX(tlh.pos2qpos(s.size() - 1)));
 #else
 		// With some monospace fonts, the value of horizontalAdvance()
 		// can be wrong with Qt4. One hypothesis is that the invisible
 		// characters that we use are given a non-null width.
 		// FIXME: this is slower than it could be but we'll get rid of Qt4 anyway
-		docstring const ss = s.substr(pos, epos - pos);
+		docstring ss = s.substr(pos, epos - pos);
 		int const wid = width(ss);
-		int const nspc_wid = i + 1 < tl.lineCount() ? width(rtrim(ss)) : wid;
+		if (!ss.empty() && isSpace(ss.back()))
+			ss.pop_back();
+		int const nspc_wid = i + 1 < tl.lineCount() ? width(ss) : wid;
 #endif
 		breaks.emplace_back(epos - pos, wid, nspc_wid);
 		pos = epos;
