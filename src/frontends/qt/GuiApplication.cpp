@@ -553,7 +553,8 @@ QString getAlias(QString name) {
 	return name;
 }
 
-}
+} // namespace
+
 
 IconInfo iconInfo(FuncRequest const & f, bool unknown, bool rtl)
 {
