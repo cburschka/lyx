@@ -45,6 +45,15 @@ namespace frontend {
 
 namespace {
 
+// Simple wrapper around the LastCommand session stuff.
+
+// The whole last commands list
+vector<string> const & history() { return theSession().lastCommands().getcommands(); }
+
+// add command to the list (and remove duplicates)
+void addHistory(string const & cmd) { theSession().lastCommands().add(cmd); }
+
+
 class QTempListBox : public QListWidget {
 public:
 	QTempListBox() {
@@ -89,10 +98,6 @@ protected:
 GuiCommandBuffer::GuiCommandBuffer(GuiView * view)
 	: view_(view)
 {
-	for (auto const & name_code : lyxaction) {
-		commands_.push_back(name_code.first);
-	}
-
 	QPixmap qpup = getPixmap("images/", "up", "svgz,png");
 	QPixmap qpdown = getPixmap("images/", "down", "svgz,png");
 
@@ -141,26 +146,15 @@ GuiCommandBuffer::GuiCommandBuffer(GuiView * view)
 #endif
 	setFocusProxy(edit_);
 
-	LastCommandsSection::LastCommands last_commands
-		= theSession().lastCommands().getcommands();
-	LastCommandsSection::LastCommands::const_iterator it
-		= last_commands.begin();
-	LastCommandsSection::LastCommands::const_iterator end
-		= last_commands.end();
+	upPB->setEnabled(!history().empty());
 
-	upPB->setEnabled(it != end);
-
-	for(; it != end; ++it)
-		history_.push_back(*it);
-	history_pos_ = history_.end();
+	history_pos_ = history().end();
 }
 
 
 void GuiCommandBuffer::dispatch()
 {
 	std::string const cmd = fromqstr(edit_->text());
-	if (!cmd.empty())
-		theSession().lastCommands().add(cmd);
 	DispatchResult const & dr = dispatch(cmd);
 	if (!dr.error()) {
 		view_->setFocus();
@@ -174,13 +168,13 @@ void GuiCommandBuffer::dispatch()
 
 void GuiCommandBuffer::listHistoryUp()
 {
-	if (history_.size()==1) {
-		edit_->setText(toqstr(history_.back()));
+	if (history().size() == 1) {
+		edit_->setText(toqstr(history().back()));
 		upPB->setEnabled(false);
 		return;
 	}
 	QPoint const & pos = upPB->mapToGlobal(QPoint(0, 0));
-	showList(history_, pos, true);
+	showList(history(), pos, true);
 }
 
 
@@ -208,13 +202,11 @@ void GuiCommandBuffer::showList(vector<string> const & list,
 
 	// For some reason the scrollview's contents are larger
 	// than the number of actual items...
-	vector<string>::const_iterator cit = list.begin();
-	vector<string>::const_iterator end = list.end();
-	for (; cit != end; ++cit) {
+	for (auto const & item : list) {
 		if (reversed)
-			listBox->insertItem(0, toqstr(*cit));
+			listBox->insertItem(0, toqstr(item));
 		else
-			listBox->addItem(toqstr(*cit));
+			listBox->addItem(toqstr(item));
 	}
 
 	listBox->resize(listBox->sizeHint());
@@ -249,8 +241,8 @@ void GuiCommandBuffer::up()
 	if (!h.empty())
 		edit_->setText(toqstr(h));
 
-	upPB->setEnabled(history_pos_ != history_.begin());
-	downPB->setEnabled(history_pos_ != history_.end());
+	upPB->setEnabled(history_pos_ != history().begin());
+	downPB->setEnabled(history_pos_ != history().end());
 }
 
 
@@ -261,9 +253,9 @@ void GuiCommandBuffer::down()
 	if (!h.empty())
 		edit_->setText(toqstr(h));
 
-	downPB->setEnabled(!history_.empty()
-			   && history_pos_ != history_.end() - 1);
-	upPB->setEnabled(history_pos_ != history_.begin());
+	downPB->setEnabled(!history().empty()
+			   && history_pos_ != history().end() - 1);
+	upPB->setEnabled(history_pos_ != history().begin());
 }
 
 
@@ -278,7 +270,7 @@ void GuiCommandBuffer::hideParent()
 
 string const GuiCommandBuffer::historyUp()
 {
-	if (history_pos_ == history_.begin())
+	if (history_pos_ == history().begin())
 		return string();
 
 	return *(--history_pos_);
@@ -287,9 +279,9 @@ string const GuiCommandBuffer::historyUp()
 
 string const GuiCommandBuffer::historyDown()
 {
-	if (history_pos_ == history_.end())
+	if (history_pos_ == history().end())
 		return string();
-	if (history_pos_ + 1 == history_.end())
+	if (history_pos_ + 1 == history().end())
 		return string();
 
 	return *(++history_pos_);
@@ -300,9 +292,9 @@ vector<string> const
 GuiCommandBuffer::completions(string const & prefix, string & new_prefix)
 {
 	vector<string> comp;
-	for (auto const & cmd : commands_) {
-		if (prefixIs(cmd, prefix))
-			comp.push_back(cmd);
+	for (auto const & act : lyxaction) {
+		if (prefixIs(act.first, prefix))
+			comp.push_back(act.first);
 	}
 
 	if (comp.empty()) {
@@ -345,10 +337,10 @@ DispatchResult const & GuiCommandBuffer::dispatch(string const & str)
 		return empty_dr;
 	}
 
-	history_.push_back(trim(str));
-	history_pos_ = history_.end();
-	upPB->setEnabled(history_pos_ != history_.begin());
-	downPB->setEnabled(history_pos_ != history_.end());
+	addHistory(trim(str));
+	history_pos_ = history().end();
+	upPB->setEnabled(history_pos_ != history().begin());
+	downPB->setEnabled(history_pos_ != history().end());
 	FuncRequest func = lyxaction.lookupFunc(str);
 	func.setOrigin(FuncRequest::COMMANDBUFFER);
 	return lyx::dispatch(func);

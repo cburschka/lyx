@@ -408,6 +408,11 @@ void LastCommandsSection::setNumberOfLastCommands(unsigned int no)
 
 void LastCommandsSection::add(std::string const & command)
 {
+	// remove traces of 'command' in history using the erase-remove idiom
+	//   https://en.wikipedia.org/wiki/Erase%E2%80%93remove_idiom
+	lastcommands.erase(remove(lastcommands.begin(), lastcommands.end(), command),
+	                   lastcommands.end());
+	// add it at the end of the list.
 	lastcommands.push_back(command);
 }
 
