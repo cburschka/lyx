@@ -1794,7 +1794,6 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			asArray(label, ar);
 			if (grid.asHullInset()) {
 				grid.asHullInset()->label(cellrow, label);
-				grid.asHullInset()->numbered(cellrow, true);
 			} else {
 				cell->push_back(createInsetMath(t.cs(), buf));
 				cell->push_back(MathAtom(new InsetMathBrace(ar)));

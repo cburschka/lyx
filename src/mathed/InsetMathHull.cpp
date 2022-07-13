@@ -520,9 +520,9 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 		int extra_offset = 0;
 		for (row_type row = 0; row < nrows(); ++row) {
 			rowinfo(row).offset[mi.base.bv] += extra_offset;
-			if (!numbered(row))
-				continue;
 			docstring const nl = nicelabel(row);
+			if (nl.empty())
+				continue;
 			Dimension dimnl;
 			mathed_string_dim(mi.base.font, nl, dimnl);
 			int const ind = indent(*mi.base.bv);
@@ -925,10 +925,6 @@ void InsetMathHull::label(row_type row, docstring const & label)
 void InsetMathHull::numbered(row_type row, Numbered num)
 {
 	numbered_[row] = num;
-	if (!numbered(row) && label_[row]) {
-		delete label_[row];
-		label_[row] = 0;
-	}
 }
 
 
@@ -1377,8 +1373,11 @@ void InsetMathHull::delCol(col_type col)
 
 docstring InsetMathHull::nicelabel(row_type row) const
 {
-	if (!numbered(row))
-		return docstring();
+	if (!numbered(row)) {
+		if (!label_[row])
+			return docstring();
+		return '[' + label_[row]->screenLabel() + ']';
+	}
 	docstring const & val = numbers_[row];
 	if (!label_[row])
 		return '(' + val + ')';
@@ -1686,7 +1685,7 @@ docstring InsetMathHull::eolString(row_type row, bool fragile, bool latex,
 {
 	docstring res;
 	if (numberedType()) {
-		if (label_[row] && numbered(row)) {
+		if (label_[row]) {
 			docstring const name =
 				latex ? escape(label_[row]->getParam("name"))
 				      : label_[row]->getParam("name");
@@ -1908,7 +1907,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 			// if there is an argument, find the corresponding label, else
 			// check whether there is at least one label.
 			for (row = 0; row != nrows(); ++row)
-				if (numbered(row) && label_[row]
+				if (label_[row]
 					  && (cmd.argument().empty() || label(row) == cmd.argument()))
 					break;
 		}
@@ -2111,12 +2110,12 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 			// if there is no argument and we're inside math, we retrieve
 			// the row number from the cursor position.
 			row_type row = (type_ == hullMultline) ? nrows() - 1 : cur.row();
-			enabled = numberedType() && label_[row] && numbered(row);
+			enabled = numberedType() && label_[row];
 		} else {
 			// if there is an argument, find the corresponding label, else
 			// check whether there is at least one label.
 			for (row_type row = 0; row != nrows(); ++row) {
-				if (numbered(row) && label_[row] &&
+				if (label_[row] &&
 					(cmd.argument().empty() || label(row) == cmd.argument())) {
 						enabled = true;
 						break;
