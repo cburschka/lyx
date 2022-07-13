@@ -527,6 +527,16 @@ QString themeIconName(QString const & action)
 
 namespace {
 
+/* Get aliases for icon name. This allows to avoid duplication of
+ * icons when new versions of functions are introduced for the
+ * toolbar. A good example is the introduction of layout-toggle in
+ * #9864.
+ * The file is parsed by Lexer. Each line is of the form
+ *     <original substring> <replacement substring>
+ *
+ * The return value is another icon file name that can be queried.
+ */
+// FIXME: consider using regular expressions.
 QString getAlias(QString name) {
 	static bool has_aliases = false;
 	static vector <pair<QString,QString>> aliases;
