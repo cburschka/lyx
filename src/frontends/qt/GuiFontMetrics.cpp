@@ -39,25 +39,14 @@
 using namespace std;
 using namespace lyx::support;
 
-/* Define what mechanism is used to enforce text direction. Different
- * methods work with different Qt versions. Here we try to use both
- * methods together.
+/* Define what mechanisms are used to enforce text direction. There
+ * are two methods that work with different Qt versions. Here we try
+ * to use both methods together.
  */
 // Define to use unicode override characters to force direction
 #define BIDI_USE_OVERRIDE
-// Define to use flag to force direction
+// Define to use QTextLayout flag to force direction
 #define BIDI_USE_FLAG
-
-#ifdef BIDI_USE_OVERRIDE
-# define BIDI_OFFSET 1
-/* Unicode override characters enforce drawing direction
- * Source: http://www.iamcal.com/understanding-bidirectional-text/
- * Right-to-left override is 0x202e and left-to-right override is 0x202d.
- */
-QChar const bidi_override[2] = {0x202d, 0x202e};
-#else
-# define BIDI_OFFSET 0
-#endif
 
 #if !defined(BIDI_USE_OVERRIDE) && !defined(BIDI_USE_FLAG)
 #  error "Define at least one of BIDI_USE_OVERRIDE or BIDI_USE_FLAG"
@@ -404,8 +393,12 @@ TextLayoutHelper::TextLayoutHelper(docstring const & s, bool isrtl, bool naked)
 		qstr += word_joiner;
 
 #ifdef BIDI_USE_OVERRIDE
+	/* Unicode override characters enforce drawing direction
+	 * Source: http://www.iamcal.com/understanding-bidirectional-text/
+	 * Left-to-right override is 0x202d and right-to-left override is 0x202e.
+	 */
 	if (!naked)
-		qstr += bidi_override[rtl];
+		qstr += QChar(rtl ? 0x202e : 0x202d);
 #endif
 
 	// Now translate the string character-by-character.
@@ -498,25 +491,20 @@ GuiFontMetrics::getTextLayout(docstring const & s, bool const rtl,
 int GuiFontMetrics::pos2x(docstring const & s, int pos, bool const rtl,
                           double const wordspacing) const
 {
-	if (pos <= 0)
-		pos = 0;
-	shared_ptr<QTextLayout const> tl = getTextLayout(s, rtl, wordspacing);
-	/* Since QString is UTF-16 and docstring is UCS-4, the offsets may
-	 * not be the same when there are high-plan unicode characters
-	 * (bug #10443).
-	 */
-	// BIDI_OFFSET accounts for a possible direction override
-	// character in front of the string.
-	int const qpos = toqstr(s.substr(0, pos)).length() + BIDI_OFFSET;
-	return static_cast<int>(tl->lineForTextPosition(qpos).cursorToX(qpos));
+	TextLayoutHelper tlh(s, rtl);
+	auto ptl = getTextLayout(tlh, wordspacing);
+	// pos can be negative, see #10506.
+	int const qpos = tlh.pos2qpos(max(pos, 0));
+	return static_cast<int>(ptl->lineForTextPosition(qpos).cursorToX(qpos));
 }
 
 
 int GuiFontMetrics::x2pos(docstring const & s, int & x, bool const rtl,
                           double const wordspacing) const
 {
-	shared_ptr<QTextLayout const> tl = getTextLayout(s, rtl, wordspacing);
-	QTextLine const & tline = tl->lineForTextPosition(0);
+	TextLayoutHelper tlh(s, rtl);
+	auto ptl = getTextLayout(tlh, wordspacing);
+	QTextLine const & tline = ptl->lineForTextPosition(0);
 	int qpos = tline.xToCursor(x);
 	int newx = static_cast<int>(tline.cursorToX(qpos));
 	// The value of qpos may be wrong in rtl text (see ticket #10569).
@@ -544,31 +532,7 @@ int GuiFontMetrics::x2pos(docstring const & s, int & x, bool const rtl,
 	// correct x value to the actual cursor position.
 	x = newx;
 
-	/* Since QString is UTF-16 and docstring is UCS-4, the offsets may
-	 * not be the same when there are high-plan unicode characters
-	 * (bug #10443).
-	 */
-#if QT_VERSION < 0x040801 || QT_VERSION >= 0x050100
-	int pos = qstring_to_ucs4(tl->text().left(qpos)).length();
-	// there may be a direction override character in front of the string.
-	return max(pos - BIDI_OFFSET, 0);
-#else
-	/* Due to QTBUG-25536 in 4.8.1 <= Qt < 5.1.0, the string returned
-	 * by QString::toUcs4 (used by qstring_to_ucs4) may have wrong
-	 * length. We work around the problem by trying all docstring
-	 * positions until the right one is found. This is slow only if
-	 * there are many high-plane Unicode characters. It might be
-	 * worthwhile to implement a dichotomy search if this shows up
-	 * under a profiler.
-	 */
-	// there may be a direction override character in front of the string.
-	qpos = max(qpos - BIDI_OFFSET, 0);
-	int pos = min(qpos, static_cast<int>(s.length()));
-	while (pos >= 0 && toqstr(s.substr(0, pos)).length() != qpos)
-		--pos;
-	LASSERT(pos > 0 || qpos == 0, /**/);
-	return pos;
-#endif
+	return tlh.qpos2pos(qpos);
 }
 
 
