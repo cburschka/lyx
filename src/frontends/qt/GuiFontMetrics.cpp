@@ -352,8 +352,6 @@ uint qHash(TextLayoutKey const & key)
 }
 
 
-namespace {
-
 // This holds a translation table between the original string and the
 // QString that we can use with QTextLayout.
 struct TextLayoutHelper
@@ -438,7 +436,48 @@ TextLayoutHelper::TextLayoutHelper(docstring const & s, bool isrtl, bool naked)
 	//LYXERR0("TLH: " << dump.replace(word_joiner, "|").toStdString());
 }
 
+
+namespace {
+
+shared_ptr<QTextLayout>
+getTextLayout_helper(TextLayoutHelper const & tlh, double const wordspacing,
+                     QFont font)
+{
+	auto const ptl = make_shared<QTextLayout>();
+	ptl->setCacheEnabled(true);
+	font.setWordSpacing(wordspacing);
+	ptl->setFont(font);
+#ifdef BIDI_USE_FLAG
+	/* Use undocumented flag to enforce drawing direction
+	 * FIXME: This does not work with Qt 5.11 (ticket #11284).
+	 */
+	ptl->setFlags(tlh.rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
+#endif
+	ptl->setText(tlh.qstr);
+
+	ptl->beginLayout();
+	ptl->createLine();
+	ptl->endLayout();
+
+	return ptl;
 }
+
+}
+
+shared_ptr<QTextLayout const>
+GuiFontMetrics::getTextLayout(TextLayoutHelper const & tlh,
+                              double const wordspacing) const
+{
+	PROFILE_THIS_BLOCK(getTextLayout_TLH);
+	TextLayoutKey key{tlh.docstr, tlh.rtl, wordspacing};
+	if (auto ptl = qtextlayout_cache_[key])
+		return ptl;
+	PROFILE_CACHE_MISS(getTextLayout_TLH);
+	auto const ptl = getTextLayout_helper(tlh, wordspacing, font_);
+	qtextlayout_cache_.insert(key, ptl);
+	return ptl;
+}
+
 
 shared_ptr<QTextLayout const>
 GuiFontMetrics::getTextLayout(docstring const & s, bool const rtl,
@@ -449,28 +488,8 @@ GuiFontMetrics::getTextLayout(docstring const & s, bool const rtl,
 	if (auto ptl = qtextlayout_cache_[key])
 		return ptl;
 	PROFILE_CACHE_MISS(getTextLayout);
-	auto const ptl = make_shared<QTextLayout>();
-	ptl->setCacheEnabled(true);
-	QFont copy = font_;
-	copy.setWordSpacing(wordspacing);
-	ptl->setFont(copy);
-
-#ifdef BIDI_USE_FLAG
-	/* Use undocumented flag to enforce drawing direction
-	 * FIXME: This does not work with Qt 5.11 (ticket #11284).
-	 */
-	ptl->setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
-#endif
-
-#ifdef BIDI_USE_OVERRIDE
-	ptl->setText(bidi_override[rtl] + toqstr(s));
-#else
-	ptl->setText(toqstr(s));
-#endif
-
-	ptl->beginLayout();
-	ptl->createLine();
-	ptl->endLayout();
+	TextLayoutHelper tlh(s, rtl);
+	auto const ptl = getTextLayout_helper(tlh, wordspacing, font_);
 	qtextlayout_cache_.insert(key, ptl);
 	return ptl;
 }
