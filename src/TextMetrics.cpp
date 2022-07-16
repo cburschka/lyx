@@ -1059,7 +1059,7 @@ void cleanupRow(Row & row, bool at_end)
 	if (!at_end && !row.flushed())
 		row.back().rtrim();
 	// boundary exists when there was no space at the end of row
-	row.right_boundary(!at_end && row.back().endpos == row.endpos());
+	row.end_boundary(!at_end && row.back().endpos == row.endpos());
 	// make sure that the RTL elements are in reverse ordering
 	row.reverseRTL();
 }
@@ -1368,7 +1368,7 @@ pos_type TextMetrics::getPosNearX(Row const & row, int & x,
 		              || inset->lyxCode() == SEPARATOR_CODE))
 			pos = row.back().pos;
 		else
-			boundary = row.right_boundary();
+			boundary = row.end_boundary();
 	}
 
 	x += xo - offset;

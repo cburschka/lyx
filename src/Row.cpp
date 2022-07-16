@@ -336,7 +336,7 @@ ostream & operator<<(ostream & os, Row const & row)
 	   << " descent: " << row.dim_.des
 	   << " separator: " << row.separator
 	   << " label_hfill: " << row.label_hfill
-	   << " right_boundary: " << row.right_boundary()
+	   << " end_boundary: " << row.end_boundary()
 	   << " flushed: " << row.flushed() << "\n";
 	// We cannot use the operator above, unfortunately
 	double x = row.left_margin;
