@@ -4012,6 +4012,8 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 					       runparams, i);
 			if (c == ' ' && (style.free_spacing || runparams.free_spacing))
 				xs << XMLStream::ESCAPE_NONE << "&nbsp;";
+			else if (c == '\'')
+				xs << XMLStream::ESCAPE_NONE << "&#8217;";
 			else
 				xs << c;
 		}
