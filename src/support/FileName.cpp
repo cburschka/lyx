@@ -812,6 +812,19 @@ void FileName::changeExtension(string const & extension)
 }
 
 
+void FileName::ensureExtension(string const & extension)
+{
+	string ext;
+	// Make sure the extension starts with a dot
+	if (!extension.empty() && extension[0] != '.')
+		ext= '.' + extension;
+	else
+		ext = extension;
+	if (!suffixIs(ascii_lowercase(absFileName()), ext))
+		set(absFileName() + ext);
+}
+
+
 docstring const FileName::relPath(string const & path) const
 {
 	// FIXME UNICODE

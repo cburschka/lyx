@@ -177,6 +177,9 @@ public:
 	*/
 	void changeExtension(std::string const & extension);
 
+	/// Add extension to the file name if it is not already there
+	void ensureExtension(std::string const & extension);
+
 	static FileName fromFilesystemEncoding(std::string const & name);
 
 	/// get the current working directory

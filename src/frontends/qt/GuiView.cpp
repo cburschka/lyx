@@ -3080,8 +3080,7 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname, RenameKind kin
 		dlg.setButton1(qt_("D&ocuments"), toqstr(lyxrc.document_path));
 		dlg.setButton2(qt_("&Templates"), toqstr(lyxrc.template_path));
 
-		if (!isLyXFileName(fname.absFileName()))
-			fname.changeExtension(".lyx");
+		fname.ensureExtension(".lyx");
 
 		string const path = as_template ?
 					getTemplatesPath(b)
@@ -3099,8 +3098,7 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname, RenameKind kin
 		if (fname.empty())
 			return false;
 
-		if (!isLyXFileName(fname.absFileName()))
-			fname.changeExtension(".lyx");
+		fname.ensureExtension(".lyx");
 	}
 
 	// fname is now the new Buffer location.
@@ -3247,6 +3245,8 @@ bool GuiView::exportBufferAs(Buffer & b, docstring const & iformat)
 
 	if (fmt_name.empty() || fname.empty())
 		return false;
+
+	fname.ensureExtension(theFormats().extension(fmt_name));
 
 	// fname is now the new Buffer location.
 	if (fname.exists()) {
