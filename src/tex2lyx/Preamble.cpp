@@ -2174,16 +2174,16 @@ void Preamble::parse(Parser & p, string const & forceclass,
 	if (detectEncoding && !is_full_document)
 		return;
 
+	// Force textclass if the user wanted it
+	if (!forceclass.empty()) {
+		setTextClass(forceclass, tc);
+		class_set = true;
+	}
+
 	while (is_full_document && p.good()) {
 		if (detectEncoding && h_inputencoding != "auto-legacy" &&
 		    h_inputencoding != "auto-legacy-plain")
 			return;
-
-		// Force textclass if the user wanted it
-		if (!forceclass.empty()) {
-			setTextClass(forceclass, tc);
-			class_set = true;
-		}
 
 		Token const & t = p.get_token();
 
