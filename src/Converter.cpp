@@ -15,6 +15,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "ConverterCache.h"
+#include "TextClass.h"
 #include "Encoding.h"
 #include "ErrorList.h"
 #include "Format.h"
@@ -58,6 +59,8 @@ string const token_to("$$o");
 string const token_path("$$p");
 string const token_orig_path("$$r");
 string const token_orig_from("$$f");
+string const token_textclass("$$c");
+string const token_modules("$$m");
 string const token_encoding("$$e");
 string const token_latex_encoding("$$E");
 string const token_python("$${python}");
@@ -472,7 +475,7 @@ Converters::RetVal Converters::convert(Buffer const * buffer,
 		return FAILURE;
 	}
 
-	// buffer is only invalid for importing, and then runparams is not
+	// buffer can only be null for importing, and then runparams is not
 	// used anyway.
 	OutputParams runparams(buffer ? &buffer->params().encoding() : nullptr);
 	runparams.flavor = getFlavor(edgepath, buffer);
@@ -649,7 +652,15 @@ Converters::RetVal Converters::convert(Buffer const * buffer,
 			command = subst(command, token_path, quoteName(onlyPath(infile.absFileName())));
 			command = subst(command, token_orig_path, quoteName(onlyPath(orig_from.absFileName())));
 			command = subst(command, token_orig_from, quoteName(onlyFileName(orig_from.absFileName())));
-			command = subst(command, token_encoding, buffer ? buffer->params().encoding().iconvName() : string());
+			command = subst(command, token_textclass,
+			                buffer ? quoteName(buffer->params().documentClass().name())
+			                       : string());
+			command = subst(command, token_modules,
+			                buffer ? quoteName(buffer->params().getModules().asString())
+			                       : string());
+			command = subst(command, token_encoding,
+			                buffer ? quoteName(buffer->params().encoding().iconvName())
+			                       : string());
 			command = subst(command, token_python, os::python());
 
 			if (!conv.parselog().empty())

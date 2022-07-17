@@ -1145,7 +1145,7 @@ bool Buffer::importFile(string const & format, FileName const & name, ErrorList 
 
 	FileName const lyx = tempFileName("Buffer_importFileXXXXXX.lyx");
 	Converters::RetVal const retval =
-		theConverters().convert(nullptr, name, lyx, name, format, "lyx", errorList);
+		theConverters().convert(this, name, lyx, name, format, "lyx", errorList);
 	if (retval == Converters::SUCCESS) {
 		bool const success = readFile(lyx) == ReadSuccess;
 		removeTempFile(lyx);

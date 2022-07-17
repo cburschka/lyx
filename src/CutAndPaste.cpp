@@ -1299,6 +1299,7 @@ bool pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs,
 				Buffer buffer(string(), false);
 				buffer.setInternal(true);
 				buffer.setUnnamed(true);
+				buffer.params() = cur.buffer()->params();
 				available = buffer.importString(names[i], text, errorList);
 				if (available)
 					available = !buffer.paragraphs().empty();
