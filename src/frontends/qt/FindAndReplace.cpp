@@ -21,6 +21,9 @@
 #include "BufferView.h"
 #include "Cursor.h"
 #include "FuncRequest.h"
+#include "FuncStatus.h"
+#include "KeyMap.h"
+#include "KeySequence.h"
 #include "Language.h"
 #include "LyX.h"
 #include "lyxfind.h"
@@ -113,8 +116,11 @@ bool FindAndReplaceWidget::eventFilter(QObject * obj, QEvent * event)
 	}
 
 	case Qt::Key_Tab:
-		if (e->modifiers() == Qt::NoModifier) {
-			if (obj == find_work_area_){
+		if (e->modifiers() == Qt::NoModifier && obj == find_work_area_){
+			KeySequence seq;
+			seq.parse("Tab");
+			FuncRequest func = theTopLevelKeymap().getBinding(seq);
+			if (!getStatus(func).enabled()) {
 				LYXERR(Debug::FINDVERBOSE, "Focusing replace WA");
 				replace_work_area_->setFocus();
 				LYXERR(Debug::FINDVERBOSE, "Selecting entire replace buffer");
@@ -127,12 +133,17 @@ bool FindAndReplaceWidget::eventFilter(QObject * obj, QEvent * event)
 
 	case Qt::Key_Backtab:
 		if (obj == replace_work_area_) {
-			LYXERR(Debug::FINDVERBOSE, "Focusing find WA");
-			find_work_area_->setFocus();
-			LYXERR(Debug::FINDVERBOSE, "Selecting entire find buffer");
-			dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
-			dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
-			return true;
+			KeySequence seq;
+			seq.parse("~S-BackTab");
+			FuncRequest func = theTopLevelKeymap().getBinding(seq);
+			if (!getStatus(func).enabled()) {
+				LYXERR(Debug::FINDVERBOSE, "Focusing find WA");
+				find_work_area_->setFocus();
+				LYXERR(Debug::FINDVERBOSE, "Selecting entire find buffer");
+				dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
+				dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
+				return true;
+			}
 		}
 		break;
 
