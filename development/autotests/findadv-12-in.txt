@@ -2,6 +2,10 @@
 # again the search pattern, should not result in a double replacement
 # (#7442)
 #
+UnuseShortcut "Tab" "command-alternatives completion-accept;cell-forward;tab-insert;outline-in;depth-increment"
+
+PrepareShortcuts
+
 Lang sk_SK.utf8
 CO: findadv-12.ctrl
 TestBegin test.lyx -dbg key,find > findadv-12.loga.txt 2>&1
