@@ -3183,13 +3183,17 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FLEX_INSERT: {
 		code = FLEX_CODE;
 		string s = cmd.getArg(0);
-		InsetLayout il =
-			cur.buffer()->params().documentClass().insetLayout(from_utf8(s));
-		if (il.lyxtype() != InsetLyXType::CHARSTYLE &&
-		    il.lyxtype() != InsetLyXType::CUSTOM &&
-		    il.lyxtype ()!= InsetLyXType::STANDARD)
+		if (!cur.buffer()->params().documentClass().hasInsetLayout(from_utf8(s)))
 			enable = false;
-		break;
+		else {
+			InsetLayout il =
+				cur.buffer()->params().documentClass().insetLayout(from_utf8(s));
+			if (il.lyxtype() != InsetLyXType::CHARSTYLE &&
+				il.lyxtype() != InsetLyXType::CUSTOM &&
+				il.lyxtype ()!= InsetLyXType::STANDARD)
+				enable = false;
+		}
+			break;
 		}
 	case LFUN_BOX_INSERT:
 		code = BOX_CODE;
