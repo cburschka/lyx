@@ -142,17 +142,23 @@ void GuiToolbar::setVisibility(int visibility)
 }
 
 
-Action * GuiToolbar::addItem(ToolbarItem const & item)
+Action * GuiToolbar::addItem(ToolbarItem const & item, bool menu)
 {
 	QString text = toqstr(item.label);
+	QString tooltip = text;
 	// Get the keys bound to this action, but keep only the
 	// first one later
 	KeyMap::Bindings bindings = theTopLevelKeymap().findBindings(*item.func);
-	if (!bindings.empty())
-		text += " [" + toqstr(bindings.begin()->print(KeySequence::ForGui)) + "]";
+	if (!bindings.empty()) {
+		QString binding = toqstr(bindings.begin()->print(KeySequence::ForGui));
+		if (menu)
+			text += '\t' + binding;
+		else
+			tooltip += " [" + binding + "]";
+	}
 
 	Action * act = new Action(item.func, getIcon(*item.func, false), text,
-							  text, this);
+	                          tooltip, this);
 	if (item.type == ToolbarItem::BIDICOMMAND)
 		act->setRtlIcon(getIcon(*item.func, false, true));
 
@@ -277,7 +283,7 @@ void StaticMenuButton::initialize()
 	ToolbarInfo::item_iterator const end = tbinfo->items.end();
 	for (; it != end; ++it)
 		if (!getStatus(*it->func).unknown())
-			m->add(bar_->addItem(*it));
+			m->add(bar_->addItem(*it, true));
 	setMenu(m);
 }
 
