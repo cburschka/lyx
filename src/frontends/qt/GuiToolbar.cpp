@@ -149,10 +149,10 @@ Action * GuiToolbar::addItem(ToolbarItem const & item)
 	// first one later
 	KeyMap::Bindings bindings = theTopLevelKeymap().findBindings(*item.func);
 	if (!bindings.empty())
-		text += '\t' + toqstr(bindings.begin()->print(KeySequence::ForGui));
+		text += " [" + toqstr(bindings.begin()->print(KeySequence::ForGui)) + "]";
 
 	Action * act = new Action(item.func, getIcon(*item.func, false), text,
-	                          QString(), this);
+							  text, this);
 	if (item.type == ToolbarItem::BIDICOMMAND)
 		act->setRtlIcon(getIcon(*item.func, false, true));
 
