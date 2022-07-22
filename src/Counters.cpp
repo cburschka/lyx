@@ -421,6 +421,16 @@ void Counters::reset(docstring const & match)
 }
 
 
+bool Counters::copy(docstring const & cnt, docstring const & newcnt)
+{
+	auto const it =	counterList_.find(cnt);
+	if (it == counterList_.end())
+		return false;
+	counterList_[newcnt] = it->second;
+	return true;
+}
+
+
 bool Counters::remove(docstring const & cnt)
 {
 	bool retval = counterList_.erase(cnt);
