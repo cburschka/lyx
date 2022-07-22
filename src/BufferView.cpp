@@ -292,6 +292,8 @@ struct BufferView::Private
 	bool clickable_inset_;
 	/// shape of the caret
 	frontend::CaretGeometry caret_geometry_;
+	///
+	bool mouse_selecting_ = false;
 };
 
 
@@ -2466,6 +2468,12 @@ void BufferView::clearLastInset(Inset * inset) const
 }
 
 
+bool BufferView::mouseSelecting() const
+{
+	return d->mouse_selecting_;
+}
+
+
 void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 {
 	//lyxerr << "[ cmd0 " << cmd0 << "]" << endl;
@@ -2487,6 +2495,9 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 
 	d->mouse_position_cache_.x_ = cmd.x();
 	d->mouse_position_cache_.y_ = cmd.y();
+
+	d->mouse_selecting_ =
+		cmd.action() == LFUN_MOUSE_MOTION && cmd.button() == mouse_button::button1;
 
 	if (cmd.action() == LFUN_MOUSE_MOTION && cmd.button() == mouse_button::none) {
 		updateHoveredInset();

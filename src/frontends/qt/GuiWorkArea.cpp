@@ -429,7 +429,7 @@ void GuiWorkArea::Private::dispatch(FuncRequest const & cmd)
 
 	// Skip these when selecting
 	// FIXME: let GuiView take care of those.
-	if (cmd.action() != LFUN_MOUSE_MOTION) {
+	if (notJustMovingTheMouse && !buffer_view_->mouseSelecting()) {
 		completer_->updateVisibility(false, false);
 		lyx_view_->updateDialogs();
 		lyx_view_->updateStatusBar();

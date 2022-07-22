@@ -375,6 +375,8 @@ public:
 	bool clickableInset() const;
 	///
 	void makeDocumentClass();
+	/// Are we currently performing a selection with the mouse?
+	bool mouseSelecting() const;
 
 private:
 	/// noncopyable

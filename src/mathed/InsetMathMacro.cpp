@@ -511,7 +511,10 @@ void InsetMathMacro::cursorPos(BufferView const & bv,
 
 bool InsetMathMacro::editMode(BufferView const * bv) const {
 	// find this in cursor trace
-	Cursor const & cur = bv->cursor();
+	DocIterator const & cur =
+		// Do not move the reference while selecting with the mouse to avoid
+		// flicker due to changing metrics
+		bv->mouseSelecting() ? bv->cursor().realAnchor() : bv->cursor();
 	for (size_t i = 0; i != cur.depth(); ++i)
 		if (&cur[i].inset() == this) {
 			// look if there is no other macro in edit mode above
