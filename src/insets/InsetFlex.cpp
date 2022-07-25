@@ -177,7 +177,6 @@ void InsetFlex::updateBuffer(ParIterator const & it, UpdateType utype, bool cons
 	docstring const & count = il.counter();
 	bool const have_counter = cnts.hasCounter(count);
 	if (have_counter) {
-		Paragraph const & par = it.paragraph();
 		if (!deleted) {
 			cnts.step(count, utype);
 			custom_label += ' ' +
