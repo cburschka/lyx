@@ -24,7 +24,6 @@
 #include "ParIterator.h"
 #include "TextClass.h"
 
-#include "support/debug.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
@@ -150,29 +149,6 @@ void InsetFlex::updateBuffer(ParIterator const & it, UpdateType utype, bool cons
 	docstring custom_label = translateIfPossible(il.labelstring());
 
 	Counters & cnts = bp.documentClass().counters();
-
-	// Special case for `subequations' module.
-	if (il.latextype() == InsetLaTeXType::ENVIRONMENT &&
-	    il.latexname() == "subequations") {
-		docstring equation(from_ascii("equation"));
-		docstring parentequation(from_ascii("parentequation"));
-		cnts.step(equation, utype);
-		// save a copy of the equation counter definition
-		cnts.copy(equation, parentequation);
-		// redefine the equation counter definition
-		docstring const eqlabel =
-			cnts.theCounter(equation, it->getParLanguage(bp)->code());
-		cnts.newCounter(equation, parentequation,
-		                eqlabel + from_ascii("\\alph{equation}"),
-		                eqlabel + from_ascii("\\alph{equation}"),
-		                cnts.guiName(parentequation));
-		InsetCollapsible::updateBuffer(it, utype, deleted);
-		// reset equation counter as it was.
-		cnts.copy(parentequation, equation);
-		cnts.remove(parentequation);
-		return;
-	}
-
 	docstring const & count = il.counter();
 	bool const have_counter = cnts.hasCounter(count);
 	if (have_counter) {
