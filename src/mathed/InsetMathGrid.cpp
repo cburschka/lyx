@@ -750,7 +750,7 @@ void InsetMathGrid::updateBuffer(ParIterator const & it, UpdateType utype, bool 
 }
 
 
-void InsetMathGrid::eol(TeXMathStream & os, row_type row, bool fragile,
+docstring InsetMathGrid::eolString(row_type row, bool fragile,
 		bool /*latex*/, bool last_eoln) const
 {
 	docstring eol;
@@ -770,9 +770,9 @@ void InsetMathGrid::eol(TeXMathStream & os, row_type row, bool fragile,
 
 	// only add \\ if necessary
 	if (eol.empty() && row + 1 == nrows() && (nrows() == 1 || !last_eoln))
-		return;
+		return docstring();
 
-	os << (fragile ? "\\protect\\\\" : "\\\\") << eol;
+	return (fragile ? "\\protect\\\\" : "\\\\") + eol;
 }
 
 
@@ -1247,7 +1247,7 @@ void InsetMathGrid::write(TeXMathStream & os,
                           row_type end_row, col_type end_col) const
 {
 	MathEnsurer ensurer(os, false);
-	docstring eolstr;
+	docstring eol;
 	// As of 2018 (with amendment in LaTeX 2021/06),
 	// \\ is a robust command and its protection
 	// is no longer necessary
@@ -1299,17 +1299,18 @@ void InsetMathGrid::write(TeXMathStream & os,
 			os << eocString(col + nccols - 1, lastcol);
 			col += nccols;
 		}
-		eol(os, row, fragile, os.latex(), last_eoln);
+		eol = eolString(row, fragile, os.latex(), last_eoln);
+		os << eol;
 		// append newline only if line wasn't completely empty
 		// and the formula is not written on a single line
-		bool const empty = emptyline && eolstr.empty();
+		bool const empty = emptyline && eol.empty();
 		if (!empty && nrows() > 1)
 			os << "\n";
 	}
 	// @TODO use end_row instead of nrows() ?
 	docstring const s = verboseHLine(rowinfo_[nrows()].lines);
 	if (!s.empty()) {
-		if (eolstr.empty()) {
+		if (eol.empty()) {
 			if (fragile)
 				os << "\\protect";
 			os << "\\\\";

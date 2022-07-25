@@ -44,7 +44,8 @@ public:
 	///
 	void delCol(col_type) override {}
 	///
-	void eol(TeXMathStream &, row_type, bool, bool, bool) const override {}
+	docstring eolString(row_type, bool, bool, bool) const override
+	{ return docstring(); }
 	///
 	docstring eocString(col_type, col_type) const override
 	{ return docstring(); }

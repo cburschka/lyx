@@ -246,8 +246,8 @@ protected:
 	virtual int rightMargin() const { return 0; }
 
 	/// returns proper 'end of line' code for LaTeX
-	virtual void eol(TeXMathStream & os, row_type row, bool fragile, bool latex,
-	                 bool last_eoln) const;
+	virtual docstring eolString(row_type row, bool fragile, bool latex,
+			bool last_eoln) const;
 	/// returns proper 'end of column' code for LaTeX
 	virtual docstring eocString(col_type col, col_type lastcol) const;
 	/// splits cells and shifts right part to the next cell
