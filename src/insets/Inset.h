@@ -545,9 +545,9 @@ public:
 	/// Collect BibTeX information
 	virtual void collectBibKeys(InsetIterator const &, support::FileNameList &) const {}
 	/// Update the counters of this inset and of its contents.
-	/// The boolean indicates whether we are preparing for output, e.g.,
-	/// of XHTML.
-	virtual void updateBuffer(ParIterator const &, UpdateType, bool const) {}
+	/// \param utype indicates whether we are preparing for output, e.g., of XHTML.
+	/// \param deleted indicates whethe rthe inset is deleted.
+	virtual void updateBuffer(ParIterator const &, UpdateType /*utype*/, bool /*deleted*/) {}
 
 	/// Updates the inset's dialog
 	virtual Buffer const * updateFrontend() const;
