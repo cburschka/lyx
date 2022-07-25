@@ -257,6 +257,7 @@ void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype, bool 
 		docstring const eqstr = from_ascii("equation");
 		if (cnts.hasCounter(eqstr)) {
 			for (size_t i = 0; i != label_.size(); ++i) {
+				docstring const oldnumber = numbers_[i];
 				if (numbered(i)) {
 					Paragraph const & par = it.paragraph();
 					if (!par.isDeleted(it.pos())) {
@@ -266,6 +267,12 @@ void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype, bool 
 						numbers_[i] = from_ascii("#");
 				} else
 					numbers_[i] = empty_docstring();
+				// If the numbering has changed, trigger a new preview
+				if (oldnumber != numbers_[i] && RenderPreview::previewMath()) {
+					// Do we need to remove it first?
+					//preview_->removePreview(*buffer_);
+					preparePreview(it);
+				}
 			}
 		}
 	}
