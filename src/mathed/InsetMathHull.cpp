@@ -253,20 +253,9 @@ void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype, bool 
 		Counters & cnts =
 			buffer_->masterBuffer()->params().documentClass().counters();
 
-		// right now, we only need to do this at export time
-		if (utype == OutputUpdate) {
-			for (size_t i = 0; i < numcnts; ++i) {
-				docstring const cnt = from_ascii(counters_to_save[i]);
-				if (cnts.hasCounter(cnt))
-					counter_map[cnt] = cnts.value(cnt);
-			}
-		}
-
 		// this has to be done separately
 		docstring const eqstr = from_ascii("equation");
 		if (cnts.hasCounter(eqstr)) {
-			if (utype == OutputUpdate)
-				counter_map[eqstr] = cnts.value(eqstr);
 			for (size_t i = 0; i != label_.size(); ++i) {
 				if (numbered(i)) {
 					Paragraph const & par = it.paragraph();
@@ -837,29 +826,7 @@ void InsetMathHull::preparePreview(DocIterator const & pos,
 	if (lsize != "normalsize" && !prefixIs(lsize, "error"))
 		setfont += from_ascii("\\" + lsize + '\n');
 
-	docstring setcnt;
-	if (forexport && haveNumbers()) {
-		docstring eqstr = from_ascii("equation");
-		CounterMap::const_iterator it = counter_map.find(eqstr);
-		if (it != counter_map.end()) {
-			int num = it->second;
-			if (num >= 0)
-				setcnt += from_ascii("\\setcounter{") + eqstr + '}' +
-				          '{' + convert<docstring>(num) + '}' + '\n';
-		}
-		for (size_t i = 0; i != numcnts; ++i) {
-			docstring cnt = from_ascii(counters_to_save[i]);
-			it = counter_map.find(cnt);
-			if (it == counter_map.end())
-					continue;
-			int num = it->second;
-			if (num > 0)
-				setcnt += from_ascii("\\setcounter{") + cnt + '}' +
-				          '{' + convert<docstring>(num) + '}';
-		}
-	}
-	docstring const snippet = macro_preamble + setfont + setcnt
-	                          + latexString(*this) + endfont;
+	docstring const snippet = macro_preamble + setfont + latexString(*this) + endfont;
 	LYXERR(Debug::MACROS, "Preview snippet: " << snippet);
 	preview_->addPreview(snippet, *buffer, forexport);
 }
@@ -1696,6 +1663,10 @@ void InsetMathHull::eol(TeXMathStream & os, row_type row, bool fragile, bool lat
 			else if (numbered_[row]  == NOTAG)
 				os<< "\\notag ";
 		}
+		if (os.output() == TeXMathStream::wsPreview && !numbers_[row].empty()) {
+			os << "\\global\\def\\theequation{" << numbers_[row] << "}\n";
+		}
+
 	}
 	// Never add \\ on the last empty line of eqnarray and friends
 	last_eoln = false;
