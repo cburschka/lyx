@@ -2,7 +2,7 @@
 # again the search pattern, should not result in a double replacement
 # (#7442)
 #
-UnuseShortcut "Tab" "command-alternatives completion-accept;cell-forward;tab-insert;outline-in;depth-increment"
+UnuseShortcut "Tab" "*"
 
 PrepareShortcuts
 
