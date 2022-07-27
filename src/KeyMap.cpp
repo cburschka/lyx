@@ -160,29 +160,30 @@ void KeyMap::unbind(KeySequence * seq, FuncRequest const & func, unsigned int r)
 	KeyModifier const mod2 = seq->modifiers[r].second;
 
 	// check if key is already there
+	vector <Table::iterator> removes;
 	Table::iterator end = table.end();
-	Table::iterator remove = end;
 	for (Table::iterator it = table.begin(); it != end; ++it) {
 		if (code == it->code
 		    && mod1 == it->mod.first
 		    && mod2 == it->mod.second) {
 			// remove
 			if (r + 1 == seq->length()) {
-				if (it->func == func) {
-					remove = it;
+				if (it->func == func || func == FuncRequest::unknown) {
+					removes.push_back(it);
 					if (it->prefixes)
 						it->prefixes.reset();
 				}
 			} else if (it->prefixes) {
 				it->prefixes->unbind(seq, func, r + 1);
 				if (it->prefixes->empty())
-					remove = it;
+					removes.push_back(it);
 				return;
 			}
 		}
 	}
-	if (remove != end)
-		table.erase(remove);
+
+	for (unsigned i = removes.size(); i > 0; --i)
+		table.erase(removes[i-1]);
 }
 
 
@@ -333,7 +334,7 @@ KeyMap::ReturnValues KeyMap::readWithoutConv(FileName const & bind_file, KeyMap 
 			string cmd = lexrc.getString();
 
 			FuncRequest func = lyxaction.lookupFunc(cmd);
-			if (func.action() == LFUN_UNKNOWN_ACTION) {
+			if (func == FuncRequest::unknown) {
 				lexrc.printError("BN_BIND: Unknown LyX function `$$Token'");
 				error = true;
 				break;
@@ -357,13 +358,16 @@ KeyMap::ReturnValues KeyMap::readWithoutConv(FileName const & bind_file, KeyMap 
 				break;
 			}
 			string cmd = lexrc.getString();
-
-			FuncRequest func = lyxaction.lookupFunc(cmd);
-			if (func.action() == LFUN_UNKNOWN_ACTION) {
-				lexrc.printError("BN_UNBIND: Unknown LyX"
-						 " function `$$Token'");
-				error = true;
-				break;
+			FuncRequest func;
+			if (cmd == "*")
+				func = FuncRequest::unknown;
+			else {
+				func = lyxaction.lookupFunc(cmd);
+				if (func == FuncRequest::unknown) {
+					lexrc.printError("BN_UNBIND: Unknown LyX function `$$Token'");
+					error = true;
+					break;
+				}
 			}
 
 			if (unbind_map)
@@ -409,17 +413,17 @@ void KeyMap::write(string const & bind_file, bool append, bool unbind) const
 		   << "Format " << LFUN_FORMAT << "\n\n";
 
 	string tag = unbind ? "\\unbind" : "\\bind";
-	BindingList const list = listBindings(false);
-	BindingList::const_iterator it = list.begin();
-	BindingList::const_iterator it_end = list.end();
-	for (; it != it_end; ++it) {
-		FuncCode action = it->request.action();
-		string arg = to_utf8(it->request.argument());
+	for (auto const & bnd : listBindings(false)) {
+		FuncCode const action = bnd.request.action();
+		string const arg = to_utf8(bnd.request.argument());
 
-		string const cmd = lyxaction.getActionName(action)
-			+ (arg.empty() ? string() : " " + arg) ;
+		string cmd;
+		if (unbind && bnd.request == FuncRequest::unknown)
+			cmd = "*";
+		else
+			cmd = lyxaction.getActionName(action) + (arg.empty() ? string() : " " + arg);
 		os << tag << " \""
-		   << to_utf8(it->sequence.print(KeySequence::BindFile))
+		   << to_utf8(bnd.sequence.print(KeySequence::BindFile))
 		   << "\" " << Lexer::quoteString(cmd)
 		   << "\n";
 	}
