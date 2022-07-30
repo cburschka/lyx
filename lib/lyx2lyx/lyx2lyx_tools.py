@@ -145,7 +145,7 @@ def insert_to_preamble(document, text, index = 0):
 
 # A dictionary of Unicode->LICR mappings for use in a Unicode string's translate() method
 # Created from the reversed list to keep the first of alternative definitions.
-licr_table = dict((ord(ch), cmd) for cmd, ch in unicode_reps[::-1])
+licr_table = {ord(ch): cmd for cmd, ch in unicode_reps[::-1]}
 
 def put_cmd_in_ert(cmd, is_open=False, as_paragraph=False):
     """

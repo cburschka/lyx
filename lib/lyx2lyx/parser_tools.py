@@ -121,8 +121,8 @@ find_end_of_layout(lines, i):
 find_end_of_sequence(lines, i):
   Find the end of the sequence of layouts of the same kind.
   Considers nesting. If the last paragraph in sequence is nested,
-  the position of the last \end_deeper is returned, else
-  the position of the last \end_layout.
+  the position of the last \\end_deeper is returned, else
+  the position of the last \\end_layout.
 
 is_in_inset(lines, i, inset, default=(-1,-1)):
   Check if line i is in an inset of the given type.
@@ -139,7 +139,7 @@ is_in_inset(lines, i, inset, default=(-1,-1)):
 
 get_containing_inset(lines, i):
   Finds out what kind of inset line i is within. Returns a
-  list containing what follows \begin_inset on the line
+  list containing what follows \\begin_inset on the line
   on which the inset begins, plus the starting and ending line.
   Returns False on any kind of error or if it isn't in an inset.
   So get_containing_inset(document.body, i) might return:
@@ -470,7 +470,7 @@ def set_bool_value(lines, token, value, start=0, end=0):
 
 
 def get_option_value(line, option):
-    rx = option + '\s*=\s*"([^"]+)"'
+    rx = option + r'\s*=\s*"([^"]+)"'
     rx = re.compile(rx)
     m = rx.search(line)
     if not m:
@@ -479,12 +479,12 @@ def get_option_value(line, option):
 
 
 def set_option_value(line, option, value):
-    rx = '(' + option + '\s*=\s*")[^"]+"'
+    rx = '(' + option + r'\s*=\s*")[^"]+"'
     rx = re.compile(rx)
     m = rx.search(line)
     if not m:
         return line
-    return re.sub(rx, '\g<1>' + value + '"', line)
+    return re.sub(rx, r'\g<1>' + value + '"', line)
 
 
 def del_token(lines, token, start=0, end=0):
@@ -612,7 +612,7 @@ def is_in_inset(lines, i, inset, default=(-1,-1)):
 def get_containing_inset(lines, i):
   '''
   Finds out what kind of inset line i is within. Returns a
-  list containing (i) what follows \begin_inset on the line
+  list containing (i) what follows \\begin_inset on the line
   on which the inset begins, plus the starting and ending line.
   Returns False on any kind of error or if it isn't in an inset.
   '''

@@ -1119,7 +1119,7 @@ def revert_multirow(document):
 
 
 def convert_math_output(document):
-    " Convert \html_use_mathml to \html_math_output "
+    r" Convert \html_use_mathml to \html_math_output "
     i = find_token(document.header, "\\html_use_mathml", 0)
     if i == -1:
         return
@@ -1136,7 +1136,7 @@ def convert_math_output(document):
 
 
 def revert_math_output(document):
-    " Revert \html_math_output to \html_use_mathml "
+    r" Revert \html_math_output to \html_use_mathml "
     i = find_token(document.header, "\\html_math_output", 0)
     if i == -1:
         return
@@ -1619,8 +1619,8 @@ def revert_IEEEtran(document):
 
 def convert_prettyref(document):
 	" Converts prettyref references to neutral formatted refs "
-	re_ref = re.compile("^\s*reference\s+\"(\w+):(\S+)\"")
-	nm_ref = re.compile("^\s*name\s+\"(\w+):(\S+)\"")
+	re_ref = re.compile("^\\s*reference\\s+\"(\\w+):(\\S+)\"")
+	nm_ref = re.compile("^\\s*name\\s+\"(\\w+):(\\S+)\"")
 
 	i = 0
 	while True:
@@ -1641,8 +1641,8 @@ def convert_prettyref(document):
 
 def revert_refstyle(document):
 	" Reverts neutral formatted refs to prettyref "
-	re_ref = re.compile("^reference\s+\"(\w+):(\S+)\"")
-	nm_ref = re.compile("^\s*name\s+\"(\w+):(\S+)\"")
+	re_ref = re.compile("^reference\\s+\"(\\w+):(\\S+)\"")
+	nm_ref = re.compile("^\\s*name\\s+\"(\\w+):(\\S+)\"")
 
 	i = 0
 	while True:
@@ -1723,7 +1723,7 @@ def remove_Nameref(document):
 
 
 def revert_mathrsfs(document):
-    " Load mathrsfs if \mathrsfs us use in the document "
+    r" Load mathrsfs if \mathrsfs us use in the document "
     i = 0
     for line in document.body:
       if line.find("\\mathscr{") != -1:
@@ -2079,7 +2079,7 @@ def convert_passthru(document):
     if not check_passthru:
       return
 
-    rx = re.compile("\\\\begin_layout \s*(\w+)")
+    rx = re.compile("\\\\begin_layout \\s*(\\w+)")
     beg = 0
     for lay in ["Chunk", "Scrap"]:
       while True:
@@ -2143,7 +2143,7 @@ def revert_passthru(document):
     " http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg161298.html "
     if not check_passthru:
       return
-    rx = re.compile("\\\\begin_layout \s*(\w+)")
+    rx = re.compile("\\\\begin_layout \\s*(\\w+)")
     beg = 0
     for lay in ["Chunk", "Scrap"]:
       while True:
@@ -2435,7 +2435,7 @@ def revert_langpack(document):
 
 def convert_langpack(document):
     " Add \\language_package parameter "
-    i = find_token(document.header, "\language" , 0)
+    i = find_token(document.header, r"\language" , 0)
     if i == -1:
         document.warning("Malformed document. No \\language defined!")
         return

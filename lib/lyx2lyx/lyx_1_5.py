@@ -421,7 +421,7 @@ def revert_unicode_line(document, i, insets, spec_chars, replacement_character =
                     else:
                         if insets and insets[-1] == "Formula":
                             # avoid putting an ERT in a math; instead put command as text
-                            command = command.replace('\\\\', '\mathrm{')
+                            command = command.replace('\\\\', r'\mathrm{')
                             command = command + '}'
                         elif not insets or insets[-1] != "ERT":
                             # add an ERT inset with the replacement character
@@ -491,7 +491,7 @@ def revert_cs_label(document):
 
 
 def convert_bibitem(document):
-    """ Convert
+    r""" Convert
 \bibitem [option]{argument}
 
 to
@@ -576,16 +576,16 @@ commandparams_info = {
 def convert_commandparams(document):
     """ Convert
 
- \begin_inset LatexCommand \cmdname[opt1][opt2]{arg}
- \end_inset
+ \\begin_inset LatexCommand \\cmdname[opt1][opt2]{arg}
+ \\end_inset
 
  to
 
- \begin_inset LatexCommand cmdname
+ \\begin_inset LatexCommand cmdname
  name1 "opt1"
  name2 "opt2"
  name3 "arg"
- \end_inset
+ \\end_inset
 
  name1, name2 and name3 can be different for each command.
 """
@@ -896,7 +896,7 @@ def revert_cleardoublepage(document):
 
 
 def convert_lyxline(document):
-    " remove fontsize commands for \lyxline "
+    r" remove fontsize commands for \lyxline "
     # The problematic is: The old \lyxline definition doesn't handle the fontsize
     # to change the line thickness. The new definiton does this so that imported
     # \lyxlines would have a different line thickness. The eventual fontsize command
@@ -1687,7 +1687,7 @@ def revert_CJK(document):
 
 
 def revert_preamble_listings_params(document):
-    " Revert preamble option \listings_params "
+    r" Revert preamble option \listings_params "
     i = find_token(document.header, "\\listings_params", 0)
     if i != -1:
         document.preamble.append('\\usepackage{listings}')
@@ -2005,10 +2005,10 @@ def convert_arabic (document):
             document.header[i] = "\\language arabic_arabtex"
     i = 0
     while i < len(document.body):
-        h = document.body[i].find("\lang arabic", 0, len(document.body[i]))
+        h = document.body[i].find(r"\lang arabic", 0, len(document.body[i]))
         if (h != -1):
             # change the language name
-            document.body[i] = '\lang arabic_arabtex'
+            document.body[i] = r'\lang arabic_arabtex'
         i = i + 1
 
 
@@ -2020,10 +2020,10 @@ def revert_arabic (document):
             document.header[i] = "\\language arabic"
     i = 0
     while i < len(document.body):
-        h = document.body[i].find("\lang arabic_arabtex", 0, len(document.body[i]))
+        h = document.body[i].find(r"\lang arabic_arabtex", 0, len(document.body[i]))
         if (h != -1):
             # change the language name
-            document.body[i] = '\lang arabic'
+            document.body[i] = r'\lang arabic'
         i = i + 1
 
 

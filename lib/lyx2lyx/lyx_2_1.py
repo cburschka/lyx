@@ -59,7 +59,7 @@ def revert_Argument_to_TeX_brace(document, line, endline, n, nmax, environment, 
     usage:
     revert_Argument_to_TeX_brace(document, LineOfBegin, LineOfEnd, StartArgument, EndArgument, isEnvironment, isOpt)
     LineOfBegin is the line  of the \\begin_layout or \\begin_inset statement
-    LineOfEnd is the line  of the \end_layout or \end_inset statement, if "0" is given, the end of the file is used instead
+    LineOfEnd is the line  of the \\end_layout or \\end_inset statement, if "0" is given, the end of the file is used instead
     StartArgument is the number of the first argument that needs to be converted
     EndArgument is the number of the last argument that needs to be converted or the last defined one
     isEnvironment must be true, if the layout is for a LaTeX environment
@@ -1060,7 +1060,7 @@ def convert_table_rotation(document):
 
 
 def convert_listoflistings(document):
-    'Convert ERT \lstlistoflistings to TOC lstlistoflistings inset'
+    r'Convert ERT \lstlistoflistings to TOC lstlistoflistings inset'
     # We can support roundtrip because the command is so simple
     i = 0
     while True:

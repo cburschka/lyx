@@ -81,7 +81,7 @@ def get_next_paragraph(lines, i, format):
 
 
 def find_end_of_inset(lines, i):
-    "Finds the matching \end_inset"
+    r"Finds the matching \end_inset"
     return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
 
 def del_token(lines, token, start, end):
@@ -103,7 +103,7 @@ def del_token(lines, token, start, end):
 ####################################################################
 
 def remove_color_default(document):
-    " Remove \color default"
+    r" Remove \color default"
     i = 0
     while True:
         i = find_token(document.body, "\\color default", i)
@@ -114,12 +114,12 @@ def remove_color_default(document):
 
 
 def add_end_header(document):
-    " Add \end_header"
+    r" Add \end_header"
     document.header.append("\\end_header");
 
 
 def rm_end_header(document):
-    " Remove \end_header"
+    r" Remove \end_header"
     i = find_token(document.header, "\\end_header", 0)
     if i == -1:
         return
@@ -169,14 +169,14 @@ def revert_amsmath(document):
 
 
 def convert_spaces(document):
-    " \SpecialChar ~ -> \InsetSpace ~"
+    r" \SpecialChar ~ -> \InsetSpace ~"
     for i in range(len(document.body)):
         document.body[i] = document.body[i].replace("\\SpecialChar ~",
                                                     "\\InsetSpace ~")
 
 
 def revert_spaces(document):
-    " \InsetSpace ~ -> \SpecialChar ~"
+    r" \InsetSpace ~ -> \SpecialChar ~"
     regexp = re.compile(r'(.*)(\\InsetSpace\s+)(\S+)')
     i = 0
     while True:
@@ -197,18 +197,18 @@ def revert_spaces(document):
 
 
 def rename_spaces(document):
-    """ \InsetSpace \, -> \InsetSpace \thinspace{}
-        \InsetSpace \space -> \InsetSpace \space{}"""
+    """ \\InsetSpace \\, -> \\InsetSpace \thinspace{}
+        \\InsetSpace \\space -> \\InsetSpace \\space{}"""
     for i in range(len(document.body)):
         document.body[i] = document.body[i].replace("\\InsetSpace \\space",
                                                     "\\InsetSpace \\space{}")
-        document.body[i] = document.body[i].replace("\\InsetSpace \,",
+        document.body[i] = document.body[i].replace("\\InsetSpace \\,",
                                                     "\\InsetSpace \\thinspace{}")
 
 
 def revert_space_names(document):
-    """ \InsetSpace \thinspace{} -> \InsetSpace \,
-         \InsetSpace \space{} -> \InsetSpace \space"""
+    """ \\InsetSpace \thinspace{} -> \\InsetSpace \\,
+         \\InsetSpace \\space{} -> \\InsetSpace \\space"""
     for i in range(len(document.body)):
         document.body[i] = document.body[i].replace("\\InsetSpace \\space{}",
                                                     "\\InsetSpace \\space")
@@ -262,7 +262,7 @@ def revert_bibtex(document):
 
 
 def remove_insetparent(document):
-    " Remove \lyxparent"
+    r" Remove \lyxparent"
     i = 0
     while True:
         i = find_token(document.body, "\\begin_inset LatexCommand \\lyxparent", i)
@@ -428,7 +428,7 @@ def revert_comment(document):
 
 
 def add_end_layout(document):
-    " Add \end_layout"
+    r" Add \end_layout"
     i = find_token(document.body, '\\layout', 0)
 
     if i == -1:
@@ -502,7 +502,7 @@ def add_end_layout(document):
 
 
 def rm_end_layout(document):
-    " Remove \end_layout"
+    r" Remove \end_layout"
     i = 0
     while True:
         i = find_token(document.body, '\\end_layout', i)
@@ -544,7 +544,7 @@ def rm_body_changes(document):
 
 
 def layout2begin_layout(document):
-    " \layout -> \begin_layout "
+    r" \layout -> \begin_layout "
     i = 0
     while True:
         i = find_token(document.body, '\\layout', i)
@@ -556,7 +556,7 @@ def layout2begin_layout(document):
 
 
 def begin_layout2layout(document):
-    " \begin_layout -> \layout "
+    r" \begin_layout -> \layout "
     i = 0
     while True:
         i = find_token(document.body, '\\begin_layout', i)
@@ -1051,7 +1051,7 @@ def convert_minipage(document):
         # convert the inner_position
         if document.body[i][:14] == "inner_position":
             innerpos = inner_pos[int(document.body[i][15])]
-            del document.body[i]    
+            del document.body[i]
         else:
             innerpos = inner_pos[0]
 
@@ -1972,9 +1972,9 @@ def convert_names(document):
                           '\\begin_layout %s' % document.default_layout,
                           "",
                           "%s" % firstname,
-                          "\end_layout",
+                          r"\end_layout",
                           "",
-                          "\end_inset",
+                          r"\end_inset",
                           "",
                           "",
                           "\\begin_inset CharStyle Surname",
@@ -2229,7 +2229,7 @@ def use_x_binary(document):
 def normalize_paragraph_params(document):
     " Place all the paragraph parameters in their own line. "
     body = document.body
-    
+
     allowed_parameters = '\\paragraph_spacing', '\\noindent', \
                          '\\align', '\\labelwidthstring', "\\start_of_appendix", \
                          "\\leftindent"

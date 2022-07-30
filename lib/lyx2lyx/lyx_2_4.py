@@ -752,7 +752,7 @@ def revert_floatalignment(document):
         i += 1
 
 def revert_tuftecite(document):
-    """Revert \cite commands in tufte classes"""
+    r"""Revert \cite commands in tufte classes"""
 
     tufte = ["tufte-book", "tufte-handout"]
     if document.textclass not in tufte:
@@ -1223,7 +1223,7 @@ def revert_dateinfo(document):
             if len(datecomps) > 1:
                 argv = datecomps[0]
                 isodate = datecomps[1]
-                m = re.search('(\d\d\d\d)-(\d\d)-(\d\d)', isodate)
+                m = re.search(r'(\d\d\d\d)-(\d\d)-(\d\d)', isodate)
                 if m:
                     dte = date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
 # FIXME if we had the path to the original document (not the one in the tmp dir),
@@ -1403,11 +1403,11 @@ def revert_timeinfo(document):
             if len(timecomps) > 1:
                 argv = timecomps[0]
                 isotime = timecomps[1]
-                m = re.search('(\d\d):(\d\d):(\d\d)', isotime)
+                m = re.search(r'(\d\d):(\d\d):(\d\d)', isotime)
                 if m:
                     tme = time(int(m.group(1)), int(m.group(2)), int(m.group(3)))
                 else:
-                    m = re.search('(\d\d):(\d\d)', isotime)
+                    m = re.search(r'(\d\d):(\d\d)', isotime)
                     if m:
                         tme = time(int(m.group(1)), int(m.group(2)))
 # FIXME if we had the path to the original document (not the one in the tmp dir),
@@ -1875,7 +1875,7 @@ def revert_new_languages(document):
                      "korean":         ("", "korean"),
                     }
     if document.language in new_languages:
-        used_languages = set((document.language, ))
+        used_languages = {document.language}
     else:
         used_languages = set()
     i = 0
@@ -4100,7 +4100,7 @@ def revert_branch_darkcols(document):
            break
         k = find_token(document.header, "\\color", i, j)
         if k != -1:
-            m = re.search('\\\\color (\S+) (\S+)', document.header[k])
+            m = re.search('\\\\color (\\S+) (\\S+)', document.header[k])
             if m:
                 document.header[k] = "\\color " + m.group(1)
         i += 1
@@ -4222,7 +4222,7 @@ def revert_vcolumns2(document):
                                 el = find_token(document.body, '\\strikeout on', flt, elt)
                                 if el != -1:
                                     extralines.append("\\strikeout default")
-                                document.body[elt:elt+1] = extralines + put_cmd_in_ert("\\end{cellvarwidth}") + ["\end_layout"]
+                                document.body[elt:elt+1] = extralines + put_cmd_in_ert("\\end{cellvarwidth}") + [r"\end_layout"]
                                 parlang = -1
                                 for q in range(flt, elt):
                                     if document.body[q] != "" and document.body[q][0] != "\\":
