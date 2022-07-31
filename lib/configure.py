@@ -545,7 +545,7 @@ def checkViewerNoRC(description, progs, rc_entry=None, path=None):
 
 
 def checkEditorNoRC(description, progs, rc_entry=None, path=None):
-    ''' The same as checkViewer, but do not add rc entry '''
+    ''' The same as checkEditor, but do not add rc entry '''
     if rc_entry is None:
         rc_entry = []
     if path is None:
