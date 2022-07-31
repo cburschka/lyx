@@ -1274,7 +1274,7 @@ contributors = [
                  "Re: LyX 1.4cvs crash on Fedora Core 3",
                  "m=111204368700246",
                  "28 March 2005",
-                 u"Added native support for \makebox to mathed. Several bug fixes, both to the source code and to the llncs layout file"),
+                 u"Added native support for \\makebox to mathed. Several bug fixes, both to the source code and to the llncs layout file"),
 
      contributor(u"LibreOffice Team",
                  "https://www.libreoffice.org/",

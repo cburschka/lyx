@@ -705,7 +705,7 @@ texteditors = ['xemacs', 'gvim', 'kedit', 'kwrite', 'kate',
                'xed', 'notepad', 'WinEdt', 'WinShell', 'PSPad']
 
 def checkFormatEntries(dtl_tools):
-    ''' Check all formats (\Format entries) '''
+    r''' Check all formats (\Format entries) '''
     checkViewerEditor('a Tgif viewer and editor', ['tgif'],
         rc_entry = [r'\Format tgif      "obj, tgo" Tgif                 "" "%%"	"%%"	"vector"	"application/x-tgif"'])
     #
@@ -876,7 +876,7 @@ def checkFormatEntries(dtl_tools):
 
 
 def checkConverterEntries():
-    ''' Check all converters (\converter entries) '''
+    r''' Check all converters (\converter entries) '''
     checkProg('the pdflatex program', ['pdflatex $$i'],
         rc_entry = [ r'\converter pdflatex   pdf2       "%%"	"latex=pdflatex,hyperref-driver=pdftex"' ])
 
@@ -1269,7 +1269,7 @@ def checkConverterEntries():
     path, lilypond = checkProg('a LilyPond -> EPS/PDF/PNG converter', ['lilypond'])
     if (lilypond):
         version_string = cmdOutput("lilypond --version")
-        match = re.match('GNU LilyPond (\S+)', version_string)
+        match = re.match(r'GNU LilyPond (\S+)', version_string)
         if match:
             version_number = match.groups()[0]
             version = version_number.split('.')
@@ -1299,7 +1299,7 @@ def checkConverterEntries():
                 continue
             found_lilypond_book = True
 
-            match = re.match('(\S+)$', version_string)
+            match = re.match(r'(\S+)$', version_string)
             if match:
                 version_number = match.groups()[0]
                 version = version_number.split('.')
@@ -1426,7 +1426,7 @@ def _checkForClassExtension(x):
         return x.strip()
 
 def processLayoutFile(file):
-    """ process layout file and get a line of result
+    r""" process layout file and get a line of result
 
         Declare lines look like this:
 
@@ -1454,8 +1454,8 @@ def processLayoutFile(file):
     """
     classname = file.split(os.sep)[-1].split('.')[0]
     # return ('[a,b]', 'a', ',b,c', 'article') for \DeclareLaTeXClass[a,b,c]{article}
-    p = re.compile('\s*#\s*\\\\DeclareLaTeXClass\s*(\[([^,]*)(,.*)*])*\s*{(.*)}\s*$')
-    q = re.compile('\s*#\s*\\\\DeclareCategory{(.*)}\s*$')
+    p = re.compile('\\s*#\\s*\\\\DeclareLaTeXClass\\s*(\\[([^,]*)(,.*)*])*\\s*{(.*)}\\s*$')
+    q = re.compile('\\s*#\\s*\\\\DeclareCategory{(.*)}\\s*$')
     classdeclaration = ""
     categorydeclaration = '""'
     for line in open(file, 'r', encoding='utf8').readlines():
@@ -1547,7 +1547,7 @@ def checkLatexConfig(check_config):
     # Construct the list of classes to test for.
     # build the list of available layout files and convert it to commands
     # for chkconfig.ltx
-    declare = re.compile('\\s*#\\s*\\\\DeclareLaTeXClass\\s*(\[([^,]*)(,.*)*\])*\\s*{(.*)}\\s*$')
+    declare = re.compile('\\s*#\\s*\\\\DeclareLaTeXClass\\s*(\\[([^,]*)(,.*)*\\])*\\s*{(.*)}\\s*$')
     category = re.compile('\\s*#\\s*\\\\DeclareCategory{(.*)}\\s*$')
     empty = re.compile('\\s*$')
     testclasses = list()
@@ -1563,7 +1563,7 @@ def checkLatexConfig(check_config):
             for line in open(file, 'r', encoding='utf8').readlines():
                 if not empty.match(line) and line[0] != '#'[0]:
                     if decline == "":
-                        logger.warning("Failed to find valid \Declare line "
+                        logger.warning(r"Failed to find valid \Declare line "
                             "for layout file `%s'.\n\t=> Skipping this file!" % file)
                         nodeclaration = True
                     # A class, but no category declaration. Just break.
@@ -1672,7 +1672,7 @@ def checkModulesConfig():
 
 
 def processModuleFile(file, filename):
-    ''' process module file and get a line of result
+    r''' process module file and get a line of result
 
         The top of a module file should look like this:
           #\DeclareLyXModule[LaTeX Packages]{ModuleName}
@@ -1686,12 +1686,12 @@ def processModuleFile(file, filename):
         We expect output:
           "ModuleName" "filename" "Description" "Packages" "Requires" "Excludes" "Category"
     '''
-    remods = re.compile('\s*#\s*\\\\DeclareLyXModule\s*(?:\[([^]]*?)\])?{(.*)}')
-    rereqs = re.compile('\s*#+\s*Requires: (.*)')
-    reexcs = re.compile('\s*#+\s*Excludes: (.*)')
+    remods = re.compile('\\s*#\\s*\\\\DeclareLyXModule\\s*(?:\\[([^]]*?)\\])?{(.*)}')
+    rereqs = re.compile(r'\s*#+\s*Requires: (.*)')
+    reexcs = re.compile(r'\s*#+\s*Excludes: (.*)')
     recaty = re.compile('\\s*#\\s*\\\\DeclareCategory{(.*)}\\s*$')
-    redbeg = re.compile('\s*#+\s*DescriptionBegin\s*$')
-    redend = re.compile('\s*#+\s*DescriptionEnd\s*$')
+    redbeg = re.compile(r'\s*#+\s*DescriptionBegin\s*$')
+    redend = re.compile(r'\s*#+\s*DescriptionEnd\s*$')
 
     modname = desc = pkgs = req = excl = catgy = ""
     readingDescription = False
@@ -1739,7 +1739,7 @@ def processModuleFile(file, filename):
         continue
 
     if modname == "":
-      logger.warning("Module file without \DeclareLyXModule line. ")
+      logger.warning(r"Module file without \DeclareLyXModule line. ")
       return ""
 
     if pkgs:
@@ -1803,7 +1803,7 @@ def checkCiteEnginesConfig():
 
 
 def processCiteEngineFile(file, filename):
-    ''' process cite engines file and get a line of result
+    r''' process cite engines file and get a line of result
 
         The top of a cite engine file should look like this:
           #\DeclareLyXCiteEngine[LaTeX Packages]{CiteEngineName}
@@ -1813,12 +1813,12 @@ def processCiteEngineFile(file, filename):
         We expect output:
           "CiteEngineName" "filename" "CiteEngineType" "CiteFramework" "DefaultBiblio" "Description" "Packages"
     '''
-    remods = re.compile('\s*#\s*\\\\DeclareLyXCiteEngine\s*(?:\[([^]]*?)\])?{(.*)}')
-    redbeg = re.compile('\s*#+\s*DescriptionBegin\s*$')
-    redend = re.compile('\s*#+\s*DescriptionEnd\s*$')
-    recet = re.compile('\s*CiteEngineType\s*(.*)')
-    redb = re.compile('\s*DefaultBiblio\s*(.*)')
-    resfm = re.compile('\s*CiteFramework\s*(.*)')
+    remods = re.compile('\\s*#\\s*\\\\DeclareLyXCiteEngine\\s*(?:\\[([^]]*?)\\])?{(.*)}')
+    redbeg = re.compile(r'\s*#+\s*DescriptionBegin\s*$')
+    redend = re.compile(r'\s*#+\s*DescriptionEnd\s*$')
+    recet = re.compile(r'\s*CiteEngineType\s*(.*)')
+    redb = re.compile(r'\s*DefaultBiblio\s*(.*)')
+    resfm = re.compile(r'\s*CiteFramework\s*(.*)')
 
     modname = desc = pkgs = cet = db = cfm = ""
     readingDescription = False
@@ -1862,7 +1862,7 @@ def processCiteEngineFile(file, filename):
         continue
 
     if modname == "":
-      logger.warning("Cite Engine File file without \DeclareLyXCiteEngine line. ")
+      logger.warning(r"Cite Engine File file without \DeclareLyXCiteEngine line. ")
       return ""
 
     if pkgs:
