@@ -37,7 +37,7 @@ if running_on_windows:
     from tempfile import NamedTemporaryFile
 
 # Pre-compiled regular expressions.
-re_lyxfile = re.compile(b"\.lyx$")
+re_lyxfile = re.compile(br"\.lyx$")
 re_input = re.compile(b'^(.*)\\\\(input|include){(\\s*)(.+)(\\s*)}.*$')
 re_ertinput = re.compile(b'^(input|include)({)(\\s*)(.+)(\\s*)}.*$')
 re_package = re.compile(b'^(.*)\\\\(usepackage){(\\s*)(.+)(\\s*)}.*$')

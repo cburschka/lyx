@@ -156,7 +156,7 @@ def legacy_extract_metrics_info(log_file):
 def extract_resolution(log_file, dpi):
     fontsize_re = re.compile(b"Preview: Fontsize")
     magnification_re = re.compile(b"Preview: Magnification")
-    extract_decimal_re = re.compile(b"([0-9\.]+)")
+    extract_decimal_re = re.compile(br"([0-9\.]+)")
     extract_integer_re = re.compile(b"([0-9]+)")
 
     found_fontsize = 0

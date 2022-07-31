@@ -223,7 +223,7 @@ def remove_obsolete(line):
 
 
 def language_use_babel(line):
-	if not line.lower().startswith("\language_use_babel"):
+	if not line.lower().startswith(r"\language_use_babel"):
 		return no_match
 	re_lub = re.compile(r'^\\language_use_babel\s+"?(true|false)', re.IGNORECASE)
 	m = re_lub.match(line)
@@ -364,7 +364,7 @@ def split_pdf_format(line):
 				viewer = ''
 			else:
 				viewer = entries[5]
-			converted = line.replace('application/pdf', '') + '''
+			converted = line.replace('application/pdf', '') + r'''
 \Format pdf6       pdf    "PDF (graphics)"        "" "''' + viewer + '"	""	"vector"	"application/pdf"'
 			return (True, converted)
 	elif line.lower().startswith("\\viewer_alternatives") or \

@@ -78,7 +78,7 @@ def find(args, path):
         # use locate if possible (faster)
         if find_exe(['locate']):
             p1 = subprocess.Popen(['locate', '-i', args[0].lower()], stdout=subprocess.PIPE)
-            px = subprocess.Popen(['grep', '-Ei', '\.pdf$|\.ps$'], stdin=p1.stdout, stdout=subprocess.PIPE)
+            px = subprocess.Popen(['grep', '-Ei', r'\.pdf$|\.ps$'], stdin=p1.stdout, stdout=subprocess.PIPE)
             for arg in args:
                if arg == args[0]:
                    # have this already
