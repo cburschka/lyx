@@ -2908,9 +2908,14 @@ void Paragraph::latex(BufferParams const & bparams,
 					column += Changes::latexMarkChange(os, bparams,
 						Change(Change::UNCHANGED), change, rp);
 				}
-			} else {
+			} else {// if fontswitch_inset
+				if (current_font != running_font || !langClosed)
+					// font is still open in fontswitch_insets if we have
+					// a non-lang font difference or if the language
+					// is the only difference but has not been forcedly
+					// closed meanwhile
+					open_font = true;
 				running_font = current_font;
-				open_font &= !langClosed;
 			}
 		}
 
