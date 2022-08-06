@@ -184,9 +184,12 @@ void GuiCommandBuffer::complete()
 	string new_input;
 	vector<string> const & comp = completions(input, new_input);
 
-	if (comp.empty()) {
+	if (comp.empty() || comp.size() == 1) {
 		if (new_input != input)
 			edit_->setText(toqstr(new_input));
+		// If there is only one match, indicate this by adding a space
+		if (comp.size() == 1)
+			edit_->setText(edit_->text() + " ");
 		return;
 	}
 
@@ -208,6 +211,8 @@ void GuiCommandBuffer::showList(vector<string> const & list,
 		else
 			listBox->addItem(toqstr(item));
 	}
+	// Select the first item
+	listBox->setCurrentItem(listBox->item(0));
 
 	listBox->resize(listBox->sizeHint());
 
@@ -296,6 +301,11 @@ GuiCommandBuffer::completions(string const & prefix, string & new_prefix)
 		if (prefixIs(act.first, prefix))
 			comp.push_back(act.first);
 	}
+	// now add all the other items that contain the prefix
+	for (auto const & act : lyxaction) {
+		if (!prefixIs(act.first, prefix) && contains(act.first, prefix))
+			comp.push_back(act.first);
+	}
 
 	if (comp.empty()) {
 		new_prefix = prefix;
@@ -304,7 +314,7 @@ GuiCommandBuffer::completions(string const & prefix, string & new_prefix)
 
 	if (comp.size() == 1) {
 		new_prefix = comp[0];
-		return vector<string>();
+		return comp;
 	}
 
 	// find maximal available prefix

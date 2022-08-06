@@ -29,26 +29,29 @@ GuiCommandEdit::GuiCommandEdit(QWidget * parent)
 
 void GuiCommandEdit::keyPressEvent(QKeyEvent * e)
 {
-	switch (e->key()) {
-	case Qt::Key_Escape:
-		// emit signal
-		escapePressed();
-		break;
+	if (e->modifiers() == Qt::NoModifier) {
+		switch (e->key()) {
+		case Qt::Key_Escape:
+			// emit signal
+			escapePressed();
+			return;
 
-	case Qt::Key_Up:
-		// emit signal
-		upPressed();
-		break;
+		case Qt::Key_Up:
+			// emit signal
+			upPressed();
+			return;
 
-	case Qt::Key_Down:
-		// emit signal
-		downPressed();
-		break;
+		case Qt::Key_Down:
+			// emit signal
+			downPressed();
+			return;
 
-	default:
-		QLineEdit::keyPressEvent(e);
-		break;
+		default:
+			// do nothing
+			break;
+		}
 	}
+	QLineEdit::keyPressEvent(e);
 }
 
 
