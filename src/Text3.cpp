@@ -3182,7 +3182,10 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_FLEX_INSERT: {
 		code = FLEX_CODE;
-		docstring s = from_ascii("Flex:") + from_utf8(cmd.getArg(0));
+		docstring s = from_utf8(cmd.getArg(0));
+		// Prepend "Flex:" prefix if not there
+		if (!prefixIs(s, from_ascii("Flex:")))
+			s = from_ascii("Flex:") + s;
 		if (!cur.buffer()->params().documentClass().hasInsetLayout(s))
 			enable = false;
 		else {
