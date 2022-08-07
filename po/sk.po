@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-06-14 17:49+0200\n"
-"PO-Revision-Date: 2022-06-14 16:04+0000\n"
+"POT-Creation-Date: 2022-08-07 17:00+0200\n"
+"PO-Revision-Date: 2022-08-07 17:23+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2138,6 +2138,10 @@ msgstr ""
 #: src/frontends/qt/ui/GraphicsUi.ui:520
 msgid "Sho&w in LyX"
 msgstr "Zobraziť v L&yXe"
+
+#: src/frontends/qt/ui/GraphicsUi.ui:556 src/frontends/qt/ui/GraphicsUi.ui:563
+msgid "Percentage to scale by in LyX (1 to 1000)"
+msgstr "Percento zmeny zobrazenia v LyXe (1 až 1000)"
 
 #: src/frontends/qt/ui/GraphicsUi.ui:566
 msgid "Sca&le on screen (%):"
@@ -28015,10 +28019,6 @@ msgstr "Už nie je viac vložiek"
 msgid "Save bookmark"
 msgstr "Uložiť záložku"
 
-#: src/BufferView.cpp:1054
-msgid "Converting document to new document class..."
-msgstr "Prevádzam dokument do novej triedy dokumentov…"
-
 #: src/BufferView.cpp:1099
 msgid "Document is read-only"
 msgstr "Dokument je iba na čítanie"
@@ -37451,6 +37451,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Converting document to new document class..."
+#~ msgstr "Prevádzam dokument do novej triedy dokumentov…"
 
 #~ msgid "MedSkip"
 #~ msgstr "Stredná medzera(MedSkip)"
