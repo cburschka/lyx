@@ -5398,6 +5398,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_CHANGE_ACCEPT:
 	case LFUN_CHANGE_REJECT:
+	case LFUN_FONT_DEFAULT:
 	case LFUN_FONT_EMPH:
 	case LFUN_FONT_BOLD:
 	case LFUN_FONT_BOLDSYMBOL:
