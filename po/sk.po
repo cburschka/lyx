@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-08-07 17:00+0200\n"
-"PO-Revision-Date: 2022-08-07 17:23+0000\n"
+"POT-Creation-Date: 2022-08-08 10:14+0200\n"
+"PO-Revision-Date: 2022-08-08 08:19+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -30100,12 +30100,12 @@ msgstr ""
 "UI (užívateľské rozhranie) súbor. Môžete použiť absolútnu cestu, alebo LyX "
 "bude hľadať v globálnych a lokálnych ui/ adresároch."
 
-#: src/LyXRC.cpp:3400
+#: src/LyXRC.cpp:3472
 msgid ""
 "Enable use the system colors for some things like main window background and "
 "selection."
 msgstr ""
-"Umožniť používane farieb systému pre niektoré predmety ako pozadie hlavného "
+"Umožniť používanie farieb systému pre niektoré predmety ako pozadie hlavného "
 "okna a výber."
 
 #: src/LyXRC.cpp:3404
@@ -33477,6 +33477,10 @@ msgid ""
 msgstr ""
 "Nemôžte zmeniť skratku formátu používané konvertorom. Odstráňte najprv "
 "konvertor."
+
+#: src/frontends/qt/GuiPrefs.cpp:2329 src/frontends/qt/GuiPrefs.cpp:2354
+msgid "System Default"
+msgstr "Systémový Štandard"
 
 #: src/frontends/qt/GuiPrefs.cpp:2368
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
