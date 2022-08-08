@@ -99,6 +99,9 @@ string widgetsToLength(QLineEdit const * input, LengthCombo const * combo)
 	// Don't return unit-from-choice if the input(field) contains a unit
 	if (isValidGlueLength(fromqstr(length)))
 		return fromqstr(length);
+	// Also try with localized version
+	if (isValidGlueLength(fromqstr(unlocString(length))))
+		return fromqstr(unlocString(length));
 
 	Length::UNIT const unit = combo->currentLengthItem();
 
@@ -115,6 +118,9 @@ Length widgetsToLength(QLineEdit const * input, QComboBox const * combo)
 	// don't return unit-from-choice if the input(field) contains a unit
 	if (isValidGlueLength(fromqstr(length)))
 		return Length(fromqstr(length));
+	// Also try with localized version
+	if (isValidGlueLength(fromqstr(unlocString(length))))
+		return Length(fromqstr(unlocString(length)));
 
 	Length::UNIT unit = Length::UNIT_NONE;
 	QString const item = combo->currentText();
@@ -205,6 +211,14 @@ QString formatLocFPNumber(double d)
 	QLocale loc;
 	result.replace('.', loc.decimalPoint());
 	return result;
+}
+
+
+QString unlocString(QString const & str)
+{
+	QLocale loc;
+	QString res = str;
+	return res.replace(loc.decimalPoint(), QString("."));
 }
 
 

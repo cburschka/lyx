@@ -72,6 +72,9 @@ void doubleToWidget(QLineEdit * input, std::string const & value,
  */
 QString formatLocFPNumber(double d);
 
+// Method to replace localized decimal separator by dot
+QString unlocString(QString const & str);
+
 /// Method to sort QStrings locale-aware (e.g. in combo widgets)
 bool SortLocaleAware(QString const & lhs, QString const & rhs);
 
