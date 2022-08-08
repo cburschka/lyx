@@ -357,6 +357,18 @@ def check_java():
         return ''
 
 
+def checkMacOSappInstalled(prog):
+    '''
+        Use metadata lookup to search for an "installed" macOS application bundle.
+    '''
+    if sys.platform == 'darwin' and len(prog) >= 1:
+        command = r'mdfind "kMDItemContentTypeTree == \"com.apple.application\"c && kMDItemFSName == \"%s\""' % prog
+        result = cmdOutput(command)
+        logger.debug(command + ": " + result)
+        return result != ''
+    return False
+
+
 def checkProgAlternatives(description, progs, rc_entry=None,
                           alt_rc_entry=None, path=None, not_found=''):
     '''
@@ -395,6 +407,10 @@ def checkProgAlternatives(description, progs, rc_entry=None,
             continue
         msg = '+checking for "' + ac_word + '"... '
         found_alt = False
+        if len(alt_rc_entry) >= 1 and ac_word.endswith('.app') and checkMacOSappInstalled(ac_word):
+            logger.info('+add alternative app ' + ac_word)
+            addToRC(alt_rc_entry[0].replace('%%', ac_word))
+            found_alt = True
         for ac_dir in path:
             if hasattr(os, "access") and not os.access(ac_dir, os.F_OK):
                 continue
@@ -812,7 +828,7 @@ def checkFormatEntries(dtl_tools):
     checkViewer('a PDF previewer',
                 ['pdfview', 'kpdf', 'okular', 'qpdfview --unique',
                  'evince', 'xreader', 'kghostview', 'xpdf', 'SumatraPDF',
-                 'acrobat', 'acroread', 'mupdf',
+                 'acrobat', 'acroread', 'mupdf', 'Skim.app',
                  'gv', 'ghostview', 'AcroRd32', 'gsview64', 'gsview32'],
         rc_entry = [r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""	"document,vector,menu=export"	""
 \Format pdf2       pdf    "PDF (pdflatex)"        F  "%%"	""	"document,vector,menu=export"	""
