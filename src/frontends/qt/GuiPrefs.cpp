@@ -2325,7 +2325,8 @@ void PrefFileformats::updateViewers()
 	viewerCO->blockSignals(true);
 	viewerCO->clear();
 	viewerCO->addItem(qt_("None"), QString());
-	viewerCO->addItem(qt_("System Default"), QString("auto"));
+	if (os::canAutoOpenFile(f.extension(), os::VIEW))
+		viewerCO->addItem(qt_("System Default"), QString("auto"));
 	updateComboBox(viewer_alternatives, f.name(), viewerCO);
 	viewerCO->addItem(qt_("Custom"), QString("custom viewer"));
 	viewerCO->blockSignals(false);
@@ -2349,7 +2350,8 @@ void PrefFileformats::updateEditors()
 	editorCO->blockSignals(true);
 	editorCO->clear();
 	editorCO->addItem(qt_("None"), QString());
-	editorCO->addItem(qt_("System Default"), QString("auto"));
+	if (os::canAutoOpenFile(f.extension(), os::EDIT))
+		editorCO->addItem(qt_("System Default"), QString("auto"));
 	updateComboBox(editor_alternatives, f.name(), editorCO);
 	editorCO->addItem(qt_("Custom"), QString("custom editor"));
 	editorCO->blockSignals(false);
