@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-08-07 16:44+0200\n"
-"PO-Revision-Date: 2022-08-07 16:46+0200\n"
+"POT-Creation-Date: 2022-08-08 09:53+0200\n"
+"PO-Revision-Date: 2022-08-08 09:54+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -575,7 +575,7 @@ msgstr "Art der inneren Box"
 #: src/frontends/qt/GuiBox.cpp:420 src/frontends/qt/GuiBox.cpp:630
 #: src/frontends/qt/GuiDocument.cpp:124 src/frontends/qt/GuiGraphics.cpp:582
 #: src/frontends/qt/GuiMathMatrix.cpp:33 src/frontends/qt/GuiPrefs.cpp:2327
-#: src/frontends/qt/GuiPrefs.cpp:2350
+#: src/frontends/qt/GuiPrefs.cpp:2352
 msgid "None"
 msgstr "Keine"
 
@@ -853,7 +853,7 @@ msgstr "A&lle hinzufügen"
 #: src/Buffer.cpp:4707 src/Buffer.cpp:4817 src/LyXVC.cpp:114 src/LyXVC.cpp:310
 #: src/buffer_funcs.cpp:56 src/frontends/qt/GuiBranches.cpp:226
 #: src/frontends/qt/GuiClipboard.cpp:252 src/frontends/qt/GuiDocument.cpp:2852
-#: src/frontends/qt/GuiParagraph.cpp:177 src/frontends/qt/GuiPrefs.cpp:3414
+#: src/frontends/qt/GuiParagraph.cpp:177 src/frontends/qt/GuiPrefs.cpp:3418
 #: src/frontends/qt/GuiView.cpp:2887 src/frontends/qt/GuiView.cpp:3117
 #: src/frontends/qt/GuiView.cpp:3141 src/frontends/qt/GuiView.cpp:3155
 #: src/frontends/qt/GuiView.cpp:3259 src/frontends/qt/GuiView.cpp:3304
@@ -910,8 +910,8 @@ msgstr "&Größe:"
 #: src/frontends/qt/GuiDocument.cpp:3413 src/frontends/qt/GuiDocument.cpp:4908
 #: src/frontends/qt/GuiExternal.cpp:76 src/frontends/qt/GuiGraphics.cpp:71
 #: src/frontends/qt/GuiIndices.cpp:58 src/frontends/qt/GuiListings.cpp:160
-#: src/frontends/qt/GuiListings.cpp:167 src/frontends/qt/GuiPrefs.cpp:2483
-#: src/frontends/qt/GuiPrefs.cpp:2629 src/frontends/qt/GuiPrintNomencl.cpp:47
+#: src/frontends/qt/GuiListings.cpp:167 src/frontends/qt/GuiPrefs.cpp:2487
+#: src/frontends/qt/GuiPrefs.cpp:2633 src/frontends/qt/GuiPrintNomencl.cpp:47
 #: src/frontends/qt/GuiTabularCreate.cpp:107
 #: src/frontends/qt/GuiViewSource.cpp:341
 msgid "Default"
@@ -1111,7 +1111,7 @@ msgstr "S&prache:"
 #: lib/layouts/europasscv.layout:440 lib/layouts/europasscv.layout:475
 #: lib/layouts/europasscv.layout:482 lib/layouts/europecv.layout:321
 #: lib/layouts/europecv.layout:327 lib/layouts/moderncv.layout:580
-#: src/frontends/qt/GuiDocument.cpp:1781 src/frontends/qt/GuiPrefs.cpp:2430
+#: src/frontends/qt/GuiDocument.cpp:1781 src/frontends/qt/GuiPrefs.cpp:2434
 #: src/frontends/qt/Menus.cpp:938
 msgid "Language"
 msgstr "Sprache"
@@ -3758,7 +3758,7 @@ msgstr "Doppelt"
 #: src/frontends/qt/GuiDocument.cpp:1201 src/frontends/qt/GuiDocument.cpp:1549
 #: src/frontends/qt/GuiHSpace.cpp:57 src/frontends/qt/GuiPrefs.cpp:816
 #: src/frontends/qt/GuiPrefs.cpp:844 src/frontends/qt/GuiPrefs.cpp:871
-#: src/frontends/qt/GuiPrefs.cpp:2329 src/frontends/qt/GuiPrefs.cpp:2352
+#: src/frontends/qt/GuiPrefs.cpp:2331 src/frontends/qt/GuiPrefs.cpp:2356
 #: src/frontends/qt/GuiPrintNomencl.cpp:51 src/insets/InsetInfo.cpp:237
 #: src/insets/InsetInfo.cpp:247 src/insets/InsetInfo.cpp:251
 #: src/insets/InsetInfo.cpp:260 src/insets/InsetInfo.cpp:322
@@ -4013,8 +4013,8 @@ msgid "&Modify"
 msgstr "&Ändern"
 
 #: src/frontends/qt/ui/PrefConvertersUi.ui:286
-#: src/frontends/qt/ui/PrefShortcutsUi.ui:61 src/frontends/qt/GuiPrefs.cpp:3150
-#: src/frontends/qt/GuiPrefs.cpp:3236
+#: src/frontends/qt/ui/PrefShortcutsUi.ui:61 src/frontends/qt/GuiPrefs.cpp:3154
+#: src/frontends/qt/GuiPrefs.cpp:3240
 msgid "Remo&ve"
 msgstr "&Entfernen"
 
@@ -31472,7 +31472,7 @@ msgstr "Über LyX"
 msgid "About %1"
 msgstr "Über %1"
 
-#: src/frontends/qt/GuiApplication.cpp:796 src/frontends/qt/GuiPrefs.cpp:3528
+#: src/frontends/qt/GuiApplication.cpp:796 src/frontends/qt/GuiPrefs.cpp:3532
 msgid "Preferences"
 msgstr "Einstellungen"
 
@@ -33897,7 +33897,7 @@ msgstr ""
 msgid "File Formats"
 msgstr "Dateiformate"
 
-#: src/frontends/qt/GuiPrefs.cpp:2257 src/frontends/qt/GuiPrefs.cpp:2409
+#: src/frontends/qt/GuiPrefs.cpp:2257 src/frontends/qt/GuiPrefs.cpp:2413
 msgid "Format in use"
 msgstr "Format wird verwendet"
 
@@ -33909,17 +33909,21 @@ msgstr ""
 "Der Kurztitel eines Formats, das von einem Konverter verwendet wird, kann "
 "nicht umbenannt werden. Bitte entfernen Sie zunächst den Konverter."
 
-#: src/frontends/qt/GuiPrefs.cpp:2410
+#: src/frontends/qt/GuiPrefs.cpp:2329 src/frontends/qt/GuiPrefs.cpp:2354
+msgid "System Default"
+msgstr "System-Voreinstellung"
+
+#: src/frontends/qt/GuiPrefs.cpp:2414
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "Ein Format, das von einem Konverter verwendet wird, kann nicht entfernt "
 "werden. Bitte entfernen Sie zunächst den Konverter."
 
-#: src/frontends/qt/GuiPrefs.cpp:2510
+#: src/frontends/qt/GuiPrefs.cpp:2514
 msgid "LyX needs to be restarted!"
 msgstr "LyX muss neu gestartet werden!"
 
-#: src/frontends/qt/GuiPrefs.cpp:2511
+#: src/frontends/qt/GuiPrefs.cpp:2515
 msgid ""
 "The change of user interface language will be fully effective only after a "
 "restart."
@@ -33927,82 +33931,82 @@ msgstr ""
 "Die Änderung der Sprache der Benutzeroberfläche wird erst nach einem "
 "Neustart von LyX wirksam."
 
-#: src/frontends/qt/GuiPrefs.cpp:2611
+#: src/frontends/qt/GuiPrefs.cpp:2615
 msgid "User Interface"
 msgstr "Benutzeroberfläche"
 
-#: src/frontends/qt/GuiPrefs.cpp:2630
+#: src/frontends/qt/GuiPrefs.cpp:2634
 msgid "Classic"
 msgstr "Klassisch"
 
-#: src/frontends/qt/GuiPrefs.cpp:2631
+#: src/frontends/qt/GuiPrefs.cpp:2635
 msgid "Oxygen"
 msgstr "Oxygen"
 
-#: src/frontends/qt/GuiPrefs.cpp:2682
+#: src/frontends/qt/GuiPrefs.cpp:2686
 msgid "Document Handling"
 msgstr "Dokument-Handhabung"
 
-#: src/frontends/qt/GuiPrefs.cpp:2789
+#: src/frontends/qt/GuiPrefs.cpp:2793
 msgid "Control"
 msgstr "Kontrolle"
 
-#: src/frontends/qt/GuiPrefs.cpp:2910
+#: src/frontends/qt/GuiPrefs.cpp:2914
 msgid "Shortcuts"
 msgstr "Tastenkürzel"
 
-#: src/frontends/qt/GuiPrefs.cpp:2917
+#: src/frontends/qt/GuiPrefs.cpp:2921
 msgid "Function"
 msgstr "Funktion"
 
-#: src/frontends/qt/GuiPrefs.cpp:2918
+#: src/frontends/qt/GuiPrefs.cpp:2922
 msgid "Shortcut"
 msgstr "Tastenkürzel"
 
-#: src/frontends/qt/GuiPrefs.cpp:2995
+#: src/frontends/qt/GuiPrefs.cpp:2999
 msgid "Cursor, Mouse and Editing Functions"
 msgstr "Cursor-, Maus- und Bearbeitungsfunktionen"
 
-#: src/frontends/qt/GuiPrefs.cpp:2999
+#: src/frontends/qt/GuiPrefs.cpp:3003
 msgid "Mathematical Symbols"
 msgstr "Mathematische Symbole"
 
-#: src/frontends/qt/GuiPrefs.cpp:3003
+#: src/frontends/qt/GuiPrefs.cpp:3007
 msgid "Document and Window"
 msgstr "Dokument und Arbeitsbereich"
 
-#: src/frontends/qt/GuiPrefs.cpp:3007
+#: src/frontends/qt/GuiPrefs.cpp:3011
 msgid "Font, Layouts and Textclasses"
 msgstr "Schriften, Absatzformate und Textklassen"
 
-#: src/frontends/qt/GuiPrefs.cpp:3011
+#: src/frontends/qt/GuiPrefs.cpp:3015
 msgid "System and Miscellaneous"
 msgstr "System und Verschiedenes"
 
-#: src/frontends/qt/GuiPrefs.cpp:3148 src/frontends/qt/GuiPrefs.cpp:3208
+#: src/frontends/qt/GuiPrefs.cpp:3152 src/frontends/qt/GuiPrefs.cpp:3212
 msgid "Res&tore"
 msgstr "Zurüc&ksetzen"
 
-#: src/frontends/qt/GuiPrefs.cpp:3376 src/frontends/qt/GuiPrefs.cpp:3385
-#: src/frontends/qt/GuiPrefs.cpp:3391 src/frontends/qt/GuiPrefs.cpp:3455
+#: src/frontends/qt/GuiPrefs.cpp:3380 src/frontends/qt/GuiPrefs.cpp:3389
+#: src/frontends/qt/GuiPrefs.cpp:3395 src/frontends/qt/GuiPrefs.cpp:3459
 msgid "Failed to create shortcut"
 msgstr "Erstellen des Tastenkürzels fehlgeschlagen"
 
-#: src/frontends/qt/GuiPrefs.cpp:3377
+#: src/frontends/qt/GuiPrefs.cpp:3381
 msgid "Unknown or invalid LyX function"
 msgstr "Unbekannte oder ungültige LyX-Funktion"
 
-#: src/frontends/qt/GuiPrefs.cpp:3386
+#: src/frontends/qt/GuiPrefs.cpp:3390
 msgid "This LyX function is hidden and cannot be bound."
 msgstr ""
 "Dies ist eine versteckte LyX-Funktion. Sie kann nicht mit einer "
 "Tastenkombination belegt werden."
 
-#: src/frontends/qt/GuiPrefs.cpp:3392
+#: src/frontends/qt/GuiPrefs.cpp:3396
 msgid "Invalid or empty key sequence"
 msgstr "Ungültige oder leere Tastensequenz"
 
-#: src/frontends/qt/GuiPrefs.cpp:3407
+#: src/frontends/qt/GuiPrefs.cpp:3411
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to %2$s.\n"
@@ -34012,19 +34016,19 @@ msgstr ""
 "Sind Sie sicher, dass Sie dies aufheben und das\n"
 "Tastenkürzel mit %3$s belegen wollen?"
 
-#: src/frontends/qt/GuiPrefs.cpp:3413
+#: src/frontends/qt/GuiPrefs.cpp:3417
 msgid "Redefine shortcut?"
 msgstr "Tastenkürzel neu definieren?"
 
-#: src/frontends/qt/GuiPrefs.cpp:3414
+#: src/frontends/qt/GuiPrefs.cpp:3418
 msgid "&Redefine"
 msgstr "&Neu Definieren"
 
-#: src/frontends/qt/GuiPrefs.cpp:3456
+#: src/frontends/qt/GuiPrefs.cpp:3460
 msgid "Can not insert shortcut to the list"
 msgstr "Kann Tastenkürzel nicht in Liste einfügen"
 
-#: src/frontends/qt/GuiPrefs.cpp:3487
+#: src/frontends/qt/GuiPrefs.cpp:3491
 msgid "Identity"
 msgstr "Identität"
 
