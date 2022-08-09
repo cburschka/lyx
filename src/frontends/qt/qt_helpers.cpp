@@ -214,22 +214,6 @@ QString formatLocFPNumber(double d)
 }
 
 
-QString locLengthString(QString const & str)
-{
-	QLocale loc;
-	QString res = str;
-	return res.replace(QString("."), loc.decimalPoint());
-}
-
-
-QString unlocLengthString(QString const & str)
-{
-	QLocale loc;
-	QString res = str;
-	return res.replace(loc.decimalPoint(), QString("."));
-}
-
-
 bool SortLocaleAware(QString const & lhs, QString const & rhs)
 {
 	return QString::localeAwareCompare(lhs, rhs) < 0;
