@@ -362,8 +362,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-08-07 18:04+0200\n"
-"PO-Revision-Date: 2022-08-07 18:06+0200\n"
+"POT-Creation-Date: 2022-08-09 08:45+0200\n"
+"PO-Revision-Date: 2022-08-09 08:46+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -845,7 +845,7 @@ msgstr "Type de boîte intérieure"
 #: src/frontends/qt/GuiBox.cpp:420 src/frontends/qt/GuiBox.cpp:630
 #: src/frontends/qt/GuiDocument.cpp:124 src/frontends/qt/GuiGraphics.cpp:582
 #: src/frontends/qt/GuiMathMatrix.cpp:33 src/frontends/qt/GuiPrefs.cpp:2327
-#: src/frontends/qt/GuiPrefs.cpp:2350
+#: src/frontends/qt/GuiPrefs.cpp:2352
 msgid "None"
 msgstr "Aucun"
 
@@ -1122,7 +1122,7 @@ msgstr "Ajouter &tout"
 #: src/Buffer.cpp:4707 src/Buffer.cpp:4817 src/LyXVC.cpp:114 src/LyXVC.cpp:310
 #: src/buffer_funcs.cpp:56 src/frontends/qt/GuiBranches.cpp:226
 #: src/frontends/qt/GuiClipboard.cpp:252 src/frontends/qt/GuiDocument.cpp:2852
-#: src/frontends/qt/GuiParagraph.cpp:177 src/frontends/qt/GuiPrefs.cpp:3414
+#: src/frontends/qt/GuiParagraph.cpp:177 src/frontends/qt/GuiPrefs.cpp:3418
 #: src/frontends/qt/GuiView.cpp:2887 src/frontends/qt/GuiView.cpp:3117
 #: src/frontends/qt/GuiView.cpp:3141 src/frontends/qt/GuiView.cpp:3155
 #: src/frontends/qt/GuiView.cpp:3259 src/frontends/qt/GuiView.cpp:3304
@@ -1179,8 +1179,8 @@ msgstr "&Taille :"
 #: src/frontends/qt/GuiDocument.cpp:3413 src/frontends/qt/GuiDocument.cpp:4908
 #: src/frontends/qt/GuiExternal.cpp:76 src/frontends/qt/GuiGraphics.cpp:71
 #: src/frontends/qt/GuiIndices.cpp:58 src/frontends/qt/GuiListings.cpp:160
-#: src/frontends/qt/GuiListings.cpp:167 src/frontends/qt/GuiPrefs.cpp:2483
-#: src/frontends/qt/GuiPrefs.cpp:2629 src/frontends/qt/GuiPrintNomencl.cpp:47
+#: src/frontends/qt/GuiListings.cpp:167 src/frontends/qt/GuiPrefs.cpp:2487
+#: src/frontends/qt/GuiPrefs.cpp:2633 src/frontends/qt/GuiPrintNomencl.cpp:47
 #: src/frontends/qt/GuiTabularCreate.cpp:107
 #: src/frontends/qt/GuiViewSource.cpp:341
 msgid "Default"
@@ -1380,7 +1380,7 @@ msgstr "Lan&gue :"
 #: lib/layouts/europasscv.layout:440 lib/layouts/europasscv.layout:475
 #: lib/layouts/europasscv.layout:482 lib/layouts/europecv.layout:321
 #: lib/layouts/europecv.layout:327 lib/layouts/moderncv.layout:580
-#: src/frontends/qt/GuiDocument.cpp:1781 src/frontends/qt/GuiPrefs.cpp:2430
+#: src/frontends/qt/GuiDocument.cpp:1781 src/frontends/qt/GuiPrefs.cpp:2434
 #: src/frontends/qt/Menus.cpp:938
 msgid "Language"
 msgstr "Langue"
@@ -4018,7 +4018,7 @@ msgstr "Double"
 #: src/frontends/qt/GuiDocument.cpp:1201 src/frontends/qt/GuiDocument.cpp:1549
 #: src/frontends/qt/GuiHSpace.cpp:57 src/frontends/qt/GuiPrefs.cpp:816
 #: src/frontends/qt/GuiPrefs.cpp:844 src/frontends/qt/GuiPrefs.cpp:871
-#: src/frontends/qt/GuiPrefs.cpp:2329 src/frontends/qt/GuiPrefs.cpp:2352
+#: src/frontends/qt/GuiPrefs.cpp:2331 src/frontends/qt/GuiPrefs.cpp:2356
 #: src/frontends/qt/GuiPrintNomencl.cpp:51 src/insets/InsetInfo.cpp:237
 #: src/insets/InsetInfo.cpp:247 src/insets/InsetInfo.cpp:251
 #: src/insets/InsetInfo.cpp:260 src/insets/InsetInfo.cpp:322
@@ -4274,8 +4274,8 @@ msgid "&Modify"
 msgstr "&Modifier"
 
 #: src/frontends/qt/ui/PrefConvertersUi.ui:286
-#: src/frontends/qt/ui/PrefShortcutsUi.ui:61 src/frontends/qt/GuiPrefs.cpp:3150
-#: src/frontends/qt/GuiPrefs.cpp:3236
+#: src/frontends/qt/ui/PrefShortcutsUi.ui:61 src/frontends/qt/GuiPrefs.cpp:3154
+#: src/frontends/qt/GuiPrefs.cpp:3240
 msgid "Remo&ve"
 msgstr "&Enlever"
 
@@ -8868,7 +8868,7 @@ msgstr "Également affiliation"
 #: lib/layouts/achemso.layout:157 lib/layouts/europasscv.layout:141
 #: lib/layouts/europecv.layout:140 lib/layouts/lettre.layout:48
 #: lib/layouts/lettre.layout:381 lib/layouts/moderncv.layout:210
-#: lib/layouts/scrlttr2.layout:242 lib/configure.py:855
+#: lib/layouts/scrlttr2.layout:242 lib/configure.py:871
 msgid "Fax"
 msgstr "Fax"
 
@@ -14470,7 +14470,7 @@ msgstr "Adresse pour tirés à part :"
 msgid "RunningTitle"
 msgstr "TitreCourant"
 
-#: lib/layouts/knitr.module:2 lib/configure.py:762 lib/examples/Articles:0
+#: lib/layouts/knitr.module:2 lib/configure.py:778 lib/examples/Articles:0
 msgid "Rnw (knitr)"
 msgstr "Rnw (knitr)"
 
@@ -17773,7 +17773,7 @@ msgstr "Pour éditeurs"
 msgid "Probability Theory and Related Fields (Springer svprobth)"
 msgstr "Théorie des probabilités et domaines connexes (Springer svprobth)"
 
-#: lib/layouts/sweave.module:2 lib/configure.py:759 lib/examples/Articles:0
+#: lib/layouts/sweave.module:2 lib/configure.py:775 lib/examples/Articles:0
 msgid "Sweave"
 msgstr "Sweave"
 
@@ -21966,7 +21966,7 @@ msgstr "Formulaires PDF|o"
 msgid "Hazard and Precautionary Statements|H"
 msgstr "Mentions de danger et conseils de prudence|u"
 
-#: lib/ui/stdmenus.inc:668 lib/configure.py:759
+#: lib/ui/stdmenus.inc:668 lib/configure.py:775
 msgid "Sweave|S"
 msgstr "Sweave|S"
 
@@ -26874,485 +26874,485 @@ msgstr "Figure Xfig"
 msgid "An Xfig figure.\n"
 msgstr "Une figure Xfig.\n"
 
-#: lib/configure.py:710
+#: lib/configure.py:726
 msgid "tgo"
 msgstr "tgo"
 
-#: lib/configure.py:710
+#: lib/configure.py:726
 msgid "tgo|Tgif"
 msgstr "tgo|Tgif"
 
-#: lib/configure.py:713
+#: lib/configure.py:729
 msgid "FIG"
 msgstr "FIG"
 
-#: lib/configure.py:716
+#: lib/configure.py:732
 msgid "DIA"
 msgstr "DIA"
 
-#: lib/configure.py:719
+#: lib/configure.py:735
 msgid "sxd"
 msgstr "sxd"
 
-#: lib/configure.py:719
+#: lib/configure.py:735
 msgid "sxd|OpenDocument"
 msgstr "sxd|OpenDocument"
 
-#: lib/configure.py:722
+#: lib/configure.py:738
 msgid "Grace"
 msgstr "Grace"
 
-#: lib/configure.py:725
+#: lib/configure.py:741
 msgid "FEN"
 msgstr "FEN"
 
-#: lib/configure.py:728
+#: lib/configure.py:744
 msgid "SVG"
 msgstr "SVG"
 
-#: lib/configure.py:729
+#: lib/configure.py:745
 msgid "SVG (compressed)"
 msgstr "SVG (compressé)"
 
-#: lib/configure.py:732
+#: lib/configure.py:748
 msgid "BMP"
 msgstr "BMP"
 
-#: lib/configure.py:733
+#: lib/configure.py:749
 msgid "GIF"
 msgstr "GIF"
 
-#: lib/configure.py:734
+#: lib/configure.py:750
 msgid "jpeg"
 msgstr "jpeg"
 
-#: lib/configure.py:734
+#: lib/configure.py:750
 msgid "jpeg|JPEG"
 msgstr "jpeg|JPEG"
 
-#: lib/configure.py:735
+#: lib/configure.py:751
 msgid "PBM"
 msgstr "PBM"
 
-#: lib/configure.py:736
+#: lib/configure.py:752
 msgid "PGM"
 msgstr "PGM"
 
-#: lib/configure.py:737 src/frontends/qt/GuiClipboard.cpp:181
+#: lib/configure.py:753 src/frontends/qt/GuiClipboard.cpp:181
 msgid "PNG"
 msgstr "PNG"
 
-#: lib/configure.py:738
+#: lib/configure.py:754
 msgid "PPM"
 msgstr "PPM"
 
-#: lib/configure.py:739
+#: lib/configure.py:755
 msgid "TIFF"
 msgstr "TIFF"
 
-#: lib/configure.py:740
+#: lib/configure.py:756
 msgid "XBM"
 msgstr "XBM"
 
-#: lib/configure.py:741
+#: lib/configure.py:757
 msgid "XPM"
 msgstr "XPM"
 
-#: lib/configure.py:752
+#: lib/configure.py:768
 msgid "Plain text (chess output)"
 msgstr "Texte brut (échecs)"
 
-#: lib/configure.py:753
+#: lib/configure.py:769
 msgid "DocBook 5"
 msgstr "DocBook 5"
 
-#: lib/configure.py:754
+#: lib/configure.py:770
 msgid "Graphviz Dot"
 msgstr "Graphviz Dot"
 
-#: lib/configure.py:755
+#: lib/configure.py:771
 msgid "LaTeX (dviluatex)"
 msgstr "LaTeX (dviluatex)"
 
-#: lib/configure.py:756
+#: lib/configure.py:772
 msgid "ePub"
 msgstr "ePub"
 
-#: lib/configure.py:757
+#: lib/configure.py:773
 msgid "LaTeX (pLaTeX)"
 msgstr "LaTeX (pLaTeX)"
 
-#: lib/configure.py:758
+#: lib/configure.py:774
 msgid "NoWeb"
 msgstr "NoWeb"
 
-#: lib/configure.py:758
+#: lib/configure.py:774
 msgid "NoWeb|N"
 msgstr "NoWeb|N"
 
-#: lib/configure.py:760
+#: lib/configure.py:776
 msgid "Sweave (Japanese)"
 msgstr "Sweave (japonais)"
 
-#: lib/configure.py:760
+#: lib/configure.py:776
 msgid "Sweave (Japanese)|S"
 msgstr "Sweave (japonais)|S"
 
-#: lib/configure.py:761
+#: lib/configure.py:777
 msgid "R/S code"
 msgstr "R/S code"
 
-#: lib/configure.py:763
+#: lib/configure.py:779
 msgid "Rnw (knitr, Japanese)"
 msgstr "Rnw (knitr, japonais)"
 
-#: lib/configure.py:764
+#: lib/configure.py:780
 msgid "LilyPond book (LaTeX)"
 msgstr "Livre LilyPond (LaTeX)"
 
-#: lib/configure.py:765
+#: lib/configure.py:781
 msgid "LilyPond book (pLaTeX)"
 msgstr "Livre LilyPond (pLaTeX)"
 
-#: lib/configure.py:766
+#: lib/configure.py:782
 msgid "LaTeX (plain)"
 msgstr "LaTeX (standard)"
 
-#: lib/configure.py:766
+#: lib/configure.py:782
 msgid "LaTeX (plain)|L"
 msgstr "LaTeX (standard)|L"
 
-#: lib/configure.py:767
+#: lib/configure.py:783
 msgid "LaTeX (LuaTeX)"
 msgstr "LaTeX (LuaTeX)"
 
-#: lib/configure.py:768
+#: lib/configure.py:784
 msgid "LaTeX (pdflatex)"
 msgstr "LaTeX (pdflatex)"
 
-#: lib/configure.py:769
+#: lib/configure.py:785
 msgid "LaTeX (XeTeX)"
 msgstr "LaTeX (XeTeX)"
 
-#: lib/configure.py:770
+#: lib/configure.py:786
 msgid "LaTeX (clipboard)"
 msgstr "LaTeX (presse-papier)"
 
-#: lib/configure.py:771
+#: lib/configure.py:787
 msgid "Plain text"
 msgstr "Texte brut"
 
-#: lib/configure.py:771
+#: lib/configure.py:787
 msgid "Plain text|a"
 msgstr "Texte brut|r"
 
-#: lib/configure.py:772
+#: lib/configure.py:788
 msgid "Plain text (pstotext)"
 msgstr "Texte brut (pstotext)"
 
-#: lib/configure.py:773
+#: lib/configure.py:789
 msgid "Plain text (ps2ascii)"
 msgstr "Texte brut (ps2ascii)"
 
-#: lib/configure.py:774
+#: lib/configure.py:790
 msgid "Plain text (catdvi)"
 msgstr "Texte brut (catdvi)"
 
-#: lib/configure.py:775
+#: lib/configure.py:791
 msgid "Plain Text, Join Lines"
 msgstr "Texte brut, lignes jointives"
 
-#: lib/configure.py:776
+#: lib/configure.py:792
 msgid "Info (Beamer)"
 msgstr "Info (Beamer)"
 
-#: lib/configure.py:780
+#: lib/configure.py:796
 msgid "LilyPond music"
 msgstr "Format musical LilyPond"
 
-#: lib/configure.py:783
+#: lib/configure.py:799
 msgid "Gnumeric spreadsheet"
 msgstr "Tableur Gnumeric"
 
-#: lib/configure.py:784
+#: lib/configure.py:800
 msgid "Excel spreadsheet"
 msgstr "Tableur Excel"
 
-#: lib/configure.py:785
+#: lib/configure.py:801
 msgid "MS Excel Office Open XML"
 msgstr "MS Excel Office Open XML"
 
-#: lib/configure.py:786
+#: lib/configure.py:802
 msgid "XHTML Table (for spreadsheets)"
 msgstr "Tableau HTML (pour les feuilles de calcul)"
 
-#: lib/configure.py:787
+#: lib/configure.py:803
 msgid "HTML Table (for spreadsheets)"
 msgstr "Tableau HTML (pour les feuilles de calcul)"
 
-#: lib/configure.py:788
+#: lib/configure.py:804
 msgid "OpenDocument spreadsheet"
 msgstr "Tableur OpenDocument"
 
-#: lib/configure.py:791
+#: lib/configure.py:807
 msgid "LyXHTML"
 msgstr "LyXHTML"
 
-#: lib/configure.py:791
+#: lib/configure.py:807
 msgid "LyXHTML|y"
 msgstr "LyXHTML|y"
 
-#: lib/configure.py:797 src/frontends/qt/GuiLog.cpp:289
+#: lib/configure.py:813 src/frontends/qt/GuiLog.cpp:289
 #: src/insets/InsetBibtex.cpp:148
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: lib/configure.py:805
+#: lib/configure.py:821
 msgid "EPS"
 msgstr "EPS"
 
-#: lib/configure.py:806
+#: lib/configure.py:822
 msgid "EPS (uncropped)"
 msgstr "EPS (non rogné)"
 
-#: lib/configure.py:807 lib/examples/Articles:0
+#: lib/configure.py:823 lib/examples/Articles:0
 msgid "EPS (cropped)"
 msgstr "EPS (rogné)"
 
-#: lib/configure.py:808
+#: lib/configure.py:824
 msgid "Postscript"
 msgstr "Postscript"
 
-#: lib/configure.py:808
+#: lib/configure.py:824
 msgid "Postscript|t"
 msgstr "Postscript|t"
 
-#: lib/configure.py:817
+#: lib/configure.py:833
 msgid "PDF (ps2pdf)"
 msgstr "PDF (ps2pdf)"
 
-#: lib/configure.py:817
+#: lib/configure.py:833
 msgid "PDF (ps2pdf)|P"
 msgstr "PDF (ps2pdf)|P"
 
-#: lib/configure.py:818
+#: lib/configure.py:834
 msgid "PDF (pdflatex)"
 msgstr "PDF (pdflatex)"
 
-#: lib/configure.py:818
+#: lib/configure.py:834
 msgid "PDF (pdflatex)|F"
 msgstr "PDF (pdflatex)|F"
 
-#: lib/configure.py:819
+#: lib/configure.py:835
 msgid "PDF (dvipdfm)"
 msgstr "PDF (dvipdfm)"
 
-#: lib/configure.py:819
+#: lib/configure.py:835
 msgid "PDF (dvipdfm)|m"
 msgstr "PDF (dvipdfm)|m"
 
-#: lib/configure.py:820
+#: lib/configure.py:836
 msgid "PDF (XeTeX)"
 msgstr "PDF (XeTeX)"
 
-#: lib/configure.py:820
+#: lib/configure.py:836
 msgid "PDF (XeTeX)|X"
 msgstr "PDF (XeTeX)|X"
 
-#: lib/configure.py:821
+#: lib/configure.py:837
 msgid "PDF (LuaTeX)"
 msgstr "PDF (LuaTeX)"
 
-#: lib/configure.py:821
+#: lib/configure.py:837
 msgid "PDF (LuaTeX)|u"
 msgstr "PDF (LuaTeX)|u"
 
-#: lib/configure.py:822
+#: lib/configure.py:838
 msgid "PDF (graphics)"
 msgstr "PDF (graphiques)"
 
-#: lib/configure.py:823 lib/examples/Articles:0
+#: lib/configure.py:839 lib/examples/Articles:0
 msgid "PDF (cropped)"
 msgstr "PDF (rogné)"
 
-#: lib/configure.py:824
+#: lib/configure.py:840
 msgid "PDF (lower resolution)"
 msgstr "PDF (résolution réduite)"
 
-#: lib/configure.py:825
+#: lib/configure.py:841
 msgid "PDF (DocBook)"
 msgstr "PDF (DocBook)"
 
-#: lib/configure.py:830
+#: lib/configure.py:846
 msgid "DVI"
 msgstr "DVI"
 
-#: lib/configure.py:830
+#: lib/configure.py:846
 msgid "DVI|D"
 msgstr "DVI|D"
 
-#: lib/configure.py:831
+#: lib/configure.py:847
 msgid "DVI (LuaTeX)"
 msgstr "DVI (LuaTeX)"
 
-#: lib/configure.py:831
+#: lib/configure.py:847
 msgid "DVI (LuaTeX)|V"
 msgstr "DVI (LuaTeX)|V"
 
-#: lib/configure.py:834
+#: lib/configure.py:850
 msgid "DraftDVI"
 msgstr "BrouillonDVI"
 
-#: lib/configure.py:837 lib/configure.py:874
+#: lib/configure.py:853 lib/configure.py:890
 msgid "htm"
 msgstr "htm"
 
-#: lib/configure.py:837 lib/configure.py:874
+#: lib/configure.py:853 lib/configure.py:890
 msgid "htm|HTML"
 msgstr "htm|HTML"
 
-#: lib/configure.py:840
+#: lib/configure.py:856
 msgid "Noteedit"
 msgstr "Noteedit"
 
-#: lib/configure.py:843
+#: lib/configure.py:859
 msgid "OpenDocument (tex4ht)"
 msgstr "OpenDocument (tex4ht)"
 
-#: lib/configure.py:844
+#: lib/configure.py:860
 msgid "OpenDocument (eLyXer)"
 msgstr "OpenDocument (eLyXer)"
 
-#: lib/configure.py:845
+#: lib/configure.py:861
 msgid "OpenDocument (Pandoc)"
 msgstr "OpenDocument (pandoc)"
 
-#: lib/configure.py:846
+#: lib/configure.py:862
 msgid "OpenOffice.Org (sxw)"
 msgstr "OpenOffice.Org (sxw)"
 
-#: lib/configure.py:849
+#: lib/configure.py:865
 msgid "Rich Text Format"
 msgstr "Rich Text Format"
 
-#: lib/configure.py:850
+#: lib/configure.py:866
 msgid "MS Word"
 msgstr "MS Word"
 
-#: lib/configure.py:850
+#: lib/configure.py:866
 msgid "MS Word|W"
 msgstr "MS Word|W"
 
-#: lib/configure.py:851
+#: lib/configure.py:867
 msgid "MS Word Office Open XML"
 msgstr "MS Word Office Open XML"
 
-#: lib/configure.py:851
+#: lib/configure.py:867
 msgid "MS Word Office Open XML|O"
 msgstr "MS Word Office Open XML|O"
 
-#: lib/configure.py:854
+#: lib/configure.py:870
 msgid "Table (CSV)"
 msgstr "Tableau (CSV)"
 
-#: lib/configure.py:856 src/frontends/qt/GuiView.cpp:1656
+#: lib/configure.py:872 src/frontends/qt/GuiView.cpp:1656
 #: src/mathed/InsetMathMacroTemplate.cpp:538
 msgid "LyX"
 msgstr "LyX"
 
-#: lib/configure.py:857
+#: lib/configure.py:873
 msgid "LyX 1.3.x"
 msgstr "LyX 1.3.x"
 
-#: lib/configure.py:858
+#: lib/configure.py:874
 msgid "LyX 1.4.x"
 msgstr "LyX 1.4.x"
 
-#: lib/configure.py:859
+#: lib/configure.py:875
 msgid "LyX 1.5.x"
 msgstr "LyX 1.5.x"
 
-#: lib/configure.py:860
+#: lib/configure.py:876
 msgid "LyX 1.6.x"
 msgstr "LyX 1.6.x"
 
-#: lib/configure.py:861
+#: lib/configure.py:877
 msgid "LyX 2.0.x"
 msgstr "LyX 2.0.x"
 
-#: lib/configure.py:862
+#: lib/configure.py:878
 msgid "LyX 2.1.x"
 msgstr "LyX 2.1.x"
 
-#: lib/configure.py:863
+#: lib/configure.py:879
 msgid "LyX 2.2.x"
 msgstr "LyX 2.2.x"
 
-#: lib/configure.py:864
+#: lib/configure.py:880
 msgid "LyX 2.3.x"
 msgstr "LyX 2.3.x"
 
-#: lib/configure.py:865
+#: lib/configure.py:881
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK LyX 1.4.x (big5)"
 
-#: lib/configure.py:866
+#: lib/configure.py:882
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr "CJK LyX 1.4.x (euc-jp)"
 
-#: lib/configure.py:867
+#: lib/configure.py:883
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr "CJK LyX 1.4.x (euc-kr)"
 
-#: lib/configure.py:868
+#: lib/configure.py:884
 msgid "LyX Preview"
 msgstr "Aperçu"
 
-#: lib/configure.py:869
+#: lib/configure.py:885
 msgid "pdf_tex"
 msgstr "pdf_tex"
 
-#: lib/configure.py:869
+#: lib/configure.py:885
 msgid "pdf_tex|PDFTEX"
 msgstr "pdf_tex|PDFTEX"
 
-#: lib/configure.py:870
+#: lib/configure.py:886
 msgid "Program"
 msgstr "Listing de code source"
 
-#: lib/configure.py:871
+#: lib/configure.py:887
 msgid "ps_tex"
 msgstr "ps_tex"
 
-#: lib/configure.py:871
+#: lib/configure.py:887
 msgid "ps_tex|PSTEX"
 msgstr "ps_tex|PSTEX"
 
-#: lib/configure.py:872 src/frontends/qt/GuiClipboard.cpp:178
+#: lib/configure.py:888 src/frontends/qt/GuiClipboard.cpp:178
 msgid "Windows Metafile"
 msgstr "Métafichier Windows"
 
-#: lib/configure.py:873 src/frontends/qt/GuiClipboard.cpp:177
+#: lib/configure.py:889 src/frontends/qt/GuiClipboard.cpp:177
 msgid "Enhanced Metafile"
 msgstr "Métafichier amélioré"
 
-#: lib/configure.py:993
+#: lib/configure.py:1009
 msgid "LyXBlogger"
 msgstr "LyxBlogger"
 
-#: lib/configure.py:1250
+#: lib/configure.py:1266
 msgid "gnuplot"
 msgstr "gnuplot"
 
-#: lib/configure.py:1250
+#: lib/configure.py:1266
 msgid "gnuplot|Gnuplot"
 msgstr "gnuplot|Gnuplot"
 
-#: lib/configure.py:1350
+#: lib/configure.py:1366
 msgid "LyX Archive (zip)"
 msgstr "Archive LyX (zip)"
 
-#: lib/configure.py:1353
+#: lib/configure.py:1369
 msgid "LyX Archive (tar.gz)"
 msgstr "Archive LyX (tar.gz)"
 
@@ -28043,7 +28043,7 @@ msgid "Error viewing the output file."
 msgstr "Erreur lors de l'affichage du fichier imprimable."
 
 #: src/Buffer.cpp:3370 src/frontends/qt/GuiView.cpp:2718
-#: src/frontends/qt/Validator.cpp:245 src/insets/ExternalSupport.cpp:394
+#: src/frontends/qt/Validator.cpp:249 src/insets/ExternalSupport.cpp:394
 #: src/insets/InsetGraphics.cpp:693 src/insets/InsetInclude.cpp:606
 msgid "Invalid filename"
 msgstr "Nom de fichier invalide"
@@ -28752,8 +28752,8 @@ msgstr ""
 "%1$s\n"
 "est illisible."
 
-#: src/BufferView.cpp:3589 src/frontends/qt/qt_helpers.cpp:322
-#: src/frontends/qt/qt_helpers.cpp:325 src/frontends/qt/qt_helpers.cpp:331
+#: src/BufferView.cpp:3589 src/frontends/qt/qt_helpers.cpp:336
+#: src/frontends/qt/qt_helpers.cpp:339 src/frontends/qt/qt_helpers.cpp:345
 #: src/output.cpp:39
 msgid "Could not open file"
 msgstr "Ouverture du fichier impossible"
@@ -31741,7 +31741,7 @@ msgstr "À propos de LyX"
 msgid "About %1"
 msgstr "À propos de %1"
 
-#: src/frontends/qt/GuiApplication.cpp:796 src/frontends/qt/GuiPrefs.cpp:3528
+#: src/frontends/qt/GuiApplication.cpp:796 src/frontends/qt/GuiPrefs.cpp:3532
 msgid "Preferences"
 msgstr "Préférences"
 
@@ -34157,7 +34157,7 @@ msgstr ""
 msgid "File Formats"
 msgstr "Formats de fichier"
 
-#: src/frontends/qt/GuiPrefs.cpp:2257 src/frontends/qt/GuiPrefs.cpp:2409
+#: src/frontends/qt/GuiPrefs.cpp:2257 src/frontends/qt/GuiPrefs.cpp:2413
 msgid "Format in use"
 msgstr "Format utilisé"
 
@@ -34169,17 +34169,21 @@ msgstr ""
 "Impossible de modifier le nom abrégé d'un format utilisé par un "
 "convertisseur. Enlever d'abord le convertisseur."
 
-#: src/frontends/qt/GuiPrefs.cpp:2410
+#: src/frontends/qt/GuiPrefs.cpp:2329 src/frontends/qt/GuiPrefs.cpp:2354
+msgid "System Default"
+msgstr "Réglage implicite système"
+
+#: src/frontends/qt/GuiPrefs.cpp:2414
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "Impossible d'enlever un Format utilisé par un Convertisseur. Enlevez d'abord "
 "le convertisseur."
 
-#: src/frontends/qt/GuiPrefs.cpp:2510
+#: src/frontends/qt/GuiPrefs.cpp:2514
 msgid "LyX needs to be restarted!"
 msgstr "LyX doit être redémarré !"
 
-#: src/frontends/qt/GuiPrefs.cpp:2511
+#: src/frontends/qt/GuiPrefs.cpp:2515
 msgid ""
 "The change of user interface language will be fully effective only after a "
 "restart."
@@ -34187,80 +34191,80 @@ msgstr ""
 "La modification de la langue de l'interface ne sera complètement effective "
 "qu'après un redémarrage de LyX."
 
-#: src/frontends/qt/GuiPrefs.cpp:2611
+#: src/frontends/qt/GuiPrefs.cpp:2615
 msgid "User Interface"
 msgstr "Interface utilisateur"
 
-#: src/frontends/qt/GuiPrefs.cpp:2630
+#: src/frontends/qt/GuiPrefs.cpp:2634
 msgid "Classic"
 msgstr "Classique"
 
-#: src/frontends/qt/GuiPrefs.cpp:2631
+#: src/frontends/qt/GuiPrefs.cpp:2635
 msgid "Oxygen"
 msgstr "Oxygen"
 
-#: src/frontends/qt/GuiPrefs.cpp:2682
+#: src/frontends/qt/GuiPrefs.cpp:2686
 msgid "Document Handling"
 msgstr "Gestion des documents"
 
-#: src/frontends/qt/GuiPrefs.cpp:2789
+#: src/frontends/qt/GuiPrefs.cpp:2793
 msgid "Control"
 msgstr "Contrôle"
 
-#: src/frontends/qt/GuiPrefs.cpp:2910
+#: src/frontends/qt/GuiPrefs.cpp:2914
 msgid "Shortcuts"
 msgstr "Raccourcis"
 
-#: src/frontends/qt/GuiPrefs.cpp:2917
+#: src/frontends/qt/GuiPrefs.cpp:2921
 msgid "Function"
 msgstr "Fonction"
 
-#: src/frontends/qt/GuiPrefs.cpp:2918
+#: src/frontends/qt/GuiPrefs.cpp:2922
 msgid "Shortcut"
 msgstr "Raccourci"
 
-#: src/frontends/qt/GuiPrefs.cpp:2995
+#: src/frontends/qt/GuiPrefs.cpp:2999
 msgid "Cursor, Mouse and Editing Functions"
 msgstr "Contrôle du curseur, de la souris et de la saisie"
 
-#: src/frontends/qt/GuiPrefs.cpp:2999
+#: src/frontends/qt/GuiPrefs.cpp:3003
 msgid "Mathematical Symbols"
 msgstr "Symboles mathématiques"
 
-#: src/frontends/qt/GuiPrefs.cpp:3003
+#: src/frontends/qt/GuiPrefs.cpp:3007
 msgid "Document and Window"
 msgstr "Document et fenêtre"
 
-#: src/frontends/qt/GuiPrefs.cpp:3007
+#: src/frontends/qt/GuiPrefs.cpp:3011
 msgid "Font, Layouts and Textclasses"
 msgstr "Polices, formats et classes"
 
-#: src/frontends/qt/GuiPrefs.cpp:3011
+#: src/frontends/qt/GuiPrefs.cpp:3015
 msgid "System and Miscellaneous"
 msgstr "Système et divers"
 
-#: src/frontends/qt/GuiPrefs.cpp:3148 src/frontends/qt/GuiPrefs.cpp:3208
+#: src/frontends/qt/GuiPrefs.cpp:3152 src/frontends/qt/GuiPrefs.cpp:3212
 msgid "Res&tore"
 msgstr "&Restaurer"
 
-#: src/frontends/qt/GuiPrefs.cpp:3376 src/frontends/qt/GuiPrefs.cpp:3385
-#: src/frontends/qt/GuiPrefs.cpp:3391 src/frontends/qt/GuiPrefs.cpp:3455
+#: src/frontends/qt/GuiPrefs.cpp:3380 src/frontends/qt/GuiPrefs.cpp:3389
+#: src/frontends/qt/GuiPrefs.cpp:3395 src/frontends/qt/GuiPrefs.cpp:3459
 msgid "Failed to create shortcut"
 msgstr "Échec de la création du raccourci"
 
-#: src/frontends/qt/GuiPrefs.cpp:3377
+#: src/frontends/qt/GuiPrefs.cpp:3381
 msgid "Unknown or invalid LyX function"
 msgstr "Fonction LyX inconnue ou invalide"
 
-#: src/frontends/qt/GuiPrefs.cpp:3386
+#: src/frontends/qt/GuiPrefs.cpp:3390
 msgid "This LyX function is hidden and cannot be bound."
 msgstr "Cette fonction LyX est cachée et ne peut être associée."
 
-#: src/frontends/qt/GuiPrefs.cpp:3392
+#: src/frontends/qt/GuiPrefs.cpp:3396
 msgid "Invalid or empty key sequence"
 msgstr "Séquence de touches invalide ou vide"
 
-#: src/frontends/qt/GuiPrefs.cpp:3407
+#: src/frontends/qt/GuiPrefs.cpp:3411
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to %2$s.\n"
@@ -34270,19 +34274,19 @@ msgstr ""
 "Êtes-vous sûr de vouloir remplacer cette association par une association à "
 "%3$s ?"
 
-#: src/frontends/qt/GuiPrefs.cpp:3413
+#: src/frontends/qt/GuiPrefs.cpp:3417
 msgid "Redefine shortcut?"
 msgstr "Redéfinir le raccourci ?"
 
-#: src/frontends/qt/GuiPrefs.cpp:3414
+#: src/frontends/qt/GuiPrefs.cpp:3418
 msgid "&Redefine"
 msgstr "&Redéfinir"
 
-#: src/frontends/qt/GuiPrefs.cpp:3456
+#: src/frontends/qt/GuiPrefs.cpp:3460
 msgid "Can not insert shortcut to the list"
 msgstr "Échec de l'insertion du raccourci à la liste"
 
-#: src/frontends/qt/GuiPrefs.cpp:3487
+#: src/frontends/qt/GuiPrefs.cpp:3491
 msgid "Identity"
 msgstr "Identité"
 
@@ -35792,11 +35796,11 @@ msgstr "Mettre à jour %1$s"
 msgid "View %1$s"
 msgstr "Visionner %1$s"
 
-#: src/frontends/qt/Validator.cpp:218
+#: src/frontends/qt/Validator.cpp:222
 msgid "space"
 msgstr "espace"
 
-#: src/frontends/qt/Validator.cpp:246
+#: src/frontends/qt/Validator.cpp:250
 msgid ""
 "LyX does not provide LaTeX support for file names containing any of these "
 "characters:\n"
@@ -35804,48 +35808,48 @@ msgstr ""
 "LyX ne fournit pas de support LaTeX pour les noms de fichier contenant l'un "
 "de ces caractères :\n"
 
-#: src/frontends/qt/qt_helpers.cpp:291
+#: src/frontends/qt/qt_helpers.cpp:305
 msgid "Invalid URL"
 msgstr "URL invalide"
 
-#: src/frontends/qt/qt_helpers.cpp:292
+#: src/frontends/qt/qt_helpers.cpp:306
 #, c-format
 msgid "The URL `%1$s' could not be resolved."
 msgstr "L'URL « %1$s » n'a pas pu être résolu."
 
-#: src/frontends/qt/qt_helpers.cpp:298
+#: src/frontends/qt/qt_helpers.cpp:312
 msgid "URL could not be accessed"
 msgstr "URL inaccessible"
 
-#: src/frontends/qt/qt_helpers.cpp:299
+#: src/frontends/qt/qt_helpers.cpp:313
 #, c-format
 msgid "The URL `%1$s' could not be opened although it exists!"
 msgstr "L'URL `%1$s' n'a pu être ouvert bien qu'il existe !"
 
-#: src/frontends/qt/qt_helpers.cpp:323
+#: src/frontends/qt/qt_helpers.cpp:337
 msgid "The lyxpaperview script failed."
 msgstr "Le script lyxpaperview a échoué."
 
-#: src/frontends/qt/qt_helpers.cpp:326
+#: src/frontends/qt/qt_helpers.cpp:340
 #, c-format
 msgid "No file was found using the pattern `%1$s'."
 msgstr "Aucun fichier trouvé via le filtre `%1$s'."
 
-#: src/frontends/qt/qt_helpers.cpp:332
+#: src/frontends/qt/qt_helpers.cpp:346
 #, c-format
 msgid "The target `%1$s' could not be resolved."
 msgstr "La ccible « %1$s » n'a pas pu être résolue."
 
-#: src/frontends/qt/qt_helpers.cpp:368
+#: src/frontends/qt/qt_helpers.cpp:382
 msgid "Could not update TeX information"
 msgstr "Impossible de mettre à jour l'information TeX"
 
-#: src/frontends/qt/qt_helpers.cpp:369
+#: src/frontends/qt/qt_helpers.cpp:383
 #, c-format
 msgid "The script `%1$s' failed."
 msgstr "Le script `%1$s' a échoué."
 
-#: src/frontends/qt/qt_helpers.cpp:617
+#: src/frontends/qt/qt_helpers.cpp:631
 msgid "All Files "
 msgstr "Tous les fichiers "
 
@@ -37860,7 +37864,7 @@ msgstr ""
 msgid "Directory not found"
 msgstr "Répertoire introuvable"
 
-#: src/support/Systemcall.cpp:441
+#: src/support/Systemcall.cpp:456
 #, c-format
 msgid ""
 "The command\n"
@@ -37875,15 +37879,15 @@ msgstr ""
 "\n"
 "Voulez-vous  l'interrompre ?"
 
-#: src/support/Systemcall.cpp:443
+#: src/support/Systemcall.cpp:458
 msgid "Stop command?"
 msgstr "Interrompre la commande ?"
 
-#: src/support/Systemcall.cpp:444
+#: src/support/Systemcall.cpp:459
 msgid "&Stop it"
 msgstr "&Interrompre"
 
-#: src/support/Systemcall.cpp:444
+#: src/support/Systemcall.cpp:459
 msgid "Let it &run"
 msgstr "Laisser &tourner"
 
