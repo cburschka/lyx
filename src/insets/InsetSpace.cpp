@@ -33,6 +33,7 @@
 #include "support/lassert.h"
 #include "support/Length.h"
 #include "support/lstrings.h"
+#include "support/qstring_helpers.h"
 
 #include "frontends/Application.h"
 #include "frontends/FontMetrics.h"
@@ -130,12 +131,12 @@ docstring InsetSpace::toolTip(BufferView const &, int, int) const
 	case InsetSpaceParams::CUSTOM:
 		// FIXME unicode
 		message = support::bformat(_("Horizontal Space (%1$s)"),
-				from_ascii(params_.length.asString()));
+					   locLengthDocString(from_ascii(params_.length.asString())));
 		break;
 	case InsetSpaceParams::CUSTOM_PROTECTED:
 		// FIXME unicode
 		message = support::bformat(_("Non-Breaking Horizontal Space (%1$s)"),
-				from_ascii(params_.length.asString()));
+					   locLengthDocString(from_ascii(params_.length.asString())));
 		break;
 	}
 	return message;

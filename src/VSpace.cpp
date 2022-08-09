@@ -21,6 +21,7 @@
 #include "support/convert.h"
 #include "support/Length.h"
 #include "support/lstrings.h"
+#include "support/qstring_helpers.h"
 
 #include "support/lassert.h"
 
@@ -207,7 +208,7 @@ docstring const VSpace::asGUIName() const
 		result = _("Vertical fill");
 		break;
 	case LENGTH:
-		result = from_ascii(len_.asString());
+		result = locLengthDocString(from_ascii(len_.asString()));
 		break;
 	}
 	if (keep_)
