@@ -75,7 +75,7 @@ QValidator::State LengthValidator::validate(QString & qtext, int &) const
 		if (isValidGlueLength(text, &gl))
 			return QValidator::Acceptable;
 		// Also check for localized variant
-		if (isValidGlueLength(fromqstr(unlocString(qtext)), &gl))
+		if (isValidGlueLength(fromqstr(unlocLengthString(qtext)), &gl))
 			return QValidator::Acceptable;
 		return QValidator::Intermediate;
 	}
