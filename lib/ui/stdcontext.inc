@@ -731,6 +731,8 @@ Menuset
 		Separator
 		Item "Show Zoom Level|Z" "ui-toggle zoomlevel"
 		Item "Show Zoom Slider|S" "ui-toggle zoomslider"
+		Separator
+		Item "Show Statistics|D" "ui-toggle statistics"
 	End
 
 End

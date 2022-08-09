@@ -523,6 +523,7 @@ public:
 
 	///
 	QTimer statusbar_timer_;
+	QTimer statusbar_stats_timer_;
 	/// auto-saving of buffers
 	Timeout autosave_timeout_;
 
@@ -546,6 +547,20 @@ public:
 
 	/// flag against a race condition due to multiclicks, see bug #1119
 	bool in_show_;
+
+	// Timers for statistic updates in buffer
+	/// Current time left to the nearest info update
+	int time_to_update = 1000;
+	///Basic step for timer in ms. Basically reaction time for short selections
+	int const timer_rate = 500;
+	/// Real stats updates infrequently. First they take long time for big buffers, second
+	/// they are visible for fast-repeat keyboards even for mid documents.
+	int const default_stats_rate = 5000;
+	/// Detection of new selection, so we can react fast
+	bool already_in_selection_ = false;
+	/// Maximum size of "short" selection for which we can update with faster timer_rate
+	int const max_sel_chars = 5000;
+
 };
 
 QSet<Buffer const *> GuiView::GuiViewPrivate::busyBuffers;
@@ -553,8 +568,8 @@ QSet<Buffer const *> GuiView::GuiViewPrivate::busyBuffers;
 
 GuiView::GuiView(int id)
 	: d(*new GuiViewPrivate(this)), id_(id), closing_(false), busy_(0),
-	  command_execute_(false), minibuffer_focus_(false), toolbarsMovable_(true),
-	  devel_mode_(false)
+	  command_execute_(false), minibuffer_focus_(false), stat_counts_enabled_(true),
+	  toolbarsMovable_(true), devel_mode_(false)
 {
 	connect(this, SIGNAL(bufferViewChanged()),
 	        this, SLOT(onBufferViewChanged()));
@@ -582,6 +597,9 @@ GuiView::GuiView(int id)
 	}
 	connect(&d.statusbar_timer_, SIGNAL(timeout()),
 		this, SLOT(clearMessage()));
+	connect(&d.statusbar_stats_timer_, SIGNAL(timeout()),
+		this, SLOT(showStats()));
+	d.statusbar_stats_timer_.start(d.timer_rate);
 
 	// We don't want to keep the window in memory if it is closed.
 	setAttribute(Qt::WA_DeleteOnClose, true);
@@ -626,6 +644,13 @@ GuiView::GuiView(int id)
 	connect(&d.processing_thread_watcher_, SIGNAL(finished()),
 		busySVG, SLOT(hide()));
 	connect(busySVG, SIGNAL(pressed()), this, SLOT(checkCancelBackground()));
+
+	stat_counts_ = new QLabel(statusBar());
+	stat_counts_->setAlignment(Qt::AlignCenter);
+	stat_counts_->setFrameStyle(QFrame::StyledPanel);
+	stat_counts_->hide();
+	statusBar()->addPermanentWidget(stat_counts_);
+
 
 	QFontMetrics const fm(statusBar()->fontMetrics());
 
@@ -952,6 +977,7 @@ void GuiView::saveLayout() const
 	settings.setValue("icon_size", toqstr(d.iconSize(iconSize())));
 	settings.setValue("zoom_value_visible", zoom_value_->isVisible());
 	settings.setValue("zoom_slider_visible", zoom_slider_->isVisible());
+	settings.setValue("document_stats_enabled", stat_counts_enabled_);
 }
 
 
@@ -1000,6 +1026,9 @@ bool GuiView::restoreLayout()
 	zoom_slider_->setVisible(show_zoom_slider);
 	zoom_in_->setVisible(show_zoom_slider);
 	zoom_out_->setVisible(show_zoom_slider);
+
+	stat_counts_enabled_ = settings.value("document_stats_enabled", true).toBool();
+	stat_counts_->setVisible(stat_counts_enabled_);
 
 	if (guiApp->platformName() == "qt4x11" || guiApp->platformName() == "xcb") {
 		QPoint pos = settings.value("pos", QPoint(50, 50)).toPoint();
@@ -1271,6 +1300,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 
 	// Make sure the timer time out will not trigger a statusbar update.
 	d.statusbar_timer_.stop();
+	d.statusbar_stats_timer_.stop();
 
 	// Saving fullscreen requires additional tweaks in the toolbar code.
 	// It wouldn't also work under linux natively.
@@ -1374,6 +1404,60 @@ void GuiView::clearMessage()
 	//	return;
 	showMessage();
 	d.statusbar_timer_.stop();
+}
+
+void GuiView::showStats()
+{
+	if (!stat_counts_enabled_)
+		return;
+
+
+	d.time_to_update -= d.timer_rate;
+
+	BufferView * bv = currentBufferView();
+	Buffer * buf = bv ? &bv->buffer() : nullptr;
+	if (buf) {
+
+		Cursor const & cur = bv->cursor();
+
+		//we start new selection and need faster update
+		if (!d.already_in_selection_ && cur.selection())
+			d.time_to_update = 0;
+
+		if (d.time_to_update <= 0) {
+
+			DocIterator from, to;
+
+			if (cur.selection()) {
+				from = cur.selectionBegin();
+				to = cur.selectionEnd();
+				d.already_in_selection_ = true;
+			} else {
+				from = doc_iterator_begin(buf);
+				to = doc_iterator_end(buf);
+				d.already_in_selection_ = false;
+			}
+
+			buf->updateStatistics(from, to);
+
+			int const words = buf->wordCount();
+			int const chars = buf->charCount(false);
+			int const chars_with_blanks = buf->charCount(true);
+
+			QString stats = toqstr(_("w:[[words]]")) + QString::number(words) + " " +
+				toqstr(_("c:[[characters]]")) +  QString::number(chars) + " " +
+				toqstr(_("cb:[[characters with blanks]]")) + QString::number(chars_with_blanks);
+			stat_counts_->setText(stats);
+			stat_counts_->show();
+
+			d.time_to_update = d.default_stats_rate;
+			//fast updates for small selections
+			if (chars_with_blanks < d.max_sel_chars && cur.selection())
+				d.time_to_update = d.timer_rate;
+		}
+
+	} else
+		stat_counts_->hide();
 }
 
 
@@ -2419,6 +2503,8 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			flag.setOnOff(zoom_value_ ? zoom_value_->isVisible() : false);
 		} else if (cmd.argument() == "zoomslider") {
 			flag.setOnOff(zoom_slider_ ? zoom_slider_->isVisible() : false);
+		} else if (cmd.argument() == "statistics") {
+			flag.setOnOff(stat_counts_enabled_);
 		} else
 			flag.setOnOff(isFullScreen());
 		break;
@@ -4904,6 +4990,9 @@ bool GuiView::lfunUiToggle(string const & ui_component)
 		zoom_slider_->setVisible(!zoom_slider_->isVisible());
 		zoom_in_->setVisible(zoom_slider_->isVisible());
 		zoom_out_->setVisible(zoom_slider_->isVisible());
+	} else if (ui_component == "statistics") {
+		stat_counts_enabled_ = !stat_counts_enabled_;
+		stat_counts_->setVisible(stat_counts_enabled_);
 	} else if (ui_component == "frame") {
 		int const l = contentsMargins().left();
 

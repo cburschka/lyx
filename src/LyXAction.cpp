@@ -4097,6 +4097,7 @@ void LyXAction::init()
                frame      : Toggle visibility of the frames around editing window.\n
                zoomslider : Toggle visibility of the zoom slider in statusbar.\n
                zoomlevel  : Toggle visibility of the zoom level display in statusbar.\n
+               statistics : Toggle visibility of the document statistics count in statusbar.\n
                fullscreen : Toggle fullscreen mode. This also covers calling the
                             previous functions. However #LFUN_TOOLBAR_TOGGLE for the
                             custom tweaks of the toolbars should be used.

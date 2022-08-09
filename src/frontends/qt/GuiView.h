@@ -235,6 +235,8 @@ public Q_SLOTS:
 	/// idle timeout.
 	/// clear any temporary message and replace with current status.
 	void clearMessage();
+	/// show documents stats in toolbar and trigger new iteration
+	void showStats();
 	///
 	void updateWindowTitle(GuiWorkArea * wa);
 	///
@@ -510,6 +512,10 @@ private:
 	QLabel * read_only_;
 	/// Statusbar widget that shows version control status
 	QLabel * version_control_;
+	/// Statusbar widget that document count statistics
+	QLabel * stat_counts_;
+	/// Stats info feature can be disabled by context menu
+	bool stat_counts_enabled_;
 	/// Statusbar widget that shows zoom value
 	QLabel * zoom_value_;
 	/// The zoom slider widget
