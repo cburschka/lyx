@@ -161,7 +161,7 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 	} else if (!isValidLength(len) && !isStrDbl(len)) {
 		// use input field only for gluelengths
 		combo->setCurrentItem(defaultUnit);
-		input->setText(toqstr(len));
+		input->setText(locLengthString(toqstr(len)));
 	} else {
 		lengthToWidgets(input, combo, Length(len), defaultUnit);
 	}
@@ -211,6 +211,14 @@ QString formatLocFPNumber(double d)
 	QLocale loc;
 	result.replace('.', loc.decimalPoint());
 	return result;
+}
+
+
+QString locLengthString(QString const & str)
+{
+	QLocale loc;
+	QString res = str;
+	return res.replace(QString("."), loc.decimalPoint());
 }
 
 
