@@ -1087,13 +1087,15 @@ def checkConverterEntries():
     # Only define a converter from pdf6 for graphics
     checkProg('a PDF to EPS converter', ['pdftops -eps -f 1 -l 1 $$i $$o'],
         rc_entry = [ r'\converter pdf6        eps        "%%"	""' ])
-    # Define a converter from pdf6 to png for Macs where pdftops is missing.
+    # sips:Define a converter from pdf6 to png for Macs where pdftops is missing.
     # The converter utility sips allows to force the dimensions of the resulting
     # png image. The value of 800 pixel for the width is arbitrary and not
     # related to the current screen resolution or width.
     # There is no converter parameter for this information.
+    #
+    #pdftoppm: Some systems ban IM eps->png conversion. We will offer eps->pdf->png route instead.
     checkProg('a PDF to PNG converter',
-        ['sips --resampleWidth 800 --setProperty format png $$i --out $$o'],
+        ['sips --resampleWidth 800 --setProperty format png $$i --out $$o' , 'pdftoppm -r 72 -png -singlefile $$i >  $$o'],
         rc_entry = [ r'\converter pdf6        png        "%%" ""' ])
     # Create one converter for a PDF produced using TeX fonts and one for a
     # PDF produced using non-TeX fonts. This does not produce non-unique
@@ -1190,8 +1192,23 @@ def checkConverterEntries():
     checkProg('an EPS -> PDF converter', ['epstopdf'],
         rc_entry = [ r'\converter eps        pdf6       "epstopdf --outfile=$$o $$i"	""'])
     #
-    checkProg('an EPS -> PNG converter', ['magick $$i[0] $$o', 'convert $$i[0] $$o'],
-        rc_entry = [ r'\converter eps        png        "%%"	""'])
+    # Due to more restrictive policies, it is possible that (image)magick
+    # does not allow conversions from eps to png.
+    # So before setting the converter test it it on a mock file
+    _, cmd = checkProg('an EPS -> PNG converter', ['magick', 'convert'])
+    if cmd:
+        writeToFile('mock.eps', r'%!PS')
+        try:
+            subprocess.check_call([cmd, "mock.eps", "mock.png"])
+            removeFiles(['mock.eps', 'mock.png'])
+            rc_entry = r'\converter eps        png        "%s $$i[0] $$o"	""'
+            addToRC(rc_entry % cmd)
+        except:
+            removeFiles(['mock.eps'])
+            #needs empty record otherwise default converter will be issued
+            rc_entry = r'\converter eps        png        ""	""'
+            addToRC(rc_entry)
+            logger.info('ImageMagick seems to ban conversions from EPS. Disabling direct EPS->PNG.')
     #
     # no agr -> pdf6 converter, since the pdf library used by gracebat is not
     # free software and therefore not compiled in in many installations.
