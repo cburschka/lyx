@@ -2680,7 +2680,8 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_WINDOW_RAISE:
 		break;
 	case LFUN_FORWARD_SEARCH:
-		enable = !(lyxrc.forward_search_dvi.empty() && lyxrc.forward_search_pdf.empty());
+		enable = !(lyxrc.forward_search_dvi.empty() && lyxrc.forward_search_pdf.empty()) &&
+			doc_buffer && doc_buffer->params().output_sync;
 		break;
 
 	case LFUN_FILE_INSERT_PLAINTEXT:
@@ -4903,10 +4904,12 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				dr.setMessage(_("Please, preview the document first."));
 				break;
 			}
+			bool const goto_dvi = have_dvi && !lyxrc.forward_search_dvi.empty();
+			bool const goto_pdf = have_pdf && !lyxrc.forward_search_pdf.empty();
 			string outname = dviname.onlyFileName();
 			string command = lyxrc.forward_search_dvi;
-			if (!have_dvi || (have_pdf &&
-			    pdfname.lastModified() > dviname.lastModified())) {
+			if ((!goto_dvi || goto_pdf) &&
+			    pdfname.lastModified() > dviname.lastModified()) {
 				outname = pdfname.onlyFileName();
 				command = lyxrc.forward_search_pdf;
 			}

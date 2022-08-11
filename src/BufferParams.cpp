@@ -2191,7 +2191,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 			os << from_utf8(output_sync_macro) +"\n";
 		else if (features.runparams().flavor == Flavor::LaTeX)
 			os << "\\usepackage[active]{srcltx}\n";
-		else if (features.runparams().flavor == Flavor::PdfLaTeX)
+		else
 			os << "\\synctex=-1\n";
 	}
 
