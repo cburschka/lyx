@@ -1719,6 +1719,8 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		}
 		if (cur.selection())
 			pattern = cur.selectionAsString(false);
+		else if (!cur.inTexted())
+			break; // not suitable for selectWord at cursor
 		else {
 			pos_type spos = cur.pos();
 			cur.innerText()->selectWord(cur, WHOLE_WORD);
