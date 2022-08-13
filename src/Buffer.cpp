@@ -1110,6 +1110,22 @@ bool Buffer::readDocument(Lexer & lex)
 }
 
 
+bool Buffer::isSyncTeXenabled() const
+{
+	bool enabled = params().output_sync;
+
+	if (!enabled)
+		for (auto const & c : theConverters()) {
+			const string dest = c.to().substr(0,3);
+			if (dest == "dvi" || dest == "pdf") {
+				const string cmd = c.command();
+				enabled |= cmd.find("--synctex=1") != string::npos;
+				if (enabled) break;
+			}
+		}
+	return enabled;
+}
+
 bool Buffer::importString(string const & format, docstring const & contents, ErrorList & errorList)
 {
 	Format const * fmt = theFormats().getFormat(format);

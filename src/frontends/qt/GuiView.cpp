@@ -2681,7 +2681,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 	case LFUN_FORWARD_SEARCH:
 		enable = !(lyxrc.forward_search_dvi.empty() && lyxrc.forward_search_pdf.empty()) &&
-			doc_buffer && doc_buffer->params().output_sync;
+			doc_buffer && doc_buffer->isSyncTeXenabled();
 		break;
 
 	case LFUN_FILE_INSERT_PLAINTEXT:
