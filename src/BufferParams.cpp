@@ -3440,8 +3440,20 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 			if (features.isRequired("japanese")
 			    || features.isProvided("inputenc"))
 				break;
-			os << "\\usepackage[" << from_ascii(encoding().latexName());
-		   	if (features.runparams().flavor == Flavor::LuaTeX
+			string const doc_encoding = encoding().latexName();
+			// The 2022 release of ucs.sty uses the default utf8
+			// inputenc encoding with 'utf8x' inputenc if the ucs
+			// package is not loaded before inputenc.
+			// This breaks existing documents that use utf8x
+			// and also makes utf8x redundant.
+			// Thus we load ucs.sty in order to keep functionality
+			// that would otherwise be silently dropped.
+			if (doc_encoding == "utf8x"
+			    && features.isAvailable("ucs-2022/08/07")
+			    && !features.isProvided("ucs"))
+				os << "\\usepackage{ucs}\n";
+			os << "\\usepackage[" << from_ascii(doc_encoding);
+			if (features.runparams().flavor == Flavor::LuaTeX
 			    || features.runparams().flavor == Flavor::DviLuaTeX)
 				os << "]{luainputenc}\n";
 			else
