@@ -568,7 +568,8 @@ QSet<Buffer const *> GuiView::GuiViewPrivate::busyBuffers;
 
 GuiView::GuiView(int id)
 	: d(*new GuiViewPrivate(this)), id_(id), closing_(false), busy_(0),
-	  command_execute_(false), minibuffer_focus_(false), stat_counts_enabled_(true),
+	  command_execute_(false), minibuffer_focus_(false), word_count_enabled_(true),
+	  char_count_enabled_(true),  char_nb_count_enabled_(false),
 	  toolbarsMovable_(true), devel_mode_(false)
 {
 	connect(this, SIGNAL(bufferViewChanged()),
@@ -645,11 +646,13 @@ GuiView::GuiView(int id)
 		busySVG, SLOT(hide()));
 	connect(busySVG, SIGNAL(pressed()), this, SLOT(checkCancelBackground()));
 
-	stat_counts_ = new QLabel(statusBar());
+	stat_counts_ = new GuiClickableLabel(statusBar());
 	stat_counts_->setAlignment(Qt::AlignCenter);
 	stat_counts_->setFrameStyle(QFrame::StyledPanel);
 	stat_counts_->hide();
 	statusBar()->addPermanentWidget(stat_counts_);
+
+	connect(stat_counts_, SIGNAL(clicked()), this, SLOT(statsPressed()));
 
 
 	QFontMetrics const fm(statusBar()->fontMetrics());
@@ -820,6 +823,11 @@ void GuiView::checkCancelBackground()
 		Systemcall::killscript();
 }
 
+void GuiView::statsPressed()
+{
+	DispatchResult dr;
+	dispatch(FuncRequest(LFUN_STATISTICS), dr);
+}
 
 void GuiView::zoomSliderMoved(int value)
 {
@@ -977,7 +985,9 @@ void GuiView::saveLayout() const
 	settings.setValue("icon_size", toqstr(d.iconSize(iconSize())));
 	settings.setValue("zoom_value_visible", zoom_value_->isVisible());
 	settings.setValue("zoom_slider_visible", zoom_slider_->isVisible());
-	settings.setValue("document_stats_enabled", stat_counts_enabled_);
+	settings.setValue("word_count_enabled", word_count_enabled_);
+	settings.setValue("char_count_enabled", char_count_enabled_);
+	settings.setValue("char_nb_count_enabled", char_nb_count_enabled_);
 }
 
 
@@ -1027,8 +1037,10 @@ bool GuiView::restoreLayout()
 	zoom_in_->setVisible(show_zoom_slider);
 	zoom_out_->setVisible(show_zoom_slider);
 
-	stat_counts_enabled_ = settings.value("document_stats_enabled", true).toBool();
-	stat_counts_->setVisible(stat_counts_enabled_);
+	word_count_enabled_ = settings.value("word_count_enabled", true).toBool();
+	char_count_enabled_ = settings.value("char_count_enabled", true).toBool();
+	char_nb_count_enabled_ = settings.value("char_nb_count_enabled", true).toBool();
+	stat_counts_->setVisible(word_count_enabled_ || char_count_enabled_ || char_nb_count_enabled_);
 
 	if (guiApp->platformName() == "qt4x11" || guiApp->platformName() == "xcb") {
 		QPoint pos = settings.value("pos", QPoint(50, 50)).toPoint();
@@ -1408,56 +1420,69 @@ void GuiView::clearMessage()
 
 void GuiView::showStats()
 {
-	if (!stat_counts_enabled_)
+	if (!statsEnabled())
 		return;
-
 
 	d.time_to_update -= d.timer_rate;
 
 	BufferView * bv = currentBufferView();
 	Buffer * buf = bv ? &bv->buffer() : nullptr;
-	if (buf) {
-
-		Cursor const & cur = bv->cursor();
-
-		//we start new selection and need faster update
-		if (!d.already_in_selection_ && cur.selection())
-			d.time_to_update = 0;
-
-		if (d.time_to_update <= 0) {
-
-			DocIterator from, to;
-
-			if (cur.selection()) {
-				from = cur.selectionBegin();
-				to = cur.selectionEnd();
-				d.already_in_selection_ = true;
-			} else {
-				from = doc_iterator_begin(buf);
-				to = doc_iterator_end(buf);
-				d.already_in_selection_ = false;
-			}
-
-			buf->updateStatistics(from, to);
-
-			int const words = buf->wordCount();
-			int const chars = buf->charCount(false);
-			int const chars_with_blanks = buf->charCount(true);
-
-			QString stats = toqstr(_("w:[[words]]")) + QString::number(words) + " " +
-				toqstr(_("c:[[characters]]")) +  QString::number(chars) + " " +
-				toqstr(_("cb:[[characters with blanks]]")) + QString::number(chars_with_blanks);
-			stat_counts_->setText(stats);
-			stat_counts_->show();
-
-			d.time_to_update = d.default_stats_rate;
-			//fast updates for small selections
-			if (chars_with_blanks < d.max_sel_chars && cur.selection())
-				d.time_to_update = d.timer_rate;
-		}
-
-	} else
+	if (!buf) {
 		stat_counts_->hide();
+		return;
+	}
+
+	Cursor const & cur = bv->cursor();
+
+	// we start new selection and need faster update
+	if (!d.already_in_selection_ && cur.selection())
+		d.time_to_update = 0;
+
+	if (d.time_to_update > 0)
+		return;
+
+	DocIterator from, to;
+	if (cur.selection()) {
+		from = cur.selectionBegin();
+		to = cur.selectionEnd();
+		d.already_in_selection_ = true;
+	} else {
+		from = doc_iterator_begin(buf);
+		to = doc_iterator_end(buf);
+		d.already_in_selection_ = false;
+	}
+
+	buf->updateStatistics(from, to);
+
+	QStringList stats;
+	if (word_count_enabled_) {
+		int const words = buf->wordCount();
+		if (words == 1)
+			stats << toqstr(bformat(_("%1$d Word"), words));
+		else
+			stats << toqstr(bformat(_("%1$d Words"), words));
+	}
+	int const chars_with_blanks = buf->charCount(true);
+	if (char_count_enabled_) {
+		if (chars_with_blanks == 1)
+			stats << toqstr(bformat(_("%1$d Character"), chars_with_blanks));
+		else
+			stats << toqstr(bformat(_("%1$d Characters"), chars_with_blanks));
+	}
+	if (char_nb_count_enabled_) {
+		int const chars = buf->charCount(false);
+		if (chars == 1)
+			stats << toqstr(bformat(_("%1$d Character (no Blanks)"), chars));
+		else
+			stats << toqstr(bformat(_("%1$d Characters (no Blanks)"), chars));
+	}
+	stat_counts_->setText(stats.join(qt_(", [[stats separator]]")));
+	stat_counts_->show();
+
+	d.time_to_update = d.default_stats_rate;
+	// fast updates for small selections
+	if (chars_with_blanks < d.max_sel_chars && cur.selection())
+		d.time_to_update = d.timer_rate;
 }
 
 
@@ -1596,6 +1621,12 @@ void GuiView::showMessage()
 			msg = qt_("Welcome to LyX!");
 	}
 	statusBar()->showMessage(msg);
+}
+
+
+bool GuiView::statsEnabled() const
+{
+	return word_count_enabled_ || char_count_enabled_ || char_nb_count_enabled_;
 }
 
 
@@ -2503,8 +2534,12 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			flag.setOnOff(zoom_value_ ? zoom_value_->isVisible() : false);
 		} else if (cmd.argument() == "zoomslider") {
 			flag.setOnOff(zoom_slider_ ? zoom_slider_->isVisible() : false);
-		} else if (cmd.argument() == "statistics") {
-			flag.setOnOff(stat_counts_enabled_);
+		} else if (cmd.argument() == "statistics-w") {
+			flag.setOnOff(word_count_enabled_);
+		} else if (cmd.argument() == "statistics-cb") {
+			flag.setOnOff(char_count_enabled_);
+		} else if (cmd.argument() == "statistics-c") {
+			flag.setOnOff(char_nb_count_enabled_);
 		} else
 			flag.setOnOff(isFullScreen());
 		break;
@@ -4993,10 +5028,13 @@ bool GuiView::lfunUiToggle(string const & ui_component)
 		zoom_slider_->setVisible(!zoom_slider_->isVisible());
 		zoom_in_->setVisible(zoom_slider_->isVisible());
 		zoom_out_->setVisible(zoom_slider_->isVisible());
-	} else if (ui_component == "statistics") {
-		stat_counts_enabled_ = !stat_counts_enabled_;
-		stat_counts_->setVisible(stat_counts_enabled_);
-	} else if (ui_component == "frame") {
+	} else if (ui_component == "statistics-w")
+		word_count_enabled_ = !word_count_enabled_;
+	else if (ui_component == "statistics-cb")
+		char_count_enabled_ = !char_count_enabled_;
+	else if (ui_component == "statistics-c")
+		char_nb_count_enabled_ = !char_nb_count_enabled_;
+	else if (ui_component == "frame") {
 		int const l = contentsMargins().left();
 
 		//are the frames in default state?
@@ -5017,6 +5055,7 @@ bool GuiView::lfunUiToggle(string const & ui_component)
 		toggleFullScreen();
 	} else
 		return false;
+	stat_counts_->setVisible(statsEnabled());
 	return true;
 }
 

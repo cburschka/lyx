@@ -251,6 +251,8 @@ private Q_SLOTS:
 	///
 	void checkCancelBackground();
 	///
+	void statsPressed();
+	///
 	void zoomSliderMoved(int);
 	///
 	void zoomValueChanged(int);
@@ -489,6 +491,8 @@ private:
 	void dispatchToBufferView(FuncRequest const & cmd, DispatchResult & dr);
 	///
 	void showMessage();
+	/// Check whether any of the stats is enabled in status bar
+	bool statsEnabled() const;
 
 	/// This view ID.
 	int id_;
@@ -514,8 +518,13 @@ private:
 	QLabel * version_control_;
 	/// Statusbar widget that document count statistics
 	QLabel * stat_counts_;
-	/// Stats info feature can be disabled by context menu
-	bool stat_counts_enabled_;
+	/// Word count info feature can be disabled by context menu
+	bool word_count_enabled_;
+	/// Char count info feature can be disabled by context menu
+	bool char_count_enabled_;
+	/// Char count info feature can be disabled by context menu
+	/// This excludes blanks
+	bool char_nb_count_enabled_;
 	/// Statusbar widget that shows zoom value
 	QLabel * zoom_value_;
 	/// The zoom slider widget

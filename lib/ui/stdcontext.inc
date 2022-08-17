@@ -732,7 +732,9 @@ Menuset
 		Item "Show Zoom Level|Z" "ui-toggle zoomlevel"
 		Item "Show Zoom Slider|S" "ui-toggle zoomslider"
 		Separator
-		Item "Show Statistics|t" "ui-toggle statistics"
+		Item "Show Word Count|W" "ui-toggle statistics-w"
+		Item "Show Character Count (Incl. Blanks)|C" "ui-toggle statistics-cb"
+		Item "Show Character Count (Without Blanks)|h" "ui-toggle statistics-c"
 	End
 
 End
