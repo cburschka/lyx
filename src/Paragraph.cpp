@@ -2788,9 +2788,11 @@ void Paragraph::latex(BufferParams const & bparams,
 				os << '}';
 				column += 1;
 			}
-			if (closeLanguage)
+			if (closeLanguage) {
 				// Force language closing
 				current_font.setLanguage(basefont.language());
+				langClosed = true;
+			}
 			Font const nextfont = (i == body_pos-1) ? basefont : current_font;
 			bool needPar = false;
 			column += running_font.latexWriteEndChanges(
@@ -2804,7 +2806,7 @@ void Paragraph::latex(BufferParams const & bparams,
 					Change(Change::UNCHANGED), Change(Change::DELETED), rp);
 			}
 			// Has the language been closed in the latexWriteEndChanges() call above?
-			langClosed = running_font.language() != basefont.language()
+			langClosed |= running_font.language() != basefont.language()
 					&& running_font.language() != nextfont.language()
 					&& (running_font.language()->encoding()->package() != Encoding::CJK);
 			running_font = basefont;
@@ -2984,7 +2986,7 @@ void Paragraph::latex(BufferParams const & bparams,
 				d->latexInset(bparams, os, rp, running_font,
 						basefont, real_outerfont, open_font,
 						runningChange, style, i, column, fontswitch_inset,
-						closeLanguage, lang_switched_at_inset);
+						closeLanguage, (lang_switched_at_inset || langClosed));
 				if (fontswitch_inset) {
 					if (open_font) {
 						bool needPar = false;
