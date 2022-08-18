@@ -331,6 +331,9 @@ export/templates/Obsolete/.*American_Geophysical_Union.*_(lyx22|lyx23|pdf|dvi).*
 # https://github.com/schlcht/microtype/issues/21
 export/templates/Articles/Hebrew_Article_.*(dvi|pdf|pdf2|pdf3)
 
+# https://github.com/gsilano/EuropeCV/pull/33
+export/examples/(|es/)Curricula_Vitae/Europe_CV_(pdf.*|dvi|lyx22|lyx23)
+
 # ================================================
 Sublabel: externalissues
 # Export fails due to non-LaTeX external tool,
