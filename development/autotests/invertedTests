@@ -317,9 +317,6 @@ export/templates/Articles/Econometrica_(dvi3|pdf5)_texF
 # Error message says pdfTeX is required for xypdf.
 export/export/latex/lyxbugs-resolved/6243-protect-xymatrix-in-caption_pdf5.*
 
-# https://github.com/latex3/latex2e/issues/833
-export/export/latex/unicodesymbols/008-greek-and-coptic_utf8x_pdf2
-
 # Issue triggered by June 2022 LaTeX 2e update, it is an issue in the .cls that
 # likely will not be fixed since the cls does not appear to be maintained.
 # https://github.com/latex3/latex2e/issues/836#issuecomment-1160073486
