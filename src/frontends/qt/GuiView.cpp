@@ -5028,13 +5028,19 @@ bool GuiView::lfunUiToggle(string const & ui_component)
 		zoom_slider_->setVisible(!zoom_slider_->isVisible());
 		zoom_in_->setVisible(zoom_slider_->isVisible());
 		zoom_out_->setVisible(zoom_slider_->isVisible());
-	} else if (ui_component == "statistics-w")
+	} else if (ui_component == "statistics-w") {
 		word_count_enabled_ = !word_count_enabled_;
-	else if (ui_component == "statistics-cb")
+		if (statsEnabled())
+			showStats();
+	} else if (ui_component == "statistics-cb") {
 		char_count_enabled_ = !char_count_enabled_;
-	else if (ui_component == "statistics-c")
+		if (statsEnabled())
+			showStats();
+	} else if (ui_component == "statistics-c") {
 		char_nb_count_enabled_ = !char_nb_count_enabled_;
-	else if (ui_component == "frame") {
+		if (statsEnabled())
+			showStats();
+	} else if (ui_component == "frame") {
 		int const l = contentsMargins().left();
 
 		//are the frames in default state?
