@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-08-08 10:14+0200\n"
-"PO-Revision-Date: 2022-08-08 08:19+0000\n"
+"POT-Creation-Date: 2022-08-17 15:27+0200\n"
+"PO-Revision-Date: 2022-08-17 13:35+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3822,7 +3822,7 @@ msgstr "Slová kratšie ako zadané dĺžkou sa nebudú doplňovať."
 
 #: src/frontends/qt/ui/PrefCompletionUi.ui:250
 msgid "Minimum characters for words that should be completed"
-msgstr "Minimálny počet písmen pre doplňovanie slov"
+msgstr "Minimálny počet znakov pre doplňovanie slov"
 
 #: src/frontends/qt/ui/PrefCompletionUi.ui:275
 msgid ""
@@ -5439,9 +5439,9 @@ msgstr ""
 "Ignorovať výskyt tohto slova v tomto dokumente. Platí aj pre každé neskoršie "
 "sedenie."
 
-#: src/frontends/qt/ui/SpellcheckerUi.ui:184
+#: src/frontends/qt/ui/SpellcheckerUi.ui:178
 msgid "I&gnore All"
-msgstr "Ignorovať všad&e"
+msgstr "Ignorovať &všade"
 
 #: src/frontends/qt/ui/SymbolsUi.ui:40
 msgid ""
@@ -19927,9 +19927,9 @@ msgstr "Externe upraviť…"
 msgid "End Editing Externally..."
 msgstr "Externú úpravu dokončiť…"
 
-#: lib/ui/stdcontext.inc:360
+#: lib/ui/stdcontext.inc:380
 msgid "Split Inset|t"
-msgstr "Rozdeliť vložku"
+msgstr "Rozdeliť vložku| "
 
 #: lib/ui/stdcontext.inc:362
 msgid "Jump Back to Saved Bookmark|B"
@@ -19939,9 +19939,9 @@ msgstr "Skoč späť na uloženú záložku|S"
 msgid "Forward Search|F"
 msgstr "Dopredu hľadať|a"
 
-#: lib/ui/stdcontext.inc:365 lib/ui/stdmenus.inc:120
+#: lib/ui/stdcontext.inc:385 lib/ui/stdmenus.inc:120
 msgid "Move Paragraph Up|o"
-msgstr "Presunúť odstavec nahor|d"
+msgstr "Presunúť odstavec nahor|h"
 
 #: lib/ui/stdcontext.inc:366 lib/ui/stdmenus.inc:121
 msgid "Move Paragraph Down|v"
@@ -19959,9 +19959,9 @@ msgstr "Znížiť úroveň sekcie|í"
 msgid "Move Section Down|D"
 msgstr "Presunúť sekciu nadol|r"
 
-#: lib/ui/stdcontext.inc:373 lib/ui/stdcontext.inc:661
+#: lib/ui/stdcontext.inc:393 lib/ui/stdcontext.inc:681
 msgid "Move Section Up|U"
-msgstr "Presunúť sekciu nahor|c"
+msgstr "Presunúť sekciu nahor|r"
 
 #: lib/ui/stdcontext.inc:375
 msgid "Insert Regular Expression"
@@ -19975,13 +19975,13 @@ msgstr "Akceptovať zmenu|e"
 msgid "Reject Change|j"
 msgstr "Odmietnuť zmenu|m"
 
-#: lib/ui/stdcontext.inc:380 lib/ui/stdmenus.inc:124
+#: lib/ui/stdcontext.inc:400 lib/ui/stdmenus.inc:124
 msgid "Text Properties|x"
-msgstr "Vlastnosti textu|u"
+msgstr "Vlastnosti textu|x"
 
-#: lib/ui/stdcontext.inc:381 lib/ui/stdmenus.inc:125
+#: lib/ui/stdcontext.inc:401 lib/ui/stdmenus.inc:125
 msgid "Custom Text Styles|S"
-msgstr "Vlastné štýly textu|x"
+msgstr "Vlastné štýly textu|š"
 
 #: lib/ui/stdcontext.inc:382 lib/ui/stdmenus.inc:123
 msgid "Paragraph Settings...|P"
@@ -20220,17 +20220,17 @@ msgstr "Odmietnuť zmenu|d"
 msgid "Promote Section|P"
 msgstr "Zvýšiť úroveň sekcie|i"
 
-#: lib/ui/stdcontext.inc:660
+#: lib/ui/stdcontext.inc:680
 msgid "Demote Section|D"
-msgstr "Znížiť úroveň sekcie|n"
+msgstr "Znížiť úroveň sekcie|Z"
 
-#: lib/ui/stdcontext.inc:662
+#: lib/ui/stdcontext.inc:682
 msgid "Move Section Down|w"
-msgstr "Presunúť sekciu nadol|P"
+msgstr "Presunúť sekciu nadol|l"
 
-#: lib/ui/stdcontext.inc:664
+#: lib/ui/stdcontext.inc:684
 msgid "Select Section|S"
-msgstr "Vybrať sekciu|V"
+msgstr "Vybrať sekciu|y"
 
 #: lib/ui/stdcontext.inc:672
 msgid "Wrap by Preview|y"
@@ -20271,6 +20271,18 @@ msgstr "Ukáž úroveň lupy|U"
 #: lib/ui/stdcontext.inc:733
 msgid "Show Zoom Slider|S"
 msgstr "Ukáž posuvník lupy|p"
+
+#: lib/ui/stdcontext.inc:735
+msgid "Show Word Count|W"
+msgstr "Ukáž počet slov|s"
+
+#: lib/ui/stdcontext.inc:736
+msgid "Show Character Count (Incl. Blanks)|C"
+msgstr "Ukáž počet znakov (s medzerami)|m"
+
+#: lib/ui/stdcontext.inc:737
+msgid "Show Character Count (Without Blanks)|h"
+msgstr "Ukáž počet znakov (bez medzier)|z"
 
 #: lib/ui/stdmenus.inc:30
 msgid "File|F"
@@ -34200,6 +34212,40 @@ msgstr "Ukončiť LyX"
 #: src/frontends/qt/GuiView.cpp:1097
 msgid "LyX could not be closed because documents are being processed by LyX."
 msgstr "Nemohol som zavrieť LyX, lebo LyX ešte spracováva dokumenty."
+
+#: src/frontends/qt/GuiView.cpp:1461
+#, c-format
+msgid "%1$d Word"
+msgstr "%1$d (Počet slov)"
+
+#: src/frontends/qt/GuiView.cpp:1463
+#, c-format
+msgid "%1$d Words"
+msgstr "%1$d (Počet slov)"
+
+#: src/frontends/qt/GuiView.cpp:1468
+#, c-format
+msgid "%1$d Character"
+msgstr "%1$d (Počet znakov)"
+
+#: src/frontends/qt/GuiView.cpp:1470
+#, c-format
+msgid "%1$d Characters"
+msgstr "%1$d (Počet znakov)"
+
+#: src/frontends/qt/GuiView.cpp:1475
+#, c-format
+msgid "%1$d Character (no Blanks)"
+msgstr "%1$d (Počet znakov bez medzier)"
+
+#: src/frontends/qt/GuiView.cpp:1477
+#, c-format
+msgid "%1$d Characters (no Blanks)"
+msgstr "%1$d (Počet znakov bez medzier)"
+
+#: src/frontends/qt/GuiView.cpp:1479
+msgid ", [[stats separator]]"
+msgstr ", "
 
 #: src/frontends/qt/GuiView.cpp:1245
 #, c-format
