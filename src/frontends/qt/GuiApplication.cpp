@@ -556,7 +556,7 @@ QString getAlias(QString name) {
 		has_aliases = true;
 	}
 	// check for the following aliases
-	for (auto alias : aliases) {
+	for (auto const & alias : aliases) {
 		if (name.contains(alias.first))
 			name.replace(alias.first, alias.second);
 	}

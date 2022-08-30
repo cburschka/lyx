@@ -2424,7 +2424,7 @@ void LatexInfo::buildEntries(bool isPatternString)
 	}
 	// Ignore language if there is math somewhere in pattern-string
 	if (isPatternString) {
-		for (auto s: usedText) {
+		for (auto const & s: usedText) {
 			// Remove entries created in previous search runs
 			keys.erase(s);
 		}

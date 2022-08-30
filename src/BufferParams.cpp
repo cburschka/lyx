@@ -1979,6 +1979,8 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	if (!features.runparams().includeall && !included_children_.empty()) {
 		os << "\\includeonly{";
 		bool first = true;
+		// we do not use "auto const &" here, because incfile is modified later
+		// coverity[auto_causes_copy]
 		for (auto incfile : included_children_) {
 			FileName inc = makeAbsPath(incfile, filepath.absFileName());
 			string mangled = DocFileName(changeExtension(inc.absFileName(), ".tex")).
