@@ -320,14 +320,6 @@ void InsetIndex::docbook(XMLStream & xs, OutputParams const & runparams) const
 	InsetText::latex(ots, runparams);
 	docstring latexString = trim(odss.str());
 
-	// Check whether there are unsupported things. @ is supported, but only for sorting, without specific formatting.
-	if (latexString.find(from_utf8("@\\")) != lyx::docstring::npos) {
-		docstring error = from_utf8("Unsupported feature: an index entry contains an @\\. "
-									"Complete entry: \"") + latexString + from_utf8("\"");
-		LYXERR0(error);
-		xs << XMLStream::ESCAPE_NONE << (from_utf8("<!-- Output Error: ") + error + from_utf8(" -->\n"));
-	}
-
 	// Handle several indices (indicated in the inset instead of the raw latexString).
 	docstring indexType = from_utf8("");
 	if (buffer().masterBuffer()->params().use_indices) {
