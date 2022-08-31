@@ -1680,6 +1680,7 @@ docstring InsetPrintIndex::xhtml(XMLStream &, OutputParams const & op) const
 	// Collect the index entries in a form we can use them.
 	vector<IndexEntry> entries;
 	for (const TocItem& item : *toc) {
+		static_cast<const InsetIndex*>(&(item.dit().inset()))->params_.index;
 		if (item.isOutput())
 			entries.emplace_back(IndexEntry{static_cast<const InsetIndex*>(&(item.dit().inset())), &op});
 	}
