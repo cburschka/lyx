@@ -919,40 +919,10 @@ public:
 	///
 	BoxType useBox(idx_type cell) const;
 	///
-	// helper function for Latex
-	///
-	void TeXTopHLine(otexstream &, row_type row, std::list<col_type>,
-			 std::list<col_type>) const;
-	///
-	void TeXBottomHLine(otexstream &, row_type row, std::list<col_type>,
-			    std::list<col_type>) const;
-	///
-	void TeXCellPreamble(otexstream &, idx_type cell, bool & ismulticol, bool & ismultirow,
-			     bool const bidi) const;
-	///
-	void TeXCellPostamble(otexstream &, idx_type cell, bool ismulticol, bool ismultirow) const;
-	///
-	void TeXLongtableHeaderFooter(otexstream &, OutputParams const &, std::list<col_type>,
-				      std::list<col_type>) const;
-	///
 	bool isValidRow(row_type const row) const;
 	///
 	void TeXRow(otexstream &, row_type const row,
 		    OutputParams const &, std::list<col_type>, std::list<col_type>) const;
-	///
-	// helper functions for plain text
-	///
-	bool plaintextTopHLine(odocstringstream &, row_type row,
-			       std::vector<unsigned int> const &) const;
-	///
-	bool plaintextBottomHLine(odocstringstream &, row_type row,
-				  std::vector<unsigned int> const &) const;
-	///
-	void plaintextPrintCell(odocstringstream &,
-				OutputParams const &,
-				idx_type cell, row_type row, col_type column,
-				std::vector<unsigned int> const &,
-				bool onlydata, size_t max_length) const;
 
 	/// change associated Buffer
 	void setBuffer(Buffer & buffer);
@@ -964,6 +934,9 @@ public:
 private:
 	Buffer * buffer_;
 
+	///
+	// helper function for DocBook
+	///
 	/// Determines whether the tabular item should be generated as DocBook or XHTML.
 	enum class XmlOutputFormat : bool {
 		XHTML = true,
@@ -984,6 +957,38 @@ private:
 	void xmlBody(XMLStream & xs, OutputParams const &, XmlOutputFormat output_format) const;
 	XmlRowWiseBorders computeXmlBorders(row_type row) const;
 	std::vector<std::string> computeCssStylePerCell(row_type row, col_type col, idx_type cell) const;
+
+	///
+	// helper functions for plain text
+	///
+	bool plaintextTopHLine(odocstringstream &, row_type row,
+	                       std::vector<unsigned int> const &) const;
+	///
+	bool plaintextBottomHLine(odocstringstream &, row_type row,
+	                          std::vector<unsigned int> const &) const;
+	///
+	void plaintextPrintCell(odocstringstream &,
+	                        OutputParams const &,
+	                        idx_type cell, row_type row, col_type column,
+	                        std::vector<unsigned int> const &,
+	                        bool onlydata, size_t max_length) const;
+
+	///
+	// helper function for LaTeX
+	///
+	void TeXTopHLine(otexstream &, row_type row, std::list<col_type>,
+	                 std::list<col_type>) const;
+	///
+	void TeXBottomHLine(otexstream &, row_type row, std::list<col_type>,
+	                    std::list<col_type>) const;
+	///
+	void TeXCellPreamble(otexstream &, idx_type cell, bool & ismulticol, bool & ismultirow,
+	                     bool const bidi) const;
+	///
+	void TeXCellPostamble(otexstream &, idx_type cell, bool ismulticol, bool ismultirow) const;
+	///
+	void TeXLongtableHeaderFooter(otexstream &, OutputParams const &, std::list<col_type>,
+	                              std::list<col_type>) const;
 
 }; // Tabular
 
