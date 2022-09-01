@@ -964,6 +964,12 @@ public:
 private:
 	Buffer * buffer_;
 
+	/// Determines whether the tabular item should be generated as DocBook or XHTML.
+	enum class XmlOutputFormat : bool {
+		XHTML = true,
+		DOCBOOK = false
+	};
+
 	/// Transforms the vertical alignment of the given cell as a prebaked XML attribute (for HTML and CALS).
 	std::string getHAlignAsXmlAttribute(idx_type cell, XmlOutputFormat output_format) const;
 	/// Transforms the vertical alignment of the given cell as a prebaked XML attribute (for HTML and CALS).
@@ -971,11 +977,11 @@ private:
 
 	/// Helpers for XML tables (XHTML or DocBook).
 	docstring xmlRow(XMLStream & xs, row_type row, OutputParams const &,
-	                 bool header = false, bool is_xhtml = true,
+	                 bool header, XmlOutputFormat output_format,
 	                 BufferParams::TableOutput docbook_table_output = BufferParams::TableOutput::HTMLTable) const;
-	void xmlHeader(XMLStream & xs, OutputParams const &, bool is_xhtml) const;
-	void xmlFooter(XMLStream & xs, OutputParams const &, bool is_xhtml) const;
-	void xmlBody(XMLStream & xs, OutputParams const &, bool is_xhtml) const;
+	void xmlHeader(XMLStream & xs, OutputParams const &, XmlOutputFormat output_format) const;
+	void xmlFooter(XMLStream & xs, OutputParams const &, XmlOutputFormat output_format) const;
+	void xmlBody(XMLStream & xs, OutputParams const &, XmlOutputFormat output_format) const;
 	XmlRowWiseBorders computeXmlBorders(row_type row) const;
 	std::vector<std::string> computeCssStylePerCell(row_type row, col_type col, idx_type cell) const;
 
