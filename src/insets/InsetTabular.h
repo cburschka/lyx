@@ -953,20 +953,6 @@ public:
 				idx_type cell, row_type row, col_type column,
 				std::vector<unsigned int> const &,
 				bool onlydata, size_t max_length) const;
-	///
-	docstring xmlRow(XMLStream & xs, row_type row, OutputParams const &,
-	                 bool header = false, bool is_xhtml = true,
-					 BufferParams::TableOutput docbook_table_output = BufferParams::TableOutput::HTMLTable) const;
-	void xmlHeader(XMLStream & xs, OutputParams const &, bool is_xhtml) const;
-	void xmlFooter(XMLStream & xs, OutputParams const &, bool is_xhtml) const;
-	void xmlBody(XMLStream & xs, OutputParams const &, bool is_xhtml) const;
-	XmlRowWiseBorders computeXmlBorders(row_type row) const;
-	std::vector<std::string> computeCssStylePerCell(row_type row, col_type col, idx_type cell) const;
-
-	/// Transforms the vertical alignment of the given cell as a prebaked XML attribute (for HTML and CALS).
-	std::string getHAlignAsXmlAttribute(idx_type cell, bool is_xhtml = true) const;
-	/// Transforms the vertical alignment of the given cell as a prebaked XML attribute (for HTML and CALS).
-	std::string getVAlignAsXmlAttribute(idx_type cell) const;
 
 	/// change associated Buffer
 	void setBuffer(Buffer & buffer);
@@ -977,6 +963,21 @@ public:
 
 private:
 	Buffer * buffer_;
+
+	/// Transforms the vertical alignment of the given cell as a prebaked XML attribute (for HTML and CALS).
+	std::string getHAlignAsXmlAttribute(idx_type cell, XmlOutputFormat output_format) const;
+	/// Transforms the vertical alignment of the given cell as a prebaked XML attribute (for HTML and CALS).
+	std::string getVAlignAsXmlAttribute(idx_type cell) const;
+
+	/// Helpers for XML tables (XHTML or DocBook).
+	docstring xmlRow(XMLStream & xs, row_type row, OutputParams const &,
+	                 bool header = false, bool is_xhtml = true,
+	                 BufferParams::TableOutput docbook_table_output = BufferParams::TableOutput::HTMLTable) const;
+	void xmlHeader(XMLStream & xs, OutputParams const &, bool is_xhtml) const;
+	void xmlFooter(XMLStream & xs, OutputParams const &, bool is_xhtml) const;
+	void xmlBody(XMLStream & xs, OutputParams const &, bool is_xhtml) const;
+	XmlRowWiseBorders computeXmlBorders(row_type row) const;
+	std::vector<std::string> computeCssStylePerCell(row_type row, col_type col, idx_type cell) const;
 
 }; // Tabular
 
