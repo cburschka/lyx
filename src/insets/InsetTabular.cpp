@@ -3726,8 +3726,8 @@ std::vector<std::string> Tabular::computeCssStylePerCell(row_type row, col_type 
 }
 
 
-docstring Tabular::xmlRow(XMLStream & xs, row_type row, OutputParams const & runparams,
-	bool header, bool is_xhtml, BufferParams::TableOutput docbook_table_output) const
+docstring Tabular::xmlRow(XMLStream & xs, const row_type row, OutputParams const & runparams,
+	const bool header, const bool is_xhtml, BufferParams::TableOutput docbook_table_output) const
 {
 	docstring ret;
 	const bool is_xhtml_table = is_xhtml || docbook_table_output == BufferParams::TableOutput::HTMLTable;
@@ -3809,7 +3809,7 @@ docstring Tabular::xmlRow(XMLStream & xs, row_type row, OutputParams const & run
 }
 
 
-void Tabular::xmlHeader(XMLStream & xs, OutputParams const & runparams) const
+void Tabular::xmlHeader(XMLStream & xs, OutputParams const & runparams, const bool is_xhtml) const
 {
 	// Output the header of the table. For both HTML and CALS, this is surrounded by a thead.
 	bool const have_first_head = haveLTFirstHead(false);
@@ -3824,7 +3824,7 @@ void Tabular::xmlHeader(XMLStream & xs, OutputParams const & runparams) const
 			if (((have_first_head && row_info[r].endfirsthead) ||
 			     (have_head && row_info[r].endhead)) &&
 			    !row_info[r].caption) {
-				xmlRow(xs, r, runparams, true, false, buffer().params().docbook_table_output);
+				xmlRow(xs, r, runparams, true, is_xhtml, buffer().params().docbook_table_output);
 			}
 		}
 		xs << xml::EndTag("thead");
@@ -3833,7 +3833,7 @@ void Tabular::xmlHeader(XMLStream & xs, OutputParams const & runparams) const
 }
 
 
-void Tabular::xmlFooter(XMLStream & xs, OutputParams const & runparams) const
+void Tabular::xmlFooter(XMLStream & xs, OutputParams const & runparams, const bool is_xhtml) const
 {
 	// Output the footer of the table. For both HTML and CALS, this is surrounded by a tfoot and output just after
 	// the header (and before the body).
@@ -3846,7 +3846,7 @@ void Tabular::xmlFooter(XMLStream & xs, OutputParams const & runparams) const
 			if (((have_last_foot && row_info[r].endlastfoot) ||
 			     (have_foot && row_info[r].endfoot)) &&
 			    !row_info[r].caption) {
-				xmlRow(xs, r, runparams, false, false, buffer().params().docbook_table_output);
+				xmlRow(xs, r, runparams, false, is_xhtml, buffer().params().docbook_table_output);
 			}
 		}
 		xs << xml::EndTag("tfoot");
@@ -3855,7 +3855,7 @@ void Tabular::xmlFooter(XMLStream & xs, OutputParams const & runparams) const
 }
 
 
-void Tabular::xmlBody(XMLStream & xs, OutputParams const & runparams) const
+void Tabular::xmlBody(XMLStream & xs, OutputParams const & runparams, const bool is_xhtml) const
 {
 	// Output the main part of the table. The tbody container is mandatory for CALS, but optional for HTML (only if
 	// there is no header and no footer). It never hurts to have it, though.
@@ -3863,7 +3863,7 @@ void Tabular::xmlBody(XMLStream & xs, OutputParams const & runparams) const
 	xs << xml::CR();
 	for (row_type r = 0; r < nrows(); ++r)
 		if (isValidRow(r))
-			xmlRow(xs, r, runparams, false, false, buffer().params().docbook_table_output);
+			xmlRow(xs, r, runparams, false, is_xhtml, buffer().params().docbook_table_output);
 	xs << xml::EndTag("tbody");
 	xs << xml::CR();
 }
@@ -3908,9 +3908,9 @@ void Tabular::docbook(XMLStream & xs, OutputParams const & runparams) const
 		}
 	}
 
-	xmlHeader(xs, runparams);
-	xmlFooter(xs, runparams);
-	xmlBody(xs, runparams);
+	xmlHeader(xs, runparams, false);
+	xmlFooter(xs, runparams, false);
+	xmlBody(xs, runparams, false);
 
 	// If this method started the table tag, also make it close it.
 	if (!runparams.docbook_in_table) {
@@ -3925,7 +3925,7 @@ docstring Tabular::xhtml(XMLStream & xs, OutputParams const & runparams) const
 	docstring ret;
 
 	if (is_long_tabular) {
-		// we'll wrap it in a div, so as to deal with alignment
+		// We'll wrap it in a div to deal with alignment.
 		string align;
 		switch (longtabular_alignment) {
 		case LYX_LONGTABULAR_ALIGN_LEFT:
@@ -3940,13 +3940,14 @@ docstring Tabular::xhtml(XMLStream & xs, OutputParams const & runparams) const
 		}
 		xs << xml::StartTag("div", "class='longtable' style='text-align: " + align + ";'");
 		xs << xml::CR();
-		// The caption flag wins over head/foot
+
+		// The caption flag is output before header/footer.
 		if (haveLTCaption()) {
 			xs << xml::StartTag("div", "class='longtable-caption' style='text-align: " + align + ";'");
 			xs << xml::CR();
 			for (row_type r = 0; r < nrows(); ++r)
 				if (row_info[r].caption)
-					ret += xmlRow(xs, r, runparams);
+					ret += xmlRow(xs, r, runparams, false, true);
 			xs << xml::EndTag("div");
 			xs << xml::CR();
 		}
@@ -3955,9 +3956,9 @@ docstring Tabular::xhtml(XMLStream & xs, OutputParams const & runparams) const
 	xs << xml::StartTag("table");
 	xs << xml::CR();
 
-	xmlHeader(xs, runparams);
-	xmlFooter(xs, runparams);
-	xmlBody(xs, runparams);
+	xmlHeader(xs, runparams, true);
+	xmlFooter(xs, runparams, true);
+	xmlBody(xs, runparams, true);
 
 	xs << xml::EndTag("table");
 	xs << xml::CR();
