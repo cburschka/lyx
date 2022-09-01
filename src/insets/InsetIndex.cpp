@@ -360,10 +360,10 @@ void InsetIndex::docbook(XMLStream & xs, OutputParams const & runparams) const
 	}
 
 	// Handle ranges. Happily, in the raw LaTeX mode, (| and |) can only be at the end of the string!
-	bool hasInsetRange = params_.range != InsetIndexParams::PageRange::None;
-	bool hasStartRange = params_.range == InsetIndexParams::PageRange::Start ||
+	const bool hasInsetRange = params_.range != InsetIndexParams::PageRange::None;
+	const bool hasStartRange = params_.range == InsetIndexParams::PageRange::Start ||
 			latexString.find(from_ascii("|(")) != lyx::docstring::npos;
-	bool hasEndRange = params_.range == InsetIndexParams::PageRange::End ||
+	const bool hasEndRange = params_.range == InsetIndexParams::PageRange::End ||
 			latexString.find(from_ascii("|)")) != lyx::docstring::npos;
 
 	if (hasInsetRange) {
@@ -1566,7 +1566,7 @@ IndexNode* buildIndexTree(vector<IndexEntry>& entries)
 	return index_root;
 }
 
-void outputIndexPage(XMLStream & xs, const IndexNode* root_node, unsigned depth = 0)
+void outputIndexPage(XMLStream & xs, const IndexNode* root_node, unsigned depth = 0) // NOLINT(misc-no-recursion)
 {
 	LASSERT(root_node->entries.size() + root_node->children.size() > 0, return);
 
@@ -1576,16 +1576,49 @@ void outputIndexPage(XMLStream & xs, const IndexNode* root_node, unsigned depth 
 	// By tree assumption, all the entries at this node have the same set of terms.
 
 	if (!root_node->entries.empty()) {
-		xs << XMLStream::ESCAPE_NONE << " &#8212; ";
+		xs << XMLStream::ESCAPE_NONE << " &#8212; "; // Em dash, i.e. long (---).
 		unsigned entry_number = 1;
 
-		for (unsigned i = 0; i < root_node->entries.size(); ++i) {
-			const IndexEntry &entry = root_node->entries[i];
-
+		auto writeLinkToEntry = [&xs](const IndexEntry &entry, unsigned entry_number) {
 			std::string const link_attr = "href='#" + entry.inset()->paragraphs()[0].magicLabel() + "'";
 			xs << xml::StartTag("a", link_attr);
 			xs << from_ascii(std::to_string(entry_number));
 			xs << xml::EndTag("a");
+		};
+
+		for (unsigned i = 0; i < root_node->entries.size(); ++i) {
+			const IndexEntry &entry = root_node->entries[i];
+
+			switch (entry.inset()->params().range) {
+				case InsetIndexParams::PageRange::None:
+					writeLinkToEntry(entry, entry_number);
+					break;
+				case InsetIndexParams::PageRange::Start: {
+					// Try to find the end of the range, if it is just after. Otherwise, the output will be slightly
+					// scrambled, but understandable. Doing better would mean implementing more of the indexing logic here
+					// and more complex indexing here (skipping the end is not just incrementing i). Worst case output:
+					//     1--, 2, --3
+					const bool nextEntryIsEnd = i + 1 < root_node->entries.size() &&
+					                            root_node->entries[i + 1].inset()->params().range ==
+					                            InsetIndexParams::PageRange::End;
+					// No need to check if both entries are for the same terms: they are in the same IndexNode.
+
+					writeLinkToEntry(entry, entry_number);
+					xs << XMLStream::ESCAPE_NONE << " &#8211; "; // En dash, i.e. semi-long (--).
+
+					if (nextEntryIsEnd) {
+						// Skip the next entry in the loop, write it right now, after the dash.
+						entry_number += 1;
+						i += 1;
+						writeLinkToEntry(root_node->entries[i], entry_number);
+					}
+				}
+					break;
+				case InsetIndexParams::PageRange::End:
+					// This range end was not caught by the range start, do it now to avoid losing content.
+					xs << XMLStream::ESCAPE_NONE << " &#8211; "; // En dash, i.e. semi-long (--).
+					writeLinkToEntry(root_node->entries[i], entry_number);
+			}
 
 			if (i < root_node->entries.size() - 1) {
 				xs << ", ";
