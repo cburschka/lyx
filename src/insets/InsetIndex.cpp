@@ -1476,7 +1476,7 @@ bool operator<(IndexEntry const & lhs, IndexEntry const & rhs)
 	if (lhs.terms_.empty())
 		return false;
 
-	for (int i = 0; i < min(rhs.terms_.size(), lhs.terms_.size()); ++i) {
+	for (unsigned i = 0; i < min(rhs.terms_.size(), lhs.terms_.size()); ++i) {
 		int comp = compare_no_case(lhs.terms_[i], rhs.terms_[i]);
 		if (comp != 0)
 			return comp < 0;
