@@ -702,7 +702,7 @@ public:
 	/// can return different things. this is because cellIndex(r,c)
 	/// returns the VISIBLE cell at r,c, which may be the same as the
 	/// cell at the previous row or column, if we're dealing with some
-	/// multirow or multicell.
+	/// multirow or multicolumn.
 	std::shared_ptr<InsetTableCell> cellInset(idx_type cell);
 	std::shared_ptr<InsetTableCell> cellInset(row_type row, col_type column);
 	InsetTableCell const * cellInset(idx_type cell) const;
