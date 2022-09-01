@@ -1656,25 +1656,17 @@ docstring InsetPrintIndex::xhtml(XMLStream &, OutputParams const & op) const
 {
 	BufferParams const & bp = buffer().masterBuffer()->params();
 
-	// we do not presently support multiple indices, so we refuse to print
-	// anything but the main index, so as not to generate multiple indices.
-	// NOTE Multiple index support would require some work. The reason
-	// is that the TOC does not know about multiple indices. Either it would
-	// need to be told about them (not a bad idea), or else the index entries
-	// would need to be collected differently, say, during validation.
-	if (bp.use_indices && getParam("type") != from_ascii("idx"))
-		return docstring();
-
 	shared_ptr<Toc const> toc = buffer().tocBackend().toc("index");
 	if (toc->empty())
 		return docstring();
 
 	// Collect the index entries in a form we can use them.
 	vector<IndexEntry> entries;
+	const docstring & indexType = params().getParamOr("type", from_ascii("idx"));
 	for (const TocItem& item : *toc) {
-		static_cast<const InsetIndex*>(&(item.dit().inset()))->params_.index;
-		if (item.isOutput())
-			entries.emplace_back(IndexEntry{static_cast<const InsetIndex*>(&(item.dit().inset())), &op});
+		const auto* inset = static_cast<const InsetIndex*>(&(item.dit().inset()));
+		if (item.isOutput() && inset->params().index == indexType)
+			entries.emplace_back(IndexEntry{inset, &op});
 	}
 
 	// If all the index entries are in notes or not displayed, get out sooner.
@@ -1690,6 +1682,7 @@ docstring InsetPrintIndex::xhtml(XMLStream &, OutputParams const & op) const
 	Layout const & lay = bp.documentClass().htmlTOCLayout();
 	string const & tocclass = lay.defaultCSSClass();
 	string const tocattr = "class='index " + tocclass + "'";
+	docstring const indexName = params().getParamOr("name", from_ascii("Index"));
 
 	// we'll use our own stream, because we are going to defer everything.
 	// that's how we deal with the fact that we're probably inside a standard
@@ -1700,7 +1693,7 @@ docstring InsetPrintIndex::xhtml(XMLStream &, OutputParams const & op) const
 	xs << xml::StartTag("div", tocattr);
 	xs << xml::CR();
 	xs << xml::StartTag(lay.htmltag(), lay.htmlattr());
-	xs << translateIfPossible(from_ascii("Index"), op.local_font->language()->lang());
+	xs << translateIfPossible(indexName, op.local_font->language()->lang());
 	xs << xml::EndTag(lay.htmltag());
 	xs << xml::CR();
 	xs << xml::StartTag("ul", "class='main'");

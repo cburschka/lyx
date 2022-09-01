@@ -54,6 +54,8 @@ public:
 	static std::string params2string(InsetIndexParams const &);
 	///
 	static void string2params(std::string const &, InsetIndexParams &);
+	///
+	const InsetIndexParams& params() const { return params_; }
 private:
 	///
 	bool hasSettings() const override;

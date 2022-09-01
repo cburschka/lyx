@@ -146,6 +146,10 @@ public:
 	/// FIXME Would be better removed, but is used in BufferView.cpp in
 	/// ways that make removal hard.
 	docstring getFirstNonOptParam() const;
+	/// Determine whether a parameter is set
+	bool hasParam(std::string const & name) const;
+	/// Get the parameter \p name if it is set, \p defaultValue otherwise
+	docstring const & getParamOr(std::string const & name, docstring const & defaultValue) const;
 	/// get parameter \p name
 	/// LyX will assert if name is not a valid parameter.
 	docstring const & operator[](std::string const & name) const;
