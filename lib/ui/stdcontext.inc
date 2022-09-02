@@ -729,12 +729,12 @@ Menuset
 	Menu "context-statusbar"
 		ZoomOptions
 		Separator
-		Item "Show Zoom Level|Z" "ui-toggle zoomlevel"
-		Item "Show Zoom Slider|S" "ui-toggle zoomslider"
+		Item "Zoom Level|Z" "ui-toggle zoomlevel"
+		Item "Zoom Slider|S" "ui-toggle zoomslider"
 		Separator
-		Item "Show Word Count|W" "ui-toggle statistics-w"
-		Item "Show Character Count (Incl. Blanks)|C" "ui-toggle statistics-cb"
-		Item "Show Character Count (Without Blanks)|h" "ui-toggle statistics-c"
+		Item "Word Count|W" "ui-toggle statistics-w"
+		Item "Character Count|C" "ui-toggle statistics-cb"
+		Item "Character Count (Without Blanks)|h" "ui-toggle statistics-c"
 	End
 
 End
