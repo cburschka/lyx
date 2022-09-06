@@ -843,8 +843,8 @@ void LyXAction::init()
                is able to detect such changes (e.g. ghostview for postscript).
  * \li Syntax: buffer-update [<FORMAT>]
  * \li Params: <FORMAT>: The format to display, where this is one of the
-                         formats defined (in the current GUI) in the
-                         Tools>Preferences>File Formats dialog.
+                         formats defined in the Tools>Preferences>File Formats dialog,
+			 use the "Short name" field.
                          If no format is given, the default format as
                          specified in the same dialog is used.
  * \li Origin: Dekel, 5 Aug 2000
