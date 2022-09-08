@@ -706,7 +706,8 @@ GuiView::GuiView(int id)
 
 	// QPalette palette = statusBar()->palette();
 
-	zoom_value_ = new QLabel(statusBar());
+	zoom_value_ = new GuiClickableLabel(statusBar());
+	connect(zoom_value_, SIGNAL(pressed()), this, SLOT(showZoomContextMenu()));
 	// zoom_value_->setPalette(palette);
 	zoom_value_->setForegroundRole(statusBar()->foregroundRole());
 	zoom_value_->setFixedHeight(fm.height());
@@ -722,7 +723,7 @@ GuiView::GuiView(int id)
 
 	statusBar()->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(statusBar(), SIGNAL(customContextMenuRequested(QPoint)),
-		this, SLOT(showZoomContextMenu()));
+		this, SLOT(showStatusBarContextMenu()));
 
 	// enable pinch to zoom
 	grabGesture(Qt::PinchGesture);
@@ -862,6 +863,15 @@ void GuiView::zoomOutPressed()
 
 
 void GuiView::showZoomContextMenu()
+{
+	QMenu * menu = guiApp->menus().menu(toqstr("context-zoom"), * this);
+	if (!menu)
+		return;
+	menu->exec(QCursor::pos());
+}
+
+
+void GuiView::showStatusBarContextMenu()
 {
 	QMenu * menu = guiApp->menus().menu(toqstr("context-statusbar"), * this);
 	if (!menu)

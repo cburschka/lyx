@@ -11,7 +11,7 @@
 
 #include "GuiClickableLabel.h"
 
-#include <QStyle>
+#include <QMouseEvent>
 
 namespace lyx {
 namespace frontend {
@@ -22,6 +22,11 @@ GuiClickableLabel::GuiClickableLabel(QWidget * parent)
 
 GuiClickableLabel::~GuiClickableLabel()
 {}
+
+void GuiClickableLabel::mousePressEvent(QMouseEvent * e) {
+	if (e->button() == Qt::LeftButton)
+		Q_EMIT pressed();
+}
 
 void GuiClickableLabel::mouseReleaseEvent(QMouseEvent *) {
 	Q_EMIT clicked();

@@ -25,8 +25,10 @@ public:
 
 Q_SIGNALS:
 	void clicked();
+	void pressed();
 
 protected:
+	void mousePressEvent(QMouseEvent *) override;
 	void mouseReleaseEvent(QMouseEvent *) override;
 };
 

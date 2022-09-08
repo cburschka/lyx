@@ -263,6 +263,8 @@ private Q_SLOTS:
 	///
 	void showZoomContextMenu();
 	///
+	void showStatusBarContextMenu();
+	///
 	void on_currentWorkAreaChanged(GuiWorkArea *);
 	///
 	void onBufferViewChanged();
@@ -526,7 +528,7 @@ private:
 	/// This excludes blanks
 	bool char_nb_count_enabled_;
 	/// Statusbar widget that shows zoom value
-	QLabel * zoom_value_;
+	GuiClickableLabel * zoom_value_;
 	/// The zoom slider widget
 	QSlider * zoom_slider_;
 	/// Zoom in ("+") Button
