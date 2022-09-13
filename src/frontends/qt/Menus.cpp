@@ -1831,7 +1831,6 @@ void MenuDefinition::expandZoomOptions(BufferView const * bv)
 		     toqstr(bformat(_("Reset to Default (%1$d%)|R"),
 				    lyxrc.defaultZoom)),
 		     FuncRequest(LFUN_BUFFER_ZOOM)));
-	add(MenuItem(MenuItem::Separator));
 	add(MenuItem(MenuItem::Command, qt_("Zoom In|I"),
 		     FuncRequest(LFUN_BUFFER_ZOOM_IN)));
 	add(MenuItem(MenuItem::Command, qt_("Zoom Out|O"),

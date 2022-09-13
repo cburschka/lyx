@@ -739,7 +739,7 @@ Menuset
 		Separator
 		Item "Word Count|W" "ui-toggle statistics-w"
 		Item "Character Count|C" "ui-toggle statistics-cb"
-		Item "Character Count (Without Blanks)|h" "ui-toggle statistics-c"
+		Item "Character Count (No Blanks)|h" "ui-toggle statistics-c"
 	End
 
 End

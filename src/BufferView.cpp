@@ -1876,16 +1876,14 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			message += _("One word");
 		message += "\n";
 		if (chars_blanks != 1)
-			message += bformat(_("%1$d characters (including blanks)"),
-					  chars_blanks);
+			message += bformat(_("%1$d characters"), chars_blanks);
 		else
-			message += _("One character (including blanks)");
+			message += _("One character");
 		message += "\n";
 		if (chars != 1)
-			message += bformat(_("%1$d characters (excluding blanks)"),
-					  chars);
+			message += bformat(_("%1$d characters (no blanks)"), chars);
 		else
-			message += _("One character (excluding blanks)");
+			message += _("One character (no blanks)");
 
 		Alert::information(_("Statistics"), message);
 	}
