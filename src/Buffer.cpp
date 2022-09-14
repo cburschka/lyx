@@ -1119,8 +1119,10 @@ bool Buffer::isSyncTeXenabled() const
 			const string dest = c.to().substr(0,3);
 			if (dest == "dvi" || dest == "pdf") {
 				const string cmd = c.command();
-				enabled |= cmd.find("--synctex=1") != string::npos;
-				if (enabled) break;
+				enabled |= cmd.find("-synctex=") != string::npos
+					&& cmd.find("-synctex=0") == string::npos;
+				if (enabled)
+					break;
 			}
 		}
 	return enabled;
