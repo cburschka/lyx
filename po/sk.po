@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-09-04 18:04+0200\n"
-"PO-Revision-Date: 2022-09-05 12:15+0000\n"
+"POT-Creation-Date: 2022-09-13 18:57+0200\n"
+"PO-Revision-Date: 2022-09-13 17:02+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -20280,8 +20280,8 @@ msgstr "Počet slov|s"
 msgid "Character Count|C"
 msgstr "Počet znakov|z"
 
-#: lib/ui/stdcontext.inc:737
-msgid "Character Count (Without Blanks)|h"
+#: lib/ui/stdcontext.inc:742
+msgid "Character Count (No Blanks)|h"
 msgstr "Počet znakov (bez medzier)|m"
 
 #: lib/ui/stdmenus.inc:30
@@ -28098,23 +28098,23 @@ msgstr "%1$d slov"
 msgid "One word"
 msgstr "Jedno slovo"
 
-#: src/BufferView.cpp:1836
+#: src/BufferView.cpp:1879
 #, c-format
-msgid "%1$d characters (including blanks)"
-msgstr "%1$d znakov (spolu s medzerami)"
+msgid "%1$d characters"
+msgstr "%1$d (znakov)"
 
-#: src/BufferView.cpp:1839
-msgid "One character (including blanks)"
-msgstr "Jeden znak (aj medzere)"
+#: src/BufferView.cpp:1881
+msgid "One character"
+msgstr "Jeden znak"
 
-#: src/BufferView.cpp:1842
+#: src/BufferView.cpp:1884
 #, c-format
-msgid "%1$d characters (excluding blanks)"
+msgid "%1$d characters (no blanks)"
 msgstr "%1$d znakov (bez medzier)"
 
-#: src/BufferView.cpp:1845
-msgid "One character (excluding blanks)"
-msgstr "Jeden znak (bez medzier)"
+#: src/BufferView.cpp:1886
+msgid "One character (no blanks)"
+msgstr "Jeden znak (nie medzera)"
 
 #: src/BufferView.cpp:1847
 msgid "Statistics"
