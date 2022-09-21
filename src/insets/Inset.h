@@ -479,7 +479,7 @@ public:
 
 	virtual CtObject getCtObject(OutputParams const &) const;
 
-	// properties with respect to row breaking (made of RowFLag enums)
+	// properties with respect to row breaking (made of RowFLag enumerators)
 	virtual int rowFlags() const { return Inline; }
 	/// indentation before this inset (only needed for displayed hull insets with fleqn option)
 	virtual int indent(BufferView const &) const { return 0; }

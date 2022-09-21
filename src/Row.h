@@ -141,7 +141,7 @@ public:
 		Change change;
 		// is it possible to add contents to this element?
 		bool final = false;
-		// properties with respect to row breaking (made of RowFlag enums)
+		// properties with respect to row breaking (made of RowFlag enumerators)
 		int row_flags = Inline;
 
 		friend std::ostream & operator<<(std::ostream & os, Element const & row);
