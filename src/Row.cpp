@@ -144,7 +144,7 @@ bool Row::Element::splitAt(int const width, int next_width, bool force,
                                                 isRTL(), wrap_any | force);
 
 	// if breaking did not really work, give up
-	if (!force && breaks.front().wid > width) {
+	if (!force && breaks.front().nspc_wid > width) {
 		if (dim.wid == 0)
 			dim.wid = fm.width(str);
 		return false;
