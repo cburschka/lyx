@@ -1927,7 +1927,8 @@ FontSpan Paragraph::fontSpan(pos_type pos) const
 
 	// This should not happen, but if so, we take no chances.
 	LYXERR0("Paragraph::fontSpan: position not found in fontinfo table!");
-	LASSERT(false, return FontSpan(pos, pos));
+	LASSERT(false, /**/);
+	return FontSpan(pos, pos);
 }
 
 
