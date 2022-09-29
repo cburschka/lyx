@@ -244,3 +244,10 @@ Sublabel: lyx_later
 # failing (and are not regressions).
 export/.*/(ar|ca|cs|da|de|el|es|eu|fa|fr|gl|he|hu|id|it|ja|ko|lt|nb|nl|pl|pt|pt_BR|pt_PT|ro|ru|sk|sl|sr|sv|uk|zh_CN|).*_epub
 
+# For zh_CN: Jürgen pointed out that it might be due to this issue:
+#   https://tex.stackexchange.com/questions/548139/
+# TODO: and that we might want to report it here:
+#   https://www.nongnu.org/cjk/
+# ML discussion was here:
+#   https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg217924.html
+export/doc/zh_CN/Tutorial_(lyx22|lyx23|dvi|pdf|pdf2|pdf3)
