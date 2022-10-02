@@ -1825,11 +1825,22 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		//lyxerr << "toggling all numbers" << endl;
 		cur.recordUndoInset();
 		bool old = numberedType();
-		if (type_ == hullMultline)
-			numbered(nrows() - 1, !old);
-		else
-			for (row_type row = 0; row < nrows(); ++row)
+		if (type_ == hullMultline) {
+			row_type row = nrows() - 1;
+			numbered(row, !old);
+			if (old && label_[row]) {
+				delete label_[row];
+				label_[row] = 0;
+			}
+		} else {
+			for (row_type row = 0; row < nrows(); ++row) {
 				numbered(row, !old);
+				if (old && label_[row]) {
+					delete label_[row];
+					label_[row] = 0;
+				}
+			}
+		}
 
 		cur.message(old ? _("No number") : _("Number"));
 		cur.forceBufferUpdate();
@@ -1842,6 +1853,10 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		bool old = numbered(r);
 		cur.message(old ? _("No number") : _("Number"));
 		numbered(r, !old);
+		if (old && label_[r]) {
+			delete label_[r];
+			label_[r] = 0;
+		}
 		cur.forceBufferUpdate();
 		break;
 	}
