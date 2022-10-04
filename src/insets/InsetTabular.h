@@ -1124,7 +1124,7 @@ public:
 	///
 	docstring completionPrefix(Cursor const & cur) const override;
 	///
-	bool insertCompletion(Cursor & cur, docstring const & s, bool finished) override;
+	bool insertCompletion(Cursor & cur, docstring const & s, bool /*finished*/) override;
 	///
 	void completionPosAndDim(Cursor const &, int & x, int & y, Dimension & dim) const override;
 	///

@@ -1370,14 +1370,16 @@ docstring InsetMathMacro::completionPrefix(Cursor const & cur) const
 }
 
 
-bool InsetMathMacro::insertCompletion(Cursor & cur, docstring const & s,
-					bool finished)
+bool InsetMathMacro::insertCompletion(Cursor & cur, docstring const & s, bool finished)
 {
 	if (displayMode() != DISPLAY_UNFOLDED)
 		return InsetMathNest::insertCompletion(cur, s, finished);
 
 	if (!completionSupported(cur))
 		return false;
+
+	// Contrary to Text, the whole inset should be recorded (#12581).
+	cur.recordUndoInset();
 
 	// append completion
 	docstring newName = name() + s;

@@ -7747,12 +7747,12 @@ docstring InsetTabular::completionPrefix(Cursor const & cur) const
 }
 
 
-bool InsetTabular::insertCompletion(Cursor & cur, docstring const & s, bool finished)
+bool InsetTabular::insertCompletion(Cursor & cur, docstring const & s, bool /*finished*/)
 {
 	if (!completionSupported(cur))
 		return false;
 
-	return cur.text()->insertCompletion(cur, s, finished);
+	return cur.text()->insertCompletion(cur, s);
 }
 
 

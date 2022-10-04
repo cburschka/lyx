@@ -2395,9 +2395,10 @@ CompletionList const * Text::createCompletionList(Cursor const & cur) const
 }
 
 
-bool Text::insertCompletion(Cursor & cur, docstring const & s, bool /*finished*/)
+bool Text::insertCompletion(Cursor & cur, docstring const & s)
 {
 	LBUFERR(cur.bv().cursor() == cur);
+	cur.recordUndo();
 	cur.insert(s);
 	cur.bv().cursor() = cur;
 	if (!(cur.result().screenUpdate() & Update::Force))

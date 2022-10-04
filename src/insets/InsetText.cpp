@@ -1322,13 +1322,12 @@ docstring InsetText::completionPrefix(Cursor const & cur) const
 }
 
 
-bool InsetText::insertCompletion(Cursor & cur, docstring const & s,
-	bool finished)
+bool InsetText::insertCompletion(Cursor & cur, docstring const & s, bool /*finished*/)
 {
 	if (!completionSupported(cur))
 		return false;
 
-	return text_.insertCompletion(cur, s, finished);
+	return text_.insertCompletion(cur, s);
 }
 
 

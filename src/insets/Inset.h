@@ -402,10 +402,10 @@ public:
 	/// Returns the completion prefix to filter the suggestions for completion.
 	/// This is only called if completionList returned a non-null list.
 	virtual docstring completionPrefix(Cursor const &) const;
-	/// Do a completion at the cursor position. Return true on success.
-	/// The completion does not contain the prefix. If finished is true, the
-	/// completion is final. If finished is false, completion might only be
-	/// a partial completion.
+	/// Do a completion at the cursor position. Return true on success. Handles undo.
+	/// The completion does not contain the prefix.
+	/// If finished is true, the completion is final, otherwise it
+	/// might be only partial. (only useful for mathed)
 	virtual bool insertCompletion(Cursor & /*cur*/,
 		docstring const & /*completion*/, bool /*finished*/)
 		{ return false; }

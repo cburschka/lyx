@@ -2086,11 +2086,13 @@ docstring InsetMathNest::completionPrefix(Cursor const & cur) const
 }
 
 
-bool InsetMathNest::insertCompletion(Cursor & cur, docstring const & s,
-				     bool finished)
+bool InsetMathNest::insertCompletion(Cursor & cur, docstring const & s, bool finished)
 {
 	if (!cur.inMacroMode())
 		return false;
+
+	// Contrary to Text, the whole inset should be recorded (#12581).
+	cur.recordUndoInset();
 
 	// append completion to active macro
 	InsetMathUnknown * inset = cur.activeMacro();
