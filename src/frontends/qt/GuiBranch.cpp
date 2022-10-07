@@ -22,9 +22,13 @@
 
 #include "insets/InsetBranch.h"
 
+#include "support/gettext.h"
+#include "support/lstrings.h"
+
 #include <QPushButton>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
@@ -40,20 +44,36 @@ GuiBranch::GuiBranch(QWidget * parent) : InsetParamsWidget(parent)
 void GuiBranch::paramsToDialog(Inset const * inset)
 {
 	InsetBranch const * ib = static_cast<InsetBranch const *>(inset);
-	typedef BranchList::const_iterator const_iterator;
-	BranchList const & branchlist = ib->buffer().params().branchlist();
+	Buffer const & buf = ib->buffer();
+	BranchList const & branchlist = buf.params().branchlist();
 	docstring const cur_branch = ib->branch();
 
 	branchCO->clear();
-	const_iterator const begin = branchlist.begin();
-	const_iterator const end = branchlist.end();
 	int id = 0;
 	int count = 0;
-	for (const_iterator it = begin; it != end; ++it, ++count) {
-		docstring const & branch = it->branch();
-		branchCO->addItem(toqstr(branch));
+	for (Branch const & it : branchlist) {
+		docstring const & branch = it.branch();
+		branchCO->addItem(toqstr(branch), toqstr(branch));
 		if (cur_branch == branch)
 			id = count;
+		++count;
+	}
+	// Add branches from master
+	Buffer const * masterBuf = buf.masterBuffer();
+	if (masterBuf != &buf) {
+		BranchList const & masterBranchlist = masterBuf->params().branchlist();
+		for (Branch const & it : masterBranchlist) {
+			docstring const & branch = it.branch();
+			if (!branchlist.find(branch)) {
+				branchCO->addItem(
+					toqstr(bformat(_("%1$s[[branch]] (%2$s)[[master]]"),
+						   branch, _("master"))),
+					toqstr(branch));
+				if (cur_branch == branch)
+					id = count;
+				++count;
+			}
+		}
 	}
 	branchCO->setCurrentIndex(id);
 	invertedCB->setChecked(ib->params().inverted);
@@ -62,7 +82,8 @@ void GuiBranch::paramsToDialog(Inset const * inset)
 
 docstring GuiBranch::dialogToParams() const
 {
-	InsetBranchParams params(qstring_to_ucs4(branchCO->currentText()), invertedCB->isChecked());
+	docstring branch = qstring_to_ucs4(branchCO->itemData(branchCO->currentIndex()).toString());
+	InsetBranchParams params(branch, invertedCB->isChecked());
 	return from_utf8(InsetBranch::params2string(params));
 }
 
