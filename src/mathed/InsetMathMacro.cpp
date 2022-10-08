@@ -1312,6 +1312,9 @@ void InsetMathMacro::infoize2(odocstream & os) const
 
 bool InsetMathMacro::completionSupported(Cursor const & cur) const
 {
+	if (cur.buffer()->isReadonly())
+		return false;
+
 	if (displayMode() != DISPLAY_UNFOLDED)
 		return InsetMathNest::completionSupported(cur);
 
@@ -1322,6 +1325,9 @@ bool InsetMathMacro::completionSupported(Cursor const & cur) const
 
 bool InsetMathMacro::inlineCompletionSupported(Cursor const & cur) const
 {
+	if (cur.buffer()->isReadonly())
+		return false;
+
 	if (displayMode() != DISPLAY_UNFOLDED)
 		return InsetMathNest::inlineCompletionSupported(cur);
 
@@ -1372,6 +1378,9 @@ docstring InsetMathMacro::completionPrefix(Cursor const & cur) const
 
 bool InsetMathMacro::insertCompletion(Cursor & cur, docstring const & s, bool finished)
 {
+	if (cur.buffer()->isReadonly())
+		return false;
+
 	if (displayMode() != DISPLAY_UNFOLDED)
 		return InsetMathNest::insertCompletion(cur, s, finished);
 
