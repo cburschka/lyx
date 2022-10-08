@@ -416,6 +416,7 @@ void GuiLyXFiles::updateContents()
 	filesLW->clear();
 	QIcon user_icon(getPixmap("images/", "lyxfiles-user", "svgz,png"));
 	QIcon system_icon(getPixmap("images/", "lyxfiles-system", "svgz,png"));
+	QIcon folder_icon(getPixmap("images/", "lyxfiles-folder", "svgz,png"));
 	QStringList cats;
 	QMap<QString, QString>::const_iterator it = files.constBegin();
 	QFont capfont;
@@ -475,7 +476,7 @@ void GuiLyXFiles::updateContents()
 			if (!subcatItem) {
 				subcatItem = new QTreeWidgetItem();
 				subcatItem->setText(0, subcat);
-				subcatItem->setIcon(0, file_icon);
+				subcatItem->setIcon(0, folder_icon);
 				cats << catsave;
 			}
 			subcatItem->addChild(item);
