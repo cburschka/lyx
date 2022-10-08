@@ -1369,9 +1369,6 @@ docstring InsetMathMacro::completionPrefix(Cursor const & cur) const
 	if (displayMode() != DISPLAY_UNFOLDED)
 		return InsetMathNest::completionPrefix(cur);
 
-	if (!completionSupported(cur))
-		return docstring();
-
 	return "\\" + name();
 }
 
