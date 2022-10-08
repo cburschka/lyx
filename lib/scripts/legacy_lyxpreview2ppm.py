@@ -235,9 +235,9 @@ def legacy_latex_file(latex_file, fg_color, bg_color):
             else:
                 tmp.write(b"""
 \\usepackage{color}
-\\definecolor{fg}{rgb}{%s}
-\\definecolor{bg}{rgb}{%s}
-\\pagecolor{bg}
+\\definecolor{lyxfg}{rgb}{%s}
+\\definecolor{lyxbg}{rgb}{%s}
+\\pagecolor{lyxbg}
 \\usepackage{polyglossia}
 """ % (fg_color_gr, bg_color_gr))
                 polyglossia = True
@@ -248,16 +248,16 @@ def legacy_latex_file(latex_file, fg_color, bg_color):
         if not polyglossia:
             tmp.write(b"""
 \\usepackage{color}
-\\definecolor{fg}{rgb}{%s}
-\\definecolor{bg}{rgb}{%s}
-\\pagecolor{bg}
+\\definecolor{lyxfg}{rgb}{%s}
+\\definecolor{lyxbg}{rgb}{%s}
+\\pagecolor{lyxbg}
 \\usepackage[%s,tightpage]{preview}
 \\makeatletter
 \\def\\t@a{cmr}
 \\if\\f@family\\t@a
 \\IfFileExists{lmodern.sty}{\\usepackage{lmodern}}{\\usepackage{ae,aecompl}}
 \\fi
-\\g@addto@macro\\preview{\\begingroup\\color{bg}\\special{ps::clippath fill}\\color{fg}}
+\\g@addto@macro\\preview{\\begingroup\\color{lyxbg}\\special{ps::clippath fill}\\color{lyxfg}}
 \\g@addto@macro\\endpreview{\\endgroup}
 \\makeatother
 """ % (fg_color_gr, bg_color_gr, previewopts))
@@ -265,7 +265,7 @@ def legacy_latex_file(latex_file, fg_color, bg_color):
             tmp.write(b"""
 \\usepackage[%s,tightpage]{preview}
 \\makeatletter
-\\g@addto@macro\\preview{\\begingroup\\color{bg}\\special{ps::clippath fill}\\color{fg}}
+\\g@addto@macro\\preview{\\begingroup\\color{lyxbg}\\special{ps::clippath fill}\\color{lyxfg}}
 \\g@addto@macro\\endpreview{\\endgroup}
 \\makeatother
 """ % previewopts)
