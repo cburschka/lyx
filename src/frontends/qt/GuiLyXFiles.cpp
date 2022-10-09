@@ -26,6 +26,7 @@
 #include "support/qstring_helpers.h"
 #include "support/Package.h"
 
+#include <QVector>
 #include <QDirIterator>
 #include <QTreeWidget>
 
@@ -509,12 +510,43 @@ void GuiLyXFiles::filterLabels()
 {
 	Qt::CaseSensitivity cs = csFindCB->isChecked() ?
 		Qt::CaseSensitive : Qt::CaseInsensitive;
+	// Collect "active" categories (containing entries
+	// that match the filter)
+	QVector<QTreeWidgetItem*> activeCats;
 	QTreeWidgetItemIterator it(filesLW);
 	while (*it) {
-		(*it)->setHidden(
-			(*it)->childCount() == 0
-			&& !(*it)->text(0).contains(filter_->text(), cs)
-		);
+		if ((*it)->childCount() > 0) {
+			// Unhide parents (will be hidden
+			// below if necessary)
+			(*it)->setHidden(false);
+			++it;
+			continue;
+		}
+		bool const match = (*it)->text(0).contains(filter_->text(), cs);
+		if (match) {
+			// Register parents of matched entries
+			// so we don't hide those later.
+			QTreeWidgetItem * twi = *it;
+			while (true) {
+				if (!twi->parent())
+					break;
+				activeCats << twi->parent();
+				// ascend further up if possible
+				twi = twi->parent();
+			}
+		}
+		(*it)->setHidden(!match);
+		++it;
+	}
+	// Iterate through parents once more
+	// to hide empty categories
+	it = QTreeWidgetItemIterator(filesLW);
+	while (*it) {
+		if ((*it)->childCount() == 0) {
+			++it;
+			continue;
+		}
+		(*it)->setHidden(!activeCats.contains(*it));
 		++it;
 	}
 }
