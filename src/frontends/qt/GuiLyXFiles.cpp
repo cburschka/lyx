@@ -417,7 +417,8 @@ void GuiLyXFiles::updateContents()
 	filesLW->clear();
 	QIcon user_icon(getPixmap("images/", "lyxfiles-user", "svgz,png"));
 	QIcon system_icon(getPixmap("images/", "lyxfiles-system", "svgz,png"));
-	QIcon folder_icon(getPixmap("images/", "lyxfiles-folder", "svgz,png"));
+	QIcon user_folder_icon(getPixmap("images/", "lyxfiles-user-folder", "svgz,png"));
+	QIcon system_folder_icon(getPixmap("images/", "lyxfiles-system-folder", "svgz,png"));
 	QStringList cats;
 	QMap<QString, QString>::const_iterator it = files.constBegin();
 	QFont capfont;
@@ -453,8 +454,8 @@ void GuiLyXFiles::updateContents()
 			guiname = qt_("Default Template");
 		else if (translateName())
 			guiname = toqstr(translateIfPossible(qstring_to_ucs4(guiString(guiname))));
-		QIcon file_icon = (realpath.startsWith(toqstr(package().user_support().absFileName()))) ?
-				user_icon : system_icon;
+		bool const user = realpath.startsWith(toqstr(package().user_support().absFileName()));
+		QIcon file_icon = user ? user_icon : system_icon;
 		item->setIcon(0, file_icon);
 		item->setData(0, Qt::UserRole, it.key());
 		item->setData(0, Qt::DisplayRole, guiname);
@@ -477,7 +478,8 @@ void GuiLyXFiles::updateContents()
 			if (!subcatItem) {
 				subcatItem = new QTreeWidgetItem();
 				subcatItem->setText(0, subcat);
-				subcatItem->setIcon(0, folder_icon);
+				file_icon = user ? user_folder_icon : system_folder_icon;
+				subcatItem->setIcon(0, file_icon);
 				cats << catsave;
 			}
 			subcatItem->addChild(item);
