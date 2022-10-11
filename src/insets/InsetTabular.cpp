@@ -3007,7 +3007,7 @@ void Tabular::TeXCellPreamble(otexstream & os, idx_type cell,
 		   << "}\n";
 	} else if (getUsebox(cell) == BOX_VARWIDTH
 		   && (getRotateCell(cell) != 0 || align != LYX_ALIGN_LEFT
-		       || valign != LYX_VALIGN_TOP)) {
+		       || valign != LYX_VALIGN_TOP || hasNewlines(cell))) {
 		os << "\\begin{cellvarwidth}[";
 		switch (valign) {
 		case LYX_VALIGN_TOP:
@@ -3056,7 +3056,7 @@ void Tabular::TeXCellPostamble(otexstream & os, idx_type cell,
 		os << breakln << "\\end{minipage}";
 	else if (getUsebox(cell) == BOX_VARWIDTH
 		 && (getRotateCell(cell) != 0 || getAlignment(cell) != LYX_ALIGN_LEFT
-		     || getVAlignment(cell) != LYX_VALIGN_TOP))
+		     || getVAlignment(cell) != LYX_VALIGN_TOP || hasNewlines(cell)))
 		os << breakln << "\\end{cellvarwidth}";
 	if (getRotateCell(cell) != 0)
 		os << breakln << "\\end{turn}";
@@ -4269,6 +4269,21 @@ Tabular::BoxType Tabular::useBox(idx_type cell) const
 				return BOX_VARWIDTH;
 
 	return BOX_NONE;
+}
+
+
+bool Tabular::hasNewlines(idx_type cell) const
+{
+	ParagraphList const & parlist = cellInset(cell)->paragraphs();
+	ParagraphList::const_iterator cit = parlist.begin();
+	ParagraphList::const_iterator end = parlist.end();
+
+	for (; cit != end; ++cit)
+		for (int i = 0; i < cit->size(); ++i)
+			if (cit->isNewline(i))
+				return true;
+
+	return false;
 }
 
 

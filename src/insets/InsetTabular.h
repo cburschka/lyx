@@ -919,6 +919,8 @@ public:
 	///
 	BoxType useBox(idx_type cell) const;
 	///
+	bool hasNewlines(idx_type cell) const;
+	///
 	bool isValidRow(row_type const row) const;
 	///
 	void TeXRow(otexstream &, row_type const row,
