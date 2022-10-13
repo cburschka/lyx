@@ -1511,7 +1511,8 @@ string const LaTeXFeatures::getPackages() const
 	}
 
 	// fixltx2e provides subscript
-	if (mustProvide("subscript") && !isRequired("fixltx2e"))
+	if (mustProvide("subscript") && !isRequired("fixltx2e")
+	    && !isAvailable("LaTeX-2005/12/01"))
 		packages << "\\usepackage{subscript}\n";
 
 	// footmisc must be loaded after setspace
