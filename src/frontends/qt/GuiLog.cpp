@@ -52,7 +52,7 @@ QRegExp exprError("^(ERROR: |!|.*---line [0-9]+ of file|.*> FATAL - |.*> ERROR -
 // Information
 QRegularExpression exprInfo("^(Document Class:|LaTeX Font Info:|File:|Package:|Language:|.*> INFO - |\\(|\\\\).*$");
 // Warnings
-QRegularExpression exprWarning("^(## Warning|LaTeX Warning|LaTeX Font Warning|Package [\\w\\.]+ Warning|Class \\w+ Warning|Warning--|Underfull|Overfull|.*> WARN - ).*$");
+QRegularExpression exprWarning("^(## Warning|LaTeX Warning|LaTeX Font Warning|Package [\\w\\-\\.]+ Warning|Class \\w+ Warning|Warning--|Underfull|Overfull|.*> WARN - ).*$");
 // Errors
 QRegularExpression exprError("^(ERROR: |!|.*---line [0-9]+ of file|.*> FATAL - |.*> ERROR - |Missing character: There is no ).*$");
 #endif
