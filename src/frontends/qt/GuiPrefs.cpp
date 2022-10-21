@@ -33,6 +33,7 @@
 #include "FuncRequest.h"
 #include "KeySequence.h"
 #include "Language.h"
+#include "LengthCombo.h"
 #include "LyXAction.h"
 #include "LyX.h"
 #include "PanelStack.h"
@@ -2812,7 +2813,9 @@ PrefEdit::PrefEdit(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(citationSearchLE, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(fullscreenWidthSB, SIGNAL(valueChanged(int)),
+	connect(screenWidthLE, SIGNAL(textChanged(QString)),
+		this, SIGNAL(changed()));
+	connect(screenWidthUnitCO, SIGNAL(selectionChanged(lyx::Length::UNIT)), 
 		this, SIGNAL(changed()));
 	connect(toggleTabbarCB, SIGNAL(toggled(bool)),
 		this, SIGNAL(changed()));
@@ -2827,10 +2830,11 @@ PrefEdit::PrefEdit(GuiPreferences * form)
 }
 
 
-void PrefEdit::on_fullscreenLimitCB_toggled(bool const state)
+void PrefEdit::on_screenLimitCB_toggled(bool const state)
 {
-	fullscreenWidthSB->setEnabled(state);
-	fullscreenWidthLA->setEnabled(state);
+	screenWidthLE->setEnabled(state);
+	screenWidthLA->setEnabled(state);
+	screenWidthUnitCO->setEnabled(state);
 	changed();
 }
 
@@ -2864,8 +2868,8 @@ void PrefEdit::applyRC(LyXRC & rc) const
 	rc.full_screen_statusbar = toggleStatusbarCB->isChecked();
 	rc.full_screen_tabbar = toggleTabbarCB->isChecked();
 	rc.full_screen_menubar = toggleMenubarCB->isChecked();
-	rc.full_screen_width = fullscreenWidthSB->value();
-	rc.full_screen_limit = fullscreenLimitCB->isChecked();
+    rc.screen_width = Length(widgetsToLength(screenWidthLE, screenWidthUnitCO)); 
+    rc.screen_limit = screenLimitCB->isChecked(); 
 }
 
 
@@ -2888,10 +2892,11 @@ void PrefEdit::updateRC(LyXRC const & rc)
 	toggleToolbarsCB->setChecked(rc.full_screen_toolbars);
 	toggleTabbarCB->setChecked(rc.full_screen_tabbar);
 	toggleMenubarCB->setChecked(rc.full_screen_menubar);
-	fullscreenWidthSB->setValue(rc.full_screen_width);
-	fullscreenLimitCB->setChecked(rc.full_screen_limit);
-	fullscreenWidthSB->setEnabled(rc.full_screen_limit);
-	fullscreenWidthLA->setEnabled(rc.full_screen_limit);
+	lengthToWidgets(screenWidthLE, screenWidthUnitCO, rc.screen_width, Length::defaultUnit());
+	screenWidthUnitCO->setEnabled(rc.screen_limit);
+	screenLimitCB->setChecked(rc.screen_limit);
+	screenWidthLE->setEnabled(rc.screen_limit);
+	screenWidthLA->setEnabled(rc.screen_limit); 
 }
 
 

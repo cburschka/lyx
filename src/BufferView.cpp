@@ -342,11 +342,14 @@ int BufferView::defaultMargin() const
 
 int BufferView::rightMargin() const
 {
-	// The additional test for the case the outliner is opened.
-	if (full_screen_ && lyxrc.full_screen_limit)
-		return max(defaultMargin(), (width_ - lyxrc.full_screen_width) / 2);
+	const int screen_width = inPixels(lyxrc.screen_width);
 
-	return defaultMargin();
+	// The additional test for the case the outliner is opened.
+	if (!lyxrc.screen_limit || width_ < screen_width + 2 * defaultMargin()) {
+		return defaultMargin();
+	} else {
+		return (width_ - screen_width) / 2;
+	}
 }
 
 
