@@ -965,7 +965,7 @@ TexString InsetFloat::getCaption(OutputParams const & runparams) const
 	// Protect ']'
 	if (arg.find(']') != docstring::npos)
 		arg = '{' + arg + '}';
-	os << move(ts);
+	os << std::move(ts);
 	os << ']';
 	if (!runparams.nice)
 		os << safebreakln;

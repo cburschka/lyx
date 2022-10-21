@@ -34,7 +34,7 @@ namespace frontend {
 
 Action::Action(FuncRequest func, QIcon const & icon, QString const & text,
                QString const & tooltip, QObject * parent)
-	: QAction(parent), func_(make_shared<FuncRequest>(move(func))), icon_(icon)
+	: QAction(parent), func_(make_shared<FuncRequest>(std::move(func))), icon_(icon)
 {
 	init(text, tooltip);
 }

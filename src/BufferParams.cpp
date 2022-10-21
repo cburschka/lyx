@@ -2277,7 +2277,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		if (!tmppreamble.str.empty())
 			atlyxpreamble << "\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
 			                 "LyX specific LaTeX commands.\n"
-			              << move(tmppreamble)
+			              << std::move(tmppreamble)
 			              << '\n';
 	}
 	// the text class specific preamble

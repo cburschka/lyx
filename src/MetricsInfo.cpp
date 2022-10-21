@@ -33,7 +33,7 @@ namespace lyx {
 /////////////////////////////////////////////////////////////////////////
 
 MetricsBase::MetricsBase(BufferView * b, FontInfo f, int w)
-	: bv(b), font(move(f)), fontname("mathnormal"),
+	: bv(b), font(std::move(f)), fontname("mathnormal"),
 	  textwidth(w), macro_nesting(0),
 	  solid_line_thickness_(1), solid_line_offset_(1), dotted_line_thickness_(1)
 {
@@ -75,11 +75,7 @@ Changer MetricsBase::changeFontSet(string const & name)
 	    && ((isTextFont(oldname) && oldcolor != Color_foreground)
 	        || (isMathFont(oldname) && oldcolor != Color_math)))
 		font.setColor(oldcolor);
-#if __cplusplus >= 201402L
 	return rc;
-#else
-	return move(rc);
-#endif
 }
 
 

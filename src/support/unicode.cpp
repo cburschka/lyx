@@ -61,7 +61,7 @@ struct IconvProcessor::Handler {
 
 
 IconvProcessor::IconvProcessor(string tocode, string fromcode)
-	: tocode_(move(tocode)), fromcode_(move(fromcode))
+	: tocode_(std::move(tocode)), fromcode_(std::move(fromcode))
 {}
 
 
@@ -251,7 +251,7 @@ IconvProcessor & getProc(map<string, IconvProcessor> & processors,
 	map<string, IconvProcessor>::iterator const it = processors.find(encoding);
 	if (it == processors.end()) {
 		IconvProcessor p(fromcode, tocode);
-		return processors.insert(make_pair(encoding, move(p))).first->second;
+		return processors.insert(make_pair(encoding, std::move(p))).first->second;
 	}
 	return it->second;
 }
