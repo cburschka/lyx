@@ -511,7 +511,10 @@ void InsetMathMacro::cursorPos(BufferView const & bv,
 
 bool InsetMathMacro::editMode(BufferView const * bv) const {
 	// find this in cursor trace
-	Cursor const & cur = bv->cursor();
+	DocIterator const & cur =
+		// Do not move the reference while selecting with the mouse to avoid
+		// flicker due to changing metrics
+		bv->mouseSelecting() ? bv->cursor().realAnchor() : bv->cursor();
 	for (size_t i = 0; i != cur.depth(); ++i)
 		if (&cur[i].inset() == this) {
 			// look if there is no other macro in edit mode above
@@ -967,23 +970,28 @@ void InsetMathMacro::validate(LaTeXFeatures & features) const
 			features.require(data->required());
 	}
 
-	if (name() == "binom")
-		features.require("binom");
-
-	// validate the cells and the definition
-	if (displayMode() == DISPLAY_NORMAL) {
-		// Don't update requirements if the macro comes from
-		// the symbols file and has not been redefined.
-		MathWordList const & words = mathedWordList();
-		MathWordList::const_iterator it = words.find(name());
-		MacroNameSet macros;
-		buffer().listMacroNames(macros);
-		if (it == words.end() || it->second.inset != "macro"
-		    || macros.find(name()) != macros.end()) {
-			d->definition_.validate(features);
+	// Validate the cells and the definition.
+	// However, don't validate the definition if the macro is
+	// from the symbols file and has not been redefined, because
+	// in this case the definition is only used for screen display.
+	MathWordList const & words = mathedWordList();
+	MathWordList::const_iterator it = words.find(name());
+	MacroNameSet macros;
+	buffer().listMacroNames(macros);
+	if (it == words.end() || it->second.inset != "macro"
+	    || macros.find(name()) != macros.end()) {
+		if (displayMode() == DISPLAY_NORMAL) {
+				d->definition_.validate(features);
+		} else if (displayMode() == DISPLAY_INIT) {
+			MathData ar(const_cast<Buffer *>(&buffer()));
+			MacroData const * data = buffer().getMacro(name());
+			if (data) {
+				asArray(data->definition(), ar);
+				ar.validate(features);
+			}
 		}
-		InsetMathNest::validate(features);
 	}
+	InsetMathNest::validate(features);
 }
 
 
@@ -1304,6 +1312,9 @@ void InsetMathMacro::infoize2(odocstream & os) const
 
 bool InsetMathMacro::completionSupported(Cursor const & cur) const
 {
+	if (cur.buffer()->isReadonly())
+		return false;
+
 	if (displayMode() != DISPLAY_UNFOLDED)
 		return InsetMathNest::completionSupported(cur);
 
@@ -1314,6 +1325,9 @@ bool InsetMathMacro::completionSupported(Cursor const & cur) const
 
 bool InsetMathMacro::inlineCompletionSupported(Cursor const & cur) const
 {
+	if (cur.buffer()->isReadonly())
+		return false;
+
 	if (displayMode() != DISPLAY_UNFOLDED)
 		return InsetMathNest::inlineCompletionSupported(cur);
 
@@ -1355,21 +1369,23 @@ docstring InsetMathMacro::completionPrefix(Cursor const & cur) const
 	if (displayMode() != DISPLAY_UNFOLDED)
 		return InsetMathNest::completionPrefix(cur);
 
-	if (!completionSupported(cur))
-		return docstring();
-
 	return "\\" + name();
 }
 
 
-bool InsetMathMacro::insertCompletion(Cursor & cur, docstring const & s,
-					bool finished)
+bool InsetMathMacro::insertCompletion(Cursor & cur, docstring const & s, bool finished)
 {
+	if (cur.buffer()->isReadonly())
+		return false;
+
 	if (displayMode() != DISPLAY_UNFOLDED)
 		return InsetMathNest::insertCompletion(cur, s, finished);
 
 	if (!completionSupported(cur))
 		return false;
+
+	// Contrary to Text, the whole inset should be recorded (#12581).
+	cur.recordUndoInset();
 
 	// append completion
 	docstring newName = name() + s;

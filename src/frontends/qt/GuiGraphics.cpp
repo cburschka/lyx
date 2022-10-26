@@ -201,7 +201,7 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	connect(groupCO, SIGNAL(currentIndexChanged(int)),
 		this, SLOT(changeGroup(int)));
 
-	displayscale->setValidator(new QIntValidator(displayscale));
+	displayscale->setValidator(new QIntValidator(1, 1000, displayscale));
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	bc().setOK(buttonBox->button(QDialogButtonBox::Ok));

@@ -1,5 +1,9 @@
 # Basic test on refactoring of mathematics notation
 #
+UnuseShortcut "Tab" "*"
+
+PrepareShortcuts
+
 Lang it_IT.utf8
 CO: findadv-02.ctrl
 TestBegin test.lyx -dbg key,find > findadv-02.loga.txt 2>&1

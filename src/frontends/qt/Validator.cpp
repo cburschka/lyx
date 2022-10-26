@@ -72,8 +72,12 @@ QValidator::State LengthValidator::validate(QString & qtext, int &) const
 		GlueLength gl;
 		if (unsigned_ && gl.len().value() < 0)
 			return QValidator::Invalid;
-		return (isValidGlueLength(text, &gl)) ?
-			QValidator::Acceptable : QValidator::Intermediate;
+		if (isValidGlueLength(text, &gl))
+			return QValidator::Acceptable;
+		// Also check for localized variant
+		if (isValidGlueLength(fromqstr(unlocLengthString(qtext)), &gl))
+			return QValidator::Acceptable;
+		return QValidator::Intermediate;
 	}
 
 	Length l;

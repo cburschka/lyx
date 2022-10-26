@@ -149,11 +149,10 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 
 	rtl_ = !pi.ltr_pos;
 	FontInfo tmpfont = pi.base.font;
-	pi.base.font.setColor(pi.textColor(pi.base.font.color()).baseColor);
-	if (is_deleted_)
-		pi.base.font.setStrikeout(FONT_ON);
-	else if (isChanged() && lyxrc.ct_additions_underlined)
-		pi.base.font.setUnderbar(FONT_ON);
+	if (non_float_)
+		pi.base.font.setColor(Color_error);
+	else
+		pi.base.font.setPaintColor(pi.textColor(pi.base.font.color()));
 	int const lo = leftOffset(pi.base.bv);
 	if (rtl_) {
 		InsetText::draw(pi, x, y);
@@ -163,6 +162,10 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 		pi.pain.text(x + lo, y, full_label_, pi.base.font);
 		InsetText::draw(pi, x + labelwidth_, y);
 	}
+	// Draw the change tracking cue on the label, unless RowPainter already
+	// takes care of it.
+	if (canPaintChange(*pi.base.bv))
+		pi.change.paintCue(pi, x, y, x + labelwidth_, pi.base.font);
 	pi.base.font = tmpfont;
 }
 
@@ -324,6 +327,15 @@ docstring InsetCaption::xhtml(XMLStream & xs, OutputParams const & rp) const
 }
 
 
+docstring InsetCaption::toolTip(BufferView const & bv, int x, int y) const
+{
+	if (non_float_)
+		return _("Standard captions are not allowed outside floats. You will get a LaTeX error.\n"
+			 "For captions outside floats, you can use the 'nonfloat' LaTeX package.");
+	return InsetText::toolTip(bv, x, y);
+}
+
+
 void InsetCaption::getArgument(otexstream & os,
 			OutputParams const & runparams) const
 {
@@ -365,7 +377,7 @@ int InsetCaption::getCaptionAsPlaintext(odocstream & os,
 
 
 void InsetCaption::getCaptionAsDocBook(XMLStream & xs,
-										 OutputParams const & runparams) const
+				       OutputParams const & runparams) const
 {
 	if (runparams.docbook_in_float)
 		return;
@@ -400,9 +412,10 @@ void InsetCaption::updateBuffer(ParIterator const & it, UpdateType utype, bool c
 	is_deleted_ = deleted;
 	// Memorize type for addToToc().
 	floattype_ = type;
-	if (type.empty() || type == "senseless")
-		full_label_ = master.B_("Senseless!!! ");
-	else {
+	if (type.empty() || type == "senseless") {
+		full_label_ = master.B_("Orphaned caption:");
+		non_float_ = true;
+	} else {
 		// FIXME: life would be _much_ simpler if listings was
 		// listed in Floating.
 		docstring name;
@@ -441,6 +454,7 @@ void InsetCaption::updateBuffer(ParIterator const & it, UpdateType utype, bool c
 		if (sec.empty())
 			sec = from_ascii("#");
 		full_label_ = bformat(master.B_("%1$s %2$s: [[Caption label (ex. Figure 1: )]]"), name, sec);
+		non_float_ = false;
 	}
 
 	// Do the real work now.

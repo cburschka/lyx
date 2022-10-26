@@ -69,7 +69,7 @@ def find_beginning_of_inset(lines, i):
 
 
 def find_end_of_inset(lines, i):
-    " Finds the matching \end_inset"
+    r" Finds the matching \end_inset"
     return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
 
 
@@ -143,7 +143,7 @@ def get_width(mo):
 
 
 def remove_oldfloat(document):
-    " Change \begin_float .. \end_float into \begin_inset Float .. \end_inset"
+    r" Change \begin_float .. \end_float into \begin_inset Float .. \end_inset"
     lines = document.body
     i = 0
     while True:
@@ -250,7 +250,7 @@ def remove_pextra(document):
         if flag:
             flag = 0
             if hfill:
-                start = ["","\hfill",""]+start
+                start = ["",r"\hfill",""]+start
         else:
             start = ['\\layout %s' % document.default_layout,''] + start
 
@@ -324,7 +324,7 @@ def remove_oldert(document):
         new = []
         new2 = []
         if check_token(lines[i], "\\layout LaTeX"):
-            new = ['\layout %s' % document.default_layout, "", ""]
+            new = [r'\layout %s' % document.default_layout, "", ""]
 
         k = i+1
         while True:
@@ -808,7 +808,7 @@ def change_infoinset(document):
             note_lines = [txt]+note_lines
 
         for line in note_lines:
-            new = new + ['\layout %s' % document.default_layout, ""]
+            new = new + [r'\layout %s' % document.default_layout, ""]
             tmp = line.split('\\')
             new = new + [tmp[0]]
             for x in tmp[1:]:

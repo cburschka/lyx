@@ -867,9 +867,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 	textLayoutModule->indentCO->addItem(qt_("Custom"), toqstr("custom"));
 	textLayoutModule->skipCO->addItem(qt_("Half line height"), VSpace::HALFLINE);
 	textLayoutModule->skipCO->addItem(qt_("Line height"), VSpace::FULLLINE);
-	textLayoutModule->skipCO->addItem(qt_("SmallSkip"), VSpace::SMALLSKIP);
-	textLayoutModule->skipCO->addItem(qt_("MedSkip"), VSpace::MEDSKIP);
-	textLayoutModule->skipCO->addItem(qt_("BigSkip"), VSpace::BIGSKIP);
+	textLayoutModule->skipCO->addItem(qt_("Small Skip"), VSpace::SMALLSKIP);
+	textLayoutModule->skipCO->addItem(qt_("Medium Skip"), VSpace::MEDSKIP);
+	textLayoutModule->skipCO->addItem(qt_("Big Skip"), VSpace::BIGSKIP);
 	textLayoutModule->skipCO->addItem(qt_("Custom"), VSpace::LENGTH);
 	textLayoutModule->lspacingCO->insertItem(
 		Spacing::Single, qt_("Single"));

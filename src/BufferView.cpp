@@ -292,6 +292,8 @@ struct BufferView::Private
 	bool clickable_inset_;
 	/// shape of the caret
 	frontend::CaretGeometry caret_geometry_;
+	///
+	bool mouse_selecting_ = false;
 };
 
 
@@ -1089,8 +1091,6 @@ void BufferView::makeDocumentClass()
 
 void BufferView::updateDocumentClass(DocumentClassConstPtr olddc)
 {
-	message(_("Converting document to new document class..."));
-
 	StableDocIterator backcur(d->cursor_);
 	ErrorList & el = buffer_.errorList("Class Switch");
 	cap::switchBetweenClasses(
@@ -1719,6 +1719,8 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		}
 		if (cur.selection())
 			pattern = cur.selectionAsString(false);
+		else if (!cur.inTexted())
+			break; // not suitable for selectWord at cursor
 		else {
 			pos_type spos = cur.pos();
 			cur.innerText()->selectWord(cur, WHOLE_WORD);
@@ -1874,16 +1876,14 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			message += _("One word");
 		message += "\n";
 		if (chars_blanks != 1)
-			message += bformat(_("%1$d characters (including blanks)"),
-					  chars_blanks);
+			message += bformat(_("%1$d characters"), chars_blanks);
 		else
-			message += _("One character (including blanks)");
+			message += _("One character");
 		message += "\n";
 		if (chars != 1)
-			message += bformat(_("%1$d characters (excluding blanks)"),
-					  chars);
+			message += bformat(_("%1$d characters (no blanks)"), chars);
 		else
-			message += _("One character (excluding blanks)");
+			message += _("One character (no blanks)");
 
 		Alert::information(_("Statistics"), message);
 	}
@@ -2468,6 +2468,12 @@ void BufferView::clearLastInset(Inset * inset) const
 }
 
 
+bool BufferView::mouseSelecting() const
+{
+	return d->mouse_selecting_;
+}
+
+
 void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 {
 	//lyxerr << "[ cmd0 " << cmd0 << "]" << endl;
@@ -2489,6 +2495,9 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 
 	d->mouse_position_cache_.x_ = cmd.x();
 	d->mouse_position_cache_.y_ = cmd.y();
+
+	d->mouse_selecting_ =
+		cmd.action() == LFUN_MOUSE_MOTION && cmd.button() == mouse_button::button1;
 
 	if (cmd.action() == LFUN_MOUSE_MOTION && cmd.button() == mouse_button::none) {
 		updateHoveredInset();

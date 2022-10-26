@@ -33,8 +33,11 @@ class FindAndReplaceWidget : public QTabWidget, public Ui::FindAndReplaceUi
 public:
 	FindAndReplaceWidget(GuiView & view);
 	bool initialiseParams(std::string const & params);
-	void updateGUI();
+	void updateWorkAreas();
 	void updateButtons();
+
+	// return true if \c wa is one if the adv. F&R workareas
+	bool hasWorkArea(GuiWorkArea * wa) const;
 
 public Q_SLOTS:
 	///
@@ -66,9 +69,9 @@ private:
 	void virtual hideEvent(QHideEvent *ev) override;
 
 	void hideDialog();
-	
+
 	void setFormatIgnores(bool const b);
-	
+
 	docstring const checkState(std::string const s, bool const b);
 
 protected Q_SLOTS:
@@ -97,6 +100,7 @@ public:
 	void dispatchParams() override {}
 	bool isBufferDependent() const override { return false; }
 	bool canApplyToReadOnly() const override { return true; }
+	bool hasWorkArea(GuiWorkArea * wa) const { return widget_->hasWorkArea(wa); }
 	void selectAll();
 
 	/// update

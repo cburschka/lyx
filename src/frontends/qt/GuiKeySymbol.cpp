@@ -752,6 +752,14 @@ void KeySymbol::init(string const & symbolname)
 }
 
 
+void KeySymbol::init(int key)
+{
+	key_ = key;
+	text_ = from_utf8(qkey_to_string(key));
+	LYXERR(Debug::KEY, "Init key to " << key_ << ", " << to_utf8(text_));
+}
+
+
 bool KeySymbol::isOK() const
 {
 	bool const ok = !(text_.empty() && qkey_to_string(key_).empty());

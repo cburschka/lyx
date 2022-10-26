@@ -53,6 +53,18 @@ bool LayoutModuleList::adaptToBaseClass(LayoutFile const * const lay,
 }
 
 
+string LayoutModuleList::asString() const
+{
+	string mods;
+	for (auto const & mod : lml_)
+		mods += mod + ',';
+	// remove trailing comma
+	if (!mods.empty())
+		mods.pop_back();
+	return mods;
+}
+
+
 bool LayoutModuleList::moduleCanBeAdded(string const & modName,
 		LayoutFile const * const lay) const
 {

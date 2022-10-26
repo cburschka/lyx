@@ -1122,7 +1122,7 @@ void InsetText::updateBuffer(ParIterator const & it, UpdateType utype, bool cons
 		tclass.counters().current_float(savecnt.current_float());
 		tclass.counters().isSubfloat(savecnt.isSubfloat());
 		buffer().updateBuffer(it2, utype, deleted);
-		tclass.counters() = move(savecnt);
+		tclass.counters() = std::move(savecnt);
 	}
 }
 
@@ -1326,13 +1326,12 @@ docstring InsetText::completionPrefix(Cursor const & cur) const
 }
 
 
-bool InsetText::insertCompletion(Cursor & cur, docstring const & s,
-	bool finished)
+bool InsetText::insertCompletion(Cursor & cur, docstring const & s, bool /*finished*/)
 {
 	if (!completionSupported(cur))
 		return false;
 
-	return text_.insertCompletion(cur, s, finished);
+	return text_.insertCompletion(cur, s);
 }
 
 

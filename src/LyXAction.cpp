@@ -843,8 +843,8 @@ void LyXAction::init()
                is able to detect such changes (e.g. ghostview for postscript).
  * \li Syntax: buffer-update [<FORMAT>]
  * \li Params: <FORMAT>: The format to display, where this is one of the
-                         formats defined (in the current GUI) in the
-                         Tools>Preferences>File Formats dialog.
+                         formats defined in the Tools>Preferences>File Formats dialog,
+			 use the "Short name" field.
                          If no format is given, the default format as
                          specified in the same dialog is used.
  * \li Origin: Dekel, 5 Aug 2000
@@ -4101,13 +4101,20 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_UI_TOGGLE
  * \li Action: Various UI visibility-toggling actions.
  * \li Syntax: ui-toggle <statusbar|menubar|scrollbar|frame|fullscreen>
- * \li Params: statusbar  : Toggle visibility of the statusbar.\n
-               menubar    : Toggle visibility of the menubar.\n
-               scrollbar  : Toggle visibility of the scrollbar.\n
-               frame      : Toggle visibility of the frames around editing window.\n
-               fullscreen : Toggle fullscreen mode. This also covers calling the
-                            previous functions. However #LFUN_TOOLBAR_TOGGLE for the
-                            custom tweaks of the toolbars should be used.
+ * \li Params: statusbar     : Toggle visibility of the statusbar.\n
+               menubar       : Toggle visibility of the menubar.\n
+               scrollbar     : Toggle visibility of the scrollbar.\n
+               frame         : Toggle visibility of the frames around editing window.\n
+               zoomslider    : Toggle visibility of the zoom slider in statusbar.\n
+               zoomlevel     : Toggle visibility of the zoom level display in statusbar.\n
+               statistics-w  : Toggle visibility of the document word count in statusbar.\n
+               statistics-cb : Toggle visibility of the document character count (incl. blanks)
+                               in statusbar.\n
+               statistics-c  : Toggle visibility of the document character count (excl. blanks)
+                               in statusbar.\n
+               fullscreen    : Toggle fullscreen mode. This also covers calling the
+                               previous functions. However #LFUN_TOOLBAR_TOGGLE for the
+                               custom tweaks of the toolbars should be used.
  * \li Origin: sanda, 9 Feb 2007
  * \endvar
  */

@@ -120,7 +120,7 @@ def extract_metrics_info(dvipng_stdout):
     # "\[[0-9]+" can match two kinds of numbers: page numbers from dvipng
     # and glyph numbers from mktexpk. The glyph numbers always match
     # "\[[0-9]+\]" while the page number never is followed by "\]". Thus:
-    page_re = re.compile("\[([0-9]+)[^]]");
+    page_re = re.compile(r"\[([0-9]+)[^]]");
     metrics_re = re.compile("depth=(-?[0-9]+) height=(-?[0-9]+)")
 
     success = 0
@@ -197,7 +197,7 @@ def fix_latex_file(latex_file, pdf_output):
 
 
 def convert_to_ppm_format(pngtopnm, basename):
-    png_file_re = re.compile("\.png$")
+    png_file_re = re.compile(r"\.png$")
 
     for png_file in glob.glob("%s*.png" % basename):
         ppm_file = png_file_re.sub(".ppm", png_file)

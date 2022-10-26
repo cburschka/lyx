@@ -837,7 +837,7 @@ void addSnippet(std::list<TexString> & list, TexString ts, bool allow_dupes)
 			    return ts.str == ts2.str;
 		    })
 	    )
-		list.push_back(move(ts));
+		list.push_back(std::move(ts));
 }
 
 
@@ -854,7 +854,7 @@ TexString getSnippets(std::list<TexString> const & list)
 
 void LaTeXFeatures::addPreambleSnippet(TexString snippet, bool allow_dupes)
 {
-	addSnippet(preamble_snippets_, move(snippet), allow_dupes);
+	addSnippet(preamble_snippets_, std::move(snippet), allow_dupes);
 }
 
 
@@ -1511,7 +1511,8 @@ string const LaTeXFeatures::getPackages() const
 	}
 
 	// fixltx2e provides subscript
-	if (mustProvide("subscript") && !isRequired("fixltx2e"))
+	if (mustProvide("subscript") && !isRequired("fixltx2e")
+	    && !isAvailable("LaTeX-2005/12/01"))
 		packages << "\\usepackage{subscript}\n";
 
 	// footmisc must be loaded after setspace

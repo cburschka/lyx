@@ -629,7 +629,9 @@ dist_images_DATA1X = \
 	images/layout-toggle_Section.svgz \
 	images/lyx.svg \
 	images/lyxfiles-system.svgz \
+	images/lyxfiles-system-folder.svgz \
 	images/lyxfiles-user.svgz \
+	images/lyxfiles-user-folder.svgz \
 	images/lyx-quit.svgz \
 	images/marginalnote-insert.svgz \
 	images/master-buffer-update.svgz \
@@ -740,7 +742,8 @@ dist_images_DATA = \
 	images/banner.png \
 	$(dist_images_DATA1X) \
 	$(dist_images_DATA2X) \
-	$(dist_images_DATA3X)
+	$(dist_images_DATA3X) \
+	images/icon.aliases
 
 imagesmathdir = $(imagesdir)/math
 dist_imagesmath_DATA = \

@@ -33,6 +33,7 @@
 #include "support/lassert.h"
 #include "support/Length.h"
 #include "support/lstrings.h"
+#include "support/qstring_helpers.h"
 
 #include "frontends/Application.h"
 #include "frontends/FontMetrics.h"
@@ -65,77 +66,77 @@ docstring InsetSpace::toolTip(BufferView const &, int, int) const
 	docstring message;
 	switch (params_.kind) {
 	case InsetSpaceParams::NORMAL:
-		message = _("Interword Space");
+		message = _("Normal Space");
 		break;
 	case InsetSpaceParams::PROTECTED:
-		message = _("Protected Space");
+		message = _("Non-Breaking Normal Space");
 		break;
 	case InsetSpaceParams::VISIBLE:
-		message = _("Visible Space");
+		message = _("Non-Breaking Visible Normal Space");
 		break;
 	case InsetSpaceParams::THIN:
-		message = _("Thin Space");
+		message = _("Non-Breaking Thin Space (1/6 em)");
 		break;
 	case InsetSpaceParams::MEDIUM:
-		message = _("Medium Space");
+		message = _("Non-Breaking Medium Space (2/9 em)");
 		break;
 	case InsetSpaceParams::THICK:
-		message = _("Thick Space");
+		message = _("Non-Breaking Thick Space (5/18 em)");
 		break;
 	case InsetSpaceParams::QUAD:
-		message = _("Quad Space");
+		message = _("Quad Space (1 em)");
 		break;
 	case InsetSpaceParams::QQUAD:
-		message = _("Double Quad Space");
+		message = _("Double Quad Space (2 em)");
 		break;
 	case InsetSpaceParams::ENSPACE:
-		message = _("Enspace");
+		message = _("Non-Breaking Half Quad Space (1/2 em)");
 		break;
 	case InsetSpaceParams::ENSKIP:
-		message = _("Enskip");
+		message = _("Half Quad Space (1/2 em)");
 		break;
 	case InsetSpaceParams::NEGTHIN:
-		message = _("Negative Thin Space");
+		message = _("Non-Breaking Negative Thin Space (-1/6 em)");
 		break;
 	case InsetSpaceParams::NEGMEDIUM:
-		message = _("Negative Medium Space");
+		message = _("Non-Breaking Negative Medium Space (-2/9 em)");
 		break;
 	case InsetSpaceParams::NEGTHICK:
-		message = _("Negative Thick Space");
+		message = _("Non-Breaking Negative Thick Space (-5/18 em)");
 		break;
 	case InsetSpaceParams::HFILL:
 		message = _("Horizontal Fill");
 		break;
 	case InsetSpaceParams::HFILL_PROTECTED:
-		message = _("Protected Horizontal Fill");
+		message = _("Non-Breaking Horizontal Fill");
 		break;
 	case InsetSpaceParams::DOTFILL:
-		message = _("Horizontal Fill (Dots)");
+		message = _("Non-Breaking Horizontal Fill (Dots)");
 		break;
 	case InsetSpaceParams::HRULEFILL:
-		message = _("Horizontal Fill (Rule)");
+		message = _("Non-Breaking Horizontal Fill (Rule)");
 		break;
 	case InsetSpaceParams::LEFTARROWFILL:
-		message = _("Horizontal Fill (Left Arrow)");
+		message = _("Non-Breaking Horizontal Fill (Left Arrow)");
 		break;
 	case InsetSpaceParams::RIGHTARROWFILL:
-		message = _("Horizontal Fill (Right Arrow)");
+		message = _("Non-Breaking Horizontal Fill (Right Arrow)");
 		break;
 	case InsetSpaceParams::UPBRACEFILL:
-		message = _("Horizontal Fill (Up Brace)");
+		message = _("Non-Breaking Horizontal Fill (Up Brace)");
 		break;
 	case InsetSpaceParams::DOWNBRACEFILL:
-		message = _("Horizontal Fill (Down Brace)");
+		message = _("Non-Breaking Horizontal Fill (Down Brace)");
 		break;
 	case InsetSpaceParams::CUSTOM:
 		// FIXME unicode
 		message = support::bformat(_("Horizontal Space (%1$s)"),
-				from_ascii(params_.length.asString()));
+					   locLengthDocString(from_ascii(params_.length.asString())));
 		break;
 	case InsetSpaceParams::CUSTOM_PROTECTED:
 		// FIXME unicode
-		message = support::bformat(_("Protected Horizontal Space (%1$s)"),
-				from_ascii(params_.length.asString()));
+		message = support::bformat(_("Non-Breaking Horizontal Space (%1$s)"),
+					   locLengthDocString(from_ascii(params_.length.asString())));
 		break;
 	}
 	return message;

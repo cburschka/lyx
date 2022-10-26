@@ -285,7 +285,6 @@ while [ $# -gt 0 ]; do
 		shift
 		;;
 	--enable-cxx11|--enable-cxx-mode=*)
-		LyXConfigureOptions="${LyXConfigureOptions} ${1}"
 		EnableCXXMode="${1}"
 		shift
 		;;
@@ -423,11 +422,13 @@ case "${EnableCXXMode}" in
 	export CC=cc
 	export CXX="c++ -stdlib=libc++"
 	export CXXFLAGS=-std=c++11
+	LyXConfigureOptions="${LyXConfigureOptions} --enable-cxx-mode=11"
 	;;
 --enable-cxx-mode=17)
 	export CC=cc
 	export CXX="c++ -stdlib=libc++"
 	export CXXFLAGS=-std=c++17
+	LyXConfigureOptions="${LyXConfigureOptions} ${EnableCXXMode}"
 	;;
 esac
 

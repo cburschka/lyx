@@ -90,7 +90,7 @@ size_t otexstringstream::length()
 
 TexString otexstringstream::release()
 {
-	TexString ts(ods_.str(), move(texrow()));
+	TexString ts(ods_.str(), std::move(texrow()));
 	// reset this
 	texrow() = TexRow();
 	ods_.clear();
@@ -164,8 +164,8 @@ otexstream & operator<<(otexstream & ots, odocstream_manip pf)
 otexrowstream & operator<<(otexrowstream & ots, TexString ts)
 {
 	ts.validate();
-	ots.os() << move(ts.str);
-	ots.texrow().append(move(ts.texrow));
+	ots.os() << std::move(ts.str);
+	ots.texrow().append(std::move(ts.texrow));
 	return ots;
 }
 
@@ -201,7 +201,7 @@ otexstream & operator<<(otexstream & ots, TexString ts)
 		ots.canBreakLine(ts.str[len - 2] != '\n');
 	ots.lastChar(ts.str[len - 1]);
 
-	otrs << move(ts);
+	otrs << std::move(ts);
 	return ots;
 }
 

@@ -682,9 +682,8 @@ void GuiCompleter::tab()
 		return;
 	}
 
-	// Make undo possible
+	// Prepare for undo (recordUndo is invoked in the insets' insertCompletion methods)
 	UndoGroupHelper ugh(cur.buffer());
-	cur.recordUndo();
 
 	// If completion is active, at least complete by one character
 	docstring prefix = cur.inset().completionPrefix(cur);

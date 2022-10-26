@@ -152,7 +152,7 @@ def extract_argument(line):
     if not line:
         return (None, "")
 
-    bracere = re.compile("(\s*)(.*)")
+    bracere = re.compile(r"(\s*)(.*)")
     n = bracere.match(line)
     whitespace = n.group(1)
     stuff = n.group(2)
@@ -277,7 +277,7 @@ def latex2lyx(data, isindex):
     data = data.replace('\\\\', '\\')
 
     # Math:
-    mathre = re.compile('^(.*?)(\$.*?\$)(.*)')
+    mathre = re.compile(r'^(.*?)(\$.*?\$)(.*)')
     lines = data.split('\n')
     for line in lines:
         #document.warning("LINE: " + line)
@@ -946,7 +946,7 @@ def remove_inzip_options(document):
 
 
 def convert_inset_command(document):
-    """
+    r"""
         Convert:
             \begin_inset LatexCommand cmd
         to
@@ -983,7 +983,7 @@ def convert_inset_command(document):
 
 
 def revert_inset_command(document):
-    """
+    r"""
         Convert:
             \begin_inset CommandInset InsetType
             LatexCommand cmd
@@ -1558,7 +1558,7 @@ def convert_usorbian(document):
 
 
 def convert_macro_global(document):
-    "Remove TeX code command \global when it is in front of a macro"
+    r"Remove TeX code command \global when it is in front of a macro"
     # math macros are nowadays already defined \global, so that an additional
     # \global would make the document uncompilable, see
     # http://www.lyx.org/trac/ticket/5371
@@ -2339,7 +2339,7 @@ def revert_wrapplacement(document):
 
 
 def remove_extra_embedded_files(document):
-    " Remove \extra_embedded_files from buffer params "
+    r" Remove \extra_embedded_files from buffer params "
     i = find_token(document.header, '\\extra_embedded_files', 0)
     if i == -1:
         return

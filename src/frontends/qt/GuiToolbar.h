@@ -169,8 +169,9 @@ public:
 	///
 	GuiCommandBuffer * commandBuffer() { return command_buffer_; }
 
-	///
-	Action * addItem(ToolbarItem const & item);
+	/// add item to toolbar.
+	/// \param menu : when true, the item is for a menu entry, not a button.
+	Action * addItem(ToolbarItem const & item, bool menu = false);
 	///
 	GuiView const & owner() { return owner_; }
 

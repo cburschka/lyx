@@ -159,6 +159,8 @@ set<string> getTexFileList(string const & filename)
 		getVectorFromString(file.fileContents("UTF-8"), from_ascii("\n"));
 
 	// Normalise paths like /foo//bar ==> /foo/bar
+	// No "auto const &" because doc is modified later
+	// coverity[auto_causes_copy]
 	for (auto doc : doclist) {
 		doc = subst(doc, from_ascii("\r"), docstring());
 		while (contains(doc, from_ascii("//")))

@@ -546,13 +546,11 @@ void InsetMathFrac::mathmlize(MathMLStream & ms) const
 		if (nargs() == 2) {
 			ms << MTag("mrow");
 			ms << cell(0);
-			SetMode textmode(ms, true);
 			ms << MTagInline("mstyle mathvariant='normal'");
 			ms << cell(1);
 			ms << ETagInline("mstyle");
 			ms << ETag("mrow");
 		} else {
-			SetMode textmode(ms, true);
 			ms << MTag("mstyle mathvariant='normal'");
 			ms << cell(0);
 			ms << ETag("mstyle");

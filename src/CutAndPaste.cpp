@@ -289,12 +289,25 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 						 Change::INSERTED : Change::UNCHANGED));
 	}
 
-	bool const empty = pars[pit].empty();
-	if (!empty) {
-		// Make the buf exactly the same layout as the cursor
-		// paragraph.
+	bool const target_empty = pars[pit].empty();
+	// Use the paste content's layout, if...
+	bool const paste_layout =
+		// if target paragraph is empty
+		(target_empty
+		 // ... and its layout is default
+		 && (pars[pit].layout() == defaultLayout
+		     // ... or plain
+		     || pars[pit].layout() == plainLayout
+		     // ... or the paste content spans several paragraphs
+		     || insertion.size() > 1))
+		// or if pasting is done at the beginning of paragraph
+		 || (pos == 0
+		     // and the paste content spans several paragraphs
+		     && insertion.size() > 1);
+	if (!paste_layout)
+		// Give the first paragraph to insert the same layout as the
+		// target paragraph.
 		insertion.begin()->makeSameLayout(pars[pit]);
-	}
 
 	// Prepare the paragraphs and insets for insertion.
 	insertion.swap(in.paragraphs());
@@ -458,11 +471,17 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 	insertion.swap(in.paragraphs());
 
 	// Split the paragraph for inserting the buf if necessary.
-	if (!empty)
+	if (!target_empty)
 		breakParagraphConservative(buffer.params(), pars, pit, pos);
 
+	// If multiple paragraphs are inserted before the target paragraph,
+	// the cursor is now in a new paragraph before it,
+	// so use layout from paste content in that case.
+	if (pos == 0 && insertion.size() > 1)
+		pars[pit].makeSameLayout(* insertion.begin());
+
 	// Paste it!
-	if (empty) {
+	if (target_empty) {
 		pars.insert(pars.iterator_at(pit),
 		            insertion.begin(), insertion.end());
 
@@ -491,7 +510,7 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 
 	// Join (conditionally) last pasted paragraph with next one, i.e.,
 	// the tail of the spliced document paragraph
-	if (!empty && last_paste + 1 != pit_type(pars.size())) {
+	if (!target_empty && last_paste + 1 != pit_type(pars.size())) {
 		if (pars[last_paste + 1].hasSameLayout(pars[last_paste])) {
 			mergeParagraph(buffer.params(), pars, last_paste);
 		} else if (pars[last_paste + 1].empty()) {
@@ -1299,6 +1318,7 @@ bool pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs,
 				Buffer buffer(string(), false);
 				buffer.setInternal(true);
 				buffer.setUnnamed(true);
+				buffer.params() = cur.buffer()->params();
 				available = buffer.importString(names[i], text, errorList);
 				if (available)
 					available = !buffer.paragraphs().empty();

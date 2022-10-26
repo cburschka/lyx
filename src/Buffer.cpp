@@ -1110,6 +1110,24 @@ bool Buffer::readDocument(Lexer & lex)
 }
 
 
+bool Buffer::isSyncTeXenabled() const
+{
+	bool enabled = params().output_sync;
+
+	if (!enabled)
+		for (auto const & c : theConverters()) {
+			const string dest = c.to().substr(0,3);
+			if (dest == "dvi" || dest == "pdf") {
+				const string cmd = c.command();
+				enabled |= cmd.find("-synctex=") != string::npos
+					&& cmd.find("-synctex=0") == string::npos;
+				if (enabled)
+					break;
+			}
+		}
+	return enabled;
+}
+
 bool Buffer::importString(string const & format, docstring const & contents, ErrorList & errorList)
 {
 	Format const * fmt = theFormats().getFormat(format);
@@ -1145,7 +1163,7 @@ bool Buffer::importFile(string const & format, FileName const & name, ErrorList 
 
 	FileName const lyx = tempFileName("Buffer_importFileXXXXXX.lyx");
 	Converters::RetVal const retval =
-		theConverters().convert(nullptr, name, lyx, name, format, "lyx", errorList);
+		theConverters().convert(this, name, lyx, name, format, "lyx", errorList);
 	if (retval == Converters::SUCCESS) {
 		bool const success = readFile(lyx) == ReadSuccess;
 		removeTempFile(lyx);

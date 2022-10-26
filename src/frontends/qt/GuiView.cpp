@@ -18,6 +18,7 @@
 #include "DialogFactory.h"
 #include "DispatchResult.h"
 #include "FileDialog.h"
+#include "FindAndReplace.h"
 #include "FontLoader.h"
 #include "GuiApplication.h"
 #include "GuiClickableLabel.h"
@@ -522,6 +523,7 @@ public:
 
 	///
 	QTimer statusbar_timer_;
+	QTimer statusbar_stats_timer_;
 	/// auto-saving of buffers
 	Timeout autosave_timeout_;
 
@@ -545,6 +547,20 @@ public:
 
 	/// flag against a race condition due to multiclicks, see bug #1119
 	bool in_show_;
+
+	// Timers for statistic updates in buffer
+	/// Current time left to the nearest info update
+	int time_to_update = 1000;
+	///Basic step for timer in ms. Basically reaction time for short selections
+	int const timer_rate = 500;
+	/// Real stats updates infrequently. First they take long time for big buffers, second
+	/// they are visible for fast-repeat keyboards even for mid documents.
+	int const default_stats_rate = 5000;
+	/// Detection of new selection, so we can react fast
+	bool already_in_selection_ = false;
+	/// Maximum size of "short" selection for which we can update with faster timer_rate
+	int const max_sel_chars = 5000;
+
 };
 
 QSet<Buffer const *> GuiView::GuiViewPrivate::busyBuffers;
@@ -552,8 +568,9 @@ QSet<Buffer const *> GuiView::GuiViewPrivate::busyBuffers;
 
 GuiView::GuiView(int id)
 	: d(*new GuiViewPrivate(this)), id_(id), closing_(false), busy_(0),
-	  command_execute_(false), minibuffer_focus_(false), toolbarsMovable_(true),
-	  devel_mode_(false)
+	  command_execute_(false), minibuffer_focus_(false), word_count_enabled_(true),
+	  char_count_enabled_(true),  char_nb_count_enabled_(false),
+	  toolbarsMovable_(true), devel_mode_(false)
 {
 	connect(this, SIGNAL(bufferViewChanged()),
 	        this, SLOT(onBufferViewChanged()));
@@ -581,6 +598,9 @@ GuiView::GuiView(int id)
 	}
 	connect(&d.statusbar_timer_, SIGNAL(timeout()),
 		this, SLOT(clearMessage()));
+	connect(&d.statusbar_stats_timer_, SIGNAL(timeout()),
+		this, SLOT(showStats()));
+	d.statusbar_stats_timer_.start(d.timer_rate);
 
 	// We don't want to keep the window in memory if it is closed.
 	setAttribute(Qt::WA_DeleteOnClose, true);
@@ -625,6 +645,15 @@ GuiView::GuiView(int id)
 	connect(&d.processing_thread_watcher_, SIGNAL(finished()),
 		busySVG, SLOT(hide()));
 	connect(busySVG, SIGNAL(pressed()), this, SLOT(checkCancelBackground()));
+
+	stat_counts_ = new GuiClickableLabel(statusBar());
+	stat_counts_->setAlignment(Qt::AlignCenter);
+	stat_counts_->setFrameStyle(QFrame::StyledPanel);
+	stat_counts_->hide();
+	statusBar()->addPermanentWidget(stat_counts_);
+
+	connect(stat_counts_, SIGNAL(clicked()), this, SLOT(statsPressed()));
+
 
 	QFontMetrics const fm(statusBar()->fontMetrics());
 
@@ -677,7 +706,8 @@ GuiView::GuiView(int id)
 
 	// QPalette palette = statusBar()->palette();
 
-	zoom_value_ = new QLabel(statusBar());
+	zoom_value_ = new GuiClickableLabel(statusBar());
+	connect(zoom_value_, SIGNAL(pressed()), this, SLOT(showZoomContextMenu()));
 	// zoom_value_->setPalette(palette);
 	zoom_value_->setForegroundRole(statusBar()->foregroundRole());
 	zoom_value_->setFixedHeight(fm.height());
@@ -693,7 +723,7 @@ GuiView::GuiView(int id)
 
 	statusBar()->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(statusBar(), SIGNAL(customContextMenuRequested(QPoint)),
-		this, SLOT(showZoomContextMenu()));
+		this, SLOT(showStatusBarContextMenu()));
 
 	// enable pinch to zoom
 	grabGesture(Qt::PinchGesture);
@@ -794,6 +824,11 @@ void GuiView::checkCancelBackground()
 		Systemcall::killscript();
 }
 
+void GuiView::statsPressed()
+{
+	DispatchResult dr;
+	dispatch(FuncRequest(LFUN_STATISTICS), dr);
+}
 
 void GuiView::zoomSliderMoved(int value)
 {
@@ -828,6 +863,15 @@ void GuiView::zoomOutPressed()
 
 
 void GuiView::showZoomContextMenu()
+{
+	QMenu * menu = guiApp->menus().menu(toqstr("context-zoom"), * this);
+	if (!menu)
+		return;
+	menu->exec(QCursor::pos());
+}
+
+
+void GuiView::showStatusBarContextMenu()
 {
 	QMenu * menu = guiApp->menus().menu(toqstr("context-statusbar"), * this);
 	if (!menu)
@@ -951,6 +995,9 @@ void GuiView::saveLayout() const
 	settings.setValue("icon_size", toqstr(d.iconSize(iconSize())));
 	settings.setValue("zoom_value_visible", zoom_value_->isVisible());
 	settings.setValue("zoom_slider_visible", zoom_slider_->isVisible());
+	settings.setValue("word_count_enabled", word_count_enabled_);
+	settings.setValue("char_count_enabled", char_count_enabled_);
+	settings.setValue("char_nb_count_enabled", char_nb_count_enabled_);
 }
 
 
@@ -999,6 +1046,11 @@ bool GuiView::restoreLayout()
 	zoom_slider_->setVisible(show_zoom_slider);
 	zoom_in_->setVisible(show_zoom_slider);
 	zoom_out_->setVisible(show_zoom_slider);
+
+	word_count_enabled_ = settings.value("word_count_enabled", true).toBool();
+	char_count_enabled_ = settings.value("char_count_enabled", true).toBool();
+	char_nb_count_enabled_ = settings.value("char_nb_count_enabled", true).toBool();
+	stat_counts_->setVisible(word_count_enabled_ || char_count_enabled_ || char_nb_count_enabled_);
 
 	if (guiApp->platformName() == "qt4x11" || guiApp->platformName() == "xcb") {
 		QPoint pos = settings.value("pos", QPoint(50, 50)).toPoint();
@@ -1270,6 +1322,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 
 	// Make sure the timer time out will not trigger a statusbar update.
 	d.statusbar_timer_.stop();
+	d.statusbar_stats_timer_.stop();
 
 	// Saving fullscreen requires additional tweaks in the toolbar code.
 	// It wouldn't also work under linux natively.
@@ -1373,6 +1426,73 @@ void GuiView::clearMessage()
 	//	return;
 	showMessage();
 	d.statusbar_timer_.stop();
+}
+
+void GuiView::showStats()
+{
+	if (!statsEnabled())
+		return;
+
+	d.time_to_update -= d.timer_rate;
+
+	BufferView * bv = currentBufferView();
+	Buffer * buf = bv ? &bv->buffer() : nullptr;
+	if (!buf) {
+		stat_counts_->hide();
+		return;
+	}
+
+	Cursor const & cur = bv->cursor();
+
+	// we start new selection and need faster update
+	if (!d.already_in_selection_ && cur.selection())
+		d.time_to_update = 0;
+
+	if (d.time_to_update > 0)
+		return;
+
+	DocIterator from, to;
+	if (cur.selection()) {
+		from = cur.selectionBegin();
+		to = cur.selectionEnd();
+		d.already_in_selection_ = true;
+	} else {
+		from = doc_iterator_begin(buf);
+		to = doc_iterator_end(buf);
+		d.already_in_selection_ = false;
+	}
+
+	buf->updateStatistics(from, to);
+
+	QStringList stats;
+	if (word_count_enabled_) {
+		int const words = buf->wordCount();
+		if (words == 1)
+			stats << toqstr(bformat(_("%1$d Word"), words));
+		else
+			stats << toqstr(bformat(_("%1$d Words"), words));
+	}
+	int const chars_with_blanks = buf->charCount(true);
+	if (char_count_enabled_) {
+		if (chars_with_blanks == 1)
+			stats << toqstr(bformat(_("%1$d Character"), chars_with_blanks));
+		else
+			stats << toqstr(bformat(_("%1$d Characters"), chars_with_blanks));
+	}
+	if (char_nb_count_enabled_) {
+		int const chars = buf->charCount(false);
+		if (chars == 1)
+			stats << toqstr(bformat(_("%1$d Character (no Blanks)"), chars));
+		else
+			stats << toqstr(bformat(_("%1$d Characters (no Blanks)"), chars));
+	}
+	stat_counts_->setText(stats.join(qt_(", [[stats separator]]")));
+	stat_counts_->show();
+
+	d.time_to_update = d.default_stats_rate;
+	// fast updates for small selections
+	if (chars_with_blanks < d.max_sel_chars && cur.selection())
+		d.time_to_update = d.timer_rate;
 }
 
 
@@ -1511,6 +1631,12 @@ void GuiView::showMessage()
 			msg = qt_("Welcome to LyX!");
 	}
 	statusBar()->showMessage(msg);
+}
+
+
+bool GuiView::statsEnabled() const
+{
+	return word_count_enabled_ || char_count_enabled_ || char_nb_count_enabled_;
 }
 
 
@@ -1864,6 +1990,17 @@ void GuiView::removeWorkArea(GuiWorkArea * wa)
 			setCurrentWorkArea(nullptr);
 		}
 	}
+}
+
+
+bool GuiView::hasVisibleWorkArea(GuiWorkArea * wa) const
+{
+	for (int i = 0; i < d.splitter_->count(); ++i)
+		if (d.tabWorkArea(i)->currentWorkArea() == wa)
+			return true;
+
+	FindAndReplace * fr = static_cast<FindAndReplace*>(find("findreplaceadv", false));
+	return fr->isVisible() && fr->hasWorkArea(wa);
 }
 
 
@@ -2407,6 +2544,12 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			flag.setOnOff(zoom_value_ ? zoom_value_->isVisible() : false);
 		} else if (cmd.argument() == "zoomslider") {
 			flag.setOnOff(zoom_slider_ ? zoom_slider_->isVisible() : false);
+		} else if (cmd.argument() == "statistics-w") {
+			flag.setOnOff(word_count_enabled_);
+		} else if (cmd.argument() == "statistics-cb") {
+			flag.setOnOff(char_count_enabled_);
+		} else if (cmd.argument() == "statistics-c") {
+			flag.setOnOff(char_nb_count_enabled_);
 		} else
 			flag.setOnOff(isFullScreen());
 		break;
@@ -2582,7 +2725,8 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_WINDOW_RAISE:
 		break;
 	case LFUN_FORWARD_SEARCH:
-		enable = !(lyxrc.forward_search_dvi.empty() && lyxrc.forward_search_pdf.empty());
+		enable = !(lyxrc.forward_search_dvi.empty() && lyxrc.forward_search_pdf.empty()) &&
+			doc_buffer && doc_buffer->isSyncTeXenabled();
 		break;
 
 	case LFUN_FILE_INSERT_PLAINTEXT:
@@ -3068,8 +3212,7 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname, RenameKind kin
 		dlg.setButton1(qt_("D&ocuments"), toqstr(lyxrc.document_path));
 		dlg.setButton2(qt_("&Templates"), toqstr(lyxrc.template_path));
 
-		if (!isLyXFileName(fname.absFileName()))
-			fname.changeExtension(".lyx");
+		fname.ensureExtension(".lyx");
 
 		string const path = as_template ?
 					getTemplatesPath(b)
@@ -3087,8 +3230,7 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname, RenameKind kin
 		if (fname.empty())
 			return false;
 
-		if (!isLyXFileName(fname.absFileName()))
-			fname.changeExtension(".lyx");
+		fname.ensureExtension(".lyx");
 	}
 
 	// fname is now the new Buffer location.
@@ -3235,6 +3377,8 @@ bool GuiView::exportBufferAs(Buffer & b, docstring const & iformat)
 
 	if (fmt_name.empty() || fname.empty())
 		return false;
+
+	fname.ensureExtension(theFormats().extension(fmt_name));
 
 	// fname is now the new Buffer location.
 	if (fname.exists()) {
@@ -4805,10 +4949,12 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				dr.setMessage(_("Please, preview the document first."));
 				break;
 			}
+			bool const goto_dvi = have_dvi && !lyxrc.forward_search_dvi.empty();
+			bool const goto_pdf = have_pdf && !lyxrc.forward_search_pdf.empty();
 			string outname = dviname.onlyFileName();
 			string command = lyxrc.forward_search_dvi;
-			if (!have_dvi || (have_pdf &&
-			    pdfname.lastModified() > dviname.lastModified())) {
+			if ((!goto_dvi || goto_pdf) &&
+			    pdfname.lastModified() > dviname.lastModified()) {
 				outname = pdfname.onlyFileName();
 				command = lyxrc.forward_search_pdf;
 			}
@@ -4892,6 +5038,18 @@ bool GuiView::lfunUiToggle(string const & ui_component)
 		zoom_slider_->setVisible(!zoom_slider_->isVisible());
 		zoom_in_->setVisible(zoom_slider_->isVisible());
 		zoom_out_->setVisible(zoom_slider_->isVisible());
+	} else if (ui_component == "statistics-w") {
+		word_count_enabled_ = !word_count_enabled_;
+		if (statsEnabled())
+			showStats();
+	} else if (ui_component == "statistics-cb") {
+		char_count_enabled_ = !char_count_enabled_;
+		if (statsEnabled())
+			showStats();
+	} else if (ui_component == "statistics-c") {
+		char_nb_count_enabled_ = !char_nb_count_enabled_;
+		if (statsEnabled())
+			showStats();
 	} else if (ui_component == "frame") {
 		int const l = contentsMargins().left();
 
@@ -4913,6 +5071,7 @@ bool GuiView::lfunUiToggle(string const & ui_component)
 		toggleFullScreen();
 	} else
 		return false;
+	stat_counts_->setVisible(statsEnabled());
 	return true;
 }
 
@@ -5034,7 +5193,7 @@ void GuiView::flatGroupBoxes(const QObject * widget, bool flag)
 }
 
 
-Dialog * GuiView::findOrBuild(string const & name, bool hide_it)
+Dialog * GuiView::find(string const & name, bool hide_it) const
 {
 	if (!isValidName(name))
 		return nullptr;
@@ -5046,8 +5205,17 @@ Dialog * GuiView::findOrBuild(string const & name, bool hide_it)
 			it->second->hideView();
 		return it->second.get();
 	}
+	return nullptr;
+}
 
-	Dialog * dialog = build(name);
+
+Dialog * GuiView::findOrBuild(string const & name, bool hide_it)
+{
+	Dialog * dialog = find(name, hide_it);
+	if (dialog != nullptr)
+		return dialog;
+
+	dialog = build(name);
 	d.dialogs_[name].reset(dialog);
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
 	// Force a uniform style for group boxes

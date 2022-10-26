@@ -2325,6 +2325,8 @@ void PrefFileformats::updateViewers()
 	viewerCO->blockSignals(true);
 	viewerCO->clear();
 	viewerCO->addItem(qt_("None"), QString());
+	if (os::canAutoOpenFile(f.extension(), os::VIEW))
+		viewerCO->addItem(qt_("System Default"), QString("auto"));
 	updateComboBox(viewer_alternatives, f.name(), viewerCO);
 	viewerCO->addItem(qt_("Custom"), QString("custom viewer"));
 	viewerCO->blockSignals(false);
@@ -2348,6 +2350,8 @@ void PrefFileformats::updateEditors()
 	editorCO->blockSignals(true);
 	editorCO->clear();
 	editorCO->addItem(qt_("None"), QString());
+	if (os::canAutoOpenFile(f.extension(), os::EDIT))
+		editorCO->addItem(qt_("System Default"), QString("auto"));
 	updateComboBox(editor_alternatives, f.name(), editorCO);
 	editorCO->addItem(qt_("Custom"), QString("custom editor"));
 	editorCO->blockSignals(false);
@@ -3087,10 +3091,10 @@ QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
 	QTreeWidgetItem * newItem = nullptr;
 	// for unbind items, try to find an existing item in the system bind list
 	if (tag == KeyMap::UserUnbind) {
-		QList<QTreeWidgetItem*> const items = shortcutsTW->findItems(lfun_name,
-			Qt::MatchFlags(Qt::MatchExactly | Qt::MatchRecursive), 0);
+		QList<QTreeWidgetItem*> const items = shortcutsTW->findItems(shortcut,
+			Qt::MatchFlags(Qt::MatchExactly | Qt::MatchRecursive), 1);
 		for (auto const & item : items) {
-			if (item->text(1) == shortcut) {
+			if (item->text(0) == lfun_name || lfun == FuncRequest::unknown) {
 				newItem = item;
 				break;
 			}
@@ -3125,10 +3129,10 @@ QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
 			// this should not happen
 			newItem = new QTreeWidgetItem(shortcutsTW);
 		}
+		newItem->setText(0, lfun_name);
+		newItem->setText(1, shortcut);
 	}
 
-	newItem->setText(0, lfun_name);
-	newItem->setText(1, shortcut);
 	// record BindFile representation to recover KeySequence when needed.
 	newItem->setData(1, Qt::UserRole, toqstr(seq.print(KeySequence::BindFile)));
 	setItemType(newItem, tag);

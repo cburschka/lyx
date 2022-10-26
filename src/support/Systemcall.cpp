@@ -217,6 +217,21 @@ string const parsecmd(string const & incmd, string & infile, string & outfile,
 			}
 		} else if (c == '<' && !(in_double_quote || escaped)) {
 			o = 3;
+#if defined (USE_MACOSX_PACKAGING)
+		} else if (o == 0 && i > 4 && c == ' ' && !(in_double_quote || escaped)) {
+			// if a macOS app is detected with an additional argument
+			// use open command as prefix to get it work
+			const size_t apos = outcmd[o].rfind(".app");
+			const size_t len = outcmd[o].length();
+			const bool quoted = outcmd[o].at(len - 1) == '"' && outcmd[o].at(0) == '"';
+			const string & ocmd = "open -a ";
+			if (apos != string::npos &&
+				(apos == (len - 4) || (apos == (len - 5) && quoted)) &&
+				!prefixIs(trim(outcmd[o]), ocmd)) {
+				outcmd[o] = ocmd + outcmd[o];
+			}
+			outcmd[o] += c;
+#endif
 		} else {
 			if (escaped && in_double_quote)
 				outcmd[o] += '\\';

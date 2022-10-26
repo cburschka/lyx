@@ -99,6 +99,9 @@ string widgetsToLength(QLineEdit const * input, LengthCombo const * combo)
 	// Don't return unit-from-choice if the input(field) contains a unit
 	if (isValidGlueLength(fromqstr(length)))
 		return fromqstr(length);
+	// Also try with localized version
+	if (isValidGlueLength(fromqstr(unlocLengthString(length))))
+		return fromqstr(unlocLengthString(length));
 
 	Length::UNIT const unit = combo->currentLengthItem();
 
@@ -115,6 +118,9 @@ Length widgetsToLength(QLineEdit const * input, QComboBox const * combo)
 	// don't return unit-from-choice if the input(field) contains a unit
 	if (isValidGlueLength(fromqstr(length)))
 		return Length(fromqstr(length));
+	// Also try with localized version
+	if (isValidGlueLength(fromqstr(unlocLengthString(length))))
+		return Length(fromqstr(unlocLengthString(length)));
 
 	Length::UNIT unit = Length::UNIT_NONE;
 	QString const item = combo->currentText();
@@ -155,7 +161,7 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 	} else if (!isValidLength(len) && !isStrDbl(len)) {
 		// use input field only for gluelengths
 		combo->setCurrentItem(defaultUnit);
-		input->setText(toqstr(len));
+		input->setText(locLengthString(toqstr(len)));
 	} else {
 		lengthToWidgets(input, combo, Length(len), defaultUnit);
 	}

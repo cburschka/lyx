@@ -221,6 +221,11 @@ public:
 	int readHeader(Lexer & lex);
 
 	double fontScalingFactor() const;
+	/// check for active synctex support:
+	/// - either the document has synchronize output enabled or
+	/// - there is a converter to dvi or pdf defined with synctex command line argument
+	///   this is the "expert mode", false positives are possible
+	bool isSyncTeXenabled() const;
 
 private:
 	///

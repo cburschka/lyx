@@ -1876,17 +1876,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			if (!bv->mouseSetCursor(cur, cmd.modifier() == ShiftModifier))
 				cur.screenUpdateFlags(Update::SinglePar | Update::FitCursor);
 			// FIXME: move this to mouseSetCursor?
-			if (bvcur.wordSelection() && bvcur.inTexted()) {
-				// select word around new position
-				Cursor c = bvcur;
-				c.selection(false);
-				c.text()->selectWord(c, WHOLE_WORD);
-				// use the correct word boundary, depending on selection direction
-				if (bvcur.top() > bvcur.normalAnchor())
-					bvcur.pos() = c.selEnd().pos();
-				else
-					bvcur.pos() = c.selBegin().pos();
-			}
+			if (bvcur.wordSelection() && bvcur.inTexted())
+				expandWordSel(bvcur);
 			break;
 
 		case mouse_button::button2:
@@ -1954,6 +1945,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// We continue with our existing selection or start a new one, so don't
 		// reset the anchor.
 		bvcur.setCursor(cur);
+		if (bvcur.wordSelection() && bvcur.inTexted())
+			expandWordSel(bvcur);
 		bvcur.selection(true);
 		bvcur.setCurrentFont();
 		if (cur.top() == old) {
@@ -3191,15 +3184,22 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_FLEX_INSERT: {
 		code = FLEX_CODE;
-		string s = cmd.getArg(0);
-		InsetLayout il =
-			cur.buffer()->params().documentClass().insetLayout(from_utf8(s));
-		if (il.lyxtype() != InsetLyXType::CHARSTYLE &&
-		    il.lyxtype() != InsetLyXType::CUSTOM &&
-		    il.lyxtype ()!= InsetLyXType::STANDARD)
+		docstring s = from_utf8(cmd.getArg(0));
+		// Prepend "Flex:" prefix if not there
+		if (!prefixIs(s, from_ascii("Flex:")))
+			s = from_ascii("Flex:") + s;
+		if (!cur.buffer()->params().documentClass().hasInsetLayout(s))
 			enable = false;
-		break;
+		else {
+			InsetLyXType ilt =
+				cur.buffer()->params().documentClass().insetLayout(s).lyxtype();
+			if (ilt != InsetLyXType::CHARSTYLE
+			    && ilt != InsetLyXType::CUSTOM
+			    && ilt != InsetLyXType::STANDARD)
+				enable = false;
 		}
+		break;
+	}
 	case LFUN_BOX_INSERT:
 		code = BOX_CODE;
 		break;

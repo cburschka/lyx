@@ -261,24 +261,24 @@ Menuset
 # InsetSpace context menu
 #
 	Menu "context-space"
-		Item "Interword Space|w" "inset-modify space \space{}"
-		Item "Protected Space|o" "inset-modify space ~"
+		Item "Normal Space|e" "inset-modify space \space{}"
+		Item "Non-Breaking Normal Space|o" "inset-modify space ~"
 		Item "Visible Space|a" "inset-modify space \textvisiblespace{}"
-		Item "Thin Space|T" "inset-modify space \thinspace{}"
-		Item "Medium Space|M" "inset-modify space \medspace{}"
-		Item "Thick Space|i" "inset-modify space \thickspace{}"
-		Item "Negative Thin Space|N" "inset-modify space \negthinspace{}"
-		Item "Negative Medium Space|v" "inset-modify space \negmedspace{}"
-		Item "Negative Thick Space|h" "inset-modify space \negthickspace{}"
-		Item "Half Quad Space (Enskip)|k" "inset-modify space \enskip{}"
-		Item "Protected Half Quad Space (Enspace)|E" "inset-modify space \enspace{}"
-		Item "Quad Space|Q" "inset-modify space \quad{}"
-		Item "Double Quad Space|u" "inset-modify space \qquad{}"
+		Item "Non-Breaking Thin Space (1/6 em)|T" "inset-modify space \thinspace{}"
+		Item "Non-Breaking Medium Space (3/9 em)|M" "inset-modify space \medspace{}"
+		Item "Non-Breaking Thick Space (5/18 em)|i" "inset-modify space \thickspace{}"
+		Item "Non-Breaking Negative Thin Space (-1/6 em)|N" "inset-modify space \negthinspace{}"
+		Item "Non-Breaking Negative Medium Space (-2/9 em)|v" "inset-modify space \negmedspace{}"
+		Item "Non-Breaking Negative Thick Space (-5/18 em)|h" "inset-modify space \negthickspace{}"
+		Item "Half Quad Space (1/2 em)|l" "inset-modify space \enskip{}"
+		Item "Non-Breaking Half Quad Space (1/2 em)|k" "inset-modify space \enspace{}"
+		Item "Quad Space (1 em)|Q" "inset-modify space \quad{}"
+		Item "Double Quad Space (2 em)|u" "inset-modify space \qquad{}"
 		Item "Horizontal Fill|F" "inset-modify space \hfill{}"
-		Item "Protected Horizontal Fill|z" "inset-modify space \hspace*{\fill}"
+		Item "Non-Breaking Horizontal Fill|z" "inset-modify space \hspace*{\fill}"
 		Item "Horizontal Fill (Dots)|D" "inset-modify space \dotfill{}"
 		Item "Horizontal Fill (Rule)|R" "inset-modify space \hrulefill{}"
-		Item "Horizontal Fill (Left Arrow)|L" "inset-modify space \leftarrowfill{}"
+		Item "Horizontal Fill (Left Arrow)|w" "inset-modify space \leftarrowfill{}"
 		Item "Horizontal Fill (Right Arrow)|g" "inset-modify space \rightarrowfill{}"
 		Item "Horizontal Fill (Up Brace)|p" "inset-modify space \upbracefill{}"
 		Item "Horizontal Fill (Down Brace)|B" "inset-modify space \downbracefill{}"
@@ -309,13 +309,13 @@ Menuset
 # InsetVSpace context menu
 #
 	Menu "context-vspace"
-		Item "DefSkip|D" "inset-modify vspace defskip"
-		Item "SmallSkip|S" "inset-modify vspace smallskip"
-		Item "MedSkip|M" "inset-modify vspace medskip"
-		Item "BigSkip|B" "inset-modify vspace bigskip"
+		Item "Default Skip|D" "inset-modify vspace defskip"
+		Item "Small Skip|S" "inset-modify vspace smallskip"
+		Item "Medium Skip|M" "inset-modify vspace medskip"
+		Item "Big Skip|B" "inset-modify vspace bigskip"
 		Item "Half line height|H" "inset-modify vspace halfline"
 		Item "Line height|L" "inset-modify vspace fullline"
-		Item "VFill|F" "inset-modify vspace vfill"
+		Item "Vertical Fill|F" "inset-modify vspace vfill"
 		Item "Custom|C" "command-sequence inset-modify vspace custom; inset-settings"
 		Separator
 		Item "Settings...|e" "inset-settings"
@@ -741,13 +741,22 @@ Menuset
 	End
 
 #
+# Status bar zoom context menu
+#
+	Menu "context-zoom"
+		ZoomOptions
+	End
+
+#
 # Status bar context menu
 #
 	Menu "context-statusbar"
-		ZoomOptions
+		Item "Zoom Level|Z" "ui-toggle zoomlevel"
+		Item "Zoom Slider|S" "ui-toggle zoomslider"
 		Separator
-		Item "Show Zoom Level|Z" "ui-toggle zoomlevel"
-		Item "Show Zoom Slider|S" "ui-toggle zoomslider"
+		Item "Word Count|W" "ui-toggle statistics-w"
+		Item "Character Count|C" "ui-toggle statistics-cb"
+		Item "Character Count (No Blanks)|h" "ui-toggle statistics-c"
 	End
 
 End

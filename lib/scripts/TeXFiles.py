@@ -111,12 +111,12 @@ for type in types:
     
     file_ext = '.' + type
     out = open(outfile, 'w')
+    visited = set()
     for dir in dirs.split(path_sep):
         # for each valid directory
         if not os.path.isdir(dir):
             continue
         # walk down the file hierarchy
-        visited = set()
         for root,dirs,files in os.walk(dir, followlinks=True):
             # prevent inifinite recursion
             recurse = []

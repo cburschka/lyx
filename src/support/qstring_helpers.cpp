@@ -19,6 +19,7 @@
 #include "support/qstring_helpers.h"
 
 #include <QRegExp>
+#include <QLocale>
 #include <QString>
 #include <QVector>
 
@@ -101,6 +102,26 @@ QString charFilterRegExpC(QString const & filter)
 	return re + ")";
 }
 
+QString locLengthString(QString const & str)
+{
+	QLocale loc;
+	QString res = str;
+	return res.replace(QString("."), loc.decimalPoint());
+}
+
+
+docstring locLengthDocString(docstring const str)
+{
+	return qstring_to_ucs4(locLengthString(toqstr(str)));
+}
+
+
+QString unlocLengthString(QString const & str)
+{
+	QLocale loc;
+	QString res = str;
+	return res.replace(loc.decimalPoint(), QString("."));
+}
 
 
 } // namespace lyx

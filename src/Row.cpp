@@ -144,7 +144,7 @@ bool Row::Element::splitAt(int const width, int next_width, bool force,
                                                 isRTL(), wrap_any | force);
 
 	// if breaking did not really work, give up
-	if (!force && breaks.front().wid > width) {
+	if (!force && breaks.front().nspc_wid > width) {
 		if (dim.wid == 0)
 			dim.wid = fm.width(str);
 		return false;
@@ -336,7 +336,7 @@ ostream & operator<<(ostream & os, Row const & row)
 	   << " descent: " << row.dim_.des
 	   << " separator: " << row.separator
 	   << " label_hfill: " << row.label_hfill
-	   << " right_boundary: " << row.right_boundary()
+	   << " end_boundary: " << row.end_boundary()
 	   << " flushed: " << row.flushed() << "\n";
 	// We cannot use the operator above, unfortunately
 	double x = row.left_margin;
@@ -562,7 +562,7 @@ Row::Elements Row::shortenIfNeeded(int const w, int const next_width)
 		Element brk = *cit_brk;
 		/* If the current element is an inset that allows breaking row
 		 * after itself, and if the row is already short enough after
-		 * this inset, then cut right after this element.
+		 * this element, then cut right after it.
 		 */
 		if (wid_brk <= w && brk.row_flags & CanBreakAfter) {
 			end_ = brk.endpos;
@@ -572,6 +572,16 @@ Row::Elements Row::shortenIfNeeded(int const w, int const next_width)
 		}
 		// assume now that the current element is not there
 		wid_brk -= brk.dim.wid;
+		/* If the current element is an inset that allows breaking row
+		 * before itself, and if the row is already short enough before
+		 * this element, then cut right before it.
+		 */
+		if (wid_brk <= w && brk.row_flags & CanBreakBefore && cit_brk != beg) {
+			end_ = (cit_brk -1)->endpos;
+			dim_.wid = wid_brk;
+			moveElements(elements_, cit_brk, tail);
+			return tail;
+		}
 		/* We have found a suitable separable element. This is the common case.
 		 * Try to break it cleanly at a length that is both
 		 * - less than the available space on the row

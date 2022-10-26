@@ -302,7 +302,7 @@ public:
 	void write(std::ostream & os) const override;
 
 	/// Return lastcommands container (vector)
-	LastCommands const getcommands() const { return lastcommands; }
+	LastCommands const & getcommands() const { return lastcommands; }
 
 	/** add command to lastcommands list
 	    @param command command to add

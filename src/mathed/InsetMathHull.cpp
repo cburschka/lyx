@@ -228,14 +228,6 @@ void InsetMathHull::setBuffer(Buffer & buffer)
 }
 
 
-// FIXME This should really be controlled by the TOC level, or
-// something of the sort.
-namespace {
-	const char * counters_to_save[] = {"section", "chapter"};
-	unsigned int const numcnts = sizeof(counters_to_save)/sizeof(char *);
-} // namespace
-
-
 void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted)
 {
 	if (!buffer_) {
@@ -253,21 +245,11 @@ void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype, bool 
 		Counters & cnts =
 			buffer_->masterBuffer()->params().documentClass().counters();
 
-		// right now, we only need to do this at export time
-		if (utype == OutputUpdate) {
-			for (size_t i = 0; i < numcnts; ++i) {
-				docstring const cnt = from_ascii(counters_to_save[i]);
-				if (cnts.hasCounter(cnt))
-					counter_map[cnt] = cnts.value(cnt);
-			}
-		}
-
 		// this has to be done separately
 		docstring const eqstr = from_ascii("equation");
 		if (cnts.hasCounter(eqstr)) {
-			if (utype == OutputUpdate)
-				counter_map[eqstr] = cnts.value(eqstr);
 			for (size_t i = 0; i != label_.size(); ++i) {
+				docstring const oldnumber = numbers_[i];
 				if (numbered(i)) {
 					Paragraph const & par = it.paragraph();
 					if (!par.isDeleted(it.pos())) {
@@ -277,6 +259,12 @@ void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype, bool 
 						numbers_[i] = from_ascii("#");
 				} else
 					numbers_[i] = empty_docstring();
+				// If the numbering has changed, trigger a new preview
+				if (oldnumber != numbers_[i] && RenderPreview::previewMath()) {
+					// Do we need to remove it first?
+					//preview_->removePreview(*buffer_);
+					preparePreview(it);
+				}
 			}
 		}
 	}
@@ -520,9 +508,9 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 		int extra_offset = 0;
 		for (row_type row = 0; row < nrows(); ++row) {
 			rowinfo(row).offset[mi.base.bv] += extra_offset;
-			if (!numbered(row))
-				continue;
 			docstring const nl = nicelabel(row);
+			if (nl.empty())
+				continue;
 			Dimension dimnl;
 			mathed_string_dim(mi.base.font, nl, dimnl);
 			int const ind = indent(*mi.base.bv);
@@ -837,29 +825,7 @@ void InsetMathHull::preparePreview(DocIterator const & pos,
 	if (lsize != "normalsize" && !prefixIs(lsize, "error"))
 		setfont += from_ascii("\\" + lsize + '\n');
 
-	docstring setcnt;
-	if (forexport && haveNumbers()) {
-		docstring eqstr = from_ascii("equation");
-		CounterMap::const_iterator it = counter_map.find(eqstr);
-		if (it != counter_map.end()) {
-			int num = it->second;
-			if (num >= 0)
-				setcnt += from_ascii("\\setcounter{") + eqstr + '}' +
-				          '{' + convert<docstring>(num) + '}' + '\n';
-		}
-		for (size_t i = 0; i != numcnts; ++i) {
-			docstring cnt = from_ascii(counters_to_save[i]);
-			it = counter_map.find(cnt);
-			if (it == counter_map.end())
-					continue;
-			int num = it->second;
-			if (num > 0)
-				setcnt += from_ascii("\\setcounter{") + cnt + '}' +
-				          '{' + convert<docstring>(num) + '}';
-		}
-	}
-	docstring const snippet = macro_preamble + setfont + setcnt
-	                          + latexString(*this) + endfont;
+	docstring const snippet = macro_preamble + setfont + latexString(*this) + endfont;
 	LYXERR(Debug::MACROS, "Preview snippet: " << snippet);
 	preview_->addPreview(snippet, *buffer, forexport);
 }
@@ -925,10 +891,6 @@ void InsetMathHull::label(row_type row, docstring const & label)
 void InsetMathHull::numbered(row_type row, Numbered num)
 {
 	numbered_[row] = num;
-	if (!numbered(row) && label_[row]) {
-		delete label_[row];
-		label_[row] = 0;
-	}
 }
 
 
@@ -1377,8 +1339,11 @@ void InsetMathHull::delCol(col_type col)
 
 docstring InsetMathHull::nicelabel(row_type row) const
 {
-	if (!numbered(row))
-		return docstring();
+	if (!numbered(row)) {
+		if (!label_[row])
+			return docstring();
+		return '[' + label_[row]->screenLabel() + ']';
+	}
 	docstring const & val = numbers_[row];
 	if (!label_[row])
 		return '(' + val + ')';
@@ -1681,27 +1646,30 @@ void InsetMathHull::mutate(HullType newtype)
 }
 
 
-docstring InsetMathHull::eolString(row_type row, bool fragile, bool latex,
-		bool last_eoln) const
+void InsetMathHull::eol(TeXMathStream & os, row_type row, bool fragile, bool latex,
+                        bool last_eoln) const
 {
-	docstring res;
 	if (numberedType()) {
-		if (label_[row] && numbered(row)) {
+		if (label_[row]) {
 			docstring const name =
 				latex ? escape(label_[row]->getParam("name"))
 				      : label_[row]->getParam("name");
-			res += "\\label{" + name + '}';
+			os << "\\label{" + name + '}';
 		}
 		if (type_ != hullMultline) {
 			if (numbered_[row]  == NONUMBER)
-				res += "\\nonumber ";
+				os << "\\nonumber ";
 			else if (numbered_[row]  == NOTAG)
-				res += "\\notag ";
+				os<< "\\notag ";
 		}
+		if (os.output() == TeXMathStream::wsPreview && !numbers_[row].empty()) {
+			os << "\\global\\def\\theequation{" << numbers_[row] << "}\n";
+		}
+
 	}
 	// Never add \\ on the last empty line of eqnarray and friends
 	last_eoln = false;
-	return res + InsetMathGrid::eolString(row, fragile, latex, last_eoln);
+	InsetMathGrid::eol(os, row, fragile, latex, last_eoln);
 }
 
 void InsetMathHull::write(TeXMathStream & os) const
@@ -1857,11 +1825,22 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		//lyxerr << "toggling all numbers" << endl;
 		cur.recordUndoInset();
 		bool old = numberedType();
-		if (type_ == hullMultline)
-			numbered(nrows() - 1, !old);
-		else
-			for (row_type row = 0; row < nrows(); ++row)
+		if (type_ == hullMultline) {
+			row_type row = nrows() - 1;
+			numbered(row, !old);
+			if (old && label_[row]) {
+				delete label_[row];
+				label_[row] = 0;
+			}
+		} else {
+			for (row_type row = 0; row < nrows(); ++row) {
 				numbered(row, !old);
+				if (old && label_[row]) {
+					delete label_[row];
+					label_[row] = 0;
+				}
+			}
+		}
 
 		cur.message(old ? _("No number") : _("Number"));
 		cur.forceBufferUpdate();
@@ -1874,6 +1853,10 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		bool old = numbered(r);
 		cur.message(old ? _("No number") : _("Number"));
 		numbered(r, !old);
+		if (old && label_[r]) {
+			delete label_[r];
+			label_[r] = 0;
+		}
 		cur.forceBufferUpdate();
 		break;
 	}
@@ -1908,7 +1891,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 			// if there is an argument, find the corresponding label, else
 			// check whether there is at least one label.
 			for (row = 0; row != nrows(); ++row)
-				if (numbered(row) && label_[row]
+				if (label_[row]
 					  && (cmd.argument().empty() || label(row) == cmd.argument()))
 					break;
 		}
@@ -2111,12 +2094,12 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 			// if there is no argument and we're inside math, we retrieve
 			// the row number from the cursor position.
 			row_type row = (type_ == hullMultline) ? nrows() - 1 : cur.row();
-			enabled = numberedType() && label_[row] && numbered(row);
+			enabled = numberedType() && label_[row];
 		} else {
 			// if there is an argument, find the corresponding label, else
 			// check whether there is at least one label.
 			for (row_type row = 0; row != nrows(); ++row) {
-				if (numbered(row) && label_[row] &&
+				if (label_[row] &&
 					(cmd.argument().empty() || label(row) == cmd.argument())) {
 						enabled = true;
 						break;

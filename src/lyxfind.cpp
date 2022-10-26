@@ -14,6 +14,7 @@
  */
 
 #include <config.h>
+#include <iterator>
 
 #include "lyxfind.h"
 
@@ -1066,13 +1067,19 @@ public:
 	 ** constructor as opt.search, under the opt.* options settings.
 	 **
 	 ** @param at_begin
-	 ** 	If set, then match is searched only against beginning of text starting at cur.
-	 ** 	If unset, then match is searched anywhere in text starting at cur.
+	 ** 	If set to MatchStringAdv::MatchFromStart,
+	 ** 	  then match is searched only against beginning of text starting at cur.
+	 ** 	Otherwise the match is searched anywhere in text starting at cur.
 	 **
 	 ** @return
 	 ** The length of the matching text, or zero if no match was found.
 	 **/
-	MatchResult operator()(DocIterator const & cur, int len = -1, bool at_begin = true) const;
+	enum matchType {
+		MatchAnyPlace,
+		MatchFromStart
+	};
+	string matchTypeAsString(matchType const x) const { return (x == MatchFromStart ? "MatchFromStart" : "MatchAnyPlace"); }
+	MatchResult operator()(DocIterator const & cur, int len, matchType at_begin) const;
 #if QTSEARCH
 	bool regexIsValid;
 	string regexError;
@@ -1088,7 +1095,7 @@ public:
 
 private:
 	/// Auxiliary find method (does not account for opt.matchword)
-	MatchResult findAux(DocIterator const & cur, int len = -1, bool at_begin = true) const;
+	MatchResult findAux(DocIterator const & cur, int len, matchType at_begin) const;
 	void CreateRegexp(FindAndReplaceOptions const & opt, string regexp_str, string regexp2_str, string par_as_string = "");
 
 	/** Normalize a stringified or latexified LyX paragraph.
@@ -1104,7 +1111,7 @@ private:
 	 ** @todo Normalization should also expand macros, if the corresponding
 	 ** search option was checked.
 	 **/
-	string normalize(docstring const & s, bool ignore_fomat) const;
+	string convertLF2Space(docstring const & s, bool ignore_fomat) const;
 	// normalized string to search
 	string par_as_string;
 	// regular expression to use for searching
@@ -1428,8 +1435,8 @@ public:
 	string par;
 	int ignoreidx;
 	static vector<Border> borders;
-	int depts[MAXOPENED];
-	int closes[MAXOPENED];
+	static vector<int> depts;
+	static vector<int> closes;
 	int actualdeptindex;
 	int previousNotIgnored(int) const;
 	int nextNotIgnored(int) const;
@@ -1454,6 +1461,8 @@ public:
 };
 
 vector<Border> Intervall::borders = vector<Border>(30);
+vector<int> Intervall::depts = vector<int>(30);
+vector<int> Intervall::closes = vector<int>(30);
 
 int Intervall::isOpeningPar(int pos) const
 {
@@ -1487,6 +1496,8 @@ void Intervall::setForDefaultLang(KeyInfo const & defLang) const
 	}
 }
 
+#if 0
+// Not needed, because dpts and closes are now dynamically expanded
 static void checkDepthIndex(int val)
 {
 	static int maxdepthidx = MAXOPENED-2;
@@ -1500,6 +1511,7 @@ static void checkDepthIndex(int val)
 		LYXERR(Debug::INFO, "maxdepthidx now " << val);
 	}
 }
+#endif
 
 #if 0
 // Not needed, because borders are now dynamically expanded
@@ -2049,7 +2061,8 @@ void Intervall::removeAccents()
 	if (accents.empty())
 		buildAccentsMap();
 	static regex const accre("\\\\("
-				 "([\\S]|[A-Za-z]+)\\{[^\\{\\}]+\\}"
+				 "([\\S]|[A-Za-z]+)\\{[^\\\\\\{\\}]+\\}"
+				 "|([\\S]|[A-Za-z]+)\\{\\\\[ij](math)?\\}"
 				 "|("
 				 "(backslash ([lL]y[xX]|[tT]e[xX]|[lL]a[tT]e[xX]e?|lyxarrow))"
 				 "|[A-Za-z]+"
@@ -2085,9 +2098,13 @@ void Intervall::removeAccents()
 void Intervall::handleOpenP(int i)
 {
 	actualdeptindex++;
+	if ((size_t) actualdeptindex >= depts.size()) {
+		depts.resize(actualdeptindex + 30);
+		closes.resize(actualdeptindex + 30);
+	}
 	depts[actualdeptindex] = i+1;
 	closes[actualdeptindex] = -1;
-	checkDepthIndex(actualdeptindex);
+	// checkDepthIndex(actualdeptindex);
 }
 
 void Intervall::handleCloseP(int i, bool closingAllowed)
@@ -2407,7 +2424,7 @@ void LatexInfo::buildEntries(bool isPatternString)
 	}
 	// Ignore language if there is math somewhere in pattern-string
 	if (isPatternString) {
-		for (auto s: usedText) {
+		for (auto const & s: usedText) {
 			// Remove entries created in previous search runs
 			keys.erase(s);
 		}
@@ -2763,7 +2780,8 @@ void LatexInfo::buildKeys(bool isPatternString)
 	if (keysBuilt && !isPatternString) return;
 
 	// Keys to ignore in any case
-	makeKey("text|textcyrillic|lyxmathsym|ensuremath", KeyInfo(KeyInfo::headRemove, 1, true), true);
+	makeKey("text|lyxmathsym|ensuremath", KeyInfo(KeyInfo::headRemove, 1, true), true);
+	makeKey("nonumber|notag", KeyInfo(KeyInfo::headRemove, 0, true), true);
 	// Known standard keys with 1 parameter.
 	// Split is done, if not at start of region
 	makeKey("textsf|textss|texttt", KeyInfo(KeyInfo::isStandard, 1, ignoreFormats.getFamily()), isPatternString);
@@ -3641,7 +3659,7 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 		CreateRegexp(opt, "", "", "");
 		return;
 	}
-	use_regexp = lyx::to_utf8(ds).find("\\regexp{") != std::string::npos;
+	use_regexp = ds.find(from_utf8("\\regexp{")) != std::string::npos;
 	if (opt.replace_all && previous_single_replace) {
 		previous_single_replace = false;
 		num_replaced = 0;
@@ -3651,7 +3669,7 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 		previous_single_replace = true;
 	}
 	// When using regexp, braces are hacked already by escape_for_regex()
-	par_as_string = normalize(ds, opt.ignoreformat);
+	par_as_string = convertLF2Space(ds, opt.ignoreformat);
 	open_braces = 0;
 	close_wildcards = 0;
 
@@ -3730,7 +3748,7 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 					break;
 			}
 			if (lng < par_as_string.size())
-				par_as_string = par_as_string.substr(0,lng);
+				par_as_string.resize(lng);
 		}
 		LYXERR(Debug::FINDVERBOSE, "par_as_string after correctRegex is '" << par_as_string << "'");
 		if ((lng > 0) && (par_as_string[0] == '^')) {
@@ -3757,7 +3775,7 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 			}
 			if (opt.matchword) {
 				modifyRegexForMatchWord(par_as_string);
-				opt.matchword = false;
+				// opt.matchword = false;
 			}
 			regexp_str = "(" + lead_as_regexp + ")()" + par_as_string;
 			regexp2_str = "(" + lead_as_regexp + ")(.*?)" + par_as_string;
@@ -3768,18 +3786,15 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions & opt)
 	}
 }
 
-MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) const
+MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, MatchStringAdv::matchType at_begin) const
 {
 	MatchResult mres;
 
 	mres.searched_size = len;
-	if (at_begin &&
-			(opt.restr == FindAndReplaceOptions::R_ONLY_MATHS && !cur.inMathed()) )
-		return mres;
 
 	docstring docstr = stringifyFromForSearch(opt, cur, len);
 	string str;
-	str = normalize(docstr, opt.ignoreformat);
+	str = convertLF2Space(docstr, opt.ignoreformat);
 	if (!opt.ignoreformat) {
 		str = correctlanguagesetting(str, false, !opt.ignoreformat);
 		// remove closing '}' and '\n' to allow for use of '$' in regex
@@ -3802,12 +3817,12 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 	LASSERT(use_regexp, /**/);
 	{
 		// use_regexp always true
-		LYXERR(Debug::FINDVERBOSE, "Searching in regexp mode: at_begin=" << at_begin);
+		LYXERR(Debug::FINDVERBOSE, "Searching in regexp mode: at_begin=" << matchTypeAsString(at_begin));
 #if QTSEARCH
 		QString qstr = QString::fromStdString(str);
 		QRegularExpression const *p_regexp;
 		QRegularExpression::MatchType flags = QRegularExpression::NormalMatch;
-		if (at_begin) {
+		if (at_begin == MatchStringAdv::MatchFromStart) {
 			p_regexp = &regexp;
 		} else {
 			p_regexp = &regexp2;
@@ -3818,7 +3833,7 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 #else
 		regex const *p_regexp;
 		regex_constants::match_flag_type flags;
-		if (at_begin) {
+		if (at_begin == MatchStringAdv::MatchFromStart) {
 			flags = regex_constants::match_continuous;
 			p_regexp = &regexp;
 		} else {
@@ -3932,23 +3947,20 @@ MatchResult MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_be
 }
 
 
-MatchResult MatchStringAdv::operator()(DocIterator const & cur, int len, bool at_begin) const
+MatchResult MatchStringAdv::operator()(DocIterator const & cur, int len, MatchStringAdv::matchType at_begin) const
 {
 	MatchResult mres = findAux(cur, len, at_begin);
-	int res = mres.match_len;
 	LYXERR(Debug::FINDVERBOSE,
-	       "res=" << res << ", at_begin=" << at_begin
+	       "res=" << mres.match_len << ", at_begin=" << matchTypeAsString(at_begin)
 	       << ", matchAtStart=" << opt.matchAtStart
 	       << ", inTexted=" << cur.inTexted());
-	if (opt.matchAtStart) {
-		if (cur.pos() != 0)
-			mres.match_len = 0;
-		else if (mres.match_prefix > 0)
-			mres.match_len = 0;
-		return mres;
+	if (mres.match_len > 0) {
+		if (opt.matchAtStart) {
+			if (cur.pos() > 0 || mres.match_prefix > 0)
+				mres.match_len = 0;
+		}
 	}
-	else
-		return mres;
+	return mres;
 }
 
 #if 0
@@ -3976,8 +3988,7 @@ static bool simple_replace(string &t, string from, string to)
 }
 #endif
 
-#if 1
-static string convertLF2Space(docstring const &s, bool ignore_format)
+string MatchStringAdv::convertLF2Space(docstring const &s, bool ignore_format) const
 {
 	// Using original docstring to handle '\n'
 
@@ -4010,7 +4021,7 @@ static string convertLF2Space(docstring const &s, bool ignore_format)
 				if ((pos > start + 2) &&
 				    (s[pos+1] == '~' || isSpace(s[pos+1]) ||
 				     s[pos-3] == '~' || isSpace(s[pos-3]))) {
-					// discard '\n'
+					// discard "\\\\\n", do not replace with space
 					dospace = false;
 				}
 			}
@@ -4042,77 +4053,6 @@ static string convertLF2Space(docstring const &s, bool ignore_format)
 		start = pos+1;
 	} while (start <= end);
 	return(t.str());
-}
-
-#else
-static string convertLF2Space(docstring const & s, bool ignore_format)
-{
-	// Using utf8-converted string to handle '\n'
-
-	string t;
-	t = lyx::to_utf8(s);
-	// Remove \n at begin
-	while (!t.empty() && t[0] == '\n')
-		t = t.substr(1);
-	// Remove \n* at end
-	while (!t.empty() && t[t.size() - 1] == '\n') {
-		t = t.substr(0, t.size() - 1);
-	}
-	size_t pos;
-	// Handle all other '\n'
-	while ((pos = t.find("\n")) != string::npos) {
-		if (pos > 1 && t[pos-1] == '\\' && t[pos-2] == '\\' ) {
-			// Handle '\\\n'
-			if (isPrintableNonspace(t[pos+1]) && ((pos < 3) || isPrintableNonspace(t[pos-3]))) {
-				t.replace(pos-2, 3, " ");
-			}
-			else {
-				// Already a space there
-				t.replace(pos-2, 3, "");
-			}
-		}
-		else {
-			if (!isAlnumASCII(t[pos+1]) || !isAlnumASCII(t[pos-1])) {
-				// '\n' adjacent to non-alpha-numerics, discard
-				t.replace(pos, 1, "");
-			}
-			else {
-				// Replace all other \n with spaces
-				t.replace(pos, 1, " ");
-			}
-			if (!ignore_format) {
-				size_t count = 0;
-				while ((pos > count + 1) && (t[pos - 1 -count] == '%')) {
-					count++;
-				}
-				if (count > 0) {
-					t.replace(pos - count, count, "");
-				}
-			}
-		}
-	}
-	return(t);
-
-}
-#endif
-
-string MatchStringAdv::normalize(docstring const & s, bool ignore_format) const
-{
-	string t = convertLF2Space(s, ignore_format);
-
-	// The following replaces are not appropriate in non-format-search mode
-	if (!ignore_format) {
-		// Remove stale empty \emph{}, \textbf{} and similar blocks from latexify
-		// Kornel: Added textsl, textsf, textit, texttt and noun
-		// + allow to seach for colored text too
-		LYXERR(Debug::FINDVERBOSE, "Removing stale empty macros from: " << t);
-		while (regex_replace(t, t, "\\\\(emph|noun|text(bf|sl|sf|it|tt)|(u|uu)line|(s|x)out|uwave)(\\{(\\{\\})?\\})+", ""))
-			LYXERR(Debug::FINDVERBOSE, "  further removing stale empty \\emph{}, \\textbf{} macros from: " << t);
-		while (regex_replace(t, t, "\\\\((sub)?(((sub)?section)|paragraph)|part)\\*?(\\{(\\{\\})?\\})+", ""))
-			LYXERR(Debug::FINDVERBOSE, "  further removing stale empty \\section{}, \\part{}, \\paragraph{} macros from: " << t);
-		while (regex_replace(t, t, "\\\\(foreignlanguage|textcolor|item)\\{[a-z]+\\}(\\{(\\{\\})?\\})+", ""));
-	}
-	return t;
 }
 
 docstring stringifyFromCursor(DocIterator const & cur, int len)
@@ -4295,13 +4235,13 @@ MatchResult findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, Mat
 	// either one sees "http://www.bla.bla" or nothing
 	// so the search for "www" gives prefix_len = 7 (== sizeof("http://")
 	// and although we search for only 3 chars, we find the whole hyperlink inset
-	bool at_begin = (expected.match_prefix == 0);
+	MatchStringAdv::matchType at_begin = (expected.match_prefix == 0) ? MatchStringAdv::MatchFromStart : MatchStringAdv::MatchAnyPlace;
 	if (!match.opt.forward && match.opt.ignoreformat) {
 		if (expected.pos > 0)
 			return fail;
 	}
-	LASSERT(at_begin, /**/);
-	if (expected.match_len > 0 && at_begin) {
+	LASSERT(at_begin == MatchStringAdv::MatchFromStart, /**/);
+	if (expected.match_len > 0 && at_begin == MatchStringAdv::MatchFromStart) {
 		// Search for deepest match
 		old_cur = cur;
 		max_match = expected;
@@ -4333,11 +4273,14 @@ MatchResult findAdvFinalize(DocIterator & cur, MatchStringAdv const & match, Mat
 	}
 	else {
 		// (expected.match_len <= 0)
-		mres = match(cur);      /* match valid only if not searching whole words */
+		mres = match(cur, -1, MatchStringAdv::MatchFromStart);      /* match valid only if not searching whole words */
 		displayMres(mres, "Start with negative match", cur);
 		max_match = mres;
 	}
-	if (max_match.match_len <= 0) return fail;
+	// Only now we are really at_begin
+	if ((max_match.match_len <= 0) ||
+	    (match.opt.restr == FindAndReplaceOptions::R_ONLY_MATHS && !cur.inMathed()))
+		return fail;
 	LYXERR(Debug::FINDVERBOSE, "Ok");
 
 	// Compute the match length
@@ -4435,7 +4378,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 	while (!theApp()->longOperationCancelled() && cur) {
 		//(void) findAdvForwardInnermost(cur);
 		LYXERR(Debug::FINDVERBOSE, "findForwardAdv() cur: " << cur);
-		MatchResult mres = match(cur, -1, false);
+		MatchResult mres = match(cur, -1, MatchStringAdv::MatchAnyPlace);
 		string msg = "Starting";
 		if (repeat)
 			msg = "Repeated";
@@ -4473,7 +4416,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 					continue;
 				}
 				cur.pos() = cur.pos() + increment;
-				MatchResult mres2 = match(cur, -1, false);
+				MatchResult mres2 = match(cur, -1, MatchStringAdv::MatchAnyPlace);
 				displayMres(mres2, "findForwardAdv loop", cur)
 						switch (interpretMatch(mres, mres2)) {
 					case MatchResult::newIsTooFar:
@@ -4496,7 +4439,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 					default:
 						// Todo@
 						// Handle not like MatchResult::newIsTooFar
-						LYXERR0( "Probably too far: Increment = " << increment << " match_prefix = " << mres.match_prefix);
+						LYXERR(Debug::FINDVERBOSE, "Probably too far: Increment = " << increment << " match_prefix = " << mres.match_prefix);
 						firstInvalid--;
 						increment = increment*3/4;
 						cur = old_cur;
@@ -4549,7 +4492,8 @@ MatchResult findMostBackwards(DocIterator & cur, MatchStringAdv const & match, M
 		LYXERR(Debug::FINDVERBOSE, "findMostBackwards(): cur=" << cur);
 		DocIterator new_cur = cur;
 		new_cur.backwardPos();
-		if (new_cur == cur || &new_cur.inset() != &inset || !match(new_cur).match_len)
+		if (new_cur == cur || &new_cur.inset() != &inset
+		    || match(new_cur, -1, MatchStringAdv::MatchFromStart).match_len <= 0)
 			break;
 		MatchResult new_mr = findAdvFinalize(new_cur, match, expected);
 		if (new_mr.match_len == mr.match_len)
@@ -4575,7 +4519,7 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match)
 	bool pit_changed = false;
 	do {
 		cur.pos() = 0;
-		MatchResult found_match = match(cur, -1, false);
+		MatchResult found_match = match(cur, -1, MatchStringAdv::MatchAnyPlace);
 
 		if (found_match.match_len > 0) {
 			if (pit_changed)
@@ -4585,7 +4529,7 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match)
 			LYXERR(Debug::FINDVERBOSE, "findBackAdv2: cur: " << cur);
 			DocIterator cur_prev_iter;
 			do {
-				found_match = match(cur);
+				found_match = match(cur, -1, MatchStringAdv::MatchFromStart);
 				LYXERR(Debug::FINDVERBOSE, "findBackAdv3: found_match="
 				       << (found_match.match_len > 0) << ", cur: " << cur);
 				if (found_match.match_len > 0) {
@@ -4747,7 +4691,7 @@ static int findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, Ma
 		return 0;
 	LASSERT(sel_len > 0, return 0);
 
-	if (!matchAdv(sel_beg, sel_len).match_len)
+	if (matchAdv(sel_beg, sel_len, MatchStringAdv::MatchFromStart).match_len <= 0)
 		return 0;
 
 	// Build a copy of the replace buffer, adapted to the KeepCase option
@@ -4815,6 +4759,10 @@ static int findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, Ma
 	return 1;
 }
 
+static bool isWordChar(char_type c)
+{
+	return isLetterChar(c) || isNumberChar(c);
+}
 
 /// Perform a FindAdv operation.
 bool findAdv(BufferView * bv, FindAndReplaceOptions & opt)
@@ -4840,8 +4788,52 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions & opt)
 			bv->putSelectionAt(bv->cursor().selectionBegin(), length, !opt.forward);
 		num_replaced += findAdvReplace(bv, opt, matchAdv);
 		cur = bv->cursor();
-		if (opt.forward)
+		if (opt.forward) {
+			if (opt.matchword && cur.pos() > 0) {  // Skip word-characters if we are in the mid of a word
+				if (cur.inTexted()) {
+					Paragraph const & par = cur.paragraph();
+					int len_limit, new_pos;
+					if (cur.lastpos() < par.size())
+						len_limit = cur.lastpos();
+					else
+						len_limit = par.size();
+					for (new_pos = cur.pos() - 1; new_pos < len_limit; new_pos++) {
+						if (!isWordChar(par.getChar(new_pos)))
+							break;
+					}
+					if (new_pos > cur.pos())
+						cur.pos() = new_pos;
+				}
+				else if (cur.inMathed()) {
+					// Check if 'cur.pos()-1' and 'cur.pos()' both point to a letter,
+					// I am not sure, we should consider the selection
+					bool sel = bv->cursor().selection();
+					if (!sel && cur.pos() < cur.lastpos()) {
+						CursorSlice const & cs = cur.top();
+						MathData md = cs.cell();
+						int len = -1;
+						MathData::const_iterator it_end = md.end();
+						MathData md2;
+						// Start the check with one character before actual cursor position
+						for (MathData::const_iterator it = md.begin() + cs.pos() - 1;
+						    it != it_end; ++it)
+							md2.push_back(*it);
+						docstring inp = asString(md2);
+						for (len = 0; (unsigned) len < inp.size() && len + cur.pos() <= cur.lastpos(); len++) {
+							if (!isWordChar(inp[len]))
+								break;
+						}
+						// len == 0 means previous char was a word separator
+						// len == 1       search starts with a word separator
+						// len == 2 ...   we have to skip len -1 chars
+						if (len > 1)
+							cur.pos() = cur.pos() + len - 1;
+					}
+				}
+				opt.matchword = false;
+			}
 			pos_len = findForwardAdv(cur, matchAdv);
+		}
 		else
 			pos_len = findBackwardsAdv(cur, matchAdv);
 	} catch (exception & ex) {

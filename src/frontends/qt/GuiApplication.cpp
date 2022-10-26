@@ -525,6 +525,47 @@ QString themeIconName(QString const & action)
 }
 
 
+namespace {
+
+/* Get aliases for icon name. This allows to avoid duplication of
+ * icons when new versions of functions are introduced for the
+ * toolbar. A good example is the introduction of layout-toggle in
+ * #9864.
+ * The file is parsed by Lexer. Each line is of the form
+ *     <original substring> <replacement substring>
+ *
+ * The return value is another icon file name that can be queried.
+ */
+// FIXME: consider using regular expressions.
+QString getAlias(QString name) {
+	static bool has_aliases = false;
+	static vector <pair<QString,QString>> aliases;
+	// Initialize aliases list (once).
+	if (!has_aliases) {
+		FileName alfile = libFileSearch("images", "icon.aliases");
+		if (alfile.exists()) {
+			Lexer lex;
+			lex.setFile(alfile);
+			while(lex.isOK()) {
+				string from, to;
+				lex >> from >> to;
+				if (!from.empty())
+					aliases.push_back({toqstr(from), toqstr(to)});
+			}
+		}
+		has_aliases = true;
+	}
+	// check for the following aliases
+	for (auto const & alias : aliases) {
+		if (name.contains(alias.first))
+			name.replace(alias.first, alias.second);
+	}
+	return name;
+}
+
+} // namespace
+
+
 IconInfo iconInfo(FuncRequest const & f, bool unknown, bool rtl)
 {
 	IconInfo res;
@@ -538,9 +579,10 @@ IconInfo iconInfo(FuncRequest const & f, bool unknown, bool rtl)
 		name.replace(' ', '_');
 		name.replace(';', '_');
 		name.replace('\\', "backslash");
-		// avoid duplication for these
-		name.replace("dialog-toggle", "dialog-show");
 		names << name;
+		QString alias = getAlias(name);
+		if (alias != name)
+			names << alias;
 
 		// then special default icon for some lfuns
 		switch (f.action()) {
@@ -572,6 +614,9 @@ IconInfo iconInfo(FuncRequest const & f, bool unknown, bool rtl)
 
 	// next thing to try is function name alone
 	names << lfunname;
+	QString alias = getAlias(lfunname);
+	if (alias != lfunname)
+		names << alias;
 
 	// and finally maybe the unknown icon
 	if (unknown)

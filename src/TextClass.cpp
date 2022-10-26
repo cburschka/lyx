@@ -691,7 +691,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 		case TC_PKGOPTS : {
 			lexrc.next();
 			string const pkg = lexrc.getString();
-			lexrc.next();
+			lexrc.eatLine();
 			string const options = lexrc.getString();
 			package_options_[pkg] = options;
 			break;

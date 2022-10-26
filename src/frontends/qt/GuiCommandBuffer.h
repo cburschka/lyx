@@ -77,12 +77,6 @@ private:
 	/// dispatch a command
 	DispatchResult const & dispatch(std::string const & str);
 
-	/// available command names
-	std::vector<std::string> commands_;
-
-	/// command history
-	std::vector<std::string> history_;
-
 	/// current position in command history
 	std::vector<std::string>::const_iterator history_pos_;
 

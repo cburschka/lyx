@@ -1369,6 +1369,20 @@ void Text::selectWord(Cursor & cur, word_location loc)
 }
 
 
+void Text::expandWordSel(Cursor & cur)
+{
+	// get selection of word around cur
+	Cursor c = cur;
+	c.selection(false);
+	c.text()->selectWord(c, WHOLE_WORD);
+	// use the correct word boundary, depending on selection direction
+	if (cur.top() > cur.normalAnchor())
+		cur.pos() = c.selEnd().pos();
+	else
+		cur.pos() = c.selBegin().pos();
+}
+
+
 void Text::selectAll(Cursor & cur)
 {
 	LBUFERR(this == cur.text());
@@ -2367,7 +2381,8 @@ void Text::setMacrocontextPosition(DocIterator const & pos)
 bool Text::completionSupported(Cursor const & cur) const
 {
 	Paragraph const & par = cur.paragraph();
-	return !cur.selection()
+	return !cur.buffer()->isReadonly()
+		&& !cur.selection()
 		&& cur.pos() > 0
 		&& (cur.pos() >= par.size() || par.isWordSeparator(cur.pos()))
 		&& !par.isWordSeparator(cur.pos() - 1);
@@ -2381,9 +2396,12 @@ CompletionList const * Text::createCompletionList(Cursor const & cur) const
 }
 
 
-bool Text::insertCompletion(Cursor & cur, docstring const & s, bool /*finished*/)
+bool Text::insertCompletion(Cursor & cur, docstring const & s)
 {
 	LBUFERR(cur.bv().cursor() == cur);
+	if (cur.buffer()->isReadonly())
+		return false;
+	cur.recordUndo();
 	cur.insert(s);
 	cur.bv().cursor() = cur;
 	if (!(cur.result().screenUpdate() & Update::Force))

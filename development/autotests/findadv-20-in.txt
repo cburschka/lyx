@@ -1,6 +1,9 @@
 # Avoiding recursive replacements when replaced text matches search pattern
 # Addresses #7675.
 #
+UnuseShortcut "Tab" "*"
+
+PrepareShortcuts
 
 Lang it_IT.utf8
 

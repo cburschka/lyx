@@ -202,8 +202,8 @@ protected:
 	/// override to set to 0 for inline equation
 	int border() const override;
 	///
-	docstring eolString(row_type row, bool fragile, bool latex,
-			bool last_eoln) const override;
+	void eol(TeXMathStream & os, row_type row, bool fragile, bool latex,
+	         bool last_eoln) const override;
 
 private:
 	Inset * clone() const override;
@@ -270,10 +270,6 @@ private:
 	unique_ptr<RenderPreview> preview_;
 	///
 	DocIterator docit_;
-	///
-	typedef std::map<docstring, int> CounterMap;
-	/// used to store current values of important counters
-	CounterMap counter_map;
 //
 // Incorporate me
 //

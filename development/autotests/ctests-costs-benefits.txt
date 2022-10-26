@@ -26,7 +26,14 @@ Examples where convergence tests took time and annoyance to figure out that
 they were actually "false positives" (i.e., no bug that is worth the time or
 complexity to fix):
 
-https://www.mail-archive.com/search?l=mid&q=20210125200655.e27xaaoy2belyxhw%40tallinn
+Report :https://www.mail-archive.com/search?l=mid&q=20210125200655.e27xaaoy2belyxhw%40tallinn
+
+
+Examples where an upstream issue was reported and ended up wasting time:
+
+Report : https://github.com/latex3/latex2e/issues/836#issuecomment-1159826566
+ctests : export/templates/Obsolete/.*American_Geophysical_Union.*_(lyx22|lyx23|pdf|dvi).*
+
 
 
 Examples where bugs were fixed (more quickly) because of ctests:
@@ -66,7 +73,6 @@ Fix    : 489bf46a, e3489d54
 
 Report : https://www.mail-archive.com/search?l=mid&q=20220205184128.4clckanaufwmx5z4%40gary
 Fix    : d66c27de
-
 Report : https://www.mail-archive.com/search?l=mid&q=20220206142559.rpgwki7wruhtasxp%40gary
 Fix    : f71f71d0
 
@@ -97,3 +103,19 @@ Fix    : https://github.com/reutenauer/polyglossia/commit/c7489ebaf8c66a7e4fe252
 Benefit: Not clear. The regressions were in the development version so they
          could have easily been caught before release.
 ctests : export/export/lyx2lyx/revert-languages-polyglossia-primary_lyx22
+
+
+Report : https://github.com/latex3/latex2e/issues/836
+Fix    : https://github.com/latex3/latex2e/commit/878a4715df024fc3425d2bfd5d3d138b9395c178
+ctests : doc/EmbeddedObjects
+
+
+Report : https://github.com/gsilano/EuropeCV/issues/29
+Fix    : none yet
+ctests : Modern_CV
+
+
+Report : https://github.com/schlcht/microtype/issues/21
+         upstream: https://github.com/latex3/latex2e/issues/880
+Fix    : none yet
+ctests : export/templates/Articles/Hebrew_Article_.*(dvi|pdf|pdf2|pdf3)

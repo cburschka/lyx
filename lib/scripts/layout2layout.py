@@ -457,10 +457,10 @@ def convert(lines, end_format):
     re_ChapterStyle = re.compile(b'^\\s*Style\\s+Chapter\\s*$', re.IGNORECASE)
     re_InsetLayout_CaptionLTNN = re.compile(b'^(\\s*InsetLayout\\s+)(Caption:LongTableNonumber)', re.IGNORECASE)
     # for format 64
-    re_trimLabelString = re.compile(b'^(\\s*LabelString\s+)"\\s*(.*?)\\s*"\\s*$')
-    re_trimLabelStringAppendix  = re.compile(b'^(\\s*LabelStringAppendix\s+)"\\s*(.*?)\\s*"\\s*$')
-    re_trimEndLabelString = re.compile(b'^(\\s*EndLabelString\s+)"\\s*(.*?)\\s*"\\s*$')
-    re_trimLabelCounter = re.compile(b'^(\\s*LabelCounter\s+)"\\s*(.*?)\\s*"\\s*$')
+    re_trimLabelString = re.compile(b'^(\\s*LabelString\\s+)"\\s*(.*?)\\s*"\\s*$')
+    re_trimLabelStringAppendix  = re.compile(b'^(\\s*LabelStringAppendix\\s+)"\\s*(.*?)\\s*"\\s*$')
+    re_trimEndLabelString = re.compile(b'^(\\s*EndLabelString\\s+)"\\s*(.*?)\\s*"\\s*$')
+    re_trimLabelCounter = re.compile(b'^(\\s*LabelCounter\\s+)"\\s*(.*?)\\s*"\\s*$')
 
 
     # counters for sectioning styles (hardcoded in 1.3)

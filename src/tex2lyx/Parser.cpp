@@ -16,6 +16,7 @@
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
+#include <cstdint>
 #include <iostream>
 
 using namespace std;

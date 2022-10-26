@@ -31,7 +31,9 @@
 #include "Cursor.h"
 #include "Font.h"
 #include "FuncRequest.h"
+#include "KeyMap.h"
 #include "KeySymbol.h"
+#include "KeySequence.h"
 #include "LyX.h"
 #include "LyXRC.h"
 #include "LyXVC.h"
@@ -47,7 +49,6 @@
 
 #include "frontends/Application.h"
 #include "frontends/CaretGeometry.h"
-
 #include "frontends/FontMetrics.h"
 #include "frontends/WorkAreaManager.h"
 
@@ -428,7 +429,7 @@ void GuiWorkArea::Private::dispatch(FuncRequest const & cmd)
 
 	// Skip these when selecting
 	// FIXME: let GuiView take care of those.
-	if (cmd.action() != LFUN_MOUSE_MOTION) {
+	if (notJustMovingTheMouse && !buffer_view_->mouseSelecting()) {
 		completer_->updateVisibility(false, false);
 		lyx_view_->updateDialogs();
 		lyx_view_->updateStatusBar();
@@ -1313,11 +1314,24 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	LYXERR(Debug::KEY, "preeditString: " << e->preeditString()
 		   << " commitString: " << e->commitString());
 
-	// insert the processed text in the document (handles undo)
 	if (!e->commitString().isEmpty()) {
-		FuncRequest cmd(LFUN_SELF_INSERT,
-		                qstring_to_ucs4(e->commitString()),
-		                FuncRequest::KEYBOARD);
+		FuncRequest cmd;
+		// take care of commit string assigned to a shortcut
+		// e.g. quotation mark on international keyboard
+		KeySequence keyseq;
+		for (QChar const & ch : e->commitString()) {
+			KeySymbol keysym;
+			keysym.init(ch.unicode());
+			keyseq.addkey(keysym, NoModifier);
+		}
+		cmd = theTopLevelKeymap().getBinding(keyseq);
+
+		if (cmd == FuncRequest::noaction || cmd == FuncRequest::unknown
+		    || cmd.action() == LFUN_SELF_INSERT)
+			// insert the processed text in the document (handles undo)
+			cmd = FuncRequest(LFUN_SELF_INSERT, qstring_to_ucs4(e->commitString()));
+
+		cmd.setOrigin(FuncRequest::KEYBOARD);
 		dispatch(cmd);
 		// FIXME: this is supposed to remove traces from preedit
 		// string. Can we avoid calling it explicitly?

@@ -356,7 +356,7 @@ void InsetArgument::latexArgument(otexstream & os,
 	os << presetarg;
 	if (!presetarg.empty() && !ts.str.empty())
 		os << ", ";
-	os << move(ts);
+	os << std::move(ts);
 	if (add_braces)
 		os << '}';
 	os << rdelim;

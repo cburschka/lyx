@@ -619,11 +619,6 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	}
 	of << "\\batchmode\n";
 
-	// Set \jobname of previews to the document name (see bug 9627)
-	of << "\\def\\jobname{"
-	   << from_utf8(changeExtension(buffer_.latexName(), ""))
-	   << "}\n";
-
 	LYXERR(Debug::OUTFILE, "Format = " << buffer_.params().getDefaultOutputFormat());
 	string latexparam = "";
 	bool docformat = !buffer_.params().default_output_format.empty()

@@ -133,6 +133,7 @@ docstring map_latex_to(docstring latex, bool xml = false)
 		std::string format = (xml) ? "XML" : "HTML";
 		lyxerr << "mathmlize " << format << " conversion for '" << latex << "' not implemented" << endl;
 		LASSERT(false, return from_ascii(dict["xrightarrow"]));
+		return docstring();
 	}
 }
 

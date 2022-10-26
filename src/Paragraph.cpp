@@ -1927,7 +1927,8 @@ FontSpan Paragraph::fontSpan(pos_type pos) const
 
 	// This should not happen, but if so, we take no chances.
 	LYXERR0("Paragraph::fontSpan: position not found in fontinfo table!");
-	LASSERT(false, return FontSpan(pos, pos));
+	LASSERT(false, /**/);
+	return FontSpan(pos, pos);
 }
 
 
@@ -2788,9 +2789,11 @@ void Paragraph::latex(BufferParams const & bparams,
 				os << '}';
 				column += 1;
 			}
-			if (closeLanguage)
+			if (closeLanguage) {
 				// Force language closing
 				current_font.setLanguage(basefont.language());
+				langClosed = true;
+			}
 			Font const nextfont = (i == body_pos-1) ? basefont : current_font;
 			bool needPar = false;
 			column += running_font.latexWriteEndChanges(
@@ -2804,7 +2807,7 @@ void Paragraph::latex(BufferParams const & bparams,
 					Change(Change::UNCHANGED), Change(Change::DELETED), rp);
 			}
 			// Has the language been closed in the latexWriteEndChanges() call above?
-			langClosed = running_font.language() != basefont.language()
+			langClosed |= running_font.language() != basefont.language()
 					&& running_font.language() != nextfont.language()
 					&& (running_font.language()->encoding()->package() != Encoding::CJK);
 			running_font = basefont;
@@ -2908,9 +2911,14 @@ void Paragraph::latex(BufferParams const & bparams,
 					column += Changes::latexMarkChange(os, bparams,
 						Change(Change::UNCHANGED), change, rp);
 				}
-			} else {
+			} else {// if fontswitch_inset
+				if (current_font != running_font || !langClosed)
+					// font is still open in fontswitch_insets if we have
+					// a non-lang font difference or if the language
+					// is the only difference but has not been forcedly
+					// closed meanwhile
+					open_font = true;
 				running_font = current_font;
-				open_font &= !langClosed;
 			}
 		}
 
@@ -2979,7 +2987,7 @@ void Paragraph::latex(BufferParams const & bparams,
 				d->latexInset(bparams, os, rp, running_font,
 						basefont, real_outerfont, open_font,
 						runningChange, style, i, column, fontswitch_inset,
-						closeLanguage, lang_switched_at_inset);
+						closeLanguage, (lang_switched_at_inset || langClosed));
 				if (fontswitch_inset) {
 					if (open_font) {
 						bool needPar = false;
@@ -4012,6 +4020,8 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 					       runparams, i);
 			if (c == ' ' && (style.free_spacing || runparams.free_spacing))
 				xs << XMLStream::ESCAPE_NONE << "&nbsp;";
+			else if (c == '\'')
+				xs << XMLStream::ESCAPE_NONE << "&#8217;";
 			else
 				xs << c;
 		}

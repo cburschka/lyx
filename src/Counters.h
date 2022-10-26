@@ -162,6 +162,8 @@ public:
 	void reset();
 	/// Reset counters matched by match string.
 	void reset(docstring const & match);
+	/// Copy counter \p cnt to \p newcnt.
+	bool copy(docstring const & cnt, docstring const & newcnt);
 	/// Remove counter \p cnt.
 	bool remove(docstring const & cnt);
 	/** returns the expanded string representation of counter \c

@@ -39,7 +39,7 @@ from parser_tools import (check_token, del_complete_lines,
 # Private helper functions
 
 def revert_Argument_to_TeX_brace(document, line, endline, n, nmax, environment, opt, nolastopt):
-    """
+    r"""
     Reverts an InsetArgument to TeX-code
     usage:
     revert_Argument_to_TeX_brace(document, LineOfBegin, LineOfEnd, StartArgument, EndArgument, isEnvironment, isOpt, notLastOpt)
@@ -599,7 +599,7 @@ def revert_question_env(document):
 
         document.body[i : i + 1] = ["\\begin_layout Standard", ""] + begcmd
 
-        add_to_preamble(document, "\\providecommand{\questionname}{Question}")
+        add_to_preamble(document, "\\providecommand{\\questionname}{Question}")
 
         if starred:
             add_to_preamble(document, "\\theoremstyle{plain}\n" \
@@ -1354,7 +1354,7 @@ def revert_jss(document):
     if document.textclass != "jss":
         return
 
-    # at first revert the inset layouts because 
+    # at first revert the inset layouts because
     # they can be part of the In_Preamble layouts
     il_dict = {
       "Pkg"      :  "pkg",
@@ -2045,7 +2045,7 @@ def revert_moderncv_1(document):
       i += 1
       continue
     content = lyx2latex(document, document.body[i:j + 1])
-    add_to_preamble(document, ["\\setlength{\hintscolumnwidth}{" + content + "}"])
+    add_to_preamble(document, ["\\setlength{\\hintscolumnwidth}{" + content + "}"])
     del document.body[i:j + 1]
     # now change the new styles to the obsolete ones
     # \name
@@ -2383,7 +2383,7 @@ def revert_solution(document):
             add_to_preamble(document, "\\%s{%s}[thm]{\\protect\\solutionname}" % \
                 (theoremName, LaTeXName))
 
-        add_to_preamble(document, "\\providecommand{\solutionname}{Solution}")
+        add_to_preamble(document, "\\providecommand{\\solutionname}{Solution}")
         i = j
 
 

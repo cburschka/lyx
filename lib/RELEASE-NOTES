@@ -32,6 +32,11 @@
 * Continuous spellcheck is now on by default, but only if the user does not have
   an existing preferences file. In that case, the old setting is preserved.
 
+* Document (or selection statistics) is now shown in status bar and can be
+  disabled by the context menu.
+
+* The actual enabled state of the synchronize TeX output option of the document
+  is used to enable or disable the menu item for forward-search.
 
 !!Documents compilation process and images conversion
 

@@ -27,7 +27,7 @@ from parser_tools import find_token, find_end_of, get_value,\
 # Private helper functions
 
 def find_end_of_inset(lines, i):
-    "Finds the matching \end_inset"
+    r"Finds the matching \end_inset"
     return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
 
 

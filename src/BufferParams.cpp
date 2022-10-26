@@ -1979,6 +1979,8 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	if (!features.runparams().includeall && !included_children_.empty()) {
 		os << "\\includeonly{";
 		bool first = true;
+		// we do not use "auto const &" here, because incfile is modified later
+		// coverity[auto_causes_copy]
 		for (auto incfile : included_children_) {
 			FileName inc = makeAbsPath(incfile, filepath.absFileName());
 			string mangled = DocFileName(changeExtension(inc.absFileName(), ".tex")).
@@ -2191,7 +2193,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 			os << from_utf8(output_sync_macro) +"\n";
 		else if (features.runparams().flavor == Flavor::LaTeX)
 			os << "\\usepackage[active]{srcltx}\n";
-		else if (features.runparams().flavor == Flavor::PdfLaTeX)
+		else
 			os << "\\synctex=-1\n";
 	}
 
@@ -2275,7 +2277,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		if (!tmppreamble.str.empty())
 			atlyxpreamble << "\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
 			                 "LyX specific LaTeX commands.\n"
-			              << move(tmppreamble)
+			              << std::move(tmppreamble)
 			              << '\n';
 	}
 	// the text class specific preamble
@@ -3440,8 +3442,20 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 			if (features.isRequired("japanese")
 			    || features.isProvided("inputenc"))
 				break;
-			os << "\\usepackage[" << from_ascii(encoding().latexName());
-		   	if (features.runparams().flavor == Flavor::LuaTeX
+			string const doc_encoding = encoding().latexName();
+			// The 2022 release of ucs.sty uses the default utf8
+			// inputenc encoding with 'utf8x' inputenc if the ucs
+			// package is not loaded before inputenc.
+			// This breaks existing documents that use utf8x
+			// and also makes utf8x redundant.
+			// Thus we load ucs.sty in order to keep functionality
+			// that would otherwise be silently dropped.
+			if (doc_encoding == "utf8x"
+			    && features.isAvailable("ucs-2022/08/07")
+			    && !features.isProvided("ucs"))
+				os << "\\usepackage{ucs}\n";
+			os << "\\usepackage[" << from_ascii(doc_encoding);
+			if (features.runparams().flavor == Flavor::LuaTeX
 			    || features.runparams().flavor == Flavor::DviLuaTeX)
 				os << "]{luainputenc}\n";
 			else
@@ -3805,6 +3819,7 @@ void BufferParams::copyForAdvFR(const BufferParams & bp)
 {
 	string const & lang = bp.language->lang();
 	setLanguage(lang);
+	quotes_style = bp.quotes_style;
 	layout_modules_ = bp.layout_modules_;
 	string const & doc_class = bp.documentClass().name();
 	setBaseClass(doc_class);

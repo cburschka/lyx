@@ -173,7 +173,7 @@ beamer_article_styles = [
     "Preamble",
     "     \\usepackage{beamerarticle,pgf}",
     "     % this default might be overridden by plain title style",
-    "     \\newcommand\makebeamertitle{\\frame{\\maketitle}}%",
+    "     \\newcommand\\makebeamertitle{\\frame{\\maketitle}}%",
     "     \\AtBeginDocument{",
     "             \\let\\origtableofcontents=\\tableofcontents",
     "             \\def\\tableofcontents{\\@ifnextchar[{\\origtableofcontents}{\\gobbletableofcontents}}",
@@ -1627,12 +1627,12 @@ def convert_dashligatures(document):
                 continue
 
             # literal dash followed by a non-white-character or no-break space:
-            if re.search(u"[\u2013\u2014]([\S\u00A0\u202F\u2060]|$)",
+            if re.search(u"[\u2013\u2014]([\\S\u00A0\u202F\u2060]|$)",
                          line, flags=re.UNICODE):
                 has_literal_dashes = True
             # ligature dash followed by non-white-char or no-break space on next line:
             if (re.search(r"(\\twohyphens|\\threehyphens)", line) and
-                re.match(u"[\S\u00A0\u202F\u2060]", lines[i+1], flags=re.UNICODE)):
+                re.match(u"[\\S\u00A0\u202F\u2060]", lines[i+1], flags=re.UNICODE)):
                 has_ligature_dashes = True
             if has_literal_dashes and has_ligature_dashes:
                 # TODO: insert a warning note in the document?
@@ -1845,7 +1845,7 @@ allowbreak_emulation =  [r"\begin_inset space \hspace{}",
                          r""]
 
 def convert_allowbreak(document):
-    " Zero widths Space-inset -> \SpecialChar allowbreak. "
+    r" Zero widths Space-inset -> \SpecialChar allowbreak. "
     lines = document.body
     i = find_complete_lines(lines, allowbreak_emulation, 2)
     while i != -1:
@@ -1854,7 +1854,7 @@ def convert_allowbreak(document):
 
 
 def revert_allowbreak(document):
-    " \SpecialChar allowbreak -> Zero widths Space-inset. "
+    r" \SpecialChar allowbreak -> Zero widths Space-inset. "
     i = 1
     lines = document.body
     while i < len(lines):

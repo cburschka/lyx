@@ -369,7 +369,7 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 				os << '[' << float_placement << "]";
 		} else if (captionfirst && !caption.str.empty()) {
 			os << breakln << "\\lyxmintcaption[t]{"
-			   << move(caption) << "}\n";
+			   << std::move(caption) << "}\n";
 		}
 		os << breakln << "\\begin{minted}";
 		if (!param_string.empty())
@@ -378,11 +378,11 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 		   << code << breakln << "\\end{minted}\n";
 		if (isfloat) {
 			if (!caption.str.empty())
-				os << "\\caption{" << move(caption) << "}\n";
+				os << "\\caption{" << std::move(caption) << "}\n";
 			os << "\\end{listing}\n";
 		} else if (!captionfirst && !caption.str.empty()) {
 			os << breakln << "\\lyxmintcaption[b]{"
-			   << move(caption) << "}";
+			   << std::move(caption) << "}";
 		}
 	} else {
 		OutputParams rp = runparams;
@@ -396,7 +396,7 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 				os << safebreakln;
 			os << "[";
 			if (!caption.str.empty()) {
-				os << "caption={" << move(caption) << '}';
+				os << "caption={" << std::move(caption) << '}';
 				if (!param_string.empty())
 					os << ',';
 			}

@@ -171,6 +171,8 @@ public:
 	void getWord(CursorSlice & from, CursorSlice & to, word_location const) const;
 	/// just selects the word the cursor is in
 	void selectWord(Cursor & cur, word_location loc);
+	/// expands the selection to the word the cursor is in
+	void expandWordSel(Cursor & cur);
 	/// select all text
 	void selectAll(Cursor & cur);
 
@@ -329,8 +331,9 @@ public:
 	bool completionSupported(Cursor const & cur) const;
 	///
 	CompletionList const * createCompletionList(Cursor const & cur) const;
-	///
-	bool insertCompletion(Cursor & cur, docstring const & s, bool /*finished*/);
+	/// Do a completion at the cursor position. Return true on success.
+	/// The completion does not contain the prefix. Handles undo.
+	bool insertCompletion(Cursor & cur, docstring const & s);
 	///
 	docstring completionPrefix(Cursor const & cur) const;
 	/// find a paragraph before \p par with the given \p depth, if such

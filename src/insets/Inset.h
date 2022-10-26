@@ -402,10 +402,10 @@ public:
 	/// Returns the completion prefix to filter the suggestions for completion.
 	/// This is only called if completionList returned a non-null list.
 	virtual docstring completionPrefix(Cursor const &) const;
-	/// Do a completion at the cursor position. Return true on success.
-	/// The completion does not contain the prefix. If finished is true, the
-	/// completion is final. If finished is false, completion might only be
-	/// a partial completion.
+	/// Do a completion at the cursor position. Return true on success. Handles undo.
+	/// The completion does not contain the prefix.
+	/// If finished is true, the completion is final, otherwise it
+	/// might be only partial. (only useful for mathed)
 	virtual bool insertCompletion(Cursor & /*cur*/,
 		docstring const & /*completion*/, bool /*finished*/)
 		{ return false; }
@@ -479,7 +479,7 @@ public:
 
 	virtual CtObject getCtObject(OutputParams const &) const;
 
-	// properties with respect to row breaking (made of RowFLag enums)
+	// properties with respect to row breaking (made of RowFLag enumerators)
 	virtual int rowFlags() const { return Inline; }
 	/// indentation before this inset (only needed for displayed hull insets with fleqn option)
 	virtual int indent(BufferView const &) const { return 0; }
@@ -545,9 +545,9 @@ public:
 	/// Collect BibTeX information
 	virtual void collectBibKeys(InsetIterator const &, support::FileNameList &) const {}
 	/// Update the counters of this inset and of its contents.
-	/// The boolean indicates whether we are preparing for output, e.g.,
-	/// of XHTML.
-	virtual void updateBuffer(ParIterator const &, UpdateType, bool const) {}
+	/// \param utype indicates whether we are preparing for output, e.g., of XHTML.
+	/// \param deleted indicates whethe rthe inset is deleted.
+	virtual void updateBuffer(ParIterator const &, UpdateType /*utype*/, bool /*deleted*/) {}
 
 	/// Updates the inset's dialog
 	virtual Buffer const * updateFrontend() const;

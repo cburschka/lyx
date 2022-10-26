@@ -112,7 +112,7 @@ def update_inset_label(document):
         i = find_token(lines, '\\begin_inset Label', i)
         if i == -1:
             return
-        lines[i] = '\\begin_inset LatexCommand \label{' + lines[i][19:] + '}'
+        lines[i] = '\\begin_inset LatexCommand \\label{' + lines[i][19:] + '}'
         i = i + 1
 
 

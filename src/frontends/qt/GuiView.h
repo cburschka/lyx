@@ -206,6 +206,8 @@ public:
 	void setCurrentWorkArea(GuiWorkArea * work_area);
 	///
 	void removeWorkArea(GuiWorkArea * work_area);
+	/// return true if \c wa is one of the visibles workareas of this view
+	bool hasVisibleWorkArea(GuiWorkArea * wa) const;
 	/// return the current WorkArea (the one that has the focus).
 	GuiWorkArea const * currentWorkArea() const;
 	/// return the current WorkArea (the one that has the focus).
@@ -233,6 +235,8 @@ public Q_SLOTS:
 	/// idle timeout.
 	/// clear any temporary message and replace with current status.
 	void clearMessage();
+	/// show documents stats in toolbar and trigger new iteration
+	void showStats();
 	///
 	void updateWindowTitle(GuiWorkArea * wa);
 	///
@@ -247,6 +251,8 @@ private Q_SLOTS:
 	///
 	void checkCancelBackground();
 	///
+	void statsPressed();
+	///
 	void zoomSliderMoved(int);
 	///
 	void zoomValueChanged(int);
@@ -256,6 +262,8 @@ private Q_SLOTS:
 	void zoomOutPressed();
 	///
 	void showZoomContextMenu();
+	///
+	void showStatusBarContextMenu();
 	///
 	void on_currentWorkAreaChanged(GuiWorkArea *);
 	///
@@ -419,17 +427,17 @@ private:
 	/**
 	 * Write a buffer to a new file name and rename the buffer
 	 * according to the new file name.
-	 * 
+	 *
 	 * This function is e.g. used by menu callbacks and
 	 * LFUN_BUFFER_WRITE_AS.
-	 * 
+	 *
 	 * If 'newname' is empty, the user is asked via a
 	 * dialog for the buffer's new name and location.
-	 * 
+	 *
 	 * If 'newname' is non-empty and has an absolute path, that is used.
 	 * Otherwise the base directory of the buffer is used as the base
 	 * for any relative path in 'newname'.
-	 * 
+	 *
 	 * \p kind controls what is done besides the pure renaming:
 	 * LV_WRITE_AS  => The buffer is written without version control actions.
 	 * LV_VC_RENAME => The file is renamed in version control.
@@ -472,6 +480,8 @@ private:
 	/// Is the dialog currently visible?
 	bool isDialogVisible(std::string const & name) const;
 	///
+	Dialog * find(std::string const & name, bool hide_it) const;
+	///
 	Dialog * findOrBuild(std::string const & name, bool hide_it);
 	///
 	Dialog * build(std::string const & name);
@@ -483,6 +493,8 @@ private:
 	void dispatchToBufferView(FuncRequest const & cmd, DispatchResult & dr);
 	///
 	void showMessage();
+	/// Check whether any of the stats is enabled in status bar
+	bool statsEnabled() const;
 
 	/// This view ID.
 	int id_;
@@ -506,8 +518,17 @@ private:
 	QLabel * read_only_;
 	/// Statusbar widget that shows version control status
 	QLabel * version_control_;
+	/// Statusbar widget that document count statistics
+	QLabel * stat_counts_;
+	/// Word count info feature can be disabled by context menu
+	bool word_count_enabled_;
+	/// Char count info feature can be disabled by context menu
+	bool char_count_enabled_;
+	/// Char count info feature can be disabled by context menu
+	/// This excludes blanks
+	bool char_nb_count_enabled_;
 	/// Statusbar widget that shows zoom value
-	QLabel * zoom_value_;
+	GuiClickableLabel * zoom_value_;
 	/// The zoom slider widget
 	QSlider * zoom_slider_;
 	/// Zoom in ("+") Button

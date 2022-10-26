@@ -26,6 +26,7 @@
 #include "support/qstring_helpers.h"
 #include "support/Package.h"
 
+#include <QVector>
 #include <QDirIterator>
 #include <QTreeWidget>
 
@@ -416,6 +417,8 @@ void GuiLyXFiles::updateContents()
 	filesLW->clear();
 	QIcon user_icon(getPixmap("images/", "lyxfiles-user", "svgz,png"));
 	QIcon system_icon(getPixmap("images/", "lyxfiles-system", "svgz,png"));
+	QIcon user_folder_icon(getPixmap("images/", "lyxfiles-user-folder", "svgz,png"));
+	QIcon system_folder_icon(getPixmap("images/", "lyxfiles-system-folder", "svgz,png"));
 	QStringList cats;
 	QMap<QString, QString>::const_iterator it = files.constBegin();
 	QFont capfont;
@@ -451,8 +454,8 @@ void GuiLyXFiles::updateContents()
 			guiname = qt_("Default Template");
 		else if (translateName())
 			guiname = toqstr(translateIfPossible(qstring_to_ucs4(guiString(guiname))));
-		QIcon file_icon = (realpath.startsWith(toqstr(package().user_support().absFileName()))) ?
-				user_icon : system_icon;
+		bool const user = realpath.startsWith(toqstr(package().user_support().absFileName()));
+		QIcon file_icon = user ? user_icon : system_icon;
 		item->setIcon(0, file_icon);
 		item->setData(0, Qt::UserRole, it.key());
 		item->setData(0, Qt::DisplayRole, guiname);
@@ -475,6 +478,7 @@ void GuiLyXFiles::updateContents()
 			if (!subcatItem) {
 				subcatItem = new QTreeWidgetItem();
 				subcatItem->setText(0, subcat);
+				file_icon = user ? user_folder_icon : system_folder_icon;
 				subcatItem->setIcon(0, file_icon);
 				cats << catsave;
 			}
@@ -508,12 +512,43 @@ void GuiLyXFiles::filterLabels()
 {
 	Qt::CaseSensitivity cs = csFindCB->isChecked() ?
 		Qt::CaseSensitive : Qt::CaseInsensitive;
+	// Collect "active" categories (containing entries
+	// that match the filter)
+	QVector<QTreeWidgetItem*> activeCats;
 	QTreeWidgetItemIterator it(filesLW);
 	while (*it) {
-		(*it)->setHidden(
-			(*it)->childCount() == 0
-			&& !(*it)->text(0).contains(filter_->text(), cs)
-		);
+		if ((*it)->childCount() > 0) {
+			// Unhide parents (will be hidden
+			// below if necessary)
+			(*it)->setHidden(false);
+			++it;
+			continue;
+		}
+		bool const match = (*it)->text(0).contains(filter_->text(), cs);
+		if (match) {
+			// Register parents of matched entries
+			// so we don't hide those later.
+			QTreeWidgetItem * twi = *it;
+			while (true) {
+				if (!twi->parent())
+					break;
+				activeCats << twi->parent();
+				// ascend further up if possible
+				twi = twi->parent();
+			}
+		}
+		(*it)->setHidden(!match);
+		++it;
+	}
+	// Iterate through parents once more
+	// to hide empty categories
+	it = QTreeWidgetItemIterator(filesLW);
+	while (*it) {
+		if ((*it)->childCount() == 0) {
+			++it;
+			continue;
+		}
+		(*it)->setHidden(!activeCats.contains(*it));
 		++it;
 	}
 }

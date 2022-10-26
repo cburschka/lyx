@@ -702,7 +702,7 @@ public:
 	/// can return different things. this is because cellIndex(r,c)
 	/// returns the VISIBLE cell at r,c, which may be the same as the
 	/// cell at the previous row or column, if we're dealing with some
-	/// multirow or multicell.
+	/// multirow or multicolumn.
 	std::shared_ptr<InsetTableCell> cellInset(idx_type cell);
 	std::shared_ptr<InsetTableCell> cellInset(row_type row, col_type column);
 	InsetTableCell const * cellInset(idx_type cell) const;
@@ -919,54 +919,12 @@ public:
 	///
 	BoxType useBox(idx_type cell) const;
 	///
-	// helper function for Latex
-	///
-	void TeXTopHLine(otexstream &, row_type row, std::list<col_type>,
-			 std::list<col_type>) const;
-	///
-	void TeXBottomHLine(otexstream &, row_type row, std::list<col_type>,
-			    std::list<col_type>) const;
-	///
-	void TeXCellPreamble(otexstream &, idx_type cell, bool & ismulticol, bool & ismultirow,
-			     bool const bidi) const;
-	///
-	void TeXCellPostamble(otexstream &, idx_type cell, bool ismulticol, bool ismultirow) const;
-	///
-	void TeXLongtableHeaderFooter(otexstream &, OutputParams const &, std::list<col_type>,
-				      std::list<col_type>) const;
+	bool hasNewlines(idx_type cell) const;
 	///
 	bool isValidRow(row_type const row) const;
 	///
 	void TeXRow(otexstream &, row_type const row,
 		    OutputParams const &, std::list<col_type>, std::list<col_type>) const;
-	///
-	// helper functions for plain text
-	///
-	bool plaintextTopHLine(odocstringstream &, row_type row,
-			       std::vector<unsigned int> const &) const;
-	///
-	bool plaintextBottomHLine(odocstringstream &, row_type row,
-				  std::vector<unsigned int> const &) const;
-	///
-	void plaintextPrintCell(odocstringstream &,
-				OutputParams const &,
-				idx_type cell, row_type row, col_type column,
-				std::vector<unsigned int> const &,
-				bool onlydata, size_t max_length) const;
-	///
-	docstring xmlRow(XMLStream & xs, row_type row, OutputParams const &,
-	                 bool header = false, bool is_xhtml = true,
-					 BufferParams::TableOutput docbook_table_output = BufferParams::TableOutput::HTMLTable) const;
-	void xmlHeader(XMLStream & xs, OutputParams const &) const;
-	void xmlFooter(XMLStream & xs, OutputParams const &) const;
-	void xmlBody(XMLStream & xs, OutputParams const &) const;
-	XmlRowWiseBorders computeXmlBorders(row_type row) const;
-	std::vector<std::string> computeCssStylePerCell(row_type row, col_type col, idx_type cell) const;
-
-	/// Transforms the vertical alignment of the given cell as a prebaked XML attribute (for HTML and CALS).
-	std::string getHAlignAsXmlAttribute(idx_type cell, bool is_xhtml = true) const;
-	/// Transforms the vertical alignment of the given cell as a prebaked XML attribute (for HTML and CALS).
-	std::string getVAlignAsXmlAttribute(idx_type cell) const;
 
 	/// change associated Buffer
 	void setBuffer(Buffer & buffer);
@@ -977,6 +935,62 @@ public:
 
 private:
 	Buffer * buffer_;
+
+	///
+	// helper function for DocBook
+	///
+	/// Determines whether the tabular item should be generated as DocBook or XHTML.
+	enum class XmlOutputFormat : bool {
+		XHTML = true,
+		DOCBOOK = false
+	};
+
+	/// Transforms the vertical alignment of the given cell as a prebaked XML attribute (for HTML and CALS).
+	std::string getHAlignAsXmlAttribute(idx_type cell, XmlOutputFormat output_format) const;
+	/// Transforms the vertical alignment of the given cell as a prebaked XML attribute (for HTML and CALS).
+	std::string getVAlignAsXmlAttribute(idx_type cell) const;
+
+	/// Helpers for XML tables (XHTML or DocBook).
+	docstring xmlRow(XMLStream & xs, row_type row, OutputParams const &,
+	                 bool header, XmlOutputFormat output_format,
+	                 BufferParams::TableOutput docbook_table_output = BufferParams::TableOutput::HTMLTable) const;
+	void xmlHeader(XMLStream & xs, OutputParams const &, XmlOutputFormat output_format) const;
+	void xmlFooter(XMLStream & xs, OutputParams const &, XmlOutputFormat output_format) const;
+	void xmlBody(XMLStream & xs, OutputParams const &, XmlOutputFormat output_format) const;
+	XmlRowWiseBorders computeXmlBorders(row_type row) const;
+	std::vector<std::string> computeCssStylePerCell(row_type row, col_type col, idx_type cell) const;
+
+	///
+	// helper functions for plain text
+	///
+	bool plaintextTopHLine(odocstringstream &, row_type row,
+	                       std::vector<unsigned int> const &) const;
+	///
+	bool plaintextBottomHLine(odocstringstream &, row_type row,
+	                          std::vector<unsigned int> const &) const;
+	///
+	void plaintextPrintCell(odocstringstream &,
+	                        OutputParams const &,
+	                        idx_type cell, row_type row, col_type column,
+	                        std::vector<unsigned int> const &,
+	                        bool onlydata, size_t max_length) const;
+
+	///
+	// helper function for LaTeX
+	///
+	void TeXTopHLine(otexstream &, row_type row, std::list<col_type>,
+	                 std::list<col_type>) const;
+	///
+	void TeXBottomHLine(otexstream &, row_type row, std::list<col_type>,
+	                    std::list<col_type>) const;
+	///
+	void TeXCellPreamble(otexstream &, idx_type cell, bool & ismulticol, bool & ismultirow,
+	                     bool const bidi) const;
+	///
+	void TeXCellPostamble(otexstream &, idx_type cell, bool ismulticol, bool ismultirow) const;
+	///
+	void TeXLongtableHeaderFooter(otexstream &, OutputParams const &, std::list<col_type>,
+	                              std::list<col_type>) const;
 
 }; // Tabular
 
@@ -1112,7 +1126,7 @@ public:
 	///
 	docstring completionPrefix(Cursor const & cur) const override;
 	///
-	bool insertCompletion(Cursor & cur, docstring const & s, bool finished) override;
+	bool insertCompletion(Cursor & cur, docstring const & s, bool /*finished*/) override;
 	///
 	void completionPosAndDim(Cursor const &, int & x, int & y, Dimension & dim) const override;
 	///

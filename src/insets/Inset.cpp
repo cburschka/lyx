@@ -584,7 +584,12 @@ void Inset::drawMarkers(PainterInfo & pi, int x, int y) const
 
 bool Inset::editing(BufferView const * bv) const
 {
-	return bv->cursor().isInside(this);
+	if (bv->mouseSelecting())
+		// Avoid flicker when selecting with the mouse: when so, do not make
+		// decisions about metrics based on the mouse location.
+		return bv->cursor().realAnchor().isInside(this);
+	else
+		return bv->cursor().isInside(this);
 }
 
 

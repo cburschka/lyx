@@ -1,6 +1,10 @@
 # Test for searching the special LyX and LaTeX words
 # when ignoring format
 
+UnuseShortcut "Tab" "*"
+
+PrepareShortcuts
+
 Lang sk_SK.utf8
 TestBegin test.lyx -dbg key,find > findadv-logo.loga.txt 2>&1
 KK: This should be a LaTeX logo: 

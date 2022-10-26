@@ -78,7 +78,7 @@ else:
     # with tetex.
     epsfile = outbase + '.pstex'
     tmp = mkstemp()
-    boundingboxline = re.compile(b'%%BoundingBox:\s+(\d*)\s+(\d*)\s+(\d*)\s+(\d*)')
+    boundingboxline = re.compile(br'%%BoundingBox:\s+(\d*)\s+(\d*)\s+(\d*)\s+(\d*)')
     for line in open(epsfile, 'rb'):
         if line[:13] == b'%%BoundingBox':
             (llx, lly, urx, ury) = list(map(int, boundingboxline.search(line).groups()))

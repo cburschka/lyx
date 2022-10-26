@@ -161,9 +161,11 @@ logicalmkup
 \author -584632292 "Richard Kimberly Heck"
 \author -563046850 "Jean-Marc LASGOUTTES"
 \author -131811572 "Yuriy Skalko"
+\author 177693 "x"
 \author 5863208 "ab"
 \author 5863344 "Enrico Forestieri"
 \author 244031559 "Yuriy"
+\author 274215730 "scott"
 \author 630872221 "Jean-Pierre Chrétien" jeanpierre.chretien@free.fr
 \author 1549938239 "Kornel Benko"
 \author 1675569489 "Stephan Witt"
@@ -6883,8 +6885,14 @@ Space
  key ends the label if you are at the beginning of the first line of an
  item.
  If you need to use more than one word in a label use a 
+\change_deleted 177693 1654619261
+
 \family sans
-Protected Space
+Protected
+\change_inserted 177693 1654619261
+Non-Breaking
+\change_unchanged
+ Space
 \family default
 .
  (Use either 
@@ -6897,7 +6905,13 @@ arg   "command-alternatives math-space ; space-insert protected"
 \family sans
 Insert\SpecialChar menuseparator
 Formatting\SpecialChar menuseparator
+
+\change_deleted 177693 1654619271
 Protected
+\change_inserted 177693 1654619271
+Non-Breaking
+\change_unchanged
+
 \begin_inset space ~
 \end_inset
 
@@ -6923,8 +6937,14 @@ Second
 \end_inset
 
 Example: This one shows how to use a 
+\change_deleted 177693 1654619281
+
 \family sans
 Protected
+\change_inserted 177693 1654619281
+Non-Breaking
+\change_unchanged
+
 \begin_inset space ~
 \end_inset
 
@@ -7039,7 +7059,12 @@ word
 Space
 \family default
  after the beginning of the first line of an item marks the end of the label.
- If you need to use more than one word in an item label, use a protected
+ If you need to use more than one word in an item label, use a 
+\change_deleted 177693 1654619285
+protected
+\change_inserted 177693 1654619287
+non-breaking
+\change_unchanged
  space as described above.
 \end_layout
 
@@ -7215,13 +7240,25 @@ Labeling
  default.
  You can use additional 
 \family sans
-HFills
+H
+\change_inserted 177693 1654621595
+orizontal 
+\change_unchanged
+Fills
 \family default
  to change how \SpecialChar LyX
  justifies the item label.
  
 \family sans
-Hfills
+H
+\change_inserted 177693 1654621600
+orizontal 
+\change_deleted 177693 1654621601
+f
+\change_inserted 177693 1654621603
+F
+\change_unchanged
+ills
 \family default
  are documented in section
 \begin_inset space ~
@@ -7254,7 +7291,11 @@ Labeling
 
 Right One 
 \family sans
-HFill
+H
+\change_inserted 177693 1654621610
+orizontal 
+\change_unchanged
+Fill
 \family default
  at the beginning of the label right justifies it.
 \end_layout
@@ -7270,7 +7311,11 @@ Center
 
  One 
 \family sans
-HFill
+H
+\change_inserted 177693 1654621617
+orizontal 
+\change_unchanged
+Fill
 \family default
  at the beginning of the label and one at the end centers it.
 \end_layout
@@ -8667,12 +8712,24 @@ In the
 Space
 \family default
  key is treated as a 
+\change_deleted 177693 1654619837
+
 \family sans
 Protected
+\change_inserted 177693 1654619839
+Non-Breaking
+\change_unchanged
+
 \begin_inset space ~
 \end_inset
 
+
+\change_deleted 177693 1654619842
 Blank
+\change_inserted 177693 1654619844
+Space
+\change_unchanged
+
 \family default
  instead of an end-of-word marker.
 \end_layout
@@ -8939,8 +8996,13 @@ Return
 \family sans
 Space
 \family default
- key is treated like a normal space in text (not as a protected space) and
- you can have empty lines.
+ key is treated like a normal space in text (not as a 
+\change_deleted 177693 1654619849
+protected
+\change_inserted 177693 1654619851
+non-breaking
+\change_unchanged
+ space) and you can have empty lines.
  In contrary to 
 \family sans
 \SpecialChar LyX
@@ -8974,12 +9036,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8992,6 +9056,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9015,6 +9080,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -11225,7 +11291,13 @@ What is a space? While you might be used to pressing the space key anytime
 \end_layout
 
 \begin_layout Subsection
-Protected Space
+
+\change_deleted 177693 1654619480
+Protected
+\change_inserted 177693 1654619480
+Non-Breaking
+\change_unchanged
+ Space
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Protected-Space"
@@ -11237,7 +11309,13 @@ name "subsec:Protected-Space"
 status collapsed
 
 \begin_layout Plain Layout
-Spaces ! Protected
+Spaces ! 
+\change_deleted 177693 1654619483
+Protected
+\change_inserted 177693 1654619483
+Non-Breaking
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -11246,10 +11324,19 @@ Spaces ! Protected
 \end_layout
 
 \begin_layout Standard
-The protected space: It is used to tell \SpecialChar LyX
+The 
+\change_deleted 177693 1654619488
+protected
+\change_inserted 177693 1654619490
+non-breaking
+\change_unchanged
+ space: It is used to tell \SpecialChar LyX
  (and \SpecialChar LaTeX
-) not to break the line at
- that point.
+) not to 
+\change_inserted 177693 1654619513
+automatically 
+\change_unchanged
+break the line at that point.
  This may be necessary to avoid unlucky line breaks, like in:
 \end_layout
 
@@ -11269,7 +11356,13 @@ reference "sec:Bibliography"
 \end_layout
 
 \begin_layout Standard
-Obviously, it would be a good thing to put a protected space between 
+Obviously, it would be a good thing to put a 
+\change_deleted 177693 1654619535
+protected
+\change_inserted 177693 1654619537
+non-breaking
+\change_unchanged
+ space between 
 \begin_inset Quotes eld
 \end_inset
 
@@ -11293,11 +11386,23 @@ reference "sec:Bibliography"
 \end_inset
 
 .
- A protected space is set with 
+ A 
+\change_deleted 177693 1654619542
+protected
+\change_inserted 177693 1654619544
+non-breaking
+\change_unchanged
+ space is set with 
 \family sans
 Insert\SpecialChar menuseparator
 Formatting\SpecialChar menuseparator
+
+\change_deleted 177693 1654619548
 Protected
+\change_inserted 177693 1654619548
+Non-Breaking
+\change_unchanged
+
 \begin_inset space ~
 \end_inset
 
@@ -11356,7 +11461,24 @@ reference "chap:Units-available-in"
 \end_layout
 
 \begin_layout Subsubsection
-Inter-word Space
+
+\change_deleted 177693 1654667894
+Inter-word
+\change_inserted 177693 1654667898
+Normal
+\change_unchanged
+ Space
+\change_inserted 177693 1654667914
+
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Normal-Space"
+
+\end_inset
+
+
+\change_deleted 177693 1654667914
+
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Inter-word-Space"
@@ -11364,11 +11486,19 @@ name "subsec:Inter-word-Space"
 \end_inset
 
 
+\change_unchanged
+
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Spaces ! Inter-word
+Spaces ! 
+\change_deleted 177693 1654667939
+Inter-word
+\change_inserted 177693 1654667939
+Normal
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -11399,7 +11529,13 @@ reference "subsec:Abbreviations"
 \family sans
 Insert\SpecialChar menuseparator
 Formatting\SpecialChar menuseparator
+
+\change_deleted 177693 1654667953
 Interword
+\change_inserted 177693 1654667953
+Normal
+\change_unchanged
+
 \begin_inset space ~
 \end_inset
 
@@ -11415,6 +11551,10 @@ arg   "space-insert normal"
 \end_layout
 
 \begin_layout Subsubsection
+
+\change_inserted 177693 1654668020
+Non-Breaking 
+\change_unchanged
 Thin Space
 \begin_inset CommandInset label
 LatexCommand label
@@ -11440,6 +11580,10 @@ A
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted 177693 1654668039
+non-breaking 
+\change_unchanged
 thin space
 \begin_inset Quotes erd
 \end_inset
@@ -11448,7 +11592,13 @@ thin space
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_deleted 177693 1654619681
 protected
+\change_inserted 177693 1654619683
+non-breaking
+\change_unchanged
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -11482,6 +11632,10 @@ kg (thin space)
 \end_inset
 
 10 kg (normal space
+\change_inserted 177693 1654668105
+)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -11489,6 +11643,14 @@ You can insert thin spaces with the menu
 \family sans
 Insert\SpecialChar menuseparator
 Formatting\SpecialChar menuseparator
+
+\change_inserted 177693 1654668120
+Non-Breaking
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
 Thin
 \begin_inset space ~
 \end_inset
@@ -11649,7 +11811,17 @@ space A line with a
 \end_layout
 
 \begin_layout Description
+
+\change_deleted 177693 1654668288
 Enspace
+\change_inserted 177693 1654668297
+Half
+\begin_inset space ~
+\end_inset
+
+Quad
+\change_unchanged
+
 \begin_inset space ~
 \end_inset
 
@@ -11669,7 +11841,17 @@ em) A line with an
 \begin_inset Formula $\gets$
 \end_inset
 
- enspace
+ 
+\change_deleted 177693 1654668308
+enspace
+\change_inserted 177693 1654668324
+half
+\begin_inset space ~
+\end_inset
+
+quad
+\change_unchanged
+
 \begin_inset space ~
 \end_inset
 
@@ -11701,7 +11883,13 @@ em) A line with a
 \begin_inset Formula $\gets$
 \end_inset
 
- Quad
+ 
+\change_deleted 177693 1654668332
+Q
+\change_inserted 177693 1654668332
+q
+\change_unchanged
+uad
 \begin_inset space ~
 \end_inset
 
@@ -11713,7 +11901,17 @@ em) space between the arrows.
 \end_layout
 
 \begin_layout Description
-QQuad
+
+\change_deleted 177693 1654668340
+Q
+\change_inserted 177693 1654668345
+Double
+\begin_inset space ~
+\end_inset
+
+
+\change_unchanged
+Quad
 \begin_inset space ~
 \end_inset
 
@@ -11733,7 +11931,19 @@ em) A line with a
 \begin_inset Formula $\gets$
 \end_inset
 
- QQuad
+ 
+\change_deleted 177693 1654668349
+Q
+\change_inserted 177693 1654668352
+double
+\begin_inset space ~
+\end_inset
+
+q
+\change_deleted 177693 1654668352
+Q
+\change_unchanged
+uad
 \begin_inset space ~
 \end_inset
 
@@ -11815,10 +12025,10 @@ Width of the different horizontal spaces.
 \begin_inset Tabular
 <lyxtabular version="3" rows="12" columns="2">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11829,7 +12039,7 @@ Space
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11842,7 +12052,7 @@ Width
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11851,7 +12061,7 @@ Normal
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11866,16 +12076,22 @@ em
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 177693 1654619715
 Protected
+\change_inserted 177693 1654621248
+Non-breaking Normal
+\change_unchanged
+
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11890,7 +12106,7 @@ em
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11899,7 +12115,7 @@ Thin
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11908,13 +12124,25 @@ Thin
 \end_inset
 
 em
+\change_inserted 177693 1654620497
+
+\begin_inset Formula $\thinspace=\thinspace$
+\end_inset
+
+3
+\begin_inset space \thinspace{}
+\end_inset
+
+mu
+\change_unchanged
+
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row change="inserted -712698321 1593161917">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11925,7 +12153,7 @@ Medium
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11942,7 +12170,7 @@ mu
 </cell>
 </row>
 <row change="inserted -712698321 1593161917">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11953,7 +12181,7 @@ Thick
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11970,7 +12198,7 @@ mu
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11979,10 +12207,12 @@ Negative thin
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 177693 1654620640
 -1/6
 \begin_inset space \thinspace{}
 \end_inset
@@ -11991,6 +12221,8 @@ em
 \begin_inset Formula $\thinspace=\thinspace$
 \end_inset
 
+
+\change_unchanged
 -3
 \begin_inset space \thinspace{}
 \end_inset
@@ -12002,7 +12234,7 @@ mu
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12011,7 +12243,7 @@ Negative medium
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12026,7 +12258,7 @@ mu
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12035,7 +12267,7 @@ Negative thick
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12050,11 +12282,23 @@ mu
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Enspace (0.5
+
+\change_deleted 177693 1654620687
+Enspace
+\change_inserted 177693 1654620689
+Half Quad
+\change_unchanged
+ (
+\change_deleted 177693 1654620678
+0.5
+\change_inserted 177693 1654620679
+1/2
+\change_unchanged
+
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -12063,22 +12307,40 @@ em)
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 177693 1654620674
 0.5
+\change_inserted 177693 1654620676
+1/2
+\change_unchanged
+
 \begin_inset space \thinspace{}
 \end_inset
 
 em
+\change_inserted 177693 1654620708
+
+\begin_inset Formula $\thinspace=\thinspace$
+\end_inset
+
+1
+\begin_inset space \thinspace{}
+\end_inset
+
+en
+\change_unchanged
+
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12091,7 +12353,7 @@ em)
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12106,11 +12368,17 @@ em
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-QQuad (2
+
+\change_deleted 177693 1654668383
+Q
+\change_inserted 177693 1654668384
+Double 
+\change_unchanged
+Quad (2
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -12119,7 +12387,7 @@ em)
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12163,10 +12431,17 @@ Spacing ! Fills
 Horizontal fills (HFills) are a special \SpecialChar LyX
  feature for adding extra space
  in a uniform fashion.
- An HFill is actually a variable length space, whose length always equals
- the remaining space between the left and right margins.
- If there is more than one HFill on a line, they divide the available space
- equally between themselves.
+ An H
+\change_inserted 177693 1654621642
+orizontal 
+\change_unchanged
+Fill is actually a variable length space, whose length always equals the
+ remaining space between the left and right margins.
+ If there is more than one H
+\change_inserted 177693 1654621633
+orizontal 
+\change_unchanged
+Fill on a line, they divide the available space equally between themselves.
 \end_layout
 
 \begin_layout Standard
@@ -12239,7 +12514,13 @@ is
 \end_layout
 
 \begin_layout Standard
-HFills can be made visible when you choose one of the 
+
+\change_deleted 177693 1654621654
+HFill
+\change_inserted 177693 1654621654
+Horizontal Fill
+\change_unchanged
+s can be made visible when you choose one of the 
 \family sans
 Fill
 \begin_inset space ~
@@ -12351,16 +12632,34 @@ status open
 \series bold
 Note:
 \series default
- If an HFill is at the beginning of a line, and 
+ If an 
+\change_deleted 177693 1654621656
+HFill
+\change_inserted 177693 1654621656
+Horizontal Fill
+\change_unchanged
+ is at the beginning of a line, and 
 \emph on
 not
 \emph default
  in the first line in a paragraph, \SpecialChar LyX
  ignores it.
- This prevents HFills from accidentally being wrapped onto a new line.
+ This prevents 
+\change_deleted 177693 1654621657
+HFill
+\change_inserted 177693 1654621657
+Horizontal Fill
+\change_unchanged
+s from accidentally being wrapped onto a new line.
  If you need space in this case anyway, set the 
+\change_deleted 177693 1654668432
+
 \family sans
 Protect
+\change_inserted 177693 1654668434
+Non-Breaking
+\change_unchanged
+
 \family default
  option in the space dialog.
 \end_layout
@@ -12555,21 +12854,37 @@ Space
 \begin_layout Standard
 
 \family sans
-SmallSkip
+Small
+\change_inserted 177693 1654621302
+ 
+\change_unchanged
+Skip
 \family default
 , 
 \family sans
-MedSkip
+Med
+\change_inserted 177693 1654621304
+ium 
+\change_unchanged
+Skip
 \family default
  and 
 \family sans
-BigSkip
+Big
+\change_inserted 177693 1654621306
+ 
+\change_unchanged
+Skip
 \family default
  are \SpecialChar LaTeX
  sizes which depend on the font size of the document.
  
 \family sans
-DefSkip
+Def
+\change_inserted 177693 1654621298
+ault 
+\change_unchanged
+Skip
 \family default
  is the skip adjusted in the dialog 
 \family sans
@@ -12594,11 +12909,19 @@ Document ! Settings
  for the paragraph separation.
  If you use indentation to separate paragraphs 
 \family sans
-DefSkip
+Def
+\change_inserted 177693 1654621292
+ault 
+\change_unchanged
+Skip
 \family default
  is equal to 
 \family sans
-MedSkip
+Med
+\change_inserted 177693 1654621294
+ium 
+\change_unchanged
+Skip
 \family default
 .
 \change_inserted -712698321 1593360527
@@ -12625,7 +12948,11 @@ Line height
 \begin_layout Standard
 
 \family sans
-VFill
+V
+\change_inserted 177693 1654621333
+ertical 
+\change_unchanged
+Fill
 \family default
 
 \begin_inset Index idx
@@ -12647,11 +12974,19 @@ Vfill
  one at the bottom, because the space between them is then maximal.
  
 \family sans
-VFill
+V
+\change_inserted 177693 1654621321
+ertical 
+\change_unchanged
+Fill
 \family default
 s work like 
 \family sans
-HFill
+H
+\change_inserted 177693 1654621325
+orizontal 
+\change_unchanged
+Fill
 \family default
 s: they fill the remaining vertical space on a page with blank space.
 \begin_inset Foot
@@ -12660,7 +12995,11 @@ status collapsed
 \begin_layout Plain Layout
 
 \family sans
-HFill
+H
+\change_inserted 177693 1654621587
+orizontal 
+\change_unchanged
+Fill
 \family default
 s are described in section
 \begin_inset space ~
@@ -12680,12 +13019,20 @@ reference "subsec:Horizontal-Space"
 
  If there are several 
 \family sans
-VFill
+V
+\change_inserted 177693 1654621344
+ertical 
+\change_unchanged
+Fill
 \family default
 s on a page, they divide the remaining vertical space equally between themselves.
  You can therefore use 
 \family sans
-VFill
+V
+\change_inserted 177693 1654621329
+ertical 
+\change_unchanged
+Fill
 \family default
 s to center text on a page, or even place text 2/3 down a page.
 \end_layout
@@ -19036,7 +19383,13 @@ The Elements of Typographic Style
 \begin_inset space ~
 \end_inset
 
-– can be prevented using protected spaces.
+– can be prevented using 
+\change_deleted 177693 1654619779
+protected
+\change_inserted 177693 1654619781
+non-breaking
+\change_unchanged
+ spaces.
 \end_layout
 
 \begin_layout Enumerate
@@ -19081,7 +19434,13 @@ nobreakdash
  in \SpecialChar TeX
  code
 \change_inserted -1402925745 1558782753
-, a protected space does not suffice
+, a 
+\change_deleted 177693 1654619787
+protected
+\change_inserted 177693 1654619789
+non-breaking
+\change_inserted -1402925745 1558782753
+ space does not suffice
 \change_unchanged
 .
  Examples
@@ -19224,8 +19583,13 @@ Disallow line breaks after dashes
 
 \begin_layout Enumerate
 Line breaks are still allowed after spaced dashes.
- They can be prevented using protected spaces (without need for a makebox
- or \SpecialChar TeX
+ They can be prevented using 
+\change_deleted 177693 1654619794
+protected
+\change_inserted 177693 1654619796
+non-breaking
+\change_unchanged
+ spaces (without need for a makebox or \SpecialChar TeX
  code).
  Example:
 \end_layout
@@ -19564,12 +19928,23 @@ A-b c
 
  as a line break possibility.
  A line break at this point would look ugly.
- To prevent the shortcut from being broken, you can use a protected hyphen
- (
+ To prevent the shortcut from being broken, you can use a 
+\change_deleted 177693 1654619800
+protected
+\change_inserted 177693 1654619804
+non-breaking
+\change_unchanged
+ hyphen (
 \family sans
 Insert\SpecialChar menuseparator
 Formatting\SpecialChar menuseparator
-Protected Hyphen
+
+\change_deleted 177693 1654619809
+Protected
+\change_inserted 177693 1654619812
+Non-Breaking
+\change_unchanged
+ Hyphen
 \family default
 ) or put it into a makebox as described in section 
 \emph on
@@ -19709,12 +20084,25 @@ Space
 \end_inset
 
 
+\change_inserted 177693 1654667914
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Normal-Space"
+
+\end_inset
+
+
+\change_deleted 177693 1654667914
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Inter-word-Space"
 
 \end_inset
 
+
+\change_unchanged
 ).
 \begin_inset Index idx
 status collapsed
@@ -29550,7 +29938,12 @@ When you use a typeface, a blue box is inserted in the formula.
 \family sans
 Space
 \family default
- within the box will set the cursor outside, so that you have to use a protected
+ within the box will set the cursor outside, so that you have to use a 
+\change_deleted 177693 1654619816
+protected
+\change_inserted 177693 1654619818
+non-breaking
+\change_unchanged
  space when you need a space in the box.
  Here is an example where 
 \begin_inset Quotes eld
@@ -30202,7 +30595,13 @@ reference "enu:Second-item"
 \end_layout
 
 \begin_layout Standard
-It is recommended to use a protected space
+It is recommended to use a 
+\change_deleted 177693 1654619823
+protected
+\change_inserted 177693 1654619826
+non-breaking
+\change_unchanged
+ space
 \begin_inset Foot
 status collapsed
 
@@ -36314,7 +36713,11 @@ hypersetup
 \change_inserted -712698321 1644656496
 
 \series bold
-PackageOptions hyperref option1,option1
+PackageOptions hyperref option1,option
+\change_deleted 274215730 1652836969
+1
+\change_inserted 274215730 1652836970
+2
 \change_unchanged
 
 \end_layout
@@ -42589,11 +42992,23 @@ Language
 \end_layout
 
 \begin_layout Description
+
+\change_deleted 177693 1654619391
 Protected
+\change_inserted 177693 1654619396
+Non-Breaking
+\change_unchanged
+
 \begin_inset space ~
 \end_inset
 
-Hyphen Inserts a hyphen that is protected from line breaks: \SpecialChar nobreakdash
+Hyphen Inserts a hyphen that 
+\change_deleted 177693 1654619439
+is protected from
+\change_inserted 177693 1654619443
+prevents automatic
+\change_unchanged
+ line breaks: \SpecialChar nobreakdash
 
 \end_layout
 
@@ -42780,11 +43195,23 @@ Subscript Inserts a subscript: test
 \end_layout
 
 \begin_layout Description
+
+\change_deleted 177693 1654619456
 Protected
+\change_inserted 177693 1654619456
+Non-Breaking
+\change_unchanged
+
 \begin_inset space ~
 \end_inset
 
-Space Inserts a protected space as described in section
+Space Inserts a 
+\change_deleted 177693 1654619466
+protected
+\change_inserted 177693 1654619468
+non-breaking
+\change_unchanged
+ space as described in section
 \begin_inset space ~
 \end_inset
 
@@ -42808,12 +43235,25 @@ Space Inserts an inter-word space as described in section
 \end_inset
 
 
+\change_inserted 177693 1654667914
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Normal-Space"
+
+\end_inset
+
+
+\change_deleted 177693 1654667914
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Inter-word-Space"
 
 \end_inset
 
+
+\change_unchanged
 .
 \end_layout
 

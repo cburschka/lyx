@@ -284,14 +284,14 @@ if (LYX_USE_QT MATCHES "QT5|QT6")
   else()
     set(QtVal Qt6)
   endif()
-  set(CMAKE_REQUIRED_INCLUDES ${Qt5Core_INCLUDE_DIRS})
+  set(CMAKE_REQUIRED_INCLUDES ${${QtVal}Core_INCLUDE_DIRS})
   set(CMAKE_REQUIRED_FLAGS)
   #message(STATUS "${QtVal}Core_INCLUDE_DIRS = ${${QtVal}Core_INCLUDE_DIRS}")
   check_include_file_cxx(QtGui/qtgui-config.h HAVE_QTGUI_CONFIG_H)
   if (HAVE_QTGUI_CONFIG_H)
-    set(lyx_qt5_config "QtGui/qtgui-config.h")
+    set(lyx_qt_config "QtGui/qtgui-config.h")
   else()
-    set(lyx_qt5_config "QtCore/qconfig.h")
+    set(lyx_qt_config "QtCore/qconfig.h")
   endif()
   if(WIN32)
     set(QT_USES_X11 OFF CACHE BOOL "Win32 compiled without X11")
@@ -299,7 +299,7 @@ if (LYX_USE_QT MATCHES "QT5|QT6")
   else()
     check_cxx_source_runs(
       "
-      #include <${lyx_qt5_config}>
+      #include <${lyx_qt_config}>
       #include <string>
       using namespace std;
       string a(QT_QPA_DEFAULT_PLATFORM_NAME);
@@ -312,8 +312,9 @@ if (LYX_USE_QT MATCHES "QT5|QT6")
       }
       "
       QT_USES_X11)
-    if(QT_USES_X11)
+    if(QT_USES_X11 AND NOT LYX_USE_QT MATCHES "QT6")
       set(QPA_XCB ${QT_USES_X11})
+      message(STATUS "Found QPA_XCB = ${QPA_XCB}")
     endif()
   endif()
 
@@ -335,8 +336,9 @@ if (LYX_USE_QT MATCHES "QT5|QT6")
             }
             "
       QT_HAS_X11_EXTRAS)
-    set(HAVE_QT5_X11_EXTRAS ${QT_HAS_X11_EXTRAS})
-    set(LYX_QT5_X11_EXTRAS_LIBRARY ${_x11extra_link_libraries})
+    string(TOUPPER ${QtVal} QTVAL)
+    set(HAVE_${QTVAL}_X11_EXTRAS ${QT_HAS_X11_EXTRAS})
+    set(LYX_${QTVAL}_X11_EXTRAS_LIBRARY ${_x11extra_link_libraries})
   endif()
   if (${QtVal}WinExtras_FOUND)
     get_target_property(_winextra_prop ${QtVal}::WinExtras IMPORTED_CONFIGURATIONS)

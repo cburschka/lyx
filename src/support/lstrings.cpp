@@ -189,6 +189,13 @@ bool isDigitASCII(char_type c)
 	return '0' <= c && c <= '9';
 }
 
+bool isNumberChar(char_type c)
+{
+	if (c > ucs4_max)
+		// outside the UCS4 range
+		return false;
+	return ucs4_to_qchar(c).isNumber();
+}
 
 bool isAlnumASCII(char_type c)
 {

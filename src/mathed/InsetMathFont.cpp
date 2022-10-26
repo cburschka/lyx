@@ -198,22 +198,18 @@ void InsetMathFont::mathmlize(MathMLStream & ms) const
 	// the fonts already in effect.
 	std::string variant;
 	docstring const & tag = key_->name;
-	if (tag == "mathnormal" || tag == "mathrm"
-	    || tag == "text" || tag == "textnormal"
-	    || tag == "textrm" || tag == "textup"
-	    || tag == "textmd")
+	if (tag == "mathnormal" || tag == "mathrm")
 		variant = "normal";
 	else if (tag == "frak" || tag == "mathfrak")
 		variant = "fraktur";
 	else if (tag == "mathbf" || tag == "textbf")
 		variant = "bold";
-	else if (tag == "mathbb" || tag == "mathbbm"
-	         || tag == "mathds")
+	else if (tag == "mathbb" || tag == "mathbbm" || tag == "mathds")
 		variant = "double-struck";
 	else if (tag == "mathcal")
 		variant = "script";
-	else if (tag == "mathit" || tag == "textsl"
-	         || tag == "emph" || tag == "textit")
+	else if (tag == "mathit" || tag == "textsl" || tag == "emph" ||
+			tag == "textit")
 		variant = "italic";
 	else if (tag == "mathsf" || tag == "textsf")
 		variant = "sans-serif";
@@ -221,12 +217,19 @@ void InsetMathFont::mathmlize(MathMLStream & ms) const
 		variant = "monospace";
 	// no support at present for textipa, textsc, noun
 
-	if (!variant.empty())
-		ms << MTag("mstyle", "mathvariant='" + variant + "'")
-		   << cell(0)
-		   << ETag("mstyle");
-	else
+	if (tag == "text" || tag == "textnormal" || tag == "textrm" ||
+			tag == "textup" || tag == "textmd") {
+		SetMode textmode(ms, true);
+		ms << MTagInline("mtext");
 		ms << cell(0);
+		ms << ETagInline("mtext");
+	} else if (!variant.empty()) {
+		ms << MTag("mstyle", "mathvariant='" + variant + "'");
+		ms << cell(0);
+		ms << ETag("mstyle");
+	} else {
+		ms << cell(0);
+	}
 }
 
 

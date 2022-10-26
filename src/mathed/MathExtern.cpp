@@ -1594,15 +1594,18 @@ void mathmlize(MathData const & dat, MathMLStream & ms)
 {
 	MathData ar = dat;
 	extractStructure(ar, MATHML);
-	if (ar.empty())
-		ms << CTag("mrow");
-	else if (ar.size() == 1)
+	if (ar.empty()) {
+		if (!ms.inText())
+			ms << CTag("mrow");
+	} else if (ar.size() == 1) {
 		ms << ar.front();
-	else {
-		ms << MTag("mrow");
+	} else {
+		if (!ms.inText())
+			ms << MTag("mrow");
 		for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
 			(*it)->mathmlize(ms);
-		ms << ETag("mrow");
+		if (!ms.inText())
+			ms << ETag("mrow");
 	}
 }
 

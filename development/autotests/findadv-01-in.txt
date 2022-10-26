@@ -1,6 +1,10 @@
 # After replacing with something that matches the search pattern, the next
 # match should not consider the just replaced text (#4388)
 #
+UnuseShortcut "Tab" "*"
+
+PrepareShortcuts
+
 Lang it_IT.utf8
 CO: findadv-01.ctrl
 KD: 100

@@ -89,14 +89,16 @@ public:
 		*/
 		pos_type x2pos(int &x) const;
 		/** Break the element in two if possible, so that its width is less
-		 * than \param w.
-		 * \return a vector of elements containing the remainder of
-		 *   the text (empty if nothing happened).
-		 * \param width maximum width of the row.
-		 * \param next_width available width on next row.
+		 * than the required values.
+		 * \return true if something has been done ; false if this is
+		 * not needed or not possible.
+		 * \param width: maximum width of the row.
+		 * \param next_width: available width on next rows.
 		 * \param force: if true, cut string at any place, even for
 		 *   languages that wrap at word delimiters; if false, do not
 		 *   break at all if first element would larger than \c width.
+		 * \param tail: a vector of elements where the remainder of
+		 *   the text will be appended (empty if nothing happened).
 		 */
 		// FIXME: ideally last parameter should be Elements&, but it is not possible.
 		bool splitAt(int width, int next_width, bool force, std::vector<Element> & tail);
@@ -139,7 +141,7 @@ public:
 		Change change;
 		// is it possible to add contents to this element?
 		bool final = false;
-		// properties with respect to row breaking (made of RowFlag enums)
+		// properties with respect to row breaking (made of RowFlag enumerators)
 		int row_flags = Inline;
 
 		friend std::ostream & operator<<(std::ostream & os, Element const & row);
@@ -204,9 +206,9 @@ public:
 	///
 	pos_type endpos() const { return end_; }
 	///
-	void right_boundary(bool b) { right_boundary_ = b; }
+	void end_boundary(bool b) { end_boundary_ = b; }
 	///
-	bool right_boundary() const { return right_boundary_; }
+	bool end_boundary() const { return end_boundary_; }
 	///
 	void flushed(bool b) { flushed_ = b; }
 	///
@@ -366,7 +368,7 @@ private:
 	/// one behind last pos covered by this row
 	pos_type end_ = 0;
 	// Is there a boundary at the end of the row (display inset...)
-	bool right_boundary_ = false;
+	bool end_boundary_ = false;
 	// Shall the row be flushed when it is supposed to be justified?
 	bool flushed_ = false;
 	/// Row dimension.

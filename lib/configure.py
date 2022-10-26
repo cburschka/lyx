@@ -357,6 +357,18 @@ def check_java():
         return ''
 
 
+def checkMacOSappInstalled(prog):
+    '''
+        Use metadata lookup to search for an "installed" macOS application bundle.
+    '''
+    if sys.platform == 'darwin' and len(prog) >= 1:
+        command = r'mdfind "kMDItemContentTypeTree == \"com.apple.application\"c && kMDItemFSName == \"%s\""' % prog
+        result = cmdOutput(command)
+        logger.debug(command + ": " + result)
+        return result != ''
+    return False
+
+
 def checkProgAlternatives(description, progs, rc_entry=None,
                           alt_rc_entry=None, path=None, not_found=''):
     '''
@@ -395,6 +407,10 @@ def checkProgAlternatives(description, progs, rc_entry=None,
             continue
         msg = '+checking for "' + ac_word + '"... '
         found_alt = False
+        if len(alt_rc_entry) >= 1 and ac_word.endswith('.app') and checkMacOSappInstalled(ac_word):
+            logger.info('+add alternative app ' + ac_word)
+            addToRC(alt_rc_entry[0].replace('%%', ac_word))
+            found_alt = True
         for ac_dir in path:
             if hasattr(os, "access") and not os.access(ac_dir, os.F_OK):
                 continue
@@ -545,7 +561,7 @@ def checkViewerNoRC(description, progs, rc_entry=None, path=None):
 
 
 def checkEditorNoRC(description, progs, rc_entry=None, path=None):
-    ''' The same as checkViewer, but do not add rc entry '''
+    ''' The same as checkEditor, but do not add rc entry '''
     if rc_entry is None:
         rc_entry = []
     if path is None:
@@ -705,7 +721,7 @@ texteditors = ['xemacs', 'gvim', 'kedit', 'kwrite', 'kate',
                'xed', 'notepad', 'WinEdt', 'WinShell', 'PSPad']
 
 def checkFormatEntries(dtl_tools):
-    ''' Check all formats (\Format entries) '''
+    r''' Check all formats (\Format entries) '''
     checkViewerEditor('a Tgif viewer and editor', ['tgif'],
         rc_entry = [r'\Format tgif      "obj, tgo" Tgif                 "" "%%"	"%%"	"vector"	"application/x-tgif"'])
     #
@@ -812,7 +828,7 @@ def checkFormatEntries(dtl_tools):
     checkViewer('a PDF previewer',
                 ['pdfview', 'kpdf', 'okular', 'qpdfview --unique',
                  'evince', 'xreader', 'kghostview', 'xpdf', 'SumatraPDF',
-                 'acrobat', 'acroread', 'mupdf',
+                 'acrobat', 'acroread', 'mupdf', 'Skim.app',
                  'gv', 'ghostview', 'AcroRd32', 'gsview64', 'gsview32'],
         rc_entry = [r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""	"document,vector,menu=export"	""
 \Format pdf2       pdf    "PDF (pdflatex)"        F  "%%"	""	"document,vector,menu=export"	""
@@ -876,7 +892,7 @@ def checkFormatEntries(dtl_tools):
 
 
 def checkConverterEntries():
-    ''' Check all converters (\converter entries) '''
+    r''' Check all converters (\converter entries) '''
     checkProg('the pdflatex program', ['pdflatex $$i'],
         rc_entry = [ r'\converter pdflatex   pdf2       "%%"	"latex=pdflatex,hyperref-driver=pdftex"' ])
 
@@ -901,7 +917,7 @@ def checkConverterEntries():
 
     path, t2l = checkProg('a LaTeX/Noweb -> LyX converter', [quoteIfSpace(in_binary_subdir), quoteIfSpace(in_binary_subdir + version_suffix), quoteIfSpace(in_binary_dir), quoteIfSpace(in_binary_dir + version_suffix), 'tex2lyx' + version_suffix, 'tex2lyx'],
         rc_entry = [r'''\converter latex      lyx        "%% -f $$i $$o"	""
-\converter latexclipboard lyx        "%% -fixedenc utf8 -f $$i $$o"	""
+\converter latexclipboard lyx        "%% -fixedenc utf8 -c $$c -m $$m -f $$i $$o"	""
 \converter literate   lyx        "%% -n -m noweb -f $$i $$o"	""
 \converter sweave   lyx        "%% -n -m sweave -f $$i $$o"	""
 \converter knitr   lyx        "%% -n -m knitr -f $$i $$o"	""'''], not_found = 'tex2lyx')
@@ -1071,13 +1087,15 @@ def checkConverterEntries():
     # Only define a converter from pdf6 for graphics
     checkProg('a PDF to EPS converter', ['pdftops -eps -f 1 -l 1 $$i $$o'],
         rc_entry = [ r'\converter pdf6        eps        "%%"	""' ])
-    # Define a converter from pdf6 to png for Macs where pdftops is missing.
+    # sips:Define a converter from pdf6 to png for Macs where pdftops is missing.
     # The converter utility sips allows to force the dimensions of the resulting
     # png image. The value of 800 pixel for the width is arbitrary and not
     # related to the current screen resolution or width.
     # There is no converter parameter for this information.
+    #
+    #pdftoppm: Some systems ban IM eps->png conversion. We will offer eps->pdf->png route instead.
     checkProg('a PDF to PNG converter',
-        ['sips --resampleWidth 800 --setProperty format png $$i --out $$o'],
+        ['sips --resampleWidth 800 --setProperty format png $$i --out $$o' , 'pdftoppm -r 72 -png -singlefile $$i >  $$o'],
         rc_entry = [ r'\converter pdf6        png        "%%" ""' ])
     # Create one converter for a PDF produced using TeX fonts and one for a
     # PDF produced using non-TeX fonts. This does not produce non-unique
@@ -1174,8 +1192,23 @@ def checkConverterEntries():
     checkProg('an EPS -> PDF converter', ['epstopdf'],
         rc_entry = [ r'\converter eps        pdf6       "epstopdf --outfile=$$o $$i"	""'])
     #
-    checkProg('an EPS -> PNG converter', ['magick $$i[0] $$o', 'convert $$i[0] $$o'],
-        rc_entry = [ r'\converter eps        png        "%%"	""'])
+    # Due to more restrictive policies, it is possible that (image)magick
+    # does not allow conversions from eps to png.
+    # So before setting the converter test it it on a mock file
+    _, cmd = checkProg('an EPS -> PNG converter', ['magick', 'convert'])
+    if cmd:
+        writeToFile('mock.eps', r'%!PS')
+        try:
+            subprocess.check_call([cmd, "mock.eps", "mock.png"])
+            removeFiles(['mock.eps', 'mock.png'])
+            rc_entry = r'\converter eps        png        "%s $$i[0] $$o"	""'
+            addToRC(rc_entry % cmd)
+        except:
+            removeFiles(['mock.eps'])
+            #needs empty record otherwise default converter will be issued
+            rc_entry = r'\converter eps        png        ""	""'
+            addToRC(rc_entry)
+            logger.info('ImageMagick seems to ban conversions from EPS. Disabling direct EPS->PNG.')
     #
     # no agr -> pdf6 converter, since the pdf library used by gracebat is not
     # free software and therefore not compiled in in many installations.
@@ -1269,7 +1302,7 @@ def checkConverterEntries():
     path, lilypond = checkProg('a LilyPond -> EPS/PDF/PNG converter', ['lilypond'])
     if (lilypond):
         version_string = cmdOutput("lilypond --version")
-        match = re.match('GNU LilyPond (\S+)', version_string)
+        match = re.match(r'GNU LilyPond (\S+)', version_string)
         if match:
             version_number = match.groups()[0]
             version = version_number.split('.')
@@ -1299,7 +1332,7 @@ def checkConverterEntries():
                 continue
             found_lilypond_book = True
 
-            match = re.match('(\S+)$', version_string)
+            match = re.match(r'(\S+)$', version_string)
             if match:
                 version_number = match.groups()[0]
                 version = version_number.split('.')
@@ -1426,7 +1459,7 @@ def _checkForClassExtension(x):
         return x.strip()
 
 def processLayoutFile(file):
-    """ process layout file and get a line of result
+    r""" process layout file and get a line of result
 
         Declare lines look like this:
 
@@ -1454,8 +1487,8 @@ def processLayoutFile(file):
     """
     classname = file.split(os.sep)[-1].split('.')[0]
     # return ('[a,b]', 'a', ',b,c', 'article') for \DeclareLaTeXClass[a,b,c]{article}
-    p = re.compile('\s*#\s*\\\\DeclareLaTeXClass\s*(\[([^,]*)(,.*)*])*\s*{(.*)}\s*$')
-    q = re.compile('\s*#\s*\\\\DeclareCategory{(.*)}\s*$')
+    p = re.compile('\\s*#\\s*\\\\DeclareLaTeXClass\\s*(\\[([^,]*)(,.*)*])*\\s*{(.*)}\\s*$')
+    q = re.compile('\\s*#\\s*\\\\DeclareCategory{(.*)}\\s*$')
     classdeclaration = ""
     categorydeclaration = '""'
     for line in open(file, 'r', encoding='utf8').readlines():
@@ -1547,7 +1580,7 @@ def checkLatexConfig(check_config):
     # Construct the list of classes to test for.
     # build the list of available layout files and convert it to commands
     # for chkconfig.ltx
-    declare = re.compile('\\s*#\\s*\\\\DeclareLaTeXClass\\s*(\[([^,]*)(,.*)*\])*\\s*{(.*)}\\s*$')
+    declare = re.compile('\\s*#\\s*\\\\DeclareLaTeXClass\\s*(\\[([^,]*)(,.*)*\\])*\\s*{(.*)}\\s*$')
     category = re.compile('\\s*#\\s*\\\\DeclareCategory{(.*)}\\s*$')
     empty = re.compile('\\s*$')
     testclasses = list()
@@ -1563,7 +1596,7 @@ def checkLatexConfig(check_config):
             for line in open(file, 'r', encoding='utf8').readlines():
                 if not empty.match(line) and line[0] != '#'[0]:
                     if decline == "":
-                        logger.warning("Failed to find valid \Declare line "
+                        logger.warning(r"Failed to find valid \Declare line "
                             "for layout file `%s'.\n\t=> Skipping this file!" % file)
                         nodeclaration = True
                     # A class, but no category declaration. Just break.
@@ -1672,7 +1705,7 @@ def checkModulesConfig():
 
 
 def processModuleFile(file, filename):
-    ''' process module file and get a line of result
+    r''' process module file and get a line of result
 
         The top of a module file should look like this:
           #\DeclareLyXModule[LaTeX Packages]{ModuleName}
@@ -1686,12 +1719,12 @@ def processModuleFile(file, filename):
         We expect output:
           "ModuleName" "filename" "Description" "Packages" "Requires" "Excludes" "Category"
     '''
-    remods = re.compile('\s*#\s*\\\\DeclareLyXModule\s*(?:\[([^]]*?)\])?{(.*)}')
-    rereqs = re.compile('\s*#+\s*Requires: (.*)')
-    reexcs = re.compile('\s*#+\s*Excludes: (.*)')
+    remods = re.compile('\\s*#\\s*\\\\DeclareLyXModule\\s*(?:\\[([^]]*?)\\])?{(.*)}')
+    rereqs = re.compile(r'\s*#+\s*Requires: (.*)')
+    reexcs = re.compile(r'\s*#+\s*Excludes: (.*)')
     recaty = re.compile('\\s*#\\s*\\\\DeclareCategory{(.*)}\\s*$')
-    redbeg = re.compile('\s*#+\s*DescriptionBegin\s*$')
-    redend = re.compile('\s*#+\s*DescriptionEnd\s*$')
+    redbeg = re.compile(r'\s*#+\s*DescriptionBegin\s*$')
+    redend = re.compile(r'\s*#+\s*DescriptionEnd\s*$')
 
     modname = desc = pkgs = req = excl = catgy = ""
     readingDescription = False
@@ -1739,7 +1772,7 @@ def processModuleFile(file, filename):
         continue
 
     if modname == "":
-      logger.warning("Module file without \DeclareLyXModule line. ")
+      logger.warning(r"Module file without \DeclareLyXModule line. ")
       return ""
 
     if pkgs:
@@ -1803,7 +1836,7 @@ def checkCiteEnginesConfig():
 
 
 def processCiteEngineFile(file, filename):
-    ''' process cite engines file and get a line of result
+    r''' process cite engines file and get a line of result
 
         The top of a cite engine file should look like this:
           #\DeclareLyXCiteEngine[LaTeX Packages]{CiteEngineName}
@@ -1813,12 +1846,12 @@ def processCiteEngineFile(file, filename):
         We expect output:
           "CiteEngineName" "filename" "CiteEngineType" "CiteFramework" "DefaultBiblio" "Description" "Packages"
     '''
-    remods = re.compile('\s*#\s*\\\\DeclareLyXCiteEngine\s*(?:\[([^]]*?)\])?{(.*)}')
-    redbeg = re.compile('\s*#+\s*DescriptionBegin\s*$')
-    redend = re.compile('\s*#+\s*DescriptionEnd\s*$')
-    recet = re.compile('\s*CiteEngineType\s*(.*)')
-    redb = re.compile('\s*DefaultBiblio\s*(.*)')
-    resfm = re.compile('\s*CiteFramework\s*(.*)')
+    remods = re.compile('\\s*#\\s*\\\\DeclareLyXCiteEngine\\s*(?:\\[([^]]*?)\\])?{(.*)}')
+    redbeg = re.compile(r'\s*#+\s*DescriptionBegin\s*$')
+    redend = re.compile(r'\s*#+\s*DescriptionEnd\s*$')
+    recet = re.compile(r'\s*CiteEngineType\s*(.*)')
+    redb = re.compile(r'\s*DefaultBiblio\s*(.*)')
+    resfm = re.compile(r'\s*CiteFramework\s*(.*)')
 
     modname = desc = pkgs = cet = db = cfm = ""
     readingDescription = False
@@ -1862,7 +1895,7 @@ def processCiteEngineFile(file, filename):
         continue
 
     if modname == "":
-      logger.warning("Cite Engine File file without \DeclareLyXCiteEngine line. ")
+      logger.warning(r"Cite Engine File file without \DeclareLyXCiteEngine line. ")
       return ""
 
     if pkgs:

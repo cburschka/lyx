@@ -94,7 +94,7 @@ namespace {
 int const strwidth_cache_max_cost = 1024 * 1024;
 // Limit breakstr_cache_ total cost to 10MB of string data.
 // This is useful for documents with very large insets.
-int const breakstr_cache_max_cost = 10 * 1024 * 1024;
+int const breakstr_cache_max_cost = 1024 * 1024;
 // Qt 5.x already has its own caching of QTextLayout objects
 // but it does not seem to work well on MacOS X.
 #if (QT_VERSION < 0x050000) || defined(Q_OS_MAC)
@@ -567,7 +567,6 @@ GuiFontMetrics::breakString_helper(docstring const & s, int first_wid, int wid,
 		if (!line.isValid())
 			break;
 		line.setLineWidth(first ? first_wid : wid);
-		tl.createLine();
 		first = false;
 	}
 	tl.endLayout();
@@ -604,7 +603,7 @@ GuiFontMetrics::breakString_helper(docstring const & s, int first_wid, int wid,
 		// FIXME: this is slower than it could be but we'll get rid of Qt4 anyway
 		docstring const ss = s.substr(pos, epos - pos);
 		int const wid = width(ss);
-		int const nspc_wid = i + 1 < tl.lineCount() ? wid : width(rtrim(ss));
+		int const nspc_wid = i + 1 < tl.lineCount() ? width(rtrim(ss)) : wid;
 #endif
 		breaks.emplace_back(epos - pos, wid, nspc_wid);
 		pos = epos;

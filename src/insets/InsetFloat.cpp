@@ -879,12 +879,21 @@ bool InsetFloat::insetAllowed(InsetCode code) const
 }
 
 
+void InsetFloat::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted)
+{
+	InsetCaptionable::updateBuffer(it, utype, deleted);
+	bool const subflt = (it.innerInsetOfType(FLOAT_CODE)
+			     || it.innerInsetOfType(WRAP_CODE));
+	setSubfloat(subflt);
+}
+
+
 void InsetFloat::setWide(bool w, bool update_label)
 {
 	if (!buffer().params().documentClass().floats().allowsWide(params_.type))
 		params_.wide = false;
 	else
-	    params_.wide = w;
+		params_.wide = w;
 	if (update_label)
 		setNewLabel();
 }
@@ -956,7 +965,7 @@ TexString InsetFloat::getCaption(OutputParams const & runparams) const
 	// Protect ']'
 	if (arg.find(']') != docstring::npos)
 		arg = '{' + arg + '}';
-	os << move(ts);
+	os << std::move(ts);
 	os << ']';
 	if (!runparams.nice)
 		os << safebreakln;

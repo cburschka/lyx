@@ -92,6 +92,15 @@ QString charFilterRegExp(QString const & filter);
  */
 QString charFilterRegExpC(QString const & filter);
 
+/// Method to replace dot with localized decimal separator
+QString locLengthString(QString const & str);
+
+/// Same for doscstring
+docstring locLengthDocString(docstring const str);
+
+/// Method to replace localized decimal separator by dot
+QString unlocLengthString(QString const & str);
+
 } // namespace lyx
 
 #endif // QSTRING_HELPERS_H

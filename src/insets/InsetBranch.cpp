@@ -112,7 +112,7 @@ docstring const InsetBranch::buttonLabel(BufferView const &) const
 	if (inchild && master_selected != child_selected)
 		symb += (child_selected ? tick : cross);
 
-    docstring inv_symb = from_ascii(params_.inverted ? "~" : "");
+	docstring inv_symb = from_ascii(params_.inverted ? "~" : "");
 
 	if (decoration() == InsetDecoration::MINIMALISTIC)
 		return symb + inv_symb + params_.branch;

@@ -56,6 +56,8 @@ public:
 	static void string2params(std::string const &, InsetIndexParams &);
 	///
 	const InsetIndexParams& params() const { return params_; }
+	///
+	int rowFlags() const override { return CanBreakBefore | CanBreakAfter; }
 private:
 	///
 	bool hasSettings() const override;

@@ -21,6 +21,9 @@
 #include "BufferView.h"
 #include "Cursor.h"
 #include "FuncRequest.h"
+#include "FuncStatus.h"
+#include "KeyMap.h"
+#include "KeySequence.h"
 #include "Language.h"
 #include "LyX.h"
 #include "lyxfind.h"
@@ -86,7 +89,7 @@ void FindAndReplaceWidget::dockLocationChanged(Qt::DockWidgetArea area)
 
 bool FindAndReplaceWidget::eventFilter(QObject * obj, QEvent * event)
 {
-	updateGUI();
+	updateButtons();
 	if (event->type() != QEvent::KeyPress
 		  || (obj != find_work_area_ && obj != replace_work_area_))
 		return QWidget::eventFilter(obj, event);
@@ -113,8 +116,11 @@ bool FindAndReplaceWidget::eventFilter(QObject * obj, QEvent * event)
 	}
 
 	case Qt::Key_Tab:
-		if (e->modifiers() == Qt::NoModifier) {
-			if (obj == find_work_area_){
+		if (e->modifiers() == Qt::NoModifier && obj == find_work_area_){
+			KeySequence seq;
+			seq.parse("Tab");
+			FuncRequest func = theTopLevelKeymap().getBinding(seq);
+			if (!getStatus(func).enabled()) {
 				LYXERR(Debug::FINDVERBOSE, "Focusing replace WA");
 				replace_work_area_->setFocus();
 				LYXERR(Debug::FINDVERBOSE, "Selecting entire replace buffer");
@@ -127,12 +133,17 @@ bool FindAndReplaceWidget::eventFilter(QObject * obj, QEvent * event)
 
 	case Qt::Key_Backtab:
 		if (obj == replace_work_area_) {
-			LYXERR(Debug::FINDVERBOSE, "Focusing find WA");
-			find_work_area_->setFocus();
-			LYXERR(Debug::FINDVERBOSE, "Selecting entire find buffer");
-			dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
-			dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
-			return true;
+			KeySequence seq;
+			seq.parse("~S-BackTab");
+			FuncRequest func = theTopLevelKeymap().getBinding(seq);
+			if (!getStatus(func).enabled()) {
+				LYXERR(Debug::FINDVERBOSE, "Focusing find WA");
+				find_work_area_->setFocus();
+				LYXERR(Debug::FINDVERBOSE, "Selecting entire find buffer");
+				dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
+				dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
+				return true;
+			}
 		}
 		break;
 
@@ -644,13 +655,6 @@ bool FindAndReplaceWidget::initialiseParams(std::string const & /*params*/)
 }
 
 
-void FindAndReplace::updateView()
-{
-	widget_->updateGUI();
-	widget_->updateButtons();
-}
-
-
 FindAndReplace::FindAndReplace(GuiView & parent,
 			       Qt::DockWidgetArea area,
 			       Qt::WindowFlags flags)
@@ -683,25 +687,17 @@ bool FindAndReplace::initialiseParams(std::string const & params)
 }
 
 
-void FindAndReplaceWidget::updateGUI()
+void FindAndReplaceWidget::updateWorkAreas()
 {
 	BufferView * bv = view_.documentBufferView();
 	if (bv) {
 		if (old_buffer_ != &bv->buffer()) {
+				old_buffer_ = &bv->buffer();
 				copy_params(*bv, find_work_area_->bufferView());
 				copy_params(*bv, replace_work_area_->bufferView());
-				old_buffer_ = &bv->buffer();
 		}
 	} else
 		old_buffer_ = nullptr;
-
-	bool const find_enabled = !find_work_area_->bufferView().buffer().empty();
-	findNextPB->setEnabled(find_enabled);
-	bool const replace_enabled = find_enabled && bv && !bv->buffer().isReadonly();
-	replaceLabel->setEnabled(replace_enabled);
-	replace_work_area_->setEnabled(replace_enabled);
-	replacePB->setEnabled(replace_enabled);
-	replaceallPB->setEnabled(replace_enabled);
 }
 
 
@@ -718,8 +714,29 @@ void FindAndReplaceWidget::updateButtons()
 		replacePB->setText(qt_("Rep&lace >"));
 		replacePB->setToolTip(qt_("Replace and find next occurrence (Enter, backwards: Shift+Enter)"));
 	}
+
+	BufferView * bv = view_.documentBufferView();
+	bool const find_enabled = !find_work_area_->bufferView().buffer().empty();
+	findNextPB->setEnabled(find_enabled);
+	bool const replace_enabled = find_enabled && bv && !bv->buffer().isReadonly();
+	replaceLabel->setEnabled(replace_enabled);
+	replace_work_area_->setEnabled(replace_enabled);
+	replacePB->setEnabled(replace_enabled);
+	replaceallPB->setEnabled(replace_enabled);
 }
 
+
+void FindAndReplace::updateView()
+{
+	widget_->updateWorkAreas();
+	widget_->updateButtons();
+}
+
+
+bool FindAndReplaceWidget::hasWorkArea(GuiWorkArea * wa) const
+{
+	return wa == find_work_area_ || wa == replace_work_area_;
+}
 
 } // namespace frontend
 } // namespace lyx

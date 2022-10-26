@@ -38,14 +38,14 @@ namespace lyx {
 
 
 TexString::TexString(docstring s)
-	: str(move(s)), texrow(TexRow())
+	: str(std::move(s)), texrow(TexRow())
 {
 	texrow.setRows(1 + count(str.begin(), str.end(), '\n'));
 }
 
 
 TexString::TexString(docstring s, TexRow t)
-	: str(move(s)), texrow(move(t))
+	: str(std::move(s)), texrow(std::move(t))
 {
 	validate();
 }
@@ -235,7 +235,7 @@ void TexRow::append(TexRow other)
 	RowList::iterator it = other.rowlist_.begin();
 	RowList::iterator const end = other.rowlist_.end();
 	LASSERT(it != end, return);
-	currentRow().append(move(*it++));
+	currentRow().append(std::move(*it++));
 	move(it, end, back_inserter(rowlist_));
 }
 
