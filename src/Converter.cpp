@@ -646,21 +646,24 @@ Converters::RetVal Converters::convert(Buffer const * buffer,
 				to_utf8(makeRelPath(from_utf8(outfile.absFileName()), from_utf8(path)));
 
 			string command = conv.command();
+			BufferParams const & bparams = buffer ? buffer->params() : defaultBufferParams();
 			command = subst(command, token_from, quoteName(infile2));
 			command = subst(command, token_base, quoteName(from_base));
 			command = subst(command, token_to, quoteName(outfile2));
 			command = subst(command, token_path, quoteName(onlyPath(infile.absFileName())));
 			command = subst(command, token_orig_path, quoteName(onlyPath(orig_from.absFileName())));
 			command = subst(command, token_orig_from, quoteName(onlyFileName(orig_from.absFileName())));
-			command = subst(command, token_textclass,
-			                buffer ? quoteName(buffer->params().documentClass().name())
-			                       : string());
-			command = subst(command, token_modules,
-			                buffer ? quoteName(buffer->params().getModules().asString())
-			                       : string());
-			command = subst(command, token_encoding,
-			                buffer ? quoteName(buffer->params().encoding().iconvName())
-			                       : string());
+			command = subst(command, token_textclass, quoteName(bparams.documentClass().name()));
+			string modules = bparams.getModules().asString();
+			// FIXME: remove when SystemCall uses QProcess with the list API.
+			// Currently the QProcess parser is not able to encode an
+			// empty argument as ""; work around this by passing a
+			// single comma, that will be interpreted as a list of two
+			// empty module names.
+			if (modules.empty())
+				modules = ",";
+			command = subst(command, token_modules, quoteName(modules));
+			command = subst(command, token_encoding, quoteName(bparams.encoding().iconvName()));
 			command = subst(command, token_python, os::python());
 
 			if (!conv.parselog().empty())

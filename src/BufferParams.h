@@ -691,6 +691,10 @@ private:
 	support::copied_ptr<Impl, MemoryTraits> pimpl_;
 };
 
+
+///
+BufferParams const & defaultBufferParams();
+
 } // namespace lyx
 
 #endif

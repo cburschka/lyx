@@ -3840,5 +3840,11 @@ string const BufferParams::bibFileEncoding(string const & file) const
 }
 
 
+BufferParams const & defaultBufferParams()
+{
+	static BufferParams default_params;
+	return default_params;
+}
+
 
 } // namespace lyx

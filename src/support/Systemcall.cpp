@@ -392,6 +392,11 @@ void SystemcallPrivate::startProcess(QString const & cmd, string const & path,
 	 * The cleanest solution would be to have parsecmd() produce a
 	 * QStringList for arguments, instead of transforming the string
 	 * into something that the QProcess splitter accepts.
+	 *
+	 * Another reason for doing that is that the Qt parser ignores
+	 * empty "" arguments, which are needed in some instances (see
+	 * e.g. the work around for modules in Converter:convert. See
+	 * QTBUG-80640 for a discussion.
 	*/
 	QStringList arguments = QProcess::splitCommand(toqstr(latexEnvCmdPrefix(path, lpath)) + cmd_);
 	QString command = (arguments.empty()) ? QString() : arguments.first();

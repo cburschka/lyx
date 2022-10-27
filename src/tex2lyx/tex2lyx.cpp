@@ -699,8 +699,6 @@ int parse_class(string const & arg, string const &)
 
 int parse_module(string const & arg, string const &)
 {
-	if (arg.empty())
-		error_message("Missing modules string after -m switch");
 	split(arg, preloaded_modules, ',');
 	return 1;
 }
@@ -924,11 +922,12 @@ bool tex2lyx(idocstream & is, ostream & os, string const & encoding,
 
 	// Load preloaded modules.
 	// This needs to be done after the preamble is parsed, since the text
-	// class may not be known before. It neds to be done before parsing
+	// class may not be known before. It needs to be done before parsing
 	// body, since otherwise the commands/environments provided by the
 	// modules would be parsed as ERT.
+	// Empty module names are silently skipped.
 	for (auto const & module : preloaded_modules) {
-		if (!addModule(module)) {
+		if (!module.empty() && !addModule(module)) {
 			cerr << "Error: Could not load module \""
 			     << module << "\"." << endl;
 			return false;
