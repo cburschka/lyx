@@ -737,12 +737,13 @@ string const replaceEnvironmentPath(string const & path)
 
 
 // Return a command prefix for setting the environment of the TeX engine.
-string latexEnvCmdPrefix(string const & path, string const & lpath)
+map <string,string> latexEnvironment(string const & path, string const & lpath)
 {
+	map<string, string> env;
 	bool use_lpath = !(lpath.empty() || lpath == "." || lpath == "./");
 
 	if (path.empty() || (lyxrc.texinputs_prefix.empty() && !use_lpath))
-		return string();
+		return env;
 
 	string texinputs_prefix = lyxrc.texinputs_prefix.empty() ? string()
 		: os::latex_path_list(
@@ -766,30 +767,37 @@ string latexEnvCmdPrefix(string const & path, string const & lpath)
 			texinputs_prefix.append(sep + abslpath);
 	}
 
-	if (os::shell() == os::UNIX)
-		return "env TEXINPUTS=\"." + sep + texinputs_prefix
-		                           + sep + texinputs + "\" "
-		         + "BIBINPUTS=\"." + sep + allother_prefix
-		                           + sep + bibinputs + "\" "
-		         + "BSTINPUTS=\"." + sep + allother_prefix
-		                           + sep + bstinputs + "\" "
-		         + "TEXFONTS=\"."  + sep + allother_prefix
-		                           + sep + texfonts + "\" ";
-	else
-		// NOTE: the dummy blank dirs are necessary to force the
-		//       QProcess parser to quote the argument (see bug 9453)
-		return "cmd /d /c set \"TEXINPUTS=." + sep + " "
-		                                + sep + texinputs_prefix
-		                                + sep + texinputs + "\" & "
-		               + "set \"BIBINPUTS=." + sep + " "
-		                                + sep + allother_prefix
-		                                + sep + bibinputs + "\" & "
-		               + "set \"BSTINPUTS=." + sep + " "
-		                                + sep + allother_prefix
-		                                + sep + bstinputs + "\" & "
-		               + "set \"TEXFONTS=."  + sep + " "
-		                                + sep + allother_prefix
-		                                + sep + texfonts + "\" & ";
+	// NOTE: the dummy blank dirs are necessary to force the
+	//       QProcess parser to quote the argument (see bug 9453)
+	string const dummy = (os::shell() == os::UNIX) ? string() : (" " + sep);
+
+	env.insert({ "TEXINPUTS", "." + sep + dummy + texinputs_prefix + sep + texinputs });
+	env.insert({ "BIBINPUTS", "." + sep + dummy + allother_prefix + sep + bibinputs });
+	env.insert({ "BSTINPUTS", "." + sep + dummy + allother_prefix + sep + bstinputs });
+	env.insert({ "TEXFONTS", "." + sep + dummy + allother_prefix + sep + texfonts });
+
+	return env;
+}
+
+
+// Return a command prefix for setting the environment of the TeX engine.
+string latexEnvCmdPrefix(string const & path, string const & lpath)
+{
+	auto const env = latexEnvironment(path, lpath);
+	if (env.empty())
+		return string();
+
+	string prefix;
+	if (os::shell() == os::UNIX) {
+		prefix = "env ";
+		for (auto const & v : latexEnvironment(path, lpath))
+			prefix += v.first + "=" + v.second + " ";
+	} else {
+		prefix = "cmd /d /c ";
+		for (auto const & v : latexEnvironment(path, lpath))
+			prefix += "set \"" + v.first + "=" + v.second + "\" & ";
+	}
+	return prefix;
 }
 
 
