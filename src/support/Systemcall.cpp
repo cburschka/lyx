@@ -13,14 +13,13 @@
 
 #include <config.h>
 
-#include "support/Systemcall.h"
-#include "support/SystemcallPrivate.h"
-
 #include "support/debug.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/qstring_helpers.h"
+#include "support/Systemcall.h"
+#include "support/SystemcallPrivate.h"
 #include "support/os.h"
 #include "support/ProgressInterface.h"
 
@@ -164,20 +163,19 @@ namespace {
  *    "\a"   ->  "\a"
  *    "a\"b" ->  "a"""b"
  */
-QStringList const parsecmd(string const & incmd, string & infile, string & outfile,
-                           string & errfile)
+string const parsecmd(string const & incmd, string & infile, string & outfile,
+                     string & errfile)
 {
 	bool in_single_quote = false;
 	bool in_double_quote = false;
 	bool escaped = false;
 	string const python_call = os::python();
-	QStringList arguments;
 	vector<string> outcmd(4);
 	size_t start = 0;
 
-	if (prefixIs(incmd, python_call + ' ')) {
-		arguments << QString::fromLocal8Bit(trim(os::python()).c_str());
-		start = python_call.length() + 1;
+	if (prefixIs(incmd, python_call)) {
+		outcmd[0] = os::python();
+		start = python_call.length();
 	}
 
 	for (size_t i = start, o = 0; i < incmd.length(); ++i) {
@@ -196,12 +194,30 @@ QStringList const parsecmd(string const & incmd, string & infile, string & outfi
 			outcmd[o] += c;
 			continue;
 		}
-		if (c == ' ' && !(in_double_quote || escaped)) {
-			if (o == 0)
-				arguments << QString::fromLocal8Bit(trim(outcmd[o]).c_str());
-			o = 0;
+		if (c == '"') {
+			if (escaped) {
+				// Don't triple double-quotes for redirection
+				// files as these won't be parsed by QProcess
+				outcmd[o] += string(o ? "\"" : "\"\"\"");
+				escaped = false;
+			} else {
+				outcmd[o] += c;
+				in_double_quote = !in_double_quote;
+			}
+		} else if (c == '\\' && !escaped) {
+			escaped = true;
+		} else if (c == '>' && !(in_double_quote || escaped)) {
+			if (suffixIs(outcmd[o], " 2")) {
+				outcmd[o] = rtrim(outcmd[o], "2");
+				o = 2;
+			} else {
+				if (suffixIs(outcmd[o], " 1"))
+					outcmd[o] = rtrim(outcmd[o], "1");
+				o = 1;
+			}
+		} else if (c == '<' && !(in_double_quote || escaped)) {
+			o = 3;
 #if defined (USE_MACOSX_PACKAGING)
-			// FIXME!!!!
 		} else if (o == 0 && i > 4 && c == ' ' && !(in_double_quote || escaped)) {
 			// if a macOS app is detected with an additional argument
 			// use open command as prefix to get it work
@@ -216,28 +232,6 @@ QStringList const parsecmd(string const & incmd, string & infile, string & outfi
 			}
 			outcmd[o] += c;
 #endif
-		} else if (c == '"') {
-			if (escaped) {
-				outcmd[o] += c;
-				escaped = false;
-			} else
-				in_double_quote = !in_double_quote;
-		} else if (c == '\\' && !escaped) {
-			escaped = true;
-		} else if (c == '>' && o == 0 && !(in_double_quote || escaped)) {
-			if (outcmd[o] == "2") {
-				outcmd[o].clear();
-				o = 2;
-				outcmd[o].clear();
-			} else if (outcmd[o] == "1" || outcmd[o].empty()) {
-				outcmd[o].clear();
-				o = 1;
-				outcmd[o].clear();
-			}
-		} else if (c == '<' && o == 0 && outcmd[o].empty() && !(in_double_quote || escaped)) {
-				outcmd[o].clear();
-				o = 3;
-				outcmd[o].clear();
 		} else {
 			if (escaped && in_double_quote)
 				outcmd[o] += '\\';
@@ -248,7 +242,7 @@ QStringList const parsecmd(string const & incmd, string & infile, string & outfi
 	infile  = trim(outcmd[3], " \"");
 	outfile = trim(outcmd[1], " \"");
 	errfile = trim(outcmd[2], " \"");
-	return arguments;
+	return trim(outcmd[0]);
 }
 
 } // namespace
@@ -273,7 +267,8 @@ int Systemcall::startscript(Starttype how, string const & what,
 	string infile;
 	string outfile;
 	string errfile;
-	QStringList const cmd = parsecmd(what_ss, infile, outfile, errfile);
+	QString const cmd = QString::fromLocal8Bit(
+			parsecmd(what_ss, infile, outfile, errfile).c_str());
 
 	SystemcallPrivate d(infile, outfile, errfile);
 	bool do_events = process_events || how == WaitLoop;
@@ -384,21 +379,27 @@ SystemcallPrivate::SystemcallPrivate(std::string const & sf, std::string const &
 }
 
 
-void SystemcallPrivate::startProcess(string const & cmd, string const & path,
+void SystemcallPrivate::startProcess(QString const & cmd, string const & path,
                                      string const & lpath, bool detached)
 {
-	cmd_ = toqstr(cmd);
-
-	// Set the environment for LaTeX
-	QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
-	for (auto const & v : latexEnvironment(path, lpath))
-		latexenv.insert(toqstr(v.first), QString::fromLocal8Bit(v.second.c_str()));
-	process_->setProcessEnvironment(env);
-
-	// Parse the command line
-	QStringList arguments = parsecmd(cmd);
-	QString command = arguments.empty() ? QString() : arguments.takeFirst();
-
+	cmd_ = cmd;
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
+	// FIXME pass command and arguments separated in the first place
+	/* The versions of startDetached() and start() that accept a
+	 * QStringList object exist since Qt4, but it is only in Qt 5.15
+	 * that splitCommand() was introduced and the plain versions of
+	 * start/startDetached() have been deprecated.
+	 * The cleanest solution would be to have parsecmd() produce a
+	 * QStringList for arguments, instead of transforming the string
+	 * into something that the QProcess splitter accepts.
+	*/
+	QStringList arguments = QProcess::splitCommand(toqstr(latexEnvCmdPrefix(path, lpath)) + cmd_);
+	QString command = (arguments.empty()) ? QString() : arguments.first();
+	if (arguments.size() == 1)
+		arguments.clear();
+	else if (!arguments.empty())
+		arguments.removeFirst();
+#endif
 	if (detached) {
 		state = SystemcallPrivate::Running;
 #ifdef Q_OS_WIN32
@@ -410,8 +411,11 @@ void SystemcallPrivate::startProcess(string const & cmd, string const & path,
 		if (err_file_.empty())
 			process_->setStandardErrorFile(QProcess::nullDevice());
 #endif
-
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
 		if (!QProcess::startDetached(command, arguments)) {
+#else
+		if (!QProcess::startDetached(toqstr(latexEnvCmdPrefix(path, lpath)) + cmd_)) {
+#endif
 			state = SystemcallPrivate::Error;
 			return;
 		}
@@ -419,7 +423,11 @@ void SystemcallPrivate::startProcess(string const & cmd, string const & path,
 		delete released;
 	} else if (process_) {
 		state = SystemcallPrivate::Starting;
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
 		process_->start(command, arguments);
+#else
+		process_->start(toqstr(latexEnvCmdPrefix(path, lpath)) + cmd_);
+#endif
 	}
 }
 

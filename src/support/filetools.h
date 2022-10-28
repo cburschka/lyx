@@ -14,10 +14,9 @@
 
 #include "support/docstring.h"
 
-#include <map>
-#include <set>
-#include <string>
 #include <utility>
+#include <string>
+#include <set>
 
 namespace lyx {
 namespace support {
@@ -289,15 +288,6 @@ std::string const onlyFileName(std::string const & fname);
     Variables are defined by Var := '${' [a-zA-Z_][a-zA-Z_0-9]* '}'
 */
 std::string const replaceEnvironmentPath(std::string const & path);
-
-
-/**
-   Return a map to be used to set the environment of the TeX engine
-   with respect to the paths \p path and \p lpath.
- */
-std::map <std::string, std::string>
-latexEnvironment(std::string const & path, std::string const & lpath);
-
 
 /**
    Return a string to be used as a prefix to a command for setting the
