@@ -512,8 +512,8 @@ public:
 	bool full_screen_statusbar = true;
 	/// Limit the text width?
 	bool screen_limit = false;
-    /// Width of limited screen width 
- 	Length screen_width = Length(7, Length::IN); 
+	/// Width of limited screen width 
+	Length screen_width = Length(7, Length::IN); 
 	///
 	bool completion_cursor_text = true;
 	///

@@ -2868,8 +2868,8 @@ void PrefEdit::applyRC(LyXRC & rc) const
 	rc.full_screen_statusbar = toggleStatusbarCB->isChecked();
 	rc.full_screen_tabbar = toggleTabbarCB->isChecked();
 	rc.full_screen_menubar = toggleMenubarCB->isChecked();
-    rc.screen_width = Length(widgetsToLength(screenWidthLE, screenWidthUnitCO)); 
-    rc.screen_limit = screenLimitCB->isChecked(); 
+	rc.screen_width = Length(widgetsToLength(screenWidthLE, screenWidthUnitCO)); 
+	rc.screen_limit = screenLimitCB->isChecked(); 
 }
 
 
