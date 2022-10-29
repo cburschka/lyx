@@ -161,6 +161,10 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 			os << "|";
 			os << insetindexpagerangetranslator_latex().find(params_.range);
 			getSeeRefs(os, runparams);
+		} else if (!params_.pagefmt.empty() && params_.pagefmt != "default") {
+			os << "|";
+			os << insetindexpagerangetranslator_latex().find(params_.range);
+			os << from_utf8(params_.pagefmt);
 		}
 	} else {
 		// We check whether we need a sort key.
@@ -429,7 +433,7 @@ void InsetIndex::docbook(XMLStream & xs, OutputParams const & runparams) const
 		xs << XMLStream::ESCAPE_NONE << (from_utf8("<!-- Output Error: ") + error + from_utf8(" -->\n"));
 	}
 
-    // Write all of this down.
+	// Write all of this down.
 	if (terms.empty() && !hasEndRange) {
 		docstring error = from_utf8("No index term found! Complete entry: \"") + latexString + from_utf8("\"");
 		LYXERR0(error);
