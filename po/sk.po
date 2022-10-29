@@ -8,15 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-09-13 18:57+0200\n"
-"PO-Revision-Date: 2022-09-13 17:02+0000\n"
+"POT-Creation-Date: 2022-10-29 11:26+0200\n"
+"PO-Revision-Date: 2022-10-29 09:42+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Lokalize 21.12.3\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
 "X-Language: sk_SK\n"
 "X-Source-Language: en_US\n"
@@ -4168,6 +4168,10 @@ msgstr "Použiť &MAC-štýl na pohyb kurzora"
 msgid "&Group environments by their category"
 msgstr "&Zoskupiť prostredia odstavcov podľa kategórií"
 
+#: src/frontends/qt/ui/PrefEditUi.ui:220 src/frontends/qt/ui/PrefEditUi.ui:246
+msgid "Limit the width of the text in the work area to the specified length"
+msgstr "Obmedziť šírku textu v pracovnej ploche na danú hodnotu"
+
 #: src/frontends/qt/ui/PrefEditUi.ui:218
 msgid "Fullscreen"
 msgstr "Celo-obrazovkový mód"
@@ -4191,10 +4195,6 @@ msgstr "Skr&yť lištu pod-okien"
 #: src/frontends/qt/ui/PrefEditUi.ui:305
 msgid "&Limit text width"
 msgstr "O&bmedz šírku textu"
-
-#: src/frontends/qt/ui/PrefEditUi.ui:328
-msgid "Screen used (pi&xels):"
-msgstr "Použitá šírka na obrazovke (pix&el):"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:375
 msgid "&Hide toolbars"
@@ -31494,6 +31494,15 @@ msgstr "Makebox"
 #: src/frontends/qt/GuiBox.h:44
 msgid "Box Settings"
 msgstr "Nastavenia rámiku"
+
+#: src/frontends/qt/GuiBranch.cpp:69
+#, c-format
+msgid "%1$s[[branch]] (%2$s)[[master]]"
+msgstr "%1$s[vetva] (%2$s)[hlavná]"
+
+#: src/frontends/qt/GuiBranch.cpp:70
+msgid "master"
+msgstr "hlavná"
 
 #: src/frontends/qt/GuiBranch.h:35
 msgid "Branch Settings"
