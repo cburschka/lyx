@@ -162,6 +162,12 @@
 #   (the new default is true, so this keeps behavior the same for 
 #   existing users)
 
+# Incremented to format 37, by chillenb
+#  Remove \fullscreen_width
+#  Remove \fullscreen_limit
+#  Add \screen_width
+#  Add \screen_limit
+
 # NOTE: The format should also be updated in LYXRC.cpp and
 # in configure.py (search for lyxrc_fileformat).
 
@@ -492,6 +498,12 @@ def add_spellcheck_default(lines):
 			return
 	lines.append("\\spellcheck_continuously false")
 
+def remove_fullscreen_widthlimit(line):
+	lower = line.lower()
+	if lower.startswith("\\fullscreen_width") or lower.startswith("\\fullscreen_limit"):
+		return (True, "")
+	return no_match
+
 # End conversions for LyX 2.3 to 2.4
 ####################################
 
@@ -542,5 +554,6 @@ conversions = [
 	[ 33, []],
 	[ 34, [rename_cyrillic_kmap_files]],
 	[ 35, [add_dark_color]],
-	[ 36, [add_spellcheck_default]]
+	[ 36, [add_spellcheck_default]],
+	[ 37, [remove_fullscreen_widthlimit]]
 ]

@@ -2217,7 +2217,7 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 			if (updateNeeded)
 				forceBufferUpdate();
 		}
-		return valid_destination;
+		return false;
 	}
 
 	// with and without selection are handled differently

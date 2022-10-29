@@ -2704,7 +2704,7 @@ void Buffer::markDepClean(string const & name)
 }
 
 
-bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
+bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag) const
 {
 	if (isInternal()) {
 		// FIXME? if there is an Buffer LFUN that can be dispatched even

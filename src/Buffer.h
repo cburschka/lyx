@@ -171,7 +171,7 @@ public:
 
 	/// Can this function be exectued?
 	/// \return true if we made a decision
-	bool getStatus(FuncRequest const & cmd, FuncStatus & flag);
+	bool getStatus(FuncRequest const & cmd, FuncStatus & flag) const;
 
 	///
 	DocIterator getParFromID(int id) const;

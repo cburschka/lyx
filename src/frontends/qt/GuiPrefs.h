@@ -451,7 +451,7 @@ public:
 	void updateRC(LyXRC const & rc) override;
 
 public Q_SLOTS:
-	void on_fullscreenLimitCB_toggled(bool);
+	void on_screenLimitCB_toggled(bool);
 	void on_citationSearchCB_toggled(bool);
 };
 

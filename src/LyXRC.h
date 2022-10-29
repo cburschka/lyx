@@ -90,13 +90,13 @@ public:
 		RC_FILEFORMAT,
 		RC_FORWARD_SEARCH_DVI,
 		RC_FORWARD_SEARCH_PDF,
-		RC_FULL_SCREEN_LIMIT,
+		RC_SCREEN_LIMIT,
 		RC_FULL_SCREEN_SCROLLBAR,
 		RC_FULL_SCREEN_STATUSBAR,
 		RC_FULL_SCREEN_TABBAR,
 		RC_FULL_SCREEN_MENUBAR,
 		RC_FULL_SCREEN_TOOLBARS,
-		RC_FULL_SCREEN_WIDTH,
+		RC_SCREEN_WIDTH,
 		RC_GEOMETRY_SESSION,
 		RC_GROUP_LAYOUTS,
 		RC_GUI_LANGUAGE,
@@ -511,9 +511,9 @@ public:
 	/// Toggle statusbar in fullscreen mode?
 	bool full_screen_statusbar = true;
 	/// Limit the text width?
-	bool full_screen_limit = false;
-	/// Width of limited screen (in pixels) in fullscreen mode
-	int full_screen_width = 700;
+	bool screen_limit = false;
+	/// Width of limited screen width 
+	Length screen_width = Length(7, Length::IN); 
 	///
 	bool completion_cursor_text = true;
 	///

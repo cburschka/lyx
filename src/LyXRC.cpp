@@ -60,7 +60,7 @@ namespace {
 
 // The format should also be updated in configure.py, and conversion code
 // should be added to prefs2prefs_prefs.py.
-static unsigned int const LYXRC_FILEFORMAT = 36; // rkh: spellcheck_continuously default
+static unsigned int const LYXRC_FILEFORMAT = 37; // chillenb: screen_width and screen_limit
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
 	{ "\\accept_compound", LyXRC::RC_ACCEPT_COMPOUND },
@@ -116,13 +116,11 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\format", LyXRC::RC_FILEFORMAT },
 	{ "\\forward_search_dvi", LyXRC::RC_FORWARD_SEARCH_DVI },
 	{ "\\forward_search_pdf", LyXRC::RC_FORWARD_SEARCH_PDF },
-	{ "\\fullscreen_limit", LyXRC::RC_FULL_SCREEN_LIMIT },
 	{ "\\fullscreen_menubar", LyXRC::RC_FULL_SCREEN_MENUBAR },
 	{ "\\fullscreen_scrollbar", LyXRC::RC_FULL_SCREEN_SCROLLBAR },
 	{ "\\fullscreen_statusbar", LyXRC::RC_FULL_SCREEN_STATUSBAR },
 	{ "\\fullscreen_tabbar", LyXRC::RC_FULL_SCREEN_TABBAR },
 	{ "\\fullscreen_toolbars", LyXRC::RC_FULL_SCREEN_TOOLBARS },
-	{ "\\fullscreen_width", LyXRC::RC_FULL_SCREEN_WIDTH },
 	{ "\\group_layouts", LyXRC::RC_GROUP_LAYOUTS },
 	{ "\\gui_language", LyXRC::RC_GUI_LANGUAGE },
 	{ "\\hunspelldir_path", LyXRC::RC_HUNSPELLDIR_PATH },
@@ -177,6 +175,8 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\screen_font_sizes", LyXRC::RC_SCREEN_FONT_SIZES },
 	{ "\\screen_font_typewriter", LyXRC::RC_SCREEN_FONT_TYPEWRITER },
 	{ "\\screen_font_typewriter_foundry", LyXRC::RC_SCREEN_FONT_TYPEWRITER_FOUNDRY },
+	{ "\\screen_limit", LyXRC::RC_SCREEN_LIMIT },
+	{ "\\screen_width", LyXRC::RC_SCREEN_WIDTH },
 	{ "\\screen_zoom", LyXRC::RC_SCREEN_ZOOM },
 	{ "\\scroll_below_document", LyXRC::RC_SCROLL_BELOW_DOCUMENT },
 	{ "\\scroll_wheel_zoom", LyXRC::RC_SCROLL_WHEEL_ZOOM },
@@ -1038,8 +1038,8 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 		case RC_GROUP_LAYOUTS:
 			lexrc >> group_layouts;
 			break;
-		case RC_FULL_SCREEN_LIMIT:
-			lexrc >> full_screen_limit;
+		case RC_SCREEN_LIMIT:
+			lexrc >> screen_limit;
 			break;
 		case RC_FULL_SCREEN_TOOLBARS:
 			lexrc >> full_screen_toolbars;
@@ -1056,8 +1056,8 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 		case RC_FULL_SCREEN_MENUBAR:
 			lexrc >> full_screen_menubar;
 			break;
-		case RC_FULL_SCREEN_WIDTH:
-			lexrc >> full_screen_width;
+		case RC_SCREEN_WIDTH:
+			lexrc >> screen_width;
 			break;
 		case RC_OPEN_BUFFERS_IN_TABS:
 			lexrc >> open_buffers_in_tabs;
@@ -1920,11 +1920,11 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (tag != RC_LAST)
 			break;
 		// fall through
-	case RC_FULL_SCREEN_LIMIT:
+	case RC_SCREEN_LIMIT:
 		if (ignore_system_lyxrc ||
-		    full_screen_limit != system_lyxrc.full_screen_limit) {
-			os << "\\fullscreen_limit "
-			   << convert<string>(full_screen_limit)
+		    screen_limit != system_lyxrc.screen_limit) {
+			os << "\\screen_limit "
+			   << convert<string>(screen_limit)
 			   << '\n';
 		}
 		if (tag != RC_LAST)
@@ -1980,11 +1980,11 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (tag != RC_LAST)
 			break;
 		// fall through
-	case RC_FULL_SCREEN_WIDTH:
+	case RC_SCREEN_WIDTH:
 		if (ignore_system_lyxrc ||
-		    full_screen_width != system_lyxrc.full_screen_width) {
-			os << "\\fullscreen_width "
-			   << convert<string>(full_screen_width)
+		    screen_width != system_lyxrc.screen_width) {
+			os << "\\screen_width "
+			   << screen_width.asString()
 			   << '\n';
 		}
 		if (tag != RC_LAST)
@@ -3064,13 +3064,13 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_SINGLE_CLOSE_TAB_BUTTON:
 	case LyXRC::RC_SINGLE_INSTANCE:
 	case LyXRC::RC_SORT_LAYOUTS:
-	case LyXRC::RC_FULL_SCREEN_LIMIT:
+	case LyXRC::RC_SCREEN_LIMIT:
 	case LyXRC::RC_FULL_SCREEN_SCROLLBAR:
 	case LyXRC::RC_FULL_SCREEN_MENUBAR:
 	case LyXRC::RC_FULL_SCREEN_STATUSBAR:
 	case LyXRC::RC_FULL_SCREEN_TABBAR:
 	case LyXRC::RC_FULL_SCREEN_TOOLBARS:
-	case LyXRC::RC_FULL_SCREEN_WIDTH:
+	case LyXRC::RC_SCREEN_WIDTH:
 	case LyXRC::RC_VISUAL_CURSOR:
 	case LyXRC::RC_CLOSE_BUFFER_WITH_LAST_VIEW:
 	case LyXRC::RC_VIEWER:
