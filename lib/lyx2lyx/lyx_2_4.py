@@ -4445,7 +4445,7 @@ def revert_index_macros(document):
         if pl == -1:
             document.warning("Malformed LyX document: Can't find plain layout in index inset at line %d" % i)
             continue
-        # find, store and remove params
+        # find, store and remove inset params
         pr = find_token(document.body, 'range', i, pl)
         prval = get_quoted_value(document.body, "range", pr)
         pagerange = ""
@@ -4456,16 +4456,20 @@ def revert_index_macros(document):
         pf = find_token(document.body, 'pageformat', i, pl)
         pageformat = get_quoted_value(document.body, "pageformat", pf)
         del document.body[pr:pf+1]
+        # Now re-find (potentially moved) inset end again, and search for subinsets
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Can't find end of index inset at line %d" % i)
             continue
-        imacros = ["seealso", "see", "subindex", "subindex", "sortkey"]
+        # We search for all possible subindexes in turn, store their
+        # content and delete them
         see = []
         seealso = []
         subindex = []
         subindex2 = []
         sortkey = []
+        # Two subindexes are allowed, thus the duplication
+        imacros = ["seealso", "see", "subindex", "subindex", "sortkey"]
         for imacro in imacros:
             iim = find_token(document.body, "\\begin_inset IndexMacro %s" % imacro, i, j)
             if iim == -1:
@@ -4483,10 +4487,10 @@ def revert_index_macros(document):
                 document.warning("Malformed LyX document: Can't find end of index macro inset plain layout at line %d" % i)
                 continue
             icont = document.body[iimpl:iimple]
-            if imacro == "see":
-                see = icont[1:]
-            elif imacro == "seealso":
+            if imacro == "seealso":
                 seealso = icont[1:]
+            elif imacro == "see":
+                see = icont[1:]
             elif imacro == "subindex":
                 # subindexes might hace their own sortkey!
                 xiim = find_token(document.body, "\\begin_inset IndexMacro sortkey", iimpl, iimple)
@@ -4512,11 +4516,14 @@ def revert_index_macros(document):
                     subindex = icont[1:]
             elif imacro == "sortkey":
                 sortkey = icont
+            # Everything stored. Delete subinset.
             del document.body[iim:iime+1]
+            # Again re-find (potentially moved) index inset end
             j = find_end_of_inset(document.body, i)
             if j == -1:
                 document.warning("Malformed LyX document: Can't find end of index inset at line %d" % i)
                 continue
+        # Now insert all stuff, starting from the inset end
         pl = find_token(document.body, '\\begin_layout Plain Layout', i, j)
         if pl == -1:
             document.warning("Malformed LyX document: Can't find plain layout in index inset at line %d" % i)
