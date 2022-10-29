@@ -362,8 +362,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-10-28 18:41+0200\n"
-"PO-Revision-Date: 2022-10-28 18:42+0200\n"
+"POT-Creation-Date: 2022-10-29 15:15+0200\n"
+"PO-Revision-Date: 2022-10-29 15:16+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -1122,7 +1122,7 @@ msgstr "Ajouter &tout"
 #: src/Buffer.cpp:4725 src/Buffer.cpp:4835 src/LyXVC.cpp:114 src/LyXVC.cpp:310
 #: src/buffer_funcs.cpp:56 src/frontends/qt/GuiBranches.cpp:226
 #: src/frontends/qt/GuiClipboard.cpp:252 src/frontends/qt/GuiDocument.cpp:2852
-#: src/frontends/qt/GuiParagraph.cpp:177 src/frontends/qt/GuiPrefs.cpp:3423
+#: src/frontends/qt/GuiParagraph.cpp:177 src/frontends/qt/GuiPrefs.cpp:3421
 #: src/frontends/qt/GuiView.cpp:3019 src/frontends/qt/GuiView.cpp:3249
 #: src/frontends/qt/GuiView.cpp:3273 src/frontends/qt/GuiView.cpp:3287
 #: src/frontends/qt/GuiView.cpp:3391 src/frontends/qt/GuiView.cpp:3436
@@ -4274,8 +4274,8 @@ msgid "&Modify"
 msgstr "&Modifier"
 
 #: src/frontends/qt/ui/PrefConvertersUi.ui:286
-#: src/frontends/qt/ui/PrefShortcutsUi.ui:61 src/frontends/qt/GuiPrefs.cpp:3159
-#: src/frontends/qt/GuiPrefs.cpp:3245
+#: src/frontends/qt/ui/PrefShortcutsUi.ui:61 src/frontends/qt/GuiPrefs.cpp:3157
+#: src/frontends/qt/GuiPrefs.cpp:3243
 msgid "Remo&ve"
 msgstr "&Enlever"
 
@@ -4585,13 +4585,15 @@ msgstr "Utiliser les déplacements de curseur à la M&ac"
 msgid "&Group environments by their category"
 msgstr "Re&grouper les environnements par catégorie"
 
-#: src/frontends/qt/ui/PrefEditUi.ui:220
+#: src/frontends/qt/ui/PrefEditUi.ui:220 src/frontends/qt/ui/PrefEditUi.ui:246
+msgid "Limit the width of the text in the work area to the specified length"
+msgstr ""
+"Contraint la largeur du texte dans la fenêtre de travail à la valeur "
+"spécifiée"
+
+#: src/frontends/qt/ui/PrefEditUi.ui:223
 msgid "&Limit text width"
 msgstr "&Limitation de la largeur du texte"
-
-#: src/frontends/qt/ui/PrefEditUi.ui:243
-msgid "Screen used:"
-msgstr "Écran utilisé :"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:274
 msgid "Fullscreen"
@@ -31753,7 +31755,7 @@ msgstr "À propos de LyX"
 msgid "About %1"
 msgstr "À propos de %1"
 
-#: src/frontends/qt/GuiApplication.cpp:796 src/frontends/qt/GuiPrefs.cpp:3537
+#: src/frontends/qt/GuiApplication.cpp:796 src/frontends/qt/GuiPrefs.cpp:3535
 msgid "Preferences"
 msgstr "Préférences"
 
@@ -34223,60 +34225,60 @@ msgstr "Gestion des documents"
 msgid "Control"
 msgstr "Contrôle"
 
-#: src/frontends/qt/GuiPrefs.cpp:2919
+#: src/frontends/qt/GuiPrefs.cpp:2917
 msgid "Shortcuts"
 msgstr "Raccourcis"
 
-#: src/frontends/qt/GuiPrefs.cpp:2926
+#: src/frontends/qt/GuiPrefs.cpp:2924
 msgid "Function"
 msgstr "Fonction"
 
-#: src/frontends/qt/GuiPrefs.cpp:2927
+#: src/frontends/qt/GuiPrefs.cpp:2925
 msgid "Shortcut"
 msgstr "Raccourci"
 
-#: src/frontends/qt/GuiPrefs.cpp:3004
+#: src/frontends/qt/GuiPrefs.cpp:3002
 msgid "Cursor, Mouse and Editing Functions"
 msgstr "Contrôle du curseur, de la souris et de la saisie"
 
-#: src/frontends/qt/GuiPrefs.cpp:3008
+#: src/frontends/qt/GuiPrefs.cpp:3006
 msgid "Mathematical Symbols"
 msgstr "Symboles mathématiques"
 
-#: src/frontends/qt/GuiPrefs.cpp:3012
+#: src/frontends/qt/GuiPrefs.cpp:3010
 msgid "Document and Window"
 msgstr "Document et fenêtre"
 
-#: src/frontends/qt/GuiPrefs.cpp:3016
+#: src/frontends/qt/GuiPrefs.cpp:3014
 msgid "Font, Layouts and Textclasses"
 msgstr "Polices, formats et classes"
 
-#: src/frontends/qt/GuiPrefs.cpp:3020
+#: src/frontends/qt/GuiPrefs.cpp:3018
 msgid "System and Miscellaneous"
 msgstr "Système et divers"
 
-#: src/frontends/qt/GuiPrefs.cpp:3157 src/frontends/qt/GuiPrefs.cpp:3217
+#: src/frontends/qt/GuiPrefs.cpp:3155 src/frontends/qt/GuiPrefs.cpp:3215
 msgid "Res&tore"
 msgstr "&Restaurer"
 
-#: src/frontends/qt/GuiPrefs.cpp:3385 src/frontends/qt/GuiPrefs.cpp:3394
-#: src/frontends/qt/GuiPrefs.cpp:3400 src/frontends/qt/GuiPrefs.cpp:3464
+#: src/frontends/qt/GuiPrefs.cpp:3383 src/frontends/qt/GuiPrefs.cpp:3392
+#: src/frontends/qt/GuiPrefs.cpp:3398 src/frontends/qt/GuiPrefs.cpp:3462
 msgid "Failed to create shortcut"
 msgstr "Échec de la création du raccourci"
 
-#: src/frontends/qt/GuiPrefs.cpp:3386
+#: src/frontends/qt/GuiPrefs.cpp:3384
 msgid "Unknown or invalid LyX function"
 msgstr "Fonction LyX inconnue ou invalide"
 
-#: src/frontends/qt/GuiPrefs.cpp:3395
+#: src/frontends/qt/GuiPrefs.cpp:3393
 msgid "This LyX function is hidden and cannot be bound."
 msgstr "Cette fonction LyX est cachée et ne peut être associée."
 
-#: src/frontends/qt/GuiPrefs.cpp:3401
+#: src/frontends/qt/GuiPrefs.cpp:3399
 msgid "Invalid or empty key sequence"
 msgstr "Séquence de touches invalide ou vide"
 
-#: src/frontends/qt/GuiPrefs.cpp:3416
+#: src/frontends/qt/GuiPrefs.cpp:3414
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to %2$s.\n"
@@ -34286,19 +34288,19 @@ msgstr ""
 "Êtes-vous sûr de vouloir remplacer cette association par une association à "
 "%3$s ?"
 
-#: src/frontends/qt/GuiPrefs.cpp:3422
+#: src/frontends/qt/GuiPrefs.cpp:3420
 msgid "Redefine shortcut?"
 msgstr "Redéfinir le raccourci ?"
 
-#: src/frontends/qt/GuiPrefs.cpp:3423
+#: src/frontends/qt/GuiPrefs.cpp:3421
 msgid "&Redefine"
 msgstr "&Redéfinir"
 
-#: src/frontends/qt/GuiPrefs.cpp:3465
+#: src/frontends/qt/GuiPrefs.cpp:3463
 msgid "Can not insert shortcut to the list"
 msgstr "Échec de l'insertion du raccourci à la liste"
 
-#: src/frontends/qt/GuiPrefs.cpp:3496
+#: src/frontends/qt/GuiPrefs.cpp:3494
 msgid "Identity"
 msgstr "Identité"
 
@@ -38223,6 +38225,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Utilisateur inconnu"
+
+#~ msgid "Screen used:"
+#~ msgstr "Écran utilisé :"
 
 #, c-format
 #~ msgid "%1$d characters (including blanks)"
