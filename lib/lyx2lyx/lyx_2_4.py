@@ -4414,6 +4414,7 @@ def revert_docbook_mathml_prefix(document):
             return
         del document.header[i]
 
+
 def revert_document_metadata(document):
     """Revert document metadata"""
     i = 0
@@ -4426,6 +4427,117 @@ def revert_document_metadata(document):
             # this should not happen
             break
         document.header[i : j + 1] = []
+
+
+def revert_index_macros(document):
+    " Revert inset index macros "
+
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_inset Index', i+1)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of index inset at line %d" % i)
+            continue
+        pl = find_token(document.body, '\\begin_layout Plain Layout', i, j)
+        if pl == -1:
+            document.warning("Malformed LyX document: Can't find plain layout in index inset at line %d" % i)
+            continue
+        # find, store and remove params
+        pr = find_token(document.body, 'range', i, pl)
+        prval = get_quoted_value(document.body, "range", pr)
+        pagerange = ""
+        if prval == "start":
+            pagerange = "("
+        elif prval == "end":
+            pagerange = ")"
+        pf = find_token(document.body, 'pageformat', i, pl)
+        pageformat = get_quoted_value(document.body, "pageformat", pf)
+        del document.body[pr:pf+1]
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of index inset at line %d" % i)
+            continue
+        imacros = ["seealso", "see", "subindex", "subindex", "sortkey"]
+        see = []
+        seealso = []
+        subindex = []
+        subindex2 = []
+        sortkey = []
+        for imacro in imacros:
+            iim = find_token(document.body, "\\begin_inset IndexMacro %s" % imacro, i, j)
+            if iim == -1:
+                continue
+            iime = find_end_of_inset(document.body, iim)
+            if iime == -1:
+                document.warning("Malformed LyX document: Can't find end of index macro inset at line %d" % i)
+                continue
+            iimpl = find_token(document.body, '\\begin_layout Plain Layout', iim, iime)
+            if iimpl == -1:
+                document.warning("Malformed LyX document: Can't find plain layout in index macro inset at line %d" % i)
+                continue
+            iimple = find_end_of_layout(document.body, iimpl)
+            if iimple == -1:
+                document.warning("Malformed LyX document: Can't find end of index macro inset plain layout at line %d" % i)
+                continue
+            icont = document.body[iimpl:iimple]
+            if imacro == "see":
+                see = icont[1:]
+            elif imacro == "seealso":
+                seealso = icont[1:]
+            elif imacro == "subindex":
+                # subindexes might hace their own sortkey!
+                xiim = find_token(document.body, "\\begin_inset IndexMacro sortkey", iimpl, iimple)
+                if xiim != -1:
+                    xiime = find_end_of_inset(document.body, xiim)
+                    if xiime == -1:
+                        document.warning("Malformed LyX document: Can't find end of index macro inset at line %d" % i)
+                    else:
+                        xiimpl = find_token(document.body, '\\begin_layout Plain Layout', xiim, xiime)
+                        if xiimpl == -1:
+                            document.warning("Malformed LyX document: Can't find plain layout in index macro inset at line %d" % i)
+                        else:
+                            xiimple = find_end_of_layout(document.body, xiimpl)
+                            if xiimple == -1:
+                                document.warning("Malformed LyX document: Can't find end of index macro inset plain layout at line %d" % i)
+                            else:
+                                xicont = document.body[xiimpl:xiimple]
+                                xxicont = document.body[iimpl:xiimpl] + document.body[xiimple+1:iimple]
+                                icont = xicont + put_cmd_in_ert("@") + xxicont[1:]
+                if len(subindex) > 0:
+                    subindex2 = icont[1:]
+                else:
+                    subindex = icont[1:]
+            elif imacro == "sortkey":
+                sortkey = icont
+            del document.body[iim:iime+1]
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of index inset at line %d" % i)
+                continue
+        pl = find_token(document.body, '\\begin_layout Plain Layout', i, j)
+        if pl == -1:
+            document.warning("Malformed LyX document: Can't find plain layout in index inset at line %d" % i)
+            continue
+        ple = find_end_of_layout(document.body, pl)
+        if ple == -1:
+            document.warning("Malformed LyX document: Can't find end of index macro inset plain layout at line %d" % i)
+            continue
+        if len(see) > 0:
+            document.body[ple:ple] = put_cmd_in_ert("|" + pagerange + "see{") + see + put_cmd_in_ert("}")
+        elif len(seealso) > 0:
+            document.body[ple:ple] = put_cmd_in_ert("|" + pagerange + "seealso{") + seealso + put_cmd_in_ert("}")
+        elif pageformat != "default":
+            document.body[ple:ple] = put_cmd_in_ert("|" + pagerange + pageformat)
+        if len(subindex2) > 0:
+            document.body[ple:ple] = put_cmd_in_ert("!") + subindex2
+        if len(subindex) > 0:
+            document.body[ple:ple] = put_cmd_in_ert("!") + subindex
+        if len(sortkey) > 0:
+            document.body[pl:pl+1] = document.body[pl:pl] + sortkey + put_cmd_in_ert("@")
+            
 
 ##
 # Conversion hub
@@ -4497,10 +4609,12 @@ convert = [
            [606, [convert_koma_frontispiece]],
            [607, []],
            [608, []],
-           [609, []]
+           [609, []],
+           [610, []]
           ]
 
-revert =  [[608, [revert_document_metadata]],
+revert =  [[609, [revert_index_macros]],
+           [608, [revert_document_metadata]],
            [607, [revert_docbook_mathml_prefix]],
            [606, [revert_spellchecker_ignore]],
            [605, [revert_koma_frontispiece]],
