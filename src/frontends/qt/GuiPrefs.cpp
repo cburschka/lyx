@@ -2833,7 +2833,6 @@ PrefEdit::PrefEdit(GuiPreferences * form)
 void PrefEdit::on_screenLimitCB_toggled(bool const state)
 {
 	screenWidthLE->setEnabled(state);
-	screenWidthLA->setEnabled(state);
 	screenWidthUnitCO->setEnabled(state);
 	changed();
 }
@@ -2896,7 +2895,6 @@ void PrefEdit::updateRC(LyXRC const & rc)
 	screenWidthUnitCO->setEnabled(rc.screen_limit);
 	screenLimitCB->setChecked(rc.screen_limit);
 	screenWidthLE->setEnabled(rc.screen_limit);
-	screenWidthLA->setEnabled(rc.screen_limit); 
 }
 
 
