@@ -582,7 +582,7 @@ void InsetIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_PARAGRAPH_BREAK: {
 		// Since this inset in single-par anyway, let's use
-		// return to enter subentryes
+		// return to enter subentries
 		FuncRequest fr(LFUN_INDEXMACRO_INSERT, "subentry");
 		lyx::dispatch(fr);
 		break;
