@@ -55,6 +55,9 @@
 using namespace std;
 using namespace lyx::support;
 
+// Uncomment to enable InsetIndex-specific debugging mode: the tree for the index will be printed to std::cout.
+// #define LYX_INSET_INDEX_DEBUG
+
 namespace lyx {
 
 namespace {
@@ -1687,7 +1690,7 @@ void outputIndexPage(XMLStream & xs, const IndexNode* root_node, unsigned depth 
 	xs << xml::CR();
 }
 
-// Only useful for debugging.
+#ifdef LYX_INSET_INDEX_DEBUG
 void printTree(const IndexNode* root_node, unsigned depth = 0)
 {
 	static const std::string pattern = "    ";
@@ -1722,6 +1725,7 @@ void printTree(const IndexNode* root_node, unsigned depth = 0)
 		printTree(node, depth + 1);
 	}
 }
+#endif // LYX_INSET_INDEX_DEBUG
 }
 
 
@@ -1747,7 +1751,7 @@ docstring InsetPrintIndex::xhtml(XMLStream &, OutputParams const & op) const
 		return docstring();
 
 	const IndexNode* index_root = buildIndexTree(entries);
-#if 0
+#ifdef LYX_INSET_INDEX_DEBUG
 	printTree(index_root);
 #endif
 
