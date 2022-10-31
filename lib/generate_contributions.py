@@ -988,6 +988,14 @@ contributors = [
                  "19 July 2013",
                  u"XHTML and ePub Improvements (GSOC Student)"),
 
+     contributor(u"Christopher Hillenbrand",
+                 "chillenb.lists () gmail ! com",
+                 "GPL",
+                 "Re: Limit text width in the editor window (non-fullscreen mode)",
+                 "m=166714427827929",
+                 "30 October 2022",
+                 u"User Interface Improvements"),
+
      contributor(u"Claus Hindsgaul",
                  "claus_h () image ! dk",
                  "GPL",
