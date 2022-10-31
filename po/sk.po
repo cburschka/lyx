@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-10-29 11:26+0200\n"
-"PO-Revision-Date: 2022-10-29 09:42+0000\n"
+"POT-Creation-Date: 2022-10-31 21:54+0100\n"
+"PO-Revision-Date: 2022-10-31 21:53+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2347,6 +2347,27 @@ msgstr "Doslovne (Verbatim)"
 msgid "Program Listing"
 msgstr "Výpis zdrojového kódu"
 
+#: src/insets/InsetIndex.cpp:85
+msgid "Starts page range"
+msgstr "Začína rozsah strán"
+
+#: src/insets/InsetIndex.cpp:86
+msgid "Ends page range"
+msgstr "Končí rozsah strán"
+
+#: src/insets/InsetIndex.cpp:289
+#, c-format
+msgid ""
+"LyX's automatic index sorting algorithm faced problems with the entry "
+"'%1$s'.\n"
+"Please specify the sorting of this entry manually, as explained in the User "
+"Guide."
+msgstr ""
+"Algoritmus pre automatické triedenie algoritmov narazil na problém\n"
+"so záznamom '%1$s'.\n"
+"Prosím nastavte triedenie tohto záznamu ručne, ako\n"
+"vysvetlené v užívateľskej príručke."
+
 #: src/frontends/qt/ui/IncludeUi.ui:69
 msgid "Edit the file"
 msgstr "Upraviť súbor"
@@ -2413,13 +2434,26 @@ msgstr ""
 "Podaj obsah poľa `Popis' priamo pre LaTeX. Označte toto keď chcete vložiť "
 "LaTeX kód."
 
-#: src/frontends/qt/ui/IndexUi.ui:40
-msgid "Available I&ndexes:"
-msgstr "Do&stupné registre:"
+#: src/frontends/qt/ui/IndexUi.ui:23
+msgid "Available I&ndexes"
+msgstr "Dostupné r&egistre"
 
 #: src/frontends/qt/ui/IndexUi.ui:50
 msgid "Select the index this entry should be listed in."
 msgstr "Vyberte register v ktorom by toto heslo malo byť uvedené."
+
+#: src/frontends/qt/ui/IndexUi.ui:52
+msgid "&Pagination"
+msgstr "&Stránkovanie"
+
+#: src/frontends/qt/ui/IndexUi.ui:58
+msgid "Page &Range:"
+msgstr "&Rozsah strán:"
+
+#: src/frontends/qt/ui/IndexUi.ui:68
+msgid "If the entry spans multiple pages, you can start or end the range here"
+msgstr ""
+"Keď je záznam dlhší ako jedna strana, môže tu rozsah začať alebo končiť"
 
 #: src/frontends/qt/ui/IndicesUi.ui:19
 msgid ""
@@ -3552,6 +3586,18 @@ msgstr "Formát stránky"
 #: src/frontends/qt/ui/PrefFileformatsUi.ui:20
 msgid "&Format:"
 msgstr "&Formát:"
+
+#: src/frontends/qt/ui/IndexUi.ui:98
+msgid ""
+"Customize the format of the page number here. Note that the format is not "
+"used with \"See\" and \"See also\" references."
+msgstr ""
+"Upraviť formát číslovania strán tu. Všimnite si, že formát nie je použitý s "
+"referenciami \"Viď\" či \"Viď tiež\"."
+
+#: src/frontends/qt/ui/IndexUi.ui:105
+msgid "Enter custom command here (without leading backslash)."
+msgstr "Vložte sem vlastný rozkaz (bez začínajúcej šikmej čiary)."
 
 #: src/frontends/qt/ui/PageLayoutUi.ui:45
 msgid "Choose a particular paper size, or set your own with \"Custom\""
@@ -10124,10 +10170,10 @@ msgstr "Výška"
 msgid "The height of the overlay area"
 msgstr "Výška plochy prekrytia"
 
-#: lib/layouts/beamer.layout:854 lib/layouts/beamer.layout:1563
-#: lib/layouts/beamer.layout:1565 lib/layouts/powerdot.layout:660
+#: lib/layouts/beamer.layout:856 lib/layouts/beamer.layout:1565
+#: lib/layouts/beamer.layout:1567 lib/layouts/powerdot.layout:660
 msgid "Uncover"
-msgstr "Odhalenie"
+msgstr "Odhaliť"
 
 #: lib/layouts/beamer.layout:864
 msgid "Uncovered on slides"
@@ -12326,6 +12372,10 @@ msgstr "Päta jazyka:"
 #: lib/layouts/europasscv.layout:535 lib/layouts/europecv.layout:376
 msgid "End"
 msgstr "Koniec"
+
+#: src/frontends/qt/GuiIndex.cpp:49
+msgid "Emphasized"
+msgstr "Zdôraznenie"
 
 #: lib/layouts/europasscv.layout:546 lib/layouts/europecv.layout:387
 msgid "End of CV"
@@ -20204,6 +20254,30 @@ msgstr "Pridať neznámu vetvu|P"
 msgid "Insert Reference at Cursor Position|I"
 msgstr "Vložiť referenciu na pozícii kurzoru|V"
 
+#: lib/ui/stdcontext.inc:636
+msgid "Insert Subentry|b"
+msgstr "Vložiť pod-záznam|d"
+
+#: lib/ui/stdcontext.inc:637
+msgid "Insert Sortkey|k"
+msgstr "Vložiť triediaci kľúč|k"
+
+#: lib/ui/stdcontext.inc:638
+msgid "Insert See Reference|e"
+msgstr "Vložiť \"Viď\" referenciu|V"
+
+#: lib/ui/stdcontext.inc:639
+msgid "Insert See also Reference|a"
+msgstr "Vložiť \"Viď tiež\" referenciu|t"
+
+#: lib/ui/stdcontext.inc:647 lib/ui/stdmenus.inc:539
+msgid "See|e"
+msgstr "Viď|V"
+
+#: lib/ui/stdcontext.inc:648 lib/ui/stdmenus.inc:540
+msgid "See also|a"
+msgstr "Viď tiež|t"
+
 #: lib/ui/stdcontext.inc:620
 msgid "All Indexes|A"
 msgstr "Všetky registre|V"
@@ -20929,6 +21003,10 @@ msgid "Label...|L"
 msgstr "Referenčná značka…|z"
 
 #: lib/ui/stdmenus.inc:394
+msgid "Index Properties"
+msgstr "Vlastnosti registru"
+
+#: lib/ui/stdmenus.inc:394
 msgid "Nomenclature Entry...|y"
 msgstr "Záznam nomenklatúry…|ú"
 
@@ -21167,6 +21245,14 @@ msgstr "Externý materiál…|m"
 #: lib/ui/stdmenus.inc:522
 msgid "Child Document...|d"
 msgstr "Dokument potomka…|p"
+
+#: lib/ui/stdmenus.inc:537
+msgid "Subentry|b"
+msgstr "Pod-záznam|d"
+
+#: lib/ui/stdmenus.inc:538
+msgid "Sortkey|k"
+msgstr "Triediaci kľúč|k"
 
 #: lib/ui/stdmenus.inc:537
 msgid "Comment|C"
@@ -32824,6 +32910,10 @@ msgstr "LaTeX/LyX dokumenty (p.tex *.lyx)"
 msgid "Index Entry Settings"
 msgstr "Nastavenia hesla registra"
 
+#: src/frontends/qt/GuiIndex.cpp:42
+msgid "Start"
+msgstr "Start"
+
 #: src/frontends/qt/GuiIndices.cpp:53
 msgid "Label Color"
 msgstr "Farba značky"
@@ -35875,22 +35965,25 @@ msgstr "CHÝBA: "
 msgid "Index sorting failed"
 msgstr "Triedenie registra zlyhalo"
 
-#: src/insets/InsetIndex.cpp:158
-#, c-format
-msgid ""
-"LyX's automatic index sorting algorithm faced\n"
-"problems with the entry '%1$s'.\n"
-"Please specify the sorting of this entry manually, as\n"
-"explained in the User Guide."
-msgstr ""
-"Algoritmus pre automatické triedenie narazil na problém\n"
-"so záznamom '%1$s'.\n"
-"Prosím nastavte triedenie tohto záznamu ručne, ako\n"
-"vysvetlené v užívateľskej príručke."
-
 #: src/insets/InsetIndex.cpp:470
 msgid "Index Entry"
 msgstr "Zápis v registre"
+
+#: src/insets/InsetIndex.cpp:901
+msgid "Pagination format:"
+msgstr "Formát stránkovania:"
+
+#: src/insets/InsetIndex.cpp:903
+msgid "bold"
+msgstr "tučný"
+
+#: src/insets/InsetIndex.cpp:905
+msgid "italic"
+msgstr "kurzívny (italic)"
+
+#: src/insets/InsetIndex.cpp:907
+msgid "emphasized"
+msgstr "zdôraznený"
 
 #: src/insets/InsetIndex.cpp:656
 msgid "Unknown index type!"
@@ -35903,6 +35996,35 @@ msgstr "Všetky registre"
 #: src/insets/InsetIndex.cpp:661
 msgid "subindex"
 msgstr "Pod-register"
+
+#: src/insets/InsetIndexMacro.cpp:63 lib/layouts/stdinsets.inc:435
+msgid "See"
+msgstr "Viď"
+
+#: src/insets/InsetIndexMacro.cpp:64 lib/layouts/stdinsets.inc:451
+msgid "See also"
+msgstr "Viď tiež"
+
+#: src/insets/InsetIndexMacro.cpp:65 lib/layouts/stdinsets.inc:461
+msgid "Subentry"
+msgstr "Pod-záznam"
+
+#: src/insets/InsetIndexMacro.cpp:66 lib/layouts/stdinsets.inc:456
+msgid "Sort as"
+msgstr "Triediť ako"
+
+#: src/insets/InsetIndexMacro.cpp:271
+#, c-format
+msgid ""
+"LyX's automatic index sorting algorithm faced problems with the sub-entry "
+"'%1$s'.\n"
+"Please specify the sorting of this entry manually, as explained in the User "
+"Guide."
+msgstr ""
+"Algoritmus pre automatické triedenie algoritmov narazil na problém\n"
+"s podzáznamom '%1$s'.\n"
+"Prosím nastavte triedenie tohto záznamu ručne, ako\n"
+"vysvetlené v užívateľskej príručke."
 
 #: src/insets/InsetInfo.cpp:194
 msgid "No long date format (language unknown)!"
