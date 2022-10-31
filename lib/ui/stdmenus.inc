@@ -391,6 +391,7 @@ Menuset
 		Item "Label...|L" "label-insert"
 		Captions
 		Indices
+		OptSubmenu "Index Properties" "index_properties"
 		Item "Nomenclature Entry...|y" "nomencl-insert"
 		Separator
 		Item "Table...|T" "tabular-insert"
@@ -530,6 +531,13 @@ Menuset
 		Item "Drop Shadow|w" "box-insert Shadowbox"
 		Item "Shaded Background|B" "box-insert Shaded"
 		Item "Double Frame|u" "box-insert Doublebox"
+	End
+
+	Menu "index_properties"
+		OptItem "Subentry|b" "indexmacro-insert subentry"
+		OptItem "Sortkey|k" "indexmacro-insert sortkey"
+		OptItem "See|e" "indexmacro-insert see"
+		OptItem "See also|a" "indexmacro-insert seealso"
 	End
 
 	Menu "insert_note"

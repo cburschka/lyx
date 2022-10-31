@@ -55,7 +55,7 @@ void output_arguments(ostream &, Parser &, bool, bool, const string &, Context &
 
 void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,
 		Context & context, InsetLayout const * layout,
-		string const & rdelim)
+		string const & rdelim, string const & rdelimesc)
 {
 	bool const forcePlainLayout =
 		layout ? layout->forcePlainLayout() : false;
@@ -78,7 +78,7 @@ void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,
 		parse_text(p, oss, FLAG_RDELIM, outer, dummy,
 			   string(1, context.latexparam.back()));
 	}
-	parse_text(p, os, flags, outer, newcontext, rdelim);
+	parse_text(p, os, flags, outer, newcontext, rdelim, rdelimesc);
 	if (layout)
 		output_arguments(os, p, outer, false, "post", newcontext,
 		                 layout->postcommandargs());
@@ -91,7 +91,8 @@ namespace {
 
 void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,
 		Context const & context, string const & name,
-		string const & rdelim = string())
+		string const & rdelim = string(),
+		string const & rdelimesc = string())
 {
 	InsetLayout const * layout = 0;
 	DocumentClass::InsetLayouts::const_iterator it =
@@ -99,17 +100,18 @@ void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,
 	if (it != context.textclass.insetLayouts().end())
 		layout = &(it->second);
 	Context newcontext = context;
-	parse_text_in_inset(p, os, flags, outer, newcontext, layout, rdelim);
+	parse_text_in_inset(p, os, flags, outer, newcontext, layout, rdelim, rdelimesc);
 }
 
 /// parses a paragraph snippet, useful for example for \\emph{...}
 void parse_text_snippet(Parser & p, ostream & os, unsigned flags, bool outer,
-		Context & context)
+			Context & context, string const & rdelim = string(),
+			string const & rdelimesc = string())
 {
 	Context newcontext(context);
 	// Don't inherit the paragraph-level extra stuff
 	newcontext.par_extra_stuff.clear();
-	parse_text(p, os, flags, outer, newcontext);
+	parse_text(p, os, flags, outer, newcontext, rdelim, rdelimesc);
 	// Make sure that we don't create invalid .lyx files
 	context.need_layout = newcontext.need_layout;
 	context.need_end_layout = newcontext.need_end_layout;
@@ -1503,6 +1505,218 @@ void parse_outer_box(Parser & p, ostream & os, unsigned flags, bool outer,
 		parse_box(p, os, flags, inner_flags, outer, parent_context,
 		          outer_type, special, inner, "", "");
 	}
+}
+
+
+void parse_index_entry(Parser & p, ostream & os, Context & context, string const & kind)
+{
+	// write inset header
+	begin_inset(os, "Index ");
+	os << kind;
+
+	// Parse for post argument (|...)
+	p.pushPosition();
+	string const marg = p.getArg('{', '}');
+	p.popPosition();
+	char lc = char();
+	bool inpost = false;
+	bool startrange = false;
+	bool endrange = false;
+	string post;
+	for (string::const_iterator it = marg.begin(), et = marg.end(); it != et; ++it) {
+		char c = *it;
+		if (inpost) {
+			if (post.empty() && c == '(')
+				startrange = true;
+			else if (post.empty() && c == ')')
+				endrange = true;
+			else
+				post += c;
+		}
+		if (!inpost && (c == '|' && lc != '"'))
+			inpost = true;
+		lc = c;
+	}
+	if (startrange)
+		os << "\nrange start";
+	else if (endrange)
+		os << "\nrange end";
+	else
+		os << "\nrange none";
+	bool const see = prefixIs(post, "see{");
+	bool const seealso = prefixIs(post, "seealso{");
+	if (!post.empty() && !see && !seealso)
+		os << "\npageformat " << post;
+	else
+		os << "\npageformat default";
+	os << "\nstatus collapsed\n";
+
+	bool main = true;
+	// save position
+	p.pushPosition();
+	// Check for levels
+	if (p.hasIdxMacros("!")) {
+		// Index entry with levels
+		while (p.hasIdxMacros("!")) {
+			if (main) {
+				// swallow brace
+				p.get_token();
+				os << "\\begin_layout Plain Layout\n";
+			} else {
+				begin_inset(os, "IndexMacro subentry");
+				os << "\nstatus collapsed\n";
+			}
+			// Check for (level-specific) sortkey
+			if (p.hasIdxMacros("@", "!")) {
+				if (!main)
+					os << "\\begin_layout Plain Layout\n";
+				begin_inset(os, "IndexMacro sortkey");
+				os << "\nstatus collapsed\n";
+				parse_text_in_inset(p, os, FLAG_RDELIM, false, context, "IndexMacro sortkey", "@", "\"");
+				end_inset(os);
+			}
+			parse_text_snippet(p, os, FLAG_RDELIM, false, context, "!", "\"");
+			if (!main) {
+				os << "\n\\end_layout\n";
+				end_inset(os);
+			}
+			main = false;
+		}
+		if (!main) {
+			begin_inset(os, "IndexMacro subentry");
+			os << "\nstatus collapsed\n";
+		}
+		// Final level
+		// Check for (level-specific) sortkey
+		if (p.hasIdxMacros("@", "!")) {
+			if (main) {
+				// swallow brace
+				p.get_token();
+			}
+			os << "\\begin_layout Plain Layout\n";
+			begin_inset(os, "IndexMacro sortkey");
+			os << "\nstatus collapsed\n";
+			parse_text_in_inset(p, os, FLAG_RDELIM, false, context, "IndexMacro sortkey", "@", "\"");
+			end_inset(os);
+			if (post.empty() && !startrange && !endrange) {
+				parse_text_snippet(p, os, FLAG_BRACE_LAST, false, context);
+				p.dropPosition();
+			} else {
+				// Handle post-argument
+				parse_text_snippet(p, os, FLAG_RDELIM, false, context, "|", "\"");
+				if (see || seealso) {
+					while (p.next_token().character() != '{' && p.good())
+						p.get_token();
+					// this ends the subinset, as the see[also] insets
+					// must come at main index inset
+					os << "\n\\end_layout\n";
+					end_inset(os);
+					if (see)
+						begin_inset(os, "IndexMacro see");
+					else
+						begin_inset(os, "IndexMacro seealso");
+					os << "\nstatus collapsed\n";
+					os << "\\begin_layout Plain Layout\n";
+					parse_text_snippet(p, os, FLAG_ITEM, false, context);
+				}
+				p.popPosition();
+				// swallow argument
+				p.getArg('{', '}');
+			}
+			os << "\n\\end_layout\n";
+		} else {
+			if (post.empty() && !startrange && !endrange) {
+				parse_text_in_inset(p, os, FLAG_BRACE_LAST, false, context, "IndexMacro subentry");
+				p.dropPosition();
+			} else {
+				// Handle post-argument
+				if (see || seealso) {
+					os << "\\begin_layout Plain Layout\n";
+					parse_text_snippet(p, os, FLAG_RDELIM, false, context, "|", "\"");
+					while (p.next_token().character() != '{' && p.good())
+						p.get_token();
+					// this ends the subinset, as the see[also] insets
+					// must come at main index inset
+					os << "\n\\end_layout\n";
+					end_inset(os);
+					if (see)
+						begin_inset(os, "IndexMacro see");
+					else
+						begin_inset(os, "IndexMacro seealso");
+					os << "\nstatus collapsed\n";
+					parse_text_in_inset(p, os, FLAG_ITEM, false, context, "IndexMacro see");
+				} else
+					parse_text_in_inset(p, os, FLAG_RDELIM, false, context, "Index", "|", "\"");
+				p.popPosition();
+				// swallow argument
+				p.getArg('{', '}');
+			}
+		}
+		if (!main)
+			end_inset(os);
+		os << "\n\\end_layout\n";
+	} else {
+		// Index without any levels
+		// Check for sortkey
+		if (p.hasIdxMacros("@", "!")) {
+			// swallow brace
+			p.get_token();
+			os << "\\begin_layout Plain Layout\n";
+			begin_inset(os, "IndexMacro sortkey");
+			os << "\nstatus collapsed\n";
+			parse_text_in_inset(p, os, FLAG_RDELIM, false, context, "IndexMacro sortkey", "@", "\"");
+			end_inset(os);
+			if (post.empty() && !startrange && !endrange) {
+				parse_text_snippet(p, os, FLAG_BRACE_LAST, false, context);
+				p.dropPosition();
+			} else {
+				parse_text_snippet(p, os, FLAG_RDELIM, false, context, "|", "\"");
+				if (see || seealso) {
+					while (p.next_token().character() != '{' && p.good())
+						p.get_token();
+					if (see)
+						begin_inset(os, "IndexMacro see");
+					else
+						begin_inset(os, "IndexMacro seealso");
+					os << "\nstatus collapsed\n";
+					parse_text_in_inset(p, os, FLAG_ITEM, false, context, "IndexMacro see");
+					end_inset(os);
+				}
+				p.popPosition();
+				// swallow argument
+				p.getArg('{', '}');
+			}
+			os << "\n\\end_layout\n";
+		} else {
+			if (post.empty() && !startrange && !endrange) {
+				parse_text_in_inset(p, os, FLAG_ITEM, false, context, "Index");
+				p.dropPosition();
+			} else {
+				// Handle post-argument
+				// swallow brace
+				p.get_token();
+				if (see || seealso) {
+					os << "\\begin_layout Plain Layout\n";
+					parse_text_snippet(p, os, FLAG_RDELIM, false, context, "|", "\"");
+					while (p.next_token().character() != '{' && p.good())
+						p.get_token();
+					if (see)
+						begin_inset(os, "IndexMacro see");
+					else
+						begin_inset(os, "IndexMacro seealso");
+					os << "\nstatus collapsed\n";
+					parse_text_in_inset(p, os, FLAG_ITEM, false, context, "IndexMacro see");
+					end_inset(os);
+					os << "\n\\end_layout\n";
+				} else
+					parse_text_in_inset(p, os, FLAG_RDELIM, false, context, "Index", "|", "\"");
+				p.popPosition();
+				// swallow argument
+				p.getArg('{', '}');
+			}
+		}
+	}
+	end_inset(os);
 }
 
 
@@ -2901,7 +3115,7 @@ void fix_child_filename(string & name)
 
 
 void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
-		Context & context, string const & rdelim)
+		Context & context, string const & rdelim, string const & rdelimesc)
 {
 	Layout const * newlayout = 0;
 	InsetLayout const * newinsetlayout = 0;
@@ -2990,7 +3204,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		if (rdelim.size() > 1)
 			tok += p.next_token().asInput();
 		if (t.cat() != catEscape && !rdelim.empty()
-		    && tok == rdelim && (flags & FLAG_RDELIM)) {
+		    && tok == rdelim && (flags & FLAG_RDELIM)
+		    && (rdelimesc.empty() || p.prev_token().asInput() != rdelimesc)) {
 		    	if (rdelim.size() > 1)
 		    		p.get_token(); // eat rdelim
 			return;
@@ -4712,10 +4927,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string const arg = (t.cs() == "sindex" && p.hasOpt()) ?
 				p.getArg('[', ']') : "";
 			string const kind = arg.empty() ? "idx" : arg;
-			begin_inset(os, "Index ");
-			os << kind << "\nstatus collapsed\n";
-			parse_text_in_inset(p, os, FLAG_ITEM, false, context, "Index");
-			end_inset(os);
+			parse_index_entry(p, os, context, kind);
 			if (kind != "idx")
 				preamble.registerAutomaticallyLoadedPackage("splitidx");
 			continue;

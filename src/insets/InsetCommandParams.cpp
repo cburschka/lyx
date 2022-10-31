@@ -322,7 +322,7 @@ void InsetCommandParams::Read(Lexer & lex, Buffer const * buffer)
 			preview_ = lex.getBool();
 			continue;
 		}
-		if (info_.hasParam(token)) {
+		if (hasParam(token)) {
 			lex.next(true);
 			docstring data = lex.getDocString();
 			if (buffer && token == "filename") {
@@ -604,10 +604,24 @@ docstring InsetCommandParams::getFirstNonOptParam() const
 }
 
 
+bool InsetCommandParams::hasParam(std::string const & name) const
+{
+	return info_.hasParam(name);
+}
+
+
+docstring const & InsetCommandParams::getParamOr(std::string const & name, docstring const & defaultValue) const
+{
+	if (hasParam(name))
+		return (*this)[name];
+	return defaultValue;
+}
+
+
 docstring const & InsetCommandParams::operator[](string const & name) const
 {
 	static const docstring dummy;
-	LASSERT(info_.hasParam(name), return dummy);
+	LASSERT(hasParam(name), return dummy);
 	ParamMap::const_iterator data = params_.find(name);
 	if (data == params_.end() || data->second.empty())
 		return dummy;
@@ -620,7 +634,7 @@ docstring const & InsetCommandParams::operator[](string const & name) const
 
 docstring & InsetCommandParams::operator[](string const & name)
 {
-	LATTEST(info_.hasParam(name));
+	LATTEST(hasParam(name));
 	// this will add the name in release mode
 	ParamInfo::ParamData const & param = info_[name];
 	if (param.ignore())

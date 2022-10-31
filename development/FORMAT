@@ -7,6 +7,20 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2022-10-29 Jürgen Spitzmüller <spitz@lyx.org> 
+	* Format incremented to 610: InsetIndexMacros and new IndexInset params:
+	  - \begin_inset IndexMacro [see|seealso|subentry|sortkey], relating to
+	    \index{...|see{content}} -- see
+	    \index{...|seealso{content}} -- seealso
+	    \index{...!subentry} -- subentry
+	    \index{sortkey@...} -- sortkey
+	    see and see also are mutually exclusive
+	  - \begin_inset Index
+	     range start -- \index{...|(}
+	     range end -- \index{...|)}
+	     pageformat cmd -- \index{...|cmd}
+	    pageformat and see[also] are mutually exclusive.
+
 2022-02-11 Jürgen Spitzmüller <spitz@lyx.org> 
 	* Format incremented to 609: \\begin_metadata ... \\end_metadata buffer param.
 	  This takes a list of keyvals for the new \\DocumentMetadata command

@@ -33,6 +33,7 @@
 \float_placement class
 \float_alignment class
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -48,8 +49,9 @@
 \use_package undertilde 1
 \cite_engine basic
 \cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
-\use_indices false
+\use_indices true
 \paperorientation portrait
 \suppress_date false
 \justification true
@@ -59,6 +61,10 @@
 \index Index
 \shortcut idx
 \color #008000
+\end_index
+\index Secondary
+\shortcut sec
+\color #550000
 \end_index
 \secnumdepth 3
 \tocdepth 3
@@ -86,120 +92,37 @@
 \begin_body
 
 \begin_layout Title
-Index tests
+Multiple indices tests
 \end_layout
 
 \begin_layout Standard
-Text
 \begin_inset Index idx
 range none
 pageformat default
 status open
 
 \begin_layout Plain Layout
-Text
+A
 \end_layout
 
 \end_inset
 
 
-\begin_inset Index idx
-range none
-pageformat default
-status open
-
-\begin_layout Plain Layout
-SortedAs@Text
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-range none
-pageformat default
-status open
-
-\begin_layout Plain Layout
-Primary!Secondary
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-range none
-pageformat default
-status open
-
-\begin_layout Plain Layout
-SortedPrimary@Primary!Secondary
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-range none
-pageformat default
-status open
-
-\begin_layout Plain Layout
-Primary!Secondary!Tertiary
-\end_layout
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
-Text
 \begin_inset Index idx
 range none
 pageformat default
 status open
 
 \begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-range none
-pageformat default
-status open
-
-\begin_layout Plain Layout
-\begin_inset IndexMacro sortkey
-status open
-
-\begin_layout Plain Layout
-SortedAs
-\end_layout
-
-\end_inset
-
-Text
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-range none
-pageformat default
-status open
-
-\begin_layout Plain Layout
-Primary
+A
 \begin_inset IndexMacro subentry
 status open
 
 \begin_layout Plain Layout
-Secondary
+B
 \end_layout
 
 \end_inset
@@ -210,49 +133,21 @@ Secondary
 \end_inset
 
 
-\begin_inset Index idx
+\end_layout
+
+\begin_layout Standard
+\begin_inset Index sec
 range none
 pageformat default
 status open
 
 \begin_layout Plain Layout
-\begin_inset IndexMacro sortkey
-status open
-
-\begin_layout Plain Layout
-SortedPrimary
-\end_layout
-
-\end_inset
-
-Primary
+A
 \begin_inset IndexMacro subentry
 status open
 
 \begin_layout Plain Layout
-Secondary
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-range none
-pageformat default
-status open
-
-\begin_layout Plain Layout
-Primary
-\begin_inset IndexMacro subentry
-status open
-
-\begin_layout Plain Layout
-Secondary
+B
 \end_layout
 
 \end_inset
@@ -262,7 +157,7 @@ Secondary
 status open
 
 \begin_layout Plain Layout
-Tertiary
+C
 \end_layout
 
 \end_inset
@@ -272,7 +167,57 @@ Tertiary
 
 \end_inset
 
-.
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Index sec
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+A
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Index sec
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+E
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -280,6 +225,19 @@ Tertiary
 LatexCommand printindex
 type "idx"
 name "Index"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset index_print
+LatexCommand printindex
+type "sec"
+name "Index"
+literal "false"
 
 \end_inset
 

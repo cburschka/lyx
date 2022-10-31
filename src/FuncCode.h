@@ -501,6 +501,8 @@ enum FuncCode
 	// 390
 	LFUN_SPELLING_REMOVE_LOCAL,     // jspitzm 20210307
 	LFUN_BRANCH_SYNC_ALL,           // sanda 20220415
+	LFUN_INDEXMACRO_INSERT,         // spitz 20220220
+	// 395
 	LFUN_LASTACTION                 // end of the table
 };
 

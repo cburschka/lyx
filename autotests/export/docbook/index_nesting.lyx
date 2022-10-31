@@ -86,120 +86,37 @@
 \begin_body
 
 \begin_layout Title
-Index tests
+Index nesting tests
 \end_layout
 
 \begin_layout Standard
-Text
 \begin_inset Index idx
 range none
 pageformat default
 status open
 
 \begin_layout Plain Layout
-Text
+A
 \end_layout
 
 \end_inset
 
 
-\begin_inset Index idx
-range none
-pageformat default
-status open
-
-\begin_layout Plain Layout
-SortedAs@Text
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-range none
-pageformat default
-status open
-
-\begin_layout Plain Layout
-Primary!Secondary
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-range none
-pageformat default
-status open
-
-\begin_layout Plain Layout
-SortedPrimary@Primary!Secondary
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-range none
-pageformat default
-status open
-
-\begin_layout Plain Layout
-Primary!Secondary!Tertiary
-\end_layout
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
-Text
 \begin_inset Index idx
 range none
 pageformat default
 status open
 
 \begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-range none
-pageformat default
-status open
-
-\begin_layout Plain Layout
-\begin_inset IndexMacro sortkey
-status open
-
-\begin_layout Plain Layout
-SortedAs
-\end_layout
-
-\end_inset
-
-Text
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-range none
-pageformat default
-status open
-
-\begin_layout Plain Layout
-Primary
+A
 \begin_inset IndexMacro subentry
 status open
 
 \begin_layout Plain Layout
-Secondary
+B
 \end_layout
 
 \end_inset
@@ -210,49 +127,21 @@ Secondary
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Index idx
 range none
 pageformat default
 status open
 
 \begin_layout Plain Layout
-\begin_inset IndexMacro sortkey
-status open
-
-\begin_layout Plain Layout
-SortedPrimary
-\end_layout
-
-\end_inset
-
-Primary
+A
 \begin_inset IndexMacro subentry
 status open
 
 \begin_layout Plain Layout
-Secondary
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-range none
-pageformat default
-status open
-
-\begin_layout Plain Layout
-Primary
-\begin_inset IndexMacro subentry
-status open
-
-\begin_layout Plain Layout
-Secondary
+B
 \end_layout
 
 \end_inset
@@ -262,7 +151,7 @@ Secondary
 status open
 
 \begin_layout Plain Layout
-Tertiary
+C
 \end_layout
 
 \end_inset
@@ -272,7 +161,57 @@ Tertiary
 
 \end_inset
 
-.
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+A
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+E
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

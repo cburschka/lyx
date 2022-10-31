@@ -215,17 +215,22 @@ public:
 
 	/// Does an optional argument follow after the current token?
 	bool hasOpt(std::string const & l = "[");
+	/// Does this index entry has levels?
+	bool hasIdxMacros(std::string const & c,
+			  std::string const & e = std::string());
 	///
 	typedef std::pair<bool, std::string> Arg;
 	/*!
 	 * Get an argument enclosed by \p left and \p right.
 	 * If \p allow_escaping is true, a right delimiter escaped by a
 	 * backslash does not count as delimiter, but is included in the
-	 * argument.
+	 * argument. The \p e allows for a different escape character
+	 * (used in index insets)
 	 * \returns whether an argument was found in \p Arg.first and the
 	 * argument in \p Arg.second. \see getArg().
 	 */
-	Arg getFullArg(char left, char right, bool allow_escaping = true);
+	Arg getFullArg(char left, char right, bool allow_escaping = true,
+		       char e = char());
 	/*!
 	 * Get an argument enclosed by \p left and \p right.
 	 * If \p allow_escaping is true, a right delimiter escaped by a
@@ -236,7 +241,8 @@ public:
 	 * getFullArg() if you need to know whether there was an empty
 	 * argument or no argument at all.
 	 */
-	std::string getArg(char left, char right, bool allow_escaping = true);
+	std::string getArg(char left, char right, bool allow_escaping = true,
+			   char e = char());
 	/*!
 	 * Like getOpt(), but distinguishes between a missing argument ""
 	 * and an empty argument "[]".

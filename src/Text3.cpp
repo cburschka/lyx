@@ -58,6 +58,7 @@
 #include "insets/InsetGraphics.h"
 #include "insets/InsetGraphicsParams.h"
 #include "insets/InsetInfo.h"
+#include "insets/InsetIndexMacro.h"
 #include "insets/InsetIPAMacro.h"
 #include "insets/InsetNewline.h"
 #include "insets/InsetQuotes.h"
@@ -2090,6 +2091,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_BRANCH_INSERT:
 	case LFUN_PHANTOM_INSERT:
 	case LFUN_ERT_INSERT:
+	case LFUN_INDEXMACRO_INSERT:
 	case LFUN_LISTING_INSERT:
 	case LFUN_MARGINALNOTE_INSERT:
 	case LFUN_ARGUMENT_INSERT:
@@ -3275,6 +3277,14 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		}
 		code = HYPERLINK_CODE;
 		break;
+	case LFUN_INDEXMACRO_INSERT: {
+		string const arg = cmd.getArg(0);
+		if (arg == "sortkey")
+			code = INDEXMACRO_SORTKEY_CODE;
+		else
+			code = INDEXMACRO_CODE;
+		break;
+	}
 	case LFUN_IPAMACRO_INSERT: {
 		string const arg = cmd.getArg(0);
 		if (arg == "deco")

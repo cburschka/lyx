@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This DocBook file was created by LyX 2.4.0dev
+  See https://www.lyx.org/ for more information -->
+<article xml:lang="en_US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
+<title>Index nesting tests</title>
+<para><indexterm><primary>A</primary></indexterm></para>
+<para><indexterm><primary>A</primary><secondary>B</secondary></indexterm></para>
+<para><indexterm><primary>A</primary><secondary>B</secondary><tertiary>C</tertiary></indexterm></para>
+<para><indexterm><primary>A</primary><secondary>D</secondary></indexterm></para>
+<para><indexterm><primary>E</primary><secondary>F</secondary></indexterm></para>
+</article>

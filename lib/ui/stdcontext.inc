@@ -631,6 +631,23 @@ Menuset
 	Menu "context-index"
 		IndicesContext
 	End
+	
+	Menu "context-edit-index"
+		OptItem "Insert Subentry|b" "indexmacro-insert subentry"
+		OptItem "Insert Sortkey|k" "indexmacro-insert sortkey"
+		OptItem "Insert See Reference|e" "indexmacro-insert see"
+		OptItem "Insert See also Reference|a" "indexmacro-insert seealso"
+	End
+
+#
+# IndexMacro context menu
+#
+
+	Menu "context-indexmacro"
+		OptItem "See|e" "inset-modify changetype see"
+		OptItem "See also|a" "inset-modify changetype seealso"
+	End
+
 
 #
 # Index Lists context menu
