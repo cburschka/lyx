@@ -104,7 +104,8 @@ private:
 	///
 	void getSubentries(otexstream &, OutputParams const &) const;
 	///
-	std::vector<docstring> getSubentriesAsText(OutputParams const &) const;
+	std::vector<docstring> getSubentriesAsText(OutputParams const &,
+						   bool const asLabel = false) const;
 	///
 	docstring getMainSubentryAsText(OutputParams const & runparams) const;
 	///

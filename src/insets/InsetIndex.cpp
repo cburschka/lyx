@@ -687,7 +687,8 @@ void InsetIndex::getSubentries(otexstream & os, OutputParams const & runparams) 
 }
 
 
-std::vector<docstring> InsetIndex::getSubentriesAsText(OutputParams const & runparams) const
+std::vector<docstring> InsetIndex::getSubentriesAsText(OutputParams const & runparams,
+						       bool const asLabel) const
 {
 	std::vector<docstring> subentries;
 
@@ -703,10 +704,15 @@ std::vector<docstring> InsetIndex::getSubentriesAsText(OutputParams const & runp
 				++i;
 				if (i > 2)
 					break;
-
-				otexstringstream os;
-				iim.getLatex(os, runparams);
-				subentries.emplace_back(os.str());
+				if (asLabel) {
+					docstring const l;
+					docstring const sl = iim.getNewLabel(l);
+					subentries.emplace_back(sl);
+				} else {
+					otexstringstream os;
+					iim.getLatex(os, runparams);
+					subentries.emplace_back(os.str());
+				}
 			}
 		}
 	}
@@ -926,8 +932,15 @@ docstring const InsetIndex::buttonLabel(BufferView const & bv) const
 	docstring res;
 	if (!il.contentaslabel() || geometry(bv) != ButtonOnly)
 		res = label;
-	else
+	else {
 		res = getNewLabel(label);
+		OutputParams const rp(0);
+		vector<docstring> sublbls = getSubentriesAsText(rp, true);
+		for (auto const & sublbl : sublbls) {
+			res += " " + docstring(1, char_type(0x2023));// TRIANGULAR BULLET
+			res += " " + sublbl;
+		}
+	}
 	if (!insetindexpagerangetranslator_latex().find(params_.range).empty())
 		res += " " + from_ascii(insetindexpagerangetranslator_latex().find(params_.range));
 	return res;
@@ -979,11 +992,22 @@ void InsetIndex::addToToc(DocIterator const & cpit, bool output_active,
 	DocIterator pit = cpit;
 	pit.push_back(CursorSlice(const_cast<InsetIndex &>(*this)));
 	docstring str;
+	InsetLayout const & il = getLayout();
+	docstring label = translateIfPossible(il.labelstring());
+	if (!il.contentaslabel())
+		str = label;
+	else {
+		str = getNewLabel(label);
+		OutputParams const rp(0);
+		vector<docstring> sublbls = getSubentriesAsText(rp, true);
+		for (auto const & sublbl : sublbls) {
+			str += " " + docstring(1, char_type(0x2023));// TRIANGULAR BULLET
+			str += " " + sublbl;
+		}
+	}
 	string type = "index";
 	if (buffer().masterBuffer()->params().use_indices)
 		type += ":" + to_utf8(params_.index);
-	// this is unlikely to be terribly long
-	text().forOutliner(str, INT_MAX);
 	TocBuilder & b = backend.builder(type);
 	b.pushItem(pit, str, output_active);
 	// Proceed with the rest of the inset.
