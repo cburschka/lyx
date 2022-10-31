@@ -29,6 +29,7 @@
 #include "LaTeX.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
+#include "LyX.h"
 #include "output_latex.h"
 #include "output_xhtml.h"
 #include "xml.h"
@@ -579,6 +580,14 @@ void InsetIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.bv().updateDialog("index", params2string(params_));
 		break;
 
+	case LFUN_PARAGRAPH_BREAK: {
+		// Since this inset in single-par anyway, let's use
+		// return to enter subindexes
+		FuncRequest fr(LFUN_INDEXMACRO_INSERT, "subindex");
+		lyx::dispatch(fr);
+		break;
+	}
+
 	default:
 		InsetCollapsible::doDispatch(cur, cmd);
 		break;
@@ -609,6 +618,9 @@ bool InsetIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 		flag.setEnabled(realbuffer.params().use_indices);
 		return true;
 	}
+	
+	case LFUN_PARAGRAPH_BREAK:
+		return macrosPossible("subindex");
 	
 	case LFUN_INDEXMACRO_INSERT:
 		return macrosPossible(cmd.getArg(0));
