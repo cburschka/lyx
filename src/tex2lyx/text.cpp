@@ -1563,7 +1563,7 @@ void parse_index_entry(Parser & p, ostream & os, Context & context, string const
 				p.get_token();
 				os << "\\begin_layout Plain Layout\n";
 			} else {
-				begin_inset(os, "IndexMacro subindex");
+				begin_inset(os, "IndexMacro subentry");
 				os << "\nstatus collapsed\n";
 			}
 			// Check for (level-specific) sortkey
@@ -1583,7 +1583,7 @@ void parse_index_entry(Parser & p, ostream & os, Context & context, string const
 			main = false;
 		}
 		if (!main) {
-			begin_inset(os, "IndexMacro subindex");
+			begin_inset(os, "IndexMacro subentry");
 			os << "\nstatus collapsed\n";
 		}
 		// Final level
@@ -1626,7 +1626,7 @@ void parse_index_entry(Parser & p, ostream & os, Context & context, string const
 			os << "\n\\end_layout\n";
 		} else {
 			if (post.empty() && !startrange && !endrange) {
-				parse_text_in_inset(p, os, FLAG_BRACE_LAST, false, context, "IndexMacro subindex");
+				parse_text_in_inset(p, os, FLAG_BRACE_LAST, false, context, "IndexMacro subentry");
 				p.dropPosition();
 			} else {
 				// Handle post-argument

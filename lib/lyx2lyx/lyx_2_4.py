@@ -4461,15 +4461,15 @@ def revert_index_macros(document):
         if j == -1:
             document.warning("Malformed LyX document: Can't find end of index inset at line %d" % i)
             continue
-        # We search for all possible subindexes in turn, store their
+        # We search for all possible subentries in turn, store their
         # content and delete them
         see = []
         seealso = []
-        subindex = []
-        subindex2 = []
+        subentry = []
+        subentry2 = []
         sortkey = []
-        # Two subindexes are allowed, thus the duplication
-        imacros = ["seealso", "see", "subindex", "subindex", "sortkey"]
+        # Two subentries are allowed, thus the duplication
+        imacros = ["seealso", "see", "subentry", "subentry", "sortkey"]
         for imacro in imacros:
             iim = find_token(document.body, "\\begin_inset IndexMacro %s" % imacro, i, j)
             if iim == -1:
@@ -4491,8 +4491,8 @@ def revert_index_macros(document):
                 seealso = icont[1:]
             elif imacro == "see":
                 see = icont[1:]
-            elif imacro == "subindex":
-                # subindexes might hace their own sortkey!
+            elif imacro == "subentry":
+                # subentries might hace their own sortkey!
                 xiim = find_token(document.body, "\\begin_inset IndexMacro sortkey", iimpl, iimple)
                 if xiim != -1:
                     xiime = find_end_of_inset(document.body, xiim)
@@ -4510,10 +4510,10 @@ def revert_index_macros(document):
                                 xicont = document.body[xiimpl:xiimple]
                                 xxicont = document.body[iimpl:xiimpl] + document.body[xiimple+1:iimple]
                                 icont = xicont + put_cmd_in_ert("@") + xxicont[1:]
-                if len(subindex) > 0:
-                    subindex2 = icont[1:]
+                if len(subentry) > 0:
+                    subentry2 = icont[1:]
                 else:
-                    subindex = icont[1:]
+                    subentry = icont[1:]
             elif imacro == "sortkey":
                 sortkey = icont
             # Everything stored. Delete subinset.
@@ -4538,10 +4538,10 @@ def revert_index_macros(document):
             document.body[ple:ple] = put_cmd_in_ert("|" + pagerange + "seealso{") + seealso + put_cmd_in_ert("}")
         elif pageformat != "default":
             document.body[ple:ple] = put_cmd_in_ert("|" + pagerange + pageformat)
-        if len(subindex2) > 0:
-            document.body[ple:ple] = put_cmd_in_ert("!") + subindex2
-        if len(subindex) > 0:
-            document.body[ple:ple] = put_cmd_in_ert("!") + subindex
+        if len(subentry2) > 0:
+            document.body[ple:ple] = put_cmd_in_ert("!") + subentry2
+        if len(subentry) > 0:
+            document.body[ple:ple] = put_cmd_in_ert("!") + subentry
         if len(sortkey) > 0:
             document.body[pl:pl+1] = document.body[pl:pl] + sortkey + put_cmd_in_ert("@")
             

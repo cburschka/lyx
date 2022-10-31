@@ -633,7 +633,7 @@ Menuset
 	End
 	
 	Menu "context-edit-index"
-		OptItem "Insert Subentry|b" "indexmacro-insert subindex"
+		OptItem "Insert Subentry|b" "indexmacro-insert subentry"
 		OptItem "Insert Sortkey|k" "indexmacro-insert sortkey"
 		OptItem "Insert See Reference|e" "indexmacro-insert see"
 		OptItem "Insert See also Reference|a" "indexmacro-insert seealso"

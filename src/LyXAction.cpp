@@ -2311,7 +2311,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_INDEXMACRO_INSERT
  * \li Action: Inserts special Index macros into the document.
  * \li Syntax: indexmacro-insert <type>
- * \li Params: <type>: see, seealso, subindex, sortkey.
+ * \li Params: <type>: see, seealso, subentry, sortkey.
  * \li Origin: spitz, 20 Feb 2022
  * \endvar
  */

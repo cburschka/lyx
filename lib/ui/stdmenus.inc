@@ -534,7 +534,7 @@ Menuset
 	End
 
 	Menu "index_properties"
-		OptItem "Subentry|b" "indexmacro-insert subindex"
+		OptItem "Subentry|b" "indexmacro-insert subentry"
 		OptItem "Sortkey|k" "indexmacro-insert sortkey"
 		OptItem "See|e" "indexmacro-insert see"
 		OptItem "See also|a" "indexmacro-insert seealso"

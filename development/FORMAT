@@ -9,10 +9,10 @@ changes happened in particular if possible. A good example would be
 
 2022-10-29 Jürgen Spitzmüller <spitz@lyx.org> 
 	* Format incremented to 610: InsetIndexMacros and new IndexInset params:
-	  - \begin_inset IndexMacro [see|seealso|subindex|sortkey], relating to
+	  - \begin_inset IndexMacro [see|seealso|subentry|sortkey], relating to
 	    \index{...|see{content}} -- see
 	    \index{...|seealso{content}} -- seealso
-	    \index{...!subindex} -- subindex
+	    \index{...!subentry} -- subentry
 	    \index{sortkey@...} -- sortkey
 	    see and see also are mutually exclusive
 	  - \begin_inset Index

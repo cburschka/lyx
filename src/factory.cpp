@@ -163,8 +163,8 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 		case LFUN_INDEXMACRO_INSERT: {
 			string const arg = cmd.getArg(0);
 			if (arg != "see" && arg != "seealso"
-			    && arg != "subindex" && arg != "sortkey") {
-				LYXERR0("LFUN_IPAMACRO_INSERT: wrong argument");
+			    && arg != "subentry" && arg != "sortkey") {
+				LYXERR0("LFUN_INDEXMACRO_INSERT: wrong argument");
 				return nullptr;
 			}
 			return new InsetIndexMacro(buf, arg);

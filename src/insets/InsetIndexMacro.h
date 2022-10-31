@@ -27,7 +27,7 @@ public:
 	enum Type {
 		See,
 		Seealso,
-		Subindex,
+		Subentry,
 		Sortkey
 	};
 	///

@@ -456,9 +456,9 @@ InsetLayout IndexMacro:sortkey
 	LabelString           "Sort as"
 End
 
-InsetLayout IndexMacro:subindex
+InsetLayout IndexMacro:subentry
 	CopyStyle             IndexMacro:see
-	LabelString           "Subindex"
+	LabelString           "Subentry"
 End
 
 InsetLayout Box

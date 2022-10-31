@@ -582,8 +582,8 @@ void InsetIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_PARAGRAPH_BREAK: {
 		// Since this inset in single-par anyway, let's use
-		// return to enter subindexes
-		FuncRequest fr(LFUN_INDEXMACRO_INSERT, "subindex");
+		// return to enter subentryes
+		FuncRequest fr(LFUN_INDEXMACRO_INSERT, "subentry");
 		lyx::dispatch(fr);
 		break;
 	}
@@ -620,7 +620,7 @@ bool InsetIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 	}
 	
 	case LFUN_PARAGRAPH_BREAK:
-		return macrosPossible("subindex");
+		return macrosPossible("subentry");
 	
 	case LFUN_INDEXMACRO_INSERT:
 		return macrosPossible(cmd.getArg(0));
@@ -675,7 +675,7 @@ void InsetIndex::getSubentries(otexstream & os, OutputParams const & runparams) 
 		if (inset.lyxCode() == INDEXMACRO_CODE) {
 			InsetIndexMacro const & iim =
 				static_cast<InsetIndexMacro const &>(inset);
-			if (iim.params().type == InsetIndexMacroParams::Subindex) {
+			if (iim.params().type == InsetIndexMacroParams::Subentry) {
 				++i;
 				if (i > 2)
 					return;
@@ -700,7 +700,7 @@ std::vector<docstring> InsetIndex::getSubentriesAsText(OutputParams const & runp
 		if (inset.lyxCode() == INDEXMACRO_CODE) {
 			InsetIndexMacro const & iim =
 				static_cast<InsetIndexMacro const &>(inset);
-			if (iim.params().type == InsetIndexMacroParams::Subindex) {
+			if (iim.params().type == InsetIndexMacroParams::Subentry) {
 				++i;
 				if (i > 2)
 					break;
@@ -819,7 +819,7 @@ bool hasInsetWithCode(const InsetIndex * const inset_index, const InsetCode code
 
 bool InsetIndex::hasSubentries() const
 {
-	return hasInsetWithCode(this, INDEXMACRO_CODE, {InsetIndexMacroParams::Subindex});
+	return hasInsetWithCode(this, INDEXMACRO_CODE, {InsetIndexMacroParams::Subentry});
 }
 
 
@@ -838,7 +838,7 @@ bool InsetIndex::hasSortKey() const
 bool InsetIndex::macrosPossible(string const type) const
 {
 	if (type != "see" && type != "seealso"
-	    && type != "sortkey" && type != "subindex")
+	    && type != "sortkey" && type != "subentry")
 		return false;
 
 	Paragraph const & par = paragraphs().front();
@@ -854,8 +854,8 @@ bool InsetIndex::macrosPossible(string const type) const
 			     && (iim.params().type == InsetIndexMacroParams::See
 				 || iim.params().type == InsetIndexMacroParams::Seealso))
 				return false;
-			if (type == "subindex"
-			     && iim.params().type == InsetIndexMacroParams::Subindex) {
+			if (type == "subentry"
+			     && iim.params().type == InsetIndexMacroParams::Subentry) {
 				++subidxs;
 				if (subidxs > 1)
 					return false;

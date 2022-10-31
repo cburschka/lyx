@@ -52,7 +52,7 @@ InsetIndexMacroTranslator const init_insetindexmacrotranslator()
 {
 	InsetIndexMacroTranslator translator("see", InsetIndexMacroParams::See);
 	translator.addPair("seealso", InsetIndexMacroParams::Seealso);
-	translator.addPair("subindex", InsetIndexMacroParams::Subindex);
+	translator.addPair("subentry", InsetIndexMacroParams::Subentry);
 	translator.addPair("sortkey", InsetIndexMacroParams::Sortkey);
 	return translator;
 }
@@ -62,7 +62,7 @@ InsetIndexMacroTranslatorLoc const init_insetindexmacrotranslator_loc()
 {
 	InsetIndexMacroTranslatorLoc translator(_("See"), InsetIndexMacroParams::See);
 	translator.addPair(_("See also"), InsetIndexMacroParams::Seealso);
-	translator.addPair(_("Subindex"), InsetIndexMacroParams::Subindex);
+	translator.addPair(_("Subentry"), InsetIndexMacroParams::Subentry);
 	translator.addPair(_("Sort as"), InsetIndexMacroParams::Sortkey);
 	return translator;
 }
@@ -155,7 +155,7 @@ void InsetIndexMacro::read(Lexer & lex)
 
 void InsetIndexMacro::getLatex(otexstream & os, OutputParams const & runparams) const
 {
-	if (params_.type == InsetIndexMacroParams::Subindex) {
+	if (params_.type == InsetIndexMacroParams::Subentry) {
 		if (hasSortKey()) {
 			getSortkey(os, runparams);
 			os << "@";
@@ -374,7 +374,7 @@ bool InsetIndexMacro::insetAllowed(InsetCode code) const
 	case INDEX_CODE:
 		return false;
 	case INDEXMACRO_SORTKEY_CODE:
-		return (params_.type == InsetIndexMacroParams::Subindex
+		return (params_.type == InsetIndexMacroParams::Subentry
 			&& !hasSortKey());
 	default:
 		return InsetCollapsible::insetAllowed(code);
