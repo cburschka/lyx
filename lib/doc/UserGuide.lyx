@@ -2210,7 +2210,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Navigating ! Outline
+Navigating
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Outline
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2511,7 +2521,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Navigating ! Horizontal Scrolling
+Navigating
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Horizontal
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Scrolling
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2964,24 +2994,12 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Bindings|see
-\begin_inset ERT
-status collapsed
+Bindings
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Key Bindings
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -2998,24 +3016,12 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Shortcuts|see
-\begin_inset ERT
-status collapsed
+Shortcuts
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Key Bindings
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -3476,7 +3482,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LyX
- ! Basics
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Basics
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3492,7 +3508,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Types
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Types
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3534,7 +3560,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Classes
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Classes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3563,7 +3599,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Settings
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3776,20 +3822,30 @@ You will probably find that many of the document classes listed under
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
 Document Class
+\family default
+
 \begin_inset Index idx
 range none
 pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Settings
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings
 \end_layout
 
 \end_inset
 
- 
-\family default
-are marked as 
+
+\end_layout
+
+\end_inset
+
+ are marked as 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3891,7 +3947,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Modules
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Modules
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3920,7 +3986,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Settings
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4030,7 +4106,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Local Layout
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Local Layout
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4635,7 +4721,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Layout
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Layout
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4647,7 +4743,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Settings
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4779,7 +4885,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! fancyhdr
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+fancyhdr
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4822,7 +4938,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Paper size
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Paper size
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4858,7 +4984,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Settings
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4970,7 +5106,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Margins
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Margins
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5003,7 +5149,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Settings
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5054,7 +5210,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paragraph ! Indentation
+Paragraph
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Indentation
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5149,7 +5315,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paragraph ! Separation
+Paragraph
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Separation
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5190,7 +5366,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Settings
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5246,7 +5432,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paragraph ! Line spacing
+Paragraph
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Line spacing
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5259,7 +5455,7 @@ In the
 \family sans
 Document\SpecialChar menuseparator
 Settings
-\noun on
+\family default
 
 \begin_inset Index idx
 range none
@@ -5267,14 +5463,21 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Settings
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings
 \end_layout
 
 \end_inset
 
 
-\family default
-\noun default
+\end_layout
+
+\end_inset
+
  dialog you can set the line spacing for the whole document in the submenu
  
 \family sans
@@ -5302,7 +5505,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! setspace
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+setspace
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5340,19 +5553,29 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paragraph ! Environments
+Paragraph
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Environments
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
-range none
+range start
 pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paragraph environments|(
+Paragraph environments
 \end_layout
 
 \end_inset
@@ -5590,7 +5813,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Title
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Title
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5736,7 +5969,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Section headings ! Numbered
+Section headings
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Numbered
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5945,7 +6188,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Section headings ! Unnumbered
+Section headings
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Unnumbered
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6034,7 +6287,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Settings
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6070,7 +6333,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Section headings ! Short titles
+Section headings
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Short titles
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6356,7 +6629,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paragraph ! Verse
+Paragraph
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Verse
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6561,7 +6844,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Lists ! Itemize
+Lists
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Itemize
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6727,7 +7020,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Settings
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6761,7 +7064,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Lists ! Enumerate
+Lists
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Enumerate
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6950,7 +7263,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Lists ! Description
+Lists
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7130,7 +7453,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Lists ! Labeling
+Lists
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Labeling
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7459,7 +7792,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Lists ! Customized
+Lists
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Customized
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7486,7 +7829,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! enumitem
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+enumitem
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7502,7 +7855,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Lists ! Enumerate ! Custom
+Lists
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Enumerate
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Custom
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7849,7 +8222,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Lists ! Enumerate ! Resumed
+Lists
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Enumerate
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Resumed
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -8009,7 +8402,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Lists ! Spacing
+Lists
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Spacing
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -8087,7 +8490,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! enumitem
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+enumitem
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -8152,7 +8565,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Lists ! Customization
+Lists
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Customization
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -8257,7 +8680,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! enumitem
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+enumitem
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -9074,12 +9507,12 @@ Hello world!
  Use it only in those very special cases where you need to generate text
  as if you used a typewriter.
 \begin_inset Index idx
-range none
+range end
 pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paragraph environments|)
+Paragraph environments
 \end_layout
 
 \end_inset
@@ -9188,14 +9621,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -9208,7 +9639,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9232,7 +9662,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -9244,7 +9673,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Nesting ! Environments
+Nesting
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Environments
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -9672,7 +10111,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Nesting ! Tables etc.
+Nesting
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Tables etc.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -10265,7 +10714,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Nesting ! Examples
+Nesting
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Examples
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -11319,7 +11778,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Nesting ! Separation
+Nesting
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Separation
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -11473,12 +11942,22 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Spaces ! 
+Spaces
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \change_deleted 177693 1654619483
 Protected
 \change_inserted 177693 1654619483
 Non-Breaking
 \change_unchanged
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -11596,7 +12075,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Spacing ! Horizontal
+Spacing
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Horizontal
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -11660,12 +12149,22 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Spaces ! 
+Spaces
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \change_deleted 177693 1654667939
 Inter-word
 \change_inserted 177693 1654667939
 Normal
 \change_unchanged
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -11737,7 +12236,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Spaces ! Thin
+Spaces
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Thin
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12591,7 +13100,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Spacing ! Fills
+Spacing
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Fills
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12856,7 +13375,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Spacing ! Phantom
+Spacing
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Phantom
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13004,7 +13533,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Spacing ! Vertical
+Spacing
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Vertical
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13079,7 +13618,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Settings
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13139,7 +13688,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Spacing ! Fills
+Spacing
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Fills
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13268,7 +13827,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paragraph ! Alignment
+Paragraph
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Alignment
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13392,7 +13961,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Page breaks ! Forced
+Page breaks
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Forced
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13497,7 +14076,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Page breaks ! Clear
+Page breaks
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Clear
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13559,12 +14148,18 @@ status collapsed
 \begin_layout Plain Layout
 
 \change_inserted 5863208 1602706382
-Page Breaks !
+Page Breaks
 \change_unchanged
- 
-\change_inserted 5863208 1602706335
-No Page Break
-\change_unchanged
+
+\begin_inset IndexMacro subentry
+status collapsed
+
+\begin_layout Plain Layout
+Suppress
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -13874,7 +14469,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Font ! Types
+Font
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Types
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13898,7 +14503,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Fonts ! Vector-
+Fonts
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Vector
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13957,7 +14572,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Fonts ! Bitmap-
+Fonts
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Bitmap
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14133,7 +14758,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Font ! Size
+Font
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Size
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14145,7 +14780,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Font
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Font
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14166,7 +14811,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Settings
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14707,7 +15362,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! fontenc
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+fontenc
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14824,7 +15489,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! CJK
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+CJK
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14864,7 +15539,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! microtype
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+microtype
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14974,7 +15659,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Settings
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16637,7 +17332,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Color ! Text
+Color
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Text
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -17204,8 +17909,22 @@ status collapsed
 \begin_layout Plain Layout
 
 \change_inserted 630872221 1621006733
-Color ! Text
+Color
 \change_unchanged
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 630872221 1621006733
+Text
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -18185,12 +18904,22 @@ pageformat default
 status open
 
 \begin_layout Plain Layout
-File formats ! 
+File formats
+\begin_inset IndexMacro subentry
+status collapsed
+
+\begin_layout Plain Layout
+
 \change_deleted -131811572 1600337607
 ASCII
 \change_inserted -131811572 1600337612
 Plain text
 \change_unchanged
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -18312,7 +19041,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-File formats ! \SpecialChar LaTeX
+File formats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -18379,7 +19118,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-File formats ! DVI
+File formats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+DVI
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18480,7 +19229,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-File formats ! PostScript
+File formats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+PostScript
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18536,7 +19295,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! pstricks
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+pstricks
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18608,7 +19377,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-File formats ! PDF
+File formats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+PDF
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18930,7 +19709,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-FileFormats ! XHTML
+FileFormats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+XHTML
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -19031,7 +19820,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Preview
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Preview
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -20111,7 +20910,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! babel
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+babel
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -20366,7 +21175,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Spaces ! inter-word
+Spaces
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+inter-word
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -20401,7 +21220,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Spaces ! thin
+Spaces
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+thin
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -20504,7 +21333,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Typography ! Quotation marks
+Typography
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Quotation marks
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -20516,24 +21355,12 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Quotation marks | see
-\begin_inset ERT
-status collapsed
+Quotation marks
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Typography
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -20588,7 +21415,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Settings
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -21601,7 +22438,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Typography ! Ligatures
+Typography
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Ligatures
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -21613,24 +22460,12 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Ligatures | see
-\begin_inset ERT
-status collapsed
+Ligatures
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Typography
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -21773,7 +22608,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LyX
- ! Proper names
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Proper names
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -21867,7 +22712,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Typography ! Units
+Typography
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Units
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -21988,7 +22843,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Typography ! Widows and orphans
+Typography
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Widows and orphans
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -22727,7 +23592,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Images ! Formats
+Images
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Formats
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -22815,24 +23690,12 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-GIF|see
-\begin_inset ERT
-status collapsed
+GIF
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Image formats
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -22869,24 +23732,12 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-PNG|see
-\begin_inset ERT
-status collapsed
+PNG
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Image formats
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -22935,24 +23786,12 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-JPG|see
-\begin_inset ERT
-status collapsed
+JPG
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Image formats
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -23005,24 +23844,12 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-SVG|see
-\begin_inset ERT
-status collapsed
+SVG
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Image formats
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -23059,24 +23886,12 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-EPS|see
-\begin_inset ERT
-status collapsed
+EPS
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Image formats
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -23159,7 +23974,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Images ! Settings grouping
+Images
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings grouping
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -23838,7 +24663,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Tables ! Multi-page
+Tables
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Multi-page
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26160,7 +26995,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Tables ! Cells
+Tables
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Cells
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26549,7 +27394,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Floats ! Captions
+Floats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Captions
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26590,7 +27445,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Floats ! Figure floats
+Floats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Figure floats
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26940,7 +27805,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Floats ! Table floats
+Floats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Table floats
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -27213,7 +28088,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Floats ! Details
+Floats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Details
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -27451,24 +28336,12 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Formulas|see
-\begin_inset ERT
-status collapsed
+Formulas
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Math
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -27505,7 +28378,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Basics
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Basics
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -27620,7 +28503,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Navigating
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Navigating
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -27778,7 +28671,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Exponents
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Exponents
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -27790,7 +28693,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Subscripts
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Subscripts
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -27901,7 +28814,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Fractions
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Fractions
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -27965,7 +28888,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Roots
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Roots
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28030,7 +28963,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Sums
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Sums
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28042,7 +28985,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Integrals
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Integrals
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28138,7 +29091,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Limits
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Limits
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28201,7 +29164,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Symbols
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Symbols
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28263,7 +29236,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Spaces
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Spaces
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28362,7 +29345,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Functions
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Functions
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28461,7 +29454,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Accents
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Accents
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29146,7 +30149,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Brackets
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Brackets
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29158,7 +30171,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Delimiters
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Delimiters
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29283,7 +30306,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Arrays
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Arrays
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29295,7 +30328,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Matrices
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Matrices
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29307,7 +30350,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Multi-line Equations
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Multi-line Equations
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29591,7 +30644,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Formula numbering
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Formula numbering
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29603,7 +30666,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Referencing formulas
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Referencing formulas
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29818,7 +30891,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Macros
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Macros
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29857,7 +30940,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Typefaces
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Typefaces
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30413,7 +31506,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Text
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Text
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30477,7 +31580,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Font sizes
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Font sizes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30625,7 +31738,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! AMS
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+AMS
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30693,7 +31816,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Settings
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30727,7 +31860,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Multi-line Equations
+Math
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Multi-line Equations
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31171,7 +32314,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! prettyref
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+prettyref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31184,7 +32337,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! refstyle
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+refstyle
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31539,7 +32702,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Navigating ! Outline
+Navigating
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Outline
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32398,7 +33571,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! natbib
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+natbib
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32445,7 +33628,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Settings
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32589,7 +33782,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Bibliography ! Databases
+Bibliography
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Databases
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32701,7 +33904,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! biblatex
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+biblatex
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32753,7 +33966,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Settings
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32787,7 +34010,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Bibliography ! Bib\SpecialChar TeX
+Bibliography
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Bib\SpecialChar TeX
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -32902,7 +34135,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Bibliography ! Biblatex
+Bibliography
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Biblatex
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32915,7 +34158,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! biblatex
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+biblatex
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -33023,7 +34276,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Settings
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -33116,7 +34379,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! biber
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+biber
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -33293,7 +34566,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Bibliography ! Citation format
+Bibliography
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Citation format
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -33362,7 +34645,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Settings
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -33445,7 +34738,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! biblatex
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+biblatex
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -33526,7 +34829,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! jurabib
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+jurabib
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -33551,7 +34864,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! natbib
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+natbib
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -34459,7 +35782,7 @@ reference "sec:Itemize"
 \change_deleted -712698321 1667112419
 
 \series bold
-Lists ! Itemize
+Lists
 \end_layout
 
 \begin_layout Standard
@@ -34473,7 +35796,7 @@ and the command
 \change_deleted -712698321 1667112419
 
 \series bold
-Lists ! Enumerate
+Lists
 \end_layout
 
 \begin_layout Standard
@@ -35048,7 +36371,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Dummy entries ! maïs
+Dummy entries
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+maïs
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35060,7 +36393,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Dummy entries ! maître
+Dummy entries
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+maître
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -36389,7 +37732,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! splitidx
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+splitidx
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -36526,24 +37879,12 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Glossary|see
-\begin_inset ERT
-status collapsed
+Glossary
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Nomenclature
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -36584,7 +37925,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! nomencl
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+nomencl
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -36684,7 +38035,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Nomenclature ! Layout
+Nomenclature
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Layout
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -36967,7 +38328,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Nomenclature ! Sort order
+Nomenclature
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Sort order
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -37109,7 +38480,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Nomenclature ! Options
+Nomenclature
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Options
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -37446,7 +38827,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Nomenclature ! Printing
+Nomenclature
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Printing
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -37572,7 +38963,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Nomenclature ! Program
+Nomenclature
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Program
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -37644,7 +39045,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Branches
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Branches
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -38256,7 +39667,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! hyperref
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+hyperref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -39028,7 +40449,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! caption
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+caption
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -39376,7 +40807,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Header/Footer line
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Header/Footer line
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -40023,7 +41464,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! fancyhdr
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+fancyhdr
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -40228,7 +41679,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Preview
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Preview
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -40261,7 +41722,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! preview-latex
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+preview-latex
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -42192,7 +43663,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Change Tracking
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Change Tracking
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -42270,7 +43751,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Color ! Change tracking
+Color
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Change tracking
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -42296,7 +43787,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Toolbar ! Review
+Toolbar
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Review
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -42797,7 +44298,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! dvipost
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+dvipost
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -42975,7 +44486,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Language ! Options
+Language
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Options
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -42987,7 +44508,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Settings
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -42999,7 +44530,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Language
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Language
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -43138,7 +44679,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Menu ! File
+Menu
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+File
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -44097,7 +45648,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Menu ! Edit
+Menu
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Edit
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -44240,7 +45801,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paragraph ! Settings
+Paragraph
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -44458,7 +46029,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Menu ! View
+Menu
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+View
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -44844,7 +46425,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Menu ! Insert
+Menu
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Insert
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -45129,7 +46720,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Language ! Phonetic symbols
+Language
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Phonetic symbols
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -45150,7 +46751,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! tipa
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+tipa
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -46170,7 +47781,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Tables ! Multi-page ! Caption
+Tables
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Multi-page
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Caption
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -46522,7 +48153,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Menu ! Navigate
+Menu
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Navigate
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -46693,7 +48334,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Menu ! Document
+Menu
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Document
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -47276,7 +48927,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Menu ! Tools
+Menu
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Tools
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -47463,25 +49124,23 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LyX
- ! Reconfigure|see
-\begin_inset ERT
-status collapsed
+
+\begin_inset IndexMacro subentry
+status open
 
 \begin_layout Plain Layout
-
-{
+Reconfigure
 \end_layout
 
 \end_inset
 
-Reconfiguration of \SpecialChar LyX
 
-\begin_inset ERT
-status collapsed
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
+Reconfiguration of \SpecialChar LyX
 
-}
 \end_layout
 
 \end_inset
@@ -47557,7 +49216,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Menu ! Help
+Menu
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Help
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -47657,7 +49326,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Toolbar ! Standard
+Toolbar
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Standard
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -48595,7 +50274,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Toolbar ! Extra
+Toolbar
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Extra
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -49479,7 +51168,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Toolbar ! View / Update
+Toolbar
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+View / Update
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -49804,7 +51503,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Toolbar ! Table
+Toolbar
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Table
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -49824,7 +51533,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Toolbar ! Macro
+Toolbar
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Macro
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -49851,7 +51570,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Document ! Settings
+Document
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -50077,7 +51806,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! prettyref
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+prettyref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -50090,7 +51829,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! refstyle
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+refstyle
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -50322,7 +52071,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Language ! Encoding
+Language
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Encoding
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -50494,8 +52253,22 @@ status collapsed
 
 \change_inserted -712698321 1557645185
 \SpecialChar LaTeX
- packages ! inputenc
+ packages
 \change_unchanged
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1557645185
+inputenc
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -50654,7 +52427,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! babel
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+babel
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -50672,7 +52455,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! polyglossia
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+polyglossia
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -50762,7 +52555,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! inputenc
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+inputenc
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -51075,7 +52878,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! CJK
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+CJK
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -51130,7 +52943,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! japanese
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+japanese
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -51267,7 +53090,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! CJK
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+CJK
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -51348,7 +53181,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! ucs
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+ucs
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -51391,7 +53234,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! inputenc
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+inputenc
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -51481,7 +53334,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Color ! main text
+Color
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+main text
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -51493,7 +53356,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Color ! background
+Color
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+background
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -51505,7 +53378,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Color ! Shaded boxes
+Color
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Shaded boxes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -51517,7 +53400,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Color ! Greyed-out notes
+Color
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Greyed-out notes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -51952,7 +53845,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! biblatex
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+biblatex
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -51969,7 +53872,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! natbib
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+natbib
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -51986,7 +53899,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! jurabib
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+jurabib
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -52010,7 +53933,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! bibtopic
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+bibtopic
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -52102,7 +54035,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! amsmath
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+amsmath
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -52119,7 +54062,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! amssymb
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+amssymb
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -52136,7 +54089,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! cancel
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+cancel
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -52153,7 +54116,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! esint
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+esint
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -52170,7 +54143,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! mathdots
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+mathdots
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -52187,7 +54170,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! mathtools
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+mathtools
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -52204,7 +54197,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! mhchem
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+mhchem
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -52221,7 +54224,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! stackrel
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+stackrel
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -52238,7 +54251,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! stmaryrd
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+stmaryrd
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -52255,7 +54278,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! undertilde
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+undertilde
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -53051,7 +55084,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Customization ! of toolbars
+Customization
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+of toolbars
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -53063,7 +55106,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Customization ! of menus
+Customization
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+of menus
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -53397,7 +55450,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Backup ! Documents
+Backup
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Documents
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -53599,7 +55662,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Font ! Screen
+Font
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Screen
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -53747,8 +55820,18 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Color ! \SpecialChar LyX
+Color
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\SpecialChar LyX
  screen
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -53760,7 +55843,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Settings ! Color
+Settings
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Color
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -53807,7 +55900,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Settings ! Display
+Settings
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Display
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -53868,7 +55971,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Settings ! Editing
+Settings
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Editing
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -54107,7 +56220,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Settings ! Shortcuts
+Settings
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Shortcuts
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -54229,7 +56352,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Key Bindings ! Editing
+Key Bindings
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Editing
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -54431,7 +56564,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Settings ! Keyboard Map
+Settings
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Keyboard Map
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -54598,7 +56741,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Settings ! Paths
+Settings
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Paths
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -54740,7 +56893,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Backup ! Directory
+Backup
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Directory
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -55000,7 +57163,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Language ! Settings
+Language
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -55012,7 +57185,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Settings ! Language
+Settings
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Language
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -55100,7 +57283,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! babel
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+babel
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -55122,7 +57315,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! polyglossia
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+polyglossia
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -55971,7 +58174,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Settings ! Date format
+Settings
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Date format
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -56040,7 +58253,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Settings ! \SpecialChar LaTeX
+Settings
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -56294,7 +58517,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Settings ! Paths
+Settings
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Paths
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -57629,7 +59862,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! biblatex
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+biblatex
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -57682,7 +59925,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! biber
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+biber
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -57937,7 +60190,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! caption
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+caption
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -57990,7 +60253,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! enumitem
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+enumitem
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -58043,7 +60316,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! fancyhdr
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+fancyhdr
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -58096,7 +60379,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! hyperref
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+hyperref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -58149,7 +60442,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! microtype
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+microtype
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -58202,7 +60505,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! nomencl
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+nomencl
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -58255,7 +60568,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! prettyref
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+prettyref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -58308,7 +60631,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! refstyle
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+refstyle
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
