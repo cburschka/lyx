@@ -159,6 +159,7 @@ void InsetIndexMacro::getLatex(otexstream & os, OutputParams const & runparams) 
 		if (hasSortKey()) {
 			getSortkey(os, runparams);
 			os << "@";
+			InsetText::latex(os, runparams);
 		} else {
 			odocstringstream ourlatex;
 			otexstream ots(ourlatex);
