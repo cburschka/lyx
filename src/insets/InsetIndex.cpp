@@ -160,7 +160,7 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 		getSortkey(os, runparams);
 		os << "@";
 		os << ourlatex.str();
-		getSubentries(os, runparams);
+		getSubentries(os, runparams, ourlatex.str());
 		if (hasSeeRef()) {
 			os << "|";
 			os << insetindexpagerangetranslator_latex().find(params_.range);
@@ -214,7 +214,7 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 
 		odocstringstream subentries;
 		otexstream otsub(subentries);
-		getSubentries(otsub, runparams);
+		getSubentries(otsub, runparams, ourlatex.str());
 		if (subentries.str().empty()) {
 			// Separate the entries and subentries, i.e., split on "!".
 			// This goes wrong on an escaped "!", but as the escape
@@ -230,6 +230,12 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 			vector<docstring>::const_iterator it2 = levels_plain.begin();
 			bool first = true;
 			for (; it != end; ++it) {
+				if ((*it).empty()) {
+					emptySubentriesWarning(ourlatex.str());
+					if (it2 < levels_plain.end())
+						++it2;
+					continue;
+				}
 				// The separator needs to be put back when
 				// writing the levels, except for the first level
 				if (!first)
@@ -668,7 +674,22 @@ docstring InsetIndex::getSortkeyAsText(OutputParams const & runparams) const
 }
 
 
-void InsetIndex::getSubentries(otexstream & os, OutputParams const & runparams) const
+void InsetIndex::emptySubentriesWarning(docstring const & mainentry) const
+{
+	// Empty subentries crash makeindex. So warn and ignore this.
+	TeXErrors terr;
+	ErrorList & errorList = buffer().errorList("Export");
+	docstring const s = bformat(_("There is an empty index subentry in the entry '%1$s'.\n"
+				      "It will be ignored in the output."), mainentry);
+	Paragraph const & par = buffer().paragraphs().front();
+	errorList.push_back(ErrorItem(_("Empty index subentry!"), s,
+				      {par.id(), 0}, {par.id(), -1}));
+	buffer().bufferErrors(terr, errorList);
+}
+
+
+void InsetIndex::getSubentries(otexstream & os, OutputParams const & runparams,
+			       docstring const & mainentry) const
 {
 	Paragraph const & par = paragraphs().front();
 	InsetList::const_iterator it = par.insetList().begin();
@@ -679,6 +700,10 @@ void InsetIndex::getSubentries(otexstream & os, OutputParams const & runparams) 
 			InsetIndexMacro const & iim =
 				static_cast<InsetIndexMacro const &>(inset);
 			if (iim.params().type == InsetIndexMacroParams::Subentry) {
+				if (iim.hasNoContent()) {
+					emptySubentriesWarning(mainentry);
+					continue;
+				}
 				++i;
 				if (i > 2)
 					return;

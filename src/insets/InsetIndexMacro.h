@@ -66,6 +66,8 @@ public:
 	int getPlaintext(odocstringstream &, OutputParams const &, size_t) const;
 	///
 	void getDocbook(XMLStream &, OutputParams const &) const;
+	///
+	bool hasNoContent() const;
 private:
 	///
 	InsetCode lyxCode() const override;

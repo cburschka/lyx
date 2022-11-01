@@ -205,6 +205,12 @@ docstring InsetIndexMacro::getXhtml(XMLStream & xs, OutputParams const & runpara
 }
 
 
+bool InsetIndexMacro::hasNoContent() const
+{
+	return paragraphs().front().empty();
+}
+
+
 void InsetIndexMacro::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action()) {

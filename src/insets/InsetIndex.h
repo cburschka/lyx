@@ -102,7 +102,9 @@ private:
 	///
 	docstring getSortkeyAsText(OutputParams const &) const;
 	///
-	void getSubentries(otexstream &, OutputParams const &) const;
+	void emptySubentriesWarning(docstring const & mainentry) const;
+	///
+	void getSubentries(otexstream &, OutputParams const &, docstring const &) const;
 	///
 	std::vector<docstring> getSubentriesAsText(OutputParams const &,
 						   bool const asLabel = false) const;
