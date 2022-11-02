@@ -113,9 +113,11 @@ private:
 	///
 	void getSeeRefs(otexstream &, OutputParams const &) const;
 	///
-	docstring getSeeAsText(OutputParams const & runparams) const;
+	docstring getSeeAsText(OutputParams const & runparams,
+			       bool const asLabel = false) const;
 	///
-	std::vector<docstring> getSeeAlsoesAsText(OutputParams const & runparams) const;
+	std::vector<docstring> getSeeAlsoesAsText(OutputParams const & runparams,
+						  bool const asLabel = false) const;
 	///
 	bool hasSubentries() const;
 	///

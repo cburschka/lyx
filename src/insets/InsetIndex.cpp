@@ -776,7 +776,8 @@ void InsetIndex::getSeeRefs(otexstream & os, OutputParams const & runparams) con
 }
 
 
-docstring InsetIndex::getSeeAsText(OutputParams const & runparams) const
+docstring InsetIndex::getSeeAsText(OutputParams const & runparams,
+				   bool const asLabel) const
 {
 	Paragraph const & par = paragraphs().front();
 	InsetList::const_iterator it = par.insetList().begin();
@@ -786,9 +787,14 @@ docstring InsetIndex::getSeeAsText(OutputParams const & runparams) const
 			InsetIndexMacro const & iim =
 				static_cast<InsetIndexMacro const &>(inset);
 			if (iim.params().type == InsetIndexMacroParams::See) {
-				otexstringstream os;
-				iim.getLatex(os, runparams);
-				return os.str();
+				if (asLabel) {
+					docstring const l;
+					return iim.getNewLabel(l);
+				} else {
+					otexstringstream os;
+					iim.getLatex(os, runparams);
+					return os.str();
+				}
 			}
 		}
 	}
@@ -796,7 +802,8 @@ docstring InsetIndex::getSeeAsText(OutputParams const & runparams) const
 }
 
 
-std::vector<docstring> InsetIndex::getSeeAlsoesAsText(OutputParams const & runparams) const
+std::vector<docstring> InsetIndex::getSeeAlsoesAsText(OutputParams const & runparams,
+						      bool const asLabel) const
 {
 	std::vector<docstring> seeAlsoes;
 
@@ -808,9 +815,14 @@ std::vector<docstring> InsetIndex::getSeeAlsoesAsText(OutputParams const & runpa
 			InsetIndexMacro const & iim =
 				static_cast<InsetIndexMacro const &>(inset);
 			if (iim.params().type == InsetIndexMacroParams::Seealso) {
-				otexstringstream os;
-				iim.getLatex(os, runparams);
-				seeAlsoes.emplace_back(os.str());
+				if (asLabel) {
+					docstring const l;
+					seeAlsoes.emplace_back(iim.getNewLabel(l));
+				} else {
+					otexstringstream os;
+					iim.getLatex(os, runparams);
+					seeAlsoes.emplace_back(os.str());
+				}
 			}
 		}
 	}
@@ -968,6 +980,13 @@ docstring const InsetIndex::buttonLabel(BufferView const & bv) const
 			res += " " + docstring(1, char_type(0x2023));// TRIANGULAR BULLET
 			res += " " + sublbl;
 		}
+		docstring see = getSeeAsText(rp, true);
+		if (see.empty() && !getSeeAlsoesAsText(rp, true).empty())
+			see = getSeeAlsoesAsText(rp, true).front();
+		if (!see.empty()) {
+			res += " " + docstring(1, char_type(0x261e));// WHITE RIGHT POINTING INDEX
+			res += " " + see;
+		}
 	}
 	if (!insetindexpagerangetranslator_latex().find(params_.range).empty())
 		res += " " + from_ascii(insetindexpagerangetranslator_latex().find(params_.range));
@@ -1031,6 +1050,13 @@ void InsetIndex::addToToc(DocIterator const & cpit, bool output_active,
 		for (auto const & sublbl : sublbls) {
 			str += " " + docstring(1, char_type(0x2023));// TRIANGULAR BULLET
 			str += " " + sublbl;
+		}
+		docstring see = getSeeAsText(rp, true);
+		if (see.empty() && !getSeeAlsoesAsText(rp, true).empty())
+			see = getSeeAlsoesAsText(rp, true).front();
+		if (!see.empty()) {
+			str += " " + docstring(1, char_type(0x261e));// WHITE RIGHT POINTING INDEX
+			str += " " + see;
 		}
 	}
 	string type = "index";
