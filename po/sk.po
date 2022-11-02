@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-10-31 21:54+0100\n"
-"PO-Revision-Date: 2022-10-31 21:53+0000\n"
+"POT-Creation-Date: 2022-11-01 15:36+0100\n"
+"PO-Revision-Date: 2022-11-01 14:42+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -35964,6 +35964,19 @@ msgstr "CHÝBA: "
 #: src/insets/InsetIndex.cpp:157
 msgid "Index sorting failed"
 msgstr "Triedenie registra zlyhalo"
+
+#: src/insets/InsetIndex.cpp:682
+#, c-format
+msgid ""
+"There is an empty index subentry in the entry '%1$s'.\n"
+"It will be ignored in the output."
+msgstr ""
+"Je to prázdny pod-záznam v hesle '%1$s'.\n"
+"Vo výstupe bude ignorovaný."
+
+#: src/insets/InsetIndex.cpp:685
+msgid "Empty index subentry!"
+msgstr "Prázdny pod-záznam registra!"
 
 #: src/insets/InsetIndex.cpp:470
 msgid "Index Entry"
