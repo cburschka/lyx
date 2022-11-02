@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 609
+\lyxformat 610
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -326,7 +326,7 @@ status open
 
 \begin_layout Plain Layout
 To export all parts of this document to PDF, PS, or DVI the \SpecialChar LaTeX
--packages 
+ packages 
 \series bold
 arydshln
 \series default
@@ -365,6 +365,8 @@ https://wiki.lyx.org/LyX/Manuals#EmbeddedObjects
 \begin_layout Chapter
 Figures
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -375,27 +377,17 @@ Figures
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Graphics|see
-\begin_inset ERT
-status collapsed
+Graphics
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Figures
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -411,10 +403,22 @@ status collapsed
 \begin_layout Section
 Graphics Dialog
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Figures ! Graphics Dialog
+Figures
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Graphics Dialog
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -476,10 +480,22 @@ reference "cha:Units-available-in"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Figures ! rotated
+Figures
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+rotated
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -493,10 +509,22 @@ You can rotate images counter-clockwise by setting a rotation angle and
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Figures ! scaled
+Figures
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+scaled
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -630,10 +658,22 @@ Group
 \family default
  you can define or join an image settings group.
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Figures ! Settings grouping
+Figures
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Settings grouping
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -725,20 +765,44 @@ name "sec:Figure-Floats"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Floats ! Figures
+Floats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Figures
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Figures ! Floats
+Figures
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Floats
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -916,10 +980,22 @@ A 3D object.
 
 \begin_layout Standard
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-References ! to Figures
+References
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+to Figures
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1200,6 +1276,8 @@ name "sec:Image-Formats"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -1210,10 +1288,22 @@ Image Formats
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Figures ! Image Formats
+Figures
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Image Formats
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1291,27 +1381,17 @@ Graphics Interchange Format
 
 )
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-GIF|see
-\begin_inset ERT
-status collapsed
+GIF
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Image formats
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -1343,27 +1423,17 @@ Portable Network Graphics
 
 )
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-PNG|see
-\begin_inset ERT
-status collapsed
+PNG
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Image formats
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -1407,27 +1477,17 @@ Joint Photographic Experts Group
 
 )
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-JPG|see
-\begin_inset ERT
-status collapsed
+JPG
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Image formats
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -1475,27 +1535,17 @@ Scalable Vector Graphics
 
 )
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-SVG|see
-\begin_inset ERT
-status collapsed
+SVG
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Image formats
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -1527,27 +1577,17 @@ Encapsulated PostScript
 
 )
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-EPS|see
-\begin_inset ERT
-status collapsed
+EPS
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Image formats
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -1579,6 +1619,8 @@ Portable Document Format
 
 )
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -1609,27 +1651,17 @@ Windows Metafile
 
 )
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-WMF|see
-\begin_inset ERT
-status collapsed
+WMF
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Image formats
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -1685,6 +1717,8 @@ PDF/EPS converter available.
 \begin_layout Chapter
 Tables
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -1699,10 +1733,22 @@ Table
 \begin_layout Section
 Introduction
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Introduction
+Table
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Introduction
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2043,10 +2089,22 @@ Text Layout
 \begin_layout Section
 Table Dialog
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Dialog
+Table
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Dialog
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2109,10 +2167,22 @@ Table
 
 Settings Here you can set the table width
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Width
+Table
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Width
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2535,10 +2605,22 @@ reference "sec:Special-Longtable-Issues"
 \begin_layout Section
 Table Toolbar
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Toolbar
+Table
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Toolbar
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2973,10 +3055,22 @@ Note:
 \begin_layout Section
 Edit Table Menu
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Edit Menu
+Table
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Edit Menu
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3005,20 +3099,44 @@ name "sec:Table-Floats"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Floats ! Tables
+Floats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Tables
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Floats
+Table
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Floats
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3345,11 +3463,23 @@ caption
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! caption
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+caption
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3405,10 +3535,22 @@ reference "sec:Caption-Formatting"
 
 \begin_layout Standard
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-References ! to Tables
+References
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+to Tables
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3473,6 +3615,8 @@ name "sec:Multi-page-Tables"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3483,10 +3627,22 @@ Multi-page Table
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Multi-page Table
+Table
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Multi-page Table
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5778,10 +5934,32 @@ name "subsec:Footnotes-in-Multi-page"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Multi-page Table ! Footnotes
+Table
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Multi-page Table
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Footnotes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5810,10 +5988,32 @@ reference "tab:DiffCaptions"
 \begin_layout Subsection
 Multi-page Table Alignment
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Multi-page Table ! Alignment
+Table
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Multi-page Table
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Alignment
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6228,10 +6428,32 @@ reference "subsec:Multi-page-Table-Captions"
 \begin_layout Subsection
 Multi-page Table Captions
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Multi-page Table ! Captions
+Table
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Multi-page Table
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Captions
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6692,11 +6914,23 @@ Note
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! hyperref
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+hyperref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6721,10 +6955,32 @@ Document Settings
 \begin_layout Subsubsection
 References to multi-page tables
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Multi-page Table ! References
+Table
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Multi-page Table
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+References
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7073,11 +7329,23 @@ caption
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! caption
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+caption
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7099,10 +7367,32 @@ reference "sec:Caption-Formatting"
 \begin_layout Subsubsection
 Caption Width
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Multi-page Table ! Caption Width
+Table
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Multi-page Table
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Caption Width
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7867,11 +8157,23 @@ caption
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! caption
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+caption
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7930,10 +8232,32 @@ caption
 \begin_layout Subsubsection
 Different Captions for Table Pages
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Multi-page Table ! Different Captions for Pages
+Table
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Multi-page Table
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Different Captions for Pages
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -9867,10 +10191,32 @@ name "sec:Special-Longtable-Issues"
 \begin_layout Subsection
 Multi-page Table Calculation
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Multi-page Table ! Calculation
+Table
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Multi-page Table
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Calculation
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -9913,10 +10259,32 @@ setcounter{LTchunksize}{100}
 \begin_layout Subsection
 Floats and Multi-page Tables
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Multi-page Table ! Floats
+Table
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Multi-page Table
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Floats
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -9951,10 +10319,32 @@ Page
 \begin_layout Subsection
 Forced Page Breaks
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Multi-page Table ! Forced Page Breaks
+Table
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Multi-page Table
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Forced Page Breaks
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -11410,6 +11800,8 @@ name "subsec:Multiple-Lines-in"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -11420,10 +11812,22 @@ Multiple Lines in Table Cells
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Linebreaks
+Table
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Linebreaks
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -11891,6 +12295,8 @@ name "subsec:Multicolumns"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -11901,10 +12307,22 @@ Multicolumns
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Multicolumns
+Table
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Multicolumns
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12094,10 +12512,22 @@ name "subsec:Multicolumn-Calculations"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Multicolumns ! Calculations
+Multicolumns
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Calculations
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12538,11 +12968,23 @@ calc
 \series default
  must be loaded with the document preamble line
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! calc
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+calc
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12675,6 +13117,8 @@ name "subsec:Multirows"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12685,10 +13129,22 @@ Multirows
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Multirows
+Table
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Multirows
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13178,11 +13634,23 @@ diagbox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! picinpar
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+picinpar
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14381,11 +14849,23 @@ calc
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! calc
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+calc
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14970,10 +15450,22 @@ name "sec:Formal-Tables"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Formal
+Table
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Formal
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -15959,11 +16451,23 @@ literal "true"
 
 .
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! booktabs
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+booktabs
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16431,10 +16935,22 @@ in % of pixel size
 \begin_layout Section
 Vertical Table Alignment
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Alignment
+Table
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Alignment
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -17261,10 +17777,22 @@ name "sec:Colored-Tables"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Color
+Table
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Color
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -17275,20 +17803,44 @@ Table ! Color
 \begin_layout Subsection
 Colored Cells
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table Color ! for Cells
+Table Color
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+for Cells
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Color ! for Table Cells
+Color
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+for Table Cells
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -17497,11 +18049,23 @@ colortbl
 \series default
 .
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! colortbl
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+colortbl
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18165,20 +18729,44 @@ fi
 \begin_layout Subsection
 Colored Rows
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table Color ! for Rows
+Table Color
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+for Rows
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Color ! for Table Rows
+Color
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+for Table Rows
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18195,19 +18783,18 @@ xcolor
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! xcolor
-\begin_inset ERT
-status collapsed
+ packages
+\begin_inset IndexMacro subentry
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-vspace{4mm}
+xcolor
 \end_layout
 
 \end_inset
@@ -18239,11 +18826,23 @@ colortbl
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! colortbl
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+colortbl
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18843,20 +19442,44 @@ fi
 \begin_layout Subsection
 Colored Lines
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table Color ! for Lines
+Table Color
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+for Lines
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Color ! for Table Lines
+Color
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+for Table Lines
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -20933,16 +21556,30 @@ name "sec:Rotated-Table-Cells"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Rotated Cells
+Table
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Rotated Cells
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -21432,11 +22069,23 @@ calc
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! calc
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+calc
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -21652,6 +22301,8 @@ for the smaller ones:
 \begin_layout Section
 Table Customization
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -21662,10 +22313,22 @@ Table Customization
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Customization
+Table
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Customization
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -21683,10 +22346,22 @@ name "subsec:Row-Spacing"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table Customization ! Row Spacing
+Table Customization
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Row Spacing
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -22426,10 +23101,22 @@ name "subsec:Special-Cell-Alignment"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table Customization ! Special Cell Alignment
+Table Customization
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Special Cell Alignment
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -23107,10 +23794,22 @@ name "subsec:Customized-Format"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table Customization ! Cell/Column Format
+Table Customization
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Cell/Column Format
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -23590,10 +24289,22 @@ name "subsec:Line-Thickness"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table Customization ! Line Thickness
+Table Customization
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Line Thickness
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -24319,10 +25030,22 @@ sd
 \begin_layout Subsection
 Dashed Lines
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table Customization ! Dashed Lines
+Table Customization
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Dashed Lines
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -24679,11 +25402,23 @@ arydshln
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! arydshln
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+arydshln
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -25731,11 +26466,23 @@ colortbl
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! colortbl
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+colortbl
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -25829,6 +26576,8 @@ name "chap:Floats"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -25850,10 +26599,22 @@ name "sec:FloatIntroduction"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Floats ! Introduction
+Floats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Introduction
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26027,10 +26788,22 @@ reference "sec:Wrap-Floats"
 \begin_layout Subsection
 Algorithm Floats
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Floats ! Algorithms
+Floats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Algorithms
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26296,10 +27069,22 @@ package
 \begin_layout Section
 Float Numbering
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Floats ! Numbering
+Floats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Numbering
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26449,20 +27234,44 @@ name "sec:Referencing-Floats"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Floats ! References
+Floats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+References
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-References ! to Floats
+References
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+to Floats
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26589,10 +27398,22 @@ name "subsec:Cross-Reference-Formats"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-References ! Formats
+References
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Formats
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26723,22 +27544,46 @@ refstyle
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! prettyref
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+prettyref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! refstyle
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+refstyle
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -27015,11 +27860,23 @@ refstyle
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! refstyle
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+refstyle
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -27030,11 +27887,23 @@ prettyref
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! prettyref
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+prettyref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -27069,10 +27938,22 @@ fig:
 \begin_layout Subsection
 Automatic Reference Naming
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-References ! Automatic Reference Naming
+References
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Automatic Reference Naming
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -27088,11 +27969,23 @@ hyperref
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! hyperref
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+hyperref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -27322,10 +28215,22 @@ name "subsec:Reference-Position"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-References ! Reference Position
+References
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Reference Position
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -27340,11 +28245,23 @@ hyperref
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! hyperref
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+hyperref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -27369,11 +28286,23 @@ hypcap
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! hypcap
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+hypcap
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -27385,11 +28314,23 @@ oberdiek
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! oberdiek
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+oberdiek
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -27468,15 +28409,27 @@ name "sec:Float-Settings"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Floats ! 
+Floats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \change_deleted -712698321 1526031841
 Placement
 \change_inserted -712698321 1526031842
 Settings
 \change_unchanged
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -27611,13 +28564,29 @@ name "sec:Float-Placement"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 
 \change_inserted -712698321 1526031775
-Floats ! Placement
+Floats
 \change_unchanged
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1526031775
+Placement
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -28073,11 +29042,23 @@ endfloat
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! endfloat
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+endfloat
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28370,10 +29351,22 @@ name "sec:Rotated-Floats"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Floats ! Rotating
+Floats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Rotating
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28551,10 +29544,22 @@ e
 \begin_layout Section
 Subfloats
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Floats ! Subfloats
+Floats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Subfloats
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29056,10 +30061,22 @@ e
 \begin_layout Section
 Floats Side by Side
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Floats ! Side by side
+Floats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Side by side
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29295,20 +30312,44 @@ varwidth-floats-side-by-side
 \begin_layout Section
 Caption Formatting
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Caption ! Formatting
+Caption
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Formatting
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Floats ! Caption Formatting
+Floats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Caption Formatting
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29378,11 +30419,23 @@ caption
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! caption
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+caption
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29518,11 +30571,23 @@ KOMA-Script
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! KOMA-Script
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+KOMA-Script
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29634,11 +30699,23 @@ KOMA-Script
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! KOMA-Script
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+KOMA-Script
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29902,20 +30979,44 @@ e
 \begin_layout Section
 Caption Placement
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Caption ! Placement
+Caption
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Placement
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Floats ! Caption Placement
+Floats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Caption Placement
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29970,11 +31071,23 @@ caption
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! caption
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+caption
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30020,11 +31133,23 @@ KOMA-Script
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! KOMA-Script
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+KOMA-Script
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30407,11 +31532,23 @@ sidecap
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! sidecap
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+sidecap
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31094,11 +32231,23 @@ hypcap
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! hypcap
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+hypcap
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31884,10 +33033,22 @@ fi
 \begin_layout Section
 Listings of Floats
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Floats ! Float Lists
+Floats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Float Lists
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31932,11 +33093,23 @@ Notes
 \SpecialChar LyX
  Notes
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Notes ! \SpecialChar LyX
+Notes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\SpecialChar LyX
  Notes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32217,16 +33390,30 @@ name "sec:Footnotes"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Notes ! Footnotes
+Notes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Footnotes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -32707,10 +33894,22 @@ name "subsec:Footnote-Numbering"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Footnotes ! Numbering
+Footnotes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Numbering
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -33082,10 +34281,22 @@ Roman{footnote}}
 \begin_layout Subsection
 Footnote Placement
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Footnotes ! Placement
+Footnotes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Placement
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -33171,11 +34382,23 @@ ftnright
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! ftnright
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+ftnright
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -33359,6 +34582,8 @@ endnotes
 
 .
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -33603,11 +34828,23 @@ footmisc
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! footmisc
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+footmisc
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -33640,11 +34877,23 @@ KOMA-Script
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! KOMA-Script
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+KOMA-Script
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -33664,10 +34913,22 @@ literal "true"
 \begin_layout Section
 Margin Notes
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Notes ! Margin Notes
+Notes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Margin Notes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -33989,11 +35250,23 @@ marginnote
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! marginnote
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+marginnote
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -34548,10 +35821,22 @@ Boxes
 \begin_layout Section
 Introduction
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Boxes ! Introduction
+Boxes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Introduction
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -34805,10 +36090,22 @@ name "sec:Box-Dialog"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Boxes ! Box Dialog
+Boxes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Box Dialog
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -34819,10 +36116,22 @@ Boxes ! Box Dialog
 \begin_layout Subsection
 Size
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Boxes ! Size
+Boxes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Size
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35056,10 +36365,22 @@ Width
 \begin_layout Subsection
 Alignment
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Boxes ! Alignment
+Boxes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Alignment
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35466,10 +36787,22 @@ name "sec:Decoration"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Boxes ! Decoration
+Boxes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Decoration
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35805,11 +37138,23 @@ fancybox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! fancybox
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+fancybox
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35858,10 +37203,22 @@ Allow page break box
 \begin_layout Section
 Box Customization
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Boxes ! Customization
+Boxes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Customization
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -36178,10 +37535,22 @@ name "sec:Minipages"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Boxes ! Minipages
+Boxes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Minipages
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -36426,10 +37795,22 @@ name "sec:Parboxes"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Boxes ! Parboxes
+Boxes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Parboxes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -36489,10 +37870,22 @@ This footnote is inside a parbox and will therefore not appear.
 \begin_layout Section
 Boxes for Words and Characters
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Boxes ! for Characters
+Boxes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+for Characters
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -36510,10 +37903,22 @@ name "sec:Prevent-Hyphenation"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Boxes ! to Prevent Hyphenation
+Boxes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+to Prevent Hyphenation
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -36728,20 +38133,44 @@ name "subsec:Vertical-Alignment"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Boxes ! for Vertical Alignment
+Boxes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+for Vertical Alignment
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Boxes ! Raiseboxes
+Boxes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Raiseboxes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -37065,10 +38494,22 @@ name "sec:Colored-Boxes"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Boxes ! Color
+Boxes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Color
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -37381,16 +38822,30 @@ Note:
 \begin_layout Subsection
 Rotated Boxes
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Boxes ! rotated
+Boxes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+rotated
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -37729,20 +39184,44 @@ r
 
  and table.
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Figures ! rotated
+Figures
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+rotated
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table Customization ! Rotating
+Table Customization
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Rotating
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -37776,16 +39255,30 @@ Angle
 \begin_layout Subsection
 Scaled Boxes
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Boxes ! scaled
+Boxes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+scaled
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -38498,20 +39991,44 @@ status open
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Figures ! scaled
+Figures
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+scaled
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Table Customization ! Scaling
+Table Customization
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Scaling
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -38548,6 +40065,8 @@ fleqn
 \begin_layout Chapter
 Objects Surrounded by Text
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -38569,20 +40088,44 @@ name "sec:Wrap-Floats"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Floats ! Wrap Floats
+Floats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Wrap Floats
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Surrounded by text ! Wrap Floats
+Surrounded by text
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Wrap Floats
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -38665,11 +40208,23 @@ wrapfig
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! wrapfig
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+wrapfig
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -38827,10 +40382,22 @@ reference "chap:Floats"
 \begin_layout Section
 Surrounded Fixed Objects
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Surrounded by text ! Fixed objects
+Surrounded by text
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Fixed objects
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -39507,11 +41074,23 @@ picinpar
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! picinpar
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+picinpar
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -39827,6 +41406,8 @@ fi
 \begin_layout Section
 Initials
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -39837,10 +41418,22 @@ Initials
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Surrounded by text ! Initials
+Surrounded by text
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Initials
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -39856,11 +41449,23 @@ lettrine
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! lettrine
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+lettrine
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -40310,6 +41915,8 @@ fi
 \begin_layout Chapter
 External Document Parts
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -40387,10 +41994,22 @@ Document \SpecialChar LyX
 \begin_layout Section
 External Material
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-External Document Parts ! External Material
+External Document Parts
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+External Material
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -40776,11 +42395,23 @@ literal "true"
 
 .
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! pdfpages
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+pdfpages
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -41046,20 +42677,44 @@ name "sec:Child-Documents"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-External Document Parts ! Child Documents
+External Document Parts
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Child Documents
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Files ! Include
+Files
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Include
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -41600,6 +43255,8 @@ name "cha:Program-Code-Listings"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -41610,6 +43267,8 @@ Listings
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -41620,10 +43279,22 @@ Program Code
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Floats ! Listings
+Floats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Listings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -41643,17 +43314,29 @@ Program Listing
 \family default
 .
  The \SpecialChar LaTeX
--packages 
+ packages 
 \series bold
 listings
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! listings
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+listings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -41664,11 +43347,23 @@ minted
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! minted
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+minted
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -42676,6 +44371,8 @@ literal "true"
 Units available in \SpecialChar LyX
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -43469,37 +45166,39 @@ name "cha:Output-File-Formats"
 \begin_layout Section
 DVI
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-File Formats ! DVI
+File Formats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+DVI
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+range none
+pageformat default
+status open
 
 \begin_layout Plain Layout
-DVI|see
-\begin_inset ERT
-status collapsed
+DVI
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 File Formats
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -43585,37 +45284,39 @@ View
 \begin_layout Section
 PostScript
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-File Formats ! PostScript
+File Formats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+PostScript
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-PostScript|see
-\begin_inset ERT
-status collapsed
+PostScript
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 File Formats
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -43747,16 +45448,30 @@ View
 \begin_layout Section
 PDF
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-File Formats ! PDF
+File Formats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+PDF
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -47658,11 +49373,23 @@ literal "false"
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! arydshln
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+arydshln
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -47694,11 +49421,23 @@ literal "false"
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! booktabs
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+booktabs
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -47730,11 +49469,23 @@ literal "false"
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! caption
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+caption
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -47766,11 +49517,23 @@ literal "false"
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! diagbox
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+diagbox
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -47802,11 +49565,23 @@ literal "false"
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! endfloat
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+endfloat
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -47838,11 +49613,23 @@ literal "false"
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! footmisc
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+footmisc
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -47874,11 +49661,23 @@ literal "false"
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! hyperref
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+hyperref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -47910,11 +49709,23 @@ literal "false"
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! hyperref
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+hyperref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -47946,11 +49757,23 @@ literal "false"
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! KOMA-Script
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+KOMA-Script
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -47991,11 +49814,23 @@ literal "false"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! lettrine
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+lettrine
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -48027,11 +49862,23 @@ literal "false"
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! listings
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+listings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -48063,11 +49910,23 @@ literal "false"
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! minted
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+minted
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -48099,11 +49958,23 @@ literal "false"
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! marginnote
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+marginnote
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -48135,11 +50006,23 @@ literal "false"
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! pdfpages
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+pdfpages
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -48171,11 +50054,23 @@ literal "false"
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! prettyref
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+prettyref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -48207,11 +50102,23 @@ literal "false"
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! PSTricks
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+PSTricks
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -48243,11 +50150,23 @@ literal "false"
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! refstyle
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+refstyle
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -48279,11 +50198,23 @@ literal "false"
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages ! sidecap
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+sidecap
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
