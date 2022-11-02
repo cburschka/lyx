@@ -73,7 +73,7 @@ protected Q_SLOTS:
 	void on_sortCB_stateChanged(int state);
 	void on_persistentCB_stateChanged(int state);
 	void on_depthSL_valueChanged(int depth);
-	void on_typeCO_currentIndexChanged(int value);
+	void on_typeCO_activated(int value);
 	void on_moveUpTB_clicked();
 	void on_moveDownTB_clicked();
 	void on_moveInTB_clicked();
