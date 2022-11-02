@@ -902,7 +902,7 @@ string correctRegex(string t, bool withformat)
 		}
 		else {
 			if (sub.str(4) == "backslash") {
-				replace = "\\";
+				replace = string("\\");
 				{
 					// transforms '\backslash \{' into '\{'
 					string next = t.substr(sub.position(2) + sub.str(2).length(), 2);
@@ -4372,15 +4372,20 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 {
 	if (!cur)
 		return 0;
-	bool repeat = false;
+	int repeat = 0;
 	DocIterator orig_cur;	// to be used if repeat not successful
 	MatchResult orig_mres;
+	do {
+		orig_cur = cur;
+		cur.forwardPos();
+	} while (cur.depth() > orig_cur.depth());
+	cur = orig_cur;
 	while (!theApp()->longOperationCancelled() && cur) {
 		//(void) findAdvForwardInnermost(cur);
 		LYXERR(Debug::FINDVERBOSE, "findForwardAdv() cur: " << cur);
 		MatchResult mres = match(cur, -1, MatchStringAdv::MatchAnyPlace);
 		string msg = "Starting";
-		if (repeat)
+		if (repeat > 0)
 			msg = "Repeated";
 		displayMres(mres, msg + " findForwardAdv", cur)
 				int match_len = mres.match_len;
@@ -4389,8 +4394,13 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 			match_len = 0;
 		}
 		if (match_len <= 0) {
-			// This should exit nested insets, if any, or otherwise undefine the currsor.
-			cur.pos() = cur.lastpos();
+			if (repeat > 0) {
+				repeat--;
+			}
+			else {
+				// This should exit nested insets, if any, or otherwise undefine the currsor.
+				cur.pos() = cur.lastpos();
+			}
 			LYXERR(Debug::FINDVERBOSE, "Advancing pos: cur=" << cur);
 			cur.forwardPos();
 		}
@@ -4418,7 +4428,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 				cur.pos() = cur.pos() + increment;
 				MatchResult mres2 = match(cur, -1, MatchStringAdv::MatchAnyPlace);
 				displayMres(mres2, "findForwardAdv loop", cur)
-						switch (interpretMatch(mres, mres2)) {
+				switch (interpretMatch(mres, mres2)) {
 					case MatchResult::newIsTooFar:
 						// behind the expected match
 						firstInvalid = increment;
@@ -4426,7 +4436,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 						increment /= 2;
 						break;
 					case MatchResult::newIsBetter:
-						// not reached yet, but cur.pos()+increment is bettert
+						// not reached yet, but cur.pos()+increment is better
 						mres = mres2;
 						firstInvalid -= increment;
 						if (increment > firstInvalid*3/4)
@@ -4449,14 +4459,14 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 			if (mres.match_len > 0) {
 				if (mres.match_prefix + mres.pos - mres.leadsize > 0) {
 					// The match seems to indicate some deeper level
-					repeat = true;
+					repeat = 2;
 					orig_cur = cur;
 					orig_mres = mres;
 					cur.forwardPos();
 					continue;
 				}
 			}
-			else if (repeat) {
+			else if (repeat > 0) {
 				// should never be reached.
 				cur = orig_cur;
 				mres = orig_mres;
