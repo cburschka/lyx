@@ -4434,7 +4434,8 @@ def revert_index_macros(document):
 
     i = 0
     while True:
-        i = find_token(document.body, '\\begin_inset Index', i+1)
+        # trailing blank needed here to exclude IndexMacro insets
+        i = find_token(document.body, '\\begin_inset Index ', i+1)
         if i == -1:
             break
         j = find_end_of_inset(document.body, i)
