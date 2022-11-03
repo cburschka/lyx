@@ -4508,8 +4508,11 @@ def revert_index_macros(document):
                             if xiimple == -1:
                                 document.warning("Malformed LyX document: Can't find end of index macro inset plain layout at line %d" % i)
                             else:
-                                xicont = document.body[xiimpl:xiimple]
-                                xxicont = document.body[xiimple+1:xiim] + document.body[xiime+1:iimple]
+                                # the sortkey
+                                xicont = document.body[xiimpl+1:xiimple]
+                                # everything before ................... or after
+                                xxicont = document.body[iimpl+1:xiim] + document.body[xiime+1:iimple]
+                                # construct the latex sequence
                                 icont = xicont + put_cmd_in_ert("@") + xxicont[1:]
                 if len(subentry) > 0:
                     subentry2 = icont[1:]
