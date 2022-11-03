@@ -45,6 +45,16 @@ Sublabel: lyx_wontfix
 #
 # (currently no tests in this category, but we expect some in the future)
 
+# (https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg218237.html)
+# These are old problems. One is related to a questionable nomencl change
+# which we addressed in master but not in stable, see
+# https://www.lyx.org/trac/ticket/10634#comment:2
+# The other is due to CJK quotation marks which are not supported in 2.3.
+#
+# TODO: unignore these tests after they are not used for compilation anymore
+#       (we only use "recent" lyx2lyx roundtrip to test compilation.
+export/doc/de/UserGuide_lyx2(2|3)
+
 
 # ===========================================
 Sublabel: special
