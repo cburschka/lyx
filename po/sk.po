@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-11-01 15:36+0100\n"
-"PO-Revision-Date: 2022-11-01 14:42+0000\n"
+"POT-Creation-Date: 2022-11-04 12:31+0100\n"
+"PO-Revision-Date: 2022-11-04 11:44+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -20253,6 +20253,38 @@ msgstr "Pridať neznámu vetvu|P"
 #: lib/ui/stdcontext.inc:526
 msgid "Insert Reference at Cursor Position|I"
 msgstr "Vložiť referenciu na pozícii kurzoru|V"
+
+#: lib/ui/stdcontext.inc:634
+msgid "Single Page (No Page Range)|P"
+msgstr "Jednoduchá strana (bez rozsahu strán)|J"
+
+#: lib/ui/stdcontext.inc:635
+msgid "Start Page Range|t"
+msgstr "Začína rozsah strán|Z"
+
+#: lib/ui/stdcontext.inc:636
+msgid "End Page Range|E"
+msgstr "Končí rozsah strán|K"
+
+#: lib/ui/stdcontext.inc:638
+msgid "No Page Formatting|N"
+msgstr "Bez formátovania strán|B"
+
+#: lib/ui/stdcontext.inc:639
+msgid "Bold Page Formatting|B"
+msgstr "Tučné formátovanie strán|T"
+
+#: lib/ui/stdcontext.inc:640
+msgid "Italic Page Formatting|I"
+msgstr "Kurzovné formátovanie strán|u"
+
+#: lib/ui/stdcontext.inc:641
+msgid "Emphasized Page Formatting|z"
+msgstr "Zdôraznené formátovanie strán|d"
+
+#: lib/ui/stdcontext.inc:642
+msgid "Custom Page Formatting|C"
+msgstr "Vlastné formátovanie Strán|V"
 
 #: lib/ui/stdcontext.inc:636
 msgid "Insert Subentry|b"
