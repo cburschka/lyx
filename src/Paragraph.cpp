@@ -4256,7 +4256,10 @@ docstring Paragraph::asString(pos_type beg, pos_type end, int options, const Out
 		else if (c == META_INSET && (options & AS_STR_INSETS)) {
 			if (c == META_INSET && (options & AS_STR_PLAINTEXT)) {
 				LASSERT(runparams != nullptr, return docstring());
-				getInset(i)->plaintext(os, *runparams);
+				if (runparams->find_effective())
+					getInset(i)->toString(os);
+				else
+					getInset(i)->plaintext(os, *runparams);
 			} else if (c == META_INSET && (options & AS_STR_MATHED)
 				   && getInset(i)->lyxCode() == REF_CODE) {
 				Buffer const & buf = getInset(i)->buffer();
