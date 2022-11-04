@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 608
+\lyxformat 610
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -547,10 +547,22 @@ Instructions générales
 \begin_layout Standard
 Pour créer une formule en ligne
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Formules ! en ligne
+Formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+en ligne
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -571,10 +583,22 @@ arg   "math-mode"
 
 Pour créer une formule hors ligne
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Formules ! hors ligne
+Formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+hors ligne
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -624,12 +648,34 @@ displaystyle
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! D ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 displaystyle
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -695,6 +741,8 @@ par une coche.
 Le mode \SpecialChar TeX
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -759,6 +807,8 @@ Pour éviter que ces noms soient reconnus comme des noms propres, on insère
 Pour modifier le préambule \SpecialChar LaTeX
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -843,16 +893,30 @@ texte mathématique
 \emph default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Texte ! dans les formules
+Texte
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+dans les formules
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -874,12 +938,34 @@ text
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! T ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 text
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -933,6 +1019,8 @@ Une commande commence toujours par une barre de fraction inverse (anti-slash)
  accolade \SpecialChar TeX
  dans ce document
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -1475,6 +1563,8 @@ Fonctions de base
 \begin_layout Subsection
 Exposants
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -1485,6 +1575,8 @@ Exposants
 
  et indices
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -1656,6 +1748,8 @@ name "subsec:Fractions"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -1676,12 +1770,34 @@ frac
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! F ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 frac
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1714,12 +1830,34 @@ dfrac
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! D ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 dfrac
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1734,12 +1872,34 @@ tfrac
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! T ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 tfrac
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1935,12 +2095,34 @@ cfrac
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! C ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 cfrac
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2135,12 +2317,34 @@ Pour des fractions en ligne avec une barre de fraction en diagonale, vous
 \backslash
 nicefrac
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! N ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+N
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 nicefrac
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2159,12 +2363,34 @@ unitfrac
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! U ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+U
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 unitfrac
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2253,6 +2479,8 @@ reference "subsec:Fractions-multilignes"
 \begin_layout Subsection
 Racines
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2273,12 +2501,34 @@ sqrt
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! S ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 sqrt
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2298,12 +2548,34 @@ root
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! R ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+R
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 root
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2445,12 +2717,34 @@ leftroot
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! L ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+L
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 leftroot
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2463,12 +2757,34 @@ uproot
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! U ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+U
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 uproot
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2555,6 +2871,8 @@ produit une formule correctement mise en forme:
 \begin_layout Subsection
 Coefficients binomiaux 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2575,12 +2893,34 @@ binom
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! B ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 binom
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2612,12 +2952,34 @@ dbinom
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! D ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 dbinom
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2630,12 +2992,34 @@ tbinom
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! T ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 tbinom
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2650,12 +3034,34 @@ brace
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! B ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 brace
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2668,12 +3074,34 @@ brack
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! B ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 brack
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2883,10 +3311,12 @@ B
 \begin_layout Subsection
 Différentiation de cas 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Différentiation de cas 
+Différentiation de cas
 \end_layout
 
 \end_inset
@@ -2938,12 +3368,34 @@ A
 
 B>0
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! C ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 cases
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3076,10 +3528,21 @@ cas
 \begin_layout Subsection
 Négations
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Negations@Négations
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+Negations
+\end_layout
+
+\end_inset
+
+Négations
 \end_layout
 
 \end_inset
@@ -3096,12 +3559,34 @@ not
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! N ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+N
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 not
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3262,6 +3747,8 @@ name "subsec:Garnitures"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3272,37 +3759,39 @@ Garnitures
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Symboles chimiques ! Isotopes
+Symboles chimiques
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Isotopes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+range none
+pageformat default
+status open
 
 \begin_layout Plain Layout
-Isotopes|see
-\begin_inset ERT
-status collapsed
+Isotopes
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Symboles chimiques
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -3407,12 +3896,34 @@ phantom
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! P ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+P
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 phantom
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3646,12 +4157,34 @@ vphantom
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! V ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 vphantom
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3670,12 +4203,34 @@ hphantom
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! H ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+H
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 hphantom
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3797,6 +4352,8 @@ Ceci
 \begin_layout Subsection
 Lignes
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3807,10 +4364,22 @@ Lignes
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Formules ! soulignées
+Formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+soulignées
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3858,12 +4427,34 @@ overline
 
 A+B
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! O ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 overline
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3899,12 +4490,34 @@ underline
 
 A+B
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! U ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+U
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 underline
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4011,12 +4624,34 @@ rule
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! R ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+R
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 rule
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4122,6 +4757,8 @@ name "subsec:Points-de-suspension"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -4160,12 +4797,34 @@ ldots
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! L ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+L
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 ldots
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4179,12 +4838,34 @@ cdots
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! C ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 cdots
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4198,12 +4879,34 @@ dots
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! D ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 dots
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4562,12 +5265,34 @@ hdotsfor
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! H ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+H
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 hdotsfor
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4654,12 +5379,34 @@ dotfill
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! D ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 dotfill
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4721,12 +5468,34 @@ hrulefill
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! H ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+H
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 hrulefill
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4757,6 +5526,8 @@ name "sec:Matrices"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -4993,12 +5764,34 @@ left
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! L ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+L
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 left
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5011,12 +5804,34 @@ right
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! R ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+R
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 right
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5369,12 +6184,34 @@ arraycolsep
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! A ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 arraycolsep
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5403,12 +6240,34 @@ arraystretch
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! A ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 arraystretch
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5425,12 +6284,34 @@ renewcommand{
 \backslash
 arraystretch}{facteur d'étirement}
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! R ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+R
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 renewcommand
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5474,12 +6355,34 @@ smallmatrix
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! S ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 smallmatrix
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5509,6 +6412,8 @@ C & D
 \begin_layout Section
 Parenthèses et autres délimiteurs
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -5519,6 +6424,8 @@ Parenthèses
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -5529,6 +6436,8 @@ Accolades
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -5539,10 +6448,21 @@ Crochets
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Delimiteurs@Délimiteurs
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+Delimiteurs
+\end_layout
+
+\end_inset
+
+Délimiteurs
 \end_layout
 
 \end_inset
@@ -5553,10 +6473,22 @@ Delimiteurs@Délimiteurs
 \begin_layout Subsection
 Parenthèses verticales et délimiteurs
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Accolades ! verticales
+Accolades
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+verticales
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6043,12 +6975,34 @@ textbackslash
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! T ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 textbackslash
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6094,10 +7048,22 @@ name "subsec:Taille-parenthèses-manuelle"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Taille parenthèses ! manuelle
+Taille parenthèses
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+manuelle
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6116,12 +7082,34 @@ big
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! B ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 big
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6303,12 +7291,34 @@ bigm
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! B ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 bigm
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6328,14 +7338,36 @@ bigr
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! B ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
-bigl - 
+bigl – 
 \backslash
 bigr
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6549,10 +7581,22 @@ name "subsec:Taille-parenthèses-automatique"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Taille parenthèses ! automatique
+Taille parenthèses
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+automatique
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6569,12 +7613,34 @@ left
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! L ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+L
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 left
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6587,12 +7653,34 @@ right
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! R ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+R
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 right
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6816,12 +7904,34 @@ middle
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! M ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+M
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 middle
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6855,10 +7965,22 @@ reference "subsec:Vecteurs-physiques"
 \begin_layout Subsection
 Accolades horizontales
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Accolades ! horizontales
+Accolades
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+horizontales
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6914,12 +8036,34 @@ A+B
 
 3
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! O ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 overbrace
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6959,12 +8103,34 @@ A+B
 
 _5
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! U ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+U
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 underbrace
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7087,10 +8253,22 @@ mathtools
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! mathtools
+Paquetages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+mathtools
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7138,12 +8316,34 @@ overbracket{A+B
 
 ^3
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! O ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 overbracket
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7179,14 +8379,36 @@ underbracket{A+B
 
 _5
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! U ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+U
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 under
 \size normal
 bracket
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7601,20 +8823,29 @@ jot
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! J ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+J
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 jot
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{4mm}
 \end_layout
 
 \end_inset
@@ -7663,6 +8894,8 @@ reference "subsec:Séparation-des-lignes"
 \begin_layout Section
 Flèches
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -7688,10 +8921,22 @@ arg   "math-insert \\leftarrow"
 \begin_layout Subsection
 Flèches horizontales
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Flèches ! horizontales
+Flèches
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+horizontales
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -8450,10 +9695,22 @@ reference "sec:Accents"
 
 Il y a aussi les flèches avec étiquette 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Flèches ! avec étiquette
+Flèches
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+avec étiquette
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -8466,12 +9723,34 @@ xleftarrow
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! X ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+X
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 xleftarrow
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -8484,20 +9763,29 @@ xrightarrow
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! X ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+X
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 xrightarrow
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{4mm}
 \end_layout
 
 \end_inset
@@ -8643,10 +9931,22 @@ mathtools
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! mathtools
+Paquetages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+mathtools
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -9102,20 +10402,44 @@ F(x)
 \begin_layout Subsection
 Flèches verticales et diagonales
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Flèches ! diagonales
+Flèches
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+diagonales
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Flèches ! verticales
+Flèches
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+verticales
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -9488,6 +10812,8 @@ name "sec:Accents"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -9599,10 +10925,22 @@ name "subsec:Accents-sur-un-caractère"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Accents ! pour un caractère
+Accents
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+pour un caractère
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -9769,6 +11107,8 @@ vec
 
 A
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -10086,27 +11426,17 @@ umlauts
 \emph default
  en allemand)
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Umlauts | see
-\begin_inset ERT
-status collapsed
+Umlauts
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Trémas
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -10118,6 +11448,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -10298,10 +11630,22 @@ undertilde
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! undertilde
+Paquetages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+undertilde
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -10463,10 +11807,22 @@ fi
 \begin_layout Subsection
 Accents pour plusieurs caractères
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Accents ! pour plusieurs caractères
+Accents
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+pour plusieurs caractères
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -10820,12 +12176,34 @@ overset
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! O ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 overset
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -10838,12 +12216,34 @@ underset
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! U ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+U
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 underset
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -10889,10 +12289,22 @@ name "subsec:Espace"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Espace ! horizontal
+Espace
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+horizontal
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -10910,10 +12322,32 @@ name "subsec:Espace-prédéfini"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Espace ! horizontal ! prédéfini
+Espace
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+horizontal
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+prédéfini
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -11921,10 +13355,32 @@ name "subsec:Espace-variable"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Espace ! horizontal ! variable
+Espace
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+horizontal
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+variable
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -11942,12 +13398,34 @@ hspace
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! H ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+H
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 hspace
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12039,12 +13517,34 @@ hfill
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! H ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+H
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 hfill
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12289,10 +13789,22 @@ espace maximum.
 \begin_layout Subsection
 Espacement après les formules en ligne
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Espace ! après les formules en ligne
+Espace
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+après les formules en ligne
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12310,12 +13822,34 @@ mathsurround
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! M ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+M
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 mathsurround
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12329,12 +13863,34 @@ setlength
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! S ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 setlength
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12443,6 +13999,8 @@ pt.
 \begin_layout Section
 Boîtes et cadres
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12453,27 +14011,17 @@ Boîtes
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Cadres | see 
-\begin_inset ERT
-status collapsed
+Cadres
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Boîtes
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -12507,10 +14055,22 @@ name "subsec:Boîtes-avec-cadre"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Boîtes ! avec cadre
+Boîtes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+avec cadre
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12528,12 +14088,34 @@ fbox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! F ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 fbox
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12546,12 +14128,34 @@ boxed
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! B ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 boxed
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12617,12 +14221,34 @@ framebox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! F ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 framebox
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13051,10 +14677,22 @@ name "subsec:Boîtes-sans-cadre"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Boîtes ! sans cadre
+Boîtes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+sans cadre
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13072,12 +14710,34 @@ mbox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! M ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+M
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 mbox
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13090,12 +14750,34 @@ makebox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! M ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+M
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 makebox
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13108,12 +14790,34 @@ raisebox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! R ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+R
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 raisebox
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13375,10 +15079,22 @@ name "subsec:Boîtes-colorées"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Boîtes ! colorées
+Boîtes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+colorées
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13411,10 +15127,22 @@ color
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! color
+Paquetages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+color
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13474,12 +15202,34 @@ colorbox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! C ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 colorbox
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13845,12 +15595,34 @@ fcolorbox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! F ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 fcolorbox
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14008,12 +15780,34 @@ definecolor{vertfonce}{cmyk}{0.5,
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! D ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 definecolor
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14106,10 +15900,22 @@ textcolor
 \series default
 :
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Texte ! coloré
+Texte
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+coloré
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14161,12 +15967,34 @@ textcolor
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! T ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 textcolor
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14190,10 +16018,22 @@ name "subsec:Boîtes-de-paragraphes"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Boîtes ! comme paragraphe
+Boîtes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+comme paragraphe
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14315,12 +16155,34 @@ parbox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! P ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+P
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 parbox
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14419,12 +16281,34 @@ linewidth
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! L ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+L
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 linewidth
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14456,10 +16340,22 @@ calc
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! calc
+Paquetages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+calc
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14792,6 +16688,8 @@ parbox
 \begin_layout Section
 Opérateurs
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -14813,16 +16711,30 @@ name "subsec:Grands-opérateurs"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Opérateurs ! grands
+Opérateurs
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+grands
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -14833,6 +16745,8 @@ Sommes
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -14902,12 +16816,34 @@ Résultat
 \backslash
 int
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! I ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+I
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 int
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -15201,12 +17137,34 @@ Résultat
 \backslash
 sum
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! S ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 sum
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -15238,12 +17196,34 @@ sum
 \backslash
 prod
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! P ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+P
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 prod
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -15860,10 +17840,22 @@ name "subsec:Limites-des-opérateurs"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Opérateurs ! Limites
+Opérateurs
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Limites
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16078,12 +18070,34 @@ subarray
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! S ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 subarray
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16096,12 +18110,34 @@ substack
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! S ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 substack
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16112,8 +18148,7 @@ substack
 \begin{equation}
 \sum_{\begin{subarray}{c}
 0<k<1000\\
-\\
-k\,\in\,\mathbb{N}
+\\k\,\in\,\mathbb{N}
 \end{subarray}}^{n}k^{-2}\label{eq:substack}
 \end{equation}
 
@@ -16250,12 +18285,34 @@ smashoperator
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! S ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 smashoperator
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16275,10 +18332,22 @@ mathtools
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! mathtools
+Paquetages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+mathtools
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16330,8 +18399,7 @@ et on insère l'opérateur avec ses limites à l'intérieur des accolades.
 \[
 \smashoperator{\sum_{\begin{subarray}{c}
 0<k<1000\\
-\\
-k\,\in\,\mathbb{N}
+\\k\,\in\,\mathbb{N}
 \end{subarray}}^{n}}k^{-2}
 \]
 
@@ -16428,10 +18496,22 @@ mathtools
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! mathtools
+Paquetages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+mathtools
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16444,12 +18524,34 @@ adjustlimits
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! A ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 adjustlimits
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16487,10 +18589,22 @@ reference "subsec:Opérateurs-personnalisés"
 \begin_layout Subsection
 Décoration pour les opérateurs
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Opérateurs ! Décoration
+Opérateurs
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Décoration
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16507,12 +18621,34 @@ overset
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! O ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 overset
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16525,12 +18661,34 @@ underset
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! U ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+U
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 underset
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16545,12 +18703,34 @@ sideset
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! S ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 sideset
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16741,10 +18921,22 @@ name "subsec:Opérateurs-binaires"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Opérateurs ! binaires
+Opérateurs
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+binaires
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -17876,10 +20068,22 @@ name "subsec:Opérateurs-personnalisés"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Opérateurs ! personnalisés
+Opérateurs
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+personnalisés
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -17896,14 +20100,45 @@ DeclareMathOperator
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! D ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+
 \backslash
-dbinom@
+dbinom
+\end_layout
+
+\end_inset
+
+
 \backslash
 DeclareMathOperator
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18014,12 +20249,34 @@ mathop
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! M ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+M
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 mathop
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18032,12 +20289,34 @@ mathbin
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! M ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+M
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 mathbin
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18137,6 +20416,8 @@ _i,j=1
 \begin_layout Section
 Polices de caractères
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -18147,27 +20428,17 @@ Polices de caractères
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Fontes| see
-\begin_inset ERT
-status collapsed
+Fontes
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Polices de caractères
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -18190,10 +20461,22 @@ name "subsec:Styles-de-polices"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Polices de caractères ! style
+Polices de caractères
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+style
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18863,10 +21146,22 @@ name "subsec:Formules-en-gras"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Formules ! en gras
+Formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+en gras
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18927,12 +21222,34 @@ boldmath
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! B ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 boldmath
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18947,12 +21264,34 @@ unboldmath
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! U ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+U
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 unboldmath
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18998,10 +21337,22 @@ unboldmath
 \begin_layout Subsection
 Formules en couleur
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Formules ! en couleur
+Formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+en couleur
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -19053,12 +21404,34 @@ textcolor
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! T ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 textcolor
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -19148,10 +21521,22 @@ name "subsec:Tailles-polices"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Polices ! tailles
+Polices
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+tailles
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -19342,12 +21727,34 @@ Résultat
 \backslash
 displaystyle
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! D ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 displaystyle
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -19608,6 +22015,8 @@ Si un symbole ne peut pas être affiché dans plusieurs tailles, il sera toujour
 \begin_layout Section
 Les lettres grecques
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -19636,10 +22045,22 @@ arg   "math-insert \\alpha"
 \begin_layout Subsection
 Lettres minuscules
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Lettres grecques ! minuscules
+Lettres grecques
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+minuscules
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -20561,10 +22982,22 @@ reference "subsec:minuscules-grecques-droites"
 \begin_layout Subsection
 Lettres majuscules
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Lettres grecques ! majuscules
+Lettres grecques
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+majuscules
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -20965,18 +23398,17 @@ was
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! was
-\begin_inset ERT
-status collapsed
+Paquetages
+\begin_inset IndexMacro subentry
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-vspace{4mm}
+was
 \end_layout
 
 \end_inset
@@ -20993,10 +23425,22 @@ vspace{4mm}
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! fixmath
+Paquetages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+fixmath
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -21020,10 +23464,22 @@ Toutes les majuscules grecques du document seront alors mises en italique.
 \begin_layout Subsection
 Lettres grasses
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Lettres grecques ! grasses
+Lettres grecques
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+grasses
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -21042,12 +23498,34 @@ boldsymbol
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! B ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+B
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 boldsymbol
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -21220,6 +23698,8 @@ reference "subsec:formules-dans-les-entêtes"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -21258,10 +23738,22 @@ name "subsec:Symboles-mathématiques"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Symboles ! mathématiques
+Symboles
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+mathématiques
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -22095,10 +24587,22 @@ name "subsec:Symboles-divers"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Symboles ! divers
+Symboles
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+divers
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -22905,22 +25409,45 @@ reference "subsec:Tailles-polices"
 \begin_layout Subsection
 Le symbole de l'Euro €
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Symboles ! symbole de l'Euro
+Symboles
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+symbole de l'Euro
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
 status collapsed
 
 \begin_layout Plain Layout
 
 \backslash
-@
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -22950,10 +25477,22 @@ eurosym
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! eurosym
+Paquetages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+eurosym
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -22979,12 +25518,34 @@ euro
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! E ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+E
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 euro
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -23020,12 +25581,34 @@ officialeuro
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! O ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 officialeuro
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -23330,6 +25913,8 @@ name "sec:Relations"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -23340,27 +25925,17 @@ Relations
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Comparaisons|see
-\begin_inset ERT
-status collapsed
+Comparaisons
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Relations
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -24737,12 +27312,34 @@ stackrel
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! S ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 stackrel
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -24849,10 +27446,22 @@ name "subsec:Fonctions-prédéfinies"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Fonctions ! prédéfinies
+Fonctions
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+prédéfinies
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -25443,10 +28052,22 @@ arg   "math-insert \\functions"
 \begin_layout Subsection
 Fonctions définies par l'utilisateur
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Fonctions ! définies par l'utilisateur
+Fonctions
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+définies par l'utilisateur
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -25506,14 +28127,45 @@ sgn}{sgn}
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! D ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+
 \backslash
-dbinom@
+dbinom
+\end_layout
+
+\end_inset
+
+
 \backslash
 DeclareMathOperator
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -25662,6 +28314,8 @@ La première méthode est recommandée quand la fonction définie doit être
 \begin_layout Subsection
 Les limites
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -25682,12 +28336,34 @@ lim
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! L ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+L
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 lim
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -25957,10 +28633,22 @@ reference "subsec:Limites-des-opérateurs"
 \begin_layout Subsection
 Les fonctions modulo
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Fonctions ! modulo
+Fonctions
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+modulo
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26010,6 +28698,8 @@ Dans une formule en ligne, il y a moins d'espace inséré avant le nom de
 \begin_layout Section
 Caractères spéciaux
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -26641,10 +29331,22 @@ name "subsec:Accents-dans-le-texte"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Accents ! dans le texte
+Accents
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+dans le texte
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -27061,6 +29763,8 @@ status collapsed
 \backslash
 ~e
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -27410,12 +30114,34 @@ textcircled
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! T ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 textcircled
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -27605,6 +30331,8 @@ reference "subsec:Boîtes-sans-cadre"
 \begin_layout Subsection
 Nombres en minuscules
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -27625,12 +30353,34 @@ oldstylenums
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! O ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+O
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 oldstylenums
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -27673,10 +30423,22 @@ name "sec:Styles-de-formules"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Formules ! styles
+Formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+styles
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -27777,10 +30539,22 @@ name "sec:Formules-multi-lignes"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Formules ! multi-lignes
+Formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+multi-lignes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -27903,10 +30677,32 @@ name "subsec:Séparation-des-lignes"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Formules ! multi-lignes ! Séparation des lignes
+Formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+multi-lignes
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Séparation des lignes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28030,20 +30826,29 @@ jot
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! J ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+J
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 jot
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{4mm}
 \end_layout
 
 \end_inset
@@ -28112,10 +30917,22 @@ fait partie de toutes les distributions standard de \SpecialChar LaTeX
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! calc
+Paquetages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+calc
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28198,10 +31015,32 @@ name "subsec:Séparation-des-colonnes"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Formules ! multi-lignes ! Séparation des colonnes
+Formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+multi-lignes
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Séparation des colonnes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28229,12 +31068,34 @@ arraycolsep
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! A ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 arraycolsep
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28354,10 +31215,22 @@ C & \ne & A
 \begin_layout Subsubsection
 Formules longues
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Formules ! longues
+Formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+longues
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28425,12 +31298,34 @@ reference "subsec:Espace-variable"
 
 ;
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! H ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+H
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 hspace
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28448,12 +31343,34 @@ lefteqn
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! L ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+L
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 lefteqn
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28586,10 +31503,22 @@ name "subsec:Fractions-multilignes"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Fractions ! multi-lignes
+Fractions
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+multi-lignes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28609,12 +31538,34 @@ splitfrac
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! S ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 splitfrac
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28634,10 +31585,22 @@ mathtools
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! mathtools
+Paquetages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+mathtools
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28698,10 +31661,22 @@ name "subsec:Crochets-multilignes"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Crochets ! pour expressions multi-lignes
+Crochets
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+pour expressions multi-lignes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28738,12 +31713,34 @@ right.
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! R ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+R
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 right
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28789,12 +31786,34 @@ reference "subsec:Taille-parenthèses-automatique"
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! L ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+L
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 left
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28846,12 +31865,34 @@ _R=1}
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! V ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 vphantom
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28970,10 +32011,32 @@ name "subsec:Environnement-align-standard"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Formules ! multi-lignes ! environnement align
+Formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+multi-lignes
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+environnement align
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29094,10 +32157,32 @@ hfill
 \begin_layout Subsubsection
 L'environnement alignat
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Formules ! multi-lignes ! environnement alignat
+Formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+multi-lignes
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+environnement alignat
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29159,10 +32244,32 @@ name "subsec:Environnement-Flalign"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Formules ! multi-lignes ! environnement flalign
+Formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+multi-lignes
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+environnement flalign
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29239,10 +32346,32 @@ name "subsec:Environnement-eqnarray"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Formules ! multi-lignes ! environnement eqnarray
+Formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+multi-lignes
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+environnement eqnarray
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29271,10 +32400,32 @@ A & = & A
 \begin_layout Subsection
 Environnement gather
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Formules ! multi-lignes ! environnement gather
+Formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+multi-lignes
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+environnement gather
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29306,10 +32457,32 @@ name "subsec:Environnement-Multline"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Formules ! multi-lignes ! environnement multline
+Formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+multi-lignes
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+environnement multline
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29394,12 +32567,34 @@ shoveright
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! S ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 shoveright
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29412,12 +32607,34 @@ shoveleft
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! S ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 shoveleft
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29452,12 +32669,34 @@ multlinegap
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! M ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+M
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 multlinegap
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29546,10 +32785,32 @@ name "subsec:Portions-de-formules-en-multiligne"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Formules ! multi-lignes ! portions de formules
+Formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+multi-lignes
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+portions de formules
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29612,12 +32873,34 @@ aligned
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! A ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 aligned
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29687,12 +32970,34 @@ alignedat
 \series default
 ,
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! A ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 alignedat
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29705,12 +33010,34 @@ gathered
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! G ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+G
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 gathered
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29723,12 +33050,34 @@ split
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! S ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 split
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29755,20 +33104,54 @@ name "subsec:Texte-dans-multi-lignes"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Texte ! dans les formules
+Texte
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+dans les formules
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Formules ! multi-lignes ! texte
+Formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+multi-lignes
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+texte
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29799,12 +33182,34 @@ intertext
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! I ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+I
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 intertext
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29877,10 +33282,22 @@ mathtools
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! mathtools
+Paquetages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+mathtools
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29894,12 +33311,34 @@ shortintertext
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! S ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 shortintertext
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -29925,6 +33364,8 @@ I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
 \begin_layout Section
 Numérotation des formules
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29935,27 +33376,27 @@ Numérotation des formules
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Formules ! numérotation|see
-\begin_inset ERT
-status collapsed
+Formules
+\begin_inset IndexMacro subentry
+status open
 
 \begin_layout Plain Layout
-
-{
+numérotation
 \end_layout
 
 \end_inset
 
-Numérotation des formules
-\begin_inset ERT
-status collapsed
+
+\begin_inset IndexMacro see
+status open
 
 \begin_layout Plain Layout
-
-}
+Numérotation des formules
 \end_layout
 
 \end_inset
@@ -30092,10 +33533,31 @@ reference "sec:Styles-de-formules"
 \begin_layout Subsection
 Références croisées
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-References@Références croisées ! à des formules
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+References
+\end_layout
+
+\end_inset
+
+Références croisées
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+à des formules
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30310,10 +33772,22 @@ reference "subsec:Boîtes-de-paragraphes"
 \begin_layout Subsection
 Sous-numérotation
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Numérotation des formules ! sous-numérotation
+Numérotation des formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+sous-numérotation
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30604,20 +34078,44 @@ name "subsec:Numérotation-avec-des"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Numérotation des formules ! avec des lettres
+Numérotation des formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+avec des lettres
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Numérotation des formules ! avec des chiffres romains
+Numérotation des formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+avec des chiffres romains
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30655,12 +34153,34 @@ renewcommand
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! R ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+R
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 renewcommand
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30734,12 +34254,34 @@ theequation
 \backslash
 roman{equation}
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! R ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+R
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 roman
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30776,14 +34318,45 @@ Roman
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! R ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+R
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+
 \backslash
-roman@
+roman
+\end_layout
+
+\end_inset
+
+
 \backslash
 Roman
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30797,12 +34370,34 @@ alph
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! A ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 alphe
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30815,14 +34410,45 @@ Alph
 \series default
 
 \begin_inset Index idx
-status collapsed
+range none
+pageformat default
+status open
 
 \begin_layout Plain Layout
-Commandes ! A ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+
 \backslash
-alph@
+alph
+\end_layout
+
+\end_inset
+
+
 \backslash
 Alph
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30972,12 +34598,34 @@ theequation}{
 \backslash
 arabic{equation}}
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! A ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 arabic
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31050,10 +34698,22 @@ name "subsec:Numérotation-personnalisée"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Numérotation des formules !  personnalisée
+Numérotation des formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+ personnalisée
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31118,10 +34778,22 @@ unskip)}} }
 
 \begin_layout Standard
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Numérotation des formules ! délimiteurs personnalisés
+Numérotation des formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+délimiteurs personnalisés
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31204,12 +34876,34 @@ tag
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! T ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 tag
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31282,10 +34976,16 @@ Pour réinitialiser la numérotation des formules à chaque nouvelle partie
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -31297,17 +34997,16 @@ status collapsed
 \end_inset
 
 @
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
 \end_layout
 
 \end_inset
 
- ! 
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 
 \begin_inset ERT
@@ -31320,18 +35019,12 @@ status collapsed
 
 \end_inset
 
-@
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
+@addtoreset
 \end_layout
 
 \end_inset
 
-addtoreset
+
 \end_layout
 
 \end_inset
@@ -31453,10 +35146,22 @@ carlisle
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! carlisle
+Paquetages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+carlisle
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31469,10 +35174,22 @@ Paquetages ! carlisle
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! remreset
+Paquetages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+remreset
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31498,10 +35215,16 @@ On peut alors utiliser la commande
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -31513,17 +35236,16 @@ status collapsed
 \end_inset
 
 @
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
 \end_layout
 
 \end_inset
 
- ! 
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 
 \begin_inset ERT
@@ -31536,18 +35258,12 @@ status collapsed
 
 \end_inset
 
-@
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
+@removefromreset
 \end_layout
 
 \end_inset
 
-removefromreset
+
 \end_layout
 
 \end_inset
@@ -31595,12 +35311,34 @@ numberwithin
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! N ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+N
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 numberwithin
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31692,12 +35430,34 @@ theequation}{
 \backslash
 arabic{equation}}
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! A ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 arabic
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31797,20 +35557,43 @@ name "subsec:Symboles-chimiques"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Equations@Équations chimiques
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+Equations
+\end_layout
+
+\end_inset
+
+Équations chimiques
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Symboles ! chimiques
+Symboles
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+chimiques
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31889,12 +35672,34 @@ ce
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! C ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 ce
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31906,10 +35711,22 @@ mhchem
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! mhchem
+Paquetages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+mhchem
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32454,12 +36271,34 @@ cf
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! C ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 cf
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32506,10 +36345,22 @@ amscd
 \begin_layout Subsection
 Les diagrammes amscd
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Diagrammes ! amscd
+Diagrammes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+amscd
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32540,12 +36391,34 @@ Pour les obtenir, on insère la commande
 \backslash
 CD
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! C ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 CD
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32721,10 +36594,22 @@ D@<<j<E@>k>>F@=C
 \begin_layout Subsection
 Les diagrammes xymatrix
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Diagrammes ! xymatrix
+Diagrammes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+xymatrix
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32784,10 +36669,22 @@ Les diagrammes
 \noun default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Diagrammes ! Feynman
+Diagrammes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Feynman
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32864,6 +36761,8 @@ name "sec:Commandes-personnalisées"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -32905,10 +36804,17 @@ name "subsec:La-commande-newcommand"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes personnalisées ! 
+Commandes personnalisées
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 newcommand
 \end_layout
@@ -32916,13 +36822,40 @@ newcommand
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! N ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+N
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 newcommand
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32942,12 +36875,34 @@ newcommand
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! N ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+N
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 newcommand
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -33461,16 +37416,30 @@ A=B
 \begin_layout Subsection
 Macros en mode mathématique
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes personnalisées ! macros mathématiques
+Commandes personnalisées
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+macros mathématiques
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -33951,10 +37920,22 @@ Quand le curseur se trouve dans la boîte de définition d'une macro, vous
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Macros ! Barre d'outils
+Macros
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Barre d'outils
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -34809,6 +38790,8 @@ command-alternatives paragraph-break;math-extern maxima
 \begin_layout Section
 Points divers
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -34823,10 +38806,22 @@ Points divers
 \begin_layout Subsection
 Nombres négatifs
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Nombres ! négatifs
+Nombres
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+négatifs
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -34933,6 +38928,8 @@ solution:
 \begin_layout Subsection
 La virgule comme séparateur décimal
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -34982,18 +38979,17 @@ was
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! was
-\begin_inset ERT
-status collapsed
+Paquetages
+\begin_inset IndexMacro subentry
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-vspace{4mm}
+was
 \end_layout
 
 \end_inset
@@ -35010,10 +39006,22 @@ vspace{4mm}
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! icomma
+Paquetages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+icomma
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35040,10 +39048,22 @@ name "subsec:Vecteurs-physiques"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Vecteurs ! physiques
+Vecteurs
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+physiques
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35059,10 +39079,22 @@ Des vecteurs prédéfinis sont proposés par le paquetage \SpecialChar LaTeX
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! braket
+Paquetages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+braket
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35343,10 +39375,22 @@ name "subsec:Fractions-personnalisées"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Fractions ! personnalisées
+Fractions
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+personnalisées
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35364,12 +39408,34 @@ genfrac
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! G ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+G
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 genfrac
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35644,10 +39710,22 @@ Comme on peut le voir, la distance entre le numérateur et le dénominateur
 \begin_layout Subsection
 Formules barrées
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Formules ! barrées
+Formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+barrées
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -36032,10 +40110,22 @@ literal "true"
 
 .
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! cancel
+Paquetages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+cancel
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -36109,10 +40199,22 @@ name "subsec:formules-dans-les-entêtes"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Formules ! dans les entêtes de section
+Formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+dans les entêtes de section
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -36136,10 +40238,22 @@ hyperref
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! hyperref
+Paquetages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+hyperref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -36200,12 +40314,34 @@ hyperref
 \backslash
 texorpdfstring{partie à problème}{alternative}
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Commandes ! T ! 
+Commandes
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
 \backslash
 texorpdfstring
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -36370,10 +40506,22 @@ reference "subsec:Formules-en-gras"
 \begin_layout Subsection
 Formules dans du texte multi-colonnes
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Formules ! dans du texte multi-colonnes
+Formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+dans du texte multi-colonnes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -36407,10 +40555,22 @@ multicol
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! multicol
+Paquetages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+multicol
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -36657,10 +40817,22 @@ end{multicols}
 \begin_layout Subsection
 Formules avec description des variables
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Formules ! avec description des variables
+Formules
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+avec description des variables
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -36859,10 +41031,22 @@ name "subsec:minuscules-grecques-droites"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Lettres grecques ! droites
+Lettres grecques
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+droites
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -36895,18 +41079,17 @@ was
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! was
-\begin_inset ERT
-status collapsed
+Paquetages
+\begin_inset IndexMacro subentry
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-vspace{4mm}
+was
 \end_layout
 
 \end_inset
@@ -36923,10 +41106,22 @@ vspace{4mm}
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! upgreek
+Paquetages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+upgreek
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -37075,10 +41270,22 @@ fi
 \begin_layout Subsection
 Caractères texte dans les formules
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Texte ! dans les formules
+Texte
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+dans les formules
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -37251,6 +41458,8 @@ A=B%\text{This is the comment}
 \start_of_appendix
 Conseils Typographiques
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -37585,6 +41794,8 @@ Symboles de type lettre
 \begin_layout Section
 Synonymes
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -38326,10 +42537,22 @@ cancel
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! cancel
+Paquetages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+cancel
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -38361,10 +42584,22 @@ hyperref
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! hyperref
+Paquetages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+hyperref
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -38396,10 +42631,22 @@ mhchem
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages ! mhchem
+Paquetages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+mhchem
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
