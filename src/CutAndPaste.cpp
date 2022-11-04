@@ -1037,7 +1037,9 @@ void copySelection(Cursor const & cur)
 }
 
 
-void copyInset(Cursor const & cur, Inset * inset, docstring const & plaintext)
+namespace {
+
+void copyInsetToStack(Cursor const & cur, CutStack & cutstack, Inset * inset)
 {
 	ParagraphList pars;
 	Paragraph par;
@@ -1046,10 +1048,25 @@ void copyInset(Cursor const & cur, Inset * inset, docstring const & plaintext)
 	Font font(inherit_font, bp.language);
 	par.insertInset(0, inset, font, Change(Change::UNCHANGED));
 	pars.push_back(par);
-	theCuts.push(make_pair(pars, make_pair(bp.documentClassPtr(), bp.authors())));
+	cutstack.push(make_pair(pars, make_pair(bp.documentClassPtr(), bp.authors())));
+}
+
+}
+
+
+void copyInset(Cursor const & cur, Inset * inset, docstring const & plaintext)
+{
+	copyInsetToStack(cur, theCuts, inset);
 
 	// stuff the selection onto the X clipboard, from an explicit copy request
+	BufferParams const & bp = cur.buffer()->params();
 	putClipboard(theCuts[0].first, theCuts[0].second, plaintext, bp);
+}
+
+
+void copyInsetToTemp(Cursor const & cur, Inset * inset)
+{
+	copyInsetToStack(cur, tempCut, inset);
 }
 
 

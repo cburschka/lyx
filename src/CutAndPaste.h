@@ -79,6 +79,8 @@ void copySelection(Cursor const & cur);
 void copySelectionToTemp(Cursor const & cur);
 ///
 void copyInset(Cursor const & cur, Inset * inset, docstring const & plaintext);
+///
+void copyInsetToTemp(Cursor const & cur, Inset * inset);
 /**
  * Push the current selection to the cut buffer and the system clipboard.
  * \param plaintext plain text version of the selection for the system
