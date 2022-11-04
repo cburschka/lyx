@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-11-01 11:56+0100\n"
-"PO-Revision-Date: 2022-11-01 12:12+0100\n"
+"POT-Creation-Date: 2022-11-04 11:30+0100\n"
+"PO-Revision-Date: 2022-11-04 11:36+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -19884,8 +19884,8 @@ msgstr "Nur Marke|M"
 #: lib/ui/stdcontext.inc:577 lib/ui/stdcontext.inc:585
 #: lib/ui/stdcontext.inc:593 lib/ui/stdcontext.inc:601
 #: lib/ui/stdcontext.inc:614 lib/ui/stdcontext.inc:624
-#: lib/ui/stdcontext.inc:662 lib/ui/stdcontext.inc:670
-#: lib/ui/stdcontext.inc:716 lib/ui/stdcontext.inc:725 lib/ui/stdmenus.inc:584
+#: lib/ui/stdcontext.inc:672 lib/ui/stdcontext.inc:680
+#: lib/ui/stdcontext.inc:726 lib/ui/stdcontext.inc:735 lib/ui/stdmenus.inc:584
 msgid "Settings...|S"
 msgstr "Einstellungen...|E"
 
@@ -19922,7 +19922,7 @@ msgid "Close Inset|C"
 msgstr "Einfügung schließen|s"
 
 #: lib/ui/stdcontext.inc:178 lib/ui/stdcontext.inc:184
-#: lib/ui/stdcontext.inc:200 lib/ui/stdcontext.inc:678
+#: lib/ui/stdcontext.inc:200 lib/ui/stdcontext.inc:688
 msgid "Dissolve Inset|D"
 msgstr "Einfügung auflösen|ü"
 
@@ -20254,7 +20254,7 @@ msgstr "Verschachtelungstiefe des Abschnitts erhöhen|s"
 msgid "Move Section Down|D"
 msgstr "Abschnitt nach unten verschieben|n"
 
-#: lib/ui/stdcontext.inc:393 lib/ui/stdcontext.inc:698
+#: lib/ui/stdcontext.inc:393 lib/ui/stdcontext.inc:708
 msgid "Move Section Up|U"
 msgstr "Abschnitt nach oben verschieben|b"
 
@@ -20262,7 +20262,7 @@ msgstr "Abschnitt nach oben verschieben|b"
 msgid "Insert Regular Expression"
 msgstr "Regulären Ausdruck einfügen"
 
-#: lib/ui/stdcontext.inc:397 lib/ui/stdcontext.inc:687
+#: lib/ui/stdcontext.inc:397 lib/ui/stdcontext.inc:697
 msgid "Accept Change|c"
 msgstr "Änderung akzeptieren|k"
 
@@ -20499,107 +20499,139 @@ msgstr "Unbekannten Zweig hinzufügen|w"
 msgid "Insert Reference at Cursor Position|I"
 msgstr "Verweis an der Cursor-Position einfügen|V"
 
+#: lib/ui/stdcontext.inc:634
+msgid "Single Page (No Page Range)|P"
+msgstr "Einzelseite (kein Seitenbereich)|z"
+
+#: lib/ui/stdcontext.inc:635
+msgid "Start Page Range|t"
+msgstr "Seitenbereich beginnen|b"
+
 #: lib/ui/stdcontext.inc:636
+msgid "End Page Range|E"
+msgstr "Seitenbereich beenden|d"
+
+#: lib/ui/stdcontext.inc:638
+msgid "No Page Formatting|N"
+msgstr "Normaler Seitenverweis|N"
+
+#: lib/ui/stdcontext.inc:639
+msgid "Bold Page Formatting|B"
+msgstr "Fetter Seitenverweis|F"
+
+#: lib/ui/stdcontext.inc:640
+msgid "Italic Page Formatting|I"
+msgstr "Kursiver Seitenverweis|K"
+
+#: lib/ui/stdcontext.inc:641
+msgid "Emphasized Page Formatting|z"
+msgstr "Hervorgehobener Seitenverweis|H"
+
+#: lib/ui/stdcontext.inc:642
+msgid "Custom Page Formatting|C"
+msgstr "Benutzerdefinierter Seitenverweis|u"
+
+#: lib/ui/stdcontext.inc:646
 msgid "Insert Subentry|b"
 msgstr "Untereintrag einfügen|n"
 
-#: lib/ui/stdcontext.inc:637
+#: lib/ui/stdcontext.inc:647
 msgid "Insert Sortkey|k"
 msgstr "Sortierschlüssel einfügen|r"
 
-#: lib/ui/stdcontext.inc:638
+#: lib/ui/stdcontext.inc:648
 msgid "Insert See Reference|e"
 msgstr "\"Siehe\"-Verweis einfügen|S"
 
-#: lib/ui/stdcontext.inc:639
+#: lib/ui/stdcontext.inc:649
 msgid "Insert See also Reference|a"
 msgstr "\"Siehe-auch\"-Verweis einfügen|c"
 
-#: lib/ui/stdcontext.inc:647 lib/ui/stdmenus.inc:539
+#: lib/ui/stdcontext.inc:657 lib/ui/stdmenus.inc:539
 msgid "See|e"
 msgstr "Siehe|S"
 
-#: lib/ui/stdcontext.inc:648 lib/ui/stdmenus.inc:540
+#: lib/ui/stdcontext.inc:658 lib/ui/stdmenus.inc:540
 msgid "See also|a"
 msgstr "Siehe auch|a"
 
-#: lib/ui/stdcontext.inc:657
+#: lib/ui/stdcontext.inc:667
 msgid "All Indexes|A"
 msgstr "Alle Indexe|A"
 
-#: lib/ui/stdcontext.inc:660
+#: lib/ui/stdcontext.inc:670
 msgid "Subindex|b"
 msgstr "Unterindex|t"
 
-#: lib/ui/stdcontext.inc:688 lib/ui/stdmenus.inc:591
+#: lib/ui/stdcontext.inc:698 lib/ui/stdmenus.inc:591
 msgid "Reject Change|R"
 msgstr "Änderung ablehnen|b"
 
-#: lib/ui/stdcontext.inc:696
+#: lib/ui/stdcontext.inc:706
 msgid "Promote Section|P"
 msgstr "Verschachtelungstiefe des Abschnitts verringern|r"
 
-#: lib/ui/stdcontext.inc:697
+#: lib/ui/stdcontext.inc:707
 msgid "Demote Section|D"
 msgstr "Verschachtelungstiefe des Abschnitts erhöhen|s"
 
-#: lib/ui/stdcontext.inc:699
+#: lib/ui/stdcontext.inc:709
 msgid "Move Section Down|w"
 msgstr "Abschnitt nach unten verschieben|n"
 
-#: lib/ui/stdcontext.inc:701
+#: lib/ui/stdcontext.inc:711
 msgid "Select Section|S"
 msgstr "Abschnitt auswählen|h"
 
-#: lib/ui/stdcontext.inc:709
+#: lib/ui/stdcontext.inc:719
 msgid "Wrap by Preview|y"
 msgstr "Eingebettete Vorschau|r"
 
-#: lib/ui/stdcontext.inc:718
+#: lib/ui/stdcontext.inc:728
 msgid "Open Target...|O"
 msgstr "Verweisziel öffnen...|ö"
 
-#: lib/ui/stdcontext.inc:734 lib/ui/stdmenus.inc:361
+#: lib/ui/stdcontext.inc:744 lib/ui/stdmenus.inc:361
 msgid "Lock Toolbars|L"
 msgstr "Verankere die Werkzeugleisten|V"
 
-#: lib/ui/stdcontext.inc:736 lib/ui/stdmenus.inc:363
+#: lib/ui/stdcontext.inc:746 lib/ui/stdmenus.inc:363
 msgid "Small-sized Icons"
 msgstr "Kleine Symbole"
 
-#: lib/ui/stdcontext.inc:737 lib/ui/stdmenus.inc:364
+#: lib/ui/stdcontext.inc:747 lib/ui/stdmenus.inc:364
 msgid "Normal-sized Icons"
 msgstr "Normalgroße Symbole"
 
-#: lib/ui/stdcontext.inc:738 lib/ui/stdmenus.inc:365
+#: lib/ui/stdcontext.inc:748 lib/ui/stdmenus.inc:365
 msgid "Big-sized Icons"
 msgstr "Große Symbole"
 
-#: lib/ui/stdcontext.inc:739 lib/ui/stdmenus.inc:366
+#: lib/ui/stdcontext.inc:749 lib/ui/stdmenus.inc:366
 msgid "Huge-sized Icons"
 msgstr "Riesige Symbole"
 
-#: lib/ui/stdcontext.inc:740 lib/ui/stdmenus.inc:367
+#: lib/ui/stdcontext.inc:750 lib/ui/stdmenus.inc:367
 msgid "Giant-sized Icons"
 msgstr "Gigantische Symbole"
 
-#: lib/ui/stdcontext.inc:754
+#: lib/ui/stdcontext.inc:764
 msgid "Zoom Level|Z"
 msgstr "Vergrößerungsfaktor|f"
 
-#: lib/ui/stdcontext.inc:755
+#: lib/ui/stdcontext.inc:765
 msgid "Zoom Slider|S"
 msgstr "Schieberegler|r"
 
-#: lib/ui/stdcontext.inc:757
+#: lib/ui/stdcontext.inc:767
 msgid "Word Count|W"
 msgstr "Wortzählung|W"
 
-#: lib/ui/stdcontext.inc:758
+#: lib/ui/stdcontext.inc:768
 msgid "Character Count|C"
 msgstr "Zeichenzählung|Z"
 
-#: lib/ui/stdcontext.inc:759
+#: lib/ui/stdcontext.inc:769
 msgid "Character Count (No Blanks)|h"
 msgstr "Zeichenzählung (ohne Leerzeichen)|o"
 
@@ -27487,7 +27519,7 @@ msgstr ""
 "\\lyxdeleted im LaTeX-Vorspann neu."
 
 #: src/Buffer.cpp:1086 src/BufferParams.cpp:475 src/frontends/qt/GuiLog.cpp:293
-#: src/insets/InsetIndex.cpp:1167
+#: src/insets/InsetIndex.cpp:1234
 msgid "Index"
 msgstr "Stichwortverzeichnis"
 
@@ -30953,8 +30985,8 @@ msgstr "Fehler beim Lesen der Zitierformatdatei %1$s\n"
 msgid "MISSING: "
 msgstr "NICHT VORHANDEN:"
 
-#: src/TocBackend.cpp:273 src/insets/InsetIndex.cpp:919
-#: src/insets/InsetIndex.cpp:954
+#: src/TocBackend.cpp:273 src/insets/InsetIndex.cpp:972
+#: src/insets/InsetIndex.cpp:1007
 msgid "unknown type!"
 msgstr "unbekannter Typ!"
 
@@ -35906,7 +35938,7 @@ msgid "active"
 msgstr "aktiv"
 
 #: src/insets/InsetBranch.cpp:70 src/insets/InsetBranch.cpp:72
-#: src/insets/InsetIndex.cpp:1175
+#: src/insets/InsetIndex.cpp:1242
 msgid "non-active"
 msgstr "inaktiv"
 
@@ -36429,7 +36461,7 @@ msgstr "Beginnt einen Seitenbereich"
 msgid "Ends page range"
 msgstr "Beendet einen Seitenbereich"
 
-#: src/insets/InsetIndex.cpp:298
+#: src/insets/InsetIndex.cpp:307
 #, c-format
 msgid ""
 "LyX's automatic index sorting algorithm faced problems with the entry "
@@ -36442,11 +36474,11 @@ msgstr ""
 "Bitte legen Sie die Sortierung manuell fest. Hinweise\n"
 "zum Vorgehen finden Sie im Benutzerhandbuch."
 
-#: src/insets/InsetIndex.cpp:303 src/insets/InsetIndexMacro.cpp:283
+#: src/insets/InsetIndex.cpp:312 src/insets/InsetIndexMacro.cpp:283
 msgid "Index sorting failed"
 msgstr "Indexsortierung fehlgeschlagen"
 
-#: src/insets/InsetIndex.cpp:682
+#: src/insets/InsetIndex.cpp:723
 #, c-format
 msgid ""
 "There is an empty index subentry in the entry '%1$s'.\n"
@@ -36455,39 +36487,39 @@ msgstr ""
 "Das Stichwort '%1$s' hat einen leeren Untereintrag.\n"
 "Er wird in der Ausgabe ignoriert."
 
-#: src/insets/InsetIndex.cpp:685
+#: src/insets/InsetIndex.cpp:726
 msgid "Empty index subentry!"
 msgstr "Leerer Untereintrag!"
 
-#: src/insets/InsetIndex.cpp:912
+#: src/insets/InsetIndex.cpp:965
 msgid "Index Entry"
 msgstr "Stichwort"
 
-#: src/insets/InsetIndex.cpp:929
+#: src/insets/InsetIndex.cpp:982
 msgid "Pagination format:"
 msgstr "Seitenzahlenformat:"
 
-#: src/insets/InsetIndex.cpp:931
+#: src/insets/InsetIndex.cpp:984
 msgid "bold"
 msgstr "Fett"
 
-#: src/insets/InsetIndex.cpp:933
+#: src/insets/InsetIndex.cpp:986
 msgid "italic"
 msgstr "Kursiv"
 
-#: src/insets/InsetIndex.cpp:935
+#: src/insets/InsetIndex.cpp:988
 msgid "emphasized"
 msgstr "Hervorgehoben"
 
-#: src/insets/InsetIndex.cpp:1172
+#: src/insets/InsetIndex.cpp:1239
 msgid "Unknown index type!"
 msgstr "Unbekannter Index-Typ!"
 
-#: src/insets/InsetIndex.cpp:1173
+#: src/insets/InsetIndex.cpp:1240
 msgid "All indexes"
 msgstr "Alle Indexe"
 
-#: src/insets/InsetIndex.cpp:1177
+#: src/insets/InsetIndex.cpp:1244
 msgid "subindex"
 msgstr "Unterindex"
 
@@ -37506,28 +37538,28 @@ msgstr "%1$d Zeichenketten wurden in der Auswahl ersetzt."
 msgid "%1$d strings have been replaced."
 msgstr "%1$d Zeichenketten wurden ersetzt."
 
-#: src/lyxfind.cpp:4849
+#: src/lyxfind.cpp:4859
 msgid "One match has been replaced."
 msgstr "Ein Treffer wurde ersetzt."
 
-#: src/lyxfind.cpp:4852
+#: src/lyxfind.cpp:4862
 msgid "Two matches have been replaced."
 msgstr "Zwei Treffer wurden ersetzt."
 
-#: src/lyxfind.cpp:4855
+#: src/lyxfind.cpp:4865
 #, c-format
 msgid "%1$d matches have been replaced."
 msgstr "%1$d Treffer wurden ersetzt."
 
-#: src/lyxfind.cpp:4861
+#: src/lyxfind.cpp:4871
 msgid "Match not found."
 msgstr "Die Zeichenkette wurde nicht gefunden!"
 
-#: src/lyxfind.cpp:4867
+#: src/lyxfind.cpp:4877
 msgid "Match has been replaced."
 msgstr "Die Zeichenkette wurde ersetzt."
 
-#: src/lyxfind.cpp:4869
+#: src/lyxfind.cpp:4879
 msgid "Match found."
 msgstr "Die Zeichenkette wurde gefunden!"
 
@@ -38159,9 +38191,6 @@ msgstr "Unbekannter Benutzer"
 
 #~ msgid "Search on&ly in maths"
 #~ msgstr "Nu&r im Mathe-Umfeld"
-
-#~ msgid "I&gnore formatting"
-#~ msgstr "Ignoriere For&mat"
 
 #~ msgid "Select all"
 #~ msgstr "Alles ausw&ählen"
