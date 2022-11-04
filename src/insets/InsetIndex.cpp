@@ -132,6 +132,9 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 {
 	OutputParams runparams(runparams_in);
 	runparams.inIndexEntry = true;
+	if (runparams_in.postpone_fragile_stuff)
+		// This is not needed and would impact sorting
+		runparams.moving_arg = false;
 
 	otexstringstream os;
 
