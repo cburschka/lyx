@@ -169,6 +169,9 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 			os << "|";
 			os << insetindexpagerangetranslator_latex().find(params_.range);
 			os << from_utf8(params_.pagefmt);
+		} else if (params_.range != InsetIndexParams::PageRange::None) {
+			os << "|";
+			os << insetindexpagerangetranslator_latex().find(params_.range);
 		}
 	} else {
 		// We check whether we need a sort key.
@@ -267,6 +270,9 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 			os << "|"
 			   << insetindexpagerangetranslator_latex().find(params_.range)
 			   << cmd;
+		} else if (params_.range != InsetIndexParams::PageRange::None) {
+			os << "|";
+			os << insetindexpagerangetranslator_latex().find(params_.range);
 		}
 	}
 	os << '}';
