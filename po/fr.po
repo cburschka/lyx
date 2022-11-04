@@ -362,8 +362,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-11-01 16:35+0100\n"
-"PO-Revision-Date: 2022-11-01 16:49+0100\n"
+"POT-Creation-Date: 2022-11-04 17:54+0100\n"
+"PO-Revision-Date: 2022-11-04 18:02+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -20188,8 +20188,8 @@ msgstr "Étiquette uniquement|É"
 #: lib/ui/stdcontext.inc:577 lib/ui/stdcontext.inc:585
 #: lib/ui/stdcontext.inc:593 lib/ui/stdcontext.inc:601
 #: lib/ui/stdcontext.inc:614 lib/ui/stdcontext.inc:624
-#: lib/ui/stdcontext.inc:662 lib/ui/stdcontext.inc:670
-#: lib/ui/stdcontext.inc:716 lib/ui/stdcontext.inc:725 lib/ui/stdmenus.inc:584
+#: lib/ui/stdcontext.inc:672 lib/ui/stdcontext.inc:680
+#: lib/ui/stdcontext.inc:726 lib/ui/stdcontext.inc:735 lib/ui/stdmenus.inc:584
 msgid "Settings...|S"
 msgstr "Paramètres...|m"
 
@@ -20226,7 +20226,7 @@ msgid "Close Inset|C"
 msgstr "Fermer l'insert|i"
 
 #: lib/ui/stdcontext.inc:178 lib/ui/stdcontext.inc:184
-#: lib/ui/stdcontext.inc:200 lib/ui/stdcontext.inc:678
+#: lib/ui/stdcontext.inc:200 lib/ui/stdcontext.inc:688
 msgid "Dissolve Inset|D"
 msgstr "Dissoudre l'insert|u"
 
@@ -20558,7 +20558,7 @@ msgstr "Rétrograder la section|é"
 msgid "Move Section Down|D"
 msgstr "Déplacer la section vers le bas|D"
 
-#: lib/ui/stdcontext.inc:393 lib/ui/stdcontext.inc:698
+#: lib/ui/stdcontext.inc:393 lib/ui/stdcontext.inc:708
 msgid "Move Section Up|U"
 msgstr "Déplacer la section vers le haut|u"
 
@@ -20566,7 +20566,7 @@ msgstr "Déplacer la section vers le haut|u"
 msgid "Insert Regular Expression"
 msgstr "Insérer une expression régulière"
 
-#: lib/ui/stdcontext.inc:397 lib/ui/stdcontext.inc:687
+#: lib/ui/stdcontext.inc:397 lib/ui/stdcontext.inc:697
 msgid "Accept Change|c"
 msgstr "Accepter la modification|A"
 
@@ -20805,107 +20805,139 @@ msgstr "Ajouter une branche inconnue|j"
 msgid "Insert Reference at Cursor Position|I"
 msgstr "Insérer la référence à la position du curseur|I"
 
+#: lib/ui/stdcontext.inc:634
+msgid "Single Page (No Page Range)|P"
+msgstr "Page unique (pas de série de pages)|u"
+
+#: lib/ui/stdcontext.inc:635
+msgid "Start Page Range|t"
+msgstr "Page initiale|i"
+
 #: lib/ui/stdcontext.inc:636
+msgid "End Page Range|E"
+msgstr "Page finale|f"
+
+#: lib/ui/stdcontext.inc:638
+msgid "No Page Formatting|N"
+msgstr "Pas de mise en page|c"
+
+#: lib/ui/stdcontext.inc:639
+msgid "Bold Page Formatting|B"
+msgstr "Mise en page « grasse »|g"
+
+#: lib/ui/stdcontext.inc:640
+msgid "Italic Page Formatting|I"
+msgstr "Mise en page « italique »|q"
+
+#: lib/ui/stdcontext.inc:641
+msgid "Emphasized Page Formatting|z"
+msgstr "Mise en page « en évidence »|é"
+
+#: lib/ui/stdcontext.inc:642
+msgid "Custom Page Formatting|C"
+msgstr "Mise en page personnalisée|p"
+
+#: lib/ui/stdcontext.inc:646
 msgid "Insert Subentry|b"
 msgstr "Insérer une sous-entrée d'index|s"
 
-#: lib/ui/stdcontext.inc:637
+#: lib/ui/stdcontext.inc:647
 msgid "Insert Sortkey|k"
 msgstr "Insérer une clé de tri|é"
 
-#: lib/ui/stdcontext.inc:638
+#: lib/ui/stdcontext.inc:648
 msgid "Insert See Reference|e"
 msgstr "Insérer une référence « Voir »|V"
 
-#: lib/ui/stdcontext.inc:639
+#: lib/ui/stdcontext.inc:649
 msgid "Insert See also Reference|a"
 msgstr "Insérer une référence « Voir aussi »|a"
 
-#: lib/ui/stdcontext.inc:647 lib/ui/stdmenus.inc:539
+#: lib/ui/stdcontext.inc:657 lib/ui/stdmenus.inc:539
 msgid "See|e"
 msgstr "Voir|V"
 
-#: lib/ui/stdcontext.inc:648 lib/ui/stdmenus.inc:540
+#: lib/ui/stdcontext.inc:658 lib/ui/stdmenus.inc:540
 msgid "See also|a"
 msgstr "Voir aussi|a"
 
-#: lib/ui/stdcontext.inc:657
+#: lib/ui/stdcontext.inc:667
 msgid "All Indexes|A"
 msgstr "Tous les index|A"
 
-#: lib/ui/stdcontext.inc:660
+#: lib/ui/stdcontext.inc:670
 msgid "Subindex|b"
 msgstr "Sous-index|S"
 
-#: lib/ui/stdcontext.inc:688 lib/ui/stdmenus.inc:591
+#: lib/ui/stdcontext.inc:698 lib/ui/stdmenus.inc:591
 msgid "Reject Change|R"
 msgstr "Rejeter la modification|R"
 
-#: lib/ui/stdcontext.inc:696
+#: lib/ui/stdcontext.inc:706
 msgid "Promote Section|P"
 msgstr "Promouvoir la section|m"
 
-#: lib/ui/stdcontext.inc:697
+#: lib/ui/stdcontext.inc:707
 msgid "Demote Section|D"
 msgstr "Rétrograder la section|é"
 
-#: lib/ui/stdcontext.inc:699
+#: lib/ui/stdcontext.inc:709
 msgid "Move Section Down|w"
 msgstr "Déplacer la section vers le bas|D"
 
-#: lib/ui/stdcontext.inc:701
+#: lib/ui/stdcontext.inc:711
 msgid "Select Section|S"
 msgstr "Sélectionner la section|S"
 
-#: lib/ui/stdcontext.inc:709
+#: lib/ui/stdcontext.inc:719
 msgid "Wrap by Preview|y"
 msgstr "Enrober par l'aperçu|p"
 
-#: lib/ui/stdcontext.inc:718
+#: lib/ui/stdcontext.inc:728
 msgid "Open Target...|O"
 msgstr "Ouvrir la cible...|O"
 
-#: lib/ui/stdcontext.inc:734 lib/ui/stdmenus.inc:361
+#: lib/ui/stdcontext.inc:744 lib/ui/stdmenus.inc:361
 msgid "Lock Toolbars|L"
 msgstr "Verrouiller les barres d'outils|V"
 
-#: lib/ui/stdcontext.inc:736 lib/ui/stdmenus.inc:363
+#: lib/ui/stdcontext.inc:746 lib/ui/stdmenus.inc:363
 msgid "Small-sized Icons"
 msgstr "Icônes de petite taille"
 
-#: lib/ui/stdcontext.inc:737 lib/ui/stdmenus.inc:364
+#: lib/ui/stdcontext.inc:747 lib/ui/stdmenus.inc:364
 msgid "Normal-sized Icons"
 msgstr "Icônes de taille normale"
 
-#: lib/ui/stdcontext.inc:738 lib/ui/stdmenus.inc:365
+#: lib/ui/stdcontext.inc:748 lib/ui/stdmenus.inc:365
 msgid "Big-sized Icons"
 msgstr "Icônes de grande taille"
 
-#: lib/ui/stdcontext.inc:739 lib/ui/stdmenus.inc:366
+#: lib/ui/stdcontext.inc:749 lib/ui/stdmenus.inc:366
 msgid "Huge-sized Icons"
 msgstr "Icônes de taille énorme"
 
-#: lib/ui/stdcontext.inc:740 lib/ui/stdmenus.inc:367
+#: lib/ui/stdcontext.inc:750 lib/ui/stdmenus.inc:367
 msgid "Giant-sized Icons"
 msgstr "Icônes de taille gigantesque"
 
-#: lib/ui/stdcontext.inc:754
+#: lib/ui/stdcontext.inc:764
 msgid "Zoom Level|Z"
 msgstr "Niveau de zoom|z"
 
-#: lib/ui/stdcontext.inc:755
+#: lib/ui/stdcontext.inc:765
 msgid "Zoom Slider|S"
 msgstr "Glissière de zoom|G"
 
-#: lib/ui/stdcontext.inc:757
+#: lib/ui/stdcontext.inc:767
 msgid "Word Count|W"
 msgstr "Décompte des mots|m"
 
-#: lib/ui/stdcontext.inc:758
+#: lib/ui/stdcontext.inc:768
 msgid "Character Count|C"
 msgstr "Décompte des caractères|c"
 
-#: lib/ui/stdcontext.inc:759
+#: lib/ui/stdcontext.inc:769
 msgid "Character Count (No Blanks)|h"
 msgstr "Décompte des caractères (espaces exclues)|x"
 
@@ -27794,7 +27826,7 @@ msgstr ""
 "le préambule LaTeX."
 
 #: src/Buffer.cpp:1086 src/BufferParams.cpp:475 src/frontends/qt/GuiLog.cpp:293
-#: src/insets/InsetIndex.cpp:1167
+#: src/insets/InsetIndex.cpp:1234
 msgid "Index"
 msgstr "Index"
 
@@ -31237,8 +31269,8 @@ msgstr "Erreur de lecture du moteur bibliographique %1$s\n"
 msgid "MISSING: "
 msgstr "MANQUANT : "
 
-#: src/TocBackend.cpp:273 src/insets/InsetIndex.cpp:919
-#: src/insets/InsetIndex.cpp:954
+#: src/TocBackend.cpp:273 src/insets/InsetIndex.cpp:972
+#: src/insets/InsetIndex.cpp:1007
 msgid "unknown type!"
 msgstr "type  inconnu !"
 
@@ -36156,7 +36188,7 @@ msgid "active"
 msgstr "actif"
 
 #: src/insets/InsetBranch.cpp:70 src/insets/InsetBranch.cpp:72
-#: src/insets/InsetIndex.cpp:1175
+#: src/insets/InsetIndex.cpp:1242
 msgid "non-active"
 msgstr "non-actif"
 
@@ -36675,7 +36707,7 @@ msgstr "Page initiale"
 msgid "Ends page range"
 msgstr "Page finale"
 
-#: src/insets/InsetIndex.cpp:298
+#: src/insets/InsetIndex.cpp:307
 #, c-format
 msgid ""
 "LyX's automatic index sorting algorithm faced problems with the entry "
@@ -36688,11 +36720,11 @@ msgstr ""
 "Merci de préciser la position de tri de cette entrée manuellement,\n"
 "comme expliqué dans le Guide d'utilisation."
 
-#: src/insets/InsetIndex.cpp:303 src/insets/InsetIndexMacro.cpp:283
+#: src/insets/InsetIndex.cpp:312 src/insets/InsetIndexMacro.cpp:283
 msgid "Index sorting failed"
 msgstr "Échec du tri d'index"
 
-#: src/insets/InsetIndex.cpp:682
+#: src/insets/InsetIndex.cpp:723
 #, c-format
 msgid ""
 "There is an empty index subentry in the entry '%1$s'.\n"
@@ -36701,39 +36733,39 @@ msgstr ""
 "Il y a une sous-entrée d'index vide dans l'entrée '%1$s'.\n"
 "Elle sera ignorée dans le résultat imprimable."
 
-#: src/insets/InsetIndex.cpp:685
+#: src/insets/InsetIndex.cpp:726
 msgid "Empty index subentry!"
 msgstr "Sous-entrée d'index vide !"
 
-#: src/insets/InsetIndex.cpp:912
+#: src/insets/InsetIndex.cpp:965
 msgid "Index Entry"
 msgstr "Entrée d'index"
 
-#: src/insets/InsetIndex.cpp:929
+#: src/insets/InsetIndex.cpp:982
 msgid "Pagination format:"
 msgstr "Format de la pagination :"
 
-#: src/insets/InsetIndex.cpp:931
+#: src/insets/InsetIndex.cpp:984
 msgid "bold"
 msgstr "gras"
 
-#: src/insets/InsetIndex.cpp:933
+#: src/insets/InsetIndex.cpp:986
 msgid "italic"
 msgstr "italique"
 
-#: src/insets/InsetIndex.cpp:935
+#: src/insets/InsetIndex.cpp:988
 msgid "emphasized"
 msgstr "en évidence"
 
-#: src/insets/InsetIndex.cpp:1172
+#: src/insets/InsetIndex.cpp:1239
 msgid "Unknown index type!"
 msgstr "Type d'index inconnu !"
 
-#: src/insets/InsetIndex.cpp:1173
+#: src/insets/InsetIndex.cpp:1240
 msgid "All indexes"
 msgstr "Tous les index"
 
-#: src/insets/InsetIndex.cpp:1177
+#: src/insets/InsetIndex.cpp:1244
 msgid "subindex"
 msgstr "sous-index"
 
@@ -37751,28 +37783,28 @@ msgstr "%1$d chaînes remplacées dans le sélection."
 msgid "%1$d strings have been replaced."
 msgstr "%1$d chaînes remplacées."
 
-#: src/lyxfind.cpp:4849
+#: src/lyxfind.cpp:4859
 msgid "One match has been replaced."
 msgstr "Une correspondance a été remplacée."
 
-#: src/lyxfind.cpp:4852
+#: src/lyxfind.cpp:4862
 msgid "Two matches have been replaced."
 msgstr "Deux correspondances ont été remplacées."
 
-#: src/lyxfind.cpp:4855
+#: src/lyxfind.cpp:4865
 #, c-format
 msgid "%1$d matches have been replaced."
 msgstr "%1$d correspondances ont été remplacées."
 
-#: src/lyxfind.cpp:4861
+#: src/lyxfind.cpp:4871
 msgid "Match not found."
 msgstr "Chaîne de caractères introuvable."
 
-#: src/lyxfind.cpp:4867
+#: src/lyxfind.cpp:4877
 msgid "Match has been replaced."
 msgstr "Chaîne de caractères remplacée."
 
-#: src/lyxfind.cpp:4869
+#: src/lyxfind.cpp:4879
 msgid "Match found."
 msgstr "Chaîne de caractères reconnue."
 
