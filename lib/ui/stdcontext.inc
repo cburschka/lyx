@@ -630,6 +630,16 @@ Menuset
 
 	Menu "context-index"
 		IndicesContext
+		Separator
+		OptItem "Single Page (No Page Range)|P" "inset-modify changeparam range none"
+		OptItem "Start Page Range|t" "inset-modify changeparam range start"
+		OptItem "End Page Range|E" "inset-modify changeparam range end"
+		Separator
+		OptItem "No Page Formatting|N" "inset-modify changeparam pagefmt default"
+		OptItem "Bold Page Formatting|B" "inset-modify changeparam pagefmt textbf"
+		OptItem "Italic Page Formatting|I" "inset-modify changeparam pagefmt textit"
+		OptItem "Emphasized Page Formatting|z" "inset-modify changeparam pagefmt emph"
+		OptItem "Custom Page Formatting|C" "inset-modify changeparam pagefmt custom"
 	End
 	
 	Menu "context-edit-index"

@@ -582,6 +582,21 @@ void InsetIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 			params_.index = from_utf8(cmd.getArg(1));
 			break;
 		}
+		if (cmd.getArg(0) == "changeparam") {
+			string const p = cmd.getArg(1);
+			string const v = cmd.getArg(2);
+			cur.recordUndoInset(this);
+			if (p == "range")
+				params_.range = insetindexpagerangetranslator().find(v);
+			if (p == "pagefmt") {
+				if (v == "default" || v == "textbf"
+				    || v == "textit" || v == "emph")
+					params_.pagefmt = v;
+				else
+					lyx::dispatch(FuncRequest(LFUN_INSET_SETTINGS, "index"));
+			}
+			break;
+		}
 		InsetIndexParams params;
 		InsetIndex::string2params(to_utf8(cmd.argument()), params);
 		cur.recordUndoInset(this);
@@ -627,6 +642,23 @@ bool InsetIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 			flag.setEnabled(index != 0);
 			flag.setOnOff(
 				from_utf8(cmd.getArg(1)) == params_.index);
+			return true;
+		}
+		if (cmd.getArg(0) == "changeparam") {
+			string const p = cmd.getArg(1);
+			string const v = cmd.getArg(2);
+			if (p == "range") {
+				flag.setEnabled(v == "none" || v == "start" || v == "end");
+				flag.setOnOff(params_.range == insetindexpagerangetranslator().find(v));
+			}
+			if (p == "pagefmt") {
+				flag.setEnabled(!v.empty());
+				if (params_.pagefmt == "default" || params_.pagefmt == "textbf"
+				    || params_.pagefmt == "textit" || params_.pagefmt == "emph")
+					flag.setOnOff(params_.pagefmt == v);
+				else
+					flag.setOnOff(v == "custom");
+			}
 			return true;
 		}
 		return InsetCollapsible::getStatus(cur, cmd, flag);
