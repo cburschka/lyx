@@ -2070,6 +2070,14 @@ void LyXAction::init()
  */
 		{ LFUN_INSET_COPY_AS, "inset-copy-as", ReadOnly | NoUpdate | AtPoint, Edit },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_INSET_INSERT_COPY
+ * \li Action: Inserts the inset's content (in ToC pane) at the position of the cursor.
+ * \li Syntax: inset-insert-copy
+ * \li Origin: spitz, 1 Nov 2022
+ * \endvar
+ */
+		{ LFUN_INSET_INSERT_COPY, "inset-insert-copy", Noop, Edit},
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_DIALOG_UPDATE

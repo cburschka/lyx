@@ -621,6 +621,8 @@ Menuset
 #
 
 	Menu "context-toc-index"
+		OptItem "Insert Copy at Cursor Position|I" "inset-insert-copy"
+		Separator
 		OptItem "Settings...|S" "inset-settings"
 	End
 

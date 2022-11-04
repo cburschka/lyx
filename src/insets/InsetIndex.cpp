@@ -18,6 +18,7 @@
 #include "BufferView.h"
 #include "ColorSet.h"
 #include "Cursor.h"
+#include "CutAndPaste.h"
 #include "DispatchResult.h"
 #include "Encoding.h"
 #include "ErrorList.h"
@@ -621,6 +622,16 @@ void InsetIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_INSET_INSERT_COPY: {
+		Cursor & bvcur = cur.bv().cursor();
+		if (cmd.origin() == FuncRequest::TOC && bvcur.inTexted()) {
+			cap::copyInsetToTemp(cur, clone());
+			cap::pasteFromTemp(bvcur, bvcur.buffer()->errorList("Paste"));
+		} else
+			cur.undispatched();
+		break;
+	}
+
 	default:
 		InsetCollapsible::doDispatch(cur, cmd);
 		break;
@@ -668,10 +679,16 @@ bool InsetIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 		flag.setEnabled(realbuffer.params().use_indices);
 		return true;
 	}
-	
+
+	case LFUN_INSET_INSERT_COPY:
+		// This can only be invoked by ToC widget
+		flag.setEnabled(cmd.origin() == FuncRequest::TOC
+		                && cur.bv().cursor().inset().insetAllowed(lyxCode()));
+		return true;
+
 	case LFUN_PARAGRAPH_BREAK:
 		return macrosPossible("subentry");
-	
+
 	case LFUN_INDEXMACRO_INSERT:
 		return macrosPossible(cmd.getArg(0));
 
