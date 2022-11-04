@@ -1830,7 +1830,7 @@ Buffer::ExportStatus Buffer::makeLaTeXFile(FileName const & fname,
 		lyx_exit(1);
 	}
 
-	d->texrow = move(os.texrow());
+	d->texrow = std::move(os.texrow());
 
 	ofs.close();
 	if (ofs.fail()) {
