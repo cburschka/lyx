@@ -352,6 +352,8 @@ void Inset::dispatch(Cursor & cur, FuncRequest & cmd)
 	cur.screenUpdateFlags(Update::Force | Update::FitCursor);
 	cur.dispatched();
 	doDispatch(cur, cmd);
+	if (cmd.origin() == FuncRequest::TOC)
+		cur.bv().processUpdateFlags(cur.result().screenUpdate());
 }
 
 
