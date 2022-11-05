@@ -1448,7 +1448,9 @@ public:
 private:
 	bool isModern()
 	{
+#ifdef LYX_INSET_INDEX_DEBUG
 		std::cout << to_utf8(entry_) << std::endl;
+#endif // LYX_INSET_INDEX_DEBUG
 
 		// If a modern parameter is present, this is definitely a modern index inset. Similarly, if it contains the
 		// usual LaTeX symbols (!|@), then it is definitely a legacy index inset. Otherwise, if it has features of
