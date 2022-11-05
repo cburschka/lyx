@@ -1976,6 +1976,17 @@ void LyXAction::init()
 		{ LFUN_INDEX_INSERT, "index-insert", Noop, Edit },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_INDEX_TAG_ALL
+ * \li Action: Tags all occurrences of the word before the cursor with the
+ *             index inset at cursor.
+ * \li Notion: It automatically takes the word on the cursor position.
+ * \li Syntax: index-tag-all
+ * \li Origin: spitz, 5 Nov 2022
+ * \endvar
+ */
+		{ LFUN_INDEX_TAG_ALL, "index-tag-all", AtPoint, Edit },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_INDEX_PRINT
  * \li Action: Inserts list of Index entries on a new page.
  * \li Syntax: index-print [<TYPE:Name>]

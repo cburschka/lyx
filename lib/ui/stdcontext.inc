@@ -633,6 +633,8 @@ Menuset
 	Menu "context-index"
 		IndicesContext
 		Separator
+		Item "Index All Occurrences of this Word|W" "index-tag-all"
+		Separator
 		OptItem "Single Page (No Page Range)|P" "inset-modify changeparam range none"
 		OptItem "Start Page Range|t" "inset-modify changeparam range start"
 		OptItem "End Page Range|E" "inset-modify changeparam range end"

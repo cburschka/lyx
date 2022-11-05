@@ -142,6 +142,9 @@
 
 * spelling-remove-local removes words for a given language from the document's local
   spelling dictionary.
+
+* index-tag-all adds a copy of the index entry under cursor to after all occurrences of the
+  word that precedes the index inset.
   
 * inset-insert-copy inserts the inset's content (in ToC pane) at the position of the cursor.
 

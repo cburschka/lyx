@@ -38,6 +38,7 @@
 #include "MetricsInfo.h"
 #include "Paragraph.h"
 #include "Session.h"
+#include "texstream.h"
 #include "Text.h"
 #include "TextMetrics.h"
 #include "TexRow.h"
@@ -47,6 +48,7 @@
 #include "insets/InsetCitation.h"
 #include "insets/InsetCommand.h" // ChangeRefs
 #include "insets/InsetGraphics.h"
+#include "insets/InsetIndex.h"
 #include "insets/InsetRef.h"
 #include "insets/InsetText.h"
 
@@ -1757,6 +1759,78 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			cur.undispatched();
 			dispatched = false;
 		}
+		break;
+	}
+
+	case LFUN_INDEX_TAG_ALL: {
+		Inset * ins = cur.nextInset();
+		if (!ins || ins->lyxCode() != INDEX_CODE)
+			// not at index inset
+			break;
+
+		// clone the index inset
+		InsetIndex * cins =
+			new InsetIndex(static_cast<InsetIndex &>(*cur.nextInset()));
+		// In order to avoid duplication, we compare the
+		// LaTeX output if we find another index inset after
+		// the word
+		odocstringstream oilatex;
+		otexstream oits(oilatex);
+		OutputParams rp(&cur.buffer()->params().encoding());
+		ins->latex(oits, rp);
+		cap::copyInsetToTemp(cur, cins);
+
+		// move backwards into preceding word
+		// skip over other index insets
+		cur.backwardPosIgnoreCollapsed();
+		while (true) {
+			if (cur.inset().lyxCode() == INDEX_CODE)
+				cur.pop_back();
+			else if (cur.prevInset() && cur.prevInset()->lyxCode() == INDEX_CODE)
+				cur.backwardPosIgnoreCollapsed();
+			else
+				break;
+		}
+		if (!cur.inTexted()) {
+			// Nothing to do here.
+			setCursorFromInset(ins);
+			break;
+		}
+		// Get word or selection
+		cur.text()->selectWord(cur, WHOLE_WORD);
+		docstring const searched_string = cur.selectionAsString(false);
+		// Start from the beginning
+		lyx::dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
+		while (findOne(this, searched_string,
+			       false,// case sensitive
+			       true,// match whole word only
+			       true,// forward
+			       false,//find deleted
+			       false,//check wrap
+			       false,// auto-wrap
+			       false,// instant
+			       false// only selection
+			       )) {
+			cur.clearSelection();
+			Inset * ains = cur.nextInset();
+			if (ains && ains->lyxCode() == INDEX_CODE) {
+				// We have an index inset.
+				// Check whether it has the same
+				// LaTeX content and move on if so.
+				odocstringstream filatex;
+				otexstream fits(filatex);
+				ains->latex(fits, rp);
+				if (oilatex.str() == filatex.str())
+					continue;
+			}
+			// Paste the inset and possibly continue
+			cap::pasteFromTemp(cursor(), cursor().buffer()->errorList("Paste"));
+		}
+		// Go back to start position.
+		setCursorFromInset(ins);
+		dr.screenUpdate(cur.result().screenUpdate());
+		if (cur.result().needBufferUpdate())
+			dr.forceBufferUpdate();
 		break;
 	}
 

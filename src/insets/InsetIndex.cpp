@@ -692,6 +692,9 @@ bool InsetIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INDEXMACRO_INSERT:
 		return macrosPossible(cmd.getArg(0));
 
+	case LFUN_INDEX_TAG_ALL:
+		return true;
+
 	default:
 		return InsetCollapsible::getStatus(cur, cmd, flag);
 	}

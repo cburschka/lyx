@@ -58,6 +58,8 @@ public:
 	const InsetIndexParams& params() const { return params_; }
 	///
 	int rowFlags() const override { return CanBreakBefore | CanBreakAfter; }
+	///
+	InsetIndex const * asInsetIndex() const override { return this; }
 private:
 	///
 	bool hasSettings() const override;

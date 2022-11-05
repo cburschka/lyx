@@ -9621,12 +9621,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -9639,6 +9641,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9662,6 +9665,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -35407,31 +35411,46 @@ type  "icon"
 arg   "index-insert"
 \end_inset
 
+
+\change_inserted -712698321 1667668430
+ (but see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Convenience-Functions-Index"
+
+\end_inset
+
+ for some advanced methods)
+\change_unchanged
 .
  A
-\change_inserted -712698321 1667110584
+\change_inserted -712698321 1667665903
  collapsible inset
 \change_unchanged
  
 \change_deleted -712698321 1667110543
 box 
-\change_inserted -712698321 1667110812
+\change_inserted -712698321 1667665903
 with green label 
 \change_unchanged
 is inserted
-\change_inserted -712698321 1667110886
+\change_inserted -712698321 1667665903
 ; this
 \change_unchanged
  
 \change_deleted -712698321 1667110903
 contain
-\change_inserted -712698321 1667110904
+\change_inserted -712698321 1667665903
 holds
 \change_deleted -712698321 1667110872
 ing
 \change_unchanged
  the text that appears in the index
-\change_inserted -712698321 1667112993
+\change_inserted -712698321 1667665903
  (if you read this in \SpecialChar LyX
 , see the 
 \begin_inset Quotes eld
@@ -35445,11 +35464,11 @@ Index generation
 \change_unchanged
 .
  The word where the cursor is in
-\change_inserted -712698321 1667112984
+\change_inserted -712698321 1667665903
 ,
 \change_unchanged
  or the currently highlighted text
-\change_inserted -712698321 1667112984
+\change_inserted -712698321 1667665903
 ,
 \change_unchanged
  is proposed by \SpecialChar LyX
@@ -35458,7 +35477,7 @@ Index generation
 the 
 \change_unchanged
 index entry
-\change_inserted -712698321 1667112984
+\change_inserted -712698321 1667665903
  (i.
 \begin_inset space \thinspace{}
 \end_inset
@@ -37420,6 +37439,114 @@ reference "subsec:TeX-Code-Boxes"
 ).
 \change_unchanged
 
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1667669398
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Convenience-Functions-Index"
+
+\end_inset
+
+Convenience Functions for Index Handling
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1667669552
+Indexing a document can be a tedious task, since you often have to insert
+ the same index entry multiple times in order to refer to passages at different
+ pages.
+ This is not only time-consuming, but also error-prone; e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., you have to remember how exactly an inset entry has been inserted to
+ avoid redundant entries.
+ \SpecialChar LyX
+ provides some functions to ease the task.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1667669398
+First, if you want to add an entry which you already used before, you can
+ open the outliner via 
+\family sans
+View\SpecialChar menuseparator
+Outline Pane
+\family default
+ (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:The-Outliner"
+
+\end_inset
+
+), select the 
+\family sans
+Index Entries
+\family default
+ section (it is convenient to have this open while indexing anyway), scroll
+ to the entry in question (if you check 
+\family sans
+Sort
+\family default
+, it will be more easier), then 
+\emph on
+right
+\emph default
+-click on the entry and select 
+\family sans
+Insert Copy at Cursor Position
+\family default
+ from the context menu.
+ This will do just what it says: it will insert a copy of that index inset
+ at the position where the cursor is.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1667669772
+Second, \SpecialChar LyX
+ also provides a semi-automated solution to index a word.
+ If you right-click on an index entry inset, you can select from the context
+ menu 
+\family sans
+Index All Occurrences of this Word
+\family default
+.
+ This will search the whole document (only single documents, not master
+ and child documents) and insert a copy of this index inset after each occurrenc
+e of the word that precedes the inset.
+ Note that casing of the word does not matter, but only full words in the
+ same grammatical form are considered (so if 
+\emph on
+table
+\emph default
+ is the word before the index entry, 
+\emph on
+Table
+\emph default
+ will be considered as well, but not 
+\emph on
+tables
+\emph default
+).
+ Please take care to not overuse this function and to carefully check the
+ result afterwards.
+ Remember, a good index does not simply list all occurrences of a given
+ word in a specific document (that is a concordance rather), but only relevant
+ occurrences! So as convenient as this function might seem, it is suitable
+ especially for particular cases.
+ With others, you will have more work with removing again falsely inserted
+ entries than you would have with manually inserting them at the right place.
 \end_layout
 
 \begin_layout Subsection

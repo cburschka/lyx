@@ -46,6 +46,7 @@ class InsetArgument;
 class InsetCollapsible;
 class InsetCommand;
 class InsetGraphics;
+class InsetIndex;
 class InsetIterator;
 class InsetLayout;
 class InsetList;
@@ -146,6 +147,8 @@ public:
 	virtual InsetCommand const * asInsetCommand() const { return nullptr; }
 	/// is this inset based on the InsetArgument class?
 	virtual InsetArgument const * asInsetArgument() const { return nullptr; }
+	/// is this inset based on the InsetIndex class?
+	virtual InsetIndex const * asInsetIndex() const { return nullptr; }
 	/// is this inset based on the InsetGraphics class?
 	virtual InsetGraphics * asInsetGraphics() { return nullptr; }
 	/// is this inset based on the InsetGraphics class?
