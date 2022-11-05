@@ -55,6 +55,14 @@ Sublabel: lyx_wontfix
 #       (we only use "recent" lyx2lyx roundtrip to test compilation.
 export/doc/de/UserGuide_lyx2(2|3)
 
+# (https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg218252.html)
+# from Kornel:
+# Exporting to 2.3 format and exporting from the exported differ in extra lines and
+# in changed sequence of 2 lines at begin.
+#
+# $ diff doc/fr/UserGuide.23.lyx fr/UserGuide.23.23.lyx
+export/doc/fr/UserGuide_lyx2(2|3)
+
 
 # ===========================================
 Sublabel: special
