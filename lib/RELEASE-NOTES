@@ -79,6 +79,11 @@
   screen. Note that "backingstore" is actually always enforced on
   macOS and Wayland (default: partial).
 
+* \screen_limit true|false: determines whether the text width on screen is limited
+  (both fullscreen and normal view).
+
+* \screen_width <length>: sets the width of the text on screen if \screen_limit is true.
+
 !!!The following pref variables were changed in 2.4:
 
 
@@ -88,6 +93,12 @@
 * \font_encoding
   The font encoding is now automatically set depending on the document
   fonts and languages.
+
+* \fullscreen_limit
+  Removed in favor of \screen_limit
+
+* \fullscreen_width
+  Removed in favor of \screen_width
 
 * \use_qimage
   This is no longer necessary due to the rewrite of the painter.
@@ -131,6 +142,8 @@
 
 * spelling-remove-local removes words for a given language from the document's local
   spelling dictionary.
+  
+* inset-insert-copy inserts the inset's content (in ToC pane) at the position of the cursor.
 
 * inset-split is a new convenience function that splits an inset into two at the given
   cursor position. This is only implemented for text insets currently.
