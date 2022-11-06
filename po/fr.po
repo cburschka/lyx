@@ -362,8 +362,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-11-04 17:54+0100\n"
-"PO-Revision-Date: 2022-11-04 18:02+0100\n"
+"POT-Creation-Date: 2022-11-06 11:05+0100\n"
+"PO-Revision-Date: 2022-11-06 11:13+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -20061,7 +20061,7 @@ msgid "Cut"
 msgstr "Couper"
 
 #: lib/ui/stdcontext.inc:62 lib/ui/stdcontext.inc:376 lib/ui/stdmenus.inc:109
-#: lib/ui/stdtoolbars.inc:90 src/BufferView.cpp:2273
+#: lib/ui/stdtoolbars.inc:90 src/BufferView.cpp:2347
 msgid "Copy"
 msgstr "Copier"
 
@@ -20187,9 +20187,9 @@ msgstr "Étiquette uniquement|É"
 #: lib/ui/stdcontext.inc:559 lib/ui/stdcontext.inc:567
 #: lib/ui/stdcontext.inc:577 lib/ui/stdcontext.inc:585
 #: lib/ui/stdcontext.inc:593 lib/ui/stdcontext.inc:601
-#: lib/ui/stdcontext.inc:614 lib/ui/stdcontext.inc:624
-#: lib/ui/stdcontext.inc:672 lib/ui/stdcontext.inc:680
-#: lib/ui/stdcontext.inc:726 lib/ui/stdcontext.inc:735 lib/ui/stdmenus.inc:584
+#: lib/ui/stdcontext.inc:614 lib/ui/stdcontext.inc:626
+#: lib/ui/stdcontext.inc:676 lib/ui/stdcontext.inc:684
+#: lib/ui/stdcontext.inc:730 lib/ui/stdcontext.inc:739 lib/ui/stdmenus.inc:584
 msgid "Settings...|S"
 msgstr "Paramètres...|m"
 
@@ -20226,7 +20226,7 @@ msgid "Close Inset|C"
 msgstr "Fermer l'insert|i"
 
 #: lib/ui/stdcontext.inc:178 lib/ui/stdcontext.inc:184
-#: lib/ui/stdcontext.inc:200 lib/ui/stdcontext.inc:688
+#: lib/ui/stdcontext.inc:200 lib/ui/stdcontext.inc:692
 msgid "Dissolve Inset|D"
 msgstr "Dissoudre l'insert|u"
 
@@ -20558,7 +20558,7 @@ msgstr "Rétrograder la section|é"
 msgid "Move Section Down|D"
 msgstr "Déplacer la section vers le bas|D"
 
-#: lib/ui/stdcontext.inc:393 lib/ui/stdcontext.inc:708
+#: lib/ui/stdcontext.inc:393 lib/ui/stdcontext.inc:712
 msgid "Move Section Up|U"
 msgstr "Déplacer la section vers le haut|u"
 
@@ -20566,7 +20566,7 @@ msgstr "Déplacer la section vers le haut|u"
 msgid "Insert Regular Expression"
 msgstr "Insérer une expression régulière"
 
-#: lib/ui/stdcontext.inc:397 lib/ui/stdcontext.inc:697
+#: lib/ui/stdcontext.inc:397 lib/ui/stdcontext.inc:701
 msgid "Accept Change|c"
 msgstr "Accepter la modification|A"
 
@@ -20805,139 +20805,147 @@ msgstr "Ajouter une branche inconnue|j"
 msgid "Insert Reference at Cursor Position|I"
 msgstr "Insérer la référence à la position du curseur|I"
 
-#: lib/ui/stdcontext.inc:634
-msgid "Single Page (No Page Range)|P"
-msgstr "Page unique (pas de série de pages)|u"
-
-#: lib/ui/stdcontext.inc:635
-msgid "Start Page Range|t"
-msgstr "Page initiale|i"
+#: lib/ui/stdcontext.inc:624
+msgid "Insert Copy at Cursor Position|I"
+msgstr "Insérer la copie à la position du curseur|c"
 
 #: lib/ui/stdcontext.inc:636
+msgid "Index All Occurrences of this Word|W"
+msgstr "Indexer toutes les occurrences de ce mot|x"
+
+#: lib/ui/stdcontext.inc:638
+msgid "Single Page (No Page Range)|P"
+msgstr "Page unique (pas de série de pages)|r"
+
+#: lib/ui/stdcontext.inc:639
+msgid "Start Page Range|t"
+msgstr "Page initiale|t"
+
+#: lib/ui/stdcontext.inc:640
 msgid "End Page Range|E"
 msgstr "Page finale|f"
 
-#: lib/ui/stdcontext.inc:638
+#: lib/ui/stdcontext.inc:642
 msgid "No Page Formatting|N"
-msgstr "Pas de mise en page|c"
+msgstr "Pas de mise en page|n"
 
-#: lib/ui/stdcontext.inc:639
+#: lib/ui/stdcontext.inc:643
 msgid "Bold Page Formatting|B"
 msgstr "Mise en page « grasse »|g"
 
-#: lib/ui/stdcontext.inc:640
+#: lib/ui/stdcontext.inc:644
 msgid "Italic Page Formatting|I"
 msgstr "Mise en page « italique »|q"
 
-#: lib/ui/stdcontext.inc:641
+#: lib/ui/stdcontext.inc:645
 msgid "Emphasized Page Formatting|z"
 msgstr "Mise en page « en évidence »|é"
 
-#: lib/ui/stdcontext.inc:642
+#: lib/ui/stdcontext.inc:646
 msgid "Custom Page Formatting|C"
 msgstr "Mise en page personnalisée|p"
 
-#: lib/ui/stdcontext.inc:646
+#: lib/ui/stdcontext.inc:650
 msgid "Insert Subentry|b"
 msgstr "Insérer une sous-entrée d'index|s"
 
-#: lib/ui/stdcontext.inc:647
+#: lib/ui/stdcontext.inc:651
 msgid "Insert Sortkey|k"
 msgstr "Insérer une clé de tri|é"
 
-#: lib/ui/stdcontext.inc:648
+#: lib/ui/stdcontext.inc:652
 msgid "Insert See Reference|e"
-msgstr "Insérer une référence « Voir »|V"
+msgstr "Insérer une référence « Voir »|o"
 
-#: lib/ui/stdcontext.inc:649
+#: lib/ui/stdcontext.inc:653
 msgid "Insert See also Reference|a"
 msgstr "Insérer une référence « Voir aussi »|a"
 
-#: lib/ui/stdcontext.inc:657 lib/ui/stdmenus.inc:539
+#: lib/ui/stdcontext.inc:661 lib/ui/stdmenus.inc:539
 msgid "See|e"
 msgstr "Voir|V"
 
-#: lib/ui/stdcontext.inc:658 lib/ui/stdmenus.inc:540
+#: lib/ui/stdcontext.inc:662 lib/ui/stdmenus.inc:540
 msgid "See also|a"
 msgstr "Voir aussi|a"
 
-#: lib/ui/stdcontext.inc:667
+#: lib/ui/stdcontext.inc:671
 msgid "All Indexes|A"
 msgstr "Tous les index|A"
 
-#: lib/ui/stdcontext.inc:670
+#: lib/ui/stdcontext.inc:674
 msgid "Subindex|b"
 msgstr "Sous-index|S"
 
-#: lib/ui/stdcontext.inc:698 lib/ui/stdmenus.inc:591
+#: lib/ui/stdcontext.inc:702 lib/ui/stdmenus.inc:591
 msgid "Reject Change|R"
 msgstr "Rejeter la modification|R"
 
-#: lib/ui/stdcontext.inc:706
+#: lib/ui/stdcontext.inc:710
 msgid "Promote Section|P"
 msgstr "Promouvoir la section|m"
 
-#: lib/ui/stdcontext.inc:707
+#: lib/ui/stdcontext.inc:711
 msgid "Demote Section|D"
 msgstr "Rétrograder la section|é"
 
-#: lib/ui/stdcontext.inc:709
+#: lib/ui/stdcontext.inc:713
 msgid "Move Section Down|w"
 msgstr "Déplacer la section vers le bas|D"
 
-#: lib/ui/stdcontext.inc:711
+#: lib/ui/stdcontext.inc:715
 msgid "Select Section|S"
 msgstr "Sélectionner la section|S"
 
-#: lib/ui/stdcontext.inc:719
+#: lib/ui/stdcontext.inc:723
 msgid "Wrap by Preview|y"
 msgstr "Enrober par l'aperçu|p"
 
-#: lib/ui/stdcontext.inc:728
+#: lib/ui/stdcontext.inc:732
 msgid "Open Target...|O"
 msgstr "Ouvrir la cible...|O"
 
-#: lib/ui/stdcontext.inc:744 lib/ui/stdmenus.inc:361
+#: lib/ui/stdcontext.inc:748 lib/ui/stdmenus.inc:361
 msgid "Lock Toolbars|L"
 msgstr "Verrouiller les barres d'outils|V"
 
-#: lib/ui/stdcontext.inc:746 lib/ui/stdmenus.inc:363
+#: lib/ui/stdcontext.inc:750 lib/ui/stdmenus.inc:363
 msgid "Small-sized Icons"
 msgstr "Icônes de petite taille"
 
-#: lib/ui/stdcontext.inc:747 lib/ui/stdmenus.inc:364
+#: lib/ui/stdcontext.inc:751 lib/ui/stdmenus.inc:364
 msgid "Normal-sized Icons"
 msgstr "Icônes de taille normale"
 
-#: lib/ui/stdcontext.inc:748 lib/ui/stdmenus.inc:365
+#: lib/ui/stdcontext.inc:752 lib/ui/stdmenus.inc:365
 msgid "Big-sized Icons"
 msgstr "Icônes de grande taille"
 
-#: lib/ui/stdcontext.inc:749 lib/ui/stdmenus.inc:366
+#: lib/ui/stdcontext.inc:753 lib/ui/stdmenus.inc:366
 msgid "Huge-sized Icons"
 msgstr "Icônes de taille énorme"
 
-#: lib/ui/stdcontext.inc:750 lib/ui/stdmenus.inc:367
+#: lib/ui/stdcontext.inc:754 lib/ui/stdmenus.inc:367
 msgid "Giant-sized Icons"
 msgstr "Icônes de taille gigantesque"
 
-#: lib/ui/stdcontext.inc:764
+#: lib/ui/stdcontext.inc:768
 msgid "Zoom Level|Z"
 msgstr "Niveau de zoom|z"
 
-#: lib/ui/stdcontext.inc:765
+#: lib/ui/stdcontext.inc:769
 msgid "Zoom Slider|S"
 msgstr "Glissière de zoom|G"
 
-#: lib/ui/stdcontext.inc:767
+#: lib/ui/stdcontext.inc:771
 msgid "Word Count|W"
 msgstr "Décompte des mots|m"
 
-#: lib/ui/stdcontext.inc:768
+#: lib/ui/stdcontext.inc:772
 msgid "Character Count|C"
 msgstr "Décompte des caractères|c"
 
-#: lib/ui/stdcontext.inc:769
+#: lib/ui/stdcontext.inc:773
 msgid "Character Count (No Blanks)|h"
 msgstr "Décompte des caractères (espaces exclues)|x"
 
@@ -22126,11 +22134,11 @@ msgstr "Correction orthographique"
 msgid "Spellcheck continuously"
 msgstr "Correction orthographique à la volée"
 
-#: lib/ui/stdtoolbars.inc:87 src/BufferView.cpp:1475
+#: lib/ui/stdtoolbars.inc:87 src/BufferView.cpp:1477
 msgid "Undo"
 msgstr "Annuler"
 
-#: lib/ui/stdtoolbars.inc:88 src/BufferView.cpp:1496
+#: lib/ui/stdtoolbars.inc:88 src/BufferView.cpp:1498
 msgid "Redo"
 msgstr "Refaire"
 
@@ -27826,7 +27834,7 @@ msgstr ""
 "le préambule LaTeX."
 
 #: src/Buffer.cpp:1086 src/BufferParams.cpp:475 src/frontends/qt/GuiLog.cpp:293
-#: src/insets/InsetIndex.cpp:1234
+#: src/insets/InsetIndex.cpp:1254
 msgid "Index"
 msgstr "Index"
 
@@ -28675,7 +28683,7 @@ msgstr ""
 "sera utilisée. LyX ne pourra pas produire\n"
 "un résultat imprimable correct."
 
-#: src/BufferParams.cpp:2667 src/BufferView.cpp:1427 src/BufferView.cpp:1459
+#: src/BufferParams.cpp:2667 src/BufferView.cpp:1429 src/BufferView.cpp:1461
 msgid "Could not load class"
 msgstr "Chargement de la classe impossible"
 
@@ -28723,104 +28731,104 @@ msgstr ""
 "bibliographie. Vérifiez soigneusement !\n"
 "Vous pourriez installer le processeur manquant."
 
-#: src/BufferView.cpp:179
+#: src/BufferView.cpp:181
 msgid "No more insets"
 msgstr "Pas d'autre insert"
 
-#: src/BufferView.cpp:884
+#: src/BufferView.cpp:886
 msgid "Save bookmark"
 msgstr "Enregistrer le signet"
 
-#: src/BufferView.cpp:1140
+#: src/BufferView.cpp:1142
 msgid "Document is read-only"
 msgstr "Document en lecture seule"
 
-#: src/BufferView.cpp:1142
+#: src/BufferView.cpp:1144
 msgid "Document has been modified externally"
 msgstr "Le document a été modifié par une application externe"
 
-#: src/BufferView.cpp:1151
+#: src/BufferView.cpp:1153
 msgid "This portion of the document is deleted."
 msgstr "Cette portion du document est supprimée."
 
-#: src/BufferView.cpp:1194 src/BufferView.cpp:2258
+#: src/BufferView.cpp:1196 src/BufferView.cpp:2332
 #: src/frontends/qt/GuiView.cpp:4440 src/frontends/qt/GuiView.cpp:4528
 msgid "Absolute filename expected."
 msgstr "Chemin absolu requis."
 
-#: src/BufferView.cpp:1425 src/BufferView.cpp:1457
+#: src/BufferView.cpp:1427 src/BufferView.cpp:1459
 #, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "La classe de document « %1$s » n'a pas pu être chargée."
 
-#: src/BufferView.cpp:1483
+#: src/BufferView.cpp:1485
 msgid "No further undo information"
 msgstr "Pas d'information pour Annuler"
 
-#: src/BufferView.cpp:1504
+#: src/BufferView.cpp:1506
 msgid "No further redo information"
 msgstr "Pas d'information pour Refaire"
 
-#: src/BufferView.cpp:1696 src/BufferView.cpp:1711 src/BufferView.cpp:1744
+#: src/BufferView.cpp:1698 src/BufferView.cpp:1713 src/BufferView.cpp:1746
 msgid "Search string not found!"
 msgstr "Chaîne de caractères introuvable !"
 
-#: src/BufferView.cpp:1765
+#: src/BufferView.cpp:1839
 msgid "Mark off"
 msgstr "Marque désactivée"
 
-#: src/BufferView.cpp:1771
+#: src/BufferView.cpp:1845
 msgid "Mark on"
 msgstr "Marque activée"
 
-#: src/BufferView.cpp:1778
+#: src/BufferView.cpp:1852
 msgid "Mark removed"
 msgstr "Marque enlevée"
 
-#: src/BufferView.cpp:1781
+#: src/BufferView.cpp:1855
 msgid "Mark set"
 msgstr "Marque posée"
 
-#: src/BufferView.cpp:1872
+#: src/BufferView.cpp:1946
 msgid "Statistics for the selection:"
 msgstr "Statistiques pour la sélection :"
 
-#: src/BufferView.cpp:1874
+#: src/BufferView.cpp:1948
 msgid "Statistics for the document:"
 msgstr "Statistiques pour le document :"
 
-#: src/BufferView.cpp:1877
+#: src/BufferView.cpp:1951
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d mots"
 
-#: src/BufferView.cpp:1879
+#: src/BufferView.cpp:1953
 msgid "One word"
 msgstr "Un mot"
 
-#: src/BufferView.cpp:1882
+#: src/BufferView.cpp:1956
 #, c-format
 msgid "%1$d characters"
 msgstr "%1$d caractères"
 
-#: src/BufferView.cpp:1884
+#: src/BufferView.cpp:1958
 msgid "One character"
 msgstr "Un caractère"
 
-#: src/BufferView.cpp:1887
+#: src/BufferView.cpp:1961
 #, c-format
 msgid "%1$d characters (no blanks)"
 msgstr "%1$d caractères (espaces exclues)"
 
-#: src/BufferView.cpp:1889
+#: src/BufferView.cpp:1963
 msgid "One character (no blanks)"
 msgstr "Un caractère (espaces exclues)"
 
-#: src/BufferView.cpp:1891
+#: src/BufferView.cpp:1965
 msgid "Statistics"
 msgstr "Statistiques"
 
-#: src/BufferView.cpp:2116
+#: src/BufferView.cpp:2190
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
@@ -28828,35 +28836,35 @@ msgstr ""
 "Interruption de « inset-forall » du fait d'un nombre d'actions supérieur à "
 "%1$d"
 
-#: src/BufferView.cpp:2118
+#: src/BufferView.cpp:2192
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "\"%1$s\" appliqué à %2$d inserts"
 
-#: src/BufferView.cpp:2126
+#: src/BufferView.cpp:2200
 msgid "Branch name"
 msgstr "Nom de la branche"
 
-#: src/BufferView.cpp:2133 src/frontends/qt/GuiBranches.cpp:225
+#: src/BufferView.cpp:2207 src/frontends/qt/GuiBranches.cpp:225
 msgid "Branch already exists"
 msgstr "La branche existe déjà"
 
-#: src/BufferView.cpp:3069
+#: src/BufferView.cpp:3143
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Insertion du document %1$s..."
 
-#: src/BufferView.cpp:3085
+#: src/BufferView.cpp:3159
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Document %1$s inséré."
 
-#: src/BufferView.cpp:3087
+#: src/BufferView.cpp:3161
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Impossible d'insérer le document %1$s"
 
-#: src/BufferView.cpp:3582
+#: src/BufferView.cpp:3656
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -28867,11 +28875,11 @@ msgstr ""
 "%1$s\n"
 "à cause de l'erreur : %2$s"
 
-#: src/BufferView.cpp:3584
+#: src/BufferView.cpp:3658
 msgid "Could not read file"
 msgstr "Lecture du fichier impossible"
 
-#: src/BufferView.cpp:3591
+#: src/BufferView.cpp:3665
 #, c-format
 msgid ""
 "%1$s\n"
@@ -28880,17 +28888,17 @@ msgstr ""
 "%1$s\n"
 "est illisible."
 
-#: src/BufferView.cpp:3592 src/frontends/qt/qt_helpers.cpp:328
+#: src/BufferView.cpp:3666 src/frontends/qt/qt_helpers.cpp:328
 #: src/frontends/qt/qt_helpers.cpp:331 src/frontends/qt/qt_helpers.cpp:337
 #: src/output.cpp:39
 msgid "Could not open file"
 msgstr "Ouverture du fichier impossible"
 
-#: src/BufferView.cpp:3599
+#: src/BufferView.cpp:3673
 msgid "Reading not UTF-8 encoded file"
 msgstr "Lecture d'un fichier non encodé en UTF-8"
 
-#: src/BufferView.cpp:3600
+#: src/BufferView.cpp:3674
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -31269,8 +31277,8 @@ msgstr "Erreur de lecture du moteur bibliographique %1$s\n"
 msgid "MISSING: "
 msgstr "MANQUANT : "
 
-#: src/TocBackend.cpp:273 src/insets/InsetIndex.cpp:972
-#: src/insets/InsetIndex.cpp:1007
+#: src/TocBackend.cpp:273 src/insets/InsetIndex.cpp:992
+#: src/insets/InsetIndex.cpp:1027
 msgid "unknown type!"
 msgstr "type  inconnu !"
 
@@ -36188,7 +36196,7 @@ msgid "active"
 msgstr "actif"
 
 #: src/insets/InsetBranch.cpp:70 src/insets/InsetBranch.cpp:72
-#: src/insets/InsetIndex.cpp:1242
+#: src/insets/InsetIndex.cpp:1262
 msgid "non-active"
 msgstr "non-actif"
 
@@ -36699,15 +36707,15 @@ msgstr ""
 "Fichier incorrect :\n"
 "%1$s"
 
-#: src/insets/InsetIndex.cpp:88
+#: src/insets/InsetIndex.cpp:89
 msgid "Starts page range"
 msgstr "Page initiale"
 
-#: src/insets/InsetIndex.cpp:89
+#: src/insets/InsetIndex.cpp:90
 msgid "Ends page range"
 msgstr "Page finale"
 
-#: src/insets/InsetIndex.cpp:307
+#: src/insets/InsetIndex.cpp:308
 #, c-format
 msgid ""
 "LyX's automatic index sorting algorithm faced problems with the entry "
@@ -36720,11 +36728,11 @@ msgstr ""
 "Merci de préciser la position de tri de cette entrée manuellement,\n"
 "comme expliqué dans le Guide d'utilisation."
 
-#: src/insets/InsetIndex.cpp:312 src/insets/InsetIndexMacro.cpp:283
+#: src/insets/InsetIndex.cpp:313 src/insets/InsetIndexMacro.cpp:283
 msgid "Index sorting failed"
 msgstr "Échec du tri d'index"
 
-#: src/insets/InsetIndex.cpp:723
+#: src/insets/InsetIndex.cpp:743
 #, c-format
 msgid ""
 "There is an empty index subentry in the entry '%1$s'.\n"
@@ -36733,39 +36741,39 @@ msgstr ""
 "Il y a une sous-entrée d'index vide dans l'entrée '%1$s'.\n"
 "Elle sera ignorée dans le résultat imprimable."
 
-#: src/insets/InsetIndex.cpp:726
+#: src/insets/InsetIndex.cpp:746
 msgid "Empty index subentry!"
 msgstr "Sous-entrée d'index vide !"
 
-#: src/insets/InsetIndex.cpp:965
+#: src/insets/InsetIndex.cpp:985
 msgid "Index Entry"
 msgstr "Entrée d'index"
 
-#: src/insets/InsetIndex.cpp:982
+#: src/insets/InsetIndex.cpp:1002
 msgid "Pagination format:"
 msgstr "Format de la pagination :"
 
-#: src/insets/InsetIndex.cpp:984
+#: src/insets/InsetIndex.cpp:1004
 msgid "bold"
 msgstr "gras"
 
-#: src/insets/InsetIndex.cpp:986
+#: src/insets/InsetIndex.cpp:1006
 msgid "italic"
 msgstr "italique"
 
-#: src/insets/InsetIndex.cpp:988
+#: src/insets/InsetIndex.cpp:1008
 msgid "emphasized"
 msgstr "en évidence"
 
-#: src/insets/InsetIndex.cpp:1239
+#: src/insets/InsetIndex.cpp:1259
 msgid "Unknown index type!"
 msgstr "Type d'index inconnu !"
 
-#: src/insets/InsetIndex.cpp:1240
+#: src/insets/InsetIndex.cpp:1260
 msgid "All indexes"
 msgstr "Tous les index"
 
-#: src/insets/InsetIndex.cpp:1244
+#: src/insets/InsetIndex.cpp:1264
 msgid "subindex"
 msgstr "sous-index"
 
