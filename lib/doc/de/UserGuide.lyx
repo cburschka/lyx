@@ -32932,7 +32932,19 @@ type  "icon"
 arg   "index-insert"
 \end_inset
 
- verwendet.
+ verwendet (s.
+ aber Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Index-Erleichterung"
+
+\end_inset
+
+ für ausgeklügeltere Methoden).
  Es wird dann eine ausklappbare Box mit grüner Beschriftung eingefügt, die
  den Text des Stichworts enthält (falls Sie dies in \SpecialChar LyX
  direkt lesen, sehen
@@ -33990,6 +34002,115 @@ noprefix "false"
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Index-Erleichterung"
+
+\end_inset
+
+Funktionen zur Erleichterung der Verschlagwortung
+\end_layout
+
+\begin_layout Standard
+Ein Stichwortverzeichnis zu erstellen kann eine mühsame Aufgabe sein, da
+ man oft denselben Stichworteintrag mehrfach einfügen muss, um auf unterschiedli
+che Stellen auf verschiedenen Seiten zu verweisen.
+ Das ist nicht nur zeitaufwändig, sondern auch fehleranfällig.
+ So müssen Sie beispielsweise stets wissen, wie Sie einen Stichworteintrag
+ 
+\emph on
+genau
+\emph default
+ formuliert haben, um redundante Einträge zu verhindern.
+ \SpecialChar LyX
+ bietet ein paar Funktionen, die hier helfen können.
+\end_layout
+
+\begin_layout Standard
+Wenn Sie einen Eintrag, den Sie bereits verwendet haben, an anderer Stelle
+ wieder einfügen wollen, können Sie die Gliederung über 
+\family sans
+Ansicht\SpecialChar menuseparator
+Gliederung des Dokuments
+\family default
+ öffnen (s.
+ Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Gliederung"
+
+\end_inset
+
+).
+ Wählen Sie dort im Auswahlfeld den Gliederungstyp 
+\family sans
+Stichwörter
+\family default
+ (es ist ohnehin praktisch, diese Ansicht beim Indexieren offen zu haben),
+ scrollen Sie zum gewünschten Stichwort (wenn Sie 
+\family sans
+Sortieren
+\family default
+ anwählen, wird das leichter), und klicken Sie dann mit der 
+\emph on
+rechten
+\emph default
+ Maustaste auf den Eintrag.
+ Es erscheint ein Kontextmenü, hier klicken Sie 
+\family sans
+Kopie an der Cursor-Position einfügen
+\family default
+.
+ Das tut genau das, was es verspricht: Es fügt eine Kopie des ausgewählten
+ Stichworteintrags an der Stelle ein, an der sich der Cursor befindet.
+\end_layout
+
+\begin_layout Standard
+Darüber hinaus bietet \SpecialChar LyX
+ auch eine halbautomatische Lösung an, um ein Wort
+ zu indexieren.
+ Wenn Sie mit der rechten Maustaste auf eine Stichwort-Einfügung klicken,
+ können Sie vom Kontextmenü 
+\family sans
+Alle Vorkommen dieses Worts indexieren
+\family default
+ auswählen.
+ Dies veranlasst \SpecialChar LyX
+, das gesamte Dokument (nur Einzeldokumente, keine Haupt-
+ und Unterdokumente) zu durchsuchen und hinter jedem Vorkommen des Worts,
+ das vor dem Stichworteintrag steht, an dem Sie die Aktion ausgeführt haben,
+ eine Kopie dieses Stichworteintrags einzufügen.
+ Groß- und Kleinschreibung wird dabei nicht unterschieden, allerdings werden
+ nur ganze Wörter in derselben Wortform berücksichtigt (falls das Wort vor
+ dem Stichworteintrag also 
+\emph on
+ideologisch
+\emph default
+ ist, wird 
+\emph on
+Ideologisch
+\emph default
+ [wie es am Satzanfang ja vorkommen kann], nicht aber 
+\emph on
+ideologische
+\emph default
+ berücksichtigt).
+ Bitte verwenden Sie diese Funktion mit Bedacht, und prüfen Sie das Ergebnis
+ sorgfältig.
+ Denken Sie daran, ein gutes Stichwortverzeichnis listet nicht einfach alle
+ Vorkommen eines bestimmten Worts im Dokument auf (das wäre eine Konkordanz),
+ sondern nur relevante Vorkommen! So praktisch diese Funktion also auf den
+ ersten Blick erscheint, sie ist vor allem für bestimmte Fälle nützlich.
+ In anderen Fällen werden Sie mehr Zeit damit verschwenden, falsch gesetzte
+ Indexeinträge wieder zu entfernen als Sie investieren müssten, die Einträge
+ von vornherein manuell und einzeln zu setzen.
 \end_layout
 
 \begin_layout Subsection
