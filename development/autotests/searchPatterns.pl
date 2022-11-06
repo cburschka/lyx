@@ -99,7 +99,7 @@ print "\nControlfile\t= $patternsfile\n";
 print "Log-file\t= $logfile\n\n";
 &readPatterns($patternsfile);
 if (&processLogFile($logfile) > 0) {
-  print "Errors occured, exiting\n";
+  print "Errors occurred, exiting\n";
   exit(1);
 }
 

@@ -701,7 +701,7 @@ class LyX_base:
                     try:
                         conv(self)
                     except:
-                        self.warning("An error ocurred in %s, %s" %
+                        self.warning("An error occurred in %s, %s" %
                                      (version, str(conv)),
                                      default_debug__)
                         if not self.try_hard:

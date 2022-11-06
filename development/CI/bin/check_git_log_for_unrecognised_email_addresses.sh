@@ -48,7 +48,7 @@ EOF
 
 
 function fail() {
-    printf "An error occured: %s\n" "$*"
+    printf "An error occurred: %s\n" "$*"
     exit 1
 }
 
