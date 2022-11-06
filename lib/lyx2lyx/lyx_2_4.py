@@ -4513,7 +4513,7 @@ def revert_index_macros(document):
                                 # everything before ................... or after
                                 xxicont = document.body[iimpl+1:xiim] + document.body[xiime+1:iimple]
                                 # construct the latex sequence
-                                icont = xicont + put_cmd_in_ert("@") + xxicont[1:]
+                                icont = [''] + xicont + put_cmd_in_ert("@") + [''] + xxicont[1:]
                 if len(subentry) > 0:
                     subentry2 = icont[1:]
                 else:
@@ -4537,15 +4537,19 @@ def revert_index_macros(document):
             document.warning("Malformed LyX document: Can't find end of index macro inset plain layout at line %d" % i)
             continue
         if len(see) > 0:
-            document.body[ple:ple] = put_cmd_in_ert("|" + pagerange + "see{") + see + put_cmd_in_ert("}")
+            document.body[ple-2:ple] = put_cmd_in_ert("|" + pagerange + "see{") + [''] + see + put_cmd_in_ert("}") + ['','']
+            ple -= 2
         elif len(seealso) > 0:
-            document.body[ple:ple] = put_cmd_in_ert("|" + pagerange + "seealso{") + seealso + put_cmd_in_ert("}")
+            document.body[ple-2:ple] = put_cmd_in_ert("|" + pagerange + "seealso{") + [''] + seealso + put_cmd_in_ert("}") + ['','']
+            ple -= 2
         elif pageformat != "default":
-            document.body[ple:ple] = put_cmd_in_ert("|" + pagerange + pageformat)
+            document.body[ple-2:ple] = put_cmd_in_ert("|" + pagerange + pageformat)
         if len(subentry2) > 0:
-            document.body[ple:ple] = put_cmd_in_ert("!") + subentry2
+            document.body[ple-2:ple] = put_cmd_in_ert("!") + [''] + subentry2
+            ple -= 2
         if len(subentry) > 0:
-            document.body[ple:ple] = put_cmd_in_ert("!") + subentry
+            document.body[ple-2:ple] = put_cmd_in_ert("!") + [''] + subentry
+            ple -= 2
         if len(sortkey) > 0:
             document.body[pl:pl+1] = document.body[pl:pl] + sortkey + put_cmd_in_ert("@")
             
