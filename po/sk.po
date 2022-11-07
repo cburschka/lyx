@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-11-04 12:31+0100\n"
-"PO-Revision-Date: 2022-11-04 11:44+0000\n"
+"POT-Creation-Date: 2022-11-05 18:56+0100\n"
+"PO-Revision-Date: 2022-11-05 18:00+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -20253,6 +20253,14 @@ msgstr "Pridať neznámu vetvu|P"
 #: lib/ui/stdcontext.inc:526
 msgid "Insert Reference at Cursor Position|I"
 msgstr "Vložiť referenciu na pozícii kurzoru|V"
+
+#: lib/ui/stdcontext.inc:624
+msgid "Insert Copy at Cursor Position|I"
+msgstr "Vložiť kópiu k pozícii kurzoru|V"
+
+#: lib/ui/stdcontext.inc:636
+msgid "Index All Occurrences of this Word|W"
+msgstr "Indexuj všetky výskyty tohto slova|I"
 
 #: lib/ui/stdcontext.inc:634
 msgid "Single Page (No Page Range)|P"
