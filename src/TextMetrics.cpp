@@ -979,7 +979,7 @@ class flexible_const_iterator {
 public:
 
 	//
-	flexible_const_iterator operator++() {
+	flexible_const_iterator & operator++() {
 		if (pile_.empty())
 			++cit_;
 		else
