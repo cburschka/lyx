@@ -94,7 +94,7 @@ namespace {
 int const strwidth_cache_max_cost = 1024 * 1024;
 // Limit breakstr_cache_ total cost to 10MB of string data.
 // This is useful for documents with very large insets.
-int const breakstr_cache_max_cost = 1024 * 1024;
+int const breakstr_cache_max_cost = 10 * 1024 * 1024;
 // Qt 5.x already has its own caching of QTextLayout objects
 // but it does not seem to work well on MacOS X.
 #if (QT_VERSION < 0x050000) || defined(Q_OS_MAC)
