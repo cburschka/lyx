@@ -53,6 +53,8 @@
 
 #include "support/regex.h"
 
+#include <iterator>
+
 using namespace std;
 using namespace lyx::support;
 

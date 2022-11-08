@@ -44,6 +44,7 @@
 
 #include "support/regex.h"
 
+#include <cstring>
 #include <sstream>
 
 using namespace std;
