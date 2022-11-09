@@ -170,4 +170,7 @@ What's new
 - The WM class of LyX for X Window environment is now the package name, typically
   "lyx" or "lyx[suffix]" (bug 11930).
 
-- Fix warnings with recent compilers (gcc 11, clang+++ >= 10)
+- Fix warnings with recent compilers (gcc 11, clang+++ >= 10) and compilation with gcc 12.
+
+- Fix warnings with autoconf 2.71.
+
