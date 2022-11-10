@@ -146,6 +146,11 @@ GuiFontMetrics::GuiFontMetrics(QFont const & font)
 			slope_ = defaultSlope;
 		LYXERR(Debug::FONT, "Italic slope: " << slope_);
 	}
+	// If those characters have a non-zero width, we need to avoid them.
+	// This happens with Qt4 with monospace fonts
+	needs_naked_ = width(QString() + QChar(0x2060) + QChar(0x202d) + QChar(0x202e)) > 0;
+	// if (needs_naked_)
+	// 	LYXERR0("Font " << font.family() << " needs naked text layouts!");
 }
 
 
@@ -349,6 +354,7 @@ struct TextLayoutHelper
 	/// \c s is the original string
 	/// \c isrtl is true if the string is right-to-left
 	/// \c naked is true to disable the insertion of zero width annotations
+	/// FIXME: remove \c naked argument when Qt4 support goes away.
 	TextLayoutHelper(docstring const & s, bool isrtl, bool naked = false);
 
 	/// translate QString index to docstring index
@@ -481,7 +487,7 @@ GuiFontMetrics::getTextLayout(docstring const & s, bool const rtl,
 	if (auto ptl = qtextlayout_cache_[key])
 		return ptl;
 	PROFILE_CACHE_MISS(getTextLayout);
-	TextLayoutHelper tlh(s, rtl);
+	TextLayoutHelper tlh(s, rtl, needs_naked_);
 	auto const ptl = getTextLayout_helper(tlh, wordspacing, font_);
 	qtextlayout_cache_.insert(key, ptl);
 	return ptl;
@@ -491,7 +497,7 @@ GuiFontMetrics::getTextLayout(docstring const & s, bool const rtl,
 int GuiFontMetrics::pos2x(docstring const & s, int pos, bool const rtl,
                           double const wordspacing) const
 {
-	TextLayoutHelper tlh(s, rtl);
+	TextLayoutHelper tlh(s, rtl, needs_naked_);
 	auto ptl = getTextLayout(tlh, wordspacing);
 	// pos can be negative, see #10506.
 	int const qpos = tlh.pos2qpos(max(pos, 0));
@@ -502,7 +508,7 @@ int GuiFontMetrics::pos2x(docstring const & s, int pos, bool const rtl,
 int GuiFontMetrics::x2pos(docstring const & s, int & x, bool const rtl,
                           double const wordspacing) const
 {
-	TextLayoutHelper tlh(s, rtl);
+	TextLayoutHelper tlh(s, rtl, needs_naked_);
 	auto ptl = getTextLayout(tlh, wordspacing);
 	QTextLine const & tline = ptl->lineForTextPosition(0);
 	int qpos = tline.xToCursor(x);
@@ -540,7 +546,7 @@ FontMetrics::Breaks
 GuiFontMetrics::breakString_helper(docstring const & s, int first_wid, int wid,
                                    bool rtl, bool force) const
 {
-	TextLayoutHelper const tlh(s, rtl);
+	TextLayoutHelper const tlh(s, rtl, needs_naked_);
 
 	QTextLayout tl;
 #ifdef BIDI_USE_FLAG
@@ -582,7 +588,6 @@ GuiFontMetrics::breakString_helper(docstring const & s, int first_wid, int wid,
 		QTextLine const & line = tl.lineAt(i);
 		int const line_epos = line.textStart() + line.textLength();
 		int const epos = tlh.qpos2pos(line_epos);
-#if QT_VERSION >= 0x050000
 		// This does not take trailing spaces into account, except for the last line.
 		int const wid = iround(line.naturalTextWidth());
 		// If the line is not the last one, trailing space is always omitted.
@@ -591,24 +596,8 @@ GuiFontMetrics::breakString_helper(docstring const & s, int first_wid, int wid,
 		if (i + 1 == tl.lineCount() && !s.empty() && isSpace(s.back())
 		    && line.textStart() <= tlh.pos2qpos(s.size() - 1))
 			nspc_wid = iround(line.cursorToX(tlh.pos2qpos(s.size() - 1)));
-#else
-		// With some monospace fonts, the value of horizontalAdvance()
-		// can be wrong with Qt4. One hypothesis is that the invisible
-		// characters that we use are given a non-null width.
-		// FIXME: this is slower than it could be but we'll get rid of Qt4 anyway
-		docstring ss = s.substr(pos, epos - pos);
-		int const wid = width(ss);
-		if (!ss.empty() && isSpace(ss.back()))
-			ss.pop_back();
-		int const nspc_wid = i + 1 < tl.lineCount() ? width(ss) : wid;
-#endif
 		breaks.emplace_back(epos - pos, wid, nspc_wid);
 		pos = epos;
-#if 0
-		// FIXME: should it be kept in some form?
-		if ((force && line.textLength() == brkStrOffset) || line_wid > x)
-			return {-1, line_wid};
-#endif
 	}
 
 	return breaks;
