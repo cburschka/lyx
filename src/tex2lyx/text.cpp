@@ -3742,7 +3742,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			continue;
 		}
 
-		if (t.cs() == "appendix") {
+		if (t.cs() == "appendix" && !context.in_list_preamble) {
 			context.add_par_extra_stuff("\\start_of_appendix\n");
 			// We need to start a new paragraph. Otherwise the
 			// appendix in 'bla\appendix\chapter{' would start
