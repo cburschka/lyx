@@ -995,9 +995,11 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter, bo
 		return false;
 
 	if (recenter)
-		LYXERR(Debug::SCROLLING, "recentering and scrolling to cursor");
+		LYXERR(Debug::SCROLLING, "Centering cursor in workarea");
+	else if (force)
+		LYXERR(Debug::SCROLLING, "Setting cursor to top of workarea");
 	else
-		LYXERR(Debug::SCROLLING, "scrolling to cursor");
+		LYXERR(Debug::SCROLLING, "Making sure cursor is visible in workarea");
 
 	CursorSlice const & bot = dit.bottom();
 	TextMetrics & tm = textMetrics(bot.text());
@@ -1016,7 +1018,7 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter, bo
 	else if (bot_pit == tm.last().first + 1)
 		tm.newParMetricsDown();
 
-	if (tm.contains(bot_pit) && !force) {
+	if (tm.contains(bot_pit) && !force && !recenter) {
 		ParagraphMetrics const & pm = tm.parMetrics(bot_pit);
 		LBUFERR(!pm.rows().empty());
 		// FIXME: smooth scrolling doesn't work in mathed.
@@ -1027,14 +1029,12 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter, bo
 		Dimension const & row_dim =
 			inner_pm.getRow(cs.pos(), dit.boundary()).dim();
 		int scrolled = 0;
-		if (recenter)
-			scrolled = scroll(ypos - height_/2);
 
 		// We try to visualize the whole row, if the row height is larger than
 		// the screen height, we scroll to a heuristic value of height_ / 4.
 		// FIXME: This heuristic value should be replaced by a recursive search
 		// for a row in the inset that can be visualized completely.
-		else if (row_dim.height() > height_) {
+		if (row_dim.height() > height_) {
 			if (ypos < defaultRowHeight())
 				scrolled = scroll(ypos - height_ / 4);
 			else if (ypos > height_ - defaultRowHeight())
@@ -1063,28 +1063,20 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter, bo
 		d->inlineCompletionPos_ = DocIterator();
 
 	tm.redoParagraph(bot_pit);
-	ParagraphMetrics const & pm = tm.parMetrics(bot_pit);
 	int const offset = coordOffset(dit).y_;
-
 	d->anchor_pit_ = bot_pit;
+
 	CursorSlice const & cs = dit.innerTextSlice();
 	ParagraphMetrics const & inner_pm =
 		textMetrics(cs.text()).parMetrics(cs.pit());
 	Dimension const & row_dim =
 		inner_pm.getRow(cs.pos(), dit.boundary()).dim();
 
+	int const old_ypos = d->anchor_ypos_;
+	d->anchor_ypos_ = - offset + row_dim.ascent();
 	if (recenter)
-		d->anchor_ypos_ = height_/2;
-	else if (d->anchor_pit_ == 0)
-		d->anchor_ypos_ = offset + pm.ascent();
-	else if (d->anchor_pit_ == max_pit)
-		d->anchor_ypos_ = height_ - offset - row_dim.descent();
-	else if (offset > height_)
-		d->anchor_ypos_ = height_ - offset - row_dim.descent();
-	else
-		d->anchor_ypos_ = row_dim.ascent();
-
-	return true;
+		d->anchor_ypos_ += height_/2 - row_dim.height() / 2;
+	return d->anchor_ypos_ != old_ypos;
 }
 
 
