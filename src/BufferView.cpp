@@ -186,7 +186,7 @@ bool gotoInset(BufferView * bv, vector<InsetCode> const & codes,
 
 	tmpcur.clearSelection();
 	bv->setCursor(tmpcur);
-	return bv->scrollToCursor(bv->cursor(), false, true);
+	return bv->scrollToCursor(bv->cursor(), SCROLL_TOP);
 }
 
 
@@ -550,13 +550,13 @@ void BufferView::processUpdateFlags(Update::flags flags)
 		if (needsFitCursor()) {
 			// First try to make the selection start visible
 			// (which is just the cursor when there is no selection)
-			scrollToCursor(d->cursor_.selectionBegin(), false, false);
+			scrollToCursor(d->cursor_.selectionBegin(), SCROLL_VISIBLE);
 			// Metrics have to be recomputed (maybe again)
 			updateMetrics();
 			// Is the cursor visible? (only useful if cursor is at end of selection)
 			if (needsFitCursor()) {
 				// then try to make cursor visible instead
-				scrollToCursor(d->cursor_, false, false);
+				scrollToCursor(d->cursor_, SCROLL_VISIBLE);
 				// Metrics have to be recomputed (maybe again)
 				updateMetrics(flags);
 			}
@@ -750,7 +750,7 @@ void BufferView::scrollDocView(int const pixels, bool update)
 	// cut off at the top
 	if (pixels <= d->scrollbarParameters_.min) {
 		DocIterator dit = doc_iterator_begin(&buffer_);
-		showCursor(dit, false, false, update);
+		showCursor(dit, SCROLL_VISIBLE, update);
 		LYXERR(Debug::SCROLLING, "scroll to top");
 		return;
 	}
@@ -759,7 +759,7 @@ void BufferView::scrollDocView(int const pixels, bool update)
 	if (pixels >= d->scrollbarParameters_.max) {
 		DocIterator dit = doc_iterator_end(&buffer_);
 		dit.backwardPos();
-		showCursor(dit, false, false, update);
+		showCursor(dit, SCROLL_VISIBLE, update);
 		LYXERR(Debug::SCROLLING, "scroll to bottom");
 		return;
 	}
@@ -784,7 +784,7 @@ void BufferView::scrollDocView(int const pixels, bool update)
 	DocIterator dit = doc_iterator_begin(&buffer_);
 	dit.pit() = i;
 	LYXERR(Debug::SCROLLING, "pixels = " << pixels << " -> scroll to pit " << i);
-	showCursor(dit, false, false, update);
+	showCursor(dit, SCROLL_VISIBLE, update);
 }
 
 
@@ -970,33 +970,33 @@ int BufferView::workWidth() const
 
 void BufferView::recenter()
 {
-	showCursor(d->cursor_, true, false, true);
+	showCursor(d->cursor_, SCROLL_CENTER, true);
 }
 
 
 void BufferView::showCursor()
 {
-	showCursor(d->cursor_, false, false, true);
+	showCursor(d->cursor_, SCROLL_VISIBLE, true);
 }
 
 
-void BufferView::showCursor(DocIterator const & dit,
-	bool recenter, bool force, bool update)
+void BufferView::showCursor(DocIterator const & dit, ScrollType how,
+	bool update)
 {
-	if (scrollToCursor(dit, recenter, force) && update)
+	if (scrollToCursor(dit, how) && update)
 		processUpdateFlags(Update::Force);
 }
 
 
-bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter, bool force)
+bool BufferView::scrollToCursor(DocIterator const & dit, ScrollType how)
 {
 	// We are not properly started yet, delay until resizing is done.
 	if (height_ == 0)
 		return false;
 
-	if (recenter)
+	if (how == SCROLL_CENTER)
 		LYXERR(Debug::SCROLLING, "Centering cursor in workarea");
-	else if (force)
+	else if (how == SCROLL_TOP)
 		LYXERR(Debug::SCROLLING, "Setting cursor to top of workarea");
 	else
 		LYXERR(Debug::SCROLLING, "Making sure cursor is visible in workarea");
@@ -1018,7 +1018,7 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter, bo
 	else if (bot_pit == tm.last().first + 1)
 		tm.newParMetricsDown();
 
-	if (tm.contains(bot_pit) && !force && !recenter) {
+	if (tm.contains(bot_pit) && how == SCROLL_VISIBLE) {
 		ParagraphMetrics const & pm = tm.parMetrics(bot_pit);
 		LBUFERR(!pm.rows().empty());
 		// FIXME: smooth scrolling doesn't work in mathed.
@@ -1074,7 +1074,7 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter, bo
 
 	int const old_ypos = d->anchor_ypos_;
 	d->anchor_ypos_ = - offset + row_dim.ascent();
-	if (recenter)
+	if (how == SCROLL_CENTER)
 		d->anchor_ypos_ += height_/2 - row_dim.height() / 2;
 	return d->anchor_ypos_ != old_ypos;
 }
@@ -1581,7 +1581,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 					success = setCursorFromEntries({id, pos},
 					                               {id_end, pos_end});
 				}
-				if (success && scrollToCursor(d->cursor_, false, true))
+				if (success && scrollToCursor(d->cursor_, SCROLL_TOP))
 						dr.screenUpdate(Update::Force);
 			} else {
 				// Switch to other buffer view and resend cmd

@@ -57,6 +57,16 @@ enum CursorStatus {
 	CUR_BELOW
 };
 
+/// How to show cursor
+enum ScrollType {
+	// Make sure row if visible (do nothing if it is visible already)
+	SCROLL_VISIBLE,
+	// Force cursor to be on top of screen
+	SCROLL_TOP,
+	// Force cursor to be at center of screen
+	SCROLL_CENTER
+};
+
 /// Scrollbar Parameters.
 struct ScrollbarParameters
 {
@@ -201,17 +211,17 @@ public:
 	/// This method will automatically scroll and update the BufferView
 	/// (metrics+drawing) if needed.
 	void showCursor();
+
 	/// Ensure the passed cursor \p dit is visible.
 	/// This method will automatically scroll and update the BufferView
 	/// (metrics+drawing) if needed.
-	/// \param recenter Whether the cursor should be centered on screen
-	/// \param force If true, disregard current position
-	void showCursor(DocIterator const & dit, bool recenter, bool force,
-		bool update);
+	/// \param how Use this scroll strategy
+	/// \param force If true, update screen after scrolling
+	void showCursor(DocIterator const & dit, ScrollType how, bool update);
 	/// Scroll to the cursor.
-	/// \param recenter Whether the cursor should be centered on screen
-	/// \param force If true, disregard current position
-	bool scrollToCursor(DocIterator const & dit, bool recenter, bool force);
+	/// \param how Use this scroll strategy
+	/// \return true if screen was scrolled
+	bool scrollToCursor(DocIterator const & dit, ScrollType how);
 	/// scroll down document by the given number of pixels.
 	int scrollDown(int pixels);
 	/// scroll up document by the given number of pixels.
