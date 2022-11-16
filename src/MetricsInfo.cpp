@@ -75,7 +75,13 @@ Changer MetricsBase::changeFontSet(string const & name)
 	    && ((isTextFont(oldname) && oldcolor != Color_foreground)
 	        || (isMathFont(oldname) && oldcolor != Color_math)))
 		font.setColor(oldcolor);
+#if __cplusplus >= 201402L
 	return rc;
+#else
+	/** In theory, this is not needed with C++11, and modern compilers
+	 * will complain in C++11 mode, but gcc 4.9 requires this. */
+	return std::move(rc);
+#endif
 }
 
 
