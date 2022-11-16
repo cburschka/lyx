@@ -27,6 +27,7 @@
 #include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
+#include "support/textutils.h"
 
 #include <algorithm>
 #include <ostream>
@@ -203,14 +204,13 @@ bool Row::Element::splitAt(int const width, int next_width, bool force,
 
 void Row::Element::rtrim()
 {
-	if (type != STRING)
+	if (type != STRING || str.empty() || !isSpace(str.back()))
 		return;
 	/* This is intended for strings that have been created by splitAt.
-	 * They may have trailing spaces, but they are not counted in the
-	 * string length (QTextLayout feature, actually). We remove them,
-	 * and decrease endpos, since spaces at row break are invisible.
+	 * If There is a trailing space, we remove it and decrease endpos,
+	 * since spaces at row break are invisible.
 	 */
-	str = support::rtrim(str);
+	str.pop_back();
 	endpos = pos + str.length();
 	dim.wid = nspc_wid;
 }

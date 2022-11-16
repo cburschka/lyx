@@ -27,6 +27,8 @@
 namespace lyx {
 namespace frontend {
 
+struct TextLayoutHelper;
+
 struct BreakStringKey
 {
 	bool operator==(BreakStringKey const & key) const {
@@ -97,13 +99,16 @@ public:
 
 	/// Return a pointer to a cached QTextLayout object
 	std::shared_ptr<QTextLayout const>
-	getTextLayout(docstring const & s, bool const rtl,
-	              double const wordspacing) const;
+	getTextLayout(docstring const & s, bool const rtl, double const wordspacing) const;
 
 private:
 
 	Breaks breakString_helper(docstring const & s, int first_wid, int wid,
 	                          bool rtl, bool force) const;
+
+	/// A different version of getTextLayout for internal use
+	std::shared_ptr<QTextLayout const>
+	getTextLayout(TextLayoutHelper const & tlh, double const wordspacing) const;
 
 	/// The font
 	QFont font_;
@@ -113,6 +118,10 @@ private:
 
 	/// Slope of italic font
 	double slope_;
+
+	/// If true, avoid extra annotation in string for QTextLayout
+	// FIXME: remove wen Qt4 suport goes away
+	bool needs_naked_ = false;
 
 	/// Cache of char widths
 	mutable QHash<char_type, int> width_cache_;

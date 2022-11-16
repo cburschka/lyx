@@ -20,8 +20,8 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/lassert.h"
-#include "support/lstrings.h" // for breakString_helper with qt4
 #include "support/lyxlib.h"
+#include "support/textutils.h"
 
 #define DISABLE_PMPROF
 #include "support/pmprof.h"
@@ -39,20 +39,14 @@
 using namespace std;
 using namespace lyx::support;
 
-/* Define what mechanism is used to enforce text direction. Different
- * methods work with different Qt versions. Here we try to use both
- * methods together.
+/* Define what mechanisms are used to enforce text direction. There
+ * are two methods that work with different Qt versions. Here we try
+ * to use both methods together.
  */
 // Define to use unicode override characters to force direction
 #define BIDI_USE_OVERRIDE
-// Define to use flag to force direction
+// Define to use QTextLayout flag to force direction
 #define BIDI_USE_FLAG
-
-#ifdef BIDI_USE_OVERRIDE
-# define BIDI_OFFSET 1
-#else
-# define BIDI_OFFSET 0
-#endif
 
 #if !defined(BIDI_USE_OVERRIDE) && !defined(BIDI_USE_FLAG)
 #  error "Define at least one of BIDI_USE_OVERRIDE or BIDI_USE_FLAG"
@@ -152,6 +146,11 @@ GuiFontMetrics::GuiFontMetrics(QFont const & font)
 			slope_ = defaultSlope;
 		LYXERR(Debug::FONT, "Italic slope: " << slope_);
 	}
+	// If those characters have a non-zero width, we need to avoid them.
+	// This happens with Qt4 with monospace fonts
+	needs_naked_ = width(QString() + QChar(0x2060) + QChar(0x202d) + QChar(0x202e)) > 0;
+	// if (needs_naked_)
+	// 	LYXERR0("Font " << font.family() << " needs naked text layouts!");
 }
 
 
@@ -346,6 +345,139 @@ uint qHash(TextLayoutKey const & key)
 	return std::qHash(key.s) ^ ::qHash(params);
 }
 
+
+// This holds a translation table between the original string and the
+// QString that we can use with QTextLayout.
+struct TextLayoutHelper
+{
+	/// Create the helper
+	/// \c s is the original string
+	/// \c isrtl is true if the string is right-to-left
+	/// \c naked is true to disable the insertion of zero width annotations
+	/// FIXME: remove \c naked argument when Qt4 support goes away.
+	TextLayoutHelper(docstring const & s, bool isrtl, bool naked = false);
+
+	/// translate QString index to docstring index
+	docstring::size_type qpos2pos(int qpos) const
+	{
+		return lower_bound(pos2qpos_.begin(), pos2qpos_.end(), qpos) - pos2qpos_.begin();
+	}
+
+	/// Translate docstring index to QString index
+	int pos2qpos(docstring::size_type pos) const { return pos2qpos_[pos]; }
+
+	// The original string
+	docstring docstr;
+	// The mirror string
+	QString qstr;
+	// is string right-to-left?
+	bool rtl;
+
+private:
+	// This vector contains the QString pos for each string position
+	vector<int> pos2qpos_;
+};
+
+
+TextLayoutHelper::TextLayoutHelper(docstring const & s, bool isrtl, bool naked)
+	: docstr(s), rtl(isrtl)
+{
+	// Reserve memory for performance purpose
+	pos2qpos_.reserve(s.size());
+	qstr.reserve(2 * s.size());
+
+	/* Qt will not break at a leading or trailing space, and we need
+	 * that sometimes, see http://www.lyx.org/trac/ticket/9921.
+	 *
+	 * To work around the problem, we enclose the string between
+	 * word joiner characters so that the QTextLayout algorithm will
+	 * agree to break the text at these extremal spaces.
+	 */
+	// Unicode character WORD JOINER
+	QChar const word_joiner(0x2060);
+	if (!naked)
+		qstr += word_joiner;
+
+#ifdef BIDI_USE_OVERRIDE
+	/* Unicode override characters enforce drawing direction
+	 * Source: http://www.iamcal.com/understanding-bidirectional-text/
+	 * Left-to-right override is 0x202d and right-to-left override is 0x202e.
+	 */
+	if (!naked)
+		qstr += QChar(rtl ? 0x202e : 0x202d);
+#endif
+
+	// Now translate the string character-by-character.
+	bool was_space = false;
+	for (char_type const c : s) {
+		// insert a word joiner character between consecutive spaces
+		bool const is_space = isSpace(c);
+		if (!naked && is_space && was_space)
+			qstr += word_joiner;
+		was_space = is_space;
+		// Remember the QString index at this point
+		pos2qpos_.push_back(qstr.size());
+		// Performance: UTF-16 characters are easier
+		if (is_utf16(c))
+			qstr += ucs4_to_qchar(c);
+		else
+			qstr += toqstr(c);
+	}
+
+	// Final word joiner (see above)
+	if (!naked)
+		qstr += word_joiner;
+
+	// Add virtual position at the end of the string
+	pos2qpos_.push_back(qstr.size());
+
+	//QString dump = qstr;
+	//LYXERR0("TLH: " << dump.replace(word_joiner, "|").toStdString());
+}
+
+
+namespace {
+
+shared_ptr<QTextLayout>
+getTextLayout_helper(TextLayoutHelper const & tlh, double const wordspacing,
+                     QFont font)
+{
+	auto const ptl = make_shared<QTextLayout>();
+	ptl->setCacheEnabled(true);
+	font.setWordSpacing(wordspacing);
+	ptl->setFont(font);
+#ifdef BIDI_USE_FLAG
+	/* Use undocumented flag to enforce drawing direction
+	 * FIXME: This does not work with Qt 5.11 (ticket #11284).
+	 */
+	ptl->setFlags(tlh.rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
+#endif
+	ptl->setText(tlh.qstr);
+
+	ptl->beginLayout();
+	ptl->createLine();
+	ptl->endLayout();
+
+	return ptl;
+}
+
+}
+
+shared_ptr<QTextLayout const>
+GuiFontMetrics::getTextLayout(TextLayoutHelper const & tlh,
+                              double const wordspacing) const
+{
+	PROFILE_THIS_BLOCK(getTextLayout_TLH);
+	TextLayoutKey key{tlh.docstr, tlh.rtl, wordspacing};
+	if (auto ptl = qtextlayout_cache_[key])
+		return ptl;
+	PROFILE_CACHE_MISS(getTextLayout_TLH);
+	auto const ptl = getTextLayout_helper(tlh, wordspacing, font_);
+	qtextlayout_cache_.insert(key, ptl);
+	return ptl;
+}
+
+
 shared_ptr<QTextLayout const>
 GuiFontMetrics::getTextLayout(docstring const & s, bool const rtl,
                               double const wordspacing) const
@@ -355,36 +487,8 @@ GuiFontMetrics::getTextLayout(docstring const & s, bool const rtl,
 	if (auto ptl = qtextlayout_cache_[key])
 		return ptl;
 	PROFILE_CACHE_MISS(getTextLayout);
-	auto const ptl = make_shared<QTextLayout>();
-	ptl->setCacheEnabled(true);
-	QFont copy = font_;
-	copy.setWordSpacing(wordspacing);
-	ptl->setFont(copy);
-
-#ifdef BIDI_USE_FLAG
-	/* Use undocumented flag to enforce drawing direction
-	 * FIXME: This does not work with Qt 5.11 (ticket #11284).
-	 */
-	ptl->setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
-#endif
-
-#ifdef BIDI_USE_OVERRIDE
-	/* Use unicode override characters to enforce drawing direction
-	 * Source: http://www.iamcal.com/understanding-bidirectional-text/
-	 */
-	if (rtl)
-		// Right-to-left override: forces to draw text right-to-left
-		ptl->setText(QChar(0x202E) + toqstr(s));
-	else
-		// Left-to-right override: forces to draw text left-to-right
-		ptl->setText(QChar(0x202D) + toqstr(s));
-#else
-	ptl->setText(toqstr(s));
-#endif
-
-	ptl->beginLayout();
-	ptl->createLine();
-	ptl->endLayout();
+	TextLayoutHelper tlh(s, rtl, needs_naked_);
+	auto const ptl = getTextLayout_helper(tlh, wordspacing, font_);
 	qtextlayout_cache_.insert(key, ptl);
 	return ptl;
 }
@@ -393,25 +497,20 @@ GuiFontMetrics::getTextLayout(docstring const & s, bool const rtl,
 int GuiFontMetrics::pos2x(docstring const & s, int pos, bool const rtl,
                           double const wordspacing) const
 {
-	if (pos <= 0)
-		pos = 0;
-	shared_ptr<QTextLayout const> tl = getTextLayout(s, rtl, wordspacing);
-	/* Since QString is UTF-16 and docstring is UCS-4, the offsets may
-	 * not be the same when there are high-plan unicode characters
-	 * (bug #10443).
-	 */
-	// BIDI_OFFSET accounts for a possible direction override
-	// character in front of the string.
-	int const qpos = toqstr(s.substr(0, pos)).length() + BIDI_OFFSET;
-	return static_cast<int>(tl->lineForTextPosition(qpos).cursorToX(qpos));
+	TextLayoutHelper tlh(s, rtl, needs_naked_);
+	auto ptl = getTextLayout(tlh, wordspacing);
+	// pos can be negative, see #10506.
+	int const qpos = tlh.pos2qpos(max(pos, 0));
+	return static_cast<int>(ptl->lineForTextPosition(qpos).cursorToX(qpos));
 }
 
 
 int GuiFontMetrics::x2pos(docstring const & s, int & x, bool const rtl,
                           double const wordspacing) const
 {
-	shared_ptr<QTextLayout const> tl = getTextLayout(s, rtl, wordspacing);
-	QTextLine const & tline = tl->lineForTextPosition(0);
+	TextLayoutHelper tlh(s, rtl, needs_naked_);
+	auto ptl = getTextLayout(tlh, wordspacing);
+	QTextLine const & tline = ptl->lineForTextPosition(0);
 	int qpos = tline.xToCursor(x);
 	int newx = static_cast<int>(tline.cursorToX(qpos));
 	// The value of qpos may be wrong in rtl text (see ticket #10569).
@@ -439,112 +538,24 @@ int GuiFontMetrics::x2pos(docstring const & s, int & x, bool const rtl,
 	// correct x value to the actual cursor position.
 	x = newx;
 
-	/* Since QString is UTF-16 and docstring is UCS-4, the offsets may
-	 * not be the same when there are high-plan unicode characters
-	 * (bug #10443).
-	 */
-#if QT_VERSION < 0x040801 || QT_VERSION >= 0x050100
-	int pos = qstring_to_ucs4(tl->text().left(qpos)).length();
-	// there may be a direction override character in front of the string.
-	return max(pos - BIDI_OFFSET, 0);
-#else
-	/* Due to QTBUG-25536 in 4.8.1 <= Qt < 5.1.0, the string returned
-	 * by QString::toUcs4 (used by qstring_to_ucs4) may have wrong
-	 * length. We work around the problem by trying all docstring
-	 * positions until the right one is found. This is slow only if
-	 * there are many high-plane Unicode characters. It might be
-	 * worthwhile to implement a dichotomy search if this shows up
-	 * under a profiler.
-	 */
-	// there may be a direction override character in front of the string.
-	qpos = max(qpos - BIDI_OFFSET, 0);
-	int pos = min(qpos, static_cast<int>(s.length()));
-	while (pos >= 0 && toqstr(s.substr(0, pos)).length() != qpos)
-		--pos;
-	LASSERT(pos > 0 || qpos == 0, /**/);
-	return pos;
-#endif
+	return tlh.qpos2pos(qpos);
 }
 
 
-namespace {
-
-const int brkStrOffset = 1 + BIDI_OFFSET;
-
-
-QString createBreakableString(docstring const & s, bool rtl, QTextLayout & tl)
+FontMetrics::Breaks
+GuiFontMetrics::breakString_helper(docstring const & s, int first_wid, int wid,
+                                   bool rtl, bool force) const
 {
-	/* Qt will not break at a leading or trailing space, and we need
-	 * that sometimes, see http://www.lyx.org/trac/ticket/9921.
-	 *
-	 * To work around the problem, we enclose the string between
-	 * zero-width characters so that the QTextLayout algorithm will
-	 * agree to break the text at these extremal spaces.
-	 */
-	// Unicode character ZERO WIDTH NO-BREAK SPACE
-	QChar const zerow_nbsp(0xfeff);
-	QString qs = zerow_nbsp + toqstr(s) + zerow_nbsp;
+	TextLayoutHelper const tlh(s, rtl, needs_naked_);
+
+	QTextLayout tl;
 #ifdef BIDI_USE_FLAG
 	/* Use undocumented flag to enforce drawing direction
 	 * FIXME: This does not work with Qt 5.11 (ticket #11284).
 	 */
 	tl.setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
 #endif
-
-#ifdef BIDI_USE_OVERRIDE
-	/* Use unicode override characters to enforce drawing direction
-	 * Source: http://www.iamcal.com/understanding-bidirectional-text/
-	 */
-	if (rtl)
-		// Right-to-left override: forces to draw text right-to-left
-		qs = QChar(0x202E) + qs;
-	else
-		// Left-to-right override: forces to draw text left-to-right
-		qs =  QChar(0x202D) + qs;
-#endif
-	return qs;
-}
-
-
-docstring::size_type brkstr2str_pos(QString brkstr, docstring const & str, int pos)
-{
-	/* Since QString is UTF-16 and docstring is UCS-4, the offsets may
-	 * not be the same when there are high-plan unicode characters
-	 * (bug #10443).
-	 */
-	// The variable `brkStrOffset' is here to account for the extra leading characters.
-	// The ending character zerow_nbsp has to be ignored if the line is complete.
-	int const qlen = max(pos - brkStrOffset - (pos == brkstr.length()), 0);
-#if QT_VERSION < 0x040801 || QT_VERSION >= 0x050100
-	auto const len = qstring_to_ucs4(brkstr.mid(brkStrOffset, qlen)).length();
-	// Avoid warning
-	(void)str;
-#else
-	/* Due to QTBUG-25536 in 4.8.1 <= Qt < 5.1.0, the string returned
-	 * by QString::toUcs4 (used by qstring_to_ucs4) may have wrong
-	 * length. We work around the problem by trying all docstring
-	 * positions until the right one is found. This is slow only if
-	 * there are many high-plane Unicode characters. It might be
-	 * worthwhile to implement a dichotomy search if this shows up
-	 * under a profiler.
-	 */
-	int len = min(qlen, static_cast<int>(str.length()));
-	while (len >= 0 && toqstr(str.substr(0, len)).length() != qlen)
-		--len;
-	LASSERT(len > 0 || qlen == 0, /**/);
-#endif
-	return len;
-}
-
-}
-
-FontMetrics::Breaks
-GuiFontMetrics::breakString_helper(docstring const & s, int first_wid, int wid,
-                                   bool rtl, bool force) const
-{
-	QTextLayout tl;
-	QString qs = createBreakableString(s, rtl, tl);
-	tl.setText(qs);
+	tl.setText(tlh.qstr);
 	tl.setFont(font_);
 	QTextOption to;
 	/*
@@ -576,42 +587,17 @@ GuiFontMetrics::breakString_helper(docstring const & s, int first_wid, int wid,
 	for (int i = 0 ; i < tl.lineCount() ; ++i) {
 		QTextLine const & line = tl.lineAt(i);
 		int const line_epos = line.textStart() + line.textLength();
-		int const epos = brkstr2str_pos(qs, s, line_epos);
-#if QT_VERSION >= 0x050000
+		int const epos = tlh.qpos2pos(line_epos);
 		// This does not take trailing spaces into account, except for the last line.
 		int const wid = iround(line.naturalTextWidth());
 		// If the line is not the last one, trailing space is always omitted.
 		int nspc_wid = wid;
 		// For the last line, compute the width without trailing space
-		if (i + 1 == tl.lineCount()) {
-			// trim_pos points to the last character that is not a space
-			auto trim_pos = s.find_last_not_of(from_ascii(" "));
-			if (trim_pos == docstring::npos)
-				nspc_wid = 0;
-			else if (trim_pos + 1 < s.length()) {
-				int const num_spaces = s.length() - trim_pos - 1;
-				// find the position on the line before trailing
-				// spaces. Remove 1 to account for the ending
-				// non-breaking space of qs.
-				nspc_wid = iround(line.cursorToX(line_epos - num_spaces - 1));
-			}
-		}
-#else
-		// With some monospace fonts, the value of horizontalAdvance()
-		// can be wrong with Qt4. One hypothesis is that the invisible
-		// characters that we use are given a non-null width.
-		// FIXME: this is slower than it could be but we'll get rid of Qt4 anyway
-		docstring const ss = s.substr(pos, epos - pos);
-		int const wid = width(ss);
-		int const nspc_wid = i + 1 < tl.lineCount() ? width(rtrim(ss)) : wid;
-#endif
+		if (i + 1 == tl.lineCount() && !s.empty() && isSpace(s.back())
+		    && line.textStart() <= tlh.pos2qpos(s.size() - 1))
+			nspc_wid = iround(line.cursorToX(tlh.pos2qpos(s.size() - 1)));
 		breaks.emplace_back(epos - pos, wid, nspc_wid);
 		pos = epos;
-#if 0
-		// FIXME: should it be kept in some form?
-		if ((force && line.textLength() == brkStrOffset) || line_wid > x)
-			return {-1, line_wid};
-#endif
 	}
 
 	return breaks;
