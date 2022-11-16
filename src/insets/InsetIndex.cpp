@@ -373,7 +373,8 @@ void InsetIndex::docbook(XMLStream & xs, OutputParams const & runparams) const
 
 	// Handle primary, secondary, and tertiary terms (entries, subentries, and subsubentries, for LaTeX).
 	vector<docstring> terms;
-	if (const vector<docstring> potential_terms = getSubentriesAsText(runparams); !potential_terms.empty()) {
+	const vector<docstring> potential_terms = getSubentriesAsText(runparams);
+	if (!potential_terms.empty()) {
 		terms = potential_terms;
 		// The main term is not present in the vector, as it's not a subentry. The main index term is inserted raw in
 		// the index inset. Considering that the user either uses the new or the legacy mechanism, the main term is the
