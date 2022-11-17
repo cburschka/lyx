@@ -18,7 +18,7 @@ These four steps will compile, test and install LyX:
 	   (for example, "--with-qt-dir=/usr/share/qt4/") if the
 	   environment variable QTDIR is not set and pkg-config is not
 	   available.
-	   You will need --enable-qt5 switch for choosing qt5 over qt4.
+	   You will need --disable-qt5 switch for choosing qt4 over qt5.
 
 	   See Note below if ./configure script is not present.
 

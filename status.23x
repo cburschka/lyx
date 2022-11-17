@@ -163,6 +163,8 @@ What's new
 
 * BUILD/INSTALLATION
 
+- compilation with configure now defaults to Qt5, use --disable-qt5 to compile with Qt4.
+
 - Remove use of deprecated Qt methods.
 
 - Update in-tree hunspell library to 1.7.0.
