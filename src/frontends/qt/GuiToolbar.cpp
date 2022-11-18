@@ -521,7 +521,7 @@ void GuiToolbar::add(ToolbarItem const & item)
 	case ToolbarItem::MINIBUFFER:
 		command_buffer_ = new GuiCommandBuffer(&owner_);
 		addWidget(command_buffer_);
-		/// \todo find a Qt4 equivalent to setHorizontalStretchable(true);
+		/// \todo find a Qt5 equivalent to setHorizontalStretchable(true);
 		//setHorizontalStretchable(true);
 		break;
 	case ToolbarItem::TABLEINSERT: {

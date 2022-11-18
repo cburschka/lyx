@@ -108,13 +108,8 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 		this, SLOT(filterChanged(QString)));
 	connect(filter_, SIGNAL(returnPressed()),
 		this, SLOT(filterPressed()));
-#if (QT_VERSION < 0x050000)
-	connect(filter_, SIGNAL(downPressed()),
-	        availableLV, SLOT(setFocus()));
-#else
 	connect(filter_, &FancyLineEdit::downPressed,
 	        availableLV, [this](){ focusAndHighlight(availableLV); });
-#endif
 
 	availableLV->setToolTip(formatToolTip(qt_("This list consists of all databases that are indexed by LaTeX and thus are found without a file path. "
 				    "This is usually everything in the bib/ subdirectory of LaTeX's texmf tree. "
@@ -129,11 +124,7 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 	bc().addReadOnly(bibtocCB);
 	bc().addReadOnly(bibEncodingCO);
 
-#if (QT_VERSION < 0x050000)
-	selectedLV->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
-#else
 	selectedLV->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-#endif
 
 	// Always put the default encoding in the first position.
 	bibEncodingCO->addItem(qt_("Document Encoding"), "default");

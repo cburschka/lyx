@@ -42,9 +42,7 @@
 #include <QHideEvent>
 #include <QShowEvent>
 #include "QSizePolicy"
-#if QT_VERSION >= 0x050000
 #include <QSvgRenderer>
-#endif
 
 using namespace std;
 using namespace lyx::support;
@@ -233,11 +231,9 @@ void GuiSearchWidget::handleIndicators()
 
 		bool const dark_mode = guiApp && guiApp->isInDarkMode();
 		qreal dpr = 1.0;
-#if QT_VERSION >= 0x050000
 		// Consider device/pixel ratio (HiDPI)
 		if (guiApp && guiApp->currentView())
 			dpr = guiApp->currentView()->devicePixelRatio();
-#endif
 		QString imagedir = "images/";
 		QPixmap bpixmap = getPixmap("images/", "search-options", "svgz,png");
 		QPixmap pm = bpixmap;
@@ -250,16 +246,13 @@ void GuiSearchWidget::handleIndicators()
 			pm.fill(Qt::transparent);
 			QPainter painter(&pm);
 			int x = 0;
-			
+
 			tip = qt_("Active options:");
 			tip += "<ul>";
 			if (caseCB->isChecked()) {
 				tip += "<li>" + qt_("Case sensitive search");
 				QPixmap spixmap = getPixmap("images/", "search-case-sensitive", "svgz,png");
-#if QT_VERSION < 0x050000
-				painter.drawPixmap(x, 0, spixmap);
-#else
-				// With Qt5, we render SVG directly for HiDPI scalability
+				// We render SVG directly for HiDPI scalability
 				FileName fname = imageLibFileSearch(imagedir, "search-case-sensitive", "svgz,png");
 				QString fpath = toqstr(fname.absFileName());
 				if (!fpath.isEmpty()) {
@@ -268,15 +261,11 @@ void GuiSearchWidget::handleIndicators()
 						svgRenderer.render(&painter, QRectF(0, 0, spixmap.width() * dpr,
 										    spixmap.height() * dpr));
 				}
-#endif
 				x += (spixmap.width() * dpr) + gap;
 			}
 			if (wordsCB->isChecked()) {
 				tip += "<li>" + qt_("Whole words only");
 				QPixmap spixmap = getPixmap("images/", "search-whole-words", "svgz,png");
-#if QT_VERSION < 0x050000
-				painter.drawPixmap(x, 0, spixmap);
-#else
 				FileName fname = imageLibFileSearch(imagedir, "search-whole-words", "svgz,png");
 				QString fpath = toqstr(fname.absFileName());
 				if (!fpath.isEmpty()) {
@@ -285,15 +274,11 @@ void GuiSearchWidget::handleIndicators()
 						svgRenderer.render(&painter, QRectF(x, 0, spixmap.width() * dpr,
 										    spixmap.height() * dpr));
 				}
-#endif
 				x += (spixmap.width() * dpr) + gap;
 			}
 			if (selectionCB->isChecked()) {
 				tip += "<li>" + qt_("Search only in selection");
 				QPixmap spixmap = getPixmap("images/", "search-selection", "svgz,png");
-#if QT_VERSION < 0x050000
-				painter.drawPixmap(x, 0, spixmap);
-#else
 				FileName fname = imageLibFileSearch(imagedir, "search-selection", "svgz,png");
 				QString fpath = toqstr(fname.absFileName());
 				if (!fpath.isEmpty()) {
@@ -302,15 +287,11 @@ void GuiSearchWidget::handleIndicators()
 						svgRenderer.render(&painter, QRectF(x, 0, spixmap.width() * dpr,
 										    spixmap.height() * dpr));
 				}
-#endif
 				x += (spixmap.width() * dpr) + gap;
 			}
 			if (instantSearchCB->isChecked()) {
 				tip += "<li>" + qt_("Search as you type");
 				QPixmap spixmap = getPixmap("images/", "search-instant", "svgz,png");
-#if QT_VERSION < 0x050000
-				painter.drawPixmap(x, 0, spixmap);
-#else
 				FileName fname = imageLibFileSearch(imagedir, "search-instant", "svgz,png");
 				QString fpath = toqstr(fname.absFileName());
 				if (!fpath.isEmpty()) {
@@ -319,15 +300,11 @@ void GuiSearchWidget::handleIndicators()
 						svgRenderer.render(&painter, QRectF(x, 0, spixmap.width() * dpr,
 										    spixmap.height() * dpr));
 				}
-#endif
 				x += (spixmap.width() * dpr) + gap;
 			}
 			if (wrapCB->isChecked()) {
 				tip += "<li>" + qt_("Wrap search");
 				QPixmap spixmap = getPixmap("images/", "search-wrap", "svgz,png");
-#if QT_VERSION < 0x050000
-				painter.drawPixmap(x, 0, spixmap);
-#else
 				FileName fname = imageLibFileSearch(imagedir, "search-wrap", "svgz,png");
 				QString fpath = toqstr(fname.absFileName());
 				if (!fpath.isEmpty()) {
@@ -336,18 +313,14 @@ void GuiSearchWidget::handleIndicators()
 						svgRenderer.render(&painter, QRectF(x, 0, spixmap.width() * dpr,
 										    spixmap.height() * dpr));
 				}
-#endif
 				x += (spixmap.width() * dpr) + gap;
 			}
 			tip += "</ul>";
-#if QT_VERSION >= 0x050000
 			pm.setDevicePixelRatio(dpr);
-#endif
 			painter.end();
 		} else {
 			tip = qt_("Click here to change search options");
-#if QT_VERSION >= 0x050000
-			// With Qt5, we render SVG directly for HiDPI scalability
+			// We render SVG directly for HiDPI scalability
 			FileName fname = imageLibFileSearch(imagedir, "search-options", "svgz,png");
 			QString fpath = toqstr(fname.absFileName());
 			if (!fpath.isEmpty()) {
@@ -360,7 +333,6 @@ void GuiSearchWidget::handleIndicators()
 					pm.setDevicePixelRatio(dpr);
 				}
 			}
-#endif
 		}
 		if (dark_mode) {
 			QImage img = pm.toImage();

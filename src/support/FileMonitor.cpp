@@ -126,15 +126,7 @@ void FileMonitorGuard::refresh(bool const emit)
 	if (!qwatcher_->files().contains(qfilename)) {
 		bool const existed = exists_;
 		exists_ = QFile(qfilename).exists();
-#if (QT_VERSION >= 0x050000)
 		if (exists_ && !qwatcher_->addPath(qfilename))
-#else
-		auto add_path = [&]() {
-			qwatcher_->addPath(qfilename);
-			return qwatcher_->files().contains(qfilename);
-		};
-		if (exists_ && !add_path())
-#endif
 		{
 			LYXERR(Debug::FILES,
 			       "Could not add path to QFileSystemWatcher: " << filename_);

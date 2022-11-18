@@ -102,13 +102,8 @@ TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
 		this, SLOT(showContextMenu(const QPoint &)));
 	connect(filter_, SIGNAL(textEdited(QString)),
 		this, SLOT(filterContents()));
-#if (QT_VERSION < 0x050000)
-	connect(filter_, SIGNAL(downPressed()),
-		tocTV, SLOT(setFocus()));
-#else
 	connect(filter_, &FancyLineEdit::downPressed,
 		tocTV, [this](){ focusAndHighlight(tocTV); });
-#endif
 	connect(activeFilterCO, SIGNAL(activated(int)),
 		this, SLOT(filterContents()));
 

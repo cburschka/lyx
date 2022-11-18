@@ -1314,12 +1314,8 @@ void fileUnlock(int fd, const char * /* lock_file*/)
 
 std::string toHexHash(const std::string & str)
 {
-	// Use the best available hashing algorithm. Qt 5 proposes SHA-2, but Qt 4 is limited to SHA-1.
-#if QT_VERSION >= 0x050000
+	// Use the best available hashing algorithm.
 	auto hashAlgo = QCryptographicHash::Sha256;
-#else
-	auto hashAlgo = QCryptographicHash::Sha1;
-#endif
 
 	QByteArray hash = QCryptographicHash::hash(toqstr(str).toLocal8Bit(), hashAlgo);
 	return fromqstr(QString(hash.toHex()));

@@ -164,21 +164,12 @@ public:
 	///
 	GuiView & view(int id) const;
 
-#if (QT_VERSION < 0x050000)
-	/// Emulate platformName() for Qt4
-	QString platformName() const;
-#endif
-
 	/// Current ratio between physical pixels and device-independent pixels
 	double pixelRatio() const;
 
 	/// How to load image files
 	support::search_mode imageSearchMode() const {
-#if QT_VERSION >= 0x050000
 		return pixelRatio() > 1 ? support::check_hidpi : support::must_exist;
-#else
-		return support::must_exist;
-#endif
 	}
 
 	/// return true if the key is part of a shortcut

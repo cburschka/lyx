@@ -57,13 +57,8 @@
 //#define ResultsDebug
 #define USE_QT_FOR_SEARCH
 #if defined(USE_QT_FOR_SEARCH)
-	#include <QtCore>	// sets QT_VERSION
-	#if (QT_VERSION >= 0x050000)
-		#include <QRegularExpression>
-		#define QTSEARCH 1
-	#else
-		#define QTSEARCH 0
-	#endif
+	#include <QRegularExpression>
+	#define QTSEARCH 1
 #else
 	#define QTSEARCH 0
 #endif

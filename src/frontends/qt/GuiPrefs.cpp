@@ -438,13 +438,11 @@ PrefInput::PrefInput(GuiPreferences * form)
 		this, SIGNAL(changed()));
 
 	// reveal checkbox for switching Ctrl and Meta on Mac:
-	bool swapcb = false;
 #ifdef Q_OS_MAC
-#if QT_VERSION > 0x040600
-	swapcb = true;
+	dontswapCB->setVisible(true);
+#else
+	dontswapCB->setVisible(false);
 #endif
-#endif
-	dontswapCB->setVisible(swapcb);
 }
 
 
@@ -2635,11 +2633,8 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form)
 	iconSetCO->addItem(qt_("Classic"), "classic");
 	iconSetCO->addItem(qt_("Oxygen"), "oxygen");
 
-#if QT_VERSION >= 0x040600
-	if (guiApp->platformName() != "qt4x11"
-	    && guiApp->platformName() != "xcb"
+	if (guiApp->platformName() != "xcb"
 	    && !guiApp->platformName().contains("wayland"))
-#endif
 		useSystemThemeIconsCB->hide();
 }
 
@@ -3573,11 +3568,10 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	addModule(formats);
 
 	prefsPS->setCurrentPanel("User Interface");
+// FIXME KILLQT4: check that this is still needed (what bug is it?)
 // FIXME: hack to work around resizing bug in Qt >= 4.2
 // bug verified with Qt 4.2.{0-3} (JSpitzm)
-#if QT_VERSION >= 0x040200
 	prefsPS->updateGeometry();
-#endif
 
 	bc().setPolicy(ButtonPolicy::PreferencesPolicy);
 	bc().setOK(buttonBox->button(QDialogButtonBox::Ok));

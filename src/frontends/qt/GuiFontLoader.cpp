@@ -66,27 +66,9 @@ namespace {
 struct SymbolFont {
 	FontFamily lyx_family;
 	QString family;
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
-	QString xlfd;
-#endif
 };
 
 SymbolFont symbol_fonts[] = {
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
-	{ SYMBOL_FAMILY,"symbol", "-*-symbol-*-*-*-*-*-*-*-*-*-*-adobe-fontspecific"},
-	{ CMR_FAMILY,   "cmr10",  "-*-cmr10-medium-*-*-*-*-*-*-*-*-*-*-*" },
-	{ CMSY_FAMILY,  "cmsy10", "-*-cmsy10-*-*-*-*-*-*-*-*-*-*-*-*" },
-	{ CMM_FAMILY,   "cmmi10", "-*-cmmi10-medium-*-*-*-*-*-*-*-*-*-*-*" },
-	{ CMEX_FAMILY,  "cmex10", "-*-cmex10-*-*-*-*-*-*-*-*-*-*-*-*" },
-	{ MSA_FAMILY,   "msam10", "-*-msam10-*-*-*-*-*-*-*-*-*-*-*-*" },
-	{ MSB_FAMILY,   "msbm10", "-*-msbm10-*-*-*-*-*-*-*-*-*-*-*-*" },
-	{ DS_FAMILY,    "dsrom10", "-*-dsrom10-*-*-*-*-*-*-*-*-*-*-*-*" },
-	{ EUFRAK_FAMILY,"eufm10", "-*-eufm10-medium-*-*-*-*-*-*-*-*-*-*-*" },
-	{ RSFS_FAMILY,  "rsfs10", "-*-rsfs10-medium-*-*-*-*-*-*-*-*-*-*-*" },
-	{ STMARY_FAMILY,"stmary10","-*-stmary10-medium-*-*-*-*-*-*-*-*-*-*-*" },
-	{ WASY_FAMILY,  "wasy10", "-*-wasy10-medium-*-*-*-*-*-*-*-*-*-*-*" },
-	{ ESINT_FAMILY, "esint10","-*-esint10-medium-*-*-*-*-*-*-*-*-*-*-*" }
-#else
 	{ SYMBOL_FAMILY,"symbol"},
 	{ CMR_FAMILY,   "cmr10"},
 	{ CMSY_FAMILY,  "cmsy10"},
@@ -100,7 +82,6 @@ SymbolFont symbol_fonts[] = {
 	{ STMARY_FAMILY,"stmary10"},
 	{ WASY_FAMILY,  "wasy10"},
 	{ ESINT_FAMILY, "esint10"}
-#endif
 };
 
 size_t const nr_symbol_fonts = sizeof(symbol_fonts) / sizeof(symbol_fonts[0]);
@@ -147,19 +128,6 @@ GuiFontInfo & fontinfo(FontInfo const & f)
 }
 
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
-QString rawName(QString const & family)
-{
-	for (size_t i = 0; i < nr_symbol_fonts; ++i)
-		if (family == symbol_fonts[i].family)
-			return symbol_fonts[i].xlfd;
-
-	LYXERR(Debug::FONT, "BUG: family not found !");
-	return QString();
-}
-#endif
-
-
 QString symbolFamily(FontFamily family)
 {
 	for (size_t i = 0; i < nr_symbol_fonts; ++i) {
@@ -190,10 +158,7 @@ static bool isChosenFont(QFont & font, QString const & family,
 	LYXERR_NOPOS(Debug::FONT, "got: " << fi.family());
 
 	if (fi.family().contains(family)
-#if QT_VERSION >= 0x040800
-	    && (style.isEmpty() || fi.styleName().contains(style))
-#endif
-	    ) {
+	    && (style.isEmpty() || fi.styleName().contains(style))) {
 		LYXERR_NOENDL(Debug::FONT, " got it ");
 		return true;
 	}
@@ -209,8 +174,7 @@ QFont symbolFont(QString const & family, bool * ok)
 	upper[0] = family[0].toUpper();
 
 	QFont font;
-	if (guiApp->platformName() == "qt4x11"
-	    || guiApp->platformName() == "xcb"
+	if (guiApp->platformName() == "xcb"
 	    || guiApp->platformName().contains("wayland")) {
 		// On *nix we have to also specify the foundry to be able to
 		// discriminate our fonts when the texlive fonts are managed by
@@ -220,7 +184,6 @@ QFont symbolFont(QString const & family, bool * ok)
 		font.setFamily(family);
 	}
 	font.setStyleStrategy(QFont::NoFontMerging);
-#if QT_VERSION >= 0x040800
 	font.setStyleName("LyX");
 
 	if (isChosenFont(font, family, "LyX")) {
@@ -231,7 +194,6 @@ QFont symbolFont(QString const & family, bool * ok)
 
 	LYXERR_NOENDL(Debug::FONT, "Trying normal " << family << " ... ");
 	font.setStyleName(QString());
-#endif
 
 	if (isChosenFont(font, family, QString())) {
 		LYXERR_NOPOS(Debug::FONT, "normal!");
@@ -247,20 +209,6 @@ QFont symbolFont(QString const & family, bool * ok)
 		*ok = true;
 		return font;
 	}
-
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
-	// A simple setFamily() fails on Qt 2
-
-	QString const raw = rawName(family);
-	LYXERR_NOENDL(Debug::FONT, "Trying " << raw << " ... ");
-	font.setRawName(raw);
-
-	if (isChosenFont(font, family, QString())) {
-		LYXERR_NOPOS(Debug::FONT, "raw version!");
-		*ok = true;
-		return font;
-	}
-#endif
 
 	LYXERR_NOPOS(Debug::FONT, " FAILED :-(");
 	*ok = false;
@@ -337,13 +285,12 @@ QFont makeQFont(FontInfo const & f)
 				toqstr(lyxrc.roman_font_foundry));
 			font.setFamily(family);
 #ifdef Q_OS_MAC
-#if QT_VERSION >= 0x040300 //&& QT_VERSION < 0x040800
+			// FIXME KILLQT4: Double-check that this is fixed in Qt5
 			// Workaround for a Qt bug, see http://www.lyx.org/trac/ticket/3684
 			// and http://bugreports.qt.nokia.com/browse/QTBUG-11145.
 			// FIXME: Check whether this is really fixed in Qt 4.8
 			if (family == "Times" && !font.exactMatch())
 				font.setFamily("Times New Roman");
-#endif
 #endif
 			break;
 		}
@@ -393,10 +340,6 @@ QFont makeQFont(FontInfo const & f)
 		LYXERR(Debug::FONT, "This font is an exact match");
 	else
 		LYXERR(Debug::FONT, "This font is NOT an exact match");
-
-#if (QT_VERSION < QT_VERSION_CHECK(5, 0, 0))
-	LYXERR(Debug::FONT, "XFLD: " << font.rawName());
-#endif
 
 	font.setPointSizeF(f.realSize() * lyxrc.currentZoom / 100.0);
 
@@ -453,13 +396,9 @@ bool FontLoader::canBeDisplayed(char_type c)
 {
 	// bug 8493
 	if (c == 0x0009)
+		// FIXME KILLQT4: get rid of this function if not needed anymore
 		// FIXME check whether this is still needed for Qt5
 		return false;
-#if QT_VERSION < 0x050000 && defined(QT_MAC_USE_COCOA) && (QT_MAC_USE_COCOA > 0)
-	// bug 7954, see also comment in GuiPainter::text()
-	if (c == 0x00ad)
-		return false;
-#endif
 	return true;
 }
 

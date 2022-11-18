@@ -135,13 +135,9 @@
 #endif
 #endif
 
-#if (QT_VERSION < 0x050000) || (QT_VERSION >= 0x050400)
+#if (QT_VERSION >= 0x050400)
 #if defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
-#if (QT_VERSION < 0x050000)
-#include <QWindowsMime>
-#define QWINDOWSMIME QWindowsMime
-#define QVARIANTTYPE QVariant::Type
-#elif (QT_VERSION >= 0x060000)
+#if (QT_VERSION >= 0x060000)
 #include <QtGui/private/qguiapplication_p.h>
 #include <QtGui/private/qwindowsmime_p.h>
 #include <QtGui/qpa/qplatformintegration.h>
@@ -719,7 +715,6 @@ QPixmap getPixmap(QString const & path, QString const & name, QString const & ex
 
 QIcon getIcon(FuncRequest const & f, bool unknown, bool rtl)
 {
-#if (QT_VERSION >= 0x040600)
 	if (lyxrc.use_system_theme_icons) {
 		// use the icons from system theme that are available
 		QString action = toqstr(lyxaction.getActionName(f.action()));
@@ -732,7 +727,6 @@ QIcon getIcon(FuncRequest const & f, bool unknown, bool rtl)
 				return thmicn;
 		}
 	}
-#endif
 
 	IconInfo icondata = iconInfo(f, unknown, rtl);
 	if (icondata.filepath.isEmpty())
@@ -784,11 +778,7 @@ public:
 
 	QString translate(const char * /* context */,
 		const char *sourceText,
-#if QT_VERSION >= 0x050000
 		const char * /* disambiguation */ = nullptr, int /* n */ = -1) const override
-#else
-		const char * /*comment*/ = 0) const override
-#endif
 	{
 		// Here we declare the strings that need to be translated from Qt own GUI
 		// This is needed to include these strings to po files
@@ -879,7 +869,7 @@ public:
 ////////////////////////////////////////////////////////////////////////
 // Windows specific stuff goes here...
 
-#if (QT_VERSION < 0x050000) || (QT_VERSION >= 0x050400)
+#if (QT_VERSION >= 0x050400)
 #if defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
 // QWindowsMimeMetafile can only be compiled on Windows.
 
@@ -1045,7 +1035,7 @@ struct GuiApplication::Private
 		, last_state_(Qt::ApplicationInactive)
 	#endif
 	{
-	#if (QT_VERSION < 0x050000) || (QT_VERSION >= 0x050400)
+	#if (QT_VERSION >= 0x050400)
 	#if defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
 		/// WMF Mime handler for Windows clipboard.
 		wmf_mime_ = new QWindowsMimeMetafile;
@@ -1134,7 +1124,7 @@ struct GuiApplication::Private
 	QMacPasteboardMimeGraphics mac_pasteboard_mime_;
 #endif
 
-#if (QT_VERSION < 0x050000) || (QT_VERSION >= 0x050400)
+#if (QT_VERSION >= 0x050400)
 #if defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
 	/// WMF Mime handler for Windows clipboard.
 	QWindowsMimeMetafile * wmf_mime_;
@@ -1239,11 +1229,8 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	if (lyxrc.typewriter_font_name.empty())
 		lyxrc.typewriter_font_name = fromqstr(typewriterFontName());
 
-#if (QT_VERSION >= 0x050000)
-	// Qt4 does this in event(), see below.
 	// Track change of keyboard
 	connect(inputMethod(), SIGNAL(localeChanged()), this, SLOT(onLocaleChanged()));
-#endif
 
 	d->general_timer_.setInterval(500);
 	connect(&d->general_timer_, SIGNAL(timeout()),
@@ -1266,36 +1253,9 @@ GuiApplication * theGuiApp()
 }
 
 
-#if QT_VERSION < 0x050000
-// Emulate platformName() for Qt4
-
-// FIXME: when ditching this method, remove all tests
-//     platformName() == "qt4x11"
-// in the code
-QString GuiApplication::platformName() const
-{
-# if defined(Q_WS_X11)
-	// Note that this one does not really exist
-	return "qt4x11";
-# elif defined(Q_OS_MAC)
-	return "cocoa";
-# elif defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
-	return "windows";
-# else
-	LYXERR0("Unknown platform!");
-	return "unknown";
-# endif
-}
-#endif
-
-
 double GuiApplication::pixelRatio() const
 {
-#if QT_VERSION >= 0x050000
 	return qt_scale_factor * devicePixelRatio();
-#else
-	return 1.0;
-#endif
 }
 
 
@@ -2363,11 +2323,7 @@ docstring GuiApplication::viewStatusMessage()
 
 string GuiApplication::inputLanguageCode() const
 {
-#if (QT_VERSION < 0x050000)
-	QLocale loc = keyboardInputLocale();
-#else
 	QLocale loc = inputMethod()->locale();
-#endif
 	//LYXERR0("input lang = " << fromqstr(loc.name()));
 	return loc.name() == "C" ? "en_US" : fromqstr(loc.name());
 }
@@ -2862,12 +2818,10 @@ void GuiApplication::execBatchCommands()
 		return;
 
 #ifdef Q_OS_MAC
-#if QT_VERSION > 0x040600
 	setAttribute(Qt::AA_MacDontSwapCtrlAndMeta,lyxrc.mac_dontswap_ctrl_meta);
-#endif
-#if QT_VERSION >= 0x050000 && QT_VERSION < 0x060000
+#  if QT_VERSION < 0x060000
 	setAttribute(Qt::AA_UseHighDpiPixmaps,true);
-#endif
+#  endif
 	// Create the global default menubar which is shown for the dialogs
 	// and if no GuiView is visible.
 	// This must be done after the session was recovered to know the "last files".
@@ -3033,15 +2987,6 @@ bool GuiApplication::event(QEvent * e)
 		e->accept();
 		return true;
 	}
-#if (QT_VERSION < 0x050000)
-	// Qt5 uses a signal for that, see above.
-	case QEvent::KeyboardLayoutChange:
-		//LYXERR0("keyboard change");
-		if (currentView() && currentView()->currentBufferView())
-			currentView()->currentBufferView()->cursor().setLanguageFromInput();
-		e->accept();
-		return true;
-#endif
 	case QEvent::ApplicationPaletteChange: {
 		// runtime switch from/to dark mode
 		onPaletteChanged();

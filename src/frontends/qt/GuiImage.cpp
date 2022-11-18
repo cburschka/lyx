@@ -64,25 +64,17 @@ QImage const & GuiImage::image() const
 
 unsigned int GuiImage::width() const
 {
-#if QT_VERSION >= 0x050000
 	return static_cast<unsigned int>(ceil(is_transformed_ ?
 		(transformed_.width() / transformed_.devicePixelRatio()) :
 		(original_.width() / original_.devicePixelRatio())));
-#else
-	return is_transformed_ ? transformed_.width() : original_.width();
-#endif
 }
 
 
 unsigned int GuiImage::height() const
 {
-#if QT_VERSION >= 0x050000
 	return static_cast<unsigned int>(ceil(is_transformed_ ?
 		(transformed_.height() / transformed_.devicePixelRatio()) :
 		(original_.height() / original_.devicePixelRatio())));
-#else
-	return is_transformed_ ? transformed_.height() : original_.height();
-#endif
 }
 
 
@@ -117,9 +109,7 @@ bool GuiImage::setPixmap(Params const & params)
 			return false;
 	}
 
-#if QT_VERSION >= 0x050000
 	original_.setDevicePixelRatio(params.pixel_ratio);
-#endif
 
 	is_transformed_ = clip(params);
 	is_transformed_ |= rotate(params);
@@ -141,14 +131,9 @@ bool GuiImage::clip(Params const & params)
 		// No clipping is necessary.
 		return false;
 
-#if QT_VERSION >= 0x050000
 	double const pixelRatio = is_transformed_ ? transformed_.devicePixelRatio() : original_.devicePixelRatio();
 	int const new_width  = static_cast<int>((params.bb.xr.inBP() - params.bb.xl.inBP()) * pixelRatio);
 	int const new_height = static_cast<int>((params.bb.yt.inBP() - params.bb.yb.inBP()) * pixelRatio);
-#else
-	int const new_width  = static_cast<int>((params.bb.xr.inBP() - params.bb.xl.inBP()));
-	int const new_height = static_cast<int>((params.bb.yt.inBP() - params.bb.yb.inBP()));
-#endif
 
 	QImage const & image = is_transformed_ ? transformed_ : original_;
 
@@ -191,19 +176,8 @@ bool GuiImage::scale(Params const & params)
 	if (params.scale == 100)
 		return false;
 
-#if QT_VERSION >= 0x050000
 	double const pixelRatio = is_transformed_ ? transformed_.devicePixelRatio() : original_.devicePixelRatio();
-	qreal scale = qreal(params.scale) / 100.0 * pixelRatio;
-#else
-	qreal scale = qreal(params.scale) / 100.0;
-#endif
-
-#if (QT_VERSION >= 0x040500) && (QT_VERSION <= 0x040502)
-	// Due to a bug in Qt, LyX will crash for certain
-	// scaling factors and sizes of the image.
-	// see bug #5957: http://www.lyx.org/trac/ticket/5957
-	scale += 0.0001;
-#endif
+	qreal const scale = qreal(params.scale) / 100.0 * pixelRatio;
 
 	QTransform m;
 	m.scale(scale, scale);

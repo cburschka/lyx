@@ -53,14 +53,6 @@ using namespace lyx::support;
 #endif
 
 
-#if QT_VERSION < 0x050000
-inline uint qHash(double key)
-{
-	return qHash(QByteArray(reinterpret_cast<char const *>(&key), sizeof(key)));
-}
-#endif
-
-
 namespace std {
 
 /*
@@ -91,7 +83,8 @@ int const strwidth_cache_max_cost = 1024 * 1024;
 int const breakstr_cache_max_cost = 10 * 1024 * 1024;
 // Qt 5.x already has its own caching of QTextLayout objects
 // but it does not seem to work well on MacOS X.
-#if (QT_VERSION < 0x050000) || defined(Q_OS_MAC)
+#if defined(Q_OS_MAC)
+//FIXME KILLQT4: check wether setting the cache to 0 hurts on macOS
 // Limit qtextlayout_cache_ size to 500 elements (we do not know the
 // size of the QTextLayout objects anyway).
 int const qtextlayout_cache_max_size = 500;
@@ -291,11 +284,7 @@ int GuiFontMetrics::width(docstring const & s) const
 	*/
 	int w = 0;
 	// is the string a single character from a math font ?
-#if QT_VERSION >= 0x040800
 	bool const math_char = s.length() == 1 && font_.styleName() == "LyX";
-#else
-	bool const math_char = s.length() == 1;
-#endif
 	if (math_char) {
 		QString const qs = toqstr(s);
 		int br_width = metrics_.boundingRect(qs).width();
@@ -354,7 +343,7 @@ struct TextLayoutHelper
 	/// \c s is the original string
 	/// \c isrtl is true if the string is right-to-left
 	/// \c naked is true to disable the insertion of zero width annotations
-	/// FIXME: remove \c naked argument when Qt4 support goes away.
+	/// FIXME KILLQT4: remove \c naked argument when Qt4 support goes away.
 	TextLayoutHelper(docstring const & s, bool isrtl, bool naked = false);
 
 	/// translate QString index to docstring index

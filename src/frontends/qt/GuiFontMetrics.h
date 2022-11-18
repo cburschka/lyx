@@ -120,7 +120,7 @@ private:
 	double slope_;
 
 	/// If true, avoid extra annotation in string for QTextLayout
-	// FIXME: remove wen Qt4 suport goes away
+	// FIXME KILLQT4: remove when Qt4 suport goes away
 	bool needs_naked_ = false;
 
 	/// Cache of char widths

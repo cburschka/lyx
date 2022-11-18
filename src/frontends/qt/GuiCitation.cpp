@@ -153,13 +153,8 @@ GuiCitation::GuiCitation(GuiView & lv)
 		this, SLOT(filterChanged(QString)));
 	connect(filter_, SIGNAL(returnPressed()),
 		this, SLOT(filterPressed()));
-#if (QT_VERSION < 0x050000)
-	connect(filter_, SIGNAL(downPressed()),
-	        availableLV, SLOT(setFocus()));
-#else
 	connect(filter_, &FancyLineEdit::downPressed,
 	        availableLV, [this](){ focusAndHighlight(availableLV); });
-#endif
 	connect(regexp_, SIGNAL(triggered()),
 		this, SLOT(regexChanged()));
 	connect(casesense_, SIGNAL(triggered()),
@@ -167,11 +162,7 @@ GuiCitation::GuiCitation(GuiView & lv)
 	connect(instant_, SIGNAL(triggered(bool)),
 		this, SLOT(instantChanged(bool)));
 
-#if (QT_VERSION < 0x050000)
-	selectedLV->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
-#else
 	selectedLV->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-#endif
 
 	selectedLV->setToolTip(qt_("Ordered list of all cited references.\n"
 				   "You can reorder, add and remove references with the buttons on the left."));

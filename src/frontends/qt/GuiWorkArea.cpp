@@ -53,9 +53,6 @@
 #include "frontends/WorkAreaManager.h"
 
 #include <QContextMenuEvent>
-#if (QT_VERSION < 0x050000)
-#include <QInputContext>
-#endif
 #include <QDrag>
 #include <QHelpEvent>
 #ifdef Q_OS_MAC
@@ -182,11 +179,7 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & gv)
 
 double GuiWorkArea::pixelRatio() const
 {
-#if QT_VERSION >= 0x050000
 	return qt_scale_factor * devicePixelRatio();
-#else
-	return 1.0;
-#endif
 }
 
 
@@ -202,7 +195,7 @@ void GuiWorkArea::init()
 		});
 
 	d->resetScreen();
-	// With Qt4.5 a mouse event will happen before the first paint event
+	// A mouse event will happen before the first paint event,
 	// so make sure that the buffer view has an up to date metrics.
 	d->buffer_view_->resize(viewport()->width(), viewport()->height());
 
@@ -724,10 +717,6 @@ void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 		return;
 	}
 
-#if (QT_VERSION < 0x050000) && !defined(__HAIKU__)
-	inputContext()->reset();
-#endif
-
 #if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
 	FuncRequest const cmd(LFUN_MOUSE_PRESS, e->position().x(), e->position().y(),
 #else
@@ -860,13 +849,6 @@ void GuiWorkArea::wheelEvent(QWheelEvent * ev)
 	// Wheel rotation by one notch results in a delta() of 120 (see
 	// documentation of QWheelEvent)
 	// But first we have to ignore horizontal scroll events.
-#if QT_VERSION < 0x050000
-	if (ev->orientation() == Qt::Horizontal) {
-		ev->accept();
-		return;
-	}
-	double const delta = ev->delta() / 120.0;
-#else
 	QPoint const aDelta = ev->angleDelta();
 	// skip horizontal wheel event
 	if (abs(aDelta.x()) > abs(aDelta.y())) {
@@ -874,7 +856,6 @@ void GuiWorkArea::wheelEvent(QWheelEvent * ev)
 		return;
 	}
 	double const delta = aDelta.y() / 120.0;
-#endif
 
 	bool zoom = false;
 	switch (lyxrc.scroll_wheel_zoom) {
@@ -1232,9 +1213,7 @@ void GuiWorkArea::Private::resetScreen()
 		screen_ = QImage(pr * p->viewport()->width(),
 		                 pr * p->viewport()->height(),
 		                 QImage::Format_ARGB32_Premultiplied);
-#  if QT_VERSION >= 0x050000
 		screen_.setDevicePixelRatio(pr);
-#  endif
 	}
 }
 
@@ -1378,11 +1357,7 @@ QVariant GuiWorkArea::inputMethodQuery(Qt::InputMethodQuery query) const
 	switch (query) {
 		// this is the CJK-specific composition window position and
 		// the context menu position when the menu key is pressed.
-#if (QT_VERSION < 0x050000)
-	case Qt::ImMicroFocus: {
-#else
 	case Qt::ImCursorRectangle: {
-#endif
 		CaretGeometry const & cg = bufferView().caretGeometry();
 		return QRect(cg.left - 10 * (d->preedit_lines_ != 1),
 		             cg.top + cg.height() * d->preedit_lines_,
@@ -1595,11 +1570,7 @@ void TabWorkArea::paintEvent(QPaintEvent * event)
 		// painting of the frame of the tab widget.
 		// This is needed for gtk style in Qt.
 		QStylePainter p(this);
-#if QT_VERSION < 0x050000
-		QStyleOptionTabWidgetFrameV2 opt;
-#else
 		QStyleOptionTabWidgetFrame opt;
-#endif
 		initStyleOption(&opt);
 		opt.rect = style()->subElementRect(QStyle::SE_TabWidgetTabPane,
 			&opt, this);

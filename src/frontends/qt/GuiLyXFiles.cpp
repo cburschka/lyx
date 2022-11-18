@@ -189,13 +189,8 @@ GuiLyXFiles::GuiLyXFiles(GuiView & lv)
 	filter_->setClearButton(true);
 	filter_->setPlaceholderText(qt_("All available files"));
 	filter_->setToolTip(qt_("Enter string to filter the list of available files"));
-#if (QT_VERSION < 0x050000)
-	connect(filter_, SIGNAL(downPressed()),
-		filesLW, SLOT(setFocus()));
-#else
 	connect(filter_, &FancyLineEdit::downPressed,
 		filesLW, [this](){ focusAndHighlight(filesLW); });
-#endif
 
 	filterBarL->addWidget(filter_, 0);
 	findKeysLA->setBuddy(filter_);
