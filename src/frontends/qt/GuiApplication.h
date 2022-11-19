@@ -117,9 +117,7 @@ public:
 	//@{
 	bool notify(QObject * receiver, QEvent * event) override;
 	void commitData(QSessionManager & sm);
-#ifdef Q_WS_X11
-	bool x11EventFilter(XEvent * ev) override;
-#elif defined(QPA_XCB)
+#if defined(QPA_XCB)
 	virtual bool nativeEventFilter(const QByteArray & eventType, void * message,
 	                               long * result) override;
 #endif

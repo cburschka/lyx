@@ -584,10 +584,6 @@ void GuiWorkArea::scrollTo(int value)
 	}
 	// Show the caret immediately after any operation.
 	startBlinkingCaret();
-	// FIXME QT5
-#ifdef Q_WS_X11
-	QApplication::syncX();
-#endif
 }
 
 

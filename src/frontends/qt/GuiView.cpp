@@ -1493,9 +1493,7 @@ void GuiView::updateWindowTitle(GuiWorkArea * wa)
 		// buffer-save has changed too.
 		updateToolbars();
 	}
-#ifndef Q_WS_MAC
 	title += from_ascii(" - LyX");
-#endif
 	setWindowTitle(toqstr(title));
 	// Sets the path for the window: this is used by OSX to
 	// allow a context click on the title bar showing a menu

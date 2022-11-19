@@ -122,13 +122,7 @@
 #include <QThreadPool>
 #include <QWidget>
 
-#ifdef Q_WS_X11
-#include <X11/Xatom.h>
-#include <X11/Xlib.h>
-#include <QX11Info>
-#undef CursorShape
-#undef None
-#elif defined(QPA_XCB)
+#if defined(QPA_XCB)
 #include <xcb/xcb.h>
 #ifdef HAVE_QT5_X11_EXTRAS
 #include <QtX11Extras/QX11Info>
@@ -173,7 +167,7 @@ namespace lyx {
 
 frontend::Application * createApplication(int & argc, char * argv[])
 {
-#if !defined(Q_WS_X11) && !defined(QPA_XCB)
+#if !defined(QPA_XCB)
 	// prune -geometry argument(s) by shifting
 	// the following ones 2 places down.
 	for (int i = 0 ; i < argc ; ++i) {
@@ -1203,7 +1197,7 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 #endif
 #endif
 
-#if defined(Q_WS_X11) || defined(QPA_XCB)
+#if defined(QPA_XCB)
 	// doubleClickInterval() is 400 ms on X11 which is just too long.
 	// On Windows and Mac OS X, the operating system's value is used.
 	// On Microsoft Windows, calling this function sets the double
@@ -3496,56 +3490,7 @@ bool GuiApplication::longOperationStarted() {
 //
 // X11 specific stuff goes here...
 
-#ifdef Q_WS_X11
-bool GuiApplication::x11EventFilter(XEvent * xev)
-{
-	if (!current_view_)
-		return false;
-
-	switch (xev->type) {
-	case SelectionRequest: {
-		if (xev->xselectionrequest.selection != XA_PRIMARY)
-			break;
-		LYXERR(Debug::SELECTION, "X requested selection.");
-		BufferView * bv = current_view_->currentBufferView();
-		if (bv) {
-			docstring const sel = bv->requestSelection();
-			if (!sel.empty()) {
-				d->selection_.put(sel);
-				// Refresh the selection request timestamp.
-				// We have to do this by ourselves as Qt seems
-				// not doing that, maybe because of our
-				// "persistent selection" implementation
-				// (see comments in GuiSelection.cpp).
-				XSelectionEvent nev;
-				nev.type = SelectionNotify;
-				nev.display = xev->xselectionrequest.display;
-				nev.requestor = xev->xselectionrequest.requestor;
-				nev.selection = xev->xselectionrequest.selection;
-				nev.target = xev->xselectionrequest.target;
-				nev.property = 0L; // None
-				nev.time = CurrentTime;
-				XSendEvent(QX11Info::display(),
-					nev.requestor, False, 0,
-					reinterpret_cast<XEvent *>(&nev));
-				return true;
-			}
-		}
-		break;
-	}
-	case SelectionClear: {
-		if (xev->xselectionclear.selection != XA_PRIMARY)
-			break;
-		LYXERR(Debug::SELECTION, "Lost selection.");
-		BufferView * bv = current_view_->currentBufferView();
-		if (bv)
-			bv->clearSelection();
-		break;
-	}
-	}
-	return false;
-}
-#elif defined(QPA_XCB)
+#if defined(QPA_XCB)
 bool GuiApplication::nativeEventFilter(const QByteArray & eventType,
 				       void * message, long *)
 {
