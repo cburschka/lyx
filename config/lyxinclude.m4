@@ -74,18 +74,6 @@ AC_MSG_RESULT([$USE_QT6])
 AC_SUBST([USE_QT6])
 ])
 dnl
-AC_DEFUN([LYX_CHECK_QT5],[
-AC_MSG_CHECKING([whether Qt5 is disabled])
-AC_ARG_ENABLE([qt5],
-  [AS_HELP_STRING([--disable-qt5],[do not use Qt5 for building])],
-  USE_QT5=$enableval, USE_QT5=yes)
-if test x$USE_QT5 != xno ; then
-  AC_MSG_RESULT([no])
-else
-  AC_MSG_RESULT([yes])
-fi
-AC_SUBST([USE_QT5])
-])
 
 
 dnl Usage: LYX_WARNING(message)  Displays the warning "message" and sets the
@@ -381,9 +369,8 @@ if test x$GXX = xyes; then
     AM_CXXFLAGS="$AM_CXXFLAGS -fno-omit-frame-pointer"
   fi
 
-  if test x$USE_QT5 = xyes -o x$USE_QT6 = xyes; then
-      AS_CASE([$host], [*mingw*|*cygwin*], [], [AM_CXXFLAGS="-fPIC $AM_CXXFLAGS"])
-  fi
+  AS_CASE([$host], [*mingw*|*cygwin*], [], [AM_CXXFLAGS="-fPIC $AM_CXXFLAGS"])
+
   dnl Warnings are for preprocessor too
   if test x$enable_warnings = xyes ; then
       AM_CPPFLAGS="$AM_CPPFLAGS -Wall -Wextra"

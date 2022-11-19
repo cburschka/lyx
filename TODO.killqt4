@@ -1,10 +1,7 @@
 Things left to do after killing Qt4 (obtained by grepping for Qt4 and 'Qt 4'):
 * look at the FIXME KILLQT4 comments in src/ and resolve them
-* update README
-* update INSTALL
 * update INSTALL.cmake
 * update INSTALL.MacOSX
-* update autoconf
 * update cmake
 * check whether development/autotests/keytest.py really needs QT4
   investigate references to Qt4 in keytest
