@@ -213,7 +213,8 @@
 !!Changes with respect to external programs and libraries in 2.4:
 
 * The Qt5 libraries are now used by default. In order to link against
-  Qt4 the configure option --disable-qt5 has to be used.
+  Qt6 the configure option --enable-qt6 has to be used. Qt4 is not 
+  supported anymore.
 
 * The dependency on pplatex/dvipost was dropped.
 
