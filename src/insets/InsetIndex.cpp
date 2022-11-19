@@ -1730,7 +1730,7 @@ void outputIndexPage(XMLStream & xs, const IndexNode* root_node, unsigned depth 
 
 	xs << xml::StartTag("li", "class='" + generateCssClassAtDepth(depth) + "'");
 	xs << xml::CR();
-	xs << XMLStream::ESCAPE_NONE << termAtLevel(root_node, depth);
+	xs << termAtLevel(root_node, depth);
 	// By tree assumption, all the entries at this node have the same set of terms.
 
 	if (!root_node->entries.empty()) {
