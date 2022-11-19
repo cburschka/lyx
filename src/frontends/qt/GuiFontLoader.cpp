@@ -284,14 +284,6 @@ QFont makeQFont(FontInfo const & f)
 			QString family = makeFontName(toqstr(lyxrc.roman_font_name),
 				toqstr(lyxrc.roman_font_foundry));
 			font.setFamily(family);
-#ifdef Q_OS_MAC
-			// FIXME KILLQT4: Double-check that this is fixed in Qt5
-			// Workaround for a Qt bug, see http://www.lyx.org/trac/ticket/3684
-			// and http://bugreports.qt.nokia.com/browse/QTBUG-11145.
-			// FIXME: Check whether this is really fixed in Qt 4.8
-			if (family == "Times" && !font.exactMatch())
-				font.setFamily("Times New Roman");
-#endif
 			break;
 		}
 		case SANS_FAMILY:
