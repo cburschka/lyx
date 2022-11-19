@@ -3568,10 +3568,6 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	addModule(formats);
 
 	prefsPS->setCurrentPanel("User Interface");
-// FIXME KILLQT4: check that this is still needed (what bug is it?)
-// FIXME: hack to work around resizing bug in Qt >= 4.2
-// bug verified with Qt 4.2.{0-3} (JSpitzm)
-	prefsPS->updateGeometry();
 
 	bc().setPolicy(ButtonPolicy::PreferencesPolicy);
 	bc().setOK(buttonBox->button(QDialogButtonBox::Ok));

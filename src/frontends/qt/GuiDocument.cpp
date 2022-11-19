@@ -1783,10 +1783,6 @@ GuiDocument::GuiDocument(GuiView & lv)
 	docPS->addPanel(outputModule, N_("Formats[[output]]"));
 	docPS->addPanel(preambleModule, N_("LaTeX Preamble"));
 	docPS->setCurrentPanel("Document Class");
-// FIXME KILLQT4: check that this is still needed (is this workaround still needed?)
-// FIXME: hack to work around resizing bug in Qt >= 4.2
-// bug verified with Qt 4.2.{0-3} (JSpitzm)
-	docPS->updateGeometry();
 }
 
 
