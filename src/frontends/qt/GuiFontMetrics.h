@@ -119,10 +119,6 @@ private:
 	/// Slope of italic font
 	double slope_;
 
-	/// If true, avoid extra annotation in string for QTextLayout
-	// FIXME KILLQT4: remove when Qt4 suport goes away
-	bool needs_naked_ = false;
-
 	/// Cache of char widths
 	mutable QHash<char_type, int> width_cache_;
 	/// Cache of string widths

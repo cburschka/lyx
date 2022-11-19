@@ -139,11 +139,6 @@ GuiFontMetrics::GuiFontMetrics(QFont const & font)
 			slope_ = defaultSlope;
 		LYXERR(Debug::FONT, "Italic slope: " << slope_);
 	}
-	// If those characters have a non-zero width, we need to avoid them.
-	// This happens with Qt4 with monospace fonts
-	needs_naked_ = width(QString() + QChar(0x2060) + QChar(0x202d) + QChar(0x202e)) > 0;
-	// if (needs_naked_)
-	// 	LYXERR0("Font " << font.family() << " needs naked text layouts!");
 }
 
 
@@ -342,9 +337,7 @@ struct TextLayoutHelper
 	/// Create the helper
 	/// \c s is the original string
 	/// \c isrtl is true if the string is right-to-left
-	/// \c naked is true to disable the insertion of zero width annotations
-	/// FIXME KILLQT4: remove \c naked argument when Qt4 support goes away.
-	TextLayoutHelper(docstring const & s, bool isrtl, bool naked = false);
+	TextLayoutHelper(docstring const & s, bool isrtl);
 
 	/// translate QString index to docstring index
 	docstring::size_type qpos2pos(int qpos) const
@@ -368,7 +361,7 @@ private:
 };
 
 
-TextLayoutHelper::TextLayoutHelper(docstring const & s, bool isrtl, bool naked)
+TextLayoutHelper::TextLayoutHelper(docstring const & s, bool isrtl)
 	: docstr(s), rtl(isrtl)
 {
 	// Reserve memory for performance purpose
@@ -384,16 +377,14 @@ TextLayoutHelper::TextLayoutHelper(docstring const & s, bool isrtl, bool naked)
 	 */
 	// Unicode character WORD JOINER
 	QChar const word_joiner(0x2060);
-	if (!naked)
-		qstr += word_joiner;
+	qstr += word_joiner;
 
 #ifdef BIDI_USE_OVERRIDE
 	/* Unicode override characters enforce drawing direction
 	 * Source: http://www.iamcal.com/understanding-bidirectional-text/
 	 * Left-to-right override is 0x202d and right-to-left override is 0x202e.
 	 */
-	if (!naked)
-		qstr += QChar(rtl ? 0x202e : 0x202d);
+	qstr += QChar(rtl ? 0x202e : 0x202d);
 #endif
 
 	// Now translate the string character-by-character.
@@ -401,7 +392,7 @@ TextLayoutHelper::TextLayoutHelper(docstring const & s, bool isrtl, bool naked)
 	for (char_type const c : s) {
 		// insert a word joiner character between consecutive spaces
 		bool const is_space = isSpace(c);
-		if (!naked && is_space && was_space)
+		if (is_space && was_space)
 			qstr += word_joiner;
 		was_space = is_space;
 		// Remember the QString index at this point
@@ -414,8 +405,7 @@ TextLayoutHelper::TextLayoutHelper(docstring const & s, bool isrtl, bool naked)
 	}
 
 	// Final word joiner (see above)
-	if (!naked)
-		qstr += word_joiner;
+	qstr += word_joiner;
 
 	// Add virtual position at the end of the string
 	pos2qpos_.push_back(qstr.size());
@@ -476,7 +466,7 @@ GuiFontMetrics::getTextLayout(docstring const & s, bool const rtl,
 	if (auto ptl = qtextlayout_cache_[key])
 		return ptl;
 	PROFILE_CACHE_MISS(getTextLayout);
-	TextLayoutHelper tlh(s, rtl, needs_naked_);
+	TextLayoutHelper tlh(s, rtl);
 	auto const ptl = getTextLayout_helper(tlh, wordspacing, font_);
 	qtextlayout_cache_.insert(key, ptl);
 	return ptl;
@@ -486,7 +476,7 @@ GuiFontMetrics::getTextLayout(docstring const & s, bool const rtl,
 int GuiFontMetrics::pos2x(docstring const & s, int pos, bool const rtl,
                           double const wordspacing) const
 {
-	TextLayoutHelper tlh(s, rtl, needs_naked_);
+	TextLayoutHelper tlh(s, rtl);
 	auto ptl = getTextLayout(tlh, wordspacing);
 	// pos can be negative, see #10506.
 	int const qpos = tlh.pos2qpos(max(pos, 0));
@@ -497,7 +487,7 @@ int GuiFontMetrics::pos2x(docstring const & s, int pos, bool const rtl,
 int GuiFontMetrics::x2pos(docstring const & s, int & x, bool const rtl,
                           double const wordspacing) const
 {
-	TextLayoutHelper tlh(s, rtl, needs_naked_);
+	TextLayoutHelper tlh(s, rtl);
 	auto ptl = getTextLayout(tlh, wordspacing);
 	QTextLine const & tline = ptl->lineForTextPosition(0);
 	int qpos = tline.xToCursor(x);
@@ -535,7 +525,7 @@ FontMetrics::Breaks
 GuiFontMetrics::breakString_helper(docstring const & s, int first_wid, int wid,
                                    bool rtl, bool force) const
 {
-	TextLayoutHelper const tlh(s, rtl, needs_naked_);
+	TextLayoutHelper const tlh(s, rtl);
 
 	QTextLayout tl;
 #ifdef BIDI_USE_FLAG
