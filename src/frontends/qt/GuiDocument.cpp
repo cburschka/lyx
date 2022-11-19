@@ -1351,7 +1351,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	numberingModule->tocTW->headerItem()->setText(0, qt_("Example"));
 	numberingModule->tocTW->headerItem()->setText(1, qt_("Numbered"));
 	numberingModule->tocTW->headerItem()->setText(2, qt_("Appears in TOC"));
-	setSectionResizeMode(numberingModule->tocTW->header(), QHeaderView::ResizeToContents);
+	numberingModule->tocTW->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
 	connect(numberingModule->linenoCB, SIGNAL(toggled(bool)),
 		this, SLOT(linenoToggled(bool)));
 	connect(numberingModule->linenoCB, SIGNAL(clicked()),
@@ -1441,7 +1441,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	headers << qt_("Package") << qt_("Load automatically")
 		<< qt_("Load always") << qt_("Do not load");
 	mathsModule->packagesTW->setHorizontalHeaderLabels(headers);
-	setSectionResizeMode(mathsModule->packagesTW->horizontalHeader(), QHeaderView::Stretch);
+	mathsModule->packagesTW->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 	map<string, string> const & packages = BufferParams::auto_packages();
 	mathsModule->packagesTW->setRowCount(packages.size());
 	int packnum = 0;
@@ -1644,10 +1644,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 	// Modules
 	modulesModule = new UiWidget<Ui::ModulesUi>(this);
 	modulesModule->availableLV->header()->setVisible(false);
-	setSectionResizeMode(modulesModule->availableLV->header(), QHeaderView::ResizeToContents);
+	modulesModule->availableLV->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
 	modulesModule->availableLV->header()->setStretchLastSection(false);
 	modulesModule->selectedLV->header()->setVisible(false);
-	setSectionResizeMode(modulesModule->selectedLV->header(), QHeaderView::ResizeToContents);
+	modulesModule->selectedLV->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
 	modulesModule->selectedLV->header()->setStretchLastSection(false);
 	selectionManager =
 		new ModuleSelectionManager(this, modulesModule->availableLV,

@@ -269,18 +269,6 @@ void setMessageColour(list<QWidget *> highlighted, list<QWidget *> plain)
 }
 
 
-/// FIXME KILLQT4: kill this function
-/// wrapper to hide the change of method name to setSectionResizeMode
-void setSectionResizeMode(QHeaderView * view,
-    int logicalIndex, QHeaderView::ResizeMode mode) {
-	view->setSectionResizeMode(logicalIndex, mode);
-}
-
-/// FIXME KILLQT4: kill this function
-void setSectionResizeMode(QHeaderView * view, QHeaderView::ResizeMode mode) {
-	view->setSectionResizeMode(mode);
-}
-
 void showDirectory(FileName const & directory)
 {
 	if (!directory.exists())

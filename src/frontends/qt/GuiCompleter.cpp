@@ -455,8 +455,8 @@ void GuiCompleter::asyncUpdatePopup()
 	// has a bad memory about it and we have to tell him again and again.
 	QTreeView * listView = static_cast<QTreeView *>(popup());
 	listView->header()->setStretchLastSection(false);
-	setSectionResizeMode(listView->header(), 0, QHeaderView::Stretch);
-	setSectionResizeMode(listView->header(), 1, QHeaderView::Fixed);
+	listView->header()->setSectionResizeMode(0, QHeaderView::Stretch);
+	listView->header()->setSectionResizeMode(1, QHeaderView::Fixed);
 	listView->header()->resizeSection(1, 22);
 
 	// show/update popup
