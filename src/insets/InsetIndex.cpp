@@ -1783,6 +1783,7 @@ void outputIndexPage(XMLStream & xs, const IndexNode* root_node, unsigned depth 
 			}
 			entry_number += 1;
 		}
+		xs << xml::CR();
 	}
 
 	if (!root_node->entries.empty() && !root_node->children.empty()) {
