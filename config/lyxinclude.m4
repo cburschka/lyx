@@ -63,7 +63,7 @@ AC_MSG_RESULT([$withval])
 ])
 
 
-dnl Check whether to configure for Qt4, Qt5, or Qt6. Default is Qt5.
+dnl Check whether to configure for Qt5, or Qt6. Default is Qt5.
 dnl
 AC_DEFUN([LYX_CHECK_QT6],[
 AC_MSG_CHECKING([whether Qt6 is requested])
@@ -404,10 +404,6 @@ if test x$GXX = xyes; then
       clang-3.0*|clang-3.1*|clang-3.2*|clang-3.3*)
         dnl boost contains pragmas that are annoying on older clang versions
         AM_CPPFLAGS="-Wno-unknown-pragmas $AM_CPPFLAGS";;
-      clang*)
-        dnl the more recent versions support the deprecated-register warning,
-        dnl which  is very annoying with Qt4.x right now.
-        AM_CXXFLAGS="$AM_CXXFLAGS -Wno-deprecated-register";;
     esac
 fi
 ])

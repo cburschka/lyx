@@ -128,7 +128,7 @@ dnl start here
 AC_DEFUN([QT_DO_IT_ALL],
 [
 	dnl this variable is precious
-	AC_ARG_VAR(QTDIR, [the place where the Qt files are, e.g. /usr/lib/qt4])
+	AC_ARG_VAR(QTDIR, [the place where the Qt files are, e.g. /usr/lib/qt5])
 
 	AC_ARG_WITH(qt-dir, [AS_HELP_STRING([--with-qt-dir], [where the root of Qt is installed])],
 		[ qt_cv_dir=`eval echo "$withval"/` ])
@@ -184,7 +184,7 @@ AC_DEFUN([QT_DO_IT_ALL],
 	fi
 
 	if test -z "$QT_LIB"; then
-	  dnl Try again with Qt5 and then Qt4 if configuring for Qt6/5 fails
+	  dnl Try again with Qt5 and if configuring for Qt6/5 fails
 	  if test x$USE_QT6 = xyes ; then
 		USE_QT6=no
 		AC_SUBST([USE_QT6])
