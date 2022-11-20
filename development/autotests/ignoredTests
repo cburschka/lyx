@@ -52,12 +52,14 @@ Sublabel: lyx_wontfix
 # The other is due to CJK quotation marks which are not supported in 2.3.
 #
 # TODO: unignore these tests after they are not used for compilation anymore
-#       (we only use "recent" lyx2lyx roundtrip to test compilation.
+#       (we only use "recent" lyx2lyx roundtrip to test compilation.)
 export/doc/de/UserGuide_lyx2(2|3)
 
 # perhaps related to the above de/UserGuide issue:
 # gives the following index error:
 # ERROR: CHAR: index 0 should be less than the length of the string
+# TODO: unignore these tests after they are not used for compilation anymore
+#       (we only use "recent" lyx2lyx roundtrip to test compilation.)
 export/doc/fr/EmbeddedObjects_lyx(2|3)
 
 # (https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg218252.html)
