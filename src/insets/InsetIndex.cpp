@@ -1679,12 +1679,17 @@ docstring termAtLevel(const IndexNode* node, unsigned depth)
 
 void insertIntoNode(const IndexEntry& entry, IndexNode* node, unsigned depth = 0)
 {
+	// Do not insert empty entries.
+	if (entry.terms().empty())
+		return;
+
 	// depth == 0 is for the root, not yet the index, hence the increase when going to vector size.
 	for (IndexNode* child : node->children) {
 		if (entry.terms()[depth] == termAtLevel(child, depth)) {
 			if (depth + 1 == entry.terms().size()) { // == child.entries.begin()->terms().size()
 				// All term entries match: it's an entry.
-				child->entries.emplace_back(entry);
+				if (!entry.terms()[depth].empty())
+					child->entries.emplace_back(entry);
 				return;
 			} else {
 				insertIntoNode(entry, child, depth + 1);
@@ -1718,6 +1723,12 @@ IndexNode* buildIndexTree(vector<IndexEntry>& entries)
 	// as children.
 	auto* index_root = new IndexNode{{}, {}};
 	for (const IndexEntry& entry : entries) {
+		std::cout << "Entry: " << std::endl;
+		std::cout << entry.terms().empty() << std::endl;
+		std::cout << entry.terms().size() << std::endl;
+		for (const docstring& d : entry.terms()) {
+			std::cout << "\"" << to_utf8(d) << "\"" << std::endl;
+		}
 		insertIntoNode(entry, index_root);
 	}
 
