@@ -1723,12 +1723,6 @@ IndexNode* buildIndexTree(vector<IndexEntry>& entries)
 	// as children.
 	auto* index_root = new IndexNode{{}, {}};
 	for (const IndexEntry& entry : entries) {
-		std::cout << "Entry: " << std::endl;
-		std::cout << entry.terms().empty() << std::endl;
-		std::cout << entry.terms().size() << std::endl;
-		for (const docstring& d : entry.terms()) {
-			std::cout << "\"" << to_utf8(d) << "\"" << std::endl;
-		}
 		insertIntoNode(entry, index_root);
 	}
 
