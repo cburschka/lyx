@@ -548,6 +548,15 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 			topaste = cap::selection(n, make_pair(buffer().params().documentClassPtr(),
 							      buffer().params().authors()));
 		}
+		InsetMath const * im = cur.inset().asInsetMath();
+		InsetMathMacro const * macro = im ? im->asMacro() : nullptr;
+		// do not allow pasting a backslash in the name of a macro
+		if (macro
+		    && macro->displayMode() == InsetMathMacro::DISPLAY_UNFOLDED
+		    && support::contains(topaste, char_type('\\'))) {
+			LYXERR0("Removing backslash from pasted string");
+			topaste = subst(topaste, from_ascii("\\"), docstring());
+		}
 		cur.niceInsert(topaste, parseflg, false);
 		cur.clearSelection(); // bug 393
 		cur.forceBufferUpdate();
