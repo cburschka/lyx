@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 610
 \begin_document
 \begin_header
 \save_transient_properties false
@@ -162,9 +162,9 @@ ruby
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -215,8 +215,8 @@ ruby
 \justification true
 \use_refstyle 0
 \use_minted 0
-\notefontcolor #0000ff
 \use_lineno 0
+\notefontcolor #0000ff
 \index 索引
 \shortcut idx
 \color #008000
@@ -238,11 +238,14 @@ ruby
 \paperpagestyle plain
 \tablestyle default
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -513,6 +516,8 @@ literal "false"
 \begin_layout Standard
 本文に埋め込まれた行内数式
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -559,6 +564,8 @@ arg   "math-mode"
 
 大きく別の段落として表示される別行立て数式
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -599,6 +606,8 @@ arg   "math-mode"
 \backslash
 displaystyle
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -646,6 +655,8 @@ displaystyle
 \SpecialChar TeX
 モード
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -695,6 +706,8 @@ status collapsed
 \SpecialChar LaTeX
 プリアンブル
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -758,6 +771,8 @@ reference "subsec:多行数式中のテキスト"
 \emph default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -768,6 +783,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -790,6 +807,8 @@ text
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -832,6 +851,8 @@ text
 」で始まります．非必須の引数を省略するときには，随伴する括弧も省略しなくてはなりません．必須引数の前後の括弧は，この文書中では，\SpecialChar TeX
 括弧
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -1330,6 +1351,8 @@ em)
 \begin_layout Subsection
 指数
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -1340,6 +1363,8 @@ status collapsed
 
 および添字
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -1350,6 +1375,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -1382,6 +1409,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -1567,6 +1596,8 @@ name "subsec:分数"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -1587,6 +1618,8 @@ frac
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -1621,6 +1654,8 @@ dfrac
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -1639,6 +1674,8 @@ tfrac
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -1839,6 +1876,8 @@ cfrac
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2057,6 +2096,8 @@ nicefrac
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2079,6 +2120,8 @@ unitfrac
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2166,6 +2209,8 @@ reference "subsec:多行にわたる分数"
 \begin_layout Subsection
 根号
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2176,6 +2221,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2218,6 +2265,8 @@ sqrt
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2242,6 +2291,8 @@ root
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2387,6 +2438,8 @@ leftroot
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2405,6 +2458,8 @@ uproot
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2483,6 +2538,8 @@ B
 \begin_layout Subsection
 二項係数
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2503,6 +2560,8 @@ binom
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2537,6 +2596,8 @@ binom
 \backslash
 dbinom
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2557,6 +2618,8 @@ tbinom
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2575,6 +2638,8 @@ brace
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2593,6 +2658,8 @@ brack
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2808,6 +2875,8 @@ B
 \begin_layout Subsection
 場合分け
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2867,6 +2936,8 @@ B
 
 0
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3008,6 +3079,8 @@ Cases環境
 \begin_layout Subsection
 否定
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3028,6 +3101,8 @@ not
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3182,6 +3257,8 @@ name "subsec:埋め草"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3192,6 +3269,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3202,6 +3281,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3234,6 +3315,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3357,6 +3440,8 @@ phantom
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3573,6 +3658,8 @@ vphantom
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3601,6 +3688,8 @@ hphantom
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3717,6 +3806,8 @@ status open
 \begin_layout Subsection
 横線
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3727,6 +3818,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3737,6 +3830,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3810,6 +3905,8 @@ overline
 
 A+B
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3851,6 +3948,8 @@ underline
 
 A+B
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3963,6 +4062,8 @@ rule
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -4062,6 +4163,8 @@ name "subsec:省略符号"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -4098,6 +4201,8 @@ ldots
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -4116,6 +4221,8 @@ cdots
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -4134,6 +4241,8 @@ dots
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -4476,6 +4585,8 @@ hdotsfor
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -4542,6 +4653,8 @@ dotfill
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -4604,6 +4717,8 @@ hrulefill
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -4639,6 +4754,8 @@ name "sec:行列"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -4813,6 +4930,8 @@ left
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -4831,6 +4950,8 @@ right
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -5206,6 +5327,8 @@ arraycolsep
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -5228,6 +5351,8 @@ arraystretch
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -5250,6 +5375,8 @@ renewcommand{
 \backslash
 arraystretch}{伸長因子}
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -5295,6 +5422,8 @@ smallmatrix
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -5321,6 +5450,8 @@ C & D
 \begin_layout Section
 括弧と区分記号
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -5331,6 +5462,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -5345,6 +5478,8 @@ status collapsed
 \begin_layout Subsection
 垂直括弧と区分記号
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -5843,6 +5978,8 @@ textbackslash
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -5895,6 +6032,8 @@ name "subsec:手動の括弧丈"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -5916,6 +6055,8 @@ big
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -6113,6 +6254,8 @@ bigm
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -6137,6 +6280,8 @@ bigr
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -6358,6 +6503,8 @@ name "subsec:自動の括弧丈"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -6378,6 +6525,8 @@ left
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -6396,6 +6545,8 @@ right
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -6632,6 +6783,8 @@ middle
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -6705,6 +6858,8 @@ reference "subsec:物理ベクトル"
 \begin_layout Subsection
 水平括弧
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -6768,6 +6923,8 @@ A+B
 
 3
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -6813,6 +6970,8 @@ A+B
 
 _5
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -6937,6 +7096,8 @@ mathtools
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -6992,6 +7153,8 @@ overbracket{A+B
 
 ^3
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -7033,6 +7196,8 @@ underbracket{A+B
 
 _5
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -7416,6 +7581,8 @@ jot
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -7453,6 +7620,8 @@ reference "subsec:行間"
 \begin_layout Section
 矢印
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -7477,6 +7646,8 @@ arg   "math-insert \\leftarrow"
 \begin_layout Subsection
 水平矢印
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -8238,6 +8409,8 @@ reference "sec:アクセント"
 
 さらに，ラベル付き矢印
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -8254,6 +8427,8 @@ xleftarrow
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -8272,6 +8447,8 @@ xrightarrow
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -8425,6 +8602,8 @@ mathtools
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -8895,6 +9074,8 @@ F(x)
 \begin_layout Subsection
 垂直矢印および対角矢印
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -8905,6 +9086,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -9272,6 +9455,8 @@ name "sec:アクセント"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -9377,6 +9562,8 @@ name "subsec:一文字に付けるアクセント"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -9547,6 +9734,8 @@ vec
 
 A
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -9873,6 +10062,8 @@ status collapsed
 のようなアクセントは，数式に直接入れることができます．\SpecialChar LyX
 は，それを対応するアクセントコマンドに変換します．ウムラウト
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -10030,6 +10221,8 @@ undertilde
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -10202,6 +10395,8 @@ fi
 \begin_layout Subsection
 複数の文字に付けるアクセント
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -10556,6 +10751,8 @@ overset
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -10574,6 +10771,8 @@ underset
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -10619,6 +10818,8 @@ name "subsec:空白"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -10644,6 +10845,8 @@ name "subsec:定義済みの空白"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -11672,6 +11875,8 @@ name "subsec:可変長の空白"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -11696,6 +11901,8 @@ hspace
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -11761,6 +11968,8 @@ hfill
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12003,6 +12212,8 @@ cmの空白が入っています．
 \begin_layout Subsection
 行内数式周りの空白
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12021,6 +12232,8 @@ status collapsed
 \backslash
 mathsurround
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12039,6 +12252,8 @@ mathsurround
 \backslash
 setlength
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12154,6 +12369,8 @@ ptの値に戻して下さい．
 \begin_layout Section
 ボックスと枠
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12164,6 +12381,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12219,6 +12438,8 @@ name "subsec:枠付きボックス"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12243,6 +12464,8 @@ fbox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12261,6 +12484,8 @@ boxed
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12325,6 +12550,8 @@ framebox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12748,6 +12975,8 @@ name "subsec:枠なしボックス"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12772,6 +13001,8 @@ mbox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12790,6 +13021,8 @@ makebox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12808,6 +13041,8 @@ raisebox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -13069,6 +13304,8 @@ name "subsec:色付きボックス"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -13148,6 +13385,8 @@ color
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -13171,6 +13410,8 @@ colorbox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -13509,6 +13750,8 @@ fcolorbox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -13665,6 +13908,8 @@ definecolor{darkgreen}{cmyk}{0.5,
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -13771,6 +14016,8 @@ textcolor
 \series default
 コマンドを使うと，以下のように，自前で定義した色をテキスト中でも使用することができます．
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -13818,6 +14065,8 @@ textcolor
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -13847,6 +14096,8 @@ name "subsec:段落ボックス"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -13965,6 +14216,8 @@ parbox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -14031,6 +14284,8 @@ fboxrule}{
 \backslash
 linewidth
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -14066,6 +14321,8 @@ calc
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -14372,6 +14629,8 @@ parbox
 \begin_layout Section
 演算子
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -14393,6 +14652,8 @@ name "subsec:大演算子"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -14407,6 +14668,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -14417,6 +14680,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -14479,6 +14744,8 @@ esintパッケージを自動的に使う
 \backslash
 int
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -14778,6 +15045,8 @@ bigcup
 \backslash
 sum
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -14815,6 +15084,8 @@ sum
 \backslash
 prod
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -15433,6 +15704,8 @@ name "subsec:演算子の範囲"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -15585,7 +15858,7 @@ arg   "math-limits"
 に変更したときの表示です．
 \begin_inset Formula 
 \[
-\sum\nolimits _{x=0}^{\infty}\frac{1}{x^{2}}
+\sum\nolimits_{x=0}^{\infty}\frac{1}{x^{2}}
 \]
 
 \end_inset
@@ -15614,7 +15887,7 @@ op
 にして積分記号の下に置くようにしています．
 \begin_inset Formula 
 \begin{equation}
-\iiint\limits _{V}X\,\mathrm{d}V=U\label{eq:VolInt}
+\iiint\limits_{V}X\,\mathrm{d}V=U\label{eq:VolInt}
 \end{equation}
 
 \end_inset
@@ -15634,6 +15907,8 @@ subarray
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -15652,6 +15927,8 @@ substack
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -15667,8 +15944,7 @@ substack
 \begin{equation}
 \sum_{\begin{subarray}{c}
 0<k<1000\\
-\\
-k\,\in\,\mathbb{N}
+\\k\,\in\,\mathbb{N}
 \end{subarray}}^{n}k^{-2}\label{eq:substack}
 \end{equation}
 
@@ -15793,6 +16069,8 @@ smashoperator
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -15813,6 +16091,8 @@ mathtools
 \series default
 パッケージ
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -15870,8 +16150,7 @@ smashoperator{
 \begin_inset Formula 
 \[
 \sum_{\mathclap{\substack{0<k<1000\\
-\\
-k\,\in\,\mathbb{N}
+\\k\,\in\,\mathbb{N}
 }
 }}^{n}k^{-2}
 \]
@@ -15946,6 +16225,8 @@ mathtools
 \series default
 パッケージ
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -15966,6 +16247,8 @@ adjustlimits
 \series default
 コマンド
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -16004,6 +16287,8 @@ reference "subsec:自己定義演算子"
 \begin_layout Subsection
 演算子の修飾
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -16024,6 +16309,8 @@ overset
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -16042,6 +16329,8 @@ underset
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -16060,6 +16349,8 @@ sideset
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -16251,6 +16542,8 @@ name "subsec:二項演算子"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -17377,6 +17670,8 @@ name "subsec:自己定義演算子"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -17402,6 +17697,8 @@ DeclareMathOperator
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -17506,6 +17803,8 @@ mathop
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -17524,6 +17823,8 @@ mathbin
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -17635,6 +17936,8 @@ _i,j=1
 \begin_layout Section
 書体
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -17645,6 +17948,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -17688,6 +17993,8 @@ name "subsec:書体様式"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -18346,6 +18653,8 @@ name "subsec:ボールド体の数式"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -18405,6 +18714,8 @@ boldmath環境
 \backslash
 boldmath
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -18423,6 +18734,8 @@ boldmath
 \backslash
 unboldmath
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -18476,6 +18789,8 @@ unboldmath
 \begin_layout Subsection
 色付きの数式
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -18515,6 +18830,8 @@ textcolor
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -18609,6 +18926,8 @@ name "subsec:書体寸法"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -18781,6 +19100,8 @@ arg   "math-insert \\style"
 \backslash
 displaystyle
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -19044,6 +19365,8 @@ A
 \begin_layout Section
 ギリシャ文字
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -19069,6 +19392,8 @@ arg   "math-insert \\alpha"
 \begin_layout Subsection
 小文字
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -19983,6 +20308,8 @@ reference "subsec:アップライト体ギリシャ小文字"
 \begin_layout Subsection
 大文字
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -20383,6 +20710,8 @@ was
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -20411,6 +20740,8 @@ vspace{4mm}
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -20438,6 +20769,8 @@ usepackage{fixmath}
 \begin_layout Subsection
 ボールド体
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -20458,6 +20791,8 @@ boldsymbol
 \series default
 コマンドのみです
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -20634,6 +20969,8 @@ reference "subsec:節見出し中の数式"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -20671,6 +21008,8 @@ name "subsec:数学記号"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -21508,6 +21847,8 @@ name "subsec:その他の記号"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -22314,6 +22655,8 @@ reference "subsec:書体寸法"
 \begin_layout Subsection
 ユーロ通貨記号
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -22324,6 +22667,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -22356,6 +22701,8 @@ eurosym
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -22385,6 +22732,8 @@ euro
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -22422,6 +22771,8 @@ officialeuro
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -22724,6 +23075,8 @@ name "sec:関係子"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -22734,6 +23087,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -24127,6 +24482,8 @@ stackrel
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -24239,6 +24596,8 @@ name "subsec:定義済み函数"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -24829,6 +25188,8 @@ arg   "math-insert \\functions"
 \begin_layout Subsection
 自己定義関数
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -24891,6 +25252,8 @@ sgn}{sgn}
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -25042,6 +25405,8 @@ A
 \begin_layout Subsection
 極限
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -25062,6 +25427,8 @@ lim
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -25330,6 +25697,8 @@ reference "subsec:演算子の範囲"
 \begin_layout Subsection
 剰余関数
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -25340,6 +25709,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -25412,6 +25783,8 @@ status collapsed
 \begin_layout Section
 特殊文字
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -26030,6 +26403,8 @@ name "subsec:文章中のアクセント"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -26449,6 +26824,8 @@ status collapsed
 \backslash
 ~e
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -26788,6 +27165,8 @@ textcircled
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -26972,6 +27351,8 @@ reference "subsec:枠なしボックス"
 \begin_layout Subsection
 古式数字
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -26992,6 +27373,8 @@ oldstylenums
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -27038,6 +27421,8 @@ name "sec:数式様式"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -27128,6 +27513,8 @@ name "sec:多行数式"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -27230,6 +27617,8 @@ name "subsec:行間"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -27352,6 +27741,8 @@ jot
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -27430,6 +27821,8 @@ calc
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -27503,6 +27896,8 @@ name "subsec:列間"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -27532,6 +27927,8 @@ arraycolsep
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -27655,6 +28052,8 @@ C & \ne & A
 \begin_layout Subsubsection
 長い数式
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -27712,6 +28111,8 @@ reference "subsec:可変長の空白"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -27738,6 +28139,8 @@ lefteqn
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -27874,6 +28277,8 @@ name "subsec:多行にわたる分数"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -27894,6 +28299,8 @@ splitfrac
 \series default
 コマンド
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -27914,6 +28321,8 @@ mathtools
 \series default
 パッケージ
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -27986,6 +28395,8 @@ name "subsec:多行にわたる括弧"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28023,6 +28434,8 @@ right.
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28070,6 +28483,8 @@ reference "subsec:自動の括弧丈"
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28126,6 +28541,8 @@ _R=1}
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28210,6 +28627,8 @@ name "subsec:標準align環境"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28317,6 +28736,8 @@ hfill
 \begin_layout Subsubsection
 alignat環境
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28370,6 +28791,8 @@ name "subsec:flalign環境"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28414,7 +28837,7 @@ reference "eq:VolInt"
 式を行頭下げにしたものです．
 \begin_inset Formula 
 \begin{flalign}
-\hspace{30pt}\iiint\limits _{V}X\,\mathrm{d}V & =U & {}
+\hspace{30pt}\iiint\limits_{V}X\,\mathrm{d}V & =U & {}
 \end{flalign}
 
 \end_inset
@@ -28436,6 +28859,8 @@ name "subsec:eqnarray環境"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28469,6 +28894,8 @@ A & = & A
 \begin_layout Subsection
 gather環境
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28507,6 +28934,8 @@ name "subsec:multline環境"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28572,6 +29001,8 @@ reference "sec:数式様式"
 \backslash
 shoveright
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28586,6 +29017,8 @@ shoveright
 \backslash
 shoveleft
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28625,6 +29058,8 @@ shoveleft{行の内容}
 \backslash
 multlinegap
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28719,6 +29154,8 @@ name "subsec:数式の一部の多行化"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28785,6 +29222,8 @@ ed
 \backslash
 aligned
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28844,6 +29283,8 @@ alignedat
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28862,6 +29303,8 @@ gathered
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28880,6 +29323,8 @@ split
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28903,6 +29348,8 @@ name "subsec:多行数式中のテキスト"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28913,6 +29360,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28938,6 +29387,8 @@ intertext
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29002,6 +29453,8 @@ mathtools
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29028,6 +29481,8 @@ shortintertext
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29053,6 +29508,8 @@ I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
 \begin_layout Section
 数式番号
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29063,6 +29520,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29181,6 +29640,8 @@ reference "sec:数式様式"
 \begin_layout Subsection
 相互参照
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29337,6 +29798,8 @@ reference "subsec:段落ボックス"
 \begin_layout Subsection
 細目番号
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29613,6 +30076,8 @@ name "subsec:ローマ数字や文字を使った付番"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29623,6 +30088,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29660,6 +30127,8 @@ renewcommand
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29734,6 +30203,8 @@ theequation
 \backslash
 roman{equation}
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29774,6 +30245,8 @@ Roman
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29794,6 +30267,8 @@ alph
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29812,6 +30287,8 @@ Alph
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29969,6 +30446,8 @@ theequation}{
 \backslash
 arabic{equation}}
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -30037,6 +30516,8 @@ name "subsec:自己定義番号"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -30108,6 +30589,8 @@ unskip)}} }
 
 \begin_layout Standard
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -30200,6 +30683,8 @@ tag
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -30269,6 +30754,8 @@ A+B=C\tag*{something}
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -30427,6 +30914,8 @@ carlisle
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -30443,6 +30932,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -30463,6 +30954,8 @@ status collapsed
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -30538,6 +31031,8 @@ numberwithin
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -30631,6 +31126,8 @@ theequation}{
 \backslash
 arabic{equation}}
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -30738,6 +31235,8 @@ name "subsec:化学記号と化学式"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -30748,6 +31247,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -30758,6 +31259,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -30851,6 +31354,8 @@ mhchem
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -30867,6 +31372,8 @@ ce
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -31395,6 +31902,8 @@ cf
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -31446,6 +31955,8 @@ xymatrix
 \begin_layout Subsection
 amscd図解
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -31479,6 +31990,8 @@ F@<<<E@<<<D
 \backslash
 CD
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -31700,6 +32213,8 @@ F@=C
 \begin_layout Subsection
 xymatrix図解
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -31752,6 +32267,8 @@ XY-pic説明書
 \series medium
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -31802,6 +32319,8 @@ reference "sec:行列"
 \begin_layout Section
 自己定義コマンド
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -31838,6 +32357,8 @@ name "subsec:newcommandコマンド"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -31850,6 +32371,8 @@ newcommand
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -32373,6 +32896,8 @@ A=B
 \begin_layout Subsection
 数式マクロ
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -32383,6 +32908,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -32832,6 +33359,8 @@ fb
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -33446,6 +33975,8 @@ command-alternatives paragraph-break;math-extern maxima
 \begin_layout Section
 補遺
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -33460,6 +33991,8 @@ status collapsed
 \begin_layout Subsection
 負の数
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -33567,6 +34100,8 @@ x = -2
 \begin_layout Subsection
 位区切りとしてのコンマ
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -33577,6 +34112,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -33679,6 +34216,8 @@ was
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -33707,6 +34246,8 @@ vspace{4mm}
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -33728,6 +34269,8 @@ name "subsec:物理ベクトル"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -33766,6 +34309,8 @@ braket
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -34042,6 +34587,8 @@ name "subsec:自己定義の分数"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -34062,6 +34609,8 @@ genfrac
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -34343,6 +34892,8 @@ genfrac{}{}{#1}{}{#2}{#3}}
 \begin_layout Subsection
 数式の消去
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -34722,6 +35273,8 @@ literal "true"
 
 をご覧ください．
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -34799,6 +35352,8 @@ name "subsec:節見出し中の数式"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -34829,6 +35384,8 @@ hyperref
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -34871,6 +35428,8 @@ hyperref
 \backslash
 texorpdfstring{部分}{代替文字列}
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -35015,6 +35574,8 @@ reference "subsec:ボールド体の数式"
 \begin_layout Subsection
 多段組文中の数式
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -35048,6 +35609,8 @@ multicol
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -35301,6 +35864,8 @@ end{multicols}
 \begin_layout Subsection
 変数の説明付き数式
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -35473,6 +36038,8 @@ name "subsec:アップライト体ギリシャ小文字"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -35508,6 +36075,8 @@ was
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -35537,6 +36106,8 @@ vspace{4mm}
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -35682,6 +36253,8 @@ fi
 \begin_layout Subsection
 数式中のテキスト文字
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -35847,6 +36420,8 @@ i}
 数式中の\SpecialChar LaTeX
 コメント
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -35933,6 +36508,8 @@ A=B%\text{これはコメントです。}
 \start_of_appendix
 組版上の助言
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -36150,6 +36727,8 @@ mathscr
 \series default
 コマンド
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -36184,6 +36763,8 @@ mathscr
 \begin_layout Section
 同義語
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -36915,6 +37496,8 @@ cancel
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -36950,6 +37533,8 @@ hyperref
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -36985,6 +37570,8 @@ mhchem
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout

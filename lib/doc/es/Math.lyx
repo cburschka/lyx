@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 600
+\lyxformat 610
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -152,9 +152,9 @@ subequations
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
+\font_roman_osf false
 \font_sans_osf false
 \font_typewriter_osf false
-\font_roman_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -203,8 +203,8 @@ subequations
 \justification true
 \use_refstyle 0
 \use_minted 0
-\notefontcolor #0000ff
 \use_lineno 0
+\notefontcolor #0000ff
 \index Índice
 \shortcut idx
 \color #008000
@@ -220,15 +220,19 @@ subequations
 \papercolumns 1
 \papersides 2
 \paperpagestyle plain
+\tablestyle default
 \bullet 1 0 6 -1
 \bullet 2 2 35 -1
 \bullet 3 2 7 -1
 \tracking_changes false
-\postpone_fragile_content false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -496,6 +500,8 @@ Instrucciones generales
 \begin_layout Standard
 Para crear una ecuación en línea
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -520,6 +526,8 @@ arg   "math-mode"
 
 Para crear una ecuación en estilo presentación
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -563,6 +571,8 @@ displaystyle
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -649,6 +659,8 @@ Paneles de ecuaciones
 El modo \SpecialChar TeX
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -710,6 +722,8 @@ Para evitar que estas palabras sean reconocidas como tales nombres propios,
 Para cambiar el preámbulo \SpecialChar LaTeX
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -759,6 +773,8 @@ texto de ecuaciones
 \emph default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -814,6 +830,8 @@ text
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -871,6 +889,8 @@ Un comando empieza siempre por una barra inversa,
  denominan llaves \SpecialChar TeX
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -979,6 +999,7 @@ Unidades disponibles
 \align center
 \begin_inset Float table
 placement H
+alignment document
 wide false
 sideways false
 status open
@@ -1392,6 +1413,8 @@ Funciones básicas
 \begin_layout Subsection
 Exponentes
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -1402,6 +1425,8 @@ Exponentes
 
  e índices
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -1412,6 +1437,8 @@ Indices@Índices
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -1444,6 +1471,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -1648,6 +1677,8 @@ name "subsec:Fracciones"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -1668,6 +1699,8 @@ frac
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -1706,6 +1739,8 @@ dfrac
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -1726,6 +1761,8 @@ tfrac
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -1926,6 +1963,8 @@ cfrac
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2131,6 +2170,8 @@ nicefrac
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2220,6 +2261,8 @@ reference "subsec:Fracciones-multilínea"
 \begin_layout Subsection
 Raíces
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2240,6 +2283,8 @@ sqrt
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2264,6 +2309,8 @@ root
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2413,6 +2460,8 @@ leftroot
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2431,6 +2480,8 @@ uproot
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2519,6 +2570,8 @@ genera una fórmula correctamente tipografiada:
 \begin_layout Subsection
 Coeficientes de un binomio
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2539,6 +2592,8 @@ binom
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2570,6 +2625,8 @@ dbinom
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2588,6 +2645,8 @@ tbinom
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2608,6 +2667,8 @@ brace
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2626,6 +2687,8 @@ brack
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2842,6 +2905,8 @@ B
 \begin_layout Subsection
 Diferenciaciones de casos
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -2898,6 +2963,8 @@ A
 
 B>0
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3017,6 +3084,8 @@ Entorno casos
 \begin_layout Subsection
 Negaciones
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3037,6 +3106,8 @@ not
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3194,6 +3265,8 @@ name "subsec:Espacios-reservados"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3204,6 +3277,8 @@ Espacios reservados
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3214,6 +3289,8 @@ Química ! isótopos
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3344,6 +3421,8 @@ phantom
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3562,6 +3641,8 @@ vphantom
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3586,6 +3667,8 @@ hphantom
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3704,6 +3787,8 @@ Esto
 \begin_layout Subsection
 Líneas
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3714,6 +3799,8 @@ Lineas@Líneas
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3766,6 +3853,8 @@ overline
 
 A+B
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3807,6 +3896,8 @@ underline
 
 A+B
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -3921,6 +4012,8 @@ rule
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -4024,6 +4117,8 @@ name "subsec:Puntos"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -4060,6 +4155,8 @@ ldots
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -4079,6 +4176,8 @@ cdots
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -4098,6 +4197,8 @@ dots
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -4446,6 +4547,8 @@ hdotsfor
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -4523,6 +4626,8 @@ dotfill
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -4590,6 +4695,8 @@ hrulefill
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -4625,6 +4732,8 @@ name "sec:Matrices"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -4815,6 +4924,8 @@ left
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -4833,6 +4944,8 @@ right
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -5226,6 +5339,8 @@ arraycolsep
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -5253,6 +5368,8 @@ arraystretch
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -5275,6 +5392,8 @@ renewcommand{
 \backslash
 arraystretch}{factor de separación}
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -5322,6 +5441,8 @@ smallmatrix
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -5351,6 +5472,8 @@ C & D
 \begin_layout Section
 Delimitadores
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -5365,6 +5488,8 @@ Delimitadores
 \begin_layout Subsection
 Delimitadores verticales
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -5855,6 +5980,8 @@ textbackslash
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -5911,6 +6038,8 @@ name "subsec:Tamaño-manual-de"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -5933,6 +6062,8 @@ big
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -6129,6 +6260,8 @@ bigm
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -6154,6 +6287,8 @@ bigr
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -6375,6 +6510,8 @@ name "subsec:Tamaño-automático-de"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -6395,6 +6532,8 @@ left
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -6413,6 +6552,8 @@ right
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -6663,6 +6804,8 @@ middle
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -6709,6 +6852,8 @@ reference "subsec:Vectores-cuánticos"
 \begin_layout Subsection
 Delimitadores horizontales
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -6769,6 +6914,8 @@ A+B
 
 3
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -6814,6 +6961,8 @@ A+B
 
 _5
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -6955,6 +7104,8 @@ mathtools
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -7006,6 +7157,8 @@ overbracket{A+B
 
 ^3
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -7047,6 +7200,8 @@ underbracket{A+B
 
 _5
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -7462,6 +7617,8 @@ jot
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -7514,6 +7671,8 @@ reference "subsec:Separación-de-líneas"
 \begin_layout Section
 Flechas
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -7539,6 +7698,8 @@ arg   "math-insert \\leftarrow"
 \begin_layout Subsection
 Flechas horizontales
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -8308,6 +8469,8 @@ reference "sec:Acentos"
 \begin_layout Standard
 Además hay las flechas etiquetadas
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -8324,6 +8487,8 @@ xleftarrow
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -8342,6 +8507,8 @@ xrightarrow
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -8514,6 +8681,8 @@ mathtools
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -8973,6 +9142,8 @@ F(x)
 \begin_layout Subsection
 Flechas verticales y diagonales
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -8983,6 +9154,8 @@ Flechas ! diagonales
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -9359,6 +9532,8 @@ name "sec:Acentos"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -9464,6 +9639,8 @@ name "subsec:Acentos-para-un"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -9634,6 +9811,8 @@ vec
 
 A
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -9958,6 +10137,8 @@ En ecuaciones se pueden insertar acentos como
  los transformará al comando de acento correspondiente.
  Para poner diéresis
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -10171,6 +10352,8 @@ undertilde
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -10336,6 +10519,8 @@ fi
 \begin_layout Subsection
 Acentos para varios caracteres
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -10696,6 +10881,8 @@ overset
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -10714,6 +10901,8 @@ underset
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -10761,6 +10950,8 @@ name "sec:Espacio"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -10782,6 +10973,8 @@ name "subsec:Espacio-predefinido"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -11787,6 +11980,8 @@ name "subsec:Espacio-variable"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -11808,6 +12003,8 @@ hspace
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -11900,6 +12097,8 @@ hfill
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12157,6 +12356,8 @@ espacio máximo.
 \begin_layout Subsection
 Espacio adicional en ecuaciones en línea
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12178,6 +12379,8 @@ mathsurround
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12197,6 +12400,8 @@ setlength
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12311,6 +12516,8 @@ pt.
 \begin_layout Section
 Marcos y bordes
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12344,6 +12551,8 @@ name "subsec:Marcos-con-bordes"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12364,6 +12573,8 @@ fbox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12382,6 +12593,8 @@ boxed
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12447,6 +12660,8 @@ framebox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12901,6 +13116,8 @@ name "subsec:Marcos-sin-bordes"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12921,6 +13138,8 @@ mbox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12939,6 +13158,8 @@ makebox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -12957,6 +13178,8 @@ raisebox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -13222,6 +13445,8 @@ name "subsec:Marcos-coloreados"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -13259,6 +13484,8 @@ color
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -13322,6 +13549,8 @@ colorbox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -13679,6 +13908,8 @@ fcolorbox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -13838,6 +14069,8 @@ definecolor{verdeoscuro}{cmyk}{0.5, 0, 1, 0.5}
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -13933,6 +14166,8 @@ textcolor
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -13988,6 +14223,8 @@ textcolor
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -14017,6 +14254,8 @@ name "subsec:Marcos-de-párrafo"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -14133,6 +14372,8 @@ parbox
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -14239,6 +14480,8 @@ linewidth
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -14289,6 +14532,8 @@ calc
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -14622,6 +14867,8 @@ comentado
 \begin_layout Section
 Operadores
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -14643,6 +14890,8 @@ name "subsec:Operadores-grandes"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -14653,6 +14902,8 @@ Operadores ! grandes
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -14663,6 +14914,8 @@ Sumatorios
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -14727,6 +14980,8 @@ Operador
 \backslash
 int
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -15026,6 +15281,8 @@ Operador
 \backslash
 sum
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -15063,6 +15320,8 @@ sum
 \backslash
 prod
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -15674,6 +15933,8 @@ name "subsec:Límites-de-operadores"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -15812,7 +16073,7 @@ Alineado
 :
 \begin_inset Formula 
 \[
-\sum\nolimits _{x=0}^{\infty}\frac{1}{x^{2}}
+\sum\nolimits_{x=0}^{\infty}\frac{1}{x^{2}}
 \]
 
 \end_inset
@@ -15847,7 +16108,7 @@ Presentado
  para poner el límite debajo:
 \begin_inset Formula 
 \begin{equation}
-\iiint\limits _{V}X\,\mathrm{d}V=U\label{eq:IntVol}
+\iiint\limits_{V}X\,\mathrm{d}V=U\label{eq:IntVol}
 \end{equation}
 
 \end_inset
@@ -15864,6 +16125,8 @@ subarray
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -15882,6 +16145,8 @@ substack
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -15898,8 +16163,7 @@ substack
 \begin{equation}
 \sum_{\begin{subarray}{c}
 0<k<1000\\
-\\
-k\,\in\,\mathbb{N}
+\\k\,\in\,\mathbb{N}
 \end{subarray}}^{n}k^{-2}\label{eq:substack}
 \end{equation}
 
@@ -16016,6 +16280,8 @@ smashoperator
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -16053,6 +16319,8 @@ mathtools
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -16100,8 +16368,7 @@ e inserta el operador con sus límites entre las llaves.
 \[
 \smashoperator{\sum_{\begin{subarray}{c}
 0<k<1000\\
-\\
-k\,\in\,\mathbb{N}
+\\k\,\in\,\mathbb{N}
 \end{subarray}}^{n}}k^{-2}
 \]
 
@@ -16203,6 +16470,8 @@ mathtools
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -16220,6 +16489,8 @@ adjustlimits
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -16266,6 +16537,8 @@ reference "subsec:Operadores-de-usuario"
 \begin_layout Subsection
 Decoración para operadores
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -16286,6 +16559,8 @@ overset
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -16304,6 +16579,8 @@ underset
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -16323,6 +16600,8 @@ sideset
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -16524,6 +16803,8 @@ name "subsec:Operadores-binarios"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -17643,6 +17924,8 @@ name "subsec:Operadores-de-usuario"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -17663,6 +17946,8 @@ DeclareMathOperator
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -17769,6 +18054,8 @@ mathop
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -17787,6 +18074,8 @@ mathbin
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -17889,6 +18178,8 @@ _i,j=1
 \begin_layout Section
 Tipografías
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -17910,6 +18201,8 @@ name "subsec:Estilos-de-tipografías"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -18574,6 +18867,8 @@ name "subsec:Ecuaciones-en-negrita"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -18634,6 +18929,8 @@ boldmath
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -18654,6 +18951,8 @@ unboldmath
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -18708,6 +19007,8 @@ unboldmath
 \begin_layout Subsection
 Ecuaciones coloreadas
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -18755,6 +19056,8 @@ textcolor
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -18850,6 +19153,8 @@ name "subsec:Tamaños-de-tipografías"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -19030,6 +19335,8 @@ Resultado
 \backslash
 displaystyle
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -19295,6 +19602,8 @@ Si un símbolo no se puede mostrar en distintos tamaños se usará siempre
 \begin_layout Section
 Letras griegas
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -19343,6 +19652,8 @@ literal "true"
 \begin_layout Subsection
 Minúsculas
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -20257,6 +20568,8 @@ reference "subsec:Griegas-en-redonda"
 \begin_layout Subsection
 Mayúsculas
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -20665,6 +20978,8 @@ was
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -20693,6 +21008,8 @@ vspace{4mm}
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -20721,6 +21038,8 @@ ente en cursiva.
 \begin_layout Subsection
 Letras en negrita
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -20742,6 +21061,8 @@ boldsymbol
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -20920,6 +21241,8 @@ reference "subsec:Ecuaciones-en-encabezados"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -20958,6 +21281,8 @@ name "subsec:Símbolos-matemáticos"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -21795,6 +22120,8 @@ name "subsec:Símbolos-misceláneos"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -22601,6 +22928,8 @@ reference "subsec:Tamaños-de-tipografías"
 \begin_layout Subsection
 El símbolo del euro, €
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -22611,6 +22940,8 @@ Símbolos ! euro
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -22646,6 +22977,8 @@ eurosym
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -22675,6 +23008,8 @@ euro
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -22715,6 +23050,8 @@ officialeuro
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -23024,6 +23361,8 @@ name "sec:Relaciones"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -23034,6 +23373,8 @@ Relaciones
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -24433,6 +24774,8 @@ stackrel
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -24545,6 +24888,8 @@ name "subsec:Funciones-predefinidas"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -24555,6 +24900,8 @@ Funciones ! predefinidas
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -25612,6 +25959,8 @@ arg   "math-insert \\functions"
 \begin_layout Subsection
 Funciones definidas por el usuario
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -25675,6 +26024,8 @@ sgn}{sgn}
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -25828,6 +26179,8 @@ El primer método es preferible si la función se va a usar varias veces.
 \begin_layout Subsection
 Límites
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -25848,6 +26201,8 @@ lim
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -26096,7 +26451,7 @@ x=B
 En una ecuación presentada el límite se imprime debajo, como es habitual:
 \begin_inset Formula 
 \[
-\lim\limits _{x\rightarrow A}=B
+\lim\limits_{x\rightarrow A}=B
 \]
 
 \end_inset
@@ -26125,6 +26480,8 @@ reference "subsec:Límites-de-operadores"
 \begin_layout Subsection
 Función módulo
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -26174,6 +26531,8 @@ En una ecuación en línea se pone menos espacio delante del nombre de la
 \begin_layout Section
 Caracteres especiales
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -26797,6 +27156,8 @@ name "subsec:Acentos-en-texto"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -27217,6 +27578,8 @@ status collapsed
 \backslash
 ~e
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -27563,6 +27926,8 @@ textcircled
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -27751,6 +28116,8 @@ reference "subsec:Marcos-sin-bordes"
 \begin_layout Subsection
 Números en estilo antiguo
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -27772,6 +28139,8 @@ oldstylenums
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -27820,6 +28189,8 @@ name "sec:Estilos-de-ecuación"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -27937,6 +28308,8 @@ name "sec:Ecuaciones-multilínea"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28072,6 +28445,8 @@ name "subsec:Separación-de-líneas"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28192,6 +28567,8 @@ jot
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28260,6 +28637,8 @@ calc
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28342,6 +28721,8 @@ name "subsec:Separación-de-columnas"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28370,6 +28751,8 @@ arraycolsep
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28495,6 +28878,8 @@ C & \ne & A
 \begin_layout Subsubsection
 Ecuaciones largas
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28559,6 +28944,8 @@ reference "subsec:Espacio-variable"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28581,6 +28968,8 @@ lefteqn
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28711,6 +29100,8 @@ name "subsec:Fracciones-multilínea"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28733,6 +29124,8 @@ splitfrac
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28758,6 +29151,8 @@ mathtools
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28835,6 +29230,8 @@ name "subsec:Delimitadores-multilínea"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28870,6 +29267,8 @@ right.
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28919,6 +29318,8 @@ reference "subsec:Tamaño-automático-de"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -28976,6 +29377,8 @@ _R=1}
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29066,6 +29469,8 @@ name "subsec:Entorno-align-estándar"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29166,6 +29571,8 @@ hfill
 \begin_layout Subsubsection
 Entorno alignat
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29217,6 +29624,8 @@ name "subsec:Entorno-flalign"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29286,6 +29695,8 @@ name "subsec:Entorno-eqnarray"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29296,6 +29707,8 @@ Ecuación ! multilínea ! entorno eqnarray
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29327,6 +29740,8 @@ A & = & A
 \begin_layout Subsection
 Entorno gather
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29362,6 +29777,8 @@ name "subsec:Entorno-multilínea"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29429,6 +29846,8 @@ shoveright
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29447,6 +29866,8 @@ shoveleft
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29492,6 +29913,8 @@ multlinegap
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29586,6 +30009,8 @@ name "subsec:Partes-multilínea"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29647,6 +30072,8 @@ aligned
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29706,6 +30133,8 @@ alignedat
 \series default
 ,
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29724,6 +30153,8 @@ gathered
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29742,6 +30173,8 @@ split
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29767,6 +30200,8 @@ name "subsec:Texto-en-multilínea"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29777,6 +30212,8 @@ Texto ! en ecuaciones
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29799,6 +30236,8 @@ intertext
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29874,6 +30313,8 @@ mathtools
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29902,6 +30343,8 @@ shortintertext
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29933,6 +30376,8 @@ I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
 \begin_layout Section
 Numeración de ecuaciones
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -29965,6 +30410,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -30056,6 +30503,8 @@ reference "sec:Estilos-de-ecuación"
 \begin_layout Subsection
 Referencias cruzadas
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -30252,6 +30701,8 @@ reference "subsec:Marcos-de-párrafo"
 \begin_layout Subsection
 Subnumeración
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -30605,6 +31056,8 @@ name "subsec:Numeración-con-números"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -30615,6 +31068,8 @@ Numeración de ecuaciones ! con números romanos
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -30695,6 +31150,8 @@ renewcommand
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -30774,6 +31231,8 @@ roman{equation}
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -30814,6 +31273,8 @@ Roman
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -30843,6 +31304,8 @@ alph
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -30861,6 +31324,8 @@ Alph
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -31015,6 +31480,8 @@ theequation}{
 \backslash
 arabic{equation}}
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -31097,6 +31564,8 @@ name "subsec:Numeración-personalizada"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -31246,6 +31715,8 @@ Si quieres poner una expresión entre paréntesis en vez del número de ecuació
 \backslash
 tag
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -31322,6 +31793,8 @@ Para reiniciar la numeración en nuevas partes o secciones del documento
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -31494,6 +31967,8 @@ carlisle
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -31510,6 +31985,8 @@ Paquetes ! carlisle
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -31538,6 +32015,8 @@ Entonces se puede usar el comando
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -31636,6 +32115,8 @@ numberwithin
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -31760,6 +32241,8 @@ theequation}{
 \backslash
 arabic{equation}}
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -31865,6 +32348,8 @@ name "subsec:Símbolos-y-ecuaciones-químicas"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -31875,6 +32360,8 @@ Química ! símbolos
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -31885,6 +32372,8 @@ Química ! caracteres
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -31917,6 +32406,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -31927,6 +32418,8 @@ Química ! iones
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -31959,6 +32452,8 @@ status collapsed
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -32039,6 +32534,8 @@ ce
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -32056,6 +32553,8 @@ mhchem
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -32585,6 +33084,8 @@ cf
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -32636,6 +33137,8 @@ xymatrix
 \begin_layout Subsection
 Diagramas amscd
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -32666,6 +33169,8 @@ Para obtener el diagrama se inserta en la ecuación el comando
 \backslash
 CD
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -32927,6 +33432,8 @@ D@<<j<E@>k>>F@=C
 \begin_layout Subsection
 Diagramas xymatrix
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -32994,6 +33501,8 @@ Feynman
 \noun default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -33058,6 +33567,8 @@ específicos
 \begin_layout Section
 Comandos definidos por el usuario
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -33099,6 +33610,8 @@ name "subsec:El-comando-newcommand"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -33111,6 +33624,8 @@ newcommand
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -33642,6 +34157,8 @@ A=B
 \begin_layout Subsection
 Macros de ecuaciones
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -33652,6 +34169,8 @@ Comandos de usuario ! Macros de ecuaciones
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -34137,6 +34656,8 @@ Cuando el cursor está en un recuadro de definición de macro, verás en \Specia
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -34718,6 +35239,8 @@ command-alternatives paragraph-break;math-extern maxima
 \begin_layout Section
 Miscelánea
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -34732,6 +35255,8 @@ Miscelánea
 \begin_layout Subsection
 Números negativos
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -34844,6 +35369,8 @@ solución:
 \begin_layout Subsection
 Coma como separador decimal
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -34893,6 +35420,8 @@ was
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -34921,6 +35450,8 @@ vspace{4mm}
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -34951,6 +35482,8 @@ name "subsec:Vectores-cuánticos"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -34961,6 +35494,8 @@ Vectores cuánticos
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -34980,6 +35515,8 @@ braket
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -35267,6 +35804,8 @@ name "subsec:Fracciones-personalizadas"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -35288,6 +35827,8 @@ genfrac
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -35567,6 +36108,8 @@ Como se puede ver, la distancia del numerador y el denominador a la raya
 \begin_layout Subsection
 Ecuaciones canceladas
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -35948,6 +36491,8 @@ literal "true"
 
 .
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -36025,6 +36570,8 @@ name "subsec:Ecuaciones-en-encabezados"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -36052,6 +36599,8 @@ hyperref
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -36111,6 +36660,8 @@ hyperref
 \backslash
 texorpdfstring{parte}{alternativa}
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -36259,6 +36810,8 @@ reference "subsec:Ecuaciones-en-negrita"
 \begin_layout Subsection
 Ecuaciones en texto multicolumna
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -36296,6 +36849,8 @@ multicol
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -36546,6 +37101,8 @@ end{multicols}
 \begin_layout Subsection
 Ecuaciones con descripción de variables
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -36727,6 +37284,8 @@ name "subsec:Griegas-en-redonda"
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -36763,6 +37322,8 @@ was
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -36791,6 +37352,8 @@ vspace{4mm}
 
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -36945,6 +37508,8 @@ fi
 \begin_layout Subsection
 Caracteres de texto en ecuaciones
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -37164,6 +37729,8 @@ A=B%\text{Esto es el comentario}
 \start_of_appendix
 Notas sobre tipografía
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -37448,6 +38015,8 @@ Símbolos de letra
 \begin_layout Section
 Comandos sinónimos
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -38206,6 +38775,8 @@ cancel
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -38241,6 +38812,8 @@ hyperref
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
@@ -38276,6 +38849,8 @@ mhchem
 \series default
 
 \begin_inset Index idx
+range none
+pageformat default
 status collapsed
 
 \begin_layout Plain Layout
