@@ -799,6 +799,7 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 		imageReady(*nit->get());
 	}
 	finished_generating_ = true;
+	buffer_.scheduleRedrawWorkAreas();
 }
 
 

@@ -44,6 +44,8 @@ public:
 	/// Update window titles of all users and the external modifications
 	/// warning.
 	void updateTitles();
+	/// Schedule redraw of work areas
+	void scheduleRedraw();
 	/// If there is no work area, create a new one in the current view using the
 	/// buffer buf. Returns false if not possible.
 	bool unhide(Buffer * buf) const;

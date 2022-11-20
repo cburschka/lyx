@@ -69,6 +69,8 @@
 #include "Toolbars.h"
 #include "version.h"
 
+#include "graphics/PreviewLoader.h"
+
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
@@ -4891,6 +4893,10 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 					      lyxrc.currentZoom, lyxrc.defaultZoom));
 
 			guiApp->fontLoader().update();
+			// Regenerate instant previews
+			if (lyxrc.preview != LyXRC::PREVIEW_OFF
+			    && doc_buffer && doc_buffer->loader())
+				doc_buffer->loader()->refreshPreviews();
 			dr.screenUpdate(Update::ForceAll | Update::FitCursor);
 			break;
 		}

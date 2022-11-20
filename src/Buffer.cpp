@@ -4253,6 +4253,13 @@ void Buffer::updateTitles() const
 }
 
 
+void Buffer::scheduleRedrawWorkAreas() const
+{
+	if (d->wa_)
+		d->wa_->scheduleRedraw();
+}
+
+
 void Buffer::resetAutosaveTimers() const
 {
 	if (d->gui_)

@@ -62,6 +62,13 @@ void WorkAreaManager::updateTitles()
 }
 
 
+void WorkAreaManager::scheduleRedraw()
+{
+	for (WorkArea * wa : work_areas_)
+		wa->scheduleRedraw(true);
+}
+
+
 } // namespace frontend
 } // namespace lyx
 

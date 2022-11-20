@@ -666,6 +666,8 @@ public:
 	void setBusy(bool on) const;
 	/// Update window titles of all users.
 	void updateTitles() const;
+	/// Schedule redraw of work areas
+	void scheduleRedrawWorkAreas() const;
 	/// Reset autosave timers for all users.
 	void resetAutosaveTimers() const;
 	///
