@@ -386,10 +386,11 @@ bool FontLoader::available(FontInfo const & f)
 
 bool FontLoader::canBeDisplayed(char_type c)
 {
-	// bug 8493
-	if (c == 0x0009)
-		// FIXME KILLQT4: get rid of this function if not needed anymore
-		// FIXME check whether this is still needed for Qt5
+	// bug 8493: with Qt5, characters with codepoints 9, 10, 12 and 13
+	// are rendered as spaces. We handle that in our TeX fonts by making
+	// copies of the glyphs elsewhere, but this may trigger if we are
+	// unlucky.
+	if (c == 0x0009 || c == 0x000a || c == 0x000c || c == 0x000d)
 		return false;
 	return true;
 }

@@ -871,15 +871,13 @@ Ydown              stmry   5   0 mathbin    x  x  stmaryrd
 Yleft              stmry   6   0 mathbin    x  x  stmaryrd
 Yright             stmry   7   0 mathbin    x  x  stmaryrd
 varcurlyvee        stmry   8   0 mathbin    x  x  stmaryrd
-# qt4 does not display characters at the \t position (0x09)
-# therefore our .ttf font contains a copy at 170 (0xaa)
-#varcurlywedge      stmry   9   0 mathbin    x  x  stmaryrd
-#10,12,13 codepoints broken in qt5
+# qt does not display characters at codepoints 9, 10,12,13
+# therefore our copies of the TeX fonts have duplicate glyphs after 170
 varcurlywedge      stmry 170   0 mathbin    x  x  stmaryrd
 minuso             stmry 171   0 mathbin    x  x  stmaryrd
 baro               stmry  11   0 mathbin    x  x  stmaryrd
 sslash             stmry 172   0 mathbin    x  x  stmaryrd
-#for whatever reason qt5 refuses to display anything at position 173
+#for whatever reason qt refuses to display anything at position 173
 bbslash            stmry 174   0 mathbin    x  x  stmaryrd
 moo                stmry  14   0 mathbin    x  x  stmaryrd
 varotimes          stmry  15   0 mathbin    x  x  stmaryrd
