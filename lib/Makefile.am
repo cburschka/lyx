@@ -661,6 +661,7 @@ dist_images_DATA1X = \
 	images/outline-out+rtl.svgz \
 	images/outline-up.svgz \
 	images/paste.svgz \
+	images/process-stop.svgz \
 	images/redo.svgz \
 	images/reload.svgz \
 	images/search-case-sensitive.svgz \

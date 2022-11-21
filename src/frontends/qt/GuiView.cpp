@@ -633,6 +633,10 @@ GuiView::GuiView(int id)
 	// For Drag&Drop.
 	setAcceptDrops(true);
 
+	QFontMetrics const fm(statusBar()->fontMetrics());
+	int const iconheight = max(int(d.normalIconSize), fm.height());
+	QSize const iconsize(iconheight, iconheight);
+
 	// add busy indicator to statusbar
 	search_mode mode = theGuiApp()->imageSearchMode();
 	QString fn = toqstr(lyx::libFileSearch("images", "busy", "svgz", mode).absFileName());
@@ -641,12 +645,23 @@ GuiView::GuiView(int id)
 	// make busy indicator square with 5px margins
 	busySVG->setMaximumSize(busySVG->height() - 5, busySVG->height() - 5);
 	busySVG->hide();
+	// Add cancel button
+	QPixmap ps = QIcon(getPixmap("images/", "process-stop", "svgz")).pixmap(iconsize);
+	GuiClickableLabel * processStop = new GuiClickableLabel(statusBar());
+	processStop->setPixmap(ps);
+	processStop->setToolTip(qt_("Click here to stop export/output process"));
+	processStop->hide();
+	statusBar()->addPermanentWidget(processStop);
 
 	connect(&d.processing_thread_watcher_, SIGNAL(started()),
 		busySVG, SLOT(show()));
 	connect(&d.processing_thread_watcher_, SIGNAL(finished()),
 		busySVG, SLOT(hide()));
-	connect(busySVG, SIGNAL(pressed()), this, SLOT(checkCancelBackground()));
+	connect(&d.processing_thread_watcher_, SIGNAL(started()),
+		processStop, SLOT(show()));
+	connect(&d.processing_thread_watcher_, SIGNAL(finished()),
+		processStop, SLOT(hide()));
+	connect(processStop, SIGNAL(pressed()), this, SLOT(checkCancelBackground()));
 
 	stat_counts_ = new GuiClickableLabel(statusBar());
 	stat_counts_->setAlignment(Qt::AlignCenter);
@@ -655,9 +670,6 @@ GuiView::GuiView(int id)
 	statusBar()->addPermanentWidget(stat_counts_);
 
 	connect(stat_counts_, SIGNAL(clicked()), this, SLOT(statsPressed()));
-
-
-	QFontMetrics const fm(statusBar()->fontMetrics());
 
 	zoom_slider_ = new QSlider(Qt::Horizontal, statusBar());
 	// Small size slider for macOS to prevent the status bar from enlarging
@@ -729,9 +741,6 @@ GuiView::GuiView(int id)
 
 	// enable pinch to zoom
 	grabGesture(Qt::PinchGesture);
-
-	int const iconheight = max(int(d.normalIconSize), fm.height());
-	QSize const iconsize(iconheight, iconheight);
 
 	QPixmap shellescape = QIcon(getPixmap("images/", "emblem-shellescape", "svgz,png")).pixmap(iconsize);
 	shell_escape_ = new QLabel(statusBar());
