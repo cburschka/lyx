@@ -13,7 +13,6 @@ endif()
 file(GLOB moc_files ${TOP_SRC_DIR}/src/frontends/qt/${LYX_MOC_FILES})
 
 list(REMOVE_ITEM frontends_qt_sources ${moc_files} .)
-list(REMOVE_ITEM frontends_qt_sources ${TOP_SRC_DIR}/src/frontends/qt/liblyxqt4.cpp)
 
 file(GLOB frontends_qt_headers ${TOP_SRC_DIR}/src/frontends/qt/${LYX_HPP_FILES})
 file(GLOB frontend_qt_UI ${TOP_SRC_DIR}/src/frontends/qt/ui/*.ui)

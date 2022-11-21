@@ -162,7 +162,7 @@ Build options
     -- LYX_ENABLE_KEYTESTS      = ON     : Enable for keytests
     -- LYX_ASAN                 = OFF    : Use address sanitizer
     -- LYX_USE_FILEDIALOG       = NATI   : Use native or QT file dialog (QT NATIVE)
-    -- LYX_USE_QT               = QT5    : Use Qt version as frontend (AUTO QT4 QT5)
+    -- LYX_USE_QT               = QT6    : Use Qt version as frontend (AUTO QT5 QT6)
     -- LYX_DISABLE_CALLSTACK_PRI= OFF    : do not print a callstack when crashing
     -- LYX_EXTERNAL_Z           = ON     : OFF := Build 3rdparty lib zlib
     -- LYX_EXTERNAL_ICONV       = ON     : OFF := Build 3rdparty lib iconvlib
@@ -262,7 +262,7 @@ Ubuntu/Kubuntu
     You need additionally these packages:
       * g++
       * cmake
-      * qt4-dev-tools + qt4-qmake or qttools5-dev-tools + qt5-qmake
+      * qttools5-dev-tools + qt5-qmake or qt6-base-dev-tools + qt6-tools-dev
 
 
 
