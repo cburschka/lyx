@@ -1825,9 +1825,15 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 		//lyxerr << "starting with macro" << endl;
 		bool reduced = cap::reduceSelectionToOneCell(cur);
 		if (reduced || !cur.selection()) {
+			InsetMath const * im = cur.inset().asInsetMath();
+			InsetMathMacro const * macro = im ? im->asMacro()
+			                                  : nullptr;
+			bool in_macro_name = macro
+				&& macro->displayMode() ==
+					InsetMathMacro::DISPLAY_UNFOLDED;
 			cur.recordUndoInset();
 			docstring const safe = cap::grabAndEraseSelection(cur);
-			if (!cur.inRegexped())
+			if (!cur.inRegexped() && !in_macro_name)
 				cur.insert(MathAtom(new InsetMathUnknown(from_ascii("\\"), safe, false)));
 			else
 				cur.niceInsert(createInsetMath("backslash", buf));
