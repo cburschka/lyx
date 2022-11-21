@@ -61,19 +61,15 @@ void InsetMathCases::draw(PainterInfo & pi, int x, int y) const
 
 void InsetMathCases::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	//lyxerr << "*** InsetMathCases: request: " << cmd << endl;
 	switch (cmd.action()) {
 	case LFUN_TABULAR_FEATURE: {
 		string s = cmd.getArg(0);
 		// vertical lines and adding/deleting columns is not allowed for \cases
-		// FIXME: "I suspect that the break after cur.undispatched() should be a
-		// return; the recordUndo seems bogus too." (lasgouttes)
 		if (s == "append-column" || s == "delete-column"
 		    || s == "add-vline-left" || s == "add-vline-right") {
 			cur.undispatched();
-			break;
+			return;
 		}
-		cur.recordUndo();
 	}
 	default:
 		break;
@@ -91,15 +87,15 @@ bool InsetMathCases::getStatus(Cursor & cur, FuncRequest const & cmd,
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			flag.setEnabled(false);
 			flag.message(bformat(
-				from_utf8(N_("No vertical grid lines in 'cases': feature %1$s")),
-				from_utf8(s)));
+				from_utf8(N_("Can't add vertical grid lines in '%1$s'")),
+				from_utf8("cases")));
 			return true;
 		}
 		if (s == "append-column" || s == "delete-column") {
 			flag.setEnabled(false);
 			flag.message(bformat(
 				from_utf8(N_("Changing number of columns not allowed in "
-					     "'cases': feature %1$s")), from_utf8(s)));
+					     "'%1$s'")), from_utf8("cases")));
 			return true;
 		}
 		break;

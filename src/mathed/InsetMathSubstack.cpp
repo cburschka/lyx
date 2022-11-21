@@ -15,6 +15,7 @@
 #include "MathData.h"
 #include "MathStream.h"
 
+#include "Cursor.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
@@ -59,6 +60,24 @@ void InsetMathSubstack::draw(PainterInfo & pi, int x, int y) const
 }
 
 
+void InsetMathSubstack::doDispatch(Cursor & cur, FuncRequest & cmd)
+{
+	switch (cmd.action()) {
+	case LFUN_TABULAR_FEATURE: {
+		string s = cmd.getArg(0);
+		if (s == "append-column" || s == "delete-column"
+			|| s == "add-vline-left" || s == "add-vline-right") {
+			cur.undispatched();
+			return;
+		}
+	}
+	default:
+		break;
+	}
+	InsetMathGrid::doDispatch(cur, cmd);
+}
+
+
 bool InsetMathSubstack::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
@@ -79,6 +98,14 @@ bool InsetMathSubstack::getStatus(Cursor & cur, FuncRequest const & cmd,
 				from_utf8(N_("Can't change horizontal alignment in '%1$s'")),
 				from_utf8("substack")));
 			flag.setEnabled(false);
+			return true;
+		}
+		// disallow changing number of columns
+		if (s == "append-column" || s == "delete-column") {
+			flag.setEnabled(false);
+			flag.message(bformat(
+				from_utf8(N_("Changing number of columns not allowed in "
+					     "'%1$s'")), from_utf8("substack")));
 			return true;
 		}
 		break;

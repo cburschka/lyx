@@ -32,6 +32,8 @@ public:
 	InsetMathSubstack const * asSubstackInset() const override { return this; }
 
 	///
+	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
+	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const override;
 	///
