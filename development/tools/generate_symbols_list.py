@@ -44,7 +44,7 @@ def process(file):
     n = len(lines)
     for i in range(n):
         line = lines[i]
-        mo =  re.match(r'\s*%.*', line)
+        mo = re.match(r'\s*%.*', line)
         if mo != None:
             continue
         next_line = ""

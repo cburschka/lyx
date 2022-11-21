@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 # -*- coding: utf-8 -*-
 
-# file unciodesymbols.py
+# file unicodesymbols.py
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 
@@ -15,6 +15,7 @@
 from __future__ import print_function
 import os, re, string, sys, unicodedata
 import io
+
 
 def usage(prog_name):
     return ("Usage: %s start stop inputfile outputfile\n" % prog_name +
