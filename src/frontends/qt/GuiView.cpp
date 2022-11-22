@@ -4449,6 +4449,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		}
 		case LFUN_EXPORT_CANCEL: {
 			Systemcall::killscript();
+			Q_EMIT scriptKilled();
 			break;
 		}
 		case LFUN_BUFFER_SWITCH: {
