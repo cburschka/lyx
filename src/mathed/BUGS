@@ -19,21 +19,3 @@
  everything (perhaps several times in the document) or you create extremely
  generic and parametrizable macros that aren't very fast to fill in the
  majority of cases.
-
-
-
-Jules Bean:
-
-The number of characters which need to be typed
-is the confusing nature of the command. 'M-c m', typed once, puts you into
-math-mode. However, typing 'M-c m' again doesn't put you out of math-mode
---- it puts you into math-text mode. Then hitting it again puts you back
-into normal math-mode.  IMO, 'modal' keys should either be idempotent (so
-hitting it the second time does nothing) or self-inverting. In fact, the
-inverse to 'M-c m' is either 'ESC' or simply a space typed at the end of
-the block --- which is confusing, since they're not of the same 'shape' as
-the command that got you in there.
-
-Now, I'm not saying that 'space' shouldn't be allowed as a short-cut to get
-you out of math-mode; it's a most useful and natural one, I like it a lot.
-However, on balance I think M-c m should also have that effect.
