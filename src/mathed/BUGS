@@ -38,21 +38,6 @@ Now, I'm not saying that 'space' shouldn't be allowed as a short-cut to get
 you out of math-mode; it's a most useful and natural one, I like it a lot.
 However, on balance I think M-c m should also have that effect.
 
-3) Math-mode inconsistencies
-
-Sometimes 'the same action' has the same keystroke both within and
-without math-mode. This is very sensible. However, it is very annoying when
-they don't behave the way you're expecting them to.
-
-For example, 'M-c e' puts you into 'emphasise' mode.  Ignoring the fact
-that in text mode this is italics, and in math-mode it stands for the
-calligraphic character set, I think of these as the same action, so I like
-the fact that they have the same keys. However, in math-mode, 'M-c e' is
-idempotent, (and you need 'M-c space' to get back into normal) whereas in
-text-mode 'M-c e' is self-inverse. These are the two possibilities I listed
-as acceptable before, but consistency would be nice ;-) IMO, self-inverse
-would be best for both.
-
 6) Scope macros:
 
 The current macro system is clever, but could be neater. One improvement
