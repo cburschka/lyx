@@ -62,10 +62,6 @@ endmacro(LYX_ADD_UI_FILES)
 
 
 macro(LYX_AUTOMOC)
-	if (QT4_GET_MOC_INC_DIRS)
-		QT4_GET_MOC_INC_DIRS(_moc_INCS)
-	endif()
-
 	set(_matching_FILES)
 	foreach (_current_FILE ${ARGN})
 
