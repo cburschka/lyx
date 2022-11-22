@@ -835,10 +835,7 @@ void GuiView::checkCancelBackground()
 		Alert::prompt(ttl, msg, 1, 1,
 			_("&Cancel export"), _("Co&ntinue"));
 	if (ret == 0) {
-		Systemcall::killscript();
-		// stop busy signal immediately so that in the subsequent
-		// "Export canceled" prompt the status bar icons are accurate.
-		Q_EMIT scriptKilled();
+		cancelExport();
 	}
 }
 
@@ -4448,8 +4445,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 		}
 		case LFUN_EXPORT_CANCEL: {
-			Systemcall::killscript();
-			Q_EMIT scriptKilled();
+			cancelExport();
 			break;
 		}
 		case LFUN_BUFFER_SWITCH: {
@@ -5096,6 +5092,15 @@ bool GuiView::lfunUiToggle(string const & ui_component)
 		return false;
 	stat_counts_->setVisible(statsEnabled());
 	return true;
+}
+
+
+void GuiView::cancelExport()
+{
+	Systemcall::killscript();
+	// stop busy signal immediately so that in the subsequent
+	// "Export canceled" prompt the status bar icons are accurate.
+	Q_EMIT scriptKilled();
 }
 
 

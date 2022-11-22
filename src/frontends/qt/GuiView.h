@@ -408,6 +408,9 @@ private:
 	///
 	bool lfunUiToggle(std::string const & ui_component);
 	///
+	/// kill the script and hide export-in-progress status bar icons
+	void cancelExport();
+	///
 	void toggleFullScreen();
 	/// \return whether we did anything
 	bool insertLyXFile(docstring const & fname, bool ignorelang = false);
