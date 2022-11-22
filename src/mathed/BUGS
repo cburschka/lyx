@@ -1,11 +1,5 @@
 Álvaro Tejero Cantero <alvaro@antalia.com>
 
-- I suggest creating a different "kewybinding namespace" for the formulas,
- since you could put to good use all those keybindings from the menu (M-?,
- C-?) thath currently do their job PLUS getting you out of the formula.
- Seriously, it'd be great to have more keys free, so M-d t would be time
- derivative and M-d ? derivative with respect to the variable ?. And so on.
-
    Flattening macros. Sometimes it's annoying the fact that once you have
  written a macro, you can't touch at it's "constant parts". I call flattening
  to the process of substituting all macros with LaTeX code.
