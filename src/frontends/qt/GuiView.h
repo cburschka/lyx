@@ -228,6 +228,8 @@ Q_SIGNALS:
 	void bufferViewChanged();
 	/// emitted when zoom is modified
 	void currentZoomChanged(int);
+	/// emitted when script is killed (e.g., user cancels export)
+	void scriptKilled();
 
 public Q_SLOTS:
 	///

@@ -663,6 +663,9 @@ GuiView::GuiView(int id)
 		processStop, SLOT(hide()));
 	connect(processStop, SIGNAL(pressed()), this, SLOT(checkCancelBackground()));
 
+	connect(this, SIGNAL(scriptKilled()), busySVG, SLOT(hide()));
+	connect(this, SIGNAL(scriptKilled()), processStop, SLOT(hide()));
+
 	stat_counts_ = new GuiClickableLabel(statusBar());
 	stat_counts_->setAlignment(Qt::AlignCenter);
 	stat_counts_->setFrameStyle(QFrame::StyledPanel);
@@ -831,8 +834,12 @@ void GuiView::checkCancelBackground()
 	int const ret =
 		Alert::prompt(ttl, msg, 1, 1,
 			_("&Cancel export"), _("Co&ntinue"));
-	if (ret == 0)
+	if (ret == 0) {
 		Systemcall::killscript();
+		// stop busy signal immediately so that in the subsequent
+		// "Export canceled" prompt the status bar icons are accurate.
+		Q_EMIT scriptKilled();
+	}
 }
 
 void GuiView::statsPressed()
