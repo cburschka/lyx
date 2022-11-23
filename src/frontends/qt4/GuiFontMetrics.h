@@ -41,6 +41,7 @@ public:
 	virtual int lineWidth() const;
 	virtual int underlinePos() const;
 	virtual int strikeoutPos() const;
+	virtual double italicSlope() const;
 	virtual int width(char_type c) const;
 	virtual int ascent(char_type c) const;
 	virtual int descent(char_type c) const;
@@ -82,6 +83,9 @@ private:
 
 	/// Metrics on the font
 	QFontMetrics metrics_;
+
+	/// Slope of italic font
+	double slope_;
 
 	/// Cache of char widths
 	mutable QHash<char_type, int> width_cache_;

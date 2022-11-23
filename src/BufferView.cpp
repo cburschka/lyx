@@ -82,6 +82,7 @@
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
+#include "support/lyxlib.h"
 #include "support/Package.h"
 #include "support/types.h"
 
@@ -386,6 +387,21 @@ int BufferView::inPixels(Length const & len) const
 {
 	Font const font = buffer().params().getFont();
 	return len.inPixels(workWidth(), theFontMetrics(font).em());
+}
+
+
+int BufferView::zoomedPixels(int pix) const
+{
+	// FIXME: the dpi setting should really depend on the BufferView
+	// (think different monitors).
+
+	// Zoom factor specified by user in percent
+	double const zoom = lyxrc.currentZoom / 100.0; // [percent]
+
+	// DPI setting for monitor: pixels/inch
+	double const dpizoom = lyxrc.dpi / 100.0; // [per 100dpi]
+
+	return support::iround(pix * zoom * dpizoom);
 }
 
 

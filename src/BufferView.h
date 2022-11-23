@@ -114,6 +114,11 @@ public:
 	 */
 	int inPixels(Length const & len) const;
 
+	/** Return the number of pixels equivalent to \c pix pixels at
+	 * 100dpi and 100% zoom.
+	 */
+	int zoomedPixels(int pix) const;
+
 	/// \return true if the BufferView is at the top of the document.
 	bool isTopScreen() const;
 

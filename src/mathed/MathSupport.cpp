@@ -21,6 +21,7 @@
 #include "MathParser.h"
 #include "MathStream.h"
 
+#include "Encoding.h"
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 
@@ -32,6 +33,7 @@
 #include "support/docstream.h"
 #include "support/lassert.h"
 #include "support/lyxlib.h"
+#include "support/textutils.h"
 
 #include <map>
 #include <algorithm>
@@ -99,11 +101,18 @@ double const parenthHigh[] = {
 
 double const parenth[] = {
 	2, 13,
-	0.9930, 0.0071, 0.7324, 0.0578, 0.5141, 0.1126,
-	0.3380, 0.1714, 0.2183, 0.2333, 0.0634, 0.3621,
+	0.9930, 0.0081, 0.7254, 0.0588, 0.5070, 0.1136,
+	0.3310, 0.1724, 0.2113, 0.2353, 0.0563, 0.3631,
 	0.0141, 0.5000, 0.0563, 0.6369, 0.2113, 0.7647,
 	0.3310, 0.8276, 0.5070, 0.8864, 0.7254, 0.9412,
 	0.9930, 0.9919,
+	0
+};
+
+
+double const breve[] = {
+	2, 5,
+	0.1, 0.4,  0.2, 0.7,  0.5, 0.8,  0.8, 0.7,  0.9, 0.4,
 	0
 };
 
@@ -277,13 +286,13 @@ double const corner[] = {
 
 double const angle[] = {
 	2, 3,
-	1, 0,  0.05, 0.5,  1, 1,
+	0.9, 0.05,  0.05, 0.5,  0.9, 0.95,
 	0
 };
 
 
 double const slash[] = {
-	1, 0.95, 0.05, 0.05, 0.95,
+	1, 0.8, 0.1, 0.1, 0.8,
 	0
 };
 
@@ -298,31 +307,31 @@ double const dot[] = {
 //	1, 0.5, 0.2, 0.5, 0.2,
 //	1, 0.4, 0.4, 0.6, 0.4,
 //	1, 0.5, 0.5, 0.5, 0.5,
-	5, 0.4, 0.4, 0.6, 0.4,
+	5, 0.4, 0.5, 0.6, 0.5,
 	0
 };
 
 
 double const ddot[] = {
-	5, 0.0, 0.4, 0.3, 0.4,
-	5, 0.6, 0.4, 1.0, 0.4,
+	5, 0.1, 0.5, 0.3, 0.5,
+	5, 0.6, 0.5, 0.8, 0.5,
 	0
 };
 
 
 double const dddot[] = {
-	1, 0.1,  0.5, 0.2,  0.5,
-	1, 0.45, 0.5, 0.55, 0.5,
-	1, 0.8,  0.5, 0.9,  0.5,
+	5, -0.2, 0.5, 0.0, 0.5,
+	5,  0.3, 0.5, 0.5, 0.5,
+	5,  0.8, 0.5, 1.0, 0.5,
 	0
 };
 
 
 double const ddddot[] = {
-	1, 0.1,  0.5, 0.2,  0.5,
-	1, 0.45, 0.5, 0.55, 0.5,
-	1, 0.8,  0.5, 0.9,  0.5,
-	1, 1.15, 0.5, 1.25, 0.5,
+	5, -0.4, 0.5, -0.2, 0.5,
+	5,  0.1, 0.5,  0.3, 0.5,
+	5,  0.6, 0.5,  0.8, 0.5,
+	5,  1.1, 0.5,  1.3, 0.5,
 	0
 };
 
@@ -344,8 +353,10 @@ double const dline3[] = {
 
 
 double const ring[] = {
-	2, 5,
-	0.5, 0.8,  0.8, 0.5,  0.5, 0.2,  0.2, 0.5,  0.5, 0.8,
+	2, 9,
+	0.5, 0.8,  0.7, 0.7,  0.8, 0.5,
+	0.7, 0.3,  0.5, 0.2,  0.3, 0.3,
+	0.2, 0.5,  0.3, 0.7,  0.5, 0.8,
 	0
 };
 
@@ -364,8 +375,12 @@ double const  Vert[] = {
 
 
 double const tilde[] = {
-	2, 4,
-	0.00, 0.8,  0.25, 0.2,  0.75, 0.8,  1.00, 0.2,
+	2, 13,
+	-0.05,0.70,  0.00, 0.55,  0.05, 0.40,
+	0.15, 0.30,  0.30, 0.30,  0.40, 0.40,
+	0.45, 0.55,  0.50, 0.70,  0.60, 0.80,
+	0.75, 0.80,  0.85, 0.70,  0.90, 0.55,
+	0.95, 0.40,
 	0
 };
 
@@ -463,7 +478,7 @@ named_deco_struct deco_table[] = {
 	{"bar",            hline,      0 },
 	{"dot",            dot,        0 },
 	{"check",          angle,      1 },
-	{"breve",          parenth,    1 },
+	{"breve",          breve,      0 },
 	{"vec",            arrow,      3 },
 	{"mathring",       ring,       0 },
 
@@ -570,6 +585,15 @@ int mathed_char_kerning(FontInfo const & font, char_type c)
 }
 
 
+double mathed_char_slope(MetricsBase const & mb, char_type c)
+{
+	bool slanted = isAlphaASCII(c) || Encodings::isMathAlpha(c);
+	if (slanted && mb.fontname == "mathnormal")
+		return theFontMetrics(mb.font).italicSlope();
+	return 0.0;
+}
+
+
 void mathed_string_dim(FontInfo const & font,
 		       docstring const & s,
 		       Dimension & dim)
@@ -596,9 +620,11 @@ int mathed_string_width(FontInfo const & font, docstring const & s)
 void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 	docstring const & name)
 {
+	int const lw = pi.base.solidLineThickness();
+
 	if (name == ".") {
 		pi.pain.line(x + w/2, y, x + w/2, y + h,
-			  Color_cursor, Painter::line_onoffdash);
+			  Color_cursor, Painter::line_onoffdash, lw);
 		return;
 	}
 
@@ -640,16 +666,50 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 			pi.pain.line(
 				int(x + xx + 0.5), int(y + yy + 0.5),
 				int(x + x2 + 0.5), int(y + y2 + 0.5),
-				pi.base.font.color());
+				pi.base.font.color(), Painter::line_solid, lw);
 			if (code == 5) {  // thicker, but rounded
-				pi.pain.line(
-					int(x + xx + 0.5+1), int(y + yy + 0.5-1),
-					int(x + x2 + 0.5-1), int(y + y2 + 0.5-1),
-				pi.base.font.color());
-				pi.pain.line(
-					int(x + xx + 0.5+1), int(y + yy + 0.5+1),
-					int(x + x2 + 0.5-1), int(y + y2 + 0.5+1),
-				pi.base.font.color());
+				double const xa = x + xx + 0.5;
+				double const xb = x + x2 + 0.5;
+				double const ya = y + yy + 0.5;
+				double const yb = y + y2 + 0.5;
+				pi.pain.line(int(xa + 1), int(ya - 1),
+				             int(xb - 1), int(yb - 1),
+				             pi.base.font.color(),
+				             Painter::line_solid, lw);
+				pi.pain.line(int(xa + 1), int(ya + 1),
+				             int(xb - 1), int(yb + 1),
+				             pi.base.font.color(),
+				             Painter::line_solid, lw);
+				if (xa + 2 <= xb - 2) {
+					pi.pain.line(int(xa + 2), int(ya - 2),
+						     int(xb - 2), int(yb - 2),
+						     pi.base.font.color(),
+						     Painter::line_solid, lw);
+					pi.pain.line(int(xa + 2), int(ya + 2),
+						     int(xb - 2), int(yb + 2),
+						     pi.base.font.color(),
+						     Painter::line_solid, lw);
+				}
+				if (xa + 3 <= xb - 3) {
+					pi.pain.line(int(xa + 3), int(ya - 3),
+						     int(xb - 3), int(yb - 3),
+						     pi.base.font.color(),
+						     Painter::line_solid, lw);
+					pi.pain.line(int(xa + 3), int(ya + 3),
+						     int(xb - 3), int(yb + 3),
+						     pi.base.font.color(),
+						     Painter::line_solid, lw);
+				}
+				if (xa + 4 <= xb - 4) {
+					pi.pain.line(int(xa + 4), int(ya - 4),
+						     int(xb - 4), int(yb - 4),
+						     pi.base.font.color(),
+						     Painter::line_solid, lw);
+					pi.pain.line(int(xa + 4), int(ya + 4),
+						     int(xb - 4), int(yb + 4),
+						     pi.base.font.color(),
+						     Painter::line_solid, lw);
+				}
 			}
 		} else {
 			int xp[32];
@@ -667,7 +727,8 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 				yp[j] = int(y + yy + 0.5);
 				//  lyxerr << "P[" << j ' ' << xx << ' ' << yy << ' ' << x << ' ' << y << ']';
 			}
-			pi.pain.lines(xp, yp, n, pi.base.font.color());
+			pi.pain.lines(xp, yp, n, pi.base.font.color(),
+				Painter::fill_none, Painter::line_solid, lw);
 		}
 	}
 }

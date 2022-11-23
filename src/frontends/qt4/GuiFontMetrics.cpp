@@ -20,11 +20,15 @@
 #include "support/convert.h"
 #include "support/lassert.h"
 #include "support/lyxlib.h"
+#include "support/debug.h"
 
 #define DISABLE_PMPROF
 #include "support/pmprof.h"
 
 #include <QByteArray>
+#include <QRawFont>
+#include <QtEndian>
+#include <QtMath>
 
 using namespace std;
 using namespace lyx::support;
@@ -113,6 +117,21 @@ GuiFontMetrics::GuiFontMetrics(QFont const & font)
 	  breakat_cache_(cache_metrics_breakat_size),
 	  qtextlayout_cache_(cache_metrics_qtextlayout_size)
 {
+	// Determine italic slope
+	double const defaultSlope = tan(qDegreesToRadians(19.0));
+	QRawFont raw = QRawFont::fromFont(font);
+	QByteArray post(raw.fontTable("post"));
+	if (post.length() == 0) {
+		slope_ = defaultSlope;
+		LYXERR(Debug::FONT, "Screen font doesn't have 'post' table.");
+	} else {
+		// post table description:
+		// https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6post.html
+		int32_t italicAngle = qFromBigEndian(*reinterpret_cast<int32_t *>(post.data() + 4));
+		double angle = italicAngle / 65536.0; // Fixed-point 16.16 to floating-point
+		slope_ = -tan(qDegreesToRadians(angle));
+		LYXERR(Debug::FONT, "Italic slope: " << slope_);
+	}
 }
 
 
@@ -151,6 +170,12 @@ int GuiFontMetrics::underlinePos() const
 int GuiFontMetrics::strikeoutPos() const
 {
 	return metrics_.strikeOutPos();
+}
+
+
+double GuiFontMetrics::italicSlope() const
+{
+	return slope_;
 }
 
 
