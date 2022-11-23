@@ -908,14 +908,18 @@ void InsetMathMacro::validate(LaTeXFeatures & features) const
 			features.require(data->requires());
 	}
 
-	if (name() == "binom")
-		features.require("binom");
-
 	// validate the cells and the definition
 	if (displayMode() == DISPLAY_NORMAL) {
 		d->definition_.validate(features);
-		InsetMathNest::validate(features);
+	} else if (displayMode() == DISPLAY_INIT) {
+		MathData ar(const_cast<Buffer *>(&buffer()));
+		MacroData const * data = buffer().getMacro(name());
+		if (data) {
+			asArray(data->definition(), ar);
+			ar.validate(features);
+		}
 	}
+	InsetMathNest::validate(features);
 }
 
 
