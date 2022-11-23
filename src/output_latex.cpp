@@ -1575,7 +1575,7 @@ void latexParagraphs(Buffer const & buf,
 			<< '\n';
 		// If we have language_auto_begin, the stack will
 		// already be empty, nothing to pop()
-		if (using_begin_end && !lyxrc.language_auto_begin)
+		if (using_begin_end && langOpenedAtThisLevel(state))
 			popLanguageName();
 	}
 
