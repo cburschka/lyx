@@ -196,7 +196,7 @@ def checkUpgradeWin():
     if os.path.isfile(lyxrc):
         return
     olddir = os.path.join(os.path.dirname(cwd), "LyX2.3")
-    if not os.path.isdir(oldir):
+    if not os.path.isdir(olddir):
         return
     logger.info('Copying ' + olddir + ' into ' + cwd)
     copy_tree(olddir, cwd, True)
