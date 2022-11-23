@@ -28,10 +28,9 @@ Invocation:
 """
 from __future__ import print_function
 
-# modify this when you change branch
-# Note that an empty lyx_branch variable (ie svn trunk)
-# will "do the right thing".
-lyx_branch=""
+# modify this when you change branch (e.g. stats for stable branch).
+# Note that an empty lyx_branch variable will "do the right thing" for master.
+lyx_branch="2.3.x"
 # these po-files will be skipped:
 ommitted = ('en.po')
 
