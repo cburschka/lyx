@@ -19,10 +19,6 @@ What's new
 
 - Support 0x019b via tipa (bug 12426).
 
-- Fix loading subscript package with only LaTeX < 2005/12/01 (bug 12387).
-
-- Fix modernCV.lxy for Texlive 2021 (bug 12311).
-
 
 * MISCELLANEOUS
 
@@ -49,23 +45,9 @@ What's new
 
 - Add Qt platform name in About dialog.
 
-- Fix broken modifier handling for Qt-5.12 on Mac (bug 12247).
-
 - Add new pref variable \draw_strategy to fix some cases where display
   is blinking (bug 12119).
 
-- Fix misaligned math frame decoration (bug 11491).
-
-- Fix painting of nested environment overlaping with inset (bug 12243).
-
-- Fix outline filter search for "\" symbol (bug 12359).
-
-- Fix inset cornes painting on HiDPI screens (bug 12336).
-
-- Instant preview foreground color in Beamer documents (bug 12563).
-
-- Properly update font info at cursor position after toggling
-  (bug 12450).
 
 
 * DOCUMENTATION AND LOCALIZATION
@@ -74,13 +56,6 @@ What's new
 
 
 * BUILD/INSTALLATION
-
-- Fix framework name case error for QtDBus on Mac (bug 12305)
-
-- Fix directory permission of .app bundle on Mac (bug 12150)
-
-- Fix configuration bug on Windows which prevented LyX from 
-  installing (bug 12369).
 
 
 ** Bug fixes:
@@ -101,6 +76,11 @@ What's new
 
 - Fix export of the optional argument of \sqrt when it contains other
   commands with optional arguments (bug 3294).
+
+- Fix loading subscript package with only LaTeX < 2005/12/01 (bug 12387).
+
+- Fix modernCV.lyx for Texlive 2021 (bug 12311).
+
 
 
 * USER INTERFACE
@@ -152,6 +132,21 @@ What's new
 
 - Fix reverse search on Mac (bug 12063).
 
+- Fix misaligned math frame decoration (bug 11491).
+
+- Fix painting of nested environment overlaping with inset (bug 12243).
+
+- Fix outline filter search for "\" symbol (bug 12359).
+
+- Fix inset cornes painting on HiDPI screens (bug 12336).
+
+- Fix instant preview foreground color in Beamer documents (bug 12563).
+
+- Properly update font info at cursor position after toggling
+  (bug 12450).
+
+- Fix broken modifier handling for Qt-5.12 on Mac (bug 12247).
+
 
 
 * INTERNALS
@@ -201,4 +196,12 @@ What's new
 - Fix warnings with recent compilers (gcc 11, clang+++ >= 10) and compilation with gcc 12.
 
 - Fix warnings with autoconf 2.71.
+
+- Fix framework name case error for QtDBus on Mac (bug 12305)
+
+- Fix directory permission of .app bundle on Mac (bug 12150)
+
+- Fix configuration bug on Windows which prevented LyX from 
+  installing (bug 12369).
+
 
