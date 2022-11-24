@@ -47,7 +47,7 @@ namespace frontend {
 // Information
 QRegExp exprInfo("^(Document Class:|LaTeX Font Info:|File:|Package:|Language:|.*> INFO - |\\(|\\\\).*$");
 // Warnings
-QRegExp exprWarning("^(LaTeX Warning|LaTeX Font Warning|Package [\\w\\.]+ Warning|Class \\w+ Warning|Warning--|Underfull|Overfull|.*> WARN - ).*$");
+QRegExp exprWarning("^(LaTeX Warning|LaTeX Font Warning|Package [\\w\\.\\-]+ Warning|Class \\w+ Warning|Warning--|Underfull|Overfull|.*> WARN - ).*$");
 // Errors
 QRegExp exprError("^(!|.*---line [0-9]+ of file|.*> FATAL - |.*> ERROR - |Missing character: There is no ).*$");
 

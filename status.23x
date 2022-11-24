@@ -153,6 +153,9 @@ What's new
 
 - Fix potential crash with 32bit ucs4 codepoints (bug 12519).
 
+- Catch warnings from packages that contain a hyphen in their name
+  in the Log dialog.
+
 
 * INTERNALS
 
