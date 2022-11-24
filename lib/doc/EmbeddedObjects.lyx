@@ -253,6 +253,7 @@ varwidth
 \author -1382599118 "Daniel"
 \author -712698321 "Jürgen Spitzmüller"
 \author 177693 "x"
+\author 274215730 "scott"
 \author 630872221 "Jean-Pierre Chrétien" jeanpierre.chretien@free.fr
 \end_header
 
@@ -40163,7 +40164,13 @@ name "fig:This-is-a"
 
 \end_inset
 
-This is a figure wrap float.
+This is a 
+\change_deleted 274215730 1669306080
+figure wrap
+\change_inserted 274215730 1669306089
+wrapped figure
+\change_unchanged
+ float.
 \end_layout
 
 \end_inset
@@ -40179,6 +40186,14 @@ This is a figure wrap float.
 \family sans
 Insert\SpecialChar menuseparator
 Floats\SpecialChar menuseparator
+
+\change_inserted 274215730 1669306057
+Wrapped
+\begin_inset space ~
+\end_inset
+
+Figure
+\change_deleted 274215730 1669306060
 Figure
 \begin_inset space ~
 \end_inset
@@ -40188,8 +40203,12 @@ Wrap
 \end_inset
 
 Float
+\change_unchanged
+
 \family default
  or 
+\change_deleted 274215730 1669306067
+
 \family sans
 Table
 \begin_inset space ~
@@ -40200,6 +40219,14 @@ Wrap
 \end_inset
 
 Float
+\change_inserted 274215730 1669306070
+Wrapped
+\begin_inset space ~
+\end_inset
+
+Table
+\change_unchanged
+
 \family default
  if the \SpecialChar LaTeX
 -package 
