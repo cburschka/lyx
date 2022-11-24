@@ -33,7 +33,7 @@
 #if QT_VERSION >= 0x050100
 #include <QtMath>
 #else
-#define qDegreesToRadians(degree) (degree * (M_PI / 180))
+#define qDegreesToRadians(degree) (degree) * (M_PI / 180)
 #endif
 
 using namespace std;
