@@ -627,6 +627,7 @@ HEADERFILESINSETS = \
 	insets/InsetHyperlink.h \
 	insets/InsetInclude.h \
 	insets/InsetIndex.h \
+	insets/InsetIndexMacro.h \
 	insets/InsetInfo.h \
 	insets/InsetIPA.h \
 	insets/InsetIPAMacro.h \
