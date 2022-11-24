@@ -360,7 +360,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2022-11-23 21:33+0100\n"
-"PO-Revision-Date: 2022-04-05 09:14+0200\n"
+"PO-Revision-Date: 2022-11-24 08:59+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -32029,9 +32029,8 @@ msgid "Zoom level cannot be less than %1$d%."
 msgstr "Le niveau de zoom ne peut être inférieur à %1$d%."
 
 #: src/frontends/qt4/GuiView.cpp:2158
-#, fuzzy
 msgid "Zoom level cannot be more than %1$d%."
-msgstr "Le niveau de zoom ne peut être inférieur à %1$d%."
+msgstr "Le niveau de zoom ne peut être supérieur à %1$d%."
 
 #: src/frontends/qt4/GuiView.cpp:2252
 msgid "Select template file"
