@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-11-05 18:56+0100\n"
-"PO-Revision-Date: 2022-11-05 18:00+0000\n"
+"POT-Creation-Date: 2022-11-24 12:32+0100\n"
+"PO-Revision-Date: 2022-11-24 11:37+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -34289,6 +34289,10 @@ msgstr "verzia "
 msgid "unknown version"
 msgstr "neznáma verzia"
 
+#: src/frontends/qt/GuiView.cpp:652
+msgid "Click here to stop export/output process"
+msgstr "Kliknite sem keď chcete zastaviť proces exportu/výstupu"
+
 #: src/frontends/qt/GuiView.cpp:641
 msgid "Workarea zoom level. Drag, use Ctrl-+/- or Shift-Mousewheel to adjust."
 msgstr ""
@@ -37104,15 +37108,10 @@ msgstr "Nedajú sa pridať vertikálne linky mriežky '%1$s'"
 msgid "Box: %1$s"
 msgstr "Rámik: %1$s"
 
-#: src/mathed/InsetMathCases.cpp:94
+#: src/mathed/InsetMathCases.cpp:97 src/mathed/InsetMathSubstack.cpp:107
 #, c-format
-msgid "No vertical grid lines in 'cases': feature %1$s"
-msgstr "Žiadne vertikálne linky v 'cases' : vlastnosť %1$s'"
-
-#: src/mathed/InsetMathCases.cpp:101
-#, c-format
-msgid "Changing number of columns not allowed in 'cases': feature %1$s"
-msgstr "Počet stĺpcov sa nedá zmeniť v 'cases':vlastnosť '%1$s'"
+msgid "Changing number of columns not allowed in '%1$s'"
+msgstr "Počet stĺpcov sa nedá zmeniť v '%1$s'"
 
 #: src/mathed/InsetMathColor.cpp:160
 #, c-format
