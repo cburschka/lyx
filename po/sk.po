@@ -3,20 +3,20 @@
 #
 # Zdenko Podobný <zdpo@mailbox.sk>, 2003, 2006.
 # Kornel Benko <Kornel.Benko@berlin.de>, 2009.
-# Kornel Benko <kornel@lyx.org>, 2009-2021.
+# Kornel Benko <kornel@lyx.org>, 2009-2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-11-23 21:33+0100\n"
-"PO-Revision-Date: 2021-10-21 14:41+0000\n"
+"POT-Creation-Date: 2022-11-24 12:24+0100\n"
+"PO-Revision-Date: 2022-11-24 11:25+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Lokalize 21.12.3\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
 "X-Language: sk_SK\n"
 "X-Source-Language: en_US\n"
@@ -928,7 +928,7 @@ msgstr "&Farba:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:179
 msgid "U&nderlining:"
-msgstr "Po&dčiarnutie:"
+msgstr "Po&dčiarknutie:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:195
 msgid "Underlining of text"
@@ -1542,7 +1542,7 @@ msgstr "Dbať aj na veľkosť písmen"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:80
 msgid "Case &sensitive"
-msgstr "&A≠a"
+msgstr "Ro&zlíš veľké/malé"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:96
 msgid "Find next occurrence [Enter]"
@@ -1579,7 +1579,7 @@ msgstr "Shift+Enter hľadať naspäť priamo"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:144
 #: src/frontends/qt4/ui/SearchUi.ui:190
 msgid "Search &backwards"
-msgstr "Hľada&ť naspäť"
+msgstr "spätné v&yhľadávanie"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:160
 msgid "Replace all occurrences at once"
@@ -3216,12 +3216,12 @@ msgstr "&Dvojstranný dokument"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:55
 msgid "Label Width"
-msgstr "Šírka návestie"
+msgstr "Šírka návestia"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:70
 #: src/frontends/qt4/ui/ParagraphUi.ui:83
 msgid "This text defines the width of the paragraph label"
-msgstr "Tento text definuje šírku návestia odstavca"
+msgstr "Tento text definuje šírku návestia v odstavci"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:73
 msgid "Lo&ngest label"
@@ -3449,7 +3449,7 @@ msgstr "Slová kratšie ako zadané dĺžkou sa nebudú doplňovať."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:250
 msgid "Minimum characters for words that should be completed"
-msgstr "Minimálny počet písmen pre doplňovanie slov"
+msgstr "Minimálny počet znakov pre doplňovanie slov"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:275
 msgid ""
@@ -4608,7 +4608,7 @@ msgstr "Filtrovať aj podľa veľkosti písmen"
 
 #: src/frontends/qt4/ui/RefUi.ui:95
 msgid "Case Sensiti&ve"
-msgstr "&A≠a"
+msgstr "Ro&zlíš veľké/malé"
 
 #: src/frontends/qt4/ui/RefUi.ui:110
 msgid "The (sub-)document from which the available labels are displayed"
@@ -4843,7 +4843,7 @@ msgstr "Ignorovať toto slovo počas tohto celého sedenia"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:197
 msgid "I&gnore All"
-msgstr "Ignorovať všad&e"
+msgstr "Ignorovať &všade"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:210
 msgid "Add the word to your personal dictionary"
@@ -9633,7 +9633,7 @@ msgstr "Výška plochy prekrytia"
 #: lib/layouts/beamer.layout:805 lib/layouts/beamer.layout:1487
 #: lib/layouts/beamer.layout:1489 lib/layouts/powerdot.layout:607
 msgid "Uncover"
-msgstr "Odhalenie"
+msgstr "Odhaliť"
 
 #: lib/layouts/beamer.layout:815
 msgid "Uncovered on slides"
@@ -18113,25 +18113,28 @@ msgstr "Úzka medzera|Ú"
 msgid "Negative Thin Space|N"
 msgstr "Záporná úzka medzera|Z"
 
+# Pološiroká medzera (Enskip)|i
 #: lib/ui/stdcontext.inc:248 lib/ui/stdcontext.inc:275
 msgid "Half Quad Space (Enskip)|k"
-msgstr "Polovička Quad medzery (Enskip)|i"
+msgstr "Polovica štvorčeka (Enskip)|i"
 
 #: lib/ui/stdcontext.inc:249
 msgid "Protected Half Quad Space (Enspace)|E"
 msgstr "Chránená polovička Quad medzery (Enspace)|E"
 
+# Široká medzera|Š
 #: lib/ui/stdcontext.inc:250 lib/ui/stdcontext.inc:276
 msgid "Quad Space|Q"
-msgstr "Quad medzera|Q"
+msgstr "Štvorček (1 em)|Š"
 
+# Dvojitá široká medzera|D
 #: lib/ui/stdcontext.inc:251 lib/ui/stdcontext.inc:277
 msgid "Double Quad Space|u"
-msgstr "Dvojnásobná Quad medzera|D"
+msgstr "Dva štvorčeky (2 em)|D"
 
 #: lib/ui/stdcontext.inc:252
 msgid "Horizontal Fill|F"
-msgstr "Variabilná horizontálna medzera|h"
+msgstr "Horizontálna výplň|h"
 
 #: lib/ui/stdcontext.inc:253
 msgid "Protected Horizontal Fill|i"
@@ -18139,11 +18142,11 @@ msgstr "Chránená variabilná horizontálna medzera|i"
 
 #: lib/ui/stdcontext.inc:254
 msgid "Horizontal Fill (Dots)|D"
-msgstr "Variabilná horizontálna medzera(Bodky)|y"
+msgstr "Horizontálna výplň (Bodky)|y"
 
 #: lib/ui/stdcontext.inc:255
 msgid "Horizontal Fill (Rule)|R"
-msgstr "Variabilná horizontálna medzera (Línia)|í"
+msgstr "Horizontálna výplň (Línia)|í"
 
 #: lib/ui/stdcontext.inc:256
 msgid "Horizontal Fill (Left Arrow)|L"
@@ -18151,15 +18154,15 @@ msgstr "Variabilná horizontálna medzera(Šípka doľava)|ľ"
 
 #: lib/ui/stdcontext.inc:257
 msgid "Horizontal Fill (Right Arrow)|g"
-msgstr "Variabilná horizontálna medzera(Šípka doprava)|p"
+msgstr "Horizontálna výplň (Šípka doprava)|p"
 
 #: lib/ui/stdcontext.inc:258
 msgid "Horizontal Fill (Up Brace)|p"
-msgstr "Variabilná horizontálna medzera(Svorka nahor)|r"
+msgstr "Horizontálna výplň (Svorka nahor)|r"
 
 #: lib/ui/stdcontext.inc:259
 msgid "Horizontal Fill (Down Brace)|B"
-msgstr "Variabilná horizontálna medzera(Svorka nadol)|l"
+msgstr "Horizontálna výplň (Svorka nadol)|l"
 
 #: lib/ui/stdcontext.inc:260 lib/ui/stdcontext.inc:278
 msgid "Custom Length|C"
@@ -18276,7 +18279,7 @@ msgstr "Dopredu hľadať|a"
 
 #: lib/ui/stdcontext.inc:352 lib/ui/stdmenus.inc:118
 msgid "Move Paragraph Up|o"
-msgstr "Presunúť odstavec nahor|d"
+msgstr "Presunúť odstavec nahor|h"
 
 #: lib/ui/stdcontext.inc:353 lib/ui/stdmenus.inc:119
 msgid "Move Paragraph Down|v"
@@ -18296,7 +18299,7 @@ msgstr "Presunúť sekciu nadol|r"
 
 #: lib/ui/stdcontext.inc:360 lib/ui/stdcontext.inc:660
 msgid "Move Section Up|U"
-msgstr "Presunúť sekciu nahor|c"
+msgstr "Presunúť sekciu nahor|r"
 
 #: lib/ui/stdcontext.inc:362 lib/ui/stdmenus.inc:380
 msgid "Insert Regular Expression"
@@ -18589,15 +18592,15 @@ msgstr "Zvýšiť úroveň sekcie|i"
 
 #: lib/ui/stdcontext.inc:659
 msgid "Demote Section|D"
-msgstr "Znížiť úroveň sekcie|n"
+msgstr "Znížiť úroveň sekcie|Z"
 
 #: lib/ui/stdcontext.inc:661
 msgid "Move Section Down|w"
-msgstr "Presunúť sekciu nadol|P"
+msgstr "Presunúť sekciu nadol|l"
 
 #: lib/ui/stdcontext.inc:663
 msgid "Select Section|S"
-msgstr "Vybrať sekciu|V"
+msgstr "Vybrať sekciu|y"
 
 #: lib/ui/stdcontext.inc:671
 msgid "Wrap by Preview|y"
@@ -20491,7 +20494,7 @@ msgstr "Kvadratická medzera\t\\quad"
 
 #: lib/ui/stdtoolbars.inc:361
 msgid "Double quadratin space\t\\qquad"
-msgstr "Dvojitá kvadratická\t\\qquad"
+msgstr "Dvojitá kvadratická medzera\t\\qquad"
 
 #: lib/ui/stdtoolbars.inc:362
 msgid "Negative space\t\\!"
@@ -25826,7 +25829,7 @@ msgid ""
 "Please select an appropriate document encoding\n"
 "(such as utf8) or change the class options accordingly."
 msgstr ""
-"Voľby triedy vášho dokumentu obsahuje glyfy, ktoré sú neznáme v kódovaní "
+"Voľby triedy vášho dokumentu obsahujú glyfy, ktoré sú neznáme v kódovaní "
 "aktuálneho dokumentu (menovite %1$s).\n"
 "Tieto glyfy budú vo výstupe vynechané, čo môže končiť v neúplnom výstupe.\n"
 "\n"
@@ -27897,7 +27900,7 @@ msgid ""
 "Enable use the system colors for some things like main window background and "
 "selection."
 msgstr ""
-"Umožniť používane farieb systému pre niektoré predmety ako pozadie hlavného "
+"Umožniť používanie farieb systému pre niektoré predmety ako pozadie hlavného "
 "okna a výber."
 
 #: src/LyXRC.cpp:3526
@@ -28541,7 +28544,7 @@ msgstr "Nezabudnite zapísať blokovaciu vlastnosť do repozitára."
 
 #: src/VSpace.cpp:162
 msgid "Default skip"
-msgstr "Štd. riadkovanie"
+msgstr "Štandardné riadkovanie"
 
 #: src/VSpace.cpp:165
 msgid "Small skip"
@@ -28557,7 +28560,7 @@ msgstr "Veľká"
 
 #: src/VSpace.cpp:174
 msgid "Vertical fill"
-msgstr "Variabilné"
+msgstr "Vertikálna výplň"
 
 #: src/VSpace.cpp:181
 msgid "protected"
@@ -29300,7 +29303,7 @@ msgstr "Re&gulárny výraz"
 
 #: src/frontends/qt4/GuiCitation.cpp:114
 msgid "Case se&nsitive"
-msgstr "&A≠a"
+msgstr "Ro&zlíš veľké/malé"
 
 #: src/frontends/qt4/GuiCitation.cpp:116
 msgid "Search as you &type"
@@ -30310,16 +30313,16 @@ msgstr "0.5 em"
 
 #: src/frontends/qt4/GuiHSpace.cpp:53 src/frontends/qt4/GuiHSpace.cpp:64
 msgid "Quad (1 em)"
-msgstr "1 em"
+msgstr "Štvorček (1 em)"
 
 #: src/frontends/qt4/GuiHSpace.cpp:54 src/frontends/qt4/GuiHSpace.cpp:65
 msgid "Double Quad (2 em)"
-msgstr "Dvojité Quad (2 em)"
+msgstr "Dva štvorčeky (2 em)"
 
 #: src/frontends/qt4/GuiHSpace.cpp:55 src/frontends/qt4/GuiHSpace.cpp:66
 #: src/insets/InsetSpace.cpp:108
 msgid "Horizontal Fill"
-msgstr "Variabilná horizontálna medzera"
+msgstr "Horizontálna výplň"
 
 #: src/frontends/qt4/GuiHSpace.cpp:68 src/insets/InsetSpace.cpp:75
 msgid "Visible Space"
@@ -30332,7 +30335,7 @@ msgid ""
 "a vertical space if used at the beginning of a paragraph!"
 msgstr ""
 "Vložiť rozstup i za koniec riadku.\n"
-"Pozn. - chránená polovičná Quad medzera sa zmení na\n"
+"Pozn. - chránená polovica štvorčeka sa zmení na\n"
 "vertikálnu medzeru, keď bude použitá na začiatku odstavca!"
 
 #: src/frontends/qt4/GuiHSpace.h:39
@@ -31403,12 +31406,11 @@ msgstr "Neznáma lišta nástrojov \"%1$s\""
 
 #: src/frontends/qt4/GuiView.cpp:2153
 msgid "Zoom level cannot be less than %1$d%."
-msgstr "Stupeň lupy nesmie byť menší ako %1$d%."
+msgstr "Stupeň lupy nesmie byť nižší ako %1$d%."
 
 #: src/frontends/qt4/GuiView.cpp:2158
-#, fuzzy
 msgid "Zoom level cannot be more than %1$d%."
-msgstr "Stupeň lupy nesmie byť menší ako %1$d%."
+msgstr "Stupeň lupy nesmie byť vyšší ako %1$d%."
 
 #: src/frontends/qt4/GuiView.cpp:2252
 msgid "Select template file"
