@@ -18,9 +18,10 @@
 #include "Dimension.h"
 
 #include "support/convert.h"
+#include "support/debug.h"
 #include "support/lassert.h"
 #include "support/lyxlib.h"
-#include "support/debug.h"
+#include "support/textutils.h"
 
 #define DISABLE_PMPROF
 #include "support/pmprof.h"
@@ -424,7 +425,7 @@ int GuiFontMetrics::countExpanders(docstring const & str) const
 	bool wasspace = false;
 	int nexp = 0;
 	for (char_type c : str)
-		if (c > 0x0d && QChar(c).isSpace()) {
+		if (c > 0x0d && isSpace(c)) {
 			if (!wasspace) {
 				++nexp;
 				wasspace = true;
