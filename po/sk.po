@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-11-24 12:32+0100\n"
-"PO-Revision-Date: 2022-11-24 11:37+0000\n"
+"POT-Creation-Date: 2022-11-25 11:56+0100\n"
+"PO-Revision-Date: 2022-11-25 11:00+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -21242,13 +21242,13 @@ msgstr "Exponovaný vzorec|E"
 msgid "Numbered Formula|N"
 msgstr "Číslovaný vzorec|s"
 
-#: lib/ui/stdmenus.inc:503
-msgid "Figure Wrap Float|F"
-msgstr "Plávajúci obrázok (Obtekanie)|o"
-
 #: lib/ui/stdmenus.inc:504
-msgid "Table Wrap Float|T"
-msgstr "Plávajúca tabuľka (Obtekanie)|t"
+msgid "Wrapped Figure|F"
+msgstr "Zabalený obrázok|o"
+
+#: lib/ui/stdmenus.inc:505
+msgid "Wrapped Table|T"
+msgstr "Zabalená tabuľka|T"
 
 #: lib/ui/stdmenus.inc:508
 msgid "Table of Contents|C"
@@ -21302,9 +21302,9 @@ msgstr "Komentár|K"
 msgid "Insert New Branch...|I"
 msgstr "Vložiť novú vetvu…|e"
 
-#: lib/ui/stdmenus.inc:562
-msgid "Cancel Background Process|P"
-msgstr "Zrušiť beh úlohy v pozadí|Z"
+#: lib/ui/stdmenus.inc:570
+msgid "Cancel Export|P"
+msgstr "Zrušiť export|Z"
 
 #: lib/ui/stdmenus.inc:564
 msgid "Change Tracking|C"
