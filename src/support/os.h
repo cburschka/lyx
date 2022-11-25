@@ -55,8 +55,8 @@ std::string current_root();
 ///
 shell_type shell();
 
-/// Returns no. of minutes allowed for a command to complete.
-int timeout_min();
+/// Returns no. of milliseconds allowed for a command to complete.
+int timeout_ms();
 
 /// Name of the python interpreter
 /// @param reset True if the python path should be recomputed

@@ -290,7 +290,7 @@ int Systemcall::startscript(Starttype how, string const & what,
 	}
 
 	if (!d.waitWhile(SystemcallPrivate::Running, do_events,
-			 os::timeout_min() * 60 * 1000)) {
+			 os::timeout_ms())) {
 		if (d.state == SystemcallPrivate::Killed) {
 			LYXERR0("Killed: " << cmd);
 			return KILLED;

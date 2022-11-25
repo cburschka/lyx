@@ -45,9 +45,11 @@ namespace lyx {
 namespace support {
 namespace os {
 
-int timeout_min()
+int timeout_ms()
 {
-	return 3;
+	// return -1 to disable the timeout completely.
+	// (-1 is a special case in SystemcallPrivate::waitWhile()).
+	return 3 * 60 * 1000;
 }
 
 
