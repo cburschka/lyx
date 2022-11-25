@@ -25,17 +25,21 @@ dist_noinst_DATA = \
 	images/math/dots.svgz \
 	images/math/font.svgz
 
-skbinddir = $(pkgdatadir)/bind/sk
-dist_skbind_DATA = \
-	bind/sk/menus.bind
-
 debinddir = $(pkgdatadir)/bind/de
 dist_debind_DATA = \
 	bind/de/menus.bind
 
+hebinddir = $(pkgdatadir)/bind/he
+dist_hebind_DATA = \
+	bind/he/cua.bind
+
 rubinddir = $(pkgdatadir)/bind/ru
 dist_rubind_DATA = \
 	bind/ru/menus.bind
+
+skbinddir = $(pkgdatadir)/bind/sk
+dist_skbind_DATA = \
+	bind/sk/menus.bind
 
 binddir = $(pkgdatadir)/bind
 dist_bind_DATA = \

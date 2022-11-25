@@ -218,9 +218,10 @@ void KeyMap::clear()
 }
 
 
-bool KeyMap::read(string const & bind_file, KeyMap * unbind_map, BindReadType rt)
+bool KeyMap::read(string const & bind_file, KeyMap * unbind_map, BindReadType rt, bool i18n)
 {
-	FileName bf = i18nLibFileSearch("bind", bind_file, "bind");
+	FileName bf = i18n ? i18nLibFileSearch("bind", bind_file, "bind")
+			   : libFileSearch("bind", bind_file, "bind");
 	if (bf.empty()) {
 		if (rt == MissingOK)
 			return true;
@@ -383,8 +384,14 @@ KeyMap::ReturnValues KeyMap::readWithoutConv(FileName const & bind_file, KeyMap 
 				error = true;
 				break;
 			}
-			string const tmp = lexrc.getString();
-			error |= !read(tmp, unbind_map);
+			string tmp = lexrc.getString();
+			if (prefixIs(tmp, "../")) {
+				tmp = split(tmp, '/');
+				// look in top dir
+				error |= !read(tmp, unbind_map, Default, false);
+			} else
+				// i18n search
+				error |= !read(tmp, unbind_map);
 			break;
 		}
 

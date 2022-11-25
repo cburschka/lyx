@@ -82,9 +82,10 @@ public:
 	 * @param bind_file bind file
 	 * @param unbind_map pointer to a KeyMap that holds \unbind bindings
 	 * @param rt how to respond if the file can't be found
+	 * @param i18n whether to search in localized folders
 	 */
 	bool read(std::string const & bind_file, KeyMap * unbind_map = 0,
-			BindReadType rt = Default);
+			BindReadType rt = Default, bool i18n = true);
 
 	/** write to a bind file.
 	 * @param append append to the bind_file instead of overwrite it

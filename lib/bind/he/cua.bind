@@ -1,0 +1,28 @@
+# -*- text -*-
+
+# file he/cua.bind
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+
+# author Iddo Samet
+# author Jürgen Spitzmüller
+
+# Full author contact details are available in file CREDITS.
+
+# This is the CUA (Common User Access) flavour bind file, based on
+# bindings found in the Windows, Mac and Motif world, extended for Hebrew.
+
+# DO NOT CHANGE THIS DEFAULT BINDING FILE! It will be replaced
+# with every new install of LyX and your changes will be lost.
+# Instead, customize a copy of this file placed in
+# ~/.lyx/bind/he/cua.bind
+#
+# Happy tuning!
+
+# Load the default cua.bind
+# ../ just means that no localized bindfile
+# should be loaded here
+\bind_file ../cua.bind
+
+# Add binding to switch to Hebrew
+\bind "F12" "language hebrew"
