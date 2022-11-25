@@ -2,20 +2,20 @@
 # Copyright (C) 2008 - 2017 LyX Developers
 # This file is distributed under the same license as the LyX package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2007 - 2017, 2018, 2019.
+# Yuri Chornoivan <yurchor@ukr.net>, 2007 - 2017, 2018, 2019, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2022-11-23 21:33+0100\n"
-"PO-Revision-Date: 2019-11-19 11:52+0200\n"
+"PO-Revision-Date: 2022-11-25 08:48+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 19.11.70\n"
+"X-Generator: Lokalize 20.12.0\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
@@ -2187,6 +2187,8 @@ msgid ""
 "File name to include. (You can create a new file by entering the name of one "
 "that does not yet exist.)"
 msgstr ""
+"Назва файла, який слід включити. (Ви можете створити файл введенням назви,"
+" якої ще не існує.)"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:309
 msgid "&Include Type:"
@@ -2483,7 +2485,8 @@ msgstr "Вікно зворотної реакції"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:92
 msgid "Choose the LaTeX package for code syntax highlighting"
-msgstr "Виберіть пакунок LaTeX для підсвічування синтаксичних конструкцій коду"
+msgstr ""
+"Виберіть пакунок LaTeX для підсвічування синтаксичних конструкцій коду"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:95
 msgid "&Syntax Highlighting Package:"
@@ -3006,7 +3009,8 @@ msgid "&Allow running external programs"
 msgstr "&Дозволити запуск зовнішніх програм"
 
 #: src/frontends/qt4/ui/OutputUi.ui:121
-msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
+msgid ""
+"Enable forward/reverse search between editor and output (e.g., SyncTeX)"
 msgstr ""
 "Увімкнути прямий/зворотний пошук між редактором і програмою перегляду "
 "(наприклад, SyncTeX)"
@@ -3068,7 +3072,8 @@ msgstr "&Масштаб зображень формул:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:256
 msgid "Scaling factor for images used for math output."
-msgstr "Коефіцієнт масштабування для зображень, призначених для показу формул."
+msgstr ""
+"Коефіцієнт масштабування для зображень, призначених для показу формул."
 
 #: src/frontends/qt4/ui/OutputUi.ui:275
 msgid "Write CSS to file"
@@ -4564,7 +4569,8 @@ msgid "Select the index that shall be printed at this place of the document."
 msgstr "Оберіть покажчик, який має бути надруковано у цьому місці документа."
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:61
-msgid "Check if this index should be part (e.g., a section) of the former one."
+msgid ""
+"Check if this index should be part (e.g., a section) of the former one."
 msgstr ""
 "Позначте, якщо цей покажчик має бути частиною (наприклад, розділом) "
 "попереднього."
@@ -9190,9 +9196,8 @@ msgid "American Psychological Association (APA), v. 6"
 msgstr "American Psychological Association (APA), т. 6"
 
 #: lib/layouts/apa7.layout:3
-#, fuzzy
 msgid "American Psychological Association (APA), v. 7"
-msgstr "American Psychological Association (APA), т. 6"
+msgstr "American Psychological Association (APA), т. 7"
 
 #: lib/layouts/apax.inc:112
 msgid "FiveAuthors"
@@ -9261,26 +9266,22 @@ msgid "*"
 msgstr "*"
 
 #: lib/layouts/apax.inc:527
-#, fuzzy
 msgid "Course"
-msgstr "Courier"
+msgstr "Курс"
 
 #: lib/layouts/apax.inc:543
-#, fuzzy
 msgid "Course: "
-msgstr "Courier"
+msgstr "Курс: "
 
 #: lib/layouts/apax.inc:551
 msgid "addORCIDlink"
-msgstr ""
+msgstr "додПосORCID"
 
 #: lib/layouts/apax.inc:555
-#, fuzzy
 msgid "ORCID-link: "
-msgstr "ORCID: "
+msgstr "Посилання ORCID: "
 
 #: lib/layouts/apax.inc:563
-#, fuzzy
 msgid "Author-name"
 msgstr "Ім’я автора"
 
@@ -9755,7 +9756,8 @@ msgstr "Заголовки"
 
 #: lib/layouts/beamer.layout:950
 msgid "Short title which appears in the sidebar/header"
-msgstr "Скорочений запис заголовка, який буде показано на боковині або у шапці"
+msgstr ""
+"Скорочений запис заголовка, який буде показано на боковині або у шапці"
 
 #: lib/layouts/beamer.layout:960
 msgid "Title (Plain Frame)"
@@ -10327,14 +10329,13 @@ msgid "Custom Header/Footerlines"
 msgstr "Нетипові рядки шапки/підвалу"
 
 #: lib/layouts/customHeadersFooters.module:7
-#, fuzzy
 msgid ""
 "Adds environments to define header and footer lines. NOTE: To use this "
 "module you must set the 'Page style' in the menu Document Settings -> Page "
 "Layout to 'fancy'!"
 msgstr ""
 "Додає середовища для визначення рядків шапки і підвалу. ЗАУВАЖЕННЯ: щоб "
-"скористатися цим модулем вам слід встановити значення стилю заголовків у "
+"скористатися цим модулем вам слід встановити значення стилю сторінки у "
 "меню «Документ -> Налаштувати -> Формат сторінки» у значення «красивий»!"
 
 #: lib/layouts/customHeadersFooters.module:12
@@ -13820,37 +13821,32 @@ msgid "Entry"
 msgstr "Елемент"
 
 #: lib/layouts/moderncv.layout:334 lib/layouts/moderncv.layout:335
-#, fuzzy
 msgid "Years"
-msgstr "Рік"
+msgstr "Роки"
 
 #: lib/layouts/moderncv.layout:340
 msgid "Degree or job title"
-msgstr ""
+msgstr "Вчене звання або посада"
 
 #: lib/layouts/moderncv.layout:348
-#, fuzzy
 msgid "Institution or employer"
-msgstr "Інститут"
+msgstr "Установа або працедавець"
 
 #: lib/layouts/moderncv.layout:355
-#, fuzzy
 msgid "Localization"
-msgstr "Адреса"
+msgstr "Місце перебування"
 
 #: lib/layouts/moderncv.layout:356
-#, fuzzy
 msgid "City or country"
-msgstr "Країна"
+msgstr "Місто або країна"
 
 #: lib/layouts/moderncv.layout:360
-#, fuzzy
 msgid "Optional"
-msgstr "необов'язковий"
+msgstr "Необов'язковий"
 
 #: lib/layouts/moderncv.layout:361
 msgid "Grade or other info"
-msgstr ""
+msgstr "Ступінь або інші дані"
 
 #: lib/layouts/moderncv.layout:367
 msgid "Entry:"
@@ -14667,7 +14663,8 @@ msgid "Left Column"
 msgstr "Лівий стовпчик"
 
 #: lib/layouts/powerdot.layout:464
-msgid "Enter the text of the left column here (right column in main paragraph)"
+msgid ""
+"Enter the text of the left column here (right column in main paragraph)"
 msgstr "Тут вкажіть текст у лівому стовпці (правим стовпцем є основний абзац)"
 
 #: lib/layouts/powerdot.layout:589
@@ -14739,9 +14736,8 @@ msgid "REVTeX (V. 4.1)"
 msgstr "REVTeX (версія 4.1)"
 
 #: lib/layouts/revtex4-2.layout:3
-#, fuzzy
 msgid "REVTeX (V. 4.2)"
-msgstr "REVTeX (версія 4.1)"
+msgstr "REVTeX (версія 4.2)"
 
 #: lib/layouts/revtex4-x.inc:85 lib/layouts/revtex4.layout:155
 msgid "Affiliation (alternate)"
@@ -14899,8 +14895,10 @@ msgid "Phrase Text"
 msgstr "Текст фрази"
 
 #: lib/layouts/rsphrase.module:47
-msgid "Argument for statements that requires to specify additional information"
-msgstr "Аргумент до інструкцій, який потребує визначення додаткової інформації"
+msgid ""
+"Argument for statements that requires to specify additional information"
+msgstr ""
+"Аргумент до інструкцій, який потребує визначення додаткової інформації"
 
 #: lib/layouts/rsphrase.module:60
 msgid "S phrase:"
@@ -15560,9 +15558,8 @@ msgid "\\Roman{part}"
 msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:10
-#, fuzzy
 msgid "Part ##"
-msgstr "Частина"
+msgstr "Частина ##"
 
 #: lib/layouts/stdcounters.inc:14
 msgid "Chapter ##"
@@ -20756,9 +20753,8 @@ msgid "Blackboard\t\\mathbb"
 msgstr "Дошковий\t\\mathbb"
 
 #: lib/ui/stdtoolbars.inc:415
-#, fuzzy
 msgid "Double stroke\t\\mathds"
-msgstr "Подвійний пункт:"
+msgstr "Подвійний штрих\t\\mathds"
 
 #: lib/ui/stdtoolbars.inc:416
 msgid "Fraktur\t\\mathfrak"
@@ -25419,7 +25415,8 @@ msgstr ""
 #: src/Buffer.cpp:1753
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
-msgstr "Не вдалося знайти команди LaTeX для символу «%1$s» (кодова точка %2$s)"
+msgstr ""
+"Не вдалося знайти команди LaTeX для символу «%1$s» (кодова точка %2$s)"
 
 #: src/Buffer.cpp:1756
 msgid ""
@@ -25922,12 +25919,11 @@ msgid "uncodable character"
 msgstr "непридатний для кодування символ"
 
 #: src/BufferParams.cpp:1756
-#, fuzzy
 msgid "Uncodable character in class options"
-msgstr "Непридатні для кодування символи у вкладці тексту програми"
+msgstr "Непридатний до кодування символ у параметрах класу"
 
 #: src/BufferParams.cpp:1758
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The class options of your document contain glyphs that are unknown in the "
 "current document encoding (namely %1$s).\n"
@@ -25937,13 +25933,13 @@ msgid ""
 "Please select an appropriate document encoding\n"
 "(such as utf8) or change the class options accordingly."
 msgstr ""
-"У преамбулі вашого документа містяться символи, які\n"
+"У параметрах класу вашого документа містяться символи, які\n"
 "неможливо показати за поточного кодування документа (а саме %1$s).\n"
 "Ці символи буде пропущено під час обробки, що може зробити результати\n"
 "неповними.\n"
 "\n"
 "Виберіть відповідне кодування документа (наприклад utf8)\n"
-"або змініть преамбулу."
+"або змініть параметри класу."
 
 #: src/BufferParams.cpp:2222
 msgid "Uncodable character in user preamble"
@@ -26013,9 +26009,8 @@ msgid "Read Error"
 msgstr "Помилка читання"
 
 #: src/BufferParams.cpp:3604
-#, fuzzy
 msgid "No bibliography processor found!"
-msgstr "Не визначено бібліографії!"
+msgstr "Не знайдено обробника бібліографії!"
 
 #: src/BufferParams.cpp:3606
 #, c-format
@@ -26025,11 +26020,14 @@ msgid ""
 "references will be generated.\n"
 "Please fix your installation!"
 msgstr ""
+"Засіб обробки бібліографії, який потрібен для цього документа (%1$s) є"
+" недоступним або не знайдено відповідної альтернативи. Бібліографію і"
+" посилання не створено.\n"
+"Будь ласка, встановіть потрібні компоненти!"
 
 #: src/BufferParams.cpp:3614
-#, fuzzy
 msgid "Requested bibliography processor not found!"
-msgstr "Запис бібліографії не знайдено!"
+msgstr "Не знайдено потрібного обробника бібліографії!"
 
 #: src/BufferParams.cpp:3616
 #, c-format
@@ -26040,6 +26038,11 @@ msgid ""
 "carefully!\n"
 "It is suggested to install the missing processor."
 msgstr ""
+"Засіб обробки бібліографії, який потрібен для цього документа (%1$s) є"
+" недоступним. Буде використано резервний засіб обробки «%2$s». Параметри"
+" обробки буде пропущено. Це може призвести до помилок або небажаних змін у"
+" бібліографії. Будь ласка, ретельно усе перевірте!\n"
+"Радимо вам встановити потрібний для обробки засіб."
 
 #: src/BufferView.cpp:195
 msgid "No more insets"
@@ -27168,7 +27171,7 @@ msgstr "Запуск MakeIndex для nomencl."
 
 #: src/LaTeX.cpp:896
 msgid "(NOTE: The erroneous command is in the preamble)"
-msgstr ""
+msgstr "(Зауваження: помилкова команда у преамбулі)"
 
 #: src/LaTeX.cpp:1388 src/LaTeX.cpp:1394 src/LaTeX.cpp:1403
 msgid "BibTeX error: "
@@ -27754,7 +27757,8 @@ msgstr ""
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
-msgstr "Позначте, якщо на початку документа потрібна команда перемикання мови."
+msgstr ""
+"Позначте, якщо на початку документа потрібна команда перемикання мови."
 
 #: src/LyXRC.cpp:3313
 msgid ""
@@ -27939,7 +27943,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:3450
 msgid "The screen fonts used to display the text while editing."
-msgstr "Екранні шрифти, що використовуються для показу тексту при редагуванні."
+msgstr ""
+"Екранні шрифти, що використовуються для показу тексту при редагуванні."
 
 #: src/LyXRC.cpp:3459
 msgid ""
@@ -28040,7 +28045,8 @@ msgstr ""
 "і Windows."
 
 #: src/LyXRC.cpp:3534
-msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
+msgid ""
+"Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Вкажіть команду налаштування формату паперу для DVI (залиште порожнім або "
 "введіть \"-paper\")"
@@ -28205,9 +28211,8 @@ msgid "Other ("
 msgstr "Інший ("
 
 #: src/Text.cpp:1962
-#, fuzzy
 msgid ", Style: "
-msgstr "Стиль біографії:"
+msgstr ", стиль: "
 
 #: src/Text.cpp:1966
 msgid ", Paragraph: "
@@ -28447,7 +28452,7 @@ msgstr "Записи номенклатури"
 
 #: src/VCBackend.cpp:65
 msgid "Check whether the GNU RCS package is installed on your system."
-msgstr ""
+msgstr "Перевірити, чи встановлено пакунок GNU RCS у вашій системі."
 
 #: src/VCBackend.cpp:66 src/VCBackend.cpp:877 src/VCBackend.cpp:882
 #: src/VCBackend.cpp:931 src/VCBackend.cpp:990 src/VCBackend.cpp:1049
@@ -28970,9 +28975,9 @@ msgid "User directory: "
 msgstr "Тека користувача: "
 
 #: src/frontends/qt4/GuiAbout.cpp:234
-#, fuzzy, c-format
+#, c-format
 msgid "Qt Version (run-time): %1$s on platform %2$s"
-msgstr "Версія Qt (робоча): %1$s"
+msgstr "Версія Qt (робоча): %1$s на платформі %2$s"
 
 #: src/frontends/qt4/GuiAbout.cpp:235
 #, c-format
@@ -29487,7 +29492,8 @@ msgstr "Текст, який слідує за посиланням (напри�
 
 #: src/frontends/qt4/GuiCitation.cpp:322
 msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")."
-msgstr "Примусовий верхній регістр у іменах («Дель П’єро», а не «дель П’єро»)."
+msgstr ""
+"Примусовий верхній регістр у іменах («Дель П’єро», а не «дель П’єро»)."
 
 #: src/frontends/qt4/GuiCitation.cpp:357
 msgid "Always list all authors (rather than using \"et al.\")"
@@ -30193,9 +30199,9 @@ msgid "per child document"
 msgstr "за дочірніми документами"
 
 #: src/frontends/qt4/GuiDocument.cpp:3541
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (not available)"
-msgstr "%1$s (недоступний)"
+msgstr "%1$s (недоступна)"
 
 #: src/frontends/qt4/GuiDocument.cpp:3802
 msgid "[No options predefined]"
@@ -30867,7 +30873,8 @@ msgstr ""
 "перетворювачем. Вилучіть спочатку перетворювач."
 
 #: src/frontends/qt4/GuiPrefs.cpp:2482
-msgid "Cannot remove a Format used by a Converter. Remove the converter first."
+msgid ""
+"Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "Неможливо вилучити формат, що використовується перетворювачем. Вилучіть "
 "спочатку перетворювач."
@@ -31557,9 +31564,8 @@ msgid "Zoom level cannot be less than %1$d%."
 msgstr "Рівень масштабування не може бути меншим за %1$d%."
 
 #: src/frontends/qt4/GuiView.cpp:2158
-#, fuzzy
 msgid "Zoom level cannot be more than %1$d%."
-msgstr "Рівень масштабування не може бути меншим за %1$d%."
+msgstr "Рівень масштабування не може бути більшим за %1$d%."
 
 #: src/frontends/qt4/GuiView.cpp:2252
 msgid "Select template file"
@@ -32049,7 +32055,8 @@ msgstr "Клацніть щоб від'єднати"
 #: src/frontends/qt4/LayoutBox.cpp:367
 #, c-format
 msgid "Filtering layouts with \"%1$s\". Press ESC to remove filter."
-msgstr "Фільтрування форматів за \"%1$s\". Натисніть ESC, щоб вилучити фільтр."
+msgstr ""
+"Фільтрування форматів за \"%1$s\". Натисніть ESC, щоб вилучити фільтр."
 
 #: src/frontends/qt4/LayoutBox.cpp:371 src/frontends/qt4/LayoutBox.cpp:426
 msgid "Enter characters to filter the layout list."
@@ -32586,20 +32593,20 @@ msgstr ""
 "%2$s."
 
 #: src/insets/InsetCommandParams.cpp:522
-#, fuzzy
 msgid "Uncodable characters in inset"
-msgstr "Непридатні для кодування символи у шляху"
+msgstr "Непридатні для кодування символи у вкладці"
 
 #: src/insets/InsetCommandParams.cpp:523
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following characters in one of the insets are\n"
 "not representable in the current encoding and have been omitted: %1$s.\n"
 "Unchecking 'Literal' in the respective inset dialog might help."
 msgstr ""
-"Наведені нижче символи у одному зі шляхів до графіки неможливо\n"
-"представити у поточному кодуванні, ці символи буде вилучено:\n"
-"%1$s. Вам слід скоригувати або кодування, або шлях."
+"Наведені нижче символи у одній зі вкладок неможливо\n"
+"представити у поточному кодуванні, ці символи буде вилучено: %1$s.\n"
+"Також може допомогти зняття позначки з пункту «Буквально» у вікні"
+" відповідної вкладки."
 
 #: src/insets/InsetExternal.cpp:403
 #, c-format
@@ -32647,9 +32654,9 @@ msgid ""
 "%1$s\n"
 "into the temporary directory."
 msgstr ""
-"Не можу копіювати файл\n"
+"Не вдалося скопіювати файл\n"
 "%1$s\n"
-"в тимчасову теку."
+"до тимчасової теки."
 
 #: src/insets/InsetGraphics.cpp:785 src/insets/InsetGraphics.cpp:1061
 #, c-format
