@@ -567,7 +567,7 @@ Menuset
 #
 
 	Menu "document"
-		OptItem "Cancel Background Process|P" "export-cancel"
+		OptItem "Cancel Export|P" "export-cancel"
 		Separator
 		Submenu "Change Tracking|C" "document_change"
 		OptItem "Build Program|B" "build-program"
