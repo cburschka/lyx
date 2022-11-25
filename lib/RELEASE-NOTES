@@ -3,10 +3,12 @@
 
 !!Interface changes
 
-* It is now possible to cancel background export processes. A menu entry
-  to do so will appear on the Document menu when such a process is underway.
-  The LFUN for this is export-cancel. One can also click on the red 'x' next
-  to the spinner to cancel export.
+* It is now possible to cancel background export processes at any time. A menu
+  entry to do so will appear on the Document menu when such a process is
+  underway.  The LFUN for this is export-cancel. One can also click on the red
+  'x' next to the spinner to cancel export. Thanks to this functionality, we now
+  remove the "Stop command?" prompt, which polled users whether to stop a long
+  process.
 
 * The items on the Edit menu have been reordered, and many of the shortcuts
   have been changed so that they are more intuitive in the case of often

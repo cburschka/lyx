@@ -47,9 +47,12 @@ namespace os {
 
 int timeout_ms()
 {
-	// return -1 to disable the timeout completely.
-	// (-1 is a special case in SystemcallPrivate::waitWhile()).
-	return 3 * 60 * 1000;
+	// Starting in 2.4.0, we allow the user to cancel the background
+	// process at any time with LFUN_EXPORT_CANCEL, so the timeout dialog
+	// is no longer useful.
+	// "-1" effectively disables the timeout (it is a special case in
+	// SystemcallPrivate::waitWhile()).
+	return -1;
 }
 
 
