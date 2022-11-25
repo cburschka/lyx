@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 609
+\lyxformat 610
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -512,13 +512,37 @@ bind/
 .
  In ihnen werden die Tastenkürzel festgelegt, die in \SpecialChar LyX
  verwendet werden können.
- Falls eine Datei 
-\family typewriter
-$LANG_xxx.bind
-\family default
- mit einer an die internationalisierte Version von \SpecialChar LyX
- angepassten Tastenbelegung
- existiert, wird diese bevorzugt geladen.
+ Falls im Unterverzeichnis 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+doc/xx
+\end_layout
+
+\end_inset
+
+, wobei 
+\begin_inset Quotes gld
+\end_inset
+
+xx
+\begin_inset Quotes grd
+\end_inset
+
+ jeweils des ISO-Sprachcode ist (für Deutsch: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+de
+\end_layout
+
+\end_inset
+
+), eine Datei mit einer an die internationalisierte Version von \SpecialChar LyX
+ angepassten
+ Tastenbelegung existiert, wird diese bevorzugt geladen.
  Näheres dazu finden Sie in 
 \begin_inset CommandInset ref
 LatexCommand ref

@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 609
+\lyxformat 610
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -711,7 +711,11 @@ status collapsed
 
  that define the keybindings used in \SpecialChar LyX
 .
- If there exists an internationalized version of the bind file named 
+ If there exists an internationalized version of the bind file 
+\change_inserted -712698321 1669371749
+in a subdirectory 
+\change_deleted -712698321 1669371727
+named 
 \begin_inset Flex Code
 status collapsed
 
@@ -721,6 +725,30 @@ $LANG_xxx.bind
 
 \end_inset
 
+
+\change_inserted -712698321 1669371728
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1669371732
+bind/xx
+\end_layout
+
+\end_inset
+
+ where 
+\begin_inset Quotes eld
+\end_inset
+
+xx
+\begin_inset Quotes erd
+\end_inset
+
+ is the ISO language code
+\change_unchanged
 , that will be used first.
 \end_layout
 
