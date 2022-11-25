@@ -84,7 +84,8 @@ int const breakstr_cache_max_cost = 10 * 1024 * 1024;
 // Qt 5.x already has its own caching of QTextLayout objects
 // but it does not seem to work well on MacOS X.
 #if defined(Q_OS_MAC)
-//FIXME KILLQT4: check wether setting the cache to 0 hurts on macOS
+// For some reason, the built-in cache of QTextLayout does not work or
+// exist on macOS.
 // Limit qtextlayout_cache_ size to 500 elements (we do not know the
 // size of the QTextLayout objects anyway).
 int const qtextlayout_cache_max_size = 500;
