@@ -151,6 +151,8 @@ What's new
 
 - Limit zoom value to 1000% to avoid crashes (bug 12452).
 
+- Limit graphics scaling in LyX to 1--1000% to avoid crashes (12353).
+
 - Fix potential crash with 32bit ucs4 codepoints (bug 12519).
 
 - Catch warnings from packages that contain a hyphen in their name
