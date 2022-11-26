@@ -9,19 +9,18 @@
 # Georger Araujo <georger_br@yahoo.com.br> 2015 - 2017 "
 msgid ""
 msgstr ""
-"Project-Id-Version: pt_BR 2.3.5\n"
+"Project-Id-Version: pt_BR 2.3.7\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2022-11-23 21:33+0100\n"
-"PO-Revision-Date: 2020-11-04 14:53-0300\n"
-"Last-Translator: Georger Araujo <georger underline br at yahoo dot com dot "
-"br>\n"
+"PO-Revision-Date: 2022-11-24 12:00-0300\n"
+"Last-Translator: Georger Araujo <georger_br@no.yahoo.spam.com.br>\n"
 "Language-Team: Brazilian Portuguese <georger underscore br at yahoo dot com "
 "dot br>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 2.4.3\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-Bookmarks: -1,-1,-1,-1,-1,-1,-1,417,-1,-1\n"
 
@@ -26012,9 +26011,8 @@ msgid "Read Error"
 msgstr "Erro de Leitura"
 
 #: src/BufferParams.cpp:3604
-#, fuzzy
 msgid "No bibliography processor found!"
-msgstr "Nenhuma bibliografia definida!"
+msgstr "Nenhum processador de bibliografia encontrado!"
 
 #: src/BufferParams.cpp:3606
 #, c-format
@@ -26024,11 +26022,14 @@ msgid ""
 "references will be generated.\n"
 "Please fix your installation!"
 msgstr ""
+"O processador de bibliografia requisitado por este documento (%1$s) não está "
+"disponível e não foi possível encontrar nenhuma alternativa apropriada. Nem "
+"bibliografia nem referências serão geradas.\n"
+"Por favor retifique sua instalação!"
 
 #: src/BufferParams.cpp:3614
-#, fuzzy
 msgid "Requested bibliography processor not found!"
-msgstr "Entrada bibliográfica não encontrada!"
+msgstr "Processador de bibliografia requisitado não encontrado!"
 
 #: src/BufferParams.cpp:3616
 #, c-format
@@ -26039,6 +26040,11 @@ msgid ""
 "carefully!\n"
 "It is suggested to install the missing processor."
 msgstr ""
+"O processador de bibliografia requisitado por este documento (%1$s) não está "
+"disponível. '%2$s' será usado como alternativa, as opções são omitidas. Isso "
+"pode resultar em erros ou modificações indesejadas na bibliografia. Por "
+"favor verifique cuidadosamente!\n"
+"O que se sugere é instalar o processador requisitado."
 
 #: src/BufferView.cpp:195
 msgid "No more insets"
@@ -28448,7 +28454,7 @@ msgstr "Entradas de Nomenclatura"
 
 #: src/VCBackend.cpp:65
 msgid "Check whether the GNU RCS package is installed on your system."
-msgstr ""
+msgstr "Verifique se o pacote GNU RCS está instalado no seu sistema."
 
 #: src/VCBackend.cpp:66 src/VCBackend.cpp:877 src/VCBackend.cpp:882
 #: src/VCBackend.cpp:931 src/VCBackend.cpp:990 src/VCBackend.cpp:1049
@@ -28970,9 +28976,9 @@ msgid "User directory: "
 msgstr "Pasta de usuário: "
 
 #: src/frontends/qt4/GuiAbout.cpp:234
-#, fuzzy, c-format
+#, c-format
 msgid "Qt Version (run-time): %1$s on platform %2$s"
-msgstr "Qt Version (run-time): %1$s"
+msgstr "Versão do Qt (run-time): %1$s na plataforma %2$s"
 
 #: src/frontends/qt4/GuiAbout.cpp:235
 #, c-format
@@ -30194,7 +30200,7 @@ msgid "per child document"
 msgstr "por documento filho"
 
 #: src/frontends/qt4/GuiDocument.cpp:3541
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (not available)"
 msgstr "%1$s (indisponível)"
 
@@ -31563,9 +31569,8 @@ msgid "Zoom level cannot be less than %1$d%."
 msgstr "Nível de zoom não pode ser menor que %1$d%."
 
 #: src/frontends/qt4/GuiView.cpp:2158
-#, fuzzy
 msgid "Zoom level cannot be more than %1$d%."
-msgstr "Nível de zoom não pode ser menor que %1$d%."
+msgstr "Nível de zoom não pode ser maior que %1$d%."
 
 #: src/frontends/qt4/GuiView.cpp:2252
 msgid "Select template file"
