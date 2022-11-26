@@ -360,7 +360,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2022-11-23 21:33+0100\n"
-"PO-Revision-Date: 2022-11-24 08:59+0100\n"
+"PO-Revision-Date: 2022-11-26 18:23+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -2223,7 +2223,7 @@ msgstr "Désact&ive les sauts de ligne après les cadratins"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:51
 msgid "&Graphics"
-msgstr "&Graphique"
+msgstr "&Graphiqueimage"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:72
 msgid "Select an image file"
@@ -19774,7 +19774,7 @@ msgstr "Tableau...|T"
 
 #: lib/ui/stdmenus.inc:390
 msgid "Graphics...|G"
-msgstr "Graphique...|G"
+msgstr "Graphique/image...|G"
 
 #: lib/ui/stdmenus.inc:391
 msgid "URL|U"
@@ -20258,7 +20258,7 @@ msgstr "Insérer des maths"
 
 #: lib/ui/stdtoolbars.inc:92
 msgid "Insert graphics"
-msgstr "Insérer un graphique"
+msgstr "Insérer un graphique ou une image"
 
 #: lib/ui/stdtoolbars.inc:93
 msgid "Insert table"
@@ -28896,7 +28896,7 @@ msgstr "Sous-documents"
 
 #: src/TocBackend.cpp:286 src/frontends/qt4/GuiGraphics.cpp:113
 msgid "Graphics"
-msgstr "Graphique"
+msgstr "Graphique/image"
 
 #: src/TocBackend.cpp:287
 msgid "Equations"

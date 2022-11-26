@@ -203,7 +203,7 @@ Chrétien
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Informations de révision :
@@ -233,6 +233,18 @@ Nouvel exemple pour le paragraphe 4.1.1.1 + quelques corrections mineures,
 
 \begin_layout Plain Layout
 Mise à jour finale lyx-2.3, 20 août 2019 (JPC)
+\end_layout
+
+\begin_layout Plain Layout
+Mise à jour pour 2.3.7, novembre 2022 (JPC) : sémantique de 
+\begin_inset Quotes cld
+\end_inset
+
+graphique
+\begin_inset Quotes crd
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -277,6 +289,34 @@ Ce manuel couvre les fonctions de personnalisation de \SpecialChar LyX
 on – mais nous allons expliquer les personnalisations les plus courantes
  et au moins vous indiquer la bonne direction pour les plus obscures d'entre
  elles.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Avertissement
+\series default
+: dans le document, on utilise 
+\begin_inset Quotes cld
+\end_inset
+
+graphique
+\begin_inset Quotes crd
+\end_inset
+
+ en tant que raccourci de 
+\begin_inset Quotes cld
+\end_inset
+
+objet graphique
+\begin_inset Quotes crd
+\end_inset
+
+: graphique, diagramme, image, schéma, etc.
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Chapter

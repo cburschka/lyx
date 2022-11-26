@@ -325,6 +325,21 @@ Mise à jour pour 2.2.3, section 2.11.3, 7 janvier 2017 (JPC)
 Mise à jour pour 2.3.0, janvier 2018 (JPC)
 \end_layout
 
+\begin_layout Plain Layout
+
+\family sans
+\size normal
+Mise à jour pour 2.3.7, novembre 2022 (JPC) : sémantique de 
+\begin_inset Quotes cld
+\end_inset
+
+graphique
+\begin_inset Quotes crd
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -438,6 +453,30 @@ status collapsed
 
 \end_layout
 
+\begin_layout Standard
+
+\series bold
+Avertissement
+\series default
+: dans le document, on utilise 
+\begin_inset Quotes cld
+\end_inset
+
+graphique
+\begin_inset Quotes crd
+\end_inset
+
+ en tant que raccourci de 
+\begin_inset Quotes cld
+\end_inset
+
+objet graphique
+\begin_inset Quotes crd
+\end_inset
+
+: graphique, diagramme, image, schéma, etc.
+\end_layout
+
 \begin_layout Section
 La fenêtre de dialogue graphique
 \begin_inset Index idx
@@ -469,7 +508,7 @@ arg   "dialog-show-new-inset graphics"
  dans la barre d'outils, ou faites 
 \family sans
 Insertion\SpecialChar menuseparator
-Graphique
+Graphique/image
 \family default
 .
  Une fenêtre de dialogue va s'ouvrir où vous pourrez choisir le fichier
@@ -479,8 +518,8 @@ Graphique
 \end_layout
 
 \begin_layout Standard
-La fenêtre de dialogue Graphique peut être rappelée à tout moment en cliquant
- sur une image
+La fenêtre de dialogue Graphique/image peut être rappelée à tout moment
+ en cliquant sur une image
 \begin_inset Note Note
 status collapsed
 
@@ -40465,7 +40504,7 @@ vectoriels peut être utilisé pour les graphiques
 \end_inset
 
 vectoriels.
- Les graphiques peuvent être traitées dans la fenêtre de dialogue 
+ Les graphiques peuvent être traités dans la fenêtre de dialogue 
 \family sans
 Objet
 \begin_inset space ~

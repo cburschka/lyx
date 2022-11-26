@@ -293,6 +293,18 @@ Enregistrement des propriétés temporaires
 Revue finale avant 2.3.7, 1er mars 2021 (JPC)
 \end_layout
 
+\begin_layout Plain Layout
+Mise à jour pour 2.3.7, 26 novembre 2022 (JPC) : sémantique de 
+\begin_inset Quotes cld
+\end_inset
+
+graphique
+\begin_inset Quotes crd
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -352,6 +364,30 @@ Classe de document) évite qu'un point final apparaisse
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Avertissement
+\series default
+: dans le document, on utilise 
+\begin_inset Quotes cld
+\end_inset
+
+graphique
+\begin_inset Quotes crd
+\end_inset
+
+ en tant que raccourci de 
+\begin_inset Quotes cld
+\end_inset
+
+objet graphique
+\begin_inset Quotes crd
+\end_inset
+
+: graphique, diagramme, image, schéma, etc.
 \end_layout
 
 \begin_layout Section
@@ -9004,12 +9040,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -9022,6 +9060,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9054,6 +9093,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
