@@ -196,6 +196,8 @@ enum ColorCode {
 	Color_changedtext_workarea_author4,
 	/// Changed text color author 5 (workarea)
 	Color_changedtext_workarea_author5,
+	/// Changed text color document comparison (workarea)
+	Color_changedtext_workarea_comparison,
 	/// Deleted text modifying color (workarea)
 	Color_deletedtext_workarea_modifier,
 	/// Table line color

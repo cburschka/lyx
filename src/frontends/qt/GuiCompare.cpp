@@ -12,10 +12,13 @@
 
 #include "GuiCompare.h"
 
+#include "GuiApplication.h"
+
 #include "Buffer.h"
 #include "BufferView.h"
 #include "BufferList.h"
 #include "buffer_funcs.h"
+#include "ColorCache.h"
 #include "Compare.h"
 #include "FuncRequest.h"
 #include "GuiView.h"
@@ -329,6 +332,7 @@ int GuiCompare::run(bool blocking_mode)
 	// get the options from the dialog
 	CompareOptions options;
 	options.settings_from_new = newSettingsRB->isChecked();
+	options.author = authorCO->currentIndex();
 
 	// init the compare object and start it
 
@@ -384,6 +388,19 @@ bool GuiCompare::initialiseParams(std::string const &par)
 	progressBar->setValue(0);
 	progressBar->setEnabled(false);
 	progressBar->setMaximum(1);
+
+	// If empty fill the author combobox with the current and the comparison
+	// author and their respective colors
+	if (authorCO->count() == 0) {
+		authorCO->clear();
+		QPixmap colorIcon(32, 32);
+		colorIcon.fill(guiApp->colorCache().get(
+			Color(Color_changedtext_workarea_author1)));
+		authorCO->addItem(colorIcon, qt_("Current Author"));
+		colorIcon.fill(guiApp->colorCache().get(
+			Color(Color_changedtext_workarea_comparison)));
+		authorCO->addItem(colorIcon, qt_("Document Comparison"));
+	}
 
 	return true;
 }

@@ -866,7 +866,7 @@ void Compare::Impl::writeToDestBuffer(DocRange const & range,
 	// Set the change
 	ParagraphList::iterator it = pars.begin();
 	for (; it != pars.end(); ++it) {
-		it->setChange(Change(type));
+		it->setChange(Change(type, compare_.options_.author));
 		size += it->size();
 	}
 

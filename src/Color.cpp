@@ -329,6 +329,7 @@ ColorSet::ColorSet()
 	{ Color_changedtext_workarea_author3, N_("changed text (workarea, 3rd author)"), "changedtextauthor3", "#ff0000", "#ea8989", "changedtextauthor3" },
 	{ Color_changedtext_workarea_author4, N_("changed text (workarea, 4th author)"), "changedtextauthor4", "#aa00ff", "#c371ec", "changedtextauthor4" },
 	{ Color_changedtext_workarea_author5, N_("changed text (workarea, 5th author)"), "changedtextauthor5", "#55aa00", "#acd780", "changedtextauthor5" },
+	{ Color_changedtext_workarea_comparison, N_("changed text (workarea, document comparison)"), "changedtextcomparison", "#008080", "#719FB0", "changedtextcomparison" },
 	{ Color_deletedtext_workarea_modifier, N_("deleted text modifier (workarea)"), "deletedtextmodifier", white, white, "deletedtextmodifier" },
 	{ Color_added_space, N_("added space markers"), "added_space", Brown, Brown, "added_space" },
 	{ Color_tabularline, N_("table line"), "tabularline", black, Linen, "tabularline" },

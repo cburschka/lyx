@@ -30,11 +30,13 @@ class CompareOptions {
 public:
 	///
 	CompareOptions()
-		: settings_from_new(0)
+		: settings_from_new(0), author(0)
 	{}
 
 	/// Copy the settings from the new or old document
 	bool settings_from_new;
+	/// Author id for change tracking
+	bool author;
 };
 
 /**

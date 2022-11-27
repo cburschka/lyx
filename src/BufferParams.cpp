@@ -370,6 +370,9 @@ BufferParams::Impl::Impl()
 	authorlist.record(Author(from_utf8(lyxrc.user_name),
 				 from_utf8(lyxrc.user_email),
 				 from_utf8(lyxrc.user_initials)));
+	// set comparison author
+	authorlist.record(Author(from_utf8("Document Comparison"),
+				 docstring(), docstring()));
 }
 
 

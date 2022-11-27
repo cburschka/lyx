@@ -71,22 +71,25 @@ bool Change::isSimilarTo(Change const & change) const
 Color Change::color() const
 {
 	Color color = Color_none;
-	switch (author % 5) {
-		case 0:
-			color = Color_changedtext_workarea_author1;
-			break;
-		case 1:
-			color = Color_changedtext_workarea_author2;
-			break;
-		case 2:
-			color = Color_changedtext_workarea_author3;
-			break;
-		case 3:
-			color = Color_changedtext_workarea_author4;
-			break;
-		case 4:
-			color = Color_changedtext_workarea_author5;
-			break;
+	if (author == 0)
+		color = Color_changedtext_workarea_author1;
+	else if (author == 1)
+		color = Color_changedtext_workarea_comparison;
+	else {
+		switch ((author - 2) % 4) {
+			case 0:
+				color = Color_changedtext_workarea_author2;
+				break;
+			case 1:
+				color = Color_changedtext_workarea_author3;
+				break;
+			case 2:
+				color = Color_changedtext_workarea_author4;
+				break;
+			case 3:
+				color = Color_changedtext_workarea_author5;
+				break;
+		}
 	}
 
 	if (deleted())
