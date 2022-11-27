@@ -4621,10 +4621,12 @@ convert = [
            [607, []],
            [608, []],
            [609, []],
-           [610, []]
+           [610, []],
+           [611, []]
           ]
 
-revert =  [[609, [revert_index_macros]],
+revert =  [[610, []],
+           [609, [revert_index_macros]],
            [608, [revert_document_metadata]],
            [607, [revert_docbook_mathml_prefix]],
            [606, [revert_spellchecker_ignore]],

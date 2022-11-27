@@ -1746,16 +1746,34 @@ void Paragraph::write(ostream & os, BufferParams const & bparams,
 			column = 0;
 			break;
 		case '.':
+		case '!':
+		case '?':
+		case ':':
+		case ';':
+		case ',':
+		case 0x061F:  // ؟ U+061F  ARABIC QUESTION MARK
+		case 0x061B:  // ؛ U+061B  ARABIC SEMICOLON
+		case 0x060C:  // ، U+060C  ARABIC COMMA
 			flushString(os, write_buffer);
 			if (i + 1 < size() && d->text_[i + 1] == ' ') {
-				os << ".\n";
+				os << to_utf8(docstring(1, c)) << '\n';
 				column = 0;
 			} else
-				os << '.';
+				os << to_utf8(docstring(1, c));
+			break;
+		case 0x2014:  // — U+2014  EM DASH
+		case 0x3002:  // 。 U+3002  IDEOGRAPHIC FULL STOP
+		case 0xFF01:  // ！ U+FF01  FULLWIDTH EXCLAMATION MARK
+		case 0xFF1F:  // ？ U+FF1F  FULLWIDTH QUESTION MARK
+		case 0xFF1A:  // ： U+FF1A  FULLWIDTH COLON
+		case 0xFF1B:  // ； U+FF1B  FULLWIDTH SEMICOLON
+		case 0xFF0C:  // ， U+FF0C  FULLWIDTH COMMA
+			flushString(os, write_buffer);
+			os << to_utf8(docstring(1, c)) << '\n';
+			column = 0;
 			break;
 		default:
-			if ((column > 70 && c == ' ')
-			    || column > 79) {
+			if (column > 500) {
 				flushString(os, write_buffer);
 				os << '\n';
 				column = 0;
