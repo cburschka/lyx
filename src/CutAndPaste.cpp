@@ -554,10 +554,7 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 		pars[pit].eraseChars(left, right, params.track_changes);
 
 		// Separate handling of paragraph break:
-		if (merge && pit != endpit &&
-		    (pit + 1 != endpit
-		     || pars[pit].hasSameLayout(pars[endpit])
-		     || pars[endpit].size() == endpos)) {
+        if (merge && pit != endpit) {
 			if (pit + 1 == endpit)
 				endpos += pars[pit].size();
 			mergeParagraph(params, pars, pit);
