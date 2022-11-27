@@ -6,13 +6,13 @@
 # Nick A. Gusev <guusev@yandex.ru>, 2009.
 # Valeriy Kruchko <lerkru@gmail.com>, 2009.
 # Sergey Tereschenko <serg.partizan@gmail.com>, 2010.
-# Yuriy Skalko <yuriy.skalko@gmail.com>, 2017-2019.
+# Yuriy Skalko <yuriy.skalko@gmail.com>, 2017-2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2022-11-23 21:33+0100\n"
-"PO-Revision-Date: 2020-10-30 09:30+0200\n"
+"PO-Revision-Date: 2022-11-27 15:01+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -25998,9 +25998,8 @@ msgid "Read Error"
 msgstr "Ошибка чтения"
 
 #: src/BufferParams.cpp:3604
-#, fuzzy
 msgid "No bibliography processor found!"
-msgstr "Не определена библиография!"
+msgstr "Библиографические процессоры не найдены!"
 
 #: src/BufferParams.cpp:3606
 #, c-format
@@ -26010,11 +26009,14 @@ msgid ""
 "references will be generated.\n"
 "Please fix your installation!"
 msgstr ""
+"Библиографический процессор, запрашиваемый этим документом (%1$s), "
+"недоступен, и подходящая альтернатива не найдена. Невозможно создать "
+"библиографию и ссылки.\n"
+"Пожалуйста, исправьте вашу установку!"
 
 #: src/BufferParams.cpp:3614
-#, fuzzy
 msgid "Requested bibliography processor not found!"
-msgstr "Библиография не найдена!"
+msgstr "Заданный библиографический процессор не найден!"
 
 #: src/BufferParams.cpp:3616
 #, c-format
@@ -26025,6 +26027,12 @@ msgid ""
 "carefully!\n"
 "It is suggested to install the missing processor."
 msgstr ""
+"Библиографический процессор, запрашиваемый этим документом (%1$s), "
+"недоступен. В качестве запасного варианта будет использован "
+"'%2$s' (параметры процессора будут проигнорированы). Это может привести к "
+"ошибкам или нежелательным изменениям в библиографии. Пожалуйста, проверьте "
+"внимательно результат!\n"
+"Для корректной работы требуется установить недостающий процессор."
 
 #: src/BufferView.cpp:195
 msgid "No more insets"
@@ -28429,7 +28437,7 @@ msgstr "Обозначения"
 
 #: src/VCBackend.cpp:65
 msgid "Check whether the GNU RCS package is installed on your system."
-msgstr ""
+msgstr "Проверьте, установлен ли пакет GNU RCS на вашей системе."
 
 #: src/VCBackend.cpp:66 src/VCBackend.cpp:877 src/VCBackend.cpp:882
 #: src/VCBackend.cpp:931 src/VCBackend.cpp:990 src/VCBackend.cpp:1049
@@ -28953,9 +28961,9 @@ msgid "User directory: "
 msgstr "Каталог пользователя: "
 
 #: src/frontends/qt4/GuiAbout.cpp:234
-#, fuzzy, c-format
+#, c-format
 msgid "Qt Version (run-time): %1$s on platform %2$s"
-msgstr "Версия Qt (выполнение): %1$s"
+msgstr "Версия Qt (выполнение): %1$s/%2$s"
 
 #: src/frontends/qt4/GuiAbout.cpp:235
 #, c-format
@@ -30171,7 +30179,7 @@ msgid "per child document"
 msgstr "на дочерний документ"
 
 #: src/frontends/qt4/GuiDocument.cpp:3541
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (not available)"
 msgstr "%1$s (недоступно)"
 
@@ -31533,9 +31541,8 @@ msgid "Zoom level cannot be less than %1$d%."
 msgstr "Масштаб не может быть меньше %1$d%."
 
 #: src/frontends/qt4/GuiView.cpp:2158
-#, fuzzy
 msgid "Zoom level cannot be more than %1$d%."
-msgstr "Масштаб не может быть меньше %1$d%."
+msgstr "Масштаб не может быть больше %1$d%."
 
 #: src/frontends/qt4/GuiView.cpp:2252
 msgid "Select template file"
