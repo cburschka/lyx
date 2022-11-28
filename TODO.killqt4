@@ -1,7 +1,12 @@
-Things left to do after killing Qt4 (obtained by grepping for Qt4 and 'Qt 4'):
-* update INSTALL.cmake
-* update INSTALL.MacOSX
-* update cmake
-* check whether development/autotests/keytest.py really needs QT4
-  investigate references to Qt4 in keytest
+Killing Qt4
+===========
 
+Things left to do before release, obtained using:
+  git grep -il 'qt *4'
+
+* macOS (Stephan):
+  - update INSTALL.cmake
+  - update INSTALL.MacOSX
+
+* Windows (Eugene?)
+  - update development/cmake/modules/LyXPaths.cmake

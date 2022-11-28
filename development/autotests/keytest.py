@@ -611,7 +611,7 @@ if xvkbd_exe is None:
 
 qt_frontend = os.environ.get('QT_FRONTEND')
 if qt_frontend is None:
-    qt_frontend = 'QT4'
+    qt_frontend = 'QT5'
 if qt_frontend == 'QT5':
     # Some tests sometimes failed with value 0.01 on Qt5.8
     controlkey_delay = 0.4
