@@ -363,7 +363,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2022-11-26 18:50+0100\n"
-"PO-Revision-Date: 2022-11-26 18:54+0100\n"
+"PO-Revision-Date: 2022-11-28 17:19+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -2411,7 +2411,7 @@ msgstr "Désact&ive les sauts de ligne après les cadratins"
 
 #: src/frontends/qt/ui/GraphicsUi.ui:51
 msgid "&Graphics"
-msgstr "&Graphique"
+msgstr "&Graphique/image"
 
 #: src/frontends/qt/ui/GraphicsUi.ui:72
 msgid "Select an image file"
@@ -21613,7 +21613,7 @@ msgstr "Tableau...|T"
 
 #: lib/ui/stdmenus.inc:398
 msgid "Graphics...|G"
-msgstr "Graphique...|G"
+msgstr "Graphique/image...|G"
 
 #: lib/ui/stdmenus.inc:399
 msgid "URL|U"
@@ -22172,7 +22172,7 @@ msgstr "Insérer des maths"
 
 #: lib/ui/stdtoolbars.inc:101
 msgid "Insert graphics"
-msgstr "Insérer un graphique"
+msgstr "Insérer un graphique ou une image"
 
 #: lib/ui/stdtoolbars.inc:102
 msgid "Insert table"
@@ -29984,7 +29984,7 @@ msgstr "Exécution du processeur bibliographique."
 
 #: src/LaTeX.cpp:389
 msgid "Re-Running Bibliography Processor."
-msgstr "Réexécution du processeur bibliographique."
+msgstr "Ré-exécution du processeur bibliographique."
 
 #: src/LaTeX.cpp:429
 msgid "Running Index Processor."
@@ -34268,7 +34268,7 @@ msgstr "Donnez un nom de fichier au tube du serveur LyX"
 
 #: src/frontends/qt/GuiPrefs.cpp:1564 src/frontends/qt/GuiSpellchecker.cpp:642
 msgid "Spellchecker"
-msgstr "Correcteur Orthographique"
+msgstr "Correcteur orthographique"
 
 #: src/frontends/qt/GuiPrefs.cpp:1570
 msgid "Native"
