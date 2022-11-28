@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 608
+\lyxformat 610
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -123,7 +123,7 @@
 Introduction à \SpecialChar LyX
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Traduction initiale Adrien Rebollo, mises à jour Siegfried Meunier-Guttin-Cluzel
@@ -132,6 +132,18 @@ Traduction initiale Adrien Rebollo, mises à jour Siegfried Meunier-Guttin-Cluze
 
 \begin_layout Plain Layout
 Dernière revue: 20/04/2021 par JPC
+\end_layout
+
+\begin_layout Plain Layout
+Mise à jour pour 2.4.0, 28 novembre 2022 (JPC) : sémantique de 
+\begin_inset Quotes cld
+\end_inset
+
+graphique
+\begin_inset Quotes crd
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2366,8 +2378,8 @@ Guide
 
 de L'Utilisateur
 \emph default
-, il explique en détail comment utiliser les tableaux, les graphiques, les
- objets flottants, les notes et les boîtes.
+, il explique en détail comment utiliser les tableaux, les graphiques ou
+ images, les objets flottants, les notes et les boîtes.
  Il inclut également de nombreuses astuces connues des spécialistes de \SpecialChar LaTeX
 .
 \end_layout

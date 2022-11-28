@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 608
+\lyxformat 610
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -251,6 +251,18 @@ Mise à jour finale lyx-2.3, 20 août 2019 (JPC)
 Mise à jour pour 2.4.0, 25 avril 2021 (JPC)
 \end_layout
 
+\begin_layout Plain Layout
+Mise à jour pour 2.4.0, 28 novembre 2022 (JPC) : sémantique de 
+\begin_inset Quotes cld
+\end_inset
+
+graphique
+\begin_inset Quotes crd
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -293,6 +305,15 @@ Ce manuel couvre les fonctions de personnalisation de \SpecialChar LyX
 on – mais nous allons expliquer les personnalisations les plus courantes
  et au moins vous indiquer la bonne direction pour les plus obscures d'entre
  elles.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Avertissement:
+\series default
+ dans le document, on utilise « graphique » en tant que raccourci de « objet
+ graphique »: graphique, diagramme, image, schéma, etc.
 \end_layout
 
 \begin_layout Chapter
@@ -418,7 +439,7 @@ Les fichiers générés automatiquement
 Ces fichiers sont générés au moment de la configuration de \SpecialChar LyX
 .
  Ils définissent différentes valeurs par défaut qui sont détectées automatiqueme
-nt pensdaévaluées par l'inspection de votre système.
+nt par l'inspection de votre système.
  Comme ils peuvent être réécrits à tout moment, il n'est pas conseillé de
  les modifier.
 \end_layout

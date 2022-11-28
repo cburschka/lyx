@@ -314,6 +314,18 @@ Importation dans 2.4, 2 mars 2021 (JPC)
 Mise à jour pour 2.4.0, 28 mai 2021 (JPC)
 \end_layout
 
+\begin_layout Plain Layout
+Mise à jour pour 2.4.0, 28 novembre 2022 (JPC) : sémantique de 
+\begin_inset Quotes cld
+\end_inset
+
+graphique
+\begin_inset Quotes crd
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -444,6 +456,15 @@ Introduction
 Introduction
 \emph default
  vous guidera dans ce choix.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Avertissement:
+\series default
+ dans le document, on utilise « graphique » en tant que raccourci de « objet
+ graphique »: graphique, diagramme, image, schéma, etc.
 \end_layout
 
 \begin_layout Section
@@ -22325,7 +22346,7 @@ arg   "dialog-show-new-inset graphics"
  dans la barre d'outils, ou faites 
 \family sans
 Insertion\SpecialChar menuseparator
-Graphique
+Graphique/image
 \family default
 .
  Une fenêtre s'ouvre, qui vous permet de choisir le fichier à charger.
@@ -26351,7 +26372,7 @@ arg   "float-insert figure"
  et en utilisant le menu 
 \family sans
 Insertion\SpecialChar menuseparator
-Graphique
+Graphique/image
 \family default
  ou le bouton 
 \begin_inset Info
@@ -44976,11 +44997,11 @@ Objets Insérés
 \end_layout
 
 \begin_layout Subsection
-Graphique
+Graphique/image
 \end_layout
 
 \begin_layout Standard
-Insère un graphique.
+Insère un graphique ou une image.
  Les graphiques sont décrits section
 \begin_inset space ~
 \end_inset
@@ -47193,7 +47214,7 @@ arg   "dialog-show-new-inset graphics"
 
 \family sans
 Insertion\SpecialChar menuseparator
-Graphique
+Graphique/image
 \end_layout
 
 \end_inset

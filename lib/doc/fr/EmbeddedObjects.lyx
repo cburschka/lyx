@@ -343,6 +343,20 @@ Mise à jour pour 2.3.0, janvier 2018 (JPC)
 Mise à jour pour 2.4.0, juin 2021 (JPC)
 \end_layout
 
+\begin_layout Plain Layout
+
+\size normal
+Mise à jour pour 2.4.0, 28 novembre 2022 (JPC) : sémantique de 
+\begin_inset Quotes cld
+\end_inset
+
+graphique
+\begin_inset Quotes crd
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -448,6 +462,19 @@ Figures
 
 \end_layout
 
+\begin_layout Standard
+
+\series bold
+Avertissement:
+\series default
+ dans le document, on utilise « graphique » en tant que raccourci de « objet
+ graphique »: graphique, diagramme, image, schéma, etc.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
 \begin_layout Section
 La fenêtre de dialogue graphique
 \begin_inset Index idx
@@ -491,7 +518,7 @@ arg   "dialog-show-new-inset graphics"
  dans la barre d'outils, ou faites 
 \family sans
 Insertion\SpecialChar menuseparator
-Graphique
+Graphique/image
 \family default
 .
  Une fenêtre de dialogue va s'ouvrir où vous pourrez choisir le fichier
@@ -38944,7 +38971,7 @@ Pour pouvoir utiliser les boîtes décrites ci-après, le module
 \family sans
 BoîtesGraphiques
 \family default
- oit être vchargé via les paramètres du document.
+ doit être chargé via les paramètres du document.
 \end_layout
 
 \begin_layout Standard
@@ -42263,7 +42290,7 @@ vif
 , dans la rubrique 
 \family sans
 Apparence\SpecialChar menuseparator
-Graphiques
+Affichage écran
 \family default
 , les objets externes de type Dia et Xfig sont affichés directement dans
  \SpecialChar LyX
@@ -42507,7 +42534,7 @@ Externe
  
 \family sans
 Insertion\SpecialChar menuseparator
-Graphique
+Graphique/image
 \family default
 , comme c'est décrit dans la section
 \begin_inset space ~
@@ -42551,7 +42578,7 @@ Externe
  
 \family sans
 Insertion\SpecialChar menuseparator
-Graphique
+Graphique/image
 \family default
 , comme c'est décrit dans la section
 \begin_inset space ~
@@ -43210,7 +43237,7 @@ vif
  est activée dans les préférences dans la rubrique 
 \family sans
 Apparence\SpecialChar menuseparator
-Graphique
+Affichage écran
 \family default
 .
 \end_layout
@@ -45286,7 +45313,7 @@ pt)
 \begin_inset Text
 
 \begin_layout Plain Layout
-Échelle graphique %
+Échelle  %
 \end_layout
 
 \end_inset

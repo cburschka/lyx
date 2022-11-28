@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 608
+\lyxformat 610
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -176,6 +176,18 @@ appendix
 \begin_layout Plain Layout
 Mise à jour pour 2.3 (JPC) : 04/08/2017, nouveautés 2.3, revue générale; 28/01/201
 8, revue avant 2.3.0
+\end_layout
+
+\begin_layout Plain Layout
+Mise à jour pour 2.4.0, 28 novembre 2022 (JPC) : sémantique de 
+\begin_inset Quotes cld
+\end_inset
+
+graphique
+\begin_inset Quotes crd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -432,6 +444,15 @@ ion de \SpecialChar LyX
  que vous désirez.
  Il est évidemment destiné à des utilisateurs aguerris de \SpecialChar LyX
 .
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Avertissement:
+\series default
+ dans le document, on utilise « graphique » en tant que raccourci de « objet
+ graphique »: graphique, diagramme, image, schéma, etc.
 \end_layout
 
 \begin_layout Chapter
@@ -18031,7 +18052,7 @@ Logo
  (par 
 \family sans
 Insertion\SpecialChar menuseparator
-Graphique
+Graphique/image
 \family default
 ) dans l'en-tête.
 \end_layout
