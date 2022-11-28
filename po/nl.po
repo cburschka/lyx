@@ -1,10 +1,10 @@
-# Niko Strijbol <strijbol.niko@gmail.com>, 2017.
+# Niko Strijbol <strijbol.niko@gmail.com>, 2017, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2022-11-23 21:33+0100\n"
-"PO-Revision-Date: 2020-05-27 21:52+0200\n"
+"PO-Revision-Date: 2022-11-24 22:17+0100\n"
 "Last-Translator: Niko Strijbol <strijbol.niko@gmail.com>\n"
 "Language-Team: Dutch <lyx-docs@lists.lyx.org>\n"
 "Language: nl\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Lokalize 22.08.3\n"
 "X-Poedit-Basepath: ../src\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -2182,6 +2182,8 @@ msgid ""
 "File name to include. (You can create a new file by entering the name of one "
 "that does not yet exist.)"
 msgstr ""
+"Bestandsnaam om mee te nemen. (U kan een nieuw bestand maken door de naam "
+"van een niet-bestaand bestand te gebruiken.)"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:309
 msgid "&Include Type:"
@@ -9172,9 +9174,8 @@ msgid "American Psychological Association (APA), v. 6"
 msgstr "American Psychological Association (APA), v. 6"
 
 #: lib/layouts/apa7.layout:3
-#, fuzzy
 msgid "American Psychological Association (APA), v. 7"
-msgstr "American Psychological Association (APA), v. 6"
+msgstr "American Psychological Association (APA), v. 7"
 
 #: lib/layouts/apax.inc:112
 msgid "FiveAuthors"
@@ -9243,28 +9244,24 @@ msgid "*"
 msgstr "*"
 
 #: lib/layouts/apax.inc:527
-#, fuzzy
 msgid "Course"
-msgstr "Courier"
+msgstr "Vak"
 
 #: lib/layouts/apax.inc:543
-#, fuzzy
 msgid "Course: "
-msgstr "Courier"
+msgstr "Vak: "
 
 #: lib/layouts/apax.inc:551
 msgid "addORCIDlink"
-msgstr ""
+msgstr "addORCIDlink"
 
 #: lib/layouts/apax.inc:555
-#, fuzzy
 msgid "ORCID-link: "
-msgstr "ORCID: "
+msgstr "ORCID-link: "
 
 #: lib/layouts/apax.inc:563
-#, fuzzy
 msgid "Author-name"
-msgstr "Naam auteur"
+msgstr "Auteur-naam"
 
 #: lib/layouts/arab-article.layout:3
 msgid "Arabic Article"
@@ -10312,14 +10309,13 @@ msgid "Custom Header/Footerlines"
 msgstr "Aangepaste kop- en voetlijnen"
 
 #: lib/layouts/customHeadersFooters.module:7
-#, fuzzy
 msgid ""
 "Adds environments to define header and footer lines. NOTE: To use this "
 "module you must set the 'Page style' in the menu Document Settings -> Page "
 "Layout to 'fancy'!"
 msgstr ""
 "Voegt omgevingen toe om kop- en voetteksten te definiëren. OPMERKING: Om "
-"deze module te gebruiken dient u de 'Hoofdingstijl' in het menu "
+"deze module te gebruiken dient u de 'Paginastijl' in het menu "
 "Documentinstellingen -> Pagina-opmaak op 'fancy' te zetten!"
 
 #: lib/layouts/customHeadersFooters.module:12
@@ -13797,37 +13793,32 @@ msgid "Entry"
 msgstr "Element"
 
 #: lib/layouts/moderncv.layout:334 lib/layouts/moderncv.layout:335
-#, fuzzy
 msgid "Years"
-msgstr "Jaar"
+msgstr "Jaren"
 
 #: lib/layouts/moderncv.layout:340
 msgid "Degree or job title"
-msgstr ""
+msgstr "Diploma of functietitel"
 
 #: lib/layouts/moderncv.layout:348
-#, fuzzy
 msgid "Institution or employer"
-msgstr "Instelling"
+msgstr "Instelling of werkgever"
 
 #: lib/layouts/moderncv.layout:355
-#, fuzzy
 msgid "Localization"
-msgstr "Locatie"
+msgstr "Lokalisatie"
 
 #: lib/layouts/moderncv.layout:356
-#, fuzzy
 msgid "City or country"
-msgstr "Land"
+msgstr "Stad of land"
 
 #: lib/layouts/moderncv.layout:360
-#, fuzzy
 msgid "Optional"
-msgstr "optioneel"
+msgstr "Optioneel"
 
 #: lib/layouts/moderncv.layout:361
 msgid "Grade or other info"
-msgstr ""
+msgstr "Graad of andere info"
 
 #: lib/layouts/moderncv.layout:367
 msgid "Entry:"
@@ -15536,9 +15527,8 @@ msgid "\\Roman{part}"
 msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:10
-#, fuzzy
 msgid "Part ##"
-msgstr "Deel"
+msgstr "Deel ##"
 
 #: lib/layouts/stdcounters.inc:14
 msgid "Chapter ##"
@@ -20738,9 +20728,8 @@ msgid "Blackboard\t\\mathbb"
 msgstr "Blackboard\t\\mathbb"
 
 #: lib/ui/stdtoolbars.inc:415
-#, fuzzy
 msgid "Double stroke\t\\mathds"
-msgstr "Dubbel item:"
+msgstr "Double stroke\t\\mathds"
 
 #: lib/ui/stdtoolbars.inc:416
 msgid "Fraktur\t\\mathfrak"
@@ -25993,9 +25982,8 @@ msgid "Read Error"
 msgstr "Leesfout"
 
 #: src/BufferParams.cpp:3604
-#, fuzzy
 msgid "No bibliography processor found!"
-msgstr "Geen bibliografie gedefinieerd!"
+msgstr "Geen bibliografieverwerken gevonden!"
 
 #: src/BufferParams.cpp:3606
 #, c-format
@@ -26005,11 +25993,14 @@ msgid ""
 "references will be generated.\n"
 "Please fix your installation!"
 msgstr ""
+"De bibliografieverwerker gevraagd door dit document (%1$s) is niet "
+"beschikbaar en er is geen passend alternatief gevonden. Er zullen geen "
+"bibliografie en referenties gegenereerd worden.\n"
+"Gelieve uw installatie te herstellen!"
 
 #: src/BufferParams.cpp:3614
-#, fuzzy
 msgid "Requested bibliography processor not found!"
-msgstr "Niet gevonden in bibliografie!"
+msgstr "Gevraagde bibliografieverwerker niet gevonden!"
 
 #: src/BufferParams.cpp:3616
 #, c-format
@@ -26020,6 +26011,11 @@ msgid ""
 "carefully!\n"
 "It is suggested to install the missing processor."
 msgstr ""
+"De bibliografieverwerker gevraagd door dit document (%1$s) is niet "
+"beschikbaar. Als alternatief zal '%2$s' gebruikt worden, zonder opties. "
+"Dit kan resulteren in fouten of ongewenste wijzigingen in de bibliografie. "
+"Controleer aandachtig!\n"
+"Het is aan te bevelen de ontbrekende verwerker te installeren."
 
 #: src/BufferView.cpp:195
 msgid "No more insets"
@@ -28198,9 +28194,8 @@ msgid "Other ("
 msgstr "Andere ("
 
 #: src/Text.cpp:1962
-#, fuzzy
 msgid ", Style: "
-msgstr "Cv-stijl:"
+msgstr ", Stijl: "
 
 #: src/Text.cpp:1966
 msgid ", Paragraph: "
@@ -28442,7 +28437,7 @@ msgstr "Begrip in begrippenlijst"
 
 #: src/VCBackend.cpp:65
 msgid "Check whether the GNU RCS package is installed on your system."
-msgstr ""
+msgstr "Controleer of het pakket GNU RCS op uw systeem geïnstalleerd is."
 
 #: src/VCBackend.cpp:66 src/VCBackend.cpp:877 src/VCBackend.cpp:882
 #: src/VCBackend.cpp:931 src/VCBackend.cpp:990 src/VCBackend.cpp:1049
@@ -28974,9 +28969,9 @@ msgid "User directory: "
 msgstr "Gebruikersmap: "
 
 #: src/frontends/qt4/GuiAbout.cpp:234
-#, fuzzy, c-format
+#, c-format
 msgid "Qt Version (run-time): %1$s on platform %2$s"
-msgstr "Qt-versie (run-time): %1$s"
+msgstr "Qt-versie (run-time): %1$s op platform %2$s"
 
 #: src/frontends/qt4/GuiAbout.cpp:235
 #, c-format
@@ -30196,7 +30191,7 @@ msgid "per child document"
 msgstr "per subdocument"
 
 #: src/frontends/qt4/GuiDocument.cpp:3541
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (not available)"
 msgstr "%1$s (niet beschikbaar)"
 
@@ -30502,9 +30497,8 @@ msgstr ""
 "parameters."
 
 #: src/frontends/qt4/GuiInclude.cpp:332
-#, fuzzy
 msgid "&Create"
-msgstr "&Ja, aanmaken"
+msgstr "&Aanmaken"
 
 #: src/frontends/qt4/GuiInclude.cpp:361
 msgid "Select document to include"
@@ -31562,9 +31556,8 @@ msgid "Zoom level cannot be less than %1$d%."
 msgstr "Zoomniveau kan niet minder dan %1$d% zijn."
 
 #: src/frontends/qt4/GuiView.cpp:2158
-#, fuzzy
 msgid "Zoom level cannot be more than %1$d%."
-msgstr "Zoomniveau kan niet minder dan %1$d% zijn."
+msgstr "Zoomniveau kan niet meer zijn dan %1$d%."
 
 #: src/frontends/qt4/GuiView.cpp:2252
 msgid "Select template file"
