@@ -11,8 +11,8 @@
  * receives information back from LyX.
  *
  * Build instructions:
- * 1) Run moc or moc-qt4 on server_monitor.h to produce moc_server_monitor.cpp:
- *    moc-qt4 server_monitor.h -o moc_server_monitor.cpp
+ * 1) Run moc or moc-qt5 on server_monitor.h to produce moc_server_monitor.cpp:
+ *    moc server_monitor.h -o moc_server_monitor.cpp
  * 2) If the QtGui.pc file is not in the pkg-config search path, find the
  *    directory where it is located (e.g., use the command `locate QtGui.pc')
  *    and set the environment variable PKG_CONFIG_PATH to this directory.
@@ -22,7 +22,7 @@
  *    If the command `pkg-config --modversion QtGui' does not complain and
  *    prints the Qt version, you don't need to set PKG_CONFIG_PATH.
  * 3) Compile using the following command:
- *    g++ server_monitor.cpp -o monitor -I. `pkg-config --cflags --libs QtGui`
+ *    g++ -fPIC server_monitor.cpp -o monitor -I. `pkg-config --cflags --libs Qt5Gui Qt5Widgets`
  *
  * Alternatively, you can create a Makefile with qmake and then build
  * the executable by running make (or nmake, if you use msvc):
@@ -41,9 +41,7 @@
 #include <QApplication>
 #include <QtGui>
 #include <QtDebug>
-#if QT_VERSION >= 0x050000
 #include <QtWidgets>
-#endif
 
 #include "server_monitor.h"
 
