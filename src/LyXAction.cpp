@@ -3983,7 +3983,7 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_TAB_GROUP_NEXT
- * \li Action: Switch to the next tab group.
+ * \li Action: Switch to the next tab group in split view.
  * \li Syntax: tab-group-next
  * \endvar
  */
@@ -3991,7 +3991,7 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_TAB_GROUP_PREVIOUS
- * \li Action: Switch to the previous tab group.
+ * \li Action: Switch to the previous tab group in split view.
  * \li Syntax: tab-group-previous
  * \endvar
  */
