@@ -299,7 +299,7 @@ while [ $# -gt 0 ]; do
 done
 
 if [ "${configure_qt_frameworks}" != "yes" ]; then
-	QtInstallDir=${QTDIR:-"/opt/qt4"}
+	QtInstallDir=${QTDIR}
 fi
 
 ARCH_LIST=${ARCH_LIST:-"ppc i386"}

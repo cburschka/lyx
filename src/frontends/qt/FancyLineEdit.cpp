@@ -19,8 +19,6 @@
 #include "GuiApplication.h"
 #endif
 
-#if QT_VERSION >= 0x040600
-
 #include <QEvent>
 #include <QDebug>
 #include <QString>
@@ -33,9 +31,7 @@
 #include <QPainter>
 #include <QStyle>
 #include <QPaintEvent>
-#if QT_VERSION >= 0x050000
 #include <QWindow>
-#endif
 
 enum { margin = 6 };
 
@@ -120,7 +116,7 @@ FancyLineEdit::FancyLineEdit(QWidget *parent) :
 {
 	ensurePolished();
 	updateMargins();
-	
+
 	connect(this, SIGNAL(textChanged(QString)),
 		this, SLOT(checkButtons(QString)));
 	connect(m_d->m_iconbutton[Left], SIGNAL(clicked()),
@@ -198,10 +194,8 @@ void FancyLineEdit::updateMargins()
 	Side realRight = (leftToRight ? Right : Left);
 
 	qreal dpr = 1.0;
-#if QT_VERSION >= 0x050000
 	// Consider device/pixel ratio (HiDPI)
 	dpr = devicePixelRatio();
-#endif
 	int leftMargin = (m_d->m_iconbutton[realLeft]->pixmap().width() / dpr ) + 8;
 	int rightMargin = (m_d->m_iconbutton[realRight]->pixmap().width() / dpr) + 8;
 	// Note KDE does not reserve space for the highlight color
@@ -224,7 +218,7 @@ void FancyLineEdit::updateButtonPositions()
 		Side iconpos = (Side)i;
 		if (layoutDirection() == Qt::RightToLeft)
 			iconpos = (iconpos == Left ? Right : Left);
-		
+
 		if (iconpos == FancyLineEdit::Right) {
 			const int iconoffset = textMargins().right() + 4;
 			m_d->m_iconbutton[i]->setGeometry(
@@ -342,12 +336,9 @@ IconButton::IconButton(QWidget *parent)
 
 void IconButton::paintEvent(QPaintEvent *)
 {
-	qreal dpr = 1.0;
-#if QT_VERSION >= 0x050000
 	// Consider device/pixel ratio (HiDPI)
 	QWindow * window = this->window()->windowHandle();
-	dpr = window->devicePixelRatio();
-#endif
+	qreal const dpr = window->devicePixelRatio();
 	QRect pixmapRect(QPoint(), m_pixmap.size() / dpr);
 	pixmapRect.moveCenter(rect().center());
 	QPixmap pm = m_pixmap;
@@ -380,7 +371,5 @@ void IconButton::animateShow(bool visible)
 } // namespace frontend
 
 } // namespace lyx
-
-#endif // QT_VERSION >= 0x040600
 
 #include "moc_FancyLineEdit.cpp"

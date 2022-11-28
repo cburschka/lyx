@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "GuiKeySymbol.h"
-#if defined(Q_OS_MAC) && QT_VERSION > 0x050000
+#if defined(Q_OS_MAC)
 #include "GuiApplication.h"
 #endif
 #include "qt_helpers.h"
@@ -867,7 +867,7 @@ bool KeySymbol::operator==(KeySymbol const & ks) const
 KeyModifier q_key_state(Qt::KeyboardModifiers state)
 {
 	KeyModifier k = NoModifier;
-#if defined(Q_OS_MAC) && (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)) && (QT_VERSION < QT_VERSION_CHECK(5, 12, 0))
+#if defined(Q_OS_MAC) && (QT_VERSION < QT_VERSION_CHECK(5, 12, 0))
 	/// Additional check for Control and Meta modifier swap state.
 	/// Starting with Qt 5 the modifiers aren't reported correctly.
 	/// Until this is fixed a correction is required.

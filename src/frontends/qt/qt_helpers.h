@@ -89,12 +89,6 @@ void focusAndHighlight(QAbstractItemView * w);
 void setMessageColour(std::list<QWidget *> highlighted,
                       std::list<QWidget *> plain);
 
-/// Qt5 changed setSectionMode to setSectionResizeMode
-/// These wrappers work for Qt4 and Qt5
-void setSectionResizeMode(QHeaderView * view,
-    int logicalIndex, QHeaderView::ResizeMode mode);
-void setSectionResizeMode(QHeaderView * view,
-	QHeaderView::ResizeMode mode);
 /// Shows a directory in OSs file browser
 void showDirectory(support::FileName const & directory);
 /// handle request for showing citation content - shows pdf/ps or

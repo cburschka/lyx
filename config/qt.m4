@@ -29,7 +29,7 @@ AC_DEFUN([QT_CHECK_COMPILE],
 		if test $USE_QT6 = "yes" ; then
 		    qt_corelibs="-lQt6Core -lQt6Core5Compat"
 		    qt_guilibs="-lQt6Core -lQt6Core5Compat -lQt6Concurrent -lQt6Gui -lQt6Svg -lQt6Widgets"
-		elif test $USE_QT5 = "yes" ; then
+		else
 		    qt_corelibs="-lQt5Core"
 		    qt_guilibs="-lQt5Core -lQt5Concurrent -lQt5Gui -lQt5Svg -lQt5Widgets"
 		fi
@@ -58,8 +58,6 @@ AC_DEFUN([QT_CHECK_COMPILE],
 	if test -z "$qt_cv_libname"; then
 		if test x$USE_QT6 = xyes ; then
 			AC_MSG_RESULT([failed, retrying with Qt5])
-		elif test x$USE_QT5 = xyes ; then
-			AC_MSG_RESULT([failed, retrying with Qt4])
 		else
 			AC_MSG_RESULT([failed])
 			AC_MSG_ERROR([cannot compile a simple Qt executable. Check you have the right \$QTDIR.])
@@ -73,11 +71,9 @@ AC_DEFUN([QT_CHECK_COMPILE],
 AC_DEFUN([QT_FIND_TOOL],
 [
 	$1=
-	qt_major=4
+	qt_major=5
 	if test "x$USE_QT6" != "xno" ; then
 		qt_major=6
-	elif test "x$USE_QT5" != "xno" ; then
-		qt_major=5
 	fi
 	qt_ext="qt$qt_major"
 
@@ -132,7 +128,7 @@ dnl start here
 AC_DEFUN([QT_DO_IT_ALL],
 [
 	dnl this variable is precious
-	AC_ARG_VAR(QTDIR, [the place where the Qt files are, e.g. /usr/lib/qt4])
+	AC_ARG_VAR(QTDIR, [the place where the Qt files are, e.g. /usr/lib/qt5])
 
 	AC_ARG_WITH(qt-dir, [AS_HELP_STRING([--with-qt-dir], [where the root of Qt is installed])],
 		[ qt_cv_dir=`eval echo "$withval"/` ])
@@ -188,26 +184,10 @@ AC_DEFUN([QT_DO_IT_ALL],
 	fi
 
 	if test -z "$QT_LIB"; then
-	  dnl Try again with Qt5 and then Qt4 if configuring for Qt6/5 fails
+	  dnl Try again with Qt5 and if configuring for Qt6/5 fails
 	  if test x$USE_QT6 = xyes ; then
 		USE_QT6=no
-		USE_QT5=yes
 		AC_SUBST([USE_QT6])
-		AC_SUBST([USE_QT5])
-		if test -n "$PKG_CONFIG" ; then
-		  QT_DO_PKG_CONFIG
-		fi
-		if test "$pkg_failed" != "no" ; then
-		  QT_DO_MANUAL_CONFIG
-		fi
-		if test -z "$QT_LIB"; then
-		  AC_MSG_ERROR([cannot find qt libraries.])
-		fi
-	  elif test x$USE_QT5 = xyes ; then
-		USE_QT6=no
-		USE_QT5=no
-		AC_SUBST([USE_QT6])
-		AC_SUBST([USE_QT5])
 		if test -n "$PKG_CONFIG" ; then
 		  QT_DO_PKG_CONFIG
 		fi
@@ -246,25 +226,13 @@ AC_DEFUN([QT_DO_IT_ALL],
 	    [AC_MSG_RESULT(yes)
 	     AC_DEFINE(QPA_XCB, 1, [Define if Qt uses the X Window System])],
 	    [AC_MSG_RESULT(no)])
-	elif test x$USE_QT5 = xyes ; then
+	else
 	  AC_EGREP_CPP(xcb,
 	    [#include <$lyx_qt5_config>
 	    QT_QPA_DEFAULT_PLATFORM_NAME],
 	    [AC_MSG_RESULT(yes)
 	     AC_DEFINE(QPA_XCB, 1, [Define if Qt uses the X Window System])],
 	    [AC_MSG_RESULT(no)])
-	else
-	  AC_PREPROC_IFELSE([AC_LANG_SOURCE([
-	    [#include <qglobal.h>],
-	    [#ifndef Q_WS_X11],
-	    [#error Fail],
-	    [#endif]])],
-	    qt_use_x11=yes,
-	    qt_use_x11=no)
-	  AC_MSG_RESULT($qt_use_x11)
-	  if test "x$qt_use_x11" = "xyes"; then
-	    QT_LIB="$QT_LIB -lX11"
-	  fi
 	fi
 	CPPFLAGS=$save_CPPFLAGS
 
@@ -287,28 +255,24 @@ AC_DEFUN([QT_DO_PKG_CONFIG],
 	  PKG_CONFIG_PATH=$qt_cv_dir/lib:$qt_cv_dir/lib/pkgconfig:$PKG_CONFIG_PATH
 	  export PKG_CONFIG_PATH
 	fi
-	qt_corelibs="QtCore"
-	qt_guilibs="QtCore QtGui QtSvg"
-	if test "x$USE_QT5" != "xno" ; then
-		qt_corelibs="Qt5Core"
-		qt_guilibs="Qt5Core Qt5Concurrent Qt5Gui Qt5Svg Qt5Widgets"
-		lyx_use_x11extras=false
-		PKG_CHECK_EXISTS(Qt5X11Extras, [lyx_use_x11extras=true], [])
-		if $lyx_use_x11extras; then
-			qt_guilibs="$qt_guilibs Qt5X11Extras xcb"
-			AC_DEFINE(HAVE_QT5_X11_EXTRAS, 1,
-				[Define if you have the Qt5X11Extras module])
-		fi
-		lyx_use_winextras=false
-		PKG_CHECK_EXISTS(Qt5WinExtras, [lyx_use_winextras=true], [])
-		if $lyx_use_winextras; then
-			qt_guilibs="$qt_guilibs Qt5WinExtras"
-		fi
-		lyx_use_macextras=false
-		PKG_CHECK_EXISTS(Qt5MacExtras, [lyx_use_macextras=true], [])
-		if $lyx_use_macextras; then
-			qt_guilibs="$qt_guilibs Qt5MacExtras"
-		fi
+	qt_corelibs="Qt5Core"
+	qt_guilibs="Qt5Core Qt5Concurrent Qt5Gui Qt5Svg Qt5Widgets"
+	lyx_use_x11extras=false
+	PKG_CHECK_EXISTS(Qt5X11Extras, [lyx_use_x11extras=true], [])
+	if $lyx_use_x11extras; then
+		qt_guilibs="$qt_guilibs Qt5X11Extras xcb"
+		AC_DEFINE(HAVE_QT5_X11_EXTRAS, 1,
+			[Define if you have the Qt5X11Extras module])
+	fi
+	lyx_use_winextras=false
+	PKG_CHECK_EXISTS(Qt5WinExtras, [lyx_use_winextras=true], [])
+	if $lyx_use_winextras; then
+		qt_guilibs="$qt_guilibs Qt5WinExtras"
+	fi
+	lyx_use_macextras=false
+	PKG_CHECK_EXISTS(Qt5MacExtras, [lyx_use_macextras=true], [])
+	if $lyx_use_macextras; then
+		qt_guilibs="$qt_guilibs Qt5MacExtras"
 	fi
 	PKG_CHECK_MODULES(QT_CORE, $qt_corelibs,,[:])
 	if test "$pkg_failed" = "no" ; then

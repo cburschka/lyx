@@ -348,19 +348,6 @@ if (LYX_USE_QT MATCHES "QT5|QT6")
     set(CMAKE_REQUIRED_INCLUDES ${${QtVal}WinExtras_INCLUDE_DIRS})
     set(CMAKE_REQUIRED_FLAGS ${${QtVal}WinExtras_EXECUTABLE_COMPILE_FLAGS})
   endif()
-elseif(LYX_USE_QT MATCHES "QT4")
-  set(CMAKE_REQUIRED_LIBRARIES ${QT_QTGUI_LIBRARY})
-  set(CMAKE_REQUIRED_INCLUDES ${QT_INCLUDES})
-  check_cxx_source_compiles(
-          "
-          #include <QtGui/QX11Info>
-          int main()
-          {
-            QX11Info *qxi = new QX11Info;
-            qxi->~QX11Info();
-          }
-          "
-  QT_USES_X11)
 else()
   message(FATAL_ERROR "Check for QT_USES_X11: Not handled LYX_USE_QT (= ${LYX_USE_QT})")
 endif()

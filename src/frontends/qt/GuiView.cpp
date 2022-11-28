@@ -161,7 +161,6 @@ public:
 		/// The text to be written on top of the pixmap
 		QString const text = lyx_version ?
 			qt_("version ") + lyx_version : qt_("unknown version");
-#if QT_VERSION >= 0x050000
 		QString imagedir = "images/";
 		FileName fname = imageLibFileSearch(imagedir, "banner", "svgz");
 		QSvgRenderer svgRenderer(toqstr(fname.absFileName()));
@@ -173,9 +172,6 @@ public:
 		} else {
 			splash_ = getPixmap("images/", "banner", "png");
 		}
-#else
-		splash_ = getPixmap("images/", "banner", "svgz,png");
-#endif
 
 		QPainter pain(&splash_);
 		pain.setPen(QColor(0, 0, 0));
@@ -264,11 +260,7 @@ private:
 
 	/// Current ratio between physical pixels and device-independent pixels
 	double pixelRatio() const {
-#if QT_VERSION >= 0x050000
 		return qt_scale_factor * devicePixelRatio();
-#else
-		return 1.0;
-#endif
 	}
 
 	qreal fontSize() const {
@@ -288,11 +280,7 @@ private:
 
 	/// Ratio between physical pixels and device-independent pixels of splash image
 	double splashPixelRatio() const {
-#if QT_VERSION >= 0x050000
 		return splash_.devicePixelRatio();
-#else
-		return 1.0;
-#endif
 	}
 };
 
@@ -608,15 +596,10 @@ GuiView::GuiView(int id)
 	setAttribute(Qt::WA_DeleteOnClose, true);
 
 #if !(defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)) && !defined(Q_OS_MAC)
-	// QIcon::fromTheme was introduced in Qt 4.6
-#if (QT_VERSION >= 0x040600)
 	// assign an icon to main form. We do not do it under Qt/Win or Qt/Mac,
 	// since the icon is provided in the application bundle. We use a themed
 	// version when available and use the bundled one as fallback.
 	setWindowIcon(QIcon::fromTheme("lyx", getPixmap("images/", "lyx", "svg,png")));
-#else
-	setWindowIcon(getPixmap("images/", "lyx", "svg,png"));
-#endif
 
 #endif
 	resetWindowTitle();
@@ -1001,7 +984,7 @@ void GuiView::saveLayout() const
 	settings.setValue("devel_mode", devel_mode_);
 	settings.beginGroup("views");
 	settings.beginGroup(QString::number(id_));
-	if (guiApp->platformName() == "qt4x11" || guiApp->platformName() == "xcb") {
+	if (guiApp->platformName() == "xcb") {
 		settings.setValue("pos", pos());
 		settings.setValue("size", size());
 	} else
@@ -1067,7 +1050,7 @@ bool GuiView::restoreLayout()
 	char_nb_count_enabled_ = settings.value("char_nb_count_enabled", true).toBool();
 	stat_counts_->setVisible(word_count_enabled_ || char_count_enabled_ || char_nb_count_enabled_);
 
-	if (guiApp->platformName() == "qt4x11" || guiApp->platformName() == "xcb") {
+	if (guiApp->platformName() == "xcb") {
 		QPoint pos = settings.value("pos", QPoint(50, 50)).toPoint();
 		QSize size = settings.value("size", QSize(690, 510)).toSize();
 		resize(size);
@@ -1525,9 +1508,7 @@ void GuiView::updateWindowTitle(GuiWorkArea * wa)
 		// buffer-save has changed too.
 		updateToolbars();
 	}
-#ifndef Q_WS_MAC
 	title += from_ascii(" - LyX");
-#endif
 	setWindowTitle(toqstr(title));
 	// Sets the path for the window: this is used by OSX to
 	// allow a context click on the title bar showing a menu
@@ -1835,11 +1816,7 @@ void GuiView::resetCommandExecute()
 
 double GuiView::pixelRatio() const
 {
-#if QT_VERSION >= 0x050000
 	return qt_scale_factor * devicePixelRatio();
-#else
-	return 1.0;
-#endif
 }
 
 
@@ -5276,11 +5253,9 @@ Dialog * GuiView::findOrBuild(string const & name, bool hide_it)
 
 	dialog = build(name);
 	d.dialogs_[name].reset(dialog);
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
 	// Force a uniform style for group boxes
 	// On Mac non-flat works better, on Linux flat is standard
 	flatGroupBoxes(dialog->asQWidget(), guiApp->platformName() != "cocoa");
-#endif
 	if (lyxrc.allow_geometry_session)
 		dialog->restoreSession();
 	if (hide_it)

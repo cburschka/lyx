@@ -36,10 +36,6 @@ if(LYX_BUNDLE)
        		endif()
         install_qt_plugin("Qt5::QCocoaIntegrationPlugin")
        endif()
-   else()
-        # With QT4, just copy all the plugins
-        file(GLOB QT_PLUGIN_DIRECTORIES "${QT_PLUGINS_DIR}/*")
-        install(DIRECTORY ${QT_PLUGIN_DIRECTORIES} DESTINATION "${qtplugin_dest_dir}/plugins/" COMPONENT Runtime)
     endif()
 
     # Install code does the following:

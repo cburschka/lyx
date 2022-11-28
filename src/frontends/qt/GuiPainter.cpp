@@ -315,13 +315,6 @@ void GuiPainter::text(int x, int y, docstring const & s,
 	*/
 	QString str = toqstr(s);
 
-#if 0
-	// HACK: QT3 refuses to show single compose characters
-	//       Still needed with Qt4?
-	if (ls == 1 && str[0].unicode() >= 0x05b0 && str[0].unicode() <= 0x05c2)
-		str = ' ' + str;
-#endif
-
 	QFont ff = getFont(f);
 	ff.setWordSpacing(wordspacing);
 	GuiFontMetrics const & fm = getFontMetrics(f);

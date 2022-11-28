@@ -76,10 +76,8 @@
 #include <QHash>
 #include <QList>
 #include <QMenuBar>
-#include <QString>
-#if QT_VERSION >= 0x040600
 #include <QProxyStyle>
-#endif
+#include <QString>
 
 #include <algorithm>
 #include <memory>
@@ -2146,7 +2144,7 @@ void Menu::Impl::populate(QMenu * qMenu, MenuDefinition const & menu)
 		}
 }
 
-#if (defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)) && (QT_VERSION >= 0x040600)
+#if (defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN))
 class AlwaysMnemonicStyle : public QProxyStyle {
 public:
 	int styleHint(StyleHint hint, const QStyleOption *opt = 0, const QWidget *widget = 0,
@@ -2166,7 +2164,7 @@ public:
 Menu::Menu(GuiView * gv, QString const & name, bool top_level, bool keyboard)
 : QMenu(gv), d(new Menu::Impl)
 {
-#if (defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)) && (QT_VERSION >= 0x040600)
+#if (defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN))
 	if (keyboard)
 		setStyle(new AlwaysMnemonicStyle);
 #else
@@ -2280,11 +2278,10 @@ MenuDefinition Menus::Impl::mac_special_menu_;
 */
 void Menus::Impl::macxMenuBarInit(QMenuBar * qmb)
 {
-	/* Since Qt 4.2, the qt/mac menu code has special code for
-	   specifying the role of a menu entry. However, it does not
-	   work very well with our scheme of creating menus on demand,
-	   and therefore we need to put these entries in a special
-	   invisible menu. (JMarc)
+	/* The qt/mac menu code has special code for specifying the role
+	   of a menu entry. However, it does not work very well with our
+	   scheme of creating menus on demand, and therefore we need to
+	   put these entries in a special invisible menu. (JMarc)
 	*/
 
 	/* The entries of our special mac menu. If we add support for
@@ -2306,11 +2303,6 @@ void Menus::Impl::macxMenuBarInit(QMenuBar * qmb)
 		 QAction::AboutRole},
 		{LFUN_DIALOG_SHOW, "prefs", "Preferences",
 		 QAction::PreferencesRole},
-#if !(defined(QT_MAC_USE_COCOA) || (QT_VERSION >= 0x050000))
-		/* This doesn't work with Cocoa. */
-		{LFUN_RECONFIGURE, "", "Reconfigure",
-		 QAction::ApplicationSpecificRole},
-#endif
 		{LFUN_LYX_QUIT, "", "Quit LyX", QAction::QuitRole}
 	};
 	const size_t num_entries = sizeof(entries) / sizeof(entries[0]);
@@ -2641,7 +2633,7 @@ void Menus::fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial)
 	} else {
 		// Clear all menubar contents before filling it.
 		qmb->clear();
-#if (QT_VERSION >= 0x050000 && defined(Q_OS_MAC))
+#if (defined(Q_OS_MAC))
 		d->macxMenuBarInit(qmb);
 #endif
 	}
@@ -2684,8 +2676,8 @@ void Menus::fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial)
 		Menu * menuptr = new Menu(view, m->submenuname(), true);
 		menuptr->setTitle(label(*m));
 
-#if defined(Q_OS_MAC) && (defined(QT_MAC_USE_COCOA) || (QT_VERSION >= 0x050000))
-		// On Mac OS with QT/cocoa, the menu is not displayed if there is no action
+#if defined(Q_OS_MAC)
+		// On Mac OS with Qt/Cocoa, the menu is not displayed if there is no action
 		// so we create a temporary one here
 		QAction * action = new QAction(menuptr);
 		menuptr->addAction(action);

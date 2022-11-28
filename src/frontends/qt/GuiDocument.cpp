@@ -909,13 +909,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 	masterChildModule->childrenTW->setColumnCount(2);
 	masterChildModule->childrenTW->headerItem()->setText(0, qt_("Child Document"));
 	masterChildModule->childrenTW->headerItem()->setText(1, qt_("Include to Output"));
-#if (QT_VERSION > 0x050000)
-        masterChildModule->childrenTW->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
-        masterChildModule->childrenTW->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
-#else
-        masterChildModule->childrenTW->header()->setResizeMode(0, QHeaderView::ResizeToContents);
-        masterChildModule->childrenTW->header()->setResizeMode(1, QHeaderView::ResizeToContents);
-#endif
+	masterChildModule->childrenTW->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+	masterChildModule->childrenTW->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
 
 	// Formats
 	outputModule = new UiWidget<Ui::OutputUi>(this);
@@ -1356,7 +1351,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	numberingModule->tocTW->headerItem()->setText(0, qt_("Example"));
 	numberingModule->tocTW->headerItem()->setText(1, qt_("Numbered"));
 	numberingModule->tocTW->headerItem()->setText(2, qt_("Appears in TOC"));
-	setSectionResizeMode(numberingModule->tocTW->header(), QHeaderView::ResizeToContents);
+	numberingModule->tocTW->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
 	connect(numberingModule->linenoCB, SIGNAL(toggled(bool)),
 		this, SLOT(linenoToggled(bool)));
 	connect(numberingModule->linenoCB, SIGNAL(clicked()),
@@ -1446,7 +1441,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	headers << qt_("Package") << qt_("Load automatically")
 		<< qt_("Load always") << qt_("Do not load");
 	mathsModule->packagesTW->setHorizontalHeaderLabels(headers);
-	setSectionResizeMode(mathsModule->packagesTW->horizontalHeader(), QHeaderView::Stretch);
+	mathsModule->packagesTW->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 	map<string, string> const & packages = BufferParams::auto_packages();
 	mathsModule->packagesTW->setRowCount(packages.size());
 	int packnum = 0;
@@ -1649,10 +1644,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 	// Modules
 	modulesModule = new UiWidget<Ui::ModulesUi>(this);
 	modulesModule->availableLV->header()->setVisible(false);
-	setSectionResizeMode(modulesModule->availableLV->header(), QHeaderView::ResizeToContents);
+	modulesModule->availableLV->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
 	modulesModule->availableLV->header()->setStretchLastSection(false);
 	modulesModule->selectedLV->header()->setVisible(false);
-	setSectionResizeMode(modulesModule->selectedLV->header(), QHeaderView::ResizeToContents);
+	modulesModule->selectedLV->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
 	modulesModule->selectedLV->header()->setStretchLastSection(false);
 	selectionManager =
 		new ModuleSelectionManager(this, modulesModule->availableLV,
@@ -1679,13 +1674,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(moduleFilterChanged(QString)));
 	connect(filter_, SIGNAL(returnPressed()),
 		this, SLOT(moduleFilterPressed()));
-#if (QT_VERSION < 0x050000)
-	connect(filter_, SIGNAL(downPressed()),
-		modulesModule->availableLV, SLOT(setFocus()));
-#else
 	connect(filter_, &FancyLineEdit::downPressed,
 		modulesModule->availableLV, [this](){ focusAndHighlight(modulesModule->availableLV); });
-#endif
 
 
 	// PDF support
@@ -1793,11 +1783,6 @@ GuiDocument::GuiDocument(GuiView & lv)
 	docPS->addPanel(outputModule, N_("Formats[[output]]"));
 	docPS->addPanel(preambleModule, N_("LaTeX Preamble"));
 	docPS->setCurrentPanel("Document Class");
-// FIXME: hack to work around resizing bug in Qt >= 4.2
-// bug verified with Qt 4.2.{0-3} (JSpitzm)
-#if QT_VERSION >= 0x040200
-	docPS->updateGeometry();
-#endif
 }
 
 

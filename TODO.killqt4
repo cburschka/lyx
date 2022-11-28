@@ -1,0 +1,12 @@
+Killing Qt4
+===========
+
+Things left to do before release, obtained using:
+  git grep -il 'qt *4'
+
+* macOS (Stephan):
+  - update INSTALL.cmake
+  - update INSTALL.MacOSX
+
+* Windows (Eugene?)
+  - update development/cmake/modules/LyXPaths.cmake

@@ -176,7 +176,6 @@ cmake/modules/FindLyXGettext.cmake \
 cmake/modules/FindMagic.cmake \
 cmake/modules/FindMYTHESLIB.cmake \
 cmake/modules/FindOpenSSL.cmake \
-cmake/modules/FindQt4.cmake \
 cmake/modules/FindZLIB.cmake \
 cmake/modules/LyXDestinations.cmake \
 cmake/modules/LyXMacros.cmake \

@@ -26,62 +26,58 @@
 #  
 
 if(NOT WIN32)
-    	set(_prog_path ~/bin)
+	set(_prog_path ~/bin)
 else()
+	if(WINDEPS)
+		FIND_PROGRAM(LYX_QMAKE NAMES qmake)
+		if(NOT LYX_QMAKE)
+			message("------ qmake not found. Add YOUR_PATH\\lyx-windows-deps-msvc-qt4\\qt-4\\bin")
+			message("------ to PATH: set PATH=%PATH%;YOUR_PATH\\lyx-windows-deps-msvc-qt4\\qt-4\\bin")
+			message(FATAL_ERROR "Exit.")
+		else()
+			GET_FILENAME_COMPONENT(LYX_QMAKE_PATH ${LYX_QMAKE} PATH)
+			set(WINDEPSDIR "${LYX_QMAKE_PATH}/../..")
+		endif()
 
-if(WINDEPS)
-	FIND_PROGRAM(LYX_QMAKE NAMES qmake)
-	if(NOT LYX_QMAKE)
-		message("------ qmake not found. Add YOUR_PATH\\lyx-windows-deps-msvc-qt4\\qt-4\\bin")
-		message("------ to PATH: set PATH=%PATH%;YOUR_PATH\\lyx-windows-deps-msvc-qt4\\qt-4\\bin")
-		message(FATAL_ERROR "Exit.")
-	else()
-		GET_FILENAME_COMPONENT(LYX_QMAKE_PATH ${LYX_QMAKE} PATH)
-		set(WINDEPSDIR "${LYX_QMAKE_PATH}/../..")
+		set(GNUWIN32_DIR ${WINDEPSDIR})
+
+		# don't stop in FindQt4.cmake because qmake will
+		# report wrong paths
+		set(QT_HEADERS_DIR "${WINDEPSDIR}/qt-4/include" CACHE STRING "Qt4 headers directory" FORCE)
+		set(QT_LIBRARY_DIR "${WINDEPSDIR}/qt-4/lib" CACHE STRING "Qt4 libraries directory" FORCE)
+		set(QT_BINARY_DIR  "${WINDEPSDIR}/qt-4/bin" CACHE STRING "Qt4 binaries directory" FORCE)
+		set(QT_MKSPECS_DIR "${WINDEPSDIR}/qt-4/mkspecs" CACHE STRING "Qt4 mkspecs directory" FORCE)
+		set(QT_PLUGINS_DIR "${WINDEPSDIR}/qt-4/plugins" CACHE STRING "Qt4 plugins directory" FORCE)
+		set(QT_MOC_EXECUTABLE "${WINDEPSDIR}/qt-4/bin/moc.exe" CACHE STRING "Qt4 moc executable" FORCE)
+		set(QT_UIC_EXECUTABLE "${WINDEPSDIR}/qt-4/bin/uic.exe" CACHE STRING "Qt4 uic executable" FORCE)
+		set(QT_RCC_EXECUTABLE "${WINDEPSDIR}/qt-4/bin/rcc.exe" CACHE STRING "Qt4 rcc executable" FORCE)
 	endif()
-	
-	set(GNUWIN32_DIR ${WINDEPSDIR})
-	
-	# don't stop in FindQt4.cmake because qmake will
-	# report wrong paths
-	set(QT_HEADERS_DIR "${WINDEPSDIR}/qt-4/include" CACHE STRING "Qt4 headers directory" FORCE)
-	set(QT_LIBRARY_DIR "${WINDEPSDIR}/qt-4/lib" CACHE STRING "Qt4 libraries directory" FORCE)
-	set(QT_BINARY_DIR  "${WINDEPSDIR}/qt-4/bin" CACHE STRING "Qt4 binaries directory" FORCE)
-	set(QT_MKSPECS_DIR "${WINDEPSDIR}/qt-4/mkspecs" CACHE STRING "Qt4 mkspecs directory" FORCE)
-	set(QT_PLUGINS_DIR "${WINDEPSDIR}/qt-4/plugins" CACHE STRING "Qt4 plugins directory" FORCE)
-	set(QT_MOC_EXECUTABLE "${WINDEPSDIR}/qt-4/bin/moc.exe" CACHE STRING "Qt4 moc executable" FORCE)
-	set(QT_UIC_EXECUTABLE "${WINDEPSDIR}/qt-4/bin/uic.exe" CACHE STRING "Qt4 uic executable" FORCE)
-	set(QT_RCC_EXECUTABLE "${WINDEPSDIR}/qt-4/bin/rcc.exe" CACHE STRING "Qt4 rcc executable" FORCE)
+
+	find_package(GNUWIN32 REQUIRED)
+	if(LYX_3RDPARTY_BUILD)
+		file(TO_CMAKE_PATH "$ENV{PROGRAMFILES}" _prog_path)
+	else()
+		file(TO_CMAKE_PATH "$ENV{PROGRAMFILES}" _prog_path)
+
+		set(_zlib_path ${_prog_path}/zlib)
+		set(_iconv_path ${_prog_path}/iconv)
+
+		set(_gnuwin32_dir ${GNUWIN32_DIR})
+
+		set(CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH}
+				${_gnuwin32_dir}/include
+				${_zlib_path}/include
+				${_iconv_path}/include)
+
+		set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH}
+				${_gnuwin32_dir}/lib
+				${_zlib_path}/lib
+				${_iconv_path}/lib)
+
+		#chek_include_files path
+		set(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} ${_gnuwin32_dir}/include)
+	endif()
 endif()
-
-find_package(GNUWIN32 REQUIRED)
-if(LYX_3RDPARTY_BUILD)
-    file(TO_CMAKE_PATH "$ENV{PROGRAMFILES}" _prog_path)
-else()
-
-    file(TO_CMAKE_PATH "$ENV{PROGRAMFILES}" _prog_path)
-
-    set(_zlib_path ${_prog_path}/zlib)
-    set(_iconv_path ${_prog_path}/iconv)
-
-    set(_gnuwin32_dir ${GNUWIN32_DIR})
-
-    set(CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH} 
-            ${_gnuwin32_dir}/include
-            ${_zlib_path}/include
-            ${_iconv_path}/include)
-            
-    set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} 
-            ${_gnuwin32_dir}/lib
-            ${_zlib_path}/lib
-            ${_iconv_path}/lib)
-
-    #chek_include_files path
-    set(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} ${_gnuwin32_dir}/include)
-endif()
-
-endif()
-
 
 if(WIN32)
 	set(locale_dir Resources/locale)
