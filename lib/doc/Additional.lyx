@@ -12996,20 +12996,28 @@ INSERT — cut to close-up of
 \end_layout
 
 \begin_layout Section
+
+\change_deleted 564990737 1669755802
 ijmpc and ijmpd
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669755802
 by 
 \noun on
 Panayotis Papasotiriou
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted 564990737 1669755802
 Overview
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669755802
 The ijmpc package is a set of macros that facilitates electronic manuscript
  submission to the 
 \emph on
@@ -13073,10 +13081,14 @@ article
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted 564990737 1669755802
 Writing a paper
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669755802
 As usual, the easiest way to write a paper is to start with a template.
  Click on 
 \family sans
@@ -13107,12 +13119,16 @@ ijmpd.lyx
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1669755802
 \SpecialChar LyX
  won't let you change the font size and the page style of the document,
  because such modifications are not allowed by both packages.
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1669755802
 The language of the document should not be changed.
  Before previewing your paper, be sure that the babel package is not used.
  To do this, click on 
@@ -13142,6 +13158,8 @@ Language Package
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1669755802
 The 
 \begin_inset Quotes eld
 \end_inset
@@ -13154,6 +13172,8 @@ Keywords
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1669755802
 The ijmpc package provides a style named 
 \begin_inset Quotes eld
 \end_inset
@@ -13167,6 +13187,8 @@ Classification Codes
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1669755802
 Several new environments are available: 
 \begin_inset Quotes eld
 \end_inset
@@ -13287,6 +13309,8 @@ Conjecture
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1669755802
 Both packages use basic citations; the natbib package should not be used.
  In \SpecialChar LyX
 , citation references are shown as usual; in the output, citations are
@@ -13325,6 +13349,8 @@ refcite{key}
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1669755802
 There is no 
 \begin_inset Quotes eld
 \end_inset
@@ -13346,6 +13372,8 @@ Section*
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1669755802
 Appendices may be added to the paper, 
 \emph on
 after
@@ -13407,6 +13435,8 @@ must
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1669755802
 The ijmpc and the ijmpd packages use the 
 \family typewriter
 tbl
@@ -13467,10 +13497,14 @@ ws-ijmpd.tex
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted 564990737 1669755802
 Preparing a paper for submission
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669755802
 Before you submit your paper you must export the \SpecialChar LyX
  document as a \SpecialChar LaTeX
  file (
@@ -13502,6 +13536,8 @@ Actually you have the choice between \SpecialChar LaTeX
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1669755802
 Remove the comment lines before the 
 \family typewriter
 
@@ -13512,6 +13548,8 @@ documentclass
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1669755802
 Remove everything between (and including) the 
 \family typewriter
 
@@ -13529,6 +13567,8 @@ makeatother
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669755802
 The modified 
 \family typewriter
 .tex
@@ -13540,6 +13580,8 @@ The modified
 .dvi
 \family default
  document.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
