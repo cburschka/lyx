@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 609
+\lyxformat 610
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -132,6 +132,7 @@ shapepar
 \author 177693 "x"
 \author 5863208 "ab"
 \author 244031559 "Yuriy"
+\author 564990737 "John Lyx"
 \author 630872221 "Jean-Pierre Chrétien" jeanpierre.chretien@free.fr
 \author 1075283030 "Thibaut"
 \author 1119979965 "Joel A. Kulesza"
@@ -8498,20 +8499,28 @@ Special Document Classes
 \end_layout
 
 \begin_layout Section
+
+\change_deleted 564990737 1669742044
 A&A Paper
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669742044
 by 
 \noun on
 Peter Sütterlin
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted 564990737 1669742044
 Introduction
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669742044
 This section describes how \SpecialChar LyX
  can be used to write articles for submission
  to the scientific journal 
@@ -8538,6 +8547,8 @@ aa.cls
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669742044
 \begin_inset VSpace medskip
 \end_inset
 
@@ -8546,6 +8557,8 @@ aa.cls
 
 \begin_layout Standard
 \align center
+
+\change_deleted 564990737 1669742044
 \begin_inset Flex URL
 status collapsed
 
@@ -8560,6 +8573,8 @@ ftp://ftp.edpsciences.org/pub/aa/readme.html
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669742044
 \begin_inset VSpace medskip
 \end_inset
 
@@ -8567,6 +8582,8 @@ ftp://ftp.edpsciences.org/pub/aa/readme.html
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669742044
 A manual comes together with that package, and this text is not meant to
  replace the original manual but is merely a short guide in how to realize
  the correct form of your paper.
@@ -8574,6 +8591,8 @@ A manual comes together with that package, and this text is not meant to
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669742044
 Please note that the publisher of the journal was changed from Springer
  to EDP Sciences starting January 1, 2001.
  That change involved also some slight changes to the style files, namely
@@ -8595,16 +8614,22 @@ Dir/layouts/aapaper.layout
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted 564990737 1669742044
 Getting started
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669742044
 It is recommended you start from the example template distributed with \SpecialChar LyX
 .
  If you are not using a template, note the following settings:
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1669742044
 Select 
 \family sans
 article (A&A)
@@ -8618,6 +8643,8 @@ Settings
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1669742044
 Don't change the option 
 \family sans
 Page
@@ -8635,16 +8662,22 @@ default
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted 564990737 1669742044
 The header block
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669742044
 First thing to enter is the header information.
  It consists of seven entries, of which some are optional.
  They are
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1669742044
 
 \family sans
 Title
@@ -8654,6 +8687,8 @@ Title
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1669742044
+
 \family sans
 Subtitle
 \family default
@@ -8661,6 +8696,8 @@ Subtitle
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1669742044
 
 \family sans
 Author
@@ -8670,6 +8707,8 @@ Author
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1669742044
+
 \family sans
 Address
 \family default
@@ -8677,6 +8716,8 @@ Address
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1669742044
 
 \family sans
 Offprints
@@ -8686,6 +8727,8 @@ Offprints
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1669742044
+
 \family sans
 Mail
 \family default
@@ -8693,6 +8736,8 @@ Mail
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1669742044
 
 \family sans
 Date
@@ -8704,6 +8749,8 @@ Received: <date>; Accepted <date>
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669742044
 There is no need to issue the 
 \family typewriter
 
@@ -8718,6 +8765,8 @@ maketitle
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669742044
 If you want to place footnotes in the header block, e.
 \begin_inset space \thinspace{}
 \end_inset
@@ -8744,6 +8793,8 @@ thanks{}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669742044
 Under 
 \family sans
 Edit\SpecialChar menuseparator
@@ -8753,6 +8804,8 @@ Text Style
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1669742044
 
 \family sans
 Institute
@@ -8770,6 +8823,8 @@ Address
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1669742044
+
 \family sans
 Email
 \family default
@@ -8777,6 +8832,8 @@ Email
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669742044
 In addition to these topics, the macros use one additional \SpecialChar LaTeX
  command that
  has no counterpart in \SpecialChar LyX
@@ -8784,6 +8841,8 @@ In addition to these topics, the macros use one additional \SpecialChar LaTeX
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1669742044
 
 \family typewriter
 
@@ -8795,6 +8854,8 @@ y.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669742044
 The appropriate command has to be entered in \SpecialChar LyX
  and marked as \SpecialChar LaTeX
  code.
@@ -8803,10 +8864,14 @@ The appropriate command has to be entered in \SpecialChar LyX
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted 564990737 1669742044
 The abstract
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669742044
 The abstract should immediately follow the header block.
  With version 5 the abstract environment was changed to a command, and there
  is now a restriction to only one paragraph.
@@ -8820,15 +8885,21 @@ Keywords
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted 564990737 1669742044
 Supported environments
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669742044
 The A&A paper layout supports the following environments for structuring
  your text:
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1669742044
 
 \family sans
 Standard
@@ -8836,11 +8907,15 @@ Standard
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1669742044
+
 \family sans
 Section
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1669742044
 
 \family sans
 Subsection
@@ -8848,11 +8923,15 @@ Subsection
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1669742044
+
 \family sans
 Subsubsection
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1669742044
 
 \family sans
 Itemize
@@ -8860,11 +8939,15 @@ Itemize
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1669742044
+
 \family sans
 Enumerate
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1669742044
 
 \family sans
 Description
@@ -8872,11 +8955,15 @@ Description
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1669742044
+
 \family sans
 Caption
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1669742044
 
 \family sans
 Abstract
@@ -8884,11 +8971,15 @@ Abstract
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1669742044
+
 \family sans
 Acknowledgment
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1669742044
 
 \family sans
 Bibliography
@@ -8896,17 +8987,23 @@ Bibliography
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1669742044
+
 \family sans
 \SpecialChar LaTeX
 
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted 564990737 1669742044
 Commands not supported by \SpecialChar LyX
 
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669742044
 Some commands are not yet supported by the 
 \family sans
 paper (A&A)
@@ -8919,6 +9016,8 @@ paper (A&A)
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1669742044
+
 \family typewriter
 
 \backslash
@@ -8926,6 +9025,8 @@ and
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 564990737 1669742044
 
 \family typewriter
 
@@ -8935,6 +9036,8 @@ authorrunning
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1669742044
+
 \family typewriter
 
 \backslash
@@ -8943,6 +9046,8 @@ object{}
 
 \begin_layout Itemize
 
+\change_deleted 564990737 1669742044
+
 \family typewriter
 
 \backslash
@@ -8950,6 +9055,8 @@ titlerunning{}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669742044
 If you want to use any of these commands, you have to enter them yourself.
  
 \series bold
@@ -8958,10 +9065,14 @@ Do not forget to mark them as \SpecialChar LaTeX
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted 564990737 1669742044
 Figure and Table Floats
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669742044
 \SpecialChar LyX
  provides support for the necessary float environments 
 \family sans
@@ -8993,11 +9104,15 @@ Settings.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669742044
 There is only one special thing: the figures with caption besides the figure.
  To create such a figure, you have to do the following:
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1669742044
 Create a wide figure float: 
 \family sans
 Insert\SpecialChar menuseparator
@@ -9016,10 +9131,14 @@ columns
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1669742044
 Enter your caption text.
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1669742044
 Press 
 \family sans
 Return
@@ -9028,10 +9147,14 @@ Return
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1669742044
 Insert your figure
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1669742044
 Position the cursor behind the figure and insert a horizontal fill: 
 \family sans
 Insert\SpecialChar menuseparator
@@ -9050,6 +9173,8 @@ Fill
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1669742044
 Switch to \SpecialChar LaTeX
  mode: 
 \family sans
@@ -9063,6 +9188,8 @@ t
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1669742044
 Enter 
 \family typewriter
 
@@ -9076,6 +9203,8 @@ Do not close the brace!
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1669742044
 Position the cursor behind the caption text, switch to \SpecialChar LaTeX
  mode and insert
  the closing brace: 
@@ -9094,14 +9223,20 @@ t
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669742044
 Also, refer to the figures in the example paper.
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted 564990737 1669742044
 Referee layout
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669742044
 For submission, the paper has to be formated in a special double-spacing
  layout.
  For this purpose, you have to give the option 
@@ -9123,10 +9258,14 @@ referee
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted 564990737 1669742044
 The example paper
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1669742044
 The 
 \family sans
 Examples
