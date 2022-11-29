@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-11-25 11:56+0100\n"
-"PO-Revision-Date: 2022-11-25 11:00+0000\n"
+"POT-Creation-Date: 2022-11-29 08:59+0100\n"
+"PO-Revision-Date: 2022-11-29 08:06+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1258,6 +1258,10 @@ msgstr "Špecifikujte modifikovanú verziu dokumentu tu (cieľ porovnania)"
 #: src/frontends/qt/ui/PrefInputUi.ui:52
 msgid "&Browse..."
 msgstr "Pre&chádzať…"
+
+#: src/frontends/qt/ui/CompareUi.ui:227
+msgid "Mark changes in the workarea as "
+msgstr "Označiť zmeny v pracovnej ploche ako "
 
 #: src/frontends/qt/ui/CompareUi.ui:117
 msgid "Select the document from which the settings should be taken"
@@ -28725,6 +28729,10 @@ msgid "changed text (workarea, 5th author)"
 msgstr "zmenený text (pracovná plocha, piaty autor)"
 
 #: src/Color.cpp:332
+msgid "changed text (workarea, document comparison)"
+msgstr "zmenený text (pracovná plocha, porovnanie s dokumentom)"
+
+#: src/Color.cpp:332
 msgid "deleted text modifier (workarea)"
 msgstr "zmazaný text: modifikátor (pracovná plocha)"
 
@@ -31975,6 +31983,14 @@ msgstr "Prerušujem proces…"
 #: src/frontends/qt/GuiCompare.cpp:315
 msgid "differences"
 msgstr "rozdiely"
+
+#: src/frontends/qt/GuiCompare.cpp:399
+msgid "Current Author"
+msgstr "Aktuálny autor"
+
+#: src/frontends/qt/GuiCompare.cpp:402
+msgid "Document Comparison"
+msgstr "Porovnanie s dokumentom"
 
 #: src/frontends/qt/GuiCompareHistory.cpp:38
 msgid "Compare different revisions"
