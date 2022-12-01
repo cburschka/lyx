@@ -709,7 +709,20 @@ static docstring latexString(InsetMathHull const & inset)
 	otexrowstream ots(ls);
 	TeXMathStream wi(ots, false, true, TeXMathStream::wsPreview, encoding);
 	inset.write(wi);
-	return ls.str();
+	docstring const s = ls.str();
+	docstring res;
+	for (char_type c : s) {
+	    if (encoding->encodable(c))
+		    res += c;
+	    else {
+		    // indicate the encoding error by a boxed '?'
+		    res += "{\\fboxsep=1pt\\fbox{?}}";
+		    LYXERR0("Uncodable character" << " '"
+			    << c
+			    << "'");
+	    }
+	}
+	return res;
 }
 
 
