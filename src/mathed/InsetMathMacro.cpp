@@ -27,6 +27,7 @@
 #include "BufferView.h"
 #include "CoordCache.h"
 #include "Cursor.h"
+#include "Encoding.h"
 #include "FuncStatus.h"
 #include "FuncRequest.h"
 #include "LaTeXFeatures.h"
@@ -34,6 +35,7 @@
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 
+#include "frontends/alert.h"
 #include "frontends/Painter.h"
 
 #include "support/debug.h"
@@ -1146,10 +1148,53 @@ void InsetMathMacro::write(TeXMathStream & os) const
 	mode_type mode = currentMode();
 	MathEnsurer ensurer(os, mode == MATH_MODE, true, mode == TEXT_MODE);
 
+	// Check if the macro name is encodable. Otherwise we might crash (#11855).
+	docstring const name_in = name();
+	docstring name_recoded;
+	docstring uncodable;
+	for (char_type c : name_in) {
+		if (!os.encoding())
+			break;
+		if (os.encoding()->encodable(c) || os.output() == TeXMathStream::wsSearchAdv)
+			name_recoded += c;
+		else {
+			switch (os.output()) {
+			case TeXMathStream::wsDryrun: {
+				os << "<" << _("LyX Warning: ")
+				   << _("uncodable character") << " '";
+				os << docstring(1, c);
+				os << "'>";
+				break;
+			}
+			case TeXMathStream::wsPreview: {
+				// indicate the encoding error by a boxed '?'
+				os << "{\\fboxsep=1pt\\fbox{?}}";
+				LYXERR0("Uncodable character" << " '"
+					<< docstring(1, c)
+					<< "'");
+				break;
+			}
+			case TeXMathStream::wsDefault:
+			default:
+				// record for error message
+				uncodable += c;
+				break;
+			}
+		}
+	}
+	
+	if (!uncodable.empty()) {
+		frontend::Alert::warning(
+			_("Uncodable characters in math macro"),
+			support::bformat(_("The macro name '%1$s' contains a character.\n"
+					   "that is not encodable in the current encoding (%2$s).\n"
+					   "Please fix this macro."), name_in, uncodable));
+	}
+
 	// non-normal mode
 	if (d->displayMode_ != DISPLAY_NORMAL) {
-		os << "\\" << name();
-		if (name().size() != 1 || isAlphaASCII(name()[0]))
+		os << "\\" << name_recoded;
+		if (name_recoded.size() != 1 || isAlphaASCII(name_recoded[0]))
 			os.pendingSpace(true);
 		return;
 	}
@@ -1162,7 +1207,7 @@ void InsetMathMacro::write(TeXMathStream & os) const
 	if (os.fragile())
 		os << "\\protect";
 
-	os << "\\" << name();
+	os << "\\" << name_recoded;
 	bool first = true;
 
 	// Optional arguments:
