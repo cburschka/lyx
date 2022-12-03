@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>622</width>
-    <height>299</height>
+    <height>348</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -66,14 +66,14 @@
         <item>
          <widget class="QRadioButton" name="oldSettingsRB">
           <property name="text">
-           <string>O&amp;ld Document</string>
+           <string>O&amp;ld document</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QRadioButton" name="newSettingsRB">
           <property name="text">
-           <string>New Docu&amp;ment</string>
+           <string>New docu&amp;ment</string>
           </property>
          </widget>
         </item>
@@ -126,7 +126,7 @@
      <item row="0" column="0">
       <widget class="QLabel" name="oldFileLA">
        <property name="text">
-        <string>Old Documen&amp;t:</string>
+        <string>Old documen&amp;t:</string>
        </property>
        <property name="buddy">
         <cstring>oldFileCB</cstring>
@@ -162,7 +162,7 @@
      <item row="1" column="0">
       <widget class="QLabel" name="newFileLA">
        <property name="text">
-        <string>&amp;New Document:</string>
+        <string>&amp;New document:</string>
        </property>
        <property name="buddy">
         <cstring>newFileCB</cstring>
@@ -222,19 +222,35 @@
    <item row="3" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_5">
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="authorLA">
+       <property name="toolTip">
+        <string>Changes in the workarea are allocated to the selected author or category</string>
+       </property>
        <property name="text">
-        <string>Mark changes in the workarea as </string>
+        <string>Changes mar&amp;kup:</string>
+       </property>
+       <property name="buddy">
+        <cstring>authorCO</cstring>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="authorCO"/>
+      <widget class="QComboBox" name="authorCO">
+       <property name="toolTip">
+        <string>Changes in the workarea are allocated to the selected author or category</string>
+       </property>
+      </widget>
      </item>
      <item>
       <spacer name="horizontalSpacer_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
        </property>
       </spacer>
      </item>
