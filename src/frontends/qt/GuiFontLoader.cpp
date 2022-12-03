@@ -386,7 +386,7 @@ bool FontLoader::available(FontInfo const & f)
 
 bool FontLoader::canBeDisplayed(char_type c)
 {
-	// bug 8493: with Qt5, characters with codepoints 9, 10, 12 and 13
+	// bug 8493: with Qt5 and Qt6, characters with codepoints 9, 10, 12 and 13
 	// are rendered as spaces. We handle that in our TeX fonts by making
 	// copies of the glyphs elsewhere, but this may trigger if we are
 	// unlucky.
