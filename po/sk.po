@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-11-29 08:59+0100\n"
-"PO-Revision-Date: 2022-11-29 08:06+0000\n"
+"POT-Creation-Date: 2022-12-03 16:16+0100\n"
+"PO-Revision-Date: 2022-12-03 15:29+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1232,10 +1232,6 @@ msgstr "Stará:"
 msgid "New:"
 msgstr "Nová:"
 
-#: src/frontends/qt/ui/CompareUi.ui:35
-msgid "Old Documen&t:"
-msgstr "&Bývalí dokument:"
-
 #: src/frontends/qt/ui/CompareUi.ui:51
 msgid "Specify the original version of the document here (comparison source)"
 msgstr "Špecifikujte originálnu verziu dokumentu tu (zdroj porovnania)"
@@ -1244,8 +1240,8 @@ msgstr "Špecifikujte originálnu verziu dokumentu tu (zdroj porovnania)"
 msgid "Bro&wse..."
 msgstr "P&rechádzať…"
 
-#: src/frontends/qt/ui/CompareUi.ui:71
-msgid "&New Document:"
+#: src/frontends/qt/ui/CompareUi.ui:165
+msgid "&New document:"
 msgstr "&Nový dokument:"
 
 #: src/frontends/qt/ui/CompareUi.ui:87
@@ -1259,13 +1255,28 @@ msgstr "Špecifikujte modifikovanú verziu dokumentu tu (cieľ porovnania)"
 msgid "&Browse..."
 msgstr "Pre&chádzať…"
 
-#: src/frontends/qt/ui/CompareUi.ui:227
-msgid "Mark changes in the workarea as "
-msgstr "Označiť zmeny v pracovnej ploche ako "
+#: src/frontends/qt/ui/CompareUi.ui:227 src/frontends/qt/ui/CompareUi.ui:240
+msgid ""
+"Changes in the workarea are allocated to the selected author or category"
+msgstr ""
+"Zmeny v pracovnej ploche sú pridelené vybranému autorovi či vybranej "
+"kategórie"
+
+#: src/frontends/qt/ui/CompareUi.ui:230
+msgid "Changes mar&kup:"
+msgstr "r&evízne označenie:"
 
 #: src/frontends/qt/ui/CompareUi.ui:117
 msgid "Select the document from which the settings should be taken"
 msgstr "Vyberte dokument z ktorého chcete nastavenia kopírovať"
+
+#: src/frontends/qt/ui/CompareUi.ui:69
+msgid "O&ld document"
+msgstr "Bý&valí dokument"
+
+#: src/frontends/qt/ui/CompareUi.ui:76
+msgid "New docu&ment"
+msgstr "Nový doku&ment"
 
 #: src/frontends/qt/GuiDocument.cpp:789 src/frontends/qt/ui/CompareUi.ui:120
 msgid "Document Settings"
@@ -1283,14 +1294,6 @@ msgstr "Stredná medzera"
 msgid "Big Skip"
 msgstr "Veľká medzera(BigSkip)"
 
-#: src/frontends/qt/ui/CompareUi.ui:129
-msgid "O&ld Document"
-msgstr "Bý&valí dokument"
-
-#: src/frontends/qt/ui/CompareUi.ui:136
-msgid "New Docu&ment"
-msgstr "Nový &dokument"
-
 #: src/frontends/qt/ui/CompareUi.ui:183
 msgid ""
 "Turns on the change tracking and showing changes in LaTeX output for the "
@@ -1302,6 +1305,10 @@ msgstr ""
 #: src/frontends/qt/ui/CompareUi.ui:186
 msgid "&Enable change tracking features in the output"
 msgstr "&Umožniť sledovanie zmien vo výstupe"
+
+#: src/frontends/qt/ui/CompareUi.ui:129
+msgid "Old documen&t:"
+msgstr "Bývalí dokumen&t:"
 
 #: src/frontends/qt/ui/CounterUi.ui:22
 msgid "C&ounter:"
@@ -17527,7 +17534,7 @@ msgstr ""
 "rozšírenia AMS, má tu každý poskytnutý typ teorémou svoje vlastné číslovanie "
 "(čiže veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma 2, …, oproti veta "
 "1, veta 2, lemma 3, tvrdenie 4…). Číslovanie sa reštartuje na začiatku "
-"každej kapitoli: teoréma 1.1, teoréma 2.1, … "
+"každej kapitoli: teoréma 1.1, teoréma 2.1, …"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:2
 msgid "AMS Theorems (Extended, Numbered by Type)"
@@ -20294,8 +20301,8 @@ msgstr "Kurzovné formátovanie strán|u"
 msgid "Emphasized Page Formatting|z"
 msgstr "Zdôraznené formátovanie strán|d"
 
-#: lib/ui/stdcontext.inc:642
-msgid "Custom Page Formatting|C"
+#: lib/ui/stdcontext.inc:646
+msgid "Custom Page Formatting|u"
 msgstr "Vlastné formátovanie Strán|V"
 
 #: lib/ui/stdcontext.inc:636
@@ -20452,7 +20459,7 @@ msgstr "Otvoriť nedávne|d"
 
 #: lib/ui/stdmenus.inc:49
 msgid "Open Example...|p"
-msgstr "Otvoriť príklad...|p"
+msgstr "Otvoriť príklad…|p"
 
 #: lib/ui/stdmenus.inc:51
 msgid "Close|C"
@@ -21019,8 +21026,8 @@ msgid "Branch|B"
 msgstr "Vetva|V"
 
 #: lib/ui/stdmenus.inc:384
-msgid "Custom Inset|s"
-msgstr "Vlastnú vložku|l"
+msgid "Custom Inset"
+msgstr "Vlastnú vložku"
 
 #: lib/ui/stdmenus.inc:385
 msgid "File|e"
@@ -37199,6 +37206,21 @@ msgstr "Nedá sa zmeniť počet riadkov v '%1$s'"
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Počet stĺpcov sa nedá zmeniť v '%1$s'"
+
+#: src/mathed/InsetMathMacro.cpp:1188
+msgid "Uncodable characters in math macro"
+msgstr "Nekódovateľné znaky v matematickom makre"
+
+#: src/mathed/InsetMathMacro.cpp:1189
+#, c-format
+msgid ""
+"The macro name '%1$s' contains a character.\n"
+"that is not encodable in the current encoding (%2$s).\n"
+"Please fix this macro."
+msgstr ""
+"V mene makra '%1$s' sú nekódovateľné znaky \n"
+"ktoré neexistujú v aktuálnom kódovaní (%2$s).\n"
+"Opravte toto makro."
 
 #: src/mathed/InsetMathMacro.cpp:1295 src/mathed/InsetMathMacro.cpp:1301
 #, c-format
