@@ -643,7 +643,7 @@ Menuset
 		OptItem "Bold Page Formatting|B" "inset-modify changeparam pagefmt textbf"
 		OptItem "Italic Page Formatting|I" "inset-modify changeparam pagefmt textit"
 		OptItem "Emphasized Page Formatting|z" "inset-modify changeparam pagefmt emph"
-		OptItem "Custom Page Formatting|C" "inset-modify changeparam pagefmt custom"
+		OptItem "Custom Page Formatting|u" "inset-modify changeparam pagefmt custom"
 	End
 	
 	Menu "context-edit-index"
