@@ -257,7 +257,7 @@ int GuiFontMetrics::width(docstring const & s) const
 		return *wid_p;
 	PROFILE_CACHE_MISS(width);
 	/* Several problems have to be taken into account:
-	 * * QFontMetrics::width does not returns a wrong value with Qt5 with
+	 * * QFontMetrics::width returns a wrong value with Qt5 with
 	 *   some arabic text, since the glyph-shaping operations are not
 	 *   done (documented in Qt5).
 	 * * QTextLayout is broken for single characters with null width
