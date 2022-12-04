@@ -657,23 +657,18 @@ void LocalLayout::hideConvert()
 
 void LocalLayout::textChanged()
 {
-	// Flashy red bold text
-	static const QString ivpar("<p style=\"color: #c00000; font-weight: bold; text-align:left\">"
-				   "%1</p>");
-	static const QString message = ivpar.arg(qt_("Validation required!"));
+	validLB->setText("");
 	string const layout =
 		fromqstr(locallayoutTE->document()->toPlainText().trimmed());
 
 	if (layout.empty()) {
 		validated_ = true;
 		validatePB->setEnabled(false);
-		validLB->setText("");
 		hideConvert();
 		changed();
 	} else if (!validatePB->isEnabled()) {
 		// if that's already enabled, we shouldn't need to do anything.
 		validated_ = false;
-		validLB->setText(message);
 		validatePB->setEnabled(true);
 		hideConvert();
 		changed();
@@ -3418,6 +3413,16 @@ bool GuiDocument::isChildIncluded(string const & child)
 
 void GuiDocument::applyView()
 {
+	// auto-validate local layout
+	if (!localLayout->isValid()) {
+		localLayout->validate();
+		if (!localLayout->isValid()) {
+			setApplyStopped(true);
+			docPS->setCurrentPanel(N_("Local Layout"));
+			return;
+		}
+	}
+
 	// preamble
 	preambleModule->apply(bp_);
 	localLayout->apply(bp_);
@@ -4849,7 +4854,6 @@ bool GuiDocument::isValid()
 {
 	return
 		validateListingsParameters().isEmpty() &&
-		localLayout->isValid() &&
 		!localLayout->editing() &&
 		!preambleModule->editing() &&
 		(

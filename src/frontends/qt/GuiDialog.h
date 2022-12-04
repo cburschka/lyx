@@ -74,6 +74,9 @@ public:
 	 */
 	void setButtonsValid(bool valid);
 
+	// Set whether to stop the apply process
+	void setApplyStopped(bool stop) { apply_stopped_ = stop; };
+
 	/** \name Dialog Components
 	 *  Methods to access the various components making up a dialog.
 	 */
@@ -115,6 +118,10 @@ private:
 	bool updating_;
 
 	bool is_closing_;
+
+	/// stop the apply process?
+	bool applyStopped() { return apply_stopped_; };
+	bool apply_stopped_;
 };
 
 

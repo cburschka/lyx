@@ -27,7 +27,7 @@ namespace frontend {
 
 GuiDialog::GuiDialog(GuiView & lv, QString const & name, QString const & title)
 	: QDialog(&lv), Dialog(lv, name, title), updating_(false),
-	  is_closing_(false)
+      is_closing_(false), apply_stopped_(false)
 {
 	connect(&lv, SIGNAL(bufferViewChanged()),
 	        this, SLOT(onBufferViewChanged()));
@@ -52,7 +52,10 @@ void GuiDialog::setButtonsValid(bool valid)
 
 void GuiDialog::slotApply()
 {
+	setApplyStopped(false);
 	apply();
+	if (applyStopped())
+		return;
 	bc().apply();
 }
 
@@ -67,7 +70,10 @@ void GuiDialog::slotAutoApply()
 void GuiDialog::slotOK()
 {
 	is_closing_ = true;
+	setApplyStopped(false);
 	apply();
+	if (applyStopped())
+		return;
 	is_closing_ = false;
 	hideView();
 	bc().ok();

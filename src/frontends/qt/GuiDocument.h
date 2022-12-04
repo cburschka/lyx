@@ -388,6 +388,7 @@ public:
 	LocalLayout(QWidget * parent);
 	void update(BufferParams const & params, BufferId id);
 	void apply(BufferParams & params);
+	void validate();
 	bool isValid() const { return validated_; }
 	bool editing() const { return (bool)tempfile_; }
 
@@ -396,7 +397,6 @@ Q_SIGNALS:
 	void changed();
 
 private:
-	void validate();
 	void convert();
 	void hideConvert();
 private Q_SLOTS:
