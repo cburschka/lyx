@@ -417,7 +417,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		if (!style.counter.empty()
 		    && (par == pbegin || !isNormalEnv(style))
 				&& cnts.hasCounter(cntr)
-		)
+			)
 			cnts.step(cntr, OutputUpdate);
 		ParagraphList::const_iterator send;
 
