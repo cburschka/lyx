@@ -115,6 +115,7 @@ Style Numbered_Examples_(consecutive)
 	DocBookWrapperAttr    role='consecutive'
 	DocBookWrapperMergeWithPrevious  true
 	DocBookTag            para
+	HTMLClass             NumberedExample
 End
 
 
@@ -131,6 +132,7 @@ Style Subexample
 		Tooltip       "Add subexamples options here"
 		PassThru       1
 	EndArgument
+	HTMLClass          SubExample
 End
 
 

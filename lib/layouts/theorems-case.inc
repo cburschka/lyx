@@ -51,6 +51,7 @@ Style Case
   HTMLTag               ol
   HTMLItem              li
   HTMLLabel             NONE
+  HTMLClass             lyxcase
   RefPrefix             enu
   Argument listpreamble:1
     LabelString    "List preamble"

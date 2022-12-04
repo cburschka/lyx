@@ -393,6 +393,7 @@ Style RomanList
   AlignPossible	Block, Left
   LabelType	Enumerate
   LabelCounter	"enum"
+  HTMLClass   LyXRomanList
   HTMLTag	ol
   HTMLItem	li
   HTMLLabel	NONE
@@ -400,6 +401,9 @@ Style RomanList
   DocBookTag            orderedlist
   DocBookItemTag        listitem
   DocBookItemInnerTag   para
+  HTMLStyle
+    ol.LyXRomanList { list-style-type: lower-roman; }
+  EndHTMLStyle
 End
 
 Style Proof
