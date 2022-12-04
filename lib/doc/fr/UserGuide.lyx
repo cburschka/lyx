@@ -34110,7 +34110,7 @@ Index
 \begin_inset Index idx
 range none
 pageformat default
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Index
@@ -34154,11 +34154,26 @@ type  "icon"
 arg   "index-insert"
 \end_inset
 
- de la barre d'outils mais voyez.
- Une boîte est insérée contenant le texte qui apparaîtra dans l'index.
+ de la barre d'outils (mais voyez la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Convenience-Functions-Index"
+
+\end_inset
+
+ pour quelques méthodes plus sophistiquée).
+ Un insert avec une étiquette verte est insérée: il contient le texte qui
+ apparaîtra dans l'index (si vous lisez ceci en \SpecialChar LyX
+, voyez la référence d'index
+ dans le titre de la présente section).
  Le mot dans lequel le curseur se trouve ou la portion de texte qui est
  actuellement sélectionnée est proposé comme entrée d'index par \SpecialChar LyX
-.
+ (i.e.
+ copié dans l'insert).
 \end_layout
 
 \begin_layout Standard
@@ -34190,8 +34205,64 @@ Index
 \end_inset
 
  apparaîtra à l'endroit où l'index sera imprimé dans la sortie finale.
- La boîte de l'index n'est pas cliquable comme les autre boîtes de \SpecialChar LyX
-.
+ Implicitement, l'insert de l'index n'est pas cliquable comme les autre
+ boîtes de \SpecialChar LyX
+, puisqu'il n'y a aucun réglage à préciser.
+ Ceci change si vous sélectionnez 
+\begin_inset Quotes cld
+\end_inset
+
+Utilisez plusieurs index
+\begin_inset Quotes crd
+\end_inset
+
+ (voir la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Ligatures"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Dans ce cas, l'insert devient gris et cliquable, puisqu'il peut y avoir
+ de réglages à faire.
+\end_layout
+
+\begin_layout Standard
+Implicitement, une entrée d'index est simplement un mot ou un phrase dans
+ l'index (ordonné alphabétiquement), avec une référence à la ou les pages
+ où l’entrée d'index a été insérée dans le document.
+ Cependant, vous pouvez paramétrer les entrées d'index pour qu'elles apparaissen
+t différemment.
+ Vous pouvez grouper les entrée dans des arborescences, vous référer à une
+ série de pages plutôt qu'à une seule page, introduire une référence à une
+ autre entrée de l'index à la place ou en plus du numéro de page, vous pouvez
+ mettre en forme les références de pages (en gras par exemple pour certaines
+ pages spécifiques) et vous pouvez modifier l'ordre des entrées dans l'index.
+ Ces fonctionnalités sont disponibles en \SpecialChar LyX
+ soit comme des 
+\begin_inset Quotes cld
+\end_inset
+
+sous-entrées
+\begin_inset Quotes crd
+\end_inset
+
+ via le menu 
+\family sans
+Insertion\SpecialChar menuseparator
+Propriétés de l'index
+\family default
+ qui apparaît si le curseur se trouve dans une entrée d'index, ou bien par
+ le menu des paramètres d'index qui peut être ouvert par un clic droit dans
+ l'insert d'index.
 \end_layout
 
 \begin_layout Standard
@@ -34216,7 +34287,7 @@ Rassembler les entrées d'index
 \begin_inset Index idx
 range none
 pageformat default
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Index
@@ -34231,6 +34302,13 @@ Rassembler les entrées
 
 
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Rassembler-les-entrées"
 
 \end_inset
 
@@ -34358,15 +34436,19 @@ Pages consécutives
 Implicitement une entrée d'index se réfère à la seule page où cette entrée
  a été insérée.
  Si vous voulez vous référer plutôt à une série de pages, vous pouvez le
- faire en insérant deux entrée s d'index: l'une marque le début de la série
+ faire en insérant deux entrées d'index: l'une marque le début de la série
  de pages, l'autre marque la fin.
- Les deux entrées doivent contenir la même entrée d'index (et éventuellement
- les sous-entrées).
+ Les deux entrées doivent contenir le même texte d'entrée d'index (et éventuelle
+ment les sous-entrées).
  Pour marquer le début et la fin, sélectionner l'option 
 \family sans
-Page Range
+Page initiale
 \family default
- adéquate dans les paramètres de l'insert d'index.
+ ou 
+\family sans
+Page finale
+\family default
+ dans les paramètres de l'insert d'index.
  Le début et la fin de la série de pages sont indiquées dans l'insert via
  
 \begin_inset Quotes cld
@@ -34389,11 +34471,13 @@ Page Range
 
 \begin_layout Standard
 
-\lang english
-Note that you have to take care that range markers are complete.
- If a range start without a respective end (or vice versa) is found, the
- index processor might terminate and not produce an index without informing
- you about the reason.
+\series bold
+Notez bien
+\series default
+ que vous devez vérifier que les marqueurs de début et de fin sont équilibrés.
+ Si une série commence sans qu'un marqueur de fin soit déclaré (et vice-versa),
+ le processeur d'index risque de stopper sans produire d'index et sans vous
+ informer de l'origine de l'erreur.
 \end_layout
 
 \begin_layout Subsection
@@ -34401,12 +34485,12 @@ Références croisées
 \begin_inset Index idx
 range none
 pageformat default
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Index
 \begin_inset IndexMacro subentry
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Références croisées
@@ -34423,103 +34507,99 @@ Références croisées
 \end_layout
 
 \begin_layout Standard
-Il est aussi possible de faire référence à une autre entrée d'index.
-
-\lang english
- rather than, or in addition to, a page.
- This might be useful if you anticipate that your readers might look for
- an entry at different places, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., 
+Il est aussi possible de faire référence à une autre entrée d'index à la
+ place de, ou en plus d'un numéro de page.
+ Ceci est utile si vous pensez que vos lecteurs pourraient chercher une
+ entrée à un endroit différent, par exemple 
 \emph on
-Graphics
+Graphiques
 \emph default
- or 
+ ou 
 \emph on
 Images
 \emph default
- (which could be resolved by a cross reference 
-\begin_inset Quotes eld
-\end_inset
-
-Images, 
+ (ce qui peut être résolu par des références comme 
 \emph on
-see
+Images
 \emph default
- Graphics
-\begin_inset Quotes erd
-\end_inset
-
-) or also if you use hierarchical grouping (section
+, 
+\emph on
+voir
+\emph default
+ 
+\emph on
+Graphiques
+\emph default
+) ou bien si vous utilisez les regroupements arborescents (section
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Grouping-Index-Entries"
+reference "subsec:Hyperliens"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
-), as in 
-\begin_inset Quotes eld
-\end_inset
-
-Apples, 
+), comme avec 
 \emph on
-see
+Pommes
 \emph default
- Fruits
-\begin_inset Quotes erd
-\end_inset
-
+, voir 
+\emph on
+Fruits
+\emph default
 .
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This is possible in \SpecialChar LyX
+Ceci est possible en \SpecialChar LyX
  via 
 \family sans
-Insert\SpecialChar menuseparator
-Index Properties\SpecialChar menuseparator
-See
-\family default
-.
+Insertion\SpecialChar menuseparator
+Propriétés d'Index\SpecialChar menuseparator
+Voir.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you want a cross-reference and page references, you can use 
+Si vous voulez afficher une référence croisée et des références de page,
+ vous pouvez utiliser 
 \family sans
-Insert\SpecialChar menuseparator
-Index Properties\SpecialChar menuseparator
-Seealso
+Insertion\SpecialChar menuseparator
+Propriétés d'Index\SpecialChar menuseparator
+Voir aussi
 \family default
 .
- This outputs 
-\begin_inset Quotes eld
+ Ceci imprime 
+\begin_inset Quotes cld
 \end_inset
 
-see also
-\begin_inset Quotes erd
-\end_inset
 
- instead and makes more sense if you also add entries that are referred
- to by page number as in 
-\begin_inset Quotes eld
-\end_inset
-
-Apples, 3, 12, 22, 
 \emph on
-see also
+voir aussi
 \emph default
- Fruits
-\begin_inset Quotes erd
+
+\begin_inset Quotes crd
+\end_inset
+
+ et est plus approprié si vous ajoutez des entrées référencées par numéro
+ de page, comme dans 
+\begin_inset Quotes cld
+\end_inset
+
+
+\emph on
+Pommes
+\emph default
+, 3, 12, 22, 
+\emph on
+voir aussi Fruits
+\emph default
+
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -35497,6 +35577,13 @@ Plusieurs index
 
 
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Plusieurs-index"
 
 \end_inset
 
