@@ -1825,9 +1825,9 @@ string const & Layout::htmlattr() const
 
 string const & Layout::htmlclass() const
 {
-	// If it's an enumeration, then we recalculate the class each time through
-	// unless it has been given explicitly. So we do nothing here.
-	if (htmlclass_.empty() && labeltype != LABEL_ENUMERATE)
+	// If it's an enumeration or itemize list, then we recalculate the class each
+	// time through (unless it has been given explicitly). So we do nothing here.
+	if (htmlclass_.empty() && labeltype != LABEL_ENUMERATE && labeltype != LABEL_ITEMIZE)
 		htmlclass_ = defaultCSSClass();
 	return htmlclass_;
 }

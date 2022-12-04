@@ -408,16 +408,19 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 	depth_type const origdepth = pbegin->params().depth();
 
 	// open tag for this environment
-	if (bstyle.labeltype == LABEL_ENUMERATE && bstyle.htmlclass().empty()) {
+	if ((bstyle.labeltype == LABEL_ENUMERATE || bstyle.labeltype == LABEL_ITEMIZE)
+		&& bstyle.htmlclass().empty()) {
 		// In this case, we have to calculate the CSS class ourselves, each time
 		// through
-		// FIXME We assume in these cases that the standard enumeration counter
-		// is being used. (We also do not deal with 'resume' counters, though I'm
-		// not sure that can be done at all.)
+		// FIXME We assume in these cases that the standard counters are being used.
+		// (We also do not deal with 'resume' counters, though I'm not sure that can
+		// be done at all in HTML.)
 
-		// Code borrowed from Buffer::Impl::setLabel
+		// Code adapated from Buffer::Impl::setLabel
 		docstring enumcounter = bstyle.counter.empty() ?
-					from_ascii("enum") : bstyle.counter;
+					(bstyle.labeltype == LABEL_ENUMERATE ?
+						from_ascii("lyxenum") : from_ascii("lyxitem") ) :
+					bstyle.counter;
 		switch (par->itemdepth) {
 		case 2:
 			enumcounter += 'i';
