@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3.x\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-11-23 21:33+0100\n"
+"POT-Creation-Date: 2022-12-04 19:23+0100\n"
 "PO-Revision-Date: 2019-04-23 13:49+0300\n"
 "Last-Translator: V. Jeliazkov <vveesskkoo@gmail.com>\n"
 "Language-Team: Bulgarian <lyx-docs@lists.lyx.org>\n"
@@ -30463,8 +30463,8 @@ msgstr "Клас документи не е наличен!"
 #: src/insets/InsetCommandParams.cpp:503 src/insets/InsetCommandParams.cpp:511
 #: src/insets/InsetGraphics.cpp:894 src/insets/InsetGraphics.cpp:902
 #: src/insets/InsetListings.cpp:260 src/insets/InsetListings.cpp:268
-#: src/insets/InsetListings.cpp:291 src/mathed/MathExtern.cpp:1440
-#: src/mathed/MathExtern.cpp:1518
+#: src/insets/InsetListings.cpp:291 src/mathed/InsetMathMacro.cpp:1091
+#: src/mathed/MathExtern.cpp:1440 src/mathed/MathExtern.cpp:1518
 msgid "LyX Warning: "
 msgstr "LyX Предупреждение:"
 
@@ -30473,8 +30473,8 @@ msgstr "LyX Предупреждение:"
 #: src/Paragraph.cpp:2767 src/insets/InsetCommandParams.cpp:504
 #: src/insets/InsetCommandParams.cpp:512 src/insets/InsetGraphics.cpp:895
 #: src/insets/InsetGraphics.cpp:903 src/insets/InsetListings.cpp:261
-#: src/insets/InsetListings.cpp:269 src/mathed/MathExtern.cpp:1441
-#: src/mathed/MathExtern.cpp:1519
+#: src/insets/InsetListings.cpp:269 src/mathed/InsetMathMacro.cpp:1092
+#: src/mathed/MathExtern.cpp:1441 src/mathed/MathExtern.cpp:1519
 msgid "uncodable character"
 msgstr "символ, който не може да се кодира"
 
@@ -39234,8 +39234,22 @@ msgstr "Не може да се промени броя на редовете в
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Не може да се промени броя на колоните в '%1$s'"
 
+# src/ext_l10n.h:78
+#: src/mathed/InsetMathMacro.cpp:1116
+#, fuzzy
+msgid "Uncodable characters in math macro"
+msgstr "Символи, които не могат да се кодират в пътя."
+
+#: src/mathed/InsetMathMacro.cpp:1117
+#, c-format
+msgid ""
+"The macro name '%1$s' contains a character\n"
+"that is not encodable in the current encoding (%2$s).\n"
+"Please fix this macro."
+msgstr ""
+
 # src/mathed/formulamacro.C:144 src/mathed/formulamacro.C:171
-#: src/mathed/InsetMathMacro.cpp:1224 src/mathed/InsetMathMacro.cpp:1230
+#: src/mathed/InsetMathMacro.cpp:1269 src/mathed/InsetMathMacro.cpp:1275
 #, c-format
 msgid "Macro: %1$s"
 msgstr "Макрос: %1$s"

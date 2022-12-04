@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-11-23 21:33+0100\n"
+"POT-Creation-Date: 2022-12-04 19:23+0100\n"
 "PO-Revision-Date: 2022-11-24 22:17+0100\n"
 "Last-Translator: Niko Strijbol <strijbol.niko@gmail.com>\n"
 "Language-Team: Dutch <lyx-docs@lists.lyx.org>\n"
@@ -25875,8 +25875,8 @@ msgstr "Documentklasse niet beschikbaar"
 #: src/insets/InsetCommandParams.cpp:503 src/insets/InsetCommandParams.cpp:511
 #: src/insets/InsetGraphics.cpp:894 src/insets/InsetGraphics.cpp:902
 #: src/insets/InsetListings.cpp:260 src/insets/InsetListings.cpp:268
-#: src/insets/InsetListings.cpp:291 src/mathed/MathExtern.cpp:1440
-#: src/mathed/MathExtern.cpp:1518
+#: src/insets/InsetListings.cpp:291 src/mathed/InsetMathMacro.cpp:1091
+#: src/mathed/MathExtern.cpp:1440 src/mathed/MathExtern.cpp:1518
 msgid "LyX Warning: "
 msgstr "LyX-waarschuwing: "
 
@@ -25884,8 +25884,8 @@ msgstr "LyX-waarschuwing: "
 #: src/Paragraph.cpp:2767 src/insets/InsetCommandParams.cpp:504
 #: src/insets/InsetCommandParams.cpp:512 src/insets/InsetGraphics.cpp:895
 #: src/insets/InsetGraphics.cpp:903 src/insets/InsetListings.cpp:261
-#: src/insets/InsetListings.cpp:269 src/mathed/MathExtern.cpp:1441
-#: src/mathed/MathExtern.cpp:1519
+#: src/insets/InsetListings.cpp:269 src/mathed/InsetMathMacro.cpp:1092
+#: src/mathed/MathExtern.cpp:1441 src/mathed/MathExtern.cpp:1519
 msgid "uncodable character"
 msgstr "niet-codeerbaar teken"
 
@@ -26012,8 +26012,8 @@ msgid ""
 "It is suggested to install the missing processor."
 msgstr ""
 "De bibliografieverwerker gevraagd door dit document (%1$s) is niet "
-"beschikbaar. Als alternatief zal '%2$s' gebruikt worden, zonder opties. "
-"Dit kan resulteren in fouten of ongewenste wijzigingen in de bibliografie. "
+"beschikbaar. Als alternatief zal '%2$s' gebruikt worden, zonder opties. Dit "
+"kan resulteren in fouten of ongewenste wijzigingen in de bibliografie. "
 "Controleer aandachtig!\n"
 "Het is aan te bevelen de ontbrekende verwerker te installeren."
 
@@ -33734,7 +33734,20 @@ msgstr "Kan het aantal rijen in '%1$s' niet veranderen"
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Kan het aantal kolommen in '%1$s' niet veranderen"
 
-#: src/mathed/InsetMathMacro.cpp:1224 src/mathed/InsetMathMacro.cpp:1230
+#: src/mathed/InsetMathMacro.cpp:1116
+#, fuzzy
+msgid "Uncodable characters in math macro"
+msgstr "Niet-codeerbare tekens in pad naar bestand"
+
+#: src/mathed/InsetMathMacro.cpp:1117
+#, c-format
+msgid ""
+"The macro name '%1$s' contains a character\n"
+"that is not encodable in the current encoding (%2$s).\n"
+"Please fix this macro."
+msgstr ""
+
+#: src/mathed/InsetMathMacro.cpp:1269 src/mathed/InsetMathMacro.cpp:1275
 #, c-format
 msgid "Macro: %1$s"
 msgstr "Macro: %1$s"

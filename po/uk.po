@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-11-23 21:33+0100\n"
+"POT-Creation-Date: 2022-12-04 19:23+0100\n"
 "PO-Revision-Date: 2022-11-25 08:48+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -2187,8 +2187,8 @@ msgid ""
 "File name to include. (You can create a new file by entering the name of one "
 "that does not yet exist.)"
 msgstr ""
-"Назва файла, який слід включити. (Ви можете створити файл введенням назви,"
-" якої ще не існує.)"
+"Назва файла, який слід включити. (Ви можете створити файл введенням назви, "
+"якої ще не існує.)"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:309
 msgid "&Include Type:"
@@ -2485,8 +2485,7 @@ msgstr "Вікно зворотної реакції"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:92
 msgid "Choose the LaTeX package for code syntax highlighting"
-msgstr ""
-"Виберіть пакунок LaTeX для підсвічування синтаксичних конструкцій коду"
+msgstr "Виберіть пакунок LaTeX для підсвічування синтаксичних конструкцій коду"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:95
 msgid "&Syntax Highlighting Package:"
@@ -3009,8 +3008,7 @@ msgid "&Allow running external programs"
 msgstr "&Дозволити запуск зовнішніх програм"
 
 #: src/frontends/qt4/ui/OutputUi.ui:121
-msgid ""
-"Enable forward/reverse search between editor and output (e.g., SyncTeX)"
+msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
 msgstr ""
 "Увімкнути прямий/зворотний пошук між редактором і програмою перегляду "
 "(наприклад, SyncTeX)"
@@ -3072,8 +3070,7 @@ msgstr "&Масштаб зображень формул:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:256
 msgid "Scaling factor for images used for math output."
-msgstr ""
-"Коефіцієнт масштабування для зображень, призначених для показу формул."
+msgstr "Коефіцієнт масштабування для зображень, призначених для показу формул."
 
 #: src/frontends/qt4/ui/OutputUi.ui:275
 msgid "Write CSS to file"
@@ -4569,8 +4566,7 @@ msgid "Select the index that shall be printed at this place of the document."
 msgstr "Оберіть покажчик, який має бути надруковано у цьому місці документа."
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:61
-msgid ""
-"Check if this index should be part (e.g., a section) of the former one."
+msgid "Check if this index should be part (e.g., a section) of the former one."
 msgstr ""
 "Позначте, якщо цей покажчик має бути частиною (наприклад, розділом) "
 "попереднього."
@@ -9756,8 +9752,7 @@ msgstr "Заголовки"
 
 #: lib/layouts/beamer.layout:950
 msgid "Short title which appears in the sidebar/header"
-msgstr ""
-"Скорочений запис заголовка, який буде показано на боковині або у шапці"
+msgstr "Скорочений запис заголовка, який буде показано на боковині або у шапці"
 
 #: lib/layouts/beamer.layout:960
 msgid "Title (Plain Frame)"
@@ -10335,8 +10330,8 @@ msgid ""
 "Layout to 'fancy'!"
 msgstr ""
 "Додає середовища для визначення рядків шапки і підвалу. ЗАУВАЖЕННЯ: щоб "
-"скористатися цим модулем вам слід встановити значення стилю сторінки у "
-"меню «Документ -> Налаштувати -> Формат сторінки» у значення «красивий»!"
+"скористатися цим модулем вам слід встановити значення стилю сторінки у меню "
+"«Документ -> Налаштувати -> Формат сторінки» у значення «красивий»!"
 
 #: lib/layouts/customHeadersFooters.module:12
 msgid "Header/Footer"
@@ -14663,8 +14658,7 @@ msgid "Left Column"
 msgstr "Лівий стовпчик"
 
 #: lib/layouts/powerdot.layout:464
-msgid ""
-"Enter the text of the left column here (right column in main paragraph)"
+msgid "Enter the text of the left column here (right column in main paragraph)"
 msgstr "Тут вкажіть текст у лівому стовпці (правим стовпцем є основний абзац)"
 
 #: lib/layouts/powerdot.layout:589
@@ -14895,10 +14889,8 @@ msgid "Phrase Text"
 msgstr "Текст фрази"
 
 #: lib/layouts/rsphrase.module:47
-msgid ""
-"Argument for statements that requires to specify additional information"
-msgstr ""
-"Аргумент до інструкцій, який потребує визначення додаткової інформації"
+msgid "Argument for statements that requires to specify additional information"
+msgstr "Аргумент до інструкцій, який потребує визначення додаткової інформації"
 
 #: lib/layouts/rsphrase.module:60
 msgid "S phrase:"
@@ -25415,8 +25407,7 @@ msgstr ""
 #: src/Buffer.cpp:1753
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
-msgstr ""
-"Не вдалося знайти команди LaTeX для символу «%1$s» (кодова точка %2$s)"
+msgstr "Не вдалося знайти команди LaTeX для символу «%1$s» (кодова точка %2$s)"
 
 #: src/Buffer.cpp:1756
 msgid ""
@@ -25904,8 +25895,8 @@ msgstr "Документ неможливо зберегти!"
 #: src/insets/InsetCommandParams.cpp:503 src/insets/InsetCommandParams.cpp:511
 #: src/insets/InsetGraphics.cpp:894 src/insets/InsetGraphics.cpp:902
 #: src/insets/InsetListings.cpp:260 src/insets/InsetListings.cpp:268
-#: src/insets/InsetListings.cpp:291 src/mathed/MathExtern.cpp:1440
-#: src/mathed/MathExtern.cpp:1518
+#: src/insets/InsetListings.cpp:291 src/mathed/InsetMathMacro.cpp:1091
+#: src/mathed/MathExtern.cpp:1440 src/mathed/MathExtern.cpp:1518
 msgid "LyX Warning: "
 msgstr "Попередження LyX: "
 
@@ -25913,8 +25904,8 @@ msgstr "Попередження LyX: "
 #: src/Paragraph.cpp:2767 src/insets/InsetCommandParams.cpp:504
 #: src/insets/InsetCommandParams.cpp:512 src/insets/InsetGraphics.cpp:895
 #: src/insets/InsetGraphics.cpp:903 src/insets/InsetListings.cpp:261
-#: src/insets/InsetListings.cpp:269 src/mathed/MathExtern.cpp:1441
-#: src/mathed/MathExtern.cpp:1519
+#: src/insets/InsetListings.cpp:269 src/mathed/InsetMathMacro.cpp:1092
+#: src/mathed/MathExtern.cpp:1441 src/mathed/MathExtern.cpp:1519
 msgid "uncodable character"
 msgstr "непридатний для кодування символ"
 
@@ -26020,9 +26011,9 @@ msgid ""
 "references will be generated.\n"
 "Please fix your installation!"
 msgstr ""
-"Засіб обробки бібліографії, який потрібен для цього документа (%1$s) є"
-" недоступним або не знайдено відповідної альтернативи. Бібліографію і"
-" посилання не створено.\n"
+"Засіб обробки бібліографії, який потрібен для цього документа (%1$s) є "
+"недоступним або не знайдено відповідної альтернативи. Бібліографію і "
+"посилання не створено.\n"
 "Будь ласка, встановіть потрібні компоненти!"
 
 #: src/BufferParams.cpp:3614
@@ -26038,10 +26029,10 @@ msgid ""
 "carefully!\n"
 "It is suggested to install the missing processor."
 msgstr ""
-"Засіб обробки бібліографії, який потрібен для цього документа (%1$s) є"
-" недоступним. Буде використано резервний засіб обробки «%2$s». Параметри"
-" обробки буде пропущено. Це може призвести до помилок або небажаних змін у"
-" бібліографії. Будь ласка, ретельно усе перевірте!\n"
+"Засіб обробки бібліографії, який потрібен для цього документа (%1$s) є "
+"недоступним. Буде використано резервний засіб обробки «%2$s». Параметри "
+"обробки буде пропущено. Це може призвести до помилок або небажаних змін у "
+"бібліографії. Будь ласка, ретельно усе перевірте!\n"
 "Радимо вам встановити потрібний для обробки засіб."
 
 #: src/BufferView.cpp:195
@@ -27757,8 +27748,7 @@ msgstr ""
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
-msgstr ""
-"Позначте, якщо на початку документа потрібна команда перемикання мови."
+msgstr "Позначте, якщо на початку документа потрібна команда перемикання мови."
 
 #: src/LyXRC.cpp:3313
 msgid ""
@@ -27943,8 +27933,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3450
 msgid "The screen fonts used to display the text while editing."
-msgstr ""
-"Екранні шрифти, що використовуються для показу тексту при редагуванні."
+msgstr "Екранні шрифти, що використовуються для показу тексту при редагуванні."
 
 #: src/LyXRC.cpp:3459
 msgid ""
@@ -28045,8 +28034,7 @@ msgstr ""
 "і Windows."
 
 #: src/LyXRC.cpp:3534
-msgid ""
-"Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
+msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Вкажіть команду налаштування формату паперу для DVI (залиште порожнім або "
 "введіть \"-paper\")"
@@ -29492,8 +29480,7 @@ msgstr "Текст, який слідує за посиланням (напри�
 
 #: src/frontends/qt4/GuiCitation.cpp:322
 msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")."
-msgstr ""
-"Примусовий верхній регістр у іменах («Дель П’єро», а не «дель П’єро»)."
+msgstr "Примусовий верхній регістр у іменах («Дель П’єро», а не «дель П’єро»)."
 
 #: src/frontends/qt4/GuiCitation.cpp:357
 msgid "Always list all authors (rather than using \"et al.\")"
@@ -30873,8 +30860,7 @@ msgstr ""
 "перетворювачем. Вилучіть спочатку перетворювач."
 
 #: src/frontends/qt4/GuiPrefs.cpp:2482
-msgid ""
-"Cannot remove a Format used by a Converter. Remove the converter first."
+msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "Неможливо вилучити формат, що використовується перетворювачем. Вилучіть "
 "спочатку перетворювач."
@@ -32055,8 +32041,7 @@ msgstr "Клацніть щоб від'єднати"
 #: src/frontends/qt4/LayoutBox.cpp:367
 #, c-format
 msgid "Filtering layouts with \"%1$s\". Press ESC to remove filter."
-msgstr ""
-"Фільтрування форматів за \"%1$s\". Натисніть ESC, щоб вилучити фільтр."
+msgstr "Фільтрування форматів за \"%1$s\". Натисніть ESC, щоб вилучити фільтр."
 
 #: src/frontends/qt4/LayoutBox.cpp:371 src/frontends/qt4/LayoutBox.cpp:426
 msgid "Enter characters to filter the layout list."
@@ -32605,8 +32590,8 @@ msgid ""
 msgstr ""
 "Наведені нижче символи у одній зі вкладок неможливо\n"
 "представити у поточному кодуванні, ці символи буде вилучено: %1$s.\n"
-"Також може допомогти зняття позначки з пункту «Буквально» у вікні"
-" відповідної вкладки."
+"Також може допомогти зняття позначки з пункту «Буквально» у вікні "
+"відповідної вкладки."
 
 #: src/insets/InsetExternal.cpp:403
 #, c-format
@@ -33743,7 +33728,20 @@ msgstr "Не можу змінити число рядків в '%1$s'"
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Не можу змінити кількість колонок до '%1$s'"
 
-#: src/mathed/InsetMathMacro.cpp:1224 src/mathed/InsetMathMacro.cpp:1230
+#: src/mathed/InsetMathMacro.cpp:1116
+#, fuzzy
+msgid "Uncodable characters in math macro"
+msgstr "Непридатні для кодування символи у шляху"
+
+#: src/mathed/InsetMathMacro.cpp:1117
+#, c-format
+msgid ""
+"The macro name '%1$s' contains a character\n"
+"that is not encodable in the current encoding (%2$s).\n"
+"Please fix this macro."
+msgstr ""
+
+#: src/mathed/InsetMathMacro.cpp:1269 src/mathed/InsetMathMacro.cpp:1275
 #, c-format
 msgid "Macro: %1$s"
 msgstr "Макрос: %1$s"
