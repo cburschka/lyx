@@ -4009,16 +4009,10 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 		// FIXME XHTML
 		// Other such tags? What about the other text ranges?
 
-		vector<xml::EndFontTag>::const_iterator cit = tagsToClose.begin();
-		vector<xml::EndFontTag>::const_iterator cen = tagsToClose.end();
-		for (; cit != cen; ++cit)
-			xs << *cit;
-
-		vector<xml::FontTag>::const_iterator sit = tagsToOpen.begin();
-		vector<xml::FontTag>::const_iterator sen = tagsToOpen.end();
-		for (; sit != sen; ++sit)
-			xs << *sit;
-
+		for (auto const & t : tagsToClose)
+			xs << t;
+		for (auto const & t : tagsToOpen)
+			xs << t;
 		tagsToClose.clear();
 		tagsToOpen.clear();
 
