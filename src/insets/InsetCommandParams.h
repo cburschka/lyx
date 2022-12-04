@@ -136,7 +136,7 @@ public:
 	///
 	void Write(std::ostream & os, Buffer const * buf) const;
 	/// Build the complete LaTeX command
-	docstring getCommand(OutputParams const &) const;
+	docstring getCommand(OutputParams const &, bool starred = false) const;
 	/// Return the command name
 	std::string const & getCmdName() const { return cmdName_; }
 	/// Set the name to \p n. This must be a known name. All parameters

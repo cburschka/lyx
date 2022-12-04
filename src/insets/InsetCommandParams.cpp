@@ -553,9 +553,11 @@ docstring InsetCommandParams::prepareCommand(OutputParams const & runparams,
 }
 
 
-docstring InsetCommandParams::getCommand(OutputParams const & runparams) const
+docstring InsetCommandParams::getCommand(OutputParams const & runparams, bool starred) const
 {
 	docstring s = '\\' + from_ascii(cmdName_);
+	if (starred)
+		s += from_utf8("*");
 	bool noparam = true;
 	ParamInfo::const_iterator it  = info_.begin();
 	ParamInfo::const_iterator end = info_.end();

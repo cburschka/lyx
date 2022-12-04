@@ -124,6 +124,7 @@ Menuset
 		OptItem "Plural|a" "inset-modify ref toggle-plural"
 		OptItem "Capitalize|C" "inset-modify ref toggle-caps"
 		OptItem "No Prefix" "inset-modify ref toggle-noprefix"
+		OptItem "No Hyperlink" "inset-modify ref toggle-nolink"
 		Separator
 		Item "Settings...|S" "inset-settings"
 	End

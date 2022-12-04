@@ -4550,6 +4550,81 @@ def revert_index_macros(document):
             document.body[pl:pl+1] = document.body[pl:pl] + sortkey + put_cmd_in_ert("@")
             
 
+def revert_starred_refs(document):
+    i = find_token(document.header, "\\use_hyperref true", 0)
+    use_hyperref = (i != -1)
+    i = 0
+    in_inset = False
+    cmd = ref = ""
+    plural = caps = noprefix = nolink = False
+    nolinkline = -1
+    while True:
+        if not in_inset:
+            i = find_token(document.body, "\\begin_inset CommandInset ref", i)
+            if i == -1:
+                break
+            start = i
+            end = find_end_of_inset(document.body, i)
+            if end == -1:
+                document.warning("Malformed LyX document: Can't find end of inset at line %d" % i)
+                i += 1
+                continue
+            # If we are not using hyperref, then we just need to delete the line
+            if not use_hyperref:
+                i = find_token(document.body, "nolink", i, e)
+                if i == -1:
+                    continue
+                del document.body[i]
+                i = e - 1
+                continue
+            # If we are using hyperref, then we'll need to do more.
+            in_inset = True
+            i += 1
+            continue
+        # so we are in an InsetRef
+        if i == end:
+            in_inset = False
+            # If nolink is False, just remove that line
+            if nolink == False or cmd == "formatted":
+                # document.warning("Skipping " + cmd + " " + ref)
+                if nolinkline != -1:
+                    del document.body[nolinkline]
+                continue
+            # We need to construct a new command and put it in ERT
+            newcmd = "\\" + cmd + "*{" + ref + "}"
+            # document.warning(newcmd)
+            newlines = put_cmd_in_ert(newcmd)
+            document.body[start:end+1] = newlines
+            i += len(newlines) - (end - start) + 1
+            # reset variables
+            cmd = ref = ""
+            plural = caps = noprefix = nolink = False
+            nolinkline = -1
+            continue
+        l = document.body[i]
+        if l.startswith("LatexCommand"):
+            cmd = l[13:]
+        elif l.startswith("reference"):
+            ref = l[11:-1]
+        elif l.startswith("caps"):
+            tmp = l[6:-1]
+            caps = (tmp == "true")
+        elif l.startswith("plural"):
+            tmp = l[8:-1]
+            plural = (tmp == "true")
+        elif l.startswith("noprefix"):
+            tmp = l[10:-1]
+            noprefix = (tmp == "true")
+        elif l.startswith("nolink"):
+            tmp = l[8:-1]
+            nolink  = (tmp == "true")
+            nolinkline = i
+        i += 1
+            
+        
+            
+            
+        
 ##
 # Conversion hub
 #
@@ -4622,10 +4697,12 @@ convert = [
            [608, []],
            [609, []],
            [610, []],
-           [611, []]
+           [611, []],
+           [612, []]
           ]
 
-revert =  [[610, []],
+revert =  [[611, [revert_starred_refs]],
+           [610, []],
            [609, [revert_index_macros]],
            [608, [revert_document_metadata]],
            [607, [revert_docbook_mathml_prefix]],

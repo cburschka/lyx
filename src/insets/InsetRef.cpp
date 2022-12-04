@@ -23,6 +23,7 @@
 #include "output_xhtml.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
+#include "PDFOptions.h"
 #include "xml.h"
 #include "texstream.h"
 #include "TocBackend.h"
@@ -74,6 +75,7 @@ ParamInfo const & InsetRef::findInfo(string const & /* cmdName */)
 		param_info_.add("plural", ParamInfo::LYX_INTERNAL);
 		param_info_.add("caps", ParamInfo::LYX_INTERNAL);
 		param_info_.add("noprefix", ParamInfo::LYX_INTERNAL);
+		param_info_.add("nolink", ParamInfo::LYX_INTERNAL);
 	}
 	return param_info_;
 }
@@ -120,6 +122,8 @@ void InsetRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 			pstring = "caps";
 		else if (arg == "toggle-noprefix")
 			pstring = "noprefix";
+		else if (arg == "toggle-nolink")
+			pstring = "nolink";
 		else if (arg == "changetarget") {
 			string const oldtarget = cmd.getArg(2);
 			string const newtarget = cmd.getArg(3);
@@ -167,6 +171,12 @@ bool InsetRef::getStatus(Cursor & cur, FuncRequest const & cmd,
 	if (arg == "toggle-noprefix") {
 		status.setEnabled(params().getCmdName() == "labelonly");
 		bool const isSet = (getParam("noprefix") == "true");
+		status.setOnOff(isSet);
+		return true;
+	}
+	if (arg == "toggle-nolink") {
+		status.setEnabled(params().getCmdName() != "formatted" && params().getCmdName() != "labelonly");
+		bool const isSet = (getParam("nolink") == "true");
 		status.setOnOff(isSet);
 		return true;
 	}
@@ -250,6 +260,7 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 {
 	string const & cmd = getCmdName();
 	docstring const & data = getEscapedLabel(rp);
+	bool const hyper_on = buffer().params().pdfoptions().use_hyperref;
 
 	if (rp.inulemcmd > 0)
 		os << "\\mbox{";
@@ -259,7 +270,11 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 		// for refstyle, since refstlye's own \eqref prints, by default,
 		// "equation n". if one wants \eqref, one can get it by using a
 		// formatted label in this case.
-		os << '(' << from_ascii("\\ref{") << data << from_ascii("})");
+		bool const use_nolink = hyper_on && getParam("nolink") == "true";
+		os << '(' << from_ascii("\\ref")   +
+			// no hyperlink version?
+			(use_nolink ? from_utf8("*") : from_utf8("")) +
+			from_ascii("{") << data << from_ascii("})");
 	}
 	else if (cmd == "formatted") {
 		docstring label;
@@ -291,9 +306,10 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 	}
 	else {
 		InsetCommandParams p(REF_CODE, cmd);
+		bool const use_nolink = hyper_on && getParam("nolink") == "true";
 		docstring const ref = getParam("reference");
 		p["reference"] = ref;
-		os << p.getCommand(rp);
+		os << p.getCommand(rp, use_nolink);
 	}
 
 	if (rp.inulemcmd > 0)
@@ -461,6 +477,12 @@ void InsetRef::updateBuffer(ParIterator const & it, UpdateType, bool const /*del
 	for (int i = 0; !types[i].latex_name.empty(); ++i) {
 		if (cmd == types[i].latex_name) {
 			label = _(types[i].short_gui_name);
+			// indicate no hyperlink (starred)
+			if (cmd != "formatted" && cmd != "labelonly") {
+				bool const isNoLink = getParam("nolink") == "true";
+				if (isNoLink)
+					label += from_ascii("*");
+			}
 			// indicate plural and caps
 			if (cmd == "formatted") {
 				bool const isPlural = getParam("plural") == "true";

@@ -22,6 +22,7 @@
 #include "Cursor.h"
 #include "FancyLineEdit.h"
 #include "FuncRequest.h"
+#include "PDFOptions.h"
 
 #include "qt_helpers.h"
 
@@ -109,6 +110,8 @@ GuiRef::GuiRef(GuiView & lv)
 		this, SLOT(changed_adaptor()));
 	connect(noprefixCB, SIGNAL(clicked()),
 		this, SLOT(changed_adaptor()));
+	connect(nolinkCB, SIGNAL(clicked()),
+		this, SLOT(changed_adaptor()));
 
 	enableBoxes();
 
@@ -142,9 +145,12 @@ void GuiRef::enableBoxes()
 	bool const isLabelOnly = (reftype == "labelonly");
 	bool const usingRefStyle = buffer().params().use_refstyle;
 	bool const intext = bufferview()->cursor().inTexted();
+	bool const hyper_on = buffer().params().pdfoptions().use_hyperref;
 	pluralCB->setEnabled(intext && isFormatted && usingRefStyle);
 	capsCB->setEnabled(intext && isFormatted && usingRefStyle);
 	noprefixCB->setEnabled(intext && isLabelOnly);
+	// disabling of hyperlinks not supported by formatted references
+	nolinkCB->setEnabled(hyper_on && intext && !isFormatted && !isLabelOnly);
 }
 
 
@@ -338,6 +344,7 @@ void GuiRef::updateContents()
 	pluralCB->setChecked(params_["plural"] == "true");
 	capsCB->setChecked(params_["caps"] == "true");
 	noprefixCB->setChecked(params_["noprefix"] == "true");
+	nolinkCB->setChecked(params_["nolink"] == "true");
 
 	// insert buffer list
 	bufferCO->clear();
@@ -379,6 +386,8 @@ void GuiRef::applyView()
 	params_["caps"] = capsCB->isChecked() ?
 	      from_ascii("true") : from_ascii("false");
 	params_["noprefix"] = noprefixCB->isChecked() ?
+	      from_ascii("true") : from_ascii("false");
+	params_["nolink"] = nolinkCB->isChecked() ?
 	      from_ascii("true") : from_ascii("false");
 	restored_buffer_ = bufferCO->currentIndex();
 }
