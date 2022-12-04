@@ -19,6 +19,7 @@
 #include "Counters.h"
 #include "Font.h"
 #include "Layout.h"
+#include "LayoutEnums.h"
 #include "Paragraph.h"
 #include "ParagraphList.h"
 #include "ParagraphParameters.h"
@@ -156,7 +157,7 @@ namespace {
 // convenience functions
 
 inline void openParTag(XMLStream & xs, Layout const & lay,
-                       const std::string & parlabel)
+                       std::string const & parlabel)
 {
 	string attrs = lay.htmlattr();
 	if (!parlabel.empty())
@@ -166,8 +167,17 @@ inline void openParTag(XMLStream & xs, Layout const & lay,
 
 
 void openParTag(XMLStream & xs, Layout const & lay,
+                std::string const & cssclass,
+                std::string const & parlabel) {
+    string attrs = "class='" + cssclass + "'";
+    if (!parlabel.empty())
+        attrs += " id='" + parlabel + "'";
+    xs << xml::ParTag(lay.htmltag(), attrs);
+}
+
+void openParTag(XMLStream & xs, Layout const & lay,
                 ParagraphParameters const & params,
-                const std::string & parlabel)
+                std::string const & parlabel)
 {
 	// FIXME Are there other things we should handle here?
 	string const align = alignmentToCSS(params.align());
@@ -398,7 +408,37 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 	depth_type const origdepth = pbegin->params().depth();
 
 	// open tag for this environment
-	openParTag(xs, bstyle, pbegin->magicLabel());
+	if (bstyle.labeltype == LABEL_ENUMERATE && bstyle.htmlattr().empty()) {
+		// In this case, we have to calculate the CSS class ourselves, each time
+		// through
+		// FIXME We assume in these cases that the standard enumeration counter
+		// is being used. (We also do not deal with 'resume' counters, though I'm
+		// not sure that can be done at all.)
+
+		// Code borrowed from Buffer::Impl::setLabel
+		docstring enumcounter = bstyle.counter.empty() ?
+					from_ascii("enum") : bstyle.counter;
+		switch (par->itemdepth) {
+		case 2:
+			enumcounter += 'i';
+			// fall through
+		case 1:
+			enumcounter += 'i';
+			// fall through
+		case 0:
+			enumcounter += 'i';
+			break;
+		case 3:
+			enumcounter += "iv";
+			break;
+		default:
+			// not a valid enumdepth...
+			break;
+		}
+		openParTag(xs, bstyle, to_utf8(enumcounter), pbegin->magicLabel());
+	}
+	else
+		openParTag(xs, bstyle, pbegin->magicLabel());
 	xs << xml::CR();
 
 	// we will on occasion need to remember a layout from before.

@@ -88,6 +88,12 @@ Style Enumerate
 	DocBookTag            orderedlist
 	DocBookItemTag        listitem
 	DocBookItemInnerTag   para
+	HTMLStyle
+		ol.enumi   { list-style-type: decimal; }
+		ol.enumii  { list-style-type: lower-latin; }
+		ol.enumiii { list-style-type: lower-roman; }
+		ol.enumiv  { list-style-type: upper-latin; }
+	EndHTMLStyle
 End
 
 Style Description

@@ -1809,7 +1809,9 @@ string const & Layout::htmltag() const
 
 string const & Layout::htmlattr() const
 {
-	if (htmlattr_.empty())
+	// If it's an enumeration, then we recalculate the class each time through
+	// unless it has been given explicitly
+	if (htmlattr_.empty() && labeltype != LABEL_ENUMERATE)
 		htmlattr_ = "class=\"" + defaultCSSClass() + "\"";
 	return htmlattr_;
 }
