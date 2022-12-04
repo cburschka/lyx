@@ -28,6 +28,7 @@
 #include "Lexer.h"
 #include "LyXRC.h"
 #include "output_docbook.h"
+#include "output_latex.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -222,6 +223,12 @@ void InsetNote::latex(otexstream & os, OutputParams const & runparams_in) const
 
 	OutputParams runparams(runparams_in);
 	if (params_.type == InsetNoteParams::Comment) {
+		if (runparams_in.inComment) {
+			// Nested comments should just output the contents.
+			latexParagraphs(buffer(), text(), os, runparams);
+			return;
+		}
+
 		runparams.inComment = true;
 		// Ignore files that are exported inside a comment
 		runparams.exportdata.reset(new ExportData);
