@@ -222,7 +222,7 @@ InsetLayout Caption:Table
 			margin: 1ex;
 		}
 	EndHTMLStyle
-	HTMLClass "float-caption float-caption-table"
+	HTMLAttr "class='float-caption float-caption-table'"
 End
 
 

@@ -619,7 +619,7 @@ InsetLayout Caption:FigCaption
 			margin: 1ex;
 		}
 	EndHTMLStyle
-	HTMLClass "float-caption float-caption-figcaption"
+	HTMLAttr "class='float-caption float-caption-figcaption'"
 End
 
 

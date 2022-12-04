@@ -399,7 +399,7 @@ InsetLayout Caption:Centered
 			margin: 1ex;
 		}
 	EndHTMLStyle
-	HTMLClass "float-caption float-caption-centered"
+	HTMLAttr "class='float-caption float-caption-centered'"
 End
 
 
