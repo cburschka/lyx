@@ -417,9 +417,9 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		// be done at all in HTML.)
 
 		// Code adapated from Buffer::Impl::setLabel
+		bool const isenum = bstyle.labeltype == LABEL_ENUMERATE;
 		docstring enumcounter = bstyle.counter.empty() ?
-					(bstyle.labeltype == LABEL_ENUMERATE ?
-						from_ascii("lyxenum") : from_ascii("lyxitem") ) :
+					( isenum ? from_ascii("enum") : from_ascii("lyxitem") ) :
 					bstyle.counter;
 		switch (par->itemdepth) {
 		case 2:
@@ -438,7 +438,9 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 			// not a valid enumdepth...
 			break;
 		}
-		openParTag(xs, bstyle, to_utf8(enumcounter), pbegin->magicLabel());
+		openParTag(xs, bstyle,
+				   string( isenum ? "lyxenum" : "lyxitem" ) + " "
+					+ to_utf8(enumcounter), pbegin->magicLabel());
 	}
 	else
 		openParTag(xs, bstyle, pbegin->magicLabel());
