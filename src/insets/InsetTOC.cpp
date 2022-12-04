@@ -158,18 +158,16 @@ void InsetTOC::makeTOCEntry(XMLStream & xs,
 void InsetTOC::makeTOCWithDepth(XMLStream & xs,
 		Toc const & toc, OutputParams const & op) const
 {
-	Toc::const_iterator it = toc.begin();
-	Toc::const_iterator const en = toc.end();
 	int lastdepth = 0;
-	for (; it != en; ++it) {
+	for (auto const & tocitem : toc) {
 		// do not output entries that are not actually included in the output,
 		// e.g., stuff in non-active branches or notes or whatever.
-		if (!it->isOutput())
+		if (!tocitem.isOutput())
 			continue;
 
 		// First, we need to manage increases and decreases of depth
 		// If there's no depth to deal with, we artificially set it to 1.
-		int const depth = it->depth();
+		int const depth = tocitem.depth();
 
 		// Ignore stuff above the tocdepth
 		if (depth > buffer().params().tocdepth)
@@ -205,7 +203,7 @@ void InsetTOC::makeTOCWithDepth(XMLStream & xs,
 		}
 
 		// Now output TOC info for this entry
-		Paragraph const & par = it->dit().innerParagraph();
+		Paragraph const & par = tocitem.dit().innerParagraph();
 		makeTOCEntry(xs, par, op);
 	}
 	for (int i = lastdepth; i > 0; --i)
@@ -216,17 +214,15 @@ void InsetTOC::makeTOCWithDepth(XMLStream & xs,
 void InsetTOC::makeTOCNoDepth(XMLStream & xs,
 		Toc const & toc, const OutputParams & op) const
 {
-	Toc::const_iterator it = toc.begin();
-	Toc::const_iterator const en = toc.end();
-	for (; it != en; ++it) {
+	for (auto const & tocitem : toc) {
 		// do not output entries that are not actually included in the output,
 		// e.g., stuff in non-active branches or notes or whatever.
-		if (!it->isOutput())
+		if (!tocitem.isOutput())
 			continue;
 
 		xs << xml::StartTag("div", "class='lyxtoc-flat'") << xml::CR();
 
-		Paragraph const & par = it->dit().innerParagraph();
+		Paragraph const & par = tocitem.dit().innerParagraph();
 		makeTOCEntry(xs, par, op);
 
 		xs << xml::EndTag("div");
