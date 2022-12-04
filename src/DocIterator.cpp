@@ -549,6 +549,11 @@ void DocIterator::updateInsets(Inset * inset)
 	size_t const n = slices_.size();
 	slices_.resize(0);
 	for (size_t i = 0 ; i < n; ++i) {
+		if (dit[i].empty() && prevMath().lyxCode() == MATH_SCRIPT_CODE)
+			// Workaround: With empty optional argument and a trailing script,
+			// we have empty slices in math macro args (#11676)
+			// FIXME: Find real cause!
+			continue;
 		LBUFERR(inset);
 		push_back(dit[i]);
 		top().inset_ = inset;
