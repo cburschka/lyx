@@ -435,7 +435,7 @@ void GuiRef::redoRefs()
 	QString const oldSelection(referenceED->text());
 
 	QStringList refsNames;
-	QStringList refsAsStrings;
+	QMap<QString, QString> refsAsStrings;
 	QStringList refsCategories;
 	vector<std::pair<docstring, docstring>>::const_iterator iter;
 	bool noprefix = false;
@@ -444,7 +444,7 @@ void GuiRef::redoRefs()
 		QString const lab = toqstr((*iter).first);
 		refsNames.append(lab);
 		// the label as gui string
-		refsAsStrings.append(toqstr((*iter).second));
+		refsAsStrings.insert(lab, toqstr((*iter).second));
 		if (groupCB->isChecked()) {
 			if (lab.contains(":")) {
 				QString const pref = lab.split(':')[0];
@@ -487,7 +487,8 @@ void GuiRef::redoRefs()
 				       && (!ref.mid(1).contains(":") || ref.left(1).contains(":")))) {
 						QTreeWidgetItem * child =
 							new QTreeWidgetItem(item);
-						child->setText(0, refsAsStrings.at(j));
+						QString const val = refsAsStrings.value(ref, ref);
+						child->setText(0, val);
 						child->setData(0, Qt::UserRole, ref);
 						item->addChild(child);
 				}
@@ -500,7 +501,8 @@ void GuiRef::redoRefs()
 		for (int i = 0; i < refsNames.size(); ++i) {
 			QTreeWidgetItem * item = new QTreeWidgetItem(refsTW);
 			QString const & ref = refsNames.at(i);
-			item->setText(0, refsAsStrings.at(i));
+			QString const val = refsAsStrings.value(ref, ref);
+			item->setText(0, val);
 			item->setData(0, Qt::UserRole, ref);
 			refsItems.append(item);
 		}
