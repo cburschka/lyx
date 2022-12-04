@@ -1927,16 +1927,12 @@ docstring const LaTeXFeatures::getTClassHTMLStyles() const
 
 	tcpreamble << tclass.htmlstyles();
 
-	list<docstring>::const_iterator cit = usedLayouts_.begin();
-	list<docstring>::const_iterator end = usedLayouts_.end();
-	for (; cit != end; ++cit)
-		tcpreamble << tclass[*cit].htmlstyle();
+	for (auto const & c : usedLayouts_)
+		tcpreamble << tclass[c].htmlstyle();
 
-	cit = usedInsetLayouts_.begin();
-	end = usedInsetLayouts_.end();
 	TextClass::InsetLayouts const & ils = tclass.insetLayouts();
-	for (; cit != end; ++cit) {
-		TextClass::InsetLayouts::const_iterator it = ils.find(*cit);
+	for (auto const & c : usedInsetLayouts_) {
+		TextClass::InsetLayouts::const_iterator it = ils.find(c);
 		if (it == ils.end())
 			continue;
 		tcpreamble << it->second.htmlstyle();
