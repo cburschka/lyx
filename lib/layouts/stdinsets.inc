@@ -4,7 +4,7 @@
 #
 # Detailed format description is available in the customization manual
 
-Format 95
+Format 96
 
 Provides stdinsets 1
 
