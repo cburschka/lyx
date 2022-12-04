@@ -7,7 +7,7 @@
 # commands that are useful for article-like document classes, but not
 # for letters.
 
-Format 96
+Format 97
 
 Style Part
 	Category              Sectioning

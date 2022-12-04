@@ -1,6 +1,6 @@
 # Theorem-like counters, extended, separately for each type of theorem
 
-Format 96
+Format 97
 Counter criterion
 	GuiName Criterion
 End

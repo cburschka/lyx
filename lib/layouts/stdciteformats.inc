@@ -11,7 +11,7 @@
 # Author: Richard Kimberly Heck <rikiheck@lyx.org>
 #         Jürgen Spitzmüller <spitz@lyx.org>
 
-Format 96
+Format 97
 
 CiteFormat default
 	#

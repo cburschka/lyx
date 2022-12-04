@@ -5,7 +5,7 @@
 # Author: Peter Sütterlin <pit@uni-sw.gwdg.de>
 
 
-Format 96
+Format 97
 Style Subtitle
 	Margin                Static
 	LatexType             Command
