@@ -198,10 +198,10 @@ Style Enumerate
 	DocBookItemTag        listitem
 	DocBookItemInnerTag   para
 	HTMLStyle
-		ol.lyxenumi   { list-style-type: decimal; }
-		ol.lyxenumii  { list-style-type: lower-latin; }
-		ol.lyxenumiii { list-style-type: lower-roman; }
-		ol.lyxenumiv  { list-style-type: upper-latin; }
+		ol.enumi   { list-style-type: decimal; }
+		ol.enumii  { list-style-type: lower-latin; }
+		ol.enumiii { list-style-type: lower-roman; }
+		ol.enumiv  { list-style-type: upper-latin; }
 	EndHTMLStyle
 End
 
