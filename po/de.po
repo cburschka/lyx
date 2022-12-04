@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-11-23 21:33+0100\n"
-"PO-Revision-Date: 2022-11-24 07:11+0100\n"
+"POT-Creation-Date: 2022-12-04 18:53+0100\n"
+"PO-Revision-Date: 2022-12-04 18:57+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: Deutsch <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -26025,8 +26025,8 @@ msgstr "Die Dokumentklasse ist nicht verfügbar"
 #: src/insets/InsetCommandParams.cpp:503 src/insets/InsetCommandParams.cpp:511
 #: src/insets/InsetGraphics.cpp:894 src/insets/InsetGraphics.cpp:902
 #: src/insets/InsetListings.cpp:260 src/insets/InsetListings.cpp:268
-#: src/insets/InsetListings.cpp:291 src/mathed/MathExtern.cpp:1440
-#: src/mathed/MathExtern.cpp:1518
+#: src/insets/InsetListings.cpp:291 src/mathed/InsetMathMacro.cpp:1091
+#: src/mathed/MathExtern.cpp:1440 src/mathed/MathExtern.cpp:1518
 msgid "LyX Warning: "
 msgstr "LyX-Warnung: "
 
@@ -26034,8 +26034,8 @@ msgstr "LyX-Warnung: "
 #: src/Paragraph.cpp:2767 src/insets/InsetCommandParams.cpp:504
 #: src/insets/InsetCommandParams.cpp:512 src/insets/InsetGraphics.cpp:895
 #: src/insets/InsetGraphics.cpp:903 src/insets/InsetListings.cpp:261
-#: src/insets/InsetListings.cpp:269 src/mathed/MathExtern.cpp:1441
-#: src/mathed/MathExtern.cpp:1519
+#: src/insets/InsetListings.cpp:269 src/mathed/InsetMathMacro.cpp:1092
+#: src/mathed/MathExtern.cpp:1441 src/mathed/MathExtern.cpp:1519
 msgid "uncodable character"
 msgstr "unkodierbares Zeichen"
 
@@ -33970,7 +33970,22 @@ msgstr "Die Anzahl der Zeilen in '%1$s' kann nicht geändert werden."
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Die Anzahl der Spalten in '%1$s' kann nicht geändert werden."
 
-#: src/mathed/InsetMathMacro.cpp:1224 src/mathed/InsetMathMacro.cpp:1230
+#: src/mathed/InsetMathMacro.cpp:1116
+msgid "Uncodable characters in math macro"
+msgstr "Unkodierbare Zeichen in Mathe-Makro"
+
+#: src/mathed/InsetMathMacro.cpp:1117
+#, c-format
+msgid ""
+"The macro name '%1$s' contains a character.\n"
+"that is not encodable in the current encoding (%2$s).\n"
+"Please fix this macro."
+msgstr ""
+"Der Makronamen '%1$s' enthält Zeichen, die nicht\n"
+"in der aktuellen Kodierung kodierbar sind (%2$s).\n"
+"Bitte korrigieren Sie das Makro."
+
+#: src/mathed/InsetMathMacro.cpp:1269 src/mathed/InsetMathMacro.cpp:1275
 #, c-format
 msgid "Macro: %1$s"
 msgstr "Makro: %1$s"
