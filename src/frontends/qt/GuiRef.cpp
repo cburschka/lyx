@@ -487,8 +487,8 @@ void GuiRef::redoRefs()
 				       && (!ref.mid(1).contains(":") || ref.left(1).contains(":")))) {
 						QTreeWidgetItem * child =
 							new QTreeWidgetItem(item);
-						item->setText(0, refsAsStrings.at(j));
-						item->setData(0, Qt::UserRole, ref);
+						child->setText(0, refsAsStrings.at(j));
+						child->setData(0, Qt::UserRole, ref);
 						item->addChild(child);
 				}
 			}
