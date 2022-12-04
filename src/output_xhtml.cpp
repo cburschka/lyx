@@ -466,10 +466,13 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 							xs << xml::CR();
 						}
 						else {
-							openLabelTag(xs, style);
-							xs << par->params().labelString();
-							closeLabelTag(xs, style);
-							xs << xml::CR();
+							docstring const & ls = par->params().labelString();
+							if (!ls.empty()) {
+								openLabelTag(xs, style);
+								xs << ls;
+								closeLabelTag(xs, style);
+								xs << xml::CR();
+							}
 						}
 					}
 				} // end label output
