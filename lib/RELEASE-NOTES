@@ -44,6 +44,10 @@
 * When using the document compare function, there is now an option to display the
   differences using a special "Document Compare" author.
 
+* InsetRef now supports starred commands. The starred commands stop hyperref from
+  creating a link (and are only available when hyperref is used). There is a 
+  checkbox "No Hyperlink" for this purpose.
+
 !!Documents compilation process and images conversion
 
 * LyX now uses utf8 encoding per default for all languages. This does
