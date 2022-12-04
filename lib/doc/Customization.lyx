@@ -28836,6 +28836,100 @@ HTMLStyle
 \end_inset
 
  for that purpose.
+\change_inserted -584632292 1670182206
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -584632292 1670182369
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1670182222
+HTMLClass
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -584632292 1670182217
+string
+\end_layout
+
+\end_inset
+
+] The CSS class to use for this paragraph.
+ Note that,
+ if the paragarph is of enumerate or itemize type,
+ then the default will be 
+\begin_inset Quotes eld
+\end_inset
+
+lyxenum
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+lyxitem
+\begin_inset Quotes erd
+\end_inset
+
+,
+ plus 
+\begin_inset Quotes eld
+\end_inset
+
+i
+\begin_inset Quotes erd
+\end_inset
+
+,
+ 
+\begin_inset Quotes eld
+\end_inset
+
+ii
+\begin_inset Quotes erd
+\end_inset
+
+,
+ 
+\begin_inset Quotes eld
+\end_inset
+
+iii
+\begin_inset Quotes erd
+\end_inset
+
+,
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+iv
+\begin_inset Quotes erd
+\end_inset
+
+,
+ depending upon the depth.
+ That can be over-ridden here.
+ However,
+ the suffix will not be added in that case.
+ I.e.,
+ the CSS class will always be exactly what it is declared to be here.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -28912,6 +29006,8 @@ status collapsed
 
 \change_inserted -584632292 1670132221
 HTMLInToc
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -28926,6 +29022,8 @@ status open
 0,
 \emph on
 1
+\change_unchanged
+
 \end_layout
 
 \end_inset
