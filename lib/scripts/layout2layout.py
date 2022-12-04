@@ -11,7 +11,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 95
+currentFormat = 96
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -321,6 +321,9 @@ currentFormat = 95
 
 # Incremented to format 95, 27 September 2021 by tcuvelier
 # Add DocBookRenderAsImage
+
+# Incremented to format 96, 4 December 2022 by rikiheck
+# Add HTMLInToc
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").

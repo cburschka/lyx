@@ -9,7 +9,7 @@
 # Converted article -> egs Martin Vermeer
 
 
-Format 95
+Format 96
 Columns                 2
 Sides                   1
 PageStyle               Plain
@@ -690,6 +690,7 @@ Style Section*
 	  Series              Bold
 #    Size               Larger
 	EndFont
+	HTMLInToc        0
 End
 
 
@@ -706,6 +707,7 @@ Style Subsection*
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
+	HTMLInToc        0
 End
 
 

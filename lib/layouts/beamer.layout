@@ -6,7 +6,7 @@
 #   Richard Kimberly Heck <rikiheck@lyx.org>, Martin Vermeer <martin.vermeer@hut.fi> and probably others.
 
 
-Format 95
+Format 96
 
 #
 # GLOBAL SETTINGS
@@ -347,6 +347,7 @@ Style Section*
     PassThru       1
   EndArgument
   LaTeXParam       *
+  HTMLInToc        0
 End
 
 Style Subsection
@@ -409,6 +410,7 @@ Style Subsection*
     PassThru       1
   EndArgument
   LaTeXParam       *
+  HTMLInToc        0
 End
 
 Style Subsubsection
@@ -471,6 +473,7 @@ Style Subsubsection*
     PassThru       1
   EndArgument
   LaTeXParam       *
+  HTMLInToc        0
 End
 
 

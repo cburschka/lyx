@@ -165,6 +165,9 @@ void InsetTOC::makeTOCWithDepth(XMLStream & xs,
 		if (!tocitem.isOutput())
 			continue;
 
+		if (!tocitem.dit().paragraph().layout().htmlintoc())
+			continue;
+
 		// First, we need to manage increases and decreases of depth
 		// If there's no depth to deal with, we artificially set it to 1.
 		int const depth = tocitem.depth();
@@ -218,6 +221,9 @@ void InsetTOC::makeTOCNoDepth(XMLStream & xs,
 		// do not output entries that are not actually included in the output,
 		// e.g., stuff in non-active branches or notes or whatever.
 		if (!tocitem.isOutput())
+			continue;
+
+		if (!tocitem.dit().paragraph().layout().htmlintoc())
 			continue;
 
 		xs << xml::StartTag("div", "class='lyxtoc-flat'") << xml::CR();

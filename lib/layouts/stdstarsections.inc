@@ -9,7 +9,7 @@
 # modifying the style of the regular sectioning layouts.
 
 
-Format 95
+Format 96
 Style Part*
 	CopyStyle	Part
 	Category	Unnumbered
@@ -22,6 +22,7 @@ Style Part*
 	DocBookAttr           "renderas='other' otherrenderas='part'"
 	DocBookSectionTag     NONE
 	DocBookForceAbstractTag	NONE
+	HTMLInToc	0
 End
 
 
@@ -37,6 +38,7 @@ Style Chapter*
 	DocBookAttr           "renderas='other' otherrenderas='chapter'"
 	DocBookSectionTag     NONE
 	DocBookForceAbstractTag	NONE
+	HTMLInToc	0
 End
 
 
@@ -52,6 +54,7 @@ Style Section*
 	DocBookAttr           renderas='sect1'
 	DocBookSectionTag     NONE
 	DocBookForceAbstractTag	NONE
+	HTMLInToc	0
 End
 
 
@@ -67,6 +70,7 @@ Style Subsection*
 	DocBookAttr           renderas='sect2'
 	DocBookSectionTag     NONE
 	DocBookForceAbstractTag	NONE
+	HTMLInToc	0
 End
 
 
@@ -82,6 +86,7 @@ Style Subsubsection*
 	DocBookAttr           renderas='sect3'
 	DocBookSectionTag     NONE
 	DocBookForceAbstractTag	NONE
+	HTMLInToc	0
 End
 
 
@@ -97,6 +102,7 @@ Style Paragraph*
 	DocBookAttr           renderas='sect4'
 	DocBookSectionTag     NONE
 	DocBookForceAbstractTag	NONE
+	HTMLInToc	0
 End
 
 
@@ -112,4 +118,5 @@ Style Subparagraph*
 	DocBookAttr           renderas='sect5'
 	DocBookSectionTag     NONE
 	DocBookForceAbstractTag	NONE
+	HTMLInToc	0
 End

@@ -142,6 +142,7 @@ enum LayoutTags {
 	LT_TOGGLE_INDENT,
 	LT_ADDTOTOC,
 	LT_ISTOCCAPTION,
+	LT_HTMLINTOC,
 	LT_INTITLE // keep this last!
 };
 
@@ -187,6 +188,7 @@ Layout::Layout()
 	htmllabelfirst_ = false;
 	htmlforcecss_ = false;
 	htmltitle_ = false;
+	htmlintoc_ = true;
 	docbookabstract_ = false;
 	docbookwrappermergewithprevious_ = false;
 	docbooksection_ = false;
@@ -270,6 +272,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 		{ "freespacing",    LT_FREE_SPACING },
 		{ "htmlattr",       LT_HTMLATTR },
 		{ "htmlforcecss",   LT_HTMLFORCECSS },
+		{ "htmlintoc",      LT_HTMLINTOC },
 		{ "htmlitem",       LT_HTMLITEM },
 		{ "htmlitemattr",   LT_HTMLITEMATTR },
 		{ "htmllabel",      LT_HTMLLABEL },
@@ -702,6 +705,10 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 				refprefix = arg;
 			break;
 		}
+
+		case LT_HTMLINTOC:
+			lex >> htmlintoc_;
+			break;
 
 		case LT_HTMLTAG:
 			lex >> htmltag_;

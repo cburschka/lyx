@@ -193,6 +193,8 @@ public:
 	///
 	std::string const & htmllabelattr() const;
 	///
+	bool htmlintoc() const { return htmlintoc_; }
+	///
 	std::string defaultCSSClass() const;
 	///
 	bool htmllabelfirst() const { return htmllabelfirst_; }
@@ -516,6 +518,8 @@ private:
 	///    <item><label>...</label>...</item>
 	/// The latter is the default.
 	bool htmllabelfirst_;
+	/// Is this to be output with the toc?
+	bool htmlintoc_;
 	/// CSS information needed by this layout.
 	docstring htmlstyle_;
 	/// DocBook tag corresponding to this layout.
