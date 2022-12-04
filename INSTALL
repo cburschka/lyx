@@ -109,12 +109,13 @@ flags:
                       release   prerelease  development profiling gprof
     optimization        -O2         -O2         -O         -O2     -O2
     assertions                       X           X
-    stdlib-debug                                 X
+    stdlib-assertions                            X
+    stdlib-debug
     warnings                         X           X
     debug                            X           X           X       X
     maintainer-mode                              X
 
-    The defaults are as follows in terms of version number
+    The defaults are as follows in terms of version number:
     release: stable release (2.x.y)
     prerelease: version number contains `alpha', `beta', `rc' or `pre'.
     development: version number contains `dev'.
@@ -228,12 +229,17 @@ values):
     code which checks that some variables have sane values. Opposite
     is --disable-assertions.
 
-  o --enable-stdlib-debug adds some debug code in the standard
-    library; this slows down the code, but has been helpful in the
-    past to find bugs. Note that this is in general incompatible with
-    the system hunspell library (as of version 1.5). You may have to use
-    --disable-stdlib-debug when linking development versions against
-    your system's hunspell library.
+  o --enable-stdlib-assertions adds some bound checking code in the
+    libstdc++ standard library; this slows down the code, but has been
+    helpful in the past to find bugs. This has no effect when using
+    llvm's libc++ library.
+
+  o --enable-stdlib-debug encompasses stdlib-assertions and adds
+    additional checks in libstdc++. Note that this changes the ABI and
+    is in general incompatible with the system hunspell library (as of
+    version 1.5). You may have to use --disable-stdlib-debug when
+    linking development versions against your system's hunspell
+    library. This has no effect when using llvm's libc++ library.
 
 
 

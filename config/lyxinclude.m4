@@ -310,9 +310,14 @@ AC_ARG_ENABLE(debug,
 )
 
 AC_ARG_ENABLE(stdlib-debug,
-  AS_HELP_STRING([--enable-stdlib-debug],[enable debug mode in the standard library]),,
-  [AS_CASE([$build_type], [dev*], [enable_stdlib_debug=yes], 
-	  [enable_stdlib_debug=no])]
+  AS_HELP_STRING([--enable-stdlib-debug],[enable debug mode in libstdc++]),,
+  [enable_stdlib_debug=no]
+)
+
+AC_ARG_ENABLE(stdlib-assertions,
+  AS_HELP_STRING([--enable-stdlib-assertions],[enable assertions in libstdc++]),,
+  [AS_CASE([$build_type], [dev*], [enable_stdlib_assertions=yes],
+	  [enable_stdlib_assertions=no])]
 )
 
 ### set up optimization
@@ -357,6 +362,10 @@ if test x$GXX = xyes; then
     CXX_VERSION="($clang_version)"
   fi
 
+  case $gxx_version in
+      2.*|3.*|4.@<:@0-8@:>@*) AC_MSG_ERROR([gcc >= 4.9 is required]);;
+  esac
+
   AM_CXXFLAGS="$lyx_optim $AM_CXXFLAGS"
   if test x$enable_debug = xyes ; then
       AM_CXXFLAGS="-g $AM_CXXFLAGS"
@@ -381,9 +390,6 @@ if test x$GXX = xyes; then
 	[AM_CXXFLAGS="$AM_CXXFLAGS -Wno-deprecated-copy"], [], [-Werror])
       AC_LANG_POP(C++)
     fi
-  case $gxx_version in
-      2.*|3.*|4.@<:@0-8@:>@*) AC_MSG_ERROR([gcc >= 4.9 is required]);;
-  esac
   if test x$enable_stdlib_debug = xyes ; then
     dnl FIXME: for clang/libc++, one should define _LIBCPP_DEBUG2=0
     dnl See http://clang-developers.42468.n3.nabble.com/libc-debug-mode-td3336742.html
@@ -394,6 +400,14 @@ if test x$GXX = xyes; then
 	AC_SUBST(STDLIB_DEBUG, "-D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC")
     else
 	enable_stdlib_debug=no
+    fi
+  fi
+  if test x$enable_stdlib_assertions = xyes ; then
+    if test x$lyx_cv_lib_stdcxx = xyes ; then
+        lyx_flags="$lyx_flags stdlib-assertions"
+	AC_DEFINE(_GLIBCXX_ASSERTIONS, 1, [libstdc++ assertions mode])
+    else
+	enable_stdlib_assertions=no
     fi
   fi
 fi
