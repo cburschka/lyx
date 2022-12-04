@@ -185,6 +185,10 @@ public:
 	///
 	std::string const & htmlattr() const;
 	///
+	std::string const & htmlclass() const;
+	/// Returns a complete attribute string, including class, etc.
+	std::string const & htmlGetAttrString() const;
+	///
 	std::string const & htmlitemtag() const;
 	///
 	std::string const & htmlitemattr() const;
@@ -491,9 +495,13 @@ private:
 	///
 	/// Defaults to "div".
 	mutable std::string htmltag_;
-	/// Additional attributes for inclusion with the start tag. Defaults
-	/// to: class="layoutname".
-	mutable std::string htmlattr_;
+	/// Additional attributes for inclusion with the start tag.
+	/// Note that the CSS class is handled separately.
+	std::string htmlattr_;
+	/// The CSS class to use. Calculated from the layout name if not given.
+	mutable std::string htmlclass_;
+	/// cached
+	mutable std::string htmlfullattrs_;
 	/// Tag for individual paragraphs in an environment. In lists, this
 	/// would be something like "li". But it also needs to be set for
 	/// quotation, e.g., since the paragraphs in a quote need to be

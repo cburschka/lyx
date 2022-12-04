@@ -116,7 +116,6 @@ Style Description
 	  Series              Bold
 	EndFont
 	HTMLTag               dl
-	HTMLAttr              class='description'
 	HTMLItem              dd
 	HTMLLabel             dt
 	HTMLLabelFirst        1

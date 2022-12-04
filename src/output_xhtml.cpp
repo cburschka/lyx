@@ -159,7 +159,7 @@ namespace {
 inline void openParTag(XMLStream & xs, Layout const & lay,
                        std::string const & parlabel)
 {
-	string attrs = lay.htmlattr();
+	string attrs = lay.htmlGetAttrString();
 	if (!parlabel.empty())
 		attrs += " id='" + parlabel + "'";
 	xs << xml::ParTag(lay.htmltag(), attrs);
@@ -185,7 +185,7 @@ void openParTag(XMLStream & xs, Layout const & lay,
 		openParTag(xs, lay, parlabel);
 		return;
 	}
-	string attrs = lay.htmlattr() + " style='text-align: " + align + ";'";
+	string attrs = lay.htmlGetAttrString() + " style='text-align: " + align + ";'";
 	if (!parlabel.empty())
 		attrs += " id='" + parlabel + "'";
 	xs << xml::ParTag(lay.htmltag(), attrs);
@@ -225,7 +225,7 @@ void openItemTag(XMLStream & xs, Layout const & lay,
 		openItemTag(xs, lay);
 		return;
 	}
-	string attrs = lay.htmlattr() + " style='text-align: " + align + ";'";
+	string attrs = lay.htmlGetAttrString() + " style='text-align: " + align + ";'";
 	xs << xml::StartTag(lay.htmlitemtag(), attrs);
 }
 
@@ -408,7 +408,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 	depth_type const origdepth = pbegin->params().depth();
 
 	// open tag for this environment
-	if (bstyle.labeltype == LABEL_ENUMERATE && bstyle.htmlattr().empty()) {
+	if (bstyle.labeltype == LABEL_ENUMERATE && bstyle.htmlclass().empty()) {
 		// In this case, we have to calculate the CSS class ourselves, each time
 		// through
 		// FIXME We assume in these cases that the standard enumeration counter

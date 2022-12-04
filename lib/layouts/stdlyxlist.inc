@@ -29,7 +29,7 @@ Style Labeling
 		EndFont
 	EndArgument
 	HTMLTag               ol
-	HTMLAttr              class='lyxlist'
+	HTMLClass             lyxlist
 	HTMLItem              li
 	HTMLLabel             span
 	HTMLLabelAttr         class='lyxlist'

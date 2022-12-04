@@ -11,7 +11,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 96
+currentFormat = 97
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -325,6 +325,9 @@ currentFormat = 96
 # Incremented to format 96, 4 December 2022 by rikiheck
 # Add HTMLInToc
 
+# Incremented to format 97, 4 December 2022 by rikiheck
+# Add HTMLClass
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -575,7 +578,7 @@ def convert(lines, end_format):
                 i += 1
             continue
 
-        if 87 <= format <= 96:
+        if 87 <= format <= 97:
             # nothing to do.
             i += 1
             continue

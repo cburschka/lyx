@@ -666,7 +666,7 @@ InsetLayout Info:menu
 	Font
 	  Family              sans
 	EndFont
-	HTMLAttr              "class='info menu'"
+	HTMLClass             "info menu'"
 	HTMLStyle
 		span.menu { font-family: sans-serif; }
 	EndHTMLStyle
@@ -685,7 +685,7 @@ InsetLayout Info:shortcut
 	Font
 	  Family              sans
 	EndFont
-	HTMLAttr              "class='info shortcut'"
+	HTMLCLass             "info shortcut"
 	HTMLStyle
 		span.shortcut { font-family: sans-serif; }
 	EndHTMLStyle
@@ -706,7 +706,7 @@ InsetLayout Info:shortcuts
 	Font
 	  Family              sans
 	EndFont
-	HTMLAttr              "class='info shortcut'"
+	HTMLClass             "info shortcut"
 	HTMLStyle
 		span.shortcuts { font-family: sans-serif; }
 	EndHTMLStyle
@@ -737,7 +737,7 @@ InsetLayout Caption:Standard
 			margin: 1ex;
 		}
 	EndHTMLStyle
-	HTMLAttr "class='float-caption float-caption-standard'"
+	HTMLClass "float-caption float-caption-standard"
 End
 
 

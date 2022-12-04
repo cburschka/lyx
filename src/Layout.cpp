@@ -94,6 +94,7 @@ enum LayoutTags {
 	LT_ITEMTAG,
 	LT_HTMLTAG,
 	LT_HTMLATTR,
+	LT_HTMLCLASS,
 	LT_HTMLITEM,
 	LT_HTMLITEMATTR,
 	LT_HTMLLABEL,
@@ -271,6 +272,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 		{ "forcelocal",     LT_FORCELOCAL },
 		{ "freespacing",    LT_FREE_SPACING },
 		{ "htmlattr",       LT_HTMLATTR },
+		{ "htmlclass",      LT_HTMLCLASS },
 		{ "htmlforcecss",   LT_HTMLFORCECSS },
 		{ "htmlintoc",      LT_HTMLINTOC },
 		{ "htmlitem",       LT_HTMLITEM },
@@ -716,6 +718,10 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 
 		case LT_HTMLATTR:
 			lex >> htmlattr_;
+			break;
+
+		case LT_HTMLCLASS:
+			lex >> htmlclass_;
 			break;
 
 		case LT_HTMLITEM:
@@ -1668,6 +1674,10 @@ void Layout::write(ostream & os) const
 		os << "\tHTMLTag " << htmltag_ << '\n';
 	if (!htmlattr_.empty())
 		os << "\tHTMLAttr " << htmlattr_ << '\n';
+	if (!htmlclass_.empty())
+		os << "\tHTMLClass " << htmlclass_ << '\n';
+	if (!htmlintoc_)
+		os << "\tHTMLInToc " << htmlintoc_ << '\n';
 	if (!htmlitemtag_.empty())
 		os << "\tHTMLItem " << htmlitemtag_ << '\n';
 	if (!htmlitemattr_.empty())
@@ -1809,13 +1819,30 @@ string const & Layout::htmltag() const
 
 string const & Layout::htmlattr() const
 {
-	// If it's an enumeration, then we recalculate the class each time through
-	// unless it has been given explicitly
-	if (htmlattr_.empty() && labeltype != LABEL_ENUMERATE)
-		htmlattr_ = "class=\"" + defaultCSSClass() + "\"";
 	return htmlattr_;
 }
 
+
+string const & Layout::htmlclass() const
+{
+	// If it's an enumeration, then we recalculate the class each time through
+	// unless it has been given explicitly. So we do nothing here.
+	if (htmlclass_.empty() && labeltype != LABEL_ENUMERATE)
+		htmlclass_ = defaultCSSClass();
+	return htmlclass_;
+}
+
+
+string const & Layout::htmlGetAttrString() const {
+	if (!htmlfullattrs_.empty())
+		return htmlfullattrs_;
+	htmlfullattrs_ = htmlclass();
+	if (!htmlfullattrs_.empty())
+		htmlfullattrs_ = "class='" + htmlfullattrs_ + "'";
+	if (!htmlattr_.empty())
+		htmlfullattrs_ += " " + htmlattr_;
+	return htmlfullattrs_;
+}
 
 string const & Layout::htmlitemtag() const
 {
