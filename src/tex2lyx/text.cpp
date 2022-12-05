@@ -151,6 +151,9 @@ char const * const known_ref_commands[] = { "ref", "pageref", "vref",
 char const * const known_coded_ref_commands[] = { "ref", "pageref", "vref",
  "vpageref", "formatted", "nameref", "eqref", 0 };
 
+char const * const known_starref_commands[] = { "ref", "pageref", "vref",
+ "vpageref", "nameref", "eqref", 0 };
+
 char const * const known_refstyle_commands[] = { "algref", "chapref", "corref",
  "eqref", "enuref", "figref", "fnref", "lemref", "parref", "partref", "propref",
  "secref", "subsecref", "tabref", "thmref", 0 };
@@ -4548,8 +4551,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		// if refstyle is used, we must not convert \prettyref to a
 		// formatted reference, since that would result in a refstyle command.
-		if ((where = is_known(t.cs(), known_ref_commands)) &&
-		         (t.cs() != "prettyref" || !preamble.refstyle())) {
+		if ((where = is_known(t.cs(), known_ref_commands))
+		     && (t.cs() != "prettyref" || !preamble.refstyle())
+		     &&	(p.next_token().asInput() != "*" || is_known(t.cs(), known_starref_commands))) {
+			bool starred = false;
+			if (p.next_token().asInput() == "*") {
+				starred = true;
+				p.get_token();
+			}
 			string const opt = p.getOpt();
 			if (opt.empty()) {
 				context.check_layout(os);
@@ -4561,6 +4570,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				os << "plural \"false\"\n";
 				os << "caps \"false\"\n";
 				os << "noprefix \"false\"\n";
+				if (starred)
+					os << "nolink \"true\"\n";
+				else
+					os << "nolink \"false\"\n";
 				end_inset(os);
 				if (t.cs() == "vref" || t.cs() == "vpageref")
 					preamble.registerAutomaticallyLoadedPackage("varioref");
