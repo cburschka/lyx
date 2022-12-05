@@ -6,13 +6,13 @@
 # Susana Barbosa <susana.barbosa@fc.up.pt>, 2007, 2008.
 # susana barbosa <sabarbosa@fc.ul.pt>, 2009.
 # Susana Barbosa <susanabarb@gmail.com>, 2010, 2011.
-# Georger Araujo <georger_br@yahoo.com.br> 2015 - 2017 "
+# Georger Araujo <georger_br@no.yahoo.spam.com.br> 2015 - 2022 "
 msgid ""
 msgstr ""
 "Project-Id-Version: pt_BR 2.3.7\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2022-12-04 19:23+0100\n"
-"PO-Revision-Date: 2022-11-24 12:00-0300\n"
+"PO-Revision-Date: 2022-12-04 21:47-0300\n"
 "Last-Translator: Georger Araujo <georger_br@no.yahoo.spam.com.br>\n"
 "Language-Team: Brazilian Portuguese <georger underscore br at yahoo dot com "
 "dot br>\n"
@@ -27638,7 +27638,7 @@ msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
 msgstr ""
-"Mostrar uma pequena caixa ao redor de uma Macro Matemática com o nome da "
+"Mostrar uma pequena caixa ao redor de uma Macro de Matemática com o nome da "
 "macro quando o cursor estiver em seu interior."
 
 #: src/LyXRC.cpp:3241
@@ -32667,7 +32667,7 @@ msgstr "No fim das contas, não foi necessário converter %1$s"
 
 #: src/insets/InsetGraphics.cpp:913
 msgid "Uncodable characters in path"
-msgstr "Caminho contém caracteres não-codificáveis"
+msgstr "Caracteres não-codificáveis no caminho"
 
 #: src/insets/InsetGraphics.cpp:914
 #, c-format
@@ -33745,9 +33745,8 @@ msgid "Can't change number of columns in '%1$s'"
 msgstr "Não é possível alterar número de colunas em '%1$s'"
 
 #: src/mathed/InsetMathMacro.cpp:1116
-#, fuzzy
 msgid "Uncodable characters in math macro"
-msgstr "Caminho contém caracteres não-codificáveis"
+msgstr "Caracteres não-codificáveis na macro de matemática"
 
 #: src/mathed/InsetMathMacro.cpp:1117
 #, c-format
@@ -33756,6 +33755,9 @@ msgid ""
 "that is not encodable in the current encoding (%2$s).\n"
 "Please fix this macro."
 msgstr ""
+"O nome de macro '%1$s' contém um caractere\n"
+"que não é codificável na codificação atual (%2$s).\n"
+"Por favor retifique essa macro."
 
 #: src/mathed/InsetMathMacro.cpp:1269 src/mathed/InsetMathMacro.cpp:1275
 #, c-format
