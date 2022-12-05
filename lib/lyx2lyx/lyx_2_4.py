@@ -4571,11 +4571,11 @@ def revert_starred_refs(document):
                 continue
             # If we are not using hyperref, then we just need to delete the line
             if not use_hyperref:
-                i = find_token(document.body, "nolink", i, e)
+                i = find_token(document.body, "nolink", i, end)
                 if i == -1:
                     continue
                 del document.body[i]
-                i = e - 1
+                i = end - 1
                 continue
             # If we are using hyperref, then we'll need to do more.
             in_inset = True
@@ -4620,9 +4620,29 @@ def revert_starred_refs(document):
             nolink  = (tmp == "true")
             nolinkline = i
         i += 1
-            
-        
-            
+
+
+def convert_starred_refs(document):
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset CommandInset ref", i)
+        if i == -1:
+            break
+        start = i
+        end = find_end_of_inset(document.body, i)
+        if end == -1:
+            document.warning("Malformed LyX document: Can't find end of inset at line %d" % i)
+            i += 1
+            continue
+        noprefixline = document.body[i + 5]
+        document.warning(noprefixline)
+        if not noprefixline.startswith("noprefix"):
+            document.warning("Malformed LyX document: No noprefix line. We will do the best we can.")
+            newlineat = end - 2
+        else:
+            newlineat = i + 6
+        document.body.insert(newlineat, "nolink \"false\"")
+        i = end + 1
             
         
 ##
@@ -4698,7 +4718,7 @@ convert = [
            [609, []],
            [610, []],
            [611, []],
-           [612, []]
+           [612, [convert_starred_refs]]
           ]
 
 revert =  [[611, [revert_starred_refs]],
