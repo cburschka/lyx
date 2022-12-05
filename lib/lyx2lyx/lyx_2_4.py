@@ -4637,11 +4637,10 @@ def convert_starred_refs(document):
         noprefixline = document.body[i + 5]
         document.warning(noprefixline)
         if not noprefixline.startswith("noprefix"):
-            document.warning("Malformed LyX document: No noprefix line. We will do the best we can.")
-            newlineat = end - 2
+            document.warning("Malformed LyX document: noprefix line not found where it should be.")
         else:
             newlineat = i + 6
-        document.body.insert(newlineat, "nolink \"false\"")
+            document.body.insert(newlineat, "nolink \"false\"")
         i = end + 1
             
         
