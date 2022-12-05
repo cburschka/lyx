@@ -146,7 +146,7 @@ AC_CHECK_HEADERS(magic.h,
 ### setup the qt frontend.
 dnl The code below is not in a macro, because this would cause big
 dnl problems with the AC_REQUIRE contained in QT_DO_IT_ALL.
-QT_DO_IT_ALL([4.5.0])
+QT_DO_IT_ALL([5.0.0])
 AC_SUBST([FRONTENDS_SUBDIRS], [qt])
 FRONTEND_INFO="${FRONTEND_INFO}\
   Qt Frontend:\n\
