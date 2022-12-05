@@ -1153,8 +1153,10 @@ void InsetMathMacro::write(TeXMathStream & os) const
 	docstring name_recoded;
 	docstring uncodable;
 	for (char_type c : name_in) {
-		if (!os.encoding())
-			break;
+		if (!os.encoding()) {
+			name_recoded += c;
+			continue;
+		}
 		if (os.encoding()->encodable(c) || os.output() == TeXMathStream::wsSearchAdv)
 			name_recoded += c;
 		else {
