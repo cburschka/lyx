@@ -19,7 +19,7 @@ InsetLayout Flex:Noun
 	Requires              noun
 	InToc                 true
 	HTMLTag               span
-	HTMLClass             noun
+	HTMLAttr              "class='noun'"
 	HTMLStyle
 		span.noun {
 			font-family: sans-serif;
