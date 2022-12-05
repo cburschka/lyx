@@ -98,7 +98,7 @@ private:
 	void uniqueLabel(docstring & label) const;
 	///
 	void updateReferences(docstring const & old_label,
-		docstring const & new_label);
+		docstring const & new_label, bool const changes);
 	///
 	docstring screen_label_;
 	///
