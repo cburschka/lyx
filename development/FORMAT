@@ -7,6 +7,15 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2022-12-04 Daniel Ramöller <d.lyx@web.de>
+	* Format incremented to 612: Implement support for starred crossref commands (with
+	  hyperref) which suppress links:
+	  - \begin_inset CommandInset ref
+		LatexCommand {ref,pageref,vref,vpageref,eqref,nameref}
+		[...]
+		nolink "true"
+            => \<cmd>*{<label>}
+
 2022-11-27 Yuriy Skalko <yuriy.skalko@gmail.com>
 	* Format incremented to 611: Implement "semantic linefeeds" after punctuation marks.
 	  Dummy format change for now.
