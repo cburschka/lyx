@@ -1186,7 +1186,7 @@ void InsetMathMacro::write(TeXMathStream & os) const
 	if (!uncodable.empty()) {
 		frontend::Alert::warning(
 			_("Uncodable characters in math macro"),
-			support::bformat(_("The macro name '%1$s' contains a character.\n"
+			support::bformat(_("The macro name '%1$s' contains a character\n"
 					   "that is not encodable in the current encoding (%2$s).\n"
 					   "Please fix this macro."), name_in, uncodable));
 	}
