@@ -207,6 +207,14 @@ AC_DEFUN([QT_DO_IT_ALL],
 	[AC_MSG_ERROR([LyX requires at least version $1 of Qt. Only version $QTLIB_VERSION has been found.])
 	])
 
+	case $QTLIB_VERSION in
+	6.*) if test $enable_stdlib_debug = "yes" ; then
+		    LYX_WARNING([Compiling LyX with stdlib-debug and Qt6 library may lead to
+   crashes. Consider dropping --enable-stdlib-debug.])
+	     fi;;
+	esac
+
+
 	save_CPPFLAGS=$CPPFLAGS
 	CPPFLAGS="$save_CPPFLAGS $QT_CORE_INCLUDES"
 	AC_CHECK_HEADER(QtGui/qtgui-config.h,
