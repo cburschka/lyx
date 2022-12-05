@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-12-03 16:57+0100\n"
-"PO-Revision-Date: 2022-12-03 16:00+0000\n"
+"POT-Creation-Date: 2022-12-05 15:41+0100\n"
+"PO-Revision-Date: 2022-12-05 14:45+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -5270,6 +5270,10 @@ msgstr "Neukazovať časť hesla ktorá je pred \":\""
 #: src/frontends/qt/ui/RefUi.ui:333 lib/ui/stdcontext.inc:106
 msgid "No Prefix"
 msgstr "Bez prefixu"
+
+#: lib/ui/stdcontext.inc:127 src/frontends/qt/ui/RefUi.ui:340
+msgid "No Hyperlink"
+msgstr "Nie Hyperlinka"
 
 #: src/frontends/qt/ui/SearchUi.ui:34
 msgid "Find previous occurrence (Shift+Enter)"
@@ -32047,10 +32051,6 @@ msgstr "Modul nenájdený!"
 msgid "&End Edit"
 msgstr "&Skončiť Úpravu"
 
-#: src/frontends/qt/GuiDocument.cpp:655
-msgid "Validation required!"
-msgstr "Požaduje validáciu!"
-
 #: src/frontends/qt/GuiDocument.cpp:705
 msgid "Layout is valid!"
 msgstr "Schéma je platná!"
@@ -37211,14 +37211,14 @@ msgstr "Počet stĺpcov sa nedá zmeniť v '%1$s'"
 msgid "Uncodable characters in math macro"
 msgstr "Nekódovateľné znaky v matematickom makre"
 
-#: src/mathed/InsetMathMacro.cpp:1189
+#: src/mathed/InsetMathMacro.cpp:1191
 #, c-format
 msgid ""
-"The macro name '%1$s' contains a character.\n"
+"The macro name '%1$s' contains a character\n"
 "that is not encodable in the current encoding (%2$s).\n"
 "Please fix this macro."
 msgstr ""
-"V mene makra '%1$s' sú nekódovateľné znaky \n"
+"V mene makra '%1$s' sú nekódovateľné znaky\n"
 "ktoré neexistujú v aktuálnom kódovaní (%2$s).\n"
 "Opravte toto makro."
 
