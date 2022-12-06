@@ -13805,20 +13805,28 @@ For more informations like hints for special table and formula formatting,
 \end_layout
 
 \begin_layout Section
+
+\change_deleted 564990737 1670317155
 Kluwer
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1670317155
 by 
 \noun on
 Panayotis Papasotiriou
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted 564990737 1670317155
 Overview
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1670317155
 The Kluwer package is a set of macros produced by Kluwer Academic Publishers
  that facilitates electronic manuscript submission to the journals they
  publish.
@@ -13859,6 +13867,8 @@ http://www.wkap.nl/kaphtml.htm/STYLEFILES
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1670317155
 \SpecialChar LyX
  supports many features of the package but not everything.
  However, the \SpecialChar TeX
@@ -13891,10 +13901,14 @@ Astrophysics and Space Science
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted 564990737 1670317155
 Writing a paper
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1670317155
 The easiest way to write a paper is to start with the Kluwer template file.
  Click on 
 \family sans
@@ -13921,10 +13935,14 @@ kluwer.lyx
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted 564990737 1670317155
 Preparing a paper for submission
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1670317155
 As in the AAS\SpecialChar TeX
  package, before you submit your paper to a journal you must
  
@@ -13939,6 +13957,8 @@ postprocess
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1670317155
 Export your paper as a \SpecialChar LaTeX
  file.
  To do this, click on 
@@ -13953,6 +13973,8 @@ Export\SpecialChar menuseparator
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1670317155
 Edit the resulting 
 \family typewriter
 .tex
@@ -13962,6 +13984,8 @@ Edit the resulting
 
 \begin_deeper
 \begin_layout Enumerate
+
+\change_deleted 564990737 1670317155
 remove the comment lines before the 
 \family typewriter
 
@@ -13972,6 +13996,8 @@ documentclass
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1670317155
 remove everything between (and including) the 
 \family typewriter
 
@@ -13989,6 +14015,8 @@ makeatother
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1670317155
 Save the resulting 
 \family typewriter
 .tex
@@ -13998,6 +14026,8 @@ Save the resulting
 
 \end_deeper
 \begin_layout Enumerate
+
+\change_deleted 564990737 1670317155
 Run the 
 \family typewriter
 .tex
@@ -14007,6 +14037,8 @@ Run the
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1670317155
 View the resulting 
 \family typewriter
 .dvi
@@ -14027,6 +14059,8 @@ xdvi
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted 564990737 1670317155
 \begin_inset Quotes eld
 \end_inset
 
@@ -14045,6 +14079,8 @@ name "subsec:kluwer_peculiarities"
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1670317155
 The Kluwer package has the following 
 \begin_inset Quotes eld
 \end_inset
@@ -14057,6 +14093,8 @@ peculiarities
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1670317155
 It is possible to write multiple articles in the same \SpecialChar LaTeX
  file
 \begin_inset Foot
@@ -14111,6 +14149,8 @@ end{article}
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1670317155
 Information given at the beginning of the article (i.
 \begin_inset space \thinspace{}
 \end_inset
@@ -14151,6 +14191,8 @@ end{opening}
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1670317155
 According to the user manual, the label of each bibliography item must be
  written as 
 \family typewriter
@@ -14176,6 +14218,8 @@ year
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 564990737 1670317155
 The 
 \family typewriter
 kluwer.lyx
@@ -14195,11 +14239,15 @@ peculiarities
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1670317155
 don't delete the \SpecialChar TeX
  code included in the template, and
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted 564990737 1670317155
 copy the example bibliography item included in the template and modify it
  as necessary to enter new bibliography items.
 \end_layout
