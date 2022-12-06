@@ -458,7 +458,7 @@ void GuiRef::redoRefs()
 	for (iter = refs_.begin(); iter != refs_.end(); ++iter) {
 		// first: plain label name, second: gui name
 		QString const lab = toqstr((*iter).first);
-		refsNames.append(QPair(lab, toqstr((*iter).second)));
+		refsNames.append({lab, toqstr((*iter).second)});
 		if (groupCB->isChecked()) {
 			if (lab.contains(":")) {
 				QString const pref = lab.split(':')[0];
