@@ -183,7 +183,7 @@ public:
 	///
 	std::string const & htmltag() const;
 	///
-	std::string const & htmlattr() const;
+	std::string const & htmlattr() const { return htmlattr_; }
 	///
 	std::string const & htmlclass() const;
 	/// Returns a complete attribute string, including class, etc.

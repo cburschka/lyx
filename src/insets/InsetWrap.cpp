@@ -219,7 +219,7 @@ docstring InsetWrap::xhtml(XMLStream & xs, OutputParams const & rp) const
 	string const width = len.empty() ? "50%" : len;
 	InsetLayout const & il = getLayout();
 	string const & tag = il.htmltag();
-	string const attr = il.htmlattr() + " style='width:" + width + ";'";
+	string const attr = il.htmlGetAttrString() + " style='width:" + width + ";'";
 	xs << xml::StartTag(tag, attr);
 	docstring const deferred =
 		InsetText::insetAsXHTML(xs, rp, InsetText::WriteInnerTag);

@@ -868,7 +868,7 @@ docstring InsetText::insetAsXHTML(XMLStream & xs, OutputParams const & rp,
 
 	InsetLayout const & il = getLayout();
 	if (opts & WriteOuterTag)
-		xs << xml::StartTag(il.htmltag(), il.htmlattr());
+		xs << xml::StartTag(il.htmltag(), il.htmlGetAttrString());
 
 	if ((opts & WriteLabel) && !il.counter().empty()) {
 		BufferParams const & bp = buffer().masterBuffer()->params();

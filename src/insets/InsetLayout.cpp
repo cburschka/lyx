@@ -83,6 +83,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		IL_FREESPACING,
 		IL_HTMLTAG,
 		IL_HTMLATTR,
+		IL_HTMLCLASS,
 		IL_HTMLFORCECSS,
 		IL_HTMLINNERTAG,
 		IL_HTMLINNERATTR,
@@ -188,6 +189,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		{ "forceplain", IL_FORCEPLAIN },
 		{ "freespacing", IL_FREESPACING },
 		{ "htmlattr", IL_HTMLATTR },
+		{ "htmlclass", IL_HTMLCLASS },
 		{ "htmlforcecss", IL_HTMLFORCECSS },
 		{ "htmlinnerattr", IL_HTMLINNERATTR},
 		{ "htmlinnertag", IL_HTMLINNERTAG},
@@ -499,6 +501,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		case IL_HTMLATTR:
 			lex >> htmlattr_;
 			break;
+		case IL_HTMLCLASS:
+			lex >> htmlclass_;
+			break;
 		case IL_HTMLFORCECSS:
 			lex >> htmlforcecss_;
 			break;
@@ -653,11 +658,23 @@ string const & InsetLayout::htmltag() const
 }
 
 
-string const & InsetLayout::htmlattr() const
+string const & InsetLayout::htmlclass() const
 {
-	if (htmlattr_.empty())
-		htmlattr_ = "class=\"" + defaultCSSClass() + "\"";
-	return htmlattr_;
+	if (htmlclass_.empty())
+		htmlclass_ = defaultCSSClass();
+	return htmlclass_;
+}
+
+
+std::string const & InsetLayout::htmlGetAttrString() const {
+	if (!htmlfullattrs_.empty())
+		return htmlfullattrs_;
+	htmlfullattrs_ = htmlclass();
+	if (!htmlfullattrs_.empty())
+		htmlfullattrs_ = "class='" + htmlfullattrs_ + "'";
+	if (!htmlattr_.empty())
+		htmlfullattrs_ += " " + htmlattr_;
+	return htmlfullattrs_;
 }
 
 

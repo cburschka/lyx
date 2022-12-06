@@ -11,7 +11,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 97
+currentFormat = 98
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -327,6 +327,9 @@ currentFormat = 97
 
 # Incremented to format 97, 4 December 2022 by rikiheck
 # Add HTMLClass
+
+# Incremented to format 98, 5 December 2022 by rikiheck
+# Add HTMLClass for InsetLayout
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").

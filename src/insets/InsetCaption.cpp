@@ -311,7 +311,7 @@ docstring InsetCaption::xhtml(XMLStream & xs, OutputParams const & rp) const
 		return docstring();
 	InsetLayout const & il = getLayout();
 	string const & tag = il.htmltag();
-	string attr = il.htmlattr();
+	string attr = il.htmlGetAttrString();
 	if (!type_.empty()) {
 		string const our_class = "float-caption-" + type_;
 		size_t const loc = attr.find("class='");

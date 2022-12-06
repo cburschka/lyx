@@ -1817,12 +1817,6 @@ string const & Layout::htmltag() const
 }
 
 
-string const & Layout::htmlattr() const
-{
-	return htmlattr_;
-}
-
-
 string const & Layout::htmlclass() const
 {
 	// If it's an enumeration or itemize list, then we recalculate the class each
@@ -1843,6 +1837,7 @@ string const & Layout::htmlGetAttrString() const {
 		htmlfullattrs_ += " " + htmlattr_;
 	return htmlfullattrs_;
 }
+
 
 string const & Layout::htmlitemtag() const
 {

@@ -121,7 +121,11 @@ public:
 	std::string const & htmltag() const;
 	/// Additional attributes for inclusion with the start tag. Default (if
 	/// a tag is provided) is: class="name".
-	std::string const & htmlattr() const;
+	std::string const & htmlattr() const { return htmlattr_; }
+	///
+	std::string const & htmlclass() const;
+	///
+	std::string const & htmlGetAttrString() const;
 	/// Tag for individual paragraphs in the inset. Default is none.
 	std::string const & htmlinnertag() const { return htmlinnertag_; }
 	/// Attributes for that tag. Default (if a tag is provided) is:
@@ -301,6 +305,10 @@ private:
 	mutable std::string htmltag_;
 	///
 	mutable std::string htmlattr_;
+	///
+	mutable std::string htmlclass_;
+	/// cache
+	mutable std::string htmlfullattrs_;
 	///
 	std::string htmlinnertag_;
 	///
