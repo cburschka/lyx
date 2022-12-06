@@ -4571,10 +4571,11 @@ def revert_starred_refs(document):
                 continue
             # If we are not using hyperref, then we just need to delete the line
             if not use_hyperref:
-                i = find_token(document.body, "nolink", i, end)
-                if i == -1:
+                k = find_token(document.body, "nolink", i, end)
+                if k == -1:
+                    i = end
                     continue
-                del document.body[i]
+                del document.body[k]
                 i = end - 1
                 continue
             # If we are using hyperref, then we'll need to do more.
