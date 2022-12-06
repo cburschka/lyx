@@ -7,7 +7,7 @@
 # quotations and such.
 
 
-Format 97
+Format 98
 
 Style Quotation
 	Category              MainText

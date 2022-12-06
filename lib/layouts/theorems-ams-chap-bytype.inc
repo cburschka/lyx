@@ -23,7 +23,7 @@
 # - Case (by inclusion)
 
 
-Format 97
+Format 98
 
 Input theorems-counters-bytype.inc
 

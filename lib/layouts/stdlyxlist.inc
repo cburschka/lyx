@@ -1,7 +1,7 @@
 # The special "LyXList". Separated out for inclusion where the
 # whole of stdlist.inc is not needed.
 
-Format 97
+Format 98
 
 Style Labeling
 	Category              List
