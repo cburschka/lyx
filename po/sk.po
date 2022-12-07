@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-12-05 15:41+0100\n"
-"PO-Revision-Date: 2022-12-05 14:45+0000\n"
+"POT-Creation-Date: 2022-12-07 09:43+0100\n"
+"PO-Revision-Date: 2022-12-07 08:47+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -31240,6 +31240,11 @@ msgstr "Qt verzia (čas pustenia): %1$s na platforme %2$s"
 #, c-format
 msgid "Qt Version (compile-time): %1$s"
 msgstr "Qt verzia (čas prekladu): %1$s"
+
+#: src/frontends/qt/GuiAbout.cpp:297
+#, c-format
+msgid "OS Version (run-time): %1$s"
+msgstr "OS verzia (čas pustenia): %1$s"
 
 #: src/frontends/qt/GuiAbout.cpp:288
 #, c-format
