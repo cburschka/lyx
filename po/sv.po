@@ -1,15 +1,15 @@
 # Swedish translation of LyX / Svensk lokalisering för LyX
-# Copyright (C) 1997, 1998, 2010-2019 LyX Team
+# Copyright (C) 1997, 1998, 2010-2022 LyX Team
 #
 # Joacim Persson <sp2joap@ida.his.se> 1997, 1998.
-# Jim Rotmalm <jim.rotmalm@gmail.com>, 2010-2019.
+# Jim Rotmalm <jim.rotmalm@gmail.com>, 2010-2022.
 #
-# Information 2019-11-28:
+# Information 2022-12-03:
 #   Bad menu shortcuts: 171
-#   Bad Qt shortcuts: 149
+#   Bad Qt shortcuts: 150
 #   Bad spaces: 1
 #   Inconsistent translations: 23
-#   Total warnings: 344
+#   Total warnings: 345
 #
 # Behöver förbättras:
 #   Alla genvägar (snabbkommandon, kortkommandon)
@@ -210,13 +210,13 @@
 #   view(er)             -> visa(re)
 #   wrap               ? -> svep, varva? bryt? (automatisk) radbrytning? linda in? att svepa runt
 #
-# Jim Rotmalm <jim.rotmalm@gmail.com>, 2010-2019.
+# Jim Rotmalm <jim.rotmalm@gmail.com>, 2010-2022.
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 2.3.4\n"
+"Project-Id-Version: LyX 2.3.7\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-12-04 19:23+0100\n"
-"PO-Revision-Date: 2019-11-28 21:12+0200\n"
+"POT-Creation-Date: 2022-12-03 22:44+0100\n"
+"PO-Revision-Date: 2022-12-03 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
 "Language: sv\n"
@@ -2378,6 +2378,8 @@ msgid ""
 "File name to include. (You can create a new file by entering the name of one "
 "that does not yet exist.)"
 msgstr ""
+"Filnamn att inkludera. (Du kan skapa en ny fil genom att ange namnet på en "
+"som inte än finns.)"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:309
 msgid "&Include Type:"
@@ -9356,9 +9358,8 @@ msgid "American Psychological Association (APA), v. 6"
 msgstr "American Physchological Association (APA), v. 6"
 
 #: lib/layouts/apa7.layout:3
-#, fuzzy
 msgid "American Psychological Association (APA), v. 7"
-msgstr "American Physchological Association (APA), v. 6"
+msgstr "American Physchological Association (APA), v. 7"
 
 #: lib/layouts/apax.inc:112
 msgid "FiveAuthors"
@@ -9427,26 +9428,22 @@ msgid "*"
 msgstr "*"
 
 #: lib/layouts/apax.inc:527
-#, fuzzy
 msgid "Course"
-msgstr "Courier"
+msgstr "Kurs"
 
 #: lib/layouts/apax.inc:543
-#, fuzzy
 msgid "Course: "
-msgstr "Courier"
+msgstr "Kurs: "
 
 #: lib/layouts/apax.inc:551
 msgid "addORCIDlink"
-msgstr ""
+msgstr "Lägg till ORCID-länk"
 
 #: lib/layouts/apax.inc:555
-#, fuzzy
 msgid "ORCID-link: "
-msgstr "ORCID: "
+msgstr "ORCID-länk: "
 
 #: lib/layouts/apax.inc:563
-#, fuzzy
 msgid "Author-name"
 msgstr "Författarens namn"
 
@@ -10493,15 +10490,14 @@ msgid "Custom Header/Footerlines"
 msgstr "Anpassade huvud/fotrader"
 
 #: lib/layouts/customHeadersFooters.module:7
-#, fuzzy
 msgid ""
 "Adds environments to define header and footer lines. NOTE: To use this "
 "module you must set the 'Page style' in the menu Document Settings -> Page "
 "Layout to 'fancy'!"
 msgstr ""
-"Lägger till miljöer för att definiera huvud och fotrader. NOTERA: För att "
-"använda denna modul måste du sätta 'Rubrikstil' i menyn Dokument -> "
-"Inställningar -> Sidutformning till 'häftig'!"
+"Lägger till miljöer för att definiera huvud- och fotrader. NOTERA: För att "
+"använda denna modul måste du sätta 'Sidstil' i menyn Dokumentinställningar -"
+"> Sidutformning till 'häftig'!"
 
 #: lib/layouts/customHeadersFooters.module:12
 msgid "Header/Footer"
@@ -13974,37 +13970,32 @@ msgid "Entry"
 msgstr "Post"
 
 #: lib/layouts/moderncv.layout:334 lib/layouts/moderncv.layout:335
-#, fuzzy
 msgid "Years"
 msgstr "År"
 
 #: lib/layouts/moderncv.layout:340
 msgid "Degree or job title"
-msgstr ""
+msgstr "Examen eller jobbtitel"
 
 #: lib/layouts/moderncv.layout:348
-#, fuzzy
 msgid "Institution or employer"
-msgstr "Institut"
+msgstr "Institut eller arbetsgivare"
 
 #: lib/layouts/moderncv.layout:355
-#, fuzzy
 msgid "Localization"
 msgstr "Lokalisering"
 
 #: lib/layouts/moderncv.layout:356
-#, fuzzy
 msgid "City or country"
-msgstr "Land"
+msgstr "Stad eller land"
 
 #: lib/layouts/moderncv.layout:360
-#, fuzzy
 msgid "Optional"
-msgstr "valfri"
+msgstr "Valfri"
 
 #: lib/layouts/moderncv.layout:361
 msgid "Grade or other info"
-msgstr ""
+msgstr "Nivå eller annan info"
 
 #: lib/layouts/moderncv.layout:367
 msgid "Entry:"
@@ -14889,9 +14880,8 @@ msgid "REVTeX (V. 4.1)"
 msgstr "REVTeX (V. 4.1)"
 
 #: lib/layouts/revtex4-2.layout:3
-#, fuzzy
 msgid "REVTeX (V. 4.2)"
-msgstr "REVTeX (V. 4.1)"
+msgstr "REVTeX (V. 4.2)"
 
 #: lib/layouts/revtex4-x.inc:85 lib/layouts/revtex4.layout:155
 msgid "Affiliation (alternate)"
@@ -15708,9 +15698,8 @@ msgid "\\Roman{part}"
 msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:10
-#, fuzzy
 msgid "Part ##"
-msgstr "Del "
+msgstr "Del ##"
 
 #: lib/layouts/stdcounters.inc:14
 msgid "Chapter ##"
@@ -20900,9 +20889,8 @@ msgid "Blackboard\t\\mathbb"
 msgstr "Svarta tavlan\t\\mathbb"
 
 #: lib/ui/stdtoolbars.inc:415
-#, fuzzy
 msgid "Double stroke\t\\mathds"
-msgstr "Dubbelt element:"
+msgstr "Dubbla streck\t\\mathds"
 
 #: lib/ui/stdtoolbars.inc:416
 msgid "Fraktur\t\\mathfrak"
@@ -26037,8 +26025,8 @@ msgstr "Dokumentklass inte tillgänglig"
 #: src/insets/InsetCommandParams.cpp:503 src/insets/InsetCommandParams.cpp:511
 #: src/insets/InsetGraphics.cpp:894 src/insets/InsetGraphics.cpp:902
 #: src/insets/InsetListings.cpp:260 src/insets/InsetListings.cpp:268
-#: src/insets/InsetListings.cpp:291 src/mathed/InsetMathMacro.cpp:1091
-#: src/mathed/MathExtern.cpp:1440 src/mathed/MathExtern.cpp:1518
+#: src/insets/InsetListings.cpp:291 src/mathed/MathExtern.cpp:1440
+#: src/mathed/MathExtern.cpp:1518
 msgid "LyX Warning: "
 msgstr "LyX-varning: "
 
@@ -26046,18 +26034,17 @@ msgstr "LyX-varning: "
 #: src/Paragraph.cpp:2767 src/insets/InsetCommandParams.cpp:504
 #: src/insets/InsetCommandParams.cpp:512 src/insets/InsetGraphics.cpp:895
 #: src/insets/InsetGraphics.cpp:903 src/insets/InsetListings.cpp:261
-#: src/insets/InsetListings.cpp:269 src/mathed/InsetMathMacro.cpp:1092
-#: src/mathed/MathExtern.cpp:1441 src/mathed/MathExtern.cpp:1519
+#: src/insets/InsetListings.cpp:269 src/mathed/MathExtern.cpp:1441
+#: src/mathed/MathExtern.cpp:1519
 msgid "uncodable character"
 msgstr "okodbart tecken"
 
 #: src/BufferParams.cpp:1756
-#, fuzzy
 msgid "Uncodable character in class options"
-msgstr "Okodbara tecken i listningsinsättning"
+msgstr "Okodbart tecken i klassalternativ"
 
 #: src/BufferParams.cpp:1758
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The class options of your document contain glyphs that are unknown in the "
 "current document encoding (namely %1$s).\n"
@@ -26067,13 +26054,13 @@ msgid ""
 "Please select an appropriate document encoding\n"
 "(such as utf8) or change the class options accordingly."
 msgstr ""
-"Användaringressen i ditt dokument innehåller glyfer som är okända i den "
+"Klassalternativen i ditt dokument innehåller glyfer som är okända i den "
 "aktuella dokumentkodningen (nämligen %1$s).\n"
 "Dessa glyfer utelämnas från utmatningen, som kan resultera i ofullständig "
 "utmatning.\n"
 "\n"
 "Vänligen välj en lämplig dokumentkodning\n"
-"(som utf8) eller ändra ingresskoden följaktligen."
+"(som utf8) eller ändra klassalternativen följaktligen."
 
 #: src/BufferParams.cpp:2222
 msgid "Uncodable character in user preamble"
@@ -26145,9 +26132,8 @@ msgid "Read Error"
 msgstr "Läsfel"
 
 #: src/BufferParams.cpp:3604
-#, fuzzy
 msgid "No bibliography processor found!"
-msgstr "Ingen bibliografi definierad!"
+msgstr "Ingen bibliografibehandlare hittades!"
 
 #: src/BufferParams.cpp:3606
 #, c-format
@@ -26157,11 +26143,14 @@ msgid ""
 "references will be generated.\n"
 "Please fix your installation!"
 msgstr ""
+"Bibliografibehandlaren som detta dokument (%1$s) tillfrågar är inte "
+"tillgänglig och inget lämpligt alternativ hittades. Ingen bibliografi och "
+"inga referenser kommer att genereras.\n"
+"Vänligen fixa din installation!"
 
 #: src/BufferParams.cpp:3614
-#, fuzzy
 msgid "Requested bibliography processor not found!"
-msgstr "Bibliografipost hittades inte!"
+msgstr "Tillfrågad bibliografibehandlare hittades inte!"
 
 #: src/BufferParams.cpp:3616
 #, c-format
@@ -26172,6 +26161,11 @@ msgid ""
 "carefully!\n"
 "It is suggested to install the missing processor."
 msgstr ""
+"Bibliografibehandlaren som detta dokument (%1$s) tillfrågar är inte "
+"tillgänglig. Som en reservutväg kommer '%2$s' att användas, alternativ "
+"utelämnas. Detta kan resultera i fel eller oönskade ändringar i "
+"bibliografin. Vänligen kontrollera noga!\n"
+"Det föreslås att installera den saknade behandlaren."
 
 #: src/BufferView.cpp:195
 msgid "No more insets"
@@ -27298,7 +27292,7 @@ msgstr "MakeIndex för nomencl körs."
 
 #: src/LaTeX.cpp:896
 msgid "(NOTE: The erroneous command is in the preamble)"
-msgstr ""
+msgstr "(NOTERA: Det felaktiga kommandot är i ingressen)"
 
 #: src/LaTeX.cpp:1388 src/LaTeX.cpp:1394 src/LaTeX.cpp:1403
 msgid "BibTeX error: "
@@ -28326,9 +28320,8 @@ msgid "Other ("
 msgstr "Annan ("
 
 #: src/Text.cpp:1962
-#, fuzzy
 msgid ", Style: "
-msgstr "CV-stil:"
+msgstr ", Stil: "
 
 #: src/Text.cpp:1966
 msgid ", Paragraph: "
@@ -28565,6 +28558,7 @@ msgstr "Nomenklaturposter"
 #: src/VCBackend.cpp:65
 msgid "Check whether the GNU RCS package is installed on your system."
 msgstr ""
+"Kontrollera huruvida paketet för GNU RCS är installerat på ditt system."
 
 #: src/VCBackend.cpp:66 src/VCBackend.cpp:877 src/VCBackend.cpp:882
 #: src/VCBackend.cpp:931 src/VCBackend.cpp:990 src/VCBackend.cpp:1049
@@ -29084,9 +29078,9 @@ msgid "User directory: "
 msgstr "Användarkatalog: "
 
 #: src/frontends/qt4/GuiAbout.cpp:234
-#, fuzzy, c-format
+#, c-format
 msgid "Qt Version (run-time): %1$s on platform %2$s"
-msgstr "Qt-version (körtid): %1$s"
+msgstr "Qt-version (körtid): %1$s på plattform %2$s"
 
 #: src/frontends/qt4/GuiAbout.cpp:235
 #, c-format
@@ -30298,9 +30292,9 @@ msgid "per child document"
 msgstr "per barndokument"
 
 #: src/frontends/qt4/GuiDocument.cpp:3541
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (not available)"
-msgstr "%1$s (otillgänglig)"
+msgstr "%1$s (inte tillgänglig)"
 
 #: src/frontends/qt4/GuiDocument.cpp:3802
 msgid "[No options predefined]"
@@ -31657,9 +31651,8 @@ msgid "Zoom level cannot be less than %1$d%."
 msgstr "Zoomnivån kan inte vara mindre än %1$d%."
 
 #: src/frontends/qt4/GuiView.cpp:2158
-#, fuzzy
 msgid "Zoom level cannot be more than %1$d%."
-msgstr "Zoomnivån kan inte vara mindre än %1$d%."
+msgstr "Zoomnivån kan inte vara mer än %1$d%."
 
 #: src/frontends/qt4/GuiView.cpp:2252
 msgid "Select template file"
@@ -32684,20 +32677,19 @@ msgstr ""
 "%2$s."
 
 #: src/insets/InsetCommandParams.cpp:522
-#, fuzzy
 msgid "Uncodable characters in inset"
-msgstr "Okodbara tecken i filsökväg"
+msgstr "Okodbara tecken i insättning"
 
 #: src/insets/InsetCommandParams.cpp:523
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following characters in one of the insets are\n"
 "not representable in the current encoding and have been omitted: %1$s.\n"
 "Unchecking 'Literal' in the respective inset dialog might help."
 msgstr ""
-"Följande tecken i en av grafiksökvägarna kan inte\n"
+"Följande tecken i en av insättningarna kan inte\n"
 "visas i aktuell kodning och har blivit utelämnade: %1$s.\n"
-"Du behöver anpassa antingen kodningen eller sökvägen."
+"Att avmarkera 'Bokstavlig' i respektive insättningsdialog kan hjälpa."
 
 #: src/insets/InsetExternal.cpp:403
 #, c-format
@@ -33829,20 +33821,7 @@ msgstr "Kan inte ändra antal rader i '%1$s'"
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Kan inte ändra antal kolonner i '%1$s'"
 
-#: src/mathed/InsetMathMacro.cpp:1116
-#, fuzzy
-msgid "Uncodable characters in math macro"
-msgstr "Okodbara tecken i filsökväg"
-
-#: src/mathed/InsetMathMacro.cpp:1117
-#, c-format
-msgid ""
-"The macro name '%1$s' contains a character\n"
-"that is not encodable in the current encoding (%2$s).\n"
-"Please fix this macro."
-msgstr ""
-
-#: src/mathed/InsetMathMacro.cpp:1269 src/mathed/InsetMathMacro.cpp:1275
+#: src/mathed/InsetMathMacro.cpp:1224 src/mathed/InsetMathMacro.cpp:1230
 #, c-format
 msgid "Macro: %1$s"
 msgstr "Makro: %1$s"
