@@ -4635,7 +4635,6 @@ def convert_starred_refs(document):
             document.warning("Malformed LyX document: Can't find end of inset at line %d" % i)
             i += 1
             continue
-        noprefixline = document.body[i + 5]
         newlineat = end - 2
         document.body.insert(newlineat, "nolink \"false\"")
         i = end + 1
