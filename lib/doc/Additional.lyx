@@ -2867,6 +2867,1660 @@ In addition, the AMS classes automatically provide the AMS \SpecialChar LaTeX
  They need to be available on your system in order to use these environments.
 \end_layout
 
+\begin_layout Subsection
+Koma-Script
+\end_layout
+
+\begin_layout Standard
+by 
+\noun on
+Bernd Rellermeyer
+\end_layout
+
+\begin_layout Subsubsection
+Overview
+\end_layout
+
+\begin_layout Standard
+The \SpecialChar LyX
+ document classes 
+\emph on
+article (koma-script)
+\emph default
+, 
+\emph on
+report (koma-script)
+\emph default
+, 
+\emph on
+book
+\emph default
+ 
+\emph on
+(koma-script)
+\emph default
+, and 
+\emph on
+letter
+\emph default
+ 
+\emph on
+(koma-script)
+\emph default
+ correspond to the \SpecialChar LaTeX
+ document classes 
+\family typewriter
+scrartcl.cls
+\family default
+, 
+\family typewriter
+scrreprt.cls
+\family default
+, 
+\family typewriter
+scrbook.cls
+\family default
+, and 
+\family typewriter
+scrlettr.cls
+\family default
+, resp.
+\begin_inset space ~
+\end_inset
+
+of the Koma-Script family.
+ They are replacements for the standard document classes 
+\family typewriter
+article.cls
+\family default
+, 
+\family typewriter
+report.cls
+\family default
+, 
+\family typewriter
+book.cls
+\family default
+ and 
+\family typewriter
+letter.cls
+\family default
+, resp., and fit better to European typography conventions in a number of
+ points.
+\end_layout
+
+\begin_layout Itemize
+Standard character size is 11pt in 
+\emph on
+article (koma-script)
+\emph default
+, 
+\emph on
+report (koma-script)
+\emph default
+, and 
+\emph on
+book (koma-script)
+\emph default
+, and 12pt in 
+\emph on
+letter (koma-script)
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+Headings, labels of the description environment, and a number of elements
+ of the 
+\emph on
+letter (koma-script)
+\emph default
+ document class are set in a bold sans serif font.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+There is a big difference between the bold sans serif old cm fonts and new
+ ec fonts, especially in the appearance of headings.
+ In comparison, the ec bold sans serif fonts look a bit thin.
+ Here the \SpecialChar LaTeX
+ package 
+\family typewriter
+cmsd.sty by
+\family default
+ 
+\shape smallcaps
+Walter Schmidt
+\shape default
+ helps to produce the 
+\begin_inset Quotes eld
+\end_inset
+
+usual
+\begin_inset Quotes erd
+\end_inset
+
+ appearance when using the ec fonts.
+\end_layout
+
+\end_inset
+
+ The numbering of chapter headings is made in the same way as the numbering
+ of section headings, that is without the extra line 
+\begin_inset Quotes eld
+\end_inset
+
+Chapter\SpecialChar ldots
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ In addition, the appearance of the headings can be modified by using a
+ number of options (in \SpecialChar LyX
+ to be entered in the field 
+\family sans
+Extra
+\begin_inset space ~
+\end_inset
+
+Options
+\family default
+ of the dialog 
+\family sans
+Layout\SpecialChar menuseparator
+Document
+\family default
+).
+ 
+\end_layout
+
+\begin_layout Itemize
+The main means in the Koma-Script document classes to design the type area
+ are the options 
+\family sans
+BCOR
+\family default
+ and 
+\family sans
+DIV
+\family default
+ (in \SpecialChar LyX
+ to be entered in the extra class options field in the dialog 
+\family sans
+Document\SpecialChar menuseparator
+Settings
+\family default
+).
+ They make a clearer modification of page margins possible as do the options
+ of the dialog 
+\family sans
+Document\SpecialChar menuseparator
+Settings
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+The \SpecialChar LaTeX
+ document classes of the Koma-Script family define a number of additional
+ commands.
+ Those part of it which makes sense in \SpecialChar LyX
+ is implemented in corresponding
+ paragraph types.
+\end_layout
+
+\begin_layout Standard
+Detailed descriptions of the \SpecialChar LaTeX
+ document classes of the Koma-Script family
+ can be found in the Koma-Script documentation 
+\emph on
+scrguide
+\emph default
+ (German) and 
+\emph on
+scrguien
+\emph default
+ (English).
+\end_layout
+
+\begin_layout Subsubsection
+article (koma-script), report (koma-script), and book (koma-script)
+\end_layout
+
+\begin_layout Standard
+The document classes 
+\emph on
+article (koma-script)
+\emph default
+, 
+\emph on
+report (koma-script)
+\emph default
+, and 
+\emph on
+book
+\emph default
+ 
+\emph on
+(koma-script)
+\emph default
+ are implemented in the layout files 
+\family typewriter
+scrartcl.layout
+\family default
+, 
+\family typewriter
+scrreprt.layout
+\family default
+, and 
+\family typewriter
+scrbook.layout
+\family default
+, resp.
+ They contain all the paragraph types of the corresponding standard document
+ classes 
+\emph on
+article
+\emph default
+, 
+\emph on
+report
+\emph default
+, and 
+\emph on
+book
+\emph default
+, resp., partly modified, with the exception of the \SpecialChar LyX
+ specific 
+\family sans
+List
+\family default
+-type, which is replaced by the new 
+\family sans
+Labeling
+\family default
+-type having the same functionality.
+ Beside the 
+\family sans
+Labeling
+\family default
+-Type there is a number of new paragraph types added.
+ They are 
+\emph on
+not
+\emph default
+ part of 
+\emph on
+letter (koma-script)
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Addpart, Addchap
+\family default
+, 
+\family sans
+Addsec
+\family default
+: are equivalents to 
+\family sans
+Part*, Chapter*
+\family default
+ and 
+\family sans
+Section*
+\family default
+, resp., additionally inserting an entry in the table of contents.
+ 
+\family sans
+Addpart
+\family default
+ and 
+\family sans
+Addchap
+\family default
+ are not contained in 
+\emph on
+article (koma-script)
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Addchap*
+\family default
+, 
+\family sans
+Addsec*
+\family default
+: behave exactly as 
+\family sans
+Addchap
+\family default
+ and 
+\family sans
+Addsec
+\family default
+, resp., additionally clearing running heads.
+ 
+\family sans
+Addchap*
+\family default
+ is not contained in 
+\emph on
+article (koma-script)
+\emph default
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+There is also an 
+\family typewriter
+
+\backslash
+addpart*
+\family default
+ command in 
+\emph on
+book (koma-script)
+\emph default
+ and in 
+\emph on
+report (koma-script)
+\emph default
+, but since this is identical to 
+\family sans
+Part*
+\family default
+, is has not been implemented in \SpecialChar LyX
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Minisec
+\family default
+: generates a heading directly above the following paragraph in the standard
+ character size without affecting the structure of the document.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Captionabove
+\family default
+ and 
+\family sans
+Captionbelow
+\family default
+ are special captions which respect the different space settings needed
+ for captions placed above or below an element (if you follow strict typographic
+ rules, you might want to place table captions always above the table).
+ You can also use the class option 
+\family typewriter
+tablecaptionsabove
+\family default
+, which will switch 
+\family sans
+caption
+\family default
+ to 
+\family sans
+captionabove
+\family default
+ for tables and 
+\family sans
+captionbelow
+\family default
+ for figures.
+ You need at least Koma-Script version 2.8q to use this.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Dictum
+\family default
+: can be used to set a bonmot, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+at the beginning of a chapter.
+ If you use the optional argument (
+\family sans
+Insert\SpecialChar menuseparator
+Dictum
+\begin_inset space ~
+\end_inset
+
+Author
+\family default
+), you can insert the dictum's author there.
+ Dictum and author are separated by a line.
+ You need at least Koma-Script version 2.8q to use this.
+ 
+\family sans
+Dictum
+\family default
+ is not contained in 
+\emph on
+article (koma-script)
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+The following types, together with the standard types 
+\family sans
+Title
+\family default
+, 
+\family sans
+Author
+\family default
+, and 
+\family sans
+Date
+\family default
+, form the title area of the document.
+ They must be entered ahead of the first 
+\begin_inset Quotes eld
+\end_inset
+
+ordinary
+\begin_inset Quotes erd
+\end_inset
+
+ paragraph.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The corresponding \SpecialChar LaTeX
+ commands must appear before the 
+\family typewriter
+
+\backslash
+maketitle
+\family default
+ command.
+\end_layout
+
+\end_inset
+
+ When such a type is used more than once, the latter usage overwrites the
+ former one, that means, for every type only the latest usage is valid.
+ The order of the different types however has, like 
+\family sans
+Title
+\family default
+, 
+\family sans
+Author
+\family default
+, and 
+\family sans
+Date
+\family default
+, no effect on the appearance of the produced document.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Subject
+\family default
+: produces a centered paragraph above the ordinary title (
+\family sans
+Title
+\family default
+, 
+\family sans
+Author
+\family default
+, 
+\family sans
+Date
+\family default
+) for the subject of the document.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Publishers
+\family default
+: produces a centered paragraph below the ordinary title (
+\family sans
+Title
+\family default
+, 
+\family sans
+Author
+\family default
+, 
+\family sans
+Date
+\family default
+) for the publishers' name.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Dedication
+\family default
+: in 
+\emph on
+report (koma-script)
+\emph default
+ and 
+\emph on
+book (koma-script)
+\emph default
+ produces a centered paragraph on its own page behind the title page, or
+ in 
+\emph on
+article (koma-script)
+\emph default
+ produces a centered paragraph below the ordinary title (
+\family sans
+Title
+\family default
+, 
+\family sans
+Author
+\family default
+, 
+\family sans
+Date
+\family default
+, 
+\family sans
+Publishers
+\family default
+) for a dedication.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Titlehead
+\family default
+: produces a left aligned paragraph above the ordinary title (
+\family sans
+Title
+\family default
+, 
+\family sans
+Author
+\family default
+, 
+\family sans
+Date
+\family default
+, 
+\family sans
+Subject
+\family default
+) for a document`s head.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Uppertitleback
+\family default
+: produces in a double-sided print in 
+\emph on
+report (koma-script)
+\emph default
+ and 
+\emph on
+book (koma-script)
+\emph default
+ a left-aligned paragraph at the top of the title page`s back or has no
+ effect in a single-sided print or in 
+\emph on
+article (koma-script)
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Lowertitleback
+\family default
+: produces in a double-sided print in 
+\emph on
+report (koma-script)
+\emph default
+ and 
+\emph on
+book (koma-script)
+\emph default
+ a left-aligned paragraph at the bottom of the title page`s back or has
+ no effect in a single-sided print or in 
+\emph on
+article (koma-script)
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Extratitle
+\family default
+: produces a special 
+\begin_inset Quotes eld
+\end_inset
+
+dirty
+\begin_inset Quotes erd
+\end_inset
+
+ page ahead of the actual document containing a paragraph without special
+ formatting.
+\end_layout
+
+\begin_layout Standard
+The layout files for the document classes 
+\emph on
+article (koma-script)
+\emph default
+, 
+\emph on
+report (koma-script)
+\emph default
+, and 
+\emph on
+book (koma-script)
+\emph default
+ do include the file 
+\family typewriter
+scrmacros.inc
+\family default
+.
+ This is thought of as a place to define your own types.
+ Copy scrmacros
+\family typewriter
+.inc
+\family default
+ in your personal layout directory and edit the file!
+\end_layout
+
+\begin_layout Subsubsection
+letter (koma-script)
+\end_layout
+
+\begin_layout Description
+Note: This section discusses the obsolete 
+\family sans
+KOMA-Script-Letter (v.
+\begin_inset space ~
+\end_inset
+
+1)
+\family default
+, which is not even included anymore in recent KOMA releases.
+ Please refer to the next section for the current KOMA-Script-Letter class
+ (v.
+\begin_inset space ~
+\end_inset
+
+2)!
+\end_layout
+
+\begin_layout Standard
+\noindent
+The document class 
+\emph on
+letter (koma-script)
+\emph default
+ is implemented in the layout file 
+\family typewriter
+scrlettr.layout
+\family default
+.
+ It contains all the paragraph types of the corresponding standard document
+ class 
+\emph on
+letter
+\emph default
+, partly modified, with the exception of the \SpecialChar LyX
+ specific types 
+\family sans
+\SpecialChar LyX
+-Code
+\family default
+ and 
+\family sans
+Comment
+\family default
+ and the 
+\family sans
+List
+\family default
+ type, which is replaced by the new 
+\family sans
+Labeling
+\family default
+ type.
+ In addition, it contains, in contrast to the standard document class, the
+ standard types 
+\family sans
+\SpecialChar LaTeX
+
+\family default
+, 
+\family sans
+Quotation
+\family default
+, 
+\family sans
+Quote
+\family default
+, and 
+\family sans
+Verse
+\family default
+.
+ Furthermore, there are a number of new letter specific types.
+\end_layout
+
+\begin_layout Standard
+The appearance of the letter produced by this document class can be controlled
+ by a number of \SpecialChar LaTeX
+ commands, which you can put in the \SpecialChar LaTeX
+ preamble.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+For example, the standard appearance of the letter`s heading, consisting
+ of name and address, is quite self-willed.
+ An 
+\begin_inset Quotes eld
+\end_inset
+
+ordinary
+\begin_inset Quotes erd
+\end_inset
+
+ heading is produced by the following \SpecialChar LaTeX
+ commands in the preamble:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+firsthead{
+\backslash
+parbox[b]{
+\backslash
+textwidth}
+\end_layout
+
+\begin_layout LyX-Code
+  {
+\backslash
+ignorespaces 
+\backslash
+fromname
+\backslash
+
+\backslash
+ 
+\backslash
+ignorespaces 
+\backslash
+fromaddress}} 
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+nexthead{
+\backslash
+parbox[b]{
+\backslash
+textwidth}
+\end_layout
+
+\begin_layout LyX-Code
+  {
+\backslash
+ignorespaces 
+\backslash
+fromname 
+\backslash
+hfill 
+\backslash
+ignorespaces 
+\backslash
+pagename
+\backslash
+ 
+\backslash
+thepage}}
+\end_layout
+
+\end_inset
+
+ A detailed German description of such \SpecialChar LaTeX
+ commands can be found in the Koma-Script
+ documentation 
+\emph on
+scrguide
+\emph default
+.
+ With it, the letter's author can produce his personal letter layout.
+\end_layout
+
+\begin_layout Standard
+The types 
+\family sans
+Letter
+\family default
+ and 
+\family sans
+Opening
+\family default
+ define the beginning of the letter and must be used in every letter.
+ To emphasize them in the \SpecialChar LyX
+ document class, they are marked with the letter
+ 
+\shape italic
+L
+\shape default
+ or 
+\shape italic
+O
+\shape default
+, resp.
+\begin_inset space ~
+\end_inset
+
+in the left margin.
+ It is possible to write any number of letters in one file.
+ An 
+\family sans
+Opening
+\family default
+ type produces a new letter using the same addressee and a 
+\family sans
+Letter
+\family default
+ type produces a new addressee.
+ The types 
+\family sans
+Closing
+\family default
+, 
+\family sans
+PS
+\family default
+, 
+\family sans
+CC
+\family default
+, and 
+\family sans
+Encl
+\family default
+ are ordinary paragraph types and can also be used several times in one
+ and the same letter.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Letter
+\family default
+: produces a paragraph for the addressee and implicitly defines the beginning
+ of the letter.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Opening
+\family default
+: produces a paragraph for the form of address and implicitly produces a
+ new letter.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Closing
+\family default
+: produces a paragraph for a close.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+PS
+\family default
+: produces a paragraph for a postscript.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+CC
+\family default
+: produces a paragraph for a distribution list.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Encl
+\family default
+: produces a paragraph for enclosures.
+\end_layout
+
+\begin_layout Standard
+The types 
+\family sans
+Name
+\family default
+, 
+\family sans
+Signature
+\family default
+, 
+\family sans
+Address
+\family default
+, 
+\family sans
+Telephone
+\family default
+, 
+\family sans
+Place
+\family default
+, 
+\family sans
+Backaddress
+\family default
+, 
+\family sans
+Specialmail
+\family default
+, 
+\family sans
+Location
+\family default
+, 
+\family sans
+Title
+\family default
+, and 
+\family sans
+Subject
+\family default
+ are input types provided with a label to enter information, which will
+ be processed by the document class.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+It could be seen as a matter of inconsequence, that the types 
+\family sans
+Letter
+\family default
+ and 
+\family sans
+Opening
+\family default
+ described above are not such input types as well.
+ Because of the special meaning of those types, however, I have implemented
+ them as ordinary paragraph types with a one letter mark in the left margin.
+ Moreover, it would affect my feeling of symmetry, if the 
+\family sans
+Opening
+\family default
+ type and the 
+\family sans
+Closing
+\family default
+ type had such a serious different appearance.
+\end_layout
+
+\end_inset
+
+ The types must be used ahead of the corresponding 
+\family sans
+Opening
+\family default
+ type.
+\end_layout
+
+\begin_layout Standard
+An implementation of these types in a WYSIWYG fashion does not seem to make
+ sense, because the real appearance of the produced letter does not only
+ depend on the usage of the particular type, but also on other factors.
+ For example, a signature entered in the 
+\family sans
+Signature
+\family default
+ type will in the standard behavior appear in the produced letter only,
+ when in the same letter also a 
+\family sans
+Closing
+\family default
+ type is used.
+ The entered value of the 
+\family sans
+Telephone
+\family default
+ type will in the standard behavior not appear in the produced letter at
+ all.
+ The possibility to design the letter`s heading freely is already indicated
+ in a footnote above.
+\end_layout
+
+\begin_layout Standard
+The input types can also be used as empty paragraphs.
+ This makes sense e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+for the 
+\family sans
+Signature
+\family default
+ type.
+ If the 
+\family sans
+Signature
+\family default
+ type is not used at all, in the standard behavior the value of the 
+\family sans
+Name
+\family default
+ type is used as signature, whereas if an empty 
+\family sans
+Signature
+\family default
+ type is used, no signature value is defined.
+\end_layout
+
+\begin_layout Standard
+By using the input types it is possible to write a letter template, containing
+ filled input types with your personal dates (name, address, etc.) and empty
+ input types for other dates you want to enter.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Name
+\family default
+: sender's name, in the standard behavior appears as a centered paragraph
+ in small caps in the letter`s heading.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Signature
+\family default
+: sender's signature, in the standard behavior appears below the 
+\family sans
+Closing
+\family default
+ type.
+ If no 
+\family sans
+Signature
+\family default
+ type is used, the value of the 
+\family sans
+Name
+\family default
+ type appears instead.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Address
+\family default
+: sender's address, in the standard behavior appears in a centered paragraph
+ in the letter`s heading below the sender's name.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Telephone
+\family default
+: sender's telephone number, in the standard behavior only sets the \SpecialChar LaTeX
+ variable
+ 
+\family typewriter
+
+\backslash
+telephonenum
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Place
+\family default
+: place of the letter`s making.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Date
+\family default
+: date of the letter`s making.
+ 
+\family sans
+Place
+\family default
+ and 
+\family sans
+Date
+\family default
+, in the standard behavior, produce the place and the date in a right-aligned
+ line below the addressee's field.
+ If an empty 
+\family sans
+Date
+\family default
+ type is used, neither place nor date appear, independent of the value of
+ the 
+\family sans
+Place
+\family default
+ type.
+ If no 
+\family sans
+Date
+\family default
+ type is used, the date of the letter `s production is used.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Backaddress
+\family default
+: sender`s back address, in the standard behavior appears above the addressee's
+ field in a small sans serif font.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Specialmail
+\family default
+: special mail information, in the standard behavior appears underlined
+ above the addressee's field below the back address.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Location
+\family default
+: additional information, in the standard behavior appears on right side
+ below the addressee`s field.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Title
+\family default
+: the letter's title, in the standard behavior appears in a big, bold, sans
+ serif font above the subject.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Subject
+\family default
+: the letter's subject, in the standard behavior appears in a bold font
+ above the 
+\family sans
+Opening
+\family default
+ paragraph.
+\end_layout
+
+\begin_layout Standard
+The types 
+\family sans
+Yourref
+\family default
+, 
+\family sans
+Yourmail
+\family default
+, 
+\family sans
+Myref
+\family default
+, 
+\family sans
+Customer
+\family default
+, and 
+\family sans
+Invoice
+\family default
+ produce a business letter like line above the 
+\family sans
+Title
+\family default
+ line containing the fields 
+\begin_inset Quotes eld
+\end_inset
+
+Your ref.
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Your letter of
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Our ref.
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Customer no.
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Invoice no.
+\begin_inset Quotes erd
+\end_inset
+
+, and 
+\begin_inset Quotes eld
+\end_inset
+
+Date
+\begin_inset Quotes erd
+\end_inset
+
+.
+ For the date field, the value of the 
+\family sans
+Date
+\family default
+ type is used.
+ If one of these 
+\begin_inset Quotes eld
+\end_inset
+
+business letter types
+\begin_inset Quotes erd
+\end_inset
+
+ is used, the value of the 
+\family sans
+Place
+\family default
+ type however does not appear, but only the \SpecialChar LaTeX
+ variable 
+\family typewriter
+
+\backslash
+fromplace
+\family default
+ is set.
+ The ordinary output of place and date in a right-aligned line below the
+ addressee`s field is suppressed.
+ The types are implemented as input types provided with a label and must
+ be used ahead of the corresponding 
+\family sans
+Opening
+\family default
+ type.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Yourref
+\family default
+: Your ref.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Yourmail
+\family default
+: Your letter of.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Myref
+\family default
+: Our ref.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Customer
+\family default
+: Customer no.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Invoice
+\family default
+: Invoice no.
+\end_layout
+
+\begin_layout Subsubsection
+The new letter class: letter (koma-script v.2)
+\end_layout
+
+\begin_layout Standard
+by 
+\noun on
+Jürgen Spitzmüller
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Koma-Script version 2.8 has introduced a new letter class 
+\family typewriter
+scrlttr2
+\family default
+ which supersedes the now unsupported 
+\family typewriter
+scrlettr
+\family default
+.
+ It has — on the \SpecialChar LaTeX
+ side — a completely new interface and is not compatible
+ with the old class.
+ Therefore, \SpecialChar LyX
+ supports both, though it is recommended you use the new class.
+\end_layout
+
+\begin_layout Standard
+This class covers the same functionality as 
+\emph on
+letter (koma-script),
+\emph default
+ and a few more.
+ The basic items are 
+\family sans
+Address
+\family default
+ (receiver's address, same as 
+\family sans
+Letter
+\family default
+ in the old layout), 
+\family sans
+Opening
+\family default
+, and 
+\family sans
+Closing
+\family default
+.
+ 
+\family sans
+NextAddress
+\family default
+ will start a new letter (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space \space{}
+\end_inset
+
+you can write several letters per document).
+ New elements are sender's 
+\family sans
+E-Mail
+\family default
+, 
+\family sans
+URL
+\family default
+, 
+\family sans
+Fax
+\family default
+, 
+\family sans
+Bank
+\family default
+ and the possibility to use a 
+\family sans
+Logo
+\family default
+ (via 
+\family sans
+Insert\SpecialChar menuseparator
+Graphics
+\family default
+) in the header.
+\end_layout
+
+\begin_layout Standard
+The biggest improvement is, though, that the letter's layout is configurable
+ to meet almost any needs.
+ This can be done via the preamble or with a special style file (Letter
+ Class Option, extension 
+\family typewriter
+*.lco
+\family default
+), that will be read in as a class option.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The KOMA package comes with some default 
+\family typewriter
+*.lco
+\family default
+ files.
+ There is, for instance, a 
+\family typewriter
+DIN.lco
+\family default
+ file that follows german typesetting rules, or a 
+\family typewriter
+KOMAold.lco
+\family default
+ that provides the default layout of the old 
+\family typewriter
+scrlettr
+\family default
+ class.
+ The latter can be loaded with the class option 
+\family typewriter
+KOMAold
+\family default
+, inserted via the 
+\family sans
+Layout\SpecialChar menuseparator
+Document\SpecialChar menuseparator
+Extra Options
+\family default
+ field.
+\end_layout
+
+\end_inset
+
+ Have a look at the 
+\emph on
+koma-letter2
+\emph default
+ template that is included in \SpecialChar LyX
+ for examples.
+ A detailed description is to be found in the Koma-Script documentation
+ (
+\emph on
+scrguide
+\emph default
+).
+\end_layout
+
+\begin_layout Subsubsection
+Problems
+\end_layout
+
+\begin_layout Standard
+Visualizing the Koma-Script document classes in \SpecialChar LyX
+, the \SpecialChar LyX
+ internals cause some
+ problems.
+\end_layout
+
+\begin_layout Itemize
+The chapter number of a 
+\family sans
+Chapter
+\family default
+ type appears on a line of its own above the chapter heading instead of
+ appearing in the same line ahead of it.
+ The cause for that is the \SpecialChar LyX
+ internal behavior for the labeltype 
+\family sans
+Counter_Chapter
+\family default
+ in the layout file.
+\end_layout
+
+\begin_layout Itemize
+The headings of the types 
+\family sans
+Addchap
+\family default
+ and 
+\family sans
+Addsec
+\family default
+ are only put in the 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ \SpecialChar LaTeX
+ table of contents, but not in the \SpecialChar LyX
+ table of contents (
+\family sans
+Document\SpecialChar menuseparator
+Table
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
+Contents
+\family default
+).
+\end_layout
+
+\begin_layout Itemize
+The paragraphs in a 
+\emph on
+letter
+\emph default
+ document class appear in a skip separation mode, not indented.
+ This is the standard behavior, no special \SpecialChar LaTeX
+ commands are needed for that.
+ But in the 
+\family sans
+Document\SpecialChar menuseparator
+Settings
+\family default
+ dialog the corresponding radio button indicates 
+\family sans
+Indent
+\family default
+.
+ A 
+\family sans
+Skip
+\family default
+ value always has the effect that extra \SpecialChar LaTeX
+ commands are inserted in the document
+ to produce the gap, which is not what is wanted in this case.
+\end_layout
+
 \begin_layout Section
 
 \change_inserted 564990737 1670439534
@@ -14396,1660 +16050,6 @@ don't delete the \SpecialChar TeX
 \change_deleted 564990737 1670317155
 copy the example bibliography item included in the template and modify it
  as necessary to enter new bibliography items.
-\end_layout
-
-\begin_layout Section
-Koma-Script
-\end_layout
-
-\begin_layout Standard
-by 
-\noun on
-Bernd Rellermeyer
-\end_layout
-
-\begin_layout Subsection
-Overview
-\end_layout
-
-\begin_layout Standard
-The \SpecialChar LyX
- document classes 
-\emph on
-article (koma-script)
-\emph default
-, 
-\emph on
-report (koma-script)
-\emph default
-, 
-\emph on
-book
-\emph default
- 
-\emph on
-(koma-script)
-\emph default
-, and 
-\emph on
-letter
-\emph default
- 
-\emph on
-(koma-script)
-\emph default
- correspond to the \SpecialChar LaTeX
- document classes 
-\family typewriter
-scrartcl.cls
-\family default
-, 
-\family typewriter
-scrreprt.cls
-\family default
-, 
-\family typewriter
-scrbook.cls
-\family default
-, and 
-\family typewriter
-scrlettr.cls
-\family default
-, resp.
-\begin_inset space ~
-\end_inset
-
-of the Koma-Script family.
- They are replacements for the standard document classes 
-\family typewriter
-article.cls
-\family default
-, 
-\family typewriter
-report.cls
-\family default
-, 
-\family typewriter
-book.cls
-\family default
- and 
-\family typewriter
-letter.cls
-\family default
-, resp., and fit better to European typography conventions in a number of
- points.
-\end_layout
-
-\begin_layout Itemize
-Standard character size is 11pt in 
-\emph on
-article (koma-script)
-\emph default
-, 
-\emph on
-report (koma-script)
-\emph default
-, and 
-\emph on
-book (koma-script)
-\emph default
-, and 12pt in 
-\emph on
-letter (koma-script)
-\emph default
-.
-\end_layout
-
-\begin_layout Itemize
-Headings, labels of the description environment, and a number of elements
- of the 
-\emph on
-letter (koma-script)
-\emph default
- document class are set in a bold sans serif font.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-There is a big difference between the bold sans serif old cm fonts and new
- ec fonts, especially in the appearance of headings.
- In comparison, the ec bold sans serif fonts look a bit thin.
- Here the \SpecialChar LaTeX
- package 
-\family typewriter
-cmsd.sty by
-\family default
- 
-\shape smallcaps
-Walter Schmidt
-\shape default
- helps to produce the 
-\begin_inset Quotes eld
-\end_inset
-
-usual
-\begin_inset Quotes erd
-\end_inset
-
- appearance when using the ec fonts.
-\end_layout
-
-\end_inset
-
- The numbering of chapter headings is made in the same way as the numbering
- of section headings, that is without the extra line 
-\begin_inset Quotes eld
-\end_inset
-
-Chapter\SpecialChar ldots
-
-\begin_inset Quotes erd
-\end_inset
-
-.
- In addition, the appearance of the headings can be modified by using a
- number of options (in \SpecialChar LyX
- to be entered in the field 
-\family sans
-Extra
-\begin_inset space ~
-\end_inset
-
-Options
-\family default
- of the dialog 
-\family sans
-Layout\SpecialChar menuseparator
-Document
-\family default
-).
- 
-\end_layout
-
-\begin_layout Itemize
-The main means in the Koma-Script document classes to design the type area
- are the options 
-\family sans
-BCOR
-\family default
- and 
-\family sans
-DIV
-\family default
- (in \SpecialChar LyX
- to be entered in the extra class options field in the dialog 
-\family sans
-Document\SpecialChar menuseparator
-Settings
-\family default
-).
- They make a clearer modification of page margins possible as do the options
- of the dialog 
-\family sans
-Document\SpecialChar menuseparator
-Settings
-\family default
-.
- 
-\end_layout
-
-\begin_layout Itemize
-The \SpecialChar LaTeX
- document classes of the Koma-Script family define a number of additional
- commands.
- Those part of it which makes sense in \SpecialChar LyX
- is implemented in corresponding
- paragraph types.
-\end_layout
-
-\begin_layout Standard
-Detailed descriptions of the \SpecialChar LaTeX
- document classes of the Koma-Script family
- can be found in the Koma-Script documentation 
-\emph on
-scrguide
-\emph default
- (German) and 
-\emph on
-scrguien
-\emph default
- (English).
-\end_layout
-
-\begin_layout Subsection
-article (koma-script), report (koma-script), and book (koma-script)
-\end_layout
-
-\begin_layout Standard
-The document classes 
-\emph on
-article (koma-script)
-\emph default
-, 
-\emph on
-report (koma-script)
-\emph default
-, and 
-\emph on
-book
-\emph default
- 
-\emph on
-(koma-script)
-\emph default
- are implemented in the layout files 
-\family typewriter
-scrartcl.layout
-\family default
-, 
-\family typewriter
-scrreprt.layout
-\family default
-, and 
-\family typewriter
-scrbook.layout
-\family default
-, resp.
- They contain all the paragraph types of the corresponding standard document
- classes 
-\emph on
-article
-\emph default
-, 
-\emph on
-report
-\emph default
-, and 
-\emph on
-book
-\emph default
-, resp., partly modified, with the exception of the \SpecialChar LyX
- specific 
-\family sans
-List
-\family default
--type, which is replaced by the new 
-\family sans
-Labeling
-\family default
--type having the same functionality.
- Beside the 
-\family sans
-Labeling
-\family default
--Type there is a number of new paragraph types added.
- They are 
-\emph on
-not
-\emph default
- part of 
-\emph on
-letter (koma-script)
-\emph default
-.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Addpart, Addchap
-\family default
-, 
-\family sans
-Addsec
-\family default
-: are equivalents to 
-\family sans
-Part*, Chapter*
-\family default
- and 
-\family sans
-Section*
-\family default
-, resp., additionally inserting an entry in the table of contents.
- 
-\family sans
-Addpart
-\family default
- and 
-\family sans
-Addchap
-\family default
- are not contained in 
-\emph on
-article (koma-script)
-\emph default
-.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Addchap*
-\family default
-, 
-\family sans
-Addsec*
-\family default
-: behave exactly as 
-\family sans
-Addchap
-\family default
- and 
-\family sans
-Addsec
-\family default
-, resp., additionally clearing running heads.
- 
-\family sans
-Addchap*
-\family default
- is not contained in 
-\emph on
-article (koma-script)
-\emph default
-.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-There is also an 
-\family typewriter
-
-\backslash
-addpart*
-\family default
- command in 
-\emph on
-book (koma-script)
-\emph default
- and in 
-\emph on
-report (koma-script)
-\emph default
-, but since this is identical to 
-\family sans
-Part*
-\family default
-, is has not been implemented in \SpecialChar LyX
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Minisec
-\family default
-: generates a heading directly above the following paragraph in the standard
- character size without affecting the structure of the document.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Captionabove
-\family default
- and 
-\family sans
-Captionbelow
-\family default
- are special captions which respect the different space settings needed
- for captions placed above or below an element (if you follow strict typographic
- rules, you might want to place table captions always above the table).
- You can also use the class option 
-\family typewriter
-tablecaptionsabove
-\family default
-, which will switch 
-\family sans
-caption
-\family default
- to 
-\family sans
-captionabove
-\family default
- for tables and 
-\family sans
-captionbelow
-\family default
- for figures.
- You need at least Koma-Script version 2.8q to use this.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Dictum
-\family default
-: can be used to set a bonmot, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-at the beginning of a chapter.
- If you use the optional argument (
-\family sans
-Insert\SpecialChar menuseparator
-Dictum
-\begin_inset space ~
-\end_inset
-
-Author
-\family default
-), you can insert the dictum's author there.
- Dictum and author are separated by a line.
- You need at least Koma-Script version 2.8q to use this.
- 
-\family sans
-Dictum
-\family default
- is not contained in 
-\emph on
-article (koma-script)
-\emph default
-.
-\end_layout
-
-\begin_layout Standard
-The following types, together with the standard types 
-\family sans
-Title
-\family default
-, 
-\family sans
-Author
-\family default
-, and 
-\family sans
-Date
-\family default
-, form the title area of the document.
- They must be entered ahead of the first 
-\begin_inset Quotes eld
-\end_inset
-
-ordinary
-\begin_inset Quotes erd
-\end_inset
-
- paragraph.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-The corresponding \SpecialChar LaTeX
- commands must appear before the 
-\family typewriter
-
-\backslash
-maketitle
-\family default
- command.
-\end_layout
-
-\end_inset
-
- When such a type is used more than once, the latter usage overwrites the
- former one, that means, for every type only the latest usage is valid.
- The order of the different types however has, like 
-\family sans
-Title
-\family default
-, 
-\family sans
-Author
-\family default
-, and 
-\family sans
-Date
-\family default
-, no effect on the appearance of the produced document.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Subject
-\family default
-: produces a centered paragraph above the ordinary title (
-\family sans
-Title
-\family default
-, 
-\family sans
-Author
-\family default
-, 
-\family sans
-Date
-\family default
-) for the subject of the document.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Publishers
-\family default
-: produces a centered paragraph below the ordinary title (
-\family sans
-Title
-\family default
-, 
-\family sans
-Author
-\family default
-, 
-\family sans
-Date
-\family default
-) for the publishers' name.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Dedication
-\family default
-: in 
-\emph on
-report (koma-script)
-\emph default
- and 
-\emph on
-book (koma-script)
-\emph default
- produces a centered paragraph on its own page behind the title page, or
- in 
-\emph on
-article (koma-script)
-\emph default
- produces a centered paragraph below the ordinary title (
-\family sans
-Title
-\family default
-, 
-\family sans
-Author
-\family default
-, 
-\family sans
-Date
-\family default
-, 
-\family sans
-Publishers
-\family default
-) for a dedication.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Titlehead
-\family default
-: produces a left aligned paragraph above the ordinary title (
-\family sans
-Title
-\family default
-, 
-\family sans
-Author
-\family default
-, 
-\family sans
-Date
-\family default
-, 
-\family sans
-Subject
-\family default
-) for a document`s head.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Uppertitleback
-\family default
-: produces in a double-sided print in 
-\emph on
-report (koma-script)
-\emph default
- and 
-\emph on
-book (koma-script)
-\emph default
- a left-aligned paragraph at the top of the title page`s back or has no
- effect in a single-sided print or in 
-\emph on
-article (koma-script)
-\emph default
-.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Lowertitleback
-\family default
-: produces in a double-sided print in 
-\emph on
-report (koma-script)
-\emph default
- and 
-\emph on
-book (koma-script)
-\emph default
- a left-aligned paragraph at the bottom of the title page`s back or has
- no effect in a single-sided print or in 
-\emph on
-article (koma-script)
-\emph default
-.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Extratitle
-\family default
-: produces a special 
-\begin_inset Quotes eld
-\end_inset
-
-dirty
-\begin_inset Quotes erd
-\end_inset
-
- page ahead of the actual document containing a paragraph without special
- formatting.
-\end_layout
-
-\begin_layout Standard
-The layout files for the document classes 
-\emph on
-article (koma-script)
-\emph default
-, 
-\emph on
-report (koma-script)
-\emph default
-, and 
-\emph on
-book (koma-script)
-\emph default
- do include the file 
-\family typewriter
-scrmacros.inc
-\family default
-.
- This is thought of as a place to define your own types.
- Copy scrmacros
-\family typewriter
-.inc
-\family default
- in your personal layout directory and edit the file!
-\end_layout
-
-\begin_layout Subsection
-letter (koma-script)
-\end_layout
-
-\begin_layout Description
-Note: This section discusses the obsolete 
-\family sans
-KOMA-Script-Letter (v.
-\begin_inset space ~
-\end_inset
-
-1)
-\family default
-, which is not even included anymore in recent KOMA releases.
- Please refer to the next section for the current KOMA-Script-Letter class
- (v.
-\begin_inset space ~
-\end_inset
-
-2)!
-\end_layout
-
-\begin_layout Standard
-\noindent
-The document class 
-\emph on
-letter (koma-script)
-\emph default
- is implemented in the layout file 
-\family typewriter
-scrlettr.layout
-\family default
-.
- It contains all the paragraph types of the corresponding standard document
- class 
-\emph on
-letter
-\emph default
-, partly modified, with the exception of the \SpecialChar LyX
- specific types 
-\family sans
-\SpecialChar LyX
--Code
-\family default
- and 
-\family sans
-Comment
-\family default
- and the 
-\family sans
-List
-\family default
- type, which is replaced by the new 
-\family sans
-Labeling
-\family default
- type.
- In addition, it contains, in contrast to the standard document class, the
- standard types 
-\family sans
-\SpecialChar LaTeX
-
-\family default
-, 
-\family sans
-Quotation
-\family default
-, 
-\family sans
-Quote
-\family default
-, and 
-\family sans
-Verse
-\family default
-.
- Furthermore, there are a number of new letter specific types.
-\end_layout
-
-\begin_layout Standard
-The appearance of the letter produced by this document class can be controlled
- by a number of \SpecialChar LaTeX
- commands, which you can put in the \SpecialChar LaTeX
- preamble.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-For example, the standard appearance of the letter`s heading, consisting
- of name and address, is quite self-willed.
- An 
-\begin_inset Quotes eld
-\end_inset
-
-ordinary
-\begin_inset Quotes erd
-\end_inset
-
- heading is produced by the following \SpecialChar LaTeX
- commands in the preamble:
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-firsthead{
-\backslash
-parbox[b]{
-\backslash
-textwidth}
-\end_layout
-
-\begin_layout LyX-Code
-  {
-\backslash
-ignorespaces 
-\backslash
-fromname
-\backslash
-
-\backslash
- 
-\backslash
-ignorespaces 
-\backslash
-fromaddress}} 
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-nexthead{
-\backslash
-parbox[b]{
-\backslash
-textwidth}
-\end_layout
-
-\begin_layout LyX-Code
-  {
-\backslash
-ignorespaces 
-\backslash
-fromname 
-\backslash
-hfill 
-\backslash
-ignorespaces 
-\backslash
-pagename
-\backslash
- 
-\backslash
-thepage}}
-\end_layout
-
-\end_inset
-
- A detailed German description of such \SpecialChar LaTeX
- commands can be found in the Koma-Script
- documentation 
-\emph on
-scrguide
-\emph default
-.
- With it, the letter's author can produce his personal letter layout.
-\end_layout
-
-\begin_layout Standard
-The types 
-\family sans
-Letter
-\family default
- and 
-\family sans
-Opening
-\family default
- define the beginning of the letter and must be used in every letter.
- To emphasize them in the \SpecialChar LyX
- document class, they are marked with the letter
- 
-\shape italic
-L
-\shape default
- or 
-\shape italic
-O
-\shape default
-, resp.
-\begin_inset space ~
-\end_inset
-
-in the left margin.
- It is possible to write any number of letters in one file.
- An 
-\family sans
-Opening
-\family default
- type produces a new letter using the same addressee and a 
-\family sans
-Letter
-\family default
- type produces a new addressee.
- The types 
-\family sans
-Closing
-\family default
-, 
-\family sans
-PS
-\family default
-, 
-\family sans
-CC
-\family default
-, and 
-\family sans
-Encl
-\family default
- are ordinary paragraph types and can also be used several times in one
- and the same letter.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Letter
-\family default
-: produces a paragraph for the addressee and implicitly defines the beginning
- of the letter.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Opening
-\family default
-: produces a paragraph for the form of address and implicitly produces a
- new letter.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Closing
-\family default
-: produces a paragraph for a close.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-PS
-\family default
-: produces a paragraph for a postscript.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-CC
-\family default
-: produces a paragraph for a distribution list.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Encl
-\family default
-: produces a paragraph for enclosures.
-\end_layout
-
-\begin_layout Standard
-The types 
-\family sans
-Name
-\family default
-, 
-\family sans
-Signature
-\family default
-, 
-\family sans
-Address
-\family default
-, 
-\family sans
-Telephone
-\family default
-, 
-\family sans
-Place
-\family default
-, 
-\family sans
-Backaddress
-\family default
-, 
-\family sans
-Specialmail
-\family default
-, 
-\family sans
-Location
-\family default
-, 
-\family sans
-Title
-\family default
-, and 
-\family sans
-Subject
-\family default
- are input types provided with a label to enter information, which will
- be processed by the document class.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-It could be seen as a matter of inconsequence, that the types 
-\family sans
-Letter
-\family default
- and 
-\family sans
-Opening
-\family default
- described above are not such input types as well.
- Because of the special meaning of those types, however, I have implemented
- them as ordinary paragraph types with a one letter mark in the left margin.
- Moreover, it would affect my feeling of symmetry, if the 
-\family sans
-Opening
-\family default
- type and the 
-\family sans
-Closing
-\family default
- type had such a serious different appearance.
-\end_layout
-
-\end_inset
-
- The types must be used ahead of the corresponding 
-\family sans
-Opening
-\family default
- type.
-\end_layout
-
-\begin_layout Standard
-An implementation of these types in a WYSIWYG fashion does not seem to make
- sense, because the real appearance of the produced letter does not only
- depend on the usage of the particular type, but also on other factors.
- For example, a signature entered in the 
-\family sans
-Signature
-\family default
- type will in the standard behavior appear in the produced letter only,
- when in the same letter also a 
-\family sans
-Closing
-\family default
- type is used.
- The entered value of the 
-\family sans
-Telephone
-\family default
- type will in the standard behavior not appear in the produced letter at
- all.
- The possibility to design the letter`s heading freely is already indicated
- in a footnote above.
-\end_layout
-
-\begin_layout Standard
-The input types can also be used as empty paragraphs.
- This makes sense e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-for the 
-\family sans
-Signature
-\family default
- type.
- If the 
-\family sans
-Signature
-\family default
- type is not used at all, in the standard behavior the value of the 
-\family sans
-Name
-\family default
- type is used as signature, whereas if an empty 
-\family sans
-Signature
-\family default
- type is used, no signature value is defined.
-\end_layout
-
-\begin_layout Standard
-By using the input types it is possible to write a letter template, containing
- filled input types with your personal dates (name, address, etc.) and empty
- input types for other dates you want to enter.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Name
-\family default
-: sender's name, in the standard behavior appears as a centered paragraph
- in small caps in the letter`s heading.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Signature
-\family default
-: sender's signature, in the standard behavior appears below the 
-\family sans
-Closing
-\family default
- type.
- If no 
-\family sans
-Signature
-\family default
- type is used, the value of the 
-\family sans
-Name
-\family default
- type appears instead.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Address
-\family default
-: sender's address, in the standard behavior appears in a centered paragraph
- in the letter`s heading below the sender's name.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Telephone
-\family default
-: sender's telephone number, in the standard behavior only sets the \SpecialChar LaTeX
- variable
- 
-\family typewriter
-
-\backslash
-telephonenum
-\family default
-.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Place
-\family default
-: place of the letter`s making.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Date
-\family default
-: date of the letter`s making.
- 
-\family sans
-Place
-\family default
- and 
-\family sans
-Date
-\family default
-, in the standard behavior, produce the place and the date in a right-aligned
- line below the addressee's field.
- If an empty 
-\family sans
-Date
-\family default
- type is used, neither place nor date appear, independent of the value of
- the 
-\family sans
-Place
-\family default
- type.
- If no 
-\family sans
-Date
-\family default
- type is used, the date of the letter `s production is used.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Backaddress
-\family default
-: sender`s back address, in the standard behavior appears above the addressee's
- field in a small sans serif font.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Specialmail
-\family default
-: special mail information, in the standard behavior appears underlined
- above the addressee's field below the back address.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Location
-\family default
-: additional information, in the standard behavior appears on right side
- below the addressee`s field.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Title
-\family default
-: the letter's title, in the standard behavior appears in a big, bold, sans
- serif font above the subject.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Subject
-\family default
-: the letter's subject, in the standard behavior appears in a bold font
- above the 
-\family sans
-Opening
-\family default
- paragraph.
-\end_layout
-
-\begin_layout Standard
-The types 
-\family sans
-Yourref
-\family default
-, 
-\family sans
-Yourmail
-\family default
-, 
-\family sans
-Myref
-\family default
-, 
-\family sans
-Customer
-\family default
-, and 
-\family sans
-Invoice
-\family default
- produce a business letter like line above the 
-\family sans
-Title
-\family default
- line containing the fields 
-\begin_inset Quotes eld
-\end_inset
-
-Your ref.
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Your letter of
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Our ref.
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Customer no.
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Invoice no.
-\begin_inset Quotes erd
-\end_inset
-
-, and 
-\begin_inset Quotes eld
-\end_inset
-
-Date
-\begin_inset Quotes erd
-\end_inset
-
-.
- For the date field, the value of the 
-\family sans
-Date
-\family default
- type is used.
- If one of these 
-\begin_inset Quotes eld
-\end_inset
-
-business letter types
-\begin_inset Quotes erd
-\end_inset
-
- is used, the value of the 
-\family sans
-Place
-\family default
- type however does not appear, but only the \SpecialChar LaTeX
- variable 
-\family typewriter
-
-\backslash
-fromplace
-\family default
- is set.
- The ordinary output of place and date in a right-aligned line below the
- addressee`s field is suppressed.
- The types are implemented as input types provided with a label and must
- be used ahead of the corresponding 
-\family sans
-Opening
-\family default
- type.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Yourref
-\family default
-: Your ref.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Yourmail
-\family default
-: Your letter of.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Myref
-\family default
-: Our ref.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Customer
-\family default
-: Customer no.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Invoice
-\family default
-: Invoice no.
-\end_layout
-
-\begin_layout Subsection
-The new letter class: letter (koma-script v.2)
-\end_layout
-
-\begin_layout Standard
-by 
-\noun on
-Jürgen Spitzmüller
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Koma-Script version 2.8 has introduced a new letter class 
-\family typewriter
-scrlttr2
-\family default
- which supersedes the now unsupported 
-\family typewriter
-scrlettr
-\family default
-.
- It has — on the \SpecialChar LaTeX
- side — a completely new interface and is not compatible
- with the old class.
- Therefore, \SpecialChar LyX
- supports both, though it is recommended you use the new class.
-\end_layout
-
-\begin_layout Standard
-This class covers the same functionality as 
-\emph on
-letter (koma-script),
-\emph default
- and a few more.
- The basic items are 
-\family sans
-Address
-\family default
- (receiver's address, same as 
-\family sans
-Letter
-\family default
- in the old layout), 
-\family sans
-Opening
-\family default
-, and 
-\family sans
-Closing
-\family default
-.
- 
-\family sans
-NextAddress
-\family default
- will start a new letter (i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
-\begin_inset space \space{}
-\end_inset
-
-you can write several letters per document).
- New elements are sender's 
-\family sans
-E-Mail
-\family default
-, 
-\family sans
-URL
-\family default
-, 
-\family sans
-Fax
-\family default
-, 
-\family sans
-Bank
-\family default
- and the possibility to use a 
-\family sans
-Logo
-\family default
- (via 
-\family sans
-Insert\SpecialChar menuseparator
-Graphics
-\family default
-) in the header.
-\end_layout
-
-\begin_layout Standard
-The biggest improvement is, though, that the letter's layout is configurable
- to meet almost any needs.
- This can be done via the preamble or with a special style file (Letter
- Class Option, extension 
-\family typewriter
-*.lco
-\family default
-), that will be read in as a class option.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-The KOMA package comes with some default 
-\family typewriter
-*.lco
-\family default
- files.
- There is, for instance, a 
-\family typewriter
-DIN.lco
-\family default
- file that follows german typesetting rules, or a 
-\family typewriter
-KOMAold.lco
-\family default
- that provides the default layout of the old 
-\family typewriter
-scrlettr
-\family default
- class.
- The latter can be loaded with the class option 
-\family typewriter
-KOMAold
-\family default
-, inserted via the 
-\family sans
-Layout\SpecialChar menuseparator
-Document\SpecialChar menuseparator
-Extra Options
-\family default
- field.
-\end_layout
-
-\end_inset
-
- Have a look at the 
-\emph on
-koma-letter2
-\emph default
- template that is included in \SpecialChar LyX
- for examples.
- A detailed description is to be found in the Koma-Script documentation
- (
-\emph on
-scrguide
-\emph default
-).
-\end_layout
-
-\begin_layout Subsection
-Problems
-\end_layout
-
-\begin_layout Standard
-Visualizing the Koma-Script document classes in \SpecialChar LyX
-, the \SpecialChar LyX
- internals cause some
- problems.
-\end_layout
-
-\begin_layout Itemize
-The chapter number of a 
-\family sans
-Chapter
-\family default
- type appears on a line of its own above the chapter heading instead of
- appearing in the same line ahead of it.
- The cause for that is the \SpecialChar LyX
- internal behavior for the labeltype 
-\family sans
-Counter_Chapter
-\family default
- in the layout file.
-\end_layout
-
-\begin_layout Itemize
-The headings of the types 
-\family sans
-Addchap
-\family default
- and 
-\family sans
-Addsec
-\family default
- are only put in the 
-\begin_inset Quotes eld
-\end_inset
-
-true
-\begin_inset Quotes erd
-\end_inset
-
- \SpecialChar LaTeX
- table of contents, but not in the \SpecialChar LyX
- table of contents (
-\family sans
-Document\SpecialChar menuseparator
-Table
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-Contents
-\family default
-).
-\end_layout
-
-\begin_layout Itemize
-The paragraphs in a 
-\emph on
-letter
-\emph default
- document class appear in a skip separation mode, not indented.
- This is the standard behavior, no special \SpecialChar LaTeX
- commands are needed for that.
- But in the 
-\family sans
-Document\SpecialChar menuseparator
-Settings
-\family default
- dialog the corresponding radio button indicates 
-\family sans
-Indent
-\family default
-.
- A 
-\family sans
-Skip
-\family default
- value always has the effect that extra \SpecialChar LaTeX
- commands are inserted in the document
- to produce the gap, which is not what is wanted in this case.
 \end_layout
 
 \begin_layout Section
