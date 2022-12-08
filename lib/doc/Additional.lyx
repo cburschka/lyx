@@ -2339,6 +2339,534 @@ name "sec:Collections"
 Collections
 \end_layout
 
+\begin_layout Subsection
+AMS \SpecialChar LaTeX
+
+\end_layout
+
+\begin_layout Standard
+by 
+\noun on
+David Johnson
+\noun default
+; updated by 
+\noun on
+Richard Kimberly Heck
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+The AMS \SpecialChar LaTeX
+ layouts are set up to conform to suggested styles for mathematical
+ papers to be submitted to American Mathematical Society publications.
+ The layouts are not tailored to a specific journal, but easily can be.
+ You should refer to the AMS documentation for specific instructions for
+ each journal (usually it will entail only changing a single line in the
+ \SpecialChar TeX
+ output).
+ That documentation is available on the Web at 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.ams.org
+\end_layout
+
+\end_inset
+
+ or by ftp at 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+ftp://ftp.ams.org/pub/tex/amslatex/
+\end_layout
+
+\end_inset
+
+.
+ These layouts are appropriate, and useful, for any mathematical writing.
+ 
+\end_layout
+
+\begin_layout Standard
+There are two basic AMS \SpecialChar LaTeX
+ layouts: 
+\end_layout
+
+\begin_layout Itemize
+amsart: The standard AMS article format.
+\end_layout
+
+\begin_layout Itemize
+amsbook: the standard AMS book (really, monograph) format.
+ 
+\end_layout
+
+\begin_layout Standard
+The layouts themselves contain only the minimum necessary to use the AMS
+ classes.
+ They do not, in particular, contain any of the `theorem' environments used
+ for setting theorems, lemmas, and the like.
+ These are contained, instead, in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Theorems (AMS)
+\end_layout
+
+\end_inset
+
+ module, which is loaded by default when you select one of the AMS classes.
+ (It can also be used with other classes and can be removed, if you would
+ rather use something else.) Less commonly used environments are in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Theorems (AMS-Extended)
+\end_layout
+
+\end_inset
+
+ module, which must be loaded manually.
+\end_layout
+
+\begin_layout Standard
+By default, theorems and the like are numbered consecutively throughout
+ the document, but this may be modified by loading the module 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Theorems (Order by Section)
+\end_layout
+
+\end_inset
+
+ or, if you are using 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+book (AMS)
+\end_layout
+
+\end_inset
+
+, the module 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Theorems (Order by Chapter)
+\end_layout
+
+\end_inset
+
+.
+ These will number the results as 
+\begin_inset Formula $n.m$
+\end_inset
+
+, where the first number refers to the section (or chapter) and the second
+ refers to the total number of results so far in that section (or chapter).
+ Many environments are also available unnumbered.
+ These are indicated by an asterisk at the end.
+ If you happen to want 
+\emph on
+only
+\emph default
+ unnumbered results, the module 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Theorems (Starred)
+\end_layout
+
+\end_inset
+
+ provides that option.
+\end_layout
+
+\begin_layout Standard
+Note that these modules do not 
+\emph on
+have
+\emph default
+ to be used with the AMS classes.
+ It is perfectly possible to use the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Theorems (AMS)
+\end_layout
+
+\end_inset
+
+ module, and the others mentioned, with other classes, such as 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+article
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+report
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+book (KOMA-script)
+\end_layout
+
+\end_inset
+
+, and so forth.
+\end_layout
+
+\begin_layout Subsubsection
+What these layouts provide
+\end_layout
+
+\begin_layout Standard
+There is a long list of included environments provided by these layouts.
+ In AMS-\SpecialChar LaTeX
+, there is, in fact, an opportunity to define an unlimited variety
+ of `theorem' environments.
+ However, the AMS recommends the environments that are available in \SpecialChar LyX
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The following environments—as well as the standard environments, such as
+ 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+section
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+bibliography
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+title
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+author
+\end_layout
+
+\end_inset
+
+, and 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+date
+\end_layout
+
+\end_inset
+
+—are provided by 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+article (AMS)
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+book (AMS)
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Description
+Address This should be the author's permanent address.
+\end_layout
+
+\begin_layout Description
+Current
+\begin_inset space ~
+\end_inset
+
+Address This should be the author's temporary address at the time of submission,
+ if different from the Address.
+\end_layout
+
+\begin_layout Description
+Email Author's e-mail address
+\end_layout
+
+\begin_layout Description
+URL Author's Web address, if desired.
+\end_layout
+
+\begin_layout Description
+Keywords Key words or phrases used to identify specific topics discussed
+ in the paper.
+\end_layout
+
+\begin_layout Description
+Subjectclass These refer to the AMS Subject Classifications, published and
+ described in 
+\emph on
+Mathematical Reviews
+\emph default
+.
+ These are also available online at the AMS cites listed above.
+\end_layout
+
+\begin_layout Description
+Thanks
+\end_layout
+
+\begin_layout Description
+Dedicatory
+\end_layout
+
+\begin_layout Description
+Translator
+\end_layout
+
+\begin_layout Standard
+The following environments are provided by both the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Theorems
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Theorems (AMS)
+\end_layout
+
+\end_inset
+
+ modules, in the latter case in both starred (unnumbered) and unstarred
+ (numbered) versions.
+ These same environments are provided only in the starred versions by the
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Theorems (Starred)
+\end_layout
+
+\end_inset
+
+ module:
+\end_layout
+
+\begin_layout Theorem
+This is typically used for the statements of major results.
+ 
+\end_layout
+
+\begin_layout Corollary*
+This is used for statements which follow fairly directly from previous statement
+s.
+ Again, these can be major results.
+ 
+\end_layout
+
+\begin_layout Lemma
+These are smaller results needed to prove other statements.
+\end_layout
+
+\begin_layout Proposition
+These are less major results which (hopefully) add to the general theory
+ being discussed.
+\end_layout
+
+\begin_layout Conjecture
+These are statements provided without justification, which the author does
+ not know how to prove, but which seem to be true (to the author, at least).
+\end_layout
+
+\begin_layout Definition*
+Guess what this is for.
+ The font is different for this environment than for the previous ones.
+ 
+\end_layout
+
+\begin_layout Example*
+Used for examples illustrating proven results.
+\end_layout
+
+\begin_layout Problem
+It's not really known what this is for.
+ You should figure it out.
+\end_layout
+
+\begin_layout Exercise*
+Write a description for this one.
+\end_layout
+
+\begin_layout Remark
+This environment is also a type of theorem, usually a lesser sort of observation.
+\end_layout
+
+\begin_layout Claim*
+Often used in the course of giving a proof of a larger result.
+\end_layout
+
+\begin_layout Case
+Generally, these are used to break up long arguments, using specific instances
+ of some condition.
+ 
+\end_layout
+
+\begin_layout Case
+The numbering scheme for cases is on its own, not together with other numbered
+ statements.
+ 
+\end_layout
+
+\begin_layout Proof
+At the end of this environment, a QED symbol (usually a square, but it can
+ vary with different styles) is placed.
+ If you want to have other environments within this one—for example, Case
+ environments—and have the QED symbol appear only after them, then the other
+ environments need to be nested within the proof environment.
+ See the section 
+\emph on
+Nesting Environments
+\emph default
+ of the 
+\emph on
+User's Guide
+\emph default
+ for information on nesting.
+\end_layout
+
+\begin_layout Standard
+And these environments are provided by 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Theorems (AMS-Extended)
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Criterion*
+A required condition.
+\end_layout
+
+\begin_layout Algorithm*
+A general procedure to be used.
+\end_layout
+
+\begin_layout Axiom*
+This is a property or statement taken as true within the system being discussed.
+\end_layout
+
+\begin_layout Condition*
+Sometimes used to state a condition assumed within the present context of
+ discussion.
+\end_layout
+
+\begin_layout Note*
+Similar to a Remark.
+\end_layout
+
+\begin_layout Notation*
+Used for the explanation of, yes, notation.
+\end_layout
+
+\begin_layout Summary
+Do we really need to tell you? 
+\end_layout
+
+\begin_layout Acknowledgement*
+Acknowledgement.
+\end_layout
+
+\begin_layout Conclusion*
+Sometimes used at the end of a long train of argument.
+\end_layout
+
+\begin_layout Fact
+Used in a way similar to Proposition, though perhaps lower on the scale.
+\end_layout
+
+\begin_layout Standard
+In addition, the AMS classes automatically provide the AMS \SpecialChar LaTeX
+ and AMS fonts
+ packages.
+ They need to be available on your system in order to use these environments.
+\end_layout
+
 \begin_layout Section
 
 \change_inserted 564990737 1670439534
@@ -10509,534 +11037,6 @@ Your mileage may vary.
  I have had no trouble with the submission process, and I'm sure the journals
  were never aware that there might be a difference.
  So, go forth and publish!
-\end_layout
-
-\begin_layout Section
-AMS \SpecialChar LaTeX
-
-\end_layout
-
-\begin_layout Standard
-by 
-\noun on
-David Johnson
-\noun default
-; updated by 
-\noun on
-Richard Kimberly Heck
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-The AMS \SpecialChar LaTeX
- layouts are set up to conform to suggested styles for mathematical
- papers to be submitted to American Mathematical Society publications.
- The layouts are not tailored to a specific journal, but easily can be.
- You should refer to the AMS documentation for specific instructions for
- each journal (usually it will entail only changing a single line in the
- \SpecialChar TeX
- output).
- That documentation is available on the Web at 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://www.ams.org
-\end_layout
-
-\end_inset
-
- or by ftp at 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-ftp://ftp.ams.org/pub/tex/amslatex/
-\end_layout
-
-\end_inset
-
-.
- These layouts are appropriate, and useful, for any mathematical writing.
- 
-\end_layout
-
-\begin_layout Standard
-There are two basic AMS \SpecialChar LaTeX
- layouts: 
-\end_layout
-
-\begin_layout Itemize
-amsart: The standard AMS article format.
-\end_layout
-
-\begin_layout Itemize
-amsbook: the standard AMS book (really, monograph) format.
- 
-\end_layout
-
-\begin_layout Standard
-The layouts themselves contain only the minimum necessary to use the AMS
- classes.
- They do not, in particular, contain any of the `theorem' environments used
- for setting theorems, lemmas, and the like.
- These are contained, instead, in the 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Theorems (AMS)
-\end_layout
-
-\end_inset
-
- module, which is loaded by default when you select one of the AMS classes.
- (It can also be used with other classes and can be removed, if you would
- rather use something else.) Less commonly used environments are in the 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Theorems (AMS-Extended)
-\end_layout
-
-\end_inset
-
- module, which must be loaded manually.
-\end_layout
-
-\begin_layout Standard
-By default, theorems and the like are numbered consecutively throughout
- the document, but this may be modified by loading the module 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Theorems (Order by Section)
-\end_layout
-
-\end_inset
-
- or, if you are using 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-book (AMS)
-\end_layout
-
-\end_inset
-
-, the module 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Theorems (Order by Chapter)
-\end_layout
-
-\end_inset
-
-.
- These will number the results as 
-\begin_inset Formula $n.m$
-\end_inset
-
-, where the first number refers to the section (or chapter) and the second
- refers to the total number of results so far in that section (or chapter).
- Many environments are also available unnumbered.
- These are indicated by an asterisk at the end.
- If you happen to want 
-\emph on
-only
-\emph default
- unnumbered results, the module 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Theorems (Starred)
-\end_layout
-
-\end_inset
-
- provides that option.
-\end_layout
-
-\begin_layout Standard
-Note that these modules do not 
-\emph on
-have
-\emph default
- to be used with the AMS classes.
- It is perfectly possible to use the 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Theorems (AMS)
-\end_layout
-
-\end_inset
-
- module, and the others mentioned, with other classes, such as 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-article
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-report
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-book (KOMA-script)
-\end_layout
-
-\end_inset
-
-, and so forth.
-\end_layout
-
-\begin_layout Subsection
-What these layouts provide
-\end_layout
-
-\begin_layout Standard
-There is a long list of included environments provided by these layouts.
- In AMS-\SpecialChar LaTeX
-, there is, in fact, an opportunity to define an unlimited variety
- of `theorem' environments.
- However, the AMS recommends the environments that are available in \SpecialChar LyX
-.
- 
-\end_layout
-
-\begin_layout Standard
-The following environments—as well as the standard environments, such as
- 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-section
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-bibliography
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-title
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-author
-\end_layout
-
-\end_inset
-
-, and 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-date
-\end_layout
-
-\end_inset
-
-—are provided by 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-article (AMS)
-\end_layout
-
-\end_inset
-
- and 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-book (AMS)
-\end_layout
-
-\end_inset
-
-:
-\end_layout
-
-\begin_layout Description
-Address This should be the author's permanent address.
-\end_layout
-
-\begin_layout Description
-Current
-\begin_inset space ~
-\end_inset
-
-Address This should be the author's temporary address at the time of submission,
- if different from the Address.
-\end_layout
-
-\begin_layout Description
-Email Author's e-mail address
-\end_layout
-
-\begin_layout Description
-URL Author's Web address, if desired.
-\end_layout
-
-\begin_layout Description
-Keywords Key words or phrases used to identify specific topics discussed
- in the paper.
-\end_layout
-
-\begin_layout Description
-Subjectclass These refer to the AMS Subject Classifications, published and
- described in 
-\emph on
-Mathematical Reviews
-\emph default
-.
- These are also available online at the AMS cites listed above.
-\end_layout
-
-\begin_layout Description
-Thanks
-\end_layout
-
-\begin_layout Description
-Dedicatory
-\end_layout
-
-\begin_layout Description
-Translator
-\end_layout
-
-\begin_layout Standard
-The following environments are provided by both the 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Theorems
-\end_layout
-
-\end_inset
-
- and 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Theorems (AMS)
-\end_layout
-
-\end_inset
-
- modules, in the latter case in both starred (unnumbered) and unstarred
- (numbered) versions.
- These same environments are provided only in the starred versions by the
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Theorems (Starred)
-\end_layout
-
-\end_inset
-
- module:
-\end_layout
-
-\begin_layout Theorem
-This is typically used for the statements of major results.
- 
-\end_layout
-
-\begin_layout Corollary*
-This is used for statements which follow fairly directly from previous statement
-s.
- Again, these can be major results.
- 
-\end_layout
-
-\begin_layout Lemma
-These are smaller results needed to prove other statements.
-\end_layout
-
-\begin_layout Proposition
-These are less major results which (hopefully) add to the general theory
- being discussed.
-\end_layout
-
-\begin_layout Conjecture
-These are statements provided without justification, which the author does
- not know how to prove, but which seem to be true (to the author, at least).
-\end_layout
-
-\begin_layout Definition*
-Guess what this is for.
- The font is different for this environment than for the previous ones.
- 
-\end_layout
-
-\begin_layout Example*
-Used for examples illustrating proven results.
-\end_layout
-
-\begin_layout Problem
-It's not really known what this is for.
- You should figure it out.
-\end_layout
-
-\begin_layout Exercise*
-Write a description for this one.
-\end_layout
-
-\begin_layout Remark
-This environment is also a type of theorem, usually a lesser sort of observation.
-\end_layout
-
-\begin_layout Claim*
-Often used in the course of giving a proof of a larger result.
-\end_layout
-
-\begin_layout Case
-Generally, these are used to break up long arguments, using specific instances
- of some condition.
- 
-\end_layout
-
-\begin_layout Case
-The numbering scheme for cases is on its own, not together with other numbered
- statements.
- 
-\end_layout
-
-\begin_layout Proof
-At the end of this environment, a QED symbol (usually a square, but it can
- vary with different styles) is placed.
- If you want to have other environments within this one—for example, Case
- environments—and have the QED symbol appear only after them, then the other
- environments need to be nested within the proof environment.
- See the section 
-\emph on
-Nesting Environments
-\emph default
- of the 
-\emph on
-User's Guide
-\emph default
- for information on nesting.
-\end_layout
-
-\begin_layout Standard
-And these environments are provided by 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Theorems (AMS-Extended)
-\end_layout
-
-\end_inset
-
-:
-\end_layout
-
-\begin_layout Criterion*
-A required condition.
-\end_layout
-
-\begin_layout Algorithm*
-A general procedure to be used.
-\end_layout
-
-\begin_layout Axiom*
-This is a property or statement taken as true within the system being discussed.
-\end_layout
-
-\begin_layout Condition*
-Sometimes used to state a condition assumed within the present context of
- discussion.
-\end_layout
-
-\begin_layout Note*
-Similar to a Remark.
-\end_layout
-
-\begin_layout Notation*
-Used for the explanation of, yes, notation.
-\end_layout
-
-\begin_layout Summary
-Do we really need to tell you? 
-\end_layout
-
-\begin_layout Acknowledgement*
-Acknowledgement.
-\end_layout
-
-\begin_layout Conclusion*
-Sometimes used at the end of a long train of argument.
-\end_layout
-
-\begin_layout Fact
-Used in a way similar to Proposition, though perhaps lower on the scale.
-\end_layout
-
-\begin_layout Standard
-In addition, the AMS classes automatically provide the AMS \SpecialChar LaTeX
- and AMS fonts
- packages.
- They need to be available on your system in order to use these environments.
 \end_layout
 
 \begin_layout Section
