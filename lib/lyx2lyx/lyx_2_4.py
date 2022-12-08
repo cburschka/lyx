@@ -4609,7 +4609,6 @@ def convert_starred_refs(document):
         i = find_token(document.body, "\\begin_inset CommandInset ref", i)
         if i == -1:
             break
-        start = i
         end = find_end_of_inset(document.body, i)
         if end == -1:
             document.warning("Malformed LyX document: Can't find end of inset at line %d" % i)
