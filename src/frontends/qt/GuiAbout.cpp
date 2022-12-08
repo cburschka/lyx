@@ -294,12 +294,14 @@ static QString version(bool const plain = false)
 		out << '\n';
 	else
 		out << "</p><p>";
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 4, 0))
 	out << toqstr(bformat(_("OS Version (run-time): %1$s"),
 		qstring_to_ucs4(QSysInfo::prettyProductName())));
 	if (plain)
 		out << '\n';
 	else
 		out << "</p><p>";
+#endif
 	out << toqstr(bformat(_("Python detected: %1$s"), from_utf8(os::python())));
 	if (!plain)
 		out << toqstr("</p></body></html>");
