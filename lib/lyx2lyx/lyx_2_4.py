@@ -361,7 +361,6 @@ def revert_fonts(document, fm, fontmap, OnlyWithXOpts = False, WithXOpts = False
             mo = rscales.search(xval)
             if mo != None:
                 xval1 = mo.group(1)
-                xval2 = mo.group(2)
                 if xval1 != "100":
                     # set correct scale option
                     fontmap[val].extend([fontinfo.scaleopt + "=" + format(float(xval1) / 100, '.2f')])
@@ -558,7 +557,6 @@ def revert_paratype(document):
     """Revert ParaType font definitions to LaTeX"""
 
     if not get_bool_value(document.header, "\\use_non_tex_fonts"):
-        preamble = ""
         i1 = find_token(document.header, "\\font_roman \"PTSerif-TLF\"", 0)
         i2 = find_token(document.header, "\\font_sans \"default\"", 0)
         i3 = find_token(document.header, "\\font_typewriter \"default\"", 0)
@@ -963,7 +961,6 @@ def revert_bibencoding(document):
     }
 
     i = 0
-    bibresources = []
     while (True):
         i = find_token(document.body, "\\begin_inset CommandInset bibtex", i+1)
         if i == -1:
@@ -1642,7 +1639,6 @@ def revert_bibfileencodings(document):
     }
 
     i = 0
-    bibresources = []
     while (True):
         i = find_token(document.body, "\\begin_inset CommandInset bibtex", i+1)
         if i == -1:
@@ -2715,7 +2711,6 @@ def revert_IBMFonts_xopts(document):
 
     fontmap = dict()
     fm = createFontMapping(['IBM'])
-    ft = ""
     if revert_fonts(document, fm, fontmap, True):
         add_preamble_fonts(document, fontmap)
 
@@ -2728,7 +2723,6 @@ def revert_AdobeFonts_xopts(document):
 
     fontmap = dict()
     fm = createFontMapping(['Adobe'])
-    ft = ""
     if revert_fonts(document, fm, fontmap, True):
         add_preamble_fonts(document, fontmap)
 
@@ -3310,7 +3304,6 @@ def revert_dupqualicites(document):
                 premap[ppp[0]] = val
         postlist = posttexts.split("\t")
         postmap = dict()
-        num = 1
         for pp in postlist:
             ppp = pp.split(" ", 1)
             val = ""
@@ -3793,7 +3786,6 @@ def revert_ams_spaces(document):
     insets = ["\\medspace{}", "\\thickspace{}"]
     for inset in insets:
         i = 0
-        j = 0
         i = find_token(document.body, "\\begin_inset space " + inset, i)
         if i == -1:
             continue
@@ -3874,7 +3866,6 @@ def revert_line_vspaces(document):
         }
     for inset in insets.keys():
         i = 0
-        j = 0
         i = find_token(document.body, "\\begin_inset VSpace " + inset, i)
         if i == -1:
             continue
@@ -3902,7 +3893,6 @@ def revert_libertinus_sftt_fonts(document):
     " Revert Libertinus sans and tt font definitions to LaTeX "
 
     if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
-        preamble = ""
         # first sf font
         i = find_token(document.header, "\\font_sans \"LibertinusSans-LF\"", 0)
         if i != -1:
@@ -4139,7 +4129,6 @@ def revert_vcolumns2(document):
 
             # Now parse cells
             m = i + 1
-            lines = []
             for row in range(nrows):
                 for col in range(ncols):
                     m = find_token(document.body, "<cell", m)
