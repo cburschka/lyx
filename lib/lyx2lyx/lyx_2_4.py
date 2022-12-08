@@ -4636,7 +4636,6 @@ def convert_starred_refs(document):
             i += 1
             continue
         noprefixline = document.body[i + 5]
-        document.warning(noprefixline)
         newlineat = end - 2
         document.body.insert(newlineat, "nolink \"false\"")
         i = end + 1
