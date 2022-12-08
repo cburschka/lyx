@@ -4567,6 +4567,437 @@ reference "sec:Collections"
 ).
 \end_layout
 
+\begin_layout Subsection
+Memoir
+\end_layout
+
+\begin_layout Standard
+By 
+\noun on
+Jürgen Spitzmüller
+\end_layout
+
+\begin_layout Subsubsection
+Overview
+\end_layout
+
+\begin_layout Standard
+Memoir is a very powerful and constantly evolving class.
+ It has been designed with regard to fictional and non-fictional literature.
+ Its aim is to let the user have maximum control over the typesetting of
+ his document.
+ Memoir is based on the standard book class, but it can also emulate the
+ article class (see below).
+\end_layout
+
+\begin_layout Standard
+Peter Wilson, the developer of Memoir, is known as the author of lots of
+ useful packages in the \SpecialChar LaTeX
+ world.
+ Most of them have been merged with Memoir.
+ Therefore, it is much easier to layout the table of contents, appendices,
+ chapter designs and such.
+ \SpecialChar LyX
+, though, does not support all of these goodies natively.
+ Some of them might be added to forthcoming releases
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+You are invited to send suggestions to 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+lyx-devel@lists.lyx.org
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+, lots will probably never be supported, due to the limitations of \SpecialChar LyX
+'s framework.
+ Of course you can still use all features with the help of some native \SpecialChar LaTeX
+
+ commands (\SpecialChar TeX
+ code
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Cf.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Inserting-TeX-Code"
+
+\end_inset
+
+ for details.
+\end_layout
+
+\end_inset
+
+).
+ In this section, we can only list those features that are natively supported
+ by \SpecialChar LyX
+.
+ For detailed descriptions (and for the rest of features) we recommend you
+ have a look at the detailed manual of the Memoir class
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Cf.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+CTAN:/macros/latex/memoir/memman.pdf
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+, which is not only a user guide for the class, but also both a comprehensive
+ description on good typesetting and a superb example for good typesetting
+ itself.
+\end_layout
+
+\begin_layout Subsubsection
+Basic features and restrictions
+\end_layout
+
+\begin_layout Standard
+Memoir supports basically all features of the standard book classes.
+ There are, however, some differences, as follows:
+\end_layout
+
+\begin_layout Description
+Font
+\begin_inset space ~
+\end_inset
+
+sizes: Memoir has a broader range of font sizes: 9, 10, 11, 12, 14, 17
+\end_layout
+
+\begin_layout Description
+Page
+\begin_inset space ~
+\end_inset
+
+style: The fancy page style is not supported, due to a command clash between
+ Memoir and the fancyhdr package (they both define a command with the same
+ name, which confuses \SpecialChar LaTeX
+).
+ Instead, Memoir comes with a number of its own page styles (see 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Page
+\begin_inset space ~
+\end_inset
+
+Style
+\family default
+).
+ If you want to use these for the chapter pages, you have to use the command
+ 
+\family typewriter
+
+\backslash
+chapterstyle
+\family default
+ in the main text or in preamble (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\family typewriter
+
+\backslash
+chapterstyle{companion}
+\family default
+).
+\end_layout
+
+\begin_layout Description
+Sectioning: Sectionings (chapter, section, subsection etc.) come with an
+ optional argument in the standard classes.
+ With this, you can specify an alternative version of the title for the
+ table of contents and the headers (for instance, if the title is too long).
+ In \SpecialChar LyX
+, you can do this via 
+\family sans
+Insert\SpecialChar menuseparator
+Short
+\begin_inset space ~
+\end_inset
+
+Title
+\family default
+ at the beginning of a chapter/section.
+ Memoir features a second optional argument and thus separates the table
+ of contents from the header.
+ You can define three variants of a title with this: one for the main text,
+ one for the table of contents, and one for the headers.
+ \SpecialChar LyX
+ makes these available in form of specific 
+\family sans
+Short Title
+\family default
+ variants in the 
+\family sans
+Insert
+\family default
+ menu.
+\end_layout
+
+\begin_layout Description
+TOC/LOT/LOF: In the standard classes (and in many other classes), the table
+ of contents, the list of figures and the list of table start a new page
+ automatically.
+ Memoir does not follow this route.
+ You have to insert a page break yourself, if you want to have one.
+\end_layout
+
+\begin_layout Description
+Titlepage: For some unknown reason, Memoir uses pagination on the title
+ page (in the standard classes, title pages are 
+\begin_inset Quotes eld
+\end_inset
+
+empty
+\begin_inset Quotes erd
+\end_inset
+
+).
+ If you want an empty title page, type 
+\family typewriter
+
+\backslash
+aliaspagestyle{title}{empty}
+\family default
+ in the preamble.
+\end_layout
+
+\begin_layout Description
+Article: With the class option 
+\emph on
+article
+\emph default
+ (to be inserted in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Class Settings\SpecialChar menuseparator
+Custom
+\begin_inset space ~
+\end_inset
+
+Options
+\family default
+), you can emulate article style.
+ That is, counters (footnotes, figures, tables etc.) will not be reset on
+ new chapters, chapters don't start a new page (but are—in contrary to 
+\begin_inset Quotes eld
+\end_inset
+
+real
+\begin_inset Quotes erd
+\end_inset
+
+ article classes—still allowed), parts, though, use their own page, as in
+ book.
+\end_layout
+
+\begin_layout Description
+Oldfontcommands: By default, Memoir does not allow the use of the deprecated
+ font commands, which have been used in the old \SpecialChar LaTeX
+ version 2.09 (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\family typewriter
+
+\backslash
+rm
+\family default
+, 
+\family typewriter
+
+\backslash
+it
+\family default
+).
+ It produces an error and stops \SpecialChar LaTeX
+ whenever such a command appears.
+ The class option 
+\emph on
+oldfontcommands
+\emph default
+ reallows the commands and spits out warnings instead (which does at least
+ not stop \SpecialChar LaTeX
+).
+ Since a lot of packages and particularly Bib\SpecialChar TeX
+ style files are still using
+ those commands, we have decided to use this option by default.
+\end_layout
+
+\begin_layout Subsubsection
+Extra features
+\end_layout
+
+\begin_layout Standard
+We will only describe the features supported by \SpecialChar LyX
+ (which is not much currently).
+ Please consult the Memoir manual
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Cf.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+CTAN:/macros/latex/memoir/memman.pdf
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ for details.
+\end_layout
+
+\begin_layout Description
+Abstract: You may wonder why an abstract is an extra feature.
+ Well, it is in book class.
+ Usually books don't have abstracts.
+ Memoir, however, has.
+ You can use it wherever and how often you like.
+\end_layout
+
+\begin_layout Description
+Chapterprecis: You may know this older typesetting style: The contents of
+ a chapter are summarized below the title and also in the table of contents
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\emph on
+Our hero arrives in Troia; he loses some friends; he finds others
+\emph default
+).
+ Chapterprecis does exactly this.
+ It is therefore only sensible below a chapter.
+\end_layout
+
+\begin_layout Description
+Epigraph: An epigraph is a smart slogan or motto at the beginning of a chapter.
+ The epigraph environment provides an elegant way of typesetting such a
+ motto.
+ The motto itself (text) and its (optional) author (source) are divided
+ by a short line.
+ The author (source) can be inserted via 
+\family sans
+Insert\SpecialChar menuseparator
+Epigraph Source
+\family default
+\emph on
+.
+\end_layout
+
+\begin_layout Description
+Poemtitle: Memoir has lots of possibilities to typeset poetry (up to very
+ complex figurative poems).
+ \SpecialChar LyX
+ can only support a few of them.
+ One is poemtitle, which is a centered title for poems, which will also
+ be added to the table of contents (verse is the standard environment for
+ poems.
+ Memoir has some enhanced versions of verse, but you need to use \SpecialChar TeX
+ code,
+ because they have to be nested inside regular verse environments, which
+ is not possible with \SpecialChar LyX
+).
+\end_layout
+
+\begin_layout Description
+Poemtitle*: Same as poemtitle, but it adds no entry to the table of contents.
+\end_layout
+
 \begin_layout Section
 
 \change_inserted 564990737 1670439605
@@ -16050,437 +16481,6 @@ don't delete the \SpecialChar TeX
 \change_deleted 564990737 1670317155
 copy the example bibliography item included in the template and modify it
  as necessary to enter new bibliography items.
-\end_layout
-
-\begin_layout Section
-Memoir
-\end_layout
-
-\begin_layout Standard
-By 
-\noun on
-Jürgen Spitzmüller
-\end_layout
-
-\begin_layout Subsection
-Overview
-\end_layout
-
-\begin_layout Standard
-Memoir is a very powerful and constantly evolving class.
- It has been designed with regard to fictional and non-fictional literature.
- Its aim is to let the user have maximum control over the typesetting of
- his document.
- Memoir is based on the standard book class, but it can also emulate the
- article class (see below).
-\end_layout
-
-\begin_layout Standard
-Peter Wilson, the developer of Memoir, is known as the author of lots of
- useful packages in the \SpecialChar LaTeX
- world.
- Most of them have been merged with Memoir.
- Therefore, it is much easier to layout the table of contents, appendices,
- chapter designs and such.
- \SpecialChar LyX
-, though, does not support all of these goodies natively.
- Some of them might be added to forthcoming releases
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-You are invited to send suggestions to 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-lyx-devel@lists.lyx.org
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-, lots will probably never be supported, due to the limitations of \SpecialChar LyX
-'s framework.
- Of course you can still use all features with the help of some native \SpecialChar LaTeX
-
- commands (\SpecialChar TeX
- code
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Cf.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Inserting-TeX-Code"
-
-\end_inset
-
- for details.
-\end_layout
-
-\end_inset
-
-).
- In this section, we can only list those features that are natively supported
- by \SpecialChar LyX
-.
- For detailed descriptions (and for the rest of features) we recommend you
- have a look at the detailed manual of the Memoir class
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Cf.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-CTAN:/macros/latex/memoir/memman.pdf
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-, which is not only a user guide for the class, but also both a comprehensive
- description on good typesetting and a superb example for good typesetting
- itself.
-\end_layout
-
-\begin_layout Subsection
-Basic features and restrictions
-\end_layout
-
-\begin_layout Standard
-Memoir supports basically all features of the standard book classes.
- There are, however, some differences, as follows:
-\end_layout
-
-\begin_layout Description
-Font
-\begin_inset space ~
-\end_inset
-
-sizes: Memoir has a broader range of font sizes: 9, 10, 11, 12, 14, 17
-\end_layout
-
-\begin_layout Description
-Page
-\begin_inset space ~
-\end_inset
-
-style: The fancy page style is not supported, due to a command clash between
- Memoir and the fancyhdr package (they both define a command with the same
- name, which confuses \SpecialChar LaTeX
-).
- Instead, Memoir comes with a number of its own page styles (see 
-\family sans
-Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Page
-\begin_inset space ~
-\end_inset
-
-Style
-\family default
-).
- If you want to use these for the chapter pages, you have to use the command
- 
-\family typewriter
-
-\backslash
-chapterstyle
-\family default
- in the main text or in preamble (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-
-\family typewriter
-
-\backslash
-chapterstyle{companion}
-\family default
-).
-\end_layout
-
-\begin_layout Description
-Sectioning: Sectionings (chapter, section, subsection etc.) come with an
- optional argument in the standard classes.
- With this, you can specify an alternative version of the title for the
- table of contents and the headers (for instance, if the title is too long).
- In \SpecialChar LyX
-, you can do this via 
-\family sans
-Insert\SpecialChar menuseparator
-Short
-\begin_inset space ~
-\end_inset
-
-Title
-\family default
- at the beginning of a chapter/section.
- Memoir features a second optional argument and thus separates the table
- of contents from the header.
- You can define three variants of a title with this: one for the main text,
- one for the table of contents, and one for the headers.
- \SpecialChar LyX
- makes these available in form of specific 
-\family sans
-Short Title
-\family default
- variants in the 
-\family sans
-Insert
-\family default
- menu.
-\end_layout
-
-\begin_layout Description
-TOC/LOT/LOF: In the standard classes (and in many other classes), the table
- of contents, the list of figures and the list of table start a new page
- automatically.
- Memoir does not follow this route.
- You have to insert a page break yourself, if you want to have one.
-\end_layout
-
-\begin_layout Description
-Titlepage: For some unknown reason, Memoir uses pagination on the title
- page (in the standard classes, title pages are 
-\begin_inset Quotes eld
-\end_inset
-
-empty
-\begin_inset Quotes erd
-\end_inset
-
-).
- If you want an empty title page, type 
-\family typewriter
-
-\backslash
-aliaspagestyle{title}{empty}
-\family default
- in the preamble.
-\end_layout
-
-\begin_layout Description
-Article: With the class option 
-\emph on
-article
-\emph default
- (to be inserted in 
-\family sans
-Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Class Settings\SpecialChar menuseparator
-Custom
-\begin_inset space ~
-\end_inset
-
-Options
-\family default
-), you can emulate article style.
- That is, counters (footnotes, figures, tables etc.) will not be reset on
- new chapters, chapters don't start a new page (but are—in contrary to 
-\begin_inset Quotes eld
-\end_inset
-
-real
-\begin_inset Quotes erd
-\end_inset
-
- article classes—still allowed), parts, though, use their own page, as in
- book.
-\end_layout
-
-\begin_layout Description
-Oldfontcommands: By default, Memoir does not allow the use of the deprecated
- font commands, which have been used in the old \SpecialChar LaTeX
- version 2.09 (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-
-\family typewriter
-
-\backslash
-rm
-\family default
-, 
-\family typewriter
-
-\backslash
-it
-\family default
-).
- It produces an error and stops \SpecialChar LaTeX
- whenever such a command appears.
- The class option 
-\emph on
-oldfontcommands
-\emph default
- reallows the commands and spits out warnings instead (which does at least
- not stop \SpecialChar LaTeX
-).
- Since a lot of packages and particularly Bib\SpecialChar TeX
- style files are still using
- those commands, we have decided to use this option by default.
-\end_layout
-
-\begin_layout Subsection
-Extra features
-\end_layout
-
-\begin_layout Standard
-We will only describe the features supported by \SpecialChar LyX
- (which is not much currently).
- Please consult the Memoir manual
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Cf.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-CTAN:/macros/latex/memoir/memman.pdf
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- for details.
-\end_layout
-
-\begin_layout Description
-Abstract: You may wonder why an abstract is an extra feature.
- Well, it is in book class.
- Usually books don't have abstracts.
- Memoir, however, has.
- You can use it wherever and how often you like.
-\end_layout
-
-\begin_layout Description
-Chapterprecis: You may know this older typesetting style: The contents of
- a chapter are summarized below the title and also in the table of contents
- (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-
-\emph on
-Our hero arrives in Troia; he loses some friends; he finds others
-\emph default
-).
- Chapterprecis does exactly this.
- It is therefore only sensible below a chapter.
-\end_layout
-
-\begin_layout Description
-Epigraph: An epigraph is a smart slogan or motto at the beginning of a chapter.
- The epigraph environment provides an elegant way of typesetting such a
- motto.
- The motto itself (text) and its (optional) author (source) are divided
- by a short line.
- The author (source) can be inserted via 
-\family sans
-Insert\SpecialChar menuseparator
-Epigraph Source
-\family default
-\emph on
-.
-\end_layout
-
-\begin_layout Description
-Poemtitle: Memoir has lots of possibilities to typeset poetry (up to very
- complex figurative poems).
- \SpecialChar LyX
- can only support a few of them.
- One is poemtitle, which is a centered title for poems, which will also
- be added to the table of contents (verse is the standard environment for
- poems.
- Memoir has some enhanced versions of verse, but you need to use \SpecialChar TeX
- code,
- because they have to be nested inside regular verse environments, which
- is not possible with \SpecialChar LyX
-).
-\end_layout
-
-\begin_layout Description
-Poemtitle*: Same as poemtitle, but it adds no entry to the table of contents.
 \end_layout
 
 \begin_layout Section
