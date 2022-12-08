@@ -4545,7 +4545,7 @@ def revert_starred_refs(document):
     i = 0
     in_inset = False
     cmd = ref = ""
-    plural = caps = noprefix = nolink = False
+    nolink = False
     nolinkline = -1
     while True:
         if not in_inset:
@@ -4575,7 +4575,7 @@ def revert_starred_refs(document):
         if i == end:
             in_inset = False
             # If nolink is False, just remove that line
-            if nolink == False or cmd == "formatted":
+            if nolink == False or cmd == "formatted" or cmd == "labelonly":
                 # document.warning("Skipping " + cmd + " " + ref)
                 if nolinkline != -1:
                     del document.body[nolinkline]
@@ -4588,7 +4588,7 @@ def revert_starred_refs(document):
             i += len(newlines) - (end - start) + 1
             # reset variables
             cmd = ref = ""
-            plural = caps = noprefix = nolink = False
+            nolink = False
             nolinkline = -1
             continue
         l = document.body[i]
@@ -4596,15 +4596,6 @@ def revert_starred_refs(document):
             cmd = l[13:]
         elif l.startswith("reference"):
             ref = l[11:-1]
-        elif l.startswith("caps"):
-            tmp = l[6:-1]
-            caps = (tmp == "true")
-        elif l.startswith("plural"):
-            tmp = l[8:-1]
-            plural = (tmp == "true")
-        elif l.startswith("noprefix"):
-            tmp = l[10:-1]
-            noprefix = (tmp == "true")
         elif l.startswith("nolink"):
             tmp = l[8:-1]
             nolink  = (tmp == "true")
