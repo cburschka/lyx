@@ -101,7 +101,7 @@ Style Verbatim
 	  Family              Typewriter
 	EndFont
 	HTMLTag               pre
-	HTMLItem              p
+	HTMLItem              NONE
 	DocBookTag            programlisting
 End
 
