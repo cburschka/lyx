@@ -3552,7 +3552,7 @@ std::tuple<std::vector<docstring>, std::vector<docstring>, std::vector<docstring
     // State variables for the main loop.
     auto xs = new XMLStream(os); // XMLStream has no copy constructor: to create a new object, the only solution
     // is to hold a pointer to the XMLStream (xs = XMLStream(os) is not allowed once the first object is built).
-    std::vector<char_type> delayedChars; // When a font tag ends with a space, output it after the closing font tag.
+    std::vector<docstring> delayedChars; // When a font tag ends with a space, output it after the closing font tag.
     // This requires to store delayed characters at some point.
 
     DocBookFontState fs; // Track whether we have opened font tags
@@ -3610,8 +3610,8 @@ std::tuple<std::vector<docstring>, std::vector<docstring>, std::vector<docstring
 
         // Deal with the delayed characters *after* closing font tags.
         if (!delayedChars.empty()) {
-            for (char_type c: delayedChars)
-                *xs << c;
+            for (const docstring& c: delayedChars)
+                *xs << XMLStream::ESCAPE_NONE << c;
             delayedChars.clear();
         }
 
@@ -3642,10 +3642,18 @@ std::tuple<std::vector<docstring>, std::vector<docstring>, std::vector<docstring
 			}
 		} else {
 			char_type c = getUChar(buf.masterBuffer()->params(), rp, i);
-			if (lyx::isSpace(c) && !ignore_fonts)
-				delayedChars.push_back(c);
-			else
-				*xs << c;
+			if (lyx::isSpace(c) && !ignore_fonts) { // Delay spaces *after* the font-tag closure for cleaner output.
+				if (c == ' ' && (style.free_spacing || rp.free_spacing)) {
+					delayedChars.push_back(from_ascii("&#160;"));
+				} else {
+					delayedChars.emplace_back(1, c);
+				}
+			} else { // No need to delay the character.
+				if (c == '\'')
+					*xs << XMLStream::ESCAPE_NONE << "&#8217;";
+				else
+					*xs << c;
+			}
 		}
 		font_old = font.fontInfo();
 	}
@@ -3657,9 +3665,11 @@ std::tuple<std::vector<docstring>, std::vector<docstring>, std::vector<docstring
 		xs->closeFontTags();
 
 	// Deal with the delayed characters *after* closing font tags.
-	if (!delayedChars.empty())
-		for (char_type c: delayedChars)
-			*xs << c;
+	if (!delayedChars.empty()) {
+		for (const docstring &c: delayedChars)
+			*xs << XMLStream::ESCAPE_NONE << c;
+		delayedChars.clear();
+	}
 
 	// In listings, new lines (i.e. \n characters in the output) are very important. Avoid generating one for the
 	// last line to get a clean output.
