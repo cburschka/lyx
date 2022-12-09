@@ -156,17 +156,8 @@ void InsetMathSubstack::maple(MapleStream & os) const
 
 void InsetMathSubstack::mathmlize(MathMLStream & ms) const
 {
-	int movers = 0;
-	row_type const numrows = nrows();
-	for (row_type row = 0; row < nrows(); ++row) {
-		if (row < numrows - 1) {
-			movers ++;
-			ms << MTag("munder");
-		}
-		ms << MTag("mrow") << cell(index(row, 0)) << ETag("mrow");
-	}
-	for (int i = 1; i <= movers; ++i)
-		ms << ETag("munder");
+	// Output the substack as a standard grid.
+	InsetMathGrid::mathmlize(ms);
 }
 
 
