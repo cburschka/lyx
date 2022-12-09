@@ -212,27 +212,33 @@ inline void closeLabelTag(XMLStream & xs, Layout const & lay)
 
 inline void openItemTag(XMLStream & xs, Layout const & lay)
 {
-	xs << xml::StartTag(lay.htmlitemtag(), lay.htmlitemattr(), true);
+	if (lay.htmlitemtag() != "NONE") {
+		xs << xml::StartTag(lay.htmlitemtag(), lay.htmlitemattr(), true);
+	}
 }
 
 
 void openItemTag(XMLStream & xs, Layout const & lay,
              ParagraphParameters const & params)
 {
-	// FIXME Are there other things we should handle here?
-	string const align = alignmentToCSS(params.align());
-	if (align.empty()) {
-		openItemTag(xs, lay);
-		return;
+	if (lay.htmlitemtag() != "NONE") {
+		// FIXME Are there other things we should handle here?
+		string const align = alignmentToCSS(params.align());
+		if (align.empty()) {
+			openItemTag(xs, lay);
+			return;
+		}
+		string attrs = lay.htmlGetAttrString() + " style='text-align: " + align + ";'";
+		xs << xml::StartTag(lay.htmlitemtag(), attrs);
 	}
-	string attrs = lay.htmlGetAttrString() + " style='text-align: " + align + ";'";
-	xs << xml::StartTag(lay.htmlitemtag(), attrs);
 }
 
 
 inline void closeItemTag(XMLStream & xs, Layout const & lay)
 {
-	xs << xml::EndTag(lay.htmlitemtag());
+	if (lay.htmlitemtag() != "NONE") {
+		xs << xml::EndTag(lay.htmlitemtag());
+	}
 }
 
 // end of convenience functions
