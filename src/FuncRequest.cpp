@@ -28,6 +28,7 @@ namespace lyx {
 
 FuncRequest const FuncRequest::unknown(LFUN_UNKNOWN_ACTION);
 FuncRequest const FuncRequest::noaction(LFUN_NOACTION);
+FuncRequest const FuncRequest::prefix(LFUN_COMMAND_PREFIX);
 
 FuncRequest::FuncRequest(Origin o)
 	: origin_(o)
@@ -114,9 +115,16 @@ string FuncRequest::getLongArg(unsigned int i) const
 	return i < args.size() ? args[i] : string();
 }
 
+
 bool operator==(FuncRequest const & lhs, FuncRequest const & rhs)
 {
 	return lhs.action() == rhs.action() && lhs.argument() == rhs.argument();
+}
+
+
+bool operator!=(FuncRequest const & lhs, FuncRequest const & rhs)
+{
+	return !(lhs == rhs);
 }
 
 

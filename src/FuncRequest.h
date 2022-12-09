@@ -99,6 +99,9 @@ public:
 	///
 	static FuncRequest const noaction;
 	///
+	static FuncRequest const prefix;
+
+	///
 	bool allowAsync() const { return allow_async_; }
 	///
 	void allowAsync(bool allow_async) { allow_async_ = allow_async; }
@@ -128,6 +131,8 @@ private:
 
 
 bool operator==(FuncRequest const & lhs, FuncRequest const & rhs);
+
+bool operator!=(FuncRequest const & lhs, FuncRequest const & rhs);
 
 std::ostream & operator<<(std::ostream &, FuncRequest const &);
 

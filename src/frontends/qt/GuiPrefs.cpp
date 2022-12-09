@@ -3359,9 +3359,10 @@ docstring makeCmdString(FuncRequest const & f)
 FuncRequest PrefShortcuts::currentBinding(KeySequence const & k)
 {
 	FuncRequest res = user_bind_.getBinding(k);
-	if (res.action() != LFUN_UNKNOWN_ACTION)
+	if (res != FuncRequest::unknown)
 		return res;
 	res = system_bind_.getBinding(k);
+
 	// Check if it is unbound. Note: user_unbind_ can only unbind one
 	// FuncRequest per key sequence.
 	if (user_unbind_.getBinding(k) == res)

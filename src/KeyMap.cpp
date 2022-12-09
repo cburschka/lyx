@@ -457,8 +457,7 @@ FuncRequest const & KeyMap::lookup(KeySymbol const &key,
 			if (cit->prefixes) {
 				// this is a prefix key - set new map
 				seq->curmap = cit->prefixes.get();
-				static const FuncRequest prefix(LFUN_COMMAND_PREFIX);
-				return prefix;
+				return FuncRequest::prefix;
 			} else {
 				// final key - reset map
 				seq->reset();
