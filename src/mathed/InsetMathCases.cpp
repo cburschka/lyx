@@ -141,10 +141,9 @@ void InsetMathCases::maple(MapleStream & os) const
 
 void InsetMathCases::mathmlize(MathMLStream & ms) const
 {
-	ms << "<" << from_ascii(ms.namespacedTag("mo"))
-	   << " form='prefix' fence='true' stretchy='true' symmetric='true'>"
+	ms << MTagInline("mo", "form='prefix' fence='true' stretchy='true' symmetric='true'")
 	   << "{"
-	   << "</" << from_ascii(ms.namespacedTag("mo")) << ">";
+	   << ETagInline("mo");
 	InsetMathGrid::mathmlize(ms);
 }
 
