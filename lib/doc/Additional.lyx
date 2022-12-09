@@ -5080,6 +5080,272 @@ reference "sec:Collections"
 Scripts (drama)
 \end_layout
 
+\begin_layout Subsection
+Broadway
+\end_layout
+
+\begin_layout Standard
+by 
+\shape smallcaps
+Garst Reese
+\end_layout
+
+\begin_layout Subsubsection
+Introduction
+\end_layout
+
+\begin_layout Standard
+Broadway is for writing plays.
+ The format is more decorative than Hollywood, and much less standardized.
+ This format should be suitable for workshops.
+\end_layout
+
+\begin_layout Subsubsection
+Special problems
+\end_layout
+
+\begin_layout Standard
+The same as in Hollywood.
+\end_layout
+
+\begin_layout Subsubsection
+Special features
+\end_layout
+
+\begin_layout Standard
+Insert the 
+\family sans
+Speaker
+\family default
+ names as labels then cross-reference the label to insert the name.
+ The cross-reference dialog will show the current cast of characters.
+\end_layout
+
+\begin_layout Subsubsection
+Paper size and Margins
+\end_layout
+
+\begin_layout Standard
+USLetter, left 1.6in, right 0.75in, top 0.5in, bottom 0.75in
+\end_layout
+
+\begin_layout Subsubsection
+Environments
+\end_layout
+
+\begin_layout Standard
+The following environments are available.
+ You can use broadway.bind to get the bind keys shown at the right.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Standard
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+You should not have to use this, but it is here for anything that does not
+ fit otherwise.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Narrative
+\begin_inset space \hfill{}
+\end_inset
+
+M-z n
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+Used to describe stage setting and the action.
+ First use of speaker names in all CAPs.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+ACT
+\begin_inset space \hfill{}
+\end_inset
+
+M-z a
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+Automatically numbered.
+ On screen it will be arabic, but will print as Roman.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+ACT*
+\begin_inset space \hfill{}
+\end_inset
+
+M-z S at
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+Subtitle for 
+\family sans
+ACT.
+
+\family default
+ It is just centered text.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+SCENE
+\begin_inset space \hfill{}
+\end_inset
+
+M-z S-S
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+Not automatically numbered.
+ You supply the number.
+ This is because I couldn't figure out how.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+AT_RISE:
+\begin_inset space \hfill{}
+\end_inset
+
+M-z S-R
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+A special case of Narrative to describe the setting and action as the curtain
+ rises.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Speaker
+\begin_inset space \hfill{}
+\end_inset
+
+M-z s
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+The speaker's (actor's) title, centered in all CAPS.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Parenthetical
+\begin_inset space \hfill{}
+\end_inset
+
+M-z p
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+Instructions to the speaker.
+ The parentheses are automatically inserted.
+ The ( will appear on screen, but both will be in the printed play.
+ This environment is only used within 
+\family sans
+Dialogue
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Dialogue
+\begin_inset space \hfill{}
+\end_inset
+
+M-z d
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+What the Speaker says.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+CURTAIN
+\begin_inset space \hfill{}
+\end_inset
+
+M-z S-C
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+The curtain comes down.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Title
+\begin_inset space \hfill{}
+\end_inset
+
+M-z S-T
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Author
+\begin_inset space \hfill{}
+\end_inset
+
+M-z S-A
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Right_Address
+\begin_inset space \hfill{}
+\end_inset
+
+M-z r
+\end_layout
+
+\begin_layout Standard
+Hello there.
+\end_layout
+
 \begin_layout Chapter
 Supplemental Tools
 \end_layout
@@ -13122,272 +13388,6 @@ Your mileage may vary.
  I have had no trouble with the submission process, and I'm sure the journals
  were never aware that there might be a difference.
  So, go forth and publish!
-\end_layout
-
-\begin_layout Section
-Broadway
-\end_layout
-
-\begin_layout Standard
-by 
-\shape smallcaps
-Garst Reese
-\end_layout
-
-\begin_layout Subsection
-Introduction
-\end_layout
-
-\begin_layout Standard
-Broadway is for writing plays.
- The format is more decorative than Hollywood, and much less standardized.
- This format should be suitable for workshops.
-\end_layout
-
-\begin_layout Subsection
-Special problems
-\end_layout
-
-\begin_layout Standard
-The same as in Hollywood.
-\end_layout
-
-\begin_layout Subsection
-Special features
-\end_layout
-
-\begin_layout Standard
-Insert the 
-\family sans
-Speaker
-\family default
- names as labels then cross-reference the label to insert the name.
- The cross-reference dialog will show the current cast of characters.
-\end_layout
-
-\begin_layout Subsection
-Paper size and Margins
-\end_layout
-
-\begin_layout Standard
-USLetter, left 1.6in, right 0.75in, top 0.5in, bottom 0.75in
-\end_layout
-
-\begin_layout Subsection
-Environments
-\end_layout
-
-\begin_layout Standard
-The following environments are available.
- You can use broadway.bind to get the bind keys shown at the right.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Standard
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-You should not have to use this, but it is here for anything that does not
- fit otherwise.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Narrative
-\begin_inset space \hfill{}
-\end_inset
-
-M-z n
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-Used to describe stage setting and the action.
- First use of speaker names in all CAPs.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-ACT
-\begin_inset space \hfill{}
-\end_inset
-
-M-z a
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-Automatically numbered.
- On screen it will be arabic, but will print as Roman.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-ACT*
-\begin_inset space \hfill{}
-\end_inset
-
-M-z S at
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-Subtitle for 
-\family sans
-ACT.
-
-\family default
- It is just centered text.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-SCENE
-\begin_inset space \hfill{}
-\end_inset
-
-M-z S-S
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-Not automatically numbered.
- You supply the number.
- This is because I couldn't figure out how.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-AT_RISE:
-\begin_inset space \hfill{}
-\end_inset
-
-M-z S-R
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-A special case of Narrative to describe the setting and action as the curtain
- rises.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Speaker
-\begin_inset space \hfill{}
-\end_inset
-
-M-z s
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-The speaker's (actor's) title, centered in all CAPS.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Parenthetical
-\begin_inset space \hfill{}
-\end_inset
-
-M-z p
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-Instructions to the speaker.
- The parentheses are automatically inserted.
- The ( will appear on screen, but both will be in the printed play.
- This environment is only used within 
-\family sans
-Dialogue
-\family default
-.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Dialogue
-\begin_inset space \hfill{}
-\end_inset
-
-M-z d
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-What the Speaker says.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-CURTAIN
-\begin_inset space \hfill{}
-\end_inset
-
-M-z S-C
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-The curtain comes down.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Title
-\begin_inset space \hfill{}
-\end_inset
-
-M-z S-T
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Author
-\begin_inset space \hfill{}
-\end_inset
-
-M-z S-A
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Right_Address
-\begin_inset space \hfill{}
-\end_inset
-
-M-z r
-\end_layout
-
-\begin_layout Standard
-Hello there.
 \end_layout
 
 \begin_layout Section
