@@ -3061,7 +3061,7 @@ def convert_Semibolds(document):
                 else:
                     # We need to use this regex since split() does not handle quote protection
                     ttopts = re.findall(r'[^"\s]\S*|".+?"', document.header[x])
-                    document.header[x] = "\\font_typewriter_opts \"semibold, " + sfopts[1].strip('"') + "\""
+                    document.header[x] = "\\font_typewriter_opts \"semibold, " + ttopts[1].strip('"') + "\""
 
 
 def convert_NotoRegulars(document):
