@@ -3649,7 +3649,7 @@ std::tuple<std::vector<docstring>, std::vector<docstring>, std::vector<docstring
 					delayedChars.emplace_back(1, c);
 				}
 			} else { // No need to delay the character.
-				if (c == '\'')
+				if (c == '\'' && !ignore_fonts)
 					*xs << XMLStream::ESCAPE_NONE << "&#8217;";
 				else
 					*xs << c;
