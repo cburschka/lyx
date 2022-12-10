@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 611
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -5334,6 +5334,148 @@ status collapsed
 \end_layout
 
 \begin_layout Chapter
+Вывод DocBook
+\end_layout
+
+\begin_layout Standard
+Помимо HTML,
+ \SpecialChar LyX
+ может генерировать документы DocBook XML.
+ В версиях 2.3 и ранее генерация документов DocBook была возможна только с определёнными макетами (только DocBook версии 4).
+ Начиная с версии \SpecialChar LyX
+ 2.4 поддерживается большинство макетов \SpecialChar LyX
+ (только DocBook версии 5).
+ Эта функция встроена в \SpecialChar LyX
+ и не требует использования внешних инструментов.
+\end_layout
+
+\begin_layout Standard
+В результате вывод DocBook может быть настроен и расширен точно так же,
+ как и вывод \SpecialChar LaTeX
+:
+ с помощью файлов макетов и модулей.
+ Подробности см.
+ в пятой главе 
+\emph on
+Руководства по настройке
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Большинство функций \SpecialChar LyX
+ поддерживаются в DocBook,
+ например,
+ вывод математических формул.
+\end_layout
+
+\begin_layout Itemize
+Математический вывод осуществляется в основном в MathML (основным исключением являются конструкции,
+ не поддерживаемые \SpecialChar LyX
+,
+ т.е.
+ ERT).
+ Все формулы также доступны непосредственно в формате TeX в выводе DocBook для дальнейшей обработки.
+\end_layout
+
+\begin_layout Itemize
+Библиографии и ссылки реализованы,
+ в том числе с использованием внешнего файла BibTeX.
+ Библиографические источники не пререндерены при наличии подробной информации,
+ а выводятся с помощью стандартных конструкций DocBook.
+ Предполагается,
+ что внешний процессор DocBook будет обрабатывать рендеринг источников.
+\end_layout
+
+\begin_layout Itemize
+Поддерживаются указатели,
+ включая множественные указатели.
+ Поддерживается группировка (с помощью !),
+ диапазоны страниц и перекрестные ссылки (|see),
+ за исключением экранирования тех же символов.
+ Порядок рубрик (@) и макет (|mathbf) не поддерживаются.
+ Не поддерживается экранирование рубрик указателя.
+\end_layout
+
+\begin_layout Itemize
+Реализованы глоссарии.
+\end_layout
+
+\begin_layout Standard
+Два основных параметра могут быть установлены на уровне документа.
+\end_layout
+
+\begin_layout Itemize
+Формат таблиц:
+ \SpecialChar LyX
+ может генерировать таблицы либо в формате HTML (значение по умолчанию),
+ либо в формате CALS,
+ в зависимости от требований пользователя.
+ Большинство процессоров DocBook принимают оба формата.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Без префикса:
+ пространство имен MathML определяется для каждой формулы (с помощью атрибута 
+\family typewriter
+xmlns
+\family default
+).
+\end_layout
+
+\begin_layout Itemize
+С префиксом 
+\family typewriter
+m
+\family default
+ (по умолчанию):
+ пространство имен MathML определяется на уровне документа (с помощью атрибута 
+\family typewriter
+xmlns:m
+\family default
+ на корневом элементе).
+ Каждая формула MathML имеет префикс 
+\family typewriter
+m:
+
+\family default
+ например,
+ 
+\family typewriter
+m:math
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+С префиксом 
+\family typewriter
+mml
+\family default
+:
+ аналогично опции 
+\family typewriter
+m
+\family default
+,
+ но с префиксом 
+\family typewriter
+mml
+\family default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Эта опция особенно полезна,
+ если вы хотите,
+ чтобы \SpecialChar LyX
+ соответствовал вашему личному стилю или для работы с некачественным программным обеспечением,
+ которое принимает только один префикс для MathML.
+\end_layout
+
+\begin_layout Chapter
 \SpecialChar LyX
 -сервер
 \end_layout
@@ -10448,451 +10590,6 @@ PAN —
 \begin_layout Itemize
 INSERT —
  сократить до крупного плана
-\end_layout
-
-\begin_layout Section
-ijmpc и ijmpd
-\end_layout
-
-\begin_layout Standard
-Пакет 
-\series bold
-ijmpc
-\series default
- —
- это набор макросов,
- которые упрощают отправку электронных рукописей в 
-\shape italic
-International Journal of Modern Physics C
-\shape default
-.
- Аналогично,
- пакет 
-\series bold
-ijmpd
-\series default
- предназначен для создания рукописей,
- которые будут отправлены в 
-\shape italic
-International Journal of Modern Physics D
-\shape default
-.
- Оба журнала публикуются World Scientific.
- Соответствующие классы документов называются 
-\family typewriter
-ws-ijmpc.cls
-\family default
- и 
-\family typewriter
-ws-ijmpd.cl
-\family default
-s.
- Эти файлы вместе с инструкциями для авторов можно загрузить с сайтов 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.worldscinet.com/ijmpc/mkt/guidelines.shtml
-\end_layout
-
-\end_inset
-
- и 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.worldscinet.com/ijmpd/mkt/guidelines.
- shtml
-\end_layout
-
-\end_inset
-
-.
- Оба пакета являются модифицированными версиями стандартного пакета «article» и почти (но не совсем) идентичны.
- Большинство их функций поддерживаются \SpecialChar LyX
-.
-\end_layout
-
-\begin_layout Section
-iopart
-\end_layout
-
-\begin_layout Standard
-Пакет 
-\series bold
-iopart
-\series default
- предоставляет класс документов для создания электронной отправки рукописи в журналы,
- публикуемые 
-\shape italic
-Institute of Physics
-\shape default
-.
- Инструкцию для авторов по созданию статьи с использованием класса iopart можно скачать вместе с пакетом 
-\series bold
-iopart
-\series default
- с сайта 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-ftp://ftp.iop.org/pub/journals/latex2e
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Section
-Kluwer
-\end_layout
-
-\begin_layout Subsection
-Обзор
-\end_layout
-
-\begin_layout Standard
-Пакет Kluwer —
- это набор макросов,
- созданных Kluwer Academic Publishers,
- который упрощает отправку электронных рукописей в журналы,
- которые они публикуют:
- 
-\shape italic
-Astrophysics and Space Science
-\shape default
-,
- 
-\shape italic
-Solar Physics
-\shape default
- и многие другие (с полным списком можно ознакомиться на 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.wkap.nl/jrnllist.htm/JRNLHOME
-\end_layout
-
-\end_inset
-
-).
- Пакет Kluwer можно скачать с сайта 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.wkap.nl/kaphtml.htm/STYLEFILES
-\end_layout
-
-\end_inset
-
-.
- Этот пакет содержит полное руководство пользователя,
- но его можно загрузить и отдельно.
-\end_layout
-
-\begin_layout Standard
-\SpecialChar LyX
- поддерживает многие функции пакета,
- но не все.
- Однако необходимый код \SpecialChar LyX
- сводится к некоторым «своеобразным» командам пакета (см.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:kluwer_peculiarities"
-
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Subsection
-Написание статьи
-\end_layout
-
-\begin_layout Standard
-Самый простой способ написать статью —
- начать с файла шаблона Kluwer.
- Щелкните 
-\family sans
-Файл\SpecialChar menuseparator
-Создать из шаблона
-\family default
-,
- затем выберите шаблон 
-\family typewriter
-kluwer.lyx
-\family default
-.
- Загрузится почти пустой документ,
- который включает в себя наиболее часто встречающиеся в рукописи поля и краткое описание их использования.
- Как и в большинстве шаблонов,
- просто замените существующий текст (включая скобки,
- 
-\family typewriter
-<>
-\family default
-) нужной информацией.
-\end_layout
-
-\begin_layout Subsection
-Подготовка статьи к отправке
-\end_layout
-
-\begin_layout Standard
-Как и в пакете AAS\SpecialChar TeX
-,
- перед тем,
- как отправить статью в журнал,
- вы должны «дообработать» ее следующим образом.
-\end_layout
-
-\begin_layout Enumerate
-Экспортируйте свою статью как \SpecialChar LaTeX
--файл.
- Для этого используйте 
-\family sans
-Файл\SpecialChar menuseparator
-Экспортировать в\SpecialChar menuseparator
-LaTeX (...)
-\family default
-.
-\end_layout
-
-\begin_layout Enumerate
-Отредактируйте полученный файл 
-\family typewriter
-.tex
-\family default
- в текстовом редакторе,
- внося следующие изменения:
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-удалите строки комментариев перед командой 
-\family typewriter
-
-\backslash
-documentclass
-\family default
-,
-\end_layout
-
-\begin_layout Enumerate
-удалите все,
- что находится между командами 
-\family typewriter
-
-\backslash
-makeatletter
-\family default
- и 
-\family typewriter
-
-\backslash
-makeatother
-\family default
- (включительно),
- за исключением команд,
- которые вы добавили в преамбулу \SpecialChar LaTeX
-.
-\end_layout
-
-\begin_layout Standard
-Сохраните результат.
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Пропустите файл 
-\family typewriter
-.tex
-\family default
- через \SpecialChar LaTeX
- столько раз,
- сколько необходимо (обычно до трех).
-\end_layout
-
-\begin_layout Enumerate
-4.
- Просмотрите получившийся документ 
-\family typewriter
-.dvi
-\family default
-,
- используя,
- например,
-\begin_inset space \space{}
-\end_inset
-
-
-\family sans
-xdvi
-\family default
- и проверьте,
- все ли в порядке (должно быть так,
- если вы не ошиблись).
-\end_layout
-
-\begin_layout Subsection
-«Особенности» пакета Kluwer
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:kluwer_peculiarities"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Пакет Kluwer имеет следующие «особенности».
-\end_layout
-
-\begin_layout Enumerate
-В одном файле \SpecialChar LaTeX
- можно разместить несколько статей
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Трудно привести вескую причину для этого.
-\end_layout
-
-\end_inset
-
-.
- Каждая статья должна быть включена в окружение «article».
- К сожалению,
- это окружение нельзя не указывать,
- даже если вы размещаете всего одну статью.
- Таким образом,
- каждая статья должна располагаться между командами 
-\family typewriter
-
-\backslash
-begin{article}
-\family default
- и 
-\family typewriter
-
-\backslash
-end{article}
-\family default
-.
- Хотя это и можно реализовать в \SpecialChar LyX
-,
- этого не сделано.
- Так что,
- вам нужно будет ввести их напрямую и пометить как 
-\family sans
-Код TeX
-\family default
-.
-\end_layout
-
-\begin_layout Enumerate
-Информация,
- приведенная в начале статьи (т.
-\begin_inset space \thinspace{}
-\end_inset
-
-е.
- заголовок,
- подзаголовок,
- автор,
- учреждение,
- заголовок,
- автор,
- аннотация и ключевые слова),
- должна быть включена в окружение,
- называемое «opening».
- Это не поддерживается в \SpecialChar LyX
-,
- поэтому надо разместить заголовочную часть между двумя строками кода \SpecialChar TeX
- —
- 
-\family typewriter
-
-\backslash
-begin{opening}
-\family default
- и 
-\family typewriter
-
-\backslash
-end{opening}
-\family default
-.
-\end_layout
-
-\begin_layout Enumerate
-Согласно руководству пользователя,
- метка каждого элемента библиографии должна быть оформлена как 
-\family typewriter
-
-\backslash
-protect
-\backslash
-citeauthoryear{
-\family default
-\shape italic
-автор
-\shape default
-(
-\shape italic
-ы
-\shape default
-)
-\family typewriter
-}{
-\family default
-\shape italic
-год
-\family typewriter
-\shape default
-}
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-Обо всех этих «нюансах» позаботится шаблон 
-\family typewriter
-kluwer.lyx
-\family default
-.
- Если вы начинаете новую статью по этому шаблону,
- вам не нужно делать ничего особенного.
- Просто
-\end_layout
-
-\begin_layout Enumerate
-не удаляйте код \SpecialChar TeX
-,
- включенный в шаблон,
- и
-\end_layout
-
-\begin_layout Enumerate
-скопируйте пример элемента библиографии,
- включенный в шаблон,
- и при необходимости измените его,
- чтобы вводить новые элементы библиографии.
 \end_layout
 
 \begin_layout Section

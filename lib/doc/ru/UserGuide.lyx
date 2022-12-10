@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 611
+\lyxformat 612
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -4689,6 +4689,7 @@ reference "sec:Основы-редактирования-формул"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -5772,6 +5773,7 @@ reference "sec:Основы-редактирования-формул"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -14462,6 +14464,7 @@ reference "subsec:Dashes-and-line-breaks"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -15113,6 +15116,7 @@ reference "subsec:Modules"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -18103,6 +18107,7 @@ reference "subsec:Hyphenation"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -18125,6 +18130,7 @@ reference "subsec:Hyphenation"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -18487,6 +18493,7 @@ reference "subsec:Inter-word-Space"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -28787,6 +28794,7 @@ reference "enu:Второй-пункт"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -29873,6 +29881,7 @@ reference "chap:Units-available-in"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -29929,6 +29938,7 @@ reference "subsec:Bibliography-databases"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -30220,6 +30230,7 @@ reference "subsec:Citation-Format"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -30770,6 +30781,7 @@ reference "subsec:The-Bibliography-Environment"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -31122,6 +31134,7 @@ reference "subsec:Bibliography-databases"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -31678,7 +31691,7 @@ name "sec:Index"
 \end_layout
 
 \begin_layout Standard
-Запись в предметном указателе создается,
+Рубрика в предметном указателе создается,
  если вы используете меню 
 \family sans
 Вставка\SpecialChar menuseparator
@@ -31691,13 +31704,18 @@ arg   "index-insert"
 \end_inset
 
  на панели инструментов.
- Вставляется поле,
- содержащее текст,
+ Добавляется вставка,
+ содержащая текст,
  который появится в указателе.
  Слово,
  в котором находится курсор или текущий выделенный текст,
  предлагается \SpecialChar LyX
- в качестве рубрики указателя.
+ в качестве рубрики указателя (т.
+\begin_inset space \thinspace{}
+\end_inset
+
+е.
+ копируется во вставку).
 \end_layout
 
 \begin_layout Standard
@@ -31710,20 +31728,60 @@ arg   "index-insert"
 Предметный указатель
 \family default
 .
- Блок с надписью «
+ Вставка с надписью «
 \family sans
 Предметный указатель
 \family default
 » покажет место,
  где он будет расположен в выводе.
- Блок предметного указателя,
- в отличие от других \SpecialChar LyX
--блоков,
- не реагирует на клики мышью.
+ По умолчанию вставка предметного указателя,
+ в отличие от других вставок \SpecialChar LyX
+,
+ не реагирует на клики мышью (это изменяется при выборе опции 
+\family sans
+Использовать несколько указателей
+\family default
+).
 \end_layout
 
 \begin_layout Standard
-Мы приведем краткий обзор команд предметного указателя в следующих подразделах.
+По умолчанию рубрика —
+ это просто слово или фраза в (упорядоченном по алфавиту) списке со ссылкой на страницу или страницы,
+ на которых эта рубрика была вставлена в документ.
+ Однако вы можете настроить рубрики указателя так,
+ чтобы они выглядели по-другому.
+ Можно иерархически группировать рубрики,
+ позволять рубрике ссылаться на диапазон страниц,
+ а не на одну страницу,
+ ссылаться на рубрику в указателе,
+ а не на страницу,
+ или форматировать ссылку на страницу (например,
+ делать ее полужирной для определенных страниц),
+ а также определять порядок рубрик в списке.
+ Эти возможности доступны в \SpecialChar LyX
+ либо в виде 
+\begin_inset Quotes rld
+\end_inset
+
+подвставок
+\begin_inset Quotes rrd
+\end_inset
+
+ через меню 
+\family sans
+Вставка\SpecialChar menuseparator
+Свойства рубрики
+\family default
+,
+ которое появляется,
+ если курсор находится в рубрике,
+ либо через диалоговое окно настроек рубрики,
+ который можно открыть,
+ щелкнув правой кнопкой мыши на вставке рубрики.
+\end_layout
+
+\begin_layout Standard
+Мы опишем эти возможности в следующих подразделах.
  Подробное описание механизма формирования указателей \SpecialChar LaTeX
  можно найти в одной из книг 
 \begin_inset CommandInset citation
@@ -31737,7 +31795,7 @@ literal "true"
 \end_layout
 
 \begin_layout Subsection
-Группировка рубрик указателя
+Группировка рубрик
 \begin_inset Index idx
 range none
 pageformat default
@@ -31754,8 +31812,24 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Рубрики предметного указателя часто группируются,
- чтобы обеспечить читателю быстрый поиск по указателю.
+Рубрики предметного указателя часто группируются в иерархию,
+ чтобы обеспечить читателю быстрый поиск по указателю,
+ а также объединить категории (например,
+ 
+\emph on
+Фрукты
+\emph default
+\SpecialChar menuseparator
+
+\emph on
+Яблоки
+\emph default
+\SpecialChar menuseparator
+
+\emph on
+Белый Налив
+\emph default
+).
  Пусть требуется сгруппировать,
  например,
  рубрики для маркированных и нумерованных списков под общей рубрикой «Списки».
@@ -31953,7 +32027,7 @@ GIF|see{Изображения !
 \end_layout
 
 \begin_layout Subsection
-Упорядочение указателя
+Упорядочение рубрик
 \begin_inset Index idx
 range none
 pageformat default
@@ -32074,7 +32148,7 @@ maïs@maison
 \end_layout
 
 \begin_layout Subsection
-Структура указателя
+Форматирование рубрик
 \begin_inset Index idx
 range none
 pageformat default
@@ -32082,7 +32156,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Предметный указатель !
- структура
+ форматирование
 \end_layout
 
 \end_inset
@@ -32317,7 +32391,7 @@ literal "true"
 \end_layout
 
 \begin_layout Subsection
-Программы создания указателя
+Процессоры указателя
 \begin_inset Index idx
 range none
 pageformat default
@@ -32325,7 +32399,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Предметный указатель !
- программы
+ процессор
 \end_layout
 
 \end_inset
@@ -32341,13 +32415,13 @@ name "subsec:Index-Program"
 \end_layout
 
 \begin_layout Standard
-Если установлена программа генерации указателей 
+Если установлен процессор (программа генерации) указателя 
 \family sans
 xindy
 \family default
 ,
  \SpecialChar LyX
- будет использовать ее для генерации указателя;
+ будет использовать его для генерации указателя;
  в противном случае будет задействована программа 
 \family sans
 makeindex
@@ -32384,7 +32458,7 @@ xindy
 \end_inset
 
 .
- Обе программы могут управляться параметрами,
+ Оба процессора могут управляться параметрами,
  которые можно установить в диалоговом окне настроек \SpecialChar LyX
 ,
  см.
@@ -32409,12 +32483,12 @@ literal "true"
 \end_inset
 
 .
- В этом диалоговом окне вы также можете указать альтернативную программу для создания указателя.
+ В этом диалоговом окне вы также можете указать альтернативный процессор для создания указателя.
 \end_layout
 
 \begin_layout Standard
-Если вам нужны конкретные параметры или альтернативная программа формирования указателей только для данного документа,
- вы можете определить программу и/или параметры в 
+Если вам нужны конкретные параметры или альтернативный процессор указателя только для данного документа,
+ вы можете определить их в 
 \family sans
 Документ\SpecialChar menuseparator
 Настройки\SpecialChar menuseparator
@@ -33819,14 +33893,14 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Существуют также инвертированные вставки веток,
- содержимое которых выводится только в том случае,
+Также возможно инвертировать вставки веток.
+ Тогда их содержимое будет выводиться только в том случае,
  если ветка 
 \shape italic
 не
 \shape default
  активирована.
- Это позволяет легко добавлять альтернативный текст для разных версий документа.
+ Такие вставки (они помечаются ~ перед именем) позволяют легко добавлять альтернативный текст для разных версий документа.
  Чтобы управлять инвертированием конкретной вставки,
  щелкните правой кнопкой мыши на кнопке вставки и выберите 
 \family sans
@@ -34103,8 +34177,8 @@ status collapsed
 Настройки\SpecialChar menuseparator
 Свойства PDF
 \family default
- позволяет настроить специальные параметры для вывода документа в формате PDF.
- Все эти опции предоставляются \SpecialChar LaTeX
+ позволяет настроить особые возможности для вывода документа в формате PDF.
+ Большинство этих возможностей предоставляются \SpecialChar LaTeX
 -пакетом 
 \series bold
 hyperref
@@ -34124,10 +34198,16 @@ status open
 \end_inset
 
 ,
- который свяжет все перекрестные ссылки в выводах DVI и PDF.
+ который необходимо включить параметром 
+\family sans
+Поддержка hyperref
+\family default
+.
+ Он свяжет все гиперссылки и перекрестные ссылки в результирующем PDF-документе.
  Это означает,
- что читатель вашего документа может щелкнуть по элементу содержания или по ссылке,
+ что читатель вашего документа сможет щелкнуть по элементу содержания или по ссылке,
  чтобы перейти к соответствующей части документа.
+ Также можно задать метаданные PDF (такие как автор и заголовок документа) или определить как PDF будет открываться в программе просмотра.
 \end_layout
 
 \begin_layout Standard
@@ -34136,8 +34216,8 @@ status open
 Общие
 \family default
  сохраняется вместе с PDF в качестве свойств файла.
- Многие программы могут извлекать эту информацию автоматически,
- например,
+ Многие программы могут извлекать эту информацию,
+ чтобы определять например,
  кто автор и о чем PDF.
  Это очень полезно для сортировки,
  классификации или использования PDF-файлов для задач библиографии.
@@ -34146,8 +34226,7 @@ status open
 Автоматически заполнять заголовок
 \family default
 ,
- \SpecialChar LyX
- пытается извлечь эту информацию из заголовка документа и сведений об авторах.
+ hyperref пытается извлечь эту информацию из заголовка документа и сведений об авторах.
  Опция 
 \family sans
 Загрузка в полноэкранном режиме
@@ -34161,8 +34240,8 @@ status open
 \family sans
 Гиперссылки
 \family default
- можно указать,
- как будут выглядеть ссылки и создаются ли ссылки для библиографических обратных ссылок.
+ можно настроить,
+ как будут выглядеть ссылки и создаются ли обратные библиографические ссылки.
  Опция 
 \family sans
 Разрывать ссылки по строкам
@@ -34214,13 +34293,13 @@ green
 \end_layout
 
 \begin_layout Standard
-но вы можете изменить их в поле 
+но вы можете изменить их во вкладке 
 \family sans
 Дополнительные параметры
 \family default
 .
  Например,
- в этом документе они были изменены с помощью следующих дополнительных опций:
+ в этом документе они были изменены путем добавления следующих дополнительных опций:
 \end_layout
 
 \begin_layout Standard
@@ -34238,12 +34317,12 @@ linkcolor=black,
 Обратные ссылки
 \family default
 ,
- гиперссылки будут появляться в библиографии после различных записей,
+ гиперссылки будут появляться в библиографии после различных источников,
  показывая,
  в зависимости от выбранной опции,
  номер раздела,
  слайда или страницы,
- где есть ссылка на запись.
+ где есть ссылка на данный источник.
 \end_layout
 
 \begin_layout Standard
@@ -34276,27 +34355,32 @@ linkcolor=black,
 \end_layout
 
 \begin_layout Standard
-Свойства PDF также используются в этом документе.
- Если вы рассмотрите их в настройках документа,
- то увидите,
- что используются некоторые дополнительные опции 
-\series bold
-hyperref
-\series default
+Поле ввода 
+\family sans
+Метаданные документа
+\family default
+ позволяет вставлять свойства PDF,
+ которые не зависят от пакета hyperref и полагаются на некоторые (довольно новые) возможности \SpecialChar LaTeX
 .
- Для их понимания мы отсылаем вас к руководству по пакету 
+ Для этого требуется \SpecialChar LaTeX
+ версии не ниже 06/2022 (в более ранних версиях оно просто игнорируется).
+ Здесь нужно вводить список опций,
+ разделенных запятыми,
+ в виде ключ-значение (например 
 \series bold
-hyperref
+pdfversion=1.7,
+ lang=ru-UA
 \series default
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "hyperref"
-literal "true"
-
-\end_inset
-
-.
+).
+ На данный момент список опций еще довольно мал и не очень хорошо документирован (ищите файл 
+\emph on
+documentmetadata-support.pdf
+\emph default
+),
+ но ожидается,
+ что в будущем таким образом можно будет задавать весьма фундаментальные свойства PDF (например,
+ теги структуры для обеспечения доступности и различные стандарты PDF,
+ такие как PDF/A).
 \end_layout
 
 \begin_layout Section
@@ -40620,6 +40704,7 @@ reference "subsec:Dashes-and-line-breaks"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -40748,6 +40833,7 @@ reference "subsec:Suppressing-Page-Breaks"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -46392,6 +46478,7 @@ reference "sec:Change-Tracking"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -48472,6 +48559,7 @@ reference "subsec:Opening-cited-documents"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
