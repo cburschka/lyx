@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2022-12-04 19:23+0100\n"
-"PO-Revision-Date: 2022-11-27 15:01+0200\n"
+"PO-Revision-Date: 2022-12-10 21:55+0100\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -33714,9 +33714,8 @@ msgid "Can't change number of columns in '%1$s'"
 msgstr "Невозможно изменить число колонок в '%1$s'"
 
 #: src/mathed/InsetMathMacro.cpp:1116
-#, fuzzy
 msgid "Uncodable characters in math macro"
-msgstr "Некодируемые символы в пути"
+msgstr "Некодируемые символы в математическом макросе"
 
 #: src/mathed/InsetMathMacro.cpp:1117
 #, c-format
@@ -33725,6 +33724,9 @@ msgid ""
 "that is not encodable in the current encoding (%2$s).\n"
 "Please fix this macro."
 msgstr ""
+"Имя макроса '%1$s' содержит символ,\n"
+"который не может быть закодирован в текущей кодировке (%2$s).\n"
+"Пожалуйста, исправьте этот макрос."
 
 #: src/mathed/InsetMathMacro.cpp:1269 src/mathed/InsetMathMacro.cpp:1275
 #, c-format
