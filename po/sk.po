@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-12-10 15:04+0100\n"
-"PO-Revision-Date: 2022-12-10 14:16+0000\n"
+"POT-Creation-Date: 2022-12-10 17:01+0100\n"
+"PO-Revision-Date: 2022-12-10 16:17+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -32052,6 +32052,11 @@ msgstr "Variabilná"
 msgid "Module not found!"
 msgstr "Modul nenájdený!"
 
+#: src/frontends/qt/GuiDocument.cpp:578 src/frontends/qt/GuiDocument.cpp:754
+#: src/frontends/qt/ui/LocalLayoutUi.ui:77 src/frontends/qt/ui/PreambleUi.ui:48
+msgid "&Edit Externally"
+msgstr "E&xterne upraviť"
+
 #: src/frontends/qt/GuiDocument.cpp:595 src/frontends/qt/GuiDocument.cpp:767
 msgid "&End Edit"
 msgstr "&Skončiť Úpravu"
@@ -32530,11 +32535,11 @@ msgid ""
 "Do you want to switch back and apply them?"
 msgstr ""
 "Niektoré zmeny v predošlom dokumente sú zatiaľ neuplatnené.\n"
-"Chcete to vymeniť a uplatniť ich?"
+"Chcete to na tento dokument navrátiť a zmeny uplatniť?"
 
 #: src/frontends/qt/GuiDocument.cpp:1805
 msgid "Yes, &Switch Back"
-msgstr "Áno, &vymeniť"
+msgstr "Áno, &vrátiť a uplatniť"
 
 #: src/frontends/qt/GuiDocument.cpp:1805
 msgid "No, &Dismiss Changes"
