@@ -783,7 +783,8 @@ void LocalLayout::editExternal() {
 GuiDocument::GuiDocument(GuiView & lv)
 	: GuiDialog(lv, "document", qt_("Document Settings")),
 	  biblioChanged_(false), nonModuleChanged_(false),
-	  modulesChanged_(false), shellescapeChanged_(false)
+	  modulesChanged_(false), shellescapeChanged_(false),
+	  switchback_(false), prompted_(false)
 {
 	setupUi(this);
 
@@ -1783,6 +1784,39 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 void GuiDocument::onBufferViewChanged()
 {
+	if (switchback_) {
+		// We are just switching back. Nothing to do.
+		switchback_ = false;
+		return;
+	}
+	BufferView const * view = bufferview();
+	string const new_filename = view ? view->buffer().absFileName() : string();
+	// If we switched buffer really and the previous file name is different to
+	// the current one, we ask on unapplied changes (#9369)
+	// FIXME: This is more complicated than it should be. Why do we need these to cycles?
+	// And ideally, we should propose to apply without having to switch back
+	// (e.g., via a LFUN_BUFFER_PARAMS_APPLY_OTHER)
+	if (!prev_buffer_filename_.empty() && prev_buffer_filename_ != new_filename
+	    && buttonBox->button(QDialogButtonBox::Apply)->isEnabled()) {
+		// Only ask if we haven't yet in this cycle
+		int const ret = prompted_ ? 3 : Alert::prompt(_("Unapplied changes"),
+				_("Some changes in the previous document were not yet applied.\n"
+				"Do you want to switch back and apply them?"),
+				1, 1, _("Yes, &Switch Back"), _("No, &Dismiss Changes"));
+		if (ret == 0) {
+			// Switch to previous buffer view and apply
+			switchback_ = true;
+			// Record that we have asked.
+			prompted_ = true;
+			lyx::dispatch(FuncRequest(LFUN_BUFFER_SWITCH, prev_buffer_filename_));
+			return;
+		} else if (ret == 3) {
+			// We are in the second cycle. Set back.
+			prompted_ = false;
+			return;
+		}
+	}
+
 	if (isVisibleView())
 		initialiseParams("");
 }
@@ -4906,6 +4940,7 @@ bool GuiDocument::initialiseParams(string const &)
 		paramsToDialog();
 		return true;
 	}
+	prev_buffer_filename_ = view->buffer().absFileName();
 	bp_ = view->buffer().params();
 	loadModuleInfo();
 	updateAvailableModules();

@@ -334,6 +334,9 @@ private:
 	void filterModules(QString const & string);
 	///
 	BufferParams bp_;
+	/// Store buffer filename for the case we switch with
+	/// unapplied changes.
+	std::string prev_buffer_filename_;
 	/// List of names of available modules
 	std::list<modInfoStruct> moduleNames_;
 	///
@@ -348,6 +351,12 @@ private:
 	bool modulesChanged_;
 	/// Track if the shellescape param changed
 	bool shellescapeChanged_;
+	/// Track if we switch back to a buffer due to unapplied
+	/// changes
+	bool switchback_;
+	/// Track whether we prompted the user about unapplied
+	/// changes
+	bool prompted_;
 };
 
 
