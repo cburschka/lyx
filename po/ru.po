@@ -6,13 +6,13 @@
 # Nick A. Gusev <guusev@yandex.ru>, 2009.
 # Valeriy Kruchko <lerkru@gmail.com>, 2009.
 # Sergey Tereschenko <serg.partizan@gmail.com>, 2010.
-# Yuriy Skalko <yuriy.skalko@gmail.com>, 2017-2021.
+# Yuriy Skalko <yuriy.skalko@gmail.com>, 2017-2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2022-11-28 12:58+0100\n"
-"PO-Revision-Date: 2021-10-26 18:20+0300\n"
+"PO-Revision-Date: 2022-12-10 22:16+0100\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -307,13 +307,12 @@ msgid "Add &Local..."
 msgstr "Добавить &локальную..."
 
 #: src/frontends/qt/ui/BibtexUi.ui:91
-#, fuzzy
 msgid "Inherit bibliography databases from the master document"
-msgstr "Добавить библиографию в содержание"
+msgstr "Добавить библиографические базы данных из главного документа"
 
 #: src/frontends/qt/ui/BibtexUi.ui:94
 msgid "&Inherit from Master"
-msgstr ""
+msgstr "Добавить из &главного"
 
 #: src/frontends/qt/ui/BibtexUi.ui:101
 msgid "Remove the selected database"
@@ -1294,7 +1293,7 @@ msgstr "&Выбрать..."
 
 #: src/frontends/qt/ui/CompareUi.ui:227
 msgid "Mark changes in the workarea as "
-msgstr ""
+msgstr "Пометить изменения в рабочей области как "
 
 #: src/frontends/qt/ui/CounterUi.ui:22
 msgid "C&ounter:"
@@ -1688,7 +1687,6 @@ msgid "Restrict search to math environments only"
 msgstr "Ограничить поиск только математическими окружениями"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:383
-#, fuzzy
 msgid "Search onl&y in maths"
 msgstr "Искать только в формулах"
 
@@ -1706,10 +1704,9 @@ msgstr "Сохранять регистр первой буквы при зам�
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:413
 msgid "Do not search in content that is not output (e.g., notes)"
-msgstr ""
+msgstr "Не искать в содержимом, которое не выводится (например, в заметках)"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:416
-#, fuzzy
 msgid "Ignore &non-output content"
 msgstr "Только элементы не для вывода"
 
@@ -1718,43 +1715,38 @@ msgid ""
 "If the search string is formatted in a non-default way, only find strings "
 "formatted like the search string in the checked respects"
 msgstr ""
+"Если строка поиска отформатирована не по умолчанию, то будут найдены только "
+"строки, отформатированные как строка поиска с заданными параметрами."
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:428
 msgid "Adhe&re to search string formatting of"
-msgstr ""
+msgstr "Соблюдать форматирование поисковой строки"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:440
-#, fuzzy
 msgid "Strike-through"
 msgstr "Зачёркивание"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:461
-#, fuzzy
 msgid "Emph/noun"
-msgstr "имя"
+msgstr "Выделение/имя"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:468
-#, fuzzy
 msgid "Dese&lect all"
-msgstr "Выделить всё"
+msgstr "Снять всё выделение"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:489
-#, fuzzy
 msgid "Sectioning markup"
-msgstr "Нумерованные"
+msgstr "Разметка разделов"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:496
-#, fuzzy
 msgid "Deletion (change)"
-msgstr "Откатить изменения"
+msgstr "Удаление (изменение)"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:503
-#, fuzzy
 msgid "Underlining"
-msgstr "Подчёркивание:"
+msgstr "Подчёркивание"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:517
-#, fuzzy
 msgid "&Select all"
 msgstr "Выделить всё"
 
@@ -1781,7 +1773,7 @@ msgstr ""
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:97
 msgid "D&ocument Default"
-msgstr "Умолчание для документа"
+msgstr "По умолчанию для документа"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:104
 msgid "Left-align float contents"
@@ -2145,9 +2137,8 @@ msgid "Sho&w in LyX"
 msgstr "&Показывать в LyX"
 
 #: src/frontends/qt/ui/GraphicsUi.ui:556 src/frontends/qt/ui/GraphicsUi.ui:563
-#, fuzzy
 msgid "Percentage to scale by in LyX (1 to 1000)"
-msgstr "Процент масштабирования в LyX"
+msgstr "Процент масштабирования в LyX (от 1 до 1000)"
 
 #: src/frontends/qt/ui/GraphicsUi.ui:566
 msgid "Sca&le on screen (%):"
@@ -2256,11 +2247,11 @@ msgstr "&Шаблон заполнения:"
 
 #: src/frontends/qt/ui/HSpaceUi.ui:118
 msgid "&Non-Breaking:"
-msgstr ""
+msgstr "Неразрывный:"
 
 #: src/frontends/qt/ui/HSpaceUi.ui:128
 msgid "Prevent automatic line break at the space"
-msgstr ""
+msgstr "Предотвратить автоматический разрыв строки на пробеле"
 
 #: src/frontends/qt/ui/HyperlinkUi.ui:24 src/frontends/qt/ui/HyperlinkUi.ui:61
 #: lib/layouts/acmart.layout:694 lib/layouts/acmart.layout:712
@@ -2413,27 +2404,26 @@ msgstr ""
 "если вы хотите ввести код LaTeX."
 
 #: src/frontends/qt/ui/IndexUi.ui:23
-#, fuzzy
 msgid "Available I&ndexes"
-msgstr "&Доступные указатели:"
+msgstr "&Доступные указатели"
 
 #: src/frontends/qt/ui/IndexUi.ui:29
 msgid "Select the index this entry should be listed in."
 msgstr "Выберите указатель, в который попадёт текущая рубрика."
 
 #: src/frontends/qt/ui/IndexUi.ui:52
-#, fuzzy
 msgid "&Pagination"
-msgstr "Вариант"
+msgstr "Номера страниц"
 
 #: src/frontends/qt/ui/IndexUi.ui:58
-#, fuzzy
 msgid "Page &Range:"
-msgstr "Стиль &колонтитулов:"
+msgstr "Диапазон страниц:"
 
 #: src/frontends/qt/ui/IndexUi.ui:68
 msgid "If the entry spans multiple pages, you can start or end the range here"
 msgstr ""
+"Если рубрика охватывает несколько страниц, здесь вы можете начать или "
+"закончить диапазон"
 
 #: src/frontends/qt/ui/IndexUi.ui:88 src/frontends/qt/ui/PageLayoutUi.ui:29
 #: src/frontends/qt/ui/PrefFileformatsUi.ui:20
@@ -2445,10 +2435,13 @@ msgid ""
 "Customize the format of the page number here. Note that the format is not "
 "used with \"See\" and \"See also\" references."
 msgstr ""
+"Настройка формата номера страницы. Обратите внимание, что этот формат не "
+"используется в ссылках \"См.\" и \"См. также\"."
 
 #: src/frontends/qt/ui/IndexUi.ui:105
 msgid "Enter custom command here (without leading backslash)."
 msgstr ""
+"Введите здесь пользовательскую команду (без ведущей обратной косой черты)."
 
 #: src/frontends/qt/ui/IndicesUi.ui:19
 msgid ""
@@ -2572,9 +2565,8 @@ msgid "Click to select a local document class definition file"
 msgstr "Нажмите для выбора локального файла, определяющего класс документа"
 
 #: src/frontends/qt/ui/LaTeXUi.ui:51
-#, fuzzy
 msgid "&Local Class..."
-msgstr "&Локальный макет..."
+msgstr "&Локальный класс..."
 
 #: src/frontends/qt/ui/LaTeXUi.ui:61
 msgid "Class Options"
@@ -3319,27 +3311,29 @@ msgstr "CALS"
 
 #: src/frontends/qt/ui/OutputUi.ui:87
 msgid "&MathML namespace prefix:"
-msgstr ""
+msgstr "Префикс пространства имен MathML:"
 
 #: src/frontends/qt/ui/OutputUi.ui:103
 msgid ""
 "Namespace prefix to use for MathML formulae. For instance, with the <code>m</"
 "code> prefix, the MathML tags will be output like <code>m:math</code>."
 msgstr ""
+"Префикс пространства имен для формул MathML. Например, с префиксом <code>m</"
+"code> теги MathML будут выводиться как <code>m:math</code>."
 
 #: src/frontends/qt/ui/OutputUi.ui:107
 msgid "No prefix (namespace defined inline for each tag)"
 msgstr ""
+"Без префикса (пространство имен определяется непосредственно для каждого "
+"тега)"
 
 #: src/frontends/qt/ui/OutputUi.ui:112
-#, fuzzy
 msgid "m (default)"
-msgstr "Наружное (по умолчанию)"
+msgstr "m (по умолчанию)"
 
 #: src/frontends/qt/ui/OutputUi.ui:117
-#, fuzzy
 msgid "mml"
-msgstr "mm"
+msgstr "mml"
 
 #: src/frontends/qt/ui/OutputUi.ui:141
 msgid "LyX Format"
@@ -3566,20 +3560,23 @@ msgstr "Дополнительные &параметры"
 msgid ""
 "Additional hyperref options (comma-separated) to be passed via \\hypersetup."
 msgstr ""
+"Дополнительные параметры hyperref (разделенные запятыми) для передачи через "
+"\\hypersetup."
 
 #: src/frontends/qt/ui/PDFSupportUi.ui:464
 msgid "Hyperse&tup"
-msgstr ""
+msgstr "Hyperse&tup"
 
 #: src/frontends/qt/ui/PDFSupportUi.ui:487
 msgid ""
 "Document metadata and PDF settings (as specified in LaTeX 06/2022 and later)"
 msgstr ""
+"Метаданные документа и настройки PDF (как указано в LaTeX 06/2022 и более "
+"поздних версиях)"
 
 #: src/frontends/qt/ui/PDFSupportUi.ui:490
-#, fuzzy
 msgid "Document &Metadata"
-msgstr "По умолчанию для документа"
+msgstr "Метаданные документа"
 
 #: src/frontends/qt/ui/PageLayoutUi.ui:20
 msgid "Paper Format"
@@ -4183,12 +4180,11 @@ msgid "Cursor width (&pixels):"
 msgstr "Ширина курсора (пиксели):"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:177
-#, fuzzy
 msgid ""
 "Configure the width of the text cursor.  \"Auto\" means that zoom-controlled "
 "width is used."
 msgstr ""
-"Настроить ширину текстового курсора. Используется автоматическая ширина, "
+"Настройка ширины текстового курсора. Используется автоматическая ширина, "
 "если установлено в 0."
 
 #: src/frontends/qt/ui/PrefEditUi.ui:180
@@ -4211,7 +4207,7 @@ msgstr "&Группировать окружения по их категори�
 
 #: src/frontends/qt/ui/PrefEditUi.ui:220 src/frontends/qt/ui/PrefEditUi.ui:246
 msgid "Limit the width of the text in the work area to the specified length"
-msgstr ""
+msgstr "Ограничить ширину текста в рабочей области до заданной величины"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:223
 msgid "&Limit text width"
@@ -5420,11 +5416,11 @@ msgstr "Текущее слово"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:77
 msgid "Skip this match and go to next misspelling"
-msgstr ""
+msgstr "Пропустить это совпадение и перейти к следующей ошибке"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:80
 msgid "S&kip"
-msgstr ""
+msgstr "Пропустить"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:87
 msgid "Repla&cement:"
@@ -5432,11 +5428,11 @@ msgstr "&Замена:"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:97
 msgid "Skips all occurrences of this word within the current session."
-msgstr ""
+msgstr "Пропускает все вхождения этого слова в текущей сессии."
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:100
 msgid "Skip A&ll"
-msgstr ""
+msgstr "Пропустить все"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:110
 msgid "Replace with selected word"
@@ -5456,9 +5452,8 @@ msgid "S&uggestions:"
 msgstr "&Варианты:"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:152
-#, fuzzy
 msgid "Replace all occurrences of the word in the document with current choice"
-msgstr "Заменить слово на выбранное"
+msgstr "Заменить все вхождения слова в документе на текущий вариант"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:155
 msgid "Re&place All"
@@ -5466,7 +5461,7 @@ msgstr "Заменить вс&ё"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:165
 msgid "Ignore this occurrence of the word permanently"
-msgstr ""
+msgstr "Игнорировать это появление слова всегда"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:168
 msgid "Ign&ore"
@@ -5477,6 +5472,8 @@ msgid ""
 "Ignore all occurrences of this word within this document. This persists "
 "beyond the current session."
 msgstr ""
+"Игнорировать все вхождения этого слова в этом документе. Это сохраняется и "
+"после окончания текущей сессии."
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:178
 msgid "I&gnore All"
@@ -6105,19 +6102,19 @@ msgstr "&Защита:"
 
 #: src/frontends/qt/ui/VSpaceUi.ui:83 src/VSpace.cpp:190
 msgid "Default skip"
-msgstr "по умолчанию"
+msgstr "По умолчанию"
 
 #: src/frontends/qt/ui/VSpaceUi.ui:88 src/VSpace.cpp:193
 msgid "Small skip"
-msgstr "малый"
+msgstr "Малый"
 
 #: src/frontends/qt/ui/VSpaceUi.ui:93 src/VSpace.cpp:196
 msgid "Medium skip"
-msgstr "средний"
+msgstr "Средний"
 
 #: src/frontends/qt/ui/VSpaceUi.ui:98 src/VSpace.cpp:199
 msgid "Big skip"
-msgstr "большой"
+msgstr "Большой"
 
 #: src/frontends/qt/ui/VSpaceUi.ui:103 src/VSpace.cpp:202
 #: src/frontends/qt/GuiDocument.cpp:868
@@ -6131,7 +6128,7 @@ msgstr "Высота строки"
 
 #: src/frontends/qt/ui/VSpaceUi.ui:113 src/VSpace.cpp:208
 msgid "Vertical fill"
-msgstr "заполнение"
+msgstr "Вертикальное заполнение"
 
 #: src/frontends/qt/ui/ViewSourceUi.ui:91
 msgid "F&ormat:"
@@ -16998,23 +16995,20 @@ msgid "Idx"
 msgstr "Рубрика"
 
 #: lib/layouts/stdinsets.inc:435 src/insets/InsetIndexMacro.cpp:63
-#, fuzzy
 msgid "See"
-msgstr "Сцена"
+msgstr "См."
 
 #: lib/layouts/stdinsets.inc:451 src/insets/InsetIndexMacro.cpp:64
 msgid "See also"
-msgstr ""
+msgstr "См. также"
 
 #: lib/layouts/stdinsets.inc:456 src/insets/InsetIndexMacro.cpp:66
-#, fuzzy
 msgid "Sort as"
-msgstr "Сортировать как:"
+msgstr "Сортировать как"
 
 #: lib/layouts/stdinsets.inc:461 src/insets/InsetIndexMacro.cpp:65
-#, fuzzy
 msgid "Subentry"
-msgstr "Страна"
+msgstr "Подрубрика"
 
 #: lib/layouts/stdinsets.inc:639
 msgid "Argument"
@@ -17066,13 +17060,12 @@ msgid "Subequations"
 msgstr "Подформулы"
 
 #: lib/layouts/subequations.module:6
-#, fuzzy
 msgid ""
 "Provide a straightforward way to segregate subequations in LyX. See the Math "
 "manual."
 msgstr ""
-"Предоставляет прямой способ разделения подформул в LyX. См. файл примера "
-"subequations.lyx."
+"Предоставляет прямой способ разделения подформул в LyX. См. руководство по "
+"математике."
 
 #: lib/layouts/svcommon.inc:72
 msgid "Front Matter"
@@ -18704,7 +18697,7 @@ msgstr "Румынский"
 
 #: lib/languages:1303
 msgid "Romansh"
-msgstr "Романш"
+msgstr "Романшский"
 
 #: lib/languages:1315
 msgid "Russian"
@@ -18712,7 +18705,7 @@ msgstr "Русский"
 
 #: lib/languages:1331
 msgid "North Sami"
-msgstr "Северное Саами"
+msgstr "Северносаамский"
 
 #: lib/languages:1342
 msgid "Sanskrit"
@@ -19793,13 +19786,12 @@ msgid "Vertical Phantom|V"
 msgstr "Вертикальный фантом"
 
 #: lib/ui/stdcontext.inc:264 lib/ui/stdmenus.inc:455
-#, fuzzy
 msgid "Normal Space|e"
-msgstr "Горизонтальный промежуток"
+msgstr "Обычный пробел"
 
 #: lib/ui/stdcontext.inc:265
 msgid "Non-Breaking Normal Space|o"
-msgstr ""
+msgstr "Неразрывный обычный пробел"
 
 #: lib/ui/stdcontext.inc:266
 msgid "Visible Space|a"
@@ -19807,49 +19799,41 @@ msgstr "Видимый пробел"
 
 #: lib/ui/stdcontext.inc:267
 msgid "Non-Breaking Thin Space (1/6 em)|T"
-msgstr ""
+msgstr "Неразрывный тонкий пробел (1/6 em)"
 
 #: lib/ui/stdcontext.inc:268
-#, fuzzy
 msgid "Non-Breaking Medium Space (3/9 em)|M"
-msgstr "Отрицательный средний пробел|п"
+msgstr "Неразрывный средний пробел (3/9 em)"
 
 #: lib/ui/stdcontext.inc:269
 msgid "Non-Breaking Thick Space (5/18 em)|i"
-msgstr ""
+msgstr "Неразрывный широкий пробел (5/18 em)"
 
 #: lib/ui/stdcontext.inc:270
-#, fuzzy
 msgid "Non-Breaking Negative Thin Space (-1/6 em)|N"
-msgstr "Отрицательный тонкий пробел|О"
+msgstr "Отрицательный тонкий пробел (-1/6 em)|н"
 
 #: lib/ui/stdcontext.inc:271
-#, fuzzy
 msgid "Non-Breaking Negative Medium Space (-2/9 em)|v"
-msgstr "Отрицательный средний пробел|п"
+msgstr "Отрицательный средний пробел (-2/9 em)|п"
 
 #: lib/ui/stdcontext.inc:272
-#, fuzzy
 msgid "Non-Breaking Negative Thick Space (-5/18 em)|h"
-msgstr "Отрицательный широкий пробел|О"
+msgstr "Отрицательный широкий пробел (-5/18 em)|О"
 
 #: lib/ui/stdcontext.inc:273
-#, fuzzy
 msgid "Half Quad Space (1/2 em)|l"
-msgstr "Полуквадрат (enskip)|л"
+msgstr "Полуквадрат (1/2 em)"
 
 #: lib/ui/stdcontext.inc:274
-#, fuzzy
 msgid "Non-Breaking Half Quad Space (1/2 em)|k"
-msgstr "Полуквадрат (enskip)|л"
+msgstr "Неразрывный полуквадрат (1/2 em)"
 
 #: lib/ui/stdcontext.inc:275
-#, fuzzy
 msgid "Quad Space (1 em)|Q"
 msgstr "Квадрат (1em)|К"
 
 #: lib/ui/stdcontext.inc:276
-#, fuzzy
 msgid "Double Quad Space (2 em)|u"
 msgstr "Двойной квадрат (2em)|Д"
 
@@ -19858,9 +19842,8 @@ msgid "Horizontal Fill|F"
 msgstr "Горизонтальное заполнение|Г"
 
 #: lib/ui/stdcontext.inc:278
-#, fuzzy
 msgid "Non-Breaking Horizontal Fill|z"
-msgstr "Защищённое горизонтальное заполнение|З"
+msgstr "Неразрывное горизонтальное заполнение|З"
 
 #: lib/ui/stdcontext.inc:279
 msgid "Horizontal Fill (Dots)|D"
@@ -19871,7 +19854,6 @@ msgid "Horizontal Fill (Rule)|R"
 msgstr "Горизонтальное заполнение (линия)"
 
 #: lib/ui/stdcontext.inc:281
-#, fuzzy
 msgid "Horizontal Fill (Left Arrow)|w"
 msgstr "Горизонтальное заполнение (левая стрелка)"
 
@@ -19889,7 +19871,7 @@ msgstr "Горизонтальное заполнение (скобка ввер
 
 #: lib/ui/stdcontext.inc:285 lib/ui/stdcontext.inc:303
 msgid "Custom Length|C"
-msgstr "Заданная длина|и"
+msgstr "Заданное значение...|и"
 
 #: lib/ui/stdcontext.inc:294
 msgid "Thin Space|T"
@@ -19917,33 +19899,29 @@ msgstr "Отрицательный широкий пробел|О"
 
 #: lib/ui/stdcontext.inc:300
 msgid "Half Quad Space (Enskip)|k"
-msgstr "Полуквадрат (enskip)|л"
+msgstr "Полуквадрат|л"
 
 #: lib/ui/stdcontext.inc:301
 msgid "Quad Space|Q"
-msgstr "Квадрат (1em)|К"
+msgstr "Квадрат|К"
 
 #: lib/ui/stdcontext.inc:302
 msgid "Double Quad Space|u"
-msgstr "Двойной квадрат (2em)|Д"
+msgstr "Двойной квадрат|Д"
 
 #: lib/ui/stdcontext.inc:312
-#, fuzzy
 msgid "Default Skip|D"
-msgstr "по умолчанию"
+msgstr "По умолчанию"
 
 #: lib/ui/stdcontext.inc:313
-#, fuzzy
 msgid "Small Skip|S"
 msgstr "Малый|М"
 
 #: lib/ui/stdcontext.inc:314
-#, fuzzy
 msgid "Medium Skip|M"
-msgstr "средний"
+msgstr "Средний|д"
 
 #: lib/ui/stdcontext.inc:315
-#, fuzzy
 msgid "Big Skip|B"
 msgstr "Большой|Б"
 
@@ -19956,9 +19934,8 @@ msgid "Line height|L"
 msgstr "Высота строки"
 
 #: lib/ui/stdcontext.inc:318
-#, fuzzy
 msgid "Vertical Fill|F"
-msgstr "заполнение"
+msgstr "Вертикальное заполнение"
 
 #: lib/ui/stdcontext.inc:319
 msgid "Custom|C"
@@ -20314,79 +20291,68 @@ msgid "Insert Reference at Cursor Position|I"
 msgstr "Вставить ссылку в позицию курсора"
 
 #: lib/ui/stdcontext.inc:624
-#, fuzzy
 msgid "Insert Copy at Cursor Position|I"
-msgstr "Вставить ссылку в позицию курсора"
+msgstr "Вставить копию в позицию курсора"
 
 #: lib/ui/stdcontext.inc:636
 msgid "Index All Occurrences of this Word|W"
-msgstr ""
+msgstr "Индексировать все вхождения этого слова"
 
 #: lib/ui/stdcontext.inc:638
 msgid "Single Page (No Page Range)|P"
-msgstr ""
+msgstr "Одна страница (без диапазона страниц)"
 
 #: lib/ui/stdcontext.inc:639
-#, fuzzy
 msgid "Start Page Range|t"
-msgstr "Начальная страница: "
+msgstr "Начальная страница диапазона"
 
 #: lib/ui/stdcontext.inc:640
-#, fuzzy
 msgid "End Page Range|E"
-msgstr "На странице <стр.>|ц"
+msgstr "Конечная страница диапазона"
 
 #: lib/ui/stdcontext.inc:642
-#, fuzzy
 msgid "No Page Formatting|N"
-msgstr "Форматирование|Ф"
+msgstr "Обычный номер страницы"
 
 #: lib/ui/stdcontext.inc:643
-#, fuzzy
 msgid "Bold Page Formatting|B"
-msgstr "Форматирование|Ф"
+msgstr "Полужирный номер страницы"
 
 #: lib/ui/stdcontext.inc:644
-#, fuzzy
 msgid "Italic Page Formatting|I"
-msgstr "Форматирование|Ф"
+msgstr "Курсивный номер страницы"
 
 #: lib/ui/stdcontext.inc:645
 msgid "Emphasized Page Formatting|z"
-msgstr ""
+msgstr "Выделенный номер страницы"
 
 #: lib/ui/stdcontext.inc:646
-#, fuzzy
 msgid "Custom Page Formatting|C"
-msgstr "Пользовательский формат"
+msgstr "Пользовательский формат номера страницы..."
 
 #: lib/ui/stdcontext.inc:650
-#, fuzzy
 msgid "Insert Subentry|b"
-msgstr "Вставить рубрику указателя"
+msgstr "Вставить подрубрику указателя"
 
 #: lib/ui/stdcontext.inc:651
-#, fuzzy
 msgid "Insert Sortkey|k"
-msgstr "Вставить заметку"
+msgstr "Вставить ключ сортировки"
 
 #: lib/ui/stdcontext.inc:652
-#, fuzzy
 msgid "Insert See Reference|e"
-msgstr "Ссылка на интернет-адрес"
+msgstr "Вставить \"См.\""
 
 #: lib/ui/stdcontext.inc:653
-#, fuzzy
 msgid "Insert See also Reference|a"
-msgstr "Ссылка на интернет-адрес"
+msgstr "Вставить \"См. также\""
 
 #: lib/ui/stdcontext.inc:661 lib/ui/stdmenus.inc:539
 msgid "See|e"
-msgstr ""
+msgstr "См."
 
 #: lib/ui/stdcontext.inc:662 lib/ui/stdmenus.inc:540
 msgid "See also|a"
-msgstr ""
+msgstr "См. также"
 
 #: lib/ui/stdcontext.inc:671
 msgid "All Indexes|A"
@@ -20450,23 +20416,23 @@ msgstr "Гигантские значки"
 
 #: lib/ui/stdcontext.inc:768
 msgid "Zoom Level|Z"
-msgstr ""
+msgstr "Масштаб"
 
 #: lib/ui/stdcontext.inc:769
 msgid "Zoom Slider|S"
-msgstr ""
+msgstr "Ползунок масштаба"
 
 #: lib/ui/stdcontext.inc:771
 msgid "Word Count|W"
-msgstr ""
+msgstr "Слова"
 
 #: lib/ui/stdcontext.inc:772
 msgid "Character Count|C"
-msgstr ""
+msgstr "Знаки"
 
 #: lib/ui/stdcontext.inc:773
 msgid "Character Count (No Blanks)|h"
-msgstr ""
+msgstr "Знаки (без пробелов)"
 
 #: lib/ui/stdmenus.inc:30
 msgid "File|F"
@@ -21113,9 +21079,8 @@ msgid "Label...|L"
 msgstr "Метка...|М"
 
 #: lib/ui/stdmenus.inc:394
-#, fuzzy
 msgid "Index Properties"
-msgstr "Свойства текста"
+msgstr "Свойства указателя"
 
 #: lib/ui/stdmenus.inc:395
 msgid "Nomenclature Entry...|y"
@@ -21179,7 +21144,7 @@ msgstr "Внутренние кавычки"
 
 #: lib/ui/stdmenus.inc:419
 msgid "Non-Breaking Hyphen|y"
-msgstr ""
+msgstr "Неразрывный дефис"
 
 #: lib/ui/stdmenus.inc:420
 msgid "Breakable Slash|a"
@@ -21271,12 +21236,11 @@ msgstr "Нижний индекс|Н"
 
 #: lib/ui/stdmenus.inc:456
 msgid "Non-breaking Normal Space|p"
-msgstr ""
+msgstr "Неразрывный обычный пробел"
 
 #: lib/ui/stdmenus.inc:457
-#, fuzzy
 msgid "Non-breaking Thin Space|T"
-msgstr "Отрицательный тонкий пробел|О"
+msgstr "Неразрывный тонкий пробел|О"
 
 #: lib/ui/stdmenus.inc:458
 msgid "Horizontal Space...|o"
@@ -21315,14 +21279,12 @@ msgid "Numbered Formula|N"
 msgstr "Нумерованная формула|Н"
 
 #: lib/ui/stdmenus.inc:504
-#, fuzzy
 msgid "Wrapped Figure|F"
-msgstr "Рисунок тизера"
+msgstr "Обтекаемый рисунок|р"
 
 #: lib/ui/stdmenus.inc:505
-#, fuzzy
 msgid "Wrapped Table|T"
-msgstr "Таблица|ц"
+msgstr "Обтекаемая таблица|т"
 
 #: lib/ui/stdmenus.inc:509
 msgid "Table of Contents|C"
@@ -21362,12 +21324,11 @@ msgstr "Дочерний документ...|Д"
 
 #: lib/ui/stdmenus.inc:537
 msgid "Subentry|b"
-msgstr ""
+msgstr "Подрубрика"
 
 #: lib/ui/stdmenus.inc:538
-#, fuzzy
 msgid "Sortkey|k"
-msgstr "Сортировать"
+msgstr "Ключ сортировки|с"
 
 #: lib/ui/stdmenus.inc:545
 msgid "Comment|C"
@@ -21378,9 +21339,8 @@ msgid "Insert New Branch...|I"
 msgstr "Добавить новую ветку...|в"
 
 #: lib/ui/stdmenus.inc:570
-#, fuzzy
 msgid "Cancel Export|P"
-msgstr "Отменить экспорт?"
+msgstr "Отменить экспорт"
 
 #: lib/ui/stdmenus.inc:572
 msgid "Change Tracking|C"
@@ -21891,19 +21851,16 @@ msgid "Toggle right line"
 msgstr "Переключить правую линию"
 
 #: lib/ui/stdtoolbars.inc:170
-#, fuzzy
 msgid "Toggle border lines"
 msgstr "Линии рамки"
 
 #: lib/ui/stdtoolbars.inc:171
-#, fuzzy
 msgid "Toggle inner lines"
 msgstr "Внутренние линии"
 
 #: lib/ui/stdtoolbars.inc:172
-#, fuzzy
 msgid "Toggle all lines"
-msgstr "Переключить левую линию"
+msgstr "Все линии"
 
 #: lib/ui/stdtoolbars.inc:173
 msgid "Unset all lines"
@@ -27834,9 +27791,8 @@ msgid "&Load Original"
 msgstr "Загрузить &исходный"
 
 #: src/Buffer.cpp:4732
-#, fuzzy
 msgid "&Only show difference"
-msgstr "различия"
+msgstr "Показывать только различия"
 
 #: src/Buffer.cpp:4743
 #, c-format
@@ -28090,12 +28046,11 @@ msgid "uncodable character"
 msgstr "некодируемый символ"
 
 #: src/BufferParams.cpp:1735
-#, fuzzy
 msgid "Uncodable character in document metadata"
-msgstr "Некодируемый символ в имени автора"
+msgstr "Некодируемый символ в метаданных документа"
 
 #: src/BufferParams.cpp:1737
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The metadata of your document contains glyphs that are unknown in the "
 "current document encoding (namely %1$s).\n"
@@ -28105,7 +28060,7 @@ msgid ""
 "Please select an appropriate document encoding\n"
 "(such as utf8) or change the preamble code accordingly."
 msgstr ""
-"Преамбула пользователя в документе содержит символы\n"
+"Метаданные документа содержит символы\n"
 "недоступные в текущей кодировке (%1$s). Эти символы\n"
 "будут пропущены в выводе, что может привести к неполному выводу.\n"
 "\n"
@@ -28198,9 +28153,8 @@ msgid "Read Error"
 msgstr "Ошибка чтения"
 
 #: src/BufferParams.cpp:3743
-#, fuzzy
 msgid "No bibliography processor found!"
-msgstr "Не определена библиография!"
+msgstr "Библиографические процессоры не найдены!"
 
 #: src/BufferParams.cpp:3745
 #, c-format
@@ -28210,11 +28164,14 @@ msgid ""
 "references will be generated.\n"
 "Please fix your installation!"
 msgstr ""
+"Библиографический процессор, запрашиваемый этим документом (%1$s), "
+"недоступен, и подходящая альтернатива не найдена. Невозможно создать "
+"библиографию и ссылки.\n"
+"Пожалуйста, исправьте вашу установку!"
 
 #: src/BufferParams.cpp:3753
-#, fuzzy
 msgid "Requested bibliography processor not found!"
-msgstr "Источник не найден!"
+msgstr "Заданный библиографический процессор не найден!"
 
 #: src/BufferParams.cpp:3755
 #, c-format
@@ -28225,6 +28182,12 @@ msgid ""
 "carefully!\n"
 "It is suggested to install the missing processor."
 msgstr ""
+"Библиографический процессор, запрашиваемый этим документом (%1$s), "
+"недоступен. В качестве запасного варианта будет использован "
+"'%2$s' (параметры процессора будут проигнорированы). Это может привести к "
+"ошибкам или нежелательным изменениям в библиографии. Пожалуйста, проверьте "
+"внимательно результат!\n"
+"Для корректной работы требуется установить недостающий процессор."
 
 #: src/BufferView.cpp:181
 msgid "No more insets"
@@ -28295,31 +28258,29 @@ msgstr "Статистика для документа:"
 #: src/BufferView.cpp:1951
 #, c-format
 msgid "%1$d words"
-msgstr "%1$d слов"
+msgstr "Слов: %1$d"
 
 #: src/BufferView.cpp:1953
 msgid "One word"
-msgstr "Одно слово"
+msgstr "Слов: 1"
 
 #: src/BufferView.cpp:1956
-#, fuzzy, c-format
+#, c-format
 msgid "%1$d characters"
-msgstr "Некодируемые символы"
+msgstr "Знаков: %1$d"
 
 #: src/BufferView.cpp:1958
-#, fuzzy
 msgid "One character"
-msgstr "некодируемый символ"
+msgstr "Знаков: 1"
 
 #: src/BufferView.cpp:1961
-#, fuzzy, c-format
+#, c-format
 msgid "%1$d characters (no blanks)"
-msgstr "%1$d знаков (с пробелами)"
+msgstr "Знаков (без пробелов): %1$d"
 
 #: src/BufferView.cpp:1963
-#, fuzzy
 msgid "One character (no blanks)"
-msgstr "Один знак (с пробелами)"
+msgstr "Знаков (без пробелов): 1"
 
 #: src/BufferView.cpp:1965
 msgid "Statistics"
@@ -28785,34 +28746,28 @@ msgid "added text (output)"
 msgstr "добавленный текст (вывод)"
 
 #: src/Color.cpp:327
-#, fuzzy
 msgid "changed text (workarea, 1st author)"
-msgstr "добавленный текст (рабочая область, 1-й автор)"
+msgstr "изменённый текст (рабочая область, 1-й автор)"
 
 #: src/Color.cpp:328
-#, fuzzy
 msgid "changed text (workarea, 2nd author)"
-msgstr "добавленный текст (рабочая область, 2-й автор)"
+msgstr "изменённый текст (рабочая область, 2-й автор)"
 
 #: src/Color.cpp:329
-#, fuzzy
 msgid "changed text (workarea, 3rd author)"
-msgstr "добавленный текст (рабочая область, 3-й автор)"
+msgstr "изменённый текст (рабочая область, 3-й автор)"
 
 #: src/Color.cpp:330
-#, fuzzy
 msgid "changed text (workarea, 4th author)"
-msgstr "добавленный текст (рабочая область, 4-й автор)"
+msgstr "изменённый текст (рабочая область, 4-й автор)"
 
 #: src/Color.cpp:331
-#, fuzzy
 msgid "changed text (workarea, 5th author)"
-msgstr "добавленный текст (рабочая область, 5-й автор)"
+msgstr "изменённый текст (рабочая область, 5-й автор)"
 
 #: src/Color.cpp:332
-#, fuzzy
 msgid "changed text (workarea, document comparison)"
-msgstr "добавленный текст (рабочая область, 2-й автор)"
+msgstr "изменённый текст (рабочая область, сравнение документов)"
 
 #: src/Color.cpp:333
 msgid "deleted text modifier (workarea)"
@@ -29473,34 +29428,32 @@ msgid "Waiting for LaTeX run number %1$d"
 msgstr "Выполняется проход LaTeX номер %1$d"
 
 #: src/LaTeX.cpp:328
-#, fuzzy
 msgid "Running Bibliography Processor."
-msgstr "Выполняется процессор указателя."
+msgstr "Выполняется библиографический процессор."
 
 #: src/LaTeX.cpp:389
-#, fuzzy
 msgid "Re-Running Bibliography Processor."
-msgstr "Выполняется процессор указателя."
+msgstr "Повторно выполняется библиографический процессор."
 
 #: src/LaTeX.cpp:429
 msgid "Running Index Processor."
 msgstr "Выполняется процессор указателя."
 
 #: src/LaTeX.cpp:438
-#, fuzzy
 msgid "Index Processor Error"
-msgstr "Выполняется процессор указателя."
+msgstr "Ошибка процессора указателя"
 
 #: src/LaTeX.cpp:439
 msgid ""
 "The index processor did not run successfully. Please check the output of "
 "View > Messages Pane!"
 msgstr ""
+"Процессор указателя не был успешно запущен. Пожалуйста, проверьте вывод Вид "
+"> Панель сообщений!"
 
 #: src/LaTeX.cpp:599
-#, fuzzy
 msgid "Running Nomenclature Processor."
-msgstr "Выполняется процессор указателя."
+msgstr "Выполняется процессор номенклатуры."
 
 #: src/LaTeX.cpp:1103
 msgid "(NOTE: The erroneous command is in the preamble)"
@@ -29708,7 +29661,7 @@ msgstr "Список поддерживаемых флагов отладки:"
 #: src/LyX.cpp:1188
 #, c-format
 msgid "Bad debug value `%1$s'. Exiting."
-msgstr ""
+msgstr "Недопустимое отладочное значение `%1$s'. Выходим."
 
 #: src/LyX.cpp:1199
 msgid ""
@@ -30790,9 +30743,8 @@ msgid "Nomenclature Entries"
 msgstr "Обозначения"
 
 #: src/VCBackend.cpp:64
-#, fuzzy
 msgid "Check whether the GNU RCS package is installed on your system."
-msgstr "Возможно в системе не установлен пакет RCS?"
+msgstr "Проверьте, установлен ли пакет GNU RCS в вашей системе."
 
 #: src/VCBackend.cpp:65 src/VCBackend.cpp:880 src/VCBackend.cpp:885
 #: src/VCBackend.cpp:934 src/VCBackend.cpp:993 src/VCBackend.cpp:1052
@@ -31226,7 +31178,7 @@ msgstr "По умолчанию для документа"
 
 #: src/frontends/qt/FloatPlacement.h:38 src/frontends/qt/GuiDocument.cpp:1789
 msgid "Float Settings"
-msgstr "Плавающие объекты"
+msgstr "Плавающий объект"
 
 #: src/frontends/qt/GuiAbout.cpp:53
 msgid "ERROR: LyX wasn't able to find the CREDITS file\n"
@@ -31394,7 +31346,7 @@ msgstr "Команда отключена"
 #: src/frontends/qt/GuiApplication.cpp:1493
 #, c-format
 msgid "Bad debug value `%1$s'."
-msgstr ""
+msgstr "Недопустимое отладочное значение `%1$s'."
 
 #: src/frontends/qt/GuiApplication.cpp:1522 src/frontends/qt/GuiView.cpp:2366
 msgid "Command not allowed without a buffer open"
@@ -31729,14 +31681,13 @@ msgid "Box Settings"
 msgstr "Блок"
 
 #: src/frontends/qt/GuiBranch.cpp:69
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s[[branch]] (%2$s)[[master]]"
-msgstr "%1$s[[name]] (%2$s[[email]])"
+msgstr "%1$s[[branch]] (%2$s)[[master]]"
 
 #: src/frontends/qt/GuiBranch.cpp:70
-#, fuzzy
 msgid "master"
-msgstr "Вставить"
+msgstr "главный"
 
 #: src/frontends/qt/GuiBranch.h:35
 msgid "Branch Settings"
@@ -32086,14 +32037,12 @@ msgid "differences"
 msgstr "различия"
 
 #: src/frontends/qt/GuiCompare.cpp:399
-#, fuzzy
 msgid "Current Author"
-msgstr "Текущее слово"
+msgstr "Текущий автор"
 
 #: src/frontends/qt/GuiCompare.cpp:402
-#, fuzzy
 msgid "Document Comparison"
-msgstr "Информация документа"
+msgstr "Сравнение документов"
 
 #: src/frontends/qt/GuiCompareHistory.cpp:38
 msgid "Compare different revisions"
@@ -32168,17 +32117,14 @@ msgid "Convert to current format"
 msgstr "Преобразовать в текущий формат"
 
 #: src/frontends/qt/GuiDocument.cpp:870
-#, fuzzy
 msgid "Small Skip"
 msgstr "Малый"
 
 #: src/frontends/qt/GuiDocument.cpp:871
-#, fuzzy
 msgid "Medium Skip"
-msgstr "средний"
+msgstr "Средний"
 
 #: src/frontends/qt/GuiDocument.cpp:872
-#, fuzzy
 msgid "Big Skip"
 msgstr "Большой"
 
@@ -32752,7 +32698,7 @@ msgid "per child document"
 msgstr "на дочерний документ"
 
 #: src/frontends/qt/GuiDocument.cpp:4008
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (not available)"
 msgstr "%1$s (недоступно)"
 
@@ -33001,44 +32947,36 @@ msgid "&Clipart"
 msgstr "Галерея"
 
 #: src/frontends/qt/GuiHSpace.cpp:44 src/insets/InsetSpace.cpp:69
-#, fuzzy
 msgid "Normal Space"
-msgstr "Горизонтальный промежуток"
+msgstr "Обычный пробел"
 
 #: src/frontends/qt/GuiHSpace.cpp:45
-#, fuzzy
 msgid "Thin Space (1/6 em)"
-msgstr "Тонкий пробел"
+msgstr "Тонкий пробел (1/6 em)"
 
 #: src/frontends/qt/GuiHSpace.cpp:46
-#, fuzzy
 msgid "Medium Space (2/9 em)"
-msgstr "Средний пробел"
+msgstr "Средний пробел (2/9 em)"
 
 #: src/frontends/qt/GuiHSpace.cpp:47
-#, fuzzy
 msgid "Thick Space (5/18 em)"
-msgstr "Широкий пробел"
+msgstr "Широкий пробел (5/18 em)"
 
 #: src/frontends/qt/GuiHSpace.cpp:48
-#, fuzzy
 msgid "Negative Thin Space (−1/6 em)"
-msgstr "Отрицательный тонкий пробел"
+msgstr "Отрицательный тонкий пробел (−1/6 em)"
 
 #: src/frontends/qt/GuiHSpace.cpp:49
-#, fuzzy
 msgid "Negative Medium Space (−2/9 em)"
-msgstr "Отрицательный средний пробел"
+msgstr "Отрицательный средний пробел (−2/9 em)"
 
 #: src/frontends/qt/GuiHSpace.cpp:50
-#, fuzzy
 msgid "Negative Thick Space (−5/18 em)"
-msgstr "Отрицательный широкий пробел"
+msgstr "Отрицательный широкий пробел (−5/18 em)"
 
 #: src/frontends/qt/GuiHSpace.cpp:51
-#, fuzzy
 msgid "Half Quad (1/2 em)"
-msgstr "Полуквадрат (0.5 em)"
+msgstr "Полуквадрат (1/2 em)"
 
 #: src/frontends/qt/GuiHSpace.cpp:52
 msgid "Quad (1 em)"
@@ -33102,12 +33040,10 @@ msgid "Index Entry Settings"
 msgstr "Рубрика указателя"
 
 #: src/frontends/qt/GuiIndex.cpp:42
-#, fuzzy
 msgid "Start"
-msgstr "Звезда"
+msgstr "Начало"
 
 #: src/frontends/qt/GuiIndex.cpp:49
-#, fuzzy
 msgid "Emphasized"
 msgstr "Выделение"
 
@@ -33503,13 +33439,15 @@ msgstr ""
 
 #: src/frontends/qt/GuiLyXFiles.cpp:335
 msgid "No alternative language versions available for the selected file."
-msgstr ""
+msgstr "Для выбранного файла не доступны альтернативные языковые версии."
 
 #: src/frontends/qt/GuiLyXFiles.cpp:337
 msgid ""
 "If alternative languages are available for a given file,\n"
 "they can be chosen here if a file is selected."
 msgstr ""
+"Если для данного файла доступны альтернативные языки,\n"
+"они могут быть заданы здесь при выборе файла."
 
 #: src/frontends/qt/GuiLyXFiles.cpp:367
 msgid "Select example file"
@@ -33780,9 +33718,8 @@ msgstr ""
 "конвертер."
 
 #: src/frontends/qt/GuiPrefs.cpp:2330 src/frontends/qt/GuiPrefs.cpp:2355
-#, fuzzy
 msgid "System Default"
-msgstr "Восстановить значения по умолчанию"
+msgstr "По умолчанию (система)"
 
 #: src/frontends/qt/GuiPrefs.cpp:2415
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
@@ -34444,11 +34381,13 @@ msgstr "неизвестная версия"
 
 #: src/frontends/qt/GuiView.cpp:652
 msgid "Click here to stop export/output process"
-msgstr ""
+msgstr "Нажмите здесь, чтобы остановить процесс экспорта/вывода"
 
 #: src/frontends/qt/GuiView.cpp:694
 msgid "Workarea zoom level. Drag, use Ctrl-+/- or Shift-Mousewheel to adjust."
 msgstr ""
+"Уровень масштабирования рабочей области. Перетащите, используйте Ctrl-+/- "
+"или Shift-колёсико мыши для настройки."
 
 #: src/frontends/qt/GuiView.cpp:737 src/frontends/qt/GuiView.cpp:853
 #: src/frontends/qt/GuiView.cpp:1035 src/frontends/qt/Menus.cpp:1842
@@ -34456,7 +34395,7 @@ msgstr ""
 #: src/frontends/qt/Menus.cpp:1854 src/frontends/qt/Menus.cpp:1858
 #: src/frontends/qt/Menus.cpp:1862
 msgid "[[ZOOM]]%1$d%"
-msgstr ""
+msgstr "[[ZOOM]]%1$d%"
 
 #: src/frontends/qt/GuiView.cpp:753
 msgid ""
@@ -34512,38 +34451,38 @@ msgid "LyX could not be closed because documents are being processed by LyX."
 msgstr "LyX не может быть закрыт, так как идёт обработка документов."
 
 #: src/frontends/qt/GuiView.cpp:1486
-#, fuzzy, c-format
+#, c-format
 msgid "%1$d Word"
-msgstr "%1$d слов"
+msgstr "Слов: %1$d"
 
 #: src/frontends/qt/GuiView.cpp:1488
-#, fuzzy, c-format
+#, c-format
 msgid "%1$d Words"
-msgstr "%1$d слов"
+msgstr "Слов: %1$d"
 
 #: src/frontends/qt/GuiView.cpp:1493
-#, fuzzy, c-format
+#, c-format
 msgid "%1$d Character"
-msgstr "Специальный символ|ц"
+msgstr "Знаков: %1$d"
 
 #: src/frontends/qt/GuiView.cpp:1495
-#, fuzzy, c-format
+#, c-format
 msgid "%1$d Characters"
-msgstr "Некодируемые символы"
+msgstr "Знаков: %1$d"
 
 #: src/frontends/qt/GuiView.cpp:1500
-#, fuzzy, c-format
+#, c-format
 msgid "%1$d Character (no Blanks)"
-msgstr "%1$d знаков (с пробелами)"
+msgstr "Знаков (без пробелов): %1$d"
 
 #: src/frontends/qt/GuiView.cpp:1502
-#, fuzzy, c-format
+#, c-format
 msgid "%1$d Characters (no Blanks)"
-msgstr "%1$d знаков (с пробелами)"
+msgstr "Знаков (без пробелов): %1$d"
 
 #: src/frontends/qt/GuiView.cpp:1504
 msgid ", [[stats separator]]"
-msgstr ""
+msgstr ", [[stats separator]]"
 
 #: src/frontends/qt/GuiView.cpp:1523
 #, c-format
@@ -34590,9 +34529,8 @@ msgid "Zoom level cannot be less than %1$d%."
 msgstr "Масштаб не может быть меньше %1$d%."
 
 #: src/frontends/qt/GuiView.cpp:2677
-#, fuzzy
 msgid "Zoom level cannot be more than %1$d%."
-msgstr "Масштаб не может быть меньше %1$d%."
+msgstr "Масштаб не может быть больше %1$d%."
 
 #: src/frontends/qt/GuiView.cpp:2807
 msgid "Document not loaded."
@@ -34603,14 +34541,12 @@ msgid "Select document to open"
 msgstr "Выберите документ для открытия"
 
 #: src/frontends/qt/GuiView.cpp:2843
-#, fuzzy
 msgid "LyX Document Backups (*.lyx~)"
-msgstr "Документы LyX (*.lyx)"
+msgstr "Резервные копии документов LyX (*.lyx~)"
 
 #: src/frontends/qt/GuiView.cpp:2844
-#, fuzzy
 msgid "All Files (*.*)"
-msgstr "Все файлы (*)"
+msgstr "Все файлы (*.*)"
 
 #: src/frontends/qt/GuiView.cpp:2871
 #, c-format
@@ -35171,28 +35107,24 @@ msgid "Add to personal dictionary|n"
 msgstr "Добавить в личный словарь"
 
 #: src/frontends/qt/Menus.cpp:874
-#, fuzzy
 msgid "Ignore this occurrence|g"
 msgstr "Пропустить это слово"
 
 #: src/frontends/qt/Menus.cpp:876
-#, fuzzy
 msgid "Ignore all for this session|I"
-msgstr "Пропустить это слово для текущей сессии"
+msgstr "Пропустить всё для текущей сессии"
 
 #: src/frontends/qt/Menus.cpp:878
-#, fuzzy
 msgid "Ignore all in this document|d"
-msgstr "Всегда разрешать для этого документа"
+msgstr "Пропустить всё для этого документа"
 
 #: src/frontends/qt/Menus.cpp:886
 msgid "Remove from personal dictionary|r"
 msgstr "Убрать из личного словаря"
 
 #: src/frontends/qt/Menus.cpp:893
-#, fuzzy
 msgid "Remove from document dictionary|r"
-msgstr "Убрать из личного словаря"
+msgstr "Убрать из словаря документа"
 
 #: src/frontends/qt/Menus.cpp:923
 msgid "Switch Language...|L"
@@ -35329,17 +35261,16 @@ msgid "Caption (%1$s)"
 msgstr "Подпись (%1$s)"
 
 #: src/frontends/qt/Menus.cpp:1831
-#, fuzzy
 msgid "Reset to Default (%1$d%)|R"
-msgstr "Сбросить к стандартному для языка (%1$s)"
+msgstr "Сбросить к стандартному (%1$d%)"
 
 #: src/frontends/qt/Menus.cpp:1834
 msgid "Zoom In|I"
-msgstr ""
+msgstr "Увеличить"
 
 #: src/frontends/qt/Menus.cpp:1836
 msgid "Zoom Out|O"
-msgstr ""
+msgstr "Уменьшить"
 
 #: src/frontends/qt/Menus.cpp:1878
 msgid "No Quote in Scope!"
@@ -35714,11 +35645,13 @@ msgid ""
 "error.\n"
 "For captions outside floats, you can use the 'nonfloat' LaTeX package."
 msgstr ""
+"Стандартные подписи не допускается использовать вне плавающих объектов. Вы "
+"получите ошибку LaTeX.\n"
+"Используйте пакет 'nonfloat', если вам всё же нужны такие подписи."
 
 #: src/insets/InsetCaption.cpp:416
-#, fuzzy
 msgid "Orphaned caption:"
-msgstr "Название таблицы"
+msgstr "Подпись вне объекта:"
 
 #: src/insets/InsetCaption.cpp:432
 #, c-format
@@ -35948,17 +35881,16 @@ msgstr "Преобразование %1$s не нужно"
 
 #: src/insets/InsetGraphics.cpp:832
 msgid "Graphic not specified. Falling back to `draft' mode."
-msgstr ""
+msgstr "Изображение не указано. Переключение в режим `черновик'."
 
 #: src/insets/InsetGraphics.cpp:833
 #, c-format
 msgid "Graphic `%1$s' was not found. Falling back to `draft' mode."
-msgstr ""
+msgstr "Изображение `%1$s' не найдено. Переключение в режим `черновик'."
 
 #: src/insets/InsetGraphics.cpp:836
-#, fuzzy
 msgid "Graphic not found!"
-msgstr "Соответствие не найдено."
+msgstr "Изображение не найдено!"
 
 #: src/insets/InsetGraphics.cpp:920
 #, c-format
@@ -36164,27 +36096,25 @@ msgstr ""
 "%1$s"
 
 #: src/insets/InsetIndex.cpp:89
-#, fuzzy
 msgid "Starts page range"
-msgstr "Начальная страница: "
+msgstr "Начальная страница диапазона"
 
 #: src/insets/InsetIndex.cpp:90
-#, fuzzy
 msgid "Ends page range"
-msgstr "на странице <стр.>"
+msgstr "Конечная страница диапазона"
 
 #: src/insets/InsetIndex.cpp:308
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "LyX's automatic index sorting algorithm faced problems with the entry "
 "'%1$s'.\n"
 "Please specify the sorting of this entry manually, as explained in the User "
 "Guide."
 msgstr ""
-"Алгоритм LyX автоматической сортировки указателя\n"
-"не смог обработать элемент '%1$s'.\n"
-"Укажите, как сортировать этот элемент вручную.\n"
-"Это описано в Руководстве пользователя."
+"Алгоритм LyX автоматической сортировки указателя не смог обработать элемент "
+"'%1$s'.\n"
+"Укажите, как сортировать этот элемент вручную. Это описано в Руководстве "
+"пользователя."
 
 #: src/insets/InsetIndex.cpp:313 src/insets/InsetIndexMacro.cpp:283
 msgid "Index sorting failed"
@@ -36196,32 +36126,30 @@ msgid ""
 "There is an empty index subentry in the entry '%1$s'.\n"
 "It will be ignored in the output."
 msgstr ""
+"В элементе '%1$s' имеется пустая подрубрика.\n"
+"Она будет проигнорирована в выводе."
 
 #: src/insets/InsetIndex.cpp:747
-#, fuzzy
 msgid "Empty index subentry!"
-msgstr "Вставить рубрику указателя"
+msgstr "Пустая подрубрика указателя!"
 
 #: src/insets/InsetIndex.cpp:986
 msgid "Index Entry"
 msgstr "Рубрика указателя"
 
 #: src/insets/InsetIndex.cpp:1003
-#, fuzzy
 msgid "Pagination format:"
-msgstr "&Игнорировать форматирование"
+msgstr "Формат номера страницы:"
 
 #: src/insets/InsetIndex.cpp:1005
 msgid "bold"
-msgstr ""
+msgstr "Полужирный"
 
 #: src/insets/InsetIndex.cpp:1007
-#, fuzzy
 msgid "italic"
 msgstr "Курсивный"
 
 #: src/insets/InsetIndex.cpp:1009
-#, fuzzy
 msgid "emphasized"
 msgstr "Выделение"
 
@@ -36238,17 +36166,17 @@ msgid "subindex"
 msgstr "подуказатель"
 
 #: src/insets/InsetIndexMacro.cpp:278
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "LyX's automatic index sorting algorithm faced problems with the sub-entry "
 "'%1$s'.\n"
 "Please specify the sorting of this entry manually, as explained in the User "
 "Guide."
 msgstr ""
-"Алгоритм LyX автоматической сортировки указателя\n"
-"не смог обработать элемент '%1$s'.\n"
-"Укажите, как сортировать этот элемент вручную.\n"
-"Это описано в Руководстве пользователя."
+"Алгоритм LyX автоматической сортировки указателя не смог обработать "
+"подэлемент '%1$s'.\n"
+"Укажите, как сортировать этот элемент вручную. Это описано в Руководстве "
+"пользователя."
 
 #: src/insets/InsetInfo.cpp:197
 msgid "No long date format (language unknown)!"
@@ -36980,93 +36908,79 @@ msgstr "верхний индекс"
 
 #: src/insets/InsetSpace.cpp:72
 msgid "Non-Breaking Normal Space"
-msgstr ""
+msgstr "Неразрывный обычный пробел"
 
 #: src/insets/InsetSpace.cpp:75
 msgid "Non-Breaking Visible Normal Space"
-msgstr ""
+msgstr "Неразрывный видимый обычный пробел"
 
 #: src/insets/InsetSpace.cpp:78
 msgid "Non-Breaking Thin Space (1/6 em)"
-msgstr ""
+msgstr "Неразрывный тонкий пробел (1/6 em)"
 
 #: src/insets/InsetSpace.cpp:81
-#, fuzzy
 msgid "Non-Breaking Medium Space (2/9 em)"
-msgstr "Отрицательный средний пробел"
+msgstr "Неразрывный средний пробел (2/9 em)"
 
 #: src/insets/InsetSpace.cpp:84
 msgid "Non-Breaking Thick Space (5/18 em)"
-msgstr ""
+msgstr "Неразрывный широкий пробел (5/18 em)"
 
 #: src/insets/InsetSpace.cpp:87
-#, fuzzy
 msgid "Quad Space (1 em)"
 msgstr "Квадрат (1 em)"
 
 #: src/insets/InsetSpace.cpp:90
-#, fuzzy
 msgid "Double Quad Space (2 em)"
 msgstr "Двойной квадрат (2 em)"
 
 #: src/insets/InsetSpace.cpp:93
 msgid "Non-Breaking Half Quad Space (1/2 em)"
-msgstr ""
+msgstr "Неразрывный полуквадрат (1/2 em)"
 
 #: src/insets/InsetSpace.cpp:96
-#, fuzzy
 msgid "Half Quad Space (1/2 em)"
-msgstr "Полуквадрат (enskip)|л"
+msgstr "Полуквадрат (1/2 em)"
 
 #: src/insets/InsetSpace.cpp:99
-#, fuzzy
 msgid "Non-Breaking Negative Thin Space (-1/6 em)"
-msgstr "Отрицательный тонкий пробел"
+msgstr "Неразрывный отрицательный тонкий пробел (-1/6 em)"
 
 #: src/insets/InsetSpace.cpp:102
-#, fuzzy
 msgid "Non-Breaking Negative Medium Space (-2/9 em)"
-msgstr "Отрицательный средний пробел"
+msgstr "Неразрывный отрицательный средний пробел(-2/9 em)"
 
 #: src/insets/InsetSpace.cpp:105
-#, fuzzy
 msgid "Non-Breaking Negative Thick Space (-5/18 em)"
-msgstr "Отрицательный широкий пробел"
+msgstr "Неразрывный отрицательный широкий пробел (-5/18 em)"
 
 #: src/insets/InsetSpace.cpp:111
-#, fuzzy
 msgid "Non-Breaking Horizontal Fill"
-msgstr "Горизонтальное заполнение"
+msgstr "Неразрывное горизонтальное заполнение"
 
 #: src/insets/InsetSpace.cpp:114
-#, fuzzy
 msgid "Non-Breaking Horizontal Fill (Dots)"
-msgstr "Горизонтальное заполнение (точки)"
+msgstr "Неразрывное горизонтальное заполнение (точки)"
 
 #: src/insets/InsetSpace.cpp:117
-#, fuzzy
 msgid "Non-Breaking Horizontal Fill (Rule)"
-msgstr "Горизонтальное заполнение (линия)"
+msgstr "Неразрывное горизонтальное заполнение (линия)"
 
 #: src/insets/InsetSpace.cpp:120
-#, fuzzy
 msgid "Non-Breaking Horizontal Fill (Left Arrow)"
-msgstr "Горизонтальное заполнение (левая стрелка)"
+msgstr "Неразрывное горизонтальное заполнение (левая стрелка)"
 
 #: src/insets/InsetSpace.cpp:123
-#, fuzzy
 msgid "Non-Breaking Horizontal Fill (Right Arrow)"
-msgstr "Горизонтальное заполнение (правая стрелка)"
+msgstr "Неразрывное горизонтальное заполнение (правая стрелка)"
 
 #: src/insets/InsetSpace.cpp:126
-#, fuzzy
 msgid "Non-Breaking Horizontal Fill (Up Brace)"
-msgstr "Горизонтальное заполнение (скобка вниз)"
+msgstr "Неразрывное горизонтальное заполнение (скобка вниз)"
 
 #: src/insets/InsetSpace.cpp:129
-#, fuzzy
 msgid "Non-Breaking Horizontal Fill (Down Brace)"
-msgstr "Горизонтальное заполнение (скобка вверх)"
+msgstr "Неразрывное горизонтальное заполнение (скобка вверх)"
 
 #: src/insets/InsetSpace.cpp:133
 #, c-format
@@ -37074,9 +36988,9 @@ msgid "Horizontal Space (%1$s)"
 msgstr "Горизонтальный пробел (%1$s)"
 
 #: src/insets/InsetSpace.cpp:138
-#, fuzzy, c-format
+#, c-format
 msgid "Non-Breaking Horizontal Space (%1$s)"
-msgstr "Горизонтальный пробел (%1$s)"
+msgstr "Неразрывный горизонтальный пробел (%1$s)"
 
 #: src/insets/InsetTOC.cpp:78
 msgid "Unknown TOC type"
@@ -37220,13 +37134,12 @@ msgstr ""
 "Продолжать поиск с конца?"
 
 #: src/lyxfind.cpp:379
-#, fuzzy
 msgid "Search reached end of document, continuing from beginning."
-msgstr "Достигнут конец документа, продолжить с начала?"
+msgstr "Достигнут конец документа, поиск продолжен с начала."
 
 #: src/lyxfind.cpp:380
 msgid "Search reached beginning of document, continuing from end."
-msgstr ""
+msgstr "Поиск достиг начала документа и продолжается с конца."
 
 #: src/lyxfind.cpp:679
 msgid "String not found in selection."
@@ -37292,10 +37205,9 @@ msgid "Box: %1$s"
 msgstr "Блок: %1$s"
 
 #: src/mathed/InsetMathCases.cpp:97 src/mathed/InsetMathSubstack.cpp:107
-#, fuzzy, c-format
+#, c-format
 msgid "Changing number of columns not allowed in '%1$s'"
-msgstr ""
-"Изменение количества столбцов не поддерживается в 'cases': возможность %1$s"
+msgstr "Изменение количества столбцов не поддерживается в %1$s"
 
 #: src/mathed/InsetMathColor.cpp:160
 #, c-format
@@ -37618,11 +37530,11 @@ msgstr "Клавиатурные определения"
 
 #: src/support/debug.cpp:50
 msgid "Output source file generation/processing"
-msgstr ""
+msgstr "Генерация/обработка выходных исходных файлов"
 
 #: src/support/debug.cpp:51
 msgid "Output source file generation/processing (alias to 'outfile')"
-msgstr ""
+msgstr "Генерация/обработка выходных исходных файлов (синоним для 'outfile')"
 
 #: src/support/debug.cpp:52
 msgid "Math editor"
@@ -37713,14 +37625,12 @@ msgid "Selection copy/paste mechanism"
 msgstr "Механизм копирования/вставки выделения"
 
 #: src/support/debug.cpp:74
-#, fuzzy
 msgid "Find and replace mechanism, terse version"
-msgstr "Механизм поиска и замены"
+msgstr "Механизм поиска и замены, краткая версия"
 
 #: src/support/debug.cpp:75
-#, fuzzy
 msgid "Find and replace mechanism, verbose version"
-msgstr "Механизм поиска и замены"
+msgstr "Механизм поиска и замены, подробная версия"
 
 #: src/support/debug.cpp:76
 msgid "Developers' general debug messages"
@@ -37731,9 +37641,8 @@ msgid "All debugging messages"
 msgstr "Все отладочные сообщения"
 
 #: src/support/debug.cpp:78
-#, fuzzy
 msgid "All debugging messages (alias to 'all')"
-msgstr "Все отладочные сообщения"
+msgstr "Все отладочные сообщения (синоним для 'all')"
 
 #: src/support/debug.cpp:193
 #, c-format
