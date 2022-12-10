@@ -575,7 +575,7 @@ void PreambleModule::editExternal() {
 		docstring const s = tempfilename.fileContents("UTF-8");
 		preambleTE->document()->setPlainText(toqstr(s));
 		tempfile_.reset();
-		editPB->setText(qt_("&Edit"));
+		editPB->setText(qt_("&Edit Externally"));
 		changed();
 		return;
 	}
@@ -751,7 +751,7 @@ void LocalLayout::editExternal() {
 		docstring const s = tempfilename.fileContents("UTF-8");
 		locallayoutTE->document()->setPlainText(toqstr(s));
 		tempfile_.reset();
-		editPB->setText(qt_("&Edit"));
+		editPB->setText(qt_("&Edit Externally"));
 		changed();
 		return;
 	}
