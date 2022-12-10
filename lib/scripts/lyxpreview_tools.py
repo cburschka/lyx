@@ -293,7 +293,7 @@ def run_latex(latex, latex_file, bibtex = None):
         latex_status, latex_stdout = run_tex(latex, latex_file)
     # Rerun latex if necessary
     progress("Checking if a latex rerun is necessary")
-    if string_in_file("Warning: Citation", log_file):
+    if string_in_file("Warning: (Citation|Reference)", log_file):
         latex_status, latex_stdout = run_tex(latex, latex_file)
 
     return latex_status, latex_stdout
@@ -312,9 +312,10 @@ def run_tex(tex, tex_file):
 def string_in_file(string, infile):
     if not os.path.isfile(infile):
         return False
+    string_re = re.compile(string.encode())
     f = open(infile, 'rb')
     for line in f.readlines():
-        if string.encode() in line:
+        if string_re.search(line):
             f.close()
             return True
     f.close()
