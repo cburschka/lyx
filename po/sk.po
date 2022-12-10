@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2022-12-07 09:43+0100\n"
-"PO-Revision-Date: 2022-12-07 08:47+0000\n"
+"POT-Creation-Date: 2022-12-10 15:04+0100\n"
+"PO-Revision-Date: 2022-12-10 14:16+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -32523,6 +32523,22 @@ msgstr "LyX súbory (*.lyx)"
 #: src/frontends/qt/GuiDocument.cpp:4820
 msgid "Unapplied changes"
 msgstr "Neuplatnené zmeny"
+
+#: src/frontends/qt/GuiDocument.cpp:1803
+msgid ""
+"Some changes in the previous document were not yet applied.\n"
+"Do you want to switch back and apply them?"
+msgstr ""
+"Niektoré zmeny v predošlom dokumente sú zatiaľ neuplatnené.\n"
+"Chcete to vymeniť a uplatniť ich?"
+
+#: src/frontends/qt/GuiDocument.cpp:1805
+msgid "Yes, &Switch Back"
+msgstr "Áno, &vymeniť"
+
+#: src/frontends/qt/GuiDocument.cpp:1805
+msgid "No, &Dismiss Changes"
+msgstr "Nie, zmeny &zahodiť"
 
 #: src/frontends/qt/GuiDocument.cpp:2908 src/frontends/qt/GuiDocument.cpp:3212
 #: src/frontends/qt/GuiDocument.cpp:4821
