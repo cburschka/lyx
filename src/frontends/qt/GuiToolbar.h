@@ -179,6 +179,9 @@ Q_SIGNALS:
 	///
 	void updated();
 
+private Q_SLOTS:
+	void showContextMenu(QPoint pos);
+
 private:
 	// load flags with saved values
 	void initFlags();

@@ -34,6 +34,7 @@
 #include "LayoutBox.h"
 #include "LyX.h"
 #include "LyXRC.h"
+#include "Menus.h"
 #include "qt_helpers.h"
 #include "Session.h"
 #include "Text.h"
@@ -75,6 +76,9 @@ GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiView & owner)
 	setIconSize(owner.iconSize());
 	connect(&owner, SIGNAL(iconSizeChanged(QSize)), this,
 		SLOT(setIconSize(QSize)));
+	setContextMenuPolicy(Qt::CustomContextMenu);
+	connect(this, SIGNAL(customContextMenuRequested(QPoint)),
+		SLOT(showContextMenu(QPoint)));
 
 	// This is used by QMainWindow::restoreState for proper main window state
 	// restoration.
@@ -139,6 +143,13 @@ void GuiToolbar::showEvent(QShowEvent * ev)
 void GuiToolbar::setVisibility(int visibility)
 {
 	visibility_ = visibility;
+}
+
+
+void GuiToolbar::showContextMenu(QPoint pos)
+{
+	QMenu * menu = guiApp->menus().menu(toqstr("context-toolbars"), owner_);
+	menu->exec(mapToGlobal(pos));
 }
 
 

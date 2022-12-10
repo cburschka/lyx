@@ -286,9 +286,6 @@ private Q_SLOTS:
 	void updateStatusBarMessage(QString const & str);
 	void clearMessageText();
 
-	///
-	void toolBarPopup(const QPoint &pos);
-
 private:
 	/// Open given child document in current buffer directory.
 	void openChildDocument(std::string const & filename);
